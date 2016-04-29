@@ -1897,6 +1897,7 @@ endr
 	db " DRAGON @"
 	db "  DARK  @"
 	db " STEEL  @"
+	db " FAIRY  @"
 
 Pokedex_SearchForMons: ; 41086
 	ld a, [wDexSearchMonType2]
@@ -1991,6 +1992,7 @@ Pokedex_SearchForMons: ; 41086
 	db DRAGON
 	db DARK
 	db STEEL
+	db FAIRY
 
 Pokedex_DisplayTypeNotFoundMessage: ; 41107
 	xor a

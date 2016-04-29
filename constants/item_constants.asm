@@ -343,6 +343,7 @@ const_value SET 50
 	const HELD_DRAGON_BOOST
 	const HELD_DARK_BOOST
 	const HELD_STEEL_BOOST
+	const HELD_FAIRY_BOOST
 
 const_value SET 70
 	const HELD_CATCH_CHANCE

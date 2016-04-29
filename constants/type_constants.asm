@@ -7,7 +7,7 @@ PHYSICAL EQU const_value
 	const POISON
 	const GROUND
 	const ROCK
-	const BIRD
+	const FAIRY
 	const BUG
 	const GHOST
 	const STEEL

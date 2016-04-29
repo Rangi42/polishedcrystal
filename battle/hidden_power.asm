@@ -83,8 +83,8 @@ endr
 ; Skip Normal
 	inc a
 
-; Skip Bird
-	cp BIRD
+; Skip Fairy
+	cp FAIRY
 	jr c, .done
 	inc a
 
