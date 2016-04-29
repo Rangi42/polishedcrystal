@@ -203,9 +203,6 @@ Function_LoadRandomBattleTowerPkmn: ; 1f8081
 ; 1f814e
 
 BattleTowerTrainers: ; 1f814e
-; The trainer class is not used in Crystal 1.0 due to a bug.
-; Instead, the sixth character in the trainer's name is used.
-; See misc/battle_tower_47.asm
 	db "HANSON@@@@", FISHER
 	db "SAWYER@@@@", POKEMANIAC
 	db "MASUDA@@@@", GUITARIST
@@ -227,7 +224,6 @@ BattleTowerTrainers: ; 1f814e
 	db "KAUFMAN@@@", SWIMMERM
 	db "LANCASTER@", SKIER
 	db "McMAHILL@@", CAMPER
-; The following can only be sampled in Crystal 1.1.
 	db "OBRIEN@@@@", GENTLEMAN
 	db "FROST@@@@@", BEAUTY
 	db "MORSE@@@@@", SUPER_NERD
