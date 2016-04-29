@@ -17,7 +17,7 @@ Planned changes include:
 * Physical/Special split from Gen IV
 * 251 → 255 Pokémon selected from all generations
 * 251 → 256 moves selected from all generations
-* Replace Teru-sama items with new ones
+* Replace Teru-sama items with new ones (Zinc, X Sp. Def, PP Max, Dome Fossil, Helix Fossil, Old Amber, Dawn Stone, Dusk Stone, etc)
 * Fix various glitches
 * Gain experience from catching Pokémon
 * Use Gen IV critical hit formula
