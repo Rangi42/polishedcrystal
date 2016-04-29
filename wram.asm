@@ -893,15 +893,9 @@ wBackupDexListingPage::
 wc7e3:: ds 1
 wDexCurrentLocation::
 wc7e4:: ds 1
-IF DEF(CRYSTAL11)
 wPokedexStatus::
-ELSE
-wPokedexDataEnd::
-ENDC
 	ds 1
-IF DEF(CRYSTAL11)
 wPokedexDataEnd::
-ENDC
 	ds 2
 
 wMiscEnd::
@@ -1293,9 +1287,6 @@ wCardFlipCursorY::
 wCreditsBorderFrame::
 wDexEntryPrevJumptableIndex::
 wcf64:: ds 1
-IF !DEF(CRYSTAL11)
-wPokedexStatus::
-ENDC
 wCreditsBorderMon::
 wTitleScreenTimerLo::
 wUnownPuzzleCursorPosition::

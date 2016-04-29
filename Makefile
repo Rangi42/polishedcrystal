@@ -2,7 +2,7 @@ PYTHON := python
 MD5 := md5sum -c --quiet
 
 .SUFFIXES:
-.PHONY: all clean crystal crystal11
+.PHONY: all clean crystal
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -27,38 +27,24 @@ misc/crystal_misc.o \
 text/common_text.o \
 gfx/pics.o
 
-crystal11_obj := $(crystal_obj:.o=11.o)
-
 
 roms := pokecrystal.gbc
 
 all: $(roms)
 crystal: pokecrystal.gbc
-crystal11: pokecrystal11.gbc
 
 clean:
-	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
-
-compare: pokecrystal.gbc pokecrystal11.gbc
-	@$(MD5) roms.md5
+	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
 
 %.asm: ;
-
-%11.o: dep = $(shell $(includes) $(@D)/$*.asm)
-%11.o: %.asm $$(dep)
-	rgbasm -D CRYSTAL11 -o $@ $<
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
 	rgbasm -o $@ $<
 
-pokecrystal11.gbc: $(crystal11_obj)
+%.gbc: $(crystal_obj)
 	rgblink -n $*.sym -m $*.map -o $@ $^
 	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_CRYSTAL $@
-
-pokecrystal.gbc: $(crystal_obj)
-	rgblink -n $*.sym -m $*.map -o $@ $^
-	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<
