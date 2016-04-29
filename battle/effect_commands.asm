@@ -1390,12 +1390,6 @@ BattleCommand_Stab: ; 346d2
 	pop de
 	pop hl
 
-	push de
-	push bc
-	callba DoBadgeTypeBoosts
-	pop bc
-	pop de
-
 	ld a, [wTypeMatchup]
 	cp b
 	jr z, .stab
@@ -6333,9 +6327,6 @@ CalcPlayerStats: ; 365d7
 
 	ld a, 5
 	call CalcStats
-
-	ld hl, BadgeStatBoosts
-	call CallBattleCore
 
 	call BattleCommand_SwitchTurn
 
