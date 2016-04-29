@@ -9459,17 +9459,14 @@ BattleCommand_StartSun: ; 37c07
 
 BattleCommand_BellyDrum: ; 37c1a
 ; bellydrum
-; This command is buggy because it raises the user's attack
-; before checking that it has enough HP to use the move.
-; Swap the order of these two blocks to fix.
+	callab GetHalfMaxHP
+	callab CheckUserHasEnoughHP
+	jr nc, .failed
+
 	call BattleCommand_AttackUp2
 	ld a, [AttackMissed]
 	and a
 	jr nz, .failed
-
-	callab GetHalfMaxHP
-	callab CheckUserHasEnoughHP
-	jr nc, .failed
 
 	push bc
 	call AnimateCurrentMove
