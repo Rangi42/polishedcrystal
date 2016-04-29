@@ -9,6 +9,14 @@ It builds the following roms:
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
+Planned changes include:
+
+* Fairy type from Gen VI
+* Updated base stats, moves, and items as of Gen VI
+* Physical/Special split from Gen IV
+* 255 Pokémon selected from all generations
+* More moves and items
+
 
 ## See also
 
