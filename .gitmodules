@@ -1,3 +1,6 @@
 [submodule "extras"]
 	path = extras
 	url = https://github.com/pret/pokemon-reverse-engineering-tools.git
+[submodule "crowdmap"]
+	path = crowdmap
+	url = https://github.com/yenatch/crowdmap.git
