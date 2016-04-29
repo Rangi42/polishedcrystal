@@ -26,16 +26,16 @@ GoldenrodCity_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, .FlyPointAndFloria
 	dbw MAPCALLBACK_OBJECTS, .MoveTutor
 
-.FlyPointAndFloria
+.FlyPointAndFloria:
 	setflag ENGINE_FLYPOINT_GOLDENROD
 	setflag ENGINE_FLORIA
 	checkevent EVENT_MET_FLORIA
 	iftrue .FloriaDone
 	clearevent EVENT_FLORIA_AT_SUDOWOODO
-.FloriaDone
+.FloriaDone:
 	return
 
-.MoveTutor
+.MoveTutor:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iffalse .MoveTutorDone
 	checkitem COIN_CASE
@@ -43,15 +43,15 @@ GoldenrodCity_MapScriptHeader:
 	checkcode VAR_WEEKDAY
 	if_equal WEDNESDAY, .MoveTutorAppear
 	if_equal SATURDAY, .MoveTutorAppear
-.MoveTutorDisappear
+.MoveTutorDisappear:
 	disappear GOLDENRODCITY_POKEFAN_M2
 	return
 
-.MoveTutorAppear
+.MoveTutorAppear:
 	checkflag ENGINE_DAILY_MOVE_TUTOR
 	iftrue .MoveTutorDone
 	appear GOLDENRODCITY_POKEFAN_M2
-.MoveTutorDone
+.MoveTutorDone:
 	return
 
 MoveTutor:
@@ -569,7 +569,7 @@ GoldenrodCity_MapEventHeader:
 	warp_def $d, $9, 2, GOLDENROD_MAGNET_TRAIN_STATION
 	warp_def $5, $1d, 1, GOLDENROD_FLOWER_SHOP
 	warp_def $9, $21, 1, GOLDENROD_PP_SPEECH_HOUSE
-	warp_def $7, $f, 1, GOLDENROD_NAME_RATERS_HOUSE
+	warp_def $7, $f, 1, GOLDENROD_NAME_RATER
 	warp_def $1b, $18, 1, GOLDENROD_DEPT_STORE_1F
 	warp_def $15, $e, 1, GOLDENROD_GAME_CORNER
 	warp_def $f, $5, 1, RADIO_TOWER_1F

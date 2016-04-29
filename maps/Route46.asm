@@ -60,13 +60,13 @@ UnknownScript_0x1a96da:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight2
+.Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer PICNICKER, ERIN1
 	startbattle
 	reloadmapafterbattle
@@ -74,7 +74,7 @@ UnknownScript_0x1a96da:
 	clearflag ENGINE_ERIN
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer PICNICKER, ERIN2
 	startbattle
 	reloadmapafterbattle
@@ -82,7 +82,7 @@ UnknownScript_0x1a96da:
 	clearflag ENGINE_ERIN
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer PICNICKER, ERIN3
 	startbattle
 	reloadmapafterbattle
@@ -158,8 +158,8 @@ HikerBaileyScript:
 	closetext
 	end
 
-MapRoute46Signpost0Script:
-	jumptext UnknownText_0x1a99be
+Route46Sign:
+	jumptext Route46SignText
 
 Route46XSpeed:
 	itemball X_SPEED
@@ -245,7 +245,7 @@ UnknownText_0x1a9927:
 	cont "the other time."
 	done
 
-UnknownText_0x1a99be:
+Route46SignText:
 	text "ROUTE 46"
 	line "MOUNTAIN RD. AHEAD"
 	done
@@ -265,7 +265,7 @@ Route46_MapEventHeader:
 
 .Signposts:
 	db 1
-	signpost 27, 9, SIGNPOST_READ, MapRoute46Signpost0Script
+	signpost 27, 9, SIGNPOST_READ, Route46Sign
 
 .PersonEvents:
 	db 6

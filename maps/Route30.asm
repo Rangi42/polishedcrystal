@@ -76,19 +76,19 @@ TrainerYoungsterJoey:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight4
+.Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight4
-.Fight3
+.Fight3:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight3
-.Fight2
+.Fight2:
 	checkflag ENGINE_FLYPOINT_OLIVINE
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer YOUNGSTER, JOEY1
 	startbattle
 	reloadmapafterbattle
@@ -96,7 +96,7 @@ TrainerYoungsterJoey:
 	clearflag ENGINE_JOEY
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer YOUNGSTER, JOEY2
 	startbattle
 	reloadmapafterbattle
@@ -104,7 +104,7 @@ TrainerYoungsterJoey:
 	clearflag ENGINE_JOEY
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer YOUNGSTER, JOEY3
 	startbattle
 	reloadmapafterbattle
@@ -112,7 +112,7 @@ TrainerYoungsterJoey:
 	clearflag ENGINE_JOEY
 	end
 
-.LoadFight3
+.LoadFight3:
 	loadtrainer YOUNGSTER, JOEY4
 	startbattle
 	reloadmapafterbattle
@@ -120,7 +120,7 @@ TrainerYoungsterJoey:
 	clearflag ENGINE_JOEY
 	end
 
-.LoadFight4
+.LoadFight4:
 	loadtrainer YOUNGSTER, JOEY5
 	startbattle
 	reloadmapafterbattle
@@ -135,7 +135,7 @@ TrainerYoungsterJoey:
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jump .NumberAccepted
 
-.done:
+.done
 	end
 
 .GiveHPUp:
@@ -226,17 +226,17 @@ Route30YoungsterScript:
 Route30CooltrainerFScript:
 	jumptextfaceplayer Route30CooltrainerFText
 
-MapRoute30Signpost0Script:
-	jumptext Route30MapSignText
+Route30Sign:
+	jumptext Route30SignText
 
-MapRoute30Signpost1Script:
-	jumptext Route30DirectionsToMrPokemonsHouseSignText
+MrPokemonsHouseDirectionsSign:
+	jumptext MrPokemonsHouseDirectionsSignText
 
-MapRoute30Signpost2Script:
-	jumptext Route30MrPokemonsHouseSignText
+MrPokemonsHouseSign:
+	jumptext MrPokemonsHouseSignText
 
-MapRoute30Signpost3Script:
-	jumptext Route30TrainerTipsSignText
+Route30TrainerTips:
+	jumptext Route30TrainerTipsText
 
 Route30Antidote:
 	itemball ANTIDOTE
@@ -249,7 +249,7 @@ Route30FruitTree2:
 
 Route30HiddenPotion:
 	dwb EVENT_ROUTE_30_HIDDEN_POTION, POTION
-	
+
 
 Route30_JoeysRattataAttacksMovement:
 	fix_facing
@@ -365,23 +365,23 @@ Route30CooltrainerFText:
 	cont "prepare to battle."
 	done
 
-Route30MapSignText:
+Route30SignText:
 	text "ROUTE 30"
 
 	para "VIOLET CITY -"
 	line "CHERRYGROVE CITY"
 	done
 
-Route30DirectionsToMrPokemonsHouseSignText:
+MrPokemonsHouseDirectionsSignText:
 	text "MR.#MON'S HOUSE"
 	line "STRAIGHT AHEAD!"
 	done
 
-Route30MrPokemonsHouseSignText:
+MrPokemonsHouseSignText:
 	text "MR.#MON'S HOUSE"
 	done
 
-Route30TrainerTipsSignText:
+Route30TrainerTipsText:
 	text "TRAINER TIPS"
 
 	para "No stealing other"
@@ -421,10 +421,10 @@ Route30_MapEventHeader:
 
 .Signposts:
 	db 5
-	signpost 43, 9, SIGNPOST_READ, MapRoute30Signpost0Script
-	signpost 29, 13, SIGNPOST_READ, MapRoute30Signpost1Script
-	signpost 5, 15, SIGNPOST_READ, MapRoute30Signpost2Script
-	signpost 21, 3, SIGNPOST_READ, MapRoute30Signpost3Script
+	signpost 43, 9, SIGNPOST_READ, Route30Sign
+	signpost 29, 13, SIGNPOST_READ, MrPokemonsHouseDirectionsSign
+	signpost 5, 15, SIGNPOST_READ, MrPokemonsHouseSign
+	signpost 21, 3, SIGNPOST_READ, Route30TrainerTips
 	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
 
 .PersonEvents:

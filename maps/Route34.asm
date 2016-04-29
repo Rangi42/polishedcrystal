@@ -69,10 +69,10 @@ DayCareManScript_Outside:
 	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS
-.end_fail:
+.end_fail
 	end
 
-.walk_around_player:
+.walk_around_player
 	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS
@@ -130,19 +130,19 @@ TrainerCamperTodd1:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight4
+.Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
-.Fight3
+.Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight3
-.Fight2
+.Fight2:
 	checkflag ENGINE_FLYPOINT_BLACKTHORN
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkflag ENGINE_FLYPOINT_CIANWOOD
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer CAMPER, TODD1
 	startbattle
 	reloadmapafterbattle
@@ -150,7 +150,7 @@ TrainerCamperTodd1:
 	clearflag ENGINE_TODD
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer CAMPER, TODD2
 	startbattle
 	reloadmapafterbattle
@@ -158,7 +158,7 @@ TrainerCamperTodd1:
 	clearflag ENGINE_TODD
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer CAMPER, TODD3
 	startbattle
 	reloadmapafterbattle
@@ -166,7 +166,7 @@ TrainerCamperTodd1:
 	clearflag ENGINE_TODD
 	end
 
-.LoadFight3
+.LoadFight3:
 	loadtrainer CAMPER, TODD4
 	startbattle
 	reloadmapafterbattle
@@ -174,7 +174,7 @@ TrainerCamperTodd1:
 	clearflag ENGINE_TODD
 	end
 
-.LoadFight4
+.LoadFight4:
 	loadtrainer CAMPER, TODD5
 	startbattle
 	reloadmapafterbattle
@@ -255,19 +255,19 @@ TrainerPicnickerGina1:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight4
+.Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
-.Fight3
+.Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight3
-.Fight2
+.Fight2:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkflag ENGINE_FLYPOINT_MAHOGANY
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer PICNICKER, GINA1
 	startbattle
 	reloadmapafterbattle
@@ -275,7 +275,7 @@ TrainerPicnickerGina1:
 	clearflag ENGINE_GINA
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer PICNICKER, GINA2
 	startbattle
 	reloadmapafterbattle
@@ -283,7 +283,7 @@ TrainerPicnickerGina1:
 	clearflag ENGINE_GINA
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer PICNICKER, GINA3
 	startbattle
 	reloadmapafterbattle
@@ -291,7 +291,7 @@ TrainerPicnickerGina1:
 	clearflag ENGINE_GINA
 	end
 
-.LoadFight3
+.LoadFight3:
 	loadtrainer PICNICKER, GINA4
 	startbattle
 	reloadmapafterbattle
@@ -299,7 +299,7 @@ TrainerPicnickerGina1:
 	clearflag ENGINE_GINA
 	end
 
-.LoadFight4
+.LoadFight4:
 	loadtrainer PICNICKER, GINA5
 	startbattle
 	reloadmapafterbattle
@@ -475,28 +475,28 @@ TrainerCooltrainerfKate:
 	closetext
 	end
 
-MapRoute34UnusedSignpostScript:
+; unused
 	jumptext MapRoute34UnusedSignpostText
 
-MapRoute34Signpost0Script:
-	jumptext MapRoute34Signpost0Text
+Route34Sign:
+	jumptext Route34SignText
 
-MapRoute34Signpost1Script:
-	jumptext MapRoute34Signpost1Text
+Route34TrainerTips:
+	jumptext Route34TrainerTipsText
 
-MapRoute34Signpost2Script:
-	jumptext MapRoute34Signpost2Text
+DayCareSign:
+	jumptext DayCareSignText
 
 Route34Nugget:
 	itemball NUGGET
 
 Route34HiddenRareCandy:
 	dwb EVENT_ROUTE_34_HIDDEN_RARE_CANDY, RARE_CANDY
-	
+
 
 Route34HiddenSuperPotion:
 	dwb EVENT_ROUTE_34_HIDDEN_SUPER_POTION, SUPER_POTION
-	
+
 
 Route34MovementData_DayCareManWalksBackInside:
 	slow_step_left
@@ -736,7 +736,7 @@ MapRoute34UnusedSignpostText:
 	line "THROUGH THE GATE"
 	done
 
-MapRoute34Signpost0Text:
+Route34SignText:
 	text "ROUTE 34"
 
 	para "GOLDENROD CITY -"
@@ -746,7 +746,7 @@ MapRoute34Signpost0Text:
 	line "SOMEWHERE BETWEEN"
 	done
 
-MapRoute34Signpost1Text:
+Route34TrainerTipsText:
 	text "TRAINER TIPS"
 
 	para "BERRY trees grow"
@@ -758,7 +758,7 @@ MapRoute34Signpost1Text:
 	cont "which BERRIES."
 	done
 
-MapRoute34Signpost2Text:
+DayCareSignText:
 	text "DAY-CARE"
 
 	para "LET US RAISE YOUR"
@@ -782,9 +782,9 @@ Route34_MapEventHeader:
 
 .Signposts:
 	db 5
-	signpost 6, 12, SIGNPOST_READ, MapRoute34Signpost0Script
-	signpost 33, 13, SIGNPOST_READ, MapRoute34Signpost1Script
-	signpost 13, 10, SIGNPOST_READ, MapRoute34Signpost2Script
+	signpost 6, 12, SIGNPOST_READ, Route34Sign
+	signpost 33, 13, SIGNPOST_READ, Route34TrainerTips
+	signpost 13, 10, SIGNPOST_READ, DayCareSign
 	signpost 32, 8, SIGNPOST_ITEM, Route34HiddenRareCandy
 	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
 

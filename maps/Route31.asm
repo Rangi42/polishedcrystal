@@ -67,19 +67,19 @@ TrainerBug_catcherWade1:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight4
+.Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight4
-.Fight3
+.Fight3:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight3
-.Fight2
+.Fight2:
 	checkflag ENGINE_FLYPOINT_MAHOGANY
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer BUG_CATCHER, WADE1
 	startbattle
 	reloadmapafterbattle
@@ -87,7 +87,7 @@ TrainerBug_catcherWade1:
 	clearflag ENGINE_WADE
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer BUG_CATCHER, WADE2
 	startbattle
 	reloadmapafterbattle
@@ -95,7 +95,7 @@ TrainerBug_catcherWade1:
 	clearflag ENGINE_WADE
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer BUG_CATCHER, WADE3
 	startbattle
 	reloadmapafterbattle
@@ -103,7 +103,7 @@ TrainerBug_catcherWade1:
 	clearflag ENGINE_WADE
 	end
 
-.LoadFight3
+.LoadFight3:
 	loadtrainer BUG_CATCHER, WADE4
 	startbattle
 	reloadmapafterbattle
@@ -111,7 +111,7 @@ TrainerBug_catcherWade1:
 	clearflag ENGINE_WADE
 	end
 
-.LoadFight4
+.LoadFight4:
 	loadtrainer BUG_CATCHER, WADE5
 	startbattle
 	reloadmapafterbattle
@@ -128,25 +128,25 @@ TrainerBug_catcherWade1:
 	iftrue .Przcureberry
 	checkevent EVENT_WADE_HAS_BITTER_BERRY
 	iftrue .BitterBerry
-.Berry
+.Berry:
 	verbosegiveitem BERRY
 	iffalse .PackFull
 	jump .Done
-.Psncureberry
+.Psncureberry:
 	verbosegiveitem PSNCUREBERRY
 	iffalse .PackFull
 	jump .Done
-.Przcureberry
+.Przcureberry:
 	verbosegiveitem PRZCUREBERRY
 	iffalse .PackFull
 	jump .Done
-.BitterBerry
+.BitterBerry:
 	verbosegiveitem BITTER_BERRY
 	iffalse .PackFull
-.Done
+.Done:
 	clearflag ENGINE_WADE_HAS_ITEM
 	jump .AcceptedNumberSTD
-.PackFull
+.PackFull:
 	jump .PackFullSTD
 
 .AskPhoneNumberSTD:
@@ -251,11 +251,11 @@ ReceivedSpearowMailText:
 Route31YoungsterScript:
 	jumptextfaceplayer Route31YoungsterText
 
-MapRoute31Signpost0Script:
-	jumptext Route31Signpost0Text
+Route31Sign:
+	jumptext Route31SignText
 
-MapRoute31Signpost1Script:
-	jumptext Route31Signpost1Text
+DarkCaveSign:
+	jumptext DarkCaveSignText
 
 Route31CooltrainerMScript:
 	jumptextfaceplayer Route31CooltrainerMText
@@ -408,14 +408,14 @@ Route31YoungsterText:
 	line "VIOLET CITY's GYM."
 	done
 
-Route31Signpost0Text:
+Route31SignText:
 	text "ROUTE 31"
 
 	para "VIOLET CITY -"
 	line "CHERRYGROVE CITY"
 	done
 
-Route31Signpost1Text:
+DarkCaveSignText:
 	text "DARK CAVE"
 	done
 
@@ -434,8 +434,8 @@ Route31_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 5, 7, SIGNPOST_READ, MapRoute31Signpost0Script
-	signpost 5, 31, SIGNPOST_READ, MapRoute31Signpost1Script
+	signpost 5, 7, SIGNPOST_READ, Route31Sign
+	signpost 5, 31, SIGNPOST_READ, DarkCaveSign
 
 .PersonEvents:
 	db 7

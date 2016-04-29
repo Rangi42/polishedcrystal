@@ -6,9 +6,8 @@ MD5 := md5sum -c --quiet
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-poketools := extras/pokemontools
 gfx       := $(PYTHON) gfx.py
-includes  := $(PYTHON) $(poketools)/scan_includes.py
+includes  := $(PYTHON) scan_includes.py
 
 
 crystal_obj := \
@@ -42,8 +41,8 @@ clean:
 %.o: %.asm $$(dep)
 	rgbasm -o $@ $<
 
-%.gbc: $(crystal_obj)
-	rgblink -n $*.sym -m $*.map -o $@ $^
+pokecrystal.gbc: $(crystal_obj)
+	rgblink -n pokecrystal.sym -m pokecrystal.map -o $@ $^
 	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_CRYSTAL $@
 
 %.png: ;

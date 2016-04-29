@@ -54,13 +54,13 @@ UnknownScript_0x19d86a:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight2
+.Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer BIRD_KEEPER, VANCE1
 	startbattle
 	reloadmapafterbattle
@@ -68,7 +68,7 @@ UnknownScript_0x19d86a:
 	clearflag ENGINE_VANCE
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer BIRD_KEEPER, VANCE2
 	startbattle
 	reloadmapafterbattle
@@ -76,7 +76,7 @@ UnknownScript_0x19d86a:
 	clearflag ENGINE_VANCE
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer BIRD_KEEPER, VANCE3
 	startbattle
 	reloadmapafterbattle
@@ -198,13 +198,13 @@ UnknownScript_0x19d96e:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight2
+.Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer FISHER, WILTON1
 	startbattle
 	reloadmapafterbattle
@@ -212,7 +212,7 @@ UnknownScript_0x19d96e:
 	clearflag ENGINE_WILTON
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer FISHER, WILTON2
 	startbattle
 	reloadmapafterbattle
@@ -220,7 +220,7 @@ UnknownScript_0x19d96e:
 	clearflag ENGINE_WILTON
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer FISHER, WILTON3
 	startbattle
 	reloadmapafterbattle
@@ -299,11 +299,11 @@ CooltrainermAllenScript:
 	closetext
 	end
 
-MapRoute44Signpost0Script:
-	jumptext UnknownText_0x19dfb3
+Route44Sign1:
+	jumptext Route44Sign1Text
 
-MapRoute44Signpost1Script:
-	jumptext UnknownText_0x19dfcc
+Route44Sign2:
+	jumptext Route44Sign2Text
 
 FruitTreeScript_0x19da40:
 	fruittree FRUITTREE_ROUTE_44
@@ -319,7 +319,7 @@ Route44MaxRepel:
 
 Route44HiddenElixer:
 	dwb EVENT_ROUTE_44_HIDDEN_ELIXER, ELIXER
-	
+
 
 FisherWilton1SeenText:
 	text "Aack! You made me"
@@ -495,12 +495,12 @@ UnknownText_0x19df4d:
 	cont "today--an elite."
 	done
 
-UnknownText_0x19dfb3:
+Route44Sign1Text:
 	text "ROUTE 44"
 	line "ICE PATH AHEAD"
 	done
 
-UnknownText_0x19dfcc:
+Route44Sign2Text:
 	text "ROUTE 44"
 
 	para "MAHOGANY TOWN -"
@@ -520,8 +520,8 @@ Route44_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 7, 53, SIGNPOST_READ, MapRoute44Signpost0Script
-	signpost 10, 6, SIGNPOST_READ, MapRoute44Signpost1Script
+	signpost 7, 53, SIGNPOST_READ, Route44Sign1
+	signpost 10, 6, SIGNPOST_READ, Route44Sign2
 	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
 
 .PersonEvents:

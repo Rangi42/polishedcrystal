@@ -88,16 +88,16 @@ UnknownScript_0x19d0cf:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight3
+.Fight3:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight3
-.Fight2
+.Fight2:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer POKEMANIAC, BRENT1
 	startbattle
 	reloadmapafterbattle
@@ -105,7 +105,7 @@ UnknownScript_0x19d0cf:
 	clearflag ENGINE_BRENT
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer POKEMANIAC, BRENT2
 	startbattle
 	reloadmapafterbattle
@@ -113,7 +113,7 @@ UnknownScript_0x19d0cf:
 	clearflag ENGINE_BRENT
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer POKEMANIAC, BRENT3
 	startbattle
 	reloadmapafterbattle
@@ -121,7 +121,7 @@ UnknownScript_0x19d0cf:
 	clearflag ENGINE_BRENT
 	end
 
-.LoadFight3
+.LoadFight3:
 	loadtrainer POKEMANIAC, BRENT4
 	startbattle
 	reloadmapafterbattle
@@ -219,16 +219,16 @@ UnknownScript_0x19d1c1:
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
 	if_equal 0, .LoadFight0
-.Fight3
+.Fight3:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight3
-.Fight2
+.Fight2:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight2
-.Fight1
+.Fight1:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight1
-.LoadFight0
+.LoadFight0:
 	loadtrainer PICNICKER, TIFFANY3
 	startbattle
 	reloadmapafterbattle
@@ -236,7 +236,7 @@ UnknownScript_0x19d1c1:
 	clearflag ENGINE_TIFFANY
 	end
 
-.LoadFight1
+.LoadFight1:
 	loadtrainer PICNICKER, TIFFANY1
 	startbattle
 	reloadmapafterbattle
@@ -244,7 +244,7 @@ UnknownScript_0x19d1c1:
 	clearflag ENGINE_TIFFANY
 	end
 
-.LoadFight2
+.LoadFight2:
 	loadtrainer PICNICKER, TIFFANY2
 	startbattle
 	reloadmapafterbattle
@@ -252,7 +252,7 @@ UnknownScript_0x19d1c1:
 	clearflag ENGINE_TIFFANY
 	end
 
-.LoadFight3
+.LoadFight3:
 	loadtrainer PICNICKER, TIFFANY4
 	startbattle
 	reloadmapafterbattle
@@ -312,14 +312,14 @@ UnknownScript_0x19d259:
 	jumpstd packfullf
 	end
 
-MapRoute43Signpost0Script:
-	jumptext UnknownText_0x19d67b
+Route43Sign1:
+	jumptext Route43Sign1Text
 
-MapRoute43Signpost1Script:
-	jumptext UnknownText_0x19d6a2
+Route43Sign2:
+	jumptext Route43Sign2Text
 
-MapRoute43Signpost2Script:
-	jumptext UnknownText_0x19d6c9
+Route43TrainerTips:
+	jumptext Route43TrainerTipsText
 
 FruitTreeScript_0x19d266:
 	fruittree FRUITTREE_ROUTE_43
@@ -467,21 +467,21 @@ UnknownText_0x19d64b:
 	cont "adorable thing?"
 	done
 
-UnknownText_0x19d67b:
+Route43Sign1Text:
 	text "ROUTE 43"
 
 	para "LAKE OF RAGE -"
 	line "MAHOGANY TOWN"
 	done
 
-UnknownText_0x19d6a2:
+Route43Sign2Text:
 	text "ROUTE 43"
 
 	para "LAKE OF RAGE -"
 	line "MAHOGANY TOWN"
 	done
 
-UnknownText_0x19d6c9:
+Route43TrainerTipsText:
 	text "TRAINER TIPS"
 
 	para "All #MON have"
@@ -520,9 +520,9 @@ Route43_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 3, 13, SIGNPOST_READ, MapRoute43Signpost0Script
-	signpost 49, 11, SIGNPOST_READ, MapRoute43Signpost1Script
-	signpost 38, 16, SIGNPOST_READ, MapRoute43Signpost2Script
+	signpost 3, 13, SIGNPOST_READ, Route43Sign1
+	signpost 49, 11, SIGNPOST_READ, Route43Sign2
+	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
 
 .PersonEvents:
 	db 8

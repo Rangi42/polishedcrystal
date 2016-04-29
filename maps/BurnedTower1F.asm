@@ -1,6 +1,6 @@
 const_value set 2
 	const BURNEDTOWER1F_ROCK
-	const BURNEDTOWER1F_SUPER_NERD
+	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_SILVER
 	const BURNEDTOWER1F_MORTY
 	const BURNEDTOWER1F_POKE_BALL
@@ -35,22 +35,22 @@ BurnedTower1F_MapScriptHeader:
 	checkevent EVENT_HOLE_IN_BURNED_TOWER
 	iftrue .Next
 	changeblock $a, $8, $32 ; hole
-.Next
+.Next:
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue .Done
 	changeblock $6, $e, $9 ; ladder
-.Done
+.Done:
 	return
 
 .EusineTrigger:
-	spriteface BURNEDTOWER1F_SUPER_NERD, DOWN
-	showemote EMOTE_SHOCK, BURNEDTOWER1F_SUPER_NERD, 15
-	applymovement BURNEDTOWER1F_SUPER_NERD, BurnedTower1FEusineMovement
+	spriteface BURNEDTOWER1F_EUSINE, DOWN
+	showemote EMOTE_SHOCK, BURNEDTOWER1F_EUSINE, 15
+	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
 	opentext
 	writetext BurnedTower1FEusineIntroText
 	waitbutton
 	closetext
-	moveperson BURNEDTOWER1F_SUPER_NERD, $9, $e
+	moveperson BURNEDTOWER1F_EUSINE, $9, $e
 	dotrigger $1
 	end
 
@@ -79,7 +79,7 @@ BurnedTowerRivalBattleScript:
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.totodile:
+.totodile
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	setlasttalked BURNEDTOWER1F_SILVER
 	loadtrainer RIVAL1, RIVAL1_7
@@ -88,7 +88,7 @@ BurnedTowerRivalBattleScript:
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.chikorita:
+.chikorita
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	setlasttalked BURNEDTOWER1F_SILVER
 	loadtrainer RIVAL1, RIVAL1_8
@@ -97,7 +97,7 @@ BurnedTowerRivalBattleScript:
 	reloadmapafterbattle
 	jump .returnfrombattle
 
-.returnfrombattle:
+.returnfrombattle
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext BurnedTowerSilver_AfterText1
@@ -137,11 +137,11 @@ BurnedTower1FRock:
 
 BurnedTower1FHiddenEther:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ETHER, ETHER
-	
+
 
 BurnedTower1FHiddenUltraBall:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
-	
+
 
 BurnedTower1FHPUp:
 	itemball HP_UP

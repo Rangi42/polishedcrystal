@@ -1,6 +1,3 @@
-SWARM_DUNSPARCE EQU 0
-SWARM_YANMA     EQU 1
-
 UnusedPhoneScript: ; 0xbcea5
 	farwritetext UnusedPhoneText
 	end
@@ -832,7 +829,7 @@ Ralph_SetUpSwarm:
 	setflag ENGINE_SPECIAL_WILDDATA
 	pokenamemem QWILFISH, $1
 	landmarktotext ROUTE_32, $2
-	writebyte $1
+	writebyte FISHSWARM_QWILFISH
 	special Special_ActivateFishingSwarm
 	farjump UnknownScript_0xa05d6
 
@@ -3140,7 +3137,7 @@ PhoneScript_MonFlavorText:
 .TooEnergetic:
 	farjump .unnecessary
 
-.unnecessary:
+.unnecessary
 	farwritetext UnknownText_0x1b522b
 	buttonsound
 	farjump PhoneScript_HangupText_Male

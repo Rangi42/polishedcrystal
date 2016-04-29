@@ -2409,7 +2409,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	predef GetFrontpic
 	ret
 
-.QuestionMark
+.QuestionMark:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	callba LoadQuestionMarkPic
@@ -2483,12 +2483,12 @@ Pokedex_LoadGFX: ; 414b7
 	callba LoadSGBPokedexGFX
 	jr .LoadPokedexSlowpokeLZ
 
-.LoadPokedexLZ
+.LoadPokedexLZ:
 	ld hl, PokedexLZ
 	ld de, VTiles2 tile $31
 	call Decompress
 
-.LoadPokedexSlowpokeLZ
+.LoadPokedexSlowpokeLZ:
 	ld hl, PokedexSlowpokeLZ
 	ld de, VTiles0
 	call Decompress
@@ -2616,7 +2616,7 @@ Pokedex_SetBGMapMode_3ifDMG_4ifCGB: ; 41aeb (10:5aeb)
 	and a
 	jr z, .DMG
 	call Pokedex_SetBGMapMode4
-.DMG
+.DMG:
 	call Pokedex_SetBGMapMode3
 	ret
 

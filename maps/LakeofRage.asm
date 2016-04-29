@@ -8,7 +8,7 @@ const_value set 2
 	const LAKEOFRAGE_COOLTRAINER_M
 	const LAKEOFRAGE_COOLTRAINER_F2
 	const LAKEOFRAGE_GYARADOS
-	const LAKEOFRAGE_SUPER_NERD2
+	const LAKEOFRAGE_WESLEY
 	const LAKEOFRAGE_POKE_BALL1
 	const LAKEOFRAGE_POKE_BALL2
 
@@ -28,24 +28,24 @@ LakeofRage_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Wesley
 
-.Trigger0
+.Trigger0:
 	end
 
-.Trigger1
+.Trigger1:
 	end
 
-.FlyPoint
+.FlyPoint:
 	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
 	return
 
-.Wesley
+.Wesley:
 	checkcode VAR_WEEKDAY
 	if_equal WEDNESDAY, .WesleyAppears
-	disappear LAKEOFRAGE_SUPER_NERD2
+	disappear LAKEOFRAGE_WESLEY
 	return
 
-.WesleyAppears
-	appear LAKEOFRAGE_SUPER_NERD2
+.WesleyAppears:
+	appear LAKEOFRAGE_WESLEY
 	return
 
 LanceScript_0x70022:
@@ -206,7 +206,7 @@ WesleyScript:
 	writetext MeetWesleyText
 	buttonsound
 	setevent EVENT_MET_WESLEY_OF_WEDNESDAY
-.MetWesley
+.MetWesley:
 	writetext WesleyGivesGiftText
 	buttonsound
 	verbosegiveitem BLACKBELT
@@ -238,15 +238,15 @@ LakeofRageTMDetect:
 
 LakeofRageHiddenFullRestore:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE, FULL_RESTORE
-	
+
 
 LakeofRageHiddenRareCandy:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY, RARE_CANDY
-	
+
 
 LakeofRageHiddenMaxPotion:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION, MAX_POTION
-	
+
 
 MovementData_0x70155:
 	teleport_from

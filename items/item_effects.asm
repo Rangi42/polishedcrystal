@@ -339,6 +339,7 @@ endr
 	and 1 << FRZ | SLP
 	ld c, 10
 	jr nz, .addstatus
+	; ld a, [EnemyMonStatus]
 	and a
 	ld c, 5
 	jr nz, .addstatus
@@ -489,7 +490,7 @@ endr
 	ld de, EnemyMonPP
 	ld bc, NUM_MOVES
 	call CopyBytes
-.Transformed
+.Transformed:
 
 	ld a, [EnemyMonSpecies]
 	ld [wWildMon], a
@@ -565,7 +566,7 @@ endr
 
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [hl], a
-.SkipPartyMonFriendBall
+.SkipPartyMonFriendBall:
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
@@ -602,7 +603,7 @@ endr
 
 	jp .return_from_capture
 
-.SendToPC
+.SendToPC:
 	call ClearSprites
 
 	predef SentPkmnIntoBox
@@ -617,14 +618,14 @@ endr
 	jr nz, .BoxNotFullYet
 	ld hl, wBattleResult
 	set 7, [hl]
-.BoxNotFullYet
+.BoxNotFullYet:
 	ld a, [CurItem]
 	cp FRIEND_BALL
 	jr nz, .SkipBoxMonFriendBall
 	; Bug: overwrites the happiness of the first mon in the box!
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [sBoxMon1Happiness], a
-.SkipBoxMonFriendBall
+.SkipBoxMonFriendBall:
 	call CloseSRAM
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
@@ -659,7 +660,7 @@ endr
 
 	call CloseSRAM
 
-.SkipBoxMonNickname
+.SkipBoxMonNickname:
 	ld a, BANK(sBoxMonNicknames)
 	call GetSRAMBank
 
@@ -681,7 +682,7 @@ endr
 	callba BugContest_SetCaughtContestMon
 	jr .return_from_capture
 
-.FinishTutorial
+.FinishTutorial:
 	ld hl, Text_GotchaMonWasCaught
 
 .shake_and_break_free
@@ -767,7 +768,7 @@ GetPokedexEntryBank:
 	pop hl
 	ret
 
-.PokedexEntryBanks
+.PokedexEntryBanks:
 
 GLOBAL PokedexEntries1
 GLOBAL PokedexEntries2
@@ -796,7 +797,7 @@ endr
 	ld a, BANK(PokedexDataPointerTable)
 	call GetFarHalfword
 
-.SkipText
+.SkipText:
 	call GetPokedexEntryBank
 	call GetFarByte
 	inc hl
@@ -875,7 +876,7 @@ endr
 	ld b, $1
 	ret
 
-.WeightsTable
+.WeightsTable:
 ; weight factor, boost
 	db 2048 >> 8, 0
 	db 3072 >> 8, 20
@@ -1191,10 +1192,10 @@ SunStone: ; ee0f
 
 	jp UseDisposableItem
 
-.NoEffect
+.NoEffect:
 	call WontHaveAnyEffectMessage
 
-.DecidedNotToUse
+.DecidedNotToUse:
 	xor a
 	ld [wItemEffectSucceeded], a
 	ret
@@ -1570,7 +1571,7 @@ GetItemHealingAction: ; f058 (3:7058)
 	ret
 ; f071 (3:7071)
 
-.healingactions: ; f071
+.healingactions ; f071
 ; item, party menu action text, status
 	db ANTIDOTE,     PARTYMENUTEXT_HEAL_PSN, 1 << PSN
 	db BURN_HEAL,    PARTYMENUTEXT_HEAL_BRN, 1 << BRN
@@ -1594,7 +1595,7 @@ StatusHealer_Jumptable: ; f09e (3:709e)
 	rst JumpTable
 	ret
 
-.dw: ; f0a3 (3:70a3)
+.dw ; f0a3 (3:70a3)
 	dw StatusHealer_ClearPalettes
 	dw StatusHealer_NoEffect
 	dw StatusHealer_ExitMenu
@@ -1691,7 +1692,7 @@ FullRestore: ; f128
 
 	jp FullyHealStatus
 
-.NotAtFullHealth
+.NotAtFullHealth:
 	call .FullRestore
 	jp StatusHealer_Jumptable
 ; f144
@@ -2106,7 +2107,7 @@ rept 2
 endr
 	jr .next
 
-.NotFound
+.NotFound:
 	scf
 .done
 	ld e, [hl]
@@ -2334,7 +2335,7 @@ endr
 	ret
 ; f504
 
-.x_item_table: ; f504
+.x_item_table ; f504
 	db X_ATTACK,  ATTACK
 	db X_DEFEND,  DEFENSE
 	db X_SPEED,   SPEED
@@ -2387,7 +2388,7 @@ PokeFlute: ; f50c
 	jp PrintText
 
 
-.CureSleep
+.CureSleep:
 	ld de, PARTYMON_STRUCT_LENGTH
 	ld c, PARTY_LENGTH
 
@@ -2555,7 +2556,7 @@ Mysteryberry: ; f5bf
 	cp 3 << 6 ; have 3 PP Ups already been used?
 	jr c, .do_ppup
 
-.CantUsePPUpOnSketch
+.CantUsePPUpOnSketch:
 .pp_is_maxed_out
 	ld hl, TextJump_PPIsMaxedOut
 	call PrintText
@@ -2598,7 +2599,7 @@ BattleRestorePP: ; f652
 	call PrintText
 	jr FinishPPRestore
 
-.UpdateBattleMonPP
+.UpdateBattleMonPP:
 	ld a, [CurPartyMon]
 	ld hl, PartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -2802,7 +2803,7 @@ OpenBox: ; f769
 	jp UseDisposableItem
 ; f778
 
-.text: ; 0xf778
+.text ; 0xf778
 	; There was a trophy inside!
 	text_jump UnknownText_0x1c5d03
 	db "@"
@@ -3158,7 +3159,7 @@ ComputeMaxPP: ; f881
 	dec c
 	jr nz, .loop
 
-.NoPPUp
+.NoPPUp:
 	ld [hl], b
 	pop bc
 	ret
@@ -3291,3 +3292,5 @@ GetMthMoveOfCurrentMon: ; f969
 	add hl, bc
 	ret
 ; f971
+
+INCLUDE "items/pokeball_wobble.asm"

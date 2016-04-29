@@ -6,7 +6,7 @@ const_value set 2
 	const BLACKTHORNCITY_BLACK_BELT
 	const BLACKTHORNCITY_COOLTRAINER_F1
 	const BLACKTHORNCITY_YOUNGSTER1
-	const BLACKTHORNCITY_YOUNGSTER2
+	const BLACKTHORNCITY_SANTOS
 	const BLACKTHORNCITY_COOLTRAINER_F2
 
 BlackthornCity_MapScriptHeader:
@@ -20,18 +20,18 @@ BlackthornCity_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Santos
 
-.FlyPoint
+.FlyPoint:
 	setflag ENGINE_FLYPOINT_BLACKTHORN
 	return
 
-.Santos
+.Santos:
 	checkcode VAR_WEEKDAY
 	if_equal SATURDAY, .SantosAppears
-	disappear BLACKTHORNCITY_YOUNGSTER2
+	disappear BLACKTHORNCITY_SANTOS
 	return
 
-.SantosAppears
-	appear BLACKTHORNCITY_YOUNGSTER2
+.SantosAppears:
+	appear BLACKTHORNCITY_SANTOS
 	return
 
 BlackthornSuperNerdScript:
@@ -101,7 +101,7 @@ SantosScript:
 	writetext MeetSantosText
 	buttonsound
 	setevent EVENT_MET_SANTOS_OF_SATURDAY
-.MetSantos
+.MetSantos:
 	writetext SantosGivesGiftText
 	buttonsound
 	verbosegiveitem SPELL_TAG
@@ -112,14 +112,14 @@ SantosScript:
 	closetext
 	end
 
-.Saturday
+.Saturday:
 	writetext SantosSaturdayText
 	waitbutton
-.Done
+.Done:
 	closetext
 	end
 
-.NotSaturday
+.NotSaturday:
 	writetext SantosNotSaturdayText
 	waitbutton
 	closetext
@@ -322,7 +322,7 @@ BlackthornCity_MapEventHeader:
 	db 8
 	warp_def $b, $12, 1, BLACKTHORN_GYM_1F
 	warp_def $15, $d, 1, BLACKTHORN_DRAGON_SPEECH_HOUSE
-	warp_def $17, $1d, 1, BLACKTHORN_DODRIO_TRADE_HOUSE
+	warp_def $17, $1d, 1, BLACKTHORN_EMYS_HOUSE
 	warp_def $1d, $f, 2, BLACKTHORN_MART
 	warp_def $1d, $15, 1, BLACKTHORN_POKECENTER_1F
 	warp_def $1f, $9, 1, MOVE_DELETERS_HOUSE
