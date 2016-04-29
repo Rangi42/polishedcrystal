@@ -16,6 +16,8 @@ Planned changes include:
 * Physical/Special split from Gen IV
 * 255 Pokémon selected from all generations
 * More moves and items
+* Fix "buggy" glitches
+* New storyline set 5 years after Gen II
 
 
 ## See also
