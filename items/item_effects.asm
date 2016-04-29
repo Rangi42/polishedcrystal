@@ -1009,11 +1009,8 @@ LoveBallMultiplier:
 	ret
 
 FastBallMultiplier:
-; This function is buggy.
-; Intent:  multiply catch rate by 4 if enemy mon is in one of the three
-;          FleeMons tables.
-; Reality: multiply catch rate by 4 if enemy mon is one of the first three in
-;          the first FleeMons table.
+; multiply catch rate by 4 if enemy mon is in one of the three
+; FleeMons tables.
 	ld a, [TempEnemyMonSpecies]
 	ld c, a
 	ld hl, FleeMons
@@ -1027,7 +1024,7 @@ FastBallMultiplier:
 	cp -1
 	jr z, .next
 	cp c
-	jr nz, .next ; for the intended effect, this should be “jr nz, .loop”
+	jr nz, .loop
 	sla b
 	jr c, .max
 
