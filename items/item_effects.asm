@@ -2702,7 +2702,7 @@ RestorePP: ; f6e8
 	cp MAX_ETHER
 	jr z, .restore_all
 
-	ld c, 5
+	ld c, 10
 	cp MYSTERYBERRY
 	jr z, .restore_some
 
