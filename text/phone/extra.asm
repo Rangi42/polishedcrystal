@@ -1217,7 +1217,7 @@ UnknownText_0x662bc: ; 0x662bc
 	line "Bill's father is"
 
 	para "supposed to be a"
-	line "great #maniac."
+	line "great #Maniac."
 	done
 ; 0x662fc
 
@@ -1226,7 +1226,7 @@ UnknownText_0x662fc: ; 0x662fc
 	line "Apparently Bill's"
 
 	para "grandpa isn't a"
-	line "#maniac."
+	line "#Maniac."
 	done
 ; 0x66335
 

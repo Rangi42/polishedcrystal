@@ -27,7 +27,7 @@
 	db "Ace Trainer@"
 	db "Ace Trainer@"
 	db "Beauty@"
-	db "#maniac@"
+	db "#Maniac@"
 	db "Rocket@"
 	db "Gentleman@"
 	db "Skier@"
