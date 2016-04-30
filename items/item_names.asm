@@ -101,7 +101,7 @@
 	db "Pnk Apricorn@"
 	db "BlackGlasses@"
 	db "SlowpokeTail@"
-	db "Pink Bow@"
+	db "Silk Scarf@"
 	db "Stick@"
 	db "Smoke Ball@"
 	db "NeverMeltIce@"
