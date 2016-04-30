@@ -5986,7 +5986,7 @@ MoveInfoBox: ; 3e6c8
 .Disabled:
 	db "Disabled!@"
 .Type:
-	db "TYPE/@"
+	db "Type/@"
 ; 3e75f
 
 
