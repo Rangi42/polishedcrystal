@@ -788,5 +788,5 @@ DayCare_InitBreeding: ; 16a3b
 ; 16be0
 
 .String_EGG: ; 16be0
-	db "EGG@"
+	db "Egg@"
 ; 16be4

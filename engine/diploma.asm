@@ -39,7 +39,7 @@ Function1dd709: ; 1dd709
 ; 1dd760
 
 String_1dd760:
-	db "PLAYER@"
+	db "Player@"
 
 String_1dd767:
 	db "@"
@@ -80,8 +80,8 @@ Function1dd7ae: ; 1dd7ae
 	ret
 ; 1dd7f0
 
-String_1dd7f0: db "PLAY TIME@"
-String_1dd7fa: db "GAME FREAK@"
+String_1dd7f0: db "Play Time@"
+String_1dd7fa: db "Game Freak@"
 ; 1dd805
 
 LZ_1dd805: ; 1dd805

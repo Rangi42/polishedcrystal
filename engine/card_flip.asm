@@ -538,7 +538,7 @@ CardFlip_PrintCoinBalance: ; e049c
 ; e04bc
 
 .CoinStr:
-	db "COIN@"
+	db "Coin@"
 ; e04c1
 
 CardFlip_InitTilemap: ; e04c1 (38:44c1)

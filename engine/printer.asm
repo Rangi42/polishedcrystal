@@ -1234,7 +1234,7 @@ Function84817: ; 84817 (21:4817)
 ; 84865 (21:4865)
 
 .String_PokemonList:
-	db "#MON LIST@"
+	db "#MON List@"
 ; 8486f
 
 Function8486f: ; 8486f (21:486f)

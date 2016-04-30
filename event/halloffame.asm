@@ -617,6 +617,6 @@ HOF_AnimatePlayerPic: ; 86810
 ; 868ed
 
 .PlayTime:
-	db "PLAY TIME@"
+	db "Play Time@"
 ; 868f7
 

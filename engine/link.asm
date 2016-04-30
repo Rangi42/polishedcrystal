@@ -541,7 +541,7 @@ Function283f2: ; 283f2
 ; 28419
 
 String_PleaseWait: ; 28419
-	db "PLEASE WAIT!@"
+	db "Please wait!@"
 ; 28426
 
 ClearLinkData: ; 28426
@@ -1536,7 +1536,7 @@ Function28926: ; 28926
 ; 0x28ab4
 
 .String_Stats_Trade: ; 28ab4
-	db "STATS     TRADE@"
+	db "Stats     Trade@"
 
 .Text_Abnormal: ; 0x28ac4
 	; Your friend's @  appears to be abnormal!
@@ -1626,7 +1626,7 @@ Function28b42: ; 28b42
 ; 28b61
 
 .Cancel: ; 28b61
-	db "CANCEL@"
+	db "Cancel@"
 ; 28b68
 
 Function28b68: ; 28b68
@@ -1998,8 +1998,8 @@ Function28ea3: ; 28ea3
 ; 28eab
 
 String28eab: ; 28eab
-	db   "TRADE"
-	next "CANCEL@"
+	db   "Trade"
+	next "Cancel@"
 
 UnknownText_0x28eb8: ; 0x28eb8
 	; Trade @ for @ ?

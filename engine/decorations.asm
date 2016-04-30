@@ -62,14 +62,14 @@ _KrisDecorationMenu: ; 0x2675c
 	dw DecoBigDollMenu, .big_doll
 	dw DecoExitMenu, .exit
 
-.bed      db "BED@"
-.carpet   db "CARPET@"
-.plant    db "PLANT@"
-.poster   db "POSTER@"
-.game     db "GAME CONSOLE@"
-.ornament db "ORNAMENT@"
-.big_doll db "BIG DOLL@"
-.exit     db "EXIT@"
+.bed      db "Bed@"
+.carpet   db "Carpet@"
+.plant    db "Plant@"
+.poster   db "Poster@"
+.game     db "Game Console@"
+.ornament db "Ornament@"
+.big_doll db "Big Doll@"
+.exit     db "Exit@"
 ; 26806
 
 .FindCategoriesWithOwnedDecos: ; 26806
@@ -606,32 +606,32 @@ DecorationAttributes: ; 26a4f
 
 
 DecorationNames: ; 26b8d
-	db "CANCEL@"
-	db "PUT IT AWAY@"
-	db "MAGNAPLANT@"
-	db "TROPICPLANT@"
-	db "JUMBOPLANT@"
-	db "TOWN MAP@"
+	db "Cancel@"
+	db "Put it away@"
+	db "Magna Plant@"
+	db "Tropic Plant@"
+	db "Jumbo Plant@"
+	db "Town Map@"
 	db "NES@"
-	db "SUPER NES@"
-	db "NINTENDO 64@"
-	db "VIRTUAL BOY@"
-	db "GOLD TROPHY@"
-	db "SILVER TROPHY@"
-	db "SURF PIKACHU DOLL@"
-	db " BED@"
-	db " CARPET@"
-	db " POSTER@"
-	db " DOLL@"
-	db "BIG @"
-	db "FEATHERY@"
-	db "PIKACHU@"
-	db "PINK@"
-	db "POLKADOT@"
-	db "RED@"
-	db "BLUE@"
-	db "YELLOW@"
-	db "GREEN@"
+	db "Super NES@"
+	db "Nintendo 64@"
+	db "Virtual Boy@"
+	db "Gold Trophy@"
+	db "Silver Trophy@"
+	db "Surf Pikachu Doll@"
+	db " Bed@"
+	db " Carpet@"
+	db " Poster@"
+	db " Doll@"
+	db "Big @"
+	db "Feathery@"
+	db "Pikachu@"
+	db "Pink@"
+	db "PolkaDot@"
+	db "Red@"
+	db "Blue@"
+	db "Yellow@"
+	db "Green@"
 ; 26c72
 
 GetDecoName: ; 26c72
@@ -1050,9 +1050,9 @@ MenuDataHeader_0x26eab: ; 0x26eab
 MenuData2_0x26eb3: ; 0x26eb3
 	db $80 ; flags
 	db 3 ; items
-	db "RIGHT SIDE@"
-	db "LEFT SIDE@"
-	db "CANCEL@"
+	db "Right side@"
+	db "Left side@"
+	db "Cancel@"
 ; 0x26ed1
 
 DecoText_PutAwayTheDeco: ; 0x26ed1

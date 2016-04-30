@@ -278,7 +278,7 @@ SpecialNameRival: ; 0xc29d
 ; 0xc2b2
 
 DefaultRivalName: ; 0xc2b2
-	db "SILVER@"
+	db "Silver@"
 
 SpecialNameRater: ; c2b9
 	callba NameRater

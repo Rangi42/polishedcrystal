@@ -668,8 +668,8 @@ endr
 ; 4e119 (13:6119)
 
 .Status_Type: ; 4e119
-	db   "STATUS/"
-	next "TYPE/@"
+	db   "Status/"
+	next "Type/@"
 ; 4e127
 
 .OK_str: ; 4e127
@@ -677,15 +677,15 @@ endr
 ; 4e12b
 
 .ExpPointStr: ; 4e12b
-	db "EXP POINTS@"
+	db "Exp Points@"
 ; 4e136
 
 .LevelUpStr: ; 4e136
-	db "LEVEL UP@"
+	db "Level Up@"
 ; 4e13f
 
 .ToStr: ; 4e13f
-	db "TO@"
+	db "to@"
 ; 4e142
 
 .PkrsStr: ; 4e142
@@ -730,7 +730,7 @@ endr
 ; 4e1a0 (13:61a0)
 
 .Item: ; 4e1a0
-	db "ITEM@"
+	db "Item@"
 ; 4e1a5
 
 .ThreeDashes: ; 4e1a5
@@ -738,7 +738,7 @@ endr
 ; 4e1a9
 
 .Move: ; 4e1a9
-	db "MOVE@"
+	db "Move@"
 ; 4e1ae
 
 .BluePage: ; 4e1ae (13:61ae)
@@ -1028,7 +1028,7 @@ EggStatsScreen: ; 4e33a
 ; 0x4e3c0
 
 EggString: ; 4e3c0
-	db "EGG@"
+	db "Egg@"
 
 FiveQMarkString: ; 4e3c4
 	db "?????@"
@@ -1050,7 +1050,7 @@ EggMoreTimeString: ; 0x4e43d
 	next "more time, though.@"
 
 EggALotMoreTimeString: ; 0x4e46e
-	db   "This EGG needs a"
+	db   "This Egg needs a"
 	next "lot more time to"
 	next "hatch.@"
 ; 0x4e497

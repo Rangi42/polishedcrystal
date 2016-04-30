@@ -850,9 +850,9 @@ Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	ret
 
 MoneyString: ; 24b83
-	db "MONEY@"
+	db "Money@"
 CoinString: ; 24b89
-	db "COIN@"
+	db "Coin@"
 ShowMoney_TerminatorString: ; 24b8e
 	db "@"
 
@@ -943,13 +943,13 @@ StartMenu_PrintBugContestStatus: ; 24be7
 .Balls_JP: ; 24c43
 	db "ボール   こ@"
 .CAUGHT: ; 24c4b
-	db "CAUGHT@"
+	db "Caught@"
 .Balls_EN: ; 24c52
-	db "BALLS:@"
+	db "Balls:@"
 .None: ; 24c59
 	db "None@"
 .LEVEL: ; 24c5e
-	db "LEVEL@"
+	db "Level@"
 
 FindApricornsInBag: ; 24c64
 ; Checks the bag for Apricorns.
@@ -2875,8 +2875,8 @@ _ResetClock: ; 4d3b1
 .NoYes_MenuData2: ; 0x4d415
 	db $c0 ; flags
 	db 2 ; items
-	db "NO@"
-	db "YES@"
+	db "No@"
+	db "Yes@"
 
 ClockResetPassword: ; 4d41e
 	call .CalculatePassword
@@ -3944,7 +3944,7 @@ CatchTutorial:: ; 4e554
 	ret
 
 .Dude: ; 4e5da
-	db "DUDE@"
+	db "Dude@"
 
 .AutoInput: ; 4e5df
 	db NO_INPUT, $ff ; end
@@ -4549,11 +4549,11 @@ PrintTempMonStats: ; 50b7b
 	ret
 
 .StatNames: ; 50bb5
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPCL.ATK"
-	next "SPCL.DEF"
-	next "SPEED"
+	db   "Attack"
+	next "Defense"
+	next "Spcl.Atk"
+	next "Spcl.Def"
+	next "Speed"
 	next "@"
 
 GetGender: ; 50bdd
@@ -4818,7 +4818,7 @@ PlaceStatusString: ; 50d0a
 	ret
 
 FntString: ; 50d22
-	db "FNT@"
+	db "Fnt@"
 
 CopyStatusString: ; 50d25
 	ld a, [de]
@@ -4859,11 +4859,11 @@ PlaceNonFaintStatus: ; 50d2e
 	pop de
 	ret
 
-SlpString: db "SLP@"
-PsnString: db "PSN@"
-BrnString: db "BRN@"
-FrzString: db "FRZ@"
-ParString: db "PAR@"
+SlpString: db "Slp@"
+PsnString: db "Psn@"
+BrnString: db "Brn@"
+FrzString: db "Frz@"
+ParString: db "Par@"
 
 ListMoves: ; 50d6f
 ; List moves at hl, spaced every [Buffer1] tiles.
@@ -5574,14 +5574,14 @@ ChrisNameMenuHeader: ; 882b5
 .MaleNames: ; 882be
 	db $91 ; flags
 	db 5 ; items
-	db "NEW NAME@"
+	db "New Name@"
 MalePlayerNameArray: ; 882c9
-	db "CHRIS@"
-	db "MAT@"
-	db "ALLAN@"
-	db "JON@"
+	db "Chris@"
+	db "Mat@"
+	db "Allan@"
+	db "Jon@"
 	db 2 ; displacement
-	db " NAME @" ; title
+	db " Name @" ; title
 
 KrisNameMenuHeader: ; 882e5
 	db $40 ; flags
@@ -5594,14 +5594,14 @@ KrisNameMenuHeader: ; 882e5
 .FemaleNames: ; 882ee
 	db $91 ; flags
 	db 5 ; items
-	db "NEW NAME@"
+	db "New Name@"
 FemalePlayerNameArray: ; 882f9
-	db "KRIS@"
-	db "AMANDA@"
-	db "JUANA@"
-	db "JODI@"
+	db "Kris@"
+	db "Amanda@"
+	db "Juana@"
+	db "Jodi@"
 	db 2 ; displacement
-	db " NAME @" ; title
+	db " Name @" ; title
 
 GetPlayerNameArray: ; 88318 This Function is never called
 	ld hl, PlayerName
@@ -6027,11 +6027,11 @@ DisplayCaughtContestMonStats: ; cc000
 	ret
 
 .Health:
-	db "HEALTH@"
+	db "Health@"
 .Stock:
-	db " STOCK ", $4a, " @"
+	db " Stock ", $4a, " @"
 .This:
-	db " THIS ", $4a, "  @"
+	db " This ", $4a, "  @"
 
 SwitchMonText: ; cc0c2
 	; Switch #MON?

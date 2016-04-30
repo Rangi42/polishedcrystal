@@ -252,9 +252,9 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 ; 252ec (9:52ec)
 
 .Name_Money: ; 252ec
-	db   "NAME/"
+	db   "Name/"
 	next ""
-	next "MONEY@"
+	next "Money@"
 
 .ID_No: ; 252f9
 	db $27, $28, $ff ; ID NO
@@ -291,10 +291,10 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 
 .Dex_PlayTime:
 	db   "#DEX"
-	next "PLAY TIME@@"
+	next "Play Time@@"
 
 .Badges:
-	db "  BADGES▶@"
+	db "  Badges@"
 
 .StatusTilemap: ; 25366
 	db $29, $2a, $2b, $2c, $2d, $ff

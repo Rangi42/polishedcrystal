@@ -49,10 +49,10 @@ MenuData_0x24f34: ; 0x24f34
 ; 0x24f3d
 
 Strings24f3d: ; 0x24f3d
-	db "FIGHT@"
+	db "Fight@"
 	db "<PKMN>@"
-	db "PACK@"
-	db "RUN@"
+	db "Bag@"
+	db "Run@"
 ; 24f4e
 
 MenuDataHeader_0x24f4e: ; 24f4e
@@ -103,10 +103,10 @@ MenuData_0x24f91: ; 24f91
 ; 24f9a
 
 Strings24f9a: ; 24f9a
-	db "FIGHT@"
+	db "Fight@"
 	db "<PKMN>", "@"
-	db "PARKBALL×  @"
-	db "RUN@"
+	db "ParkBall×  @"
+	db "Run@"
 ; 24fb2
 
 Function24fb2: ; 24fb2

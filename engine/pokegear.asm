@@ -303,7 +303,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 ; 90e36 (24:4e36)
 
 .switch
-	db " SWITCH▶@"
+	db " Switch▶@"
 ; 90e3f
 
 .Map: ; 90e3f
@@ -1283,9 +1283,9 @@ PokegearPhoneContactSubmenu: ; 91342 (24:5342)
 .CallDeleteCancelStrings: ; 9143f
 	dwcoord 10, 6
 	db 3
-	db   "CALL"
-	next "DELETE"
-	next "CANCEL"
+	db   "Call"
+	next "Delete"
+	next "Cancel"
 	db   "@"
 ; 91455
 
@@ -1299,8 +1299,8 @@ PokegearPhoneContactSubmenu: ; 91342 (24:5342)
 .CallCancelStrings: ; 9145b
 	dwcoord 10, 8
 	db 2
-	db   "CALL"
-	next "CANCEL"
+	db   "Call"
+	next "Cancel"
 	db   "@"
 ; 9146a
 
@@ -1677,7 +1677,7 @@ LoadStation_BuenasPassword: ; 917a5 (24:57a5)
 
 ; 917c3 (24:57c3)
 
-BuenasPasswordName:    db "BUENA'S PASSWORD@"
+BuenasPasswordName:    db "Buena's Password@"
 NotBuenasPasswordName: db "@"
 
 LoadStation_UnownRadio: ; 917d5 (24:57d5)
@@ -1817,7 +1817,7 @@ NoRadioName: ; 918a9 (24:58a9)
 
 ; 918bf
 
-OaksPkmnTalkName:     db "OAK's <PK><MN> Talk@"
+OaksPkmnTalkName:     db "Oak's <PK><MN> Talk@"
 PokedexShowName:      db "#DEX Show@"
 PokemonMusicName:     db "#MON Music@"
 LuckyChannelName:     db "Lucky Channel@"
@@ -1825,7 +1825,7 @@ UnknownStationName:   db "?????@"
 
 PlacesAndPeopleName:  db "Places & People@"
 LetsAllSingName:      db "Let's All Sing!@"
-PokeFluteStationName: db "# FLUTE@"
+PokeFluteStationName: db "# Flute@"
 ; 9191c
 
 _TownMap: ; 9191c
@@ -2632,7 +2632,7 @@ _Area: ; 91d11
 ; 91e16
 
 .String_SNest:
-	db "'S NEST@"
+	db "'s Nest@"
 ; 91e1e
 
 .GetAndPlaceNest: ; 91e1e

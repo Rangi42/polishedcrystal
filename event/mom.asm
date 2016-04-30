@@ -718,19 +718,19 @@ UnknownText_0x16694: ; 0x16694
 ; 0x16699
 
 String_16699: ; 16699
-	db "SAVED@"
+	db "Saved@"
 ; 1669f
 
 String_1669f: ; 1669f
-	db "WITHDRAW@"
+	db "Withdraw@"
 ; 166a8
 
 String_166a8: ; 166a8
-	db "DEPOSIT@"
+	db "Deposit@"
 ; 166b0
 
 String_166b0: ; 166b0
-	db "HELD@"
+	db "Held@"
 ; 166b5
 
 MenuDataHeader_0x166b5: ; 0x166b5
@@ -744,8 +744,8 @@ MenuDataHeader_0x166b5: ; 0x166b5
 MenuData2_0x166bd: ; 0x166bd
 	db $80 ; flags
 	db 4 ; items
-	db "GET@"
-	db "SAVE@"
-	db "CHANGE@"
-	db "CANCEL@"
+	db "Get@"
+	db "Save@"
+	db "Change@"
+	db "Cancel@"
 ; 0x166d6

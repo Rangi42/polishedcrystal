@@ -92,7 +92,7 @@ GiveOddEgg: ; 1fb4b6
 ; 1fb546
 
 .Odd:
-	db "ODD@@@@@@@@@"
+	db "Odd@@@@@@@@@"
 
 .Probabilities:
 
@@ -153,7 +153,7 @@ OddEgg1:
 	bigdw 11 ; Spd
 	bigdw 8 ; SAtk
 	bigdw 8 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 OddEgg2:
 	db PICHU
@@ -180,7 +180,7 @@ OddEgg2:
 	bigdw 12 ; Spd
 	bigdw 9 ; SAtk
 	bigdw 9 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db CLEFFA
 	db NO_ITEM
@@ -206,7 +206,7 @@ OddEgg2:
 	bigdw 6 ; Spd
 	bigdw 9 ; SAtk
 	bigdw 10 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db CLEFFA
 	db NO_ITEM
@@ -232,7 +232,7 @@ OddEgg2:
 	bigdw 7 ; Spd
 	bigdw 10 ; SAtk
 	bigdw 11 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db IGGLYBUFF
 	db NO_ITEM
@@ -258,7 +258,7 @@ OddEgg2:
 	bigdw 6 ; Spd
 	bigdw 9 ; SAtk
 	bigdw 7 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db IGGLYBUFF
 	db NO_ITEM
@@ -284,7 +284,7 @@ OddEgg2:
 	bigdw 7 ; Spd
 	bigdw 10 ; SAtk
 	bigdw 8 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db SMOOCHUM
 	db NO_ITEM
@@ -310,7 +310,7 @@ OddEgg2:
 	bigdw 11 ; Spd
 	bigdw 13 ; SAtk
 	bigdw 11 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db SMOOCHUM
 	db NO_ITEM
@@ -336,7 +336,7 @@ OddEgg2:
 	bigdw 12 ; Spd
 	bigdw 14 ; SAtk
 	bigdw 12 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db MAGBY
 	db NO_ITEM
@@ -362,7 +362,7 @@ OddEgg2:
 	bigdw 13 ; Spd
 	bigdw 12 ; SAtk
 	bigdw 10 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db MAGBY
 	db NO_ITEM
@@ -388,7 +388,7 @@ OddEgg2:
 	bigdw 14 ; Spd
 	bigdw 13 ; SAtk
 	bigdw 11 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db ELEKID
 	db NO_ITEM
@@ -414,7 +414,7 @@ OddEgg2:
 	bigdw 14 ; Spd
 	bigdw 11 ; SAtk
 	bigdw 10 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db ELEKID
 	db NO_ITEM
@@ -440,7 +440,7 @@ OddEgg2:
 	bigdw 15 ; Spd
 	bigdw 12 ; SAtk
 	bigdw 11 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db TYROGUE
 	db NO_ITEM
@@ -466,7 +466,7 @@ OddEgg2:
 	bigdw 8 ; Spd
 	bigdw 8 ; SAtk
 	bigdw 8 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"
 
 	db TYROGUE
 	db NO_ITEM
@@ -492,4 +492,4 @@ OddEgg2:
 	bigdw 9 ; Spd
 	bigdw 9 ; SAtk
 	bigdw 9 ; SDef
-	db "EGG@@@@@@@@"
+	db "Egg@@@@@@@@"

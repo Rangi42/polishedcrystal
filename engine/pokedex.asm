@@ -1125,9 +1125,9 @@ Pokedex_DrawMainScreenBG: ; 4074c (10:474c)
 	ret
 
 String_SEEN: ; 407e1
-	db "SEEN", $ff
+	db "Seen", $ff
 String_OWN: ; 407e6
-	db "OWN", $ff
+	db "Own", $ff
 String_SELECT_OPTION: ; 407ea
 	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
 String_START_SEARCH: ; 407f2
@@ -1168,11 +1168,11 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 .Unused: ; 4084f
 	db $5c, $5d, $ff ; No.
 .Height: ; 40852
-	db "HT  ?", $5e, "??", $5f, $ff ; HT  ?'??"
+	db "Ht  ?", $5e, "??", $5f, $ff ; HT  ?'??"
 .Weight: ; 4085c
-	db "WT   ???lb", $ff ; WT   ???lb
+	db "Wt   ???lb", $ff ; WT   ???lb
 .MenuItems: ; 40867
-	db $3b, " PAGE AREA CRY PRNT", $ff
+	db $3b, " Page Area Cry Prnt", $ff
 
 Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	call Pokedex_FillBackgroundColor2
@@ -1197,16 +1197,16 @@ Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	ret
 
 .Title: ; 408b2
-	db $3b, " OPTION ", $3c, $ff
+	db $3b, " Option ", $3c, $ff
 
 .Modes: ; 408bd
-	db   "NEW #DEX MODE"
-	next "OLD #DEX MODE"
-	next "A to Z MODE"
+	db   "New #DEX Mode"
+	next "Old #DEX Mode"
+	next "A to Z Mode"
 	db "@"
 
 .UnownMode: ; 408e5
-	db "UNOWN MODE@"
+	db "Unown Mode@"
 
 Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	call Pokedex_FillBackgroundColor2
@@ -1231,19 +1231,19 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	ret
 
 .Title: ; 4092a
-	db $3b, " SEARCH ", $3c, $ff
+	db $3b, " Search ", $3c, $ff
 
 .TypeLeftRightArrows: ; 40935
 	db $3d, "        ", $3e, $ff
 
 .Types: ; 40940
-	db   "TYPE1"
-	next "TYPE2"
+	db   "Type1"
+	next "Type2"
 	db   "@"
 
 .Menu: ; 4094c
-	db   "BEGIN SEARCH!!"
-	next "CANCEL"
+	db   "Begin Search!!"
+	next "Cancel"
 	db   "@"
 
 Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
@@ -1277,9 +1277,9 @@ Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 	ret
 
 .BottomWindowText: ; 409ae
-	db   "SEARCH RESULTS"
-	next "  TYPE"
-	next "    FOUND!"
+	db   "Search Results"
+	next "  Type"
+	next "    Found!"
 	db   "@"
 
 Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
@@ -1750,7 +1750,7 @@ Pokedex_DisplayModeDescription: ; 40e5b
 	next "alphabetically.@"
 
 .UnownMode: ; 40ee4
-	db   "UNOWN are listed"
+	db   "Unown are listed"
 	next "in catching order.@"
 
 Pokedex_DisplayChangingModesMessage: ; 40f08 (10:4f08)
@@ -1880,24 +1880,24 @@ endr
 
 .TypeStrings: ; 40fe4
 	db "  ----  @"
-	db " NORMAL @"
-	db "  FIRE  @"
-	db " WATER  @"
-	db " GRASS  @"
-	db "ELECTRIC@"
-	db "  ICE   @"
-	db "FIGHTING@"
-	db " POISON @"
-	db " GROUND @"
-	db " FLYING @"
-	db "PSYCHIC @"
-	db "  BUG   @"
-	db "  ROCK  @"
-	db " GHOST  @"
-	db " DRAGON @"
-	db "  DARK  @"
-	db " STEEL  @"
-	db " FAIRY  @"
+	db " Normal @"
+	db "  Fire  @"
+	db " Water  @"
+	db " Grass  @"
+	db "Electric@"
+	db "  Ice   @"
+	db "Fighting@"
+	db " Poison @"
+	db " Ground @"
+	db " Flying @"
+	db "Psychic @"
+	db "  Bug   @"
+	db "  Rock  @"
+	db " Ghost  @"
+	db " Dragon @"
+	db "  Dark  @"
+	db " Steel  @"
+	db " Fairy  @"
 
 Pokedex_SearchForMons: ; 41086
 	ld a, [wDexSearchMonType2]

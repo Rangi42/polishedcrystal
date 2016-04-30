@@ -281,5 +281,5 @@ endr
 ._11f
 	db "11F@"
 .roof
-	db "ROOF@"
+	db "Roof@"
 ; 135db

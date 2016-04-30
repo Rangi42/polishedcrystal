@@ -542,13 +542,13 @@ endr
 	dw .Saturday
 	dw .Sunday
 
-.Sunday:    db " SUNDAY@"
-.Monday:    db " MONDAY@"
-.Tuesday:   db " TUESDAY@"
-.Wednesday: db "WEDNESDAY@"
-.Thursday:  db "THURSDAY@"
-.Friday:    db " FRIDAY@"
-.Saturday:  db "SATURDAY@"
+.Sunday:    db " Sunday@"
+.Monday:    db " Monday@"
+.Tuesday:   db " Tuesday@"
+.Wednesday: db "Wednesday@"
+.Thursday:  db "Thursday@"
+.Friday:    db " Friday@"
+.Saturday:  db "Saturday@"
 
 
 .WhatDayIsItText: ; 0x90a3f
@@ -677,16 +677,16 @@ DebugDisplayTime: ; 90abc
 
 	ld [hl], "O"
 	inc hl
-	ld [hl], "N"
+	ld [hl], "n"
 	inc hl
 	jr .done
 
 .off
 	ld [hl], "O"
 	inc hl
-	ld [hl], "F"
+	ld [hl], "f"
 	inc hl
-	ld [hl], "F"
+	ld [hl], "f"
 	inc hl
 
 .done
@@ -750,9 +750,9 @@ GetTimeOfDayString: ; 90b58 (24:4b58)
 	ret
 ; 90b71 (24:4b71)
 
-.NITE: db "NITE@"
-.MORN: db "MORN@"
-.DAY: db "DAY@"
+.NITE: db "Nite@"
+.MORN: db "Morn@"
+.DAY: db "Day@"
 ; 90b7f
 
 AdjustHourForAMorPM:

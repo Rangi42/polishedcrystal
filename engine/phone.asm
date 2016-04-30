@@ -719,11 +719,11 @@ NonTrainerCallerNames: ; 903d6
 	dw .buena
 
 .none db "----------@"
-.mom db "MOM:@"
-.bill db "BILL:@"
-.elm db "PROF.ELM:@"
-.bikeshop db "BIKE SHOP:@"
-.buena db "BUENA:", $22, "   DISC JOCKEY@"
+.mom db "Mom:@"
+.bill db "Bill:@"
+.elm db "Prof.Elm:@"
+.bikeshop db "Bike Shop:@"
+.buena db "Buena:", $22, "   Disc Jockey@"
 ; 90423
 
 Phone_GetTrainerName: ; 90423 (24:4423)

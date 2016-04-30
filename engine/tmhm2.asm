@@ -463,7 +463,7 @@ Function2ca95: ; 2ca95
 ; 2caae
 
 TMHM_String_Cancel: ; 2caae
-	db "CANCEL@"
+	db "Cancel@"
 ; 2cab5
 
 TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)

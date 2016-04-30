@@ -991,7 +991,7 @@ Function295a1: ; 295a1
 ; 295c2
 
 String295c2: ; 295c2
-	db   "EGG"
+	db   "Egg"
 	next "OT/?????"
 	next "<ID>№.?????@"
 ; 295d8

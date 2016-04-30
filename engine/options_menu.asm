@@ -62,21 +62,21 @@ _OptionsMenu: ; e41d0
 ; e4241
 
 StringOptions: ; e4241
-	db "TEXT SPEED<LNBRK>"
+	db "Text Speed<LNBRK>"
 	db "        :<LNBRK>"
-	db "BATTLE SCENE<LNBRK>"
+	db "Battle Scene<LNBRK>"
 	db "        :<LNBRK>"
-	db "BATTLE STYLE<LNBRK>"
+	db "Battle Style<LNBRK>"
 	db "        :<LNBRK>"
-	db "SOUND<LNBRK>"
+	db "Sound<LNBRK>"
 	db "        :<LNBRK>"
-	db "PRINT<LNBRK>"
+	db "Print<LNBRK>"
 	db "        :<LNBRK>"
-	db "MENU ACCOUNT<LNBRK>"
+	db "Menu Account<LNBRK>"
 	db "        :<LNBRK>"
-	db "FRAME<LNBRK>"
-	db "        :TYPE<LNBRK>"
-	db "CANCEL@"
+	db "Frame<LNBRK>"
+	db "        :Type<LNBRK>"
+	db "Cancel@"
 ; e42d6
 
 
@@ -161,11 +161,11 @@ endr
 	dw .Slow
 
 .Fast:
-	db "FAST@"
+	db "Fast@"
 .Mid:
-	db "MID @"
+	db "Mid @"
 .Slow:
-	db "SLOW@"
+	db "Slow@"
 ; e4346
 
 
@@ -230,9 +230,9 @@ Options_BattleScene: ; e4365
 ; e4398
 
 .On:
-	db "ON @"
+	db "On @"
 .Off:
-	db "OFF@"
+	db "Off@"
 ; e43a0
 
 
@@ -273,9 +273,9 @@ Options_BattleStyle: ; e43a0
 ; e43d1
 
 .Shift:
-	db "SHIFT@"
+	db "Shift@"
 .Set:
-	db "SET  @"
+	db "Set  @"
 ; e43dd
 
 
@@ -323,9 +323,9 @@ Options_Sound: ; e43dd
 ; e4416
 
 .Mono:
-	db "MONO  @"
+	db "Mono  @"
 .Stereo:
-	db "STEREO@"
+	db "Stereo@"
 ; e4424
 
 
@@ -383,15 +383,15 @@ endr
 	dw .Darkest
 
 .Lightest:
-	db "LIGHTEST@"
+	db "Lightest@"
 .Lighter:
-	db "LIGHTER @"
+	db "Lighter @"
 .Normal:
-	db "NORMAL  @"
+	db "Normal  @"
 .Darker:
-	db "DARKER  @"
+	db "Darker  @"
 .Darkest:
-	db "DARKEST @"
+	db "Darkest @"
 ; e4491
 
 
@@ -467,9 +467,9 @@ Options_MenuAccount: ; e44c1
 ; e44f2
 
 .Off:
-	db "OFF@"
+	db "Off@"
 .On:
-	db "ON @"
+	db "On @"
 ; e44fa
 
 

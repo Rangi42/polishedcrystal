@@ -128,7 +128,7 @@ InitTradeSpeciesList: ; 16d673
 ; 16d68f
 
 .CANCEL: ; 16d68f
-	db "CANCEL@"
+	db "Cancel@"
 ; 16d696
 
 _LoadTradeScreenBorder: ; 16d696
@@ -192,7 +192,7 @@ Function16d6e1: ; 16d6e1
 ; 16d701
 
 .Waiting: ; 16d701
-	db "WAITING..!@"
+	db "Waiting..!@"
 ; 16d70c
 
 LinkTradeMenu: ; 16d70c

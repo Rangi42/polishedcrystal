@@ -507,7 +507,7 @@ endr
 ; 170426
 
 BT_ChrisName: ; 170426
-	db "CHRIS@"
+	db "Chris@"
 ; 17042c
 
 Function17042c: ; 17042c

@@ -185,13 +185,13 @@ StartMenu:: ; 125cd
 
 .PokedexString: 	db "#DEX@"
 .PartyString:   	db "#MON@"
-.PackString:    	db "PACK@"
+.PackString:    	db "Bag@"
 .StatusString:  	db "<PLAYER>@"
-.SaveString:    	db "SAVE@"
-.OptionString:  	db "OPTION@"
-.ExitString:    	db "EXIT@"
-.PokegearString:	db $24, "GEAR@"
-.QuitString:    	db "QUIT@"
+.SaveString:    	db "Save@"
+.OptionString:  	db "Option@"
+.ExitString:    	db "Exit@"
+.PokegearString:	db $24, "Gear@"
+.QuitString:    	db "Quit@"
 
 .PokedexDesc:  db   "#MON"
               next "database@"
@@ -985,8 +985,8 @@ GiveTakeItemMenuData: ; 12c9b
 .Items:
 	db %10000000 ; x padding
 	db 2 ; # items
-	db "GIVE@"
-	db "TAKE@"
+	db "Give@"
+	db "Take@"
 ; 12caf
 
 
@@ -1175,9 +1175,9 @@ MonMailAction: ; 12d45
 .MenuData2:
 	db $80 ; flags
 	db 3 ; items
-	db "READ@"
-	db "TAKE@"
-	db "QUIT@"
+	db "Read@"
+	db "Take@"
+	db "Quit@"
 ; 0x12de2
 
 
@@ -1896,10 +1896,10 @@ String_132ba: ; 132ba
 	db "┌─────┐@"
 ; 132c2
 String_132c2: ; 132c2
-	db "│TYPE/└@"
+	db "│Type/└@"
 ; 132ca
 String_132ca: ; 132ca
-	db "ATK/@"
+	db "Atk/@"
 ; 132cf
 String_132cf: ; 132cf
 	db "---@"

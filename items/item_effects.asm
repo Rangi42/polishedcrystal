@@ -1289,11 +1289,11 @@ StatStrings: ; eeab
 	dw .speed
 	dw .special
 
-.health  db "HEALTH@"
-.attack  db "ATTACK@"
-.defense db "DEFENSE@"
-.speed   db "SPEED@"
-.special db "SPECIAL@"
+.health  db "Health@"
+.attack  db "Attack@"
+.defense db "Defense@"
+.speed   db "Speed@"
+.special db "Special@"
 ; eed9
 
 

@@ -66,9 +66,9 @@ SpecialGiveShuckle: ; 7305
 	ret
 
 SpecialShuckleOT:
-	db "MANIA@"
+	db "Mania@"
 SpecialShuckleNick:
-	db "SHUCKIE@"
+	db "Shuckie@"
 
 SpecialReturnShuckle: ; 737e
 	callba SelectMonFromParty

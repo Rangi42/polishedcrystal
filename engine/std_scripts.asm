@@ -271,19 +271,19 @@ DayToTextScript:
 	stringtotext .SaturdayText, 0
 	end
 .SundayText:
-	db "SUNDAY@"
+	db "Sunday@"
 .MondayText:
-	db "MONDAY@"
+	db "Monday@"
 .TuesdayText:
-	db "TUESDAY@"
+	db "Tuesday@"
 .WednesdayText:
-	db "WEDNESDAY@"
+	db "Wednesday@"
 .ThursdayText:
-	db "THURSDAY@"
+	db "Thursday@"
 .FridayText:
-	db "FRIDAY@"
+	db "Friday@"
 .SaturdayText:
-	db "SATURDAY@"
+	db "Saturday@"
 
 GoldenrodRocketsScript:
 	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
@@ -1879,7 +1879,7 @@ CoinVendor_IntroScript: ; 0xbcde0
 	db 3 ; items
 	db " 50 :  ¥1000@"
 	db "500 : ¥10000@"
-	db "CANCEL@"
+	db "Cancel@"
 ; 0xbce7f
 
 

@@ -120,7 +120,7 @@ endr
 
 .NicknameStrings: ; 11780
 	db "'S@"
-	db "NICKNAME?@"
+	db "Nickname?@"
 
 ; 1178d
 
@@ -136,7 +136,7 @@ endr
 ; 117a3 (4:57a3)
 
 .PlayerNameString: ; 117a3
-	db "YOUR NAME?@"
+	db "Your name?@"
 
 ; 117ae
 
@@ -153,7 +153,7 @@ endr
 ; 117c3 (4:57c3)
 
 .RivalNameString: ; 117c3
-	db "RIVAL'S NAME?@"
+	db "Rival's name?@"
 
 ; 117d1
 
@@ -170,7 +170,7 @@ endr
 ; 117e6 (4:57e6)
 
 .MomNameString: ; 117e6
-	db "MOTHER'S NAME?@"
+	db "Mother's name?@"
 
 ; 117f5
 
@@ -198,7 +198,7 @@ endr
 ; 11822 (4:5822)
 
 .BoxNameString: ; 11822
-	db "BOX NAME?@"
+	db "Box name?@"
 
 ; 1182c
 
@@ -961,7 +961,7 @@ NameInputLower:
 	db "j k l m n o p q r"
 	db "s t u v w x y z  "
 	db "× ( ) : ; [ ] <PK> <MN>"
-	db "UPPER  DEL   END "
+	db "Upper  Del   End "
 
 BoxNameInputLower:
 	db "a b c d e f g h i"
@@ -969,14 +969,14 @@ BoxNameInputLower:
 	db "s t u v w x y z  "
 	db "é 'd 'l 'm 'r 's 't 'v 0"
 	db "1 2 3 4 5 6 7 8 9"
-	db "UPPER  DEL   END "
+	db "Upper  Del   End "
 
 NameInputUpper:
 	db "A B C D E F G H I"
 	db "J K L M N O P Q R"
 	db "S T U V W X Y Z  "
 	db "- ? ! / . ,      "
-	db "lower  DEL   END "
+	db "Lower  Del   End "
 
 BoxNameInputUpper:
 	db "A B C D E F G H I"
@@ -984,7 +984,7 @@ BoxNameInputUpper:
 	db "S T U V W X Y Z  "
 	db "× ( ) : ; [ ] <PK> <MN>"
 	db "- ? ! ♂ ♀ / . , &"
-	db "lower  DEL   END "
+	db "Lower  Del   End "
 
 ; 11e5d
 
@@ -1511,7 +1511,7 @@ MailEntry_Uppercase: ; 122dd
 	db "U V W X Y Z   , ? !"
 	db "1 2 3 4 5 6 7 8 9 0"
 	db "<PK> <MN> <PO> <KE> é ♂ ♀ ¥ … ×"
-	db "lower  DEL   END   "
+	db "Lower  Del   End   "
 
 ; 1224f
 
@@ -1521,6 +1521,6 @@ MailEntry_Lowercase: ; 1224f
 	db "u v w x y z   . - /"
 	db "'d 'l 'm 'r 's 't 'v & ( )"
 	db "<``> <''> [ ] ' : ;      "
-	db "UPPER  DEL   END   "
+	db "Upper  Del   End   "
 
 ; 122c1

@@ -6116,14 +6116,14 @@ GetStatName: ; 3648f
 	jp CopyBytes
 
 .names
-	db "ATTACK@"
-	db "DEFENSE@"
-	db "SPEED@"
-	db "SPCL.ATK@"
-	db "SPCL.DEF@"
-	db "ACCURACY@"
-	db "EVASION@"
-	db "ABILITY@"
+	db "Attack@"
+	db "Defense@"
+	db "Speed@"
+	db "Spcl.Atk@"
+	db "Spcl.Def@"
+	db "Accuracy@"
+	db "Evasion@"
+	db "Ability@"
 ; 364e6
 
 

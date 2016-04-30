@@ -158,8 +158,8 @@ Pack: ; 10000
 .MenuData2_1: ; 0x1012c
 	db $c0 ; flags
 	db 2 ; items
-	db "USE@"
-	db "QUIT@"
+	db "Use@"
+	db "Quit@"
 ; 0x10137
 
 .Jumptable1: ; 10137
@@ -180,9 +180,9 @@ Pack: ; 10000
 .MenuData2_2: ; 0x10143
 	db $c0 ; flags
 	db 3 ; items
-	db "USE@"
-	db "GIVE@"
-	db "QUIT@"
+	db "Use@"
+	db "Give@"
+	db "Quit@"
 ; 0x10153
 
 .Jumptable2: ; 10153
@@ -320,11 +320,11 @@ MenuDataHeader_UsableKeyItem: ; 0x10249
 .MenuData2: ; 0x10251
 	db $c0 ; flags
 	db 5 ; items
-	db "USE@"
-	db "GIVE@"
-	db "TOSS@"
-	db "SEL@"
-	db "QUIT@"
+	db "Use@"
+	db "Give@"
+	db "Toss@"
+	db "Sel@"
+	db "Quit@"
 ; 0x1026a
 
 Jumptable_UseGiveTossRegisterQuit: ; 1026a
@@ -347,10 +347,10 @@ MenuDataHeader_UsableItem: ; 0x10274
 .MenuData2: ; 0x1027c
 	db $c0 ; flags
 	db 4 ; items
-	db "USE@"
-	db "GIVE@"
-	db "TOSS@"
-	db "QUIT@"
+	db "Use@"
+	db "Give@"
+	db "Toss@"
+	db "Quit@"
 ; 0x10291
 
 Jumptable_UseGiveTossQuit: ; 10291
@@ -372,8 +372,8 @@ MenuDataHeader_UnusableItem: ; 0x10299
 .MenuData2: ; 0x102a1
 	db $c0 ; flags
 	db 2 ; items
-	db "USE@"
-	db "QUIT@"
+	db "Use@"
+	db "Quit@"
 ; 0x102ac
 
 Jumptable_UseQuit: ; 102ac
@@ -393,9 +393,9 @@ MenuDataHeader_UnusableKeyItem: ; 0x102b0
 .MenuData2: ; 0x102b8
 	db $c0 ; flags
 	db 3 ; items
-	db "USE@"
-	db "SEL@"
-	db "QUIT@"
+	db "Use@"
+	db "Sel@"
+	db "Quit@"
 ; 0x102c7
 
 Jumptable_UseRegisterQuit: ; 102c7
@@ -416,10 +416,10 @@ MenuDataHeader_HoldableKeyItem: ; 0x102cd
 .MenuData2: ; 0x102d5
 	db $c0 ; flags
 	db 4 ; items
-	db "GIVE@"
-	db "TOSS@"
-	db "SEL@"
-	db "QUIT@"
+	db "Give@"
+	db "Toss@"
+	db "Sel@"
+	db "Quit@"
 ; 0x102ea
 
 Jumptable_GiveTossRegisterQuit: ; 102ea
@@ -441,9 +441,9 @@ MenuDataHeader_HoldableItem: ; 0x102f2
 .MenuData2: ; 0x102fa
 	db $c0 ; flags
 	db 3 ; items
-	db "GIVE@"
-	db "TOSS@"
-	db "QUIT@"
+	db "Give@"
+	db "Toss@"
+	db "Quit@"
 ; 0x1030b
 
 Jumptable_GiveTossQuit: ; 1030b
@@ -860,8 +860,8 @@ TMHMSubmenu: ; 105dc (4:45dc)
 .UsableMenuData2: ; 0x10609
 	db $c0 ; flags
 	db 2 ; items
-	db "USE@"
-	db "QUIT@"
+	db "Use@"
+	db "Quit@"
 ; 0x10614
 
 .UsableJumptable: ; 10614
@@ -881,7 +881,7 @@ TMHMSubmenu: ; 105dc (4:45dc)
 .UnusableMenuData2: ; 0x10620
 	db $c0 ; flags
 	db 1 ; items
-	db "QUIT@"
+	db "Quit@"
 ; 0x10627
 
 .UnusableJumptable: ; 10627

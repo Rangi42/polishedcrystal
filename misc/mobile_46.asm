@@ -5607,40 +5607,40 @@ Function11a9f4: ; 11a9f4
 ; 11aa13
 
 Text_SaveFileWillBeSent: ; 0x11aa13
-	text "SAVE FILE will be"
+	text "Save file will be"
 	line "sent."
 	done
 ; 0x11aa2c
 
 Text_SentSaveFileReadingNews: ; 0x11aa2c
-	text "Sent SAVE FILE."
-	line "Reading NEWS…"
+	text "Sent save file."
+	line "Reading News…"
 	done
 ; 0x11aa4b
 
 Text_ReadingNews: ; 0x11aa4b
-	text "Reading NEWS…"
+	text "Reading News…"
 	done
 ; 0x11aa5a
 
 Text_ReceivedNews: ; 0x11aa5a
-	text "Received NEWS!"
+	text "Received News!"
 	done
 ; 0x11aa6a
 
 Text_QuitReadingNews: ; 0x11aa6a
-	text "Quit reading NEWS?"
+	text "Quit reading News?"
 	done
 ; 0x11aa7e
 
 Text_CanceledSendingSaveFile: ; 0x11aa7e
 	text "Canceled sending"
-	line "SAVE FILE."
+	line "save file."
 	done
 ; 0x11aa9b
 
 Text_ReceivedOddEgg: ; 0x11aa9b
-	text "ODD EGG"
+	text "Odd Egg"
 	line "was received!"
 	done
 ; 0x11aab2
@@ -5653,7 +5653,7 @@ Text_RegisteringRecord: ; 0x11aab2
 
 Text_BattleRoomVisitLimit: ; 0x11aacc
 	text "One visit per day"
-	line "per BATTLE ROOM!"
+	line "per Battle Room!"
 	done
 ; 0x11aaf0
 
@@ -5666,28 +5666,28 @@ Text_PartyMonTopsThisLevel: ; 0x11aaf0
 Text_UberRestriction: ; 0x11ab0f
 	text_from_ram wcd49
 	text " may go"
-	line "only to BATTLE"
+	line "only to Battle"
 
-	para "ROOMS that are"
+	para "Rooms that are"
 	line "Lv.70 or higher."
 	done
 ; 0x11ab4a
 
 Text_CancelBattleRoomChallenge: ; 0x11ab4a
-	text "Cancel your BATTLE"
-	line "ROOM challenge?"
+	text "Cancel your Battle"
+	line "Room challenge?"
 	done
 ; 0x11ab6e
 
 Text_ExitGymLeaderHonorRoll: ; 0x11ab6e
-	text "Exit GYM LEADER"
-	line "HONOR ROLL?"
+	text "Exit Gym Leader"
+	line "Honor Roll?"
 	done
 ; 0x11ab8b
 
 Text_LinkingWithCenter: ; 0x11ab8b
 	text "Linking with the"
-	line "CENTER…"
+	line "Center…"
 	done
 ; 0x11aba5
 
@@ -5698,25 +5698,25 @@ Text_WhatLevelDoYouWantToChallenge: ; 0x11aba5
 ; 0x11abcb
 
 Text_CheckBattleRoomListByMaxLevel: ; 0x11abcb
-	text "Check BATTLE ROOM"
+	text "Check Battle Room"
 	line "list by max level?"
 	done
 ; 0x11abf1
 
 Text_EnterWhichBattleRoom: ; 0x11abf1
 	text "Enter which"
-	line "BATTLE ROOM?"
+	line "Battle Room?"
 	done
 ; 0x11ac0b
 
 Text_WhichBattleRoom: ; 0x11ac0b
-	text "Which BATTLE ROOM?"
+	text "Which Battle Room?"
 	done
 ; 0x11ac1f
 
 Text_ThisBattleRoomPleaseWait: ; 0x11ac1f
 	text_from_ram StringBuffer3
-	text "'s ROOM"
+	text "'s Room"
 	line "@"
 	text_from_ram StringBuffer4
 	text "?"

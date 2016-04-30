@@ -939,9 +939,9 @@ MenuDataHeader_BuySell: ; 0x15f88
 .menudata2 ; 0x15f90
 	db $80 ; strings
 	db 3 ; items
-	db "BUY@"
-	db "SELL@"
-	db "QUIT@"
+	db "Buy@"
+	db "Sell@"
+	db "Quit@"
 ; 0x15f96
 
 Text_Mart_HereYouGo: ; 0x15fa0

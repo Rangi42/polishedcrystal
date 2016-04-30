@@ -344,11 +344,11 @@ String1dc559: ; 1dc559
 	db "<ID>№.@"
 
 String1dc55d: ; 1dc55d
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPCL.ATK"
-	next "SPCL.DEF"
-	next "SPEED"
+	db   "Attack"
+	next "Defense"
+	next "Spcl.Atk"
+	next "Spcl.Def"
+	next "Speed"
 	db   "@"
 
 String1dc584: ; 1dc584
