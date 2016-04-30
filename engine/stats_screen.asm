@@ -738,7 +738,7 @@ endr
 ; 4e1a9
 
 .Move: ; 4e1a9
-	db "Move@"
+	db "Moves@"
 ; 4e1ae
 
 .BluePage: ; 4e1ae (13:61ae)

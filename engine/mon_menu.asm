@@ -3,7 +3,7 @@ MonMenuOptionStrings: ; 24caf
 	db "Switch@"
 	db "Item@"
 	db "Cancel@"
-	db "Move@"
+	db "Moves@"
 	db "Mail@"
 	db "Error!@"
 ; 24cd9
