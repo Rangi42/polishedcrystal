@@ -4,23 +4,23 @@ UnknownText_0x1c0000::
 	done
 
 UnknownText_0x1c0021::
-	text "An EGG? My talent"
+	text "An Egg? My talent"
 	line "is worth more…"
 	done
 
 UnknownText_0x1c0043::
 	text "Hello, hello! I'm"
-	line "the NAME RATER."
+	line "the Name Rater."
 
 	para "I rate the names"
-	line "of #MON."
+	line "of #mon."
 
 	para "Would you like me"
 	line "to rate names?"
 	done
 
 UnknownText_0x1c00a0::
-	text "Which #MON's"
+	text "Which #mon's"
 	line "nickname should I"
 	cont "rate for you?"
 	prompt
@@ -73,7 +73,7 @@ UnknownText_0x1c01be::
 
 UnknownText_0x1c0208::
 	text "Whoa… That's just"
-	line "an EGG."
+	line "an Egg."
 	done
 
 UnknownText_0x1c0222::
@@ -88,7 +88,7 @@ UnknownText_0x1c0222::
 
 UnknownText_0x1c0272::
 	text "All right. This"
-	line "#MON is now"
+	line "#mon is now"
 	cont "named @"
 	text_from_ram StringBuffer1
 	text "."
@@ -103,14 +103,14 @@ Text_ABoostedStringBuffer2ExpPoints::
 	line "a boosted"
 	cont "@"
 	deciram StringBuffer2, 2, 4
-	text " EXP. Points!"
+	text " Exp. Points!"
 	prompt
 
 Text_StringBuffer2ExpPoints::
 	text ""
 	line "@"
 	deciram StringBuffer2, 2, 4
-	text " EXP. Points!"
+	text " Exp. Points!"
 	prompt
 
 Text_GoPkmn::
@@ -170,7 +170,7 @@ UnknownText_0x1c0396::
 	para "Teach @"
 	text_from_ram StringBuffer2
 	text ""
-	line "to a #MON?"
+	line "to a #mon?"
 	done
 
 UnknownText_0x1c03c2::
@@ -213,8 +213,8 @@ UnknownText_0x1c0454::
 	prompt
 
 UnknownText_0x1c046a::
-	text "Must retrieve GIFT"
-	line "at #MON CENTER."
+	text "Must retrieve Gift"
+	line "at #mon Center."
 	prompt
 
 UnknownText_0x1c048e::
@@ -224,11 +224,11 @@ UnknownText_0x1c048e::
 
 UnknownText_0x1c04a7::
 	text "Sorry--only five"
-	line "GIFTS a day."
+	line "Gifts a day."
 	prompt
 
 UnknownText_0x1c04c6::
-	text "Sorry. One GIFT"
+	text "Sorry. One Gift"
 	line "a day per person."
 	prompt
 
@@ -255,19 +255,19 @@ UnknownText_0x1c051a::
 	text "Received"
 	line "@"
 	text_from_ram wc850
-	text "'s CARD."
+	text "'s Card."
 	prompt
 
 UnknownText_0x1c0531::
 	text_from_ram wc850
-	text "'s CARD was"
+	text "'s Card was"
 	line "listed as no.@"
 	deciram wd265, 1, 2
 	text "."
 	prompt
 
 UnknownText_0x1c0555::
-	text "The CARD was not"
+	text "The Card was not"
 	line "registered."
 	prompt
 
@@ -282,7 +282,7 @@ UnknownText_0x1c0591::
 	prompt
 
 _BadgeRequiredText::
-	text "Sorry! A new BADGE"
+	text "Sorry! A new Badge"
 	line "is required."
 	prompt
 
@@ -294,16 +294,16 @@ UnknownText_0x1c05c8::
 UnknownText_0x1c05dd::
 	text_from_ram StringBuffer2
 	text " used"
-	line "CUT!"
+	line "Cut!"
 	prompt
 
 UnknownText_0x1c05ec::
 	text "There's nothing to"
-	line "CUT here."
+	line "Cut here."
 	prompt
 
 UnknownText_0x1c0609::
-	text "A blinding FLASH"
+	text "A blinding Flash"
 	line "lights the area!@"
 	text_waitbutton
 	db "@@"

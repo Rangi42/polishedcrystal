@@ -8,7 +8,7 @@ _OakText7::
 	line "ready?"
 
 	para "Your very own"
-	line "#MON story is"
+	line "#mon story is"
 	cont "about to unfold."
 
 	para "You'll face fun"
@@ -18,7 +18,7 @@ _OakText7::
 	para "A world of dreams"
 	line "and adventures"
 
-	para "with #MON"
+	para "with #mon"
 	line "awaits! Let's go!"
 
 	para "I'll be seeing you"
@@ -58,7 +58,7 @@ UnknownText_0x1c4183::
 
 UnknownText_0x1c41b1::
 	text "If you trade that"
-	line "#MON, you won't"
+	line "#mon, you won't"
 	cont "be able to battle."
 	prompt
 
@@ -84,7 +84,7 @@ UnknownText_0x1c422a::
 	line "battle, you must"
 
 	para "pick a team of"
-	line "three #MON."
+	line "three #mon."
 
 	para "Is that OK?"
 	done
@@ -97,7 +97,7 @@ UnknownText_0x1c4275::
 UnknownText_0x1c4298::
 	text "For a mobile"
 	line "battle, choose"
-	cont "three #MON."
+	cont "three #mon."
 
 	para "The maximum daily"
 	line "play time is ten"
@@ -112,7 +112,7 @@ UnknownText_0x1c4298::
 	line "the player with"
 
 	para "the fewest fainted"
-	line "#MON wins."
+	line "#mon wins."
 
 	para "If tied, the team"
 	line "that lost the"
@@ -173,7 +173,7 @@ UnknownText_0x1c44e7::
 	done
 
 UnknownText_0x1c4508::
-	text "Pick three #MON"
+	text "Pick three #mon"
 	line "for battle."
 	done
 
@@ -190,7 +190,7 @@ UnknownText_0x1c454b::
 	done
 
 UnknownText_0x1c456d::
-	text "SAVING… DON'T TURN"
+	text "Saving… DON'T TURN"
 	line "OFF THE POWER."
 	done
 
@@ -218,13 +218,13 @@ UnknownText_0x1c460d::
 
 UnknownText_0x1c462a::
 	text "When you change a"
-	line "#MON BOX, data"
+	line "#mon Box, data"
 	cont "will be saved. OK?"
 	done
 
 UnknownText_0x1c465f::
 	text "Each time you move"
-	line "a #MON, data"
+	line "a #mon, data"
 	cont "will be saved. OK?"
 	done
 
@@ -283,7 +283,7 @@ UnknownText_0x1c475f::
 	line "I know all…"
 
 	para "Certainly, I know"
-	line "of your #MON!"
+	line "of your #mon!"
 	done
 
 UnknownText_0x1c4797::
@@ -358,7 +358,7 @@ UnknownText_0x1c487f::
 UnknownText_0x1c491d::
 	text "Hey!"
 
-	para "That's an EGG!"
+	para "That's an Egg!"
 
 	para "You can't say that"
 	line "you've met it yet…"
@@ -375,7 +375,7 @@ UnknownText_0x1c497a::
 	para "It would be wise"
 	line "to raise your"
 
-	para "#MON with a"
+	para "#mon with a"
 	line "little more care."
 	done
 
@@ -414,7 +414,7 @@ UnknownText_0x1c4a5b::
 	line "must have come"
 
 	para "through numerous"
-	line "#MON battles."
+	line "#mon battles."
 
 	para "It looks brimming"
 	line "with confidence."
@@ -429,7 +429,7 @@ UnknownText_0x1c4ae5::
 	para "It's been a long"
 	line "time since I've"
 
-	para "seen a #MON as"
+	para "seen a #mon as"
 	line "mighty as this"
 	cont "@"
 	text_from_ram wSeerNickname
@@ -479,7 +479,7 @@ UnknownText_0x1c4c08::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
 	text_from_ram StringBuffer2
-	text "(S)"
+	text "(s)"
 	line "will be ¥@"
 	deciram hMoneyTemp, 3, 6
 	text "."
@@ -494,7 +494,7 @@ UnknownText_0x1c4c28::
 	para "They're good, but"
 	line "a trifle bitter."
 
-	para "Your #MON may"
+	para "Your #mon may"
 	line "not like them."
 
 	para "Hehehehe…"
@@ -508,7 +508,7 @@ UnknownText_0x1c4cae::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
 	text_from_ram StringBuffer2
-	text "(S)"
+	text "(s)"
 	line "will be ¥@"
 	deciram hMoneyTemp, 3, 6
 	text "."
@@ -520,7 +520,7 @@ UnknownText_0x1c4cce::
 	done
 
 UnknownText_0x1c4cea::
-	text "Oh? Your PACK is"
+	text "Oh? Your Bag is"
 	line "full, dear."
 	done
 
@@ -558,7 +558,7 @@ UnknownText_0x1c4dcd::
 	done
 
 UnknownText_0x1c4dd6::
-	text "Uh-oh, your PACK"
+	text "Uh-oh, your Bag"
 	line "is chock-full."
 	done
 
@@ -591,7 +591,7 @@ UnknownText_0x1c4e89::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
 	text_from_ram StringBuffer2
-	text "(S)"
+	text "(s)"
 	line "will cost ¥@"
 	deciram hMoneyTemp, 3, 6
 	text "."
@@ -674,7 +674,7 @@ UnknownText_0x1c502e::
 	text " for"
 	line "@"
 	text_from_ram StringBuffer2
-	text "(S)."
+	text "(s)."
 	done
 
 UnknownText_0x1c5049::

@@ -73,32 +73,32 @@ HurtByBurnText: ; 0x807f8
 ; 0x8080e
 
 LeechSeedSapsText: ; 0x8080e
-	text "LEECH SEED saps"
+	text "Leech Seed saps"
 	line "<USER>!"
 	prompt
 ; 0x80822
 
 HasANightmareText: ; 0x80822
 	text "<USER>"
-	line "has a NIGHTMARE!"
+	line "has a Nightmare!"
 	prompt
 ; 0x80836
 
 HurtByCurseText: ; 0x80836
 	text "<USER>'s"
-	line "hurt by the CURSE!"
+	line "hurt by the Curse!"
 	prompt
 ; 0x8084d
 
 SandstormHitsText: ; 0x8084d
-	text "The SANDSTORM hits"
+	text "The Sandstorm hits"
 	line "<USER>!"
 	prompt
 ; 0x80864
 
 PerishCountText: ; 0x80864
 	text "<USER>'s"
-	line "PERISH count is @"
+	line "Perish count is @"
 	deciram wd265, 1, 1
 	text "!"
 	prompt
@@ -124,28 +124,28 @@ BattleText_UserRecoveredPPUsing: ; 0x80899
 
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
 	text "<TARGET>"
-	line "was hit by FUTURE"
-	cont "SIGHT!"
+	line "was hit by Future"
+	cont "Sight!"
 	prompt
 ; 0x808d2
 
 BattleText_SafeguardFaded: ; 0x808d2
 	text "<USER>'s"
-	line "SAFEGUARD faded!"
+	line "Safeguard faded!"
 	prompt
 ; 0x808e7
 
 BattleText_PkmnLightScreenFell: ; 0x808e7
 	text_from_ram StringBuffer1
-	text " #MON's"
-	line "LIGHT SCREEN fell!"
+	text " #mon's"
+	line "Light Screen fell!"
 	prompt
 ; 0x80905
 
 BattleText_PkmnReflectFaded: ; 0x80905
 	text_from_ram StringBuffer1
-	text " #MON's"
-	line "REFLECT faded!"
+	text " #mon's"
+	line "Reflect faded!"
 	prompt
 ; 0x8091f
 
@@ -162,7 +162,7 @@ BattleText_TheSunlightIsStrong: ; 0x80938
 ; 0x80951
 
 BattleText_TheSandstormRages: ; 0x80951
-	text "The SANDSTORM"
+	text "The Sandstorm"
 	line "rages."
 	prompt
 ; 0x80967
@@ -179,7 +179,7 @@ BattleText_TheSunlightFaded: ; 0x8097a
 ; 0x8098f
 
 BattleText_TheSandstormSubsided: ; 0x8098f
-	text "The SANDSTORM"
+	text "The Sandstorm"
 	line "subsided."
 	prompt
 ; 0x809a8
@@ -216,21 +216,21 @@ SentSomeToMomText:
 	deciram wBattleReward, 3, 6
 	text ""
 	line "for winning!"
-	cont "Sent some to MOM!"
+	cont "Sent some to Mom!"
 	prompt
 
 SentHalfToMomText:
-	text "Sent half to MOM!"
+	text "Sent half to Mom!"
 	prompt
 
 SentAllToMomText:
-	text "Sent all to MOM!"
+	text "Sent all to Mom!"
 	prompt
 
 BattleText_0x80a4f: ; 0x80a4f
 	text "<RIVAL>: Huh? I"
 	line "should've chosen"
-	cont "your #MON!"
+	cont "your #mon!"
 	prompt
 ; 0x80a75
 
@@ -242,14 +242,14 @@ BattleText_PkmnFainted: ; 0x80a75
 ; 0x80a83
 
 BattleText_UseNextMon: ; 0x80a83
-	text "Use next #MON?"
+	text "Use next #mon?"
 	done
 ; 0x80a93
 
 BattleText_0x80a93: ; 0x80a93
 	text "<RIVAL>: Yes!"
 	line "I guess I chose a"
-	cont "good #MON!"
+	cont "good #mon!"
 	prompt
 ; 0x80ab9
 
@@ -267,7 +267,7 @@ BattleText_EnemyIsAboutToUseWillPlayerChangePkmn: ; 0x80aca
 	text "."
 
 	para "Will <PLAYER>"
-	line "change #MON?"
+	line "change #mon?"
 	done
 ; 0x80af8
 
@@ -287,7 +287,7 @@ BattleText_TheresNoWillToBattle: ; 0x80b0b
 ; 0x80b26
 
 BattleText_AnEGGCantBattle: ; 0x80b26
-	text "An EGG can't"
+	text "An Egg can't"
 	line "battle!"
 	prompt
 ; 0x80b3b
@@ -323,7 +323,7 @@ BattleText_CantEscape: ; 0x80ba0
 
 BattleText_UserHurtBySpikes: ; 0x80bae
 	text "<USER>'s"
-	line "hurt by SPIKES!"
+	line "hurt by Spikes!"
 	prompt
 ; 0x80bc2
 
@@ -373,7 +373,7 @@ BattleText_TheresNoPPLeftForThisMove: ; 0x80c39
 
 BattleText_TheMoveIsDisabled: ; 0x80c5b
 	text "The move is"
-	line "DISABLED!"
+	line "Disabled!"
 	prompt
 ; 0x80c72
 
@@ -386,7 +386,7 @@ BattleText_PkmnHasNoMovesLeft: ; 0x80c72
 
 BattleText_TargetsEncoreEnded: ; 0x80c8a
 	text "<TARGET>'s"
-	line "ENCORE ended!"
+	line "Encore ended!"
 	prompt
 ; 0x80c9c
 
@@ -511,7 +511,7 @@ BattleText_UserWasReleasedFromStringBuffer1: ; 0x80df5
 
 UsedBindText: ; 0x80e11
 	text "<USER>"
-	line "used BIND on"
+	line "used Bind on"
 	cont "<TARGET>!"
 	prompt
 ; 0x80e24
@@ -530,14 +530,14 @@ FireSpinTrapText: ; 0x80e34
 
 WrappedByText: ; 0x80e44
 	text "<TARGET>"
-	line "was WRAPPED by"
+	line "was Wrapped by"
 	cont "<USER>!"
 	prompt
 ; 0x80e59
 
 ClampedByText: ; 0x80e59
 	text "<TARGET>"
-	line "was CLAMPED by"
+	line "was Clamped by"
 	cont "<USER>!"
 	prompt
 ; 0x80e6e
@@ -565,7 +565,7 @@ HungOnText: ; 0x80e99
 
 EnduredText: ; 0x80eb0
 	text "<TARGET>"
-	line "ENDURED the hit!"
+	line "Endured the hit!"
 	prompt
 ; 0x80ec4
 
@@ -588,7 +588,7 @@ DisabledMoveText: ; 0x80f02
 	line "@"
 	text_from_ram StringBuffer1
 	text " is"
-	cont "DISABLED!"
+	cont "Disabled!"
 	prompt
 ; 0x80f19
 
@@ -730,13 +730,13 @@ TookDownWithItText: ; 0x810da
 
 RageBuildingText: ; 0x810f3
 	text "<USER>'s"
-	line "RAGE is building!"
+	line "Rage is building!"
 	prompt
 ; 0x81109
 
 GotAnEncoreText: ; 0x81109
 	text "<TARGET>"
-	line "got an ENCORE!"
+	line "got an Encore!"
 	prompt
 ; 0x8111b
 
@@ -754,7 +754,7 @@ TookAimText: ; 0x81136
 
 SketchedText: ; 0x81143
 	text "<USER>"
-	line "SKETCHED"
+	line "Sketched"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
@@ -897,13 +897,13 @@ EnemyHitTimesText: ; 0x812f8
 
 MistText: ; 0x8130b
 	text "<USER>'s"
-	line "shrouded in MIST!"
+	line "shrouded in Mist!"
 	prompt
 ; 0x81321
 
 ProtectedByMistText: ; 0x81321
 	text "<TARGET>'s"
-	line "protected by MIST."
+	line "protected by Mist."
 	prompt
 ; 0x81338
 
@@ -922,24 +922,24 @@ RecoilText: ; 0x8134d
 
 MadeSubstituteText: ; 0x81362
 	text "<USER>"
-	line "made a SUBSTITUTE!"
+	line "made a Substitute!"
 	prompt
 ; 0x81378
 
 HasSubstituteText: ; 0x81378
 	text "<USER>"
-	line "has a SUBSTITUTE!"
+	line "has a Substitute!"
 	prompt
 ; 0x8138d
 
 TooWeakSubText: ; 0x8138d
 	text "Too weak to make"
-	line "a SUBSTITUTE!"
+	line "a Substitute!"
 	prompt
 ; 0x813ad
 
 SubTookDamageText: ; 0x813ad
-	text "The SUBSTITUTE"
+	text "The Substitute"
 	line "took damage for"
 	cont "<TARGET>!"
 	prompt
@@ -947,7 +947,7 @@ SubTookDamageText: ; 0x813ad
 
 SubFadedText: ; 0x813d0
 	text "<TARGET>'s"
-	line "SUBSTITUTE faded!"
+	line "Substitute faded!"
 	prompt
 ; 0x813e6
 
@@ -977,7 +977,7 @@ WasDisabledText: ; 0x8141d
 	line "@"
 	text_from_ram StringBuffer1
 	text " was"
-	cont "DISABLED!"
+	cont "Disabled!"
 	prompt
 ; 0x81435
 
@@ -1004,7 +1004,7 @@ EliminatedStatsText: ; 0x81476
 
 TransformedText: ; 0x81499
 	text "<USER>"
-	line "TRANSFORMED into"
+	line "Transformed into"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
@@ -1013,13 +1013,13 @@ TransformedText: ; 0x81499
 
 LightScreenEffectText: ; 0x814b4
 	text "<USER>'s"
-	line "SPCL.DEF rose!"
+	line "Spcl.Def rose!"
 	prompt
 ; 0x814c7
 
 ReflectEffectText: ; 0x814c7
 	text "<USER>'s"
-	line "DEFENSE rose!"
+	line "Defense rose!"
 	prompt
 ; 0x814d9
 
@@ -1092,7 +1092,7 @@ ProtectedByText: ; 0x815a9
 ; 0x815c1
 
 MirrorMoveFailedText: ; 0x815c1
-	text "The MIRROR MOVE"
+	text "The Mirror Move"
 	next "failed!"
 	prompt
 ; 0x815da
@@ -1115,7 +1115,7 @@ CantEscapeNowText: ; 0x815f7
 StartedNightmareText: ; 0x8160b
 	text "<TARGET>"
 	line "started to have a"
-	cont "NIGHTMARE!"
+	cont "Nightmare!"
 	prompt
 ; 0x8162b
 
@@ -1129,25 +1129,25 @@ PutACurseText: ; 0x8163d
 	text "<USER>"
 	line "cut its own HP and"
 
-	para "put a CURSE on"
+	para "put a Curse on"
 	line "<TARGET>!"
 	prompt
 ; 0x81665
 
 ProtectedItselfText: ; 0x81665
 	text "<USER>"
-	line "PROTECTED itself!"
+	line "Protected itself!"
 	prompt
 ; 0x8167a
 
 ProtectingItselfText: ; 0x8167a
 	text "<TARGET>'s"
-	line "PROTECTING itself!"
+	line "Protecting itself!"
 	done
 ; 0x81691
 
 SpikesText: ; 0x81691
-	text "SPIKES scattered"
+	text "Spikes scattered"
 	line "all around"
 	cont "<TARGET>!"
 	prompt
@@ -1161,13 +1161,13 @@ IdentifiedText: ; 0x816b1
 ; 0x816c2
 
 StartPerishText: ; 0x816c2
-	text "Both #MON will"
+	text "Both #mon will"
 	line "faint in 3 turns!"
 	prompt
 ; 0x816e4
 
 SandstormBrewedText: ; 0x816e4
-	text "A SANDSTORM"
+	text "A Sandstorm"
 	line "brewed!"
 	prompt
 ; 0x816f9
@@ -1193,7 +1193,7 @@ CoveredByVeilText: ; 0x8171c
 SafeguardProtectText: ; 0x81733
 	text "<TARGET>"
 	line "is protected by"
-	cont "SAFEGUARD!"
+	cont "Safeguard!"
 	prompt
 ; 0x81751
 
@@ -1213,13 +1213,13 @@ ReleasedByText: ; 0x81764
 
 ShedLeechSeedText: ; 0x8177a
 	text "<USER>"
-	line "shed LEECH SEED!"
+	line "shed Leech Seed!"
 	prompt
 ; 0x8178e
 
 BlewSpikesText: ; 0x8178e
 	text "<USER>"
-	line "blew away SPIKES!"
+	line "blew away Spikes!"
 	prompt
 ; 0x817a3
 
@@ -1238,7 +1238,7 @@ SunGotBrightText: ; 0x817b8
 BellyDrumText: ; 0x817d2
 	text "<USER>"
 	line "cut its HP and"
-	cont "maximized ATTACK!"
+	cont "maximized Attack!"
 	prompt
 ; 0x817f6
 

@@ -57,7 +57,7 @@ UnknownText_0x1ec12a: ; 0x1ec12a
 ; 0x1ec14d
 
 UnknownText_0x1ec14d: ; 0x1ec14d
-	text "Heh, your #MON"
+	text "Heh, your #mon"
 	line "look pretty cool."
 	done
 ; 0x1ec16f
@@ -75,7 +75,7 @@ UnknownText_0x1ec190: ; 0x1ec190
 ; 0x1ec1ae
 
 UnknownText_0x1ec1ae: ; 0x1ec1ae
-	text "#MON every day!"
+	text "#mon every day!"
 	line "I love battling!"
 	done
 ; 0x1ec1d0
@@ -255,14 +255,14 @@ UnknownText_0x1ec532: ; 0x1ec532
 ; 0x1ec54b
 
 UnknownText_0x1ec54b: ; 0x1ec54b
-	text "Those #MON"
+	text "Those #mon"
 	line "aren't enough!"
 	done
 ; 0x1ec565
 
 UnknownText_0x1ec565: ; 0x1ec565
 	text "I want your"
-	line "#MON. Please?"
+	line "#mon. Please?"
 	done
 ; 0x1ec580
 
@@ -303,7 +303,7 @@ UnknownText_0x1ec60d: ; 0x1ec60d
 ; 0x1ec631
 
 UnknownText_0x1ec631: ; 0x1ec631
-	text "My #MON skills"
+	text "My #mon skills"
 	line "are phenomenal!"
 	done
 ; 0x1ec651
@@ -384,19 +384,19 @@ UnknownText_0x1ec7d8: ; 0x1ec7d8
 	text "I'm scared about"
 	line "what might happen."
 
-	para "My #MON are way"
+	para "My #mon are way"
 	line "too strong."
 	done
 ; 0x1ec818
 
 UnknownText_0x1ec818: ; 0x1ec818
-	text "See? My #MON"
+	text "See? My #mon"
 	line "were too strong."
 	done
 ; 0x1ec837
 
 UnknownText_0x1ec837: ; 0x1ec837
-	text "Graa! My #MON"
+	text "Graa! My #mon"
 	line "were total wimps!"
 	done
 ; 0x1ec858
@@ -462,7 +462,7 @@ UnknownText_0x1ec969: ; 0x1ec969
 ; 0x1ec986
 
 UnknownText_0x1ec986: ; 0x1ec986
-	text "Yeah! My #MON"
+	text "Yeah! My #mon"
 	line "rule!"
 	done
 ; 0x1ec99b
@@ -492,7 +492,7 @@ UnknownText_0x1ec9f7: ; 0x1ec9f7
 ; 0x1eca0a
 
 UnknownText_0x1eca0a: ; 0x1eca0a
-	text "Look! My #MON"
+	text "Look! My #mon"
 	line "are really cute!"
 	done
 ; 0x1eca2a
@@ -547,25 +547,25 @@ UnknownText_0x1ecafa: ; 0x1ecafa
 
 UnknownText_0x1ecb19: ; 0x1ecb19
 	text "Oh, you have some"
-	line "rare #MON."
+	line "rare #mon."
 	done
 ; 0x1ecb37
 
 UnknownText_0x1ecb37: ; 0x1ecb37
 	text "May I have one of"
-	line "your #MON?"
+	line "your #mon?"
 	done
 ; 0x1ecb55
 
 UnknownText_0x1ecb55: ; 0x1ecb55
 	text "…I want one of"
-	line "your #MON."
+	line "your #mon."
 	done
 ; 0x1ecb70
 
 UnknownText_0x1ecb70: ; 0x1ecb70
 	text "Want to hear about"
-	line "my cute #MON?"
+	line "my cute #mon?"
 	done
 ; 0x1ecb92
 
@@ -690,7 +690,7 @@ UnknownText_0x1ecdcf: ; 0x1ecdcf
 ; 0x1ecded
 
 UnknownText_0x1ecded: ; 0x1ecded
-	text "BATTLE TOWER is a"
+	text "Battle Tower is a"
 	line "tough place!"
 	done
 ; 0x1ece0d

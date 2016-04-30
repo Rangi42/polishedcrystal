@@ -29,10 +29,10 @@ UnknownText_0x1c50bb::
 
 _MobileStadiumEntryText::
 	text "Data for use in"
-	line "the MOBILE STADIUM"
+	line "the Mobile Stadium"
 
-	para "of the N64 #MON"
-	line "STADIUM 2 can be"
+	para "of the N64 #mon"
+	line "Stadium 2 can be"
 	cont "read here."
 
 	para "Read the data?"
@@ -42,9 +42,9 @@ _MobileStadiumSuccessText::
 	text "Data transfer is"
 	line "complete."
 	para "We hope you enjoy"
-	line "MOBILE STADIUM"
+	line "Mobile Stadium"
 	para "battles in the N64"
-	line "#MON STADIUM 2."
+	line "#mon Stadium 2."
 	para ""
 	done
 
@@ -54,16 +54,16 @@ UnknownText_0x1c5182::
 
 UnknownText_0x1c5196::
 	text "Delete the saved"
-	line "LOG-IN PASSWORD?"
+	line "Log-In Password?"
 	done
 
 UnknownText_0x1c51b9::
-	text "Deleted the LOG-IN"
-	line "PASSWORD."
+	text "Deleted the Log-In"
+	line "Password."
 	done
 
 UnknownText_0x1c51d7::
-	text "Pick three #MON"
+	text "Pick three #mon"
 	line "for battle."
 	prompt
 
@@ -81,16 +81,16 @@ UnknownText_0x1c51f4::
 	done
 
 UnknownText_0x1c521c::
-	text "Only three #MON"
+	text "Only three #mon"
 	line "may enter."
 	prompt
 
 UnknownText_0x1c5238::
-	text "The CARD FOLDER"
+	text "The Card Folder"
 	line "stores your and"
 	para "your friends'"
-	line "CARDS."
-	para "A CARD contains"
+	line "Cards."
+	para "A Card contains"
 	line "information like"
 	para "the person's name,"
 	line "phone number and"
@@ -99,49 +99,49 @@ UnknownText_0x1c5238::
 	done
 
 UnknownText_0x1c52bc::
-	text "This is your CARD."
+	text "This is your Card."
 	para "Once you've"
 	line "entered your phone"
 	para "number, you can"
-	line "trade CARDS with"
+	line "trade Cards with"
 	cont "your friends."
 	para ""
 	done
 
 UnknownText_0x1c531e::
 	text "If you have your"
-	line "friend's CARD, you"
+	line "friend's Card, you"
 	para "can use it to make"
 	line "a call from a"
 	para "mobile phone on"
 	line "the 2nd floor of a"
-	cont "#MON CENTER."
+	cont "#mon Center."
 	para ""
 	done
 
 UnknownText_0x1c5394::
 	text "To safely store"
 	line "your collection of"
-	para "CARDS, you must"
-	line "set a PASSCODE for"
-	cont "your CARD FOLDER."
+	para "Cards, you must"
+	line "set a Passcode for"
+	cont "your Card Folder."
 	para ""
 	done
 
 UnknownText_0x1c53ee::
-	text "If the CARD FOLDER"
+	text "If the Card Folder"
 	line "is deleted, all"
 
-	para "its CARDS and the"
-	line "PASSCODE will also"
+	para "its Cards and the"
+	line "Passcode will also"
 	cont "be deleted."
 
 	para "Beware--a deleted"
-	line "CARD FOLDER can't"
+	line "Card Folder can't"
 	cont "be restored."
 
 	para "Want to delete"
-	line "your CARD FOLDER?"
+	line "your Card Folder?"
 	done
 
 UnknownText_0x1c5494::
@@ -150,14 +150,14 @@ UnknownText_0x1c5494::
 	done
 
 UnknownText_0x1c54b9::
-	text "The CARD FOLDER"
+	text "The Card Folder"
 	line "has been deleted."
 	para ""
 	done
 
 UnknownText_0x1c54dd::
 	text "There is an older"
-	line "CARD FOLDER from a"
+	line "Card Folder from a"
 	cont "previous journey."
 
 	para "Do you want to"
@@ -166,12 +166,12 @@ UnknownText_0x1c54dd::
 
 UnknownText_0x1c552d::
 	text "Delete the old"
-	line "CARD FOLDER?"
+	line "Card Folder?"
 	done
 
 UnknownText_0x1c554a::
 	text "Finish registering"
-	line "CARDS?"
+	line "Cards?"
 	done
 
 UnknownText_0x1c5565::
@@ -207,7 +207,7 @@ UnknownText_0x1c55d6::
 
 UnknownText_0x1c55db::
 	text "Password OK."
-	line "Select CONTINUE &"
+	line "Select Continue &"
 	cont "reset settings."
 	prompt
 
@@ -419,18 +419,18 @@ UnknownText_0x1c5962::
 
 UnknownText_0x1c5983::
 	text "You need at least"
-	line "three #MON."
+	line "three #mon."
 	para ""
 	done
 
 UnknownText_0x1c59a3::
-	text "Sorry, an EGG"
+	text "Sorry, an Egg"
 	line "doesn't qualify."
 	para ""
 	done
 
 Text_OnlyThreePkmnMayBeEntered::
-	text "Only three #MON"
+	text "Only three #mon"
 	line "may be entered."
 	para ""
 	done
@@ -438,7 +438,7 @@ Text_OnlyThreePkmnMayBeEntered::
 Text_ThePkmnMustAllBeDifferentKinds::
 	text "The @"
 	text_from_ram StringBuffer2
-	text " #MON"
+	text " #mon"
 	line "must all be"
 	cont "different kinds."
 	para ""
@@ -447,7 +447,7 @@ Text_ThePkmnMustAllBeDifferentKinds::
 Text_ThePkmnMustNotHoldTheSameItems::
 	text "The @"
 	text_from_ram StringBuffer2
-	text " #MON"
+	text " #mon"
 	line "must not hold the"
 	cont "same items."
 	para ""
@@ -455,25 +455,25 @@ Text_ThePkmnMustNotHoldTheSameItems::
 
 Text_YouCantTakeAnEgg::
 	text "You can't take an"
-	line "EGG!"
+	line "Egg!"
 	para ""
 	done
 
 UnknownText_0x1c5a5a::
 	text "It dodged the"
-	line "thrown BALL!"
+	line "thrown Ball!"
 
-	para "This #MON"
+	para "This #mon"
 	line "can't be caught!"
 	prompt
 
 UnknownText_0x1c5a90::
 	text "You missed the"
-	line "#MON!"
+	line "#mon!"
 	prompt
 
 UnknownText_0x1c5aa6::
-	text "Oh no! The #MON"
+	text "Oh no! The #mon"
 	line "broke free!"
 	prompt
 
@@ -507,14 +507,14 @@ Text_Waitbutton_2::
 UnknownText_0x1c5b38::
 	text_from_ram wMonOrItemNameBuffer
 	text " was"
-	line "sent to BILL's PC."
+	line "sent to Bill's PC."
 	prompt
 
 UnknownText_0x1c5b53::
 	text_from_ram EnemyMonNick
 	text "'s data"
 	line "was newly added to"
-	cont "the #DEX.@"
+	cont "the #dex.@"
 	sound_slot_machine_start
 	text_waitbutton
 	db "@@"
@@ -536,18 +536,18 @@ UnknownText_0x1c5b9a::
 
 UnknownText_0x1c5bac::
 	text "That can't be used"
-	line "on this #MON."
+	line "on this #mon."
 	prompt
 
 Text_RepelUsedEarlierIsStillInEffect::
-	text "The REPEL used"
+	text "The Repel used"
 	line "earlier is still"
 	cont "in effect."
 	prompt
 
 UnknownText_0x1c5bf9::
 	text "Played the #"
-	line "FLUTE."
+	line "Flute."
 
 	para "Now, that's a"
 	line "catchy tune!"
@@ -555,12 +555,12 @@ UnknownText_0x1c5bf9::
 
 UnknownText_0x1c5c28::
 	text "All sleeping"
-	line "#MON woke up."
+	line "#mon woke up."
 	prompt
 
 UnknownText_0x1c5c44::
 	text "<PLAYER> played the"
-	line "# FLUTE.@"
+	line "# Flute.@"
 	text_waitbutton
 	db "@@"
 
@@ -620,11 +620,11 @@ UnknownText_0x1c5d3e::
 
 UnknownText_0x1c5d50::
 	text "That can't be used"
-	line "on an EGG."
+	line "on an Egg."
 	prompt
 
 UnknownText_0x1c5d6e::
-	text "OAK: <PLAYER>!"
+	text "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
 	prompt
@@ -641,7 +641,7 @@ UnknownText_0x1c5db6::
 
 UnknownText_0x1c5dd0::
 	text "The trainer"
-	line "blocked the BALL!"
+	line "blocked the Ball!"
 	prompt
 
 UnknownText_0x1c5def::
@@ -661,7 +661,7 @@ UnknownText_0x1c5e1d::
 	prompt
 
 UnknownText_0x1c5e3a::
-	text "The #MON BOX"
+	text "The #mon Box"
 	line "is full. That"
 	cont "can't be used now."
 	prompt
@@ -697,7 +697,7 @@ UnknownText_0x1c5ea8::
 	prompt
 
 UnknownText_0x1c5eba::
-	text "That #MON knows"
+	text "That #mon knows"
 	line "only one move."
 	done
 
@@ -709,12 +709,12 @@ UnknownText_0x1c5eda::
 	done
 
 UnknownText_0x1c5ef5::
-	text "Done! Your #MON"
+	text "Done! Your #mon"
 	line "forgot the move."
 	done
 
 UnknownText_0x1c5f17::
-	text "An EGG doesn't"
+	text "An Egg doesn't"
 	line "know any moves!"
 	done
 
@@ -730,17 +730,17 @@ UnknownText_0x1c5f50::
 
 UnknownText_0x1c5f74::
 	text "Um… Oh, yes, I'm"
-	line "the MOVE DELETER."
+	line "the Move Deleter."
 
-	para "I can make #MON"
+	para "I can make #mon"
 	line "forget moves."
 
 	para "Shall I make a"
-	line "#MON forget?"
+	line "#mon forget?"
 	done
 
 UnknownText_0x1c5fd1::
-	text "Which #MON?"
+	text "Which #mon?"
 	prompt
 
 Text_DSTIsThatOK::
@@ -786,7 +786,7 @@ UnknownText_0x1c6095::
 UnknownText_0x1c60d1::
 	text "I lost the in-"
 	line "struction booklet"
-	cont "for the #GEAR."
+	cont "for the #gear."
 
 	para "Come back again in"
 	line "a while."
