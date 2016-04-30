@@ -103,9 +103,9 @@ PrintPage2: ; 1dc213
 
 GBPrinterStrings:
 String_1dc275: db "@"
-String_1dc276: next " CHECKING LINK...@"
-String_1dc289: next "  TRANSMITTING...@"
-String_1dc29c: next "    PRINTING...@"
+String_1dc276: next " Checking Link...@"
+String_1dc289: next "  Transmitting...@"
+String_1dc29c: next "    Printing...@"
 String_1dc2ad:
 	db   " Printer Error 1"
 	next ""
