@@ -1242,7 +1242,7 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	db   "@"
 
 .Menu: ; 4094c
-	db   "Begin Search!!"
+	db   "Begin Search!"
 	next "Cancel"
 	db   "@"
 
@@ -1812,7 +1812,7 @@ Pokedex_PrevSearchMonType: ; 40f65
 	jr .done
 
 .wrap_around
-	ld [hl], $11
+	ld [hl], $12
 
 .done
 	scf
@@ -1825,7 +1825,7 @@ Pokedex_NextSearchMonType: ; 40f84
 
 	ld hl, wDexSearchMonType1
 	ld a, [hl]
-	cp $11
+	cp $12
 	jr nc, .type1_wrap_around
 	inc [hl]
 	jr .done
