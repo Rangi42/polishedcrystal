@@ -48,7 +48,7 @@ String_1dd768:
 	db   "This certifies"
 	next "that you have"
 	next "completed the"
-	next "new #DEX."
+	next "new #dex."
 	next "Congratulations!"
 	db   "@"
 ; 1dd7ae

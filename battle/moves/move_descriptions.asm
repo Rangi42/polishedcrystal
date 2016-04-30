@@ -735,7 +735,7 @@ BideDescription:
 
 MetronomeDescription:
 	db   "Randomly uses any"
-	next "#MON move.@"
+	next "#mon move.@"
 
 MirrorMoveDescription:
 	db   "Counters with the"
@@ -1174,7 +1174,7 @@ EncoreDescription:
 
 PursuitDescription:
 	db   "Heavily strikes"
-	next "switching #MON.@"
+	next "switching #mon.@"
 
 RapidSpinDescription:
 	db   "A high-speed"
@@ -1210,7 +1210,7 @@ MoonlightDescription:
 
 HiddenPowerDescription:
 	db   "The power varies"
-	next "with the #MON.@"
+	next "with the #mon.@"
 
 CrossChopDescription:
 	db   "Has a high criti-"
@@ -1265,6 +1265,6 @@ WhirlpoolDescription:
 	next "2-5 turns.@"
 
 BeatUpDescription:
-	db   "Party #MON join"
+	db   "Party #mon join"
 	next "in the attack.@"
 ; 2ed44

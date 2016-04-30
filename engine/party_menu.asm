@@ -824,7 +824,7 @@ PartyMenuStrings: ; 0x504d2
 	dw ToWhichPKMNString
 
 ChooseAMonString: ; 0x504e4
-	db "Choose a #MON.@"
+	db "Choose a #mon.@"
 UseOnWhichPKMNString: ; 0x504f3
 	db "Use on which <PK><MN>?@"
 WhichPKMNString: ; 0x50504

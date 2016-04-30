@@ -1200,8 +1200,8 @@ Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	db $3b, " Option ", $3c, $ff
 
 .Modes: ; 408bd
-	db   "New #DEX Mode"
-	next "Old #DEX Mode"
+	db   "New #dex Mode"
+	next "Old #dex Mode"
 	next "A to Z Mode"
 	db "@"
 

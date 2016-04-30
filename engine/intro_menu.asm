@@ -567,7 +567,7 @@ Continue_LoadMenuHeader: ; 5ebf
 	db 4 ; items
 	db "Player@"
 	db "Badges@"
-	db "#DEX@"
+	db "#dex@"
 	db "Time@"
 ; 5efb
 

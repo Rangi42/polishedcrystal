@@ -290,7 +290,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	ret
 
 .Dex_PlayTime:
-	db   "#DEX"
+	db   "#dex"
 	next "Play Time@@"
 
 .Badges:

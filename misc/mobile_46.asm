@@ -5658,7 +5658,7 @@ Text_BattleRoomVisitLimit: ; 0x11aacc
 ; 0x11aaf0
 
 Text_PartyMonTopsThisLevel: ; 0x11aaf0
-	text "A party #MON"
+	text "A party #mon"
 	line "tops this level."
 	done
 ; 0x11ab0f

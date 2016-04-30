@@ -621,7 +621,7 @@ OaksPkmnTalk11:
 	jp PlaceRadioString
 
 .pokemon_string
-	db "#MON@"
+	db "#mon@"
 
 OaksPkmnTalk12:
 	ld hl, wRadioTextDelay
@@ -633,7 +633,7 @@ OaksPkmnTalk12:
 	jp PlaceRadioString
 
 .pokemon_channel_string
-	db "#MON Channel@"
+	db "#mon Channel@"
 
 OaksPkmnTalk13:
 	ld hl, wRadioTextDelay
@@ -1711,11 +1711,11 @@ PasswordTable:
 .Balls:              db BUENA_ITEM,   12, POKE_BALL, GREAT_BALL, ULTRA_BALL
 .Pokemon1:           db BUENA_MON,    10, PIKACHU, RATTATA, GEODUDE
 .Pokemon2:           db BUENA_MON,    10, HOOTHOOT, SPINARAK, DROWZEE
-.JohtoTowns:         db BUENA_STRING, 16, "NEW BARK TOWN@", "CHERRYGROVE CITY@", "AZALEA TOWN@"
-.Types:              db BUENA_STRING,  6, "FLYING@", "BUG@", "GRASS@"
+.JohtoTowns:         db BUENA_STRING, 16, "New Bark Town@", "Cherrygrove City@", "Azalea Town@"
+.Types:              db BUENA_STRING,  6, "Flying@", "Bug@", "Grass@"
 .Moves:              db BUENA_MOVE,   12, TACKLE, GROWL, MUD_SLAP
 .XItems:             db BUENA_ITEM,   12, X_ATTACK, X_DEFEND, X_SPEED
-.RadioStations:      db BUENA_STRING, 13, "#MON Talk@", "#MON Music@", "Lucky Channel@"
+.RadioStations:      db BUENA_STRING, 13, "#mon Talk@", "#mon Music@", "Lucky Channel@"
 
 BuenasPassword5:
 	ld hl, BuenaRadioText5

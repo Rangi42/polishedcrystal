@@ -183,8 +183,8 @@ StartMenu:: ; 125cd
 	dw StartMenu_Pokegear, .PokegearString, .PokegearDesc
 	dw StartMenu_Quit,     .QuitString,     .QuitDesc
 
-.PokedexString: 	db "#DEX@"
-.PartyString:   	db "#MON@"
+.PokedexString: 	db "#dex@"
+.PartyString:   	db "#mon@"
 .PackString:    	db "Bag@"
 .StatusString:  	db "<PLAYER>@"
 .SaveString:    	db "Save@"
@@ -193,7 +193,7 @@ StartMenu:: ; 125cd
 .PokegearString:	db $24, "Gear@"
 .QuitString:    	db "Quit@"
 
-.PokedexDesc:  db   "#MON"
+.PokedexDesc:  db   "#mon"
               next "database@"
 
 .PartyDesc:    db   "Party ", $4a

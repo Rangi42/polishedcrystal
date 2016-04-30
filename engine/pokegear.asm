@@ -1818,8 +1818,8 @@ NoRadioName: ; 918a9 (24:58a9)
 ; 918bf
 
 OaksPkmnTalkName:     db "Oak's <PK><MN> Talk@"
-PokedexShowName:      db "#DEX Show@"
-PokemonMusicName:     db "#MON Music@"
+PokedexShowName:      db "#dex Show@"
+PokemonMusicName:     db "#mon Music@"
 LuckyChannelName:     db "Lucky Channel@"
 UnknownStationName:   db "?????@"
 
