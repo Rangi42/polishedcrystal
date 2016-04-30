@@ -677,7 +677,7 @@ endr
 ; 4e12b
 
 .ExpPointStr: ; 4e12b
-	db "Exp Points@"
+	db "Exp.Points@"
 ; 4e136
 
 .LevelUpStr: ; 4e136
@@ -689,7 +689,7 @@ endr
 ; 4e142
 
 .PkrsStr: ; 4e142
-	db "#RUS@"
+	db "#rus@"
 ; 4e147
 
 .GreenPage: ; 4e147 (13:6147)
