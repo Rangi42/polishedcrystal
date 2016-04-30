@@ -1338,7 +1338,7 @@ BattleTowerMons2:
 
 
 	db WIGGLYTUFF
-	db PINK_BOW
+	db SILK_SCARF
 	db PSYCHIC_M, SWAGGER, PSYCH_UP, HEADBUTT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
@@ -3487,7 +3487,7 @@ BattleTowerMons6:
 
 
 	db SNORLAX
-	db PINK_BOW
+	db SILK_SCARF
 	db ROCK_SLIDE, SURF, BODY_SLAM, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
@@ -5362,7 +5362,7 @@ BattleTowerMons9:
 
 
 	db TAUROS
-	db PINK_BOW
+	db SILK_SCARF
 	db THUNDERBOLT, HYPER_BEAM, ATTRACT, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 729000 ; Exp

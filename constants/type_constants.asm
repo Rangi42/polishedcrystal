@@ -7,7 +7,6 @@ PHYSICAL EQU const_value
 	const POISON
 	const GROUND
 	const ROCK
-	const FAIRY
 	const BUG
 	const GHOST
 	const STEEL
@@ -22,6 +21,7 @@ UNUSED_TYPES EQU const_value
 	const TYPE_16
 	const TYPE_17
 	const TYPE_18
+	const TYPE_19
 	const CURSE_T
 UNUSED_TYPES_END EQU const_value
 
@@ -34,5 +34,6 @@ SPECIAL EQU const_value
 	const ICE
 	const DRAGON
 	const DARK
+	const FAIRY
 
 TYPES_END EQU const_value

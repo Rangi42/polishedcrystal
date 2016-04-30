@@ -167,7 +167,7 @@
 	db "Normal Box@"
 	db "Gorgeous Box@"
 	db "Sun Stone@"
-	db "Polkadot Bow@"
+	db "Pink Bow@"
 	db "Teru-sama@"
 	db "Up-Grade@"
 	db "Oran Berry@"

@@ -69,7 +69,7 @@ Item2Attributes:
 ; REPEL
 	item_attribute   350, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_CURRENT, ITEMMENU_NOUSE
 
-; MAX ELIXER
+; MAX ELIXIR
 	item_attribute  4500, 0,                -1,             CANT_SELECT, ITEM,     ITEMMENU_PARTY,   ITEMMENU_PARTY
 
 ; FIRE STONE
@@ -201,7 +201,7 @@ Item2Attributes:
 ; MAX ETHER
 	item_attribute  2000, 0,                -1,             CANT_SELECT, ITEM,     ITEMMENU_PARTY,   ITEMMENU_PARTY
 
-; ELIXER
+; ELIXIR
 	item_attribute  3000, 0,                10,             CANT_SELECT, ITEM,     ITEMMENU_PARTY,   ITEMMENU_PARTY
 
 ; RED SCALE
@@ -300,7 +300,7 @@ Item2Attributes:
 ; WHT APRICORN
 	item_attribute   200, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
-; BLACKBELT
+; BLACK BELT
 	item_attribute   100, HELD_FIGHTING_BOOST, 20,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
 ; BLK APRICORN
@@ -318,7 +318,7 @@ Item2Attributes:
 ; SLOWPOKETAIL
 	item_attribute  9800, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
-; PINK BOW
+; SILK SCARF
 	item_attribute   100, HELD_NORMAL_BOOST,   20,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
 ; STICK
@@ -516,7 +516,7 @@ Item2Attributes:
 ; SUN STONE
 	item_attribute  2100, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_PARTY,   ITEMMENU_NOUSE
 
-; POLKADOT BOW
+; PINK BOW
 	item_attribute   100, HELD_FAIRY_BOOST,    20,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
 ; TERU-SAMA

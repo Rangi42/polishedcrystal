@@ -3669,7 +3669,7 @@ TypeBoostItems: ; 35703
 	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
 	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
 	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
-	db HELD_FAIRY_BOOST,    FAIRY    ; Polkadot Bow
+	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
 	db $ff
 ; 35726
 

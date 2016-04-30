@@ -117,7 +117,7 @@ ItemEffects: ; e73c
 	dw PnkApricorn
 	dw Blackglasses
 	dw Slowpoketail
-	dw PinkBow
+	dw SilkScarf
 	dw Stick
 	dw SmokeBall
 	dw Nevermeltice
@@ -183,7 +183,7 @@ ItemEffects: ; e73c
 	dw NormalBox
 	dw GorgeousBox
 	dw SunStone
-	dw PolkadotBow
+	dw PinkBow
 	dw ItemAB
 	dw UpGrade
 	dw Berry
@@ -2849,7 +2849,7 @@ Item64:
 PnkApricorn:
 Blackglasses:
 Slowpoketail:
-PinkBow:
+SilkScarf:
 Stick:
 SmokeBall:
 Nevermeltice:
@@ -2893,7 +2893,7 @@ Item9B:
 FlowerMail:
 ItemA2:
 LightBall:
-PolkadotBow:
+PinkBow:
 ItemAB:
 UpGrade:
 ItemB0:
