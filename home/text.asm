@@ -1164,10 +1164,10 @@ endr
 
 .Sun:    db "Sun@"
 .Mon:    db "Mon@"
-.Tues:   db "Tue@"
-.Wednes: db "Wed@"
-.Thurs:  db "Thu@"
+.Tues:   db "Tues@"
+.Wednes: db "Wednes@"
+.Thurs:  db "Thurs@"
 .Fri:    db "Fri@"
-.Satur:  db "Sat@"
-.Day:    db "Day@"
+.Satur:  db "Satur@"
+.Day:    db "day@"
 ; 15d8

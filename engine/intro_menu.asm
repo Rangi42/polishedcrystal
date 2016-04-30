@@ -33,15 +33,15 @@ PrintDayOfWeek: ; 5b05
 .Days: ; 5b1c
 	db "Sun@"
 	db "Mon@"
-	db "Tue@"
-	db "Wed@"
-	db "Thu@"
+	db "Tues@"
+	db "Wednes@"
+	db "Thurs@"
 	db "Fri@"
-	db "Sat@"
+	db "Satur@"
 ; 5b40
 
 .Day: ; 5b40
-	db "Day@"
+	db "day@"
 ; 5b44
 
 NewGame_ClearTileMapEtc: ; 5b44

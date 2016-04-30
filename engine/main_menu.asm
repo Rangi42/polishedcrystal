@@ -320,13 +320,13 @@ MainMenu_PrintCurrentTimeAndDay: ; 49e09
 .Days:
 	db "Sun@"
 	db "Mon@"
-	db "Tue@"
-	db "Wed@"
-	db "Thu@"
+	db "Tues@"
+	db "Wednes@"
+	db "Thurs@"
 	db "Fri@"
-	db "Sat@"
+	db "Satur@"
 .Day:
-	db "Day@"
+	db "day@"
 ; 49ed0
 
 Function49ed0: ; 49ed0
