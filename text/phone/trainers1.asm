@@ -59,7 +59,7 @@ UnknownText_0x1b4e9e: ; 0x1b4e9e
 
 UnknownText_0x1b4ecd: ; 0x1b4ecd
 	text "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
 	para "My @"
 	text_from_ram StringBuffer4
@@ -130,7 +130,7 @@ UnknownText_0x1b5004: ; 0x1b5004
 
 UnknownText_0x1b502b: ; 0x1b502b
 	text "Keeping your"
-	line "#MON happy?"
+	line "#mon happy?"
 
 	para "My @"
 	text_from_ram StringBuffer4
@@ -201,9 +201,9 @@ UnknownText_0x1b5154: ; 0x1b5154
 
 UnknownText_0x1b518b: ; 0x1b518b
 	text "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
-	para "My #MON are a"
+	para "My #mon are a"
 	line "bit too energetic."
 
 	para "@"
@@ -290,7 +290,7 @@ UnknownText_0x1b535f: ; 0x1b535f
 
 UnknownText_0x1b5393: ; 0x1b5393
 	text "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
 	para "My @"
 	text_from_ram StringBuffer4
@@ -299,8 +299,8 @@ UnknownText_0x1b5393: ; 0x1b5393
 	cont "ever."
 
 	para "Let's keep at it"
-	line "and become #MON"
-	cont "CHAMPS!"
+	line "and become #mon"
+	cont "Champs!"
 	done
 
 UnknownText_0x1b53f7: ; 0x1b53f7
@@ -368,17 +368,17 @@ UnknownText_0x1b5510: ; 0x1b5510
 	text "Are you the kind"
 	line "of person who goes"
 
-	para "to #MON CENTERS"
+	para "to #mon Centers"
 	line "often?"
 
 	para "I go every day."
 	line "Watching out for"
 
 	para "the health of your"
-	line "#MON is a basic"
+	line "#mon is a basic"
 
 	para "part of being a"
-	line "#MON trainer."
+	line "#mon trainer."
 	done
 
 UnknownText_0x1b55ae: ; 0x1b55ae
@@ -438,7 +438,7 @@ UnknownText_0x1b5670: ; 0x1b5670
 	done
 
 UnknownText_0x1b5694: ; 0x1b5694
-	text "Are your #MON"
+	text "Are your #mon"
 	line "still cooking?"
 
 	para "My @"
@@ -510,12 +510,12 @@ UnknownText_0x1b57e8: ; 0x1b57e8
 
 UnknownText_0x1b5819: ; 0x1b5819
 	text "Hey, how are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
 	para "What? Great?"
 	line "I see…"
 
-	para "What? My #MON?"
+	para "What? My #mon?"
 
 	para "Of course they're"
 	line "doing great! What"
@@ -583,7 +583,7 @@ UnknownText_0x1b597c: ; 0x1b597c
 
 UnknownText_0x1b59b2: ; 0x1b59b2
 	text "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
 	para "My @"
 	text_from_ram StringBuffer4
@@ -658,15 +658,15 @@ UnknownText_0x1b5b37: ; 0x1b5b37
 
 UnknownText_0x1b5b68: ; 0x1b5b68
 	text "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
-	para "My #MON have"
+	para "My #mon have"
 	line "too much energy to"
 
 	para "burn. It gets to"
 	line "be a problem."
 
-	para "Of all my #MON,"
+	para "Of all my #mon,"
 	line "@"
 	text_from_ram StringBuffer4
 	text " is the"
@@ -731,7 +731,7 @@ UnknownText_0x1b5d51: ; 0x1b5d51
 	text "Are you taking"
 	line "good care of your"
 
-	para "#MON? You have"
+	para "#mon? You have"
 	line "to be good to your"
 	cont "partners!"
 	done
@@ -801,15 +801,15 @@ UnknownText_0x1b5ebe: ; 0x1b5ebe
 	line "so I called you."
 
 	para "So anyway, how are"
-	line "your #MON?"
+	line "your #mon?"
 
 	para "Me, I take my"
 	line "@"
 	text_from_ram StringBuffer4
 	text " to the"
 
-	para "#MON CENTER in"
-	line "VIOLET every day,"
+	para "#mon Center in"
+	line "Violet every day,"
 
 	para "so it's doing just"
 	line "fantastic!"
@@ -822,7 +822,7 @@ UnknownText_0x1b5f7a: ; 0x1b5f7a
 	text "Yeah, @"
 	text_from_ram StringBuffer3
 	text " the"
-	line "HIKER here."
+	line "Hiker here."
 
 	para "Ah, <PLAYER>!"
 	done
@@ -831,7 +831,7 @@ UnknownText_0x1b5f9e: ; 0x1b5f9e
 	text "Yeah, @"
 	text_from_ram StringBuffer3
 	text " the"
-	line "HIKER here."
+	line "Hiker here."
 
 	para "Ah, <PLAYER>,"
 	line "right?"
@@ -841,7 +841,7 @@ UnknownText_0x1b5fc9: ; 0x1b5fc9
 	text "Yeah, @"
 	text_from_ram StringBuffer3
 	text " the"
-	line "HIKER here."
+	line "Hiker here."
 
 	para "Ah, <PLAYER>, isn't"
 	line "it?"
@@ -853,7 +853,7 @@ UnknownText_0x1b5ff6: ; 0x1b5ff6
 	para "This is @"
 	text_from_ram StringBuffer3
 	text ""
-	line "the HIKER!"
+	line "the Hiker!"
 	done
 
 UnknownText_0x1b6017: ; 0x1b6017
@@ -863,7 +863,7 @@ UnknownText_0x1b6017: ; 0x1b6017
 	para "This is @"
 	text_from_ram StringBuffer3
 	text ""
-	line "the HIKER!"
+	line "the Hiker!"
 	done
 
 UnknownText_0x1b6041: ; 0x1b6041
@@ -873,11 +873,11 @@ UnknownText_0x1b6041: ; 0x1b6041
 	para "This is @"
 	text_from_ram StringBuffer3
 	text ""
-	line "the HIKER!"
+	line "the Hiker!"
 	done
 
 UnknownText_0x1b606f: ; 0x1b606f
-	text "Are your #MON"
+	text "Are your #mon"
 	line "as feisty as ever?"
 
 	para "My @"
@@ -951,13 +951,13 @@ UnknownText_0x1b61bd: ; 0x1b61bd
 
 UnknownText_0x1b61f2: ; 0x1b61f2
 	text "How do you raise"
-	line "your #MON?"
+	line "your #mon?"
 
 	para "I do all sorts"
 	line "of things, like"
 
 	para "leaving them in"
-	line "DAY-CARE and"
+	line "Day-Care and"
 
 	para "toughening them up"
 	line "with items."
@@ -1021,7 +1021,7 @@ UnknownText_0x1b6331: ; 0x1b6331
 	done
 
 UnknownText_0x1b6352: ; 0x1b6352
-	text "Are your #MON"
+	text "Are your #mon"
 	line "still tough?"
 
 	para "I train every day"
@@ -1145,7 +1145,7 @@ UnknownText_0x1b6539: ; 0x1b6539
 	done
 
 UnknownText_0x1b656c: ; 0x1b656c
-	text "I bet your #MON"
+	text "I bet your #mon"
 	line "are a lot stronger"
 	cont "than before."
 	done
@@ -1200,12 +1200,12 @@ UnknownText_0x1b663b: ; 0x1b663b
 UnknownText_0x1b6652: ; 0x1b6652
 	text "<PLAY_G>, are you"
 	line "raising your"
-	cont "#MON properly?"
+	cont "#mon properly?"
 
 	para "I read in a book"
 	line "that you should"
 
-	para "raise any #MON"
+	para "raise any #mon"
 	line "you catch with"
 	cont "love and care."
 	done
@@ -1276,7 +1276,7 @@ UnknownText_0x1b6795: ; 0x1b6795
 	line "scary."
 
 	para "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 	done
 
 UnknownText_0x1b67e2: ; 0x1b67e2
@@ -1341,19 +1341,19 @@ UnknownText_0x1b68ba: ; 0x1b68ba
 
 UnknownText_0x1b68e8: ; 0x1b68e8
 	text "How are your"
-	line "#MON doing?"
+	line "#mon doing?"
 
-	para "You know PROF.OAK,"
+	para "You know Prof.Oak,"
 	line "so of course your"
-	cont "#MON are fine!"
+	cont "#mon are fine!"
 
-	para "My #MON are"
+	para "My #mon are"
 	line "doing well too."
 
 	para "But then, I am"
 	line "trying to become a"
 
-	para "#MON professor,"
+	para "#mon professor,"
 	line "so that shouldn't"
 	cont "be a big surprise."
 	done
@@ -1552,11 +1552,11 @@ UnknownText_0x1b6db9: ; 0x1b6db9
 	text "Oh yeah, I saw you"
 	line "coming out of a"
 
-	para "#MON CENTER the"
+	para "#mon Center the"
 	line "other day."
 
 	para "You heal your"
-	line "#MON regularly,"
+	line "#mon regularly,"
 
 	para "don't you?"
 	line "I'm impressed."
@@ -1567,7 +1567,7 @@ UnknownText_0x1b6db9: ; 0x1b6db9
 	line "is so tough, it"
 
 	para "doesn't need to go"
-	line "to #MON CENTERS"
+	line "to #mon Centers"
 	cont "often. Heheh!"
 	done
 
@@ -1628,12 +1628,12 @@ UnknownText_0x1b6f37: ; 0x1b6f37
 	done
 
 UnknownText_0x1b6f60: ; 0x1b6f60
-	text "Are your #MON"
+	text "Are your #mon"
 	line "doing well?"
 
 	para "I hope you take"
-	line "them to a #MON"
-	cont "CENTER every day."
+	line "them to a #mon"
+	cont "Center every day."
 
 	para "Don't push them"
 	line "too hard."
@@ -1646,7 +1646,7 @@ UnknownText_0x1b6f60: ; 0x1b6f60
 	para "precisely because"
 	line "I take it to a"
 
-	para "#MON CENTER"
+	para "#mon Center"
 	line "every day."
 	done
 
@@ -1659,7 +1659,7 @@ UnknownText_0x1b7019: ; 0x1b7019
 	para "Morning, <PLAY_G>!"
 
 	para "Are you using bird"
-	line "#MON?"
+	line "#mon?"
 	done
 
 UnknownText_0x1b7057: ; 0x1b7057
@@ -1671,7 +1671,7 @@ UnknownText_0x1b7057: ; 0x1b7057
 	para "Hi, <PLAY_G>!"
 
 	para "Are your bird"
-	line "#MON flying?"
+	line "#mon flying?"
 	done
 
 UnknownText_0x1b7092: ; 0x1b7092
@@ -1683,7 +1683,7 @@ UnknownText_0x1b7092: ; 0x1b7092
 	para "Evening, <PLAY_G>!"
 	line "Are you letting"
 
-	para "your bird #MON"
+	para "your bird #mon"
 	line "see some action?"
 	done
 
@@ -1718,7 +1718,7 @@ UnknownText_0x1b7132: ; 0x1b7132
 
 UnknownText_0x1b7161: ; 0x1b7161
 	text "Are you and your"
-	line "#MON fine?"
+	line "#mon fine?"
 
 	para "My @"
 	text_from_ram StringBuffer4
@@ -1729,7 +1729,7 @@ UnknownText_0x1b7161: ; 0x1b7161
 	line "to face and beat"
 
 	para "the legendary bird"
-	line "#MON!"
+	line "#mon!"
 	done
 
 UnknownText_0x1b71d5: ; 0x1b71d5
@@ -1788,7 +1788,7 @@ UnknownText_0x1b72a5: ; 0x1b72a5
 	done
 
 UnknownText_0x1b72d0: ; 0x1b72d0
-	text "Have your #MON"
+	text "Have your #mon"
 	line "grown any?"
 
 	para "My @"
@@ -1903,7 +1903,7 @@ UnknownText_0x1b749b: ; 0x1b749b
 	done
 
 UnknownText_0x1b74c8: ; 0x1b74c8
-	text "Are your #MON"
+	text "Are your #mon"
 	line "looking good?"
 
 	para "My @"
@@ -1973,7 +1973,7 @@ UnknownText_0x1b75c9: ; 0x1b75c9
 
 UnknownText_0x1b75e5: ; 0x1b75e5
 	text "Are you raising"
-	line "your #MON?"
+	line "your #mon?"
 
 	para "Hey, @"
 	text_from_ram StringBuffer3

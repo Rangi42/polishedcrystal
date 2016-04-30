@@ -190,7 +190,7 @@ StartMenu:: ; 125cd
 .SaveString:    	db "Save@"
 .OptionString:  	db "Option@"
 .ExitString:    	db "Exit@"
-.PokegearString:	db $24, "Gear@"
+.PokegearString:	db $24, "gear@"
 .QuitString:    	db "Quit@"
 
 .PokedexDesc:  db   "#mon"

@@ -45,7 +45,7 @@ HueyRematchText:
 	done
 
 HueyPackFullText:
-	text "Oh… Your PACK's"
+	text "Oh… Your Bag's"
 	line "full. I'll give it"
 	cont "to you later."
 	done
@@ -63,7 +63,7 @@ HueyRematchGiftText:
 	para "I bought tons of"
 	line "items to toughen"
 
-	para "up my #MON, but"
+	para "up my #mon, but"
 	line "to no avail…"
 
 	para "Items alone aren't"

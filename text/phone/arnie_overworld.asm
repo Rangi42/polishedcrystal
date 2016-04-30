@@ -3,7 +3,7 @@ ArnieAskNumber1Text:
 	line "feeling that there"
 
 	para "are more rare"
-	line "#MON around?"
+	line "#mon around?"
 
 	para "I'm positive there"
 	line "are, so I look all"
@@ -22,7 +22,7 @@ ArnieAskNumber1Text:
 ArnieAskNumber2Text:
 	text "I want to let"
 	line "people know if I"
-	cont "see rare #MON."
+	cont "see rare #mon."
 
 	para "Please give me"
 	line "your phone number!"
@@ -30,7 +30,7 @@ ArnieAskNumber2Text:
 
 ArnieNumberAcceptedText:
 	text "If I spot any"
-	line "awesome #MON,"
+	line "awesome #mon,"
 
 	para "I'll be sure to"
 	line "give you a call!"

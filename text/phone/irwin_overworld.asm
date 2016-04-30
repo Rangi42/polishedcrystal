@@ -4,7 +4,7 @@ IrwinAskNumber1Text:
 
 	para "Huh? You're the"
 	line "one who saved all"
-	cont "the SLOWPOKE?"
+	cont "the Slowpoke?"
 
 	para "Well, no wonder I"
 	line "couldn't beat you!"

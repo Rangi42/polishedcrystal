@@ -1,5 +1,5 @@
 UnknownText_0xa0c28: ; 0xa0c28
-	text "Hi, this is BUENA…"
+	text "Hi, this is Buena…"
 
 	para "Oh! Good morning,"
 	line "<PLAY_G>!"
@@ -10,16 +10,16 @@ UnknownText_0xa0c28: ; 0xa0c28
 ; 0xa0c72
 
 UnknownText_0xa0c72: ; 0xa0c72
-	text "Hi, this is BUENA…"
+	text "Hi, this is Buena…"
 	line "Oh! Hi, <PLAY_G>!"
 
 	para "Do you tune into"
-	line "BUENA's show?"
+	line "Buena's show?"
 	done
 ; 0xa0caf
 
 UnknownText_0xa0caf: ; 0xa0caf
-	text "This is BUENA."
+	text "This is Buena."
 	line "I can't come to"
 
 	para "the phone right"
@@ -28,7 +28,7 @@ UnknownText_0xa0caf: ; 0xa0caf
 	para "If you want to"
 	line "chat, tune into"
 
-	para "BUENA's PASSWORD"
+	para "Buena's Password"
 	line "on the radio and"
 
 	para "give me a call"
@@ -37,7 +37,7 @@ UnknownText_0xa0caf: ; 0xa0caf
 ; 0xa0d42
 
 UnknownText_0xa0d42: ; 0xa0d42
-	text "Hi, this is BUENA…"
+	text "Hi, this is Buena…"
 	line "Oh! Hi, <PLAY_G>!"
 
 	para "I just got off"
@@ -50,7 +50,7 @@ UnknownText_0xa0d42: ; 0xa0d42
 
 UnknownText_0xa0d96: ; 0xa0d96
 	text "<PLAY_G>!"
-	line "Hi, it's BUENA!"
+	line "Hi, it's Buena!"
 
 	para "I got up early, so"
 	line "I decided to call!"
@@ -59,7 +59,7 @@ UnknownText_0xa0d96: ; 0xa0d96
 
 UnknownText_0xa0dcf: ; 0xa0dcf
 	text "<PLAY_G>!"
-	line "Hi, it's BUENA!"
+	line "Hi, it's Buena!"
 
 	para "I needed someone"
 	line "to chat with!"
@@ -68,7 +68,7 @@ UnknownText_0xa0dcf: ; 0xa0dcf
 
 UnknownText_0xa0e01: ; 0xa0e01
 	text "<PLAY_G>!"
-	line "Hi, it's BUENA!"
+	line "Hi, it's Buena!"
 
 	para "I'm just on my"
 	line "break."
@@ -77,7 +77,7 @@ UnknownText_0xa0e01: ; 0xa0e01
 
 UnknownText_0xa0e29: ; 0xa0e29
 	text "<PLAY_G>!"
-	line "Hi, it's BUENA!"
+	line "Hi, it's Buena!"
 
 	para "I couldn't sleep,"
 	line "so I called you."
@@ -95,7 +95,7 @@ UnknownText_0xa0e5e: ; 0xa0e5e
 	para "be cracking silly"
 	line "gag greetings!"
 
-	para "The RADIO TOWER is"
+	para "The Radio Tower is"
 	line "in deep trouble!"
 
 	para "<PLAY_G>, you'd"
@@ -107,7 +107,7 @@ UnknownText_0xa0efb: ; 0xa0efb
 	text "The other day, I"
 	line "went out to eat"
 
-	para "with DJ BEN!"
+	para "with DJ Ben!"
 	line "Isn't it great?"
 
 	para "Not only that, he"
@@ -130,7 +130,7 @@ UnknownText_0xa0efb: ; 0xa0efb
 UnknownText_0xa0fcf: ; 0xa0fcf
 	text "You know the"
 	line "receptionist at"
-	cont "the RADIO TOWER?"
+	cont "the Radio Tower?"
 
 	para "'Welcome,' is all"
 	line "she ever says."
@@ -139,7 +139,7 @@ UnknownText_0xa0fcf: ; 0xa0fcf
 	line "the chattiest"
 
 	para "person at the"
-	line "RADIO TOWER."
+	line "Radio Tower."
 
 	para "So she must be"
 	line "holding back."
@@ -156,9 +156,9 @@ UnknownText_0xa109d: ; 0xa109d
 	line "Have you ever won"
 
 	para "a prize on the"
-	line "LUCKY NUMBER SHOW?"
+	line "Lucky Number Show?"
 
-	para "REED moans that"
+	para "Reed moans that"
 	line "he's never won, so"
 
 	para "he vows to keep"
@@ -179,7 +179,7 @@ UnknownText_0xa1143: ; 0xa1143
 	para "ate a ton of junk"
 	line "food!"
 
-	para "MARY and I have"
+	para "Mary and I have"
 	line "this deal about"
 	cont "losing weight…"
 
@@ -191,9 +191,9 @@ UnknownText_0xa1143: ; 0xa1143
 	para "This has to be a"
 	line "total secret!"
 
-	para "MARY weighs…"
+	para "Mary weighs…"
 
-	para "Aiyee! M-MARY!"
+	para "Aiyee! M-Mary!"
 
 	para "Uh… Um… I… Sorry,"
 	line "wrong number!"
@@ -201,8 +201,8 @@ UnknownText_0xa1143: ; 0xa1143
 ; 0xa1244
 
 UnknownText_0xa1244: ; 0xa1244
-	text "Yesterday, PROF."
-	line "OAK was in the"
+	text "Yesterday, Prof."
+	line "Oak was in the"
 
 	para "studio to tape his"
 	line "show."
@@ -214,7 +214,7 @@ UnknownText_0xa1244: ; 0xa1244
 	line "in to my program!"
 
 	para "Oh! Here comes"
-	line "PROF.OAK again!"
+	line "Prof.Oak again!"
 
 	para "I'm going to chat"
 	line "him up again!"
@@ -240,15 +240,15 @@ UnknownText_0xa1318: ; 0xa1318
 
 	para "I'll catch you on"
 	line "the fly. This has"
-	cont "been BUENA!"
+	cont "been Buena!"
 	done
 ; 0xa13d8
 
 UnknownText_0xa13d8: ; 0xa13d8
 	text "Hey, <PLAY_G>."
-	line "You won that RADIO"
+	line "You won that Radio"
 
-	para "CARD by beating"
+	para "Card by beating"
 	line "the quiz at the"
 
 	para "reception desk,"
@@ -270,19 +270,19 @@ UnknownText_0xa1488: ; 0xa1488
 	line "more people are"
 
 	para "taking part in my"
-	line "PASSWORD show."
+	line "Password show."
 
-	para "But when PIKACHU"
+	para "But when Pikachu"
 	line "was the password,"
 
 	para "it was uh… whew…"
 	line "overwhelming."
 
-	para "FAN CLUB people"
+	para "Fan Club people"
 	line "came in out in"
 
 	para "droves, shouting"
-	line "'PIKACHU!' over"
+	line "'Pikachu!' over"
 
 	para "and over. I mean,"
 	line "they were loud."
@@ -302,9 +302,9 @@ UnknownText_0xa1488: ; 0xa1488
 
 UnknownText_0xa15de: ; 0xa15de
 	text "Guess what?"
-	line "The RADIO TOWER's"
+	line "The Radio Tower's"
 
-	para "DIRECTOR is a big"
+	para "Director is a big"
 	line "fan of TV!"
 
 	para "A while ago, a"
@@ -317,7 +317,7 @@ UnknownText_0xa15de: ; 0xa15de
 	line "are black suits."
 
 	para "But it's a secret"
-	line "that our DIRECTOR"
+	line "that our Director"
 
 	para "is a TV fan, so if"
 	line "you see him, don't"
@@ -325,7 +325,7 @@ UnknownText_0xa15de: ; 0xa15de
 	para "you dare mention"
 	line "it!"
 
-	para "Oh! The DIRECTOR"
+	para "Oh! The Director"
 	line "will be here soon!"
 
 	para "Later! Tune into"
@@ -368,13 +368,13 @@ UnknownText_0xa1717: ; 0xa1717
 
 UnknownText_0xa183d: ; 0xa183d
 	text "<PLAY_G>, what was"
-	line "the first #MON"
+	line "the first #mon"
 	cont "you ever caught?"
 
 	para "…Oh, really?"
 
 	para "I've seen lots of"
-	line "#MON around,"
+	line "#mon around,"
 
 	para "but I've never"
 	line "caught one."
@@ -383,25 +383,25 @@ UnknownText_0xa183d: ; 0xa183d
 	line "try sometime."
 
 	para "Did you know that"
-	line "the first #MON"
+	line "the first #mon"
 
-	para "MARY caught was a"
-	line "DROWZEE?"
+	para "Mary caught was a"
+	line "Drowzee?"
 
 	para "Isn't that so out"
 	line "of character?"
 
-	para "But MARY's DROWZEE"
+	para "But Mary's Drowzee"
 	line "kept making her"
 
 	para "fall asleep on the"
 	line "job, so she traded"
 
 	para "with a fan for a"
-	line "MEOWTH."
+	line "Meowth."
 
 	para "Let's chat about"
-	line "#MON again!"
+	line "#mon again!"
 
 	para "Bye-bye!"
 	done
@@ -409,19 +409,19 @@ UnknownText_0xa183d: ; 0xa183d
 
 UnknownText_0xa19b1: ; 0xa19b1
 	text "Guess what? All of"
-	line "us from the RADIO"
+	line "us from the Radio"
 
-	para "TOWER are going on"
+	para "Tower are going on"
 	line "a company vacation"
 
-	para "to the RADIO TOWER"
-	line "in LAVENDER."
+	para "to the Radio Tower"
+	line "in Lavender."
 
 	para "We're wasting our"
 	line "vacation on a trip"
 
-	para "to another RADIO"
-	line "TOWER?"
+	para "to another Radio"
+	line "Tower?"
 
 	para "I'd much rather go"
 	line "to the beach!"
@@ -439,24 +439,24 @@ UnknownText_0xa19b1: ; 0xa19b1
 UnknownText_0xa1ac0: ; 0xa1ac0
 	text "Did you know…?"
 
-	para "BEN and FERN talk"
+	para "Ben and Fern talk"
 	line "on the phone for"
 
 	para "hours about what"
-	line "#MON music they"
+	line "#mon music they"
 
 	para "should play on"
 	line "different days of"
 	cont "the week."
 
-	para "One time, FERN's"
+	para "One time, Fern's"
 	line "rapping style kind"
 
 	para "of rubbed off on"
-	line "BEN weirdly."
+	line "Ben weirdly."
 
 	para "So we ended up"
-	line "enduring BEN's"
+	line "enduring Ben's"
 
 	para "silly, chilly, a"
 	line "willy-nilly jive-"
@@ -469,13 +469,13 @@ UnknownText_0xa1ac0: ; 0xa1ac0
 
 UnknownText_0xa1bed: ; 0xa1bed
 	text "I'm going shopping"
-	line "with MARY and LILY"
+	line "with Mary and Lily"
 	cont "soon."
 
 	para "It'll be great if"
-	line "GOLDENROD DEPT."
+	line "Goldenrod Dept."
 
-	para "STORE has a sale"
+	para "Store has a sale"
 	line "on when we go…"
 
 	para "<PLAY_G>, maybe we"
@@ -487,9 +487,9 @@ UnknownText_0xa1bed: ; 0xa1bed
 
 UnknownText_0xa1c88: ; 0xa1c88
 	text "I'm thinking of"
-	line "going to the GAME"
+	line "going to the Game"
 
-	para "CORNER tomorrow."
+	para "Corner tomorrow."
 	line "It's been a while."
 
 	para "You see, I have my"
@@ -510,7 +510,7 @@ UnknownText_0xa1c88: ; 0xa1c88
 
 UnknownText_0xa1d5f: ; 0xa1d5f
 	text "Hey, <PLAY_G>. You"
-	line "use your #GEAR"
+	line "use your #gear"
 
 	para "to listen to the"
 	line "radio, right?"
@@ -519,12 +519,12 @@ UnknownText_0xa1d5f: ; 0xa1d5f
 	line "can even display"
 
 	para "town maps with"
-	line "#GEAR."
+	line "#gear."
 
 	para "I have a bad sense"
 	line "of direction, so"
 
-	para "#GEAR would be"
+	para "#gear would be"
 	line "handy…"
 
 	para "Anyway, thanks for"
@@ -537,9 +537,9 @@ UnknownText_0xa1e2f: ; 0xa1e2f
 	line "outside today?"
 
 	para "When you're cooped"
-	line "up in the RADIO"
+	line "up in the Radio"
 
-	para "TOWER as much as I"
+	para "Tower as much as I"
 	line "am, you lose touch"
 
 	para "with the outside."

@@ -6,7 +6,7 @@ ErinAskNumber1Text:
 	line "much harder…"
 
 	para "Here's my number."
-	line "I'm ERIN--don't"
+	line "I'm Erin--don't"
 
 	para "forget! Want to"
 	line "battle me again?"
@@ -31,7 +31,7 @@ ErinNumberDeclinedText:
 	line "If you do want to"
 
 	para "battle, come see"
-	line "ERIN--that's me!"
+	line "Erin--that's me!"
 	done
 
 ErinPhoneFullText:

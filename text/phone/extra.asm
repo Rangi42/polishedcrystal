@@ -11,14 +11,14 @@ UnknownText_0x64032: ; 0x64032
 	text "<PLAY_G>, have you"
 	line "heard?"
 
-	para "GOLDENROD's RADIO"
-	line "TOWER has been"
+	para "Goldenrod's Radio"
+	line "Tower has been"
 
-	para "taken over by TEAM"
-	line "ROCKET!"
+	para "taken over by Team"
+	line "Rocket!"
 
-	para "…Um… What's TEAM"
-	line "ROCKET?"
+	para "…Um… What's Team"
+	line "Rocket?"
 	done
 ; 0x64099
 
@@ -26,7 +26,7 @@ UnknownText_0x64099: ; 0x64099
 	text "<PLAY_G>, I heard!"
 
 	para "You defeated that"
-	line "WHITNEY?"
+	line "Whitney?"
 
 	para "It makes me proud"
 	line "to be your friend!"
@@ -38,9 +38,9 @@ UnknownText_0x640e6: ; 0x640e6
 	line "you!"
 
 	para "You saved that"
-	line "#MON at the"
+	line "#mon at the"
 
-	para "LIGHTHOUSE, didn't"
+	para "Lighthouse, didn't"
 	line "you?"
 
 	para "<PLAY_G>, I wish"
@@ -55,14 +55,14 @@ UnknownText_0x6416d: ; 0x6416d
 	text "I heard, I heard,"
 	line "I heard!"
 
-	para "You smashed TEAM"
-	line "ROCKET's hideout!"
+	para "You smashed Team"
+	line "Rocket's hideout!"
 
 	para "You're like a"
 	line "movie hero, even!"
 
 	para "But um… What was"
-	line "TEAM ROCKET?"
+	line "Team Rocket?"
 	done
 ; 0x641e8
 
@@ -73,7 +73,7 @@ UnknownText_0x641e8: ; 0x641e8
 	para "About your heroic"
 	line "liberation of the"
 
-	para "RADIO TOWER! You"
+	para "Radio Tower! You"
 	line "rock so hard!"
 	done
 ; 0x64247
@@ -82,7 +82,7 @@ UnknownText_0x64247: ; 0x64247
 	text "I saw, I saw!"
 
 	para "I saw you go into"
-	line "the DRAGON'S DEN!"
+	line "the Dragon's Den!"
 
 	para "I'm certain you"
 	line "passed! Aww, no"
@@ -94,9 +94,9 @@ UnknownText_0x64247: ; 0x64247
 
 UnknownText_0x642bb: ; 0x642bb
 	text "Yesterday, I went"
-	line "out to NEW BARK"
+	line "out to New Bark"
 
-	para "TOWN.  There was a"
+	para "Town.  There was a"
 	line "lady who looked a"
 
 	para "lot like you,"
@@ -140,8 +140,8 @@ UnknownText_0x643d4: ; 0x643d4
 UnknownText_0x64448: ; 0x64448
 	text "I heard, I heard!"
 
-	para "You got a MAGNET"
-	line "TRAIN PASS!"
+	para "You got a Magnet"
+	line "Train Pass!"
 
 	para "When I saw you"
 	line "departing on the"
@@ -153,16 +153,16 @@ UnknownText_0x64448: ; 0x64448
 	line "for a while."
 
 	para "But since you have"
-	line "that PASS, you can"
+	line "that Pass, you can"
 
 	para "zip back anytime!"
 	line "That's reassuring!"
 
-	para "What? You can FLY"
+	para "What? You can Fly"
 	line "back anytime?"
 
 	para "What do you mean"
-	line "by FLY?"
+	line "by Fly?"
 	done
 ; 0x6455b
 
@@ -170,7 +170,7 @@ UnknownText_0x6455b: ; 0x6455b
 	text "I saw, I saw!"
 
 	para "You waking up"
-	line "SNORLAX!"
+	line "Snorlax!"
 
 	para "I was watching you"
 	line "from afar, so I"
@@ -217,14 +217,14 @@ UnknownText_0x646a3: ; 0x646a3
 UnknownText_0x646df: ; 0x646df
 	text "I saw, I heard!"
 
-	para "You beat MORTY of"
-	line "ECRUTEAK GYM!"
+	para "You beat Morty of"
+	line "Ecruteak Gym!"
 
 	para "Th-that's just"
 	line "incredible!"
 
 	para "I actually went to"
-	line "the GYM's entrance"
+	line "the Gym's entrance"
 
 	para "to cheer you on."
 	line "Did you know that?"
@@ -246,7 +246,7 @@ UnknownText_0x647d8: ; 0x647d8
 	para "You're kicking up"
 	line "a mighty ruckus"
 
-	para "over in KANTO!"
+	para "over in Kanto!"
 	line "What a glorious"
 
 	para "rampage it must"
@@ -285,7 +285,7 @@ UnknownText_0x648dc: ; 0x648dc
 
 	para "Where are you?"
 
-	para "How many BADGES do"
+	para "How many Badges do"
 	line "you have now?"
 
 	para "How much money"
@@ -294,7 +294,7 @@ UnknownText_0x648dc: ; 0x648dc
 	para "How's your mom?"
 
 	para "Have you got lots"
-	line "of #MON?"
+	line "of #mon?"
 
 	para "Is it going to be"
 	line "sunny tomorrow?"
@@ -349,7 +349,7 @@ UnknownText_0x64a71: ; 0x64a71
 
 UnknownText_0x64ada: ; 0x64ada
 	text "Hey, let's battle"
-	line "our #MON!"
+	line "our #mon!"
 
 	para "I won't lose to"
 	line "you battling or in"
@@ -392,7 +392,7 @@ UnknownText_0x64b5f: ; 0x64b5f
 UnknownText_0x64bc6: ; 0x64bc6
 	text "I haven't had any"
 	line "luck seeing rare"
-	cont "#MON lately…"
+	cont "#mon lately…"
 
 	para "But I know they're"
 	line "out there!"
@@ -416,9 +416,9 @@ UnknownText_0x64c5a: ; 0x64c5a
 	line "coming or what?"
 
 	para "You're missing out"
-	line "on seeing YANMA!"
+	line "on seeing Yanma!"
 
-	para "Get down to ROUTE"
+	para "Get down to Route"
 	line "35 right now!"
 	done
 ; 0x64cbd
@@ -665,10 +665,10 @@ UnknownText_0x65271: ; 0x65271
 	line "observations."
 
 	para "I wish I could"
-	line "become a #MON"
+	line "become a #mon"
 
 	para "researcher like"
-	line "PROF.OAK soon."
+	line "Prof.Oak soon."
 	done
 ; 0x65318
 
@@ -728,39 +728,39 @@ UnknownText_0x65471: ; 0x65471
 ; 0x65481
 
 UnknownText_0x65481: ; 0x65481
-	text "Do you know BLUE?"
+	text "Do you know Blue?"
 
-	para "He's PROF.OAK's"
+	para "He's Prof.Oak's"
 	line "grandson and a"
 
-	para "former #MON"
-	line "LEAGUE CHAMPION!"
+	para "former #mon"
+	line "League Champion!"
 
 	para "He's one super"
-	line "#MON trainer!"
+	line "#mon trainer!"
 	done
 ; 0x654ea
 
 UnknownText_0x654ea: ; 0x654ea
-	text "PROF.OAK has a"
+	text "Prof.Oak has a"
 	line "granddaughter"
-	cont "named DAISY."
+	cont "named Daisy."
 
 	para "When she's around,"
 	line "even the most"
 
-	para "ferocious #MON"
+	para "ferocious #mon"
 	line "calm right down."
 	done
 ; 0x65555
 
 UnknownText_0x65555: ; 0x65555
 	text "Everyone's talking"
-	line "about PROF.ELM."
+	line "about Prof.Elm."
 
 	para "He used to be an"
 	line "assistant to the"
-	cont "great PROF.OAK!"
+	cont "great Prof.Oak!"
 
 	para "That is so cool!"
 	line "I envy him!"
@@ -768,11 +768,11 @@ UnknownText_0x65555: ; 0x65555
 ; 0x655c7
 
 UnknownText_0x655c7: ; 0x655c7
-	text "PROF.OAK's dream"
+	text "Prof.Oak's dream"
 	line "is to compile a"
 
 	para "comprehensive"
-	line "#DEX."
+	line "#dex."
 
 	para "I envy you for"
 	line "taking part in"
@@ -781,10 +781,10 @@ UnknownText_0x655c7: ; 0x655c7
 ; 0x65628
 
 UnknownText_0x65628: ; 0x65628
-	text "Do you know KURT,"
-	line "the BALL creator?"
+	text "Do you know Kurt,"
+	line "the Ball creator?"
 
-	para "He and PROF.OAK go"
+	para "He and Prof.Oak go"
 	line "back a long way."
 
 	para "I guess great"
@@ -794,17 +794,17 @@ UnknownText_0x65628: ; 0x65628
 ; 0x6569b
 
 UnknownText_0x6569b: ; 0x6569b
-	text "#MON LEAGUE is"
+	text "#mon League is"
 	line "the great gather-"
 	cont "ing place for all"
 
 	para "trainers who wish"
-	line "to become CHAMP."
+	line "to become Champ."
 
-	para "PROF.OAK acts as"
+	para "Prof.Oak acts as"
 	line "an advisor to the"
 
-	para "#MON LEAGUE's"
+	para "#mon League's"
 	line "headquarters."
 
 	para "He really is a"
@@ -813,8 +813,8 @@ UnknownText_0x6569b: ; 0x6569b
 ; 0x6574a
 
 UnknownText_0x6574a: ; 0x6574a
-	text "PROF.OAK'S #MON"
-	line "TALK is a popular"
+	text "Prof.Oak's #mon"
+	line "Talk is a popular"
 	cont "radio show, right?"
 
 	para "Did you know that"
@@ -823,24 +823,24 @@ UnknownText_0x6574a: ; 0x6574a
 	para "turn down the show"
 	line "at first?"
 
-	para "But MARY's energy"
+	para "But Mary's energy"
 	line "and persistence"
 	cont "wore him down."
 
-	para "So we have MARY to"
+	para "So we have Mary to"
 	line "thank for it!"
 	done
 ; 0x65810
 
 UnknownText_0x65810: ; 0x65810
-	text "PROF.OAK used to"
+	text "Prof.Oak used to"
 	line "be a trainer a"
 	cont "long time ago."
 
 	para "But rather than"
 	line "battling, he found"
 
-	para "#MON themselves"
+	para "#mon themselves"
 	line "to be interesting."
 
 	para "So he abandoned"
@@ -852,9 +852,9 @@ UnknownText_0x65810: ; 0x65810
 ; 0x658c6
 
 UnknownText_0x658c6: ; 0x658c6
-	text "PROF.OAK has a"
+	text "Prof.Oak has a"
 	line "granddaughter"
-	cont "named DAISY."
+	cont "named Daisy."
 
 	para "She has tea every"
 	line "day for an hour"
@@ -866,13 +866,13 @@ UnknownText_0x658c6: ; 0x658c6
 	line "join her for tea"
 
 	para "and chat about"
-	line "PROF.OAK."
+	line "Prof.Oak."
 	done
 ; 0x65969
 
 UnknownText_0x65969: ; 0x65969
 	text "Did you know?"
-	line "PROF.OAK traveled"
+	line "Prof.Oak traveled"
 
 	para "all over the world"
 	line "when he was young."
@@ -880,7 +880,7 @@ UnknownText_0x65969: ; 0x65969
 	para "While traveling,"
 	line "he must've learned"
 
-	para "about #MON"
+	para "about #mon"
 	line "naturally."
 
 	para "I envy him…"
@@ -893,7 +893,7 @@ UnknownText_0x65969: ; 0x65969
 
 UnknownText_0x65a23: ; 0x65a23
 	text "I'm going to study"
-	line "hard so PROF.OAK"
+	line "hard so Prof.Oak"
 
 	para "will make me his"
 	line "assistant!"
@@ -931,7 +931,7 @@ UnknownText_0x65ab2: ; 0x65ab2
 
 UnknownText_0x65b29: ; 0x65b29
 	text "Oh, and recently,"
-	line "my PIKACHU beat a"
+	line "my Pikachu beat a"
 	cont "wild @"
 	text_from_ram StringBuffer4
 	text "!"
@@ -944,10 +944,10 @@ UnknownText_0x65b29: ; 0x65b29
 	para "Don't you think"
 	line "that's astounding?"
 
-	para "My PIKACHU is"
+	para "My Pikachu is"
 	line "awesome!"
 
-	para "My PIKACHU is the"
+	para "My Pikachu is the"
 	line "greatest!"
 	done
 ; 0x65bc8
@@ -963,7 +963,7 @@ UnknownText_0x65bc8: ; 0x65bc8
 	line "cute, so I left"
 
 	para "it…"
-	line "#MON have to be"
+	line "#mon have to be"
 
 	para "cute. They're no"
 	line "good otherwise."
@@ -987,31 +987,31 @@ UnknownText_0x65c66: ; 0x65c66
 	para "I think I'll"
 	line "participate with"
 
-	para "PIKACHU to show"
+	para "Pikachu to show"
 	line "off its cuteness."
 	done
 ; 0x65cf9
 
 UnknownText_0x65cf9: ; 0x65cf9
 	text "I'd like you to"
-	line "have a NUGGET."
+	line "have a Nugget."
 
-	para "My PIKACHU just"
+	para "My Pikachu just"
 	line "loves it."
 
 	para "I'm certain your"
-	line "PIKACHU will love"
+	line "Pikachu will love"
 	cont "it too!"
 	done
 ; 0x65d5c
 
 UnknownText_0x65d5c: ; 0x65d5c
 	text "How is your"
-	line "PIKACHU doing?"
+	line "Pikachu doing?"
 
 	para "Let's get together"
 	line "and brag about our"
-	cont "PIKACHU!"
+	cont "Pikachu!"
 	done
 ; 0x65da6
 
@@ -1119,7 +1119,7 @@ UnknownText_0x65ff2: ; 0x65ff2
 ; 0x66043
 
 UnknownText_0x66043: ; 0x66043
-	text "Yup, TULLY here…"
+	text "Yup, Tully here…"
 
 	para "<PLAY_G>? What?"
 	line "You're lost?"
@@ -1146,7 +1146,7 @@ UnknownText_0x660be: ; 0x660be
 	text "Oh yeah, I got an"
 	line "extremely rare"
 
-	para "#MON in a trade"
+	para "#mon in a trade"
 	line "a while back."
 
 	para "Do you want to"
@@ -1173,16 +1173,16 @@ UnknownText_0x6613c: ; 0x6613c
 
 UnknownText_0x6618c: ; 0x6618c
 	text "Oh yeah, I saw a"
-	line "rare #MON about"
+	line "rare #mon about"
 	cont "an hour ago."
 
 	para "It was my first"
 	line "sighting. But I"
 
 	para "didn't have any"
-	line "# BALLS…"
+	line "# Balls…"
 
-	para "Would BILL laugh"
+	para "Would Bill laugh"
 	line "at my mistakes?"
 	done
 ; 0x66214
@@ -1197,7 +1197,7 @@ UnknownText_0x66214: ; 0x66214
 	para "It'll be a chance"
 	line "to see my rare"
 
-	para "#MON. It'll be"
+	para "#mon. It'll be"
 	line "worth your time!"
 
 	para "You know where--"
@@ -1214,50 +1214,50 @@ UnknownText_0x662a9: ; 0x662a9
 
 UnknownText_0x662bc: ; 0x662bc
 	text "Did you know…?"
-	line "BILL's father is"
+	line "Bill's father is"
 
 	para "supposed to be a"
-	line "great #MANIAC."
+	line "great #maniac."
 	done
 ; 0x662fc
 
 UnknownText_0x662fc: ; 0x662fc
 	text "Did you know…?"
-	line "Apparently BILL's"
+	line "Apparently Bill's"
 
 	para "grandpa isn't a"
-	line "#MANIAC."
+	line "#maniac."
 	done
 ; 0x66335
 
 UnknownText_0x66335: ; 0x66335
 	text "Did you know…?"
-	line "BILL's originally"
-	cont "from GOLDENROD."
+	line "Bill's originally"
+	cont "from Goldenrod."
 	done
 ; 0x66366
 
 UnknownText_0x66366: ; 0x66366
 	text "Did you know…?"
-	line "BILL evidently"
+	line "Bill evidently"
 
-	para "lives on ROUTE 25"
-	line "in KANTO."
+	para "lives on Route 25"
+	line "in Kanto."
 	done
 ; 0x663a1
 
 UnknownText_0x663a1: ; 0x663a1
 	text "Did you know…?"
-	line "ABRA was the first"
+	line "Abra was the first"
 
-	para "#MON that BILL"
+	para "#mon that Bill"
 	line "ostensibly caught."
 	done
 ; 0x663e6
 
 UnknownText_0x663e6: ; 0x663e6
 	text "Did you know…?"
-	line "BILL's younger"
+	line "Bill's younger"
 
 	para "sister apparently"
 	line "can't wink."
@@ -1266,7 +1266,7 @@ UnknownText_0x663e6: ; 0x663e6
 
 UnknownText_0x66421: ; 0x66421
 	text "Did you know…?"
-	line "BILL supposedly"
+	line "Bill supposedly"
 
 	para "hates milk and"
 	line "can't drink it."
@@ -1275,7 +1275,7 @@ UnknownText_0x66421: ; 0x66421
 
 UnknownText_0x6645f: ; 0x6645f
 	text "Did you know…?"
-	line "Evidently, BILL"
+	line "Evidently, Bill"
 
 	para "isn't very good at"
 	line "battling."
@@ -1284,25 +1284,25 @@ UnknownText_0x6645f: ; 0x6645f
 
 UnknownText_0x6649b: ; 0x6649b
 	text "Did you know…?"
-	line "BILL appears to"
+	line "Bill appears to"
 
 	para "like the lady at"
-	line "the FLOWER SHOP."
+	line "the Flower Shop."
 	done
 ; 0x664dd
 
 UnknownText_0x664dd: ; 0x664dd
 	text "Did you know…?"
-	line "BILL's mother is"
+	line "Bill's mother is"
 
 	para "said to have been"
-	line "a KIMONO GIRL."
+	line "a Kimono Girl."
 	done
 ; 0x6651e
 
 UnknownText_0x6651e: ; 0x6651e
 	text "You wanted to hear"
-	line "about BILL?"
+	line "about Bill?"
 
 	para "Sorry, but I'm too"
 	line "busy for you."
@@ -1314,7 +1314,7 @@ UnknownText_0x6651e: ; 0x6651e
 
 UnknownText_0x66579: ; 0x66579
 	text "You want to see my"
-	line "rare #MON."
+	line "rare #mon."
 
 	para "Hurry over to"
 	line "@"
@@ -1346,7 +1346,7 @@ UnknownText_0x66605: ; 0x66605
 	text " a while"
 	line "ago…"
 
-	para "My CLEFAIRY came"
+	para "My Clefairy came"
 	line "close to fainting!"
 
 	para "Isn't that awful?"
@@ -1367,7 +1367,7 @@ UnknownText_0x66688: ; 0x66688
 	text " a while"
 	line "ago…"
 
-	para "My CLEFAIRY got"
+	para "My Clefairy got"
 	line "frightened, so we"
 
 	para "ran away as fast"
@@ -1375,7 +1375,7 @@ UnknownText_0x66688: ; 0x66688
 
 	para "I just can't help"
 	line "feeling protective"
-	cont "of my CLEFAIRY."
+	cont "of my Clefairy."
 	done
 ; 0x66730
 
@@ -1387,7 +1387,7 @@ UnknownText_0x66730: ; 0x66730
 	line "battle?"
 
 	para "I'll be waiting"
-	line "with CLEFAIRY on"
+	line "with Clefairy on"
 	cont "@"
 	text_from_ram StringBuffer5
 	text "."
@@ -1399,7 +1399,7 @@ UnknownText_0x66796: ; 0x66796
 	text "!"
 
 	para "It's awful."
-	line "My CLEFAIRY…"
+	line "My Clefairy…"
 
 	para "Huh? <PLAY_G>?"
 
@@ -1417,11 +1417,11 @@ UnknownText_0x667f7: ; 0x667f7
 ; 0x66801
 
 UnknownText_0x66801: ; 0x66801
-	text "I bought some PINK"
-	line "BOWS at GOLDENROD"
+	text "I bought some Pink"
+	line "Bows at Goldenrod"
 
-	para "DEPT.STORE for my"
-	line "CLEFAIRY."
+	para "Dept.Store for my"
+	line "Clefairy."
 
 	para "I got too many, so"
 	line "I'll give you one!"
@@ -1435,7 +1435,7 @@ UnknownText_0x66801: ; 0x66801
 
 UnknownText_0x66882: ; 0x66882
 	text "I love dressing up"
-	line "my CLEFAIRY!"
+	line "my Clefairy!"
 	done
 ; 0x668a3
 
@@ -1443,7 +1443,7 @@ UnknownText_0x668a3: ; 0x668a3
 	text "What's wrong?"
 	line "Can't you visit?"
 
-	para "CLEFAIRY got tired"
+	para "Clefairy got tired"
 	line "and fell asleep."
 
 	para "I'm not sure if I"
@@ -1462,7 +1462,7 @@ UnknownText_0x6691d: ; 0x6691d
 
 	para "I'm sure this will"
 	line "look good on your"
-	cont "CLEFAIRY."
+	cont "Clefairy."
 
 	para "Please hurry to"
 	line "@"
@@ -1501,7 +1501,7 @@ UnknownText_0x669ed: ; 0x669ed
 	para "just barely eluded"
 	line "us."
 
-	para "I wanted to FLY"
+	para "I wanted to Fly"
 	line "after it…"
 	done
 ; 0x66a3a
@@ -1539,7 +1539,7 @@ UnknownText_0x66ad1: ; 0x66ad1
 	para "@"
 	text_from_ram StringBuffer5
 	text "!"
-	line "FLY over now!"
+	line "Fly over now!"
 	done
 ; 0x66afc
 
@@ -1564,7 +1564,7 @@ UnknownText_0x66b3e: ; 0x66b3e
 	line "more fun fishing"
 
 	para "than beating wild"
-	line "#MON."
+	line "#mon."
 	done
 ; 0x66b8f
 
@@ -1651,8 +1651,8 @@ UnknownText_0x66d45: ; 0x66d45
 	text "…"
 	line "Just head from"
 
-	para "MAHOGANY toward"
-	line "BLACKTHORN!"
+	para "Mahogany toward"
+	line "Blackthorn!"
 	done
 ; 0x66dab
 
@@ -1709,7 +1709,7 @@ UnknownText_0x66ed3: ; 0x66ed3
 
 UnknownText_0x66f11: ; 0x66f11
 	text "I'm taking a break"
-	line "on ROUTE 45!"
+	line "on Route 45!"
 
 	para "Why not drop by if"
 	line "you are free?"
@@ -1822,7 +1822,7 @@ UnknownText_0x671a4: ; 0x671a4
 	text "!"
 
 	para "I've raised my"
-	line "#MON properly!"
+	line "#mon properly!"
 	done
 ; 0x671eb
 
@@ -1840,7 +1840,7 @@ UnknownText_0x671eb: ; 0x671eb
 ; 0x6722e
 
 UnknownText_0x6722e: ; 0x6722e
-	text "I'm ERIN. Want to"
+	text "I'm Erin. Want to"
 	line "battle me again?"
 
 	para "I won't lose this"
@@ -1861,7 +1861,7 @@ UnknownText_0x67281: ; 0x67281
 UnknownText_0x67294: ; 0x67294
 	text "I'm working hard"
 	line "to raise my"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Come back for"
 	line "another battle!"
@@ -1870,7 +1870,7 @@ UnknownText_0x67294: ; 0x67294
 
 UnknownText_0x672d5: ; 0x672d5
 	text "Oh, <PLAY_G>!"
-	line "Come battle ERIN!"
+	line "Come battle Erin!"
 
 	para "I'll be waiting on"
 	line "@"

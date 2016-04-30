@@ -1,6 +1,6 @@
 UnknownText_0x174000: ; 0x174000
 	text "Hi, <PLAY_G>!"
-	line "Our BICYCLE sales"
+	line "Our Bicycle sales"
 
 	para "have gone through"
 	line "the roof!"
@@ -9,12 +9,12 @@ UnknownText_0x174000: ; 0x174000
 	line "your advertising"
 
 	para "by riding around"
-	line "on our BICYCLE."
+	line "on our Bicycle."
 
 	para "As our way of say-"
 	line "ing thanks, please"
 
-	para "keep that BICYCLE."
+	para "keep that Bicycle."
 	line "Thanks again!"
 	done
 ; 0x1740c0
@@ -87,7 +87,7 @@ UnknownText_0x174261: ; 0x174261
 	text "Did you know?"
 
 	para "When it's raining,"
-	line "THUNDER is sure to"
+	line "Thunder is sure to"
 	cont "strike."
 	done
 ; 0x17429d
@@ -95,8 +95,8 @@ UnknownText_0x174261: ; 0x174261
 UnknownText_0x17429d: ; 0x17429d
 	text "Did you know…?"
 
-	para "If you use DEFENSE"
-	line "CURL, ROLLOUT's"
+	para "If you use Defense"
+	line "Curl, Rollout's"
 
 	para "power goes way up"
 	line "past normal."
@@ -107,7 +107,7 @@ UnknownText_0x1742ee: ; 0x1742ee
 	text "Did you know…?"
 
 	para "If the sunlight is"
-	line "harsh, SOLARBEAM"
+	line "harsh, Solar Beam"
 
 	para "doesn't need to be"
 	line "charged up."
@@ -118,9 +118,9 @@ UnknownText_0x174340: ; 0x174340
 	text "Did you know…?"
 
 	para "If the opponent"
-	line "uses MINIMIZE,"
+	line "uses Minimize,"
 
-	para "your STOMP becomes"
+	para "your Stomp becomes"
 	line "more powerful."
 	done
 ; 0x174391
@@ -129,9 +129,9 @@ UnknownText_0x174391: ; 0x174391
 	text "Did you know…?"
 
 	para "If your opponent"
-	line "is FLYing, your"
+	line "is Flying, your"
 
-	para "GUST becomes much"
+	para "Gust becomes much"
 	line "more powerful."
 	done
 ; 0x1743e3
@@ -140,9 +140,9 @@ UnknownText_0x1743e3: ; 0x1743e3
 	text "Did you know…?"
 
 	para "If your opponent"
-	line "is FLYing, your"
+	line "is Flying, your"
 
-	para "TWISTER becomes"
+	para "Twister becomes"
 	line "more powerful."
 	done
 ; 0x174433
@@ -151,9 +151,9 @@ UnknownText_0x174433: ; 0x174433
 	text "Did you know…?"
 
 	para "If your opponent"
-	line "uses DIG, your"
+	line "uses Dig, your"
 
-	para "EARTHQUAKE becomes"
+	para "Earthquake becomes"
 	line "more powerful."
 	done
 ; 0x174485
@@ -162,9 +162,9 @@ UnknownText_0x174485: ; 0x174485
 	text "Did you know…?"
 
 	para "If your opponent"
-	line "uses DIG, your"
+	line "uses Dig, your"
 
-	para "MAGNITUDE becomes"
+	para "Magnitude becomes"
 	line "more powerful."
 	done
 ; 0x1744d6
@@ -176,7 +176,7 @@ UnknownText_0x1744d6: ; 0x1744d6
 	line "and steel types"
 
 	para "can't be hurt by"
-	line "SANDSTORM."
+	line "Sandstorm."
 	done
 ; 0x174522
 
@@ -245,9 +245,9 @@ UnknownText_0x174688: ; 0x174688
 UnknownText_0x1746c3: ; 0x1746c3
 	text "I happened to come"
 	line "across a wild"
-	cont "SNUBBULL recently."
+	cont "Snubbull recently."
 
-	para "My SNUBBULL, I"
+	para "My Snubbull, I"
 	line "assure you, was"
 
 	para "far cuter than the"
@@ -257,7 +257,7 @@ UnknownText_0x1746c3: ; 0x1746c3
 
 UnknownText_0x174734: ; 0x174734
 	text "I happened to see"
-	line "a wild MARILL the"
+	line "a wild Marill the"
 
 	para "other day."
 	line "Or so I thought."
@@ -280,7 +280,7 @@ UnknownText_0x1747ac: ; 0x1747ac
 
 UnknownText_0x1747cc: ; 0x1747cc
 	text "My husband got"
-	line "some NUGGETS."
+	line "some Nuggets."
 
 	para "If you'd like, you"
 	line "could have one as"
@@ -299,17 +299,17 @@ UnknownText_0x1747cc: ; 0x1747cc
 ; 0x17485b
 
 UnknownText_0x17485b: ; 0x17485b
-	text "Are your #MON"
+	text "Are your #mon"
 	line "in prime form?"
 
 	para "Let's chat about"
-	line "#MON again."
+	line "#mon again."
 	done
 ; 0x174895
 
 UnknownText_0x174895: ; 0x174895
 	text "Pardon?"
-	line "Oh, the NUGGET?"
+	line "Oh, the Nugget?"
 
 	para "There's no need to"
 	line "hurry. Come see me"
@@ -403,7 +403,7 @@ UnknownText_0x174a80: ; 0x174a80
 	line "your guard down,"
 
 	para "even against a"
-	line "#MON you're"
+	line "#mon you're"
 	cont "used to seeing."
 	done
 ; 0x174b2d
@@ -513,7 +513,7 @@ UnknownText_0x174d86: ; 0x174d86
 
 	para "noticed that I was"
 	line "all out of #"
-	cont "BALLS."
+	cont "Balls."
 
 	para "If you don't check"
 	line "your items, you"
@@ -584,13 +584,13 @@ UnknownText_0x174f2f: ; 0x174f2f
 
 UnknownText_0x174f90: ; 0x174f90
 	text "A while ago, my"
-	line "FARFETCH'D KO'd"
+	line "Farfetch'd KO'd"
 	cont "this @"
 	text_from_ram StringBuffer4
 	text "."
 
 	para "You should have"
-	line "seen FARFETCH'D"
+	line "seen Farfetch'd"
 
 	para "wield that stick."
 	line "Amazing stuff!"
@@ -619,7 +619,7 @@ UnknownText_0x17507d: ; 0x17507d
 	line "again?"
 
 	para "For some reason,"
-	line "my FARFETCH'D is"
+	line "my Farfetch'd is"
 
 	para "all worked up and"
 	line "raring to go."
@@ -640,7 +640,7 @@ UnknownText_0x175106: ; 0x175106
 ; 0x175116
 
 UnknownText_0x175116: ; 0x175116
-	text "My FARFETCH'D had"
+	text "My Farfetch'd had"
 	line "something pretty"
 	cont "in its beak."
 
@@ -674,7 +674,7 @@ UnknownText_0x17520a: ; 0x17520a
 	text "<PLAY_G>, could you"
 	line "hurry over?"
 
-	para "FARFETCH'D is"
+	para "Farfetch'd is"
 	line "agitated."
 
 	para "If you don't come"
@@ -746,7 +746,7 @@ UnknownText_0x17536b: ; 0x17536b
 UnknownText_0x1753c5: ; 0x1753c5
 	text "Have I ever failed"
 	line "to catch a wild"
-	cont "#MON?"
+	cont "#mon?"
 
 	para "You need to ask?"
 
@@ -812,7 +812,7 @@ UnknownText_0x175530: ; 0x175530
 	cont "than before!"
 
 	para "I doubt there's a"
-	line "#MON as cool as"
+	line "#mon as cool as"
 
 	para "this guy in your"
 	line "party!"
@@ -904,10 +904,10 @@ UnknownText_0x175786: ; 0x175786
 ; 0x1757d4
 
 UnknownText_0x1757d4: ; 0x1757d4
-	text "Are your #MON"
+	text "Are your #mon"
 	line "growing?"
 
-	para "My #MON are"
+	para "My #mon are"
 	line "growing a bit too"
 
 	para "quickly for me."
@@ -949,7 +949,7 @@ UnknownText_0x1758e4: ; 0x1758e4
 	line "the last second."
 
 	para "I know it's a"
-	line "common #MON…"
+	line "common #mon…"
 
 	para "But it does annoy"
 	line "me that it got"
@@ -961,7 +961,7 @@ UnknownText_0x1758e4: ; 0x1758e4
 
 UnknownText_0x175976: ; 0x175976
 	text "Do you feel like a"
-	line "#MON battle?"
+	line "#mon battle?"
 
 	para "It won't be like"
 	line "last time!"
@@ -985,7 +985,7 @@ UnknownText_0x1759f7: ; 0x1759f7
 	text "The Bug-Catching"
 	line "Contest is at the"
 
-	para "NATIONAL PARK"
+	para "National Park"
 	line "today."
 
 	para "Are you going,"
@@ -998,7 +998,7 @@ UnknownText_0x1759f7: ; 0x1759f7
 
 UnknownText_0x175a60: ; 0x175a60
 	text "I found all kinds"
-	line "of BERRIES. If you"
+	line "of Berries. If you"
 
 	para "want, I'll share"
 	line "some with you."
@@ -1011,7 +1011,7 @@ UnknownText_0x175a60: ; 0x175a60
 ; 0x175abe
 
 UnknownText_0x175abe: ; 0x175abe
-	text "Huh? BERRIES?"
+	text "Huh? Berries?"
 
 	para "Sorry, I haven't"
 	line "found any yet."
@@ -1094,7 +1094,7 @@ UnknownText_0x175c9f: ; 0x175c9f
 	line "about it until he"
 
 	para "shared his #"
-	line "BALLS with me."
+	line "Balls with me."
 
 	para "Hahah, that sure"
 	line "made my day!"
@@ -1158,11 +1158,11 @@ UnknownText_0x175eaf: ; 0x175eaf
 	text "Yeah, I know."
 
 	para "You're looking for"
-	line "rare #MON."
+	line "rare #mon."
 
 	para "Recently, all I've"
 	line "been catching are"
-	cont "MAGIKARP, though…"
+	cont "Magikarp, though…"
 	done
 ; 0x175f11
 
@@ -1186,7 +1186,7 @@ UnknownText_0x175f70: ; 0x175f70
 
 	para "Aren't you coming"
 	line "over to fish for"
-	cont "QWILFISH?"
+	cont "Qwilfish?"
 
 	para "I'm on ROUTE 32,"
 	line "so hurry up!"
@@ -1261,8 +1261,8 @@ UnknownText_0x17610a: ; 0x17610a
 ; 0x1761a7
 
 UnknownText_0x1761a7: ; 0x1761a7
-	text "Hi, TANIA. How are"
-	line "you? This is LIZ."
+	text "Hi, Tania. How are"
+	line "you? This is Liz."
 
 	para "I'm fine, but I'm"
 	line "bored silly!"
@@ -1284,7 +1284,7 @@ UnknownText_0x176223: ; 0x176223
 	para "I was listening to"
 	line "the radio in the"
 
-	para "RUINS OF ALPH when"
+	para "Ruins of Alph when"
 	line "an odd broadcast"
 
 	para "suddenly cut it on"
@@ -1299,9 +1299,9 @@ UnknownText_0x1762c3: ; 0x1762c3
 	text "Listen, listen!"
 
 	para "Don't you think"
-	line "FALKNER of VIOLET"
+	line "Falkner of Violet"
 
-	para "GYM is cool and"
+	para "Gym is cool and"
 	line "handsome?"
 
 	para "But they say his"
@@ -1311,7 +1311,7 @@ UnknownText_0x1762c3: ; 0x1762c3
 	line "road, is even more"
 
 	para "cool and handsome"
-	line "than FALKNER."
+	line "than Falkner."
 
 	para "I wish I could"
 	line "meet him!"
@@ -1321,11 +1321,11 @@ UnknownText_0x1762c3: ; 0x1762c3
 UnknownText_0x17638a: ; 0x17638a
 	text "Listen, listen!"
 
-	para "Do you know EARL,"
+	para "Do you know Earl,"
 	line "the teacher who"
 
-	para "runs the #MON"
-	line "ACADEMY in VIOLET?"
+	para "runs the #mon"
+	line "Academy in Violet?"
 
 	para "I saw him doing"
 	line "pirouettes while"
@@ -1338,13 +1338,13 @@ UnknownText_0x17638a: ; 0x17638a
 UnknownText_0x176424: ; 0x176424
 	text "Listen, listen!"
 
-	para "I collect #MON"
+	para "I collect #mon"
 	line "plush dolls."
 
 	para "But I can't seem"
 	line "to get a hold of a"
 
-	para "SURF PIKACHU DOLL."
+	para "Surf Pikachu Doll."
 	line "None of my friends"
 
 	para "have it. It must"
@@ -1360,10 +1360,10 @@ UnknownText_0x1764eb: ; 0x1764eb
 	text "Listen, listen!"
 
 	para "Do you know about"
-	line "MOOMOO MILK?"
+	line "Moomoo Milk?"
 
 	para "You can buy it at"
-	line "MOOMOO FARM."
+	line "Moomoo Farm."
 
 	para "It's supposed to"
 	line "be good for health"
@@ -1379,8 +1379,8 @@ UnknownText_0x1764eb: ; 0x1764eb
 UnknownText_0x176599: ; 0x176599
 	text "Listen, listen!"
 
-	para "There's a #MON"
-	line "SALON in GOLDENROD"
+	para "There's a #mon"
+	line "Salon in Goldenrod"
 
 	para "that's run by two"
 	line "brothers."
@@ -1408,15 +1408,15 @@ UnknownText_0x176599: ; 0x176599
 UnknownText_0x1766ac: ; 0x1766ac
 	text "Listen, listen!"
 
-	para "GOLDENROD GYM's"
-	line "WHITNEY began"
+	para "Goldenrod Gym's"
+	line "Whitney began"
 
 	para "battling only a"
 	line "little while ago!"
 
-	para "But the #MON"
-	line "LEAGUE chose her"
-	cont "as a GYM LEADER!"
+	para "But the #mon"
+	line "League chose her"
+	cont "as a Gym Leader!"
 
 	para "I bet she must be"
 	line "totally talented."
@@ -1431,16 +1431,16 @@ UnknownText_0x17674f: ; 0x17674f
 
 	para "Bug-Catching"
 	line "Contest at the"
-	cont "NATIONAL PARK?"
+	cont "National Park?"
 
 	para "I did once, but"
 	line "all I could catch"
-	cont "was a CATERPIE."
+	cont "was a Caterpie."
 
 	para "But guess what!"
 
 	para "I won with that"
-	line "CATERPIE. Isn't"
+	line "Caterpie. Isn't"
 	cont "that great?"
 	done
 ; 0x176816
@@ -1527,7 +1527,7 @@ UnknownText_0x176a2f: ; 0x176a2f
 	para "@"
 	text_from_ram StringBuffer4
 	text " eat"
-	line "some BERRIES."
+	line "some Berries."
 
 	para "It looked like it"
 	line "was enjoying its"
@@ -1568,7 +1568,7 @@ UnknownText_0x176b45: ; 0x176b45
 
 	para "It took off when I"
 	line "got distracted by"
-	cont "a passing BEAUTY."
+	cont "a passing Beauty."
 
 	para "Learn from my"
 	line "mistake--always"
@@ -1623,12 +1623,12 @@ UnknownText_0x176c61: ; 0x176c61
 	line "I didn't see any"
 
 	para "where there are"
-	line "strong #MON."
+	line "strong #mon."
 	done
 ; 0x176d32
 
 UnknownText_0x176d32: ; 0x176d32
-	text "Rare #MON?"
+	text "Rare #mon?"
 
 	para "Hey, sorry! I was"
 	line "too focused on my"
@@ -1654,17 +1654,17 @@ UnknownText_0x176d85: ; 0x176d85
 
 UnknownText_0x176dd1: ; 0x176dd1
 	text "Hello? What? Where"
-	line "is DUNSPARCE?"
+	line "is Dunsparce?"
 
-	para "DARK CAVE! Hurry!"
+	para "Dark Cave! Hurry!"
 
 	para "I know I've said"
 	line "it before, but"
 
-	para "DUNSPARCE don't"
+	para "Dunsparce don't"
 	line "appear when there"
 
-	para "are strong #MON"
+	para "are strong #mon"
 	line "around."
 	done
 ; 0x176e5d
@@ -1689,7 +1689,7 @@ UnknownText_0x176e9c: ; 0x176e9c
 	text " easily."
 
 	para "I should challenge"
-	line "the GOLDENROD GYM."
+	line "the Goldenrod Gym."
 	done
 ; 0x176eee
 
@@ -1703,7 +1703,7 @@ UnknownText_0x176eee: ; 0x176eee
 	line "a tiny margin."
 
 	para "I'm guessing my"
-	line "#MON's levels"
+	line "#mon's levels"
 
 	para "aren't high enough"
 	line "yet…"
@@ -1737,15 +1737,15 @@ UnknownText_0x176feb: ; 0x176feb
 	line "one we've all been"
 	cont "waiting for!"
 
-	para "GOLDENROD DEPT."
-	line "STORE's bargain"
+	para "Goldenrod Dept."
+	line "Store's bargain"
 	cont "sale is on now!"
 
 	para "Want it cheap?"
 	line "Want it lots?"
 
 	para "Don't miss this"
-	line "GOLDENROD chance!"
+	line "Goldenrod chance!"
 
 	para "Huh? I sound like"
 	line "a huckster?"
@@ -1783,9 +1783,9 @@ UnknownText_0x177138: ; 0x177138
 
 UnknownText_0x17717c: ; 0x17717c
 	text "Haven't you gone"
-	line "to GOLDENROD DEPT."
+	line "to Goldenrod Dept."
 
-	para "STORE? I've scoped"
+	para "Store? I've scoped"
 	line "it out already!"
 
 	para "They had some real"
@@ -1858,11 +1858,11 @@ UnknownText_0x177361: ; 0x177361
 
 UnknownText_0x177378: ; 0x177378
 	text "Have you heard"
-	line "about TEAM ROCKET?"
+	line "about Team Rocket?"
 
 	para "They've taken over"
-	line "the RADIO TOWER in"
-	cont "GOLDENROD."
+	line "the Radio Tower in"
+	cont "Goldenrod."
 
 	para "Are the people"
 	line "inside safe?"

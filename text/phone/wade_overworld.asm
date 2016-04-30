@@ -2,12 +2,12 @@ WadeAskNumber1Text:
 	text "You're awesome!"
 	line "I like you!"
 
-	para "I look for #MON"
+	para "I look for #mon"
 	line "here every day."
 
 	para "When I'm in the"
 	line "grass, I find all"
-	cont "kinds of BERRIES."
+	cont "kinds of Berries."
 
 	para "If you'd like,"
 	line "I'll share some."
@@ -19,7 +19,7 @@ WadeAskNumber1Text:
 WadeAskNumber2Text:
 	text "When I'm in the"
 	line "grass, I find all"
-	cont "kinds of BERRIES."
+	cont "kinds of Berries."
 
 	para "If you'd like,"
 	line "I'll share some."
@@ -62,7 +62,7 @@ WadeGiftText:
 	done
 
 WadePackFullText:
-	text "Oops, your PACK's"
+	text "Oops, your Bag's"
 	line "full. Too bad."
 
 	para "You should come"

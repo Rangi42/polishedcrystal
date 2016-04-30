@@ -36,7 +36,7 @@ MomPhoneNewBarkText: ; 0x1b40b1
 	text_from_ram StringBuffer3
 	text "?"
 
-	para "Come see your MOM"
+	para "Come see your Mom"
 	line "sometime!"
 	done
 
@@ -57,7 +57,7 @@ UnknownText_0x1b411c: ; 0x1b411c
 	text "?"
 
 	para "Good luck on your"
-	line "#MON quest!"
+	line "#mon quest!"
 	done
 
 UnknownText_0x1b4150: ; 0x1b4150
@@ -124,7 +124,7 @@ MomPhoneNoPokemonText: ; 0x1b42ea
 	text "Hello?"
 
 	para "Oh, hi, <PLAYER>!"
-	line "Wasn't PROF.ELM"
+	line "Wasn't Prof.Elm"
 	cont "waiting for you?"
 	done
 
@@ -134,8 +134,8 @@ MomPhoneNoPokedexText: ; 0x1b431d
 	para "Oh, hi, <PLAYER>!"
 	line "You're on a big"
 
-	para "mission for PROF."
-	line "ELM? Be good!"
+	para "mission for Prof."
+	line "Elm? Be good!"
 	done
 
 MomPhoneNoGymQuestText: ; 0x1b435f
@@ -152,9 +152,9 @@ MomPhoneLectureText: ; 0x1b43a1
 	text "Hello?"
 
 	para "…… <PLAYER>?"
-	line "I heard from PROF."
+	line "I heard from Prof."
 
-	para "ELM that you went"
+	para "Elm that you went"
 	line "on a long trip."
 
 	para "I wish you would"

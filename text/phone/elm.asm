@@ -5,15 +5,15 @@ ElmPhoneStartText: ; 0x1b46fc
 	line "it."
 
 	para "Be sure to heal"
-	line "your #MON if"
+	line "your #mon if"
 	cont "they are hurt."
 	done
 
 ElmPhoneSawMrPokemonText: ; 0x1b4749
 	text "Hello, <PLAY_G>?"
 
-	para "Did you meet MR."
-	line "#MON? Great!"
+	para "Did you meet Mr."
+	line "#mon? Great!"
 	cont "Come back safely!"
 	done
 
@@ -21,7 +21,7 @@ ElmPhonePokemonStolenText: ; 0x1b4784
 	text "<PLAY_G>? I'm very"
 	line "upset now."
 
-	para "We had a #MON"
+	para "We had a #mon"
 	line "stolen from here."
 
 	para "How could anyone"
@@ -32,10 +32,10 @@ ElmPhoneCheckingEggText: ; 0x1b47d5
 	text "Hello, <PLAY_G>?"
 
 	para "We're checking the"
-	line "EGG now. It does"
+	line "Egg now. It does"
 
 	para "appear to be a"
-	line "#MON EGG."
+	line "#mon Egg."
 	done
 
 ElmPhoneAssistantText: ; 0x1b481c
@@ -44,14 +44,14 @@ ElmPhoneAssistantText: ; 0x1b481c
 	para "Did you see my"
 	line "assistant? He's at"
 
-	para "the #MON CENTER"
-	line "in VIOLET CITY."
+	para "the #mon Center"
+	line "in Violet City."
 	done
 
 ElmPhoneEggUnhatchedText: ; 0x1b4868
 	text "Hello, <PLAY_G>?"
 
-	para "How's the EGG? Has"
+	para "How's the Egg? Has"
 	line "anything changed?"
 
 	para "If anything hap-"
@@ -60,11 +60,11 @@ ElmPhoneEggUnhatchedText: ; 0x1b4868
 
 ElmPhoneEggHatchedText: ; 0x1b48bb
 	text "Hello, <PLAY_G>?"
-	line "How is the EGG?"
+	line "How is the Egg?"
 
 	para "What? It hatched?"
 	line "Wow! What kind of"
-	cont "#MON is it?"
+	cont "#mon is it?"
 
 	para "Please come show"
 	line "me now!"
@@ -77,10 +77,10 @@ ElmPhoneDiscovery1Text: ; 0x1b491f
 	line "discovery."
 
 	para "The time it takes"
-	line "for an EGG to"
+	line "for an Egg to"
 
 	para "hatch depends on"
-	line "the #MON."
+	line "the #mon."
 	done
 
 ElmPhoneDiscovery2Text: ; 0x1b4982
@@ -90,7 +90,7 @@ ElmPhoneDiscovery2Text: ; 0x1b4982
 	line "mystery what kinds"
 
 	para "of moves hatched"
-	line "#MON have."
+	line "#mon have."
 
 	para "We're investigat-"
 	line "ing that now."
@@ -105,17 +105,17 @@ ElmPhonePokerusText: ; 0x1b49e7
 	para "Apparently there's"
 	line "something called"
 
-	para "#RUS that in-"
-	line "fects #MON."
+	para "#rus that in-"
+	line "fects #mon."
 
 	para "Yes, it's like a"
 	line "virus, so it's"
-	cont "called #RUS."
+	cont "called #rus."
 
 	para "It multiplies fast"
 	line "and infects other"
 
-	para "#MON too. But"
+	para "#mon too. But"
 	line "that's all."
 
 	para "It doesn't seem to"
@@ -148,12 +148,12 @@ ElmPhoneEggAssistantText: ; 0x1b4b87
 	line "discovered some-"
 
 	para "thing about the"
-	line "EGG!"
+	line "Egg!"
 
 	para "My assistant is at"
-	line "the #MON CENTER"
+	line "the #mon Center"
 
-	para "in VIOLET CITY. "
+	para "in Violet City. "
 	line "Could you talk to"
 	cont "him?"
 	done
@@ -169,13 +169,13 @@ ElmPhoneRocketText: ; 0x1b4c06
 	line "radio broadcasts."
 
 	para "They were talking"
-	line "about TEAM ROCKET."
+	line "about Team Rocket."
 
 	para "<PLAY_G>, do you"
 	line "know anything"
 	cont "about it?"
 
-	para "Maybe TEAM ROCKET"
+	para "Maybe Team Rocket"
 	line "has returned. No,"
 
 	para "that just can't"
@@ -192,7 +192,7 @@ ElmPhoneGiftText: ; 0x1b4d09
 	line "here for you."
 
 	para "Could you swing by"
-	line "my LAB?"
+	line "my Lab?"
 
 	para "See you later!"
 	done
@@ -204,7 +204,7 @@ ElmPhoneUnusedText: ; 0x1b4d5d
 	para "I got ahold of"
 	line "something neat."
 
-	para "Swing by my LAB"
+	para "Swing by my Lab"
 	line "and pick it up!"
 
 	para "See you later!"

@@ -63,5 +63,5 @@ KenjiPackFullText:
 	line "I will hold this"
 
 	para "till you lighten"
-	line "your PACK!"
+	line "your Bag!"
 	done

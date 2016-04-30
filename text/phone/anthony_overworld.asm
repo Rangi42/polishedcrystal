@@ -1,12 +1,12 @@
 AnthonyAskNumber1Text:
 	text "By the way, I'm a"
-	line "HIKER, so I often"
+	line "Hiker, so I often"
 
 	para "go to mountains"
 	line "and caves."
 
 	para "I occasionally see"
-	line "rare #MON."
+	line "rare #mon."
 
 	para "I could call you"
 	line "the next time I"
@@ -19,7 +19,7 @@ AnthonyAskNumber1Text:
 AnthonyAskNumber2Text:
 	text "I could call you"
 	line "when I see some"
-	cont "rare #MON."
+	cont "rare #mon."
 
 	para "Feel like swapping"
 	line "phone numbers?"
@@ -28,7 +28,7 @@ AnthonyAskNumber2Text:
 AnthonyNumberAcceptedText:
 	text "Be patient. I'll"
 	line "find some rare"
-	cont "#MON for you!"
+	cont "#mon for you!"
 	done
 
 AnthonyNumberDeclinedText:
@@ -47,6 +47,6 @@ AnthonyPhoneFullText:
 AnthonyRematchText:
 	text "All righty, then!"
 
-	para "My #MON and I"
+	para "My #mon and I"
 	line "are raring to go!"
 	done

@@ -50,7 +50,7 @@ ParryRematchText:
 	done
 
 ParryPackFullText:
-	text "Your PACK looks"
+	text "Your Bag looks"
 	line "stuffed full!"
 
 	para "You can't have"
@@ -62,7 +62,7 @@ ParryRematchGiftText:
 	line "special all right."
 
 	para "If only I'd begun"
-	line "#MON when I was"
+	line "#mon when I was"
 	cont "a tad younger…"
 
 	para "I want you to work"
