@@ -3652,22 +3652,22 @@ BattleCommand_DamageCalc: ; 35612
 
 
 TypeBoostItems: ; 35703
-	db HELD_NORMAL_BOOST,   NORMAL   ; Pink Bow
-	db HELD_FIGHTING_BOOST, FIGHTING ; Blackbelt
+	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
+	db HELD_FIGHTING_BOOST, FIGHTING ; Black Belt
 	db HELD_FLYING_BOOST,   FLYING   ; Sharp Beak
 	db HELD_POISON_BOOST,   POISON   ; Poison Barb
 	db HELD_GROUND_BOOST,   GROUND   ; Soft Sand
 	db HELD_ROCK_BOOST,     ROCK     ; Hard Stone
-	db HELD_BUG_BOOST,      BUG      ; Silverpowder
+	db HELD_BUG_BOOST,      BUG      ; SilverPowder
 	db HELD_GHOST_BOOST,    GHOST    ; Spell Tag
 	db HELD_FIRE_BOOST,     FIRE     ; Charcoal
 	db HELD_WATER_BOOST,    WATER    ; Mystic Water
 	db HELD_GRASS_BOOST,    GRASS    ; Miracle Seed
 	db HELD_ELECTRIC_BOOST, ELECTRIC ; Magnet
-	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; Twistedspoon
-	db HELD_ICE_BOOST,      ICE      ; Nevermeltice
+	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; TwistedSpoon
+	db HELD_ICE_BOOST,      ICE      ; NeverMeltIce
 	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
-	db HELD_DARK_BOOST,     DARK     ; Blackglasses
+	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
 	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
 	db HELD_FAIRY_BOOST,    FAIRY    ; Polkadot Bow
 	db $ff
