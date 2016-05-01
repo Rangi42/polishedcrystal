@@ -101,6 +101,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
    * Change in-game trades
    * Decensor Jynx, Sage, and Channeler sprites
+* New Pokémon? (there's room for three without removing any; five by removing Cleffa and Igglybuff)
+   * Eeveelutions: Glaceon, Leafeon, Sylveon
+   * Evolutions: Ambipom, Electivire, Gliscor, Honchkrow, Lickilicky, Magmortar, Magnezone, Mamoswine, Mismagius, Porygon-Z, Rhyperior, Tangrowth, Togekiss, Weavile, Yanmega
+   * Babies: Azurill, Bonsly, Happiny, Mantyke, Mime Jr., Munchlax, Wynaut
 
 
 ## Long-term
