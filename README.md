@@ -110,6 +110,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Selection of 255 moves from all generations (Hail, etc)
 * Selection of up to 255 items from all generations (Zinc, X Sp. Def, PP Max, Dome Fossil, Helix Fossil, Old Amber, Dawn Stone, Dusk Stone, etc)
 * Custom held items that prevent status conditions (based on unused game code)
+* More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Separate IVs and DVs for Special Attack and Special Defense
 * Separate shininess from DVs
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
