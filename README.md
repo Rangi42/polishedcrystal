@@ -121,6 +121,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Replace HM01 Cut with Machete item, and HM05 Flash with Flashlight item
 * Make Rock Smash an HM
 * Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
+* Evening from 5–7 PM (change morning from 4−9 AM)
 * Custom title screen and end credits
 * Import some music from RBY, FRLG, and HGSS
 * Improved AI, without arbitrary penalties or bonuses
