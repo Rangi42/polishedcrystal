@@ -1,5 +1,5 @@
 const_value set 2
-	const AZALEAGYM_Bugsy
+	const AZALEAGYM_BUGSY
 	const AZALEAGYM_BUG_CATCHER1
 	const AZALEAGYM_BUG_CATCHER2
 	const AZALEAGYM_BUG_CATCHER3
@@ -17,16 +17,16 @@ AzaleaGym_MapScriptHeader:
 BugsyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_Bugsy
+	checkevent EVENT_BEAT_BUGSY
 	iftrue .FightDone
 	writetext BugsyText_INeverLose
 	waitbutton
 	closetext
 	winlosstext BugsyText_ResearchIncomplete, 0
-	loadtrainer Bugsy, 1
+	loadtrainer BUGSY, 1
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_Bugsy
+	setevent EVENT_BEAT_BUGSY
 	opentext
 	writetext Text_ReceivedHiveBadge
 	playsound SFX_GET_BADGE
@@ -126,7 +126,7 @@ TrainerBug_catcherJosh:
 
 AzaleaGymGuyScript:
 	faceplayer
-	checkevent EVENT_BEAT_Bugsy
+	checkevent EVENT_BEAT_BUGSY
 	iftrue .AzaleaGymGuyWinScript
 	opentext
 	writetext AzaleaGymGuyText
@@ -146,7 +146,7 @@ AzaleaGymStatue:
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext Bugsy, 1, $1
+	trainertotext BUGSY, 1, $1
 	jumpstd gymstatue2
 
 BugsyText_INeverLose:

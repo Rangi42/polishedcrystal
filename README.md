@@ -1,17 +1,18 @@
-# Pokémon Crystal
+# Pokémon Crystal Omega
 
 This is a custom Pokémon game based on pret's disassembly of Pokémon Crystal.
 
+In the short-term, it's going to be an improved version of Pokémon Crystal
+with bugs fixed, all 251 Pokémon available, more difficulty, lots of mechanics
+and features from newer generations (Fairy type, physical/special split, etc),
+and aesthetic improvements, inspired by Pokémon FireRed Omega and Emerald Omega.
+
+In the long-term, I'm going to make an original game set five years after GSC,
+with a selection of Pokémon, moves, and items from all generations (including
+new evolutions and baby forms like Yanmega and Munchlax, personal favorites
+like Milotic and Gogoat, and *one* fakemon Kangaskid).
+
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
-
-
-## See also
-
-* Disassembly of [**Pokémon Red/Blue**][pokered]
-* irc: [**freenode#pret**][irc]
-
-[pokered]: https://github.com/iimarckus/pokered
-[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
 
 
 ## Features
@@ -99,8 +100,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
    * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
    * Change in-game trades
-   * Replace HM01 Cut with Machete item, and HM05 Flash with Flashlight item
-   * Make Rock Smash an HM
    * Decensor Jynx, Sage, and Channeler sprites
 
 
@@ -118,8 +117,19 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Abilities
 * Natures
 * Wonder Trade system like Red++
+* Replace HM01 Cut with Machete item, and HM05 Flash with Flashlight item
+* Make Rock Smash an HM
 * Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
 * Custom title screen and end credits
 * Import some music from RBY, FRLG, and HGSS
 * Improved AI, without arbitrary penalties or bonuses
 * Rematch Gym Leaders and Elite Four with better teams
+
+
+## See also
+
+* Disassembly of [**Pokémon Red/Blue**][pokered]
+* irc: [**freenode#pret**][irc]
+
+[pokered]: https://github.com/iimarckus/pokered
+[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
