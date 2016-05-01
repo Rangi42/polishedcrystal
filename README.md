@@ -55,6 +55,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Find and fix more bugs
    * Thick Club + Swords Dance Marowak Attack overflow
 * Catch all 251 Pokémon, including Celebi via the Japan-only GS Ball event
+* Add Glaceon, Leafeon, and Sylveon in the three unused Pokémon slots
+* Replace Cleffa and Igglybuff with Togekiss and Weavile
 * Mechanics:
    * Update base stats, learnt moves, and move and item mechanics to Gen VI
    * Physical/Special split from Gen IV
@@ -101,10 +103,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
    * Change in-game trades
    * Decensor Jynx, Sage, and Channeler sprites
-* New Pokémon? (there's room for three without removing any; five by removing Cleffa and Igglybuff)
-   * Eeveelutions: Glaceon, Leafeon, Sylveon
-   * Evolutions: Ambipom, Electivire, Gliscor, Honchkrow, Lickilicky, Magmortar, Magnezone, Mamoswine, Mismagius, Porygon-Z, Rhyperior, Tangrowth, Togekiss, Weavile, Yanmega
-   * Babies: Azurill, Bonsly, Happiny, Mantyke, Mime Jr., Munchlax, Wynaut
 
 
 ## Long-term
