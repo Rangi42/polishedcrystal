@@ -585,11 +585,11 @@ GoldLeafDesc:
 	next "colored leaf.@"
 
 SoftSandDesc:
-	db   "Powers up ground-"
+	db   "Powers up Ground-"
 	next "type moves. (Hold)@"
 
 SharpBeakDesc:
-	db   "Powers up flying-"
+	db   "Powers up Flying-"
 	next "type moves. (Hold)@"
 
 PrzCureBerryDesc:
@@ -605,7 +605,7 @@ IceBerryDesc:
 	next "burn. (Hold)@"
 
 PoisonBarbDesc:
-	db   "Powers up poison-"
+	db   "Powers up Poison-"
 	next "type moves. (Hold)@"
 
 KingsRockDesc:
@@ -632,7 +632,7 @@ BigMushroomDesc:
 	next "Sell high.@"
 
 SilverPowderDesc:
-	db   "Powers up bug-type"
+	db   "Powers up Bug-type"
 	next "moves. (Hold)@"
 
 BluApricornDesc:
@@ -656,18 +656,18 @@ CleanseTagDesc:
 	next "#mon. (Hold)@"
 
 MysticWaterDesc:
-	db   "Powers up water-"
+	db   "Powers up Water-"
 	next "type moves. (Hold)@"
 
 TwistedSpoonDesc:
-	db   "Powers up psychic-"
+	db   "Powers up Psychic-"
 	next "type moves. (Hold)@"
 
 WhtApricornDesc:
 	db   "A white Apricorn.@"
 
 BlackbeltDesc:
-	db   "Boosts fighting-"
+	db   "Boosts Fighting-"
 	next "type moves. (Hold)@"
 
 BlkApricornDesc:
@@ -682,7 +682,7 @@ PnkApricornDesc:
 	next "@"
 
 BlackGlassesDesc:
-	db   "Powers up dark-"
+	db   "Powers up Dark-"
 	next "type moves. (Hold)@"
 
 SlowpokeTailDesc:
@@ -690,7 +690,7 @@ SlowpokeTailDesc:
 	next "high.@"
 
 SilkScarfDesc:
-	db   "Powers up normal-"
+	db   "Powers up Normal-"
 	next "type moves. (Hold)@"
 
 StickDesc:
@@ -702,11 +702,11 @@ SmokeBallDesc:
 	next "#mon. (Hold)@"
 
 NeverMeltIceDesc:
-	db   "Powers up ice-type"
+	db   "Powers up Ice-type"
 	next "moves. (Hold)@"
 
 MagnetDesc:
-	db   "Boosts electric-"
+	db   "Boosts Electric-"
 	next "type moves. (Hold)@"
 
 MiracleBerryDesc:
@@ -726,7 +726,7 @@ EverStoneDesc:
 	next "(Hold)@"
 
 SpellTagDesc:
-	db   "Powers up ghost-"
+	db   "Powers up Ghost-"
 	next "type moves. (Hold)@"
 
 RageCandyBarDesc:
@@ -742,7 +742,7 @@ BlueCardDesc:
 	next "points.@"
 
 MiracleSeedDesc:
-	db   "Powers up grass-"
+	db   "Powers up Grass-"
 	next "type moves. (Hold)@"
 
 ThickClubDesc:
@@ -773,7 +773,7 @@ RevivalHerbDesc:
 	next "#mon. Bitter.@"
 
 HardStoneDesc:
-	db   "Powers up rock-"
+	db   "Powers up Rock-"
 	next "type moves. (Hold)@"
 
 LuckyEggDesc:
@@ -821,7 +821,7 @@ TeruSama11Desc:
 	db   "?@"
 
 CharcoalDesc:
-	db   "Powers up fire-"
+	db   "Powers up Fire-"
 	next "type moves. (Hold)@"
 
 BerryJuiceDesc:
@@ -839,11 +839,11 @@ TeruSama13Desc:
 	db   "?@"
 
 MetalCoatDesc:
-	db   "Powers up steel-"
+	db   "Powers up Steel-"
 	next "type moves. (Hold)@"
 
 DragonFangDesc:
-	db   "Powers up dragon-"
+	db   "Powers up Dragon-"
 	next "type moves. (Hold)@"
 
 TeruSama14Desc:
@@ -867,7 +867,7 @@ MysteryBerryDesc:
 	next "for PP. (Hold)@"
 
 DragonScaleDesc:
-	db   "A rare dragon-type"
+	db   "A rare Dragon-type"
 	next "item.@"
 
 BerserkGeneDesc:
@@ -939,7 +939,7 @@ SunStoneDesc:
 	next "kinds of #mon.@"
 
 PinkBowDesc:
-	db   "Powers up fairy-"
+	db   "Powers up Fairy-"
 	next "type moves. (Hold)@"
 
 TeruSama22Desc:

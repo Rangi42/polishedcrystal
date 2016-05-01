@@ -255,7 +255,7 @@ UnknownText_0x188674:
 	line "better not take me"
 	cont "too lightly."
 
-	para "My water-type"
+	para "My Water-type"
 	line "#mon are tough!"
 	done
 

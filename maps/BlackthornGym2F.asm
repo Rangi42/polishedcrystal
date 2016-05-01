@@ -86,7 +86,7 @@ CooltrainerfFranScript:
 
 CooltrainermCodySeenText:
 	text "It's not as if we"
-	line "all use dragon-"
+	line "all use Dragon-"
 	cont "type #mon."
 	done
 

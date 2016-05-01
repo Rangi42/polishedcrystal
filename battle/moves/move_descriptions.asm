@@ -486,11 +486,11 @@ WaterGunDescription:
 	next "attack.@"
 
 HydroPumpDescription:
-	db   "A powerful water-"
+	db   "A powerful Water-"
 	next "type attack.@"
 
 SurfDescription:
-	db   "A strong water-"
+	db   "A strong Water-"
 	next "type attack.@"
 
 IceBeamDescription:
@@ -622,7 +622,7 @@ EarthquakeDescription:
 	next "vs. flying foes.@"
 
 FissureDescription:
-	db   "A ground-type,"
+	db   "A Ground-type,"
 	next "one-hit KO attack.@"
 
 DigDescription:
@@ -630,7 +630,7 @@ DigDescription:
 	next "2nd turn: Attack@"
 
 ToxicDescription:
-	db   "A poison move with"
+	db   "A Poison move with"
 	next "increasing damage.@"
 
 ConfusionDescription:
@@ -836,6 +836,7 @@ LovelyKissDescription:
 SkyAttackDescription:
 	db   "1st turn: Prepare"
 	next "2nd turn: Attack@"
+
 TransformDescription:
 	db   "The user assumes"
 	next "the foe's guise.@"
@@ -958,7 +959,7 @@ SnoreDescription:
 
 CurseDescription:
 	db   "Works differently"
-	next "for ghost-types.@"
+	next "for Ghost-types.@"
 
 FlailDescription:
 	db   "Stronger if the"
@@ -1149,7 +1150,7 @@ SacredFireDescription:
 	next "inflict a burn.@"
 
 MagnitudeDescription:
-	db   "A ground attack"
+	db   "A Ground attack"
 	next "with random power.@"
 
 DynamicpunchDescription:
@@ -1221,11 +1222,11 @@ TwisterDescription:
 	next "to attack.@"
 
 RainDanceDescription:
-	db   "Boosts water-type"
+	db   "Boosts Water-type"
 	next "moves for 5 turns.@"
 
 SunnyDayDescription:
-	db   "Boosts fire-type"
+	db   "Boosts Fire-type"
 	next "moves for 5 turns.@"
 
 CrunchDescription:
