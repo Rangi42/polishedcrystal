@@ -66,11 +66,11 @@ UnknownScript_0x19b12a:
 	end
 
 UnknownText_0x19b130:
-	text "DAISY: Hi! My kid"
-	line "brother is the GYM"
+	text "Daisy: Hi! My kid"
+	line "brother is the Gym"
 
-	para "LEADER in VIRIDIAN"
-	line "CITY."
+	para "Leader in Viridian"
+	line "City."
 
 	para "But he goes out"
 	line "of town so often,"
@@ -80,14 +80,14 @@ UnknownText_0x19b130:
 	done
 
 UnknownText_0x19b1b6:
-	text "DAISY: Hi! Good"
+	text "Daisy: Hi! Good"
 	line "timing. I'm about"
 	cont "to have some tea."
 
 	para "Would you like to"
 	line "join me?"
 
-	para "Oh, your #MON"
+	para "Oh, your #mon"
 	line "are a bit dirty."
 
 	para "Would you like me"
@@ -95,12 +95,12 @@ UnknownText_0x19b1b6:
 	done
 
 UnknownText_0x19b244:
-	text "DAISY: Which one"
+	text "Daisy: Which one"
 	line "should I groom?"
 	done
 
 UnknownText_0x19b266:
-	text "DAISY: OK, I'll"
+	text "Daisy: OK, I'll"
 	line "get it looking"
 	cont "nice in no time."
 	done
@@ -112,18 +112,18 @@ UnknownText_0x19b296:
 	done
 
 UnknownText_0x19b2aa:
-	text "DAISY: There you"
+	text "Daisy: There you"
 	line "go! All done."
 
 	para "See? Doesn't it"
 	line "look nice?"
 
 	para "It's such a cute"
-	line "#MON."
+	line "#mon."
 	done
 
 UnknownText_0x19b2fa:
-	text "DAISY: I always"
+	text "Daisy: I always"
 	line "have tea around"
 
 	para "this time. Come"
@@ -131,7 +131,7 @@ UnknownText_0x19b2fa:
 	done
 
 UnknownText_0x19b334:
-	text "DAISY: You don't"
+	text "Daisy: You don't"
 	line "want to have one"
 
 	para "groomed? OK, we'll"
@@ -139,9 +139,9 @@ UnknownText_0x19b334:
 	done
 
 UnknownText_0x19b377:
-	text "DAISY: Oh, sorry."
+	text "Daisy: Oh, sorry."
 	line "I honestly can't"
-	cont "groom an EGG."
+	cont "groom an Egg."
 	done
 
 BluesHouse_MapEventHeader:

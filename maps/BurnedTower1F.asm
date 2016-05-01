@@ -174,7 +174,7 @@ BurnedTowerSilver_BeforeText:
 	para "I came looking for"
 	line "some legendary"
 
-	para "#MON that they"
+	para "#mon that they"
 	line "say roosts here."
 
 	para "But there's"
@@ -206,7 +206,7 @@ BurnedTowerSilver_AfterText1:
 	para "You would never be"
 	line "able to catch a"
 
-	para "legendary #MON"
+	para "legendary #mon"
 	line "anyway."
 	done
 
@@ -233,12 +233,12 @@ BurnedTowerSilver_AfterText2:
 	done
 
 BurnedTower1FEusineIntroText:
-	text "EUSINE: My name's"
-	line "EUSINE."
+	text "Eusine: My name's"
+	line "Eusine."
 
 	para "I'm on the trail"
-	line "of a #MON named"
-	cont "SUICUNE."
+	line "of a #mon named"
+	cont "Suicune."
 
 	para "And you are…?"
 
@@ -246,9 +246,9 @@ BurnedTower1FEusineIntroText:
 	line "meet you!"
 
 	para "I heard rumors"
-	line "that SUICUNE is in"
+	line "that Suicune is in"
 
-	para "this BURNED TOWER,"
+	para "this Burned Tower,"
 	line "so I came to look."
 
 	para "But where exactly"
@@ -256,10 +256,10 @@ BurnedTower1FEusineIntroText:
 	done
 
 BurnedTower1FEusineText:
-	text "EUSINE: I heard"
-	line "that SUICUNE is in"
+	text "Eusine: I heard"
+	line "that Suicune is in"
 
-	para "this BURNED TOWER,"
+	para "this Burned Tower,"
 	line "so I came to look."
 
 	para "But where exactly"
@@ -267,21 +267,21 @@ BurnedTower1FEusineText:
 	done
 
 BurnedTower1FMortyText:
-	text "MORTY: ECRUTEAK's"
-	line "GYM LEADER has to"
+	text "Morty: Ecruteak's"
+	line "Gym Leader has to"
 
 	para "study what are"
 	line "said to be the"
 
-	para "legendary #MON"
-	line "--SUICUNE, ENTEI"
-	cont "and RAIKOU."
+	para "legendary #mon"
+	line "--Suicune, Entei"
+	cont "and Raikou."
 
-	para "EUSINE is here, so"
+	para "Eusine is here, so"
 	line "I've decided to"
 
 	para "investigate the"
-	line "TOWER with him."
+	line "Tower with him."
 	done
 
 BurnedTower1F_MapEventHeader:

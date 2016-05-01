@@ -149,20 +149,20 @@ BlackthornCityMartSign:
 Text_ClairIsOut:
 	text "I am sorry."
 
-	para "CLAIR, our GYM"
-	line "LEADER, entered"
+	para "Clair, our Gym"
+	line "Leader, entered"
 
-	para "the DRAGON'S DEN"
-	line "behind the GYM."
+	para "the Dragon's Den"
+	line "behind the Gym."
 
 	para "I have no idea"
-	line "when our LEADER"
+	line "when our Leader"
 	cont "will return."
 	done
 
 Text_ClairIsIn:
-	text "CLAIR, our GYM"
-	line "LEADER, is waiting"
+	text "Clair, our Gym"
+	line "Leader, is waiting"
 	cont "for you."
 
 	para "However, it would"
@@ -174,7 +174,7 @@ Text_ClairIsIn:
 
 Text_ClairIsBeaten:
 	text "You defeated"
-	line "CLAIR?"
+	line "Clair?"
 
 	para "That's amazing!"
 
@@ -182,7 +182,7 @@ Text_ClairIsBeaten:
 	line "of her losing to"
 
 	para "anyone other than"
-	line "LANCE."
+	line "Lance."
 	done
 
 BlackthornGrampsRefusesEntryText:
@@ -194,9 +194,9 @@ BlackthornGrampsRefusesEntryText:
 	done
 
 BlackthornGrampsGrantsEntryText:
-	text "If CLAIR allows"
+	text "If Clair allows"
 	line "it, her grand-"
-	cont "father--our MASTER"
+	cont "father--our Master"
 	cont "--will also."
 
 	para "You may enter."
@@ -218,22 +218,22 @@ BlackBeltText_VoicesInMyHead:
 
 BlackthornCooltrainerF1Text:
 	text "Are you going to"
-	line "make your #MON"
+	line "make your #mon"
 	cont "forget some moves?"
 	done
 
 BlackthornYoungsterText:
 	text "Dragon masters all"
 	line "come from the city"
-	cont "of BLACKTHORN."
+	cont "of Blackthorn."
 	done
 
 MeetSantosText:
-	text "SANTOS: …"
+	text "Santos: …"
 
 	para "It's Saturday…"
 
-	para "I'm SANTOS of"
+	para "I'm Santos of"
 	line "Saturday…"
 	done
 
@@ -242,9 +242,9 @@ SantosGivesGiftText:
 	done
 
 SantosGaveGiftText:
-	text "SANTOS: …"
+	text "Santos: …"
 
-	para "SPELL TAG…"
+	para "Spell Tag…"
 
 	para "Ghost-type moves"
 	line "get stronger…"
@@ -254,7 +254,7 @@ SantosGaveGiftText:
 	done
 
 SantosSaturdayText:
-	text "SANTOS: …"
+	text "Santos: …"
 
 	para "See you again on"
 	line "another Saturday…"
@@ -264,50 +264,50 @@ SantosSaturdayText:
 	done
 
 SantosNotSaturdayText:
-	text "SANTOS: Today's"
+	text "Santos: Today's"
 	line "not Saturday…"
 	done
 
 BlackthornCooltrainerF2Text:
 	text "Wow, you came"
-	line "through the ICE"
-	cont "PATH?"
+	line "through the Ice"
+	cont "Path?"
 
 	para "You must be a real"
 	line "hotshot trainer!"
 	done
 
 BlackthornCitySignText:
-	text "BLACKTHORN CITY"
+	text "Blackthorn City"
 
 	para "A Quiet Mountain"
 	line "Retreat"
 	done
 
 BlackthornGymSignText:
-	text "BLACKTHORN CITY"
-	line "#MON GYM"
-	cont "LEADER: CLAIR"
+	text "Blackthorn City"
+	line "#mon Gym"
+	cont "Leader: Clair"
 
 	para "The Blessed User"
-	line "of Dragon #MON"
+	line "of Dragon #mon"
 	done
 
 MoveDeletersHouseSignText:
-	text "MOVE DELETER'S"
-	line "HOUSE"
+	text "Move Deleter's"
+	line "House"
 	done
 
 DragonDensSignText:
-	text "DRAGON'S DEN"
-	line "AHEAD"
+	text "Dragon's Den"
+	line "Ahead"
 	done
 
 BlackthornCityTrainerTipsText:
-	text "TRAINER TIPS"
+	text "Trainer Tips"
 
-	para "A #MON holding"
-	line "a MIRACLEBERRY"
+	para "A #mon holding"
+	line "a Lum Berry"
 
 	para "will cure itself"
 	line "of any status"

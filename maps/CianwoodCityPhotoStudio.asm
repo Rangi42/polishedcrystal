@@ -29,7 +29,7 @@ UnknownScript_0x9e0f3:
 
 UnknownText_0x9e0f9:
 	text "You have magnifi-"
-	line "cent #MON with"
+	line "cent #mon with"
 	cont "you."
 
 	para "How about a photo"

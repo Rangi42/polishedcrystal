@@ -32,7 +32,7 @@ UnknownText_0x19595c:
 
 	para "command dragons"
 	line "live right here in"
-	cont "BLACKTHORN."
+	cont "Blackthorn."
 
 	para "As a result, there"
 	line "are many legends"
@@ -42,7 +42,7 @@ UnknownText_0x19595c:
 	done
 
 DratiniText:
-	text "DRATINI: Draa!"
+	text "Dratini: Draa!"
 	done
 
 BlackthornDragonSpeechHouse_MapEventHeader:

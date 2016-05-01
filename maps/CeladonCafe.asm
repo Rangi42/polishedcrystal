@@ -157,8 +157,8 @@ UnknownText_0x731ae:
 
 UnknownText_0x731bd:
 	text "The food is good"
-	line "here, but GOLDEN-"
-	cont "ROD has the best"
+	line "here, but Golden-"
+	cont "rod has the best"
 	cont "food anywhere."
 	done
 
@@ -168,10 +168,10 @@ UnknownText_0x73201:
 
 UnknownText_0x73212:
 	text "Nobody here will"
-	line "give you a COIN"
+	line "give you a Coin"
 
-	para "CASE. You should"
-	line "look in JOHTO."
+	para "Case. You should"
+	line "look in Johto."
 	done
 
 UnknownText_0x73254:
@@ -181,7 +181,7 @@ UnknownText_0x73254:
 	done
 
 UnknownText_0x73278:
-	text "More, CHEF!"
+	text "More, Chef!"
 	done
 
 EatathonContestPosterText:

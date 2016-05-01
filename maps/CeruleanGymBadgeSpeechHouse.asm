@@ -13,7 +13,7 @@ PokefanMScript_0x188002:
 
 UnknownText_0x188005:
 	text "Are you collecting"
-	line "KANTO GYM BADGES?"
+	line "Kanto Gym Badges?"
 	done
 
 CeruleanGymBadgeSpeechHouse_MapEventHeader:

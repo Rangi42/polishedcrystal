@@ -1,53 +1,8 @@
 # Pokémon Crystal
 
-This is a disassembly of Pokémon Crystal.
-
-It builds the following roms:
-
-* Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `md5: 9f2922b235a5eeb78d65594e82ef5dde`
-* Pokemon - Crystal Version (UE) (V1.1) [C][!].gbc `md5: 301899b8087289a6436b0a241fbbb474`
+This is a custom Pokémon game based on pret's disassembly of Pokémon Crystal.
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
-
-Planned changes include:
-
-* New storyline set 5 years after Gen II
-* Fairy type from Gen VI
-* Updated base stats, moves, and items as of Gen VI
-* Physical/Special split from Gen IV
-* 251 → 255 Pokémon selected from all generations
-* 251 → 255 moves selected from all generations
-* Replace Teru-sama items with new ones (Zinc, X Sp. Def, PP Max, Dome Fossil, Helix Fossil, Old Amber, Dawn Stone, Dusk Stone, etc)
-* Fix various glitches
-* Gain experience from catching Pokémon
-* Use Gen IV critical hit formula
-* Running Shoes
-* Use new berry names
-* Hatch eggs at level 1 (if experience glitch is fixed)
-* Unlimited-use TMs
-* Use money loss formula from Gen III when whiting out
-* Use continuous-Repel system from Gen V
-* Show Pokémon portrait when using field moves
-* Hail weather effect
-* Better default settings (fast text, stereo sound, set battle style)
-* Speed up HP bar drop
-* Lowercase names?
-* Increase limits on Pokémon per box, number of boxes, coins in coin case, etc?
-* Abilities?
-* Natures?
-* Shiny system from Gen III?
-* Move Relearner?
-* NPCs to rate IVs and DVs/EVs
-* Better Substitute sprites
-* Low-pitched cries when fainting
-* Choose 12/24 hourc clock, and imperial/metric units
-* Bill calls to switch boxes when one is full
-* Send gift Pokémon to the PC if the party is full
-* Replace HM Cut with key item Machete, and HM Flash with key item Flashlight
-* Make Rock Smash an HM, and improve HM moves' quality
-* Add Unown ! and ?
-* Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
-* Look at [TPP Anniversary Crystal changes](https://docs.google.com/document/d/1p1Z25Iqp6QQnZ9c2k-b2on9M2ejQLKxKFOjBzT1H-CM/view) for ideas
 
 
 ## See also
@@ -57,3 +12,114 @@ Planned changes include:
 
 [pokered]: https://github.com/iimarckus/pokered
 [irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
+
+
+## Features
+
+* Add Fairy type from Gen VI (treated as Physical)
+   * Physical type
+   * Updated type chart and Pokémon types
+   * No damaging Fairy-type moves (just Sweet Kiss, Charm, and Moonlight)
+   * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
+* Fix bugs:
+   * Belly Drum needs to cut HP to raise Attack
+   * Burn/Poison/Paralyze improve catch rate
+   * Moon Ball catches Moon Stone evolutions
+   * Love Ball catches opposite sex
+   * Fast Ball catches flee-prone Pokémon
+   * Dragon Fang boosts Dragon-type moves, not Dragon Scale
+   * Medium-Slow growth rate experience underflow at level 1
+   * HP bar lowering glitch
+* Modern game mechanics:
+   * Hold B to run
+   * Steel does not resist Ghost or Dark
+   * Type-enhancing items raise by 20%, not 10%
+   * Hatch Eggs at level 1
+* Grammar and spelling updates:
+   * Title case for Pokémon, moves, items, trainers, types, etc
+   * Updated Berry names (Burnt Berry → Rawst Berry, etc)
+   * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
+   * Cooltrainer → Ace Trainer
+   * Mysticalman Eusine → Mystery Man Eusine
+   * Pack → Bag
+   * Pink Bow → Silk Scarf
+   * Elixer → Elixir
+   * Refer to badges as "the"
+* No badge boosts to stats or types
+* New default player names
+
+
+## To do:
+
+* Find and fix more bugs
+   * Thick Club + Swords Dance Marowak Attack overflow
+* Catch all 251 Pokémon, including Celebi via the Japan-only GS Ball event
+* Mechanics:
+   * Update base stats, learnt moves, and move and item mechanics to Gen VI
+   * Physical/Special split from Gen IV
+   * Unown ? and ! from Gen III
+   * Critical hit formula from Gen IV
+   * Catch rate formula from Gen III
+   * Money loss formula from Gen III when whiting out
+   * Unlimited-use TMs from Gen V
+   * Gain experience from catching Pokémon like in Gen VI
+   * Don't require trading to evolve any Pokémon
+   * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
+   * Sound-based moves bypass Substitute
+   * Struggle does 25% recoil damage
+   * Electric-type Pokémon cannot be Paralyzed
+   * Ghost-type Pokémon cannot be trapped
+   * Grass-type Pokémon are not affected by Powder moves
+   * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
+   * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
+   * Light Ball doubles Pikachu's Attack as well as Special Attack
+* Convenience:
+   * Better default settings (fast text, stereo sound, set battle style, etc)
+   * Settings for 12/24-hour clock, and imperial/metric units
+   * Even faster text
+   * Continuous Repel system from Gen V
+   * Brief beeping with low HP
+   * Bill calls to switch boxes when one is full
+   * Send gift Pokémon to the PC if the party is full
+   * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
+   * No delay when Kurt makes Apricorn Balls
+   * More successful fishing and Headbutting
+   * More likely to find roaming Pokémon when on the correct route
+   * Select reorders Pokémon in party menu
+* Aesthetics:
+   * Higher levels and better moves and held items from HGSS
+   * Fourth stat screen showing Poké Seer's data
+   * Better Substitute sprite
+   * Show Pokémon portrait when using field moves
+   * Low-pitched cries when fainting
+   * Tin Tower → Bell Tower
+* Content:
+   * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands)
+   * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
+   * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
+   * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
+   * Change in-game trades
+   * Replace HM01 Cut with Machete item, and HM05 Flash with Flashlight item
+   * Make Rock Smash an HM
+   * Decensor Jynx, Sage, and Channeler sprites
+
+
+## Long-term
+
+* New storyline set 5 years after Gen II
+* Selection of 255 Pokémon from all generations
+* Selection of 255 moves from all generations (Hail, etc)
+* Selection of up to 255 items from all generations (Zinc, X Sp. Def, PP Max, Dome Fossil, Helix Fossil, Old Amber, Dawn Stone, Dusk Stone, etc)
+* Custom held items that prevent status conditions (based on unused game code)
+* Separate IVs and DVs for Special Attack and Special Defense
+* Separate shininess from DVs
+* Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
+* Move Relearner
+* Abilities
+* Natures
+* Wonder Trade system like Red++
+* Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
+* Custom title screen and end credits
+* Import some music from RBY, FRLG, and HGSS
+* Improved AI, without arbitrary penalties or bonuses
+* Rematch Gym Leaders and Elite Four with better teams

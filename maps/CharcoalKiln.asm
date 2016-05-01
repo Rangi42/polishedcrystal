@@ -78,7 +78,7 @@ CharcoalKilnRadio:
 	jumpstd radio2
 
 CharcoalKilnBossText1:
-	text "All the SLOWPOKE"
+	text "All the Slowpoke"
 	line "have disappeared"
 	cont "from the town."
 
@@ -92,12 +92,12 @@ CharcoalKilnBossText1:
 	done
 
 CharcoalKilnBossText2:
-	text "The SLOWPOKE have"
+	text "The Slowpoke have"
 	line "returned…"
 
-	para "But my APPRENTICE"
+	para "But my Apprentice"
 	line "hasn't come back"
-	cont "from ILEX FOREST."
+	cont "from Ilex Forest."
 
 	para "Where in the world"
 	line "is that lazy guy?"
@@ -105,10 +105,10 @@ CharcoalKilnBossText2:
 
 CharcoalKilnBossText3:
 	text "You chased off"
-	line "TEAM ROCKET and"
+	line "Team Rocket and"
 
-	para "went to ILEX"
-	line "FOREST alone?"
+	para "went to Ilex"
+	line "Forest alone?"
 
 	para "That takes guts!"
 	line "I like that. Come"
@@ -117,7 +117,7 @@ CharcoalKilnBossText3:
 
 CharcoalKilnApprenticeText1:
 	text "Where have all the"
-	line "SLOWPOKE gone?"
+	line "Slowpoke gone?"
 
 	para "Are they out play-"
 	line "ing somewhere?"
@@ -127,25 +127,25 @@ CharcoalKilnApprenticeText2:
 	text "I'm sorry--I for-"
 	line "got to thank you."
 
-	para "This is CHARCOAL"
+	para "This is Charcoal"
 	line "that I made."
 
-	para "Fire-type #MON"
+	para "Fire-type #mon"
 	line "would be happy to"
 	cont "hold that."
 	done
 
 CharcoalKilnApprenticeText3:
-	text "The SLOWPOKE came"
+	text "The Slowpoke came"
 	line "back, and you even"
-	cont "found FARFETCH'D."
+	cont "found Farfetch'd."
 
 	para "You're the cool-"
 	line "est, man!"
 	done
 
 FarfetchdText:
-	text "FARFETCH'D: Kwaa!"
+	text "Farfetch'd: Kwaa!"
 	done
 
 CharcoalKiln_MapEventHeader:

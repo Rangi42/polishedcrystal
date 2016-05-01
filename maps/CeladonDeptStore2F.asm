@@ -64,8 +64,8 @@ CeladonDeptStore2FDirectoryText:
 	text "Top Grade Items"
 	line "for Trainers!"
 
-	para "2F: TRAINER'S"
-	line "    MARKET"
+	para "2F: Trainer's"
+	line "    Market"
 	done
 
 CeladonDeptStore2F_MapEventHeader:

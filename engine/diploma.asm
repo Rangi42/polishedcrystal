@@ -81,7 +81,7 @@ Function1dd7ae: ; 1dd7ae
 ; 1dd7f0
 
 String_1dd7f0: db "Play Time@"
-String_1dd7fa: db "Game Freak@"
+String_1dd7fa: db "GAME FREAK@"
 ; 1dd805
 
 LZ_1dd805: ; 1dd805

@@ -40,7 +40,7 @@ UnknownText_0x1880c3:
 	done
 
 CeruleanDiglettText:
-	text "DIGLETT: Dug dug."
+	text "Diglett: Dug dug."
 	done
 
 CeruleanPoliceStation_MapEventHeader:

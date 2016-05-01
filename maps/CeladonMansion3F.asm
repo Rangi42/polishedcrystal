@@ -86,18 +86,18 @@ MapCeladonMansion3FSignpost3Script:
 UnknownText_0x716ce:
 	text "Is that right?"
 
-	para "I'm the GAME"
-	line "DESIGNER!"
+	para "I'm the Game"
+	line "Designer!"
 
 	para "Filling up your"
-	line "#DEX is tough,"
+	line "#dex is tough,"
 	cont "but don't give up!"
 	done
 
 UnknownText_0x71725:
 	text "Wow! Excellent!"
 	line "You completed your"
-	cont "#DEX!"
+	cont "#dex!"
 
 	para "Congratulations!"
 	done
@@ -107,36 +107,36 @@ UnknownText_0x71760:
 	done
 
 UnknownText_0x71763:
-	text "The GRAPHIC ARTIST"
+	text "The Graphic Artist"
 	line "will print out a"
-	cont "DIPLOMA for you."
+	cont "Diploma for you."
 
 	para "You should go show"
 	line "it off."
 	done
 
 UnknownText_0x717b4:
-	text "I'm the GRAPHIC"
-	line "ARTIST."
+	text "I'm the Graphic"
+	line "Artist."
 
 	para "I drew you!"
 	done
 
 UnknownText_0x717d8:
-	text "I'm the GRAPHIC"
-	line "ARTIST."
+	text "I'm the Graphic"
+	line "Artist."
 
 	para "Oh, you completed"
-	line "your #DEX?"
+	line "your #dex?"
 
 	para "Want me to print"
-	line "out your DIPLOMA?"
+	line "out your Diploma?"
 	done
 
 UnknownText_0x71830:
 	text "Give me a shout if"
 	line "you want your"
-	cont "DIPLOMA printed."
+	cont "Diploma printed."
 	done
 
 UnknownText_0x71863:
@@ -147,17 +147,17 @@ UnknownText_0x71863:
 
 UnknownText_0x71895:
 	text "Who, me? I'm the"
-	line "PROGRAMMER."
+	line "Programmer."
 
 	para "Play the slot"
 	line "machines!"
 	done
 
 UnknownText_0x718ca:
-	text "Aren't the TWINS"
+	text "Aren't the Twins"
 	line "adorable?"
 
-	para "JASMINE's pretty"
+	para "Jasmine's pretty"
 	line "too."
 
 	para "Oh, I love them!"
@@ -165,7 +165,7 @@ UnknownText_0x718ca:
 
 UnknownText_0x7190b:
 	text "GAME FREAK"
-	line "DEVELOPMENT ROOM"
+	line "Development Room"
 	done
 
 UnknownText_0x71928:
@@ -186,7 +186,7 @@ UnknownText_0x71996:
 	text "It's crammed with"
 	line "reference materi-"
 	cont "als. There's even"
-	cont "a # DOLL."
+	cont "a # Doll."
 	done
 
 CeladonMansion3F_MapEventHeader:

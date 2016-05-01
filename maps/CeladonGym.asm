@@ -113,7 +113,7 @@ CeladonGymStatue:
 	jumpstd gymstatue2
 
 UnknownText_0x72b28:
-	text "ERIKA: Hello…"
+	text "Erika: Hello…"
 	line "Lovely weather,"
 
 	para "isn't it?"
@@ -122,12 +122,12 @@ UnknownText_0x72b28:
 	para "…I'm afraid I may"
 	line "doze off…"
 
-	para "My name is ERIKA."
-	line "I am the LEADER of"
-	cont "CELADON GYM."
+	para "My name is Erika."
+	line "I am the Leader of"
+	cont "Celadon Gym."
 
 	para "…Oh? All the way"
-	line "from JOHTO, you"
+	line "from Johto, you"
 	cont "say? How nice…"
 
 	para "Oh. I'm sorry, I"
@@ -141,44 +141,44 @@ UnknownText_0x72b28:
 	done
 
 UnknownText_0x72c3e:
-	text "ERIKA: Oh!"
+	text "Erika: Oh!"
 	line "I concede defeat…"
 
 	para "You are remarkably"
 	line "strong…"
 
 	para "I shall give you"
-	line "RAINBOWBADGE…"
+	line "the Rainbow Badge…"
 	done
 
 UnknownText_0x72c96:
 	text "<PLAYER> received"
-	line "RAINBOWBADGE."
+	line "Rainbow Badge."
 	done
 
 UnknownText_0x72cb0:
-	text "ERIKA: That was a"
+	text "Erika: That was a"
 	line "delightful match."
 
 	para "I felt inspired."
 	line "Please, I wish you"
 	cont "to have this TM."
 
-	para "It is GIGA DRAIN."
+	para "It is Giga Drain."
 
 	para "It is a wonderful"
 	line "move that drains"
 
 	para "half the damage it"
 	line "inflicts to heal"
-	cont "your #MON."
+	cont "your #mon."
 
 	para "Please use it if"
 	line "it pleases you…"
 	done
 
 UnknownText_0x72d8f:
-	text "ERIKA: Losing"
+	text "Erika: Losing"
 	line "leaves a bitter"
 	cont "aftertaste…"
 
@@ -191,7 +191,7 @@ UnknownText_0x72d8f:
 
 LassMichelleSeenText:
 	text "Do you think a"
-	line "girls-only GYM"
+	line "girls-only Gym"
 	cont "is rare?"
 	done
 
@@ -216,7 +216,7 @@ PicnickerTanyaBeatenText:
 
 UnknownText_0x72e8e:
 	text "Oh, look at all"
-	line "your BADGES. No"
+	line "your Badges. No"
 
 	para "wonder I couldn't"
 	line "win!"
@@ -235,13 +235,13 @@ BeautyJuliaBeatenText:
 UnknownText_0x72f01:
 	text "How do I go about"
 	line "becoming ladylike"
-	cont "like ERIKA?"
+	cont "like Erika?"
 	done
 
 TwinsJoandzoe1SeenText:
 	text "We'll show you"
-	line "#MON moves that"
-	cont "ERIKA taught us!"
+	line "#mon moves that"
+	cont "Erika taught us!"
 	done
 
 TwinsJoandzoe1BeatenText:
@@ -249,13 +249,13 @@ TwinsJoandzoe1BeatenText:
 	done
 
 UnknownText_0x72f70:
-	text "ERIKA will get you"
+	text "Erika will get you"
 	line "back for us!"
 	done
 
 TwinsJoandzoe2SeenText:
 	text "We're going to"
-	line "protect ERIKA!"
+	line "protect Erika!"
 	done
 
 TwinsJoandzoe2BeatenText:
@@ -263,7 +263,7 @@ TwinsJoandzoe2BeatenText:
 	done
 
 UnknownText_0x72fc0:
-	text "ERIKA is much,"
+	text "Erika is much,"
 	line "much stronger!"
 	done
 

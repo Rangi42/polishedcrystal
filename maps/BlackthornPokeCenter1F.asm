@@ -25,10 +25,10 @@ CooltrainerMScript_0x195b82:
 
 UnknownText_0x195b85:
 	text "Deep inside far-"
-	line "off INDIGO PLATEAU"
+	line "off Indigo Plateau"
 
-	para "is the #MON"
-	line "LEAGUE."
+	para "is the #mon"
+	line "League."
 
 	para "I hear the best"
 	line "trainers gather"
@@ -42,10 +42,10 @@ UnknownText_0x195bfd:
 	line "move I just had"
 
 	para "to teach my #-"
-	line "MON."
+	line "mon."
 
-	para "So I got the MOVE"
-	line "DELETER to make it"
+	para "So I got the Move"
+	line "Deleter to make it"
 	cont "forget an HM move."
 	done
 

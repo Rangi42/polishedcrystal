@@ -116,7 +116,7 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db "TM32    1500@"
 	db "TM29    3500@"
 	db "TM15    7500@"
-	db "CANCEL@"
+	db "Cancel@"
 
 
 GoldenrodGameCornerPokemonVendor:
@@ -202,14 +202,14 @@ GoldenrodGameCornerPokemonVendor:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "PIKACHU    2222@"
-	db "PORYGON    5555@"
-	db "LARVITAR   8888@"
-	db "CANCEL@"
+	db "Pikachu    2222@"
+	db "Porygon    5555@"
+	db "Larvitar   8888@"
+	db "Cancel@"
 
 
 CeladonGameCornerPrizeRoomGentlemanText:
-	text "I wanted PORYGON,"
+	text "I wanted Porygon,"
 	line "but I was short by"
 	cont "100 coins…"
 	done
@@ -266,7 +266,7 @@ CeladonPrizeRoom_ComeAgainText:
 
 CeladonPrizeRoom_NoCoinCaseText:
 	text "Oh? You don't have"
-	line "a COIN CASE."
+	line "a Coin Case."
 	done
 
 CeladonGameCornerPrizeRoom_MapEventHeader:

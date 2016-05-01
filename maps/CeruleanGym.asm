@@ -234,51 +234,51 @@ UnknownText_0x1885a5:
 CeruleanGymNote1:
 	text "Sorry, I'll be out"
 	line "for a while."
-	cont "MISTY, GYM LEADER"
+	cont "Misty, Gym Leader"
 	done
 
 CeruleanGymNote2:
-	text "Since MISTY's out,"
+	text "Since Misty's out,"
 	line "we'll be away too."
-	cont "GYM TRAINERS"
+	cont "Gym Trainers"
 	done
 
 UnknownText_0x188674:
-	text "MISTY: I was ex-"
+	text "Misty: I was ex-"
 	line "pecting you, you"
 	cont "pest!"
 
 	para "You may have a"
-	line "lot of JOHTO GYM"
+	line "lot of Johto Gym"
 
-	para "BADGES, but you'd"
+	para "Badges, but you'd"
 	line "better not take me"
 	cont "too lightly."
 
 	para "My water-type"
-	line "#MON are tough!"
+	line "#mon are tough!"
 	done
 
 UnknownText_0x18870c:
-	text "MISTY: You really"
+	text "Misty: You really"
 	line "are good…"
 
 	para "I'll admit that"
 	line "you are skilled…"
 
 	para "Here you go. It's"
-	line "CASCADEBADGE."
+	line "the Cascade Badge."
 	done
 
 UnknownText_0x188768:
 	text "<PLAYER> received"
-	line "CASCADEBADGE."
+	line "the Cascade Badge."
 	done
 
 UnknownText_0x188782:
-	text "MISTY: Are there"
+	text "Misty: Are there"
 	line "many strong train-"
-	cont "ers in JOHTO? Like"
+	cont "ers in Johto? Like"
 	cont "you, I mean."
 
 	para "I'm going to"
@@ -319,7 +319,7 @@ UnknownText_0x1888c0:
 	text "Don't be too smug"
 	line "about beating me."
 
-	para "MISTY will destroy"
+	para "Misty will destroy"
 	line "you if you get"
 	cont "complacent."
 	done
@@ -336,7 +336,7 @@ SwimmermParkerBeatenText:
 	done
 
 UnknownText_0x188943:
-	text "MISTY has gotten"
+	text "Misty has gotten"
 	line "much better in the"
 	cont "past few years."
 
@@ -346,10 +346,10 @@ UnknownText_0x188943:
 	done
 
 CeruleanGymGuyText:
-	text "Yo! CHAMP in"
+	text "Yo! Champ in"
 	line "making!"
 
-	para "Since MISTY was"
+	para "Since Misty was"
 	line "away, I went out"
 
 	para "for some fun too."

@@ -23,27 +23,27 @@ BlackBeltScript_0x195a67:
 	jumptextfaceplayer UnknownText_0x195ae9
 
 UnknownText_0x195a6a:
-	text "You can't buy MAX"
-	line "REVIVE, but it"
+	text "You can't buy Max"
+	line "Revive, but it"
 
 	para "fully restores a"
-	line "fainted #MON."
+	line "fainted #mon."
 
 	para "Beware--it won't"
 	line "restore PP, the"
 
-	para "POWER POINTS"
+	para "Power Points"
 	line "needed for moves."
 	done
 
 UnknownText_0x195ae9:
-	text "MAX REPEL keeps"
-	line "weak #MON away"
+	text "Max Repel keeps"
+	line "weak #mon away"
 	cont "from you."
 
 	para "It's the longest"
 	line "lasting of the"
-	cont "REPEL sprays."
+	cont "Repel sprays."
 	done
 
 BlackthornMart_MapEventHeader:

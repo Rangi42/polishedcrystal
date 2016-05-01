@@ -40,7 +40,7 @@ UnknownText_0x19698a:
 	text "It's great. I can"
 	line "store any number"
 
-	para "of #MON, and"
+	para "of #mon, and"
 	line "it's all free."
 	done
 
@@ -51,8 +51,8 @@ UnknownText_0x1969c8:
 	done
 
 UnknownText_0x1969f1:
-	text "The COMMUNICATION"
-	line "CENTER upstairs"
+	text "The Communication"
+	line "Center upstairs"
 	cont "was just built."
 
 	para "But they're still"
@@ -60,11 +60,11 @@ UnknownText_0x1969f1:
 	done
 
 UnknownText_0x196a46:
-	text "The COMMUNICATION"
-	line "CENTER upstairs"
+	text "The Communication"
+	line "Center upstairs"
 	cont "was just built."
 
-	para "I traded #MON"
+	para "I traded #mon"
 	line "there already!"
 	done
 

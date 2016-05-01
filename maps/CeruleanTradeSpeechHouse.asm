@@ -36,7 +36,7 @@ ZubatScript_0x188143:
 UnknownText_0x18814d:
 	text "My husband lives"
 	line "happily with #-"
-	cont "MON he got through"
+	cont "mon he got through"
 	cont "trades."
 	done
 
@@ -45,12 +45,12 @@ UnknownText_0x18818a:
 	done
 
 UnknownText_0x18819c:
-	text "KANGASKHAN: Garu"
+	text "Kangaskhan: Garu"
 	line "garuu."
 	done
 
 UnknownText_0x1881b5:
-	text "ZUBAT: Zuba zubaa."
+	text "Zubat: Zuba zubaa."
 	done
 
 CeruleanTradeSpeechHouse_MapEventHeader:
