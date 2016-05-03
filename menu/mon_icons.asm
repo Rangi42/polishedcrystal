@@ -142,208 +142,126 @@ MonMenuIcons: ; 8eac4
 	db ICON_HUMANSHAPE   ; MAGMAR
 	db ICON_BUG          ; PINSIR
 	db ICON_EQUINE       ; TAUROS
-	db ICON_FISH         ; MAGIKARP
-	db ICON_GYARADOS     ; GYARADOS
-	db ICON_LAPRAS       ; LAPRAS
-	db ICON_BLOB         ; DITTO
-	db ICON_FOX          ; EEVEE
-	db ICON_FOX          ; VAPOREON
-	db ICON_FOX          ; JOLTEON
-	db ICON_FOX          ; FLAREON
-	db ICON_VOLTORB      ; PORYGON
-	db ICON_SHELL        ; OMANYTE
-	db ICON_SHELL        ; OMASTAR
-	db ICON_SHELL        ; KABUTO
-	db ICON_SHELL        ; KABUTOPS
-	db ICON_BIRD         ; AERODACTYL
-	db ICON_SNORLAX      ; SNORLAX
-	db ICON_BIRD         ; ARTICUNO
-	db ICON_BIRD         ; ZAPDOS
-	db ICON_BIRD         ; MOLTRES
-	db ICON_SERPENT      ; DRATINI
-	db ICON_SERPENT      ; DRAGONAIR
-	db ICON_BIGMON       ; DRAGONITE
-	db ICON_HUMANSHAPE   ; MEWTWO
-	db ICON_HUMANSHAPE   ; MEW
-	db ICON_ODDISH       ; CHIKORITA
-	db ICON_ODDISH       ; BAYLEEF
-	db ICON_ODDISH       ; MEGANIUM
-	db ICON_FOX          ; CYNDAQUIL
-	db ICON_FOX          ; QUILAVA
-	db ICON_FOX          ; TYPHLOSION
-	db ICON_MONSTER      ; TOTODILE
-	db ICON_MONSTER      ; CROCONAW
-	db ICON_MONSTER      ; FERALIGATR
-	db ICON_FOX          ; SENTRET
-	db ICON_FOX          ; FURRET
-	db ICON_BIRD         ; HOOTHOOT
-	db ICON_BIRD         ; NOCTOWL
-	db ICON_BUG          ; LEDYBA
-	db ICON_BUG          ; LEDIAN
-	db ICON_BUG          ; SPINARAK
-	db ICON_BUG          ; ARIADOS
-	db ICON_BAT          ; CROBAT
-	db ICON_FISH         ; CHINCHOU
-	db ICON_FISH         ; LANTURN
-	db ICON_PIKACHU      ; PICHU
-	db ICON_CLEFAIRY     ; CLEFFA
-	db ICON_JIGGLYPUFF   ; IGGLYBUFF
-	db ICON_CLEFAIRY     ; TOGEPI
-	db ICON_BIRD         ; TOGETIC
-	db ICON_BIRD         ; NATU
-	db ICON_BIRD         ; XATU
-	db ICON_FOX          ; MAREEP
-	db ICON_MONSTER      ; FLAAFFY
-	db ICON_MONSTER      ; AMPHAROS
-	db ICON_ODDISH       ; BELLOSSOM
-	db ICON_JIGGLYPUFF   ; MARILL
-	db ICON_JIGGLYPUFF   ; AZUMARILL
-	db ICON_SUDOWOODO    ; SUDOWOODO
-	db ICON_POLIWAG      ; POLITOED
-	db ICON_ODDISH       ; HOPPIP
-	db ICON_ODDISH       ; SKIPLOOM
-	db ICON_ODDISH       ; JUMPLUFF
-	db ICON_MONSTER      ; AIPOM
-	db ICON_ODDISH       ; SUNKERN
-	db ICON_ODDISH       ; SUNFLORA
-	db ICON_BUG          ; YANMA
-	db ICON_MONSTER      ; WOOPER
-	db ICON_MONSTER      ; QUAGSIRE
-	db ICON_FOX          ; ESPEON
-	db ICON_FOX          ; UMBREON
-	db ICON_BIRD         ; MURKROW
-	db ICON_SLOWPOKE     ; SLOWKING
-	db ICON_GHOST        ; MISDREAVUS
-	db ICON_UNOWN        ; UNOWN
-	db ICON_GHOST        ; WOBBUFFET
-	db ICON_EQUINE       ; GIRAFARIG
-	db ICON_BUG          ; PINECO
-	db ICON_BUG          ; FORRETRESS
-	db ICON_SERPENT      ; DUNSPARCE
-	db ICON_BUG          ; GLIGAR
-	db ICON_SERPENT      ; STEELIX
-	db ICON_MONSTER      ; SNUBBULL
-	db ICON_MONSTER      ; GRANBULL
-	db ICON_FISH         ; QWILFISH
-	db ICON_BUG          ; SCIZOR
-	db ICON_BUG          ; SHUCKLE
-	db ICON_BUG          ; HERACROSS
-	db ICON_FOX          ; SNEASEL
-	db ICON_MONSTER      ; TEDDIURSA
-	db ICON_MONSTER      ; URSARING
-	db ICON_BLOB         ; SLUGMA
-	db ICON_BLOB         ; MAGCARGO
-	db ICON_EQUINE       ; SWINUB
-	db ICON_EQUINE       ; PILOSWINE
-	db ICON_SHELL        ; CORSOLA
-	db ICON_FISH         ; REMORAID
-	db ICON_FISH         ; OCTILLERY
-	db ICON_MONSTER      ; DELIBIRD
-	db ICON_FISH         ; MANTINE
-	db ICON_BIRD         ; SKARMORY
-	db ICON_FOX          ; HOUNDOUR
-	db ICON_FOX          ; HOUNDOOM
-	db ICON_BIGMON       ; KINGDRA
-	db ICON_EQUINE       ; PHANPY
-	db ICON_EQUINE       ; DONPHAN
-	db ICON_VOLTORB      ; PORYGON2
-	db ICON_EQUINE       ; STANTLER
-	db ICON_MONSTER      ; SMEARGLE
-	db ICON_FIGHTER      ; TYROGUE
-	db ICON_FIGHTER      ; HITMONTOP
-	db ICON_HUMANSHAPE   ; SMOOCHUM
-	db ICON_HUMANSHAPE   ; ELEKID
-	db ICON_HUMANSHAPE   ; MAGBY
-	db ICON_EQUINE       ; MILTANK
-	db ICON_CLEFAIRY     ; BLISSEY
-	db ICON_FOX          ; RAIKOU
-	db ICON_FOX          ; ENTEI
-	db ICON_FOX          ; SUICUNE
-	db ICON_MONSTER      ; LARVITAR
-	db ICON_MONSTER      ; PUPITAR
-	db ICON_MONSTER      ; TYRANITAR
-	db ICON_LUGIA        ; LUGIA
-	db ICON_HO_OH        ; HO_OH
-	db ICON_HUMANSHAPE   ; CELEBI
-
-IconPointers:
-	dw NullIcon
-	dw PoliwagIcon
-	dw JigglypuffIcon
-	dw DiglettIcon
-	dw PikachuIcon
-	dw StaryuIcon
-	dw FishIcon
-	dw BirdIcon
-	dw MonsterIcon
-	dw ClefairyIcon
-	dw OddishIcon
-	dw BugIcon
-	dw GhostIcon
-	dw LaprasIcon
-	dw HumanshapeIcon
-	dw FoxIcon
-	dw EquineIcon
-	dw ShellIcon
-	dw BlobIcon
-	dw SerpentIcon
-	dw VoltorbIcon
-	dw SquirtleIcon
-	dw BulbasaurIcon
-	dw CharmanderIcon
-	dw CaterpillarIcon
-	dw UnownIcon
-	dw GeodudeIcon
-	dw FighterIcon
-	dw EggIcon
-	dw JellyfishIcon
-	dw MothIcon
-	dw BatIcon
-	dw SnorlaxIcon
-	dw HoOhIcon
-	dw LugiaIcon
-	dw GyaradosIcon
-	dw SlowpokeIcon
-	dw SudowoodoIcon
-	dw BigmonIcon
-
-Icons:
-NullIcon:
-PoliwagIcon:      INCBIN "gfx/icon/poliwag.2bpp" ; 0x8ec0d
-JigglypuffIcon:   INCBIN "gfx/icon/jigglypuff.2bpp" ; 0x8ec8d
-DiglettIcon:      INCBIN "gfx/icon/diglett.2bpp" ; 0x8ed0d
-PikachuIcon:      INCBIN "gfx/icon/pikachu.2bpp" ; 0x8ed8d
-StaryuIcon:       INCBIN "gfx/icon/staryu.2bpp" ; 0x8ee0d
-FishIcon:         INCBIN "gfx/icon/fish.2bpp" ; 0x8ee8d
-BirdIcon:         INCBIN "gfx/icon/bird.2bpp" ; 0x8ef0d
-MonsterIcon:      INCBIN "gfx/icon/monster.2bpp" ; 0x8ef8d
-ClefairyIcon:     INCBIN "gfx/icon/clefairy.2bpp" ; 0x8f00d
-OddishIcon:       INCBIN "gfx/icon/oddish.2bpp" ; 0x8f08d
-BugIcon:          INCBIN "gfx/icon/bug.2bpp" ; 0x8f10d
-GhostIcon:        INCBIN "gfx/icon/ghost.2bpp" ; 0x8f18d
-LaprasIcon:       INCBIN "gfx/icon/lapras.2bpp" ; 0x8f20d
-HumanshapeIcon:   INCBIN "gfx/icon/humanshape.2bpp" ; 0x8f28d
-FoxIcon:          INCBIN "gfx/icon/fox.2bpp" ; 0x8f30d
-EquineIcon:       INCBIN "gfx/icon/equine.2bpp" ; 0x8f38d
-ShellIcon:        INCBIN "gfx/icon/shell.2bpp" ; 0x8f40d
-BlobIcon:         INCBIN "gfx/icon/blob.2bpp" ; 0x8f48d
-SerpentIcon:      INCBIN "gfx/icon/serpent.2bpp" ; 0x8f50d
-VoltorbIcon:      INCBIN "gfx/icon/voltorb.2bpp" ; 0x8f58d
-SquirtleIcon:     INCBIN "gfx/icon/squirtle.2bpp" ; 0x8f60d
-BulbasaurIcon:    INCBIN "gfx/icon/bulbasaur.2bpp" ; 0x8f68d
-CharmanderIcon:   INCBIN "gfx/icon/charmander.2bpp" ; 0x8f70d
-CaterpillarIcon:  INCBIN "gfx/icon/caterpillar.2bpp" ; 0x8f78d
-UnownIcon:        INCBIN "gfx/icon/unown.2bpp" ; 0x8f80d
-GeodudeIcon:      INCBIN "gfx/icon/geodude.2bpp" ; 0x8f88d
-FighterIcon:      INCBIN "gfx/icon/fighter.2bpp" ; 0x8f90d
-EggIcon:          INCBIN "gfx/icon/egg.2bpp" ; 0x8f98d
-JellyfishIcon:    INCBIN "gfx/icon/jellyfish.2bpp" ; 0x8fa0d
-MothIcon:         INCBIN "gfx/icon/moth.2bpp" ; 0x8fa8d
-BatIcon:          INCBIN "gfx/icon/bat.2bpp" ; 0x8fb0d
-SnorlaxIcon:      INCBIN "gfx/icon/snorlax.2bpp" ; 0x8fb8d
-HoOhIcon:         INCBIN "gfx/icon/ho_oh.2bpp" ; 0x8fc0d
-LugiaIcon:        INCBIN "gfx/icon/lugia.2bpp" ; 0x8fc8d
-GyaradosIcon:     INCBIN "gfx/icon/gyarados.2bpp" ; 0x8fd0d
-SlowpokeIcon:     INCBIN "gfx/icon/slowpoke.2bpp" ; 0x8fd8d
-SudowoodoIcon:    INCBIN "gfx/icon/sudowoodo.2bpp" ; 0x8fe0d
-BigmonIcon:       INCBIN "gfx/icon/bigmon.2bpp" ; 0x8fe8d
+	db ICON_FISH2        ; MAGIKARP
+	db ICON_GYARADOS2    ; GYARADOS
+	db ICON_LAPRAS2      ; LAPRAS
+	db ICON_BLOB2        ; DITTO
+	db ICON_FOX2         ; EEVEE
+	db ICON_FOX2         ; VAPOREON
+	db ICON_FOX2         ; JOLTEON
+	db ICON_FOX2         ; FLAREON
+	db ICON_VOLTORB2     ; PORYGON
+	db ICON_SHELL2       ; OMANYTE
+	db ICON_SHELL2       ; OMASTAR
+	db ICON_SHELL2       ; KABUTO
+	db ICON_SHELL2       ; KABUTOPS
+	db ICON_BIRD2        ; AERODACTYL
+	db ICON_SNORLAX2     ; SNORLAX
+	db ICON_BIRD2        ; ARTICUNO
+	db ICON_BIRD2        ; ZAPDOS
+	db ICON_BIRD2        ; MOLTRES
+	db ICON_SERPENT2     ; DRATINI
+	db ICON_SERPENT2     ; DRAGONAIR
+	db ICON_BIGMON2      ; DRAGONITE
+	db ICON_HUMANSHAPE2  ; MEWTWO
+	db ICON_HUMANSHAPE2  ; MEW
+	db ICON_ODDISH2      ; CHIKORITA
+	db ICON_ODDISH2      ; BAYLEEF
+	db ICON_ODDISH2      ; MEGANIUM
+	db ICON_FOX2         ; CYNDAQUIL
+	db ICON_FOX2         ; QUILAVA
+	db ICON_FOX2         ; TYPHLOSION
+	db ICON_MONSTER2     ; TOTODILE
+	db ICON_MONSTER2     ; CROCONAW
+	db ICON_MONSTER2     ; FERALIGATR
+	db ICON_FOX2         ; SENTRET
+	db ICON_FOX2         ; FURRET
+	db ICON_BIRD2        ; HOOTHOOT
+	db ICON_BIRD2        ; NOCTOWL
+	db ICON_BUG2         ; LEDYBA
+	db ICON_BUG2         ; LEDIAN
+	db ICON_BUG2         ; SPINARAK
+	db ICON_BUG2         ; ARIADOS
+	db ICON_BAT2         ; CROBAT
+	db ICON_FISH2        ; CHINCHOU
+	db ICON_FISH2        ; LANTURN
+	db ICON_PIKACHU2     ; PICHU
+	db ICON_CLEFAIRY2    ; CLEFFA
+	db ICON_JIGGLYPUFF2  ; IGGLYBUFF
+	db ICON_CLEFAIRY2    ; TOGEPI
+	db ICON_BIRD2        ; TOGETIC
+	db ICON_BIRD2        ; NATU
+	db ICON_BIRD2        ; XATU
+	db ICON_FOX2         ; MAREEP
+	db ICON_MONSTER2     ; FLAAFFY
+	db ICON_MONSTER2     ; AMPHAROS
+	db ICON_ODDISH2      ; BELLOSSOM
+	db ICON_JIGGLYPUFF2  ; MARILL
+	db ICON_JIGGLYPUFF2  ; AZUMARILL
+	db ICON_SUDOWOODO2   ; SUDOWOODO
+	db ICON_POLIWAG2     ; POLITOED
+	db ICON_ODDISH2      ; HOPPIP
+	db ICON_ODDISH2      ; SKIPLOOM
+	db ICON_ODDISH2      ; JUMPLUFF
+	db ICON_MONSTER2     ; AIPOM
+	db ICON_ODDISH2      ; SUNKERN
+	db ICON_ODDISH2      ; SUNFLORA
+	db ICON_BUG2         ; YANMA
+	db ICON_MONSTER2     ; WOOPER
+	db ICON_MONSTER2     ; QUAGSIRE
+	db ICON_FOX2         ; ESPEON
+	db ICON_FOX2         ; UMBREON
+	db ICON_BIRD2        ; MURKROW
+	db ICON_SLOWPOKE2    ; SLOWKING
+	db ICON_GHOST2       ; MISDREAVUS
+	db ICON_UNOWN2       ; UNOWN
+	db ICON_GHOST2       ; WOBBUFFET
+	db ICON_EQUINE2      ; GIRAFARIG
+	db ICON_BUG2         ; PINECO
+	db ICON_BUG2         ; FORRETRESS
+	db ICON_SERPENT2     ; DUNSPARCE
+	db ICON_BUG2         ; GLIGAR
+	db ICON_SERPENT2     ; STEELIX
+	db ICON_MONSTER2     ; SNUBBULL
+	db ICON_MONSTER2     ; GRANBULL
+	db ICON_FISH2        ; QWILFISH
+	db ICON_BUG2         ; SCIZOR
+	db ICON_BUG2         ; SHUCKLE
+	db ICON_BUG2         ; HERACROSS
+	db ICON_FOX2         ; SNEASEL
+	db ICON_MONSTER2     ; TEDDIURSA
+	db ICON_MONSTER2     ; URSARING
+	db ICON_BLOB2        ; SLUGMA
+	db ICON_BLOB2        ; MAGCARGO
+	db ICON_EQUINE2      ; SWINUB
+	db ICON_EQUINE2      ; PILOSWINE
+	db ICON_SHELL2       ; CORSOLA
+	db ICON_FISH2        ; REMORAID
+	db ICON_FISH2        ; OCTILLERY
+	db ICON_MONSTER2     ; DELIBIRD
+	db ICON_FISH2        ; MANTINE
+	db ICON_BIRD2        ; SKARMORY
+	db ICON_FOX2         ; HOUNDOUR
+	db ICON_FOX2         ; HOUNDOOM
+	db ICON_BIGMON2      ; KINGDRA
+	db ICON_EQUINE2      ; PHANPY
+	db ICON_EQUINE2      ; DONPHAN
+	db ICON_VOLTORB2     ; PORYGON2
+	db ICON_EQUINE2      ; STANTLER
+	db ICON_MONSTER2     ; SMEARGLE
+	db ICON_FIGHTER2     ; TYROGUE
+	db ICON_FIGHTER2     ; HITMONTOP
+	db ICON_HUMANSHAPE2  ; SMOOCHUM
+	db ICON_HUMANSHAPE2  ; ELEKID
+	db ICON_HUMANSHAPE2  ; MAGBY
+	db ICON_EQUINE2      ; MILTANK
+	db ICON_CLEFAIRY2    ; BLISSEY
+	db ICON_FOX2         ; RAIKOU
+	db ICON_FOX2         ; ENTEI
+	db ICON_FOX2         ; SUICUNE
+	db ICON_MONSTER2     ; LARVITAR
+	db ICON_MONSTER2     ; PUPITAR
+	db ICON_MONSTER2     ; TYRANITAR
+	db ICON_LUGIA2       ; LUGIA
+	db ICON_HO_OH2       ; HO_OH
+	db ICON_HUMANSHAPE2  ; CELEBI
