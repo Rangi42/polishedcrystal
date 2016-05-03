@@ -45,6 +45,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pack → Bag
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
+   * whited out → blacked out
    * Refer to badges as "the"
 * No badge boosts to stats or types
 * New default player names
