@@ -97,6 +97,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show Pokémon portrait when using field moves
    * Low-pitched cries when fainting
    * Tin Tower → Bell Tower
+   * Replace some Kanto music with RBY tracks
 * Content:
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
