@@ -79,6 +79,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
    * Light Ball doubles Pikachu's Attack as well as Special Attack
+   * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
 * Convenience:
    * Better default settings (fast text, stereo sound, set battle style, etc)
    * Settings for 12/24-hour clock, and imperial/metric units
@@ -93,7 +94,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * Select reorders Pokémon in party menu
 * Aesthetics:
-   * Color party/day-care sprites by species (modify `GetMonSprite`)
+   * Color party/day-care sprites by species (modify `GetMonSprite`?)
    * Higher levels and better moves and held items from HGSS
    * Fourth stat screen showing Poké Seer's data
    * Better Substitute sprite
