@@ -5792,14 +5792,6 @@ INCLUDE "engine/sprites.asm"
 
 INCLUDE "engine/mon_icons.asm"
 
-SECTION "Mon Icons 1", ROMX
-
-INCLUDE "menu/mon_icons_1.asm"
-
-SECTION "Mon Icons 2", ROMX
-
-INCLUDE "menu/mon_icons_2.asm"
-
 SECTION "bank24", ROMX, BANK[$24]
 
 INCLUDE "engine/phone.asm"

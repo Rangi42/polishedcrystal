@@ -47,6 +47,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Elixer → Elixir
    * whited out → blacked out
    * Refer to badges as "the"
+* Graphics updates:
+   * Individual party/day-care icons for each Pokémon
 * No badge boosts to stats or types
 * New default player names
 
@@ -91,6 +93,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * Select reorders Pokémon in party menu
 * Aesthetics:
+   * Color party/day-care sprites by species
    * Higher levels and better moves and held items from HGSS
    * Fourth stat screen showing Poké Seer's data
    * Better Substitute sprite
