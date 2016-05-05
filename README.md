@@ -93,6 +93,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More successful fishing and Headbutting
    * More likely to find roaming Pokémon when on the correct route
    * Select reorders Pokémon in party menu
+   * Show stat changes and then absolute values on level up
 * Aesthetics:
    * Color party/day-care sprites by species (modify `GetMonSprite`?)
    * Higher levels and better moves and held items from HGSS
