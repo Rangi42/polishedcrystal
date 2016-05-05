@@ -106,6 +106,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
    * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
+   * Replace some moves with more Fairy-type ones (merge Protect and Detect? Acid Armor and Barrier? Horn Drill and Guillotine? Defense Curl and Withdraw? Flash and Smokescreen? Lock-On and Mind Reader? Mean Look and Spider Web?)
    * Change in-game trades
    * Decensor Jynx, Sage, and Channeler sprites
 
