@@ -93,7 +93,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * Select reorders Pokémon in party menu
 * Aesthetics:
-   * Color party/day-care sprites by species
+   * Color party/day-care sprites by species (modify `GetMonSprite`)
    * Higher levels and better moves and held items from HGSS
    * Fourth stat screen showing Poké Seer's data
    * Better Substitute sprite
