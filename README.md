@@ -44,6 +44,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Cooltrainer → Ace Trainer
    * Mysticalman Eusine → Mystery Man Eusine
    * Pack → Bag
+   * Enemy → Foe
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
    * whited out → blacked out

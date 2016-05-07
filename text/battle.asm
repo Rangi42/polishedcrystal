@@ -53,7 +53,7 @@ BattleText_WildFled: ; 0x807bd
 ; 0x807cf
 
 BattleText_EnemyFled: ; 0x807cf
-	text "Enemy @"
+	text "Foe @"
 	text_from_ram EnemyMonNick
 	text ""
 	line "fled!"
@@ -185,7 +185,7 @@ BattleText_TheSandstormSubsided: ; 0x8098f
 ; 0x809a8
 
 BattleText_EnemyPkmnFainted: ; 0x809a8
-	text "Enemy @"
+	text "Foe @"
 	text_from_ram EnemyMonNick
 	text ""
 	line "fainted!"

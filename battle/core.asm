@@ -1736,7 +1736,7 @@ HandleScreens: ; 3cb36
 .Your:
 	db "Your@"
 .Enemy:
-	db "Enemy@"
+	db "Foe@"
 ; 3cb80
 
 

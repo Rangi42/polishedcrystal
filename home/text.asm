@@ -439,7 +439,7 @@ RocketCharText:: db "Rocket@" ; 1281
 PlacePOKeText:: db "Poké@" ; 1288
 KougekiText:: db "こうげき@" ; 128d
 SixDotsCharText:: db "……@" ; 1292
-EnemyText:: db "Enemy @" ; 1295
+EnemyText:: db "Foe @" ; 1295
 PlacePKMNText:: db "<PK><MN>@" ; PK MN ; 129c
 PlacePOKEText:: db "<PO><KE>@" ; PO KE ; 129f
 String12a2:: db " @" ; 12a2
