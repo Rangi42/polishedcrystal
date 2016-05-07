@@ -80,18 +80,18 @@ LeechSeedSapsText: ; 0x8080e
 
 HasANightmareText: ; 0x80822
 	text "<USER>"
-	line "has a Nightmare!"
+	line "has a nightmare!"
 	prompt
 ; 0x80836
 
 HurtByCurseText: ; 0x80836
 	text "<USER>'s"
-	line "hurt by the Curse!"
+	line "hurt by the curse!"
 	prompt
 ; 0x8084d
 
 SandstormHitsText: ; 0x8084d
-	text "The Sandstorm hits"
+	text "The sandstorm hits"
 	line "<USER>!"
 	prompt
 ; 0x80864
@@ -162,7 +162,7 @@ BattleText_TheSunlightIsStrong: ; 0x80938
 ; 0x80951
 
 BattleText_TheSandstormRages: ; 0x80951
-	text "The Sandstorm"
+	text "The sandstorm"
 	line "rages."
 	prompt
 ; 0x80967
@@ -179,7 +179,7 @@ BattleText_TheSunlightFaded: ; 0x8097a
 ; 0x8098f
 
 BattleText_TheSandstormSubsided: ; 0x8098f
-	text "The Sandstorm"
+	text "The sandstorm"
 	line "subsided."
 	prompt
 ; 0x809a8
@@ -323,7 +323,7 @@ BattleText_CantEscape: ; 0x80ba0
 
 BattleText_UserHurtBySpikes: ; 0x80bae
 	text "<USER>'s"
-	line "hurt by Spikes!"
+	line "hurt by spikes!"
 	prompt
 ; 0x80bc2
 
@@ -373,7 +373,7 @@ BattleText_TheresNoPPLeftForThisMove: ; 0x80c39
 
 BattleText_TheMoveIsDisabled: ; 0x80c5b
 	text "The move is"
-	line "Disabled!"
+	line "disabled!"
 	prompt
 ; 0x80c72
 
@@ -386,7 +386,7 @@ BattleText_PkmnHasNoMovesLeft: ; 0x80c72
 
 BattleText_TargetsEncoreEnded: ; 0x80c8a
 	text "<TARGET>'s"
-	line "Encore ended!"
+	line "encore ended!"
 	prompt
 ; 0x80c9c
 
@@ -510,9 +510,9 @@ BattleText_UserWasReleasedFromStringBuffer1: ; 0x80df5
 ; 0x80e11
 
 UsedBindText: ; 0x80e11
-	text "<USER>"
-	line "used Bind on"
-	cont "<TARGET>!"
+	text "<TARGET>"
+	line "was squeezed by"
+	cont "<USER>!"
 	prompt
 ; 0x80e24
 
@@ -530,14 +530,14 @@ FireSpinTrapText: ; 0x80e34
 
 WrappedByText: ; 0x80e44
 	text "<TARGET>"
-	line "was Wrapped by"
+	line "was wrapped by"
 	cont "<USER>!"
 	prompt
 ; 0x80e59
 
 ClampedByText: ; 0x80e59
 	text "<TARGET>"
-	line "was Clamped by"
+	line "was clamped by"
 	cont "<USER>!"
 	prompt
 ; 0x80e6e
@@ -565,7 +565,7 @@ HungOnText: ; 0x80e99
 
 EnduredText: ; 0x80eb0
 	text "<TARGET>"
-	line "Endured the hit!"
+	line "endured the hit!"
 	prompt
 ; 0x80ec4
 
@@ -588,7 +588,7 @@ DisabledMoveText: ; 0x80f02
 	line "@"
 	text_from_ram StringBuffer1
 	text " is"
-	cont "Disabled!"
+	cont "disabled!"
 	prompt
 ; 0x80f19
 
@@ -730,13 +730,13 @@ TookDownWithItText: ; 0x810da
 
 RageBuildingText: ; 0x810f3
 	text "<USER>'s"
-	line "Rage is building!"
+	line "rage is building!"
 	prompt
 ; 0x81109
 
 GotAnEncoreText: ; 0x81109
 	text "<TARGET>"
-	line "got an Encore!"
+	line "got an encore!"
 	prompt
 ; 0x8111b
 
@@ -754,7 +754,7 @@ TookAimText: ; 0x81136
 
 SketchedText: ; 0x81143
 	text "<USER>"
-	line "Sketched"
+	line "sketched"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
@@ -897,13 +897,13 @@ EnemyHitTimesText: ; 0x812f8
 
 MistText: ; 0x8130b
 	text "<USER>'s"
-	line "shrouded in Mist!"
+	line "shrouded in mist!"
 	prompt
 ; 0x81321
 
 ProtectedByMistText: ; 0x81321
 	text "<TARGET>'s"
-	line "protected by Mist."
+	line "protected by mist."
 	prompt
 ; 0x81338
 
@@ -922,24 +922,24 @@ RecoilText: ; 0x8134d
 
 MadeSubstituteText: ; 0x81362
 	text "<USER>"
-	line "made a Substitute!"
+	line "made a substitute!"
 	prompt
 ; 0x81378
 
 HasSubstituteText: ; 0x81378
 	text "<USER>"
-	line "has a Substitute!"
+	line "has a substitute!"
 	prompt
 ; 0x8138d
 
 TooWeakSubText: ; 0x8138d
 	text "Too weak to make"
-	line "a Substitute!"
+	line "a substitute!"
 	prompt
 ; 0x813ad
 
 SubTookDamageText: ; 0x813ad
-	text "The Substitute"
+	text "The substitute"
 	line "took damage for"
 	cont "<TARGET>!"
 	prompt
@@ -947,7 +947,7 @@ SubTookDamageText: ; 0x813ad
 
 SubFadedText: ; 0x813d0
 	text "<TARGET>'s"
-	line "Substitute faded!"
+	line "substitute faded!"
 	prompt
 ; 0x813e6
 
@@ -977,7 +977,7 @@ WasDisabledText: ; 0x8141d
 	line "@"
 	text_from_ram StringBuffer1
 	text " was"
-	cont "Disabled!"
+	cont "disabled!"
 	prompt
 ; 0x81435
 
@@ -1004,7 +1004,7 @@ EliminatedStatsText: ; 0x81476
 
 TransformedText: ; 0x81499
 	text "<USER>"
-	line "Transformed into"
+	line "transformed into"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
@@ -1115,7 +1115,7 @@ CantEscapeNowText: ; 0x815f7
 StartedNightmareText: ; 0x8160b
 	text "<TARGET>"
 	line "started to have a"
-	cont "Nightmare!"
+	cont "nightmare!"
 	prompt
 ; 0x8162b
 
@@ -1129,20 +1129,20 @@ PutACurseText: ; 0x8163d
 	text "<USER>"
 	line "cut its own HP and"
 
-	para "put a Curse on"
+	para "put a curse on"
 	line "<TARGET>!"
 	prompt
 ; 0x81665
 
 ProtectedItselfText: ; 0x81665
 	text "<USER>"
-	line "Protected itself!"
+	line "protected itself!"
 	prompt
 ; 0x8167a
 
 ProtectingItselfText: ; 0x8167a
 	text "<TARGET>'s"
-	line "Protecting itself!"
+	line "protecting itself!"
 	done
 ; 0x81691
 
@@ -1167,7 +1167,7 @@ StartPerishText: ; 0x816c2
 ; 0x816e4
 
 SandstormBrewedText: ; 0x816e4
-	text "A Sandstorm"
+	text "A sandstorm"
 	line "brewed!"
 	prompt
 ; 0x816f9
@@ -1224,14 +1224,14 @@ BlewSpikesText: ; 0x8178e
 ; 0x817a3
 
 DownpourText: ; 0x817a3
-	text "A downpour"
-	line "started!"
+	text "It started"
+	line "to rain!"
 	prompt
 ; 0x817b8
 
 SunGotBrightText: ; 0x817b8
-	text "The sunlight got"
-	line "bright!"
+	text "The sunlight"
+	line "turned harsh!"
 	prompt
 ; 0x817d2
 
