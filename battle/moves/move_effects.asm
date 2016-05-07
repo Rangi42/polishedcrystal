@@ -285,7 +285,6 @@ SpeedUp:
 	statupfailtext
 	endmove
 
-Growth:
 SpecialAttackUp:
 	checkobedience
 	usedmovetext
@@ -419,6 +418,20 @@ EvasionUp2:
 	usedmovetext
 	doturn
 	evasionup2
+	lowersub
+	statupanim
+	raisesub
+	statupmessage
+	statupfailtext
+	endmove
+
+Growth:
+SpecialAttackAndDefenseUp:
+	checkobedience
+	usedmovetext
+	doturn
+	attackup
+	specialattackup
 	lowersub
 	statupanim
 	raisesub

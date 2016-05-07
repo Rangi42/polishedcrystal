@@ -37,6 +37,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Type-enhancing items raise by 20%, not 10%
    * Hatch Eggs at level 1
    * Critical hit mechanics from Gen VI (200% → 150% damage, better chances)
+   * Growth raises Attack and Sp.Atk
 * Grammar and spelling updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Updated Berry names (Burnt Berry → Rawst Berry, etc)
