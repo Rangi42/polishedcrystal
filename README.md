@@ -55,6 +55,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Individual party/day-care icons for each Pokémon
 * No badge boosts to stats or types
 * New default player names
+* Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
 
 
 ## To do:
