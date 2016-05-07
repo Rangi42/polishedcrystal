@@ -57,6 +57,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * New default player names
 * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
 * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
+* Enemy AI doesn't fail an extra 25% of the time with sleep-inducing moves
 
 
 ## To do:
@@ -141,8 +142,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Evening from 5–7 PM (change morning from 4−9 AM)
 * Custom title screen and end credits
 * Import some music from RBY, FRLG, and HGSS
-* Improved AI, without arbitrary penalties or bonuses
 * Rematch Gym Leaders and Elite Four with better teams
+* Improved AI
 
 
 ## See also

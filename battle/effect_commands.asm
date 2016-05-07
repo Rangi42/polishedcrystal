@@ -4979,10 +4979,6 @@ BattleCommand_SleepTarget: ; 35e5c
 	and a
 	jp nz, PrintDidntAffect2
 
-	ld hl, DidntAffect1Text
-	call .CheckAIRandomFail
-	jr c, .fail
-
 	ld a, [de]
 	and a
 	jr nz, .fail
@@ -5023,37 +5019,6 @@ BattleCommand_SleepTarget: ; 35e5c
 	jp StdBattleTextBox
 
 ; 35ece
-
-
-.CheckAIRandomFail: ; 35ece
-	; Enemy turn
-	ld a, [hBattleTurn]
-	and a
-	jr z, .dont_fail
-
-	; Not in link battle
-	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_fail
-
-	ld a, [InBattleTowerBattle]
-	and a
-	jr nz, .dont_fail
-
-	; Not locked-on by the enemy
-	ld a, [PlayerSubStatus5]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .dont_fail
-
-	call BattleRandom
-	cp $40 ; 25%
-	ret c
-
-.dont_fail
-	xor a
-	ret
-
-; 35eee
 
 
 BattleCommand_PoisonTarget: ; 35eee
