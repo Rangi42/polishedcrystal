@@ -7198,7 +7198,7 @@ BattleCommand_KingsRock: ; 36ac9
 
 	call GetUserItem
 	ld a, b
-	cp HELD_TRADE_EVOLVE ; Only King's Rock has this effect
+	cp HELD_FLINCH_UP ; Only King's Rock has this effect
 	ret nz
 
 	call CheckSubstituteOpp
