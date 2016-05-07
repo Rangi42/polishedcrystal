@@ -36,6 +36,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Steel does not resist Ghost or Dark
    * Type-enhancing items raise by 20%, not 10%
    * Hatch Eggs at level 1
+   * Critical hit mechanics from Gen VI (200% → 150% damage, better chances)
 * Grammar and spelling updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Updated Berry names (Burnt Berry → Rawst Berry, etc)
@@ -64,7 +65,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Update base stats, learnt moves, and move and item mechanics to Gen VI
    * Physical/Special split from Gen IV
    * Unown ? and ! from Gen III
-   * Critical hit formula from Gen IV
+   * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Catch rate formula from Gen III
    * Money loss formula from Gen III when whiting out
    * Unlimited-use TMs from Gen V

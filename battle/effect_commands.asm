@@ -1301,8 +1301,8 @@ BattleCommand_Critical: ; 34631
 .Criticals:
 	db KARATE_CHOP, RAZOR_WIND, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, $ff
 .Chances:
-	; 6.25% 12.1% 24.6% 33.2% 49.6% 49.6% 49.6%
-	db $11,  $20,  $40,  $55,  $80,  $80,  $80
+	; 6.25% 12.1% 24.6% 49.6% 99.6% 99.6% 99.6%
+	db $11,  $20,  $40,  $80,  $ff,  $ff,  $ff
 	;   0     1     2     3     4     5     6
 ; 346b2
 
@@ -3630,8 +3630,10 @@ BattleCommand_DamageCalc: ; 35612
 	and a
 	ret z
 
-; x2
+; x1.5
 	ld a, [hQuotient + 2]
+	srl a
+	add a
 	add a
 	ld [hProduct + 3], a
 
