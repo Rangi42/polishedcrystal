@@ -65,7 +65,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Mechanics:
    * Update base stats, learnt moves, and move and item mechanics to Gen VI
    * Physical/Special split from Gen IV
-   * Unown ? and ! from Gen III
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Catch rate formula from Gen III
    * Money loss formula from Gen III when whiting out
@@ -82,6 +81,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
    * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
+   * Growth raises stats by two stages in sunlight
+   * Thunder ignores accuracy and evasion in rain
+   * Sandstorm does 1/16 damage per turn, and Rock-type Pokémon get Sp.Def boosted by 50%
 * Convenience:
    * Better default settings (fast text, stereo sound, set battle style, etc)
    * Settings for 12/24-hour clock, and imperial/metric units
@@ -97,7 +99,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
 * Aesthetics:
-   * Color party/day-care sprites by species (modify `GetMonSprite`?)
+   * Unown ? and ! from Gen III
+   * Color party/day-care sprites by species
    * Higher levels and better moves and held items from HGSS
    * Fourth stat screen showing Poké Seer's data
    * Better Substitute sprite
