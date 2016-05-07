@@ -5228,6 +5228,22 @@ CheckIfTargetIsPoisonType: ; 35fe1
 ; 35ff5
 
 
+CheckIfTargetIsElectricType:
+	ld de, EnemyMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp ELECTRIC
+	ret z
+	ld a, [de]
+	cp ELECTRIC
+	ret
+
+
 PoisonOpponent: ; 35ff5
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
@@ -5479,6 +5495,8 @@ BattleCommand_ParalyzeTarget: ; 36165
 	ret nz
 	ld a, [TypeModifier]
 	and $7f
+	ret z
+	call CheckIfTargetIsElectricType
 	ret z
 	call GetOpponentItem
 	ld a, b

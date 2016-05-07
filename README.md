@@ -37,6 +37,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Type-enhancing items raise by 20%, not 10%
    * Hatch Eggs at level 1
    * Critical hit mechanics from Gen VI (200% → 150% damage, better chances)
+   * Electric-type Pokémon cannot be Paralyzed
    * Growth raises Attack and Sp.Atk
 * Grammar and spelling updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
@@ -75,7 +76,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
-   * Electric-type Pokémon cannot be Paralyzed
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
