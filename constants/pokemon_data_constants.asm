@@ -285,7 +285,7 @@ const_value SET 1
 const_value SET 1
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
-	const EVOLVE_TRADE
+	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
 	const EVOLVE_STAT
 

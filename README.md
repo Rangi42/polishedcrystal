@@ -56,6 +56,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * No badge boosts to stats or types
 * New default player names
 * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
+* Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
 
 
 ## To do:
@@ -73,7 +74,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Money loss formula from Gen III when whiting out
    * Unlimited-use TMs from Gen V
    * Gain experience from catching Pokémon like in Gen VI
-   * Don't require trading to evolve any Pokémon
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
