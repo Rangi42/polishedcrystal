@@ -1,5 +1,5 @@
 ; NidorinaPokedexEntry: ; 0x1822b6
-	db "POISON PIN@" ; species name
+	db "Poison Pin@" ; species name
 	dw 207, 440 ; height, width
 
 	db   "It has a docile"

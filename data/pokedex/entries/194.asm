@@ -1,5 +1,5 @@
 ; WooperPokedexEntry: ; 0x1d0078
-	db "WATER FISH@" ; species name
+	db "Water Fish@" ; species name
 	dw 104, 190 ; height, width
 
 	db   "A mucous"

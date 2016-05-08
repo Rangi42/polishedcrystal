@@ -1,5 +1,5 @@
 ; NidoranMPokedexEntry: ; 0x182392
-	db "POISON PIN@" ; species name
+	db "Poison Pin@" ; species name
 	dw 108, 200 ; height, width
 
 	db   "It constantly"

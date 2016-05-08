@@ -1,5 +1,5 @@
 ; SquirtlePokedexEntry: ; 0x181926
-	db "TINYTURTLE@" ; species name
+	db "TinyTurtle@" ; species name
 	dw 108, 200 ; height, width
 
 	db   "When it feels"

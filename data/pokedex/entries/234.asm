@@ -1,5 +1,5 @@
 ; StantlerPokedexEntry: ; 0x1d1174
-	db "BIG HORN@" ; species name
+	db "Big Horn@" ; species name
 	dw 407, 1570 ; height, width
 
 	db   "The round balls"

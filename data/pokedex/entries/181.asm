@@ -1,5 +1,5 @@
 ; AmpharosPokedexEntry: ; 0x1cd626
-	db "LIGHT@" ; species name
+	db "Light@" ; species name
 	dw 407, 1360 ; height, width
 
 	db   "When it gets dark,"

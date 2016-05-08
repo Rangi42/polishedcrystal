@@ -1,5 +1,5 @@
 ; SlowbroPokedexEntry: ; 0x1b8635
-	db "HERMITCRAB@" ; species name
+	db "HermitCrab@" ; species name
 	dw 503, 1730 ; height, width
 
 	db   "An attached"

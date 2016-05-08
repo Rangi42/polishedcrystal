@@ -1,5 +1,5 @@
 ; CelebiPokedexEntry: ; 0x1d18cc
-	db "TIMETRAVEL@" ; species name
+	db "TimeTravel@" ; species name
 	dw 200, 110 ; height, width
 
 	db   "Revered as a"

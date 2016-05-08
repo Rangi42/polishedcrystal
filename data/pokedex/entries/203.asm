@@ -1,5 +1,5 @@
 ; GirafarigPokedexEntry: ; 0x1d0446
-	db "LONG NECK@" ; species name
+	db "Long Neck@" ; species name
 	dw 411, 910 ; height, width
 
 	db   "When it is in"

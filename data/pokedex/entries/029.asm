@@ -1,5 +1,5 @@
 ; NidoranFPokedexEntry: ; 0x18224b
-	db "POISON PIN@" ; species name
+	db "Poison Pin@" ; species name
 	dw 104, 150 ; height, width
 
 	db   "Small and very"

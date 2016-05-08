@@ -1,5 +1,5 @@
 ; MarowakPokedexEntry: ; 0x1b90d2
-	db "BONEKEEPER@" ; species name
+	db "BoneKeeper@" ; species name
 	dw 303, 990 ; height, width
 
 	db   "Somewhere in the"

@@ -1,5 +1,5 @@
 ; StaryuPokedexEntry: ; 0x1b9702
-	db "STARSHAPE@" ; species name
+	db "Star Shape@" ; species name
 	dw 207, 760 ; height, width
 
 	db   "When the stars"

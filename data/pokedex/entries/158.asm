@@ -1,5 +1,5 @@
 ; TotodilePokedexEntry: ; 0x1ccc14
-	db "BIG JAW@" ; species name
+	db "Big Jaw@" ; species name
 	dw 200, 210 ; height, width
 
 	db   "This rough critter"

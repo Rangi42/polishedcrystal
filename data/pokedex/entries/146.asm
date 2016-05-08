@@ -1,5 +1,5 @@
 ; MoltresPokedexEntry: ; 0x1cc706
-	db "FLAME@" ; species name
+	db "Flame@" ; species name
 	dw 607, 1320 ; height, width
 
 	db   "Legendary bird"

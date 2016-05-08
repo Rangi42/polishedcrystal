@@ -1,5 +1,5 @@
 ; VenusaurPokedexEntry: ; 0x181773
-	db "SEED@" ; species name
+	db "Seed@" ; species name
 	dw 607, 2210 ; height, width
 
 	db   "As it warms it-"

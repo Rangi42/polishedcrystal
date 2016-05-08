@@ -1,5 +1,5 @@
 ; PoliwrathPokedexEntry: ; 0x183066
-	db "TADPOLE@" ; species name
+	db "Tadpole@" ; species name
 	dw 403, 1190 ; height, width
 
 	db   "It can use its"

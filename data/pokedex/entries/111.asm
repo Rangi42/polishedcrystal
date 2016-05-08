@@ -1,5 +1,5 @@
 ; RhyhornPokedexEntry: ; 0x1b935d
-	db "SPIKES@" ; species name
+	db "Spikes@" ; species name
 	dw 303, 2540 ; height, width
 
 	db   "It can remember"

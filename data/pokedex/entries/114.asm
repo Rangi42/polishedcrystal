@@ -1,5 +1,5 @@
 ; TangelaPokedexEntry: ; 0x1b948c
-	db "VINE@" ; species name
+	db "Vine@" ; species name
 	dw 303, 770 ; height, width
 
 	db   "During battle, it"

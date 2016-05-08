@@ -1,5 +1,5 @@
 ; WeedlePokedexEntry: ; 0x181bb4
-	db "HAIRY BUG@" ; species name
+	db "Hairy Bug@" ; species name
 	dw 100, 70 ; height, width
 
 	db   "The barb on top of"

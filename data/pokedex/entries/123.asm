@@ -1,5 +1,5 @@
 ; ScytherPokedexEntry: ; 0x1b9851
-	db "MANTIS@" ; species name
+	db "Mantis@" ; species name
 	dw 411, 1230 ; height, width
 
 	db   "It's very proud of"

@@ -1,5 +1,5 @@
 ; ArcaninePokedexEntry: ; 0x182f1c
-	db "LEGENDARY@" ; species name
+	db "Legendary@" ; species name
 	dw 603, 3420 ; height, width
 
 	db   "An ancient picture"

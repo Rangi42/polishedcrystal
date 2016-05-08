@@ -1,5 +1,5 @@
 ; SunfloraPokedexEntry: ; 0x1cdaef
-	db "SUN@" ; species name
+	db "Sun@" ; species name
 	dw 207, 190 ; height, width
 
 	db   "As the hot season"

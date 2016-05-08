@@ -1,5 +1,5 @@
 ; CloysterPokedexEntry: ; 0x1b8ad9
-	db "BIVALVE@" ; species name
+	db "Bivalve@" ; species name
 	dw 411, 2920 ; height, width
 
 	db   "Even a missile"

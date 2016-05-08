@@ -1,5 +1,5 @@
 ; MagikarpPokedexEntry: ; 0x1cc000
-	db "FISH@" ; species name
+	db "Fish@" ; species name
 	dw 211, 220 ; height, width
 
 	db   "This weak and"

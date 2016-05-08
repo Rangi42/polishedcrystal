@@ -1,5 +1,5 @@
 ; TyranitarPokedexEntry: ; 0x1d177b
-	db "ARMOR@" ; species name
+	db "Armor@" ; species name
 	dw 607, 4450 ; height, width
 
 	db   "In just one of its"

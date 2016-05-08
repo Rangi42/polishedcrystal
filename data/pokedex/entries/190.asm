@@ -1,5 +1,5 @@
 ; AipomPokedexEntry: ; 0x1cda11
-	db "LONG TAIL@" ; species name
+	db "Long Tail@" ; species name
 	dw 207, 250 ; height, width
 
 	db   "It uses its tail"

@@ -1,5 +1,5 @@
 ; MurkrowPokedexEntry: ; 0x1d021e
-	db "DARKNESS@" ; species name
+	db "Darkness@" ; species name
 	dw 108, 50 ; height, width
 
 	db   "It hides any shiny"

@@ -1,5 +1,5 @@
 ; SmoochumPokedexEntry: ; 0x1d132b
-	db "KISS@" ; species name
+	db "Kiss@" ; species name
 	dw 104, 130 ; height, width
 
 	db   "The sensitivity of"

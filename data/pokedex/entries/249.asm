@@ -1,5 +1,5 @@
 ; LugiaPokedexEntry: ; 0x1d17e9
-	db "DIVING@" ; species name
+	db "Diving@" ; species name
 	dw 1701, 4760 ; height, width
 
 	db   "It has an incred-"

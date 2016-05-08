@@ -1,5 +1,5 @@
 ; GolemPokedexEntry: ; 0x1b8481
-	db "MEGATON@" ; species name
+	db "Megaton@" ; species name
 	dw 407, 6620 ; height, width
 
 	db   "Its rock-like body"

@@ -1,5 +1,5 @@
 ; AlakazamPokedexEntry: ; 0x1b8000
-	db "PSI@" ; species name
+	db "Psi@" ; species name
 	dw 411, 1060 ; height, width
 
 	db   "It has an IQ of"

@@ -1,5 +1,5 @@
 ; DelibirdPokedexEntry: ; 0x1d0db1
-	db "DELIVERY@" ; species name
+	db "Delivery@" ; species name
 	dw 211, 350 ; height, width
 
 	db   "It always carries"

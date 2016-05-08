@@ -1,5 +1,5 @@
 ; NoctowlPokedexEntry: ; 0x1cceb9
-	db "OWL@" ; species name
+	db "Owl@" ; species name
 	dw 503, 900 ; height, width
 
 	db   "Its extremely soft"

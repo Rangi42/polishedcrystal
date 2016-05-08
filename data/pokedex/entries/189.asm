@@ -1,5 +1,5 @@
 ; JumpluffPokedexEntry: ; 0x1cd998
-	db "COTTONWEED@" ; species name
+	db "Cottonweed@" ; species name
 	dw 207, 70 ; height, width
 
 	db   "Even in the fierc-"

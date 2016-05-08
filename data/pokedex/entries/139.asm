@@ -1,5 +1,5 @@
 ; OmastarPokedexEntry: ; 0x1cc42e
-	db "SPIRAL@" ; species name
+	db "Spiral@" ; species name
 	dw 303, 770 ; height, width
 
 	db   "Its heavy shell"

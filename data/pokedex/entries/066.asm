@@ -1,5 +1,5 @@
 ; MachopPokedexEntry: ; 0x1b8065
-	db "SUPERPOWER@" ; species name
+	db "Superpower@" ; species name
 	dw 207, 430 ; height, width
 
 	db   "It trains by"

@@ -1,5 +1,5 @@
 ; VenomothPokedexEntry: ; 0x182abf
-	db "POISONMOTH@" ; species name
+	db "PoisonMoth@" ; species name
 	dw 411, 280 ; height, width
 
 	db   "The scales it"

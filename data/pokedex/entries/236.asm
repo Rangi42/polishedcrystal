@@ -1,5 +1,5 @@
 ; TyroguePokedexEntry: ; 0x1d124b
-	db "SCUFFLE@" ; species name
+	db "Scuffle@" ; species name
 	dw 204, 460 ; height, width
 
 	db   "To brush up on its"

@@ -1,5 +1,5 @@
 ; KadabraPokedexEntry: ; 0x18313c
-	db "PSI@" ; species name
+	db "Psi@" ; species name
 	dw 403, 1250 ; height, width
 
 	db   "When it closes its"

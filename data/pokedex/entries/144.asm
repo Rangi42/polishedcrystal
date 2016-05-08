@@ -1,5 +1,5 @@
 ; ArticunoPokedexEntry: ; 0x1cc632
-	db "FREEZE@" ; species name
+	db "Freeze@" ; species name
 	dw 507, 1220 ; height, width
 
 	db   "Legendary bird"

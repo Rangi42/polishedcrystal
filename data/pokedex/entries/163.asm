@@ -1,5 +1,5 @@
 ; HoothootPokedexEntry: ; 0x1cce58
-	db "OWL@" ; species name
+	db "Owl@" ; species name
 	dw 204, 470 ; height, width
 
 	db   "It begins to hoot"

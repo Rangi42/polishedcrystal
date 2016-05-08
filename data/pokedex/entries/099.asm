@@ -1,5 +1,5 @@
 ; KinglerPokedexEntry: ; 0x1b8e45
-	db "PINCER@" ; species name
+	db "Pincer@" ; species name
 	dw 403, 1320 ; height, width
 
 	db   "Its oversized claw"

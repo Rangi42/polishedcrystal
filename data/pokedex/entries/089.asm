@@ -1,5 +1,5 @@
 ; MukPokedexEntry: ; 0x1b89fc
-	db "SLUDGE@" ; species name
+	db "Sludge@" ; species name
 	dw 311, 660 ; height, width
 
 	db   "As it moves, a"

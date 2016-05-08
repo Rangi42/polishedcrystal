@@ -1,5 +1,5 @@
 ; DragonairPokedexEntry: ; 0x1cc7dc
-	db "DRAGON@" ; species name
+	db "Dragon@" ; species name
 	dw 1301, 360 ; height, width
 
 	db   "It is called the"

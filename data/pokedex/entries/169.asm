@@ -1,5 +1,5 @@
 ; CrobatPokedexEntry: ; 0x1cd0f5
-	db "BAT@" ; species name
+	db "Bat@" ; species name
 	dw 511, 1650 ; height, width
 
 	db   "As a result of its"

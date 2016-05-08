@@ -1,5 +1,5 @@
 ; RaikouPokedexEntry: ; 0x1d156b
-	db "THUNDER@" ; species name
+	db "Thunder@" ; species name
 	dw 603, 3920 ; height, width
 
 	db   "This rough #MON"

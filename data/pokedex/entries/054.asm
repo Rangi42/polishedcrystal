@@ -1,5 +1,5 @@
 ; PsyduckPokedexEntry: ; 0x182cee
-	db "DUCK@" ; species name
+	db "Duck@" ; species name
 	dw 207, 430 ; height, width
 
 	db   "The only time it"

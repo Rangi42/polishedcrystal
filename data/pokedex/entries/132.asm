@@ -1,5 +1,5 @@
 ; DittoPokedexEntry: ; 0x1cc13c
-	db "TRANSFORM@" ; species name
+	db "Transform@" ; species name
 	dw 100, 90 ; height, width
 
 	db   "When it encount-"

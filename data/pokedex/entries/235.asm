@@ -1,5 +1,5 @@
 ; SmearglePokedexEntry: ; 0x1d11e0
-	db "PAINTER@" ; species name
+	db "Painter@" ; species name
 	dw 311, 1280 ; height, width
 
 	db   "The color of the"

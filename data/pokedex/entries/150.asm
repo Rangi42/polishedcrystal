@@ -1,5 +1,5 @@
 ; MewtwoPokedexEntry: ; 0x1cc8ae
-	db "GENETIC@" ; species name
+	db "Genetic@" ; species name
 	dw 607, 2690 ; height, width
 
 	db   "Said to rest qui-"

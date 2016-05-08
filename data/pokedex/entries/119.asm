@@ -1,5 +1,5 @@
 ; SeakingPokedexEntry: ; 0x1b9690
-	db "GOLDFISH@" ; species name
+	db "Goldfish@" ; species name
 	dw 403, 860 ; height, width
 
 	db   "When autumn comes,"

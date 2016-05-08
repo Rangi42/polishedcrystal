@@ -1,5 +1,5 @@
 ; MarillPokedexEntry: ; 0x1cd705
-	db "AQUAMOUSE@" ; species name
+	db "Aqua Mouse@" ; species name
 	dw 104, 190 ; height, width
 
 	db   "The fur on its"

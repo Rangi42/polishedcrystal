@@ -1,5 +1,5 @@
 ; PoliwhirlPokedexEntry: ; 0x182ffd
-	db "TADPOLE@" ; species name
+	db "Tadpole@" ; species name
 	dw 303, 440 ; height, width
 
 	db   "Though it is"

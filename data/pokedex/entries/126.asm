@@ -1,5 +1,5 @@
 ; MagmarPokedexEntry: ; 0x1b9994
-	db "SPITFIRE@" ; species name
+	db "Spitfire@" ; species name
 	dw 403, 980 ; height, width
 
 	db   "It moves more"

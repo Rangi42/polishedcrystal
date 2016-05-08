@@ -1,5 +1,5 @@
 ; GolduckPokedexEntry: ; 0x182d55
-	db "DUCK@" ; species name
+	db "Duck@" ; species name
 	dw 507, 1690 ; height, width
 
 	db   "It swims grace-"

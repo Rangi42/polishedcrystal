@@ -1,5 +1,5 @@
 ; CharmeleonPokedexEntry: ; 0x18184a
-	db "FLAME@" ; species name
+	db "Flame@" ; species name
 	dw 307, 420 ; height, width
 
 	db   "If it becomes"

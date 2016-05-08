@@ -1,5 +1,5 @@
 ; ShucklePokedexEntry: ; 0x1d088e
-	db "MOLD@" ; species name
+	db "Mold@" ; species name
 	dw 200, 450 ; height, width
 
 	db   "The fluid secreted"

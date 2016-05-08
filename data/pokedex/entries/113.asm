@@ -1,5 +1,5 @@
 ; ChanseyPokedexEntry: ; 0x1b942e
-	db "EGG@" ; species name
+	db "Egg@" ; species name
 	dw 307, 760 ; height, width
 
 	db   "People try to"

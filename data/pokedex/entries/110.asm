@@ -1,5 +1,5 @@
 ; WeezingPokedexEntry: ; 0x1b92ec
-	db "POISON GAS@" ; species name
+	db "Poison Gas@" ; species name
 	dw 311, 210 ; height, width
 
 	db   "When it inhales"

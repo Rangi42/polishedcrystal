@@ -1,5 +1,5 @@
 ; MagcargoPokedexEntry: ; 0x1d0b21
-	db "LAVA@" ; species name
+	db "Lava@" ; species name
 	dw 207, 1210 ; height, width
 
 	db   "Its body is as hot"

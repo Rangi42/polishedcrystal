@@ -1,5 +1,5 @@
 ; HitmonleePokedexEntry: ; 0x1b913f
-	db "KICKING@" ; species name
+	db "Kicking@" ; species name
 	dw 411, 1100 ; height, width
 
 	db   "It is also called"

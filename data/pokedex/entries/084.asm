@@ -1,5 +1,5 @@
 ; DoduoPokedexEntry: ; 0x1b87d7
-	db "TWIN BIRD@" ; species name
+	db "Twin Bird@" ; species name
 	dw 407, 860 ; height, width
 
 	db   "It lives on a"

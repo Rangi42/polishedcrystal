@@ -1,5 +1,5 @@
 ; RapidashPokedexEntry: ; 0x1b855e
-	db "FIRE HORSE@" ; species name
+	db "Fire Horse@" ; species name
 	dw 507, 2090 ; height, width
 
 	db   "It just loves to"

@@ -1,5 +1,5 @@
 ; WigglytuffPokedexEntry: ; 0x1826e9
-	db "BALLOON@" ; species name
+	db "Balloon@" ; species name
 	dw 303, 260 ; height, width
 
 	db   "The rich, fluffy"

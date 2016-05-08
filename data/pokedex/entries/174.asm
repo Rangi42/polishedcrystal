@@ -1,5 +1,5 @@
 ; IgglybuffPokedexEntry: ; 0x1cd32c
-	db "BALLOON@" ; species name
+	db "Balloon@" ; species name
 	dw 100, 20 ; height, width
 
 	db   "Instead of walking"

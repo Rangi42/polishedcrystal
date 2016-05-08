@@ -1,5 +1,5 @@
 ; CubonePokedexEntry: ; 0x1b9068
-	db "LONELY@" ; species name
+	db "Lonely@" ; species name
 	dw 104, 140 ; height, width
 
 	db   "It lost its mother"

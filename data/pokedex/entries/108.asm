@@ -1,5 +1,5 @@
 ; LickitungPokedexEntry: ; 0x1b9210
-	db "LICKING@" ; species name
+	db "Licking@" ; species name
 	dw 311, 1440 ; height, width
 
 	db   "It has a tongue"

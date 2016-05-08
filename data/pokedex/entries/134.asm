@@ -1,5 +1,5 @@
 ; VaporeonPokedexEntry: ; 0x1cc224
-	db "BUBBLE JET@" ; species name
+	db "Bubble Jet@" ; species name
 	dw 303, 640 ; height, width
 
 	db   "As it uses the"

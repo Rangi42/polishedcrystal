@@ -1,5 +1,5 @@
 ; OctilleryPokedexEntry: ; 0x1d0d42
-	db "JET@" ; species name
+	db "Jet@" ; species name
 	dw 211, 630 ; height, width
 
 	db   "Its instinct is to"

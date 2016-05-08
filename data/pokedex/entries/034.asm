@@ -1,5 +1,5 @@
 ; NidokingPokedexEntry: ; 0x182463
-	db "DRILL@" ; species name
+	db "Drill@" ; species name
 	dw 407, 1370 ; height, width
 
 	db   "It uses its thick"

@@ -1,5 +1,5 @@
 ; ElekidPokedexEntry: ; 0x1d1398
-	db "ELECTRIC@" ; species name
+	db "Electric@" ; species name
 	dw 200, 520 ; height, width
 
 	db   "It loves violent"

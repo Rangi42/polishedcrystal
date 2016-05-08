@@ -1,5 +1,5 @@
 ; SudowoodoPokedexEntry: ; 0x1cd7d9
-	db "IMITATION@" ; species name
+	db "Imitation@" ; species name
 	dw 311, 840 ; height, width
 
 	db   "If a tree branch"

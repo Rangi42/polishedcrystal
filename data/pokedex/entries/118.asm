@@ -1,5 +1,5 @@
 ; GoldeenPokedexEntry: ; 0x1b9626
-	db "GOLDFISH@" ; species name
+	db "Goldfish@" ; species name
 	dw 200, 330 ; height, width
 
 	db   "During spawning"

@@ -1,5 +1,5 @@
 ; SandshrewPokedexEntry: ; 0x182184
-	db "MOUSE@" ; species name
+	db "Mouse@" ; species name
 	dw 200, 260 ; height, width
 
 	db   "It prefers dry,"

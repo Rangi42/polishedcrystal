@@ -1,5 +1,5 @@
 ; DunsparcePokedexEntry: ; 0x1d0593
-	db "LAND SNAKE@" ; species name
+	db "Land Snake@" ; species name
 	dw 411, 310 ; height, width
 
 	db   "It hides deep"

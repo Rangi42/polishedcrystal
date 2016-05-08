@@ -1,5 +1,5 @@
 ; RemoraidPokedexEntry: ; 0x1d0cd3
-	db "JET@" ; species name
+	db "Jet@" ; species name
 	dw 200, 260 ; height, width
 
 	db   "To escape from an"

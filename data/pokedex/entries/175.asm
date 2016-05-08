@@ -1,5 +1,5 @@
 ; TogepiPokedexEntry: ; 0x1cd396
-	db "SPIKE BALL@" ; species name
+	db "Spike Ball@" ; species name
 	dw 100, 30 ; height, width
 
 	db   "It is considered"

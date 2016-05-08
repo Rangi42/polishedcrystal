@@ -1,5 +1,5 @@
 ; SkiploomPokedexEntry: ; 0x1cd928
-	db "COTTONWEED@" ; species name
+	db "Cottonweed@" ; species name
 	dw 200, 20 ; height, width
 
 	db   "As soon as it"

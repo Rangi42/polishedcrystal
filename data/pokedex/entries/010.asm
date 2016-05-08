@@ -1,5 +1,5 @@
 ; CaterpiePokedexEntry: ; 0x181a60
-	db "WORM@" ; species name
+	db "Worm@" ; species name
 	dw 100, 60 ; height, width
 
 	db   "It crawls into"

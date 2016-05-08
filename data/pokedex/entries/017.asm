@@ -1,5 +1,5 @@
 ; PidgeottoPokedexEntry: ; 0x181d75
-	db "BIRD@" ; species name
+	db "Bird@" ; species name
 	dw 307, 660 ; height, width
 
 	db   "It slowly flies in"

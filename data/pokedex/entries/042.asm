@@ -1,5 +1,5 @@
 ; GolbatPokedexEntry: ; 0x1827c4
-	db "BAT@" ; species name
+	db "Bat@" ; species name
 	dw 503, 1210 ; height, width
 
 	db   "When it plunges"

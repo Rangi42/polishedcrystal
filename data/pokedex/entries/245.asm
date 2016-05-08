@@ -1,5 +1,5 @@
 ; SuicunePokedexEntry: ; 0x1d1642
-	db "AURORA@" ; species name
+	db "Aurora@" ; species name
 	dw 607, 4120 ; height, width
 
 	db   "This divine"

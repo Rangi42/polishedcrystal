@@ -1,5 +1,5 @@
 ; GranbullPokedexEntry: ; 0x1d074a
-	db "FAIRY@" ; species name
+	db "Fairy@" ; species name
 	dw 407, 1070 ; height, width
 
 	db   "It can make most"

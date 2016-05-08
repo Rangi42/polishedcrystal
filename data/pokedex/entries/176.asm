@@ -1,5 +1,5 @@
 ; TogeticPokedexEntry: ; 0x1cd402
-	db "HAPPINESS@" ; species name
+	db "Happiness@" ; species name
 	dw 200, 70 ; height, width
 
 	db   "Although it does"

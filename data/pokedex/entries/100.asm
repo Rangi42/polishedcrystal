@@ -1,5 +1,5 @@
 ; VoltorbPokedexEntry: ; 0x1b8eb0
-	db "BALL@" ; species name
+	db "Ball@" ; species name
 	dw 108, 230 ; height, width
 
 	db   "During the study"

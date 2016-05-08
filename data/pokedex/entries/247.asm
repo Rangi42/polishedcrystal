@@ -1,5 +1,5 @@
 ; PupitarPokedexEntry: ; 0x1d1709
-	db "HARD SHELL@" ; species name
+	db "Hard Shell@" ; species name
 	dw 311, 3350 ; height, width
 
 	db   "It will not stay"

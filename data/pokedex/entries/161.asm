@@ -1,5 +1,5 @@
 ; SentretPokedexEntry: ; 0x1ccd6b
-	db "SCOUT@" ; species name
+	db "Scout@" ; species name
 	dw 207, 130 ; height, width
 
 	db   "When acting as a"

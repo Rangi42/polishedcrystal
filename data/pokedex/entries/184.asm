@@ -1,5 +1,5 @@
 ; AzumarillPokedexEntry: ; 0x1cd771
-	db "AQUARABBIT@" ; species name
+	db "AquaRabbit@" ; species name
 	dw 207, 630 ; height, width
 
 	db   "The bubble-like"

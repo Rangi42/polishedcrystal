@@ -1,5 +1,5 @@
 ; GrowlithePokedexEntry: ; 0x182eaa
-	db "PUPPY@" ; species name
+	db "Puppy@" ; species name
 	dw 204, 420 ; height, width
 
 	db   "It controls a big"

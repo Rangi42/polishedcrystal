@@ -1,5 +1,5 @@
 ; MagnetonPokedexEntry: ; 0x1b870a
-	db "MAGNET@" ; species name
+	db "Magnet@" ; species name
 	dw 303, 1320 ; height, width
 
 	db   "When many"

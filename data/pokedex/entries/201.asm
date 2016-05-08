@@ -1,5 +1,5 @@
 ; UnownPokedexEntry: ; 0x1d0373
-	db "SYMBOL@" ; species name
+	db "Symbol@" ; species name
 	dw 108, 110 ; height, width
 
 	db   "Because different"

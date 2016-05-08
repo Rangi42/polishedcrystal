@@ -1,5 +1,5 @@
 ; UmbreonPokedexEntry: ; 0x1d01af
-	db "MOONLIGHT@" ; species name
+	db "Moonlight@" ; species name
 	dw 303, 600 ; height, width
 
 	db   "On the night of a"

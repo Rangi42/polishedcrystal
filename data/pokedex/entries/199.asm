@@ -1,5 +1,5 @@
 ; SlowkingPokedexEntry: ; 0x1d0292
-	db "ROYAL@" ; species name
+	db "Royal@" ; species name
 	dw 607, 1750 ; height, width
 
 	db   "Every time it ya-"

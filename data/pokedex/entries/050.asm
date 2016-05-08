@@ -1,5 +1,5 @@
 ; DiglettPokedexEntry: ; 0x182b30
-	db "MOLE@" ; species name
+	db "Mole@" ; species name
 	dw 8, 20 ; height, width
 
 	db   "It digs under-"

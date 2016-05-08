@@ -1,5 +1,5 @@
 ; NinetalesPokedexEntry: ; 0x18260c
-	db "FOX@" ; species name
+	db "Fox@" ; species name
 	dw 307, 440 ; height, width
 
 	db   "It is said to live"

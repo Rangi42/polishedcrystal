@@ -1,5 +1,5 @@
 ; XatuPokedexEntry: ; 0x1cd4e9
-	db "MYSTIC@" ; species name
+	db "Mystic@" ; species name
 	dw 411, 330 ; height, width
 
 	db   "Once it begins to"

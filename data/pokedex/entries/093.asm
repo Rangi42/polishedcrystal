@@ -1,5 +1,5 @@
 ; HaunterPokedexEntry: ; 0x1b8bbd
-	db "GAS@" ; species name
+	db "Gas@" ; species name
 	dw 503, 2 ; height, width
 
 	db   "It hides in the"

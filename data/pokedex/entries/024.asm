@@ -1,5 +1,5 @@
 ; ArbokPokedexEntry: ; 0x18203d
-	db "COBRA@" ; species name
+	db "Cobra@" ; species name
 	dw 1106, 1430 ; height, width
 
 	db   "To intimidate"

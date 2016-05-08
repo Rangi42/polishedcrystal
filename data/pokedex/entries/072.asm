@@ -1,5 +1,5 @@
 ; TentacoolPokedexEntry: ; 0x1b82d1
-	db "JELLYFISH@" ; species name
+	db "Jellyfish@" ; species name
 	dw 211, 1000 ; height, width
 
 	db   "As it floats along"

@@ -1,5 +1,5 @@
 ; KoffingPokedexEntry: ; 0x1b9276
-	db "POISON GAS@" ; species name
+	db "Poison Gas@" ; species name
 	dw 200, 20 ; height, width
 
 	db   "If one gets close"

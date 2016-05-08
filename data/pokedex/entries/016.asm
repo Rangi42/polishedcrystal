@@ -1,5 +1,5 @@
 ; PidgeyPokedexEntry: ; 0x181cfa
-	db "TINY BIRD@" ; species name
+	db "Tiny Bird@" ; species name
 	dw 100, 40 ; height, width
 
 	db   "It rapidly flaps"

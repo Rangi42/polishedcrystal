@@ -1,5 +1,5 @@
 ; MachokePokedexEntry: ; 0x1b80cb
-	db "SUPERPOWER@" ; species name
+	db "Superpower@" ; species name
 	dw 411, 1550 ; height, width
 
 	db   "This tough #MON"

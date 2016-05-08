@@ -1,5 +1,5 @@
 ; PinsirPokedexEntry: ; 0x1b99fb
-	db "STAGBEETLE@" ; species name
+	db "StagBeetle@" ; species name
 	dw 411, 1210 ; height, width
 
 	db   "When the tempera-"

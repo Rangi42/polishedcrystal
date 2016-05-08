@@ -1,5 +1,5 @@
 ; RhydonPokedexEntry: ; 0x1b93c5
-	db "DRILL@" ; species name
+	db "Drill@" ; species name
 	dw 603, 2650 ; height, width
 
 	db   "By lightly spin-"

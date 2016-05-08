@@ -1,5 +1,5 @@
 ; HeracrossPokedexEntry: ; 0x1d0907
-	db "SINGLEHORN@" ; species name
+	db "SingleHorn@" ; species name
 	dw 411, 1190 ; height, width
 
 	db   "With its Herculean"

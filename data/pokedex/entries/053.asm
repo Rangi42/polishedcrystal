@@ -1,5 +1,5 @@
 ; PersianPokedexEntry: ; 0x182c78
-	db "CLASSY CAT@" ; species name
+	db "Classy Cat@" ; species name
 	dw 303, 710 ; height, width
 
 	db   "Behind its lithe,"

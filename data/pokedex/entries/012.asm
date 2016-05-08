@@ -1,5 +1,5 @@
 ; ButterfreePokedexEntry: ; 0x181b45
-	db "BUTTERFLY@" ; species name
+	db "Butterfly@" ; species name
 	dw 307, 710 ; height, width
 
 	db   "It flits from"

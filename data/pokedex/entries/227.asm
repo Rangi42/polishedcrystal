@@ -1,5 +1,5 @@
 ; SkarmoryPokedexEntry: ; 0x1d0e8c
-	db "ARMOR BIRD@" ; species name
+	db "Armor Bird@" ; species name
 	dw 507, 1110 ; height, width
 
 	db   "The feathers that"

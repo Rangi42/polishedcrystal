@@ -1,5 +1,5 @@
 ; KabutopsPokedexEntry: ; 0x1cc507
-	db "SHELLFISH@" ; species name
+	db "Shellfish@" ; species name
 	dw 403, 890 ; height, width
 
 	db   "It was able to"

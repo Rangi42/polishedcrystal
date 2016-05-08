@@ -1,5 +1,5 @@
 ; AriadosPokedexEntry: ; 0x1cd083
-	db "LONG LEG@" ; species name
+	db "Long Leg@" ; species name
 	dw 307, 740 ; height, width
 
 	db   "Rather than mak-"

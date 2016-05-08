@@ -1,5 +1,5 @@
 ; ElectrodePokedexEntry: ; 0x1b8f19
-	db "BALL@" ; species name
+	db "Ball@" ; species name
 	dw 311, 1470 ; height, width
 
 	db   "The more energy it"

@@ -1,5 +1,5 @@
 ; ZubatPokedexEntry: ; 0x18275d
-	db "BAT@" ; species name
+	db "Bat@" ; species name
 	dw 207, 170 ; height, width
 
 	db   "During the day, it"

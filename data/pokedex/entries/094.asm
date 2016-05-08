@@ -1,5 +1,5 @@
 ; GengarPokedexEntry: ; 0x1b8c25
-	db "SHADOW@" ; species name
+	db "Shadow@" ; species name
 	dw 411, 890 ; height, width
 
 	db   "Hiding in people's"
