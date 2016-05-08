@@ -1218,39 +1218,16 @@ TitleScreenMain: ; 6304
 ; Save data can be deleted by pressing Up + B + Select.
 	call GetJoypad
 	ld hl, hJoyDown
+
 	ld a, [hl]
 	and D_UP + B_BUTTON + SELECT
 	cp  D_UP + B_BUTTON + SELECT
 	jr z, .delete_save_data
 
-; To bring up the clock reset dialog:
-
-; Hold Down + B + Select to initiate the sequence.
-	ld a, [hClockResetTrigger]
-	cp $34
-	jr z, .check_clock_reset
-
+; The clock can be reset by pressing Down + B + Select.
 	ld a, [hl]
 	and D_DOWN + B_BUTTON + SELECT
 	cp  D_DOWN + B_BUTTON + SELECT
-	jr nz, .check_start
-
-	ld a, $34
-	ld [hClockResetTrigger], a
-	jr .check_start
-
-; Keep Select pressed, and hold Left + Up.
-; Then let go of Select.
-.check_clock_reset
-	bit SELECT_F, [hl]
-	jr nz, .check_start
-
-	xor a
-	ld [hClockResetTrigger], a
-
-	ld a, [hl]
-	and D_LEFT + D_UP
-	cp  D_LEFT + D_UP
 	jr z, .clock_reset
 
 ; Press Start or A to start the game.

@@ -4743,11 +4743,11 @@ Function11a235: ; 11a235
 ; 11a2cf
 
 String_11a2cf: ; 11a2cf
-	db "YES@"
+	db "Yes@"
 ; 11a2d3
 
 String_11a2d3: ; 11a2d3
-	db "NO@"
+	db "No@"
 ; 11a2d6
 
 MenuDataHeader_11a2d6: ; 11a2d6
