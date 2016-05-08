@@ -83,11 +83,6 @@ endr
 ; Skip Normal
 	inc a
 
-; Skip Fairy
-	cp FAIRY
-	jr c, .done
-	inc a
-
 ; Skip unused types
 	cp UNUSED_TYPES
 	jr c, .done
