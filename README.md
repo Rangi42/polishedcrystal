@@ -40,7 +40,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Critical hit mechanics from Gen VI (200% → 150% damage, better chances)
    * Electric-type Pokémon cannot be Paralyzed
    * Growth raises Attack and Sp.Atk
-   * Updated move attributes
+   * Updated Pokémon base stats and move attributes
    * Sandstorm does 1/16 damage per turn
 * Grammar and spelling updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
@@ -75,7 +75,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add Glaceon, Leafeon, and Sylveon in the three unused Pokémon slots
 * Replace Cleffa and Igglybuff with Togekiss and Weavile
 * Mechanics:
-   * Update base stats, learnt moves, and move and item mechanics to Gen VI
+   * Update learnt moves, and move and item mechanics, to Gen VI
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Catch rate formula from Gen III
    * Money loss formula from Gen III when whiting out
