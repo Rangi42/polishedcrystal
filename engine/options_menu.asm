@@ -72,7 +72,7 @@ StringOptions: ; e4241
 	db "        :<LNBRK>"
 	db "Print<LNBRK>"
 	db "        :<LNBRK>"
-	db "Menu Account<LNBRK>"
+	db "Menu Blurbs<LNBRK>"
 	db "        :<LNBRK>"
 	db "Frame<LNBRK>"
 	db "        :Type<LNBRK>"

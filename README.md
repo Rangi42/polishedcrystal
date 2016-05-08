@@ -54,6 +54,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tin Tower → Bell Tower
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
+   * Menu Account → Menu Blurbs
    * Refer to badges as "the"
 * Graphics updates:
    * Individual party/day-care icons for each Pokémon
