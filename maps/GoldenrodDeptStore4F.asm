@@ -61,9 +61,9 @@ UnknownText_0x55f74:
 	line "a certain item."
 
 	para "I know of four:"
-	line "Poliwhirl, Slowbro,"
+	line "Poliwhirl, Onix,"
 
-	para "Onix and, um,"
+	para "Slowbro and, um,"
 	line "Scyther."
 
 	para "I heard there are"

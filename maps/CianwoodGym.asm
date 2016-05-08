@@ -201,10 +201,10 @@ GetStormBadgeText:
 	done
 
 ChuckExplainBadgeText:
-	text "The Storm Badge mak-"
-	line "es all #mon up to"
+	text "The Storm Badge"
+	line "makes all #mon up"
 
-	para "L70 obey, even"
+	para "to L70 obey, even"
 	line "traded ones."
 
 	para "It also lets your"

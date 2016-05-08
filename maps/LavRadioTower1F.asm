@@ -169,7 +169,7 @@ UnknownText_0x7f193:
 	para "music programs."
 	line "How unfortunate!"
 
-	para "If you get an Expn."
+	para "If you get a Expn."
 	line "Card upgrade, you"
 
 	para "can tune in. You'd"

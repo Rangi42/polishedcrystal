@@ -238,11 +238,11 @@ UnknownText_0x54273:
 	done
 
 UnknownText_0x5428b:
-	text "The Plain Badge lets"
-	line "your #mon use"
+	text "The Plain Badge"
+	line "lets your #mon"
 
-	para "Strength outside"
-	line "of battle."
+	para "use Strength out-"
+	line "side of battle."
 
 	para "Oh, you can have"
 	line "this too!"

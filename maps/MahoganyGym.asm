@@ -200,8 +200,8 @@ UnknownText_0x199d3b:
 	done
 
 UnknownText_0x199d55:
-	text "That Badge will let"
-	line "your #mon use"
+	text "That Badge will"
+	line "let your #mon use"
 	cont "Whirlpool to get"
 	cont "across whirlpools."
 
