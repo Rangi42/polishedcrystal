@@ -40,6 +40,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Critical hit mechanics from Gen VI (200% → 150% damage, better chances)
    * Electric-type Pokémon cannot be Paralyzed
    * Growth raises Attack and Sp.Atk
+   * Updated move attributes
    * Sandstorm does 1/16 damage per turn
 * Grammar and spelling updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
@@ -82,7 +83,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
+   * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Struggle does 25% recoil damage
+   * Low Kick's power is based on weight
+   * Make sure Fury Cutter's power is capped at 160
+   * Hidden Power is always 60 power
+   * Beat up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
