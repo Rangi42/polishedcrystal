@@ -3,7 +3,7 @@
 	dw 211, 620 ; height, width
 
 	db   "This cunning"
-	next "#MON hides"
+	next "#mon hides"
 	next "under the cover"
 	page "of darkness,"
 	next "waiting to attack"

@@ -3,7 +3,7 @@
 	dw 307, 660 ; height, width
 
 	db   "When two"
-	next "ELECTABUZZ touch,"
+	next "Electabuzz touch,"
 	next "they control the"
 	page "electric currents"
 	next "to communicate"

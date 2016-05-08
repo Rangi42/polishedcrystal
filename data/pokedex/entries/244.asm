@@ -3,7 +3,7 @@
 	dw 607, 4370 ; height, width
 
 	db   "This brawny"
-	next "#MON courses"
+	next "#mon courses"
 	next "around the earth,"
 	page "spouting flames"
 	next "hotter than a"

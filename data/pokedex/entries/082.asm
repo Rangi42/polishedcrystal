@@ -3,7 +3,7 @@
 	dw 303, 1320 ; height, width
 
 	db   "When many"
-	next "MAGNETON gather"
+	next "Magneton gather"
 	next "together, the"
 	page "resulting magnetic"
 	next "storm disrupts"

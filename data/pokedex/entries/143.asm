@@ -2,7 +2,7 @@
 	db "Sleeping@" ; species name
 	dw 611, 10140 ; height, width
 
-	db   "This #MON's"
+	db   "This #mon's"
 	next "stomach is so"
 	next "strong, even"
 	page "eating moldy or"

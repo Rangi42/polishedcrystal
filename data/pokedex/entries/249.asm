@@ -6,5 +6,5 @@
 	next "ible ability to"
 	next "calm raging sto-"
 	page "rms. It is said"
-	next "that LUGIA appears"
+	next "that Lugia appears"
 	next "when storms start.@"

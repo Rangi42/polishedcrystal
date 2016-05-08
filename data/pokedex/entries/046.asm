@@ -4,7 +4,7 @@
 
 	db   "The tochukaso"
 	next "growing on this"
-	next "#MON's back"
+	next "#mon's back"
 	page "orders it to"
 	next "extract juice from"
 	next "tree trunks.@"

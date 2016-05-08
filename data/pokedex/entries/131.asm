@@ -3,7 +3,7 @@
 	dw 802, 4850 ; height, width
 
 	db   "This gentle"
-	next "#MON loves to"
+	next "#mon loves to"
 	next "give people rides"
 	page "and provides a ve-"
 	next "ry comfortable way"

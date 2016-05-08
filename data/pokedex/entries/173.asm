@@ -5,6 +5,6 @@
 	db   "If the impact site"
 	next "of a meteorite is"
 	next "found, this"
-	page "#MON is certain"
+	page "#mon is certain"
 	next "to be within the"
 	next "immediate area.@"
