@@ -165,10 +165,10 @@ UnknownText_0x6c414:
 	text "Hello, kiddo!"
 
 	para "How would you like"
-	line "some RAGECANDYBAR?"
+	line "some RageCandyBar?"
 
 	para "It's the thing to"
-	line "eat in MAHOGANY!"
+	line "eat in Mahogany!"
 	done
 
 UnknownText_0x6c46b:
@@ -182,10 +182,10 @@ UnknownText_0x6c494:
 	line "ment worked like a"
 	cont "charm."
 
-	para "MAGIKARP are just"
+	para "Magikarp are just"
 	line "worthless, but"
 
-	para "GYARADOS are big"
+	para "Gyarados are big"
 	line "moneymakers."
 	done
 
@@ -193,12 +193,12 @@ UnknownText_0x6c501:
 	text "Urrgh…"
 
 	para "That guy's dragon"
-	line "#MON are tough…"
+	line "#mon are tough…"
 	done
 
 UnknownText_0x6c52a:
-	text "LANCE: DRAGONITE,"
-	line "HYPER BEAM."
+	text "Lance: Dragonite,"
+	line "Hyper Beam."
 	done
 
 UnknownText_0x6c549:
@@ -218,7 +218,7 @@ UnknownText_0x6c59e:
 	done
 
 UnknownText_0x6c5ba:
-	text "LANCE: <PLAY_G>, we"
+	text "Lance: <PLAY_G>, we"
 	line "should split up to"
 
 	para "check this place."

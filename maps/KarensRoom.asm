@@ -86,14 +86,14 @@ MovementData_0x180c22:
 	step_end
 
 UnknownText_0x180c27:
-	text "I am KAREN of the"
-	line "ELITE FOUR."
+	text "I am Karen of the"
+	line "Elite Four."
 
 	para "You're <PLAYER>?"
 	line "How amusing."
 
-	para "I love dark-type"
-	line "#MON."
+	para "I love Dark-type"
+	line "#mon."
 
 	para "I find their wild,"
 	line "tough image to be"
@@ -115,9 +115,9 @@ UnknownText_0x180cf8:
 	done
 
 UnknownText_0x180d29:
-	text "Strong #MON."
+	text "Strong #mon."
 
-	para "Weak #MON."
+	para "Weak #mon."
 
 	para "That is only the"
 	line "selfish perception"
@@ -133,8 +133,8 @@ UnknownText_0x180d29:
 	line "You understand"
 	cont "what's important."
 
-	para "Go on--the CHAM-"
-	line "PION is waiting."
+	para "Go on--the Cham-"
+	line "pion is waiting."
 	done
 
 KarensRoom_MapEventHeader:

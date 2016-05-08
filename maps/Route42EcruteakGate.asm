@@ -12,7 +12,7 @@ OfficerScript_0x19a4b5:
 	jumptextfaceplayer UnknownText_0x19a4b8
 
 UnknownText_0x19a4b8:
-	text "MT.MORTAR is like"
+	text "Mt.Mortar is like"
 	line "a maze inside."
 
 	para "Be careful. Don't"

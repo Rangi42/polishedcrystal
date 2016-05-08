@@ -148,13 +148,13 @@ UnknownText_0x1900b0:
 	text "Hiya, kid!"
 
 	para "I see you're new"
-	line "in MAHOGANY TOWN."
+	line "in Mahogany Town."
 
 	para "Since you're new,"
 	line "you should try a"
 
-	para "yummy RAGECANDY-"
-	line "BAR!"
+	para "yummy RageCandy-"
+	line "Bar!"
 
 	para "Right now, it can"
 	line "be yours for just"
@@ -180,7 +180,7 @@ UnknownText_0x190188:
 	done
 
 UnknownText_0x1901a6:
-	text "RAGECANDYBAR's"
+	text "RageCandyBar's"
 	line "sold out."
 
 	para "I'm packing up."
@@ -190,14 +190,14 @@ UnknownText_0x1901a6:
 
 UnknownText_0x1901e5:
 	text "Are you off to see"
-	line "the GYARADOS ram-"
-	cont "page at the LAKE?"
+	line "the Gyarados ram-"
+	cont "page at the lake?"
 	done
 
 UnknownText_0x19021d:
-	text "MAGIKARP have"
-	line "returned to LAKE"
-	cont "OF RAGE."
+	text "Magikarp have"
+	line "returned to Lake"
+	cont "of Rage."
 
 	para "That should be"
 	line "good news for the"
@@ -214,7 +214,7 @@ UnknownText_0x190276:
 	para "You should head"
 	line "north and check"
 
-	para "out LAKE OF RAGE"
+	para "out Lake of Rage"
 	line "right now."
 	done
 
@@ -227,7 +227,7 @@ UnknownText_0x1902f2:
 	done
 
 MahoganyTownSignText:
-	text "MAHOGANY TOWN"
+	text "Mahogany Town"
 
 	para "Welcome to the"
 	line "Home of the Ninja"
@@ -235,14 +235,14 @@ MahoganyTownSignText:
 
 MahoganyTownRagecandybarSignText:
 	text "While visiting"
-	line "MAHOGANY TOWN, try"
-	cont "a RAGECANDYBAR!"
+	line "Mahogany Town, try"
+	cont "a RageCandyBar!"
 	done
 
 MahoganyGymSignText:
-	text "MAHOGANY TOWN"
-	line "#MON GYM"
-	cont "LEADER: PRYCE"
+	text "Mahogany Town"
+	line "#mon Gym"
+	cont "Leader: Pryce"
 
 	para "The Teacher of"
 	line "Winter's Harshness"

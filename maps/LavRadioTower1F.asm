@@ -50,7 +50,7 @@ GentlemanScript_0x7ee6c:
 	end
 
 .expncardname
-	db "EXPN CARD@"
+	db "Expn.Card@"
 
 SuperNerdScript_0x7eea2:
 	faceplayer
@@ -90,8 +90,8 @@ UnknownText_0x7eefa:
 	line "only tour the"
 	cont "ground floor."
 
-	para "Ever since JOHTO's"
-	line "RADIO TOWER was"
+	para "Ever since Johto's"
+	line "Radio Tower was"
 
 	para "taken over by a"
 	line "criminal gang, we"
@@ -104,8 +104,8 @@ UnknownText_0x7ef90:
 	text "Many people are"
 	line "hard at work here"
 
-	para "in the RADIO"
-	line "TOWER."
+	para "in the Radio"
+	line "Tower."
 
 	para "They must be doing"
 	line "their best to put"
@@ -118,7 +118,7 @@ UnknownText_0x7effb:
 	para "We've been off the"
 	line "air ever since the"
 
-	para "POWER PLANT shut"
+	para "Power Plant shut"
 	line "down."
 
 	para "All my efforts to"
@@ -134,7 +134,7 @@ UnknownText_0x7f0a1:
 	text "Ah! So you're the"
 	line "<PLAY_G> who solved"
 
-	para "the POWER PLANT's"
+	para "the Power Plant's"
 	line "problem?"
 
 	para "Thanks to you, I"
@@ -152,7 +152,7 @@ UnknownText_0x7f141:
 	line "you can tune into"
 
 	para "the radio programs"
-	line "here in KANTO."
+	line "here in Kanto."
 
 	para "Gahahahaha!"
 	done
@@ -161,16 +161,16 @@ UnknownText_0x7f193:
 	text "Hey there!"
 
 	para "I am the super"
-	line "MUSIC DIRECTOR!"
+	line "Music Director!"
 
-	para "Huh? Your #GEAR"
+	para "Huh? Your #gear"
 	line "can't tune into my"
 
 	para "music programs."
 	line "How unfortunate!"
 
-	para "If you get an EXPN"
-	line "CARD upgrade, you"
+	para "If you get an Expn."
+	line "Card upgrade, you"
 
 	para "can tune in. You'd"
 	line "better get one!"
@@ -180,7 +180,7 @@ UnknownText_0x7f248:
 	text "Hey there!"
 
 	para "I am the super"
-	line "MUSIC DIRECTOR!"
+	line "Music Director!"
 
 	para "I'm responsible"
 	line "for the gorgeous"
@@ -194,27 +194,27 @@ UnknownText_0x7f248:
 	done
 
 UnknownText_0x7f2e3:
-	text "1F RECEPTION"
-	line "2F SALES"
+	text "1F Reception"
+	line "2F Sales"
 
-	para "3F PERSONNEL"
-	line "4F PRODUCTION"
+	para "3F Personnel"
+	line "4F Production"
 
-	para "5F DIRECTOR'S"
-	line "   OFFICE"
+	para "5F Director's"
+	line "   Office"
 	done
 
 UnknownText_0x7f32d:
-	text "Perk Up #MON"
+	text "Perk Up #mon"
 	line "with Mellow Sounds"
 
-	para "of the # FLUTE"
-	line "on CHANNEL 20"
+	para "of the # Flute"
+	line "on Channel 20"
 	done
 
 UnknownText_0x7f36b:
 	text "Wow! A full rack"
-	line "of #MON CDs and"
+	line "of #mon CDs and"
 	cont "videos."
 
 	para "This must be the"

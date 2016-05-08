@@ -13,10 +13,10 @@ OfficerScript_0x7f416:
 
 UnknownText_0x7f419:
 	text "Have you been to"
-	line "LAVENDER TOWN?"
+	line "Lavender Town?"
 
 	para "There's a tall"
-	line "RADIO TOWER there."
+	line "Radio Tower there."
 	done
 
 Route8SaffronGate_MapEventHeader:

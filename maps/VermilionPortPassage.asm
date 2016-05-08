@@ -12,7 +12,7 @@ TeacherScript_0x7701a:
 	jumptextfaceplayer UnknownText_0x7701d
 
 UnknownText_0x7701d:
-	text "The FAST SHIP"
+	text "The Fast Ship"
 	line "sails on Wednes-"
 	cont "days and Sundays"
 	cont "every week."

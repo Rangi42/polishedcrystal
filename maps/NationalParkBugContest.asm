@@ -119,61 +119,61 @@ NationalParkBugContestHiddenFullHeal:
 
 
 UnknownText_0x5c94c:
-	text "DON: I'm going to"
+	text "Don: I'm going to"
 	line "win! Don't bother"
 	cont "me."
 	done
 
 UnknownText_0x5c973:
-	text "ED: My PARASECT"
-	line "puts #MON to"
-	cont "sleep with SPORE."
+	text "Ed: My Parasect"
+	line "puts #mon to"
+	cont "sleep with Spore."
 	done
 
 UnknownText_0x5c9a3:
-	text "NICK: I'm raising"
-	line "fast #MON for"
+	text "Nick: I'm raising"
+	line "fast #mon for"
 	cont "battles."
 	done
 
 UnknownText_0x5c9cc:
-	text "WILLIAM: I'm not"
+	text "William: I'm not"
 	line "concerned about"
 	cont "winning."
 
 	para "I'm just looking"
-	line "for rare #MON."
+	line "for rare #mon."
 	done
 
 UnknownText_0x5ca15:
-	text "BENNY: Ssh! You'll"
-	line "scare off SCYTHER."
+	text "Benny: Ssh! You'll"
+	line "scare off Scyther."
 
 	para "I'll talk to you"
 	line "later."
 	done
 
 UnknownText_0x5ca52:
-	text "BARRY: You should"
-	line "weaken bug #MON"
+	text "Barry: You should"
+	line "weaken Bug #mon"
 
 	para "first, then throw"
-	line "a BALL."
+	line "a Ball."
 	done
 
 UnknownText_0x5ca8f:
-	text "CINDY: I love bug"
-	line "#MON."
+	text "Cindy: I love Bug"
+	line "#mon."
 
 	para "I guess you must"
 	line "like them too."
 	done
 
 UnknownText_0x5cac8:
-	text "JOSH: I've been"
-	line "collecting bug"
+	text "Josh: I've been"
+	line "collecting Bug"
 
-	para "#MON since I"
+	para "#mon since I"
 	line "was just a baby."
 
 	para "There's no way I'm"
@@ -181,16 +181,16 @@ UnknownText_0x5cac8:
 	done
 
 UnknownText_0x5cb25:
-	text "SAMUEL: If you've"
+	text "Samuel: If you've"
 	line "got the time to"
 
 	para "chat, go find some"
-	line "bug #MON."
+	line "Bug #mon."
 	done
 
 UnknownText_0x5cb64:
-	text "KIPP: I've studied"
-	line "about bug #MON"
+	text "Kipp: I've studied"
+	line "about Bug #mon"
 	cont "a lot."
 
 	para "I'm going to win"
@@ -198,8 +198,8 @@ UnknownText_0x5cb64:
 	done
 
 UnknownText_0x5cba7:
-	text "RELAXATION SQUARE"
-	line "NATIONAL PARK"
+	text "Relaxation Square"
+	line "National Park"
 	done
 
 UnknownText_0x5cbc8:
@@ -209,16 +209,16 @@ UnknownText_0x5cbc8:
 	para "Please battle only"
 	line "in the grass."
 
-	para "NATIONAL PARK"
-	line "WARDEN'S OFFICE"
+	para "National Park"
+	line "Warden's Office"
 	done
 
 UnknownText_0x5cc1d:
-	text "TRAINER TIPS"
+	text "Trainer Tips"
 
-	para "Print out MAIL by"
+	para "Print out Mail by"
 	line "opening it then"
-	cont "pressing START."
+	cont "pressing Start."
 	done
 
 NationalParkBugContest_MapEventHeader:

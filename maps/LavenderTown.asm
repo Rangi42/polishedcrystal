@@ -52,12 +52,12 @@ UnknownText_0x1ad702:
 	text "That's quite some"
 	line "building, eh?"
 
-	para "It's KANTO's RADIO"
-	line "TOWER."
+	para "It's Kanto's Radio"
+	line "Tower."
 	done
 
 UnknownText_0x1ad73a:
-	text "KANTO has many"
+	text "Kanto has many"
 	line "good radio shows."
 	done
 
@@ -67,28 +67,28 @@ UnknownText_0x1ad75c:
 
 	para "their respects to"
 	line "the departed souls"
-	cont "of #MON."
+	cont "of #mon."
 	done
 
 UnknownText_0x1ad7ac:
 	text "You need a #"
-	line "FLUTE to wake"
-	cont "sleeping #MON."
+	line "Flute to wake"
+	cont "sleeping #mon."
 
 	para "Every trainer has"
 	line "to know that!"
 	done
 
 LavenderTownSignText:
-	text "LAVENDER TOWN"
+	text "Lavender Town"
 
 	para "The Noble Purple"
 	line "Town"
 	done
 
 KantoRadioStationSignText:
-	text "KANTO RADIO"
-	line "STATION"
+	text "Kanto Radio"
+	line "Station"
 
 	para "Your Favorite"
 	line "Programs On-Air"
@@ -96,15 +96,15 @@ KantoRadioStationSignText:
 	done
 
 VolunteerPokemonHouseSignText:
-	text "LAVENDER VOLUNTEER"
-	line "#MON HOUSE"
+	text "Lavender Volunteer"
+	line "#mon House"
 	done
 
 SoulHouseSignText:
-	text "SOUL HOUSE"
+	text "Soul House"
 
 	para "May the Souls of"
-	line "#MON Rest Easy"
+	line "#mon Rest Easy"
 	done
 
 LavenderTown_MapEventHeader:

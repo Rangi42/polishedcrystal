@@ -315,12 +315,12 @@ UnknownText_0x5c1d3:
 	para "I printed out my"
 	line "favorites from my"
 
-	para "#DEX and stuck"
+	para "#dex and stuck"
 	line "them on my bag."
 	done
 
 UnknownText_0x5c22e:
-	text "This is MAIL I got"
+	text "This is Mail I got"
 	line "from my daughter."
 	cont "It cheers me up."
 	done
@@ -336,7 +336,7 @@ UnknownText_0x5c265:
 	line "time."
 
 	para "You must be a"
-	line "#MON trainer."
+	line "#mon trainer."
 
 	para "Since you're work-"
 	line "ing so hard, I"
@@ -346,8 +346,8 @@ UnknownText_0x5c265:
 	done
 
 UnknownText_0x5c30d:
-	text "Let a #MON hold"
-	line "that QUICK CLAW."
+	text "Let a #mon hold"
+	line "that Quick Claw."
 
 	para "Sometimes it will"
 	line "strike first"
@@ -357,18 +357,18 @@ UnknownText_0x5c30d:
 UnknownText_0x5c35d:
 	text "I'm playing with"
 	line "stickers I printed"
-	cont "from my #DEX."
+	cont "from my #dex."
 	done
 
 UnknownText_0x5c38f:
 	text "I get the other"
-	line "guy's #DEX"
+	line "guy's #dex"
 	cont "sticker if I win."
 	done
 
 UnknownText_0x5c3bc:
 	text "I take walks in"
-	line "the PARK, but I"
+	line "the park, but I"
 
 	para "never go into the"
 	line "grass."
@@ -378,23 +378,23 @@ UnknownText_0x5c3bc:
 	done
 
 NationalParkPersianText:
-	text "PERSIAN: Fufushaa!"
+	text "Persian: Fufushaa!"
 	done
 
 UnknownText_0x5c42a:
 	text "I'm printing out"
-	line "my #DEX."
+	line "my #dex."
 
 	para "You can also print"
 	line "out stuff like"
 
-	para "MAIL and your PC"
-	line "BOXES."
+	para "Mail and your PC"
+	line "Boxes."
 	done
 
 SchoolboyJack1SeenText:
 	text "The world of"
-	line "#MON is deep."
+	line "#mon is deep."
 
 	para "There are still"
 	line "lots of things we"
@@ -417,12 +417,12 @@ UnknownText_0x5c4f3:
 	para "There are 50 kinds"
 	line "of TMs."
 
-	para "Traded #MON"
+	para "Traded #mon"
 	line "level up faster."
 	done
 
 PokefanfBeverly1SeenText:
-	text "My #MON are"
+	text "My #mon are"
 	line "simply darling."
 
 	para "Let me tell you"
@@ -437,26 +437,26 @@ PokefanfBeverly1BeatenText:
 
 UnknownText_0x5c5bd:
 	text "I must say, your"
-	line "#MON are quite"
+	line "#mon are quite"
 	cont "cute, too."
 	done
 
 PokefanmWilliamSeenText:
 	text "We adore our #-"
-	line "MON, even if they"
+	line "mon, even if they"
 	cont "dislike us."
 
 	para "That's what being"
-	line "a FAN is about."
+	line "a fan is about."
 	done
 
 PokefanmWilliamBeatenText:
-	text "M-my #MON!"
+	text "M-my #mon!"
 	done
 
 UnknownText_0x5c645:
 	text "I lost the battle,"
-	line "but my #MON win"
+	line "but my #mon win"
 
 	para "the prize for"
 	line "being most lovely."
@@ -464,13 +464,13 @@ UnknownText_0x5c645:
 
 UnknownText_0x5c68a:
 	text "My friend keeps a"
-	line "MARILL!"
+	line "Marill!"
 
 	para "I find them very"
 	line "endearing."
 
 	para "Oh, I wish for a"
-	line "MARILL of my own…"
+	line "Marill of my own…"
 	done
 
 LassKriseSeenText:
@@ -491,8 +491,8 @@ UnknownText_0x5c71d:
 	done
 
 UnknownText_0x5c750:
-	text "RELAXATION SQUARE"
-	line "NATIONAL PARK"
+	text "Relaxation Square"
+	line "National Park"
 	done
 
 UnknownText_0x5c771:
@@ -502,16 +502,16 @@ UnknownText_0x5c771:
 	para "Please battle only"
 	line "in the grass."
 
-	para "NATIONAL PARK"
-	line "WARDEN'S OFFICE"
+	para "National Park"
+	line "Warden's Office"
 	done
 
 UnknownText_0x5c7c6:
-	text "TRAINER TIPS"
+	text "Trainer Tips"
 
-	para "Print out MAIL by"
+	para "Print out Mail by"
 	line "opening it then"
-	cont "pressing START."
+	cont "pressing Start."
 	done
 
 NationalPark_MapEventHeader:

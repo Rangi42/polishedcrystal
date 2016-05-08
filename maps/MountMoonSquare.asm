@@ -135,8 +135,8 @@ MovementData_0x77134:
 	step_end
 
 DontLitterSignText:
-	text "MT.MOON SQUARE"
-	line "DON'T LITTER"
+	text "Mt.Moon Square"
+	line "Don't Litter"
 	done
 
 MountMoonSquare_MapEventHeader:

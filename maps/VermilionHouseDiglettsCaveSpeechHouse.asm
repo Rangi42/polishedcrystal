@@ -13,7 +13,7 @@ GentlemanScript_0x192031:
 
 UnknownText_0x192034:
 	text "Over many years,"
-	line "DIGLETT dug a"
+	line "Diglett dug a"
 	cont "large tunnel."
 
 	para "That tunnel goes"

@@ -15,9 +15,9 @@ UnknownText_0x9cbda:
 	text "Where did you say"
 	line "you're from?"
 
-	para "NEW BARK TOWN?"
+	para "New Bark Town?"
 
-	para "PROF.ELM lives"
+	para "Prof.Elm lives"
 	line "over there, right?"
 
 	para "You've come a long"

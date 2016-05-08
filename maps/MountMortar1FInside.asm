@@ -95,7 +95,7 @@ UnknownText_0x7debd:
 	done
 
 SupernerdMarkusSeenText:
-	text "Hey! HUGH!"
+	text "Hey! Hugh!"
 	done
 
 SupernerdMarkusBeatenText:
@@ -105,7 +105,7 @@ SupernerdMarkusBeatenText:
 
 UnknownText_0x7df97:
 	text "I came to explore"
-	line "MT.MORTAR, but I"
+	line "Mt.Mortar, but I"
 
 	para "got separated from"
 	line "my partner…"
@@ -113,8 +113,8 @@ UnknownText_0x7df97:
 	para "Did you run into a"
 	line "trainer who uses a"
 
-	para "SEADRA that knows"
-	line "WATERFALL?"
+	para "Seadra that knows"
+	line "Waterfall?"
 	done
 
 MountMortar1FInside_MapEventHeader:

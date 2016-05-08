@@ -12,11 +12,11 @@ OfficerScript_0x18b5b9:
 	jumptextfaceplayer UnknownText_0x18b5bc
 
 UnknownText_0x18b5bc:
-	text "You're from JOHTO,"
+	text "You're from Johto,"
 	line "aren't you?"
 
 	para "How do you like"
-	line "KANTO? It's nice,"
+	line "Kanto? It's nice,"
 	cont "don't you agree?"
 	done
 

@@ -13,7 +13,7 @@ OfficerScript_0x19679e:
 
 UnknownText_0x1967a1:
 	text "You're working on"
-	line "a #DEX? That's"
+	line "a #dex? That's"
 
 	para "really something."
 	line "Don't give up!"

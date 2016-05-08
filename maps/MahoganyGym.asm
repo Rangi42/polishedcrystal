@@ -150,7 +150,7 @@ MahoganyGymStatue:
 	jumpstd gymstatue2
 
 UnknownText_0x199b8d:
-	text "#MON have many"
+	text "#mon have many"
 	line "experiences in"
 
 	para "their lives, just "
@@ -165,7 +165,7 @@ UnknownText_0x199b8d:
 	cont "you what I mean."
 
 	para "I have been with"
-	line "#MON since"
+	line "#mon since"
 
 	para "before you were"
 	line "born."
@@ -173,7 +173,7 @@ UnknownText_0x199b8d:
 	para "I do not lose"
 	line "easily."
 
-	para "I, PRYCE--the"
+	para "I, Pryce--the"
 	line "winter trainer--"
 
 	para "shall demonstrate"
@@ -191,23 +191,19 @@ UnknownText_0x199cb3:
 	line "life's obstacles."
 
 	para "You are worthy of"
-	line "this BADGE!"
+	line "this Badge!"
 	done
 
 UnknownText_0x199d3b:
 	text "<PLAYER> received"
-	line "GLACIERBADGE."
+	line "the Glacier Badge."
 	done
 
 UnknownText_0x199d55:
-	text "That BADGE will"
-	line "raise the SPECIAL"
-	cont "stats of #MON."
-
-	para "It also lets your"
-	line "#MON use WHIRL-"
-	cont "POOL to get across"
-	cont "real whirlpools."
+	text "That Badge will let"
+	line "your #mon use"
+	cont "Whirlpool to get"
+	cont "across whirlpools."
 
 	para "And this… This is"
 	line "a gift from me!"
@@ -215,7 +211,7 @@ UnknownText_0x199d55:
 
 UnknownText_0x199def:
 	text "That TM contains"
-	line "ICY WIND."
+	line "Icy Wind."
 
 	para "It inflicts damage"
 	line "and lowers speed."
@@ -231,7 +227,7 @@ UnknownText_0x199e59:
 	cont "arrives."
 
 	para "You and your #-"
-	line "MON will be to-"
+	line "mon will be to-"
 
 	para "gether for many"
 	line "years to come."
@@ -242,7 +238,7 @@ UnknownText_0x199e59:
 
 BoarderRonaldSeenText:
 	text "I'll freeze your"
-	line "#MON, so you"
+	line "#mon, so you"
 	cont "can't do a thing!"
 	done
 
@@ -253,14 +249,14 @@ BoarderRonaldBeatenText:
 
 UnknownText_0x199f2d:
 	text "I think there's a"
-	line "move a #MON"
+	line "move a #mon"
 
 	para "can use while it's"
 	line "frozen."
 	done
 
 BoarderBradSeenText:
-	text "This GYM has a"
+	text "This Gym has a"
 	line "slippery floor."
 
 	para "It's fun, isn't"
@@ -277,24 +273,24 @@ BoarderBradBeatenText:
 	done
 
 UnknownText_0x199fdd:
-	text "This GYM is great."
+	text "This Gym is great."
 	line "I love boarding"
-	cont "with my #MON!"
+	cont "with my #mon!"
 	done
 
 BoarderDouglasSeenText:
-	text "I know PRYCE's"
+	text "I know Pryce's"
 	line "secret."
 	done
 
 BoarderDouglasBeatenText:
 	text "OK. I'll tell you"
-	line "PRYCE's secret."
+	line "Pryce's secret."
 	done
 
 UnknownText_0x19a047:
 	text "The secret behind"
-	line "PRYCE's power…"
+	line "Pryce's power…"
 
 	para "He meditates under"
 	line "a waterfall daily"
@@ -304,8 +300,8 @@ UnknownText_0x19a047:
 	done
 
 SkierRoxanneSeenText:
-	text "To get to PRYCE,"
-	line "our GYM LEADER,"
+	text "To get to Pryce,"
+	line "our Gym Leader,"
 
 	para "you need to think"
 	line "before you skate."
@@ -321,7 +317,7 @@ UnknownText_0x19a116:
 	line "with precision,"
 
 	para "you won't get far"
-	line "in this GYM."
+	line "in this Gym."
 	done
 
 SkierClarissaSeenText:
@@ -341,10 +337,10 @@ UnknownText_0x19a18f:
 	done
 
 MahoganyGymGuyText:
-	text "PRYCE is a veteran"
+	text "Pryce is a veteran"
 	line "who has trained"
 
-	para "#MON for some"
+	para "#mon for some"
 	line "50 years."
 
 	para "He's said to be"
@@ -361,7 +357,7 @@ MahoganyGymGuyText:
 	done
 
 MahoganyGymGuyWinText:
-	text "PRYCE is some-"
+	text "Pryce is some-"
 	line "thing, but you're"
 	cont "something else!"
 

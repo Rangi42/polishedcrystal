@@ -14,15 +14,15 @@ ScientistScript_0x9b952:
 UnknownText_0x9b955:
 	text "Are you <PLAY_G>?"
 
-	para "I work as PROF."
-	line "OAK's AIDE."
+	para "I work as Prof."
+	line "Oak's Aide."
 
 	para "I had no idea that"
 	line "you were out here."
 
-	para "PROF.OAK's LAB is"
-	line "nearby in PALLET"
-	cont "TOWN."
+	para "Prof.Oak's Lab is"
+	line "nearby in Pallet"
+	cont "Town."
 	done
 
 Route2Gate_MapEventHeader:

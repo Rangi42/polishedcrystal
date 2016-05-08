@@ -21,14 +21,14 @@ Kyle:
 	end
 
 UnknownText_0x69997:
-	text "A #MON you get"
+	text "A #mon you get"
 	line "in a trade grows"
 	cont "quickly."
 
 	para "But if you don't"
-	line "have the right GYM"
+	line "have the right Gym"
 
-	para "BADGE, they may"
+	para "Badge, they may"
 	line "disobey you."
 	done
 

@@ -36,7 +36,7 @@ BluesHouseSign:
 
 UnknownText_0x1ac6e7:
 	text "I'm raising #-"
-	line "MON too."
+	line "mon too."
 
 	para "They serve as my"
 	line "private guards."
@@ -47,28 +47,28 @@ UnknownText_0x1ac720:
 	line "incredible!"
 
 	para "You can now trade"
-	line "#MON across"
+	line "#mon across"
 	cont "time like e-mail."
 	done
 
 PalletTownSignText:
-	text "PALLET TOWN"
+	text "Pallet Town"
 
 	para "A Tranquil Setting"
 	line "of Peace & Purity"
 	done
 
 RedsHouseSignText:
-	text "RED'S HOUSE"
+	text "Red's House"
 	done
 
 OaksLabSignText:
-	text "OAK #MON"
-	line "RESEARCH LAB"
+	text "Oak #mon"
+	line "Research Lab"
 	done
 
 BluesHouseSignText:
-	text "BLUE'S HOUSE"
+	text "Blue's House"
 	done
 
 PalletTown_MapEventHeader:

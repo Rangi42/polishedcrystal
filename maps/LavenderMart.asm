@@ -23,7 +23,7 @@ RockerScript_0x7eb26:
 	jumptextfaceplayer UnknownText_0x7ebac
 
 UnknownText_0x7eb29:
-	text "REPEL is a neces-"
+	text "Repel is a neces-"
 	line "sity if you are"
 
 	para "going to explore a"
@@ -40,10 +40,10 @@ UnknownText_0x7ebac:
 	text "I heard about a"
 	line "craftsman who"
 
-	para "makes custom BALLS"
-	line "in the JOHTO town"
+	para "makes custom Balls"
+	line "in the Johto town"
 
-	para "of AZALEA. I wish"
+	para "of Azalea. I wish"
 	line "I had some."
 	done
 

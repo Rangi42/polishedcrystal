@@ -32,7 +32,7 @@ SailorScript_0x9c8dc:
 	jumptextfaceplayer UnknownText_0x9ca09
 
 UnknownText_0x9c8df:
-	text "Hah! Your #MON"
+	text "Hah! Your #mon"
 	line "sure look like"
 	cont "lightweights!"
 
@@ -42,7 +42,7 @@ UnknownText_0x9c8df:
 
 	para "Here, use this"
 	line "and teach them"
-	cont "STRENGTH!"
+	cont "Strength!"
 	done
 
 UnknownText_0x9c965:
@@ -57,11 +57,11 @@ UnknownText_0x9c965:
 	done
 
 UnknownText_0x9c9c5:
-	text "OLIVINE CAFE's"
+	text "Olivine Cafe's"
 	line "menu is chock full"
 
 	para "of hearty fare for"
-	line "beefy SAILORS!"
+	line "beefy Sailors!"
 	done
 
 UnknownText_0x9ca09:
@@ -69,7 +69,7 @@ UnknownText_0x9ca09:
 	line "into this town, I"
 
 	para "always visit the"
-	line "OLIVINE CAFE."
+	line "Olivine Cafe."
 
 	para "Everything on the"
 	line "menu makes me feel"

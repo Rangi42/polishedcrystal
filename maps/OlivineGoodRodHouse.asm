@@ -42,7 +42,7 @@ GoodRodHouseBookshelf:
 	jumpstd picturebookshelf
 
 OfferGoodRodText:
-	text "OLIVINE is on the"
+	text "Olivine is on the"
 	line "sea!"
 
 	para "And if it's on the"

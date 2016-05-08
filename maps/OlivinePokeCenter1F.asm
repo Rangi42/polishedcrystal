@@ -24,14 +24,14 @@ TeacherScript_0x9c00b:
 	jumptextfaceplayer UnknownText_0x9c086
 
 UnknownText_0x9c00e:
-	text "The SAILOR in the"
-	line "OLIVINE CAFE next"
+	text "The Sailor in the"
+	line "Olivine Cafe next"
 
 	para "door is really"
 	line "generous."
 
 	para "He taught my"
-	line "#MON STRENGTH."
+	line "#mon Strength."
 
 	para "Now it can move"
 	line "big boulders."
@@ -39,12 +39,12 @@ UnknownText_0x9c00e:
 
 UnknownText_0x9c086:
 	text "There's a person"
-	line "in CIANWOOD CITY"
+	line "in Cianwood City"
 	cont "across the sea."
 
 	para "I heard him brag-"
 	line "ging about his"
-	cont "rare #MON."
+	cont "rare #mon."
 	done
 
 OlivinePokeCenter1F_MapEventHeader:

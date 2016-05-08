@@ -88,8 +88,8 @@ MovementData_0x18078e:
 UnknownText_0x180793:
 	text "Fwahahahaha!"
 
-	para "I am KOGA of the"
-	line "ELITE FOUR."
+	para "I am Koga of the"
+	line "Elite Four."
 
 	para "I live in shadows,"
 	line "a ninja!"
@@ -107,7 +107,7 @@ UnknownText_0x180793:
 
 	para "Fwahahahaha!"
 
-	para "#MON is not"
+	para "#mon is not"
 	line "merely about brute"
 
 	para "force--you shall"

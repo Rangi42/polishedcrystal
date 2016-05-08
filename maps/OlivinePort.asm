@@ -300,8 +300,8 @@ UnknownText_0x74a80:
 	done
 
 UnknownText_0x74a9c:
-	text "Welcome to FAST"
-	line "SHIP S.S.AQUA."
+	text "Welcome to Fast"
+	line "Ship S.S.Aqua."
 
 	para "Will you be board-"
 	line "ing today?"
@@ -309,7 +309,7 @@ UnknownText_0x74a9c:
 
 UnknownText_0x74ada:
 	text "May I see your"
-	line "S.S.TICKET?"
+	line "S.S.Ticket?"
 	done
 
 UnknownText_0x74af6:
@@ -319,7 +319,7 @@ UnknownText_0x74af6:
 
 UnknownText_0x74b11:
 	text "<PLAYER> flashed"
-	line "the S.S.TICKET."
+	line "the S.S.Ticket."
 
 	para "That's it."
 	line "Thank you!"
@@ -328,29 +328,29 @@ UnknownText_0x74b11:
 UnknownText_0x74b41:
 	text "<PLAYER> tried to"
 	line "show the S.S."
-	cont "TICKET…"
+	cont "Ticket…"
 
-	para "…But no TICKET!"
+	para "…But no Ticket!"
 
 	para "Sorry!"
 	line "You may board only"
 
 	para "if you have an"
-	line "S.S.TICKET."
+	line "S.S.Ticket."
 	done
 
 UnknownText_0x74ba8:
-	text "The FAST SHIP will"
+	text "The Fast Ship will"
 	line "sail next Monday."
 	done
 
 UnknownText_0x74bce:
-	text "The FAST SHIP will"
+	text "The Fast Ship will"
 	line "sail next Friday."
 	done
 
 UnknownText_0x74bf4:
-	text "SHELLDER are easy"
+	text "Shellder are easy"
 	line "to catch here."
 
 	para "They're kind of"
@@ -358,23 +358,23 @@ UnknownText_0x74bf4:
 	done
 
 UnknownText_0x74c35:
-	text "How many RODS do"
+	text "How many Rods do"
 	line "you have?"
 
-	para "Different RODS"
+	para "Different Rods"
 	line "catch different"
-	cont "#MON."
+	cont "#mon."
 	done
 
 UnknownText_0x74c76:
-	text "S.S.AQUA uses jets"
+	text "S.S.Aqua uses jets"
 	line "to skim over the"
 	cont "waves!"
 	done
 
 UnknownText_0x74ca2:
 	text "There are lots of"
-	line "#MON in KANTO."
+	line "#mon in Kanto."
 
 	para "I wish I could go…"
 	done

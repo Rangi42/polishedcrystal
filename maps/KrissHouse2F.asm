@@ -100,23 +100,23 @@ KrissHousePC:
 	end
 
 KrisRadioText1:
-	text "PROF.OAK'S #MON"
-	line "TALK! Please tune"
+	text "Prof.Oak's #mon"
+	line "Talk! Please tune"
 	cont "in next time!"
 	done
 
 KrisRadioText2:
-	text "#MON CHANNEL!"
+	text "#mon Channel!"
 	done
 
 KrisRadioText3:
-	text "This is DJ MARY,"
+	text "This is DJ Mary,"
 	line "your co-host!"
 	done
 
 KrisRadioText4:
-	text "#MON!"
-	line "#MON CHANNEL…"
+	text "#mon!"
+	line "#mon Channel…"
 	done
 
 KrissHouse2F_MapEventHeader:

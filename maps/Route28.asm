@@ -13,7 +13,7 @@ Route28HiddenRareCandy:
 
 
 Route28SignText:
-	text "ROUTE 28"
+	text "Route 28"
 	done
 
 Route28_MapEventHeader:

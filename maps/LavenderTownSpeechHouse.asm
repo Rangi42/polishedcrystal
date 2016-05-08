@@ -15,7 +15,7 @@ LavenderTownSpeechHouseBookshelf:
 	jumpstd picturebookshelf
 
 UnknownText_0x7ea4d:
-	text "LAVENDER is a"
+	text "Lavender is a"
 	line "tiny, quiet town"
 
 	para "at the foot of the"
@@ -24,7 +24,7 @@ UnknownText_0x7ea4d:
 	para "It's gotten a bit"
 	line "busier since the"
 
-	para "RADIO TOWER was"
+	para "Radio Tower was"
 	line "built."
 	done
 

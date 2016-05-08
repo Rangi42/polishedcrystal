@@ -212,7 +212,7 @@ LancesRoomMovementData_MaryRunsBackAndForth:
 	step_end
 
 LanceBattleIntroText:
-	text "LANCE: I've been"
+	text "Lance: I've been"
 	line "waiting for you."
 
 	para "<PLAY_G>!"
@@ -235,10 +235,10 @@ LanceBattleIntroText:
 	para "As the most power-"
 	line "ful trainer and as"
 
-	para "the #MON LEAGUE"
-	line "CHAMPION…"
+	para "the #mon League"
+	line "Champion…"
 
-	para "I, LANCE the drag-"
+	para "I, Lance the drag-"
 	line "on master, accept"
 	cont "your challenge!"
 	done
@@ -257,7 +257,7 @@ LanceBattleWinText:
 	line "witnessed the rise"
 
 	para "of a great new"
-	line "CHAMPION!"
+	line "Champion!"
 	done
 
 LanceBattleAfterText:
@@ -267,7 +267,7 @@ LanceBattleAfterText:
 	line "truly powerful,"
 	cont "<PLAY_G>."
 
-	para "Your #MON have"
+	para "Your #mon have"
 	line "responded to your"
 
 	para "strong and up-"
@@ -277,19 +277,19 @@ LanceBattleAfterText:
 	line "will continue to"
 
 	para "grow strong with"
-	line "your #MON."
+	line "your #mon."
 	done
 
 UnknownText_0x1811dd:
-	text "MARY: Oh, no!"
+	text "Mary: Oh, no!"
 	line "It's all over!"
 
-	para "PROF.OAK, if you"
+	para "Prof.Oak, if you"
 	line "weren't so slow…"
 	done
 
 UnknownText_0x18121b:
-	text "PROF.OAK: Ah,"
+	text "Prof.Oak: Ah,"
 	line "<PLAY_G>!"
 
 	para "It's been a long"
@@ -299,16 +299,16 @@ UnknownText_0x18121b:
 	line "more impressive."
 
 	para "Your conquest of"
-	line "the LEAGUE is just"
+	line "the League is just"
 	cont "fantastic!"
 
 	para "Your dedication,"
 	line "trust and love for"
 
-	para "your #MON made"
+	para "your #mon made"
 	line "this happen."
 
-	para "Your #MON were"
+	para "Your #mon were"
 	line "outstanding too."
 
 	para "Because they be-"
@@ -322,13 +322,13 @@ UnknownText_0x18121b:
 	done
 
 UnknownText_0x18134b:
-	text "MARY: Let's inter-"
+	text "Mary: Let's inter-"
 	line "view the brand new"
-	cont "CHAMPION!"
+	cont "Champion!"
 	done
 
 UnknownText_0x18137b:
-	text "LANCE: This is"
+	text "Lance: This is"
 	line "getting to be a"
 	cont "bit too noisy…"
 
@@ -337,7 +337,7 @@ UnknownText_0x18137b:
 	done
 
 UnknownText_0x1813c5:
-	text "MARY: Oh, wait!"
+	text "Mary: Oh, wait!"
 	line "We haven't done"
 	cont "the interview!"
 	done

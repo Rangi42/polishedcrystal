@@ -97,7 +97,7 @@ OlivineGymStatue:
 UnknownText_0x9c1b9:
 	text "…Thank you for"
 	line "your help at the"
-	cont "LIGHTHOUSE…"
+	cont "Lighthouse…"
 
 	para "But this is dif-"
 	line "ferent. Please"
@@ -105,16 +105,16 @@ UnknownText_0x9c1b9:
 	para "allow me to intro-"
 	line "duce myself."
 
-	para "I am JASMINE, a"
-	line "GYM LEADER. I use"
-	cont "the steel-type."
+	para "I am Jasmine, a"
+	line "Gym Leader. I use"
+	cont "the Steel-type."
 
 	para "…Do you know about"
 	line "the steel-type?"
 
-	para "It's a type that"
-	line "was only recently"
-	cont "discovered."
+	para "They are very"
+	line "hard, cold, sharp,"
+	cont "and really strong."
 
 	para "…Um… May I begin?"
 	done
@@ -127,23 +127,19 @@ UnknownText_0x9c2bb:
 	line "kindness."
 
 	para "In accordance with"
-	line "LEAGUE rules, I"
+	line "League rules, I"
 
 	para "confer upon you"
-	line "this BADGE."
+	line "this Badge."
 	done
 
 UnknownText_0x9c33a:
 	text "<PLAYER> received"
-	line "MINERALBADGE."
+	line "the Mineral Badge."
 	done
 
 UnknownText_0x9c354:
-	text "MINERALBADGE"
-	line "raises #MON's"
-	cont "DEFENSE."
-
-	para "…Um… Please take"
+	text "…Um… Please take"
 	line "this too…"
 	done
 
@@ -155,7 +151,7 @@ UnknownText_0x9c393:
 UnknownText_0x9c3a5:
 	text "…You could use"
 	line "that TM to teach"
-	cont "IRON TAIL."
+	cont "Iron Tail."
 	done
 
 UnknownText_0x9c3d1:
@@ -165,9 +161,9 @@ UnknownText_0x9c3d1:
 	done
 
 OlivineGymGuyText:
-	text "JASMINE uses the"
+	text "Jasmine uses the"
 	line "newly discovered"
-	cont "steel-type."
+	cont "Steel-type."
 
 	para "I don't know very"
 	line "much about it."
@@ -176,7 +172,7 @@ OlivineGymGuyText:
 OlivineGymGuyWinText:
 	text "That was awesome."
 
-	para "The steel-type,"
+	para "The Steel-type,"
 	line "huh?"
 
 	para "That was a close"
@@ -185,12 +181,12 @@ OlivineGymGuyWinText:
 	done
 
 OlivineGymGuyPreText:
-	text "JASMINE, the GYM"
-	line "LEADER, is at the"
-	cont "LIGHTHOUSE."
+	text "Jasmine, the Gym"
+	line "Leader, is at the"
+	cont "Lighthouse."
 
 	para "She's been tending"
-	line "to a sick #MON."
+	line "to a sick #mon."
 
 	para "A strong trainer"
 	line "has to be compas-"

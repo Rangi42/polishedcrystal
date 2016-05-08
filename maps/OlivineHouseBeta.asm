@@ -27,16 +27,16 @@ OlivineHouseBetaBookshelf2:
 	jumpstd magazinebookshelf
 
 UnknownText_0x9c5a2:
-	text "When my #MON"
+	text "When my #mon"
 	line "got sick, the"
 
-	para "PHARMACIST in"
-	line "ECRUTEAK made some"
+	para "Pharmacist in"
+	line "Ecruteak made some"
 	cont "medicine for me."
 	done
 
 UnknownText_0x9c5f0:
-	text "RHYDON: Gugooh!"
+	text "Rhydon: Gugooh!"
 	done
 
 OlivineHouseBeta_MapEventHeader:

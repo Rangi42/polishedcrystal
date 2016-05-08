@@ -91,16 +91,16 @@ MagikarpHouseBookshelf:
 	jumpstd difficultbookshelf
 
 UnknownText_0x19a72e:
-	text "LAKE OF RAGE is"
+	text "Lake of Rage is"
 	line "actually a crater"
 
 	para "made by rampaging"
-	line "GYARADOS."
+	line "Gyarados."
 
 	para "The crater filled"
 	line "up with rainwater"
 
-	para "and the LAKE was"
+	para "and the lake was"
 	line "formed."
 
 	para "That's the story"
@@ -112,7 +112,7 @@ UnknownText_0x19a72e:
 	para "It used to be that"
 	line "you could catch"
 
-	para "lively MAGIKARP"
+	para "lively Magikarp"
 	line "there, but…"
 
 	para "I don't understand"
@@ -120,7 +120,7 @@ UnknownText_0x19a72e:
 	done
 
 UnknownText_0x19a84d:
-	text "The LAKE hasn't"
+	text "The lake hasn't"
 	line "been normal since"
 
 	para "those men wearing"
@@ -128,25 +128,25 @@ UnknownText_0x19a84d:
 	done
 
 UnknownText_0x19a890:
-	text "LAKE OF RAGE is"
+	text "Lake of Rage is"
 	line "back to normal."
 
-	para "The MAGIKARP have"
+	para "The Magikarp have"
 	line "returned."
 
 	para "I may yet realize"
 	line "my dream of see-"
 	cont "ing the world's"
-	cont "largest MAGIKARP."
+	cont "largest Magikarp."
 
-	para "Do you have a ROD?"
+	para "Do you have a Rod?"
 	line "Please help me if"
 	cont "you do."
 	done
 
 UnknownText_0x19a93e:
 	text "Ah, you have a"
-	line "MAGIKARP! Let's"
+	line "Magikarp! Let's"
 
 	para "see how big that"
 	line "baby is."
@@ -184,7 +184,7 @@ UnknownText_0x19aa01:
 
 UnknownText_0x19aa5c:
 	text "What? That's not a"
-	line "MAGIKARP!"
+	line "Magikarp!"
 	done
 
 UnknownText_0x19aa79:
@@ -196,7 +196,7 @@ UnknownText_0x19aa79:
 	done
 
 UnknownText_0x19aabc:
-	text "CURRENT RECORD"
+	text "Current Record"
 
 	para "@"
 	text_from_ram StringBuffer3

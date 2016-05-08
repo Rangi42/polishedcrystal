@@ -22,7 +22,7 @@ SilverCaveOutsideHiddenFullRestore:
 	dwb EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 MtSilverSignText:
-	text "MT.SILVER"
+	text "Mt.Silver"
 	done
 
 SilverCaveOutside_MapEventHeader:

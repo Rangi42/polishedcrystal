@@ -78,8 +78,8 @@ MountMortarB1FHiddenMaxRevive:
 UnknownText_0x7e24d:
 	text "Hey!"
 
-	para "I am the KARATE"
-	line "KING!"
+	para "I am the Karate"
+	line "King!"
 
 	para "I train alone here"
 	line "in the dark!"
@@ -108,20 +108,20 @@ UnknownText_0x7e2c0:
 	line "defeated me, I'll"
 
 	para "give you a rare"
-	line "fighting #MON."
+	line "fighting #mon."
 	done
 
 UnknownText_0x7e355:
 	text "<PLAYER> received"
-	line "TYROGUE."
+	line "Tyrogue."
 	done
 
 UnknownText_0x7e36a:
-	text "TYROGUE is a"
-	line "fighting-type."
+	text "Tyrogue is a"
+	line "Fighting-type."
 
 	para "It evolves into a"
-	line "tougher #MON."
+	line "tougher #mon."
 
 	para "Keep up the hard"
 	line "work. I'll keep"

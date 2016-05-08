@@ -36,20 +36,20 @@ UnknownScript_0x195999:
 
 UnknownText_0x19999c:
 	text "I heard that a red"
-	line "GYARADOS appeared"
-	cont "at the LAKE."
+	line "Gyarados appeared"
+	cont "at the lake."
 
 	para "That's odd, since"
 	line "even ordinary"
 
-	para "GYARADOS are rare"
+	para "Gyarados are rare"
 	line "in that lake…"
 	done
 
 UnknownText_0x199a0e:
 	text "My favorite radio"
 	line "program? I'd say"
-	cont "#MON MUSIC."
+	cont "#mon Music."
 	done
 
 UnknownText_0x199a3d:

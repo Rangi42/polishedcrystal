@@ -458,21 +458,21 @@ UnknownText_0x18e473:
 
 	para "<PLAYER>, eh? You"
 	line "want me to make"
-	cont "some BALLS?"
+	cont "some Balls?"
 
 	para "Sorry, but that'll"
 	line "have to wait."
 
-	para "Do you know TEAM"
-	line "ROCKET? Ah, don't"
+	para "Do you know Team"
+	line "Rocket? Ah, don't"
 
 	para "worry. I'll tell"
 	line "you anyhow."
 
-	para "TEAM ROCKET's an"
+	para "Team Rocket's an"
 	line "evil gang that"
 
-	para "uses #MON for"
+	para "uses #mon for"
 	line "their dirty work."
 
 	para "They're supposed"
@@ -480,31 +480,31 @@ UnknownText_0x18e473:
 	cont "three years ago."
 
 	para "Anyway, they're at"
-	line "the WELL, cutting"
+	line "the well, cutting"
 
-	para "off SLOWPOKETAILS"
+	para "off SlowpokeTails"
 	line "for sale!"
 
 	para "So I'm going to"
 	line "go give them a"
 	cont "lesson in pain!"
 
-	para "Hang on, SLOWPOKE!"
-	line "Old KURT is on his"
+	para "Hang on, Slowpoke!"
+	line "Old Kurt is on his"
 	cont "way!"
 	done
 
 UnknownText_0x18e615:
-	text "KURT: Hi, <PLAYER>!"
+	text "Kurt: Hi, <PLAYER>!"
 
 	para "You handled your-"
 	line "self like a real"
-	cont "hero at the WELL."
+	cont "hero at the well."
 
 	para "I like your style!"
 
 	para "I would be honored"
-	line "to make BALLS for"
+	line "to make Balls for"
 
 	para "a trainer like"
 	line "you."
@@ -514,59 +514,59 @@ UnknownText_0x18e615:
 	done
 
 UnknownText_0x18e6c9:
-	text "KURT: I make BALLS"
-	line "from APRICORNS."
+	text "Kurt: I make Balls"
+	line "from Apricorns."
 
 	para "Collect them from"
 	line "trees and bring"
 	cont "'em to me."
 
-	para "I'll make BALLS"
+	para "I'll make Balls"
 	line "out of them."
 	done
 
 UnknownText_0x18e736:
-	text "KURT: You have an"
-	line "APRICORN for me?"
+	text "Kurt: You have an"
+	line "Apricorn for me?"
 
 	para "Fine! I'll turn it"
-	line "into a BALL."
+	line "into a Ball."
 	done
 
 UnknownText_0x18e779:
-	text "KURT: It'll take a"
+	text "Kurt: It'll take a"
 	line "day to make you a"
 
-	para "BALL. Come back"
+	para "Ball. Come back"
 	line "for it later."
 	done
 
 UnknownText_0x18e7bc:
-	text "KURT: Oh…"
+	text "Kurt: Oh…"
 	line "That's a letdown."
 	done
 
 UnknownText_0x18e7d8:
-	text "KURT: I'm working!"
+	text "Kurt: I'm working!"
 	line "Don't bother me!"
 	done
 
 UnknownText_0x18e7fb:
-	text "KURT: Ah, <PLAYER>!"
+	text "Kurt: Ah, <PLAYER>!"
 	line "I just finished"
-	cont "your BALL. Here!"
+	cont "your Ball. Here!"
 	done
 
 UnknownText_0x18e82a:
-	text "KURT: That turned"
+	text "Kurt: That turned"
 	line "out great."
 
 	para "Try catching"
-	line "#MON with it."
+	line "#mon with it."
 	done
 
 UnknownText_0x18e863:
-	text "KURT: Now that my"
+	text "Kurt: Now that my"
 	line "granddaughter is"
 
 	para "helping me, I can"
@@ -580,7 +580,7 @@ UnknownText_0x18e8ab:
 	line "one before."
 
 	para "It looks a lot"
-	line "like a # BALL,"
+	line "like a # Ball,"
 
 	para "but it appears to"
 	line "be something else."
@@ -602,7 +602,7 @@ UnknownText_0x18e949:
 UnknownText_0x18e95c:
 	text "<PLAYER>!"
 
-	para "This BALL started"
+	para "This Ball started"
 	line "to shake while I"
 	cont "was checking it."
 
@@ -611,7 +611,7 @@ UnknownText_0x18e95c:
 	done
 
 KurtsGranddaughterSlowpokeGoneText:
-	text "The SLOWPOKE are"
+	text "The Slowpoke are"
 	line "gone… Were they"
 
 	para "taken away by bad"
@@ -624,21 +624,21 @@ KurtsGranddaughterLonelyText:
 	done
 
 KurtsGranddaughterSlowpokeBackText:
-	text "The SLOWPOKE my"
+	text "The Slowpoke my"
 	line "dad gave me came"
 
-	para "back! Its TAIL is"
+	para "back! Its tail is"
 	line "growing back too!"
 	done
 
 KurtsGranddaughterDadText:
-	text "Dad works at SILPH"
+	text "Dad works at Silph"
 	line "where he studies"
-	cont "# BALLS."
+	cont "# Balls."
 
 	para "I have to stay"
 	line "home with Grandpa"
-	cont "and SLOWPOKE."
+	cont "and Slowpoke."
 	done
 
 KurtsGranddaughterHelpText:
@@ -646,31 +646,31 @@ KurtsGranddaughterHelpText:
 	line "Grandpa now!"
 
 	para "We'll make good"
-	line "BALLS for you, so"
+	line "Balls for you, so"
 	cont "please wait!"
 	done
 
 KurtsGranddaughterFunText:
 	text "It's fun to make"
-	line "BALLS!"
+	line "Balls!"
 	done
 
 KurtsGranddaughterGSBallText:
 	text "Grandpa's checking"
-	line "a BALL right now."
+	line "a Ball right now."
 
 	para "So I'm waiting"
 	line "till he's done."
 	done
 
 KurtsHouseSlowpokeText:
-	text "SLOWPOKE: …"
+	text "Slowpoke: …"
 	line "Yawn?"
 	done
 
 KurtsHouseOakPhotoText:
-	text "…A young PROF."
-	line "OAK?"
+	text "…A young Prof."
+	line "Oak?"
 	done
 
 KurtsHouseCelebiStatueText:

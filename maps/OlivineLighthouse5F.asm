@@ -49,7 +49,7 @@ OlivineLighthouse5FHiddenHyperPotion:
 
 SailorErnestSeenText:
 	text "I wanted to battle"
-	line "JASMINE, but she's"
+	line "Jasmine, but she's"
 
 	para "not up to it now."
 	line "So, how about you?"
@@ -61,10 +61,10 @@ SailorErnestBeatenText:
 	done
 
 UnknownText_0x60a1f:
-	text "A GYM LEADER isn't"
+	text "A Gym Leader isn't"
 	line "just about being"
 
-	para "strong. A LEADER"
+	para "strong. A Leader"
 	line "also needs to be"
 	cont "compassionate."
 	done
@@ -73,7 +73,7 @@ Bird_keeperDenisSeenText:
 	text "We're pretty high"
 	line "up here. My bird"
 
-	para "#MON are in"
+	para "#mon are in"
 	line "prime form."
 	done
 
@@ -82,12 +82,12 @@ Bird_keeperDenisBeatenText:
 	done
 
 UnknownText_0x60ac3:
-	text "My #MON learned"
-	line "how to use FLY in"
-	cont "CIANWOOD."
+	text "My #mon learned"
+	line "how to use Fly in"
+	cont "Cianwood."
 
 	para "Well, since I'm a"
-	line "loser, I'll FLY"
+	line "loser, I'll Fly"
 	cont "across the sea…"
 	done
 

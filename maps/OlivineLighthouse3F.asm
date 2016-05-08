@@ -65,7 +65,7 @@ UnknownText_0x5b2df:
 	line "you go up?"
 
 	para "I want to visit"
-	line "the sick #MON,"
+	line "the sick #mon,"
 
 	para "but I can't get up"
 	line "there…"
@@ -84,11 +84,11 @@ SailorTerrellBeatenText:
 
 UnknownText_0x5b384:
 	text "Every time I come"
-	line "back to OLIVINE, I"
-	cont "visit the GYM."
+	line "back to Olivine, I"
+	cont "visit the Gym."
 
-	para "The GYM LEADER's"
-	line "#MON type has"
+	para "The Gym Leader's"
+	line "#mon type has"
 
 	para "changed without me"
 	line "noticing."
@@ -97,7 +97,7 @@ UnknownText_0x5b384:
 GentlemanPrestonSeenText:
 	text "I travel the world"
 	line "to train my #-"
-	cont "MON. I wish to"
+	cont "mon. I wish to"
 	cont "battle with you."
 	done
 
@@ -107,9 +107,9 @@ GentlemanPrestonBeatenText:
 	done
 
 UnknownText_0x5b457:
-	text "JASMINE used to"
-	line "use rock #MON"
-	cont "like ONIX."
+	text "Jasmine used to"
+	line "use rock #mon"
+	cont "like Onix."
 	done
 
 OlivineLighthouse3F_MapEventHeader:

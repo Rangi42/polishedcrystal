@@ -24,17 +24,17 @@ CooltrainerFScript_0x19a35f:
 	jumptextfaceplayer UnknownText_0x19a418
 
 UnknownText_0x19a362:
-	text "What's this? TEAM"
-	line "ROCKET has come"
+	text "What's this? Team"
+	line "Rocket has come"
 	cont "back?"
 
 	para "I saw some men in"
-	line "black at LAKE OF"
-	cont "RAGE…"
+	line "black at Lake of"
+	cont "Rage…"
 	done
 
 UnknownText_0x19a3b3:
-	text "I stop my #MON"
+	text "I stop my #mon"
 	line "from evolving too"
 	cont "early."
 

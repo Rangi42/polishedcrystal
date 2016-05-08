@@ -185,26 +185,26 @@ UnknownText_0x1a88fa:
 	para "Speaking of weak-"
 	line "lings, the city's"
 
-	para "GYM LEADER isn't"
+	para "Gym Leader isn't"
 	line "here."
 
 	para "Supposedly taking"
 	line "care of a sick"
 
-	para "#MON at the"
-	line "LIGHTHOUSE."
+	para "#mon at the"
+	line "Lighthouse."
 
 	para "Humph! Boo-hoo!"
 	line "Just let sick"
-	cont "#MON go!"
+	cont "#mon go!"
 
-	para "A #MON that"
+	para "A #mon that"
 	line "can't battle is"
 	cont "worthless!"
 
 	para "Why don't you go"
 	line "train at the"
-	cont "LIGHTHOUSE?"
+	cont "Lighthouse?"
 
 	para "Who knows. It may"
 	line "make you a bit"
@@ -223,7 +223,7 @@ UnknownText_0x1a8a58:
 	line "more treacherous!"
 
 	para "Without the beacon"
-	line "of the LIGHTHOUSE"
+	line "of the Lighthouse"
 
 	para "to guide it, no"
 	line "ship can sail."
@@ -232,13 +232,13 @@ UnknownText_0x1a8a58:
 UnknownText_0x1a8b04:
 	text "That thing you"
 	line "have--it's a #-"
-	cont "GEAR, right? Wow,"
+	cont "gear, right? Wow,"
 	cont "that's cool."
 	done
 
 UnknownText_0x1a8b41:
 	text "Wow, you have a"
-	line "#DEX!"
+	line "#dex!"
 
 	para "That is just so"
 	line "awesome."
@@ -256,39 +256,39 @@ UnknownText_0x1a8b71:
 	done
 
 OlivineCitySignText:
-	text "OLIVINE CITY"
+	text "Olivine City"
 
 	para "The Port Closest"
 	line "to Foreign Lands"
 	done
 
 OlivineCityPortSignText:
-	text "OLIVINE PORT"
-	line "FAST SHIP PIER"
+	text "Olivine Port"
+	line "Fast Ship Pier"
 	done
 
 OlivineGymSignText:
-	text "OLIVINE CITY"
-	line "#MON GYM"
-	cont "LEADER: JASMINE"
+	text "Olivine City"
+	line "#mon Gym"
+	cont "Leader: Jasmine"
 
 	para "The Steel-Clad"
 	line "Defense Girl"
 	done
 
 OlivineLighthouseSignText:
-	text "OLIVINE LIGHTHOUSE"
+	text "Olivine Lighthouse"
 	line "Also known as the"
-	cont "GLITTER LIGHTHOUSE"
+	cont "Glitter Lighthouse"
 	done
 
 OlivineCityBattleTowerSignText:
-	text "BATTLE TOWER AHEAD"
+	text "Battle Tower Ahead"
 	line "Opening Now!"
 	done
 
 UnknownText_0x1a8cba:
-	text "BATTLE TOWER AHEAD"
+	text "Battle Tower Ahead"
 	done
 
 OlivineCity_MapEventHeader:

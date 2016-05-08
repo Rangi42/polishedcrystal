@@ -12,11 +12,11 @@ TinTower9FHPUp:
 	itemball HP_UP
 
 UnknownText_0x185b8a:
-	text "HO-OH: Shaoooh!"
+	text "Ho-Oh: Shaoooh!"
 	done
 
 UnknownText_0x185b9b:
-	text "LUGIA: Gyaaan!"
+	text "Lugia: Gyaaan!"
 	done
 
 TinTower9F_MapEventHeader:

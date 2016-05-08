@@ -110,7 +110,7 @@ ManiaText_AskLookAfterShuckle:
 
 	para "He scared me into"
 	line "giving him my"
-	cont "prized #MON!"
+	cont "prized #mon!"
 
 	para "I still have one"
 	line "left, but what if"
@@ -119,7 +119,7 @@ ManiaText_AskLookAfterShuckle:
 	para "You look strong."
 	line "Could you look"
 
-	para "after my #MON"
+	para "after my #mon"
 	line "for a while?"
 	done
 
@@ -132,11 +132,11 @@ ManiaText_TakeCareOfShuckle:
 
 ManiaText_GotShuckle:
 	text "<PLAYER> received a"
-	line "#MON."
+	line "#mon."
 	done
 
 ManiaText_PartyFull:
-	text "Your #MON party"
+	text "Your #mon party"
 	line "is full."
 	done
 
@@ -148,7 +148,7 @@ ManiaText_IfHeComesBack:
 
 ManiaText_CanIHaveMyMonBack:
 	text "Hi! How's my #-"
-	line "MON?"
+	line "mon?"
 
 	para "I think I'm safe"
 	line "now, so may I have"
@@ -161,12 +161,12 @@ ManiaText_ThankYou:
 
 ManiaText_ShuckleNotThere:
 	text "Hey, you don't"
-	line "have my #MON"
+	line "have my #mon"
 	cont "with you."
 	done
 
 ManiaText_ShuckleLikesYou:
-	text "My #MON has"
+	text "My #mon has"
 	line "come to like you."
 
 	para "All right, you"
@@ -183,7 +183,7 @@ ManiaText_SameAsBeingRobbed:
 	done
 
 ManiaText_HappinessSpeech:
-	text "For #MON, hap-"
+	text "For #mon, hap-"
 	line "piness is being"
 
 	para "with a person who"
@@ -192,7 +192,7 @@ ManiaText_HappinessSpeech:
 
 ManiaText_ShuckleIsYourLastMon:
 	text "If I take my #-"
-	line "MON back, what are"
+	line "mon back, what are"
 
 	para "you going to use"
 	line "in battle?"

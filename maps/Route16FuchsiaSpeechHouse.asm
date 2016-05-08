@@ -16,10 +16,10 @@ Route16FuchsiaSpeechHouseBookshelf:
 
 UnknownText_0x73379:
 	text "If you cruise down"
-	line "CYCLING ROAD, you"
+	line "Cycling Road, you"
 
 	para "will end up in"
-	line "FUCHSIA CITY."
+	line "Fuchsia City."
 	done
 
 Route16FuchsiaSpeechHouse_MapEventHeader:

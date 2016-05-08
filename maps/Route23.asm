@@ -16,12 +16,12 @@ IndigoPlateauSign:
 	jumptext IndigoPlateauSignText
 
 IndigoPlateauSignText:
-	text "INDIGO PLATEAU"
+	text "Indigo Plateau"
 
 	para "The Ultimate Goal"
 	line "for Trainers!"
 
-	para "#MON LEAGUE HQ"
+	para "#mon League HQ"
 	done
 
 Route23_MapEventHeader:

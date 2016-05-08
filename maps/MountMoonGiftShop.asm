@@ -23,7 +23,7 @@ LassScript_0x771b0:
 
 UnknownText_0x771b3:
 	text "When the sun goes"
-	line "down, CLEFAIRY"
+	line "down, Clefairy"
 	cont "come out to play."
 	done
 

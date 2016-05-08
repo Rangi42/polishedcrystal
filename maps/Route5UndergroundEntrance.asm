@@ -13,7 +13,7 @@ TeacherScript_0x18b555:
 
 UnknownText_0x18b558:
 	text "Many cities in"
-	line "JOHTO have long"
+	line "Johto have long"
 
 	para "histories. I'd"
 	line "love to visit!"

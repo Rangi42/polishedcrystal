@@ -195,8 +195,8 @@ ClairText_GoToDragonsDen:
 	line "#mon League."
 
 	para "I know. You should"
-	line "take the dragon"
-	cont "user challenge."
+	line "take the Dragon-"
+	cont "master challenge."
 
 	para "Behind this Gym is"
 	line "a place called"

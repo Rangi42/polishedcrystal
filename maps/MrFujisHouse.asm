@@ -46,37 +46,37 @@ MrFujisHouseBookshelf:
 	jumpstd difficultbookshelf
 
 UnknownText_0x7e8f1:
-	text "MR.FUJI does live"
+	text "Mr.Fuji does live"
 	line "here, but he's not"
 
 	para "home now."
 
 	para "He should be at"
-	line "the SOUL HOUSE."
+	line "the Soul House."
 	done
 
 UnknownText_0x7e940:
 	text "Some cold-hearted"
 	line "people stop caring"
-	cont "for their #MON."
+	cont "for their #mon."
 
 	para "Grandpa takes in"
 	line "the poor homeless"
 
-	para "#MON and takes"
+	para "#mon and takes"
 	line "care of them."
 	done
 
 MrFujisPsyduckText:
-	text "PSYDUCK: Gu-guwa?"
+	text "Psyduck: Gu-guwa?"
 	done
 
 MrFujisNidorinoText:
-	text "NIDORINO: Gyun!"
+	text "Nidorino: Gyun!"
 	done
 
 MrFujisPidgeyText:
-	text "PIDGEY: Pijji!"
+	text "Pidgey: Pijji!"
 	done
 
 MrFujisHouse_MapEventHeader:

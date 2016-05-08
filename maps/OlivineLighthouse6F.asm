@@ -162,8 +162,8 @@ MovementData_0x60c79:
 	step_end
 
 UnknownText_0x60c81:
-	text "JASMINE: … This"
-	line "#MON always"
+	text "Jasmine: … This"
+	line "#mon always"
 
 	para "kept the sea lit"
 	line "at night."
@@ -175,14 +175,14 @@ UnknownText_0x60c81:
 	para "…I understand"
 	line "that there is a"
 
-	para "wonderful PHARMACY"
-	line "in CIANWOOD…"
+	para "wonderful Pharmacy"
+	line "in Cianwood…"
 
 	para "But that's across"
 	line "the sea…"
 
 	para "And I can't leave"
-	line "AMPHY unattended…"
+	line "Amphy unattended…"
 	done
 
 UnknownText_0x60d64:
@@ -192,36 +192,36 @@ UnknownText_0x60d64:
 	done
 
 UnknownText_0x60d99:
-	text "JASMINE: …Will"
+	text "Jasmine: …Will"
 	line "that medicine cure"
-	cont "AMPHY?"
+	cont "Amphy?"
 	done
 
 UnknownText_0x60dc3:
 	text "<PLAYER> handed the"
-	line "SECRETPOTION to"
-	cont "JASMINE."
+	line "SecretPotion to"
+	cont "Jasmine."
 	done
 
 UnknownText_0x60dea:
-	text "JASMINE: …Um,"
+	text "Jasmine: …Um,"
 	line "please don't be"
 	cont "offended…"
 
-	para "…AMPHY will not"
+	para "…Amphy will not"
 	line "take anything from"
 	cont "anyone but me…"
 	done
 
 UnknownText_0x60e44:
-	text "JASMINE: …"
+	text "Jasmine: …"
 
-	para "AMPHY, how are you"
+	para "Amphy, how are you"
 	line "feeling?"
 	done
 
 UnknownText_0x60e6c:
-	text "JASMINE: …Oh, I'm"
+	text "Jasmine: …Oh, I'm"
 	line "so relieved…"
 
 	para "This is just so"
@@ -231,19 +231,19 @@ UnknownText_0x60e6c:
 	line "very much."
 
 	para "…I will return to"
-	line "the GYM…"
+	line "the Gym…"
 	done
 
 UnknownText_0x60edf:
-	text "JASMINE: …I see…"
+	text "Jasmine: …I see…"
 	done
 
 UnknownText_0x60ef1:
-	text "…AMPHY, hang on!"
+	text "…Amphy, hang on!"
 	done
 
 UnknownText_0x60f03:
-	text "AMPHY: …"
+	text "Amphy: …"
 	line "…Pa… paloo…"
 	done
 
@@ -253,7 +253,7 @@ UnknownText_0x60f19:
 	done
 
 UnknownText_0x60f3d:
-	text "AMPHY: Palu!"
+	text "Amphy: Palu!"
 	line "Palulu!"
 	done
 

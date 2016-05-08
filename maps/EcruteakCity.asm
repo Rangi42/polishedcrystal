@@ -162,7 +162,7 @@ UnknownText_0x1a4269:
 
 UnknownText_0x1a42ac:
 	text "I heard a rumor"
-	line "about Glitter"
+	line "about Olivine"
 	cont "Lighthouse."
 
 	para "The #mon that"
@@ -175,7 +175,7 @@ UnknownText_0x1a42ac:
 
 UnknownText_0x1a4325:
 	text "The #mon at"
-	line "Glitter Lighthouse"
+	line "Olivine Lighthouse"
 	cont "has been cured."
 
 	para "Boats can safely"

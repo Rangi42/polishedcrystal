@@ -21,11 +21,11 @@ PewterNidoran:
 	end
 
 UnknownText_0x1a2814:
-	text "NIDORAN, shake!"
+	text "Nidoran, shake!"
 	done
 
 PewterNidoranText:
-	text "NIDORAN: Gau gau!"
+	text "Nidoran: Gau gau!"
 	done
 
 PewterNidoranSpeechHouse_MapEventHeader:

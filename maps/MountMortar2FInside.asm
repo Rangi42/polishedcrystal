@@ -48,7 +48,7 @@ MountMortar2FInsideHiddenFullRestore:
 
 
 SupernerdHughSeenText:
-	text "Yo! MARKUS!"
+	text "Yo! Markus!"
 	done
 
 SupernerdHughBeatenText:
@@ -57,14 +57,14 @@ SupernerdHughBeatenText:
 
 UnknownText_0x7e10e:
 	text "I'm investigating"
-	line "MT.MORTAR, but my"
+	line "Mt.Mortar, but my"
 	cont "pal's gone AWOL."
 
 	para "Have you seen a"
 	line "trainer who has a"
 
-	para "SLOWPOKE that can"
-	line "use STRENGTH?"
+	para "Slowpoke that can"
+	line "use Strength?"
 	done
 
 MountMortar2FInside_MapEventHeader:

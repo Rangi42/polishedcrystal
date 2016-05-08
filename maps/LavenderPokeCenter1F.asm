@@ -38,45 +38,45 @@ UnknownScript_0x7e6b7:
 
 UnknownText_0x7e6bd:
 	text "To the north of"
-	line "LAVENDER is ROCK"
+	line "Lavender is Rock"
 
-	para "TUNNEL. Go through"
+	para "Tunnel. Go through"
 	line "it to get to the"
-	cont "POWER PLANT."
+	cont "Power Plant."
 	done
 
 UnknownText_0x7e710:
 	text "There's a radio"
 	line "program that plays"
-	cont "# FLUTE music."
+	cont "# Flute music."
 
 	para "Oh? Ah, your radio"
-	line "needs an EXPN CARD"
+	line "needs an Expn.Card"
 	cont "to tune into it."
 	done
 
 UnknownText_0x7e779:
-	text "If the POWER PLANT"
+	text "If the Power Plant"
 	line "isn't running, the"
 
-	para "MAGNET TRAIN won't"
+	para "Magnet Train won't"
 	line "run either…"
 
 	para "It also means the"
-	line "RADIO STATION"
+	line "Radio Station"
 	cont "can't broadcast…"
 	done
 
 UnknownText_0x7e7ed:
-	text "The DIRECTOR of"
-	line "the RADIO STATION"
+	text "The Director of"
+	line "the Radio Station"
 	cont "sure was happy."
 
 	para "He said they're"
 	line "back on the air"
 
-	para "because the POWER"
-	line "PLANT is running"
+	para "because the Power"
+	line "Plant is running"
 	cont "smoothly again."
 	done
 

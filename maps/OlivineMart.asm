@@ -23,7 +23,7 @@ LassScript_0x9cad1:
 	jumptextfaceplayer UnknownText_0x9cb16
 
 UnknownText_0x9cad4:
-	text "Do your #MON"
+	text "Do your #mon"
 	line "already know the"
 
 	para "move for carrying"
@@ -31,12 +31,12 @@ UnknownText_0x9cad4:
 	done
 
 UnknownText_0x9cb16:
-	text "My BUTTERFREE came"
+	text "My Butterfree came"
 	line "from my boyfriend"
 	cont "overseas."
 
 	para "It carried some"
-	line "MAIL from him."
+	line "Mail from him."
 
 	para "Want to know what"
 	line "it says?"

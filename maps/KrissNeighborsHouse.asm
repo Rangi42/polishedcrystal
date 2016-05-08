@@ -47,16 +47,16 @@ KrissNeighborsHouseRadio:
 	end
 
 KrissNeighborsDaughterText:
-	text "PIKACHU is an"
-	line "evolved #MON."
+	text "Pikachu is an"
+	line "evolved #mon."
 
 	para "I was amazed by"
-	line "PROF.ELM's find-"
+	line "Prof.Elm's find-"
 	cont "ings."
 
 	para "He's so famous for"
 	line "his research on"
-	cont "#MON evolution."
+	cont "#mon evolution."
 
 	para "…sigh…"
 
@@ -69,33 +69,33 @@ KrissNeighborText:
 	text "My daughter is"
 	line "adamant about"
 
-	para "becoming PROF."
-	line "ELM's assistant."
+	para "becoming Prof."
+	line "Elm's assistant."
 
 	para "She really loves"
-	line "#MON!"
+	line "#mon!"
 
 	para "But then, so do I!"
 	done
 
 KrisNeighborRadioText1:
-	text "PROF.OAK'S #MON"
-	line "TALK! Please tune"
+	text "Prof.Oak's #mon"
+	line "Talk! Please tune"
 	cont "in next time!"
 	done
 
 KrisNeighborRadioText2:
-	text "#MON CHANNEL!"
+	text "#mon Channel!"
 	done
 
 KrisNeighborRadioText3:
-	text "This is DJ MARY,"
+	text "This is DJ Mary,"
 	line "your co-host!"
 	done
 
 KrisNeighborRadioText4:
-	text "#MON!"
-	line "#MON CHANNEL…"
+	text "#mon!"
+	line "#mon Channel…"
 	done
 
 KrissNeighborsHouse_MapEventHeader:
