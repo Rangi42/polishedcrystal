@@ -215,7 +215,7 @@ ClairText_Wait:
 	done
 
 ClairText_GiveDragonbreathDragonDen:
-	text "CLAIR: I'm sorry"
+	text "Clair: I'm sorry"
 	line "about this."
 
 	para "Here, take this as"
@@ -229,7 +229,7 @@ NotifyReceiveDragonbreath:
 
 ClairText_DescribeDragonbreathDragonDen:
 	text "That contains"
-	line "DRAGONBREATH."
+	line "DragonBreath."
 
 	para "No, it doesn't"
 	line "have anything to"
@@ -245,34 +245,34 @@ ClairText_NoRoom:
 	line "any room for this."
 
 	para "I'm going back to"
-	line "the GYM, so make"
+	line "the Gym, so make"
 
 	para "room, then come"
 	line "see me there."
 	done
 
 ClairText_WhatsTheMatterDragonDen:
-	text "CLAIR: What's the"
+	text "Clair: What's the"
 	line "matter? Aren't you"
 
 	para "going on to the"
-	line "#MON LEAGUE?"
+	line "#mon League?"
 
 	para "Do you know how to"
 	line "get there?"
 
 	para "From here, go to"
-	line "NEW BARK TOWN."
+	line "New Bark Town."
 
-	para "Then SURF east to"
-	line "#MON LEAGUE."
+	para "Then Surf east to"
+	line "#mon League."
 
 	para "The route there is"
 	line "very tough."
 
 	para "Don't you dare"
 	line "lose at the #-"
-	cont "MON LEAGUE!"
+	cont "mon League!"
 
 	para "If you do, I'll"
 	line "feel even worse"
@@ -285,13 +285,13 @@ ClairText_WhatsTheMatterDragonDen:
 	done
 
 DragonShrineSignpostText:
-	text "DRAGON SHRINE"
+	text "Dragon Shrine"
 
 	para "A shrine honoring"
-	line "the dragon #MON"
+	line "the dragon #mon"
 
 	para "said to have lived"
-	line "in DRAGON'S DEN."
+	line "in Dragon's Den."
 	done
 
 SilverText_Training1:
@@ -301,7 +301,7 @@ SilverText_Training1:
 	para "…No, I won't"
 	line "battle you now…"
 
-	para "My #MON aren't"
+	para "My #mon aren't"
 	line "ready to beat you."
 
 	para "I can't push them"
@@ -311,7 +311,7 @@ SilverText_Training1:
 	line "ciplined to become"
 
 	para "the greatest #-"
-	line "MON trainer…"
+	line "mon trainer…"
 	done
 
 SilverText_Training2:
@@ -333,10 +333,10 @@ CooltrainermDarinBeatenText:
 	done
 
 CooltrainermDarinAfterText:
-	text "The SHRINE ahead"
+	text "The Shrine ahead"
 	line "is home to the"
 
-	para "MASTER of our"
+	para "Master of our"
 	line "dragon-user clan."
 
 	para "You're not allowed"
@@ -356,7 +356,7 @@ CooltrainerfCaraAfterText:
 	text "Soon I'm going to"
 	line "get permission"
 
-	para "from our MASTER to"
+	para "from our Master to"
 	line "use dragons."
 
 	para "When I do, I'm"
@@ -365,7 +365,7 @@ CooltrainerfCaraAfterText:
 	para "admirable dragon"
 	line "trainer and gain"
 
-	para "our MASTER's"
+	para "our Master's"
 	line "approval."
 	done
 
@@ -380,7 +380,7 @@ TwinsLeaandpia1BeatenText:
 
 TrinsLeaandpia1AfterText:
 	text "It was like having"
-	line "to battle LANCE."
+	line "to battle Lance."
 	done
 
 TwinsLeaandpia2SeenText:
@@ -394,7 +394,7 @@ TwinsLeaandpia2BeatenText:
 TrinsLeaandpia2AfterText:
 	text "We'll tell on you."
 
-	para "MASTER will be"
+	para "Master will be"
 	line "angry with you."
 	done
 

@@ -245,30 +245,30 @@ UnknownText_0x195f35:
 
 	para "I'm the real deal!"
 
-	para "JANINE of FUCHSIA"
-	line "GYM, that's me!"
+	para "Janine of Fuchsia"
+	line "Gym, that's me!"
 	done
 
 UnknownText_0x195fa1:
-	text "JANINE: You're a"
+	text "Janine: You're a"
 	line "tough one. You"
 	cont "definitely won…"
 
-	para "Here's SOULBADGE."
-	line "Take it."
+	para "Here's the Soul"
+	line "Badge. Take it."
 	done
 
 UnknownText_0x195feb:
 	text "<PLAYER> received"
-	line "SOULBADGE."
+	line "the Soul Badge."
 	done
 
 UnknownText_0x196002:
-	text "JANINE: You're so"
+	text "Janine: You're so"
 	line "tough! I have a"
 	cont "special gift!"
 
-	para "It's TOXIC, a pow-"
+	para "It's Toxic, a pow-"
 	line "erful poison that"
 
 	para "steadily saps the"
@@ -276,7 +276,7 @@ UnknownText_0x196002:
 	done
 
 UnknownText_0x196074:
-	text "JANINE: I'm going"
+	text "Janine: I'm going"
 	line "to really apply"
 
 	para "myself and improve"
@@ -290,8 +290,8 @@ UnknownText_0x196074:
 UnknownText_0x1960e6:
 	text "Fufufu!"
 
-	para "I'm JANINE, the"
-	line "GYM LEADER!"
+	para "I'm Janine, the"
+	line "Gym Leader!"
 
 	para "No, I'm not!"
 	line "Gotcha, sucker!"
@@ -304,7 +304,7 @@ UnknownText_0x196126:
 UnknownText_0x196139:
 	text "How will you dis-"
 	line "tinguish our real"
-	cont "LEADER?"
+	cont "Leader?"
 	done
 
 UnknownText_0x196166:
@@ -323,7 +323,7 @@ UnknownText_0x196199:
 	done
 
 UnknownText_0x1961bb:
-	text "I'm JANINE!"
+	text "I'm Janine!"
 
 	para "How did you know I"
 	line "was real?"
@@ -345,7 +345,7 @@ UnknownText_0x196228:
 	text "Wahahaha!"
 
 	para "You betcha!"
-	line "I'm JANINE!"
+	line "I'm Janine!"
 	done
 
 UnknownText_0x19624a:
@@ -360,7 +360,7 @@ UnknownText_0x19626b:
 	done
 
 FuchsiaGymGuyText:
-	text "Yo, CHAMP in"
+	text "Yo, Champ in"
 	line "making!"
 
 	para "Whoops! Take a"
@@ -368,16 +368,16 @@ FuchsiaGymGuyText:
 
 	para "you. The trainers"
 	line "all look like the"
-	cont "LEADER, JANINE."
+	cont "Leader, Janine."
 
 	para "Which of them is"
-	line "the real JANINE?"
+	line "the real Janine?"
 	done
 
 FuchsiaGymGuyWinText:
 	text "That was a great"
 	line "battle, trainer"
-	cont "from JOHTO!"
+	cont "from Johto!"
 	done
 
 FuchsiaGym_MapEventHeader:

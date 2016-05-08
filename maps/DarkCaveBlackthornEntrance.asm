@@ -37,8 +37,8 @@ UnknownText_0x18c73f:
 	text "Whoa! You startled"
 	line "me there!"
 
-	para "I had my BLACK-"
-	line "GLASSES on, so I"
+	para "I had my Black-"
+	line "Glasses on, so I"
 
 	para "didn't notice you"
 	line "at all."
@@ -50,14 +50,14 @@ UnknownText_0x18c73f:
 	line "worry about it."
 
 	para "I'll give you a"
-	line "pair of BLACK-"
-	cont "GLASSES, so forget"
+	line "pair of Black-"
+	cont "Glasses, so forget"
 	cont "you saw me, OK?"
 	done
 
 UnknownText_0x18c80c:
-	text "BLACKGLASSES ups"
-	line "the power of dark-"
+	text "BlackGlasses ups"
+	line "the power of Dark-"
 	cont "type moves."
 	done
 

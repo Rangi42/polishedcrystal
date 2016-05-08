@@ -91,7 +91,7 @@ UnknownText_0x553d4:
 	text "Have you seen that"
 	line "wiggly tree that's"
 
-	para "growing on ROUTE"
+	para "growing on Route"
 	line "36?"
 
 	para "My little sister"
@@ -117,11 +117,11 @@ UnknownText_0x55463:
 
 UnknownText_0x554c2:
 	text "Oh, you're better"
-	line "than WHITNEY…"
+	line "than Whitney…"
 
 	para "You'll be OK,"
 	line "then. Here's the"
-	cont "SQUIRTBOTTLE!"
+	cont "SquirtBottle!"
 	done
 
 UnknownText_0x5550d:
@@ -142,7 +142,7 @@ UnknownText_0x55561:
 	para "tree, she told me"
 	line "it's dangerous."
 
-	para "If I beat WHITNEY,"
+	para "If I beat Whitney,"
 	line "I wonder if she'll"
 
 	para "lend me her water"
@@ -151,12 +151,12 @@ UnknownText_0x55561:
 
 UnknownText_0x555e6:
 	text "Wow, you beat"
-	line "WHITNEY? Cool!"
+	line "Whitney? Cool!"
 	done
 
 UnknownText_0x55604:
 	text "So it really was a"
-	line "#MON!"
+	line "#mon!"
 	done
 
 GoldenrodFlowerShop_MapEventHeader:

@@ -41,30 +41,30 @@ GoldenrodDeptStore4FElevatorButton:
 
 UnknownText_0x55f08:
 	text "Hey. I love strong"
-	line "#MON."
+	line "#mon."
 
-	para "I feed them PRO-"
-	line "TEIN to crank up"
-	cont "their ATTACK."
+	para "I feed them Pro-"
+	line "tein to crank up"
+	cont "their Attack."
 	done
 
 UnknownText_0x55f52:
-	text "IRON adds to your"
-	line "#MON's DEFENSE."
+	text "Iron adds to your"
+	line "#mon's Defense."
 	done
 
 UnknownText_0x55f74:
-	text "Some #MON"
-	line "evolve only by"
+	text "Some #mon"
+	line "evolve only"
 
-	para "being traded via a"
-	line "Game Link cable."
+	para "when they hold"
+	line "a certain item."
 
 	para "I know of four:"
-	line "MACHOKE, KADABRA,"
+	line "Poliwhirl, Slowbro,"
 
-	para "HAUNTER and, um,"
-	line "GRAVELER."
+	para "Onix and, um,"
+	line "Scyther."
 
 	para "I heard there are"
 	line "others too."
@@ -72,9 +72,9 @@ UnknownText_0x55f74:
 
 GoldenrodDeptStore4FDirectoryText:
 	text "Let Us Pump Up"
-	line "Your #MON!"
+	line "Your #mon!"
 
-	para "4F MEDICINE BOX"
+	para "4F Medicine Box"
 	done
 
 GoldenrodDeptStore4F_MapEventHeader:

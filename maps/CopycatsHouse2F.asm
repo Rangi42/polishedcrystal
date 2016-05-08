@@ -205,7 +205,7 @@ MovementData_0x18afd0:
 
 UnknownText_0x18afda:
 	text "<PLAYER>: Hi! Do"
-	line "you like #MON?"
+	line "you like #mon?"
 
 	para "<PLAYER>: Uh, no, I"
 	line "just asked you."
@@ -215,7 +215,7 @@ UnknownText_0x18afda:
 	done
 
 UnknownText_0x18b028:
-	text "COPYCAT: Hmm?"
+	text "Copycat: Hmm?"
 	line "Quit mimicking?"
 
 	para "But that's my"
@@ -227,22 +227,22 @@ UnknownText_0x18b064:
 	line "I heard that you"
 
 	para "lost your favorite"
-	line "# DOLL."
+	line "# Doll."
 
 	para "<PLAYER>: If I find"
 	line "it, you'll give me"
-	cont "a rail PASS?"
+	cont "a rail pass?"
 
 	para "<PLAYER>: I'll go"
 	line "find it for you."
 
 	para "You think you lost"
 	line "it when you went"
-	cont "to VERMILION CITY?"
+	cont "to Vermilion City?"
 	done
 
 UnknownText_0x18b116:
-	text "COPYCAT: Pardon?"
+	text "Copycat: Pardon?"
 
 	para "I shouldn't decide"
 	line "what you should"
@@ -254,9 +254,9 @@ UnknownText_0x18b116:
 	done
 
 UnknownText_0x18b17f:
-	text "COPYCAT: Yay!"
-	line "That's my CLEFAIRY"
-	cont "# DOLL!"
+	text "Copycat: Yay!"
+	line "That's my Clefairy"
+	cont "# Doll!"
 
 	para "See the tear where"
 	line "the right leg is"
@@ -267,27 +267,27 @@ UnknownText_0x18b17f:
 
 UnknownText_0x18b1e2:
 	text "OK. Here's the"
-	line "MAGNET TRAIN PASS"
+	line "Magnet Train Pass"
 	cont "like I promised!"
 	done
 
 UnknownText_0x18b214:
-	text "COPYCAT: That's"
-	line "the PASS for the"
-	cont "MAGNET TRAIN."
+	text "Copycat: That's"
+	line "the pass for the"
+	cont "Magnet Train."
 
 	para "The rail company"
 	line "man gave me that"
 
 	para "when they tore"
 	line "down our old house"
-	cont "for the STATION."
+	cont "for the station."
 	done
 
 UnknownText_0x18b298:
 	text "<PLAYER>: Hi!"
 	line "Thanks a lot for"
-	cont "the rail PASS!"
+	cont "the rail pass!"
 
 	para "<PLAYER>: Pardon?"
 
@@ -297,13 +297,13 @@ UnknownText_0x18b298:
 	done
 
 UnknownText_0x18b2f5:
-	text "COPYCAT: You bet!"
+	text "Copycat: You bet!"
 	line "It's a scream!"
 	done
 
 UnknownText_0x18b316:
 	text "<PLAYER>: Hi. You"
-	line "must like #MON."
+	line "must like #mon."
 
 	para "<PLAYER>: No, not"
 	line "me. I asked you."
@@ -315,12 +315,12 @@ UnknownText_0x18b316:
 UnknownText_0x18b366:
 	text "<PLAYER>: Hi. Did"
 	line "you really lose"
-	cont "your # DOLL?"
+	cont "your # Doll?"
 
 	para "<PLAYER>: You'll"
 	line "really give me a"
 
-	para "rail PASS if I"
+	para "rail pass if I"
 	line "find it for you?"
 
 	para "<PLAYER>: Sure,"
@@ -328,12 +328,12 @@ UnknownText_0x18b366:
 
 	para "You think you lost"
 	line "it when you were"
-	cont "in VERMILION?"
+	cont "in Vermilion?"
 	done
 
 UnknownText_0x18b415:
 	text "<PLAYER>: Thank you"
-	line "for the rail PASS!"
+	line "for the rail pass!"
 
 	para "<PLAYER>: …Pardon?"
 
@@ -345,20 +345,20 @@ UnknownText_0x18b415:
 	done
 
 CopycatsDodrioText1:
-	text "DODRIO: Gii giii!"
+	text "Dodrio: Gii giii!"
 	done
 
 CopycatsDodrioText2:
-	text "MIRROR, MIRROR ON"
-	line "THE WALL, WHO'S"
+	text "Mirror, mirror on"
+	line "the wall, who's"
 
-	para "THE FAIREST ONE OF"
-	line "ALL?"
+	para "the fairest one of"
+	line "all?"
 	done
 
 CopycatsHouse2FDollText:
 	text "This is a rare"
-	line "#MON! Huh?"
+	line "#mon! Huh?"
 
 	para "It's only a doll…"
 	done

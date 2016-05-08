@@ -185,14 +185,14 @@ UnknownText_0x99e65:
 	text "Good of you to"
 	line "have come."
 
-	para "Here in ECRUTEAK,"
-	line "#MON have been"
+	para "Here in Ecruteak,"
+	line "#mon have been"
 	cont "revered."
 
 	para "It's said that a"
 	line "rainbow-colored"
 
-	para "#MON will come"
+	para "#mon will come"
 	line "down to appear"
 
 	para "before a truly"
@@ -214,7 +214,7 @@ UnknownText_0x99e65:
 	line "more, I could see"
 
 	para "a future in which"
-	line "I meet the #MON"
+	line "I meet the #mon"
 	cont "of rainbow colors."
 
 	para "You're going to"
@@ -227,23 +227,23 @@ UnknownText_0x9a00a:
 	line "enough yet…"
 
 	para "All right. This"
-	line "BADGE is yours."
+	line "Badge is yours."
 	done
 
 UnknownText_0x9a043:
 	text "<PLAYER> received"
-	line "FOGBADGE."
+	line "the Fog Badge."
 	done
 
 UnknownText_0x9a059:
-	text "By having FOG-"
-	line "BADGE, #MON up"
+	text "By having the Fog"
+	line "Badge, #mon up"
 
 	para "to L50 will obey"
 	line "you."
 
-	para "Also, #MON that"
-	line "know SURF will be"
+	para "Also, #mon that"
+	line "know Surf will be"
 
 	para "able to use that"
 	line "move anytime."
@@ -253,11 +253,11 @@ UnknownText_0x9a059:
 	done
 
 UnknownText_0x9a0ec:
-	text "It's SHADOW BALL."
+	text "It's Shadow Ball."
 	line "It causes damage"
 
 	para "and may reduce"
-	line "SPCL.DEF."
+	line "Spcl.Def."
 
 	para "Use it if it"
 	line "appeals to you."
@@ -280,7 +280,7 @@ UnknownText_0x9a145:
 
 SageJeffreySeenText:
 	text "I spent the spring"
-	line "with my #MON."
+	line "with my #mon."
 
 	para "Then summer, fall"
 	line "and winter…"
@@ -298,14 +298,14 @@ SageJeffreyBeatenText:
 	done
 
 UnknownText_0x9a263:
-	text "Where did #MON"
+	text "Where did #mon"
 	line "come from?"
 	done
 
 SagePingSeenText:
 	text "Can you inflict"
 	line "any damage on our"
-	cont "#MON?"
+	cont "#mon?"
 	done
 
 SagePingBeatenText:
@@ -313,10 +313,10 @@ SagePingBeatenText:
 	done
 
 UnknownText_0x9a2b7:
-	text "We use only ghost-"
-	line "type #MON."
+	text "We use only Ghost-"
+	line "type #mon."
 
-	para "No normal-type"
+	para "No Normal-type"
 	line "attack can harm"
 	cont "them!"
 	done
@@ -366,7 +366,7 @@ EcruteakGymGuyText:
 	line "may tell you some"
 
 	para "deep secrets about"
-	line "ECRUTEAK."
+	line "Ecruteak."
 	done
 
 EcruteakGymGuyWinText:
@@ -379,8 +379,8 @@ EcruteakGymGuyWinText:
 	done
 
 UnknownText_0x9a49c:
-	text "MORTY, the GYM"
-	line "LEADER, is absent."
+	text "Morty, the Gym"
+	line "Leader, is absent."
 
 	para "Sorry, but you'll"
 	line "have to leave."

@@ -251,7 +251,7 @@ UnknownText_0x76012:
 
 UnknownText_0x76064:
 	text "How do you like"
-	line "S.S.AQUA's ride?"
+	line "S.S.Aqua's ride?"
 
 	para "She practically"
 	line "skates across the"
@@ -295,7 +295,7 @@ UnknownText_0x761be:
 	done
 
 UnknownText_0x761e0:
-	text "CAPTAIN, play with"
+	text "Captain, play with"
 	line "me, please?"
 
 	para "I'm bored! I want"
@@ -321,7 +321,7 @@ UnknownText_0x76284:
 	text "Grandpa, here I"
 	line "am! I was playing"
 
-	para "with the CAPTAIN"
+	para "with the Captain"
 	line "and this guy!"
 	done
 
@@ -329,7 +329,7 @@ UnknownText_0x762c6:
 	text "Grandpa, here I"
 	line "am! I was playing"
 
-	para "with the CAPTAIN"
+	para "with the Captain"
 	line "and this big girl!"
 	done
 
@@ -401,30 +401,30 @@ PsychicRodneyBeatenText:
 
 UnknownText_0x76497:
 	text "I get it. You can"
-	line "hear JOHTO's radio"
-	cont "on the FAST SHIP."
+	line "hear Johto's radio"
+	cont "on the Fast Ship."
 	done
 
 PokefanmJeremySeenText:
 	text "What do you think?"
-	line "My #MON are"
+	line "My #mon are"
 	cont "beautiful, yes?"
 	done
 
 PokefanmJeremyBeatenText:
 	text "Oh, no! My beauti-"
-	line "ful #MON!"
+	line "ful #mon!"
 	done
 
 UnknownText_0x7651c:
 	text "I must go to the"
-	line "#MON SALON and"
+	line "#mon Salon and"
 	cont "fix them up nice!"
 	done
 
 PokefanfGeorgiaSeenText:
 	text "I'm going to shop"
-	line "at the DEPT.STORE"
+	line "at the Dept.Store"
 	cont "and then…"
 	done
 
@@ -435,13 +435,13 @@ PokefanfGeorgiaBeatenText:
 
 UnknownText_0x76596:
 	text "Oh, yes! I have to"
-	line "get my #MON out"
-	cont "of DAY-CARE!"
+	line "get my #mon out"
+	cont "of Day-Care!"
 	done
 
 SupernerdShawnSeenText:
 	text "What kinds of #"
-	line "BALLS do you have"
+	line "Balls do you have"
 	cont "with you?"
 	done
 
@@ -452,14 +452,14 @@ SupernerdShawnBeatenText:
 
 UnknownText_0x7660f:
 	text "You should use the"
-	line "right BALLS to fit"
+	line "right Balls to fit"
 	cont "the situation."
 	done
 
 UnknownText_0x76645:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
-	cont "VERMILION CITY."
+	cont "Vermilion City."
 	done
 
 FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:

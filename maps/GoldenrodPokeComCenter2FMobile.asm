@@ -113,8 +113,8 @@ MapGoldenrodPokeComCenter2FMobileSignpost2Script:
 	jumptext UnknownText_0x62b26
 
 UnknownText_0x62674:
-	text "#COM CENTER and"
-	line "MOBILE CENTER were"
+	text "#com Center and"
+	line "Mobile Center were"
 
 	para "built to satisfy"
 	line "demands for trades"
@@ -154,46 +154,46 @@ UnknownText_0x62795:
 
 UnknownText_0x627ee:
 	text "It's a notice"
-	line "about where MOBILE"
+	line "about where Mobile"
 
-	para "ADAPTERS are to be"
+	para "Adapters are to be"
 	line "used…"
 	done
 
 UnknownText_0x62828:
-	text "There's a #COM"
-	line "CLUB upstairs in"
+	text "There's a #com"
+	line "Club upstairs in"
 
-	para "any #MON"
-	line "CENTER."
+	para "any #mon"
+	line "Center."
 
 	para "There, you can"
 	line "battle or trade"
 
 	para "with a friend far"
 	line "away by using a"
-	cont "MOBILE ADAPTER."
+	cont "Mobile Adapter."
 
 	para "To link up, your"
 	line "friend must have"
 
 	para "the same kind of"
-	line "MOBILE ADAPTER as"
+	line "Mobile Adapter as"
 	cont "you."
 	done
 
 UnknownText_0x628f4:
-	text "To use the TRADE"
-	line "CORNER or read the"
+	text "To use the Trade"
+	line "Corner or read the"
 
-	para "#MON NEWS, you"
+	para "#mon News, you"
 	line "need to phone the"
-	cont "MOBILE CENTER."
+	cont "Mobile Center."
 
 	para "You must register"
-	line "at the MOBILE"
+	line "at the Mobile"
 
-	para "CENTER before"
+	para "Center before"
 	line "connecting there."
 	done
 
@@ -207,7 +207,7 @@ UnknownText_0x629ae:
 	text "Please ensure that"
 	line "your phone and"
 
-	para "MOBILE ADAPTER are"
+	para "Mobile Adapter are"
 	line "properly linked."
 
 	para "Please make sure"
@@ -241,19 +241,19 @@ UnknownText_0x62a5a:
 	done
 
 UnknownText_0x62b26:
-	text "The ADMINISTRATION"
-	line "OFFICE received an"
+	text "The Administration"
+	line "Office received an"
 	cont "e-mail. It says…"
 
 	para "<......> <......> <......>"
 
-	para "To the #COM"
-	line "CENTER staff…"
+	para "To the #com"
+	line "Center staff…"
 
 	para "Wireless communi-"
 	line "cation has enabled"
 
-	para "#MON trainers"
+	para "#mon trainers"
 	line "to interact across"
 
 	para "the nation. Let's"

@@ -107,10 +107,10 @@ MoveTutor:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "FLAMETHROWER@"
-	db "THUNDERBOLT@"
-	db "ICE BEAM@"
-	db "CANCEL@"
+	db "Flamethrower@"
+	db "Thunderbolt@"
+	db "Ice Beam@"
+	db "Cancel@"
 
 
 .Refused:
@@ -290,7 +290,7 @@ MovementData_0x198a63:
 
 UnknownText_0x198a69:
 	text "They built the new"
-	line "RADIO TOWER to"
+	line "Radio Tower to"
 
 	para "replace the old,"
 	line "creaky one."
@@ -298,7 +298,7 @@ UnknownText_0x198a69:
 
 UnknownText_0x198aa9:
 	text "I know there's a"
-	line "new BIKE SHOP, but"
+	line "new Bike Shop, but"
 
 	para "I can't find it"
 	line "anywhere."
@@ -308,7 +308,7 @@ UnknownText_0x198ae6:
 	text "Is that man in"
 	line "black dressed up"
 
-	para "like a TEAM ROCKET"
+	para "like a Team Rocket"
 	line "member? How silly!"
 	done
 
@@ -316,13 +316,13 @@ UnknownText_0x198b2d:
 	text "Was that man in"
 	line "black really part"
 
-	para "of TEAM ROCKET? I"
+	para "of Team Rocket? I"
 	line "can't believe it!"
 	done
 
 UnknownText_0x198b73:
-	text "The RADIO TOWER in"
-	line "GOLDENROD CITY is"
+	text "The Radio Tower in"
+	line "Goldenrod City is"
 	cont "a landmark."
 
 	para "They're running a"
@@ -330,14 +330,14 @@ UnknownText_0x198b73:
 	cont "paign right now."
 
 	para "They'll modify"
-	line "your #GEAR,"
+	line "your #gear,"
 
 	para "so it can also"
 	line "serve as a radio."
 	done
 
 UnknownText_0x198c14:
-	text "Oh, your #GEAR"
+	text "Oh, your #gear"
 	line "works as a radio!"
 	done
 
@@ -348,16 +348,16 @@ UnknownText_0x198c36:
 	line "for playing in the"
 
 	para "basement of the"
-	line "DEPT.STORE."
+	line "Dept.Store."
 	done
 
 UnknownText_0x198c83:
 	text "The man at that"
 	line "house rates your"
-	cont "#MON names."
+	cont "#mon names."
 
 	para "He can even rename"
-	line "your #MON."
+	line "your #mon."
 	done
 
 UnknownText_0x198ccf:
@@ -370,7 +370,7 @@ UnknownText_0x198ccf:
 
 UnknownText_0x198d0d:
 	text "So this is the"
-	line "RADIO TOWER…"
+	line "Radio Tower…"
 	done
 
 UnknownText_0x198d2a:
@@ -385,14 +385,14 @@ UnknownText_0x198d4e:
 
 UnknownText_0x198d6d:
 	text "Take over the"
-	line "RADIO TOWER…"
+	line "Radio Tower…"
 
 	para "What? It's none of"
 	line "your business!"
 	done
 
 UnknownText_0x198daa:
-	text "#MON? They're"
+	text "#mon? They're"
 	line "nothing more than"
 
 	para "tools for making"
@@ -416,38 +416,38 @@ UnknownText_0x198e1f:
 UnknownText_0x198e4b:
 	text "Come taste the"
 	line "true terror of"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	done
 
 GoldenrodCityStationSignText:
-	text "GOLDENROD CITY"
-	line "STATION"
+	text "Goldenrod City"
+	line "Station"
 	done
 
 GoldenrodCityRadioTowerSignText:
-	text "GOLDENROD CITY"
-	line "RADIO TOWER"
+	text "Goldenrod City"
+	line "Radio Tower"
 	done
 
 GoldenrodDeptStoreSignText:
 	text "Full Selection of"
-	line "#MON Goods!"
+	line "#mon Goods!"
 
-	para "GOLDENROD CITY"
-	line "DEPT.STORE"
+	para "Goldenrod City"
+	line "Dept.Store"
 	done
 
 GoldenrodGymSignText:
-	text "GOLDENROD CITY"
-	line "#MON GYM"
-	cont "LEADER: WHITNEY"
+	text "Goldenrod City"
+	line "#mon Gym"
+	cont "Leader: Whitney"
 
 	para "The Incredibly"
 	line "Pretty Girl!"
 	done
 
 GoldenrodCitySignText:
-	text "GOLDENROD CITY"
+	text "Goldenrod City"
 
 	para "The Festive City"
 	line "of Opulent Charm"
@@ -456,47 +456,47 @@ GoldenrodCitySignText:
 GoldenrodCityBikeShopSignText:
 	text "The World is a"
 	line "Cycle Path!"
-	cont "BIKE SHOP"
+	cont "Bike Shop"
 	done
 
 GoldenrodCityGameCornerSignText:
 	text "Your Playground!"
 
-	para "GOLDENROD CITY"
-	line "GAME CORNER"
+	para "Goldenrod City"
+	line "Game Corner"
 	done
 
 GoldenrodCityNameRaterSignText:
-	text "NAME RATER"
+	text "Name Rater"
 
-	para "Get Your #MON"
+	para "Get Your #mon"
 	line "Nicknames Rated"
 	done
 
 GoldenrodCityUndergroundSignNorthText:
-	text "UNDERGROUND"
-	line "ENTRANCE"
+	text "Underground"
+	line "Entrance"
 	done
 
 GoldenrodCityUndergroundSignSouthText:
-	text "UNDERGROUND"
-	line "ENTRANCE"
+	text "Underground"
+	line "Entrance"
 	done
 
 PokeComCenterSignText:
 ; unused in the english version
 	text "For Mobile Tips!"
-	line "#COM CENTER"
+	line "#com Center"
 	done
 
 GoldenrodCityFlowerShopSignText:
 	text "Blooming Beautiful"
-	line "FLOWER SHOP"
+	line "Flower Shop"
 	done
 
 UnknownText_0x199042:
 	text "I can teach your"
-	line "#MON amazing"
+	line "#mon amazing"
 
 	para "moves if you'd"
 	line "like."

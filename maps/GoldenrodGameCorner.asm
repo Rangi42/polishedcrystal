@@ -241,9 +241,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "ABRA        100@"
-	db "CUBONE      800@"
-	db "WOBBUFFET  1500@"
+	db "Abra        100@"
+	db "Cubone      800@"
+	db "Wobbuffet  1500@"
 	db "CANCEL@"
 
 
@@ -364,7 +364,7 @@ GoldenrodGameCornerPrizeVendorQuitText:
 
 GoldenrodGameCornerPrizeVendorNoCoinCaseText:
 	text "Oh? You don't have"
-	line "a COIN CASE."
+	line "a Coin Case."
 	done
 
 GoldenrodGameCornerPharmacistText:
@@ -381,7 +381,7 @@ GoldenrodGameCornerPokefanM1Text:
 
 	para "It's more of a"
 	line "challenge than the"
-	cont "ones in CELADON."
+	cont "ones in Celadon."
 	done
 
 GoldenrodGameCornerCooltrainerMText:
@@ -409,8 +409,8 @@ GoldenrodGameCornerCooltrainerFText:
 	done
 
 GoldenrodGameCornerGentlemanText:
-	text "I taught BLIZZARD"
-	line "to my #MON."
+	text "I taught Blizzard"
+	line "to my #mon."
 
 	para "It was hard to get"
 	line "enough coins for"
@@ -429,8 +429,8 @@ GoldenrodGameCornerPokefanM2Text:
 	para "I got so furious,"
 	line "I tossed out my"
 
-	para "COIN CASE in the"
-	line "UNDERGROUND."
+	para "Coin Case in the"
+	line "Underground."
 	done
 
 GoldenrodGameCornerPokefanM3Text:

@@ -17,14 +17,14 @@ YoungsterScript_0x1963c0:
 
 UnknownText_0x1963c3:
 	text "My grandpa is at "
-	line "my brother BILL's"
-	cont "on CERULEAN CAPE."
+	line "my brother Bill's"
+	cont "on Cerulean Cape."
 	done
 
 UnknownText_0x1963f9:
 	text "I saw these weird,"
-	line "slow #MON on"
-	cont "CYCLING ROAD."
+	line "slow #mon on"
+	cont "Cycling Road."
 	done
 
 FuchsiaBillSpeechHouse_MapEventHeader:

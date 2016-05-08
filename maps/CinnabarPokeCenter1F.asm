@@ -20,11 +20,11 @@ FisherScript_0x1ab332:
 	jumptextfaceplayer UnknownText_0x1ab37f
 
 UnknownText_0x1ab335:
-	text "CINNABAR GYM's"
-	line "BLAINE apparently"
+	text "Cinnabar Gym's"
+	line "Blaine apparently"
 
 	para "lives alone in the"
-	line "SEAFOAM ISLANDS"
+	line "Seafoam Islands"
 	cont "cave…"
 	done
 

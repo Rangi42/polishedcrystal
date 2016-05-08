@@ -210,9 +210,9 @@ MovementData_0x75238:
 	step_end
 
 UnknownText_0x7523b:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "is en route to"
-	cont "VERMILION CITY."
+	cont "Vermilion City."
 
 	para "We will make an"
 	line "announcement when"
@@ -220,9 +220,9 @@ UnknownText_0x7523b:
 	done
 
 UnknownText_0x7529b:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "is en route to"
-	cont "OLIVINE CITY."
+	cont "Olivine City."
 
 	para "We will make an"
 	line "announcement when"
@@ -232,7 +232,7 @@ UnknownText_0x7529b:
 UnknownText_0x752f9:
 	text "Here's your cabin."
 
-	para "If your #MON"
+	para "If your #mon"
 	line "are hurt, take a"
 	cont "nap in the bed."
 
@@ -244,7 +244,7 @@ UnknownText_0x7534f:
 	text "Here's your cabin."
 
 	para "You can heal your"
-	line "#MON by taking"
+	line "#mon by taking"
 	cont "a nap in the bed."
 
 	para "The ship will"
@@ -276,15 +276,15 @@ UnknownText_0x75412:
 	done
 
 UnknownText_0x7548d:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
-	cont "OLIVINE CITY."
+	cont "Olivine City."
 	done
 
 UnknownText_0x754be:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
-	cont "VERMILION CITY."
+	cont "Vermilion City."
 	done
 
 FastShip1F_MapEventHeader:

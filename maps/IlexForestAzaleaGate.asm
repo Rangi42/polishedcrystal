@@ -16,13 +16,13 @@ GrannyScript_0x62c7d:
 	jumptextfaceplayer UnknownText_0x62cb0
 
 UnknownText_0x62c80:
-	text "ILEX FOREST is"
+	text "Ilex Forest is"
 	line "big. Be careful!"
 	cont "Don't get lost."
 	done
 
 UnknownText_0x62cb0:
-	text "The FOREST is"
+	text "The Forest is"
 	line "watched over by"
 	cont "its protector."
 

@@ -413,7 +413,7 @@ UnknownText_0x18d2ea:
 	para "No need to explain"
 	line "why you came."
 
-	para "CLAIR sent you"
+	para "Clair sent you"
 	line "here, didn't she?"
 
 	para "That girl is a"
@@ -430,7 +430,7 @@ UnknownText_0x18d2ea:
 	done
 
 UnknownText_0x18d3bc:
-	text "What are #MON"
+	text "What are #mon"
 	line "to you?"
 	done
 
@@ -448,12 +448,12 @@ UnknownText_0x18d3f3:
 UnknownText_0x18d420:
 	text "What is most"
 	line "important for"
-	cont "raising #MON?"
+	cont "raising #mon?"
 	done
 
 UnknownText_0x18d44a:
-	text "Strong #MON."
-	line "Weak #MON."
+	text "Strong #mon."
+	line "Weak #mon."
 
 	para "Which is more"
 	line "important?"
@@ -463,7 +463,7 @@ UnknownText_0x18d47c:
 	text "Hm… I see…"
 
 	para "You care deeply"
-	line "for #MON."
+	line "for #mon."
 
 	para "Very commendable."
 
@@ -475,26 +475,26 @@ UnknownText_0x18d47c:
 
 	para "It will see you"
 	line "through at the"
-	cont "#MON LEAGUE."
+	cont "#mon League."
 	done
 
 UnknownText_0x18d520:
-	text "CLAIR!"
+	text "Clair!"
 
 	para "This child is"
 	line "impeccable, in"
 	cont "skill and spirit!"
 
 	para "Admit defeat and"
-	line "confer the RISING-"
-	cont "BADGE!"
+	line "confer the Rising"
+	cont "Badge!"
 
 	para "…Or must I inform"
-	line "LANCE of this?"
+	line "Lance of this?"
 	done
 
 UnknownText_0x18d5a3:
-	text "CLAIR…"
+	text "Clair…"
 
 	para "Reflect upon what"
 	line "it is that you"
@@ -518,7 +518,7 @@ UnknownText_0x18d604:
 	para "I have something"
 	line "for you."
 
-	para "Take this DRATINI"
+	para "Take this Dratini"
 	line "as proof that I"
 
 	para "have recognized"
@@ -527,16 +527,16 @@ UnknownText_0x18d604:
 
 UnknownText_0x18d697:
 	text "<PLAYER> received"
-	line "DRATINI!"
+	line "Dratini!"
 	done
 
 UnknownText_0x18d6ac:
-	text "Hm? Your #MON"
+	text "Hm? Your #mon"
 	line "party is full."
 	done
 
 UnknownText_0x18d6ca:
-	text "Dragon #MON are"
+	text "Dragon #mon are"
 	line "symbolic of our"
 	cont "clan."
 
@@ -548,7 +548,7 @@ UnknownText_0x18d6ca:
 	done
 
 UnknownText_0x18d724:
-	text "CLAIR appears to"
+	text "Clair appears to"
 	line "have learned an"
 
 	para "invaluable lesson"
@@ -564,7 +564,7 @@ UnknownText_0x18d782:
 	cont "training here."
 
 	para "He is much like"
-	line "CLAIR when she was"
+	line "Clair when she was"
 
 	para "younger. It is a"
 	line "little worrisome…"
@@ -589,19 +589,19 @@ UnknownText_0x18d840:
 	line "some time since a"
 
 	para "trainer has gained"
-	line "our MASTER's rare"
+	line "our Master's rare"
 	cont "approval."
 
 	para "In fact, not since"
-	line "Master LANCE."
+	line "Master Lance."
 	done
 
 UnknownText_0x18d8b1:
 	text "You know young"
-	line "Master LANCE?"
+	line "Master Lance?"
 
 	para "He looks so much"
-	line "like our MASTER"
+	line "like our Master"
 	cont "did in his youth."
 
 	para "It's in their"
@@ -638,25 +638,25 @@ UnknownText_0x18d9ae:
 
 UnknownText_0x18d9bf:
 	text "Here, this is the"
-	line "RISINGBADGE…"
+	line "Rising Badge…"
 
 	para "Hurry up! Take it!"
 	done
 
 UnknownText_0x18d9f2:
 	text "<PLAYER> received"
-	line "RISINGBADGE."
+	line "the Rising Badge."
 	done
 
 UnknownText_0x18da0b:
-	text "RISINGBADGE will"
-	line "enable your"
+	text "The Rising Badge"
+	line "will enable your"
 
-	para "#MON to use the"
+	para "#mon to use the"
 	line "move for climbing"
 	cont "waterfalls."
 
-	para "Also, all #MON"
+	para "Also, all #mon"
 	line "will recognize you"
 
 	para "as a trainer and"

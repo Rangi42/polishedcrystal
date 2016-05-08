@@ -10,7 +10,7 @@
 	db "Burn Heal@"
 	db "Ice Heal@"
 	db "Awakening@"
-	db "ParlyzeHeal@"
+	db "ParalyzHeal@"
 	db "Full Restore@"
 	db "Max Potion@"
 	db "Hyper Potion@"

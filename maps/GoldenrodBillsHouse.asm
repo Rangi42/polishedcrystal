@@ -109,13 +109,13 @@ BillsHouseRadio:
 	jumpstd radio2
 
 UnknownText_0x54c74:
-	text "BILL: Hi, <PLAYER>!"
+	text "Bill: Hi, <PLAYER>!"
 	line "Do us a favor and"
-	cont "take this EEVEE."
+	cont "take this Eevee."
 
 	para "It came over when"
 	line "I was adjusting"
-	cont "the TIME CAPSULE."
+	cont "the Time Capsule."
 
 	para "Someone has to"
 	line "take care of it,"
@@ -129,7 +129,7 @@ UnknownText_0x54c74:
 	done
 
 UnknownText_0x54d3f:
-	text "BILL: I knew you'd"
+	text "Bill: I knew you'd"
 	line "come through!"
 
 	para "Way to go! You're"
@@ -144,12 +144,12 @@ UnknownText_0x54d3f:
 
 UnknownText_0x54dae:
 	text "<PLAYER> received"
-	line "EEVEE!"
+	line "Eevee!"
 	done
 
 UnknownText_0x54dc1:
-	text "BILL: PROF.ELM"
-	line "claims EEVEE may"
+	text "Bill: Prof.Elm"
+	line "claims Eevee may"
 
 	para "evolve in new and"
 	line "unknown ways."
@@ -158,7 +158,7 @@ UnknownText_0x54dc1:
 UnknownText_0x54e02:
 	text "Whoa, wait. You"
 	line "can't carry any"
-	cont "more #MON."
+	cont "more #mon."
 	done
 
 UnknownText_0x54e2d:
@@ -167,7 +167,7 @@ UnknownText_0x54e2d:
 	done
 
 UnknownText_0x54e42:
-	text "BILL: My pop, he"
+	text "Bill: My pop, he"
 	line "won't work. All he"
 
 	para "does is goof off"
@@ -179,19 +179,19 @@ UnknownText_0x54e42:
 
 UnknownText_0x54ea8:
 	text "Oh, you collect"
-	line "#MON? My son"
-	cont "BILL is an expert."
+	line "#mon? My son"
+	cont "Bill is an expert."
 
 	para "He just got called"
-	line "to the #MON"
+	line "to the #mon"
 
-	para "CENTER in ECRUTEAK"
-	line "CITY."
+	para "Center in Ecruteak"
+	line "City."
 
 	para "My husband went"
-	line "off to the GAME"
+	line "off to the Game"
 
-	para "CORNER without"
+	para "Corner without"
 	line "being called…"
 	done
 
@@ -199,8 +199,8 @@ UnknownText_0x54f4e:
 	text "My husband was"
 	line "once known as a"
 
-	para "#MANIAC."
-	line "BILL must have"
+	para "#Maniac."
+	line "Bill must have"
 
 	para "taken after his"
 	line "father."
@@ -216,16 +216,16 @@ UnknownText_0x54f9e:
 
 UnknownText_0x54fd9:
 	text "<PLAYER> recorded"
-	line "BILL's number."
+	line "Bill's number."
 	done
 
 UnknownText_0x54ff3:
 	text "My brother made"
-	line "the PC #MON"
+	line "the PC #mon"
 	cont "storage system."
 
 	para "I was going to"
-	line "give you BILL's"
+	line "give you Bill's"
 	cont "number…"
 	done
 
@@ -236,9 +236,9 @@ UnknownText_0x55046:
 
 UnknownText_0x55069:
 	text "My big brother"
-	line "BILL made the PC"
+	line "Bill made the PC"
 
-	para "#MON storage"
+	para "#mon storage"
 	line "system."
 	done
 

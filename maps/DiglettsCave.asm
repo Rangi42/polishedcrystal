@@ -16,7 +16,7 @@ DiglettsCaveHiddenMaxRevive:
 
 
 UnknownText_0x74008:
-	text "A bunch of DIGLETT"
+	text "A bunch of Diglett"
 	line "popped out of the"
 
 	para "ground! That was"

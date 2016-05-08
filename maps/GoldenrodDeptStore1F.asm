@@ -30,19 +30,19 @@ GoldenrodDeptStore1FElevatorButton:
 	jumpstd elevatorbutton
 
 UnknownText_0x55993:
-	text "Welcome to GOLDEN-"
-	line "ROD DEPT.STORE."
+	text "Welcome to Golden-"
+	line "rod Dept.Store."
 	done
 
 UnknownText_0x559b7:
-	text "The DEPT.STORE"
+	text "The Dept.Store"
 	line "has a decent se-"
 	cont "lection."
 
 	para "But some items"
 	line "are only available"
 
-	para "as GAME CORNER"
+	para "as Game Corner"
 	line "prizes."
 	done
 
@@ -61,21 +61,21 @@ UnknownText_0x55a3a:
 	done
 
 GoldenrodDeptStore1FDirectoryText:
-	text "1F SERVICE COUNTER"
+	text "1F Service Counter"
 
-	para "2F TRAINER'S"
-	line "   MARKET"
+	para "2F Trainer's"
+	line "   Market"
 
-	para "3F BATTLE"
-	line "   COLLECTION"
+	para "3F Battle"
+	line "   Collection"
 
-	para "4F MEDICINE BOX"
+	para "4F Medicine Box"
 
-	para "5F TM CORNER"
+	para "5F TM Corner"
 
-	para "6F TRANQUIL SQUARE"
+	para "6F Tranquil Square"
 
-	para "ROOFTOP LOOKOUT"
+	para "Rooftop Lookout"
 	done
 
 GoldenrodDeptStore1F_MapEventHeader:

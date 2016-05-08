@@ -65,15 +65,15 @@ MovementData_0x196486:
 UnknownText_0x196494:
 	text "Hey! You have a"
 	line "brand new kind of"
-	cont "#DEX."
+	cont "#dex."
 
-	para "Did PROF.OAK give"
+	para "Did Prof.Oak give"
 	line "that to you?"
 	done
 
 UnknownText_0x1964dc:
 	text "I got quite a"
-	line "shock at the GYM."
+	line "shock at the Gym."
 
 	para "There were all"
 	line "these girls who"
@@ -81,7 +81,7 @@ UnknownText_0x1964dc:
 	done
 
 UnknownText_0x19652e:
-	text "I'm JANINE! Hocus-"
+	text "I'm Janine! Hocus-"
 	line "pocus… Poof!"
 	done
 

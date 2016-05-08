@@ -44,7 +44,7 @@ UnknownText_0x18ad34:
 	para "Her mimicry has"
 	line "earned her the"
 
-	para "nickname COPYCAT"
+	para "nickname Copycat"
 	line "around here."
 	done
 
@@ -58,7 +58,7 @@ UnknownText_0x18ad95:
 
 UnknownText_0x18add3:
 	text "She recently lost"
-	line "the # DOLL that"
+	line "the # Doll that"
 
 	para "a boy gave her"
 	line "three years ago."
@@ -69,7 +69,7 @@ UnknownText_0x18add3:
 	done
 
 UnknownText_0x18ae4b:
-	text "BLISSEY: Bliisii!"
+	text "Blissey: Bliisii!"
 	done
 
 CopycatsHouse1F_MapEventHeader:

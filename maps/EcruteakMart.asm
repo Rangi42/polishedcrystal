@@ -23,23 +23,23 @@ GrannyScript_0x99c45:
 	jumptextfaceplayer UnknownText_0x99cd5
 
 UnknownText_0x99c48:
-	text "My EEVEE evolved"
-	line "into an ESPEON."
+	text "My Eevee evolved"
+	line "into an Espeon."
 
 	para "But my friend's"
-	line "EEVEE turned into"
-	cont "an UMBREON."
+	line "Eevee turned into"
+	cont "an Umbreon."
 
 	para "I wonder why? We"
 	line "both were raising"
 
-	para "our EEVEE in the"
+	para "our Eevee in the"
 	line "same way…"
 	done
 
 UnknownText_0x99cd5:
-	text "If you use REVIVE,"
-	line "a #MON that's"
+	text "If you use Revive,"
+	line "a #mon that's"
 
 	para "fainted will wake"
 	line "right up."

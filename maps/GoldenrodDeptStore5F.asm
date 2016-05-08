@@ -145,7 +145,7 @@ GoldenrodDeptStore5FElevatorButton:
 
 UnknownText_0x56143:
 	text "Hello. Oh, your"
-	line "#MON…"
+	line "#mon…"
 	done
 
 UnknownText_0x5615a:
@@ -175,11 +175,11 @@ UnknownText_0x56202:
 	line "be TMs that are"
 
 	para "just perfect for"
-	line "your #MON."
+	line "your #mon."
 	done
 
 UnknownText_0x56241:
-	text "MYSTERY GIFT."
+	text "Mystery Gift."
 
 	para "With just a"
 	line "little beep, you"
@@ -187,7 +187,7 @@ UnknownText_0x56241:
 	done
 
 UnknownText_0x56279:
-	text "The MYSTERY GIFT"
+	text "The Mystery Gift"
 	line "option requires a"
 	cont "Game Boy Color."
 	done
@@ -195,7 +195,7 @@ UnknownText_0x56279:
 UnknownText_0x562ad:
 	text "On Sundays, a lady"
 	line "comes to check out"
-	cont "#MON."
+	cont "#mon."
 
 	para "She even gives"
 	line "away TMs!"
@@ -203,7 +203,7 @@ UnknownText_0x562ad:
 
 UnknownText_0x562f3:
 	text "You can't rename a"
-	line "#MON you get in"
+	line "#mon you get in"
 	cont "a trade."
 
 	para "The name is a re-"
@@ -215,9 +215,9 @@ UnknownText_0x562f3:
 
 GoldenrodDeptStore5FDirectoryText:
 	text "Customize Your"
-	line "#MON"
+	line "#mon"
 
-	para "5F TM CORNER"
+	para "5F TM Corner"
 	done
 
 GoldenrodDeptStore5F_MapEventHeader:

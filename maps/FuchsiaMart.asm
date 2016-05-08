@@ -24,15 +24,15 @@ CooltrainerFScript_0x195cf2:
 
 UnknownText_0x195cf5:
 	text "I was hoping to"
-	line "buy some SAFARI"
+	line "buy some Safari"
 
-	para "ZONE souvenirs,"
+	para "Zone souvenirs,"
 	line "but it's closed…"
 	done
 
 UnknownText_0x195d36:
-	text "The SAFARI ZONE"
-	line "WARDEN's grand-"
+	text "The Safari Zone"
+	line "Warden's grand-"
 	cont "daughter lives in"
 	cont "town."
 	done

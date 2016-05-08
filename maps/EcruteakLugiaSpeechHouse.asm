@@ -26,11 +26,11 @@ UnknownText_0x9933d:
 	line "turned black. A"
 
 	para "giant flying #-"
-	line "MON was blocking"
+	line "mon was blocking"
 	cont "out the sun."
 
 	para "I wonder what that"
-	line "#MON was? "
+	line "#mon was? "
 
 	para "It was like a bird"
 	line "and a dragon."
@@ -38,7 +38,7 @@ UnknownText_0x9933d:
 
 UnknownText_0x993ec:
 	text "Is there really a"
-	line "#MON that big?"
+	line "#mon that big?"
 
 	para "If it exists, it"
 	line "must be powerful."

@@ -55,42 +55,42 @@ FruitTreeScript_0x194b43:
 	fruittree FRUITTREE_FUCHSIA_CITY
 
 UnknownText_0x194b45:
-	text "One of the ELITE"
-	line "FOUR used to be"
+	text "One of the Elite"
+	line "Four used to be"
 
-	para "the LEADER of"
-	line "FUCHSIA's GYM."
+	para "the Leader of"
+	line "Fuchsia's Gym."
 	done
 
 UnknownText_0x194b83:
-	text "KOGA's daughter"
+	text "Koga's daughter"
 	line "succeeded him as"
 
-	para "the GYM LEADER"
+	para "the Gym Leader"
 	line "after he joined"
-	cont "the ELITE FOUR."
+	cont "the Elite Four."
 	done
 
 UnknownText_0x194bd3:
-	text "The SAFARI ZONE is"
+	text "The Safari Zone is"
 	line "closed… It's sad,"
 
 	para "considering it's"
-	line "FUCHSIA's main"
+	line "Fuchsia's main"
 	cont "attraction."
 	done
 
 FuchsiaCitySignText:
-	text "FUCHSIA CITY"
+	text "Fuchsia City"
 
 	para "Behold! It's"
 	line "Passion Pink!"
 	done
 
 FuchsiaGymSignText:
-	text "FUCHSIA CITY"
-	line "#MON GYM"
-	cont "LEADER: JANINE"
+	text "Fuchsia City"
+	line "#mon Gym"
+	cont "Leader: Janine"
 
 	para "The Poisonous"
 	line "Ninja Master"
@@ -100,22 +100,22 @@ SafariZoneOfficeSignText:
 	text "There's a notice"
 	line "here…"
 
-	para "SAFARI ZONE OFFICE"
+	para "Safari Zone Office"
 	line "is closed until"
 	cont "further notice."
 	done
 
 WardensHomeSignText:
-	text "SAFARI ZONE"
-	line "WARDEN'S HOME"
+	text "Safari Zone"
+	line "Warden's Home"
 	done
 
 SafariZoneClosedSignText:
-	text "The WARDEN is"
+	text "The Warden is"
 	line "traveling abroad."
 
 	para "Therefore, the"
-	line "SAFARI ZONE is"
+	line "Safari Zone is"
 	cont "closed."
 	done
 

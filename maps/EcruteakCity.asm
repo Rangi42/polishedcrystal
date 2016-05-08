@@ -101,7 +101,7 @@ UnusedMissingDaughterText:
 
 	para "No… She couldn't"
 	line "have gone to the"
-	cont "BURNED TOWER."
+	cont "Burned Tower."
 
 	para "I told her not to"
 	line "go near it…"
@@ -114,7 +114,7 @@ UnusedMissingDaughterText:
 	done
 
 UnknownText_0x1a4105:
-	text "ECRUTEAK used to"
+	text "Ecruteak used to"
 	line "have two towers:"
 
 	para "one each in the"
@@ -126,10 +126,10 @@ UnknownText_0x1a4147:
 	line "Have you learned"
 
 	para "to dance like the"
-	line "KIMONO GIRLS?"
+	line "Kimono Girls?"
 
 	para "If you go to their"
-	line "DANCE THEATER, an"
+	line "Dance Theater, an"
 
 	para "odd old man will"
 	line "give you something"
@@ -138,9 +138,9 @@ UnknownText_0x1a4147:
 
 UnknownText_0x1a41db:
 	text "I'm going to prac-"
-	line "tice at the DANCE"
+	line "tice at the Dance"
 
-	para "THEATER. Care to"
+	para "Theater. Care to"
 	line "join me?"
 	done
 
@@ -154,7 +154,7 @@ UnknownText_0x1a421a:
 	done
 
 UnknownText_0x1a4269:
-	text "Three big #MON"
+	text "Three big #mon"
 	line "ran off in differ-"
 	cont "ent directions."
 	cont "What were they?"
@@ -162,10 +162,10 @@ UnknownText_0x1a4269:
 
 UnknownText_0x1a42ac:
 	text "I heard a rumor"
-	line "about OLIVINE"
-	cont "LIGHTHOUSE."
+	line "about Glitter"
+	cont "Lighthouse."
 
-	para "The #MON that"
+	para "The #mon that"
 	line "serves as the"
 
 	para "beacon fell ill."
@@ -174,8 +174,8 @@ UnknownText_0x1a42ac:
 	done
 
 UnknownText_0x1a4325:
-	text "The #MON at"
-	line "OLIVINE LIGHTHOUSE"
+	text "The #mon at"
+	line "Glitter Lighthouse"
 	cont "has been cured."
 
 	para "Boats can safely"
@@ -184,10 +184,10 @@ UnknownText_0x1a4325:
 	done
 
 UnknownText_0x1a4386:
-	text "I hear #MON are"
+	text "I hear #mon are"
 	line "rampaging at the"
 
-	para "LAKE OF RAGE. I'd"
+	para "Lake of Rage. I'd"
 	line "like to see that."
 	done
 
@@ -198,11 +198,11 @@ UnknownText_0x1a43cb:
 	para "This tower burned"
 	line "in a fire. Three"
 
-	para "nameless #MON"
+	para "nameless #mon"
 	line "perished in it."
 
 	para "A rainbow-colored"
-	line "#MON descended"
+	line "#mon descended"
 
 	para "from the sky and"
 	line "resurrected them…"
@@ -210,8 +210,8 @@ UnknownText_0x1a43cb:
 	para "It's a legend that"
 	line "has been passed"
 
-	para "down by ECRUTEAK"
-	line "GYM LEADERS."
+	para "down by Ecruteak"
+	line "Gym Leaders."
 
 	para "Me?"
 
@@ -221,7 +221,7 @@ UnknownText_0x1a43cb:
 	done
 
 EcruteakCitySignText:
-	text "ECRUTEAK CITY"
+	text "Ecruteak City"
 	line "A Historical City"
 
 	para "Where the Past"
@@ -229,29 +229,29 @@ EcruteakCitySignText:
 	done
 
 TinTowerSignText:
-	text "TIN TOWER"
+	text "Bell Tower"
 
 	para "A legendary #-"
-	line "MON is said to"
+	line "mon is said to"
 	cont "roost here."
 	done
 
 EcruteakGymSignText:
-	text "ECRUTEAK CITY"
-	line "#MON GYM"
-	cont "LEADER: MORTY"
+	text "Ecruteak City"
+	line "#mon Gym"
+	cont "Leader: Morty"
 
 	para "The Mystic Seer of"
 	line "the Future"
 	done
 
 EcruteakDanceTheaterSignText:
-	text "ECRUTEAK DANCE"
-	line "THEATER"
+	text "Ecruteak Dance"
+	line "Theater"
 	done
 
 BurnedTowerSignText:
-	text "BURNED TOWER"
+	text "Burned Tower"
 
 	para "It was destroyed"
 	line "by a mysterious"

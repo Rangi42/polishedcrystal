@@ -134,7 +134,7 @@ MovementData_0x7563c:
 	step_end
 
 CooltrainermSeanSeenText:
-	text "I'm going to KANTO"
+	text "I'm going to Kanto"
 	line "to test my skills."
 	done
 
@@ -144,15 +144,15 @@ CooltrainermSeanBeatenText:
 
 UnknownText_0x7567b:
 	text "Trainers from"
-	line "JOHTO can battle"
+	line "Johto can battle"
 
-	para "with KANTO GYM"
-	line "LEADERS."
+	para "with Kanto Gym"
+	line "Leaders."
 	done
 
 CooltrainerfCarolSeenText:
 	text "I'm training to"
-	line "become the CHAMP!"
+	line "become the Champ!"
 	done
 
 CooltrainerfCarolBeatenText:
@@ -166,9 +166,9 @@ UnknownText_0x756f7:
 	done
 
 PokemaniacEthanSeenText:
-	text "Do you know LILY?"
+	text "Do you know Lily?"
 	line "She's a hot DJ in"
-	cont "KANTO."
+	cont "Kanto."
 	done
 
 PokemaniacEthanBeatenText:
@@ -176,11 +176,11 @@ PokemaniacEthanBeatenText:
 	done
 
 UnknownText_0x7574b:
-	text "LILY's nice, but"
-	line "MARY's the best!"
+	text "Lily's nice, but"
+	line "Mary's the best!"
 
 	para "I want to check"
-	line "out JOHTO's radio"
+	line "out Johto's radio"
 	cont "programs!"
 	done
 
@@ -199,7 +199,7 @@ UnknownText_0x757d4:
 	line "are any mountains"
 
 	para "worth climbing in"
-	line "KANTO?"
+	line "Kanto?"
 	done
 
 UnknownText_0x75812:

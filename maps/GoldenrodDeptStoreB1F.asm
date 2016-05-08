@@ -110,7 +110,7 @@ UnknownText_0x7d875:
 	done
 
 UnknownText_0x7d8bb:
-	text "MACHOKE: Maaacho!"
+	text "Machoke: Maaacho!"
 	done
 
 GoldenrodDeptStoreB1F_MapEventHeader:

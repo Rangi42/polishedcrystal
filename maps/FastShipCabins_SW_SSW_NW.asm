@@ -114,7 +114,7 @@ FastShipCabinsNorthwestCabinTrashcan:
 	jumpstd trashcan
 
 FirebreatherLyleSeenText:
-	text "I'm going to KANTO"
+	text "I'm going to Kanto"
 	line "to put on fire-"
 	cont "breathing shows!"
 	done
@@ -145,8 +145,8 @@ Bug_catcherKenBeatenText:
 
 UnknownText_0x75bd5:
 	text "You can find lots"
-	line "of #MON in the"
-	cont "trees of JOHTO!"
+	line "of #mon in the"
+	cont "trees of Johto!"
 	done
 
 BeautyCassieSeenText:
@@ -164,7 +164,7 @@ UnknownText_0x75c43:
 	line "for getting over"
 	cont "a broken heart."
 
-	para "But a FAST SHIP"
+	para "But a Fast Ship"
 	line "trip is too short"
 	cont "for grieving."
 	done
@@ -173,8 +173,8 @@ GuitaristClydeSeenText:
 	text "I'm going to audi-"
 	line "tion my songs at"
 
-	para "GOLDENROD's RADIO"
-	line "STATION."
+	para "Goldenrod's Radio"
+	line "Station."
 	done
 
 GuitaristClydeBeatenText:
@@ -185,16 +185,16 @@ GuitaristClydeBeatenText:
 UnknownText_0x75cfe:
 	text "I was going to"
 	line "make my debut at"
-	cont "the BATTLE TOWER…"
+	cont "the Battle Tower…"
 
 	para "I should go back"
-	line "to VERMILION and"
+	line "to Vermilion and"
 	cont "redo my training…"
 	done
 
 UnknownText_0x75d65:
 	text "Speaking of the"
-	line "RADIO STATION,"
+	line "Radio Station,"
 
 	para "what's this week's"
 	line "lucky number?"
@@ -211,15 +211,15 @@ FastShipBedText2:
 	done
 
 FastShipArrivedOlivineText:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
-	cont "OLIVINE CITY."
+	cont "Olivine City."
 	done
 
 FastShipArrivedVermilionText:
-	text "FAST SHIP S.S.AQUA"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
-	cont "VERMILION CITY."
+	cont "Vermilion City."
 	done
 
 FastShipCabins_SW_SSW_NW_MapEventHeader:

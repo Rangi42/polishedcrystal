@@ -50,6 +50,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Enemy → Foe
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
+   * Tin Tower → Bell Tower
+   * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
    * Refer to badges as "the"
 * Graphics updates:
@@ -66,7 +68,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 * Find and fix more bugs
    * Thick Club + Swords Dance Marowak Attack overflow
-* Catch all 251 Pokémon, including Celebi via the Japan-only GS Ball event
+* Catch all 251 Pokémon (add Vulpix, Mankey, Mareep, Girafarig, Remoraid, Bulbasaur, Charmander, Squirtle, Omanyte, Kabuto, Aerodactyl, Articuno, Zapdos, Moltres, Mewtwo, Mew, and Celebi) (use Japan's GS Ball event for Celebi)
 * Add Glaceon, Leafeon, and Sylveon in the three unused Pokémon slots
 * Replace Cleffa and Igglybuff with Togekiss and Weavile
 * Mechanics:
@@ -136,7 +138,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Move Relearner
 * Abilities
 * Natures
-* Wonder Trade system like Red++
+* Wonder Trade system like Red++ (replace the Pokécom Center's Mobile Trade System)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Flashlight item
 * Make Rock Smash an HM
 * Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown

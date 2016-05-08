@@ -157,27 +157,27 @@ MovementData_0x980cc:
 	step_end
 
 UnknownText_0x980d1:
-	text "TIN TOWER is off"
+	text "Bell Tower is off"
 	line "limits to anyone"
 
-	para "without ECRUTEAK"
-	line "GYM's BADGE."
+	para "without Ecruteak"
+	line "Gym's Badge."
 
 	para "Sorry, but you'll"
 	line "have to leave."
 	done
 
 UnknownText_0x98131:
-	text "TIN TOWER is off"
+	text "Bell Tower is off"
 	line "limits to anyone"
 
-	para "without ECRUTEAK"
-	line "GYM's BADGE."
+	para "without Ecruteak"
+	line "Gym's Badge."
 
 	para "Ah!"
 
-	para "ECRUTEAK's GYM"
-	line "BADGE! Please, go"
+	para "Ecruteak's Gym"
+	line "Badge! Please, go"
 	cont "right through."
 	done
 
@@ -192,7 +192,7 @@ UnknownText_0x981a4:
 	para "…What soothes the"
 	line "soul…"
 
-	para "The WISE TRIO say"
+	para "The Wise Trio say"
 	line "things that are so"
 
 	para "very difficult to"
@@ -212,7 +212,7 @@ UnknownText_0x98250:
 	para "Ah!"
 
 	para "The sound of that"
-	line "CLEAR BELL!"
+	line "Clear Bell!"
 
 	para "It… It's sublime!"
 
@@ -228,7 +228,7 @@ UnknownText_0x98250:
 
 	para "You may be able to"
 	line "make it through"
-	cont "TIN TOWER."
+	cont "Bell Tower."
 
 	para "Please, do go on."
 	done
@@ -246,13 +246,13 @@ UnknownText_0x98391:
 
 	para "You may be able to"
 	line "make it through"
-	cont "TIN TOWER."
+	cont "Bell Tower."
 
 	para "Please, do go on."
 	done
 
 UnknownText_0x9840b:
-	text "The TIN TOWER"
+	text "The Bell Tower"
 	line "ahead is a nine-"
 
 	para "tier tower of"
@@ -264,8 +264,8 @@ UnknownText_0x9840b:
 	done
 
 UnknownText_0x9846f:
-	text "The TIN TOWER"
-	line "shook! A #MON"
+	text "The Bell Tower"
+	line "shook! A #mon"
 
 	para "must have returned"
 	line "to the top!"
@@ -273,12 +273,12 @@ UnknownText_0x9846f:
 
 UnknownText_0x984ab:
 	text "Two towers…"
-	line "Two #MON…"
+	line "Two #mon…"
 
 	para "But when one"
 	line "burned down, both"
 
-	para "#MON flew away,"
+	para "#mon flew away,"
 	line "never to return."
 	done
 
