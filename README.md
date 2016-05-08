@@ -32,6 +32,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Medium-Slow growth rate experience underflow at level 1
    * HP bar lowering glitch
 * Modern game mechanics:
+   * Physical/Special split
    * Hold B to run
    * Steel does not resist Ghost or Dark
    * Type-enhancing items raise by 20%, not 10%
@@ -73,7 +74,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Replace Cleffa and Igglybuff with Togekiss and Weavile
 * Mechanics:
    * Update base stats, learnt moves, and move and item mechanics to Gen VI
-   * Physical/Special split from Gen IV
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Catch rate formula from Gen III
    * Money loss formula from Gen III when whiting out
@@ -93,6 +93,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
 * Convenience:
    * Better default settings (fast text, stereo sound, set battle style, etc)
+   * Show Phys/Spcl/Stat category for moves
    * Settings for 12/24-hour clock, and imperial/metric units
    * Even faster text
    * Continuous Repel system from Gen V

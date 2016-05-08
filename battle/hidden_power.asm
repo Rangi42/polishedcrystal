@@ -83,11 +83,6 @@ endr
 ; Skip Normal
 	inc a
 
-; Skip unused types
-	cp UNUSED_TYPES
-	jr c, .done
-	add SPECIAL - UNUSED_TYPES
-
 .done
 
 ; Overwrite the current move type.

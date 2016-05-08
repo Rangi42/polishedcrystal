@@ -107,7 +107,6 @@ TypeNames: ; 5097b
 	dw Bug
 	dw Ghost
 	dw Steel
-	dw CurseType
 	dw Fire
 	dw Water
 	dw Grass
@@ -117,6 +116,7 @@ TypeNames: ; 5097b
 	dw Dragon
 	dw Dark
 	dw Fairy
+	dw CurseType
 
 Normal:    db "Normal@"
 Fighting:  db "Fighting@"
@@ -127,7 +127,6 @@ Rock:      db "Rock@"
 Bug:       db "Bug@"
 Ghost:     db "Ghost@"
 Steel:     db "Steel@"
-CurseType: db "???@"
 Fire:      db "Fire@"
 Water:     db "Water@"
 Grass:     db "Grass@"
@@ -137,5 +136,6 @@ Ice:       db "Ice@"
 Dragon:    db "Dragon@"
 Dark:      db "Dark@"
 Fairy:     db "Fairy@"
+CurseType: db "???@"
 
 ; 50a28

@@ -27,6 +27,7 @@ NUM_LEVEL_STATS EQU const_value
 	const MOVE_ACC
 	const MOVE_PP
 	const MOVE_CHANCE
+	const MOVE_CATEGORY
 	const MOVE_LENGTH
 
 ; stat constants

@@ -2805,11 +2805,12 @@ PlayerAttackDamage: ; 352e2
 	call ResetDamage
 
 	ld hl, wPlayerMoveStructPower
-	ld a, [hli]
+	ld a, [hl]
 	and a
 	ld d, a
 	ret z
 
+	ld hl, wPlayerMoveStructCategory
 	ld a, [hl]
 	cp SPECIAL
 	jr nc, .special
@@ -2953,7 +2954,7 @@ GetDamageStats: ; 3537e
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy
-	ld a, [wPlayerMoveStructType]
+	ld a, [wPlayerMoveStructCategory]
 	cp SPECIAL
 ; special
 	ld a, [PlayerSAtkLevel]
@@ -2967,7 +2968,7 @@ GetDamageStats: ; 3537e
 	jr .end
 
 .enemy
-	ld a, [wEnemyMoveStructType]
+	ld a, [wEnemyMoveStructCategory]
 	cp SPECIAL
 ; special
 	ld a, [EnemySAtkLevel]
@@ -3071,11 +3072,12 @@ EnemyAttackDamage: ; 353f6
 
 ; No damage dealt with 0 power.
 	ld hl, wEnemyMoveStructPower
-	ld a, [hli] ; hl = wEnemyMoveStructType
+	ld a, [hl]
 	ld d, a
 	and a
 	ret z
 
+	ld hl, wEnemyMoveStructCategory
 	ld a, [hl]
 	cp SPECIAL
 	jr nc, .Special
@@ -3875,11 +3877,11 @@ BattleCommand_Counter: ; 35813
 	ld de, StringBuffer1
 	call GetMoveData
 
-	ld a, [StringBuffer1 + 2]
+	ld a, [StringBuffer1 + MOVE_POWER]
 	and a
 	ret z
 
-	ld a, [StringBuffer1 + 3]
+	ld a, [StringBuffer1 + MOVE_CATEGORY]
 	cp SPECIAL
 	ret nc
 
@@ -4175,10 +4177,6 @@ BattleCommand_Conversion2: ; 359e6
 .loop
 	call BattleRandom
 	and $1f
-	cp UNUSED_TYPES
-	jr c, .okay
-	cp UNUSED_TYPES_END
-	jr c, .loop
 	cp TYPES_END
 	jr nc, .loop
 .okay
@@ -9554,11 +9552,11 @@ BattleCommand_MirrorCoat: ; 37c95
 	ld de, StringBuffer1
 	call GetMoveData
 
-	ld a, [StringBuffer1 + 2]
+	ld a, [StringBuffer1 + MOVE_POWER]
 	and a
 	ret z
 
-	ld a, [StringBuffer1 + 3]
+	ld a, [StringBuffer1 + MOVE_CATEGORY]
 	cp SPECIAL
 	ret c
 

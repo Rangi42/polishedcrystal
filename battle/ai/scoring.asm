@@ -1186,16 +1186,9 @@ AI_Smart_SpDefenseUp2: ; 38aed
 	jr nc, .asm_38b10
 
 ; 80% chance to greatly encourage this move if
-; enemy's Special Defense level is lower than +2, and the player is of a special type.
+; enemy's Special Defense level is lower than +2.
 	cp $9
 	ret nc
-
-	ld a, [BattleMonType1]
-	cp SPECIAL
-	jr nc, .asm_38b09
-	ld a, [BattleMonType2]
-	cp SPECIAL
-	ret c
 
 .asm_38b09
 	call AI_80_20
@@ -1438,7 +1431,7 @@ AI_Smart_Counter: ; 38bf1
 	and a
 	jr z, .asm_38c0e
 
-	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
 	jr nc, .asm_38c0e
 
@@ -1466,7 +1459,7 @@ AI_Smart_Counter: ; 38bf1
 	and a
 	jr z, .asm_38c38
 
-	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
 	jr nc, .asm_38c38
 
@@ -2000,11 +1993,6 @@ AI_Smart_Curse: ; 38e5c
 	ld a, [BattleMonType1]
 	cp GHOST
 	jr z, .asm_38e92
-	cp SPECIAL
-	ret nc
-	ld a, [BattleMonType2]
-	cp SPECIAL
-	ret nc
 	call AI_80_20
 	ret c
 rept 2
@@ -2757,7 +2745,7 @@ AI_Smart_MirrorCoat: ; 3918b
 	and a
 	jr z, .asm_391a8
 
-	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
 	jr c, .asm_391a8
 
@@ -2785,7 +2773,7 @@ AI_Smart_MirrorCoat: ; 3918b
 	and a
 	jr z, .asm_391d2
 
-	ld a, [wEnemyMoveStruct + MOVE_TYPE]
+	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
 	jr c, .asm_391d2
 

@@ -231,6 +231,7 @@ move_struct: MACRO
 \1Accuracy:: ds 1
 \1PP:: ds 1
 \1EffectChance:: ds 1
+\1Category:: ds 1
 endm
 
 slot_reel: MACRO
