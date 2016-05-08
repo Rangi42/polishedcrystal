@@ -1696,7 +1696,7 @@ wd04e:: ds 24
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1:: ; d073
-	ds 19
+	ds 24
 
 StringBuffer2:: ; d086
 	ds 19

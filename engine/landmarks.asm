@@ -34,7 +34,7 @@ endr
 	ld l, a
 
 	ld de, StringBuffer1
-	ld c, 18
+	ld c, 23
 .copy
 	ld a, [hli]
 	ld [de], a
@@ -79,6 +79,7 @@ ENDM
 	landmark  72,  76, Route36Name
 	landmark  76,  68, Route37Name
 	landmark  76,  60, EcruteakCityName
+	landmark  77,  58, BellchimeTrailName
 	landmark  78,  58, TinTowerName
 	landmark  74,  58, BurnedTowerName
 	landmark  60,  60, Route38Name
@@ -173,8 +174,9 @@ SlowpokeWellName:    db "Slowpoke¯Well@"
 RadioTowerName:      db "Radio Tower@"
 PowerPlantName:      db "Power Plant@"
 NationalParkName:    db "National¯Park@"
-TinTowerName:        db "Tin Tower@"
-LighthouseName:      db "Lighthouse@"
+BellchimeTrailName:  db "Bellchime¯Trail@"
+TinTowerName:        db "Bell Tower@"
+LighthouseName:      db "Glitter¯Lighthouse@"
 WhirlIslandsName:    db "Whirl¯Islands@"
 MtMortarName:        db "Mt.Mortar@"
 DragonsDenName:      db "Dragon's Den@"
@@ -199,7 +201,7 @@ SilphCoName:         db "Silph Co.@"
 SafariZoneName:      db "Safari Zone@"
 SeafoamIslandsName:  db "Seafoam¯Islands@"
 PokemonMansionName:  db "#mon¯Mansion@"
-CeruleanCaveNane:    db "Cerulean¯Cave@"
+CeruleanCaveName:    db "Cerulean¯Cave@"
 Route1Name:          db "Route 1@"
 Route2Name:          db "Route 2@"
 Route3Name:          db "Route 3@"
