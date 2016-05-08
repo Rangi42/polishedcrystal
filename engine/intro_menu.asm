@@ -697,7 +697,7 @@ OakSpeech: ; 0x5f99
 	call RotateThreePalettesRight
 	call ClearTileMap
 
-	ld a, WOOPER
+	ld a, MARILL
 	ld [CurSpecies], a
 	ld [CurPartySpecies], a
 	call GetBaseData
