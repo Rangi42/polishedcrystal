@@ -93,7 +93,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
 * Convenience:
    * Better default settings (fast text, stereo sound, set battle style, etc)
-   * Show Phys/Spcl/Stat category for moves
    * Settings for 12/24-hour clock, and imperial/metric units
    * Even faster text
    * Continuous Repel system from Gen V

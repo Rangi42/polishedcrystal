@@ -1851,19 +1851,41 @@ PrepareToPlaceMoveData: ; 13235
 PlaceMoveData: ; 13256
 	xor a
 	ld [hBGMapMode], a
+
 	hlcoord 0, 10
 	ld de, String_132ba
 	call PlaceString
 	hlcoord 0, 11
 	ld de, String_132c2
 	call PlaceString
-	hlcoord 12, 12
-	ld de, String_132ca
-	call PlaceString
+
 	ld a, [CurMove]
 	ld b, a
 	hlcoord 2, 12
 	predef PrintMoveType
+
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_CATEGORY
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	hlcoord 11, 12
+	cp PHYSICAL
+	jr z, .physical
+	cp SPECIAL
+	jr z, .special
+	ld de, String_Stat
+	jp .place_category
+.physical
+	ld de, String_Phys
+	jp .place_category
+.special
+	ld de, String_Spcl
+.place_category
+	call PlaceString
+
 	ld a, [CurMove]
 	dec a
 	ld hl, Moves + MOVE_POWER
@@ -1879,7 +1901,6 @@ PlaceMoveData: ; 13256
 	lb bc, 1, 3
 	call PrintNum
 	jr .description
-
 .no_power
 	ld de, String_132cf
 	call PlaceString
@@ -1898,12 +1919,16 @@ String_132ba: ; 132ba
 String_132c2: ; 132c2
 	db "│Type/└@"
 ; 132ca
-String_132ca: ; 132ca
-	db "Atk/@"
-; 132cf
 String_132cf: ; 132cf
 	db "---@"
 ; 132d3
+
+String_Phys:
+	db "Phys/@"
+String_Spcl:
+	db "Spcl/@"
+String_Stat:
+	db "Stat/@"
 
 Function132d3: ; 132d3
 	call Function132da
