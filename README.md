@@ -114,7 +114,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Better Substitute sprite
    * Show Pokémon portrait when using field moves
    * Low-pitched cries when fainting
-   * Tin Tower → Bell Tower
+   * Separate Bellchime Trail from Ecruteak City
    * Replace some Kanto music with RBY tracks
 * Content:
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands)
