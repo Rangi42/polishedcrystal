@@ -256,24 +256,19 @@ UnknownText_0x7a763:
 	para "for Daylight"
 	line "Saving Time."
 
-	para "By the way, do you"
-	line "know how to use"
-	cont "the phone?"
+	para "By the way, do"
+	line "you know how to"
+	cont "use your new"
+	cont "Running Shoes?"
 	done
 
 UnknownText_0x7a807:
 	text "I'll read the"
 	line "instructions."
 
-	para "Turn the #gear"
-	line "on and select the"
-	cont "Phone icon."
-
-	para "Phone numbers are"
-	line "stored in memory."
-
-	para "Just choose a name"
-	line "you want to call."
+	para "Just hold down the"
+	line "B Button to run,"
+	cont "indoors or out."
 	done
 
 UnknownText_0x7a850:
