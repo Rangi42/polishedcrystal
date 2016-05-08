@@ -86,6 +86,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
+   * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
    * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
