@@ -54,6 +54,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Refer to badges as "the"
 * Graphics updates:
    * Individual party/day-care icons for each Pokémon
+   * Original Japanese sprites for some trainers
 * No badge boosts to stats or types
 * New default player names
 * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
@@ -119,7 +120,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
    * Replace some moves with more Fairy-type ones (merge Protect and Detect? Acid Armor and Barrier? Horn Drill and Guillotine? Defense Curl and Withdraw? Flash and Smokescreen? Lock-On and Mind Reader? Mean Look and Spider Web?)
    * Change in-game trades
-   * Decensor Jynx, Sage, and Channeler sprites
 
 
 ## Long-term
