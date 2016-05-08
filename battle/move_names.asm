@@ -249,3 +249,6 @@
 	db "Brick Break@"
 	db "Whirlpool@"
 	db "Beat Up@"
+	db "Moonblast@"
+	db "Play Rough@"
+	db "Disarm Voice@"

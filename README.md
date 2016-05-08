@@ -19,9 +19,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 * Add Fairy type from Gen VI (treated as Physical)
    * Physical type
-   * Updated type chart and Pokémon types
-   * No damaging Fairy-type moves (just Sweet Kiss, Charm, and Moonlight)
+   * Updated type chart, Pokémon types, and move types
    * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
+   * Added Moonblast, Play Rough, and Disarm Voice
 * Fix bugs:
    * Belly Drum needs to cut HP to raise Attack
    * Burn/Poison/Paralyze improve catch rate
@@ -106,6 +106,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
 * Aesthetics:
+   * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Unown ? and ! from Gen III
    * Color party/day-care sprites by species
    * Higher levels and better moves and held items from HGSS
@@ -119,8 +120,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
-   * Add three damaging Fairy-type moves in available space (choose from DazzlinGleam, Disarm Voice, DrainingKiss, Fairy Wind, Moonblast, Play Rough)
-   * Replace some moves with more Fairy-type ones (merge Protect and Detect? Acid Armor and Barrier? Horn Drill and Guillotine? Defense Curl and Withdraw? Flash and Smokescreen? Lock-On and Mind Reader? Mean Look and Spider Web?)
+   * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
    * Change in-game trades
 
 

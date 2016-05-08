@@ -556,6 +556,7 @@ PichuEggMoves:
 	db PRESENT
 	db ENCORE
 	db DOUBLESLAP
+	db DISARM_VOICE
 	db $ff
 
 CleffaEggMoves:
@@ -737,6 +738,7 @@ TeddiursaEggMoves:
 if _CRYSTAL
 	db METAL_CLAW
 endc
+	db PLAY_ROUGH
 	db $ff
 
 SlugmaEggMoves:
@@ -808,6 +810,7 @@ PhanpyEggMoves:
 if _CRYSTAL
 	db WATER_GUN
 endc
+	db PLAY_ROUGH
 	db $ff
 
 StantlerEggMoves:

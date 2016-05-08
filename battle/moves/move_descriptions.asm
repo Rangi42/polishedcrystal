@@ -250,16 +250,13 @@
 	dw RockSmashDescription
 	dw WhirlpoolDescription
 	dw BeatUpDescription
-	dw MoveFCDescription
-	dw MoveFDDescription
-	dw MoveFEDescription
+	dw MoonblastDescription
+	dw PlayRoughDescription
+	dw DisarmVoiceDescription
 	dw MoveFFDescription
 	dw Move00Description
 ; 2cd52
 
-MoveFCDescription:
-MoveFDDescription:
-MoveFEDescription:
 MoveFFDescription:
 Move00Description:
 UnknownMoveDescription:
@@ -1269,3 +1266,15 @@ BeatUpDescription:
 	db   "Party #mon join"
 	next "in the attack.@"
 ; 2ed44
+
+MoonblastDescription:
+	db   "A blast that may"
+	next "lower Spcl.Atk.@"
+
+PlayRoughDescription:
+	db   "A Fairy move that"
+	next "may lower Attack.@"
+
+DisarmVoiceDescription:
+	db   "A Fairy move that"
+	next "never misses.@"

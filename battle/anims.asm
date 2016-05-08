@@ -251,9 +251,9 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
-	dw BattleAnim_252
-	dw BattleAnim_253
-	dw BattleAnim_254
+	dw BattleAnim_Moonblast
+	dw BattleAnim_PlayRough
+	dw BattleAnim_DisarmVoice
 	dw BattleAnim_SweetScent2
 ; $100
 	dw BattleAnim_ThrowPokeBall
@@ -281,12 +281,58 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_252: ; c929b
-BattleAnim_253: ; c929b
-BattleAnim_254: ; c929b
 BattleAnim_MirrorMove: ; c929b
 	anim_ret
 ; c929c
+
+BattleAnim_Moonblast:
+	anim_1gfx ANIM_GFX_SHINE
+	anim_bgp $1b
+	anim_bgeffect ANIM_BG_07, $0, $0, $0
+	anim_obj ANIM_OBJ_9E,   0, 0,   5, 0, $0
+	anim_obj ANIM_OBJ_9E,   2, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_9E,   4, 0,   9, 0, $0
+	anim_obj ANIM_OBJ_9E,   6, 0,  11, 0, $0
+	anim_obj ANIM_OBJ_9E,   8, 0,  13, 0, $0
+	anim_wait 1
+	anim_sound 0, 0, SFX_MOONLIGHT
+	anim_wait 63
+	anim_call BattleAnim_FollowPlayerHead_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_sound 0, 0, SFX_TACKLE
+	anim_wait 17
+	anim_call BattleAnim_ShowMon_0
+	anim_wait 12
+	anim_ret
+;	anim_1gfx ANIM_GFX_BEAM
+;	anim_bgeffect ANIM_BG_1F, $30, $4, $10
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
+;	anim_bgeffect ANIM_BG_06, $0, $2, $0
+;	anim_call BattleAnim_HyperBeam_branch_cbb39
+;	anim_wait 48
+;	anim_ret
+
+BattleAnim_PlayRough:
+	; TODO: write an original animation
+	anim_1gfx ANIM_GFX_HIT
+	anim_sound 0, 1, SFX_POUND
+	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
+	anim_wait 16
+	anim_ret
+
+BattleAnim_DisarmVoice:
+	; TODO: write an original animation
+	anim_1gfx ANIM_GFX_PSYCHIC
+	anim_bgeffect ANIM_BG_1F, $8, $1, $20
+	anim_sound 6, 2, SFX_SCREECH
+.loop
+	anim_obj ANIM_OBJ_4C,   8, 0,  11, 0, $2
+	anim_wait 2
+	anim_loop 2, .loop
+	anim_wait 64
+	anim_ret
 
 BattleAnim_SweetScent2: ; c929c
 	anim_2gfx ANIM_GFX_FLOWER, ANIM_GFX_MISC

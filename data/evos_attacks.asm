@@ -462,14 +462,16 @@ ClefairyEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POUND
 	db 1, GROWL
+	db 1, DISARM_VOICE
 	db 4, ENCORE
 	db 8, SING
 	db 13, DOUBLESLAP
 	db 19, MINIMIZE
-	db 26, DEFENSE_CURL
-	db 34, METRONOME
-	db 43, MOONLIGHT
-	db 53, LIGHT_SCREEN
+	db 25, DEFENSE_CURL
+	db 31, METRONOME
+	db 37, MOONLIGHT
+	db 41, LIGHT_SCREEN
+	db 45, MOONBLAST
 	db 0 ; no more level-up moves
 
 ClefableEvosAttacks:
@@ -514,6 +516,8 @@ JigglypuffEvosAttacks:
 	db 29, REST
 	db 34, BODY_SLAM
 	db 39, DOUBLE_EDGE
+	db 44, DISARM_VOICE
+	db 49, PLAY_ROUGH
 	db 0 ; no more level-up moves
 
 WigglytuffEvosAttacks:
@@ -521,7 +525,7 @@ WigglytuffEvosAttacks:
 	db 1, SING
 	db 1, DISABLE
 	db 1, DEFENSE_CURL
-	db 1, DOUBLESLAP
+	db 1, PLAY_ROUGH
 	db 0 ; no more level-up moves
 
 ZubatEvosAttacks:
@@ -559,8 +563,9 @@ OddishEvosAttacks:
 	db 16, STUN_SPORE
 	db 18, SLEEP_POWDER
 	db 23, ACID
-	db 32, MOONLIGHT
-	db 39, PETAL_DANCE
+	db 30, MOONLIGHT
+	db 39, MOONBLAST
+	db 48, PETAL_DANCE
 	db 0 ; no more level-up moves
 
 GloomEvosAttacks:
@@ -701,6 +706,7 @@ PersianEvosAttacks:
 	db 38, SCREECH
 	db 46, FURY_SWIPES
 	db 53, SLASH
+	db 65, PLAY_ROUGH
 	db 0 ; no more level-up moves
 
 PsyduckEvosAttacks:
@@ -2494,6 +2500,7 @@ MarillEvosAttacks:
 	db 21, BUBBLEBEAM
 	db 28, DOUBLE_EDGE
 	db 36, RAIN_DANCE
+	db 45, PLAY_ROUGH
 	db 0 ; no more level-up moves
 
 AzumarillEvosAttacks:
@@ -2509,6 +2516,7 @@ AzumarillEvosAttacks:
 	db 25, BUBBLEBEAM
 	db 36, DOUBLE_EDGE
 	db 48, RAIN_DANCE
+	db 55, PLAY_ROUGH
 	db 0 ; no more level-up moves
 
 SudowoodoEvosAttacks:
@@ -2831,7 +2839,8 @@ SnubbullEvosAttacks:
 	db 19, LICK
 	db 26, ROAR
 	db 34, RAGE
-	db 43, TAKE_DOWN
+	db 43, PLAY_ROUGH
+	db 53, TAKE_DOWN
 	db 0 ; no more level-up moves
 
 GranbullEvosAttacks:
@@ -2844,7 +2853,8 @@ GranbullEvosAttacks:
 	db 19, LICK
 	db 28, ROAR
 	db 38, RAGE
-	db 51, TAKE_DOWN
+	db 47, PLAY_ROUGH
+	db 57, TAKE_DOWN
 	db 0 ; no more level-up moves
 
 QwilfishEvosAttacks:

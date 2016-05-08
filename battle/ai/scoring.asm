@@ -3164,6 +3164,8 @@ UsefulMoves: ; 39301
 	db FIRE_BLAST
 	db SOFTBOILED
 	db SUPER_FANG
+	db MOONBLAST
+	db PLAY_ROUGH
 	db $ff
 ; 39315
 
