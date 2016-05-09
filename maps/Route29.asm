@@ -174,7 +174,7 @@ CooltrainerMScript_0x1a1031:
 TuscanyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_PINK_BOW_FROM_TUSCANY
+	checkevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
 	iftrue TuscanyTuesdayScript
 	checkcode VAR_WEEKDAY
 	if_not_equal TUESDAY, TuscanyNotTuesdayScript
@@ -186,9 +186,9 @@ TuscanyScript:
 .MetTuscany:
 	writetext TuscanyGivesGiftText
 	buttonsound
-	verbosegiveitem PINK_BOW
+	verbosegiveitem SILK_SCARF
 	iffalse TuscanyDoneScript
-	setevent EVENT_GOT_PINK_BOW_FROM_TUSCANY
+	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
 	writetext TuscanyGaveGiftText
 	waitbutton
 	closetext
@@ -373,7 +373,7 @@ TuscanyGivesGiftText:
 	line "duction, please"
 
 	para "accept this gift,"
-	line "a Pink Bow."
+	line "a Silk Scarf."
 	done
 
 TuscanyGaveGiftText:
@@ -382,7 +382,7 @@ TuscanyGaveGiftText:
 	cont "is most adorable?"
 
 	para "It strengthens"
-	line "Fairy-type moves."
+	line "Normal-type moves."
 
 	para "I am certain it"
 	line "will be of use."
