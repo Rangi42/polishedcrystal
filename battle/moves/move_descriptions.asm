@@ -1196,18 +1196,18 @@ VitalThrowDescription:
 
 MorningSunDescription:
 	db   "Restores HP"
-	next "(varies by time).@"
+	next "(best at morning).@"
 
 SynthesisDescription:
 	db   "Restores HP"
-	next "(varies by time).@"
+	next "(best at daytime).@"
 
 MoonlightDescription:
 	db   "Restores HP"
-	next "(varies by time).@"
+	next "(best at night).@"
 
 HiddenPowerDescription:
-	db   "The power varies"
+	db   "The type varies"
 	next "with the #mon.@"
 
 CrossChopDescription:
