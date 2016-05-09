@@ -118,6 +118,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
+   * Have Moves as an option in the party Pokémon menu during battle
 * Aesthetics:
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Unown ? and ! from Gen III
