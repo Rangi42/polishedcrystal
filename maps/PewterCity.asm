@@ -72,16 +72,16 @@ FruitTreeScript_0x18c040:
 
 UnknownText_0x18c042:
 	text "Have you visited"
-	line "PEWTER GYM?"
+	line "Pewter Gym?"
 
-	para "The LEADER uses"
-	line "rock-type #MON."
+	para "The Leader uses"
+	line "rock-type #mon."
 	done
 
 UnknownText_0x18c080:
-	text "At night, CLEFAIRY"
+	text "At night, Clefairy"
 	line "come out to play"
-	cont "at MT.MOON."
+	cont "at Mt.Moon."
 
 	para "But not every"
 	line "night."
@@ -90,13 +90,13 @@ UnknownText_0x18c080:
 UnknownText_0x18c0c6:
 	text "Ah, you came all"
 	line "the way out here"
-	cont "from JOHTO?"
+	cont "from Johto?"
 
 	para "That brings back"
 	line "memories. When I"
 
 	para "was young, I went"
-	line "to JOHTO to train."
+	line "to Johto to train."
 
 	para "You remind me so"
 	line "much of what I was"
@@ -106,7 +106,7 @@ UnknownText_0x18c0c6:
 
 	para "Here. I want you"
 	line "to have this item"
-	cont "I found in JOHTO."
+	cont "I found in Johto."
 	done
 
 UnknownText_0x18c1aa:
@@ -119,25 +119,25 @@ UnknownText_0x18c1aa:
 	done
 
 PewterCitySignText:
-	text "PEWTER CITY"
+	text "Pewter City"
 	line "A Stone Gray City"
 	done
 
 PewterGymSignText:
-	text "PEWTER CITY"
-	line "#MON GYM"
-	cont "LEADER: BROCK"
+	text "Pewter City"
+	line "#mon Gym"
+	cont "Leader: Brock"
 
 	para "The Rock Solid"
-	line "#MON Trainer"
+	line "#mon Trainer"
 	done
 
 PewterMuseumSignText:
 	text "There's a notice"
 	line "here…"
 
-	para "PEWTER MUSEUM OF"
-	line "SCIENCE is closed"
+	para "Pewter Museum of"
+	line "Science is closed"
 	cont "for renovations…"
 	done
 
@@ -145,13 +145,13 @@ PewterCityMtMoonGiftShopSignText:
 	text "There's a notice"
 	line "here…"
 
-	para "MT.MOON GIFT SHOP"
-	line "NOW OPEN!"
+	para "Mt.Moon Gift Shop"
+	line "Now open!"
 	done
 
 PewterCityWelcomeSignText:
-	text "WELCOME TO"
-	line "PEWTER CITY!"
+	text "Welcome to"
+	line "Pewter City!"
 	done
 
 PewterCity_MapEventHeader:

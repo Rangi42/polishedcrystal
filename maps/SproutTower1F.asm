@@ -48,7 +48,7 @@ SageChowSeenText:
 
 	para "Here, we express"
 	line "our gratitude to"
-	cont "honor all #MON."
+	cont "honor all #mon."
 	done
 
 SageChowBeatenText:
@@ -71,15 +71,15 @@ UnknownText_0x1845d8:
 	done
 
 UnknownText_0x18460a:
-	text "SPROUT TOWER was"
+	text "Sprout Tower was"
 	line "built long ago"
 
 	para "as a place for"
-	line "#MON training."
+	line "#mon training."
 	done
 
 UnknownText_0x184649:
-	text "A BELLSPROUT over"
+	text "A Bellsprout over"
 	line "100 feet tall…"
 
 	para "People say that it"
@@ -96,7 +96,7 @@ UnknownText_0x18469d:
 	done
 
 UnknownText_0x1846d6:
-	text "A #MON statue…"
+	text "A #mon statue…"
 
 	para "It looks very"
 	line "distinguished."

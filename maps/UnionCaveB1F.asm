@@ -113,7 +113,7 @@ PokemaniacAndrewSeenText:
 	text "Who's there?"
 
 	para "Leave me and my"
-	line "#MON alone!"
+	line "#mon alone!"
 	done
 
 PokemaniacAndrewBeatenText:
@@ -123,14 +123,14 @@ PokemaniacAndrewBeatenText:
 
 UnknownText_0x5a181:
 	text "Just me and my"
-	line "#MON. I'm de-"
+	line "#mon. I'm de-"
 	cont "lirious with joy."
 	done
 
 PokemaniacCalvinSeenText:
 	text "I came all the way"
 	line "here to conduct my"
-	cont "#MON research."
+	cont "#mon research."
 
 	para "Let me demonstrate"
 	line "my findings in a"
@@ -149,7 +149,7 @@ UnknownText_0x5a230:
 
 	para "I might even be-"
 	line "come famous like"
-	cont "PROF.ELM."
+	cont "Prof.Elm."
 	done
 
 UnionCaveB1F_MapEventHeader:

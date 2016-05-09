@@ -122,7 +122,7 @@ UnknownText_0x58612:
 
 ; possibly unused
 UnknownText_0x58633:
-	text "It's UNOWN text!"
+	text "It's Unown text!"
 	done
 
 UnknownText_0x58644:
@@ -138,11 +138,11 @@ UnknownText_0x58665:
 UnknownText_0x58685:
 	text "It's a replica of"
 	line "an ancient #-"
-	cont "MON."
+	cont "mon."
 	done
 
 UnknownText_0x586aa:
-	text "A #MON that"
+	text "A #mon that"
 	line "flew gracefully on"
 
 	para "rainbow-colored"

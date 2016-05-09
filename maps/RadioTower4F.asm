@@ -108,22 +108,22 @@ MapRadioTower4FSignpost1Script:
 UnknownText_0x5ec12:
 	text "I listened to the"
 	line "radio while I was"
-	cont "at the RUINS."
+	cont "at the ruins."
 
 	para "I heard a strange"
 	line "broadcast there."
 	done
 
 UnknownText_0x5ec68:
-	text "MARY: Why? Why do"
+	text "Mary: Why? Why do"
 	line "I have to suffer"
 	cont "through this?"
 
-	para "MEOWTH, help me!"
+	para "Meowth, help me!"
 	done
 
 UnknownText_0x5ecab:
-	text "MARY: Oh! You're"
+	text "Mary: Oh! You're"
 	line "my little savior!"
 
 	para "Will you take this"
@@ -131,28 +131,28 @@ UnknownText_0x5ecab:
 	done
 
 UnknownText_0x5ecef:
-	text "MARY: It's just"
-	line "right for #MON"
+	text "Mary: It's just"
+	line "right for #mon"
 
-	para "that know normal-"
+	para "that know Normal-"
 	line "type moves."
 	done
 
 UnknownText_0x5ed2c:
-	text "MARY: Please tune"
-	line "into me on PROF."
+	text "Mary: Please tune"
+	line "into me on Prof."
 
-	para "OAK'S #MON TALK"
+	para "Oak's #mon Talk"
 	line "show."
 	done
 
 RadioTowerMeowthText:
-	text "MEOWTH: Meowth…"
+	text "Meowth: Meowth…"
 	done
 
 GruntM10SeenText:
 	text "You plan to rescue"
-	line "the DIRECTOR?"
+	line "the Director?"
 
 	para "That won't be pos-"
 	line "sible because I'm"
@@ -170,7 +170,7 @@ UnknownText_0x5ede2:
 
 Executivem2SeenText:
 	text "Stop! I'm known as"
-	line "the TEAM ROCKET"
+	line "the Team Rocket"
 	cont "fortress!"
 
 	para "You're not taking"
@@ -194,10 +194,10 @@ UnknownText_0x5ee69:
 
 GruntF4SeenText:
 	text "Don't I think"
-	line "#MON are cute?"
+	line "#mon are cute?"
 
 	para "I'll think my"
-	line "#MON are cute--"
+	line "#mon are cute--"
 
 	para "after they beat"
 	line "yours!"
@@ -213,13 +213,13 @@ UnknownText_0x5ef31:
 	line "beautiful self!"
 
 	para "Who cares about"
-	line "#MON?"
+	line "#mon?"
 	done
 
 ScientistRichSeenText:
 	text "Most excellent."
 
-	para "This RADIO TOWER"
+	para "This Radio Tower"
 	line "will fulfill our"
 	cont "grand design."
 	done
@@ -234,15 +234,15 @@ ScientistRichBeatenText:
 UnknownText_0x5efcb:
 	text "Do you honestly"
 	line "believe you can"
-	cont "stop TEAM ROCKET?"
+	cont "stop Team Rocket?"
 	done
 
 UnknownText_0x5effe:
-	text "4F PRODUCTION"
+	text "4F Production"
 	done
 
 UnknownText_0x5f00d:
-	text "4F STUDIO 2"
+	text "4F Studio 2"
 	done
 
 RadioTower4F_MapEventHeader:

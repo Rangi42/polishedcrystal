@@ -40,7 +40,7 @@ SproutTower2FXAccuracy:
 
 SageNicoSeenText:
 	text "However hard we"
-	line "battle, the TOWER"
+	line "battle, the tower"
 	cont "will stand strong."
 	done
 
@@ -53,7 +53,7 @@ UnknownText_0x1847ff:
 	text "The flexible pil-"
 	line "lar protects the"
 
-	para "TOWER, even from"
+	para "tower, even from"
 	line "earthquakes."
 	done
 
@@ -68,7 +68,7 @@ SageEdmondBeatenText:
 
 UnknownText_0x18486f:
 	text "I tried to copy"
-	line "BELLSPROUT's"
+	line "Bellsprout's"
 
 	para "gentle movements"
 	line "for battle…"
@@ -78,7 +78,7 @@ UnknownText_0x18486f:
 	done
 
 UnknownText_0x1848c8:
-	text "A #MON statue…"
+	text "A #mon statue…"
 
 	para "It looks very"
 	line "distinguished."

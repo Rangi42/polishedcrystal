@@ -35,8 +35,8 @@ WardensHomeBookshelf:
 
 WardensGranddaughterText1:
 	text "My grandpa is the"
-	line "SAFARI ZONE WAR-"
-	cont "DEN."
+	line "Safari Zone War-"
+	cont "den."
 
 	para "At least he was…"
 
@@ -47,7 +47,7 @@ WardensGranddaughterText1:
 	line "all by himself."
 
 	para "He quit running"
-	line "SAFARI ZONE just"
+	line "Safari Zone just"
 	cont "like that."
 	done
 
@@ -55,7 +55,7 @@ WardensGranddaughterText2:
 	text "Many people were"
 	line "disappointed that"
 
-	para "SAFARI ZONE closed"
+	para "Safari Zone closed"
 	line "down, but Grandpa"
 	cont "is so stubborn…"
 	done
@@ -65,14 +65,14 @@ WardenPhotoText:
 	line "grinning old man"
 
 	para "who's surrounded"
-	line "by #MON."
+	line "by #mon."
 	done
 
 SafariZonePhotoText:
 	text "It's a photo of a"
 	line "huge grassy plain"
 
-	para "with rare #MON"
+	para "with rare #mon"
 	line "frolicking in it."
 	done
 

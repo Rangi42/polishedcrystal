@@ -218,7 +218,7 @@ MovementData_0x188eda:
 
 UnknownText_0x188ee0:
 	text "A thief broke into"
-	line "the POWER PLANT…"
+	line "the Power Plant…"
 
 	para "What is the world"
 	line "coming to?"
@@ -226,7 +226,7 @@ UnknownText_0x188ee0:
 
 UnknownText_0x188f22:
 	text "I just got word"
-	line "from CERULEAN."
+	line "from Cerulean."
 
 	para "It appears that a"
 	line "shady character"
@@ -267,7 +267,7 @@ UnknownText_0x189038:
 	done
 
 UnknownText_0x189079:
-	text "This POWER PLANT"
+	text "This Power Plant"
 	line "had been abandoned"
 	cont "in the past."
 
@@ -275,7 +275,7 @@ UnknownText_0x189079:
 	line "and running to"
 
 	para "provide power to"
-	line "the MAGNET TRAIN."
+	line "the Magnet Train."
 	done
 
 UnknownText_0x1890ef:
@@ -284,8 +284,8 @@ UnknownText_0x1890ef:
 	done
 
 UnknownText_0x18910e:
-	text "The POWER PLANT's"
-	line "MANAGER is up"
+	text "The Power Plant's"
+	line "Manager is up"
 	cont "ahead."
 
 	para "But since someone"
@@ -299,12 +299,12 @@ UnknownText_0x18917f:
 	text "Since the gener-"
 	line "ator's been fixed,"
 
-	para "the MANAGER has"
+	para "the Manager has"
 	line "been cheerful."
 	done
 
 UnknownText_0x1891c2:
-	text "The MAGNET TRAIN"
+	text "The Magnet Train"
 	line "consumes a lot of"
 	cont "electricity."
 
@@ -317,12 +317,12 @@ UnknownText_0x189225:
 	text "All right! We can"
 	line "finally get the"
 
-	para "MAGNET TRAIN"
+	para "Magnet Train"
 	line "running again."
 	done
 
 UnknownText_0x189264:
-	text "MANAGER: I, I, I'm"
+	text "Manager: I, I, I'm"
 	line "ready to blast"
 	cont "someone!"
 
@@ -335,12 +335,12 @@ UnknownText_0x189264:
 	para "If I catch him,"
 	line "he's going to get"
 
-	para "a taste of my ZAP"
-	line "CANNON!"
+	para "a taste of my Zap"
+	line "Cannon!"
 	done
 
 UnknownText_0x189308:
-	text "MANAGER: I won't"
+	text "Manager: I won't"
 	line "forgive him!"
 
 	para "The culprit can"
@@ -353,10 +353,10 @@ UnknownText_0x189308:
 	done
 
 UnknownText_0x18936e:
-	text "MANAGER: Ah! Yeah!"
+	text "Manager: Ah! Yeah!"
 
 	para "That's the missing"
-	line "PART from my be-"
+	line "part from my be-"
 	cont "loved generator!"
 	cont "You found it?"
 	done
@@ -369,8 +369,8 @@ UnknownText_0x1893c4:
 	done
 
 UnknownText_0x1893f4:
-	text "MANAGER: TM07 is"
-	line "my ZAP CANNON."
+	text "Manager: TM07 is"
+	line "my Zap Cannon."
 
 	para "It's a powerful"
 	line "technique!"
@@ -383,7 +383,7 @@ UnknownText_0x1893f4:
 	done
 
 UnknownText_0x189475:
-	text "MANAGER: My be-"
+	text "Manager: My be-"
 	line "loved generator!"
 
 	para "Keep pumping the"

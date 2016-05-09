@@ -145,7 +145,7 @@ KurtSlowpokeWellVictoryMovementData:
 	step_end
 
 UnknownText_0x5a6b5:
-	text "KURT: Hey there,"
+	text "Kurt: Hey there,"
 	line "<PLAYER>!"
 
 	para "The guard up top"
@@ -154,14 +154,14 @@ UnknownText_0x5a6b5:
 
 	para "But then I took a"
 	line "tumble down the"
-	cont "WELL."
+	cont "well."
 
 	para "I slammed down"
 	line "hard on my back,"
 	cont "so I can't move."
 
 	para "Rats! If I were"
-	line "fit, my #MON"
+	line "fit, my #mon"
 
 	para "would've punished"
 	line "them…"
@@ -175,10 +175,10 @@ UnknownText_0x5a6b5:
 	done
 
 KurtLeaveSlowpokeWellText:
-	text "KURT: Way to go,"
+	text "Kurt: Way to go,"
 	line "<PLAYER>!"
 
-	para "TEAM ROCKET has"
+	para "Team Rocket has"
 	line "taken off."
 
 	para "My back's better"
@@ -211,14 +211,14 @@ TrainerGruntM29SlowpokeProfitText:
 	text "Sure, we've been"
 	line "hacking the tails"
 
-	para "off SLOWPOKE and"
+	para "off Slowpoke and"
 	line "selling them."
 
 	para "Everything we do"
 	line "is for profit."
 
 	para "That's right!"
-	line "We're TEAM ROCKET,"
+	line "We're Team Rocket,"
 
 	para "and we'll do any-"
 	line "thing for money!"
@@ -239,7 +239,7 @@ GruntM1BeatenText:
 	done
 
 TrainerGruntM1WhenTalkText:
-	text "Yeah, TEAM ROCKET"
+	text "Yeah, Team Rocket"
 	line "was broken up"
 	cont "three years ago."
 
@@ -253,11 +253,11 @@ TrainerGruntM1WhenTalkText:
 	done
 
 GruntM2SeenText:
-	text "Quit taking SLOW-"
-	line "POKETAILS?"
+	text "Quit taking Slow-"
+	line "pokeTails?"
 
 	para "If we obeyed you,"
-	line "TEAM ROCKET's rep"
+	line "Team Rocket's rep"
 	cont "would be ruined!"
 	done
 
@@ -268,15 +268,15 @@ GruntM2BeatenText:
 
 UnknownText_0x5aaf2:
 	text "We need the money,"
-	line "but selling SLOW-"
-	cont "POKETAILS?"
+	line "but selling Slow-"
+	cont "pokeTails?"
 
 	para "It's tough being a"
-	line "ROCKET GRUNT!"
+	line "Rocket Grunt!"
 	done
 
 GruntF1SeenText:
-	text "Stop taking TAILS?"
+	text "Stop taking Tails?"
 
 	para "Yeah, just try to"
 	line "defeat all of us!"
@@ -287,7 +287,7 @@ GruntF1BeatenText:
 	done
 
 UnknownText_0x5ab8d:
-	text "SLOWPOKETAILS"
+	text "SlowpokeTails"
 	line "grow back fast!"
 
 	para "What's wrong with"
@@ -295,29 +295,29 @@ UnknownText_0x5ab8d:
 	done
 
 UnknownText_0x5abcb:
-	text "A SLOWPOKE with"
-	line "its TAIL cut off…"
+	text "A Slowpoke with"
+	line "its tail cut off…"
 
-	para "Huh? It has MAIL."
+	para "Huh? It has Mail."
 	line "Read it?"
 	done
 
 UnknownText_0x5ac09:
 	text "<PLAYER> read the"
-	line "MAIL."
+	line "Mail."
 
 	para "Be good and look"
 	line "after the house"
 
 	para "with Grandpa and"
-	line "SLOWPOKE."
+	line "Slowpoke."
 
 	para "Love, Dad"
 	done
 
 UnknownText_0x5ac61:
-	text "A SLOWPOKE with"
-	line "its TAIL cut off…"
+	text "A Slowpoke with"
+	line "its tail cut off…"
 	done
 
 SlowpokeWellB1F_MapEventHeader:

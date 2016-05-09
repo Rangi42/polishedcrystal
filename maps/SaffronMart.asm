@@ -24,8 +24,8 @@ CooltrainerFScript_0x18a3c9:
 
 UnknownText_0x18a3cc:
 	text "There's a big"
-	line "RADIO TOWER in"
-	cont "LAVENDER."
+	line "Radio Tower in"
+	cont "Lavender."
 	done
 
 UnknownText_0x18a3f3:

@@ -114,10 +114,10 @@ GruntM24BeatenText:
 	done
 
 UnknownText_0x7da48:
-	text "TEAM ROCKET will"
+	text "Team Rocket will"
 	line "keep going, wait-"
 	cont "ing for the return"
-	cont "of GIOVANNI."
+	cont "of Giovanni."
 
 	para "We'll do whatever"
 	line "it takes."
@@ -140,7 +140,7 @@ UnknownText_0x7db01:
 	text "I lost…"
 
 	para "Please forgive me,"
-	line "GIOVANNI!"
+	line "Giovanni!"
 	done
 
 GruntM15SeenText:
@@ -163,26 +163,26 @@ UnknownText_0x7db8e:
 	done
 
 UnknownText_0x7dbc6:
-	text "DIRECTOR: Who?"
+	text "Director: Who?"
 	line "What? You came to"
 	cont "rescue me?"
 
 	para "Thank you!"
 
-	para "The RADIO TOWER!"
+	para "The Radio Tower!"
 
 	para "What's happening"
 	line "there?"
 
-	para "Taken over by TEAM"
-	line "ROCKET?"
+	para "Taken over by Team"
+	line "Rocket?"
 
 	para "Here. Take this"
-	line "CARD KEY."
+	line "Card Key."
 	done
 
 UnknownText_0x7dc5b:
-	text "DIRECTOR: Use that"
+	text "Director: Use that"
 	line "to open the shut-"
 	cont "ters on 3F."
 	done
@@ -200,17 +200,17 @@ UnknownText_0x7dc8d:
 	para "They may even be"
 	line "able to control"
 
-	para "#MON using a"
+	para "#mon using a"
 	line "special signal!"
 
 	para "You're the only"
 	line "one I can call on."
 
 	para "Please save the"
-	line "RADIO TOWER…"
+	line "Radio Tower…"
 
 	para "And all the #-"
-	line "MON nationwide!"
+	line "mon nationwide!"
 	done
 
 UndergroundWarehouse_MapEventHeader:

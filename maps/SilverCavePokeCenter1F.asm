@@ -17,13 +17,13 @@ GrannyScript_0x1ae59d:
 
 UnknownText_0x1ae5a0:
 	text "Trainers who seek"
-	line "power climb MT."
+	line "power climb Mt."
 
-	para "SILVER despite its"
+	para "Silver despite its"
 	line "many dangers…"
 
 	para "With their trusted"
-	line "#MON, they must"
+	line "#mon, they must"
 
 	para "feel they can go"
 	line "anywhere…"

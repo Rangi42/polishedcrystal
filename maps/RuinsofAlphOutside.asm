@@ -158,31 +158,31 @@ MovementData_0x580c5:
 
 UnknownText_0x580c7:
 	text "Hm? That's a #-"
-	line "DEX, isn't it?"
+	line "dex, isn't it?"
 	cont "May I see it?"
 
 	para "There are so many"
-	line "kinds of #MON."
+	line "kinds of #mon."
 
 	para "Hm? What's this?"
 
 	para "What is this"
-	line "#MON?"
+	line "#mon?"
 
 	para "It looks like the"
 	line "strange writing on"
 
 	para "the walls of the"
-	line "RUINS."
+	line "ruins."
 
 	para "If those drawings"
 	line "are really #-"
-	cont "MON, there should"
+	cont "mon, there should"
 	cont "be many more."
 
 	para "I know! Let me up-"
 	line "grade your #-"
-	cont "DEX. Follow me."
+	cont "dex. Follow me."
 	done
 
 UnknownText_0x581e5:
@@ -200,8 +200,8 @@ UnknownText_0x58217:
 	done
 
 UnknownText_0x58250:
-	text "The RUINS are from"
-	line "about 1500 years"
+	text "The ruins are from"
+	line "about 1,500 years"
 	cont "ago."
 
 	para "Nobody knows who"
@@ -209,7 +209,7 @@ UnknownText_0x58250:
 
 	para "It's also not"
 	line "known if the #-"
-	cont "MON statues have"
+	cont "mon statues have"
 	cont "any meaning."
 
 	para "It's all one big"
@@ -231,26 +231,26 @@ UnknownText_0x5830e:
 	done
 
 UnknownText_0x58325:
-	text "MYSTERY STONE"
-	line "PANEL CHAMBER"
+	text "Mystery Stone"
+	line "Panel Chamber"
 	done
 
 UnknownText_0x58342:
-	text "RUINS OF ALPH"
-	line "VISITORS WELCOME"
+	text "Ruins of Alph"
+	line "Visitors Welcome"
 	done
 
 UnknownText_0x58362:
-	text "RUINS OF ALPH"
-	line "RESEARCH CENTER"
+	text "Ruins of Alph"
+	line "Research Center"
 
-	para "THE AUTHORITY ON"
-	line "THE RUINS OF ALPH"
+	para "The Authority On"
+	line "The Ruins of Alph"
 	done
 
 UnknownText_0x583a4:
 	text "While exploring"
-	line "the RUINS, we"
+	line "the ruins, we"
 
 	para "suddenly noticed"
 	line "an odd presence."
@@ -263,7 +263,7 @@ UnknownText_0x583a4:
 	done
 
 UnknownText_0x58420:
-	text "The RUINS hide a"
+	text "The ruins hide a"
 	line "huge secret!"
 
 	para "…I think…"
@@ -271,7 +271,7 @@ UnknownText_0x58420:
 
 UnknownText_0x58449:
 	text "There are many"
-	line "kinds of UNOWN, so"
+	line "kinds of Unown, so"
 
 	para "we use them for"
 	line "our secret codes."

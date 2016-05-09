@@ -121,7 +121,7 @@ UnknownText_0x58e4f:
 
 ; possibly unused.. again?
 UnknownText_0x58e70:
-	text "It's UNOWN text!"
+	text "It's Unown text!"
 	done
 
 UnknownText_0x58e81:
@@ -137,12 +137,12 @@ UnknownText_0x58ea2:
 UnknownText_0x58ec2:
 	text "It's a replica of"
 	line "an ancient #-"
-	cont "MON."
+	cont "mon."
 	done
 
 UnknownText_0x58ee7:
 	text "This flying #-"
-	line "MON attacked its"
+	line "mon attacked its"
 
 	para "prey with saw-like"
 	line "fangs."

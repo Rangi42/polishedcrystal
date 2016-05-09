@@ -31,8 +31,8 @@ UnknownScript_0x18ac01:
 
 SilphCoReceptionistText:
 	text "Welcome. This is"
-	line "SILPH CO.'s HEAD"
-	cont "OFFICE BUILDING."
+	line "Silph Co.'s Head"
+	cont "Office Building."
 	done
 
 UnknownText_0x18ac36:
@@ -48,7 +48,7 @@ UnknownText_0x18ac36:
 	done
 
 UnknownText_0x18aca8:
-	text "It's SILPH CO.'s"
+	text "It's Silph Co.'s"
 	line "latest product."
 
 	para "It's not for sale"

@@ -122,7 +122,7 @@ UnknownText_0x58c8e:
 
 ; possibly unused.. this again?
 UnknownText_0x58caf:
-	text "It's UNOWN text!"
+	text "It's Unown text!"
 	done
 
 UnknownText_0x58cc0:
@@ -138,11 +138,11 @@ UnknownText_0x58ce1:
 UnknownText_0x58d01:
 	text "It's a replica of"
 	line "an ancient #-"
-	cont "MON."
+	cont "mon."
 	done
 
 UnknownText_0x58d26:
-	text "This #MON"
+	text "This #mon"
 	line "drifted in the"
 
 	para "sea by twisting"

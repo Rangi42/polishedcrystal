@@ -97,7 +97,7 @@ CooltrainermNickBeatenText:
 	done
 
 UnknownText_0x5a3f0:
-	text "Your #MON style"
+	text "Your #mon style"
 	line "is stunning and"
 	cont "colorful, I admit."
 
@@ -122,7 +122,7 @@ UnknownText_0x5a488:
 	done
 
 CooltrainerfEmmaSeenText:
-	text "If the #MON I"
+	text "If the #mon I"
 	line "liked were there,"
 	cont "I'd go anywhere."
 
@@ -137,11 +137,11 @@ CooltrainerfEmmaBeatenText:
 
 UnknownText_0x5a52b:
 	text "Just once a week,"
-	line "a #MON comes to"
+	line "a #mon comes to"
 	cont "the water's edge."
 
 	para "I wanted to see"
-	line "that #MON…"
+	line "that #mon…"
 	done
 
 UnionCaveB2F_MapEventHeader:

@@ -115,7 +115,7 @@ Movement_TrainerHouseTurnBack:
 
 TrainerHouseB1FIntroText:
 	text "Hi. Welcome to our"
-	line "TRAINING HALL."
+	line "Training Hall."
 
 	para "You may battle a"
 	line "trainer once per"

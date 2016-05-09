@@ -115,7 +115,7 @@ SaffronGymStatue:
 	jumpstd gymstatue2
 
 UnknownText_0x189cdf:
-	text "SABRINA: I knew"
+	text "Sabrina: I knew"
 	line "you were coming…"
 
 	para "Three years ago I"
@@ -123,13 +123,13 @@ UnknownText_0x189cdf:
 	cont "your arrival."
 
 	para "You're after my"
-	line "BADGE."
+	line "Badge."
 
 	para "I don't enjoy bat-"
 	line "tling, but it's my"
 
-	para "duty as a LEADER"
-	line "to confer BADGES"
+	para "duty as a Leader"
+	line "to confer Badges"
 
 	para "on anyone who has"
 	line "proven him- or"
@@ -141,7 +141,7 @@ UnknownText_0x189cdf:
 	done
 
 UnknownText_0x189df4:
-	text "SABRINA: Your"
+	text "Sabrina: Your"
 	line "power…"
 
 	para "It far exceeds"
@@ -155,35 +155,31 @@ UnknownText_0x189df4:
 
 	para "OK, you win. You"
 	line "earned yourself"
-	cont "MARSHBADGE."
+	cont "the Marsh Badge."
 	done
 
 UnknownText_0x189e95:
 	text "<PLAYER> received"
-	line "MARSHBADGE."
+	line "the Marsh Badge."
 	done
 
 UnknownText_0x189ead:
-	text "SABRINA: MARSH-"
-	line "BADGE draws out"
+	text "Sabrina: Although"
+	line "I failed to accu-"
+	cont "rately predict"
 
-	para "your subliminal"
-	line "powers…"
-
-	para "Although I failed"
-	line "to accurately pre-"
-	cont "dict your power,"
-	cont "this much I know"
-	cont "to be true."
+	para "your power, this"
+	line "much I know to be"
+	cont "true."
 
 	para "You will become a"
 	line "celebrated and"
-	cont "beloved CHAMPION!"
+	cont "beloved Champion!"
 	done
 
 UnknownText_0x189f6c:
-	text "SABRINA: Your love"
-	line "for your #MON"
+	text "Sabrina: Your love"
+	line "for your #mon"
 
 	para "overwhelmed my"
 	line "psychic power…"
@@ -248,9 +244,9 @@ UnknownText_0x18a136:
 	done
 
 PsychicJaredSeenText:
-	text "The FIGHTING DOJO"
+	text "The Fighting Dojo"
 	line "next door was once"
-	cont "this city's GYM."
+	cont "this city's Gym."
 	done
 
 PsychicJaredBeatenText:
@@ -258,16 +254,16 @@ PsychicJaredBeatenText:
 	done
 
 UnknownText_0x18a1b3:
-	text "KARATE KING, the"
+	text "Karate King, the"
 	line "master of the"
 
-	para "FIGHTING DOJO, was"
+	para "Fighting Dojo, was"
 	line "just destroyed by"
-	cont "SABRINA."
+	cont "Sabrina."
 	done
 
 SaffronGymGuyText:
-	text "Yo, CHAMP in"
+	text "Yo, Champ in"
 	line "making!"
 
 	para "A trainer as"
@@ -276,8 +272,8 @@ SaffronGymGuyText:
 	para "doesn't need to be"
 	line "told how to deal"
 
-	para "with psychic-type"
-	line "#MON, right?"
+	para "with Psychic-type"
+	line "#mon, right?"
 
 	para "I expect great"
 	line "things from you!"

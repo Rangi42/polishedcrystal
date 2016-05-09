@@ -161,7 +161,7 @@ UnknownText_0x58800:
 	para "There are sliding"
 	line "panels that depict"
 
-	para "a #MON drawn by"
+	para "a #mon drawn by"
 	line "the ancients."
 
 	para "Slide the panels"
@@ -170,7 +170,7 @@ UnknownText_0x58800:
 
 	para "To the right is a"
 	line "description of the"
-	cont "#MON."
+	cont "#mon."
 
 	para "Scientists in the"
 	line "back are examining"
@@ -222,7 +222,7 @@ UnknownText_0x58a03:
 	line "some kind."
 
 	para "I think they make"
-	line "#MON appear,"
+	line "#mon appear,"
 
 	para "but it's not clear"
 	line "yet…"
@@ -235,7 +235,7 @@ UnknownText_0x58aa7:
 
 ; possibly unused
 UnknownText_0x58ac8:
-	text "It's UNOWN text!"
+	text "It's Unown text!"
 	done
 
 UnknownText_0x58ad9:
@@ -251,11 +251,11 @@ UnknownText_0x58afa:
 UnknownText_0x58b1a:
 	text "It's a replica of"
 	line "an ancient #-"
-	cont "MON."
+	cont "mon."
 	done
 
 UnknownText_0x58b3f:
-	text "A #MON that hid"
+	text "A #mon that hid"
 	line "on the sea floor."
 
 	para "Eyes on its back"

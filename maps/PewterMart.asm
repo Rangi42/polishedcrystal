@@ -24,10 +24,10 @@ SuperNerdScript_0x1a2dd5:
 
 UnknownText_0x1a2dd8:
 	text "Hi! Check out my"
-	line "GYARADOS!"
+	line "Gyarados!"
 
 	para "I raised it from a"
-	line "MAGIKARP. I can't"
+	line "Magikarp. I can't"
 
 	para "believe how strong"
 	line "it has become."
@@ -36,12 +36,12 @@ UnknownText_0x1a2dd8:
 UnknownText_0x1a2e3a:
 	text "There once was a"
 	line "weird old man who"
-	cont "sold MAGIKARP."
+	cont "sold Magikarp."
 
 	para "He was saying the"
-	line "MAGIKARP from the"
+	line "Magikarp from the"
 
-	para "LAKE OF RAGE were"
+	para "Lake of Rage were"
 	line "excellent."
 	done
 

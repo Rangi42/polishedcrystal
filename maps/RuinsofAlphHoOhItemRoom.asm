@@ -29,7 +29,7 @@ MapRuinsofAlphHoOhItemRoomSignpost1Script:
 UnknownText_0x59923:
 	text "It's a replica of"
 	line "an ancient #-"
-	cont "MON."
+	cont "mon."
 	done
 
 RuinsofAlphHoOhItemRoom_MapEventHeader:

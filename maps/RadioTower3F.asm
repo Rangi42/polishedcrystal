@@ -163,7 +163,7 @@ UnknownText_0x5e621:
 	text "We have recordings"
 	line "of the cries of"
 
-	para "all #MON that"
+	para "all #mon that"
 	line "have been found."
 
 	para "We must have about"
@@ -172,14 +172,14 @@ UnknownText_0x5e621:
 
 UnknownText_0x5e682:
 	text "To trainers, #-"
-	line "MON are their"
+	line "mon are their"
 	cont "beloved partners."
 
 	para "It's terrible how"
-	line "TEAM ROCKET is"
+	line "Team Rocket is"
 
 	para "trying to control"
-	line "#MON."
+	line "#mon."
 	done
 
 UnknownText_0x5e6eb:
@@ -195,11 +195,11 @@ UnknownText_0x5e6eb:
 	done
 
 UnknownText_0x5e754:
-	text "The TEAM ROCKET"
+	text "The Team Rocket"
 	line "boss has locked"
 	cont "himself in."
 
-	para "But the DIRECTOR"
+	para "But the Director"
 	line "can open it."
 
 	para "He's up on the"
@@ -209,7 +209,7 @@ UnknownText_0x5e754:
 	done
 
 UnknownText_0x5e7cb:
-	text "Is the DIRECTOR"
+	text "Is the Director"
 	line "safe?"
 	done
 
@@ -222,7 +222,7 @@ UnknownText_0x5e7e2:
 	done
 
 UnknownText_0x5e821:
-	text "It's SUNNY DAY."
+	text "It's Sunny Day."
 	line "It powers up fire-"
 	cont "type moves for a"
 	cont "while."
@@ -239,7 +239,7 @@ GruntM7SeenText:
 
 	para "I'm to crush any-"
 	line "one who challenges"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	done
 
 GruntM7BeatenText:
@@ -256,7 +256,7 @@ UnknownText_0x5e8d0:
 
 GruntM8SeenText:
 	text "It feels great"
-	line "ordering #MON"
+	line "ordering #mon"
 	cont "to commit crimes."
 	done
 
@@ -269,7 +269,7 @@ UnknownText_0x5e944:
 	line "losing!"
 
 	para "Darn it! I hate"
-	line "useless #MON!"
+	line "useless #mon!"
 	done
 
 GruntM9SeenText:
@@ -287,7 +287,7 @@ GruntM9BeatenText:
 UnknownText_0x5e9d0:
 	text "What?! You made it"
 	line "past our men in"
-	cont "the UNDERGROUND?"
+	cont "the Underground?"
 
 	para "How could you?"
 	done
@@ -313,22 +313,22 @@ UnknownText_0x5ea61:
 	done
 
 UnknownText_0x5eaa4:
-	text "It's the CARD KEY"
+	text "It's the Card Key"
 	line "slot."
 	done
 
 UnknownText_0x5eabc:
 	text "<PLAYER> inserted"
-	line "the CARD KEY."
+	line "the Card Key."
 	done
 
 UnknownText_0x5ead6:
-	text "3F PERSONNEL"
+	text "3F Personnel"
 	done
 
 UnknownText_0x5eae4:
-	text "#MON MUSIC with"
-	line "Host DJ BEN"
+	text "#mon Music with"
+	line "Host DJ Ben"
 	done
 
 RadioTower3F_MapEventHeader:

@@ -352,17 +352,17 @@ UnknownText_0x5d924:
 UnknownText_0x5d956:
 	text "Lullabies on the"
 	line "radio may make"
-	cont "#MON sleep."
+	cont "#mon sleep."
 	done
 
 UnknownText_0x5d983:
 	text "Why would they"
 	line "want to take over"
-	cont "the RADIO TOWER?"
+	cont "the Radio Tower?"
 	done
 
 RadioTowerJigglypuffText:
-	text "JIGGLYPUFF:"
+	text "Jigglypuff:"
 	line "Jiggly…"
 	done
 
@@ -376,21 +376,21 @@ UnknownText_0x5d9cb:
 
 	para "There's something"
 	line "wrong with the"
-	cont "DIRECTOR…"
+	cont "Director…"
 	done
 
 UnknownText_0x5da44:
 	text "Feel free to look"
 	line "around anywhere."
 
-	para "The DIRECTOR is"
+	para "The Director is"
 	line "nice again, just"
 	cont "as he was before."
 	done
 
 GruntM4SeenText:
 	text "Three years ago,"
-	line "TEAM ROCKET was"
+	line "Team Rocket was"
 	cont "forced to disband."
 
 	para "But we're making a"
@@ -409,9 +409,9 @@ UnknownText_0x5db07:
 	done
 
 GruntM5SeenText:
-	text "We're TEAM ROCKET,"
+	text "We're Team Rocket,"
 	line "the exploiters of"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "We love being"
 	line "evil! Scared?"
@@ -438,7 +438,7 @@ GruntM6BeatenText:
 	done
 
 UnknownText_0x5dc00:
-	text "Our EXECUTIVES are"
+	text "Our Executives are"
 	line "trying to take"
 	cont "this place over."
 
@@ -470,12 +470,12 @@ UnknownText_0x5dcd0:
 	done
 
 UnknownText_0x5dcf4:
-	text "BUENA: Hi! I'm"
-	line "BUENA!"
+	text "Buena: Hi! I'm"
+	line "Buena!"
 
 	para "Do you know about"
 	line "a radio program"
-	cont "called PASSWORD?"
+	cont "called Password?"
 
 	para "If you can tell me"
 	line "the password from"
@@ -499,12 +499,12 @@ UnknownText_0x5dcf4:
 	done
 
 UnknownText_0x5de10:
-	text "BUENA: Tune in to"
-	line "my PASSWORD SHOW!"
+	text "Buena: Tune in to"
+	line "my Password Show!"
 	done
 
 UnknownText_0x5de35:
-	text "BUENA: Hi!"
+	text "Buena: Hi!"
 	line "Did you tune in to"
 	cont "my radio show?"
 
@@ -513,7 +513,7 @@ UnknownText_0x5de35:
 	done
 
 UnknownText_0x5de84:
-	text "BUENA: Oh, wow!"
+	text "Buena: Oh, wow!"
 	line "Thank you!"
 
 	para "What was your name"
@@ -526,7 +526,7 @@ UnknownText_0x5de84:
 	done
 
 UnknownText_0x5dedd:
-	text "BUENA: Everyone"
+	text "Buena: Everyone"
 	line "ready?"
 
 	para "I want to hear you"
@@ -537,7 +537,7 @@ UnknownText_0x5dedd:
 	done
 
 UnknownText_0x5df29:
-	text "BUENA: Come back"
+	text "Buena: Come back"
 	line "after you listen"
 
 	para "to my show, OK?"
@@ -545,7 +545,7 @@ UnknownText_0x5df29:
 	done
 
 UnknownText_0x5df6c:
-	text "BUENA: Sorry…"
+	text "Buena: Sorry…"
 
 	para "You get just one"
 	line "chance each day."
@@ -555,7 +555,7 @@ UnknownText_0x5df6c:
 	done
 
 UnknownText_0x5dfc1:
-	text "BUENA: YIPPEE!"
+	text "Buena: YIPPEE!"
 	line "That's right!"
 
 	para "You did tune in!"
@@ -566,7 +566,7 @@ UnknownText_0x5dfc1:
 	done
 
 UnknownText_0x5e01c:
-	text "BUENA: Aww…"
+	text "Buena: Aww…"
 	line "That's not it…"
 
 	para "Did you forget the"
@@ -574,7 +574,7 @@ UnknownText_0x5e01c:
 	done
 
 UnknownText_0x5e054:
-	text "BUENA: Yup! Our"
+	text "Buena: Yup! Our"
 	line "contestant was"
 
 	para "<PLAY_G>."
@@ -588,23 +588,23 @@ UnknownText_0x5e054:
 	done
 
 UnknownText_0x5e0c2:
-	text "BUENA: Huh?"
+	text "Buena: Huh?"
 	line "Today's password?"
 
 	para "HELP, of course!"
 	done
 
 UnknownText_0x5e0f1:
-	text "BUENA: Your BLUE"
-	line "CARD's full."
+	text "Buena: Your Blue"
+	line "Card's full."
 
 	para "Trade it in for a"
 	line "fabulous prize!"
 	done
 
 UnknownText_0x5e131:
-	text "BUENA: Tune in to"
-	line "PASSWORD every"
+	text "Buena: Tune in to"
+	line "Password every"
 
 	para "night from six to"
 	line "midnight!"
@@ -614,9 +614,9 @@ UnknownText_0x5e131:
 	done
 
 UnknownText_0x5e192:
-	text "BUENA: Oh? You"
+	text "Buena: Oh? You"
 	line "forgot to bring"
-	cont "your BLUE CARD?"
+	cont "your Blue Card?"
 
 	para "I can't give you"
 	line "points if you"
@@ -624,8 +624,8 @@ UnknownText_0x5e192:
 	done
 
 UnknownText_0x5e1ee:
-	text "BUENA: Oh! Your"
-	line "BLUE CARD reached"
+	text "Buena: Oh! Your"
+	line "Blue Card reached"
 
 	para "30 points today!"
 	line "That's so wild!"
@@ -645,7 +645,7 @@ UnknownText_0x5e1ee:
 	done
 
 UnknownText_0x5e2bf:
-	text "BUENA: <PLAY_G>,"
+	text "Buena: <PLAY_G>,"
 	line "do you want to"
 
 	para "register my phone"
@@ -654,22 +654,22 @@ UnknownText_0x5e2bf:
 
 UnknownText_0x5e2f3:
 	text "<PLAYER> registered"
-	line "BUENA's number."
+	line "Buena's number."
 	done
 
 UnknownText_0x5e310:
-	text "BUENA: I look"
+	text "Buena: I look"
 	line "forward to hearing"
 	cont "from you!"
 	done
 
 UnknownText_0x5e33c:
-	text "BUENA: Aww… It's a"
+	text "Buena: Aww… It's a"
 	line "special prize…"
 	done
 
 UnknownText_0x5e35e:
-	text "BUENA: <PLAY_G>,"
+	text "Buena: <PLAY_G>,"
 	line "your phone list"
 
 	para "has no room left"
@@ -687,19 +687,19 @@ UnknownText_0x5e392:
 UnknownText_0x5e3d8:
 	text "You can't trade in"
 	line "points without"
-	cont "your BLUE CARD."
+	cont "your Blue Card."
 
 	para "Don't forget your"
-	line "BLUE CARD!"
+	line "Blue Card!"
 	done
 
 UnknownText_0x5e426:
-	text "2F SALES"
+	text "2F Sales"
 	done
 
 UnknownText_0x5e430:
-	text "PROF.OAK'S #MON"
-	line "TALK"
+	text "Prof.Oak's #mon"
+	line "Talk"
 
 	para "The Hottest Show"
 	line "on the Air!"
@@ -707,7 +707,7 @@ UnknownText_0x5e430:
 
 UnknownText_0x5e463:
 	text "Anywhere, Anytime"
-	line "#MON Radio"
+	line "#mon Radio"
 	done
 
 RadioTower2F_MapEventHeader:

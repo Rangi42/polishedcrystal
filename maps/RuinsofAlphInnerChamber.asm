@@ -77,7 +77,7 @@ UnknownText_0x59024:
 UnknownText_0x59072:
 	text "It's a replica of"
 	line "an ancient #-"
-	cont "MON."
+	cont "mon."
 	done
 
 RuinsofAlphInnerChamber_MapEventHeader:

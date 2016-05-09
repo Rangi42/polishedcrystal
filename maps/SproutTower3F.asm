@@ -156,7 +156,7 @@ MovementData_0x184a24:
 	step_end
 
 UnknownText_0x184a27:
-	text "ELDER: You are in-"
+	text "Elder: You are in-"
 	line "deed skilled as a"
 	cont "trainer."
 
@@ -167,12 +167,12 @@ UnknownText_0x184a27:
 	line "this: You should"
 
 	para "treat your"
-	line "#MON better."
+	line "#mon better."
 
 	para "The way you battle"
 	line "is far too harsh."
 
-	para "#MON are not"
+	para "#mon are not"
 	line "tools of war…"
 	done
 
@@ -181,7 +181,7 @@ UnknownText_0x184aec:
 	line "…Humph!"
 
 	para "He claims to be"
-	line "the ELDER but"
+	line "the Elder but"
 	cont "he's weak."
 
 	para "It stands to"
@@ -191,30 +191,30 @@ UnknownText_0x184aec:
 	line "fools who babble"
 
 	para "about being nice"
-	line "to #MON."
+	line "to #mon."
 
 	para "I only care about"
-	line "strong #MON"
+	line "strong #mon"
 	cont "that can win."
 
 	para "I really couldn't"
 	line "care less about"
-	cont "weak #MON."
+	cont "weak #mon."
 	done
 
 UnknownText_0x184bc8:
 	text "<RIVAL> used an"
-	line "ESCAPE ROPE!"
+	line "Escape Rope!"
 	done
 
 SageLiSeenText:
 	text "So good of you to"
 	line "come here!"
 
-	para "SPROUT TOWER is a"
+	para "Sprout Tower is a"
 	line "place of training."
 
-	para "People and #MON"
+	para "People and #mon"
 	line "test their bonds"
 
 	para "to build a bright"
@@ -226,7 +226,7 @@ SageLiSeenText:
 	para "Allow me to check"
 	line "the ties between"
 
-	para "your #MON and"
+	para "your #mon and"
 	line "you!"
 	done
 
@@ -236,25 +236,25 @@ SageLiBeatenText:
 
 UnknownText_0x184cc2:
 	text "You and your #-"
-	line "MON should have"
+	line "mon should have"
 
 	para "no problem using"
 	line "this move."
 
-	para "Take this FLASH"
+	para "Take this Flash"
 	line "HM."
 	done
 
 UnknownText_0x184d13:
-	text "FLASH illuminates"
+	text "Flash illuminates"
 	line "even the darkest"
 	cont "of all places."
 
 	para "But to use it out"
 	line "of battle, you"
 
-	para "need the BADGE"
-	line "from VIOLET's GYM."
+	para "need the Badge"
+	line "from Violet's Gym."
 	done
 
 UnknownText_0x184d88:
@@ -266,7 +266,7 @@ UnknownText_0x184d88:
 SageJinSeenText:
 	text "I train to find"
 	line "enlightenment in"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 SageJinBeatenText:
@@ -275,7 +275,7 @@ SageJinBeatenText:
 	done
 
 UnknownText_0x184dfa:
-	text "As #MON grow"
+	text "As #mon grow"
 	line "stronger, so does"
 	cont "the trainer."
 
@@ -283,13 +283,13 @@ UnknownText_0x184dfa:
 	line "trainer grows"
 
 	para "stronger, so do"
-	line "the #MON."
+	line "the #mon."
 	done
 
 SageTroySeenText:
 	text "Let me see how"
 	line "much you trust"
-	cont "your #MON."
+	cont "your #mon."
 	done
 
 SageTroyBeatenText:
@@ -299,11 +299,11 @@ SageTroyBeatenText:
 
 UnknownText_0x184ea4:
 	text "It is not far to"
-	line "the ELDER."
+	line "the Elder."
 	done
 
 SageNealSeenText:
-	text "The ELDER's HM"
+	text "The Elder's HM"
 	line "lights even pitch-"
 	cont "black darkness."
 	done
@@ -321,11 +321,11 @@ UnknownText_0x184f12:
 UnknownText_0x184f37:
 	text "It's a powerful"
 	line "painting of a"
-	cont "BELLSPROUT."
+	cont "Bellsprout."
 	done
 
 UnknownText_0x184f61:
-	text "A #MON statue…"
+	text "A #mon statue…"
 
 	para "It looks very"
 	line "distinguished."
