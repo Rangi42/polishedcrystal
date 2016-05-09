@@ -61,6 +61,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Graphics updates:
    * Individual party/day-care icons for each Pokémon
    * Original Japanese sprites for some trainers
+   * Color-coded starter Poké Balls
 * No badge boosts to stats or types
 * New default player names
 * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
