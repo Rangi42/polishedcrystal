@@ -63,8 +63,8 @@ UnknownText_0x9ba29:
 
 UnknownText_0x9ba5f:
 	text "You don't have all"
-	line "the GYM BADGES of"
-	cont "JOHTO."
+	line "the Gym Badges of"
+	cont "Johto."
 
 	para "I'm sorry, but I"
 	line "can't let you go"
@@ -73,7 +73,7 @@ UnknownText_0x9ba5f:
 
 UnknownText_0x9bab4:
 	text "Oh! The eight"
-	line "BADGES of JOHTO!"
+	line "Badges of Johto!"
 
 	para "Please, go right"
 	line "on through!"
@@ -81,18 +81,18 @@ UnknownText_0x9bab4:
 
 UnknownText_0x9baf1:
 	text "This way leads to"
-	line "MT.SILVER."
+	line "Mt.Silver."
 
 	para "You'll see scary-"
-	line "strong #MON out"
+	line "strong #mon out"
 	cont "there."
 	done
 
 UnknownText_0x9bb37:
-	text "Off to the #MON"
-	line "LEAGUE, are you?"
+	text "Off to the #mon"
+	line "League, are you?"
 
-	para "The ELITE FOUR are"
+	para "The Elite Four are"
 	line "so strong it's"
 
 	para "scary, and they're"

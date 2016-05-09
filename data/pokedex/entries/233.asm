@@ -2,7 +2,7 @@
 	db "Virtual@" ; species name
 	dw 200, 720 ; height, width
 
-	db   "This manmade"
+	db   "This man-made"
 	next "#mon evolved"
 	next "from the latest"
 	page "technology. It"

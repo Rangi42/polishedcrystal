@@ -129,7 +129,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Separate Bellchime Trail from Ecruteak City
    * Replace some Kanto music with RBY tracks
 * Content:
-   * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands)
+   * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)

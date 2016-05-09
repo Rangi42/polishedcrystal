@@ -138,8 +138,8 @@ MovementData_0x98628:
 UnknownText_0x9862b:
 	text "Astounding…"
 
-	para "SUICUNE, ENTEI and"
-	line "RAIKOU have arisen"
+	para "Suicune, Entei and"
+	line "Raikou have arisen"
 	cont "from their sleep…"
 
 	para "Is the legend"
@@ -148,7 +148,7 @@ UnknownText_0x9862b:
 
 UnknownText_0x9868b:
 	text "We train at the"
-	line "BURNED TOWER, but"
+	line "Burned Tower, but"
 
 	para "we've never heard"
 	line "of a hole opening"
@@ -161,16 +161,16 @@ UnknownText_0x9868b:
 	done
 
 UnknownText_0x98712:
-	text "TIN TOWER may be"
+	text "Bell Tower may be"
 	line "entered by those"
 
-	para "bearing ECRUTEAK's"
-	line "GYM BADGE."
+	para "bearing Ecruteak's"
+	line "Gym Badge."
 
 	para "However, now that"
-	line "SUICUNE, RAIKOU"
+	line "Suicune, Raikou"
 
-	para "and ENTEI have"
+	para "and Entei have"
 	line "arisen, I ask you"
 
 	para "to refrain from"
@@ -178,11 +178,11 @@ UnknownText_0x98712:
 	done
 
 UnknownText_0x987af:
-	text "We, the WISE TRIO,"
+	text "We, the Wise Trio,"
 	line "are the protectors"
 
 	para "of the legendary"
-	line "#MON."
+	line "#mon."
 	done
 
 SageGakuSeenText:
@@ -193,22 +193,22 @@ SageGakuSeenText:
 	line "has the ability to"
 
 	para "touch the souls of"
-	line "#MON, a #MON"
+	line "#mon, a #mon"
 
 	para "will come forth to"
 	line "put that trainer"
 
-	para "to test at the TIN"
-	line "TOWER."
+	para "to test at the"
+	line "Bell Tower."
 
 	para "The legend has"
 	line "come true!"
 
 	para "The legendary"
-	line "#MON SUICUNE"
+	line "#mon Suicune"
 	cont "has arrived!"
 
-	para "We, the WISE TRIO,"
+	para "We, the Wise Trio,"
 	line "shall test your"
 
 	para "worthiness to go"
@@ -224,8 +224,8 @@ UnknownText_0x98938:
 	text "Ah, so it is you"
 	line "who claim to have"
 
-	para "seen SUICUNE,"
-	line "ENTEI and RAIKOU"
+	para "seen Suicune,"
+	line "Entei and Raikou"
 	cont "while they slept?"
 
 	para "Unbelievable!"
@@ -253,17 +253,17 @@ UnknownText_0x98a35:
 	line "were two nine-tier"
 	cont "towers here."
 
-	para "The BRASS TOWER,"
+	para "The Brass Tower,"
 	line "which was said to"
 
-	para "awaken #MON,"
-	line "and the TIN TOWER,"
+	para "awaken #mon, and"
+	line "the Bell Tower,"
 
-	para "where #MON were"
+	para "where #mon were"
 	line "said to rest."
 
 	para "The view from the"
-	line "tops of the TOWERS"
+	line "tops of the towers"
 
 	para "must have been"
 	line "magnificent."
@@ -271,11 +271,11 @@ UnknownText_0x98a35:
 	para "At the time, an"
 	line "immense, silver-"
 
-	para "colored #MON"
+	para "colored #mon"
 	line "was said to make"
 
 	para "its roost atop the"
-	line "BRASS TOWER."
+	line "Brass Tower."
 
 	para "However…"
 
@@ -283,7 +283,7 @@ UnknownText_0x98a35:
 	line "ago, a lightning"
 
 	para "bolt struck one of"
-	line "the TOWERS."
+	line "the towers."
 
 	para "It was engulfed in"
 	line "flames that raged"
@@ -294,7 +294,7 @@ UnknownText_0x98a35:
 	cont "the blaze."
 
 	para "And that is how"
-	line "the BURNED TOWER"
+	line "the Burned Tower"
 	cont "came to be."
 	done
 
@@ -313,19 +313,19 @@ UnknownText_0x98c6c:
 	line "trainer who is"
 
 	para "awaited by the"
-	line "legendary #MON?"
+	line "legendary #mon?"
 	done
 
 UnknownText_0x98cac:
 	text "I see…"
 
-	para "We, the WISE TRIO,"
+	para "We, the Wise Trio,"
 	line "have been given "
 
 	para "the responsibility"
 	line "of protecting the"
 
-	para "legendary #MON."
+	para "legendary #mon."
 	line "We are to allow"
 
 	para "passage only to"
@@ -335,17 +335,17 @@ UnknownText_0x98cac:
 	line "and soul of truth."
 
 	para "Please, do go on"
-	line "and enter the TIN"
-	cont "TOWER ahead."
+	line "and enter the"
+	cont "Bell Tower ahead."
 
-	para "SUICUNE will put"
+	para "Suicune will put"
 	line "you to the test."
 	done
 
 UnknownText_0x98db5:
 	text "Please, do go on."
 
-	para "SUICUNE will put"
+	para "Suicune will put"
 	line "you to the test."
 	done
 

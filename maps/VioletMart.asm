@@ -24,7 +24,7 @@ CooltrainerMScript_0x6829f:
 
 UnknownText_0x682a2:
 	text "When you first"
-	line "catch a #MON,"
+	line "catch a #mon,"
 	cont "it may be weak."
 
 	para "But it will even-"
@@ -32,19 +32,19 @@ UnknownText_0x682a2:
 	cont "strong."
 
 	para "It's important to"
-	line "treat #MON with"
+	line "treat #mon with"
 	cont "love."
 	done
 
 UnknownText_0x68323:
-	text "#MON can hold"
-	line "items like POTION"
-	cont "and ANTIDOTE."
+	text "#mon can hold"
+	line "items like Potion"
+	cont "and Antidote."
 
 	para "But they don't"
 	line "appear to know how"
 
-	para "to use manmade"
+	para "to use man-made"
 	line "items."
 	done
 

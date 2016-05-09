@@ -32,16 +32,16 @@ UnknownText_0x693fa:
 
 	para "For the nicknames"
 	line "she gives to her"
-	cont "#MON, I mean."
+	cont "#mon, I mean."
 	done
 
 UnknownText_0x6945e:
-	text "I call my PIDGEY"
-	line "STRAWBERRY!"
+	text "I call my Pidgey"
+	line "Strawberry!"
 	done
 
 UnknownText_0x6947c:
-	text "STRAWBERRY: Pijji!"
+	text "Strawberry: Pijji!"
 	done
 
 VioletNicknameSpeechHouse_MapEventHeader:

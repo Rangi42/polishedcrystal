@@ -23,14 +23,14 @@ CooltrainerMScript_0x9b5f1:
 	jumptextfaceplayer UnknownText_0x9b61a
 
 UnknownText_0x9b5f4:
-	text "The GYM LEADER"
+	text "The Gym Leader"
 	line "here is totally"
 	cont "cool."
 	done
 
 UnknownText_0x9b61a:
 	text "Have you been to"
-	line "CINNABAR?"
+	line "Cinnabar?"
 
 	para "It's an island way"
 	line "south of here."

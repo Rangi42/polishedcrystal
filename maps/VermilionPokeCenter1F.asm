@@ -37,9 +37,9 @@ BugCatcherScript_0x19161d:
 	jumptextfaceplayer UnknownText_0x19173b
 
 UnknownText_0x191620:
-	text "A sleeping #MON"
+	text "A sleeping #mon"
 	line "is lying in front"
-	cont "of DIGLETT'S CAVE."
+	cont "of Diglett's Cave."
 
 	para "It's a fantastic"
 	line "opportunity to get"
@@ -50,17 +50,17 @@ UnknownText_0x191620:
 
 UnknownText_0x191698:
 	text "There used to be a"
-	line "sleeping #MON"
+	line "sleeping #mon"
 
 	para "lying in front of"
-	line "DIGLETT'S CAVE."
+	line "Diglett's Cave."
 
 	para "But it seems to"
 	line "have disappeared."
 	done
 
 UnknownText_0x1916fe:
-	text "The FAST SHIP is a"
+	text "The Fast Ship is a"
 	line "great place to"
 
 	para "meet and battle"
@@ -69,11 +69,11 @@ UnknownText_0x1916fe:
 
 UnknownText_0x19173b:
 	text "Oh? You have some"
-	line "BADGES I've never"
+	line "Badges I've never"
 	cont "seen before."
 
 	para "Oh, I get it. You"
-	line "got them in JOHTO."
+	line "got them in Johto."
 	done
 
 VermilionPokeCenter1F_MapEventHeader:

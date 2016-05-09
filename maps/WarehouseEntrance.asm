@@ -427,12 +427,12 @@ WarehouseEntranceHiddenAntidote:
 
 SupernerdEricSeenText:
 	text "I got booted out"
-	line "of the GAME COR-"
-	cont "NER."
+	line "of the Game Cor-"
+	cont "ner."
 
 	para "I was trying to"
 	line "cheat using my"
-	cont "#MON…"
+	cont "#mon…"
 	done
 
 SupernerdEricBeatenText:
@@ -462,15 +462,15 @@ SupernerdTeruBeatenText:
 	done
 
 UnknownText_0x7c410:
-	text "I know my #MON"
+	text "I know my #mon"
 	line "type alignments."
 
 	para "But I only use one"
-	line "type of #MON."
+	line "type of #mon."
 	done
 
 PokemaniacIssacSeenText:
-	text "My #MON just"
+	text "My #mon just"
 	line "got a haircut!"
 
 	para "I'll show you how"
@@ -482,7 +482,7 @@ PokemaniacIssacBeatenText:
 	done
 
 UnknownText_0x7c498:
-	text "Your #MON will"
+	text "Your #mon will"
 	line "like you more if"
 
 	para "you give them"
@@ -491,7 +491,7 @@ UnknownText_0x7c498:
 
 PokemaniacDonaldSeenText:
 	text "I think you have"
-	line "some rare #MON"
+	line "some rare #mon"
 	cont "with you."
 
 	para "Let me see them!"
@@ -504,16 +504,16 @@ PokemaniacDonaldBeatenText:
 
 UnknownText_0x7c52f:
 	text "Are you making a"
-	line "#DEX? Here's a"
+	line "#dex? Here's a"
 	cont "hot tip."
 
-	para "The HIKER on ROUTE"
-	line "33, ANTHONY, is a"
+	para "The Hiker on Route"
+	line "33, Anthony, is a"
 	cont "good guy."
 
 	para "He'll phone you if"
 	line "he sees any rare"
-	cont "#MON."
+	cont "#mon."
 	done
 
 UnknownText_0x7c5b0:
@@ -525,22 +525,22 @@ UnknownText_0x7c5c3:
 	done
 
 UnknownText_0x7c5d6:
-	text "The BASEMENT KEY"
+	text "The Basement Key"
 	line "opened the door."
 	done
 
 UnknownText_0x7c5f9:
 	text "Welcome!"
 
-	para "I run the #MON"
-	line "SALON!"
+	para "I run the #mon"
+	line "Salon!"
 
 	para "I'm the older and"
 	line "better of the two"
-	cont "HAIRCUT BROTHERS."
+	cont "Haircut Brothers."
 
 	para "I can make your"
-	line "#MON beautiful"
+	line "#mon beautiful"
 	cont "for just ¥500."
 
 	para "Would you like me"
@@ -548,7 +548,7 @@ UnknownText_0x7c5f9:
 	done
 
 UnknownText_0x7c69a:
-	text "Which #MON"
+	text "Which #mon"
 	line "should I work on?"
 	done
 
@@ -579,22 +579,22 @@ UnknownText_0x7c72b:
 
 UnknownText_0x7c75c:
 	text "Welcome to the"
-	line "#MON SALON!"
+	line "#mon Salon!"
 
 	para "I'm the younger"
 	line "and less expen-"
 	cont "sive of the two"
-	cont "HAIRCUT BROTHERS."
+	cont "Haircut Brothers."
 
 	para "I'll spiff up your"
-	line "#MON for just"
+	line "#mon for just"
 	cont "¥300."
 
 	para "So? How about it?"
 	done
 
 UnknownText_0x7c7f1:
-	text "OK, which #MON"
+	text "OK, which #mon"
 	line "should I do?"
 	done
 

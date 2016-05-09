@@ -23,8 +23,8 @@ BuenaScript_0x191f88:
 	jumptextfaceplayer UnknownText_0x191fca
 
 UnknownText_0x191f8b:
-	text "TEAM ROCKET is no"
-	line "longer in KANTO."
+	text "Team Rocket is no"
+	line "longer in Kanto."
 
 	para "That alone makes"
 	line "me happy."
@@ -33,7 +33,7 @@ UnknownText_0x191f8b:
 UnknownText_0x191fca:
 	text "I'm thinking about"
 	line "going shopping in"
-	cont "SAFFRON."
+	cont "Saffron."
 	done
 
 VermilionMart_MapEventHeader:
