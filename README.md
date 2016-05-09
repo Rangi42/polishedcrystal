@@ -92,7 +92,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Struggle does 25% recoil damage
    * Low Kick's power is based on weight
-   * Make sure Fury Cutter's power is capped at 160
    * Beat up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
