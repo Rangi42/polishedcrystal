@@ -426,11 +426,16 @@ EvasionUp2:
 	endmove
 
 Growth:
-SpecialAttackAndDefenseUp:
+	; TODO: fix animation and message
 	checkobedience
 	usedmovetext
 	doturn
 	attackup
+	lowersub
+	statupanim
+	raisesub
+	statupmessage
+	statupfailtext
 	specialattackup
 	lowersub
 	statupanim
