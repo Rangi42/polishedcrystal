@@ -116,26 +116,26 @@ TypeNames: ; 5097b
 	dw Dragon
 	dw Dark
 	dw Fairy
-	dw CurseType
+	dw UnknownType
 
-Normal:    db "Normal@"
-Fighting:  db "Fighting@"
-Flying:    db "Flying@"
-Poison:    db "Poison@"
-Ground:    db "Ground@"
-Rock:      db "Rock@"
-Bug:       db "Bug@"
-Ghost:     db "Ghost@"
-Steel:     db "Steel@"
-Fire:      db "Fire@"
-Water:     db "Water@"
-Grass:     db "Grass@"
-Electric:  db "Electric@"
-Psychic:   db "Psychic@"
-Ice:       db "Ice@"
-Dragon:    db "Dragon@"
-Dark:      db "Dark@"
-Fairy:     db "Fairy@"
-CurseType: db "???@"
+Normal:      db "Normal@"
+Fighting:    db "Fighting@"
+Flying:      db "Flying@"
+Poison:      db "Poison@"
+Ground:      db "Ground@"
+Rock:        db "Rock@"
+Bug:         db "Bug@"
+Ghost:       db "Ghost@"
+Steel:       db "Steel@"
+Fire:        db "Fire@"
+Water:       db "Water@"
+Grass:       db "Grass@"
+Electric:    db "Electric@"
+Psychic:     db "Psychic@"
+Ice:         db "Ice@"
+Dragon:      db "Dragon@"
+Dark:        db "Dark@"
+Fairy:       db "Fairy@"
+UnknownType: db "???@"
 
 ; 50a28
