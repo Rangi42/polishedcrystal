@@ -185,7 +185,7 @@ ENDM
 	move NIGHTMARE,    EFFECT_NIGHTMARE,           0, GHOST,    100, 15,   0, STATUS
 	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,     100, 25,  10, PHYSICAL
 	move SNORE,        EFFECT_SNORE,              50, NORMAL,   100, 15,  30, SPECIAL
-	move CURSE,        EFFECT_CURSE,               0, CURSE_T,  100, 10,   0, STATUS
+	move CURSE,        EFFECT_CURSE,               0, GHOST,    100, 10,   0, STATUS
 	move FLAIL,        EFFECT_REVERSAL,            1, NORMAL,   100, 15,   0, PHYSICAL
 	move CONVERSION2,  EFFECT_CONVERSION2,         0, NORMAL,   100, 30,   0, STATUS
 	move AEROBLAST,    EFFECT_NORMAL_HIT,        100, FLYING,    95,  5,   0, SPECIAL

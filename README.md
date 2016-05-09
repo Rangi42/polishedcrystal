@@ -42,6 +42,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Growth raises Attack and Sp.Atk
    * Updated Pokémon base stats and move attributes
    * Hidden Power is always 60 power
+   * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
    * Added X Spcl. Def
 * Grammar and spelling updates:
