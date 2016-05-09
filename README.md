@@ -41,6 +41,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Electric-type Pokémon cannot be Paralyzed
    * Growth raises Attack and Sp.Atk
    * Updated Pokémon base stats and move attributes
+   * Hidden Power is always 60 power
    * Sandstorm does 1/16 damage per turn
    * Added X Spcl. Def
 * Grammar and spelling updates:
@@ -90,7 +91,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Struggle does 25% recoil damage
    * Low Kick's power is based on weight
    * Make sure Fury Cutter's power is capped at 160
-   * Hidden Power is always 60 power
    * Beat up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
