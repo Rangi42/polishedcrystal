@@ -1,4 +1,4 @@
-# Pokémon Crystal Omega
+# Pokémon Polished Crystal
 
 This is a custom Pokémon game based on pret's disassembly of Pokémon Crystal.
 

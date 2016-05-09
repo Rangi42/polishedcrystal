@@ -43,7 +43,7 @@ clean:
 
 pokecrystal.gbc: $(crystal_obj)
 	rgblink -n pokecrystal.sym -m pokecrystal.map -o $@ $^
-	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_CRYSTAL $@
+	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_POLCRYS $@
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<
