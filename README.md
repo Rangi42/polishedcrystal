@@ -64,6 +64,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * New default player names
 * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
 * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
+* Politoed has 80 (+10) Speed to match its total with Poliwrath
 * Enemy AI doesn't fail an extra 25% of the time with sleep-inducing moves
 
 
