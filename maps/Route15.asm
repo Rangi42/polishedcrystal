@@ -161,9 +161,9 @@ UnknownText_0x1aa7bc:
 
 SchoolboyJohnnySeenText:
 	text "We're on a field"
-	line "trip to LAVENDER"
+	line "trip to Lavender"
 
-	para "RADIO TOWER for"
+	para "Radio Tower for"
 	line "social studies."
 	done
 
@@ -189,16 +189,16 @@ SchoolboyBillyBeatenText:
 	done
 
 UnknownText_0x1aa8b0:
-	text "If #MON were a"
+	text "If #mon were a"
 	line "subject at school,"
 	cont "I'd be the best!"
 	done
 
 Route15SignText:
-	text "ROUTE 15"
+	text "Route 15"
 
-	para "FUCHSIA CITY -"
-	line "LAVENDER TOWN"
+	para "Fuchsia City -"
+	line "Lavender Town"
 	done
 
 Route15_MapEventHeader:

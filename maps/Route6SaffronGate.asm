@@ -31,14 +31,14 @@ UnknownScript_0x1926f8:
 	end
 
 UnknownText_0x1926fe:
-	text "Welcome to SAFFRON"
-	line "CITY, home of the"
-	cont "MAGNET TRAIN!"
+	text "Welcome to Saffron"
+	line "City, home of the"
+	cont "Magnet Train!"
 
 	para "…That's what I'd"
 	line "normally say, but"
 
-	para "the MAGNET TRAIN"
+	para "the Magnet Train"
 	line "isn't running now."
 
 	para "It's not getting"
@@ -47,16 +47,16 @@ UnknownText_0x1926fe:
 	para "because there's"
 	line "something wrong"
 
-	para "with the POWER"
-	line "PLANT."
+	para "with the Power"
+	line "Plant."
 	done
 
 UnknownText_0x1927cb:
-	text "The MAGNET TRAIN"
+	text "The Magnet Train"
 	line "is the most famous"
 
-	para "thing about SAF-"
-	line "FRON."
+	para "thing about Saf-"
+	line "fron."
 	done
 
 Route6SaffronGate_MapEventHeader:

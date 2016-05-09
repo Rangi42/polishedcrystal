@@ -38,19 +38,19 @@ MovementData_0x73629:
 	step_end
 
 UnknownText_0x7362c:
-	text "CYCLING ROAD"
+	text "Cycling Road"
 	line "Uphill Starts Here"
 	done
 
 UnknownText_0x7364d:
 	text "Hang on! Don't you"
-	line "have a BICYCLE?"
+	line "have a Bicycle?"
 
-	para "The CYCLING ROAD"
+	para "The Cycling Road"
 	line "is beyond here."
 
 	para "You have to have a"
-	line "BICYCLE to go on."
+	line "Bicycle to go on."
 	done
 
 Route1718Gate_MapEventHeader:

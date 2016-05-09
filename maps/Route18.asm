@@ -36,7 +36,7 @@ Route18Sign:
 
 Bird_keeperBorisSeenText:
 	text "If you're looking"
-	line "for #MON, you"
+	line "for #mon, you"
 
 	para "have to look in"
 	line "the tall grass."
@@ -53,9 +53,9 @@ UnknownText_0x1acfa5:
 	done
 
 Bird_keeperBobSeenText:
-	text "CYCLING ROAD is a"
+	text "Cycling Road is a"
 	line "quick shortcut to"
-	cont "CELADON."
+	cont "Celadon."
 	done
 
 Bird_keeperBobBeatenText:
@@ -64,17 +64,17 @@ Bird_keeperBobBeatenText:
 
 UnknownText_0x1ad00d:
 	text "If you don't have"
-	line "a BICYCLE, you're"
+	line "a Bicycle, you're"
 
 	para "not allowed to use"
 	line "the shortcut."
 	done
 
 Route18SignText:
-	text "ROUTE 18"
+	text "Route 18"
 
-	para "CELADON CITY -"
-	line "FUCHSIA CITY"
+	para "Celadon City -"
+	line "Fuchsia City"
 	done
 
 Route18_MapEventHeader:

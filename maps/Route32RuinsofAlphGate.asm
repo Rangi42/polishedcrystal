@@ -20,7 +20,7 @@ YoungsterScript_0x69a33:
 	jumptextfaceplayer UnknownText_0x69abd
 
 UnknownText_0x69a36:
-	text "RUINS OF ALPH"
+	text "Ruins of Alph"
 
 	para "A Look-and-Touch"
 	line "Tourist Site"
@@ -31,7 +31,7 @@ UnknownText_0x69a36:
 
 UnknownText_0x69a81:
 	text "You're studying"
-	line "the RUINS?"
+	line "the ruins?"
 
 	para "I see a scientist"
 	line "in the making."

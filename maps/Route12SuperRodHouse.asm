@@ -39,8 +39,8 @@ SuperRodHouseBookshelf:
 	jumpstd picturebookshelf
 
 UnknownText_0x7f4af:
-	text "I'm the FISHING"
-	line "GURU's younger"
+	text "I'm the Fishing"
+	line "Guru's younger"
 	cont "brother."
 
 	para "I can see that you"
@@ -59,7 +59,7 @@ UnknownText_0x7f52f:
 
 	para "Here, fishing fan!"
 	line "Take this--it's a"
-	cont "SUPER ROD."
+	cont "Super Rod."
 	done
 
 UnknownText_0x7f57c:
@@ -70,8 +70,8 @@ UnknownText_0x7f57c:
 	para "Remember--you can"
 	line "catch different"
 
-	para "#MON using"
-	line "different RODS."
+	para "#mon using"
+	line "different Rods."
 	done
 
 UnknownText_0x7f5ec:

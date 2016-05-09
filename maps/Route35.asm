@@ -278,7 +278,7 @@ FruitTreeScript_0x19ca7e:
 
 CamperIvanSeenText:
 	text "I've been getting"
-	line "#MON data off"
+	line "#mon data off"
 
 	para "my radio. I think"
 	line "I'm good."
@@ -291,7 +291,7 @@ CamperIvanBeatenText:
 UnknownText_0x19cac4:
 	text "Music on the radio"
 	line "changes the moods"
-	cont "of wild #MON."
+	cont "of wild #mon."
 	done
 
 CamperElliotSeenText:
@@ -324,13 +324,13 @@ PicnickerBrookeBeatenText:
 
 UnknownText_0x19cbba:
 	text "I can count on my"
-	line "#MON more than"
+	line "#mon more than"
 	cont "my boyfriend."
 	done
 
 PicnickerKimSeenText:
 	text "Are you going to"
-	line "the GYM? Me too!"
+	line "the Gym? Me too!"
 	done
 
 PicnickerKimBeatenText:
@@ -339,14 +339,14 @@ PicnickerKimBeatenText:
 	done
 
 UnknownText_0x19cc21:
-	text "The GYM BADGES are"
+	text "The Gym Badges are"
 	line "pretty. I collect"
 	cont "them."
 	done
 
 Bird_keeperBryanSeenText:
 	text "What kinds of"
-	line "BALLS do you use?"
+	line "Balls do you use?"
 	done
 
 Bird_keeperBryanBeatenText:
@@ -355,24 +355,24 @@ Bird_keeperBryanBeatenText:
 	done
 
 UnknownText_0x19cc87:
-	text "Some #MON flee"
+	text "Some #mon flee"
 	line "right away."
 
 	para "Try catching them"
-	line "with KURT's FAST"
-	cont "BALL."
+	line "with Kurt's Fast"
+	cont "Ball."
 
 	para "Whenever I find a"
-	line "WHT APRICORN, I"
-	cont "take it to KURT."
+	line "Wht Apricorn, I"
+	cont "take it to Kurt."
 
 	para "He turns it into a"
-	line "custom BALL."
+	line "custom Ball."
 	done
 
 JugglerIrwin1SeenText:
 	text "Behold my graceful"
-	line "BALL dexterity!"
+	line "Ball dexterity!"
 	done
 
 JugglerIrwin1BeatenText:
@@ -383,7 +383,7 @@ JugglerIrwin1BeatenText:
 UnknownText_0x19cd5a:
 	text "I was going to"
 	line "dazzle you with my"
-	cont "prize #MON."
+	cont "prize #mon."
 
 	para "But your prowess"
 	line "electrified me!"
@@ -391,7 +391,7 @@ UnknownText_0x19cd5a:
 
 Bug_catcherArnie1SeenText:
 	text "I'll go anywhere"
-	line "if bug #MON"
+	line "if bug #mon"
 	cont "appear there."
 	done
 
@@ -401,16 +401,16 @@ Bug_catcherArnie1BeatenText:
 	done
 
 UnknownText_0x19cdf6:
-	text "My VENONAT won me"
+	text "My Venonat won me"
 	line "the Bug-Catching"
 
 	para "Contest at the"
-	line "NATIONAL PARK."
+	line "National Park."
 	done
 
 UnknownText_0x19ce38:
 	text "Wow… Look at all"
-	line "those YANMA!"
+	line "those Yanma!"
 
 	para "I'm so blown away,"
 	line "I can't move."
@@ -427,9 +427,9 @@ FirebreatherWaltBeatenText:
 	done
 
 UnknownText_0x19cebc:
-	text "The #MON March"
+	text "The #mon March"
 	line "on the radio lures"
-	cont "wild #MON."
+	cont "wild #mon."
 	done
 
 UnknownText_0x19ceea:
@@ -451,7 +451,7 @@ UnknownText_0x19cf0f:
 	done
 
 UnknownText_0x19cf56:
-	text "Your #MON look"
+	text "Your #mon look"
 	line "pretty tough."
 
 	para "You could go any-"
@@ -459,7 +459,7 @@ UnknownText_0x19cf56:
 	done
 
 Route35SignText:
-	text "ROUTE 35"
+	text "Route 35"
 	done
 
 Route35_MapEventHeader:

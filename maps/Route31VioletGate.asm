@@ -18,7 +18,7 @@ CooltrainerFScript_0x197637:
 UnknownText_0x19763a:
 	text "Hi there!"
 	line "Did you visit"
-	cont "SPROUT TOWER?"
+	cont "Sprout Tower?"
 	done
 
 UnknownText_0x197661:

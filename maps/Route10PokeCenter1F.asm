@@ -37,7 +37,7 @@ CooltrainerFScript_0x188bee:
 	jumptextfaceplayer UnknownText_0x188d0c
 
 UnknownText_0x188bf1:
-	text "A #MON CENTER"
+	text "A #mon Center"
 	line "near a cave?"
 
 	para "That's mighty"
@@ -45,11 +45,11 @@ UnknownText_0x188bf1:
 	done
 
 UnknownText_0x188c26:
-	text "The POWER PLANT's"
-	line "MANAGER is looking"
+	text "The Power Plant's"
+	line "Manager is looking"
 
 	para "for a strong #-"
-	line "MON trainer."
+	line "mon trainer."
 
 	para "He needs help"
 	line "getting back"
@@ -59,10 +59,10 @@ UnknownText_0x188c26:
 	done
 
 UnknownText_0x188c9e:
-	text "I hear TEAM ROCKET"
+	text "I hear Team Rocket"
 	line "got back together"
 
-	para "in JOHTO but fell"
+	para "in Johto but fell"
 	line "apart right away."
 
 	para "I didn't know any-"
@@ -76,8 +76,8 @@ UnknownText_0x188d0c:
 	para "the roof of a big"
 	line "building."
 
-	para "That's the POWER"
-	line "PLANT."
+	para "That's the Power"
+	line "Plant."
 	done
 
 Route10PokeCenter1F_MapEventHeader:

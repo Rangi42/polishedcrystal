@@ -21,15 +21,15 @@ UnknownText_0x1adb22:
 	text "The road is closed"
 	line "until the problem"
 
-	para "at the POWER PLANT"
+	para "at the Power Plant"
 	line "is solved."
 	done
 
 Route5UndergroundPathSignText:
-	text "UNDERGROUND PATH"
+	text "Underground Path"
 
-	para "CERULEAN CITY -"
-	line "VERMILION CITY"
+	para "Cerulean City -"
+	line "Vermilion City"
 	done
 
 HouseForSaleSignText:

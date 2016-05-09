@@ -42,30 +42,30 @@ UnknownText_0x1ad957:
 	text "The road is closed"
 	line "until the problem"
 
-	para "at the POWER PLANT"
+	para "at the Power Plant"
 	line "is solved."
 	done
 
 Route6UndergroundPathSignText:
-	text "UNDERGROUND PATH"
+	text "Underground Path"
 
-	para "CERULEAN CITY -"
-	line "VERMILION CITY"
+	para "Cerulean City -"
+	line "Vermilion City"
 	done
 
 PokefanmRexSeenText:
-	text "My PHANPY is the"
+	text "My Phanpy is the"
 	line "cutest in the"
 	cont "world."
 	done
 
 PokefanmRexBeatenText:
-	text "My PHANPY!"
+	text "My Phanpy!"
 	done
 
 UnknownText_0x1ad9ff:
 	text "Look how adorable"
-	line "my PHANPY acts!"
+	line "my Phanpy acts!"
 
 	para "Isn't it cute"
 	line "enough to make"
@@ -73,18 +73,18 @@ UnknownText_0x1ad9ff:
 	done
 
 PokefanmAllanSeenText:
-	text "My TEDDIURSA is"
+	text "My Teddiursa is"
 	line "the cutest in the"
 	cont "world."
 	done
 
 PokefanmAllanBeatenText:
-	text "My TEDDIURSA!"
+	text "My Teddiursa!"
 	done
 
 UnknownText_0x1ada88:
 	text "Look how adorable"
-	line "my TEDDIURSA acts!"
+	line "my Teddiursa acts!"
 
 	para "Isn't it cute"
 	line "enough to make"

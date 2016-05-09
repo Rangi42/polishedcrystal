@@ -258,8 +258,8 @@ CooltrainermJakeSeenText:
 	text "I'm making my"
 	line "final preparations"
 
-	para "for the #MON"
-	line "LEAGUE."
+	para "for the #mon"
+	line "League."
 	done
 
 CooltrainermJakeBeatenText:
@@ -269,16 +269,16 @@ CooltrainermJakeBeatenText:
 UnknownText_0x1a4f08:
 	text "It's going to be"
 	line "tough to win at"
-	cont "the LEAGUE."
+	cont "the League."
 
 	para "I need to do some"
 	line "more training."
 
 	para "I hear that the"
-	line "LEAGUE's ELITE"
+	line "League's Elite"
 
-	para "FOUR are tougher"
-	line "than GYM LEADERS."
+	para "Four are tougher"
+	line "than Gym Leaders."
 	done
 
 CooltrainermGaven3SeenText:
@@ -293,13 +293,14 @@ CooltrainermGaven3BeatenText:
 	done
 
 UnknownText_0x1a4fe4:
-	text "To get to #MON"
-	line "LEAGUE, you have"
+	text "To get to the"
+	line "#mon League, you"
 
-	para "to get through"
-	line "VICTORY ROAD."
+	para "have to get"
+	line "through Victory"
+	cont "Road."
 
-	para "But VICTORY ROAD"
+	para "But Victory Road"
 	line "is tough."
 
 	para "Practically nobody"
@@ -323,7 +324,7 @@ CooltrainerfJoyceBeatenText:
 
 UnknownText_0x1a50d7:
 	text "I've defeated"
-	line "eight GYM LEADERS,"
+	line "eight Gym Leaders,"
 
 	para "so I was feeling"
 	line "confident."
@@ -344,23 +345,23 @@ CooltrainerfBeth1SeenText:
 	cont "win at any cost."
 
 	para "I felt sorry for"
-	line "his #MON."
+	line "his #mon."
 	done
 
 CooltrainerfBeth1BeatenText:
-	text "#MON aren't"
+	text "#mon aren't"
 	line "tools of war."
 	done
 
 UnknownText_0x1a51d9:
-	text "#MON are in-"
+	text "#mon are in-"
 	line "valuable, lifelong"
 	cont "partners."
 	done
 
 PsychicRichardSeenText:
 	text "Wow, look at all"
-	line "those BADGES!"
+	line "those Badges!"
 	cont "I'm impressed."
 
 	para "But you're not"
@@ -375,7 +376,7 @@ PsychicRichardBeatenText:
 	done
 
 UnknownText_0x1a5278:
-	text "People and #MON"
+	text "People and #mon"
 	line "grow from their"
 	cont "experiences."
 
@@ -389,7 +390,7 @@ FisherScottSeenText:
 
 	para "I feel like I"
 	line "could boot even"
-	cont "the LEAGUE CHAMP!"
+	cont "the League Champ!"
 	done
 
 FisherScottBeatenText:
@@ -401,15 +402,15 @@ UnknownText_0x1a5326:
 	text "Just like in fish-"
 	line "ing, it's all over"
 
-	para "in #MON if you"
+	para "in #mon if you"
 	line "give up."
 	done
 
 Route26SignText:
-	text "ROUTE 26"
+	text "Route 26"
 
-	para "#MON LEAGUE"
-	line "RECEPTION GATE"
+	para "#mon League"
+	line "Reception Gate"
 	done
 
 Route26_MapEventHeader:

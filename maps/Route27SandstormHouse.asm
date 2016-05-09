@@ -43,11 +43,11 @@ SandstormHouseBookshelf:
 
 SandstormHouseWomanText1:
 	text "Where are you off"
-	line "to with #MON?"
+	line "to with #mon?"
 
-	para "#MON LEAGUE?"
+	para "The #mon League?"
 
-	para "Are your #MON"
+	para "Are your #mon"
 	line "loyal enough for"
 	cont "you to win?"
 
@@ -55,7 +55,7 @@ SandstormHouseWomanText1:
 	done
 
 SandstormHouseWomanLoyalText:
-	text "Ah! Your #MON"
+	text "Ah! Your #mon"
 	line "trusts you very"
 	cont "much."
 
@@ -68,7 +68,7 @@ SandstormHouseWomanLoyalText:
 
 SandstormHouseSandstormDescription:
 	text "TM37 happens to be"
-	line "SANDSTORM."
+	line "Sandstorm."
 
 	para "It's a move that"
 	line "inflicts damage on"
@@ -89,7 +89,7 @@ SandstormHouseWomanDisloyalText:
 	line "tough going."
 
 	para "Trust is the tie"
-	line "that binds #MON"
+	line "that binds #mon"
 	cont "and trainers."
 	done
 

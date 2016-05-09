@@ -54,7 +54,7 @@ UnknownText_0x69b83:
 	cont "about you?"
 
 	para "Would you like one"
-	line "of my RODS?"
+	line "of my Rods?"
 	done
 
 UnknownText_0x69be8:
@@ -72,7 +72,7 @@ UnknownText_0x69c1b:
 	line "be it the sea or a"
 
 	para "stream, try out"
-	line "your ROD."
+	line "your Rod."
 	done
 
 UnknownText_0x69c6c:
@@ -87,10 +87,10 @@ UnknownText_0x69c8d:
 
 UnknownText_0x69cac:
 	text "What should I make"
-	line "my #MON hold?"
+	line "my #mon hold?"
 
 	para "Maybe an item that"
-	line "increases ATTACK"
+	line "increases Attack"
 	cont "power…"
 	done
 

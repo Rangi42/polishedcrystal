@@ -93,35 +93,35 @@ MovementData_0x62d9a:
 
 UnknownText_0x62d9d:
 	text "Oh, honey. You're"
-	line "making a #DEX?"
+	line "making a #dex?"
 
 	para "It must be hard if"
-	line "#MON won't"
+	line "#mon won't"
 
 	para "appear. Try using"
 	line "this TM."
 	done
 
 UnknownText_0x62df6:
-	text "It's SWEET SCENT."
+	text "It's Sweet Scent."
 
 	para "Use it wherever"
-	line "#MON appear."
+	line "#mon appear."
 
-	para "#MON will be"
+	para "#mon will be"
 	line "enticed by it."
 	done
 
 UnknownText_0x62e41:
 	text "Something's wrong"
-	line "in ILEX FOREST…"
+	line "in Ilex Forest…"
 
 	para "You should stay"
 	line "away right now."
 	done
 
 UnknownText_0x62e83:
-	text "BUTTERFREE: Freeh!"
+	text "Butterfree: Freeh!"
 	done
 
 UnknownText_0x62e97:
@@ -130,12 +130,12 @@ UnknownText_0x62e97:
 	cont "the protector?"
 
 	para "It watches over"
-	line "the FOREST from"
+	line "the Forest from"
 	cont "across time."
 
 	para "I think that it"
-	line "must be a grass-"
-	cont "type #MON."
+	line "must be a Grass-"
+	cont "type #mon."
 	done
 
 Route34IlexForestGate_MapEventHeader:

@@ -74,7 +74,7 @@ Route17HiddenMaxElixer:
 
 BikerRileySeenText:
 	text "Hey, you! You're"
-	line "from JOHTO, huh?"
+	line "from Johto, huh?"
 	done
 
 BikerRileyBeatenText:
@@ -83,12 +83,12 @@ BikerRileyBeatenText:
 
 UnknownText_0x1ad13b:
 	text "Don't get cocky,"
-	line "you JOHTO punk!"
+	line "you Johto punk!"
 	done
 
 BikerJoelSeenText:
 	text "Wow. That's a cool"
-	line "BICYCLE!"
+	line "Bicycle!"
 	done
 
 BikerJoelBeatenText:
@@ -118,7 +118,7 @@ BikerGlennBeatenText:
 UnknownText_0x1ad225:
 	text "Hands-free riding"
 	line "is considered cool"
-	cont "on CYCLING ROAD."
+	cont "on Cycling Road."
 	done
 
 BikerCharlesSeenText:

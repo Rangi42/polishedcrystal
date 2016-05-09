@@ -57,7 +57,7 @@ PokefanmCarterSeenText:
 	line "I had a hard time"
 
 	para "catching my prized"
-	line "#MON."
+	line "#mon."
 	done
 
 PokefanmCarterBeatenText:
@@ -65,8 +65,8 @@ PokefanmCarterBeatenText:
 	done
 
 UnknownText_0x1ad508:
-	text "SQUIRTLE, CHARMAN-"
-	line "DER and BULBASAUR…"
+	text "Squirtle, Charman-"
+	line "der and Bulbasaur…"
 
 	para "I think that's a"
 	line "well-balanced mix."
@@ -75,7 +75,7 @@ UnknownText_0x1ad508:
 Bird_keeperRoySeenText:
 	text "My dream is to fly"
 	line "with my beloved"
-	cont "bird #MON."
+	cont "bird #mon."
 	done
 
 Bird_keeperRoyBeatenText:
@@ -84,17 +84,17 @@ Bird_keeperRoyBeatenText:
 	done
 
 UnknownText_0x1ad5a4:
-	text "You have #MON"
+	text "You have #mon"
 	line "that know the HM"
 
-	para "move FLY, don't"
+	para "move Fly, don't"
 	line "you? I envy you."
 	done
 
 PokefanmTrevorSeenText:
 	text "Hi. Did you know…?"
 
-	para "#MON get more"
+	para "#mon get more"
 	line "friendly if you"
 
 	para "train them in a"
@@ -104,7 +104,7 @@ PokefanmTrevorSeenText:
 
 PokefanmTrevorBeatenText:
 	text "Where did I meet"
-	line "this PSYDUCK?"
+	line "this Psyduck?"
 	done
 
 UnknownText_0x1ad660:
@@ -112,7 +112,7 @@ UnknownText_0x1ad660:
 	line "an easy way to"
 
 	para "identify where I"
-	line "got my #MON…"
+	line "got my #mon…"
 	done
 
 Route14_MapEventHeader:

@@ -25,20 +25,20 @@ OfficerScript_0x1ab3f6:
 	end
 
 UnknownText_0x1ab40a:
-	text "CINNABAR's volcano"
+	text "Cinnabar's volcano"
 	line "erupted."
 
 	para "It hurled boulders"
-	line "that cut off ROUTE"
+	line "that cut off Route"
 	cont "19 indefinitely."
 
 	para "I wonder if the"
-	line "people of CINNABAR"
+	line "people of Cinnabar"
 	cont "are safe…"
 	done
 
 UnknownText_0x1ab48a:
-	text "No CINNABAR citi-"
+	text "No Cinnabar citi-"
 	line "zens were injured"
 
 	para "by the eruption."

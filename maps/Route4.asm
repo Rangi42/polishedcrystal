@@ -56,7 +56,7 @@ Route4HiddenUltraBall:
 
 Bird_keeperHankSeenText:
 	text "I'm raising my"
-	line "#MON. Want to"
+	line "#mon. Want to"
 	cont "battle with me?"
 	done
 
@@ -67,7 +67,7 @@ Bird_keeperHankBeatenText:
 
 UnknownText_0x1ae258:
 	text "If you have a"
-	line "specific #MON"
+	line "specific #mon"
 
 	para "that you want to"
 	line "raise, put it out"
@@ -93,8 +93,8 @@ PicnickerHopeBeatenText:
 	done
 
 UnknownText_0x1ae320:
-	text "I heard CLEFAIRY"
-	line "appear at MT.MOON."
+	text "I heard Clefairy"
+	line "appear at Mt.Moon."
 
 	para "But where could"
 	line "they be?"
@@ -115,7 +115,7 @@ UnknownText_0x1ae369:
 	done
 
 MtMoonSquareSignText:
-	text "MT.MOON SQUARE"
+	text "Mt.Moon Square"
 
 	para "Just go up the"
 	line "stairs."

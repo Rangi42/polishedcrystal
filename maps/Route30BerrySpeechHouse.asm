@@ -29,12 +29,12 @@ Route30BerrySpeechHouseBookshelf:
 	jumpstd magazinebookshelf
 
 UnknownText_0x196d82:
-	text "You know, #MON"
-	line "eat BERRIES."
+	text "You know, #mon"
+	line "eat Berries."
 
-	para "Well, my #MON"
+	para "Well, my #mon"
 	line "got healthier by"
-	cont "eating a BERRY."
+	cont "eating a Berry."
 
 	para "Here. I'll share"
 	line "one with you!"
@@ -42,7 +42,7 @@ UnknownText_0x196d82:
 
 UnknownText_0x196dec:
 	text "Check trees for"
-	line "BERRIES. They just"
+	line "Berries. They just"
 	cont "drop right off."
 	done
 

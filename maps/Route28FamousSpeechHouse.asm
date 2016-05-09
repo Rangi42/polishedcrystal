@@ -69,7 +69,7 @@ CelebrityText2:
 	done
 
 CelebritysFearowText:
-	text "FEAROW: Feero!"
+	text "Fearow: Feero!"
 	done
 
 Route28FamousSpeechHouse_MapEventHeader:

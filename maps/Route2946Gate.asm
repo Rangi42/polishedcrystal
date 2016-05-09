@@ -26,7 +26,7 @@ UnknownText_0x7b5c1:
 
 UnknownText_0x7b60d:
 	text "Different kinds of"
-	line "#MON appear"
+	line "#mon appear"
 	cont "past here."
 
 	para "If you want to"

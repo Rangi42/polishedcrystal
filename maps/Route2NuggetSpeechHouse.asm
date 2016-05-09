@@ -43,7 +43,7 @@ UnknownText_0x9b865:
 	done
 
 UnknownText_0x9b8e5:
-	text "That's a NUGGET."
+	text "That's a Nugget."
 
 	para "I can't give you"
 	line "any nuggets of"

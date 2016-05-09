@@ -118,7 +118,7 @@ FirebreatherBurtBeatenText:
 
 UnknownText_0x1ae118:
 	text "The greatest fire-"
-	line "breather in KANTO,"
+	line "breather in Kanto,"
 	cont "that's me."
 
 	para "But not the best"
@@ -126,7 +126,7 @@ UnknownText_0x1ae118:
 	done
 
 UnknownText_0x1ae163:
-	text "MT.MOON SQUARE"
+	text "Mt.Moon Square"
 
 	para "Just go up the"
 	line "stairs."

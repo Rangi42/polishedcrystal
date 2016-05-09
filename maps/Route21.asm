@@ -54,7 +54,7 @@ SwimmermSethBeatenText:
 
 UnknownText_0x1ac873:
 	text "This arrogant guy"
-	line "was at CINNABAR's"
+	line "was at Cinnabar's"
 	cont "volcano."
 	done
 

@@ -38,7 +38,7 @@ MovementData_0x73405:
 	step_end
 
 UnknownText_0x73408:
-	text "CYCLING ROAD"
+	text "Cycling Road"
 	line "starts here."
 
 	para "It's all downhill,"
@@ -56,10 +56,10 @@ UnknownText_0x73496:
 	text "Hey! Whoa! Stop!"
 
 	para "You can't go out"
-	line "on the CYCLING"
+	line "on the Cycling"
 
-	para "ROAD without a"
-	line "BICYCLE."
+	para "Road without a"
+	line "Bicycle."
 	done
 
 Route16Gate_MapEventHeader:

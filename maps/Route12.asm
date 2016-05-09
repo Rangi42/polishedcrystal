@@ -76,7 +76,7 @@ Route12HiddenElixer:
 FisherMartinSeenText:
 	text "Patience is the"
 	line "key to both fish-"
-	cont "ing and #MON."
+	cont "ing and #mon."
 	done
 
 FisherMartinBeatenText:
@@ -102,7 +102,7 @@ FisherStephenBeatenText:
 
 UnknownText_0x1a70d4:
 	text "Have you checked"
-	line "out KANTO's radio"
+	line "out Kanto's radio"
 
 	para "programs? We get a"
 	line "good variety here."
@@ -132,7 +132,7 @@ UnknownText_0x1a716d:
 	para "have made such a"
 	line "fuss when the"
 
-	para "POWER PLANT went"
+	para "Power Plant went"
 	line "out of commission."
 	done
 
@@ -146,10 +146,10 @@ FisherKyleBeatenText:
 
 UnknownText_0x1a7238:
 	text "The tug you feel"
-	line "on the ROD when"
+	line "on the Rod when"
 
 	para "you hook a #-"
-	line "MON…"
+	line "mon…"
 
 	para "That's the best"
 	line "feeling ever for"
@@ -157,14 +157,14 @@ UnknownText_0x1a7238:
 	done
 
 Route12SignText:
-	text "ROUTE 12"
+	text "Route 12"
 
-	para "NORTH TO LAVENDER"
-	line "TOWN"
+	para "North to Lavender"
+	line "Town"
 	done
 
 FishingSpotSignText:
-	text "FISHING SPOT"
+	text "Fishing Spot"
 	done
 
 Route12_MapEventHeader:
