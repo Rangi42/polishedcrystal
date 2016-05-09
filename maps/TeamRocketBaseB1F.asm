@@ -652,7 +652,7 @@ CameraGrunt2SeenText:
 
 CameraGrunt2BeatenText:
 	text "Surveillance cams"
-	line "are in the #MON"
+	line "are in the #mon"
 	cont "statues."
 
 	para "We'll keep appear-"
@@ -715,7 +715,7 @@ UnknownText_0x6cd1b:
 	done
 
 SecurityCameraText:
-	text "It's a PERSIAN"
+	text "It's a Persian"
 	line "statue…"
 
 	para "Its eyes are oddly"

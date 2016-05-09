@@ -325,7 +325,7 @@ RocketBaseRivalShovesPlayerMovement:
 	step_end
 
 LanceGetPasswordText:
-	text "LANCE: It takes"
+	text "Lance: It takes"
 	line "two passwords to"
 
 	para "get into the"
@@ -333,9 +333,9 @@ LanceGetPasswordText:
 
 	para "Those passwords"
 	line "are known only to"
-	cont "a few ROCKETS."
+	cont "a few Rockets."
 
-	para "That ROCKET there"
+	para "That Rocket there"
 	line "very graciously"
 	cont "told me so."
 
@@ -355,23 +355,23 @@ RocketBaseRivalText:
 	para "Didn't I tell you"
 	line "that I was going"
 
-	para "to destroy TEAM"
-	line "ROCKET?"
+	para "to destroy Team"
+	line "Rocket?"
 
 	para "…Tell me, who was"
 	line "the guy in the"
 
 	para "cape who used"
-	line "dragon #MON?"
+	line "dragon #mon?"
 
-	para "My #MON were no"
+	para "My #mon were no"
 	line "match at all."
 
 	para "I don't care that"
 	line "I lost. I can beat"
 
 	para "him by getting"
-	line "stronger #MON."
+	line "stronger #mon."
 
 	para "It's what he said"
 	line "that bothers me…"
@@ -379,7 +379,7 @@ RocketBaseRivalText:
 	para "He told me that"
 	line "I don't love and"
 
-	para "trust my #MON"
+	para "trust my #mon"
 	line "enough."
 
 	para "I'm furious that I"
@@ -396,10 +396,10 @@ UnknownText_0x6e400:
 	line "This is the office"
 
 	para "of our leader,"
-	line "GIOVANNI."
+	line "Giovanni."
 
 	para "Since disbanding"
-	line "TEAM ROCKET three"
+	line "Team Rocket three"
 
 	para "years ago, he has"
 	line "been in training."
@@ -422,7 +422,7 @@ UnknownText_0x6e511:
 	text "I… I couldn't do a"
 	line "thing…"
 
-	para "GIOVANNI, please"
+	para "Giovanni, please"
 	line "forgive me…"
 	done
 
@@ -435,10 +435,10 @@ UnknownText_0x6e548:
 	done
 
 RocketBaseMurkrowText:
-	text "MURKROW: The"
+	text "Murkrow: The"
 	line "password is…"
 
-	para "HAIL GIOVANNI."
+	para "Hail Giovanni."
 	done
 
 GruntF5SeenText:
@@ -460,7 +460,7 @@ UnknownText_0x6e611:
 	text "The password to"
 	line "the boss's room is"
 
-	para "SLOWPOKETAIL."
+	para "SlowpokeTail."
 
 	para "But it's useless"
 	line "unless you have"
@@ -497,15 +497,15 @@ UnknownText_0x6e737:
 	line "the boss's room…"
 
 	para "Uh…, I think it is"
-	line "RATICATE TAIL."
+	line "Raticate Tail."
 	done
 
 ScientistRossSeenText:
 	text "I used to work for"
-	line "SILPH, but now I"
+	line "Silph, but now I"
 
 	para "run research for"
-	line "TEAM ROCKET."
+	line "Team Rocket."
 
 	para "A meddlesome child"
 	line "like you needs to"
@@ -520,7 +520,7 @@ ScientistRossBeatenText:
 UnknownText_0x6e822:
 	text "A radio signal"
 	line "that drives #-"
-	cont "MON mad…"
+	cont "mon mad…"
 
 	para "My experiment is a"
 	line "complete success."
@@ -534,7 +534,7 @@ UnknownText_0x6e822:
 
 ScientistMitchSeenText:
 	text "I don't care that"
-	line "#MON are hurt"
+	line "#mon are hurt"
 	cont "by our experiment."
 	done
 
