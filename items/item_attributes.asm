@@ -156,8 +156,8 @@ Item2Attributes:
 ; X ATTACK
 	item_attribute   500, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_CLOSE
 
-; TERU-SAMA
-	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
+; X SPCL DEF
+	item_attribute   350, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_CLOSE
 
 ; X DEFEND
 	item_attribute   550, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_CLOSE
@@ -165,7 +165,7 @@ Item2Attributes:
 ; X SPEED
 	item_attribute   350, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_CLOSE
 
-; X SPECIAL
+; X SPCL ATK
 	item_attribute   350, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_CLOSE
 
 ; COIN CASE

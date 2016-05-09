@@ -64,8 +64,8 @@ Mart2: ; 160fa
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
-	db X_DEFEND
 	db X_ATTACK
+	db X_DEFEND
 	db X_SPEED
 	db FLOWER_MAIL
 	db $ff
@@ -121,11 +121,12 @@ Mart6: ; 16121
 ; 1612b
 
 Mart7: ; 1612b
-	db 7 ; # items
-	db X_SPEED
-	db X_SPECIAL
-	db X_DEFEND
+	db 8 ; # items
 	db X_ATTACK
+	db X_DEFEND
+	db X_SPEED
+	db X_SPCL_ATK
+	db X_SPCL_DEF
 	db DIRE_HIT
 	db GUARD_SPEC
 	db X_ACCURACY
@@ -366,14 +367,15 @@ Mart27: ; 161da
 ; 161e1
 
 Mart28: ; 161e1
-	db 7 ; # items
+	db 8 ; # items
 	db X_ACCURACY
 	db GUARD_SPEC
 	db DIRE_HIT
 	db X_ATTACK
 	db X_DEFEND
 	db X_SPEED
-	db X_SPECIAL
+	db X_SPCL_ATK
+	db X_SPCL_DEF
 	db $ff
 ; 161ea
 

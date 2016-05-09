@@ -291,7 +291,8 @@ AI_Items: ; 39196
 	dbw X_ATTACK,     .XAttack
 	dbw X_DEFEND,     .XDefend
 	dbw X_SPEED,      .XSpeed
-	dbw X_SPECIAL,    .XSpecial
+	dbw X_SPCL_ATK,   .XSpclAtk
+	dbw X_SPCL_DEF,   .XSpclDef
 	db $ff
 ; 381be
 
@@ -502,12 +503,18 @@ AI_Items: ; 39196
 	jp .Use
 ; 38341
 
-.XSpecial: ; 38341
+.XSpclAtk: ; 38341
 	call .XItem
 	jp c, .DontUse
-	call EnemyUsedXSpecial
+	call EnemyUsedXSpclAtk
 	jp .Use
 ; 3834d
+
+.XSpclDef: ; 38341
+	call .XItem
+	jp c, .DontUse
+	call EnemyUsedXSpclDef
+	jp .Use
 
 .XItem: ; 3834d (e:434d)
 	ld a, [EnemyTurnsTaken]
@@ -835,9 +842,13 @@ EnemyUsedXSpeed: ; 3854d
 	jr EnemyUsedXItem
 ; 38553
 
-EnemyUsedXSpecial: ; 38553
+EnemyUsedXSpclAtk: ; 38553
 	ld b, SP_ATTACK
-	ld a, X_SPECIAL
+	ld a, X_SPCL_ATK
+
+EnemyUsedXSpclDef: ; 38553
+	ld b, SP_DEFENSE
+	ld a, X_SPCL_DEF
 
 
 ; Parameter

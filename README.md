@@ -42,6 +42,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Growth raises Attack and Sp.Atk
    * Updated Pokémon base stats and move attributes
    * Sandstorm does 1/16 damage per turn
+   * Added X Spcl. Def
 * Grammar and spelling updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Updated Berry names (Burnt Berry → Rawst Berry, etc)
@@ -138,7 +139,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * New storyline set 5 years after Gen II
 * Selection of 255 Pokémon from all generations
 * Selection of 255 moves from all generations (Hail, etc)
-* Selection of up to 255 items from all generations (Zinc, X Sp. Def, PP Max, Dome Fossil, Helix Fossil, Old Amber, Dawn Stone, Dusk Stone, etc)
+* Selection of up to 255 items from all generations (Zinc, PP Max, Dome Fossil, Helix Fossil, Old Amber, Dawn Stone, Dusk Stone, etc)
 * Custom held items that prevent status conditions (based on unused game code)
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Separate IVs and DVs for Special Attack and Special Defense
@@ -148,7 +149,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Abilities
 * Natures
 * Wonder Trade system like Red++ (replace the Pokécom Center's Mobile Trade System)
-* Replace HM01 Cut with Machete item, and HM05 Flash with Flashlight item
+* Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
 * Make Rock Smash an HM
 * Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
 * Evening from 5–7 PM (change morning from 4−9 AM)

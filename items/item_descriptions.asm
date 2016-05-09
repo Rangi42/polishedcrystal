@@ -82,10 +82,10 @@ ItemDescriptions:
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSama4Desc
+	dw XSpclDefDesc
 	dw XDefendDesc
 	dw XSpeedDesc
-	dw XSpecialDesc
+	dw XSpclAtkDesc
 	dw CoinCaseDesc
 	dw ItemfinderDesc
 	dw TeruSama5Desc
@@ -482,8 +482,9 @@ XAttackDesc:
 	db   "Raises Attack."
 	next "(1 battle)@"
 
-TeruSama4Desc:
-	db   "?@"
+XSpclDefDesc:
+	db   "Raises Spcl."
+	next "Def. (1 battle)@"
 
 XDefendDesc:
 	db   "Raises Defense."
@@ -493,7 +494,7 @@ XSpeedDesc:
 	db   "Raises Speed."
 	next "(1 battle)@"
 
-XSpecialDesc:
+XSpclAtkDesc:
 	db   "Raises Spcl."
 	next "Atk. (1 battle)@"
 

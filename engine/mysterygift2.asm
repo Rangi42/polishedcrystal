@@ -158,7 +158,7 @@ MysteryGiftItems: ; 2c725
 	db X_ATTACK
 	db BITTER_BERRY
 	db DIRE_HIT
-	db X_SPECIAL
+	db X_SPCL_ATK
 	db X_ACCURACY
 	db EON_MAIL
 	db MORPH_MAIL

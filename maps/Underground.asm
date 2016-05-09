@@ -9,8 +9,8 @@ UndergroundHiddenFullRestore:
 	dwb EVENT_UNDERGROUND_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 
-UndergroundHiddenXSpecial:
-	dwb EVENT_UNDERGROUND_HIDDEN_X_SPECIAL, X_SPECIAL
+UndergroundHiddenXSpclAtk:
+	dwb EVENT_UNDERGROUND_HIDDEN_X_SPCL_ATK, X_SPCL_ATK
 
 
 Underground_MapEventHeader:
@@ -28,7 +28,7 @@ Underground_MapEventHeader:
 .Signposts:
 	db 2
 	signpost 9, 3, SIGNPOST_ITEM, UndergroundHiddenFullRestore
-	signpost 19, 1, SIGNPOST_ITEM, UndergroundHiddenXSpecial
+	signpost 19, 1, SIGNPOST_ITEM, UndergroundHiddenXSpclAtk
 
 .PersonEvents:
 	db 0
