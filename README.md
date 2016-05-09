@@ -74,6 +74,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 ## To do:
 
+* Remove unused code
 * Find and fix more bugs
    * Thick Club + Swords Dance Marowak Attack overflow
 * Catch all 251 Pokémon (add Vulpix, Mankey, Mareep, Girafarig, Remoraid, Bulbasaur, Charmander, Squirtle, Omanyte, Kabuto, Aerodactyl, Articuno, Zapdos, Moltres, Mewtwo, Mew, and Celebi) (use Japan's GS Ball event for Celebi)

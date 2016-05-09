@@ -350,7 +350,7 @@ endr
 	ret
 ; 8ea3f
 
-; routine by com3tiin
+; Extended icon bank routine by com3tiin
 ; http://www.pokecommunity.com/showthread.php?t=338470
 GetExtendedIconBank:
 	ld a, [CurIcon]

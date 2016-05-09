@@ -522,6 +522,9 @@ IconPointers:
 	dw CelebiIcon
 	dw EggIcon
 
+; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta
+; http://www.pokecommunity.com/showthread.php?t=338470
+
 SECTION "Mon Icons 1", ROMX
 
 INCLUDE "menu/mon_icons_1.asm"

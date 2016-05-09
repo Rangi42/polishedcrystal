@@ -285,6 +285,8 @@ BattleAnim_MirrorMove: ; c929b
 	anim_ret
 ; c929c
 
+; Moonblast animation by Victoria Lacroix
+; https://github.com/VictoriaLacroix/pokecrystal/commit/f7d84a42fe7d02e9de5d99865ca6177f8bd746d5
 BattleAnim_Moonblast:
 	anim_1gfx ANIM_GFX_SHINE
 	anim_bgp $1b
@@ -304,13 +306,6 @@ BattleAnim_Moonblast:
 	anim_call BattleAnim_ShowMon_0
 	anim_wait 12
 	anim_ret
-;	anim_1gfx ANIM_GFX_BEAM
-;	anim_bgeffect ANIM_BG_1F, $30, $4, $10
-;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
-;	anim_bgeffect ANIM_BG_06, $0, $2, $0
-;	anim_call BattleAnim_HyperBeam_branch_cbb39
-;	anim_wait 48
-;	anim_ret
 
 BattleAnim_PlayRough:
 	; TODO: write an original animation

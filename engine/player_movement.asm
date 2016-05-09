@@ -758,6 +758,8 @@ DoPlayerMovement:: ; 80000
 	ret
 ; 803d3
 
+; Routine by Victoria Lacroix
+; https://github.com/VictoriaLacroix/pokecrystal/commit/ed7f525d642cb02e84e856f2e506d2a6425d95db
 .RunCheck:
 
 	ld a, [PlayerState]
