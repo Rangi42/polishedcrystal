@@ -25,7 +25,6 @@ INCLUDE "misc/mobile_12.asm"
 InitGender: ; 48dcb (12:4dcb)
 	call InitGenderScreen
 	call LoadGenderScreenPal
-	call LoadGenderScreenLightBlueTile
 	call WaitBGMap2
 	call SetPalettes
 	ld hl, TextJump_AreYouABoyOrAreYouAGirl
@@ -65,12 +64,6 @@ TextJump_AreYouABoyOrAreYouAGirl: ; 0x48e0f
 ; 0x48e14
 
 InitGenderScreen: ; 48e14 (12:4e14)
-	ld a, $10
-	ld [MusicFade], a
-	ld a, MUSIC_NONE
-	ld [MusicFadeIDLo], a
-	ld a, $0
-	ld [MusicFadeIDHi], a
 	ld c, 8
 	call DelayFrames
 	call ClearBGPalettes
@@ -102,14 +95,3 @@ LoadGenderScreenPal: ; 48e47 (12:4e47)
 	RGB 01, 11, 31
 	RGB 00, 00, 00
 ; 48e64
-
-LoadGenderScreenLightBlueTile: ; 48e64 (12:4e64)
-	ld de, .LightBlueTile
-	ld hl, VTiles2 tile $00
-	lb bc, BANK(.LightBlueTile), 1
-	call Get2bpp
-	ret
-; 48e71 (12:4e71)
-
-.LightBlueTile: ; 48e71
-INCBIN "gfx/intro/gender_screen.2bpp"

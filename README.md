@@ -64,12 +64,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Individual party/day-care icons for each Pokémon
    * Original Japanese sprites for some trainers
    * Color-coded starter Poké Balls
-* No badge boosts to stats or types
+* Ask gender at a sensible time in Oak's speech
 * New default player names
 * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
 * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
 * Politoed has 80 (+10) Speed to match its total with Poliwrath
 * Enemy AI doesn't fail an extra 25% of the time with sleep-inducing moves
+* No badge boosts to stats or types
 
 
 ## To do:

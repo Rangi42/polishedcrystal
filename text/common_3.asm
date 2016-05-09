@@ -340,7 +340,7 @@ Text_YouCantUseItInABattle::
 	prompt
 
 Text_AreYouABoyOrAreYouAGirl::
-	text "Are you a boy?"
+	text "So, are you a boy?"
 	line "Or are you a girl?"
 	done
 

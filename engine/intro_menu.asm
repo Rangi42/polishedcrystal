@@ -71,7 +71,6 @@ NewGame: ; 5b6b
 	ld [wMonStatusFlags], a
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
-	call AreYouABoyOrAreYouAGirl
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
@@ -734,6 +733,8 @@ OakSpeech: ; 0x5f99
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTileMap
+
+	call AreYouABoyOrAreYouAGirl
 
 	xor a
 	ld [CurPartySpecies], a
