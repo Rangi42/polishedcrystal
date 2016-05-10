@@ -575,7 +575,7 @@ GoldenrodCity_MapEventHeader:
 	warp_def $1, $13, 3, ROUTE_35_GOLDENROD_GATE
 	warp_def $5, $9, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 	warp_def $1d, $9, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1b, $e, 1, GOLDENROD_POKECOM_CENTER_2F_MOBILE
+	warp_def $1b, $e, 1, GOLDENROD_POKECOM_CENTER_1F
 
 .XYTriggers:
 	db 0

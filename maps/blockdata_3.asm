@@ -241,8 +241,8 @@ BattleTower1F_BlockData:
 BattleTowerBattleRoom_BlockData:
 	INCBIN "maps/BattleTowerBattleRoom.blk"
 
-GoldenrodPokeComCenter2FMobile_BlockData:
-	INCBIN "maps/GoldenrodPokeComCenter2FMobile.blk"
+GoldenrodPokeComCenter1F_BlockData:
+	INCBIN "maps/GoldenrodPokeComCenter1F.blk"
 
 MobileTradeRoomMobile_BlockData:
 	INCBIN "maps/MobileTradeRoomMobile.blk"

@@ -2585,7 +2585,7 @@ wRoute36NationalParkGateTrigger::            ds 1 ; d98f
 wAzaleaTownTrigger::                         ds 1 ; d990
 wGoldenrodGymTrigger::                       ds 1 ; d991
 wGoldenrodMagnetTrainStationTrigger::        ds 1 ; d992
-wGoldenrodPokecomCenter2FMobileTrigger::     ds 1 ; d993
+wGoldenrodPokeComCenter1FTrigger::           ds 1 ; d993
 wOlivineCityTrigger::                        ds 1 ; d994
 wRoute34Trigger::                            ds 1 ; d995
 wRoute34IlexForestGateTrigger::              ds 1 ; d996

@@ -451,7 +451,7 @@
 	map_header_2 GoldenrodDeptStoreElevator, GOLDENROD_DEPT_STORE_ELEVATOR, $0, 0
 	map_header_2 GoldenrodDeptStoreRoof, GOLDENROD_DEPT_STORE_ROOF, $24, 0
 	map_header_2 GoldenrodGameCorner, GOLDENROD_GAME_CORNER, $0, 0
-	map_header_2 GoldenrodPokeComCenter2FMobile, GOLDENROD_POKECOM_CENTER_2F_MOBILE, $0, 0
+	map_header_2 GoldenrodPokeComCenter1F, GOLDENROD_POKECOM_CENTER_1F, $0, 0
 	map_header_2 IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_header_2 Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
 	map_header_2 DayCare, DAYCARE, $0, 0
