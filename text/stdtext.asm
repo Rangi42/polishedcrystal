@@ -25,7 +25,7 @@ PokeComNurseMornText:
 	line "mon Communication"
 
 	para "Center--or the"
-	line "#com Center."
+	line "#Com Center."
 	done
 
 PokeComNurseDayText:
@@ -35,7 +35,7 @@ PokeComNurseDayText:
 	line "mon Communication"
 
 	para "Center--or the"
-	line "#com Center."
+	line "#Com Center."
 	done
 
 PokeComNurseNiteText:
@@ -46,7 +46,7 @@ PokeComNurseNiteText:
 	line "mon Communication"
 
 	para "Center--or the"
-	line "#com Center."
+	line "#Com Center."
 	done
 
 NurseAskHealText:

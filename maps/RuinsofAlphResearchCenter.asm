@@ -333,7 +333,7 @@ UnknownText_0x596d3:
 	para "Those mysterious"
 	line "patterns appeared"
 
-	para "when the #com"
+	para "when the #Com"
 	line "Center was built."
 
 	para "It must mean that"

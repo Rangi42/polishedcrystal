@@ -113,7 +113,7 @@ MapGoldenrodPokeComCenter2FMobileSignpost2Script:
 	jumptext UnknownText_0x62b26
 
 UnknownText_0x62674:
-	text "#com Center and"
+	text "#Com Center and"
 	line "Mobile Center were"
 
 	para "built to satisfy"
@@ -161,7 +161,7 @@ UnknownText_0x627ee:
 	done
 
 UnknownText_0x62828:
-	text "There's a #com"
+	text "There's a #Com"
 	line "Club upstairs in"
 
 	para "any #mon"
@@ -247,7 +247,7 @@ UnknownText_0x62b26:
 
 	para "<......> <......> <......>"
 
-	para "To the #com"
+	para "To the #Com"
 	line "Center staff…"
 
 	para "Wireless communi-"

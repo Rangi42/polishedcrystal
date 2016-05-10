@@ -154,7 +154,7 @@ MovementData_0x6106c:
 ; unused
 UnknownText_0x61072:
 	text "Hello! Welcome to"
-	line "#com Center"
+	line "#Com Center"
 	cont "Trade Corner."
 
 	para "You can trade"
@@ -613,7 +613,7 @@ UnknownText_0x61efa:
 	done
 
 UnknownText_0x61f48:
-	text "The #com Center"
+	text "The #Com Center"
 	line "will link with all"
 
 	para "#mon Centers in"
@@ -735,7 +735,7 @@ UnknownText_0x62359:
 	done
 
 UnknownText_0x62370:
-	text "#com Center"
+	text "#Com Center"
 	line "1F Information"
 
 	para "Left:"
