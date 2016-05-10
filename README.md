@@ -158,6 +158,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Make Rock Smash an HM
 * Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
 * Evening from 5–7 PM (change morning from 4−9 AM)
+* Separate bag pockets for usable items and held items
 * Custom title screen and end credits
 * Import some music from RBY, FRLG, and HGSS
 * Rematch Gym Leaders and Elite Four with better teams
