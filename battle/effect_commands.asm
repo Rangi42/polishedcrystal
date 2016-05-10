@@ -5108,10 +5108,6 @@ BattleCommand_Poison: ; 35f2c
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .mimic_random
 
-	call BattleRandom
-	cp $40 ; 25% chance AI fails
-	jr c, .failed
-
 .mimic_random
 	call CheckSubstituteOpp
 	jr nz, .failed
@@ -5805,35 +5801,6 @@ BattleCommand_StatDown: ; 362e3
 	inc b
 
 .ComputerMiss:
-; Computer opponents have a 1/4 chance of failing.
-	ld a, [hBattleTurn]
-	and a
-	jr z, .DidntMiss
-
-	ld a, [wLinkMode]
-	and a
-	jr nz, .DidntMiss
-
-	ld a, [InBattleTowerBattle]
-	and a
-	jr nz, .DidntMiss
-
-; Lock-On still always works.
-	ld a, [PlayerSubStatus5]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .DidntMiss
-
-; Attacking moves that also lower accuracy are unaffected.
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_ACCURACY_DOWN_HIT
-	jr z, .DidntMiss
-
-	call BattleRandom
-	cp $40
-	jr c, .Failed
-
-.DidntMiss:
 	call CheckSubstituteOpp
 	jr nz, .Failed
 
