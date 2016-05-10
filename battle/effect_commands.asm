@@ -5033,6 +5033,8 @@ BattleCommand_PoisonTarget: ; 35eee
 	ret z
 	call CheckIfTargetIsPoisonType
 	ret z
+	call CheckIfTargetIsSteelType
+	ret z
 	call GetOpponentItem
 	ld a, b
 	cp HELD_PREVENT_POISON
@@ -5200,6 +5202,22 @@ CheckIfTargetIsElectricType:
 	ret z
 	ld a, [de]
 	cp ELECTRIC
+	ret
+
+
+CheckIfTargetIsSteelType:
+	ld de, EnemyMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp STEEL
+	ret z
+	ld a, [de]
+	cp STEEL
 	ret
 
 
