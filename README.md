@@ -71,6 +71,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
    * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
+   * Improved items used by some trainers
    * No badge boosts to stats or types
    * New default player names
    * Ask gender at a sensible time in Oak's speech
