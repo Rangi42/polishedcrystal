@@ -6057,7 +6057,7 @@ INCLUDE "tilesets/animations.asm"
 
 INCLUDE "engine/npctrade.asm"
 
-INCLUDE "engine/wondertrade.asm"
+INCLUDE "engine/wonder_trade.asm"
 
 INCLUDE "event/mom_phone.asm"
 

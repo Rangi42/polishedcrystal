@@ -145,6 +145,12 @@ UnknownText_0x62549:
 	line "the Eon Mail."
 	done
 
+WonderTradeReceptionistScript:
+	opentext
+	wonder_trade
+	closetext
+	done
+
 InfoSignScript:
 	jumptext UnknownText_0x62370
 
@@ -156,7 +162,7 @@ UnknownText_0x62370:
 	line "Administration"
 
 	para "Center:"
-	line "Trade Corner"
+	line "Wonder Trade Hub"
 
 	para "Right:"
 	line "#mon News"
@@ -224,6 +230,42 @@ UnknownText_0x61c4b:
 	line "Machine."
 	done
 
+; unused
+UnknownText_0x61a11:
+	text "#mon News is"
+	line "news compiled from"
+
+	para "the Save files of"
+	line "#mon trainers."
+
+	para "When reading the"
+	line "News, your Save"
+
+	para "file may be sent"
+	line "out."
+
+	para "The Save file data"
+	line "will contain your"
+
+	para "adventure log and"
+	line "mobile profile."
+
+	para "Your phone number"
+	line "will not be sent."
+
+	para "The contents of"
+	line "the News will vary"
+
+	para "depending on the"
+	line "Save files sent by"
+
+	para "you and the other"
+	line "#mon trainers."
+
+	para "You might even be"
+	line "in the News!"
+	done
+
 SuperNerdScript:
 	jumptextfaceplayer UnknownText_0x61c89
 
@@ -239,8 +281,9 @@ UnknownText_0x61c89:
 	done
 
 Lass2Script:
-	jumptextfaceplayer UnknownText_0x61dfd
+	jumptextfaceplayer UnknownText_0x61cef
 
+; unused
 UnknownText_0x61dfd:
 	text "They said you can"
 	line "trade #mon with"
@@ -252,11 +295,10 @@ UnknownText_0x61dfd:
 	line "adjusting things."
 	done
 
-; unused
 UnknownText_0x61cef:
 	text "I thought up a fun"
 	line "new thing for the"
-	cont "Trade Corner!"
+	cont "Wonder Trade Hub!"
 
 	para "I make a Pidgey"
 	line "hold Mail, then"
@@ -310,8 +352,9 @@ UnknownText_0x6206d:
 	done
 
 TeacherScript:
-	jumptextfaceplayer UnknownText_0x61f48
+	jumptextfaceplayer UnknownText_0x61e5c
 
+; unused
 UnknownText_0x61f48:
 	text "The #Com Center"
 	line "will link with all"
@@ -326,7 +369,6 @@ UnknownText_0x61f48:
 	line "sorts of people."
 	done
 
-; unused
 UnknownText_0x61e5c:
 	text "Some girl I don't"
 	line "know sent me her"
@@ -353,7 +395,8 @@ RockerScript:
 
 UnknownText_0x61fc9:
 	text "The machines here"
-	line "can't be used yet."
+	line "can't all be used"
+	cont "yet."
 
 	para "Still, it's nice"
 	line "coming to a trendy"
@@ -376,8 +419,9 @@ UnknownText_0x620a1:
 	done
 
 GrampsScript:
-	jumptextfaceplayer UnknownText_0x62173
+	jumptextfaceplayer UnknownText_0x62222
 
+; unused
 UnknownText_0x62173:
 	text "I came over here"
 	line "when I got word"
@@ -396,7 +440,6 @@ UnknownText_0x62173:
 	line "preparations…"
 	done
 
-; unused
 UnknownText_0x62222:
 	text "Just seeing all"
 	line "these new things"
@@ -506,376 +549,6 @@ MovementData_0x6106c:
 	step_left
 	step_down
 	step_end
-
-; unused
-UnknownText_0x61072:
-	text "Hello! Welcome to"
-	line "#Com Center"
-	cont "Trade Corner."
-
-	para "You can trade"
-	line "#mon with other"
-	cont "people far away."
-	done
-
-; unused
-UnknownText_0x610ce:
-	text "To make a trade,"
-	line "we must hold your"
-	cont "#mon."
-
-	para "Would you like to"
-	line "trade?"
-	done
-
-; unused
-UnknownText_0x61111:
-	text "What kind of"
-	line "#mon do you"
-	cont "want in return?"
-	done
-
-; unused
-UnknownText_0x6113b:
-	text "Fine. We will try"
-	line "to trade your"
-
-	para "@"
-	text_from_ram StringBuffer3
-	text " for"
-	line "@"
-	text_from_ram StringBuffer4
-	text "."
-
-	para "We'll have to hold"
-	line "your #mon"
-	cont "during the trade."
-
-	para "Please wait while"
-	line "we prepare the"
-	cont "room for it."
-	done
-
-; unused
-UnknownText_0x611c9:
-	text "Fine. We will try"
-	line "to trade your"
-
-	para "@"
-	text_from_ram StringBuffer3
-	text " for a"
-	line "#mon that you"
-	cont "have never seen."
-
-	para "We'll have to hold"
-	line "your #mon"
-	cont "during the trade."
-
-	para "Please wait while"
-	line "we prepare the"
-	cont "room for it."
-	done
-
-; unused
-UnknownText_0x61271:
-	text "Your trade #mon"
-	line "has been received."
-
-	para "It will take time"
-	line "to find a trade"
-
-	para "partner. Please"
-	line "come back later."
-	done
-
-; unused
-UnknownText_0x612d8:
-	text "Oh? You have only"
-	line "one #mon in"
-	cont "your party. "
-
-	para "Please come back"
-	line "once you've in-"
-	cont "creased the size"
-	cont "of your party."
-	done
-
-; unused
-UnknownText_0x61344:
-	text "We hope to see you"
-	line "again."
-	done
-
-; unused
-UnknownText_0x6135f:
-	text "Communication"
-	line "error…"
-	done
-
-; unused
-UnknownText_0x61375:
-	text "If we accept that"
-	line "#mon, what will"
-	cont "you battle with?"
-	done
-
-; unused
-UnknownText_0x613a9:
-	text "Sorry. We can't"
-	line "accept an Egg."
-	done
-
-; unused
-UnknownText_0x613c8:
-	text "Sorry, but your"
-	line "#mon appears to"
-
-	para "be abnormal. We"
-	line "can't accept it."
-	done
-
-; unused
-UnknownText_0x61409:
-	text "Oh? Aren't we"
-	line "already holding a"
-	cont "#mon of yours?"
-	done
-
-; unused
-UnknownText_0x61438:
-	text "We'll check the"
-	line "rooms."
-
-	para "Please wait."
-	done
-
-; unused
-UnknownText_0x6145c:
-	text "Thank you for your"
-	line "patience."
-
-	para "A trade partner"
-	line "has been found."
-	done
-
-; unused
-UnknownText_0x6149a:
-	text "It's your new"
-	line "partner."
-
-	para "Please take care"
-	line "of it with love."
-
-	para "We hope to see you"
-	line "again."
-	done
-
-; unused
-UnknownText_0x614ed:
-	text "Uh-oh. Your party"
-	line "is already full."
-
-	para "Please come back"
-	line "when you have room"
-	cont "in your party."
-	done
-
-; unused
-UnknownText_0x61544:
-	text "It's unfortunate,"
-	line "but no one has"
-
-	para "come forward as a"
-	line "trade partner."
-
-	para "Would you like"
-	line "your #mon back?"
-	done
-
-; unused
-UnknownText_0x615a5:
-	text "We have returned"
-	line "your #mon."
-	done
-
-; unused
-UnknownText_0x615c2:
-	text "It's unfortunate,"
-	line "but no one has"
-
-	para "come forward as a"
-	line "trade partner."
-
-	para "We've held your"
-	line "#mon for a long"
-
-	para "time. As a result,"
-	line "it is very lonely."
-
-	para "Sorry, but we must"
-	line "return it to you."
-	done
-
-; unused
-UnknownText_0x6166e:
-	text "We hope to see you"
-	line "again."
-	done
-
-; unused
-UnknownText_0x61689:
-	text "Fine. We will"
-	line "continue to hold"
-	cont "your #mon."
-	done
-
-; unused
-UnknownText_0x616b4:
-	text "Oh? You left your"
-	line "#mon with us"
-	cont "only recently."
-
-	para "Please come back"
-	line "later."
-	done
-
-; unused
-UnknownText_0x616fb:
-	text "We'll Save before"
-	line "connecting to the"
-	cont "Center."
-	done
-
-; unused
-UnknownText_0x61727:
-	text "Which #mon do"
-	line "you want to trade?"
-	done
-
-; unused
-UnknownText_0x61749:
-	text "Sorry, but we must"
-	line "cancel the trade."
-	done
-
-; unused
-UnknownText_0x6176f:
-	text "Oh!"
-
-	para "I see you have an"
-	line "Egg Ticket!"
-
-	para "It's a coupon that"
-	line "special people can"
-
-	para "redeem for a"
-	line "special #mon!"
-	done
-
-; unused
-UnknownText_0x617d2:
-	text "Let me give you a"
-	line "quick briefing."
-
-	para "Trades held at the"
-	line "Trade Corner are"
-
-	para "between two"
-	line "trainers who don't"
-
-	para "know each other's"
-	line "identity."
-
-	para "As a result, it"
-	line "may take time."
-
-	para "However, an Odd"
-	line "Egg is available"
-	cont "just for you."
-
-	para "It will be sent to"
-	line "you right away."
-
-	para "Please choose one"
-	line "of the rooms in"
-
-	para "the Center."
-	line "An Odd Egg will be"
-
-	para "sent from the"
-	line "chosen room."
-	done
-
-; unused
-UnknownText_0x6191f:
-	text "Please wait a"
-	line "moment."
-	done
-
-; unused
-UnknownText_0x61936:
-	text "Thank you for"
-	line "waiting."
-
-	para "We received your"
-	line "Odd Egg."
-
-	para "Here it is!"
-
-	para "Please raise it"
-	line "with loving care."
-	done
-
-; unused
-UnknownText_0x61996:
-	text "I'm awfully sorry."
-
-	para "The Egg Ticket"
-	line "exchange service"
-	cont "isn't running now."
-	done
-
-; unused
-UnknownText_0x619f5:
-	text "What would you"
-	line "like to do?"
-	done
-
-; unused
-UnknownText_0x61a11:
-	text "#mon News is"
-	line "news compiled from"
-
-	para "the Save files of"
-	line "#mon trainers."
-
-	para "When reading the"
-	line "News, your Save"
-
-	para "file may be sent"
-	line "out."
-
-	para "The Save file data"
-	line "will contain your"
-
-	para "adventure log and"
-	line "mobile profile."
-
-	para "Your phone number"
-	line "will not be sent."
-
-	para "The contents of"
-	line "the News will vary"
-
-	para "depending on the"
-	line "Save files sent by"
-
-	para "you and the other"
-	line "#mon trainers."
-
-	para "You might even be"
-	line "in the News!"
-	done
 
 ; unused
 UnknownText_0x622f0:
@@ -1202,7 +875,7 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	person_event SPRITE_GAMEBOY_KID, 12, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x6101e, -1
 	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass1Script_0x61021, -1
 	person_event SPRITE_POKEFAN_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
 	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript, -1
 	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript, -1
 	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript, -1
