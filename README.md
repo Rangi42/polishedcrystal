@@ -64,6 +64,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Restorations:
    * Original Japanese sprites for some trainers
    * Enabled the Goldenrod City PokéCom Center
+   * Copied trainer levels and rosters from HGSS (but not movesets)
 * Customizations:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
    * Individual party/day-care icons for each Pokémon
@@ -72,6 +73,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
    * Improved items used by some trainers
+   * Improved some trainers' DVs
    * No badge boosts to stats or types
    * New default player names
    * Ask gender at a sensible time in Oak's speech
@@ -143,6 +145,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
    * Change in-game trades
+   * First Gym Leader has 2 Pokémon, then 3, 4, 5, and then all 6 (including the Elite 4)
+   * Rematch Gym Leaders and Elite Four with better teams
+   * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Sylveon, Mr. Mime, Togekiss) (reward: TM for DazzlinGleam)
+   * Fix Lugia and Ho-Oh's learnsets so they know Aeroblast and Sacred Fire when encountered (at level 60)
 
 
 ## Long-term
@@ -159,7 +165,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Move Relearner
 * Abilities
 * Natures
-* Wonder Trade system like Red++ (replace the Pokécom Center's Mobile Trade System)
+* Replace Poké Seer byte with <gender:1, shiny:1, whichability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
 * Make Rock Smash an HM
 * Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
@@ -167,8 +173,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Separate bag pockets for usable items and held items
 * Custom title screen and end credits
 * Import some music from RBY, FRLG, and HGSS
-* Rematch Gym Leaders and Elite Four with better teams
 * Improved AI
+* Tune boss trainers' movesets (after adding Gen III+ moves)
 
 
 ## See also
