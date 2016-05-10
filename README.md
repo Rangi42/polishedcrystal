@@ -120,6 +120,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show stat changes and then absolute values on level up
    * Have Moves as an option in the party Pokémon menu during battle
 * Aesthetics:
+   * Poké → ()PC on Pokémon Center signs
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Unown ? and ! from Gen III
    * Color party/day-care sprites by species

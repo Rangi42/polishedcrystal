@@ -53,8 +53,6 @@ StdScripts::
 	dba HappinessCheckScript
 
 PokeCenterNurseScript:
-; EVENT_WELCOMED_TO_POKECOM_CENTER is never set
-
 	opentext
 	checkmorn
 	iftrue .morn
@@ -65,7 +63,7 @@ PokeCenterNurseScript:
 	jump .ok
 
 .morn
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
 	iftrue .morn_comcenter
 	farwritetext NurseMornText
 	buttonsound
@@ -76,7 +74,7 @@ PokeCenterNurseScript:
 	jump .ok
 
 .day
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
 	iftrue .day_comcenter
 	farwritetext NurseDayText
 	buttonsound
@@ -87,7 +85,7 @@ PokeCenterNurseScript:
 	jump .ok
 
 .nite
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
 	iftrue .nite_comcenter
 	farwritetext NurseNiteText
 	buttonsound
@@ -99,7 +97,8 @@ PokeCenterNurseScript:
 
 .ok
 	; only do this once
-	clearevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	clearevent EVENT_WELCOMING_TO_POKECOM_CENTER
+	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 
 	farwritetext NurseAskHealText
 	yesorno

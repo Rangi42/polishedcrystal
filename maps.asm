@@ -88,7 +88,6 @@ SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
 INCLUDE "maps/RadioTower5F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
-INCLUDE "maps/GoldenrodPokeCenter1F.asm"
 INCLUDE "maps/GoldenrodPokeComCenter2FMobile.asm"
 INCLUDE "maps/IlexForestAzaleaGate.asm"
 INCLUDE "maps/Route34IlexForestGate.asm"

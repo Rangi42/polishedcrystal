@@ -41,7 +41,7 @@ ENDM
 	trigger_def AZALEA_TOWN,                            wAzaleaTownTrigger
 	trigger_def GOLDENROD_GYM,                          wGoldenrodGymTrigger
 	trigger_def GOLDENROD_MAGNET_TRAIN_STATION,         wGoldenrodMagnetTrainStationTrigger
-	trigger_def GOLDENROD_POKECENTER_1F,                wGoldenrodPokecenter1FTrigger
+	trigger_def GOLDENROD_POKECOM_CENTER_2F_MOBILE,     wGoldenrodPokecomCenter2FMobileTrigger
 	trigger_def OLIVINE_CITY,                           wOlivineCityTrigger
 	trigger_def ROUTE_34,                               wRoute34Trigger
 	trigger_def ROUTE_34_ILEX_FOREST_GATE,              wRoute34IlexForestGateTrigger

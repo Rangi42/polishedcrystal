@@ -269,7 +269,7 @@ GoldenrodCityUndergroundSignSouth:
 	jumptext GoldenrodCityUndergroundSignSouthText
 
 GoldenrodCityPokeCenterSign:
-	jumpstd pokecentersign
+	jumptext PokeComCenterSignText
 
 GoldenrodCityFlowerShopSign:
 	jumptext GoldenrodCityFlowerShopSignText
@@ -484,8 +484,7 @@ GoldenrodCityUndergroundSignSouthText:
 	done
 
 PokeComCenterSignText:
-; unused in the english version
-	text "For Mobile Tips!"
+	text "Connect the World!"
 	line "#Com Center"
 	done
 
@@ -575,8 +574,8 @@ GoldenrodCity_MapEventHeader:
 	warp_def $f, $5, 1, RADIO_TOWER_1F
 	warp_def $1, $13, 3, ROUTE_35_GOLDENROD_GATE
 	warp_def $5, $9, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1d, $b, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1b, $f, 1, GOLDENROD_POKECENTER_1F
+	warp_def $1d, $9, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def $1b, $e, 1, GOLDENROD_POKECOM_CENTER_2F_MOBILE
 
 .XYTriggers:
 	db 0
@@ -592,8 +591,8 @@ GoldenrodCity_MapEventHeader:
 	signpost 22, 16, SIGNPOST_READ, GoldenrodCityGameCornerSign
 	signpost 7, 12, SIGNPOST_READ, GoldenrodCityNameRaterSign
 	signpost 6, 8, SIGNPOST_READ, GoldenrodCityUndergroundSignNorth
-	signpost 30, 12, SIGNPOST_READ, GoldenrodCityUndergroundSignSouth
-	signpost 27, 16, SIGNPOST_UP, GoldenrodCityPokeCenterSign
+	signpost 30, 10, SIGNPOST_READ, GoldenrodCityUndergroundSignSouth
+	signpost 27, 17, SIGNPOST_UP, GoldenrodCityPokeCenterSign
 	signpost 6, 30, SIGNPOST_READ, GoldenrodCityFlowerShopSign
 
 .PersonEvents:

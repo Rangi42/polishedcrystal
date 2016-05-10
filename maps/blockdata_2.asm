@@ -35,7 +35,6 @@ Route10PokeCenter1F_BlockData:
 AzaleaPokeCenter1F_BlockData:
 VioletPokeCenter1F_BlockData:
 Route32PokeCenter1F_BlockData:
-GoldenrodPokeCenter1F_BlockData:
 VermilionPokeCenter1F_BlockData:
 PewterPokeCenter1F_BlockData:
 FuchsiaPokeCenter1F_BlockData:
