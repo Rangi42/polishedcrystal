@@ -60,21 +60,25 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * whited out → blacked out
    * Menu Account → Menu Blurbs
    * Refer to badges as "the"
-* Graphics updates:
-   * Individual party/day-care icons for each Pokémon
+* Restorations:
    * Original Japanese sprites for some trainers
+   * Enabled the Goldenrod City PokéCom Center
+* Customizations:
+   * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
+   * Individual party/day-care icons for each Pokémon
+   * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
+   * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
+   * Politoed has 80 (+10) Speed to match its total with Poliwrath
+   * Enemy AI doesn't fail an extra 25% of the time with sleep-inducing moves
+   * No badge boosts to stats or types
+   * New default player names
+   * Ask gender at a sensible time in Oak's speech
    * Color-coded starter Poké Balls
-* Ask gender at a sensible time in Oak's speech
-* New default player names
-* Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
-* Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
-* Politoed has 80 (+10) Speed to match its total with Poliwrath
-* Enemy AI doesn't fail an extra 25% of the time with sleep-inducing moves
-* No badge boosts to stats or types
 
 
 ## To do:
 
+* Allow Wonder Trading only a few times a day
 * Remove unused code
 * Find and fix more bugs
    * Thick Club + Swords Dance Marowak Attack overflow

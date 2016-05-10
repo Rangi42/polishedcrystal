@@ -1,10 +1,12 @@
 WonderTrade::
-	ld hl, .Text_WonderTradeIntro
+	ld hl, .Text_WonderTradeQuestion
 	call PrintText
 	call YesNoBox
 	jr c, .canceled
 
-; Select givemon from party
+	ld hl, .Text_WonderTradePrompt
+	call PrintText
+
 	ld b, 6
 	callba SelectTradeOrDaycareMon
 	jr c, .canceled
@@ -35,19 +37,15 @@ WonderTrade::
 	call PrintText
 
 	call RestartMapMusic
-	ret
-
 .canceled
-	ld hl, .Text_WonderTradeCanceled
-	call PrintText
 	ret
 
-.Text_WonderTradeIntro:
-	text_jump WonderTradeIntroText
+.Text_WonderTradeQuestion:
+	text_jump WonderTradeQuestionText
 	db "@"
 
-.Text_WonderTradeCanceled:
-	text_jump WonderTradeCanceledText
+.Text_WonderTradePrompt:
+	text_jump WonderTradePromptText
 	db "@"
 
 .Text_WonderTradeConfirm:
