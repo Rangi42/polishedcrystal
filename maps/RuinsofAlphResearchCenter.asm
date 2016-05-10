@@ -132,7 +132,23 @@ UnknownScript_0x59228:
 	end
 
 UnknownScript_0x5922e:
+	checkcode VAR_UNOWNCOUNT
+	if_equal 26, ResearchCompleteScript_0x596d3
+	checkcode VAR_UNOWNCOUNT
+	if_greater_than 10, ResearchOngoingScript_0x59669
 	writetext UnknownText_0x59769
+	waitbutton
+	closetext
+	end
+
+ResearchCompleteScript_0x596d3:
+	writetext UnknownText_0x596d3
+	waitbutton
+	closetext
+	end
+
+ResearchOngoingScript_0x59669:
+	writetext UnknownText_0x59669
 	waitbutton
 	closetext
 	end
@@ -325,7 +341,6 @@ UnknownText_0x59669:
 	line "studies on that."
 	done
 
-; possibly unused
 UnknownText_0x596d3:
 	text "According to my"
 	line "research…"

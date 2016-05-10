@@ -53,7 +53,7 @@ TeacherScript_0x1a9f5f:
 	jumptextfaceplayer UnknownText_0x1aa1bd
 
 LassScript_0x1a9f62:
-	jumptextfaceplayer UnknownText_0x1aa306
+	jumptextfaceplayer UnknownText_0x1aa25b
 
 CeladonCitySign:
 	jumptext CeladonCitySignText
@@ -162,7 +162,6 @@ UnknownText_0x1aa1bd:
 	line "a sales clerk."
 	done
 
-; possibly unused
 UnknownText_0x1aa25b:
 	text "I love being"
 	line "surrounded by tall"
@@ -181,6 +180,7 @@ UnknownText_0x1aa25b:
 	line "Kanto…"
 	done
 
+; unused
 UnknownText_0x1aa306:
 	text "Looking at the"
 	line "ground while I was"
