@@ -6057,6 +6057,8 @@ INCLUDE "tilesets/animations.asm"
 
 INCLUDE "engine/npctrade.asm"
 
+INCLUDE "engine/wondertrade.asm"
+
 INCLUDE "event/mom_phone.asm"
 
 SECTION "bank40", ROMX, BANK[$40]

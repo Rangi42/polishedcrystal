@@ -242,6 +242,7 @@ ENDC
 	dw Script_name                       ; a7
 	dw Script_wait                       ; a8
 	dw Script_check_save                 ; a9
+	dw Script_wonder_trade               ; aa
 ; 96e05
 
 StartScript: ; 96e05
@@ -3245,6 +3246,12 @@ Script_check_save: ; 97c15
 	ld [ScriptVar], a
 	ret
 ; 97c20
+
+Script_wonder_trade:
+; script command 0xaa
+
+	callba WonderTrade
+	ret
 
 
 ; 97c20 unreferenced

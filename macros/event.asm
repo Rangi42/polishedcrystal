@@ -1066,3 +1066,8 @@ wait: macro
 check_save: macro
 	db check_save_command
 	endm
+
+	enum wonder_trade_command
+wonder_trade: macro
+	db wonder_trade_command
+	endm
