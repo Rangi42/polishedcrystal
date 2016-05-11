@@ -56,8 +56,11 @@ KarenScript_0x180bee:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x180cf8, 0
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue KarenRematchScript
 	loadtrainer KAREN, 1
 	startbattle
+KarenEndBattleScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_KAREN
 	opentext
@@ -70,6 +73,12 @@ KarenScript_0x180bee:
 	closetext
 	setevent EVENT_KARENS_ROOM_EXIT_OPEN
 	waitsfx
+	end
+
+KarenRematchScript:
+	loadtrainer KAREN, 2
+	startbattle
+	scall KarenEndBattleScript
 	end
 
 UnknownScript_0x180c1c:

@@ -64,8 +64,11 @@ LanceScript_0x180e7b:
 	closetext
 	winlosstext LanceBattleWinText, 0
 	setlasttalked LANCESROOM_LANCE
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue LanceRematchScript
 	loadtrainer CHAMPION, LANCE
 	startbattle
+LanceEndBattleScript:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CHAMPION_LANCE
@@ -133,6 +136,12 @@ LanceScript_0x180e7b:
 	special FadeOutPalettes
 	pause 15
 	warpfacing UP, HALL_OF_FAME, $4, $d
+	end
+
+LanceRematchScript:
+	loadtrainer CHAMPION, LANCE2
+	startbattle
+	scall LanceEndBattleScript
 	end
 
 LancesRoom_PlayerWalksInMovementData:

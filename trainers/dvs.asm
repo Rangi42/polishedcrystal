@@ -33,7 +33,7 @@ TrainerClassDVs: ; 270d6
 	db $7F, $FF ; clair
 	db $FF, $FF ; rival1
 	db $FF, $FF ; pokemon prof
-	db $FF, $FF ; will
+	db $FE, $EE ; will (hidden power fighting)
 	db $FF, $FF ; cal
 	db $FF, $FF ; bruno
 	db $7F, $FF ; karen

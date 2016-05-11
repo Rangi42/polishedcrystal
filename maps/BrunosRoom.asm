@@ -56,8 +56,11 @@ BrunoScript_0x1809c5:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x180b23, 0
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue BrunoRematchScript
 	loadtrainer BRUNO, 1
 	startbattle
+BrunoEndBattleScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_BRUNO
 	opentext
@@ -70,6 +73,12 @@ BrunoScript_0x1809c5:
 	closetext
 	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
 	waitsfx
+	end
+
+BrunoRematchScript:
+	loadtrainer BRUNO, 2
+	startbattle
+	scall BrunoEndBattleScript
 	end
 
 UnknownScript_0x1809f3:

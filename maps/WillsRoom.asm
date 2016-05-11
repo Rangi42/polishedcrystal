@@ -56,8 +56,11 @@ WillScript_0x1804f8:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x18062c, 0
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue WillRematchScript
 	loadtrainer WILL, 1
 	startbattle
+WillEndBattleScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_WILL
 	opentext
@@ -70,6 +73,12 @@ WillScript_0x1804f8:
 	closetext
 	setevent EVENT_WILLS_ROOM_EXIT_OPEN
 	waitsfx
+	end
+
+WillRematchScript:
+	loadtrainer WILL, 2
+	startbattle
+	scall WillEndBattleScript
 	end
 
 UnknownScript_0x180526:

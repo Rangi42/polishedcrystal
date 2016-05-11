@@ -59,6 +59,7 @@ KRIS EQU __enum__
 
 	trainerclass CHAMPION ; 10
 	const LANCE
+	const LANCE2
 
 	trainerclass BROCK ; 11
 

@@ -81,10 +81,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Color-coded starter Poké Balls
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
+   * Rematch Elite Four
 
 
 ## To do:
 
+* Bug fixes:
+   * Why do some moves not associate with the right effects? A side-effect of Physical/Special split, or trainer edits?
 * Allow Wonder Trading only a few times a day
 * Remove unused code
 * Find and fix more bugs
@@ -148,8 +151,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
    * Change in-game trades
-   * Rematch Gym Leaders and Elite Four with better teams
+   * Rematch Gym Leaders in the Fighting Dojo
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Sylveon, Mr. Mime, Togekiss) (reward: TM for DazzlinGleam)
+   * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
 
 
 ## Long-term

@@ -56,8 +56,11 @@ KogaScript_0x18075a:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x1808a9, 0
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue KogaRematchScript
 	loadtrainer KOGA, 1
 	startbattle
+KogaEndBattleScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_KOGA
 	opentext
@@ -70,6 +73,12 @@ KogaScript_0x18075a:
 	closetext
 	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
 	waitsfx
+	end
+
+KogaRematchScript:
+	loadtrainer KOGA, 2
+	startbattle
+	scall KogaEndBattleScript
 	end
 
 UnknownScript_0x180788:

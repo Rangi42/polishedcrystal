@@ -841,6 +841,12 @@ WillGroup:
 		db EGG_BOMB
 		db PSYCHIC_M
 
+	db 41, ALAKAZAM, NO_ITEM
+		db KINESIS
+		db RECOVER
+		db FUTURE_SIGHT
+		db PSYCHIC_M
+
 	db 41, SLOWBRO, NO_ITEM
 		db CURSE
 		db AMNESIA
@@ -848,6 +854,52 @@ WillGroup:
 		db PSYCHIC_M
 
 	db 42, XATU, GOLD_BERRY
+		db QUICK_ATTACK
+		db FUTURE_SIGHT
+		db CONFUSE_RAY
+		db PSYCHIC_M
+
+	db $ff ; end
+
+; ================
+
+	; WILL (2)
+	db "Will@"
+	db 3 ; item + moves
+
+	; party
+
+	db 60, XATU, TWISTEDSPOON
+		db DRILL_PECK
+		db FUTURE_SIGHT
+		db CONFUSE_RAY
+		db PSYCHIC_M
+
+	db 61, JYNX, BRIGHTPOWDER
+		db NIGHTMARE
+		db LOVELY_KISS
+		db ICE_PUNCH
+		db PSYCHIC_M
+
+	db 61, EXEGGUTOR, MIRACLE_SEED
+		db REFLECT
+		db GIGA_DRAIN
+		db SLEEP_POWDER
+		db PSYCHIC_M
+
+	db 61, ALAKAZAM, MIRACLEBERRY
+		db HIDDEN_POWER ; Fighting
+		db RECOVER
+		db SHADOW_BALL
+		db PSYCHIC_M
+
+	db 61, SLOWBRO, LEFTOVERS
+		db SURF
+		db PSYCHIC_M
+		db THUNDER_WAVE
+		db REST
+
+	db 62, XATU, GOLD_BERRY
 		db QUICK_ATTACK
 		db FUTURE_SIGHT
 		db CONFUSE_RAY
@@ -953,6 +1005,12 @@ BrunoGroup:
 		db DIG
 		db DETECT
 
+	db 43, ONIX, NO_ITEM
+		db BIND
+		db EARTHQUAKE
+		db SANDSTORM
+		db ROCK_SLIDE
+
 	db 42, HITMONLEE, NO_ITEM
 		db SWAGGER
 		db DOUBLE_KICK
@@ -975,6 +1033,52 @@ BrunoGroup:
 		db ROCK_SLIDE
 		db FORESIGHT
 		db VITAL_THROW
+		db CROSS_CHOP
+
+	db $ff ; end
+
+; ================
+
+	; BRUNO (2)
+	db "Bruno@"
+	db 3 ; item + moves
+
+	; party
+
+	db 62, HITMONTOP, QUICK_CLAW
+		db CURSE
+		db TRIPLE_KICK
+		db COUNTER
+		db HI_JUMP_KICK
+
+	db 43, ONIX, SOFT_SAND
+		db SCREECH
+		db EARTHQUAKE
+		db SANDSTORM
+		db ROCK_SLIDE
+
+	db 62, HITMONLEE, FOCUS_BAND
+		db MEDITATE
+		db RETURN
+		db HI_JUMP_KICK
+		db REVERSAL
+
+	db 62, HITMONCHAN, NEVERMELTICE
+		db THUNDERPUNCH
+		db ICE_PUNCH
+		db FIRE_PUNCH
+		db HI_JUMP_KICK
+
+	db 63, STEELIX, HARD_STONE
+		db CURSE
+		db EARTHQUAKE
+		db ROCK_SLIDE
+		db IRON_TAIL
+
+	db 66, MACHAMP, LEFTOVERS
+		db CURSE
+		db ROCK_SLIDE
+		db BODY_SLAM
 		db CROSS_CHOP
 
 	db $ff ; end
@@ -1005,6 +1109,12 @@ KarenGroup:
 		db MOONLIGHT
 		db PETAL_DANCE
 
+	db 44, SNEASEL, NO_ITEM
+		db SCREECH
+		db FAINT_ATTACK
+		db ICE_PUNCH
+		db AGILITY
+
 	db 45, GENGAR, NO_ITEM
 		db LICK
 		db SPITE
@@ -1021,6 +1131,52 @@ KarenGroup:
 		db ROAR
 		db PURSUIT
 		db FLAMETHROWER
+		db CRUNCH
+
+	db $ff ; end
+
+; ================
+
+	; KAREN (2)
+	db "Karen@"
+	db 3 ; item + moves
+
+	; party
+
+	db 62, UMBREON, LEFTOVERS
+		db CHARM
+		db MOONLIGHT
+		db PURSUIT
+		db TOXIC
+
+	db 62, VILEPLUME, NO_ITEM
+		db SLEEP_POWDER
+		db LEECH_SEED
+		db MOONLIGHT
+		db PETAL_DANCE
+
+	db 44, SNEASEL, KINGS_ROCK
+		db SCREECH
+		db SLASH
+		db ICE_PUNCH
+		db BEAT_UP
+
+	db 65, GENGAR, MAGNET
+		db HYPNOSIS
+		db THUNDER
+		db SHADOW_BALL
+		db DESTINY_BOND
+
+	db 64, MURKROW, BLACKGLASSES
+		db DRILL_PECK
+		db WHIRLWIND
+		db PURSUIT
+		db FAINT_ATTACK
+
+	db 67, HOUNDOOM, GOLD_BERRY
+		db SUNNY_DAY
+		db SOLARBEAM
+		db FIRE_BLAST
 		db CRUNCH
 
 	db $ff ; end
@@ -1063,11 +1219,63 @@ KogaGroup:
 		db SLUDGE_BOMB
 		db TOXIC
 
+	db 43, WEEZING, NO_ITEM
+		db HAZE
+		db TOXIC
+		db SLUDGE_BOMB
+		db EXPLOSION
+
 	db 44, CROBAT, GOLD_BERRY
 		db DOUBLE_TEAM
 		db QUICK_ATTACK
 		db WING_ATTACK
 		db TOXIC
+
+	db $ff ; end
+
+; ================
+
+	; KOGA (2)
+	db "Koga@"
+	db 3 ; item + moves
+
+	; party
+
+	db 60, TENTACRUEL, LEFTOVERS
+		db SUBSTITUTE
+		db SWORDS_DANCE
+		db SURF
+		db SLUDGE_BOMB
+
+	db 63, FORRETRESS, SILK_SCARF
+		db PROTECT
+		db TOXIC
+		db EXPLOSION
+		db SPIKES
+
+	db 61, ARBOK, BRIGHTPOWDER
+		db SLUDGE_BOMB
+		db GLARE
+		db EARTHQUAKE
+		db SCREECH
+
+	db 62, MUK, CHARCOAL
+		db FIRE_BLAST
+		db CURSE
+		db SLUDGE_BOMB
+		db TOXIC
+
+	db 63, WEEZING, MAGNET
+		db THUNDER
+		db FIRE_BLAST
+		db SLUDGE_BOMB
+		db EXPLOSION
+
+	db 64, CROBAT, GOLD_BERRY
+		db SCREECH
+		db TOXIC
+		db CONFUSE_RAY
+		db WING_ATTACK
 
 	db $ff ; end
 
@@ -1116,6 +1324,52 @@ ChampionGroup:
 		db HYPER_BEAM
 
 	db 50, DRAGONITE, GOLD_BERRY
+		db FIRE_BLAST
+		db SAFEGUARD
+		db OUTRAGE
+		db HYPER_BEAM
+
+	db $ff ; end
+
+; ================
+
+	; CHAMPION (2)
+	db "Lance@"
+	db 3 ; item + moves
+
+	; party
+
+	db 68, GYARADOS, QUICK_CLAW
+		db CURSE
+		db ROAR
+		db WATERFALL
+		db HYPER_BEAM
+
+	db 72, DRAGONITE, GOLD_BERRY
+		db THUNDER_WAVE
+		db BLIZZARD
+		db THUNDER
+		db LIGHT_SCREEN
+
+	db 72, DRAGONITE, DRAGON_SCALE
+		db THUNDER_WAVE
+		db OUTRAGE
+		db BODY_SLAM
+		db HYPER_BEAM
+
+	db 70, AERODACTYL, CHARCOAL
+		db WING_ATTACK
+		db ANCIENTPOWER
+		db EARTHQUAKE
+		db FIRE_BLAST
+
+	db 70, CHARIZARD, KINGS_ROCK
+		db FIRE_BLAST
+		db SWORDS_DANCE
+		db ROCK_SLIDE
+		db SLASH
+
+	db 75, DRAGONITE, LEFTOVERS
 		db FIRE_BLAST
 		db SAFEGUARD
 		db OUTRAGE
