@@ -26,6 +26,12 @@ WonderTradeConfirmText::
 	done
 
 ; unused
+UnknownText_0x613a9:
+	text "Sorry. We can't"
+	line "accept an Egg."
+	done
+
+; unused
 UnknownText_0x613c8::
 	text "Sorry, but your"
 	line "#mon appears to"

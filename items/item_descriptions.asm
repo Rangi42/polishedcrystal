@@ -483,8 +483,8 @@ XAttackDesc:
 	next "(1 battle)@"
 
 XSpclDefDesc:
-	db   "Raises Spcl."
-	next "Def. (1 battle)@"
+	db   "Raises Spcl. Def."
+	next "(1 battle)@"
 
 XDefendDesc:
 	db   "Raises Defense."
@@ -495,8 +495,8 @@ XSpeedDesc:
 	next "(1 battle)@"
 
 XSpclAtkDesc:
-	db   "Raises Spcl."
-	next "Atk. (1 battle)@"
+	db   "Raises Spcl. Atk."
+	next "(1 battle)@"
 
 CoinCaseDesc:
 	db   "Holds up to 9,999"
