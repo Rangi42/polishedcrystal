@@ -25,15 +25,15 @@ TwinScript_0x9f66c:
 
 UnknownText_0x9f66f:
 	text "Did you come to"
-	line "see the BATTLE"
-	cont "TOWER too?"
+	line "see the Battle"
+	cont "Tower too?"
 
 	para "But I guess you"
 	line "can't go in yet."
 	done
 
 UnknownText_0x9f6ba:
-	text "BATTLE TOWER has"
+	text "Battle Tower has"
 	line "opened."
 
 	para "I want to go, but"
@@ -45,7 +45,7 @@ UnknownText_0x9f6ba:
 
 UnknownText_0x9f716:
 	text "Are you going to"
-	line "the BATTLE TOWER?"
+	line "the Battle Tower?"
 
 	para "This is a secret,"
 	line "but if you win a"
@@ -56,15 +56,15 @@ UnknownText_0x9f716:
 
 UnknownText_0x9f783:
 	text "I'm going to train"
-	line "my #MON so I'll"
+	line "my #mon so I'll"
 
 	para "be all ready for"
-	line "the BATTLE TOWER."
+	line "the Battle Tower."
 	done
 
 UnknownText_0x9f7c8:
 	text "The levels of the"
-	line "#MON I want to"
+	line "#mon I want to"
 
 	para "use are all"
 	line "different."

@@ -128,19 +128,19 @@ MooMoo:
 	end
 
 Text_MoomooIsSick:
-	text "MOOMOO is sick…"
+	text "Moomoo is sick…"
 
 	para "She needs lots of"
-	line "BERRIES."
+	line "Oran Berries."
 	done
 
 Text_WereFeedingMoomoo:
 	text "We're feeding"
-	line "MOOMOO!"
+	line "Moomoo!"
 	done
 
 Text_WeakMoo:
-	text "MILTANK: …Moo…"
+	text "Miltank: …Moo…"
 	done
 
 Text_ItsCryIsWeak:
@@ -148,44 +148,46 @@ Text_ItsCryIsWeak:
 	done
 
 UnknownText_0x9cd92:
-	text "MILTANK: Mooo!"
+	text "Miltank: Mooo!"
 	done
 
 Text_AskGiveBerry:
-	text "Give a BERRY to"
-	line "MILTANK?"
+	text "Give an Oran Berry"
+	line "to Miltank?"
 	done
 
 Text_GaveBerry:
-	text "<PLAYER> gave a"
-	line "BERRY to MILTANK."
+	text "<PLAYER> gave an"
+	line "Oran Berry to"
+	cont "Miltank."
 	done
 
 Text_LittleHealthier:
-	text "MILTANK became a"
+	text "Miltank became a"
 	line "little healthier!"
 	done
 
 Text_QuiteHealthy:
-	text "MILTANK became"
+	text "Miltank became"
 	line "quite healthy!"
 	done
 
 Text_TotallyHealthy:
-	text "MILTANK became"
+	text "Miltank became"
 	line "totally healthy!"
 	done
 
 Text_NoBerries:
 	text "<PLAYER> has no"
-	line "BERRIES…"
+	line "Oran Berries…"
 	done
 
 Text_RefusedToGiveBerry:
 	text "<PLAYER> wouldn't"
-	line "give a BERRY."
+	line "give an Oran"
+	cont "Berry."
 
-	para "MILTANK looks sad."
+	para "Miltank looks sad."
 	done
 
 Route39Barn_MapEventHeader:

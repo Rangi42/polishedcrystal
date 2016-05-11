@@ -184,15 +184,15 @@ Route39HiddenNugget:
 
 
 Route39MiltankText:
-	text "MILTANK: Mooo!"
+	text "Miltank: Mooo!"
 	done
 
 SailorEugeneSeenText:
 	text "I just got back to"
-	line "OLIVINE."
+	line "Olivine."
 
 	para "So how about a"
-	line "#MON battle?"
+	line "#mon battle?"
 	done
 
 SailorEugeneBeatenText:
@@ -200,7 +200,7 @@ SailorEugeneBeatenText:
 	done
 
 UnknownText_0x1a5c4d:
-	text "My #MON were"
+	text "My #mon were"
 	line "caught and raised"
 	cont "overseas."
 
@@ -212,19 +212,19 @@ UnknownText_0x1a5c4d:
 PokefanmDerek1SeenText:
 	text "This is a good"
 	line "time to brag about"
-	cont "my PIKACHU!"
+	cont "my Pikachu!"
 	done
 
 PokefanmDerek1BeatenText:
 	text "I had no time to"
-	line "show off PIKACHU…"
+	line "show off Pikachu…"
 	done
 
 UnknownText_0x1a5cf8:
 	text "I'm not listening"
 	line "to your bragging!"
 
-	para "We # FANS have"
+	para "We # Fans have"
 	line "a policy of not"
 
 	para "listening to other"
@@ -233,10 +233,10 @@ UnknownText_0x1a5cf8:
 
 PokefanfRuthSeenText:
 	text "Such darling"
-	line "#MON."
+	line "#mon."
 
 	para "Let's show our"
-	line "#MON together"
+	line "#mon together"
 	cont "at the same time."
 	done
 
@@ -247,31 +247,31 @@ PokefanfRuthBeatenText:
 
 UnknownText_0x1a5db2:
 	text "Do you know about"
-	line "baby #MON?"
+	line "baby #mon?"
 
 	para "I bet they're just"
 	line "adorable!"
 	done
 
 UnknownText_0x1a5dec:
-	text "PIKACHU is it!"
+	text "Pikachu is it!"
 	line "Don't you agree?"
 	done
 
 PsychicNormanSeenText:
 	text "Let me see what"
-	line "your #MON are"
+	line "your #mon are"
 	cont "capable of."
 	done
 
 PsychicNormanBeatenText:
-	text "Ooh, your #MON"
+	text "Ooh, your #mon"
 	line "have potential."
 	done
 
 UnknownText_0x1a5e57:
 	text "You know how #-"
-	line "MON have different"
+	line "mon have different"
 	cont "abilities?"
 
 	para "People are like"
@@ -298,9 +298,9 @@ UnknownText_0x1a5f17:
 	done
 
 UnknownText_0x1a5f31:
-	text "I met my MEOWTH at"
+	text "I met my Meowth at"
 	line "night, right here"
-	cont "on ROUTE 39."
+	cont "on Route 39."
 
 	para "I'm not sure why,"
 	line "but it seems to"
@@ -316,31 +316,31 @@ UnknownText_0x1a5f31:
 	done
 
 Route39SignText:
-	text "ROUTE 39"
+	text "Route 39"
 
-	para "OLIVINE CITY -"
-	line "ECRUTEAK CITY"
+	para "Olivine City -"
+	line "Ecruteak City"
 	done
 
 MoomooFarmSignText:
-	text "MOOMOO FARM"
+	text "Moomoo Farm"
 
 	para "Enjoy Our Fresh"
 	line "and Tasty Milk"
 	done
 
 Route39TrainerTipsText:
-	text "TRAINER TIPS"
+	text "Trainer Tips"
 
-	para "Use HEADBUTT on"
+	para "Use Headbutt on"
 	line "trees to shake"
-	cont "#MON out."
+	cont "#mon out."
 
 	para "Different kinds of"
-	line "#MON drop out"
+	line "#mon drop out"
 	cont "of trees."
 
-	para "Use HEADBUTT on"
+	para "Use Headbutt on"
 	line "any tree you see!"
 	done
 

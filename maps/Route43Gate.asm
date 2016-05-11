@@ -222,8 +222,8 @@ UnknownText_0x19ad41:
 	para "Everyone wants to"
 	line "see what's going"
 
-	para "on up at LAKE OF"
-	line "RAGE."
+	para "on up at Lake of"
+	line "Rage."
 	done
 
 UnknownText_0x19ad9b:

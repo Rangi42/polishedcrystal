@@ -493,9 +493,9 @@ UnknownText_0x6add5:
 	line "ple."
 
 	para "Using one of your"
-	line "#MON, catch a"
+	line "#mon, catch a"
 
-	para "bug #MON to be"
+	para "bug #mon to be"
 	line "judged."
 
 	para "Would you like to"
@@ -503,37 +503,37 @@ UnknownText_0x6add5:
 	done
 
 UnknownText_0x6ae87:
-	text "Here are the PARK"
-	line "BALLS for the"
+	text "Here are the Park"
+	line "Balls for the"
 	cont "Contest."
 	done
 
 UnknownText_0x6aeb1:
 	text "<PLAYER> received"
-	line "20 PARK BALLS."
+	line "20 Park Balls."
 	done
 
 UnknownText_0x6aecc:
 	text "The person who"
 	line "gets the strong-"
-	cont "est bug #MON"
+	cont "est bug #mon"
 	cont "is the winner."
 
 	para "You have 20"
 	line "minutes."
 
 	para "If you run out of"
-	line "PARK BALLS, you're"
+	line "Park Balls, you're"
 	cont "done."
 
 	para "You can keep the"
-	line "last #MON you"
+	line "last #mon you"
 	cont "catch as your own."
 
 	para "Go out and catch"
 	line "the strongest bug"
 
-	para "#MON you can"
+	para "#mon you can"
 	line "find!"
 	done
 
@@ -541,14 +541,14 @@ UnknownText_0x6afb0:
 	text "Uh-oh…"
 
 	para "You have more than"
-	line "one #MON."
+	line "one #mon."
 
 	para "You'll have to use"
 	line "@"
 	text_from_ram StringBuffer3
 	text ", the"
 
-	para "first #MON in"
+	para "first #mon in"
 	line "your party."
 
 	para "Is that OK with"
@@ -557,19 +557,19 @@ UnknownText_0x6afb0:
 
 UnknownText_0x6b021:
 	text "Fine, we'll hold"
-	line "your other #MON"
+	line "your other #mon"
 	cont "while you compete."
 	done
 
 UnknownText_0x6b055:
-	text "<PLAYER>'s #MON"
+	text "<PLAYER>'s #mon"
 	line "were left with the"
-	cont "CONTEST HELPER."
+	cont "Contest Helper."
 	done
 
 UnknownText_0x6b081:
 	text "Please choose the"
-	line "#MON to be used"
+	line "#mon to be used"
 
 	para "in the Contest,"
 	line "then come see me."
@@ -583,13 +583,13 @@ UnknownText_0x6b0c6:
 
 UnknownText_0x6b0f2:
 	text "Uh-oh…"
-	line "The first #MON"
+	line "The first #mon"
 
 	para "in your party"
 	line "can't battle."
 
 	para "Please switch it"
-	line "with the #MON"
+	line "with the #mon"
 
 	para "you want to use,"
 	line "then come see me."
@@ -599,29 +599,29 @@ UnknownText_0x6b166:
 	text "Uh-oh…"
 	line "Both your party"
 
-	para "and your PC BOX"
+	para "and your PC Box"
 	line "are full."
 
 	para "You have no room"
 	line "to put the bug"
-	cont "#MON you catch."
+	cont "#mon you catch."
 
 	para "Please make room"
 	line "in your party or"
 
-	para "your PC BOX, then"
+	para "your PC Box, then"
 	line "come see me."
 	done
 
 UnknownText_0x6b209:
 	text "Uh-oh…"
-	line "You have an EGG as"
+	line "You have an Egg as"
 
-	para "the first #MON"
+	para "the first #mon"
 	line "in your party."
 
 	para "Please switch it"
-	line "with the #MON"
+	line "with the #mon"
 
 	para "you want to use,"
 	line "then come see me."
@@ -660,89 +660,89 @@ UnknownText_0x6b32b:
 	done
 
 UnknownText_0x6b370:
-	text "Some #MON can"
+	text "Some #mon can"
 	line "only be seen in"
-	cont "the PARK."
+	cont "the Park."
 	done
 
 UnknownText_0x6b399:
-	text "DON: Wow, you beat"
+	text "Don: Wow, you beat"
 	line "me. You're pretty"
 	cont "good."
 	done
 
 UnknownText_0x6b3c4:
-	text "DON: Luck plays a"
+	text "Don: Luck plays a"
 	line "big part in this."
 
 	para "You never know"
-	line "what #MON will"
+	line "what #mon will"
 	cont "appear."
 	done
 
 UnknownText_0x6b40f:
-	text "ED: I envy you."
+	text "Ed: I envy you."
 	line "I just couldn't"
 	cont "do it this time."
 	done
 
 UnknownText_0x6b440:
-	text "ED: Maybe you win"
-	line "with big #MON?"
+	text "Ed: Maybe you win"
+	line "with big #mon?"
 	done
 
 UnknownText_0x6b462:
-	text "NICK: Well done!"
+	text "Nick: Well done!"
 	line "I'm going to raise"
-	cont "my #MON better."
+	cont "my #mon better."
 	done
 
 UnknownText_0x6b496:
-	text "NICK: Maybe you"
+	text "Nick: Maybe you"
 	line "get a higher score"
 
-	para "for a #MON of"
+	para "for a #mon of"
 	line "an unusual color."
 	done
 
 UnknownText_0x6b4da:
-	text "WILLIAM: You're"
+	text "William: You're"
 	line "the winner? What"
 	cont "did you catch?"
 	done
 
 UnknownText_0x6b50a:
-	text "WILLIAM: Well, I'm"
+	text "William: Well, I'm"
 	line "satisfied because"
 
-	para "I caught a #MON"
+	para "I caught a #mon"
 	line "that I wanted."
 	done
 
 UnknownText_0x6b54e:
-	text "BENNY: Congrats!"
+	text "Benny: Congrats!"
 	line "You have earned my"
 	cont "respect!"
 	done
 
 UnknownText_0x6b57c:
-	text "BENNY: I caught a"
-	line "SCYTHER before,"
+	text "Benny: I caught a"
+	line "Scyther before,"
 	cont "but I didn't win."
 	done
 
 UnknownText_0x6b5b0:
-	text "BARRY: That #-"
-	line "MON you caught…"
+	text "Barry: That #-"
+	line "mon you caught…"
 	cont "it's awesome!"
 	done
 
 UnknownText_0x6b5dd:
-	text "BARRY: It's easier"
+	text "Barry: It's easier"
 	line "to win if you get"
 
 	para "a high-level bug"
-	line "#MON."
+	line "#mon."
 
 	para "But I think they"
 	line "also consider some"
@@ -750,44 +750,44 @@ UnknownText_0x6b5dd:
 	done
 
 UnknownText_0x6b64b:
-	text "CINDY: You won?"
+	text "Cindy: You won?"
 	line "That's great!"
 
 	para "Do you feel like"
 	line "looking for bug"
-	cont "#MON with me?"
+	cont "#mon with me?"
 	done
 
 UnknownText_0x6b698:
-	text "CINDY: I really"
-	line "love bug #MON!"
+	text "Cindy: I really"
+	line "love bug #mon!"
 	done
 
 UnknownText_0x6b6b8:
-	text "JOSH: I… I can't"
+	text "Josh: I… I can't"
 	line "believe I lost at"
 	cont "bug-catching…"
 	done
 
 UnknownText_0x6b6e9:
-	text "JOSH: I heard that"
+	text "Josh: I heard that"
 	line "somebody won with"
-	cont "a CATERPIE!"
+	cont "a Caterpie!"
 	done
 
 UnknownText_0x6b71b:
-	text "SAMUEL: Next time,"
+	text "Samuel: Next time,"
 	line "I'm going to win."
 	done
 
 UnknownText_0x6b740:
-	text "SAMUEL: Darn."
+	text "Samuel: Darn."
 	line "I thought I would"
 	cont "score higher…"
 	done
 
 UnknownText_0x6b76f:
-	text "KIPP: Could you"
+	text "Kipp: Could you"
 	line "give me some tips?"
 
 	para "I want to study"
@@ -795,7 +795,7 @@ UnknownText_0x6b76f:
 	done
 
 UnknownText_0x6b7af:
-	text "KIPP: I study a"
+	text "Kipp: I study a"
 	line "lot, but that's"
 
 	para "not good enough to"
@@ -808,12 +808,12 @@ UnknownText_0x6b7af:
 
 UnusedSudowoodoText:
 	text "I hear there's a"
-	line "#MON that looks"
+	line "#mon that looks"
 	cont "just like a tree."
 
 	para "You can reveal its"
 	line "identity using a"
-	cont "SILPHSCOPE 2."
+	cont "SilphScope 2."
 	done
 
 UnknownText_0x6b84c:
@@ -830,14 +830,14 @@ UnknownText_0x6b84c:
 	line "you also get to"
 
 	para "keep the bug"
-	line "#MON you may"
+	line "#mon you may"
 
 	para "have at the end of"
 	line "the contest."
 	done
 
 UnknownText_0x6b910:
-	text "Uh-oh… Your PACK"
+	text "Uh-oh… Your Bag"
 	line "is full."
 
 	para "We'll hold on to"

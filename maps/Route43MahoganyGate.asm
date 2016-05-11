@@ -26,7 +26,7 @@ UnknownScript_0x19ab19:
 
 UnknownText_0x19ab1f:
 	text "Only people headed"
-	line "up to LAKE OF RAGE"
+	line "up to Lake of Rage"
 
 	para "have been through"
 	line "here lately."
@@ -34,7 +34,7 @@ UnknownText_0x19ab1f:
 
 UnknownText_0x19ab65:
 	text "Nobody goes up to"
-	line "LAKE OF RAGE these"
+	line "Lake of Rage these"
 	cont "days."
 	done
 

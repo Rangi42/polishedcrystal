@@ -231,7 +231,7 @@ MovementData_0x1a9356:
 FisherTully1SeenText:
 	text "Let me demonstrate"
 	line "the power of the"
-	cont "#MON I caught!"
+	cont "#mon I caught!"
 	done
 
 FisherTully1BeatenText:
@@ -241,9 +241,9 @@ FisherTully1BeatenText:
 
 UnknownText_0x1a93ab:
 	text "I want to become"
-	line "the trainer CHAMP"
+	line "the trainer Champ"
 
-	para "using the #MON"
+	para "using the #mon"
 	line "I caught."
 
 	para "That's the best"
@@ -278,47 +278,47 @@ PokemaniacShaneSeenText:
 
 PokemaniacShaneBeatenText:
 	text "I should have used"
-	line "my MOON STONE…"
+	line "my Moon Stone…"
 	done
 
 UnknownText_0x1a94d6:
 	text "You're working on"
-	line "a #DEX?"
+	line "a #dex?"
 
 	para "Wow, you must know"
 	line "some pretty rare"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "May I please see"
 	line "it. Please?"
 	done
 
 Route42Sign1Text:
-	text "ROUTE 42"
+	text "Route 42"
 
-	para "ECRUTEAK CITY -"
-	line "MAHOGANY TOWN"
+	para "Ecruteak City -"
+	line "Mahogany Town"
 	done
 
 MtMortarSign1Text:
-	text "MT.MORTAR"
+	text "Mt.Mortar"
 
-	para "WATERFALL CAVE"
-	line "INSIDE"
+	para "Waterfall Cave"
+	line "Inside"
 	done
 
 MtMortarSign2Text:
-	text "MT.MORTAR"
+	text "Mt.Mortar"
 
-	para "WATERFALL CAVE"
-	line "INSIDE"
+	para "Waterfall Cave"
+	line "Inside"
 	done
 
 Route42Sign2Text:
-	text "ROUTE 42"
+	text "Route 42"
 
-	para "ECRUTEAK CITY -"
-	line "MAHOGANY TOWN"
+	para "Ecruteak City -"
+	line "Mahogany Town"
 	done
 
 Route42_MapEventHeader:

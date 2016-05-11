@@ -31,7 +31,7 @@ UnknownText_0x6aa5b:
 	line "why fewer people"
 
 	para "are visiting the"
-	line "RUINS OF ALPH."
+	line "Ruins of Alph."
 	done
 
 Route36RuinsofAlphgate_MapEventHeader:

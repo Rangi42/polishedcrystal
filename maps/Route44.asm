@@ -323,7 +323,7 @@ Route44HiddenElixer:
 
 FisherWilton1SeenText:
 	text "Aack! You made me"
-	line "lose a POLIWAG!"
+	line "lose a Poliwag!"
 
 	para "What are you going"
 	line "to do about it?"
@@ -335,7 +335,7 @@ FisherWilton1BeatenText:
 	done
 
 UnknownText_0x19daa8:
-	text "That POLIWAG that"
+	text "That Poliwag that"
 	line "got away…"
 	cont "It was huge."
 
@@ -352,7 +352,7 @@ FisherEdgarSeenText:
 
 	para "That's my"
 	line "relationship"
-	cont "with my #MON."
+	cont "with my #mon."
 	done
 
 FisherEdgarBeatenText:
@@ -371,7 +371,7 @@ UnknownText_0x19db6f:
 Bird_keeperVance1SeenText:
 	text "Do you know about"
 	line "the legendary bird"
-	cont "#MON?"
+	cont "#mon?"
 	done
 
 Bird_keeperVance1BeatenText:
@@ -380,11 +380,11 @@ Bird_keeperVance1BeatenText:
 	done
 
 UnknownText_0x19dbf3:
-	text "ARTICUNO, ZAPDOS"
-	line "and MOLTRES are"
+	text "Articuno, Zapdos"
+	line "and Moltres are"
 
 	para "the three legend-"
-	line "ary bird #MON."
+	line "ary bird #mon."
 
 	para "I heard there are"
 	line "other legendary"
@@ -421,16 +421,16 @@ UnknownText_0x19dcfc:
 PokemaniacZachSeenText:
 	text "I'll do anything"
 	line "to get my hands on"
-	cont "rare #MON!"
+	cont "rare #mon!"
 	done
 
 PokemaniacZachBeatenText:
-	text "Oooh, your #MON"
+	text "Oooh, your #mon"
 	line "are so appealing."
 	done
 
 UnknownText_0x19dd7e:
-	text "If a #MON has"
+	text "If a #mon has"
 	line "different colors"
 
 	para "from usual, it's"
@@ -446,7 +446,7 @@ CooltrainermAllenSeenText:
 	cont "looking at you."
 
 	para "I'm good at #-"
-	line "MON, and I can see"
+	line "mon, and I can see"
 	cont "that you are too."
 	done
 
@@ -457,15 +457,15 @@ CooltrainermAllenBeatenText:
 
 UnknownText_0x19de66:
 	text "Wow. You have a"
-	line "lot of BADGES."
+	line "lot of Badges."
 
 	para "No wonder you're"
 	line "so tough."
 
 	para "I wonder if"
-	line "ECRUTEAK GYM's"
+	line "Ecruteak Gym's"
 
-	para "MORTY is still in"
+	para "Morty is still in"
 	line "training?"
 
 	para "He really hammered"
@@ -496,15 +496,15 @@ UnknownText_0x19df4d:
 	done
 
 Route44Sign1Text:
-	text "ROUTE 44"
-	line "ICE PATH AHEAD"
+	text "Route 44"
+	line "Ice Path Ahead"
 	done
 
 Route44Sign2Text:
-	text "ROUTE 44"
+	text "Route 44"
 
-	para "MAHOGANY TOWN -"
-	line "BLACKTHORN CITY"
+	para "Mahogany Town -"
+	line "Blackthorn City"
 	done
 
 Route44_MapEventHeader:

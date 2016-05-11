@@ -178,7 +178,7 @@ SwimmermSimonBeatenText:
 	done
 
 UnknownText_0x1a6282:
-	text "CIANWOOD CITY is"
+	text "Cianwood City is"
 	line "a good distance"
 	cont "away from here."
 	done
@@ -188,7 +188,7 @@ SwimmermRandallSeenText:
 	line "and fit!"
 
 	para "Don't ride your"
-	line "#MON! Swim!"
+	line "#mon! Swim!"
 	done
 
 SwimmermRandallBeatenText:
@@ -203,7 +203,7 @@ UnknownText_0x1a62fa:
 
 SwimmerfElaineSeenText:
 	text "Are you going to"
-	line "CIANWOOD?"
+	line "Cianwood?"
 
 	para "How about a quick"
 	line "battle first?"
@@ -224,7 +224,7 @@ SwimmerfPaulaSeenText:
 	line "me."
 
 	para "I'm hanging on to"
-	line "a sea #MON!"
+	line "a sea #mon!"
 	done
 
 SwimmerfPaulaBeatenText:
@@ -242,7 +242,7 @@ UnknownText_0x1a6429:
 	text "Although you can't"
 	line "see it from here,"
 
-	para "CIANWOOD is across"
+	para "Cianwood is across"
 	line "the sea."
 	done
 
@@ -263,7 +263,7 @@ UnknownText_0x1a649b:
 	done
 
 UnknownText_0x1a64e6:
-	text "I came to OLIVINE"
+	text "I came to Olivine"
 	line "by ship to see the"
 
 	para "sights and soak up"
@@ -276,7 +276,7 @@ UnknownText_0x1a64e6:
 
 UnknownText_0x1a6564:
 	text "Have you gone to"
-	line "the BATTLE TOWER?"
+	line "the Battle Tower?"
 
 	para "I think a lot of"
 	line "tough trainers"
@@ -285,17 +285,17 @@ UnknownText_0x1a6564:
 	line "there already."
 
 	para "But since you have"
-	line "so many BADGES,"
+	line "so many Badges,"
 
 	para "you shouldn't do"
 	line "badly at all."
 	done
 
 MeetMonicaText:
-	text "MONICA: Glad to"
+	text "Monica: Glad to"
 	line "meet you. I'm"
 
-	para "MONICA of Monday."
+	para "Monica of Monday."
 	done
 
 MonicaGivesGiftText:
@@ -305,19 +305,19 @@ MonicaGivesGiftText:
 	done
 
 MonicaGaveGiftText:
-	text "MONICA: It's an"
+	text "Monica: It's an"
 	line "item that raises"
 
-	para "the power of fly-"
+	para "the power of Fly-"
 	line "ing-type moves."
 
 	para "You should equip a"
-	line "bird #MON with"
+	line "bird #mon with"
 	cont "that item."
 	done
 
 MonicaMondayText:
-	text "MONICA: My broth-"
+	text "Monica: My broth-"
 	line "ers and sisters"
 
 	para "are all over the"
@@ -328,16 +328,16 @@ MonicaMondayText:
 	done
 
 MonicaNotMondayText:
-	text "MONICA: I don't"
+	text "Monica: I don't"
 	line "think today is"
 	cont "Monday. How sad…"
 	done
 
 Route40SignText:
-	text "ROUTE 40"
+	text "Route 40"
 
-	para "CIANWOOD CITY -"
-	line "OLIVINE CITY"
+	para "Cianwood City -"
+	line "Olivine City"
 	done
 
 Route40_MapEventHeader:

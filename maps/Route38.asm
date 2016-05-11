@@ -325,7 +325,7 @@ FruitTreeScript_0x1a1f33:
 Bird_keeperTobySeenText:
 	text "Fly high into the"
 	line "sky, my beloved"
-	cont "bird #MON!"
+	cont "bird #mon!"
 	done
 
 Bird_keeperTobyBeatenText:
@@ -335,10 +335,10 @@ Bird_keeperTobyBeatenText:
 
 UnknownText_0x1a1f86:
 	text "I plan to train in"
-	line "CIANWOOD CITY to"
+	line "Cianwood City to"
 
-	para "teach my #MON"
-	line "how to FLY."
+	para "teach my #mon"
+	line "how to Fly."
 	done
 
 SchoolboyChad1SeenText:
@@ -357,7 +357,7 @@ UnknownText_0x1a200e:
 	line "many tests, I"
 
 	para "don't have much"
-	line "time for #MON."
+	line "time for #mon."
 
 	para "So when I do get"
 	line "to play, I really"
@@ -366,7 +366,7 @@ UnknownText_0x1a200e:
 
 LassDana1SeenText:
 	text "You seem to be"
-	line "good at #MON."
+	line "good at #mon."
 
 	para "If you are, how"
 	line "about giving me"
@@ -382,7 +382,7 @@ UnknownText_0x1a20ec:
 	text "I know something"
 	line "good!"
 
-	para "MOOMOO FARM's milk"
+	para "Moomoo Farm's milk"
 	line "is famous for its"
 	cont "flavor."
 	done
@@ -392,17 +392,17 @@ BeautyValerieSeenText:
 	line "cute trainer!"
 
 	para "May I see your"
-	line "#MON?"
+	line "#mon?"
 	done
 
 BeautyValerieBeatenText:
 	text "I'm glad I got to"
-	line "see your #MON!"
+	line "see your #mon!"
 	done
 
 UnknownText_0x1a2185:
 	text "When I see #-"
-	line "MON, it seems to"
+	line "mon, it seems to"
 	cont "soothe my nerves."
 	done
 
@@ -411,7 +411,7 @@ SailorHarrySeenText:
 	line "seas, so I know"
 
 	para "about all sorts of"
-	line "#MON!"
+	line "#mon!"
 	done
 
 SailorHarryBeatenText:
@@ -424,22 +424,22 @@ UnknownText_0x1a220c:
 	line "ple around the"
 
 	para "world live happily"
-	line "with #MON."
+	line "with #mon."
 	done
 
 BeautyOliviaSeenText:
 	text "Don't you think my"
-	line "#MON and I are"
+	line "#mon and I are"
 	cont "beautiful?"
 	done
 
 BeautyOliviaBeatenText:
-	text "We drink MOOMOO"
-	line "MILK every day."
+	text "We drink Moomoo"
+	line "Milk every day."
 	done
 
 UnknownText_0x1a229a:
-	text "MOOMOO MILK is"
+	text "Moomoo Milk is"
 	line "good for beauty"
 
 	para "and health, but"
@@ -450,16 +450,16 @@ UnknownText_0x1a229a:
 	done
 
 Route38SignText:
-	text "ROUTE 38"
+	text "Route 38"
 
-	para "OLIVINE CITY -"
-	line "ECRUTEAK CITY"
+	para "Olivine City -"
+	line "Ecruteak City"
 	done
 
 Route38TrainerTipsText:
-	text "TRAINER TIPS"
+	text "Trainer Tips"
 
-	para "If a #MON is"
+	para "If a #mon is"
 	line "trying to evolve,"
 	cont "you can stop it."
 
@@ -468,7 +468,7 @@ Route38TrainerTipsText:
 	cont "tion."
 
 	para "That startles the"
-	line "#MON and stops"
+	line "#mon and stops"
 	cont "its evolution."
 	done
 

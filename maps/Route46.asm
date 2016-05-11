@@ -173,7 +173,7 @@ FruitTreeScript_0x1a9791:
 HikerBaileySeenText:
 	text "Awright! I'll show"
 	line "you the power of"
-	cont "mountain #MON!"
+	cont "mountain #mon!"
 	done
 
 HikerBaileyBeatenText:
@@ -183,13 +183,13 @@ HikerBaileyBeatenText:
 
 UnknownText_0x1a97e8:
 	text "It's over. I don't"
-	line "mind. We HIKERS"
+	line "mind. We Hikers"
 	cont "are like that."
 	done
 
 CamperTedSeenText:
 	text "I'm raising #-"
-	line "MON too!"
+	line "mon too!"
 
 	para "Will you battle"
 	line "with me?"
@@ -208,7 +208,7 @@ UnknownText_0x1a9851:
 	done
 
 PicnickerErin1SeenText:
-	text "I raise #MON"
+	text "I raise #mon"
 	line "too!"
 
 	para "Will you battle"
@@ -221,9 +221,9 @@ PicnickerErin1BeatenText:
 
 UnknownText_0x1a98c6:
 	text "I've been to many"
-	line "GYMS, but the GYM"
+	line "Gyms, but the Gym"
 
-	para "in GOLDENROD is my"
+	para "in Goldenrod is my"
 	line "favorite."
 
 	para "It's filled with"
@@ -246,8 +246,8 @@ UnknownText_0x1a9927:
 	done
 
 Route46SignText:
-	text "ROUTE 46"
-	line "MOUNTAIN RD. AHEAD"
+	text "Route 46"
+	line "Mountain Rd. Ahead"
 	done
 
 Route46_MapEventHeader:
