@@ -74,6 +74,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
    * Improved items used by some trainers
    * Improved some trainers' DVs
+   * Improved boss trainers' teams
    * No badge boosts to stats or types
    * New default player names
    * Ask gender at a sensible time in Oak's speech
@@ -145,7 +146,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
    * Change in-game trades
-   * First Gym Leader has 2 Pokémon, then 3, 4, 5, and then all 6 (including the Elite 4)
    * Rematch Gym Leaders and Elite Four with better teams
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Sylveon, Mr. Mime, Togekiss) (reward: TM for DazzlinGleam)
    * Fix Lugia and Ho-Oh's learnsets so they know Aeroblast and Sacred Fire when encountered (at level 60)
