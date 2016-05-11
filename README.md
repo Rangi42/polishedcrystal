@@ -87,7 +87,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## To do:
 
 * Bug fixes:
-   * Why do some moves not associate with the right effects? A side-effect of Physical/Special split, or trainer edits?
+   * Make Growth display an appropriate effect and message regarding both raised stats
 * Allow Wonder Trading only a few times a day
 * Remove unused code
 * Find and fix more bugs

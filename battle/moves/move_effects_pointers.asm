@@ -11,9 +11,8 @@
 	dw AttackUp
 	dw DefenseUp
 	dw SpeedUp
-	dw SpecialAttackUp
-	dw SpecialDefenseUp
 	dw Growth
+	dw SpecialDefenseUp
 	dw AccuracyUp
 	dw EvasionUp
 	dw NormalHit
