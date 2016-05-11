@@ -678,7 +678,7 @@ const_value SET 1
 	const FRUITTREE_VIOLET_CITY   ; 09
 	const FRUITTREE_ROUTE_46_2    ; 0a
 	const FRUITTREE_ROUTE_35      ; 0b
-	const FRUITTREE_ROUTE_45      ; 0c
+	const FRUITTREE_ROUTE_45_1    ; 0c
 	const FRUITTREE_ROUTE_36      ; 0d
 	const FRUITTREE_ROUTE_26      ; 0e
 	const FRUITTREE_ROUTE_39      ; 0f
@@ -697,6 +697,8 @@ const_value SET 1
 	const FRUITTREE_PEWTER_CITY_1 ; 1c
 	const FRUITTREE_PEWTER_CITY_2 ; 1d
 	const FRUITTREE_FUCHSIA_CITY  ; 1e
+	const FRUITTREE_ROUTE_45_2    ; 1f
+	const FRUITTREE_ROUTE_27      ; 20
 NUM_FRUIT_TREES EQU const_value +- 1
 
 CMDQUEUE_TYPE  EQU 0

@@ -83,6 +83,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Rematch Elite Four
+   * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
 
 
 ## To do:
@@ -154,7 +155,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change in-game trades
    * Rematch Gym Leaders in the Fighting Dojo
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Sylveon, Mr. Mime, Togekiss) (reward: TM for DazzlinGleam)
-   * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
 
 
 ## Long-term
