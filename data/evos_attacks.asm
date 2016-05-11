@@ -3368,12 +3368,12 @@ TyranitarEvosAttacks:
 
 LugiaEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, AEROBLAST
-	db 11, SAFEGUARD
-	db 22, GUST
-	db 33, RECOVER
-	db 44, HYDRO_PUMP
-	db 55, RAIN_DANCE
+	db 1, SAFEGUARD
+	db 11, GUST
+	db 22, RECOVER
+	db 33, HYDRO_PUMP
+	db 44, RAIN_DANCE
+	db 55, AEROBLAST
 	db 66, SWIFT
 	db 77, WHIRLWIND
 	db 88, ANCIENTPOWER
@@ -3382,12 +3382,12 @@ LugiaEvosAttacks:
 
 HoOhEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, SACRED_FIRE
-	db 11, SAFEGUARD
-	db 22, GUST
-	db 33, RECOVER
-	db 44, FIRE_BLAST
-	db 55, SUNNY_DAY
+	db 1, SAFEGUARD
+	db 11, GUST
+	db 22, RECOVER
+	db 33, FIRE_BLAST
+	db 44, SUNNY_DAY
+	db 55, SACRED_FIRE
 	db 66, SWIFT
 	db 77, WHIRLWIND
 	db 88, ANCIENTPOWER
