@@ -66,7 +66,7 @@ SpecialGiveShuckle: ; 7305
 	ret
 
 SpecialShuckleOT:
-	db "Mania@"
+	db "Kirk@"
 SpecialShuckleNick:
 	db "Shuckie@"
 

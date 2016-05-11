@@ -60,6 +60,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
    * Menu Account → Menu Blurbs
+   * Mania → Kirk (Shuckie the Shuckle's OT)
    * Refer to badges as "the"
 * Restorations:
    * Original Japanese sprites for some trainers
