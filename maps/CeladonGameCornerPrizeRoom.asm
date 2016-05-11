@@ -151,7 +151,7 @@ GoldenrodGameCornerPokemonVendor:
 	waitbutton
 	writebyte PIKACHU
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke PIKACHU, 25
+	givepoke PIKACHU, 10
 	takecoins 2222
 	jump .loop
 
@@ -169,7 +169,7 @@ GoldenrodGameCornerPokemonVendor:
 	waitbutton
 	writebyte PORYGON
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke PORYGON, 15
+	givepoke PORYGON, 20
 	takecoins 5555
 	jump .loop
 
@@ -187,7 +187,7 @@ GoldenrodGameCornerPokemonVendor:
 	waitbutton
 	writebyte LARVITAR
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke LARVITAR, 40
+	givepoke LARVITAR, 30
 	takecoins 8888
 	jump .loop
 
