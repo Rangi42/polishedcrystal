@@ -66,6 +66,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Original Japanese sprites for some trainers
    * Enabled the Goldenrod City PokéCom Center
    * Copied trainer levels and rosters from HGSS (but not movesets)
+   * Added Bellchime Trail from HGSS
 * Customizations:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
    * Individual party/day-care icons for each Pokémon
@@ -135,8 +136,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
    * Have Moves as an option in the party Pokémon menu during battle
+   * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs
+   * Make Bellchime Trail's trees autumnal
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Unown ? and ! from Gen III
    * Color party/day-care sprites by species
@@ -145,12 +148,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Better Substitute sprite
    * Show Pokémon portrait when using field moves
    * Low-pitched cries when fainting
-   * Separate Bellchime Trail from Ecruteak City
    * Replace some Kanto music with RBY tracks
 * Content:
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
-   * Add locations from HGSS (Bellchime Trail, Embedded Tower, Sinjoh Ruins)
+   * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
    * Change in-game trades
    * Rematch Gym Leaders in the Fighting Dojo

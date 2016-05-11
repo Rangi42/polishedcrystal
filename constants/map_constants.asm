@@ -138,6 +138,7 @@ MAP_NONE   EQU 0
 	mapgroup ECRUTEAK_GYM,                                9,  5 ;  7
 	mapgroup ECRUTEAK_ITEMFINDER_HOUSE,                   4,  4 ;  8
 	mapgroup ECRUTEAK_CITY,                              18, 20 ;  9
+	mapgroup BELLCHIME_TRAIL,                             6, 12 ; 10
 
 	newgroup                                                    ;  5
 

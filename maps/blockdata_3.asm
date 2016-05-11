@@ -264,3 +264,6 @@ BetaBlank_BlockData:
 
 GoldenrodDeptStoreRoof_BlockData:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
+
+BellchimeTrail_BlockData:
+	INCBIN "maps/BellchimeTrail.blk"

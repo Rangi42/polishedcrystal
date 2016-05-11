@@ -534,8 +534,8 @@ TinTower1F_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $f, $9, 12, ECRUTEAK_CITY
-	warp_def $f, $a, 12, ECRUTEAK_CITY
+	warp_def $f, $9, 3, BELLCHIME_TRAIL
+	warp_def $f, $a, 3, BELLCHIME_TRAIL
 	warp_def $2, $a, 2, TIN_TOWER_2F
 
 .XYTriggers:

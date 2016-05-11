@@ -355,8 +355,8 @@ WiseTriosRoom_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $4, $7, 4, ECRUTEAK_CITY
-	warp_def $5, $7, 5, ECRUTEAK_CITY
+	warp_def $4, $7, 1, BELLCHIME_TRAIL
+	warp_def $5, $7, 2, BELLCHIME_TRAIL
 	warp_def $4, $1, 5, ECRUTEAK_HOUSE
 
 .XYTriggers:

@@ -71,9 +71,6 @@ YoungsterScript_0x1a403d:
 EcruteakCitySign:
 	jumptext EcruteakCitySignText
 
-TinTowerSign:
-	jumptext TinTowerSignText
-
 EcruteakGymSign:
 	jumptext EcruteakGymSignText
 
@@ -228,14 +225,6 @@ EcruteakCitySignText:
 	line "Meets the Present"
 	done
 
-TinTowerSignText:
-	text "Bell Tower"
-
-	para "A legendary #-"
-	line "mon is said to"
-	cont "roost here."
-	done
-
 EcruteakGymSignText:
 	text "Ecruteak City"
 	line "#mon Gym"
@@ -266,19 +255,19 @@ EcruteakCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 15
+	db 12
 	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def $1b, $23, 2, ROUTE_42_ECRUTEAK_GATE
 	warp_def $b, $12, 1, ECRUTEAK_HOUSE
-	warp_def $2, $14, 1, WISE_TRIOS_ROOM
-	warp_def $3, $14, 2, WISE_TRIOS_ROOM
+	warp_def $2, $14, 1, WISE_TRIOS_ROOM ; unused
+	warp_def $3, $14, 2, WISE_TRIOS_ROOM ; unused
 	warp_def $1b, $17, 1, ECRUTEAK_POKECENTER_1F
 	warp_def $15, $5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
 	warp_def $15, $17, 1, DANCE_THEATRE
 	warp_def $15, $1d, 2, ECRUTEAK_MART
 	warp_def $1b, $6, 1, ECRUTEAK_GYM
 	warp_def $1b, $d, 1, ECRUTEAK_ITEMFINDER_HOUSE
-	warp_def $7, $25, 1, TIN_TOWER_1F
+	warp_def $7, $25, 1, TIN_TOWER_1F ; unused
 	warp_def $5, $5, 1, BURNED_TOWER_1F
 	warp_def $12, $0, 3, ROUTE_38_ECRUTEAK_GATE
 	warp_def $13, $0, 4, ROUTE_38_ECRUTEAK_GATE
@@ -289,7 +278,6 @@ EcruteakCity_MapEventHeader:
 .Signposts:
 	db 8
 	signpost 21, 15, SIGNPOST_READ, EcruteakCitySign
-	signpost 10, 38, SIGNPOST_READ, TinTowerSign
 	signpost 28, 8, SIGNPOST_READ, EcruteakGymSign
 	signpost 21, 21, SIGNPOST_READ, EcruteakDanceTheaterSign
 	signpost 10, 2, SIGNPOST_READ, BurnedTowerSign
