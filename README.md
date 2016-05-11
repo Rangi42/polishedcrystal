@@ -79,6 +79,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * New default player names
    * Ask gender at a sensible time in Oak's speech
    * Color-coded starter Poké Balls
+   * Lugia and Ho-Oh know their signature moves when encountered at level 60
+   * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
 
 
 ## To do:
@@ -148,7 +150,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change in-game trades
    * Rematch Gym Leaders and Elite Four with better teams
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Sylveon, Mr. Mime, Togekiss) (reward: TM for DazzlinGleam)
-   * Fix Lugia and Ho-Oh's learnsets so they know Aeroblast and Sacred Fire when encountered (at level 60)
 
 
 ## Long-term
