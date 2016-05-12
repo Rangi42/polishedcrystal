@@ -303,7 +303,7 @@ CeruleanCity_MapEventHeader:
 	signpost 29, 14, SIGNPOST_READ, CeruleanLockedDoor
 	signpost 21, 20, SIGNPOST_READ, CeruleanCityPokeCenterSign
 	signpost 29, 26, SIGNPOST_READ, CeruleanCityMartSign
-	signpost 12, 2, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
+	signpost 17, 4, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
 
 .PersonEvents:
 	db 6

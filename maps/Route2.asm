@@ -165,9 +165,9 @@ Route2_MapEventHeader:
 	db 6
 	signpost 51, 7, SIGNPOST_READ, Route2Sign
 	signpost 9, 11, SIGNPOST_READ, MapRoute2Signpost1Script
-	signpost 23, 7, SIGNPOST_ITEM, Route2HiddenMaxEther
-	signpost 14, 4, SIGNPOST_ITEM, Route2HiddenFullHeal
-	signpost 27, 4, SIGNPOST_ITEM, Route2HiddenFullRestore
+	signpost 7, 3, SIGNPOST_ITEM, Route2HiddenMaxEther ; move to Viridian Forest
+	signpost 7, 4, SIGNPOST_ITEM, Route2HiddenFullHeal ; move to Viridian Forest
+	signpost 7, 5, SIGNPOST_ITEM, Route2HiddenFullRestore ; move to Viridian Forest
 	signpost 30, 11, SIGNPOST_ITEM, Route2HiddenRevive
 
 .PersonEvents:
@@ -175,8 +175,8 @@ Route2_MapEventHeader:
 	person_event SPRITE_BUG_CATCHER, 45, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherRob, -1
 	person_event SPRITE_BUG_CATCHER, 4, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherEd, -1
 	person_event SPRITE_BUG_CATCHER, 40, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDoug, -1
-	person_event SPRITE_POKE_BALL, 29, 0, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2DireHit, EVENT_ROUTE_2_DIRE_HIT
-	person_event SPRITE_POKE_BALL, 23, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2MaxPotion, EVENT_ROUTE_2_MAX_POTION
+	person_event SPRITE_POKE_BALL, 7, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2DireHit, EVENT_ROUTE_2_DIRE_HIT ; Move to Viridian Forest
+	person_event SPRITE_POKE_BALL, 7, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2MaxPotion, EVENT_ROUTE_2_MAX_POTION ; Move to Viridian Forest
 	person_event SPRITE_POKE_BALL, 2, 19, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2Carbos, EVENT_ROUTE_2_CARBOS
 	person_event SPRITE_POKE_BALL, 50, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2Elixer, EVENT_ROUTE_2_ELIXER
-	person_event SPRITE_FRUIT_TREE, 14, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1ac306, -1
+	person_event SPRITE_FRUIT_TREE, 11, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1ac306, -1
