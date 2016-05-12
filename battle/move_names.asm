@@ -246,7 +246,7 @@
 	db "AncientPower@"
 	db "Shadow Ball@"
 	db "Future Sight@"
-	db "Brick Break@"
+	db "Rock Smash@"
 	db "Whirlpool@"
 	db "Beat Up@"
 	db "Moonblast@"
