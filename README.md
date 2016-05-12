@@ -139,7 +139,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs
-   * Make Bellchime Trail's trees autumnal
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Unown ? and ! from Gen III
    * Color party/day-care sprites by species

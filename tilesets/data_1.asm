@@ -12,16 +12,19 @@ INCBIN "tilesets/03_collision.bin"
 
 Tileset00GFX: ; 0x19006
 Tileset01GFX: ; 0x19006
+Tileset32GFX:
 INCBIN "gfx/tilesets/01.2bpp.lz"
 ; 0x19c0e
 
 Tileset00Meta: ; 0x19c0e
 Tileset01Meta: ; 0x19c0e
+Tileset32Meta:
 INCBIN "tilesets/01_metatiles.bin"
 ; 0x1a40e
 
 Tileset00Coll: ; 0x1a40e
 Tileset01Coll: ; 0x1a40e
+Tileset32Coll:
 INCBIN "tilesets/01_collision.bin"
 ; 0x1a60e
 

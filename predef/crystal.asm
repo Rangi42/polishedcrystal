@@ -244,6 +244,8 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .radio_tower
 	cp TILESET_CELADON_MANSION
 	jr z, .mansion_mobile
+	cp TILESET_BELLCHIME_TRAIL
+	jr z, .bellchime_trail
 	jr .do_nothing
 
 .pokecom_2f
@@ -277,6 +279,11 @@ LoadSpecialMapPalette: ; 494ac
 
 .mansion_mobile
 	call LoadMansionPalette
+	scf
+	ret
+
+.bellchime_trail
+	call LoadBellchimeTrailPalette
 	scf
 	ret
 
@@ -323,6 +330,21 @@ LoadIcePathPalette: ; 49590
 IcePathPalette: ; 4959f
 INCLUDE "tilesets/ice_path.pal"
 ; 495df
+
+LoadBellchimeTrailPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, BellchimeTrailPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+BellchimeTrailPalette:
+INCLUDE "tilesets/bellchime_trail.pal"
 
 LoadHousePalette: ; 495df
 	ld a, $5

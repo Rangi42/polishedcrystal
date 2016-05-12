@@ -62,11 +62,6 @@ Tileset04Coll: ; 0xdf690
 INCBIN "tilesets/04_collision.bin"
 ; 0xdf890
 
-Tileset32Meta: ; 0xdf890
-INCBIN "tilesets/32_metatiles.bin"
-; 0xdfc90
-
-Tileset32Coll: ; 0xdfc90
 Tileset33Coll: ; 0xdfc90
 Tileset34Coll: ; 0xdfc90
 Tileset35Coll: ; 0xdfc90
