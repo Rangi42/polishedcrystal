@@ -255,7 +255,7 @@ EcruteakCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 12
+	db 15
 	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def $1b, $23, 2, ROUTE_42_ECRUTEAK_GATE
 	warp_def $b, $12, 1, ECRUTEAK_HOUSE
@@ -276,7 +276,7 @@ EcruteakCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 8
+	db 7
 	signpost 21, 15, SIGNPOST_READ, EcruteakCitySign
 	signpost 28, 8, SIGNPOST_READ, EcruteakGymSign
 	signpost 21, 21, SIGNPOST_READ, EcruteakDanceTheaterSign
