@@ -108,11 +108,13 @@ ENDM
 	landmark  60, 108, Route1Name
 	landmark  60,  92, ViridianCityName
 	landmark  60,  80, Route2Name
+	landmark  60,  74, ViridianForestName
 	landmark  60,  68, PewterCityName
 	landmark  72,  68, Route3Name
 	landmark  84,  68, MtMoonName
 	landmark  96,  68, Route4Name
 	landmark 108,  68, CeruleanCityName
+	landmark 106,  66, CeruleanCaveName
 	landmark 108,  60, Route24Name
 	landmark 116,  52, Route25Name
 	landmark 108,  76, Route5Name
@@ -181,7 +183,7 @@ WhirlIslandsName:    db "Whirl¯Islands@"
 MtMortarName:        db "Mt.Mortar@"
 DragonsDenName:      db "Dragon's Den@"
 IcePathName:         db "Ice Path@"
-NotApplicableName:   db "N/A@"
+NotApplicableName:   db "N/A@" ; unused
 PalletTownName:      db "Pallet Town@"
 ViridianCityName:    db "Viridian¯City@"
 PewterCityName:      db "Pewter City@"
@@ -197,10 +199,10 @@ VictoryRoadName:     db "Victory¯Road@"
 MtMoonName:          db "Mt.Moon@"
 RockTunnelName:      db "Rock Tunnel@"
 LavRadioTowerName:   db "Lavender¯Radio Tower@"
-SilphCoName:         db "Silph Co.@"
-SafariZoneName:      db "Safari Zone@"
+SilphCoName:         db "Silph Co.@" ; unused
+SafariZoneName:      db "Safari Zone@" ; unused
 SeafoamIslandsName:  db "Seafoam¯Islands@"
-PokemonMansionName:  db "#mon¯Mansion@"
+PokemonMansionName:  db "#mon¯Mansion@" ; unused
 CeruleanCaveName:    db "Cerulean¯Cave@"
 Route1Name:          db "Route 1@"
 Route2Name:          db "Route 2@"

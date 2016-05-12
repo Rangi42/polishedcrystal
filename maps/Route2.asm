@@ -151,12 +151,15 @@ Route2_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 5
+	db 8
 	warp_def $f, $f, 1, ROUTE_2_NUGGET_SPEECH_HOUSE
 	warp_def $1f, $f, 3, ROUTE_2_GATE
 	warp_def $1b, $10, 1, ROUTE_2_GATE
 	warp_def $1b, $11, 2, ROUTE_2_GATE
 	warp_def $7, $c, 3, DIGLETTS_CAVE
+	warp_def $21, $5, 3, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	warp_def $9, $1, 3, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_def $9, $2, 4, VIRIDIAN_FOREST_PEWTER_GATE
 
 .XYTriggers:
 	db 0

@@ -282,13 +282,14 @@ CeruleanCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 6
+	db 7
 	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
 	warp_def $11, $1c, 1, CERULEAN_POLICE_STATION
 	warp_def $13, $d, 1, CERULEAN_TRADE_SPEECH_HOUSE
 	warp_def $15, $13, 1, CERULEAN_POKECENTER_1F
 	warp_def $17, $1e, 1, CERULEAN_GYM
 	warp_def $1d, $19, 2, CERULEAN_MART
+	warp_def $d, $2, 1, CERULEAN_CAVE_1F
 
 .XYTriggers:
 	db 0

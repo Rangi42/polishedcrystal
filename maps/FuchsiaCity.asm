@@ -138,7 +138,7 @@ FuchsiaCity_MapEventHeader:
 	warp_def $1b, $b, 1, FUCHSIA_BILL_SPEECH_HOUSE
 	warp_def $1b, $13, 1, FUCHSIA_POKECENTER_1F
 	warp_def $1b, $1b, 1, SAFARI_ZONE_WARDENS_HOME
-	warp_def $3, $12, 3, SAFARI_ZONE_FUCHSIA_GATE_BETA
+	warp_def $3, $12, 1, FUCHSIA_POKECENTER_1F ; SAFARI_ZONE_FUCHSIA_GATE_BETA
 	warp_def $16, $25, 1, ROUTE_15_FUCHSIA_GATE
 	warp_def $17, $25, 2, ROUTE_15_FUCHSIA_GATE
 	warp_def $23, $7, 1, ROUTE_19___FUCHSIA_GATE

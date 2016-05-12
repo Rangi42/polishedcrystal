@@ -49,8 +49,8 @@ PewterCitySign:
 PewterGymSign:
 	jumptext PewterGymSignText
 
-PewterMuseumSign:
-	jumptext PewterMuseumSignText
+PewterMuseumOfScienceSign:
+	jumptext PewterMuseumOfScienceSignText
 
 PewterCityMtMoonGiftShopSign:
 	jumptext PewterCityMtMoonGiftShopSignText
@@ -132,13 +132,9 @@ PewterGymSignText:
 	line "#mon Trainer"
 	done
 
-PewterMuseumSignText:
-	text "There's a notice"
-	line "here…"
-
-	para "Pewter Museum of"
-	line "Science is closed"
-	cont "for renovations…"
+PewterMuseumOfScienceSignText:
+	text "Pewter Museum of"
+	line "Science"
 	done
 
 PewterCityMtMoonGiftShopSignText:
@@ -159,12 +155,14 @@ PewterCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 5
+	db 7
 	warp_def $d, $1d, 1, PEWTER_NIDORAN_SPEECH_HOUSE
 	warp_def $11, $10, 1, PEWTER_GYM
 	warp_def $11, $17, 2, PEWTER_MART
 	warp_def $19, $d, 1, PEWTER_POKECENTER_1F
 	warp_def $1d, $7, 1, PEWTER_SNOOZE_SPEECH_HOUSE
+	warp_def $7, $e, 1, PEWTER_MUSEUM_OF_SCIENCE_1F
+	warp_def $5, $13, 3, PEWTER_MUSEUM_OF_SCIENCE_1F
 
 .XYTriggers:
 	db 0
@@ -173,7 +171,7 @@ PewterCity_MapEventHeader:
 	db 7
 	signpost 23, 25, SIGNPOST_READ, PewterCitySign
 	signpost 17, 11, SIGNPOST_READ, PewterGymSign
-	signpost 9, 15, SIGNPOST_READ, PewterMuseumSign
+	signpost 9, 15, SIGNPOST_READ, PewterMuseumOfScienceSign
 	signpost 19, 33, SIGNPOST_READ, PewterCityMtMoonGiftShopSign
 	signpost 29, 19, SIGNPOST_READ, PewterCityWelcomeSign
 	signpost 25, 14, SIGNPOST_READ, PewterCityPokeCenterSign

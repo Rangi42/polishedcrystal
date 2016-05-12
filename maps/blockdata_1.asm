@@ -13,9 +13,6 @@ Route44_BlockData:
 Route28_BlockData:
 	INCBIN "maps/Route28.blk"
 
-BetaHerosHouse_BlockData:
-	INCBIN "maps/BetaHerosHouse.blk"
-
 CeladonCity_BlockData:
 	INCBIN "maps/CeladonCity.blk"
 
@@ -28,41 +25,19 @@ Route2_BlockData:
 ElmsHouse_BlockData:
 	INCBIN "maps/ElmsHouse.blk"
 
-BetaSproutTower1_BlockData:
-	INCBIN "maps/BetaSproutTower1.blk"
-
 Route11_BlockData:
 	INCBIN "maps/Route11.blk"
-
-BetaSproutTower5_BlockData:
-	INCBIN "maps/BetaSproutTower5.blk"
 
 Route15_BlockData:
 	INCBIN "maps/Route15.blk"
 
-BetaSproutTower9_BlockData:
-	INCBIN "maps/BetaSproutTower9.blk"
-
 Route19_BlockData:
 	INCBIN "maps/Route19.blk"
-
-BetaBlackthornCity_BlockData:
-	INCBIN "maps/BetaBlackthornCity.blk"
 
 Route10South_BlockData:
 	INCBIN "maps/Route10South.blk"
 
 PokeCenter2F_BlockData:
-CinnabarPokeCenter2FBeta_BlockData:
-CeruleanPokeCenter2FBeta_BlockData:
-Route10PokeCenter2FBeta_BlockData:
-VermilionPokeCenter2FBeta_BlockData:
-PewterPokeCEnter2FBeta_BlockData:
-FuchsiaPokeCenter2FBeta_BlockData:
-LavenderPokeCenter2FBeta_BlockData:
-CeladonPokeCenter2FBeta_BlockData:
-ViridianPokeCenter2FBeta_BlockData:
-SaffronPokeCenter2FBeta_BlockData:
 	INCBIN "maps/PokeCenter2F.blk"
 
 Route41_BlockData:
@@ -92,35 +67,17 @@ Route25_BlockData:
 Route24_BlockData:
 	INCBIN "maps/Route24.blk"
 
-BetaVioletCity_BlockData:
-	INCBIN "maps/BetaVioletCity.blk"
-
 Route3_BlockData:
 	INCBIN "maps/Route3.blk"
 
 PewterCity_BlockData:
 	INCBIN "maps/PewterCity.blk"
 
-BetaIlexForest_BlockData:
-	INCBIN "maps/BetaIlexForest.blk"
-
-BetaSproutTower2_BlockData:
-	INCBIN "maps/BetaSproutTower2.blk"
-
 Route12_BlockData:
 	INCBIN "maps/Route12.blk"
 
-BetaGoldenrodCity_BlockData:
-	INCBIN "maps/BetaGoldenrodCity.blk"
-
 Route20_BlockData:
 	INCBIN "maps/Route20.blk"
-
-BetaSproutTower6_BlockData:
-	INCBIN "maps/BetaSproutTower6.blk"
-
-BetaPokecenterMainHouse_BlockData:
-	INCBIN "maps/BetaPokecenterMainHouse.blk"
 
 Route30_BlockData:
 	INCBIN "maps/Route30.blk"
@@ -143,11 +100,7 @@ FuchsiaCity_BlockData:
 Route38_BlockData:
 	INCBIN "maps/Route38.blk"
 
-BetaCianwoodCity_BlockData:
-	INCBIN "maps/BetaCianwoodCity.blk"
-
 OlivineTimsHouse_BlockData:
-OlivineHouseBeta_BlockData:
 OlivinePunishmentSpeechHouse_BlockData:
 OlivineGoodRodHouse_BlockData:
 Route39Farmhouse_BlockData:
@@ -198,7 +151,6 @@ CherrygroveEvolutionSpeechHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 	INCBIN "maps/House1.blk"
 
-SafariZoneFuchsiaGateBeta_BlockData:
 Route19FuchsiaGate_BlockData:
 Route43MahoganyGate_BlockData:
 Route43Gate_BlockData:
@@ -210,13 +162,9 @@ Route40BattleTowerGate_BlockData:
 Route2Gate_BlockData:
 Route2946Gate_BlockData:
 Route5SaffronCityGate_BlockData:
+ViridianForestViridianGate_BlockData:
+ViridianForestPewterGate_BlockData:
 	INCBIN "maps/NorthSouthGate.blk"
-
-BetaTeakCity_BlockData:
-	INCBIN "maps/BetaTeakCity.blk"
-
-BetaCherrygroveCity_BlockData:
-	INCBIN "maps/BetaCherrygroveCity.blk"
 
 CinnabarIsland_BlockData:
 	INCBIN "maps/CinnabarIsland.blk"
@@ -227,9 +175,6 @@ Route4_BlockData:
 Route8_BlockData:
 	INCBIN "maps/Route8.blk"
 
-BetaSproutTower3_BlockData:
-	INCBIN "maps/BetaSproutTower3.blk"
-
 ViridianCity_BlockData:
 	INCBIN "maps/ViridianCity.blk"
 
@@ -239,14 +184,8 @@ Route13_BlockData:
 Route21_BlockData:
 	INCBIN "maps/Route21.blk"
 
-BetaSproutTower7_BlockData:
-	INCBIN "maps/BetaSproutTower7.blk"
-
 Route17_BlockData:
 	INCBIN "maps/Route17.blk"
-
-BetaMahoganyTown_BlockData:
-	INCBIN "maps/BetaMahoganyTown.blk"
 
 Route31_BlockData:
 	INCBIN "maps/Route31.blk"
@@ -278,17 +217,8 @@ Route1718Gate_BlockData:
 Route31VioletGate_BlockData:
 	INCBIN "maps/EastWestGate.blk"
 
-BetaAzaleaTown_BlockData:
-	INCBIN "maps/BetaAzaleaTown.blk"
-
 VermilionCity_BlockData:
 	INCBIN "maps/VermilionCity.blk"
-
-BetaOlivineCity_BlockData:
-	INCBIN "maps/BetaOlivineCity.blk"
-
-BetaNewBarkTown_BlockData:
-	INCBIN "maps/BetaNewBarkTown.blk"
 
 ElmsLab_BlockData:
 	INCBIN "maps/ElmsLab.blk"
