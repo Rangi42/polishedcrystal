@@ -93,6 +93,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
+   * Fly to Rock Tunnel/Power Plant Pokémon Center
 
 
 ## To do:
@@ -147,7 +148,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
-   * Fly to Rock Tunnel/Power Plant Pokémon Center
    * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs
