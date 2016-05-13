@@ -293,7 +293,7 @@ BillsGrandpaOddishText:
 	text "Ah, my grandson"
 	line "mentioned a round,"
 
-	para "green #mon that"
+	para "blue #mon that"
 	line "has leaves growing"
 	cont "on its head."
 	done
