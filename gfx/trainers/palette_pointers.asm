@@ -79,4 +79,6 @@ BluePalette:         INCLUDE "gfx/trainers/blue.pal"
 OfficerPalette:      INCLUDE "gfx/trainers/officer.pal"
 GruntfPalette:       INCLUDE "gfx/trainers/grunt_f.pal"
 MysticalmanPalette:  INCLUDE "gfx/trainers/mysticalman.pal"
+ElderPalette:        INCLUDE "gfx/trainers/elder.pal"
+ForeignGruntPalette: INCLUDE "gfx/trainers/foreigngrunt.pal"
 ; b1de

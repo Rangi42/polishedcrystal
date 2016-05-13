@@ -10,7 +10,7 @@ SECTION "Unown Pic Pointers", ROMX[$4000], BANK[UNOWN_PIC_POINTERS]
 UnownPicPointers:: INCLUDE "gfx/pics/unown_pic_pointers.asm"
 
 
-SECTION "Trainer Pic Pointers", ROMX, BANK[TRAINER_PIC_POINTERS]
+SECTION "Trainer Pic Pointers", ROMX ; , BANK[TRAINER_PIC_POINTERS]
 TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
 
 
@@ -727,4 +727,6 @@ FisherPic:           INCBIN "gfx/trainers/fisher.2bpp.lz"
 BeautyPic:           INCBIN "gfx/trainers/beauty.2bpp.lz"
 SwimmerfPic:         INCBIN "gfx/trainers/swimmer_f.2bpp.lz"
 SagePic:             INCBIN "gfx/trainers/sage.2bpp.lz"
+ElderPic:            INCBIN "gfx/trainers/elder.2bpp.lz"
+ForeignGruntPic:     INCBIN "gfx/trainers/foreigngrunt.2bpp.lz"
 

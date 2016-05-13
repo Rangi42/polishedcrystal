@@ -540,10 +540,6 @@ KRIS EQU __enum__
 	const PING
 	const EDMOND
 	const NEAL
-	const LI
-	const GAKU
-	const MASA
-	const KOJI
 
 	trainerclass MEDIUM ; 39
 	const MARTHA
@@ -615,6 +611,14 @@ KRIS EQU __enum__
 
 	trainerclass MYSTICALMAN ; 43
 	const EUSINE
+
+	trainerclass ELDER ; 44
+	const LI
+	const GAKU
+	const MASA
+	const KOJI
+
+	trainerclass FOREIGNGRUNT ; 45
 
 NUM_TRAINER_CLASSES EQU __enum__
 

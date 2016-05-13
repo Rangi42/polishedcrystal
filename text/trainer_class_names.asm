@@ -65,3 +65,5 @@
 	db "Officer@"
 	db "Rocket@"
 	db "Mystery Man@"
+	db "Elder@"
+	db "Rocket@"

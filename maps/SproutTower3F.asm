@@ -74,7 +74,7 @@ SageLiScript:
 	waitbutton
 	closetext
 	winlosstext SageLiBeatenText, 0
-	loadtrainer SAGE, LI
+	loadtrainer ELDER, LI
 	startbattle
 	reloadmapafterbattle
 	opentext

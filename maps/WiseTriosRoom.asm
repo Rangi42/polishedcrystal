@@ -74,7 +74,7 @@ UnknownScript_0x985a3:
 	end
 
 TrainerSageGaku:
-	trainer EVENT_BEAT_SAGE_GAKU, SAGE, GAKU, SageGakuSeenText, SageGakuBeatenText, 0, SageGakuScript
+	trainer EVENT_BEAT_SAGE_GAKU, ELDER, GAKU, SageGakuSeenText, SageGakuBeatenText, 0, SageGakuScript
 
 SageGakuScript:
 	opentext
@@ -84,7 +84,7 @@ SageGakuScript:
 	end
 
 TrainerSageMasa:
-	trainer EVENT_BEAT_SAGE_MASA, SAGE, MASA, SageMasaSeenText, SageMasaBeatenText, 0, SageMasaScript
+	trainer EVENT_BEAT_SAGE_MASA, ELDER, MASA, SageMasaSeenText, SageMasaBeatenText, 0, SageMasaScript
 
 SageMasaScript:
 	opentext
@@ -94,7 +94,7 @@ SageMasaScript:
 	end
 
 TrainerSageKoji:
-	trainer EVENT_BEAT_SAGE_KOJI, SAGE, KOJI, SageKojiSeenText, SageKojiBeatenText, 0, SageKojiScript
+	trainer EVENT_BEAT_SAGE_KOJI, ELDER, KOJI, SageKojiSeenText, SageKojiBeatenText, 0, SageKojiScript
 
 SageKojiScript:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER

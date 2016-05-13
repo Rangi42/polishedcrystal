@@ -67,6 +67,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Enabled the Goldenrod City PokéCom Center
    * Copied trainer levels and rosters from HGSS (but not movesets)
    * Added Bellchime Trail from HGSS
+   * Added Elder trainer class from HGSS
 * Customizations:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
    * Individual party/day-care icons for each Pokémon
@@ -85,6 +86,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Rematch Elite Four
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
+   * Promote the Wise Trio from Sages to Elders
+   * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
 
 
 ## To do:

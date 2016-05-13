@@ -4288,17 +4288,6 @@ GruntMGroup:
 	db $ff ; end
 
 ; ================
-
-	; GRUNTM (31)
-	db "Grunt@"
-	db 0 ; normal
-
-	; party
-	db 39, GOLBAT
-
-	db $ff ; end
-
-; ================
 ; ================================
 
 
@@ -8421,55 +8410,6 @@ SageGroup:
 	db $ff ; end
 
 ; ================
-
-	; SAGE (9)
-	db "Li@"
-	db 0 ; normal
-
-	; party
-	db 7, BELLSPROUT
-	db 7, BELLSPROUT
-	db 10, HOOTHOOT
-
-	db $ff ; end
-
-; ================
-
-	; SAGE (10)
-	db "Gaku@"
-	db 0 ; normal
-
-	; party
-	db 36, NOCTOWL
-	db 36, FLAREON
-
-	db $ff ; end
-
-; ================
-
-	; SAGE (11)
-	db "Masa@"
-	db 0 ; normal
-
-	; party
-	db 36, NOCTOWL
-	db 36, JOLTEON
-
-	db $ff ; end
-
-; ================
-
-	; SAGE (12)
-	db "Koji@"
-	db 0 ; normal
-
-	; party
-	db 36, NOCTOWL
-	db 36, VAPOREON
-
-	db $ff ; end
-
-; ================
 ; ================================
 
 
@@ -9337,6 +9277,78 @@ MysticalmanGroup:
 		db SONICBOOM
 		db THUNDER
 		db ROLLOUT
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+ElderGroup:
+; ================================
+; ================
+
+	; ELDER (1)
+	db "Li@"
+	db 0 ; normal
+
+	; party
+	db 7, BELLSPROUT
+	db 7, BELLSPROUT
+	db 10, HOOTHOOT
+
+	db $ff ; end
+
+; ================
+
+	; ELDER (2)
+	db "Gaku@"
+	db 0 ; normal
+
+	; party
+	db 36, NOCTOWL
+	db 36, FLAREON
+
+	db $ff ; end
+
+; ================
+
+	; ELDER (3)
+	db "Masa@"
+	db 0 ; normal
+
+	; party
+	db 36, NOCTOWL
+	db 36, JOLTEON
+
+	db $ff ; end
+
+; ================
+
+	; ELDER (4)
+	db "Koji@"
+	db 0 ; normal
+
+	; party
+	db 36, NOCTOWL
+	db 36, VAPOREON
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+ForeignGruntGroup:
+; ================================
+; ================
+
+	; FOREIGNGRUNT (31)
+	db "Grunt@"
+	db 0 ; normal
+
+	; party
+	db 39, GOLBAT
 
 	db $ff ; end
 

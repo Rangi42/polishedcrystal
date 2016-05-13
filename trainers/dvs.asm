@@ -90,4 +90,6 @@ TrainerClassDVs: ; 270d6
 	db $98, $88 ; officer
 	db $7E, $A8 ; gruntf
 	db $9F, $FF ; mysticalman
+	db $FF, $FF ; elder
+	db $D8, $A8 ; foreigngrunt
 ; 2715c
