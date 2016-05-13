@@ -25,15 +25,21 @@ FalknerGroup:
 
 	db 9, PIDGEY
 		db TACKLE
+		db SAND_ATTACK
+		db GUST
 		db MUD_SLAP
-		db 0
-		db 0
+
+	db 9, SPEAROW
+		db PECK
+		db GROWL
+		db LEER
+		db MUD_SLAP
 
 	db 13, PIDGEOTTO
 		db TACKLE
-		db MUD_SLAP
+		db SAND_ATTACK
 		db GUST
-		db 0
+		db MUD_SLAP
 
 	db $ff ; end
 
@@ -62,6 +68,12 @@ WhitneyGroup:
 		db LEER
 		db LICK
 		db FURY_SWIPES
+
+	db 18, AIPOM, NO_ITEM
+		db SCRATCH
+		db TAIL_WHIP
+		db SAND_ATTACK
+		db ATTRACT
 
 	db 18, JIGGLYPUFF, NO_ITEM
 		db ROLLOUT
@@ -103,6 +115,12 @@ BugsyGroup:
 		db HARDEN
 		db FURY_ATTACK
 
+	db 14, YANMA
+		db TACKLE
+		db FORESIGHT
+		db QUICK_ATTACK
+		db DOUBLE_TEAM
+
 	db 17, SCYTHER
 		db QUICK_ATTACK
 		db LEER
@@ -136,6 +154,12 @@ MortyGroup:
 		db MIMIC
 		db CURSE
 		db NIGHT_SHADE
+
+	db 23, NOCTOWL, NO_ITEM
+		db PECK
+		db REFLECT
+		db HYPNOSIS
+		db NIGHTMARE
 
 	db 23, MISDREAVUS, NO_ITEM
 		db SHADOW_BALL

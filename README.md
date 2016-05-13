@@ -89,6 +89,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Rematch Elite Four
+   * Gym Leaders have 3, then 4, then 5, and the rest have 6 Pokémon
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
