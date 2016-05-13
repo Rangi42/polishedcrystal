@@ -147,8 +147,8 @@
 	map ROUTE_41
 	db 6 percent ; encounter rate
 	db 20, TENTACOOL
-	db 20, TENTACRUEL
 	db 20, MANTINE
+	db 20, REMORAID
 
 	map ROUTE_42
 	db 4 percent ; encounter rate

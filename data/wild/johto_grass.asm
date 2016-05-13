@@ -1275,24 +1275,24 @@
 	db 4, EKANS
 	db 5, RATTATA
 	db 7, BELLSPROUT
+	db 6, MAREEP
 	db 6, HOPPIP
-	db 7, PIDGEY
 	db 7, HOPPIP
 	db 7, HOPPIP
 	; day
 	db 4, EKANS
 	db 5, RATTATA
 	db 7, BELLSPROUT
+	db 6, MAREEP
 	db 6, HOPPIP
-	db 7, PIDGEY
 	db 7, HOPPIP
 	db 7, HOPPIP
 	; nite
 	db 4, WOOPER
 	db 5, RATTATA
 	db 7, BELLSPROUT
-	db 6, ZUBAT
 	db 7, HOOTHOOT
+	db 6, MAREEP
 	db 7, GASTLY
 	db 7, GASTLY
 
@@ -1399,7 +1399,7 @@
 	db 4, SPINARAK
 	db 4, HOOTHOOT
 	db 5, BELLSPROUT
-	db 5, HOOTHOOT
+	db 5, VULPIX
 	db 5, HOOTHOOT
 	db 5, GASTLY
 	db 5, GASTLY
@@ -1426,7 +1426,7 @@
 	db 13, SPINARAK
 	db 14, STANTLER
 	db 15, HOOTHOOT
-	db 16, STANTLER
+	db 16, VULPIX
 	db 15, NOCTOWL
 	db 15, ARIADOS
 	db 15, ARIADOS
@@ -1489,20 +1489,20 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 13, EKANS
-	db 14, SPEAROW
+	db 15, MANKEY
 	db 15, RATTATA
 	db 16, RATICATE
-	db 15, ARBOK
-	db 16, FEAROW
-	db 16, FEAROW
+	db 14, SPEAROW
+	db 16, ARBOK
+	db 16, PRIMEAPE
 	; day
 	db 13, EKANS
-	db 14, SPEAROW
+	db 15, MANKEY
 	db 15, RATTATA
 	db 16, RATICATE
-	db 15, ARBOK
-	db 16, FEAROW
-	db 16, FEAROW
+	db 14, SPEAROW
+	db 16, ARBOK
+	db 16, PRIMEAPE
 	; nite
 	db 13, RATTATA
 	db 14, ZUBAT
@@ -1515,29 +1515,29 @@
 	map ROUTE_43
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 15, SENTRET
-	db 16, PIDGEOTTO
+	db 17, PIDGEOTTO
+	db 15, GIRAFARIG
+	db 15, FLAAFFY
 	db 16, FARFETCH_D
-	db 15, FURRET
-	db 17, RATICATE
-	db 17, FURRET
-	db 17, FURRET
+	db 15, MAREEP
+	db 15, MAREEP
+	db 15, MAREEP
 	; day
-	db 15, SENTRET
-	db 16, PIDGEOTTO
+	db 17, PIDGEOTTO
+	db 15, GIRAFARIG
+	db 15, FLAAFFY
 	db 16, FARFETCH_D
-	db 15, FURRET
-	db 17, RATICATE
-	db 17, FURRET
-	db 17, FURRET
+	db 15, MAREEP
+	db 15, MAREEP
+	db 15, MAREEP
 	; nite
-	db 15, VENONAT
-	db 16, NOCTOWL
-	db 16, RATICATE
-	db 17, VENONAT
-	db 17, RATICATE
+	db 16, VENONAT
+	db 15, GIRAFARIG
+	db 15, FLAAFFY
+	db 17, NOCTOWL
 	db 17, VENOMOTH
-	db 17, VENOMOTH
+	db 15, MAREEP
+	db 15, MAREEP
 
 	map ROUTE_44
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

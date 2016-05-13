@@ -72,6 +72,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Copied trainer levels and rosters from HGSS (but not movesets)
    * Added Bellchime Trail from HGSS
    * Added Elder trainer class from HGSS
+   * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
+   * Wild Mankey on Routes 9 and 42
+   * Wild Primeape on Routes 9 and 42
+   * Wild Mareep on Routes 32 and 43
+   * Wild Flaaffy on Routes 42 and 43
+   * Wild Girafarig on Route 43
+   * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
 * Customizations:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
    * Individual party/day-care icons for each Pokémon
@@ -105,7 +112,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Remove unused code
 * Find and fix more bugs
    * Thick Club + Swords Dance Marowak Attack overflow
-* Catch all 251 Pokémon (add Vulpix, Mankey, Mareep, Girafarig, Remoraid, Bulbasaur, Charmander, Squirtle, Omanyte, Kabuto, Aerodactyl, Articuno, Zapdos, Moltres, Mewtwo, Mew, and Celebi) (use Japan's GS Ball event for Celebi)
+* Catch all 251 Pokémon (add Bulbasaur, Charmander, Squirtle, Omanyte, Kabuto, Aerodactyl, Articuno, Zapdos, Moltres, Mewtwo, Mew, and Celebi) (use Japan's GS Ball event for Celebi)
 * Add Glaceon, Leafeon, and Sylveon in the three unused Pokémon slots
 * Replace Cleffa and Igglybuff with Togekiss and Weavile
 * Mechanics:
@@ -148,7 +155,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
-   * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs
    * Improve Moonblast, Play Rough, and Disarm Voice animations
