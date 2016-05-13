@@ -8111,11 +8111,7 @@ BattleCommand_Disable: ; 36fed
 	ld a, [hl]
 	and a
 	jr z, .failed
-.loop2
-	call BattleRandom
-	and 7
-	jr z, .loop2
-	inc a
+	ld a, 4
 	inc c
 	swap c
 	add c

@@ -47,6 +47,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Hidden Power is always 60 power
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
+   * Disable lasts for 4 turns
    * Added X Spcl. Def
    * Steel-type Pokémon cannot be poisoned
 * Grammar and spelling updates:
