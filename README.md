@@ -38,7 +38,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Type-enhancing items raise by 20%, not 10%
    * Hatch Eggs at level 1
    * Critical hit mechanics from Gen VI (200% → 150% damage, better chances)
-   * Electric-type Pokémon cannot be Paralyzed
+   * Electric-type Pokémon are immune to paralysis, even from Tri Attack.
+   * Ice-type Pokémon are immune to freezing, even from Tri Attack.
+   * Fire-type Pokémon are immune to burns, even from Tri Attack.
+   * Poison-type Pokémon always hit with Toxic.
    * Growth raises Attack and Sp.Atk
    * Updated Pokémon base stats and move attributes
    * Hidden Power is always 60 power
@@ -125,6 +128,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Growth raises stats by two stages in sunlight
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
+   * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore.
+   * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag.
 * Convenience:
    * Better default settings (fast text, stereo sound, set battle style, etc)
    * Settings for 12/24-hour clock, and imperial/metric units
@@ -139,7 +144,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
-   * Have Moves as an option in the party Pokémon menu during battle
+   * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs

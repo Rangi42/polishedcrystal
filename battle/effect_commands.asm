@@ -1709,6 +1709,9 @@ BattleCommand_CheckHit: ; 34d32
 	call .LockOn
 	ret nz
 
+	call .PoisonTypeUsingToxic
+	ret nz
+
 	call .FlyDigMoves
 	jp nz, .Miss
 
@@ -1840,6 +1843,16 @@ BattleCommand_CheckHit: ; 34d32
 .LockedOn:
 	ld a, 1
 	and a
+	ret
+
+
+.PoisonTypeUsingToxic:
+; Return nz if we are a Poison-type using Toxic.
+	call CheckIfUserIsPoisonType
+	ret z
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp TOXIC
 	ret
 
 
@@ -5221,6 +5234,54 @@ CheckIfTargetIsSteelType:
 	ret
 
 
+CheckIfTargetIsFireType:
+	ld de, EnemyMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp FIRE
+	ret z
+	ld a, [de]
+	cp FIRE
+	ret
+
+
+CheckIfTargetIsIceType:
+	ld de, EnemyMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp ICE
+	ret z
+	ld a, [de]
+	cp ICE
+	ret
+
+
+CheckIfUserIsPoisonType:
+	ld de, BattleMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, EnemyMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp POISON
+	ret z
+	ld a, [de]
+	cp POISON
+	ret
+
+
 PoisonOpponent: ; 35ff5
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
@@ -5345,7 +5406,7 @@ BattleCommand_BurnTarget: ; 3608c
 	ld a, [TypeModifier]
 	and $7f
 	ret z
-	call CheckMoveTypeMatchesTarget ; Don't burn a Fire-type
+	call CheckIfTargetIsFireType
 	ret z
 	call GetOpponentItem
 	ld a, b
@@ -5420,7 +5481,7 @@ BattleCommand_FreezeTarget: ; 36102
 	ld a, [Weather]
 	cp WEATHER_SUN
 	ret z
-	call CheckMoveTypeMatchesTarget ; Don't freeze an Ice-type
+	call CheckIfTargetIsIceType
 	ret z
 	call GetOpponentItem
 	ld a, b
@@ -7662,6 +7723,8 @@ BattleCommand_Paralyze: ; 36dc7
 	jr nz, .paralyzed
 	ld a, [TypeModifier]
 	and $7f
+	jp z, .didnt_affect
+	call CheckIfTargetIsElectricType
 	jr z, .didnt_affect
 	call GetOpponentItem
 	ld a, b
@@ -7734,44 +7797,6 @@ BattleCommand_Paralyze: ; 36dc7
 	jp PrintDoesntAffect
 
 ; 36e5b
-
-
-CheckMoveTypeMatchesTarget: ; 36e5b
-; Compare move type to opponent type.
-; Return z if matching the opponent type,
-; unless the move is Normal (Tri Attack).
-
-	push hl
-
-	ld hl, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, BattleMonType1
-.ok
-
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp NORMAL
-	jr z, .normal
-
-	cp [hl]
-	jr z, .return
-
-	inc hl
-	cp [hl]
-
-.return
-	pop hl
-	ret
-
-.normal
-	ld a, 1
-	and a
-	pop hl
-	ret
-
-; 36e7c
 
 
 BattleCommand_Substitute: ; 36e7c
