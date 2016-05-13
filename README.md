@@ -93,7 +93,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## To do:
 
 * Bug fixes:
-   * Make Growth display an appropriate effect and message regarding both raised stats
+   * Make Growth display an appropriate effect and message regarding both raised stats  
+     https://hax.iimarck.us/topic/4198/
 * Allow Wonder Trading only a few times a day
 * Remove unused code
 * Find and fix more bugs
