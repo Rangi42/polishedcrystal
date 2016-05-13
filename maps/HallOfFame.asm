@@ -34,6 +34,10 @@ HallOfFameScript:
 	pause 15
 	writebyte 2 ; Machine is in the Hall of Fame
 	special HealMachineAnim
+	checkcode VAR_BADGES
+	if_less_than 16, .NotATrueRematch
+	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
+.NotATrueRematch
 	setevent EVENT_BEAT_ELITE_FOUR
 	setevent EVENT_TELEPORT_GUY
 	setevent EVENT_RIVAL_SPROUT_TOWER

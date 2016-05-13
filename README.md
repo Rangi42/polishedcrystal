@@ -119,7 +119,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Struggle does 25% recoil damage
    * Low Kick's power is based on weight
-   * Beat up works differently in Gen V
+   * Beat Up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
@@ -147,6 +147,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
+   * Fly to Rock Tunnel/Power Plant Pokémon Center
    * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs
