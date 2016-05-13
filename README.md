@@ -159,6 +159,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Low-pitched cries when fainting
    * Replace some Kanto music with RBY tracks
 * Content:
+   * Sell evolution stones in Celadon Dept. Store
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
