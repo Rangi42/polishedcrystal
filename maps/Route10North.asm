@@ -3,7 +3,15 @@ Route10North_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+
+.FlyPoint:
+	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
+	return
 
 PowerPlantSign:
 	jumptext PowerPlantSignText

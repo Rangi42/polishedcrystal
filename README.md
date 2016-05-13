@@ -72,6 +72,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Copied trainer levels and rosters from HGSS (but not movesets)
    * Added Bellchime Trail from HGSS
    * Added Elder trainer class from HGSS
+   * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
+   * Wild Mankey on Routes 9 and 42
+   * Wild Primeape on Routes 9 and 42
+   * Wild Mareep on Routes 32 and 43
+   * Wild Flaaffy on Routes 42 and 43
+   * Wild Girafarig on Route 43
+   * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
 * Customizations:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
    * Individual party/day-care icons for each Pokémon
@@ -93,6 +100,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
+   * Fly to Rock Tunnel/Power Plant Pokémon Center
 
 
 ## To do:
@@ -104,7 +112,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Remove unused code
 * Find and fix more bugs
    * Thick Club + Swords Dance Marowak Attack overflow
-* Catch all 251 Pokémon (add Vulpix, Mankey, Mareep, Girafarig, Remoraid, Bulbasaur, Charmander, Squirtle, Omanyte, Kabuto, Aerodactyl, Articuno, Zapdos, Moltres, Mewtwo, Mew, and Celebi) (use Japan's GS Ball event for Celebi)
+* Catch all 251 Pokémon (add Bulbasaur, Charmander, Squirtle, Omanyte, Kabuto, Aerodactyl, Articuno, Zapdos, Moltres, Mewtwo, Mew, and Celebi) (use Japan's GS Ball event for Celebi)
 * Add Glaceon, Leafeon, and Sylveon in the three unused Pokémon slots
 * Replace Cleffa and Igglybuff with Togekiss and Weavile
 * Mechanics:
@@ -119,7 +127,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Struggle does 25% recoil damage
    * Low Kick's power is based on weight
-   * Beat up works differently in Gen V
+   * Beat Up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
    * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
@@ -147,7 +155,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Select reorders Pokémon in party menu
    * Show stat changes and then absolute values on level up
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
-   * Allow bicycling in gate houses
 * Aesthetics:
    * Poké → ()PC on Pokémon Center signs
    * Improve Moonblast, Play Rough, and Disarm Voice animations
@@ -161,7 +168,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some Kanto music with RBY tracks
 * Content:
    * Sell evolution stones in Celadon Dept. Store
-   * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone, Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
+   * Restore locations from RBY (Viridian Forest, Pewter Museum, Mt. Moon, Cerulean Cave, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
