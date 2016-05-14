@@ -6,8 +6,8 @@ MD5 := md5sum -c --quiet
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-gfx       := $(PYTHON) gfx.py
-includes  := $(PYTHON) scan_includes.py
+gfx       := $(PYTHON) utils/gfx.py
+includes  := $(PYTHON) utils/scan_includes.py
 
 
 crystal_obj := \
