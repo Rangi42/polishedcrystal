@@ -3666,7 +3666,7 @@ CheckWhetherToAskSwitch: ; 3d714
 	jp nz, .return_nc
 	ld a, [Options]
 	bit BATTLE_SHIFT, a
-	jr nz, .return_nc
+	jr z, .return_nc
 	ld a, [CurPartyMon]
 	push af
 	ld a, [CurBattleMon]
