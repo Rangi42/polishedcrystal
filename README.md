@@ -121,6 +121,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
+   * Always show numbers in Pokédex, even in Johto order
 
 
 ## To do:
