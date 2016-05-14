@@ -258,12 +258,12 @@ Options_BattleStyle: ; e43a0
 
 .ToggleShift:
 	res BATTLE_SHIFT, [hl]
-	ld de, .Shift
+	ld de, .Set
 	jr .Display
 
 .ToggleSet:
 	set BATTLE_SHIFT, [hl]
-	ld de, .Set
+	ld de, .Shift
 
 .Display:
 	hlcoord 11, 7
@@ -272,10 +272,10 @@ Options_BattleStyle: ; e43a0
 	ret
 ; e43d1
 
-.Shift:
-	db "Shift@"
 .Set:
 	db "Set  @"
+.Shift:
+	db "Shift@"
 ; e43dd
 
 
@@ -438,26 +438,26 @@ Options_MenuAccount: ; e44c1
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
 	bit MENU_ACCOUNT, [hl]
-	jr nz, .ToggleOff
-	jr .ToggleOn
+	jr nz, .ToggleOn
+	jr .ToggleOff
 
 .LeftPressed:
 	bit MENU_ACCOUNT, [hl]
-	jr z, .ToggleOn
-	jr .ToggleOff
+	jr z, .ToggleOff
+	jr .ToggleOn
 
 .NonePressed:
 	bit MENU_ACCOUNT, [hl]
-	jr nz, .ToggleOn
-
-.ToggleOff:
-	res MENU_ACCOUNT, [hl]
-	ld de, .Off
-	jr .Display
+	jr nz, .ToggleOff
 
 .ToggleOn:
-	set MENU_ACCOUNT, [hl]
+	res MENU_ACCOUNT, [hl]
 	ld de, .On
+	jr .Display
+
+.ToggleOff:
+	set MENU_ACCOUNT, [hl]
+	ld de, .Off
 
 .Display:
 	hlcoord 11, 13
@@ -466,10 +466,10 @@ Options_MenuAccount: ; e44c1
 	ret
 ; e44f2
 
-.Off:
-	db "Off@"
 .On:
 	db "On @"
+.Off:
+	db "Off@"
 ; e44fa
 
 

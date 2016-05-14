@@ -272,7 +272,7 @@ UnknownText_0x7a807:
 	done
 
 UnknownText_0x7a850:
-	text "Gee, isn't that"
+	text "Gee, aren't they"
 	line "convenient?"
 	done
 

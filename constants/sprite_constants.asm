@@ -163,6 +163,7 @@ SPRITE_VARS EQU const_value
 	const SPRITE_FUCHSIA_GYM_4 ; fa
 	const SPRITE_COPYCAT ; fb
 	const SPRITE_JANINE_IMPERSONATOR ; fc
+	const SPRITE_REMATCH_GYM_LEADER_2 ; fd
 
 ; sprite types
 const_value SET 1

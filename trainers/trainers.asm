@@ -9332,6 +9332,7 @@ ElderGroup:
 	; party
 	db 36, NOCTOWL
 	db 36, FLAREON
+	db 36, WEEPINBELL
 
 	db $ff ; end
 
@@ -9344,6 +9345,7 @@ ElderGroup:
 	; party
 	db 36, NOCTOWL
 	db 36, JOLTEON
+	db 36, WARTORTLE
 
 	db $ff ; end
 
@@ -9356,6 +9358,7 @@ ElderGroup:
 	; party
 	db 36, NOCTOWL
 	db 36, VAPOREON
+	db 36, NINETALES
 
 	db $ff ; end
 
