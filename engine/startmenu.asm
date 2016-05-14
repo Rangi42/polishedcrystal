@@ -385,7 +385,7 @@ endr
 
 .IsMenuAccountOn: ; 128cb
 	ld a, [Options2]
-	and 1
+	xor 1
 	ret
 ; 128d1
 

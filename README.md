@@ -119,6 +119,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
+   * Menu blurbs (descriptions) are off by default
 
 
 ## To do:
@@ -174,6 +175,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Make Growth display an appropriate effect and message regarding both raised stats  
      https://hax.iimarck.us/topic/4198/
    * Thick Club + Swords Dance Marowak Attack overflow
+   * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
 * Aesthetic updates:
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
