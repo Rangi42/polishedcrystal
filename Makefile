@@ -1,6 +1,10 @@
 PYTHON := python
 MD5 := md5sum -c --quiet
 
+NAME = polishedcrystal
+TITLE = POLISHEDCRYSTAL
+
+
 .SUFFIXES:
 .PHONY: all clean crystal
 .SECONDEXPANSION:
@@ -27,10 +31,10 @@ text/common_text.o \
 gfx/pics.o
 
 
-roms := polishedcrystal.gbc
+roms := $(NAME).gbc
 
 all: $(roms)
-crystal: polishedcrystal.gbc
+crystal: $(NAME).gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
@@ -41,9 +45,9 @@ clean:
 %.o: %.asm $$(dep)
 	rgbasm -o $@ $<
 
-polishedcrystal.gbc: $(crystal_obj)
-	rgblink -n pokecrystal.sym -m pokecrystal.map -o $@ $^
-	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_POLCRYS $@
+$(NAME).gbc: $(crystal_obj)
+	rgblink -n $(NAME).sym -m $(NAME).map -o $@ $^
+	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t $(TITLE) $@
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<

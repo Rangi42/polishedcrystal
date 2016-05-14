@@ -66,7 +66,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Hold B to use Running Shoes
    * Eggs hatch at level 1
    * Added X Spcl. Def
-   * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
    * Restored the Goldenrod City PokéCom Center
    * Copied most trainer levels and rosters from HGSS
    * Added Bellchime Trail from HGSS
@@ -81,8 +80,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Medium-Slow growth rate experience underflow at level 1
    * HP bar lowers at the same speed even for high HP
    * Belly Drum needs to cut HP to raise Attack
-* Grammar and spelling updates:
+* Aesthetic updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
+   * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
+   * Poké → ()PC on Pokémon Center signs from the Japanese version
    * Berry → Oran Berry, Burnt Berry → Rawst Berry, etc
    * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
    * Pack → Bag
@@ -167,17 +168,16 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Money loss formula from Gen III when whiting out
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
-   * Poké → <PokéBall>PC on Pokémon Center signs from the Japanese version
-   * Show Pokémon portraits when using field moves
-   * Better Substitute sprite
    * Replace some Kanto music with RBY tracks
    * Unown ? and ! from Gen III
-   * Low-pitched cries when fainting
 * Fix bugs:
    * Make Growth display an appropriate effect and message regarding both raised stats  
      https://hax.iimarck.us/topic/4198/
    * Thick Club + Swords Dance Marowak Attack overflow
-* Increased difficulty:
+* Aesthetic updates:
+   * Show Pokémon portraits when using field moves
+   * Better Substitute sprite
+   * Low-pitched cries when fainting
 * Custom features:
    * Allow Wonder Trading only a few times a day
    * Faster text by default
