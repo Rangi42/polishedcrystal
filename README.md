@@ -176,7 +176,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
      https://hax.iimarck.us/topic/4198/
    * Thick Club + Swords Dance Marowak Attack overflow
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
-   * Make Poké Ball icons on Pokémon Center signs always red, in Kanto as well as Johto
 * Aesthetic updates:
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
