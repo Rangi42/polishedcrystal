@@ -27,10 +27,10 @@ text/common_text.o \
 gfx/pics.o
 
 
-roms := pokecrystal.gbc
+roms := polishedcrystal.gbc
 
 all: $(roms)
-crystal: pokecrystal.gbc
+crystal: polishedcrystal.gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
@@ -41,7 +41,7 @@ clean:
 %.o: %.asm $$(dep)
 	rgbasm -o $@ $<
 
-pokecrystal.gbc: $(crystal_obj)
+polishedcrystal.gbc: $(crystal_obj)
 	rgblink -n pokecrystal.sym -m pokecrystal.map -o $@ $^
 	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_POLCRYS $@
 
