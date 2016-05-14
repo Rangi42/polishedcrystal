@@ -174,7 +174,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace Mimic with Fairy Wind, Mirror Move with DazzlinGleam, Detect with BabyDollEyes (merge with Protect), Withdraw with Drain Kiss (merge with Defense Curl), Spider Web with Bullet Punch (merge with Mean Look), and Mind Reader with Iron Head (merge with Mean Look)
    * Change in-game trades
    * Rematch Gym Leaders in the Fighting Dojo
-   * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Sylveon, Mr. Mime, Togekiss) (reward: TM for DazzlinGleam)
+   * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
+   * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Misdreavus, Arbok, Gengar)
+   * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
+   * Add whichever gender character you don't pick as a friendly rival
+   * Since Gold/Ethan/Chris and Crystal/Kris are the player characters, include Lyra/Kotone somewhere
 
 
 ## Long-term
