@@ -57,6 +57,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fire-type Pokémon are immune to burns, even from Tri Attack
    * Steel-type Pokémon are immune to poisoning
    * Poison-type Pokémon always hit with Toxic
+   * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Growth raises Attack and Special Attack
    * Hidden Power is always 60 power
    * Curse is a Ghost-type move
@@ -142,7 +143,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
-   * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Struggle does 25% recoil damage
    * Low Kick's power is based on weight
    * Beat Up works differently in Gen V

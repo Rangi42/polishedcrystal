@@ -1726,6 +1726,12 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 	cp EFFECT_ALWAYS_HIT
 	ret z
+	cp EFFECT_WHIRLWIND
+	ret z
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp STRUGGLE
+	ret z
 
 	call .StatModifiers
 
