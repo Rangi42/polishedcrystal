@@ -3,14 +3,29 @@
 This is a custom Pokémon game based on pret's disassembly of Pokémon Crystal.
 
 In the short-term, it's going to be an improved version of Pokémon Crystal
-with bugs fixed, all 251 Pokémon available, more difficulty, lots of mechanics
-and features from newer generations (Fairy type, physical/special split, etc),
-and aesthetic improvements, inspired by Pokémon FireRed Omega and Emerald Omega.
+with bugs fixed, all 251 Pokémon available (and maybe more), greater difficulty,
+lots of mechanics and features from newer generations (Running Shoes, Fairy type,
+physical/special split, etc), and aesthetic improvements. It'll be similar in
+those respects to [Red++](https://github.com/TheFakeMateo/RedPlusPlus/),
+[Emerald Omega](http://www.pokecommunity.com/showthread.php?t=322110), or
+[FireRed Omega](http://www.smogon.com/forums/threads/pokemon-fire-red-omega-in-game-discussion-tiering.3480788/).
 
-In the long-term, I'm going to make an original game set five years after GSC,
+In the long-term, I want going to make an original game set five years after GSC,
 with a selection of Pokémon, moves, and items from all generations (including
 new evolutions and baby forms like Yanmega and Munchlax, personal favorites
-like Milotic and Gogoat, and *one* fakemon Kangaskid).
+like Milotic and Gogoat, and maybe *one* fakemon Kangaskid/Kangascub/Kangaschan).
+I've had semi-concrete plans to make a Pokémon game for years, but an early
+attempt with RPG Maker 2000 never got anywhere.
+
+I'm very impressed by the effort that's gone into disassembling Pokémon Crystal
+and making the code so well-organized. Thanks to making that open-source (and to
+Mateo for his inspiring Red++ project) I'm finally turning this idea into reality.
+
+(Speaking of which, I borrowed Mateo's randomized Wonder Trading because the
+PokéCom Center is just perfect for it; the dialog about how "you can trade
+Pokémon with other people far away" is already there! I'm making the Pokémon you
+receive have random OT names, so if anyone whose ideas or code I use wants to
+appear there, let me know.)
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
