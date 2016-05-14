@@ -2,7 +2,6 @@ PYTHON := python
 MD5 := md5sum -c --quiet
 
 NAME = polishedcrystal
-TITLE = POLISHEDCRYSTAL
 
 
 .SUFFIXES:
@@ -47,7 +46,7 @@ clean:
 
 $(NAME).gbc: $(crystal_obj)
 	rgblink -n $(NAME).sym -m $(NAME).map -o $@ $^
-	rgbfix -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t $(TITLE) $@
+	rgbfix -Cjv -t PKPCRYSTAL -i PKPC -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 $@
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<
