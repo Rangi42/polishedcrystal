@@ -26,7 +26,7 @@ FightingDojo_MapScriptHeader:
 	disappear REMATCH_BLUE_2
 	disappear REMATCH_BROWN_1
 	disappear REMATCH_BROWN_2
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	checkevent EVENT_BEAT_BLUE
 	iftrue .SetupDailyRematches
 	return
 
@@ -137,7 +137,11 @@ ENDM
 	return
 
 BlackBeltScript_0x189b61:
+	checkevent EVENT_BEAT_BLUE
+	iftrue .BlackBeltExplainsRematchesScript
 	jumptextfaceplayer UnknownText_0x189b6c
+.BlackBeltExplainsRematchesScript
+	jumptextfaceplayer BlackBeltText_ExplainsRematches
 
 MapFightingDojoSignpost0Script:
 	jumptext UnknownText_0x189bc0
@@ -154,54 +158,54 @@ RematchRed0Script:
 	if_equal SATURDAY, .Red0Saturday
 	checknite
 	iftrue .Red0SundayNight
-	jumptextfaceplayer JasmineText
+	jump RematchJasmineScript
 .Red0SundayNight
-	jumptextfaceplayer SabrinaText
+	jump RematchSabrinaScript
 .Red0Wednesday
-	jumptextfaceplayer MistyText
+	jump RematchMistyScript
 .Red0Saturday
-	jumptextfaceplayer WhitneyText
+	jump RematchWhitneyScript
 
 RematchGreen1Script:
 	checkcode VAR_WEEKDAY
 	if_equal THURSDAY, .Green1Thursday
-	jumptextfaceplayer ErikaText
+	jump RematchErikaScript
 .Green1Thursday
-	jumptextfaceplayer BugsyText
+	jump RematchBugsyScript
 
 RematchBlue1Script:
 	checkcode VAR_WEEKDAY
 	if_equal FRIDAY, .Blue1Friday
-	jumptextfaceplayer FalknerText
+	jump RematchFalknerScript
 .Blue1Friday
-	jumptextfaceplayer ClairText
+	jump RematchClairScript
 
 RematchBlue2Script:
 	checkcode VAR_WEEKDAY
 	if_equal WEDNESDAY, .Blue2Wednesday
-	jumptextfaceplayer JanineText
+	jump RematchJanineScript
 .Blue2Wednesday
-	jumptextfaceplayer BlueText
+	jump RematchBlueScript
 
 RematchBrown1Script:
 	checkcode VAR_WEEKDAY
 	if_equal WEDNESDAY, .Brown1Wednesday
 	if_equal FRIDAY, .Brown1Friday
 	if_equal SATURDAY, .Brown1Saturday
-	jumptextfaceplayer BlaineText
+	jump RematchBlaineScript
 .Brown1Wednesday
-	jumptextfaceplayer BrockText
+	jump RematchBrockScript
 .Brown1Friday
-	jumptextfaceplayer SurgeText
+	jump RematchSurgeScript
 .Brown1Saturday
-	jumptextfaceplayer ChuckText
+	jump RematchChuckScript
 
 RematchBrown2Script:
 	checkcode VAR_WEEKDAY
 	if_equal THURSDAY, .Brown2Thursday
-	jumptextfaceplayer PryceText
+	jump RematchPryceScript
 .Brown2Thursday
-	jumptextfaceplayer MortyText
+	jump RematchMortyScript
 
 UnknownText_0x189b6c:
 	text "Hello!"
@@ -214,6 +218,18 @@ UnknownText_0x189b6c:
 	cont "training."
 	done
 
+BlackBeltText_ExplainsRematches:
+	text "Gym Leaders from"
+	line "Kanto and Johto"
+
+	para "come to this"
+	line "Fighting Dojo"
+	cont "to train."
+
+	para "You should join"
+	line "them!"
+	done
+
 UnknownText_0x189bc0:
 	text "What goes around"
 	line "comes around!"
@@ -224,68 +240,176 @@ UnknownText_0x189be0:
 	line "side!"
 	done
 
-BrockText:
+rematch_script: MACRO
+	; rematch_script name, trainer, flag
+	faceplayer
+	opentext
+	checkflag \3
+	iftrue .RematchDone
+	writetext \1Text_Greeting
+	waitbutton
+	closetext
+	winlosstext \1Text_WinLoss, 0
+	loadtrainer \2, 2
+	startbattle
+	reloadmapafterbattle
+	setflag \3
+	end
+.RematchDone
+	writetext \1Text_Done
+	waitbutton
+	closetext
+	end
+ENDM
+
+RematchBrockScript:
+	rematch_script Brock, BROCK, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchMistyScript:
+	rematch_script Misty, MISTY, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchSurgeScript:
+	rematch_script Surge, LT_SURGE, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchErikaScript:
+	rematch_script Erika, ERIKA, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchJanineScript:
+	rematch_script Janine, JANINE, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchSabrinaScript:
+	rematch_script Sabrina, SABRINA, ENGINE_GYM_LEADER_REMATCH_3
+
+RematchBlaineScript:
+	rematch_script Blaine, BLAINE, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchBlueScript:
+	rematch_script Blue, BLUE, ENGINE_GYM_LEADER_REMATCH_3
+
+RematchFalknerScript:
+	rematch_script Falkner, FALKNER, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchBugsyScript:
+	rematch_script Bugsy, BUGSY, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchWhitneyScript:
+	rematch_script Whitney, WHITNEY, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchMortyScript:
+	rematch_script Morty, MORTY, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchChuckScript:
+	rematch_script Chuck, CHUCK, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchJasmineScript:
+	rematch_script Jasmine, JASMINE, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchPryceScript:
+	rematch_script Pryce, PRYCE, ENGINE_GYM_LEADER_REMATCH_1
+
+RematchClairScript:
+	rematch_script Clair, CLAIR, ENGINE_GYM_LEADER_REMATCH_2
+
+BrockText_Greeting:
 	text "Brock"
 	done
 
-MistyText:
+MistyText_Greeting:
 	text "Misty"
 	done
 
-SurgeText:
+SurgeText_Greeting:
 	text "Surge"
 	done
 
-ErikaText:
+ErikaText_Greeting:
 	text "Erika"
 	done
 
-JanineText:
+JanineText_Greeting:
 	text "Janine"
 	done
 
-SabrinaText:
+SabrinaText_Greeting:
 	text "Sabrina"
 	done
 
-BlaineText:
+BlaineText_Greeting:
 	text "Blaine"
 	done
 
-BlueText:
+BlueText_Greeting:
 	text "Blue"
 	done
 
-FalknerText:
+FalknerText_Greeting:
 	text "Falkner"
 	done
 
-BugsyText:
+BugsyText_Greeting:
 	text "Bugsy"
 	done
 
-WhitneyText:
+WhitneyText_Greeting:
 	text "Whitney"
 	done
 
-MortyText:
+MortyText_Greeting:
 	text "Morty"
 	done
 
-ChuckText:
+ChuckText_Greeting:
 	text "Chuck"
 	done
 
-JasmineText:
+JasmineText_Greeting:
 	text "Jasmine"
 	done
 
-PryceText:
+PryceText_Greeting:
 	text "Pryce"
 	done
 
-ClairText:
+ClairText_Greeting:
 	text "Clair"
+	done
+
+BrockText_WinLoss:
+MistyText_WinLoss:
+SurgeText_WinLoss:
+ErikaText_WinLoss:
+JanineText_WinLoss:
+SabrinaText_WinLoss:
+BlaineText_WinLoss:
+BlueText_WinLoss:
+FalknerText_WinLoss:
+BugsyText_WinLoss:
+WhitneyText_WinLoss:
+MortyText_WinLoss:
+ChuckText_WinLoss:
+JasmineText_WinLoss:
+PryceText_WinLoss:
+ClairText_WinLoss:
+	text "Good battle!"
+	done
+
+BrockText_Done:
+MistyText_Done:
+SurgeText_Done:
+ErikaText_Done:
+JanineText_Done:
+SabrinaText_Done:
+BlaineText_Done:
+BlueText_Done:
+FalknerText_Done:
+BugsyText_Done:
+WhitneyText_Done:
+MortyText_Done:
+ChuckText_Done:
+JasmineText_Done:
+PryceText_Done:
+ClairText_Done:
+	text "I'm done for today."
 	done
 
 FightingDojo_MapEventHeader:

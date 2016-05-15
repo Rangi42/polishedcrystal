@@ -180,6 +180,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show stat changes and then absolute values on level up
    * Replace some Kanto music with RBY tracks
    * Unown ? and ! from Gen III
+   * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
    * Make Growth display an appropriate effect and message regarding both raised stats  
      https://hax.iimarck.us/topic/4198/

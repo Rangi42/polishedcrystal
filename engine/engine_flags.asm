@@ -199,6 +199,15 @@ ENDM
 	engine_flag DailyFlags, 6 ; goldenrod underground merchant closed
 	engine_flag DailyFlags, 7 ; fought in trainer hall today
 
+	engine_flag DailyFlags2, 0 ; gym leader rematch 1
+	engine_flag DailyFlags2, 1 ; gym leader rematch 2
+	engine_flag DailyFlags2, 2 ; gym leader rematch 3
+	engine_flag DailyFlags2, 3 ; unused
+	engine_flag DailyFlags2, 4 ; unused
+	engine_flag DailyFlags2, 5 ; unused
+	engine_flag DailyFlags2, 6 ; unused
+	engine_flag DailyFlags2, 7 ; unused
+
 	engine_flag WeeklyFlags, 0 ; mt moon square clefairy  ; $58
 	engine_flag WeeklyFlags, 1 ; union cave lapras
 	engine_flag WeeklyFlags, 2 ; goldenrod underground haircut used
