@@ -17,7 +17,7 @@ FightingDojo_MapScriptHeader:
 
 	; callbacks
 
-	dbw MAPCALLBACK_OBJECTS, .SetupRematchesCallback
+	dbw MAPCALLBACK_SPRITES, .SetupRematchesCallback
 
 .SetupRematchesCallback:
 	disappear REMATCH_RED_0
@@ -33,8 +33,8 @@ FightingDojo_MapScriptHeader:
 rematch: MACRO
 	; rematch person, varsprite, sprite, y, x, face
 	moveperson \1, \5, \4
-	appear \1
 	spriteface \1, \6
+	appear \1
 	variablesprite \2, \3
 ENDM
 

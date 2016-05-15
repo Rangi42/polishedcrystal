@@ -185,7 +185,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
      https://hax.iimarck.us/topic/4198/
    * Thick Club + Swords Dance Marowak Attack overflow
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
-   * Gym Leader rematch sprites have incorrect icons the first time you see them
+   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
 * Aesthetic updates:
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
