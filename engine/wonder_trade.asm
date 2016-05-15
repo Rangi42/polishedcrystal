@@ -1,4 +1,8 @@
 WonderTrade::
+	ld hl, DailyFlags2
+	bit 3, [hl] ; ENGINE_DAILY_WONDER_TRADE
+	jr nz, .already_traded
+
 	ld hl, .Text_WonderTradeQuestion
 	call PrintText
 	call YesNoBox
@@ -33,11 +37,19 @@ WonderTrade::
 	predef TradeAnimation
 	call ReturnToMapWithSpeechTextbox
 
+	ld hl, DailyFlags2
+	set 3, [hl] ; ENGINE_DAILY_WONDER_TRADE
+
 	ld hl, .Text_WonderTradeComplete
 	call PrintText
 
 	call RestartMapMusic
 .canceled
+	ret
+
+.already_traded
+	ld hl, .Text_WonderTradeAlreadyDone
+	call PrintText
 	ret
 
 .Text_WonderTradeQuestion:
@@ -72,6 +84,9 @@ WonderTrade::
 	text_jump WonderTradeDoneFanfare
 	db "@"
 
+.Text_WonderTradeAlreadyDone:
+	text_jump WonderTradeAlreadyDoneText
+	db "@"
 
 DoWonderTrade:
 	ld a, [CurPartySpecies]

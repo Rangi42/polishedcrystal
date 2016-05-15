@@ -187,12 +187,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Thick Club + Swords Dance Marowak Attack overflow
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
+   * Fix delay before last text box when Wonder Trading
 * Aesthetic updates:
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
 * Custom features:
-   * Allow Wonder Trading only a few times a day
    * Faster text by default
    * Stereo sound by default
    * Select reorders Pokémon in party menu

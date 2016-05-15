@@ -8,16 +8,6 @@ WonderTradePromptText::
 	line "you want to trade?"
 	prompt
 
-; unused
-UnknownText_0x616b4::
-	text "Oh? You traded a"
-	line "#mon with us"
-	cont "only recently."
-
-	para "Please come back"
-	line "later."
-	done
-
 WonderTradeConfirmText::
 	text "Offer to trade"
 	line "@"
@@ -56,12 +46,18 @@ WonderTradeCompleteText::
 
 	para "Please take care"
 	line "of it with love."
-
-	para "We hope to see you"
-	line "again."
-	done
+	prompt
 
 WonderTradeDoneFanfare::
 	sound_dex_fanfare_80_109
 	interpret_data
 	db "@@"
+
+WonderTradeAlreadyDoneText::
+	text "You traded a"
+	line "#mon with us"
+	cont "only recently."
+
+	para "Please come back"
+	line "later."
+	prompt
