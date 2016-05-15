@@ -104,7 +104,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tin Tower → Bell Tower
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
-   * Menu Account → Menu Blurbs
+   * Menu Account → Menu Captions
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
 * Increased difficulty:
