@@ -1,15 +1,12 @@
 const_value set 2
-	const FIGHTINGDOJO_BLACK_BELT
 	const FIGHTINGDOJO_POKE_BALL
-	const REMATCH_BROWN_LEFT
-	const REMATCH_BROWN_RIGHT
-	const REMATCH_BLUE_LEFT
-	const REMATCH_BLUE_RIGHT
-	const REMATCH_RED_RIGHT
-	const REMATCH_ERIKA
-	const REMATCH_JASMINE
-	const REMATCH_MISTY
-	const REMATCH_BUGSY
+	const FIGHTINGDOJO_BLACK_BELT
+	const REMATCH_RED_0
+	const REMATCH_GREEN_1
+	const REMATCH_BLUE_1
+	const REMATCH_BLUE_2
+	const REMATCH_BROWN_1
+	const REMATCH_BROWN_2
 
 FightingDojo_MapScriptHeader:
 .MapTriggers:
@@ -20,24 +17,38 @@ FightingDojo_MapScriptHeader:
 
 	; callbacks
 
-	dbw MAPCALLBACK_OBJECTS, CheckRematchesAvailable
+	dbw MAPCALLBACK_OBJECTS, .SetupRematchesCallback
 
-CheckRematchesAvailable:
-	disappear REMATCH_BROWN_LEFT
-	disappear REMATCH_BROWN_RIGHT
-	disappear REMATCH_BLUE_LEFT
-	disappear REMATCH_BLUE_RIGHT
-	disappear REMATCH_RED_RIGHT
-	disappear REMATCH_ERIKA
-	disappear REMATCH_JASMINE
-	disappear REMATCH_MISTY
-	disappear REMATCH_BUGSY
-	checkflag EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .CheckWhichRematchesAvailable
+.SetupRematchesCallback:
+	disappear REMATCH_RED_0
+	disappear REMATCH_GREEN_1
+	disappear REMATCH_BLUE_1
+	disappear REMATCH_BLUE_2
+	disappear REMATCH_BROWN_1
+	disappear REMATCH_BROWN_2
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftrue .SetupDailyRematches
 	return
 
-.CheckWhichRematchesAvailable:
-	disappear FIGHTINGDOJO_BLACK_BELT
+rematch: MACRO
+	; rematch person, varsprite, sprite, y, x, face
+	moveperson \1, \5, \4
+	appear \1
+	spriteface \1, \6
+	variablesprite \2, \3
+ENDM
+
+rematch_left: MACRO
+	; rematch_left person, varsprite, sprite
+	rematch \1, \2, \3, 6, 3, RIGHT
+ENDM
+
+rematch_right: MACRO
+	; rematch_right person, varsprite, sprite
+	rematch \1, \2, \3, 6, 6, LEFT
+ENDM
+
+.SetupDailyRematches:
 	checkcode VAR_WEEKDAY
 	if_equal MONDAY, .Monday
 	if_equal TUESDAY, .Tuesday
@@ -46,52 +57,83 @@ CheckRematchesAvailable:
 	if_equal FRIDAY, .Friday
 	if_equal SATURDAY, .Saturday
 .Sunday
-	appear REMATCH_ERIKA ; green, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_SABRINA; right, red
-	appear REMATCH_RED_RIGHT ; Sabrina
+	checknite
+	iftrue .SundayNight
+.SundayMorningAndDay
+	rematch_left REMATCH_RED_0, SPRITE_AZALEA_ROCKET, SPRITE_JASMINE
+	rematch_right REMATCH_GREEN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_ERIKA
 	return
-
+.SundayNight
+	rematch REMATCH_RED_0, SPRITE_AZALEA_ROCKET, SPRITE_SABRINA, 4, 6, DOWN
+	return
 .Monday
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_FALKNER ; blue, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_JANINE ; blue, right
-	appear REMATCH_BLUE_LEFT ; Falkner
-	appear REMATCH_BLUE_RIGHT ; Janine
+	checknite
+	iftrue .MondayNight
+.MondayMorningAndDay
+	rematch_left REMATCH_BLUE_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_FALKNER
+	rematch_right REMATCH_BLUE_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_JANINE
+.MondayNight
 	return
-
 .Tuesday
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_BLAINE ; brown, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_PRYCE ; brown, right
-	appear REMATCH_BROWN_LEFT ; Blaine
-	appear REMATCH_BROWN_RIGHT ; Pryce
+	checknite
+	iftrue .TuesdayNight
+.TuesdayMorningAndDay
+	rematch_left REMATCH_BROWN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_PRYCE
+	rematch_right REMATCH_BROWN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BLAINE
+.TuesdayNight
 	return
-
 .Wednesday
-	appear REMATCH_JASMINE ; red, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_CHUCK ; brown, right
-	appear REMATCH_BROWN_RIGHT ; Chuck
+	checkmorn
+	iftrue .WednesdayMorning
+	checknite
+	iftrue .WednesdayNight
+.WednesdayDay
+	rematch_left REMATCH_BROWN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_BROCK
+	rematch REMATCH_RED_0, SPRITE_AZALEA_ROCKET, SPRITE_MISTY, 5, 2, RIGHT
+	rematch_right REMATCH_BLUE_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BLUE
 	return
-
+.WednesdayMorning
+	rematch_left REMATCH_BROWN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_BROCK
+	rematch_right REMATCH_RED_0, SPRITE_AZALEA_ROCKET, SPRITE_MISTY
+	return
+.WednesdayNight
+	rematch REMATCH_BLUE_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BLUE, 4, 8, DOWN
+	return
 .Thursday
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_BROCK ; brown, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BLUE ; blue, right
-	appear REMATCH_BROWN_LEFT ; Brock
-	appear REMATCH_BLUE_RIGHT ; Blue
-	appear REMATCH_MISTY ; shifted left
+	checkmorn
+	iftrue .ThursdayMorning
+	checknite
+	iftrue .ThursdayNight
+.ThursdayDay
+	rematch_left REMATCH_GREEN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_BUGSY
+	rematch_right REMATCH_BROWN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_MORTY
 	return
-
+.ThursdayMorning
+	rematch REMATCH_GREEN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_BUGSY, 6, 1, DOWN
+	return
+.ThursdayNight
+	rematch REMATCH_BROWN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_MORTY, 4, 2, DOWN
+	return
 .Friday
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_SURGE ; brown, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_CLAIR ; blue, right
-	appear REMATCH_BROWN_LEFT ; Surge
-	appear REMATCH_BLUE_RIGHT ; Clair
+	checkmorn
+	iftrue .FridayMorning
+	checknite
+	iftrue .FridayNight
+.FridayDay
 	return
-
+.FridayMorning
+	rematch REMATCH_BROWN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_SURGE, 7, 6, DOWN
+	return
+.FridayNight
+	rematch REMATCH_BLUE_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_CLAIR, 6, 2, RIGHT
+	return
 .Saturday
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_MORTY ; brown, left
-	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_WHITNEY ; red, right
-	appear REMATCH_BROWN_LEFT ; Morty
-	appear REMATCH_RED_RIGHT ; Whitney
-	appear REMATCH_BUGSY ; shifted right
+	checkday
+	iffalse .SaturdayMorningAndNight
+.SaturdayDay
+	rematch_left REMATCH_RED_0, SPRITE_AZALEA_ROCKET, SPRITE_WHITNEY
+	rematch_right REMATCH_BROWN_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_CHUCK
+.SaturdayMorningAndNight
 	return
 
 BlackBeltScript_0x189b61:
@@ -106,16 +148,60 @@ MapFightingDojoSignpost1Script:
 FightingDojoFocusBand:
 	itemball FOCUS_BAND
 
-RematchBrownLeftScript:
-RematchBrownRightScript:
-RematchBlueLeftScript:
-RematchBlueRightScript:
-RematchRedRightScript:
-RematchErikaScript:
-RematchJasmineScript:
-RematchMistyScript:
-RematchBugsyScript:
-	jumptextfaceplayer ToDoText
+RematchRed0Script:
+	checkcode VAR_WEEKDAY
+	if_equal WEDNESDAY, .Red0Wednesday
+	if_equal SATURDAY, .Red0Saturday
+	checknite
+	iftrue .Red0SundayNight
+	jumptextfaceplayer JasmineText
+.Red0SundayNight
+	jumptextfaceplayer SabrinaText
+.Red0Wednesday
+	jumptextfaceplayer MistyText
+.Red0Saturday
+	jumptextfaceplayer WhitneyText
+
+RematchGreen1Script:
+	checkcode VAR_WEEKDAY
+	if_equal THURSDAY, .Green1Thursday
+	jumptextfaceplayer ErikaText
+.Green1Thursday
+	jumptextfaceplayer BugsyText
+
+RematchBlue1Script:
+	checkcode VAR_WEEKDAY
+	if_equal FRIDAY, .Blue1Friday
+	jumptextfaceplayer FalknerText
+.Blue1Friday
+	jumptextfaceplayer ClairText
+
+RematchBlue2Script:
+	checkcode VAR_WEEKDAY
+	if_equal WEDNESDAY, .Blue2Wednesday
+	jumptextfaceplayer JanineText
+.Blue2Wednesday
+	jumptextfaceplayer BlueText
+
+RematchBrown1Script:
+	checkcode VAR_WEEKDAY
+	if_equal WEDNESDAY, .Brown1Wednesday
+	if_equal FRIDAY, .Brown1Friday
+	if_equal SATURDAY, .Brown1Saturday
+	jumptextfaceplayer BlaineText
+.Brown1Wednesday
+	jumptextfaceplayer BrockText
+.Brown1Friday
+	jumptextfaceplayer SurgeText
+.Brown1Saturday
+	jumptextfaceplayer ChuckText
+
+RematchBrown2Script:
+	checkcode VAR_WEEKDAY
+	if_equal THURSDAY, .Brown2Thursday
+	jumptextfaceplayer PryceText
+.Brown2Thursday
+	jumptextfaceplayer MortyText
 
 UnknownText_0x189b6c:
 	text "Hello!"
@@ -138,9 +224,68 @@ UnknownText_0x189be0:
 	line "side!"
 	done
 
-ToDoText:
-	text "To Do: Add Gym"
-	line "Leader rematches!"
+BrockText:
+	text "Brock"
+	done
+
+MistyText:
+	text "Misty"
+	done
+
+SurgeText:
+	text "Surge"
+	done
+
+ErikaText:
+	text "Erika"
+	done
+
+JanineText:
+	text "Janine"
+	done
+
+SabrinaText:
+	text "Sabrina"
+	done
+
+BlaineText:
+	text "Blaine"
+	done
+
+BlueText:
+	text "Blue"
+	done
+
+FalknerText:
+	text "Falkner"
+	done
+
+BugsyText:
+	text "Bugsy"
+	done
+
+WhitneyText:
+	text "Whitney"
+	done
+
+MortyText:
+	text "Morty"
+	done
+
+ChuckText:
+	text "Chuck"
+	done
+
+JasmineText:
+	text "Jasmine"
+	done
+
+PryceText:
+	text "Pryce"
+	done
+
+ClairText:
+	text "Clair"
 	done
 
 FightingDojo_MapEventHeader:
@@ -161,15 +306,12 @@ FightingDojo_MapEventHeader:
 	signpost 0, 5, SIGNPOST_READ, MapFightingDojoSignpost1Script
 
 .PersonEvents:
-	db 11
-	person_event SPRITE_BLACK_BELT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x189b61, -1
+	db 8
 	person_event SPRITE_POKE_BALL, 1, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, FightingDojoFocusBand, EVENT_PICKED_UP_FOCUS_BAND
-	person_event SPRITE_AZALEA_ROCKET, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RematchBrownLeftScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_REMATCH_GYM_LEADER_2, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RematchBrownRightScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_AZALEA_ROCKET, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RematchBlueLeftScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_REMATCH_GYM_LEADER_2, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RematchBlueRightScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_REMATCH_GYM_LEADER_2, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RematchRedRightScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_ERIKA, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RematchErikaScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_JASMINE, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RematchJasmineScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_MISTY, 7, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RematchMistyScript, EVENT_BEAT_ELITE_FOUR_AGAIN
-	person_event SPRITE_BUGSY, 7, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RematchBugsyScript, EVENT_BEAT_ELITE_FOUR_AGAIN
+	person_event SPRITE_BLACK_BELT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x189b61, -1
+	person_event SPRITE_AZALEA_ROCKET, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RematchRed0Script, EVENT_REMATCH_GYM_LEADER_1
+	person_event SPRITE_REMATCH_GYM_LEADER_1, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RematchGreen1Script, EVENT_REMATCH_GYM_LEADER_2
+	person_event SPRITE_REMATCH_GYM_LEADER_1, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RematchBlue1Script, EVENT_REMATCH_GYM_LEADER_3
+	person_event SPRITE_REMATCH_GYM_LEADER_2, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RematchBlue2Script, EVENT_REMATCH_GYM_LEADER_4
+	person_event SPRITE_REMATCH_GYM_LEADER_1, 5, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RematchBrown1Script, EVENT_REMATCH_GYM_LEADER_5
+	person_event SPRITE_REMATCH_GYM_LEADER_2, 6, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RematchBrown2Script, EVENT_REMATCH_GYM_LEADER_6
