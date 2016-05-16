@@ -170,7 +170,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
    * Add Leafeon and Glaceon in slots 252 and 254
-   * Replace Cleffa with Sylveon, Igglybuff with Togekiss, and Delibird with Weavile (or merge Nidoran ♂ and ♀ instead of removing Delibird)
+   * Replace Cleffa with Sylveon, Igglybuff with Togekiss, and Delibird with Weavile
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
@@ -235,7 +235,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
 * Make Rock Smash an HM
-* Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
 * Evening from 5–7 PM (change morning from 4−9 AM)
 * Separate bag pockets for usable items and held items
 * Custom title screen and end credits
