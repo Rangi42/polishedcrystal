@@ -147,7 +147,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Modern battle mechanics:
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
-      * Moves will have to be replaced; Mimic and Mirror Move can be removed, and some can be merged: Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web, Lock On/Mind Reader
+      * Moves that can be removed: Psywave, Mimic, Mirror Move
+      * Moves that can be merged: Wrap/Bind, Self-Destruct/Explosion, Hi Jump Kick/Jump Kick, Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web/Block, Lock On/Mind Reader, Scratch/Fury Swipes/Fury Attack, Bone Club/Bonemerang/Bone Rush, Morning Sun/Synthesis/Moonlight, Brick Break/Rock Smash, Heal Bell/Aromatherapy, Foresight/Odor Sleuth/Miracle Eye, Sleep Powder/GrassWhistle, Thief/Covet, Trick/Switcheroo
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
