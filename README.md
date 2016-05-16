@@ -194,6 +194,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
+   * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Custom features:
    * Faster text by default
    * Stereo sound by default
