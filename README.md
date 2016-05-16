@@ -169,7 +169,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Replace some Pokémon with Glaceon, Leafeon, Sylveon, Togekiss, Weavile, or other new Pokémon (two slots are free, and Cleffa and Igglybuff can be replaced)
+   * Add Leafeon and Glaceon in slots 252 and 254
+   * Replace Cleffa with Sylveon, Igglybuff with Togekiss, and Delibird with Weavile
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
