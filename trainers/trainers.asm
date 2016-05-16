@@ -8922,6 +8922,7 @@ PokefanMGroup:
 	db 36, NIDOKING, KINGS_ROCK
 	db 36, SLOWKING, KINGS_ROCK
 	db 36, SEAKING, KINGS_ROCK
+	db 36, KINGLER, KINGS_ROCK
 
 	db $ff ; end
 

@@ -170,7 +170,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
    * Add Leafeon and Glaceon in slots 252 and 254
-   * Replace Cleffa with Sylveon, Igglybuff with Togekiss, and Delibird with Weavile
+   * Replace Cleffa with Sylveon, Igglybuff with Togekiss, and one of {Stantler, Qwilfish, Corsola, Girafarig, Mantine, Lickitung, Yanma, Tangela, Delibird, Aipom, Farfetch'd, Wobbuffet, Gligar, Dunsparce, Shuckle} with Weavile
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
