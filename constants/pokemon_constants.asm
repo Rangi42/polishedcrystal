@@ -257,7 +257,8 @@ const_value SET const_value + -1
 
 NUM_POKEMON EQU const_value
 
-EGG EQU 253
+; Can't use 255 - that's the value for Cancel in Bill's PC
+EGG EQU 254
 
 ; pokemon structure in RAM
 MON_SPECIES              EQUS "(PartyMon1Species - PartyMon1)"

@@ -524,8 +524,6 @@ ScrollingMenu_GetListItemCoordAndFunctionArgs: ; 248d5
 	cp 1
 	jr z, .got_spacing
 	cp 2
-	jr z, .pointless_jump
-.pointless_jump
 	add hl, de
 .got_spacing
 	add hl, de

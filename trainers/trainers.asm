@@ -44,6 +44,22 @@ FalknerGroup:
 	db $ff ; end
 
 ; ================
+
+	; FALKNER (2)
+	db "Falkner@"
+	db 0 ; normal
+
+	; party
+	db 63, NOCTOWL
+	db 60, FEAROW
+	db 62, FARFETCH_D
+	db 60, TOGETIC
+	db 62, MURKROW
+	db 65, PIDGEOT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -90,6 +106,20 @@ WhitneyGroup:
 	db $ff ; end
 
 ; ================
+
+	; WHITNEY (2)
+	db "Whitney@"
+	db 0 ; normal
+
+	; party
+	db 62, CLEFABLE
+	db 60, URSARING
+	db 61, GIRAFARIG
+	db 62, WIGGLYTUFF
+	db 64, TAUROS
+	db 65, MILTANK
+
+; ================
 ; ================================
 
 
@@ -128,6 +158,20 @@ BugsyGroup:
 		db FOCUS_ENERGY
 
 	db $ff ; end
+
+; ================
+
+	; BUGSY (2)
+	db "Bugsy@"
+	db 0 ; normal
+
+	; party
+	db 63, HERACROSS
+	db 61, LEDIAN
+	db 60, YANMA
+	db 62, PARASECT
+	db 63, PINSIR
+	db 65, SCYTHER
 
 ; ================
 ; ================================
@@ -182,6 +226,20 @@ MortyGroup:
 	db $ff ; end
 
 ; ================
+
+	; MORTY (2)
+	db "Morty@"
+	db 0 ; normal
+
+	; party
+	db 62, GENGAR
+	db 60, NINETALES
+	db 61, MAROWAK
+	db 63, MISDREAVUS
+	db 64, HAUNTER
+	db 65, GENGAR
+
+; ================
 ; ================================
 
 
@@ -232,6 +290,20 @@ PryceGroup:
 		db BLIZZARD
 
 	db $ff ; end
+
+; ================
+
+	; PRYCE (2)
+	db "Pryce@"
+	db 0 ; normal
+
+	; party
+	db 63, DEWGONG
+	db 62, SNEASEL
+	db 61, DEWGONG
+	db 63, CLOYSTER
+	db 63, LAPRAS
+	db 65, PILOSWINE
 
 ; ================
 ; ================================
@@ -286,6 +358,20 @@ JasmineGroup:
 	db $ff ; end
 
 ; ================
+
+	; JASMINE (2)
+	db "Jasmine@"
+	db 0 ; normal
+
+	; party
+	db 64, SKARMORY
+	db 62, MAGNETON
+	db 60, AMPHAROS
+	db 62, MAGNETON
+	db 63, SCIZOR
+	db 65, STEELIX
+
+; ================
 ; ================================
 
 
@@ -338,6 +424,20 @@ ChuckGroup:
 	db $ff ; end
 
 ; ================
+
+	; CHUCK (2)
+	db "Chuck@"
+	db 0 ; normal
+
+	; party
+	db 63, MACHAMP
+	db 61, PRIMEAPE
+	db 62, HITMONCHAN
+	db 62, HITMONLEE
+	db 62, HITMONTOP
+	db 65, POLIWRATH
+
+; ================
 ; ================================
 
 
@@ -388,6 +488,20 @@ ClairGroup:
 		db DRAGONBREATH
 
 	db $ff ; end
+
+; ================
+
+	; CLAIR (2)
+	db "Clair@"
+	db 0 ; normal
+
+	; party
+	db 64, DRAGONAIR
+	db 62, GYARADOS
+	db 63, DRAGONITE
+	db 63, DRAGONITE
+	db 64, DRAGONAIR
+	db 65, KINGDRA
 
 ; ================
 ; ================================
@@ -1173,13 +1287,7 @@ KarenGroup:
 		db PURSUIT
 		db TOXIC
 
-	db 62, VILEPLUME, NO_ITEM
-		db SLEEP_POWDER
-		db LEECH_SEED
-		db MOONLIGHT
-		db PETAL_DANCE
-
-	db 44, SNEASEL, KINGS_ROCK
+	db 64, SNEASEL, KINGS_ROCK
 		db SCREECH
 		db SLASH
 		db ICE_PUNCH
@@ -1196,6 +1304,12 @@ KarenGroup:
 		db WHIRLWIND
 		db PURSUIT
 		db FAINT_ATTACK
+
+	db 63, TYRANITAR, SOFT_SAND
+		db EARTHQUAKE
+		db CRUNCH
+		db ROCK_SLIDE
+		db PURSUIT
 
 	db 67, HOUNDOOM, GOLD_BERRY
 		db SUNNY_DAY
@@ -1454,6 +1568,20 @@ BrockGroup:
 	db $ff ; end
 
 ; ================
+
+	; BROCK (2)
+	db "Brock@"
+	db 0 ; normal
+
+	; party
+	db 64, ONIX
+	db 63, RHYDON
+	db 62, OMASTAR
+	db 62, KABUTOPS
+	db 63, AERODACTYL
+	db 65, GOLEM
+
+; ================
 ; ================================
 
 
@@ -1506,6 +1634,20 @@ MistyGroup:
 	db $ff ; end
 
 ; ================
+
+	; MISTY (2)
+	db "Misty@"
+	db 0 ; normal
+
+	; party
+	db 63, GOLDUCK
+	db 62, QUAGSIRE
+	db 62, KINGLER
+	db 63, AZUMARILL
+	db 64, OCTILLERY
+	db 65, STARMIE
+
+; ================
 ; ================================
 
 
@@ -1556,6 +1698,20 @@ LtSurgeGroup:
 		db THUNDER
 
 	db $ff ; end
+
+; ================
+
+	; LT_SURGE (2)
+	db "Lt.Surge@"
+	db 0 ; normal
+
+	; party
+	db 64, ELECTABUZZ
+	db 62, ELECTRODE
+	db 63, JOLTEON
+	db 63, LANTURN
+	db 62, MAGNETON
+	db 65, RAICHU
 
 ; ================
 ; ================================
@@ -1679,6 +1835,20 @@ ErikaGroup:
 		db SOLARBEAM
 
 	db $ff ; end
+
+; ================
+
+	; ERIKA (2)
+	db "Erika@"
+	db 0 ; normal
+
+	; party
+	db 63, TANGELA
+	db 62, JUMPLUFF
+	db 63, VICTREEBEL
+	db 62, SUNFLORA
+	db 64, VILEPLUME
+	db 65, BELLOSSOM
 
 ; ================
 ; ================================
@@ -2783,6 +2953,20 @@ JanineGroup:
 		db PSYCHIC_M
 
 	db $ff ; end
+
+; ================
+
+	; JANINE (2)
+	db "Janine@"
+	db 0 ; normal
+
+	; party
+	db 63, CROBAT
+	db 62, ARIADOS
+	db 62, QWILFISH
+	db 64, NIDOQUEEN
+	db 63, WEEZING
+	db 65, VENOMOTH
 
 ; ================
 ; ================================
@@ -4495,6 +4679,20 @@ SabrinaGroup:
 		db REFLECT
 
 	db $ff ; end
+
+; ================
+
+	; SABRINA (2)
+	db "Sabrina@"
+	db 0 ; normal
+
+	; party
+	db 63, ESPEON
+	db 63, MR__MIME
+	db 62, WOBBUFFET
+	db 62, HYPNO
+	db 64, SLOWKING
+	db 65, ALAKAZAM
 
 ; ================
 ; ================================
@@ -6856,6 +7054,18 @@ BlaineGroup:
 
 	db $ff ; end
 
+	; BLAINE (2)
+	db "Blaine@"
+	db 0 ; normal
+
+	; party
+	db 61, MAGCARGO
+	db 62, MAGMAR
+	db 63, ARCANINE
+	db 64, FLAREON
+	db 62, TYPHLOSION
+	db 65, RAPIDASH
+
 ; ================
 ; ================================
 
@@ -8712,6 +8922,7 @@ PokefanMGroup:
 	db 36, NIDOKING, KINGS_ROCK
 	db 36, SLOWKING, KINGS_ROCK
 	db 36, SEAKING, KINGS_ROCK
+	db 36, KINGLER, KINGS_ROCK
 
 	db $ff ; end
 
@@ -9157,6 +9368,18 @@ BlueGroup:
 		db EXTREMESPEED
 
 	db $ff ; end
+
+	; BLUE (2)
+	db "Blue@"
+	db 0 ; normal
+
+	; party
+	db 63, EXEGGUTOR
+	db 62, MACHAMP
+	db 64, RHYDON
+	db 64, ARCANINE
+	db 63, TYRANITAR
+	db 65, PIDGEOT
 
 ; ================
 ; ================================

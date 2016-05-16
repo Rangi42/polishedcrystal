@@ -242,13 +242,6 @@ SetClock:: ; 691
 	ld hl, MBC3SRamBank
 	ld de, MBC3RTC
 
-; seems to be a halt check that got partially commented out
-; this block is totally pointless
-	ld [hl], RTC_DH
-	ld a, [de]
-	bit 6, a ; halt
-	ld [de], a
-
 ; seconds
 	ld [hl], RTC_S
 	ld a, [hRTCSeconds]

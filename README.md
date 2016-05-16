@@ -2,13 +2,21 @@
 
 This is a custom Pokémon game based on pret's disassembly of Pokémon Crystal.
 
-In the short-term, it's going to be an improved version of Pokémon Crystal
-with bugs fixed, all 251 Pokémon available (and maybe more), greater difficulty,
-lots of mechanics and features from newer generations (Running Shoes, Fairy type,
-physical/special split, etc), and aesthetic improvements. It'll be similar in
-those respects to [Red++](https://github.com/TheFakeMateo/RedPlusPlus/),
-[Emerald Omega](http://www.pokecommunity.com/showthread.php?t=322110), or
-[FireRed Omega](http://www.smogon.com/forums/threads/pokemon-fire-red-omega-in-game-discussion-tiering.3480788/).
+In the short-term, it's going to be what the title says: an improved, polished
+version of Pokémon Crystal. Partly it will imitate [MrDollSteak's ROMbase for
+FireRed](http://www.pokecommunity.com/showpost.php?p=7814321&postcount=252):
+decapitalized names, new game mechanics like the Fairy type and Physical/Special
+split, and adding Pokémon, moves, and items from future generations. I'm also
+inspired by [Mateo's Red++](https://github.com/TheFakeMateo/RedPlusPlus/),
+which devamps certain FireRed features for a Red base, and adds some entirely
+original ones. I'm doing the same thing with HGSS, copying things like the
+Bellchime Trail and Gym Leader rematches, and making some tweaks out of
+personal preference. And finally, like [Emerald
+Omega](http://www.pokecommunity.com/showthread.php?t=322110) and
+[FireRed Omega](http://www.smogon.com/forums/threads/pokemon-fire-red-omega-in-game-discussion-tiering.3480788/),
+the game will be harder. Levels are higher, parties are larger, bosses have held
+items and better movesets, and there's an equal playing field between you and
+the AI: no badge boosts for you, no arbitrary misses for them.
 
 In the long-term, I want going to make an original game set five years after GSC,
 with a selection of Pokémon, moves, and items from all generations (including
@@ -19,10 +27,10 @@ attempt with RPG Maker 2000 never got anywhere.
 
 I'm very impressed by the effort that's gone into disassembling Pokémon Crystal
 and making the code so well-organized. Thanks to making that open-source (and to
-Mateo for his inspiring Red++ project) I'm finally turning this idea into reality.
+the ROM hackers that inspired me), I'm finally making it a reality.
 
-(Speaking of which, I borrowed Mateo's randomized Wonder Trading because the
-PokéCom Center is just perfect for it; the dialog about how "you can trade
+(Speaking of which, I borrowed Mateo's randomized Wonder Trading idea because
+the PokéCom Center is just perfect for it; the dialog about how "you can trade
 Pokémon with other people far away" is already there! I'm making the Pokémon you
 receive have random OT names, so if anyone whose ideas or code I use wants to
 appear there, let me know.)
@@ -96,7 +104,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tin Tower → Bell Tower
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
-   * Menu Account → Menu Blurbs
+   * Menu Account → Menu Captions
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
 * Increased difficulty:
@@ -139,7 +147,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Modern battle mechanics:
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
-      * Moves will have to be replaced; Mimic and Mirror Move can be removed, and some can be merged: Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web, Lock On/Mind Reader
+      * Moves that can be removed: Psywave, Mimic, Mirror Move
+      * Moves that can be merged: Wrap/Bind, Self-Destruct/Explosion, Hi Jump Kick/Jump Kick, Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web/Block, Lock On/Mind Reader, Scratch/Fury Swipes/Fury Attack, Bone Club/Bonemerang/Bone Rush, Morning Sun/Synthesis/Moonlight, Brick Break/Rock Smash, Heal Bell/Aromatherapy, Foresight/Odor Sleuth/Miracle Eye, Sleep Powder/GrassWhistle, Thief/Covet, Trick/Switcheroo
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
@@ -160,7 +169,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Replace some Pokémon with Glaceon, Leafeon, Sylveon, Togekiss, Weavile, or other new Pokémon (two slots are free, and Cleffa and Igglybuff can be replaced)
+   * Add Leafeon and Glaceon in slots 252 and 253
+   * Replace Cleffa and Igglybuff with Sylveon and Togekiss
+   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
@@ -172,17 +183,20 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show stat changes and then absolute values on level up
    * Replace some Kanto music with RBY tracks
    * Unown ? and ! from Gen III
+   * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
    * Make Growth display an appropriate effect and message regarding both raised stats  
      https://hax.iimarck.us/topic/4198/
    * Thick Club + Swords Dance Marowak Attack overflow
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
+   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
+   * Fix delay before last text box when Wonder Trading
 * Aesthetic updates:
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
+   * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Custom features:
-   * Allow Wonder Trading only a few times a day
    * Faster text by default
    * Stereo sound by default
    * Select reorders Pokémon in party menu
@@ -201,7 +215,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Misdreavus, Arbok, Gengar)
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
    * Add whichever gender character you don't pick as a friendly rival
-   * Since Gold/Ethan/Chris and Crystal/Kris are the player characters, include Lyra/Kotone somewhere
+   * Since Gold/Ethan/Chris and Crystal/Kris are the player characters, include Lyra/Kotone somewhere (her grandparents run the Day-Care; battle her in the PokéCom Center?)
+   * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
 
 
 ## Long-term
@@ -221,7 +236,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
 * Make Rock Smash an HM
-* Merge Nidoran ♂ and ♀, using a multiple-sprite system like Unown
 * Evening from 5–7 PM (change morning from 4−9 AM)
 * Separate bag pockets for usable items and held items
 * Custom title screen and end credits

@@ -922,8 +922,6 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 
 .Tempmon: ; 4e2ed (13:62ed)
 	ld bc, TempMonSpecies ; wd10e (aliases: TempMon)
-	jr .CheckEggFaintedFrzSlp ; utterly pointless
-
 .CheckEggFaintedFrzSlp: ; 4e2f2 (13:62f2)
 	ld a, [CurPartySpecies]
 	cp EGG
@@ -1118,8 +1116,6 @@ StatsScreen_LoadPageIndicators: ; 4e4cd (13:64cd)
 CopyNickname: ; 4e505 (13:6505)
 	ld de, StringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	jr .okay ; uuterly pointless
-.okay
 	ld a, [MonType]
 	cp BOXMON
 	jr nz, .partymon
