@@ -207,9 +207,10 @@ DoWonderTrade:
 
 	; Random DVs
 	call Random
-	ld h, a
+	ld [Buffer1], a
 	call Random
-	ld l, a
+	ld [Buffer1 + 1], a
+	ld hl, Buffer1
 	ld de, wOTTrademonDVs
 	call Trade_CopyTwoBytes
 
