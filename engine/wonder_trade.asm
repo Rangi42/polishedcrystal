@@ -142,7 +142,7 @@ DoWonderTrade:
 	ld [wPlayerTrademonCaughtData], a
 
 	; BUG: Caught data doesn't seem to be saved.
-	ld a, 2
+	xor a
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, PartyMon1Level
