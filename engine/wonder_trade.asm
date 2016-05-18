@@ -142,6 +142,7 @@ DoWonderTrade:
 	ld [wPlayerTrademonCaughtData], a
 
 	; BUG: Caught data doesn't seem to be saved.
+	; Look at surce code for SetGiftPartyMonCaughtData.
 	xor a
 	ld [wOTTrademonCaughtData], a
 
