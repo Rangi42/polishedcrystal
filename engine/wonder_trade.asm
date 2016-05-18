@@ -6,14 +6,14 @@ WonderTrade::
 	ld hl, .Text_WonderTradeQuestion
 	call PrintText
 	call YesNoBox
-	jr c, .canceled
+	ret c
 
 	ld hl, .Text_WonderTradePrompt
 	call PrintText
 
 	ld b, 6
 	callba SelectTradeOrDaycareMon
-	jr c, .canceled
+	ret c
 
 	ld hl, PartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
@@ -23,7 +23,7 @@ WonderTrade::
 	ld hl, .Text_WonderTradeConfirm
 	call PrintText
 	call YesNoBox
-	jr c, .canceled
+	ret c
 
 	ld hl, .Text_WonderTradeSetup
 	call PrintText
@@ -44,7 +44,6 @@ WonderTrade::
 	call PrintText
 
 	call RestartMapMusic
-.canceled
 	ret
 
 .already_traded
