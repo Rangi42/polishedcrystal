@@ -25,7 +25,7 @@ SpecialGiveShuckle: ; 7305
 	push bc
 	ld hl, PartyMon1Item
 	call AddNTimes
-	ld [hl], BERRY
+	ld [hl], BERRY_JUICE
 	pop bc
 	pop af
 
