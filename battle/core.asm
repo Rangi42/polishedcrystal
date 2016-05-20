@@ -845,9 +845,6 @@ SometimesFleeMons: ; 3c59a
 
 OftenFleeMons: ; 3c5a8
 	db CUBONE
-	db ARTICUNO
-	db ZAPDOS
-	db MOLTRES
 	db QUAGSIRE
 	db DELIBIRD
 	db PHANPY
@@ -857,7 +854,6 @@ OftenFleeMons: ; 3c5a8
 AlwaysFleeMons: ; 3c5b1
 	db RAIKOU
 	db ENTEI
-;	db SUICUNE
 	db -1
 ; 3c5b4
 
