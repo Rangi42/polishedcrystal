@@ -59,6 +59,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Updated Pokémon base stats and move attributes
    * Steel does not resist Ghost or Dark
    * Type-enhancing items raise by 20%, not 10%
+   * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Critical hits do 150% damage, not 200%, but are more likely
    * Electric-type Pokémon are immune to paralysis, even from Tri Attack
    * Ice-type Pokémon are immune to freezing, even from Tri Attack
@@ -161,7 +162,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
-   * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
@@ -184,7 +184,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
-   * Thick Club + Swords Dance Marowak Attack overflow
+   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
