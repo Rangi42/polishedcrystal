@@ -108,6 +108,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Menu Account → Menu Captions
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
+   * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
@@ -193,8 +194,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
-   * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Custom features:
+   * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
+   * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
    * Select reorders Pokémon in party menu
@@ -237,6 +239,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
 * Make Rock Smash an HM
 * Evening from 5–7 PM (change morning from 4−9 AM)
+* First party Pokémon follows you like in Yellow or HGSS
 * Separate bag pockets for usable items and held items
 * Custom title screen and end credits
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
