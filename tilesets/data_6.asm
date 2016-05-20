@@ -1,7 +1,3 @@
-Tileset31GFX: ; 0xdc000
-INCBIN "gfx/tilesets/31.2bpp.lz"
-; 0xdc3d0
-
 Tileset18GFX: ; 0xdc3d0
 INCBIN "gfx/tilesets/18.2bpp.lz"
 ; 0xdcc50

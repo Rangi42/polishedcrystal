@@ -14,7 +14,7 @@ ViridianForestPewterGate_MapEventHeader:
 .Warps:
 	db 4
 	warp_def $7, $4, 1, VIRIDIAN_FOREST
-	warp_def $7, $5, 2, VIRIDIAN_FOREST
+	warp_def $7, $5, 1, VIRIDIAN_FOREST
 	warp_def $0, $4, 7, ROUTE_2
 	warp_def $0, $5, 8, ROUTE_2
 

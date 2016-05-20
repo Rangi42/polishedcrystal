@@ -4,8 +4,6 @@ const_value set 2
 	const ROUTE2_BUG_CATCHER3
 	const ROUTE2_POKE_BALL1
 	const ROUTE2_POKE_BALL2
-	const ROUTE2_POKE_BALL3
-	const ROUTE2_POKE_BALL4
 	const ROUTE2_FRUIT_TREE
 
 Route2_MapScriptHeader:
@@ -54,12 +52,6 @@ Route2Sign:
 MapRoute2Signpost1Script:
 	jumptext UnknownText_0x1ac49f
 
-Route2DireHit:
-	itemball DIRE_HIT
-
-Route2MaxPotion:
-	itemball MAX_POTION
-
 Route2Carbos:
 	itemball CARBOS
 
@@ -68,18 +60,6 @@ Route2Elixer:
 
 FruitTreeScript_0x1ac306:
 	fruittree FRUITTREE_ROUTE_2
-
-Route2HiddenMaxEther:
-	dwb EVENT_ROUTE_2_HIDDEN_MAX_ETHER, MAX_ETHER
-
-Route2HiddenFullHeal:
-	dwb EVENT_ROUTE_2_HIDDEN_FULL_HEAL, FULL_HEAL
-
-Route2HiddenFullRestore:
-	dwb EVENT_ROUTE_2_HIDDEN_FULL_RESTORE, FULL_RESTORE
-
-Route2HiddenRevive:
-	dwb EVENT_ROUTE_2_HIDDEN_REVIVE, REVIVE
 
 Bug_catcherRobSeenText:
 	text "My bug #mon are"
@@ -165,21 +145,15 @@ Route2_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 2
 	signpost 51, 7, SIGNPOST_READ, Route2Sign
 	signpost 9, 11, SIGNPOST_READ, MapRoute2Signpost1Script
-	signpost 7, 3, SIGNPOST_ITEM, Route2HiddenMaxEther ; move to Viridian Forest
-	signpost 7, 4, SIGNPOST_ITEM, Route2HiddenFullHeal ; move to Viridian Forest
-	signpost 7, 5, SIGNPOST_ITEM, Route2HiddenFullRestore ; move to Viridian Forest
-	signpost 30, 11, SIGNPOST_ITEM, Route2HiddenRevive
 
 .PersonEvents:
-	db 8
+	db 6
 	person_event SPRITE_BUG_CATCHER, 45, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherRob, -1
 	person_event SPRITE_BUG_CATCHER, 4, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherEd, -1
 	person_event SPRITE_BUG_CATCHER, 40, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDoug, -1
-	person_event SPRITE_POKE_BALL, 7, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2DireHit, EVENT_ROUTE_2_DIRE_HIT ; Move to Viridian Forest
-	person_event SPRITE_POKE_BALL, 7, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2MaxPotion, EVENT_ROUTE_2_MAX_POTION ; Move to Viridian Forest
 	person_event SPRITE_POKE_BALL, 2, 19, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2Carbos, EVENT_ROUTE_2_CARBOS
 	person_event SPRITE_POKE_BALL, 50, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2Elixer, EVENT_ROUTE_2_ELIXER
 	person_event SPRITE_FRUIT_TREE, 11, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1ac306, -1
