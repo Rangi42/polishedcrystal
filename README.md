@@ -66,7 +66,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Steel-type Pokémon are immune to poisoning
    * Poison-type Pokémon always hit with Toxic
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
-   * Growth raises Attack and Special Attack
+   * Growth raises Attack and Special Attack, by two stages in sunlight
    * Hidden Power is always 60 power
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
@@ -163,7 +163,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
    * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
-   * Growth raises stats by two stages in sunlight
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
@@ -185,8 +184,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
-   * Make Growth display an appropriate effect and message regarding both raised stats  
-     https://hax.iimarck.us/topic/4198/
    * Thick Club + Swords Dance Marowak Attack overflow
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
