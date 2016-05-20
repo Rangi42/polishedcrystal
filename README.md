@@ -191,6 +191,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
 * Aesthetic updates:
+   * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
+   * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
