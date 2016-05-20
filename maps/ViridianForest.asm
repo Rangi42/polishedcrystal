@@ -10,22 +10,22 @@ ViridianForest_MapScriptHeader:
 	db 0
 
 MapViridianForestSignpost1Script:
-	jumptext ViridianForestSignText
+	jumptext ViridianForestSignText1
 
 MapViridianForestSignpost2Script:
-	jumptext ViridianForestSignText
+	jumptext ViridianForestSignText2
 
 MapViridianForestSignpost3Script:
-	jumptext ViridianForestSignText
+	jumptext ViridianForestSignText3
 
 MapViridianForestSignpost4Script:
-	jumptext ViridianForestSignText
+	jumptext ViridianForestSignText4
 
 MapViridianForestSignpost5Script:
-	jumptext ViridianForestSignText
+	jumptext ViridianForestSignText5
 
 MapViridianForestSignpost6Script:
-	jumptext ViridianForestSignText
+	jumptext ViridianForestSignText6
 
 ViridianForestDireHit:
 	itemball DIRE_HIT
@@ -45,9 +45,55 @@ ViridianForestHiddenFullRestore:
 ViridianForestHiddenRevive:
 	dwb EVENT_ROUTE_2_HIDDEN_REVIVE, REVIVE
 
-ViridianForestSignText:
-	; TODO: add Viridian Forest sign text from RBY or HGSS
-	text "TODO"
+ViridianForestSignText1:
+	text "Leaving"
+	line "Viridian Forest"
+	cont "Pewter City Ahead"
+	done
+
+ViridianForestSignText2:
+	text "Trainer Tips"
+
+	para "No stealing of"
+	line "#mon from"
+	cont "other trainers!"
+	cont "Catch only wild"
+	cont "#mon!"
+	done
+
+ViridianForestSignText3:
+	text "Trainer Tips"
+
+	para "Contact Prof.Oak"
+	line "via PC to get"
+	cont "your #dex"
+	cont "evaluated!"
+	done
+
+ViridianForestSignText4:
+	text "For poison, use"
+	line "Antidote! Get it"
+	cont "at #mon Marts!"
+	done
+
+ViridianForestSignText5:
+	text "Trainer Tips"
+
+	para "If you want to"
+	line "avoid battles,"
+	cont "stay away from"
+	cont "grassy areas!"
+	done
+
+ViridianForestSignText6:
+	text "Trainer Tips"
+
+	para "Weaken #mon"
+	line "before attempting"
+	cont "capture!"
+
+	para "When healthy,"
+	line "they may escape!"
 	done
 
 ViridianForest_MapEventHeader:
@@ -78,5 +124,5 @@ ViridianForest_MapEventHeader:
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_POKE_BALL, 30, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
-	person_event SPRITE_POKE_BALL, 28, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
+	person_event SPRITE_POKE_BALL, 29, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
+	person_event SPRITE_POKE_BALL, 31, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
