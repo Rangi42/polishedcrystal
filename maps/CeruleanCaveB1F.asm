@@ -13,7 +13,7 @@ CeruleanCaveB1F_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $8, $5, 5, CERULEAN_CAVE_1F
+	warp_def $7, $5, 5, CERULEAN_CAVE_1F
 
 .XYTriggers:
 	db 0
