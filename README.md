@@ -146,6 +146,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add the Helix and Dome fossils to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi
 * Modern battle mechanics:
+   * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
       * Moves that can be removed: Psywave, Mimic, Mirror Move
