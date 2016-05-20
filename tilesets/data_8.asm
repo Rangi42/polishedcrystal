@@ -1,3 +1,13 @@
+Tileset24Meta:
+Tileset30Meta:
+Tileset37Meta:
+INCBIN "tilesets/24_metatiles.bin"
+
+Tileset24Coll:
+Tileset30Coll:
+Tileset37Coll:
+INCBIN "tilesets/24_collision.bin"
+
 Tileset31GFX:
 INCBIN "gfx/tilesets/31.2bpp.lz"
 
