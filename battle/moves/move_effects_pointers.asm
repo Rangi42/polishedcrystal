@@ -11,7 +11,7 @@
 	dw AttackUp
 	dw DefenseUp
 	dw SpeedUp
-	dw Growth
+	dw SpecialAttackUp
 	dw SpecialDefenseUp
 	dw AccuracyUp
 	dw EvasionUp
@@ -35,7 +35,7 @@
 	dw PayDay
 	dw LightScreen
 	dw TriAttack
-	dw NormalHit
+	dw Growth
 	dw OHKOHit
 	dw RazorWind
 	dw SuperFang

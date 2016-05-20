@@ -7443,11 +7443,7 @@ BattleCommand_Charge: ; 36b4d
 ; 36c2c
 
 
-BattleCommand3c: ; 36c2c
-; unused
-	ret
-
-; 36c2d
+INCLUDE "battle/effects/growth.asm"
 
 
 BattleCommand_TrapTarget: ; 36c2d
