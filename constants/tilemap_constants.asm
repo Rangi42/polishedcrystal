@@ -41,6 +41,7 @@ const_value SET 1
 	const TILESET_KABUTO_WORD_ROOM     ; 22
 	const TILESET_OMANYTE_WORD_ROOM    ; 23
 	const TILESET_AERODACTYL_WORD_ROOM ; 24
+	const TILESET_CERULEAN_CAVE        ; 25
 
 	const_def
 	const PAL_BG_GRAY

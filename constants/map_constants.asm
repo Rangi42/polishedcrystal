@@ -177,9 +177,9 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_24,                                    9, 10 ; 15
 	mapgroup ROUTE_25,                                    9, 30 ; 16
 	mapgroup CERULEAN_CITY,                              18, 20 ; 17
-	mapgroup CERULEAN_CAVE_1F,                            9, 15 ; 18
-	mapgroup CERULEAN_CAVE_2F,                            9, 15 ; 19
-	mapgroup CERULEAN_CAVE_B1F,                           9, 15 ; 20
+	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 18
+	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 19
+	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 20
 
 	newgroup                                                    ;  8
 
@@ -416,7 +416,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 11
 	mapgroup ROUTE_2_GATE,                                4,  5 ; 12
 	mapgroup VICTORY_ROAD_GATE,                           9, 10 ; 13
-	mapgroup VIRIDIAN_FOREST,                            24, 17 ; 14
+	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 14
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 15
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 16
 

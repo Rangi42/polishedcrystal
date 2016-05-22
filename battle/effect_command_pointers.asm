@@ -60,7 +60,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Charge ; 36b4d
 	dw BattleCommand_CheckCharge ; 36b3a
 	dw BattleCommand_TrapTarget ; 36c2d
-	dw BattleCommand3c ; 36c2c
+	dw BattleCommand_Growth ; 36c2c
 	dw BattleCommand_Rampage ; 36751
 	dw BattleCommand_CheckRampage ; 3671a
 	dw BattleCommand_ConstantDamage ; 35726

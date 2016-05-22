@@ -498,6 +498,7 @@ endm
 	treemon_map BLACKTHORN_CITY, 0
 	treemon_map SILVER_CAVE_OUTSIDE, 0
 	treemon_map ILEX_FOREST, 6
+	treemon_map VIRIDIAN_FOREST, 6
 	db -1
 ; b82c5
 

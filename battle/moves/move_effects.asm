@@ -425,9 +425,7 @@ EvasionUp2:
 	statupfailtext
 	endmove
 
-Growth:
 AttackAndSpecialAttackUp:
-; TODO: fix Growth
 	checkobedience
 	usedmovetext
 	doturn
@@ -1190,6 +1188,13 @@ TriAttack:
 	checkdestinybond
 	buildopponentrage
 	tristatuschance
+	endmove
+
+Growth:
+	checkobedience
+	usedmovetext
+	doturn
+	growth
 	endmove
 
 Toxic:

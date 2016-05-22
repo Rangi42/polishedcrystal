@@ -14,7 +14,7 @@ CeruleanCave1F_BlockData:
 	INCBIN "maps/CeruleanCave1F.blk"
 
 CeruleanCave2F_BlockData:
-	INCBIN "maps/CeruleanCave1F.blk"
+	INCBIN "maps/CeruleanCave2F.blk"
 
 CeruleanCaveB1F_BlockData:
 	INCBIN "maps/CeruleanCaveB1F.blk"

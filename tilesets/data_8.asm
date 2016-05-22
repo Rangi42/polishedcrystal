@@ -1,15 +1,27 @@
-Tileset33Meta: ; 0x1e0000
+Tileset24Meta:
+Tileset30Meta:
+Tileset37Meta:
+INCBIN "tilesets/24_metatiles.bin"
+
+Tileset24Coll:
+Tileset30Coll:
+Tileset37Coll:
+INCBIN "tilesets/24_collision.bin"
+
+Tileset31GFX:
+INCBIN "gfx/tilesets/31.2bpp.lz"
+
+Tileset31Meta:
+INCBIN "tilesets/31_metatiles.bin"
+
+Tileset33Meta:
 INCBIN "tilesets/33_metatiles.bin"
-; 0x1e0400
 
-Tileset34Meta: ; 0x1e0400
+Tileset34Meta:
 INCBIN "tilesets/34_metatiles.bin"
-; 0x1e0800
 
-Tileset35Meta: ; 0x1e0800
+Tileset35Meta:
 INCBIN "tilesets/35_metatiles.bin"
-; 0x1e0c00
 
-Tileset36Meta: ; 0x1e0c00
+Tileset36Meta:
 INCBIN "tilesets/36_metatiles.bin"
-; 0x1e1000

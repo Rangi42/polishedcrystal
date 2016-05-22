@@ -59,6 +59,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Updated Pokémon base stats and move attributes
    * Steel does not resist Ghost or Dark
    * Type-enhancing items raise by 20%, not 10%
+   * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Critical hits do 150% damage, not 200%, but are more likely
    * Electric-type Pokémon are immune to paralysis, even from Tri Attack
    * Ice-type Pokémon are immune to freezing, even from Tri Attack
@@ -66,7 +67,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Steel-type Pokémon are immune to poisoning
    * Poison-type Pokémon always hit with Toxic
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
-   * Growth raises Attack and Special Attack
+   * Growth raises Attack and Special Attack, by two stages in sunlight
    * Hidden Power is always 60 power
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
@@ -107,6 +108,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Menu Account → Menu Captions
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
+   * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
@@ -145,6 +147,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add the Helix and Dome fossils to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi
 * Modern battle mechanics:
+   * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
       * Moves that can be removed: Psywave, Mimic, Mirror Move
@@ -161,9 +164,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
-   * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
-   * Growth raises stats by two stages in sunlight
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
@@ -175,6 +176,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
+   * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
+   * Restore [unused memory game](http://iimarck.us/i/memory/)
+   * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax
    * Unlimited-use TMs from Gen V
    * Continuous Repel system from Gen V
    * Catch rate formula from Gen III
@@ -185,18 +189,21 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
-   * Make Growth display an appropriate effect and message regarding both raised stats  
-     https://hax.iimarck.us/topic/4198/
-   * Thick Club + Swords Dance Marowak Attack overflow
+   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
 * Aesthetic updates:
+   * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
+   * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
+   * Fix jagged black borders on Town Map (imitate HGSS?)
+   * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
-   * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Custom features:
+   * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
+   * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
    * Select reorders Pokémon in party menu
@@ -214,6 +221,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
    * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Misdreavus, Arbok, Gengar)
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
+   * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Mew, Jolteon, Dugtrio, Articuno, Rhydon)
+   * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
    * Add whichever gender character you don't pick as a friendly rival
    * Since Gold/Ethan/Chris and Crystal/Kris are the player characters, include Lyra/Kotone somewhere (her grandparents run the Day-Care; battle her in the PokéCom Center?)
    * Also include Green/Leaf
@@ -239,6 +248,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
 * Make Rock Smash an HM
 * Evening from 5–7 PM (change morning from 4−9 AM)
+* First party Pokémon follows you like in Yellow or HGSS
 * Separate bag pockets for usable items and held items
 * Custom title screen and end credits
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024

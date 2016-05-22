@@ -13,8 +13,8 @@ ViridianForestViridianGate_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $0, $4, 7, VIRIDIAN_FOREST
-	warp_def $0, $5, 8, VIRIDIAN_FOREST
+	warp_def $0, $4, 2, VIRIDIAN_FOREST
+	warp_def $0, $5, 3, VIRIDIAN_FOREST
 	warp_def $7, $4, 6, ROUTE_2
 	warp_def $7, $5, 6, ROUTE_2
 

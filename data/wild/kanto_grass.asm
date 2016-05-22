@@ -216,6 +216,33 @@
 	db 4, NOCTOWL
 	db 4, NOCTOWL
 
+	map VIRIDIAN_FOREST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 4, CATERPIE
+	db 4, WEEDLE
+	db 7, KAKUNA
+	db 7, METAPOD
+	db 7, METAPOD
+	db 4, PIKACHU
+	db 5, PIKACHU
+	; day
+	db 4, CATERPIE
+	db 4, WEEDLE
+	db 7, METAPOD
+	db 7, KAKUNA
+	db 7, KAKUNA
+	db 4, PIKACHU
+	db 5, PIKACHU
+	; nite
+	db 3, HOOTHOOT
+	db 3, HOOTHOOT
+	db 5, HOOTHOOT
+	db 7, NOCTOWL
+	db 7, NOCTOWL
+	db 7, NOCTOWL
+	db 7, NOCTOWL
+
 	map ROUTE_3
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn

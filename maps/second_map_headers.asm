@@ -588,6 +588,6 @@
 	map_header_2 ViridianForest, VIRIDIAN_FOREST, $5, 0
 	map_header_2 ViridianForestViridianGate, VIRIDIAN_FOREST_VIRIDIAN_GATE, $0, 0
 	map_header_2 ViridianForestPewterGate, VIRIDIAN_FOREST_PEWTER_GATE, $0, 0
-	map_header_2 CeruleanCave1F, CERULEAN_CAVE_1F, $2, 0
-	map_header_2 CeruleanCave2F, CERULEAN_CAVE_2F, $2, 0
-	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $2, 0
+	map_header_2 CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0
+	map_header_2 CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
+	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0

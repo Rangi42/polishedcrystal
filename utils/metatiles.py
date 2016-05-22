@@ -17,10 +17,10 @@ from itertools import izip_longest
 
 import png
 
-def chunk(L, n):
-	return izip_longest(*[iter(L)] * n, fillvalue=None)
+def chunk(L, n, fillvalue=None):
+	return izip_longest(*[iter(L)] * n, fillvalue=fillvalue)
 
-def bytes(rgbs):
+def rgb_bytes(rgbs):
 	for px in rgbs:
 		yield px[0]
 		yield px[1]
@@ -78,7 +78,7 @@ class Tileset(object):
 	def export_colored(self, filename):
 		with open(filename, 'wb') as file:
 			writer = png.Writer(self.w, self.h)
-			writer.write(file, chunk(bytes(self.data), self.w * 3))
+			writer.write(file, chunk(rgb_bytes(self.data), self.w * 3))
 
 class PaletteMap(object):
 	colors = {
@@ -116,7 +116,7 @@ class Metatiles(object):
 				tile_indexes = [ord(c) for c in file.read(Metatiles.t_per_m**2)]
 				if not len(tile_indexes):
 					break
-				metatile = [tileset.tile(ti) for ti in tile_indexes]
+				metatile = [tileset.tile(ti if ti < 0x60 else ti - 0x20) for ti in tile_indexes]
 				self.data.append(metatile)
 				i += 1
 
@@ -126,6 +126,8 @@ class Metatiles(object):
 	def export_colored(self, filename):
 		wm = 4
 		hm = self.size() // wm
+		if wm * hm < self.size():
+			hm += 1
 		overall_w = wm * Metatiles.t_per_m * Tileset.p_per_t
 		overall_h = hm * Metatiles.t_per_m * Tileset.p_per_t
 		data = [default_rgb] * (overall_w * overall_h)
@@ -139,6 +141,8 @@ class Metatiles(object):
 			m_i = m_y * wm + m_x
 			t_i = t_y * Metatiles.t_per_m + t_x
 			p_i = p_y * Tileset.p_per_t + p_x
+			if m_i >= self.size():
+				continue
 			metatile = self.data[m_i]
 			tile = metatile[t_i]
 			pixel = tile[p_i]
@@ -146,7 +150,7 @@ class Metatiles(object):
 
 		with open(filename, 'wb') as file:
 			writer = png.Writer(overall_w, overall_h)
-			writer.write(file, chunk(bytes(data), overall_w * 3))
+			writer.write(file, chunk(rgb_bytes(data), overall_w * 3))
 
 def process(tileset_name, palette_map_name, metatiles_name):
 	palette_map = PaletteMap(palette_map_name)
