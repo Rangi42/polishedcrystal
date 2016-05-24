@@ -92,4 +92,6 @@ TrainerClassDVs: ; 270d6
 	db $9F, $FF ; mysticalman
 	db $FF, $FF ; elder
 	db $D8, $A8 ; foreigngrunt
+	db $FF, $FF ; lorelei
+	db $FF, $FF ; agatha
 ; 2715c

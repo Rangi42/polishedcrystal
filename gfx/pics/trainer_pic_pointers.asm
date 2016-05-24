@@ -68,3 +68,5 @@
 	add_pic MysticalmanPic
 	add_pic ElderPic
 	add_pic ForeignGruntPic
+	add_pic LoreleiPic
+	add_pic AgathaPic

@@ -620,6 +620,10 @@ KRIS EQU __enum__
 
 	trainerclass FOREIGNGRUNT ; 45
 
+	trainerclass LORELEI ; 46
+
+	trainerclass AGATHA ; 47
+
 NUM_TRAINER_CLASSES EQU __enum__
 
 	const_def

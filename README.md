@@ -142,10 +142,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
    * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
-   * Add Articuno, Zapdos, Moltres, and Mew to appropriate locations
-   * Add Mewtwo to Cerulean Cave
-   * Add the Helix and Dome fossils to be restored into Omanyte and Kabuto at the Pewter Museum of Science
-   * Restore the GS Ball event for Celebi
+   * Move Kangaskhan from Rock Tunnel to the Safari Zone
+   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos by the Power Plant, Moltres on Cinnabar Volcano) (like with the three beasts and the Rainbow Wing)
+   * Add Mewtwo to Cerulean Cave (open after 16 badges and rematching the Elite 4)
+   * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
+   * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
+   * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Update movesets, and move and item mechanics, to Gen VI
@@ -173,12 +175,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Leafeon and Glaceon in slots 252 and 253
    * Replace Cleffa and Igglybuff with Sylveon and Togekiss
    * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
+      * Tentative plan: {Lickitung, Delibird, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} become {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax}
    * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
    * Restore [unused memory game](http://iimarck.us/i/memory/)
-   * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax
+   * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Unlimited-use TMs from Gen V
    * Continuous Repel system from Gen V
    * Catch rate formula from Gen III
@@ -201,6 +204,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
+   * Better Town Map without bold black borders (imitate landmarks from HGSS)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
@@ -223,11 +227,15 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Mew, Jolteon, Dugtrio, Articuno, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
-   * Add whichever gender character you don't pick as a friendly rival
-   * Since Gold/Ethan/Chris and Crystal/Kris are the player characters, include Lyra/Kotone somewhere (her grandparents run the Day-Care; battle her in the PokéCom Center?)
-   * Also include Green/Leaf
+   * Battle Bill at some point (five Eeveelutions and Porygon)
+   * Replace Cal in Trainer Hall with whichever gender character you don't pick
+   * Include Lyra/Kotone as a friendly rival like in HGSS
+   * Also include Green/Leaf somewhere
+   * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
+   * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
+   * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
 
 
 ## Long-term

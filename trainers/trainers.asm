@@ -9593,12 +9593,56 @@ ForeignGruntGroup:
 ; ================================
 ; ================
 
-	; FOREIGNGRUNT (31)
+	; FOREIGNGRUNT (1)
 	db "Grunt@"
 	db 0 ; normal
 
 	; party
 	db 39, GOLBAT
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+LoreleiGroup:
+; ================================
+; ================
+
+	; LORELEI (1)
+	db "Lorelei@"
+	db 0 ; normal
+
+	; party
+	db 56, DEWGONG
+	db 55, CLOYSTER
+	db 56, SLOWBRO
+	db 54, PILOSWINE
+	db 58, JYNX
+	db 58, LAPRAS
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+AgathaGroup:
+; ================================
+; ================
+
+	; AGATHA (1)
+	db "Agatha@"
+	db 0 ; normal
+
+	; party
+	db 55, GENGAR
+	db 55, CROBAT
+	db 54, MISDREAVUS
+	db 54, MUK
+	db 56, ARBOK
+	db 57, GENGAR
 
 	db $ff ; end
 
