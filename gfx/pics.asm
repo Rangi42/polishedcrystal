@@ -729,4 +729,6 @@ SwimmerfPic:         INCBIN "gfx/trainers/swimmer_f.2bpp.lz"
 SagePic:             INCBIN "gfx/trainers/sage.2bpp.lz"
 ElderPic:            INCBIN "gfx/trainers/elder.2bpp.lz"
 ForeignGruntPic:     INCBIN "gfx/trainers/foreigngrunt.2bpp.lz"
+LoreleiPic:          INCBIN "gfx/trainers/lorelei.2bpp.lz"
+AgathaPic:           INCBIN "gfx/trainers/agatha.2bpp.lz"
 

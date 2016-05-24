@@ -417,3 +417,9 @@ RaikouSprite: ; 1498e
 StandingYoungsterSprite: ; 14994
 	sprite_header StandingYoungsterSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 ; 1499a
+
+LoreleiSprite:
+	sprite_header LoreleiSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+AgathaSprite:
+	sprite_header AgathaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN

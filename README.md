@@ -227,9 +227,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Mew, Jolteon, Dugtrio, Articuno, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
-   * Add whichever gender character you don't pick as a friendly rival, like HGSS
-   * Since Gold/Ethan/Chris and Crystal/Kris are the player characters, include Lyra/Kotone somewhere (her grandparents run the Day-Care; battle her in the PokéCom Center? or in Trainer Hall?)
-   * Also include Green/Leaf
+   * Battle Bill at some point (five Eeveelutions and Porygon)
+   * Replace Cal in Trainer Hall with whichever gender character you don't pick
+   * Include Lyra/Kotone as a friendly rival like in HGSS
+   * Also include Green/Leaf somewhere
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"

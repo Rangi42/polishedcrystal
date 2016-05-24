@@ -70,3 +70,5 @@ TrainerGroups: ; 0x39999
 	dw MysticalmanGroup
 	dw ElderGroup
 	dw ForeignGruntGroup
+	dw LoreleiGroup
+	dw AgathaGroup

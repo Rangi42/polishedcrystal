@@ -5664,15 +5664,19 @@ StartBattleWithMapTrainerScript: ; 0xbe68a
 AlreadyBeatenTrainerScript:
 	scripttalkafter
 
-SECTION "bank30", ROMX, BANK[$30]
+SECTION "sprites_1", ROMX, BANK[$30]
 
 INCLUDE "gfx/overworld/sprites_1.asm"
 
-SECTION "bank31", ROMX, BANK[$31]
+SECTION "sprites_2", ROMX, BANK[$31]
 
 INCLUDE "gfx/overworld/sprites_2.asm"
 
-SECTION "bank32", ROMX, BANK[$32]
+SECTION "sprites_3", ROMX
+
+INCLUDE "gfx/overworld/sprites_3.asm"
+
+SECTION "bg_effects", ROMX, BANK[$32]
 
 INCLUDE "battle/bg_effects.asm"
 

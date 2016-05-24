@@ -67,3 +67,5 @@
 	db "Mystery Man@"
 	db "Elder@"
 	db "Rocket@"
+	db "Former Elite@"
+	db "Former Elite@"

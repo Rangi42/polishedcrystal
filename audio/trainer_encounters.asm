@@ -92,5 +92,6 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; mysticalman
 	db MUSIC_SAGE_ENCOUNTER			; elder
 	db MUSIC_ROCKET_ENCOUNTER		; foreigngrunt
-	db MUSIC_HIKER_ENCOUNTER
+	db MUSIC_HIKER_ENCOUNTER		; lorelei
+	db MUSIC_HIKER_ENCOUNTER		; agatha
 ; e906e

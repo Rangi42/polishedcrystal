@@ -81,4 +81,6 @@ GruntfPalette:       INCLUDE "gfx/trainers/grunt_f.pal"
 MysticalmanPalette:  INCLUDE "gfx/trainers/mysticalman.pal"
 ElderPalette:        INCLUDE "gfx/trainers/elder.pal"
 ForeignGruntPalette: INCLUDE "gfx/trainers/foreigngrunt.pal"
+LoreleiPalette:      INCLUDE "gfx/trainers/lorelei.pal"
+AgathaPalette:       INCLUDE "gfx/trainers/agatha.pal"
 ; b1de
