@@ -144,4 +144,16 @@
 	db 30, TENTACOOL
 	db 35, TENTACRUEL
 
+	map CERULEAN_CAVE_1F
+	db 6 percent ; encounter rate
+	db 55, SLOWBRO
+	db 56, GOLDUCK
+	db 57, GYARADOS
+
+	map CERULEAN_CAVE_B1F
+	db 6 percent ; encounter rate
+	db 55, SLOWKING
+	db 56, GOLDUCK
+	db 57, GYARADOS
+
 	db -1 ; end

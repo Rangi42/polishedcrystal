@@ -837,4 +837,85 @@
 	db 42, GOLBAT
 	db 42, GOLBAT
 
+	map CERULEAN_CAVE_1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, GOLBAT
+	db 55, PARASECT
+	db 56, PRIMEAPE
+	db 57, WOBBUFFET
+	db 58, MACHAMP
+	db 57, ELECTRODE
+	db 60, DITTO
+	; day
+	db 55, GOLBAT
+	db 55, PARASECT
+	db 56, PRIMEAPE
+	db 57, WOBBUFFET
+	db 58, MACHAMP
+	db 57, ELECTRODE
+	db 60, DITTO
+	; nite
+	db 55, CROBAT
+	db 55, PARASECT
+	db 56, PRIMEAPE
+	db 57, WOBBUFFET
+	db 58, MACHAMP
+	db 57, ELECTRODE
+	db 60, DITTO
+
+	map CERULEAN_CAVE_2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, GOLBAT
+	db 55, PARASECT
+	db 56, MACHAMP
+	db 57, MAGNETON
+	db 58, ALAKAZAM
+	db 57, ELECTRODE
+	db 60, DITTO
+	; day
+	db 55, GOLBAT
+	db 55, PARASECT
+	db 56, MACHAMP
+	db 57, MAGNETON
+	db 58, ALAKAZAM
+	db 57, ELECTRODE
+	db 60, DITTO
+	; nite
+	db 55, CROBAT
+	db 55, PARASECT
+	db 56, MACHAMP
+	db 57, MAGNETON
+	db 58, ALAKAZAM
+	db 57, ELECTRODE
+	db 60, DITTO
+
+	map CERULEAN_CAVE_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, PARASECT
+	db 55, MAGNETON
+	db 56, MACHAMP
+	db 57, GOLEM
+	db 58, ALAKAZAM
+	db 57, RAICHU
+	db 60, DITTO
+	; day
+	db 55, PARASECT
+	db 55, MAGNETON
+	db 56, MACHAMP
+	db 57, GOLEM
+	db 58, ALAKAZAM
+	db 57, RAICHU
+	db 60, DITTO
+	; nite
+	db 55, PARASECT
+	db 55, MAGNETON
+	db 56, MACHAMP
+	db 57, GOLEM
+	db 58, ALAKAZAM
+	db 57, RAICHU
+	db 60, DITTO
+
 	db -1 ; end
