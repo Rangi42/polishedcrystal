@@ -1,4 +1,5 @@
 const_value set 2
+	const CERULEAN_CAVE_MEWTWO
 
 CeruleanCaveB1F_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,16 @@ CeruleanCaveB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+CeruleanCaveMewtwo:
+	faceplayer
+	cry MEWTWO
+	loadwildmon MEWTWO, 80
+	startbattle
+	disappear CERULEAN_CAVE_MEWTWO
+	setevent EVENT_CERULEAN_CAVE_MEWTWO
+	reloadmapafterbattle
+	end
 
 CeruleanCaveB1F_MapEventHeader:
 	; filler
@@ -22,4 +33,5 @@ CeruleanCaveB1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_MONSTER, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO

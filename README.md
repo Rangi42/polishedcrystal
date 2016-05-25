@@ -54,6 +54,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Flaaffy on Routes 42 and 43
    * Wild Girafarig on Route 43
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
+   * Encounter Mewtwo in Cerulean Cave
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -144,7 +145,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
    * Move Kangaskhan from Rock Tunnel to the Safari Zone
    * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos by the Power Plant, Moltres on Cinnabar Volcano) (like with the three beasts and the Rainbow Wing)
-   * Add Mewtwo to Cerulean Cave (open after 16 badges and rematching the Elite 4)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
@@ -188,7 +188,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Money loss formula from Gen III when whiting out
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
-   * Replace some Kanto music with RBY tracks
+   * Replace some Kanto music with RBY and HGSS tracks (Kanto locations, Mewtwo battle, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
@@ -196,6 +196,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
+   * Fix attacks hitting a Flying Pokémon
 * Aesthetic updates:
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
