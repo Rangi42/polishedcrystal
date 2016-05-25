@@ -1,4 +1,5 @@
 const_value set 2
+	const VIRIDIANFORESTVIRIDIANGATE_OFFICER
 
 ViridianForestViridianGate_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,17 @@ ViridianForestViridianGate_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+ViridianForestViridianGateOfficerScript:
+	jumptextfaceplayer ViridianForestViridianGateOfficerText
+
+ViridianForestViridianGateOfficerText:
+	text "Be careful,"
+	line "Viridian Forest"
+	
+	para "is a natural"
+	line "maze!"
+	done
 
 ViridianForestViridianGate_MapEventHeader:
 	; filler
@@ -25,4 +37,5 @@ ViridianForestViridianGate_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianForestViridianGateOfficerScript, -1

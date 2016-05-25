@@ -78,8 +78,11 @@ Museum1FThankYouText:
 	line "Thank you!"
 	done
 
+Museum1FNotEnoughMoneyText
+	text "You don't have"
+	line "enough money."
 Museum1FComeAgainText:
-	text "Come again!"
+	para "Come again!"
 	done
 
 Museum1FReceptionistText:
