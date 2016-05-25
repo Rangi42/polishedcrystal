@@ -77,8 +77,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Hold B to use Running Shoes
    * Eggs hatch at level 1
    * Added X Spcl. Def
-   * Restored the Goldenrod City PokéCom Center
    * Copied most trainer levels and rosters from HGSS
+   * Restored the Goldenrod City PokéCom Center from the Japanese version
+   * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
    * Added Bellchime Trail from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
@@ -176,7 +177,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace Cleffa and Igglybuff with Sylveon and Togekiss
    * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
       * Tentative plan: {Lickitung, Delibird, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} become {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax}
-   * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
+   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
