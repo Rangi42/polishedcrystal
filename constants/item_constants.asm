@@ -144,11 +144,11 @@
 	const ITEM_8E      ; $8E
 	const METAL_COAT   ; $8F
 	const DRAGON_FANG  ; $90
-	const ITEM_91      ; $91
+	const REPEAT_BALL  ; $91
 	const LEFTOVERS    ; $92
-	const ITEM_93      ; $93
-	const ITEM_94      ; $94
-	const ITEM_95      ; $95
+	const TIMER_BALL   ; $93
+	const QUICK_BALL   ; $94
+	const DUSK_BALL    ; $95
 	const MYSTERYBERRY ; $96
 	const DRAGON_SCALE ; $97
 	const BERSERK_GENE ; $98

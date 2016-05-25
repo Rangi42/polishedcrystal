@@ -731,6 +731,10 @@ BallMultiplierFunctionTable:
 	dbw MOON_BALL,   MoonBallMultiplier
 	dbw LOVE_BALL,   LoveBallMultiplier
 	dbw PARK_BALL,   ParkBallMultiplier
+	dbw REPEAT_BALL, RepeatBallMultiplier
+	dbw TIMER_BALL,  TimerBallMultiplier
+	dbw QUICK_BALL,  QuickBallMultiplier
+	dbw DUSK_BALL,   DuskBallMultiplier
 	db $ff
 
 UltraBallMultiplier:
@@ -1067,6 +1071,26 @@ LevelBallMultiplier:
 
 .max
 	ld b, $ff
+	ret
+
+RepeatBallMultiplier:
+; multiply catch rate by 3 if enemy mon is already in Pokédex
+	; TODO: implement Repeat Ball
+	ret
+
+TimerBallMultiplier:
+; multiply catch rate by (turns passed + 10) / 10, capped at 4
+	; TODO: implement Timer Ball
+	ret
+
+QuickBallMultiplier:
+; multiply catch rate by 4 on first turn
+	; TODO: implement Quick Ball
+	ret
+
+DuskBallMultiplier:
+; multiply catch rate by 3.5 at night or in caves
+	; TODO: implement Dusk Ball
 	ret
 
 ; These two texts were carried over from gen 1.

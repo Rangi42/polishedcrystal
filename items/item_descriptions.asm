@@ -177,11 +177,11 @@ ItemDescriptions:
 	dw TeruSama13Desc
 	dw MetalCoatDesc
 	dw DragonFangDesc
-	dw TeruSama14Desc
+	dw RepeatBallDesc
 	dw LeftoversDesc
-	dw TeruSama15Desc
-	dw TeruSama16Desc
-	dw TeruSama17Desc
+	dw TimerBallDesc
+	dw QuickBallDesc
+	dw DuskBallDesc
 	dw MysteryBerryDesc
 	dw DragonScaleDesc
 	dw BerserkGeneDesc
@@ -847,21 +847,25 @@ DragonFangDesc:
 	db   "Powers up Dragon-"
 	next "type moves. (Hold)@"
 
-TeruSama14Desc:
-	db   "?@"
+RepeatBallDesc:
+	db   "A Ball for #mon"
+	next "caught before.@"
 
 LeftoversDesc:
 	db   "Restores HP during"
 	next "battle. (Hold)@"
 
-TeruSama15Desc:
-	db   "?@"
+TimerBallDesc:
+	db   "A Ball for late"
+	next "in a battle.@"
 
-TeruSama16Desc:
-	db   "?@"
+QuickBallDesc:
+	db   "A Ball for early"
+	next "in a battle.@"
 
-TeruSama17Desc:
-	db   "?@"
+DuskBallDesc:
+	db   "A Ball for night-"
+	next "time or caves.@"
 
 MysteryBerryDesc:
 	db   "A self-restore"
