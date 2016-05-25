@@ -4990,6 +4990,68 @@ BugCatcherGroup:
 	db $ff ; end
 
 ; ================
+
+	; BUG_CATCHER (20)
+	db "Dane@"
+	db 0 ; normal
+
+	; party
+	db 44, BEEDRILL
+	db 48, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_CATCHER (21)
+	db "Dion@"
+	db 0 ; normal
+
+	; party
+	db 50, ARIADOS
+
+	db $ff ; end
+
+; ================
+
+	; BUG_CATCHER (22)
+	db "Stacey@"
+	db 0 ; normal
+
+	; party
+	db 52, METAPOD
+	db 56, METAPOD
+	db 60, METAPOD
+
+	db $ff ; end
+
+; ================
+
+	; BUG_CATCHER (23)
+	db "Ellis@"
+	db 0 ; normal
+
+	; party
+	db 28, WEEDLE
+	db 38, KAKUNA
+	db 48, BEEDRILL
+
+	db $ff ; end
+
+; ================
+
+	; BUG_CATCHER (34)
+	db "Abner@"
+	db 0 ; normal
+
+	; party
+	db 44, BUTTERFREE
+	db 44, BEEDRILL
+	db 44, PIKACHU
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

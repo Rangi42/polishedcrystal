@@ -25,7 +25,6 @@
 	const EVENT_GOT_HM04_STRENGTH
 	const EVENT_GOT_HM05_FLASH
 	const EVENT_GOT_HM06_WHIRLPOOL
-	const EVENT_016
 	const EVENT_GOT_OLD_ROD
 	const EVENT_GOT_GOOD_ROD
 	const EVENT_GOT_SUPER_ROD
@@ -62,8 +61,6 @@
 	const EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	const EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
 	const EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	const EVENT_03B
-	const EVENT_03C
 	const EVENT_HEALED_MOOMOO
 	const EVENT_GOT_TM13_SNORE_FROM_MOOMOO_FARM
 	const EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
@@ -133,9 +130,6 @@
 	const EVENT_TIN_TOWER_5F_HIDDEN_FULL_RESTORE
 	const EVENT_TIN_TOWER_5F_HIDDEN_CARBOS
 	const EVENT_BURNED_TOWER_1F_HIDDEN_ETHER ; 080
-	const EVENT_081
-	const EVENT_082
-	const EVENT_083
 	const EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 	const EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 	const EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
@@ -199,12 +193,6 @@
 	const EVENT_GAVE_GS_BALL_TO_KURT
 	const EVENT_FOREST_IS_RESTLESS
 	const EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
-	const EVENT_0C2
-	const EVENT_0C3
-	const EVENT_0C4
-	const EVENT_0C5
-	const EVENT_0C6
-	const EVENT_0C7
 ; Kanto story events
 	const EVENT_GOT_NUGGET_FROM_GUY
 	const EVENT_RETURNED_MACHINE_PART
@@ -244,10 +232,11 @@
 	const EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 	const EVENT_VERMILION_PORT_HIDDEN_IRON
 	const EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
-	const EVENT_ROUTE_2_HIDDEN_MAX_ETHER
-	const EVENT_ROUTE_2_HIDDEN_FULL_HEAL
-	const EVENT_ROUTE_2_HIDDEN_FULL_RESTORE
-	const EVENT_ROUTE_2_HIDDEN_REVIVE
+	const EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER
+	const EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL
+	const EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_RESTORE
+	const EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
+	const EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 	const EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 	const EVENT_ROUTE_9_HIDDEN_ETHER
 	const EVENT_ROUTE_12_HIDDEN_ELIXER
@@ -268,346 +257,6 @@
 	const EVENT_DANA_GAVE_THUNDERSTONE
 	const EVENT_TULLY_GAVE_WATER_STONE
 	const EVENT_TIFFANY_GAVE_PINK_BOW
-; ???
-	const EVENT_105
-	const EVENT_106
-	const EVENT_107
-	const EVENT_108
-	const EVENT_109
-	const EVENT_10A
-	const EVENT_10B
-	const EVENT_10C
-	const EVENT_10D
-	const EVENT_10E
-	const EVENT_10F
-	const EVENT_110
-	const EVENT_111
-	const EVENT_112
-	const EVENT_113
-	const EVENT_114
-	const EVENT_115
-	const EVENT_116
-	const EVENT_117
-	const EVENT_118
-	const EVENT_119
-	const EVENT_11A
-	const EVENT_11B
-	const EVENT_11C
-	const EVENT_11D
-	const EVENT_11E
-	const EVENT_11F
-	const EVENT_120
-	const EVENT_121
-	const EVENT_122
-	const EVENT_123
-	const EVENT_124
-	const EVENT_125
-	const EVENT_126
-	const EVENT_127
-	const EVENT_128
-	const EVENT_129
-	const EVENT_12A
-	const EVENT_12B
-	const EVENT_12C
-	const EVENT_12D
-	const EVENT_12E
-	const EVENT_12F
-	const EVENT_130
-	const EVENT_131
-	const EVENT_132
-	const EVENT_133
-	const EVENT_134
-	const EVENT_135
-	const EVENT_136
-	const EVENT_137
-	const EVENT_138
-	const EVENT_139
-	const EVENT_13A
-	const EVENT_13B
-	const EVENT_13C
-	const EVENT_13D
-	const EVENT_13E
-	const EVENT_13F
-	const EVENT_140
-	const EVENT_141
-	const EVENT_142
-	const EVENT_143
-	const EVENT_144
-	const EVENT_145
-	const EVENT_146
-	const EVENT_147
-	const EVENT_148
-	const EVENT_149
-	const EVENT_14A
-	const EVENT_14B
-	const EVENT_14C
-	const EVENT_14D
-	const EVENT_14E
-	const EVENT_14F
-	const EVENT_150
-	const EVENT_151
-	const EVENT_152
-	const EVENT_153
-	const EVENT_154
-	const EVENT_155
-	const EVENT_156
-	const EVENT_157
-	const EVENT_158
-	const EVENT_159
-	const EVENT_15A
-	const EVENT_15B
-	const EVENT_15C
-	const EVENT_15D
-	const EVENT_15E
-	const EVENT_15F
-	const EVENT_160
-	const EVENT_161
-	const EVENT_162
-	const EVENT_163
-	const EVENT_164
-	const EVENT_165
-	const EVENT_166
-	const EVENT_167
-	const EVENT_168
-	const EVENT_169
-	const EVENT_16A
-	const EVENT_16B
-	const EVENT_16C
-	const EVENT_16D
-	const EVENT_16E
-	const EVENT_16F
-	const EVENT_170
-	const EVENT_171
-	const EVENT_172
-	const EVENT_173
-	const EVENT_174
-	const EVENT_175
-	const EVENT_176
-	const EVENT_177
-	const EVENT_178
-	const EVENT_179
-	const EVENT_17A
-	const EVENT_17B
-	const EVENT_17C
-	const EVENT_17D
-	const EVENT_17E
-	const EVENT_17F
-	const EVENT_180
-	const EVENT_181
-	const EVENT_182
-	const EVENT_183
-	const EVENT_184
-	const EVENT_185
-	const EVENT_186
-	const EVENT_187
-	const EVENT_188
-	const EVENT_189
-	const EVENT_18A
-	const EVENT_18B
-	const EVENT_18C
-	const EVENT_18D
-	const EVENT_18E
-	const EVENT_18F
-	const EVENT_190
-	const EVENT_191
-	const EVENT_192
-	const EVENT_193
-	const EVENT_194
-	const EVENT_195
-	const EVENT_196
-	const EVENT_197
-	const EVENT_198
-	const EVENT_199
-	const EVENT_19A
-	const EVENT_19B
-	const EVENT_19C
-	const EVENT_19D
-	const EVENT_19E
-	const EVENT_19F
-	const EVENT_1A0
-	const EVENT_1A1
-	const EVENT_1A2
-	const EVENT_1A3
-	const EVENT_1A4
-	const EVENT_1A5
-	const EVENT_1A6
-	const EVENT_1A7
-	const EVENT_1A8
-	const EVENT_1A9
-	const EVENT_1AA
-	const EVENT_1AB
-	const EVENT_1AC
-	const EVENT_1AD
-	const EVENT_1AE
-	const EVENT_1AF
-	const EVENT_1B0
-	const EVENT_1B1
-	const EVENT_1B2
-	const EVENT_1B3
-	const EVENT_1B4
-	const EVENT_1B5
-	const EVENT_1B6
-	const EVENT_1B7
-	const EVENT_1B8
-	const EVENT_1B9
-	const EVENT_1BA
-	const EVENT_1BB
-	const EVENT_1BC
-	const EVENT_1BD
-	const EVENT_1BE
-	const EVENT_1BF
-	const EVENT_1C0
-	const EVENT_1C1
-	const EVENT_1C2
-	const EVENT_1C3
-	const EVENT_1C4
-	const EVENT_1C5
-	const EVENT_1C6
-	const EVENT_1C7
-	const EVENT_1C8
-	const EVENT_1C9
-	const EVENT_1CA
-	const EVENT_1CB
-	const EVENT_1CC
-	const EVENT_1CD
-	const EVENT_1CE
-	const EVENT_1CF
-	const EVENT_1D0
-	const EVENT_1D1
-	const EVENT_1D2
-	const EVENT_1D3
-	const EVENT_1D4
-	const EVENT_1D5
-	const EVENT_1D6
-	const EVENT_1D7
-	const EVENT_1D8
-	const EVENT_1D9
-	const EVENT_1DA
-	const EVENT_1DB
-	const EVENT_1DC
-	const EVENT_1DD
-	const EVENT_1DE
-	const EVENT_1DF
-	const EVENT_1E0
-	const EVENT_1E1
-	const EVENT_1E2
-	const EVENT_1E3
-	const EVENT_1E4
-	const EVENT_1E5
-	const EVENT_1E6
-	const EVENT_1E7
-	const EVENT_1E8
-	const EVENT_1E9
-	const EVENT_1EA
-	const EVENT_1EB
-	const EVENT_1EC
-	const EVENT_1ED
-	const EVENT_1EE
-	const EVENT_1EF
-	const EVENT_1F0
-	const EVENT_1F1
-	const EVENT_1F2
-	const EVENT_1F3
-	const EVENT_1F4
-	const EVENT_1F5
-	const EVENT_1F6
-	const EVENT_1F7
-	const EVENT_1F8
-	const EVENT_1F9
-	const EVENT_1FA
-	const EVENT_1FB
-	const EVENT_1FC
-	const EVENT_1FD
-	const EVENT_1FE
-	const EVENT_1FF
-	const EVENT_200
-	const EVENT_201
-	const EVENT_202
-	const EVENT_203
-	const EVENT_204
-	const EVENT_205
-	const EVENT_206
-	const EVENT_207
-	const EVENT_208
-	const EVENT_209
-	const EVENT_20A
-	const EVENT_20B
-	const EVENT_20C
-	const EVENT_20D
-	const EVENT_20E
-	const EVENT_20F
-	const EVENT_210
-	const EVENT_211
-	const EVENT_212
-	const EVENT_213
-	const EVENT_214
-	const EVENT_215
-	const EVENT_216
-	const EVENT_217
-	const EVENT_218
-	const EVENT_219
-	const EVENT_21A
-	const EVENT_21B
-	const EVENT_21C
-	const EVENT_21D
-	const EVENT_21E
-	const EVENT_21F
-	const EVENT_220
-	const EVENT_221
-	const EVENT_222
-	const EVENT_223
-	const EVENT_224
-	const EVENT_225
-	const EVENT_226
-	const EVENT_227
-	const EVENT_228
-	const EVENT_229
-	const EVENT_22A
-	const EVENT_22B
-	const EVENT_22C
-	const EVENT_22D
-	const EVENT_22E
-	const EVENT_22F
-	const EVENT_230
-	const EVENT_231
-	const EVENT_232
-	const EVENT_233
-	const EVENT_234
-	const EVENT_235
-	const EVENT_236
-	const EVENT_237
-	const EVENT_238
-	const EVENT_239
-	const EVENT_23A
-	const EVENT_23B
-	const EVENT_23C
-	const EVENT_23D
-	const EVENT_23E
-	const EVENT_23F
-	const EVENT_240
-	const EVENT_241
-	const EVENT_242
-	const EVENT_243
-	const EVENT_244
-	const EVENT_245
-	const EVENT_246
-	const EVENT_247
-	const EVENT_248
-	const EVENT_249
-	const EVENT_24A
-	const EVENT_24B
-	const EVENT_24C
-	const EVENT_24D
-	const EVENT_24E
-	const EVENT_24F
-	const EVENT_250
-	const EVENT_251
-	const EVENT_252
-	const EVENT_253
-	const EVENT_254
-	const EVENT_255
-	const EVENT_256
-	const EVENT_257
 ; Kurt events
 	const EVENT_GAVE_KURT_RED_APRICORN
 	const EVENT_GAVE_KURT_BLU_APRICORN
@@ -846,175 +495,7 @@
 	const EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	const EVENT_MET_BUENA
 	const EVENT_GOT_ODD_EGG
-	const EVENT_33F
 	const EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-; ???
-	const EVENT_342
-	const EVENT_343
-	const EVENT_344
-	const EVENT_345
-	const EVENT_346
-	const EVENT_347
-	const EVENT_348
-	const EVENT_349
-	const EVENT_34A
-	const EVENT_34B
-	const EVENT_34C
-	const EVENT_34D
-	const EVENT_34E
-	const EVENT_34F
-	const EVENT_350
-	const EVENT_351
-	const EVENT_352
-	const EVENT_353
-	const EVENT_354
-	const EVENT_355
-	const EVENT_356
-	const EVENT_357
-	const EVENT_358
-	const EVENT_359
-	const EVENT_35A
-	const EVENT_35B
-	const EVENT_35C
-	const EVENT_35D
-	const EVENT_35E
-	const EVENT_35F
-	const EVENT_360
-	const EVENT_361
-	const EVENT_362
-	const EVENT_363
-	const EVENT_364
-	const EVENT_365
-	const EVENT_366
-	const EVENT_367
-	const EVENT_368
-	const EVENT_369
-	const EVENT_36A
-	const EVENT_36B
-	const EVENT_36C
-	const EVENT_36D
-	const EVENT_36E
-	const EVENT_36F
-	const EVENT_370
-	const EVENT_371
-	const EVENT_372
-	const EVENT_373
-	const EVENT_374
-	const EVENT_375
-	const EVENT_376
-	const EVENT_377
-	const EVENT_378
-	const EVENT_379
-	const EVENT_37A
-	const EVENT_37B
-	const EVENT_37C
-	const EVENT_37D
-	const EVENT_37E
-	const EVENT_37F
-	const EVENT_380
-	const EVENT_381
-	const EVENT_382
-	const EVENT_383
-	const EVENT_384
-	const EVENT_385
-	const EVENT_386
-	const EVENT_387
-	const EVENT_388
-	const EVENT_389
-	const EVENT_38A
-	const EVENT_38B
-	const EVENT_38C
-	const EVENT_38D
-	const EVENT_38E
-	const EVENT_38F
-	const EVENT_390
-	const EVENT_391
-	const EVENT_392
-	const EVENT_393
-	const EVENT_394
-	const EVENT_395
-	const EVENT_396
-	const EVENT_397
-	const EVENT_398
-	const EVENT_399
-	const EVENT_39A
-	const EVENT_39B
-	const EVENT_39C
-	const EVENT_39D
-	const EVENT_39E
-	const EVENT_39F
-	const EVENT_3A0
-	const EVENT_3A1
-	const EVENT_3A2
-	const EVENT_3A3
-	const EVENT_3A4
-	const EVENT_3A5
-	const EVENT_3A6
-	const EVENT_3A7
-	const EVENT_3A8
-	const EVENT_3A9
-	const EVENT_3AA
-	const EVENT_3AB
-	const EVENT_3AC
-	const EVENT_3AD
-	const EVENT_3AE
-	const EVENT_3AF
-	const EVENT_3B0
-	const EVENT_3B1
-	const EVENT_3B2
-	const EVENT_3B3
-	const EVENT_3B4
-	const EVENT_3B5
-	const EVENT_3B6
-	const EVENT_3B7
-	const EVENT_3B8
-	const EVENT_3B9
-	const EVENT_3BA
-	const EVENT_3BB
-	const EVENT_3BC
-	const EVENT_3BD
-	const EVENT_3BE
-	const EVENT_3BF
-	const EVENT_3C0
-	const EVENT_3C1
-	const EVENT_3C2
-	const EVENT_3C3
-	const EVENT_3C4
-	const EVENT_3C5
-	const EVENT_3C6
-	const EVENT_3C7
-	const EVENT_3C8
-	const EVENT_3C9
-	const EVENT_3CA
-	const EVENT_3CB
-	const EVENT_3CC
-	const EVENT_3CD
-	const EVENT_3CE
-	const EVENT_3CF
-	const EVENT_3D0
-	const EVENT_3D1
-	const EVENT_3D2
-	const EVENT_3D3
-	const EVENT_3D4
-	const EVENT_3D5
-	const EVENT_3D6
-	const EVENT_3D7
-	const EVENT_3D8
-	const EVENT_3D9
-	const EVENT_3DA
-	const EVENT_3DB
-	const EVENT_3DC
-	const EVENT_3DD
-	const EVENT_3DE
-	const EVENT_3DF
-	const EVENT_3E0
-	const EVENT_3E1
-	const EVENT_3E2
-	const EVENT_3E3
-	const EVENT_3E4
-	const EVENT_3E5
-	const EVENT_3E6
-	const EVENT_3E7
 ; Trainer Flags
 ; Swimmer F
 	const EVENT_BEAT_SWIMMERF_ELAINE
@@ -1094,8 +575,6 @@
 	const EVENT_BEAT_BURGLAR_DUNCAN
 	const EVENT_BEAT_BURGLAR_EDDIE
 	const EVENT_BEAT_BURGLAR_COREY
-; Unknown
-	const EVENT_430
 ; Biker
 	const EVENT_BEAT_BIKER_BENNY
 	const EVENT_BEAT_BIKER_KAZU
@@ -1286,8 +765,6 @@
 	const EVENT_BEAT_POKEFANF_BEVERLY2
 	const EVENT_BEAT_POKEFANF_BEVERLY3
 	const EVENT_BEAT_POKEFANF_GEORGIA
-; Unknown
-	const EVENT_4DE
 ; Kimono Girl
 	const EVENT_BEAT_KIMONO_GIRL_NAOKO
 	const EVENT_BEAT_KIMONO_GIRL_SAYO
@@ -1398,6 +875,11 @@
 	const EVENT_BEAT_BUG_CATCHER_DOUG
 	const EVENT_BEAT_BUG_CATCHER_ARNIE2
 	const EVENT_BEAT_BUG_CATCHER_ARNIE3
+	const EVENT_BEAT_BUG_CATCHER_DANE
+	const EVENT_BEAT_BUG_CATCHER_DION
+	const EVENT_BEAT_BUG_CATCHER_STACEY
+	const EVENT_BEAT_BUG_CATCHER_ELLIS
+	const EVENT_BEAT_BUG_CATCHER_ABNER
 ; Officer
 	const EVENT_BEAT_OFFICER_KEITH
 	const EVENT_BEAT_OFFICER_DIRK
@@ -1546,123 +1028,6 @@
 	const EVENT_BEAT_SAGE_GAKU
 	const EVENT_BEAT_SAGE_MASA
 	const EVENT_BEAT_SAGE_KOJI
-; ???
-	const EVENT_5CC
-	const EVENT_5CD
-	const EVENT_5CE
-	const EVENT_5CF
-	const EVENT_5D0
-	const EVENT_5D1
-	const EVENT_5D2
-	const EVENT_5D3
-	const EVENT_5D4
-	const EVENT_5D5
-	const EVENT_5D6
-	const EVENT_5D7
-	const EVENT_5D8
-	const EVENT_5D9
-	const EVENT_5DA
-	const EVENT_5DB
-	const EVENT_5DC
-	const EVENT_5DD
-	const EVENT_5DE
-	const EVENT_5DF
-	const EVENT_5E0
-	const EVENT_5E1
-	const EVENT_5E2
-	const EVENT_5E3
-	const EVENT_5E4
-	const EVENT_5E5
-	const EVENT_5E6
-	const EVENT_5E7
-	const EVENT_5E8
-	const EVENT_5E9
-	const EVENT_5EA
-	const EVENT_5EB
-	const EVENT_5EC
-	const EVENT_5ED
-	const EVENT_5EE
-	const EVENT_5EF
-	const EVENT_5F0
-	const EVENT_5F1
-	const EVENT_5F2
-	const EVENT_5F3
-	const EVENT_5F4
-	const EVENT_5F5
-	const EVENT_5F6
-	const EVENT_5F7
-	const EVENT_5F8
-	const EVENT_5F9
-	const EVENT_5FA
-	const EVENT_5FB
-	const EVENT_5FC
-	const EVENT_5FD
-	const EVENT_5FE
-	const EVENT_5FF
-	const EVENT_600
-	const EVENT_601
-	const EVENT_602
-	const EVENT_603
-	const EVENT_604
-	const EVENT_605
-	const EVENT_606
-	const EVENT_607
-	const EVENT_608
-	const EVENT_609
-	const EVENT_60A
-	const EVENT_60B
-	const EVENT_60C
-	const EVENT_60D
-	const EVENT_60E
-	const EVENT_60F
-	const EVENT_610
-	const EVENT_611
-	const EVENT_612
-	const EVENT_613
-	const EVENT_614
-	const EVENT_615
-	const EVENT_616
-	const EVENT_617
-	const EVENT_618
-	const EVENT_619
-	const EVENT_61A
-	const EVENT_61B
-	const EVENT_61C
-	const EVENT_61D
-	const EVENT_61E
-	const EVENT_61F
-	const EVENT_620
-	const EVENT_621
-	const EVENT_622
-	const EVENT_623
-	const EVENT_624
-	const EVENT_625
-	const EVENT_626
-	const EVENT_627
-	const EVENT_628
-	const EVENT_629
-	const EVENT_62A
-	const EVENT_62B
-	const EVENT_62C
-	const EVENT_62D
-	const EVENT_62E
-	const EVENT_62F
-	const EVENT_630
-	const EVENT_631
-	const EVENT_632
-	const EVENT_633
-	const EVENT_634
-	const EVENT_635
-	const EVENT_636
-	const EVENT_637
-	const EVENT_638
-	const EVENT_639
-	const EVENT_63A
-	const EVENT_63B
-	const EVENT_63C
-	const EVENT_63D
-	const EVENT_63E
-	const EVENT_63F
 ; Sprite visibility: When these events are cleared, the sprite becomes visible; when set, the sprite is hidden.
 ; The map script command macros `disappear` and `appear` set/clear these flags and immediately apply the effect on visibility.
 ; The map script command macros `setevent` and `clearevent` set/clear these flags, and their effects will be seen when the map is reloaded.
@@ -1846,7 +1211,6 @@
 	const EVENT_COPYCAT_2
 	const EVENT_GOLDENROD_SALE_OFF
 	const EVENT_GOLDENROD_SALE_ON
-	const EVENT_6F2
 	const EVENT_ILEX_FOREST_APPRENTICE
 	const EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	const EVENT_CHARCOAL_KILN_FARFETCH_D
