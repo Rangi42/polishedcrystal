@@ -1075,22 +1075,72 @@ LevelBallMultiplier:
 
 RepeatBallMultiplier:
 ; multiply catch rate by 3 if enemy mon is already in Pokédex
-	; TODO: implement Repeat Ball
+	ld a, [TempEnemyMonSpecies]
+	dec a
+	call CheckCaughtMon
+	ret z
+
+	ld a, b
+	add a
+	jr c, .max
+
+	add b
+	jr nc, .done
+.max
+	ld a, $ff
+.done
+	ld b, a
 	ret
 
 TimerBallMultiplier:
 ; multiply catch rate by (turns passed + 10) / 10, capped at 4
 	; TODO: implement Timer Ball
+	ld a, [wBattleTurnCounter]
+	cp 30
+	jr nc, .nocap
+	ld a, 30
+.nocap
+	add 10
+
 	ret
 
 QuickBallMultiplier:
 ; multiply catch rate by 4 on first turn
-	; TODO: implement Quick Ball
+	ld a, [wBattleTurnCounter]
+	cp 1
+	ret z
+
+	sla b
+	jr c, .max
+
+	sla b
+	ret nc
+
+.max
+	ld b, $ff
 	ret
 
 DuskBallMultiplier:
 ; multiply catch rate by 3.5 at night or in caves
-	; TODO: implement Dusk Ball
+	ld a, [wPermission]
+	cp CAVE
+	jr z, .dusk
+
+	ld a, [TimeOfDay]
+	cp 1 << NITE
+	jr z, .dusk
+
+	ret
+
+.dusk
+	ld a, b
+	srl a
+	add b
+	add b
+	add b
+	ld b, a
+	ret nc
+	ld b, $ff
 	ret
 
 ; These two texts were carried over from gen 1.
