@@ -380,6 +380,8 @@ wInitHourBuffer:: ; c61c
 wc626::
 	ds wc608 - @
 
+wBattleTurnCounter:: ds 1
+
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct ; c608
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct ; c60f
@@ -900,7 +902,7 @@ wPokedexDataEnd::
 
 wMiscEnd::
 
-wc7e8:: ds 22
+wc7e8:: ds 21
 
 SECTION "Overworld Map", WRAM0 [$c800]
 
