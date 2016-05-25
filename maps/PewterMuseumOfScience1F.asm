@@ -23,7 +23,20 @@ PewterMuseumOfScience1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 9
+	signpost 4, 11, SIGNPOST_READ, ObjectEvent
+	signpost 3, 2, SIGNPOST_READ, ObjectEvent
+	signpost 6, 2, SIGNPOST_READ, ObjectEvent
+	signpost 1, 12, SIGNPOST_READ, ObjectEvent
+	signpost 1, 13, SIGNPOST_READ, ObjectEvent
+	signpost 1, 14, SIGNPOST_READ, ObjectEvent
+	signpost 1, 15, SIGNPOST_READ, ObjectEvent
+	signpost 1, 16, SIGNPOST_READ, ObjectEvent
+	signpost 1, 17, SIGNPOST_READ, ObjectEvent
 
 .PersonEvents:
-	db 0
+	db 4
+	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_GRAMPS, 4, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
