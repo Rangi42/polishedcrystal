@@ -35,16 +35,16 @@ MapBattleTowerOutsideSignpost0Script:
 	jumptext BattleTowerOutsideText_UltimateChallenge
 
 BattleTowerOutsideUnusedText1:
-	text "Wow, the BATTLE"
-	line "TOWER is huge! My"
+	text "Wow, the Battle"
+	line "Tower is huge! My"
 
 	para "neck is tired from"
 	line "looking up at it."
 	done
 
 BattleTowerOutsideUnusedText2:
-	text "Wow, the BATTLE"
-	line "TOWER is huge!"
+	text "Wow, the Battle"
+	line "Tower is huge!"
 
 	para "Since there are a"
 	line "whole bunch of"
@@ -53,15 +53,15 @@ BattleTowerOutsideUnusedText2:
 	line "there must also be"
 
 	para "a wide variety of"
-	line "#MON."
+	line "#mon."
 	done
 
 BattleTowerOutsideYoungsterText:
-	text "Wow, the BATTLE"
-	line "TOWER is huge!"
+	text "Wow, the Battle"
+	line "Tower is huge!"
 
 	para "There must be many"
-	line "kinds of #MON"
+	line "kinds of #mon"
 	cont "in there!"
 	done
 
@@ -73,12 +73,12 @@ BattleTowerOutsideUnusedText3:
 	line "anything, I guess"
 
 	para "it must be for"
-	line "#MON battles."
+	line "#mon battles."
 	done
 
 BattleTowerOutsideBuenaText:
 	text "You can use only"
-	line "three #MON."
+	line "three #mon."
 
 	para "It's so hard to"
 	line "decide which three"
@@ -94,7 +94,7 @@ BattleTowerOutsideUnusedText4:
 
 	para "I'm never giving"
 	line "up until I become"
-	cont "a LEADER!"
+	cont "a Leader!"
 	done
 
 BattleTowerOutsideSailorText:
@@ -109,18 +109,18 @@ BattleTowerOutsideSailorText:
 	done
 
 BattleTowerOutsideText_BattleTower:
-	text "BATTLE TOWER"
+	text "Battle Tower"
 	done
 
 BattleTowerOutsideText_UltimateChallenge:
-	text "BATTLE TOWER"
+	text "Battle Tower"
 
 	para "Take the Ultimate"
 	line "Trainer Challenge!"
 	done
 
 BattleTowerOutsideText_DoorsClosed:
-	text "The BATTLE TOWER's"
+	text "The Battle Tower's"
 	line "doors are closed…"
 	done
 
