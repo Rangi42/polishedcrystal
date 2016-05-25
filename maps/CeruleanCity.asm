@@ -220,11 +220,10 @@ UnknownText_0x184275:
 	done
 
 UnknownText_0x1842a9:
-	text "There used to be a"
-	line "cave here that had"
-
-	para "horribly powerful"
-	line "#mon in it."
+	text "There's a cave"
+	line "here with scary-"
+	cont "powerful #mon"
+	cont "in it."
 	done
 
 UnknownText_0x1842ee:

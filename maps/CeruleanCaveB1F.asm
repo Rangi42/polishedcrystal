@@ -1,5 +1,7 @@
 const_value set 2
 	const CERULEAN_CAVE_MEWTWO
+	const CERULEANCAVEB1F_POKE_BALL1
+	const CERULEANCAVEB1F_POKE_BALL2
 
 CeruleanCaveB1F_MapScriptHeader:
 .MapTriggers:
@@ -7,6 +9,18 @@ CeruleanCaveB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+CeruleanCaveB1FMaxElixer:
+	itemball MAX_ELIXER
+
+CeruleanCaveB1FUltraBall:
+	itemball ULTRA_BALL
+
+CeruleanCaveB1FHiddenMaxRevive:
+	dwb EVENT_CERULEAN_CAVE_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
+
+CeruleanCaveB1FHiddenUltraBall:
+	dwb EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
 
 CeruleanCaveMewtwo:
 	faceplayer
@@ -30,8 +44,12 @@ CeruleanCaveB1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 6, 8, SIGNPOST_ITEM, CeruleanCaveB1FHiddenMaxRevive
+	signpost 11, 24, SIGNPOST_ITEM, CeruleanCaveB1FHiddenUltraBall
 
 .PersonEvents:
-	db 1
+	db 3
 	person_event SPRITE_MONSTER, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO
+	person_event SPRITE_POKE_BALL, 3, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCaveB1FMaxElixer, EVENT_CERULEAN_CAVE_B1F_MAX_ELIXER
+	person_event SPRITE_POKE_BALL, 9, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCaveB1FUltraBall, EVENT_CERULEAN_CAVE_B1F_ULTRA_BALL
