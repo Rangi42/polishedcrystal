@@ -241,6 +241,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Catch more Gen II Pokémon in Johto and Gen I in Kanto
      ([suggestions](http://www.serebiiforums.com/showthread.php?598425-Am-I-the-only-one-that-gets-mad-that))
       * Make Houndour, Murkrow, Sneasel, Misdreavus, and Larvitar available earlier
+   * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
 
 
 ## Long-term

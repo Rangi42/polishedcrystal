@@ -153,12 +153,14 @@ MAP_NONE   EQU 0
 	newgroup                                                    ;  6
 
 	mapgroup CINNABAR_POKECENTER_1F,                      4,  5 ;  1
-	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ;  3
-	mapgroup SEAFOAM_GYM,                                 4,  5 ;  4
-	mapgroup ROUTE_19,                                   18, 10 ;  5
-	mapgroup ROUTE_20,                                    9, 30 ;  6
-	mapgroup ROUTE_21,                                   18, 10 ;  7
-	mapgroup CINNABAR_ISLAND,                            11, 12 ;  8
+	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ;  2
+	mapgroup SEAFOAM_GYM,                                 4,  5 ;  3
+	mapgroup ROUTE_19,                                   18, 10 ;  4
+	mapgroup ROUTE_20,                                    9, 30 ;  5
+	mapgroup ROUTE_21,                                   18, 10 ;  6
+	mapgroup CINNABAR_ISLAND,                            11, 12 ;  7
+	mapgroup ROUTE_9,                                     9, 30 ;  8
+	mapgroup ROUTE_10_NORTH,                              9, 10 ;  9
 
 	newgroup                                                    ;  7
 
@@ -172,14 +174,12 @@ MAP_NONE   EQU 0
 	mapgroup POWER_PLANT,                                 9, 10 ; 10
 	mapgroup BILLS_HOUSE,                                 4,  4 ; 11
 	mapgroup ROUTE_4,                                     9, 20 ; 12
-	mapgroup ROUTE_9,                                     9, 30 ; 13
-	mapgroup ROUTE_10_NORTH,                              9, 10 ; 14
-	mapgroup ROUTE_24,                                    9, 10 ; 15
-	mapgroup ROUTE_25,                                    9, 30 ; 16
-	mapgroup CERULEAN_CITY,                              18, 20 ; 17
-	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 18
-	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 19
-	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 20
+	mapgroup ROUTE_24,                                    9, 10 ; 13
+	mapgroup ROUTE_25,                                    9, 30 ; 14
+	mapgroup CERULEAN_CITY,                              18, 20 ; 15
+	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 16
+	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 17
+	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 18
 
 	newgroup                                                    ;  8
 
@@ -248,18 +248,17 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 12
 
-	mapgroup ROUTE_6,                                     9, 10 ;  1
-	mapgroup ROUTE_11,                                    9, 20 ;  2
-	mapgroup VERMILION_CITY,                             18, 20 ;  3
-	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
-	mapgroup VERMILION_POKECENTER_1F,                     4,  5 ;  5
-	mapgroup POKEMON_FAN_CLUB,                            4,  5 ;  7
-	mapgroup VERMILION_MAGNET_TRAIN_SPEECH_HOUSE,         4,  4 ;  8
-	mapgroup VERMILION_MART,                              4,  6 ;  9
-	mapgroup VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE,  4,  4 ; 10
-	mapgroup VERMILION_GYM,                               9,  5 ; 11
-	mapgroup ROUTE_6_SAFFRON_GATE,                        4,  5 ; 12
-	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 13
+	mapgroup ROUTE_11,                                    9, 20 ;  1
+	mapgroup VERMILION_CITY,                             18, 20 ;  2
+	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  3
+	mapgroup VERMILION_POKECENTER_1F,                     4,  5 ;  4
+	mapgroup POKEMON_FAN_CLUB,                            4,  5 ;  5
+	mapgroup VERMILION_MAGNET_TRAIN_SPEECH_HOUSE,         4,  4 ;  6
+	mapgroup VERMILION_MART,                              4,  6 ;  7
+	mapgroup VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE,  4,  4 ;  8
+	mapgroup VERMILION_GYM,                               9,  5 ;  9
+	mapgroup ROUTE_6_SAFFRON_GATE,                        4,  5 ; 10
+	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 11
 
 	newgroup                                                    ; 13
 
@@ -325,7 +324,6 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 18
 
-	mapgroup ROUTE_8,                                     9, 20 ;  1
 	mapgroup ROUTE_12,                                   27, 10 ;  2
 	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  3
 	mapgroup LAVENDER_TOWN,                               9, 10 ;  4
@@ -357,7 +355,6 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 21
 
-	mapgroup ROUTE_7,                                     9, 10 ;  1
 	mapgroup ROUTE_16,                                    9, 10 ;  2
 	mapgroup ROUTE_17,                                   45, 10 ;  3
 	mapgroup CELADON_CITY,                               18, 20 ;  4
@@ -439,19 +436,22 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 25
 
 	mapgroup ROUTE_5,                                     9, 10 ;  1
-	mapgroup SAFFRON_CITY,                               18, 20 ;  2
-	mapgroup FIGHTING_DOJO,                               6,  5 ;  3
-	mapgroup SAFFRON_GYM,                                 9, 10 ;  4
-	mapgroup SAFFRON_MART,                                4,  6 ;  5
-	mapgroup SAFFRON_POKECENTER_1F,                       4,  5 ;  6
-	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ;  8
-	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ;  9
-	mapgroup SILPH_CO_1F,                                 4,  8 ; 10
-	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 11
-	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 12
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
-	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 14
-	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
+	mapgroup ROUTE_6,                                     9, 10 ;  2
+	mapgroup ROUTE_7,                                     9, 10 ;  3
+	mapgroup ROUTE_8,                                     9, 20 ;  4
+	mapgroup SAFFRON_CITY,                               18, 20 ;  5
+	mapgroup FIGHTING_DOJO,                               6,  5 ;  6
+	mapgroup SAFFRON_GYM,                                 9, 10 ;  7
+	mapgroup SAFFRON_MART,                                4,  6 ;  8
+	mapgroup SAFFRON_POKECENTER_1F,                       4,  5 ;  9
+	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ; 10
+	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ; 11
+	mapgroup SILPH_CO_1F,                                 4,  8 ; 12
+	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 13
+	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 14
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 15
+	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 16
+	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 17
 
 	newgroup                                                    ; 26
 
