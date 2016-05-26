@@ -366,7 +366,7 @@ EscapeRopeDesc:
 
 RepelDesc:
 	db   "Repels weak #-"
-	next "MON for 100 steps.@"
+	next "mon for 100 steps.@"
 
 MaxElixerDesc:
 	db   "Fully restores the"
@@ -453,11 +453,11 @@ GuardSpecDesc:
 
 SuperRepelDesc:
 	db   "Repels weak #-"
-	next "MON for 200 steps.@"
+	next "mon for 200 steps.@"
 
 MaxRepelDesc:
 	db   "Repels weak #-"
-	next "MON for 250 steps.@"
+	next "mon for 250 steps.@"
 
 DireHitDesc:
 	db   "Ups critical hit"
