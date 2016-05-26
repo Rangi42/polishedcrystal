@@ -110,6 +110,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Menu Account → Menu Captions
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
+   * Kanto has colored roofs
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
