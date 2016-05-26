@@ -160,15 +160,15 @@
 
 	map_header_2 CinnabarIsland, CINNABAR_ISLAND, $43, NORTH | EAST
 	connection north, ROUTE_21, Route21, 0, 0, 10, CINNABAR_ISLAND
-	connection east, ROUTE_20, Route20, 0, 0, 9, CINNABAR_ISLAND
+	connection east, ROUTE_20, Route20, 2, 0, 9, CINNABAR_ISLAND
 
 	map_header_2 Route20, ROUTE_20, $43, WEST | EAST
-	connection west, CINNABAR_ISLAND, CinnabarIsland, 0, 0, 9, ROUTE_20
-	connection east, ROUTE_19, Route19, -3, 6, 12, ROUTE_20
+	connection west, CINNABAR_ISLAND, CinnabarIsland, -2, 0, 11, ROUTE_20
+	connection east, ROUTE_19, Route19, -3, 8, 12, ROUTE_20
 
 	map_header_2 Route19, ROUTE_19, $43, NORTH | WEST
 	connection north, FUCHSIA_CITY, FuchsiaCity, 0, 0, 13, ROUTE_19
-	connection west, ROUTE_20, Route20, 9, 0, 9, ROUTE_19
+	connection west, ROUTE_20, Route20, 11, 0, 9, ROUTE_19
 
 	map_header_2 FuchsiaCity, FUCHSIA_CITY, $f, SOUTH | WEST | EAST
 	connection south, ROUTE_19, Route19, 0, 0, 10, FUCHSIA_CITY
@@ -176,12 +176,12 @@
 	connection east, ROUTE_15, Route15, 9, 0, 9, FUCHSIA_CITY
 
 	map_header_2 Route18, ROUTE_18, $43, WEST | EAST
-	connection west, ROUTE_17, Route17, -3, 35, 10, ROUTE_18
+	connection west, ROUTE_17, Route17, -3, 36, 10, ROUTE_18
 	connection east, FUCHSIA_CITY, FuchsiaCity, -3, 4, 14, ROUTE_18
 
 	map_header_2 Route17, ROUTE_17, $43, NORTH | EAST
 	connection north, ROUTE_16, Route16, 0, 0, 10, ROUTE_17
-	connection east, ROUTE_18, Route18, 38, 0, 9, ROUTE_17
+	connection east, ROUTE_18, Route18, 39, 0, 9, ROUTE_17
 
 	map_header_2 Route16, ROUTE_16, $f, SOUTH | EAST
 	connection south, ROUTE_17, Route17, 0, 0, 10, ROUTE_16

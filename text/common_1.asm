@@ -1307,7 +1307,7 @@ UnknownText_0x1bd34b::
 
 UnknownText_0x1bd39e::
 	text "Saving record…"
-	line "DON'T TURN OFF!"
+	line "Don't turn off!"
 	done
 
 UnknownText_0x1bd3be::

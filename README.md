@@ -54,6 +54,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Flaaffy on Routes 42 and 43
    * Wild Girafarig on Route 43
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
+   * Encounter Mewtwo in Cerulean Cave
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -76,8 +77,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Hold B to use Running Shoes
    * Eggs hatch at level 1
    * Added X Spcl. Def
-   * Restored the Goldenrod City PokéCom Center
    * Copied most trainer levels and rosters from HGSS
+   * Restored the Goldenrod City PokéCom Center from the Japanese version
+   * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
    * Added Bellchime Trail from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
@@ -108,6 +110,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Menu Account → Menu Captions
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
+   * Kanto has colored roofs
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
@@ -143,8 +146,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Catch all 251 Pokémon without trading:
    * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
    * Move Kangaskhan from Rock Tunnel to the Safari Zone
-   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos by the Power Plant, Moltres on Cinnabar Volcano) (like with the three beasts and the Rainbow Wing)
-   * Add Mewtwo to Cerulean Cave (open after 16 badges and rematching the Elite 4)
+   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing) (who should give it to you? Prof. Oak, Lance, Lawrence III?)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
@@ -174,9 +176,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Gameplay elements from future (or past) generations:
    * Add Leafeon and Glaceon in slots 252 and 253
    * Replace Cleffa and Igglybuff with Sylveon and Togekiss
-   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
-      * Tentative plan: {Lickitung, Delibird, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} become {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax}
-   * Restore locations from RBY (Viridian Forest, Pewter Museum, Cerulean Cave, Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
+   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff, Goldeen, Seaking} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
+      * Tentative plan: {Delibird, Sunkern, Sunflora, Lickitung, Goldeen, Seaking, Stantler} become {Weavile, Honchkrow, Mismagius, Munchlax, Yanmega, Mamoswine, Gliscor}
+   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Cinnabar Island, Pokémon Mansion, Seafoam Islands, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
@@ -188,7 +190,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Money loss formula from Gen III when whiting out
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
-   * Replace some Kanto music with RBY tracks
+   * Replace some Kanto music with RBY and HGSS tracks (Kanto locations, Mewtwo battle, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
@@ -196,6 +198,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
+   * Fix attacks hitting a Flying Pokémon
 * Aesthetic updates:
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
@@ -205,6 +208,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Better Substitute sprite
    * Low-pitched cries when fainting
    * Better Town Map without bold black borders (imitate landmarks from HGSS)
+   * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
@@ -227,15 +231,20 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Mew, Jolteon, Dugtrio, Articuno, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
-   * Battle Bill at some point (five Eeveelutions and Porygon)
+   * Battle Bill at some point (five Eeveelutions and Porygon) (show him the three legendary dogs and he'll theorize that they originated from Eeveelutions and wants to battle)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
-   * Also include Green/Leaf somewhere
+   * Also include Green/Leaf somewhere (Victory Road?)
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
+   * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
+   * Catch more Gen II Pokémon in Johto and Gen I in Kanto
+     ([suggestions](http://www.serebiiforums.com/showthread.php?598425-Am-I-the-only-one-that-gets-mad-that))
+      * Make Houndour, Murkrow, Sneasel, Misdreavus, and Larvitar available earlier
+   * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
 
 
 ## Long-term

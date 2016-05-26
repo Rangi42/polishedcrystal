@@ -292,14 +292,14 @@ UnknownText_0x1c0bbb::
 	text ""
 	line "@"
 	text_from_ram StringBuffer2
-	text "(S)?"
+	text "(s)?"
 	done
 
 UnknownText_0x1c0bd8::
 	text "Threw away"
 	line "@"
 	text_from_ram StringBuffer2
-	text "(S)."
+	text "(s)."
 	prompt
 
 UnknownText_0x1c0bee::
@@ -766,7 +766,7 @@ _KrissPCWithdrewItemsText::
 	text ""
 	line "@"
 	text_from_ram StringBuffer2
-	text "(S)."
+	text "(s)."
 	prompt
 
 _KrissPCNoRoomWithdrawText::

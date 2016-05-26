@@ -731,6 +731,10 @@ BallMultiplierFunctionTable:
 	dbw MOON_BALL,   MoonBallMultiplier
 	dbw LOVE_BALL,   LoveBallMultiplier
 	dbw PARK_BALL,   ParkBallMultiplier
+	dbw REPEAT_BALL, RepeatBallMultiplier
+	dbw TIMER_BALL,  TimerBallMultiplier
+	dbw QUICK_BALL,  QuickBallMultiplier
+	dbw DUSK_BALL,   DuskBallMultiplier
 	db $ff
 
 UltraBallMultiplier:
@@ -1066,6 +1070,76 @@ LevelBallMultiplier:
 	ret nc
 
 .max
+	ld b, $ff
+	ret
+
+RepeatBallMultiplier:
+; multiply catch rate by 3 if enemy mon is already in Pokédex
+	ld a, [TempEnemyMonSpecies]
+	dec a
+	call CheckCaughtMon
+	ret z
+
+	ld a, b
+	add a
+	jr c, .max
+
+	add b
+	jr nc, .done
+.max
+	ld a, $ff
+.done
+	ld b, a
+	ret
+
+TimerBallMultiplier:
+; multiply catch rate by (turns passed + 10) / 10, capped at 4
+	; TODO: implement Timer Ball
+	ld a, [wBattleTurnCounter]
+	cp 30
+	jr nc, .nocap
+	ld a, 30
+.nocap
+	add 10
+
+	ret
+
+QuickBallMultiplier:
+; multiply catch rate by 4 on first turn
+	ld a, [wBattleTurnCounter]
+	cp 1
+	ret z
+
+	sla b
+	jr c, .max
+
+	sla b
+	ret nc
+
+.max
+	ld b, $ff
+	ret
+
+DuskBallMultiplier:
+; multiply catch rate by 3.5 at night or in caves
+	ld a, [wPermission]
+	cp CAVE
+	jr z, .dusk
+
+	ld a, [TimeOfDay]
+	cp 1 << NITE
+	jr z, .dusk
+
+	ret
+
+.dusk
+	ld a, b
+	srl a
+	add b
+	add b
+	add b
+	ld b, a
+	ret nc
 	ld b, $ff
 	ret
 

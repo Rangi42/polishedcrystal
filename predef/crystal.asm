@@ -246,8 +246,8 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .mansion_mobile
 	cp TILESET_BELLCHIME_TRAIL
 	jr z, .bellchime_trail
-	cp TILESET_CERULEAN_CAVE
-	jr z, .cerulean_cave
+	cp TILESET_SPECIAL_CAVE
+	jr z, .special_cave
 	jr .do_nothing
 
 .pokecom_2f
@@ -289,8 +289,8 @@ LoadSpecialMapPalette: ; 494ac
 	scf
 	ret
 
-.cerulean_cave
-	call LoadCeruleanCavePalette
+.special_cave
+	call LoadSpecialCavePalette
 	scf
 	ret
 
@@ -353,16 +353,34 @@ LoadBellchimeTrailPalette:
 BellchimeTrailPalette:
 INCLUDE "tilesets/bellchime_trail.pal"
 
-LoadCeruleanCavePalette:
+LoadSpecialCavePalette:
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	cp SILVER_CAVE
+	jr z, .SilverCave
+.CeruleanCave
 	ld a, $5
 	ld de, UnknBGPals
 	ld hl, CeruleanCavePalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
+.SilverCave
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, SilverCavePalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
 
 CeruleanCavePalette:
 INCLUDE "tilesets/cerulean_cave.pal"
+
+SilverCavePalette:
+INCLUDE "tilesets/silver_cave.pal"
 
 LoadHousePalette: ; 495df
 	ld a, $5

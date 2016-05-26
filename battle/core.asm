@@ -2,6 +2,7 @@
 BattleCore:
 DoBattle: ; 3c000
 	xor a
+	ld [wBattleTurnCounter], a
 	ld [wBattleParticipantsNotFainted], a
 	ld [wBattleParticipantsIncludingFainted], a
 	ld [wPlayerAction], a
@@ -187,6 +188,13 @@ BattleTurn: ; 3c12f
 	callba Function100dd8
 	jp c, .quit
 .not_disconnected
+
+	ld a, [wBattleTurnCounter]
+	cp a, $ff
+	jr z, .SkipIncrementingTurnCounter
+	inc a
+	ld [wBattleTurnCounter], a
+.SkipIncrementingTurnCounter
 
 	call CheckPlayerLockedIn
 	jr c, .skip_iteration

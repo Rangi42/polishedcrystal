@@ -190,8 +190,8 @@ UnknownText_0x1c454b::
 	done
 
 UnknownText_0x1c456d::
-	text "Saving… DON'T TURN"
-	line "OFF THE POWER."
+	text "Saving… Don't turn"
+	line "off the power!"
 	done
 
 UnknownText_0x1c4590::

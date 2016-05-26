@@ -27,14 +27,17 @@ CinnabarIslandBlue:
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
 
+CinnabarIslandPokeCenterSign:
+	jumpstd pokecentersign
+
 CinnabarIslandGymSign:
 	jumptext CinnabarIslandGymSignText
 
 CinnabarIslandSign:
 	jumptext CinnabarIslandSignText
 
-CinnabarIslandPokeCenterSign:
-	jumpstd pokecentersign
+CinnabarIslandVolcanoWarningSign:
+	jumptext CinnabarIslandVolcanoWarningSignText
 
 CinnabarIslandHiddenRareCandy:
 	dwb EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY, RARE_CANDY
@@ -129,24 +132,38 @@ CinnabarIslandSignText:
 	line "Burning Desire"
 	done
 
+CinnabarIslandVolcanoWarningSignText:
+	text "CAUTION"
+
+	para "Cinnabar Volcano"
+	line "is dormant, but"
+	cont "still active!"
+
+	para "Do not explore"
+	line "the volcano"
+	cont "without a means"
+	cont "of escape!"
+	done
+
 CinnabarIsland_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
 	db 1
-	warp_def $b, $b, 1, CINNABAR_POKECENTER_1F
+	warp_def $f, $b, 1, CINNABAR_POKECENTER_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 4
-	signpost 11, 12, SIGNPOST_READ, CinnabarIslandPokeCenterSign
-	signpost 11, 9, SIGNPOST_READ, CinnabarIslandGymSign
-	signpost 7, 7, SIGNPOST_READ, CinnabarIslandSign
-	signpost 1, 9, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
+	db 5
+	signpost 15, 12, SIGNPOST_READ, CinnabarIslandPokeCenterSign
+	signpost 15, 9, SIGNPOST_READ, CinnabarIslandGymSign
+	signpost 11, 9, SIGNPOST_READ, CinnabarIslandSign
+	signpost 11, 21, SIGNPOST_READ, CinnabarIslandVolcanoWarningSign
+	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_BLUE, 6, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR

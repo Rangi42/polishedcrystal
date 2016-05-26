@@ -138,7 +138,7 @@ UnreferencedScript_0x9f4f7:
 
 Text_ReturnedAfterSave_Mobile:
 	text "You'll be returned"
-	line "after you SAVE."
+	line "after you save."
 	done
 
 

@@ -45,7 +45,7 @@ UnknownText_0x19a3b3:
 	done
 
 UnknownText_0x19a418:
-	text "#MON do become"
+	text "#mon do become"
 	line "stronger when they"
 
 	para "evolve, but they"
