@@ -160,10 +160,10 @@
 
 	map_header_2 CinnabarIsland, CINNABAR_ISLAND, $43, NORTH | EAST
 	connection north, ROUTE_21, Route21, 0, 0, 10, CINNABAR_ISLAND
-	connection east, ROUTE_20, Route20, 0, 0, 9, CINNABAR_ISLAND
+	connection east, ROUTE_20, Route20, 2, 0, 9, CINNABAR_ISLAND
 
 	map_header_2 Route20, ROUTE_20, $43, WEST | EAST
-	connection west, CINNABAR_ISLAND, CinnabarIsland, 0, 0, 9, ROUTE_20
+	connection west, CINNABAR_ISLAND, CinnabarIsland, -2, 0, 11, ROUTE_20
 	connection east, ROUTE_19, Route19, -3, 6, 12, ROUTE_20
 
 	map_header_2 Route19, ROUTE_19, $43, NORTH | WEST

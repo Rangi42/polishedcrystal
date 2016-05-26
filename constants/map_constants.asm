@@ -158,7 +158,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_19,                                   18, 10 ;  5
 	mapgroup ROUTE_20,                                    9, 30 ;  6
 	mapgroup ROUTE_21,                                   18, 10 ;  7
-	mapgroup CINNABAR_ISLAND,                             9, 10 ;  8
+	mapgroup CINNABAR_ISLAND,                            11, 12 ;  8
 
 	newgroup                                                    ;  7
 
