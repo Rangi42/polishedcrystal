@@ -146,7 +146,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Catch all 251 Pokémon without trading:
    * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
    * Move Kangaskhan from Rock Tunnel to the Safari Zone
-   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing)
+   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing) (who should give it to you? Prof. Oak, Lance, Lawrence III?)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
@@ -231,7 +231,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Mew, Jolteon, Dugtrio, Articuno, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
-   * Battle Bill at some point (five Eeveelutions and Porygon)
+   * Battle Bill at some point (five Eeveelutions and Porygon) (show him the three legendary dogs and he'll theorize that they originated from Eeveelutions and wants to battle)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
    * Also include Green/Leaf somewhere (Victory Road?)
