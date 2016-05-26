@@ -116,7 +116,7 @@ BugCatcherDaneSeenText:
 	done
 
 BugCatcherDaneBeatenText:
-	text "That's wonderful..."
+	text "That's wonderful…"
 	done
 
 BugCatcherDaneAfterText:
@@ -134,7 +134,7 @@ BugCatcherDionSeenText:
 	done
 
 BugCatcherDionBeatenText:
-	text "Phew..."
+	text "Phew…"
 	done
 
 BugCatcherDionAfterText:
@@ -152,8 +152,8 @@ BugCatcherStaceySeenText:
 	text "Wow, that's a HUGE"
 	line "#mon!"
 
-	para "..."
-	line "...What kind of"
+	para "…"
+	line "…What kind of"
 	cont "Trainer?!"
 	done
 
@@ -197,7 +197,7 @@ BugCatcherAbnerSeenText:
 BugCatcherAbnerBeatenText:
 	text "Thanks for your"
 	line "hard work, my"
-	cont "lovely #mon..."
+	cont "lovely #mon…"
 	done
 
 BugCatcherAbnerAfterText:

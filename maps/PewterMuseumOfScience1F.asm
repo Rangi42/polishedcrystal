@@ -145,7 +145,7 @@ Museum1FBookshelfSignpostText:
 
 	para "Caring at the"
 	line "Loamy Layer of"
-	cont "Kanto..."
+	cont "Kanto…"
 	done
 
 PewterMuseumOfScience1F_MapEventHeader:

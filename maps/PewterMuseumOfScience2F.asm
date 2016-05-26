@@ -37,7 +37,7 @@ Museum2FScientistText:
 	line "on display."
 
 	para "It seems to emit"
-	line "strange energy..."
+	line "strange energy…"
 	done
 
 Museum2FYoungsterText:
@@ -96,7 +96,7 @@ Museum2FBookshelfSignpostText:
 
 	para "Caring at the"
 	line "Loamy Layer of"
-	cont "Kanto..."
+	cont "Kanto…"
 	done
 
 PewterMuseumOfScience2F_MapEventHeader:

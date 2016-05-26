@@ -146,7 +146,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Catch all 251 Pokémon without trading:
    * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
    * Move Kangaskhan from Rock Tunnel to the Safari Zone
-   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos by the Power Plant, Moltres on Cinnabar Volcano) (like with the three beasts and the Rainbow Wing)
+   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew

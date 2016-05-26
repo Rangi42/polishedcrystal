@@ -32,7 +32,7 @@ UnknownText_0x613c8::
 
 WonderTradeSetupText::
 	text "Searching for a"
-	line "trade partner..."
+	line "trade partner…"
 	prompt
 
 WonderTradeReadyText::

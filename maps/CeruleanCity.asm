@@ -234,7 +234,7 @@ UnknownText_0x1842ee:
 	done
 
 CeruleanCaveGuardText:
-	text "This is..."
+	text "This is…"
 
 	para "The notorious"
 	line "Cerulean Cave!"
