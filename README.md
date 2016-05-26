@@ -175,9 +175,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Gameplay elements from future (or past) generations:
    * Add Leafeon and Glaceon in slots 252 and 253
    * Replace Cleffa and Igglybuff with Sylveon and Togekiss
-   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
-      * Tentative plan: {Lickitung, Delibird, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff} become {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax}
-   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Safari Zone (for starters and Kangaskhan?), Cinnabar Island, Pokémon Mansion, Seafoam Islands, Lt.Surge's traps)
+   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff, Goldeen, Seaking} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
+      * Tentative plan: {Delibird, Sunkern, Sunflora, Lickitung, Goldeen, Seaking, Stantler} become {Weavile, Honchkrow, Mismagius, Munchlax, Yanmega, Mamoswine, Gliscor}
+   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Cinnabar Island, Pokémon Mansion, Seafoam Islands, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
@@ -232,12 +232,15 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Bill at some point (five Eeveelutions and Porygon)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
-   * Also include Green/Leaf somewhere
+   * Also include Green/Leaf somewhere (Victory Road?)
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
+   * Catch more Gen II Pokémon in Johto and Gen I in Kanto
+     ([suggestions](http://www.serebiiforums.com/showthread.php?598425-Am-I-the-only-one-that-gets-mad-that))
+      * Make Houndour, Murkrow, Sneasel, Misdreavus, and Larvitar available earlier
 
 
 ## Long-term
