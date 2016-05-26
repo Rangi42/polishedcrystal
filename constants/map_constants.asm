@@ -153,9 +153,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ;  6
 
 	mapgroup CINNABAR_POKECENTER_1F,                      4,  5 ;  1
-	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ;  2
 	mapgroup SEAFOAM_GYM,                                 4,  5 ;  3
-	mapgroup ROUTE_19,                                   18, 10 ;  4
 	mapgroup ROUTE_20,                                    9, 30 ;  5
 	mapgroup ROUTE_21,                                   18, 10 ;  6
 	mapgroup CINNABAR_ISLAND,                            11, 12 ;  7
@@ -271,7 +269,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                     9, 30 ;  1
+	mapgroup ROUTE_3,                                     9, 32 ;  1
 	mapgroup PEWTER_CITY,                                18, 20 ;  2
 	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  3
 	mapgroup PEWTER_GYM,                                  7,  5 ;  4
@@ -312,7 +310,6 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_13,                                    9, 30 ;  1
 	mapgroup ROUTE_14,                                   18, 10 ;  2
 	mapgroup ROUTE_15,                                    9, 20 ;  3
-	mapgroup ROUTE_18,                                    9, 10 ;  4
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  5
 	mapgroup FUCHSIA_MART,                                4,  6 ;  6
 	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  7
@@ -321,6 +318,8 @@ MAP_NONE   EQU 0
 	mapgroup FUCHSIA_POKECENTER_1F,                       4,  5 ; 10
 	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
 	mapgroup ROUTE_15_FUCHSIA_GATE,                       4,  5 ; 13
+	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ;  2
+	mapgroup ROUTE_19,                                   20, 10 ;  4
 
 	newgroup                                                    ; 18
 
@@ -356,7 +355,8 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 21
 
 	mapgroup ROUTE_16,                                    9, 10 ;  2
-	mapgroup ROUTE_17,                                   45, 10 ;  3
+	mapgroup ROUTE_17,                                   46, 10 ;  3
+	mapgroup ROUTE_18,                                    9, 10 ;  4
 	mapgroup CELADON_CITY,                               18, 20 ;  4
 	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  5
 	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  6
