@@ -156,11 +156,13 @@ MAP_NONE   EQU 0
 	mapgroup SEAFOAM_ISLANDS_1F,                          5, 12 ;  2
 	mapgroup SEAFOAM_GYM,                                 4,  5 ;  3
 	mapgroup SEAFOAM_ISLANDS_B1F,                        10, 20 ;  4
-	mapgroup ROUTE_20,                                    9, 30 ;  5
-	mapgroup ROUTE_21,                                   18, 10 ;  6
-	mapgroup CINNABAR_ISLAND,                            11, 12 ;  7
-	mapgroup ROUTE_9,                                     9, 30 ;  8
-	mapgroup ROUTE_10_NORTH,                              9, 10 ;  9
+	mapgroup SEAFOAM_ISLANDS_B2F,                        10, 20 ;  5
+	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6
+	mapgroup ROUTE_20,                                    9, 30 ;  7
+	mapgroup ROUTE_21,                                   18, 10 ;  8
+	mapgroup CINNABAR_ISLAND,                            11, 12 ;  9
+	mapgroup ROUTE_9,                                     9, 30 ;  10
+	mapgroup ROUTE_10_NORTH,                              9, 10 ;  11
 
 	newgroup                                                    ;  7
 

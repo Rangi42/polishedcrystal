@@ -24,3 +24,9 @@ SeafoamIslands1F_BlockData:
 
 SeafoamIslandsB1F_BlockData:
 	INCBIN "maps/SeafoamIslandsB1F.blk"
+
+SeafoamIslandsB2F_BlockData:
+	INCBIN "maps/SeafoamIslandsB2F.blk"
+
+SeafoamIslandsB3F_BlockData:
+	INCBIN "maps/SeafoamIslandsB3F.blk"
