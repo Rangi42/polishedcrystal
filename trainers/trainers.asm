@@ -3346,6 +3346,31 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM (21)
+	db "Abdul@"
+	db 0 ; normal
+
+	; party
+
+	db 53, STANTLER
+	db 52, TAUROS
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM (22)
+	db "Elan@"
+	db 0 ; normal
+
+	; party
+
+	db 55, PORYGON2
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3706,6 +3731,44 @@ CooltrainerFGroup:
 		db LEER
 		db WATERFALL
 		db TWISTER
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (22)
+	db "Salma@"
+	db 0 ; normal
+
+	; party
+
+	db 50, SLOWKING
+	db 53, LICKITUNG
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (23)
+	db "Bonita@"
+	db 0 ; normal
+
+	; party
+
+	db 50, GIRAFARIG
+	db 52, SUDOWOODO
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (24)
+	db "Ida@"
+	db 0 ; normal
+
+	; party
+
+	db 55, AZUMARILL
 
 	db $ff ; end
 

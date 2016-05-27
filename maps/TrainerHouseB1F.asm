@@ -1,6 +1,12 @@
 const_value set 2
-	const TRAINERHOUSEB1F_RECEPTIONIST
+	const TRAINERHOUSEB1F_RECEPTIONIST1
+	const TRAINERHOUSEB1F_RECEPTIONIST2
 	const TRAINERHOUSEB1F_CHRIS
+	const TRAINERHOUSEB1F_COOLTRAINERM1
+	const TRAINERHOUSEB1F_COOLTRAINERM2
+	const TRAINERHOUSEB1F_COOLTRAINERF1
+	const TRAINERHOUSEB1F_COOLTRAINERF2
+	const TRAINERHOUSEB1F_COOLTRAINERF3
 
 TrainerHouseB1F_MapScriptHeader:
 .MapTriggers:
@@ -15,7 +21,7 @@ TrainerHouseB1F_MapScriptHeader:
 Trigger0:
 	end
 
-TrainerHouseReceptionistScript:
+TrainerHouseReceptionist1Script:
 	spriteface PLAYER, UP
 	opentext
 	checkflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
@@ -113,6 +119,89 @@ Movement_TrainerHouseTurnBack:
 	turn_head_left
 	step_end
 
+TrainerHouseReceptionist2Script:
+	opentext
+	writetext TrainerHouseReceptionist2SignpostText
+	waitbutton
+	checkevent EVENT_BEAT_COOLTRAINERM_ABDUL
+	iffalse .Challenge
+	checkevent EVENT_BEAT_COOLTRAINERM_ELAN
+	iffalse .Challenge
+	checkevent EVENT_BEAT_COOLTRAINERF_SALMA
+	iffalse .Challenge
+	checkevent EVENT_BEAT_COOLTRAINERF_BONITA
+	iffalse .Challenge
+	checkevent EVENT_BEAT_COOLTRAINERF_IDA
+	iffalse .Challenge
+	checkevent EVENT_GOT_TRAINER_HOUSE_REWARD
+	iftrue .Finished
+	writetext TrainerHouseReceptionist2CongratulationsText
+	waitbutton
+	verbosegiveitem NUGGET
+	setevent EVENT_GOT_TRAINER_HOUSE_REWARD
+	jump .Finished
+.Challenge
+	writetext TrainerHouseReceptionist2ChallengeText
+	waitbutton
+.Finished
+	closetext
+	end
+
+TrainerCooltrainermAbdul:
+	trainer EVENT_BEAT_COOLTRAINERM_ABDUL, COOLTRAINERM, ABDUL, CooltrainermAbdulSeenText, CooltrainermAbdulBeatenText, 0, CooltrainermAbdulScript
+
+CooltrainermAbdulScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermAbdulAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainermElan:
+	trainer EVENT_BEAT_COOLTRAINERM_ELAN, COOLTRAINERM, ELAN, CooltrainermElanSeenText, CooltrainermElanBeatenText, 0, CooltrainermElanScript
+
+CooltrainermElanScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermElanAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfSalma:
+	trainer EVENT_BEAT_COOLTRAINERF_SALMA, COOLTRAINERF, SALMA, CooltrainerfSalmaSeenText, CooltrainerfSalmaBeatenText, 0, CooltrainerfSalmaScript
+
+CooltrainerfSalmaScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfSalmaAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfBonita:
+	trainer EVENT_BEAT_COOLTRAINERF_BONITA, COOLTRAINERF, BONITA, CooltrainerfBonitaSeenText, CooltrainerfBonitaBeatenText, 0, CooltrainerfBonitaScript
+
+CooltrainerfBonitaScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfBonitaAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfIda:
+	trainer EVENT_BEAT_COOLTRAINERF_IDA, COOLTRAINERF, IDA, CooltrainerfIdaSeenText, CooltrainerfIdaBeatenText, 0, CooltrainerfIdaScript
+
+CooltrainerfIdaScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfIdaAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerHouseB1FIntroText:
 	text "Hi. Welcome to our"
 	line "Training Hall."
@@ -171,6 +260,113 @@ TrainerHouseB1FCalBeforeText:
 	cont "could battle you."
 	done
 
+TrainerHouseReceptionist2SignpostText:
+	text "Hi. Welcome to our"
+	line "Training Hall."
+
+	para "The all-day arena"
+	line "is to your right."
+	done
+
+TrainerHouseReceptionist2ChallengeText:
+	text "See how well you"
+	line "do against some"
+	cont "top trainers!"
+	done
+
+TrainerHouseReceptionist2CongratulationsText:
+	text "Congratulations!"
+	line "Here's a prize for"
+	cont "your exellent"
+	cont "battling."
+	done
+
+CooltrainermAbdulSeenText:
+	text "Fight me and see"
+	line "how good I am!"
+	done
+
+CooltrainermAbdulBeatenText:
+	text "I was deceived!"
+	done
+
+CooltrainermAbdulAfterText:
+	text "Me, I should be"
+	line "a pretty good"
+	cont "practice partner…"
+	done
+
+CooltrainermElanSeenText:
+	text "Let's get this"
+	line "fight started!"
+	done
+
+CooltrainermElanBeatenText:
+	text "Well, this is"
+	line "surprising."
+	done
+
+CooltrainermElanAfterText:
+	text "You're stronger"
+	line "than I expected!"
+	done
+
+CooltrainerfSalmaSeenText:
+	text "What do you think?"
+
+	para "Isn't Viridian's"
+	line "Trainer House"
+	cont "wonderful?"
+	done
+
+CooltrainerfSalmaBeatenText:
+	text "Whatever!"
+	done
+
+CooltrainerfSalmaAfterText:
+	text "There are many ci-"
+	line "ties in the world,"
+	cont "but I really like"
+	cont "this one!"
+	done
+
+CooltrainerfBonitaSeenText:
+	text "Looking around the"
+	line "room, aren't you"
+	cont "impressed by all"
+	cont "the cool trainers?"
+	done
+
+CooltrainerfBonitaBeatenText:
+	text "All of my #mon"
+	line "are fainting…"
+	done
+
+CooltrainerfBonitaAfterText:
+	text "Looks like you've"
+	line "still got some"
+	cont "energy left."
+	done
+
+CooltrainerfIdaSeenText:
+	text "All right, come"
+	line "on and battle!"
+	done
+
+CooltrainerfIdaBeatenText:
+	text "Wow. You're really"
+	line "something."
+	done
+
+CooltrainerfIdaAfterText:
+	text "If all you have"
+	line "is strength, you"
+	cont "won't do well."
+
+	para "Strategy is also"
+	line "important!"
+	done
+
 TrainerHouseB1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -181,12 +377,19 @@ TrainerHouseB1F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $3, $7, $0, TrainerHouseReceptionistScript, $0, $0
+	xy_trigger 0, $3, $7, $0, TrainerHouseReceptionist1Script, $0, $0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 2, 12, SIGNPOST_READ, TrainerHouseReceptionist2Script
 
 .PersonEvents:
-	db 2
+	db 8
 	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_RECEPTIONIST, 1, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_COOLTRAINER_M, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainermAbdul, -1
+	person_event SPRITE_COOLTRAINER_M, 13, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainermElan, -1
+	person_event SPRITE_COOLTRAINER_F, 9, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainerfSalma, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainerfBonita, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainerfIda, -1

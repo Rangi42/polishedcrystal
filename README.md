@@ -135,6 +135,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
+   * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
 
 
 ## To do:

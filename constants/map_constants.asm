@@ -409,7 +409,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_GYM,                                9,  5 ;  4
 	mapgroup VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
 	mapgroup TRAINER_HOUSE_1F,                            7,  5 ;  6
-	mapgroup TRAINER_HOUSE_B1F,                           8,  5 ;  7
+	mapgroup TRAINER_HOUSE_B1F,                           8, 10 ;  7
 	mapgroup VIRIDIAN_MART,                               4,  6 ;  8
 	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  5 ;  9
 	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 11

@@ -223,8 +223,6 @@ INCLUDE "maps/EcruteakGym.asm"
 INCLUDE "maps/EcruteakItemfinderHouse.asm"
 INCLUDE "maps/ViridianGym.asm"
 INCLUDE "maps/ViridianNicknameSpeechHouse.asm"
-INCLUDE "maps/TrainerHouse1F.asm"
-INCLUDE "maps/TrainerHouseB1F.asm"
 INCLUDE "maps/ViridianMart.asm"
 INCLUDE "maps/ViridianPokeCenter1F.asm"
 INCLUDE "maps/Route2NuggetSpeechHouse.asm"
@@ -340,6 +338,8 @@ INCLUDE "maps/CharcoalKiln.asm"
 INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/KurtsHouse.asm"
 INCLUDE "maps/AzaleaGym.asm"
+INCLUDE "maps/TrainerHouse1F.asm"
+INCLUDE "maps/TrainerHouseB1F.asm"
 
 
 SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]
