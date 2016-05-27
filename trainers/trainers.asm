@@ -4235,6 +4235,18 @@ PokemaniacGroup:
 	db $ff ; end
 
 ; ================
+
+	; POKEMANIAC (16)
+	db "Moe@"
+	db 0 ; normal
+
+	; party
+	db 43, GLOOM
+	db 43, WEEPINBELL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -4668,6 +4680,17 @@ GentlemanGroup:
 
 	; party
 	db 22, NOCTOWL
+
+	db $ff ; end
+
+; ================
+
+	; GENTLEMAN (6)
+	db "Milton@"
+	db 0 ; normal
+
+	; party
+	db 45, GROWLITHE
 
 	db $ff ; end
 
@@ -9392,6 +9415,30 @@ TwinsGroup:
 		db TWISTER
 		db FLAMETHROWER
 		db HEADBUTT
+
+	db $ff ; end
+
+; ================
+
+	; TWINS (11)
+	db "Day & Dani@"
+	db 0 ; normal
+
+	; party
+	db 41, PIKACHU
+	db 41, PIKACHU
+
+	db $ff ; end
+
+; ================
+
+	; TWINS (12)
+	db "Day & Dani@"
+	db 0 ; normal
+
+	; party
+	db 41, PIKACHU
+	db 41, PIKACHU
 
 	db $ff ; end
 

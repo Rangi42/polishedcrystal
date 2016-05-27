@@ -249,6 +249,7 @@ KRIS EQU __enum__
 	const ZACH
 	const BRENT4
 	const MILLER
+	const MOE
 
 	trainerclass GRUNTM ; 1f
 
@@ -258,6 +259,7 @@ KRIS EQU __enum__
 	const GREGORY
 	const VIRGIL
 	const ALFRED
+	const MILTON
 
 	trainerclass SKIER ; 21
 	const ROXANNE
@@ -607,6 +609,8 @@ KRIS EQU __enum__
 	const MEGANDPEG2
 	const LEAANDPIA1
 	const LEAANDPIA2
+	const DAYANDDANI1
+	const DAYANDDANI2
 
 	trainerclass POKEFANF ; 3e
 	const BEVERLY1
