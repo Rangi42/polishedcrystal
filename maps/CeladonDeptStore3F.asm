@@ -58,11 +58,11 @@ UnknownText_0x70d53:
 	done
 
 UnknownText_0x70d86:
-	text "Uh-oh! I traded my"
-	line "#mon without"
+	text "I traded my"
+	line "#mon while"
 
-	para "removing the Up-"
-	line "Grade from it."
+	para "it was holding"
+	line "an Up-Grade."
 	done
 
 UnknownText_0x70dc7:
@@ -75,11 +75,9 @@ UnknownText_0x70dc7:
 	para "never get enough"
 	line "coins…"
 
-	para "…Huh?"
-
-	para "The traded Porygon"
-	line "turned into a dif-"
-	cont "ferent #mon!"
+	para "I'll raise it with"
+	line "an Up-Grade to"
+	cont "make it evolve!"
 	done
 
 UnknownText_0x70e61:
