@@ -6,6 +6,8 @@ const_value set 2
 	const ROUTE37_SUNNY
 	const ROUTE37_FRUIT_TREE2
 	const ROUTE37_FRUIT_TREE3
+	const ROUTE37_BEAUTY1
+	const ROUTE37_BEAUTY2
 
 Route37_MapScriptHeader:
 .MapTriggers:
@@ -100,6 +102,28 @@ SunnyDoneScript:
 
 SunnyNotSundayScript:
 	writetext SunnyNotSundayText
+	waitbutton
+	closetext
+	end
+
+TrainerBeautyCallie:
+	trainer EVENT_BEAT_BEAUTY_CALLIE, BEAUTY, CALLIE, BeautyCallieSeenText, BeautyCallieBeatenText, 0, BeautyCallieScript
+
+BeautyCallieScript:
+	end_if_just_battled
+	opentext
+	writetext BeautyCallieAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerBeautyCassandra:
+	trainer EVENT_BEAT_BEAUTY_CASSANDRA, BEAUTY, CASSANDRA, BeautyCassandraSeenText, BeautyCassandraBeatenText, 0, BeautyCassandraScript
+
+BeautyCassandraScript:
+	end_if_just_battled
+	opentext
+	writetext BeautyCassandraAfterText
 	waitbutton
 	closetext
 	end
@@ -237,6 +261,43 @@ SunnyNotSundayText:
 	cont "Um… I forgot!"
 	done
 
+BeautyCallieSeenText:
+	text "Oh, you're a cute"
+	line "little trainer!"
+
+	para "Why don't you"
+	line "battle me?"
+	done
+
+BeautyCallieBeatenText:
+	text "You're good…"
+	done
+
+BeautyCallieAfterText:
+	text "Wow, you're cute"
+	line "and skilled too!"
+	done
+
+BeautyCassandraSeenText:
+	text "Hey hey there,"
+	line "you young Trainer!"
+
+	para "Won't you battle"
+	line "with me?"
+	done
+
+BeautyCassandraBeatenText:
+	text "Wow, you're strong…"
+	done
+
+BeautyCassandraAfterText:
+	text "People like you"
+	line "are skilled even"
+
+	para "though they're"
+	line "young…"
+	done
+
 Route37SignText:
 	text "Route 37"
 	done
@@ -257,11 +318,13 @@ Route37_MapEventHeader:
 	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
 
 .PersonEvents:
-	db 7
+	db 9
 	person_event SPRITE_WEIRD_TREE, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsAnnandanne1, -1
 	person_event SPRITE_WEIRD_TREE, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsAnnandanne2, -1
-	person_event SPRITE_YOUNGSTER, 6, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerPsychicGreg, -1
+	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
 	person_event SPRITE_FRUIT_TREE, 5, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e09, -1
 	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
 	person_event SPRITE_FRUIT_TREE, 5, 16, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0b, -1
 	person_event SPRITE_FRUIT_TREE, 7, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0d, -1
+	person_event SPRITE_BUENA, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyCallie, -1
+	person_event SPRITE_BUENA, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyCassandra, -1

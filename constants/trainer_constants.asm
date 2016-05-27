@@ -117,6 +117,7 @@ KRIS EQU __enum__
 	const ALAN5
 	const CHAD4
 	const CHAD5
+	const SHERMAN
 
 	trainerclass BIRD_KEEPER ; 18
 	const ROD
@@ -183,6 +184,7 @@ KRIS EQU __enum__
 	const DARIN
 	const ABDUL
 	const ELAN
+	const FRENCH
 
 	trainerclass COOLTRAINERF ; 1c
 	const GWEN
@@ -228,6 +230,8 @@ KRIS EQU __enum__
 	const THERESA
 	const VALERIE
 	const OLIVIA
+	const CALLIE
+	const CASSANDRA
 
 	trainerclass POKEMANIAC ; 1e
 	const LARRY

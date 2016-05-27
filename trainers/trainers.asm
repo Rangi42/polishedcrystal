@@ -2386,6 +2386,18 @@ SchoolboyGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCHOOLBOY (25)
+	db "Sherman@"
+	db 0 ; normal
+
+	; party
+	db 43, FURRET
+	db 43, PIDGEOT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3371,6 +3383,19 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM (23)
+	db "French@"
+	db 0 ; normal
+
+	; party
+
+	db 47, HOUNDOOM
+	db 47, ALAKAZAM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3991,6 +4016,30 @@ BeautyGroup:
 
 	; party
 	db 19, CORSOLA
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY (18)
+	db "Callie@"
+	db 0 ; normal
+
+	; party
+	db 16, CLEFABLE
+	db 16, WIGGLYTUFF
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY (19)
+	db "Cassandra@"
+	db 0 ; normal
+
+	; party
+	db 16, CLEFABLE
+	db 16, WIGGLYTUFF
 
 	db $ff ; end
 
@@ -8967,7 +9016,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 43, QUAGSIRE, BERRY
+	db 43, QUAGSIRE, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8978,12 +9027,12 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8994,9 +9043,9 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 38, BULBASAUR, BERRY
-	db 38, CHARMANDER, BERRY
-	db 38, SQUIRTLE, BERRY
+	db 38, BULBASAUR, GOLD_BERRY
+	db 38, CHARMANDER, GOLD_BERRY
+	db 38, SQUIRTLE, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9007,7 +9056,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 42, PSYDUCK, BERRY
+	db 42, PSYDUCK, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9030,9 +9079,9 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 28, MEOWTH, BERRY
-	db 28, MEOWTH, BERRY
-	db 28, MEOWTH, BERRY
+	db 28, MEOWTH, GOLD_BERRY
+	db 28, MEOWTH, GOLD_BERRY
+	db 28, MEOWTH, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9043,7 +9092,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 40, DELIBIRD, BERRY
+	db 40, DELIBIRD, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9065,7 +9114,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 36, PIKACHU, BERRY
+	db 36, PIKACHU, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9090,7 +9139,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 43, PHANPY, BERRY
+	db 43, PHANPY, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9101,7 +9150,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 43, TEDDIURSA, BERRY
+	db 43, TEDDIURSA, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9392,7 +9441,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 30, GRANBULL, BERRY
+	db 30, GRANBULL, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9406,7 +9455,7 @@ PokefanFGroup:
 	db 23, SENTRET, BERRY
 	db 23, SENTRET, BERRY
 	db 23, SENTRET, BERRY
-	db 28, FURRET, BERRY
+	db 28, FURRET, GOLD_BERRY
 	db 23, SENTRET, BERRY
 
 	db $ff ; end
