@@ -54,6 +54,9 @@ SwimmermCameronScript:
 CinnabarGymSign:
 	jumptext CinnabarGymSignText
 
+SeafoamIslandsSign:
+	jumptext SeafoamIslandsSignText
+
 SwimmerfNicoleSeenText:
 	text "I feel so much"
 	line "lighter in water."
@@ -108,11 +111,17 @@ UnknownText_0x1ace8b:
 	done
 
 CinnabarGymSignText:
-	text "What does this"
-	line "sign say?"
+	text "Seafoam Islands"
+
+	para "…What does this"
+	line "notice say?"
 
 	para "Cinnabar Gym"
 	line "Leader: Blaine"
+	done
+
+SeafoamIslandsSignText:
+	text "Seafoam Islands"
 	done
 
 Route20_MapEventHeader:
@@ -120,15 +129,17 @@ Route20_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 1
-	warp_def $7, $26, 1, SEAFOAM_GYM
+	db 2
+	warp_def $9, $26, 1, SEAFOAM_ISLANDS_1F
+	warp_def $5, $1e, 4, SEAFOAM_ISLANDS_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 1
+	db 2
 	signpost 11, 37, SIGNPOST_READ, CinnabarGymSign
+	signpost 7, 33, SIGNPOST_READ, SeafoamIslandsSign
 
 .PersonEvents:
 	db 3

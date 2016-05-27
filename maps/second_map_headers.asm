@@ -397,7 +397,9 @@
 	map_header_2 MoveDeletersHouse, MOVE_DELETERS_HOUSE, $0, 0
 	map_header_2 CinnabarPokeCenter1F, CINNABAR_POKECENTER_1F, $0, 0
 	map_header_2 Route19FuchsiaGate, ROUTE_19___FUCHSIA_GATE, $0, 0
+	map_header_2 SeafoamIslands1F, SEAFOAM_ISLANDS_1F, $9, 0
 	map_header_2 SeafoamGym, SEAFOAM_GYM, $9, 0
+	map_header_2 SeafoamIslandsB1F, SEAFOAM_ISLANDS_B1F, $9, 0
 	map_header_2 CeruleanGymBadgeSpeechHouse, CERULEAN_GYM_BADGE_SPEECH_HOUSE, $0, 0
 	map_header_2 CeruleanPoliceStation, CERULEAN_POLICE_STATION, $0, 0
 	map_header_2 CeruleanTradeSpeechHouse, CERULEAN_TRADE_SPEECH_HOUSE, $0, 0

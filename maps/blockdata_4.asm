@@ -18,3 +18,9 @@ CeruleanCave2F_BlockData:
 
 CeruleanCaveB1F_BlockData:
 	INCBIN "maps/CeruleanCaveB1F.blk"
+
+SeafoamIslands1F_BlockData:
+	INCBIN "maps/SeafoamIslands1F.blk"
+
+SeafoamIslandsB1F_BlockData:
+	INCBIN "maps/SeafoamIslandsB1F.blk"
