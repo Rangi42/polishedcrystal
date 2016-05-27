@@ -335,7 +335,6 @@ KRIS EQU __enum__
 	const SETH
 	const JAMES
 	const LEWIS
-	const PARKER
 
 	trainerclass SWIMMERF ; 27
 	const ELAINE
@@ -357,6 +356,7 @@ KRIS EQU __enum__
 	const NIKKI
 	const DIANA
 	const BRIANA
+	const JOY
 
 	trainerclass SAILOR ; 28
 	const EUGENE
@@ -372,6 +372,8 @@ KRIS EQU __enum__
 	const HUEY2
 	const HUEY3
 	const HUEY4
+	const PARKER
+	const EDDIE_SAILOR
 
 	trainerclass SUPER_NERD ; 29
 	const STAN
@@ -418,6 +420,7 @@ KRIS EQU __enum__
 	const PARRY3
 	const ANTHONY4
 	const ANTHONY5
+	const EDWIN
 
 	trainerclass BIKER ; 2d
 	const BIKER_BENNY

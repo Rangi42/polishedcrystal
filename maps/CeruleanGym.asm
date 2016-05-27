@@ -3,7 +3,9 @@ const_value set 2
 	const CERULEANGYM_MISTY
 	const CERULEANGYM_SWIMMER_GIRL1
 	const CERULEANGYM_SWIMMER_GIRL2
-	const CERULEANGYM_SWIMMER_GUY
+	const CERULEANGYM_SWIMMER_GIRL3
+	const CERULEANGYM_SAILOR1
+	const CERULEANGYM_SAILOR2
 	const CERULEANGYM_GYM_GUY
 
 CeruleanGym_MapScriptHeader:
@@ -74,8 +76,10 @@ MistyScript_0x188432:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MISTY
 	setevent EVENT_BEAT_SWIMMERF_DIANA
+	setevent EVENT_BEAT_SWIMMERF_JOY
 	setevent EVENT_BEAT_SWIMMERF_BRIANA
-	setevent EVENT_BEAT_SWIMMERM_PARKER
+	setevent EVENT_BEAT_SAILOR_PARKER
+	setevent EVENT_BEAT_SAILOR_EDDIE
 	opentext
 	writetext UnknownText_0x188768
 	playsound SFX_GET_BADGE
@@ -98,6 +102,17 @@ SwimmerfDianaScript:
 	closetext
 	end
 
+TrainerSwimmerfJoy:
+	trainer EVENT_BEAT_SWIMMERF_JOY, SWIMMERF, JOY, SwimmerfJoySeenText, SwimmerfJoyBeatenText, 0, SwimmerfJoyScript
+
+SwimmerfJoyScript:
+	end_if_just_battled
+	opentext
+	writetext SwimmerfJoyAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerSwimmerfBriana:
 	trainer EVENT_BEAT_SWIMMERF_BRIANA, SWIMMERF, BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
 
@@ -109,13 +124,24 @@ SwimmerfBrianaScript:
 	closetext
 	end
 
-TrainerSwimmermParker:
-	trainer EVENT_BEAT_SWIMMERM_PARKER, SWIMMERM, PARKER, SwimmermParkerSeenText, SwimmermParkerBeatenText, 0, SwimmermParkerScript
+TrainerSailorParker:
+	trainer EVENT_BEAT_SAILOR_PARKER, SAILOR, PARKER, SailorParkerSeenText, SailorParkerBeatenText, 0, SailorParkerScript
 
-SwimmermParkerScript:
+SailorParkerScript:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x188943
+	writetext SailorParkerAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSailorEddie:
+	trainer EVENT_BEAT_SAILOR_EDDIE, SAILOR, EDDIE_SAILOR, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
+
+SailorEddieScript:
+	end_if_just_battled
+	opentext
+	writetext SailorEddieAfterText
 	waitbutton
 	closetext
 	end
@@ -304,6 +330,28 @@ UnknownText_0x188856:
 	line "quietly."
 	done
 
+SwimmerfJoySeenText:
+	text "Swimming isn't"
+	line "just about speed!"
+
+	para "It's also about"
+	line "beauty and grace!"
+	done
+
+SwimmerfJoyBeatenText:
+	text "I lost"
+	line "beautifully…"
+	done
+
+SwimmerfJoyAfterText:
+	text "Swimming is good"
+	line "for both beauty"
+	cont "and health!"
+
+	para "Just look at"
+	line "Misty, you'll see."
+	done
+
 SwimmerfBrianaSeenText:
 	text "Don't let my ele-"
 	line "gant swimming un-"
@@ -324,18 +372,16 @@ UnknownText_0x1888c0:
 	cont "complacent."
 	done
 
-SwimmermParkerSeenText:
-	text "Glub…"
-
-	para "I'm first! Come"
+SailorParkerSeenText:
+	text "Alright! Come"
 	line "and get me!"
 	done
 
-SwimmermParkerBeatenText:
+SailorParkerBeatenText:
 	text "This can't be…"
 	done
 
-UnknownText_0x188943:
+SailorParkerAfterText:
 	text "Misty has gotten"
 	line "much better in the"
 	cont "past few years."
@@ -343,6 +389,26 @@ UnknownText_0x188943:
 	para "Don't let your"
 	line "guard down, or"
 	cont "you'll be crushed!"
+	done
+
+SailorEddieSeenText:
+	text "I've been relaxing"
+	line "poolside, so"
+	cont "I've got enough"
+	cont "strength!"
+	done
+
+SailorEddieBeatenText:
+	text "You can't win with"
+	line "strength alone."
+	done
+
+SailorEddieAfterText:
+	text "Hey, let's go for"
+	line "a swim!"
+
+	para "Sailors have to"
+	line "be able to swim!"
 	done
 
 CeruleanGymGuyText:
@@ -384,10 +450,12 @@ CeruleanGym_MapEventHeader:
 	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
 
 .PersonEvents:
-	db 6
+	db 8
 	person_event SPRITE_ROCKET, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
 	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GUY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermParker, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJoy, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SAILOR, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM

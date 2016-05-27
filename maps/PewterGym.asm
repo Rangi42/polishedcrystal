@@ -1,6 +1,7 @@
 const_value set 2
 	const PEWTERGYM_BROCK
 	const PEWTERGYM_YOUNGSTER
+	const PEWTERGYM_POKEFAN_M
 	const PEWTERGYM_GYM_GUY
 
 PewterGym_MapScriptHeader:
@@ -24,6 +25,7 @@ BrockScript_0x1a2864:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BROCK
 	setevent EVENT_BEAT_CAMPER_JERRY
+	setevent EVENT_BEAT_HIKER_EDWIN
 	opentext
 	writetext UnknownText_0x1a2a3d
 	playsound SFX_GET_BADGE
@@ -47,6 +49,17 @@ CamperJerryScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1a2c0f
+	waitbutton
+	closetext
+	end
+
+TrainerHikerEdwin:
+	trainer EVENT_BEAT_HIKER_EDWIN, HIKER, EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText, 0, HikerEdwinScript
+
+HikerEdwinScript:
+	end_if_just_battled
+	opentext
+	writetext HikerEdwinAfterText
 	waitbutton
 	closetext
 	end
@@ -170,6 +183,19 @@ UnknownText_0x1a2c0f:
 	line "seriously."
 	done
 
+HikerEdwinSeenText:
+	text "R-r-r-R-R--CRASH!"
+	done
+
+HikerEdwinBeatenText:
+	text "BOOM!"
+	done
+
+HikerEdwinAfterText:
+	text "Phew… Broken"
+	line "in pieces."
+	done
+
 PewterGymGuyText:
 	text "Yo! Champ in"
 	line "making! You're"
@@ -219,7 +245,8 @@ PewterGym_MapEventHeader:
 	signpost 11, 7, SIGNPOST_READ, PewterGymStatue
 
 .PersonEvents:
-	db 3
+	db 4
 	person_event SPRITE_BROCK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrockScript_0x1a2864, -1
-	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperJerry, -1
+	person_event SPRITE_YOUNGSTER, 7, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperJerry, -1
+	person_event SPRITE_POKEFAN_M, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerEdwin, -1
 	person_event SPRITE_GYM_GUY, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, PewterGymGuyScript, -1

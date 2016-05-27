@@ -5678,19 +5678,6 @@ SwimmerMGroup:
 	db $ff ; end
 
 ; ================
-
-	; SWIMMERM (21)
-	db "Parker@"
-	db 0 ; normal
-
-	; party
-	db 43, HORSEA
-	db 43, HORSEA
-	db 45, SEADRA
-
-	db $ff ; end
-
-; ================
 ; ================================
 
 
@@ -5923,7 +5910,7 @@ SwimmerFGroup:
 	db 0 ; normal
 
 	; party
-	db 37, GOLDUCK
+	db 48, GOLDUCK
 
 	db $ff ; end
 
@@ -5936,6 +5923,17 @@ SwimmerFGroup:
 	; party
 	db 46, SEAKING
 	db 46, SEAKING
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF (20)
+	db "Joy@"
+	db 0 ; normal
+
+	; party
+	db 48, CLOYSTER
 
 	db $ff ; end
 
@@ -6120,6 +6118,29 @@ SailorGroup:
 		db STRENGTH
 		db ICE_PUNCH
 		db SUBMISSION
+
+	db $ff ; end
+
+; ================
+
+	; SAILOR (14)
+	db "Parker@"
+	db 0 ; normal
+
+	; party
+	db 43, HORSEA
+	db 45, SEADRA
+
+	db $ff ; end
+
+; ================
+
+	; SAILOR (15)
+	db "Eddie@"
+	db 0 ; normal
+
+	; party
+	db 48, AZUMARILL
 
 	db $ff ; end
 
@@ -6943,6 +6964,17 @@ HikerGroup:
 		db VITAL_THROW
 		db HEADBUTT
 		db DIG
+
+	db $ff ; end
+
+; ================
+
+	; HIKER (23)
+	db "Edwin@"
+	db 0 ; normal
+
+	; party
+	db 50, GOLEM
 
 	db $ff ; end
 
