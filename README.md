@@ -210,6 +210,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Low-pitched cries when fainting
    * Better Town Map without bold black borders (imitate landmarks from HGSS)
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
+   * Add lake in front of Sprout Tower from HGSS
+   * Add Magnet Train tracks to Route 32 from HGSS
+   * Add river to Route 46 from HGSS
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
