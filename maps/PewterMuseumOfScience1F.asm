@@ -23,13 +23,17 @@ Museum1FGrampsScript:
 Museum1FReceptionistDeskSignpostScript:
 	jumptext Museum1FReceptionistDeskSignpostText
 
-AerodactylFossilSignpostScript:
-	; TODO: show fossil sprite
-	jumptext AerodactylFossilSignpostText
-
 KabutopsFossilSignpostScript:
 	; TODO: show fossil sprite
 	jumptext KabutopsFossilSignpostText
+
+OmastarFossilSignpostScript:
+	; TODO: show fossil sprite
+	jumptext OmastarFossilSignpostText
+
+AerodactylFossilSignpostScript:
+	; TODO: show fossil sprite
+	jumptext AerodactylFossilSignpostText
 
 Museum1FBookshelfSignpostScript:
 	jumptext Museum1FBookshelfSignpostText
@@ -41,7 +45,7 @@ Museum1FReceptionistText:
 
 Museum1FScientistText:
 	text "We are proud of"
-	line "two fossils of"
+	line "three fossils of"
 	cont "rare, prehistoric"
 	cont "#mon!"
 	done
@@ -78,15 +82,24 @@ Museum1FReceptionistDeskSignpostText:
 	para "Please go ahead."
 	done
 
-AerodactylFossilSignpostText:
-	text "Aerodactyl Fossil"
+KabutopsFossilSignpostText:
+	text "Kabutops Fossil"
+	line "(Dome)"
 
 	para "A primitive and"
 	line "rare Pokémon."
 	done
 
-KabutopsFossilSignpostText:
-	text "Kabutops Fossil"
+OmastarFossilSignpostText:
+	text "Omastar Fossil"
+	line "(Helix)"
+
+	para "A primitive and"
+	line "rare Pokémon."
+	done
+
+AerodactylFossilSignpostText:
+	text "Aerodactyl Fossil"
 
 	para "A primitive and"
 	line "rare Pokémon."
@@ -121,10 +134,11 @@ PewterMuseumOfScience1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 9
+	db 10
 	signpost 4, 11, SIGNPOST_READ, Museum1FReceptionistDeskSignpostScript
-	signpost 3, 2, SIGNPOST_READ, AerodactylFossilSignpostScript
-	signpost 6, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
+	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
+	signpost 3, 4, SIGNPOST_READ, OmastarFossilSignpostScript
+	signpost 6, 2, SIGNPOST_READ, AerodactylFossilSignpostScript
 	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript
