@@ -227,6 +227,8 @@ Tileset29Anim: ; 0xfc233
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $31, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
+	dw VTiles2 tile $d8, AnimateWaterTile
+	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 ; 0xfc27f
 
