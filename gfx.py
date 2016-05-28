@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 """Supplementary scripts for graphics conversion."""
 
 import os
