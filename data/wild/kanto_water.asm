@@ -156,4 +156,10 @@
 	db 56, GOLDUCK
 	db 57, GYARADOS
 
+	map SEAFOAM_ISLANDS_B4F
+	db 6 percent ; encounter rate
+	db 30, SEEL
+	db 35, HORSEA
+	db 40, SLOWBRO
+
 	db -1 ; end
