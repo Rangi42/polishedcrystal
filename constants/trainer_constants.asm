@@ -611,6 +611,8 @@ KRIS EQU __enum__
 	const LEAANDPIA2
 	const DAYANDDANI1
 	const DAYANDDANI2
+	const KAYANDTIA1
+	const KAYANDTIA2
 
 	trainerclass POKEFANF ; 3e
 	const BEVERLY1
@@ -619,6 +621,8 @@ KRIS EQU __enum__
 	const BEVERLY3
 	const GEORGIA
 	const JAIME
+	const BOONE
+	const ELEANOR
 
 	trainerclass RED ; 3f
 

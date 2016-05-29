@@ -9443,6 +9443,30 @@ TwinsGroup:
 	db $ff ; end
 
 ; ================
+
+	; TWINS (13)
+	db "Kay & Tia@"
+	db 0 ; normal
+
+	; party
+	db 41, QUAGSIRE
+	db 41, QUAGSIRE
+
+	db $ff ; end
+
+; ================
+
+	; TWINS (14)
+	db "Kay & Tia@"
+	db 0 ; normal
+
+	; party
+	db 41, QUAGSIRE
+	db 41, QUAGSIRE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9515,6 +9539,30 @@ PokefanFGroup:
 
 	; party
 	db 16, MEOWTH, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; POKEFANF (7)
+	db "Boone@"
+	db 2 ; item
+
+	; party
+	db 43, AIPOM, GOLD_BERRY
+	db 41, WIGGLYTUFF, GOLD_BERRY
+
+	db $ff ; end
+
+; ================
+
+	; POKEFANF (8)
+	db "Eleanor@"
+	db 2 ; item
+
+	; party
+	db 43, AIPOM, GOLD_BERRY
+	db 41, CLEFABLE, GOLD_BERRY
 
 	db $ff ; end
 
