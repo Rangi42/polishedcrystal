@@ -219,6 +219,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Faster text by default
    * Stereo sound by default
    * Faster Surf speed
+   * Max 9,999,999 money and 99,999 coins
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
    * Send gift Pokémon to the PC if the party is full
