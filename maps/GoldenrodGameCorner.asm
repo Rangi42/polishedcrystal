@@ -155,7 +155,7 @@ GoldenrodGameCornerTMVendorMenuData:
 	db "TM25    5500@"
 	db "TM14    5500@"
 	db "TM38    5500@"
-	db "CANCEL@"
+	db "Cancel@"
 
 
 GoldenrodGameCornerPrizeMonVendorScript:
@@ -244,7 +244,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	db "Cubone      200@"
 	db "Clefairy    800@"
 	db "Wobbuffet  2100@"
-	db "CANCEL@"
+	db "Cancel@"
 
 
 GoldenrodGameCornerPharmacistScript:

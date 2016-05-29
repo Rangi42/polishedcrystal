@@ -792,13 +792,13 @@ PlaceMoneyDataHeader: ; 24b01
 	ld de, SCREEN_WIDTH + 1
 	add hl, de
 	ld de, Money
-	lb bc, PRINTNUM_MONEY | 3, 6
+	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	ret
 
 MenuDataHeader_0x24b15: ; 0x24b15
 	db $40 ; flags
-	db 00, 11 ; start coords
+	db 00, 10 ; start coords
 	db 02, 19 ; end coords
 	dw NULL
 	db 1 ; default option
@@ -806,7 +806,7 @@ MenuDataHeader_0x24b15: ; 0x24b15
 MenuDataHeader_0x24b1d: ; 0x24b1d
 	db $40 ; flags
 	db 11, 00 ; start coords
-	db 13, 08 ; end coords
+	db 13, 09 ; end coords
 	dw NULL
 	db 1 ; default option
 
@@ -823,7 +823,7 @@ Special_DisplayCoinCaseBalance: ; 24b25
 	ld de, ShowMoney_TerminatorString
 	call PlaceString
 	ld de, Coins
-	lb bc, 2, 4
+	lb bc, 2, 5
 	hlcoord 13, 1
 	call PrintNum
 	ret
@@ -836,21 +836,21 @@ Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	hlcoord 6, 1
 	ld de, MoneyString
 	call PlaceString
-	hlcoord 12, 1
+	hlcoord 11, 1
 	ld de, Money
-	lb bc, PRINTNUM_MONEY | 3, 6
+	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	hlcoord 6, 3
 	ld de, CoinString
 	call PlaceString
-	hlcoord 15, 3
+	hlcoord 14, 3
 	ld de, Coins
-	lb bc, 2, 4
+	lb bc, 2, 5
 	call PrintNum
 	ret
 
 MoneyString: ; 24b83
-	db "Money@"
+	db "Cash@"
 CoinString: ; 24b89
 	db "Coin@"
 ShowMoney_TerminatorString: ; 24b8e

@@ -76,6 +76,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
    * Eggs hatch at level 1
+   * Maximum $9,999,999 money and 50,000 coins
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
@@ -219,7 +220,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Faster text by default
    * Stereo sound by default
    * Faster Surf speed
-   * Max 9,999,999 money and 99,999 coins
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
    * Send gift Pokémon to the PC if the party is full

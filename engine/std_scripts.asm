@@ -1819,7 +1819,7 @@ CoinVendor_IntroScript: ; 0xbcde0
 ; 0xbcdf7
 
 .Buy50: ; 0xbcdf7
-	checkcoins 9949
+	checkcoins 49950
 	if_equal $0, .CoinCaseFull
 	checkmoney $0, 1000
 	if_equal $2, .NotEnoughMoney
@@ -1833,7 +1833,7 @@ CoinVendor_IntroScript: ; 0xbcde0
 ; 0xbce1b
 
 .Buy500: ; 0xbce1b
-	checkcoins 9499
+	checkcoins 49500
 	if_equal $0, .CoinCaseFull
 	checkmoney $0, 10000
 	if_equal $2, .NotEnoughMoney
