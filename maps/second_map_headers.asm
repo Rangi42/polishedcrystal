@@ -8,8 +8,8 @@
 
 	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
 	connection south, ROUTE_32, Route32, 0, 0, 10, VIOLET_CITY
-	connection west, ROUTE_36, Route36, 0, 0, 9, VIOLET_CITY
-	connection east, ROUTE_31, Route31, 9, 0, 9, VIOLET_CITY
+	connection west, ROUTE_36, Route36, 0, -3, 9, VIOLET_CITY
+	connection east, ROUTE_31, Route31, 12, 0, 9, VIOLET_CITY
 
 	map_header_2 AzaleaTown, AZALEA_TOWN, $5, WEST | EAST
 	connection west, ROUTE_34, Route34, -3, 15, 12, AZALEA_TOWN

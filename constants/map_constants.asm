@@ -209,7 +209,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_35,                                   18, 10 ;  2
 	mapgroup ROUTE_36,                                    9, 30 ;  3
 	mapgroup ROUTE_37,                                    9, 10 ;  4
-	mapgroup VIOLET_CITY,                                18, 20 ;  5
+	mapgroup VIOLET_CITY,                                21, 20 ;  5
 	mapgroup VIOLET_MART,                                 4,  6 ;  6
 	mapgroup VIOLET_GYM,                                  8,  5 ;  7
 	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  8
