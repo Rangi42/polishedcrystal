@@ -33,3 +33,6 @@ SeafoamIslandsB3F_BlockData:
 
 SeafoamIslandsB4F_BlockData:
 	INCBIN "maps/SeafoamIslandsB4F.blk"
+
+CliffEdgeGate_BlockData:
+	INCBIN "maps/CliffEdgeGate.blk"

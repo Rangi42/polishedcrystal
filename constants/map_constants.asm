@@ -403,6 +403,7 @@ MAP_NONE   EQU 0
 	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 14
 	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
 	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
+	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 17
 
 	newgroup                                                    ; 23
 

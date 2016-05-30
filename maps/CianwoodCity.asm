@@ -139,6 +139,9 @@ CianwoodPharmacySign:
 CianwoodPhotoStudioSign:
 	jumptext CianwoodPhotoStudioSignText
 
+CianwoodCliffEdgeGateSign:
+	jumptext CianwoodCliffEdgeGateSignText
+
 CianwoodPokeSeerSign:
 	jumptext CianwoodPokeSeerSignText
 
@@ -379,6 +382,13 @@ CianwoodPhotoStudioSignText:
 	line "a Keepsake!"
 	done
 
+CianwoodCliffEdgeGateSignText:
+	text "Cliff Edge Gate"
+
+	para "Yellow Forest is"
+	line "just ahead!"
+	done
+
 CianwoodPokeSeerSignText:
 	text "The # Seer"
 	line "Ahead"
@@ -389,7 +399,7 @@ CianwoodCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 7
+	db 8
 	warp_def $29, $11, 1, MANIAS_HOUSE
 	warp_def $2b, $8, 1, CIANWOOD_GYM
 	warp_def $2b, $17, 1, CIANWOOD_POKECENTER_1F
@@ -397,19 +407,21 @@ CianwoodCity_MapEventHeader:
 	warp_def $1f, $9, 1, CIANWOOD_CITY_PHOTO_STUDIO
 	warp_def $25, $f, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
 	warp_def $11, $5, 1, POKE_SEERS_HOUSE
+	warp_def $19, $4, 1, CLIFF_EDGE_GATE
 
 .XYTriggers:
 	db 1
 	xy_trigger 1, $10, $b, $0, UnknownScript_0x1a001e, $0, $0
 
 .Signposts:
-	db 8
+	db 9
 	signpost 34, 20, SIGNPOST_READ, CianwoodCitySign
 	signpost 45, 7, SIGNPOST_READ, CianwoodGymSign
 	signpost 43, 24, SIGNPOST_READ, CianwoodPokeCenterSign
 	signpost 47, 19, SIGNPOST_READ, CianwoodPharmacySign
 	signpost 32, 8, SIGNPOST_READ, CianwoodPhotoStudioSign
-	signpost 24, 8, SIGNPOST_READ, CianwoodPokeSeerSign
+	signpost 26, 6, SIGNPOST_READ, CianwoodCliffEdgeGateSign
+	signpost 22, 8, SIGNPOST_READ, CianwoodPokeSeerSign
 	signpost 19, 4, SIGNPOST_ITEM, CianwoodCityHiddenRevive
 	signpost 29, 5, SIGNPOST_ITEM, CianwoodCityHiddenMaxEther
 
@@ -420,8 +432,8 @@ CianwoodCity_MapEventHeader:
 	person_event SPRITE_LASS, 42, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a00b9, -1
 	person_event SPRITE_ROCK, 16, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	person_event SPRITE_ROCK, 17, 9, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
-	person_event SPRITE_ROCK, 25, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
-	person_event SPRITE_ROCK, 29, 5, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
+	person_event SPRITE_ROCK, 24, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
+	person_event SPRITE_ROCK, 29, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	person_event SPRITE_ROCK, 27, 10, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	person_event SPRITE_ROCK, 19, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	person_event SPRITE_POKEFAN_F, 46, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a0084, -1
