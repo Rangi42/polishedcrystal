@@ -918,4 +918,139 @@
 	db 57, RAICHU
 	db 60, DITTO
 
+	map SEAFOAM_ISLANDS_1F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 26, ZUBAT
+	db 30, GOLBAT
+	db 28, PSYDUCK
+	db 29, PSYDUCK
+	db 32, GOLDUCK
+	db 32, GOLDUCK
+	db 32, GOLDUCK
+	; day
+	db 26, ZUBAT
+	db 30, GOLBAT
+	db 28, PSYDUCK
+	db 29, PSYDUCK
+	db 32, GOLDUCK
+	db 32, GOLDUCK
+	db 32, GOLDUCK
+	; nite
+	db 26, ZUBAT
+	db 30, GOLBAT
+	db 28, PSYDUCK
+	db 29, PSYDUCK
+	db 32, GOLDUCK
+	db 32, GOLDUCK
+	db 32, GOLDUCK
+
+	map SEAFOAM_ISLANDS_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, SEEL
+	db 34, GOLBAT
+	db 28, PSYDUCK
+	db 32, GOLDUCK
+	db 28, ZUBAT
+	db 28, ZUBAT
+	db 29, ZUBAT
+	; day
+	db 32, SEEL
+	db 34, GOLBAT
+	db 28, PSYDUCK
+	db 32, GOLDUCK
+	db 28, ZUBAT
+	db 28, ZUBAT
+	db 29, ZUBAT
+	; nite
+	db 32, SEEL
+	db 34, GOLBAT
+	db 28, PSYDUCK
+	db 32, GOLDUCK
+	db 28, ZUBAT
+	db 28, ZUBAT
+	db 29, ZUBAT
+
+	map SEAFOAM_ISLANDS_B2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, SEEL
+	db 34, GOLBAT
+	db 28, PSYDUCK
+	db 32, GOLDUCK
+	db 28, ZUBAT
+	db 28, ZUBAT
+	db 29, ZUBAT
+	; day
+	db 32, SEEL
+	db 34, GOLBAT
+	db 28, PSYDUCK
+	db 32, GOLDUCK
+	db 28, ZUBAT
+	db 28, ZUBAT
+	db 29, ZUBAT
+	; nite
+	db 32, SEEL
+	db 34, GOLBAT
+	db 28, PSYDUCK
+	db 32, GOLDUCK
+	db 28, ZUBAT
+	db 28, ZUBAT
+	db 29, ZUBAT
+
+	map SEAFOAM_ISLANDS_B3F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 34, GOLBAT
+	db 36, DEWGONG
+	db 34, GOLDUCK
+	db 32, PSYDUCK
+	db 32, ZUBAT
+	db 34, SEEL
+	db 34, SEEL
+	; day
+	db 34, GOLBAT
+	db 36, DEWGONG
+	db 34, GOLDUCK
+	db 32, PSYDUCK
+	db 32, ZUBAT
+	db 34, SEEL
+	db 34, SEEL
+	; nite
+	db 34, GOLBAT
+	db 36, DEWGONG
+	db 34, GOLDUCK
+	db 32, PSYDUCK
+	db 32, ZUBAT
+	db 34, SEEL
+	db 34, SEEL
+
+	map SEAFOAM_ISLANDS_B4F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 38, GOLBAT
+	db 40, DEWGONG
+	db 38, GOLDUCK
+	db 40, JYNX
+	db 34, PSYDUCK
+	db 34, SEEL
+	db 34, SEEL
+	; day
+	db 38, GOLBAT
+	db 40, DEWGONG
+	db 38, GOLDUCK
+	db 40, JYNX
+	db 34, PSYDUCK
+	db 34, SEEL
+	db 34, SEEL
+	; nite
+	db 38, GOLBAT
+	db 40, DEWGONG
+	db 38, GOLDUCK
+	db 40, JYNX
+	db 34, PSYDUCK
+	db 34, SEEL
+	db 34, SEEL
+
 	db -1 ; end

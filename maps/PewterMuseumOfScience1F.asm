@@ -7,37 +7,6 @@ PewterMuseumOfScience1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-; TODO: make this work with xy triggers
-Museum1FFeeScript1:
-	applymovement PLAYER, Museum1F_WalkUpToReceptionistMovementData
-Museum1FFeeScript2:
-	spriteface PLAYER, RIGHT
-	opentext
-	writetext Museum1FWelcomeText
-	yesorno
-	iftrue Museum1FPayFeeScript
-	writetext Museum1FComeAgainText
-	waitbutton
-	closetext
-	applymovement PLAYER, Museum1F_WalkDownMovementData
-	end
-
-Museum1FPayFeeScript:
-	; TODO: pay $50
-	writetext Museum1FThankYouText
-	waitbutton
-	closetext
-
-Museum1F_WalkUpToReceptionistMovementData:
-	turn_head_right
-	step_right
-	step_end
-
-Museum1F_WalkDownMovementData:
-	turn_head_down
-	step_down
-	step_end
-
 Museum1FReceptionistScript:
 	jumptextfaceplayer Museum1FReceptionistText
 
@@ -54,36 +23,20 @@ Museum1FGrampsScript:
 Museum1FReceptionistDeskSignpostScript:
 	jumptext Museum1FReceptionistDeskSignpostText
 
-AerodactylFossilSignpostScript:
-	; TODO: show fossil sprite
-	jumptext AerodactylFossilSignpostText
-
 KabutopsFossilSignpostScript:
 	; TODO: show fossil sprite
 	jumptext KabutopsFossilSignpostText
 
+OmastarFossilSignpostScript:
+	; TODO: show fossil sprite
+	jumptext OmastarFossilSignpostText
+
+AerodactylFossilSignpostScript:
+	; TODO: show fossil sprite
+	jumptext AerodactylFossilSignpostText
+
 Museum1FBookshelfSignpostScript:
 	jumptext Museum1FBookshelfSignpostText
-
-Museum1FWelcomeText:
-	text "It's $50 for a"
-	line "child's ticket."
-
-	para "Would you like to"
-	line "come in?"
-	done
-
-Museum1FThankYouText:
-	text "Right, $50!"
-	line "Thank you!"
-	done
-
-Museum1FNotEnoughMoneyText
-	text "You don't have"
-	line "enough money."
-Museum1FComeAgainText:
-	para "Come again!"
-	done
 
 Museum1FReceptionistText:
 	text "You can't sneak"
@@ -92,7 +45,7 @@ Museum1FReceptionistText:
 
 Museum1FScientistText:
 	text "We are proud of"
-	line "two fossils of"
+	line "three fossils of"
 	cont "rare, prehistoric"
 	cont "#mon!"
 	done
@@ -117,19 +70,36 @@ Museum1FGrampsText:
 	done
 
 Museum1FReceptionistDeskSignpostText:
-	text "Take plenty of"
-	line "time to look!"
+	text "Welcome!"
+
+	para "Thanks to a gene-"
+	line "rous donation"
+	cont "from Silph Co.,"
+
+	para "admission is free"
+	line "of charge!"
+
+	para "Please go ahead."
 	done
 
-AerodactylFossilSignpostText:
-	text "Aerodactyl Fossil"
+KabutopsFossilSignpostText:
+	text "Kabutops Fossil"
+	line "(Dome)"
 
 	para "A primitive and"
 	line "rare Pokémon."
 	done
 
-KabutopsFossilSignpostText:
-	text "Kabutops Fossil"
+OmastarFossilSignpostText:
+	text "Omastar Fossil"
+	line "(Helix)"
+
+	para "A primitive and"
+	line "rare Pokémon."
+	done
+
+AerodactylFossilSignpostText:
+	text "Aerodactyl Fossil"
 
 	para "A primitive and"
 	line "rare Pokémon."
@@ -164,10 +134,11 @@ PewterMuseumOfScience1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 9
+	db 10
 	signpost 4, 11, SIGNPOST_READ, Museum1FReceptionistDeskSignpostScript
-	signpost 3, 2, SIGNPOST_READ, AerodactylFossilSignpostScript
-	signpost 6, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
+	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
+	signpost 3, 4, SIGNPOST_READ, OmastarFossilSignpostScript
+	signpost 6, 2, SIGNPOST_READ, AerodactylFossilSignpostScript
 	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript

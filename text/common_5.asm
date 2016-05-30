@@ -564,7 +564,7 @@ UnknownText_0x1c5c5e::
 UnknownText_0x1c5c7b::
 	text "Coins:"
 	line "@"
-	deciram Coins, 2, 4
+	deciram Coins, 2, 5
 	db "@@"
 
 Text_RaiseThePPOfWhichMove::

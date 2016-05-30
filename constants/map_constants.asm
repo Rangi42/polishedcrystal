@@ -153,12 +153,17 @@ MAP_NONE   EQU 0
 	newgroup                                                    ;  6
 
 	mapgroup CINNABAR_POKECENTER_1F,                      4,  5 ;  1
+	mapgroup SEAFOAM_ISLANDS_1F,                          5, 12 ;  2
 	mapgroup SEAFOAM_GYM,                                 4,  5 ;  3
-	mapgroup ROUTE_20,                                    9, 30 ;  5
-	mapgroup ROUTE_21,                                   18, 10 ;  6
-	mapgroup CINNABAR_ISLAND,                            11, 12 ;  7
-	mapgroup ROUTE_9,                                     9, 30 ;  8
-	mapgroup ROUTE_10_NORTH,                              9, 10 ;  9
+	mapgroup SEAFOAM_ISLANDS_B1F,                        10, 20 ;  4
+	mapgroup SEAFOAM_ISLANDS_B2F,                        10, 20 ;  5
+	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6
+	mapgroup SEAFOAM_ISLANDS_B4F,                        10, 20 ;  7
+	mapgroup ROUTE_20,                                    9, 30 ;  8
+	mapgroup ROUTE_21,                                   18, 10 ;  9
+	mapgroup CINNABAR_ISLAND,                            11, 12 ;  10
+	mapgroup ROUTE_9,                                     9, 30 ;  11
+	mapgroup ROUTE_10_NORTH,                              9, 10 ;  12
 
 	newgroup                                                    ;  7
 
@@ -204,7 +209,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_35,                                   18, 10 ;  2
 	mapgroup ROUTE_36,                                    9, 30 ;  3
 	mapgroup ROUTE_37,                                    9, 10 ;  4
-	mapgroup VIOLET_CITY,                                18, 20 ;  5
+	mapgroup VIOLET_CITY,                                21, 20 ;  5
 	mapgroup VIOLET_MART,                                 4,  6 ;  6
 	mapgroup VIOLET_GYM,                                  8,  5 ;  7
 	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  8
@@ -398,6 +403,7 @@ MAP_NONE   EQU 0
 	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 14
 	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
 	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
+	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 17
 
 	newgroup                                                    ; 23
 
@@ -407,7 +413,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_GYM,                                9,  5 ;  4
 	mapgroup VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
 	mapgroup TRAINER_HOUSE_1F,                            7,  5 ;  6
-	mapgroup TRAINER_HOUSE_B1F,                           8,  5 ;  7
+	mapgroup TRAINER_HOUSE_B1F,                           8, 10 ;  7
 	mapgroup VIRIDIAN_MART,                               4,  6 ;  8
 	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  5 ;  9
 	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 11

@@ -165,7 +165,7 @@ SeafoamGym_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $5, $5, 1, ROUTE_20
+	warp_def $5, $5, 2, SEAFOAM_ISLANDS_1F
 
 .XYTriggers:
 	db 0

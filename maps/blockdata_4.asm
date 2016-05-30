@@ -18,3 +18,21 @@ CeruleanCave2F_BlockData:
 
 CeruleanCaveB1F_BlockData:
 	INCBIN "maps/CeruleanCaveB1F.blk"
+
+SeafoamIslands1F_BlockData:
+	INCBIN "maps/SeafoamIslands1F.blk"
+
+SeafoamIslandsB1F_BlockData:
+	INCBIN "maps/SeafoamIslandsB1F.blk"
+
+SeafoamIslandsB2F_BlockData:
+	INCBIN "maps/SeafoamIslandsB2F.blk"
+
+SeafoamIslandsB3F_BlockData:
+	INCBIN "maps/SeafoamIslandsB3F.blk"
+
+SeafoamIslandsB4F_BlockData:
+	INCBIN "maps/SeafoamIslandsB4F.blk"
+
+CliffEdgeGate_BlockData:
+	INCBIN "maps/CliffEdgeGate.blk"

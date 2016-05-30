@@ -117,6 +117,7 @@ KRIS EQU __enum__
 	const ALAN5
 	const CHAD4
 	const CHAD5
+	const SHERMAN
 
 	trainerclass BIRD_KEEPER ; 18
 	const ROD
@@ -181,6 +182,9 @@ KRIS EQU __enum__
 	const STEVE
 	const ALLEN
 	const DARIN
+	const ABDUL
+	const ELAN
+	const FRENCH
 
 	trainerclass COOLTRAINERF ; 1c
 	const GWEN
@@ -204,6 +208,9 @@ KRIS EQU __enum__
 	const REENA2
 	const REENA3
 	const CARA
+	const SALMA
+	const BONITA
+	const IDA
 
 	trainerclass BEAUTY ; 1d
 	const VICTORIA
@@ -223,6 +230,8 @@ KRIS EQU __enum__
 	const THERESA
 	const VALERIE
 	const OLIVIA
+	const CALLIE
+	const CASSANDRA
 
 	trainerclass POKEMANIAC ; 1e
 	const LARRY
@@ -240,6 +249,7 @@ KRIS EQU __enum__
 	const ZACH
 	const BRENT4
 	const MILLER
+	const MOE
 
 	trainerclass GRUNTM ; 1f
 
@@ -249,6 +259,7 @@ KRIS EQU __enum__
 	const GREGORY
 	const VIRGIL
 	const ALFRED
+	const MILTON
 
 	trainerclass SKIER ; 21
 	const ROXANNE
@@ -335,7 +346,6 @@ KRIS EQU __enum__
 	const SETH
 	const JAMES
 	const LEWIS
-	const PARKER
 
 	trainerclass SWIMMERF ; 27
 	const ELAINE
@@ -357,6 +367,7 @@ KRIS EQU __enum__
 	const NIKKI
 	const DIANA
 	const BRIANA
+	const JOY
 
 	trainerclass SAILOR ; 28
 	const EUGENE
@@ -372,6 +383,8 @@ KRIS EQU __enum__
 	const HUEY2
 	const HUEY3
 	const HUEY4
+	const PARKER
+	const EDDIE_SAILOR
 
 	trainerclass SUPER_NERD ; 29
 	const STAN
@@ -418,6 +431,7 @@ KRIS EQU __enum__
 	const PARRY3
 	const ANTHONY4
 	const ANTHONY5
+	const EDWIN
 
 	trainerclass BIKER ; 2d
 	const BIKER_BENNY
@@ -595,6 +609,10 @@ KRIS EQU __enum__
 	const MEGANDPEG2
 	const LEAANDPIA1
 	const LEAANDPIA2
+	const DAYANDDANI1
+	const DAYANDDANI2
+	const KAYANDTIA1
+	const KAYANDTIA2
 
 	trainerclass POKEFANF ; 3e
 	const BEVERLY1
@@ -603,6 +621,8 @@ KRIS EQU __enum__
 	const BEVERLY3
 	const GEORGIA
 	const JAIME
+	const BOONE
+	const ELEANOR
 
 	trainerclass RED ; 3f
 

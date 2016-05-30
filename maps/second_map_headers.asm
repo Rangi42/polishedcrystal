@@ -8,8 +8,8 @@
 
 	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
 	connection south, ROUTE_32, Route32, 0, 0, 10, VIOLET_CITY
-	connection west, ROUTE_36, Route36, 0, 0, 9, VIOLET_CITY
-	connection east, ROUTE_31, Route31, 9, 0, 9, VIOLET_CITY
+	connection west, ROUTE_36, Route36, 0, -3, 9, VIOLET_CITY
+	connection east, ROUTE_31, Route31, 12, 0, 9, VIOLET_CITY
 
 	map_header_2 AzaleaTown, AZALEA_TOWN, $5, WEST | EAST
 	connection west, ROUTE_34, Route34, -3, 15, 12, AZALEA_TOWN
@@ -397,7 +397,12 @@
 	map_header_2 MoveDeletersHouse, MOVE_DELETERS_HOUSE, $0, 0
 	map_header_2 CinnabarPokeCenter1F, CINNABAR_POKECENTER_1F, $0, 0
 	map_header_2 Route19FuchsiaGate, ROUTE_19___FUCHSIA_GATE, $0, 0
+	map_header_2 SeafoamIslands1F, SEAFOAM_ISLANDS_1F, $9, 0
 	map_header_2 SeafoamGym, SEAFOAM_GYM, $9, 0
+	map_header_2 SeafoamIslandsB1F, SEAFOAM_ISLANDS_B1F, $9, 0
+	map_header_2 SeafoamIslandsB2F, SEAFOAM_ISLANDS_B2F, $9, 0
+	map_header_2 SeafoamIslandsB3F, SEAFOAM_ISLANDS_B3F, $9, 0
+	map_header_2 SeafoamIslandsB4F, SEAFOAM_ISLANDS_B4F, $9, 0
 	map_header_2 CeruleanGymBadgeSpeechHouse, CERULEAN_GYM_BADGE_SPEECH_HOUSE, $0, 0
 	map_header_2 CeruleanPoliceStation, CERULEAN_POLICE_STATION, $0, 0
 	map_header_2 CeruleanTradeSpeechHouse, CERULEAN_TRADE_SPEECH_HOUSE, $0, 0
@@ -544,6 +549,7 @@
 	map_header_2 BattleTowerHallway, BATTLE_TOWER_HALLWAY, $0, 0
 	map_header_2 Route40BattleTowerGate, ROUTE_40_BATTLE_TOWER_GATE, $0, 0
 	map_header_2 BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $5, 0
+	map_header_2 CliffEdgeGate, CLIFF_EDGE_GATE, $9, 0
 	map_header_2 ViridianGym, VIRIDIAN_GYM, $0, 0
 	map_header_2 ViridianNicknameSpeechHouse, VIRIDIAN_NICKNAME_SPEECH_HOUSE, $0, 0
 	map_header_2 TrainerHouse1F, TRAINER_HOUSE_1F, $0, 0

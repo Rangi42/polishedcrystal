@@ -2386,6 +2386,18 @@ SchoolboyGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCHOOLBOY (25)
+	db "Sherman@"
+	db 0 ; normal
+
+	; party
+	db 43, FURRET
+	db 43, PIDGEOT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3346,6 +3358,44 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM (21)
+	db "Abdul@"
+	db 0 ; normal
+
+	; party
+
+	db 53, STANTLER
+	db 52, TAUROS
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM (22)
+	db "Elan@"
+	db 0 ; normal
+
+	; party
+
+	db 55, PORYGON2
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM (23)
+	db "French@"
+	db 0 ; normal
+
+	; party
+
+	db 47, HOUNDOOM
+	db 47, ALAKAZAM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3710,6 +3760,44 @@ CooltrainerFGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERF (22)
+	db "Salma@"
+	db 0 ; normal
+
+	; party
+
+	db 50, SLOWKING
+	db 53, LICKITUNG
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (23)
+	db "Bonita@"
+	db 0 ; normal
+
+	; party
+
+	db 50, GIRAFARIG
+	db 52, SUDOWOODO
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (24)
+	db "Ida@"
+	db 0 ; normal
+
+	; party
+
+	db 55, AZUMARILL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3932,6 +4020,30 @@ BeautyGroup:
 	db $ff ; end
 
 ; ================
+
+	; BEAUTY (18)
+	db "Callie@"
+	db 0 ; normal
+
+	; party
+	db 16, CLEFABLE
+	db 16, WIGGLYTUFF
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY (19)
+	db "Cassandra@"
+	db 0 ; normal
+
+	; party
+	db 16, CLEFABLE
+	db 16, WIGGLYTUFF
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -4119,6 +4231,18 @@ PokemaniacGroup:
 	; party
 	db 17, NIDOKING
 	db 17, NIDOQUEEN
+
+	db $ff ; end
+
+; ================
+
+	; POKEMANIAC (16)
+	db "Moe@"
+	db 0 ; normal
+
+	; party
+	db 43, GLOOM
+	db 43, WEEPINBELL
 
 	db $ff ; end
 
@@ -4556,6 +4680,17 @@ GentlemanGroup:
 
 	; party
 	db 22, NOCTOWL
+
+	db $ff ; end
+
+; ================
+
+	; GENTLEMAN (6)
+	db "Milton@"
+	db 0 ; normal
+
+	; party
+	db 45, GROWLITHE
 
 	db $ff ; end
 
@@ -5678,19 +5813,6 @@ SwimmerMGroup:
 	db $ff ; end
 
 ; ================
-
-	; SWIMMERM (21)
-	db "Parker@"
-	db 0 ; normal
-
-	; party
-	db 43, HORSEA
-	db 43, HORSEA
-	db 45, SEADRA
-
-	db $ff ; end
-
-; ================
 ; ================================
 
 
@@ -5923,7 +6045,7 @@ SwimmerFGroup:
 	db 0 ; normal
 
 	; party
-	db 37, GOLDUCK
+	db 48, GOLDUCK
 
 	db $ff ; end
 
@@ -5936,6 +6058,17 @@ SwimmerFGroup:
 	; party
 	db 46, SEAKING
 	db 46, SEAKING
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF (20)
+	db "Joy@"
+	db 0 ; normal
+
+	; party
+	db 48, CLOYSTER
 
 	db $ff ; end
 
@@ -6120,6 +6253,29 @@ SailorGroup:
 		db STRENGTH
 		db ICE_PUNCH
 		db SUBMISSION
+
+	db $ff ; end
+
+; ================
+
+	; SAILOR (14)
+	db "Parker@"
+	db 0 ; normal
+
+	; party
+	db 43, HORSEA
+	db 45, SEADRA
+
+	db $ff ; end
+
+; ================
+
+	; SAILOR (15)
+	db "Eddie@"
+	db 0 ; normal
+
+	; party
+	db 48, AZUMARILL
 
 	db $ff ; end
 
@@ -6943,6 +7099,17 @@ HikerGroup:
 		db VITAL_THROW
 		db HEADBUTT
 		db DIG
+
+	db $ff ; end
+
+; ================
+
+	; HIKER (23)
+	db "Edwin@"
+	db 0 ; normal
+
+	; party
+	db 50, GOLEM
 
 	db $ff ; end
 
@@ -8872,7 +9039,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 43, QUAGSIRE, BERRY
+	db 43, QUAGSIRE, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8883,12 +9050,12 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
-	db 32, PIKACHU, BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
+	db 32, PIKACHU, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8899,9 +9066,9 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 38, BULBASAUR, BERRY
-	db 38, CHARMANDER, BERRY
-	db 38, SQUIRTLE, BERRY
+	db 38, BULBASAUR, GOLD_BERRY
+	db 38, CHARMANDER, GOLD_BERRY
+	db 38, SQUIRTLE, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8912,7 +9079,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 42, PSYDUCK, BERRY
+	db 42, PSYDUCK, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8935,9 +9102,9 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 28, MEOWTH, BERRY
-	db 28, MEOWTH, BERRY
-	db 28, MEOWTH, BERRY
+	db 28, MEOWTH, GOLD_BERRY
+	db 28, MEOWTH, GOLD_BERRY
+	db 28, MEOWTH, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8948,7 +9115,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 40, DELIBIRD, BERRY
+	db 40, DELIBIRD, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8970,7 +9137,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 36, PIKACHU, BERRY
+	db 36, PIKACHU, GOLD_BERRY
 
 	db $ff ; end
 
@@ -8995,7 +9162,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 43, PHANPY, BERRY
+	db 43, PHANPY, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9006,7 +9173,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 43, TEDDIURSA, BERRY
+	db 43, TEDDIURSA, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9252,6 +9419,54 @@ TwinsGroup:
 	db $ff ; end
 
 ; ================
+
+	; TWINS (11)
+	db "Day & Dani@"
+	db 0 ; normal
+
+	; party
+	db 41, PIKACHU
+	db 41, PIKACHU
+
+	db $ff ; end
+
+; ================
+
+	; TWINS (12)
+	db "Day & Dani@"
+	db 0 ; normal
+
+	; party
+	db 41, PIKACHU
+	db 41, PIKACHU
+
+	db $ff ; end
+
+; ================
+
+	; TWINS (13)
+	db "Kay & Tia@"
+	db 0 ; normal
+
+	; party
+	db 41, QUAGSIRE
+	db 41, QUAGSIRE
+
+	db $ff ; end
+
+; ================
+
+	; TWINS (14)
+	db "Kay & Tia@"
+	db 0 ; normal
+
+	; party
+	db 41, QUAGSIRE
+	db 41, QUAGSIRE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9297,7 +9512,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 30, GRANBULL, BERRY
+	db 30, GRANBULL, GOLD_BERRY
 
 	db $ff ; end
 
@@ -9311,7 +9526,7 @@ PokefanFGroup:
 	db 23, SENTRET, BERRY
 	db 23, SENTRET, BERRY
 	db 23, SENTRET, BERRY
-	db 28, FURRET, BERRY
+	db 28, FURRET, GOLD_BERRY
 	db 23, SENTRET, BERRY
 
 	db $ff ; end
@@ -9324,6 +9539,30 @@ PokefanFGroup:
 
 	; party
 	db 16, MEOWTH, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; POKEFANF (7)
+	db "Boone@"
+	db 2 ; item
+
+	; party
+	db 43, AIPOM, GOLD_BERRY
+	db 41, WIGGLYTUFF, GOLD_BERRY
+
+	db $ff ; end
+
+; ================
+
+	; POKEFANF (8)
+	db "Eleanor@"
+	db 2 ; item
+
+	; party
+	db 43, AIPOM, GOLD_BERRY
+	db 41, CLEFABLE, GOLD_BERRY
 
 	db $ff ; end
 

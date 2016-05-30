@@ -4,6 +4,8 @@ const_value set 2
 	const ROUTE8_BIKER3
 	const ROUTE8_SUPER_NERD1
 	const ROUTE8_SUPER_NERD2
+	const ROUTE8_GENTLEMAN
+	const ROUTE8_POKEMANIAC
 	const ROUTE8_FRUIT_TREE
 
 Route8_MapScriptHeader:
@@ -64,6 +66,28 @@ SupernerdTomScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x6c27e
+	waitbutton
+	closetext
+	end
+
+TrainerGentlemanMilton:
+	trainer EVENT_BEAT_GENTLEMAN_MILTON, GENTLEMAN, MILTON, GentlemanMiltonSeenText, GentlemanMiltonBeatenText, 0, GentlemanMiltonScript
+
+GentlemanMiltonScript:
+	end_if_just_battled
+	opentext
+	writetext GentlemanMiltonAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerPokemaniacMoe:
+	trainer EVENT_BEAT_POKEMANIAC_MOE, POKEMANIAC, MOE, PokemaniacMoeSeenText, PokemaniacMoeBeatenText, 0, PokemaniacMoeScript
+
+PokemaniacMoeScript:
+	end_if_just_battled
+	opentext
+	writetext PokemaniacMoeAfterText
 	waitbutton
 	closetext
 	end
@@ -161,6 +185,42 @@ UnknownText_0x6c27e:
 	cont "skill at battles."
 	done
 
+GentlemanMiltonSeenText:
+	text "Would you care to"
+	line "join me in a"
+	cont "quick contest?"
+	done
+
+GentlemanMiltonBeatenText:
+	text "You were very"
+	line "skillful."
+	done
+
+GentlemanMiltonAfterText:
+	text "Stopping in the"
+	line "road for a battle"
+	cont "isn't rude."
+
+	para "No matter what,"
+	line "I am a gentleman"
+	cont "first!"
+	done
+
+PokemaniacMoeSeenText:
+	text "Do I look weak?"
+	line "Don't make me"
+	cont "laugh!"
+	done
+
+PokemaniacMoeBeatenText:
+	text "Uwaaaahhh…"
+	done
+
+PokemaniacMoeAfterText:
+	text "In short, you're"
+	line "just too strong…"
+	done
+
 Route8LockedDoorText:
 	text "It's locked…"
 	done
@@ -190,10 +250,12 @@ Route8_MapEventHeader:
 	signpost 5, 10, SIGNPOST_READ, Route8LockedDoor
 
 .PersonEvents:
-	db 6
+	db 8
 	person_event SPRITE_BIKER, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, -1
 	person_event SPRITE_BIKER, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBikerHarris, -1
 	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBikerZeke, -1
 	person_event SPRITE_SUPER_NERD, 2, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdSam, -1
-	person_event SPRITE_SUPER_NERD, 12, 31, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSupernerdTom, -1
+	person_event SPRITE_SUPER_NERD, 8, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSupernerdTom, -1
+	person_event SPRITE_GENTLEMAN, 12, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanMilton, -1
+	person_event SPRITE_SUPER_NERD, 7, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMoe, -1
 	person_event SPRITE_FRUIT_TREE, 5, 33, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x6c06c, -1

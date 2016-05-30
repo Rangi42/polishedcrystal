@@ -499,7 +499,7 @@ XSpclAtkDesc:
 	next "(1 battle)@"
 
 CoinCaseDesc:
-	db   "Holds up to 9,999"
+	db   "Holds up to 50K"
 	next "game coins.@"
 
 ItemfinderDesc:

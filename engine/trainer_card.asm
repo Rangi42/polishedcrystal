@@ -235,9 +235,9 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 	ld de, PlayerID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	hlcoord 7, 6
+	hlcoord 6, 6
 	ld de, Money
-	lb bc, PRINTNUM_MONEY | 3, 6
+	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	hlcoord 1, 3
 	ld de, .HorizontalDivider
@@ -254,7 +254,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 .Name_Money: ; 252ec
 	db   "Name/"
 	next ""
-	next "Money@"
+	next "Cash@"
 
 .ID_No: ; 252f9
 	db $27, $28, $ff ; ID NO

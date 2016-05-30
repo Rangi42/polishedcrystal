@@ -76,11 +76,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
    * Eggs hatch at level 1
+   * Maximum $9,999,999 money and 50,000 coins
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
    * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
-   * Added Bellchime Trail from HGSS
+   * Added Bellchime Trail and Seafoam Islands from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
 * Fix bugs:
@@ -135,6 +136,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
+   * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
 
 
 ## To do:
@@ -178,7 +180,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace Cleffa and Igglybuff with Sylveon and Togekiss
    * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff, Goldeen, Seaking} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
       * Tentative plan: {Delibird, Sunkern, Sunflora, Lickitung, Goldeen, Seaking, Stantler} become {Weavile, Honchkrow, Mismagius, Munchlax, Yanmega, Mamoswine, Gliscor}
-   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Cinnabar Island, Pokémon Mansion, Seafoam Islands, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
+   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
@@ -209,11 +211,15 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Low-pitched cries when fainting
    * Better Town Map without bold black borders (imitate landmarks from HGSS)
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
+   * Add lake in front of Sprout Tower from HGSS
+   * Add Magnet Train tracks to Route 32 from HGSS
+   * Add river to Route 46 from HGSS
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
+   * Faster Surf speed
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
    * Send gift Pokémon to the PC if the party is full

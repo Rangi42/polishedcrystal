@@ -152,10 +152,9 @@ LoadMetatiles:: ; 2198
 	ld e, l
 	ld d, h
 	; Set hl to the address of the current metatile data ([TilesetBlocksAddress] + (a) tiles).
-	add a
 	ld l, a
 	ld h, 0
-rept 3
+rept 4
 	add hl, hl
 endr
 	ld a, [TilesetBlocksAddress]
