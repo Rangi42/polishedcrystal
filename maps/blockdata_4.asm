@@ -36,3 +36,6 @@ SeafoamIslandsB4F_BlockData:
 
 CliffEdgeGate_BlockData:
 	INCBIN "maps/CliffEdgeGate.blk"
+
+Route47_BlockData:
+	INCBIN "maps/Route47.blk"

@@ -81,7 +81,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
    * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
-   * Added Bellchime Trail and Seafoam Islands from HGSS
+   * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
 * Fix bugs:

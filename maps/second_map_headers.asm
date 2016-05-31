@@ -550,6 +550,7 @@
 	map_header_2 Route40BattleTowerGate, ROUTE_40_BATTLE_TOWER_GATE, $0, 0
 	map_header_2 BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $5, 0
 	map_header_2 CliffEdgeGate, CLIFF_EDGE_GATE, $9, 0
+	map_header_2 Route47, ROUTE_47, $35, 0
 	map_header_2 ViridianGym, VIRIDIAN_GYM, $0, 0
 	map_header_2 ViridianNicknameSpeechHouse, VIRIDIAN_NICKNAME_SPEECH_HOUSE, $0, 0
 	map_header_2 TrainerHouse1F, TRAINER_HOUSE_1F, $0, 0

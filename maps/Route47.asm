@@ -1,20 +1,19 @@
 const_value set 2
 
-CliffEdgeGate_MapScriptHeader:
+Route47_MapScriptHeader:
 .MapTriggers:
 	db 0
 
 .MapCallbacks:
 	db 0
 
-CliffEdgeGate_MapEventHeader:
+Route47_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 2
-	warp_def $13, $11, 8, CIANWOOD_CITY
-	warp_def $13, $3, 1, ROUTE_47
+	db 1
+	warp_def $15, $43, 2, CLIFF_EDGE_GATE
 
 .XYTriggers:
 	db 0
