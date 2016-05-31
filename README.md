@@ -157,7 +157,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
       * Moves that can be removed: Psywave, Mimic, Mirror Move
-      * Moves that can be merged: Wrap/Bind, Self-Destruct/Explosion, Hi Jump Kick/Jump Kick, Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web/Block, Lock On/Mind Reader, Scratch/Fury Swipes/Fury Attack, Bone Club/Bonemerang/Bone Rush, Morning Sun/Synthesis/Moonlight, Brick Break/Rock Smash, Heal Bell/Aromatherapy, Foresight/Odor Sleuth/Miracle Eye, Sleep Powder/GrassWhistle, Thief/Covet, Trick/Switcheroo
+      * Moves that can be merged: Wrap/Bind, Self-Destruct/Explosion, Hi Jump Kick/Jump Kick, Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web/Block, Lock On/Mind Reader, Scratch/Fury Swipes/Fury Attack, Bone Club/Bonemerang/Bone Rush, Morning Sun/Synthesis/Moonlight, Brick Break/Rock Smash, Heal Bell/Aromatherapy, Foresight/Odor Sleuth/Miracle Eye, Sleep Powder/GrassWhistle, Thief/Covet, Trick/Switcheroo, Softboiled/Milk Drink
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
@@ -183,7 +183,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS?)
+   * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS) (and Quiet Cave for Munchlax with Explosion) (put it where the Embedded Tower is)
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Unlimited-use TMs from Gen V
