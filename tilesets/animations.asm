@@ -95,6 +95,16 @@ Tileset32Anim: ; 0xfc2e7
 	dw WhirlpoolFrames4, AnimateWhirlpoolTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
+	dw VTiles2 tile $40, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw VTiles2 tile $40, WriteTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 ; 0xfc0d7
 
