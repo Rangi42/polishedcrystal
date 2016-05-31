@@ -1861,6 +1861,8 @@ GetTrainerAttributes: ; 3957b
 
 INCLUDE "trainers/attributes.asm"
 
+SECTION "Enemy Trainer Parties", ROMX
+
 INCLUDE "trainers/read_party.asm"
 
 INCLUDE "trainers/trainer_pointers.asm"

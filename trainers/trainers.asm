@@ -4723,6 +4723,17 @@ SkierGroup:
 	db $ff ; end
 
 ; ================
+
+	; SKIER (3)
+	db "Cady@"
+	db 0 ; normal
+
+	; party
+	db 53, DELIBIRD
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9001,6 +9012,30 @@ BoarderGroup:
 	db 25, SHELLDER
 	db 26, CLOYSTER
 	db 25, SHELLDER
+
+	db $ff ; end
+
+; ================
+
+	; BOARDER (4)
+	db "Shaun@"
+	db 0 ; normal
+
+	; party
+	db 55, CLOYSTER
+	db 50, DEWGONG
+
+	db $ff ; end
+
+; ================
+
+	; BOARDER (5)
+	db "Bryce@"
+	db 0 ; normal
+
+	; party
+	db 55, DEWGONG
+	db 50, LAPRAS
 
 	db $ff ; end
 
