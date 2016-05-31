@@ -294,7 +294,7 @@ VioletCity_MapEventHeader:
 	warp_def $23, $15, 1, VIOLET_ONIX_TRADE_HOUSE
 	warp_def $5, $17, 1, SPROUT_TOWER_1F
 	warp_def $1e, $27, 1, ROUTE_31_VIOLET_GATE
-	warp_def $1e, $27, 2, ROUTE_31_VIOLET_GATE
+	warp_def $1f, $27, 2, ROUTE_31_VIOLET_GATE
 
 .XYTriggers:
 	db 0
