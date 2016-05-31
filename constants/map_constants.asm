@@ -154,7 +154,7 @@ MAP_NONE   EQU 0
 
 	mapgroup CINNABAR_POKECENTER_1F,                      4,  5 ;  1
 	mapgroup SEAFOAM_ISLANDS_1F,                          5, 12 ;  2
-	mapgroup SEAFOAM_GYM,                                 4,  5 ;  3
+	mapgroup SEAFOAM_GYM,                                12, 12 ;  3
 	mapgroup SEAFOAM_ISLANDS_B1F,                        10, 20 ;  4
 	mapgroup SEAFOAM_ISLANDS_B2F,                        10, 20 ;  5
 	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6

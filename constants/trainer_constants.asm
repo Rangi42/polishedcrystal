@@ -73,6 +73,9 @@ KRIS EQU __enum__
 	const JED
 	const MARC
 	const RICH
+	const LOWELL
+	const DENNETT
+	const LINDEN
 
 	trainerclass ERIKA ; 15
 
@@ -402,6 +405,9 @@ KRIS EQU __enum__
 	const NORTON
 	const HUGH
 	const MARKUS
+	const CARY
+	const WALDO
+	const MERLE
 
 	trainerclass RIVAL2 ; 2a
 

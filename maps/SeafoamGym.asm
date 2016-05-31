@@ -1,5 +1,11 @@
 const_value set 2
 	const SEAFOAMGYM_BLAINE
+	const SEAFOAMGYM_SCIENTIST1
+	const SEAFOAMGYM_SCIENTIST2
+	const SEAFOAMGYM_SUPER_NERD1
+	const SEAFOAMGYM_SCIENTIST3
+	const SEAFOAMGYM_SUPER_NERD2
+	const SEAFOAMGYM_SUPER_NERD3
 	const SEAFOAMGYM_GYM_GUY
 
 SeafoamGym_MapScriptHeader:
@@ -13,6 +19,72 @@ SeafoamGym_MapScriptHeader:
 	db 0
 
 UnknownScript_0x1ab4fa:
+	end
+
+TrainerScientistLowell:
+	trainer EVENT_BEAT_SCIENTIST_LOWELL, SCIENTIST, LOWELL, ScientistLowellSeenText, ScientistLowellBeatenText, 0, ScientistLowellScript
+
+ScientistLowellScript:
+	end_if_just_battled
+	opentext
+	writetext ScientistLowellAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerScientistDennett:
+	trainer EVENT_BEAT_SCIENTIST_DENNETT, SCIENTIST, DENNETT, ScientistDennettSeenText, ScientistDennettBeatenText, 0, ScientistDennettScript
+
+ScientistDennettScript:
+	end_if_just_battled
+	opentext
+	writetext ScientistDennettAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSupernerdCary:
+	trainer EVENT_BEAT_SUPER_NERD_CARY, SUPER_NERD, CARY, SupernerdCarySeenText, SupernerdCaryBeatenText, 0, SupernerdCaryScript
+
+SupernerdCaryScript:
+	end_if_just_battled
+	opentext
+	writetext SupernerdCaryAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerScientistLinden:
+	trainer EVENT_BEAT_SCIENTIST_LINDEN, SCIENTIST, LINDEN, ScientistLindenSeenText, ScientistLindenBeatenText, 0, ScientistLindenScript
+
+ScientistLindenScript:
+	end_if_just_battled
+	opentext
+	writetext ScientistLindenAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSupernerdWaldo:
+	trainer EVENT_BEAT_SUPER_NERD_WALDO, SUPER_NERD, WALDO, SupernerdWaldoSeenText, SupernerdWaldoBeatenText, 0, SupernerdWaldoScript
+
+SupernerdWaldoScript:
+	end_if_just_battled
+	opentext
+	writetext SupernerdWaldoAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSupernerdMerle:
+	trainer EVENT_BEAT_SUPER_NERD_MERLE, SUPER_NERD, MERLE, SupernerdMerleSeenText, SupernerdMerleBeatenText, 0, SupernerdMerleScript
+
+SupernerdMerleScript:
+	end_if_just_battled
+	opentext
+	writetext SupernerdMerleAfterText
+	waitbutton
+	closetext
 	end
 
 BlaineScript_0x1ab4fb:
@@ -63,6 +135,111 @@ SeafoamGymGuyScript:
 	waitbutton
 	closetext
 	end
+
+ScientistLowellSeenText:
+	text "This lab coat"
+	line "makes me feel"
+	cont "smarter for some"
+	cont "reason."
+	done
+
+ScientistLowellBeatenText:
+	text "A white lab coat"
+	line "is a researcher's"
+	cont "life."
+	done
+
+ScientistLowellAfterText:
+	text "We may be in a"
+	line "cave, but we"
+	cont "always do the"
+	cont "laundry."
+	done
+
+ScientistDennettSeenText:
+	text "Blaine may have"
+	line "lost his Gym, but"
+	cont "he never gives up!"
+	done
+
+ScientistDennettBeatenText:
+	text "Blaine's"
+	line "perseverance"
+	cont "motivates me!"
+	done
+
+ScientistDennettAfterText:
+	text "Together with"
+	line "Blaine, we will"
+	cont "rebuild our Gym!"
+	done
+
+SupernerdCarySeenText:
+	text "Wow, a Gym in a"
+	line "cave like this?"
+
+	para "I'd love to"
+	line "explore it."
+	done
+
+SupernerdCaryBeatenText:
+	text "A bitter"
+	line "defeat…"
+	done
+
+SupernerdCaryAfterText:
+	text "Bitterness leads"
+	line "to improvement."
+	done
+
+ScientistLindenSeenText:
+	text "We lost the Gym on"
+	line "Cinnabar Island,"
+	cont "but we came here."
+	done
+
+ScientistLindenBeatenText:
+	text "We accept defeat"
+	line "gracefully…"
+	done
+
+ScientistLindenAfterText:
+	text "Not all scientists"
+	line "help the bad guys."
+	done
+
+SupernerdWaldoSeenText:
+	text "I am collecting"
+	line "battle records."
+
+	para "Can you help me?"
+	done
+
+SupernerdWaldoBeatenText:
+	text "I didn't expect"
+	line "you to be so good!"
+	done
+
+SupernerdWaldoAfterText:
+	text "Who in the world"
+	line "are you?"
+	done
+
+SupernerdMerleSeenText:
+	text "Ooh!"
+	line "You look easily"
+	cont "defeated!"
+	done
+
+SupernerdMerleBeatenText:
+	text "Pardon me!"
+	done
+
+SupernerdMerleAfterText:
+	text "I failed to"
+	line "sense how strong"
+	cont "you are."
+	done
 
 UnknownText_0x1ab548:
 	text "Blaine: Waaah!"
@@ -165,7 +342,7 @@ SeafoamGym_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $5, $5, 2, SEAFOAM_ISLANDS_1F
+	warp_def $14, $c, 2, SEAFOAM_ISLANDS_1F
 
 .XYTriggers:
 	db 0
@@ -174,6 +351,12 @@ SeafoamGym_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 2
-	person_event SPRITE_BLAINE, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
-	person_event SPRITE_GYM_GUY, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
+	db 8
+	person_event SPRITE_SCIENTIST, 16, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLowell, -1
+	person_event SPRITE_SCIENTIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistDennett, -1
+	person_event SPRITE_SUPER_NERD, 12, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdCary, -1
+	person_event SPRITE_SCIENTIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLinden, -1
+	person_event SPRITE_SUPER_NERD, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdWaldo, -1
+	person_event SPRITE_SUPER_NERD, 14, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMerle, -1
+	person_event SPRITE_BLAINE, 11, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
+	person_event SPRITE_GYM_GUY, 20, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY

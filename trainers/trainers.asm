@@ -1785,6 +1785,39 @@ ScientistGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCIENTIST (6)
+	db "Lowell@"
+	db 0 ; normal
+
+	; party
+	db 50, ARCANINE
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST (7)
+	db "Dennett@"
+	db 0 ; normal
+
+	; party
+	db 50, NINETALES
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST (8)
+	db "Linden@"
+	db 0 ; normal
+
+	; party
+	db 50, MAGMAR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -6476,6 +6509,39 @@ SuperNerdGroup:
 		db WATER_GUN
 		db GROWL
 		db STRENGTH
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD (15)
+	db "Cary@"
+	db 0 ; normal
+
+	; party
+	db 53, FLAREON
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD (15)
+	db "Waldo@"
+	db 0 ; normal
+
+	; party
+	db 53, CHARIZARD
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD (15)
+	db "Merle@"
+	db 0 ; normal
+
+	; party
+	db 53, MAGCARGO
 
 	db $ff ; end
 
