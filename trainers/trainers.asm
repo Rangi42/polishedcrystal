@@ -3429,6 +3429,19 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM (24)
+	db "Thom@"
+	db 0 ; normal
+
+	; party
+
+	db 25, MAGMAR
+	db 25, ELECTABUZZ
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3827,6 +3840,19 @@ CooltrainerFGroup:
 	; party
 
 	db 55, AZUMARILL
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (25)
+	db "Kae@"
+	db 0 ; normal
+
+	; party
+
+	db 25, CLOYSTER
+	db 25, ONIX
 
 	db $ff ; end
 
@@ -7191,6 +7217,19 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER (24)
+	db "Devin@"
+	db 0 ; normal
+
+	; party
+	db 19, DUNSPARCE
+	db 19, DUNSPARCE
+	db 19, DUNSPARCE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8777,6 +8816,18 @@ CamperGroup:
 	db 30, FEAROW
 	db 30, PRIMEAPE
 	db 30, TAUROS
+
+	db $ff ; end
+
+; ================
+
+	; CAMPER (23)
+	db "Grant@"
+	db 0 ; normal
+
+	; party
+	db 21, SKIPLOOM
+	db 21, MARILL
 
 	db $ff ; end
 

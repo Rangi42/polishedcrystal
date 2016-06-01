@@ -188,6 +188,7 @@ KRIS EQU __enum__
 	const ABDUL
 	const ELAN
 	const FRENCH
+	const THOM
 
 	trainerclass COOLTRAINERF ; 1c
 	const GWEN
@@ -214,6 +215,7 @@ KRIS EQU __enum__
 	const SALMA
 	const BONITA
 	const IDA
+	const KAE
 
 	trainerclass BEAUTY ; 1d
 	const VICTORIA
@@ -439,6 +441,7 @@ KRIS EQU __enum__
 	const ANTHONY4
 	const ANTHONY5
 	const EDWIN
+	const DEVIN
 
 	trainerclass BIKER ; 2d
 	const BIKER_BENNY
@@ -554,6 +557,7 @@ KRIS EQU __enum__
 	const TODD4
 	const TODD5
 	const QUENTIN
+	const GRANT
 
 	trainerclass EXECUTIVEF ; 37
 
