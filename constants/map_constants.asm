@@ -404,7 +404,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
 	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
 	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 17
-	mapgroup ROUTE_47,                                   19, 38 ; 17
+	mapgroup ROUTE_47,                                   19, 38 ; 18
+	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
 
 	newgroup                                                    ; 23
 

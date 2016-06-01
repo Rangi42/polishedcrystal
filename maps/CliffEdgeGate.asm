@@ -7,6 +7,9 @@ CliffEdgeGate_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+CliffEdgeGateHiddenBigPearl:
+	dwb EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL, BIG_PEARL
+
 CliffEdgeGate_MapEventHeader:
 	; filler
 	db 0, 0
@@ -20,7 +23,8 @@ CliffEdgeGate_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 8, 17, SIGNPOST_ITEM, CliffEdgeGateHiddenBigPearl
 
 .PersonEvents:
 	db 0

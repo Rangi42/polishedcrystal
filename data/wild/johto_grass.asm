@@ -1620,6 +1620,60 @@
 	db 2, RATTATA
 	db 2, RATTATA
 
+	map ROUTE_47
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 37, DITTO
+	db 35, FARFETCH_D
+	db 35, MILTANK
+	db 32, GLOOM
+	db 32, RATICATE
+	db 31, SPEAROW
+	db 34, FEAROW
+	; day
+	db 37, DITTO
+	db 35, FARFETCH_D
+	db 35, MILTANK
+	db 32, GLOOM
+	db 32, RATICATE
+	db 31, SPEAROW
+	db 34, FEAROW
+	; nite
+	db 37, DITTO
+	db 35, NOCTOWL
+	db 35, MILTANK
+	db 32, GLOOM
+	db 32, RATICATE
+	db 31, SPEAROW
+	db 34, FEAROW
+
+	map CLIFF_CAVE
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, GOLBAT
+	db 19, GEODUDE
+	db 22, MACHOKE
+	db 20, KRABBY
+	db 18, WOOPER
+	db 20, GRAVELER
+	db 23, STEELIX
+	; day
+	db 22, GOLBAT
+	db 19, GEODUDE
+	db 19, MACHOP
+	db 22, KINGLER
+	db 20, QUAGSIRE
+	db 20, ONIX
+	db 23, STEELIX
+	; nite
+	db 18, ZUBAT
+	db 22, GOLBAT
+	db 22, KINGLER
+	db 22, MACHOKE
+	db 20, ONIX
+	db 20, MISDREAVUS
+	db 23, STEELIX
+
 	map SILVER_CAVE_OUTSIDE
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn

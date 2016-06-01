@@ -113,6 +113,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
    * Kanto has colored roofs
+   * Add lake in front of Sprout Tower from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
@@ -212,9 +213,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Low-pitched cries when fainting
    * Better Town Map without bold black borders (imitate landmarks from HGSS)
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
-   * Add lake in front of Sprout Tower from HGSS
    * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
+   * Put legendary beasts in a pit in Burned Tower, not a platform
+   * Make the Ruins of Alph tile with the surrounding maps
+   * Add bridges to some caves like Victory Road
+   * Add crater to Route 3 from HGSS
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one

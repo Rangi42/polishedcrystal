@@ -39,3 +39,6 @@ CliffEdgeGate_BlockData:
 
 Route47_BlockData:
 	INCBIN "maps/Route47.blk"
+
+CliffCave_BlockData:
+	INCBIN "maps/CliffCave.blk"
