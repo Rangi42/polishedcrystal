@@ -185,7 +185,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS) (and Quiet Cave for Munchlax with Explosion) (put it where the Embedded Tower is)
+   * Catch starters and Surfing and Flying Pikachu in Yellow Forest
+   * Catch SelfDestruct Munchlax and find fossils in Quiet Cave
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Unlimited-use TMs from Gen V
@@ -225,13 +226,16 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Faster text by default
    * Stereo sound by default
    * Faster Surf speed
+   * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
    * Send gift Pokémon to the PC if the party is full
    * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
    * More frequently successful fishing and Headbutting
    * More likely to find roaming Pokémon when on the correct route
-   * Have someone in the Mt. Silver Pokémon Center show you Raikou and Entei in case you've never encountered them roaming (or the same old man in Pewter City who gives you the Silver Wing)
+   * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
+   * Suicune roams if you don't catch it in Bell Tower
+   * Lawrence III battles you after you catch the three legendary birds, and gives you the Silver Wing if you win (team: Charizard, Lapras, Pidgeot, Xatu, Honchkrow, Tyranitar)
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
