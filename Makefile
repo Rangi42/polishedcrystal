@@ -9,7 +9,7 @@ NAME = polishedcrystal
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-gfx       := $(PYTHON) utils/gfx.py
+gfx       := $(PYTHON) gfx.py
 includes  := $(PYTHON) utils/scan_includes.py
 
 

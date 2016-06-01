@@ -8,8 +8,8 @@
 
 	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
 	connection south, ROUTE_32, Route32, 0, 0, 10, VIOLET_CITY
-	connection west, ROUTE_36, Route36, 0, -3, 9, VIOLET_CITY
-	connection east, ROUTE_31, Route31, 12, 0, 9, VIOLET_CITY
+	connection west, ROUTE_36, Route36, 0, -2, 9, VIOLET_CITY
+	connection east, ROUTE_31, Route31, 11, 0, 9, VIOLET_CITY
 
 	map_header_2 AzaleaTown, AZALEA_TOWN, $5, WEST | EAST
 	connection west, ROUTE_34, Route34, -3, 15, 12, AZALEA_TOWN
@@ -67,7 +67,7 @@
 
 	map_header_2 Route31, ROUTE_31, $5, SOUTH | WEST
 	connection south, ROUTE_30, Route30, 10, 0, 10, ROUTE_31
-	connection west, VIOLET_CITY, VioletCity, -3, 6, 12, ROUTE_31
+	connection west, VIOLET_CITY, VioletCity, -2, 6, 12, ROUTE_31
 
 	map_header_2 Route32, ROUTE_32, $5, NORTH | SOUTH
 	connection north, VIOLET_CITY, VioletCity, 0, 0, 13, ROUTE_32
@@ -88,7 +88,7 @@
 	map_header_2 Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
 	connection north, ROUTE_37, Route37, 10, 0, 10, ROUTE_36
 	connection south, ROUTE_35, Route35, 0, 0, 10, ROUTE_36
-	connection east, VIOLET_CITY, VioletCity, 0, 0, 12, ROUTE_36
+	connection east, VIOLET_CITY, VioletCity, -2, 0, 12, ROUTE_36
 
 	map_header_2 Route37, ROUTE_37, $5, NORTH | SOUTH
 	connection north, ECRUTEAK_CITY, EcruteakCity, -3, 2, 16, ROUTE_37
