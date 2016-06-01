@@ -55,7 +55,7 @@ MAP_NONE   EQU 0
 	mapgroup RADIO_TOWER_3F,                              4,  9 ; 19
 	mapgroup RADIO_TOWER_4F,                              4,  9 ; 20
 	mapgroup RADIO_TOWER_5F,                              4,  9 ; 21
-	mapgroup RUINS_OF_ALPH_OUTSIDE,                      18, 10 ; 22
+	mapgroup RUINS_OF_ALPH_OUTSIDE,                      21, 11 ; 22
 	mapgroup RUINS_OF_ALPH_HO_OH_CHAMBER,                 5,  4 ; 23
 	mapgroup RUINS_OF_ALPH_KABUTO_CHAMBER,                5,  4 ; 24
 	mapgroup RUINS_OF_ALPH_OMANYTE_CHAMBER,               5,  4 ; 25
