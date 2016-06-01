@@ -34,7 +34,7 @@
 	db "Teacher@"
 	db "Leader@"
 	db "Bug Catcher@"
-	db "Fisher@"
+	db "Fisherman@"
 	db "Swimmer♂@"
 	db "Swimmer♀@"
 	db "Sailor@"

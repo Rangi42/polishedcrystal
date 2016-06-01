@@ -102,6 +102,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pack → Bag
    * Enemy → Foe
    * Cooltrainer → Ace Trainer
+   * Fisher → Fisherman
    * Mysticalman Eusine → Mystery Man Eusine
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
