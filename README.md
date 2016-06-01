@@ -185,8 +185,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Catch starters and Surfing and Flying Pikachu in Yellow Forest
-   * Catch SelfDestruct Munchlax and find fossils in Quiet Cave
+   * Catch starters and Surfing and Flying Pikachu in Yellow Forest (items: Light Ball, Miracle Seed, ThunderStone, Big Mushroom, berries)
+   * Catch SelfDestruct Munchlax and find fossils in Quiet Cave (items: SilverPowder, TwistedSpoon, Dusk Ball, Nugget)
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Unlimited-use TMs from Gen V
