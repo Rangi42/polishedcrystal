@@ -276,6 +276,12 @@
 	connection north, ROUTE_10_NORTH, Route10North, 0, 0, 10, ROUTE_10_SOUTH
 	connection south, LAVENDER_TOWN, LavenderTown, 0, 0, 10, ROUTE_10_SOUTH
 
+	map_header_2 Route47, ROUTE_47, $35, NORTH
+	connection north, ROUTE_48, Route48, 0, 0, 36, ROUTE_47
+
+	map_header_2 Route48, ROUTE_48, $35, SOUTH
+	connection south, ROUTE_47, Route47, 0, 0, 36, ROUTE_48
+
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_header_2 SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -550,7 +556,6 @@
 	map_header_2 Route40BattleTowerGate, ROUTE_40_BATTLE_TOWER_GATE, $0, 0
 	map_header_2 BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $5, 0
 	map_header_2 CliffEdgeGate, CLIFF_EDGE_GATE, $9, 0
-	map_header_2 Route47, ROUTE_47, $35, 0
 	map_header_2 CliffCave, CLIFF_CAVE, $9, 0
 	map_header_2 ViridianGym, VIRIDIAN_GYM, $0, 0
 	map_header_2 ViridianNicknameSpeechHouse, VIRIDIAN_NICKNAME_SPEECH_HOUSE, $0, 0

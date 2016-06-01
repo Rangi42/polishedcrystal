@@ -1647,6 +1647,33 @@
 	db 21, SPEAROW
 	db 24, FEAROW
 
+	map ROUTE_48
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 25, FARFETCH_D
+	db 24, TAUROS
+	db 22, HOPPIP
+	db 22, GROWLITHE
+	db 21, FEAROW
+	db 20, GIRAFARIG
+	db 20, GIRAFARIG
+	; day
+	db 25, FARFETCH_D
+	db 24, TAUROS
+	db 22, GLOOM
+	db 22, HOUNDOUR
+	db 21, FEAROW
+	db 20, GIRAFARIG
+	db 20, GIRAFARIG
+	; nite
+	db 25, HOUNDOUR
+	db 24, TAUROS
+	db 22, GLOOM
+	db 22, VULPIX
+	db 21, FEAROW
+	db 20, GIRAFARIG
+	db 20, GIRAFARIG
+
 	map CLIFF_CAVE
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn

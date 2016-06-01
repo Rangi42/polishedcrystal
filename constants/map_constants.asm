@@ -406,6 +406,7 @@ MAP_NONE   EQU 0
 	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 17
 	mapgroup ROUTE_47,                                   19, 39 ; 18
 	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
+	mapgroup ROUTE_48,                                   11, 18 ; 20
 
 	newgroup                                                    ; 23
 

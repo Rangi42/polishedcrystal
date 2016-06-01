@@ -42,3 +42,6 @@ Route47_BlockData:
 
 CliffCave_BlockData:
 	INCBIN "maps/CliffCave.blk"
+
+Route48_BlockData:
+	INCBIN "maps/Route48.blk"
