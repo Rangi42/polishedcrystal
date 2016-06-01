@@ -1623,29 +1623,29 @@
 	map ROUTE_47
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 37, DITTO
-	db 35, FARFETCH_D
-	db 35, MILTANK
-	db 32, GLOOM
-	db 32, RATICATE
-	db 31, SPEAROW
-	db 34, FEAROW
+	db 27, DITTO
+	db 25, FARFETCH_D
+	db 25, MILTANK
+	db 22, GLOOM
+	db 22, RATICATE
+	db 21, SPEAROW
+	db 24, FEAROW
 	; day
-	db 37, DITTO
-	db 35, FARFETCH_D
-	db 35, MILTANK
-	db 32, GLOOM
-	db 32, RATICATE
-	db 31, SPEAROW
-	db 34, FEAROW
+	db 27, DITTO
+	db 25, FARFETCH_D
+	db 25, MILTANK
+	db 22, GLOOM
+	db 22, RATICATE
+	db 21, SPEAROW
+	db 24, FEAROW
 	; nite
-	db 37, DITTO
-	db 35, NOCTOWL
-	db 35, MILTANK
-	db 32, GLOOM
-	db 32, RATICATE
-	db 31, SPEAROW
-	db 34, FEAROW
+	db 27, DITTO
+	db 25, NOCTOWL
+	db 25, MILTANK
+	db 22, GLOOM
+	db 22, RATICATE
+	db 21, SPEAROW
+	db 24, FEAROW
 
 	map CLIFF_CAVE
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

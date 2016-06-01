@@ -183,8 +183,8 @@
 	map CLIFF_EDGE_GATE
 	db 2 percent ; encounter rate
 	db 20, WOOPER
-	db 30, WOOPER
-	db 30, QUAGSIRE
+	db 20, WOOPER
+	db 25, QUAGSIRE
 
 	map NEW_BARK_TOWN
 	db 6 percent ; encounter rate
