@@ -54,6 +54,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Flaaffy on Routes 42 and 43
    * Wild Girafarig on Routes 43 and 48
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
+   * Encounter Articuno in Seafoam Islands
    * Encounter Mewtwo in Cerulean Cave
    * Wild Slugma in Burned Tower
    * Wild Magmar in Burned Tower
