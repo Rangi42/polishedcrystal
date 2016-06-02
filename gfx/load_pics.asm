@@ -249,17 +249,7 @@ GetBackpic: ; 5116c
 	ret
 
 FixPicBank: ; 511c5
-; This is a thing for some reason.
-	push hl
-	push bc
-	sub PICS_1 - PICS_FIX
-	ld c, a
-	ld b, 0
-	ld hl, .PicsBanks
-	add hl, bc
-	ld a, [hl]
-	pop bc
-	pop hl
+	add PICS_FIX
 	ret
 
 .PicsBanks: ; 511d4
