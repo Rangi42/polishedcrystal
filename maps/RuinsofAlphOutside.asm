@@ -293,33 +293,33 @@ RuinsofAlphOutside_MapEventHeader:
 
 .Warps:
 	db 11
-	warp_def $11, $2, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
-	warp_def $7, $e, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def $1d, $2, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
-	warp_def $21, $10, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
-	warp_def $d, $a, 1, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $b, $11, 1, RUINS_OF_ALPH_RESEARCH_CENTER
-	warp_def $13, $6, 1, UNION_CAVE_B1F
-	warp_def $1b, $6, 2, UNION_CAVE_B1F
-	warp_def $5, $7, 3, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def $14, $d, 1, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $15, $d, 2, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def $17, $4, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
+	warp_def $d, $10, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_def $23, $4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
+	warp_def $27, $12, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
+	warp_def $13, $c, 1, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $11, $13, 1, RUINS_OF_ALPH_RESEARCH_CENTER
+	warp_def $19, $8, 1, UNION_CAVE_B1F
+	warp_def $21, $8, 2, UNION_CAVE_B1F
+	warp_def $5, $3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def $1a, $f, 1, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def $1b, $f, 2, ROUTE_32_RUINS_OF_ALPH_GATE
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $e, $b, $0, UnknownScript_0x58031, $0, $0
-	xy_trigger 1, $f, $a, $0, UnknownScript_0x5803a, $0, $0
+	xy_trigger 1, $14, $d, $0, UnknownScript_0x58031, $0, $0
+	xy_trigger 1, $15, $c, $0, UnknownScript_0x5803a, $0, $0
 
 .Signposts:
 	db 3
-	signpost 8, 16, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost0Script
-	signpost 16, 12, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost1Script
-	signpost 12, 18, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
+	signpost 14, 18, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost0Script
+	signpost 22, 14, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost1Script
+	signpost 18, 20, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_YOUNGSTER, 20, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
-	person_event SPRITE_SCIENTIST, 15, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
-	person_event SPRITE_FISHER, 17, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
-	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	person_event SPRITE_YOUNGSTER, 8, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	person_event SPRITE_YOUNGSTER, 26, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
+	person_event SPRITE_SCIENTIST, 21, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
+	person_event SPRITE_FISHER, 23, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
+	person_event SPRITE_YOUNGSTER, 17, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	person_event SPRITE_YOUNGSTER, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS

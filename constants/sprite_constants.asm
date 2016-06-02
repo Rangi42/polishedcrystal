@@ -104,6 +104,8 @@
 	const SPRITE_ENTEI ; 64
 	const SPRITE_RAIKOU ; 65
 	const SPRITE_STANDING_YOUNGSTER ; 66
+	const SPRITE_LORELEI ; 67
+	const SPRITE_AGATHA ; 68
 
 const_value SET $80
 

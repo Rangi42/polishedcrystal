@@ -75,13 +75,14 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Disable lasts for 4 turns
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
+   * Surf at Bicycle/Running Shoes speed
    * Eggs hatch at level 1
    * Maximum $9,999,999 money and 50,000 coins
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
    * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
-   * Added Bellchime Trail and Seafoam Islands from HGSS
+   * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
 * Fix bugs:
@@ -102,6 +103,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pack → Bag
    * Enemy → Foe
    * Cooltrainer → Ace Trainer
+   * Fisher → Fisherman
    * Mysticalman Eusine → Mystery Man Eusine
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
@@ -112,6 +114,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
    * Kanto has colored roofs
+   * Add lake in front of Sprout Tower from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
@@ -133,6 +136,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
+   * Eusine has a shiny Haunter
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
@@ -183,7 +187,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Add Pokéwalker Routes from HGSS (e.g. Yellow Forest, where you can catch Surfing Pikachu) (put the Yellow Forest where the Johto Safari Zone is in HGSS) (and Quiet Cave for Munchlax with Explosion) (put it where the Embedded Tower is)
+   * Catch starters and Surfing and Flying Pikachu in Yellow Forest (items: Light Ball, Miracle Seed, ThunderStone, Big Mushroom, berries)
+   * Catch SelfDestruct Munchlax and find fossils in Quiet Cave (items: SilverPowder, TwistedSpoon, Dusk Ball, Nugget)
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Unlimited-use TMs from Gen V
@@ -200,7 +205,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
-   * Fix attacks hitting a Flying Pokémon
+   * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
 * Aesthetic updates:
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
@@ -211,22 +216,27 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Low-pitched cries when fainting
    * Better Town Map without bold black borders (imitate landmarks from HGSS)
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
-   * Add lake in front of Sprout Tower from HGSS
    * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
+   * Put legendary beasts in a pit in Burned Tower, not a platform
+   * Make the Ruins of Alph tile with the surrounding maps
+   * Add bridges to some caves like Victory Road
+   * Add crater to Route 3 from HGSS
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
-   * Faster Surf speed
+   * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
    * Send gift Pokémon to the PC if the party is full
    * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
    * More frequently successful fishing and Headbutting
    * More likely to find roaming Pokémon when on the correct route
-   * Have someone in the Mt. Silver Pokémon Center show you Raikou and Entei in case you've never encountered them roaming (or the same old man in Pewter City who gives you the Silver Wing)
+   * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
+   * Suicune roams if you don't catch it in Bell Tower
+   * Lawrence III appears in Victory Road after you catch all three legendary birds. He's searching for Moltres, and battles you to acquire it (team: Articuno, Zapdos, Charizard, Dragonite, Honchkrow, Tyranitar). He gives you the Silver Wing if you win.
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species

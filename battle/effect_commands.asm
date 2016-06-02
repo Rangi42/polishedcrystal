@@ -1710,7 +1710,7 @@ BattleCommand_CheckHit: ; 34d32
 	ret nz
 
 	call .PoisonTypeUsingToxic
-	ret nz
+	ret z
 
 	call .FlyDigMoves
 	jp nz, .Miss
@@ -1853,12 +1853,17 @@ BattleCommand_CheckHit: ; 34d32
 
 
 .PoisonTypeUsingToxic:
-; Return nz if we are a Poison-type using Toxic.
+; Return z if we are a Poison-type using Toxic.
 	call CheckIfUserIsPoisonType
-	ret z
+	jr z, .NotAPoisonType
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp TOXIC
+	ret
+
+.NotAPoisonType:
+	ld a, 1
+	and a
 	ret
 
 

@@ -1785,6 +1785,39 @@ ScientistGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCIENTIST (6)
+	db "Lowell@"
+	db 0 ; normal
+
+	; party
+	db 50, ARCANINE
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST (7)
+	db "Dennett@"
+	db 0 ; normal
+
+	; party
+	db 50, NINETALES
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST (8)
+	db "Linden@"
+	db 0 ; normal
+
+	; party
+	db 50, MAGMAR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3396,6 +3429,19 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM (24)
+	db "Thom@"
+	db 0 ; normal
+
+	; party
+
+	db 25, MAGMAR
+	db 25, ELECTABUZZ
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -3794,6 +3840,19 @@ CooltrainerFGroup:
 	; party
 
 	db 55, AZUMARILL
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (25)
+	db "Kae@"
+	db 0 ; normal
+
+	; party
+
+	db 25, CLOYSTER
+	db 25, ONIX
 
 	db $ff ; end
 
@@ -4719,6 +4778,17 @@ SkierGroup:
 
 	; party
 	db 29, DEWGONG
+
+	db $ff ; end
+
+; ================
+
+	; SKIER (3)
+	db "Cady@"
+	db 0 ; normal
+
+	; party
+	db 53, DELIBIRD
 
 	db $ff ; end
 
@@ -6469,6 +6539,39 @@ SuperNerdGroup:
 	db $ff ; end
 
 ; ================
+
+	; SUPER_NERD (15)
+	db "Cary@"
+	db 0 ; normal
+
+	; party
+	db 53, FLAREON
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD (15)
+	db "Waldo@"
+	db 0 ; normal
+
+	; party
+	db 53, CHARIZARD
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD (15)
+	db "Merle@"
+	db 0 ; normal
+
+	; party
+	db 53, MAGCARGO
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7110,6 +7213,19 @@ HikerGroup:
 
 	; party
 	db 50, GOLEM
+
+	db $ff ; end
+
+; ================
+
+	; HIKER (24)
+	db "Devin@"
+	db 0 ; normal
+
+	; party
+	db 19, DUNSPARCE
+	db 19, DUNSPARCE
+	db 19, DUNSPARCE
 
 	db $ff ; end
 
@@ -8704,6 +8820,18 @@ CamperGroup:
 	db $ff ; end
 
 ; ================
+
+	; CAMPER (23)
+	db "Grant@"
+	db 0 ; normal
+
+	; party
+	db 21, SKIPLOOM
+	db 21, MARILL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9001,6 +9129,30 @@ BoarderGroup:
 	db 25, SHELLDER
 	db 26, CLOYSTER
 	db 25, SHELLDER
+
+	db $ff ; end
+
+; ================
+
+	; BOARDER (4)
+	db "Shaun@"
+	db 0 ; normal
+
+	; party
+	db 55, CLOYSTER
+	db 50, DEWGONG
+
+	db $ff ; end
+
+; ================
+
+	; BOARDER (5)
+	db "Bryce@"
+	db 0 ; normal
+
+	; party
+	db 55, DEWGONG
+	db 50, LAPRAS
 
 	db $ff ; end
 

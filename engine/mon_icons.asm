@@ -355,10 +355,8 @@ endr
 GetExtendedIconBank:
 	ld a, [CurIcon]
 	cp a, $80
-	jr nc, .get_bank_2
 	lb bc, BANK(Icons1), 8
-	ret
-.get_bank_2
+	ret c
 	lb bc, BANK(Icons2), 8
 	ret
 

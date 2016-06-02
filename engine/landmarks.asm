@@ -91,6 +91,12 @@ ENDM
 	landmark  36, 108, WhirlIslandsName
 	landmark  36, 116, Route41Name
 	landmark  28, 116, CianwoodCityName
+	landmark  28, 114, CliffEdgeGateName
+	landmark  20, 116, Route47Name
+	landmark  20, 114, CliffCaveName
+	landmark  20, 108, Route48Name
+	landmark  20, 106, YellowForestName
+	landmark  20, 118, QuietCaveName
 	landmark 100,  60, Route42Name
 	landmark  92,  60, MtMortarName
 	landmark 116,  60, MahoganyTownName
@@ -250,6 +256,8 @@ Route43Name:         db "Route 43@"
 Route44Name:         db "Route 44@"
 Route45Name:         db "Route 45@"
 Route46Name:         db "Route 46@"
+Route47Name:         db "Route 47@"
+Route48Name:         db "Route 48@"
 DarkCaveName:        db "Dark Cave@"
 IlexForestName:      db "Ilex¯Forest@"
 BurnedTowerName:     db "Burned¯Tower@"
@@ -259,6 +267,10 @@ DiglettsCaveName:    db "Diglett's¯Cave@"
 TohjoFallsName:      db "Tohjo Falls@"
 UndergroundName:     db "Underground@"
 BattleTowerName:     db "Battle¯Tower@"
+CliffEdgeGateName:   db "Cliff Edge¯Gate@"
+CliffCaveName:       db "Cliff Cave@"
+YellowForestName:    db "Yellow¯Forest@"
+QuietCaveName:       db "Quiet Cave@"
 SpecialMapName:      db "Special@"
 
 

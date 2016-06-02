@@ -8,8 +8,8 @@
 
 	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
 	connection south, ROUTE_32, Route32, 0, 0, 10, VIOLET_CITY
-	connection west, ROUTE_36, Route36, 0, -3, 9, VIOLET_CITY
-	connection east, ROUTE_31, Route31, 12, 0, 9, VIOLET_CITY
+	connection west, ROUTE_36, Route36, 0, -2, 9, VIOLET_CITY
+	connection east, ROUTE_31, Route31, 11, 0, 9, VIOLET_CITY
 
 	map_header_2 AzaleaTown, AZALEA_TOWN, $5, WEST | EAST
 	connection west, ROUTE_34, Route34, -3, 15, 12, AZALEA_TOWN
@@ -67,7 +67,7 @@
 
 	map_header_2 Route31, ROUTE_31, $5, SOUTH | WEST
 	connection south, ROUTE_30, Route30, 10, 0, 10, ROUTE_31
-	connection west, VIOLET_CITY, VioletCity, -3, 6, 12, ROUTE_31
+	connection west, VIOLET_CITY, VioletCity, -2, 6, 12, ROUTE_31
 
 	map_header_2 Route32, ROUTE_32, $5, NORTH | SOUTH
 	connection north, VIOLET_CITY, VioletCity, 0, 0, 13, ROUTE_32
@@ -88,7 +88,7 @@
 	map_header_2 Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
 	connection north, ROUTE_37, Route37, 10, 0, 10, ROUTE_36
 	connection south, ROUTE_35, Route35, 0, 0, 10, ROUTE_36
-	connection east, VIOLET_CITY, VioletCity, 0, 0, 12, ROUTE_36
+	connection east, VIOLET_CITY, VioletCity, -2, 0, 12, ROUTE_36
 
 	map_header_2 Route37, ROUTE_37, $5, NORTH | SOUTH
 	connection north, ECRUTEAK_CITY, EcruteakCity, -3, 2, 16, ROUTE_37
@@ -275,6 +275,12 @@
 	map_header_2 Route10South, ROUTE_10_SOUTH, $2c, NORTH | SOUTH
 	connection north, ROUTE_10_NORTH, Route10North, 0, 0, 10, ROUTE_10_SOUTH
 	connection south, LAVENDER_TOWN, LavenderTown, 0, 0, 10, ROUTE_10_SOUTH
+
+	map_header_2 Route47, ROUTE_47, $35, NORTH
+	connection north, ROUTE_48, Route48, 0, 0, 36, ROUTE_47
+
+	map_header_2 Route48, ROUTE_48, $35, SOUTH
+	connection south, ROUTE_47, Route47, 0, 0, 36, ROUTE_48
 
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
@@ -550,6 +556,7 @@
 	map_header_2 Route40BattleTowerGate, ROUTE_40_BATTLE_TOWER_GATE, $0, 0
 	map_header_2 BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $5, 0
 	map_header_2 CliffEdgeGate, CLIFF_EDGE_GATE, $9, 0
+	map_header_2 CliffCave, CLIFF_CAVE, $9, 0
 	map_header_2 ViridianGym, VIRIDIAN_GYM, $0, 0
 	map_header_2 ViridianNicknameSpeechHouse, VIRIDIAN_NICKNAME_SPEECH_HOUSE, $0, 0
 	map_header_2 TrainerHouse1F, TRAINER_HOUSE_1F, $0, 0
@@ -591,7 +598,7 @@
 	map_header_2 BellchimeTrail, BELLCHIME_TRAIL, $5, 0
 	map_header_2 PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_header_2 PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
-	map_header_2 ViridianForest, VIRIDIAN_FOREST, $5, 0
+	map_header_2 ViridianForest, VIRIDIAN_FOREST, $36, 0
 	map_header_2 ViridianForestViridianGate, VIRIDIAN_FOREST_VIRIDIAN_GATE, $0, 0
 	map_header_2 ViridianForestPewterGate, VIRIDIAN_FOREST_PEWTER_GATE, $0, 0
 	map_header_2 CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0

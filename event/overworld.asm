@@ -323,6 +323,7 @@ WhirlpoolBlockPointers: ; c8a4
 
 .johto ; c8a8
 	db $07, $36, $00
+	db $9f, $31, $00
 	db -1
 
 OWFlash: ; c8ac

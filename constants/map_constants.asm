@@ -55,7 +55,7 @@ MAP_NONE   EQU 0
 	mapgroup RADIO_TOWER_3F,                              4,  9 ; 19
 	mapgroup RADIO_TOWER_4F,                              4,  9 ; 20
 	mapgroup RADIO_TOWER_5F,                              4,  9 ; 21
-	mapgroup RUINS_OF_ALPH_OUTSIDE,                      18, 10 ; 22
+	mapgroup RUINS_OF_ALPH_OUTSIDE,                      21, 11 ; 22
 	mapgroup RUINS_OF_ALPH_HO_OH_CHAMBER,                 5,  4 ; 23
 	mapgroup RUINS_OF_ALPH_KABUTO_CHAMBER,                5,  4 ; 24
 	mapgroup RUINS_OF_ALPH_OMANYTE_CHAMBER,               5,  4 ; 25
@@ -154,7 +154,7 @@ MAP_NONE   EQU 0
 
 	mapgroup CINNABAR_POKECENTER_1F,                      4,  5 ;  1
 	mapgroup SEAFOAM_ISLANDS_1F,                          5, 12 ;  2
-	mapgroup SEAFOAM_GYM,                                 4,  5 ;  3
+	mapgroup SEAFOAM_GYM,                                12, 12 ;  3
 	mapgroup SEAFOAM_ISLANDS_B1F,                        10, 20 ;  4
 	mapgroup SEAFOAM_ISLANDS_B2F,                        10, 20 ;  5
 	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6
@@ -209,7 +209,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_35,                                   18, 10 ;  2
 	mapgroup ROUTE_36,                                    9, 30 ;  3
 	mapgroup ROUTE_37,                                    9, 10 ;  4
-	mapgroup VIOLET_CITY,                                21, 20 ;  5
+	mapgroup VIOLET_CITY,                                20, 20 ;  5
 	mapgroup VIOLET_MART,                                 4,  6 ;  6
 	mapgroup VIOLET_GYM,                                  8,  5 ;  7
 	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  8
@@ -404,6 +404,9 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
 	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
 	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 17
+	mapgroup ROUTE_47,                                   19, 39 ; 18
+	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
+	mapgroup ROUTE_48,                                   11, 18 ; 20
 
 	newgroup                                                    ; 23
 
@@ -463,7 +466,7 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_30,                                   27, 10 ;  1
 	mapgroup ROUTE_31,                                    9, 20 ;  2
-	mapgroup CHERRYGROVE_CITY,                            9, 20 ;  3
+	mapgroup CHERRYGROVE_CITY,                           10, 20 ;  3
 	mapgroup CHERRYGROVE_MART,                            4,  6 ;  4
 	mapgroup CHERRYGROVE_POKECENTER_1F,                   4,  5 ;  5
 	mapgroup CHERRYGROVE_GYM_SPEECH_HOUSE,                4,  4 ;  6
