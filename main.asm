@@ -1865,6 +1865,8 @@ SECTION "Enemy Trainer Parties", ROMX
 
 INCLUDE "trainers/read_party.asm"
 
+INCLUDE "trainers/shiny.asm"
+
 INCLUDE "trainers/trainer_pointers.asm"
 
 INCLUDE "trainers/trainers.asm"

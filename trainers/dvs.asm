@@ -2,6 +2,10 @@ GetTrainerDVs: ; 270c4
 ; Return the DVs of OtherTrainerClass in bc
 
 	push hl
+
+	call CheckShinyTrainerPokemon
+	jr z, .done
+
 	ld a, [OtherTrainerClass]
 	dec a
 	ld c, a
@@ -16,6 +20,7 @@ endr
 	ld b, a
 	ld c, [hl]
 
+.done
 	pop hl
 	ret
 ; 270d6
