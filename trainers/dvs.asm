@@ -1,6 +1,5 @@
 GetTrainerDVs: ; 270c4
 ; Return the DVs of OtherTrainerClass in bc
-
 	push hl
 
 	call CheckShinyTrainerPokemon
@@ -100,3 +99,5 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; lorelei
 	db $FF, $FF ; agatha
 ; 2715c
+
+INCLUDE "trainers/shiny.asm"
