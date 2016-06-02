@@ -44,17 +44,42 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Updated type chart, Pokémon types, and move types
    * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
    * Added Moonblast, Play Rough, and Disarm Voice
-* Catch all 251 Pokémon without trading:
+* Catch all 251 Pokémon without trading, some earlier than in GSC or HGSS:
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
    * Wild Mankey on Routes 9 and 42
-   * Wild Primeape on Routes 9 and 42
+   * Wild Primeape on Routes 9 and 42, and in Cerulean Cave
    * Wild Mareep on Routes 32 and 43
    * Wild Flaaffy on Routes 42 and 43
-   * Wild Girafarig on Route 43
+   * Wild Girafarig on Routes 43 and 48
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
    * Encounter Mewtwo in Cerulean Cave
+   * Wild Slugma in Burned Tower
+   * Wild Magmar in Burned Tower
+   * Wild Houndour on Routes 35 and 37
+   * Wild Murkrow on Routes 38 and 39 (at night)
+   * Wild Staryu on Route 40
+   * Wild Steelix in Cliff Cave and Silver Cave
+   * Wild Misdreavus in Cliff Cave
+   * Wild Teddiursa on Route 45 (in the morning)
+   * Wild Shellder in Whirl Islands
+   * Wild Octillery in Whirl Islands
+   * Wild Dewgong in Seafoam Islands
+   * Wild Jynx in Seafoam Islands
+   * Wild Ursaring outside Silver Cave
+   * Wild Skarmory outside Silver Cave
+   * Wild Sneasel outside Silver Cave
+   * Wild Houndoom outside Silver Cave
+   * Wild Kingdra in Silver Cave
+   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Wobbuffet, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
+   * Goldenrod Game Corner: Cubone, Clefairy, Wobbuffet
+   * Celadon Game Corner: Mr. Mime, Eevee, Porygon
+   * Trade Teddiursa (found in Dark Cave) for Elekid in Violet City
+   * Trade Cubone (bought at the Game Corner) for Diglett in Goldenrod City
+   * Trade Steelix (found in Cliff Cave) for Kangaskhan in Olivine City
+   * Trade Dragonair for Chansey in Blackthorn City
+   * Trade Pinsir for Heracross in Pewter City
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -150,8 +175,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
-   * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
-   * Move Kangaskhan from Rock Tunnel to the Safari Zone
+   * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
    * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing) (who should give it to you? Prof. Oak, Lance, Lawrence III?)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
@@ -187,8 +211,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Catch starters and Surfing and Flying Pikachu in Yellow Forest (items: Light Ball, Miracle Seed, ThunderStone, Big Mushroom, berries)
-   * Catch SelfDestruct Munchlax and find fossils in Quiet Cave (items: SilverPowder, TwistedSpoon, Dusk Ball, Nugget)
+   * Yellow Forest Pokémon: **Chikorita**, **Cyndaquil**, **Totodile**, **Surfing and Flying Pikachu**, Pichu, Raichu, Marill
+   * Yellow Forest items: **Light Ball**, Miracle Seed, ThunderStone, Big Mushroom, berries
+   * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
+   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
+   * Cinnabar Volcano Pokémon: **Gengar**, Magmar
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Unlimited-use TMs from Gen V

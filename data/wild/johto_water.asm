@@ -62,15 +62,15 @@
 
 	map WHIRL_ISLAND_SW
 	db 4 percent ; encounter rate
-	db 20, TENTACOOL
 	db 15, HORSEA
-	db 20, TENTACRUEL
+	db 20, TENTACOOL
+	db 20, OCTILLERY
 
 	map WHIRL_ISLAND_B2F
 	db 4 percent ; encounter rate
 	db 15, HORSEA
-	db 20, HORSEA
 	db 20, TENTACRUEL
+	db 20, OCTILLERY
 
 	map WHIRL_ISLAND_LUGIA_CHAMBER
 	db 4 percent ; encounter rate
@@ -82,7 +82,7 @@
 	db 2 percent ; encounter rate
 	db 35, SEAKING
 	db 35, GOLDUCK
-	db 35, GOLDEEN
+	db 35, KINGDRA
 
 	map DARK_CAVE_VIOLET_ENTRANCE
 	db 2 percent ; encounter rate
@@ -141,7 +141,7 @@
 	map ROUTE_40
 	db 6 percent ; encounter rate
 	db 20, TENTACOOL
-	db 15, TENTACOOL
+	db 20, STARYU
 	db 20, TENTACRUEL
 
 	map ROUTE_41

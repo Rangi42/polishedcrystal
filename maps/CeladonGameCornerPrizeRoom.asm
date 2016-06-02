@@ -132,31 +132,49 @@ GoldenrodGameCornerPokemonVendor:
 	loadmenudata .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .pikachu
-	if_equal $2, .porygon
-	if_equal $3, .larvitar
+	if_equal $1, .mr_mime
+	if_equal $2, .eevee
+	if_equal $3, .porygon
 	jump CeladonPrizeRoom_cancel
 
-.pikachu
-	checkcoins 2222
+.mr_mime
+	checkcoins 3333
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, CeladonPrizeRoom_notenoughroom
-	pokenamemem PIKACHU, $0
+	pokenamemem MR__MIME, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	writebyte PIKACHU
+	writebyte MR__MIME
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke PIKACHU, 10
-	takecoins 2222
+	givepoke MR__MIME, 10
+	takecoins 3333
+	jump .loop
+
+.eevee
+	checkcoins 6666
+	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, CeladonPrizeRoom_notenoughroom
+	pokenamemem EEVEE, $0
+	scall CeladonPrizeRoom_askbuy
+	iffalse CeladonPrizeRoom_cancel
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext CeladonPrizeRoom_HereYouGoText
+	waitbutton
+	writebyte EEVEE
+	special Special_GameCornerPrizeMonCheckDex
+	givepoke EEVEE, 20
+	takecoins 6666
 	jump .loop
 
 .porygon
-	checkcoins 5555
+	checkcoins 9999
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, CeladonPrizeRoom_notenoughroom
@@ -169,26 +187,8 @@ GoldenrodGameCornerPokemonVendor:
 	waitbutton
 	writebyte PORYGON
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke PORYGON, 20
-	takecoins 5555
-	jump .loop
-
-.larvitar
-	checkcoins 8888
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	checkcode VAR_PARTYCOUNT
-	if_equal $6, CeladonPrizeRoom_notenoughroom
-	pokenamemem LARVITAR, $0
-	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_cancel
-	waitsfx
-	playsound SFX_TRANSACTION
-	writetext CeladonPrizeRoom_HereYouGoText
-	waitbutton
-	writebyte LARVITAR
-	special Special_GameCornerPrizeMonCheckDex
-	givepoke LARVITAR, 30
-	takecoins 8888
+	givepoke PORYGON, 30
+	takecoins 9999
 	jump .loop
 
 
