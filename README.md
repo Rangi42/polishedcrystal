@@ -285,9 +285,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
-   * Catch more Gen II Pokémon in Johto and Gen I in Kanto
-     ([suggestions](http://www.serebiiforums.com/showthread.php?598425-Am-I-the-only-one-that-gets-mad-that))
-      * Make Houndour, Murkrow, Sneasel, Misdreavus, and Larvitar available earlier
    * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
 
 
