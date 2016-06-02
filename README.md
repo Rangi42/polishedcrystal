@@ -235,7 +235,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
    * Suicune roams if you don't catch it in Bell Tower
-   * Lawrence III battles you after you catch the three legendary birds, and gives you the Silver Wing if you win (team: Charizard, Lapras, Pidgeot, Xatu, Honchkrow, Tyranitar)
+   * Lawrence III appears in Victory Road after you catch all three legendary birds. He's searching for Moltres, and battles you to acquire it (team: Articuno, Zapdos, Charizard, Dragonite, Honchkrow, Tyranitar). He gives you the Silver Wing if you win.
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
