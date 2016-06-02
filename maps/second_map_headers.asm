@@ -598,7 +598,7 @@
 	map_header_2 BellchimeTrail, BELLCHIME_TRAIL, $5, 0
 	map_header_2 PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_header_2 PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
-	map_header_2 ViridianForest, VIRIDIAN_FOREST, $5, 0
+	map_header_2 ViridianForest, VIRIDIAN_FOREST, $36, 0
 	map_header_2 ViridianForestViridianGate, VIRIDIAN_FOREST_VIRIDIAN_GATE, $0, 0
 	map_header_2 ViridianForestPewterGate, VIRIDIAN_FOREST_PEWTER_GATE, $0, 0
 	map_header_2 CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0
