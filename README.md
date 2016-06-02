@@ -75,6 +75,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Disable lasts for 4 turns
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
+   * Surf at Bicycle/Running Shoes speed
    * Eggs hatch at level 1
    * Maximum $9,999,999 money and 50,000 coins
    * Added X Spcl. Def
@@ -226,7 +227,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
-   * Faster Surf speed
    * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
