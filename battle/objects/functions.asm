@@ -454,6 +454,10 @@ GetBallAnimPal: ; cd249 (33:5249)
 	db FRIEND_BALL, 3
 	db MOON_BALL,   2
 	db LOVE_BALL,   4
+	db REPEAT_BALL, 3
+	db TIMER_BALL,  7
+	db QUICK_BALL,  6
+	db DUSK_BALL,   5
 	db -1,          2
 ; cd284
 BattleAnimFunction_10: ; cd284 (33:5284)
