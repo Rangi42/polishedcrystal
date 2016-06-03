@@ -1094,13 +1094,48 @@ RepeatBallMultiplier:
 
 TimerBallMultiplier:
 ; multiply catch rate by (turns passed + 10) / 10, capped at 4
-	; TODO: implement Timer Ball
 	ld a, [wBattleTurnCounter]
 	cp 30
 	jr nc, .nocap
 	ld a, 30
 .nocap
 	add 10
+
+	; hMultiplier = turns passed + 10
+	ld [hMultiplier], a
+
+	; hMultiplicand = catch rate
+	xor a
+	ld [hMultiplicand + 0], a
+	ld [hMultiplicand + 1], a
+	ld a, b
+	ld [hMultiplicand + 2], a
+
+	; hProduct = catch rate * (turns passed + 10)
+	call Multiply
+
+	; hDividend = hProduct = catch rate * (turns passed + 10)
+	ld hl, hDividend
+	ld a, [hProduct + 0]
+	ld [hli], a
+	ld a, [hProduct + 1]
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+
+	; hDivisor = 10
+	ld a, 10
+	ld [hDivisor], a
+
+	; hQuotient = catch rate * (turns passed + 10) / 10
+	ld b, 4
+	call Divide
+
+	; b = hQuotient = catch rate * (turns passed + 10) / 10
+	ld a, [hQuotient + 2]
+	ld b, a
 
 	ret
 
