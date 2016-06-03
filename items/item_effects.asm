@@ -158,11 +158,11 @@ ItemEffects: ; e73c
 	dw Item8E
 	dw MetalCoat
 	dw DragonFang
-	dw Item91
+	dw RepeatBall
 	dw Leftovers
-	dw Item93
-	dw Item94
-	dw Item95
+	dw TimerBall
+	dw QuickBall
+	dw DuskBall
 	dw Mysteryberry
 	dw DragonScale
 	dw BerserkGene
@@ -207,6 +207,10 @@ FastBall:
 FriendBall:
 MoonBall:
 LoveBall:
+RepeatBall:
+TimerBall:
+QuickBall:
+DuskBall:
 ParkBall: ; e8a2
 	ld a, [wBattleMode]
 	dec a
@@ -2991,11 +2995,7 @@ Item8D:
 Item8E:
 MetalCoat:
 DragonFang:
-Item91:
 Leftovers:
-Item93:
-Item94:
-Item95:
 DragonScale:
 BerserkGene:
 Item99:

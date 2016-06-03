@@ -235,7 +235,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Copycat's house 2F has weird tile collisions, despite using the same tileset as 1F (maybe revert the [trimmed tilesets](https://github.com/roukaour/pokecrystal/commit/a29b9ca3154ba9b194a0b621b5a7017e1b9400f3)?)
-   * Can't use Repeat, Timer, Quick or Dusk Balls
 * Aesthetic updates:
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
