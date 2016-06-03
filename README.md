@@ -104,6 +104,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Surf at Bicycle/Running Shoes speed
    * Eggs hatch at level 1
    * Maximum $9,999,999 money and 50,000 coins
+   * Maximum 30 items and 16 Balls in your bag
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
