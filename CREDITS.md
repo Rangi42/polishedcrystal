@@ -6,6 +6,7 @@
 * Tauwasser, comet, and other members of Skeetendo for helpful advice
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for the 251 Pokémon icons
+* Blue Emerald for the Leafeon and Glaceon sprites and icons
 * jpmac26 for editing the Pokémon Center signs
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite
