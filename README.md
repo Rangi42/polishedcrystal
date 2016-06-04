@@ -221,6 +221,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Cinnabar Volcano Pokémon: **Gengar**, Magmar
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
+   * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
    * Unlimited-use TMs from Gen V
    * Continuous Repel system from Gen V
    * Catch rate formula from Gen III
