@@ -301,6 +301,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
    * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
+   * Gift a shiny Ditto somewhere
 
 
 ## Long-term
