@@ -209,7 +209,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
    * Replace some Pokémon:
-      * Cleffa → Togekiss (evolves with Shiny Stone)
+      * Cleffa → Togekiss (evolves with Shiny Stone, or Sun Stone since without Sunkern only Gloom uses it)
       * Igglybuff → Sylveon (evolves with Shiny Stone, so it will have more than one use) (will have to fix bug where only first 3 Eevee evolution stones get "Able" text)
       * Delibird → Weavile (evolves holding Razor Claw at night, which also has the same effect as Scope Lens)
       * Wobbuffet → Mismagius (evolves with Dusk Stone)
