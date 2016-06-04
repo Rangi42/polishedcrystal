@@ -1,7 +1,7 @@
 const_value set 2
+	const SEAFOAMISLANDSB4F_ARTICUNO
 	const SEAFOAMISLANDSB4F_POKE_BALL1
 	const SEAFOAMISLANDSB4F_POKE_BALL2
-	; const SEAFOAMISLANDSB4F_ARTICUNO
 
 SeafoamIslandsB4F_MapScriptHeader:
 .MapTriggers:
@@ -9,6 +9,16 @@ SeafoamIslandsB4F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+SeafoamIslandsArticuno:
+	faceplayer
+	cry ARTICUNO
+	loadwildmon ARTICUNO, 60
+	startbattle
+	disappear SEAFOAMISLANDSB4F_ARTICUNO
+	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	reloadmapafterbattle
+	end
 
 SeafoamIslandsB4FNeverMeltIce:
 	itemball NEVERMELTICE
@@ -36,7 +46,7 @@ SeafoamIslandsB4F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 2 ; 3
+	db 3
+	person_event SPRITE_BIRD, 13, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	person_event SPRITE_POKE_BALL, 7, 33, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB4FNeverMeltIce, EVENT_SEAFOAM_ISLANDS_B4F_NEVERMELTICE
 	person_event SPRITE_POKE_BALL, 2, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB4FUltraBall, EVENT_SEAFOAM_ISLANDS_B4F_ULTRA_BALL
-	; person_event SPRITE_ARTICUNO, 13, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO

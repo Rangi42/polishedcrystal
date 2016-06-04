@@ -44,17 +44,45 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Updated type chart, Pokémon types, and move types
    * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
    * Added Moonblast, Play Rough, and Disarm Voice
-* Catch all 251 Pokémon without trading:
+* Catch all ~~251~~ 253 Pokémon without trading, some earlier than in GSC or HGSS:
+   * Eevee evolves into Leafeon (#252) in Ilex Forest
+   * Eevee evolves into Glaceon (#253) in Ice Path
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
    * Wild Mankey on Routes 9 and 42
-   * Wild Primeape on Routes 9 and 42
+   * Wild Primeape on Routes 9 and 42, and in Cerulean Cave
    * Wild Mareep on Routes 32 and 43
    * Wild Flaaffy on Routes 42 and 43
-   * Wild Girafarig on Route 43
+   * Wild Girafarig on Routes 43 and 48
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
+   * Encounter Articuno in Seafoam Islands
    * Encounter Mewtwo in Cerulean Cave
+   * Wild Slugma in Burned Tower
+   * Wild Magmar in Burned Tower
+   * Wild Houndour on Routes 35 and 37
+   * Wild Murkrow on Routes 38 and 39 (at night)
+   * Wild Staryu on Route 40
+   * Wild Steelix in Cliff Cave and Silver Cave
+   * Wild Misdreavus in Cliff Cave
+   * Wild Teddiursa on Route 45 (in the morning)
+   * Wild Shellder in Whirl Islands
+   * Wild Octillery in Whirl Islands
+   * Wild Dewgong in Seafoam Islands
+   * Wild Jynx in Seafoam Islands
+   * Wild Ursaring outside Silver Cave
+   * Wild Skarmory outside Silver Cave
+   * Wild Sneasel outside Silver Cave
+   * Wild Houndoom outside Silver Cave
+   * Wild Kingdra in Silver Cave
+   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Wobbuffet, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
+   * Goldenrod Game Corner: Cubone, Clefairy, Wobbuffet
+   * Celadon Game Corner: Mr. Mime, Eevee, Porygon
+   * Trade Teddiursa (found in Dark Cave) for Elekid in Violet City
+   * Trade Cubone (bought at the Game Corner) for Diglett in Goldenrod City
+   * Trade Steelix (found in Cliff Cave) for Kangaskhan in Olivine City
+   * Trade Dragonair for Chansey in Blackthorn City
+   * Trade Pinsir for Heracross in Pewter City
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -78,6 +106,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Surf at Bicycle/Running Shoes speed
    * Eggs hatch at level 1
    * Maximum $9,999,999 money and 50,000 coins
+   * Maximum 30 items and 16 Balls in your bag
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
@@ -150,8 +179,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
-   * Add Bulbasaur, Charmander, and Squirtle to the Safari Zone
-   * Move Kangaskhan from Rock Tunnel to the Safari Zone
+   * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
    * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing) (who should give it to you? Prof. Oak, Lance, Lawrence III?)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
@@ -180,24 +208,37 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Add Leafeon and Glaceon in slots 252 and 253
-   * Replace Cleffa and Igglybuff with Sylveon and Togekiss
-   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff, Goldeen, Seaking} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
-      * Tentative plan: {Delibird, Sunkern, Sunflora, Lickitung, Goldeen, Seaking, Stantler} become {Weavile, Honchkrow, Mismagius, Munchlax, Yanmega, Mamoswine, Gliscor}
+   * Replace some Pokémon:
+      * Cleffa → Togekiss (evolves with Shiny Stone)
+      * Igglybuff → Sylveon (evolves knowing Charm with high happiness)
+      * Delibird → Weavile (evolves holding Razor Claw at night, which also has the same effect as Scope Lens)
+      * Wobbuffet → Mismagius (evolves with Dusk Stone)
+      * Goldeen → Honchkrow (evolves with Dusk Stone)
+      * Seaking → Munchlax (evolves with high friendship)
+      * Shuckle → Yanmega (Mania will give you an Aipom instead)
+      * Lickitung → Porygon-Z (evolves holding Dubious Disc, found behind the poster in Celadon Game Corner)
+      * Spearow → Magnezone (evolves at Rock Tunnel)
+      * Fearow → Gliscor (evolves holding Razor Fang at night, which also has the same effect as King's Rock)
+      * Sunkern → Mamoswine (evolves knowing AncientPower)
+      * Sunflora → Tangrowth (evolves knowing AncientPower)
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Catch starters and Surfing and Flying Pikachu in Yellow Forest (items: Light Ball, Miracle Seed, ThunderStone, Big Mushroom, berries)
-   * Catch SelfDestruct Munchlax and find fossils in Quiet Cave (items: SilverPowder, TwistedSpoon, Dusk Ball, Nugget)
+   * Yellow Forest Pokémon: **Chikorita**, **Cyndaquil**, **Totodile**, **Surfing and Flying Pikachu**, Pichu, Raichu, Marill
+   * Yellow Forest items: **Light Ball**, Miracle Seed, ThunderStone, Big Mushroom, berries
+   * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
+   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
+   * Cinnabar Volcano Pokémon: **Gengar**, Magmar
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
+   * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
    * Unlimited-use TMs from Gen V
    * Continuous Repel system from Gen V
    * Catch rate formula from Gen III
    * Money loss formula from Gen III when whiting out
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
-   * Replace some Kanto music with RBY and HGSS tracks (Kanto locations, Mewtwo battle, etc)
+   * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
@@ -206,6 +247,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
+   * Copycat's house 2F has weird tile collisions, despite using the same tileset as 1F (maybe revert the [trimmed tilesets](https://github.com/roukaour/pokecrystal/commit/a29b9ca3154ba9b194a0b621b5a7017e1b9400f3)?)
 * Aesthetic updates:
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
@@ -250,23 +292,23 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Bill at some point (five Eeveelutions and Porygon) (show him the three legendary dogs and he'll theorize that they originated from Eeveelutions and wants to battle)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
-   * Also include Green/Leaf somewhere (Victory Road?)
+      * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
+   * Add a store to buy room decorations that Mom doesn't
+   * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
-   * Catch more Gen II Pokémon in Johto and Gen I in Kanto
-     ([suggestions](http://www.serebiiforums.com/showthread.php?598425-Am-I-the-only-one-that-gets-mad-that))
-      * Make Houndour, Murkrow, Sneasel, Misdreavus, and Larvitar available earlier
    * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
+   * Gift a shiny Ditto somewhere
 
 
 ## Long-term
 
 * New storyline set 5 years after Gen II
-* Selection of 254 Pokémon from all generations
+* Selection of 253 Pokémon from all generations
 * Selection of 254 moves from all generations
 * Separate IVs and EVs for Special Attack and Special Defense
 * Separate shininess from IVs
@@ -279,13 +321,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Custom held items that prevent status conditions (based on unused game code)
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
-* Make Rock Smash an HM
+* Make Rock Smash an HM (actually Brick Break)
 * Evening from 5–7 PM (change morning from 4−9 AM)
 * First party Pokémon follows you like in Yellow or HGSS
-* Separate bag pockets for usable items and held items
+* Separate bag pockets for usable items and held items, or for Berries and/or healing items
 * Custom title screen and end credits
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
-* Replace Poké Seer byte with <gender:1, shiny:1, whichability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
+* Replace Poké Seer byte with <gender:1, shiny:1, which_ability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
 * Improved AI
 * Import some devamped music from future generations
 

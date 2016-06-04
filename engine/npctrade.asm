@@ -439,11 +439,11 @@ npctrade: MACRO
 ENDM
 
 
-	npctrade 0, ABRA,       MACHOP,     "Muscle@@@@@", $37, $66, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 0, BELLSPROUT, ONIX,       "Rocky@@@@@@", $96, $66, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 1, KRABBY,     VOLTORB,    "Volty@@@@@@", $98, $88, PRZCUREBERRY, 29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 3, DRAGONAIR,  DODRIO,     "Doris@@@@@@", $77, $66, SMOKE_BALL,   00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
-	npctrade 2, HAUNTER,    XATU,       "Paul@@@@@@@", $96, $86, MYSTERYBERRY, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $37, $66, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $96, $66, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $98, $88, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 3, DRAGONAIR,  CHANSEY,    "Doris@@@@@@", $77, $66, SMOKE_BALL,   00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $96, $86, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
 	npctrade 3, CHANSEY,    AERODACTYL, "Aeroy@@@@@@", $96, $66, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
 	npctrade 0, DUGTRIO,    MAGNETON,   "Maggie@@@@@", $96, $66, METAL_COAT,   50082, "Forest@@@@@", TRADE_EITHER_GENDER
 ; fcf38

@@ -250,3 +250,5 @@ AnimationPointers:
 	dw LugiaAnimation
 	dw HoOhAnimation
 	dw CelebiAnimation
+	dw LeafeonAnimation
+	dw GlaceonAnimation

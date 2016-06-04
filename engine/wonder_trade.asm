@@ -870,7 +870,7 @@ CheckValidLevel:
 	db 255, 255 ; Lugia
 	db 255, 255 ; Ho-Oh
 	db 255, 255 ; Celebi
-	db 255, 255 ; ?????
-	db 255, 255 ; ?????
+	db  20, 100 ; Leafeon
+	db  20, 100 ; Glaceon
 	db 255, 255 ; Egg
 	db 255, 255 ; ?????

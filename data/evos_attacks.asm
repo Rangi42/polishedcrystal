@@ -1805,6 +1805,8 @@ EeveeEvosAttacks:
 	db EVOLVE_ITEM, FIRE_STONE, FLAREON
 	db EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
 	db EVOLVE_HAPPINESS, TR_NITE, UMBREON
+	db EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
+	db EVOLVE_LOCATION, ICE_PATH, GLACEON
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, TAIL_WHIP
@@ -3405,4 +3407,32 @@ CelebiEvosAttacks:
 	db 30, FUTURE_SIGHT
 	db 40, BATON_PASS
 	db 50, PERISH_SONG
+	db 0 ; no more level-up moves
+
+LeafeonEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, TACKLE
+	db 1, TAIL_WHIP
+	db 8, SAND_ATTACK
+	db 16, RAZOR_LEAF
+	db 23, QUICK_ATTACK
+	db 30, SYNTHESIS
+	db 36, GIGA_DRAIN
+	db 42, SUNNY_DAY
+	db 47, SWORDS_DANCE
+	db 52, SOLARBEAM
+	db 0 ; no more level-up moves
+
+GlaceonEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, TACKLE
+	db 1, TAIL_WHIP
+	db 8, SAND_ATTACK
+	db 16, ICY_WIND
+	db 23, QUICK_ATTACK
+	db 30, BITE
+	db 36, ICE_BEAM
+	db 42, MIRROR_COAT
+	db 47, BARRIER
+	db 52, BLIZZARD
 	db 0 ; no more level-up moves

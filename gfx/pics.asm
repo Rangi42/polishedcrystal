@@ -722,6 +722,10 @@ UnownRBackpic:       INCBIN "gfx/pics/unown_r/back.2bpp.lz"
 
 SECTION "Pics 19", ROMX, BANK[PICS_19]
 
+LeafeonFrontpic:     INCBIN "gfx/pics/leafeon/front.2bpp.lz"
+LeafeonBackpic:      INCBIN "gfx/pics/leafeon/back.2bpp.lz"
+GlaceonFrontpic:     INCBIN "gfx/pics/glaceon/front.2bpp.lz"
+GlaceonBackpic:      INCBIN "gfx/pics/glaceon/back.2bpp.lz"
 MediumPic:           INCBIN "gfx/trainers/medium.2bpp.lz"
 FisherPic:           INCBIN "gfx/trainers/fisher.2bpp.lz"
 BeautyPic:           INCBIN "gfx/trainers/beauty.2bpp.lz"

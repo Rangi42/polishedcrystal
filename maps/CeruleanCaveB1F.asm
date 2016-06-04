@@ -1,5 +1,5 @@
 const_value set 2
-	const CERULEAN_CAVE_MEWTWO
+	const CERULEANCAVEB1F_MEWTWO
 	const CERULEANCAVEB1F_POKE_BALL1
 	const CERULEANCAVEB1F_POKE_BALL2
 
@@ -9,6 +9,16 @@ CeruleanCaveB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+CeruleanCaveMewtwo:
+	faceplayer
+	cry MEWTWO
+	loadwildmon MEWTWO, 80
+	startbattle
+	disappear CERULEANCAVEB1F_MEWTWO
+	setevent EVENT_CERULEAN_CAVE_MEWTWO
+	reloadmapafterbattle
+	end
 
 CeruleanCaveB1FMaxElixer:
 	itemball MAX_ELIXER
@@ -21,16 +31,6 @@ CeruleanCaveB1FHiddenMaxRevive:
 
 CeruleanCaveB1FHiddenUltraBall:
 	dwb EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
-
-CeruleanCaveMewtwo:
-	faceplayer
-	cry MEWTWO
-	loadwildmon MEWTWO, 80
-	startbattle
-	disappear CERULEAN_CAVE_MEWTWO
-	setevent EVENT_CERULEAN_CAVE_MEWTWO
-	reloadmapafterbattle
-	end
 
 CeruleanCaveB1F_MapEventHeader:
 	; filler

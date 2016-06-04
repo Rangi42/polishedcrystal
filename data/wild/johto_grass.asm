@@ -304,25 +304,25 @@
 	db 14, KOFFING
 	db 16, KOFFING
 	db 15, ZUBAT
-	db 12, KOFFING
-	db 16, KOFFING
+	db 12, SLUGMA
 	db 16, WEEZING
+	db 16, MAGMAR
 	; day
 	db 14, RATTATA
 	db 14, KOFFING
 	db 16, KOFFING
 	db 15, ZUBAT
-	db 12, KOFFING
-	db 16, KOFFING
+	db 12, SLUGMA
 	db 16, WEEZING
+	db 16, MAGMAR
 	; nite
 	db 14, RATTATA
 	db 14, KOFFING
 	db 16, KOFFING
 	db 15, ZUBAT
-	db 12, KOFFING
-	db 16, KOFFING
+	db 12, SLUGMA
 	db 16, WEEZING
+	db 16, MAGMAR
 
 	map NATIONAL_PARK
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -818,16 +818,16 @@
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; day
 	db 22, KRABBY
 	db 23, ZUBAT
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; nite
 	db 22, KRABBY
 	db 23, ZUBAT
@@ -845,16 +845,16 @@
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; day
 	db 22, KRABBY
 	db 23, ZUBAT
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; nite
 	db 22, KRABBY
 	db 23, ZUBAT
@@ -872,16 +872,16 @@
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; day
 	db 22, KRABBY
 	db 23, ZUBAT
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; nite
 	db 22, KRABBY
 	db 23, ZUBAT
@@ -899,16 +899,16 @@
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; day
 	db 22, KRABBY
 	db 23, ZUBAT
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; nite
 	db 22, KRABBY
 	db 23, ZUBAT
@@ -926,16 +926,16 @@
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; day
 	db 22, KRABBY
 	db 23, ZUBAT
 	db 22, SEEL
 	db 24, KRABBY
 	db 25, GOLBAT
-	db 24, SEEL
-	db 24, SEEL
+	db 24, SHELLDER
+	db 24, SHELLDER
 	; nite
 	db 22, KRABBY
 	db 23, ZUBAT
@@ -953,16 +953,16 @@
 	db 23, SEEL
 	db 25, KRABBY
 	db 26, GOLBAT
-	db 25, SEEL
-	db 25, SEEL
+	db 25, SHELLDER
+	db 25, SHELLDER
 	; day
 	db 23, KRABBY
 	db 24, ZUBAT
 	db 23, SEEL
 	db 25, KRABBY
 	db 26, GOLBAT
-	db 25, SEEL
-	db 25, SEEL
+	db 25, SHELLDER
+	db 25, SHELLDER
 	; nite
 	db 23, KRABBY
 	db 24, ZUBAT
@@ -980,16 +980,16 @@
 	db 24, SEEL
 	db 26, KRABBY
 	db 27, GOLBAT
-	db 26, SEEL
-	db 26, SEEL
+	db 26, SHELLDER
+	db 26, SHELLDER
 	; day
 	db 24, KRABBY
 	db 25, ZUBAT
 	db 24, SEEL
 	db 26, KRABBY
 	db 27, GOLBAT
-	db 26, SEEL
-	db 26, SEEL
+	db 26, SHELLDER
+	db 26, SHELLDER
 	; nite
 	db 24, KRABBY
 	db 25, ZUBAT
@@ -1007,16 +1007,16 @@
 	db 25, SEEL
 	db 27, KRABBY
 	db 28, GOLBAT
-	db 27, SEEL
-	db 27, SEEL
+	db 27, SHELLDER
+	db 27, SHELLDER
 	; day
 	db 25, KRABBY
 	db 26, ZUBAT
 	db 25, SEEL
 	db 27, KRABBY
 	db 28, GOLBAT
-	db 27, SEEL
-	db 27, SEEL
+	db 27, SHELLDER
+	db 27, SHELLDER
 	; nite
 	db 25, KRABBY
 	db 26, ZUBAT
@@ -1034,7 +1034,7 @@
 	db 42, ONIX
 	db 45, MAGMAR
 	db 45, GOLBAT
-	db 20, LARVITAR
+	db 15, LARVITAR
 	db 15, LARVITAR
 	; day
 	db 43, GRAVELER
@@ -1042,7 +1042,7 @@
 	db 42, ONIX
 	db 45, MAGMAR
 	db 45, GOLBAT
-	db 20, LARVITAR
+	db 15, LARVITAR
 	db 15, LARVITAR
 	; nite
 	db 43, GRAVELER
@@ -1061,7 +1061,7 @@
 	db 47, URSARING
 	db 46, PARASECT
 	db 48, PARASECT
-	db 15, LARVITAR
+	db 49, STEELIX
 	db 20, LARVITAR
 	; day
 	db 48, GOLBAT
@@ -1069,7 +1069,7 @@
 	db 47, URSARING
 	db 46, PARASECT
 	db 48, PARASECT
-	db 15, LARVITAR
+	db 49, STEELIX
 	db 20, LARVITAR
 	; nite
 	db 48, GOLBAT
@@ -1087,24 +1087,24 @@
 	db 48, ONIX
 	db 48, GRAVELER
 	db 50, URSARING
+	db 52, STEELIX
 	db 20, LARVITAR
-	db 15, LARVITAR
 	db 20, PUPITAR
 	; day
 	db 51, GOLBAT
 	db 48, ONIX
 	db 48, GRAVELER
 	db 50, URSARING
+	db 52, STEELIX
 	db 20, LARVITAR
-	db 15, LARVITAR
 	db 20, PUPITAR
 	; nite
 	db 51, GOLBAT
 	db 48, ONIX
 	db 48, GRAVELER
 	db 49, GOLBAT
+	db 52, STEELIX
 	db 45, GOLDUCK
-	db 53, GOLBAT
 	db 53, GOLBAT
 
 	map SILVER_CAVE_ITEM_ROOMS
@@ -1372,7 +1372,7 @@
 	db 12, DROWZEE
 	db 14, HOOTHOOT
 	db 13, PSYDUCK
-	db 10, ABRA
+	db 13, HOUNDOUR
 	db 12, JIGGLYPUFF
 	db 10, DITTO
 	db 12, YANMA
@@ -1425,11 +1425,11 @@
 	; nite
 	db 13, SPINARAK
 	db 14, STANTLER
-	db 15, HOOTHOOT
-	db 16, VULPIX
 	db 15, NOCTOWL
 	db 15, ARIADOS
-	db 15, ARIADOS
+	db 16, VULPIX
+	db 16, HOUNDOUR
+	db 16, HOUNDOUR
 
 	map ROUTE_38
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1455,8 +1455,8 @@
 	db 16, MAGNEMITE
 	db 16, NOCTOWL
 	db 16, MEOWTH
-	db 16, MEOWTH
-	db 16, MEOWTH
+	db 16, MURKROW
+	db 16, MURKROW
 
 	map ROUTE_39
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -1482,8 +1482,8 @@
 	db 16, MAGNEMITE
 	db 16, NOCTOWL
 	db 18, MEOWTH
-	db 18, MEOWTH
-	db 18, MEOWTH
+	db 18, MURKROW
+	db 18, MURKROW
 
 	map ROUTE_42
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1571,7 +1571,7 @@
 	; morn
 	db 23, GEODUDE
 	db 23, GRAVELER
-	db 24, GLIGAR
+	db 20, TEDDIURSA
 	db 25, DONPHAN
 	db 20, PHANPY
 	db 27, SKARMORY
@@ -1708,24 +1708,24 @@
 	db 42, PONYTA
 	db 42, ARBOK
 	db 44, RAPIDASH
-	db 41, DODUO
 	db 43, DODRIO
-	db 43, DODRIO
+	db 43, SKARMORY
+	db 43, URSARING
 	; day
 	db 41, TANGELA
 	db 42, PONYTA
 	db 42, ARBOK
 	db 44, RAPIDASH
-	db 41, DODUO
 	db 43, DODRIO
-	db 43, DODRIO
+	db 43, SKARMORY
+	db 43, URSARING
 	; nite
 	db 41, TANGELA
 	db 42, POLIWHIRL
 	db 42, GOLBAT
 	db 44, POLIWHIRL
-	db 40, GOLBAT
-	db 44, GOLBAT
-	db 44, GOLBAT
+	db 44, HOUNDOOM
+	db 43, SNEASEL
+	db 43, SNEASEL
 
 	db -1 ; end

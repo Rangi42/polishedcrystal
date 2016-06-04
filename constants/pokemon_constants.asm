@@ -252,6 +252,8 @@ const_value set 1
 	const LUGIA
 	const HO_OH
 	const CELEBI
+	const LEAFEON
+	const GLACEON
 
 const_value SET const_value + -1
 

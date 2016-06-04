@@ -158,11 +158,11 @@ ItemEffects: ; e73c
 	dw Item8E
 	dw MetalCoat
 	dw DragonFang
-	dw Item91
+	dw RepeatBall
 	dw Leftovers
-	dw Item93
-	dw Item94
-	dw Item95
+	dw TimerBall
+	dw QuickBall
+	dw DuskBall
 	dw Mysteryberry
 	dw DragonScale
 	dw BerserkGene
@@ -207,6 +207,10 @@ FastBall:
 FriendBall:
 MoonBall:
 LoveBall:
+RepeatBall:
+TimerBall:
+QuickBall:
+DuskBall:
 ParkBall: ; e8a2
 	ld a, [wBattleMode]
 	dec a
@@ -1094,13 +1098,48 @@ RepeatBallMultiplier:
 
 TimerBallMultiplier:
 ; multiply catch rate by (turns passed + 10) / 10, capped at 4
-	; TODO: implement Timer Ball
 	ld a, [wBattleTurnCounter]
 	cp 30
 	jr nc, .nocap
 	ld a, 30
 .nocap
 	add 10
+
+	; hMultiplier = turns passed + 10
+	ld [hMultiplier], a
+
+	; hMultiplicand = catch rate
+	xor a
+	ld [hMultiplicand + 0], a
+	ld [hMultiplicand + 1], a
+	ld a, b
+	ld [hMultiplicand + 2], a
+
+	; hProduct = catch rate * (turns passed + 10)
+	call Multiply
+
+	; hDividend = hProduct = catch rate * (turns passed + 10)
+	ld hl, hDividend
+	ld a, [hProduct + 0]
+	ld [hli], a
+	ld a, [hProduct + 1]
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+
+	; hDivisor = 10
+	ld a, 10
+	ld [hDivisor], a
+
+	; hQuotient = catch rate * (turns passed + 10) / 10
+	ld b, 4
+	call Divide
+
+	; b = hQuotient = catch rate * (turns passed + 10) / 10
+	ld a, [hQuotient + 2]
+	ld b, a
 
 	ret
 
@@ -2956,11 +2995,7 @@ Item8D:
 Item8E:
 MetalCoat:
 DragonFang:
-Item91:
 Leftovers:
-Item93:
-Item94:
-Item95:
 DragonScale:
 BerserkGene:
 Item99:

@@ -15,6 +15,17 @@ IcePathB3FNevermeltice:
 IcePathB3FRock:
 	jumpstd smashrock
 
+MapIcePathB3FIceRockScript:
+	jumptext Text_IcePathB3FIceRock
+
+Text_IcePathB3FIceRock:
+	text "The boulder is"
+	line "coated with ice."
+
+	para "It is bone-chill-"
+	line "ing to touch."
+	done
+
 IcePathB3F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -28,7 +39,8 @@ IcePathB3F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 3, 16, SIGNPOST_READ, MapIcePathB3FIceRockScript
 
 .PersonEvents:
 	db 2

@@ -419,17 +419,14 @@ IlexForestEther:
 IlexForestHiddenEther:
 	dwb EVENT_ILEX_FOREST_HIDDEN_ETHER, ETHER
 
-
 IlexForestHiddenSuperPotion:
 	dwb EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION, SUPER_POTION
-
 
 IlexForestHiddenFullHeal:
 	dwb EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
 
-IlexForestBoulder:
-; unused
-	jumpstd strengthboulder
+MapIlexForestMossRockScript:
+	jumptext Text_IlexForestMossRock
 
 MapIlexForestSignpost0Script:
 	jumptext Text_IlexForestSignpost0
@@ -850,6 +847,14 @@ Text_IlexForestLass:
 	cont "forest's guardian?"
 	done
 
+Text_IlexForestMossRock:
+	text "The rock is"
+	line "covered in moss."
+
+	para "It feels"
+	line "pleasantly cool."
+	done
+
 Text_IlexForestSignpost0:
 	text "Ilex Forest is"
 	line "so overgrown with"
@@ -956,11 +961,12 @@ IlexForest_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 5
+	db 6
 	signpost 17, 3, SIGNPOST_READ, MapIlexForestSignpost0Script
 	signpost 7, 11, SIGNPOST_ITEM, IlexForestHiddenEther
 	signpost 14, 22, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
 	signpost 17, 1, SIGNPOST_ITEM, IlexForestHiddenFullHeal
+	signpost 7, 18, SIGNPOST_READ, MapIlexForestMossRockScript
 	signpost 22, 8, SIGNPOST_UP, MapIlexForestSignpost4Script
 
 .PersonEvents:
@@ -974,5 +980,5 @@ IlexForest_MapEventHeader:
 	person_event SPRITE_LASS, 24, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestLassScript, EVENT_ILEX_FOREST_LASS
 	person_event SPRITE_YOUNGSTER, 1, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerBug_catcherWayne, -1
 	person_event SPRITE_POKE_BALL, 17, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestXAttack, EVENT_ILEX_FOREST_X_ATTACK
-	person_event SPRITE_POKE_BALL, 7, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestAntidote, EVENT_ILEX_FOREST_ANTIDOTE
+	person_event SPRITE_POKE_BALL, 15, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestAntidote, EVENT_ILEX_FOREST_ANTIDOTE
 	person_event SPRITE_POKE_BALL, 1, 27, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestEther, EVENT_ILEX_FOREST_ETHER
