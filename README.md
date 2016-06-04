@@ -208,9 +208,19 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Replace Cleffa and Igglybuff with Sylveon and Togekiss
-   * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff, Goldeen, Seaking} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
-      * Tentative plan: {Delibird, Sunkern, Sunflora, Lickitung, Goldeen, Seaking, Stantler} become {Weavile, Honchkrow, Mismagius, Munchlax, Yanmega, Mamoswine, Gliscor}
+   * Replace some Pokémon:
+      * Cleffa → Togekiss (evolves with Shiny Stone)
+      * Igglybuff → Sylveon (evolves with Shiny Stone, so it will have more than one use) (will have to fix bug where only first 3 Eevee evolution stones get "Able" text)
+      * Delibird → Weavile (evolves holding Razor Claw at night, which also has the same effect as Scope Lens)
+      * Wobbuffet → Mismagius (evolves with Dusk Stone)
+      * Goldeen → Honchkrow (evolves with Dusk Stone)
+      * Seaking → Munchlax (evolves with high friendship)
+      * Shuckle → Yanmega (Mania will give you an Aipom instead)
+      * Lickitung → Porygon-Z (evolves holding Dubious Disc, found behind the poster in Celadon Game Corner)
+      * Spearow → Magnezone (evolves at Rock Tunnel)
+      * Fearow → Gliscor (evolves holding Razor Fang at night, which also has the same effect as King's Rock)
+      * Sunkern → Mamoswine (evolves knowing AncientPower)
+      * Sunflora → Tangrowth (evolves knowing AncientPower)
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
