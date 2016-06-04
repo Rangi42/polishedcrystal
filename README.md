@@ -209,8 +209,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
    * Replace some Pokémon:
-      * Cleffa → Togekiss (evolves with Shiny Stone, or Sun Stone since without Sunkern only Gloom uses it)
-      * Igglybuff → Sylveon (evolves with Shiny Stone, so it will have more than one use) (will have to fix bug where only first 3 Eevee evolution stones get "Able" text)
+      * Cleffa → Togekiss (evolves with Shiny Stone)
+      * Igglybuff → Sylveon (evolves knowing Charm with high happiness)
       * Delibird → Weavile (evolves holding Razor Claw at night, which also has the same effect as Scope Lens)
       * Wobbuffet → Mismagius (evolves with Dusk Stone)
       * Goldeen → Honchkrow (evolves with Dusk Stone)
@@ -307,7 +307,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## Long-term
 
 * New storyline set 5 years after Gen II
-* Selection of 254 Pokémon from all generations
+* Selection of 253 Pokémon from all generations
 * Selection of 254 moves from all generations
 * Separate IVs and EVs for Special Attack and Special Defense
 * Separate shininess from IVs
@@ -320,13 +320,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Custom held items that prevent status conditions (based on unused game code)
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
-* Make Rock Smash an HM
+* Make Rock Smash an HM (actually Brick Break)
 * Evening from 5–7 PM (change morning from 4−9 AM)
 * First party Pokémon follows you like in Yellow or HGSS
-* Separate bag pockets for usable items and held items
+* Separate bag pockets for usable items and held items, or for Berries and/or healing items
 * Custom title screen and end credits
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
-* Replace Poké Seer byte with <gender:1, shiny:1, whichability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
+* Replace Poké Seer byte with <gender:1, shiny:1, which_ability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
 * Improved AI
 * Import some devamped music from future generations
 
