@@ -280,7 +280,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Bill at some point (five Eeveelutions and Porygon) (show him the three legendary dogs and he'll theorize that they originated from Eeveelutions and wants to battle)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
-   * Also include Green/Leaf somewhere (Victory Road?)
+   * Also include Green/Leaf somewhere (Victory Road? western mountain?) (Venusaur, Blastoise, Lapras, Jolteon, Hitmonlee, Alakazam)
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
