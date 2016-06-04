@@ -44,7 +44,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Updated type chart, Pokémon types, and move types
    * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
    * Added Moonblast, Play Rough, and Disarm Voice
-* Catch all 251 Pokémon without trading, some earlier than in GSC or HGSS:
+* Catch all ~~251~~ 253 Pokémon without trading, some earlier than in GSC or HGSS:
+   * Eevee evolves into Leafeon (#252) in Ilex Forest
+   * Eevee evolves into Glaceon (#253) in Ice Path
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
@@ -206,7 +208,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Add Leafeon and Glaceon in slots 252 and 253
    * Replace Cleffa and Igglybuff with Sylveon and Togekiss
    * Replace some of {Stantler, Lickitung, Delibird, Wobbuffet, Shuckle, Sunkern, Sunflora, Hoppip, Skiploom, Jumpluff, Goldeen, Seaking} with some of {Weavile, Yanmega, Porygon-Z, Gliscor, Mamoswine, Honchkrow, Mismagius, Munchlax, Mantyke}
       * Tentative plan: {Delibird, Sunkern, Sunflora, Lickitung, Goldeen, Seaking, Stantler} become {Weavile, Honchkrow, Mismagius, Munchlax, Yanmega, Mamoswine, Gliscor}

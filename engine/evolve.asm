@@ -82,6 +82,10 @@ endr
 	jp nz, .dont_evolve_2
 
 	ld a, b
+	cp EVOLVE_LOCATION
+	jp z, .location
+
+	ld a, b
 	cp EVOLVE_LEVEL
 	jp z, .level
 
@@ -173,6 +177,19 @@ endr
 	jp nz, .dont_evolve_3
 	jr .proceed
 
+.location
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	push hl
+	call GetWorldMapLocation
+	pop hl
+	ld b, a
+	ld a, [hli]
+	cp b
+	jp nz, .dont_evolve_3
+	jr .proceed
 
 .level
 	ld a, [hli]

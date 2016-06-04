@@ -254,3 +254,5 @@ EvosAttacksPointers:: ; 0x425b1
 	dw LugiaEvosAttacks
 	dw HoOhEvosAttacks
 	dw CelebiEvosAttacks
+	dw LeafeonEvosAttacks
+	dw GlaceonEvosAttacks

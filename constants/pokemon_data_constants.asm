@@ -279,6 +279,8 @@ const_value SET 1
 	const ICON_LUGIA
 	const ICON_HO_OH
 	const ICON_CELEBI
+	const ICON_LEAFEON
+	const ICON_GLACEON
 	const ICON_EGG
 
 ; evolution types
@@ -288,6 +290,7 @@ const_value SET 1
 	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
 	const EVOLVE_STAT
+	const EVOLVE_LOCATION
 
 
 BASE_HAPPINESS        EQU 70

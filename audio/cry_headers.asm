@@ -251,8 +251,8 @@ TyranitarCryHeader:   cry_header CRY_RAIKOU,     -$100,  $180
 LugiaCryHeader:       cry_header CRY_TYPHLOSION,  $000,  $100
 HoOhCryHeader:        cry_header CRY_AIPOM,       $000,  $180
 CelebiCryHeader:      cry_header CRY_ENTEI,       $14a,  $111
-CryHeader252:         cry_header CRY_NIDORAN_M,      0,     0
-CryHeader253:         cry_header CRY_NIDORAN_M,      0,     0
+LeafeonCryHeader:     cry_header CRY_VENONAT,     $03d,  $160
+GlaceonCryHeader:     cry_header CRY_VENONAT,     $0b0,  $16f
 CryHeader254:         cry_header CRY_NIDORAN_M,      0,     0
 CryHeader255:         cry_header CRY_NIDORAN_M,      0,     0
 ; f2d81

@@ -250,3 +250,5 @@ FramesPointers:
 	dw LugiaFrames
 	dw HoOhFrames
 	dw CelebiFrames
+	dw LeafeonFrames
+	dw GlaceonFrames

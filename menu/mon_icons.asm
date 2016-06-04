@@ -265,6 +265,8 @@ MonMenuIcons: ; 8eac4
 	db ICON_LUGIA
 	db ICON_HO_OH
 	db ICON_CELEBI
+	db ICON_LEAFEON
+	db ICON_GLACEON
 	db ICON_EGG
 
 IconPointers:
@@ -520,6 +522,8 @@ IconPointers:
 	dw LugiaIcon
 	dw HoOhIcon
 	dw CelebiIcon
+	dw LeafeonIcon
+	dw GlaceonIcon
 	dw EggIcon
 
 ; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta
