@@ -39,10 +39,10 @@
 	add_pic RattataBackpic
 	add_pic RaticateFrontpic
 	add_pic RaticateBackpic
-	add_pic SpearowFrontpic
-	add_pic SpearowBackpic
-	add_pic FearowFrontpic
-	add_pic FearowBackpic
+	add_pic MarillFrontpic
+	add_pic MarillBackpic
+	add_pic AzumarillFrontpic
+	add_pic AzumarillBackpic
 	add_pic EkansFrontpic
 	add_pic EkansBackpic
 	add_pic ArbokFrontpic
@@ -213,8 +213,6 @@
 	add_pic HitmonleeBackpic
 	add_pic HitmonchanFrontpic
 	add_pic HitmonchanBackpic
-	add_pic LickitungFrontpic
-	add_pic LickitungBackpic
 	add_pic KoffingFrontpic
 	add_pic KoffingBackpic
 	add_pic WeezingFrontpic
@@ -233,10 +231,12 @@
 	add_pic HorseaBackpic
 	add_pic SeadraFrontpic
 	add_pic SeadraBackpic
-	add_pic GoldeenFrontpic
-	add_pic GoldeenBackpic
-	add_pic SeakingFrontpic
-	add_pic SeakingBackpic
+	add_pic TogepiFrontpic
+	add_pic TogepiBackpic
+	add_pic TogeticFrontpic
+	add_pic TogeticBackpic
+	add_pic TogekissFrontpic
+	add_pic TogekissBackpic
 	add_pic StaryuFrontpic
 	add_pic StaryuBackpic
 	add_pic StarmieFrontpic
@@ -343,14 +343,12 @@
 	add_pic LanturnBackpic
 	add_pic PichuFrontpic
 	add_pic PichuBackpic
-	add_pic CleffaFrontpic
-	add_pic CleffaBackpic
-	add_pic IgglybuffFrontpic
-	add_pic IgglybuffBackpic
-	add_pic TogepiFrontpic
-	add_pic TogepiBackpic
-	add_pic TogeticFrontpic
-	add_pic TogeticBackpic
+	add_pic MunchlaxFrontpic
+	add_pic MunchlaxBackpic
+	add_pic MagnezoneFrontpic
+	add_pic MagnezoneBackpic
+	add_pic TangrowthFrontpic
+	add_pic TangrowthBackpic
 	add_pic NatuFrontpic
 	add_pic NatuBackpic
 	add_pic XatuFrontpic
@@ -363,10 +361,6 @@
 	add_pic AmpharosBackpic
 	add_pic BellossomFrontpic
 	add_pic BellossomBackpic
-	add_pic MarillFrontpic
-	add_pic MarillBackpic
-	add_pic AzumarillFrontpic
-	add_pic AzumarillBackpic
 	add_pic SudowoodoFrontpic
 	add_pic SudowoodoBackpic
 	add_pic PolitoedFrontpic
@@ -379,12 +373,10 @@
 	add_pic JumpluffBackpic
 	add_pic AipomFrontpic
 	add_pic AipomBackpic
-	add_pic SunkernFrontpic
-	add_pic SunkernBackpic
-	add_pic SunfloraFrontpic
-	add_pic SunfloraBackpic
 	add_pic YanmaFrontpic
 	add_pic YanmaBackpic
+	add_pic YanmegaFrontpic
+	add_pic YanmegaBackpic
 	add_pic WooperFrontpic
 	add_pic WooperBackpic
 	add_pic QuagsireFrontpic
@@ -393,19 +385,25 @@
 	add_pic EspeonBackpic
 	add_pic UmbreonFrontpic
 	add_pic UmbreonBackpic
+	add_pic LeafeonFrontpic
+	add_pic LeafeonBackpic
+	add_pic GlaceonFrontpic
+	add_pic GlaceonBackpic
 	add_pic MurkrowFrontpic
 	add_pic MurkrowBackpic
+	add_pic HonchkrowFrontpic
+	add_pic HonchkrowBackpic
 	add_pic SlowkingFrontpic
 	add_pic SlowkingBackpic
 	add_pic MisdreavusFrontpic
 	add_pic MisdreavusBackpic
+	add_pic MismagiusFrontpic
+	add_pic MismagiusBackpic
 
 	; Unown pics have their own table. See UnownPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
-	add_pic WobbuffetFrontpic
-	add_pic WobbuffetBackpic
 	add_pic GirafarigFrontpic
 	add_pic GirafarigBackpic
 	add_pic PinecoFrontpic
@@ -416,6 +414,8 @@
 	add_pic DunsparceBackpic
 	add_pic GligarFrontpic
 	add_pic GligarBackpic
+	add_pic GliscorFrontpic
+	add_pic GliscorBackpic
 	add_pic SteelixFrontpic
 	add_pic SteelixBackpic
 	add_pic SnubbullFrontpic
@@ -426,12 +426,12 @@
 	add_pic QwilfishBackpic
 	add_pic ScizorFrontpic
 	add_pic ScizorBackpic
-	add_pic ShuckleFrontpic
-	add_pic ShuckleBackpic
 	add_pic HeracrossFrontpic
 	add_pic HeracrossBackpic
 	add_pic SneaselFrontpic
 	add_pic SneaselBackpic
+	add_pic WeavileFrontpic
+	add_pic WeavileBackpic
 	add_pic TeddiursaFrontpic
 	add_pic TeddiursaBackpic
 	add_pic UrsaringFrontpic
@@ -444,14 +444,14 @@
 	add_pic SwinubBackpic
 	add_pic PiloswineFrontpic
 	add_pic PiloswineBackpic
+	add_pic MamoswineFrontpic
+	add_pic MamoswineBackpic
 	add_pic CorsolaFrontpic
 	add_pic CorsolaBackpic
 	add_pic RemoraidFrontpic
 	add_pic RemoraidBackpic
 	add_pic OctilleryFrontpic
 	add_pic OctilleryBackpic
-	add_pic DelibirdFrontpic
-	add_pic DelibirdBackpic
 	add_pic MantineFrontpic
 	add_pic MantineBackpic
 	add_pic SkarmoryFrontpic
@@ -504,9 +504,9 @@
 	add_pic HoOhBackpic
 	add_pic CelebiFrontpic
 	add_pic CelebiBackpic
-	add_pic LeafeonFrontpic
-	add_pic LeafeonBackpic
-	add_pic GlaceonFrontpic
-	add_pic GlaceonBackpic
+	add_pic SylveonFrontpic
+	add_pic SylveonBackpic
+	add_pic PorygonZFrontpic
+	add_pic PorygonZBackpic
 	add_pic EggPic
 	dbw -1, -1 ; unused

@@ -839,22 +839,24 @@ SometimesFleeMons: ; 3c59a
 	db MAGNEMITE
 	db GRIMER
 	db TANGELA
+	db TOGETIC
 	db MR__MIME
 	db EEVEE
 	db PORYGON
 	db DRATINI
 	db DRAGONAIR
-	db TOGETIC
 	db UMBREON
 	db UNOWN
 	db SNUBBULL
 	db HERACROSS
+	db MUNCHLAX
+	db LARVITAR
 	db -1
 
 OftenFleeMons: ; 3c5a8
+	db TOGEKISS
 	db CUBONE
 	db QUAGSIRE
-	db DELIBIRD
 	db PHANPY
 	db TEDDIURSA
 	db -1
@@ -6771,7 +6773,7 @@ CheckSleepingTreeMon: ; 3eb38
 	db WEEDLE
 	db KAKUNA
 	db BEEDRILL
-	db SPEAROW
+	db PIDGEY
 	db EKANS
 	db EXEGGCUTE
 	db LEDYBA

@@ -15,7 +15,7 @@
 	dba Cry_Drowzee
 	dba Cry_Pidgey
 	dba Cry_Bulbasaur
-	dba Cry_Spearow
+	dba Cry_Farfetch_d
 	dba Cry_Rhydon
 	dba Cry_Golem
 	dba Cry_Blastoise
@@ -23,7 +23,7 @@
 	dba Cry_Weedle
 	dba Cry_Caterpie
 	dba Cry_Ekans
-	dba Cry_Fearow
+	dba Cry_Shellder
 	dba Cry_Clefairy
 	dba Cry_Venonat
 	dba Cry_Lapras
@@ -51,7 +51,7 @@
 	dba Cry_Chikorita
 	dba Cry_Totodile
 	dba Cry_Gligar
-	dba Cry_Cleffa
+	dba Cry_Hoppip
 	dba Cry_Slugma
 	dba Cry_Ledyba
 	dba Cry_Entei
@@ -60,7 +60,7 @@
 	dba Cry_Typhlosion
 	dba Cry_Natu
 	dba Cry_Teddiursa
-	dba Cry_Sunflora
+	dba Cry_Remoraid
 	dba Cry_Ampharos
 	dba Cry_Magcargo
 	dba Cry_Pichu

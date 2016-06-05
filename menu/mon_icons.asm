@@ -34,8 +34,8 @@ MonMenuIcons: ; 8eac4
 	db ICON_PIDGEOT
 	db ICON_RATTATA
 	db ICON_RATICATE
-	db ICON_SPEAROW
-	db ICON_FEAROW
+	db ICON_MARILL
+	db ICON_AZUMARILL
 	db ICON_EKANS
 	db ICON_ARBOK
 	db ICON_PIKACHU
@@ -121,7 +121,6 @@ MonMenuIcons: ; 8eac4
 	db ICON_MAROWAK
 	db ICON_HITMONLEE
 	db ICON_HITMONCHAN
-	db ICON_LICKITUNG
 	db ICON_KOFFING
 	db ICON_WEEZING
 	db ICON_RHYHORN
@@ -131,8 +130,9 @@ MonMenuIcons: ; 8eac4
 	db ICON_KANGASKHAN
 	db ICON_HORSEA
 	db ICON_SEADRA
-	db ICON_GOLDEEN
-	db ICON_SEAKING
+	db ICON_TOGEPI
+	db ICON_TOGETIC
+	db ICON_TOGEKISS
 	db ICON_STARYU
 	db ICON_STARMIE
 	db ICON_MR__MIME
@@ -186,59 +186,59 @@ MonMenuIcons: ; 8eac4
 	db ICON_CHINCHOU
 	db ICON_LANTURN
 	db ICON_PICHU
-	db ICON_CLEFFA
-	db ICON_IGGLYBUFF
-	db ICON_TOGEPI
-	db ICON_TOGETIC
+	db ICON_MUNCHLAX
+	db ICON_MAGNEZONE
+	db ICON_TANGROWTH
 	db ICON_NATU
 	db ICON_XATU
 	db ICON_MAREEP
 	db ICON_FLAAFFY
 	db ICON_AMPHAROS
 	db ICON_BELLOSSOM
-	db ICON_MARILL
-	db ICON_AZUMARILL
 	db ICON_SUDOWOODO
 	db ICON_POLITOED
 	db ICON_HOPPIP
 	db ICON_SKIPLOOM
 	db ICON_JUMPLUFF
 	db ICON_AIPOM
-	db ICON_SUNKERN
-	db ICON_SUNFLORA
 	db ICON_YANMA
+	db ICON_YANMEGA
 	db ICON_WOOPER
 	db ICON_QUAGSIRE
 	db ICON_ESPEON
 	db ICON_UMBREON
+	db ICON_LEAFEON
+	db ICON_GLACEON
 	db ICON_MURKROW
+	db ICON_HONCHKROW
 	db ICON_SLOWKING
 	db ICON_MISDREAVUS
+	db ICON_MISMAGIUS
 	db ICON_UNOWN
-	db ICON_WOBBUFFET
 	db ICON_GIRAFARIG
 	db ICON_PINECO
 	db ICON_FORRETRESS
 	db ICON_DUNSPARCE
 	db ICON_GLIGAR
+	db ICON_GLISCOR
 	db ICON_STEELIX
 	db ICON_SNUBBULL
 	db ICON_GRANBULL
 	db ICON_QWILFISH
 	db ICON_SCIZOR
-	db ICON_SHUCKLE
 	db ICON_HERACROSS
 	db ICON_SNEASEL
+	db ICON_WEAVILE
 	db ICON_TEDDIURSA
 	db ICON_URSARING
 	db ICON_SLUGMA
 	db ICON_MAGCARGO
 	db ICON_SWINUB
 	db ICON_PILOSWINE
+	db ICON_MAMOSWINE
 	db ICON_CORSOLA
 	db ICON_REMORAID
 	db ICON_OCTILLERY
-	db ICON_DELIBIRD
 	db ICON_MANTINE
 	db ICON_SKARMORY
 	db ICON_HOUNDOUR
@@ -265,8 +265,8 @@ MonMenuIcons: ; 8eac4
 	db ICON_LUGIA
 	db ICON_HO_OH
 	db ICON_CELEBI
-	db ICON_LEAFEON
-	db ICON_GLACEON
+	db ICON_SYLVEON
+	db ICON_PORYGON_Z
 	db ICON_EGG
 
 IconPointers:
@@ -291,8 +291,8 @@ IconPointers:
 	dw PidgeotIcon
 	dw RattataIcon
 	dw RaticateIcon
-	dw SpearowIcon
-	dw FearowIcon
+	dw MarillIcon
+	dw AzumarillIcon
 	dw EkansIcon
 	dw ArbokIcon
 	dw PikachuIcon
@@ -378,7 +378,6 @@ IconPointers:
 	dw MarowakIcon
 	dw HitmonleeIcon
 	dw HitmonchanIcon
-	dw LickitungIcon
 	dw KoffingIcon
 	dw WeezingIcon
 	dw RhyhornIcon
@@ -388,8 +387,9 @@ IconPointers:
 	dw KangaskhanIcon
 	dw HorseaIcon
 	dw SeadraIcon
-	dw GoldeenIcon
-	dw SeakingIcon
+	dw TogepiIcon
+	dw TogeticIcon
+	dw TogekissIcon
 	dw StaryuIcon
 	dw StarmieIcon
 	dw MrMimeIcon
@@ -443,59 +443,59 @@ IconPointers:
 	dw ChinchouIcon
 	dw LanturnIcon
 	dw PichuIcon
-	dw CleffaIcon
-	dw IgglybuffIcon
-	dw TogepiIcon
-	dw TogeticIcon
+	dw MunchlaxIcon
+	dw MagnezoneIcon
+	dw TangrowthIcon
 	dw NatuIcon
 	dw XatuIcon
 	dw MareepIcon
 	dw FlaaffyIcon
 	dw AmpharosIcon
 	dw BellossomIcon
-	dw MarillIcon
-	dw AzumarillIcon
 	dw SudowoodoIcon
 	dw PolitoedIcon
 	dw HoppipIcon
 	dw SkiploomIcon
 	dw JumpluffIcon
 	dw AipomIcon
-	dw SunkernIcon
-	dw SunfloraIcon
 	dw YanmaIcon
+	dw YanmegaIcon
 	dw WooperIcon
 	dw QuagsireIcon
 	dw EspeonIcon
 	dw UmbreonIcon
+	dw LeafeonIcon
+	dw GlaceonIcon
 	dw MurkrowIcon
+	dw HonchkrowIcon
 	dw SlowkingIcon
 	dw MisdreavusIcon
+	dw MismagiusIcon
 	dw UnownIcon
-	dw WobbuffetIcon
 	dw GirafarigIcon
 	dw PinecoIcon
 	dw ForretressIcon
 	dw DunsparceIcon
 	dw GligarIcon
+	dw GliscorIcon
 	dw SteelixIcon
 	dw SnubbullIcon
 	dw GranbullIcon
 	dw QwilfishIcon
 	dw ScizorIcon
-	dw ShuckleIcon
 	dw HeracrossIcon
 	dw SneaselIcon
+	dw WeavileIcon
 	dw TeddiursaIcon
 	dw UrsaringIcon
 	dw SlugmaIcon
 	dw MagcargoIcon
 	dw SwinubIcon
 	dw PiloswineIcon
+	dw MamoswineIcon
 	dw CorsolaIcon
 	dw RemoraidIcon
 	dw OctilleryIcon
-	dw DelibirdIcon
 	dw MantineIcon
 	dw SkarmoryIcon
 	dw HoundourIcon
@@ -522,8 +522,8 @@ IconPointers:
 	dw LugiaIcon
 	dw HoOhIcon
 	dw CelebiIcon
-	dw LeafeonIcon
-	dw GlaceonIcon
+	dw SylveonIcon
+	dw PorygonZIcon
 	dw EggIcon
 
 ; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta

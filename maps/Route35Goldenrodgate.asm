@@ -30,8 +30,8 @@ OfficerScript_0x69d37:
 	writetext UnknownText_0x69eb8
 	playsound SFX_KEY_ITEM
 	waitsfx
-	givepoke SPEAROW, 10, NO_ITEM, 1, GiftSpearowName, GiftSpearowOTName
-	givepokeitem GiftSpearowMail
+	givepoke FARFETCH_D, 10, NO_ITEM, 1, GiftFarfetch_dName, GiftFarfetch_dOTName
+	givepokeitem GiftFarfetch_dMail
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
 	writetext UnknownText_0x69ed6
@@ -64,13 +64,13 @@ OfficerScript_0x69d37:
 	closetext
 	end
 
-GiftSpearowMail:
+GiftFarfetch_dMail:
 	db   FLOWER_MAIL
 	db   "Dark Cave leads"
 	next "to another road@"
-GiftSpearowName:
+GiftFarfetch_dName:
 	db "Kenya@"
-GiftSpearowOTName:
+GiftFarfetch_dOTName:
 	db "Randy@"
 
 	db 0

@@ -136,7 +136,7 @@ BATTLEANIMSTRUCT_LENGTH EQU const_value
     const ANIM_OBJ_6B
     const ANIM_OBJ_6C
     const ANIM_OBJ_6D
-    const ANIM_OBJ_SKY_ATTACK_FEAROW
+    const ANIM_OBJ_SKY_ATTACK_BIRD
     const ANIM_OBJ_LICK
     const ANIM_OBJ_70
     const ANIM_OBJ_71

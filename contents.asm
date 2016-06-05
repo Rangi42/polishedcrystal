@@ -69,6 +69,7 @@ PICS_16                   EQU $57
 PICS_17                   EQU $58
 PICS_18                   EQU $59
 PICS_19                   EQU $5A
+PICS_20                   EQU $5B
 
 
 ; maps.o

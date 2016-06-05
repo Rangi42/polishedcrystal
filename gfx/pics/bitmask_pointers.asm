@@ -19,8 +19,8 @@ BitmasksPointers:
 	dw PidgeotBitmasks
 	dw RattataBitmasks
 	dw RaticateBitmasks
-	dw SpearowBitmasks
-	dw FearowBitmasks
+	dw MarillBitmasks
+	dw AzumarillBitmasks
 	dw EkansBitmasks
 	dw ArbokBitmasks
 	dw PikachuBitmasks
@@ -106,7 +106,6 @@ BitmasksPointers:
 	dw MarowakBitmasks
 	dw HitmonleeBitmasks
 	dw HitmonchanBitmasks
-	dw LickitungBitmasks
 	dw KoffingBitmasks
 	dw WeezingBitmasks
 	dw RhyhornBitmasks
@@ -116,8 +115,9 @@ BitmasksPointers:
 	dw KangaskhanBitmasks
 	dw HorseaBitmasks
 	dw SeadraBitmasks
-	dw GoldeenBitmasks
-	dw SeakingBitmasks
+	dw TogepiBitmasks
+	dw TogeticBitmasks
+	dw TogekissBitmasks
 	dw StaryuBitmasks
 	dw StarmieBitmasks
 	dw MrMimeBitmasks
@@ -171,59 +171,59 @@ BitmasksPointers:
 	dw ChinchouBitmasks
 	dw LanturnBitmasks
 	dw PichuBitmasks
-	dw CleffaBitmasks
-	dw IgglybuffBitmasks
-	dw TogepiBitmasks
-	dw TogeticBitmasks
+	dw MunchlaxBitmasks
+	dw MagnezoneBitmasks
+	dw TangrowthBitmasks
 	dw NatuBitmasks
 	dw XatuBitmasks
 	dw MareepBitmasks
 	dw FlaaffyBitmasks
 	dw AmpharosBitmasks
 	dw BellossomBitmasks
-	dw MarillBitmasks
-	dw AzumarillBitmasks
 	dw SudowoodoBitmasks
 	dw PolitoedBitmasks
 	dw HoppipBitmasks
 	dw SkiploomBitmasks
 	dw JumpluffBitmasks
 	dw AipomBitmasks
-	dw SunkernBitmasks
-	dw SunfloraBitmasks
 	dw YanmaBitmasks
+	dw YanmegaBitmasks
 	dw WooperBitmasks
 	dw QuagsireBitmasks
 	dw EspeonBitmasks
 	dw UmbreonBitmasks
+	dw LeafeonBitmasks
+	dw GlaceonBitmasks
 	dw MurkrowBitmasks
+	dw HonchkrowBitmasks
 	dw SlowkingBitmasks
 	dw MisdreavusBitmasks
+	dw MismagiusBitmasks
 	dw UnownBitmasks
-	dw WobbuffetBitmasks
 	dw GirafarigBitmasks
 	dw PinecoBitmasks
 	dw ForretressBitmasks
 	dw DunsparceBitmasks
 	dw GligarBitmasks
+	dw GliscorBitmasks
 	dw SteelixBitmasks
 	dw SnubbullBitmasks
 	dw GranbullBitmasks
 	dw QwilfishBitmasks
 	dw ScizorBitmasks
-	dw ShuckleBitmasks
 	dw HeracrossBitmasks
 	dw SneaselBitmasks
+	dw WeavileBitmasks
 	dw TeddiursaBitmasks
 	dw UrsaringBitmasks
 	dw SlugmaBitmasks
 	dw MagcargoBitmasks
 	dw SwinubBitmasks
 	dw PiloswineBitmasks
+	dw MamoswineBitmasks
 	dw CorsolaBitmasks
 	dw RemoraidBitmasks
 	dw OctilleryBitmasks
-	dw DelibirdBitmasks
 	dw MantineBitmasks
 	dw SkarmoryBitmasks
 	dw HoundourBitmasks
@@ -250,5 +250,5 @@ BitmasksPointers:
 	dw LugiaBitmasks
 	dw HoOhBitmasks
 	dw CelebiBitmasks
-	dw LeafeonBitmasks
-	dw GlaceonBitmasks
+	dw SylveonBitmasks
+	dw PorygonZBitmasks

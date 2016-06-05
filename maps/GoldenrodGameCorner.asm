@@ -171,13 +171,31 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	loadmenudata .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .cubone
-	if_equal $2, .clefairy
-	if_equal $3, .wobbuffet
+	if_equal $1, .abra
+	if_equal $2, .cubone
+	if_equal $3, .clefairy
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
-.cubone
+.abra
 	checkcoins 200
+	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
+	pokenamemem ABRA, $0
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	waitsfx
+	playsound SFX_TRANSACTION
+	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
+	waitbutton
+	writebyte ABRA
+	special Special_GameCornerPrizeMonCheckDex
+	givepoke ABRA, 5
+	takecoins 200
+	jump .loop
+
+.cubone
+	checkcoins 800
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -190,12 +208,12 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	waitbutton
 	writebyte CUBONE
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke CUBONE, 5
-	takecoins 200
+	givepoke CUBONE, 10
+	takecoins 800
 	jump .loop
 
 .clefairy
-	checkcoins 800
+	checkcoins 1500
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
@@ -208,26 +226,8 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	waitbutton
 	writebyte CLEFAIRY
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke CLEFAIRY, 10
-	takecoins 800
-	jump .loop
-
-.wobbuffet
-	checkcoins 2100
-	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	checkcode VAR_PARTYCOUNT
-	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	pokenamemem WOBBUFFET, $0
-	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	waitsfx
-	playsound SFX_TRANSACTION
-	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
-	waitbutton
-	writebyte WOBBUFFET
-	special Special_GameCornerPrizeMonCheckDex
-	givepoke WOBBUFFET, 15
-	takecoins 2100
+	givepoke CLEFAIRY, 15
+	takecoins 1500
 	jump .loop
 
 
@@ -241,9 +241,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Cubone      200@"
-	db "Clefairy    800@"
-	db "Wobbuffet  2100@"
+	db "Abra        200@"
+	db "Cubone      800@"
+	db "Clefairy   1500@"
 	db "Cancel@"
 
 

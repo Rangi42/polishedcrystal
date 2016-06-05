@@ -19,8 +19,8 @@ AnimationExtraPointers:
 	dw PidgeotAnimationExtra
 	dw RattataAnimationExtra
 	dw RaticateAnimationExtra
-	dw SpearowAnimationExtra
-	dw FearowAnimationExtra
+	dw MarillAnimationExtra
+	dw AzumarillAnimationExtra
 	dw EkansAnimationExtra
 	dw ArbokAnimationExtra
 	dw PikachuAnimationExtra
@@ -106,7 +106,6 @@ AnimationExtraPointers:
 	dw MarowakAnimationExtra
 	dw HitmonleeAnimationExtra
 	dw HitmonchanAnimationExtra
-	dw LickitungAnimationExtra
 	dw KoffingAnimationExtra
 	dw WeezingAnimationExtra
 	dw RhyhornAnimationExtra
@@ -116,8 +115,9 @@ AnimationExtraPointers:
 	dw KangaskhanAnimationExtra
 	dw HorseaAnimationExtra
 	dw SeadraAnimationExtra
-	dw GoldeenAnimationExtra
-	dw SeakingAnimationExtra
+	dw TogepiAnimationExtra
+	dw TogeticAnimationExtra
+	dw TogekissAnimationExtra
 	dw StaryuAnimationExtra
 	dw StarmieAnimationExtra
 	dw MrMimeAnimationExtra
@@ -171,59 +171,59 @@ AnimationExtraPointers:
 	dw ChinchouAnimationExtra
 	dw LanturnAnimationExtra
 	dw PichuAnimationExtra
-	dw CleffaAnimationExtra
-	dw IgglybuffAnimationExtra
-	dw TogepiAnimationExtra
-	dw TogeticAnimationExtra
+	dw MunchlaxAnimationExtra
+	dw MagnezoneAnimationExtra
+	dw TangrowthAnimationExtra
 	dw NatuAnimationExtra
 	dw XatuAnimationExtra
 	dw MareepAnimationExtra
 	dw FlaaffyAnimationExtra
 	dw AmpharosAnimationExtra
 	dw BellossomAnimationExtra
-	dw MarillAnimationExtra
-	dw AzumarillAnimationExtra
 	dw SudowoodoAnimationExtra
 	dw PolitoedAnimationExtra
 	dw HoppipAnimationExtra
 	dw SkiploomAnimationExtra
 	dw JumpluffAnimationExtra
 	dw AipomAnimationExtra
-	dw SunkernAnimationExtra
-	dw SunfloraAnimationExtra
 	dw YanmaAnimationExtra
+	dw YanmegaAnimationExtra
 	dw WooperAnimationExtra
 	dw QuagsireAnimationExtra
 	dw EspeonAnimationExtra
 	dw UmbreonAnimationExtra
+	dw LeafeonAnimationExtra
+	dw GlaceonAnimationExtra
 	dw MurkrowAnimationExtra
+	dw HonchkrowAnimationExtra
 	dw SlowkingAnimationExtra
 	dw MisdreavusAnimationExtra
+	dw MismagiusAnimationExtra
 	dw UnownAnimationExtra
-	dw WobbuffetAnimationExtra
 	dw GirafarigAnimationExtra
 	dw PinecoAnimationExtra
 	dw ForretressAnimationExtra
 	dw DunsparceAnimationExtra
 	dw GligarAnimationExtra
+	dw GliscorAnimationExtra
 	dw SteelixAnimationExtra
 	dw SnubbullAnimationExtra
 	dw GranbullAnimationExtra
 	dw QwilfishAnimationExtra
 	dw ScizorAnimationExtra
-	dw ShuckleAnimationExtra
 	dw HeracrossAnimationExtra
 	dw SneaselAnimationExtra
+	dw WeavileAnimationExtra
 	dw TeddiursaAnimationExtra
 	dw UrsaringAnimationExtra
 	dw SlugmaAnimationExtra
 	dw MagcargoAnimationExtra
 	dw SwinubAnimationExtra
 	dw PiloswineAnimationExtra
+	dw MamoswineAnimationExtra
 	dw CorsolaAnimationExtra
 	dw RemoraidAnimationExtra
 	dw OctilleryAnimationExtra
-	dw DelibirdAnimationExtra
 	dw MantineAnimationExtra
 	dw SkarmoryAnimationExtra
 	dw HoundourAnimationExtra
@@ -250,5 +250,5 @@ AnimationExtraPointers:
 	dw LugiaAnimationExtra
 	dw HoOhAnimationExtra
 	dw CelebiAnimationExtra
-	dw LeafeonAnimationExtra
-	dw GlaceonAnimationExtra
+	dw SylveonAnimationExtra
+	dw PorygonZAnimationExtra

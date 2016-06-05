@@ -46,17 +46,17 @@ FishGroups: ; 92488
 .Lake_Old: ; 92525
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
-	db 100 percent,     GOLDEEN,    10
+	db 100 percent,     POLIWAG,    10
 .Lake_Good: ; 9252e
 	db  35 percent,     MAGIKARP,   20
-	db  70 percent,     GOLDEEN,    20
-	db  90 percent + 1, GOLDEEN,    20
+	db  70 percent,     POLIWAG,    20
+	db  90 percent + 1, POLIWAG,    20
 	db 100 percent,     0, 4
 .Lake_Super: ; 9253a
-	db  40 percent,     GOLDEEN,    40
+	db  40 percent,     POLIWAG,    40
 	db  70 percent,     0, 5
 	db  90 percent + 1, MAGIKARP,   40
-	db 100 percent,     SEAKING,    40
+	db 100 percent,     POLIWAG,    40
 
 .Pond_Old: ; 92546
 	db  70 percent + 1, MAGIKARP,   10
@@ -204,8 +204,8 @@ TimeFishGroups: ; 9266f
 	db CORSOLA,    40,  STARYU,     40
 	db SHELLDER,   20,  SHELLDER,   20
 	db SHELLDER,   40,  SHELLDER,   40
-	db GOLDEEN,    20,  GOLDEEN,    20
-	db GOLDEEN,    40,  GOLDEEN,    40
+	db PSYDUCK,    20,  PSYDUCK,    20
+	db PSYDUCK,    40,  PSYDUCK,    40
 	db POLIWAG,    20,  POLIWAG,    20
 	db POLIWAG,    40,  POLIWAG,    40
 	db DRATINI,    20,  DRATINI,    20
