@@ -161,7 +161,7 @@ Route47_MapEventHeader:
 	db 4
 	warp_def $15, $43, 2, CLIFF_EDGE_GATE
 	warp_def $15, $35, 1, CLIFF_CAVE
-	warp_def $11, $33, 2, CLIFF_CAVE
+	warp_def $11, $34, 2, CLIFF_CAVE
 	warp_def $1d, $35, 3, CLIFF_CAVE
 
 .XYTriggers:
