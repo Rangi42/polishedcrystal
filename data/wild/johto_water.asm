@@ -44,21 +44,21 @@
 
 	map MOUNT_MORTAR_1F_OUTSIDE
 	db 4 percent ; encounter rate
-	db 15, GOLDEEN
+	db 15, PSYDUCK
 	db 20, MARILL
-	db 20, SEAKING
+	db 20, GOLDUCK
 
 	map MOUNT_MORTAR_2F_INSIDE
 	db 2 percent ; encounter rate
-	db 20, GOLDEEN
+	db 20, PSYDUCK
 	db 25, MARILL
-	db 25, SEAKING
+	db 25, GOLDUCK
 
 	map MOUNT_MORTAR_B1F
 	db 2 percent ; encounter rate
-	db 15, GOLDEEN
+	db 15, PSYDUCK
 	db 20, MARILL
-	db 20, SEAKING
+	db 20, GOLDUCK
 
 	map WHIRL_ISLAND_SW
 	db 4 percent ; encounter rate
@@ -80,7 +80,7 @@
 
 	map SILVER_CAVE_ROOM_2
 	db 2 percent ; encounter rate
-	db 35, SEAKING
+	db 35, SEADRA
 	db 35, GOLDUCK
 	db 35, KINGDRA
 
@@ -152,9 +152,9 @@
 
 	map ROUTE_42
 	db 4 percent ; encounter rate
-	db 20, GOLDEEN
-	db 15, GOLDEEN
-	db 20, SEAKING
+	db 20, MAGIKARP
+	db 15, PSYDUCK
+	db 20, GOLDUCK
 
 	map ROUTE_43
 	db 2 percent ; encounter rate

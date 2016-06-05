@@ -29,9 +29,9 @@ GrampsScript_0x189538:
 	iftrue .ShowedStaryu
 	checkevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
 	iftrue .ShowedOddish
-	checkevent EVENT_SHOWED_LICKITUNG_TO_BILLS_GRANDPA
-	iftrue .ShowedLickitung
-	writetext BillsGrandpaLickitungText
+	checkevent EVENT_SHOWED_KANGASKHAN_TO_BILLS_GRANDPA
+	iftrue .ShowedKangaskhan
+	writetext BillsGrandpaKangaskhanText
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
@@ -39,10 +39,10 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse .SaidNo
-	if_not_equal LICKITUNG, .WrongPokemon
+	if_not_equal KANGASKHAN, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_LICKITUNG_TO_BILLS_GRANDPA
-	jump .ShowedLickitung
+	setevent EVENT_SHOWED_KANGASKHAN_TO_BILLS_GRANDPA
+	jump .ShowedKangaskhan
 
 .GotEverstone:
 	writetext BillsGrandpaOddishText
@@ -116,7 +116,7 @@ GrampsScript_0x189538:
 	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
 	jump .ShowedPichu
 
-.ShowedLickitung:
+.ShowedKangaskhan:
 	checkevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	iftrue .GotEverstone
 	scall .ReceiveItem
@@ -281,12 +281,12 @@ BillsGrandpaWrongPokemonText:
 	cont "told about."
 	done
 
-BillsGrandpaLickitungText:
+BillsGrandpaKangaskhanText:
 	text "My grandson Bill"
 	line "told me about a"
 
 	para "#mon that has a"
-	line "long tongue."
+	line "belly pouch."
 	done
 
 BillsGrandpaOddishText:

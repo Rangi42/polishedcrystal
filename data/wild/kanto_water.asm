@@ -2,9 +2,9 @@
 
 	map TOHJO_FALLS
 	db 4 percent ; encounter rate
-	db 20, GOLDEEN
+	db 20, POLIWAG
 	db 20, SLOWPOKE
-	db 20, SEAKING
+	db 20, POLIWHIRL
 
 	map VERMILION_PORT
 	db 2 percent ; encounter rate
@@ -14,9 +14,9 @@
 
 	map ROUTE_4
 	db 4 percent ; encounter rate
-	db 10, GOLDEEN
-	db 5, GOLDEEN
-	db 10, SEAKING
+	db 10, MAGIKARP
+	db 5, POLIWAG
+	db 10, POLIWHIRL
 
 	map ROUTE_6
 	db 2 percent ; encounter rate
@@ -26,15 +26,15 @@
 
 	map ROUTE_9
 	db 4 percent ; encounter rate
-	db 15, GOLDEEN
-	db 10, GOLDEEN
-	db 15, SEAKING
+	db 15, MAGIKARP
+	db 10, POLIWAG
+	db 15, POLIWHIRL
 
 	map ROUTE_10_NORTH
 	db 4 percent ; encounter rate
-	db 15, GOLDEEN
-	db 10, GOLDEEN
-	db 15, SEAKING
+	db 15, MAGIKARP
+	db 10, PSYDUCK
+	db 15, GOLDUCK
 
 	map ROUTE_12
 	db 6 percent ; encounter rate
@@ -68,21 +68,21 @@
 
 	map ROUTE_22
 	db 2 percent ; encounter rate
-	db 10, POLIWAG
+	db 10, MAGIKARP
 	db 5, POLIWAG
 	db 10, POLIWHIRL
 
 	map ROUTE_24
 	db 4 percent ; encounter rate
-	db 10, GOLDEEN
-	db 5, GOLDEEN
-	db 10, SEAKING
+	db 10, MAGIKARP
+	db 5, POLIWAG
+	db 10, POLIWHIRL
 
 	map ROUTE_25
 	db 4 percent ; encounter rate
-	db 10, GOLDEEN
-	db 5, GOLDEEN
-	db 10, SEAKING
+	db 10, MAGIKARP
+	db 5, POLIWAG
+	db 10, POLIWHIRL
 
 	map ROUTE_26
 	db 6 percent ; encounter rate
@@ -116,9 +116,9 @@
 
 	map CERULEAN_CITY
 	db 4 percent ; encounter rate
-	db 10, GOLDEEN
-	db 5, GOLDEEN
-	db 10, SEAKING
+	db 10, MAGIKARP
+	db 5, POLIWAG
+	db 10, POLIWHIRL
 
 	map VERMILION_CITY
 	db 6 percent ; encounter rate

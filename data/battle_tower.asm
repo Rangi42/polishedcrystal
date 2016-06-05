@@ -361,33 +361,6 @@ BattleTowerMons1:
 	db "BURAtuKI-@@"
 
 
-	db WOBBUFFET
-	db FOCUS_BAND
-	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
-	dw 0 ; OT ID
-	dt 1000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	db $7f, $d7 ; DVs
-	db 20, 20, 25, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 10 ; Level
-	db 0, 0 ; Status
-	bigdw 66 ; HP
-	bigdw 66 ; Max HP
-	bigdw 18 ; Atk
-	bigdw 25 ; Def
-	bigdw 19 ; Spd
-	bigdw 18 ; SAtk
-	bigdw 23 ; SDef
-	db "SO-NANSU@@@"
-
-
 	db KANGASKHAN
 	db MIRACLEBERRY
 	db REVERSAL, HYPER_BEAM, EARTHQUAKE, ATTRACT
@@ -1935,33 +1908,6 @@ BattleTowerMons3:
 	db "RINGUMA@@@@"
 
 
-	db FEAROW
-	db BRIGHTPOWDER
-	db MIRROR_MOVE, PURSUIT, PECK, SWIFT
-	dw 0 ; OT ID
-	dt 27000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	db $67, $77 ; DVs
-	db 20, 20, 35, 20 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 30 ; Level
-	db 0, 0 ; Status
-	bigdw 96 ; HP
-	bigdw 96 ; Max HP
-	bigdw 75 ; Atk
-	bigdw 61 ; Def
-	bigdw 82 ; Spd
-	bigdw 58 ; SAtk
-	bigdw 58 ; SDef
-	db "ONIDORIRU@@"
-
-
 	db PRIMEAPE
 	db MIRACLEBERRY
 	db LOW_KICK, KARATE_CHOP, REVERSAL, FOCUS_ENERGY
@@ -2180,33 +2126,6 @@ BattleTowerMons4:
 	bigdw 117 ; SAtk
 	bigdw 105 ; SDef
 	db "SUTA-MI-@@@"
-
-
-	db WOBBUFFET
-	db GOLD_BERRY
-	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
-	dw 0 ; OT ID
-	dt 64000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	db $bf, $e7 ; DVs
-	db 20, 20, 25, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 40 ; Level
-	db 0, 0 ; Status
-	bigdw 233 ; HP
-	bigdw 233 ; Max HP
-	bigdw 62 ; Atk
-	bigdw 85 ; Def
-	bigdw 64 ; Spd
-	bigdw 59 ; SAtk
-	bigdw 79 ; SDef
-	db "SO-NANSU@@@"
 
 
 	db GOLEM
@@ -2616,33 +2535,6 @@ BattleTowerMons5:
 	bigdw 157 ; SAtk
 	bigdw 127 ; SDef
 	db "HERUGA-@@@@"
-
-
-	db SHUCKLE
-	db LEFTOVERS
-	db SANDSTORM, REST, TOXIC, WRAP
-	dw 0 ; OT ID
-	dt 125000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 55000
-	db $fd, $cf ; DVs
-	db 10, 10, 10, 20 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 50 ; Level
-	db 0, 0 ; Status
-	bigdw 123 ; HP
-	bigdw 123 ; Max HP
-	bigdw 60 ; Atk
-	bigdw 278 ; Def
-	bigdw 52 ; Spd
-	bigdw 59 ; SAtk
-	bigdw 279 ; SDef
-	db "TUBOTUBO@@@"
 
 
 	db SNORLAX
@@ -3295,33 +3187,6 @@ BattleTowerMons6:
 	bigdw 203 ; SAtk
 	bigdw 161 ; SDef
 	db "SANDA-@@@@@"
-
-
-	db WOBBUFFET
-	db GOLD_BERRY
-	db COUNTER, MIRROR_COAT, DESTINY_BOND, SAFEGUARD
-	dw 0 ; OT ID
-	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	db $fd, $ed ; DVs
-	db 20, 20, 5, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 60 ; Level
-	db 0, 0 ; Status
-	bigdw 346 ; HP
-	bigdw 346 ; Max HP
-	bigdw 95 ; Atk
-	bigdw 122 ; Def
-	bigdw 94 ; Spd
-	bigdw 92 ; SAtk
-	bigdw 122 ; SDef
-	db "SO-NANSU@@@"
 
 
 	db AERODACTYL
@@ -5280,33 +5145,6 @@ BattleTowerMons9:
 	db "EA-MUDO@@@@"
 
 
-	db SHUCKLE
-	db LEFTOVERS
-	db TOXIC, WRAP, PROTECT, ENCORE
-	dw 0 ; OT ID
-	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	db $fe, $fe ; DVs
-	db 10, 20, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 90 ; Level
-	db 0, 0 ; Status
-	bigdw 203 ; HP
-	bigdw 203 ; Max HP
-	bigdw 99 ; Atk
-	bigdw 493 ; Def
-	bigdw 90 ; Spd
-	bigdw 97 ; SAtk
-	bigdw 493 ; SDef
-	db "TUBOTUBO@@@"
-
-
 	db FLAREON
 	db MINT_BERRY
 	db HYPER_BEAM, FLAMETHROWER, SHADOW_BALL, ROAR
@@ -5687,33 +5525,6 @@ BattleTowerMons10:
 	bigdw 198 ; SAtk
 	bigdw 218 ; SDef
 	db "HAGANE-RU@@"
-
-
-	db FEAROW
-	db KINGS_ROCK
-	db DRILL_PECK, STEEL_WING, HYPER_BEAM, MUD_SLAP
-	dw 0 ; OT ID
-	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	db $fd, $cf ; DVs
-	db 20, 25, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db 100 ; Level
-	db 0, 0 ; Status
-	bigdw 324 ; HP
-	bigdw 324 ; Max HP
-	bigdw 270 ; Atk
-	bigdw 216 ; Def
-	bigdw 287 ; Spd
-	bigdw 212 ; SAtk
-	bigdw 212 ; SDef
-	db "ONIDORIRU@@"
 
 
 	db MISDREAVUS

@@ -246,7 +246,7 @@
 	map ROUTE_3
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 5, SPEAROW
+	db 5, PIDGEY
 	db 5, RATTATA
 	db 8, EKANS
 	db 10, RATICATE
@@ -254,7 +254,7 @@
 	db 10, SANDSHREW
 	db 10, SANDSHREW
 	; day
-	db 5, SPEAROW
+	db 5, PIDGEY
 	db 5, RATTATA
 	db 8, EKANS
 	db 10, RATICATE
@@ -273,7 +273,7 @@
 	map ROUTE_4
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 5, SPEAROW
+	db 5, PIDGEY
 	db 5, RATTATA
 	db 8, EKANS
 	db 10, RATICATE
@@ -281,7 +281,7 @@
 	db 10, SANDSHREW
 	db 10, SANDSHREW
 	; day
-	db 5, SPEAROW
+	db 5, PIDGEY
 	db 5, RATTATA
 	db 8, EKANS
 	db 10, RATICATE
@@ -355,7 +355,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 17, RATTATA
-	db 17, SPEAROW
+	db 17, PIDGEY
 	db 18, SNUBBULL
 	db 18, VULPIX
 	db 18, JIGGLYPUFF
@@ -363,7 +363,7 @@
 	db 19, RATICATE
 	; day
 	db 17, RATTATA
-	db 17, SPEAROW
+	db 17, PIDGEY
 	db 18, SNUBBULL
 	db 18, VULPIX
 	db 18, JIGGLYPUFF
@@ -409,18 +409,18 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 15, RATTATA
-	db 15, SPEAROW
+	db 15, PIDGEY
 	db 15, RATICATE
 	db 15, MANKEY
-	db 15, FEAROW
+	db 15, PIDGEOTTO
 	db 18, MAROWAK
 	db 18, PRIMEAPE
 	; day
 	db 15, RATTATA
-	db 15, SPEAROW
+	db 15, PIDGEY
 	db 15, RATICATE
 	db 15, MANKEY
-	db 15, FEAROW
+	db 15, PIDGEOTTO
 	db 18, MAROWAK
 	db 18, PRIMEAPE
 	; nite
@@ -435,18 +435,18 @@
 	map ROUTE_10_NORTH
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 15, SPEAROW
+	db 15, PIDGEY
 	db 17, VOLTORB
 	db 15, RATICATE
-	db 15, FEAROW
+	db 15, PIDGEOTTO
 	db 15, MAROWAK
 	db 16, ELECTABUZZ
 	db 16, ELECTABUZZ
 	; day
-	db 15, SPEAROW
+	db 15, PIDGEY
 	db 17, VOLTORB
 	db 15, RATICATE
-	db 15, FEAROW
+	db 15, PIDGEOTTO
 	db 15, MAROWAK
 	db 18, ELECTABUZZ
 	db 18, ELECTABUZZ
@@ -571,17 +571,17 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 26, GRIMER
-	db 27, FEAROW
+	db 27, PIDGEOTTO
 	db 28, GRIMER
-	db 29, FEAROW
-	db 29, FEAROW
+	db 29, PIDGEOTTO
+	db 29, PIDGEOTTO
 	db 30, MUK
 	db 30, MUK
 	; day
 	db 26, GRIMER
-	db 27, FEAROW
+	db 27, PIDGEOTTO
 	db 28, GRIMER
-	db 29, FEAROW
+	db 29, PIDGEOTTO
 	db 29, SLUGMA
 	db 30, MUK
 	db 30, MUK
@@ -597,18 +597,18 @@
 	map ROUTE_17
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 30, FEAROW
+	db 30, PIDGEOTTO
 	db 29, GRIMER
 	db 31, GRIMER
-	db 32, FEAROW
+	db 32, PIDGEOTTO
 	db 33, GRIMER
 	db 33, MUK
 	db 33, MUK
 	; day
-	db 30, FEAROW
+	db 30, PIDGEOTTO
 	db 29, SLUGMA
 	db 29, GRIMER
-	db 32, FEAROW
+	db 32, PIDGEOTTO
 	db 32, SLUGMA
 	db 33, MUK
 	db 33, MUK
@@ -625,17 +625,17 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 26, GRIMER
-	db 27, FEAROW
+	db 27, PIDGEOTTO
 	db 28, GRIMER
-	db 29, FEAROW
-	db 29, FEAROW
+	db 29, PIDGEOTTO
+	db 29, PIDGEOTTO
 	db 30, MUK
 	db 30, MUK
 	; day
 	db 26, GRIMER
-	db 27, FEAROW
+	db 27, PIDGEOTTO
 	db 28, GRIMER
-	db 29, FEAROW
+	db 29, PIDGEOTTO
 	db 29, SLUGMA
 	db 30, MUK
 	db 30, MUK
@@ -679,20 +679,20 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 3, RATTATA
-	db 3, SPEAROW
-	db 5, SPEAROW
+	db 3, PIDGEY
+	db 5, PIDGEY
 	db 4, DODUO
 	db 6, PONYTA
-	db 7, FEAROW
-	db 7, FEAROW
+	db 7, PONYTA
+	db 8, PONYTA
 	; day
 	db 3, RATTATA
-	db 3, SPEAROW
-	db 5, SPEAROW
+	db 3, PIDGEY
+	db 5, PIDGEY
 	db 4, DODUO
 	db 6, PONYTA
-	db 7, FEAROW
-	db 7, FEAROW
+	db 7, PONYTA
+	db 8, PONYTA
 	; nite
 	db 3, RATTATA
 	db 3, POLIWAG
@@ -714,7 +714,7 @@
 	db 14, BUTTERFREE
 	; day
 	db 8, CATERPIE
-	db 12, SUNKERN
+	db 12, CATERPIE
 	db 10, CATERPIE
 	db 12, ABRA
 	db 10, BELLSPROUT
@@ -843,7 +843,7 @@
 	db 55, GOLBAT
 	db 55, PARASECT
 	db 56, PRIMEAPE
-	db 57, WOBBUFFET
+	db 57, TANGROWTH
 	db 58, MACHAMP
 	db 57, ELECTRODE
 	db 60, DITTO
@@ -851,7 +851,7 @@
 	db 55, GOLBAT
 	db 55, PARASECT
 	db 56, PRIMEAPE
-	db 57, WOBBUFFET
+	db 57, TANGROWTH
 	db 58, MACHAMP
 	db 57, ELECTRODE
 	db 60, DITTO
@@ -859,7 +859,7 @@
 	db 55, CROBAT
 	db 55, PARASECT
 	db 56, PRIMEAPE
-	db 57, WOBBUFFET
+	db 57, TANGROWTH
 	db 58, MACHAMP
 	db 57, ELECTRODE
 	db 60, DITTO
@@ -870,7 +870,7 @@
 	db 55, GOLBAT
 	db 55, PARASECT
 	db 56, MACHAMP
-	db 57, MAGNETON
+	db 57, MAGNEZONE
 	db 58, ALAKAZAM
 	db 57, ELECTRODE
 	db 60, DITTO
@@ -878,7 +878,7 @@
 	db 55, GOLBAT
 	db 55, PARASECT
 	db 56, MACHAMP
-	db 57, MAGNETON
+	db 57, MAGNEZONE
 	db 58, ALAKAZAM
 	db 57, ELECTRODE
 	db 60, DITTO
@@ -886,7 +886,7 @@
 	db 55, CROBAT
 	db 55, PARASECT
 	db 56, MACHAMP
-	db 57, MAGNETON
+	db 57, MAGNEZONE
 	db 58, ALAKAZAM
 	db 57, ELECTRODE
 	db 60, DITTO
@@ -895,7 +895,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 55, PARASECT
-	db 55, MAGNETON
+	db 55, MAGNEZONE
 	db 56, MACHAMP
 	db 57, GOLEM
 	db 58, ALAKAZAM
@@ -903,7 +903,7 @@
 	db 60, DITTO
 	; day
 	db 55, PARASECT
-	db 55, MAGNETON
+	db 55, MAGNEZONE
 	db 56, MACHAMP
 	db 57, GOLEM
 	db 58, ALAKAZAM
@@ -911,7 +911,7 @@
 	db 60, DITTO
 	; nite
 	db 55, PARASECT
-	db 55, MAGNETON
+	db 55, MAGNEZONE
 	db 56, MACHAMP
 	db 57, GOLEM
 	db 58, ALAKAZAM

@@ -11,29 +11,29 @@ ManiasHouse_MapScriptHeader:
 ManiaScript:
 	faceplayer
 	opentext
-	checkevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
+	checkevent EVENT_MANIA_TOOK_POM_POM_OR_LET_YOU_KEEP_HIM
 	iftrue .default_postevent
-	checkevent EVENT_GOT_SHUCKIE
-	iftrue .alreadyhaveshuckie
-	writetext ManiaText_AskLookAfterShuckle
+	checkevent EVENT_GOT_POM_POM
+	iftrue .alreadyhavepompom
+	writetext ManiaText_AskLookAfterAipom
 	yesorno
-	iffalse .refusetotakeshuckie
-	special SpecialGiveShuckle
+	iffalse .refusetotakepompom
+	special SpecialGiveAipom
 	iffalse .partyfull
-	writetext ManiaText_TakeCareOfShuckle
+	writetext ManiaText_TakeCareOfAipom
 	buttonsound
 	waitsfx
-	writetext ManiaText_GotShuckle
+	writetext ManiaText_GotAipom
 	playsound SFX_KEY_ITEM
 	waitsfx
 	closetext
-	setevent EVENT_GOT_SHUCKIE
+	setevent EVENT_GOT_POM_POM
 	end
 
-.alreadyhaveshuckie
-	checkflag ENGINE_SHUCKLE_GIVEN
-	iffalse .returnshuckie
-	writetext ManiaText_TakeCareOfShuckle
+.alreadyhavepompom
+	checkflag ENGINE_AIPOM_GIVEN
+	iffalse .returnpompom
+	writetext ManiaText_TakeCareOfAipom
 	waitbutton
 	closetext
 	end
@@ -44,17 +44,17 @@ ManiaScript:
 	closetext
 	end
 
-.refusetotakeshuckie
+.refusetotakepompom
 	writetext ManiaText_IfHeComesBack
 	waitbutton
 	closetext
 	end
 
-.returnshuckie
+.returnpompom
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
 	iffalse .refused
-	special SpecialReturnShuckle
+	special SpecialReturnAipom
 	if_equal $0, .wrong
 	if_equal $1, .refused
 	if_equal $3, .superhappy
@@ -62,20 +62,20 @@ ManiaScript:
 	writetext ManiaText_ThankYou
 	waitbutton
 	closetext
-	setevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
+	setevent EVENT_MANIA_TOOK_POM_POM_OR_LET_YOU_KEEP_HIM
 	end
 
 .wrong
-	writetext ManiaText_ShuckleNotThere
+	writetext ManiaText_AipomNotThere
 	waitbutton
 	closetext
 	end
 
 .superhappy
-	writetext ManiaText_ShuckleLikesYou
+	writetext ManiaText_AipomLikesYou
 	waitbutton
 	closetext
-	setevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
+	setevent EVENT_MANIA_TOOK_POM_POM_OR_LET_YOU_KEEP_HIM
 	end
 
 .refused
@@ -85,7 +85,7 @@ ManiaScript:
 	end
 
 .nothingleft
-	writetext ManiaText_ShuckleIsYourLastMon
+	writetext ManiaText_AipomIsYourLastMon
 	waitbutton
 	closetext
 	end
@@ -99,7 +99,7 @@ ManiaScript:
 UnknownScript_0x9d300:
 	jumpstd picturebookshelf
 
-ManiaText_AskLookAfterShuckle:
+ManiaText_AskLookAfterAipom:
 	text "I, I'm in shock!"
 
 	para "A guy about your"
@@ -123,14 +123,14 @@ ManiaText_AskLookAfterShuckle:
 	line "for a while?"
 	done
 
-ManiaText_TakeCareOfShuckle:
+ManiaText_TakeCareOfAipom:
 	text "Oh, thank you!"
 
 	para "Take good care of"
 	line "it, please!"
 	done
 
-ManiaText_GotShuckle:
+ManiaText_GotAipom:
 	text "<PLAYER> received a"
 	line "#mon."
 	done
@@ -159,13 +159,13 @@ ManiaText_ThankYou:
 	text "Thank you!"
 	done
 
-ManiaText_ShuckleNotThere:
+ManiaText_AipomNotThere:
 	text "Hey, you don't"
 	line "have my #mon"
 	cont "with you."
 	done
 
-ManiaText_ShuckleLikesYou:
+ManiaText_AipomLikesYou:
 	text "My #mon has"
 	line "come to like you."
 
@@ -190,7 +190,7 @@ ManiaText_HappinessSpeech:
 	line "treats them well."
 	done
 
-ManiaText_ShuckleIsYourLastMon:
+ManiaText_AipomIsYourLastMon:
 	text "If I take my #-"
 	line "mon back, what are"
 

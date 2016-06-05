@@ -639,8 +639,8 @@ CheckValidLevel:
 	db  36, 100 ; Pidgeot
 	db   1,  19 ; Rattata
 	db  20, 100 ; Raticate
-	db   1,  19 ; Spearow
-	db  20, 100 ; Fearow
+	db   1,  17 ; Marill
+	db  18, 100 ; Azumarill
 	db   1,  21 ; Ekans
 	db  22, 100 ; Arbok
 	db   1,  19 ; Pikachu
@@ -700,7 +700,7 @@ CheckValidLevel:
 	db   1,  36 ; Slowpoke
 	db  37, 100 ; Slowbro
 	db   1,  29 ; Magnemite
-	db  30, 100 ; Magneton
+	db  30,  49 ; Magneton
 	db   1, 100 ; Farfetch'd
 	db   1,  30 ; Doduo
 	db  31, 100 ; Dodrio
@@ -726,18 +726,18 @@ CheckValidLevel:
 	db  28, 100 ; Marowak
 	db  20, 100 ; Hitmonlee
 	db  20, 100 ; Hitmonchan
-	db   1, 100 ; Lickitung
 	db   1,  34 ; Koffing
 	db  35, 100 ; Weezing
 	db   1,  41 ; Rhyhorn
 	db  42,  54 ; Rhydon
 	db   1, 100 ; Chansey
-	db   1,  35 ; Tangela
+	db   1,  38 ; Tangela
 	db   1, 100 ; Kangaskhan
 	db   1,  31 ; Horsea
 	db  32,  54 ; Seadra
-	db   1,  32 ; Goldeen
-	db  33, 100 ; Seaking
+	db   1,  19 ; Togepi
+	db  20,  39 ; Togetic
+	db  40, 100 ; Togekiss
 	db   1,  32 ; Staryu
 	db  33, 100 ; Starmie
 	db   1, 100 ; Mr.Mime
@@ -791,59 +791,59 @@ CheckValidLevel:
 	db   1,  26 ; Chinchou
 	db  27, 100 ; Lanturn
 	db   1,  19 ; Pichu
-	db   1,  19 ; Cleffa
-	db   1,  19 ; Igglybuff
-	db   1,  19 ; Togepi
-	db  20, 100 ; Togetic
+	db   1,  19 ; Munchlax
+	db  50, 100 ; Magnezone
+	db  39, 100 ; Tangrowth
 	db   1,  24 ; Natu
 	db  25, 100 ; Xatu
 	db   1,  14 ; Mareep
 	db  15,  29 ; Flaaffy
 	db  30, 100 ; Ampharos
 	db  32, 100 ; Bellossom
-	db   1,  17 ; Marill
-	db  18, 100 ; Azumarill
 	db   1, 100 ; Sudowoodo
 	db  36, 100 ; Politoed
 	db   1,  17 ; Hoppip
 	db  18,  26 ; Skiploom
 	db  27, 100 ; Jumpluff
 	db   1, 100 ; Aipom
-	db   1,  19 ; Sunkern
-	db  20, 100 ; Sunflora
-	db   1, 100 ; Yanma
+	db   1,  37 ; Yanma
+	db  38, 100 ; Yanmega
 	db   1,  19 ; Wooper
 	db  20, 100 ; Quagsire
 	db  20, 100 ; Espeon
 	db  20, 100 ; Umbreon
-	db   1, 100 ; Murkrow
+	db  20, 100 ; Leafeon
+	db  20, 100 ; Glaceon
+	db   1,  19 ; Murkrow
+	db  20, 100 ; Honchkrow
 	db  37, 100 ; Slowking
-	db   1, 100 ; Misdreavus
+	db   1,  19 ; Misdreavus
+	db  20, 100 ; Mismagius
 	db   1, 100 ; Unown
-	db   1, 100 ; Wobbuffet
 	db   1, 100 ; Girafarig
 	db   1,  30 ; Pineco
 	db  31, 100 ; Forretress
 	db   1, 100 ; Dunsparce
-	db   1, 100 ; Gligar
+	db   1,  19 ; Gligar
+	db  20, 100 ; Gliscor
 	db  20, 100 ; Steelix
 	db   1,  22 ; Snubbull
 	db  23, 100 ; Granbull
 	db   1, 100 ; Qwilfish
 	db  20, 100 ; Scizor
-	db   1, 100 ; Shuckle
 	db   1, 100 ; Heracross
-	db   1, 100 ; Sneasel
+	db   1,  19 ; Sneasel
+	db  20, 100 ; Weavile
 	db   1,  29 ; Teddiursa
 	db  30, 100 ; Ursaring
 	db   1,  37 ; Slugma
 	db  38, 100 ; Magcargo
 	db   1,  32 ; Swinub
-	db  33, 100 ; Piloswine
+	db  33,  40 ; Piloswine
+	db  41, 100 ; Mamoswine
 	db   1, 100 ; Corsola
 	db   1,  24 ; Remoraid
 	db  25, 100 ; Octillery
-	db   1, 100 ; Delibird
 	db   1, 100 ; Mantine
 	db   1, 100 ; Skarmory
 	db   1,  23 ; Houndour
@@ -851,7 +851,7 @@ CheckValidLevel:
 	db  55, 100 ; Kingdra
 	db   1,  24 ; Phanpy
 	db  25, 100 ; Donphan
-	db  20, 100 ; Porygon2
+	db  20,  39 ; Porygon2
 	db   1, 100 ; Stantler
 	db   1, 100 ; Smeargle
 	db   1,  19 ; Tyrogue
@@ -870,7 +870,7 @@ CheckValidLevel:
 	db 255, 255 ; Lugia
 	db 255, 255 ; Ho-Oh
 	db 255, 255 ; Celebi
-	db  20, 100 ; Leafeon
-	db  20, 100 ; Glaceon
+	db  20, 100 ; Sylveon
+	db  40, 100 ; Porygon-Z
 	db 255, 255 ; Egg
 	db 255, 255 ; ?????

@@ -200,7 +200,7 @@ Route31MailRecipientScript:
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
 	buttonsound
-	checkpokeitem ReceivedSpearowMailText
+	checkpokeitem ReceivedFarfetch_dMailText
 	if_equal $0, .WrongMail
 	if_equal $2, .Refused
 	if_equal $3, .NoMail
@@ -244,7 +244,7 @@ Route31MailRecipientScript:
 	closetext
 	end
 
-ReceivedSpearowMailText:
+ReceivedFarfetch_dMailText:
 	db   "Dark Cave leads"
 	next "to another road@"
 

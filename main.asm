@@ -1499,7 +1499,7 @@ ConvertBerriesToBerryJuice: ; 2ede6
 	push af
 	push hl
 	ld a, [hl]
-	cp SHUCKLE
+	cp 255 ; Shuckle was removed from the game
 	jr nz, .loopMon
 	ld bc, MON_ITEM
 	add hl, bc
@@ -6103,7 +6103,7 @@ SECTION "bank47", ROMX, BANK[$47]
 
 INCLUDE "misc/battle_tower_47.asm"
 
-SECTION "bank5B", ROMX, BANK[$5B]
+SECTION "bank5B", ROMX ; $5B is now PICS_20
 
 INCLUDE "misc/mobile_5b.asm"
 INCLUDE "engine/link_trade.asm"

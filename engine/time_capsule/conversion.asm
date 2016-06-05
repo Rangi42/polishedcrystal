@@ -432,13 +432,13 @@ Pokered_MonIndices: ; fb91c
 	db KANGASKHAN
 	db NIDORAN_M
 	db CLEFAIRY
-	db SPEAROW
+	db MAGNEZONE
 	db VOLTORB
 	db NIDOKING
 	db SLOWBRO
 	db IVYSAUR
 	db EXEGGUTOR
-	db LICKITUNG
+	db PORYGON_Z
 	db EXEGGCUTE
 	db GRIMER
 	db GENGAR
@@ -459,10 +459,10 @@ Pokered_MonIndices: ; fb91c
 	db PINSIR
 	db TANGELA
 	db SCIZOR
-	db SHUCKLE
+	db YANMEGA
 	db GROWLITHE
 	db ONIX
-	db FEAROW
+	db GLISCOR
 	db PIDGEY
 	db SLOWPOKE
 	db KADABRA
@@ -513,7 +513,7 @@ Pokered_MonIndices: ; fb91c
 	db NINETALES
 	db PIKACHU
 	db RAICHU
-	db DELIBIRD
+	db WEAVILE
 	db MANTINE
 	db DRATINI
 	db DRAGONAIR
@@ -584,8 +584,8 @@ Pokered_MonIndices: ; fb91c
 	db VENUSAUR
 	db TENTACRUEL
 	db SMOOCHUM
-	db GOLDEEN
-	db SEAKING
+	db HONCHKROW
+	db MUNCHLAX
 	db ELEKID
 	db MAGBY
 	db MILTANK
@@ -639,8 +639,8 @@ Pokered_MonIndices: ; fb91c
 	db CHINCHOU
 	db LANTURN
 	db PICHU
-	db CLEFFA
-	db IGGLYBUFF
+	db TOGEKISS
+	db SYLVEON
 	db TOGEPI
 	db TOGETIC
 	db NATU
@@ -657,8 +657,8 @@ Pokered_MonIndices: ; fb91c
 	db SKIPLOOM
 	db JUMPLUFF
 	db AIPOM
-	db SUNKERN
-	db SUNFLORA
+	db MAMOSWINE
+	db TANGROWTH
 	db YANMA
 	db WOOPER
 	db QUAGSIRE
@@ -668,7 +668,7 @@ Pokered_MonIndices: ; fb91c
 	db SLOWKING
 	db MISDREAVUS
 	db UNOWN
-	db WOBBUFFET
+	db MISMAGIUS
 	db GIRAFARIG
 	db PINECO
 	db FORRETRESS
@@ -678,6 +678,6 @@ Pokered_MonIndices: ; fb91c
 	db SNUBBULL
 	db GRANBULL
 	db QWILFISH
-	db WOBBUFFET
-	db WOBBUFFET
+	db LEAFEON
+	db GLACEON
 ; fba18

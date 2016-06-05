@@ -19,7 +19,7 @@ EggMovePointers:: ; 0x23b11
 	dw NoEggMoves
 	dw RattataEggMoves
 	dw NoEggMoves
-	dw SpearowEggMoves
+	dw MarillEggMoves
 	dw NoEggMoves
 	dw EkansEggMoves
 	dw NoEggMoves
@@ -106,7 +106,6 @@ EggMovePointers:: ; 0x23b11
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw LickitungEggMoves
 	dw KoffingEggMoves
 	dw NoEggMoves
 	dw RhyhornEggMoves
@@ -116,7 +115,8 @@ EggMovePointers:: ; 0x23b11
 	dw KangaskhanEggMoves
 	dw HorseaEggMoves
 	dw NoEggMoves
-	dw GoldeenEggMoves
+	dw TogepiEggMoves
+	dw NoEggMoves
 	dw NoEggMoves
 if _CRYSTAL
 	dw NoEggMoves
@@ -145,7 +145,7 @@ endc
 	dw KabutoEggMoves
 	dw NoEggMoves
 	dw AerodactylEggMoves
-	dw SnorlaxEggMoves
+	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
@@ -175,9 +175,8 @@ endc
 	dw ChinchouEggMoves
 	dw NoEggMoves
 	dw PichuEggMoves
-	dw CleffaEggMoves
-	dw IgglybuffEggMoves
-	dw TogepiEggMoves
+	dw MunchlaxEggMoves
+	dw NoEggMoves
 	dw NoEggMoves
 	dw NatuEggMoves
 	dw NoEggMoves
@@ -185,22 +184,22 @@ endc
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw MarillEggMoves
-	dw NoEggMoves
 	dw SudowoodoEggMoves
 	dw NoEggMoves
 	dw HoppipEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw AipomEggMoves
-	dw NoEggMoves
-	dw NoEggMoves
 	dw YanmaEggMoves
+	dw NoEggMoves
 	dw WooperEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
 	dw MurkrowEggMoves
+	dw NoEggMoves
 	dw NoEggMoves
 	dw MisdreavusEggMoves
 	dw NoEggMoves
@@ -211,23 +210,24 @@ endc
 	dw DunsparceEggMoves
 	dw GligarEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
 	dw SnubbullEggMoves
 	dw NoEggMoves
 	dw QwilfishEggMoves
 	dw NoEggMoves
-	dw ShuckleEggMoves
 	dw HeracrossEggMoves
 	dw SneaselEggMoves
+	dw NoEggMoves
 	dw TeddiursaEggMoves
 	dw NoEggMoves
 	dw SlugmaEggMoves
 	dw NoEggMoves
 	dw SwinubEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
 	dw CorsolaEggMoves
 	dw RemoraidEggMoves
 	dw NoEggMoves
-	dw DelibirdEggMoves
 	dw MantineEggMoves
 	dw SkarmoryEggMoves
 	dw HoundourEggMoves
@@ -249,6 +249,8 @@ endc
 	dw NoEggMoves
 	dw NoEggMoves
 	dw LarvitarEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves

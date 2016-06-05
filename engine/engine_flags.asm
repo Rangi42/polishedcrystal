@@ -195,7 +195,7 @@ ENDM
 	engine_flag DailyFlags, 2 ; special wilddata?
 	engine_flag DailyFlags, 3 ; time capsule (24h wait)
 	engine_flag DailyFlags, 4 ; all fruit trees
-	engine_flag DailyFlags, 5 ; shuckle given
+	engine_flag DailyFlags, 5 ; aipom given
 	engine_flag DailyFlags, 6 ; goldenrod underground merchant closed
 	engine_flag DailyFlags, 7 ; fought in trainer hall today
 

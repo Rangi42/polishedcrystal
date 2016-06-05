@@ -21,8 +21,8 @@ const_value set 1
 	const PIDGEOT
 	const RATTATA
 	const RATICATE
-	const SPEAROW
-	const FEAROW
+	const MARILL
+	const AZUMARILL
 	const EKANS
 	const ARBOK
 	const PIKACHU
@@ -108,7 +108,6 @@ const_value set 1
 	const MAROWAK
 	const HITMONLEE
 	const HITMONCHAN
-	const LICKITUNG
 	const KOFFING
 	const WEEZING
 	const RHYHORN
@@ -118,8 +117,9 @@ const_value set 1
 	const KANGASKHAN
 	const HORSEA
 	const SEADRA
-	const GOLDEEN
-	const SEAKING
+	const TOGEPI
+	const TOGETIC
+	const TOGEKISS
 	const STARYU
 	const STARMIE
 	const MR__MIME
@@ -173,59 +173,59 @@ const_value set 1
 	const CHINCHOU
 	const LANTURN
 	const PICHU
-	const CLEFFA
-	const IGGLYBUFF
-	const TOGEPI
-	const TOGETIC
+	const MUNCHLAX
+	const MAGNEZONE
+	const TANGROWTH
 	const NATU
 	const XATU
 	const MAREEP
 	const FLAAFFY
 	const AMPHAROS
 	const BELLOSSOM
-	const MARILL
-	const AZUMARILL
 	const SUDOWOODO
 	const POLITOED
 	const HOPPIP
 	const SKIPLOOM
 	const JUMPLUFF
 	const AIPOM
-	const SUNKERN
-	const SUNFLORA
 	const YANMA
+	const YANMEGA
 	const WOOPER
 	const QUAGSIRE
 	const ESPEON
 	const UMBREON
+	const LEAFEON
+	const GLACEON
 	const MURKROW
+	const HONCHKROW
 	const SLOWKING
 	const MISDREAVUS
+	const MISMAGIUS
 	const UNOWN
-	const WOBBUFFET
 	const GIRAFARIG
 	const PINECO
 	const FORRETRESS
 	const DUNSPARCE
 	const GLIGAR
+	const GLISCOR
 	const STEELIX
 	const SNUBBULL
 	const GRANBULL
 	const QWILFISH
 	const SCIZOR
-	const SHUCKLE
 	const HERACROSS
 	const SNEASEL
+	const WEAVILE
 	const TEDDIURSA
 	const URSARING
 	const SLUGMA
 	const MAGCARGO
 	const SWINUB
 	const PILOSWINE
+	const MAMOSWINE
 	const CORSOLA
 	const REMORAID
 	const OCTILLERY
-	const DELIBIRD
 	const MANTINE
 	const SKARMORY
 	const HOUNDOUR
@@ -252,8 +252,8 @@ const_value set 1
 	const LUGIA
 	const HO_OH
 	const CELEBI
-	const LEAFEON
-	const GLACEON
+	const SYLVEON
+	const PORYGON_Z
 
 const_value SET const_value + -1
 

@@ -555,15 +555,15 @@ TreeMons: ; b82e8
 ;	db  %, species, level
 
 TreeMons1: ; b82fa
-	db 50, SPEAROW,    10
-	db 15, SPEAROW,    10
-	db 15, SPEAROW,    10
+	db 50, PIDGEY,    10
+	db 15, PIDGEY,    10
+	db 15, PIDGEY,    10
 	db 10, AIPOM,      10
 	db  5, AIPOM,      10
 	db  5, AIPOM,      10
 	db -1
 
-	db 50, SPEAROW,    10
+	db 50, PIDGEY,    10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
 	db 10, AIPOM,      10
@@ -572,15 +572,15 @@ TreeMons1: ; b82fa
 	db -1
 
 TreeMons2: ; b8320
-	db 50, SPEAROW,    10
+	db 50, PIDGEY,    10
 	db 15, EKANS,      10
-	db 15, SPEAROW,    10
+	db 15, PIDGEY,    10
 	db 10, AIPOM,      10
 	db  5, AIPOM,      10
 	db  5, AIPOM,      10
 	db -1
 
-	db 50, SPEAROW,    10
+	db 50, PIDGEY,    10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
 	db 10, AIPOM,      10
@@ -657,8 +657,8 @@ TreeMons6: ; b83b8
 	db -1
 
 RockMons: ; b83de
-	db 90, KRABBY,     15
-	db 10, SHUCKLE,    15
+	db 70, KRABBY,     15
+	db 30, GEODUDE,    15
 	db -1
 ; b83e5
 

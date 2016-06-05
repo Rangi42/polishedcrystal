@@ -337,7 +337,7 @@
 	; day
 	db 12, NIDORAN_F
 	db 12, NIDORAN_M
-	db 14, SUNKERN
+	db 14, SENTRET
 	db 13, PIDGEY
 	db 10, CATERPIE
 	db 10, WEEDLE
@@ -694,10 +694,10 @@
 	db 22, GOLBAT
 	db 22, GOLBAT
 	; nite
-	db 21, DELIBIRD
+	db 21, ZUBAT
 	db 22, ZUBAT
 	db 22, GOLBAT
-	db 23, DELIBIRD
+	db 23, GOLBAT
 	db 24, GOLBAT
 	db 22, GOLBAT
 	db 22, GOLBAT
@@ -721,10 +721,10 @@
 	db 23, GOLBAT
 	db 22, JYNX
 	; nite
-	db 22, DELIBIRD
+	db 22, ZUBAT
 	db 23, ZUBAT
 	db 23, GOLBAT
-	db 24, DELIBIRD
+	db 24, GOLBAT
 	db 25, GOLBAT
 	db 23, GOLBAT
 	db 22, SNEASEL
@@ -748,10 +748,10 @@
 	db 22, JYNX
 	db 24, JYNX
 	; nite
-	db 23, DELIBIRD
+	db 23, ZUBAT
 	db 24, ZUBAT
 	db 24, GOLBAT
-	db 25, DELIBIRD
+	db 25, GOLBAT
 	db 26, GOLBAT
 	db 22, SNEASEL
 	db 24, SNEASEL
@@ -775,10 +775,10 @@
 	db 22, JYNX
 	db 24, JYNX
 	; nite
-	db 23, DELIBIRD
+	db 23, ZUBAT
 	db 24, ZUBAT
 	db 24, GOLBAT
-	db 25, DELIBIRD
+	db 25, GOLBAT
 	db 26, GOLBAT
 	db 22, SNEASEL
 	db 24, SNEASEL
@@ -802,10 +802,10 @@
 	db 24, JYNX
 	db 26, JYNX
 	; nite
-	db 24, DELIBIRD
+	db 24, ZUBAT
 	db 25, ZUBAT
 	db 25, GOLBAT
-	db 26, DELIBIRD
+	db 26, GOLBAT
 	db 22, SNEASEL
 	db 24, SNEASEL
 	db 26, SNEASEL
@@ -1168,25 +1168,25 @@
 	db 23, ZUBAT
 	db 25, GRAVELER
 	db 25, URSARING
+	db 23, GOLBAT
 	db 20, TEDDIURSA
-	db 23, GOLBAT
-	db 23, GOLBAT
+	db 23, DUNSPARCE
 	; day
 	db 23, GEODUDE
 	db 23, ZUBAT
 	db 25, GRAVELER
 	db 25, URSARING
-	db 30, URSARING
+	db 25, GOLBAT
 	db 23, GOLBAT
-	db 23, GOLBAT
+	db 23, DUNSPARCE
 	; nite
 	db 23, GEODUDE
 	db 23, ZUBAT
 	db 25, GRAVELER
-	db 20, WOBBUFFET
-	db 25, WOBBUFFET
+	db 20, GRAVELER
+	db 25, GOLBAT
 	db 23, GOLBAT
-	db 23, GOLBAT
+	db 23, DUNSPARCE
 
 	map ROUTE_29
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1300,7 +1300,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 6, RATTATA
-	db 6, SPEAROW
+	db 6, PIDGEY
 	db 6, GEODUDE
 	db 6, HOPPIP
 	db 7, EKANS
@@ -1308,7 +1308,7 @@
 	db 7, HOPPIP
 	; day
 	db 6, RATTATA
-	db 6, SPEAROW
+	db 6, PIDGEY
 	db 6, GEODUDE
 	db 6, HOPPIP
 	db 7, EKANS
@@ -1492,7 +1492,7 @@
 	db 15, MANKEY
 	db 15, RATTATA
 	db 16, RATICATE
-	db 14, SPEAROW
+	db 14, PIDGEY
 	db 16, ARBOK
 	db 16, PRIMEAPE
 	; day
@@ -1500,7 +1500,7 @@
 	db 15, MANKEY
 	db 15, RATTATA
 	db 16, RATICATE
-	db 14, SPEAROW
+	db 14, PIDGEY
 	db 16, ARBOK
 	db 16, PRIMEAPE
 	; nite
@@ -1543,20 +1543,20 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 23, TANGELA
-	db 22, LICKITUNG
+	db 22, TANGELA
 	db 22, BELLSPROUT
 	db 24, WEEPINBELL
-	db 24, LICKITUNG
-	db 26, LICKITUNG
-	db 26, LICKITUNG
+	db 24, FURRET
+	db 26, FURRET
+	db 26, FURRET
 	; day
 	db 23, TANGELA
-	db 22, LICKITUNG
+	db 22, TANGELA
 	db 22, BELLSPROUT
 	db 24, WEEPINBELL
-	db 24, LICKITUNG
-	db 26, LICKITUNG
-	db 26, LICKITUNG
+	db 24, FURRET
+	db 26, FURRET
+	db 26, FURRET
 	; nite
 	db 23, TANGELA
 	db 22, POLIWAG
@@ -1597,7 +1597,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 2, GEODUDE
-	db 2, SPEAROW
+	db 2, PIDGEY
 	db 3, GEODUDE
 	db 3, RATTATA
 	db 2, PHANPY
@@ -1605,7 +1605,7 @@
 	db 2, RATTATA
 	; day
 	db 2, GEODUDE
-	db 2, SPEAROW
+	db 2, PIDGEY
 	db 3, GEODUDE
 	db 3, RATTATA
 	db 2, RATTATA
@@ -1628,24 +1628,24 @@
 	db 25, MILTANK
 	db 22, GLOOM
 	db 22, RATICATE
-	db 21, SPEAROW
-	db 24, FEAROW
+	db 21, FARFETCH_D
+	db 24, FARFETCH_D
 	; day
 	db 27, DITTO
 	db 25, FARFETCH_D
 	db 25, MILTANK
 	db 22, GLOOM
 	db 22, RATICATE
-	db 21, SPEAROW
-	db 24, FEAROW
+	db 21, FARFETCH_D
+	db 24, FARFETCH_D
 	; nite
 	db 27, DITTO
 	db 25, NOCTOWL
 	db 25, MILTANK
 	db 22, GLOOM
 	db 22, RATICATE
-	db 21, SPEAROW
-	db 24, FEAROW
+	db 21, FARFETCH_D
+	db 24, FARFETCH_D
 
 	map ROUTE_48
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1654,7 +1654,7 @@
 	db 24, TAUROS
 	db 22, HOPPIP
 	db 22, GROWLITHE
-	db 21, FEAROW
+	db 21, FARFETCH_D
 	db 20, GIRAFARIG
 	db 20, GIRAFARIG
 	; day
@@ -1662,7 +1662,7 @@
 	db 24, TAUROS
 	db 22, GLOOM
 	db 22, HOUNDOUR
-	db 21, FEAROW
+	db 21, FARFETCH_D
 	db 20, GIRAFARIG
 	db 20, GIRAFARIG
 	; nite
@@ -1670,7 +1670,7 @@
 	db 24, TAUROS
 	db 22, GLOOM
 	db 22, VULPIX
-	db 21, FEAROW
+	db 21, NOCTOWL
 	db 20, GIRAFARIG
 	db 20, GIRAFARIG
 

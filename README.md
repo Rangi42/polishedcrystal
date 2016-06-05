@@ -45,8 +45,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
    * Added Moonblast, Play Rough, and Disarm Voice
 * Catch all ~~251~~ 253 Pokémon without trading, some earlier than in GSC or HGSS:
-   * Eevee evolves into Leafeon (#252) in Ilex Forest
-   * Eevee evolves into Glaceon (#253) in Ice Path
+   * Remove Spearow, Fearow, Lickitung, Goldeen, Seaking, Cleffa, Igglybuff, Sunkern, Sunflora, Wobbuffet, Shuckle, and Delibird
+   * Add Leafeon, Glaceon, Sylveon, Magnezone, Tangrowth, Porygon-Z, Munchlax, Togekiss, Yanmega, Honchkrow, Mismagius, Gliscor, Weavile, and Mamoswine
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
@@ -195,6 +195,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
+   * Waterfall has a 20% flinch chance
    * Low Kick's power is based on weight
    * Beat Up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
@@ -208,19 +209,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Replace some Pokémon:
-      * Cleffa → Togekiss (evolves with Shiny Stone)
-      * Igglybuff → Sylveon (evolves knowing Charm with high happiness)
-      * Delibird → Weavile (evolves holding Razor Claw at night, which also has the same effect as Scope Lens)
-      * Wobbuffet → Mismagius (evolves with Dusk Stone)
-      * Goldeen → Honchkrow (evolves with Dusk Stone)
-      * Seaking → Munchlax (evolves with high friendship)
-      * Shuckle → Yanmega (Mania will give you an Aipom instead)
-      * Lickitung → Porygon-Z (evolves holding Dubious Disc, found behind the poster in Celadon Game Corner)
-      * Spearow → Magnezone (evolves at Rock Tunnel)
-      * Fearow → Gliscor (evolves holding Razor Fang at night, which also has the same effect as King's Rock)
-      * Sunkern → Mamoswine (evolves knowing AncientPower)
-      * Sunflora → Tangrowth (evolves knowing AncientPower)
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
@@ -249,6 +237,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Copycat's house 2F has weird tile collisions, despite using the same tileset as 1F (maybe revert the [trimmed tilesets](https://github.com/roukaour/pokecrystal/commit/a29b9ca3154ba9b194a0b621b5a7017e1b9400f3)?)
 * Aesthetic updates:
+   * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
    * Fix jagged black borders on Town Map (imitate HGSS?)
@@ -285,9 +274,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Sell evolution stones in Celadon Dept. Store
    * Change in-game trades
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
-   * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Misdreavus, Arbok, Gengar)
-   * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Piloswine, Slowbro, Jynx, Lapras)
-   * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Mew, Jolteon, Dugtrio, Articuno, Rhydon)
+   * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Mismagius, Arbok, Gengar)
+   * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Mamoswine, Slowbro, Jynx, Lapras)
+   * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
    * Battle Bill at some point (five Eeveelutions and Porygon) (show him the three legendary dogs and he'll theorize that they originated from Eeveelutions and wants to battle)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
@@ -301,8 +290,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
-   * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
-   * Gift a shiny Ditto somewhere
+   * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
+   * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
 
 
 ## Long-term

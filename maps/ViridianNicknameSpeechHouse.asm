@@ -1,7 +1,7 @@
 const_value set 2
 	const VIRIDIANNICKNAMESPEECHHOUSE_POKEFAN_M
 	const VIRIDIANNICKNAMESPEECHHOUSE_LASS
-	const VIRIDIANNICKNAMESPEECHHOUSE_SPEARY
+	const VIRIDIANNICKNAMESPEECHHOUSE_HOOTY
 	const VIRIDIANNICKNAMESPEECHHOUSE_RATTEY
 
 ViridianNicknameSpeechHouse_MapScriptHeader:
@@ -17,10 +17,10 @@ PokefanMScript_0x9ae3a:
 LassScript_0x9ae3d:
 	jumptextfaceplayer UnknownText_0x9aecb
 
-Speary:
+Hooty:
 	opentext
-	writetext SpearyText
-	cry SPEAROW
+	writetext HootyText
+	cry HOOTHOOT
 	waitbutton
 	closetext
 	end
@@ -48,13 +48,13 @@ UnknownText_0x9ae54:
 	done
 
 UnknownText_0x9aecb:
-	text "They're Speary--"
-	line "a Spearow--and"
+	text "They're Hooty--"
+	line "a Hoothoot--and"
 	cont "Rattey--a Rattata."
 	done
 
-SpearyText:
-	text "Speary: Ch-chun!"
+HootyText:
+	text "Hooty: Hoot!"
 	done
 
 RatteyText:
@@ -80,5 +80,5 @@ ViridianNicknameSpeechHouse_MapEventHeader:
 	db 4
 	person_event SPRITE_POKEFAN_M, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ae3a, -1
 	person_event SPRITE_LASS, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9ae3d, -1
-	person_event SPRITE_MOLTRES, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Speary, -1
+	person_event SPRITE_MOLTRES, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Hooty, -1
 	person_event SPRITE_GROWLITHE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Rattey, -1

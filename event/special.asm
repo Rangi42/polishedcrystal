@@ -1,11 +1,11 @@
-SpecialGiveShuckle: ; 7305
+SpecialGiveAipom: ; 7305
 
 ; Adding to the party.
 	xor a
 	ld [MonType], a
 
-; Level 15 Shuckle.
-	ld a, SHUCKLE
+; Level 15 Aipom.
+	ld a, AIPOM
 	ld [CurPartySpecies], a
 	ld a, 15
 	ld [CurPartyLevel], a
@@ -41,7 +41,7 @@ SpecialGiveShuckle: ; 7305
 	dec a
 	ld hl, PartyMonNicknames
 	call SkipNames
-	ld de, SpecialShuckleNick
+	ld de, SpecialAipomNick
 	call CopyName2
 
 ; OT.
@@ -49,13 +49,13 @@ SpecialGiveShuckle: ; 7305
 	dec a
 	ld hl, PartyMonOT
 	call SkipNames
-	ld de, SpecialShuckleOT
+	ld de, SpecialAipomOT
 	call CopyName2
 
 ; Engine flag for this event.
 	ld hl, DailyFlags
 	set 5, [hl]
-; setflag ENGINE_SHUCKLE_GIVEN
+; setflag ENGINE_AIPOM_GIVEN
 	ld a, 1
 	ld [ScriptVar], a
 	ret
@@ -65,17 +65,17 @@ SpecialGiveShuckle: ; 7305
 	ld [ScriptVar], a
 	ret
 
-SpecialShuckleOT:
+SpecialAipomOT:
 	db "Kirk@"
-SpecialShuckleNick:
-	db "Shuckie@"
+SpecialAipomNick:
+	db "Pom-Pom@"
 
-SpecialReturnShuckle: ; 737e
+SpecialReturnAipom: ; 737e
 	callba SelectMonFromParty
 	jr c, .refused
 
 	ld a, [CurPartySpecies]
-	cp SHUCKLE
+	cp AIPOM
 	jr nz, .DontReturn
 
 	ld a, [CurPartyMon]
@@ -95,7 +95,7 @@ SpecialReturnShuckle: ; 737e
 	ld a, [CurPartyMon]
 	ld hl, PartyMonOT
 	call SkipNames
-	ld de, SpecialShuckleOT
+	ld de, SpecialAipomOT
 .CheckOT:
 	ld a, [de]
 	cp [hl]

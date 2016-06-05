@@ -62,14 +62,6 @@ RattataEggMoves:
 	db REVERSAL
 	db $ff
 
-SpearowEggMoves:
-	db FAINT_ATTACK
-	db FALSE_SWIPE
-	db SCARY_FACE
-	db QUICK_ATTACK
-	db TRI_ATTACK
-	db $ff
-
 EkansEggMoves:
 	db PURSUIT
 	db SLAM
@@ -344,12 +336,6 @@ if _CRYSTAL
 endc
 	db $ff
 
-LickitungEggMoves:
-	db BELLY_DRUM
-	db MAGNITUDE
-	db BODY_SLAM
-	db $ff
-
 KoffingEggMoves:
 	db SCREECH
 	db PSYWAVE
@@ -397,12 +383,6 @@ HorseaEggMoves:
 	db DISABLE
 	db SPLASH
 	db DRAGON_RAGE
-	db $ff
-
-GoldeenEggMoves:
-	db PSYBEAM
-	db HAZE
-	db HYDRO_PUMP
 	db $ff
 
 if !_CRYSTAL
@@ -465,13 +445,6 @@ AerodactylEggMoves:
 	db FORESIGHT
 if !_CRYSTAL
 	db STEEL_WING
-endc
-	db $ff
-
-SnorlaxEggMoves:
-	db LICK
-if !_CRYSTAL
-	db CHARM
 endc
 	db $ff
 
@@ -559,19 +532,8 @@ PichuEggMoves:
 	db DISARM_VOICE
 	db $ff
 
-CleffaEggMoves:
-	db PRESENT
-	db METRONOME
-	db AMNESIA
-	db BELLY_DRUM
-	db SPLASH
-	db MIMIC
-	db $ff
-
-IgglybuffEggMoves:
-	db PERISH_SONG
-	db PRESENT
-	db FAINT_ATTACK
+MunchlaxEggMoves:
+	db LICK
 	db $ff
 
 TogepiEggMoves:
@@ -711,10 +673,6 @@ QwilfishEggMoves:
 	db SUPERSONIC
 	db $ff
 
-ShuckleEggMoves:
-	db SWEET_SCENT
-	db $ff
-
 HeracrossEggMoves:
 	db HARDEN
 	db BIDE
@@ -767,14 +725,6 @@ RemoraidEggMoves:
 	db SUPERSONIC
 	db HAZE
 	db SCREECH
-	db $ff
-
-DelibirdEggMoves:
-	db AURORA_BEAM
-	db QUICK_ATTACK
-	db FUTURE_SIGHT
-	db SPLASH
-	db RAPID_SPIN
 	db $ff
 
 MantineEggMoves:

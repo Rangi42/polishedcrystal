@@ -272,11 +272,11 @@ FixPicBank: ; 511c5
 	db PICS_17
 	db PICS_18
 	db PICS_19
-	db PICS_19 + 1
-	db PICS_19 + 2
-	db PICS_19 + 3
-	db PICS_19 + 4
-	db PICS_19 + 5
+	db PICS_20
+	db PICS_20 + 1
+	db PICS_20 + 2
+	db PICS_20 + 3
+	db PICS_20 + 4
 
 Function511ec: ; 511ec
 	ld a, c
