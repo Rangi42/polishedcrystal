@@ -290,8 +290,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
-   * Should Voltorb and Electrode be Electric/Steel to add another Steel-type?
-   * Gift a shiny Ditto somewhere
+   * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
+   * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
 
 
 ## Long-term
