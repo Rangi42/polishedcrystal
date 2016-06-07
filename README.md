@@ -292,6 +292,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
    * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
+   * Add four Ace Trainers to Victory Road
 
 
 ## Long-term
