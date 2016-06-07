@@ -126,6 +126,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Medium-Slow growth rate experience underflow at level 1
    * HP bar lowers at the same speed even for high HP
    * Belly Drum needs to cut HP to raise Attack
+   * Lake of Rage Magikarp are larger, not smaller
 * Aesthetic updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀

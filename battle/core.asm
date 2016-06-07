@@ -6518,10 +6518,10 @@ LoadEnemyMon: ; 3e8eb
 ; The real behavior prevents size flooring in the Lake of Rage area
 	ld a, [MapGroup]
 	cp a, GROUP_LAKE_OF_RAGE
-	jr z, .Happiness
+	jr nz, .Happiness
 	ld a, [MapNumber]
 	cp a, MAP_LAKE_OF_RAGE
-	jr z, .Happiness
+	jr nz, .Happiness
 ; 40% chance of not flooring
 	call Random
 	cp a, $64 ; / $100
