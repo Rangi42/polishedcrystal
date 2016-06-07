@@ -6664,6 +6664,29 @@ endr
 ; Fill moves based on level
 	predef FillMoves
 
+; Wild Pikachu in Yellow Forest know Fly or Surf
+	ld a, [MapGroup]
+	cp a, GROUP_YELLOW_FOREST
+	jr nz, .PP
+	ld a, [MapNumber]
+	cp a, MAP_YELLOW_FOREST
+	jr nz, .PP
+	ld a, [CurPartySpecies]
+	cp PIKACHU
+	jr nz, .PP
+	ld a, [PlayerState]
+	cp PLAYER_SURF
+	jr z, .surfpikachu
+	cp PLAYER_SURF_PIKA
+	jr z, .surfpikachu
+	ld a, FLY
+	jp .flypikachu
+.surfpikachu
+	ld a, SURF
+.flypikachu
+	ld hl, EnemyMonMoves + 3
+	ld [hl], a
+
 .PP:
 ; Trainer battle?
 	ld a, [wBattleMode]

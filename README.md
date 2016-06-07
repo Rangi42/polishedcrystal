@@ -69,6 +69,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Chikorita in Yellow Forest (in the morning/day)
    * Wild Cyndaquil in Yellow Forest (at night)
    * Wild Totodile in Yellow Forest (by Surfing)
+   * Wild Pikachu in Yellow Forest know Fly or Surf
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands
    * Wild Dewgong in Seafoam Islands
@@ -287,7 +288,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add a store to buy room decorations that Mom doesn't
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
-   * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
+   * Special sprites for Pikachu that know Surf or Fly
+   * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
