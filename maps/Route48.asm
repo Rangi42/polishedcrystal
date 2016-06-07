@@ -24,7 +24,8 @@ Route48_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 0
+	db 1
+	warp_def $5, $b, 3, YELLOW_FOREST_GATE
 
 .XYTriggers:
 	db 0

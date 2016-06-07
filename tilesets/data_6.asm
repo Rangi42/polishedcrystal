@@ -35,6 +35,7 @@ INCBIN "tilesets/19_collision.bin"
 ; 0xde470
 
 Tileset31Coll: ; 0xde470
+Tileset38Coll:
 INCBIN "tilesets/31_collision.bin"
 ; 0xde570
 

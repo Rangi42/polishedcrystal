@@ -4,6 +4,9 @@ INCLUDE "includes.asm"
 SECTION "Map Headers", ROMX, BANK[MAP_HEADERS]
 
 INCLUDE "maps/map_headers.asm"
+
+SECTION "Second Map Headers", ROMX
+
 INCLUDE "maps/second_map_headers.asm"
 
 
@@ -515,3 +518,5 @@ INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
 INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/Route48.asm"
+INCLUDE "maps/YellowForest.asm"
+INCLUDE "maps/YellowForestGate.asm"

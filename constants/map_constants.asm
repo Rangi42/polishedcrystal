@@ -407,6 +407,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_47,                                   19, 39 ; 18
 	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
 	mapgroup ROUTE_48,                                   11, 18 ; 20
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 21
+	mapgroup YELLOW_FOREST,                              25, 29 ; 20
 
 	newgroup                                                    ; 23
 

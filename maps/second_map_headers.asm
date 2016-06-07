@@ -604,3 +604,5 @@
 	map_header_2 CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0
 	map_header_2 CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
+	map_header_2 YellowForestGate, YELLOW_FOREST_GATE, $0, 0
+	map_header_2 YellowForest, YELLOW_FOREST, $38, 0

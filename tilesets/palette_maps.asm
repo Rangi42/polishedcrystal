@@ -111,6 +111,7 @@ INCLUDE "tilesets/29_palette_map.asm"
 ; 0x4cc45
 
 Tileset31PalMap: ; 0x4cc45
+Tileset38PalMap:
 INCLUDE "tilesets/31_palette_map.asm"
 ; 0x4ccb5
 

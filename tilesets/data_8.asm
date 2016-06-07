@@ -9,9 +9,11 @@ Tileset37Coll:
 INCBIN "tilesets/24_collision.bin"
 
 Tileset31GFX:
+Tileset38GFX:
 INCBIN "gfx/tilesets/31.2bpp.lz"
 
 Tileset31Meta:
+Tileset38Meta:
 INCBIN "tilesets/31_metatiles.bin"
 
 Tileset33Meta:

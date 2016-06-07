@@ -246,6 +246,8 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .mansion_mobile
 	cp TILESET_BELLCHIME_TRAIL
 	jr z, .bellchime_trail
+	cp TILESET_YELLOW_FOREST
+	jr z, .yellow_forest
 	cp TILESET_SPECIAL_CAVE
 	jr z, .special_cave
 	jr .do_nothing
@@ -286,6 +288,11 @@ LoadSpecialMapPalette: ; 494ac
 
 .bellchime_trail
 	call LoadBellchimeTrailPalette
+	scf
+	ret
+
+.yellow_forest
+	call LoadYellowForestPalette
 	scf
 	ret
 
@@ -352,6 +359,21 @@ LoadBellchimeTrailPalette:
 
 BellchimeTrailPalette:
 INCLUDE "tilesets/bellchime_trail.pal"
+
+LoadYellowForestPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, YellowForestPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+YellowForestPalette:
+INCLUDE "tilesets/yellow_forest.pal"
 
 LoadSpecialCavePalette:
 	ld a, [MapGroup]

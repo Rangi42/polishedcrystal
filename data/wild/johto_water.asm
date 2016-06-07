@@ -240,4 +240,10 @@
 	db 40, POLIWHIRL
 	db 35, POLIWAG
 
+	map YELLOW_FOREST
+	db 6 percent ; encounter rate
+	db 20, MARILL
+	db 20, PIKACHU
+	db 10, TOTODILE
+
 	db -1 ; end

@@ -67,6 +67,7 @@ Tileset25Anim: ; 0xfc047
 ; 0xfc073
 
 Tileset31Anim: ; 0xfc073
+Tileset38Anim:
 	dw NULL,  ForestTreeLeftAnimation
 	dw NULL,  ForestTreeRightAnimation
 	dw NULL,  WaitTileAnimation

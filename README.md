@@ -66,6 +66,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Steelix in Cliff Cave and Silver Cave
    * Wild Misdreavus in Cliff Cave
    * Wild Teddiursa on Route 45 (in the morning)
+   * Wild Chikorita in Yellow Forest (in the morning/day)
+   * Wild Cyndaquil in Yellow Forest (at night)
+   * Wild Totodile in Yellow Forest (by Surfing)
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands
    * Wild Dewgong in Seafoam Islands
@@ -153,6 +156,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improved some trainers' rosters, movesets, and DVs (Gym Leaders, the Elite Four, and other bosses)
 * Custom features:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
+   * Yellow Forest replaces the Johto Safari Zone
    * Individual party/day-care icons for each Pokémon
    * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
@@ -212,8 +216,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Yellow Forest Pokémon: **Chikorita**, **Cyndaquil**, **Totodile**, **Surfing and Flying Pikachu**, Pichu, Raichu, Marill
-   * Yellow Forest items: **Light Ball**, Miracle Seed, ThunderStone, Big Mushroom, berries
    * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
    * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Cinnabar Volcano Pokémon: **Gengar**, Magmar
