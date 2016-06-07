@@ -231,6 +231,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
    * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
+   * Copy some map layouts from RBY or HGSS (Celadon City fountain)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
@@ -289,6 +290,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * Special sprites for Pikachu that know Surf or Fly
+   * Yellow Pikachu Surfing music
    * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
