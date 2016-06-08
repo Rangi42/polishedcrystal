@@ -148,6 +148,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
    * Kanto has colored roofs
+   * Rounder Strength boulder like RBY/RSE/FRLG
    * Add lake in front of Sprout Tower from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
