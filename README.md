@@ -231,7 +231,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
    * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
-   * Copy some map layouts from RBY or HGSS (Celadon City fountain)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
 * Fix bugs:
@@ -257,6 +256,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Make the Ruins of Alph tile with the surrounding maps
    * Add bridges to some caves like Victory Road
    * Add crater to Route 3 from HGSS
+   * Add boardwalk to Olivine City
+   * Add fountain and benches to Cerulean City
+   * Add fountain to Celadon City
+   * Change piers in Olivine City and Vermilion City
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
