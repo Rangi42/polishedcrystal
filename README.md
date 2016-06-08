@@ -57,6 +57,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Girafarig on Routes 43 and 48
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
    * Encounter Articuno in Seafoam Islands
+   * Encounter Zapdos on Route 10, above Rock Tunnel
    * Encounter Mewtwo in Cerulean Cave
    * Wild Slugma in Burned Tower
    * Wild Magmar in Burned Tower
@@ -187,7 +188,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
    * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
-   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing) (who should give it to you? Prof. Oak, Lance, Lawrence III?)
+   * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew

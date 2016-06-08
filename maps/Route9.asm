@@ -85,6 +85,8 @@ Route9Sign:
 Route9HiddenEther:
 	dwb EVENT_ROUTE_9_HIDDEN_ETHER, ETHER
 
+Route9HiddenSoftSand:
+	dwb EVENT_ROUTE_9_HIDDEN_SOFT_SAND, SOFT_SAND
 
 CamperDeanSeenText:
 	text "I came to explore"
@@ -218,9 +220,10 @@ Route9_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 3
 	signpost 7, 15, SIGNPOST_READ, Route9Sign
 	signpost 15, 41, SIGNPOST_ITEM, Route9HiddenEther
+	signpost 13, 46, SIGNPOST_ITEM, Route9HiddenSoftSand
 
 .PersonEvents:
 	db 6
