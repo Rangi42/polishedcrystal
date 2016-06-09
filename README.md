@@ -264,6 +264,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add fountain and benches to Cerulean City
    * Add fountain to Celadon City
    * Change piers in Olivine City and Vermilion City
+   * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
