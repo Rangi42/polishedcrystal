@@ -3,6 +3,7 @@ const_value set 2
 	const YELLOWFOREST_POKE_BALL1
 	const YELLOWFOREST_POKE_BALL2
 	const YELLOWFOREST_POKE_BALL3
+	const YELLOWFOREST_POKE_BALL4
 
 YellowForest_MapScriptHeader:
 .MapTriggers:
@@ -60,6 +61,11 @@ YellowForestMiracleSeed:
 
 YellowForestUltraBall:
 	itemball ULTRA_BALL
+
+YellowForestSurfPikachuDoll:
+	disappear YELLOWFOREST_POKE_BALL4
+	setevent EVENT_DECO_SURFING_PIKACHU_DOLL
+	jumptext YellowForestSurfPikachuDollText
 
 YellowForestHiddenBigMushroom1:
 	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM_1, BIG_MUSHROOM
@@ -119,6 +125,15 @@ YellowText_Goodbye:
 	cont "its power."
 	done
 
+YellowForestSurfPikachuDollText:
+	text "<PLAYER> found"
+	line "Surf Pikachu Doll!"
+
+	para "Surf Pikachu Doll"
+	line "was sent to"
+	cont "<PLAYER>'s PC."
+	done
+
 YellowForest_MapEventHeader:
 	; filler
 	db 0, 0
@@ -137,9 +152,9 @@ YellowForest_MapEventHeader:
 	signpost 36, 34, SIGNPOST_ITEM, YellowForestHiddenBigMushroom2
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowScript, -1
 	person_event SPRITE_POKE_BALL, 16, 25, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestThunderStone, EVENT_YELLOW_FOREST_THUNDERSTONE
 	person_event SPRITE_POKE_BALL, 24, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestMiracleSeed, EVENT_YELLOW_FOREST_MIRACLE_SEED
 	person_event SPRITE_POKE_BALL, 21, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestUltraBall, EVENT_YELLOW_FOREST_ULTRA_BALL
-	; person_event SPRITE_POKE_BALL, 24, 49, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestSurfPikachuDoll, EVENT_YELLOW_FOREST_SURF_PIKACHU_DOLL
+	person_event SPRITE_POKE_BALL, 24, 49, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL

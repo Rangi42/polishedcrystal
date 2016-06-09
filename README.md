@@ -166,6 +166,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
+   * Find Surfing Pikachu Doll in Yellow Forest
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
    * Prof. Oak asks for the player's gender and name together
