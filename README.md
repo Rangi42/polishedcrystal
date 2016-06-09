@@ -165,6 +165,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Rematch the Elite Four
+   * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
    * Prof. Oak asks for the player's gender and name together
@@ -241,6 +242,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
+   * Overworld sprites break (related to engine/overworld.asm valid sprite IDs?)
 * Aesthetic updates:
    * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
@@ -293,7 +295,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
-   * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * Better sprites for Yellow Forest trees and cherry blossom trees

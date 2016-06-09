@@ -423,3 +423,9 @@ LoreleiSprite:
 
 AgathaSprite:
 	sprite_header AgathaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
+YellowSprite:
+	sprite_header YellowSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+LeafSprite:
+	sprite_header LeafSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN

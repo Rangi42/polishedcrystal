@@ -1091,6 +1091,7 @@
 	const EVENT_BEAT_SAGE_GAKU
 	const EVENT_BEAT_SAGE_MASA
 	const EVENT_BEAT_SAGE_KOJI
+	const EVENT_BEAT_YELLOW
 ; Sprite visibility: When these events are cleared, the sprite becomes visible; when set, the sprite is hidden.
 ; The map script command macros `disappear` and `appear` set/clear these flags and immediately apply the effect on visibility.
 ; The map script command macros `setevent` and `clearevent` set/clear these flags, and their effects will be seen when the map is reloaded.
@@ -1527,7 +1528,6 @@
 	const EVENT_ROUTE_10_ZAPDOS
 	const EVENT_CERULEAN_CAVE_MEWTWO
 ; Unused placeholder events
-	const EVENT_5B5
 	const EVENT_5B6
 	const EVENT_5B7
 	const EVENT_5B8

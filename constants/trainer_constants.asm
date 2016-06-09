@@ -662,6 +662,18 @@ KRIS EQU __enum__
 
 	trainerclass AGATHA ; 47
 
+	trainerclass YELLOW ; 48
+
+	trainerclass LEAF ; 49
+
+	trainerclass BILL ; 50
+
+	trainerclass LAWRENCE ; 51
+
+	trainerclass GAME_FREAK ; 52
+
+	trainerclass VALERIE ; 53
+
 NUM_TRAINER_CLASSES EQU __enum__
 
 	const_def

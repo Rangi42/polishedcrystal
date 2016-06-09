@@ -70,3 +70,9 @@
 	add_pic ForeignGruntPic
 	add_pic LoreleiPic
 	add_pic AgathaPic
+	add_pic YellowPic
+	add_pic LeafPic
+	; add_pic BillPic
+	; add_pic LawrencePic
+	; add_pic GameFreakPic
+	; add_pic ValeriePic

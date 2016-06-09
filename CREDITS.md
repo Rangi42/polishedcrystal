@@ -10,6 +10,7 @@
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite
 * Nic7C5 for Yellow's sprite
+* BettyNewbie for Leaf's sprite
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place
 
 Please let me know if I've failed to credit anyone or if you don't want your work being used.

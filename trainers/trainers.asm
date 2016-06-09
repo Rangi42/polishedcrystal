@@ -10087,3 +10087,227 @@ AgathaGroup:
 
 ; ================
 ; ================================
+
+
+YellowGroup:
+; ================================
+; ================
+
+	; YELLOW (1)
+	db "Yellow@"
+	db 1 ; moves
+
+	; party
+
+	db 26, RATTATA
+		db TAIL_WHIP
+		db QUICK_ATTACK
+		db HYPER_FANG
+		db FOCUS_ENERGY
+
+	db 25, BUTTERFREE
+		db CONFUSION
+		db SLEEP_POWDER
+		db POISONPOWDER
+		db STUN_SPORE
+
+	db 27, DODUO
+		db PECK
+		db TRI_ATTACK
+		db RETURN
+		db MUD_SLAP
+
+	db 26, GRAVELER
+		db ROLLOUT
+		db DEFENSE_CURL
+		db MAGNITUDE
+		db ROCK_THROW
+
+	db 25, OMANYTE
+		db WATER_GUN
+		db BITE
+		db WITHDRAW
+		db ICY_WIND
+
+	db 28, PIKACHU
+		db SURF
+		db FLY
+		db THUNDERBOLT
+		db QUICK_ATTACK
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+LeafGroup:
+; ================================
+; ================
+
+	; LEAF (1)
+	db "Leaf@"
+	db 3 ; item + moves
+
+	; party
+
+	db 90, VENUSAUR, MIRACLE_SEED
+		db GROWTH
+		db GIGA_DRAIN
+		db SLUDGE_BOMB
+		db SLEEP_POWDER
+
+	db 90, BLASTOISE, MYSTIC_WATER
+		db SURF
+		db ICE_BEAM
+		db EARTHQUAKE
+		db BODY_SLAM
+
+	db 85, JOLTEON, BRIGHTPOWDER
+		db THUNDERBOLT
+		db HIDDEN_POWER ; Water; DVs $ED $FF
+		db THUNDER_WAVE
+		db SAND_ATTACK
+
+	db 87, LAPRAS, LEFTOVERS
+		db ICE_BEAM
+		db THUNDERBOLT
+		db REST
+		db SLEEP_TALK
+
+	db 85, HITMONLEE, SILK_SCARF
+		db HI_JUMP_KICK
+		db MEDITATE
+		db COUNTER
+		db RETURN
+
+	db 89, DRAGONITE, NEVERMELTICE
+		db ICE_BEAM
+		db FIRE_BLAST
+		db THUNDER
+		db BODY_SLAM
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+BillGroup:
+; ================================
+; ================
+
+	; BILL (1)
+	db "Bill@"
+	db 0 ; normal
+
+	; party
+	db 55, VAPOREON
+	db 55, JOLTEON
+	db 55, FLAREON
+	db 56, LEAFEON
+	db 56, GLACEON
+	db 57, PORYGON
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+LawrenceGroup:
+; ================================
+; ================
+
+	; LAWRENCE (1)
+	db "Lawrence@"
+	db 0 ; normal
+
+	; party
+	db 59, CHARIZARD
+	db 58, DRAGONITE
+	db 58, TYRANITAR
+	db 57, HONCHKROW
+	db 60, ARTICUNO
+	db 60, ZAPDOS
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+GameFreakGroup:
+; ================================
+; ================
+
+	; GAME_FREAK (1)
+	db "Morimoto@"
+	db 0 ; normal
+
+	; party
+	db 57, HOUNDOOM
+	db 57, JOLTEON
+	db 57, FLAREON
+	db 57, VAPOREON
+	db 57, STEELIX
+	db 57, RAICHU
+
+	db $ff ; end
+
+; ================
+
+	; GAME_FREAK (2)
+	db "Nishino@"
+	db 0 ; normal
+
+	; party
+	db 57, CLEFABLE
+	db 57, AZUMARILL
+	db 57, WIGGLYTUFF
+	db 57, BLISSEY
+	db 57, SNORLAX
+	db 57, GOLEM
+
+	db $ff ; end
+
+; ================
+
+	; GAME_FREAK (3)
+	db "Ishihara@"
+	db 0 ; normal
+
+	; party
+	db 57, EXEGGUTOR
+	db 57, PORYGON_Z
+	db 57, FLAREON
+	db 57, DUGTRIO
+	db 57, LAPRAS
+	db 57, RHYDON
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+ValerieGroup:
+; ================================
+; ================
+
+	; VALERIE (1)
+	db "Valerie@"
+	db 0 ; normal
+
+	; party
+	db 33, CLEFABLE
+	db 33, MR__MIME
+	db 32, WIGGLYTUFF
+	db 32, AZUMARILL
+	db 34, TOGEKISS
+	db 35, SYLVEON
+
+	db $ff ; end
+
+; ================
+; ================================

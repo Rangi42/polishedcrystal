@@ -106,6 +106,8 @@
 	const SPRITE_STANDING_YOUNGSTER ; 66
 	const SPRITE_LORELEI ; 67
 	const SPRITE_AGATHA ; 68
+	const SPRITE_YELLOW ; 69
+	const SPRITE_LEAF ; 6a
 
 const_value SET $80
 
