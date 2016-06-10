@@ -285,6 +285,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Color party/day-care sprites by species
    * Sell evolution stones in Celadon Dept. Store
    * Change in-game trades
+   * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
    * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Mismagius, Arbok, Gengar)
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Mamoswine, Slowbro, Jynx, Lapras)
