@@ -42,12 +42,3 @@ INCBIN "tilesets/25_metatiles.bin"
 
 Tileset25Coll:
 INCBIN "tilesets/25_collision.bin"
-
-Tileset27GFX:
-INCBIN "gfx/tilesets/27.2bpp.lz"
-
-Tileset27Meta:
-INCBIN "tilesets/27_metatiles.bin"
-
-Tileset27Coll:
-INCBIN "tilesets/27_collision.bin"

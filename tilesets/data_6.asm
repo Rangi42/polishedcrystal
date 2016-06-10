@@ -33,3 +33,12 @@ INCBIN "tilesets/19_metatiles.bin"
 
 Tileset19Coll:
 INCBIN "tilesets/19_collision.bin"
+
+Tileset28GFX:
+INCBIN "gfx/tilesets/28.2bpp.lz"
+
+Tileset28Meta:
+INCBIN "tilesets/28_metatiles.bin"
+
+Tileset28Coll:
+INCBIN "tilesets/28_collision.bin"
