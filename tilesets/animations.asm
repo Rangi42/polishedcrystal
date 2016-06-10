@@ -113,15 +113,15 @@ Tileset23Anim:
 Tileset24Anim:
 Tileset30Anim:
 Tileset37Anim:
-	dw VTiles2 tile $14, WriteTileToBuffer
+	dw VTiles2 tile $25, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw VTiles2 tile $14, WriteTileFromBuffer
+	dw VTiles2 tile $25, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  TileAnimationPalette
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw VTiles2 tile $40, WriteTileToBuffer
+	dw VTiles2 tile $26, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  FlickeringCaveEntrancePalette
@@ -129,7 +129,7 @@ Tileset37Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw VTiles2 tile $40, WriteTileFromBuffer
+	dw VTiles2 tile $26, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
