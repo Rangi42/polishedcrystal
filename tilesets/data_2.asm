@@ -1,52 +1,44 @@
-Tileset07GFX: ; 0x1c30c
-INCBIN "gfx/tilesets/07.2bpp.lz"
-; 0x1c73c
+Tileset05GFX:
+INCBIN "gfx/tilesets/05.2bpp.lz"
 
-Tileset07Meta: ; 0x1c73c
-INCBIN "tilesets/07_metatiles.bin"
-; 0x1cb3c
+Tileset05Meta:
+INCBIN "tilesets/05_metatiles.bin"
 
-Tileset07Coll: ; 0x1cb3c
-INCBIN "tilesets/07_collision.bin"
-; 0x1cc3c
+Tileset05Coll:
+INCBIN "tilesets/05_collision.bin"
 
-Tileset09GFX: ; 0x1cc3c
-INCBIN "gfx/tilesets/09.2bpp.lz"
-; 0x1d04c
-
-Tileset09Meta: ; 0x1d04c
-INCBIN "tilesets/09_metatiles.bin"
-; 0x1d44c
-
-Tileset09Coll: ; 0x1d44c
-INCBIN "tilesets/09_collision.bin"
-; 0x1d54c
-
-Tileset06GFX: ; 0x1d54c
+Tileset06GFX:
 INCBIN "gfx/tilesets/06.2bpp.lz"
-; 0x1d92c
 
-Tileset06Meta: ; 0x1d92c
+Tileset06Meta:
 INCBIN "tilesets/06_metatiles.bin"
-; 0x1dd2c
 
-Tileset06Coll: ; 0x1dd2c
+Tileset06Coll:
 INCBIN "tilesets/06_collision.bin"
-; 0x1de2c
 
-Tileset13GFX: ; 0x1de2c
-INCBIN "gfx/tilesets/13.2bpp.lz"
-; 0x1e58c
+Tileset07GFX:
+INCBIN "gfx/tilesets/07.2bpp.lz"
 
-Tileset13Meta: ; 0x1e58c
-INCBIN "tilesets/13_metatiles.bin"
-; 0x1e98c
+Tileset07Meta:
+INCBIN "tilesets/07_metatiles.bin"
 
-Tileset13Coll: ; 0x1e98c
-INCBIN "tilesets/13_collision.bin"
-; 0x1ea8c
+Tileset07Coll:
+INCBIN "tilesets/07_collision.bin"
 
-Tileset24GFX: ; 0x1ea8c
-Tileset37GFX:
-INCBIN "gfx/tilesets/24.2bpp.lz"
-; 0x1ee1c
+Tileset08GFX:
+INCBIN "gfx/tilesets/08.2bpp.lz"
+
+Tileset08Meta:
+INCBIN "tilesets/08_metatiles.bin"
+
+Tileset08Coll:
+INCBIN "tilesets/08_collision.bin"
+
+Tileset09GFX:
+INCBIN "gfx/tilesets/09.2bpp.lz"
+
+Tileset09Meta:
+INCBIN "tilesets/09_metatiles.bin"
+
+Tileset09Coll:
+INCBIN "tilesets/09_collision.bin"
