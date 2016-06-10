@@ -1,3 +1,12 @@
+Tileset09GFX:
+INCBIN "gfx/tilesets/09.2bpp.lz"
+
+Tileset09Meta:
+INCBIN "tilesets/09_metatiles.bin"
+
+Tileset09Coll:
+INCBIN "tilesets/09_collision.bin"
+
 Tileset10GFX:
 INCBIN "gfx/tilesets/10.2bpp.lz"
 
@@ -33,12 +42,3 @@ INCBIN "tilesets/17_metatiles.bin"
 
 Tileset17Coll:
 INCBIN "tilesets/17_collision.bin"
-
-Tileset23GFX:
-INCBIN "gfx/tilesets/23.2bpp.lz"
-
-Tileset23Meta:
-INCBIN "tilesets/23_metatiles.bin"
-
-Tileset23Coll:
-INCBIN "tilesets/23_collision.bin"
