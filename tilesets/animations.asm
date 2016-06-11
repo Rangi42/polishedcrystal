@@ -508,7 +508,7 @@ endr
 
 .asm_fc47d
 	ld sp, hl
-	ld hl, VTiles2 tile $0c
+	ld hl, VTiles2 tile $1c
 	jp WriteTile
 ; fc484
 
@@ -554,7 +554,7 @@ endr
 
 .asm_fc4eb
 	ld sp, hl
-	ld hl, VTiles2 tile $0f
+	ld hl, VTiles2 tile $1f
 	jp WriteTile
 ; fc4f2
 
@@ -586,7 +586,7 @@ endr
 
 .asm_fc515
 	ld sp, hl
-	ld hl, VTiles2 tile $0c
+	ld hl, VTiles2 tile $1c
 	jp WriteTile
 ; fc51c
 
@@ -622,7 +622,7 @@ endr
 
 .asm_fc545
 	ld sp, hl
-	ld hl, VTiles2 tile $0f
+	ld hl, VTiles2 tile $1f
 	jp WriteTile
 ; fc54c
 

@@ -89,8 +89,8 @@ YellowText_Greeting:
 	cont "told me something."
 
 	para "That if you care"
-	line "for them with all"
-	cont "your heart,"
+	line "for #mon with"
+	cont "all your heart,"
 	cont "they'll always be"
 	cont "your friends!"
 
