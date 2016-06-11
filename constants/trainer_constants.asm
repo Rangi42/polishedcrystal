@@ -233,10 +233,11 @@ KRIS EQU __enum__
 	const VERONICA
 	const JULIA
 	const THERESA
-	const VALERIE
+	const VALENCIA
 	const OLIVIA
 	const CALLIE
 	const CASSANDRA
+	const CHARLOTTE
 
 	trainerclass POKEMANIAC ; 1e
 	const LARRY

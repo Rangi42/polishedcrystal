@@ -4048,7 +4048,7 @@ BeautyGroup:
 ; ================
 
 	; BEAUTY (16)
-	db "Valerie@"
+	db "Valencia@"
 	db 1 ; moves
 
 	; party
@@ -4099,6 +4099,17 @@ BeautyGroup:
 	; party
 	db 16, CLEFABLE
 	db 16, WIGGLYTUFF
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY (20)
+	db "Charlotte@"
+	db 0 ; normal
+
+	; party
+	db 16, BELLOSSOM
 
 	db $ff ; end
 
@@ -6884,7 +6895,7 @@ HikerGroup:
 
 	; party
 	db 16, GEODUDE
-	db 18, MACHAMP
+	db 18, MACHOKE
 
 	db $ff ; end
 
@@ -7184,7 +7195,7 @@ HikerGroup:
 		db DEFENSE_CURL
 		db ROLLOUT
 
-	db 34, MACHOKE
+	db 34, MACHAMP
 		db KARATE_CHOP
 		db VITAL_THROW
 		db HEADBUTT
