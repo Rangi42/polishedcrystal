@@ -88,6 +88,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Trade Steelix (found in Cliff Cave) for Kangaskhan in Olivine City
    * Trade Dragonair for Chansey in Blackthorn City
    * Trade Pinsir for Heracross in Pewter City
+   * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -192,7 +193,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
    * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
-   * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/

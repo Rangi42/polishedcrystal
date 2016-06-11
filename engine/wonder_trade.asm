@@ -1,7 +1,7 @@
 WonderTrade::
 	ld hl, DailyFlags2
 	bit 3, [hl] ; ENGINE_DAILY_WONDER_TRADE
-	jr nz, .already_traded
+	jp nz, .already_traded
 
 	ld hl, .Text_WonderTradeQuestion
 	call PrintText
@@ -44,6 +44,24 @@ WonderTrade::
 	call PrintText
 
 	call RestartMapMusic
+
+	ld hl, PartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld a, [de]
+	ld b, a
+	ld a, GS_BALL
+	cp b
+	ret nz
+
+	ld de, EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld de, EVENT_CAN_GIVE_GS_BALL_TO_KURT
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld hl, .Text_WonderTradeForGSBallPichuText
+	call PrintText
 	ret
 
 .already_traded
@@ -77,9 +95,10 @@ WonderTrade::
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
-	ld hl, .done
+	ld hl, .trade_done
 	ret
-.done
+
+.trade_done
 	text_jump WonderTradeDoneFanfare
 	db "@"
 
@@ -87,9 +106,32 @@ WonderTrade::
 	text_jump WonderTradeAlreadyDoneText
 	db "@"
 
+.Text_WonderTradeForGSBallPichuText:
+	text_jump WonderTradeForGSBallPichuText
+	db "@"
+
 DoWonderTrade:
 	ld a, [CurPartySpecies]
 	ld [wPlayerTrademonSpecies], a
+
+	; If you've beaten the Elite Four...
+	ld de, EVENT_BEAT_ELITE_FOUR
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .random_trademon
+	; ...and haven't gotten the GS Ball Pichu yet...
+	ld de, EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr nz, .random_trademon
+
+	; ...then receive a shiny Pichu holding a GS Ball
+	call GetGSBallPichu
+	jp .compute_trademon_stats
 
 .random_trademon
 	ld a, NUM_POKEMON
@@ -142,7 +184,7 @@ DoWonderTrade:
 	ld [wPlayerTrademonCaughtData], a
 
 	; BUG: Caught data doesn't seem to be saved.
-	; Look at surce code for SetGiftPartyMonCaughtData.
+	; Look at source code for SetGiftPartyMonCaughtData.
 	xor a
 	ld [wOTTrademonCaughtData], a
 
@@ -226,6 +268,7 @@ DoWonderTrade:
 	call GetWonderTradeHeldItem
 	ld [de], a
 
+.compute_trademon_stats
 	push af
 	push bc
 	push de
@@ -244,6 +287,126 @@ DoWonderTrade:
 	pop af
 	ret
 
+
+GetGSBallPichu:
+	ld a, PICHU
+	ld [wOTTrademonSpecies], a
+
+	ld a, [wPlayerTrademonSpecies]
+	ld de, wPlayerTrademonSpeciesName
+	call GetTradeMonName
+	call CopyTradeName
+
+	ld a, [wOTTrademonSpecies]
+	ld de, wOTTrademonSpeciesName
+	call GetTradeMonName
+	call CopyTradeName
+
+	ld hl, PartyMonOT
+	ld bc, NAME_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld de, wPlayerTrademonOTName
+	call CopyTradeName
+
+	ld hl, PlayerName
+	ld de, wPlayerTrademonSenderName
+	call CopyTradeName
+
+	ld hl, PartyMon1ID
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld de, wPlayerTrademonID
+	call Trade_CopyTwoBytes
+
+	ld hl, PartyMon1DVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld de, wPlayerTrademonDVs
+	call Trade_CopyTwoBytes
+
+	ld hl, PartyMon1Species
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld b, h
+	ld c, l
+	callba GetCaughtGender
+	ld a, c
+	ld [wPlayerTrademonCaughtData], a
+
+	; BUG: Caught data doesn't seem to be saved.
+	; Look at source code for SetGiftPartyMonCaughtData.
+	xor a
+	ld [wOTTrademonCaughtData], a
+
+	ld hl, PartyMon1Level
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld a, 30
+	ld [CurPartyLevel], a
+	ld a, [wOTTrademonSpecies]
+	ld [CurPartySpecies], a
+	xor a
+	ld [MonType], a
+	ld [wPokemonWithdrawDepositParameter], a
+	callab RemoveMonFromPartyOrBox
+	predef TryAddMonToParty
+
+	ld b, RESET_FLAG
+	callba SetGiftPartyMonCaughtData
+
+	ld a, [wOTTrademonSpecies]
+	ld de, wOTTrademonNickname
+	call GetTradeMonName
+	call CopyTradeName
+
+	ld hl, PartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonNickname
+	call CopyTradeName
+
+	ld hl, PlayerID
+	ld de, wOTTrademonID
+	call Trade_CopyTwoBytes
+
+	ld hl, PartyMon1ID
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonID
+	call Trade_CopyTwoBytes
+
+	ld hl, PlayerName
+	push hl
+	ld de, wOTTrademonOTName
+	call CopyTradeName
+	pop hl
+	ld de, wOTTrademonSenderName
+	call CopyTradeName
+
+	ld hl, PartyMonOT
+	ld bc, NAME_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonOTName
+	call CopyTradeName
+
+	ld a, ATKDEFDV_SHINY
+	ld [wOTTrademonDVs], a
+	ld a, SPDSPCDV_SHINY
+	ld [wOTTrademonDVs + 1], a
+
+	ld hl, PartyMon1DVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonDVs
+	call Trade_CopyTwoBytes
+
+	ld hl, PartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld a, GS_BALL
+	ld [de], a
+
+	ret
 
 GetWonderTradeOTName:
 ; hl = .WonderTradeOTNameTable + a * PLAYER_NAME_LENGTH
