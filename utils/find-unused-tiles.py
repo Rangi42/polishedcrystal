@@ -8,13 +8,14 @@ Usage: utils/find-unused-tiles.py > unused-tiles.txt
 from sys import stderr
 from collections import defaultdict
 
-code_directory        = './'
-tileset_filename      = 'constants/tilemap_constants.asm'
-map_header_filename   = 'maps/map_headers.asm'
-block_data_filenames  = ['maps/blockdata_1.asm', 'maps/blockdata_2.asm',
-                         'maps/blockdata_3.asm', 'maps/blockdata_4.asm']
-block_filename_fmt    = 'maps/%s.blk'
-metatile_filename_fmt = 'tilesets/%s_metatiles.bin'
+code_directory         = './'
+tileset_filename       = 'constants/tilemap_constants.asm'
+map_headers_filename   = 'maps/map_headers.asm'
+map_headers_2_filename = 'maps/second_map_headers.asm'
+block_data_filenames   = ['maps/blockdata_1.asm', 'maps/blockdata_2.asm',
+                          'maps/blockdata_3.asm', 'maps/blockdata_4.asm']
+block_filename_fmt     = 'maps/%s.blk'
+metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 
 # {'TILESET_JOHTO_1': '01', ...}
 tileset_ids = {}
@@ -35,31 +36,31 @@ def pretty(n):
 	return hex(n)[2:].zfill(2)
 
 def read_tileset_ids():
-	id = 1
+	tileset_id = 1
 	with open(code_directory + tileset_filename, 'r') as f:
 		for line in f:
 			line = line.strip()
 			if line.startswith('const_value '):
 				parts = line.split()
-				id = int(parts[2])
+				tileset_id = int(parts[2])
 			elif line.startswith('const '):
 				parts = line.split()
-				name = parts[1]
-				tileset_ids[name] = str(id).zfill(2)
-				id += 1
+				tileset_name = parts[1]
+				tileset_ids[tileset_name] = str(tileset_id).zfill(2)
+				tileset_id += 1
 			elif line.startswith('const_def'):
 				break
 
 def read_map_tilesets():
-	with open(code_directory + map_header_filename, 'r') as f:
+	with open(code_directory + map_headers_filename, 'r') as f:
 		for line in f:
 			line = line.strip()
 			if line.startswith('map_header '):
 				parts = line.split()
-				name = parts[1].rstrip(',')
+				map_name = parts[1].rstrip(',')
 				tileset_name = parts[2].rstrip(',')
-				tileset = tileset_ids[tileset_name]
-				map_tilesets[name] = tileset
+				tileset_id = tileset_ids[tileset_name]
+				map_tilesets[map_name] = tileset_id
 
 def read_used_block_ids():
 	for map_name, tileset_id in map_tilesets.items():
@@ -67,6 +68,21 @@ def read_used_block_ids():
 		with open(code_directory + block_filename_fmt % block_data_name, 'rb') as f:
 			used_block_ids = {pretty(ord(b)) for b in f.read()}
 			tileset_used_block_ids[tileset_id].update(used_block_ids)
+
+def read_used_block_ids_2():
+	with open(code_directory + map_headers_2_filename, 'r') as f:
+		for line in f:
+			line = line.strip()
+			if line.startswith('map_header_2 '):
+				parts = line.split()
+				map_name = parts[1].rstrip(',')
+				used_block_id = parts[3].rstrip(',')
+				if used_block_id.startswith('$'):
+					used_block_id = pretty(int(used_block_id[1:], 16))
+				else:
+					used_block_id = pretty(int(used_block_id))
+				tileset_id = map_tilesets[map_name]
+				tileset_used_block_ids[tileset_id].add(used_block_id)
 
 def read_used_tile_ids():
 	for tileset_id in tileset_ids.values():
@@ -109,6 +125,8 @@ def main():
 	read_map_tilesets()
 	print >> stderr, 'Reading used block IDs from each %s...' % (block_filename_fmt % '<name>')
 	read_used_block_ids()
+	print >> stderr, 'Reading used block IDs from %s...' % map_headers_2_filename
+	read_used_block_ids_2()
 	print >> stderr, 'Reading used tile IDs from each %s...' % (metatile_filename_fmt % '##')
 	read_used_tile_ids()
 	print >> stderr, 'Finding unused block IDs...'
