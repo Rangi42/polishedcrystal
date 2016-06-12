@@ -291,8 +291,8 @@ TrainerSchoolboyChad1:
 	jumpstd rematchm
 	end
 
-TrainerBeautyValerie:
-	trainer EVENT_BEAT_BEAUTY_VALERIE, BEAUTY, VALERIE, BeautyValerieSeenText, BeautyValerieBeatenText, 0, .script
+TrainerBeautyValencia:
+	trainer EVENT_BEAT_BEAUTY_VALENCIA, BEAUTY, VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText, 0, .script
 
 .script
 	end_if_just_battled
@@ -387,7 +387,7 @@ UnknownText_0x1a20ec:
 	cont "flavor."
 	done
 
-BeautyValerieSeenText:
+BeautyValenciaSeenText:
 	text "Hi! Aren't you a"
 	line "cute trainer!"
 
@@ -395,7 +395,7 @@ BeautyValerieSeenText:
 	line "#mon?"
 	done
 
-BeautyValerieBeatenText:
+BeautyValenciaBeatenText:
 	text "I'm glad I got to"
 	line "see your #mon!"
 	done
@@ -494,7 +494,7 @@ Route38_MapEventHeader:
 	person_event SPRITE_STANDING_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
 	person_event SPRITE_LASS, 3, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
 	person_event SPRITE_STANDING_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
-	person_event SPRITE_BUENA, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValerie, -1
+	person_event SPRITE_BUENA, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
 	person_event SPRITE_SAILOR, 5, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
 	person_event SPRITE_FRUIT_TREE, 10, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a1f33, -1
 	person_event SPRITE_BUENA, 8, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1

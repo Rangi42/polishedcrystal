@@ -2,7 +2,7 @@ GetTrainerDVs: ; 270c4
 ; Return the DVs of OtherTrainerClass in bc
 	push hl
 
-	call CheckShinyTrainerPokemon
+	call CheckUniqueDVTrainerPokemon
 	jr z, .done
 
 	ld a, [OtherTrainerClass]
@@ -96,8 +96,14 @@ TrainerClassDVs: ; 270d6
 	db $9F, $FF ; mysticalman
 	db $FF, $FF ; elder
 	db $D8, $A8 ; foreigngrunt
-	db $FF, $FF ; lorelei
-	db $FF, $FF ; agatha
+	db $7F, $FF ; lorelei
+	db $7F, $FF ; agatha
+	db $7F, $FF ; yellow
+	db $7F, $FF ; leaf
+	db $FF, $FF ; bill
+	db $FF, $FF ; lawrence
+	db $FF, $FF ; game freak
+	db $7F, $FF ; valerie
 ; 2715c
 
-INCLUDE "trainers/shiny.asm"
+INCLUDE "trainers/unique_dvs.asm"

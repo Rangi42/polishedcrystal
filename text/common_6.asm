@@ -61,3 +61,36 @@ WonderTradeAlreadyDoneText::
 	para "Please come back"
 	line "later."
 	prompt
+
+WonderTradeForGSBallPichuText::
+	text "…But what's this?"
+	line "Is something wrong"
+
+	para "with the Wonder"
+	line "Trade machine?"
+
+	para "It seems like you"
+	line "just traded a"
+	cont "#mon with"
+	cont "yourself."
+
+	para "But that can't be"
+	line "right… You can't"
+	cont "be in two places"
+	cont "at once."
+
+	para "Besides, the ma-"
+	line "chine communicates"
+	cont "through space,"
+	cont "not time…"
+
+	para "And what is that"
+	line "strange Ball it's"
+	cont "holding? Is it an"
+	cont "Apricorn Ball?"
+
+	para "Well, a #mon"
+	line "is a #mon."
+	cont "Please look after"
+	cont "it carefully."
+	prompt

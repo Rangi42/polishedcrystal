@@ -88,21 +88,48 @@
 	db 14, GEODUDE
 	db 16, ONIX
 	db 12, ZUBAT
+	db 15, MACHOKE
 	db 15, MAROWAK
-	db 15, KANGASKHAN
-	db 15, KANGASKHAN
+	db 15, MAROWAK
 	; day
 	db 12, CUBONE
 	db 14, GEODUDE
 	db 16, ONIX
 	db 12, ZUBAT
+	db 15, MACHOKE
 	db 15, MAROWAK
-	db 15, KANGASKHAN
-	db 15, KANGASKHAN
+	db 15, MAROWAK
 	; nite
 	db 12, ZUBAT
 	db 14, GEODUDE
 	db 16, ONIX
+	db 15, ZUBAT
+	db 15, HAUNTER
+	db 15, GOLBAT
+	db 15, GOLBAT
+
+	map ROCK_TUNNEL_2F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 12, VOLTORB
+	db 14, GEODUDE
+	db 12, ZUBAT
+	db 15, MAGNEMITE
+	db 16, ONIX
+	db 18, MAGNETON
+	db 18, MAGNETON
+	; day
+	db 12, VOLTORB
+	db 14, GEODUDE
+	db 12, ZUBAT
+	db 15, MAGNEMITE
+	db 16, ONIX
+	db 18, MAGNETON
+	db 18, MAGNETON
+	; nite
+	db 12, ZUBAT
+	db 14, GEODUDE
+	db 16, GEODUDE
 	db 15, ZUBAT
 	db 15, HAUNTER
 	db 15, GOLBAT

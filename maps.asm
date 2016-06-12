@@ -4,6 +4,9 @@ INCLUDE "includes.asm"
 SECTION "Map Headers", ROMX, BANK[MAP_HEADERS]
 
 INCLUDE "maps/map_headers.asm"
+
+SECTION "Second Map Headers", ROMX
+
 INCLUDE "maps/second_map_headers.asm"
 
 
@@ -155,6 +158,7 @@ INCLUDE "maps/MountMoon.asm"
 INCLUDE "maps/Underground.asm"
 INCLUDE "maps/RockTunnel1F.asm"
 INCLUDE "maps/RockTunnelB1F.asm"
+INCLUDE "maps/RockTunnel2F.asm"
 INCLUDE "maps/VictoryRoad.asm"
 INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
@@ -515,3 +519,5 @@ INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
 INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/Route48.asm"
+INCLUDE "maps/YellowForest.asm"
+INCLUDE "maps/YellowForestGate.asm"

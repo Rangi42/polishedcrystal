@@ -284,6 +284,7 @@ CutTreeBlockPointers: ; c862
 	dbw TILESET_KANTO, .kanto
 	dbw TILESET_PARK, .park
 	dbw TILESET_ILEX_FOREST, .ilex
+	dbw TILESET_YELLOW_FOREST, .yellow
 	db -1
 
 .johto1 ; Johto OW
@@ -314,6 +315,10 @@ CutTreeBlockPointers: ; c862
 	db -1
 
 .ilex ; Ilex Forest
+	db $0f, $17, $00
+	db -1
+
+.yellow ; Yellow Forest
 	db $0f, $17, $00
 	db -1
 

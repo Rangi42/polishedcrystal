@@ -94,4 +94,10 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_ROCKET_ENCOUNTER		; foreigngrunt
 	db MUSIC_HIKER_ENCOUNTER		; lorelei
 	db MUSIC_HIKER_ENCOUNTER		; agatha
+	db MUSIC_LASS_ENCOUNTER			; yellow
+	db MUSIC_HIKER_ENCOUNTER		; leaf
+	db MUSIC_POKEMANIAC_ENCOUNTER	; bill
+	db MUSIC_HIKER_ENCOUNTER		; lawrence
+	db MUSIC_HIKER_ENCOUNTER		; game_freak
+	db MUSIC_KIMONO_ENCOUNTER		; valerie
 ; e906e

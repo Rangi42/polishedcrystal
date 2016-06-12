@@ -57,6 +57,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Girafarig on Routes 43 and 48
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
    * Encounter Articuno in Seafoam Islands
+   * Encounter Zapdos on Route 10, above Rock Tunnel
    * Encounter Mewtwo in Cerulean Cave
    * Wild Slugma in Burned Tower
    * Wild Magmar in Burned Tower
@@ -66,6 +67,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Steelix in Cliff Cave and Silver Cave
    * Wild Misdreavus in Cliff Cave
    * Wild Teddiursa on Route 45 (in the morning)
+   * Wild Chikorita in Yellow Forest (in the morning/day)
+   * Wild Cyndaquil in Yellow Forest (at night)
+   * Wild Totodile in Yellow Forest (by Surfing)
+   * Wild Pikachu in Yellow Forest know Fly or Surf
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands
    * Wild Dewgong in Seafoam Islands
@@ -83,6 +88,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Trade Steelix (found in Cliff Cave) for Kangaskhan in Olivine City
    * Trade Dragonair for Chansey in Blackthorn City
    * Trade Pinsir for Heracross in Pewter City
+   * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -123,6 +129,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Medium-Slow growth rate experience underflow at level 1
    * HP bar lowers at the same speed even for high HP
    * Belly Drum needs to cut HP to raise Attack
+   * Lake of Rage Magikarp are larger, not smaller
 * Aesthetic updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
@@ -143,6 +150,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mania → Kirk (Shuckie the Shuckle's OT)
    * ZephyrBadge → the Zephyr Badge, etc
    * Kanto has colored roofs
+   * Rounder Strength boulder like RBY/RSE/FRLG
    * Add lake in front of Sprout Tower from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
@@ -153,10 +161,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improved some trainers' rosters, movesets, and DVs (Gym Leaders, the Elite Four, and other bosses)
 * Custom features:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
+   * Yellow Forest replaces the Johto Safari Zone
    * Individual party/day-care icons for each Pokémon
    * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Rematch the Elite Four
+   * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
+   * Find Surfing Pikachu Doll in Yellow Forest
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
    * Prof. Oak asks for the player's gender and name together
@@ -180,9 +191,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
    * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
-   * Get the Silver Wing only after catching all three legendary birds (Articuno in Seafoam Islands, Zapdos above the Power Plant and new floors of Rock Tunnel, Moltres in Cinnabar Volcano) (like with the three beasts and the Rainbow Wing) (who should give it to you? Prof. Oak, Lance, Lawrence III?)
+   * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
    * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
-   * Restore the GS Ball event for Celebi (get it from the Mystery Gift Machine)
    * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
@@ -212,8 +222,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Yellow Forest Pokémon: **Chikorita**, **Cyndaquil**, **Totodile**, **Surfing and Flying Pikachu**, Pichu, Raichu, Marill
-   * Yellow Forest items: **Light Ball**, Miracle Seed, ThunderStone, Big Mushroom, berries
    * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
    * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Cinnabar Volcano Pokémon: **Gengar**, Magmar
@@ -235,7 +243,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
-   * Copycat's house 2F has weird tile collisions, despite using the same tileset as 1F (maybe revert the [trimmed tilesets](https://github.com/roukaour/pokecrystal/commit/a29b9ca3154ba9b194a0b621b5a7017e1b9400f3)?)
 * Aesthetic updates:
    * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
@@ -253,6 +260,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Make the Ruins of Alph tile with the surrounding maps
    * Add bridges to some caves like Victory Road
    * Add crater to Route 3 from HGSS
+   * Add boardwalk to Olivine City
+   * Add fountain and benches to Cerulean City
+   * Add fountain to Celadon City
+   * Change piers in Olivine City and Vermilion City
+   * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
    * Allow three Wonder Trades per day, not just one
@@ -273,6 +285,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Color party/day-care sprites by species
    * Sell evolution stones in Celadon Dept. Store
    * Change in-game trades
+   * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
    * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Mismagius, Arbok, Gengar)
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Mamoswine, Slowbro, Jynx, Lapras)
@@ -284,14 +297,16 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
-   * Encounter Yellow from the Pokémon Adventures manga in Yellow Forest (her Pikachus know Surf and Fly)
-   * (Female) Pikachu that know Surf appear with a surf board; (male) Pikachu that know Fly appear with balloons
+   * Special sprites for Pikachu that know Surf or Fly
+   * Yellow Pikachu Surfing music
+   * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
    * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
+   * Add four Ace Trainers to Victory Road
 
 
 ## Long-term

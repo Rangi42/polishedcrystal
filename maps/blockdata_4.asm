@@ -45,3 +45,6 @@ CliffCave_BlockData:
 
 Route48_BlockData:
 	INCBIN "maps/Route48.blk"
+
+YellowForest_BlockData:
+	INCBIN "maps/YellowForest.blk"

@@ -385,6 +385,7 @@
 	map_header_2 Underground, UNDERGROUND, $0, 0
 	map_header_2 RockTunnel1F, ROCK_TUNNEL_1F, $9, 0
 	map_header_2 RockTunnelB1F, ROCK_TUNNEL_B1F, $9, 0
+	map_header_2 RockTunnel2F, ROCK_TUNNEL_2F, $9, 0
 	map_header_2 VictoryRoad, VICTORY_ROAD, $1d, 0
 	map_header_2 EcruteakHouse, ECRUTEAK_HOUSE, $0, 0
 	map_header_2 WiseTriosRoom, WISE_TRIOS_ROOM, $0, 0
@@ -604,3 +605,5 @@
 	map_header_2 CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0
 	map_header_2 CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
+	map_header_2 YellowForestGate, YELLOW_FOREST_GATE, $0, 0
+	map_header_2 YellowForest, YELLOW_FOREST, $38, 0

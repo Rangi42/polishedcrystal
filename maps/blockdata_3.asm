@@ -135,6 +135,9 @@ RockTunnel1F_BlockData:
 RockTunnelB1F_BlockData:
 	INCBIN "maps/RockTunnelB1F.blk"
 
+RockTunnel2F_BlockData:
+	INCBIN "maps/RockTunnel2F.blk"
+
 DiglettsCave_BlockData:
 	INCBIN "maps/DiglettsCave.blk"
 

@@ -233,10 +233,11 @@ KRIS EQU __enum__
 	const VERONICA
 	const JULIA
 	const THERESA
-	const VALERIE
+	const VALENCIA
 	const OLIVIA
 	const CALLIE
 	const CASSANDRA
+	const CHARLOTTE
 
 	trainerclass POKEMANIAC ; 1e
 	const LARRY
@@ -661,6 +662,18 @@ KRIS EQU __enum__
 	trainerclass LORELEI ; 46
 
 	trainerclass AGATHA ; 47
+
+	trainerclass YELLOW ; 48
+
+	trainerclass LEAF ; 49
+
+	trainerclass BILL ; 50
+
+	trainerclass LAWRENCE ; 51
+
+	trainerclass GAME_FREAK ; 52
+
+	trainerclass VALERIE ; 53
 
 NUM_TRAINER_CLASSES EQU __enum__
 

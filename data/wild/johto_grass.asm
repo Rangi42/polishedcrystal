@@ -1728,4 +1728,31 @@
 	db 43, SNEASEL
 	db 43, SNEASEL
 
+	map YELLOW_FOREST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, SENTRET
+	db 24, SNUBBULL
+	db 20, PIKACHU
+	db 22, PARAS
+	db 10, CHIKORITA
+	db 10, PICHU
+	db 10, PICHU
+	; day
+	db 22, SENTRET
+	db 24, SNUBBULL
+	db 20, PIKACHU
+	db 22, PARAS
+	db 10, CHIKORITA
+	db 10, PICHU
+	db 10, PICHU
+	; nite
+	db 23, HOOTHOOT
+	db 23, SPINARAK
+	db 25, NOCTOWL
+	db 24, PSYDUCK
+	db 20, ODDISH
+	db 10, CYNDAQUIL
+	db 10, CYNDAQUIL
+
 	db -1 ; end

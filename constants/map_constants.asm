@@ -120,9 +120,10 @@ MAP_NONE   EQU 0
 	mapgroup DIGLETTS_CAVE,                              18, 10 ; 84
 	mapgroup MOUNT_MOON,                                  9, 15 ; 85
 	mapgroup UNDERGROUND,                                14,  3 ; 86
-	mapgroup ROCK_TUNNEL_1F,                             18, 15 ; 87
-	mapgroup ROCK_TUNNEL_B1F,                            18, 15 ; 88
-	mapgroup VICTORY_ROAD,                               36, 10 ; 91
+	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 87
+	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 88
+	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 89
+	mapgroup VICTORY_ROAD,                               36, 10 ; 90
 
 	newgroup                                                    ;  4
 
@@ -407,6 +408,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_47,                                   19, 39 ; 18
 	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
 	mapgroup ROUTE_48,                                   11, 18 ; 20
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 21
+	mapgroup YELLOW_FOREST,                              25, 29 ; 20
 
 	newgroup                                                    ; 23
 

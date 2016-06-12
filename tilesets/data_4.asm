@@ -1,51 +1,44 @@
-Tileset15GFX: ; 0x30000
+Tileset13GFX:
+INCBIN "gfx/tilesets/13.2bpp.lz"
+
+Tileset13Meta:
+INCBIN "tilesets/13_metatiles.bin"
+
+Tileset13Coll:
+INCBIN "tilesets/13_collision.bin"
+
+Tileset15GFX:
 INCBIN "gfx/tilesets/15.2bpp.lz"
-; 0x304e0
 
-Tileset15Meta: ; 0x304e0
+Tileset15Meta:
 INCBIN "tilesets/15_metatiles.bin"
-; 0x308e0
 
-Tileset15Coll: ; 0x308e0
+Tileset15Coll:
 INCBIN "tilesets/15_collision.bin"
-; 0x309e0
 
-Tileset25GFX: ; 0x309e0
+Tileset17GFX:
+INCBIN "gfx/tilesets/17.2bpp.lz"
+
+Tileset17Meta:
+INCBIN "tilesets/17_metatiles.bin"
+
+Tileset17Coll:
+INCBIN "tilesets/17_collision.bin"
+
+Tileset23GFX:
+INCBIN "gfx/tilesets/23.2bpp.lz"
+
+Tileset23Meta:
+INCBIN "tilesets/23_metatiles.bin"
+
+Tileset23Coll:
+INCBIN "tilesets/23_collision.bin"
+
+Tileset25GFX:
 INCBIN "gfx/tilesets/25.2bpp.lz"
-; 0x30e80
 
-Tileset25Meta: ; 0x30e80
+Tileset25Meta:
 INCBIN "tilesets/25_metatiles.bin"
-; 0x31280
 
-Tileset25Coll: ; 0x31280
+Tileset25Coll:
 INCBIN "tilesets/25_collision.bin"
-; 0x31380
-
-Tileset27GFX: ; 0x31380
-INCBIN "gfx/tilesets/27.2bpp.lz"
-; 0x318e0
-
-Tileset27Meta: ; 0x318e0
-INCBIN "tilesets/27_metatiles.bin"
-; 0x31ce0
-
-Tileset27Coll: ; 0x31ce0
-INCBIN "tilesets/27_collision.bin"
-; 0x31de0
-
-Tileset28GFX: ; 0x31de0
-INCBIN "gfx/tilesets/28.2bpp.lz"
-; 0x321b0
-
-Tileset28Meta: ; 0x321b0
-INCBIN "tilesets/28_metatiles.bin"
-; 0x325b0
-
-Tileset28Coll: ; 0x325b0
-INCBIN "tilesets/28_collision.bin"
-; 0x326b0
-
-Tileset30GFX: ; 0x326b0
-INCBIN "gfx/tilesets/30.2bpp.lz"
-; 0x329f0
