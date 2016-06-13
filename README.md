@@ -152,6 +152,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Kanto has colored roofs
    * Rounder Strength boulder like RBY/RSE/FRLG
    * Add lake in front of Sprout Tower from HGSS
+   * Add decorative waterfall in Ecruteak City from HGSS
+   * Add boardwalk to Olivine City from HGSS
+   * Add dead trees in Blackthorn City from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
