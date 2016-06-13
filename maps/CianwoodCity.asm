@@ -416,7 +416,7 @@ CianwoodCity_MapEventHeader:
 .Signposts:
 	db 9
 	signpost 34, 20, SIGNPOST_READ, CianwoodCitySign
-	signpost 45, 7, SIGNPOST_READ, CianwoodGymSign
+	signpost 44, 6, SIGNPOST_READ, CianwoodGymSign
 	signpost 43, 24, SIGNPOST_READ, CianwoodPokeCenterSign
 	signpost 47, 19, SIGNPOST_READ, CianwoodPharmacySign
 	signpost 32, 8, SIGNPOST_READ, CianwoodPhotoStudioSign
