@@ -1,18 +1,11 @@
-Tileset02GFX:
-Tileset04GFX:
-INCBIN "gfx/tilesets/02.2bpp.lz"
+Tileset11GFX:
+INCBIN "gfx/tilesets/11.2bpp.lz"
 
-Tileset02Meta:
-INCBIN "tilesets/02_metatiles.bin"
+Tileset11Meta:
+INCBIN "tilesets/11_metatiles.bin"
 
-Tileset02Coll:
-INCBIN "tilesets/02_collision.bin"
-
-Tileset04Meta:
-INCBIN "tilesets/04_metatiles.bin"
-
-Tileset04Coll:
-INCBIN "tilesets/04_collision.bin"
+Tileset11Coll:
+INCBIN "tilesets/11_collision.bin"
 
 Tileset16GFX:
 INCBIN "gfx/tilesets/16.2bpp.lz"
@@ -22,6 +15,15 @@ INCBIN "tilesets/16_metatiles.bin"
 
 Tileset16Coll:
 INCBIN "tilesets/16_collision.bin"
+
+Tileset18GFX:
+INCBIN "gfx/tilesets/18.2bpp.lz"
+
+Tileset18Meta:
+INCBIN "tilesets/18_metatiles.bin"
+
+Tileset18Coll:
+INCBIN "tilesets/18_collision.bin"
 
 Tileset21GFX:
 INCBIN "gfx/tilesets/21.2bpp.lz"

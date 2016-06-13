@@ -152,6 +152,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Kanto has colored roofs
    * Rounder Strength boulder like RBY/RSE/FRLG
    * Add lake in front of Sprout Tower from HGSS
+   * Add decorative waterfall in Ecruteak City from HGSS
+   * Add boardwalk to Olivine City from HGSS
+   * Add dead trees in Blackthorn City from HGSS
+   * Add bridge to Victory Road from HGSS
+   * The Ruins of Alph tile with their surrounding maps
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
@@ -243,6 +248,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
+* Increased difficulty:
+   * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 * Aesthetic updates:
    * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
@@ -257,10 +264,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
    * Put legendary beasts in a pit in Burned Tower, not a platform
-   * Make the Ruins of Alph tile with the surrounding maps
-   * Add bridges to some caves like Victory Road
    * Add crater to Route 3 from HGSS
-   * Add boardwalk to Olivine City
    * Add fountain and benches to Cerulean City
    * Add fountain to Celadon City
    * Change piers in Olivine City and Vermilion City

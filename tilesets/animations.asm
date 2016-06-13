@@ -39,6 +39,8 @@ endr
 
 Tileset00Anim:
 Tileset01Anim:
+Tileset02Anim:
+Tileset04Anim:
 Tileset32Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
@@ -54,7 +56,6 @@ Tileset32Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset02Anim:
 Tileset03Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
@@ -172,7 +173,6 @@ Tileset38Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset04Anim:
 Tileset05Anim:
 Tileset06Anim:
 Tileset07Anim:

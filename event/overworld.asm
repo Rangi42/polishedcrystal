@@ -323,12 +323,17 @@ CutTreeBlockPointers: ; c862
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4
-	dbw TILESET_JOHTO_1, .johto
+	dbw TILESET_JOHTO_1, .johto1
+	dbw TILESET_JOHTO_2, .johto2
 	db -1
 
-.johto ; c8a8
+.johto1
 	db $07, $36, $00
 	db $9f, $31, $00
+	db -1
+
+.johto2
+	db $83, $36, $00
 	db -1
 
 OWFlash: ; c8ac

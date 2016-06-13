@@ -55,7 +55,6 @@ def transpose_palette(palette, mapping):
 				continue
 			seg = 0 if i < 12 else 1
 			row = [mapping.get(i*8+j, i*8+j) for j in range(8)]
-			print('row %d: %s' % (i+1, row))
 			line = '\ttilepal %d, %s\n' % (seg, ', '.join(data[b] for b in row))
 			f.write(line)
 
