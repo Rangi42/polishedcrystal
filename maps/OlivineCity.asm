@@ -299,13 +299,13 @@ OlivineCity_MapEventHeader:
 	db 11
 	warp_def $15, $d, 1, OLIVINE_POKECENTER_1F
 	warp_def $b, $a, 1, OLIVINE_GYM
-	warp_def $9, $19, 1, OLIVINE_TIMS_HOUSE
+	warp_def $b, $19, 1, OLIVINE_TIMS_HOUSE
 	warp_def $0, $0, 1, OLIVINE_POKECENTER_1F ; OLIVINE_HOUSE_BETA
-	warp_def $9, $1d, 1, OLIVINE_PUNISHMENT_SPEECH_HOUSE
+	warp_def $b, $1d, 1, OLIVINE_PUNISHMENT_SPEECH_HOUSE
 	warp_def $f, $d, 1, OLIVINE_GOOD_ROD_HOUSE
 	warp_def $15, $7, 1, OLIVINE_CAFE
-	warp_def $11, $13, 2, OLIVINE_MART
-	warp_def $19, $1f, 1, OLIVINE_LIGHTHOUSE_1F
+	warp_def $13, $13, 2, OLIVINE_MART
+	warp_def $19, $21, 1, OLIVINE_LIGHTHOUSE_1F
 	warp_def $1f, $13, 1, OLIVINE_PORT_PASSAGE
 	warp_def $1f, $14, 2, OLIVINE_PORT_PASSAGE
 
@@ -319,10 +319,10 @@ OlivineCity_MapEventHeader:
 	signpost 11, 17, SIGNPOST_READ, OlivineCitySign
 	signpost 26, 20, SIGNPOST_READ, OlivineCityPortSign
 	signpost 11, 7, SIGNPOST_READ, OlivineGymSign
-	signpost 26, 32, SIGNPOST_READ, OlivineLighthouseSign
+	signpost 26, 34, SIGNPOST_READ, OlivineLighthouseSign
 	signpost 25, 1, SIGNPOST_READ, OlivineCityBattleTowerSign
 	signpost 21, 14, SIGNPOST_READ, OlivineCityPokeCenterSign
-	signpost 17, 20, SIGNPOST_READ, OlivineCityMartSign
+	signpost 19, 20, SIGNPOST_READ, OlivineCityMartSign
 
 .PersonEvents:
 	db 4

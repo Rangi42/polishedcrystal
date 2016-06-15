@@ -193,7 +193,7 @@ _CGB_PokegearPals: ; 8eb9
 	ld hl, MalePokegearPals
 .got_pals
 	ld de, UnknBGPals
-	ld bc, 6 palettes
+	ld bc, 8 palettes
 	ld a, $5
 	call FarCopyWRAM
 	call ApplyPals

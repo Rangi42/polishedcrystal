@@ -157,6 +157,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
    * The Ruins of Alph tile with their surrounding maps
+   * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
 * Increased difficulty:
    * Default Set battle style
@@ -254,7 +255,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
-   * Fix jagged black borders on Town Map (imitate HGSS?)
    * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
