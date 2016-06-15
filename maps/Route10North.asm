@@ -6,14 +6,27 @@ Route10North_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
 
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+	dbw MAPCALLBACK_OBJECTS, .Zapdos
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
+	return
+
+.Zapdos:
+	checkevent EVENT_RETURNED_MACHINE_PART
+	iffalse .NoAppear
+	checkevent EVENT_ZAPDOS_GONE
+	iffalse .Appear
+.NoAppear
+	disappear ROUTE10_ZAPDOS
+	return
+.Appear:
+	appear ROUTE10_ZAPDOS
 	return
 
 Route10Zapdos:
@@ -22,6 +35,7 @@ Route10Zapdos:
 	loadwildmon ZAPDOS, 60
 	startbattle
 	disappear ROUTE10_ZAPDOS
+	setevent EVENT_ZAPDOS_GONE
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
 	end
