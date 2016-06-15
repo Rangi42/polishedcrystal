@@ -107,6 +107,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
+   * Shiny Pokémon have an odd Attack DV, 13 or 14 Defense and Speed, and perfect 15 Special, so 1/2048 Pokémon is shiny
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
    * Surf at Bicycle/Running Shoes speed
@@ -182,7 +183,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
-   * Eusine has a shiny Haunter
+   * Eusine has a shiny Electrode
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
