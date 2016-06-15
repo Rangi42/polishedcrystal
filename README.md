@@ -157,6 +157,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
+   * Add generator to Power Plant from FRLG
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
@@ -199,8 +200,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Catch all 251 Pokémon without trading:
    * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
    * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
-   * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
-   * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
+   * Add the Helix and Dome fossils in Quiet Cave to be restored into Omanyte and Kabuto at the Pewter Museum of Science
+   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Update movesets, and move and item mechanics, to Gen VI
