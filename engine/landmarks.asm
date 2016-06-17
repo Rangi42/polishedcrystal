@@ -118,39 +118,42 @@ ENDM
 	landmark  60,  68, PewterCityName
 	landmark  72,  68, Route3Name
 	landmark  84,  68, MtMoonName
-	landmark  96,  68, Route4Name
-	landmark 108,  68, CeruleanCityName
-	landmark 106,  66, CeruleanCaveName
-	landmark 108,  60, Route24Name
-	landmark 116,  52, Route25Name
-	landmark 108,  76, Route5Name
-	landmark 116,  92, UndergroundName
-	landmark 108,  92, Route6Name
-	landmark 108, 100, VermilionCityName
+	landmark 100,  68, Route4Name
+	landmark 116,  68, CeruleanCityName
+	landmark 114,  66, CeruleanCaveName
+	landmark 116,  60, Route24Name
+	landmark 124,  52, Route25Name
+	landmark 116,  76, Route5Name
+	landmark 122,  90, UndergroundName
+	landmark 116,  92, Route6Name
+	landmark 116, 100, VermilionCityName
 	landmark  96,  76, DiglettsCaveName
-	landmark  96,  84, Route7Name
-	landmark 124,  84, Route8Name
-	landmark 124,  68, Route9Name
+	landmark 104,  84, Route7Name
+	landmark 128,  84, Route8Name
+	landmark 128,  68, Route9Name
 	landmark 140,  68, RockTunnelName
-	landmark 140,  72, Route10Name
-	landmark 140,  76, PowerPlantName
+	landmark 140,  76, Route10Name
+	landmark 148,  76, PowerPlantName
 	landmark 140,  84, LavenderTownName
-	landmark 148,  84, LavRadioTowerName
-	landmark  84,  84, CeladonCityName
-	landmark 108,  84, SaffronCityName
-	landmark 124, 100, Route11Name
+	landmark 144,  84, LavRadioTowerName
+	landmark  92,  84, CeladonCityName
+	landmark 116,  84, SaffronCityName
+	landmark 128, 100, Route11Name
 	landmark 140,  96, Route12Name
 	landmark 132, 116, Route13Name
 	landmark 124, 128, Route14Name
 	landmark 112, 132, Route15Name
-	landmark  76,  84, Route16Name
-	landmark  76, 108, Route17Name
+	landmark  84,  84, Route16Name
+	landmark  84, 108, Route17Name
 	landmark  88, 132, Route18Name
 	landmark 100, 132, FuchsiaCityName
+	landmark 100, 124, SafariZoneName
 	landmark 100, 144, Route19Name
 	landmark  84, 148, Route20Name
 	landmark  76, 148, SeafoamIslandsName
 	landmark  60, 148, CinnabarIslandName
+	landmark  62, 146, CinnabarVolcanoName
+	landmark  58, 146, PokemonMansionName
 	landmark  60, 136, Route21Name
 	landmark  44,  84, Route22Name
 	landmark  36,  68, VictoryRoadName
@@ -206,9 +209,10 @@ MtMoonName:          db "Mt.Moon@"
 RockTunnelName:      db "Rock Tunnel@"
 LavRadioTowerName:   db "Lavender¯Radio Tower@"
 SilphCoName:         db "Silph Co.@" ; unused
-SafariZoneName:      db "Safari Zone@" ; unused
+SafariZoneName:      db "Safari Zone@"
 SeafoamIslandsName:  db "Seafoam¯Islands@"
-PokemonMansionName:  db "#mon¯Mansion@" ; unused
+PokemonMansionName:  db "#mon¯Mansion@"
+CinnabarVolcanoName: db "Cinnabar¯Volcano@"
 CeruleanCaveName:    db "Cerulean¯Cave@"
 Route1Name:          db "Route 1@"
 Route2Name:          db "Route 2@"

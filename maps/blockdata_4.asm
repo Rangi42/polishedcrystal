@@ -48,3 +48,12 @@ Route48_BlockData:
 
 YellowForest_BlockData:
 	INCBIN "maps/YellowForest.blk"
+
+CinnabarVolcano1F_BlockData:
+	INCBIN "maps/CinnabarVolcano1F.blk"
+
+CinnabarVolcanoB1F_BlockData:
+	INCBIN "maps/CinnabarVolcanoB1F.blk"
+
+CinnabarVolcanoB2F_BlockData:
+	INCBIN "maps/CinnabarVolcanoB2F.blk"

@@ -76,6 +76,7 @@ KRIS EQU __enum__
 	const LOWELL
 	const DENNETT
 	const LINDEN
+	const OSKAR
 
 	trainerclass ERIKA ; 15
 
@@ -411,6 +412,7 @@ KRIS EQU __enum__
 	const CARY
 	const WALDO
 	const MERLE
+	const LUIS
 
 	trainerclass RIVAL2 ; 2a
 

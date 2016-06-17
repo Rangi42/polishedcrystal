@@ -165,6 +165,9 @@ MAP_NONE   EQU 0
 	mapgroup CINNABAR_ISLAND,                            11, 12 ;  10
 	mapgroup ROUTE_9,                                     9, 30 ;  11
 	mapgroup ROUTE_10_NORTH,                              9, 10 ;  12
+	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ;  13
+	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ;  14
+	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ;  15
 
 	newgroup                                                    ;  7
 

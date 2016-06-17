@@ -58,6 +58,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
    * Encounter Articuno in Seafoam Islands
    * Encounter Zapdos on Route 10, above Rock Tunnel
+   * Encounter Moltres in Cinnabar Volcano
    * Encounter Mewtwo in Cerulean Cave
    * Wild Slugma in Burned Tower
    * Wild Magmar in Burned Tower
@@ -232,7 +233,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
    * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
-   * Cinnabar Volcano Pokémon: **Gengar**, Magmar
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
