@@ -245,6 +245,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
+   * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
@@ -256,12 +257,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Aesthetic updates:
    * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
-   * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
    * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
-   * Better Town Map without bold black borders (imitate landmarks from HGSS)
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
    * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
