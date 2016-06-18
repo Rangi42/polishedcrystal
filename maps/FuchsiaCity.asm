@@ -72,12 +72,17 @@ UnknownText_0x194b83:
 	done
 
 UnknownText_0x194bd3:
-	text "The Safari Zone is"
-	line "closed… It's sad,"
+	text "The Safari Game is"
+	line "canceled…"
 
-	para "considering it's"
-	line "Fuchsia's main"
-	cont "attraction."
+	para "At least the"
+	line "Safari Zone is"
+	cont "still open."
+
+	para "You'll need a"
+	line "strong #mon"
+	cont "to explore it,"
+	cont "though."
 	done
 
 FuchsiaCitySignText:
@@ -115,8 +120,8 @@ SafariZoneClosedSignText:
 	line "traveling abroad."
 
 	para "Therefore, the"
-	line "Safari Zone is"
-	cont "closed."
+	line "Safari Game is"
+	cont "canceled."
 	done
 
 NoLitteringSignText:
@@ -138,7 +143,7 @@ FuchsiaCity_MapEventHeader:
 	warp_def $1b, $b, 1, FUCHSIA_BILL_SPEECH_HOUSE
 	warp_def $1b, $13, 1, FUCHSIA_POKECENTER_1F
 	warp_def $1b, $1b, 1, SAFARI_ZONE_WARDENS_HOME
-	warp_def $3, $12, 1, FUCHSIA_POKECENTER_1F ; SAFARI_ZONE_FUCHSIA_GATE_BETA
+	warp_def $3, $12, 3, SAFARI_ZONE_FUCHSIA_GATE
 	warp_def $16, $25, 1, ROUTE_15_FUCHSIA_GATE
 	warp_def $17, $25, 2, ROUTE_15_FUCHSIA_GATE
 	warp_def $23, $7, 1, ROUTE_19___FUCHSIA_GATE

@@ -6,7 +6,7 @@
 	db GRASS, POISON
 	db 45 ; catch rate
 	db 184 ; base exp
-	db NO_ITEM ; item 1
+	db SILVER_LEAF ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
 	db 100 ; unknown

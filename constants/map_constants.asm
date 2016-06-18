@@ -165,6 +165,9 @@ MAP_NONE   EQU 0
 	mapgroup CINNABAR_ISLAND,                            11, 12 ;  10
 	mapgroup ROUTE_9,                                     9, 30 ;  11
 	mapgroup ROUTE_10_NORTH,                              9, 10 ;  12
+	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ;  13
+	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ;  14
+	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ;  15
 
 	newgroup                                                    ;  7
 
@@ -316,16 +319,23 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_13,                                    9, 30 ;  1
 	mapgroup ROUTE_14,                                   18, 10 ;  2
 	mapgroup ROUTE_15,                                    9, 20 ;  3
-	mapgroup FUCHSIA_CITY,                               18, 20 ;  5
-	mapgroup FUCHSIA_MART,                                4,  6 ;  6
-	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  7
-	mapgroup FUCHSIA_GYM,                                 9,  5 ;  8
-	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ;  9
-	mapgroup FUCHSIA_POKECENTER_1F,                       4,  5 ; 10
-	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
-	mapgroup ROUTE_15_FUCHSIA_GATE,                       4,  5 ; 13
-	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ;  2
-	mapgroup ROUTE_19,                                   20, 10 ;  4
+	mapgroup FUCHSIA_CITY,                               18, 20 ;  4
+	mapgroup FUCHSIA_MART,                                4,  6 ;  5
+	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  6
+	mapgroup FUCHSIA_GYM,                                 9,  5 ;  7
+	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ;  8
+	mapgroup FUCHSIA_POKECENTER_1F,                       4,  5 ;  9
+	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 10
+	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 11
+	mapgroup SAFARI_ZONE_HUB,                            15, 15 ; 12
+	mapgroup SAFARI_ZONE_EAST,                           13, 15 ; 13
+	mapgroup SAFARI_ZONE_NORTH,                          16, 15 ; 14
+	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 15
+	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 16
+	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 17
+	mapgroup ROUTE_15_FUCHSIA_GATE,                       4,  5 ; 18
+	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 19
+	mapgroup ROUTE_19,                                   20, 10 ; 20
 
 	newgroup                                                    ; 18
 

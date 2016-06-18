@@ -945,6 +945,87 @@
 	db 57, RAICHU
 	db 60, DITTO
 
+	map SAFARI_ZONE_HUB
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 26, DODUO
+	db 30, DODRIO
+	db 28, EXEGGCUTE
+	db 32, EXEGGUTOR
+	db 29, TANGELA
+	db 32, SCYTHER
+	db 10, BULBASAUR
+	; day
+	db 26, DODUO
+	db 30, DODRIO
+	db 28, EXEGGCUTE
+	db 32, EXEGGUTOR
+	db 29, TANGELA
+	db 32, SCYTHER
+	db 10, BULBASAUR
+	; nite
+	db 26, DODUO
+	db 30, DODRIO
+	db 28, EXEGGCUTE
+	db 32, EXEGGUTOR
+	db 29, TANGELA
+	db 32, SCYTHER
+	db 10, BULBASAUR
+
+	map SAFARI_ZONE_EAST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 28, PARAS
+	db 32, NIDORINA
+	db 32, NIDORINO
+	db 34, PARASECT
+	db 35, NIDOKING
+	db 35, NIDOQUEEN
+	db 10, CHARMANDER
+	; day
+	db 28, PARAS
+	db 32, NIDORINA
+	db 32, NIDORINO
+	db 34, PARASECT
+	db 35, NIDOKING
+	db 35, NIDOQUEEN
+	db 10, CHARMANDER
+	; nite
+	db 28, PARAS
+	db 32, NIDORINA
+	db 32, NIDORINO
+	db 34, PARASECT
+	db 35, NIDOKING
+	db 35, NIDOQUEEN
+	db 10, CHARMANDER
+
+	map SAFARI_ZONE_NORTH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, VENONAT
+	db 34, VENOMOTH
+	db 28, RHYHORN
+	db 30, PINSIR
+	db 36, RHYDON
+	db 35, KANGASKHAN
+	db 34, CHANSEY
+	; day
+	db 32, VENONAT
+	db 34, VENOMOTH
+	db 28, RHYHORN
+	db 30, PINSIR
+	db 36, RHYDON
+	db 35, KANGASKHAN
+	db 34, CHANSEY
+	; nite
+	db 32, VENONAT
+	db 34, VENOMOTH
+	db 28, RHYHORN
+	db 30, PINSIR
+	db 36, RHYDON
+	db 35, KANGASKHAN
+	db 34, CHANSEY
+
 	map SEAFOAM_ISLANDS_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
@@ -1079,5 +1160,86 @@
 	db 34, PSYDUCK
 	db 34, SEEL
 	db 34, SEEL
+
+	map CINNABAR_VOLCANO_1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, KOFFING
+	db 34, GRAVELER
+	db 28, SLUGMA
+	db 32, MAGCARGO
+	db 28, MAGMAR
+	db 28, MAGMAR
+	db 29, MAGMAR
+	; day
+	db 32, KOFFING
+	db 34, GRAVELER
+	db 28, SLUGMA
+	db 32, MAGCARGO
+	db 28, MAGMAR
+	db 28, MAGMAR
+	db 29, MAGMAR
+	; nite
+	db 32, KOFFING
+	db 28, GASTLY
+	db 34, GRAVELER
+	db 28, SLUGMA
+	db 32, MAGCARGO
+	db 28, MAGMAR
+	db 29, MAGMAR
+
+	map CINNABAR_VOLCANO_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 34, GRAVELER
+	db 36, WEEZING
+	db 34, MAGCARGO
+	db 32, MAGMAR
+	db 34, MAGMAR
+	db 38, STEELIX
+	db 36, STEELIX
+	; day
+	db 34, GRAVELER
+	db 36, WEEZING
+	db 34, MAGCARGO
+	db 32, MAGMAR
+	db 34, MAGMAR
+	db 38, STEELIX
+	db 36, STEELIX
+	; nite
+	db 34, HAUNTER
+	db 34, GRAVELER
+	db 36, WEEZING
+	db 34, MAGCARGO
+	db 32, MAGMAR
+	db 34, MAGMAR
+	db 38, STEELIX
+
+	map CINNABAR_VOLCANO_B2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 38, MAGCARGO
+	db 40, WEEZING
+	db 38, SLUGMA
+	db 40, MAGMAR
+	db 34, MAGMAR
+	db 38, STEELIX
+	db 40, STEELIX
+	; day
+	db 38, MAGCARGO
+	db 40, WEEZING
+	db 38, SLUGMA
+	db 40, MAGMAR
+	db 34, MAGMAR
+	db 38, STEELIX
+	db 40, STEELIX
+	; nite
+	db 38, MAGCARGO
+	db 40, WEEZING
+	db 40, MAGMAR
+	db 34, MAGMAR
+	db 40, STEELIX
+	db 38, GENGAR
+	db 40, GENGAR
 
 	db -1 ; end

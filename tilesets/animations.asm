@@ -40,7 +40,6 @@ endr
 Tileset00Anim:
 Tileset01Anim:
 Tileset02Anim:
-Tileset04Anim:
 Tileset32Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
@@ -114,6 +113,13 @@ Tileset23Anim:
 Tileset24Anim:
 Tileset30Anim:
 Tileset37Anim:
+	dw NULL,  SafariFountainAnim4
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  SafariFountainAnim3
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
 	dw VTiles2 tile $25, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
@@ -173,6 +179,20 @@ Tileset38Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
+Tileset39Anim:
+	dw VTiles2 tile $14, AnimateWaterTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateFlowerTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
+
+Tileset04Anim:
 Tileset05Anim:
 Tileset06Anim:
 Tileset07Anim:
@@ -732,6 +752,47 @@ endr
 	ld hl, VTiles2 tile $38
 	jp WriteTile
 ; fc605
+
+
+SafariFountainAnim3:
+; Splash in the bottom-right corner of the fountain.
+	ld hl, [sp+0]
+	ld b, h
+	ld c, l
+	ld a, [TileAnimationTimer]
+	and 6
+	srl a
+rept 2
+	inc a
+endr
+	and 3
+	swap a
+	ld e, a
+	ld d, 0
+	ld hl, SafariFountainFrames
+	add hl, de
+	ld sp, hl
+	ld hl, VTiles2 tile $3d
+	jp WriteTile
+
+
+SafariFountainAnim4:
+; Splash in the top-left corner of the fountain.
+	ld hl, [sp+0]
+	ld b, h
+	ld c, l
+	ld a, [TileAnimationTimer]
+	and 6
+rept 3
+	add a
+endr
+	ld e, a
+	ld d, 0
+	ld hl, SafariFountainFrames
+	add hl, de
+	ld sp, hl
+	ld hl, VTiles2 tile $3c
+	jp WriteTile
 
 
 SafariFountainFrames: ; fc605

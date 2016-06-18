@@ -1158,6 +1158,10 @@ Kurt_SelectQuantity_InterpretJoypad: ; 27a28
 	ld b, a
 	ret
 
+SECTION "Wild Data", ROMX
+
+INCLUDE "engine/wildmons.asm"
+
 SECTION "bankA", ROMX, BANK[$A]
 
 INCLUDE "engine/link.asm"
@@ -1172,8 +1176,6 @@ Function29fe4: ; unreferenced
 	ld a, c
 	and a
 	ret
-
-INCLUDE "engine/wildmons.asm"
 
 DetermineLinkBattleResult: ; 2b930
 	callba UpdateEnemyMonInParty

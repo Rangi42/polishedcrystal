@@ -499,9 +499,6 @@ INCLUDE "maps/Route28FamousSpeechHouse.asm"
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
-INCLUDE "maps/SilverCaveOutside.asm"
-INCLUDE "maps/Route10North.asm"
-INCLUDE "maps/BellchimeTrail.asm"
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/ViridianForest.asm"
@@ -521,3 +518,20 @@ INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/Route48.asm"
 INCLUDE "maps/YellowForest.asm"
 INCLUDE "maps/YellowForestGate.asm"
+INCLUDE "maps/CinnabarVolcano1F.asm"
+INCLUDE "maps/CinnabarVolcanoB1F.asm"
+INCLUDE "maps/CinnabarVolcanoB2F.asm"
+INCLUDE "maps/SafariZoneFuchsiaGate.asm"
+INCLUDE "maps/SafariZoneHub.asm"
+INCLUDE "maps/SafariZoneEast.asm"
+INCLUDE "maps/SafariZoneNorth.asm"
+INCLUDE "maps/SafariZoneHubRestHouse.asm"
+INCLUDE "maps/SafariZoneEastRestHouse.asm"
+INCLUDE "maps/SafariZoneNorthRestHouse.asm"
+
+
+SECTION "Map Scripts 26", ROMX
+
+INCLUDE "maps/Route10North.asm"
+INCLUDE "maps/SilverCaveOutside.asm"
+INCLUDE "maps/BellchimeTrail.asm"

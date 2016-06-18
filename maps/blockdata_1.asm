@@ -165,6 +165,7 @@ Route5SaffronCityGate_BlockData:
 ViridianForestViridianGate_BlockData:
 ViridianForestPewterGate_BlockData:
 YellowForestGate_BlockData:
+SafariZoneFuchsiaGate_BlockData:
 	INCBIN "maps/NorthSouthGate.blk"
 
 CinnabarIsland_BlockData:

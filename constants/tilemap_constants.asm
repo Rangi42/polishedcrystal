@@ -43,6 +43,7 @@ const_value SET 1
 	const TILESET_AERODACTYL_WORD_ROOM ; 24
 	const TILESET_SPECIAL_CAVE         ; 25
 	const TILESET_YELLOW_FOREST        ; 26
+	const TILESET_SAFARI_ZONE          ; 27
 
 	const_def
 	const PAL_BG_GRAY

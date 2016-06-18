@@ -1,39 +1,45 @@
 PALPACKET_LENGTH EQU $10
 INCLUDE "predef/sgb.asm"
 
-SHINY_ATK_BIT EQU 5
-SHINY_DEF_VAL EQU 10
-SHINY_SPD_VAL EQU 10
-SHINY_SPC_VAL EQU 10
-
 CheckShininess:
 ; Check if a mon is shiny by DVs at bc.
 ; Return carry if shiny.
+; 1 in 1024 wild Pokémon is shiny.
 
 	ld l, c
 	ld h, b
 
-; Attack
+; Attack must be odd (1, 3, 5, 7, 9, 11, 13, or 15) (1 in 2)
 	ld a, [hl]
-	and 1 << SHINY_ATK_BIT
+	and $1 << 4
 	jr z, .NotShiny
 
-; Defense
+; Defense must be 2, 3, 5, or 7 (1 in 4)
 	ld a, [hli]
 	and $f
-	cp  SHINY_DEF_VAL
+	cp $2
+	jr z, .MaybeShiny1
+	cp $3
+	jr z, .MaybeShiny1
+	cp $5
+	jr z, .MaybeShiny1
+	cp $7
 	jr nz, .NotShiny
 
-; Speed
+; Speed must be 11 or 13 (1 in 8)
+.MaybeShiny1
 	ld a, [hl]
 	and $f0
-	cp  SHINY_SPD_VAL << 4
+	cp $b << 4
+	jr z, .MaybeShiny2
+	cp $d << 4
 	jr nz, .NotShiny
 
-; Special
+; Special must be 15 (1 in 16)
+.MaybeShiny2
 	ld a, [hl]
 	and $f
-	cp  SHINY_SPC_VAL
+	cp $f
 	jr nz, .NotShiny
 
 .Shiny:

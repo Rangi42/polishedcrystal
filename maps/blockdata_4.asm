@@ -48,3 +48,26 @@ Route48_BlockData:
 
 YellowForest_BlockData:
 	INCBIN "maps/YellowForest.blk"
+
+CinnabarVolcano1F_BlockData:
+	INCBIN "maps/CinnabarVolcano1F.blk"
+
+CinnabarVolcanoB1F_BlockData:
+	INCBIN "maps/CinnabarVolcanoB1F.blk"
+
+CinnabarVolcanoB2F_BlockData:
+	INCBIN "maps/CinnabarVolcanoB2F.blk"
+
+SafariZoneHub_BlockData:
+	INCBIN "maps/SafariZoneHub.blk"
+
+SafariZoneEast_BlockData:
+	INCBIN "maps/SafariZoneEast.blk"
+
+SafariZoneNorth_BlockData:
+	INCBIN "maps/SafariZoneNorth.blk"
+
+SafariZoneHubRestHouse_BlockData:
+SafariZoneEastRestHouse_BlockData:
+SafariZoneNorthRestHouse_BlockData:
+	INCBIN "maps/SafariZoneRestHouse.blk"

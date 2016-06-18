@@ -364,8 +364,8 @@ endr
 	db 80,  $4 ; 20% chance
 	db 90,  $6 ; 10% chance
 	db 95,  $8 ;  5% chance
-	db 99,  $a ;  4% chance
-	db 100, $c ;  1% chance
+	db 98,  $a ;  3% chance
+	db 100, $c ;  2% chance
 ; 2a1d9
 
 .WaterMonTable: ; 2a1d9

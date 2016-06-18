@@ -2,7 +2,7 @@
 
 * yenatch, kanzure, Pikalax, iimarckus, and everyone else who's contributed to disassembling Pokémon Crystal
 * Crystal_ for their in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks
-* Mateo for their thorough Red++ ROM hack, and help on Skeetendo
+* Mateo for their thorough Red++ ROM hack, help on Skeetendo, and some sprites and tiles
 * Tauwasser, comet, and other members of Skeetendo for helpful advice
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many Pokémon sprites and icons

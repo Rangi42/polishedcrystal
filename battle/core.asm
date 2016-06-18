@@ -6679,6 +6679,12 @@ endr
 	jr z, .surfpikachu
 	cp PLAYER_SURF_PIKA
 	jr z, .surfpikachu
+
+	ld a, 2
+	call RandomRange
+	and a
+	jr z, .PP
+
 	ld a, FLY
 	jp .flypikachu
 .surfpikachu

@@ -95,17 +95,20 @@ KANTO_LANDMARK EQU const_value
 	const ROUTE_17          ; 58
 	const ROUTE_18          ; 59
 	const FUCHSIA_CITY      ; 5a
-	const ROUTE_19          ; 5b
-	const ROUTE_20          ; 5c
-	const SEAFOAM_ISLANDS   ; 5d
-	const CINNABAR_ISLAND   ; 5e
-	const ROUTE_21          ; 5f
-	const ROUTE_22          ; 60
-	const VICTORY_ROAD      ; 61
-	const ROUTE_23          ; 62
-	const INDIGO_PLATEAU    ; 63
-	const ROUTE_26          ; 64
-	const ROUTE_27          ; 65
-	const TOHJO_FALLS       ; 66
-	const ROUTE_28          ; 67
-	const FAST_SHIP         ; 68
+	const SAFARI_ZONE       ; 5b
+	const ROUTE_19          ; 5c
+	const ROUTE_20          ; 5d
+	const SEAFOAM_ISLANDS   ; 5e
+	const CINNABAR_ISLAND   ; 5f
+	const CINNABAR_VOLCANO  ; 60
+	const POKEMON_MANSION   ; 61
+	const ROUTE_21          ; 62
+	const ROUTE_22          ; 63
+	const VICTORY_ROAD      ; 64
+	const ROUTE_23          ; 65
+	const INDIGO_PLATEAU    ; 66
+	const ROUTE_26          ; 67
+	const ROUTE_27          ; 68
+	const TOHJO_FALLS       ; 69
+	const ROUTE_28          ; 6a
+	const FAST_SHIP         ; 6b

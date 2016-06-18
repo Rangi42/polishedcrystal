@@ -58,6 +58,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
    * Encounter Articuno in Seafoam Islands
    * Encounter Zapdos on Route 10, above Rock Tunnel
+   * Encounter Moltres in Cinnabar Volcano
    * Encounter Mewtwo in Cerulean Cave
    * Wild Slugma in Burned Tower
    * Wild Magmar in Burned Tower
@@ -80,6 +81,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Sneasel outside Silver Cave
    * Wild Houndoom outside Silver Cave
    * Wild Kingdra in Silver Cave
+   * Wild Bulbasaur in the Safari Zone
+   * Wild Charmander in the Safari Zone
+   * Wild Squirtle in the Safari Zone (by Surfing)
+   * Wild Kangaskhan in the Safari Zone (not in Rock Tunnel)
    * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Wobbuffet, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
    * Goldenrod Game Corner: Cubone, Clefairy, Wobbuffet
    * Celadon Game Corner: Mr. Mime, Eevee, Porygon
@@ -89,6 +94,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Trade Dragonair for Chansey in Blackthorn City
    * Trade Pinsir for Heracross in Pewter City
    * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
+   * Wild Bellsprout may hold Gold Leaf
+   * Wild Oddish may hold Silver Leaf
+   * Wild Kadabra may hold TwistedSpoon
+   * Wild Alakazam may hold TwistedSpoon
+   * Wild Ditto may hold Metal Powder
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -107,6 +117,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
+   * Shiny Pokémon have an odd Attack DV, 13 or 14 Defense and Speed, and perfect 15 Special, so 1/2048 Pokémon is shiny
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
    * Surf at Bicycle/Running Shoes speed
@@ -156,6 +167,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
+   * Add generator to Power Plant from FRLG
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
@@ -182,7 +194,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
-   * Eusine has a shiny Haunter
+   * Eusine has a shiny Electrode
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
@@ -196,10 +208,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
-   * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
    * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
-   * Add the Helix and Dome fossils (in Mt. Moon?) to be restored into Omanyte and Kabuto at the Pewter Museum of Science
-   * Find the Old Sea Chart in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
+   * Add the Helix and Dome fossils in Quiet Cave to be restored into Omanyte and Kabuto at the Pewter Museum of Science
+   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Update movesets, and move and item mechanics, to Gen VI
@@ -225,12 +236,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
+   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
-   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
-   * Cinnabar Volcano Pokémon: **Gengar**, Magmar
+   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
@@ -243,6 +253,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
+   * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
@@ -254,12 +265,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Aesthetic updates:
    * Animate new Pokémon sprites
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
-   * Add more locations on the Town Map (Ilex Forest, Cerulean Cave, etc)
    * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
-   * Better Town Map without bold black borders (imitate landmarks from HGSS)
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
    * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
@@ -277,6 +286,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
+   * Pokédex area display uses whiever region you're in (edit engine/pokegear.asm:_Area)
    * Send gift Pokémon to the PC if the party is full
    * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
    * More frequently successful fishing and Headbutting
@@ -300,6 +310,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
+   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
+   * Get BlueSky Mail and Mirage Mail in the Pokécom Center
+   * Get Eon Mail, Morph Mail, and Music Mail somewhere
+   * Unnecessary items: Normal Box, Gorgeous Box, Brick Piece
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music

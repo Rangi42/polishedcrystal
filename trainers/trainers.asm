@@ -1739,6 +1739,7 @@ ScientistGroup:
 
 	; party
 	db 25, DITTO
+	db 25, PORYGON
 
 	db $ff ; end
 
@@ -1776,7 +1777,7 @@ ScientistGroup:
 
 	; party
 
-	db 30, PORYGON
+	db 30, PORYGON_Z
 		db CONVERSION
 		db CONVERSION2
 		db RECOVER
@@ -1814,6 +1815,19 @@ ScientistGroup:
 
 	; party
 	db 50, MAGMAR
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST (9)
+	db "Oskar@"
+	db 0 ; normal
+
+	; party
+	db 48, PORYGON2
+	db 45, NINETALES
+	db 47, MAGNEZONE
 
 	db $ff ; end
 
@@ -6566,6 +6580,19 @@ SuperNerdGroup:
 
 	; party
 	db 53, MAGCARGO
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD (16)
+	db "Luis@"
+	db 0 ; normal
+
+	; party
+	db 48, MAGMAR
+	db 50, WEEZING
+	db 48, MAGMAR
 
 	db $ff ; end
 
