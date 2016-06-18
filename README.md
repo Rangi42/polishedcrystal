@@ -85,8 +85,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Charmander in the Safari Zone
    * Wild Squirtle in the Safari Zone (by Surfing)
    * Wild Kangaskhan in the Safari Zone (not in Rock Tunnel)
-   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Wobbuffet, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
-   * Goldenrod Game Corner: Cubone, Clefairy, Wobbuffet
+   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Tangrowth, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
+   * Goldenrod Game Corner: Abra, Cubone, Clefairy
    * Celadon Game Corner: Mr. Mime, Eevee, Porygon
    * Trade Teddiursa (found in Dark Cave) for Elekid in Violet City
    * Trade Cubone (bought at the Game Corner) for Diglett in Goldenrod City
