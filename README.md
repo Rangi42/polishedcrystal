@@ -90,6 +90,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Trade Dragonair for Chansey in Blackthorn City
    * Trade Pinsir for Heracross in Pewter City
    * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
+   * Wild Bellsprout may hold Gold Leaf
+   * Wild Oddish may hold Silver Leaf
+   * Wild Kadabra may hold TwistedSpoon
+   * Wild Alakazam may hold TwistedSpoon
+   * Wild Ditto may hold Metal Powder
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -301,6 +306,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
+   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
+   * Get BlueSky Mail and Mirage Mail in the Pokécom Center
+   * Get a Lucky Punch somewhere
+   * Get Eon Mail, Morph Mail, and Music Mail somewhere
+   * Unnecessary items: Normal Box, Gorgeous Box, Brick Piece
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
