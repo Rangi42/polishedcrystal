@@ -4,33 +4,38 @@ INCLUDE "predef/sgb.asm"
 CheckShininess:
 ; Check if a mon is shiny by DVs at bc.
 ; Return carry if shiny.
+; 1 in 1024 wild Pokémon is shiny.
 
 	ld l, c
 	ld h, b
 
-; Attack must be odd
+; Attack must be odd (1, 3, 5, 7, 9, 11, 13, or 15) (1 in 2)
 	ld a, [hl]
 	and $1 << 4
 	jr z, .NotShiny
 
-; Defense must be 13 or 14
+; Defense must be 2, 3, 5, or 7 (1 in 4)
 	ld a, [hli]
 	and $f
-	cp $d
+	cp $2
 	jr z, .MaybeShiny1
-	cp $e
+	cp $3
+	jr z, .MaybeShiny1
+	cp $5
+	jr z, .MaybeShiny1
+	cp $7
 	jr nz, .NotShiny
 
-; Speed must be 13 or 14
+; Speed must be 11 or 13 (1 in 8)
 .MaybeShiny1
 	ld a, [hl]
 	and $f0
-	cp $d << 4
+	cp $b << 4
 	jr z, .MaybeShiny2
-	cp $e << 4
+	cp $d << 4
 	jr nz, .NotShiny
 
-; Special must be 15
+; Special must be 15 (1 in 16)
 .MaybeShiny2
 	ld a, [hl]
 	and $f

@@ -81,6 +81,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Sneasel outside Silver Cave
    * Wild Houndoom outside Silver Cave
    * Wild Kingdra in Silver Cave
+   * Wild Bulbasaur in the Safari Zone
+   * Wild Charmander in the Safari Zone
+   * Wild Squirtle in the Safari Zone (by Surfing)
+   * Wild Kangaskhan in the Safari Zone (not in Rock Tunnel)
    * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Wobbuffet, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
    * Goldenrod Game Corner: Cubone, Clefairy, Wobbuffet
    * Celadon Game Corner: Mr. Mime, Eevee, Porygon
@@ -204,7 +208,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
-   * Safari Zone Pokémon: **Bulbasaur**, **Charmander**, **Squirtle**, **Kangaskhan** (not in Rock Tunnel), Nidorina, Nidoqueen, Nidorino, Nidoking, Paras, Parasect, Venonat, Venomoth, Doduo, Dodrio, Exeggcute, Exeggutor, Rhyhorn, Rhydon, Chansey, Tangela, Scyther, Pinsir, Dratini, Dragonair
    * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
    * Add the Helix and Dome fossils in Quiet Cave to be restored into Omanyte and Kabuto at the Pewter Museum of Science
    * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
@@ -233,11 +236,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
    * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
 * Gameplay elements from future (or past) generations:
-   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Fuschia Safari Zone, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
+   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
-   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **SilverPowder**, **TwistedSpoon**, **Dusk Ball**, Nugget
+   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
@@ -283,6 +286,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
    * Select reorders Pokémon in party menu
    * Brief beeping with low HP
+   * Pokédex area display uses whiever region you're in (edit engine/pokegear.asm:_Area)
    * Send gift Pokémon to the PC if the party is full
    * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
    * More frequently successful fishing and Headbutting
@@ -308,7 +312,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add a store to buy room decorations that Mom doesn't
    * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Get BlueSky Mail and Mirage Mail in the Pokécom Center
-   * Get a Lucky Punch somewhere
    * Get Eon Mail, Morph Mail, and Music Mail somewhere
    * Unnecessary items: Normal Box, Gorgeous Box, Brick Piece
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)

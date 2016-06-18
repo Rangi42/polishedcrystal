@@ -156,6 +156,24 @@
 	db 56, GOLDUCK
 	db 57, GYARADOS
 
+	map SAFARI_ZONE_HUB
+	db 6 percent ; encounter rate
+	db 25, SLOWBRO
+	db 25, GOLDUCK
+	db 10, SQUIRTLE
+
+	map SAFARI_ZONE_EAST
+	db 6 percent ; encounter rate
+	db 30, SLOWBRO
+	db 30, GOLDUCK
+	db 10, SQUIRTLE
+
+	map SAFARI_ZONE_NORTH
+	db 6 percent ; encounter rate
+	db 30, SLOWBRO
+	db 30, GOLDUCK
+	db 40, DRAGONAIR
+
 	map SEAFOAM_ISLANDS_B4F
 	db 6 percent ; encounter rate
 	db 30, SEEL
