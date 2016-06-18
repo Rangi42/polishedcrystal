@@ -10245,7 +10245,7 @@ BillGroup:
 	db 55, FLAREON
 	db 56, LEAFEON
 	db 56, GLACEON
-	db 57, PORYGON
+	db 57, PORYGON2
 
 	db $ff ; end
 
@@ -10262,12 +10262,12 @@ LawrenceGroup:
 	db 0 ; normal
 
 	; party
-	db 59, CHARIZARD
-	db 58, DRAGONITE
-	db 58, TYRANITAR
-	db 57, HONCHKROW
-	db 60, ARTICUNO
-	db 60, ZAPDOS
+	db 65, ARTICUNO
+	db 62, CHARIZARD
+	db 64, DRAGONITE
+	db 63, TYRANITAR
+	db 61, HONCHKROW
+	db 65, ZAPDOS
 
 	db $ff ; end
 
