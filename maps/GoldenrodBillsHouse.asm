@@ -13,8 +13,10 @@ GoldenrodBillsHouse_MapScriptHeader:
 BillsHouseBill:
 	faceplayer
 	opentext
+	checkevent EVENT_BEAT_POKEMANIAC_BILL
+	iftrue AfterBillBattleScript
 	checkevent EVENT_GOT_EEVEE
-	iftrue UnknownScript_0x54c1f
+	iftrue BattleBillScript
 	writetext UnknownText_0x54c74
 	yesorno
 	iffalse UnknownScript_0x54c19
@@ -45,9 +47,24 @@ UnknownScript_0x54c19:
 	closetext
 	end
 
-UnknownScript_0x54c1f:
-	writetext UnknownText_0x54e42
+BattleBillScript:
+	writetext BillEeveelutionLegendText
 	waitbutton
+	special SpecialBeastsCheck
+	iffalse DontBattleBillScript
+	writetext PokemaniacBillSeenText
+	waitbutton
+	closetext
+	winlosstext PokemaniacBillBeatenText, 0
+	loadtrainer BILL, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_POKEMANIAC_BILL
+	opentext
+AfterBillBattleScript:
+	writetext PokemaniacBillAfterText
+	waitbutton
+DontBattleBillScript:
 	closetext
 	end
 
@@ -166,15 +183,60 @@ UnknownText_0x54e2d:
 	line "do?"
 	done
 
-UnknownText_0x54e42:
-	text "Bill: My pop, he"
-	line "won't work. All he"
+BillEeveelutionLegendText:
+	text "Bill: Eevee is"
+	line "such a fascinating"
+	cont "#mon."
 
-	para "does is goof off"
-	line "all day long."
+	para "Some say that the"
+	line "three legendary"
 
-	para "He's getting to be"
-	line "a real headache…"
+	para "beasts of Johto"
+	line "were once three"
+
+	para "#mon that"
+	line "evolve from Eevee."
+
+	para "But that might be"
+	line "only a rumor."
+	done
+
+PokemaniacBillSeenText:
+	text "You caught all"
+	line "three of the"
+	cont "legendary beasts?"
+
+	para "That's so cool,"
+	line "<PLAY_G>!"
+
+	para "Do you think they"
+	line "were once related"
+	cont "to Eevee?"
+
+	para "Oh man, now I have"
+	line "to show you my"
+	cont "team!"
+
+	para "You can compare"
+	line "the three legends"
+
+	para "you battled to"
+	line "my own #mon!"
+	done
+
+PokemaniacBillBeatenText:
+	text "Yeehah!"
+	done
+
+PokemaniacBillAfterText:
+	text "That was one rad"
+	line "battle!"
+
+	para "Any #Maniac"
+	line "would be thrilled"
+
+	para "to see what"
+	line "you've caught."
 	done
 
 UnknownText_0x54ea8:
@@ -204,6 +266,12 @@ UnknownText_0x54f4e:
 
 	para "taken after his"
 	line "father."
+
+	para "But now my husband"
+	line "won't work. He"
+
+	para "just goofs off"
+	line "all day long."
 	done
 
 UnknownText_0x54f9e:

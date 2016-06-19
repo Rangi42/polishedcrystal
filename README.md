@@ -85,8 +85,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Charmander in the Safari Zone
    * Wild Squirtle in the Safari Zone (by Surfing)
    * Wild Kangaskhan in the Safari Zone (not in Rock Tunnel)
-   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Wobbuffet, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
-   * Goldenrod Game Corner: Cubone, Clefairy, Wobbuffet
+   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Tangrowth, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
+   * Goldenrod Game Corner: Abra, Cubone, Clefairy
    * Celadon Game Corner: Mr. Mime, Eevee, Porygon
    * Trade Teddiursa (found in Dark Cave) for Elekid in Violet City
    * Trade Cubone (bought at the Game Corner) for Diglett in Goldenrod City
@@ -186,6 +186,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
+   * Battle Bill after catching all three legendary beasts
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
    * Prof. Oak asks for the player's gender and name together
@@ -305,7 +306,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Mamoswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
-   * Battle Bill at some point (five Eeveelutions and Porygon) (show him the three legendary dogs and he'll theorize that they originated from Eeveelutions and wants to battle)
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
