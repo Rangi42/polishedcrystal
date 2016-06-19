@@ -29,6 +29,37 @@ SpecialBeastsCheck: ; 0x4a6e8
 	ret
 
 
+SpecialBirdsCheck:
+; Check if the player owns all three legendary birds.
+; They must exist in either party or PC, and have the player's OT and ID.
+; Return the result in ScriptVar.
+
+	ld a, ARTICUNO
+	ld [ScriptVar], a
+	call CheckOwnMonAnywhere
+	jr nc, .notexist
+
+	ld a, ZAPDOS
+	ld [ScriptVar], a
+	call CheckOwnMonAnywhere
+	jr nc, .notexist
+
+	ld a, MOLTRES
+	ld [ScriptVar], a
+	call CheckOwnMonAnywhere
+	jr nc, .notexist
+
+	; they exist
+	ld a, 1
+	ld [ScriptVar], a
+	ret
+
+.notexist
+	xor a
+	ld [ScriptVar], a
+	ret
+
+
 SpecialMonCheck: ; 0x4a711
 ; Check if the player owns any monsters of the species in ScriptVar.
 ; Return the result in ScriptVar.
