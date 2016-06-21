@@ -186,6 +186,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
+   * Battle Lorelei in Ice Path
    * Battle Bill after catching all three legendary beasts
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
@@ -271,6 +272,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Better Substitute sprite
    * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
+   * Add female Rocket Grunts
+   * Add Young Couple and Double Team trainer classes
+   * Add female Schoolkids? (replace Schoolboys)
    * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
    * Put legendary beasts in a pit in Burned Tower, not a platform
@@ -303,7 +307,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
    * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Mismagius, Arbok, Gengar)
-   * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Mamoswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
    * Replace Cal in Trainer Hall with whichever gender character you don't pick

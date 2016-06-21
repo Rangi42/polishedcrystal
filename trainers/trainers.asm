@@ -10092,12 +10092,28 @@ LoreleiGroup:
 	db 0 ; normal
 
 	; party
-	db 56, DEWGONG
-	db 55, CLOYSTER
-	db 56, SLOWBRO
-	db 54, MAMOSWINE
-	db 58, JYNX
-	db 58, LAPRAS
+	db 30, GLACEON
+	db 33, DEWGONG
+	db 32, CLOYSTER
+	db 33, SLOWBRO
+	db 36, JYNX
+	db 35, LAPRAS
+
+	db $ff ; end
+
+; ================
+
+	; LORELEI (2)
+	db "Lorelei@"
+	db 0 ; normal
+
+	; party
+	db 49, DEWGONG
+	db 48, CLOYSTER
+	db 49, SLOWBRO
+	db 47, GLACEON
+	db 51, JYNX
+	db 50, LAPRAS
 
 	db $ff ; end
 
@@ -10189,40 +10205,40 @@ LeafGroup:
 
 	; party
 
+	db 88, LAPRAS, LEFTOVERS
+		db ICE_BEAM
+		db THUNDERBOLT
+		db REST
+		db SLEEP_TALK
+
 	db 90, VENUSAUR, MIRACLE_SEED
 		db GROWTH
 		db GIGA_DRAIN
 		db SLUDGE_BOMB
 		db SLEEP_POWDER
 
-	db 90, BLASTOISE, MYSTIC_WATER
-		db SURF
-		db ICE_BEAM
-		db EARTHQUAKE
-		db BODY_SLAM
+	db 89, MOLTRES, CHARCOAL
+		db FIRE_BLAST
+		db HIDDEN_POWER ; Grass; DVS $EE $FF
+		db COUNTER
+		db RETURN
 
-	db 85, JOLTEON, BRIGHTPOWDER
+	db 86, JOLTEON, BRIGHTPOWDER
 		db THUNDERBOLT
 		db HIDDEN_POWER ; Water; DVs $ED $FF
 		db THUNDER_WAVE
 		db SAND_ATTACK
 
-	db 87, LAPRAS, LEFTOVERS
-		db ICE_BEAM
-		db THUNDERBOLT
-		db REST
-		db SLEEP_TALK
-
-	db 85, HITMONLEE, SILK_SCARF
-		db HI_JUMP_KICK
-		db MEDITATE
-		db COUNTER
-		db RETURN
-
 	db 89, DRAGONITE, NEVERMELTICE
 		db ICE_BEAM
 		db FIRE_BLAST
 		db THUNDER
+		db BODY_SLAM
+
+	db 90, BLASTOISE, MYSTIC_WATER
+		db SURF
+		db ICE_BEAM
+		db EARTHQUAKE
 		db BODY_SLAM
 
 	db $ff ; end

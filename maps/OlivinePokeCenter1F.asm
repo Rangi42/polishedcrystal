@@ -35,7 +35,7 @@ BeautyCharlotteScript:
 	writetext BeautyCharlotteSeenText
 	waitbutton
 	closetext
-	winlosstext BeautyCharlotteWinText, 0
+	winlosstext BeautyCharlotteBeatenText, 0
 	setlasttalked OLIVINEPOKECENTER1F_BEAUTY
 	loadtrainer BEAUTY, CHARLOTTE
 	startbattle
@@ -50,8 +50,6 @@ BeautyCharlotteAfterScript:
 	end
 
 BeautyCharlotteNoBattleScript:
-	faceplayer
-	opentext
 	writetext BeautyCharlotteNoBattleText
 	waitbutton
 	closetext
@@ -94,15 +92,17 @@ BeautyCharlotteGreetingText:
 
 	para "Do you want to"
 	line "battle and be"
-	cont "amazed by my"
-	cont "#mon?"
+
+	para "amazed by my"
+	line "#mon?"
 	done
 
 BeautyCharlotteNoBattleText:
 	text "Oh, really? Talk"
 	line "to me if you want"
-	cont "to battle some"
-	cont "time!"
+
+	para "to battle some"
+	line "time!"
 	done
 
 BeautyCharlotteSeenText:
@@ -110,7 +110,7 @@ BeautyCharlotteSeenText:
 	line "Here I come!"
 	done
 
-BeautyCharlotteWinText:
+BeautyCharlotteBeatenText:
 	text "Amazing battle!"
 	done
 
