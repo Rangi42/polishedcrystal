@@ -2633,8 +2633,9 @@ wFastShipB1FTrigger::                        ds 1 ; d9bd
 wMountMoonSquareTrigger::                    ds 1 ; d9be
 wMobileTradeRoomMobileTrigger::              ds 1 ; d9bf
 wMobileBattleRoomTrigger::                   ds 1 ; d9c0
+wVermilionCityTrigger::                      ds 1
 
-	ds 49
+	ds 48
 
 
 ;SECTION "Events", WRAMX, BANK [1]

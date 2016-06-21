@@ -429,3 +429,6 @@ YellowSprite:
 
 LeafSprite:
 	sprite_header LeafSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+LawrenceSprite:
+	sprite_header LawrenceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN

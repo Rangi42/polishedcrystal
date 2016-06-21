@@ -5,10 +5,15 @@ const_value set 2
 	const VERMILIONCITY_SUPER_NERD
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_POKEFAN_M
+	const VERMILIONCITY_LAWRENCE
 
 VermilionCity_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 1
@@ -16,9 +21,138 @@ VermilionCity_MapScriptHeader:
 	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
+.Trigger0:
+	end
+
+.Trigger1:
+	end
+
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_VERMILION
 	return
+
+LawrenceLeftScript:
+	disappear VERMILIONCITY_LAWRENCE
+	appear VERMILIONCITY_LAWRENCE
+	spriteface PLAYER, UP
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	playmusic MUSIC_RIVAL_ENCOUNTER
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceEnterLeftMovementData
+	opentext
+	writetext LawrenceOverheardText
+	waitbutton
+	closetext
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachLeftMovementData
+	playsound SFX_TACKLE
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpLeftMovementData
+	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
+	pause 15
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
+	spriteface PLAYER, RIGHT
+	opentext
+	writetext LawrenceIntroText
+	waitbutton
+	closetext
+	spriteface PLAYER, DOWN
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
+	dotrigger $1
+	disappear VERMILIONCITY_LAWRENCE
+	special RestartMapMusic
+	end
+
+LawrenceRightScript:
+	disappear VERMILIONCITY_LAWRENCE
+	appear VERMILIONCITY_LAWRENCE
+	spriteface PLAYER, UP
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	playmusic MUSIC_RIVAL_ENCOUNTER
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceEnterRightMovementData
+	opentext
+	writetext LawrenceOverheardText
+	waitbutton
+	closetext
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachRightMovementData
+	playsound SFX_TACKLE
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpRightMovementData
+	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
+	pause 15
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
+	spriteface PLAYER, LEFT
+	opentext
+	writetext LawrenceIntroText
+	waitbutton
+	closetext
+	spriteface PLAYER, DOWN
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
+	dotrigger $1
+	disappear VERMILIONCITY_LAWRENCE
+	special RestartMapMusic
+	end
+
+LawrenceEnterLeftMovementData:
+	step_down
+	step_down
+	turn_head_right
+	step_end
+
+LawrenceApproachLeftMovementData:
+LawrenceApproachRightMovementData:
+	step_down
+	step_down
+	step_end
+
+LawrenceBumpLeftMovementData:
+LawrenceBumpRightMovementData:
+	fix_facing
+	big_step_up
+	remove_fixed_facing
+	step_sleep_8
+	step_sleep_8
+	step_end
+
+LawrenceWalkAroundLeftMovementData:
+	step_right
+	step_down
+	step_down
+	turn_head_left
+	step_end
+
+LawrenceDepartLeftMovementData:
+	step_down
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
+
+LawrenceDepartRightMovementData:
+	step_down
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
+
+LawrenceEnterRightMovementData:
+	step_right
+	step_down
+	step_down
+	turn_head_left
+	step_end
+
+LawrenceWalkAroundRightMovementData:
+	step_left
+	step_down
+	step_down
+	turn_head_right
+	step_end
 
 TeacherScript_0x1aa983:
 	jumptextfaceplayer UnknownText_0x1aaa15
@@ -126,6 +260,43 @@ VermilionCityMartSign:
 
 VermilionCityHiddenFullHeal:
 	dwb EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL, FULL_HEAL
+
+LawrenceOverheardText:
+	text "…Yes, if my re-"
+	line "search is correct,"
+
+	para "the legendary"
+	line "#mon should be"
+	cont "on the island…"
+	done
+
+LawrenceIntroText:
+	text "Lawrence: Please"
+	line "excuse me for"
+	cont "bumping into you."
+
+	para "I'm in a hurry to"
+	line "complete my"
+	cont "collection."
+
+	para "My name is"
+	line "Lawrence III."
+
+	para "Legendary Pokemon"
+	line "have always been"
+	cont "my passion."
+
+	para "Oh, you've encoun-"
+	line "tered one before?"
+
+	para "Then our paths may"
+	line "cross again as"
+	cont "fellow collectors."
+
+	para "But I really must"
+	line "be on my way."
+	cont "Farewell!"
+	done
 
 UnknownText_0x1aaa15:
 	text "Vermilion Port is"
@@ -287,7 +458,9 @@ VermilionCity_MapEventHeader:
 	warp_def $7, $22, 1, DIGLETTS_CAVE
 
 .XYTriggers:
-	db 0
+	db 2
+	xy_trigger 0, $17, $1c, $0, LawrenceLeftScript, $0, $0
+	xy_trigger 0, $17, $1d, $0, LawrenceRightScript, $0, $0
 
 .Signposts:
 	db 8
@@ -301,10 +474,11 @@ VermilionCity_MapEventHeader:
 	signpost 19, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_TEACHER, 9, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1aa983, -1
 	person_event SPRITE_GRAMPS, 6, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionMachopOwner, -1
 	person_event SPRITE_MACHOP, 7, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
 	person_event SPRITE_SUPER_NERD, 16, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1aa99b, -1
 	person_event SPRITE_BIG_SNORLAX, 8, 34, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_POKEFAN_M, 12, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
+	person_event SPRITE_LAWRENCE, 18, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
