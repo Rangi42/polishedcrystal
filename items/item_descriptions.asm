@@ -212,7 +212,7 @@ ItemDescriptions:
 	dw ParkBallDesc
 	dw RainbowWingDesc
 	dw TeruSama24Desc
-	dw BrickPieceDesc
+	dw OldAmberDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
 	dw PortraitMailDesc
@@ -980,9 +980,9 @@ RainbowWingDesc:
 TeruSama24Desc:
 	db   "?@"
 
-BrickPieceDesc:
-	db   "A rare chunk of"
-	next "tile.@"
+OldAmberDesc:
+	db   "Fossilized resin"
+	next "containing DNA.@"
 
 SurfMailDesc:
 	db   "Lapras-print Mail."

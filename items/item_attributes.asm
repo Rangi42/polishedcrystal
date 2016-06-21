@@ -546,8 +546,8 @@ Item2Attributes:
 ; TERU-SAMA
 	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
-; BRICK PIECE
-	item_attribute    50, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
+; OLD AMBER
+	item_attribute  1000, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
 ; SURF MAIL
 	item_attribute    50, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE

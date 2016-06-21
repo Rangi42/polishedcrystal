@@ -5,22 +5,31 @@ const_value set 2
 	const VICTORYROAD_POKE_BALL3
 	const VICTORYROAD_POKE_BALL4
 	const VICTORYROAD_POKE_BALL5
+	const VICTORYROAD_LAWRENCE
 
 VictoryRoad_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 4
 
 	; triggers
-	dw UnknownScript_0x74490, 0
-	dw UnknownScript_0x74491, 0
+	maptrigger .Trigger0
+	maptrigger .Trigger1
+	maptrigger .Trigger2
+	maptrigger .Trigger3
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x74490:
+.Trigger0:
 	end
 
-UnknownScript_0x74491:
+.Trigger1:
+	end
+
+.Trigger2:
+	end
+
+.Trigger3:
 	end
 
 UnknownScript_0x74492:
@@ -97,6 +106,125 @@ UnknownScript_0x7451f:
 	waitbutton
 	closetext
 	end
+
+LawrenceUpScript:
+	;special SpecialBirdsCheck
+	;iffalse .End
+	spriteface PLAYER, LEFT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	disappear VICTORYROAD_LAWRENCE
+	appear VICTORYROAD_LAWRENCE
+	applymovement VICTORYROAD_LAWRENCE, LawrenceUpApproachMovementData
+	scall BattleLawrenceScript
+	applymovement VICTORYROAD_LAWRENCE, LawrenceUpPauseMovementData
+	opentext
+	writetext LawrenceGoodbyeText
+	waitbutton
+	closetext
+	applymovement VICTORYROAD_LAWRENCE, LawrenceUpLeaveMovementData
+	playsound SFX_EXIT_BUILDING
+	disappear VICTORYROAD_LAWRENCE
+	dotrigger $2
+	waitsfx
+	special RestartMapMusic
+.End
+	end
+
+LawrenceLeftScript:
+	;special SpecialBirdsCheck
+	;iffalse .End
+	spriteface PLAYER, UP
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	disappear VICTORYROAD_LAWRENCE
+	appear VICTORYROAD_LAWRENCE
+	applymovement VICTORYROAD_LAWRENCE, LawrenceLeftApproachMovementData
+	scall BattleLawrenceScript
+	applymovement VICTORYROAD_LAWRENCE, LawrenceLeftPauseMovementData
+	opentext
+	writetext LawrenceGoodbyeText
+	waitbutton
+	closetext
+	applymovement VICTORYROAD_LAWRENCE, LawrenceLeftLeaveMovementData
+	playsound SFX_EXIT_BUILDING
+	disappear VICTORYROAD_LAWRENCE
+	dotrigger $2
+	waitsfx
+	special RestartMapMusic
+.End
+	end
+
+BattleLawrenceScript:
+	playmusic MUSIC_RIVAL_ENCOUNTER
+	opentext
+	writetext LawrenceSeenText
+	waitbutton
+	closetext
+	winlosstext LawrenceBeatenText, 0
+	setlasttalked VICTORYROAD_LAWRENCE
+	loadtrainer LAWRENCE, 1
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	opentext
+	writetext LawrenceAfterText
+	buttonsound
+	verbosegiveitem SILVER_WING
+	writetext LawrenceSilverWingText
+	waitbutton
+	closetext
+	end
+
+LawrenceUpApproachMovementData:
+	step_down
+	step_down
+	step_down
+	step_down
+	turn_head_right
+	step_right
+	step_end
+
+LawrenceLeftApproachMovementData:
+	step_down
+	step_down
+	step_down
+	step_down
+	step_right
+	turn_head_down
+	step_end
+
+LawrenceUpPauseMovementData:
+	turn_head_left
+	step_sleep_8
+	step_sleep_8
+	step_sleep_8
+	step_sleep_8
+	step_sleep_8
+	step_sleep_8
+	turn_head_right
+	step_end
+
+LawrenceLeftPauseMovementData:
+	turn_head_up
+	step_sleep_8
+	step_sleep_8
+	turn_head_down
+	step_end
+
+LawrenceUpLeaveMovementData:
+	step_down
+	step_right
+	step_down
+	step_end
+
+LawrenceLeftLeaveMovementData:
+	step_right
+	step_down
+	step_down
+	step_end
 
 VictoryRoadTMEarthquake:
 	itemball TM_EARTHQUAKE
@@ -242,6 +370,113 @@ UnknownText_0x747aa:
 	line "thing else."
 	done
 
+LawrenceSeenText:
+	text "Lawrence: I don't"
+	line "understand."
+
+	para "Where is the"
+	line "legendary bird of"
+	cont "fire?"
+
+	para "I looked all over"
+	line "Mt.Ember, Fire"
+
+	para "Island, now"
+	line "Victory Road…"
+
+	para "But Moltres is"
+	line "nowhere to be"
+	cont "seen."
+
+	para "Without the"
+	line "complete set, I"
+
+	para "cannot awaken the"
+	line "guardian of the"
+	cont "sea…"
+
+	para "What!?"
+
+	para "You encountered"
+	line "the legendary"
+	cont "birds? Before me?"
+
+	para "Can you appreciate"
+	line "the majesty of"
+	cont "legendary #mon?"
+
+	para "Have you even"
+	line "heard of the"
+
+	para "guardian of the"
+	line "sea before?"
+
+	para "This is unaccept-"
+	line "able."
+
+	para "You're going to"
+	line"help me complete"
+	cont "my collection!"
+	done
+
+LawrenceBeatenText:
+	text "Unbelievable."
+	line "You beat my legen-"
+	cont "dary collection…"
+	done
+
+LawrenceAfterText:
+	text "Lawrence: Your"
+	line "#mon aren't"
+
+	para "just a collection"
+	line "to you, are they?"
+
+	para "You treat them"
+	line "almost like"
+	cont "friends."
+
+	para "Could that be how"
+	line "you defeated my"
+	cont "legendary #mon?"
+
+	para "Well, I think you"
+	line "earned this."
+	done
+
+LawrenceSilverWingText:
+	text "That silver wing"
+	line "feather comes from"
+
+	para "the guardian of"
+	line "the sea."
+
+	para "The scent should"
+	line "attract it, but"
+	cont "only if you've"
+
+	para "mastered the birds"
+	line "of fire, ice, and"
+	cont "lightning."
+
+	para "Or so the legends"
+	line"say."
+	done
+
+LawrenceGoodbyeText:
+	text "My dream was to"
+	line "own that Pokemon,"
+
+	para "but you've proven"
+	line "yourself worthy."
+	cont "Take it."
+
+	para "I'll begin my"
+	line "collection anew."
+
+	para "Farewell."
+	done
+
 VictoryRoad_MapEventHeader:
 	; filler
 	db 0, 0
@@ -260,9 +495,11 @@ VictoryRoad_MapEventHeader:
 	warp_def $5, $d, 3, ROUTE_23
 
 .XYTriggers:
-	db 2
+	db 4
 	xy_trigger 0, $8, $c, $0, UnknownScript_0x74492, $0, $0
 	xy_trigger 0, $8, $d, $0, UnknownScript_0x744b5, $0, $0
+	xy_trigger 1, $42, $9, $0, LawrenceUpScript, $0, $0
+	xy_trigger 1, $43, $8, $0, LawrenceLeftScript, $0, $0
 
 .Signposts:
 	db 2
@@ -270,10 +507,11 @@ VictoryRoad_MapEventHeader:
 	signpost 65, 3, SIGNPOST_ITEM, VictoryRoadHiddenFullHeal
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_SILVER, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	person_event SPRITE_POKE_BALL, 28, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadTMEarthquake, EVENT_VICTORY_ROAD_TM_EARTHQUAKE
 	person_event SPRITE_POKE_BALL, 48, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadMaxRevive, EVENT_VICTORY_ROAD_MAX_REVIVE
 	person_event SPRITE_POKE_BALL, 29, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadFullRestore, EVENT_VICTORY_ROAD_FULL_RESTORE
 	person_event SPRITE_POKE_BALL, 48, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadFullHeal, EVENT_VICTORY_ROAD_FULL_HEAL
 	person_event SPRITE_POKE_BALL, 38, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadHPUp, EVENT_VICTORY_ROAD_HP_UP
+	person_event SPRITE_LAWRENCE, 62, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD

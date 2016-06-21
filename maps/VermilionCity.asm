@@ -31,7 +31,7 @@ VermilionCity_MapScriptHeader:
 	setflag ENGINE_FLYPOINT_VERMILION
 	return
 
-LawrenceLeftScript:
+LawrenceLeftIntroScript:
 	disappear VERMILIONCITY_LAWRENCE
 	appear VERMILIONCITY_LAWRENCE
 	spriteface PLAYER, UP
@@ -62,7 +62,7 @@ LawrenceLeftScript:
 	special RestartMapMusic
 	end
 
-LawrenceRightScript:
+LawrenceRightIntroScript:
 	disappear VERMILIONCITY_LAWRENCE
 	appear VERMILIONCITY_LAWRENCE
 	spriteface PLAYER, UP
@@ -459,8 +459,8 @@ VermilionCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $17, $1c, $0, LawrenceLeftScript, $0, $0
-	xy_trigger 0, $17, $1d, $0, LawrenceRightScript, $0, $0
+	xy_trigger 0, $17, $1c, $0, LawrenceLeftIntroScript, $0, $0
+	xy_trigger 0, $17, $1d, $0, LawrenceRightIntroScript, $0, $0
 
 .Signposts:
 	db 8

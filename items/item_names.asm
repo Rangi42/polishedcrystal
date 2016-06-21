@@ -177,7 +177,7 @@
 	db "Park Ball@"
 	db "Rainbow Wing@"
 	db "Teru-sama@"
-	db "Brick Piece@"
+	db "Old Amber@"
 	db "Surf Mail@"
 	db "LiteBlueMail@"
 	db "PortraitMail@"

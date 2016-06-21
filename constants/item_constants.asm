@@ -179,7 +179,7 @@
 	const PARK_BALL    ; $B1
 	const RAINBOW_WING ; $B2
 	const ITEM_B3      ; $B3
-	const BRICK_PIECE  ; $B4
+	const OLD_AMBER    ; $B4
 	const SURF_MAIL    ; $B5
 	const LITEBLUEMAIL ; $B6
 	const PORTRAITMAIL ; $B7

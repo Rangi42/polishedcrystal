@@ -189,6 +189,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Lorelei in Ice Path
    * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
+   * Battle Lawrence III after catching all three legendary birds, and get the Silver Wing
+   * The old man in Pewter City gives you Old Amber
+   * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
    * Prof. Oak asks for the player's gender and name together
@@ -198,6 +201,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
    * Eusine has a shiny Electrode
+   * Lawrence has a shiny Charizard
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
@@ -243,7 +247,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
-   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **TwistedSpoon**, **Dusk Ball**, Nugget
+   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
@@ -267,13 +271,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 * Aesthetic updates:
    * Animate new Pokémon sprites
+   * Fix Pokémon footprints
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
-   * Add female Rocket Grunts
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
    * Add Magnet Train tracks to Route 32 from HGSS
@@ -299,7 +303,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
    * Suicune roams if you don't catch it in Bell Tower
-   * Lawrence III appears in Victory Road after you catch all three legendary birds. He's searching for Moltres, and battles you to acquire it (team: Articuno, Zapdos, Charizard, Dragonite, Honchkrow, Tyranitar). He gives you the Silver Wing if you win.
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species

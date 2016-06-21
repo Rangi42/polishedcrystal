@@ -113,8 +113,8 @@ LoreleiIntroText:
 	done
 
 LoreleiAfterIntroText:
-	text "Why don't I test"
-	line "your skill?"
+	text "Lorelei: Why don't"
+	line "I test your skill?"
 	done
 
 LoreleiNoBattleText:
