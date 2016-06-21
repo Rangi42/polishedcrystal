@@ -187,6 +187,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
    * Battle Lorelei in Ice Path
+   * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
@@ -306,7 +307,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change in-game trades
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
-   * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Mismagius, Arbok, Gengar)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
@@ -327,6 +327,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
    * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
+   * Add four trainers to Ice Path
    * Add four Ace Trainers to Victory Road
 
 
