@@ -4327,6 +4327,28 @@ PokemaniacGroup:
 	db $ff ; end
 
 ; ================
+
+	; POKEMANIAC (17)
+	db "Aidan@"
+	db 1 ; moves
+
+	; party
+
+	db 36, SNORLAX
+		db HEADBUTT
+		db DEFENSE_CURL
+		db ROLLOUT
+		db SELFDESTRUCT
+
+	db 36, PORYGON2
+		db CONVERSION
+		db RECOVER
+		db PSYBEAM
+		db TRI_ATTACK
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

@@ -9,6 +9,17 @@ QuietCaveB1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+TrainerPokemaniacAidan:
+	trainer EVENT_BEAT_POKEMANIAC_AIDAN, POKEMANIAC, AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText, 0, PokemaniacAidanScript
+
+PokemaniacAidanScript:
+	end_if_just_battled
+	opentext
+	writetext PokemaniacAidanAfterText
+	waitbutton
+	closetext
+	end
+
 QuietCaveB1FBigPearl:
 	itemball BIG_PEARL
 
@@ -17,6 +28,25 @@ QuietCaveB1FElixir:
 
 QuietCaveB1FHiddenHyperPotion:
 	dwb EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION, HYPER_POTION
+
+PokemaniacAidanSeenText:
+	text "My #mon!"
+
+	para "Let me show"
+	line "you them!"
+	done
+
+PokemaniacAidanBeatenText:
+	text "My #mon…"
+	done
+
+PokemaniacAidanAfterText:
+	text "Sometimes a"
+	line "#mon in a"
+
+	para "certain area will"
+	line "know a rare move."
+	done
 
 QuietCaveB1F_MapEventHeader:
 	; filler
@@ -42,6 +72,7 @@ QuietCaveB1F_MapEventHeader:
 	signpost 33, 26, SIGNPOST_ITEM, QuietCaveB1FHiddenHyperPotion
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_POKE_BALL, 3, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB1FBigPearl, EVENT_QUIET_CAVE_B1F_BIG_PEARL
 	person_event SPRITE_POKE_BALL, 13, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB1FElixir, EVENT_QUIET_CAVE_B1F_ELIXIR
+	person_event SPRITE_SUPER_NERD, 17, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1

@@ -224,8 +224,37 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
-      * Moves that can be removed: Psywave, Mimic, Mirror Move
-      * Moves that can be merged: Wrap/Bind, Self-Destruct/Explosion, Hi Jump Kick/Jump Kick, Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web/Block, Lock On/Mind Reader, Scratch/Fury Swipes/Fury Attack, Bone Club/Bonemerang/Bone Rush, Morning Sun/Synthesis/Moonlight, Brick Break/Rock Smash, Heal Bell/Aromatherapy, Foresight/Odor Sleuth/Miracle Eye, Sleep Powder/GrassWhistle, Thief/Covet, Trick/Switcheroo, Softboiled/Milk Drink
+      * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
+      * Beat Up → Air Slash
+      * Bide → Aqua Tail (tutor)
+      * Bind → Avalanche (TM 72)
+      * Bone Club → Bug Buzz
+      * Bone Rush → Close Combat
+      * Constrict → Dark Pulse (TM 79, TM 97, tutor)
+      * Cotton Spore → DazzlinGleam (TM 99)
+      * Detect (TM 43) → Dragon Claw (TM 02)
+      * Fissure → Dragon Pulse (TM 59)
+      * Frustration (TM 21) → Earth Power (tutor)
+      * Jump Kick → Extrasensory
+      * Kinesis → Fairy Wind
+      * Lovely Kiss → Drain Kiss
+      * Mega Kick → Flare Blitz
+      * Mega Punch → Flash Cannon (TM 91)
+      * Mimic → Focus Blast (TM 52)
+      * Mind Reader → Gunk Shot (tutor)
+      * Poison Gas → Hyper Voice (tutor)
+      * Present → Iron Head (tutor)
+      * Psych Up (TM 09) → Metal Sound
+      * Psywave → Nasty Plot
+      * Razor Wind → Poison Jab (TM 84)
+      * Sharpen → Power Gem
+      * Skull Bash → Seed Bomb (tutor)
+      * Smog → Shadow Claw (TM 65)
+      * Snore → Wild Charge (TM 93)
+      * Spider Web → Will-O-Wisp (TM 61)
+      * Sweet Scent (TM 12) → X-Scissor (TM 81)
+      * Vice Grip → Zen Headbutt (tutor)
+      * Withdraw → Psystrike
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
@@ -329,6 +358,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
    * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
+   * Cut is Steel-type
+   * Guillotine is Steel-type
+   * Rock Smash has 75 power and maybe breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
    * Add four trainers to Ice Path
    * Add four Ace Trainers to Victory Road
