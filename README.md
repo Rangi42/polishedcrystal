@@ -72,6 +72,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Cyndaquil in Yellow Forest (at night)
    * Wild Totodile in Yellow Forest (by Surfing)
    * Wild Pikachu in Yellow Forest know Fly or Surf
+   * Wild Munchlax in Quiet Cave know Self-Destruct
+   * Wild Magikarp in Quiet Cave know Dragon Rage
+   * Helix Fossil and Dome Fossil in Quiet Cave
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands
    * Wild Dewgong in Seafoam Islands
@@ -215,8 +218,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
-   * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
-   * Add the Helix and Dome fossils in Quiet Cave to be restored into Omanyte and Kabuto at the Pewter Museum of Science
+   * Restore fossils at the Pewter Museum of Science
    * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
@@ -246,8 +248,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restore locations from RBY (Mt. Moon, Pokémon Tower, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
    * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
    * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
-   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy

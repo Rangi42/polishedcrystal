@@ -419,7 +419,11 @@ MAP_NONE   EQU 0
 	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
 	mapgroup ROUTE_48,                                   11, 18 ; 20
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 21
-	mapgroup YELLOW_FOREST,                              25, 29 ; 20
+	mapgroup YELLOW_FOREST,                              25, 29 ; 22
+	mapgroup QUIET_CAVE_1F,                              18, 18 ; 23
+	mapgroup QUIET_CAVE_B1F,                             18, 18 ; 24
+	mapgroup QUIET_CAVE_B2F,                             18, 18 ; 25
+	mapgroup QUIET_CAVE_B3F,                             18, 18 ; 26
 
 	newgroup                                                    ; 23
 

@@ -153,8 +153,8 @@
 	const DRAGON_SCALE ; $97
 	const BERSERK_GENE ; $98
 	const ITEM_99      ; $99
-	const ITEM_9A      ; $9A
-	const ITEM_9B      ; $9B
+	const HELIX_FOSSIL ; $9A
+	const DOME_FOSSIL  ; $9B
 	const SACRED_ASH   ; $9C
 	const HEAVY_BALL   ; $9D
 	const FLOWER_MAIL  ; $9E

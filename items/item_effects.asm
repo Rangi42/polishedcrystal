@@ -167,8 +167,8 @@ ItemEffects: ; e73c
 	dw DragonScale
 	dw BerserkGene
 	dw Item99
-	dw Item9A
-	dw Item9B
+	dw HelixFossil
+	dw DomeFossil
 	dw SacredAsh
 	dw HeavyBall
 	dw FlowerMail
@@ -193,6 +193,7 @@ ItemEffects: ; e73c
 	dw ParkBall
 	dw RainbowWing
 	dw ItemB3
+	dw OldAmber
 ; e8a2
 
 
@@ -2999,8 +3000,8 @@ Leftovers:
 DragonScale:
 BerserkGene:
 Item99:
-Item9A:
-Item9B:
+HelixFossil:
+DomeFossil:
 FlowerMail:
 ItemA2:
 LightBall:
@@ -3010,6 +3011,7 @@ UpGrade:
 ItemB0:
 RainbowWing:
 ItemB3:
+OldAmber:
 TeruSama: ; f77d
 	jp IsntTheTimeMessage
 ; f780

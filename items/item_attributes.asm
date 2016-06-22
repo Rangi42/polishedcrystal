@@ -468,11 +468,11 @@ Item2Attributes:
 ; TERU-SAMA
 	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
-; TERU-SAMA
-	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
+; HELIX FOSSIL
+	item_attribute  1000, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
-; TERU-SAMA
-	item_attribute $9999, 0,                 0,                       0, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
+; DOME FOSSIL
+	item_attribute  1000, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_NOUSE,   ITEMMENU_NOUSE
 
 ; SACRED ASH
 	item_attribute   200, 0,                 0,             CANT_SELECT, ITEM,     ITEMMENU_CLOSE,   ITEMMENU_NOUSE

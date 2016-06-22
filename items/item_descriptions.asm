@@ -186,8 +186,8 @@ ItemDescriptions:
 	dw DragonScaleDesc
 	dw BerserkGeneDesc
 	dw TeruSama18Desc
-	dw TeruSama19Desc
-	dw TeruSama20Desc
+	dw HelixFossilDesc
+	dw DomeFossilDesc
 	dw SacredAshDesc
 	dw HeavyBallDesc
 	dw FlowerMailDesc
@@ -882,11 +882,13 @@ BerserkGeneDesc:
 TeruSama18Desc:
 	db   "?@"
 
-TeruSama19Desc:
-	db   "?@"
+HelixFossilDesc:
+	db   "A fossilized"
+	next "#mon shell.@"
 
-TeruSama20Desc:
-	db   "?@"
+DomeFossilDesc:
+	db   "A fossilized"
+	next "#mon shell.@"
 
 SacredAshDesc:
 	db   "Fully revives all"

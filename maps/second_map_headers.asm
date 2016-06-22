@@ -607,6 +607,10 @@
 	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
 	map_header_2 YellowForestGate, YELLOW_FOREST_GATE, $0, 0
 	map_header_2 YellowForest, YELLOW_FOREST, $38, 0
+	map_header_2 QuietCave1F, QUIET_CAVE_1F, $9, 0
+	map_header_2 QuietCaveB1F, QUIET_CAVE_B1F, $9, 0
+	map_header_2 QuietCaveB2F, QUIET_CAVE_B2F, $9, 0
+	map_header_2 QuietCaveB3F, QUIET_CAVE_B3F, $9, 0
 	map_header_2 CinnabarVolcano1F, CINNABAR_VOLCANO_1F, $9, 0
 	map_header_2 CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $9, 0
 	map_header_2 CinnabarVolcanoB2F, CINNABAR_VOLCANO_B2F, $9, 0
