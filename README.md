@@ -225,40 +225,40 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
       * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-      * Acid Armor → Dragon Dance
-      * Amnesia → Calm Mind
-      * Beat Up → Dark Pulse (TM 79, TM 97, tutor)
-      * Bide → Flash Cannon (TM 91)
-      * Bind → DazzlinGleam (TM 99)
-      * Bone Club → Earth Power (tutor)
-      * Bone Rush → Wild Charge (TM 93)
-      * Constrict → Fairy Wind
-      * Cotton Spore → Seed Bomb (tutor)
-      * Detect (TM 43) → Power Gem
-      * Fissure → Avalanche (TM 72)
-      * Frustration (TM 21) → Bug Buzz
-      * Jump Kick → Close Combat
-      * Kinesis → Metal Sound
-      * Lovely Kiss → Drain Kiss
-      * Mega Kick → Flare Blitz
-      * Mega Punch → Dragon Claw (TM 02)
-      * Mimic → Dragon Pulse (TM 59)
-      * Mind Reader → Zen Headbutt (tutor)
-      * Poison Gas → Poison Jab (TM 84)
-      * Present → Psystrike
-      * Psych Up (TM 09) → Nasty Plot
-      * Psywave → Extrasensory
-      * Razor Wind → Air Slash
-      * Rolling Kick → Focus Blast (TM 52)
-      * Sharpen → Bulk Up
-      * Skull Bash → Iron Head (tutor)
-      * Smog → Gunk Shot (tutor)
-      * Snore → Hyper Voice (tutor)
-      * Spider Web → Will-O-Wisp (TM 61)
-      * Spite → Astonish
-      * Sweet Scent (TM 12) → Shadow Claw (TM 65)
-      * Vice Grip → X-Scissor (TM 81)
-      * Withdraw → Aqua Tail (tutor)
+      * Acid Armor → Dragon Dance (Dragon, 20 PP, raise Attack and Speed)
+      * Amnesia → Calm Mind (Psychic, 20 PP, raise Sp.Atk and Sp.Def)
+      * Beat Up → Dark Pulse (TM 79, TM 97, tutor) (Dark, 15 PP, 80 power, 100% accuracy, 20% chance to flinch)
+      * Bide → Flash Cannon (TM 91) (Steel, 10 PP, 80 power, 100% accuracy, 10% chance to lower Sp.Def)
+      * Bind → DazzlinGleam (TM 99) (Fairy, 10 PP, 80 power, 100% accuracy)
+      * Bone Club → Earth Power (tutor) (Ground, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def)
+      * Bone Rush → Wild Charge (TM 93) (Electric, 15 PP, 90 power, 100% accuracy, 25% recoil damage)
+      * Constrict → Fairy Wind (Fairy, 30 PP, 40 power, 100% accuracy)
+      * Cotton Spore → Seed Bomb (tutor) (Grass, 15 PP, 80 power, 100% accuracy)
+      * Detect (TM 43) → Power Gem (Rock, 20 PP, 80 power, 100% accuracy)
+      * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
+      * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def)
+      * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
+      * Kinesis → Metal Sound (Steel, 40 PP, 85% accuracy, harshly lowers Sp.Def)
+      * Lovely Kiss → Drain Kiss (Fairy, 10 PP, 50 power, 100% accuracy, drains 75% damage)
+      * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)
+      * Mega Punch → Dragon Claw (TM 02) (Dragon, 15 PP, 80 power, 100% accuracy)
+      * Mimic → Dragon Pulse (TM 59) (Dragon, 10 PP, 85 power, 100% accuracy, 
+      * Mind Reader → Zen Headbutt (tutor) (Psychic, 15 PP, 80 power, 90% accuracy, 20% chance to flinch)
+      * Poison Gas → Poison Jab (TM 84) (Poison, 20 PP, 80 power, 100% accuracy, 30% chance to poison)
+      * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
+      * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk)
+      * Psywave → Extrasensory (Psychic, 20 PP, 80 power, 100% accuracy, 10% chance to flinch)
+      * Razor Wind → Air Slash (Flying, 15 PP, 75 power, 95% accuracy, 30% chance to flinch)
+      * Rolling Kick → Focus Blast (TM 52) (Fighting, 5 PP, 120 power, 70% accuracy, 10% chance to lower Sp.Def)
+      * Sharpen → Bulk Up (Fighting, 20 PP, raises Atk and Def)
+      * Skull Bash → Iron Head (tutor) (Steel, 15 PP, 80 power, 100% accuracy, 30% chance to flinch)
+      * Smog → Gunk Shot (tutor) (Poison, 5 PP, 120 power, 80% accuracy, 30% chance to poison)
+      * Snore → Hyper Voice (tutor) (Normal, 10 PP, 90 power, 100% accuracy, avoids Substitute)
+      * Spider Web → Will-O-Wisp (TM 61) (Fire, 15 PP, 85% accuracy, burns)
+      * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
+      * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio)
+      * Vice Grip → X-Scissor (TM 81) (Bug, 15 PP, 80 power, 100% accuracy)
+      * Withdraw → Aqua Tail (tutor) (Water, 10 PP, 90 power, 90% accuracy)
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
@@ -336,6 +336,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
    * Suicune roams if you don't catch it in Bell Tower
+   * Aurora Orb boosts Suicune's Defense and Special Defense
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
