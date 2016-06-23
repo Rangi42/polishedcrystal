@@ -225,36 +225,40 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Update movesets, and move and item mechanics, to Gen VI
       * Prioritize having viable physical and special moves for each type
       * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-      * Beat Up → Air Slash
-      * Bide → Aqua Tail (tutor)
-      * Bind → Avalanche (TM 72)
-      * Bone Club → Bug Buzz
-      * Bone Rush → Close Combat
-      * Constrict → Dark Pulse (TM 79, TM 97, tutor)
-      * Cotton Spore → DazzlinGleam (TM 99)
-      * Detect (TM 43) → Dragon Claw (TM 02)
-      * Fissure → Dragon Pulse (TM 59)
-      * Frustration (TM 21) → Earth Power (tutor)
-      * Jump Kick → Extrasensory
-      * Kinesis → Fairy Wind
+      * Acid Armor → Dragon Dance
+      * Amnesia → Calm Mind
+      * Beat Up → Dark Pulse (TM 79, TM 97, tutor)
+      * Bide → Flash Cannon (TM 91)
+      * Bind → DazzlinGleam (TM 99)
+      * Bone Club → Earth Power (tutor)
+      * Bone Rush → Wild Charge (TM 93)
+      * Constrict → Fairy Wind
+      * Cotton Spore → Seed Bomb (tutor)
+      * Detect (TM 43) → Power Gem
+      * Fissure → Avalanche (TM 72)
+      * Frustration (TM 21) → Bug Buzz
+      * Jump Kick → Close Combat
+      * Kinesis → Metal Sound
       * Lovely Kiss → Drain Kiss
       * Mega Kick → Flare Blitz
-      * Mega Punch → Flash Cannon (TM 91)
-      * Mimic → Focus Blast (TM 52)
-      * Mind Reader → Gunk Shot (tutor)
-      * Poison Gas → Hyper Voice (tutor)
-      * Present → Iron Head (tutor)
-      * Psych Up (TM 09) → Metal Sound
-      * Psywave → Nasty Plot
-      * Razor Wind → Poison Jab (TM 84)
-      * Sharpen → Power Gem
-      * Skull Bash → Seed Bomb (tutor)
-      * Smog → Shadow Claw (TM 65)
-      * Snore → Wild Charge (TM 93)
+      * Mega Punch → Dragon Claw (TM 02)
+      * Mimic → Dragon Pulse (TM 59)
+      * Mind Reader → Zen Headbutt (tutor)
+      * Poison Gas → Poison Jab (TM 84)
+      * Present → Psystrike
+      * Psych Up (TM 09) → Nasty Plot
+      * Psywave → Extrasensory
+      * Razor Wind → Air Slash
+      * Rolling Kick → Focus Blast (TM 52)
+      * Sharpen → Bulk Up
+      * Skull Bash → Iron Head (tutor)
+      * Smog → Gunk Shot (tutor)
+      * Snore → Hyper Voice (tutor)
       * Spider Web → Will-O-Wisp (TM 61)
-      * Sweet Scent (TM 12) → X-Scissor (TM 81)
-      * Vice Grip → Zen Headbutt (tutor)
-      * Withdraw → Psystrike
+      * Spite → Astonish
+      * Sweet Scent (TM 12) → Shadow Claw (TM 65)
+      * Vice Grip → X-Scissor (TM 81)
+      * Withdraw → Aqua Tail (tutor)
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
    * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
