@@ -135,6 +135,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
+   * Cure poison when it reaches 1 HP outside a battle
 * Fix bugs:
    * Dragon Fang boosts Dragon-type moves, not Dragon Scale
    * Burn/Poison/Paralyze improve catch rate
@@ -261,7 +262,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
       * Withdraw → Aqua Tail (tutor) (Water, 10 PP, 90 power, 90% accuracy)
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
-   * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
    * Waterfall has a 20% flinch chance
