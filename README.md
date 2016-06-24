@@ -102,6 +102,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Kadabra may hold TwistedSpoon
    * Wild Alakazam may hold TwistedSpoon
    * Wild Ditto may hold Metal Powder
+   * Restore fossils at the Pewter Museum of Science
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -218,7 +219,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improve Moonblast, Play Rough, and Disarm Voice animations
    * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
 * Catch all 251 Pokémon without trading:
-   * Restore fossils at the Pewter Museum of Science
    * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
