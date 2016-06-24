@@ -4802,6 +4802,21 @@ CalcLevel: ; 50e1b
 CalcExpAtLevel: ; 50e47
 ; (a/b)*n**3 + c*n**2 + d*n - e
 	ld a, [BaseGrowthRate]
+	cp MEDIUM_SLOW
+	jr nz, .UseExpFormula
+	ld a, d
+	cp 1
+	jr nz, .UseExpFormula
+; Medium Slow Pokémon have 1 experience at level 1, not -54
+	xor a
+	ld [hProduct], a
+	ld [hProduct + 1], a
+	ld [hProduct + 2], a
+	ld a, 1
+	ld [hProduct + 3], a
+	ret
+.UseExpFormula
+	ld a, [BaseGrowthRate]
 	add a
 	add a
 	ld c, a
@@ -4941,12 +4956,12 @@ growth_rate: MACRO
 	db \4, \5
 ENDM
 
-	growth_rate 1, 1,   0,   0,  0 ; Medium Fast
-	growth_rate 3, 4,  10,   0, 10 ; Slightly Fast
-	growth_rate 3, 4,  20,   0, 20 ; Slightly Slow
-	growth_rate 6, 5, -15, 100, 86 ; Medium Slow
-	growth_rate 4, 5,   0,   0,  0 ; Fast
-	growth_rate 5, 4,   0,   0,  0 ; Slow
+	growth_rate 1, 1,   0,   0,   0 ; Medium Fast
+	growth_rate 3, 4,  10,   0,  10 ; Slightly Fast
+	growth_rate 3, 4,  20,   0,  20 ; Slightly Slow
+	growth_rate 6, 5, -15, 100, 140 ; Medium Slow
+	growth_rate 4, 5,   0,   0,   0 ; Fast
+	growth_rate 5, 4,   0,   0,   0 ; Slow
 
 _SwitchPartyMons:
 	ld a, [wd0e3]

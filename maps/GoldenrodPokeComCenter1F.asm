@@ -23,10 +23,7 @@ GoldenrodPokeComCenter1F_MapScriptHeader:
 	db 0
 
 NurseScript_0x60f91:
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .pokecenter
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
-.pokecenter
 	jumpstd pokecenternurse
 
 GameboyKidScript_0x6101e:

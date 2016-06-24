@@ -63,41 +63,46 @@ PokeCenterNurseScript:
 	jump .ok
 
 .morn
+	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	iftrue .morn_center
 	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iftrue .morn_comcenter
-	farwritetext NurseMornText
+	iffalse .morn_center
+	farwritetext PokeComNurseMornText
 	buttonsound
 	jump .ok
-.morn_comcenter
-	farwritetext PokeComNurseMornText
+.morn_center
+	farwritetext NurseMornText
 	buttonsound
 	jump .ok
 
 .day
+	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	iftrue .day_center
 	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iftrue .day_comcenter
-	farwritetext NurseDayText
+	iffalse .day_center
+	farwritetext PokeComNurseDayText
 	buttonsound
 	jump .ok
-.day_comcenter
-	farwritetext PokeComNurseDayText
+.day_center
+	farwritetext NurseDayText
 	buttonsound
 	jump .ok
 
 .nite
+	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	iftrue .nite_center
 	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
-	iftrue .nite_comcenter
-	farwritetext NurseNiteText
+	iffalse .nite_center
+	farwritetext PokeComNurseNiteText
 	buttonsound
 	jump .ok
-.nite_comcenter
-	farwritetext PokeComNurseNiteText
+.nite_center
+	farwritetext NurseNiteText
 	buttonsound
 	jump .ok
 
 .ok
 	; only do this once
-	clearevent EVENT_WELCOMING_TO_POKECOM_CENTER
 	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 
 	farwritetext NurseAskHealText
