@@ -498,8 +498,6 @@ INCLUDE "maps/Route28FamousSpeechHouse.asm"
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
-INCLUDE "maps/PewterMuseumOfScience1F.asm"
-INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/ViridianForest.asm"
 INCLUDE "maps/ViridianForestViridianGate.asm"
 INCLUDE "maps/ViridianForestPewterGate.asm"
@@ -531,6 +529,8 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
+INCLUDE "maps/PewterMuseumOfScience1F.asm"
+INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/BellchimeTrail.asm"

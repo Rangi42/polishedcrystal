@@ -1,4 +1,8 @@
 const_value set 2
+	const PEWTERMUSEUMOFSCIENCE1F_RECEPTIONIST
+	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST1
+	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
+	const PEWTERMUSEUMOFSCIENCE1F_GRAMPS
 
 PewterMuseumOfScience1F_MapScriptHeader:
 .MapTriggers:
@@ -7,15 +11,147 @@ PewterMuseumOfScience1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+Museum1FFossilScientistScript:
+	; TODO: use a menu like with Kurt's Apricorns
+	faceplayer
+	opentext
+	writetext Museum1FFossilScientistText
+	waitbutton
+	checkitem HELIX_FOSSIL
+	iftrue .AskToResurrect
+	checkitem DOME_FOSSIL
+	iftrue .AskToResurrect
+	checkitem OLD_AMBER
+	iftrue .AskToResurrect
+	writetext NoFossilsText
+	waitbutton
+	closetext
+	end
+.AskToResurrect
+	checkitem HELIX_FOSSIL
+	iffalse .TryDomeFossil
+	writetext AskHelixFossilText
+	yesorno
+	iffalse .TryDomeFossil
+	jump ResurrectHelixFossil
+.TryDomeFossil
+	checkitem DOME_FOSSIL
+	iffalse .TryOldAmber
+	writetext AskDomeFossilText
+	yesorno
+	iffalse .TryOldAmber
+	jump ResurrectDomeFossil
+.TryOldAmber
+	checkitem OLD_AMBER
+	iffalse .MaybeLater
+	writetext AskOldAmberText
+	yesorno
+	iffalse .MaybeLater
+	jump ResurrectOldAmber
+.MaybeLater
+	writetext MaybeLaterText
+	waitbutton
+	closetext
+	end
+
+ResurrectHelixFossil:
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, NoRoomForFossilPokemon
+	takeitem HELIX_FOSSIL
+	writetext ResurrectingPokemonText
+	waitbutton
+	closetext
+	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, UP
+	pause 30
+	playsound SFX_BOOT_PC
+	waitsfx
+	pause 30
+	playsound SFX_PROTECT
+	waitsfx
+	pause 30
+	playsound SFX_SHUT_DOWN_PC
+	waitsfx
+	pause 30
+	faceplayer
+	opentext
+	writetext GotOmanyteText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke OMANYTE, 20
+	writetext TakeGoodCareOfItText
+	waitbutton
+	closetext
+	end
+
+ResurrectDomeFossil:
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, NoRoomForFossilPokemon
+	takeitem DOME_FOSSIL
+	writetext ResurrectingPokemonText
+	waitbutton
+	closetext
+	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, UP
+	pause 30
+	playsound SFX_BOOT_PC
+	waitsfx
+	pause 30
+	playsound SFX_PROTECT
+	waitsfx
+	pause 30
+	playsound SFX_SHUT_DOWN_PC
+	waitsfx
+	pause 30
+	faceplayer
+	opentext
+	writetext GotKabutoText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke KABUTO, 20
+	writetext TakeGoodCareOfItText
+	waitbutton
+	closetext
+	end
+
+ResurrectOldAmber:
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, NoRoomForFossilPokemon
+	takeitem OLD_AMBER
+	writetext ResurrectingPokemonText
+	waitbutton
+	closetext
+	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, UP
+	pause 30
+	playsound SFX_BOOT_PC
+	waitsfx
+	pause 30
+	playsound SFX_PROTECT
+	waitsfx
+	pause 30
+	playsound SFX_SHUT_DOWN_PC
+	waitsfx
+	pause 30
+	faceplayer
+	opentext
+	writetext GotAerodactylText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke AERODACTYL, 20
+	writetext TakeGoodCareOfItText
+	waitbutton
+	closetext
+	end
+
+NoRoomForFossilPokemon:
+	writetext NoRoomForFossilPokemonText
+	waitbutton
+	closetext
+	end
+
 Museum1FReceptionistScript:
 	jumptextfaceplayer Museum1FReceptionistText
 
 Museum1FScientistScript:
 	jumptextfaceplayer Museum1FScientistText
-
-Museum1FFossilScientistScript:
-	; TODO: resurrect fossils
-	jumptextfaceplayer Museum1FFossilScientistText
 
 Museum1FGrampsScript:
 	jumptextfaceplayer Museum1FGrampsText
@@ -59,8 +195,6 @@ Museum1FFossilScientistText:
 	para "If you ever need"
 	line "to, let me take"
 	cont "care of it!"
-; Hey! You don't have any fossils.
-; I heard that sometimes you find fossils when you smash rocks at the Ruins of Alph and other places.
 	done
 
 Museum1FGrampsText:
@@ -116,6 +250,67 @@ Museum1FBookshelfSignpostText:
 	para "Caring at the"
 	line "Loamy Layer of"
 	cont "Kanto…"
+	done
+
+AskHelixFossilText:
+	text "Do you want to"
+	line "resurrect the"
+	cont "Helix Fossil?"
+	done
+
+AskDomeFossilText:
+	text "Do you want to"
+	line "resurrect the"
+	cont "Dome Fossil?"
+	done
+
+AskOldAmberText:
+	text "Do you want to"
+	line "resurrect the"
+	cont "Old Amber?"
+	done
+
+NoFossilsText:
+	text "Hey! You don't"
+	line "have any fossils."
+	done
+
+MaybeLaterText:
+	text "Just talk to me"
+	line "if you change"
+	cont "your mind."
+	done
+
+ResurrectingPokemonText:
+	text "Okay! I'll"
+	line "resurrect the"
+	cont "#mon for you!"
+	done
+
+NoRoomForFossilPokemonText:
+	text "Hey! You can't"
+	line "carry another"
+	cont "#mon."
+	done
+
+GotOmanyteText:
+	text "<PLAYER> received"
+	line "Omanyte."
+	done
+
+GotKabutoText:
+	text "<PLAYER> received"
+	line "Kabuto."
+	done
+
+GotAerodactylText:
+	text "<PLAYER> received"
+	line "Aerodactyl."
+	done
+
+TakeGoodCareOfItText:
+	text "Take good care"
+	line "of it!"
 	done
 
 PewterMuseumOfScience1F_MapEventHeader:
