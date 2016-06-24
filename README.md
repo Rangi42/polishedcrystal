@@ -120,7 +120,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
-   * Shiny Pokémon have an odd Attack DV, 13 or 14 Defense and Speed, and perfect 15 Special, so 1/2048 Pokémon is shiny
+   * Shiny Pokémon have an odd Attack DV, 2, 3, 7, or 11 Defense, 5 or 13 Speed, and perfect 15 Special, so 1/1024 Pokémon is shiny
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
    * Surf at Bicycle/Running Shoes speed
