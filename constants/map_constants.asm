@@ -278,7 +278,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                     9, 32 ;  1
+	mapgroup ROUTE_3,                                    11, 32 ;  1
 	mapgroup PEWTER_CITY,                                18, 20 ;  2
 	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  3
 	mapgroup PEWTER_GYM,                                  7,  5 ;  4
