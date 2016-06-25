@@ -121,6 +121,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Curse is a Ghost-type move
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
+   * Waterfall has a 20% flinch chance
    * Shiny Pokémon have an odd Attack DV, 2, 3, 7, or 11 Defense, 5 or 13 Speed, and perfect 15 Special, so 1/1024 Pokémon is shiny
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
@@ -265,7 +266,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gain experience from catching Pokémon like in Gen VI
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
-   * Waterfall has a 20% flinch chance
    * Low Kick's power is based on weight
    * Beat Up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped

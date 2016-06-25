@@ -138,7 +138,7 @@ ENDM
 	move SLUDGE,       EFFECT_POISON_HIT,         65, POISON,    100, 20,  30, SPECIAL
 	move BONE_CLUB,    EFFECT_FLINCH_HIT,         65, GROUND,     85, 20,  10, PHYSICAL
 	move FIRE_BLAST,   EFFECT_BURN_HIT,          110, FIRE,       85,  5,  10, SPECIAL
-	move WATERFALL,    EFFECT_NORMAL_HIT,         80, WATER,     100, 15,   0, PHYSICAL
+	move WATERFALL,    EFFECT_FLINCH_HIT,         80, WATER,     100, 15,  20, PHYSICAL
 	move CLAMP,        EFFECT_BIND,               35, WATER,      85, 15,   0, PHYSICAL
 	move SWIFT,        EFFECT_ALWAYS_HIT,         60, NORMAL,    100, 20,   0, SPECIAL
 	move SKULL_BASH,   EFFECT_SKULL_BASH,        130, NORMAL,    100, 10,   0, PHYSICAL

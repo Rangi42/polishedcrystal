@@ -19,7 +19,6 @@ Strength:
 RazorLeaf:
 RockThrow:
 EggBomb:
-Waterfall:
 Crabhammer:
 Slash:
 Aeroblast:
@@ -1027,6 +1026,7 @@ LowKick:
 BoneClub:
 RockSlide:
 HyperFang:
+Waterfall:
 FlinchHit:
 	checkobedience
 	usedmovetext
