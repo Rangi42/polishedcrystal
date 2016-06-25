@@ -228,6 +228,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
       * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
       * Acid Armor → Dragon Dance (Dragon, 20 PP, raise Attack and Speed)
       * Amnesia → Calm Mind (Psychic, 20 PP, raise Sp.Atk and Sp.Def)
+      * Barrage → Bullet Punch (Steel, 30 PP, 40 power, 100% accuracy, +1 priority)
       * Beat Up → Dark Pulse (TM 79, TM 97, tutor) (Dark, 15 PP, 80 power, 100% accuracy, 20% chance to flinch)
       * Bide → Flash Cannon (TM 91) (Steel, 10 PP, 80 power, 100% accuracy, 10% chance to lower Sp.Def)
       * Bind → DazzlinGleam (TM 99) (Fairy, 10 PP, 80 power, 100% accuracy)

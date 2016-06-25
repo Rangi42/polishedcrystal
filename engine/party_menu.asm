@@ -418,6 +418,8 @@ endr
 	ld h, [hl]
 	ld l, a
 	ld de, StringBuffer1
+; Only reads first 3 evolution entries
+; https://hax.iimarck.us/topic/4567/
 	ld a, BANK(EvosAttacks)
 	ld bc, $a
 	call FarCopyBytes
