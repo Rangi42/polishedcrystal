@@ -174,6 +174,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
+   * Prof. Oak's lab has FRLG/HGSS appearance
    * Add crater to Route 3 from HGSS
    * Add generator to Power Plant from FRLG
    * Add fountain to Celadon City from HGSS
