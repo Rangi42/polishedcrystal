@@ -169,6 +169,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Kanto has colored roofs
    * Rounder Strength boulder like RBY/RSE/FRLG
    * Add lake in front of Sprout Tower from HGSS
+   * Add Magnet Train tracks to Route 32 from HGSS
    * Add decorative waterfall in Ecruteak City from HGSS
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
@@ -314,7 +315,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
-   * Add Magnet Train tracks to Route 32 from HGSS
    * Add river to Route 46 from HGSS
    * Put legendary beasts in a pit in Burned Tower, not a platform
    * Add crater to Route 3 from HGSS
