@@ -152,6 +152,9 @@ CeruleanCityPokeCenterSign:
 CeruleanCityMartSign:
 	jumpstd martsign
 
+CeruleanBubblerSign:
+	jumptext CeruleanBubblerText
+
 CeruleanCityHiddenBerserkGene:
 	dwb EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY, BERSERK_GENE
 
@@ -296,6 +299,11 @@ CeruleanLockedDoorText:
 	text "It's locked…"
 	done
 
+CeruleanBubblerText:
+	text "The water"
+	line "tastes good!"
+	done
+
 CeruleanCity_MapEventHeader:
 	; filler
 	db 0, 0
@@ -314,7 +322,7 @@ CeruleanCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 9
+	db 10
 	signpost 23, 23, SIGNPOST_READ, CeruleanCitySign
 	signpost 25, 27, SIGNPOST_READ, CeruleanGymSign
 	signpost 29, 11, SIGNPOST_READ, CeruleanBikeShopSign
@@ -323,6 +331,7 @@ CeruleanCity_MapEventHeader:
 	signpost 29, 14, SIGNPOST_READ, CeruleanLockedDoor
 	signpost 21, 20, SIGNPOST_READ, CeruleanCityPokeCenterSign
 	signpost 29, 26, SIGNPOST_READ, CeruleanCityMartSign
+	signpost 22, 11, SIGNPOST_UP, CeruleanBubblerSign
 	signpost 17, 4, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
 
 .PersonEvents:
