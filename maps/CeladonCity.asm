@@ -256,7 +256,7 @@ CeladonCity_MapEventHeader:
 
 .Signposts:
 	db 8
-	signpost 21, 23, SIGNPOST_READ, CeladonCitySign
+	signpost 18, 9, SIGNPOST_READ, CeladonCitySign
 	signpost 31, 11, SIGNPOST_READ, CeladonGymSign
 	signpost 9, 6, SIGNPOST_READ, CeladonCityDeptStoreSign
 	signpost 9, 13, SIGNPOST_READ, CeladonCityMansionSign

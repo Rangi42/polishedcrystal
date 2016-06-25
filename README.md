@@ -175,6 +175,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
    * Add generator to Power Plant from FRLG
+   * Add fountain to Celadon City from HGSS
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
@@ -316,10 +317,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
-   * Put legendary beasts in a pit in Burned Tower, not a platform
    * Add crater to Route 3 from HGSS
    * Add fountain and benches to Cerulean City
-   * Add fountain to Celadon City
    * Change piers in Olivine City and Vermilion City
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
