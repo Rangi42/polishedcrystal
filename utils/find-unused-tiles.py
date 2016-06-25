@@ -201,6 +201,7 @@ map_block_data_exceptions = {
 'Route2Gate': 'NorthSouthGate',
 'Route2946Gate': 'NorthSouthGate',
 'Route5SaffronCityGate': 'NorthSouthGate',
+'SafariZoneFuchsiaGate': 'NorthSouthGate',
 'ViridianForestViridianGate': 'NorthSouthGate',
 'ViridianForestPewterGate': 'NorthSouthGate',
 'YellowForestGate': 'NorthSouthGate',
@@ -283,6 +284,9 @@ map_block_data_exceptions = {
 'RuinsofAlphKabutoItemRoom': 'RuinsofAlphItemRoom',
 'RuinsofAlphOmanyteItemRoom': 'RuinsofAlphItemRoom',
 'RuinsofAlphAerodactylItemRoom': 'RuinsofAlphItemRoom',
+'SafariZoneEastRestHouse': 'SafariZoneRestHouse',
+'SafariZoneHubRestHouse': 'SafariZoneRestHouse',
+'SafariZoneNorthRestHouse': 'SafariZoneRestHouse',
 }
 
 if __name__ == '__main__':
