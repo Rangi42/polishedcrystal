@@ -204,10 +204,10 @@
 	add_tm HIDDEN_POWER ; $C9
 	add_tm SUNNY_DAY    ; $CA
 	add_tm SWEET_SCENT  ; $CB
-	add_tm SNORE        ; $CC
+	add_tm ICY_WIND     ; $CC
 	add_tm BLIZZARD     ; $CD
 	add_tm HYPER_BEAM   ; $CE
-	add_tm ICY_WIND     ; $CF
+	add_tm LIGHT_SCREEN ; $CF
 	add_tm PROTECT      ; $D0
 	add_tm RAIN_DANCE   ; $D1
 	add_tm GIGA_DRAIN   ; $D2
@@ -235,7 +235,7 @@
 	add_tm DEFENSE_CURL ; $E8
 	add_tm THUNDERPUNCH ; $E9
 	add_tm DREAM_EATER  ; $EA
-	add_tm DETECT       ; $EB
+	add_tm DAZZLINGLEAM ; $EB
 	add_tm REST         ; $EC
 	add_tm ATTRACT      ; $ED
 	add_tm THIEF        ; $EE

@@ -1,8 +1,8 @@
 Pound:
 KarateChop:
-MegaPunch:
+DragonClaw:
 Scratch:
-Vicegrip:
+XScissor:
 Cut:
 WingAttack:
 Slam:
@@ -31,6 +31,13 @@ JumpKick:
 HiJumpKick:
 QuickAttack:
 MachPunch:
+BulletPunch:
+Dazzlingleam:
+FairyWind:
+SeedBomb:
+PowerGem:
+HyperVoice:
+AquaTail:
 Extremespeed:
 NormalHit:
 	checkobedience
@@ -67,9 +74,10 @@ DoSleep:
 	endmove
 
 PoisonSting:
-Smog:
+GunkShot:
 Sludge:
 SludgeBomb:
+PoisonJab:
 PoisonHit:
 	checkobedience
 	usedmovetext
@@ -259,7 +267,6 @@ AttackUp:
 	endmove
 
 Harden:
-Withdraw:
 DefenseUp:
 	checkobedience
 	usedmovetext
@@ -565,7 +572,6 @@ DefenseDown2:
 	statdownfailtext
 	endmove
 
-CottonSpore:
 ScaryFace:
 SpeedDown2:
 	checkobedience
@@ -682,7 +688,6 @@ DefenseDownHit:
 	endmove
 
 Bubblebeam:
-Constrict:
 Bubble:
 IcyWind:
 SpeedDownHit:
@@ -732,6 +737,9 @@ SpecialAttackDownHit:
 PsychicM:
 Crunch:
 ShadowBall:
+FlashCannon:
+EarthPower:
+FocusBlast:
 SpecialDefenseDownHit:
 	checkobedience
 	usedmovetext
@@ -959,9 +967,7 @@ CometPunch:
 FuryAttack:
 PinMissile:
 SpikeCannon:
-Barrage:
 FurySwipes:
-BoneRush:
 DoubleKick:
 Bonemerang:
 MultiHit:
@@ -1019,14 +1025,17 @@ PoisonMultiHit:
 	poisontarget
 	endmove
 
-RollingKick:
 Headbutt:
 Bite:
 LowKick:
-BoneClub:
 RockSlide:
 HyperFang:
 Waterfall:
+AirSlash:
+IronHead:
+ZenHeadbutt:
+Extrasensory:
+DarkPulse:
 FlinchHit:
 	checkobedience
 	usedmovetext
@@ -1069,6 +1078,7 @@ OHKOHit:
 TakeDown:
 DoubleEdge:
 Submission:
+WildCharge:
 Struggle:
 RecoilHit:
 	checkobedience
@@ -1199,7 +1209,6 @@ Growth:
 
 Toxic:
 Poisonpowder:
-PoisonGas:
 DoPoison:
 	checkobedience
 	usedmovetext
@@ -1380,11 +1389,11 @@ Dig:
 	kingsrock
 	endmove
 
-Bind:
 Wrap:
 FireSpin:
 Clamp:
 Whirlpool:
+Bind:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1503,7 +1512,6 @@ Conversion2:
 	conversion2
 	endmove
 
-MindReader:
 LockOn:
 	checkobedience
 	usedmovetext
@@ -1671,7 +1679,6 @@ Curse:
 	endmove
 
 Protect:
-Detect:
 	checkobedience
 	usedmovetext
 	doturn
