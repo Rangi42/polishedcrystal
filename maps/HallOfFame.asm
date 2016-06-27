@@ -27,6 +27,35 @@ HallOfFameScript:
 	opentext
 	writetext HallOfFame_LanceText
 	waitbutton
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftrue .NoTrophy
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .GoldTrophy
+.SilverTrophy
+	writetext HallOfFame_LanceTrophyText
+	waitbutton
+	setevent EVENT_DECO_SILVER_TROPHY
+	writetext HallOfFame_SilverTrophyText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext HallOfFame_SilverTrophySentText
+	waitbutton
+	jump .NoTrophy
+.GoldTrophy
+	writetext HallOfFame_LanceTrophyText
+	waitbutton
+	setevent EVENT_DECO_GOLD_TROPHY
+	writetext HallOfFame_GoldTrophyText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext HallOfFame_GoldTrophySentText
+	waitbutton
+	jump .NoTrophy
+.NoTrophy
+	writetext HallOfFame_LanceMoreText
+	waitbutton
 	closetext
 	spriteface HALLOFFAME_LANCE, UP
 	applymovement PLAYER, HallOfFame_SlowlyApproachMachine
@@ -84,8 +113,18 @@ HallOfFame_LanceText:
 	para "Their courageous"
 	line "#mon are also"
 	cont "inducted."
+	done
 
-	para "Here today, we"
+HallOfFame_LanceTrophyText:
+	text "Take this as a"
+	line "memento of what"
+
+	para "you accomplished"
+	line "here today."
+	done
+
+HallOfFame_LanceMoreText:
+	text "Here today, we"
 	line "witnessed the rise"
 
 	para "of a new League"
@@ -114,6 +153,28 @@ HallOfFame_LanceText:
 
 	para "and your partners"
 	line "as Champions!"
+	done
+
+HallOfFame_GoldTrophyText:
+	text "<PLAYER> received"
+	line "Gold Trophy."
+	done
+
+HallOfFame_GoldTrophySentText:
+	text "Gold Trophy"
+	line "was sent to"
+	cont "<PLAYER>'s PC."
+	done
+
+HallOfFame_SilverTrophyText:
+	text "<PLAYER> received"
+	line "Silver Trophy."
+	done
+
+HallOfFame_SilverTrophySentText:
+	text "Silver Trophy"
+	line "was sent to"
+	cont "<PLAYER>'s PC."
 	done
 
 HallOfFame_MapEventHeader:

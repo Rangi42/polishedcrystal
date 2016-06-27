@@ -65,7 +65,15 @@ YellowForestUltraBall:
 YellowForestSurfPikachuDoll:
 	disappear YELLOWFOREST_POKE_BALL4
 	setevent EVENT_DECO_SURFING_PIKACHU_DOLL
-	jumptext YellowForestSurfPikachuDollText
+	opentext
+	writetext YellowForestSurfPikachuDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext YellowForestSurfPikachuDollSentText
+	waitbutton
+	closetext
+	end
 
 YellowForestHiddenBigMushroom1:
 	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM_1, BIG_MUSHROOM
@@ -127,9 +135,11 @@ YellowText_Goodbye:
 
 YellowForestSurfPikachuDollText:
 	text "<PLAYER> found"
-	line "Surf Pikachu Doll!"
+	line "Surf Pikachu Doll."
+	done
 
-	para "Surf Pikachu Doll"
+YellowForestSurfPikachuDollSentText:
+	text "Surf Pikachu Doll"
 	line "was sent to"
 	cont "<PLAYER>'s PC."
 	done

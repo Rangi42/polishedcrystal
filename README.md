@@ -251,6 +251,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
+   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Prof. Oak asks for the player's gender and name together
    * Color-coded starter Poké Balls
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
@@ -310,6 +311,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
+   * PP is restored after every battle
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
@@ -362,7 +364,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
-   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Get BlueSky Mail and Mirage Mail in the Pokécom Center
    * Get Eon Mail, Morph Mail, and Music Mail somewhere
    * Unnecessary items: Normal Box, Gorgeous Box, Brick Piece
