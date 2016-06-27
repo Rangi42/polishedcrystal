@@ -144,18 +144,20 @@ Mart8: ; 16134
 ; 1613b
 
 Mart9: ; 1613b
-	db 3 ; # items
-	db TM_THUNDERPUNCH
-	db TM_FIRE_PUNCH
-	db TM_ICE_PUNCH
-	db $ff
-; 16140
-
-Mart10: ; 16140
 	db 4 ; # items
 	db TM_THUNDERPUNCH
 	db TM_FIRE_PUNCH
 	db TM_ICE_PUNCH
+	db TM_BULK_UP
+	db $ff
+; 16140
+
+Mart10: ; 16140
+	db 5 ; # items
+	db TM_THUNDERPUNCH
+	db TM_FIRE_PUNCH
+	db TM_ICE_PUNCH
+	db TM_BULK_UP
 	db TM_HEADBUTT
 	db $ff
 ; 16146
@@ -165,7 +167,7 @@ Mart11: ; 16146
 	db TM_THUNDERPUNCH
 	db TM_FIRE_PUNCH
 	db TM_ICE_PUNCH
-	db TM_ROCK_SMASH
+	db TM_BULK_UP
 	db $ff
 ; 1614c
 
@@ -174,8 +176,8 @@ Mart12: ; 1614c
 	db TM_THUNDERPUNCH
 	db TM_FIRE_PUNCH
 	db TM_ICE_PUNCH
+	db TM_BULK_UP
 	db TM_HEADBUTT
-	db TM_ROCK_SMASH
 	db $ff
 ; 16153
 

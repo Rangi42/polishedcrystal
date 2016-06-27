@@ -32,32 +32,14 @@ ClerkScript_0x5609c:
 	opentext
 	checkevent EVENT_GOT_TM09_HEADBUTT
 	iftrue .headbutt
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .onlyrocksmash
-	jump .neither
 
-.headbutt
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .both
-	jump .onlyheadbutt
-
-.neither
+.noheadbutt
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_1
 	closetext
 	end
 
-.onlyheadbutt
+.headbutt
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_2
-	closetext
-	end
-
-.onlyrocksmash
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_3
-	closetext
-	end
-
-.both
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_4
 	closetext
 	end
 

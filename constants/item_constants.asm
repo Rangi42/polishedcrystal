@@ -199,7 +199,7 @@
 	add_tm ROAR         ; $C4
 	add_tm TOXIC        ; $C5
 	add_tm ZAP_CANNON   ; $C6
-	add_tm ROCK_SMASH   ; $C7
+	add_tm BULK_UP      ; $C7
 	add_tm HEADBUTT     ; $C8
 	add_tm HIDDEN_POWER ; $C9
 	add_tm SUNNY_DAY    ; $CA
@@ -252,8 +252,9 @@ NUM_TMS = const_value - TM01 - 2
 	add_hm FLASH        ; $F7
 	add_hm WHIRLPOOL    ; $F8
 	add_hm WATERFALL    ; $F9
+	add_hm ROCK_SMASH   ; $FA
 NUM_HMS = const_value - HM01
-	const HM_08         ; $FA
+	const HM_09         ; $FB
 
 	add_mt FLAMETHROWER
 	add_mt THUNDERBOLT

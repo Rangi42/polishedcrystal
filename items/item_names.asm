@@ -247,7 +247,7 @@
 	db "HM05@"
 	db "HM06@"
 	db "HM07@"
-	db "Teru-sama@"
+	db "HM08@"
 	db "Teru-sama@"
 	db "Teru-sama@"
 	db "Teru-sama@"

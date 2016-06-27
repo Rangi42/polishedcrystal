@@ -53,7 +53,7 @@ TMHMMoves: ; 1167a
 	db ROAR
 	db TOXIC
 	db ZAP_CANNON
-	db ROCK_SMASH
+	db BULK_UP
 	db HEADBUTT
 	db HIDDEN_POWER
 	db SUNNY_DAY
@@ -103,6 +103,7 @@ TMHMMoves: ; 1167a
 	db FLASH
 	db WHIRLPOOL
 	db WATERFALL
+	db ROCK_SMASH
 
 ; Move tutor
 	db FLAMETHROWER

@@ -133,7 +133,7 @@ Route36FloriaScript:
 Route36RockSmashGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
+	checkevent EVENT_GOT_HM08_ROCK_SMASH
 	iftrue .AlreadyGotRockSmash
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
@@ -145,9 +145,9 @@ Route36RockSmashGuyScript:
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
 	buttonsound
-	verbosegiveitem TM_ROCK_SMASH
+	verbosegiveitem HM_ROCK_SMASH
 	iffalse .NoRoomForTM
-	setevent EVENT_GOT_TM08_ROCK_SMASH
+	setevent EVENT_GOT_HM08_ROCK_SMASH
 .AlreadyGotRockSmash:
 	writetext RockSmashGuyText3
 	waitbutton

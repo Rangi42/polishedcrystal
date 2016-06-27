@@ -255,9 +255,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## To do:
 
 * Remove unused code and resources to make room for new stuff
-* Fairy type from Gen VI:
-   * Improve Moonblast, Play Rough, and Disarm Voice animations
-   * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
+* Add animations for new moves
 * Catch all 251 Pokémon without trading:
    * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Add moves from future generations
@@ -265,14 +263,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
    * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
    * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
-   * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio)
-* Update TMs and HMs
-   * TM04: Rollout → Calm Mind
-   * TM12: Sweet Scent → Rollout
-   * TM21: Frustration → Ice Punch
-   * TM33: Ice Punch → Reflect
-   * TM08: Rock Smash → Bulk Up
-   * HM08: Rock Smash
+   * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind)
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
