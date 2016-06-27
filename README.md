@@ -225,6 +225,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add fountain and benches to Cerulean City from HGSS
    * Add generator to Power Plant from FRLG
    * Add fountain to Celadon City from HGSS
+   * Add Celadon Hotel and the "Chief" house from RBY
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
@@ -334,7 +335,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
    * Use proper boardwalk/pier in Vermilion City
-   * Add Celadon Hotel from RBY
    * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:

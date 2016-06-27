@@ -18,8 +18,8 @@ DarkCaveVioletEntrance_MapScriptHeader:
 DarkCaveVioletEntrancePotion:
 	itemball POTION
 
-DarkCaveVioletEntranceFullHeal:
-	itemball FULL_HEAL
+DarkCaveVioletEntranceDuskStone:
+	itemball DUSK_STONE
 
 DarkCaveVioletEntranceHyperPotion:
 	itemball HYPER_POTION
@@ -58,6 +58,6 @@ DarkCaveVioletEntrance_MapEventHeader:
 	person_event SPRITE_ROCK, 6, 27, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
 	person_event SPRITE_ROCK, 14, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
 	person_event SPRITE_ROCK, 31, 36, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
-	person_event SPRITE_POKE_BALL, 22, 36, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DarkCaveVioletEntranceFullHeal, EVENT_DARK_CAVE_VIOLET_ENTRANCE_FULL_HEAL
+	person_event SPRITE_POKE_BALL, 22, 36, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DarkCaveVioletEntranceDuskStone, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DUSK_STONE
 	person_event SPRITE_POKE_BALL, 9, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DarkCaveVioletEntranceHyperPotion, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
 	person_event SPRITE_POKE_BALL, 28, 30, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DarkCaveVioletEntranceDireHit, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT

@@ -71,8 +71,8 @@ ItemEffects: ; e73c
 	dw ThunderStone
 	dw MoonStone
 	dw SunStone
-	dw TeruSama
-	dw TeruSama
+	dw DuskStone
+	dw ShinyStone
 	dw Everstone
 	dw Bicycle
 	dw OldRod
@@ -96,8 +96,8 @@ ItemEffects: ; e73c
 	dw ClearBell
 	dw GSBall
 	dw BlueCard
-	dw TeruSama
-	dw TeruSama
+	dw MysticTicket
+	dw OldSeaMap
 	dw Berry
 	dw GoldBerry
 	dw PsnCureBerry
@@ -156,13 +156,13 @@ ItemEffects: ; e73c
 	dw LuckyPunch
 	dw MetalPowder
 	dw BerserkGene
-	dw TeruSama
-	dw TeruSama
+	dw Eviolite
+	dw LifeOrb
 	dw DragonScale
 	dw UpGrade
-	dw TeruSama
-	dw TeruSama
-	dw TeruSama
+	dw DubiousDisc
+	dw RazorFang
+	dw RazorClaw
 	dw Nugget
 	dw TinyMushroom
 	dw BigMushroom
@@ -1272,7 +1272,9 @@ FireStone:
 ThunderStone:
 WaterStone:
 LeafStone:
-SunStone: ; ee0f
+SunStone:
+DuskStone:
+ShinyStone:
 	ld b, PARTYMENUACTION_EVO_STONE
 	call UseItem_SelectMon
 
@@ -2959,6 +2961,13 @@ PinkBow:
 UpGrade:
 RainbowWing:
 OldAmber:
+MysticTicket:
+OldSeaMap:
+Eviolite:
+LifeOrb:
+DubiousDisc:
+RazorFang:
+RazorClaw:
 TeruSama: ; f77d
 	jp IsntTheTimeMessage
 ; f780

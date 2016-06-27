@@ -90,8 +90,8 @@ ItemDescriptions:
 	dw ThunderStoneDesc
 	dw MoonStoneDesc
 	dw SunStoneDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw DuskStoneDesc
+	dw ShinyStoneDesc
 	dw EverstoneDesc
 	dw BicycleDesc
 	dw OldRodDesc
@@ -115,8 +115,8 @@ ItemDescriptions:
 	dw ClearBellDesc
 	dw GSBallDesc
 	dw BlueCardDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw MysticTicketDesc
+	dw OldSeaMapDesc
 	dw BerryDesc
 	dw GoldBerryDesc
 	dw PsnCureBerryDesc
@@ -175,13 +175,13 @@ ItemDescriptions:
 	dw LuckyPunchDesc
 	dw MetalPowderDesc
 	dw BerserkGeneDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw EvioliteDesc
+	dw LifeOrbDesc
 	dw DragonScaleDesc
 	dw UpGradeDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw DubiousDiscDesc
+	dw RazorFangDesc
+	dw RazorClawDesc
 	dw NuggetDesc
 	dw TinyMushroomDesc
 	dw BigMushroomDesc
@@ -724,6 +724,14 @@ BlueCardDesc:
 	db   "Card to save"
 	next "points.@"
 
+MysticTicketDesc:
+	db   "A ticket for the"
+	next "Seagallop Ferry.@"
+
+OldSeaMapDesc:
+	db   "A faded sea chart"
+	next "of a small island.@"
+
 MiracleSeedDesc:
 	db   "Powers up Grass-"
 	next "type moves. (Hold)@"
@@ -839,6 +847,14 @@ BerserkGeneDesc:
 	db   "Boosts Attack but"
 	next "causes confusion.@"
 
+EvioliteDesc:
+	db   "Ups Def and Spcl."
+	next "Def of evolvers.@"
+
+LifeOrbDesc:
+	db   "Boosts power but"
+	next "costs HP.@"
+
 HelixFossilDesc:
 	db   "A fossilized"
 	next "#mon shell.@"
@@ -891,6 +907,14 @@ SunStoneDesc:
 	db   "Evolves certain"
 	next "kinds of #mon.@"
 
+DuskStoneDesc:
+	db   "Evolves certain"
+	next "kinds of #mon.@"
+
+ShinyStoneDesc:
+	db   "Evolves certain"
+	next "kinds of #mon.@"
+
 PinkBowDesc:
 	db   "Powers up Fairy-"
 	next "type moves. (Hold)@"
@@ -898,6 +922,18 @@ PinkBowDesc:
 UpGradeDesc:
 	db   "A mysterious box"
 	next "made by Silph Co.@"
+
+DubiousDiscDesc:
+	db   "A transparent disc"
+	next "of unknown origin."
+
+RazorFangDesc:
+	db   "May make the foe"
+	next "flinch. (Hold)@"
+
+RazorClawDesc:
+	db   "Raises critical"
+	next "hit ratio. (Hold)@"
 
 BerryDesc:
 	db   "A self-restore"

@@ -12,8 +12,11 @@ QuietCaveB2F_MapScriptHeader:
 QuietCaveB2FDuskBall:
 	itemball DUSK_BALL
 
-QuietCaveB2FCalcium:
-	itemball CALCIUM
+QuietCaveB2FRazorClaw:
+	itemball RAZOR_CLAW
+
+QuietCaveB2FHiddenCalcium:
+	dwb EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM, CALCIUM
 
 QuietCaveB2F_MapEventHeader:
 	; filler
@@ -32,9 +35,10 @@ QuietCaveB2F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 11, 16, SIGNPOST_ITEM, QuietCaveB2FHiddenCalcium
 
 .PersonEvents:
 	db 2
 	person_event SPRITE_POKE_BALL, 3, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB2FDuskBall, EVENT_QUIET_CAVE_B2F_DUSK_BALL
-	person_event SPRITE_POKE_BALL, 23, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB2FCalcium, EVENT_QUIET_CAVE_B2F_CALCIUM
+	person_event SPRITE_POKE_BALL, 23, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB2FRazorClaw, EVENT_QUIET_CAVE_B2F_RAZOR_CLAW

@@ -1658,7 +1658,7 @@ TogepiEvosAttacks:
 	db 0 ; no more level-up moves
 
 TogeticEvosAttacks:
-	db EVOLVE_ITEM, SUN_STONE, TOGEKISS ; TODO: Shiny Stone
+	db EVOLVE_ITEM, SHINY_STONE, TOGEKISS
 	db 0 ; no more evolutions
 	db 1, GROWL
 	db 1, CHARM
@@ -2747,7 +2747,7 @@ GlaceonEvosAttacks:
 	db 0 ; no more level-up moves
 
 MurkrowEvosAttacks:
-	db EVOLVE_ITEM, MOON_STONE, HONCHKROW ; TODO: Dusk Stone
+	db EVOLVE_ITEM, DUSK_STONE, HONCHKROW
 	db 0 ; no more evolutions
 	db 1, PECK
 	db 1, ASTONISH
@@ -2788,7 +2788,7 @@ SlowkingEvosAttacks:
 	db 0 ; no more level-up moves
 
 MisdreavusEvosAttacks:
-	db EVOLVE_ITEM, MOON_STONE, MISMAGIUS ; TODO: Dusk Stone
+	db EVOLVE_ITEM, DUSK_STONE, MISMAGIUS
 	db 0 ; no more evolutions
 	db 1, GROWL
 	db 6, ASTONISH
@@ -2873,7 +2873,7 @@ DunsparceEvosAttacks:
 	db 0 ; no more level-up moves
 
 GligarEvosAttacks:
-	db EVOLVE_HOLDING, KINGS_ROCK, GLISCOR ; TODO: Razor Fang
+	db EVOLVE_HOLDING, RAZOR_FANG, GLISCOR
 	db 0 ; no more evolutions
 	db 1, POISON_STING
 	db 5, SAND_ATTACK
@@ -2993,7 +2993,7 @@ HeracrossEvosAttacks:
 	db 0 ; no more level-up moves
 
 SneaselEvosAttacks:
-	db EVOLVE_HOLDING, KINGS_ROCK, WEAVILE ; TODO: Razor Claw
+	db EVOLVE_HOLDING, RAZOR_CLAW, WEAVILE
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
@@ -3255,7 +3255,7 @@ DonphanEvosAttacks:
 	db 0 ; no more level-up moves
 
 Porygon2EvosAttacks:
-	db EVOLVE_HOLDING, UP_GRADE, PORYGON_Z ; TODO: Dubious Disc
+	db EVOLVE_HOLDING, DUBIOUS_DISC, PORYGON_Z
 	db 0 ; no more evolutions
 	db 1, CONVERSION2
 	db 1, TACKLE

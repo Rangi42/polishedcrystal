@@ -391,10 +391,12 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 20
 	mapgroup CELADON_GYM,                                 9,  5 ; 21
 	mapgroup CELADON_CAFE,                                4,  6 ; 22
-	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 23
-	mapgroup ROUTE_16_GATE,                               4,  5 ; 24
-	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 25
-	mapgroup ROUTE_17_18_GATE,                            4,  5 ; 26
+	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 23
+	mapgroup CELADON_HOTEL,                               4,  7 ; 24
+	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 25
+	mapgroup ROUTE_16_GATE,                               4,  5 ; 26
+	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 27
+	mapgroup ROUTE_17_18_GATE,                            4,  5 ; 28
 
 	newgroup                                                    ; 22
 
