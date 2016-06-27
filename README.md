@@ -151,7 +151,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Growth raises Attack and Special Attack, by two stages in sunlight
    * Hidden Power is always 60 power
-   * Curse is a Ghost-type move
+   * Curse is Ghost-type
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
    * Waterfall has a 20% flinch chance
@@ -170,6 +170,19 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
    * Cure poison when it reaches 1 HP outside a battle
+* Pokémon and move edits:
+   * Cut is Steel-type, 60 power, 100% accuracy
+   * Fly has 100% accuracy
+   * Rock Smash has 75 power and is HM08
+   * Guillotine is Steel-type
+   * Butterfree is Bug/Psychic
+   * Persian is Normal/Dark
+   * Ninetales is Fire/Ghost
+   * Golduck is Water/Psychic
+   * Noctowl is Flying/Psychic
+   * Ledian is Bug/Fighting
+   * Dunsparce is Normal/Ground
+   * Mismagius is Ghost/Fairy
 * Fix bugs:
    * Dragon Fang boosts Dragon-type moves, not Dragon Scale
    * Burn/Poison/Paralyze improve catch rate
@@ -256,14 +269,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 * Remove unused code and resources to make room for new stuff
 * Add animations for new moves
-* Catch all 251 Pokémon without trading:
-   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
-* Add moves from future generations
-   * Prioritize having viable physical and special moves for each type
-   * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-   * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
-   * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
-   * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind)
+* Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
+* Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
+* Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
+* Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
+* Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind)
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -271,6 +281,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
    * Drain Kiss drains 75% HP
+   * Double-Edge does 33% recoil damage
+   * Flare Blitz does 33% recoil damage
    * Low Kick's power is based on weight
    * Beat Up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped
@@ -281,12 +293,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
-   * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
-   * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
+   * Grass-type Pokémon are immune to PoisonPowder, Sleep Powder, Spore, and Stun Spore
+   * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Gameplay elements from future (or past) generations:
-   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
-   * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
-   * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
@@ -300,9 +309,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
-   * Cut is Steel-type, 60 power, 100% accuracy
-   * Fly has 100% accuracy
-   * Rock Smash has 75 power
 * Fix bugs:
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
@@ -315,7 +321,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Animate new Pokémon sprites
    * Fix Pokémon footprints
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
-   * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
+   * Improve certain shiny palettes (blue Dragonite, silver Scizor, blue Espeon, black Ursaring, dark green Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprite
    * Low-pitched cries when fainting
@@ -323,7 +329,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
-   * Change piers in Olivine City and Vermilion City
+   * Use proper boardwalk/pier in Vermilion City
+   * Add Celadon Hotel from RBY
+   * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
@@ -363,15 +371,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Yellow Pikachu Surfing music
    * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
-   * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
-   * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
-   * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
-   * Cut is Steel-type
-   * Guillotine is Steel-type
-   * Rock Smash has 75 power and maybe breaks screens instead of lowering Defense (like Brick Break)
+   * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
-   * Add four trainers to Ice Path
+   * Add four Boarders/Skiers to Ice Path
    * Add four Ace Trainers to Victory Road
 
 
