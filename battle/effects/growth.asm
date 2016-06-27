@@ -87,4 +87,3 @@ BattleCommand_Growth:
 	call AnimateFailedMove
 	ld hl, WontRiseAnymoreText
 	jp StdBattleTextBox
-; 37618

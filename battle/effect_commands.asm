@@ -2474,19 +2474,6 @@ FailText_CheckOpponentProtect: ; 35157
 ; 35165
 
 
-BattleCommanda5: ; 35165
-	ld a, [AttackMissed]
-	and a
-	ret z
-
-	ld a, [TypeModifier]
-	and $7f
-	jp z, PrintDoesntAffect
-	jp PrintButItFailed
-
-; 35175
-
-
 BattleCommand_CriticalText: ; 35175
 ; criticaltext
 ; Prints the message for critical hits or one-hit KOs.
@@ -3346,16 +3333,6 @@ BattleCommand_BeatUp: ; 35461
 	jp SkipToBattleCommand
 
 ; 355b5
-
-
-BattleCommanda8: ; 355b5
-	ld a, [wBeatUpHitAtLeastOnce]
-	and a
-	ret nz
-
-	jp PrintButItFailed
-
-; 355bd
 
 
 GetBeatupMonLocation: ; 355bd
@@ -6957,7 +6934,6 @@ BattleCommand_EndLoop: ; 369b6
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
-	call BattleCommanda8
 	jp EndMoveEffect
 
 .not_triple_kick
@@ -7335,7 +7311,13 @@ BattleCommand_Charge: ; 36b4d
 ; 36c2c
 
 
+INCLUDE "battle/effects/bulkup.asm"
+
+INCLUDE "battle/effects/calmmind.asm"
+
 INCLUDE "battle/effects/growth.asm"
+
+INCLUDE "battle/effects/dragondance.asm"
 
 
 BattleCommand_TrapTarget: ; 36c2d
@@ -8640,13 +8622,6 @@ INCLUDE "battle/effects/perish_song.asm"
 INCLUDE "battle/effects/sandstorm.asm"
 
 INCLUDE "battle/effects/rollout.asm"
-
-
-BattleCommand5d: ; 37791
-; unused
-	ret
-
-; 37792
 
 
 BattleCommand_FuryCutter: ; 37792

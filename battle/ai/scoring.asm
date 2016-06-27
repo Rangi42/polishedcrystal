@@ -338,8 +338,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_OHKO,             AI_Smart_Ohko
 	dbw EFFECT_RAZOR_WIND,       AI_Smart_RazorWind
 	dbw EFFECT_SUPER_FANG,       AI_Smart_SuperFang
-	dbw EFFECT_BIND,             AI_Smart_Bind
-	dbw EFFECT_UNUSED_2B,        AI_Smart_Unused2B
+	dbw EFFECT_TRAP,             AI_Smart_Bind
 	dbw EFFECT_CONFUSE,          AI_Smart_Confuse
 	dbw EFFECT_SP_DEF_UP_2,      AI_Smart_SpDefenseUp2
 	dbw EFFECT_REFLECT,          AI_Smart_Reflect
@@ -1100,8 +1099,7 @@ endr
 ; 38a9c
 
 
-AI_Smart_RazorWind:
-AI_Smart_Unused2B: ; 38a9c
+AI_Smart_RazorWind: ; 38a9c
 	ld a, [EnemySubStatus1]
 	bit SUBSTATUS_PERISH, a
 	jr z, .asm_38aaa

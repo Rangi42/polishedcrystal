@@ -1,13 +1,37 @@
 	dw NormalHit
-	dw DoSleep
-	dw PoisonHit
+	dw NormalHit
+	dw NormalHit
 	dw LeechHit
+	dw MultiHit
+	dw MultiHit
+	dw RecoilHit
+	dw FlinchHit
+	dw PoisonHit
 	dw BurnHit
-	dw FreezeHit
 	dw ParalyzeHit
-	dw Explosion
-	dw DreamEater
-	dw MirrorMove
+	dw SleepHit
+	dw FreezeHit
+	dw ConfuseHit
+	dw AttackUpHit
+	dw DefenseUpHit
+	dw AllUpHit
+	dw AttackDownHit
+	dw DefenseDownHit
+	dw SpeedDownHit
+	dw SpecialAttackDownHit
+	dw SpecialDefenseDownHit
+	dw AccuracyDownHit
+	dw EvasionDownHit
+	dw StaticDamage
+	dw StaticDamage
+	dw OHKOHit
+	dw DoPoison
+	dw DoBurn
+	dw DoParalyze
+	dw DoSleep
+	dw DoFreeze
+	dw DoConfuse
+	dw Toxic
 	dw AttackUp
 	dw DefenseUp
 	dw SpeedUp
@@ -15,100 +39,75 @@
 	dw SpecialDefenseUp
 	dw AccuracyUp
 	dw EvasionUp
-	dw NormalHit
-	dw Growl
+	dw FocusEnergy
+	dw AttackUp2
+	dw DefenseUp2
+	dw SpeedUp2
+	dw SpecialAttackUp2
+	dw SpecialDefenseUp2
+	dw AccuracyUp2
+	dw EvasionUp2
+	dw BulkUp
+	dw CalmMind
+	dw Growth
+	dw DragonDance
+	dw AttackDown
 	dw DefenseDown
 	dw StringShot
 	dw SpecialAttackDown
 	dw SpecialDefenseDown
 	dw AccuracyDown
-	dw SweetScent
-	dw Haze
-	dw Bide
-	dw Rampage
-	dw Whirlwind
-	dw MultiHit
-	dw Conversion
-	dw FlinchHit
-	dw Heal
-	dw Toxic
-	dw PayDay
-	dw LightScreen
-	dw TriAttack
-	dw Growth
-	dw OHKOHit
-	dw RazorWind
-	dw SuperFang
-	dw StaticDamage
-	dw Bind
-	dw NormalHit
-	dw MultiHit
-	dw NormalHit
-	dw Mist
-	dw FocusEnergy
-	dw RecoilHit
-	dw DoConfuse
-	dw SwordsDance
-	dw DefenseUp2
-	dw Agility
-	dw SpecialAttackUp2
-	dw Amnesia
-	dw AccuracyUp2
-	dw EvasionUp2
-	dw Transform
-	dw Charm
-	dw Screech
+	dw EvasionDown
+	dw AttackDown2
+	dw DefenseDown2
 	dw SpeedDown2
 	dw SpecialAttackDown2
 	dw SpecialDefenseDown2
 	dw AccuracyDown2
 	dw EvasionDown2
+	dw ResetStats
+	dw Mist
+	dw Safeguard
 	dw Reflect
-	dw DoPoison
-	dw DoParalyze
-	dw AuroraBeam
-	dw DefenseDownHit
-	dw SpeedDownHit
-	dw SpecialAttackDownHit
-	dw SpecialDefenseDownHit
-	dw AccuracyDownHit
-	dw EvasionDownHit
+	dw LightScreen
+	dw Heal
+	dw Rampage
+	dw Trap
+	dw Explosion
+	dw DreamEater
+	dw MirrorMove
+	dw Whirlwind
+	dw Conversion
+	dw PayDay
+	dw TriAttack
+	dw SuperFang
+	dw Transform
 	dw SkyAttack
-	dw ConfuseHit
 	dw Twineedle
-	dw NormalHit
 	dw Substitute
 	dw HyperBeam
 	dw Rage
-	dw Mimic
 	dw Metronome
 	dw LeechSeed
 	dw Splash
 	dw Disable
-	dw StaticDamage
-	dw Psywave
 	dw Counter
 	dw Encore
 	dw PainSplit
-	dw Snore
 	dw Conversion2
 	dw LockOn
 	dw Sketch
-	dw DefrostOpponent
 	dw SleepTalk
 	dw DestinyBond
 	dw Reversal
-	dw Spite
 	dw FalseSwipe
 	dw HealBell
-	dw NormalHit
 	dw TripleKick
 	dw Thief
 	dw MeanLook
 	dw Nightmare
 	dw FlameWheel
 	dw Curse
-	dw NormalHit
 	dw Protect
 	dw Spikes
 	dw Foresight
@@ -120,30 +119,19 @@
 	dw FuryCutter
 	dw Attract
 	dw Return
-	dw Present
-	dw Frustration
-	dw Safeguard
 	dw SacredFire
 	dw Magnitude
 	dw BatonPass
 	dw Pursuit
 	dw RapidSpin
-	dw NormalHit
-	dw NormalHit
 	dw MorningSun
 	dw Synthesis
 	dw Moonlight
 	dw HiddenPower
 	dw RainDance
 	dw SunnyDay
-	dw SteelWing
-	dw MetalClaw
-	dw Ancientpower
-	dw FakeOut
 	dw BellyDrum
-	dw PsychUp
 	dw MirrorCoat
-	dw SkullBash
 	dw Twister
 	dw Earthquake
 	dw FutureSight
@@ -152,6 +140,19 @@
 	dw Solarbeam
 	dw Thunder
 	dw Teleport
-	dw BeatUp
 	dw Fly
 	dw DefenseCurl
+	dw NormalHit
+	dw Bide
+	dw RazorWind
+	dw Mimic
+	dw Psywave
+	dw Snore
+	dw DefrostOpponent
+	dw Spite
+	dw Present
+	dw Frustration
+	dw FakeOut
+	dw PsychUp
+	dw SkullBash
+	dw BeatUp
