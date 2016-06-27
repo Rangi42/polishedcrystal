@@ -2097,6 +2097,7 @@ MewtwoEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, CONFUSION
 	db 1, DISABLE
+	db 1, SAFEGUARD
 	db 11, BARRIER
 	db 22, SWIFT
 	db 33, PSYCH_UP
@@ -2105,7 +2106,7 @@ MewtwoEvosAttacks:
 	db 66, PSYCHIC_M
 	db 77, CALM_MIND
 	db 88, RECOVER
-	db 99, SAFEGUARD
+	db 99, PSYSTRIKE
 	db 0 ; no more level-up moves
 
 MewEvosAttacks:

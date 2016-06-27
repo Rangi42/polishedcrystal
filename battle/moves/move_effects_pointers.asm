@@ -143,6 +143,7 @@
 	dw Fly
 	dw DefenseCurl
 	dw NormalHit
+	dw NormalHit
 	dw Bide
 	dw RazorWind
 	dw Mimic

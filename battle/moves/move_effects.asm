@@ -24,6 +24,7 @@ MegaKick:
 Peck:
 Pound:
 PowerGem:
+Psystrike:
 QuickAttack:
 RazorLeaf:
 RockThrow:

@@ -216,7 +216,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_SleepTalk
 	dw BattleAnim_HealBell
 	dw BattleAnim_Return
-	dw BattleAnim_Present
+	dw BattleAnim_Psystrike
 	dw BattleAnim_Frustration
 	dw BattleAnim_Safeguard
 	dw BattleAnim_PainSplit
@@ -4251,7 +4251,8 @@ BattleAnim_Return: ; cb464
 	anim_ret
 ; cb488
 
-BattleAnim_Present: ; cb488
+BattleAnim_Psystrike:
+; TODO: erase Present animation, design Psystrike animation
 	anim_2gfx ANIM_GFX_STATUS, ANIM_GFX_BUBBLE
 	anim_sound 0, 1, SFX_PRESENT
 	anim_obj ANIM_OBJ_8D,   8, 0,  11, 0, $6c
@@ -4259,7 +4260,6 @@ BattleAnim_Present: ; cb488
 	anim_obj ANIM_OBJ_53,  13, 0,   6, 0, $0
 	anim_wait 48
 	anim_incobj  2
-	anim_jumpif $3, .heal
 	anim_incobj  1
 	anim_wait 1
 	anim_1gfx ANIM_GFX_EXPLOSION
@@ -4269,16 +4269,6 @@ BattleAnim_Present: ; cb488
 	anim_wait 16
 	anim_jumpuntil .loop
 	anim_ret
-
-.heal
-	anim_sound 0, 1, SFX_METRONOME
-.loop2
-	anim_obj ANIM_OBJ_2C, -16, 4,   6, 0, $24
-	anim_wait 8
-	anim_loop 8, .loop2
-	anim_wait 128
-	anim_ret
-; cb4c1
 
 BattleAnim_Frustration: ; cb4c1
 	anim_1gfx ANIM_GFX_MISC

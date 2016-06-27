@@ -2811,11 +2811,24 @@ PlayerAttackDamage: ; 352e2
 	jr .thickcluborlightball
 
 .special
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	jr z, .psystrike
+
 	ld hl, EnemyMonSpclDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+	jp .lightscreen
 
+.psystrike
+	ld hl, EnemyMonDefense
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+
+.lightscreen
 	ld a, [EnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .specialcrit

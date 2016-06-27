@@ -121,6 +121,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mimic → Dragon Pulse (TM 59) (Dragon, 10 PP, 85 power, 100% accuracy)
    * Mind Reader → Zen Headbutt (tutor) (Psychic, 15 PP, 80 power, 90% accuracy, 20% chance to flinch)
    * Poison Gas → Poison Jab (TM 84) (Poison, 20 PP, 80 power, 100% accuracy, 30% chance to poison)
+   * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
    * Psywave → Extrasensory (Psychic, 20 PP, 80 power, 100% accuracy, 10% chance to flinch)
    * Razor Wind → Air Slash (Flying, 15 PP, 75 power, 95% accuracy, 30% chance to flinch)
    * Rolling Kick → Focus Blast (TM 52) (Fighting, 5 PP, 120 power, 70% accuracy, 10% chance to lower Sp.Def)
@@ -258,7 +259,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add moves from future generations
    * Prioritize having viable physical and special moves for each type
    * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-   * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
    * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk) [TM09 becomes Headbutt, TM02 becomes Dragon Claw and should be added somewhere]
    * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def) [TM21 becomes Ice Punch, TM33 becomes Reflect]
    * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)

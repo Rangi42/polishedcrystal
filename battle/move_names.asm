@@ -214,7 +214,7 @@
 	db "Sleep Talk@"
 	db "Heal Bell@"
 	db "Return@"
-	db "Present@"
+	db "Psystrike@"
 	db "Frustration@"
 	db "Safeguard@"
 	db "Pain Split@"

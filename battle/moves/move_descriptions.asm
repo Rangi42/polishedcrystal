@@ -215,7 +215,7 @@
 	dw SleepTalkDescription
 	dw HealBellDescription
 	dw ReturnDescription
-	dw PresentDescription
+	dw PsystrikeDescription
 	dw FrustrationDescription
 	dw SafeguardDescription
 	dw PainSplitDescription
@@ -984,9 +984,9 @@ ReturnDescription:
 	db   "An attack that is"
 	next "based on loyalty.@"
 
-PresentDescription:
-	db   "---"
-	next "---@"
+PsystrikeDescription:
+	db   "A wave that does"
+	next "physical damage.@"
 
 FrustrationDescription:
 	db   "---"

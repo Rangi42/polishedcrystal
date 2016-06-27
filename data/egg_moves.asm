@@ -348,7 +348,6 @@ RhyhornEggMoves:
 	db $ff
 
 ChanseyEggMoves:
-	db PRESENT
 	db METRONOME
 	db HEAL_BELL
 	db $ff
@@ -516,7 +515,6 @@ ChinchouEggMoves:
 
 PichuEggMoves:
 	db REVERSAL
-	db PRESENT
 	db ENCORE
 	db DOUBLESLAP
 	db DISARM_VOICE
@@ -527,7 +525,6 @@ MunchlaxEggMoves:
 	db $ff
 
 TogepiEggMoves:
-	db PRESENT
 	db MIRROR_MOVE
 	db PECK
 	db FORESIGHT
@@ -555,7 +552,6 @@ MareepEggMoves:
 
 MarillEggMoves:
 	db LIGHT_SCREEN
-	db PRESENT
 	db CALM_MIND
 	db FUTURE_SIGHT
 	db BELLY_DRUM
@@ -648,7 +644,6 @@ SnubbullEggMoves:
 	db METRONOME
 	db FAINT_ATTACK
 	db REFLECT
-	db PRESENT
 	db CRUNCH
 	db HEAL_BELL
 	db LICK
@@ -794,7 +789,6 @@ endc
 	db $ff
 
 MiltankEggMoves:
-	db PRESENT
 	db REVERSAL
 	db SEISMIC_TOSS
 	db $ff
