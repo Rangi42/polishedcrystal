@@ -152,7 +152,7 @@ endm
 	command statdownanim            ; 91
 	command statupanim              ; 92
 	command switchturn              ; 93
-	command fakeout                 ; 94
+	command astonish                ; 94
 	command bellydrum               ; 95
 	command psychup                 ; 96
 	command rage                    ; 97

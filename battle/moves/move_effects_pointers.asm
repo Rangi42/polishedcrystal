@@ -142,6 +142,7 @@
 	dw Teleport
 	dw Fly
 	dw DefenseCurl
+	dw Astonish
 	dw NormalHit
 	dw NormalHit
 	dw Bide
@@ -153,7 +154,6 @@
 	dw Spite
 	dw Present
 	dw Frustration
-	dw FakeOut
 	dw PsychUp
 	dw SkullBash
 	dw BeatUp

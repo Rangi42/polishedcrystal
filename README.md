@@ -122,6 +122,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mind Reader → Zen Headbutt (tutor) (Psychic, 15 PP, 80 power, 90% accuracy, 20% chance to flinch)
    * Poison Gas → Poison Jab (TM 84) (Poison, 20 PP, 80 power, 100% accuracy, 30% chance to poison)
    * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
+   * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk) [TM09 becomes Headbutt, TM02 becomes Dragon Claw and should be added somewhere]
    * Psywave → Extrasensory (Psychic, 20 PP, 80 power, 100% accuracy, 10% chance to flinch)
    * Razor Wind → Air Slash (Flying, 15 PP, 75 power, 95% accuracy, 30% chance to flinch)
    * Rolling Kick → Focus Blast (TM 52) (Fighting, 5 PP, 120 power, 70% accuracy, 10% chance to lower Sp.Def)
@@ -130,6 +131,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Smog → Gunk Shot (tutor) (Poison, 5 PP, 120 power, 80% accuracy, 30% chance to poison)
    * Snore (TM 13) → Hyper Voice (tutor) (Normal, 10 PP, 90 power, 100% accuracy, avoids Substitute)
    * Spider Web → Will-O-Wisp (TM 61) (Fire, 15 PP, 85% accuracy, burns)
+   * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
    * Vice Grip → X-Scissor (TM 81) (Bug, 15 PP, 80 power, 100% accuracy)
    * Withdraw → Aqua Tail (tutor) (Water, 10 PP, 90 power, 90% accuracy)
 * Modern battle mechanics:
@@ -259,9 +261,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add moves from future generations
    * Prioritize having viable physical and special moves for each type
    * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-   * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk) [TM09 becomes Headbutt, TM02 becomes Dragon Claw and should be added somewhere]
    * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def) [TM21 becomes Ice Punch, TM33 becomes Reflect]
-   * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
    * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
    * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
    * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)

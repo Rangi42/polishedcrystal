@@ -178,7 +178,7 @@
 	dw AeroblastDescription
 	dw SeedBombDescription
 	dw ReversalDescription
-	dw SpiteDescription
+	dw AstonishDescription
 	dw PowderSnowDescription
 	dw ProtectDescription
 	dw MachPunchDescription
@@ -369,6 +369,7 @@ IronHeadDescription:
 ZenHeadbuttDescription:
 ExtrasensoryDescription:
 DarkPulseDescription:
+AstonishDescription:
 	db   "An attack that may"
 	next "cause flinching.@"
 
@@ -871,10 +872,6 @@ Conversion2Description:
 SeedBombDescription:
 	db   "Slams a barrage"
 	next "of seeds at foe.@"
-
-SpiteDescription:
-	db   "---"
-	next "---@"
 
 ProtectDescription:
 	db   "Foils attack that"

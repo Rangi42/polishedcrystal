@@ -2116,6 +2116,27 @@ DefenseCurl:
 	statupfailtext
 	endmove
 
+Astonish:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	astonish
+	endmove
+
 Bide:
 	storeenergy
 	checkobedience
@@ -2240,16 +2261,6 @@ Frustration:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
-	endmove
-
-FakeOut:
-	checkobedience
-	usedmovetext
-	doturn
-	checkhit
-	fakeout
-	hittarget
-	failuretext
 	endmove
 
 PsychUp:

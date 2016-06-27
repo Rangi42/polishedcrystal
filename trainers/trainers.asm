@@ -189,7 +189,7 @@ MortyGroup:
 
 	db 21, GASTLY, NO_ITEM
 		db LICK
-		db SPITE
+		db WILL_O_WISP
 		db MEAN_LOOK
 		db CURSE
 
@@ -206,8 +206,8 @@ MortyGroup:
 		db NIGHTMARE
 
 	db 23, MISDREAVUS, NO_ITEM
+		db ASTONISH
 		db SHADOW_BALL
-		db SPITE
 		db CONFUSE_RAY
 		db MEAN_LOOK
 
@@ -218,7 +218,7 @@ MortyGroup:
 		db DREAM_EATER
 
 	db 23, HAUNTER, NO_ITEM
-		db SPITE
+		db WILL_O_WISP
 		db MEAN_LOOK
 		db SHADOW_BALL
 		db NIGHT_SHADE
@@ -591,7 +591,7 @@ Rival1Group:
 
 	db 20, HAUNTER
 		db LICK
-		db SPITE
+		db WILL_O_WISP
 		db MEAN_LOOK
 		db CURSE
 
@@ -625,7 +625,7 @@ Rival1Group:
 
 	db 20, HAUNTER
 		db LICK
-		db SPITE
+		db WILL_O_WISP
 		db MEAN_LOOK
 		db CURSE
 
@@ -659,7 +659,7 @@ Rival1Group:
 
 	db 20, HAUNTER
 		db LICK
-		db SPITE
+		db WILL_O_WISP
 		db MEAN_LOOK
 		db CURSE
 
@@ -1254,8 +1254,8 @@ KarenGroup:
 		db AGILITY
 
 	db 45, GENGAR, NO_ITEM
-		db LICK
-		db SPITE
+		db SHADOW_BALL
+		db WILL_O_WISP
 		db CURSE
 		db DESTINY_BOND
 

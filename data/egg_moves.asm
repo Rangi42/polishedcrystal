@@ -63,7 +63,6 @@ RattataEggMoves:
 EkansEggMoves:
 	db PURSUIT
 	db SLAM
-	db SPITE
 if _CRYSTAL
 	db CRUNCH
 endc
@@ -101,7 +100,6 @@ VulpixEggMoves:
 	db FAINT_ATTACK
 	db HYPNOSIS
 	db FLAIL
-	db SPITE
 	db DISABLE
 	db EXTRASENSORY
 	db $ff
@@ -152,7 +150,6 @@ DiglettEggMoves:
 	db $ff
 
 MeowthEggMoves:
-	db SPITE
 	db CHARM
 	db HYPNOSIS
 	db CALM_MIND
@@ -580,7 +577,6 @@ AipomEggMoves:
 	db SCREECH
 	db PURSUIT
 	db AGILITY
-	db SPITE
 	db SLAM
 	db DOUBLESLAP
 	db $ff
@@ -665,7 +661,6 @@ HeracrossEggMoves:
 
 SneaselEggMoves:
 	db COUNTER
-	db SPITE
 	db FORESIGHT
 	db REFLECT
 	db BITE
@@ -733,7 +728,6 @@ HoundourEggMoves:
 	db RAGE
 	db PURSUIT
 	db COUNTER
-	db SPITE
 	db REVERSAL
 	db WILL_O_WISP
 	db $ff
@@ -750,7 +744,6 @@ endc
 
 StantlerEggMoves:
 	db REFLECT
-	db SPITE
 	db DISABLE
 	db LIGHT_SCREEN
 	db BITE

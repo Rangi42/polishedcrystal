@@ -7018,28 +7018,18 @@ BattleCommand_EndLoop: ; 369b6
 ; 36a82
 
 
-BattleCommand_FakeOut: ; 36a82
+BattleCommand_Astonish:
 	ld a, [AttackMissed]
 	and a
 	ret nz
 
 	call CheckSubstituteOpp
-	jr nz, .fail
-
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and 1 << FRZ | SLP
-	jr nz, .fail
+	ret nz
 
 	call CheckOpponentWentFirst
-	jr z, FlinchTarget
+	ret nz
 
-.fail
-	ld a, 1
-	ld [AttackMissed], a
-	ret
-
-; 36aa0
+	jp FlinchTarget
 
 
 BattleCommand_FlinchTarget: ; 36aa0
