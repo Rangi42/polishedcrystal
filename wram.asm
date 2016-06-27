@@ -2131,13 +2131,12 @@ BaseGrowthRate:: ; d24c
 BaseEggGroups:: ; d24d
 	ds 1
 BaseTMHM:: ; d24e
-	ds 8
+	ds 10
 
 
 CurDamage:: ; d256
 	ds 2
 
-	ds 2
 wMornEncounterRate::  ds 1 ; d25a
 wDayEncounterRate::   ds 1 ; d25b
 wNiteEncounterRate::  ds 1 ; d25c
