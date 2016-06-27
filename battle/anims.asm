@@ -217,7 +217,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_HealBell
 	dw BattleAnim_Return
 	dw BattleAnim_Psystrike
-	dw BattleAnim_Frustration
+	dw BattleAnim_BugBuzz
 	dw BattleAnim_Safeguard
 	dw BattleAnim_PainSplit
 	dw BattleAnim_SacredFire
@@ -4270,7 +4270,8 @@ BattleAnim_Psystrike:
 	anim_jumpuntil .loop
 	anim_ret
 
-BattleAnim_Frustration: ; cb4c1
+BattleAnim_BugBuzz:
+; TODO: erase Frustration animation, design Bug Buzz animation
 	anim_1gfx ANIM_GFX_MISC
 	anim_sound 0, 0, SFX_KINESIS_2
 	anim_obj ANIM_OBJ_83,   9, 0,  10, 0, $0
@@ -4292,7 +4293,6 @@ BattleAnim_Frustration: ; cb4c1
 	anim_wait 1
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
-; cb4f9
 
 BattleAnim_Safeguard: ; cb4f9
 	anim_1gfx ANIM_GFX_MISC

@@ -494,6 +494,7 @@ SpecialAttackDownHit:
 	endmove
 
 SpecialDefenseDownHit:
+BugBuzz:
 Crunch:
 EarthPower:
 FlashCannon:

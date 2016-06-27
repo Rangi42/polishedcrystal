@@ -218,7 +218,7 @@
 	const HEAL_BELL    ; $d7
 	const RETURN       ; $d8
 	const PSYSTRIKE    ; $d9
-	const FRUSTRATION  ; $da
+	const BUG_BUZZ     ; $da
 	const SAFEGUARD    ; $db
 	const PAIN_SPLIT   ; $dc
 	const SACRED_FIRE  ; $dd

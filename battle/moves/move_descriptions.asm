@@ -216,7 +216,7 @@
 	dw HealBellDescription
 	dw ReturnDescription
 	dw PsystrikeDescription
-	dw FrustrationDescription
+	dw BugBuzzDescription
 	dw SafeguardDescription
 	dw PainSplitDescription
 	dw SacredFireDescription
@@ -313,11 +313,12 @@ MoonblastDescription:
 	next "lower Spcl.Atk.@"
 
 PsychicMDescription:
-FlashCannonDescription:
-EarthPowerDescription:
-FocusBlastDescription:
 CrunchDescription:
 ShadowBallDescription:
+BugBuzzDescription:
+EarthPowerDescription:
+FlashCannonDescription:
+FocusBlastDescription:
 	db   "An attack that may"
 	next "lower Spcl.Def.@"
 
@@ -988,10 +989,6 @@ ReturnDescription:
 PsystrikeDescription:
 	db   "A wave that does"
 	next "physical damage.@"
-
-FrustrationDescription:
-	db   "---"
-	next "---@"
 
 SafeguardDescription:
 	db   "Prevents all"

@@ -72,8 +72,7 @@ ReceptionistScript_0x560ce:
 	writetext UnknownText_0x56143
 	buttonsound
 	if_greater_than $95, .VeryHappy
-	if_greater_than $31, .SomewhatHappy
-	jump .NotVeryHappy
+	jump .SomewhatHappy
 
 .VeryHappy:
 	writetext UnknownText_0x5615a
@@ -87,15 +86,6 @@ ReceptionistScript_0x560ce:
 .SomewhatHappy:
 	writetext UnknownText_0x561a6
 	waitbutton
-	closetext
-	end
-
-.NotVeryHappy:
-	writetext UnknownText_0x561d8
-	buttonsound
-	verbosegiveitem TM_FRUSTRATION
-	iffalse .Done
-	setflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
 	closetext
 	end
 
@@ -162,12 +152,6 @@ UnknownText_0x561a6:
 
 	para "You should teach"
 	line "it good TM moves."
-	done
-
-UnknownText_0x561d8:
-	text "It looks evil. How"
-	line "about this TM for"
-	cont "it?"
 	done
 
 UnknownText_0x56202:

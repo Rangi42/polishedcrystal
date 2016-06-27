@@ -3542,7 +3542,7 @@ BattleTowerMons6:
 
 	db GOLEM
 	db BRIGHTPOWDER
-	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, FRUSTRATION
+	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, RETURN
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3553,7 +3553,7 @@ BattleTowerMons6:
 	bigdw 30000
 	db $76, $57 ; DVs
 	db 5, 10, 15, 20 ; PP
-	db 0 ; Happiness
+	db 255 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 60 ; Level
 	db 0, 0 ; Status

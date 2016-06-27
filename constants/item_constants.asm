@@ -212,7 +212,7 @@
 	add_tm RAIN_DANCE   ; $D1
 	add_tm GIGA_DRAIN   ; $D2
 	add_tm ENDURE       ; $D3
-	add_tm FRUSTRATION  ; $D4
+	add_tm ICE_PUNCH    ; $D4
 	add_tm SOLARBEAM    ; $D5
 	add_tm IRON_TAIL    ; $D6
 	add_tm DRAGONBREATH ; $D7
@@ -225,7 +225,7 @@
 	add_tm SHADOW_BALL  ; $DE
 	add_tm MUD_SLAP     ; $DF
 	add_tm DOUBLE_TEAM  ; $E0
-	add_tm ICE_PUNCH    ; $E1
+	add_tm REFLECT      ; $E1
 	add_tm SWAGGER      ; $E2
 	add_tm SLEEP_TALK   ; $E3
 	add_tm SLUDGE_BOMB  ; $E4
