@@ -33,6 +33,7 @@ tmhm: MACRO
 x = 0
 y = 0
 w = 0
+q = 0
 	rept _NARG
 	if def(\1_TMNUM)
 	if \1_TMNUM < 25
@@ -41,7 +42,11 @@ x = x | (1 << ((\1_TMNUM) - 1))
 	if \1_TMNUM < 49
 y = y | (1 << ((\1_TMNUM) - 1 - 24))
 	else
+	if \1_TMNUM < 73
 w = w | (1 << ((\1_TMNUM) - 1 - 48))
+	else
+q = q | (1 << ((\1_TMNUM) - 1 - 72))
+	endc
 	endc
 	endc
 	else
@@ -59,8 +64,12 @@ x = x >> 8
 	db y & $ff
 y = y >> 8
 	endr
-	rept 2
+	rept 3
 	db w & $ff
 w = w >> 8
+	endr
+	rept 1
+	db q & $ff
+q = q >> 8
 	endr
 ENDM
