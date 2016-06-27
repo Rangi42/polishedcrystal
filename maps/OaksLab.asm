@@ -3,6 +3,9 @@ const_value set 2
 	const OAKSLAB_SCIENTIST1
 	const OAKSLAB_SCIENTIST2
 	const OAKSLAB_SCIENTIST3
+	const OAKSLAB_BULBASAUR_DOLL
+	const OAKSLAB_CHARMANDER_DOLL
+	const OAKSLAB_SQUIRTLE_DOLL
 
 OaksLab_MapScriptHeader:
 .MapTriggers:
@@ -54,6 +57,87 @@ Oak:
 	writetext OakYesKantoBadgesText
 	buttonsound
 	jump .CheckPokedex
+
+BulbasaurDollScript:
+	opentext
+	writetext ProfOakBulbasaurDollTradeText
+	waitbutton
+	checkitem LEAF_STONE
+	iffalse NoStoneScript
+	writetext WantToTradeText
+	yesorno
+	iffalse NoTradeScript
+	takeitem LEAF_STONE
+	disappear OAKSLAB_BULBASAUR_DOLL
+	setevent EVENT_DECO_BULBASAUR_DOLL
+	writetext BulbasaurDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext BulbasaurDollSentText
+	waitbutton
+	writetext ProfOakAfterTradeText
+	waitbutton
+	closetext
+	end
+
+CharmanderDollScript:
+	opentext
+	writetext ProfOakCharmanderDollTradeText
+	waitbutton
+	checkitem FIRE_STONE
+	iffalse NoStoneScript
+	writetext WantToTradeText
+	yesorno
+	iffalse NoTradeScript
+	takeitem FIRE_STONE
+	disappear OAKSLAB_CHARMANDER_DOLL
+	setevent EVENT_DECO_CHARMANDER_DOLL
+	writetext CharmanderDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext CharmanderDollSentText
+	waitbutton
+	writetext ProfOakAfterTradeText
+	waitbutton
+	closetext
+	end
+
+SquirtleDollScript:
+	opentext
+	writetext ProfOakSquirtleDollTradeText
+	waitbutton
+	checkitem WATER_STONE
+	iffalse NoStoneScript
+	writetext WantToTradeText
+	yesorno
+	iffalse NoTradeScript
+	takeitem WATER_STONE
+	disappear OAKSLAB_SQUIRTLE_DOLL
+	setevent EVENT_DECO_SQUIRTLE_DOLL
+	writetext SquirtleDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext SquirtleDollSentText
+	waitbutton
+	writetext ProfOakAfterTradeText
+	waitbutton
+	closetext
+	end
+
+NoStoneScript:
+	writetext NoStoneText
+	waitbutton
+	closetext
+	end
+
+NoTradeScript:
+	writetext NoTradeText
+	waitbutton
+	closetext
+	end
 
 OaksAssistant1Script:
 	jumptextfaceplayer OaksAssistant1Text
@@ -256,6 +340,91 @@ OaksLabPCText:
 	line "Town 8-)"
 	done
 
+ProfOakBulbasaurDollTradeText:
+	text "Prof.Oak: Oh, do"
+	line "you like my"
+	cont "Bulbasaur doll?"
+
+	para "I'll trade it"
+	line "to you for a"
+	cont "Leaf Stone."
+	done
+
+ProfOakCharmanderDollTradeText:
+	text "Prof.Oak: Oh, do"
+	line "you like my"
+	cont "Charmander doll?"
+
+	para "I'll trade it"
+	line "to you for a"
+	cont "Fire Stone."
+	done
+
+ProfOakSquirtleDollTradeText:
+	text "Prof.Oak: Oh, do"
+	line "you like my"
+	cont "Squirtle doll?"
+
+	para "I'll trade it"
+	line "to you for a"
+	cont "Water Stone."
+	done
+
+NoStoneText:
+	text "But you don't have"
+	line "one of those…"
+	done
+
+WantToTradeText:
+	text "Do you want to"
+	line "trade?"
+	done
+
+NoTradeText:
+	text "It will still be"
+	line "here if you change"
+	cont "your mind."
+	done
+
+BulbasaurDollText:
+	text "<PLAYER> received"
+	line "Bulbasaur Doll."
+	done
+
+BulbasaurDollSentText:
+	text "Bulbasaur Doll"
+	line "was sent to"
+	cont "<PLAYER>'s PC."
+	done
+
+CharmanderDollText:
+	text "<PLAYER> received"
+	line "Charmander Doll."
+	done
+
+CharmanderDollSentText:
+	text "Charmander Doll"
+	line "was sent to"
+	cont "<PLAYER>'s PC."
+	done
+
+SquirtleDollText:
+	text "<PLAYER> received"
+	line "Squirtle Doll."
+	done
+
+SquirtleDollSentText:
+	text "Squirtle Doll"
+	line "was sent to"
+	cont "<PLAYER>'s PC."
+	done
+
+ProfOakAfterTradeText:
+	text "Prof.Oak: Set it"
+	line "somewhere you can"
+	cont "appreciate it!"
+	done
+
 OaksLab_MapEventHeader:
 	; filler
 	db 0, 0
@@ -288,8 +457,11 @@ OaksLab_MapEventHeader:
 	signpost 1, 0, SIGNPOST_READ, OaksLabPC
 
 .PersonEvents:
-	db 4
+	db 7
 	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
 	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant1Script, -1
 	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant2Script, -1
 	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant3Script, -1
+	person_event SPRITE_BULBASAUR, 3, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BulbasaurDollScript, EVENT_DECO_BULBASAUR_DOLL
+	person_event SPRITE_CHARMANDER, 3, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DECO_CHARMANDER_DOLL
+	person_event SPRITE_SQUIRTLE, 3, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DECO_SQUIRTLE_DOLL

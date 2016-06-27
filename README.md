@@ -254,6 +254,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Prof. Oak asks for the player's gender and name together
    * Color-coded starter Poké Balls
+   * Prof. Oak trades Kanto starter dolls for evolution stones in his lab
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
@@ -313,7 +314,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Fix bugs:
    * PP is restored after every battle
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-   * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
+   * Fix Pokémon icons used as overworld sprites changing after viewing the party menu (using SPRITEMOVEDATA_ITEM_TREE fixes this but freezes them)
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
