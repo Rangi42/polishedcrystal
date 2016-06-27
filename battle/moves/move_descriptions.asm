@@ -131,8 +131,8 @@
 	dw IronHeadDescription
 	dw SpikeCannonDescription
 	dw FairyWindDescription
-	dw AmnesiaDescription
-	dw KinesisDescription
+	dw CalmMindDescription
+	dw MetalSoundDescription
 	dw SoftboiledDescription
 	dw HiJumpKickDescription
 	dw GlareDescription
@@ -140,7 +140,7 @@
 	dw PoisonJabDescription
 	dw BulletPunchDescription
 	dw LeechLifeDescription
-	dw LovelyKissDescription
+	dw DrainKissDescription
 	dw SkyAttackDescription
 	dw TransformDescription
 	dw BubbleDescription
@@ -149,7 +149,7 @@
 	dw FlashDescription
 	dw ExtrasensoryDescription
 	dw SplashDescription
-	dw AcidArmorDescription
+	dw DragonDanceDescription
 	dw CrabhammerDescription
 	dw ExplosionDescription
 	dw FurySwipesDescription
@@ -157,7 +157,7 @@
 	dw RestDescription
 	dw RockSlideDescription
 	dw HyperFangDescription
-	dw SharpenDescription
+	dw BulkUpDescription
 	dw ConversionDescription
 	dw TriAttackDescription
 	dw SuperFangDescription
@@ -167,7 +167,7 @@
 	dw SketchDescription
 	dw TripleKickDescription
 	dw ThiefDescription
-	dw SpiderWebDescription
+	dw WillOWispDescription
 	dw ZenHeadbuttDescription
 	dw NightmareDescription
 	dw FlameWheelDescription
@@ -288,6 +288,7 @@ AbsorbDescription:
 MegaDrainDescription:
 LeechLifeDescription:
 GigaDrainDescription:
+DrainKissDescription:
 	db   "Steals 1/2 of the"
 	next "damage inflicted.@"
 
@@ -415,9 +416,17 @@ ScaryFaceDescription:
 	db   "Sharply lowers the"
 	next "foe's Speed.@"
 
+MetalSoundDescription:
+	db   "Sharply lowers the"
+	next "foe's Spcl.Def.@"
+
 PoisonpowderDescription:
 	db   "A move that may"
 	next "poison the foe.@"
+
+WillOWispDescription:
+	db   "A move that may"
+	next "burn the foe.@"
 
 StunSporeDescription:
 ThunderWaveDescription:
@@ -750,13 +759,9 @@ FairyWindDescription:
 	db   "Strikes the foe"
 	next "with fairy wind.@"
 
-AmnesiaDescription:
-	db   "---"
-	next "---@"
-
-KinesisDescription:
-	db   "---"
-	next "---@"
+CalmMindDescription:
+	db   "Raises the user's"
+	next "Sp.Atk and Sp.Def.@"
 
 HiJumpKickDescription:
 	db   "May miss and hurt"
@@ -770,10 +775,6 @@ BulletPunchDescription:
 	db   "A tough punch."
 	next "Hits first.@"
 
-LovelyKissDescription:
-	db   "---"
-	next "---@"
-
 TransformDescription:
 	db   "The user assumes"
 	next "the foe's guise.@"
@@ -786,9 +787,9 @@ SplashDescription:
 	db   "Has no effect"
 	next "whatsoever.@"
 
-AcidArmorDescription:
-	db   "---"
-	next "---@"
+DragonDanceDescription:
+	db   "Raises the user's"
+	next "Attack and Speed.@"
 
 ExplosionDescription:
 	db   "Very powerful but"
@@ -806,9 +807,9 @@ RestDescription:
 	db   "Sleep for 2 turns"
 	next "to fully recover.@"
 
-SharpenDescription:
-	db   "---"
-	next "---@"
+BulkUpDescription:
+	db   "Raises the user's"
+	next "Atk and Def.@"
 
 ConversionDescription:
 	db   "Change user's type"
@@ -841,10 +842,6 @@ TripleKickDescription:
 ThiefDescription:
 	db   "An attack that may"
 	next "steal a held item.@"
-
-SpiderWebDescription:
-	db   "---"
-	next "---@"
 
 NightmareDescription:
 	db   "A sleeper loses"

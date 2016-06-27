@@ -104,6 +104,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Ditto may hold Metal Powder
    * Restore fossils at the Pewter Museum of Science
 * Add moves from future generations
+   * Acid Armor → Dragon Dance (Dragon, 20 PP, raise Attack and Speed)
+   * Amnesia → Calm Mind (Psychic, 20 PP, raise Sp.Atk and Sp.Def)
    * Barrage → Bullet Punch (Steel, 30 PP, 40 power, 100% accuracy, +1 priority)
    * Beat Up → Dark Pulse (TM 79, TM 97, tutor) (Dark, 15 PP, 80 power, 100% accuracy, 20% chance to flinch)
    * Bide → Flash Cannon (TM 91) (Steel, 10 PP, 80 power, 100% accuracy, 10% chance to lower Sp.Def)
@@ -113,6 +115,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Constrict → Fairy Wind (Fairy, 30 PP, 40 power, 100% accuracy)
    * Cotton Spore → Seed Bomb (tutor) (Grass, 15 PP, 80 power, 100% accuracy)
    * Detect (TM 43) → Power Gem (Rock, 20 PP, 80 power, 100% accuracy)
+   * Kinesis → Metal Sound (Steel, 40 PP, 85% accuracy, harshly lowers Sp.Def)
+   * Lovely Kiss → Drain Kiss (Fairy, 10 PP, 50 power, 100% accuracy, drains 75% damage)
    * Mega Punch → Dragon Claw (TM 02) (Dragon, 15 PP, 80 power, 100% accuracy)
    * Mimic → Dragon Pulse (TM 59) (Dragon, 10 PP, 85 power, 100% accuracy)
    * Mind Reader → Zen Headbutt (tutor) (Psychic, 15 PP, 80 power, 90% accuracy, 20% chance to flinch)
@@ -120,9 +124,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Psywave → Extrasensory (Psychic, 20 PP, 80 power, 100% accuracy, 10% chance to flinch)
    * Razor Wind → Air Slash (Flying, 15 PP, 75 power, 95% accuracy, 30% chance to flinch)
    * Rolling Kick → Focus Blast (TM 52) (Fighting, 5 PP, 120 power, 70% accuracy, 10% chance to lower Sp.Def)
+   * Sharpen → Bulk Up (Fighting, 20 PP, raises Atk and Def)
    * Skull Bash → Iron Head (tutor) (Steel, 15 PP, 80 power, 100% accuracy, 30% chance to flinch)
    * Smog → Gunk Shot (tutor) (Poison, 5 PP, 120 power, 80% accuracy, 30% chance to poison)
    * Snore (TM 13) → Hyper Voice (tutor) (Normal, 10 PP, 90 power, 100% accuracy, avoids Substitute)
+   * Spider Web → Will-O-Wisp (TM 61) (Fire, 15 PP, 85% accuracy, burns)
    * Vice Grip → X-Scissor (TM 81) (Bug, 15 PP, 80 power, 100% accuracy)
    * Withdraw → Aqua Tail (tutor) (Water, 10 PP, 90 power, 90% accuracy)
 * Modern battle mechanics:
@@ -252,20 +258,14 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add moves from future generations
    * Prioritize having viable physical and special moves for each type
    * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-   * Acid Armor → Dragon Dance (Dragon, 20 PP, raise Attack and Speed)
-   * Amnesia → Calm Mind (Psychic, 20 PP, raise Sp.Atk and Sp.Def)
+   * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
+   * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk) [TM09 becomes Headbutt, TM02 becomes Dragon Claw and should be added somewhere]
+   * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def) [TM21 becomes Ice Punch, TM33 becomes Reflect]
+   * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
    * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
    * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
-   * Kinesis → Metal Sound (Steel, 40 PP, 85% accuracy, harshly lowers Sp.Def)
-   * Lovely Kiss → Drain Kiss (Fairy, 10 PP, 50 power, 100% accuracy, drains 75% damage)
    * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)
-   * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
-   * Sharpen → Bulk Up (Fighting, 20 PP, raises Atk and Def)
-   * Spider Web → Will-O-Wisp (TM 61) (Fire, 15 PP, 85% accuracy, burns)
-   * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
-   * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk)
    * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio)
-   * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def)
 * Update TMs and HMs
    * TM02: Headbutt → Dragon Claw
    * TM04: Rollout → Calm Mind
@@ -282,6 +282,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Gain experience from catching Pokémon like in Gen VI
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
+   * Drain Kiss drains 75% HP
    * Low Kick's power is based on weight
    * Beat Up works differently in Gen V
    * Ghost-type Pokémon cannot be trapped

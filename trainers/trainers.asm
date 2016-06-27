@@ -969,7 +969,7 @@ WillGroup:
 
 	db 41, JYNX, NO_ITEM
 		db DOUBLESLAP
-		db LOVELY_KISS
+		db DRAIN_KISS
 		db ICE_PUNCH
 		db PSYCHIC_M
 
@@ -980,14 +980,14 @@ WillGroup:
 		db PSYCHIC_M
 
 	db 41, ALAKAZAM, NO_ITEM
-		db KINESIS
+		db CALM_MIND
 		db RECOVER
 		db FUTURE_SIGHT
 		db PSYCHIC_M
 
 	db 41, SLOWBRO, NO_ITEM
 		db CURSE
-		db AMNESIA
+		db CALM_MIND
 		db BODY_SLAM
 		db PSYCHIC_M
 
@@ -1015,7 +1015,7 @@ WillGroup:
 
 	db 61, JYNX, BRIGHTPOWDER
 		db NIGHTMARE
-		db LOVELY_KISS
+		db DRAIN_KISS
 		db ICE_PUNCH
 		db PSYCHIC_M
 
@@ -1335,7 +1335,7 @@ KogaGroup:
 
 	db 40, ARIADOS, NO_ITEM
 		db DOUBLE_TEAM
-		db SPIDER_WEB
+		db MEAN_LOOK
 		db BATON_PASS
 		db GIGA_DRAIN
 
@@ -1353,7 +1353,7 @@ KogaGroup:
 
 	db 42, MUK, NO_ITEM
 		db MINIMIZE
-		db ACID_ARMOR
+		db SCREECH
 		db SLUDGE_BOMB
 		db TOXIC
 
@@ -1400,7 +1400,7 @@ KogaGroup:
 	db 62, MUK, CHARCOAL
 		db FIRE_BLAST
 		db CURSE
-		db SLUDGE_BOMB
+		db GUNK_SHOT
 		db TOXIC
 
 	db 63, WEEZING, MAGNET
@@ -1603,7 +1603,7 @@ MistyGroup:
 
 	db 49, QUAGSIRE, NO_ITEM
 		db SURF
-		db AMNESIA
+		db CALM_MIND
 		db EARTHQUAKE
 		db RAIN_DANCE
 
@@ -2393,7 +2393,7 @@ SchoolboyGroup:
 	db 35, QUAGSIRE
 		db TAIL_WHIP
 		db SLAM
-		db AMNESIA
+		db CALM_MIND
 		db EARTHQUAKE
 
 	db $ff ; end
@@ -2984,13 +2984,13 @@ JanineGroup:
 	db 47, ARIADOS, NO_ITEM
 		db AGILITY
 		db GIGA_DRAIN
-		db SPIDER_WEB
+		db MEAN_LOOK
 		db PSYCHIC
 
 	db 44, ARIADOS, NO_ITEM
 		db SCARY_FACE
 		db GIGA_DRAIN
-		db SPIDER_WEB
+		db MEAN_LOOK
 		db NIGHT_SHADE
 
 	db 44, WEEZING, NO_ITEM
@@ -3261,7 +3261,7 @@ CooltrainerMGroup:
 	db 31, QUAGSIRE
 		db WATER_GUN
 		db SLAM
-		db AMNESIA
+		db CALM_MIND
 		db EARTHQUAKE
 
 	db 31, EXEGGCUTE
@@ -8103,7 +8103,7 @@ PsychicGroup:
 
 	db 16, KADABRA
 		db TELEPORT
-		db KINESIS
+		db CALM_MIND
 		db CONFUSION
 		db 0
 
@@ -8842,7 +8842,7 @@ CamperGroup:
 	db 36, MAGCARGO
 		db ROCK_THROW
 		db HARDEN
-		db AMNESIA
+		db CALM_MIND
 		db FLAMETHROWER
 
 	db 34, GOLDUCK

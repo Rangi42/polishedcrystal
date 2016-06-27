@@ -132,8 +132,8 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_IronHead
 	dw BattleAnim_SpikeCannon
 	dw BattleAnim_FairyWind
-	dw BattleAnim_Amnesia
-	dw BattleAnim_Kinesis
+	dw BattleAnim_CalmMind
+	dw BattleAnim_MetalSound
 	dw BattleAnim_Softboiled
 	dw BattleAnim_HiJumpKick
 	dw BattleAnim_Glare
@@ -141,7 +141,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_PoisonJab
 	dw BattleAnim_BulletPunch
 	dw BattleAnim_LeechLife
-	dw BattleAnim_LovelyKiss
+	dw BattleAnim_DrainKiss
 	dw BattleAnim_SkyAttack
 	dw BattleAnim_Transform
 	dw BattleAnim_Bubble
@@ -150,7 +150,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Flash
 	dw BattleAnim_Extrasensory
 	dw BattleAnim_Splash
-	dw BattleAnim_AcidArmor
+	dw BattleAnim_DragonDance
 	dw BattleAnim_Crabhammer
 	dw BattleAnim_Explosion
 	dw BattleAnim_FurySwipes
@@ -158,7 +158,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Rest
 	dw BattleAnim_RockSlide
 	dw BattleAnim_HyperFang
-	dw BattleAnim_Sharpen
+	dw BattleAnim_BulkUp
 	dw BattleAnim_Conversion
 	dw BattleAnim_TriAttack
 	dw BattleAnim_SuperFang
@@ -168,7 +168,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Sketch
 	dw BattleAnim_TripleKick
 	dw BattleAnim_Thief
-	dw BattleAnim_SpiderWeb
+	dw BattleAnim_WillOWisp
 	dw BattleAnim_ZenHeadbutt
 	dw BattleAnim_Nightmare
 	dw BattleAnim_FlameWheel
@@ -2117,7 +2117,8 @@ BattleAnim_LightScreen: ; ca18e
 	anim_ret
 ; ca1d5
 
-BattleAnim_Amnesia: ; ca1d5
+BattleAnim_CalmMind:
+; TODO: erase Amnesia animation, design Calm Mind animation
 	anim_1gfx ANIM_GFX_STATUS
 	anim_sound 0, 0, SFX_LICK
 	anim_obj ANIM_OBJ_53,   8, 0,  10, 0, $2
@@ -2127,7 +2128,6 @@ BattleAnim_Amnesia: ; ca1d5
 	anim_obj ANIM_OBJ_53,   9, 0,  10, 0, $0
 	anim_wait 64
 	anim_ret
-; ca1ed
 
 BattleAnim_DizzyPunch: ; ca1ed
 	anim_2gfx ANIM_GFX_STATUS, ANIM_GFX_HIT
@@ -2154,7 +2154,8 @@ BattleAnim_Rest: ; ca212
 	anim_ret
 ; ca223
 
-BattleAnim_AcidArmor: ; ca223
+BattleAnim_DragonDance:
+; TODO: erase Acid Armor animation, design Dragon Dance animation
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_FollowPlayerHead_0
 	anim_bgeffect ANIM_BG_ACID_ARMOR, $0, $1, $8
@@ -2163,7 +2164,6 @@ BattleAnim_AcidArmor: ; ca223
 	anim_incbgeffect ANIM_BG_ACID_ARMOR
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
-; ca237
 
 BattleAnim_Splash: ; ca237
 	anim_1gfx ANIM_GFX_HIT
@@ -2597,7 +2597,8 @@ BattleAnim_DragonPulse:
 	anim_wait 48
 	anim_ret
 
-BattleAnim_LovelyKiss: ; ca5de
+BattleAnim_DrainKiss:
+; TODO: erase Lovely Kiss animation, design Drain Kiss animation
 	anim_2gfx ANIM_GFX_OBJECTS, ANIM_GFX_ANGELS
 	anim_bgeffect ANIM_BG_07, $0, $2, $0
 	anim_obj ANIM_OBJ_96, -13, 0,   5, 0, $0
@@ -2606,7 +2607,6 @@ BattleAnim_LovelyKiss: ; ca5de
 	anim_obj ANIM_OBJ_HEART,  16, 0,   5, 0, $0
 	anim_wait 40
 	anim_ret
-; ca5f6
 
 BattleAnim_Bonemerang: ; ca5f6
 	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_HIT
@@ -2661,7 +2661,8 @@ BattleAnim_IronHead:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Kinesis: ; ca66a
+BattleAnim_MetalSound:
+; TODO: erase Kinesis animation, design Metal Sound animation
 	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_NOISE
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_obj ANIM_OBJ_6B,  10, 0,   9, 4, $0
@@ -2675,7 +2676,6 @@ BattleAnim_Kinesis: ; ca66a
 	anim_sound 0, 0, SFX_KINESIS_2
 	anim_wait 32
 	anim_ret
-; ca68b
 
 BattleAnim_Peck: ; ca68b
 	anim_1gfx ANIM_GFX_HIT
@@ -3069,7 +3069,8 @@ BattleAnim_Meditate: ; ca9d8
 	anim_ret
 ; ca9ed
 
-BattleAnim_Sharpen: ; ca9ed
+BattleAnim_BulkUp:
+; TODO: erase Sharpen animation, design Bulk Up animation
 	anim_1gfx ANIM_GFX_SHAPES
 	anim_obp0 $e4
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -3081,7 +3082,6 @@ BattleAnim_Sharpen: ; ca9ed
 	anim_incbgeffect ANIM_BG_18
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
-; caa0a
 
 BattleAnim_DefenseCurl: ; caa0a
 	anim_1gfx ANIM_GFX_SHAPES
@@ -3405,7 +3405,8 @@ BattleAnim_Thief: ; cacb5
 	anim_ret
 ; cacd9
 
-BattleAnim_SpiderWeb: ; cacd9
+BattleAnim_WillOWisp:
+; TODO: erase Spider Web animation, design Will-O-Wisp animation
 	anim_1gfx ANIM_GFX_WEB
 	anim_bgeffect ANIM_BG_07, $0, $2, $0
 	anim_obj ANIM_OBJ_92, -16, 4,   6, 0, $0
@@ -3417,7 +3418,6 @@ BattleAnim_SpiderWeb: ; cacd9
 	anim_obj ANIM_OBJ_5A,   8, 0,  10, 4, $0
 	anim_wait 64
 	anim_ret
-; cacfb
 
 BattleAnim_ZenHeadbutt:
 ; TODO: erase Mind Reader animation, design Zen Headbutt animation

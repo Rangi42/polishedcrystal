@@ -93,7 +93,7 @@ NidoranMEggMoves:
 	db DISABLE
 	db TAKE_DOWN
 	db CONFUSION
-	db AMNESIA
+	db CALM_MIND
 	db COUNTER
 	db $ff
 
@@ -155,7 +155,7 @@ MeowthEggMoves:
 	db SPITE
 	db CHARM
 	db HYPNOSIS
-	db AMNESIA
+	db CALM_MIND
 	db $ff
 
 PsyduckEggMoves:
@@ -305,7 +305,7 @@ DrowzeeEggMoves:
 KrabbyEggMoves:
 	db DIG
 	db HAZE
-	db AMNESIA
+	db CALM_MIND
 	db FLAIL
 	db SLAM
 	db $ff
@@ -358,7 +358,7 @@ TangelaEggMoves:
 	db CONFUSION
 	db MEGA_DRAIN
 	db REFLECT
-	db AMNESIA
+	db CALM_MIND
 	db $ff
 
 KangaskhanEggMoves:
@@ -556,7 +556,7 @@ MareepEggMoves:
 MarillEggMoves:
 	db LIGHT_SCREEN
 	db PRESENT
-	db AMNESIA
+	db CALM_MIND
 	db FUTURE_SIGHT
 	db BELLY_DRUM
 	db PERISH_SONG
@@ -574,7 +574,7 @@ HoppipEggMoves:
 	db ENCORE
 	db DOUBLE_EDGE
 	db REFLECT
-	db AMNESIA
+	db CALM_MIND
 	db PAY_DAY
 	db SEED_BOMB
 	db $ff
@@ -619,7 +619,7 @@ MisdreavusEggMoves:
 
 GirafarigEggMoves:
 	db TAKE_DOWN
-	db AMNESIA
+	db CALM_MIND
 	db FORESIGHT
 	db FUTURE_SIGHT
 	db $ff
@@ -689,7 +689,8 @@ endc
 	db $ff
 
 SlugmaEggMoves:
-	db ACID_ARMOR
+	db CURSE
+	db SMOKESCREEN
 	db $ff
 
 SwinubEggMoves:
@@ -705,7 +706,7 @@ CorsolaEggMoves:
 	db SAFEGUARD
 	db SCREECH
 	db MIST
-	db AMNESIA
+	db CALM_MIND
 	db $ff
 
 RemoraidEggMoves:
@@ -739,6 +740,7 @@ HoundourEggMoves:
 	db COUNTER
 	db SPITE
 	db REVERSAL
+	db WILL_O_WISP
 	db $ff
 
 PhanpyEggMoves:
@@ -770,9 +772,6 @@ TyrogueEggMoves:
 	db $ff
 
 SmoochumEggMoves:
-if !_CRYSTAL
-	db LOVELY_KISS
-endc
 	db MEDITATE
 	db $ff
 

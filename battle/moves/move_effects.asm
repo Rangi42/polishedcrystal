@@ -64,6 +64,7 @@ Absorb:
 MegaDrain:
 LeechLife:
 GigaDrain:
+DrainKiss:
 	checkobedience
 	usedmovetext
 	doturn
@@ -617,6 +618,7 @@ Toxic:
 	endmove
 
 DoBurn:
+WillOWisp:
 	checkobedience
 	usedmovetext
 	doturn
@@ -642,7 +644,6 @@ DoSleep:
 SleepPowder:
 Hypnosis:
 Sing:
-LovelyKiss:
 Spore:
 	checkobedience
 	usedmovetext
@@ -675,7 +676,6 @@ SweetKiss:
 
 AttackUp:
 Meditate:
-Sharpen:
 	checkobedience
 	usedmovetext
 	doturn
@@ -786,7 +786,6 @@ SwordsDance:
 
 DefenseUp2:
 Barrier:
-AcidArmor:
 	checkobedience
 	usedmovetext
 	doturn
@@ -824,7 +823,6 @@ SpecialAttackUp2:
 	endmove
 
 SpecialDefenseUp2:
-Amnesia:
 	checkobedience
 	usedmovetext
 	doturn
@@ -961,7 +959,6 @@ AccuracyDown:
 SandAttack:
 Smokescreen:
 Flash:
-Kinesis:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1044,6 +1041,7 @@ SpecialAttackDown2:
 	endmove
 
 SpecialDefenseDown2:
+MetalSound:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1582,7 +1580,6 @@ Thief:
 	endmove
 
 MeanLook:
-SpiderWeb:
 	checkobedience
 	usedmovetext
 	doturn
