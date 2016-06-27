@@ -1097,8 +1097,6 @@ BattleCommand_DoTurn: ; 34555
 
 .player
 	call GetPartyLocation
-	scf
-	ret c
 
 .consume_pp
 	ld a, [hBattleTurn]
@@ -1119,21 +1117,6 @@ BattleCommand_DoTurn: ; 34555
 	ret
 
 .wild
-	;ld hl, EnemyMonMoves
-	ld a, [CurEnemyMoveNum]
-	ld c, a
-	ld b, 0
-	;add hl, bc
-	;ld a, [hl]
-	;cp MIMIC
-	;jr z, .mimic
-	ld hl, wWildMonMoves
-	add hl, bc
-	ld a, [hl]
-	;cp MIMIC
-	;ret z
-
-;.mimic
 	ld hl, wWildMonPP
 	call .consume_pp
 	ret

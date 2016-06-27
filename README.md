@@ -314,7 +314,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
-   * PP is restored after every battle (commit [07ba183](https://github.com/roukaour/pokecrystal/commit/07ba183ed52c893316d8ad26dc87625814c54509) caused it)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu (using SPRITEMOVEDATA_ITEM_TREE fixes this but freezes them)
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
