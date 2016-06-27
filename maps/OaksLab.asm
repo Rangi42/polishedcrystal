@@ -393,8 +393,7 @@ BulbasaurDollText:
 
 BulbasaurDollSentText:
 	text "Bulbasaur Doll"
-	line "was sent to"
-	cont "<PLAYER>'s PC."
+	line "was sent home."
 	done
 
 CharmanderDollText:
@@ -404,8 +403,7 @@ CharmanderDollText:
 
 CharmanderDollSentText:
 	text "Charmander Doll"
-	line "was sent to"
-	cont "<PLAYER>'s PC."
+	line "was sent home."
 	done
 
 SquirtleDollText:
@@ -415,8 +413,7 @@ SquirtleDollText:
 
 SquirtleDollSentText:
 	text "Squirtle Doll"
-	line "was sent to"
-	cont "<PLAYER>'s PC."
+	line "was sent home."
 	done
 
 ProfOakAfterTradeText:
@@ -463,5 +460,5 @@ OaksLab_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant2Script, -1
 	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant3Script, -1
 	person_event SPRITE_BULBASAUR, 3, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BulbasaurDollScript, EVENT_DECO_BULBASAUR_DOLL
-	person_event SPRITE_CHARMANDER, 3, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DECO_CHARMANDER_DOLL
-	person_event SPRITE_SQUIRTLE, 3, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DECO_SQUIRTLE_DOLL
+	person_event SPRITE_CHARMANDER, 3, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CharmanderDollScript, EVENT_DECO_CHARMANDER_DOLL
+	person_event SPRITE_SQUIRTLE, 3, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SquirtleDollScript, EVENT_DECO_SQUIRTLE_DOLL

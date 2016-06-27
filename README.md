@@ -109,7 +109,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Barrage → Bullet Punch (Steel, 30 PP, 40 power, 100% accuracy, +1 priority)
    * Beat Up → Dark Pulse (TM 79, TM 97, tutor) (Dark, 15 PP, 80 power, 100% accuracy, 20% chance to flinch)
    * Bide → Flash Cannon (TM 91) (Steel, 10 PP, 80 power, 100% accuracy, 10% chance to lower Sp.Def)
-   * Bind → DazzlinGleam (TM 99) (Fairy, 10 PP, 80 power, 100% accuracy)
+   * Bind → DazzlinGleam (TM 99) (Fairy, 10 PP, 80 power, 100% accuracy) (TM 43 becomes Will-O-Wisp; TM 60 is DazzlinGleam)
    * Bone Club → Earth Power (tutor) (Ground, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def)
    * Bone Rush → Wild Charge (TM 93) (Electric, 15 PP, 90 power, 100% accuracy, 25% recoil damage)
    * Constrict → Fairy Wind (Fairy, 30 PP, 40 power, 100% accuracy)
@@ -273,9 +273,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
 * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
-* Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
+* Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn) (TM 52 is Avalanche)
 * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
-* Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind)
+* Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind; TM 55 is Shadow Claw)
+* Move tutors for Earth Power, Seed Bomb, Zen Headbutt, Iron Head, Gunk Shot, Hyper Voice, Aqua Tail
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -367,7 +368,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add a store to buy room decorations that Mom doesn't
    * Get BlueSky Mail and Mirage Mail in the Pokécom Center
    * Get Eon Mail, Morph Mail, and Music Mail somewhere
-   * Unnecessary items: Normal Box, Gorgeous Box, Brick Piece
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
@@ -392,7 +392,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Abilities
 * Natures
 * Overworld weather, or at least automatic when battles start
-* Selection of up to 254 items from all generations (Zinc, PP Max, Dawn Stone, Dusk Stone, etc)
 * Custom held items that prevent status conditions (based on unused game code)
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item

@@ -1353,11 +1353,6 @@ Function170923: ; 170923
 Function17093c: ; 17093c (5c:493c) BattleTowerAction $0e
 	xor a
 	ld [ScriptVar], a
-	ld a, EGG_TICKET
-	ld [CurItem], a
-	ld hl, NumItems
-	call CheckItem
-	ret nc
 	ld a, [PartyCount]
 	ld b, 0
 	ld c, a
@@ -1397,14 +1392,6 @@ rept 2
 	ld [hli], a
 endr
 	pop hl
-	ld a, EGG_TICKET
-	ld [CurItem], a
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	ld a, -1
-	ld [CurItemQuantity], a
-	ld hl, NumItems
-	call TossItem
 	ld a, $1
 	ld [ScriptVar], a
 	ret

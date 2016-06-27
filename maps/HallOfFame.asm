@@ -162,8 +162,7 @@ HallOfFame_GoldTrophyText:
 
 HallOfFame_GoldTrophySentText:
 	text "Gold Trophy"
-	line "was sent to"
-	cont "<PLAYER>'s PC."
+	line "was sent home."
 	done
 
 HallOfFame_SilverTrophyText:
@@ -173,8 +172,7 @@ HallOfFame_SilverTrophyText:
 
 HallOfFame_SilverTrophySentText:
 	text "Silver Trophy"
-	line "was sent to"
-	cont "<PLAYER>'s PC."
+	line "was sent home."
 	done
 
 HallOfFame_MapEventHeader:

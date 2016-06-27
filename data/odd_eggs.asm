@@ -47,15 +47,6 @@ GiveOddEgg: ; 1fb4b6
 	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
 	call CopyBytes
 
-	ld a, EGG_TICKET
-	ld [CurItem], a
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	ld a, -1
-	ld [CurItemQuantity], a
-	ld hl, NumItems
-	call TossItem
-
 	; load species in wcd2a
 	ld a, EGG
 	ld [wMobileMonSpeciesBuffer], a

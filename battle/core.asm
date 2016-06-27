@@ -8678,7 +8678,7 @@ ExitBattle: ; 3f69e
 	xor a
 	ld [wForceEvolution], a
 	predef EvolveAfterBattle
-	callba GivePokerusAndConvertBerries
+	callba GivePokerus
 	ret
 ; 3f6d0
 

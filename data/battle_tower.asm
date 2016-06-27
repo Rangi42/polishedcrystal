@@ -933,7 +933,7 @@ BattleTowerMons2:
 
 
 	db ALAKAZAM
-	db BERRY_JUICE
+	db GOLD_BERRY
 	db PSYCHIC_M, CALM_MIND, TOXIC, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 8000 ; Exp

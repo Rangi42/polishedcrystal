@@ -1131,18 +1131,29 @@ TimeCapsule_ReplaceTeruSama: ; 28771
 ; Pokémon traded from RBY do not have held items, so GSC usually interprets the
 ; catch rate as an item. However, if the catch rate appears in this table, the
 ; item associated with the table entry is used instead.
-	db ITEM_19,       LEFTOVERS
-	db ITEM_2D,       BITTER_BERRY
-	db X_SPCL_DEF,    GOLD_BERRY
-	db ITEM_5A,       BERRY
-	db ITEM_64,       BERRY
-	db ITEM_78,       BERRY
-	db ITEM_87,       BERRY
-	db ITEM_BE,       BERRY
-	db ITEM_C3,       BERRY
-	db ITEM_DC,       BERRY
-	db HM_ROCK_SMASH, BERRY
-	db -1,            BERRY
+	db 3, BRIGHTPOWDER ; legendaries
+	db 9, DRAGON_FANG ; Dragonite in Yellow
+	db 25, LEFTOVERS ; Chansey and Snorlax
+	db 27, PROTEIN ; Dragonair in Yellow
+	db 30, LUCKY_PUNCH ; Chansey
+	db 35, METAL_POWDER ; Ditto
+	db 45, BITTER_BERRY
+	db 50, GOLD_BERRY
+	db 60, SILVER_LEAF
+	db 75, GOLD_LEAF
+	db 90, BERRY
+	db 96, TWISTEDSPOON ; Kadabra in Yellow
+	db 100, TWISTEDSPOON ; Kadabra in Red/Blue
+	db 120, BERRY
+	db 150, MYSTERYBERRY
+	db 163, LIGHT_BALL ; Pikachu in Yellow
+	db 170, PINK_BOW ; Jigglypuff
+	db 180, BLACK_BELT ; Machop
+	db 190, BERRY
+	db 200, TWISTEDSPOON ; Abra
+	db 225, MYSTIC_WATER ; Krabby, Horsea, Goldeen, Staryu
+	db 235, POISON_BARB ; NidoranF and NidoranM
+	db -1, BERRY
 	db  0
 ; 2879e
 

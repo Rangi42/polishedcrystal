@@ -140,8 +140,7 @@ YellowForestSurfPikachuDollText:
 
 YellowForestSurfPikachuDollSentText:
 	text "Surf Pikachu Doll"
-	line "was sent to"
-	cont "<PLAYER>'s PC."
+	line "was sent home."
 	done
 
 YellowForest_MapEventHeader:

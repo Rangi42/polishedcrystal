@@ -197,7 +197,7 @@ CooltrainerfLoisScript:
 WesleyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_BLACKBELT_FROM_WESLEY
+	checkevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	iftrue WesleyWednesdayScript
 	checkcode VAR_WEEKDAY
 	if_not_equal WEDNESDAY, WesleyNotWednesdayScript
@@ -209,9 +209,9 @@ WesleyScript:
 .MetWesley:
 	writetext WesleyGivesGiftText
 	buttonsound
-	verbosegiveitem BLACKBELT
+	verbosegiveitem BLACK_BELT
 	iffalse WesleyDoneScript
-	setevent EVENT_GOT_BLACKBELT_FROM_WESLEY
+	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	writetext WesleyGaveGiftText
 	waitbutton
 	closetext

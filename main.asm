@@ -1364,8 +1364,7 @@ INCLUDE "engine/tmhm2.asm"
 MoveDescriptions:: ; 2cb52
 INCLUDE "battle/moves/move_descriptions.asm"
 
-GivePokerusAndConvertBerries: ; 2ed44
-	call ConvertBerriesToBerryJuice
+GivePokerus: ; 2ed44
 	ld hl, PartyMon1PokerusStatus
 	ld a, [PartyCount]
 	ld b, a
@@ -1485,44 +1484,6 @@ GivePokerusAndConvertBerries: ; 2ed44
 	inc a
 	add b
 	ld [hl], a
-	ret
-
-; any berry held by a Shuckle may be converted to berry juice
-ConvertBerriesToBerryJuice: ; 2ede6
-	ld hl, StatusFlags2
-	bit 6, [hl]
-	ret z
-	call Random
-	cp $10
-	ret nc              ; 1/16 chance
-	ld hl, PartyMons
-	ld a, [PartyCount]
-.partyMonLoop
-	push af
-	push hl
-	ld a, [hl]
-	cp 255 ; Shuckle was removed from the game
-	jr nz, .loopMon
-	ld bc, MON_ITEM
-	add hl, bc
-	ld a, [hl]
-	cp BERRY
-	jr z, .convertToJuice
-
-.loopMon
-	pop hl
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop af
-	dec a
-	jr nz, .partyMonLoop
-	ret
-
-.convertToJuice
-	ld a, BERRY_JUICE
-	ld [hl], a
-	pop hl
-	pop af
 	ret
 
 ShowLinkBattleParticipants: ; 2ee18

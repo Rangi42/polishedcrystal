@@ -25,7 +25,7 @@ SpecialGiveAipom: ; 7305
 	push bc
 	ld hl, PartyMon1Item
 	call AddNTimes
-	ld [hl], BERRY_JUICE
+	ld [hl], GOLD_BERRY
 	pop bc
 	pop af
 
