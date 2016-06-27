@@ -244,7 +244,7 @@
 	const SUNNY_DAY    ; $f1
 	const CRUNCH       ; $f2
 	const MIRROR_COAT  ; $f3
-	const PSYCH_UP     ; $f4
+	const NASTY_PLOT   ; $f4
 	const EXTREMESPEED ; $f5
 	const ANCIENTPOWER ; $f6
 	const SHADOW_BALL  ; $f7

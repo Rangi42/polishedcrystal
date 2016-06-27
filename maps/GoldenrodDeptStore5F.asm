@@ -30,7 +30,7 @@ GoldenrodDeptStore5F_MapScriptHeader:
 ClerkScript_0x5609c:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM02_HEADBUTT
+	checkevent EVENT_GOT_TM09_HEADBUTT
 	iftrue .headbutt
 	checkevent EVENT_GOT_TM08_ROCK_SMASH
 	iftrue .onlyrocksmash

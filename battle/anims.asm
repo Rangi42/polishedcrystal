@@ -243,7 +243,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_SunnyDay
 	dw BattleAnim_Crunch
 	dw BattleAnim_MirrorCoat
-	dw BattleAnim_PsychUp
+	dw BattleAnim_NastyPlot
 	dw BattleAnim_Extremespeed
 	dw BattleAnim_Ancientpower
 	dw BattleAnim_ShadowBall
@@ -4767,7 +4767,8 @@ BattleAnim_MirrorCoat: ; cb8e9
 	anim_ret
 ; cb917
 
-BattleAnim_PsychUp: ; cb917
+BattleAnim_NastyPlot:
+; TODO: erase Psych Up animation, design Nasty Plot animation
 	anim_1gfx ANIM_GFX_STATUS
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_1A, $0, $1, $20
@@ -4781,7 +4782,6 @@ BattleAnim_PsychUp: ; cb917
 	anim_call BattleAnim_ShowMon_0
 	anim_wait 16
 	anim_ret
-; cb940
 
 BattleAnim_Extremespeed: ; cb940
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_CUT

@@ -812,6 +812,7 @@ Agility:
 	endmove
 
 SpecialAttackUp2:
+NastyPlot:
 	checkobedience
 	usedmovetext
 	doturn

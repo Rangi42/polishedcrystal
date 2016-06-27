@@ -242,7 +242,7 @@
 	dw SunnyDayDescription
 	dw CrunchDescription
 	dw MirrorCoatDescription
-	dw PsychUpDescription
+	dw NastyPlotDescription
 	dw ExtremespeedDescription
 	dw AncientpowerDescription
 	dw ShadowBallDescription
@@ -475,6 +475,10 @@ BarrierDescription:
 AgilityDescription:
 	db   "Sharply raises the"
 	next "user's Speed.@"
+
+NastyPlotDescription:
+	db   "Sharply raises the"
+	next "user's Spcl.Atk.@"
 
 GrowthDescription:
 	db   "Raises the user's"
@@ -1067,10 +1071,6 @@ TwisterDescription:
 MirrorCoatDescription:
 	db   "Counters a Spcl."
 	next "Atk move double.@"
-
-PsychUpDescription:
-	db   "---"
-	next "---@"
 
 ExtremespeedDescription:
 	db   "A powerful first-"

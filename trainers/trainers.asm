@@ -1269,7 +1269,7 @@ KarenGroup:
 		db ROAR
 		db PURSUIT
 		db FLAMETHROWER
-		db CRUNCH
+		db DARK_PULSE
 
 	db $ff ; end
 
@@ -1312,10 +1312,10 @@ KarenGroup:
 		db PURSUIT
 
 	db 67, HOUNDOOM, GOLD_BERRY
-		db SUNNY_DAY
-		db SOLARBEAM
+		db ROAR
+		db NASTY_PLOT
 		db FIRE_BLAST
-		db CRUNCH
+		db DARK_PULSE
 
 	db $ff ; end
 
@@ -1598,7 +1598,7 @@ MistyGroup:
 	db 49, GOLDUCK, NO_ITEM
 		db SURF
 		db DISABLE
-		db PSYCH_UP
+		db CALM_MIND
 		db PSYCHIC_M
 
 	db 49, QUAGSIRE, NO_ITEM
@@ -3205,7 +3205,7 @@ CooltrainerMGroup:
 	db 35, GOLDUCK
 		db CONFUSION
 		db SCREECH
-		db PSYCH_UP
+		db CALM_MIND
 		db FURY_SWIPES
 
 	db 33, VAPOREON
@@ -8849,7 +8849,7 @@ CamperGroup:
 		db DISABLE
 		db PSYCHIC_M
 		db SURF
-		db PSYCH_UP
+		db CALM_MIND
 
 	db $ff ; end
 

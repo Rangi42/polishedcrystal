@@ -267,14 +267,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)
    * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio)
 * Update TMs and HMs
-   * TM02: Headbutt → Dragon Claw
    * TM04: Rollout → Calm Mind
-   * TM08: Rock Smash → Bulk Up
-   * TM09: Psych Up → Headbutt
    * TM12: Sweet Scent → Rollout
    * TM21: Frustration → Ice Punch
    * TM33: Ice Punch → Reflect
-   * TM43: Detect → DazzlingGleam
+   * TM08: Rock Smash → Bulk Up
    * HM08: Rock Smash
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/

@@ -192,7 +192,7 @@
 	const ITEM_BE      ; $BE
 
 	add_tm DYNAMICPUNCH ; $BF
-	add_tm HEADBUTT     ; $C0
+	add_tm DRAGON_CLAW  ; $C0
 	add_tm CURSE        ; $C1
 	add_tm ROLLOUT      ; $C2
 	const ITEM_C3       ; $C3
@@ -200,7 +200,7 @@
 	add_tm TOXIC        ; $C5
 	add_tm ZAP_CANNON   ; $C6
 	add_tm ROCK_SMASH   ; $C7
-	add_tm PSYCH_UP     ; $C8
+	add_tm HEADBUTT     ; $C8
 	add_tm HIDDEN_POWER ; $C9
 	add_tm SUNNY_DAY    ; $CA
 	add_tm SWEET_SCENT  ; $CB

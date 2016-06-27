@@ -748,7 +748,7 @@ PsyduckEvosAttacks:
 	db 16, CONFUSION
 	db 23, SCREECH
 	db 29, ZEN_HEADBUTT
-	db 35, PSYCH_UP
+	db 35, CALM_MIND
 	db 40, FURY_SWIPES
 	db 50, HYDRO_PUMP
 	db 0 ; no more level-up moves
@@ -764,7 +764,7 @@ GolduckEvosAttacks:
 	db 16, CONFUSION
 	db 23, SCREECH
 	db 29, ZEN_HEADBUTT
-	db 39, PSYCH_UP
+	db 39, CALM_MIND
 	db 44, FURY_SWIPES
 	db 58, HYDRO_PUMP
 	db 0 ; no more level-up moves
@@ -1352,7 +1352,7 @@ DrowzeeEvosAttacks:
 	db 36, MEDITATE
 	db 39, ZEN_HEADBUTT
 	db 42, PSYCHIC_M
-	db 45, PSYCH_UP
+	db 45, CALM_MIND
 	db 48, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
@@ -1368,7 +1368,7 @@ HypnoEvosAttacks:
 	db 40, MEDITATE
 	db 45, ZEN_HEADBUTT
 	db 50, PSYCHIC_M
-	db 55, PSYCH_UP
+	db 55, CALM_MIND
 	db 60, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
@@ -2100,7 +2100,7 @@ MewtwoEvosAttacks:
 	db 1, SAFEGUARD
 	db 11, BARRIER
 	db 22, SWIFT
-	db 33, PSYCH_UP
+	db 33, NASTY_PLOT
 	db 44, FUTURE_SIGHT
 	db 55, MIST
 	db 66, PSYCHIC_M
@@ -2701,7 +2701,7 @@ EspeonEvosAttacks:
 	db 23, QUICK_ATTACK
 	db 30, SWIFT
 	db 36, PSYBEAM
-	db 42, PSYCH_UP
+	db 42, CALM_MIND
 	db 47, PSYCHIC_M
 	db 52, MORNING_SUN
 	db 0 ; no more level-up moves
@@ -3531,7 +3531,7 @@ SylveonEvosAttacks:
 	db 23, QUICK_ATTACK
 	db 30, SWIFT
 	db 36, DRAIN_KISS
-	db 42, PSYCH_UP
+	db 42, CALM_MIND
 	db 47, LIGHT_SCREEN
 	db 52, MOONBLAST
 	db 0 ; no more level-up moves
