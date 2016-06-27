@@ -26,7 +26,7 @@
 	const STOMP        ; $17
 	const DOUBLE_KICK  ; $18
 	const FLARE_BLITZ  ; $19
-	const JUMP_KICK    ; $1a
+	const STONE_EDGE   ; $1a
 	const FOCUS_BLAST  ; $1b
 	const SAND_ATTACK  ; $1c
 	const HEADBUTT     ; $1d

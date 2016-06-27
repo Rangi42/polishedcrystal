@@ -16,7 +16,6 @@ HiJumpKick:
 HornAttack:
 HydroPump:
 HyperVoice:
-JumpKick:
 KarateChop:
 MachPunch:
 Megahorn:
@@ -32,6 +31,7 @@ Scratch:
 SeedBomb:
 Slam:
 Slash:
+StoneEdge:
 Strength:
 Surf:
 Swift:

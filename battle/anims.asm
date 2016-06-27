@@ -25,7 +25,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Stomp
 	dw BattleAnim_DoubleKick
 	dw BattleAnim_FlareBlitz
-	dw BattleAnim_JumpKick
+	dw BattleAnim_StoneEdge
 	dw BattleAnim_FocusBlast
 	dw BattleAnim_SandAttack
 	dw BattleAnim_Headbutt
@@ -846,9 +846,9 @@ BattleAnim_DoubleKick_branch_c96bd: ; c96bd
 	anim_ret
 ; c96cd
 
-BattleAnim_JumpKick: ; c96cd
+BattleAnim_StoneEdge:
+; TODO: erase Jump Kick animation, design Stone Edge animation
 	anim_1gfx ANIM_GFX_HIT
-	anim_jumpif $1, BattleAnim_JumpKick_branch_c96f1
 	anim_sound 0, 1, SFX_JUMP_KICK
 	anim_obj ANIM_OBJ_07,  14, 0,   9, 0, $0
 	anim_obj ANIM_OBJ_07,  12, 4,   7, 4, $0
@@ -859,15 +859,6 @@ BattleAnim_JumpKick: ; c96cd
 	anim_obj ANIM_OBJ_04, -15, 0,   6, 0, $0
 	anim_wait 16
 	anim_ret
-; c96f1
-
-BattleAnim_JumpKick_branch_c96f1: ; c96f1
-	anim_wait 8
-	anim_sound 0, 0, SFX_DOUBLE_KICK
-	anim_obj ANIM_OBJ_04,   5, 4,  11, 0, $0
-	anim_wait 16
-	anim_ret
-; c96fc
 
 BattleAnim_HiJumpKick: ; c96fc
 	anim_1gfx ANIM_GFX_HIT

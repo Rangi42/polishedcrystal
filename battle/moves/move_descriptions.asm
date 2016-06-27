@@ -24,7 +24,7 @@
 	dw StompDescription
 	dw DoubleKickDescription
 	dw FlareBlitzDescription
-	dw JumpKickDescription
+	dw StoneEdgeDescription
 	dw FocusBlastDescription
 	dw SandAttackDescription
 	dw HeadbuttDescription
@@ -268,6 +268,7 @@ CrabhammerDescription:
 SlashDescription:
 AeroblastDescription:
 CrossChopDescription:
+StoneEdgeDescription:
 	db   "Has a high criti-"
 	next "cal hit ratio.@"
 
@@ -602,10 +603,6 @@ DazzlingleamDescription:
 DoubleKickDescription:
 	db   "A double kicking"
 	next "attack.@"
-
-JumpKickDescription:
-	db   "---"
-	next "---@"
 
 HornAttackDescription:
 	db   "An attack using a"

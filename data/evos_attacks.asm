@@ -1027,6 +1027,8 @@ GeodudeEvosAttacks:
 	db 31, ROLLOUT
 	db 36, EARTHQUAKE
 	db 41, EXPLOSION
+	db 46, DOUBLE_EDGE
+	db 51, STONE_EDGE
 	db 0 ; no more level-up moves
 
 GravelerEvosAttacks:
@@ -1043,6 +1045,8 @@ GravelerEvosAttacks:
 	db 34, ROLLOUT
 	db 41, EARTHQUAKE
 	db 48, EXPLOSION
+	db 55, DOUBLE_EDGE
+	db 62, STONE_EDGE
 	db 0 ; no more level-up moves
 
 GolemEvosAttacks:
@@ -1058,7 +1062,9 @@ GolemEvosAttacks:
 	db 27, HARDEN
 	db 34, ROLLOUT
 	db 41, EARTHQUAKE
-	db 48, EXPLOSION
+	db 49, EXPLOSION
+	db 56, DOUBLE_EDGE
+	db 63, STONE_EDGE
 	db 0 ; no more level-up moves
 
 PonytaEvosAttacks:
@@ -1341,13 +1347,20 @@ OnixEvosAttacks:
 	db EVOLVE_HOLDING, METAL_COAT, STEELIX
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 1, SCREECH
-	db 10, WRAP
-	db 14, ROCK_THROW
-	db 23, HARDEN
-	db 27, RAGE
-	db 36, SANDSTORM
-	db 40, SLAM
+	db 1, HARDEN
+	db 1, WRAP
+	db 1, CURSE
+	db 7, ROCK_THROW
+	db 13, RAGE
+	db 19, SANDSTORM
+	db 25, DRAGONBREATH
+	db 28, SLAM
+	db 31, SCREECH
+	db 34, ROCK_SLIDE
+	db 40, IRON_TAIL
+	db 43, DIG
+	db 46, STONE_EDGE
+	db 49, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 DrowzeeEvosAttacks:
@@ -1452,6 +1465,7 @@ ExeggcuteEvosAttacks:
 	db 37, SLEEP_POWDER
 	db 43, SOLARBEAM
 	db 47, EXTRASENSORY
+	db 50, NIGHTMARE
 	db 0 ; no more level-up moves
 
 ExeggutorEvosAttacks:
@@ -1496,7 +1510,7 @@ HitmonleeEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, DOUBLE_KICK
 	db 6, MEDITATE
-	db 16, JUMP_KICK
+	db 16, LOW_KICK
 	db 21, FOCUS_ENERGY
 	db 26, HI_JUMP_KICK
 	db 31, LOCK_ON
@@ -1553,26 +1567,28 @@ RhyhornEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HORN_ATTACK
 	db 1, TAIL_WHIP
-	db 13, STOMP
-	db 19, FURY_ATTACK
-	db 31, SCARY_FACE
-	db 37, HORN_DRILL
-	db 49, TAKE_DOWN
-	db 55, EARTHQUAKE
+	db 9, STOMP
+	db 13, FURY_ATTACK
+	db 19, SCARY_FACE
+	db 31, TAKE_DOWN
+	db 37, STONE_EDGE
+	db 41, EARTHQUAKE
+	db 49, MEGAHORN
+	db 55, HORN_DRILL
 	db 0 ; no more level-up moves
 
 RhydonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HORN_ATTACK
 	db 1, TAIL_WHIP
-	db 1, STOMP
-	db 1, FURY_ATTACK
-	db 13, STOMP
-	db 19, FURY_ATTACK
-	db 31, SCARY_FACE
-	db 37, HORN_DRILL
-	db 54, TAKE_DOWN
-	db 65, EARTHQUAKE
+	db 9, STOMP
+	db 13, FURY_ATTACK
+	db 19, SCARY_FACE
+	db 31, TAKE_DOWN
+	db 37, STONE_EDGE
+	db 46, EARTHQUAKE
+	db 54, MEGAHORN
+	db 65, HORN_DRILL
 	db 0 ; no more level-up moves
 
 ChanseyEvosAttacks:
@@ -1712,8 +1728,9 @@ MrMimeEvosAttacks:
 	db 26, REFLECT
 	db 31, ENCORE
 	db 36, PSYBEAM
-	db 41, BATON_PASS
-	db 46, SAFEGUARD
+	db 41, PSYCHIC
+	db 46, BATON_PASS
+	db 50, SAFEGUARD
 	db 0 ; no more level-up moves
 
 ScytherEvosAttacks:
@@ -1737,12 +1754,13 @@ JynxEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POUND
 	db 1, LICK
+	db 1, HYPNOSIS
 	db 1, DRAIN_KISS
-	db 1, POWDER_SNOW
-	db 9, DRAIN_KISS
-	db 13, POWDER_SNOW
-	db 21, DOUBLESLAP
-	db 25, ICE_PUNCH
+	db 8, DRAIN_KISS
+	db 11, POWDER_SNOW
+	db 15, DOUBLESLAP
+	db 21, ICE_PUNCH
+	db 25, NIGHTMARE
 	db 35, MEAN_LOOK
 	db 41, BODY_SLAM
 	db 51, PERISH_SONG
@@ -2294,12 +2312,13 @@ HoothootEvosAttacks:
 	db 6, PECK
 	db 11, HYPNOSIS
 	db 16, REFLECT
-	db 21, TAKE_DOWN
-	db 25, CONFUSION
+	db 21, CONFUSION
+	db 25, TAKE_DOWN
 	db 33, AIR_SLASH
 	db 37, ZEN_HEADBUTT
 	db 42, EXTRASENSORY
-	db 48, DREAM_EATER
+	db 48, NIGHTMARE
+	db 57, DREAM_EATER
 	db 0 ; no more level-up moves
 
 NoctowlEvosAttacks:
@@ -2316,7 +2335,8 @@ NoctowlEvosAttacks:
 	db 42, AIR_SLASH
 	db 46, ZEN_HEADBUTT
 	db 51, EXTRASENSORY
-	db 57, DREAM_EATER
+	db 57, NIGHTMARE
+	db 62, DREAM_EATER
 	db 0 ; no more level-up moves
 
 LedybaEvosAttacks:
@@ -2550,11 +2570,14 @@ BellossomEvosAttacks:
 SudowoodoEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ROCK_THROW
-	db 10, FLAIL
-	db 19, LOW_KICK
-	db 28, ROCK_SLIDE
-	db 37, FAINT_ATTACK
-	db 46, SLAM
+	db 1, FLAIL
+	db 5, LOW_KICK
+	db 12, ROCK_SLIDE
+	db 19, SLAM
+	db 26, FAINT_ATTACK
+	db 33, COUNTER
+	db 40, DOUBLE_EDGE
+	db 47, STONE_EDGE
 	db 0 ; no more level-up moves
 
 PolitoedEvosAttacks:
@@ -2908,14 +2931,21 @@ GliscorEvosAttacks:
 SteelixEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 1, SCREECH
-	db 10, WRAP
-	db 14, ROCK_THROW
-	db 23, HARDEN
-	db 27, RAGE
-	db 36, SANDSTORM
-	db 40, SLAM
-	db 49, CRUNCH
+	db 1, HARDEN
+	db 1, WRAP
+	db 1, CURSE
+	db 7, ROCK_THROW
+	db 13, RAGE
+	db 19, SANDSTORM
+	db 25, DRAGONBREATH
+	db 28, SLAM
+	db 31, SCREECH
+	db 34, ROCK_SLIDE
+	db 37, CRUNCH
+	db 40, IRON_TAIL
+	db 43, DIG
+	db 46, STONE_EDGE
+	db 49, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 SnubbullEvosAttacks:
@@ -3281,7 +3311,8 @@ StantlerEvosAttacks:
 	db 27, CONFUSE_RAY
 	db 33, CALM_MIND
 	db 39, ZEN_HEADBUTT
-	db 49, HI_JUMP_KICK
+	db 45, NIGHTMARE
+	db 51, HI_JUMP_KICK
 	db 0 ; no more level-up moves
 
 SmeargleEvosAttacks:
@@ -3436,14 +3467,16 @@ LarvitarEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, BITE
 	db 1, LEER
-	db 8, SANDSTORM
-	db 15, SCREECH
-	db 22, ROCK_SLIDE
-	db 29, THRASH
-	db 36, SCARY_FACE
-	db 43, CRUNCH
-	db 50, EARTHQUAKE
-	db 57, HYPER_BEAM
+	db 5, SANDSTORM
+	db 10, SCREECH
+	db 16, ROCK_SLIDE
+	db 23, SCARY_FACE
+	db 28, THRASH
+	db 34, DARK_PULSE
+	db 41, CRUNCH
+	db 46, EARTHQUAKE
+	db 50, STONE_EDGE
+	db 55, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 PupitarEvosAttacks:
@@ -3453,14 +3486,16 @@ PupitarEvosAttacks:
 	db 1, LEER
 	db 1, SANDSTORM
 	db 1, SCREECH
-	db 8, SANDSTORM
-	db 15, SCREECH
-	db 22, ROCK_SLIDE
-	db 29, THRASH
-	db 38, SCARY_FACE
+	db 5, SANDSTORM
+	db 10, SCREECH
+	db 16, ROCK_SLIDE
+	db 23, SCARY_FACE
+	db 28, THRASH
+	db 41, DARK_PULSE
 	db 47, CRUNCH
-	db 56, EARTHQUAKE
-	db 65, HYPER_BEAM
+	db 54, EARTHQUAKE
+	db 60, STONE_EDGE
+	db 67, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 TyranitarEvosAttacks:
@@ -3469,14 +3504,16 @@ TyranitarEvosAttacks:
 	db 1, LEER
 	db 1, SANDSTORM
 	db 1, SCREECH
-	db 8, SANDSTORM
-	db 15, SCREECH
-	db 22, ROCK_SLIDE
-	db 29, THRASH
-	db 38, SCARY_FACE
+	db 5, SANDSTORM
+	db 10, SCREECH
+	db 16, ROCK_SLIDE
+	db 23, SCARY_FACE
+	db 28, THRASH
+	db 41, DARK_PULSE
 	db 47, CRUNCH
-	db 61, EARTHQUAKE
-	db 75, HYPER_BEAM
+	db 54, EARTHQUAKE
+	db 63, STONE_EDGE
+	db 73, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 LugiaEvosAttacks:

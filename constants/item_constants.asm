@@ -227,8 +227,8 @@
 	add_tm STEEL_WING    ; $E0
 	add_tm FIRE_PUNCH    ; $E1
 	add_tm FURY_CUTTER   ; $E2
-	add_tm NIGHTMARE     ; $E3
-	add_tm X_SCISSOR     ; $E4
+	add_tm DAZZLINGLEAM  ; $E3
+	add_tm STONE_EDGE    ; $E4
 	add_tm ROCK_SLIDE    ; $E5 ; TODO: AVALANCHE
 	add_tm WILD_CHARGE   ; $E6
 	add_tm POISON_JAB    ; $E7
@@ -237,7 +237,7 @@
 	add_tm DARK_PULSE    ; $EA
 	add_tm FLASH_CANNON  ; $EB
 	add_tm DRAGON_PULSE  ; $EC
-	add_tm DAZZLINGLEAM  ; $ED
+	add_tm X_SCISSOR     ; $ED
 NUM_TMS = const_value - TM01
 
 	add_hm CUT           ; $EE

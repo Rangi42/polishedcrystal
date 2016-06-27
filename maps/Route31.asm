@@ -188,8 +188,8 @@ TrainerBug_catcherWade1:
 Route31MailRecipientScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM50_NIGHTMARE
-	iftrue .DescribeNightmare
+	checkevent EVENT_GOT_TM43_WILL_O_WISP
+	iftrue .DescribeWillOWisp
 	checkevent EVENT_GOT_KENYA
 	iftrue .TryGiveKenya
 	writetext Text_Route31SleepyMan
@@ -210,11 +210,11 @@ Route31MailRecipientScript:
 	writetext Text_Route31ReadingMail
 	buttonsound
 	setevent EVENT_GAVE_KENYA
-	verbosegiveitem TM_NIGHTMARE
+	verbosegiveitem TM_WILL_O_WISP
 	iffalse .NoRoomForItems
-	setevent EVENT_GOT_TM50_NIGHTMARE
-.DescribeNightmare:
-	writetext Text_Route31DescribeNightmare
+	setevent EVENT_GOT_TM43_WILL_O_WISP
+.DescribeWillOWisp:
+	writetext Text_Route31DescribeWillOWisp
 	waitbutton
 .NoRoomForItems:
 	closetext
@@ -353,20 +353,16 @@ Text_Route31ReadingMail:
 	line "to have this!"
 	done
 
-Text_Route31DescribeNightmare:
-	text "TM50 is Nightmare."
+Text_Route31DescribeWillOWisp:
+	text "TM43 is Will-O-"
+	line "Wisp."
 
 	para "It's a wicked move"
-	line "that steadily cuts"
-
-	para "the HP of a sleep-"
-	line "ing enemy."
+	line "that inflicts a"
+	cont "burn on the enemy."
 
 	para "Ooooh…"
 	line "That's scary…"
-
-	para "I don't want to"
-	line "have bad dreams."
 	done
 
 Text_Route31WrongMail:
