@@ -2138,6 +2138,29 @@ Astonish:
 	astonish
 	endmove
 
+FlareBlitz:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	recoil
+	defrost
+	checkdestinybond
+	buildopponentrage
+	burntarget
+	endmove
+
 Bide:
 	storeenergy
 	checkobedience

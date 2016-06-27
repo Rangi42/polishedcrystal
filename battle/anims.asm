@@ -24,7 +24,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_VineWhip
 	dw BattleAnim_Stomp
 	dw BattleAnim_DoubleKick
-	dw BattleAnim_MegaKick
+	dw BattleAnim_FlareBlitz
 	dw BattleAnim_JumpKick
 	dw BattleAnim_FocusBlast
 	dw BattleAnim_SandAttack
@@ -903,7 +903,8 @@ BattleAnim_FocusBlast:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_MegaKick: ; c973e
+BattleAnim_FlareBlitz:
+; TODO: erase Mega Kick animation, design Flare Blitz animation
 	anim_1gfx ANIM_GFX_HIT
 	anim_bgeffect ANIM_BG_1F, $40, $2, $0
 	anim_wait 67
@@ -917,7 +918,6 @@ BattleAnim_MegaKick: ; c973e
 	anim_wait 6
 	anim_loop 3, .loop
 	anim_ret
-; c9764
 
 BattleAnim_HyperFang: ; c9764
 	anim_1gfx ANIM_GFX_HIT

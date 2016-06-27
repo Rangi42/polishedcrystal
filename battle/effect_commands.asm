@@ -209,11 +209,13 @@ CheckPlayerTurn:
 	bit FRZ, [hl]
 	jr z, .not_frozen
 
-	; Flame Wheel and Sacred Fire thaw the user.
+	; Flame Wheel, Sacred Fire, and Flare Blitz thaw the user.
 	ld a, [CurPlayerMove]
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
+	jr z, .not_frozen
+	cp FLARE_BLITZ
 	jr z, .not_frozen
 
 	ld hl, FrozenSolidText
@@ -453,10 +455,13 @@ CheckEnemyTurn: ; 3421f
 	ld hl, EnemyMonStatus
 	bit FRZ, [hl]
 	jr z, .not_frozen
+	; Flame Wheel, Sacred Fire, and Flare Blitz thaw the user.
 	ld a, [CurEnemyMove]
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
+	jr z, .not_frozen
+	cp FLARE_BLITZ
 	jr z, .not_frozen
 
 	ld hl, FrozenSolidText

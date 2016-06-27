@@ -110,6 +110,7 @@ CharizardEvosAttacks:
 	db 44, SLASH
 	db 54, DRAGON_RAGE
 	db 64, FIRE_SPIN
+	db 77, FLARE_BLITZ
 	db 0 ; no more level-up moves
 
 SquirtleEvosAttacks:
@@ -808,12 +809,15 @@ GrowlitheEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, BITE
 	db 1, ROAR
-	db 9, EMBER
-	db 18, LEER
-	db 26, TAKE_DOWN
-	db 34, FLAME_WHEEL
-	db 42, AGILITY
-	db 50, FLAMETHROWER
+	db 6, EMBER
+	db 9, LEER
+	db 16, TAKE_DOWN
+	db 20, FLAME_WHEEL
+	db 26, AGILITY
+	db 34, FLAMETHROWER
+	db 39, CRUNCH
+	db 43, OUTRAGE
+	db 45, FLARE_BLITZ
 	db 0 ; no more level-up moves
 
 ArcanineEvosAttacks:
@@ -1069,11 +1073,13 @@ PonytaEvosAttacks:
 	db 34, TAKE_DOWN
 	db 43, AGILITY
 	db 53, FIRE_BLAST
+	db 63, FLARE_BLITZ
 	db 0 ; no more level-up moves
 
 RapidashEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POISON_JAB
+	db 1, MEGAHORN
 	db 1, TACKLE
 	db 1, GROWL
 	db 1, TAIL_WHIP
@@ -1086,7 +1092,8 @@ RapidashEvosAttacks:
 	db 34, TAKE_DOWN
 	db 40, FURY_ATTACK
 	db 47, AGILITY
-	db 61, FIRE_BLAST
+	db 59, FIRE_BLAST
+	db 69, FLARE_BLITZ
 	db 0 ; no more level-up moves
 
 SlowpokeEvosAttacks:
@@ -1495,7 +1502,6 @@ HitmonleeEvosAttacks:
 	db 31, LOCK_ON
 	db 36, FORESIGHT
 	db 41, ENDURE
-	db 46, MEGA_KICK
 	db 51, REVERSAL
 	db 0 ; no more level-up moves
 
@@ -1896,10 +1902,10 @@ FlareonEvosAttacks:
 	db 16, EMBER
 	db 23, QUICK_ATTACK
 	db 30, BITE
-	db 36, FIRE_SPIN
+	db 36, FLAME_WHEEL
 	db 42, SMOKESCREEN
 	db 47, LEER
-	db 52, FLAMETHROWER
+	db 52, FLARE_BLITZ
 	db 0 ; no more level-up moves
 
 PorygonEvosAttacks:

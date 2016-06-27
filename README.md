@@ -118,6 +118,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def) (TM 21 becomes Ice Punch; TM 33 becomes Reflect)
    * Kinesis → Metal Sound (Steel, 40 PP, 85% accuracy, harshly lowers Sp.Def)
    * Lovely Kiss → Drain Kiss (Fairy, 10 PP, 50 power, 100% accuracy, drains 75% damage)
+   * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)
    * Mega Punch → Dragon Claw (TM 02) (Dragon, 15 PP, 80 power, 100% accuracy)
    * Mimic → Dragon Pulse (TM 59) (Dragon, 10 PP, 85 power, 100% accuracy)
    * Mind Reader → Zen Headbutt (tutor) (Psychic, 15 PP, 80 power, 90% accuracy, 20% chance to flinch)
@@ -264,7 +265,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
    * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn)
    * Jump Kick → Close Combat (Fighting, 5 PP, 120 power, 100% accuracy, lowers user's Def and Sp.Def)
-   * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)
    * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio)
 * Update TMs and HMs
    * TM04: Rollout → Calm Mind

@@ -22,7 +22,7 @@
 	db "Vine Whip@"
 	db "Stomp@"
 	db "Double Kick@"
-	db "Mega Kick@"
+	db "Flare Blitz@"
 	db "Jump Kick@"
 	db "Focus Blast@"
 	db "Sand Attack@"

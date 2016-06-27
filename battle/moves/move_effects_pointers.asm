@@ -143,6 +143,7 @@
 	dw Fly
 	dw DefenseCurl
 	dw Astonish
+	dw FlareBlitz
 	dw NormalHit
 	dw NormalHit
 	dw Bide

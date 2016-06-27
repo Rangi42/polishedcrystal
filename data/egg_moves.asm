@@ -30,6 +30,7 @@ CharmanderEggMoves:
 	db ROCK_SLIDE
 	db BITE
 	db OUTRAGE
+	db FLARE_BLITZ
 	db $ff
 
 SquirtleEggMoves:
@@ -102,6 +103,7 @@ VulpixEggMoves:
 	db FLAIL
 	db DISABLE
 	db EXTRASENSORY
+	db FLARE_BLITZ
 	db $ff
 
 ZubatEggMoves:
@@ -182,6 +184,7 @@ GrowlitheEggMoves:
 	db CRUNCH
 	db THRASH
 	db FIRE_SPIN
+	db FLARE_BLITZ
 	db $ff
 
 PoliwagEggMoves:
@@ -457,10 +460,9 @@ CyndaquilEggMoves:
 	db REVERSAL
 	db THRASH
 	db FORESIGHT
-if _CRYSTAL
 	db SUBMISSION
-endc
 	db EXTRASENSORY
+	db FLARE_BLITZ
 	db $ff
 
 TotodileEggMoves:
@@ -767,18 +769,15 @@ ElekidEggMoves:
 	db KARATE_CHOP
 	db BARRIER
 	db MEDITATE
-if _CRYSTAL
 	db CROSS_CHOP
-endc
 	db $ff
 
 MagbyEggMoves:
 	db KARATE_CHOP
 	db BARRIER
 	db SCREECH
-if _CRYSTAL
 	db CROSS_CHOP
-endc
+	db FLARE_BLITZ
 	db $ff
 
 MiltankEggMoves:

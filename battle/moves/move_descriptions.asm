@@ -23,7 +23,7 @@
 	dw VineWhipDescription
 	dw StompDescription
 	dw DoubleKickDescription
-	dw MegaKickDescription
+	dw FlareBlitzDescription
 	dw JumpKickDescription
 	dw FocusBlastDescription
 	dw SandAttackDescription
@@ -603,10 +603,6 @@ DoubleKickDescription:
 	db   "A double kicking"
 	next "attack.@"
 
-MegaKickDescription:
-	db   "---"
-	next "---@"
-
 JumpKickDescription:
 	db   "---"
 	next "---@"
@@ -626,6 +622,11 @@ TackleDescription:
 TakeDownDescription:
 DoubleEdgeDescription:
 	db   "A tackle that also"
+	next "hurts the user.@"
+
+FlareBlitzDescription:
+WildChargeDescription:
+	db   "A charge that also"
 	next "hurts the user.@"
 
 ThrashDescription:
@@ -925,10 +926,6 @@ IcyWindDescription:
 PowerGemDescription:
 	db   "Attacks with a ray"
 	next "of gem-like light.@"
-
-WildChargeDescription:
-	db   "An attack that al-"
-	next "so hurts the user.@"
 
 LockOnDescription:
 	db   "Ensures the next"
