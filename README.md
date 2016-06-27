@@ -315,6 +315,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
    * PP is restored after every battle
+   * Pokémon with low HP can't be damaged (commit [e3e3888ff1](https://github.com/roukaour/pokecrystal/tree/e3e3888ff1159f25355cebf5aaa080f4e6e7712e) is the problem)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix Pokémon icons used as overworld sprites changing after viewing the party menu (using SPRITEMOVEDATA_ITEM_TREE fixes this but freezes them)
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
