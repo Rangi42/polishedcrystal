@@ -115,6 +115,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Constrict → Fairy Wind (Fairy, 30 PP, 40 power, 100% accuracy)
    * Cotton Spore → Seed Bomb (tutor) (Grass, 15 PP, 80 power, 100% accuracy)
    * Detect (TM 43) → Power Gem (Rock, 20 PP, 80 power, 100% accuracy) (TM 43 becomes DazzlinGleam)
+   * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn) (TM 52 is Avalanche)
    * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def) (TM 21 becomes Ice Punch; TM 33 becomes Reflect)
    * Jump Kick → Stone Edge (TM 71) (Rock, 5 PP, 100 power, 80% accuracy, increased critical hit ratio) (TM 51 is Stone Edge)
    * Kinesis → Metal Sound (Steel, 40 PP, 85% accuracy, harshly lowers Sp.Def)
@@ -276,7 +277,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
 * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
-* Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn) (TM 52 is Avalanche)
 * Add move tutors for Earth Power, Seed Bomb, Zen Headbutt, Iron Head, Hyper Voice, and Aqua Tail
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
@@ -287,7 +287,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Drain Kiss drains 75% HP
    * Double-Edge does 33% recoil damage
    * Flare Blitz does 33% recoil damage
-   * Avalanche is low priority and doubles damage if user is hit first
+   * Avalanche doubles damage if user is hit first
    * Low Kick's power is based on weight
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2

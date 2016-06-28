@@ -144,6 +144,7 @@
 	dw DefenseCurl
 	dw Astonish
 	dw FlareBlitz
+	dw Avalanche
 	dw NormalHit
 	dw NormalHit
 	dw Bide

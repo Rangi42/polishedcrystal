@@ -1059,7 +1059,7 @@ MirrorCoatDescription:
 
 ExtremespeedDescription:
 	db   "A powerful first-"
-	next "strike move.@"
+	next "strike attack.@"
 
 FutureSightDescription:
 	db   "An attack that"

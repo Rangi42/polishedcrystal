@@ -888,7 +888,7 @@ GetMovePriority: ; 3c5c5
 
 	ld b, a
 
-	; Vital throw goes last.
+	; Vital Throw goes last.
 	cp VITAL_THROW
 	ld a, 0
 	ret z
@@ -918,6 +918,7 @@ MoveEffectPriorities: ; 3c5df
 	db EFFECT_WHIRLWIND,    0
 	db EFFECT_COUNTER,      0
 	db EFFECT_MIRROR_COAT,  0
+	db EFFECT_AVALANCHE,    0
 	db -1
 ; 3c5ec
 

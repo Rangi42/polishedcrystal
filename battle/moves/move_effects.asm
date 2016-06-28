@@ -1,7 +1,6 @@
 NormalHit:
 Aeroblast:
 AquaTail:
-Avalanche:
 BulletPunch:
 Crabhammer:
 CrossChop:
@@ -2159,6 +2158,26 @@ FlareBlitz:
 	checkdestinybond
 	buildopponentrage
 	burntarget
+	endmove
+
+Avalanche:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	kingsrock
 	endmove
 
 Bide:
