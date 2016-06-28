@@ -181,7 +181,7 @@
 	add_tm DYNAMICPUNCH  ; $B2
 	add_tm DRAGON_CLAW   ; $B3
 	add_tm CURSE         ; $B4
-	add_tm ROLLOUT       ; $B5
+	add_tm CALM_MIND     ; $B5
 	add_tm ROAR          ; $B6
 	add_tm TOXIC         ; $B7
 	add_tm ZAP_CANNON    ; $B8
@@ -189,7 +189,7 @@
 	add_tm HEADBUTT      ; $BA
 	add_tm HIDDEN_POWER  ; $BB
 	add_tm SUNNY_DAY     ; $BC
-	add_tm SWEET_SCENT   ; $BD
+	add_tm ROLLOUT       ; $BD
 	add_tm ICY_WIND      ; $BE
 	add_tm BLIZZARD      ; $BF
 	add_tm HYPER_BEAM    ; $C0
@@ -232,7 +232,7 @@
 	add_tm ROCK_SLIDE    ; $E5 ; TODO: AVALANCHE
 	add_tm WILD_CHARGE   ; $E6
 	add_tm POISON_JAB    ; $E7
-	add_tm CRUNCH        ; $E8 ; TODO: SHADOW_CLAW
+	add_tm SHADOW_CLAW   ; $E8
 	add_tm FOCUS_BLAST   ; $E9
 	add_tm DARK_PULSE    ; $EA
 	add_tm FLASH_CANNON  ; $EB

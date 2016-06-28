@@ -310,15 +310,14 @@ const_value SET 1
 	const MONMENU_HEADBUTT   ; 11
 	const MONMENU_ROCKSMASH  ; 12
 	const MONMENU_MILKDRINK  ; 13
-	const MONMENU_SWEETSCENT ; 14
 
-	const MONMENU_STATS      ; 15
-	const MONMENU_SWITCH     ; 16
-	const MONMENU_ITEM       ; 17
-	const MONMENU_CANCEL     ; 18
-	const MONMENU_MOVE       ; 19
-	const MONMENU_MAIL       ; 20
-	const MONMENU_ERROR      ; 21
+	const MONMENU_STATS      ; 14
+	const MONMENU_SWITCH     ; 15
+	const MONMENU_ITEM       ; 16
+	const MONMENU_CANCEL     ; 17
+	const MONMENU_MOVE       ; 18
+	const MONMENU_MAIL       ; 19
+	const MONMENU_ERROR      ; 20
 
 MONMENU_FIELD_MOVE EQU 0
 MONMENU_MENUOPTION EQU 1

@@ -229,7 +229,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Encore
 	dw BattleAnim_Pursuit
 	dw BattleAnim_RapidSpin
-	dw BattleAnim_SweetScent
+	dw BattleAnim_ShadowClaw
 	dw BattleAnim_IronTail
 	dw BattleAnim_MetalClaw
 	dw BattleAnim_VitalThrow
@@ -254,7 +254,6 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Moonblast
 	dw BattleAnim_PlayRough
 	dw BattleAnim_DisarmVoice
-	dw BattleAnim_SweetScent2
 ; $100
 	dw BattleAnim_ThrowPokeBall
 	dw BattleAnim_SendOutMon
@@ -329,7 +328,7 @@ BattleAnim_DisarmVoice:
 	anim_wait 64
 	anim_ret
 
-BattleAnim_SweetScent2: ; c929c
+BattleAnim_ShadowClaw:
 	anim_2gfx ANIM_GFX_FLOWER, ANIM_GFX_MISC
 	anim_obj ANIM_OBJ_FLOWER,   8, 0,  12, 0, $2
 	anim_wait 2
@@ -4468,6 +4467,7 @@ BattleAnim_RapidSpin: ; cb65e
 ; cb68e
 
 BattleAnim_SweetScent: ; cb68e
+; TODO: erase Sweet Scent animation, design Shadow Claw animation
 	anim_2gfx ANIM_GFX_FLOWER, ANIM_GFX_MISC
 	anim_sound 0, 0, SFX_SWEET_SCENT
 	anim_obj ANIM_OBJ_FLOWER,   8, 0,  12, 0, $2
@@ -4481,7 +4481,6 @@ BattleAnim_SweetScent: ; cb68e
 	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $3f
 	anim_wait 128
 	anim_ret
-; cb6b6
 
 BattleAnim_IronTail: ; cb6b6
 	anim_1gfx ANIM_GFX_REFLECT

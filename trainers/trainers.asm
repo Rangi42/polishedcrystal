@@ -3638,7 +3638,7 @@ CooltrainerFGroup:
 		db BODY_SLAM
 		db SLEEP_POWDER
 		db RAZOR_LEAF
-		db SWEET_SCENT
+		db GROWTH
 
 	db $ff ; end
 
@@ -8901,7 +8901,7 @@ ExecutiveFGroup:
 
 	db 32, VILEPLUME
 		db ABSORB
-		db SWEET_SCENT
+		db GROWTH
 		db SLEEP_POWDER
 		db ACID
 
@@ -8930,7 +8930,7 @@ ExecutiveFGroup:
 
 	db 23, GLOOM
 		db ABSORB
-		db SWEET_SCENT
+		db GROWTH
 		db SLEEP_POWDER
 		db ACID
 
@@ -9980,7 +9980,7 @@ GruntFGroup:
 
 	db 18, GLOOM
 		db ABSORB
-		db SWEET_SCENT
+		db GROWTH
 		db STUN_SPORE
 		db SLEEP_POWDER
 

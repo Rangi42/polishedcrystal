@@ -135,6 +135,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Snore (TM 13) → Hyper Voice (tutor) (Normal, 10 PP, 90 power, 100% accuracy, avoids Substitute) (TM 13 becomes Icy Wind; TM 16 becomes Light Screen)
    * Spider Web → Will-O-Wisp (TM 61) (Fire, 15 PP, 85% accuracy, burns)
    * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
+   * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind; TM 55 is Shadow Claw)
    * Vice Grip → X-Scissor (TM 81) (Bug, 15 PP, 80 power, 100% accuracy) (TM 60 is X-Scissor)
    * Withdraw → Aqua Tail (tutor) (Water, 10 PP, 90 power, 90% accuracy)
 * Modern battle mechanics:
@@ -276,8 +277,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
 * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn) (TM 52 is Avalanche)
-* Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind; TM 55 is Shadow Claw)
-* Move tutors for Earth Power, Seed Bomb, Zen Headbutt, Iron Head, Gunk Shot, Hyper Voice, and Aqua Tail
+* Add move tutors for Earth Power, Seed Bomb, Zen Headbutt, Iron Head, Hyper Voice, and Aqua Tail
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)

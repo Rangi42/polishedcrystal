@@ -131,9 +131,6 @@ ParasEggMoves:
 	db COUNTER
 	db PSYBEAM
 	db FLAIL
-if !_CRYSTAL
-	db SWEET_SCENT
-endc
 	db LIGHT_SCREEN
 	db PURSUIT
 	db $ff
@@ -155,6 +152,7 @@ MeowthEggMoves:
 	db CHARM
 	db HYPNOSIS
 	db CALM_MIND
+	db GUNK_SHOT
 	db $ff
 
 PsyduckEggMoves:
@@ -176,6 +174,7 @@ MankeyEggMoves:
 	db MEDITATE
 	db COUNTER
 	db REVERSAL
+	db GUNK_SHOT
 	db $ff
 
 GrowlitheEggMoves:
@@ -521,6 +520,7 @@ PichuEggMoves:
 
 MunchlaxEggMoves:
 	db LICK
+	db GUNK_SHOT
 	db $ff
 
 TogepiEggMoves:
@@ -581,6 +581,7 @@ AipomEggMoves:
 	db AGILITY
 	db SLAM
 	db DOUBLESLAP
+	db GUNK_SHOT
 	db $ff
 
 YanmaEggMoves:
@@ -678,6 +679,7 @@ if _CRYSTAL
 	db METAL_CLAW
 endc
 	db PLAY_ROUGH
+	db GUNK_SHOT
 	db $ff
 
 SlugmaEggMoves:
@@ -707,6 +709,7 @@ RemoraidEggMoves:
 	db SUPERSONIC
 	db HAZE
 	db SCREECH
+	db GUNK_SHOT
 	db $ff
 
 MantineEggMoves:
@@ -714,6 +717,7 @@ MantineEggMoves:
 	db HYDRO_PUMP
 	db HAZE
 	db SLAM
+	db GUNK_SHOT
 	db $ff
 
 SkarmoryEggMoves:
@@ -738,10 +742,9 @@ PhanpyEggMoves:
 	db FOCUS_ENERGY
 	db BODY_SLAM
 	db ANCIENTPOWER
-if _CRYSTAL
 	db WATER_GUN
-endc
 	db PLAY_ROUGH
+	db GUNK_SHOT
 	db $ff
 
 StantlerEggMoves:

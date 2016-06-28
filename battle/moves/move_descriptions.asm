@@ -228,7 +228,7 @@
 	dw EncoreDescription
 	dw PursuitDescription
 	dw RapidSpinDescription
-	dw SweetScentDescription
+	dw ShadowClawDescription
 	dw IronTailDescription
 	dw MetalClawDescription
 	dw VitalThrowDescription
@@ -268,6 +268,7 @@ CrabhammerDescription:
 SlashDescription:
 AeroblastDescription:
 CrossChopDescription:
+ShadowClawDescription:
 StoneEdgeDescription:
 	db   "Has a high criti-"
 	next "cal hit ratio.@"
@@ -1023,10 +1024,6 @@ PursuitDescription:
 RapidSpinDescription:
 	db   "A high-speed"
 	next "spinning attack.@"
-
-SweetScentDescription:
-	db   "---"
-	next "---@"
 
 MetalClawDescription:
 	db   "An attack that may"

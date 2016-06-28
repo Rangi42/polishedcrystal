@@ -19,8 +19,8 @@ BulbasaurEvosAttacks:
 	db 15, POISONPOWDER
 	db 15, SLEEP_POWDER
 	db 20, RAZOR_LEAF
-	db 25, SWEET_SCENT
-	db 32, GROWTH
+	db 25, GROWTH
+	db 32, DOUBLE_EDGE
 	db 36, SYNTHESIS
 	db 40, SEED_BOMB
 	db 46, SOLARBEAM
@@ -38,10 +38,11 @@ IvysaurEvosAttacks:
 	db 15, POISONPOWDER
 	db 15, SLEEP_POWDER
 	db 22, RAZOR_LEAF
-	db 29, SWEET_SCENT
-	db 38, GROWTH
+	db 29, GROWTH
+	db 38, DOUBLE_EDGE
 	db 47, SYNTHESIS
-	db 56, SOLARBEAM
+	db 56, SEED_BOMB
+	db 65, SOLARBEAM
 	db 0 ; no more level-up moves
 
 VenusaurEvosAttacks:
@@ -56,10 +57,11 @@ VenusaurEvosAttacks:
 	db 15, POISONPOWDER
 	db 15, SLEEP_POWDER
 	db 22, RAZOR_LEAF
-	db 29, SWEET_SCENT
-	db 41, GROWTH
+	db 29, GROWTH
+	db 41, DOUBLE_EDGE
 	db 53, SYNTHESIS
-	db 65, SOLARBEAM
+	db 65, SEED_BOMB
+	db 77, SOLARBEAM
 	db 0 ; no more level-up moves
 
 CharmanderEvosAttacks:
@@ -71,9 +73,9 @@ CharmanderEvosAttacks:
 	db 13, SMOKESCREEN
 	db 19, RAGE
 	db 25, SCARY_FACE
-	db 31, FLAMETHROWER
-	db 37, SLASH
-	db 43, DRAGON_RAGE
+	db 31, DRAGON_RAGE
+	db 37, FLAMETHROWER
+	db 43, SLASH
 	db 49, FIRE_SPIN
 	db 0 ; no more level-up moves
 
@@ -83,20 +85,21 @@ CharmeleonEvosAttacks:
 	db 1, SCRATCH
 	db 1, GROWL
 	db 1, EMBER
-	db 1, DRAGON_CLAW
 	db 7, EMBER
 	db 13, SMOKESCREEN
 	db 20, RAGE
 	db 27, SCARY_FACE
-	db 34, FLAMETHROWER
-	db 41, SLASH
-	db 48, DRAGON_RAGE
+	db 34, DRAGON_RAGE
+	db 41, FLAMETHROWER
+	db 48, SLASH
 	db 55, FIRE_SPIN
 	db 0 ; no more level-up moves
 
 CharizardEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, AIR_SLASH
+	db 1, DRAGON_CLAW
+	db 1, SHADOW_CLAW
 	db 1, SCRATCH
 	db 1, GROWL
 	db 1, EMBER
@@ -107,8 +110,8 @@ CharizardEvosAttacks:
 	db 27, SCARY_FACE
 	db 34, FLAMETHROWER
 	db 36, WING_ATTACK
-	db 44, SLASH
-	db 54, DRAGON_RAGE
+	db 44, DRAGON_RAGE
+	db 54, SLASH
 	db 64, FIRE_SPIN
 	db 77, FLARE_BLITZ
 	db 0 ; no more level-up moves
@@ -585,7 +588,7 @@ OddishEvosAttacks:
 	db EVOLVE_LEVEL, 21, GLOOM
 	db 0 ; no more evolutions
 	db 1, ABSORB
-	db 7, SWEET_SCENT
+	db 7, GROWTH
 	db 14, POISONPOWDER
 	db 16, STUN_SPORE
 	db 18, SLEEP_POWDER
@@ -600,9 +603,9 @@ GloomEvosAttacks:
 	db EVOLVE_ITEM, SUN_STONE, BELLOSSOM
 	db 0 ; no more evolutions
 	db 1, ABSORB
-	db 1, SWEET_SCENT
+	db 1, GROWTH
 	db 1, POISONPOWDER
-	db 7, SWEET_SCENT
+	db 7, GROWTH
 	db 14, POISONPOWDER
 	db 16, STUN_SPORE
 	db 18, SLEEP_POWDER
@@ -614,7 +617,7 @@ GloomEvosAttacks:
 VileplumeEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ABSORB
-	db 1, SWEET_SCENT
+	db 1, GROWTH
 	db 1, STUN_SPORE
 	db 1, PETAL_DANCE
 	db 0 ; no more level-up moves
@@ -957,7 +960,7 @@ BellsproutEvosAttacks:
 	db 17, POISONPOWDER
 	db 19, STUN_SPORE
 	db 23, ACID
-	db 30, SWEET_SCENT
+	db 30, SYNTHESIS
 	db 37, RAZOR_LEAF
 	db 45, SLAM
 	db 0 ; no more level-up moves
@@ -974,7 +977,7 @@ WeepinbellEvosAttacks:
 	db 17, POISONPOWDER
 	db 19, STUN_SPORE
 	db 24, ACID
-	db 33, SWEET_SCENT
+	db 33, SYNTHESIS
 	db 42, RAZOR_LEAF
 	db 54, SLAM
 	db 0 ; no more level-up moves
@@ -983,7 +986,7 @@ VictreebelEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, VINE_WHIP
 	db 1, SLEEP_POWDER
-	db 1, SWEET_SCENT
+	db 1, SYNTHESIS
 	db 1, RAZOR_LEAF
 	db 0 ; no more level-up moves
 
@@ -2561,7 +2564,7 @@ AmpharosEvosAttacks:
 BellossomEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ABSORB
-	db 1, SWEET_SCENT
+	db 1, GROWTH
 	db 1, STUN_SPORE
 	db 1, PETAL_DANCE
 	db 55, SOLARBEAM

@@ -29,6 +29,7 @@ RazorLeaf:
 RockThrow:
 Scratch:
 SeedBomb:
+ShadowClaw:
 Slam:
 Slash:
 StoneEdge:
@@ -975,7 +976,6 @@ Flash:
 	endmove
 
 EvasionDown:
-SweetScent:
 	checkobedience
 	usedmovetext
 	doturn

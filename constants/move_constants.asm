@@ -230,7 +230,7 @@
 	const ENCORE       ; $e3
 	const PURSUIT      ; $e4
 	const RAPID_SPIN   ; $e5
-	const SWEET_SCENT  ; $e6
+	const SHADOW_CLAW  ; $e6
 	const IRON_TAIL    ; $e7
 	const METAL_CLAW   ; $e8
 	const VITAL_THROW  ; $e9

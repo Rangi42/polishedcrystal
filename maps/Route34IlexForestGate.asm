@@ -50,13 +50,13 @@ TeacherScript_0x62d63:
 	opentext
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iftrue UnknownScript_0x62d84
-	checkevent EVENT_GOT_TM12_SWEET_SCENT
+	checkevent EVENT_GOT_TM04_CALM_MIND
 	iftrue UnknownScript_0x62d7e
 	writetext UnknownText_0x62d9d
 	buttonsound
-	verbosegiveitem TM_SWEET_SCENT
+	verbosegiveitem TM_CALM_MIND
 	iffalse UnknownScript_0x62d82
-	setevent EVENT_GOT_TM12_SWEET_SCENT
+	setevent EVENT_GOT_TM04_CALM_MIND
 UnknownScript_0x62d7e:
 	writetext UnknownText_0x62df6
 	waitbutton
@@ -95,21 +95,19 @@ UnknownText_0x62d9d:
 	text "Oh, honey. You're"
 	line "making a #dex?"
 
-	para "It must be hard if"
-	line "#mon won't"
+	para "It must be hard to"
+	line "catch all those"
+	cont "#mon."
 
-	para "appear. Try using"
-	line "this TM."
+	para "Here, take this"
+	line "TM."
 	done
 
 UnknownText_0x62df6:
-	text "It's Sweet Scent."
+	text "It's Calm Mind."
 
-	para "Use it wherever"
-	line "#mon appear."
-
-	para "#mon will be"
-	line "enticed by it."
+	para "Teach it to a"
+	line "special #mon."
 	done
 
 UnknownText_0x62e41:

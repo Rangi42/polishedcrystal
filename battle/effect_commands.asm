@@ -1247,7 +1247,7 @@ BattleCommand_Critical: ; 34631
 	ret
 
 .Criticals:
-	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, STONE_EDGE, $ff
+	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, SHADOW_CLAW, STONE_EDGE, $ff
 .Chances:
 	; 6.25% 12.1% 24.6% 49.6% 99.6% 99.6% 99.6%
 	db $11,  $20,  $40,  $80,  $ff,  $ff,  $ff
