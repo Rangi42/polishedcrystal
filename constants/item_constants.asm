@@ -205,13 +205,13 @@
 	add_tm CALM_MIND     ; $B5
 	add_tm ROAR          ; $B6
 	add_tm TOXIC         ; $B7
-	add_tm ZAP_CANNON    ; $B8
+	add_tm DRAGONBREATH  ; $B8
 	add_tm BULK_UP       ; $B9
 	add_tm HEADBUTT      ; $BA
 	add_tm HIDDEN_POWER  ; $BB
 	add_tm SUNNY_DAY     ; $BC
 	add_tm ROLLOUT       ; $BD
-	add_tm ICY_WIND      ; $BE
+	add_tm ICE_BEAM      ; $BE
 	add_tm BLIZZARD      ; $BF
 	add_tm HYPER_BEAM    ; $C0
 	add_tm LIGHT_SCREEN  ; $C1
@@ -222,7 +222,7 @@
 	add_tm ICE_PUNCH     ; $C6
 	add_tm SOLARBEAM     ; $C7
 	add_tm IRON_TAIL     ; $C8
-	add_tm DRAGONBREATH  ; $C9
+	add_tm THUNDERBOLT   ; $C9
 	add_tm THUNDER       ; $CA
 	add_tm EARTHQUAKE    ; $CB
 	add_tm RETURN        ; $CC
@@ -233,14 +233,14 @@
 	add_tm DOUBLE_TEAM   ; $D1
 	add_tm REFLECT       ; $D2
 	add_tm SWAGGER       ; $D3
-	add_tm SLEEP_TALK    ; $D4
+	add_tm FLAMETHROWER  ; $D4
 	add_tm SLUDGE_BOMB   ; $D5
 	add_tm SANDSTORM     ; $D6
 	add_tm FIRE_BLAST    ; $D7
 	add_tm SWIFT         ; $D8
 	add_tm DEFENSE_CURL  ; $D9
 	add_tm THUNDERPUNCH  ; $DA
-	add_tm DREAM_EATER   ; $DB
+	add_tm ICY_WIND      ; $DB
 	add_tm WILL_O_WISP   ; $DC
 	add_tm REST          ; $DD
 	add_tm ATTRACT       ; $DE
@@ -271,14 +271,14 @@ NUM_TMS = const_value - TM01
 	add_hm ROCK_SMASH    ; $F5
 NUM_HMS = const_value - HM01
 
-	add_mt FLAMETHROWER  ; $F6
-	add_mt THUNDERBOLT   ; $F7
-	add_mt ICE_BEAM      ; $F8
-	add_mt AQUA_TAIL     ; $F9
-	add_mt EARTH_POWER   ; $FA
-	add_mt HYPER_VOICE   ; $FB
-	add_mt IRON_HEAD     ; $FC
-	add_mt SEED_BOMB     ; $FD
+	add_mt AQUA_TAIL     ; $F6
+	add_mt DREAM_EATER   ; $F7
+	add_mt EARTH_POWER   ; $F8
+	add_mt HYPER_VOICE   ; $F9
+	add_mt IRON_HEAD     ; $FA
+	add_mt SEED_BOMB     ; $FB
+	add_mt SLEEP_TALK    ; $FC
+	add_mt ZAP_CANNON    ; $FD
 	add_mt ZEN_HEADBUTT  ; $FE
 
 ITEM_FROM_MEM EQU $ff

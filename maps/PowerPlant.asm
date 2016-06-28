@@ -139,7 +139,7 @@ PowerPlantManager:
 	faceplayer
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188eac
+	iftrue PowerPlantTutorZapCannonScript
 	checkitem MACHINE_PART
 	iftrue UnknownScript_0x188e93
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
@@ -170,22 +170,10 @@ UnknownScript_0x188e93:
 	setevent EVENT_ROUTE_24_ROCKET
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-UnknownScript_0x188eac:
-	checkevent EVENT_GOT_TM07_ZAP_CANNON
-	iftrue UnknownScript_0x188ec5
 	writetext UnknownText_0x1893c4
-	buttonsound
-	verbosegiveitem TM_ZAP_CANNON
-	iffalse UnknownScript_0x188ec3
-	setevent EVENT_GOT_TM07_ZAP_CANNON
-	writetext UnknownText_0x1893f4
 	waitbutton
-UnknownScript_0x188ec3:
-	closetext
-	end
-
-UnknownScript_0x188ec5:
-	writetext UnknownText_0x189475
+PowerPlantTutorZapCannonScript:
+	writetext Text_PowerPlantTutorZapCannon
 	waitbutton
 	closetext
 	end
@@ -363,31 +351,25 @@ UnknownText_0x18936e:
 
 UnknownText_0x1893c4:
 	text "Wahah! Thanks!"
-
-	para "Here! Take this TM"
-	line "as a reward!"
+	line "You deserve a"
+	cont "reward!"
 	done
 
-UnknownText_0x1893f4:
-	text "Manager: TM07 is"
-	line "my Zap Cannon."
+Text_PowerPlantTutorZapCannon:
+	text "Manager: I can"
+	line "teach your"
 
-	para "It's a powerful"
-	line "technique!"
+	para "#mon to use"
+	line "my Zap Cannon!"
 
 	para "It's not what any-"
 	line "one would consider"
 
 	para "accurate, but it"
 	line "packs a wallop!"
-	done
 
-UnknownText_0x189475:
-	text "Manager: My be-"
-	line "loved generator!"
-
-	para "Keep pumping the"
-	line "electricity out!"
+	para "TODO: Move Tutor"
+	line "for Zap Cannon"
 	done
 
 PowerPlant_MapEventHeader:

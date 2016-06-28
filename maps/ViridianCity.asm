@@ -54,17 +54,14 @@ GrampsScript_0x1a9a61:
 FisherScript_0x1a9a75:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM42_DREAM_EATER
-	iftrue UnknownScript_0x1a9a8a
+	checkevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
+	iftrue ViridianCityTutorDreamEaterScript
 	writetext UnknownText_0x1a9cc4
-	buttonsound
-	verbosegiveitem TM_DREAM_EATER
-	iffalse UnknownScript_0x1a9a8e
-	setevent EVENT_GOT_TM42_DREAM_EATER
-UnknownScript_0x1a9a8a:
-	writetext UnknownText_0x1a9d86
 	waitbutton
-UnknownScript_0x1a9a8e:
+	setevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
+ViridianCityTutorDreamEaterScript:
+	writetext Text_ViridianCityTutorDreamEater
+	waitbutton
 	closetext
 	end
 
@@ -160,22 +157,17 @@ UnknownText_0x1a9cc4:
 	para "eating my dream."
 	line "Weird, huh?"
 
-	para "Huh?"
-	line "What's this?"
-
-	para "Where did this TM"
-	line "come from?"
-
-	para "This is spooky!"
-	line "Here, you can have"
-	cont "this TM."
+	para "But it gave me a"
+	line "neat idea…"
 	done
 
-UnknownText_0x1a9d86:
-	text "TM42 contains"
-	line "Dream Eater…"
+Text_ViridianCityTutorDreamEater:
+	text "I can teach your"
+	line "#mon to eat"
+	cont "dreams."
 
-	para "…Zzzzz…"
+	para "TODO: Move Tutor"
+	line "for Dream Eater"
 	done
 
 UnknownText_0x1a9daa:

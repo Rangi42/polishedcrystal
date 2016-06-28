@@ -104,42 +104,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Ditto may hold Metal Powder
    * Restore fossils at the Pewter Museum of Science
 * Add moves from future generations
-   * Acid Armor → Dragon Dance (Dragon, 20 PP, raise Attack and Speed)
-   * Amnesia → Calm Mind (Psychic, 20 PP, raise Sp.Atk and Sp.Def)
-   * Barrage → Bullet Punch (Steel, 30 PP, 40 power, 100% accuracy, +1 priority)
-   * Beat Up → Dark Pulse (TM 79, TM 97, tutor) (Dark, 15 PP, 80 power, 100% accuracy, 20% chance to flinch) (TM 57 is Dark Pulse)
-   * Bide → Flash Cannon (TM 91) (Steel, 10 PP, 80 power, 100% accuracy, 10% chance to lower Sp.Def) (TM 58 is Flash Cannon)
-   * Bind → DazzlinGleam (TM 99) (Fairy, 10 PP, 80 power, 100% accuracy) (TM 43 becomes Will-O-Wisp; TM 50 becomes DazzlinGleam)
-   * Bone Club → Earth Power (tutor) (Ground, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def)
-   * Bone Rush → Wild Charge (TM 93) (Electric, 15 PP, 90 power, 100% accuracy, 25% recoil damage) (TM 53 is Wild Charge)
-   * Clamp → Razor Shell (Water, 10 PP, 75 power, 95% accuracy, 50% chance to lower Defense)
-   * Constrict → Fairy Wind (Fairy, 30 PP, 40 power, 100% accuracy)
-   * Cotton Spore → Seed Bomb (tutor) (Grass, 15 PP, 80 power, 100% accuracy)
-   * Detect (TM 43) → Power Gem (Rock, 20 PP, 80 power, 100% accuracy) (TM 43 becomes DazzlinGleam)
-   * Fissure → Avalanche (TM 72) (10 PP, 60 power, 100% accuracy, -4 priority, double damage if user is damaged in same turn) (TM 52 is Avalanche)
-   * Frustration (TM 21) → Bug Buzz (Bug, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def) (TM 21 becomes Ice Punch; TM 33 becomes Reflect)
-   * Jump Kick → Stone Edge (TM 71) (Rock, 5 PP, 100 power, 80% accuracy, increased critical hit ratio) (TM 51 is Stone Edge)
-   * Kinesis → Metal Sound (Steel, 40 PP, 85% accuracy, harshly lowers Sp.Def)
-   * Lovely Kiss → Drain Kiss (Fairy, 10 PP, 50 power, 100% accuracy, drains 75% damage)
-   * Mega Kick → Flare Blitz (Fire, 15 PP, 120 power, 100% accuracy, thaws user if frozen, 33% recoil damage, 10% chance to burn)
-   * Mega Punch → Dragon Claw (TM 02) (Dragon, 15 PP, 80 power, 100% accuracy)
-   * Mimic → Dragon Pulse (TM 59) (Dragon, 10 PP, 85 power, 100% accuracy) (TM 59 is Dragon Pulse)
-   * Mind Reader → Zen Headbutt (tutor) (Psychic, 15 PP, 80 power, 90% accuracy, 20% chance to flinch)
-   * Poison Gas → Poison Jab (TM 84) (Poison, 20 PP, 80 power, 100% accuracy, 30% chance to poison) (TM 54 is Poison Jab)
-   * Present → Psystrike (Psychic, 10 PP, 100 power, 100% accuracy, uses foe's Defense stat)
-   * Psych Up (TM 09) → Nasty Plot (Dark, 20 PP, highly raises Sp.Atk) (TM 09 becomes Headbutt; TM 02 becomes Dragon Claw)
-   * Psywave → Extrasensory (Psychic, 20 PP, 80 power, 100% accuracy, 10% chance to flinch)
-   * Razor Wind → Air Slash (Flying, 15 PP, 75 power, 95% accuracy, 30% chance to flinch)
-   * Rolling Kick → Focus Blast (TM 52) (Fighting, 5 PP, 120 power, 70% accuracy, 10% chance to lower Sp.Def) (TM 56 is Focus Blast)
-   * Sharpen → Bulk Up (Fighting, 20 PP, raises Atk and Def)
-   * Skull Bash → Iron Head (tutor) (Steel, 15 PP, 80 power, 100% accuracy, 30% chance to flinch)
-   * Smog → Gunk Shot (tutor) (Poison, 5 PP, 120 power, 80% accuracy, 30% chance to poison)
-   * Snore (TM 13) → Hyper Voice (tutor) (Normal, 10 PP, 90 power, 100% accuracy, avoids Substitute) (TM 13 becomes Icy Wind; TM 16 becomes Light Screen)
-   * Spider Web → Will-O-Wisp (TM 61) (Fire, 15 PP, 85% accuracy, burns)
-   * Spite → Astonish (Ghost, 15 PP, 30 power, 100% accuracy, 30% chance to flinch if first)
-   * Sweet Scent (TM 12) → Shadow Claw (TM 65) (Ghost, 15 PP, 70 power, 100% accuracy, increased critical hit ratio) (TM 12 becomes Rollout; TM 04 becomes Calm Mind; TM 55 is Shadow Claw)
-   * Vice Grip → X-Scissor (TM 81) (Bug, 15 PP, 80 power, 100% accuracy) (TM 60 is X-Scissor)
-   * Withdraw → Aqua Tail (tutor) (Water, 10 PP, 90 power, 90% accuracy)
+   * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
+   * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes

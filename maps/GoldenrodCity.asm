@@ -54,85 +54,67 @@ GoldenrodCity_MapScriptHeader:
 .MoveTutorDone:
 	return
 
-MoveTutor:
+GoldenrodTMVendorScript:
 	faceplayer
 	opentext
-	writetext UnknownText_0x199042
-	yesorno
-	iffalse .Refused
+	writetext GoldenrodTMVendorIntroText
+	waitbutton
+	checkitem COIN_CASE
+	iffalse GoldenrodTMVendor_NoCoinCaseScript
+	writetext GoldenrodTMVendorWhichPrizeText
 	special Special_DisplayCoinCaseBalance
-	writetext UnknownText_0x199090
-	yesorno
-	iffalse .Refused2
-	checkcoins 4000
-	if_equal $2, .NotEnoughMoney
-	writetext UnknownText_0x1990ce
-	loadmenudata .MoveMenuDataHeader
+	loadmenudata GoldenrodTMVendorMenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .Flamethrower
-	if_equal $2, .Thunderbolt
-	if_equal $3, .IceBeam
-	jump .Incompatible
-
-.Flamethrower:
-	writebyte $1
-	writetext UnknownText_0x1991cf
-	special Special_MoveTutor
-	if_equal $0, .TeachMove
-	jump .Incompatible
+	if_equal $1, .Thunderbolt
+	if_equal $2, .IceBeam
+	if_equal $3, .Flamethrower
+	jump GoldenrodTMVendor_CancelPurchaseScript
 
 .Thunderbolt:
-	writebyte $2
-	writetext UnknownText_0x1991cf
-	special Special_MoveTutor
-	if_equal $0, .TeachMove
-	jump .Incompatible
+	checkcoins 4000
+	if_equal $2, GoldenrodTMVendor_NotEnoughCoinsScript
+	itemtotext TM_THUNDERBOLT, $0
+	scall GoldenrodTMVendor_ConfirmPurchaseScript
+	iffalse GoldenrodTMVendor_CancelPurchaseScript
+	giveitem TM_THUNDERBOLT
+	iffalse GoldenrodTMVendor_NoRoomForPrizeScript
+	takecoins 4000
+	jump GoldenrodTMVendor_FinishScript
 
 .IceBeam:
-	writebyte $3
-	writetext UnknownText_0x1991cf
-	special Special_MoveTutor
-	if_equal $0, .TeachMove
-	jump .Incompatible
-
-
-.MoveMenuDataHeader:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 15 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 4 ; items
-	db "Flamethrower@"
-	db "Thunderbolt@"
-	db "Ice Beam@"
-	db "Cancel@"
-
-
-.Refused:
-	writetext UnknownText_0x1990b4
-	waitbutton
-	closetext
-	end
-
-.Refused2:
-	writetext UnknownText_0x199107
-	waitbutton
-	closetext
-	end
-
-.TeachMove:
-	writetext UnknownText_0x19913a
-	buttonsound
+	checkcoins 4000
+	if_equal $2, GoldenrodTMVendor_NotEnoughCoinsScript
+	itemtotext TM_THUNDERBOLT, $0
+	scall GoldenrodTMVendor_ConfirmPurchaseScript
+	iffalse GoldenrodTMVendor_CancelPurchaseScript
+	giveitem TM_THUNDERBOLT
+	iffalse GoldenrodTMVendor_NoRoomForPrizeScript
 	takecoins 4000
+	jump GoldenrodTMVendor_FinishScript
+
+.Flamethrower:
+	checkcoins 4000
+	if_equal $2, GoldenrodTMVendor_NotEnoughCoinsScript
+	itemtotext TM_THUNDERBOLT, $0
+	scall GoldenrodTMVendor_ConfirmPurchaseScript
+	iffalse GoldenrodTMVendor_CancelPurchaseScript
+	giveitem TM_THUNDERBOLT
+	iffalse GoldenrodTMVendor_NoRoomForPrizeScript
+	takecoins 4000
+	jump GoldenrodTMVendor_FinishScript
+
+GoldenrodTMVendor_ConfirmPurchaseScript:
+	writetext GoldenrodTMVendorConfirmPrizeText
+	yesorno
+	end
+
+GoldenrodTMVendor_FinishScript:
 	waitsfx
 	playsound SFX_TRANSACTION
-	special Special_DisplayCoinCaseBalance
-	writetext UnknownText_0x19918b
+	writetext GoldenrodTMVendorHereYouGoText
+	waitbutton
+	writetext GoldenrodTMVendorFarewellText
 	waitbutton
 	closetext
 	checkcode VAR_FACING
@@ -150,17 +132,44 @@ MoveTutor:
 	waitsfx
 	end
 
-.Incompatible:
-	writetext UnknownText_0x1991a4
+GoldenrodTMVendor_NotEnoughCoinsScript:
+	writetext GoldenrodTMVendorNeedMoreCoinsText
 	waitbutton
 	closetext
 	end
 
-.NotEnoughMoney:
-	writetext UnknownText_0x1991ac
+GoldenrodTMVendor_NoRoomForPrizeScript:
+	writetext GoldenrodTMVendorNoMoreRoomText
 	waitbutton
 	closetext
 	end
+
+GoldenrodTMVendor_CancelPurchaseScript:
+	writetext GoldenrodTMVendorQuitText
+	waitbutton
+	closetext
+	end
+
+GoldenrodTMVendor_NoCoinCaseScript:
+	writetext GoldenrodTMVendorNoCoinCaseText
+	waitbutton
+	closetext
+	end
+
+GoldenrodTMVendorMenuData:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "TM24    4000@"
+	db "TM13    4000@"
+	db "TM35    4000@"
+	db "Cancel@"
 
 PokefanMScript_0x1989e3:
 	jumptextfaceplayer UnknownText_0x198a69
@@ -493,66 +502,52 @@ GoldenrodCityFlowerShopSignText:
 	line "Flower Shop"
 	done
 
-UnknownText_0x199042:
-	text "I can teach your"
-	line "#mon amazing"
+GoldenrodTMVendorIntroText:
+	text "I can sell you"
+	line "TMs for amazing"
 
 	para "moves if you'd"
 	line "like."
-
-	para "Should I teach a"
-	line "new move?"
 	done
 
-UnknownText_0x199090:
-	text "It will cost you"
-	line "4000 coins. Okay?"
+GoldenrodTMVendorWhichPrizeText:
+	text "Which TM would"
+	line "you like?"
 	done
 
-UnknownText_0x1990b4:
-	text "Aww… But they're"
-	line "amazing…"
+GoldenrodTMVendorConfirmPrizeText:
+	text_from_ram StringBuffer3
+	text "."
+	line "Is that right?"
 	done
 
-UnknownText_0x1990ce:
+GoldenrodTMVendorHereYouGoText:
 	text "Wahahah! You won't"
 	line "regret it!"
-
-	para "Which move should"
-	line "I teach?"
 	done
 
-UnknownText_0x199107:
-	text "Hm, too bad. I'll"
-	line "have to get some"
-	cont "cash from home…"
+GoldenrodTMVendorFarewellText:
+	text "Farewell, kid!"
 	done
 
-UnknownText_0x19913a:
-	text "If you understand"
-	line "what's so amazing"
-
-	para "about this move,"
-	line "you've made it as"
-	cont "a trainer."
-	done
-
-UnknownText_0x19918b:
-	text "Wahahah!"
-	line "Farewell, kid!"
-	done
-
-UnknownText_0x1991a4:
-	text "B-but…"
-	done
-
-UnknownText_0x1991ac:
+GoldenrodTMVendorNeedMoreCoinsText:
 	text "…You don't have"
 	line "enough coins here…"
 	done
 
-UnknownText_0x1991cf:
-	text ""
+GoldenrodTMVendorNoMoreRoomText:
+	text "…You can't carry"
+	line "any more…"
+	done
+
+GoldenrodTMVendorQuitText:
+	text "Aww… But they're"
+	line "amazing…"
+	done
+
+GoldenrodTMVendorNoCoinCaseText:
+	text "…You don't have"
+	line "a Coin Case…"
 	done
 
 GoldenrodCity_MapEventHeader:
@@ -611,4 +606,4 @@ GoldenrodCity_MapEventHeader:
 	person_event SPRITE_ROCKET, 20, 29, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a32, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 7, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a35, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 10, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a38, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_POKEFAN_M, 22, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
+	person_event SPRITE_POKEFAN_M, 22, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodTMVendorScript, EVENT_GOLDENROD_CITY_MOVE_TUTOR

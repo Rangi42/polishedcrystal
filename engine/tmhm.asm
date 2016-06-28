@@ -52,13 +52,13 @@ TMHMMoves: ; 1167a
 	db CALM_MIND    ; TM04
 	db ROAR         ; TM05
 	db TOXIC        ; TM06
-	db ZAP_CANNON   ; TM07
+	db DRAGONBREATH ; TM07
 	db BULK_UP      ; TM08
 	db HEADBUTT     ; TM09
 	db HIDDEN_POWER ; TM10
 	db SUNNY_DAY    ; TM11
 	db ROLLOUT      ; TM12
-	db ICY_WIND     ; TM13
+	db ICE_BEAM     ; TM13
 	db BLIZZARD     ; TM14
 	db HYPER_BEAM   ; TM15
 	db LIGHT_SCREEN ; TM16
@@ -69,7 +69,7 @@ TMHMMoves: ; 1167a
 	db ICE_PUNCH    ; TM21
 	db SOLARBEAM    ; TM22
 	db IRON_TAIL    ; TM23
-	db DRAGONBREATH ; TM24
+	db THUNDERBOLT  ; TM24
 	db THUNDER      ; TM25
 	db EARTHQUAKE   ; TM26
 	db RETURN       ; TM27
@@ -80,14 +80,14 @@ TMHMMoves: ; 1167a
 	db DOUBLE_TEAM  ; TM32
 	db REFLECT      ; TM33
 	db SWAGGER      ; TM34
-	db SLEEP_TALK   ; TM35
+	db FLAMETHROWER ; TM35
 	db SLUDGE_BOMB  ; TM36
 	db SANDSTORM    ; TM37
 	db FIRE_BLAST   ; TM38
 	db SWIFT        ; TM39
 	db DEFENSE_CURL ; TM40
 	db THUNDERPUNCH ; TM41
-	db DREAM_EATER  ; TM42
+	db ICY_WIND     ; TM42
 	db WILL_O_WISP  ; TM43
 	db REST         ; TM44
 	db ATTRACT      ; TM45
@@ -116,14 +116,14 @@ TMHMMoves: ; 1167a
 	db ROCK_SMASH   ; HM08
 
 ; Move tutor
-	db FLAMETHROWER ; MT01
-	db THUNDERBOLT  ; MT02
-	db ICE_BEAM     ; MT03
-	db AQUA_TAIL    ; MT04
-	db EARTH_POWER  ; MT05
-	db HYPER_VOICE  ; MT06
-	db IRON_HEAD    ; MT07
-	db SEED_BOMB    ; MT08
+	db AQUA_TAIL    ; MT01
+	db DREAM_EATER  ; MT02
+	db EARTH_POWER  ; MT03
+	db HYPER_VOICE  ; MT04
+	db IRON_HEAD    ; MT05
+	db SEED_BOMB    ; MT06
+	db SLEEP_TALK   ; MT07
+	db ZAP_CANNON   ; MT08
 	db ZEN_HEADBUTT ; MT09
 
 	db 0 ; end

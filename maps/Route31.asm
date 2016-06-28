@@ -188,8 +188,8 @@ TrainerBug_catcherWade1:
 Route31MailRecipientScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM43_WILL_O_WISP
-	iftrue .DescribeWillOWisp
+	checkevent EVENT_GAVE_KENYA
+	iftrue .TutorSleepTalk
 	checkevent EVENT_GOT_KENYA
 	iftrue .TryGiveKenya
 	writetext Text_Route31SleepyMan
@@ -210,13 +210,9 @@ Route31MailRecipientScript:
 	writetext Text_Route31ReadingMail
 	buttonsound
 	setevent EVENT_GAVE_KENYA
-	verbosegiveitem TM_WILL_O_WISP
-	iffalse .NoRoomForItems
-	setevent EVENT_GOT_TM43_WILL_O_WISP
-.DescribeWillOWisp:
-	writetext Text_Route31DescribeWillOWisp
+.TutorSleepTalk
+	writetext Text_Route31TutorSleepTalk
 	waitbutton
-.NoRoomForItems:
 	closetext
 	end
 
@@ -348,21 +344,15 @@ Text_Route31ReadingMail:
 	para "I'd like to do"
 	line "something good in"
 	cont "return too!"
-
-	para "I know! I want you"
-	line "to have this!"
 	done
 
-Text_Route31DescribeWillOWisp:
-	text "TM43 is Will-O-"
-	line "Wisp."
+Text_Route31TutorSleepTalk:
+	text "I can teach your"
+	line "#mon to talk"
+	cont "in their sleep!"
 
-	para "It's a wicked move"
-	line "that inflicts a"
-	cont "burn on the enemy."
-
-	para "Ooooh…"
-	line "That's scary…"
+	para "TODO: Move Tutor"
+	line "for Sleep Talk"
 	done
 
 Text_Route31WrongMail:
