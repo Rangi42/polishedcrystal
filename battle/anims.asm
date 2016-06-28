@@ -89,7 +89,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Thunder
 	dw BattleAnim_RockThrow
 	dw BattleAnim_Earthquake
-	dw BattleAnim_Fissure
+	dw BattleAnim_Avalanche
 	dw BattleAnim_Dig
 	dw BattleAnim_Toxic
 	dw BattleAnim_Confusion
@@ -1966,7 +1966,8 @@ BattleAnim_Earthquake: ; ca08a
 	anim_ret
 ; ca098
 
-BattleAnim_Fissure: ; ca098
+BattleAnim_Avalanche:
+; TODO: erase Fissure animation, design Avalanche animation
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
 	anim_bgeffect ANIM_BG_1F, $60, $4, $0
 .loop
@@ -1974,7 +1975,6 @@ BattleAnim_Fissure: ; ca098
 	anim_wait 24
 	anim_loop 4, .loop
 	anim_ret
-; ca0ab
 
 BattleAnim_Growl: ; ca0ab
 	anim_1gfx ANIM_GFX_NOISE

@@ -1,6 +1,7 @@
 NormalHit:
 Aeroblast:
 AquaTail:
+Avalanche:
 BulletPunch:
 Crabhammer:
 CrossChop:
@@ -593,7 +594,6 @@ Psywave:
 OHKOHit:
 Guillotine:
 HornDrill:
-Fissure:
 	checkobedience
 	usedmovetext
 	doturn

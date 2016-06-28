@@ -88,7 +88,7 @@
 	dw ThunderDescription
 	dw RockThrowDescription
 	dw EarthquakeDescription
-	dw FissureDescription
+	dw AvalancheDescription
 	dw DigDescription
 	dw ToxicDescription
 	dw ConfusionDescription
@@ -704,9 +704,9 @@ EarthquakeDescription:
 	db   "Tough but useless"
 	next "vs. flying foes.@"
 
-FissureDescription:
-	db   "---"
-	next "---@"
+AvalancheDescription:
+	db   "Damage doubles if"
+	next "user is hit first.@"
 
 ToxicDescription:
 	db   "A Poison move with"

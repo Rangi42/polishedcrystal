@@ -287,17 +287,14 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Drain Kiss drains 75% HP
    * Double-Edge does 33% recoil damage
    * Flare Blitz does 33% recoil damage
+   * Avalanche is low priority and doubles damage if user is hit first
    * Low Kick's power is based on weight
-   * Beat Up works differently in Gen V
-   * Ghost-type Pokémon cannot be trapped
-   * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
-   * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
-   * Grass-type Pokémon are immune to PoisonPowder, Sleep Powder, Spore, and Stun Spore
+   * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
    * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Gameplay elements from future (or past) generations:
    * Restore [unused memory game](http://iimarck.us/i/memory/)
@@ -314,11 +311,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
-   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-   * Fix Pokémon icons used as overworld sprites changing after viewing the party menu (using SPRITEMOVEDATA_ITEM_TREE fixes this but freezes them)
-   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
-   * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
+   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
+   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
+   * Fix delay before last text box when Wonder Trading
 * Increased difficulty:
    * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 * Aesthetic updates:
@@ -327,7 +323,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Improve certain shiny palettes (blue Dragonite, silver Scizor, blue Espeon, black Ursaring, dark green Forretress)
    * Show Pokémon portraits when using field moves
-   * Better Substitute sprite
+   * Better Substitute sprites
    * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
    * Add Young Couple and Double Team trainer classes

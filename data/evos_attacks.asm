@@ -699,7 +699,7 @@ DiglettEvosAttacks:
 	db 34, DIG
 	db 37, SLASH
 	db 40, EARTHQUAKE
-	db 45, FISSURE
+	db 45, ANCIENTPOWER
 	db 0 ; no more level-up moves
 
 DugtrioEvosAttacks:
@@ -715,7 +715,7 @@ DugtrioEvosAttacks:
 	db 40, DIG
 	db 45, SLASH
 	db 50, EARTHQUAKE
-	db 57, FISSURE
+	db 57, ANCIENTPOWER
 	db 0 ; no more level-up moves
 
 MeowthEvosAttacks:
@@ -1765,9 +1765,10 @@ JynxEvosAttacks:
 	db 21, ICE_PUNCH
 	db 25, NIGHTMARE
 	db 35, MEAN_LOOK
-	db 41, BODY_SLAM
-	db 51, PERISH_SONG
-	db 57, BLIZZARD
+	db 39, AVALANCHE
+	db 44, BODY_SLAM
+	db 55, PERISH_SONG
+	db 60, BLIZZARD
 	db 0 ; no more level-up moves
 
 ElectabuzzEvosAttacks:
@@ -3357,15 +3358,16 @@ SmoochumEvosAttacks:
 	db EVOLVE_LEVEL, 30, JYNX
 	db 0 ; no more evolutions
 	db 1, POUND
-	db 1, LICK
-	db 9, SWEET_KISS
-	db 13, POWDER_SNOW
-	db 21, CONFUSION
+	db 5, LICK
+	db 8, SWEET_KISS
+	db 15, POWDER_SNOW
+	db 18, CONFUSION
 	db 25, SING
-	db 33, MEAN_LOOK
-	db 37, PSYCHIC_M
+	db 28, MEAN_LOOK
+	db 35, AVALANCHE
+	db 38, PSYCHIC_M
 	db 45, PERISH_SONG
-	db 49, BLIZZARD
+	db 48, BLIZZARD
 	db 0 ; no more level-up moves
 
 ElekidEvosAttacks:

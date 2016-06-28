@@ -1,13 +1,16 @@
 	const_def
 	const NO_ITEM        ; $00
+
 	const POKE_BALL      ; $01
 	const GREAT_BALL     ; $02
 	const ULTRA_BALL     ; $03
 	const MASTER_BALL    ; $04
+
 	const POTION         ; $05
 	const SUPER_POTION   ; $06
 	const HYPER_POTION   ; $07
 	const MAX_POTION     ; $08
+
 	const ANTIDOTE       ; $09
 	const BURN_HEAL      ; $0A
 	const PARLYZ_HEAL    ; $0B
@@ -15,12 +18,15 @@
 	const ICE_HEAL       ; $0D
 	const FULL_HEAL      ; $0E
 	const FULL_RESTORE   ; $0F
+
 	const REVIVE         ; $10
 	const MAX_REVIVE     ; $11
+
 	const ETHER          ; $12
 	const MAX_ETHER      ; $13
 	const ELIXER         ; $14
 	const MAX_ELIXER     ; $15
+
 	const X_ATTACK       ; $16
 	const X_DEFEND       ; $17
 	const X_SPEED        ; $18
@@ -29,6 +35,7 @@
 	const DIRE_HIT       ; $1B
 	const GUARD_SPEC     ; $1C
 	const X_ACCURACY     ; $1D
+
 	const HP_UP          ; $1E
 	const PROTEIN        ; $1F
 	const IRON           ; $20
@@ -36,21 +43,25 @@
 	const CALCIUM        ; $22
 	const RARE_CANDY     ; $23
 	const PP_UP          ; $24
+
 	const FRESH_WATER    ; $25
 	const SODA_POP       ; $26
 	const LEMONADE       ; $27
 	const MOOMOO_MILK    ; $28
 	const RAGECANDYBAR   ; $29
+
 	const SACRED_ASH     ; $2A
 	const ENERGYPOWDER   ; $2B
 	const ENERGY_ROOT    ; $2C
 	const HEAL_POWDER    ; $2D
 	const REVIVAL_HERB   ; $2E
+
 	const REPEL          ; $2F
 	const SUPER_REPEL    ; $30
 	const MAX_REPEL      ; $31
 	const ESCAPE_ROPE    ; $32
 	const POKE_DOLL      ; $33
+
 	const LEAF_STONE     ; $34
 	const FIRE_STONE     ; $35
 	const WATER_STONE    ; $36
@@ -60,6 +71,7 @@
 	const DUSK_STONE     ; $3A
 	const SHINY_STONE    ; $3B
 	const EVERSTONE      ; $3C
+
 	const BICYCLE        ; $3D
 	const OLD_ROD        ; $3E
 	const GOOD_ROD       ; $3F
@@ -84,6 +96,7 @@
 	const BLUE_CARD      ; $52
 	const MYSTICTICKET   ; $53
 	const OLD_SEA_MAP    ; $54
+
 	const BERRY          ; $55
 	const GOLD_BERRY     ; $56
 	const PSNCUREBERRY   ; $57
@@ -94,6 +107,7 @@
 	const BITTER_BERRY   ; $5C
 	const MIRACLEBERRY   ; $5D
 	const MYSTERYBERRY   ; $5E
+
 	const RED_APRICORN   ; $5F
 	const BLU_APRICORN   ; $60
 	const YLW_APRICORN   ; $61
@@ -101,6 +115,7 @@
 	const WHT_APRICORN   ; $63
 	const BLK_APRICORN   ; $64
 	const PNK_APRICORN   ; $65
+
 	const HEAVY_BALL     ; $66
 	const LEVEL_BALL     ; $67
 	const LURE_BALL      ; $68
@@ -108,6 +123,7 @@
 	const FRIEND_BALL    ; $6A
 	const MOON_BALL      ; $6B
 	const LOVE_BALL      ; $6C
+
 	const SILK_SCARF     ; $6D
 	const BLACK_BELT     ; $6E
 	const SHARP_BEAK     ; $6F
@@ -126,6 +142,7 @@
 	const DRAGON_FANG    ; $7C
 	const BLACKGLASSES   ; $7D
 	const PINK_BOW       ; $7E
+
 	const BRIGHTPOWDER   ; $7F
 	const SCOPE_LENS     ; $80
 	const QUICK_CLAW     ; $81
@@ -149,6 +166,7 @@
 	const DUBIOUS_DISC   ; $93
 	const RAZOR_FANG     ; $94
 	const RAZOR_CLAW     ; $95
+
 	const NUGGET         ; $96
 	const TINYMUSHROOM   ; $97
 	const BIG_MUSHROOM   ; $98
@@ -159,14 +177,17 @@
 	const SILVER_LEAF    ; $9D
 	const GOLD_LEAF      ; $9E
 	const SLOWPOKETAIL   ; $9F
+
 	const PARK_BALL      ; $AA
 	const REPEAT_BALL    ; $AB
 	const TIMER_BALL     ; $AC
 	const QUICK_BALL     ; $AD
 	const DUSK_BALL      ; $AE
+
 	const HELIX_FOSSIL   ; $AF
 	const DOME_FOSSIL    ; $B0
 	const OLD_AMBER      ; $B1
+
 	const FLOWER_MAIL    ; $A0
 	const SURF_MAIL      ; $A1
 	const LITEBLUEMAIL   ; $A2
@@ -229,7 +250,7 @@
 	add_tm FURY_CUTTER   ; $E2
 	add_tm DAZZLINGLEAM  ; $E3
 	add_tm STONE_EDGE    ; $E4
-	add_tm ROCK_SLIDE    ; $E5 ; TODO: AVALANCHE
+	add_tm AVALANCHE     ; $E5
 	add_tm WILD_CHARGE   ; $E6
 	add_tm POISON_JAB    ; $E7
 	add_tm SHADOW_CLAW   ; $E8
@@ -253,13 +274,12 @@ NUM_HMS = const_value - HM01
 	add_mt FLAMETHROWER  ; $F6
 	add_mt THUNDERBOLT   ; $F7
 	add_mt ICE_BEAM      ; $F8
-
-	const ITEM_MT04      ; $F9
-	const ITEM_MT05      ; $FA
-	const ITEM_MT06      ; $FB
-	const ITEM_MT07      ; $FC
-	const ITEM_MT08      ; $FD
-	const ITEM_MT09      ; $FE
+	add_mt AQUA_TAIL     ; $F9
+	add_mt EARTH_POWER   ; $FA
+	add_mt HYPER_VOICE   ; $FB
+	add_mt IRON_HEAD     ; $FC
+	add_mt SEED_BOMB     ; $FD
+	add_mt ZEN_HEADBUTT  ; $FE
 
 ITEM_FROM_MEM EQU $ff
 
