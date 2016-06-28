@@ -1058,7 +1058,7 @@ AI_Smart_Ohko: ; 38a60
 
 
 AI_Smart_Bind: ; 38a71
-; Bind, Wrap, Fire Spin, Clamp
+; Wrap, Fire Spin, Whirlpool
 
 ; 50% chance to discourage this move if the player is already trapped.
 	ld a, [wPlayerWrapCount]
@@ -2538,11 +2538,12 @@ RainDanceMoves: ; 390e7
 	db BUBBLEBEAM
 	db THUNDER
 	db WATERFALL
-	db CLAMP
+	db RAZOR_SHELL
 	db BUBBLE
 	db CRABHAMMER
 	db OCTAZOOKA
 	db WHIRLPOOL
+	db AQUA_TAIL
 	db $ff
 ; 390f3
 
@@ -2631,6 +2632,7 @@ SunnyDayMoves: ; 39134
 	db FIRE_SPIN
 	db FIRE_BLAST
 	db SACRED_FIRE
+	db FLARE_BLITZ
 	db MORNING_SUN
 	db SYNTHESIS
 	db $ff

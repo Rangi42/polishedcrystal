@@ -126,7 +126,7 @@
 	dw EarthPowerDescription
 	dw FireBlastDescription
 	dw WaterfallDescription
-	dw ClampDescription
+	dw RazorShellDescription
 	dw SwiftDescription
 	dw IronHeadDescription
 	dw SpikeCannonDescription
@@ -280,7 +280,6 @@ DisarmVoiceDescription:
 	next "never misses.@"
 
 FireSpinDescription:
-ClampDescription:
 WhirlpoolDescription:
 WrapDescription:
 	db   "Traps the foe for"
@@ -302,6 +301,7 @@ PlayRoughDescription:
 AcidDescription:
 IronTailDescription:
 RockSmashDescription:
+RazorShellDescription:
 	db   "An attack that may"
 	next "lower Defense.@"
 

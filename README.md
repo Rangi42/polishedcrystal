@@ -112,6 +112,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Bind → DazzlinGleam (TM 99) (Fairy, 10 PP, 80 power, 100% accuracy) (TM 43 becomes Will-O-Wisp; TM 50 becomes DazzlinGleam)
    * Bone Club → Earth Power (tutor) (Ground, 10 PP, 90 power, 100% accuracy, 10% chance to lower Sp.Def)
    * Bone Rush → Wild Charge (TM 93) (Electric, 15 PP, 90 power, 100% accuracy, 25% recoil damage) (TM 53 is Wild Charge)
+   * Clamp → Razor Shell (Water, 10 PP, 75 power, 95% accuracy, 50% chance to lower Defense)
    * Constrict → Fairy Wind (Fairy, 30 PP, 40 power, 100% accuracy)
    * Cotton Spore → Seed Bomb (tutor) (Grass, 15 PP, 80 power, 100% accuracy)
    * Detect (TM 43) → Power Gem (Rock, 20 PP, 80 power, 100% accuracy) (TM 43 becomes DazzlinGleam)

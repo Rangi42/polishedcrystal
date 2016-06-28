@@ -1282,7 +1282,7 @@ ShellderEvosAttacks:
 	db 17, AURORA_BEAM
 	db 25, PROTECT
 	db 33, LEER
-	db 41, CLAMP
+	db 41, RAZOR_SHELL
 	db 49, ICE_BEAM
 	db 0 ; no more level-up moves
 

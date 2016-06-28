@@ -127,7 +127,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_EarthPower
 	dw BattleAnim_FireBlast
 	dw BattleAnim_Waterfall
-	dw BattleAnim_Clamp
+	dw BattleAnim_RazorShell
 	dw BattleAnim_Swift
 	dw BattleAnim_IronHead
 	dw BattleAnim_SpikeCannon
@@ -1670,7 +1670,8 @@ BattleAnim_Slash: ; c9dfc
 	anim_ret
 ; c9e0d
 
-BattleAnim_Clamp: ; c9e0d
+BattleAnim_RazorShell:
+; TODO: erase Clamp animation, design Razor Shell animation
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT
 	anim_obj ANIM_OBJ_35, -15, 0,   7, 0, $a0
 	anim_obj ANIM_OBJ_35, -15, 0,   7, 0, $20
@@ -1682,7 +1683,6 @@ BattleAnim_Clamp: ; c9e0d
 	anim_obj ANIM_OBJ_01,  16, 0,   8, 0, $18
 	anim_wait 16
 	anim_ret
-; c9e2e
 
 BattleAnim_Bite: ; c9e2e
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT

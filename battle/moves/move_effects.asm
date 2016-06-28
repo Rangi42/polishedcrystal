@@ -425,6 +425,7 @@ DefenseDownHit:
 Acid:
 IronTail:
 RockSmash:
+RazorShell:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1155,7 +1156,6 @@ Wrap:
 Bind:
 FireSpin:
 Whirlpool:
-Clamp:
 	checkobedience
 	usedmovetext
 	doturn

@@ -128,7 +128,7 @@
 	const EARTH_POWER  ; $7d
 	const FIRE_BLAST   ; $7e
 	const WATERFALL    ; $7f
-	const CLAMP        ; $80
+	const RAZOR_SHELL  ; $80
 	const SWIFT        ; $81
 	const IRON_HEAD    ; $82
 	const SPIKE_CANNON ; $83

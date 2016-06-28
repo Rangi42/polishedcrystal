@@ -528,13 +528,6 @@ WrappedByText: ; 0x80e44
 	prompt
 ; 0x80e59
 
-ClampedByText: ; 0x80e59
-	text "<TARGET>"
-	line "was clamped by"
-	cont "<USER>!"
-	prompt
-; 0x80e6e
-
 StoringEnergyText: ; 0x80e6e
 	text "<USER>"
 	line "is storing energy!"
