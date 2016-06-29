@@ -71,3 +71,21 @@ SafariZoneHubRestHouse_BlockData:
 SafariZoneEastRestHouse_BlockData:
 SafariZoneNorthRestHouse_BlockData:
 	INCBIN "maps/SafariZoneRestHouse.blk"
+
+QuietCave1F_BlockData:
+	INCBIN "maps/QuietCave1F.blk"
+
+QuietCaveB1F_BlockData:
+	INCBIN "maps/QuietCaveB1F.blk"
+
+QuietCaveB2F_BlockData:
+	INCBIN "maps/QuietCaveB2F.blk"
+
+QuietCaveB3F_BlockData:
+	INCBIN "maps/QuietCaveB3F.blk"
+
+CeladonChiefHouse_BlockData:
+	INCBIN "maps/CeladonChiefHouse.blk"
+
+CeladonHotel_BlockData:
+	INCBIN "maps/CeladonHotel.blk"

@@ -94,4 +94,3 @@ BattleCommand_Curse: ; 37588
 	call AnimateFailedMove
 	ld hl, WontRiseAnymoreText
 	jp StdBattleTextBox
-; 37618

@@ -376,13 +376,13 @@ IlexForestCharcoalMasterScript:
 IlexForestHeadbuttGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM02_HEADBUTT
+	checkevent EVENT_GOT_TM09_HEADBUTT
 	iftrue .AlreadyGotHeadbutt
 	writetext Text_HeadbuttIntro
 	buttonsound
 	verbosegiveitem TM_HEADBUTT
 	iffalse .BagFull
-	setevent EVENT_GOT_TM02_HEADBUTT
+	setevent EVENT_GOT_TM09_HEADBUTT
 .AlreadyGotHeadbutt:
 	writetext Text_HeadbuttOutro
 	waitbutton

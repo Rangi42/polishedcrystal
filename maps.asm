@@ -468,7 +468,6 @@ INCLUDE "maps/VermilionCity.asm"
 INCLUDE "maps/Route9.asm"
 INCLUDE "maps/CinnabarPokeCenter1F.asm"
 INCLUDE "maps/Route19FuchsiaGate.asm"
-INCLUDE "maps/SeafoamGym.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
@@ -499,8 +498,6 @@ INCLUDE "maps/Route28FamousSpeechHouse.asm"
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
-INCLUDE "maps/PewterMuseumOfScience1F.asm"
-INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/ViridianForest.asm"
 INCLUDE "maps/ViridianForestViridianGate.asm"
 INCLUDE "maps/ViridianForestPewterGate.asm"
@@ -532,6 +529,15 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
+INCLUDE "maps/PewterMuseumOfScience1F.asm"
+INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/BellchimeTrail.asm"
+INCLUDE "maps/SeafoamGym.asm"
+INCLUDE "maps/QuietCave1F.asm"
+INCLUDE "maps/QuietCaveB1F.asm"
+INCLUDE "maps/QuietCaveB2F.asm"
+INCLUDE "maps/QuietCaveB3F.asm"
+INCLUDE "maps/CeladonChiefHouse.asm"
+INCLUDE "maps/CeladonHotel.asm"

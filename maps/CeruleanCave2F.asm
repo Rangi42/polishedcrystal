@@ -19,6 +19,9 @@ CeruleanCave2FPPUp:
 CeruleanCave2FUltraBall:
 	itemball ULTRA_BALL
 
+CeruleanCave2FDuskStone:
+	itemball DUSK_STONE
+
 CeruleanCave2FHiddenProtein:
 	dwb EVENT_CERULEAN_CAVE_2F_HIDDEN_PROTEIN, PROTEIN
 
@@ -48,10 +51,11 @@ CeruleanCave2F_MapEventHeader:
 	db 3
 	signpost 19, 17, SIGNPOST_ITEM, CeruleanCave2FHiddenProtein
 	signpost 4, 16, SIGNPOST_ITEM, CeruleanCave2FHiddenNugget
-	signpost 17, 7, SIGNPOST_ITEM, CeruleanCave2FHiddenHyperPotion
+	signpost 17, 13, SIGNPOST_ITEM, CeruleanCave2FHiddenHyperPotion
 
 .PersonEvents:
-	db 3
+	db 4
 	person_event SPRITE_POKE_BALL, 11, 31, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave2FFullRestore, EVENT_CERULEAN_CAVE_2F_FULL_RESTORE
 	person_event SPRITE_POKE_BALL, 17, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave2FPPUp, EVENT_CERULEAN_CAVE_2F_PP_UP
 	person_event SPRITE_POKE_BALL, 15, 27, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave2FUltraBall, EVENT_CERULEAN_CAVE_2F_ULTRA_BALL
+	person_event SPRITE_POKE_BALL, 7, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave2FDuskStone, EVENT_CERULEAN_CAVE_2F_DUSK_STONE

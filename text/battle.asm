@@ -509,13 +509,6 @@ BattleText_UserWasReleasedFromStringBuffer1: ; 0x80df5
 	prompt
 ; 0x80e11
 
-UsedBindText: ; 0x80e11
-	text "<TARGET>"
-	line "was squeezed by"
-	cont "<USER>!"
-	prompt
-; 0x80e24
-
 WhirlpoolTrapText: ; 0x80e24
 	text "<TARGET>"
 	line "was trapped!"
@@ -534,13 +527,6 @@ WrappedByText: ; 0x80e44
 	cont "<USER>!"
 	prompt
 ; 0x80e59
-
-ClampedByText: ; 0x80e59
-	text "<TARGET>"
-	line "was clamped by"
-	cont "<USER>!"
-	prompt
-; 0x80e6e
 
 StoringEnergyText: ; 0x80e6e
 	text "<USER>"

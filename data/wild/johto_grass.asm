@@ -1755,4 +1755,112 @@
 	db 10, CYNDAQUIL
 	db 10, CYNDAQUIL
 
+	map QUIET_CAVE_1F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, CUBONE
+	db 23, ZUBAT
+	db 23, MACHOP
+	db 24, MUNCHLAX
+	db 25, GOLBAT
+	db 23, NATU
+	db 23, GOLBAT
+	; day
+	db 22, CUBONE
+	db 23, ZUBAT
+	db 23, MACHOP
+	db 24, MUNCHLAX
+	db 25, GOLBAT
+	db 23, NATU
+	db 23, GOLBAT
+	; nite
+	db 22, CUBONE
+	db 23, ZUBAT
+	db 23, GASTLY
+	db 24, ZUBAT
+	db 25, GOLBAT
+	db 23, NATU
+	db 23, GOLBAT
+
+	map QUIET_CAVE_B1F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 23, CUBONE
+	db 24, ZUBAT
+	db 24, GOLBAT
+	db 24, MUNCHLAX
+	db 25, MACHOP
+	db 26, MAROWAK
+	db 23, GOLBAT
+	; day
+	db 23, CUBONE
+	db 24, ZUBAT
+	db 24, GOLBAT
+	db 24, MUNCHLAX
+	db 25, MACHOP
+	db 26, MAROWAK
+	db 23, GOLBAT
+	; nite
+	db 23, CUBONE
+	db 24, ZUBAT
+	db 24, GASTLY
+	db 24, GOLBAT
+	db 25, HAUNTER
+	db 26, MAROWAK
+	db 23, GOLBAT
+
+	map QUIET_CAVE_B2F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 24, CUBONE
+	db 25, ZUBAT
+	db 25, GOLBAT
+	db 26, MAROWAK
+	db 27, ONIX
+	db 15, LARVITAR
+	db 15, LARVITAR
+	; day
+	db 24, CUBONE
+	db 25, ZUBAT
+	db 25, GOLBAT
+	db 26, MAROWAK
+	db 27, ONIX
+	db 15, LARVITAR
+	db 15, LARVITAR
+	; nite
+	db 24, CUBONE
+	db 25, ZUBAT
+	db 25, GOLBAT
+	db 24, GASTLY
+	db 25, HAUNTER
+	db 26, MAROWAK
+	db 27, ONIX
+
+	map QUIET_CAVE_B3F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 25, CUBONE
+	db 26, ZUBAT
+	db 26, GOLBAT
+	db 27, MAROWAK
+	db 28, STEELIX
+	db 15, LARVITAR
+	db 15, LARVITAR
+	; day
+	db 25, CUBONE
+	db 26, ZUBAT
+	db 26, GOLBAT
+	db 27, MAROWAK
+	db 28, STEELIX
+	db 15, LARVITAR
+	db 15, LARVITAR
+	; nite
+	db 25, CUBONE
+	db 26, ZUBAT
+	db 26, GOLBAT
+	db 25, GASTLY
+	db 26, HAUNTER
+	db 27, MAROWAK
+	db 28, STEELIX
+
 	db -1 ; end

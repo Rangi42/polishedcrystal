@@ -1,7 +1,7 @@
 DoPoisonStep:: ; 505da
 	ld a, [PartyCount]
 	and a
-	jr z, .no_faint
+	jr z, .no_recovery
 
 	xor a
 	ld c, 7
@@ -37,22 +37,22 @@ DoPoisonStep:: ; 505da
 
 	ld a, [EngineBuffer1]
 	and %10
-	jr nz, .someone_has_fainted
+	jr nz, .someone_has_recovered
 	ld a, [EngineBuffer1]
 	and %01
-	jr z, .no_faint
+	jr z, .no_recovery
 	call .PlayPoisonSFX
 	xor a
 	ret
 
-.someone_has_fainted
-	ld a, BANK(.Script_MonFaintedToPoison)
-	ld hl, .Script_MonFaintedToPoison
+.someone_has_recovered
+	ld a, BANK(.Script_MonRecoveredFromPoison)
+	ld hl, .Script_MonRecoveredFromPoison
 	call CallScript
 	scf
 	ret
 
-.no_faint
+.no_recovery
 	xor a
 	ret
 ; 5062e
@@ -65,7 +65,7 @@ DoPoisonStep:: ; 505da
 	and 1 << PSN
 	ret z
 
-; check if mon is already fainted, return if so
+; check if mon is fainted, return if so
 	ld a, MON_HP
 	call GetPartyParamLocation
 	ld a, [hli]
@@ -74,26 +74,29 @@ DoPoisonStep:: ; 505da
 	or c
 	ret z
 
+; check if 1 HP
+	ld a, b
+	or a
+	jr nz, .DoPoisonDamage
+	ld a, c
+	cp 1
+	jr nz, .DoPoisonDamage
+
+; if 1 HP, heal poison
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	ld [hl], 0
+; set carry and return %10
+	ld c, %10
+	scf
+	ret
+
+.DoPoisonDamage
 ; do 1 HP damage
 	dec bc
 	ld [hl], c
 	dec hl
 	ld [hl], b
-
-; check if mon has fainted as a result of poison damage
-	ld a, b
-	or c
-	jr nz, .not_fainted
-
-; the mon has fainted, reset its status, set carry, and return %10
-	ld a, MON_STATUS
-	call GetPartyParamLocation
-	ld [hl], 0
-	ld c, %10
-	scf
-	ret
-
-.not_fainted
 ; set carry and return %01
 	ld c, %01
 	scf
@@ -109,7 +112,7 @@ DoPoisonStep:: ; 505da
 	ret
 ; 50669
 
-.Script_MonFaintedToPoison: ; 50669
+.Script_MonRecoveredFromPoison: ; 50669
 	callasm .PlayPoisonSFX
 	opentext
 	callasm .CheckWhitedOut
@@ -134,7 +137,7 @@ DoPoisonStep:: ; 505da
 	ld c, HAPPINESS_POISONFAINT
 	callba ChangeHappiness
 	callba GetPartyNick
-	ld hl, .PoisonFaintText
+	ld hl, .PoisonRecoveryText
 	call PrintText
 
 .mon_not_fainted
@@ -151,12 +154,7 @@ DoPoisonStep:: ; 505da
 	ret
 ; 506b2
 
-.PoisonFaintText: ; 506b2
+.PoisonRecoveryText: ; 506b2
 	text_jump UnknownText_0x1c0acc
 	db "@"
 ; 506b7
-
-.PoisonWhiteOutText: ; 506b7
-	text_jump UnknownText_0x1c0ada
-	db "@"
-; 506bc

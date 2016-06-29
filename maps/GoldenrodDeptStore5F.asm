@@ -30,34 +30,16 @@ GoldenrodDeptStore5F_MapScriptHeader:
 ClerkScript_0x5609c:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM02_HEADBUTT
+	checkevent EVENT_GOT_TM09_HEADBUTT
 	iftrue .headbutt
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .onlyrocksmash
-	jump .neither
 
-.headbutt
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
-	iftrue .both
-	jump .onlyheadbutt
-
-.neither
+.noheadbutt
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_1
 	closetext
 	end
 
-.onlyheadbutt
+.headbutt
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_2
-	closetext
-	end
-
-.onlyrocksmash
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_3
-	closetext
-	end
-
-.both
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_4
 	closetext
 	end
 
@@ -72,8 +54,7 @@ ReceptionistScript_0x560ce:
 	writetext UnknownText_0x56143
 	buttonsound
 	if_greater_than $95, .VeryHappy
-	if_greater_than $31, .SomewhatHappy
-	jump .NotVeryHappy
+	jump .SomewhatHappy
 
 .VeryHappy:
 	writetext UnknownText_0x5615a
@@ -87,15 +68,6 @@ ReceptionistScript_0x560ce:
 .SomewhatHappy:
 	writetext UnknownText_0x561a6
 	waitbutton
-	closetext
-	end
-
-.NotVeryHappy:
-	writetext UnknownText_0x561d8
-	buttonsound
-	verbosegiveitem TM_FRUSTRATION
-	iffalse .Done
-	setflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
 	closetext
 	end
 
@@ -162,12 +134,6 @@ UnknownText_0x561a6:
 
 	para "You should teach"
 	line "it good TM moves."
-	done
-
-UnknownText_0x561d8:
-	text "It looks evil. How"
-	line "about this TM for"
-	cont "it?"
 	done
 
 UnknownText_0x56202:

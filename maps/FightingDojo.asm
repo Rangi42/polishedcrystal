@@ -312,66 +312,82 @@ RematchClairScript:
 
 BrockText_Greeting:
 	text "Brock"
+	line "TODO"
 	done
 
 MistyText_Greeting:
 	text "Misty"
+	line "TODO"
 	done
 
 SurgeText_Greeting:
 	text "Surge"
+	line "TODO"
 	done
 
 ErikaText_Greeting:
 	text "Erika"
+	line "TODO"
 	done
 
 JanineText_Greeting:
 	text "Janine"
+	line "TODO"
 	done
 
 SabrinaText_Greeting:
 	text "Sabrina"
+	line "TODO"
 	done
 
 BlaineText_Greeting:
 	text "Blaine"
+	line "TODO"
 	done
 
 BlueText_Greeting:
 	text "Blue"
+	line "TODO"
 	done
 
 FalknerText_Greeting:
 	text "Falkner"
+	line "TODO"
 	done
 
 BugsyText_Greeting:
 	text "Bugsy"
+	line "TODO"
 	done
 
 WhitneyText_Greeting:
 	text "Whitney"
+	line "TODO"
 	done
 
 MortyText_Greeting:
 	text "Morty"
+	line "TODO"
 	done
 
 ChuckText_Greeting:
 	text "Chuck"
+	line "TODO"
 	done
 
 JasmineText_Greeting:
 	text "Jasmine"
+	line "TODO"
 	done
 
 PryceText_Greeting:
 	text "Pryce"
+	line "TODO"
 	done
 
 ClairText_Greeting:
 	text "Clair"
+	line "TODO"
 	done
 
 BrockText_WinLoss:
@@ -391,6 +407,7 @@ JasmineText_WinLoss:
 PryceText_WinLoss:
 ClairText_WinLoss:
 	text "Good battle!"
+	line "TODO"
 	done
 
 BrockText_Done:
@@ -410,6 +427,7 @@ JasmineText_Done:
 PryceText_Done:
 ClairText_Done:
 	text "I'm done for today."
+	line "TODO"
 	done
 
 FightingDojo_MapEventHeader:

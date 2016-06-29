@@ -721,7 +721,6 @@ PokemonActionSubmenu: ; 12a88
 	dbw MONMENU_HEADBUTT,   MonMenu_Headbutt ; Headbutt
 	dbw MONMENU_WATERFALL,  MonMenu_Waterfall ; Waterfall
 	dbw MONMENU_ROCKSMASH,  MonMenu_RockSmash ; RockSmash
-	dbw MONMENU_SWEETSCENT, MonMenu_SweetScent ; SweetScent
 	dbw MONMENU_STATS,      OpenPartyStats
 	dbw MONMENU_SWITCH,     SwitchPartyMons
 	dbw MONMENU_ITEM,       GiveTakePartyMonItem
@@ -1443,13 +1442,6 @@ MonMenu_RockSmash: ; 12f3b
 	ld a, $3
 	ret
 ; 12f50
-
-MonMenu_SweetScent: ; 12f50
-	callba SweetScentFromMenu
-	ld b, $4
-	ld a, $2
-	ret
-; 12f5b
 
 ChooseMoveToDelete: ; 12f5b
 	ld hl, Options

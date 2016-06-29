@@ -309,7 +309,7 @@ BattleTowerMons1:
 
 	db ESPEON
 	db LEFTOVERS
-	db MUD_SLAP, PSYCHIC_M, PSYCH_UP, TOXIC
+	db MUD_SLAP, PSYCHIC_M, CALM_MIND, TOXIC
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -336,7 +336,7 @@ BattleTowerMons1:
 
 	db UMBREON
 	db GOLD_BERRY
-	db SHADOW_BALL, IRON_TAIL, PSYCH_UP, TOXIC
+	db SHADOW_BALL, IRON_TAIL, PURSUIT, TOXIC
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -660,7 +660,7 @@ BattleTowerMons1:
 
 	db SNORLAX
 	db MIRACLEBERRY
-	db HEADBUTT, PROTECT, SNORE, SURF
+	db HEADBUTT, PROTECT, BODY_SLAM, SURF
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -795,7 +795,7 @@ BattleTowerMons1:
 
 	db MR__MIME
 	db QUICK_CLAW
-	db TOXIC, PSYCH_UP, FIRE_PUNCH, HEADBUTT
+	db TOXIC, PSYCHIC, FIRE_PUNCH, HEADBUTT
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -853,7 +853,7 @@ BattleTowerMons2:
 
 	db STARMIE
 	db GOLD_BERRY
-	db RECOVER, PSYCHIC_M, SURF, PSYCH_UP
+	db RECOVER, PSYCHIC_M, SURF, THUNDERBOLT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -933,8 +933,8 @@ BattleTowerMons2:
 
 
 	db ALAKAZAM
-	db BERRY_JUICE
-	db PSYCHIC_M, PSYCH_UP, TOXIC, THUNDERPUNCH
+	db GOLD_BERRY
+	db PSYCHIC_M, CALM_MIND, TOXIC, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1177,7 +1177,7 @@ BattleTowerMons2:
 
 	db HITMONCHAN
 	db GOLD_BERRY
-	db THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MEGA_PUNCH
+	db THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MACH_PUNCH
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1312,7 +1312,7 @@ BattleTowerMons2:
 
 	db WIGGLYTUFF
 	db SILK_SCARF
-	db PSYCHIC_M, SWAGGER, PSYCH_UP, HEADBUTT
+	db PSYCHIC_M, SWAGGER, PLAY_ROUGH, HEADBUTT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1366,7 +1366,7 @@ BattleTowerMons2:
 
 	db QUAGSIRE
 	db QUICK_CLAW
-	db AMNESIA, EARTHQUAKE, SURF, RAIN_DANCE
+	db CALM_MIND, EARTHQUAKE, SURF, RAIN_DANCE
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1424,7 +1424,7 @@ BattleTowerMons3:
 
 	db POLIWRATH
 	db BRIGHTPOWDER
-	db DOUBLE_TEAM, SURF, FISSURE, SUBMISSION
+	db DOUBLE_TEAM, SURF, EARTHQUAKE, SUBMISSION
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1478,7 +1478,7 @@ BattleTowerMons3:
 
 	db JYNX
 	db GOLD_BERRY
-	db BLIZZARD, LOVELY_KISS, DREAM_EATER, ATTRACT
+	db BLIZZARD, DRAIN_KISS, DREAM_EATER, ATTRACT
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1802,7 +1802,7 @@ BattleTowerMons3:
 
 	db ESPEON
 	db MIRACLEBERRY
-	db CONFUSION, SWIFT, TOXIC, PSYCH_UP
+	db CONFUSION, SWIFT, TOXIC, CALM_MIND
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1995,7 +1995,7 @@ BattleTowerMons4:
 
 	db SNORLAX
 	db QUICK_CLAW
-	db ATTRACT, BODY_SLAM, PSYCH_UP, EARTHQUAKE
+	db ATTRACT, BODY_SLAM, CURSE, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2130,7 +2130,7 @@ BattleTowerMons4:
 
 	db GOLEM
 	db FOCUS_BAND
-	db EXPLOSION, EARTHQUAKE, MEGA_PUNCH, ROCK_SLIDE
+	db EXPLOSION, EARTHQUAKE, SANDSTORM, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2373,7 +2373,7 @@ BattleTowerMons4:
 
 	db EXEGGUTOR
 	db BRIGHTPOWDER
-	db EGG_BOMB, STOMP, PSYCH_UP, CONFUSION
+	db EGG_BOMB, STOMP, MEGA_DRAIN, CONFUSION
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2454,7 +2454,7 @@ BattleTowerMons4:
 
 	db ELECTABUZZ
 	db KINGS_ROCK
-	db LIGHT_SCREEN, THUNDERPUNCH, SWIFT, SNORE
+	db LIGHT_SCREEN, THUNDERPUNCH, SWIFT, THUNDERBOLT
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2539,7 +2539,7 @@ BattleTowerMons5:
 
 	db SNORLAX
 	db LEFTOVERS
-	db HYPER_BEAM, EARTHQUAKE, SURF, PSYCH_UP
+	db HYPER_BEAM, EARTHQUAKE, SURF, CURSE
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2647,7 +2647,7 @@ BattleTowerMons5:
 
 	db SLOWKING
 	db MINT_BERRY
-	db REST, SURF, PSYCHIC_M, AMNESIA
+	db REST, SURF, PSYCHIC_M, CALM_MIND
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -3488,7 +3488,7 @@ BattleTowerMons6:
 
 	db SANDSLASH
 	db SCOPE_LENS
-	db EARTHQUAKE, SLASH, HYPER_BEAM, SNORE
+	db EARTHQUAKE, SLASH, HYPER_BEAM, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3542,7 +3542,7 @@ BattleTowerMons6:
 
 	db GOLEM
 	db BRIGHTPOWDER
-	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, FRUSTRATION
+	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, RETURN
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3553,7 +3553,7 @@ BattleTowerMons6:
 	bigdw 30000
 	db $76, $57 ; DVs
 	db 5, 10, 15, 20 ; PP
-	db 0 ; Happiness
+	db 255 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
@@ -3627,7 +3627,7 @@ BattleTowerMons7:
 
 	db UMBREON
 	db GOLD_BERRY
-	db FAINT_ATTACK, MOONLIGHT, PSYCH_UP, TOXIC
+	db FAINT_ATTACK, MOONLIGHT, CONFUSE_RAY, TOXIC
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -4005,7 +4005,7 @@ BattleTowerMons7:
 
 	db HITMONLEE
 	db FOCUS_BAND
-	db REVERSAL, ENDURE, BODY_SLAM, MEGA_KICK
+	db REVERSAL, ENDURE, BODY_SLAM, HI_JUMP_KICK
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -4171,7 +4171,7 @@ BattleTowerMons8:
 
 	db SNORLAX
 	db LEFTOVERS
-	db REST, BELLY_DRUM, SNORE, EARTHQUAKE
+	db REST, BELLY_DRUM, SLEEP_TALK, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4441,7 +4441,7 @@ BattleTowerMons8:
 
 	db JYNX
 	db QUICK_CLAW
-	db LOVELY_KISS, BLIZZARD, DREAM_EATER, PSYCHIC_M
+	db DRAIN_KISS, BLIZZARD, DREAM_EATER, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp

@@ -72,6 +72,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Cyndaquil in Yellow Forest (at night)
    * Wild Totodile in Yellow Forest (by Surfing)
    * Wild Pikachu in Yellow Forest know Fly or Surf
+   * Wild Munchlax in Quiet Cave know Self-Destruct
+   * Wild Magikarp in Quiet Cave know Dragon Rage
+   * Helix Fossil and Dome Fossil in Quiet Cave
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands
    * Wild Dewgong in Seafoam Islands
@@ -99,6 +102,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Kadabra may hold TwistedSpoon
    * Wild Alakazam may hold TwistedSpoon
    * Wild Ditto may hold Metal Powder
+   * Restore fossils at the Pewter Museum of Science
+* Add moves from future generations
+   * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
+   * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
+   * Revised set of 60 TMs and 8 HMs
+   * Add move tutors for Sleep Talk, Zap Cannon, and Dream Eater
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -114,10 +123,11 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Growth raises Attack and Special Attack, by two stages in sunlight
    * Hidden Power is always 60 power
-   * Curse is a Ghost-type move
+   * Curse is Ghost-type
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
-   * Shiny Pokémon have an odd Attack DV, 13 or 14 Defense and Speed, and perfect 15 Special, so 1/2048 Pokémon is shiny
+   * Waterfall has a 20% flinch chance
+   * Shiny Pokémon have an odd Attack DV, 2, 3, 7, or 11 Defense, 5 or 13 Speed, and perfect 15 Special, so 1/1024 Pokémon is shiny
 * Gameplay elements from future (or past) generations:
    * Hold B to use Running Shoes
    * Surf at Bicycle/Running Shoes speed
@@ -131,6 +141,20 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
+   * Cure poison when it reaches 1 HP outside a battle
+* Pokémon and move edits:
+   * Cut is Steel-type, 60 power, 100% accuracy
+   * Fly has 100% accuracy
+   * Rock Smash has 75 power and is HM08
+   * Guillotine is Steel-type
+   * Butterfree is Bug/Psychic
+   * Persian is Normal/Dark
+   * Ninetales is Fire/Ghost
+   * Golduck is Water/Psychic
+   * Noctowl is Flying/Psychic
+   * Ledian is Bug/Fighting
+   * Dunsparce is Normal/Ground
+   * Mismagius is Ghost/Fairy
 * Fix bugs:
    * Dragon Fang boosts Dragon-type moves, not Dragon Scale
    * Burn/Poison/Paralyze improve catch rate
@@ -163,11 +187,17 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Kanto has colored roofs
    * Rounder Strength boulder like RBY/RSE/FRLG
    * Add lake in front of Sprout Tower from HGSS
+   * Add Magnet Train tracks to Route 32 from HGSS
    * Add decorative waterfall in Ecruteak City from HGSS
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
+   * Prof. Oak's lab has FRLG/HGSS appearance
+   * Add crater to Route 3 from HGSS
+   * Add fountain and benches to Cerulean City from HGSS
    * Add generator to Power Plant from FRLG
+   * Add fountain to Celadon City from HGSS
+   * Add Celadon Hotel and the "Chief" house from RBY
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
@@ -186,16 +216,24 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
+   * Battle Lorelei in Ice Path
+   * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
+   * Battle Lawrence III after catching all three legendary birds, and get the Silver Wing
+   * The old man in Pewter City gives you Old Amber
+   * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
+   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Prof. Oak asks for the player's gender and name together
    * Color-coded starter Poké Balls
+   * Prof. Oak trades Kanto starter dolls for evolution stones in his lab
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
    * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
    * Eusine has a shiny Electrode
+   * Lawrence has a shiny Charizard
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
@@ -205,43 +243,29 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## To do:
 
 * Remove unused code and resources to make room for new stuff
-* Fairy type from Gen VI:
-   * Improve Moonblast, Play Rough, and Disarm Voice animations
-   * Replace some moves with BabyDollEyes, DazzlinGleam, Drain Kiss, and Fairy Wind
-* Catch all 251 Pokémon without trading:
-   * Get the Silver Wing only after catching all three legendary birds (like with the three beasts and the Rainbow Wing)
-   * Add the Helix and Dome fossils in Quiet Cave to be restored into Omanyte and Kabuto at the Pewter Museum of Science
-   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
+* Add animations for new moves
+* Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
+* Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
+* Add move tutors for Aqua Tail, Earth Power, Hyper Voice, Iron Head, Seed Bomb, and Zen Headbutt
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
-   * Update movesets, and move and item mechanics, to Gen VI
-      * Prioritize having viable physical and special moves for each type
-      * Moves that can be removed: Psywave, Mimic, Mirror Move
-      * Moves that can be merged: Wrap/Bind, Self-Destruct/Explosion, Hi Jump Kick/Jump Kick, Protect/Detect, Defense Curl/Withdraw, Mean Look/Spider Web/Block, Lock On/Mind Reader, Scratch/Fury Swipes/Fury Attack, Bone Club/Bonemerang/Bone Rush, Morning Sun/Synthesis/Moonlight, Brick Break/Rock Smash, Heal Bell/Aromatherapy, Foresight/Odor Sleuth/Miracle Eye, Sleep Powder/GrassWhistle, Thief/Covet, Trick/Switcheroo, Softboiled/Milk Drink
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
    * Gain experience from catching Pokémon like in Gen VI
-   * Cure poison when it reaches 1 HP outside a battle, or don't damage at all outside battles
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
-   * Waterfall has a 20% flinch chance
+   * Drain Kiss drains 75% HP
+   * Double-Edge does 33% recoil damage
+   * Flare Blitz does 33% recoil damage
+   * Avalanche doubles damage if user is hit first
    * Low Kick's power is based on weight
-   * Beat Up works differently in Gen V
-   * Ghost-type Pokémon cannot be trapped
-   * Grass-type Pokémon are not affected by Powder moves
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
    * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
-   * Boost CPU Pokémon's stats each by level^2/500 to simulate stat experience (max 20 boost per stat, i.e. half of what can be gained with vitamins)
    * Thunder ignores accuracy and evasion in rain
    * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
-   * Grass-type Pokémon are immune to Cotton Spore, PoisonPowder, Powder, Rage Powder, Sleep Powder, Spore, Stun Spore, and Effect Spore
-   * Ghost-type Pokémon are immune to the trapping effects of Block, Mean Look, Spider Web, Bind, Clamp, Fire Spin, Infestation, Magma Storm, Sand Tomb, Whirlpool, Wrap, Arena Trap, Magnet Pull, and Shadow Tag
+   * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
+   * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Gameplay elements from future (or past) generations:
-   * Restore locations from RBY (Mt. Moon, Pokémon Tower, Pokémon Mansion, Kanto Underground, Lt.Surge's traps, electronics shop and vending machines in Celadon Dept. Store, Celadon Hotel)
-   * Add locations from FRLG (Sevii Islands, Navel Rock, Birth Island)
-   * Add locations from HGSS (Embedded Tower, Sinjoh Ruins)
-   * Quiet Cave Pokémon: **Self-Destructing Munchlax**, **Dragon Raging Magikarp**, **Larvitar**, **Cubone**, **Marowak**, Golbat, Machop, Gastly, Onix, Natu
-   * Quiet Cave items: **Dome Fossil**, **Helix Fossil**, **Old Amber**, **TwistedSpoon**, **Dusk Ball**, Nugget
    * Restore [unused memory game](http://iimarck.us/i/memory/)
    * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
    * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
@@ -256,28 +280,26 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
 * Fix bugs:
-   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-   * Fix Pokémon icons used as overworld sprites changing after viewing the party menu
-   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
-   * Fix delay before last text box when Wonder Trading
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
+   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
+   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
+   * Fix delay before last text box when Wonder Trading
 * Increased difficulty:
    * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 * Aesthetic updates:
    * Animate new Pokémon sprites
+   * Fix Pokémon footprints
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
-   * Improve certain shiny palettes (Dragonite, Scizor, Espeon, Ursaring, Forretress)
+   * Improve certain shiny palettes (blue Dragonite, silver Scizor, blue Espeon, black Ursaring, dark green Forretress)
    * Show Pokémon portraits when using field moves
-   * Better Substitute sprite
+   * Better Substitute sprites
    * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
-   * Add Magnet Train tracks to Route 32 from HGSS
+   * Add Young Couple and Double Team trainer classes
+   * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
-   * Put legendary beasts in a pit in Burned Tower, not a platform
-   * Add crater to Route 3 from HGSS
-   * Add fountain and benches to Cerulean City
-   * Add fountain to Celadon City
-   * Change piers in Olivine City and Vermilion City
+   * Use proper boardwalk/pier in Vermilion City
+   * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
@@ -294,7 +316,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * More likely to find roaming Pokémon when on the correct route
    * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
    * Suicune roams if you don't catch it in Bell Tower
-   * Lawrence III appears in Victory Road after you catch all three legendary birds. He's searching for Moltres, and battles you to acquire it (team: Articuno, Zapdos, Charizard, Dragonite, Honchkrow, Tyranitar). He gives you the Silver Wing if you win.
+   * Aurora Orb boosts Suicune's Defense and Special Defense
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
@@ -302,28 +324,23 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change in-game trades
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
-   * Battle with Agatha in Lavender Town (Gengar, Crobat, Haunter, Mismagius, Arbok, Gengar)
-   * Battle with Lorelei in Seafoam Islands (Dewgong, Cloyster, Mamoswine, Slowbro, Jynx, Lapras)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
-   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Get BlueSky Mail and Mirage Mail in the Pokécom Center
    * Get Eon Mail, Morph Mail, and Music Mail somewhere
-   * Unnecessary items: Normal Box, Gorgeous Box, Brick Piece
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
-   * Allow Unown to learn AncientPower, Stored Power, and Cosmic Power (also make sure Togetic can learn Stored Power, AncientPower, Silver Wind, and Ominous Wind)
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
-   * Scientist in back of Pewter Museum shows you an Omastar fossil (kept in storage due to its value)
-   * Possible retypes: Voltorb+Electrode to Electric/Steel, Dunsparce to Normal/Ground, Butterfree to Bug/Psychic, Noctowl to Psychic/Flying, Ledian to Bug/Fighting, Ninetales to Fire/Psychic or Fire/Ghost, Persian to Normal/Dark, Golduck to Water/Psychic, Mismagius to Ghost/Fairy
+   * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
+   * Add four Boarders/Skiers to Ice Path
    * Add four Ace Trainers to Victory Road
 
 
@@ -339,7 +356,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Abilities
 * Natures
 * Overworld weather, or at least automatic when battles start
-* Selection of up to 254 items from all generations (Zinc, PP Max, Dawn Stone, Dusk Stone, etc)
 * Custom held items that prevent status conditions (based on unused game code)
 * More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
 * Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item

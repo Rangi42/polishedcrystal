@@ -593,17 +593,6 @@ UnknownText_0x1c5cf1::
 	text "PP was restored."
 	prompt
 
-UnknownText_0x1c5d03::
-	text "There was a trophy"
-	line "inside!@"
-	sound_dex_fanfare_50_79
-	text ""
-	para "@"
-	text_from_ram PlayerName
-	text " sent the"
-	line "trophy home."
-	prompt
-
 UnknownText_0x1c5d3e::
 	text "It looks bitter…"
 	prompt

@@ -194,10 +194,8 @@ CheckPlayerTurn:
 	ld hl, FastAsleepText
 	call StdBattleTextBox
 
-	; Snore and Sleep Talk bypass sleep.
+	; Sleep Talk bypasses sleep.
 	ld a, [CurPlayerMove]
-	cp SNORE
-	jr z, .not_asleep
 	cp SLEEP_TALK
 	jr z, .not_asleep
 
@@ -211,11 +209,13 @@ CheckPlayerTurn:
 	bit FRZ, [hl]
 	jr z, .not_frozen
 
-	; Flame Wheel and Sacred Fire thaw the user.
+	; Flame Wheel, Sacred Fire, and Flare Blitz thaw the user.
 	ld a, [CurPlayerMove]
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
+	jr z, .not_frozen
+	cp FLARE_BLITZ
 	jr z, .not_frozen
 
 	ld hl, FrozenSolidText
@@ -442,10 +442,8 @@ CheckEnemyTurn: ; 3421f
 	jr .not_asleep
 
 .fast_asleep
-	; Snore and Sleep Talk bypass sleep.
+	; Sleep Talk bypasses sleep.
 	ld a, [CurEnemyMove]
-	cp SNORE
-	jr z, .not_asleep
 	cp SLEEP_TALK
 	jr z, .not_asleep
 	call CantMove
@@ -457,10 +455,13 @@ CheckEnemyTurn: ; 3421f
 	ld hl, EnemyMonStatus
 	bit FRZ, [hl]
 	jr z, .not_frozen
+	; Flame Wheel, Sacred Fire, and Flare Blitz thaw the user.
 	ld a, [CurEnemyMove]
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
+	jr z, .not_frozen
+	cp FLARE_BLITZ
 	jr z, .not_frozen
 
 	ld hl, FrozenSolidText
@@ -989,8 +990,6 @@ IgnoreSleepOnly: ; 3451f
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
-	cp SNORE
-	jr z, .CheckSleep
 	cp SLEEP_TALK
 	jr z, .CheckSleep
 	and a
@@ -1098,10 +1097,6 @@ BattleCommand_DoTurn: ; 34555
 
 .player
 	call GetPartyLocation
-	push hl
-	call CheckMimicUsed
-	pop hl
-	ret c
 
 .consume_pp
 	ld a, [hBattleTurn]
@@ -1122,21 +1117,6 @@ BattleCommand_DoTurn: ; 34555
 	ret
 
 .wild
-	ld hl, EnemyMonMoves
-	ld a, [CurEnemyMoveNum]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	cp MIMIC
-	jr z, .mimic
-	ld hl, wWildMonMoves
-	add hl, bc
-	ld a, [hl]
-	cp MIMIC
-	ret z
-
-.mimic
 	ld hl, wWildMonPP
 	call .consume_pp
 	ret
@@ -1174,38 +1154,6 @@ BattleCommand_DoTurn: ; 34555
 	db EFFECT_RAMPAGE
 	db $ff
 ; 3460b
-
-CheckMimicUsed: ; 3460b
-	ld a, [hBattleTurn]
-	and a
-	ld a, [CurMoveNum]
-	jr z, .player
-	ld a, [CurEnemyMoveNum]
-
-.player
-	ld c, a
-	ld a, MON_MOVES
-	call UserPartyAttr
-
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp MIMIC
-	jr z, .mimic
-;
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	cp MIMIC
-	jr nz, .mimic
-
-	scf
-	ret
-
-.mimic
-	and a
-	ret
-
-; 34631
 
 
 BattleCommand_Critical: ; 34631
@@ -1299,7 +1247,7 @@ BattleCommand_Critical: ; 34631
 	ret
 
 .Criticals:
-	db KARATE_CHOP, RAZOR_WIND, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, $ff
+	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, SHADOW_CLAW, STONE_EDGE, $ff
 .Chances:
 	; 6.25% 12.1% 24.6% 49.6% 99.6% 99.6% 99.6%
 	db $11,  $20,  $40,  $80,  $ff,  $ff,  $ff
@@ -1823,8 +1771,8 @@ BattleCommand_CheckHit: ; 34d32
 
 
 .LockOn:
-; Return nz if we are locked-on and aren't trying to use Earthquake,
-; Fissure or Magnitude on a monster that is flying.
+; Return nz if we are locked-on and aren't trying to use Earthquake
+; or Magnitude on a monster that is flying.
 	ld a, BATTLE_VARS_SUBSTATUS5_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_LOCK_ON, [hl]
@@ -1840,8 +1788,6 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 
 	cp EARTHQUAKE
-	ret z
-	cp FISSURE
 	ret z
 	cp MAGNITUDE
 	ret z
@@ -1915,8 +1861,6 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 
 	cp EARTHQUAKE
-	ret z
-	cp FISSURE
 	ret z
 	cp MAGNITUDE
 	ret
@@ -2514,19 +2458,6 @@ FailText_CheckOpponentProtect: ; 35157
 ; 35165
 
 
-BattleCommanda5: ; 35165
-	ld a, [AttackMissed]
-	and a
-	ret z
-
-	ld a, [TypeModifier]
-	and $7f
-	jp z, PrintDoesntAffect
-	jp PrintButItFailed
-
-; 35175
-
-
 BattleCommand_CriticalText: ; 35175
 ; criticaltext
 ; Prints the message for critical hits or one-hit KOs.
@@ -2864,11 +2795,24 @@ PlayerAttackDamage: ; 352e2
 	jr .thickcluborlightball
 
 .special
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	jr z, .psystrike
+
 	ld hl, EnemyMonSpclDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+	jp .lightscreen
 
+.psystrike
+	ld hl, EnemyMonDefense
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+
+.lightscreen
 	ld a, [EnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .specialcrit
@@ -3386,16 +3330,6 @@ BattleCommand_BeatUp: ; 35461
 	jp SkipToBattleCommand
 
 ; 355b5
-
-
-BattleCommanda8: ; 355b5
-	ld a, [wBeatUpHitAtLeastOnce]
-	and a
-	ret nz
-
-	jp PrintButItFailed
-
-; 355bd
 
 
 GetBeatupMonLocation: ; 355bd
@@ -6498,111 +6432,14 @@ CalcStats: ; 3661d
 ; 36671
 
 
-BattleCommand_StoreEnergy: ; 36671
+BattleCommand_StoreEnergy:
 ; storeenergy
-
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_BIDE, a
-	ret z
-
-	ld hl, PlayerRolloutCount
-	ld a, [hBattleTurn]
-	and a
-	jr z, .check_still_storing_energy
-	ld hl, EnemyRolloutCount
-.check_still_storing_energy
-	dec [hl]
-	jr nz, .still_storing
-
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	res SUBSTATUS_BIDE, [hl]
-
-	ld hl, UnleashedEnergyText
-	call StdBattleTextBox
-
-	ld a, BATTLE_VARS_MOVE_POWER
-	call GetBattleVarAddr
-	ld a, 1
-	ld [hl], a
-	ld hl, PlayerDamageTaken + 1
-	ld de, wPlayerCharging ; player
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player
-	ld hl, EnemyDamageTaken + 1
-	ld de, wEnemyCharging ; enemy
-.player
-	ld a, [hld]
-	add a
-	ld b, a
-	ld [CurDamage + 1], a
-	ld a, [hl]
-	rl a
-	ld [CurDamage], a
-	jr nc, .not_maxed
-	ld a, $ff
-	ld [CurDamage], a
-	ld [CurDamage + 1], a
-.not_maxed
-	or b
-	jr nz, .built_up_something
-	ld a, 1
-	ld [AttackMissed], a
-.built_up_something
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ld [de], a
-
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVarAddr
-	ld a, BIDE
-	ld [hl], a
-
-	ld b, unleashenergy_command
-	jp SkipToBattleCommand
-
-.still_storing
-	ld hl, StoringEnergyText
-	call StdBattleTextBox
 	jp EndMoveEffect
 
-; 366e5
 
-
-BattleCommand_UnleashEnergy: ; 366e5
+BattleCommand_UnleashEnergy:
 ; unleashenergy
-
-	ld de, PlayerDamageTaken
-	ld bc, PlayerRolloutCount
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_damage
-	ld de, EnemyDamageTaken
-	ld bc, EnemyRolloutCount
-.got_damage
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	set SUBSTATUS_BIDE, [hl]
-	xor a
-	ld [de], a
-	inc de
-	ld [de], a
-	ld [wPlayerMoveStructEffect], a
-	ld [wEnemyMoveStructEffect], a
-	call BattleRandom
-	and 1
-	inc a
-	inc a
-	ld [bc], a
-	ld a, 1
-	ld [wKickCounter], a
-	call AnimateCurrentMove
 	jp EndMoveEffect
-
-; 3671a
 
 
 BattleCommand_CheckRampage: ; 3671a
@@ -7094,7 +6931,6 @@ BattleCommand_EndLoop: ; 369b6
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
-	call BattleCommanda8
 	jp EndMoveEffect
 
 .not_triple_kick
@@ -7166,28 +7002,18 @@ BattleCommand_EndLoop: ; 369b6
 ; 36a82
 
 
-BattleCommand_FakeOut: ; 36a82
+BattleCommand_Astonish:
 	ld a, [AttackMissed]
 	and a
 	ret nz
 
 	call CheckSubstituteOpp
-	jr nz, .fail
-
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and 1 << FRZ | SLP
-	jr nz, .fail
+	ret nz
 
 	call CheckOpponentWentFirst
-	jr z, FlinchTarget
+	ret nz
 
-.fail
-	ld a, 1
-	ld [AttackMissed], a
-	ret
-
-; 36aa0
+	jp FlinchTarget
 
 
 BattleCommand_FlinchTarget: ; 36aa0
@@ -7414,17 +7240,17 @@ BattleCommand_Charge: ; 36b4d
 	start_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp RAZOR_WIND
-	ld hl, .RazorWind
-	jr z, .done
+;	cp RAZOR_WIND
+;	ld hl, .RazorWind
+;	jr z, .done
 
 	cp SOLARBEAM
 	ld hl, .Solarbeam
 	jr z, .done
 
-	cp SKULL_BASH
-	ld hl, .SkullBash
-	jr z, .done
+;	cp SKULL_BASH
+;	ld hl, .SkullBash
+;	jr z, .done
 
 	cp SKY_ATTACK
 	ld hl, .SkyAttack
@@ -7472,7 +7298,13 @@ BattleCommand_Charge: ; 36b4d
 ; 36c2c
 
 
+INCLUDE "battle/effects/bulkup.asm"
+
+INCLUDE "battle/effects/calmmind.asm"
+
 INCLUDE "battle/effects/growth.asm"
+
+INCLUDE "battle/effects/dragondance.asm"
 
 
 BattleCommand_TrapTarget: ; 36c2d
@@ -7524,10 +7356,8 @@ endr
 	jp StdBattleTextBox
 
 .Traps:
-	dbw BIND,      UsedBindText      ; 'used BIND on'
 	dbw WRAP,      WrappedByText     ; 'was WRAPPED by'
 	dbw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
-	dbw CLAMP,     ClampedByText     ; 'was CLAMPED by'
 	dbw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
 ; 36c7e
 
@@ -7993,52 +7823,52 @@ DoubleDamage: ; 36f37
 BattleCommand_Mimic: ; 36f46
 ; mimic
 
-	call ClearLastMove
-	call BattleCommand_MoveDelay
-	ld a, [AttackMissed]
-	and a
-	jr nz, .fail
-	ld hl, BattleMonMoves
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player_turn
-	ld hl, EnemyMonMoves
-.player_turn
-	call CheckHiddenOpponent
-	jr nz, .fail
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-	call GetBattleVar
-	and a
-	jr z, .fail
-	cp STRUGGLE
-	jr z, .fail
-	ld b, a
-	ld c, NUM_MOVES
-.check_already_knows_move
-	ld a, [hli]
-	cp b
-	jr z, .fail
-	dec c
-	jr nz, .check_already_knows_move
-	dec hl
-.find_mimic
-	ld a, [hld]
-	cp MIMIC
-	jr nz, .find_mimic
-	inc hl
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-	call GetBattleVar
-	ld [hl], a
-	ld [wNamedObjectIndexBuffer], a
-	ld bc, BattleMonPP - BattleMonMoves
-	add hl, bc
-	ld [hl], 5
-	call GetMoveName
-	call AnimateCurrentMove
-	ld hl, LearnedMoveText
-	jp StdBattleTextBox
-
-.fail
+;	call ClearLastMove
+;	call BattleCommand_MoveDelay
+;	ld a, [AttackMissed]
+;	and a
+;	jr nz, .fail
+;	ld hl, BattleMonMoves
+;	ld a, [hBattleTurn]
+;	and a
+;	jr z, .player_turn
+;	ld hl, EnemyMonMoves
+;.player_turn
+;	call CheckHiddenOpponent
+;	jr nz, .fail
+;	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
+;	call GetBattleVar
+;	and a
+;	jr z, .fail
+;	cp STRUGGLE
+;	jr z, .fail
+;	ld b, a
+;	ld c, NUM_MOVES
+;.check_already_knows_move
+;	ld a, [hli]
+;	cp b
+;	jr z, .fail
+;	dec c
+;	jr nz, .check_already_knows_move
+;	dec hl
+;.find_mimic
+;	ld a, [hld]
+;	cp MIMIC
+;	jr nz, .find_mimic
+;	inc hl
+;	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
+;	call GetBattleVar
+;	ld [hl], a
+;	ld [wNamedObjectIndexBuffer], a
+;	ld bc, BattleMonPP - BattleMonMoves
+;	add hl, bc
+;	ld [hl], 5
+;	call GetMoveName
+;	call AnimateCurrentMove
+;	ld hl, LearnedMoveText
+;	jp StdBattleTextBox
+;
+;.fail
 	jp FailMimic
 
 ; 36f9d
@@ -8778,13 +8608,6 @@ INCLUDE "battle/effects/perish_song.asm"
 INCLUDE "battle/effects/sandstorm.asm"
 
 INCLUDE "battle/effects/rollout.asm"
-
-
-BattleCommand5d: ; 37791
-; unused
-	ret
-
-; 37792
 
 
 BattleCommand_FuryCutter: ; 37792

@@ -539,6 +539,8 @@
 	map_header_2 CeladonGameCornerPrizeRoom, CELADON_GAME_CORNER_PRIZE_ROOM, $0, 0
 	map_header_2 CeladonGym, CELADON_GYM, $0, 0
 	map_header_2 CeladonCafe, CELADON_CAFE, $0, 0
+	map_header_2 CeladonChiefHouse, CELADON_CHIEF_HOUSE, $0, 0
+	map_header_2 CeladonHotel, CELADON_HOTEL, $0, 0
 	map_header_2 Route16FuchsiaSpeechHouse, ROUTE_16_FUCHSIA_SPEECH_HOUSE, $0, 0
 	map_header_2 Route16Gate, ROUTE_16_GATE, $0, 0
 	map_header_2 Route7SaffronGate, ROUTE_7_SAFFRON_GATE, $0, 0
@@ -607,6 +609,10 @@
 	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
 	map_header_2 YellowForestGate, YELLOW_FOREST_GATE, $0, 0
 	map_header_2 YellowForest, YELLOW_FOREST, $38, 0
+	map_header_2 QuietCave1F, QUIET_CAVE_1F, $9, 0
+	map_header_2 QuietCaveB1F, QUIET_CAVE_B1F, $9, 0
+	map_header_2 QuietCaveB2F, QUIET_CAVE_B2F, $9, 0
+	map_header_2 QuietCaveB3F, QUIET_CAVE_B3F, $9, 0
 	map_header_2 CinnabarVolcano1F, CINNABAR_VOLCANO_1F, $9, 0
 	map_header_2 CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $9, 0
 	map_header_2 CinnabarVolcanoB2F, CINNABAR_VOLCANO_B2F, $9, 0

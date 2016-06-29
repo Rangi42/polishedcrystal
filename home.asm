@@ -1078,6 +1078,7 @@ IsHMMove:: ; 34e7
 	db FLASH
 	db WATERFALL
 	db WHIRLPOOL
+	db ROCK_SMASH
 	db -1
 ; 34f8
 

@@ -93,7 +93,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Endure ; 3766f
 	dw BattleCommand_CheckCurl ; 37718
 	dw BattleCommand_RolloutPower ; 37734
-	dw BattleCommand5d ; 37791
+	dw BattleCommand_BulkUp ; 37791
 	dw BattleCommand_FuryCutter ; 37792
 	dw BattleCommand_Attract ; 377ce
 	dw BattleCommand_HappinessPower ; 3784b
@@ -148,7 +148,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_StatDownAnim ; 34fdb
 	dw BattleCommand_StatUpAnim ; 34fd1
 	dw BattleCommand_SwitchTurn ; 34ffd - 93
-	dw BattleCommand_FakeOut ; 36a82
+	dw BattleCommand_Astonish ; 36a82
 	dw BattleCommand_BellyDrum ; 37c1a
 	dw BattleCommand_PsychUp ; 37c55
 	dw BattleCommand_Rage ; 36f1d
@@ -165,10 +165,10 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_RageDamage ; 3527b
 	dw BattleCommand_ResetTypeMatchup ; 34833
 	dw BattleCommand_AllStatsUp ; 36500
-	dw BattleCommanda5 ; 35165
+	dw BattleCommand_CalmMind ; 35165
 	dw BattleCommand_RaiseSubNoAnim ; 365af
 	dw BattleCommand_LowerSubNoAnim ; 365c3
-	dw BattleCommanda8 ; 355b5
+	dw BattleCommand_DragonDance ; 355b5
 	dw BattleCommand_ClearMissDamage ; 355d5 - a9
 	dw BattleCommand_MoveDelay ; 37e80
 	dw BattleCommand_HitTarget ; 34f57

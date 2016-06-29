@@ -240,7 +240,7 @@ CeladonCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 9
+	db 11
 	warp_def $9, $4, 1, CELADON_DEPT_STORE_1F
 	warp_def $9, $10, 1, CELADON_MANSION_1F
 	warp_def $3, $10, 3, CELADON_MANSION_1F
@@ -249,14 +249,16 @@ CeladonCity_MapEventHeader:
 	warp_def $13, $12, 1, CELADON_GAME_CORNER
 	warp_def $13, $17, 1, CELADON_GAME_CORNER_PRIZE_ROOM
 	warp_def $1d, $a, 1, CELADON_GYM
-	warp_def $1d, $19, 1, CELADON_CAFE
+	warp_def $1d, $15, 1, CELADON_CAFE
+	warp_def $1d, $1d, 1, CELADON_CHIEF_HOUSE
+	warp_def $1d, $21, 1, CELADON_HOTEL
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 8
-	signpost 21, 23, SIGNPOST_READ, CeladonCitySign
+	signpost 18, 9, SIGNPOST_READ, CeladonCitySign
 	signpost 31, 11, SIGNPOST_READ, CeladonGymSign
 	signpost 9, 6, SIGNPOST_READ, CeladonCityDeptStoreSign
 	signpost 9, 13, SIGNPOST_READ, CeladonCityMansionSign

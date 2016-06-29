@@ -257,6 +257,7 @@ KRIS EQU __enum__
 	const BRENT4
 	const MILLER
 	const MOE
+	const AIDAN
 
 	trainerclass GRUNTM ; 1f
 

@@ -197,7 +197,7 @@ CooltrainerfLoisScript:
 WesleyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_BLACKBELT_FROM_WESLEY
+	checkevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	iftrue WesleyWednesdayScript
 	checkcode VAR_WEEKDAY
 	if_not_equal WEDNESDAY, WesleyNotWednesdayScript
@@ -209,9 +209,9 @@ WesleyScript:
 .MetWesley:
 	writetext WesleyGivesGiftText
 	buttonsound
-	verbosegiveitem BLACKBELT
+	verbosegiveitem BLACK_BELT
 	iffalse WesleyDoneScript
-	setevent EVENT_GOT_BLACKBELT_FROM_WESLEY
+	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	writetext WesleyGaveGiftText
 	waitbutton
 	closetext
@@ -233,8 +233,8 @@ WesleyNotWednesdayScript:
 LakeofRageElixer:
 	itemball ELIXER
 
-LakeofRageTMDetect:
-	itemball TM_DETECT
+LakeofRageTMReflect:
+	itemball TM_REFLECT
 
 LakeofRageHiddenFullRestore:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE, FULL_RESTORE
@@ -534,4 +534,4 @@ LakeofRage_MapEventHeader:
 	person_event SPRITE_GYARADOS, 22, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GyaradosScript_0x70063, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_SUPER_NERD, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
 	person_event SPRITE_POKE_BALL, 10, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, LakeofRageElixer, EVENT_LAKE_OF_RAGE_ELIXER
-	person_event SPRITE_POKE_BALL, 2, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, LakeofRageTMDetect, EVENT_LAKE_OF_RAGE_TM_DETECT
+	person_event SPRITE_POKE_BALL, 2, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, LakeofRageTMReflect, EVENT_LAKE_OF_RAGE_TM_REFLECT

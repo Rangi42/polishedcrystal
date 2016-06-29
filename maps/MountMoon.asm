@@ -1,5 +1,7 @@
 const_value set 2
 	const MOUNTMOON_SILVER
+	const MOUNTMOON_POKE_BALL1
+	const MOUNTMOON_POKE_BALL2
 
 MountMoon_MapScriptHeader:
 .MapTriggers:
@@ -72,6 +74,12 @@ MountMoon_MapScriptHeader:
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
 	end
+
+MountMoonDuskStone:
+	itemball DUSK_STONE
+
+MountMoonShinyStone:
+	itemball SHINY_STONE
 
 MountMoonSilverMovementBefore:
 	step_left
@@ -184,5 +192,7 @@ MountMoon_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
+	db 3
 	person_event SPRITE_SILVER, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	person_event SPRITE_POKE_BALL, 4, 22, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMoonDuskStone, EVENT_MOUNT_MOON_DUSK_STONE
+	person_event SPRITE_POKE_BALL, 13, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMoonShinyStone, EVENT_MOUNT_MOON_SHINY_STONE

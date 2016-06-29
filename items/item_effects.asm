@@ -14,185 +14,177 @@ _DoItemEffect:: ; e722
 
 
 ItemEffects: ; e73c
-	dw MasterBall
-	dw UltraBall
-	dw Brightpowder
-	dw GreatBall
 	dw PokeBall
-	dw TownMap
-	dw Bicycle
-	dw MoonStone
+	dw GreatBall
+	dw UltraBall
+	dw MasterBall
+	dw Potion
+	dw SuperPotion
+	dw HyperPotion
+	dw MaxPotion
 	dw Antidote
 	dw BurnHeal
-	dw IceHeal
-	dw Awakening
 	dw ParlyzHeal
+	dw Awakening
+	dw IceHeal
+	dw FullHeal
 	dw FullRestore
-	dw MaxPotion
-	dw HyperPotion
-	dw SuperPotion
-	dw Potion
-	dw EscapeRope
-	dw Repel
-	dw MaxElixer
-	dw FireStone
-	dw Thunderstone
-	dw WaterStone
-	dw Item19
+	dw Revive
+	dw MaxRevive
+	dw Ether
+	dw MaxEther
+	dw Elixir
+	dw MaxElixir
+	dw XAttack
+	dw XDefend
+	dw XSpeed
+	dw XSpclAtk
+	dw XSpclDef
+	dw DireHit
+	dw GuardSpec
+	dw XAccuracy
 	dw HPUp
 	dw Protein
 	dw Iron
 	dw Carbos
-	dw LuckyPunch
 	dw Calcium
 	dw RareCandy
-	dw XAccuracy
-	dw LeafStone
-	dw MetalPowder
-	dw Nugget
-	dw PokeDoll
-	dw FullHeal
-	dw Revive
-	dw MaxRevive
-	dw GuardSpec
-	dw SuperRepel
-	dw MaxRepel
-	dw DireHit
-	dw Item2D
+	dw PPUp
 	dw FreshWater
 	dw SodaPop
 	dw Lemonade
-	dw XAttack
-	dw XSpclDef
-	dw XDefend
-	dw XSpeed
-	dw XSpclAtk
-	dw CoinCase
-	dw Itemfinder
-	dw PokeFlute
-	dw ExpShare
-	dw OldRod
-	dw GoodRod
-	dw SilverLeaf
-	dw SuperRod
-	dw PPUp
-	dw Ether
-	dw MaxEther
-	dw Elixer
-	dw RedScale
-	dw Secretpotion
-	dw SSTicket
-	dw MysteryEgg
-	dw ClearBell
-	dw SilverWing
 	dw MoomooMilk
-	dw QuickClaw
-	dw Psncureberry
-	dw GoldLeaf
-	dw SoftSand
-	dw SharpBeak
-	dw Przcureberry
-	dw BurntBerry
-	dw IceBerry
-	dw PoisonBarb
-	dw KingsRock
-	dw BitterBerry
-	dw MintBerry
-	dw RedApricorn
-	dw Tinymushroom
-	dw BigMushroom
-	dw Silverpowder
-	dw BluApricorn
-	dw Item5A
-	dw AmuletCoin
-	dw YlwApricorn
-	dw GrnApricorn
-	dw CleanseTag
-	dw MysticWater
-	dw Twistedspoon
-	dw WhtApricorn
-	dw Blackbelt
-	dw BlkApricorn
-	dw Item64
-	dw PnkApricorn
-	dw Blackglasses
-	dw Slowpoketail
-	dw SilkScarf
-	dw Stick
-	dw SmokeBall
-	dw Nevermeltice
-	dw Magnet
-	dw Miracleberry
-	dw Pearl
-	dw BigPearl
-	dw Everstone
-	dw SpellTag
-	dw Ragecandybar
-	dw GsBall
-	dw BlueCard
-	dw MiracleSeed
-	dw ThickClub
-	dw FocusBand
-	dw Item78
-	dw Energypowder
+	dw RageCandyBar
+	dw SacredAsh
+	dw EnergyPowder
 	dw EnergyRoot
 	dw HealPowder
 	dw RevivalHerb
-	dw HardStone
-	dw LuckyEgg
+	dw Repel
+	dw SuperRepel
+	dw MaxRepel
+	dw EscapeRope
+	dw PokeDoll
+	dw LeafStone
+	dw FireStone
+	dw WaterStone
+	dw ThunderStone
+	dw MoonStone
+	dw SunStone
+	dw DuskStone
+	dw ShinyStone
+	dw Everstone
+	dw Bicycle
+	dw OldRod
+	dw GoodRod
+	dw SuperRod
+	dw CoinCase
+	dw Itemfinder
+	dw ExpShare
+	dw MysteryEgg
+	dw SquirtBottle
+	dw SecretPotion
+	dw RedScale
 	dw CardKey
-	dw MachinePart
-	dw EggTicket
-	dw LostItem
-	dw Stardust
-	dw StarPiece
 	dw BasementKey
+	dw SSTicket
 	dw Pass
-	dw Item87
-	dw Item88
-	dw Item89
-	dw Charcoal
-	dw BerryJuice
-	dw ScopeLens
-	dw Item8D
-	dw Item8E
-	dw MetalCoat
-	dw DragonFang
-	dw RepeatBall
-	dw Leftovers
-	dw TimerBall
-	dw QuickBall
-	dw DuskBall
-	dw Mysteryberry
-	dw DragonScale
-	dw BerserkGene
-	dw Item99
-	dw Item9A
-	dw Item9B
-	dw SacredAsh
+	dw MachinePart
+	dw LostItem
+	dw RainbowWing
+	dw SilverWing
+	dw ClearBell
+	dw GSBall
+	dw BlueCard
+	dw MysticTicket
+	dw OldSeaMap
+	dw Berry
+	dw GoldBerry
+	dw PsnCureBerry
+	dw IceBerry
+	dw PrzCureBerry
+	dw MintBerry
+	dw BurntBerry
+	dw BitterBerry
+	dw MiracleBerry
+	dw MysteryBerry
+	dw RedApricorn
+	dw BluApricorn
+	dw YlwApricorn
+	dw GrnApricorn
+	dw WhtApricorn
+	dw BlkApricorn
+	dw PnkApricorn
 	dw HeavyBall
-	dw FlowerMail
 	dw LevelBall
 	dw LureBall
 	dw FastBall
-	dw ItemA2
-	dw LightBall
 	dw FriendBall
 	dw MoonBall
 	dw LoveBall
-	dw NormalBox
-	dw GorgeousBox
-	dw SunStone
+	dw SilkScarf
+	dw BlackBelt
+	dw SharpBeak
+	dw PoisonBarb
+	dw SoftSand
+	dw HardStone
+	dw SilverPowder
+	dw SpellTag
+	dw MetalCoat
+	dw Charcoal
+	dw MysticWater
+	dw MiracleSeed
+	dw Magnet
+	dw TwistedSpoon
+	dw NeverMeltIce
+	dw DragonFang
+	dw BlackGlasses
 	dw PinkBow
-	dw ItemAB
+	dw BrightPowder
+	dw ScopeLens
+	dw QuickClaw
+	dw KingsRock
+	dw FocusBand
+	dw Leftovers
+	dw LuckyEgg
+	dw AmuletCoin
+	dw CleanseTag
+	dw SmokeBall
+	dw LightBall
+	dw Stick
+	dw ThickClub
+	dw LuckyPunch
+	dw MetalPowder
+	dw BerserkGene
+	dw Eviolite
+	dw LifeOrb
+	dw DragonScale
 	dw UpGrade
-	dw Berry
-	dw GoldBerry
-	dw Squirtbottle
-	dw ItemB0
+	dw DubiousDisc
+	dw RazorFang
+	dw RazorClaw
+	dw Nugget
+	dw TinyMushroom
+	dw BigMushroom
+	dw Pearl
+	dw BigPearl
+	dw Stardust
+	dw StarPiece
+	dw SilverLeaf
+	dw GoldLeaf
+	dw SlowpokeTail
 	dw ParkBall
-	dw RainbowWing
-	dw ItemB3
+	dw RepeatBall
+	dw TimerBall
+	dw QuickBall
+	dw DuskBall
+	dw HelixFossil
+	dw DomeFossil
+	dw OldAmber
+	dw FlowerMail
+	dw TownMap
+	dw PokeFlute
+	dw TeruSama
 ; e8a2
 
 
@@ -727,7 +719,6 @@ BallMultiplierFunctionTable:
 ; which ball is used in a certain situation.
 	dbw ULTRA_BALL,  UltraBallMultiplier
 	dbw GREAT_BALL,  GreatBallMultiplier
-	dbw SAFARI_BALL, SafariBallMultiplier ; Safari Ball, leftover from RBY
 	dbw HEAVY_BALL,  HeavyBallMultiplier
 	dbw LEVEL_BALL,  LevelBallMultiplier
 	dbw LURE_BALL,   LureBallMultiplier
@@ -748,7 +739,6 @@ UltraBallMultiplier:
 	ld b, $ff
 	ret
 
-SafariBallMultiplier:
 GreatBallMultiplier:
 ParkBallMultiplier:
 ; multiply catch rate by 1.5
@@ -1279,10 +1269,12 @@ Bicycle: ; ee08
 
 MoonStone:
 FireStone:
-Thunderstone:
+ThunderStone:
 WaterStone:
 LeafStone:
-SunStone: ; ee0f
+SunStone:
+DuskStone:
+ShinyStone:
 	ld b, PARTYMENUACTION_EVO_STONE
 	call UseItem_SelectMon
 
@@ -1572,12 +1564,12 @@ IceHeal:
 Awakening:
 ParlyzHeal:
 FullHeal:
-Psncureberry:
-Przcureberry:
+PsnCureBerry:
+PrzCureBerry:
 BurntBerry:
 IceBerry:
 MintBerry:
-Miracleberry: ; efcc
+MiracleBerry: ; efcc
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, StatusHealer_ExitMenu
@@ -1861,8 +1853,7 @@ FreshWater:
 SodaPop:
 Lemonade:
 MoomooMilk:
-Ragecandybar:
-BerryJuice:
+RageCandyBar:
 Berry:
 GoldBerry: ; f186
 	call ItemRestoreHP
@@ -1870,16 +1861,16 @@ GoldBerry: ; f186
 ; f18c
 
 
-Energypowder: ; f18c
+EnergyPowder: ; f18c
 	ld c, HAPPINESS_BITTERPOWDER
-	jr EnergypowderEnergyRootCommon
+	jr EnergyPowderEnergyRootCommon
 ; f190
 
 EnergyRoot: ; f190
 	ld c, HAPPINESS_ENERGYROOT
 ; f192
 
-EnergypowderEnergyRootCommon: ; f192
+EnergyPowderEnergyRootCommon: ; f192
 	push bc
 	call ItemRestoreHP
 	pop bc
@@ -2245,7 +2236,6 @@ endr
 	dbw ENERGYPOWDER,  50
 	dbw ENERGY_ROOT,  200
 	dbw RAGECANDYBAR,  20
-	dbw BERRY_JUICE,   20
 	dbw -1,             0
 ; f3df
 
@@ -2603,12 +2593,12 @@ Itemfinder: ; f5b8
 ; f5bf
 
 
-MaxElixer:
+MaxElixir:
 PPUp:
 Ether:
 MaxEther:
-Elixer:
-Mysteryberry: ; f5bf
+Elixir:
+MysteryBerry: ; f5bf
 	ld a, [CurItem]
 	ld [wd002], a
 
@@ -2621,9 +2611,9 @@ Mysteryberry: ; f5bf
 .loop2
 	ld a, [wd002]
 	cp MAX_ELIXER
-	jp z, Elixer_RestorePPofAllMoves
+	jp z, Elixir_RestorePPofAllMoves
 	cp ELIXER
-	jp z, Elixer_RestorePPofAllMoves
+	jp z, Elixir_RestorePPofAllMoves
 
 	ld hl, TextJump_RaiseThePPOfWhichMove
 	ld a, [wd002]
@@ -2757,7 +2747,7 @@ Not_PP_Up: ; f6a7
 	jp PPRestoreItem_NoEffect
 ; f6af
 
-Elixer_RestorePPofAllMoves: ; f6af
+Elixir_RestorePPofAllMoves: ; f6af
 	xor a
 	ld hl, wMenuCursorY
 	ld [hli], a
@@ -2874,7 +2864,7 @@ UnknownText_0xf739: ; 0xf739
 ; 0xf73e
 
 
-Squirtbottle: ; f73e
+SquirtBottle: ; f73e
 	callba _Squirtbottle
 	ret
 ; f745
@@ -2901,40 +2891,14 @@ SacredAsh: ; f753
 	ret
 ; f763
 
-
-NormalBox: ; f763
-	ld c, DECOFLAG_SILVER_TROPHY_DOLL
-	jr OpenBox
-; f767
-
-GorgeousBox: ; f767
-	ld c, DECOFLAG_GOLD_TROPHY_DOLL
-OpenBox: ; f769
-	callba SetSpecificDecorationFlag
-
-	ld hl, .text
-	call PrintText
-
-	jp UseDisposableItem
-; f778
-
-.text ; 0xf778
-	; There was a trophy inside!
-	text_jump UnknownText_0x1c5d03
-	db "@"
-; 0xf77d
-
-Brightpowder:
-Item19:
+BrightPowder:
 LuckyPunch:
 MetalPowder:
 Nugget:
-Item2D:
-Item32:
 ExpShare:
 SilverLeaf:
 RedScale:
-Secretpotion:
+SecretPotion:
 SSTicket:
 MysteryEgg:
 ClearBell:
@@ -2946,70 +2910,64 @@ SharpBeak:
 PoisonBarb:
 KingsRock:
 RedApricorn:
-Tinymushroom:
+TinyMushroom:
 BigMushroom:
-Silverpowder:
+SilverPowder:
 BluApricorn:
-Item5A:
 AmuletCoin:
 YlwApricorn:
 GrnApricorn:
 CleanseTag:
 MysticWater:
-Twistedspoon:
+TwistedSpoon:
 WhtApricorn:
-Blackbelt:
+BlackBelt:
 BlkApricorn:
-Item64:
 PnkApricorn:
-Blackglasses:
-Slowpoketail:
+BlackGlasses:
+SlowpokeTail:
 SilkScarf:
 Stick:
 SmokeBall:
-Nevermeltice:
+NeverMeltIce:
 Magnet:
 Pearl:
 BigPearl:
 Everstone:
 SpellTag:
-GsBall:
+GSBall:
 MiracleSeed:
 ThickClub:
 FocusBand:
-Item78:
 HardStone:
 LuckyEgg:
 MachinePart:
-EggTicket:
 LostItem:
 Stardust:
 StarPiece:
 Pass:
-Item87:
-Item88:
-Item89:
 Charcoal:
 ScopeLens:
-Item8D:
-Item8E:
 MetalCoat:
 DragonFang:
 Leftovers:
 DragonScale:
 BerserkGene:
-Item99:
-Item9A:
-Item9B:
+HelixFossil:
+DomeFossil:
 FlowerMail:
-ItemA2:
 LightBall:
 PinkBow:
-ItemAB:
 UpGrade:
-ItemB0:
 RainbowWing:
-ItemB3:
+OldAmber:
+MysticTicket:
+OldSeaMap:
+Eviolite:
+LifeOrb:
+DubiousDisc:
+RazorFang:
+RazorClaw:
 TeruSama: ; f77d
 	jp IsntTheTimeMessage
 ; f780

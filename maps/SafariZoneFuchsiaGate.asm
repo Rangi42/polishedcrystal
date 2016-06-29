@@ -15,15 +15,16 @@ SafariZoneFuchsiaGateOfficerText:
 
 	para "The Warden is"
 	line "gone, so we're not"
-	cont "running the Safari"
-	cont "Game right now."
+
+	para "running the Safari"
+	line "Game right now."
 
 	para "You'll have to"
 	line "bring your own"
-	cont "Balls if you want"
 
-	para "to catch any"
-	line "#mon."
+	para "Balls if you want"
+	line "to catch any"
+	cont "#mon."
 	done
 
 SafariZoneFuchsiaGate_MapEventHeader:

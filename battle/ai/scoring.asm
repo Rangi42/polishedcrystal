@@ -338,8 +338,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_OHKO,             AI_Smart_Ohko
 	dbw EFFECT_RAZOR_WIND,       AI_Smart_RazorWind
 	dbw EFFECT_SUPER_FANG,       AI_Smart_SuperFang
-	dbw EFFECT_BIND,             AI_Smart_Bind
-	dbw EFFECT_UNUSED_2B,        AI_Smart_Unused2B
+	dbw EFFECT_TRAP,             AI_Smart_Bind
 	dbw EFFECT_CONFUSE,          AI_Smart_Confuse
 	dbw EFFECT_SP_DEF_UP_2,      AI_Smart_SpDefenseUp2
 	dbw EFFECT_REFLECT,          AI_Smart_Reflect
@@ -1059,7 +1058,7 @@ AI_Smart_Ohko: ; 38a60
 
 
 AI_Smart_Bind: ; 38a71
-; Bind, Wrap, Fire Spin, Clamp
+; Wrap, Fire Spin, Whirlpool
 
 ; 50% chance to discourage this move if the player is already trapped.
 	ld a, [wPlayerWrapCount]
@@ -1100,8 +1099,7 @@ endr
 ; 38a9c
 
 
-AI_Smart_RazorWind:
-AI_Smart_Unused2B: ; 38a9c
+AI_Smart_RazorWind: ; 38a9c
 	ld a, [EnemySubStatus1]
 	bit SUBSTATUS_PERISH, a
 	jr z, .asm_38aaa
@@ -1550,18 +1548,13 @@ endr
 	db HAZE
 	db FOCUS_ENERGY
 	db DREAM_EATER
-	db POISON_GAS
 	db SPLASH
-	db SHARPEN
 	db CONVERSION
 	db SUPER_FANG
 	db SUBSTITUTE
 	db TRIPLE_KICK
-	db SPIDER_WEB
-	db MIND_READER
 	db FLAME_WHEEL
 	db AEROBLAST
-	db COTTON_SPORE
 	db POWDER_SNOW
 	db $ff
 ; 38ca4
@@ -2545,11 +2538,12 @@ RainDanceMoves: ; 390e7
 	db BUBBLEBEAM
 	db THUNDER
 	db WATERFALL
-	db CLAMP
+	db RAZOR_SHELL
 	db BUBBLE
 	db CRABHAMMER
 	db OCTAZOOKA
 	db WHIRLPOOL
+	db AQUA_TAIL
 	db $ff
 ; 390f3
 
@@ -2638,6 +2632,7 @@ SunnyDayMoves: ; 39134
 	db FIRE_SPIN
 	db FIRE_BLAST
 	db SACRED_FIRE
+	db FLARE_BLITZ
 	db MORNING_SUN
 	db SYNTHESIS
 	db $ff
@@ -3148,6 +3143,7 @@ UsefulMoves: ; 39301
 	db TOXIC
 	db PSYCHIC_M
 	db HYPNOSIS
+	db WILL_O_WISP
 	db RECOVER
 	db FIRE_BLAST
 	db SOFTBOILED
@@ -3219,22 +3215,19 @@ AI_Opportunist: ; 39315
 	db MEDITATE
 	db AGILITY
 	db RAGE
-	db MIMIC
 	db SCREECH
 	db HARDEN
-	db WITHDRAW
 	db DEFENSE_CURL
 	db BARRIER
 	db LIGHT_SCREEN
 	db HAZE
 	db REFLECT
 	db FOCUS_ENERGY
-	db BIDE
-	db AMNESIA
+	db CALM_MIND
 	db TRANSFORM
 	db SPLASH
-	db ACID_ARMOR
-	db SHARPEN
+	db DRAGON_DANCE
+	db BULK_UP
 	db CONVERSION
 	db SUBSTITUTE
 	db FLAME_WHEEL
@@ -3429,8 +3422,6 @@ AI_Cautious: ; 39418
 	db STUN_SPORE
 	db THUNDER_WAVE
 	db FOCUS_ENERGY
-	db BIDE
-	db POISON_GAS
 	db TRANSFORM
 	db CONVERSION
 	db SUBSTITUTE

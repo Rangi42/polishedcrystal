@@ -246,4 +246,22 @@
 	db 20, PIKACHU
 	db 10, TOTODILE
 
+	map QUIET_CAVE_B1F
+	db 6 percent ; encounter rate
+	db 10, MAGIKARP
+	db 15, MAGIKARP
+	db 20, CHINCHOU
+
+	map QUIET_CAVE_B2F
+	db 6 percent ; encounter rate
+	db 10, MAGIKARP
+	db 15, MAGIKARP
+	db 20, CHINCHOU
+
+	map QUIET_CAVE_B3F
+	db 6 percent ; encounter rate
+	db 10, MAGIKARP
+	db 15, MAGIKARP
+	db 20, CHINCHOU
+
 	db -1 ; end

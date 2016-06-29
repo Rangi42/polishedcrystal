@@ -14,23 +14,23 @@ CheckShininess:
 	and $1 << 4
 	jr z, .NotShiny
 
-; Defense must be 2, 3, 5, or 7 (1 in 4)
+; Defense must be 2, 3, 7, or 11 (1 in 4)
 	ld a, [hli]
 	and $f
 	cp $2
 	jr z, .MaybeShiny1
 	cp $3
 	jr z, .MaybeShiny1
-	cp $5
-	jr z, .MaybeShiny1
 	cp $7
+	jr z, .MaybeShiny1
+	cp $b
 	jr nz, .NotShiny
 
-; Speed must be 11 or 13 (1 in 8)
+; Speed must be 5 or 13 (1 in 8)
 .MaybeShiny1
 	ld a, [hl]
 	and $f0
-	cp $b << 4
+	cp $5 << 4
 	jr z, .MaybeShiny2
 	cp $d << 4
 	jr nz, .NotShiny

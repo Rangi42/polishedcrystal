@@ -888,7 +888,7 @@ GetMovePriority: ; 3c5c5
 
 	ld b, a
 
-	; Vital throw goes last.
+	; Vital Throw goes last.
 	cp VITAL_THROW
 	ld a, 0
 	ret z
@@ -918,6 +918,7 @@ MoveEffectPriorities: ; 3c5df
 	db EFFECT_WHIRLWIND,    0
 	db EFFECT_COUNTER,      0
 	db EFFECT_MIRROR_COAT,  0
+	db EFFECT_AVALANCHE,    0
 	db -1
 ; 3c5ec
 
@@ -6429,8 +6430,8 @@ LoadEnemyMon: ; 3e8eb
 	cp a, BATTLETYPE_SHINY
 	jr nz, .GenerateDVs
 
-	ld b, ATKDEFDV_SHINY ; $fa
-	ld c, SPDSPCDV_SHINY ; $aa
+	ld b, ATKDEFDV_SHINY ; $fb
+	ld c, SPDSPCDV_SHINY ; $df
 	jr .UpdateDVs
 
 .GenerateDVs:
@@ -6507,15 +6508,6 @@ LoadEnemyMon: ; 3e8eb
 	jr nc, .GenerateDVs
 
 .CheckMagikarpArea:
-; The z checks are supposed to be nz
-; Instead, all maps in GROUP_LAKE_OF_RAGE (mahogany area)
-; and routes 20 and 44 are treated as Lake of Rage
-
-; This also means Lake of Rage Magikarp can be smaller than ones
-; caught elsewhere rather than the other way around
-
-; Intended behavior enforces a minimum size at Lake of Rage
-; The real behavior prevents size flooring in the Lake of Rage area
 	ld a, [MapGroup]
 	cp a, GROUP_LAKE_OF_RAGE
 	jr nz, .Happiness
@@ -6648,7 +6640,7 @@ LoadEnemyMon: ; 3e8eb
 	call GetPartyLocation
 	ld bc, NUM_MOVES
 	call CopyBytes
-	jr .PP
+	jp .PP
 
 .WildMoves:
 ; Clear EnemyMonMoves
@@ -6664,34 +6656,7 @@ endr
 ; Fill moves based on level
 	predef FillMoves
 
-; Wild Pikachu in Yellow Forest know Fly or Surf
-	ld a, [MapGroup]
-	cp a, GROUP_YELLOW_FOREST
-	jr nz, .PP
-	ld a, [MapNumber]
-	cp a, MAP_YELLOW_FOREST
-	jr nz, .PP
-	ld a, [CurPartySpecies]
-	cp PIKACHU
-	jr nz, .PP
-	ld a, [PlayerState]
-	cp PLAYER_SURF
-	jr z, .surfpikachu
-	cp PLAYER_SURF_PIKA
-	jr z, .surfpikachu
-
-	ld a, 2
-	call RandomRange
-	and a
-	jr z, .PP
-
-	ld a, FLY
-	jp .flypikachu
-.surfpikachu
-	ld a, SURF
-.flypikachu
-	ld hl, EnemyMonMoves + 3
-	ld [hl], a
+	call CheckUniqueWildMove
 
 .PP:
 ; Trainer battle?
@@ -8714,7 +8679,7 @@ ExitBattle: ; 3f69e
 	xor a
 	ld [wForceEvolution], a
 	predef EvolveAfterBattle
-	callba GivePokerusAndConvertBerries
+	callba GivePokerus
 	ret
 ; 3f6d0
 
@@ -9613,3 +9578,6 @@ BattleStartMessage: ; 3fc8b
 
 	ret
 ; 3fd26
+
+
+INCLUDE "battle/unique_moves.asm"

@@ -188,8 +188,8 @@ TrainerBug_catcherWade1:
 Route31MailRecipientScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM50_NIGHTMARE
-	iftrue .DescribeNightmare
+	checkevent EVENT_GAVE_KENYA
+	iftrue .TutorSleepTalk
 	checkevent EVENT_GOT_KENYA
 	iftrue .TryGiveKenya
 	writetext Text_Route31SleepyMan
@@ -210,13 +210,23 @@ Route31MailRecipientScript:
 	writetext Text_Route31ReadingMail
 	buttonsound
 	setevent EVENT_GAVE_KENYA
-	verbosegiveitem TM_NIGHTMARE
-	iffalse .NoRoomForItems
-	setevent EVENT_GOT_TM50_NIGHTMARE
-.DescribeNightmare:
-	writetext Text_Route31DescribeNightmare
+.TutorSleepTalk
+	writetext Text_Route31TutorSleepTalk
+	yesorno
+	iffalse .TutorRefused
+	writebyte SLEEP_TALK
+	writetext Text_Route31TutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_Route31TutorRefused
 	waitbutton
-.NoRoomForItems:
+	closetext
+	end
+
+.TeachMove
+	writetext Text_Route31TutorTaught
+	waitbutton
 	closetext
 	end
 
@@ -347,26 +357,30 @@ Text_Route31ReadingMail:
 
 	para "I'd like to do"
 	line "something good in"
-	cont "return too!"
-
-	para "I know! I want you"
-	line "to have this!"
+	cont "return!"
 	done
 
-Text_Route31DescribeNightmare:
-	text "TM50 is Nightmare."
+Text_Route31TutorSleepTalk:
+	text "I can teach your"
+	line "#mon to talk"
+	cont "in their sleep."
 
-	para "It's a wicked move"
-	line "that steadily cuts"
+	para "Should I teach"
+	line "Sleep Talk?"
+	done
 
-	para "the HP of a sleep-"
-	line "ing enemy."
+Text_Route31TutorRefused:
+	text "Okay then…"
+	done
 
-	para "Ooooh…"
-	line "That's scary…"
+Text_Route31TutorClear:
+	text ""
+	done
 
-	para "I don't want to"
-	line "have bad dreams."
+Text_Route31TutorTaught:
+	text "There! Now your"
+	line "#mon knows"
+	cont "Sleep Talk!"
 	done
 
 Text_Route31WrongMail:

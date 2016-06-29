@@ -119,8 +119,8 @@ endr
 ; 11780 (4:5780)
 
 .NicknameStrings: ; 11780
-	db "'S@"
-	db "Nickname?@"
+	db "'s@"
+	db "nickname?@"
 
 ; 1178d
 

@@ -5,29 +5,29 @@
 	const KARATE_CHOP  ; $02
 	const DOUBLESLAP   ; $03
 	const COMET_PUNCH  ; $04
-	const MEGA_PUNCH   ; $05
+	const DRAGON_CLAW  ; $05
 	const PAY_DAY      ; $06
 	const FIRE_PUNCH   ; $07
 	const ICE_PUNCH    ; $08
 	const THUNDERPUNCH ; $09
 	const SCRATCH      ; $0a
-	const VICEGRIP     ; $0b
+	const X_SCISSOR    ; $0b
 	const GUILLOTINE   ; $0c
-	const RAZOR_WIND   ; $0d
+	const AIR_SLASH    ; $0d
 	const SWORDS_DANCE ; $0e
 	const CUT          ; $0f
 	const GUST         ; $10
 	const WING_ATTACK  ; $11
 	const WHIRLWIND    ; $12
 	const FLY          ; $13
-	const BIND         ; $14
+	const DAZZLINGLEAM ; $14
 	const SLAM         ; $15
 	const VINE_WHIP    ; $16
 	const STOMP        ; $17
 	const DOUBLE_KICK  ; $18
-	const MEGA_KICK    ; $19
-	const JUMP_KICK    ; $1a
-	const ROLLING_KICK ; $1b
+	const FLARE_BLITZ  ; $19
+	const STONE_EDGE   ; $1a
+	const FOCUS_BLAST  ; $1b
 	const SAND_ATTACK  ; $1c
 	const HEADBUTT     ; $1d
 	const HORN_ATTACK  ; $1e
@@ -90,7 +90,7 @@
 	const THUNDER      ; $57
 	const ROCK_THROW   ; $58
 	const EARTHQUAKE   ; $59
-	const FISSURE      ; $5a
+	const AVALANCHE    ; $5a
 	const DIG          ; $5b
 	const TOXIC        ; $5c
 	const CONFUSION    ; $5d
@@ -102,7 +102,7 @@
 	const RAGE         ; $63
 	const TELEPORT     ; $64
 	const NIGHT_SHADE  ; $65
-	const MIMIC        ; $66
+	const DRAGON_PULSE ; $66
 	const SCREECH      ; $67
 	const DOUBLE_TEAM  ; $68
 	const RECOVER      ; $69
@@ -110,48 +110,48 @@
 	const MINIMIZE     ; $6b
 	const SMOKESCREEN  ; $6c
 	const CONFUSE_RAY  ; $6d
-	const WITHDRAW     ; $6e
+	const AQUA_TAIL    ; $6e
 	const DEFENSE_CURL ; $6f
 	const BARRIER      ; $70
 	const LIGHT_SCREEN ; $71
 	const HAZE         ; $72
 	const REFLECT      ; $73
 	const FOCUS_ENERGY ; $74
-	const BIDE         ; $75
+	const FLASH_CANNON ; $75
 	const METRONOME    ; $76
 	const MIRROR_MOVE  ; $77
 	const SELFDESTRUCT ; $78
 	const EGG_BOMB     ; $79
 	const LICK         ; $7a
-	const SMOG         ; $7b
+	const GUNK_SHOT    ; $7b
 	const SLUDGE       ; $7c
-	const BONE_CLUB    ; $7d
+	const EARTH_POWER  ; $7d
 	const FIRE_BLAST   ; $7e
 	const WATERFALL    ; $7f
-	const CLAMP        ; $80
+	const RAZOR_SHELL  ; $80
 	const SWIFT        ; $81
-	const SKULL_BASH   ; $82
+	const IRON_HEAD    ; $82
 	const SPIKE_CANNON ; $83
-	const CONSTRICT    ; $84
-	const AMNESIA      ; $85
-	const KINESIS      ; $86
+	const FAIRY_WIND   ; $84
+	const CALM_MIND    ; $85
+	const METAL_SOUND  ; $86
 	const SOFTBOILED   ; $87
 	const HI_JUMP_KICK ; $88
 	const GLARE        ; $89
 	const DREAM_EATER  ; $8a
-	const POISON_GAS   ; $8b
-	const BARRAGE      ; $8c
+	const POISON_JAB   ; $8b
+	const BULLET_PUNCH ; $8c
 	const LEECH_LIFE   ; $8d
-	const LOVELY_KISS  ; $8e
+	const DRAIN_KISS   ; $8e
 	const SKY_ATTACK   ; $8f
 	const TRANSFORM    ; $90
 	const BUBBLE       ; $91
 	const DIZZY_PUNCH  ; $92
 	const SPORE        ; $93
 	const FLASH        ; $94
-	const PSYWAVE      ; $95
+	const EXTRASENSORY ; $95
 	const SPLASH       ; $96
-	const ACID_ARMOR   ; $97
+	const DRAGON_DANCE ; $97
 	const CRABHAMMER   ; $98
 	const EXPLOSION    ; $99
 	const FURY_SWIPES  ; $9a
@@ -159,7 +159,7 @@
 	const REST         ; $9c
 	const ROCK_SLIDE   ; $9d
 	const HYPER_FANG   ; $9e
-	const SHARPEN      ; $9f
+	const BULK_UP      ; $9f
 	const CONVERSION   ; $a0
 	const TRI_ATTACK   ; $a1
 	const SUPER_FANG   ; $a2
@@ -169,18 +169,18 @@
 	const SKETCH       ; $a6
 	const TRIPLE_KICK  ; $a7
 	const THIEF        ; $a8
-	const SPIDER_WEB   ; $a9
-	const MIND_READER  ; $aa
+	const WILL_O_WISP  ; $a9
+	const ZEN_HEADBUTT ; $aa
 	const NIGHTMARE    ; $ab
 	const FLAME_WHEEL  ; $ac
-	const SNORE        ; $ad
+	const HYPER_VOICE  ; $ad
 	const CURSE        ; $ae
 	const FLAIL        ; $af
 	const CONVERSION2  ; $b0
 	const AEROBLAST    ; $b1
-	const COTTON_SPORE ; $b2
+	const SEED_BOMB    ; $b2
 	const REVERSAL     ; $b3
-	const SPITE        ; $b4
+	const ASTONISH     ; $b4
 	const POWDER_SNOW  ; $b5
 	const PROTECT      ; $b6
 	const MACH_PUNCH   ; $b7
@@ -197,8 +197,8 @@
 	const DESTINY_BOND ; $c2
 	const PERISH_SONG  ; $c3
 	const ICY_WIND     ; $c4
-	const DETECT       ; $c5
-	const BONE_RUSH    ; $c6
+	const POWER_GEM    ; $c5
+	const WILD_CHARGE  ; $c6
 	const LOCK_ON      ; $c7
 	const OUTRAGE      ; $c8
 	const SANDSTORM    ; $c9
@@ -217,8 +217,8 @@
 	const SLEEP_TALK   ; $d6
 	const HEAL_BELL    ; $d7
 	const RETURN       ; $d8
-	const PRESENT      ; $d9
-	const FRUSTRATION  ; $da
+	const PSYSTRIKE    ; $d9
+	const BUG_BUZZ     ; $da
 	const SAFEGUARD    ; $db
 	const PAIN_SPLIT   ; $dc
 	const SACRED_FIRE  ; $dd
@@ -230,7 +230,7 @@
 	const ENCORE       ; $e3
 	const PURSUIT      ; $e4
 	const RAPID_SPIN   ; $e5
-	const SWEET_SCENT  ; $e6
+	const SHADOW_CLAW  ; $e6
 	const IRON_TAIL    ; $e7
 	const METAL_CLAW   ; $e8
 	const VITAL_THROW  ; $e9
@@ -244,14 +244,14 @@
 	const SUNNY_DAY    ; $f1
 	const CRUNCH       ; $f2
 	const MIRROR_COAT  ; $f3
-	const PSYCH_UP     ; $f4
+	const NASTY_PLOT   ; $f4
 	const EXTREMESPEED ; $f5
 	const ANCIENTPOWER ; $f6
 	const SHADOW_BALL  ; $f7
 	const FUTURE_SIGHT ; $f8
 	const ROCK_SMASH   ; $f9
 	const WHIRLPOOL    ; $fa
-	const BEAT_UP      ; $fb
+	const DARK_PULSE   ; $fb
 	const MOONBLAST    ; $fc
 	const PLAY_ROUGH   ; $fd
 	const DISARM_VOICE ; $fe

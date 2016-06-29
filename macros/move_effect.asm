@@ -97,7 +97,7 @@ endm
 	command endure                  ; 5a
 	command checkcurl               ; 5b
 	command rolloutpower            ; 5c
-	command effect0x5d              ; 5d
+	command bulkup                  ; 5d
 	command furycutter              ; 5e
 	command attract                 ; 5f
 	command happinesspower          ; 60
@@ -152,7 +152,7 @@ endm
 	command statdownanim            ; 91
 	command statupanim              ; 92
 	command switchturn              ; 93
-	command fakeout                 ; 94
+	command astonish                ; 94
 	command bellydrum               ; 95
 	command psychup                 ; 96
 	command rage                    ; 97
@@ -169,10 +169,10 @@ endm
 	command ragedamage              ; a2
 	command resettypematchup        ; a3
 	command allstatsup              ; a4
-	command effect0xa5              ; a5
+	command calmmind                ; a5
 	command raisesubnoanim          ; a6
 	command lowersubnoanim          ; a7
-	command effect0xa8              ; a8
+	command dragondance             ; a8
 	command clearmissdamage         ; a9
 	command movedelay               ; aa
 	command hittarget               ; ab

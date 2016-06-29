@@ -1364,8 +1364,7 @@ INCLUDE "engine/tmhm2.asm"
 MoveDescriptions:: ; 2cb52
 INCLUDE "battle/moves/move_descriptions.asm"
 
-GivePokerusAndConvertBerries: ; 2ed44
-	call ConvertBerriesToBerryJuice
+GivePokerus: ; 2ed44
 	ld hl, PartyMon1PokerusStatus
 	ld a, [PartyCount]
 	ld b, a
@@ -1485,44 +1484,6 @@ GivePokerusAndConvertBerries: ; 2ed44
 	inc a
 	add b
 	ld [hl], a
-	ret
-
-; any berry held by a Shuckle may be converted to berry juice
-ConvertBerriesToBerryJuice: ; 2ede6
-	ld hl, StatusFlags2
-	bit 6, [hl]
-	ret z
-	call Random
-	cp $10
-	ret nc              ; 1/16 chance
-	ld hl, PartyMons
-	ld a, [PartyCount]
-.partyMonLoop
-	push af
-	push hl
-	ld a, [hl]
-	cp 255 ; Shuckle was removed from the game
-	jr nz, .loopMon
-	ld bc, MON_ITEM
-	add hl, bc
-	ld a, [hl]
-	cp BERRY
-	jr z, .convertToJuice
-
-.loopMon
-	pop hl
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop af
-	dec a
-	jr nz, .partyMonLoop
-	ret
-
-.convertToJuice
-	ld a, BERRY_JUICE
-	ld [hl], a
-	pop hl
-	pop af
 	ret
 
 ShowLinkBattleParticipants: ; 2ee18
@@ -2245,19 +2206,6 @@ Special_MoveTutor: ; 4925b
 
 .GetMoveTutorMove: ; 492a5
 	ld a, [ScriptVar]
-	cp 1
-	jr z, .flamethrower
-	cp 2
-	jr z, .thunderbolt
-	ld a, ICE_BEAM
-	ret
-
-.flamethrower
-	ld a, FLAMETHROWER
-	ret
-
-.thunderbolt
-	ld a, THUNDERBOLT
 	ret
 
 CheckCanLearnMoveTutorMove: ; 492b9
@@ -3994,15 +3942,16 @@ INCLUDE "misc/gbc_only.asm"
 
 INCLUDE "event/poke_seer.asm"
 
-SECTION "bank14", ROMX, BANK[$14]
-
-INCLUDE "engine/party_menu.asm"
 INCLUDE "event/poisonstep.asm"
 INCLUDE "event/sweet_scent.asm"
 INCLUDE "event/squirtbottle.asm"
 INCLUDE "event/card_key.asm"
 INCLUDE "event/basement_key.asm"
 INCLUDE "event/sacred_ash.asm"
+
+SECTION "bank14", ROMX, BANK[$14]
+
+INCLUDE "engine/party_menu.asm"
 
 CopyPkmnToTempMon: ; 5084a
 ; gets the BaseData of a Pkmn
@@ -4133,98 +4082,6 @@ GetPkmnSpecies: ; 508d5
 	ret
 
 INCLUDE "text/types.asm"
-
-Function50a28: ; 50a28
-	ld hl, Strings50a42
-	ld a, [TrainerClass]
-	dec a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, StringBuffer1
-.copy
-	ld a, [hli]
-	ld [de], a
-	inc de
-	cp "@"
-	jr nz, .copy
-	ret
-
-Strings50a42: ; 50a42
-; Untranslated trainer class names from Red.
-	dw .Youngster
-	dw .BugCatcher
-	dw .Lass
-	dw OTClassName
-	dw .JrTrainerM
-	dw .JrTrainerF
-	dw .Pokemaniac
-	dw .SuperNerd
-	dw OTClassName
-	dw OTClassName
-	dw .Burglar
-	dw .Engineer
-	dw .Jack
-	dw OTClassName
-	dw .Swimmer
-	dw OTClassName
-	dw OTClassName
-	dw .Beauty
-	dw OTClassName
-	dw .Rocker
-	dw .Juggler
-	dw OTClassName
-	dw OTClassName
-	dw .Blackbelt
-	dw OTClassName
-	dw .ProfOak
-	dw .Chief
-	dw .Scientist
-	dw OTClassName
-	dw .Rocket
-	dw .CooltrainerM
-	dw .CooltrainerF
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-	dw OTClassName
-
-.Youngster:    db "たんパン@"
-.BugCatcher:   db "むしとり@"
-.Lass:         db "ミニスカ@"
-.JrTrainerM:   db "ボーイ@"
-.JrTrainerF:   db "ガール@"
-.Pokemaniac:   db "マニア@"
-.SuperNerd:    db "りかけい@"
-.Burglar:      db "どろぼう@"
-.Engineer:     db "ォヤジ@"
-.Jack:         db "ジャック@"
-.Swimmer:      db "かいパン@"
-.Beauty:       db "おねえさん@"
-.Rocker:       db "グループ@"
-.Juggler:      db "ジャグラー@"
-.Blackbelt:    db "からて@"
-.ProfOak:      db "ォーキド@"
-.Chief:        db "チーフ@"
-.Scientist:    db "けんきゅういん@"
-.Rocket:       db "だんいん@"
-.CooltrainerM: db "エりート♂@"
-.CooltrainerF: db "エりート♀@"
 
 DrawPlayerHP: ; 50b0a
 	ld a, $1
@@ -4802,6 +4659,21 @@ CalcLevel: ; 50e1b
 CalcExpAtLevel: ; 50e47
 ; (a/b)*n**3 + c*n**2 + d*n - e
 	ld a, [BaseGrowthRate]
+	cp MEDIUM_SLOW
+	jr nz, .UseExpFormula
+	ld a, d
+	cp 1
+	jr nz, .UseExpFormula
+; Medium Slow Pokémon have 1 experience at level 1, not -54
+	xor a
+	ld [hProduct], a
+	ld [hProduct + 1], a
+	ld [hProduct + 2], a
+	ld a, 1
+	ld [hProduct + 3], a
+	ret
+.UseExpFormula
+	ld a, [BaseGrowthRate]
 	add a
 	add a
 	ld c, a
@@ -4941,12 +4813,12 @@ growth_rate: MACRO
 	db \4, \5
 ENDM
 
-	growth_rate 1, 1,   0,   0,  0 ; Medium Fast
-	growth_rate 3, 4,  10,   0, 10 ; Slightly Fast
-	growth_rate 3, 4,  20,   0, 20 ; Slightly Slow
-	growth_rate 6, 5, -15, 100, 86 ; Medium Slow
-	growth_rate 4, 5,   0,   0,  0 ; Fast
-	growth_rate 5, 4,   0,   0,  0 ; Slow
+	growth_rate 1, 1,   0,   0,   0 ; Medium Fast
+	growth_rate 3, 4,  10,   0,  10 ; Slightly Fast
+	growth_rate 3, 4,  20,   0,  20 ; Slightly Slow
+	growth_rate 6, 5, -15, 100, 140 ; Medium Slow
+	growth_rate 4, 5,   0,   0,   0 ; Fast
+	growth_rate 5, 4,   0,   0,   0 ; Slow
 
 _SwitchPartyMons:
 	ld a, [wd0e3]
@@ -5235,20 +5107,6 @@ INCLUDE "data/base_stats.asm"
 
 PokemonNames::
 INCLUDE "data/pokemon_names.asm"
-
-Unknown_53d84: ; unreferenced
-	db $1a, $15
-	db $33, $16
-	db $4b, $17
-	db $62, $18
-	db $79, $19
-	db $90, $1a
-	db $a8, $1b
-	db $c4, $1c
-	db $e0, $1d
-	db $f6, $1e
-	db $ff, $1f
-	db $ff, $20
 
 UnknownEggPic:: ; 53d9c
 ; Another egg pic. This is shifted up a few pixels.

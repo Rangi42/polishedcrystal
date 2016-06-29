@@ -28,12 +28,12 @@ BugCatcherScript_0x18c00c:
 GrampsScript_0x18c00f:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SILVER_WING
+	checkevent EVENT_GOT_OLD_AMBER
 	iftrue UnknownScript_0x18c023
 	writetext UnknownText_0x18c0c6
 	buttonsound
-	verbosegiveitem SILVER_WING
-	setevent EVENT_GOT_SILVER_WING
+	verbosegiveitem OLD_AMBER
+	setevent EVENT_GOT_OLD_AMBER
 	closetext
 	end
 

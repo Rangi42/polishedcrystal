@@ -278,7 +278,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                     9, 32 ;  1
+	mapgroup ROUTE_3,                                    11, 32 ;  1
 	mapgroup PEWTER_CITY,                                18, 20 ;  2
 	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  3
 	mapgroup PEWTER_GYM,                                  7,  5 ;  4
@@ -391,10 +391,12 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 20
 	mapgroup CELADON_GYM,                                 9,  5 ; 21
 	mapgroup CELADON_CAFE,                                4,  6 ; 22
-	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 23
-	mapgroup ROUTE_16_GATE,                               4,  5 ; 24
-	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 25
-	mapgroup ROUTE_17_18_GATE,                            4,  5 ; 26
+	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 23
+	mapgroup CELADON_HOTEL,                               4,  7 ; 24
+	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 25
+	mapgroup ROUTE_16_GATE,                               4,  5 ; 26
+	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 27
+	mapgroup ROUTE_17_18_GATE,                            4,  5 ; 28
 
 	newgroup                                                    ; 22
 
@@ -419,7 +421,11 @@ MAP_NONE   EQU 0
 	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
 	mapgroup ROUTE_48,                                   11, 18 ; 20
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 21
-	mapgroup YELLOW_FOREST,                              25, 29 ; 20
+	mapgroup YELLOW_FOREST,                              25, 29 ; 22
+	mapgroup QUIET_CAVE_1F,                              18, 18 ; 23
+	mapgroup QUIET_CAVE_B1F,                             18, 18 ; 24
+	mapgroup QUIET_CAVE_B2F,                             18, 18 ; 25
+	mapgroup QUIET_CAVE_B3F,                             18, 18 ; 26
 
 	newgroup                                                    ; 23
 
