@@ -47,11 +47,11 @@ GetTMHMMove: ; 1166a
 
 TMHMMoves: ; 1167a
 	db DYNAMICPUNCH ; TM01 (Chuck)
-	db DRAGON_CLAW  ; TM02 (Route 26)
+	db DRAGON_CLAW  ; TM02 (Route 27)
 	db CURSE        ; TM03 (Celadon Mansion)
 	db CALM_MIND    ; TM04 (Celadon Dept.Store)
 	db ROAR         ; TM05 (Route 32)
-	db TOXIC        ; TM06 (Janine)
+	db TOXIC        ; TM06 (Celadon Dept.Store)
 	db ROLLOUT      ; TM07 (Route 35)
 	db BULK_UP      ; TM08 (Celadon Dept.Store)
 	db SWORDS_DANCE ; TM09 (Celadon Dept.Store)
@@ -67,14 +67,14 @@ TMHMMoves: ; 1167a
 	db GIGA_DRAIN   ; TM19 (Erika)
 	db SAFEGUARD    ; TM20 (Goldenrod Dept.Store)
 	db DRAGONBREATH ; TM21 (Clair)
-	db SOLARBEAM    ; TM22 (Route 27)
+	db SOLARBEAM    ; TM22 (Goldenrod Dept.Store)
 	db IRON_TAIL    ; TM23 (Jasmine)
 	db THUNDERBOLT  ; TM24 (Goldenrod Dept.Store)
 	db THUNDER      ; TM25 (Goldenrod Game Corner)
 	db EARTHQUAKE   ; TM26 (Victory Road)
 	db RETURN       ; TM27 (Goldenrod Dept.Store)
 	db DIG          ; TM28 (National Park)
-	db PSYCHIC_M    ; TM29 (Saffron City)
+	db PSYCHIC_M    ; TM29 (Sabrina, Saffron City)
 	db SHADOW_BALL  ; TM30 (Morty)
 	db MUD_SLAP     ; TM31 (Falkner)
 	db DOUBLE_TEAM  ; TM32 (Celadon Game Corner)
@@ -86,28 +86,28 @@ TMHMMoves: ; 1167a
 	db FIRE_BLAST   ; TM38 (Goldenrod Game Corner)
 	db SWIFT        ; TM39 (Union Cave)
 	db DEFENSE_CURL ; TM40 (Mount Mortar)
-	db STONE_EDGE   ; TM41
+	db STONE_EDGE   ; TM41 (Blue)
 	db AVALANCHE    ; TM42 (Ice Path)
-	db WILD_CHARGE  ; TM43
+	db WILD_CHARGE  ; TM43 (Lt.Surge)
 	db REST         ; TM44 (Celadon Dept.Store)
 	db ATTRACT      ; TM45 (Whitney)
 	db THIEF        ; TM46 (Team Rocket Base)
 	db BODY_SLAM    ; TM47 (Fast Ship)
-	db ROCK_SLIDE   ; TM48
+	db ROCK_SLIDE   ; TM48 (Brock)
 	db FURY_CUTTER  ; TM49 (Bugsy)
 	db SUBSTITUTE   ; TM50 (Route 39 Farmhouse)
 	db STEEL_WING   ; TM51 (Route 28)
-	db FOCUS_BLAST  ; TM52
+	db FOCUS_BLAST  ; TM52 (Quiet Cave)
 	db FLASH_CANNON ; TM53 (Route 9)
 	db FALSE_SWIPE  ; TM54 (Goldenrod Dept.Store)
-	db SCALD        ; TM55
+	db SCALD        ; TM55 (Misty)
 	db X_SCISSOR    ; TM56 (Underground Warehouse)
 	db DARK_PULSE   ; TM57 (Dark Cave)
 	db ENDURE       ; TM58 (Burned Tower)
-	db DRAGON_PULSE ; TM59
-	db DAZZLINGLEAM ; TM60
-	db WILL_O_WISP  ; TM61
-	db POISON_JAB   ; TM62
+	db DRAGON_PULSE ; TM59 (Route 26)
+	db DAZZLINGLEAM ; TM60 (Valerie)
+	db WILL_O_WISP  ; TM61 (Blaine)
+	db POISON_JAB   ; TM62 (Janine)
 	db THUNDER_WAVE ; TM63 (Rock Tunnel)
 	db EXPLOSION    ; TM64 (Underground)
 	db SHADOW_CLAW  ; TM65 (Lake of Rage)

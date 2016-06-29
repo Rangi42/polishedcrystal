@@ -10,8 +10,8 @@ QuietCaveB3F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-QuietCaveB3FMaxRevive:
-	itemball MAX_REVIVE
+QuietCaveB3FTMFocusBlast:
+	itemball TM_FOCUS_BLAST
 
 QuietCaveB3FHelixFossil:
 	itemball HELIX_FOSSIL
@@ -21,6 +21,9 @@ QuietCaveB3FDomeFossil:
 
 QuietCaveB3FHiddenPPUp:
 	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP, PP_UP
+
+QuietCaveB3FHiddenMaxRevive
+	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 QuietCaveB3F_MapEventHeader:
 	; filler
@@ -37,11 +40,12 @@ QuietCaveB3F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 1
+	db 2
 	signpost 20, 16, SIGNPOST_ITEM, QuietCaveB3FHiddenPPUp
+	signpost 22, 12, SIGNPOST_ITEM, QuietCaveB3FHiddenMaxRevive
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_POKE_BALL, 22, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB3FMaxRevive, EVENT_QUIET_CAVE_B3F_MAX_REVIVE
+	person_event SPRITE_POKE_BALL, 22, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB3FTMFocusBlast, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
 	person_event SPRITE_POKE_BALL, 5, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB3FHelixFossil, EVENT_QUIET_CAVE_B3F_HELIX_FOSSIL
 	person_event SPRITE_POKE_BALL, 5, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB3FDomeFossil, EVENT_QUIET_CAVE_B3F_DOME_FOSSIL

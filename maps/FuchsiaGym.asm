@@ -46,13 +46,13 @@ JanineScript_0x195db9:
 	faceplayer
 	opentext
 UnknownScript_0x195e02:
-	checkevent EVENT_GOT_TM06_TOXIC
+	checkevent EVENT_GOT_TM62_POISON_JAB
 	iftrue UnknownScript_0x195e15
 	writetext UnknownText_0x196002
 	buttonsound
-	verbosegiveitem TM_TOXIC
+	verbosegiveitem TM_POISON_JAB
 	iffalse UnknownScript_0x195e15
-	setevent EVENT_GOT_TM06_TOXIC
+	setevent EVENT_GOT_TM62_POISON_JAB
 UnknownScript_0x195e15:
 	writetext UnknownText_0x196074
 	waitbutton
@@ -268,11 +268,12 @@ UnknownText_0x196002:
 	line "tough! I have a"
 	cont "special gift!"
 
-	para "It's Toxic, a pow-"
-	line "erful poison that"
+	para "It's Poison Jab,"
+	line "a powerful Poison-"
 
-	para "steadily saps the"
-	line "victim's HP."
+	para "type move that"
+	line "may poison its"
+	cont "victim."
 	done
 
 UnknownText_0x196074:

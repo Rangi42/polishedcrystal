@@ -144,7 +144,7 @@ Mart8: ; 16134
 ; 1613b
 
 Mart9: ; 1613b
-	db 8 ; # items
+	db 9 ; # items
 	db TM_PROTECT
 	db TM_SAFEGUARD
 	db TM_REFLECT
@@ -153,6 +153,7 @@ Mart9: ; 1613b
 	db TM_THUNDERBOLT
 	db TM_FLAMETHROWER
 	db TM_ICE_BEAM
+	db TM_SOLARBEAM
 	db $ff
 ; 16140
 
@@ -334,11 +335,12 @@ Mart24: ; 161c2
 ; 161ce
 
 Mart25: ; 161ce
-	db 8 ; # items
+	db 9 ; # items
 	db TM_HIDDEN_POWER
 	db TM_SWORDS_DANCE
 	db TM_CALM_MIND
 	db TM_BULK_UP
+	db TM_TOXIC
 	db TM_REST
 	db TM_SUNNY_DAY
 	db TM_RAIN_DANCE
