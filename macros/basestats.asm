@@ -68,7 +68,7 @@ y = y >> 8
 	db w & $ff
 w = w >> 8
 	endr
-	rept 1
+	rept 3
 	db q & $ff
 q = q >> 8
 	endr

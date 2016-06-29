@@ -2131,7 +2131,7 @@ BaseGrowthRate:: ; d24c
 BaseEggGroups:: ; d24d
 	ds 1
 BaseTMHM:: ; d24e
-	ds 10
+	ds 12
 
 
 CurDamage:: ; d256

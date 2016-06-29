@@ -3942,15 +3942,16 @@ INCLUDE "misc/gbc_only.asm"
 
 INCLUDE "event/poke_seer.asm"
 
-SECTION "bank14", ROMX, BANK[$14]
-
-INCLUDE "engine/party_menu.asm"
 INCLUDE "event/poisonstep.asm"
 INCLUDE "event/sweet_scent.asm"
 INCLUDE "event/squirtbottle.asm"
 INCLUDE "event/card_key.asm"
 INCLUDE "event/basement_key.asm"
 INCLUDE "event/sacred_ash.asm"
+
+SECTION "bank14", ROMX, BANK[$14]
+
+INCLUDE "engine/party_menu.asm"
 
 CopyPkmnToTempMon: ; 5084a
 ; gets the BaseData of a Pkmn
@@ -5106,20 +5107,6 @@ INCLUDE "data/base_stats.asm"
 
 PokemonNames::
 INCLUDE "data/pokemon_names.asm"
-
-Unknown_53d84: ; unreferenced
-	db $1a, $15
-	db $33, $16
-	db $4b, $17
-	db $62, $18
-	db $79, $19
-	db $90, $1a
-	db $a8, $1b
-	db $c4, $1c
-	db $e0, $1d
-	db $f6, $1e
-	db $ff, $1f
-	db $ff, $20
 
 UnknownEggPic:: ; 53d9c
 ; Another egg pic. This is shifted up a few pixels.
