@@ -41,11 +41,17 @@ ErikaScript_0x72a6a:
 	writetext UnknownText_0x72cb0
 	buttonsound
 	verbosegiveitem TM_GIGA_DRAIN
-	iffalse UnknownScript_0x72aae
+	iffalse ErikaCannotGiveTMScript
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
+	writetext ErikaOutroText
+	waitbutton
+	closetext
+	end
+
 UnknownScript_0x72aae:
 	writetext UnknownText_0x72d8f
 	waitbutton
+ErikaCannotGiveTMScript:
 	closetext
 	end
 
@@ -153,7 +159,7 @@ UnknownText_0x72c3e:
 
 UnknownText_0x72c96:
 	text "<PLAYER> received"
-	line "Rainbow Badge."
+	line "the Rainbow Badge."
 	done
 
 UnknownText_0x72cb0:
@@ -163,8 +169,10 @@ UnknownText_0x72cb0:
 	para "I felt inspired."
 	line "Please, I wish you"
 	cont "to have this TM."
+	done
 
-	para "It is Giga Drain."
+ErikaOutroText:
+	text "It is Giga Drain."
 
 	para "It is a wonderful"
 	line "move that drains"

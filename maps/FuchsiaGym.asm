@@ -51,11 +51,17 @@ UnknownScript_0x195e02:
 	writetext UnknownText_0x196002
 	buttonsound
 	verbosegiveitem TM_POISON_JAB
-	iffalse UnknownScript_0x195e15
+	iffalse JanineCannotGiveTMScript
 	setevent EVENT_GOT_TM62_POISON_JAB
+	writetext JanineOutroText
+	waitbutton
+	closetext
+	end
+
 UnknownScript_0x195e15:
 	writetext UnknownText_0x196074
 	waitbutton
+JanineCannotGiveTMScript:
 	closetext
 	end
 
@@ -267,8 +273,10 @@ UnknownText_0x196002:
 	text "Janine: You're so"
 	line "tough! I have a"
 	cont "special gift!"
+	done
 
-	para "It's Poison Jab,"
+JanineOutroText:
+	text "It's Poison Jab,"
 	line "a powerful Poison-"
 
 	para "type move that"

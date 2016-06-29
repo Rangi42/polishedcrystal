@@ -86,8 +86,22 @@ MistyScript_0x188432:
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
 .FightDone:
+	checkevent EVENT_GOT_TM55_SCALD
+	iftrue MistyAfterTMScript
+	writetext MistyGiveTMText
+	buttonsound
+	verbosegiveitem TM_SCALD
+	iffalse MistyCannotGiveTMScript
+	setevent EVENT_GOT_TM55_SCALD
+	writetext MistyOutroText
+	waitbutton
+	closetext
+	end
+
+MistyAfterTMScript:
 	writetext UnknownText_0x188782
 	waitbutton
+MistyCannotGiveTMScript:
 	closetext
 	end
 
@@ -299,6 +313,22 @@ UnknownText_0x18870c:
 UnknownText_0x188768:
 	text "<PLAYER> received"
 	line "the Cascade Badge."
+	done
+
+MistyGiveTMText:
+	text "Misty: Here's"
+	line "another memento"
+
+	para "from this battle."
+	line "Take it!"
+	done
+
+MistyOutroText:
+	text "It contains the"
+	line "move Scald. It can"
+
+	para "sometimes burn"
+	line "your foe."
 	done
 
 UnknownText_0x188782:

@@ -108,14 +108,23 @@ BlaineScript_0x1ab4fb:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
+.FightDone:
+	checkevent EVENT_GOT_TM61_WILL_O_WISP
+	iftrue BlaineAfterTMScript
 	writetext UnknownText_0x1ab69d
+	buttonsound
+	verbosegiveitem TM_WILL_O_WISP
+	iffalse BlaineCannotGiveTMScript
+	setevent EVENT_GOT_TM61_WILL_O_WISP
+	writetext BlaineOutroText
 	waitbutton
 	closetext
 	end
 
-.FightDone:
+BlaineAfterTMScript:
 	writetext UnknownText_0x1ab71c
 	waitbutton
+BlaineCannotGiveTMScript:
 	closetext
 	end
 
@@ -163,9 +172,8 @@ ScientistDennettSeenText:
 	done
 
 ScientistDennettBeatenText:
-	text "Blaine's"
-	line "perseverance"
-	cont "motivates me!"
+	text "Blaine's persever-"
+	line "ance motivates me!"
 	done
 
 ScientistDennettAfterText:
@@ -283,11 +291,21 @@ UnknownText_0x1ab683:
 	done
 
 UnknownText_0x1ab69d:
-	text "Blaine: I did lose"
-	line "this time, but I'm"
+	text "Here, I'll give you"
+	line "this, too. "
+	done
 
-	para "going to win the"
-	line "next time."
+BlaineOutroText:
+	text "It's called Will-"
+	line "O-Wisp!"
+
+	para "It weakens your"
+	line "foe by inflicting"
+	cont "a burn."
+
+	para "I did lose this"
+	line "time, but I'm going"
+	cont "to win next time."
 
 	para "When I rebuild my"
 	line "Cinnabar Gym,"

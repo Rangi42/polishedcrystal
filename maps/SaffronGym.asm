@@ -35,14 +35,23 @@ SabrinaScript_0x189c2e:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MARSHBADGE
+.FightDone:
+	checkevent EVENT_GOT_TM29_PSYCHIC
+	iftrue SabrinaAfterTMScript
 	writetext UnknownText_0x189ead
+	buttonsound
+	verbosegiveitem TM_PSYCHIC
+	iffalse SabrinaCannotGiveTMScript
+	setevent EVENT_GOT_TM29_PSYCHIC
+	writetext SabrinaOutroText
 	waitbutton
 	closetext
 	end
 
-.FightDone:
+SabrinaAfterTMScript:
 	writetext UnknownText_0x189f6c
 	waitbutton
+SabrinaCannotGiveTMScript:
 	closetext
 	end
 
@@ -164,17 +173,29 @@ UnknownText_0x189e95:
 	done
 
 UnknownText_0x189ead:
-	text "Sabrina: Although"
-	line "I failed to accu-"
-	cont "rately predict"
+	text "Sabrina: I failed"
+	line "to accurately pre-"
 
-	para "your power, this"
-	line "much I know to be"
-	cont "true."
+	para "dict your power."
+	line "That means your"
+
+	para "power is beyond my"
+	line "psychic ability."
+
+	para "You deserve this"
+	line "TM, too!"
+	done
+
+SabrinaOutroText:
+	text "TM29 is Psychic."
+
+	para "It may lower the"
+	line "target's Spcl.Def."
 
 	para "You will become a"
 	line "celebrated and"
-	cont "beloved Champion!"
+
+	para "beloved Champion!"
 	done
 
 UnknownText_0x189f6c:

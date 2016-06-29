@@ -27,14 +27,23 @@ BlueScript_0x9aa26:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_EARTHBADGE
+.FightDone:
+	checkevent EVENT_GOT_TM41_STONE_EDGE
+	iftrue BlueEpilogueScript
 	writetext LeaderBlueAfterText
+	buttonsound
+	verbosegiveitem TM_STONE_EDGE
+	iffalse BlueCannotGiveTMScript
+	setevent EVENT_GOT_TM41_STONE_EDGE
+	writetext BlueOutroText
 	waitbutton
 	closetext
 	end
 
-.FightDone:
+BlueEpilogueScript:
 	writetext LeaderBlueEpilogueText
 	waitbutton
+BlueCannotGiveTMScript:
 	closetext
 	end
 
@@ -107,8 +116,8 @@ LeaderBlueWinText:
 	para "Tch, all right…"
 	line "Here, take this--"
 
-	para "it's the"
-	line "Earth Badge."
+	para "it's the Earth"
+	line "Badge."
 	done
 
 Text_ReceivedEarthBadge:
@@ -117,7 +126,18 @@ Text_ReceivedEarthBadge:
 	done
 
 LeaderBlueAfterText:
-	text "Blue: …"
+	text "Blue: Here! Take"
+	line "this as well!"
+	done
+
+BlueOutroText:
+	text "It contains Stone"
+	line "Edge. It's not only"
+
+	para "for Rock-type"
+	line "#mon, got it?"
+
+	para "…"
 
 	para "All right, I was"
 	line "wrong. You're the"

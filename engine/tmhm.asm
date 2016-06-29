@@ -120,8 +120,8 @@ TMHMMoves: ; 1167a
 	db WATERFALL    ; HM07 (Ice Path)
 	db ROCK_SMASH   ; HM08 (Route 36)
 	db AQUA_TAIL    ; MT01
-	db COUNTER      ; MT02
-	db DOUBLE_EDGE  ; MT03
+	db COUNTER      ; MT02 (Celadon Dept.Store)
+	db DOUBLE_EDGE  ; MT03 (Victory Road)
 	db DREAM_EATER  ; MT04 (Viridian City)
 	db EARTH_POWER  ; MT05
 	db FIRE_PUNCH   ; MT06 (Goldenrod City)
@@ -130,7 +130,7 @@ TMHMMoves: ; 1167a
 	db ICE_PUNCH    ; MT09 (Goldenrod City)
 	db IRON_HEAD    ; MT10
 	db SEED_BOMB    ; MT11
-	db SEISMIC_TOSS ; MT12
+	db SEISMIC_TOSS ; MT12 (Pewter City)
 	db SLEEP_TALK   ; MT13 (Route 31)
 	db THUNDERPUNCH ; MT14 (Goldenrod City)
 	db ZAP_CANNON   ; MT15 (Power Plant)
