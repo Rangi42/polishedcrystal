@@ -174,6 +174,20 @@ UnknownScript_0x188e93:
 	waitbutton
 PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorZapCannon
+	yesorno
+	iffalse .TutorRefused
+	writebyte ZAP_CANNON
+	writetext Text_PowerPlantTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_PowerPlantTutorRefused
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	writetext Text_PowerPlantTutorTaught
 	waitbutton
 	closetext
 	end
@@ -368,8 +382,23 @@ Text_PowerPlantTutorZapCannon:
 	para "accurate, but it"
 	line "packs a wallop!"
 
-	para "TODO: Move Tutor"
-	line "for Zap Cannon"
+	para "Should I teach"
+	line "Zap Cannon?"
+	done
+
+Text_PowerPlantTutorRefused:
+	text "Have it your way."
+	done
+
+Text_PowerPlantTutorClear:
+	text ""
+	done
+
+Text_PowerPlantTutorTaught:
+	text "Now your #mon"
+	line "knows Zap Cannon!"
+
+	para "Wahahah!"
 	done
 
 PowerPlant_MapEventHeader:

@@ -61,6 +61,20 @@ FisherScript_0x1a9a75:
 	setevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
 ViridianCityTutorDreamEaterScript:
 	writetext Text_ViridianCityTutorDreamEater
+	yesorno
+	iffalse .TutorRefused
+	writebyte DREAM_EATER
+	writetext Text_ViridianCityTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_ViridianCityTutorRefused
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	writetext Text_ViridianCityTutorTaught
 	waitbutton
 	closetext
 	end
@@ -166,8 +180,24 @@ Text_ViridianCityTutorDreamEater:
 	line "#mon to eat"
 	cont "dreams."
 
-	para "TODO: Move Tutor"
-	line "for Dream Eater"
+	para "Should I teach"
+	line "Dream Eater?"
+	done
+
+Text_ViridianCityTutorRefused:
+	text "Okay…"
+	done
+
+Text_ViridianCityTutorClear:
+	text ""
+	done
+
+Text_ViridianCityTutorTaught:
+	text "Now your #mon"
+	line "knows how to use"
+	cont "Dream Eater…"
+
+	para "…Zzzzz…"
 	done
 
 UnknownText_0x1a9daa:

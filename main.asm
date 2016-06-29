@@ -2206,19 +2206,6 @@ Special_MoveTutor: ; 4925b
 
 .GetMoveTutorMove: ; 492a5
 	ld a, [ScriptVar]
-	cp 1
-	jr z, .flamethrower
-	cp 2
-	jr z, .thunderbolt
-	ld a, ICE_BEAM
-	ret
-
-.flamethrower
-	ld a, FLAMETHROWER
-	ret
-
-.thunderbolt
-	ld a, THUNDERBOLT
 	ret
 
 CheckCanLearnMoveTutorMove: ; 492b9

@@ -212,6 +212,20 @@ Route31MailRecipientScript:
 	setevent EVENT_GAVE_KENYA
 .TutorSleepTalk
 	writetext Text_Route31TutorSleepTalk
+	yesorno
+	iffalse .TutorRefused
+	writebyte SLEEP_TALK
+	writetext Text_Route31TutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_Route31TutorRefused
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	writetext Text_Route31TutorTaught
 	waitbutton
 	closetext
 	end
@@ -343,16 +357,30 @@ Text_Route31ReadingMail:
 
 	para "I'd like to do"
 	line "something good in"
-	cont "return too!"
+	cont "return!"
 	done
 
 Text_Route31TutorSleepTalk:
 	text "I can teach your"
 	line "#mon to talk"
-	cont "in their sleep!"
+	cont "in their sleep."
 
-	para "TODO: Move Tutor"
-	line "for Sleep Talk"
+	para "Should I teach"
+	line "Sleep Talk?"
+	done
+
+Text_Route31TutorRefused:
+	text "Okay then…"
+	done
+
+Text_Route31TutorClear:
+	text ""
+	done
+
+Text_Route31TutorTaught:
+	text "There! Now your"
+	line "#mon knows"
+	cont "Sleep Talk!"
 	done
 
 Text_Route31WrongMail:

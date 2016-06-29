@@ -36,22 +36,16 @@ GoldenrodCity_MapScriptHeader:
 	return
 
 .MoveTutor:
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_BEAT_CLAIR
 	iffalse .MoveTutorDone
-	checkitem COIN_CASE
-	iffalse .MoveTutorDisappear
-	checkcode VAR_WEEKDAY
-	if_equal WEDNESDAY, .MoveTutorAppear
-	if_equal SATURDAY, .MoveTutorAppear
-.MoveTutorDisappear:
-	disappear GOLDENRODCITY_POKEFAN_M2
-	return
-
-.MoveTutorAppear:
 	checkflag ENGINE_DAILY_MOVE_TUTOR
 	iftrue .MoveTutorDone
 	appear GOLDENRODCITY_POKEFAN_M2
 .MoveTutorDone:
+	return
+
+.MoveTutorDisappear:
+	disappear GOLDENRODCITY_POKEFAN_M2
 	return
 
 GoldenrodTMVendorScript:
