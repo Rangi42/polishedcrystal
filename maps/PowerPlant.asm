@@ -174,6 +174,10 @@ UnknownScript_0x188e93:
 	waitbutton
 PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorZapCannon
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_PowerPlantTutorQuestion
 	yesorno
 	iffalse .TutorRefused
 	writebyte ZAP_CANNON
@@ -186,7 +190,14 @@ PowerPlantTutorZapCannonScript:
 	closetext
 	end
 
+.NoSilverLeaf
+	writetext Text_PowerPlantTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
 .TeachMove
+	takeitem SILVER_LEAF
 	writetext Text_PowerPlantTutorTaught
 	waitbutton
 	closetext
@@ -382,8 +393,20 @@ Text_PowerPlantTutorZapCannon:
 	para "accurate, but it"
 	line "packs a wallop!"
 
-	para "Should I teach"
-	line "Zap Cannon?"
+	para "I'll just need one"
+	line "Silver Leaf."
+	done
+
+Text_PowerPlantTutorNoSilverLeaf:
+	text "Sorry, but I can't"
+	line "teach Zap Cannon"
+	cont "without that Leaf!"
+	done
+
+Text_PowerPlantTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Zap Cannon?"
 	done
 
 Text_PowerPlantTutorRefused:

@@ -107,7 +107,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
    * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
    * Revised set of 60 TMs and 8 HMs
-   * Add move tutors for Sleep Talk, Zap Cannon, and Dream Eater
+   * Add move tutors for Sleep Talk, Zap Cannon, and Dream Eater (one Silver Leaf per tutoring)
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -278,7 +278,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
-   * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
+   * Move Relearner that accepts Gold Leaves
 * Fix bugs:
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)

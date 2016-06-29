@@ -383,6 +383,10 @@ IlexForestHeadbuttGuyScript:
 	setevent EVENT_LISTENED_TO_HEADBUTT_INTRO
 IlexForestTutorHeadbuttScript:
 	writetext Text_IlexForestTutorHeadbutt
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_IlexForestTutorQuestion
 	yesorno
 	iffalse .TutorRefused
 	writebyte HEADBUTT
@@ -395,7 +399,14 @@ IlexForestTutorHeadbuttScript:
 	closetext
 	end
 
+.NoSilverLeaf
+	writetext Text_IlexForestTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
 .TeachMove
+	takeitem SILVER_LEAF
 	writetext Text_IlexForestTutorTaught
 	waitbutton
 	closetext
@@ -846,6 +857,25 @@ Text_HeadbuttIntro:
 	done
 
 Text_IlexForestTutorHeadbutt:
+	text "I can teach your"
+	line "#mon to use"
+
+	para "Headbutt in ex-"
+	line "change for a"
+	cont "Silver Leaf."
+	done
+
+Text_IlexForestTutorNoSilverLeaf:
+	text "Oh, but you don't"
+	line "have any Silver"
+	cont "Leaves."
+
+	para "Sometimes you can"
+	line "find them on wild"
+	cont "Oddish."
+	done
+
+Text_IlexForestTutorQuestion:
 	text "Should I teach"
 	line "your #mon"
 	cont "Headbutt?"
