@@ -295,6 +295,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Better Substitute sprites
    * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
+   * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS

@@ -116,7 +116,7 @@
 	db "Focus Energy@"
 	db "Flash Cannon@"
 	db "Metronome@"
-	db "Mirror Move@"
+	db "Scald@"
 	db "SelfDestruct@"
 	db "Egg Bomb@"
 	db "Lick@"

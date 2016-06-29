@@ -1218,13 +1218,6 @@ DreamEater:
 	buildopponentrage
 	endmove
 
-MirrorMove:
-	checkobedience
-	usedmovetext
-	doturn
-	mirrormove
-	endmove
-
 Whirlwind:
 Roar:
 	checkobedience
@@ -2311,6 +2304,13 @@ PsychUp:
 	usedmovetext
 	doturn
 	psychup
+	endmove
+
+MirrorMove:
+	checkobedience
+	usedmovetext
+	doturn
+	mirrormove
 	endmove
 
 SkullBash:

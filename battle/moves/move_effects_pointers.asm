@@ -75,7 +75,6 @@
 	dw Trap
 	dw Explosion
 	dw DreamEater
-	dw MirrorMove
 	dw Whirlwind
 	dw Conversion
 	dw PayDay
@@ -157,5 +156,6 @@
 	dw Present
 	dw Frustration
 	dw PsychUp
+	dw MirrorMove
 	dw SkullBash
 	dw BeatUp

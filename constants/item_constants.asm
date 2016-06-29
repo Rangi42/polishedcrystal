@@ -207,13 +207,13 @@
 
 	add_tm DYNAMICPUNCH ; $b6
 	add_tm DRAGON_CLAW  ; $b7
-	add_tm SWORDS_DANCE ; $b8
+	add_tm CURSE        ; $b8
 	add_tm CALM_MIND    ; $b9
 	add_tm ROAR         ; $ba
 	add_tm TOXIC        ; $bb
 	add_tm ROLLOUT      ; $bc
 	add_tm BULK_UP      ; $bd
-	add_tm TAKE_DOWN    ; $be
+	add_tm SWORDS_DANCE ; $be
 	add_tm HIDDEN_POWER ; $bf
 	add_tm SUNNY_DAY    ; $c0
 	add_tm ICY_WIND     ; $c1
@@ -259,7 +259,7 @@
 	add_tm FOCUS_BLAST  ; $e9
 	add_tm FLASH_CANNON ; $ea
 	add_tm FALSE_SWIPE  ; $eb
-	add_tm CURSE        ; $ec
+	add_tm SCALD        ; $ec
 	add_tm X_SCISSOR    ; $ed
 	add_tm DARK_PULSE   ; $ee
 	add_tm ENDURE       ; $ef

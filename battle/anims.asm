@@ -118,7 +118,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_FocusEnergy
 	dw BattleAnim_FlashCannon
 	dw BattleAnim_Metronome
-	dw BattleAnim_MirrorMove
+	dw BattleAnim_Scald
 	dw BattleAnim_Selfdestruct
 	dw BattleAnim_EggBomb
 	dw BattleAnim_Lick
@@ -281,7 +281,6 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_MirrorMove: ; c929b
 	anim_ret
 ; c929c
 
@@ -327,6 +326,19 @@ BattleAnim_DisarmVoice:
 	anim_wait 2
 	anim_loop 2, .loop
 	anim_wait 64
+	anim_ret
+
+BattleAnim_Scald:
+; TODO: write an original animation
+	anim_1gfx ANIM_GFX_BUBBLE
+	anim_bgeffect ANIM_BG_SURF, $0, $0, $0
+	anim_obj ANIM_OBJ_22,  11, 0,  13, 0, $8
+.loop
+	anim_sound 0, 1, SFX_SURF
+	anim_wait 32
+	anim_loop 4, .loop
+	anim_incobj  1
+	anim_wait 56
 	anim_ret
 
 BattleAnim_SweetScent2:

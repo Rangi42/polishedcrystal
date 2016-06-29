@@ -117,7 +117,7 @@
 	dw FocusEnergyDescription
 	dw FlashCannonDescription
 	dw MetronomeDescription
-	dw MirrorMoveDescription
+	dw ScaldDescription
 	dw SelfdestructDescription
 	dw EggBombDescription
 	dw LickDescription
@@ -336,6 +336,7 @@ FlamethrowerDescription:
 FireBlastDescription:
 FlameWheelDescription:
 SacredFireDescription:
+ScaldDescription:
 	db   "An attack that may"
 	next "inflict a burn.@"
 
@@ -743,10 +744,6 @@ HazeDescription:
 MetronomeDescription:
 	db   "Randomly uses any"
 	next "#mon move.@"
-
-MirrorMoveDescription:
-	db   "Counters with the"
-	next "same move.@"
 
 SelfdestructDescription:
 	db   "Powerful but makes"

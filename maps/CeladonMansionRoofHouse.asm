@@ -11,7 +11,7 @@ CeladonMansionRoofHouse_MapScriptHeader:
 PharmacistScript_0x71afd:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM55_CURSE
+	checkevent EVENT_GOT_TM03_CURSE
 	iftrue UnknownScript_0x71b21
 	writetext UnknownText_0x71b27
 	buttonsound
@@ -27,7 +27,7 @@ UnknownScript_0x71b14:
 	buttonsound
 	verbosegiveitem TM_CURSE
 	iffalse UnknownScript_0x71b25
-	setevent EVENT_GOT_TM55_CURSE
+	setevent EVENT_GOT_TM03_CURSE
 UnknownScript_0x71b21:
 	writetext UnknownText_0x71db3
 	waitbutton
@@ -103,11 +103,11 @@ UnknownText_0x71ba3:
 
 	para "For listening so"
 	line "patiently, you may"
-	cont "take this--TM55!"
+	cont "take this--TM03!"
 	done
 
 UnknownText_0x71db3:
-	text "TM55 is Curse."
+	text "TM03 is Curse."
 
 	para "It's a terrifying"
 	line "move that slowly"

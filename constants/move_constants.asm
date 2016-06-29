@@ -119,7 +119,7 @@
 	const FOCUS_ENERGY ; $74
 	const FLASH_CANNON ; $75
 	const METRONOME    ; $76
-	const MIRROR_MOVE  ; $77
+	const SCALD        ; $77
 	const SELFDESTRUCT ; $78
 	const EGG_BOMB     ; $79
 	const LICK         ; $7a

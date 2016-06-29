@@ -48,13 +48,13 @@ GetTMHMMove: ; 1166a
 TMHMMoves: ; 1167a
 	db DYNAMICPUNCH ; TM01 (Chuck)
 	db DRAGON_CLAW  ; TM02 (Route 26)
-	db SWORDS_DANCE ; TM03 (Celadon Dept.Store)
+	db CURSE        ; TM03 (Celadon Mansion)
 	db CALM_MIND    ; TM04 (Celadon Dept.Store)
 	db ROAR         ; TM05 (Route 32)
 	db TOXIC        ; TM06 (Janine)
 	db ROLLOUT      ; TM07 (Route 35)
 	db BULK_UP      ; TM08 (Celadon Dept.Store)
-	db TAKE_DOWN    ; TM09
+	db SWORDS_DANCE ; TM09 (Celadon Dept.Store)
 	db HIDDEN_POWER ; TM10 (Lake of Rage, Celadon Dept.Store)
 	db SUNNY_DAY    ; TM11 (Radio Tower, Celadon Dept.Store)
 	db ICY_WIND     ; TM12 (Pryce)
@@ -100,7 +100,7 @@ TMHMMoves: ; 1167a
 	db FOCUS_BLAST  ; TM52
 	db FLASH_CANNON ; TM53 (Route 9)
 	db FALSE_SWIPE  ; TM54 (Goldenrod Dept.Store)
-	db CURSE        ; TM55 (Celadon Mansion)
+	db SCALD        ; TM55
 	db X_SCISSOR    ; TM56 (Underground Warehouse)
 	db DARK_PULSE   ; TM57 (Dark Cave)
 	db ENDURE       ; TM58 (Burned Tower)
