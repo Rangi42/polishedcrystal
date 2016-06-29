@@ -66,21 +66,21 @@ BlackthornGymClairScript:
 	end
 
 .AlreadyGotBadge:
-	checkevent EVENT_GOT_TM07_DRAGONBREATH
-	iftrue .GotTM07
+	checkevent EVENT_GOT_TM21_DRAGONBREATH
+	iftrue .GotTM21
 	writetext BlackthornGymClairText_YouKeptMeWaiting
 	buttonsound
 	giveitem TM_DRAGONBREATH
 	iffalse .BagFull
 	itemtotext TM_DRAGONBREATH, $0
-	writetext BlackthornGymText_ReceivedTM07
+	writetext BlackthornGymText_ReceivedTM21
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_TM07_DRAGONBREATH
-	writetext BlackthornGymClairText_DescribeTM07
+	setevent EVENT_GOT_TM21_DRAGONBREATH
+	writetext BlackthornGymClairText_DescribeTM21
 	buttonsound
-	jump .GotTM07
+	jump .GotTM21
 
 .BagFull:
 	writetext BlackthornGymClairText_BagFull
@@ -88,7 +88,7 @@ BlackthornGymClairScript:
 	closetext
 	end
 
-.GotTM07:
+.GotTM21:
 	writetext BlackthornGymClairText_League
 	waitbutton
 	closetext
@@ -233,12 +233,12 @@ BlackthornGymClairText_YouKeptMeWaiting:
 	para "Here! Take this!"
 	done
 
-BlackthornGymText_ReceivedTM07:
+BlackthornGymText_ReceivedTM21:
 	text "<PLAYER> received"
-	line "TM07."
+	line "TM21."
 	done
 
-BlackthornGymClairText_DescribeTM07:
+BlackthornGymClairText_DescribeTM21:
 	text "That contains"
 	line "DragonBreath."
 

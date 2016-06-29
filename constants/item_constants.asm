@@ -161,6 +161,7 @@
 	const BERSERK_GENE  ; $8e
 	const EVIOLITE      ; $8f
 	const LIFE_ORB      ; $90
+
 	const DRAGON_SCALE  ; $91
 	const UP_GRADE      ; $92
 	const DUBIOUS_DISC  ; $93
@@ -203,72 +204,72 @@
 	const ITEM_B3       ; $b3
 	const ITEM_B4       ; $b4
 	const ITEM_B5       ; $b5
-	const ITEM_B6       ; $b6
-	const ITEM_B7       ; $b7
-	const ITEM_B8       ; $b8
-	const ITEM_B9       ; $b9
-	const ITEM_BA       ; $ba
 
-	add_tm DYNAMICPUNCH ; $bb
-	add_tm DRAGON_CLAW  ; $bc
-	add_tm CURSE        ; $bd
-	add_tm CALM_MIND    ; $be
-	add_tm ROAR         ; $bf
-	add_tm TOXIC        ; $c0
-	add_tm DRAGONBREATH ; $c1
-	add_tm BULK_UP      ; $c2
-	add_tm HEADBUTT     ; $c3
-	add_tm HIDDEN_POWER ; $c4
-	add_tm SUNNY_DAY    ; $c5
-	add_tm ROLLOUT      ; $c6
-	add_tm ICE_BEAM     ; $c7
-	add_tm BLIZZARD     ; $c8
-	add_tm HYPER_BEAM   ; $c9
-	add_tm LIGHT_SCREEN ; $ca
-	add_tm PROTECT      ; $cb
-	add_tm RAIN_DANCE   ; $cc
-	add_tm GIGA_DRAIN   ; $cd
-	add_tm ENDURE       ; $ce
-	add_tm ICE_PUNCH    ; $cf
-	add_tm SOLARBEAM    ; $d0
-	add_tm IRON_TAIL    ; $d1
-	add_tm THUNDERBOLT  ; $d2
-	add_tm THUNDER      ; $d3
-	add_tm EARTHQUAKE   ; $d4
-	add_tm RETURN       ; $d5
-	add_tm DIG          ; $d6
-	add_tm PSYCHIC      ; $d7
-	add_tm SHADOW_BALL  ; $d8
-	add_tm MUD_SLAP     ; $d9
-	add_tm DOUBLE_TEAM  ; $da
-	add_tm REFLECT      ; $db
-	add_tm SWAGGER      ; $dc
-	add_tm FLAMETHROWER ; $dd
-	add_tm SLUDGE_BOMB  ; $de
-	add_tm SANDSTORM    ; $df
-	add_tm FIRE_BLAST   ; $e0
-	add_tm SWIFT        ; $e1
-	add_tm DEFENSE_CURL ; $e2
-	add_tm THUNDERPUNCH ; $e3
-	add_tm ICY_WIND     ; $e4
-	add_tm WILL_O_WISP  ; $e5
-	add_tm REST         ; $e6
-	add_tm ATTRACT      ; $e7
-	add_tm THIEF        ; $e8
-	add_tm STEEL_WING   ; $e9
-	add_tm FIRE_PUNCH   ; $ea
-	add_tm FURY_CUTTER  ; $eb
-	add_tm DAZZLINGLEAM ; $ec
-	add_tm STONE_EDGE   ; $ed
-	add_tm AVALANCHE    ; $ee
-	add_tm WILD_CHARGE  ; $ef
-	add_tm POISON_JAB   ; $f0
-	add_tm SHADOW_CLAW  ; $f1
-	add_tm FOCUS_BLAST  ; $f2
-	add_tm DARK_PULSE   ; $f3
-	add_tm FLASH_CANNON ; $f4
-	add_tm DRAGON_PULSE ; $f5
-	add_tm X_SCISSOR    ; $f6
+	add_tm DYNAMICPUNCH ; $b6
+	add_tm DRAGON_CLAW  ; $b7
+	add_tm SWORDS_DANCE ; $b8
+	add_tm CALM_MIND    ; $b9
+	add_tm ROAR         ; $ba
+	add_tm TOXIC        ; $bb
+	add_tm ROLLOUT      ; $bc
+	add_tm BULK_UP      ; $bd
+	add_tm TAKE_DOWN    ; $be
+	add_tm HIDDEN_POWER ; $bf
+	add_tm SUNNY_DAY    ; $c0
+	add_tm ICY_WIND     ; $c1
+	add_tm ICE_BEAM     ; $c2
+	add_tm BLIZZARD     ; $c3
+	add_tm HYPER_BEAM   ; $c4
+	add_tm LIGHT_SCREEN ; $c5
+	add_tm PROTECT      ; $c6
+	add_tm RAIN_DANCE   ; $c7
+	add_tm GIGA_DRAIN   ; $c8
+	add_tm SAFEGUARD    ; $c9
+	add_tm DRAGONBREATH ; $ca
+	add_tm SOLARBEAM    ; $cb
+	add_tm IRON_TAIL    ; $cc
+	add_tm THUNDERBOLT  ; $cd
+	add_tm THUNDER      ; $ce
+	add_tm EARTHQUAKE   ; $cf
+	add_tm RETURN       ; $d0
+	add_tm DIG          ; $d1
+	add_tm PSYCHIC      ; $d2
+	add_tm SHADOW_BALL  ; $d3
+	add_tm MUD_SLAP     ; $d4
+	add_tm DOUBLE_TEAM  ; $d5
+	add_tm REFLECT      ; $d6
+	add_tm SWAGGER      ; $d7
+	add_tm FLAMETHROWER ; $d8
+	add_tm SLUDGE_BOMB  ; $d9
+	add_tm SANDSTORM    ; $da
+	add_tm FIRE_BLAST   ; $db
+	add_tm SWIFT        ; $dc
+	add_tm DEFENSE_CURL ; $dd
+	add_tm STONE_EDGE   ; $de
+	add_tm AVALANCHE    ; $df
+	add_tm WILD_CHARGE  ; $e0
+	add_tm REST         ; $e1
+	add_tm ATTRACT      ; $e2
+	add_tm THIEF        ; $e3
+	add_tm BODY_SLAM    ; $e4
+	add_tm ROCK_SLIDE   ; $e5
+	add_tm FURY_CUTTER  ; $e6
+	add_tm SUBSTITUTE   ; $e7
+	add_tm STEEL_WING   ; $e8
+	add_tm FOCUS_BLAST  ; $e9
+	add_tm FLASH_CANNON ; $ea
+	add_tm FALSE_SWIPE  ; $eb
+	add_tm CURSE        ; $ec
+	add_tm X_SCISSOR    ; $ed
+	add_tm DARK_PULSE   ; $ee
+	add_tm ENDURE       ; $ef
+	add_tm DRAGON_PULSE ; $f0
+	add_tm DAZZLINGLEAM ; $f1
+	add_tm WILL_O_WISP  ; $f2
+	add_tm POISON_JAB   ; $f3
+	add_tm THUNDER_WAVE ; $f4
+	add_tm EXPLOSION    ; $f5
+	add_tm SHADOW_CLAW  ; $f6
 NUM_TMS = const_value - TM01
 
 	add_hm CUT          ; $f7
@@ -282,14 +283,21 @@ NUM_TMS = const_value - TM01
 NUM_HMS = const_value - HM01
 
 ; Move tutor moves do not have a corresponding item constant, but do need
-; to be enumerated after TMs and HMs for learnset compatibility
+; to be enumerated after TMs and HMs for learnset compatibility.
 	add_mt AQUA_TAIL
+	add_mt COUNTER
+	add_mt DOUBLE_EDGE
 	add_mt DREAM_EATER
 	add_mt EARTH_POWER
+	add_mt FIRE_PUNCH
+	add_mt HEADBUTT
 	add_mt HYPER_VOICE
+	add_mt ICE_PUNCH
 	add_mt IRON_HEAD
 	add_mt SEED_BOMB
+	add_mt SEISMIC_TOSS
 	add_mt SLEEP_TALK
+	add_mt THUNDERPUNCH
 	add_mt ZAP_CANNON
 	add_mt ZEN_HEADBUTT
 

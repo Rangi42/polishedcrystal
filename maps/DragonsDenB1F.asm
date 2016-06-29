@@ -67,7 +67,7 @@ DragonsDenB1F_ClairTrigger:
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_TM07_DRAGONBREATH
+	setevent EVENT_GOT_TM21_DRAGONBREATH
 	writetext ClairText_DescribeDragonbreathDragonDen
 	buttonsound
 	writetext ClairText_WhatsTheMatterDragonDen
@@ -224,7 +224,7 @@ ClairText_GiveDragonbreathDragonDen:
 
 NotifyReceiveDragonbreath:
 	text "<PLAYER> received"
-	line "TM07."
+	line "TM21."
 	done
 
 ClairText_DescribeDragonbreathDragonDen:

@@ -54,11 +54,11 @@ GrampsScript_0x1a9a61:
 FisherScript_0x1a9a75:
 	faceplayer
 	opentext
-	checkevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
+	checkevent EVENT_LISTENED_TO_DREAM_EATER_INTRO
 	iftrue ViridianCityTutorDreamEaterScript
 	writetext UnknownText_0x1a9cc4
 	waitbutton
-	setevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
+	setevent EVENT_LISTENED_TO_DREAM_EATER_INTRO
 ViridianCityTutorDreamEaterScript:
 	writetext Text_ViridianCityTutorDreamEater
 	yesorno
