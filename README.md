@@ -193,6 +193,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
+   * Vermilion City boardwalk uses planks from RBY
    * Prof. Oak's lab has FRLG/HGSS appearance
    * Add crater to Route 3 from HGSS
    * Add fountain and benches to Cerulean City from HGSS
@@ -303,7 +304,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
-   * Use proper boardwalk/pier in Vermilion City
    * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
