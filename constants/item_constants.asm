@@ -226,7 +226,7 @@
 	add_tm GIGA_DRAIN   ; $c8
 	add_tm SAFEGUARD    ; $c9
 	add_tm DRAGONBREATH ; $ca
-	add_tm SOLARBEAM    ; $cb
+	add_tm SOLAR_BEAM   ; $cb
 	add_tm IRON_TAIL    ; $cc
 	add_tm THUNDERBOLT  ; $cd
 	add_tm THUNDER      ; $ce
@@ -251,11 +251,11 @@
 	add_tm REST         ; $e1
 	add_tm ATTRACT      ; $e2
 	add_tm THIEF        ; $e3
-	add_tm BODY_SLAM    ; $e4
+	add_tm STEEL_WING   ; $e4
 	add_tm ROCK_SLIDE   ; $e5
 	add_tm FURY_CUTTER  ; $e6
 	add_tm SUBSTITUTE   ; $e7
-	add_tm STEEL_WING   ; $e8
+	add_tm BODY_SLAM    ; $e8
 	add_tm FOCUS_BLAST  ; $e9
 	add_tm FLASH_CANNON ; $ea
 	add_tm FALSE_SWIPE  ; $eb
@@ -424,13 +424,13 @@ ITEMMENU_CLOSE              EQU 6
 	const MART_AZALEA
 	const MART_CIANWOOD
 	const MART_GOLDENROD_2F_1
-	const MART_GOLDENROD_2F_2
+	const MART_GOLDENROD_2F_2_1
 	const MART_GOLDENROD_3F
 	const MART_GOLDENROD_4F
-	const MART_GOLDENROD_5F_1
-	const MART_GOLDENROD_5F_2
-	const MART_GOLDENROD_5F_3
-	const MART_GOLDENROD_5F_4
+	const MART_GOLDENROD_5F
+	const MART_GOLDENROD_2F_2_2
+	const MART_UNUSED_1
+	const MART_UNUSED_2
 	const MART_OLIVINE
 	const MART_ECRUTEAK
 	const MART_MAHOGANY_1

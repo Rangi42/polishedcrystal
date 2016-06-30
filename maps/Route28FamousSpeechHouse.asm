@@ -18,13 +18,13 @@ Route28FamousSpeechHouse_MapScriptHeader:
 Celebrity:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM51_STEEL_WING
+	checkevent EVENT_GOT_TM47_STEEL_WING
 	iftrue .AlreadyGotItem
 	writetext CelebrityText1
 	buttonsound
 	verbosegiveitem TM_STEEL_WING
 	iffalse .Done
-	setevent EVENT_GOT_TM51_STEEL_WING
+	setevent EVENT_GOT_TM47_STEEL_WING
 .Done:
 	closetext
 	end

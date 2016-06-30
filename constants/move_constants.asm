@@ -3,7 +3,7 @@
 	const NO_MOVE      ; $00
 	const POUND        ; $01
 	const KARATE_CHOP  ; $02
-	const DOUBLESLAP   ; $03
+	const DOUBLE_SLAP  ; $03
 	const COMET_PUNCH  ; $04
 	const DRAGON_CLAW  ; $05
 	const PAY_DAY      ; $06
@@ -61,7 +61,7 @@
 	const ICE_BEAM     ; $3a
 	const BLIZZARD     ; $3b
 	const PSYBEAM      ; $3c
-	const BUBBLEBEAM   ; $3d
+	const BUBBLE_BEAM  ; $3d
 	const AURORA_BEAM  ; $3e
 	const HYPER_BEAM   ; $3f
 	const PECK         ; $40
@@ -76,7 +76,7 @@
 	const LEECH_SEED   ; $49
 	const GROWTH       ; $4a
 	const RAZOR_LEAF   ; $4b
-	const SOLARBEAM    ; $4c
+	const SOLAR_BEAM   ; $4c
 	const POISONPOWDER ; $4d
 	const STUN_SPORE   ; $4e
 	const SLEEP_POWDER ; $4f
@@ -185,7 +185,7 @@
 	const PROTECT      ; $b6
 	const MACH_PUNCH   ; $b7
 	const SCARY_FACE   ; $b8
-	const FAINT_ATTACK ; $b9
+	const FEINT_ATTACK ; $b9
 	const SWEET_KISS   ; $ba
 	const BELLY_DRUM   ; $bb
 	const SLUDGE_BOMB  ; $bc

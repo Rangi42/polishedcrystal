@@ -108,7 +108,7 @@ Mart5: ; 16118
 ; 16121
 
 Mart6: ; 16121
-	db 8 ; # items
+	db 9 ; # items
 	db POKE_BALL
 	db GREAT_BALL
 	db ESCAPE_ROPE
@@ -116,7 +116,8 @@ Mart6: ; 16121
 	db REVIVE
 	db FULL_HEAL
 	db POKE_DOLL
-	db FLOWER_MAIL
+	db BLUESKY_MAIL
+	db MORPH_MAIL
 	db $ff
 ; 1612b
 
@@ -153,13 +154,22 @@ Mart9: ; 1613b
 	db TM_THUNDERBOLT
 	db TM_FLAMETHROWER
 	db TM_ICE_BEAM
-	db TM_SOLARBEAM
+	db TM_SOLAR_BEAM
 	db $ff
 ; 16140
 
-; unused
 Mart10: ; 16140
-	db 0 ; # items
+	db 10 ; # items
+	db POKE_BALL
+	db GREAT_BALL
+	db ESCAPE_ROPE
+	db REPEL
+	db REVIVE
+	db FULL_HEAL
+	db POKE_DOLL
+	db BLUESKY_MAIL
+	db MORPH_MAIL
+	db EON_MAIL
 	db $ff
 ; 16146
 
@@ -228,7 +238,7 @@ Mart16: ; 16170
 ; 1617b
 
 Mart17: ; 1617b
-	db 9 ; # items
+	db 10 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
 	db HYPER_POTION
@@ -238,6 +248,7 @@ Mart17: ; 1617b
 	db MAX_REPEL
 	db X_DEFEND
 	db X_ATTACK
+	db MUSIC_MAIL
 	db $ff
 ; 16186
 
@@ -409,12 +420,13 @@ Mart30: ; 161f3
 ; 161fd
 
 Mart31: ; 161fd
-	db 6 ; # items
+	db 7 ; # items
 	db POKE_DOLL
 	db FRESH_WATER
 	db SODA_POP
 	db LEMONADE
 	db REPEL
+	db MIRAGE_MAIL
 	db PORTRAITMAIL
 	db $ff
 ; 16205

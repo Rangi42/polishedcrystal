@@ -327,8 +327,8 @@ Sfx_Powder: ; f0a7c
 	musicheader 1, 8, Sfx_Powder_Ch8
 ; f0a7f
 
-Sfx_Doubleslap: ; f0a7f
-	musicheader 1, 8, Sfx_Doubleslap_Ch8
+Sfx_DoubleSlap: ; f0a7f
+	musicheader 1, 8, Sfx_DoubleSlap_Ch8
 ; f0a82
 
 Sfx_Bite: ; f0a82
@@ -386,10 +386,10 @@ Sfx_Ember: ; f0ab5
 	musicheader 1, 8, Sfx_Ember_Ch8
 ; f0abb
 
-Sfx_Bubblebeam: ; f0abb
-	musicheader 3, 5, Sfx_Bubblebeam_Ch5
-	musicheader 1, 6, Sfx_Bubblebeam_Ch6
-	musicheader 1, 8, Sfx_Bubblebeam_Ch8
+Sfx_BubbleBeam: ; f0abb
+	musicheader 3, 5, Sfx_BubbleBeam_Ch5
+	musicheader 1, 6, Sfx_BubbleBeam_Ch6
+	musicheader 1, 8, Sfx_BubbleBeam_Ch8
 ; f0ac4
 
 Sfx_HydroPump: ; f0ac4
@@ -4655,7 +4655,7 @@ Sfx_Powder_Ch8: ; f2147
 	endchannel
 ; f2151
 
-Sfx_Doubleslap_Ch8: ; f2151
+Sfx_DoubleSlap_Ch8: ; f2151
 	noise __,  9, $f1, $32
 	noise __,  9, $f1, $33
 	endchannel
@@ -4827,36 +4827,36 @@ Sfx_Ember_branch_f225a: ; f225a
 	endchannel
 ; f226e
 
-Sfx_Bubblebeam_Ch5: ; f226e
-Sfx_Bubblebeam_branch_f226e: ; f226e
+Sfx_BubbleBeam_Ch5: ; f226e
+Sfx_BubbleBeam_branch_f226e: ; f226e
 	unknownmusic0xde $39
 	sound __,  5, $f4, $0600
 	sound __,  4, $c4, $0500
 	sound __,  6, $b5, $0600
 	sound __, 14, $e2, $06c0
-	loopchannel 3, Sfx_Bubblebeam_branch_f226e
+	loopchannel 3, Sfx_BubbleBeam_branch_f226e
 	sound __,  9, $d1, $0600
 	endchannel
 ; f2289
 
-Sfx_Bubblebeam_Ch6: ; f2289
-Sfx_Bubblebeam_branch_f2289: ; f2289
+Sfx_BubbleBeam_Ch6: ; f2289
+Sfx_BubbleBeam_branch_f2289: ; f2289
 	unknownmusic0xde $8d
 	sound __,  6, $e4, $05e0
 	sound __,  5, $b4, $04e0
 	sound __,  7, $a5, $05e8
 	sound __, 15, $d1, $06a0
-	loopchannel 3, Sfx_Bubblebeam_branch_f2289
+	loopchannel 3, Sfx_BubbleBeam_branch_f2289
 	endchannel
 ; f22a0
 
-Sfx_Bubblebeam_Ch8: ; f22a0
-Sfx_Bubblebeam_branch_f22a0: ; f22a0
+Sfx_BubbleBeam_Ch8: ; f22a0
+Sfx_BubbleBeam_branch_f22a0: ; f22a0
 	noise __,  6, $c3, $33
 	noise __,  4, $92, $43
 	noise __, 11, $b5, $33
 	noise __, 16, $c3, $32
-	loopchannel 2, Sfx_Bubblebeam_branch_f22a0
+	loopchannel 2, Sfx_BubbleBeam_branch_f22a0
 	endchannel
 ; f22b1
 

@@ -155,6 +155,6 @@ endr
 	db $ff
 
 .WeatherMoveModifiers:
-	db WEATHER_RAIN, EFFECT_SOLARBEAM, 05
+	db WEATHER_RAIN, EFFECT_SOLAR_BEAM, 05
 	db $ff
 ; fbe24

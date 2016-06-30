@@ -1151,7 +1151,7 @@ BattleCommand_DoTurn: ; 34555
 	db EFFECT_RAZOR_WIND
 	db EFFECT_SKY_ATTACK
 	db EFFECT_SKULL_BASH
-	db EFFECT_SOLARBEAM
+	db EFFECT_SOLAR_BEAM
 	db EFFECT_FLY
 	db EFFECT_ROLLOUT
 	db EFFECT_BIDE
@@ -2050,7 +2050,7 @@ BattleCommand_LowerSub: ; 34eee
 	jr z, .charge_turn
 	cp EFFECT_SKULL_BASH
 	jr z, .charge_turn
-	cp EFFECT_SOLARBEAM
+	cp EFFECT_SOLAR_BEAM
 	jr z, .charge_turn
 	cp EFFECT_FLY
 	jr z, .charge_turn
@@ -4507,7 +4507,7 @@ BattleCommand_SleepTalk: ; 35b33
 	ret z
 	cp EFFECT_SKY_ATTACK
 	ret z
-	cp EFFECT_SOLARBEAM
+	cp EFFECT_SOLAR_BEAM
 	ret z
 	cp EFFECT_FLY
 	ret z
@@ -7246,8 +7246,8 @@ BattleCommand_Charge: ; 36b4d
 ;	ld hl, .RazorWind
 ;	jr z, .done
 
-	cp SOLARBEAM
-	ld hl, .Solarbeam
+	cp SOLAR_BEAM
+	ld hl, .SolarBeam
 	jr z, .done
 
 ;	cp SKULL_BASH
@@ -7273,7 +7273,7 @@ BattleCommand_Charge: ; 36b4d
 	text_jump UnknownText_0x1c0d12
 	db "@"
 
-.Solarbeam:
+.SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
 	db "@"

@@ -238,6 +238,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
+   * Buy BlueSky Mail and Morph Mail in Goldenrod City
+   * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
+   * Buy Music Mail in Blackthorn City
+   * Buy Mirage Mail in Mt. Moon Square
 
 
 ## To do:
@@ -331,14 +335,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
-   * Get BlueSky Mail and Mirage Mail in the Pokécom Center
-   * Get Eon Mail, Morph Mail, and Music Mail somewhere
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
+   * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
    * Add four Boarders/Skiers to Ice Path

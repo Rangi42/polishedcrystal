@@ -30,7 +30,7 @@ GoldenrodDeptStore5F_MapScriptHeader:
 ClerkScript_0x5609c:
 	faceplayer
 	opentext
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_1
+	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F
 	closetext
 	end
 

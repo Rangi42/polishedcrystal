@@ -22,7 +22,14 @@ ClerkScript_0x55b5d:
 ClerkScript_0x55b65:
 	faceplayer
 	opentext
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2
+	checkevent EVENT_GOT_EEVEE
+	iftrue .eevee
+	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_1
+	closetext
+	end
+
+.eevee
+	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_2
 	closetext
 	end
 
