@@ -74,7 +74,7 @@ PokefanFScript_0x61024:
 	waitbutton
 	writetext UnknownText_0x624a4
 	waitbutton
-	verbosegiveitem REVIVE
+	verbosegiveitem EVIOLITE
 	iffalse UnknownScript_0x61051
 	writetext UnknownText_0x624e9
 	waitbutton

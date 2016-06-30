@@ -359,8 +359,8 @@ const_value SET 30
 	const HELD_38
 
 const_value SET 40
-	const HELD_40
-	const HELD_41
+	const HELD_EVIOLITE
+	const HELD_LIFE_ORB
 	const HELD_METAL_POWDER
 
 const_value SET 50

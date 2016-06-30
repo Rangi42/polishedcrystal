@@ -2747,6 +2747,58 @@ DittoMetalPowder: ; 352b1
 ; 352dc
 
 
+UnevolvedEviolite:
+	ld a, MON_SPECIES
+	call BattlePartyAttr
+	ld a, [hBattleTurn]
+	and a
+	ld a, [hl]
+	jr nz, .Unevolved
+	ld a, [TempEnemyMonSpecies]
+
+.Unevolved:
+	dec a
+	push hl
+	push bc
+	ld b, 0
+	ld c, a
+	ld hl, EvosAttacksPointers
+rept 2
+	add hl, bc
+endr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [hli]
+	and a
+	pop bc
+	pop hl
+	ret z
+
+	push bc
+	call GetOpponentItem
+	ld a, [hl]
+	cp EVIOLITE
+	pop bc
+	ret nz
+
+	ld a, c
+	srl a
+	add c
+	ld c, a
+	ret nc
+
+	srl b
+	ld a, b
+	and a
+	jr nz, .done
+	inc b
+.done
+	scf
+	rr c
+	ret
+
+
 BattleCommand_DamageStats: ; 352dc
 ; damagestats
 
@@ -2849,6 +2901,7 @@ PlayerAttackDamage: ; 352e2
 	ld a, [BattleMonLevel]
 	ld e, a
 	call DittoMetalPowder
+	call UnevolvedEviolite
 
 	ld a, 1
 	and a
@@ -3125,10 +3178,12 @@ EnemyAttackDamage: ; 353f6
 	ld hl, EnemyStats + 6
 
 .lightball
+; Note: Returns player special attack at hl in hl.
 	call LightBallBoost
 	jr .done
 
 .thickcluborlightball
+; Note: Returns player attack at hl in hl.
 	call ThickClubOrLightBallBoost
 
 .done
@@ -3137,6 +3192,7 @@ EnemyAttackDamage: ; 353f6
 	ld a, [EnemyMonLevel]
 	ld e, a
 	call DittoMetalPowder
+	call UnevolvedEviolite
 
 	ld a, 1
 	and a
