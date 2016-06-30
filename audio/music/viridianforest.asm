@@ -1,11 +1,11 @@
-Music_Route2: ; ed8dd
-	musicheader 4, 1, Music_Route2_Ch1
-	musicheader 1, 2, Music_Route2_Ch2
-	musicheader 1, 3, Music_Route2_Ch3
-	musicheader 1, 4, Music_Route2_Ch4
+Music_ViridianForest: ; ed8dd
+	musicheader 4, 1, Music_ViridianForest_Ch1
+	musicheader 1, 2, Music_ViridianForest_Ch2
+	musicheader 1, 3, Music_ViridianForest_Ch3
+	musicheader 1, 4, Music_ViridianForest_Ch4
 ; ed8e9
 
-Music_Route2_Ch1: ; ed8e9
+Music_ViridianForest_Ch1: ; ed8e9
 	tempo 151
 	volume $77
 	stereopanning $f
@@ -13,8 +13,8 @@ Music_Route2_Ch1: ; ed8e9
 	notetype $c, $b1
 	note __, 16
 	note __, 16
-	callchannel Music_Route2_branch_ed931
-Music_Route2_branch_ed8fb: ; ed8fb
+	callchannel Music_ViridianForest_branch_ed931
+Music_ViridianForest_branch_ed8fb: ; ed8fb
 	intensity $b1
 	octave 3
 	note B_, 4
@@ -26,10 +26,10 @@ Music_Route2_branch_ed8fb: ; ed8fb
 	note E_, 4
 	note E_, 4
 	note E_, 4
-	callchannel Music_Route2_branch_ed931
-	callchannel Music_Route2_branch_ed940
-	callchannel Music_Route2_branch_ed940
-	callchannel Music_Route2_branch_ed971
+	callchannel Music_ViridianForest_branch_ed931
+	callchannel Music_ViridianForest_branch_ed940
+	callchannel Music_ViridianForest_branch_ed940
+	callchannel Music_ViridianForest_branch_ed971
 	octave 3
 	note G_, 2
 	octave 4
@@ -43,7 +43,7 @@ Music_Route2_branch_ed8fb: ; ed8fb
 	octave 3
 	note B_, 2
 	note G_, 2
-	callchannel Music_Route2_branch_ed971
+	callchannel Music_ViridianForest_branch_ed971
 	note G_, 2
 	octave 4
 	note C_, 2
@@ -54,10 +54,10 @@ Music_Route2_branch_ed8fb: ; ed8fb
 	octave 3
 	note B_, 2
 	note G_, 2
-	loopchannel 0, Music_Route2_branch_ed8fb
+	loopchannel 0, Music_ViridianForest_branch_ed8fb
 ; ed931
 
-Music_Route2_branch_ed931: ; ed931
+Music_ViridianForest_branch_ed931: ; ed931
 	octave 4
 	note C_, 4
 	note C_, 4
@@ -73,7 +73,7 @@ Music_Route2_branch_ed931: ; ed931
 	endchannel
 ; ed940
 
-Music_Route2_branch_ed940: ; ed940
+Music_ViridianForest_branch_ed940: ; ed940
 	octave 2
 	note B_, 2
 	octave 3
@@ -123,7 +123,7 @@ Music_Route2_branch_ed940: ; ed940
 	endchannel
 ; ed971
 
-Music_Route2_branch_ed971: ; ed971
+Music_ViridianForest_branch_ed971: ; ed971
 	note B_, 2
 	note G_, 2
 	note B_, 2
@@ -163,24 +163,24 @@ Music_Route2_branch_ed971: ; ed971
 	endchannel
 ; ed996
 
-Music_Route2_Ch2: ; ed996
+Music_ViridianForest_Ch2: ; ed996
 	stereopanning $ff
 	vibrato $8, $24
 	notetype $c, $b2
-	callchannel Music_Route2_branch_ed9ba
-Music_Route2_branch_ed9a1: ; ed9a1
+	callchannel Music_ViridianForest_branch_ed9ba
+Music_ViridianForest_branch_ed9a1: ; ed9a1
 	intensity $b2
-	callchannel Music_Route2_branch_ed9ba
+	callchannel Music_ViridianForest_branch_ed9ba
 	dutycycle $2
 	intensity $b5
-	callchannel Music_Route2_branch_ed9dc
-	callchannel Music_Route2_branch_ed9dc
-	callchannel Music_Route2_branch_eda02
-	callchannel Music_Route2_branch_eda02
-	loopchannel 0, Music_Route2_branch_ed9a1
+	callchannel Music_ViridianForest_branch_ed9dc
+	callchannel Music_ViridianForest_branch_ed9dc
+	callchannel Music_ViridianForest_branch_eda02
+	callchannel Music_ViridianForest_branch_eda02
+	loopchannel 0, Music_ViridianForest_branch_ed9a1
 ; ed9ba
 
-Music_Route2_branch_ed9ba: ; ed9ba
+Music_ViridianForest_branch_ed9ba: ; ed9ba
 	octave 4
 	note E_, 4
 	note E_, 4
@@ -215,7 +215,7 @@ Music_Route2_branch_ed9ba: ; ed9ba
 	endchannel
 ; ed9dc
 
-Music_Route2_branch_ed9dc: ; ed9dc
+Music_ViridianForest_branch_ed9dc: ; ed9dc
 	octave 2
 	note C_, 4
 	note __, 2
@@ -256,7 +256,7 @@ Music_Route2_branch_ed9dc: ; ed9dc
 	endchannel
 ; eda02
 
-Music_Route2_branch_eda02: ; eda02
+Music_ViridianForest_branch_eda02: ; eda02
 	octave 2
 	note E_, 4
 	note __, 2
@@ -301,7 +301,7 @@ Music_Route2_branch_eda02: ; eda02
 	endchannel
 ; eda2c
 
-Music_Route2_Ch3: ; eda2c
+Music_ViridianForest_Ch3: ; eda2c
 	stereopanning $f0
 	vibrato $16, $15
 	notetype $c, $14
@@ -323,10 +323,10 @@ Music_Route2_Ch3: ; eda2c
 	note __, 3
 	note E_, 1
 	note __, 3
-	callchannel Music_Route2_branch_eda9e
+	callchannel Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 4
-Music_Route2_branch_eda4b: ; eda4b
+Music_ViridianForest_branch_eda4b: ; eda4b
 	notetype $c, $15
 	octave 3
 	note C_, 4
@@ -349,23 +349,23 @@ Music_Route2_branch_eda4b: ; eda4b
 	note __, 2
 	note G_, 1
 	note __, 1
-	callchannel Music_Route2_branch_eda9e
+	callchannel Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 2
 	intensity $10
 	octave 6
 	note C_, 1
 	note D_, 1
-	callchannel Music_Route2_branch_edaaf
+	callchannel Music_ViridianForest_branch_edaaf
 	note __, 4
 	note G_, 8
 	note F_, 2
 	note G_, 2
 	notetype $c, $10
-	callchannel Music_Route2_branch_edaaf
+	callchannel Music_ViridianForest_branch_edaaf
 	note __, 16
 	intensity $25
-	callchannel Music_Route2_branch_edacb
+	callchannel Music_ViridianForest_branch_edacb
 	note __, 4
 	note D#, 1
 	note E_, 7
@@ -382,7 +382,7 @@ Music_Route2_branch_eda4b: ; eda4b
 	octave 6
 	note A_, 4
 	note G_, 4
-	callchannel Music_Route2_branch_edacb
+	callchannel Music_ViridianForest_branch_edacb
 	note __, 4
 	note G#, 1
 	note A_, 7
@@ -390,10 +390,10 @@ Music_Route2_branch_eda4b: ; eda4b
 	note F#, 1
 	note G_, 16
 	note G_, 15
-	loopchannel 0, Music_Route2_branch_eda4b
+	loopchannel 0, Music_ViridianForest_branch_eda4b
 ; eda9e
 
-Music_Route2_branch_eda9e: ; eda9e
+Music_ViridianForest_branch_eda9e: ; eda9e
 	octave 3
 	note F_, 4
 	note __, 2
@@ -413,7 +413,7 @@ Music_Route2_branch_eda9e: ; eda9e
 	endchannel
 ; edaaf
 
-Music_Route2_branch_edaaf: ; edaaf
+Music_ViridianForest_branch_edaaf: ; edaaf
 	octave 6
 	note E_, 10
 	note D_, 2
@@ -442,7 +442,7 @@ Music_Route2_branch_edaaf: ; edaaf
 	endchannel
 ; edacb
 
-Music_Route2_branch_edacb: ; edacb
+Music_ViridianForest_branch_edacb: ; edacb
 	octave 5
 	note B_, 16
 	note __, 4
@@ -462,31 +462,31 @@ Music_Route2_branch_edacb: ; edacb
 	endchannel
 ; edadc
 
-Music_Route2_Ch4: ; edadc
+Music_ViridianForest_Ch4: ; edadc
 	togglenoise $5
 	notetype $c
-Music_Route2_branch_edae0: ; edae0
+Music_ViridianForest_branch_edae0: ; edae0
 	note A_, 4
 	note A_, 4
 	note A_, 2
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	loopchannel 3, Music_Route2_branch_edae0
+	loopchannel 3, Music_ViridianForest_branch_edae0
 	note A_, 4
 	note A_, 4
 	note A_, 2
 	note A_, 2
 	note D#, 4
-Music_Route2_branch_edaef: ; edaef
+Music_ViridianForest_branch_edaef: ; edaef
 	note A_, 4
 	note A_, 4
 	note A_, 2
 	note A_, 2
 	note B_, 2
 	note A_, 2
-	loopchannel 4, Music_Route2_branch_edaef
-Music_Route2_branch_edaf9: ; edaf9
+	loopchannel 4, Music_ViridianForest_branch_edaef
+Music_ViridianForest_branch_edaf9: ; edaf9
 	note B_, 4
 	note A_, 2
 	note B_, 2
@@ -494,35 +494,35 @@ Music_Route2_branch_edaf9: ; edaf9
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	loopchannel 7, Music_Route2_branch_edaf9
+	loopchannel 7, Music_ViridianForest_branch_edaf9
 	note B_, 4
 	note A_, 4
 	note A_, 2
 	note A_, 2
 	note D#, 4
-Music_Route2_branch_edb09: ; edb09
+Music_ViridianForest_branch_edb09: ; edb09
 	note B_, 4
 	note C_, 4
 	note B_, 2
 	note B_, 2
 	note C_, 4
-	loopchannel 3, Music_Route2_branch_edb09
+	loopchannel 3, Music_ViridianForest_branch_edb09
 	note B_, 4
 	note C_, 4
 	note C#, 2
 	note C_, 2
 	note C#, 4
-Music_Route2_branch_edb17: ; edb17
+Music_ViridianForest_branch_edb17: ; edb17
 	note B_, 4
 	note C_, 4
 	note B_, 2
 	note B_, 2
 	note C_, 4
-	loopchannel 3, Music_Route2_branch_edb17
+	loopchannel 3, Music_ViridianForest_branch_edb17
 	note B_, 4
 	note C_, 4
 	note D_, 2
 	note D_, 2
 	note D#, 4
-	loopchannel 0, Music_Route2_branch_edaef
+	loopchannel 0, Music_ViridianForest_branch_edaef
 ; edb29

@@ -168,6 +168,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Aesthetic updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
+   * Use some music from RBY and HGSS in Kanto
    * Poké → ()PC on Pokémon Center signs from the Japanese version
    * Berry → Oran Berry, Burnt Berry → Rawst Berry, etc
    * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
@@ -279,7 +280,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Money loss formula from Gen III when whiting out
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
-   * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Move Relearner that accepts Gold Leaves
@@ -371,7 +371,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
 * Replace Poké Seer byte with <gender:1, shiny:1, which_ability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
 * Improved AI
-* Import some devamped music from future generations
 
 
 ## See also

@@ -38,7 +38,6 @@ LawrenceLeftIntroScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	playmusic MUSIC_RIVAL_ENCOUNTER
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceEnterLeftMovementData
 	opentext
 	writetext LawrenceOverheardText
@@ -51,6 +50,7 @@ LawrenceLeftIntroScript:
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
 	spriteface PLAYER, RIGHT
+	playmusic MUSIC_LAWRENCE
 	opentext
 	writetext LawrenceIntroText
 	waitbutton
@@ -69,7 +69,6 @@ LawrenceRightIntroScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	playmusic MUSIC_RIVAL_ENCOUNTER
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceEnterRightMovementData
 	opentext
 	writetext LawrenceOverheardText
@@ -81,6 +80,7 @@ LawrenceRightIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
+	playmusic MUSIC_LAWRENCE
 	spriteface PLAYER, LEFT
 	opentext
 	writetext LawrenceIntroText
@@ -96,7 +96,7 @@ LawrenceRightIntroScript:
 LawrenceEnterLeftMovementData:
 	step_down
 	step_down
-	turn_head_right
+	turn_head_up
 	step_end
 
 LawrenceApproachLeftMovementData:
@@ -144,7 +144,7 @@ LawrenceEnterRightMovementData:
 	step_right
 	step_down
 	step_down
-	turn_head_left
+	turn_head_up
 	step_end
 
 LawrenceWalkAroundRightMovementData:

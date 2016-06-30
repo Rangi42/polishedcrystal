@@ -24,7 +24,7 @@
 	dba Music_LookOfficer ; 0xed82d
 	dba Music_HealPokemon ; 0xf0697
 	dba Music_LavenderTown ; 0xef72f
-	dba Music_Route2 ; 0xed8dd
+	dba Music_ViridianForest ; 0xed8dd
 	dba Music_MtMoon ; 0xedb29
 	dba Music_ShowMeAround ; 0xedbd8
 	dba Music_GameCorner ; 0xedd6d
@@ -115,4 +115,18 @@
 	dba Music_SuicuneBattle ; 0x178b81
 	dba Music_BattleTowerLobby ; 0x17948b
 	dba Music_MobileCenter ; 0x17961d
+
+; Polished Crystal adds the following songs:
+
+	dba Music_CeruleanCityHGSS
+	dba Music_CinnabarIslandHGSS
+	dba Music_NuggetBridgeHGSS
+	dba Music_Route210DPPt
+	dba Music_Route216DPPt
+	dba Music_PokemonTowerRBY
+	dba Music_CinnabarMansionRBY
+	dba Music_CeruleanCaveRBY
+	dba Music_SurfingPikachu
+	dba Music_Lawrence
+
 ; e91a3
