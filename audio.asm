@@ -157,6 +157,7 @@ INCLUDE "audio/music/postcredits.asm"
 
 SECTION "Extra Songs 3", ROMX
 
+INCLUDE "audio/music/hgss/route47.asm"
 INCLUDE "audio/music/dppt/route210.asm"
 INCLUDE "audio/music/dppt/route216.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"

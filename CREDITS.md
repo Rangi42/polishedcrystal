@@ -7,6 +7,7 @@
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many Pokémon sprites and icons
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
+* Poe for the Route 47 music
 * jpmac26 for editing the Pokémon Center signs
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite

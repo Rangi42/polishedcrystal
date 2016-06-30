@@ -121,6 +121,7 @@
 	dba Music_CeruleanCityHGSS
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
+	dba Music_Route47HGSS
 	dba Music_Route210DPPt
 	dba Music_Route216DPPt
 	dba Music_PokemonTowerRBY

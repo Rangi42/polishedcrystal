@@ -104,6 +104,7 @@ Music_MobileCenter
 Music_CeruleanCityHGSS
 Music_CinnabarIslandHGSS
 Music_NuggetBridgeHGSS
+Music_Route47HGSS
 Music_Route210DPPt
 Music_Route216DPPt
 Music_PokemonTowerRBY
