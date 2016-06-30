@@ -251,7 +251,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
 * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
-* Add move tutors for Aqua Tail, Earth Power, Hyper Voice, Iron Head, Seed Bomb, and Zen Headbutt
+* Add the rest of the move tutors
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)

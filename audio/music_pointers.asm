@@ -127,6 +127,7 @@
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY
 	dba Music_CeruleanCaveRBY
+	dba Music_FrontierBrainBattleRSE
 	dba Music_SurfingPikachu
 	dba Music_Lawrence
 

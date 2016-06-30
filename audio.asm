@@ -163,6 +163,7 @@ INCLUDE "audio/music/dppt/route216.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
 INCLUDE "audio/music/rby/lawrence.asm"
 
