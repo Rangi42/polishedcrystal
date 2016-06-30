@@ -108,7 +108,7 @@ Mart5: ; 16118
 ; 16121
 
 Mart6: ; 16121
-	db 8 ; # items
+	db 9 ; # items
 	db POKE_BALL
 	db GREAT_BALL
 	db ESCAPE_ROPE
@@ -116,7 +116,8 @@ Mart6: ; 16121
 	db REVIVE
 	db FULL_HEAL
 	db POKE_DOLL
-	db FLOWER_MAIL
+	db BLUESKY_MAIL
+	db MORPH_MAIL
 	db $ff
 ; 1612b
 
@@ -144,40 +145,43 @@ Mart8: ; 16134
 ; 1613b
 
 Mart9: ; 1613b
-	db 4 ; # items
-	db TM_THUNDERPUNCH
-	db TM_FIRE_PUNCH
-	db TM_ICE_PUNCH
-	db TM_BULK_UP
+	db 9 ; # items
+	db TM_PROTECT
+	db TM_SAFEGUARD
+	db TM_REFLECT
+	db TM_LIGHT_SCREEN
+	db TM_FALSE_SWIPE
+	db TM_THUNDERBOLT
+	db TM_FLAMETHROWER
+	db TM_ICE_BEAM
+	db TM_SOLAR_BEAM
 	db $ff
 ; 16140
 
 Mart10: ; 16140
-	db 5 ; # items
-	db TM_THUNDERPUNCH
-	db TM_FIRE_PUNCH
-	db TM_ICE_PUNCH
-	db TM_BULK_UP
-	db TM_HEADBUTT
+	db 10 ; # items
+	db POKE_BALL
+	db GREAT_BALL
+	db ESCAPE_ROPE
+	db REPEL
+	db REVIVE
+	db FULL_HEAL
+	db POKE_DOLL
+	db BLUESKY_MAIL
+	db MORPH_MAIL
+	db EON_MAIL
 	db $ff
 ; 16146
 
+; unused
 Mart11: ; 16146
-	db 4 ; # items
-	db TM_THUNDERPUNCH
-	db TM_FIRE_PUNCH
-	db TM_ICE_PUNCH
-	db TM_BULK_UP
+	db 0 ; # items
 	db $ff
 ; 1614c
 
+; unused
 Mart12: ; 1614c
-	db 5 ; # items
-	db TM_THUNDERPUNCH
-	db TM_FIRE_PUNCH
-	db TM_ICE_PUNCH
-	db TM_BULK_UP
-	db TM_HEADBUTT
+	db 0 ; # items
 	db $ff
 ; 16153
 
@@ -234,7 +238,7 @@ Mart16: ; 16170
 ; 1617b
 
 Mart17: ; 1617b
-	db 9 ; # items
+	db 10 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
 	db HYPER_POTION
@@ -244,6 +248,7 @@ Mart17: ; 1617b
 	db MAX_REPEL
 	db X_DEFEND
 	db X_ATTACK
+	db MUSIC_MAIL
 	db $ff
 ; 16186
 
@@ -341,10 +346,14 @@ Mart24: ; 161c2
 ; 161ce
 
 Mart25: ; 161ce
-	db 5 ; # items
+	db 9 ; # items
 	db TM_HIDDEN_POWER
+	db TM_SWORDS_DANCE
+	db TM_CALM_MIND
+	db TM_BULK_UP
+	db TM_TOXIC
+	db TM_REST
 	db TM_SUNNY_DAY
-	db TM_PROTECT
 	db TM_RAIN_DANCE
 	db TM_SANDSTORM
 	db $ff
@@ -411,12 +420,13 @@ Mart30: ; 161f3
 ; 161fd
 
 Mart31: ; 161fd
-	db 6 ; # items
+	db 7 ; # items
 	db POKE_DOLL
 	db FRESH_WATER
 	db SODA_POP
 	db LEMONADE
 	db REPEL
+	db MIRAGE_MAIL
 	db PORTRAITMAIL
 	db $ff
 ; 16205

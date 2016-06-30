@@ -209,11 +209,13 @@ CheckPlayerTurn:
 	bit FRZ, [hl]
 	jr z, .not_frozen
 
-	; Flame Wheel, Sacred Fire, and Flare Blitz thaw the user.
+	; Flame Wheel, Sacred Fire, Scald, and Flare Blitz thaw the user.
 	ld a, [CurPlayerMove]
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
+	jr z, .not_frozen
+	cp SCALD
 	jr z, .not_frozen
 	cp FLARE_BLITZ
 	jr z, .not_frozen
@@ -455,11 +457,13 @@ CheckEnemyTurn: ; 3421f
 	ld hl, EnemyMonStatus
 	bit FRZ, [hl]
 	jr z, .not_frozen
-	; Flame Wheel, Sacred Fire, and Flare Blitz thaw the user.
+	; Flame Wheel, Sacred Fire, Scald, and Flare Blitz thaw the user.
 	ld a, [CurEnemyMove]
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
+	jr z, .not_frozen
+	cp SCALD
 	jr z, .not_frozen
 	cp FLARE_BLITZ
 	jr z, .not_frozen
@@ -1147,7 +1151,7 @@ BattleCommand_DoTurn: ; 34555
 	db EFFECT_RAZOR_WIND
 	db EFFECT_SKY_ATTACK
 	db EFFECT_SKULL_BASH
-	db EFFECT_SOLARBEAM
+	db EFFECT_SOLAR_BEAM
 	db EFFECT_FLY
 	db EFFECT_ROLLOUT
 	db EFFECT_BIDE
@@ -2046,7 +2050,7 @@ BattleCommand_LowerSub: ; 34eee
 	jr z, .charge_turn
 	cp EFFECT_SKULL_BASH
 	jr z, .charge_turn
-	cp EFFECT_SOLARBEAM
+	cp EFFECT_SOLAR_BEAM
 	jr z, .charge_turn
 	cp EFFECT_FLY
 	jr z, .charge_turn
@@ -2743,6 +2747,58 @@ DittoMetalPowder: ; 352b1
 ; 352dc
 
 
+UnevolvedEviolite:
+	ld a, MON_SPECIES
+	call BattlePartyAttr
+	ld a, [hBattleTurn]
+	and a
+	ld a, [hl]
+	jr nz, .Unevolved
+	ld a, [TempEnemyMonSpecies]
+
+.Unevolved:
+	dec a
+	push hl
+	push bc
+	ld b, 0
+	ld c, a
+	ld hl, EvosAttacksPointers
+rept 2
+	add hl, bc
+endr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [hli]
+	and a
+	pop bc
+	pop hl
+	ret z
+
+	push bc
+	call GetOpponentItem
+	ld a, [hl]
+	cp EVIOLITE
+	pop bc
+	ret nz
+
+	ld a, c
+	srl a
+	add c
+	ld c, a
+	ret nc
+
+	srl b
+	ld a, b
+	and a
+	jr nz, .done
+	inc b
+.done
+	scf
+	rr c
+	ret
+
+
 BattleCommand_DamageStats: ; 352dc
 ; damagestats
 
@@ -2845,6 +2901,7 @@ PlayerAttackDamage: ; 352e2
 	ld a, [BattleMonLevel]
 	ld e, a
 	call DittoMetalPowder
+	call UnevolvedEviolite
 
 	ld a, 1
 	and a
@@ -3121,10 +3178,12 @@ EnemyAttackDamage: ; 353f6
 	ld hl, EnemyStats + 6
 
 .lightball
+; Note: Returns player special attack at hl in hl.
 	call LightBallBoost
 	jr .done
 
 .thickcluborlightball
+; Note: Returns player attack at hl in hl.
 	call ThickClubOrLightBallBoost
 
 .done
@@ -3133,6 +3192,7 @@ EnemyAttackDamage: ; 353f6
 	ld a, [EnemyMonLevel]
 	ld e, a
 	call DittoMetalPowder
+	call UnevolvedEviolite
 
 	ld a, 1
 	and a
@@ -3910,8 +3970,6 @@ BattleCommand_Encore: ; 35864
 	jp z, .failed
 	cp ENCORE
 	jp z, .failed
-	cp MIRROR_MOVE
-	jp z, .failed
 	ld b, a
 
 .got_move
@@ -4505,7 +4563,7 @@ BattleCommand_SleepTalk: ; 35b33
 	ret z
 	cp EFFECT_SKY_ATTACK
 	ret z
-	cp EFFECT_SOLARBEAM
+	cp EFFECT_SOLAR_BEAM
 	ret z
 	cp EFFECT_FLY
 	ret z
@@ -7244,8 +7302,8 @@ BattleCommand_Charge: ; 36b4d
 ;	ld hl, .RazorWind
 ;	jr z, .done
 
-	cp SOLARBEAM
-	ld hl, .Solarbeam
+	cp SOLAR_BEAM
+	ld hl, .SolarBeam
 	jr z, .done
 
 ;	cp SKULL_BASH
@@ -7271,7 +7329,7 @@ BattleCommand_Charge: ; 36b4d
 	text_jump UnknownText_0x1c0d12
 	db "@"
 
-.Solarbeam:
+.SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
 	db "@"

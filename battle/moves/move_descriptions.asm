@@ -1,7 +1,7 @@
 ; MoveDescriptions: ; 2cb52
 	dw PoundDescription
 	dw KarateChopDescription
-	dw DoubleslapDescription
+	dw DoubleSlapDescription
 	dw CometPunchDescription
 	dw DragonClawDescription
 	dw PayDayDescription
@@ -59,7 +59,7 @@
 	dw IceBeamDescription
 	dw BlizzardDescription
 	dw PsybeamDescription
-	dw BubblebeamDescription
+	dw BubbleBeamDescription
 	dw AuroraBeamDescription
 	dw HyperBeamDescription
 	dw PeckDescription
@@ -74,7 +74,7 @@
 	dw LeechSeedDescription
 	dw GrowthDescription
 	dw RazorLeafDescription
-	dw SolarbeamDescription
+	dw SolarBeamDescription
 	dw PoisonpowderDescription
 	dw StunSporeDescription
 	dw SleepPowderDescription
@@ -117,7 +117,7 @@
 	dw FocusEnergyDescription
 	dw FlashCannonDescription
 	dw MetronomeDescription
-	dw MirrorMoveDescription
+	dw ScaldDescription
 	dw SelfdestructDescription
 	dw EggBombDescription
 	dw LickDescription
@@ -183,7 +183,7 @@
 	dw ProtectDescription
 	dw MachPunchDescription
 	dw ScaryFaceDescription
-	dw FaintAttackDescription
+	dw FeintAttackDescription
 	dw SweetKissDescription
 	dw BellyDrumDescription
 	dw SludgeBombDescription
@@ -274,7 +274,7 @@ StoneEdgeDescription:
 	next "cal hit ratio.@"
 
 SwiftDescription:
-FaintAttackDescription:
+FeintAttackDescription:
 DisarmVoiceDescription:
 	db   "An attack that"
 	next "never misses.@"
@@ -305,7 +305,7 @@ RazorShellDescription:
 	db   "An attack that may"
 	next "lower Defense.@"
 
-BubblebeamDescription:
+BubbleBeamDescription:
 BubbleDescription:
 	db   "An attack that may"
 	next "lower Speed.@"
@@ -336,6 +336,7 @@ FlamethrowerDescription:
 FireBlastDescription:
 FlameWheelDescription:
 SacredFireDescription:
+ScaldDescription:
 	db   "An attack that may"
 	next "inflict a burn.@"
 
@@ -497,7 +498,7 @@ LightScreenDescription:
 	next "a wall of light.@"
 
 SkyAttackDescription:
-SolarbeamDescription:
+SolarBeamDescription:
 	db   "1st turn: Prepare"
 	next "2nd turn: Attack@"
 
@@ -513,7 +514,7 @@ DigDescription:
 	db   "1st turn: Burrow"
 	next "2nd turn: Attack@"
 
-DoubleslapDescription:
+DoubleSlapDescription:
 	db   "Repeatedly slaps"
 	next "2-5 times.@"
 
@@ -743,10 +744,6 @@ HazeDescription:
 MetronomeDescription:
 	db   "Randomly uses any"
 	next "#mon move.@"
-
-MirrorMoveDescription:
-	db   "Counters with the"
-	next "same move.@"
 
 SelfdestructDescription:
 	db   "Powerful but makes"

@@ -35,7 +35,7 @@ PryceScript_0x199a9e:
 	checkcode VAR_BADGES
 	scall MahoganyGymTriggerRockets
 .FightDone:
-	checkevent EVENT_GOT_TM42_ICY_WIND
+	checkevent EVENT_GOT_TM12_ICY_WIND
 	iftrue UnknownScript_0x199af0
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
@@ -46,7 +46,7 @@ PryceScript_0x199a9e:
 	buttonsound
 	verbosegiveitem TM_ICY_WIND
 	iffalse UnknownScript_0x199af4
-	setevent EVENT_GOT_TM42_ICY_WIND
+	setevent EVENT_GOT_TM12_ICY_WIND
 	writetext UnknownText_0x199def
 	waitbutton
 	closetext

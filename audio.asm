@@ -51,7 +51,7 @@ INCLUDE "audio/music/kantowildbattle.asm"
 INCLUDE "audio/music/pokemoncenter.asm"
 INCLUDE "audio/music/looklass.asm"
 INCLUDE "audio/music/lookofficer.asm"
-INCLUDE "audio/music/route2.asm"
+INCLUDE "audio/music/viridianforest.asm"
 INCLUDE "audio/music/mtmoon.asm"
 INCLUDE "audio/music/showmearound.asm"
 INCLUDE "audio/music/gamecorner.asm"
@@ -145,11 +145,27 @@ SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
 INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/music/clair.asm"
 INCLUDE "audio/music/mobileadapter.asm"
+INCLUDE "audio/music/hgss/ceruleancity.asm"
+INCLUDE "audio/music/hgss/cinnabarisland.asm"
+INCLUDE "audio/music/hgss/nuggetbridge.asm"
 
 
 SECTION "Extra Songs 2", ROMX, BANK[EXTRA_SONGS_2]
 
 INCLUDE "audio/music/postcredits.asm"
+
+
+SECTION "Extra Songs 3", ROMX
+
+INCLUDE "audio/music/hgss/route47.asm"
+INCLUDE "audio/music/dppt/route210.asm"
+INCLUDE "audio/music/dppt/route216.asm"
+INCLUDE "audio/music/rby/pokemontower.asm"
+INCLUDE "audio/music/rby/cinnabarmansion.asm"
+INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rse/frontierbrainbattle.asm"
+INCLUDE "audio/music/rby/surfingpikachu.asm"
+INCLUDE "audio/music/rby/lawrence.asm"
 
 
 

@@ -397,7 +397,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_FUTURE_SIGHT,     AI_Smart_FutureSight
 	dbw EFFECT_GUST,             AI_Smart_Gust
 	dbw EFFECT_STOMP,            AI_Smart_Stomp
-	dbw EFFECT_SOLARBEAM,        AI_Smart_Solarbeam
+	dbw EFFECT_SOLAR_BEAM,       AI_Smart_SolarBeam
 	dbw EFFECT_THUNDER,          AI_Smart_Thunder
 	dbw EFFECT_FLY,              AI_Smart_Fly
 	db $ff
@@ -2535,7 +2535,7 @@ RainDanceMoves: ; 390e7
 	db WATER_GUN
 	db HYDRO_PUMP
 	db SURF
-	db BUBBLEBEAM
+	db BUBBLE_BEAM
 	db THUNDER
 	db WATERFALL
 	db RAZOR_SHELL
@@ -2544,6 +2544,7 @@ RainDanceMoves: ; 390e7
 	db OCTAZOOKA
 	db WHIRLPOOL
 	db AQUA_TAIL
+	db SCALD
 	db $ff
 ; 390f3
 
@@ -2854,7 +2855,7 @@ AI_Smart_Stomp: ; 39200
 ; 3920b
 
 
-AI_Smart_Solarbeam: ; 3920b
+AI_Smart_SolarBeam: ; 3920b
 ; 80% chance to encourage this move when it's sunny.
 ; 90% chance to discourage this move when it's raining.
 

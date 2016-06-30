@@ -2,7 +2,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_0
 	dw BattleAnim_Pound
 	dw BattleAnim_KarateChop
-	dw BattleAnim_Doubleslap
+	dw BattleAnim_DoubleSlap
 	dw BattleAnim_CometPunch
 	dw BattleAnim_DragonClaw
 	dw BattleAnim_PayDay
@@ -60,7 +60,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_IceBeam
 	dw BattleAnim_Blizzard
 	dw BattleAnim_Psybeam
-	dw BattleAnim_Bubblebeam
+	dw BattleAnim_BubbleBeam
 	dw BattleAnim_AuroraBeam
 	dw BattleAnim_HyperBeam
 	dw BattleAnim_Peck
@@ -75,7 +75,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_LeechSeed
 	dw BattleAnim_Growth
 	dw BattleAnim_RazorLeaf
-	dw BattleAnim_Solarbeam
+	dw BattleAnim_SolarBeam
 	dw BattleAnim_Poisonpowder
 	dw BattleAnim_StunSpore
 	dw BattleAnim_SleepPowder
@@ -118,7 +118,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_FocusEnergy
 	dw BattleAnim_FlashCannon
 	dw BattleAnim_Metronome
-	dw BattleAnim_MirrorMove
+	dw BattleAnim_Scald
 	dw BattleAnim_Selfdestruct
 	dw BattleAnim_EggBomb
 	dw BattleAnim_Lick
@@ -184,7 +184,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Protect
 	dw BattleAnim_MachPunch
 	dw BattleAnim_ScaryFace
-	dw BattleAnim_FaintAttack
+	dw BattleAnim_FeintAttack
 	dw BattleAnim_SweetKiss
 	dw BattleAnim_BellyDrum
 	dw BattleAnim_SludgeBomb
@@ -281,7 +281,6 @@ BattleAnimations:: ; c906f
 ; c929b
 
 BattleAnim_0: ; c929b
-BattleAnim_MirrorMove: ; c929b
 	anim_ret
 ; c929c
 
@@ -327,6 +326,19 @@ BattleAnim_DisarmVoice:
 	anim_wait 2
 	anim_loop 2, .loop
 	anim_wait 64
+	anim_ret
+
+BattleAnim_Scald:
+; TODO: write an original animation
+	anim_1gfx ANIM_GFX_BUBBLE
+	anim_bgeffect ANIM_BG_SURF, $0, $0, $0
+	anim_obj ANIM_OBJ_22,  11, 0,  13, 0, $8
+.loop
+	anim_sound 0, 1, SFX_SURF
+	anim_wait 32
+	anim_loop 4, .loop
+	anim_incobj  1
+	anim_wait 56
 	anim_ret
 
 BattleAnim_SweetScent2:
@@ -643,7 +655,7 @@ BattleAnim_InSandstorm: ; c9533
 
 BattleAnim_InNightmare: ; c9550
 	anim_1gfx ANIM_GFX_ANGELS
-	anim_sound 0, 0, SFX_BUBBLEBEAM
+	anim_sound 0, 0, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_95,   8, 4,  10, 0, $0
 	anim_wait 40
 	anim_ret
@@ -750,10 +762,10 @@ BattleAnim_KarateChop: ; c95d5
 	anim_ret
 ; c9605
 
-BattleAnim_Doubleslap: ; c9605
+BattleAnim_DoubleSlap: ; c9605
 	anim_1gfx ANIM_GFX_HIT
-	anim_jumpif $1, BattleAnim_Doubleslap_branch_c961b
-	anim_sound 0, 1, SFX_DOUBLESLAP
+	anim_jumpif $1, BattleAnim_DoubleSlap_branch_c961b
+	anim_sound 0, 1, SFX_DOUBLE_SLAP
 	anim_obj ANIM_OBJ_08, -14, 0,   6, 0, $0
 	anim_wait 6
 	anim_obj ANIM_OBJ_01, -14, 0,   6, 0, $0
@@ -761,8 +773,8 @@ BattleAnim_Doubleslap: ; c9605
 	anim_ret
 ; c961b
 
-BattleAnim_Doubleslap_branch_c961b: ; c961b
-	anim_sound 0, 1, SFX_DOUBLESLAP
+BattleAnim_DoubleSlap_branch_c961b: ; c961b
+	anim_sound 0, 1, SFX_DOUBLE_SLAP
 	anim_obj ANIM_OBJ_08,  15, 0,   6, 0, $0
 	anim_wait 6
 	anim_obj ANIM_OBJ_01,  15, 0,   6, 0, $0
@@ -1128,16 +1140,16 @@ BattleAnim_Bubble: ; c991e
 	anim_ret
 ; c993d
 
-BattleAnim_Bubblebeam: ; c993d
+BattleAnim_BubbleBeam: ; c993d
 	anim_1gfx ANIM_GFX_BUBBLE
 .loop
-	anim_sound 16, 2, SFX_BUBBLEBEAM
+	anim_sound 16, 2, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_21,   8, 0,  11, 4, $92
 	anim_wait 6
-	anim_sound 16, 2, SFX_BUBBLEBEAM
+	anim_sound 16, 2, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_21,   8, 0,  11, 4, $b3
 	anim_wait 6
-	anim_sound 16, 2, SFX_BUBBLEBEAM
+	anim_sound 16, 2, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_21,   8, 0,  11, 4, $f4
 	anim_wait 8
 	anim_loop 3, .loop
@@ -1305,8 +1317,8 @@ BattleAnim_RazorLeaf: ; c9a7c
 	anim_ret
 ; c9af2
 
-BattleAnim_Solarbeam: ; c9af2
-	anim_jumpif $0, BattleAnim_Solarbeam_branch_c9b30
+BattleAnim_SolarBeam: ; c9af2
+	anim_jumpif $0, BattleAnim_SolarBeam_branch_c9b30
 	anim_1gfx ANIM_GFX_CHARGE
 	anim_sound 0, 0, SFX_CHARGE
 	anim_obj ANIM_OBJ_3D,   6, 0,  10, 4, $0
@@ -1324,10 +1336,10 @@ BattleAnim_Solarbeam: ; c9af2
 	anim_ret
 ; c9b30
 
-BattleAnim_Solarbeam_branch_c9b30: ; c9b30
+BattleAnim_SolarBeam_branch_c9b30: ; c9b30
 	anim_1gfx ANIM_GFX_BEAM
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
-	anim_call BattleAnim_Solarbeam_branch_cbb39
+	anim_call BattleAnim_SolarBeam_branch_cbb39
 	anim_wait 48
 	anim_ret
 ; c9b3c
@@ -2385,7 +2397,7 @@ BattleAnim_Mist: ; ca404
 BattleAnim_GunkShot:
 ; TODO: erase Smog animation, design Gunk Shot animation
 	anim_1gfx ANIM_GFX_HAZE
-	anim_sound 0, 1, SFX_BUBBLEBEAM
+	anim_sound 0, 1, SFX_BUBBLE_BEAM
 .loop
 	anim_obj ANIM_OBJ_5D, -16, 4,   2, 0, $0
 	anim_wait 8
@@ -2396,7 +2408,7 @@ BattleAnim_GunkShot:
 BattleAnim_PoisonJab:
 ; TODO: erase Poison Gas animation, design Poison Jab animation
 	anim_1gfx ANIM_GFX_HAZE
-	anim_sound 16, 2, SFX_BUBBLEBEAM
+	anim_sound 16, 2, SFX_BUBBLE_BEAM
 .loop
 	anim_obj ANIM_OBJ_5E,   5, 4,  10, 0, $2
 	anim_wait 8
@@ -3680,7 +3692,7 @@ BattleAnim_ScaryFace: ; caf73
 	anim_ret
 ; caf84
 
-BattleAnim_FaintAttack: ; caf84
+BattleAnim_FeintAttack: ; caf84
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_CURSE
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -4961,7 +4973,7 @@ BattleAnim_Teleport_branch_cbb12: ; cbb12
 
 BattleAnim_AuroraBeam_branch_cbb39: ; cbb39
 BattleAnim_HyperBeam_branch_cbb39: ; cbb39
-BattleAnim_Solarbeam_branch_cbb39: ; cbb39
+BattleAnim_SolarBeam_branch_cbb39: ; cbb39
 	anim_sound 0, 0, SFX_HYPER_BEAM
 	anim_obj ANIM_OBJ_27,   8, 0,  11, 4, $0
 	anim_wait 4
@@ -5080,7 +5092,7 @@ BattleAnim_Toxic_branch_cbc15: ; cbc15
 BattleAnim_Acid_branch_cbc35: ; cbc35
 BattleAnim_Toxic_branch_cbc35: ; cbc35
 .loop
-	anim_sound 6, 2, SFX_BUBBLEBEAM
+	anim_sound 6, 2, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_19,   8, 0,  11, 4, $10
 	anim_wait 5
 	anim_loop 8, .loop

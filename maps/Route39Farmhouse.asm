@@ -68,7 +68,7 @@ UnknownScript_0x9cf08:
 PokefanFScript_0x9cf0e:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM16_LIGHT_SCREEN_FROM_MOOMOO_FARM
+	checkevent EVENT_GOT_TM50_SUBSTITUTE_FROM_MOOMOO_FARM
 	iftrue UnknownScript_0x9cf2f
 	checkevent EVENT_HEALED_MOOMOO
 	iftrue UnknownScript_0x9cf22
@@ -80,9 +80,9 @@ PokefanFScript_0x9cf0e:
 UnknownScript_0x9cf22:
 	writetext UnknownText_0x9d156
 	buttonsound
-	verbosegiveitem TM_LIGHT_SCREEN
+	verbosegiveitem TM_SUBSTITUTE
 	iffalse UnknownScript_0x9cf33
-	setevent EVENT_GOT_TM16_LIGHT_SCREEN_FROM_MOOMOO_FARM
+	setevent EVENT_GOT_TM50_SUBSTITUTE_FROM_MOOMOO_FARM
 UnknownScript_0x9cf2f:
 	writetext UnknownText_0x9d1c7
 	waitbutton
@@ -179,11 +179,13 @@ UnknownText_0x9d1b5:
 
 UnknownText_0x9d1c7:
 	text "That there's"
-	line "Light Screen."
+	line "Substitute."
 
 	para "It's a move that"
-	line "protects against"
-	cont "special attacks."
+	line "makes a decoy to"
+
+	para "get hit 'stead"
+	line "of your #mon."
 
 	para "You best think how"
 	line "you ought to use"

@@ -30,16 +30,7 @@ GoldenrodDeptStore5F_MapScriptHeader:
 ClerkScript_0x5609c:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM09_HEADBUTT
-	iftrue .headbutt
-
-.noheadbutt
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_1
-	closetext
-	end
-
-.headbutt
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F_2
+	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_5F
 	closetext
 	end
 

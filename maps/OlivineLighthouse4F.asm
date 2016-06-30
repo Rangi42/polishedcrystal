@@ -71,8 +71,9 @@ LassConnie1BeatenText:
 UnknownText_0x5b63c:
 	text "Right. Anybody"
 	line "would be worried"
-	cont "if his or her own"
-	cont "#mon were hurt."
+
+	para "if their own #-"
+	cont "mon were hurt."
 
 	para "I'll pray for the"
 	line "#mon here, so"

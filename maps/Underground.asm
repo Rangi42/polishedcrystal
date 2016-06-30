@@ -1,3 +1,6 @@
+const_value set 2
+	const UNDERGROUND_POKE_BALL
+
 Underground_MapScriptHeader:
 .MapTriggers:
 	db 0
@@ -5,13 +8,14 @@ Underground_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+UndergroundTMExplosion:
+	itemball TM_EXPLOSION
+
 UndergroundHiddenFullRestore:
 	dwb EVENT_UNDERGROUND_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
-
 UndergroundHiddenXSpclAtk:
 	dwb EVENT_UNDERGROUND_HIDDEN_X_SPCL_ATK, X_SPCL_ATK
-
 
 Underground_MapEventHeader:
 	; filler
@@ -31,4 +35,5 @@ Underground_MapEventHeader:
 	signpost 19, 1, SIGNPOST_ITEM, UndergroundHiddenXSpclAtk
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_POKE_BALL, 13, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, UndergroundTMExplosion, EVENT_UNDERGROUND_TM_EXPLOSION

@@ -33,14 +33,23 @@ SurgeScript_0x1920a5:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
+.FightDone:
+	checkevent EVENT_GOT_TM43_WILD_CHARGE
+	iftrue SurgeAfterTMScript
 	writetext UnknownText_0x192291
+	buttonsound
+	verbosegiveitem TM_WILD_CHARGE
+	iffalse SurgeCannotGiveTMScript
+	setevent EVENT_GOT_TM43_WILD_CHARGE
+	writetext SurgeOutroText
 	waitbutton
 	closetext
 	end
 
-.FightDone:
+SurgeAfterTMScript:
 	writetext UnknownText_0x192303
 	waitbutton
+SurgeCannotGiveTMScript:
 	closetext
 	end
 
@@ -147,6 +156,17 @@ UnknownText_0x192291:
 
 	para "You wear it"
 	line "proudly, hear?"
+
+	para "And here's a great"
+	line "TM for you!"
+	done
+
+SurgeOutroText:
+	text "That TM contains"
+	line "Wild Charge. Use"
+
+	para "it to go like"
+	line "lightning!"
 	done
 
 UnknownText_0x192303:

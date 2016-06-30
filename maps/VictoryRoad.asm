@@ -134,8 +134,8 @@ LawrenceUpScript:
 	end
 
 LawrenceLeftScript:
-	;special SpecialBirdsCheck
-	;iffalse .End
+	special SpecialBirdsCheck
+	iffalse .End
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
@@ -154,12 +154,13 @@ LawrenceLeftScript:
 	disappear VICTORYROAD_LAWRENCE
 	dotrigger $2
 	waitsfx
-	special RestartMapMusic
+	;special RestartMapMusic
+	playmusic MUSIC_VICTORY_ROAD
 .End
 	end
 
 BattleLawrenceScript:
-	playmusic MUSIC_RIVAL_ENCOUNTER
+	playmusic MUSIC_LAWRENCE
 	opentext
 	writetext LawrenceSeenText
 	waitbutton
@@ -170,6 +171,7 @@ BattleLawrenceScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
+	playmusic MUSIC_LAWRENCE
 	opentext
 	writetext LawrenceAfterText
 	buttonsound

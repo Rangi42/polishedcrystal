@@ -376,17 +376,39 @@ IlexForestCharcoalMasterScript:
 IlexForestHeadbuttGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM09_HEADBUTT
-	iftrue .AlreadyGotHeadbutt
+	checkevent EVENT_LISTENED_TO_HEADBUTT_INTRO
+	iftrue IlexForestTutorHeadbuttScript
 	writetext Text_HeadbuttIntro
-	buttonsound
-	verbosegiveitem TM_HEADBUTT
-	iffalse .BagFull
-	setevent EVENT_GOT_TM09_HEADBUTT
-.AlreadyGotHeadbutt:
-	writetext Text_HeadbuttOutro
 	waitbutton
-.BagFull:
+	setevent EVENT_LISTENED_TO_HEADBUTT_INTRO
+IlexForestTutorHeadbuttScript:
+	writetext Text_IlexForestTutorHeadbutt
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_IlexForestTutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte HEADBUTT
+	writetext Text_IlexForestTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_IlexForestTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	writetext Text_IlexForestTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_IlexForestTutorTaught
+	waitbutton
 	closetext
 	end
 
@@ -834,7 +856,40 @@ Text_HeadbuttIntro:
 	line "you try it too!"
 	done
 
-Text_HeadbuttOutro:
+Text_IlexForestTutorHeadbutt:
+	text "I can teach your"
+	line "#mon to use"
+
+	para "Headbutt in ex-"
+	line "change for a"
+	cont "Silver Leaf."
+	done
+
+Text_IlexForestTutorNoSilverLeaf:
+	text "Oh, but you don't"
+	line "have any Silver"
+	cont "Leaves."
+
+	para "Sometimes you can"
+	line "find them on wild"
+	cont "Oddish."
+	done
+
+Text_IlexForestTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Headbutt?"
+	done
+
+Text_IlexForestTutorRefused:
+	text "Alright then."
+	done
+
+Text_IlexForestTutorClear:
+	text ""
+	done
+
+Text_IlexForestTutorTaught:
 	text "Rattle trees with"
 	line "Headbutt. Some-"
 	cont "times, sleeping"

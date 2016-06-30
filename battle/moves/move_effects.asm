@@ -10,7 +10,7 @@ DragonClaw:
 DrillPeck:
 EggBomb:
 Extremespeed:
-FaintAttack:
+FeintAttack:
 FairyWind:
 HiJumpKick:
 HornAttack:
@@ -91,7 +91,7 @@ MultiHit:
 Bonemerang:
 CometPunch:
 DoubleKick:
-Doubleslap:
+DoubleSlap:
 FuryAttack:
 FurySwipes:
 PinMissile:
@@ -451,7 +451,7 @@ RazorShell:
 SpeedDownHit:
 Bubble:
 IcyWind:
-Bubblebeam:
+BubbleBeam:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1216,13 +1216,6 @@ DreamEater:
 	eatdream
 	checkdestinybond
 	buildopponentrage
-	endmove
-
-MirrorMove:
-	checkobedience
-	usedmovetext
-	doturn
-	mirrormove
 	endmove
 
 Whirlwind:
@@ -2027,7 +2020,7 @@ Stomp:
 	flinchtarget
 	endmove
 
-Solarbeam:
+SolarBeam:
 	checkcharge
 	checkobedience
 	doturn
@@ -2311,6 +2304,13 @@ PsychUp:
 	usedmovetext
 	doturn
 	psychup
+	endmove
+
+MirrorMove:
+	checkobedience
+	usedmovetext
+	doturn
+	mirrormove
 	endmove
 
 SkullBash:

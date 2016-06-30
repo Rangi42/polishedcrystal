@@ -31,14 +31,23 @@ BrockScript_0x1a2864:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
+.FightDone:
+	checkevent EVENT_GOT_TM48_ROCK_SLIDE
+	iftrue BrockAfterTMScript
 	writetext UnknownText_0x1a2a57
+	buttonsound
+	verbosegiveitem TM_ROCK_SLIDE
+	iffalse BrockCannotGiveTMScript
+	setevent EVENT_GOT_TM48_ROCK_SLIDE
+	writetext BrockOutroText
 	waitbutton
 	closetext
 	end
 
-.FightDone:
+BrockAfterTMScript:
 	writetext UnknownText_0x1a2ada
 	waitbutton
+BrockCannotGiveTMScript:
 	closetext
 	end
 
@@ -138,6 +147,17 @@ UnknownText_0x1a2a57:
 	para "battling you, even"
 	line "though I am a bit"
 	cont "upset."
+
+	para "I'll give you the"
+	line "TM for Rock Slide,"
+	cont "too."
+	done
+
+BrockOutroText:
+	text "It can sometimes"
+	line "cause your foe to"
+	cont "flinch."
+	done
 
 UnknownText_0x1a2ada:
 	text "Brock: The world"

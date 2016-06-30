@@ -54,13 +54,17 @@ GrampsScript_0x1a9a61:
 FisherScript_0x1a9a75:
 	faceplayer
 	opentext
-	checkevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
+	checkevent EVENT_LISTENED_TO_DREAM_EATER_INTRO
 	iftrue ViridianCityTutorDreamEaterScript
 	writetext UnknownText_0x1a9cc4
 	waitbutton
-	setevent EVENT_LISTENED_TO_DREAM_EATER_DREAM
+	setevent EVENT_LISTENED_TO_DREAM_EATER_INTRO
 ViridianCityTutorDreamEaterScript:
 	writetext Text_ViridianCityTutorDreamEater
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_ViridianCityTutorQuestion
 	yesorno
 	iffalse .TutorRefused
 	writebyte DREAM_EATER
@@ -73,7 +77,14 @@ ViridianCityTutorDreamEaterScript:
 	closetext
 	end
 
+.NoSilverLeaf
+	writetext Text_ViridianCityTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
 .TeachMove
+	takeitem SILVER_LEAF
 	writetext Text_ViridianCityTutorTaught
 	waitbutton
 	closetext
@@ -180,8 +191,19 @@ Text_ViridianCityTutorDreamEater:
 	line "#mon to eat"
 	cont "dreams."
 
-	para "Should I teach"
-	line "Dream Eater?"
+	para "I just want a"
+	line "Silver Leaf in"
+	cont "exchange."
+
+Text_ViridianCityTutorNoSilverLeaf:
+	text "You don't have any"
+	line "Silver Leaves…"
+	done
+
+Text_ViridianCityTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Dream Eater?"
 	done
 
 Text_ViridianCityTutorRefused:

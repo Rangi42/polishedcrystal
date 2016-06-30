@@ -107,7 +107,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
    * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
    * Revised set of 60 TMs and 8 HMs
-   * Add move tutors for Sleep Talk, Zap Cannon, and Dream Eater
+   * Add move tutors for Sleep Talk, Zap Cannon, and Dream Eater (one Silver Leaf per tutoring)
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -168,6 +168,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Aesthetic updates:
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
+   * Use some music from RBY and HGSS in Kanto
    * Poké → ()PC on Pokémon Center signs from the Japanese version
    * Berry → Oran Berry, Burnt Berry → Rawst Berry, etc
    * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
@@ -192,6 +193,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add boardwalk to Olivine City from HGSS
    * Add dead trees in Blackthorn City from HGSS
    * Add bridge to Victory Road from HGSS
+   * Vermilion City boardwalk uses planks from RBY
    * Prof. Oak's lab has FRLG/HGSS appearance
    * Add crater to Route 3 from HGSS
    * Add fountain and benches to Cerulean City from HGSS
@@ -238,6 +240,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
+   * Buy BlueSky Mail and Morph Mail in Goldenrod City
+   * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
+   * Buy Music Mail in Blackthorn City
+   * Buy Mirage Mail in Mt. Moon Square
 
 
 ## To do:
@@ -246,7 +252,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
 * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
-* Add move tutors for Aqua Tail, Earth Power, Hyper Voice, Iron Head, Seed Bomb, and Zen Headbutt
+* Add the rest of the move tutors
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -275,10 +281,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Money loss formula from Gen III when whiting out
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
-   * Replace some Kanto music with RBY and HGSS tracks (Cerulean City, Fuchsia City, Cinnabar Island, Nugget Bridge, legendary battles, etc)
    * Unown ? and ! from Gen III
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
-   * Move Relearner accepts Gold Leaves, Move Tutors accept Silver Leaves
+   * Move Relearner that accepts Gold Leaves
 * Fix bugs:
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
@@ -295,10 +300,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Better Substitute sprites
    * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
+   * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
    * Add Young Couple and Double Team trainer classes
    * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
-   * Use proper boardwalk/pier in Vermilion City
    * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
@@ -330,14 +335,13 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
-   * Get BlueSky Mail and Mirage Mail in the Pokécom Center
-   * Get Eon Mail, Morph Mail, and Music Mail somewhere
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
+   * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
    * Add four Boarders/Skiers to Ice Path
@@ -367,7 +371,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
 * Replace Poké Seer byte with <gender:1, shiny:1, which_ability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
 * Improved AI
-* Import some devamped music from future generations
 
 
 ## See also

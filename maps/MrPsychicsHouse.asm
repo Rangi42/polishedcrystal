@@ -11,13 +11,13 @@ MrPsychicsHouse_MapScriptHeader:
 MrPsychic:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM29_PSYCHIC
+	checkevent EVENT_GOT_TWISTEDSPOON_FROM_MR_PSYCHIC
 	iftrue .AlreadyGotItem
 	writetext MrPsychicText1
 	buttonsound
-	verbosegiveitem TM_PSYCHIC
+	verbosegiveitem TWISTEDSPOON
 	iffalse .Done
-	setevent EVENT_GOT_TM29_PSYCHIC
+	setevent EVENT_GOT_TWISTEDSPOON_FROM_MR_PSYCHIC
 .AlreadyGotItem:
 	writetext MrPsychicText2
 	waitbutton
@@ -41,10 +41,7 @@ MrPsychicText1:
 	done
 
 MrPsychicText2:
-	text "TM29 is Psychic."
-
-	para "It may lower the"
-	line "target's Spcl.Def."
+	text "…Was I wrong?"
 	done
 
 MrPsychicsHouse_MapEventHeader:

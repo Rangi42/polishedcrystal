@@ -212,6 +212,10 @@ Route31MailRecipientScript:
 	setevent EVENT_GAVE_KENYA
 .TutorSleepTalk
 	writetext Text_Route31TutorSleepTalk
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_Route31TutorQuestion
 	yesorno
 	iffalse .TutorRefused
 	writebyte SLEEP_TALK
@@ -224,7 +228,14 @@ Route31MailRecipientScript:
 	closetext
 	end
 
+.NoSilverLeaf
+	writetext Text_Route31TutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
 .TeachMove
+	takeitem SILVER_LEAF
 	writetext Text_Route31TutorTaught
 	waitbutton
 	closetext
@@ -361,12 +372,24 @@ Text_Route31ReadingMail:
 	done
 
 Text_Route31TutorSleepTalk:
-	text "I can teach your"
-	line "#mon to talk"
-	cont "in their sleep."
+	text "For just one"
+	line "Silver Leaf,"
 
-	para "Should I teach"
-	line "Sleep Talk?"
+	para "I can teach your"
+	line "#mon to talk"
+	cont "in their sleep!"
+	done
+
+Text_Route31TutorNoSilverLeaf:
+	text "You don't have a"
+	line "Silver Leaf,"
+	cont "though…"
+	done
+
+Text_Route31TutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Sleep Talk?"
 	done
 
 Text_Route31TutorRefused:

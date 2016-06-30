@@ -15,7 +15,7 @@
 	const MUSIC_OFFICER_ENCOUNTER            ; 0c
 	const MUSIC_HEAL                         ; 0d
 	const MUSIC_LAVENDER_TOWN                ; 0e
-	const MUSIC_ROUTE_2                      ; 0f
+	const MUSIC_VIRIDIAN_FOREST              ; 0f
 	const MUSIC_MT_MOON                      ; 10
 	const MUSIC_SHOW_ME_AROUND               ; 11
 	const MUSIC_GAME_CORNER                  ; 12
@@ -103,5 +103,17 @@
 	const MUSIC_SUICUNE_BATTLE               ; 64
 	const MUSIC_BATTLE_TOWER_LOBBY           ; 65
 	const MUSIC_MOBILE_CENTER                ; 66
+	const MUSIC_CERULEAN_CITY_HGSS           ; 67
+	const MUSIC_CINNABAR_ISLAND_HGSS         ; 68
+	const MUSIC_NUGGET_BRIDGE_HGSS           ; 69
+	const MUSIC_ROUTE_47_HGSS                ; 6a
+	const MUSIC_ROUTE_210_DPPT               ; 6b
+	const MUSIC_ROUTE_216_DPPT               ; 6c
+	const MUSIC_POKEMON_TOWER_RBY            ; 6d
+	const MUSIC_CINNABAR_MANSION_RBY         ; 6e
+	const MUSIC_CERULEAN_CAVE_RBY            ; 6f
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 70
+	const MUSIC_SURFING_PIKACHU              ; 71
+	const MUSIC_LAWRENCE                     ; 72
 
 MUSIC_MAHOGANY_MART EQU $64 ; leftover from gold

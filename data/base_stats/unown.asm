@@ -18,5 +18,5 @@
 	dn NO_EGGS, NO_EGGS ; egg groups
 
 	; tmhm
-	tmhm
+	tmhm HIDDEN_POWER
 	; end
