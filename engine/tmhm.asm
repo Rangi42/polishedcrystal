@@ -120,7 +120,7 @@ TMHMMoves: ; 1167a
 	db WATERFALL    ; HM07 (Ice Path)
 	db ROCK_SMASH   ; HM08 (Route 36)
 	db AQUA_TAIL    ; MT01 (Route 4)
-	db COUNTER      ; MT02 (TODO: Celadon Dept.Store)
+	db COUNTER      ; MT02 (Celadon Dept.Store)
 	db DOUBLE_EDGE  ; MT03 (TODO: Victory Road)
 	db DREAM_EATER  ; MT04 (Viridian City)
 	db EARTH_POWER  ; MT05 (Cherrygrove Bay)
