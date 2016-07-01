@@ -23,8 +23,8 @@ GrampsScript_0x189538:
 .MetGrandpa:
 	checkevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
 	iftrue .ShowedPichu
-	checkevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
-	iftrue .ShowedGrowlitheVulpix
+	checkevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
+	iftrue .ShowedGrowlithe
 	checkevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
 	iftrue .ShowedStaryu
 	checkevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
@@ -73,8 +73,6 @@ GrampsScript_0x189538:
 	jump .ShowedStaryu
 
 .GotWaterStone:
-	checkver
-	iftrue .Crystal11
 	writetext BillsGrandpaGrowlitheText
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
@@ -85,22 +83,8 @@ GrampsScript_0x189538:
 	iffalse .SaidNo
 	if_not_equal GROWLITHE, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
-	jump .ShowedGrowlitheVulpix
-
-.Crystal11:
-	writetext BillsGrandpaVulpixText
-	buttonsound
-	writetext BillsGrandpaAskToSeeMonText
-	yesorno
-	iffalse .SaidNo
-	scall .ExcitedToSee
-	special Special_BillsGrandfather
-	iffalse .SaidNo
-	if_not_equal VULPIX, .WrongPokemon
-	scall .CorrectPokemon
-	setevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
-	jump .ShowedGrowlitheVulpix
+	setevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
+	jump .ShowedGrowlithe
 
 .GotFireStone:
 	writetext BillsGrandpaPichuText
@@ -149,7 +133,7 @@ GrampsScript_0x189538:
 	closetext
 	end
 
-.ShowedGrowlitheVulpix:
+.ShowedGrowlithe:
 	checkevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotFireStone
 	scall .ReceiveItem
@@ -325,16 +309,6 @@ BillsGrandpaGrowlitheText:
 
 	para "It's supposed to"
 	line "Roar well."
-	done
-
-BillsGrandpaVulpixText:
-	text "I heard about a"
-	line "cute #mon that"
-	cont "has six tails."
-
-	para "I would love to"
-	line "hug a cute #mon"
-	cont "like that."
 	done
 
 BillsGrandpaPichuText:

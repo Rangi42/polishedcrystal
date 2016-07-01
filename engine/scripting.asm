@@ -2100,17 +2100,14 @@ GetVarAction: ; 9769e
 	ret
 ; 976a6
 
+; unused
 Script_checkver: ; 976a6
 ; script command 0x18
 
-	ld a, [Version]
+	xor a
 	ld [ScriptVar], a
 	ret
 ; 976ad
-
-Version: ; 976ad
-	db VERSION
-; 976ae
 
 Script_pokenamemem: ; 976ae
 ; script command 0x40
