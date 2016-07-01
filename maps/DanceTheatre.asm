@@ -16,10 +16,10 @@ DanceTheatre_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-TrainerKimono_girlNaoko2:
-	trainer EVENT_BEAT_KIMONO_GIRL_NAOKO, KIMONO_GIRL, NAOKO2, Kimono_girlNaoko2SeenText, Kimono_girlNaoko2BeatenText, 0, Kimono_girlNaoko2Script
+TrainerKimono_girlNaoko:
+	trainer EVENT_BEAT_KIMONO_GIRL_NAOKO, KIMONO_GIRL, NAOKO, Kimono_girlNaokoSeenText, Kimono_girlNaokoBeatenText, 0, Kimono_girlNaokoScript
 
-Kimono_girlNaoko2Script:
+Kimono_girlNaokoScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x99579
@@ -137,13 +137,13 @@ GrannyScript_0x99528:
 MapDanceTheatreSignpost1Script:
 	jumptext UnknownText_0x99b79
 
-Kimono_girlNaoko2SeenText:
+Kimono_girlNaokoSeenText:
 	text "You have lovely"
 	line "#mon. May I see"
 	cont "them in battle?"
 	done
 
-Kimono_girlNaoko2BeatenText:
+Kimono_girlNaokoBeatenText:
 	text "Oh, you are very"
 	line "strong."
 	done
@@ -356,7 +356,7 @@ DanceTheatre_MapEventHeader:
 
 .PersonEvents:
 	db 9
-	person_event SPRITE_KIMONO_GIRL, 2, 0, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlNaoko2, -1
+	person_event SPRITE_KIMONO_GIRL, 2, 0, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlNaoko, -1
 	person_event SPRITE_KIMONO_GIRL, 1, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlSayo, -1
 	person_event SPRITE_KIMONO_GIRL, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerKimono_girlZuki, -1
 	person_event SPRITE_KIMONO_GIRL, 1, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlKuni, -1

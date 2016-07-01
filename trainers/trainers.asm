@@ -9384,20 +9384,6 @@ KimonoGirlGroup:
 ; ================
 
 	; KIMONO_GIRL (1)
-	; unused
-	db "Naoko@"
-	db 0 ; normal
-
-	; party
-	db 20, SKIPLOOM
-	db 20, VULPIX
-	db 18, SKIPLOOM
-
-	db $ff ; end
-
-; ================
-
-	; KIMONO_GIRL (2)
 	db "Naoko@"
 	db 0 ; normal
 
@@ -9408,7 +9394,7 @@ KimonoGirlGroup:
 
 ; ================
 
-	; KIMONO_GIRL (3)
+	; KIMONO_GIRL (2)
 	db "Sayo@"
 	db 0 ; normal
 
@@ -9419,7 +9405,7 @@ KimonoGirlGroup:
 
 ; ================
 
-	; KIMONO_GIRL (4)
+	; KIMONO_GIRL (3)
 	db "Zuki@"
 	db 0 ; normal
 
@@ -9430,7 +9416,7 @@ KimonoGirlGroup:
 
 ; ================
 
-	; KIMONO_GIRL (5)
+	; KIMONO_GIRL (4)
 	db "Kuni@"
 	db 0 ; normal
 
@@ -9441,7 +9427,7 @@ KimonoGirlGroup:
 
 ; ================
 
-	; KIMONO_GIRL (6)
+	; KIMONO_GIRL (5)
 	db "Miki@"
 	db 0 ; normal
 
