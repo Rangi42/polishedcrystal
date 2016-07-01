@@ -537,13 +537,11 @@ jumptextfaceplayer: macro
 	dw \1 ; text_pointer
 	endm
 
-; IF _CRYSTAL
 	enum farjumptext_command
 farjumptext: macro
 	db farjumptext_command
 	dba \1
 	endm
-; ENDC
 
 	enum jumptext_command
 jumptext: macro
