@@ -2,8 +2,9 @@
 	connection west, ROUTE_29, Route29, 0, 0, 9, NEW_BARK_TOWN
 	connection east, ROUTE_27, Route27, 0, 0, 9, NEW_BARK_TOWN
 
-	map_header_2 CherrygroveCity, CHERRYGROVE_CITY, $35, NORTH | EAST
+	map_header_2 CherrygroveCity, CHERRYGROVE_CITY, $35, NORTH | WEST | EAST
 	connection north, ROUTE_30, Route30, 5, 0, 10, CHERRYGROVE_CITY
+	connection west, CHERRYGROVE_BAY, CherrygroveBay, -1, 8, 10, CHERRYGROVE_CITY
 	connection east, ROUTE_29, Route29, 0, 0, 9, CHERRYGROVE_CITY
 
 	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
@@ -69,9 +70,10 @@
 	connection south, ROUTE_30, Route30, 10, 0, 10, ROUTE_31
 	connection west, VIOLET_CITY, VioletCity, -2, 6, 12, ROUTE_31
 
-	map_header_2 Route32, ROUTE_32, $5, NORTH | SOUTH
+	map_header_2 Route32, ROUTE_32, $5, NORTH | SOUTH | EAST
 	connection north, VIOLET_CITY, VioletCity, 0, 0, 13, ROUTE_32
 	connection south, ROUTE_33, Route33, 0, 0, 10, ROUTE_32
+	connection east, CHERRYGROVE_BAY, CherrygroveBay, 18, 0, 20, ROUTE_32
 
 	map_header_2 Route33, ROUTE_33, $5, NORTH | WEST
 	connection north, ROUTE_32, Route32, 0, 0, 10, ROUTE_33
@@ -281,6 +283,10 @@
 
 	map_header_2 Route48, ROUTE_48, $35, SOUTH
 	connection south, ROUTE_47, Route47, 0, 0, 36, ROUTE_48
+
+	map_header_2 CherrygroveBay, CHERRYGROVE_BAY, $35, WEST | EAST
+	connection west, ROUTE_32, Route32, -2, 16, 20, CHERRYGROVE_BAY
+	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10, CHERRYGROVE_BAY
 
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
