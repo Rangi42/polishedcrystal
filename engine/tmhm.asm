@@ -134,7 +134,7 @@ TMHMMoves: ; 1167a
 	db SLEEP_TALK   ; MT13 (Route 31)
 	db THUNDERPUNCH ; MT14 (Goldenrod City)
 	db ZAP_CANNON   ; MT15 (Power Plant)
-	db ZEN_HEADBUTT ; MT16 (TODO: Saffron City)
+	db ZEN_HEADBUTT ; MT16 (Saffron City)
 
 	db 0 ; end
 ; 116b7

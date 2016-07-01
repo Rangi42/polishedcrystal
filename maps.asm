@@ -306,7 +306,6 @@ INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/SaffronGym.asm"
 INCLUDE "maps/SaffronMart.asm"
 INCLUDE "maps/SaffronPokeCenter1F.asm"
-INCLUDE "maps/MrPsychicsHouse.asm"
 INCLUDE "maps/SaffronTrainStation.asm"
 INCLUDE "maps/SilphCo1F.asm"
 INCLUDE "maps/CopycatsHouse1F.asm"
@@ -314,6 +313,7 @@ INCLUDE "maps/CopycatsHouse2F.asm"
 INCLUDE "maps/Route5UndergroundEntrance.asm"
 INCLUDE "maps/Route5SaffronCityGate.asm"
 INCLUDE "maps/Route5CleanseTagSpeechHouse.asm"
+INCLUDE "maps/CeladonChiefHouse.asm"
 
 
 SECTION "Map Scripts 16", ROMX, BANK[MAP_SCRIPTS_16]
@@ -529,6 +529,7 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
+INCLUDE "maps/MrPsychicsHouse.asm"
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/Route10North.asm"
@@ -539,6 +540,5 @@ INCLUDE "maps/QuietCave1F.asm"
 INCLUDE "maps/QuietCaveB1F.asm"
 INCLUDE "maps/QuietCaveB2F.asm"
 INCLUDE "maps/QuietCaveB3F.asm"
-INCLUDE "maps/CeladonChiefHouse.asm"
 INCLUDE "maps/CeladonHotel.asm"
 INCLUDE "maps/CherrygroveBay.asm"

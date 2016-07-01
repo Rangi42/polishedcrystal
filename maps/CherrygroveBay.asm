@@ -48,6 +48,9 @@ CherrygroveBayTutorEarthPowerScript:
 	closetext
 	end
 
+CherrygroveBayShinyStone:
+	itemball SHINY_STONE
+
 CherrygroveBayPokefanMText:
 	text "I don't believe in"
 	line "legendary #mon"
@@ -59,9 +62,6 @@ CherrygroveBayPokefanMText:
 	para "years by the power"
 	line "of the earth!"
 	done
-
-CherrygroveBayShinyStone:
-	itemball SHINY_STONE
 
 Text_CherrygroveBayTutorEarthPower:
 	text "I can teach your"
