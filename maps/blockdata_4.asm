@@ -89,3 +89,6 @@ CeladonChiefHouse_BlockData:
 
 CeladonHotel_BlockData:
 	INCBIN "maps/CeladonHotel.blk"
+
+CherrygroveBay_BlockData:
+	INCBIN "maps/CherrygroveBay.blk"

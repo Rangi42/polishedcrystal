@@ -212,6 +212,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Custom features:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
    * Yellow Forest replaces the Johto Safari Zone
+   * Cherrygrove Bay connects Cherrygrove City and Route 32
    * Individual party/day-care icons for each Pokémon
    * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Lugia and Ho-Oh know their signature moves when encountered at level 60

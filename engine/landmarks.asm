@@ -60,6 +60,7 @@ ENDM
 	landmark 148, 116, NewBarkTownName
 	landmark 136, 116, Route29Name
 	landmark 108, 116, CherrygroveCityName
+	landmark 100, 116, CherrygroveBayName
 	landmark 108,  96, Route30Name
 	landmark 104,  76, Route31Name
 	landmark  92,  76, VioletCityName
@@ -275,6 +276,7 @@ CliffEdgeGateName:   db "Cliff Edge¯Gate@"
 CliffCaveName:       db "Cliff Cave@"
 YellowForestName:    db "Yellow¯Forest@"
 QuietCaveName:       db "Quiet Cave@"
+CherrygroveBayName:  db "Cherrygrove¯Bay@"
 SpecialMapName:      db "Special@"
 
 

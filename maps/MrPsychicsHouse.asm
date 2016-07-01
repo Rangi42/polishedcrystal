@@ -11,24 +11,46 @@ MrPsychicsHouse_MapScriptHeader:
 MrPsychic:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TWISTEDSPOON_FROM_MR_PSYCHIC
-	iftrue .AlreadyGotItem
-	writetext MrPsychicText1
-	buttonsound
-	verbosegiveitem TWISTEDSPOON
-	iffalse .Done
-	setevent EVENT_GOT_TWISTEDSPOON_FROM_MR_PSYCHIC
-.AlreadyGotItem:
-	writetext MrPsychicText2
+	checkevent EVENT_LISTENED_TO_ZEN_HEADBUTT_INTRO
+	iftrue MrPsychicsHouseTutorZenHeadbuttScript
+	writetext MrPsychicText
 	waitbutton
-.Done:
+	setevent EVENT_LISTENED_TO_ZEN_HEADBUTT_INTRO
+MrPsychicsHouseTutorZenHeadbuttScript:
+	writetext Text_MrPsychicsHouseTutorZenHeadbutt
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_MrPsychicsHouseTutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte ZEN_HEADBUTT
+	writetext Text_MrPsychicsHouseTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_MrPsychicsHouseTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	writetext Text_MrPsychicsHouseTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_MrPsychicsHouseTutorTaught
+	waitbutton
 	closetext
 	end
 
 MrPsychicsHouseBookshelf:
 	jumpstd difficultbookshelf
 
-MrPsychicText1:
+MrPsychicText:
 	text "…"
 
 	para "…"
@@ -37,11 +59,41 @@ MrPsychicText1:
 
 	para "…I got it!"
 
-	para "You wanted this!"
+	para "You want to learn"
+	line "Zen Headbutt!"
 	done
 
-MrPsychicText2:
-	text "…Was I wrong?"
+Text_MrPsychicsHouseTutorZenHeadbutt:
+	text "I will teach your"
+	line "#mon to use Zen"
+
+	para "Headbutt for a"
+	line "Silver Leaf."
+	done
+
+Text_MrPsychicsHouseTutorNoSilverLeaf:
+	text "You don't have a"
+	line "Silver Leaf…"
+	done
+
+Text_MrPsychicsHouseTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Zen Headbutt?"
+	done
+
+Text_MrPsychicsHouseTutorRefused:
+	text "…I was wrong?"
+	done
+
+Text_MrPsychicsHouseTutorClear:
+	text ""
+	done
+
+Text_MrPsychicsHouseTutorTaught:
+	text "Your #mon now"
+	line "knows how to use"
+	cont "Zen Headbutt."
 	done
 
 MrPsychicsHouse_MapEventHeader:

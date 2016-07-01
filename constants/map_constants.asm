@@ -485,15 +485,16 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_30,                                   27, 10 ;  1
 	mapgroup ROUTE_31,                                    9, 20 ;  2
-	mapgroup CHERRYGROVE_CITY,                           10, 20 ;  3
-	mapgroup CHERRYGROVE_MART,                            4,  6 ;  4
-	mapgroup CHERRYGROVE_POKECENTER_1F,                   4,  5 ;  5
-	mapgroup CHERRYGROVE_GYM_SPEECH_HOUSE,                4,  4 ;  6
-	mapgroup GUIDE_GENTS_HOUSE,                           4,  4 ;  7
-	mapgroup CHERRYGROVE_EVOLUTION_SPEECH_HOUSE,          4,  4 ;  8
-	mapgroup ROUTE_30_BERRY_SPEECH_HOUSE,                 4,  4 ;  9
-	mapgroup MR_POKEMONS_HOUSE,                           4,  4 ; 10
-	mapgroup ROUTE_31_VIOLET_GATE,                        4,  5 ; 11
+	mapgroup CHERRYGROVE_BAY,                            19, 15 ;  3
+	mapgroup CHERRYGROVE_CITY,                           10, 20 ;  4
+	mapgroup CHERRYGROVE_MART,                            4,  6 ;  5
+	mapgroup CHERRYGROVE_POKECENTER_1F,                   4,  5 ;  6
+	mapgroup CHERRYGROVE_GYM_SPEECH_HOUSE,                4,  4 ;  7
+	mapgroup GUIDE_GENTS_HOUSE,                           4,  4 ;  8
+	mapgroup CHERRYGROVE_EVOLUTION_SPEECH_HOUSE,          4,  4 ;  9
+	mapgroup ROUTE_30_BERRY_SPEECH_HOUSE,                 4,  4 ; 10
+	mapgroup MR_POKEMONS_HOUSE,                           4,  4 ; 11
+	mapgroup ROUTE_31_VIOLET_GATE,                        4,  5 ; 12
 
 
 ; elevator floors

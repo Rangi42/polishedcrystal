@@ -180,10 +180,14 @@ UnknownText_0x1a9cc4:
 	line "about a Drowzee"
 
 	para "eating my dream."
-	line "Weird, huh?"
+	line "And…"
 
-	para "But it gave me a"
-	line "neat idea…"
+	para "I learned how to"
+	line "eat dreams…"
+
+	para "Ooh, this is too"
+	line "spooky!"
+	cont "But now…"
 	done
 
 Text_ViridianCityTutorDreamEater:
@@ -194,6 +198,7 @@ Text_ViridianCityTutorDreamEater:
 	para "I just want a"
 	line "Silver Leaf in"
 	cont "exchange."
+	done
 
 Text_ViridianCityTutorNoSilverLeaf:
 	text "You don't have any"
