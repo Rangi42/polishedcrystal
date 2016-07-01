@@ -130,7 +130,7 @@ TMHMMoves: ; 1167a
 	db ICE_PUNCH    ; MT09 (Goldenrod City)
 	db IRON_HEAD    ; MT10 (TODO: Route 4)
 	db SEED_BOMB    ; MT11 (TODO: Yellow Forest)
-	db SEISMIC_TOSS ; MT12 (TODO: Pewter City)
+	db SEISMIC_TOSS ; MT12 (Pewter City)
 	db SLEEP_TALK   ; MT13 (Route 31)
 	db THUNDERPUNCH ; MT14 (Goldenrod City)
 	db ZAP_CANNON   ; MT15 (Power Plant)
