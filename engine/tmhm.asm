@@ -123,7 +123,7 @@ TMHMMoves: ; 1167a
 	db COUNTER      ; MT02 (TODO: Celadon Dept.Store)
 	db DOUBLE_EDGE  ; MT03 (TODO: Victory Road)
 	db DREAM_EATER  ; MT04 (Viridian City)
-	db EARTH_POWER  ; MT05 (TODO: Cherrygrove Bay)
+	db EARTH_POWER  ; MT05 (Cherrygrove Bay)
 	db FIRE_PUNCH   ; MT06 (Goldenrod City)
 	db HEADBUTT     ; MT07 (Ilex Forest)
 	db HYPER_VOICE  ; MT08 (TODO: Goldenrod Harbor)
