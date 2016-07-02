@@ -180,6 +180,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
    * Tin Tower → Bell Tower
+   * Virtual Boy → GameCube
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
    * Menu Account → Menu Captions

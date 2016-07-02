@@ -355,7 +355,7 @@ PaperSprite: ; 14934
 ; 1493a
 
 VirtualBoySprite: ; 1493a
-	sprite_header VirtualBoySpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
+	sprite_header VirtualBoySpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
 ; 14940
 
 OldLinkReceptionistSprite: ; 14940
