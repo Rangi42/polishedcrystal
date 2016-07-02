@@ -121,7 +121,7 @@ TMHMMoves: ; 1167a
 	db ROCK_SMASH   ; HM08 (Route 36)
 	db AQUA_TAIL    ; MT01 (Route 4)
 	db COUNTER      ; MT02 (Celadon Dept.Store)
-	db DOUBLE_EDGE  ; MT03 (TODO: Victory Road)
+	db DOUBLE_EDGE  ; MT03 (Safari Zone)
 	db DREAM_EATER  ; MT04 (Viridian City)
 	db EARTH_POWER  ; MT05 (Cherrygrove Bay)
 	db FIRE_PUNCH   ; MT06 (Goldenrod City)

@@ -1,4 +1,5 @@
 const_value set 2
+	const SAFARIZONENORTH_COOLTRAINER_F
 	const SAFARIZONENORTH_POKE_BALL1
 	const SAFARIZONENORTH_POKE_BALL2
 
@@ -8,6 +9,45 @@ SafariZoneNorth_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+SafariZoneNorthCooltrainerFScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_DOUBLE_EDGE_INTRO
+	iftrue SafariZoneNorthTutorDoubleEdgeScript
+	writetext SafariZoneNorthCooltrainerFText
+	waitbutton
+	setevent EVENT_LISTENED_TO_DOUBLE_EDGE_INTRO
+SafariZoneNorthTutorDoubleEdgeScript:
+	writetext Text_SafariZoneNorthTutorDoubleEdge
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_SafariZoneNorthTutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte DOUBLE_EDGE
+	writetext Text_SafariZoneNorthTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_SafariZoneNorthTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	writetext Text_SafariZoneNorthTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_SafariZoneNorthTutorTaught
+	waitbutton
+	closetext
+	end
 
 SafariZoneNorthAreaSign:
 	jumptext SafariZoneNorthAreaSignText
@@ -29,6 +69,55 @@ SafariZoneNorthProtein:
 
 SafariZoneNorthHiddenLuckyPunch:
 	dwb EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH, LUCKY_PUNCH
+
+SafariZoneNorthCooltrainerFText:
+	text "I caught a"
+	line "Chansey!"
+
+	para "I'm so lucky!"
+	line "I'm going to teach"
+
+	para "it to do a really"
+	line "powerful tackle."
+
+	para "Let me share my"
+	line "luck with you!"
+	done
+
+Text_SafariZoneNorthTutorDoubleEdge:
+	text "I'll teach your"
+	line "#mon how to"
+
+	para "use Double-Edge"
+	line "for a Silver Leaf."
+	done
+
+Text_SafariZoneNorthTutorNoSilverLeaf:
+	text "You don't have any"
+	line "Silver Leaves…"
+	done
+
+Text_SafariZoneNorthTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Double-Edge?"
+	done
+
+Text_SafariZoneNorthTutorRefused:
+	text "Oh well."
+	done
+
+Text_SafariZoneNorthTutorClear:
+	text ""
+	done
+
+Text_SafariZoneNorthTutorTaught:
+	text "There!"
+	line "Now your #mon"
+
+	para "knows how to use"
+	cont "Double-Edge!"
+	done
 
 SafariZoneNorthAreaSignText:
 	text "Safari Zone"
@@ -85,6 +174,7 @@ SafariZoneNorth_MapEventHeader:
 	signpost 13, 23, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
 
 .PersonEvents:
-	db 2
+	db 3
+	person_event SPRITE_COOLTRAINER_F, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
 	person_event SPRITE_POKE_BALL, 12, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthQuickClaw, EVENT_SAFARI_ZONE_NORTH_QUICK_CLAW
 	person_event SPRITE_POKE_BALL, 3, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthProtein, EVENT_SAFARI_ZONE_NORTH_PROTEIN

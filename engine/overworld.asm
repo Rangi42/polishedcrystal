@@ -1275,7 +1275,11 @@ Group17Sprites:
 ; Route14
 ; Route15
 ; FuchsiaCity
+; SafariZoneEast
+; SafariZoneHub
+; SafariZoneNorth
 ; Route19
+	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
@@ -1286,7 +1290,6 @@ Group17Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
