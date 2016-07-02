@@ -105,11 +105,14 @@ Music_CeruleanCityHGSS
 Music_CinnabarIslandHGSS
 Music_NuggetBridgeHGSS
 Music_Route47HGSS
+Music_HoOhBattleHGSS
+Music_LugiaBattleHGSS
 Music_Route210DPPt
 Music_Route216DPPt
 Music_PokemonTowerRBY
 Music_CinnabarMansionRBY
 Music_CeruleanCaveRBY
 Music_FrontierBrainBattleRSE
+Music_KantoLegendBattleFRLG
 Music_SurfingPikachu
 Music_Lawrence

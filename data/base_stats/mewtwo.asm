@@ -6,7 +6,7 @@
 	db PSYCHIC, PSYCHIC
 	db 3 ; catch rate
 	db 220 ; base exp
-	db NO_ITEM ; item 1
+	db BERSERK_GENE ; item 1
 	db BERSERK_GENE ; item 2
 	db 255 ; gender
 	db 100 ; unknown

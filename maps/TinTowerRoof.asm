@@ -35,7 +35,7 @@ TinTowerHoOh:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_HO_OH
-	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	writecode VAR_BATTLETYPE, BATTLETYPE_HO_OH
 	loadwildmon HO_OH, 60
 	startbattle
 	disappear TINTOWERROOF_HO_OH

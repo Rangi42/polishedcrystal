@@ -23,6 +23,7 @@ CinnabarVolcanoMoltres:
 	faceplayer
 	cry MOLTRES
 	loadwildmon MOLTRES, 60
+	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES

@@ -6582,6 +6582,12 @@ BattleCommand_Teleport: ; 36778
 	jr z, .failed
 	cp BATTLETYPE_SUICUNE
 	jr z, .failed
+	cp BATTLETYPE_HO_OH
+	jr z, .failed
+	cp BATTLETYPE_LUGIA
+	jr z, .failed
+	cp BATTLETYPE_KANTO_LEGEND
+	jr z, .failed
 
 	ld a, BATTLE_VARS_SUBSTATUS5_OPP
 	call GetBattleVar
@@ -6680,6 +6686,12 @@ BattleCommand_ForceSwitch: ; 3680f
 	cp BATTLETYPE_CELEBI
 	jp z, .fail
 	cp BATTLETYPE_SUICUNE
+	jp z, .fail
+	cp BATTLETYPE_HO_OH
+	jp z, .fail
+	cp BATTLETYPE_LUGIA
+	jp z, .fail
+	cp BATTLETYPE_KANTO_LEGEND
 	jp z, .fail
 	ld a, [hBattleTurn]
 	and a

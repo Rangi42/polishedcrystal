@@ -3901,6 +3901,12 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jp z, .cant_escape
 	cp BATTLETYPE_SUICUNE
 	jp z, .cant_escape
+	cp BATTLETYPE_HO_OH
+	jp z, .cant_escape
+	cp BATTLETYPE_LUGIA
+	jp z, .cant_escape
+	cp BATTLETYPE_KANTO_LEGEND
+	jp z, .cant_escape
 
 	ld a, [wLinkMode]
 	and a
@@ -6314,9 +6320,24 @@ LoadEnemyMon: ; 3e8eb
 ; In a wild battle, we pull from the item slots in BaseData
 
 ; Force Item1
-; Used for Ho-Oh, Lugia and Snorlax encounters
+; Used for Snorlax, Ho-Oh, Lugia, and Kanto legendary encounters
 	ld a, [BattleType]
 	cp BATTLETYPE_FORCEITEM
+	ld a, [BaseItems]
+	jr z, .UpdateItem
+
+	ld a, [BattleType]
+	cp BATTLETYPE_HO_OH
+	ld a, [BaseItems]
+	jr z, .UpdateItem
+
+	ld a, [BattleType]
+	cp BATTLETYPE_LUGIA
+	ld a, [BaseItems]
+	jr z, .UpdateItem
+
+	ld a, [BattleType]
+	cp BATTLETYPE_KANTO_LEGEND
 	ld a, [BaseItems]
 	jr z, .UpdateItem
 

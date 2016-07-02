@@ -2122,14 +2122,14 @@ MewtwoEvosAttacks:
 	db 1, CONFUSION
 	db 1, DISABLE
 	db 1, SAFEGUARD
-	db 11, BARRIER
-	db 22, SWIFT
-	db 33, NASTY_PLOT
-	db 44, FUTURE_SIGHT
-	db 55, MIST
-	db 66, PSYCHIC_M
-	db 77, CALM_MIND
-	db 88, RECOVER
+	db 11, SWIFT
+	db 22, FUTURE_SIGHT
+	db 33, CALM_MIND
+	db 44, RECOVER
+	db 55, PSYCHIC_M
+	db 66, BARRIER
+	db 77, NASTY_PLOT
+	db 88, MIST
 	db 99, PSYSTRIKE
 	db 0 ; no more level-up moves
 
@@ -2137,11 +2137,15 @@ MewEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POUND
 	db 10, TRANSFORM
-	db 20, METRONOME
-	db 30, PSYCHIC_M
-	db 40, BARRIER
-	db 50, ANCIENTPOWER
-	db 50, CALM_MIND
+	db 20, HEADBUTT
+	db 30, METRONOME
+	db 40, PSYCHIC_M
+	db 50, BARRIER
+	db 60, ANCIENTPOWER
+	db 70, CALM_MIND
+	db 80, BATON_PASS
+	db 90, NASTY_PLOT
+	db 100, TELEPORT
 	db 0 ; no more level-up moves
 
 ChikoritaEvosAttacks:

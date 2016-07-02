@@ -14,6 +14,7 @@ SeafoamIslandsArticuno:
 	faceplayer
 	cry ARTICUNO
 	loadwildmon ARTICUNO, 60
+	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
 	disappear SEAFOAMISLANDSB4F_ARTICUNO
 	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO

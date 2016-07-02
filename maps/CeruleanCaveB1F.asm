@@ -14,6 +14,7 @@ CeruleanCaveMewtwo:
 	faceplayer
 	cry MEWTWO
 	loadwildmon MEWTWO, 80
+	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
 	disappear CERULEANCAVEB1F_MEWTWO
 	setevent EVENT_CERULEAN_CAVE_MEWTWO
