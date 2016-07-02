@@ -133,10 +133,12 @@ YellowText_Greeting:
 
 	para "This forest full"
 	line "of Pikachu…"
-	cont "It reminds me of"
-	cont "home in Kanto."
-	cont "Where I caught my"
-	cont "first #mon."
+
+	para "It reminds me of"
+	line "home in Kanto."
+
+	para "Where I caught my"
+	line "first #mon."
 
 	para "The trainer who"
 	line "helped me catch it"
@@ -144,17 +146,19 @@ YellowText_Greeting:
 
 	para "That if you care"
 	line "for #mon with"
-	cont "all your heart,"
-	cont "they'll always be"
+
+	para "all your heart,"
+	line "they'll always be"
 	cont "your friends!"
 
 	para "I can sense that"
 	line "you care about"
-	cont "your #mon."
 
-	para "So let me see"
-	line "what your friends"
-	cont "can do!"
+	para "your #mon."
+	line "So let me see"
+
+	para "what your friends"
+	line "can do!"
 	done
 
 YellowText_WinBattle:
@@ -165,18 +169,20 @@ YellowText_WinBattle:
 YellowText_AfterBattle:
 	text "Yellow: Wow!"
 	line "You really are a"
-	cont "good trainer."
 
-	para "Here's something"
-	line "that your friends"
-	cont "will appreciate!"
+	para "good trainer."
+	line "Here's something"
+
+	para "that your friends"
+	line "will appreciate!"
 	done
 
 YellowText_Goodbye:
 	text "Yellow: Give that"
 	line "Light Ball to a"
-	cont "Pikachu to raise"
-	cont "its power."
+
+	para "Pikachu to raise"
+	line "its power."
 	done
 
 YellowForestCooltrainerFText:

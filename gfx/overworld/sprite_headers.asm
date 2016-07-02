@@ -432,3 +432,6 @@ LeafSprite:
 
 LawrenceSprite:
 	sprite_header LawrenceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+FossilSprite:
+	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
