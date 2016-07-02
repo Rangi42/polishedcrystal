@@ -92,3 +92,6 @@ CeladonHotel_BlockData:
 
 CherrygroveBay_BlockData:
 	INCBIN "maps/CherrygroveBay.blk"
+
+GoldenrodHarbor_BlockData:
+	INCBIN "maps/GoldenrodHarbor.blk"

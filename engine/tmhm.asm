@@ -126,7 +126,7 @@ TMHMMoves: ; 1167a
 	db EARTH_POWER  ; MT05 (Cherrygrove Bay)
 	db FIRE_PUNCH   ; MT06 (Goldenrod City)
 	db HEADBUTT     ; MT07 (Ilex Forest)
-	db HYPER_VOICE  ; MT08 (TODO: Goldenrod Harbor)
+	db HYPER_VOICE  ; MT08 (Goldenrod Harbor)
 	db ICE_PUNCH    ; MT09 (Goldenrod City)
 	db IRON_HEAD    ; MT10 (Route 4)
 	db SEED_BOMB    ; MT11 (Yellow Forest)
