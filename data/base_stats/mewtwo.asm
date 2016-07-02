@@ -6,8 +6,8 @@
 	db PSYCHIC, PSYCHIC
 	db 3 ; catch rate
 	db 220 ; base exp
-	db BERSERK_GENE ; item 1
-	db BERSERK_GENE ; item 2
+	db MYSTERYBERRY ; item 1
+	db MYSTERYBERRY ; item 2
 	db 255 ; gender
 	db 100 ; unknown
 	db 120 ; step cycles to hatch

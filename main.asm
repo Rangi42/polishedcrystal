@@ -1847,11 +1847,15 @@ INCLUDE "battle/core.asm"
 
 INCLUDE "battle/effect_command_pointers.asm"
 
-SECTION "bank10", ROMX, BANK[$10]
+SECTION "Pokedex", ROMX
 
 INCLUDE "engine/pokedex.asm"
 
+SECTION "Moves", ROMX
+
 INCLUDE "battle/moves/moves.asm"
+
+SECTION "bank10", ROMX, BANK[$10]
 
 INCLUDE "engine/evolve.asm"
 

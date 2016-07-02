@@ -33,7 +33,7 @@ EggMovePointers:: ; 0x23b11
 	dw NidoranMEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw NoEggMoves
+	dw ClefairyEggMoves
 	dw NoEggMoves
 	dw VulpixEggMoves
 	dw NoEggMoves

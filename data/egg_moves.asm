@@ -53,6 +53,16 @@ RattataEggMoves:
 	db COUNTER
 	db $ff
 
+MarillEggMoves:
+	db BELLY_DRUM
+	db FORESIGHT
+	db FUTURE_SIGHT
+	db PERISH_SONG
+	db SUPERSONIC
+	db LIGHT_SCREEN
+	db CALM_MIND
+	db $ff
+
 EkansEggMoves:
 	db CRUNCH
 	db DISABLE
@@ -85,6 +95,13 @@ NidoranMEggMoves:
 	db TAKE_DOWN
 	db CALM_MIND
 	db COUNTER
+	db $ff
+
+ClefairyEggMoves:
+	db CALM_MIND
+	db BELLY_DRUM
+	db METRONOME
+	db SPLASH
 	db $ff
 
 VulpixEggMoves:
@@ -576,16 +593,6 @@ MareepEggMoves:
 	db TAKE_DOWN
 	db BODY_SLAM
 	db SAFEGUARD
-	db $ff
-
-MarillEggMoves:
-	db BELLY_DRUM
-	db FORESIGHT
-	db FUTURE_SIGHT
-	db PERISH_SONG
-	db SUPERSONIC
-	db LIGHT_SCREEN
-	db CALM_MIND
 	db $ff
 
 SudowoodoEggMoves:
