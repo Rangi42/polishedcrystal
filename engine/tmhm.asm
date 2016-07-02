@@ -105,7 +105,7 @@ TMHMMoves: ; 1167a
 	db DARK_PULSE   ; TM57 (Dark Cave)
 	db ENDURE       ; TM58 (Burned Tower)
 	db DRAGON_PULSE ; TM59 (Route 26)
-	db DAZZLINGLEAM ; TM60 (TODO: Valerie)
+	db DAZZLINGLEAM ; TM60 (Bellchime Trail)
 	db WILL_O_WISP  ; TM61 (Blaine)
 	db POISON_JAB   ; TM62 (Janine)
 	db THUNDER_WAVE ; TM63 (Rock Tunnel)
