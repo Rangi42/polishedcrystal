@@ -129,7 +129,7 @@ TMHMMoves: ; 1167a
 	db HYPER_VOICE  ; MT08 (TODO: Goldenrod Harbor)
 	db ICE_PUNCH    ; MT09 (Goldenrod City)
 	db IRON_HEAD    ; MT10 (Route 4)
-	db SEED_BOMB    ; MT11 (TODO: Yellow Forest)
+	db SEED_BOMB    ; MT11 (Yellow Forest)
 	db SEISMIC_TOSS ; MT12 (Pewter City)
 	db SLEEP_TALK   ; MT13 (Route 31)
 	db THUNDERPUNCH ; MT14 (Goldenrod City)
