@@ -32,8 +32,6 @@ IvysaurEvosAttacks:
 	db EVOLVE_LEVEL, 32, VENUSAUR
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 1, GROWL
-	db 1, LEECH_SEED
 	db 3, GROWL
 	db 7, LEECH_SEED
 	db 9, VINE_WHIP
@@ -53,9 +51,6 @@ VenusaurEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, OUTRAGE ; HGSS tutor move
 	db 1, TACKLE
-	db 1, GROWL
-	db 1, LEECH_SEED
-	db 1, VINE_WHIP
 	db 3, GROWL
 	db 7, LEECH_SEED
 	db 9, VINE_WHIP
@@ -95,7 +90,6 @@ CharmeleonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, GROWL
-	db 1, EMBER
 	db 7, EMBER
 	db 10, SMOKESCREEN
 	db 17, METAL_CLAW ; Dragon Rage → TM move
@@ -117,8 +111,6 @@ CharizardEvosAttacks:
 	db 1, OUTRAGE ; HGSS tutor move
 	db 1, SCRATCH
 	db 1, GROWL
-	db 1, EMBER
-	db 1, SMOKESCREEN
 	db 7, EMBER
 	db 10, SMOKESCREEN
 	db 17, METAL_CLAW ; Dragon Rage → TM move
@@ -156,8 +148,6 @@ WartortleEvosAttacks:
 	db EVOLVE_LEVEL, 36, BLASTOISE
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 1, TAIL_WHIP
-	db 1, WATER_GUN
 	db 4, TAIL_WHIP
 	db 7, WATER_GUN
 	db 10, DEFENSE_CURL ; Withdraw → similar move
@@ -178,9 +168,6 @@ BlastoiseEvosAttacks:
 	db 1, FLASH_CANNON
 	db 1, OUTRAGE ; HGSS tutor move
 	db 1, TACKLE
-	db 1, TAIL_WHIP
-	db 1, WATER_GUN
-	db 1, DEFENSE_CURL
 	db 4, TAIL_WHIP
 	db 7, WATER_GUN
 	db 10, DEFENSE_CURL ; Withdraw → similar move
@@ -209,14 +196,12 @@ MetapodEvosAttacks:
 	db 1, TACKLE ; new move
 	db 1, STRING_SHOT ; new move
 	db 1, HARDEN
-	db 7, HARDEN
 	db 0 ; no more level-up moves
 
 ButterfreeEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE ; new move
 	db 1, STRING_SHOT ; new move
-	db 1, CONFUSION
 	db 10, CONFUSION
 	db 12, POISONPOWDER
 	db 12, STUN_SPORE
@@ -247,14 +232,12 @@ KakunaEvosAttacks:
 	db 1, POISON_STING ; new move
 	db 1, STRING_SHOT ; new move
 	db 1, HARDEN
-	db 7, HARDEN
 	db 0 ; no more level-up moves
 
 BeedrillEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POISON_STING ; new move
 	db 1, STRING_SHOT ; new move
-	db 1, FURY_ATTACK
 	db 10, FURY_ATTACK
 	db 13, FOCUS_ENERGY
 	db 16, TWINEEDLE
@@ -292,8 +275,6 @@ PidgeottoEvosAttacks:
 	db EVOLVE_LEVEL, 36, PIDGEOT
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 1, SAND_ATTACK
-	db 1, GUST
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 13, QUICK_ATTACK
@@ -313,9 +294,6 @@ PidgeotEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SKY_ATTACK
 	db 1, TACKLE
-	db 1, SAND_ATTACK
-	db 1, GUST
-	db 1, QUICK_ATTACK
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 13, QUICK_ATTACK
@@ -354,8 +332,6 @@ RaticateEvosAttacks:
 	db 1, SWORDS_DANCE
 	db 1, TACKLE
 	db 1, TAIL_WHIP
-	db 1, QUICK_ATTACK
-	db 1, FOCUS_ENERGY
 	db 4, QUICK_ATTACK
 	db 7, FOCUS_ENERGY
 	db 10, BITE
@@ -395,8 +371,6 @@ AzumarillEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, WATER_GUN
-	db 1, TAIL_WHIP
-	db 1, FORESIGHT
 	db 2, TAIL_WHIP
 	db 5, FORESIGHT ; Water Sport → egg move
 	db 7, BUBBLE
@@ -437,8 +411,6 @@ ArbokEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WRAP
 	db 1, LEER
-	db 4, POISON_STING
-	db 9, BITE
 	db 4, POISON_STING
 	db 9, BITE
 	db 12, GLARE
@@ -512,8 +484,6 @@ SandslashEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, DEFENSE_CURL
-	db 1, SAND_ATTACK
-	db 1, POISON_STING
 	db 3, SAND_ATTACK
 	db 5, POISON_STING
 	db 7, ROLLOUT
@@ -757,9 +727,6 @@ GolbatEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCREECH
 	db 1, LEECH_LIFE
-	db 1, SUPERSONIC
-	db 1, ASTONISH
-	db 1, BITE
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
@@ -776,20 +743,24 @@ GolbatEvosAttacks:
 	db 51, PURSUIT ; Quick Guard → egg move
 	db 0 ; no more level-up moves
 
-; TODO: finalize learnsets below here
-
 OddishEvosAttacks:
 	db EVOLVE_LEVEL, 21, GLOOM
 	db 0 ; no more evolutions
 	db 1, ABSORB
-	db 7, GROWTH
-	db 14, POISONPOWDER
-	db 16, STUN_SPORE
-	db 18, SLEEP_POWDER
-	db 23, ACID
-	db 30, MOONLIGHT
-	db 39, MOONBLAST
-	db 48, PETAL_DANCE
+	db 5, LEECH_SEED ; Sweet Scent → event move
+	db 9, ACID
+	db 13, POISONPOWDER
+	db 14, STUN_SPORE
+	db 15, SLEEP_POWDER
+	db 19, MEGA_DRAIN
+	db 23, CHARM ; Lucky Chant → egg move
+	db 27, MOONLIGHT
+	db 31, GIGA_DRAIN
+	db 35, TOXIC
+	db 39, HYPER_VOICE ; Natural Gift → tutor move
+	db 43, MOONBLAST
+	db 47, GROWTH ; Grassy Terrain → Crystal move
+	db 51, PETAL_DANCE
 	db 0 ; no more level-up moves
 
 GloomEvosAttacks:
@@ -797,52 +768,63 @@ GloomEvosAttacks:
 	db EVOLVE_ITEM, SUN_STONE, BELLOSSOM
 	db 0 ; no more evolutions
 	db 1, ABSORB
-	db 1, GROWTH
-	db 1, POISONPOWDER
-	db 7, GROWTH
-	db 14, POISONPOWDER
-	db 16, STUN_SPORE
-	db 18, SLEEP_POWDER
-	db 24, ACID
-	db 35, MOONLIGHT
-	db 44, PETAL_DANCE
+	db 5, LEECH_SEED ; Sweet Scent → event move
+	db 9, ACID
+	db 13, POISONPOWDER
+	db 14, STUN_SPORE
+	db 15, SLEEP_POWDER
+	db 19, MEGA_DRAIN
+	db 24, CHARM ; Lucky Chant → egg move
+	db 29, MOONLIGHT
+	db 34, GIGA_DRAIN
+	db 39, TOXIC
+	db 44, HYPER_VOICE ; Natural Gift → tutor move
+	db 49, MOONBLAST
+	db 54, GROWTH ; Grassy Terrain → Crystal move
+	db 59, PETAL_DANCE
 	db 0 ; no more level-up moves
 
 VileplumeEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, ABSORB
-	db 1, GROWTH
+	db 1, POISONPOWDER
 	db 1, STUN_SPORE
-	db 1, PETAL_DANCE
+	db 1, MEGA_DRAIN
+	db 1, GROWTH
+	db 59, PETAL_DANCE
+	db 64, SOLAR_BEAM
 	db 0 ; no more level-up moves
 
 ParasEvosAttacks:
 	db EVOLVE_LEVEL, 24, PARASECT
 	db 0 ; no more evolutions
 	db 1, SCRATCH
-	db 7, STUN_SPORE
-	db 13, POISONPOWDER
-	db 19, LEECH_LIFE
-	db 25, SPORE
-	db 31, SLASH
-	db 37, GROWTH
-	db 43, GIGA_DRAIN
-	db 47, X_SCISSOR
+	db 6, STUN_SPORE
+	db 6, POISONPOWDER
+	db 11, LEECH_LIFE
+	db 17, FURY_CUTTER
+	db 22, SPORE
+	db 27, SLASH
+	db 33, GROWTH
+	db 38, GIGA_DRAIN
+	db 43, METAL_CLAW ; Aromatherapy → egg move
+	db 49, SYNTHESIS ; Rage Powder → HGSS tutor move
+	db 54, X_SCISSOR
 	db 0 ; no more level-up moves
 
 ParasectEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
-	db 1, STUN_SPORE
-	db 1, POISONPOWDER
-	db 7, STUN_SPORE
-	db 13, POISONPOWDER
-	db 19, LEECH_LIFE
-	db 28, SPORE
-	db 37, SLASH
-	db 46, GROWTH
-	db 55, GIGA_DRAIN
-	db 64, X_SCISSOR
+	db 6, STUN_SPORE
+	db 6, POISONPOWDER
+	db 11, LEECH_LIFE
+	db 17, FURY_CUTTER
+	db 22, SPORE
+	db 29, SLASH
+	db 37, GROWTH
+	db 44, GIGA_DRAIN
+	db 51, METAL_CLAW ; Aromatherapy → egg move
+	db 59, SYNTHESIS ; Rage Powder → HGSS tutor move
+	db 66, X_SCISSOR
 	db 0 ; no more level-up moves
 
 VenonatEvosAttacks:
@@ -851,33 +833,38 @@ VenonatEvosAttacks:
 	db 1, TACKLE
 	db 1, DISABLE
 	db 1, FORESIGHT
-	db 9, SUPERSONIC
-	db 17, CONFUSION
-	db 20, POISONPOWDER
-	db 25, LEECH_LIFE
-	db 28, STUN_SPORE
-	db 33, PSYBEAM
-	db 36, SLEEP_POWDER
-	db 41, ZEN_HEADBUTT
+	db 5, SUPERSONIC
+	db 11, CONFUSION
+	db 13, POISONPOWDER
+	db 17, LEECH_LIFE
+	db 23, STUN_SPORE
+	db 25, PSYBEAM
+	db 29, SLEEP_POWDER
+	db 35, AGILITY ; Signal Beam → egg move
+	db 37, ZEN_HEADBUTT
+	db 41, BATON_PASS ; Poison Fang → egg move
 	db 47, PSYCHIC_M
 	db 0 ; no more level-up moves
 
 VenomothEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, BUG_BUZZ
 	db 1, TACKLE
 	db 1, DISABLE
 	db 1, FORESIGHT
-	db 1, SUPERSONIC
-	db 9, SUPERSONIC
-	db 17, CONFUSION
-	db 20, POISONPOWDER
-	db 25, LEECH_LIFE
-	db 28, STUN_SPORE
+	db 5, SUPERSONIC
+	db 11, CONFUSION
+	db 13, POISONPOWDER
+	db 17, LEECH_LIFE
+	db 23, STUN_SPORE
+	db 25, PSYBEAM
+	db 29, SLEEP_POWDER
 	db 31, GUST
-	db 36, PSYBEAM
-	db 42, SLEEP_POWDER
-	db 47, ZEN_HEADBUTT
-	db 52, PSYCHIC_M
+	db 37, AGILITY ; Signal Beam → egg move
+	db 41, ZEN_HEADBUTT
+	db 47, BATON_PASS ; Poison Fang → egg move
+	db 55, PSYCHIC_M
+	db 59, BUG_BUZZ
 	db 0 ; no more level-up moves
 
 DiglettEvosAttacks:
@@ -888,29 +875,35 @@ DiglettEvosAttacks:
 	db 4, GROWL
 	db 7, ASTONISH
 	db 12, MUD_SLAP
-	db 16, MAGNITUDE
-	db 27, EARTH_POWER
+	db 15, MAGNITUDE
+	db 18, HEADBUTT ; Bulldoze → egg move
+	db 23, FEINT_ATTACK ; Sucker Punch → egg move
+	db 26, ANCIENTPOWER ; Mud Bomb → egg move
+	db 29, EARTH_POWER
 	db 34, DIG
 	db 37, SLASH
 	db 40, EARTHQUAKE
-	db 45, ANCIENTPOWER
 	db 0 ; no more level-up moves
 
 DugtrioEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, TRI_ATTACK
 	db 1, SCRATCH
 	db 1, SAND_ATTACK
 	db 4, GROWL
 	db 7, ASTONISH
 	db 12, MUD_SLAP
-	db 20, MAGNITUDE
-	db 30, EARTH_POWER
+	db 15, MAGNITUDE
+	db 18, HEADBUTT ; Bulldoze → egg move
+	db 23, FEINT_ATTACK ; Sucker Punch → egg move
+	db 26, TRI_ATTACK ; Sand Tomb → Tri Attack
+	db 28, ANCIENTPOWER ; Mud Bomb → egg move
+	db 33, EARTH_POWER
 	db 40, DIG
 	db 45, SLASH
 	db 50, EARTHQUAKE
-	db 57, ANCIENTPOWER
 	db 0 ; no more level-up moves
+
+; TODO: finalize learnsets below here
 
 MeowthEvosAttacks:
 	db EVOLVE_LEVEL, 28, PERSIAN
@@ -2607,9 +2600,6 @@ CrobatEvosAttacks:
 	db 1, X_SCISSOR
 	db 1, SCREECH
 	db 1, LEECH_LIFE
-	db 1, SUPERSONIC
-	db 1, ASTONISH
-	db 1, BITE
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
@@ -2773,11 +2763,12 @@ AmpharosEvosAttacks:
 
 BellossomEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, ABSORB
-	db 1, GROWTH
+	db 1, SUNNY_DAY
 	db 1, STUN_SPORE
-	db 1, PETAL_DANCE
-	db 55, SOLAR_BEAM
+	db 1, MEGA_DRAIN
+	db 1, GROWTH
+	db 59, PETAL_DANCE
+	db 64, SOLAR_BEAM
 	db 0 ; no more level-up moves
 
 SudowoodoEvosAttacks:
