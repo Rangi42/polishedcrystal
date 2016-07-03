@@ -112,6 +112,7 @@ Music_Route216DPPt
 Music_PokemonTowerRBY
 Music_CinnabarMansionRBY
 Music_CeruleanCaveRBY
+Music_AbandonedShipRSE
 Music_FrontierBrainBattleRSE
 Music_KantoLegendBattleFRLG
 Music_SurfingPikachu

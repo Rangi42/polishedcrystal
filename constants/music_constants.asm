@@ -114,9 +114,10 @@
 	const MUSIC_POKEMON_TOWER_RBY            ; 6f
 	const MUSIC_CINNABAR_MANSION_RBY         ; 70
 	const MUSIC_CERULEAN_CAVE_RBY            ; 71
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 72
-	const MUSIC_KANTO_LEGEND_BATTLE_FRLG     ; 73
-	const MUSIC_SURFING_PIKACHU              ; 74
-	const MUSIC_LAWRENCE                     ; 75
+	const MUSIC_ABANDONED_SHIP_RSE           ; 72
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 73
+	const MUSIC_KANTO_LEGEND_BATTLE_FRLG     ; 74
+	const MUSIC_SURFING_PIKACHU              ; 75
+	const MUSIC_LAWRENCE                     ; 76
 
 MUSIC_MAHOGANY_MART EQU $64 ; leftover from gold
