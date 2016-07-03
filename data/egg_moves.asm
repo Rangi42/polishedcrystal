@@ -113,6 +113,13 @@ VulpixEggMoves:
 	db EXTRASENSORY
 	db $ff
 
+JigglypuffEggMoves:
+	db THIEF
+	db FEINT_ATTACK
+	db PERISH_SONG
+	db SLEEP_TALK
+	db $ff
+
 ZubatEggMoves:
 	db FEINT_ATTACK
 	db GUST

@@ -654,7 +654,6 @@ ClefairyEvosAttacks:
 	db 49, BELLY_DRUM ; Gravity → egg move
 	db 50, EXTRASENSORY ; Meteor Mash → new move
 	db 55, HEAL_BELL ; Healing Wish → HGSS tutor move
-	db 58, PETAL_DANCE ; After You → new move
 	db 0 ; no more level-up moves
 
 ClefableEvosAttacks:
@@ -667,53 +666,70 @@ ClefableEvosAttacks:
 	db 1, MOONLIGHT
 	db 0 ; no more level-up moves
 
-; TODO: finalize learnsets below here
-
 VulpixEvosAttacks:
 	db EVOLVE_ITEM, FIRE_STONE, NINETALES
 	db 0 ; no more evolutions
 	db 1, EMBER
-	db 1, TAIL_WHIP
-	db 7, QUICK_ATTACK
-	db 13, ROAR
-	db 19, CONFUSE_RAY
-	db 25, SAFEGUARD
+	db 4, TAIL_WHIP
+	db 7, ROAR
+	db 9, ASTONISH ; Baby-Doll Eyes → new move
+	db 10, QUICK_ATTACK
+	db 12, CONFUSE_RAY
+	db 15, FIRE_SPIN
+	db 18, NIGHT_SHADE ; Payback → new move
+	db 20, WILL_O_WISP
+	db 23, FEINT_ATTACK
+	db 26, HYPNOSIS ; Hex → egg move
+	db 28, PAIN_SPLIT ; Flame Burst → HGSS tutor move
 	db 31, EXTRASENSORY
+	db 34, SAFEGUARD
 	db 36, FLAMETHROWER
-	db 42, FIRE_SPIN
+	db 39, NASTY_PLOT ; Imprison → Ninetales move
+	db 42, FIRE_BLAST
+	db 44, SHADOW_BALL ; Grudge → TM move
+	db 47, DISABLE ; Captivate → egg move
+	db 50, FLARE_BLITZ ; Inferno → egg move
 	db 0 ; no more level-up moves
 
 NinetalesEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, EMBER
+	db 1, NASTY_PLOT
+	db 1, FLAMETHROWER
 	db 1, QUICK_ATTACK
 	db 1, CONFUSE_RAY
 	db 1, SAFEGUARD
-	db 43, FIRE_SPIN
 	db 0 ; no more level-up moves
 
 JigglypuffEvosAttacks:
 	db EVOLVE_ITEM, MOON_STONE, WIGGLYTUFF
 	db 0 ; no more evolutions
 	db 1, SING
-	db 4, DEFENSE_CURL
-	db 9, POUND
-	db 14, DISABLE
-	db 19, ROLLOUT
-	db 24, DOUBLE_SLAP
-	db 29, REST
-	db 34, BODY_SLAM
-	db 39, DOUBLE_EDGE
-	db 44, DISARM_VOICE
-	db 49, PLAY_ROUGH
+	db 1, SWEET_KISS ; Igglybuff move
+	db 3, DEFENSE_CURL
+	db 5, POUND
+	db 8, DIZZY_PUNCH ; Play Nice → Crystal unique move
+	db 11, DISARM_VOICE
+	db 15, DISABLE
+	db 18, DOUBLE_SLAP
+	db 21, ROLLOUT
+	db 24, CHARM ; Round → Igglybuff move
+	db 28, MEAN_LOOK ; Wake-Up Slap → new move
+	db 32, REST
+	db 35, BODY_SLAM
+	db 37, HEAL_BELL ; Mimic → HGSS tutor move
+	db 40, PERISH_SONG ; Gyro Ball → egg move
+	db 44, HYPER_VOICE
+	db 49, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 WigglytuffEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, PLAY_ROUGH
+	db 1, DOUBLE_EDGE
 	db 1, SING
 	db 1, DISABLE
 	db 1, DEFENSE_CURL
-	db 1, PLAY_ROUGH
+	db 1, DOUBLE_SLAP
 	db 0 ; no more level-up moves
 
 ZubatEvosAttacks:
@@ -722,12 +738,18 @@ ZubatEvosAttacks:
 	db 1, LEECH_LIFE
 	db 5, SUPERSONIC
 	db 7, ASTONISH
-	db 12, BITE
-	db 19, CONFUSE_RAY
-	db 27, WING_ATTACK
-	db 34, MEAN_LOOK
-	db 38, HAZE
-	db 42, AIR_SLASH
+	db 11, BITE
+	db 13, WING_ATTACK
+	db 17, CONFUSE_RAY
+	db 19, GUST ; Air Cutter → egg move
+	db 23, SWIFT
+	db 25, SUPER_FANG ; Poison Fang → HGSS tutor move
+	db 29, MEAN_LOOK
+	db 31, FLAIL ; Acrobatics → event move
+	db 35, HAZE
+	db 37, POISON_JAB ; Venoshock → TM move
+	db 41, AIR_SLASH
+	db 43, PURSUIT ; Quick Guard → egg move
 	db 0 ; no more level-up moves
 
 GolbatEvosAttacks:
@@ -736,15 +758,25 @@ GolbatEvosAttacks:
 	db 1, SCREECH
 	db 1, LEECH_LIFE
 	db 1, SUPERSONIC
+	db 1, ASTONISH
+	db 1, BITE
 	db 5, SUPERSONIC
 	db 7, ASTONISH
-	db 12, BITE
-	db 19, CONFUSE_RAY
-	db 30, WING_ATTACK
-	db 37, MEAN_LOOK
-	db 41, HAZE
-	db 45, AIR_SLASH
+	db 11, BITE
+	db 13, WING_ATTACK
+	db 17, CONFUSE_RAY
+	db 19, GUST ; Air Cutter → egg move
+	db 24, SWIFT
+	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
+	db 32, MEAN_LOOK
+	db 35, FLAIL ; Acrobatics → event move
+	db 40, HAZE
+	db 43, POISON_JAB ; Venoshock → TM move
+	db 48, AIR_SLASH
+	db 51, PURSUIT ; Quick Guard → egg move
 	db 0 ; no more level-up moves
+
+; TODO: finalize learnsets below here
 
 OddishEvosAttacks:
 	db EVOLVE_LEVEL, 21, GLOOM
@@ -2572,17 +2604,26 @@ AriadosEvosAttacks:
 
 CrobatEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, X_SCISSOR
 	db 1, SCREECH
 	db 1, LEECH_LIFE
 	db 1, SUPERSONIC
+	db 1, ASTONISH
+	db 1, BITE
 	db 5, SUPERSONIC
 	db 7, ASTONISH
-	db 12, BITE
-	db 19, CONFUSE_RAY
-	db 30, WING_ATTACK
-	db 40, MEAN_LOOK
-	db 50, HAZE
-	db 60, AIR_SLASH
+	db 11, BITE
+	db 13, WING_ATTACK
+	db 17, CONFUSE_RAY
+	db 19, GUST ; Air Cutter → egg move
+	db 24, SWIFT
+	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
+	db 32, MEAN_LOOK
+	db 35, FLAIL ; Acrobatics → event move
+	db 40, HAZE
+	db 43, POISON_JAB ; Venoshock → TM move
+	db 48, AIR_SLASH
+	db 51, PURSUIT ; Quick Guard → egg move
 	db 0 ; no more level-up moves
 
 ChinchouEvosAttacks:
