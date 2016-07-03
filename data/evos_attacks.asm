@@ -51,6 +51,7 @@ IvysaurEvosAttacks:
 
 VenusaurEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, OUTRAGE ; HGSS tutor move
 	db 1, TACKLE
 	db 1, GROWL
 	db 1, LEECH_SEED
@@ -113,6 +114,7 @@ CharizardEvosAttacks:
 	db 1, DRAGON_CLAW
 	db 1, SHADOW_CLAW
 	db 1, AIR_SLASH
+	db 1, OUTRAGE ; HGSS tutor move
 	db 1, SCRATCH
 	db 1, GROWL
 	db 1, EMBER
@@ -174,6 +176,7 @@ WartortleEvosAttacks:
 BlastoiseEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, FLASH_CANNON
+	db 1, OUTRAGE ; HGSS tutor move
 	db 1, TACKLE
 	db 1, TAIL_WHIP
 	db 1, WATER_GUN
@@ -572,7 +575,7 @@ NidoqueenEvosAttacks:
 	db 1, TAIL_WHIP
 	db 1, DOUBLE_KICK
 	db 1, POISON_STING
-	db 23, HEADBUTT ; Chip Away → tutor move
+	db 23, OUTRAGE ; Chip Away → HGSS tutor move
 	db 35, BODY_SLAM
 	db 43, EARTH_POWER
 	db 58, SUBMISSION ; Superpower → RBY TM move
@@ -621,7 +624,7 @@ NidokingEvosAttacks:
 	db 1, FOCUS_ENERGY
 	db 1, DOUBLE_KICK
 	db 1, POISON_STING
-	db 23, HEADBUTT ; Chip Away → tutor move
+	db 23, OUTRAGE ; Chip Away → HGSS tutor move
 	db 35, THRASH
 	db 43, EARTH_POWER
 	db 58, MEGAHORN
