@@ -49,6 +49,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Leafeon, Glaceon, Sylveon, Magnezone, Tangrowth, Porygon-Z, Munchlax, Togekiss, Yanmega, Honchkrow, Mismagius, Gliscor, Weavile, and Mamoswine
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
+   * Eevee evolves into Sylveon with a Shiny Stone
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
    * Wild Mankey on Routes 9 and 42
    * Wild Primeape on Routes 9 and 42, and in Cerulean Cave
@@ -106,8 +107,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add moves from future generations
    * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
    * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
-   * Revised set of 60 TMs and 8 HMs
-   * Add move tutors for Sleep Talk, Zap Cannon, and Dream Eater (one Silver Leaf per tutoring)
+   * Revised set of 60 TMs, 8 HMs, and 16 move tutors (one Silver Leaf per tutoring)
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes
@@ -147,6 +147,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fly has 100% accuracy
    * Rock Smash has 75 power and is HM08
    * Guillotine is Steel-type
+   * Pain Split is Ghost-type
    * Butterfree is Bug/Psychic
    * Persian is Normal/Dark
    * Ninetales is Fire/Ghost
@@ -158,7 +159,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Fix bugs:
    * Dragon Fang boosts Dragon-type moves, not Dragon Scale
    * Burn/Poison/Paralyze improve catch rate
-   * Moon Ball catches Moon Stone evolutions
+   * Moon Ball catches Moon Stone evolvers
    * Love Ball catches opposite sex
    * Fast Ball catches flee-prone Pokémon
    * Medium-Slow growth rate experience underflow at level 1
@@ -180,6 +181,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
    * Tin Tower → Bell Tower
+   * Virtual Boy → GameCube
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out
    * Menu Account → Menu Captions
@@ -253,7 +255,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
 * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
-* Add the rest of the move tutors
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -339,7 +340,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
-   * Better sprites for Yellow Forest trees and cherry blossom trees
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Somtimes wild Pokémon know an egg move

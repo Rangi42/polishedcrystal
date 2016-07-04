@@ -1551,6 +1551,15 @@ PlayBattleMusic: ; 2ee6c
 	cp BATTLETYPE_SUICUNE
 	ld de, MUSIC_SUICUNE_BATTLE
 	jp z, .done
+	cp BATTLETYPE_HO_OH
+	ld de, MUSIC_HO_OH_BATTLE_HGSS
+	jp z, .done
+	cp BATTLETYPE_LUGIA
+	ld de, MUSIC_LUGIA_BATTLE_HGSS
+	jp z, .done
+	cp BATTLETYPE_KANTO_LEGEND
+	ld de, MUSIC_KANTO_LEGEND_BATTLE_FRLG
+	jp z, .done
 	cp BATTLETYPE_ROAMING
 	jp z, .done
 
@@ -1838,11 +1847,15 @@ INCLUDE "battle/core.asm"
 
 INCLUDE "battle/effect_command_pointers.asm"
 
-SECTION "bank10", ROMX, BANK[$10]
+SECTION "Pokedex", ROMX
 
 INCLUDE "engine/pokedex.asm"
 
+SECTION "Moves", ROMX
+
 INCLUDE "battle/moves/moves.asm"
+
+SECTION "bank10", ROMX, BANK[$10]
 
 INCLUDE "engine/evolve.asm"
 

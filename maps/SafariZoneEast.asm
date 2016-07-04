@@ -1,4 +1,7 @@
 const_value set 2
+	const SAFARIZONEEAST_POKE_BALL1
+	const SAFARIZONEEAST_POKE_BALL2
+	const SAFARIZONEEAST_POKE_BALL3
 
 SafariZoneEast_MapScriptHeader:
 .MapTriggers:

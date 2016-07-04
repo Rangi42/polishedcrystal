@@ -447,6 +447,9 @@ IlexForestHiddenSuperPotion:
 IlexForestHiddenFullHeal:
 	dwb EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
 
+IlexForestHiddenSilverLeaf:
+	dwb EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF, SILVER_LEAF
+
 MapIlexForestMossRockScript:
 	jumptext Text_IlexForestMossRock
 
@@ -1016,13 +1019,14 @@ IlexForest_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 7
 	signpost 17, 3, SIGNPOST_READ, MapIlexForestSignpost0Script
 	signpost 7, 11, SIGNPOST_ITEM, IlexForestHiddenEther
 	signpost 14, 22, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
 	signpost 17, 1, SIGNPOST_ITEM, IlexForestHiddenFullHeal
 	signpost 7, 18, SIGNPOST_READ, MapIlexForestMossRockScript
 	signpost 22, 8, SIGNPOST_UP, MapIlexForestSignpost4Script
+	signpost 32, 27, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf
 
 .PersonEvents:
 	db 11

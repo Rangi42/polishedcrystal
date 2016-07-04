@@ -615,7 +615,7 @@ DecorationNames: ; 26b8d
 	db "NES@"
 	db "Super NES@"
 	db "Nintendo 64@"
-	db "Virtual Boy@"
+	db "GameCube@"
 	db "Gold Trophy@"
 	db "Silver Trophy@"
 	db "Surf Pikachu Doll@"

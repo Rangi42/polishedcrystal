@@ -33,6 +33,7 @@ Route10Zapdos:
 	faceplayer
 	cry ZAPDOS
 	loadwildmon ZAPDOS, 60
+	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
 	disappear ROUTE10_ZAPDOS
 	setevent EVENT_ZAPDOS_GONE

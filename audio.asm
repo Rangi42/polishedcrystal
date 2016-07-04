@@ -158,12 +158,16 @@ INCLUDE "audio/music/postcredits.asm"
 SECTION "Extra Songs 3", ROMX
 
 INCLUDE "audio/music/hgss/route47.asm"
+INCLUDE "audio/music/hgss/hoohbattle.asm"
+INCLUDE "audio/music/hgss/lugiabattle.asm"
 INCLUDE "audio/music/dppt/route210.asm"
 INCLUDE "audio/music/dppt/route216.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
+INCLUDE "audio/music/frlg/kantolegendbattle.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
 INCLUDE "audio/music/rby/lawrence.asm"
 

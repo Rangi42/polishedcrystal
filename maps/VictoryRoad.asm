@@ -457,11 +457,15 @@ LawrenceSilverWingText:
 
 	para "The scent should"
 	line "attract it, but"
-	cont "only if you've"
 
-	para "mastered the birds"
-	line "of fire, ice, and"
-	cont "lightning."
+	para "only if you've"
+	line "mastered the three"
+
+	para "winged mirages--"
+	line "the birds of fire,"
+
+	para "ice, and light-"
+	line "ning."
 
 	para "Or so the legends"
 	line"say."

@@ -75,6 +75,7 @@ ENDM
 	landmark  60, 128, Route34Name
 	landmark  60, 108, GoldenrodCityName
 	landmark  58, 108, RadioTowerName
+	landmark  52, 108, GoldenrodHarborName
 	landmark  60,  92, Route35Name
 	landmark  60,  76, NationalParkName
 	landmark  72,  76, Route36Name
@@ -87,16 +88,16 @@ ENDM
 	landmark  44,  64, Route39Name
 	landmark  44,  76, OlivineCityName
 	landmark  46,  78, LighthouseName
-	landmark  36,  72, BattleTowerName
 	landmark  36,  80, Route40Name
+	landmark  36,  68, BattleTowerName
 	landmark  36, 108, WhirlIslandsName
 	landmark  36, 116, Route41Name
 	landmark  28, 116, CianwoodCityName
 	landmark  28, 114, CliffEdgeGateName
 	landmark  20, 116, Route47Name
 	landmark  20, 114, CliffCaveName
-	landmark  20, 108, Route48Name
-	landmark  20, 106, YellowForestName
+	landmark  20, 112, Route48Name
+	landmark  20, 108, YellowForestName
 	landmark  20, 118, QuietCaveName
 	landmark 100,  60, Route42Name
 	landmark  92,  60, MtMortarName
@@ -104,11 +105,11 @@ ENDM
 	landmark 116,  52, Route43Name
 	landmark 116,  44, LakeOfRageName
 	landmark 128,  60, Route44Name
-	landmark 138,  54, IcePathName
+	landmark 136,  56, IcePathName
 	landmark 140,  60, BlackthornCityName
 	landmark 140,  52, DragonsDenName
 	landmark 140,  80, Route45Name
-	landmark 120,  88, DarkCaveName
+	landmark 120,  84, DarkCaveName
 	landmark 132, 104, Route46Name
 	landmark 156,  84, SilverCaveName
 	landmark  60, 124, PalletTownName
@@ -277,6 +278,7 @@ CliffCaveName:       db "Cliff Cave@"
 YellowForestName:    db "Yellow¯Forest@"
 QuietCaveName:       db "Quiet Cave@"
 CherrygroveBayName:  db "Cherrygrove¯Bay@"
+GoldenrodHarborName: db "Goldenrod¯Harbor@"
 SpecialMapName:      db "Special@"
 
 

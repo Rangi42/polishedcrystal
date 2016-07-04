@@ -33,11 +33,11 @@ EggMovePointers:: ; 0x23b11
 	dw NidoranMEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw NoEggMoves
+	dw ClefairyEggMoves
 	dw NoEggMoves
 	dw VulpixEggMoves
 	dw NoEggMoves
-	dw NoEggMoves
+	dw JigglypuffEggMoves
 	dw NoEggMoves
 	dw ZubatEggMoves
 	dw NoEggMoves
@@ -118,11 +118,7 @@ EggMovePointers:: ; 0x23b11
 	dw TogepiEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-if _CRYSTAL
 	dw NoEggMoves
-else
-	dw StaryuEggMoves
-endc
 	dw NoEggMoves
 	dw MrMimeEggMoves
 	dw ScytherEggMoves

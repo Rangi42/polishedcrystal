@@ -66,6 +66,9 @@ const_value SET 1
 	const BATTLETYPE_FORCEITEM
 	const BATTLETYPE_CELEBI
 	const BATTLETYPE_SUICUNE
+	const BATTLETYPE_HO_OH
+	const BATTLETYPE_LUGIA
+	const BATTLETYPE_KANTO_LEGEND
 
 ; battle variables
 	const_def

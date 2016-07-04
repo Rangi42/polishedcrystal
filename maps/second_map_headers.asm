@@ -19,9 +19,10 @@
 	map_header_2 CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, ROUTE_41, Route41, 0, 0, 27, CIANWOOD_CITY
 
-	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH
+	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST
 	connection north, ROUTE_35, Route35, 5, 0, 10, GOLDENROD_CITY
 	connection south, ROUTE_34, Route34, 5, 0, 10, GOLDENROD_CITY
+	connection west, GOLDENROD_HARBOR, GoldenrodHarbor, 0, 0, 18, GOLDENROD_CITY
 
 	map_header_2 OlivineCity, OLIVINE_CITY, $35, NORTH | WEST
 	connection north, ROUTE_39, Route39, 5, 0, 10, OLIVINE_CITY
@@ -287,6 +288,9 @@
 	map_header_2 CherrygroveBay, CHERRYGROVE_BAY, $35, WEST | EAST
 	connection west, ROUTE_32, Route32, -2, 16, 20, CHERRYGROVE_BAY
 	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10, CHERRYGROVE_BAY
+
+	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, EAST
+	connection east, GOLDENROD_CITY, GoldenrodCity, 0, 0, 18, GOLDENROD_HARBOR
 
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0

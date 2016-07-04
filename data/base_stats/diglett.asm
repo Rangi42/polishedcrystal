@@ -7,7 +7,7 @@
 	db 255 ; catch rate
 	db 81 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db SOFT_SAND ; item 2
 	db 127 ; gender
 	db 100 ; unknown
 	db 20 ; step cycles to hatch

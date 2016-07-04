@@ -96,6 +96,12 @@
 	db 10, MAGIKARP
 	db 5, MAGIKARP
 
+	map GOLDENROD_HARBOR
+	db 4 percent ; encounter rate
+	db 20, PSYDUCK
+	db 15, PSYDUCK
+	db 20, GOLDUCK
+
 	map DRAGONS_DEN_B1F
 	db 4 percent ; encounter rate
 	db 15, MAGIKARP
@@ -209,6 +215,12 @@
 	db 20, TENTACOOL
 	db 15, TENTACOOL
 	db 20, TENTACRUEL
+
+	map GOLDENROD_CITY
+	db 4 percent ; encounter rate
+	db 20, PSYDUCK
+	db 15, PSYDUCK
+	db 20, GOLDUCK
 
 	map OLIVINE_CITY
 	db 6 percent ; encounter rate

@@ -7,7 +7,7 @@
 	db 60 ; catch rate
 	db 189 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db BERRY ; item 2
 	db 127 ; gender
 	db 100 ; unknown
 	db 20 ; step cycles to hatch

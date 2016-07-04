@@ -8,6 +8,8 @@
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many Pokémon sprites and icons
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
 * Pum for the Route 47 music
+* Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
+* Mmmmmm for the Abandoned Ship (Navel Rock) music
 * jpmac26 for editing the Pokémon Center signs
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite

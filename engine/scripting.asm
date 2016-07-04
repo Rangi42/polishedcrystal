@@ -152,9 +152,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_loadmenudata               ; 4f
 	dw Script_closewindow                ; 50
 	dw Script_jumptextfaceplayer         ; 51
-IF _CRYSTAL
 	dw Script_farjumptext                ; 52
-ENDC
 	dw Script_jumptext                   ; 53
 	dw Script_waitbutton                 ; 54
 	dw Script_buttonsound                ; 55
@@ -354,8 +352,6 @@ JumpTextScript: ; 96e7a
 ; 96e81
 
 
-IF _CRYSTAL
-
 Script_farjumptext: ; 96e81
 ; script command 0x52
 ; parameters:
@@ -371,8 +367,6 @@ Script_farjumptext: ; 96e81
 	ld hl, JumpTextScript
 	jp ScriptJump
 ; 96e9b
-
-ENDC
 
 
 Script_writetext: ; 96e9b
@@ -2106,17 +2100,14 @@ GetVarAction: ; 9769e
 	ret
 ; 976a6
 
+; unused
 Script_checkver: ; 976a6
 ; script command 0x18
 
-	ld a, [Version]
+	xor a
 	ld [ScriptVar], a
 	ret
 ; 976ad
-
-Version: ; 976ad
-	db VERSION
-; 976ae
 
 Script_pokenamemem: ; 976ae
 ; script command 0x40

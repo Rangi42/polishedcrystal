@@ -53,6 +53,16 @@ RattataEggMoves:
 	db COUNTER
 	db $ff
 
+MarillEggMoves:
+	db BELLY_DRUM
+	db FORESIGHT
+	db FUTURE_SIGHT
+	db PERISH_SONG
+	db SUPERSONIC
+	db LIGHT_SCREEN
+	db CALM_MIND
+	db $ff
+
 EkansEggMoves:
 	db CRUNCH
 	db DISABLE
@@ -87,6 +97,13 @@ NidoranMEggMoves:
 	db COUNTER
 	db $ff
 
+ClefairyEggMoves:
+	db CALM_MIND
+	db BELLY_DRUM
+	db METRONOME
+	db SPLASH
+	db $ff
+
 VulpixEggMoves:
 	db DISABLE
 	db FLAIL
@@ -94,6 +111,13 @@ VulpixEggMoves:
 	db HYPNOSIS
 	db FEINT_ATTACK
 	db EXTRASENSORY
+	db $ff
+
+JigglypuffEggMoves:
+	db THIEF
+	db FEINT_ATTACK
+	db PERISH_SONG
+	db SLEEP_TALK
 	db $ff
 
 ZubatEggMoves:
@@ -306,6 +330,7 @@ OnixEggMoves:
 DrowzeeEggMoves:
 	db BARRIER
 	db LIGHT_SCREEN
+	db BELLY_DRUM
 	db $ff
 
 KrabbyEggMoves:
@@ -379,6 +404,7 @@ HorseaEggMoves:
 	db FLAIL
 	db OCTAZOOKA
 	db SPLASH
+	db HAZE
 	db $ff
 
 MrMimeEggMoves:
@@ -410,6 +436,7 @@ LaprasEggMoves:
 	db FORESIGHT
 	db FUTURE_SIGHT
 	db HORN_DRILL
+	db HEAL_BELL
 	db $ff
 
 EeveeEggMoves:
@@ -517,7 +544,7 @@ SpinarakEggMoves:
 	db PSYBEAM
 	db PURSUIT
 	db TWINEEDLE
-	db SONICBOOM
+	db SONIC_BOOM
 	db POISON_JAB
 	db $ff
 
@@ -576,16 +603,6 @@ MareepEggMoves:
 	db TAKE_DOWN
 	db BODY_SLAM
 	db SAFEGUARD
-	db $ff
-
-MarillEggMoves:
-	db BELLY_DRUM
-	db FORESIGHT
-	db FUTURE_SIGHT
-	db PERISH_SONG
-	db SUPERSONIC
-	db LIGHT_SCREEN
-	db CALM_MIND
 	db $ff
 
 SudowoodoEggMoves:

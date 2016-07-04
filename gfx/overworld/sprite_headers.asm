@@ -355,7 +355,7 @@ PaperSprite: ; 14934
 ; 1493a
 
 VirtualBoySprite: ; 1493a
-	sprite_header VirtualBoySpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
+	sprite_header VirtualBoySpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
 ; 14940
 
 OldLinkReceptionistSprite: ; 14940
@@ -432,3 +432,6 @@ LeafSprite:
 
 LawrenceSprite:
 	sprite_header LawrenceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+FossilSprite:
+	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN

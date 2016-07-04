@@ -109,6 +109,7 @@
 	const SPRITE_YELLOW ; 69
 	const SPRITE_LEAF ; 6a
 	const SPRITE_LAWRENCE ; 6b
+	const SPRITE_FOSSIL ; 6c
 
 const_value SET $80
 

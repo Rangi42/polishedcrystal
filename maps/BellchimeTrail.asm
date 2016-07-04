@@ -1,5 +1,5 @@
 const_value set 2
-	; no sprites
+	const BELLCHIMETRAIL_POKE_BALL
 
 BellchimeTrail_MapScriptHeader:
 .MapTriggers:
@@ -7,6 +7,9 @@ BellchimeTrail_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+BellchimeTrailTMDazzlingleam:
+	itemball TM_DAZZLINGLEAM
 
 TinTowerSign:
 	jumptext TinTowerSignText
@@ -37,4 +40,5 @@ BellchimeTrail_MapEventHeader:
 	signpost 10, 22, SIGNPOST_READ, TinTowerSign
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_POKE_BALL, 4, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, BellchimeTrailTMDazzlingleam, EVENT_BELLCHIME_TRAIL_TM_DAZZLINGLEAM
