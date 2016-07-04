@@ -147,6 +147,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fly has 100% accuracy
    * Rock Smash has 75 power and is HM08
    * Guillotine is Steel-type
+   * Pain Split is Ghost-type
    * Butterfree is Bug/Psychic
    * Persian is Normal/Dark
    * Ninetales is Fire/Ghost
@@ -158,7 +159,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Fix bugs:
    * Dragon Fang boosts Dragon-type moves, not Dragon Scale
    * Burn/Poison/Paralyze improve catch rate
-   * Moon Ball catches Moon Stone evolutions
+   * Moon Ball catches Moon Stone evolvers
    * Love Ball catches opposite sex
    * Fast Ball catches flee-prone Pokémon
    * Medium-Slow growth rate experience underflow at level 1

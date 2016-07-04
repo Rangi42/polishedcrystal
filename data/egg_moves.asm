@@ -404,6 +404,7 @@ HorseaEggMoves:
 	db FLAIL
 	db OCTAZOOKA
 	db SPLASH
+	db HAZE
 	db $ff
 
 MrMimeEggMoves:
