@@ -330,6 +330,7 @@ OnixEggMoves:
 DrowzeeEggMoves:
 	db BARRIER
 	db LIGHT_SCREEN
+	db BELLY_DRUM
 	db $ff
 
 KrabbyEggMoves:
