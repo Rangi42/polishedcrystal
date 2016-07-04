@@ -542,7 +542,7 @@ SpinarakEggMoves:
 	db PSYBEAM
 	db PURSUIT
 	db TWINEEDLE
-	db SONICBOOM
+	db SONIC_BOOM
 	db POISON_JAB
 	db $ff
 

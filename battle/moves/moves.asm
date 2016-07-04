@@ -60,7 +60,7 @@ ENDM
 	move ROAR,         EFFECT_WHIRLWIND,           0, NORMAL,    100, 20,   0, STATUS
 	move SING,         EFFECT_SLEEP,               0, NORMAL,     55, 15,   0, STATUS
 	move SUPERSONIC,   EFFECT_CONFUSE,             0, NORMAL,     55, 20,   0, STATUS
-	move SONICBOOM,    EFFECT_STATIC_DAMAGE,      20, NORMAL,     90, 20,   0, SPECIAL
+	move SONIC_BOOM,   EFFECT_STATIC_DAMAGE,      20, NORMAL,     90, 20,   0, SPECIAL
 	move DISABLE,      EFFECT_DISABLE,             0, NORMAL,    100, 20,   0, STATUS
 	move ACID,         EFFECT_DEFENSE_DOWN_HIT,   40, POISON,    100, 30,  10, SPECIAL
 	move EMBER,        EFFECT_BURN_HIT,           40, FIRE,      100, 25,  10, SPECIAL

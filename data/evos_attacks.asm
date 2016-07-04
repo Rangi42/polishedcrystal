@@ -1441,7 +1441,7 @@ MagnemiteEvosAttacks:
 	db 1, TACKLE
 	db 5, SUPERSONIC
 	db 7, THUNDERSHOCK
-	db 11, SONICBOOM
+	db 11, SONIC_BOOM
 	db 13, THUNDER_WAVE
 	db 17, SWIFT ; Magnet Bomb → Swift
 	db 19, SPARK
@@ -1463,7 +1463,7 @@ MagnetonEvosAttacks:
 	db 1, TACKLE
 	db 5, SUPERSONIC
 	db 7, THUNDERSHOCK
-	db 11, SONICBOOM
+	db 11, SONIC_BOOM
 	db 13, THUNDER_WAVE
 	db 17, SWIFT ; Magnet Bomb → Swift
 	db 19, SPARK
@@ -1819,7 +1819,7 @@ VoltorbEvosAttacks:
 	db EVOLVE_LEVEL, 30, ELECTRODE
 	db 0 ; no more evolutions
 	db 1, TACKLE ; Charge → Tackle
-	db 5, SONICBOOM ; Tackle → Sonic Boom
+	db 5, SONIC_BOOM ; Tackle → Sonic Boom
 	db 8, AGILITY ; Sonic Boom → event move
 	db 12, SPARK
 	db 15, ROLLOUT
@@ -1837,7 +1837,7 @@ VoltorbEvosAttacks:
 ElectrodeEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE ; Charge → Tackle
-	db 5, SONICBOOM ; Tackle → Sonic Boom
+	db 5, SONIC_BOOM ; Tackle → Sonic Boom
 	db 8, AGILITY ; Sonic Boom → event move
 	db 12, SPARK
 	db 15, ROLLOUT
@@ -2888,7 +2888,7 @@ MagnezoneEvosAttacks:
 	db 1, TACKLE
 	db 5, SUPERSONIC
 	db 7, THUNDERSHOCK
-	db 11, SONICBOOM
+	db 11, SONIC_BOOM
 	db 13, THUNDER_WAVE
 	db 17, SWIFT ; Magnet Bomb → Swift
 	db 19, SPARK
@@ -3083,7 +3083,7 @@ YanmaEvosAttacks:
 	db 1, FORESIGHT
 	db 7, QUICK_ATTACK
 	db 13, DOUBLE_TEAM
-	db 19, SONICBOOM
+	db 19, SONIC_BOOM
 	db 25, PROTECT
 	db 31, SUPERSONIC
 	db 37, ANCIENTPOWER
@@ -3100,7 +3100,7 @@ YanmegaEvosAttacks:
 	db 1, DOUBLE_TEAM
 	db 7, QUICK_ATTACK
 	db 13, DOUBLE_TEAM
-	db 19, SONICBOOM
+	db 19, SONIC_BOOM
 	db 25, PROTECT
 	db 30, SUPERSONIC
 	db 33, PURSUIT

@@ -328,19 +328,19 @@ JasmineGroup:
 	db 29, MAGNEMITE, NO_ITEM
 		db THUNDERBOLT
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db 29, MAGNEMITE, NO_ITEM
 		db THUNDERBOLT
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db 30, MAGNETON, NO_ITEM
 		db THUNDERBOLT
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db 32, SCIZOR, NO_ITEM
@@ -599,7 +599,7 @@ Rival1Group:
 		db TACKLE
 		db THUNDERSHOCK
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 
 	db 20, ZUBAT
 		db LEECH_LIFE
@@ -633,7 +633,7 @@ Rival1Group:
 		db TACKLE
 		db THUNDERSHOCK
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 
 	db 20, ZUBAT
 		db LEECH_LIFE
@@ -667,7 +667,7 @@ Rival1Group:
 		db TACKLE
 		db THUNDERSHOCK
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 
 	db 20, ZUBAT
 		db LEECH_LIFE
@@ -700,7 +700,7 @@ Rival1Group:
 	db 30, MAGNEMITE
 		db TACKLE
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db 30, HAUNTER
@@ -740,7 +740,7 @@ Rival1Group:
 	db 30, MAGNEMITE
 		db TACKLE
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db 30, HAUNTER
@@ -780,7 +780,7 @@ Rival1Group:
 	db 30, MAGNEMITE
 		db TACKLE
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db 30, HAUNTER
@@ -825,7 +825,7 @@ Rival1Group:
 
 	db 37, MAGNETON
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -871,7 +871,7 @@ Rival1Group:
 
 	db 37, MAGNETON
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -917,7 +917,7 @@ Rival1Group:
 
 	db 37, MAGNETON
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -2332,7 +2332,7 @@ SchoolboyGroup:
 
 	db 35, ELECTRODE
 		db SCREECH
-		db SONICBOOM
+		db SONIC_BOOM
 		db ROLLOUT
 		db LIGHT_SCREEN
 
@@ -2388,7 +2388,7 @@ SchoolboyGroup:
 		db ANCIENTPOWER
 		db QUICK_ATTACK
 		db DOUBLE_TEAM
-		db SONICBOOM
+		db SONIC_BOOM
 
 	db 35, QUAGSIRE
 		db TAIL_WHIP
@@ -3383,7 +3383,7 @@ CooltrainerMGroup:
 	db 29, MAGNEMITE
 		db THUNDERSHOCK
 		db SUPERSONIC
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 
 	db $ff ; end
@@ -6646,7 +6646,7 @@ Rival2Group:
 
 	db 46, MAGNEZONE
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -6692,7 +6692,7 @@ Rival2Group:
 
 	db 46, MAGNEZONE
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -6738,7 +6738,7 @@ Rival2Group:
 
 	db 46, MAGNEZONE
 		db THUNDERSHOCK
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -6784,7 +6784,7 @@ Rival2Group:
 
 	db 45, MAGNEZONE
 		db THUNDER
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -6830,7 +6830,7 @@ Rival2Group:
 
 	db 45, MAGNEZONE
 		db THUNDER
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -6876,7 +6876,7 @@ Rival2Group:
 
 	db 45, MAGNEZONE
 		db THUNDER
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
@@ -10006,7 +10006,7 @@ MysticalmanGroup:
 
 	db 27, ELECTRODE
 		db SCREECH
-		db SONICBOOM
+		db SONIC_BOOM
 		db THUNDER
 		db ROLLOUT
 
