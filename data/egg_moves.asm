@@ -436,6 +436,7 @@ LaprasEggMoves:
 	db FORESIGHT
 	db FUTURE_SIGHT
 	db HORN_DRILL
+	db HEAL_BELL
 	db $ff
 
 EeveeEggMoves:
