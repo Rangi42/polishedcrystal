@@ -445,7 +445,7 @@ VermilionCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 10
+	db 12
 	warp_def $5, $5, 1, VERMILION_HOUSE_FISHING_SPEECH_HOUSE
 	warp_def $5, $9, 1, VERMILION_POKECENTER_1F
 	warp_def $d, $7, 1, POKEMON_FAN_CLUB
@@ -453,9 +453,11 @@ VermilionCity_MapEventHeader:
 	warp_def $d, $15, 2, VERMILION_MART
 	warp_def $11, $15, 1, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE
 	warp_def $13, $a, 1, VERMILION_GYM
-	warp_def $1f, $13, 1, VERMILION_PORT_PASSAGE
-	warp_def $1f, $14, 2, VERMILION_PORT_PASSAGE
+	warp_def $1f, $11, 1, VERMILION_PORT_PASSAGE
+	warp_def $1f, $12, 2, VERMILION_PORT_PASSAGE
 	warp_def $7, $22, 1, DIGLETTS_CAVE
+	warp_def $1f, $1d, 1, SEAGALLOP_FERRY_VERMILION_GATE
+	warp_def $1f, $1e, 1, SEAGALLOP_FERRY_VERMILION_GATE
 
 .XYTriggers:
 	db 2
