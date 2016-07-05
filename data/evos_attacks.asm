@@ -2722,9 +2722,9 @@ DragoniteEvosAttacks:
 	db 47, FLAMETHROWER ; Dragon Rush → TM move
 	db 53, SAFEGUARD
 	db 55, WING_ATTACK
-	db 61, DRAGON_DANCE
-	db 67, OUTRAGE
-	db 75, HYPER_BEAM
+	db 63, DRAGON_DANCE
+	db 73, OUTRAGE
+	db 82, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 MewtwoEvosAttacks:
@@ -4123,6 +4123,8 @@ BlisseyEvosAttacks:
 	db 47, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
+; learnsets below here are finalized
+
 RaikouEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, BITE
@@ -4187,14 +4189,17 @@ LarvitarEvosAttacks:
 	db 1, LEER
 	db 5, SANDSTORM
 	db 10, SCREECH
-	db 16, ROCK_SLIDE
+	db 14, RAGE ; Chip Away → event move
+	db 19, ROCK_SLIDE
 	db 23, SCARY_FACE
 	db 28, THRASH
-	db 34, DARK_PULSE
+	db 32, DARK_PULSE
+	db 37, ANCIENTPOWER ; Payback → HGSS tutor move
 	db 41, CRUNCH
 	db 46, EARTHQUAKE
 	db 50, STONE_EDGE
-	db 55, HYPER_BEAM
+	db 55, OUTRAGE ; Hyper Beam → HGSS tutor move
+	db 61, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 PupitarEvosAttacks:
@@ -4202,66 +4207,76 @@ PupitarEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, BITE
 	db 1, LEER
-	db 1, SANDSTORM
-	db 1, SCREECH
 	db 5, SANDSTORM
 	db 10, SCREECH
-	db 16, ROCK_SLIDE
+	db 14, RAGE ; Chip Away → event move
+	db 19, ROCK_SLIDE
 	db 23, SCARY_FACE
 	db 28, THRASH
-	db 41, DARK_PULSE
+	db 34, DARK_PULSE
+	db 41, ANCIENTPOWER ; Payback → HGSS tutor move
 	db 47, CRUNCH
 	db 54, EARTHQUAKE
 	db 60, STONE_EDGE
-	db 67, HYPER_BEAM
+	db 67, OUTRAGE ; Hyper Beam → HGSS tutor move
+	db 75, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 TyranitarEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, BITE
 	db 1, LEER
-	db 1, SANDSTORM
-	db 1, SCREECH
 	db 5, SANDSTORM
 	db 10, SCREECH
-	db 16, ROCK_SLIDE
+	db 14, RAGE ; Chip Away → event move
+	db 19, ROCK_SLIDE
 	db 23, SCARY_FACE
 	db 28, THRASH
-	db 41, DARK_PULSE
+	db 34, DARK_PULSE
+	db 41, ANCIENTPOWER ; Payback → HGSS tutor move
 	db 47, CRUNCH
 	db 54, EARTHQUAKE
 	db 63, STONE_EDGE
-	db 73, HYPER_BEAM
+	db 73, OUTRAGE ; Hyper Beam → HGSS tutor move
+	db 82, HYPER_BEAM
 	db 0 ; no more level-up moves
 
 LugiaEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, SAFEGUARD
+	db 1, WHIRLWIND
 	db 1, GUST
-	db 11, EXTRASENSORY
-	db 22, RECOVER
-	db 33, HYDRO_PUMP
-	db 44, RAIN_DANCE
-	db 55, AEROBLAST
-	db 66, SWIFT
-	db 77, WHIRLWIND
-	db 88, ANCIENTPOWER
-	db 99, FUTURE_SIGHT
+	db 15, TWISTER ; Dragon Rush → HGSS tutor move
+	db 23, EXTRASENSORY
+	db 29, RAIN_DANCE
+	db 37, SAFEGUARD ; Hydro Pump → Safeguard
+	db 43, AEROBLAST
+	db 50, RECOVER ; Punishment → Recover
+	db 57, ANCIENTPOWER
+	db 65, HYDRO_PUMP ; Safeguard → Hydro Pump
+	db 71, DRAGON_PULSE ; Recover → Dragon Pulse
+	db 79, FUTURE_SIGHT
+	db 85, REFLECT ; Natural Gift → TM move
+	db 93, CALM_MIND
+	db 99, SKY_ATTACK
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, SAFEGUARD
+	db 1, WHIRLWIND
 	db 1, GUST
-	db 11, EXTRASENSORY
-	db 22, RECOVER
-	db 33, FIRE_BLAST
-	db 44, SUNNY_DAY
-	db 55, SACRED_FIRE
-	db 66, SWIFT
-	db 77, WHIRLWIND
-	db 88, ANCIENTPOWER
-	db 99, FUTURE_SIGHT
+	db 15, TWISTER ; Brave Bird → HGSS tutor move
+	db 23, EXTRASENSORY
+	db 29, SUNNY_DAY
+	db 37, SAFEGUARD ; Fire Blast → Safeguard
+	db 43, SACRED_FIRE
+	db 50, RECOVER ; Punishment → Recover
+	db 57, ANCIENTPOWER
+	db 65, FIRE_BLAST ; Safeguard → Fire Blast
+	db 71, SOLAR_BEAM ; Recover → Solar Beam
+	db 79, FUTURE_SIGHT
+	db 85, LIGHT_SCREEN ; Natural Gift → TM move
+	db 93, CALM_MIND
+	db 99, SKY_ATTACK
 	db 0 ; no more level-up moves
 
 CelebiEvosAttacks:
@@ -4269,12 +4284,17 @@ CelebiEvosAttacks:
 	db 1, LEECH_SEED
 	db 1, CONFUSION
 	db 1, RECOVER
-	db 1, HEAL_BELL
+	db 1, METRONOME ; Heal Bell → new move
 	db 10, SAFEGUARD
-	db 20, ANCIENTPOWER
-	db 30, FUTURE_SIGHT
-	db 40, BATON_PASS
-	db 50, PERISH_SONG
+	db 19, GIGA_DRAIN ; Magical Leaf → TM move
+	db 28, ANCIENTPOWER
+	db 37, BATON_PASS
+	db 46, PSYCHIC_M ; Natural Gift → TM move
+	db 55, LIGHT_SCREEN ; Heal Block → TM move
+	db 64, FUTURE_SIGHT
+	db 73, HEAL_BELL ; Healing Wish → Heal Bell
+	db 82, NASTY_PLOT ; Leaf Storm → event move
+	db 91, PERISH_SONG
 	db 0 ; no more level-up moves
 
 SylveonEvosAttacks:
