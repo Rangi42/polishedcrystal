@@ -217,7 +217,7 @@ ButterfreeEvosAttacks:
 	db 36, SAFEGUARD
 	db 40, AIR_SLASH ; Captivate → new move
 	db 42, BUG_BUZZ
-	db 46, PSYCHIC ; Quiver Dance → TM move
+	db 46, PSYCHIC_M ; Quiver Dance → TM move
 	db 0 ; no more level-up moves
 
 WeedleEvosAttacks:

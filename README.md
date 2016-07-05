@@ -205,6 +205,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
+   * Rocket Executives use Team Rocket battle music
 * Increased difficulty:
    * Default Set battle style
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
