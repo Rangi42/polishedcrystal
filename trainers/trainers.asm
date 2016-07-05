@@ -201,7 +201,7 @@ MortyGroup:
 
 	db 23, NOCTOWL, NO_ITEM
 		db PECK
-		db REFLECT
+		db PSYBEAM
 		db HYPNOSIS
 		db NIGHTMARE
 
