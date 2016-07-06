@@ -159,16 +159,10 @@ WonderTradeIntroText:
 
 	para "You can trade"
 	line "#mon with other"
-	cont "people far away."
 
-;	text "With Wonder Trade,"
-;	line "you can quickly"
-;	cont "and easily trade"
-;
-;	para "your #mon with"
-;	line "anyone from anywh-"
-;	cont "ere in the world!"
-
+	para "people far away"
+	line "up to three times"
+	cont "a day."
 	done
 
 WonderTradeGoodbyeText:

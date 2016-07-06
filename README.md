@@ -312,7 +312,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
-   * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
    * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)

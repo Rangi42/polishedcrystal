@@ -56,7 +56,7 @@ WonderTradeDoneFanfare::
 WonderTradeAlreadyDoneText::
 	text "You traded a"
 	line "#mon with us"
-	cont "only recently."
+	cont "three times today."
 
 	para "Please come back"
 	line "later."
@@ -71,26 +71,33 @@ WonderTradeForGSBallPichuText::
 
 	para "It seems like you"
 	line "just traded a"
-	cont "#mon with"
-	cont "yourself."
+
+	para "#mon with"
+	line "yourself."
 
 	para "But that can't be"
 	line "right… You can't"
-	cont "be in two places"
-	cont "at once."
+
+	para "be in two places"
+	line "at once."
 
 	para "Besides, the ma-"
 	line "chine communicates"
-	cont "through space,"
-	cont "not time…"
+
+	para "through space,"
+	line "not time…"
 
 	para "And what is that"
 	line "strange Ball it's"
-	cont "holding? Is it an"
-	cont "Apricorn Ball?"
+
+	para "holding? Is it an"
+	line "Apricorn Ball?"
+
+	para "<......><......>"
 
 	para "Well, a #mon"
 	line "is a #mon."
-	cont "Please look after"
-	cont "it carefully."
+
+	para "Please look after"
+	line "it carefully."
 	prompt
