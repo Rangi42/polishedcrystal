@@ -12,9 +12,10 @@ NavelRockOutside_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
+	db 3
 	warp_def $19, $c, 1, SEAGALLOP_FERRY_NAVEL_GATE
 	warp_def $19, $d, 1, SEAGALLOP_FERRY_NAVEL_GATE
+	warp_def $f, $c, 1, NAVEL_ROCK_INSIDE
 
 .XYTriggers:
 	db 0

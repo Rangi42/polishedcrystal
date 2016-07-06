@@ -10208,7 +10208,7 @@ LeafGroup:
 ; ================
 
 	; LEAF (1)
-	db "Leaf@"
+	db "Green@"
 	db 3 ; item + moves
 
 	; party

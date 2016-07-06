@@ -361,7 +361,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
 	mapgroup NAVEL_ROCK_OUTSIDE,                         16, 13 ;  5
 	mapgroup NAVEL_ROCK_INSIDE,                          45, 20 ;  6
-	mapgroup NAVEL_ROCK_ROOF,                            10,  7 ;  7
+	mapgroup NAVEL_ROCK_ROOF,                             7,  8 ;  7
 	mapgroup FARAWAY_ISLAND,                              7,  7 ;  8
 	mapgroup FARAWAY_JUNGLE,                              7,  7 ;  9
 	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  10

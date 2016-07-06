@@ -3,15 +3,19 @@ const_value set 2
 
 SeagallopFerryVermilionGate_MapScriptHeader:
 .MapTriggers:
-	db 1
+	db 2
 
 	; triggers
 	dw .Trigger0, 0
+	dw .Trigger1, 0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
+	end
+
+.Trigger1:
 	priorityjump SeagallopFerryVermilionGate_PlayerArrives
 	end
 
@@ -23,7 +27,7 @@ SeagallopFerryVermilionGate_PlayerArrives:
 	waitbutton
 	closetext
 	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorArrive2MovementData
-	dotrigger $1
+	dotrigger $0
 	end
 
 SeagallopFerryVermilionGateSailorScript:
@@ -81,7 +85,7 @@ SeagallopFerryVermilionGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
-	domaptrigger SEAGALLOP_FERRY_NAVEL_GATE, $0
+	domaptrigger SEAGALLOP_FERRY_NAVEL_GATE, $1
 	warp SEAGALLOP_FERRY_NAVEL_GATE, $6, $5
 	end
 
@@ -100,7 +104,7 @@ SeagallopFerryVermilionGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
-	domaptrigger SEAGALLOP_FERRY_FARAWAY_GATE, $0
+	domaptrigger SEAGALLOP_FERRY_FARAWAY_GATE, $1
 	warp SEAGALLOP_FERRY_FARAWAY_GATE, $6, $5
 	end
 
@@ -152,43 +156,55 @@ SeagallopFerryVermilionGateSailorArrive2MovementData:
 	step_end
 
 SeagallopFerryClosedText:
-	text "The Seagallop"
-	line "Ferry is not in"
-	cont "service right now."
+	text "Welcome aboard the"
+	line "Seagallop Ferry!"
+
+	para "I'm sorry, you don't"
+	line "have a ticket."
 	done
 
 SeagallopFerryNavelRockQuestionText:
-	text "Oh! You have a"
-	line "MysticTicket!"
+	text "Welcome aboard the"
+	line "Seagallop Ferry!"
 
-	para "Want to ride the"
-	line "Seagallop Ferry"
-	cont "to Navel Rock?"
+	para "Oh! That's a"
+	line "MysticTicket!"
+	cont "Now that is rare."
+
+	para "We'll be happy to"
+	line "take you to Navel"
+	cont "Rock any time."
 	done
 
 SeagallopFerryFarawayIslandQuestionText:
-	text "Oh! You have an"
-	line "Old Sea Map!"
+	text "Welcome aboard the"
+	line "Seagallop Ferry!"
 
-	para "Want to ride the"
-	line "Seagallop Ferry"
-	cont "to Faraway Island?"
+	para "Oh! That Old Sea"
+	line "Map you have…"
+
+	para "It looks like a"
+	line "faraway island."
+
+	para "We'll be happy to"
+	line "take you there"
+	cont "any time."
 	done
 
 SeagallopFerryWhichDestinationText:
-	text "Where do you want"
-	line "to ride on the"
-	cont "Seagallop Ferry?"
+	text "Welcome aboard the"
+	line "Seagallop Ferry!"
+
+	para "Where are you"
+	line "bound for?"
 	done
 
 SeagallopFerryNavelRockText:
-	text "Set course for"
-	line "Navel Rock!"
-	done
-
 SeagallopFerryFarawayIslandText:
-	text "Set course for"
-	line "Faraway Island!"
+	text "All right!"
+
+	para "All aboard the"
+	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryVermilionCityRefusedText:

@@ -420,12 +420,13 @@ Mart30: ; 161f3
 ; 161fd
 
 Mart31: ; 161fd
-	db 7 ; # items
+	db 8 ; # items
 	db POKE_DOLL
 	db FRESH_WATER
 	db SODA_POP
 	db LEMONADE
 	db REPEL
+	db SUPER_REPEL
 	db MIRAGE_MAIL
 	db PORTRAITMAIL
 	db $ff

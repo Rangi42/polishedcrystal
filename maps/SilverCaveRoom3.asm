@@ -6,7 +6,19 @@ SilverCaveRoom3_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_SPRITES, .DailyRedRematchCallback
+
+.DailyRedRematchCallback:
+	disappear SILVERCAVEROOM3_RED
+	checkflag ENGINE_RED_IN_MOUNT_SILVER
+	iftrue .Disappear
+	appear SILVERCAVEROOM3_RED
+.Disappear
+	return
 
 Red:
 	special Special_FadeOutMusic
@@ -21,19 +33,23 @@ Red:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	special Special_FadeOutMusic
+	faceplayer
 	opentext
 	writetext .Text3
 	waitbutton
+	checkitem MYSTICTICKET
+	iftrue .AlreadyHaveMysticTicket
+	verbosegiveitem MYSTICTICKET
+.AlreadyHaveMysticTicket
 	closetext
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear SILVERCAVEROOM3_RED
+	setflag ENGINE_RED_IN_MOUNT_SILVER
 	pause 15
 	special Special_FadeInQuickly
 	pause 30
 	special HealParty
-	refreshscreen $0
-	credits
 	end
 
 .Text1:

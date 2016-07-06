@@ -3,15 +3,19 @@ const_value set 2
 
 SeagallopFerryFarawayGate_MapScriptHeader:
 .MapTriggers:
-	db 1
+	db 2
 
 	; triggers
 	dw .Trigger0, 0
+	dw .Trigger1, 0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
+	end
+
+.Trigger1:
 	priorityjump SeagallopFerryFarawayGate_PlayerArrives
 	end
 
@@ -23,7 +27,7 @@ SeagallopFerryFarawayGate_PlayerArrives:
 	waitbutton
 	closetext
 	applymovement SEAGALLOPFERRYFARAWAYGATE_SAILOR, SeagallopFerryFarawayGateSailorArrive2MovementData
-	dotrigger $1
+	dotrigger $0
 	end
 
 SeagallopFerryFarawayGateSailorScript:
@@ -46,7 +50,7 @@ SeagallopFerryFarawayGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYFARAWAYGATE_SAILOR
-	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $0
+	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
 	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
 	end
 
@@ -84,18 +88,20 @@ SeagallopFerryFarawayGateSailorArrive2MovementData:
 	step_end
 
 SeagallopFerryFarawayToVermilionQuestionText:
-	text "Want to return to"
-	line "Vermilion City?"
+	text "Ready to head back"
+	line "to Vermilion City?"
 	done
 
 SeagallopFerryFarawayToVermilionText:
-	text "Set course for"
-	line "Vermilion City!"
+	text "All right!"
+
+	para "All aboard the"
+	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryFarawayIslandRefusedText:
-	text "I'll wait for you"
-	line "here."
+	text "I'll be waiting"
+	line "right here."
 	done
 
 SeagallopFerryFarawayGate_MapEventHeader:

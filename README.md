@@ -226,6 +226,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
    * Battle Lawrence III after catching all three legendary birds, and get the Silver Wing
+   * Battle Green after Red on Navel Rock
    * The old man in Pewter City gives you Old Amber
    * Removed Brick Piece
    * New default player names
@@ -338,7 +339,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
-   * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"

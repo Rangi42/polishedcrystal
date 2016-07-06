@@ -1,6 +1,6 @@
 WonderTrade::
 	ld hl, DailyFlags2
-	bit 3, [hl] ; ENGINE_DAILY_WONDER_TRADE
+	bit 3, [hl] ; ENGINE_DAILY_WONDER_TRADE_1
 	jp nz, .already_traded
 
 	ld hl, .Text_WonderTradeQuestion
@@ -38,7 +38,7 @@ WonderTrade::
 	call ReturnToMapWithSpeechTextbox
 
 	ld hl, DailyFlags2
-	set 3, [hl] ; ENGINE_DAILY_WONDER_TRADE
+	set 3, [hl] ; ENGINE_DAILY_WONDER_TRADE_1
 
 	ld hl, .Text_WonderTradeComplete
 	call PrintText
