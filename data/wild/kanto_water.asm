@@ -180,4 +180,16 @@
 	db 35, HORSEA
 	db 40, SLOWBRO
 
+	map NAVEL_ROCK_OUTSIDE
+	db 6 percent ; encounter rate
+	db 35, TENTACOOL
+	db 30, STARYU
+	db 35, TENTACRUEL
+
+	map FARAWAY_ISLAND
+	db 6 percent ; encounter rate
+	db 30, CORSOLA
+	db 35, OCTILLERY
+	db 35, POLITOED
+
 	db -1 ; end

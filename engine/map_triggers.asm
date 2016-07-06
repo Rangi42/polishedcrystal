@@ -88,5 +88,8 @@ ENDM
 	trigger_def MOBILE_TRADE_ROOM_MOBILE,               wMobileTradeRoomMobileTrigger
 	trigger_def MOBILE_BATTLE_ROOM,                     wMobileBattleRoomTrigger
 	trigger_def VERMILION_CITY,                         wVermilionCityTrigger
+	trigger_def SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateTrigger
+	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
+	trigger_def SEAGALLOP_FERRY_FARAWAY_GATE,           wSeagallopFerryFarawayGateTrigger
 	db -1
 ; 4d15b

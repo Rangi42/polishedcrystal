@@ -99,6 +99,10 @@ GoldenrodHarbor_BlockData:
 NavelRockOutside_BlockData:
 	INCBIN "maps/NavelRockOutside.blk"
 
+FarawayIsland_BlockData:
+	INCBIN "maps/FarawayIsland.blk"
+
 SeagallopFerryVermilionGate_BlockData:
 SeagallopFerryNavelGate_BlockData:
+SeagallopFerryFarawayGate_BlockData:
 	INCBIN "maps/SeagallopFerryGate.blk"

@@ -360,8 +360,10 @@ MAP_NONE   EQU 0
 	mapgroup SILVER_CAVE_POKECENTER_1F,                   4,  5 ;  3
 	mapgroup ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
 	mapgroup NAVEL_ROCK_OUTSIDE,                         16, 13 ;  5
-	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  6
-	mapgroup SEAGALLOP_FERRY_NAVEL_GATE,                  6,  7 ;  7
+	mapgroup FARAWAY_ISLAND,                              7,  7 ;  6
+	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  7
+	mapgroup SEAGALLOP_FERRY_NAVEL_GATE,                  6,  7 ;  8
+	mapgroup SEAGALLOP_FERRY_FARAWAY_GATE,                6,  7 ;  9
 
 	newgroup                                                    ; 20
 
