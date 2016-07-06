@@ -634,7 +634,10 @@
 	map_header_2 SafariZoneEastRestHouse, SAFARI_ZONE_EAST_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneNorthRestHouse, SAFARI_ZONE_NORTH_REST_HOUSE, $0, 0
 	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $43, 0
+	map_header_2 NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
+	map_header_2 NavelRockRoof, NAVEL_ROCK_ROOF, $3, 0
 	map_header_2 FarawayIsland, FARAWAY_ISLAND, $43, 0
+	map_header_2 FarawayJungle, FARAWAY_JUNGLE, $f, 0
 	map_header_2 SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0, 0
 	map_header_2 SeagallopFerryNavelGate, SEAGALLOP_FERRY_NAVEL_GATE, $0, 0
 	map_header_2 SeagallopFerryFarawayGate, SEAGALLOP_FERRY_FARAWAY_GATE, $0, 0
