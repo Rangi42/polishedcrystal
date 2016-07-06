@@ -115,3 +115,6 @@ SeagallopFerryVermilionGate_BlockData:
 SeagallopFerryNavelGate_BlockData:
 SeagallopFerryFarawayGate_BlockData:
 	INCBIN "maps/SeagallopFerryGate.blk"
+
+SilphCo2F_BlockData:
+	INCBIN "maps/SilphCo2F.blk"

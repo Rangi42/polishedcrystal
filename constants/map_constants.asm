@@ -484,11 +484,12 @@ MAP_NONE   EQU 0
 	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ; 10
 	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ; 11
 	mapgroup SILPH_CO_1F,                                 4,  8 ; 12
-	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 13
-	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 14
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 15
-	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 16
-	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 17
+	mapgroup SILPH_CO_2F,                                 4,  8 ; 13
+	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 14
+	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 15
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 16
+	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 17
+	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 18
 
 	newgroup                                                    ; 26
 

@@ -7,7 +7,18 @@ SilphCo1F_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_SPRITES, .MoveOfficerCallback
+
+.MoveOfficerCallback:
+	checkevent EVENT_RETURNED_MACHINE_PART
+	iffalse .Nothing
+	moveperson SILPHCO1F_OFFICER, 14, 1
+.Nothing
+	return
 
 SilphCoReceptionist:
 	jumptextfaceplayer SilphCoReceptionistText
@@ -15,17 +26,16 @@ SilphCoReceptionist:
 OfficerScript_0x18abe8:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_UP_GRADE
-	iftrue UnknownScript_0x18abfd
+	checkevent EVENT_RETURNED_MACHINE_PART
+	iftrue .OfficerScriptAfterPowerRestored
 	writetext UnknownText_0x18ac36
-	buttonsound
-	verbosegiveitem UP_GRADE
-	iffalse UnknownScript_0x18ac01
-	setevent EVENT_GOT_UP_GRADE
-UnknownScript_0x18abfd:
+	waitbutton
+	closetext
+	end
+
+.OfficerScriptAfterPowerRestored
 	writetext UnknownText_0x18aca8
 	waitbutton
-UnknownScript_0x18ac01:
 	closetext
 	end
 
@@ -40,19 +50,28 @@ UnknownText_0x18ac36:
 	line "permitted to go"
 	cont "upstairs."
 
-	para "But since you came"
-	line "such a long way,"
+	para "The main power"
+	line "isn't working,"
 
-	para "have this neat"
-	line "little souvenir."
+	para "and the CEO wants"
+	line "high security"
+	cont "for an emergency."
+
+	para "We learned our"
+	line "lesson about that"
+	cont "three years ago."
 	done
 
 UnknownText_0x18aca8:
-	text "It's Silph Co.'s"
-	line "latest product."
+	text "You're responsible"
+	line "for restoring the"
+	cont "power supply?"
 
-	para "It's not for sale"
-	line "anywhere yet."
+	para "Thank you! Now"
+	line "R&D can continue."
+
+	para "Feel free to take"
+	line "a tour upstairs."
 	done
 
 SilphCo1F_MapEventHeader:
@@ -60,9 +79,10 @@ SilphCo1F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
+	db 3
 	warp_def $7, $2, 7, SAFFRON_CITY
 	warp_def $7, $3, 7, SAFFRON_CITY
+	warp_def $0, $d, 1, SILPH_CO_2F
 
 .XYTriggers:
 	db 0
