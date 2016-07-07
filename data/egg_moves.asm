@@ -407,6 +407,15 @@ HorseaEggMoves:
 	db HAZE
 	db $ff
 
+TogepiEggMoves:
+	db EXTRASENSORY
+	db FORESIGHT
+	db FUTURE_SIGHT
+	db MORNING_SUN
+	db NASTY_PLOT
+	db PECK
+	db $ff
+
 MrMimeEggMoves:
 	db CONFUSE_RAY
 	db FUTURE_SIGHT
@@ -574,15 +583,6 @@ MunchlaxEggMoves:
 	db WHIRLWIND
 	db LICK
 	db GUNK_SHOT
-	db $ff
-
-TogepiEggMoves:
-	db EXTRASENSORY
-	db FORESIGHT
-	db FUTURE_SIGHT
-	db MORNING_SUN
-	db NASTY_PLOT
-	db PECK
 	db $ff
 
 NatuEggMoves:

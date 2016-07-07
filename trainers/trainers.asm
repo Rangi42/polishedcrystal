@@ -201,7 +201,7 @@ MortyGroup:
 
 	db 23, NOCTOWL, NO_ITEM
 		db PECK
-		db REFLECT
+		db PSYBEAM
 		db HYPNOSIS
 		db NIGHTMARE
 
@@ -10208,7 +10208,7 @@ LeafGroup:
 ; ================
 
 	; LEAF (1)
-	db "Leaf@"
+	db "Green@"
 	db 3 ; item + moves
 
 	; party

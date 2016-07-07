@@ -359,6 +359,14 @@ MAP_NONE   EQU 0
 	mapgroup SILVER_CAVE_OUTSIDE,                        18, 20 ;  2
 	mapgroup SILVER_CAVE_POKECENTER_1F,                   4,  5 ;  3
 	mapgroup ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
+	mapgroup NAVEL_ROCK_OUTSIDE,                         16, 13 ;  5
+	mapgroup NAVEL_ROCK_INSIDE,                          45, 20 ;  6
+	mapgroup NAVEL_ROCK_ROOF,                             7,  8 ;  7
+	mapgroup FARAWAY_ISLAND,                              7,  7 ;  8
+	mapgroup FARAWAY_JUNGLE,                              7,  7 ;  9
+	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  10
+	mapgroup SEAGALLOP_FERRY_NAVEL_GATE,                  6,  7 ;  11
+	mapgroup SEAGALLOP_FERRY_FARAWAY_GATE,                6,  7 ;  12
 
 	newgroup                                                    ; 20
 
@@ -476,11 +484,12 @@ MAP_NONE   EQU 0
 	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ; 10
 	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ; 11
 	mapgroup SILPH_CO_1F,                                 4,  8 ; 12
-	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 13
-	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 14
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 15
-	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 16
-	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 17
+	mapgroup SILPH_CO_2F,                                 4,  8 ; 13
+	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 14
+	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 15
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 16
+	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 17
+	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 18
 
 	newgroup                                                    ; 26
 

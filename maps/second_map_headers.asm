@@ -595,6 +595,7 @@
 	map_header_2 MrPsychicsHouse, MR_PSYCHICS_HOUSE, $0, 0
 	map_header_2 SaffronTrainStation, SAFFRON_TRAIN_STATION, $0, 0
 	map_header_2 SilphCo1F, SILPH_CO_1F, $0, 0
+	map_header_2 SilphCo2F, SILPH_CO_2F, $0, 0
 	map_header_2 CopycatsHouse1F, COPYCATS_HOUSE_1F, $0, 0
 	map_header_2 CopycatsHouse2F, COPYCATS_HOUSE_2F, $0, 0
 	map_header_2 Route5UndergroundEntrance, ROUTE_5_UNDERGROUND_ENTRANCE, $0, 0
@@ -633,3 +634,11 @@
 	map_header_2 SafariZoneHubRestHouse, SAFARI_ZONE_HUB_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneEastRestHouse, SAFARI_ZONE_EAST_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneNorthRestHouse, SAFARI_ZONE_NORTH_REST_HOUSE, $0, 0
+	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $43, 0
+	map_header_2 NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
+	map_header_2 NavelRockRoof, NAVEL_ROCK_ROOF, $3, 0
+	map_header_2 FarawayIsland, FARAWAY_ISLAND, $43, 0
+	map_header_2 FarawayJungle, FARAWAY_JUNGLE, $f, 0
+	map_header_2 SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0, 0
+	map_header_2 SeagallopFerryNavelGate, SEAGALLOP_FERRY_NAVEL_GATE, $0, 0
+	map_header_2 SeagallopFerryFarawayGate, SEAGALLOP_FERRY_FARAWAY_GATE, $0, 0

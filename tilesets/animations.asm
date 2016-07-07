@@ -56,6 +56,7 @@ Tileset32Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset03Anim:
+Tileset40Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

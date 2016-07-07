@@ -383,6 +383,8 @@ LoadSpecialCavePalette:
 	call GetWorldMapLocation
 	cp SILVER_CAVE
 	jr z, .SilverCave
+	cp NAVEL_ROCK
+	jr z, .NavelRock
 	cp CINNABAR_VOLCANO
 	jr z, .CinnabarVolcano
 .CeruleanCave
@@ -399,6 +401,13 @@ LoadSpecialCavePalette:
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
+.NavelRock
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, NavelRockPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
 .CinnabarVolcano
 	ld a, $5
 	ld de, UnknBGPals
@@ -412,6 +421,9 @@ INCLUDE "tilesets/cerulean_cave.pal"
 
 SilverCavePalette:
 INCLUDE "tilesets/silver_cave.pal"
+
+NavelRockPalette:
+INCLUDE "tilesets/navel_rock.pal"
 
 CinnabarVolcanoPalette:
 INCLUDE "tilesets/cinnabar_volcano.pal"

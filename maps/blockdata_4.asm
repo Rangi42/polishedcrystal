@@ -95,3 +95,26 @@ CherrygroveBay_BlockData:
 
 GoldenrodHarbor_BlockData:
 	INCBIN "maps/GoldenrodHarbor.blk"
+
+NavelRockOutside_BlockData:
+	INCBIN "maps/NavelRockOutside.blk"
+
+NavelRockInside_BlockData:
+	INCBIN "maps/NavelRockInside.blk"
+
+NavelRockRoof_BlockData:
+	INCBIN "maps/NavelRockRoof.blk"
+
+FarawayIsland_BlockData:
+	INCBIN "maps/FarawayIsland.blk"
+
+FarawayJungle_BlockData:
+	INCBIN "maps/FarawayJungle.blk"
+
+SeagallopFerryVermilionGate_BlockData:
+SeagallopFerryNavelGate_BlockData:
+SeagallopFerryFarawayGate_BlockData:
+	INCBIN "maps/SeagallopFerryGate.blk"
+
+SilphCo2F_BlockData:
+	INCBIN "maps/SilphCo2F.blk"

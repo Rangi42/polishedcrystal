@@ -165,7 +165,9 @@ ENDM
 	landmark  28, 116, Route27Name
 	landmark  20, 116, TohjoFallsName
 	landmark  28,  84, Route28Name
-	landmark 148, 132, FastShipName
+	landmark  20, 132, FastShipName
+	landmark 140, 156, NavelRockName
+	landmark 156, 156, FarawayIslandName
 
 
 NewBarkTownName:     db "New Bark¯Town@"
@@ -279,6 +281,8 @@ YellowForestName:    db "Yellow¯Forest@"
 QuietCaveName:       db "Quiet Cave@"
 CherrygroveBayName:  db "Cherrygrove¯Bay@"
 GoldenrodHarborName: db "Goldenrod¯Harbor@"
+NavelRockName:       db "Navel Rock@"
+FarawayIslandName:   db "Faraway¯Island@"
 SpecialMapName:      db "Special@"
 
 

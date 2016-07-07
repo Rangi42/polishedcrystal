@@ -2633,8 +2633,11 @@ wMountMoonSquareTrigger::                    ds 1 ; d9be
 wMobileTradeRoomMobileTrigger::              ds 1 ; d9bf
 wMobileBattleRoomTrigger::                   ds 1 ; d9c0
 wVermilionCityTrigger::                      ds 1
+wSeagallopFerryVermilionGateTrigger::        ds 1
+wSeagallopFerryNavelGateTrigger::            ds 1
+wSeagallopFerryFarawayGateTrigger::          ds 1
 
-	ds 48
+	ds 45
 
 
 ;SECTION "Events", WRAMX, BANK [1]

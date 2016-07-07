@@ -205,6 +205,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
+   * Rocket Executives use Team Rocket battle music
 * Increased difficulty:
    * Default Set battle style
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
@@ -225,6 +226,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
    * Battle Lawrence III after catching all three legendary birds, and get the Silver Wing
+   * Battle Green after Red on Navel Rock
    * The old man in Pewter City gives you Old Amber
    * Removed Brick Piece
    * New default player names
@@ -310,7 +312,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
    * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
-   * Allow three Wonder Trades per day, not just one
    * Faster text by default
    * Stereo sound by default
    * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
@@ -337,7 +338,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
    * Add a store to buy room decorations that Mom doesn't
-   * Also include Green/Leaf on Navel Rock (Venusaur 84, Blastoise 84, Lapras 80, Jolteon 80, Hitmonlee 82, Alakazam 82) (get MysticTicket somehow on Mt. Silver, maybe a hidden item in Red's chamber, maybe as a gift in the Pokémon Center)
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
