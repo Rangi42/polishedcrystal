@@ -613,7 +613,7 @@ ClefairyEvosAttacks:
 	db 13, DEFENSE_CURL
 	db 16, SWEET_KISS ; Follow Me → new move
 	db 19, DIZZY_PUNCH ; Bestow → Crystal unique move
-	db 22, ROLLOUT ; Wake-Up Slap → TM move
+	db 22, TRI_ATTACK ; Wake-Up Slap → RBY TM move
 	db 25, MINIMIZE
 	db 28, BATON_PASS ; Stored Power → new move
 	db 31, METRONOME
@@ -1136,10 +1136,11 @@ AlakazamEvosAttacks:
 	db 28, LIGHT_SCREEN ; Psycho Cut → egg move
 	db 31, RECOVER
 	db 33, BARRIER ; Telekinesis → egg move
-	db 36, BATON_PASS ; Ally Switch → new move
-	db 38, PSYCHIC_M
-	db 41, CONFUSE_RAY ; Role Play → new move
-	db 43, FUTURE_SIGHT
+	db 36, TRI_ATTACK ; RBY TM move
+	db 39, BATON_PASS ; Ally Switch → new move
+	db 41, PSYCHIC_M
+	db 43, CONFUSE_RAY ; Role Play → new move
+	db 47, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
 MachopEvosAttacks:
@@ -1156,7 +1157,7 @@ MachopEvosAttacks:
 	db 21, MEDITATE ; Knock Off → egg move
 	db 25, VITAL_THROW
 	db 27, BATON_PASS ; Wake-Up Slap → new move
-	db 31, THRASH ; Dual Chop → new move
+	db 31, THRASH ; Dual Chop → event move
 	db 33, SUBMISSION
 	db 37, BULK_UP
 	db 39, CROSS_CHOP
@@ -1178,7 +1179,7 @@ MachokeEvosAttacks:
 	db 21, MEDITATE ; Knock Off → egg move
 	db 25, VITAL_THROW
 	db 27, BATON_PASS ; Wake-Up Slap → new move
-	db 33, THRASH ; Dual Chop → new move
+	db 33, THRASH ; Dual Chop → event move
 	db 37, SUBMISSION
 	db 43, BULK_UP
 	db 47, CROSS_CHOP
@@ -1199,12 +1200,13 @@ MachampEvosAttacks:
 	db 21, MEDITATE ; Knock Off → egg move
 	db 25, VITAL_THROW
 	db 27, BATON_PASS ; Wake-Up Slap → new move
-	db 33, THRASH ; Dual Chop → new move
+	db 33, THRASH ; Dual Chop → event move
 	db 37, SUBMISSION
 	db 43, BULK_UP
-	db 47, CROSS_CHOP
-	db 53, SCARY_FACE
-	db 57, DYNAMICPUNCH
+	db 46, MACH_PUNCH ; new move
+	db 50, CROSS_CHOP
+	db 57, SCARY_FACE
+	db 63, DYNAMICPUNCH
 	db 0 ; no more level-up moves
 
 BellsproutEvosAttacks:
@@ -1351,8 +1353,9 @@ GolemEvosAttacks:
 	db 34, FLAIL ; Rock Blast → egg move
 	db 40, EARTHQUAKE
 	db 44, EXPLOSION
-	db 50, DOUBLE_EDGE
-	db 54, STONE_EDGE
+	db 45, SUBSTITUTE ; TM move
+	db 58, DOUBLE_EDGE
+	db 64, STONE_EDGE
 	db 0 ; no more level-up moves
 
 PonytaEvosAttacks:
@@ -1709,9 +1712,10 @@ GengarEvosAttacks:
 	db 33, SHADOW_BALL
 	db 39, DREAM_EATER
 	db 44, DARK_PULSE
-	db 50, DESTINY_BOND
-	db 55, PAIN_SPLIT ; Hex → HGSS tutor move
-	db 61, NIGHTMARE
+	db 45, PERISH_SONG ; new move
+	db 56, DESTINY_BOND
+	db 62, PAIN_SPLIT ; Hex → HGSS tutor move
+	db 68, NIGHTMARE
 	db 0 ; no more level-up moves
 
 OnixEvosAttacks:
@@ -2213,6 +2217,7 @@ StarmieEvosAttacks:
 	db 1, RECOVER
 	db 1, SWIFT
 	db 40, CONFUSE_RAY
+	db 60, TRI_ATTACK ; RBY TM move
 	db 0 ; no more level-up moves
 
 MrMimeEvosAttacks:
@@ -2734,11 +2739,11 @@ MewtwoEvosAttacks:
 	db 1, SAFEGUARD
 	db 11, SWIFT
 	db 22, FUTURE_SIGHT
-	db 33, CALM_MIND
+	db 33, CALM_MIND ; Psych Up → TM move
 	db 44, RECOVER
 	db 55, PSYCHIC_M
 	db 66, BARRIER
-	db 77, NASTY_PLOT
+	db 77, NASTY_PLOT ; Amnesia → new move
 	db 88, MIST
 	db 99, PSYSTRIKE
 	db 0 ; no more level-up moves
