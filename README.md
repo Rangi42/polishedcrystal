@@ -98,6 +98,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Trade Dragonair for Chansey in Blackthorn City
    * Trade Pinsir for Heracross in Pewter City
    * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
+   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and encounter Mew
    * Wild Bellsprout may hold Gold Leaf
    * Wild Oddish may hold Silver Leaf
    * Wild Kadabra may hold TwistedSpoon
@@ -137,7 +138,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
-   * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
+   * Added Viridian Forest, Pewter Museum, Pokémon Mansion, and Cerulean Cave from RBY
    * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
@@ -256,7 +257,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Remove unused code and resources to make room for new stuff
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-* Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
