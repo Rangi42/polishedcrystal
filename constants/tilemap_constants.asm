@@ -45,6 +45,7 @@ const_value SET 1
 	const TILESET_YELLOW_FOREST        ; 26
 	const TILESET_SAFARI_ZONE          ; 27
 	const TILESET_FARAWAY_ISLAND       ; 28
+	const TILESET_POKEMON_MANSION      ; 29
 
 	const_def
 	const PAL_BG_GRAY
