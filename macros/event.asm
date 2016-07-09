@@ -1069,3 +1069,8 @@ check_save: macro
 wonder_trade: macro
 	db wonder_trade_command
 	endm
+
+	enum count_caught_command
+count_caught: macro
+	db count_caught_command
+	endm

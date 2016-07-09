@@ -223,6 +223,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
+   * Two of Prof. Oak's aides give you items as you complete the Pokédex
    * Battle Lorelei in Ice Path
    * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts

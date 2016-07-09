@@ -241,6 +241,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_wait                       ; a8
 	dw Script_check_save                 ; a9
 	dw Script_wonder_trade               ; aa
+	dw Script_count_caught               ; ab
 ; 96e05
 
 StartScript: ; 96e05
@@ -3242,6 +3243,15 @@ Script_wonder_trade:
 ; script command 0xaa
 
 	callba WonderTrade
+	ret
+
+Script_count_caught:
+; script command 0xab
+
+	ld hl, PokedexCaught
+	ld b, EndPokedexCaught - PokedexCaught
+	call CountSetBits
+	ld [wd002], a
 	ret
 
 
