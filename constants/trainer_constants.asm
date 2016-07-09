@@ -77,6 +77,7 @@ KRIS EQU __enum__
 	const DENNETT
 	const LINDEN
 	const OSKAR
+	const BRAYDON
 
 	trainerclass ERIKA ; 15
 
@@ -464,6 +465,8 @@ KRIS EQU __enum__
 	const DUNCAN
 	const EDDIE
 	const COREY
+	const PETE
+	const LOUIS
 
 	trainerclass FIREBREATHER ; 30
 	const OTIS

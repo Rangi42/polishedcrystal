@@ -1832,6 +1832,19 @@ ScientistGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCIENTIST (10)
+	db "Braydon@"
+	db 0 ; normal
+
+	; party
+	db 42, MAGNETON
+	db 44, MAGNEZONE
+	db 46, ELECTRODE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7510,6 +7523,30 @@ BurglarGroup:
 	db 28, MAGMAR
 	db 25, KOFFING
 	db 30, KOFFING
+
+	db $ff ; end
+
+; ================
+
+	; BURGLAR (4)
+	db "Pete@"
+	db 0 ; normal
+
+	; party
+	db 40, CHARMELEON
+	db 42, MAGMAR
+
+	db $ff ; end
+
+; ================
+
+	; BURGLAR (5)
+	db "Louis@"
+	db 0 ; normal
+
+	; party
+	db 42, ARCANINE
+	db 42, RAPIDASH
 
 	db $ff ; end
 

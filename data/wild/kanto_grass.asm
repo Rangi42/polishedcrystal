@@ -1161,6 +1161,60 @@
 	db 34, SEEL
 	db 34, SEEL
 
+	map POKEMON_MANSION_1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 28, RATICATE
+	db 32, WEEZING
+	db 32, MUK
+	db 34, ARCANINE
+	db 34, RAPIDASH
+	db 34, RAPIDASH
+	db 34, RAPIDASH
+	; day
+	db 28, RATICATE
+	db 32, WEEZING
+	db 32, MUK
+	db 34, ARCANINE
+	db 34, RAPIDASH
+	db 34, RAPIDASH
+	db 34, RAPIDASH
+	; nite
+	db 28, HAUNTER
+	db 32, WEEZING
+	db 32, MUK
+	db 34, HOUNDOOM
+	db 34, RAPIDASH
+	db 34, RAPIDASH
+	db 34, RAPIDASH
+
+	map POKEMON_MANSION_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 28, RATICATE
+	db 32, WEEZING
+	db 32, MUK
+	db 34, ARCANINE
+	db 34, RAPIDASH
+	db 30, DITTO
+	db 30, DITTO
+	; day
+	db 28, RATICATE
+	db 32, WEEZING
+	db 32, MUK
+	db 34, RAPIDASH
+	db 34, ARCANINE
+	db 30, DITTO
+	db 30, DITTO
+	; nite
+	db 28, HAUNTER
+	db 32, WEEZING
+	db 32, MUK
+	db 34, MAGMAR
+	db 34, HOUNDOOM
+	db 30, DITTO
+	db 30, DITTO
+
 	map CINNABAR_VOLCANO_1F
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
