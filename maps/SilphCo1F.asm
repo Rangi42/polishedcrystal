@@ -54,8 +54,10 @@ UnknownText_0x18ac36:
 	line "isn't working,"
 
 	para "and the CEO wants"
-	line "high security"
-	cont "for an emergency."
+	line "high security in"
+
+	para "case of an"
+	line "emergency."
 
 	para "We learned our"
 	line "lesson about that"
