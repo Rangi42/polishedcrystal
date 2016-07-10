@@ -14,9 +14,7 @@ SilphCo3F_MapScriptHeader:
 SilphCo3FScientist1Script:
 	faceplayer
 	opentext
-	;pokemart MARTTYPE_SILPH, MART_SILPH_CO
-	writetext SilphCo3FScientist1Text
-	waitbutton
+	pokemart MARTTYPE_SILPH_CO, MART_SILPH_CO
 	closetext
 	end
 
@@ -37,11 +35,6 @@ SilphCo3FElevator:
 
 SilphCo3FBookshelf:
 	jumpstd difficultbookshelf
-
-SilphCo3FScientist1Text:
-	text "TODO:"
-	line "sell new Balls"
-	done
 
 SilphCo3FScientist2Text:
 	text "Silph just entered"
@@ -81,7 +74,7 @@ SilphCo3FOfficerText:
 
 SilphCo3FDeptSignText:
 	text "Silph Co. 3F"
-	line "# Ball Dept."
+	line "# Ball Tech"
 	done
 
 SilphCo3FElevatorText:

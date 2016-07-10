@@ -23,6 +23,7 @@ OpenMartDialog:: ; 15a45
 	dw BargainShop
 	dw Pharmacist
 	dw RooftopSale
+	dw SilphMart
 ; 15a61
 
 MartDialog: ; 15a61
@@ -98,6 +99,16 @@ RooftopSale: ; 15ac4
 	call MartTextBox
 	ret
 ; 15aee
+
+SilphMart:
+	call FarReadMart
+	call LoadStandardMenuDataHeader
+	ld hl, Text_SilphMart_Intro
+	call MartTextBox
+	call BuyMenu
+	ld hl, Text_SilphMart_ComeAgain
+	call MartTextBox
+	ret
 
 RooftopSaleData1: ; 15aee
 	db 5
@@ -433,6 +444,7 @@ endr
 	dwb .BargainShopPointers, 1
 	dwb .PharmacyPointers, 0
 	dwb .StandardMartPointers, 2
+	dwb .SilphMartPointers, 0
 ; 15cbf
 
 .StandardMartPointers: ; 15cbf
@@ -467,6 +479,14 @@ endr
 	dw Text_Pharmacy_HereYouGo
 	dw BuyMenuLoop
 ; 15cef
+
+.SilphMartPointers:
+	dw Text_SilphMart_HowMany
+	dw Text_SilphMart_CostsThisMuch
+	dw Text_SilphMart_InsufficientFunds
+	dw Text_SilphMart_BagFull
+	dw Text_SilphMart_HereYouGo
+	dw BuyMenuLoop
 
 
 BuyMenuLoop: ; 15cef
@@ -805,6 +825,34 @@ Text_Pharmacist_ComeAgain: ; 0x15eae
 	text_jump UnknownText_0x1c4ef6
 	db "@"
 ; 0x15eb3
+
+Text_SilphMart_Intro:
+	text_jump SilphMartIntroText
+	db "@"
+
+Text_SilphMart_HowMany:
+	text_jump SilphMartHowManyText
+	db "@"
+
+Text_SilphMart_CostsThisMuch:
+	text_jump SilphMartCostsThisMuchText
+	db "@"
+
+Text_SilphMart_HereYouGo:
+	text_jump SilphMartHereYouGoText
+	db "@"
+
+Text_SilphMart_BagFull:
+	text_jump SilphMartBagFullText
+	db "@"
+
+Text_SilphMart_InsufficientFunds:
+	text_jump SilphMartInsufficientFundsText
+	db "@"
+
+Text_SilphMart_ComeAgain:
+	text_jump SilphMartComeAgainText
+	db "@"
 
 
 SellMenu: ; 15eb3

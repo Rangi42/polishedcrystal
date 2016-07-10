@@ -248,6 +248,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
+   * Access Silph Co. after restoring power to Kanto, and buy new Poké Balls
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
    * Buy BlueSky Mail and Morph Mail in Goldenrod City
    * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
@@ -344,7 +345,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
-   * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)

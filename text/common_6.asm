@@ -101,3 +101,50 @@ WonderTradeForGSBallPichuText::
 	para "Please look after"
 	line "it carefully."
 	prompt
+
+SilphMartIntroText::
+	text "Hi there!"
+
+	para "Silph and Devon"
+	line "partnered up"
+
+	para "to design some"
+	line "special new #"
+	cont "Balls."
+
+	para "Want to buy them"
+	line "before they're"
+	cont "released?"
+	done
+
+SilphMartHowManyText::
+	text "How many?"
+	done
+
+SilphMartCostsThisMuchText::
+	deciram wItemQuantityChangeBuffer, 1, 2
+	text " @"
+	text_from_ram StringBuffer2
+	text "(s)"
+	line "will cost ¥@"
+	deciram hMoneyTemp, 3, 6
+	text "."
+	done
+
+SilphMartHereYouGoText::
+	text "Thanks!"
+	done
+
+SilphMartBagFullText::
+	text "You don't have"
+	line "space for it."
+	done
+
+SilphMartInsufficientFundsText::
+	text "That's not enough"
+	line "money…"
+	done
+
+SilphMartComeAgainText::
+	text "Come by again!"
+	done
