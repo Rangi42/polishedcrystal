@@ -233,6 +233,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
+   * Odd Egg is always shiny, with an equal chance to be either gender
+   * Nidorina and Nidoqueen can breed
    * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Prof. Oak asks for the player's gender and name together
    * Color-coded starter Poké Balls
