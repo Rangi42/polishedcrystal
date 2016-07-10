@@ -37,11 +37,13 @@ SquirtleEggMoves:
 	db $ff
 
 PidgeyEggMoves:
+	db PECK
 	db FEINT_ATTACK
 	db FORESIGHT
 	db PURSUIT
 	db AIR_SLASH
 	db STEEL_WING
+	db EXTREMESPEED
 	db $ff
 
 RattataEggMoves:
@@ -119,6 +121,7 @@ JigglypuffEggMoves:
 	db FEINT_ATTACK
 	db PERISH_SONG
 	db SLEEP_TALK
+	db MOONBLAST
 	db $ff
 
 ZubatEggMoves:
@@ -227,6 +230,7 @@ MachopEggMoves:
 	db ENCORE
 	db MEDITATE
 	db LIGHT_SCREEN
+	db MACH_PUNCH
 	db $ff
 
 BellsproutEggMoves:
@@ -261,6 +265,7 @@ PonytaEggMoves:
 	db THRASH
 	db QUICK_ATTACK
 	db FLAME_WHEEL
+	db EXTREMESPEED
 	db $ff
 
 SlowpokeEggMoves:
@@ -320,12 +325,14 @@ GastlyEggMoves:
 	db HAZE
 	db PERISH_SONG
 	db SCARY_FACE
+	db NASTY_PLOT
 	db $ff
 
 OnixEggMoves:
 	db DEFENSE_CURL
 	db FLAIL
 	db ROCK_SLIDE
+	db EARTHQUAKE
 	db $ff
 
 DrowzeeEggMoves:

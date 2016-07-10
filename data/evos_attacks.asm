@@ -1025,7 +1025,8 @@ GrowlitheEvosAttacks:
 	db EVOLVE_ITEM, FIRE_STONE, ARCANINE
 	db 0 ; no more evolutions
 	db 1, BITE
-	db 1, ROAR
+	db 1, GROWL
+	db 3, ROAR
 	db 6, EMBER
 	db 8, LEER
 	db 10, SAFEGUARD ; Odor Sleuth → egg move
@@ -1047,6 +1048,7 @@ GrowlitheEvosAttacks:
 ArcanineEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, BITE
+	db 1, GROWL
 	db 1, ROAR
 	db 1, FLAME_WHEEL
 	db 1, TAKE_DOWN
@@ -1740,6 +1742,7 @@ OnixEvosAttacks:
 	db 43, DIG
 	db 46, STONE_EDGE
 	db 49, DOUBLE_EDGE
+	db 52, EARTHQUAKE ; Sandstorm → TM move
 	db 0 ; no more level-up moves
 
 DrowzeeEvosAttacks:
@@ -2004,9 +2007,10 @@ WeezingEvosAttacks:
 RhyhornEvosAttacks:
 	db EVOLVE_LEVEL, 42, RHYDON
 	db 0 ; no more evolutions
-	db 1, HORN_ATTACK
+	db 1, TACKLE
 	db 1, TAIL_WHIP
-	db 5, FURY_ATTACK
+	db 3, HORN_ATTACK
+	db 6, FURY_ATTACK
 	db 9, SCARY_FACE
 	db 13, MAGNITUDE ; Smack Down → egg move
 	db 17, STOMP
@@ -2023,9 +2027,10 @@ RhyhornEvosAttacks:
 
 RhydonEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, HORN_ATTACK
+	db 1, TACKLE
 	db 1, TAIL_WHIP
-	db 5, FURY_ATTACK
+	db 3, HORN_ATTACK
+	db 6, FURY_ATTACK
 	db 9, SCARY_FACE
 	db 13, MAGNITUDE ; Smack Down → egg move
 	db 17, STOMP
@@ -3514,6 +3519,7 @@ YanmegaEvosAttacks:
 	db 49, DREAM_EATER ; U-Turn → event move
 	db 54, AIR_SLASH
 	db 57, BUG_BUZZ
+	db 62, FLY ; new move
 	db 0 ; no more level-up moves
 
 WooperEvosAttacks:
@@ -3854,6 +3860,7 @@ SteelixEvosAttacks:
 	db 43, DIG
 	db 46, STONE_EDGE
 	db 49, DOUBLE_EDGE
+	db 52, EARTHQUAKE ; Sandstorm → TM move
 	db 0 ; no more level-up moves
 
 SnubbullEvosAttacks:
@@ -4351,7 +4358,8 @@ Porygon2EvosAttacks:
 StantlerEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 3, LEER
+	db 1, LEER
+	db 3, HORN_ATTACK
 	db 7, ASTONISH
 	db 10, HYPNOSIS
 	db 13, STOMP

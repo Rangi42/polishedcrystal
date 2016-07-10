@@ -74,7 +74,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Totodile in Yellow Forest (by Surfing)
    * Wild Pikachu in Yellow Forest know Fly or Surf
    * Wild Munchlax in Quiet Cave know Self-Destruct
-   * Wild Magikarp in Quiet Cave know Dragon Rage
+   * Wild Magikarp in Quiet Cave know Hydro Pump
+   * Wild Magikarp in Lake of Rage know Dragon Rage
    * Helix Fossil and Dome Fossil in Quiet Cave
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands

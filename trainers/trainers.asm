@@ -721,14 +721,14 @@ ClairGroup:
 
 	db 64, DRAGONAIR, EVIOLITE
 		db AQUA_TAIL
-		db THUNDER
+		db FLY
 		db THUNDER_WAVE
 		db SAFEGUARD
 
 	db 62, GYARADOS, MIRACLEBERRY
 		db DRAGON_DANCE
 		db WATERFALL
-		db STONE_EDGE
+		db FLY
 		db EARTHQUAKE
 
 	db 63, DRAGONITE, SILK_SCARF
@@ -1165,7 +1165,7 @@ ChampionGroup:
 
 	db 46, GYARADOS, NO_ITEM
 		db DRAGON_DANCE
-		db RAIN_DANCE
+		db FLY
 		db WATERFALL
 		db HYPER_BEAM
 
@@ -4218,13 +4218,33 @@ FisherGroup:
 
 	; FISHER (9)
 	db "Raymond@"
-	db 0 ; normal
+	db 1 ; moves
 
 	; party
+
 	db 22, MAGIKARP
+		db SPLASH
+		db TACKLE
+		db DRAGON_RAGE
+		db NO_MOVE
+
 	db 22, MAGIKARP
+		db SPLASH
+		db TACKLE
+		db DRAGON_RAGE
+		db NO_MOVE
+
 	db 22, MAGIKARP
+		db SPLASH
+		db TACKLE
+		db DRAGON_RAGE
+		db NO_MOVE
+
 	db 22, MAGIKARP
+		db SPLASH
+		db TACKLE
+		db DRAGON_RAGE
+		db NO_MOVE
 
 	db $ff ; end
 
