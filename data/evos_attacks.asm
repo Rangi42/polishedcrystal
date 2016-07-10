@@ -26,6 +26,7 @@ BulbasaurEvosAttacks:
 	db 31, ANCIENTPOWER ; Worry Seed → event move
 	db 33, SYNTHESIS
 	db 37, SEED_BOMB
+	db 43, SLUDGE_BOMB ; TM move
 	db 0 ; no more level-up moves
 
 IvysaurEvosAttacks:
@@ -45,6 +46,7 @@ IvysaurEvosAttacks:
 	db 36, ANCIENTPOWER ; Worry Seed → event move
 	db 39, SYNTHESIS
 	db 44, SEED_BOMB
+	db 50, SLUDGE_BOMB ; TM move
 	db 0 ; no more level-up moves
 
 VenusaurEvosAttacks:
@@ -65,7 +67,8 @@ VenusaurEvosAttacks:
 	db 39, ANCIENTPOWER ; Worry Seed → event move
 	db 45, SYNTHESIS
 	db 50, SEED_BOMB
-	db 53, SOLAR_BEAM
+	db 53, SLUDGE_BOMB ; Solar Beam → Sludge Bomb
+	db 60, SOLAR_BEAM
 	db 0 ; no more level-up moves
 
 CharmanderEvosAttacks:
@@ -2692,7 +2695,7 @@ DratiniEvosAttacks:
 	db 25, AGILITY
 	db 31, DRAGON_PULSE ; Dragon Tail → TM move
 	db 35, AQUA_TAIL
-	db 41, FLAMETHROWER ; Dragon Rush → TM move
+	db 41, BARRIER ; Dragon Rush → event move
 	db 45, SAFEGUARD
 	db 51, DRAGON_DANCE
 	db 55, OUTRAGE
@@ -2711,7 +2714,7 @@ DragonairEvosAttacks:
 	db 25, AGILITY
 	db 33, DRAGON_PULSE ; Dragon Tail → TM move
 	db 39, AQUA_TAIL
-	db 47, FLAMETHROWER ; Dragon Rush → TM move
+	db 47, BARRIER ; Dragon Rush → event move
 	db 53, SAFEGUARD
 	db 61, DRAGON_DANCE
 	db 67, OUTRAGE
@@ -2729,7 +2732,7 @@ DragoniteEvosAttacks:
 	db 25, AGILITY
 	db 33, DRAGON_PULSE ; Dragon Tail → TM move
 	db 39, AQUA_TAIL
-	db 47, FLAMETHROWER ; Dragon Rush → TM move
+	db 47, BARRIER ; Dragon Rush → event move
 	db 53, SAFEGUARD
 	db 55, WING_ATTACK
 	db 63, DRAGON_DANCE
@@ -3124,7 +3127,7 @@ CrobatEvosAttacks:
 	db 40, HAZE
 	db 43, POISON_JAB ; Venoshock → TM move
 	db 48, AIR_SLASH
-	db 51, PURSUIT ; Quick Guard → egg move
+	db 51, CRUNCH ; Quick Guard → new move
 	db 0 ; no more level-up moves
 
 ChinchouEvosAttacks:

@@ -358,9 +358,9 @@ MortyGroup:
 		db PAIN_SPLIT
 
 	db 65, GENGAR, SPELL_TAG
+		db NASTY_PLOT
 		db SHADOW_BALL
 		db THUNDERBOLT
-		db DARK_PULSE
 		db DESTINY_BOND
 
 	db $ff ; end
@@ -948,7 +948,7 @@ KogaGroup:
 	db 64, CROBAT, GOLD_BERRY
 		db SCREECH
 		db TOXIC
-		db CONFUSE_RAY
+		db CRUNCH
 		db WING_ATTACK
 
 	db $ff ; end
@@ -988,7 +988,7 @@ BrunoGroup:
 	db 42, HITMONCHAN, NO_ITEM
 		db THUNDERPUNCH
 		db ICE_PUNCH
-		db FIRE_PUNCH
+		db POISON_JAB
 		db MACH_PUNCH
 
 	db 43, ONIX, NO_ITEM
@@ -1034,7 +1034,7 @@ BrunoGroup:
 	db 62, HITMONCHAN, NEVERMELTICE
 		db THUNDERPUNCH
 		db ICE_PUNCH
-		db FIRE_PUNCH
+		db POISON_JAB
 		db HI_JUMP_KICK
 
 	db 63, STEELIX, HARD_STONE
@@ -1194,7 +1194,7 @@ ChampionGroup:
 		db HYPER_BEAM
 
 	db 50, DRAGONITE, GOLD_BERRY
-		db THUNDER_WAVE
+		db BARRIER
 		db OUTRAGE
 		db FIRE_BLAST
 		db HYPER_BEAM
