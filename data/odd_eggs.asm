@@ -94,8 +94,8 @@ ENDM
 
 prob_total = 0
 ; Pichu
-	prob 5
-	prob 5
+	prob 4
+	prob 4
 ; Smoochum
 	prob 12
 	prob 12
@@ -103,8 +103,8 @@ prob_total = 0
 	prob 12
 	prob 12
 ; Elekid
-	prob 11
-	prob 11
+	prob 12
+	prob 12
 ; Tyrogue
 	prob 5
 	prob 5
@@ -128,7 +128,7 @@ OddEgg1:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $fb, $df ; DVs
+	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -155,7 +155,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $5b, $df ; DVs
+	db $5b, SPDSPCDV_SHINY ; DVs
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -181,7 +181,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $fb, $df ; DVs
+	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 35, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -207,7 +207,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $7b, $df ; DVs
+	db $7b, SPDSPCDV_SHINY ; DVs
 	db 35, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -233,7 +233,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $fb, $df ; DVs
+	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 30, 10, 0, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -259,7 +259,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $3b, $df ; DVs
+	db $3b, SPDSPCDV_SHINY ; DVs
 	db 30, 10, 0, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -285,7 +285,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $fb, $df ; DVs
+	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -311,7 +311,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $3b, $df ; DVs
+	db $3b, SPDSPCDV_SHINY ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -337,7 +337,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $fb, $df ; DVs
+	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -363,7 +363,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $7b, $df ; DVs
+	db $7b, SPDSPCDV_SHINY ; DVs
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -389,7 +389,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $fb, $df ; DVs
+	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -415,7 +415,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	bigdw 0
-	db $1b, $df ; DVs
+	db $1b, SPDSPCDV_SHINY ; DVs
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data

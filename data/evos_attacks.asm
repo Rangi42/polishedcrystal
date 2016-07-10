@@ -2391,7 +2391,7 @@ LaprasEvosAttacks:
 	db 4, MIST
 	db 7, CONFUSE_RAY
 	db 10, NIGHTMARE  ; Ice Shard → GSC TM move
-	db 14, ANCIENTPOWER; Water Pulse → HGSS tutor move
+	db 14, ANCIENTPOWER ; Water Pulse → HGSS tutor move
 	db 18, BODY_SLAM
 	db 22, RAIN_DANCE
 	db 27, PERISH_SONG

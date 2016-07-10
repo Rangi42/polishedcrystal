@@ -102,6 +102,7 @@ ClefairyEggMoves:
 	db BELLY_DRUM
 	db METRONOME
 	db SPLASH
+	db SOFTBOILED
 	db $ff
 
 VulpixEggMoves:
