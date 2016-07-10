@@ -108,12 +108,12 @@ Music_Route47HGSS
 Music_HoOhBattleHGSS
 Music_LugiaBattleHGSS
 Music_Route210DPPt
-Music_Route216DPPt
 Music_PokemonTowerRBY
 Music_CinnabarMansionRBY
+Music_DiglettsCaveRBY
 Music_CeruleanCaveRBY
 Music_AbandonedShipRSE
 Music_FrontierBrainBattleRSE
-Music_KantoLegendBattleFRLG
+Music_KantoLegendBattleXY
 Music_SurfingPikachu
 Music_Lawrence

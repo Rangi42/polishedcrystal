@@ -125,13 +125,13 @@
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
 	dba Music_Route210DPPt
-	dba Music_Route216DPPt
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY
+	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
 	dba Music_AbandonedShipRSE
 	dba Music_FrontierBrainBattleRSE
-	dba Music_KantoLegendBattleFRLG
+	dba Music_KantoLegendBattleXY
 	dba Music_SurfingPikachu
 	dba Music_Lawrence
 

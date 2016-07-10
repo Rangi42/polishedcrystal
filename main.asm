@@ -1558,7 +1558,7 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_LUGIA_BATTLE_HGSS
 	jp z, .done
 	cp BATTLETYPE_KANTO_LEGEND
-	ld de, MUSIC_KANTO_LEGEND_BATTLE_FRLG
+	ld de, MUSIC_KANTO_LEGEND_BATTLE_XY
 	jp z, .done
 	cp BATTLETYPE_ROAMING
 	jp z, .done
