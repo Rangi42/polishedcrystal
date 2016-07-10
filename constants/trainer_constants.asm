@@ -11,21 +11,53 @@ CHRIS EQU __enum__
 KRIS EQU __enum__
 	trainerclass FALKNER ; 1
 
-	trainerclass WHITNEY ; 2
+	trainerclass BUGSY ; 2
 
-	trainerclass BUGSY ; 3
+	trainerclass WHITNEY ; 3
 
 	trainerclass MORTY ; 4
 
-	trainerclass PRYCE ; 5
-
+	trainerclass CHUCK ; 5
+	
 	trainerclass JASMINE ; 6
 
-	trainerclass CHUCK ; 7
+	trainerclass PRYCE ; 7
 
 	trainerclass CLAIR ; 8
 
-	trainerclass RIVAL1 ; 9
+	trainerclass WILL ; 9
+
+	trainerclass KOGA ; a
+
+	trainerclass BRUNO ; b
+
+	trainerclass KAREN ; c
+
+	trainerclass CHAMPION ; d
+	const LANCE
+	const LANCE2
+
+	trainerclass BROCK ; e
+
+	trainerclass MISTY ; f
+
+	trainerclass LT_SURGE ; 10
+
+	trainerclass ERIKA ; 11
+
+	trainerclass JANINE ; 12
+
+	trainerclass SABRINA ; 13
+
+	trainerclass BLAINE ; 14
+
+	trainerclass BLUE ; 15
+
+	trainerclass RED ; 16
+
+	trainerclass LEAF ; 17
+
+	trainerclass RIVAL1 ; 18
 	const RIVAL1_1
 	const RIVAL1_2
 	const RIVAL1_3
@@ -42,46 +74,13 @@ KRIS EQU __enum__
 	const RIVAL1_14
 	const RIVAL1_15
 
-	trainerclass POKEMON_PROF ; a
+	trainerclass RIVAL2 ; 19
 
-	trainerclass WILL ; b
-
-	trainerclass CAL ; c
+	trainerclass CAL ; 1a
 	const CAL1
 	const CAL2
-	const CAL3
 
-	trainerclass BRUNO ; d
-
-	trainerclass KAREN ; e
-
-	trainerclass KOGA ; f
-
-	trainerclass CHAMPION ; 10
-	const LANCE
-	const LANCE2
-
-	trainerclass BROCK ; 11
-
-	trainerclass MISTY ; 12
-
-	trainerclass LT_SURGE ; 13
-
-	trainerclass SCIENTIST ; 14
-	const ROSS
-	const MITCH
-	const JED
-	const MARC
-	const RICH
-	const LOWELL
-	const DENNETT
-	const LINDEN
-	const OSKAR
-	const BRAYDON
-
-	trainerclass ERIKA ; 15
-
-	trainerclass YOUNGSTER ; 16
+	trainerclass YOUNGSTER ; 1b
 	const JOEY1
 	const MIKEY
 	const ALBERT
@@ -97,192 +96,7 @@ KRIS EQU __enum__
 	const JOEY4
 	const JOEY5
 
-	trainerclass SCHOOLBOY ; 17
-	const JACK1
-	const KIPP
-	const ALAN1
-	const JOHNNY
-	const DANNY
-	const TOMMY
-	const DUDLEY
-	const JOE
-	const BILLY
-	const CHAD1
-	const NATE
-	const RICKY
-	const JACK2
-	const JACK3
-	const ALAN2
-	const ALAN3
-	const CHAD2
-	const CHAD3
-	const JACK4
-	const JACK5
-	const ALAN4
-	const ALAN5
-	const CHAD4
-	const CHAD5
-	const SHERMAN
-
-	trainerclass BIRD_KEEPER ; 18
-	const ROD
-	const ABE
-	const BRYAN
-	const THEO
-	const TOBY
-	const DENIS
-	const VANCE1
-	const HANK
-	const ROY
-	const BORIS
-	const BOB
-	const JOSE1
-	const PETER
-	const JOSE2
-	const PERRY
-	const BRET
-	const JOSE3
-	const VANCE2
-	const VANCE3
-
-	trainerclass LASS ; 19
-	const CARRIE
-	const BRIDGET
-	const ALICE
-	const KRISE
-	const CONNIE1
-	const LINDA
-	const LAURA
-	const SHANNON
-	const MICHELLE
-	const DANA1
-	const ELLEN
-	const CONNIE2
-	const CONNIE3
-	const DANA2
-	const DANA3
-	const DANA4
-	const DANA5
-
-	trainerclass JANINE ; 1a
-
-	trainerclass COOLTRAINERM ; 1b
-	const NICK
-	const AARON
-	const PAUL
-	const CODY
-	const MIKE
-	const GAVEN1
-	const GAVEN2
-	const RYAN
-	const JAKE
-	const GAVEN3
-	const BLAKE
-	const BRIAN
-	const ERICK
-	const ANDY
-	const TYLER
-	const SEAN
-	const KEVIN
-	const STEVE
-	const ALLEN
-	const DARIN
-	const ABDUL
-	const ELAN
-	const FRENCH
-	const THOM
-
-	trainerclass COOLTRAINERF ; 1c
-	const GWEN
-	const LOIS
-	const FRAN
-	const LOLA
-	const KATE
-	const IRENE
-	const KELLY
-	const JOYCE
-	const BETH1
-	const REENA1
-	const MEGAN
-	const BETH2
-	const CAROL
-	const QUINN
-	const EMMA
-	const CYBIL
-	const JENN
-	const BETH3
-	const REENA2
-	const REENA3
-	const CARA
-	const SALMA
-	const BONITA
-	const IDA
-	const KAE
-
-	trainerclass BEAUTY ; 1d
-	const VICTORIA
-	const SAMANTHA
-	const JULIE
-	const JACLYN
-	const BRENDA
-	const CASSIE
-	const CAROLINE
-	const CARLENE
-	const JESSICA
-	const RACHAEL
-	const ANGELICA
-	const KENDRA
-	const VERONICA
-	const JULIA
-	const THERESA
-	const VALENCIA
-	const OLIVIA
-	const CALLIE
-	const CASSANDRA
-	const CHARLOTTE
-
-	trainerclass POKEMANIAC ; 1e
-	const LARRY
-	const ANDREW
-	const CALVIN
-	const SHANE
-	const BEN
-	const BRENT1
-	const RON
-	const ETHAN
-	const BRENT2
-	const BRENT3
-	const ISSAC
-	const DONALD
-	const ZACH
-	const BRENT4
-	const MILLER
-	const MOE
-	const AIDAN
-
-	trainerclass GRUNTM ; 1f
-
-	trainerclass GENTLEMAN ; 20
-	const PRESTON
-	const EDWARD
-	const GREGORY
-	const VIRGIL
-	const ALFRED
-	const MILTON
-
-	trainerclass SKIER ; 21
-	const ROXANNE
-	const CLARISSA
-	const CADY
-
-	trainerclass TEACHER ; 22
-	const COLETTE
-	const HILLARY
-	const SHIRLEY
-
-	trainerclass SABRINA ; 23
-
-	trainerclass BUG_CATCHER ; 24
+	trainerclass BUG_CATCHER ; 1c
 	const DON
 	const ROB
 	const ED
@@ -308,212 +122,32 @@ KRIS EQU __enum__
 	const ELLIS
 	const ABNER
 
-	trainerclass FISHER ; 25
-	const JUSTIN
-	const RALPH1
-	const ARNOLD
-	const KYLE
-	const HENRY
-	const MARVIN
-	const TULLY1
-	const ANDRE
-	const RAYMOND
-	const WILTON1
-	const EDGAR
-	const JONAH
-	const MARTIN
-	const STEPHEN
-	const BARNEY
-	const RALPH2
-	const RALPH3
-	const TULLY2
-	const TULLY3
-	const WILTON2
-	const SCOTT
-	const WILTON3
-	const RALPH4
-	const RALPH5
-	const TULLY4
+	trainerclass CAMPER ; 1d
+	const ROLAND
+	const TODD1
+	const IVAN
+	const ELLIOT
+	const BARRY
+	const LLOYD
+	const DEAN
+	const SID
+	const HARVEY
+	const DALE
+	const TED
+	const TODD2
+	const TODD3
+	const THOMAS
+	const LEROY
+	const DAVID
+	const JOHN
+	const JERRY
+	const SPENCER
+	const TODD4
+	const TODD5
+	const QUENTIN
+	const GRANT
 
-	trainerclass SWIMMERM ; 26
-	const HAROLD
-	const SIMON
-	const RANDALL
-	const CHARLIE
-	const GEORGE
-	const BERKE
-	const KIRK
-	const MATHEW
-	const HAL
-	const PATON
-	const DARYL
-	const WALTER
-	const TONY
-	const JEROME
-	const TUCKER
-	const RICK
-	const CAMERON
-	const SETH
-	const JAMES
-	const LEWIS
-
-	trainerclass SWIMMERF ; 27
-	const ELAINE
-	const PAULA
-	const KAYLEE
-	const SUSIE
-	const DENISE
-	const KARA
-	const WENDY
-	const LISA
-	const JILL
-	const MARY
-	const KATIE
-	const DAWN
-	const TARA
-	const NICOLE
-	const LORI
-	const JODY
-	const NIKKI
-	const DIANA
-	const BRIANA
-	const JOY
-
-	trainerclass SAILOR ; 28
-	const EUGENE
-	const HUEY1
-	const TERRELL
-	const KENT
-	const ERNEST
-	const JEFF
-	const GARRETT
-	const KENNETH
-	const STANLY
-	const HARRY
-	const HUEY2
-	const HUEY3
-	const HUEY4
-	const PARKER
-	const EDDIE_SAILOR
-
-	trainerclass SUPER_NERD ; 29
-	const STAN
-	const ERIC
-	const GREGG
-	const JAY
-	const DAVE
-	const SAM
-	const TOM
-	const PAT
-	const SHAWN
-	const TERU
-	const RUSS
-	const NORTON
-	const HUGH
-	const MARKUS
-	const CARY
-	const WALDO
-	const MERLE
-	const LUIS
-
-	trainerclass RIVAL2 ; 2a
-
-	trainerclass GUITARIST ; 2b
-	const CLYDE
-	const VINCENT
-
-	trainerclass HIKER ; 2c
-	const ANTHONY1
-	const RUSSELL
-	const PHILLIP
-	const LEONARD
-	const ANTHONY2
-	const BENJAMIN
-	const ERIK
-	const MICHAEL
-	const PARRY1
-	const TIMOTHY
-	const BAILEY
-	const ANTHONY3
-	const TIM
-	const NOLAND
-	const SIDNEY
-	const KENNY
-	const JIM
-	const DANIEL
-	const PARRY2
-	const PARRY3
-	const ANTHONY4
-	const ANTHONY5
-	const EDWIN
-	const DEVIN
-
-	trainerclass BIKER ; 2d
-	const BIKER_BENNY
-	const KAZU
-	const DWAYNE
-	const HARRIS
-	const ZEKE
-	const CHARLES
-	const RILEY
-	const JOEL
-	const GLENN
-
-	trainerclass BLAINE ; 2e
-
-	trainerclass BURGLAR ; 2f
-	const DUNCAN
-	const EDDIE
-	const COREY
-	const PETE
-	const LOUIS
-
-	trainerclass FIREBREATHER ; 30
-	const OTIS
-	const DICK
-	const NED
-	const BURT
-	const BILL
-	const WALT
-	const RAY
-	const LYLE
-
-	trainerclass JUGGLER ; 31
-	const IRWIN1
-	const FRITZ
-	const HORTON
-	const IRWIN2
-	const IRWIN3
-	const IRWIN4
-
-	trainerclass BLACKBELT_T ; 32
-	const KENJI1
-	const YOSHI
-	const KENJI2
-	const LAO
-	const NOB
-	const KIYO
-	const LUNG
-	const KENJI3
-	const WAI
-
-	trainerclass EXECUTIVEM ; 33
-
-	trainerclass PSYCHIC_T ; 34
-	const NATHAN
-	const FRANKLIN
-	const HERMAN
-	const FIDEL
-	const GREG
-	const NORMAN
-	const MARK
-	const PHIL
-	const RICHARD
-	const GILBERT
-	const JARED
-	const RODNEY
-
-	trainerclass PICNICKER ; 35
+	trainerclass PICNICKER ; 1e
 	const LIZ1
 	const GINA1
 	const BROOKE
@@ -541,83 +175,7 @@ KRIS EQU __enum__
 	const GINA5
 	const TIFFANY4
 
-	trainerclass CAMPER ; 36
-	const ROLAND
-	const TODD1
-	const IVAN
-	const ELLIOT
-	const BARRY
-	const LLOYD
-	const DEAN
-	const SID
-	const HARVEY
-	const DALE
-	const TED
-	const TODD2
-	const TODD3
-	const THOMAS
-	const LEROY
-	const DAVID
-	const JOHN
-	const JERRY
-	const SPENCER
-	const TODD4
-	const TODD5
-	const QUENTIN
-	const GRANT
-
-	trainerclass EXECUTIVEF ; 37
-
-	trainerclass SAGE ; 38
-	const CHOW
-	const NICO
-	const JIN
-	const TROY
-	const JEFFREY
-	const PING
-	const EDMOND
-	const NEAL
-
-	trainerclass MEDIUM ; 39
-	const MARTHA
-	const GRACE
-	const BETHANY
-	const MARGRET
-	const ETHEL
-	const REBECCA
-	const DORIS
-
-	trainerclass BOARDER ; 3a
-	const RONALD
-	const BRAD
-	const DOUGLAS
-	const SHAUN
-	const BRYCE
-
-	trainerclass POKEFANM ; 3b
-	const WILLIAM
-	const DEREK1
-	const ROBERT
-	const JOSHUA
-	const CARTER
-	const TREVOR
-	const BRANDON
-	const JEREMY
-	const COLIN
-	const DEREK2
-	const DEREK3
-	const ALEX
-	const REX
-	const ALLAN
-
-	trainerclass KIMONO_GIRL ; 3c
-	const NAOKO
-	const SAYO
-	const ZUKI
-	const KUNI
-	const MIKI
-
-	trainerclass TWINS ; 3d
+	trainerclass TWINS ; 1f
 	const AMYANDMAY1
 	const ANNANDANNE1
 	const ANNANDANNE2
@@ -633,7 +191,103 @@ KRIS EQU __enum__
 	const KAYANDTIA1
 	const KAYANDTIA2
 
-	trainerclass POKEFANF ; 3e
+	trainerclass FISHER ; 20
+	const JUSTIN
+	const RALPH1
+	const ARNOLD
+	const KYLE
+	const HENRY
+	const MARVIN
+	const TULLY1
+	const ANDRE
+	const RAYMOND
+	const WILTON1
+	const EDGAR
+	const JONAH
+	const MARTIN
+	const STEPHEN
+	const BARNEY
+	const RALPH2
+	const RALPH3
+	const TULLY2
+	const TULLY3
+	const WILTON2
+	const SCOTT
+	const WILTON3
+	const RALPH4
+	const RALPH5
+	const TULLY4
+
+	trainerclass BIRD_KEEPER ; 21
+	const ROD
+	const ABE
+	const BRYAN
+	const THEO
+	const TOBY
+	const DENIS
+	const VANCE1
+	const HANK
+	const ROY
+	const BORIS
+	const BOB
+	const JOSE1
+	const PETER
+	const JOSE2
+	const PERRY
+	const BRET
+	const JOSE3
+	const VANCE2
+	const VANCE3
+
+	trainerclass HIKER ; 22
+	const ANTHONY1
+	const RUSSELL
+	const PHILLIP
+	const LEONARD
+	const ANTHONY2
+	const BENJAMIN
+	const ERIK
+	const MICHAEL
+	const PARRY1
+	const TIMOTHY
+	const BAILEY
+	const ANTHONY3
+	const TIM
+	const NOLAND
+	const SIDNEY
+	const KENNY
+	const JIM
+	const DANIEL
+	const PARRY2
+	const PARRY3
+	const ANTHONY4
+	const ANTHONY5
+	const EDWIN
+	const DEVIN
+
+	trainerclass GRUNTM ; 23
+
+	trainerclass GRUNTF ; 24
+
+	trainerclass FOREIGNGRUNT ; 25
+
+	trainerclass POKEFANM ; 26
+	const WILLIAM
+	const DEREK1
+	const ROBERT
+	const JOSHUA
+	const CARTER
+	const TREVOR
+	const BRANDON
+	const JEREMY
+	const COLIN
+	const DEREK2
+	const DEREK3
+	const ALEX
+	const REX
+	const ALLAN
+
+	trainerclass POKEFANF ; 27
 	const BEVERLY1
 	const RUTH
 	const BEVERLY2
@@ -643,42 +297,391 @@ KRIS EQU __enum__
 	const BOONE
 	const ELEANOR
 
-	trainerclass RED ; 3f
-
-	trainerclass BLUE ; 40
-
-	trainerclass OFFICER ; 41
+	trainerclass OFFICER ; 28
 	const KEITH
 	const DIRK
 
-	trainerclass GRUNTF ; 42
+	trainerclass POKEMANIAC ; 29
+	const LARRY
+	const ANDREW
+	const CALVIN
+	const SHANE
+	const BEN
+	const BRENT1
+	const RON
+	const ETHAN
+	const BRENT2
+	const BRENT3
+	const ISSAC
+	const DONALD
+	const ZACH
+	const BRENT4
+	const MILLER
+	const MOE
+	const AIDAN
 
-	trainerclass MYSTICALMAN ; 43
-	const EUSINE
+	trainerclass SUPER_NERD ; 2a
+	const STAN
+	const ERIC
+	const GREGG
+	const JAY
+	const DAVE
+	const SAM
+	const TOM
+	const PAT
+	const SHAWN
+	const TERU
+	const RUSS
+	const NORTON
+	const HUGH
+	const MARKUS
+	const CARY
+	const WALDO
+	const MERLE
+	const LUIS
 
-	trainerclass ELDER ; 44
+	trainerclass LASS ; 2b
+	const CARRIE
+	const BRIDGET
+	const ALICE
+	const KRISE
+	const CONNIE1
+	const LINDA
+	const LAURA
+	const SHANNON
+	const MICHELLE
+	const DANA1
+	const ELLEN
+	const CONNIE2
+	const CONNIE3
+	const DANA2
+	const DANA3
+	const DANA4
+	const DANA5
+
+	trainerclass BEAUTY ; 2c
+	const VICTORIA
+	const SAMANTHA
+	const JULIE
+	const JACLYN
+	const BRENDA
+	const CASSIE
+	const CAROLINE
+	const CARLENE
+	const JESSICA
+	const RACHAEL
+	const ANGELICA
+	const KENDRA
+	const VERONICA
+	const JULIA
+	const THERESA
+	const VALENCIA
+	const OLIVIA
+	const CALLIE
+	const CASSANDRA
+	const CHARLOTTE
+
+	trainerclass FIREBREATHER ; 2d
+	const OTIS
+	const DICK
+	const NED
+	const BURT
+	const BILL
+	const WALT
+	const RAY
+	const LYLE
+
+	trainerclass JUGGLER ; 2e
+	const IRWIN1
+	const FRITZ
+	const HORTON
+	const IRWIN2
+	const IRWIN3
+	const IRWIN4
+
+	trainerclass SCHOOLBOY ; 2f
+	const JACK1
+	const KIPP
+	const ALAN1
+	const JOHNNY
+	const DANNY
+	const TOMMY
+	const DUDLEY
+	const JOE
+	const BILLY
+	const CHAD1
+	const NATE
+	const RICKY
+	const JACK2
+	const JACK3
+	const ALAN2
+	const ALAN3
+	const CHAD2
+	const CHAD3
+	const JACK4
+	const JACK5
+	const ALAN4
+	const ALAN5
+	const CHAD4
+	const CHAD5
+	const SHERMAN
+
+	trainerclass PSYCHIC_T ; 30
+	const NATHAN
+	const FRANKLIN
+	const HERMAN
+	const FIDEL
+	const GREG
+	const NORMAN
+	const MARK
+	const PHIL
+	const RICHARD
+	const GILBERT
+	const JARED
+	const RODNEY
+
+	trainerclass SAGE ; 31
+	const CHOW
+	const NICO
+	const JIN
+	const TROY
+	const JEFFREY
+	const PING
+	const EDMOND
+	const NEAL
+
+	trainerclass MEDIUM ; 32
+	const MARTHA
+	const GRACE
+	const BETHANY
+	const MARGRET
+	const ETHEL
+	const REBECCA
+	const DORIS
+
+	trainerclass KIMONO_GIRL ; 33
+	const NAOKO
+	const SAYO
+	const ZUKI
+	const KUNI
+	const MIKI
+
+	trainerclass ELDER ; 34
 	const LI
 	const GAKU
 	const MASA
 	const KOJI
 
-	trainerclass FOREIGNGRUNT ; 45
+	trainerclass GENTLEMAN ; 35
+	const PRESTON
+	const EDWARD
+	const GREGORY
+	const VIRGIL
+	const ALFRED
+	const MILTON
 
-	trainerclass LORELEI ; 46
+	trainerclass SAILOR ; 36
+	const EUGENE
+	const HUEY1
+	const TERRELL
+	const KENT
+	const ERNEST
+	const JEFF
+	const GARRETT
+	const KENNETH
+	const STANLY
+	const HARRY
+	const HUEY2
+	const HUEY3
+	const HUEY4
+	const PARKER
+	const EDDIE_SAILOR
 
-	trainerclass AGATHA ; 47
+	trainerclass SWIMMERM ; 37
+	const HAROLD
+	const SIMON
+	const RANDALL
+	const CHARLIE
+	const GEORGE
+	const BERKE
+	const KIRK
+	const MATHEW
+	const HAL
+	const PATON
+	const DARYL
+	const WALTER
+	const TONY
+	const JEROME
+	const TUCKER
+	const RICK
+	const CAMERON
+	const SETH
+	const JAMES
+	const LEWIS
 
-	trainerclass YELLOW ; 48
+	trainerclass SWIMMERF ; 38
+	const ELAINE
+	const PAULA
+	const KAYLEE
+	const SUSIE
+	const DENISE
+	const KARA
+	const WENDY
+	const LISA
+	const JILL
+	const MARY
+	const KATIE
+	const DAWN
+	const TARA
+	const NICOLE
+	const LORI
+	const JODY
+	const NIKKI
+	const DIANA
+	const BRIANA
+	const JOY
 
-	trainerclass LEAF ; 49
+	trainerclass BURGLAR ; 39
+	const DUNCAN
+	const EDDIE
+	const COREY
+	const PETE
+	const LOUIS
 
-	trainerclass BILL ; 50
+	trainerclass SCIENTIST ; 3a
+	const ROSS
+	const MITCH
+	const JED
+	const MARC
+	const RICH
+	const LOWELL
+	const DENNETT
+	const LINDEN
+	const OSKAR
+	const BRAYDON
 
-	trainerclass LAWRENCE ; 51
+	trainerclass BOARDER ; 3b
+	const RONALD
+	const BRAD
+	const DOUGLAS
+	const SHAUN
+	const BRYCE
 
-	trainerclass GAME_FREAK ; 52
+	trainerclass SKIER ; 3c
+	const ROXANNE
+	const CLARISSA
+	const CADY
 
-	trainerclass VALERIE ; 53
+	trainerclass BLACKBELT_T ; 3d
+	const KENJI1
+	const YOSHI
+	const KENJI2
+	const LAO
+	const NOB
+	const KIYO
+	const LUNG
+	const KENJI3
+	const WAI
+
+	trainerclass TEACHER ; 3e
+	const COLETTE
+	const HILLARY
+	const SHIRLEY
+
+	trainerclass GUITARIST ; 3f
+	const CLYDE
+	const VINCENT
+
+	trainerclass BIKER ; 40
+	const BIKER_BENNY
+	const KAZU
+	const DWAYNE
+	const HARRIS
+	const ZEKE
+	const CHARLES
+	const RILEY
+	const JOEL
+	const GLENN
+
+	trainerclass COOLTRAINERM ; 41
+	const NICK
+	const AARON
+	const PAUL
+	const CODY
+	const MIKE
+	const GAVEN1
+	const GAVEN2
+	const RYAN
+	const JAKE
+	const GAVEN3
+	const BLAKE
+	const BRIAN
+	const ERICK
+	const ANDY
+	const TYLER
+	const SEAN
+	const KEVIN
+	const STEVE
+	const ALLEN
+	const DARIN
+	const ABDUL
+	const ELAN
+	const FRENCH
+	const THOM
+
+	trainerclass COOLTRAINERF ; 42
+	const GWEN
+	const LOIS
+	const FRAN
+	const LOLA
+	const KATE
+	const IRENE
+	const KELLY
+	const JOYCE
+	const BETH1
+	const REENA1
+	const MEGAN
+	const BETH2
+	const CAROL
+	const QUINN
+	const EMMA
+	const CYBIL
+	const JENN
+	const BETH3
+	const REENA2
+	const REENA3
+	const CARA
+	const SALMA
+	const BONITA
+	const IDA
+	const KAE
+
+	trainerclass EXECUTIVEM ; 43
+
+	trainerclass EXECUTIVEF ; 44
+
+	trainerclass POKEMON_PROF ; 45
+
+	trainerclass GAME_FREAK ; 46
+
+	trainerclass MYSTICALMAN ; 47
+	const EUSINE
+
+	trainerclass LORELEI ; 48
+
+	trainerclass AGATHA ; 49
+
+	trainerclass YELLOW ; 4a
+
+	trainerclass BILL ; 4b
+
+	trainerclass LAWRENCE ; 4c
+
+	trainerclass GIOVANNI ; 4d
+
+	trainerclass TOWERTYCOON ; 4e
+
+	trainerclass VALERIE ; 4f
 
 NUM_TRAINER_CLASSES EQU __enum__
 

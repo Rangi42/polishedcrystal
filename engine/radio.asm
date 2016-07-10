@@ -1202,9 +1202,9 @@ PeoplePlaces4: ; People
 	ld a, PLACES_AND_PEOPLE_5
 	jp NextRadioLine
 
-.E4Names:          db WILL, BRUNO, KAREN, KOGA, CHAMPION
+.E4Names:          db WILL, KOGA, BRUNO, KAREN, CHAMPION
 .KantoLeaderNames: db BROCK, MISTY, LT_SURGE, ERIKA, JANINE, SABRINA, BLAINE, BLUE
-.MiscNames:        db RIVAL1, POKEMON_PROF, CAL, RIVAL2, RED
+.MiscNames:        db RIVAL1, RIVAL2, POKEMON_PROF, CAL, RED
                    db -1
 
 PnP_Text4:

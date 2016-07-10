@@ -34,7 +34,7 @@ TrainerHouseReceptionist1Script:
 	jump .GotName
 
 .GetCal3Name:
-	trainertotext CAL, CAL3, $0
+	trainertotext CAL, CAL1, $0
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
 	buttonsound
@@ -61,7 +61,7 @@ TrainerHouseReceptionist1Script:
 .NoSpecialBattle:
 	winlosstext TrainerHouseB1FCalBeatenText, 0
 	setlasttalked TRAINERHOUSEB1F_CHRIS
-	loadtrainer CAL, CAL3
+	loadtrainer CAL, CAL1
 	startbattle
 	reloadmapafterbattle
 .End:
