@@ -49,6 +49,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Leafeon, Glaceon, Sylveon, Magnezone, Tangrowth, Porygon-Z, Munchlax, Togekiss, Yanmega, Honchkrow, Mismagius, Gliscor, Weavile, and Mamoswine
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
+   * Eevee evolves into Leafeon in Ilex Forest
+   * Eevee evolves into Glaceon in the Ice Path
+   * Magneton evolves into Magnezone in the Lighthouse
    * Eevee evolves into Sylveon with a Shiny Stone
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
    * Wild Mankey on Routes 9 and 42
