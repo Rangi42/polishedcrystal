@@ -254,6 +254,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Always show numbers in Pokédex, even in Johto order
    * Access Silph Co. after restoring power to Kanto, and buy new Poké Balls
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
+   * Add trainers to Ice Path
+   * Buy evolution stones in Celadon Dept. Store
    * Buy BlueSky Mail and Morph Mail in Goldenrod City
    * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
    * Buy Music Mail in Blackthorn City
@@ -336,7 +338,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
-   * Sell evolution stones in Celadon Dept. Store
    * Change in-game trades
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Battle with Giovanni either in Radio Tower or with Celebi time traveling
@@ -353,7 +354,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
-   * Add four Boarders/Skiers to Ice Path
    * Add four Ace Trainers to Victory Road
 
 

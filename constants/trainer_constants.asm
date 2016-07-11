@@ -566,11 +566,15 @@ KRIS EQU __enum__
 	const DOUGLAS
 	const SHAUN
 	const BRYCE
+	const STEFAN
+	const MAX
 
 	trainerclass SKIER ; 3c
 	const ROXANNE
 	const CLARISSA
 	const CADY
+	const MARIA
+	const BECKY
 
 	trainerclass BLACKBELT_T ; 3d
 	const KENJI1

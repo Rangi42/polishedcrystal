@@ -8974,6 +8974,31 @@ BoarderGroup:
 	db $ff ; end
 
 ; ================
+
+	; BOARDER (6)
+	db "Stefan@"
+	db 0 ; normal
+
+	; party
+	db 27, SWINUB
+	db 27, SWINUB
+	db 38, SNEASEL
+
+	db $ff ; end
+
+; ================
+
+	; BOARDER (6)
+	db "Max@"
+	db 0 ; normal
+
+	; party
+	db 29, PILOSWINE
+	db 30, LAPRAS
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9009,6 +9034,30 @@ SkierGroup:
 
 	; party
 	db 53, MAMOSWINE
+
+	db $ff ; end
+
+; ================
+
+	; SKIER (4)
+	db "Maria@"
+	db 0 ; normal
+
+	; party
+	db 31, JYNX
+
+	db $ff ; end
+
+; ================
+
+	; SKIER (5)
+	db "Becky@"
+	db 0 ; normal
+
+	; party
+	db 28, LAPRAS
+	db 29, DEWGONG
+	db 29, DEWGONG
 
 	db $ff ; end
 
