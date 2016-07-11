@@ -265,7 +265,7 @@ PidgeyEvosAttacks:
 	db 13, QUICK_ATTACK
 	db 17, WHIRLWIND
 	db 21, TWISTER
-	db 25, SWIFT ; FeatherDance → TM move
+	db 25, SWIFT ; Feather Dance → TM move
 	db 29, AGILITY
 	db 33, WING_ATTACK
 	db 37, PURSUIT ; Roost → egg move
@@ -284,7 +284,7 @@ PidgeottoEvosAttacks:
 	db 13, QUICK_ATTACK
 	db 17, WHIRLWIND
 	db 22, TWISTER
-	db 27, SWIFT ; FeatherDance → TM move
+	db 27, SWIFT ; Feather Dance → TM move
 	db 32, AGILITY
 	db 37, WING_ATTACK
 	db 42, PURSUIT ; Roost → egg move
@@ -303,7 +303,7 @@ PidgeotEvosAttacks:
 	db 13, QUICK_ATTACK
 	db 17, WHIRLWIND
 	db 22, TWISTER
-	db 27, SWIFT ; FeatherDance → TM move
+	db 27, SWIFT ; Feather Dance → TM move
 	db 32, AGILITY
 	db 38, WING_ATTACK
 	db 44, PURSUIT ; Roost → egg move
@@ -1656,7 +1656,7 @@ CloysterEvosAttacks:
 	db 1, SUPERSONIC
 	db 1, PROTECT
 	db 1, AURORA_BEAM
-	db 13, FURY_ATTACK ; Spike Cannon → similar move
+	db 13, SPIKE_CANNON
 	db 28, SPIKES
 	db 50, AVALANCHE ; Icicle Crash → egg move
 	db 0 ; no more level-up moves
@@ -2311,6 +2311,7 @@ ElectabuzzEvosAttacks:
 
 MagmarEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, HAZE ; Smog → new move
 	db 1, LEER
 	db 5, EMBER
 	db 8, SMOKESCREEN
@@ -2334,7 +2335,7 @@ PinsirEvosAttacks:
 	db 8, SEISMIC_TOSS
 	db 13, HARDEN
 	db 18, ROCK_THROW ; Revenge → event move
-	db 21, ROCK_SMASH ; Brock Break → HM move
+	db 21, ROCK_SMASH ; Brick Break → HM move
 	db 25, VITAL_THROW
 	db 30, SUBMISSION
 	db 35, X_SCISSOR
@@ -2787,8 +2788,9 @@ ChikoritaEvosAttacks:
 	db 31, LIGHT_SCREEN
 	db 34, BODY_SLAM
 	db 39, SAFEGUARD
-	db 42, PETAL_DANCE ; Aromatherapy → event move
+	db 42, HEAL_BELL ; Aromatherapy → similar move
 	db 45, SOLAR_BEAM
+	db 48, OUTRAGE ; HGSS tutor move
 	db 0 ; no more level-up moves
 
 BayleefEvosAttacks:
@@ -2806,8 +2808,9 @@ BayleefEvosAttacks:
 	db 36, LIGHT_SCREEN
 	db 40, BODY_SLAM
 	db 46, SAFEGUARD
-	db 50, PETAL_DANCE ; Aromatherapy → event move
+	db 50, HEAL_BELL ; Aromatherapy → similar move
 	db 54, SOLAR_BEAM
+	db 58, OUTRAGE ; HGSS tutor move
 	db 0 ; no more level-up moves
 
 MeganiumEvosAttacks:
@@ -2825,8 +2828,9 @@ MeganiumEvosAttacks:
 	db 40, LIGHT_SCREEN
 	db 46, BODY_SLAM
 	db 54, SAFEGUARD
-	db 60, OUTRAGE ; Aromatherapy → HGSS tutor move
+	db 60, HEAL_BELL ; Aromatherapy → similar move
 	db 66, SOLAR_BEAM
+	db 72, OUTRAGE ; HGSS tutor move
 	db 0 ; no more level-up moves
 
 CyndaquilEvosAttacks:
@@ -4460,6 +4464,7 @@ ElekidEvosAttacks:
 MagbyEvosAttacks:
 	db EVOLVE_LEVEL, 30, MAGMAR
 	db 0 ; no more evolutions
+	db 1, HAZE ; Smog → new move
 	db 1, LEER
 	db 5, EMBER
 	db 8, SMOKESCREEN

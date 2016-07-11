@@ -43,6 +43,7 @@ PidgeyEggMoves:
 	db PURSUIT
 	db AIR_SLASH
 	db STEEL_WING
+	db CHARM
 	db EXTREMESPEED
 	db $ff
 
@@ -114,6 +115,7 @@ VulpixEggMoves:
 	db HYPNOSIS
 	db FEINT_ATTACK
 	db EXTRASENSORY
+	db CHARM
 	db $ff
 
 JigglypuffEggMoves:

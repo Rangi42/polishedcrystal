@@ -224,7 +224,7 @@ OddEgg2:
 
 	db MAGBY
 	db NO_ITEM
-	db LEER, DIZZY_PUNCH, 0, 0
+	db HAZE, LEER, DIZZY_PUNCH, 0
 	dw 02560 ; OT ID
 	dt 0 ; Exp
 	; Stat exp
@@ -234,7 +234,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
-	db 30, 10, 0, 0 ; PP
+	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db EGG_LEVEL ; Level
@@ -250,7 +250,7 @@ OddEgg2:
 
 	db MAGBY
 	db NO_ITEM
-	db LEER, DIZZY_PUNCH, 0, 0
+	db HAZE, LEER, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
 	dt 0 ; Exp
 	; Stat exp
@@ -260,7 +260,7 @@ OddEgg2:
 	bigdw 0
 	bigdw 0
 	db $3b, SPDSPCDV_SHINY ; DVs
-	db 30, 10, 0, 0 ; PP
+	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db EGG_LEVEL ; Level
