@@ -100,7 +100,7 @@ GetFishGroupIndex: ; 9245b
 
 	push hl
 	ld hl, DailyFlags
-	bit 2, [hl]
+	bit 2, [hl] ; ENGINE_SPECIAL_WILDDATA
 	pop hl
 	jr z, .done
 

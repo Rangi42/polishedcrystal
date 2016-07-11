@@ -149,6 +149,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Cure poison when it reaches 1 HP outside a battle
 * Pokémon and move edits:
    * Cut is Steel-type, 60 power, 100% accuracy
+   * Sing has 75% accuracy
+   * Supersonic has 75% accuracy
    * Fly has 100% accuracy
    * Rock Smash has 75 power and is HM08
    * Guillotine is Steel-type

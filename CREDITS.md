@@ -9,10 +9,11 @@
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
 * Pum for the Route 47 music
 * Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
-* Mmmmmm for the Abandoned Ship (Navel Rock) music
+* Mmmmmm for the Faraway Island music
 * jpmac26 for editing the Pokémon Center signs
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite
+* Poketto for Giovanni's sprite
 * Nic7C5 for Yellow's sprite
 * BettyNewbie for Leaf's sprite
 * Eraclito and Pioxys for Bill's sprite

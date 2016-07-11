@@ -59,7 +59,7 @@ BargainShop: ; 15a84
 	ld a, [hli]
 	or [hl]
 	jr z, .skip_set
-	ld hl, DailyFlags
+	ld hl, DailyFlags ; ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
 	set 6, [hl]
 
 .skip_set

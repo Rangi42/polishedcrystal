@@ -54,8 +54,7 @@ SpecialGiveAipom: ; 7305
 
 ; Engine flag for this event.
 	ld hl, DailyFlags
-	set 5, [hl]
-; setflag ENGINE_AIPOM_GIVEN
+	set 5, [hl] ; ENGINE_AIPOM_GIVEN
 	ld a, 1
 	ld [ScriptVar], a
 	ret

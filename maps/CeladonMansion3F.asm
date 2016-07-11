@@ -149,12 +149,12 @@ UnknownText_0x71895:
 	text "Who, me? I'm the"
 	line "Programmer."
 
-	para "Play the slot"
-	line "machines!"
+	para "Use the Wonder"
+	line "Trade Hub!"
 	done
 
 UnknownText_0x718ca:
-	text "Aren't the Twins"
+	text "Isn't Bugsy"
 	line "adorable?"
 
 	para "Jasmine's pretty"

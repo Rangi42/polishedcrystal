@@ -3801,8 +3801,6 @@ DunsparceEvosAttacks:
 	db 49, FLAIL
 	db 0 ; no more level-up moves
 
-; TODO: finalize learnsets below here
-
 GligarEvosAttacks:
 	db EVOLVE_HOLDING, RAZOR_FANG, GLISCOR
 	db 0 ; no more evolutions
