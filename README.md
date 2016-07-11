@@ -254,7 +254,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Always show numbers in Pokédex, even in Johto order
    * Access Silph Co. after restoring power to Kanto, and buy new Poké Balls
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
-   * Add trainers to Ice Path
+   * Add four trainers to Ice Path
+   * Add four trainers to Victory Road
    * Buy evolution stones in Celadon Dept. Store
    * Buy BlueSky Mail and Morph Mail in Goldenrod City
    * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
@@ -354,7 +355,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
-   * Add four Ace Trainers to Victory Road
 
 
 ## Long-term

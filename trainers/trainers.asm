@@ -9847,6 +9847,40 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM (25)
+	db "Matt@"
+	db 0 ; normal
+
+	; party
+
+	db 36, FERALIGATR
+	db 34, AMPHAROS
+	db 33, URSARING
+	db 33, NOCTOWL
+	db 35, ARCANINE
+	db 32, SKARMORY
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM (26)
+	db "Ringo@"
+	db 0 ; normal
+
+	; party
+
+	db 38, BLASTOISE
+	db 37, NINETALES
+	db 35, VICTREEBEL
+	db 35, RAICHU
+	db 36, ALAKAZAM
+	db 34, SANDSLASH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10258,6 +10292,40 @@ CooltrainerFGroup:
 
 	db 25, CLOYSTER
 	db 25, ONIX
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (26)
+	db "Joanne@"
+	db 0 ; normal
+
+	; party
+
+	db 37, VENUSAUR
+	db 34, PIDGEOT
+	db 35, SCYTHER
+	db 34, ELECTABUZZ
+	db 36, POLIWRATH
+	db 33, FLAREON
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF (27)
+	db "Kotori@"
+	db 0 ; normal
+
+	; party
+
+	db 37, TYPHLOSION
+	db 36, GLACEON
+	db 35, TOGEKISS
+	db 35, OCTILLERY
+	db 33, HERACROSS
+	db 34, PUPITAR
 
 	db $ff ; end
 

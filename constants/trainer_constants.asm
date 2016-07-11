@@ -632,6 +632,8 @@ KRIS EQU __enum__
 	const ELAN
 	const FRENCH
 	const THOM
+	const MATT
+	const RINGO
 
 	trainerclass COOLTRAINERF ; 42
 	const GWEN
@@ -659,6 +661,8 @@ KRIS EQU __enum__
 	const BONITA
 	const IDA
 	const KAE
+	const JOANNE
+	const KOTORI
 
 	trainerclass EXECUTIVEM ; 43
 
