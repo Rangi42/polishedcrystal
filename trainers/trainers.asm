@@ -1739,11 +1739,11 @@ BlueGroup:
 		db STONE_EDGE
 		db EARTHQUAKE
 
-	db 58, GYARADOS, MYSTIC_WATER
-		db STONE_EDGE
-		db WATERFALL
-		db DRAGON_DANCE
-		db HYPER_BEAM
+	db 60, BLASTOISE, MYSTIC_WATER
+		db SURF
+		db ICE_BEAM
+		db BODY_SLAM
+		db FLASH_CANNON
 
 	db 58, EXEGGUTOR, MIRACLE_SEED
 		db PSYCHIC_M
@@ -1764,12 +1764,12 @@ BlueGroup:
 	db 0 ; normal
 
 	; party
-	db 63, EXEGGUTOR
-	db 62, MACHAMP
-	db 64, RHYDON
-	db 64, ARCANINE
-	db 63, TYRANITAR
 	db 65, PIDGEOT
+	db 63, MACHAMP
+	db 64, TYRANITAR
+	db 65, BLASTOISE
+	db 64, EXEGGUTOR
+	db 64, ARCANINE
 
 ; ================
 ; ================================
@@ -1851,9 +1851,9 @@ LeafGroup:
 
 	db 89, MOLTRES, CHARCOAL
 		db FIRE_BLAST
-		db HIDDEN_POWER ; Grass; DVS $EE $FF
+		db HIDDEN_POWER ; Grass
 		db COUNTER
-		db RETURN
+		db EXTRASENSORY
 
 	db 86, SYLVEON, BRIGHTPOWDER
 		db MOONBLAST
@@ -1861,17 +1861,17 @@ LeafGroup:
 		db CALM_MIND
 		db HYPER_VOICE
 
-	db 89, DRAGONITE, NEVERMELTICE
-		db ICE_BEAM
-		db FIRE_BLAST
-		db THUNDER
-		db BODY_SLAM
-
-	db 90, BLASTOISE, MYSTIC_WATER
-		db SURF
-		db ICE_BEAM
+	db 89, DRAGONITE, DRAGON_FANG
+		db DRAGON_DANCE
+		db OUTRAGE
 		db EARTHQUAKE
 		db BODY_SLAM
+
+	db 90, MEW, TWISTEDSPOON
+		db NASTY_PLOT
+		db PSYCHIC_M
+		db DARK_PULSE
+		db GIGA_DRAIN
 
 	db $ff ; end
 

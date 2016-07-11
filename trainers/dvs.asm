@@ -49,7 +49,7 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; blaine
 	db $FF, $FF ; blue
 	db $FF, $FF ; red
-	db $7F, $FF ; leaf
+	db $FF, $FF ; leaf
 	db $FF, $FF ; rival1
 	db $FF, $FF ; rival2
 	db $FF, $FF ; cal
@@ -77,8 +77,8 @@ TrainerClassDVs: ; 270d6
 	db $BB, $CF ; psychic
 	db $CC, $CC ; sage
 	db $7C, $CC ; medium
-	db $6F, $FF ; kimono girl
-	db $CC, $CC ; elder
+	db $6E, $EE ; kimono girl
+	db $DD, $DD ; elder
 	db $CC, $CC ; gentleman
 	db $CC, $CC ; sailor
 	db $CC, $CC ; swimmerm
