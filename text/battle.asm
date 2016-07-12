@@ -44,6 +44,11 @@ WantsToBattleText:: ; 0x807a9
 	prompt
 ; 0x807bd
 
+PluralWantToBattleText::
+	text "<ENEMY>"
+	line "want to battle!"
+	prompt
+
 BattleText_WildFled: ; 0x807bd
 	text "Wild @"
 	text_from_ram EnemyMonNick
@@ -204,6 +209,11 @@ BattleText_EnemyWasDefeated: ; 0x809da
 	line "was defeated!"
 	prompt
 ; 0x809eb
+
+BattleText_PluralEnemyWereDefeated:
+	text "<ENEMY>"
+	line "were defeated!"
+	prompt
 
 TiedAgainstText: ; 0x809eb
 	text "Tied against"

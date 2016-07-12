@@ -2477,7 +2477,16 @@ WinTrainerBattle: ; 3cfa4
 	ld a, b
 	call z, PlayVictoryMusic
 	callab Battle_GetTrainerName
+
+	ld hl, BattleText_PluralEnemyWereDefeated
+	ld a, [OtherTrainerClass]
+	cp TWINS
+	jr z, .PlaceBattleEndText
+	cp JESSIE_JAMES
+	jr z, .PlaceBattleEndText
+
 	ld hl, BattleText_EnemyWasDefeated
+.PlaceBattleEndText
 	call StdBattleTextBox
 
 	call IsMobileBattle
@@ -9530,6 +9539,13 @@ BattleStartMessage: ; 3fc8b
 	call DelayFrames
 
 	callba Battle_GetTrainerName
+
+	ld hl, PluralWantToBattleText
+	ld a, [OtherTrainerClass]
+	cp TWINS
+	jr z, .PlaceBattleStartText
+	cp JESSIE_JAMES
+	jr z, .PlaceBattleStartText
 
 	ld hl, WantsToBattleText
 	jr .PlaceBattleStartText
