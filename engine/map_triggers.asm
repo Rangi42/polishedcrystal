@@ -91,5 +91,6 @@ ENDM
 	trigger_def SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateTrigger
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
 	trigger_def SEAGALLOP_FERRY_FARAWAY_GATE,           wSeagallopFerryFarawayGateTrigger
+	trigger_def ROUTE_48,                               wRoute48Trigger
 	db -1
 ; 4d15b

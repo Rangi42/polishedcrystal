@@ -5500,13 +5500,12 @@ GruntMGroup:
 
 ; ================
 
-	; unused
 	; GRUNTM (12)
-	db "Executive@"
+	db "Grunt@"
 	db 0 ; normal
 
 	; party
-	db 33, HOUNDOUR
+	db 22, RATICATE
 
 	db $ff ; end
 
@@ -5622,25 +5621,26 @@ GruntMGroup:
 
 ; ================
 
-	; unused
 	; GRUNTM (22)
-	db "Executive@"
+	db "Grunt@"
 	db 0 ; normal
 
 	; party
-	db 36, GOLBAT
+	db 20, GOLBAT
+	db 20, GOLBAT
 
 	db $ff ; end
 
 ; ================
 
-	; unused
 	; GRUNTM (23)
-	db "Executive@"
+	db "Grunt@"
 	db 0 ; normal
 
 	; party
-	db 30, KOFFING
+	db 19, KOFFING
+	db 19, KOFFING
+	db 19, KOFFING
 
 	db $ff ; end
 
@@ -5670,14 +5670,14 @@ GruntMGroup:
 
 ; ================
 
-	; unused
 	; GRUNTM (26)
 	db "Grunt@"
 	db 0 ; normal
 
 	; party
-	db 15, RATTATA
-	db 15, RATTATA
+	db 19, ZUBAT
+	db 21, RATICATE
+	db 22, RATICATE
 
 	db $ff ; end
 
@@ -5818,6 +5818,19 @@ GruntFGroup:
 	db $ff ; end
 
 ; ================
+
+	; GRUNTF (6)
+	db "Grunt@"
+	db 0 ; normal
+
+	; party
+	db 17, EKANS
+	db 19, ARBOK
+	db 18, GLOOM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5830,10 +5843,10 @@ JessieJamesGroup:
 	db 0 ; normal
 
 	; party
-	db 27, WEEZING
-	db 27, ARBOK
-	db 26, VICTREEBEL
-	db 31, MEOWTH
+	db 23, WEEZING
+	db 23, ARBOK
+	db 21, VICTREEBEL
+	db 24, MEOWTH
 
 	db $ff ; end
 
@@ -10900,6 +10913,34 @@ ExecutiveMGroup:
 		db WILL_O_WISP
 		db SLUDGE
 		db SELFDESTRUCT
+
+	db $ff ; end
+
+; ================
+
+	; EXECUTIVEM (5)
+	db "Executive@"
+	db 3 ; item + moves
+
+	; party
+
+	db 26, GOLBAT, KINGS_ROCK
+		db BITE
+		db CONFUSE_RAY
+		db WING_ATTACK
+		db SUPER_FANG
+
+	db 26, WEEZING, SILK_SCARF
+		db WILL_O_WISP
+		db SELFDESTRUCT
+		db SLUDGE
+		db SMOKESCREEN
+
+	db 25, RATICATE, BLACKGLASSES
+		db PURSUIT
+		db HYPER_FANG
+		db SCARY_FACE
+		db CRUNCH
 
 	db $ff ; end
 

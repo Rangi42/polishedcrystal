@@ -1600,6 +1600,8 @@ PlayBattleMusic: ; 2ee6c
 	jr z, .done
 	cp EXECUTIVEF
 	jr z, .done
+	cp JESSIE_JAMES
+	jr z, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	callba IsKantoGymLeader
