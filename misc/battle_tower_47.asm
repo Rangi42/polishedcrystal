@@ -134,6 +134,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; KIMONO_GIRL
 	db MALE   ; ELDER
 	db MALE   ; GENTLEMAN
+	db MALE   ; RICH_BOY
 	db FEMALE ; COWGIRL
 	db MALE   ; SAILOR
 	db MALE   ; SWIMMERM
@@ -143,6 +144,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; BOARDER
 	db FEMALE ; SKIER
 	db MALE   ; BLACKBELT_T
+	db FEMALE ; BATTLE_GIRL
 	db FEMALE ; TEACHER
 	db MALE   ; GUITARIST
 	db MALE   ; BIKER

@@ -53,6 +53,7 @@
 	add_pic KimonoGirlPic
 	add_pic ElderPic
 	add_pic GentlemanPic
+	add_pic RichBoyPic
 	add_pic CowgirlPic
 	add_pic SailorPic
 	add_pic SwimmermPic
@@ -62,6 +63,7 @@
 	add_pic BoarderPic
 	add_pic SkierPic
 	add_pic BlackbeltTPic
+	add_pic BattleGirlPic
 	add_pic TeacherPic
 	add_pic GuitaristPic
 	add_pic BikerPic

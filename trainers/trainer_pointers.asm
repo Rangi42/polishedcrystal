@@ -55,6 +55,7 @@ TrainerGroups: ; 0x39999
 	dw KimonoGirlGroup
 	dw ElderGroup
 	dw GentlemanGroup
+	dw RichBoyGroup
 	dw CowgirlGroup
 	dw SailorGroup
 	dw SwimmerMGroup
@@ -64,6 +65,7 @@ TrainerGroups: ; 0x39999
 	dw BoarderGroup
 	dw SkierGroup
 	dw BlackbeltGroup
+	dw BattleGirlGroup
 	dw TeacherGroup
 	dw GuitaristGroup
 	dw BikerGroup

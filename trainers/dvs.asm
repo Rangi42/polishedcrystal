@@ -81,6 +81,7 @@ TrainerClassDVs: ; 270d6
 	db $6E, $EE ; kimono girl
 	db $DD, $DD ; elder
 	db $CC, $CC ; gentleman
+	db $CC, $CC ; rich boy
 	db $7C, $CC ; cowgirl
 	db $CC, $CC ; sailor
 	db $CC, $CC ; swimmerm
@@ -90,6 +91,7 @@ TrainerClassDVs: ; 270d6
 	db $DD, $DD ; boarder
 	db $7D, $DD ; skier
 	db $FD, $DD ; blackbelt
+	db $7D, $DD ; battle girl
 	db $DD, $DD ; teacher
 	db $DD, $DD ; guitarist
 	db $DD, $DD ; biker
