@@ -10106,16 +10106,45 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM (25)
 	db "Matt@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
 
-	db 36, FERALIGATR
-	db 34, AMPHAROS
-	db 33, URSARING
-	db 33, NOCTOWL
-	db 35, ARCANINE
-	db 32, SKARMORY
+	db 36, FERALIGATR, KINGS_ROCK
+		db SCARY_FACE
+		db METAL_CLAW
+		db CRUNCH
+		db WATERFALL
+
+	db 34, AMPHAROS, MAGNET
+		db HEAL_BELL
+		db CONFUSE_RAY
+		db FIRE_PUNCH
+		db THUNDERBOLT
+
+	db 33, URSARING, LEFTOVERS
+		db BELLY_DRUM
+		db PLAY_ROUGH
+		db SLASH
+		db STRENGTH
+
+	db 33, NOCTOWL, QUICK_CLAW
+		db REFLECT
+		db PSYBEAM
+		db SHADOW_BALL
+		db FLY
+
+	db 35, ARCANINE, CHARCOAL
+		db FLAME_WHEEL
+		db FLAMETHROWER
+		db DOUBLE_KICK
+		db TAKE_DOWN
+
+	db 32, SANDSLASH, HARD_STONE
+		db SLASH
+		db EARTHQUAKE
+		db DEFENSE_CURL
+		db ROLLOUT
 
 	db $ff ; end
 
@@ -10123,16 +10152,45 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM (26)
 	db "Ringo@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
 
-	db 38, BLASTOISE
-	db 37, NINETALES
-	db 35, VICTREEBEL
-	db 35, RAICHU
-	db 36, ALAKAZAM
-	db 34, SANDSLASH
+	db 38, BLASTOISE, MYSTIC_WATER
+		db SURF
+		db AQUA_TAIL
+		db FLASH_CANNON
+		db ICE_BEAM
+
+	db 37, NINETALES, CHARCOAL
+		db FLAMETHROWER
+		db SHADOW_BALL
+		db CONFUSE_RAY
+		db EXTRASENSORY
+
+	db 35, VICTREEBEL, MIRACLE_SEED
+		db SLUDGE_BOMB
+		db SEED_BOMB
+		db SLEEP_POWDER
+		db SWORDS_DANCE
+
+	db 35, RAICHU, SILK_SCARF
+		db SURF
+		db THUNDERBOLT
+		db EXTREMESPEED
+		db NASTY_PLOT
+
+	db 36, ALAKAZAM, TWISTEDSPOON
+		db TRI_ATTACK
+		db PSYBEAM
+		db RECOVER
+		db REFLECT
+
+	db 34, SKARMORY, SHARP_BEAK
+		db DRILL_PECK
+		db SWIFT
+		db STEEL_WING
+		db ROCK_SMASH
 
 	db $ff ; end
 
@@ -10555,16 +10613,45 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF (26)
 	db "Joanne@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
 
-	db 37, VENUSAUR
-	db 34, PIDGEOT
-	db 35, SCYTHER
-	db 34, ELECTABUZZ
-	db 36, POLIWRATH
-	db 33, FLAREON
+	db 37, VENUSAUR, MIRACLE_SEED
+		db GROWTH
+		db SLUDGE_BOMB
+		db PETAL_DANCE
+		db SLEEP_POWDER
+
+	db 34, PIDGEOT, QUICK_CLAW
+		db FLY
+		db SWIFT
+		db TWISTER
+		db WHIRLWIND
+
+	db 35, SCYTHER, EVIOLITE
+		db SLASH
+		db WING_ATTACK
+		db SWORDS_DANCE
+		db PURSUIT
+
+	db 34, ELECTABUZZ, MAGNET
+		db THUNDERBOLT
+		db MEDITATE
+		db KARATE_CHOP
+		db LIGHT_SCREEN
+
+	db 36, POLIWRATH, KINGS_ROCK
+		db WATERFALL
+		db SURF
+		db STRENGTH
+		db BODY_SLAM
+
+	db 33, FLAREON, CHARCOAL
+		db SMOKESCREEN
+		db FLAME_WHEEL
+		db QUICK_ATTACK
+		db IRON_TAIL
 
 	db $ff ; end
 
@@ -10572,16 +10659,45 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF (27)
 	db "Kotori@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
 
-	db 37, TYPHLOSION
-	db 36, GLACEON
-	db 35, TOGEKISS
-	db 35, OCTILLERY
-	db 33, HERACROSS
-	db 34, PUPITAR
+	db 37, TYPHLOSION, CHARCOAL
+		db FLAME_WHEEL
+		db THUNDERPUNCH
+		db DIG
+		db STRENGTH
+
+	db 36, GLACEON, NEVERMELTICE
+		db ICE_BEAM
+		db RECOVER
+		db BARRIER
+		db IRON_TAIL
+
+	db 35, TOGEKISS, LEFTOVERS
+		db FLY
+		db SOFTBOILED
+		db FOCUS_BLAST
+		db EXTREMESPEED
+
+	db 35, OCTILLERY, QUICK_CLAW
+		db SURF
+		db ICE_BEAM
+		db PSYBEAM
+		db SEED_BOMB
+
+	db 33, HERACROSS, KINGS_ROCK
+		db ROCK_SMASH
+		db STRENGTH
+		db COUNTER
+		db DOUBLE_TEAM
+
+	db 34, PUPITAR, EVIOLITE
+		db EARTHQUAKE
+		db ROCK_SLIDE
+		db SCARY_FACE
+		db DARK_PULSE
 
 	db $ff ; end
 
@@ -10596,26 +10712,26 @@ ExecutiveMGroup:
 	; EXECUTIVEM (1)
 	; (HGSS Executive Archer)
 	db "Executive@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 35, HOUNDOUR
+	db 35, HOUNDOUR, EVIOLITE
 		db EMBER
 		db ROAR
 		db BITE
 		db FEINT_ATTACK
 
-	db 35, KOFFING
+	db 35, KOFFING, BRIGHTPOWDER
 		db TACKLE
 		db SLUDGE
 		db SMOKESCREEN
 		db HAZE
 
-	db 38, HOUNDOOM
-		db EMBER
+	db 38, HOUNDOOM, KINGS_ROCK
+		db FLAMETHROWER
 		db SMOKESCREEN
-		db BITE
+		db SUPER_FANG
 		db FEINT_ATTACK
 
 	db $ff ; end
@@ -10625,17 +10741,17 @@ ExecutiveMGroup:
 	; EXECUTIVEM (2)
 	; (HGSS Executive Proton)
 	db "Executive@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 30, GOLBAT
+	db 30, GOLBAT, KINGS_ROCK
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 32, WEEZING
+	db 32, WEEZING, CHARCOAL
 		db FIRE_BLAST
 		db SELFDESTRUCT
 		db SLUDGE
@@ -10648,41 +10764,41 @@ ExecutiveMGroup:
 	; EXECUTIVEM (3)
 	; (HGSS Executive Petrel)
 	db "Executive@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 30, KOFFING
+	db 30, KOFFING, EVIOLITE
 		db TACKLE
 		db SELFDESTRUCT
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 30, KOFFING
+	db 30, KOFFING, EVIOLITE
 		db TACKLE
 		db SELFDESTRUCT
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 30, KOFFING
+	db 30, KOFFING, EVIOLITE
 		db TACKLE
 		db SELFDESTRUCT
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 32, WEEZING
+	db 32, WEEZING, SILK_SCARF
 		db TACKLE
 		db EXPLOSION
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 30, KOFFING
+	db 30, KOFFING, EVIOLITE
 		db TACKLE
 		db SELFDESTRUCT
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 30, KOFFING
+	db 30, KOFFING, EVIOLITE
 		db TACKLE
 		db SELFDESTRUCT
 		db SLUDGE
@@ -10695,12 +10811,27 @@ ExecutiveMGroup:
 	; EXECUTIVEM (4)
 	; (HGSS Executive Petrel)
 	db "Executive@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 22, ZUBAT
-	db 24, RATICATE
-	db 22, KOFFING
+
+	db 22, ZUBAT, BLACKGLASSES
+		db ASTONISH
+		db BITE
+		db WING_ATTACK
+		db CONFUSE_RAY
+
+	db 24, RATICATE, KINGS_ROCK
+		db SWORDS_DANCE
+		db CRUNCH
+		db SCARY_FACE
+		db HYPER_FANG
+
+	db 23, KOFFING, EVIOLITE
+		db ENDURE
+		db WILL_O_WISP
+		db SLUDGE
+		db SELFDESTRUCT
 
 	db $ff ; end
 
@@ -10715,26 +10846,26 @@ ExecutiveFGroup:
 	; EXECUTIVEF (1)
 	; (HGSS Executive Ariana)
 	db "Executive@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 32, ARBOK
+	db 32, ARBOK, BLACKGLASSES
 		db WRAP
-		db POISON_STING
-		db BITE
+		db ACID
+		db CRUNCH
 		db GLARE
 
-	db 32, VILEPLUME
-		db ABSORB
+	db 32, VILEPLUME, MIRACLE_SEED
+		db MEGA_DRAIN
 		db GROWTH
 		db SLEEP_POWDER
 		db ACID
 
-	db 32, HONCHKROW
-		db PECK
+	db 32, HONCHKROW, KINGS_ROCK
+		db WING_ATTACK
 		db PURSUIT
-		db HAZE
+		db CONFUSE_RAY
 		db NIGHT_SHADE
 
 	db $ff ; end
@@ -10744,27 +10875,27 @@ ExecutiveFGroup:
 	; EXECUTIVEF (2)
 	; (HGSS Executive Ariana)
 	db "Executive@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 23, ARBOK
-		db WRAP
-		db LEER
-		db POISON_STING
-		db BITE
-
-	db 23, GLOOM
-		db ABSORB
-		db GROWTH
-		db SLEEP_POWDER
+	db 23, ARBOK, POISON_BARB
+		db GLARE
+		db SCREECH
 		db ACID
+		db CRUNCH
 
-	db 25, MURKROW
-		db PECK
+	db 23, GLOOM, MIRACLE_SEED
+		db LEECH_SEED
+		db ACID
+		db SLEEP_POWDER
+		db MEGA_DRAIN
+
+	db 25, MURKROW, BLACKGLASSES
 		db PURSUIT
-		db HAZE
-		db 0
+		db WING_ATTACK
+		db NIGHT_SHADE
+		db CONFUSE_RAY
 
 	db $ff ; end
 
@@ -10838,32 +10969,32 @@ MysticalmanGroup:
 
 	; MYSTICALMAN (1)
 	db "Eusine@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 25, DROWZEE
+	db 25, DROWZEE, TWISTEDSPOON
 		db DREAM_EATER
 		db HYPNOSIS
 		db DISABLE
-		db CONFUSION
+		db PSYBEAM
 
-	db 25, HAUNTER
-		db LICK
+	db 25, HAUNTER, EVIOLITE
+		db SHADOW_BALL
 		db HYPNOSIS
-		db MEAN_LOOK
+		db CONFUSE_RAY
 		db CURSE
 
-	db 25, JUMPLUFF
-		db SYNTHESIS
+	db 25, JUMPLUFF, PINK_BOW
 		db GIGA_DRAIN
-		db SLEEP_POWDER
+		db SYNTHESIS
+		db FAIRY_WIND
 		db LEECH_SEED
 
-	db 27, ELECTRODE
+	db 27, ELECTRODE, MAGNET
+		db THUNDER
 		db SCREECH
 		db SONIC_BOOM
-		db THUNDER
 		db ROLLOUT
 
 	db $ff ; end
@@ -10878,15 +11009,45 @@ LoreleiGroup:
 
 	; LORELEI (1)
 	db "Lorelei@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 30, GLACEON
-	db 33, DEWGONG
-	db 32, CLOYSTER
-	db 33, SLOWBRO
-	db 36, JYNX
-	db 35, LAPRAS
+
+	db 30, GLACEON, NEVERMELTICE
+		db ICE_BEAM
+		db BARRIER
+		db RECOVER
+		db QUICK_ATTACK
+
+	db 33, DEWGONG, LEFTOVERS
+		db WATERFALL
+		db AURORA_BEAM
+		db SLEEP_TALK
+		db REST
+
+	db 32, CLOYSTER, SILK_SCARF
+		db RAZOR_SHELL
+		db SELFDESTRUCT
+		db AURORA_BEAM
+		db DEFENSE_CURL
+
+	db 33, SLOWBRO, TWISTEDSPOON
+		db PSYCHIC_M
+		db BUBBLE_BEAM
+		db HEADBUTT
+		db DISABLE
+
+	db 36, JYNX, PINK_BOW
+		db DRAIN_KISS
+		db SING
+		db NIGHTMARE
+		db PETAL_DANCE
+
+	db 35, LAPRAS, BRIGHTPOWDER
+		db ICE_BEAM
+		db ANCIENTPOWER
+		db CONFUSE_RAY
+		db SURF
 
 	db $ff ; end
 
@@ -10894,15 +11055,45 @@ LoreleiGroup:
 
 	; LORELEI (2)
 	db "Lorelei@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 49, DEWGONG
-	db 48, CLOYSTER
-	db 49, SLOWBRO
-	db 47, GLACEON
-	db 51, JYNX
-	db 50, LAPRAS
+
+	db 49, DEWGONG, LEFTOVERS
+		db AQUA_TAIL
+		db ICE_BEAM
+		db REST
+		db SLEEP_TALK
+
+	db 49, CLOYSTER, SILK_SCARF
+		db EXPLOSION
+		db RAZOR_SHELL
+		db AVALANCHE
+		db BARRIER
+
+	db 49, SLOWBRO, TWISTEDSPOON
+		db PSYCHIC_M
+		db SURF
+		db ICE_BEAM
+		db CALM_MIND
+
+	db 48, GLACEON, NEVERMELTICE
+		db ICE_BEAM
+		db BARRIER
+		db HYPER_VOICE
+		db QUICK_ATTACK
+
+	db 51, JYNX, PINK_BOW
+		db DRAIN_KISS
+		db NASTY_PLOT
+		db ICE_BEAM
+		db PSYCHIC_M
+
+	db 50, LAPRAS, BRIGHTPOWDER
+		db ICE_BEAM
+		db ANCIENTPOWER
+		db CONFUSE_RAY
+		db OUTRAGE
 
 	db $ff ; end
 
@@ -10916,15 +11107,45 @@ AgathaGroup:
 
 	; AGATHA (1)
 	db "Agatha@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 54, GENGAR
-	db 54, CROBAT
-	db 53, MISMAGIUS
-	db 53, MUK
-	db 55, ARBOK
-	db 56, GENGAR
+
+	db 54, GENGAR, SPELL_TAG
+		db SHADOW_BALL
+		db WILL_O_WISP
+		db CURSE
+		db DESTINY_BOND
+
+	db 54, CROBAT, POISON_BARB
+		db AIR_SLASH
+		db CRUNCH
+		db X_SCISSOR
+		db POISON_JAB
+
+	db 53, MISMAGIUS, CHARCOAL
+		db SHADOW_BALL
+		db FLAMETHROWER
+		db DAZZLINGLEAM
+		db POWER_GEM
+
+	db 53, MUK, SILK_SCARF
+		db EXPLOSION
+		db SLUDGE_BOMB
+		db SCREECH
+		db MINIMIZE
+
+	db 55, ARBOK, KINGS_ROCK
+		db SLUDGE_BOMB
+		db GLARE
+		db CRUNCH
+		db BODY_SLAM
+
+	db 56, GENGAR, QUICK_CLAW
+		db SHADOW_BALL
+		db THUNDERBOLT
+		db WILL_O_WISP
+		db DESTINY_BOND
 
 	db $ff ; end
 
@@ -10938,41 +11159,41 @@ YellowGroup:
 
 	; YELLOW (1)
 	db "Yellow@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 26, RATTATA
+	db 26, RATTATA, BERRY
 		db TAIL_WHIP
 		db QUICK_ATTACK
 		db HYPER_FANG
 		db FOCUS_ENERGY
 
-	db 25, BUTTERFREE
+	db 25, BUTTERFREE, BERRY
 		db CONFUSION
 		db SLEEP_POWDER
 		db POISONPOWDER
 		db STUN_SPORE
 
-	db 27, DODUO
+	db 27, DODUO, BERRY
 		db PECK
 		db TRI_ATTACK
 		db RETURN
 		db MUD_SLAP
 
-	db 26, GRAVELER
+	db 26, GRAVELER, BERRY
 		db ROLLOUT
 		db DEFENSE_CURL
 		db MAGNITUDE
 		db ROCK_THROW
 
-	db 25, OMANYTE
+	db 25, OMANYTE, BERRY
 		db WATER_GUN
 		db BITE
 		db DEFENSE_CURL
 		db ICY_WIND
 
-	db 28, PIKACHU
+	db 28, PIKACHU, LIGHT_BALL
 		db SURF
 		db FLY
 		db THUNDERBOLT
@@ -10990,15 +11211,45 @@ BillGroup:
 
 	; BILL (1)
 	db "Bill@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 55, VAPOREON
-	db 55, JOLTEON
-	db 55, FLAREON
-	db 56, LEAFEON
-	db 56, GLACEON
-	db 57, PORYGON2
+
+	db 55, VAPOREON, MYSTIC_WATER
+		db RECOVER
+		db BARRIER
+		db HAZE
+		db SCALD
+
+	db 55, JOLTEON, MAGNET
+		db THUNDER_WAVE
+		db THUNDERBOLT
+		db LIGHT_SCREEN
+		dn QUICK_ATTACK
+
+	db 55, FLAREON, CHARCOAL
+		db FLARE_BLITZ
+		db DOUBLE_EDGE
+		db SMOKESCREEN
+		db ROCK_SMASH
+
+	db 56, LEAFEON, MIRACLE_SEED
+		db SEED_BOMB
+		db SWORDS_DANCE
+		db SYNTHESIS
+		db X_SCISSOR
+
+	db 56, GLACEON, NEVERMELTICE
+		db ICE_BEAM
+		db MIRROR_COAT
+		db RECOVER
+		db QUICK_ATTACK
+
+	db 57, PORYGON2, EVIOLITE
+		db TRI_ATTACK
+		db THUNDERBOLT
+		db ICE_BEAM
+		db RECOVER
 
 	db $ff ; end
 
@@ -11012,15 +11263,45 @@ LawrenceGroup:
 
 	; LAWRENCE (1)
 	db "Lawrence@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 67, ARTICUNO
-	db 64, CHARIZARD
-	db 66, DRAGONITE
-	db 65, TYRANITAR
-	db 63, HONCHKROW
-	db 67, ZAPDOS
+
+	db 67, ARTICUNO, BRIGHTPOWDER
+		db ICE_BEAM
+		db AIR_SLASH
+		db ANCIENTPOWER
+		db WHIRLWIND
+
+	db 64, CHARIZARD, DRAGON_FANG
+		db SWORDS_DANCE
+		db FLARE_BLITZ
+		db DRAGON_CLAW
+		db SLASH
+
+	db 66, DRAGONITE, LEFTOVERS
+		db DRAGON_DANCE
+		db OUTRAGE
+		db HYPER_BEAM
+		db AQUA_TAIL
+
+	db 65, TYRANITAR, KINGS_ROCK
+		db EARTHQUAKE
+		db STONE_EDGE
+		db CRUNCH
+		db SCARY_FACE
+
+	db 63, HONCHKROW, QUICK_CLAW
+		db NASTY_PLOT
+		db DARK_PULSE
+		db CONFUSE_RAY
+		db PURSUIT
+
+	db 67, ZAPDOS, SHARP_BEAK
+		db DRILL_PECK
+		db THUNDER
+		db ANCIENTPOWER
+		db LIGHT_SCREEN
 
 	db $ff ; end
 
@@ -11034,15 +11315,45 @@ GiovanniGroup:
 
 	; GIOVANNI (1)
 	db "Giovanni@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 32, RHYHORN
-	db 34, HONCHKROW
-	db 36, NIDOKING
-	db 34, KANGASKHAN
-	db 36, NIDOQUEEN
-	db 38, RHYDON
+
+	db 32, RHYHORN, EVIOLITE
+		db CRUNCH
+		db MAGNITUDE
+		db SCARY_FACE
+		db STOMP
+
+	db 34, HONCHKROW, BLACKGLASSES
+		db ASTONISH
+		db PURSUIT
+		db STEEL_WING
+		db FLY
+
+	db 36, NIDOKING, KINGS_ROCK
+		db EARTHQUAKE
+		db THRASH
+		db OUTRAGE
+		db SHADOW_CLAW
+
+	db 34, KANGASKHAN, SILK_SCARF
+		db EARTHQUAKE
+		db STOMP
+		db DIZZY_PUNCH
+		db SEISMIC_TOSS
+
+	db 36, NIDOQUEEN, SOFT_SAND
+		db EARTHQUAKE
+		db BODY_SLAM
+		db OUTRAGE
+		db FOCUS_BLAST
+
+	db 38, RHYDON, HARD_STONE
+		db EARTHQUAKE
+		db ROCK_SLIDE
+		db STOMP
+		db SURF
 
 	db $ff ; end
 
@@ -11063,15 +11374,45 @@ ValerieGroup:
 
 	; VALERIE (1)
 	db "Valerie@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 33, CLEFABLE
-	db 33, MR__MIME
-	db 32, WIGGLYTUFF
-	db 32, AZUMARILL
-	db 34, TOGEKISS
-	db 35, SYLVEON
+
+	db 34, CLEFABLE, BRIGHTPOWDER
+		db DISARM_VOICE
+		db MINIMIZE
+		db BATON_PASS
+		db METRONOME
+
+	db 34, MR__MIME, TWISTEDSPOON
+		db PSYBEAM
+		db CONFUSE_RAY
+		db LIGHT_SCREEN
+		db REFLECT
+
+	db 33, WIGGLYTUFF, HARD_STONE
+		db REST
+		db SLEEP_TALK
+		db DISARM_VOICE
+		db ROLLOUT
+
+	db 33, AZUMARILL, MYSTIC_WATER
+		db PLAY_ROUGH
+		db AQUA_TAIL
+		db DIZZY_PUNCH
+		db ROLLOUT
+
+	db 35, TOGEKISS, LEFTOVERS
+		db ANCIENTPOWER
+		db SOFTBOILED
+		db FAIRY_WIND
+		db AIR_SLASH
+
+	db 37, SYLVEON, PINK_BOW
+		db MOONBLAST
+		db CALM_MIND
+		db DRAIN_KISS
+		db SWIFT
 
 	db $ff ; end
 
