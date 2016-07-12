@@ -48,6 +48,7 @@
 	add_pic SchoolboyPic
 	add_pic SchoolgirlPic
 	add_pic PsychicTPic
+	add_pic HexManiacPic
 	add_pic SagePic
 	add_pic MediumPic
 	add_pic KimonoGirlPic

@@ -739,6 +739,7 @@ ElderPic:            INCBIN "gfx/trainers/elder.2bpp.lz"
 SchoolgirlPic:       INCBIN "gfx/trainers/schoolgirl.2bpp.lz"
 RichBoyPic:          INCBIN "gfx/trainers/rich_boy.2bpp.lz"
 CowgirlPic:          INCBIN "gfx/trainers/cowgirl.2bpp.lz"
+HexManiacPic:        INCBIN "gfx/trainers/hex_maniac.2bpp.lz"
 BattleGirlPic:       INCBIN "gfx/trainers/battle_girl.2bpp.lz"
 ForeignGruntPic:     INCBIN "gfx/trainers/foreigngrunt.2bpp.lz"
 GameFreakPic:        INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz" ; TODO

@@ -443,7 +443,9 @@ KRIS EQU __enum__
 	const JARED
 	const RODNEY
 
-	trainerclass SAGE ; 32
+	trainerclass HEX_MANIAC ; 32
+
+	trainerclass SAGE ; 33
 	const CHOW
 	const NICO
 	const JIN
@@ -453,7 +455,7 @@ KRIS EQU __enum__
 	const EDMOND
 	const NEAL
 
-	trainerclass MEDIUM ; 33
+	trainerclass MEDIUM ; 34
 	const MARTHA
 	const GRACE
 	const BETHANY
@@ -462,20 +464,20 @@ KRIS EQU __enum__
 	const REBECCA
 	const DORIS
 
-	trainerclass KIMONO_GIRL ; 34
+	trainerclass KIMONO_GIRL ; 35
 	const NAOKO
 	const SAYO
 	const ZUKI
 	const KUNI
 	const MIKI
 
-	trainerclass ELDER ; 35
+	trainerclass ELDER ; 36
 	const LI
 	const GAKU
 	const MASA
 	const KOJI
 
-	trainerclass GENTLEMAN ; 36
+	trainerclass GENTLEMAN ; 37
 	const PRESTON
 	const EDWARD
 	const GREGORY
@@ -483,12 +485,12 @@ KRIS EQU __enum__
 	const ALFRED
 	const MILTON
 
-	trainerclass RICH_BOY ; 37
+	trainerclass RICH_BOY ; 38
 
-	trainerclass COWGIRL ; 38
+	trainerclass COWGIRL ; 39
 	const ANNIE
 
-	trainerclass SAILOR ; 39
+	trainerclass SAILOR ; 3a
 	const EUGENE
 	const HUEY1
 	const TERRELL
@@ -505,7 +507,7 @@ KRIS EQU __enum__
 	const PARKER
 	const EDDIE_SAILOR
 
-	trainerclass SWIMMERM ; 3a
+	trainerclass SWIMMERM ; 3b
 	const HAROLD
 	const SIMON
 	const RANDALL
@@ -527,7 +529,7 @@ KRIS EQU __enum__
 	const JAMES
 	const LEWIS
 
-	trainerclass SWIMMERF ; 3b
+	trainerclass SWIMMERF ; 3c
 	const ELAINE
 	const PAULA
 	const KAYLEE
@@ -549,14 +551,14 @@ KRIS EQU __enum__
 	const BRIANA
 	const JOY
 
-	trainerclass BURGLAR ; 3c
+	trainerclass BURGLAR ; 3d
 	const DUNCAN
 	const EDDIE
 	const COREY
 	const PETE
 	const LOUIS
 
-	trainerclass SCIENTIST ; 3d
+	trainerclass SCIENTIST ; 3e
 	const ROSS
 	const MITCH
 	const JED
@@ -568,7 +570,7 @@ KRIS EQU __enum__
 	const OSKAR
 	const BRAYDON
 
-	trainerclass BOARDER ; 3e
+	trainerclass BOARDER ; 3f
 	const RONALD
 	const BRAD
 	const DOUGLAS
@@ -577,14 +579,14 @@ KRIS EQU __enum__
 	const STEFAN
 	const MAX
 
-	trainerclass SKIER ; 3f
+	trainerclass SKIER ; 40
 	const ROXANNE
 	const CLARISSA
 	const CADY
 	const MARIA
 	const BECKY
 
-	trainerclass BLACKBELT_T ; 40
+	trainerclass BLACKBELT_T ; 41
 	const KENJI1
 	const YOSHI
 	const KENJI2
@@ -595,18 +597,18 @@ KRIS EQU __enum__
 	const KENJI3
 	const WAI
 
-	trainerclass BATTLE_GIRL ; 41
+	trainerclass BATTLE_GIRL ; 42
 
-	trainerclass TEACHER ; 42
+	trainerclass TEACHER ; 43
 	const COLETTE
 	const HILLARY
 	const SHIRLEY
 
-	trainerclass GUITARIST ; 43
+	trainerclass GUITARIST ; 44
 	const CLYDE
 	const VINCENT
 
-	trainerclass BIKER ; 44
+	trainerclass BIKER ; 45
 	const BIKER_BENNY
 	const KAZU
 	const DWAYNE
@@ -617,7 +619,7 @@ KRIS EQU __enum__
 	const JOEL
 	const GLENN
 
-	trainerclass COOLTRAINERM ; 45
+	trainerclass COOLTRAINERM ; 46
 	const NICK
 	const AARON
 	const PAUL
@@ -645,7 +647,7 @@ KRIS EQU __enum__
 	const MATT
 	const RINGO
 
-	trainerclass COOLTRAINERF ; 46
+	trainerclass COOLTRAINERF ; 47
 	const GWEN
 	const LOIS
 	const FRAN
@@ -674,40 +676,40 @@ KRIS EQU __enum__
 	const JOANNE
 	const KOTORI
 
-	trainerclass EXECUTIVEM ; 47
+	trainerclass EXECUTIVEM ; 48
 
-	trainerclass EXECUTIVEF ; 48
+	trainerclass EXECUTIVEF ; 49
 
-	trainerclass POKEMON_PROF ; 49
+	trainerclass POKEMON_PROF ; 4a
 
-	trainerclass GAME_FREAK ; 4a
+	trainerclass GAME_FREAK ; 4b
 
-	trainerclass MYSTICALMAN ; 4b
+	trainerclass MYSTICALMAN ; 4c
 	const EUSINE
 
-	trainerclass LYRA ; 4c
+	trainerclass LYRA ; 4d
 
-	trainerclass LORELEI ; 4d
+	trainerclass LORELEI ; 4e
 
-	trainerclass AGATHA ; 4e
+	trainerclass AGATHA ; 4f
 
-	trainerclass YELLOW ; 4f
+	trainerclass YELLOW ; 50
 
-	trainerclass BILL ; 50
+	trainerclass BILL ; 51
 
-	trainerclass LAWRENCE ; 51
+	trainerclass LAWRENCE ; 52
 
-	trainerclass GIOVANNI ; 52
+	trainerclass GIOVANNI ; 53
 
-	trainerclass TOWERTYCOON ; 53
+	trainerclass TOWERTYCOON ; 54
 
-	trainerclass VALERIE ; 54
+	trainerclass VALERIE ; 55
 
-	trainerclass OMASTAR_FOSSIL ; 55
+	trainerclass OMASTAR_FOSSIL ; 56
 
-	trainerclass KABUTOPS_FOSSIL ; 56
+	trainerclass KABUTOPS_FOSSIL ; 57
 
-	trainerclass AERODACTYL_FOSSIL ; 57
+	trainerclass AERODACTYL_FOSSIL ; 58
 
 NUM_TRAINER_CLASSES EQU __enum__
 

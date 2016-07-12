@@ -50,6 +50,7 @@ TrainerGroups: ; 0x39999
 	dw SchoolboyGroup
 	dw SchoolgirlGroup
 	dw PsychicGroup
+	dw HexManiacGroup
 	dw SageGroup
 	dw MediumGroup
 	dw KimonoGirlGroup

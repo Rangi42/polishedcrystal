@@ -47,6 +47,7 @@
 	db "Schoolboy@"
 	db "Schoolgirl@"
 	db "Psychic@"
+	db "Hex Maniac@"
 	db "Sage@"
 	db "Medium@"
 	db "Kimono Girl@"

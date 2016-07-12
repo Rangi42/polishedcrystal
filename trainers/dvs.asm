@@ -76,6 +76,7 @@ TrainerClassDVs: ; 270d6
 	db $CC, $CC ; schoolboy
 	db $7C, $CC ; schoolgirl
 	db $BB, $CF ; psychic
+	db $7B, $CF ; hex maniac
 	db $CC, $CC ; sage
 	db $7C, $CC ; medium
 	db $6E, $EE ; kimono girl

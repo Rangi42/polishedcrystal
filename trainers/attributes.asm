@@ -294,6 +294,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Hex Maniac
+	db 0, 0 ; items
+	db 10 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Sage
 	db 0, 0 ; items
 	db 8 ; base reward
