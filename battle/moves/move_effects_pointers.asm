@@ -24,7 +24,6 @@
 	dw EvasionDownHit
 	dw StaticDamage
 	dw StaticDamage
-	dw OHKOHit
 	dw DoPoison
 	dw DoBurn
 	dw DoParalyze
@@ -145,6 +144,7 @@
 	dw FlareBlitz
 	dw Avalanche
 	dw NormalHit
+	dw OHKOHit
 	dw NormalHit
 	dw Bide
 	dw RazorWind

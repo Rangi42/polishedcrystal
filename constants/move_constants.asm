@@ -12,7 +12,7 @@
 	const THUNDERPUNCH ; $09
 	const SCRATCH      ; $0a
 	const X_SCISSOR    ; $0b
-	const GUILLOTINE   ; $0c
+	const NIGHT_SLASH  ; $0c
 	const AIR_SLASH    ; $0d
 	const SWORDS_DANCE ; $0e
 	const CUT          ; $0f
@@ -32,7 +32,7 @@
 	const HEADBUTT     ; $1d
 	const HORN_ATTACK  ; $1e
 	const FURY_ATTACK  ; $1f
-	const HORN_DRILL   ; $20
+	const HEX          ; $20
 	const TACKLE       ; $21
 	const BODY_SLAM    ; $22
 	const WRAP         ; $23

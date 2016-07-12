@@ -61,7 +61,7 @@ FalknerGroup:
 		db SWORDS_DANCE
 		db EARTHQUAKE
 		db X_SCISSOR
-		db SLASH
+		db NIGHT_SLASH
 
 	db 65, DODRIO, SILK_SCARF
 		db DRILL_PECK
@@ -77,7 +77,7 @@ FalknerGroup:
 
 	db 65, HONCHKROW, BLACKGLASSES
 		db DRILL_PECK
-		db DARK_PULSE
+		db NIGHT_SLASH
 		db PURSUIT
 		db CONFUSE_RAY
 
@@ -169,9 +169,9 @@ BugsyGroup:
 
 	db 68, SCYTHER, EVIOLITE
 		db SWORDS_DANCE
-		db SLASH
+		db NIGHT_SLASH
 		db X_SCISSOR
-		db QUICK_ATTACK
+		db WING_ATTACK
 
 	db $ff ; end
 
@@ -1072,7 +1072,7 @@ KarenGroup:
 		db MEAN_LOOK
 
 	db 44, PERSIAN, NO_ITEM
-		db SLASH
+		db NIGHT_SLASH
 		db FEINT_ATTACK
 		db SCREECH
 		db PLAY_ROUGH
@@ -1133,7 +1133,7 @@ KarenGroup:
 		db DRILL_PECK
 		db WHIRLWIND
 		db PURSUIT
-		db FEINT_ATTACK
+		db NIGHT_SLASH
 
 	db 70, TYRANITAR, SOFT_SAND
 		db EARTHQUAKE
@@ -4965,7 +4965,7 @@ BirdKeeperGroup:
 
 	db 48, FARFETCH_D
 		db SWORDS_DANCE
-		db SLASH
+		db NIGHT_SLASH
 		db PROTECT
 		db FLY
 
@@ -5095,7 +5095,7 @@ HikerGroup:
 	; party
 	db 24, MACHOP
 	db 27, GRAVELER
-	db 27, MACHOP
+	db 27, GLIGAR
 
 	db $ff ; end
 

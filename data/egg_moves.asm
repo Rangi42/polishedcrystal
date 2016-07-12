@@ -80,6 +80,7 @@ SandshrewEggMoves:
 	db RAPID_SPIN
 	db SAFEGUARD
 	db COUNTER
+	db NIGHT_SLASH
 	db $ff
 
 NidoranFEggMoves:
@@ -176,6 +177,7 @@ MeowthEggMoves:
 	db FLAIL
 	db HYPNOSIS
 	db TAIL_WHIP
+	db NIGHT_SLASH
 	db $ff
 
 PsyduckEggMoves:
@@ -199,6 +201,7 @@ MankeyEggMoves:
 	db ROCK_SLIDE
 	db COUNTER
 	db GUNK_SHOT
+	db NIGHT_SLASH
 	db $ff
 
 GrowlitheEggMoves:
@@ -261,7 +264,6 @@ GeodudeEggMoves:
 PonytaEggMoves:
 	db CHARM
 	db DOUBLE_KICK
-	db HORN_DRILL
 	db HYPNOSIS
 	db MORNING_SUN
 	db THRASH
@@ -284,6 +286,7 @@ FarfetchDEggMoves:
 	db GUST
 	db QUICK_ATTACK
 	db STEEL_WING
+	db NIGHT_SLASH
 	db $ff
 
 DoduoEggMoves:
@@ -296,7 +299,6 @@ DoduoEggMoves:
 
 SeelEggMoves:
 	db DISABLE
-	db HORN_DRILL
 	db LICK
 	db PECK
 	db PERISH_SONG
@@ -328,6 +330,7 @@ GastlyEggMoves:
 	db PERISH_SONG
 	db SCARY_FACE
 	db NASTY_PLOT
+	db FEINT_ATTACK
 	db $ff
 
 OnixEggMoves:
@@ -440,6 +443,7 @@ ScytherEggMoves:
 	db COUNTER
 	db SAFEGUARD
 	db LIGHT_SCREEN
+	db NIGHT_SLASH
 	db $ff
 
 PinsirEggMoves:
@@ -454,7 +458,6 @@ LaprasEggMoves:
 	db DRAGON_DANCE
 	db FORESIGHT
 	db FUTURE_SIGHT
-	db HORN_DRILL
 	db HEAL_BELL
 	db $ff
 
@@ -565,6 +568,7 @@ SpinarakEggMoves:
 	db TWINEEDLE
 	db SONIC_BOOM
 	db POISON_JAB
+	db NIGHT_SLASH
 	db $ff
 
 ChinchouEggMoves:
@@ -699,6 +703,7 @@ DunsparceEggMoves:
 	db RAGE
 	db ANCIENTPOWER
 	db ROCK_SLIDE
+	db HEX
 	db $ff
 
 GligarEggMoves:
@@ -707,6 +712,7 @@ GligarEggMoves:
 	db METAL_CLAW
 	db WING_ATTACK
 	db COUNTER
+	db NIGHT_SLASH
 	db $ff
 
 SnubbullEggMoves:
@@ -753,6 +759,7 @@ TeddiursaEggMoves:
 	db SEISMIC_TOSS
 	db COUNTER
 	db GUNK_SHOT
+	db NIGHT_SLASH
 	db $ff
 
 SlugmaEggMoves:

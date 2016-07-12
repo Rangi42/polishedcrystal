@@ -11,7 +11,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Thunderpunch
 	dw BattleAnim_Scratch
 	dw BattleAnim_XScissor
-	dw BattleAnim_Guillotine
+	dw BattleAnim_NightSlash
 	dw BattleAnim_AirSlash
 	dw BattleAnim_SwordsDance
 	dw BattleAnim_Cut
@@ -31,7 +31,7 @@ BattleAnimations:: ; c906f
 	dw BattleAnim_Headbutt
 	dw BattleAnim_HornAttack
 	dw BattleAnim_FuryAttack
-	dw BattleAnim_HornDrill
+	dw BattleAnim_Hex
 	dw BattleAnim_Tackle
 	dw BattleAnim_BodySlam
 	dw BattleAnim_Wrap
@@ -2446,7 +2446,8 @@ BattleAnim_FuryAttack: ; ca44c
 	anim_ret
 ; ca47d
 
-BattleAnim_HornDrill: ; ca47d
+BattleAnim_Hex:
+; TODO: erase Horn Drill animation, design Hex animation
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
 	anim_obj ANIM_OBJ_5F,   9, 0,  10, 0, $3
@@ -2466,7 +2467,6 @@ BattleAnim_HornDrill: ; ca47d
 	anim_wait 8
 	anim_loop 3, .loop
 	anim_ret
-; ca4b4
 
 BattleAnim_PoisonSting: ; ca4b4
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
@@ -2711,7 +2711,8 @@ BattleAnim_DrillPeck: ; ca6a0
 	anim_ret
 ; ca6cc
 
-BattleAnim_Guillotine: ; ca6cc
+BattleAnim_NightSlash:
+; TODO: erase Guillotine animation, design Night Slash animation
 	anim_1gfx ANIM_GFX_CUT
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $10
 	anim_bgeffect ANIM_BG_1F, $40, $2, $0
@@ -2725,7 +2726,6 @@ BattleAnim_Guillotine: ; ca6cc
 	anim_obj ANIM_OBJ_39,  15, 0,   9, 0, $0
 	anim_wait 32
 	anim_ret
-; ca700
 
 BattleAnim_Flash: ; ca700
 	anim_1gfx ANIM_GFX_SPEED

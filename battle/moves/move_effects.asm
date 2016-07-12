@@ -12,6 +12,7 @@ EggBomb:
 Extremespeed:
 FeintAttack:
 FairyWind:
+Hex:
 HiJumpKick:
 HornAttack:
 HydroPump:
@@ -20,6 +21,7 @@ KarateChop:
 MachPunch:
 Megahorn:
 MegaKick:
+NightSlash:
 Peck:
 Pound:
 PowerGem:
@@ -589,23 +591,6 @@ Psywave:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
-	endmove
-
-OHKOHit:
-Guillotine:
-HornDrill:
-	checkobedience
-	usedmovetext
-	doturn
-	stab
-	ohko
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
 	endmove
 
 DoPoison:
@@ -2171,6 +2156,21 @@ Avalanche:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	endmove
+
+OHKOHit:
+	checkobedience
+	usedmovetext
+	doturn
+	stab
+	ohko
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
 	endmove
 
 Bide:
