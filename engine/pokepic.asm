@@ -27,6 +27,33 @@ Pokepic:: ; 244e3
 	call WaitBGMap
 	ret
 
+Trainerpic::
+	ld hl, PokepicMenuDataHeader
+	call CopyMenuDataHeader
+	call MenuBox
+	call UpdateSprites
+	call ApplyTilemap
+	ld b, SCGB_POKEPIC
+	call GetSGBLayout
+	xor a
+	ld [hBGMapMode], a
+	ld a, [TrainerClass]
+	ld de, VTiles1
+	callba GetTrainerPic
+	ld a, [wMenuBorderTopCoord]
+	inc a
+	ld b, a
+	ld a, [wMenuBorderLeftCoord]
+	inc a
+	ld c, a
+	call Coord2Tile
+	ld a, $80
+	ld [hGraphicStartTile], a
+	lb bc, 7, 7
+	predef PlaceGraphic
+	call WaitBGMap
+	ret
+
 ClosePokepic:: ; 24528
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuDataHeader

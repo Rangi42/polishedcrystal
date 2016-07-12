@@ -1074,3 +1074,9 @@ wonder_trade: macro
 count_caught: macro
 	db count_caught_command
 	endm
+
+	enum trainerpic_command
+trainerpic: macro
+	db trainerpic_command
+	db \1 ; trainer
+	endm

@@ -106,6 +106,9 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; giovanni
 	db $FF, $FF ; towertycoon
 	db $7F, $FF ; valerie
+	db $00, $00 ; omastar fossil
+	db $00, $00 ; kabutops fossil
+	db $00, $00 ; aerodactyl fossil
 ; 2715c
 
 INCLUDE "trainers/unique_dvs.asm"

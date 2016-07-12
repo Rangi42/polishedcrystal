@@ -76,5 +76,8 @@
 	add_pic BillPic
 	add_pic LawrencePic
 	add_pic GiovanniPic
-	; add_pic TowerTycoonPic
-	; add_pic ValeriePic
+	add_pic TowerTycoonPic
+	add_pic ValeriePic
+	add_pic OmastarFossilPic
+	add_pic KabutopsFossilPic
+	add_pic AerodactylFossilPic

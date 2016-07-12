@@ -242,6 +242,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_check_save                 ; a9
 	dw Script_wonder_trade               ; aa
 	dw Script_count_caught               ; ab
+	dw Script_trainerpic                 ; ac
 ; 96e05
 
 StartScript: ; 96e05
@@ -3253,6 +3254,21 @@ Script_count_caught:
 	call CountSetBits
 	ld [wd002], a
 	ret
+
+Script_trainerpic:
+; script command 0xac
+; parameters:
+;     trainer (TrainerParam)
+
+	call GetScriptByte
+	and a
+	jr nz, .ok
+	ld a, [ScriptVar]
+.ok
+	ld [TrainerClass], a
+	callba Trainerpic
+	ret
+; 96f29
 
 
 ; 97c20 unreferenced

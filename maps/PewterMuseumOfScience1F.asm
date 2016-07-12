@@ -160,15 +160,24 @@ Museum1FReceptionistDeskSignpostScript:
 	jumptext Museum1FReceptionistDeskSignpostText
 
 KabutopsFossilSignpostScript:
-	; TODO: show fossil sprite
+	refreshscreen $0
+	trainerpic KABUTOPS_FOSSIL
+	waitbutton
+	closepokepic
 	jumptext KabutopsFossilSignpostText
 
 OmastarFossilSignpostScript:
-	; TODO: show fossil sprite
+	refreshscreen $0
+	trainerpic OMASTAR_FOSSIL
+	waitbutton
+	closepokepic
 	jumptext OmastarFossilSignpostText
 
 AerodactylFossilSignpostScript:
-	; TODO: show fossil sprite
+	refreshscreen $0
+	trainerpic AERODACTYL_FOSSIL
+	waitbutton
+	closepokepic
 	jumptext AerodactylFossilSignpostText
 
 Museum1FBookshelfSignpostScript:

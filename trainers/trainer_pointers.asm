@@ -80,3 +80,6 @@ TrainerGroups: ; 0x39999
 	dw GiovanniGroup
 	dw TowerTycoonGroup
 	dw ValerieGroup
+	dw OmastarFossilGroup
+	dw KabutopsFossilGroup
+	dw AerodactylFossilGroup
