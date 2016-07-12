@@ -269,7 +269,7 @@ KRIS EQU __enum__
 
 	trainerclass GRUNTF ; 24
 
-	trainerclass FOREIGNGRUNT ; 25
+	trainerclass JESSIE_JAMES ; 25
 
 	trainerclass POKEFANM ; 26
 	const WILLIAM

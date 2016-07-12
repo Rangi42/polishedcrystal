@@ -5730,6 +5730,17 @@ GruntMGroup:
 	db $ff ; end
 
 ; ================
+
+	; GRUNTM (31)
+	db "Grunt@"
+	db 0 ; normal
+
+	; party
+	db 39, GOLBAT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5810,16 +5821,19 @@ GruntFGroup:
 ; ================================
 
 
-ForeignGruntGroup:
+JessieJamesGroup:
 ; ================================
 ; ================
 
-	; FOREIGNGRUNT (1)
-	db "Grunt@"
+	; JESSIE_JAMES (1)
+	db "& James@"
 	db 0 ; normal
 
 	; party
-	db 39, GOLBAT
+	db 27, WEEZING
+	db 27, ARBOK
+	db 26, VICTREEBEL
+	db 31, MEOWTH
 
 	db $ff ; end
 

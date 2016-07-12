@@ -34,7 +34,7 @@
 	db "Hiker@"
 	db "Rocket@"
 	db "Rocket@"
-	db "Rocket@"
+	db "Jessie@"
 	db "#fan@"
 	db "#fan@"
 	db "Officer@"

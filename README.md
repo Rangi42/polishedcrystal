@@ -248,7 +248,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
-   * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
    * Eusine has a shiny Electrode
    * Lawrence has a shiny Charizard
    * Fly to the Rock Tunnel/Power Plant Pokémon Center

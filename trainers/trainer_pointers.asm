@@ -37,7 +37,7 @@ TrainerGroups: ; 0x39999
 	dw HikerGroup
 	dw GruntMGroup
 	dw GruntFGroup
-	dw ForeignGruntGroup
+	dw JessieJamesGroup
 	dw PokefanMGroup
 	dw PokefanFGroup
 	dw OfficerGroup

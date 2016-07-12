@@ -35,7 +35,7 @@
 	add_pic HikerPic
 	add_pic GruntmPic
 	add_pic GruntfPic
-	add_pic ForeignGruntPic
+	add_pic JessieJamesPic
 	add_pic PokefanmPic
 	add_pic PokefanfPic
 	add_pic OfficerPic

@@ -410,6 +410,7 @@ PoliwrathBackpic:    INCBIN "gfx/pics/poliwrath/back.2bpp.lz"
 SwimmermPic:         INCBIN "gfx/trainers/swimmer_m.2bpp.lz"
 NidorinoBackpic:     INCBIN "gfx/pics/nidorino/back.2bpp.lz"
 MysticalmanPic:      INCBIN "gfx/trainers/mysticalman.2bpp.lz"
+ValeriePic:          ; TODO
 CooltrainerfPic:     INCBIN "gfx/trainers/cooltrainer_f.2bpp.lz"
 ElectrodeFrontpic:   INCBIN "gfx/pics/electrode/front.2bpp.lz"
 ; 153fe3
@@ -428,6 +429,8 @@ ScytherBackpic:      INCBIN "gfx/pics/scyther/back.2bpp.lz"
 VileplumeBackpic:    INCBIN "gfx/pics/vileplume/back.2bpp.lz"
 HitmonchanBackpic:   INCBIN "gfx/pics/hitmonchan/back.2bpp.lz"
 JumpluffBackpic:     INCBIN "gfx/pics/jumpluff/back.2bpp.lz"
+TowerTycoonPic:      ; TODO
+GameFreakPic:        ; TODO
 CooltrainermPic:     INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz"
 BlastoiseBackpic:    INCBIN "gfx/pics/blastoise/back.2bpp.lz"
 MisdreavusBackpic:   INCBIN "gfx/pics/misdreavus/back.2bpp.lz"
@@ -741,8 +744,7 @@ RichBoyPic:          INCBIN "gfx/trainers/rich_boy.2bpp.lz"
 CowgirlPic:          INCBIN "gfx/trainers/cowgirl.2bpp.lz"
 HexManiacPic:        INCBIN "gfx/trainers/hex_maniac.2bpp.lz"
 BattleGirlPic:       INCBIN "gfx/trainers/battle_girl.2bpp.lz"
-ForeignGruntPic:     INCBIN "gfx/trainers/foreigngrunt.2bpp.lz"
-GameFreakPic:        INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz" ; TODO
+JessieJamesPic:      INCBIN "gfx/trainers/jessie_james.2bpp.lz"
 LyraPic:             INCBIN "gfx/trainers/lyra.2bpp.lz"
 LoreleiPic:          INCBIN "gfx/trainers/lorelei.2bpp.lz"
 AgathaPic:           INCBIN "gfx/trainers/agatha.2bpp.lz"
@@ -751,8 +753,6 @@ LeafPic:             INCBIN "gfx/trainers/leaf.2bpp.lz"
 BillPic:             INCBIN "gfx/trainers/bill.2bpp.lz"
 LawrencePic:         INCBIN "gfx/trainers/lawrence.2bpp.lz"
 GiovanniPic:         INCBIN "gfx/trainers/giovanni.2bpp.lz"
-TowerTycoonPic:      INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz" ; TODO
-ValeriePic:          INCBIN "gfx/trainers/cooltrainer_f.2bpp.lz" ; TODO
 OmastarFossilPic:    INCBIN "gfx/trainers/omastarfossil.2bpp.lz"
 KabutopsFossilPic:   INCBIN "gfx/trainers/kabutopsfossil.2bpp.lz"
 AerodactylFossilPic: INCBIN "gfx/trainers/aerodactylfossil.2bpp.lz"

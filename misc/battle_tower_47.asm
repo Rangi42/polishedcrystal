@@ -116,7 +116,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; HIKER
 	db MALE   ; GRUNTM
 	db FEMALE ; GRUNTF
-	db MALE   ; FOREIGNGRUNT
+	db MALE   ; JESSIE_JAMES
 	db MALE   ; POKEFANM
 	db FEMALE ; POKEFANF
 	db MALE   ; OFFICER

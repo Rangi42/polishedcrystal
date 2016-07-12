@@ -63,7 +63,7 @@ TrainerClassDVs: ; 270d6
 	db $AF, $7A ; hiker
 	db $DA, $AA ; gruntm
 	db $7A, $AA ; gruntf
-	db $DA, $AA ; foreigngrunt
+	db $AA, $AA ; jessie&james
 	db $AA, $AA ; pokefanm
 	db $5A, $AA ; pokefanf
 	db $DB, $DB ; officer
