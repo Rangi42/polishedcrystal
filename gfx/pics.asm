@@ -745,6 +745,8 @@ LeafPic:             INCBIN "gfx/trainers/leaf.2bpp.lz"
 BillPic:             INCBIN "gfx/trainers/bill.2bpp.lz"
 LawrencePic:         INCBIN "gfx/trainers/lawrence.2bpp.lz"
 GiovanniPic:         INCBIN "gfx/trainers/giovanni.2bpp.lz"
+SchoolgirlPic:       INCBIN "gfx/trainers/schoolgirl.2bpp.lz"
+CowgirlPic:          INCBIN "gfx/trainers/cowgirl.2bpp.lz"
 TowerTycoonPic:      INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz" ; TODO
 ValeriePic:          INCBIN "gfx/trainers/cooltrainer_f.2bpp.lz" ; TODO
 OmastarFossilPic:    INCBIN "gfx/trainers/omastarfossil.2bpp.lz"

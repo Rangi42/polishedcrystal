@@ -282,6 +282,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_OFTEN
 
+; Schoolgirl
+	db 0, 0 ; items
+	db 10 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_OFTEN
+
 ; Psychic T
 	db 0, 0 ; items
 	db 10 ; base reward
@@ -316,6 +322,12 @@ TrainerClassAttributes: ; 3959c
 	db 0, 0 ; items
 	db 16 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_AGGRESSIVE + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Cowgirl
+	db 0, 0 ; items
+	db 14 ; base reward
+	dw AI_BASIC + AI_OFFENSIVE + AI_OPPORTUNIST + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Sailor

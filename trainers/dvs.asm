@@ -74,12 +74,14 @@ TrainerClassDVs: ; 270d6
 	db $CA, $CF ; firebreather
 	db $AC, $FC ; juggler
 	db $CC, $CC ; schoolboy
+	db $7C, $CC ; schoolgirl
 	db $BB, $CF ; psychic
 	db $CC, $CC ; sage
 	db $7C, $CC ; medium
 	db $6E, $EE ; kimono girl
 	db $DD, $DD ; elder
 	db $CC, $CC ; gentleman
+	db $7C, $CC ; cowgirl
 	db $CC, $CC ; sailor
 	db $CC, $CC ; swimmerm
 	db $7C, $CC ; swimmerf

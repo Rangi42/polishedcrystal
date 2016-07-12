@@ -7661,6 +7661,24 @@ SchoolboyGroup:
 ; ================================
 
 
+SchoolgirlGroup:
+; ================================
+; ================
+
+	; SCHOOLGIRL (1)
+	db "Audrey@"
+	db 0 ; normal
+
+	; party
+	db 12, PARAS
+	db 15, SENTRET
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
 PsychicGroup:
 ; ================================
 ; ================
@@ -8231,6 +8249,24 @@ GentlemanGroup:
 
 	; party
 	db 45, GROWLITHE
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+CowgirlGroup:
+; ================================
+; ================
+
+	; COWGIRL (1)
+	db "Annie@"
+	db 0 ; normal
+
+	; party
+	db 18, MILTANK
+	db 18, TAUROS
 
 	db $ff ; end
 

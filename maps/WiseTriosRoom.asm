@@ -73,30 +73,30 @@ UnknownScript_0x985a3:
 	spriteface WISETRIOSROOM_SAGE3, LEFT
 	end
 
-TrainerSageGaku:
-	trainer EVENT_BEAT_SAGE_GAKU, ELDER, GAKU, SageGakuSeenText, SageGakuBeatenText, 0, SageGakuScript
+TrainerElderGaku:
+	trainer EVENT_BEAT_ELDER_GAKU, ELDER, GAKU, ElderGakuSeenText, ElderGakuBeatenText, 0, ElderGakuScript
 
-SageGakuScript:
+ElderGakuScript:
 	opentext
 	writetext UnknownText_0x98938
 	waitbutton
 	closetext
 	end
 
-TrainerSageMasa:
-	trainer EVENT_BEAT_SAGE_MASA, ELDER, MASA, SageMasaSeenText, SageMasaBeatenText, 0, SageMasaScript
+TrainerElderMasa:
+	trainer EVENT_BEAT_ELDER_MASA, ELDER, MASA, ElderMasaSeenText, ElderMasaBeatenText, 0, ElderMasaScript
 
-SageMasaScript:
+ElderMasaScript:
 	opentext
 	writetext UnknownText_0x98a35
 	waitbutton
 	closetext
 	end
 
-TrainerSageKoji:
-	trainer EVENT_BEAT_SAGE_KOJI, ELDER, KOJI, SageKojiSeenText, SageKojiBeatenText, 0, SageKojiScript
+TrainerElderKoji:
+	trainer EVENT_BEAT_ELDER_KOJI, ELDER, KOJI, ElderKojiSeenText, ElderKojiBeatenText, 0, ElderKojiScript
 
-SageKojiScript:
+ElderKojiScript:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
 	iftrue UnknownScript_0x9861b
 	pause 10
@@ -185,7 +185,7 @@ UnknownText_0x987af:
 	line "#mon."
 	done
 
-SageGakuSeenText:
+ElderGakuSeenText:
 	text "Legend has it that"
 	line "upon the emergence"
 
@@ -215,7 +215,7 @@ SageGakuSeenText:
 	line "inside!"
 	done
 
-SageGakuBeatenText:
+ElderGakuBeatenText:
 	text "Stronger than we"
 	line "thought? Perhaps…"
 	done
@@ -235,7 +235,7 @@ UnknownText_0x98938:
 	cont "while they sleep…"
 	done
 
-SageMasaSeenText:
+ElderMasaSeenText:
 	text "Can you be trusted"
 	line "with the truth?"
 
@@ -243,7 +243,7 @@ SageMasaSeenText:
 	line "your worthiness."
 	done
 
-SageMasaBeatenText:
+ElderMasaBeatenText:
 	text "…I will tell you"
 	line "the truth…"
 	done
@@ -298,12 +298,12 @@ UnknownText_0x98a35:
 	cont "came to be."
 	done
 
-SageKojiSeenText:
+ElderKojiSeenText:
 	text "Let me see your"
 	line "power!"
 	done
 
-SageKojiBeatenText:
+ElderKojiBeatenText:
 	text "Too strong!"
 	line "Why?"
 	done
@@ -371,6 +371,6 @@ WiseTriosRoom_MapEventHeader:
 	person_event SPRITE_SAGE, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x9859a, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_SAGE, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x9859d, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_SAGE, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x985a0, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
-	person_event SPRITE_SAGE, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSageGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	person_event SPRITE_SAGE, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSageMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	person_event SPRITE_SAGE, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSageKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	person_event SPRITE_SAGE, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerElderGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	person_event SPRITE_SAGE, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	person_event SPRITE_SAGE, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerElderKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2

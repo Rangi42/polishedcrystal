@@ -82,7 +82,7 @@ SageLiScript:
 	buttonsound
 	verbosegiveitem HM_FLASH
 	setevent EVENT_GOT_HM05_FLASH
-	setevent EVENT_BEAT_SAGE_LI
+	setevent EVENT_BEAT_ELDER_LI
 	writetext UnknownText_0x184d13
 	waitbutton
 	closetext

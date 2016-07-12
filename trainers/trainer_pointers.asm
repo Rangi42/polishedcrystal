@@ -48,12 +48,14 @@ TrainerGroups: ; 0x39999
 	dw FirebreatherGroup
 	dw JugglerGroup
 	dw SchoolboyGroup
+	dw SchoolgirlGroup
 	dw PsychicGroup
 	dw SageGroup
 	dw MediumGroup
 	dw KimonoGirlGroup
 	dw ElderGroup
 	dw GentlemanGroup
+	dw CowgirlGroup
 	dw SailorGroup
 	dw SwimmerMGroup
 	dw SwimmerFGroup

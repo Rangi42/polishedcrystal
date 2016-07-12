@@ -46,12 +46,14 @@
 	add_pic FirebreatherPic
 	add_pic JugglerPic
 	add_pic SchoolboyPic
+	add_pic SchoolgirlPic
 	add_pic PsychicTPic
 	add_pic SagePic
 	add_pic MediumPic
 	add_pic KimonoGirlPic
 	add_pic ElderPic
 	add_pic GentlemanPic
+	add_pic CowgirlPic
 	add_pic SailorPic
 	add_pic SwimmermPic
 	add_pic SwimmerfPic
