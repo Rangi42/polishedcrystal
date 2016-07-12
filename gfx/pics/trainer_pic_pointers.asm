@@ -74,6 +74,7 @@
 	add_pic PokemonProfPic
 	add_pic GameFreakPic
 	add_pic MysticalmanPic
+	add_pic LyraPic
 	add_pic LoreleiPic
 	add_pic AgathaPic
 	add_pic YellowPic

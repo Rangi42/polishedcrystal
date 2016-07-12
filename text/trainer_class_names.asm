@@ -73,6 +73,7 @@
 	db "#mon Prof.@"
 	db "Game Freak@"
 	db "Mystery Man@"
+	db "<PKMN> Trainer@"
 	db "Ex-Elite@"
 	db "Ex-Elite@"
 	db "<PKMN> Trainer@"

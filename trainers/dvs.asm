@@ -102,6 +102,7 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; pokemon prof
 	db $FF, $FF ; game freak
 	db $FF, $FF ; mysticalman
+	db $7F, $FF ; lyra
 	db $7F, $FF ; lorelei
 	db $7F, $FF ; agatha
 	db $7F, $FF ; yellow

@@ -76,6 +76,7 @@ TrainerGroups: ; 0x39999
 	dw PokemonProfGroup
 	dw GameFreakGroup
 	dw MysticalmanGroup
+	dw LyraGroup
 	dw LoreleiGroup
 	dw AgathaGroup
 	dw YellowGroup

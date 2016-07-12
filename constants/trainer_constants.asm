@@ -685,27 +685,29 @@ KRIS EQU __enum__
 	trainerclass MYSTICALMAN ; 4b
 	const EUSINE
 
-	trainerclass LORELEI ; 4c
+	trainerclass LYRA ; 4c
 
-	trainerclass AGATHA ; 4d
+	trainerclass LORELEI ; 4d
 
-	trainerclass YELLOW ; 4e
+	trainerclass AGATHA ; 4e
 
-	trainerclass BILL ; 4f
+	trainerclass YELLOW ; 4f
 
-	trainerclass LAWRENCE ; 50
+	trainerclass BILL ; 50
 
-	trainerclass GIOVANNI ; 51
+	trainerclass LAWRENCE ; 51
 
-	trainerclass TOWERTYCOON ; 52
+	trainerclass GIOVANNI ; 52
 
-	trainerclass VALERIE ; 53
+	trainerclass TOWERTYCOON ; 53
 
-	trainerclass OMASTAR_FOSSIL ; 54
+	trainerclass VALERIE ; 54
 
-	trainerclass KABUTOPS_FOSSIL ; 55
+	trainerclass OMASTAR_FOSSIL ; 55
 
-	trainerclass AERODACTYL_FOSSIL ; 56
+	trainerclass KABUTOPS_FOSSIL ; 56
+
+	trainerclass AERODACTYL_FOSSIL ; 57
 
 NUM_TRAINER_CLASSES EQU __enum__
 

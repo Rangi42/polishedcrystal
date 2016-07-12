@@ -742,6 +742,7 @@ CowgirlPic:          INCBIN "gfx/trainers/cowgirl.2bpp.lz"
 BattleGirlPic:       INCBIN "gfx/trainers/battle_girl.2bpp.lz"
 ForeignGruntPic:     INCBIN "gfx/trainers/foreigngrunt.2bpp.lz"
 GameFreakPic:        INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz" ; TODO
+LyraPic:             INCBIN "gfx/trainers/lyra.2bpp.lz"
 LoreleiPic:          INCBIN "gfx/trainers/lorelei.2bpp.lz"
 AgathaPic:           INCBIN "gfx/trainers/agatha.2bpp.lz"
 YellowPic:           INCBIN "gfx/trainers/yellow.2bpp.lz"
