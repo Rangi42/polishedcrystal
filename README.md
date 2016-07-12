@@ -49,6 +49,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Leafeon, Glaceon, Sylveon, Magnezone, Tangrowth, Porygon-Z, Munchlax, Togekiss, Yanmega, Honchkrow, Mismagius, Gliscor, Weavile, and Mamoswine
    * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
+   * Eevee evolves into Leafeon in Ilex Forest
+   * Eevee evolves into Glaceon in the Ice Path
+   * Magneton evolves into Magnezone in the Lighthouse
    * Eevee evolves into Sylveon with a Shiny Stone
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
    * Wild Mankey on Routes 9 and 42
@@ -74,7 +77,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Totodile in Yellow Forest (by Surfing)
    * Wild Pikachu in Yellow Forest know Fly or Surf
    * Wild Munchlax in Quiet Cave know Self-Destruct
-   * Wild Magikarp in Quiet Cave know Dragon Rage
+   * Wild Magikarp in Quiet Cave know Hydro Pump
+   * Wild Magikarp in Lake of Rage know Dragon Rage
    * Helix Fossil and Dome Fossil in Quiet Cave
    * Wild Shellder in Whirl Islands
    * Wild Octillery in Whirl Islands
@@ -98,6 +102,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Trade Dragonair for Chansey in Blackthorn City
    * Trade Pinsir for Heracross in Pewter City
    * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
+   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and encounter Mew
    * Wild Bellsprout may hold Gold Leaf
    * Wild Oddish may hold Silver Leaf
    * Wild Kadabra may hold TwistedSpoon
@@ -105,8 +110,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Wild Ditto may hold Metal Powder
    * Restore fossils at the Pewter Museum of Science
 * Add moves from future generations
-   * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
-   * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
+   * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Guillotine, Horn Drill, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Mirror Move, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
+   * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hex, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Night Slash, Poison Jab, Power Gem, Play Rough, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
    * Revised set of 60 TMs, 8 HMs, and 16 move tutors (one Silver Leaf per tutoring)
 * Modern battle mechanics:
    * Physical/Special split, with display
@@ -137,13 +142,15 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Added X Spcl. Def
    * Copied most trainer levels and rosters from HGSS
    * Restored the Goldenrod City PokéCom Center from the Japanese version
-   * Added Viridian Forest, Pewter Museum, and Cerulean Cave from RBY
+   * Added Viridian Forest, Pewter Museum, Pokémon Mansion, and Cerulean Cave from RBY
    * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
    * Cure poison when it reaches 1 HP outside a battle
 * Pokémon and move edits:
    * Cut is Steel-type, 60 power, 100% accuracy
+   * Sing has 75% accuracy (matching Lovely Kiss)
+   * Supersonic has 65% accuracy
    * Fly has 100% accuracy
    * Rock Smash has 75 power and is HM08
    * Guillotine is Steel-type
@@ -222,6 +229,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
+   * Two of Prof. Oak's aides give you items as you complete the Pokédex
    * Battle Lorelei in Ice Path
    * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
@@ -231,6 +239,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
+   * Odd Egg is always shiny, with an equal chance to be either gender
+   * Nidorina and Nidoqueen can breed
    * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
    * Prof. Oak asks for the player's gender and name together
    * Color-coded starter Poké Balls
@@ -238,13 +248,16 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
    * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
    * Promote the Wise Trio from Sages to Elders
-   * The foreign Rocket Grunt in Cerulean City uses the RBY Rocket sprite
    * Eusine has a shiny Electrode
    * Lawrence has a shiny Charizard
    * Fly to the Rock Tunnel/Power Plant Pokémon Center
    * Menu blurbs (descriptions) are off by default
    * Always show numbers in Pokédex, even in Johto order
+   * Access Silph Co. after restoring power to Kanto, and buy new Poké Balls
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
+   * Add four trainers to Ice Path
+   * Add four trainers to Victory Road
+   * Buy evolution stones in Celadon Dept. Store
    * Buy BlueSky Mail and Morph Mail in Goldenrod City
    * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
    * Buy Music Mail in Blackthorn City
@@ -256,7 +269,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Remove unused code and resources to make room for new stuff
 * Add animations for new moves
 * Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
-* Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and catch Mew
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -267,6 +279,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Double-Edge does 33% recoil damage
    * Flare Blitz does 33% recoil damage
    * Avalanche doubles damage if user is hit first
+   * Hex doubles damage if foe has a status condition
    * Low Kick's power is based on weight
    * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
    * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
@@ -328,9 +341,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
-   * Sell evolution stones in Celadon Dept. Store
    * Change in-game trades
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
+   * Battle with Giovanni either in Radio Tower or with Celebi time traveling
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
    * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
    * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
@@ -341,12 +354,9 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Special sprites for Pikachu that know Surf or Fly
    * Yellow Pikachu Surfing music
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
-   * Silph Co. lets you onto more floors after restoring power; you can buy Repeat, Timer, Quick, and Dusk Balls
    * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
    * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
-   * Add four Boarders/Skiers to Ice Path
-   * Add four Ace Trainers to Victory Road
 
 
 ## Long-term

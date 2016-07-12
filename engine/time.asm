@@ -232,14 +232,14 @@ CheckUnusedTwoDayTimer: ; 1150c
 
 ; XXX
 	ld hl, DailyFlags
-	set 2, [hl]
+	set 2, [hl] ; ENGINE_SPECIAL_WILDDATA
 	ret
 ; 11522
 
 ; XXX
 	and a
 	ld hl, DailyFlags
-	bit 2, [hl]
+	bit 2, [hl] ; ENGINE_SPECIAL_WILDDATA
 	ret nz
 	scf
 	ret

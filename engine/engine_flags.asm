@@ -202,11 +202,11 @@ ENDM
 	engine_flag DailyFlags2, 0 ; gym leader rematch 1
 	engine_flag DailyFlags2, 1 ; gym leader rematch 2
 	engine_flag DailyFlags2, 2 ; gym leader rematch 3
-	engine_flag DailyFlags2, 3 ; daily wonder trade
-	engine_flag DailyFlags2, 4 ; unused
-	engine_flag DailyFlags2, 5 ; unused
-	engine_flag DailyFlags2, 6 ; unused
-	engine_flag DailyFlags2, 7 ; unused
+	engine_flag DailyFlags2, 3 ; daily wonder trade 1
+	engine_flag DailyFlags2, 4 ; daily wonder trade 2
+	engine_flag DailyFlags2, 5 ; daily wonder trade 3
+	engine_flag DailyFlags2, 6 ; red in mt. silver
+	engine_flag DailyFlags2, 7 ; leaf in navel rock
 
 	engine_flag WeeklyFlags, 0 ; mt moon square clefairy  ; $58
 	engine_flag WeeklyFlags, 1 ; union cave lapras

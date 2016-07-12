@@ -9,6 +9,7 @@ const_value set 2
 	const CIANWOODCITY_ROCK5
 	const CIANWOODCITY_ROCK6
 	const CIANWOODCITY_POKEFAN_F
+	const CIANWOODCITY_ROCKET
 	const CIANWOODCITY_EUSINE
 	const CIANWOODCITY_SUICUNE
 
@@ -123,6 +124,9 @@ PokefanMScript_0x1a00b6:
 
 LassScript_0x1a00b9:
 	jumptextfaceplayer UnknownText_0x1a0394
+
+CianwoodCityRocketScript:
+	jumptextfaceplayer CianwoodCityRocketText
 
 UnknownScript_0x1a00bc:
 	jumptextfaceplayer UnknownText_0x1a03cc
@@ -273,7 +277,15 @@ UnknownText_0x1a0394:
 	line "mon."
 	done
 
-; possibly unused
+CianwoodCityRocketText:
+	text "This way is off-"
+	line "limits!"
+
+	para "Why? Mind your"
+	line "own business!"
+	done
+
+; unused
 UnknownText_0x1a03cc:
 	text "There are several"
 	line "islands between"
@@ -426,7 +438,7 @@ CianwoodCity_MapEventHeader:
 	signpost 29, 5, SIGNPOST_ITEM, CianwoodCityHiddenMaxEther
 
 .PersonEvents:
-	db 12
+	db 13
 	person_event SPRITE_STANDING_YOUNGSTER, 37, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, StandingYoungsterScript_0x1a00b3, -1
 	person_event SPRITE_POKEFAN_M, 33, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a00b6, -1
 	person_event SPRITE_LASS, 42, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a00b9, -1
@@ -437,5 +449,6 @@ CianwoodCity_MapEventHeader:
 	person_event SPRITE_ROCK, 27, 10, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	person_event SPRITE_ROCK, 19, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	person_event SPRITE_POKEFAN_F, 46, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a0084, -1
+	person_event SPRITE_ROCKET, 26, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRocketScript, EVENT_BEAT_CHUCK
 	person_event SPRITE_SUPER_NERD, 21, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
 	person_event SPRITE_SUICUNE, 14, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY

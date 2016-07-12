@@ -2636,8 +2636,9 @@ wVermilionCityTrigger::                      ds 1
 wSeagallopFerryVermilionGateTrigger::        ds 1
 wSeagallopFerryNavelGateTrigger::            ds 1
 wSeagallopFerryFarawayGateTrigger::          ds 1
+wRoute48Trigger::                            ds 1
 
-	ds 45
+	ds 44
 
 
 ;SECTION "Events", WRAMX, BANK [1]

@@ -217,6 +217,7 @@ Tileset33Anim:
 Tileset34Anim:
 Tileset35Anim:
 Tileset36Anim:
+Tileset41Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

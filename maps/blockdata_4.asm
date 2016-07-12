@@ -118,3 +118,12 @@ SeagallopFerryFarawayGate_BlockData:
 
 SilphCo2F_BlockData:
 	INCBIN "maps/SilphCo2F.blk"
+
+SilphCo3F_BlockData:
+	INCBIN "maps/SilphCo3F.blk"
+
+PokemonMansion1F_BlockData:
+	INCBIN "maps/PokemonMansion1F.blk"
+
+PokemonMansionB1F_BlockData:
+	INCBIN "maps/PokemonMansionB1F.blk"

@@ -37,11 +37,14 @@ SquirtleEggMoves:
 	db $ff
 
 PidgeyEggMoves:
+	db PECK
 	db FEINT_ATTACK
 	db FORESIGHT
 	db PURSUIT
 	db AIR_SLASH
 	db STEEL_WING
+	db CHARM
+	db EXTREMESPEED
 	db $ff
 
 RattataEggMoves:
@@ -77,6 +80,7 @@ SandshrewEggMoves:
 	db RAPID_SPIN
 	db SAFEGUARD
 	db COUNTER
+	db NIGHT_SLASH
 	db $ff
 
 NidoranFEggMoves:
@@ -102,6 +106,7 @@ ClefairyEggMoves:
 	db BELLY_DRUM
 	db METRONOME
 	db SPLASH
+	db SOFTBOILED
 	db $ff
 
 VulpixEggMoves:
@@ -111,6 +116,7 @@ VulpixEggMoves:
 	db HYPNOSIS
 	db FEINT_ATTACK
 	db EXTRASENSORY
+	db CHARM
 	db $ff
 
 JigglypuffEggMoves:
@@ -118,6 +124,7 @@ JigglypuffEggMoves:
 	db FEINT_ATTACK
 	db PERISH_SONG
 	db SLEEP_TALK
+	db MOONBLAST
 	db $ff
 
 ZubatEggMoves:
@@ -170,6 +177,7 @@ MeowthEggMoves:
 	db FLAIL
 	db HYPNOSIS
 	db TAIL_WHIP
+	db NIGHT_SLASH
 	db $ff
 
 PsyduckEggMoves:
@@ -193,6 +201,7 @@ MankeyEggMoves:
 	db ROCK_SLIDE
 	db COUNTER
 	db GUNK_SHOT
+	db NIGHT_SLASH
 	db $ff
 
 GrowlitheEggMoves:
@@ -226,6 +235,7 @@ MachopEggMoves:
 	db ENCORE
 	db MEDITATE
 	db LIGHT_SCREEN
+	db MACH_PUNCH
 	db $ff
 
 BellsproutEggMoves:
@@ -254,12 +264,12 @@ GeodudeEggMoves:
 PonytaEggMoves:
 	db CHARM
 	db DOUBLE_KICK
-	db HORN_DRILL
 	db HYPNOSIS
 	db MORNING_SUN
 	db THRASH
 	db QUICK_ATTACK
 	db FLAME_WHEEL
+	db EXTREMESPEED
 	db $ff
 
 SlowpokeEggMoves:
@@ -276,6 +286,7 @@ FarfetchDEggMoves:
 	db GUST
 	db QUICK_ATTACK
 	db STEEL_WING
+	db NIGHT_SLASH
 	db $ff
 
 DoduoEggMoves:
@@ -288,7 +299,6 @@ DoduoEggMoves:
 
 SeelEggMoves:
 	db DISABLE
-	db HORN_DRILL
 	db LICK
 	db PECK
 	db PERISH_SONG
@@ -319,12 +329,15 @@ GastlyEggMoves:
 	db HAZE
 	db PERISH_SONG
 	db SCARY_FACE
+	db NASTY_PLOT
+	db FEINT_ATTACK
 	db $ff
 
 OnixEggMoves:
 	db DEFENSE_CURL
 	db FLAIL
 	db ROCK_SLIDE
+	db EARTHQUAKE
 	db $ff
 
 DrowzeeEggMoves:
@@ -430,6 +443,7 @@ ScytherEggMoves:
 	db COUNTER
 	db SAFEGUARD
 	db LIGHT_SCREEN
+	db NIGHT_SLASH
 	db $ff
 
 PinsirEggMoves:
@@ -444,7 +458,6 @@ LaprasEggMoves:
 	db DRAGON_DANCE
 	db FORESIGHT
 	db FUTURE_SIGHT
-	db HORN_DRILL
 	db HEAL_BELL
 	db $ff
 
@@ -555,6 +568,7 @@ SpinarakEggMoves:
 	db TWINEEDLE
 	db SONIC_BOOM
 	db POISON_JAB
+	db NIGHT_SLASH
 	db $ff
 
 ChinchouEggMoves:
@@ -689,6 +703,7 @@ DunsparceEggMoves:
 	db RAGE
 	db ANCIENTPOWER
 	db ROCK_SLIDE
+	db HEX
 	db $ff
 
 GligarEggMoves:
@@ -697,6 +712,7 @@ GligarEggMoves:
 	db METAL_CLAW
 	db WING_ATTACK
 	db COUNTER
+	db NIGHT_SLASH
 	db $ff
 
 SnubbullEggMoves:
@@ -743,6 +759,7 @@ TeddiursaEggMoves:
 	db SEISMIC_TOSS
 	db COUNTER
 	db GUNK_SHOT
+	db NIGHT_SLASH
 	db $ff
 
 SlugmaEggMoves:

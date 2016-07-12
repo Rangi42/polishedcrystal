@@ -3,6 +3,9 @@ const_value set 2
 	const ROUTE47_YOUNGSTER
 	const ROUTE47_COOLTRAINER_M
 	const ROUTE47_COOLTRAINER_F
+	const ROUTE47_ROCKET1
+	const ROUTE47_ROCKET2
+	const ROUTE47_ROCKET3
 	const ROUTE47_POKE_BALL1
 	const ROUTE47_POKE_BALL2
 	const ROUTE47_POKE_BALL3
@@ -55,6 +58,39 @@ CooltrainerfKaeScript:
 	end_if_just_battled
 	opentext
 	writetext CooltrainerfKaeAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerGruntF6:
+	trainer EVENT_BEAT_ROCKET_GRUNTF_6, GRUNTF, 6, GruntF6SeenText, GruntF6BeatenText, 0, GruntF6Script
+
+GruntF6Script:
+	end_if_just_battled
+	opentext
+	writetext GruntF6AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerGruntM23:
+	trainer EVENT_BEAT_ROCKET_GRUNTM_23, GRUNTM, 23, GruntM23SeenText, GruntM23BeatenText, 0, GruntM23Script
+
+GruntM23Script:
+	end_if_just_battled
+	opentext
+	writetext GruntM23AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerGruntM26:
+	trainer EVENT_BEAT_ROCKET_GRUNTM_26, GRUNTM, 26, GruntM26SeenText, GruntM26BeatenText, 0, GruntM26Script
+
+GruntM26Script:
+	end_if_just_battled
+	opentext
+	writetext GruntM26AfterText
 	waitbutton
 	closetext
 	end
@@ -148,6 +184,60 @@ CooltrainerfKaeAfterText:
 	cont "battle!"
 	done
 
+GruntF6SeenText:
+	text "Why should we"
+	line "raise #mon like"
+	cont "ordinary trainers?"
+
+	para "We're Team Rocket!"
+	done
+
+GruntF6BeatenText:
+	text "Who are you!?"
+	done
+
+GruntF6AfterText:
+	text "If we treated"
+	line "every single"
+	cont "#mon well,"
+
+	para "how would we"
+	line "make money?"
+	done
+
+GruntM23SeenText:
+	text "Aww, are you here"
+	line "to save the cute"
+	cont "little #mon?"
+	done
+
+GruntM23BeatenText:
+	text "Ack!"
+	line "You're tough!"
+	done
+
+GruntM23AfterText:
+	text "It doesn't matter."
+	line "You can't beat"
+	cont "all of us!"
+	done
+
+GruntM26SeenText:
+	text "Stop meddling with"
+	line "our plans!"
+	done
+
+GruntM26BeatenText:
+	text "Just leave us"
+	line "alone…"
+	done
+
+GruntM26AfterText:
+	text "How we treat"
+	line "#mon is none"
+	cont "of your business!"
+	done
+
 Route47QuietCaveSignText:
 	text "West to"
 	line "Quiet Cave"
@@ -175,11 +265,14 @@ Route47_MapEventHeader:
 	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust
 
 .PersonEvents:
-	db 8
-	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, -1
-	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermThom, -1
-	person_event SPRITE_COOLTRAINER_F, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKae, -1
+	db 11
+	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermThom, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_COOLTRAINER_F, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKae, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 9, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_POKE_BALL, 28, 39, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47Revive, EVENT_ROUTE_47_REVIVE
 	person_event SPRITE_POKE_BALL, 32, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47MysticWater, EVENT_ROUTE_47_MYSTIC_WATER
 	person_event SPRITE_POKE_BALL, 20, 31, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47QuickClaw, EVENT_ROUTE_47_QUICK_CLAW

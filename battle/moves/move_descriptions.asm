@@ -10,7 +10,7 @@
 	dw ThunderpunchDescription
 	dw ScratchDescription
 	dw XScissorDescription
-	dw GuillotineDescription
+	dw NightSlashDescription
 	dw AirSlashDescription
 	dw SwordsDanceDescription
 	dw CutDescription
@@ -30,7 +30,7 @@
 	dw HeadbuttDescription
 	dw HornAttackDescription
 	dw FuryAttackDescription
-	dw HornDrillDescription
+	dw HexDescription
 	dw TackleDescription
 	dw BodySlamDescription
 	dw WrapDescription
@@ -268,6 +268,7 @@ CrabhammerDescription:
 SlashDescription:
 AeroblastDescription:
 CrossChopDescription:
+NightSlashDescription:
 ShadowClawDescription:
 StoneEdgeDescription:
 	db   "Has a high criti-"
@@ -578,10 +579,6 @@ XScissorDescription:
 	db   "Slashes foe with"
 	next "scythes or claws.@"
 
-GuillotineDescription:
-	db   "A one-hit KO,"
-	next "pincer attack.@"
-
 CutDescription:
 	db   "Cuts using claws,"
 	next "scythes, etc.@"
@@ -610,9 +607,9 @@ HornAttackDescription:
 	db   "An attack using a"
 	next "horn to jab.@"
 
-HornDrillDescription:
-	db   "A one-hit KO,"
-	next "drill attack.@"
+HexDescription:
+	db   "Damage doubles if"
+	next "foe has status.@"
 
 TackleDescription:
 	db   "A full-body charge"

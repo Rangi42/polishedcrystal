@@ -1,4 +1,6 @@
 const_value set 2
+	const ICEPATHB1F_BOARDER
+	const ICEPATHB1F_SKIER
 	const ICEPATHB1F_BOULDER1
 	const ICEPATHB1F_BOULDER2
 	const ICEPATHB1F_BOULDER3
@@ -66,6 +68,29 @@ IcePathB1F_MapScriptHeader:
 	end
 
 
+TrainerBoarderMax:
+	trainer EVENT_BEAT_BOARDER_MAX, BOARDER, MAX, BoarderMaxSeenText, BoarderMaxBeatenText, 0, BoarderMaxScript
+
+BoarderMaxScript:
+	end_if_just_battled
+	opentext
+	writetext BoarderMaxAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSkierBecky:
+	trainer EVENT_BEAT_SKIER_BECKY, SKIER, BECKY, SkierBeckySeenText, SkierBeckyBeatenText, 0, SkierBeckyScript
+
+SkierBeckyScript:
+	end_if_just_battled
+	opentext
+	writetext SkierBeckyAfterText
+	waitbutton
+	closetext
+	end
+
+
 IcePathB1FBoulder:
 	jumpstd strengthboulder
 
@@ -74,6 +99,34 @@ IcePathB1FIron:
 
 IcePathB1FHiddenMaxPotion:
 	dwb EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION, MAX_POTION
+
+
+BoarderMaxSeenText:
+	text "Blackthorn can't be"
+	line "much farther…"
+	done
+
+BoarderMaxBeatenText:
+	text "Wiped out!"
+	done
+
+BoarderMaxAfterText:
+	text "I'm not giving up!"
+	done
+
+SkierBeckySeenText:
+	text "I can see my"
+	line "breath freezing!"
+	done
+
+SkierBeckyBeatenText:
+	text "Achoo!"
+	done
+
+SkierBeckyAfterText:
+	text "Don't forget to"
+	line "wear a scarf!"
+	done
 
 
 IcePathBoulderFellThroughText:
@@ -105,7 +158,9 @@ IcePathB1F_MapEventHeader:
 	signpost 30, 17, SIGNPOST_ITEM, IcePathB1FHiddenMaxPotion
 
 .PersonEvents:
-	db 5
+	db 7
+	person_event SPRITE_ROCKER, 23, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
+	person_event SPRITE_BUENA, 24, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
 	person_event SPRITE_BOULDER, 7, 11, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_1
 	person_event SPRITE_BOULDER, 8, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_2
 	person_event SPRITE_BOULDER, 9, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_3

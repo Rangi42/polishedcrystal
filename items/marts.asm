@@ -173,9 +173,12 @@ Mart10: ; 16140
 	db $ff
 ; 16146
 
-; unused
 Mart11: ; 16146
-	db 0 ; # items
+	db 4 ; # items
+	db REPEAT_BALL
+	db TIMER_BALL
+	db QUICK_BALL
+	db DUSK_BALL
 	db $ff
 ; 1614c
 

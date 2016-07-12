@@ -9,6 +9,7 @@ const_value set 2
 	const ROUTE39_PSYCHIC_NORMAN
 	const ROUTE39_FRUIT_TREE
 	const ROUTE39_POKEFAN_F2
+	const ROUTE39_COWGIRL
 
 Route39_MapScriptHeader:
 .MapTriggers:
@@ -115,6 +116,17 @@ PokefanfRuthScript:
 	closetext
 	end
 
+TrainerCowgirlAnnie:
+	trainer EVENT_BEAT_COWGIRL_ANNIE, COWGIRL, ANNIE, CowgirlAnnieSeenText, CowgirlAnnieBeatenText, 0, CowgirlAnnieScript
+
+CowgirlAnnieScript:
+	end_if_just_battled
+	opentext
+	writetext CowgirlAnnieAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerSailorEugene:
 	trainer EVENT_BEAT_SAILOR_EUGENE, SAILOR, EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, SailorEugeneScript
 
@@ -185,6 +197,22 @@ Route39HiddenNugget:
 
 Route39MiltankText:
 	text "Miltank: Mooo!"
+	done
+
+CowgirlAnnieSeenText:
+	text "Hey! Don't scare"
+	line "the Miltank!"
+	done
+
+CowgirlAnnieBeatenText:
+	text "I spilled some"
+	line "milk…"
+	done
+
+CowgirlAnnieAfterText:
+	text "We make cheese"
+	line "and yogurt out"
+	cont "of Miltank milk."
 	done
 
 SailorEugeneSeenText:
@@ -364,7 +392,7 @@ Route39_MapEventHeader:
 	signpost 13, 5, SIGNPOST_ITEM, Route39HiddenNugget
 
 .PersonEvents:
-	db 10
+	db 11
 	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
 	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
 	person_event SPRITE_POKEFAN_F, 19, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
@@ -375,3 +403,4 @@ Route39_MapEventHeader:
 	person_event SPRITE_STANDING_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
 	person_event SPRITE_FRUIT_TREE, 3, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a5bf4, -1
 	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
+	person_event SPRITE_YELLOW, 14, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerCowgirlAnnie, -1

@@ -44,7 +44,7 @@ GetCurTreeFruit: ; 44041
 
 TryResetFruitTrees: ; 4404c
 	ld hl, DailyFlags
-	bit 4, [hl]
+	bit 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret nz
 	jp ResetFruitTrees
 ; 44055
@@ -71,7 +71,7 @@ rept 3
 endr
 	ld [hl], a
 	ld hl, DailyFlags
-	set 4, [hl]
+	set 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret
 ; 44078
 

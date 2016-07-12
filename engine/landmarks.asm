@@ -154,8 +154,8 @@ ENDM
 	landmark  84, 148, Route20Name
 	landmark  76, 148, SeafoamIslandsName
 	landmark  60, 148, CinnabarIslandName
-	landmark  62, 146, CinnabarVolcanoName
 	landmark  58, 146, PokemonMansionName
+	landmark  62, 146, CinnabarVolcanoName
 	landmark  60, 136, Route21Name
 	landmark  44,  84, Route22Name
 	landmark  36,  68, VictoryRoadName
@@ -212,10 +212,9 @@ VictoryRoadName:     db "Victory¯Road@"
 MtMoonName:          db "Mt.Moon@"
 RockTunnelName:      db "Rock Tunnel@"
 LavRadioTowerName:   db "Lavender¯Radio Tower@"
-SilphCoName:         db "Silph Co.@" ; unused
 SafariZoneName:      db "Safari Zone@"
 SeafoamIslandsName:  db "Seafoam¯Islands@"
-PokemonMansionName:  db "#mon¯Mansion@"
+PokemonMansionName:  db "Pokémon¯Mansion@"
 CinnabarVolcanoName: db "Cinnabar¯Volcano@"
 CeruleanCaveName:    db "Cerulean¯Cave@"
 Route1Name:          db "Route 1@"

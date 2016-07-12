@@ -23,7 +23,7 @@ ENDM
 	move THUNDERPUNCH, EFFECT_PARALYZE_HIT,       75, ELECTRIC,  100, 15,  10, PHYSICAL
 	move SCRATCH,      EFFECT_NORMAL_HIT,         40, NORMAL,    100, 35,   0, PHYSICAL
 	move X_SCISSOR,    EFFECT_NORMAL_HIT,         80, BUG,       100, 15,   0, PHYSICAL
-	move GUILLOTINE,   EFFECT_OHKO,                1, STEEL,      30,  5,   0, PHYSICAL
+	move NIGHT_SLASH,  EFFECT_NORMAL_HIT,         70, DARK,      100, 15,   0, PHYSICAL
 	move AIR_SLASH,    EFFECT_FLINCH_HIT,         75, FLYING,     95, 15,  30, SPECIAL
 	move SWORDS_DANCE, EFFECT_ATTACK_UP_2,         0, NORMAL,    100, 20,   0, STATUS
 	move CUT,          EFFECT_NORMAL_HIT,         60, STEEL,     100, 30,   0, PHYSICAL
@@ -43,7 +43,7 @@ ENDM
 	move HEADBUTT,     EFFECT_FLINCH_HIT,         70, NORMAL,    100, 15,  30, PHYSICAL
 	move HORN_ATTACK,  EFFECT_NORMAL_HIT,         65, NORMAL,    100, 25,   0, PHYSICAL
 	move FURY_ATTACK,  EFFECT_MULTI_HIT,          15, NORMAL,     85, 20,   0, PHYSICAL
-	move HORN_DRILL,   EFFECT_OHKO,                1, NORMAL,     30,  5,   0, PHYSICAL
+	move HEX,          EFFECT_NORMAL_HIT,         65, GHOST,     100, 10,   0, SPECIAL
 	move TACKLE,       EFFECT_NORMAL_HIT,         50, NORMAL,    100, 35,   0, PHYSICAL
 	move BODY_SLAM,    EFFECT_PARALYZE_HIT,       85, NORMAL,    100, 15,  30, PHYSICAL
 	move WRAP,         EFFECT_TRAP,               15, NORMAL,     90, 20,   0, PHYSICAL
@@ -58,8 +58,8 @@ ENDM
 	move BITE,         EFFECT_FLINCH_HIT,         60, DARK,      100, 25,  30, PHYSICAL
 	move GROWL,        EFFECT_ATTACK_DOWN,         0, NORMAL,    100, 40,   0, STATUS
 	move ROAR,         EFFECT_WHIRLWIND,           0, NORMAL,    100, 20,   0, STATUS
-	move SING,         EFFECT_SLEEP,               0, NORMAL,     55, 15,   0, STATUS
-	move SUPERSONIC,   EFFECT_CONFUSE,             0, NORMAL,     55, 20,   0, STATUS
+	move SING,         EFFECT_SLEEP,               0, NORMAL,     75, 15,   0, STATUS
+	move SUPERSONIC,   EFFECT_CONFUSE,             0, NORMAL,     65, 20,   0, STATUS
 	move SONIC_BOOM,   EFFECT_STATIC_DAMAGE,      20, NORMAL,     90, 20,   0, SPECIAL
 	move DISABLE,      EFFECT_DISABLE,             0, NORMAL,    100, 20,   0, STATUS
 	move ACID,         EFFECT_DEFENSE_DOWN_HIT,   40, POISON,    100, 30,  10, SPECIAL
@@ -176,7 +176,7 @@ ENDM
 	move SUPER_FANG,   EFFECT_SUPER_FANG,          1, NORMAL,     90, 10,   0, PHYSICAL
 	move SLASH,        EFFECT_NORMAL_HIT,         70, NORMAL,    100, 20,   0, PHYSICAL
 	move SUBSTITUTE,   EFFECT_SUBSTITUTE,          0, NORMAL,    100, 10,   0, STATUS
-	move STRUGGLE,     EFFECT_RECOIL_HIT,         50, NORMAL,    100,  1,   0, PHYSICAL
+	move STRUGGLE,     EFFECT_RECOIL_HIT,         50, UNKNOWN_T, 100,  1,   0, PHYSICAL
 	move SKETCH,       EFFECT_SKETCH,              0, NORMAL,    100,  1,   0, STATUS
 	move TRIPLE_KICK,  EFFECT_TRIPLE_KICK,        10, FIGHTING,   90, 10,   0, PHYSICAL
 	move THIEF,        EFFECT_THIEF,              60, DARK,      100, 25, 100, PHYSICAL

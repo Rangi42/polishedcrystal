@@ -16,7 +16,7 @@ CooltrainerMScript_0x71670:
 	opentext
 	writetext UnknownText_0x716ce
 	checkcode VAR_DEXCAUGHT
-	if_greater_than 248, UnknownScript_0x7167e
+	if_greater_than 252, UnknownScript_0x7167e
 	waitbutton
 	closetext
 	end
@@ -149,12 +149,12 @@ UnknownText_0x71895:
 	text "Who, me? I'm the"
 	line "Programmer."
 
-	para "Play the slot"
-	line "machines!"
+	para "Use the Wonder"
+	line "Trade Hub!"
 	done
 
 UnknownText_0x718ca:
-	text "Aren't the Twins"
+	text "Isn't Bugsy"
 	line "adorable?"
 
 	para "Jasmine's pretty"

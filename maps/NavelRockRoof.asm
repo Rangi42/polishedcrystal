@@ -39,7 +39,7 @@ Leaf:
 	special Special_FadeOutMusic
 	faceplayer
 	opentext
-	writetext LeafText
+	writetext LeafAfterText
 	waitbutton
 	closetext
 	special Special_FadeBlackQuickly
@@ -55,16 +55,16 @@ Leaf:
 
 LeafText:
 	text "<......><......>"
-	line "<......><......>"
+	line "<......><......>!"
 	done
 
 LeafWinLossText:
-	text "…"
+	text "…!"
 	done
 
-.Text3:
-	text $56
-	line $56
+LeafAfterText:
+	text "<......><......>"
+	line "<......><......>"
 	done
 
 NavelRockRoof_MapEventHeader:

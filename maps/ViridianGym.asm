@@ -150,6 +150,20 @@ BlueOutroText:
 
 	para "Don't you forget"
 	line "it!"
+
+	para "I train at the"
+	line "Fighting Dojo in"
+
+	para "Saffron City on"
+	line "Mondays."
+
+	para "All of the Gym"
+	line "Leaders show up"
+	cont "there sometimes."
+
+	para "Meet me there and"
+	line "I'll show you my"
+	cont "real power!"
 	done
 
 LeaderBlueEpilogueText:

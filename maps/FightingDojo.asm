@@ -406,8 +406,7 @@ ChuckText_WinLoss:
 JasmineText_WinLoss:
 PryceText_WinLoss:
 ClairText_WinLoss:
-	text "Good battle!"
-	line "TODO"
+	text "I lost again…"
 	done
 
 BrockText_Done:
@@ -426,8 +425,8 @@ ChuckText_Done:
 JasmineText_Done:
 PryceText_Done:
 ClairText_Done:
-	text "I'm done for today."
-	line "TODO"
+	text "I'm done battling"
+	line "for today."
 	done
 
 FightingDojo_MapEventHeader:

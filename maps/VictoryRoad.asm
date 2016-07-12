@@ -1,12 +1,16 @@
 const_value set 2
 	const VICTORYROAD_SILVER
+	const VICTORYROAD_LAWRENCE
+	const VICTORYROAD_COOLTRAINERM1
+	const VICTORYROAD_COOLTRAINERF1
+	const VICTORYROAD_COOLTRAINERF2
+	const VICTORYROAD_COOLTRAINERM2
 	const VICTORYROAD_POKE_BALL1
 	const VICTORYROAD_POKE_BALL2
 	const VICTORYROAD_POKE_BALL3
 	const VICTORYROAD_POKE_BALL4
 	const VICTORYROAD_POKE_BALL5
 	const VICTORYROAD_POKE_BALL6
-	const VICTORYROAD_LAWRENCE
 
 VictoryRoad_MapScriptHeader:
 .MapTriggers:
@@ -109,8 +113,8 @@ UnknownScript_0x7451f:
 	end
 
 LawrenceUpScript:
-	;special SpecialBirdsCheck
-	;iffalse .End
+	special SpecialBirdsCheck
+	iffalse .End
 	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
@@ -129,7 +133,8 @@ LawrenceUpScript:
 	disappear VICTORYROAD_LAWRENCE
 	dotrigger $2
 	waitsfx
-	special RestartMapMusic
+	;special RestartMapMusic
+	playmusic MUSIC_VICTORY_ROAD
 .End
 	end
 
@@ -228,6 +233,50 @@ LawrenceLeftLeaveMovementData:
 	step_down
 	step_down
 	step_end
+
+TrainerCooltrainermMatt:
+	trainer EVENT_BEAT_COOLTRAINERM_MATT, COOLTRAINERM, MATT, CooltrainermMattSeenText, CooltrainermMattBeatenText, 0, CooltrainermMattScript
+
+CooltrainermMattScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermMattAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfJoanne:
+	trainer EVENT_BEAT_COOLTRAINERF_JOANNE, COOLTRAINERF, JOANNE, CooltrainerfJoanneSeenText, CooltrainerfJoanneBeatenText, 0, CooltrainerfJoanneScript
+
+CooltrainerfJoanneScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfJoanneAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfKotori:
+	trainer EVENT_BEAT_COOLTRAINERF_KOTORI, COOLTRAINERF, KOTORI, CooltrainerfKotoriSeenText, CooltrainerfKotoriBeatenText, 0, CooltrainerfKotoriScript
+
+CooltrainerfKotoriScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfKotoriAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainermRingo:
+	trainer EVENT_BEAT_COOLTRAINERM_RINGO, COOLTRAINERM, RINGO, CooltrainermRingoSeenText, CooltrainermRingoBeatenText, 0, CooltrainermRingoScript
+
+CooltrainermRingoScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermRingoAfterText
+	waitbutton
+	closetext
+	end
 
 VictoryRoadTMEarthquake:
 	itemball TM_EARTHQUAKE
@@ -468,7 +517,7 @@ LawrenceSilverWingText:
 	line "ning."
 
 	para "Or so the legends"
-	line"say."
+	line "say."
 	done
 
 LawrenceGoodbyeText:
@@ -483,6 +532,79 @@ LawrenceGoodbyeText:
 	line "collection anew."
 
 	para "Farewell."
+	done
+
+CooltrainermMattSeenText:
+	text "I can see you're"
+	line "good! Let me see"
+	cont "exactly how good!"
+	done
+
+CooltrainermMattBeatenText:
+	text "I had a chance…"
+	done
+
+CooltrainermMattAfterText:
+	text "I concede, you're"
+	line "better than me!"
+	done
+
+CooltrainerfJoanneSeenText:
+	text "Victory Road is"
+	line "the final test"
+	cont "for trainers!"
+	done
+
+CooltrainerfJoanneBeatenText:
+	text "Aiyah!"
+	done
+
+CooltrainerfJoanneAfterText:
+	text "You earned the"
+	line "right to be on"
+	cont "Victory Road!"
+	done
+
+CooltrainerfKotoriSeenText:
+	text "There's supposed"
+	line "to be a Moltres"
+	cont "roosting here."
+
+	para "I'm going to catch"
+	line "it!"
+	done
+
+CooltrainerfKotoriBeatenText:
+	text "I'd have won if"
+	line "I had a legendary"
+	cont "#mon…"
+	done
+
+CooltrainerfKotoriAfterText:
+	text "Did somebody"
+	line "capture Moltres"
+	cont "already?"
+	done
+
+CooltrainermRingoSeenText:
+	text "If you can get"
+	line "through here, you"
+
+	para "can challenge the"
+	line "Elite Four!"
+	done
+
+CooltrainermRingoBeatenText:
+	text "No!"
+	line "Inconceivable!"
+	done
+
+CooltrainermRingoAfterText:
+	text "I can beat you"
+	line "when it comes to"
+
+	para "knowledge about"
+	line "#mon!"
 	done
 
 VictoryRoad_MapEventHeader:
@@ -515,12 +637,16 @@ VictoryRoad_MapEventHeader:
 	signpost 65, 3, SIGNPOST_ITEM, VictoryRoadHiddenFullHeal
 
 .PersonEvents:
-	db 8
+	db 12
 	person_event SPRITE_SILVER, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	person_event SPRITE_LAWRENCE, 62, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	person_event SPRITE_COOLTRAINER_M, 52, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermMatt, -1
+	person_event SPRITE_COOLTRAINER_F, 35, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfJoanne, -1
+	person_event SPRITE_COOLTRAINER_F, 27, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfKotori, -1
+	person_event SPRITE_COOLTRAINER_M, 13, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainermRingo, -1
 	person_event SPRITE_POKE_BALL, 28, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadTMEarthquake, EVENT_VICTORY_ROAD_TM_EARTHQUAKE
 	person_event SPRITE_POKE_BALL, 48, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadMaxRevive, EVENT_VICTORY_ROAD_MAX_REVIVE
 	person_event SPRITE_POKE_BALL, 29, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadFullRestore, EVENT_VICTORY_ROAD_FULL_RESTORE
 	person_event SPRITE_POKE_BALL, 48, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadFullHeal, EVENT_VICTORY_ROAD_FULL_HEAL
 	person_event SPRITE_POKE_BALL, 38, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadHPUp, EVENT_VICTORY_ROAD_HP_UP
 	person_event SPRITE_POKE_BALL, 19, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadRazorFang, EVENT_VICTORY_ROAD_RAZOR_FANG
-	person_event SPRITE_LAWRENCE, 62, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD

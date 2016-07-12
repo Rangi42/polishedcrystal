@@ -150,9 +150,10 @@ CinnabarIsland_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
+	db 3
 	warp_def $f, $b, 1, CINNABAR_POKECENTER_1F
 	warp_def $9, $12, 1, CINNABAR_VOLCANO_1F
+	warp_def $7, $7, 1, POKEMON_MANSION_1F
 
 .XYTriggers:
 	db 0
