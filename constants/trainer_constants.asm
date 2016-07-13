@@ -428,6 +428,10 @@ KRIS EQU __enum__
 
 	trainerclass SCHOOLGIRL ; 30
 	const AUDREY
+	const ELIZA
+	const FAITH
+	const SARAH
+	const ISABEL
 
 	trainerclass PSYCHIC_T ; 31
 	const NATHAN
@@ -442,8 +446,14 @@ KRIS EQU __enum__
 	const GILBERT
 	const JARED
 	const RODNEY
+	const LEON
 
 	trainerclass HEX_MANIAC ; 32
+	const TAMARA
+	const ASHLEY
+	const AMY
+	const LUNA
+	const NATALIE
 
 	trainerclass SAGE ; 33
 	const CHOW
@@ -486,9 +496,12 @@ KRIS EQU __enum__
 	const MILTON
 
 	trainerclass RICH_BOY ; 38
+	const WINSTON
+	const GERALD
 
 	trainerclass COWGIRL ; 39
 	const ANNIE
+	const BETH
 
 	trainerclass SAILOR ; 3a
 	const EUGENE
@@ -598,11 +611,17 @@ KRIS EQU __enum__
 	const WAI
 
 	trainerclass BATTLE_GIRL ; 42
+	const SUBARU
+	const KAGAMI
+	const DIANE
+	const RONDA
+	const PADMA
 
 	trainerclass TEACHER ; 43
 	const COLETTE
 	const HILLARY
 	const SHIRLEY
+	const KATHRYN
 
 	trainerclass GUITARIST ; 44
 	const CLYDE
@@ -646,6 +665,7 @@ KRIS EQU __enum__
 	const THOM
 	const MATT
 	const RINGO
+	const HENRI
 
 	trainerclass COOLTRAINERF ; 47
 	const GWEN
@@ -683,6 +703,9 @@ KRIS EQU __enum__
 	trainerclass POKEMON_PROF ; 4a
 
 	trainerclass GAME_FREAK ; 4b
+	const MORIMOTO
+	const NISHINO
+	const ISHIHARA
 
 	trainerclass MYSTICALMAN ; 4c
 	const EUSINE

@@ -7703,6 +7703,50 @@ SchoolgirlGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCHOOLGIRL (2)
+	db "Eliza@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; SCHOOLGIRL (3)
+	db "Faith@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; SCHOOLGIRL (4)
+	db "Sarah@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; SCHOOLGIRL (5)
+	db "Isabel@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7893,11 +7937,77 @@ PsychicGroup:
 	db $ff ; end
 
 ; ================
+
+	; PSYCHIC_T (13)
+	db "Leon@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
 HexManiacGroup:
 ; ================================
+; ================
+
+	; HEX_MANIAC (1)
+	db "Tamara@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC (2)
+	db "Ashley@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC (3)
+	db "Amy@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC (4)
+	db "Luna@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC (5)
+	db "Natalie@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -8292,6 +8402,28 @@ GentlemanGroup:
 RichBoyGroup:
 ; ================================
 ; ================
+
+	; RICH_BOY (1)
+	db "Winston@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; RICH_BOY (2)
+	db "Gerald@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8306,6 +8438,17 @@ CowgirlGroup:
 	; party
 	db 18, MILTANK
 	db 18, TAUROS
+
+	db $ff ; end
+
+; ================
+
+	; COWGIRL (2)
+	db "Beth@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
 
 	db $ff ; end
 
@@ -9566,6 +9709,61 @@ BlackbeltGroup:
 BattleGirlGroup:
 ; ================================
 ; ================
+
+	; BATTLE_GIRL (1)
+	db "Subaru@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; BATTLE_GIRL (2)
+	db "Kagami@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; BATTLE_GIRL (3)
+	db "Diane@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; BATTLE_GIRL (4)
+	db "Ronda@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; BATTLE_GIRL (5)
+	db "Padma@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9603,6 +9801,17 @@ TeacherGroup:
 
 	; party
 	db 35, JIGGLYPUFF
+
+	db $ff ; end
+
+; ================
+
+	; TEACHER (4)
+	db "Kathryn@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
 
 	db $ff ; end
 
@@ -10272,6 +10481,17 @@ CooltrainerMGroup:
 		db SWIFT
 		db STEEL_WING
 		db ROCK_SMASH
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM (27)
+	db "Henri@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
 
 	db $ff ; end
 
