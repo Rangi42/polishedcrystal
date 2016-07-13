@@ -1,4 +1,6 @@
 const_value set 2
+	const POKEMONMANSIONB1F_SCIENTIST
+	const POKEMONMANSIONB1F_PAPER
 	const POKEMONMANSIONB1F_POKE_BALL1
 	const POKEMONMANSIONB1F_POKE_BALL2
 	const POKEMONMANSIONB1F_POKE_BALL3
@@ -21,6 +23,9 @@ ScientistBraydonScript:
 	waitbutton
 	closetext
 	end
+
+PokemonMansionDiaryScript:
+	jumptext PokemonMansionDiaryText
 
 PokemonMansionB1FCarbos:
 	itemball CARBOS
@@ -86,6 +91,35 @@ ScientistBraydonAfterText:
 	line "research."
 	done
 
+PokemonMansionDiaryText:
+	text "Diary: July 5"
+
+	para "A new #mon was"
+	line "discovered deep in"
+	cont "the jungle."
+
+	para "Diary: July 10"
+
+	para "We christened the"
+	line "newly discovered"
+	cont "#mon, Mew."
+
+	para "Diary: Feb. 6"
+
+	para "Mew gave birth."
+	line "We named the"
+	cont "newborn Mewtwo."
+
+	para "Diary: Sept. 1"
+
+	para "Mewtwo is far"
+	line "too powerful."
+
+	para "We have failed to"
+	line "curb its vicious"
+	cont "tendencies…"
+	done
+
 PokemonMansionB1FFoundRareCandyText:
 	text "<PLAYER> found"
 	line "@"
@@ -134,9 +168,10 @@ PokemonMansionB1F_MapEventHeader:
 	signpost 17, 9, SIGNPOST_READ, PokemonMansionB1FFlowerPot
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_SCIENTIST, 5, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistBraydon, -1
+	person_event SPRITE_PAPER, 22, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokemonMansionDiaryScript, -1
 	person_event SPRITE_POKE_BALL, 5, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, PokemonMansionB1FCarbos, EVENT_POKEMON_MANSION_B1F_CARBOS
 	person_event SPRITE_POKE_BALL, 6, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, PokemonMansionB1FCalcium, EVENT_POKEMON_MANSION_B1F_CALCIUM
-	person_event SPRITE_POKE_BALL, 24, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, PokemonMansionB1FHPUp, EVENT_POKEMON_MANSION_B1F_HP_UP
+	person_event SPRITE_POKE_BALL, 28, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, PokemonMansionB1FHPUp, EVENT_POKEMON_MANSION_B1F_HP_UP
 	person_event SPRITE_POKE_BALL, 23, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, PokemonMansionB1FOldSeaMap, EVENT_POKEMON_MANSION_B1F_OLD_SEA_MAP
