@@ -1080,3 +1080,8 @@ trainerpic: macro
 	db trainerpic_command
 	db \1 ; trainer
 	endm
+
+	enum respawn_one_offs_command
+respawn_one_offs: macro
+	db respawn_one_offs_command
+	endm
