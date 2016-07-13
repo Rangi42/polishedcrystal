@@ -16,7 +16,6 @@
 * Poketto for Giovanni's sprite
 * Nic7C5 for Yellow's sprite
 * BettyNewbie for Leaf's sprite
-* Eraclito and Pioxys for Bill's sprite
 * Fo0xerz for Lawrence III's sprite (devamped by me)
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place
 
