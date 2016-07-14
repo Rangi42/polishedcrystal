@@ -16,7 +16,7 @@ CliffEdgeGateReceptionistScript:
 ProfOaksAide2Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
+	checkevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 	iftrue .Explain
 	writetext ProfOaksAide2HiText
 	waitbutton
@@ -32,14 +32,14 @@ ProfOaksAide2Script:
 .HereYouGo
 	writetext ProfOaksAide2HereYouGoText
 	waitbutton
-	giveitem LUCKY_EGG
+	giveitem EXP_SHARE
 	waitsfx
 	iffalse .NoRoom
-	writetext ProfOaksAide2LuckyEggText
+	writetext ProfOaksAide2ExpShareText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
+	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
 	writetext ProfOaksAide2ExplainText
 	waitbutton
@@ -124,17 +124,18 @@ ProfOaksAide2NoRoomText:
 	cont "room for this."
 	done
 
-ProfOaksAide2LuckyEggText:
+ProfOaksAide2ExpShareText:
 	text "<PLAYER> received"
-	line "Lucky Egg."
+	line "Exp.Share."
 	done
 
 ProfOaksAide2ExplainText:
-	text "That Lucky Egg"
+	text "That Exp.Share"
 	line "helps a #mon"
 
 	para "gain experience"
-	line "when it's held."
+	line "without even"
+	cont "battling."
 
 	para "Use it to com-"
 	line "plete the #dex!"
@@ -181,5 +182,5 @@ CliffEdgeGate_MapEventHeader:
 .PersonEvents:
 	db 3
 	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CliffEdgeGateReceptionistScript, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide2Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide2Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST

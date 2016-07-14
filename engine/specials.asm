@@ -191,6 +191,9 @@ SpecialsPointers:: ; c029
 	add_special FindItemInPCOrBag
 	add_special Special_InitialSetDSTFlag
 	add_special Special_InitialClearDSTFlag
+
+; Polished Crystal
+	add_special GiveShinyDittoEgg
 	add_special SpecialNone
 ; c224
 

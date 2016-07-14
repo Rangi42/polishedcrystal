@@ -73,15 +73,25 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GimmeTheScale
 	yesorno
 	iffalse .refused
-	verbosegiveitem EXP_SHARE
-	iffalse .full
+	checkcode VAR_PARTYCOUNT
+	if_equal PARTY_LENGTH, .party_full
+	special GiveShinyDittoEgg
+	opentext
+	writetext MrPokemonText_GotShinyDittoEgg
+	playsound SFX_KEY_ITEM
+	waitsfx
 	takeitem RED_SCALE
 	jump .AlwaysNewDiscoveries
 
 .refused
 	writetext MrPokemonText_Disappointed
 	waitbutton
-.full
+	closetext
+	end
+
+.party_full
+	writetext MrPokemonText_PartyFull
+	waitbutton
 	closetext
 	end
 
@@ -342,8 +352,18 @@ MrPokemonText_GimmeTheScale:
 	line "care to trade it?"
 
 	para "I can offer this"
-	line "Exp.Share I got"
+	line "#mon Egg I got"
 	cont "from Prof.Oak."
+	done
+
+MrPokemonText_GotShinyDittoEgg:
+	text "<PLAYER> received"
+	line "Egg!"
+	done
+
+MrPokemonText_PartyFull:
+	text "You don't have any"
+	line "room for this!"
 	done
 
 MrPokemonText_Disappointed:

@@ -231,7 +231,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
    * Find Surfing Pikachu Doll in Yellow Forest
-   * Two of Prof. Oak's aides give you items as you complete the Pokédex
+   * Three of Prof. Oak's aides give you items as you complete the Pokédex
+   * An aide gives you the Exp.Share for catching 50 Pokémon, and Mr. Pokémon gives you a shiny Ditto egg for the Red Scale
    * Battle Lorelei in Ice Path
    * Battle Agatha in Soul House
    * Battle Bill after catching all three legendary beasts
@@ -355,7 +356,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
-   * Gift a shiny Ditto somewhere (maybe in Pokémon Mansion)
 
 
 ## Long-term
