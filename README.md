@@ -204,7 +204,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add bridge to Victory Road from HGSS
    * Vermilion City boardwalk uses planks from RBY
    * Prof. Oak's lab has FRLG/HGSS appearance
-   * Add crater to Route 3 from HGSS
+   * Add meteorite debris to Route 3 from HGSS
+   * Add craters to Mt. Moon from FRLG
    * Add fountain and benches to Cerulean City from HGSS
    * Add generator to Power Plant from FRLG
    * Add fountain to Celadon City from HGSS
