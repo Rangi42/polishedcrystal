@@ -147,13 +147,12 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Added Elder trainer class from HGSS
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
    * Cure poison when it reaches 1 HP outside a battle
-* Pokémon and move edits:
+* Pokémon and move edits (not in faithful version):
    * Cut is Steel-type, 60 power, 100% accuracy
    * Sing has 75% accuracy (matching Lovely Kiss)
    * Supersonic has 65% accuracy
    * Fly has 100% accuracy
-   * Rock Smash has 75 power and is HM08
-   * Guillotine is Steel-type
+   * Rock Smash has 75 power
    * Pain Split is Ghost-type
    * Butterfree is Bug/Psychic
    * Persian is Normal/Dark

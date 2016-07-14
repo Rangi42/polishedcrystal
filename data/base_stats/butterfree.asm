@@ -3,7 +3,11 @@
 	db  60,  45,  50,  70,  90,  80
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
+	db BUG, FLYING
+else
 	db BUG, PSYCHIC
+endc
 	db 45 ; catch rate
 	db 160 ; base exp
 	db NO_ITEM ; item 1

@@ -3,7 +3,11 @@
 	db 100,  70,  70,  45,  65,  65
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
+	db NORMAL, NORMAL
+else
 	db NORMAL, GROUND
+endc
 	db 190 ; catch rate
 	db 75 ; base exp
 	db NO_ITEM ; item 1

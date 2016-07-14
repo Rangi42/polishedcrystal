@@ -2,6 +2,7 @@ PYTHON := python
 MD5 := md5sum -c --quiet
 
 NAME = polishedcrystal
+FAITHFUL =
 
 
 .SUFFIXES:
@@ -34,6 +35,8 @@ roms := $(NAME).gbc
 
 all: $(roms)
 crystal: $(NAME).gbc
+faithful: FAITHFUL += -DFAITHFUL
+faithful: $(NAME).gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
@@ -42,7 +45,7 @@ clean:
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
-	rgbasm -o $@ $<
+	rgbasm $(FAITHFUL) -o $@ $<
 
 $(NAME).gbc: $(crystal_obj)
 	rgblink -n $(NAME).sym -m $(NAME).map -o $@ $^

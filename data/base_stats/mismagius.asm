@@ -3,7 +3,11 @@
 	db  60,  60,  60, 105, 105, 105
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
+	db GHOST, GHOST
+else
 	db GHOST, FAIRY
+endc
 	db 45 ; catch rate
 	db 187 ; base exp
 	db NO_ITEM ; item 1
