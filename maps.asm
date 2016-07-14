@@ -305,7 +305,6 @@ INCLUDE "maps/CeruleanGym.asm"
 INCLUDE "maps/CeruleanMart.asm"
 INCLUDE "maps/Route10PokeCenter1F.asm"
 INCLUDE "maps/PowerPlant.asm"
-INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/SaffronGym.asm"
 INCLUDE "maps/SaffronMart.asm"
@@ -528,6 +527,7 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
+INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/YellowForest.asm"
 INCLUDE "maps/YellowForestGate.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"

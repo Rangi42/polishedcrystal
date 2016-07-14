@@ -1471,7 +1471,7 @@ MagnemiteEvosAttacks:
 	db 0 ; no more level-up moves
 
 MagnetonEvosAttacks:
-	db EVOLVE_LOCATION, LIGHTHOUSE, MAGNEZONE
+	db EVOLVE_LOCATION, ROCK_TUNNEL, MAGNEZONE
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 5, SUPERSONIC

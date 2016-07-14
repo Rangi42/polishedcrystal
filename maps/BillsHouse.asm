@@ -13,22 +13,30 @@ GrampsScript_0x189538:
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iftrue .JustShowedSomething
-	checkevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
-	iftrue .GotThunderstone
+	checkevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
+	iftrue .GotShinyStone
 	checkevent EVENT_MET_BILLS_GRANDPA
 	iftrue .MetGrandpa
 	writetext BillsGrandpaIntroText
 	buttonsound
 	setevent EVENT_MET_BILLS_GRANDPA
 .MetGrandpa:
+	checkevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
+	iftrue .ShowedTogepi
+	checkevent EVENT_SHOWED_MURKROW_TO_BILLS_GRANDPA
+	iftrue .ShowedMurkrow
+	checkevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
+	iftrue .ShowedOddish
+	checkevent EVENT_SHOWED_JIGGLYPUFF_TO_BILLS_GRANDPA
+	iftrue .ShowedJigglypuff
 	checkevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
 	iftrue .ShowedPichu
 	checkevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
 	iftrue .ShowedGrowlithe
 	checkevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
 	iftrue .ShowedStaryu
-	checkevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
-	iftrue .ShowedOddish
+	checkevent EVENT_SHOWED_BELLSPROUT_TO_BILLS_GRANDPA
+	iftrue .ShowedBellsprout
 	checkevent EVENT_SHOWED_KANGASKHAN_TO_BILLS_GRANDPA
 	iftrue .ShowedKangaskhan
 	writetext BillsGrandpaKangaskhanText
@@ -45,7 +53,7 @@ GrampsScript_0x189538:
 	jump .ShowedKangaskhan
 
 .GotEverstone:
-	writetext BillsGrandpaOddishText
+	writetext BillsGrandpaBellsproutText
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
@@ -53,10 +61,10 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse .SaidNo
-	if_not_equal ODDISH, .WrongPokemon
+	if_not_equal BELLSPROUT, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
-	jump .ShowedOddish
+	setevent EVENT_SHOWED_BELLSPROUT_TO_BILLS_GRANDPA
+	jump .ShowedBellsprout
 
 .GotLeafStone:
 	writetext BillsGrandpaStaryuText
@@ -100,6 +108,62 @@ GrampsScript_0x189538:
 	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
 	jump .ShowedPichu
 
+.GotThunderstone:
+	writetext BillsGrandpaJigglypuffText
+	buttonsound
+	writetext BillsGrandpaAskToSeeMonText
+	yesorno
+	iffalse .SaidNo
+	scall .ExcitedToSee
+	special Special_BillsGrandfather
+	iffalse .SaidNo
+	if_not_equal JIGGLYPUFF, .WrongPokemon
+	scall .CorrectPokemon
+	setevent EVENT_SHOWED_JIGGLYPUFF_TO_BILLS_GRANDPA
+	jump .ShowedJigglypuff
+
+.GotMoonStone:
+	writetext BillsGrandpaOddishText
+	buttonsound
+	writetext BillsGrandpaAskToSeeMonText
+	yesorno
+	iffalse .SaidNo
+	scall .ExcitedToSee
+	special Special_BillsGrandfather
+	iffalse .SaidNo
+	if_not_equal ODDISH, .WrongPokemon
+	scall .CorrectPokemon
+	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
+	jump .ShowedOddish
+
+.GotSunStone:
+	writetext BillsGrandpaMurkrowText
+	buttonsound
+	writetext BillsGrandpaAskToSeeMonText
+	yesorno
+	iffalse .SaidNo
+	scall .ExcitedToSee
+	special Special_BillsGrandfather
+	iffalse .SaidNo
+	if_not_equal MURKROW, .WrongPokemon
+	scall .CorrectPokemon
+	setevent EVENT_SHOWED_MURKROW_TO_BILLS_GRANDPA
+	jump .ShowedMurkrow
+
+.GotDuskStone:
+	writetext BillsGrandpaTogepiText
+	buttonsound
+	writetext BillsGrandpaAskToSeeMonText
+	yesorno
+	iffalse .SaidNo
+	scall .ExcitedToSee
+	special Special_BillsGrandfather
+	iffalse .SaidNo
+	if_not_equal TOGEPI, .WrongPokemon
+	scall .CorrectPokemon
+	setevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
+	jump .ShowedTogepi
+
 .ShowedKangaskhan:
 	checkevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	iftrue .GotEverstone
@@ -111,7 +175,7 @@ GrampsScript_0x189538:
 	closetext
 	end
 
-.ShowedOddish:
+.ShowedBellsprout:
 	checkevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotLeafStone
 	scall .ReceiveItem
@@ -145,10 +209,54 @@ GrampsScript_0x189538:
 	end
 
 .ShowedPichu:
+	checkevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
+	iftrue .GotThunderstone
 	scall .ReceiveItem
 	verbosegiveitem THUNDERSTONE
 	iffalse .BagFull
 	setevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
+	setevent EVENT_GAVE_KURT_APRICORNS
+	closetext
+	end
+
+.ShowedJigglypuff:
+	checkevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
+	iftrue .GotMoonStone
+	scall .ReceiveItem
+	verbosegiveitem MOON_STONE
+	iffalse .BagFull
+	setevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
+	setevent EVENT_GAVE_KURT_APRICORNS
+	closetext
+	end
+
+.ShowedOddish:
+	checkevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
+	iftrue .GotSunStone
+	scall .ReceiveItem
+	verbosegiveitem SUN_STONE
+	iffalse .BagFull
+	setevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
+	setevent EVENT_GAVE_KURT_APRICORNS
+	closetext
+	end
+
+.ShowedMurkrow:
+	checkevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
+	iftrue .GotDuskStone
+	scall .ReceiveItem
+	verbosegiveitem DUSK_STONE
+	iffalse .BagFull
+	setevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
+	setevent EVENT_GAVE_KURT_APRICORNS
+	closetext
+	end
+
+.ShowedTogepi:
+	scall .ReceiveItem
+	verbosegiveitem SHINY_STONE
+	iffalse .BagFull
+	setevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
 	closetext
 	end
 
@@ -179,7 +287,7 @@ GrampsScript_0x189538:
 	closetext
 	end
 
-.GotThunderstone:
+.GotShinyStone:
 	writetext BillsGrandpaShownAllThePokemonText
 	waitbutton
 	closetext
@@ -273,6 +381,34 @@ BillsGrandpaKangaskhanText:
 	line "belly pouch."
 	done
 
+BillsGrandpaTogepiText:
+	text "Do you know of a"
+	line "#mon that has a"
+
+	para "shell covered in"
+	line "red and blue"
+	cont "triangles?"
+
+	para "It's supposed to"
+	line "be a symbol of"
+	cont "good luck."
+	done
+
+BillsGrandpaMurkrowText:
+	text "Do you know of a"
+	line "bird #mon that"
+
+	para "has a crooked"
+	line "yellow beak and"
+	cont "black feathers?"
+
+	para "I heard that it"
+	line "appears at night."
+
+	para "I would quite"
+	line "like to see it."
+	done
+
 BillsGrandpaOddishText:
 	text "Ah, my grandson"
 	line "mentioned a round,"
@@ -280,6 +416,22 @@ BillsGrandpaOddishText:
 	para "blue #mon that"
 	line "has leaves growing"
 	cont "on its head."
+	done
+
+BillsGrandpaJigglypuffText:
+	text "Bill told me about"
+	line "a pink #mon"
+
+	para "with a hypnotic"
+	line "singing voice."
+	done
+
+BillsGrandpaBellsproutText:
+	text "My grandson Bill"
+	line "mentioned a green"
+
+	para "#mon that walks"
+	line "on its roots."
 	done
 
 BillsGrandpaStaryuText:

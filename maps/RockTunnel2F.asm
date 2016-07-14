@@ -19,6 +19,9 @@ RockTunnel2FThunderStone:
 RockTunnel2FTMThunderWave:
 	itemball TM_THUNDER_WAVE
 
+MapRockTunnel2FLodestoneScript:
+	jumptext MapRockTunnel2FLodestoneText
+
 RockTunnel2FHiddenMaxEther:
 	dwb EVENT_ROCK_TUNNEL_2F_HIDDEN_MAX_ETHER, MAX_ETHER
 
@@ -27,6 +30,14 @@ RockTunnel2FRock:
 
 RockTunnel2FBoulder:
 	jumpstd strengthboulder
+
+MapRockTunnel2FLodestoneText:
+	text "The lodestone is"
+	line "smooth and warm."
+
+	para "It has a faint"
+	line "aura of static."
+	done
 
 RockTunnel2F_MapEventHeader:
 	; filler
@@ -41,8 +52,9 @@ RockTunnel2F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 1
-	signpost 18, 16, SIGNPOST_ITEM, RockTunnel2FHiddenMaxEther
+	db 2
+	signpost 19, 15, SIGNPOST_READ, MapRockTunnel2FLodestoneScript
+	signpost 23, 10, SIGNPOST_ITEM, RockTunnel2FHiddenMaxEther
 
 .PersonEvents:
 	db 6

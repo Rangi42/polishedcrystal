@@ -51,7 +51,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
    * Eevee evolves into Leafeon in Ilex Forest
    * Eevee evolves into Glaceon in the Ice Path
-   * Magneton evolves into Magnezone in the Lighthouse
+   * Magneton evolves into Magnezone in Rock Tunnel
    * Eevee evolves into Sylveon with a Shiny Stone
    * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
    * Wild Mankey on Routes 9 and 42
@@ -238,6 +238,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Lawrence III after catching all three legendary birds, and get the Silver Wing
    * Battle Green after Red on Navel Rock
    * The old man in Pewter City gives you Old Amber
+   * Bill's grandpa gives you one of each evolutionary stone
    * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
