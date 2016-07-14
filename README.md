@@ -206,6 +206,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Prof. Oak's lab has FRLG/HGSS appearance
    * Add meteorite debris to Route 3 from HGSS
    * Add craters to Mt. Moon from FRLG
+   * Use Rock Tunnel cave tiles from FRLG (devamped by Mateo)
    * Add fountain and benches to Cerulean City from HGSS
    * Add generator to Power Plant from FRLG
    * Add fountain to Celadon City from HGSS

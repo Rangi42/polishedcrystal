@@ -206,6 +206,30 @@ Tileset40Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
+Tileset42Anim:
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
+	dw VTiles2 tile $30, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw VTiles2 tile $30, WriteTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  TileAnimationPalette
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw VTiles2 tile $31, WriteTileToBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw VTiles2 tile $31, WriteTileFromBuffer
+	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoneTileAnimation
+
 Tileset04Anim:
 Tileset05Anim:
 Tileset06Anim:
