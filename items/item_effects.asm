@@ -440,7 +440,15 @@ endr
 	jr .not_ditto
 
 .ditto
+	ld a, [BattleType]
+	cp BATTLETYPE_KANTO_LEGEND
+	jr z, .mew
 	ld a, DITTO
+	ld [TempEnemyMonSpecies], a
+	jr .load_data
+
+.mew
+	ld a, MEW
 	ld [TempEnemyMonSpecies], a
 	jr .load_data
 
