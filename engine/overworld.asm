@@ -1335,8 +1335,10 @@ Group18Sprites:
 Group19Sprites:
 ; Route28
 ; SilverCaveOutside
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
+; FarawayIsland
+; FarawayJungle
+	db SPRITE_MONSTER
+	db SPRITE_SAILOR
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI

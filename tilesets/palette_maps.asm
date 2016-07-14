@@ -7,7 +7,6 @@ Tileset02PalMap:
 INCLUDE "tilesets/02_palette_map.asm"
 
 Tileset03PalMap:
-Tileset40PalMap:
 INCLUDE "tilesets/03_palette_map.asm"
 
 Tileset04PalMap:
@@ -100,6 +99,9 @@ INCLUDE "tilesets/31_palette_map.asm"
 
 Tileset39PalMap:
 INCLUDE "tilesets/39_palette_map.asm"
+
+Tileset40PalMap:
+INCLUDE "tilesets/40_palette_map.asm"
 
 Tileset41PalMap:
 INCLUDE "tilesets/41_palette_map.asm"

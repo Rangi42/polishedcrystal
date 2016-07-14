@@ -364,11 +364,10 @@ MAP_NONE   EQU 0
 	mapgroup NAVEL_ROCK_OUTSIDE,                         16, 13 ;  5
 	mapgroup NAVEL_ROCK_INSIDE,                          45, 20 ;  6
 	mapgroup NAVEL_ROCK_ROOF,                             7,  8 ;  7
-	mapgroup FARAWAY_ISLAND,                              7,  7 ;  8
-	mapgroup FARAWAY_JUNGLE,                              7,  7 ;  9
+	mapgroup FARAWAY_ISLAND,                             23, 17 ;  8
+	mapgroup FARAWAY_JUNGLE,                             12, 14 ;  9
 	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  10
 	mapgroup SEAGALLOP_FERRY_NAVEL_GATE,                  6,  7 ;  11
-	mapgroup SEAGALLOP_FERRY_FARAWAY_GATE,                6,  7 ;  12
 
 	newgroup                                                    ; 20
 

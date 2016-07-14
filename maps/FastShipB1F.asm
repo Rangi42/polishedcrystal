@@ -209,7 +209,7 @@ SchoolboyRickyScript:
 FastShipB1FTMBodySlam:
 	itemball TM_BODY_SLAM
 
-FashShipB1FTrashcan:
+FastShipB1FTrashcan:
 	jumpstd trashcan
 
 MovementData_0x76871:
@@ -470,7 +470,7 @@ FastShipB1F_MapEventHeader:
 
 .Signposts:
 	db 1
-	signpost 9, 27, SIGNPOST_READ, FashShipB1FTrashcan
+	signpost 9, 27, SIGNPOST_READ, FastShipB1FTrashcan
 
 .PersonEvents:
 	db 13

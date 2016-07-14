@@ -24,6 +24,10 @@ INCLUDE "maps/blockdata_2.asm"
 SECTION "Map Blockdata 3", ROMX, BANK[MAPS_3]
 
 INCLUDE "maps/blockdata_3.asm"
+
+
+SECTION "Map Blockdata 4", ROMX
+
 INCLUDE "maps/blockdata_4.asm"
 
 
@@ -547,7 +551,6 @@ INCLUDE "maps/FarawayIsland.asm"
 INCLUDE "maps/FarawayJungle.asm"
 INCLUDE "maps/SeagallopFerryVermilionGate.asm"
 INCLUDE "maps/SeagallopFerryNavelGate.asm"
-INCLUDE "maps/SeagallopFerryFarawayGate.asm"
 INCLUDE "maps/SilphCo2F.asm"
 INCLUDE "maps/SilphCo3F.asm"
 INCLUDE "maps/CinnabarVolcano1F.asm"

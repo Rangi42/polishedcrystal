@@ -255,8 +255,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Always show numbers in Pokédex, even in Johto order
    * Access Silph Co. after restoring power to Kanto, and buy new Poké Balls
    * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
-   * Add four trainers to Ice Path
-   * Add four trainers to Victory Road
+   * Add four Boarders and Skiers to Ice Path
+   * Add four Ace Trainers to Victory Road
    * Buy evolution stones in Celadon Dept. Store
    * Buy BlueSky Mail and Morph Mail in Goldenrod City
    * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
@@ -267,8 +267,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## To do:
 
 * Remove unused code and resources to make room for new stuff
-* Add animations for new moves
-* Use event-exclusive moves and RBY-only TMs to pad out learnsets, or use some as location-exclusives
+* Add custom animations for new moves
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -303,7 +302,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Move Relearner that accepts Gold Leaves
 * Fix bugs:
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
-   * Gym Leader rematch sprites don't face correctly (spriteface command issue?)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix delay before last text box when Wonder Trading
 * Increased difficulty:
@@ -319,7 +317,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
    * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
    * Add Young Couple and Double Team trainer classes
-   * Add female Schoolkids? (replace Schoolboys)
    * Add river to Route 46 from HGSS
    * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
@@ -341,7 +338,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
    * Color party/day-care sprites by species
-   * Change in-game trades
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Battle with Giovanni either in Radio Tower or with Celebi time traveling
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)

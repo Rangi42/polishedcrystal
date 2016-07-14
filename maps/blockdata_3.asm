@@ -249,4 +249,3 @@ BattleTowerOutside_BlockData:
 
 GoldenrodDeptStoreRoof_BlockData:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
-
