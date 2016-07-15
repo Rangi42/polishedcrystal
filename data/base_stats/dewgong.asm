@@ -1,7 +1,12 @@
 	db DEWGONG ; 087
 
+if DEF(FAITHFUL)
 	db  90,  70,  80,  70,  70,  95
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  90,  70,  80,  70,  80,  95
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, ICE
 	db 75 ; catch rate

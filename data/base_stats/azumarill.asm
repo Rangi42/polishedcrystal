@@ -1,11 +1,20 @@
 	db AZUMARILL ; 184
 
+if DEF(FAITHFUL)
 	db 100,  50,  80,  50,  60,  80
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 100, 100,  80,  50,  90,  80
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, FAIRY
 	db 75 ; catch rate
+if DEF(FAITHFUL)
 	db 153 ; base exp
+else
+	db 183 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender

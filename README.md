@@ -148,6 +148,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
    * Cure poison when it reaches 1 HP outside a battle
 * Pokémon and move edits (not in faithful version):
+   * Many base stat changes, mostly based on [Drayano's Sacred Gold/Storm
+     Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/)
    * Cut is Steel-type, 60 power, 100% accuracy
    * Sing has 75% accuracy (matching Lovely Kiss)
    * Supersonic has 65% accuracy
@@ -156,6 +158,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Pain Split is Ghost-type
    * Butterfree is Bug/Psychic
    * Persian is Normal/Dark
+   * Farfetch'd is Fighting/Flying
    * Ninetales is Fire/Ghost
    * Golduck is Water/Psychic
    * Noctowl is Flying/Psychic
@@ -225,7 +228,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Yellow Forest replaces the Johto Safari Zone
    * Cherrygrove Bay connects Cherrygrove City and Route 32
    * Individual party/day-care icons for each Pokémon
-   * Politoed has 80 (+10) Speed to match its total with Poliwrath
    * Lugia and Ho-Oh know their signature moves when encountered at level 60
    * Rematch the Elite Four
    * Battle Yellow from the Pokémon Adventures manga in Yellow Forest

@@ -1,7 +1,12 @@
 	db SUDOWOODO ; 185
 
+if DEF(FAITHFUL)
 	db  70, 100, 115,  30,  30,  65
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  75, 115, 130,  30,  30,  80
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ROCK, ROCK
 	db 65 ; catch rate

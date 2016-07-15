@@ -1,7 +1,12 @@
 	db NOCTOWL ; 164
 
+if DEF(FAITHFUL)
 	db 100,  50,  50,  70,  76,  96
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 100,  50,  50,  70,  86,  96
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db NORMAL, FLYING

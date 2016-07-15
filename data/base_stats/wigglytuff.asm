@@ -1,11 +1,20 @@
 	db WIGGLYTUFF ; 040
 
+if DEF(FAITHFUL)
 	db 140,  70,  45,  45,  85,  50
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 148,  70,  55,  45,  85,  65
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db NORMAL, FAIRY
 	db 50 ; catch rate
+if DEF(FAITHFUL)
 	db 109 ; base exp
+else
+	db 129 ; base exp
+endc
 	db BERRY ; item 1
 	db BERRY ; item 2
 	db 191 ; gender

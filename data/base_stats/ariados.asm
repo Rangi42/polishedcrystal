@@ -1,7 +1,12 @@
 	db ARIADOS ; 168
 
+if DEF(FAITHFUL)
 	db  70,  90,  70,  40,  60,  60
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  70,  90,  70,  80,  60,  60
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db BUG, POISON
 	db 90 ; catch rate

@@ -1,11 +1,20 @@
 	db ONIX ; 095
 
+if DEF(FAITHFUL)
 	db  35,  45, 160,  70,  30,  45
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  35,  80, 160,  70,  30,  45
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ROCK, GROUND
 	db 45 ; catch rate
+if DEF(FAITHFUL)
 	db 108 ; base exp
+else
+	db 128 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db HARD_STONE ; item 2
 	db 127 ; gender

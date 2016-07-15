@@ -1,11 +1,20 @@
 	db BELLOSSOM ; 182
 
+if DEF(FAITHFUL)
 	db  75,  80,  95,  50,  90, 100
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  75,  80,  95,  50, 100, 110
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db GRASS, GRASS
 	db 45 ; catch rate
+if DEF(FAITHFUL)
 	db 184 ; base exp
+else
+	db 192 ; base exp
+endc
 	db SILVER_LEAF ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender

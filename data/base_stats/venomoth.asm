@@ -1,7 +1,12 @@
 	db VENOMOTH ; 049
 
+if DEF(FAITHFUL)
 	db  70,  65,  60,  90,  90,  75
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  70,  65,  60,  90, 115,  75
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db BUG, POISON
 	db 75 ; catch rate

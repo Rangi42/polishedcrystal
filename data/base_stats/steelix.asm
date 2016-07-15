@@ -1,7 +1,12 @@
 	db STEELIX ; 208
 
+if DEF(FAITHFUL)
 	db  75,  85, 200,  30,  55,  65
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  75,  90, 200,  30,  55,  65
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db STEEL, GROUND
 	db 25 ; catch rate

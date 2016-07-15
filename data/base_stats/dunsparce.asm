@@ -1,7 +1,12 @@
 	db DUNSPARCE ; 206
 
+if DEF(FAITHFUL)
 	db 100,  70,  70,  45,  65,  65
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 105,  80,  70,  45,  65,  65
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db NORMAL, NORMAL

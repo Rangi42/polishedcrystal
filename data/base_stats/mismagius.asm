@@ -1,7 +1,12 @@
 	db MISMAGIUS ; 429
 
+if DEF(FAITHFUL)
 	db  60,  60,  60, 105, 105, 105
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  60,  60,  60, 110, 110, 110
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db GHOST, GHOST

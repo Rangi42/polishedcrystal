@@ -1,7 +1,12 @@
 	db LEDIAN ; 166
 
+if DEF(FAITHFUL)
 	db  55,  35,  50,  85,  55, 110
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  55,  95,  50,  85,  35, 110
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db BUG, FLYING

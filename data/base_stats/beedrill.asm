@@ -1,11 +1,20 @@
 	db BEEDRILL ; 015
 
+if DEF(FAITHFUL)
 	db  65,  90,  40,  75,  45,  80
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  65, 100,  40, 115,  45,  90
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db BUG, POISON
 	db 45 ; catch rate
+if DEF(FAITHFUL)
 	db 159 ; base exp
+else
+	db 184 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
 	db 127 ; gender

@@ -1,7 +1,12 @@
 	db HONCHKROW ; 430
 
+if DEF(FAITHFUL)
 	db 100, 125,  52,  71, 105,  52
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 105, 125,  52,  71, 105,  52
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db DARK, FLYING
 	db 30 ; catch rate

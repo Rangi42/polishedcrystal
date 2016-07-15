@@ -1,11 +1,20 @@
 	db VICTREEBEL ; 071
 
+if DEF(FAITHFUL)
 	db  80, 105,  65,  70, 100,  70
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  80, 115,  65,  70, 110,  70
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db GRASS, POISON
 	db 45 ; catch rate
+if DEF(FAITHFUL)
 	db 191 ; base exp
+else
+	db 199 ; base exp
+endc
 	db GOLD_LEAF ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender

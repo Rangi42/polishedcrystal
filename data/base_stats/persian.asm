@@ -1,7 +1,12 @@
 	db PERSIAN ; 053
 
+if DEF(FAITHFUL)
 	db  65,  70,  60, 115,  65,  65
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  65,  90,  60, 115,  65,  65
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db NORMAL, NORMAL
