@@ -8444,7 +8444,18 @@ CowgirlGroup:
 ; ================
 
 	; COWGIRL (2)
-	db "Beth@"
+	db "April@"
+	db 0 ; normal
+
+	; party
+	db 50, DITTO ; TODO
+
+	db $ff ; end
+
+; ================
+
+	; COWGIRL (3)
+	db "Daniela@"
 	db 0 ; normal
 
 	; party

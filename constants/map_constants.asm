@@ -426,16 +426,6 @@ MAP_NONE   EQU 0
 	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 14
 	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
 	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
-	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 17
-	mapgroup ROUTE_47,                                   19, 39 ; 18
-	mapgroup CLIFF_CAVE,                                 20,  7 ; 19
-	mapgroup ROUTE_48,                                   11, 18 ; 20
-	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 21
-	mapgroup YELLOW_FOREST,                              25, 29 ; 22
-	mapgroup QUIET_CAVE_1F,                              18, 18 ; 23
-	mapgroup QUIET_CAVE_B1F,                             18, 18 ; 24
-	mapgroup QUIET_CAVE_B2F,                             18, 18 ; 25
-	mapgroup QUIET_CAVE_B3F,                             18, 18 ; 26
 
 	newgroup                                                    ; 23
 
@@ -492,6 +482,16 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 17
 	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 18
 	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 19
+	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 20
+	mapgroup ROUTE_47,                                   19, 39 ; 21
+	mapgroup CLIFF_CAVE,                                 20,  7 ; 22
+	mapgroup ROUTE_48,                                   11, 18 ; 23
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 24
+	mapgroup YELLOW_FOREST,                              25, 29 ; 25
+	mapgroup QUIET_CAVE_1F,                              18, 18 ; 26
+	mapgroup QUIET_CAVE_B1F,                             18, 18 ; 27
+	mapgroup QUIET_CAVE_B2F,                             18, 18 ; 28
+	mapgroup QUIET_CAVE_B3F,                             18, 18 ; 29
 
 	newgroup                                                    ; 26
 
