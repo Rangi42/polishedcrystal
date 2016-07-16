@@ -374,7 +374,7 @@ UnknownText_0x185386:
 	done
 
 UnknownText_0x185433:
-	text "When the Brass"
+	text "When the Gong"
 	line "Tower burned down,"
 
 	para "three nameless"

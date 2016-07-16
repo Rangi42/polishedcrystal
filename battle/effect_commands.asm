@@ -9377,6 +9377,7 @@ BattleCommand_BellyDrum: ; 37c1a
 	push bc
 	call AnimateCurrentMove
 	pop bc
+	callab GetHalfMaxHP
 	callab SubtractHPFromUser
 	call UpdateUserInParty
 	ld a, 5

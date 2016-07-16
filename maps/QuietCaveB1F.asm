@@ -1,4 +1,6 @@
 const_value set 2
+	const QUIETCAVEB1F_BATTLE_GIRL
+	const QUIETCAVEB1F_SUPER_NERD
 	const QUIETCAVEB1F_POKE_BALL1
 	const QUIETCAVEB1F_POKE_BALL2
 
@@ -8,6 +10,17 @@ QuietCaveB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerBattleGirlKagami:
+	trainer EVENT_BEAT_BATTLE_GIRL_KAGAMI, BATTLE_GIRL, KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText, 0, BattleGirlKagamiScript
+
+BattleGirlKagamiScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlKagamiAfterText
+	waitbutton
+	closetext
+	end
 
 TrainerPokemaniacAidan:
 	trainer EVENT_BEAT_POKEMANIAC_AIDAN, POKEMANIAC, AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText, 0, PokemaniacAidanScript
@@ -28,6 +41,21 @@ QuietCaveB1FElixir:
 
 QuietCaveB1FHiddenHyperPotion:
 	dwb EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION, HYPER_POTION
+
+BattleGirlKagamiSeenText:
+	text "Don't disturb my"
+	line "training!"
+	done
+
+BattleGirlKagamiBeatenText:
+	text "Not good enough…"
+	done
+
+BattleGirlKagamiAfterText:
+	text "I come here to"
+	line "train in peace"
+	cont "and solitude."
+	done
 
 PokemaniacAidanSeenText:
 	text "My #mon!"
@@ -72,7 +100,8 @@ QuietCaveB1F_MapEventHeader:
 	signpost 33, 26, SIGNPOST_ITEM, QuietCaveB1FHiddenHyperPotion
 
 .PersonEvents:
-	db 3
+	db 4
+	person_event SPRITE_COOLTRAINER_F, 4, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
+	person_event SPRITE_SUPER_NERD, 17, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1
 	person_event SPRITE_POKE_BALL, 3, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB1FBigPearl, EVENT_QUIET_CAVE_B1F_BIG_PEARL
 	person_event SPRITE_POKE_BALL, 13, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCaveB1FElixir, EVENT_QUIET_CAVE_B1F_ELIXIR
-	person_event SPRITE_SUPER_NERD, 17, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1

@@ -253,7 +253,7 @@ UnknownText_0x98a35:
 	line "were two nine-tier"
 	cont "towers here."
 
-	para "The Brass Tower,"
+	para "The Gong Tower,"
 	line "which was said to"
 
 	para "awaken #mon, and"
@@ -275,7 +275,7 @@ UnknownText_0x98a35:
 	line "was said to make"
 
 	para "its roost atop the"
-	line "Brass Tower."
+	line "Gong Tower."
 
 	para "However…"
 

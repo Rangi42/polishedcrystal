@@ -5352,6 +5352,20 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER (25)
+	db "Seamus@"
+	db 0 ; normal
+
+	; party
+	db 42, DUNSPARCE
+	db 40, ONIX
+	db 41, GOLEM
+	db 40, ONIX
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7153,11 +7167,13 @@ FirebreatherGroup:
 ; ================
 
 	; FIREBREATHER (2)
-	db "Richard@"
+	db "Dick@"
 	db 0 ; normal
 
 	; party
-	db 18, CHARMELEON
+	db 36, CHARMANDER
+	db 40, CHARMELEON
+	db 44, CHARIZARD
 
 	db $ff ; end
 
@@ -7372,9 +7388,8 @@ SchoolboyGroup:
 	db 0 ; normal
 
 	; party
-	db 39, BELLSPROUT
-	db 40, WEEPINBELL
-	db 42, VICTREEBEL
+	db 18, GROWLITHE
+	db 17, RATTATA
 
 	db $ff ; end
 
@@ -7697,8 +7712,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 12, PARAS
-	db 15, SENTRET
+	db 9, MAREEP
+	db 8, WOOPER
+	db 10, TEDDIURSA
 
 	db $ff ; end
 
@@ -7709,7 +7725,8 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 18, VULPIX
+	db 17, SENTRET
 
 	db $ff ; end
 
@@ -7720,7 +7737,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 39, BELLSPROUT
+	db 40, WEEPINBELL
+	db 42, VICTREEBEL
 
 	db $ff ; end
 
@@ -7731,7 +7750,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 25, CHARMANDER
+	db 23, SENTRET
+	db 24, MARILL
 
 	db $ff ; end
 
@@ -7742,7 +7763,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 25, SQUIRTLE
+	db 23, PIDGEY
+	db 24, PIKACHU
 
 	db $ff ; end
 
@@ -7943,7 +7966,9 @@ PsychicGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 45, NOCTOWL
+	db 46, HYPNO
+	db 44, GIRAFARIG
 
 	db $ff ; end
 
@@ -7960,7 +7985,8 @@ HexManiacGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 16, GASTLY
+	db 18, MISDREAVUS
 
 	db $ff ; end
 
@@ -7971,7 +7997,8 @@ HexManiacGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 36, HAUNTER
+	db 37, MISMAGIUS
 
 	db $ff ; end
 
@@ -7982,7 +8009,10 @@ HexManiacGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 42, MISDREAVUS
+	db 44, GENGAR
+	db 42, HAUNTER
+	db 44, MISMAGIUS
 
 	db $ff ; end
 
@@ -7990,10 +8020,21 @@ HexManiacGroup:
 
 	; HEX_MANIAC (4)
 	db "Luna@"
-	db 0 ; normal
+	db 1 ; moves
 
 	; party
-	db 50, DITTO ; TODO
+
+	db 45, KADABRA
+		db BATON_PASS
+		db PSYCHIC_M
+		db CONFUSE_RAY
+		db FUTURE_SIGHT
+
+	db 47, NINETALES
+		db FLAMETHROWER
+		db CONFUSE_RAY
+		db PSYCHIC_M
+		db SHADOW_BALL
 
 	db $ff ; end
 
@@ -8004,7 +8045,23 @@ HexManiacGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 44, DROWZEE
+	db 44, DROWZEE
+	db 46, HYPNO
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC (6)
+	db "Vivian@"
+	db 0 ; normal
+
+	; party
+	db 39, HAUNTER
+	db 38, HAUNTER
+	db 39, HAUNTER
+	db 42, ALAKAZAM
 
 	db $ff ; end
 
@@ -8408,7 +8465,9 @@ RichBoyGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 35, PIDGEOT
+	db 32, FURRET
+	db 33, AMPHAROS
 
 	db $ff ; end
 
@@ -8416,10 +8475,11 @@ RichBoyGroup:
 
 	; RICH_BOY (2)
 	db "Gerald@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 50, DITTO ; TODO
+	db 42, AZUMARILL, NUGGET
+	db 40, BLISSEY, NUGGET
 
 	db $ff ; end
 
@@ -8448,7 +8508,9 @@ CowgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 46, TAUROS
+	db 47, TAUROS
+	db 46, TAUROS
 
 	db $ff ; end
 
@@ -8459,7 +8521,8 @@ CowgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 25, TAUROS
+	db 25, MILTANK
 
 	db $ff ; end
 
@@ -9726,51 +9789,73 @@ BattleGirlGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 16, MACHOP
+	db 17, MACHOKE
+	db 18, PRIMEAPE
 
 	db $ff ; end
 
 ; ================
 
 	; BATTLE_GIRL (2)
-	db "Kagami@"
+	db "Diane@"
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 18, PRIMEAPE
+	db 18, HITMONLEE
 
 	db $ff ; end
 
 ; ================
 
 	; BATTLE_GIRL (3)
-	db "Diane@"
+	db "Kagami@"
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 37, HITMONCHAN
+	db 35, PRIMEAPE
+	db 35, MACHOKE
 
 	db $ff ; end
 
 ; ================
 
 	; BATTLE_GIRL (4)
-	db "Ronda@"
+	db "Nozomi@"
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 26, MACHOKE
+	db 26, MACHOKE
+	db 27, HITMONTOP
 
 	db $ff ; end
 
 ; ================
 
 	; BATTLE_GIRL (5)
+	db "Ronda@"
+	db 0 ; normal
+
+	; party
+	db 35, MACHOKE
+	db 37, MACHAMP
+	db 36, PRIMEAPE
+
+	db $ff ; end
+
+; ================
+
+	; BATTLE_GIRL (6)
 	db "Padma@"
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 47, HITMONLEE
+	db 47, HITMONCHAN
+	db 47, HITMONTOP
 
 	db $ff ; end
 
@@ -9822,7 +9907,9 @@ TeacherGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 28, BELLOSSOM
+	db 26, PIDGEOTTO
+	db 26, FURRET
 
 	db $ff ; end
 
@@ -10502,7 +10589,9 @@ CooltrainerMGroup:
 	db 0 ; normal
 
 	; party
-	db 50, DITTO ; TODO
+	db 28, CHARMELEON
+	db 28, WARTORTLE
+	db 28, IVYSAUR
 
 	db $ff ; end
 

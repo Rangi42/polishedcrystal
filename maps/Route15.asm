@@ -2,7 +2,7 @@ const_value set 2
 	const ROUTE15_YOUNGSTER1
 	const ROUTE15_YOUNGSTER2
 	const ROUTE15_YOUNGSTER3
-	const ROUTE15_YOUNGSTER4
+	const ROUTE15_SCHOOLGIRL
 	const ROUTE15_TEACHER1
 	const ROUTE15_TEACHER2
 	const ROUTE15_POKEFAN_F1
@@ -62,17 +62,6 @@ SchoolboyTommyScript:
 	closetext
 	end
 
-TrainerSchoolboyJohnny:
-	trainer EVENT_BEAT_SCHOOLBOY_JOHNNY, SCHOOLBOY, JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, SchoolboyJohnnyScript
-
-SchoolboyJohnnyScript:
-	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aa84a
-	waitbutton
-	closetext
-	end
-
 TrainerSchoolboyBilly:
 	trainer EVENT_BEAT_SCHOOLBOY_BILLY, SCHOOLBOY, BILLY, SchoolboyBillySeenText, SchoolboyBillyBeatenText, 0, SchoolboyBillyScript
 
@@ -80,6 +69,17 @@ SchoolboyBillyScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1aa8b0
+	waitbutton
+	closetext
+	end
+
+TrainerSchoolgirlFaith:
+	trainer EVENT_BEAT_SCHOOLGIRL_FAITH, SCHOOLGIRL, FAITH, SchoolgirlFaithSeenText, SchoolgirlFaithBeatenText, 0, SchoolgirlFaithScript
+
+SchoolgirlFaithScript:
+	end_if_just_battled
+	opentext
+	writetext SchoolgirlFaithAfterText
 	waitbutton
 	closetext
 	end
@@ -207,7 +207,7 @@ UnknownText_0x1aa7bc:
 	cont "Japanese class."
 	done
 
-SchoolboyJohnnySeenText:
+SchoolgirlFaithSeenText:
 	text "We're on a field"
 	line "trip to Lavender"
 
@@ -215,12 +215,12 @@ SchoolboyJohnnySeenText:
 	line "social studies."
 	done
 
-SchoolboyJohnnyBeatenText:
+SchoolgirlFaithBeatenText:
 	text "You're wickedly"
 	line "tough!"
 	done
 
-UnknownText_0x1aa84a:
+SchoolgirlFaithAfterText:
 	text "I'm tired of walk-"
 	line "ing. I need to"
 	cont "take a break."
@@ -343,10 +343,10 @@ Route15_MapEventHeader:
 	db 11
 	person_event SPRITE_YOUNGSTER, 10, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyKipp, -1
 	person_event SPRITE_YOUNGSTER, 13, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyTommy, -1
-	person_event SPRITE_YOUNGSTER, 10, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyJohnny, -1
 	person_event SPRITE_YOUNGSTER, 10, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyBilly, -1
-	person_event SPRITE_TEACHER, 12, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerTeacherColette, -1
-	person_event SPRITE_TEACHER, 10, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerTeacherHillary, -1
+	person_event SPRITE_TWIN, 10, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlFaith, -1
+	person_event SPRITE_TEACHER, 12, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerTeacherColette, -1
+	person_event SPRITE_TEACHER, 10, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherHillary, -1
 	person_event SPRITE_POKEFAN_F, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBoone, -1
 	person_event SPRITE_POKEFAN_F, 4, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfEleanor, -1
 	person_event SPRITE_TWIN, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia1, -1

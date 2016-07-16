@@ -264,6 +264,7 @@ KRIS EQU __enum__
 	const ANTHONY5
 	const EDWIN
 	const DEVIN
+	const SEAMUS
 
 	trainerclass GRUNTM ; 23
 
@@ -454,6 +455,7 @@ KRIS EQU __enum__
 	const AMY
 	const LUNA
 	const NATALIE
+	const VIVIAN
 
 	trainerclass SAGE ; 33
 	const CHOW
@@ -501,7 +503,8 @@ KRIS EQU __enum__
 
 	trainerclass COWGIRL ; 39
 	const ANNIE
-	const BETH
+	const APRIL
+	const DANIELA
 
 	trainerclass SAILOR ; 3a
 	const EUGENE
@@ -612,8 +615,9 @@ KRIS EQU __enum__
 
 	trainerclass BATTLE_GIRL ; 42
 	const SUBARU
-	const KAGAMI
 	const DIANE
+	const KAGAMI
+	const NOZOMI
 	const RONDA
 	const PADMA
 

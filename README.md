@@ -144,7 +144,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Restored the Goldenrod City PokéCom Center from the Japanese version
    * Added Viridian Forest, Pewter Museum, Pokémon Mansion, and Cerulean Cave from RBY
    * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
-   * Added Elder trainer class from HGSS
+   * Added new trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, and Hex Maniac
    * Rematch Gym Leaders in the Fighting Dojo like in HGSS
    * Cure poison when it reaches 1 HP outside a battle
 * Pokémon and move edits (not in faithful version):
@@ -189,7 +189,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Mysticalman Eusine → Mystery Man Eusine
    * Pink Bow → Silk Scarf
    * Elixer → Elixir
-   * Tin Tower → Bell Tower
+   * Tin Tower → Bell Tower (スズ *suzu* can mean 錫 "tin" or 鈴 "bell")
+   * Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell)
    * Virtual Boy → GameCube
    * Olivine Lighthouse → Glitter Lighthouse
    * whited out → blacked out

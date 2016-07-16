@@ -1,12 +1,12 @@
 const_value set 2
 	const NATIONALPARK_LASS1
 	const NATIONALPARK_POKEFAN_F1
-	const NATIONALPARK_TEACHER1
-	const NATIONALPARK_YOUNGSTER1
-	const NATIONALPARK_YOUNGSTER2
-	const NATIONALPARK_TEACHER2
+	const NATIONALPARK_TEACHER
+	const NATIONALPARK_SCHOOLGIRL
+	const NATIONALPARK_SCHOOLBOY
+	const NATIONALPARK_RICH_BOY
 	const NATIONALPARK_PERSIAN
-	const NATIONALPARK_YOUNGSTER3
+	const NATIONALPARK_YOUNGSTER
 	const NATIONALPARK_POKEFAN_F2
 	const NATIONALPARK_POKEFAN_M
 	const NATIONALPARK_LASS2
@@ -44,13 +44,29 @@ UnknownScript_0x5c021:
 	closetext
 	end
 
-YoungsterScript_0x5c023:
-	jumptextfaceplayer UnknownText_0x5c35d
+TrainerSchoolgirlEliza:
+	trainer EVENT_BEAT_SCHOOLGIRL_ELIZA, SCHOOLGIRL, ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText, 0, SchoolgirlElizaScript
 
-YoungsterScript_0x5c026:
-	jumptextfaceplayer UnknownText_0x5c38f
+SchoolgirlElizaScript:
+	end_if_just_battled
+	opentext
+	writetext SchoolgirlElizaAfterText
+	waitbutton
+	closetext
+	end
 
-TeacherScript_0x5c029:
+TrainerSchoolboyJohnny:
+	trainer EVENT_BEAT_SCHOOLBOY_JOHNNY, SCHOOLBOY, JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, SchoolboyJohnnyScript
+
+SchoolboyJohnnyScript:
+	end_if_just_battled
+	opentext
+	writetext SchoolboyJohnnyAfterText
+	waitbutton
+	closetext
+	end
+
+RichBoyScript_0x5c029:
 	jumptextfaceplayer UnknownText_0x5c3bc
 
 NationalParkPersian:
@@ -354,16 +370,38 @@ UnknownText_0x5c30d:
 	cont "during battle."
 	done
 
-UnknownText_0x5c35d:
-	text "I'm playing with"
-	line "stickers I printed"
-	cont "from my #dex."
+SchoolgirlElizaSeenText:
+	text "Vulipx is just"
+	line "the cutest!"
+
+	para "Don't you agree?"
 	done
 
-UnknownText_0x5c38f:
-	text "I get the other"
-	line "guy's #dex"
-	cont "sticker if I win."
+SchoolgirlElizaBeatenText:
+	text "My poor Vulpix…"
+	done
+
+SchoolgirlElizaAfterText:
+	text "I don't care!"
+	line "I still love"
+	cont "Vulpix."
+	done
+
+SchoolboyJohnnySeenText:
+	text "Growlithe is just"
+	line "the coolest!"
+
+	para "Aren't I right?"
+	done
+
+SchoolboyJohnnyBeatenText:
+	text "Growlithe, no…"
+	done
+
+SchoolboyJohnnyAfterText:
+	text "Yeah, well, I"
+	line "still prefer"
+	cont "Growlithe."
 	done
 
 UnknownText_0x5c3bc:
@@ -540,9 +578,9 @@ NationalPark_MapEventHeader:
 	person_event SPRITE_LASS, 24, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x5c002, -1
 	person_event SPRITE_POKEFAN_F, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x5c005, -1
 	person_event SPRITE_TEACHER, 40, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1
-	person_event SPRITE_YOUNGSTER, 41, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5c023, -1
-	person_event SPRITE_YOUNGSTER, 41, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5c026, -1
-	person_event SPRITE_TEACHER, 41, 17, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c029, -1
+	person_event SPRITE_TWIN, 41, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 0, TrainerSchoolgirlEliza, -1
+	person_event SPRITE_YOUNGSTER, 41, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerSchoolboyJohnny, -1
+	person_event SPRITE_RICH_BOY, 41, 17, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RichBoyScript_0x5c029, -1
 	person_event SPRITE_GROWLITHE, 40, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NationalParkPersian, -1
 	person_event SPRITE_YOUNGSTER, 23, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
 	person_event SPRITE_POKEFAN_F, 29, 18, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1

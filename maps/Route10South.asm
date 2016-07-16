@@ -1,6 +1,7 @@
 const_value set 2
 	const ROUTE10SOUTH_POKEFAN_M1
 	const ROUTE10SOUTH_POKEFAN_M2
+	const ROUTE10SOUTH_HEX_MANIAC
 
 Route10South_MapScriptHeader:
 .MapTriggers:
@@ -27,6 +28,17 @@ PokefanmRobertScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1ae4a9
+	waitbutton
+	closetext
+	end
+
+TrainerHexManiacAmy:
+	trainer EVENT_BEAT_HEX_MANIAC_AMY, HEX_MANIAC, AMY, HexManiacAmySeenText, HexManiacAmyBeatenText, 0, HexManiacAmyScript
+
+HexManiacAmyScript:
+	end_if_just_battled
+	opentext
+	writetext HexManiacAmyAfterText
 	waitbutton
 	closetext
 	end
@@ -68,6 +80,25 @@ UnknownText_0x1ae4a9:
 	line "this…"
 	done
 
+HexManiacAmySeenText:
+	text "Lavender Town…"
+
+	para "Where the spirits"
+	line "of #mon sleep…"
+	done
+
+HexManiacAmyBeatenText:
+	text "Your #mon are"
+	line "overflowing with"
+	cont "vitality…"
+	done
+
+HexManiacAmyAfterText:
+	text "A Hex Maniac is"
+	line "at peace among"
+	cont "the spirits…"
+	done
+
 Route10SignText:
 	text "Route 10"
 
@@ -91,6 +122,7 @@ Route10South_MapEventHeader:
 	signpost 3, 5, SIGNPOST_READ, Route10Sign
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_POKEFAN_M, 3, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerJim, -1
-	person_event SPRITE_POKEFAN_M, 10, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmRobert, -1
+	person_event SPRITE_POKEFAN_M, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmRobert, -1
+	person_event SPRITE_HEX_MANIAC, 10, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHexManiacAmy, -1
