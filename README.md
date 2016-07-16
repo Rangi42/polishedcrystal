@@ -273,7 +273,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 ## To do:
 
 * Remove unused code and resources to make room for new stuff
-* Add custom animations for new moves
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
@@ -304,9 +303,15 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Bill calls to switch boxes when one is full
    * Show stat changes and then absolute values on level up
    * Unown ? and ! from Gen III
+   * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
+   * Lt. Surge's traps from RBY
+   * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
    * Tune Gym Leaders' rematch movesets, levels, held items, and text
+   * Respawn uncaught legendaries after beating the Elite Four
    * Move Relearner that accepts Gold Leaves
+   * Add more moves learned at level 1 for relearning
 * Fix bugs:
+   * Some overworld sprites glitch when walking
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix delay before last text box when Wonder Trading
@@ -314,7 +319,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 * Aesthetic updates:
    * Animate new Pokémon sprites
-   * Fix Pokémon footprints
+   * Add custom animations for new moves
    * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
    * Improve certain shiny palettes (blue Dragonite, silver Scizor, blue Espeon, black Ursaring, dark green Forretress)
    * Show Pokémon portraits when using field moves
@@ -324,6 +329,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
    * Add Young Couple and Double Team trainer classes
    * Add river to Route 46 from HGSS
+   * Add umbrellas to Olivine City benches
    * Add Celadon Dept. Store electronics floor from RBY
    * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Custom features:
@@ -347,8 +353,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Battle with Giovanni either in Radio Tower or with Celebi time traveling
    * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
-   * Battle with [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) in the Celadon Mansion dev room (Exeggutor, Porygon-Z, Jolteon, Dugtrio, Lapras, Rhydon)
-   * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto), Shigeru Miyamoto, and Satoshi Tajiri
+   * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
    * Replace Cal in Trainer Hall with whichever gender character you don't pick
    * Include Lyra/Kotone as a friendly rival like in HGSS
       * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)

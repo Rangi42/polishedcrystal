@@ -72,7 +72,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_YOUNGSTER_ENCOUNTER	; schoolboy
 	db MUSIC_LASS_ENCOUNTER			; schoolgirl
 	db MUSIC_YOUNGSTER_ENCOUNTER	; psychic_t
-	db MUSIC_LASS_ENCOUNTER			; hex_maniac
+	db MUSIC_SAGE_ENCOUNTER			; hex_maniac
 	db MUSIC_SAGE_ENCOUNTER			; sage
 	db MUSIC_SAGE_ENCOUNTER			; medium
 	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl
@@ -100,7 +100,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; game_freak
 	db MUSIC_HIKER_ENCOUNTER		; mysticalman
 	db MUSIC_HIKER_ENCOUNTER		; lorelei
-	db MUSIC_HIKER_ENCOUNTER		; agatha
+	db MUSIC_SAGE_ENCOUNTER			; agatha
 	db MUSIC_LASS_ENCOUNTER			; yellow
 	db MUSIC_POKEMANIAC_ENCOUNTER	; bill
 	db MUSIC_HIKER_ENCOUNTER		; lawrence
