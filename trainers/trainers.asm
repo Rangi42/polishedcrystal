@@ -2983,18 +2983,6 @@ YoungsterGroup:
 ; ================
 
 	; YOUNGSTER (6)
-	db "Ian@"
-	db 0 ; normal
-
-	; party
-	db 10, MANKEY
-	db 12, DIGLETT
-
-	db $ff ; end
-
-; ================
-
-	; YOUNGSTER (7)
 	db "Joey@"
 	db 0 ; normal
 
@@ -3005,7 +2993,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (8)
+	; YOUNGSTER (7)
 	db "Joey@"
 	db 1 ; moves
 
@@ -3021,7 +3009,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (9)
+	; YOUNGSTER (8)
 	db "Warren@"
 	db 0 ; normal
 
@@ -3033,7 +3021,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (10)
+	; YOUNGSTER (9)
 	db "Jimmy@"
 	db 0 ; normal
 
@@ -3046,7 +3034,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (11)
+	; YOUNGSTER (10)
 	db "Owen@"
 	db 0 ; normal
 
@@ -3057,7 +3045,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (12)
+	; YOUNGSTER (11)
 	db "Jason@"
 	db 0 ; normal
 
@@ -3069,7 +3057,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (13)
+	; YOUNGSTER (12)
 	db "Joey@"
 	db 1 ; moves
 
@@ -3085,7 +3073,7 @@ YoungsterGroup:
 
 ; ================
 
-	; YOUNGSTER (14)
+	; YOUNGSTER (13)
 	db "Joey@"
 	db 1 ; moves
 
@@ -7770,6 +7758,19 @@ SchoolgirlGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCHOOLGIRL (6)
+	db "Imogen@"
+	db 0 ; normal
+
+	; party
+	db 11, BULBASAUR
+	db 10, SANDSHREW
+	db 10, POLIWAG
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8480,6 +8481,18 @@ RichBoyGroup:
 	; party
 	db 42, AZUMARILL, NUGGET
 	db 40, BLISSEY, NUGGET
+
+	db $ff ; end
+
+; ================
+
+	; RICH_BOY (3)
+	db "Irving@"
+	db 2 ; item
+
+	; party
+	db 10, CLEFAIRY, NUGGET
+	db 12, FURRET, NUGGET
 
 	db $ff ; end
 

@@ -1,7 +1,7 @@
 const_value set 2
 	const ROUTE34_YOUNGSTER1
 	const ROUTE34_YOUNGSTER2
-	const ROUTE34_YOUNGSTER3
+	const ROUTE34_RICH_BOY
 	const ROUTE34_LASS
 	const ROUTE34_OFFICER
 	const ROUTE34_POKEFAN_M
@@ -395,13 +395,13 @@ TrainerYoungsterSamuel:
 	closetext
 	end
 
-TrainerYoungsterIan:
-	trainer EVENT_BEAT_YOUNGSTER_IAN, YOUNGSTER, IAN, YoungsterIanSeenText, YoungsterIanBeatenText, 0, .Script
+TrainerRichBoyIrving:
+	trainer EVENT_BEAT_RICH_BOY_IRVING, RICH_BOY, IRVING, RichBoyIrvingSeenText, RichBoyIrvingBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext YoungsterIanAfterText
+	writetext RichBoyIrvingAfterText
 	waitbutton
 	closetext
 	end
@@ -542,20 +542,24 @@ YoungsterSamuelAfterText:
 	cont "a Gym Leader."
 	done
 
-YoungsterIanSeenText:
-	text "I'm the best in my"
-	line "class at #mon."
+RichBoyIrvingSeenText:
+	text "I don't need to"
+	line "gamble for Coins."
+
+	para "I'm rich, so I"
+	line "bought my #-"
+	cont "mon with cash!"
 	done
 
-YoungsterIanBeatenText:
-	text "No! There are bet-"
-	line "ter trainers…"
+RichBoyIrvingBeatenText:
+	text "No! My money"
+	line "wasn't enough…"
 	done
 
-YoungsterIanAfterText:
-	text "I'm trying hard so"
-	line "I can be the star"
-	cont "in my class."
+RichBoyIrvingAfterText:
+	text "There are some"
+	line "things that money"
+	cont "can't buy."
 	done
 
 CamperTodd1SeenText:
@@ -792,7 +796,7 @@ Route34_MapEventHeader:
 	db 13
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	person_event SPRITE_YOUNGSTER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
-	person_event SPRITE_YOUNGSTER, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterIan, -1
+	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyIrving, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
 	person_event SPRITE_OFFICER, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerKeithScript, -1
 	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1

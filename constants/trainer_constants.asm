@@ -86,7 +86,6 @@ KRIS EQU __enum__
 	const ALBERT
 	const GORDON
 	const SAMUEL
-	const IAN
 	const JOEY2
 	const JOEY3
 	const WARREN
@@ -433,6 +432,7 @@ KRIS EQU __enum__
 	const FAITH
 	const SARAH
 	const ISABEL
+	const IMOGEN
 
 	trainerclass PSYCHIC_T ; 31
 	const NATHAN
@@ -500,6 +500,7 @@ KRIS EQU __enum__
 	trainerclass RICH_BOY ; 38
 	const WINSTON
 	const GERALD
+	const IRVING
 
 	trainerclass COWGIRL ; 39
 	const ANNIE
