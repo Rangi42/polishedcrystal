@@ -722,12 +722,12 @@ TryLoadSaveData: ; 14f1c
 ; 14f7c
 
 DefaultOptions: ; 14f7c
-	db $03 ; mid text speed
+	db %00100001 ; fast text speed, stereo sound
 	db $00 ; wSaveFileExists
 	db $00 ; frame 0
 	db $01 ; TextBoxFlags
 	db $40 ; gb printer: normal brightness
-	db $01 ; menu account on
+	db $01 ; menu account off
 	db $00 ; ??
 	db $00 ; ??
 ; 14f84

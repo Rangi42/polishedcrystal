@@ -1,9 +1,4 @@
 _MainMenu: ; 5ae8
-	ld hl, Options
-	set 0, [hl] ; fast text by default
-	res 1, [hl] ; not med text
-	res 2, [hl] ; not slow text
-	set 5, [hl] ; stereo sound by default
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
