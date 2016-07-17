@@ -148,3 +148,64 @@ SilphMartInsufficientFundsText::
 SilphMartComeAgainText::
 	text "Come by again!"
 	done
+
+MoveReminderIntroText::
+	text "Me? I'm the"
+	line "Move Maniac."
+
+	para "I'll make your"
+	line "#mon remember"
+
+	para "a move if you'll"
+	line "trade me a"
+	cont "Gold Leaf."
+	done
+
+MoveReminderPromptText::
+	text "Do you want me to"
+	line "teach one of your"
+	cont "#mon a move?"
+	done
+
+MoveReminderWhichMonText::
+	text "Which #mon"
+	line "needs tutoring?"
+	done
+
+MoveReminderWhichMoveText::
+	text "Which move should"
+	line "it remember?"
+	done
+
+MoveReminderCancelText::
+MoveReminderNoGoldLeafText::
+	text "If your #mon"
+	line "needs to learn a"
+
+	para "move, come back"
+	line "with a Gold Leaf."
+	done
+
+MoveReminderEggText::
+	text "Huh? That's just"
+	line "an Egg."
+	done
+
+MoveReminderNoMonText::
+	text "Huh? That's not"
+	line "a #mon."
+	done
+
+MoveReminderNoMovesText::
+	text "Sorry… There isn't"
+	line "any move I can"
+
+	para "make that #mon"
+	line "remember."
+	done
+
+MoveReminderSorryText::
+	text "I can't do it"
+	line "yet, though."
+	cont "Sorry."
+	done

@@ -6597,3 +6597,7 @@ PlayFaintingCry:
 	callba _PlayCryHeader
 	call WaitSFX
 	ret
+
+SECTION "Move Reminder", ROMX
+
+INCLUDE "event/move_reminder.asm"

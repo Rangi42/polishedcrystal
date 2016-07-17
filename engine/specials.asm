@@ -194,6 +194,7 @@ SpecialsPointers:: ; c029
 
 ; Polished Crystal
 	add_special GiveShinyDittoEgg
+	add_special MoveReminder
 	add_special SpecialNone
 ; c224
 
@@ -650,3 +651,4 @@ SpecialTrainerHouse: ; 0xc4b9
 	ld a, [sMysteryGiftTrainerHouseFlag]
 	ld [ScriptVar], a
 	jp CloseSRAM
+

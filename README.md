@@ -323,10 +323,10 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Lt. Surge's traps from RBY
    * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
    * Respawn uncaught legendaries after beating the Elite Four
-   * Move Relearner that accepts Gold Leaves
    * Add more moves learned at level 1 for relearning
 * Fix bugs:
    * Some overworld sprites glitch when walking
+   * Move Reminder doesn't work
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix delay before last text box when Wonder Trading
@@ -384,7 +384,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Separate IVs and EVs for Special Attack and Special Defense
 * Separate shininess from IVs
 * Hail
-* Move Relearner
 * Abilities
 * Natures
 * Overworld weather, or at least automatic when battles start

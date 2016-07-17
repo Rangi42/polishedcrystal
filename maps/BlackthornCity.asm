@@ -295,7 +295,8 @@ BlackthornGymSignText:
 
 MoveDeletersHouseSignText:
 	text "Move Deleter's"
-	line "House"
+	line "and Move Maniac's"
+	cont "House"
 	done
 
 DragonDensSignText:
