@@ -112,7 +112,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Add moves from future generations
    * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Guillotine, Horn Drill, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Mirror Move, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
    * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hex, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Night Slash, Poison Jab, Power Gem, Play Rough, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
-   * Revised set of 60 TMs, 8 HMs, and 16 move tutors (one Silver Leaf per tutoring)
+   * Revised set of 65 TMs, 8 HMs, and 16 move tutors (one Silver Leaf per tutoring)
 * Modern battle mechanics:
    * Physical/Special split, with display
    * Updated Pokémon base stats and move attributes to Gen VI
@@ -128,7 +128,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Poison-type Pokémon always hit with Toxic
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Growth raises Attack and Special Attack, by two stages in sunlight
-   * Hidden Power is always 60 power
+   * Hidden Power is always 70 power
    * Curse is Ghost-type
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
@@ -217,7 +217,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add craters to Mt. Moon from FRLG
    * Use Rock Tunnel cave tiles from FRLG (devamped by Mateo)
    * Add fountain and benches to Cerulean City from HGSS
-   * Add generator to Power Plant from FRLG
+   * Add generator to Power Plant from FRLG (devamped by Mateo)
    * Add fountain to Celadon City from HGSS
    * Add Celadon Hotel and the "Chief" house from RBY
    * The Ruins of Alph tile with their surrounding maps
