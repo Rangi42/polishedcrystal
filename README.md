@@ -1,123 +1,78 @@
 # Pokémon Polished Crystal
 
-This is a custom Pokémon game based on pret's disassembly of Pokémon Crystal.
+This is a custom Pokémon game based on [the Pokémon Crystal disassembly](https://github.com/pret/pokecrystal).
 
-In the short-term, it's going to be what the title says: an improved, polished
-version of Pokémon Crystal. Partly it will imitate [MrDollSteak's ROMbase for
-FireRed](http://www.pokecommunity.com/showpost.php?p=7814321&postcount=252):
-decapitalized names, new game mechanics like the Fairy type and Physical/Special
-split, and adding Pokémon, moves, and items from future generations. I'm also
-inspired by [Mateo's Red++](https://github.com/TheFakeMateo/RedPlusPlus/),
-which devamps certain FireRed features for a Red base, and adds some entirely
-original ones. I'm doing the same thing with HGSS, copying things like the
-Bellchime Trail and Gym Leader rematches, and making some tweaks out of
-personal preference. And finally, like [Emerald
-Omega](http://www.pokecommunity.com/showthread.php?t=322110) and
-[FireRed Omega](http://www.smogon.com/forums/threads/pokemon-fire-red-omega-in-game-discussion-tiering.3480788/),
-the game will be harder. Levels are higher, parties are larger, bosses have held
-items and better movesets, and there's an equal playing field between you and
-the AI: no badge boosts for you, no arbitrary misses for them.
+My goal is to create what the title says: an improved, polished version of Pokémon Crystal. It fixes bugs, takes into account the official game changes since 2001, and adds some new ideas of my own. Many features restore what was removed from R/B/Y, or original to HG/SS.
 
-In the long-term, I want going to make an original game set five years after GSC,
-with a selection of Pokémon, moves, and items from all generations (including
-new evolutions and baby forms like Yanmega and Munchlax, personal favorites
-like Milotic and Gogoat, and maybe *one* fakemon Kangaskid/Kangascub/Kangaschan).
-I've had semi-concrete plans to make a Pokémon game for years, but an early
-attempt with RPG Maker 2000 never got anywhere.
+I've had vague plans to make a Pokémon game for years. I'm very impressed by the effort that's gone into disassembling Pokémon Crystal and making the code so well-organized. Thanks to making it open-source (and to the ROM hackers that inspired me), I'm finally making this game a reality.
 
-I'm very impressed by the effort that's gone into disassembling Pokémon Crystal
-and making the code so well-organized. Thanks to making that open-source (and to
-the ROM hackers that inspired me), I'm finally making it a reality.
+## Download and Play
 
-(Speaking of which, I borrowed Mateo's randomized Wonder Trading idea because
-the PokéCom Center is just perfect for it; the dialog about how "you can trade
-Pokémon with other people far away" is already there! I'm making the Pokémon you
-receive have random OT names, so if anyone whose ideas or code I use wants to
-appear there, let me know.)
+The most recent version is 1.0.0 as of July 17, 2016.
 
-To set up the repository, see [**INSTALL.md**](INSTALL.md).
+To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) to apply the patch to a default Crystal ROM.
 
+This is the ROM you should use:
+
+* Pokémon - Crystal Version (UE) (V1.0) [C][!].gbc  
+  (`md5: 9f2922b235a5eeb78d65594e82ef5dde`)
+
+It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
+
+There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
+
+* [Pokémon Polished Crystal 1.0.0](patches/polishedcrystal-1.0.0.ips)  
+  (ROM `md5: 16f736523d5d0033205401b6ef2bac24`)
+* [Pokémon Polished Crystal (Faithful) 1.0.0](patches/polishedcrystal-faithful-1.0.0.ips)  
+  (ROM `md5: 91127ffc4fbfe7594f9764515139fd64`)
 
 ## Features
 
-* Add Fairy type from Gen VI:
-   * Updated type chart, Pokémon types, and move types
-   * Pink Bow (formerly Polkadot Bow) powers up Fairy-type moves
-   * Added Moonblast, Play Rough, and Disarm Voice
-* Catch all ~~251~~ 253 Pokémon without trading, some earlier than in GSC or HGSS:
-   * Remove Spearow, Fearow, Lickitung, Goldeen, Seaking, Cleffa, Igglybuff, Sunkern, Sunflora, Wobbuffet, Shuckle, and Delibird
-   * Add Leafeon, Glaceon, Sylveon, Magnezone, Tangrowth, Porygon-Z, Munchlax, Togekiss, Yanmega, Honchkrow, Mismagius, Gliscor, Weavile, and Mamoswine
-   * Graveler, Kadabra, Machoke, and Haunter evolve by level-up instead of trading
-   * Poliwhirl, Slowpoke, Onix, Seadra, Scyther, and Porygon evolve by held item instead of trading
-   * Eevee evolves into Leafeon in Ilex Forest
-   * Eevee evolves into Glaceon in the Ice Path
-   * Magneton evolves into Magnezone in Rock Tunnel
-   * Eevee evolves into Sylveon with a Shiny Stone
-   * Wild Vulpix on Routes 7, 8, 36 (at night), and 37 (at night)
-   * Wild Mankey on Routes 9 and 42
-   * Wild Primeape on Routes 9 and 42, and in Cerulean Cave
-   * Wild Mareep on Routes 32 and 43
-   * Wild Flaaffy on Routes 42 and 43
-   * Wild Girafarig on Routes 43 and 48
-   * Wild Remoraid on Route 41 (not Route 44; they belong with Mantine)
-   * Encounter Articuno in Seafoam Islands
-   * Encounter Zapdos on Route 10, above Rock Tunnel
-   * Encounter Moltres in Cinnabar Volcano
-   * Encounter Mewtwo in Cerulean Cave
-   * Wild Slugma in Burned Tower
-   * Wild Magmar in Burned Tower
-   * Wild Houndour on Routes 35 and 37
-   * Wild Murkrow on Routes 38 and 39 (at night)
-   * Wild Staryu on Route 40
-   * Wild Steelix in Cliff Cave and Silver Cave
-   * Wild Misdreavus in Cliff Cave
-   * Wild Teddiursa on Route 45 (in the morning)
-   * Wild Chikorita in Yellow Forest (in the morning/day)
-   * Wild Cyndaquil in Yellow Forest (at night)
-   * Wild Totodile in Yellow Forest (by Surfing)
-   * Wild Pikachu in Yellow Forest know Fly or Surf
-   * Wild Munchlax in Quiet Cave know Self-Destruct
-   * Wild Magikarp in Quiet Cave know Hydro Pump
-   * Wild Magikarp in Lake of Rage know Dragon Rage
-   * Helix Fossil and Dome Fossil in Quiet Cave
-   * Wild Shellder in Whirl Islands
-   * Wild Octillery in Whirl Islands
-   * Wild Dewgong in Seafoam Islands
-   * Wild Jynx in Seafoam Islands
-   * Wild Ursaring outside Silver Cave
-   * Wild Skarmory outside Silver Cave
-   * Wild Sneasel outside Silver Cave
-   * Wild Houndoom outside Silver Cave
-   * Wild Kingdra in Silver Cave
-   * Wild Bulbasaur in the Safari Zone
-   * Wild Charmander in the Safari Zone
-   * Wild Squirtle in the Safari Zone (by Surfing)
-   * Wild Kangaskhan in the Safari Zone (not in Rock Tunnel)
-   * Cerulean Cave: Golbat, Crobat, Parasect, Primeape, Tangrowth, Electrode, Magneton, Raichu, Ditto, Machamp, Alakazam, Golem
-   * Goldenrod Game Corner: Abra, Cubone, Clefairy
-   * Celadon Game Corner: Mr. Mime, Eevee, Porygon
-   * Trade Teddiursa (found in Dark Cave) for Elekid in Violet City
-   * Trade Cubone (bought at the Game Corner) for Diglett in Goldenrod City
-   * Trade Steelix (found in Cliff Cave) for Kangaskhan in Olivine City
-   * Trade Dragonair for Chansey in Blackthorn City
-   * Trade Pinsir for Heracross in Pewter City
-   * Wonder Trade after beating the Elite Four for a shiny Pichu holding a GS Ball, then use that to trigger an encounter with Celebi
-   * Find the Old Sea Map in the ruins of Pokémon Mansion on Cinnabar Island, and use it to reach Faraway Island and encounter Mew
-   * Wild Bellsprout may hold Gold Leaf
-   * Wild Oddish may hold Silver Leaf
-   * Wild Kadabra may hold TwistedSpoon
-   * Wild Alakazam may hold TwistedSpoon
-   * Wild Ditto may hold Metal Powder
-   * Restore fossils at the Pewter Museum of Science
-* Add moves from future generations
-   * Remove Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Guillotine, Horn Drill, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Mirror Move, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
-   * Add Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hex, Hyper Voice, Iron Head, Metal Sound, Nasty Plot, Night Slash, Poison Jab, Power Gem, Play Rough, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
-   * Revised set of 65 TMs, 8 HMs, and 16 move tutors (one Silver Leaf per tutoring)
-* Modern battle mechanics:
-   * Physical/Special split, with display
-   * Updated Pokémon base stats and move attributes to Gen VI
-   * Gain experience from catching Pokémon like in Gen VI
-   * Steel does not resist Ghost or Dark
+* Added locations from R/B/Y and HG/SS: Viridian Forest, Pewter Museum, Celadon Hotel, Silph Co., Pokémon Mansion, Seafoam Islands, Cerulean Cave, Goldenrod PokéCom Center, and Bellchime Trail
+* New locations, including Cinnabar Volcano, Cherrygrove Bay, Goldenrod Harbor, a new floor of Rock Tunnel, and custom-designed PokéWalker routes
+* Battle more trainers, including Lorelei, Agatha, and Bill
+* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, and Hex Maniac
+* Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them at higher levels
+* Rematch Gym Leaders in the Fighting Dojo
+* Wonder Trade up to three times a day in the Goldenrod PokéCom Center
+* Move Reminder in the same house as the Move Deleter
+
+* The Fairy type, with the Pink Bow as its type-enhancing item
+* Type chart, base stats, and move attributes all updated to Gen VI
+* Physical/Special/Status split
+
+* Catch all ~~251~~ 253 Pokémon without trading, some earlier than in GSC or HGSS
+   * Added: Leafeon, Glaceon, Sylveon, Magnezone, Tangrowth, Porygon-Z, Munchlax, Togekiss, Yanmega, Honchkrow, Mismagius, Gliscor, Weavile, and Mamoswine (sprite artists in [the credits](CREDITS.md))
+   * Removed: Spearow, Fearow, Lickitung, Goldeen, Seaking, Cleffa, Igglybuff, Sunkern, Sunflora, Wobbuffet, Shuckle, and Delibird
+   * Trade evolutions now evolve by level or by held item
+   * Fossils can be revived in the Pewter Museum of Science
+
+* New moves from future generations
+   * Added: Air Slash, Aqua Tail, Astonish, Avalanche, Bug Buzz, Bulk Up, Bullet Punch, Calm Mind, Dark Pulse, DazzlinGleam, Disarm Voice, Dragon Claw, Dragon Dance, Dragon Pulse, Drain Kiss, Earth Power, Extrasensory, Fairy Wind, Flare Blitz, Flash Cannon, Focus Blast, Gunk Shot, Hex, Hyper Voice, Iron Head, Metal Sound, Moonblast, Nasty Plot, Night Slash, Play Rough, Poison Jab, Power Gem, Psystrike, Razor Shell, Seed Bomb, Shadow Claw, Stone Edge, Wild Charge, Will-O-Wisp, X-Scissor, and Zen Headbutt
+   * Removed: Acid Armor, Amnesia, Barrage, Beat Up, Bide, Bind, Bone Club, Bone Rush, Clamp, Constrict, Cotton Spore, Detect, Fissure, Frustration, Guillotine, Horn Drill, Jump Kick, Kinesis, Lovely Kiss, Mega Kick, Mega Punch, Mimic, Mind Reader, Mirror Move, Poison Gas, Present, Psych Up, Psywave, Razor Wind, Rolling Kick, Sharpen, Skull Bash, Smog, Snore, Spider Web, Spite, Sweet Scent, Vice Grip, and Withdraw
+* Revised set of 65 TMs, 8 HMs, and 16 move tutors
+* Revised in-game trades
+* Revised Game Corner prizes
+* New items, including four Poké Balls, three fossils, Eviolite, and X Spcl. Def
+
+* Lowercase Pokémon, moves, items, types, names, etc
+* Fast text by default
+* Stereo sound by default
+* Updated language (Pack → Bag, Enemy → Foe, Cooltrainer → Ace Trainer, Fisher → Fisherman, Elixer → Elixir, Pink Bow → Silk Scarf, new Berry names, etc)
+* Added decorative features to cities and routes, often from HGSS (lake in front of Sprout Tower, Magnet Train tracks on Route 32, water feature in Ecruteak City, boardwalk in Olivine City, bridge in Victory Road, fancy Prof. Oak's lab, meteorite debris on Route 3, craters in Mt. Moon, fountains in Cerulean City and Celadon City, colored roofs throughout Kanto)
+* HGSS-style Town Map
+
+* Updated gameplay elements
+   * Hold B to use Running Shoes
+   * Gain experience from catching Pokémon
+   * Play low-pitched cries when a player or foe Pokémon faints
+   * Cure poison when it reaches 1 HP outside a battle
+   * Eggs hatch at level 1
+   * Surf at Bicycle/Running Shoes speed
+   * Maximum $9,999,999 money and 50,000 coins
+   * Maximum 30 items and 16 Balls in your bag
+
+* Updated battle mechanics
    * Type-enhancing items raise by 20%, not 10%
    * Light Ball doubles Pikachu's Attack as well as Special Attack
    * Critical hits do 150% damage, not 200%, but are more likely
@@ -126,29 +81,55 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Fire-type Pokémon are immune to burns, even from Tri Attack
    * Steel-type Pokémon are immune to poisoning
    * Poison-type Pokémon always hit with Toxic
+   * Curse is Ghost-type
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Growth raises Attack and Special Attack, by two stages in sunlight
    * Hidden Power is always 70 power
-   * Curse is Ghost-type
    * Sandstorm does 1/16 damage per turn
    * Disable lasts for 4 turns
    * Waterfall has a 20% flinch chance
+   * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
+
+* Fixed bugs:
+   * Dragon Fang boosts Dragon-type moves, not Dragon Scale
+   * Burn/Poison/Paralyze improve catch rate
+   * Moon Ball catches Moon Stone evolvers
+   * Love Ball catches opposite sex
+   * Fast Ball catches flee-prone Pokémon
+   * Medium-Slow growth rate experience underflow at level 1
+   * HP bar lowers at the same speed even for high HP
+   * Belly Drum needs to cut HP to raise Attack
+   * Lake of Rage Magikarp are larger, not smaller
+   * Rocket Executives use Team Rocket battle music, not just Grunts
+   * The Ruins of Alph tile with their surrounding maps
+
+* Increased difficulty:
+   * Default Set battle style
+   * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
+   * No badge boosts to stats or types
+   * Improved items used by some trainers
+   * Improved some trainers' rosters, movesets, and DVs (particularly Gym Leaders, the Elite Four, and other bosses)
+
+* Shiny Pokémon changes:
    * Shiny Pokémon have an odd Attack DV, 2, 3, 7, or 11 Defense, 5 or 13 Speed, and perfect 15 Special, so 1/1024 Pokémon is shiny
-* Gameplay elements from future (or past) generations:
-   * Hold B to use Running Shoes
-   * Surf at Bicycle/Running Shoes speed
-   * Eggs hatch at level 1
-   * Maximum $9,999,999 money and 50,000 coins
-   * Maximum 30 items and 16 Balls in your bag
-   * Added X Spcl. Def
-   * Copied most trainer levels and rosters from HGSS
-   * Restored the Goldenrod City PokéCom Center from the Japanese version
-   * Added Viridian Forest, Pewter Museum, Pokémon Mansion, and Cerulean Cave from RBY
-   * Added Bellchime Trail, Seafoam Islands, and Seafoam Gym from HGSS
-   * Added new trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, and Hex Maniac
-   * Rematch Gym Leaders in the Fighting Dojo like in HGSS
-   * Cure poison when it reaches 1 HP outside a battle
-* Pokémon and move edits (not in faithful version):
+   * Revised some shiny palettes (Dragonite is blue like Dragonair, Nidoqueen is pink like Nidoking, Scizor is silver, Espeon is sky blue, Electabuzz is red, etc)
+   * A few NPC trainers have shiny Pokémon
+   * The Odd Egg is always shiny, with an equal chance to be either gender
+
+* Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
+* New music ported from RBY and devamped from future generations (see [the credits](CREDITS.md) for who composed it)
+* Unique mini sprites for each Pokémon (thanks to [this patch](http://www.pokecommunity.com/showthread.php?t=338470))
+
+* Three of Prof. Oak's aides give you items as you complete the Pokédex
+* Bill's grandpa gives you one of each evolutionary stone
+* Nidorina and Nidoqueen can breed
+* Fly to the Rock Tunnel/Power Plant Pokémon Center
+* Always show numbers in Pokédex, even in Johto order
+* Color-coded starter Poké Balls
+* Get all the items, including all Berries on new trees, evolution stones in Celadon Dept. Store, and more kinds of Mail
+* Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell)
+
+* Non-canon Pokémon and move attributes:
    * Many base stat changes, mostly based on [Drayano's Sacred Gold/Storm
      Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/)
    * Cut is Steel-type, and has 60 power and 100% accuracy
@@ -168,245 +149,107 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Ledian is Bug/Fighting
    * Dunsparce is Normal/Ground
    * Mismagius is Ghost/Fairy
-* Fix bugs:
-   * Dragon Fang boosts Dragon-type moves, not Dragon Scale
-   * Burn/Poison/Paralyze improve catch rate
-   * Moon Ball catches Moon Stone evolvers
-   * Love Ball catches opposite sex
-   * Fast Ball catches flee-prone Pokémon
-   * Medium-Slow growth rate experience underflow at level 1
-   * HP bar lowers at the same speed even for high HP
-   * Belly Drum needs to cut HP to raise Attack
-   * Lake of Rage Magikarp are larger, not smaller
-* Aesthetic updates:
-   * Title case for Pokémon, moves, items, trainers, types, etc
-   * Fast text by default
-   * Stereo sound by default
-   * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
-   * Use some music from RBY and HGSS in Kanto
-   * Play low-pitched cries when a player or foe Pokémon faints
-   * Poké → ()PC on Pokémon Center signs from the Japanese version
-   * Berry → Oran Berry, Burnt Berry → Rawst Berry, etc
-   * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
-   * Pack → Bag
-   * Enemy → Foe
-   * Cooltrainer → Ace Trainer
-   * Fisher → Fisherman
-   * Mysticalman Eusine → Mystery Man Eusine
-   * Pink Bow → Silk Scarf
-   * Elixer → Elixir
-   * Tin Tower → Bell Tower (スズ *suzu* can mean 錫 "tin" or 鈴 "bell")
-   * Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell)
-   * Virtual Boy → GameCube
-   * Olivine Lighthouse → Glitter Lighthouse
-   * whited out → blacked out
-   * Menu Account → Menu Captions
-   * Mania → Kirk (Shuckie the Shuckle's OT)
-   * ZephyrBadge → the Zephyr Badge, etc
-   * Kanto has colored roofs
-   * Rounder Strength boulder like RBY/RSE/FRLG
-   * Add lake in front of Sprout Tower from HGSS
-   * Add Magnet Train tracks to Route 32 from HGSS
-   * Add decorative waterfall in Ecruteak City from HGSS
-   * Add boardwalk to Olivine City from HGSS
-   * Add dead trees in Blackthorn City from HGSS
-   * Add bridge to Victory Road from HGSS
-   * Vermilion City boardwalk uses planks from RBY
-   * Prof. Oak's lab has FRLG/HGSS appearance
-   * Add meteorite debris to Route 3 from HGSS
-   * Add craters to Mt. Moon from FRLG
-   * Use Rock Tunnel cave tiles from FRLG (devamped by Mateo)
-   * Add fountain and benches to Cerulean City from HGSS
-   * Add generator to Power Plant from FRLG (devamped by Mateo)
-   * Add fountain to Celadon City from HGSS
-   * Add Celadon Hotel and the "Chief" house from RBY
-   * The Ruins of Alph tile with their surrounding maps
-   * Use devamped Town Map graphics from HGSS
-   * Regular Paras is more golden, shiny Paras is more red
-   * Shiny Charizard has a more accurate palette
-   * Shiny Sneasel has a more accurate palette
-   * Shiny Nidoqueen is purple to match regular Nidoking
-   * Shiny Dragonite is blue like regular Dragonair, not gray
-   * Shiny Espeon is sky blue, not lime green
-   * Shiny Scizor is silver, not lime green
-   * Shiny Ursaring is black, not lime green
-   * Shiny Forretress is forest green, not dark gold
-   * Shiny Seel and Dewgong are salmon, not white
-   * Shiny Mewtwo is dark blue, not goldenrod
-   * Shiny Butterfree is orange, not pink
-   * Shiny Elekid and Electabuzz are red like Magmar, not dark yellow
-   * Shiny Magby and Magmar are yellow like Electabuzz, not light red
-   * Rocket Executives use Team Rocket battle music
-   * Show Sylveon during Prof. Oak's intro speech
-* Increased difficulty:
-   * Default Set battle style
-   * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
-   * No badge boosts to stats or types
-   * Improved items used by some trainers
-   * Improved some trainers' rosters, movesets, and DVs (Gym Leaders, the Elite Four, and other bosses)
-* Custom features:
-   * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
-   * Move Reminder in the same house as Move Deleter, teaches one move for a Gold Leaf
-   * Yellow Forest replaces the Johto Safari Zone
-   * Cherrygrove Bay connects Cherrygrove City and Route 32
-   * Individual party/day-care icons for each Pokémon
-   * Lugia and Ho-Oh know their signature moves when encountered at level 60
-   * Rematch the Elite Four
-   * Battle Yellow from the Pokémon Adventures manga in Yellow Forest
-   * Find Surfing Pikachu Doll in Yellow Forest
-   * Three of Prof. Oak's aides give you items as you complete the Pokédex
-   * An aide gives you the Exp.Share for catching 50 Pokémon, and Mr. Pokémon gives you a shiny Ditto egg for the Red Scale
-   * Battle Lorelei in Ice Path
-   * Battle Agatha in Soul House
-   * Battle Bill after catching all three legendary beasts
-   * Battle Lawrence III after catching all three legendary birds, and get the Silver Wing
-   * Battle Green after Red on Navel Rock
-   * The old man in Pewter City gives you Old Amber
-   * Bill's grandpa gives you one of each evolutionary stone
-   * New default player names
-   * Goldenrod Game Corner offers Clefairy as a prize
-   * Odd Egg is always shiny, with an equal chance to be either gender
-   * Nidorina and Nidoqueen can breed
-   * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them
-   * Prof. Oak asks for the player's gender and name together
-   * Color-coded starter Poké Balls
-   * Prof. Oak trades Kanto starter dolls for evolution stones in his lab
-   * Change Game Corner prizes (Goldenrod sells Clefary for 800 coins)
-   * Add trees for Sitrus Berry (Gold Berry) and Lum Berry (MiracleBerry)
-   * Promote the Wise Trio from Sages to Elders
-   * Eusine has a shiny Electrode
-   * Lawrence has a shiny Charizard
-   * Fly to the Rock Tunnel/Power Plant Pokémon Center
-   * Menu blurbs (descriptions) are off by default
-   * Always show numbers in Pokédex, even in Johto order
-   * Access Silph Co. after restoring power to Kanto, and buy new Poké Balls
-   * Move Viridian Gym's HGSS gym trainers to the extended Trainer House, with a prize Nugget for beating them
-   * Add four Boarders and Skiers to Ice Path
-   * Add four Ace Trainers to Victory Road
-   * Buy evolution stones in Celadon Dept. Store
-   * Buy BlueSky Mail and Morph Mail in Goldenrod City
-   * Buy Eon Mail in Goldenrod City after getting Eevee from Bill
-   * Buy Music Mail in Blackthorn City
-   * Buy Mirage Mail in Mt. Moon Square
 
+## Screenshots
 
-## To do:
+![title-screen](screenshots/title-screen.png)
+![running-shoes](screenshots/running-shoes.png)
+![town-map](screenshots/town-map.png)
+  
+![cherrygrove-city](screenshots/cherrygrove-city.png)
+![sage-nico](screenshots/sage-nico.png)
+![oaks-aide](screenshots/oaks-aide.png)
+  
+![elder-li](screenshots/elder-li.png)
+![move-tutor](screenshots/move-tutor.png)
+![moss-rock](screenshots/moss-rock.png)
+  
+![rich-boy](screenshots/rich-boy.png)
+![tm58](screenshots/tm58.png)
+![game-corner-prizes](screenshots/game-corner-prizes.png)
+  
+![goldenrod-move-tutor](screenshots/goldenrod-move-tutor.png)
+![eviolite](screenshots/eviolite.png)
+![wonder-trade](screenshots/wonder-trade.png)
+  
+![cowgirl](screenshots/cowgirl.png)
+![olivine-city](screenshots/olivine-city.png)
+![remoraid](screenshots/remoraid.png)
+  
+![shiny-bellossom](screenshots/shiny-bellossom.png)
+![hex-maniac](screenshots/hex-maniac.png)
+![team-rocket](screenshots/team-rocket.png)
+  
+![steelix](screenshots/steelix.png)
+![ice-rock](screenshots/ice-rock.png)
+![sitrus-berry](screenshots/sitrus-berry.png)
+  
+![weavile](screenshots/weavile.png)
+![moves](screenshots/moves.png)
+![sylveon-moonblast](screenshots/sylveon-moonblast.png)
+  
+![togetic-fairy-wind](screenshots/togetic-fairy-wind.png)
+![aerodactyl-fossil](screenshots/aerodactyl-fossil.png)
+![cerulean-city](screenshots/cerulean-city.png)
+  
+![celadon-city](screenshots/celadon-city.png)
+![fly-to-rock-tunnel](screenshots/fly-to-rock-tunnel.png)
+![viridian-forest](screenshots/viridian-forest.png)
+  
+![mismagius](screenshots/mismagius.png)
+![fighting-dojo](screenshots/fighting-dojo.png)
+![silph-co](screenshots/silph-co.png)
+  
+![new-balls](screenshots/new-balls.png)
+![rock-tunnel](screenshots/rock-tunnel.png)
+![safari-zone](screenshots/safari-zone.png)
+  
+![soul-house](screenshots/soul-house.png)
+![cinnabar-island](screenshots/cinnabar-island.png)
+![seafoam-islands](screenshots/seafoam-islands.png)
 
-* Remove unused code and resources to make room for new stuff
-* Modern battle mechanics:
-   * http://smogon.site/forums/threads/gsc-mechanics.3542417/
-   * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
-   * Sound-based moves bypass Substitute
-   * Struggle does 25% recoil damage
-   * Drain Kiss drains 75% HP
-   * Double-Edge does 33% recoil damage
-   * Flare Blitz does 33% recoil damage
-   * Avalanche doubles damage if user is hit first
-   * Hex doubles damage if foe has a status condition
-   * Low Kick's power is based on weight
-   * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
-   * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
-   * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
-   * Thunder ignores accuracy and evasion in rain
-   * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
-   * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
-   * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
-* Gameplay elements from future (or past) generations:
-   * Restore [unused memory game](http://iimarck.us/i/memory/)
-   * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
-   * Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
-   * Unlimited-use TMs from Gen V
-   * Continuous Repel system from Gen V
-   * Catch rate formula from Gen III
-   * Money loss formula from Gen III when whiting out
-   * Bill calls to switch boxes when one is full
-   * Show stat changes and then absolute values on level up
-   * Unown ? and ! from Gen III
-   * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
-   * Lt. Surge's traps from RBY
-   * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
-   * Respawn uncaught legendaries after beating the Elite Four
-   * Add more moves learned at level 1 for relearning
-* Fix bugs:
-   * Some overworld sprites glitch when walking
-   * Move Reminder doesn't list all possible moves
-   * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
-   * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-   * Fix delay before last text box when Wonder Trading
-* Increased difficulty:
-   * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
-* Aesthetic updates:
-   * Animate new Pokémon sprites
-   * Design custom animations for new moves
-   * Show Pokémon portraits when using field moves
-   * Better Substitute sprites
-   * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
-   * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
-   * Add Young Couple and Double Team trainer classes
-   * Add river to Route 46 from HGSS
-   * Add umbrellas to Olivine City benches
-   * Add Celadon Dept. Store electronics floor from RBY
-   * Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
-* Custom features:
-   * Turn the News Machine into a Mystery Gift Machine (so you can get an Eon Mail for the lady in the PokéCom Center)
-   * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
-   * Select reorders Pokémon in party menu
-   * Brief beeping with low HP
-   * Pokédex area display uses whiever region you're in (edit engine/pokegear.asm:_Area)
-   * Send gift Pokémon to the PC if the party is full
-   * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
-   * More frequently successful fishing and Headbutting
-   * More likely to find roaming Pokémon when on the correct route
-   * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
-   * Suicune roams if you don't catch it in Bell Tower
-   * Aurora Orb boosts Suicune's Defense and Special Defense
-   * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
-   * Fourth stat screen showing Poké Seer's data
-   * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
-   * Color party/day-care sprites by species
-   * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
-   * Battle with Giovanni either in Radio Tower or with Celebi time traveling
-   * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
-   * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
-   * Replace Cal in Trainer Hall with whichever gender character you don't pick
-   * Include Lyra/Kotone as a friendly rival like in HGSS
-      * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
-   * Add a store to buy room decorations that Mom doesn't
-   * Special sprites for Pikachu that know Surf or Fly
-   * Yellow Pikachu Surfing music
-   * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
-   * Somtimes wild Pokémon know an egg move
-   * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
+## Bugs
 
+* Some overworld sprites glitch when walking.
+* Pokémon overworld sprites are frequently incorrect. This is partly because the original game would use, for example, a cow-shaped `SPRITE_TAUROS` for both Tauros and Miltank, but there's also a bug where Pokémon icons change when you view the party menu.
+* The Move Reminder doesn't list all the possible moves.
 
-## Long-term
+## FAQ
 
-* New storyline set 5 years after Gen II
-* Selection of 253 Pokémon from all generations
-* Selection of 254 moves from all generations
-* Separate IVs and EVs for Special Attack and Special Defense
-* Separate shininess from IVs
-* Hail
-* Abilities
-* Natures
-* Overworld weather, or at least automatic when battles start
-* Custom held items that prevent status conditions (based on unused game code)
-* More Berries (Liechi, Ganlon, Salac, Petaya, Apicot, Lansat)
-* Replace HM01 Cut with Machete item, and HM05 Flash with Bell Lantern item
-* Make Rock Smash an HM (actually Brick Break)
-* Evening from 5–7 PM (change morning from 4−9 AM)
-* First party Pokémon follows you like in Yellow or HGSS
-* Separate bag pockets for usable items and held items, or for Berries and/or healing items
-* Custom title screen and end credits
-* Shiny Charm from Gen V increases shiny likelihood from 1/8192 to 1/1024
-* Replace Poké Seer byte with <gender:1, shiny:1, which_ability:1, nature:5> (or have one ability per species and use two bits for gender, instead of checking the base data for genderless)
-* Improved AI
+**Is there a Pokédex document I can refer to?**
 
+The game's data files do a fairly good job of listing things you'll want to know.
 
-## See also
+* [Base stats and TM learnsets](data/base_stats/)
+* [Learnsets by level-up](data/evos_attacks.asm)
+* [Egg moves](egg_moves.asm)
+* [Move attributes](battle/moves/moves.asm)
+* [TM+HM+tutor list](engine/tmhm.asm) (scroll to the bottom)
+* [Wild Pokémon](data/wild/)
 
-* Disassembly of [**Pokémon Red/Blue**][pokered]
-* irc: [**freenode#pret**][irc]
+**How do I evolve Leafeon? Glaceon? Sylveon? Magnezone?**
 
-[pokered]: https://github.com/iimarckus/pokered
-[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
+![moss-rock](screenshots/moss-rock.png)
+![ice-rock](screenshots/ice-rock.png)
+![rock-tunnel](screenshots/rock-tunnel.png)
+
+* Eevee evolves into Leafeon in Ilex Forest, site of the Moss Rock.
+* Eevee evolves into Glaceon in the Ice Path, site of the Ice Rock.
+* Eevee evolves into Sylveon with a Shiny Stone.
+* Magneton evolves into Magnezone in Rock Tunnel, site of the Lodestone.
+
+**Where do I get the legendary Pokémon?**
+
+* Articuno is in the Seafoam Islands.
+* Zapdos is above the Power Plant after you fix the generator.
+* Moltres is inside Cinnabar Volcano.
+* Raikou and Entei are roaming Johto.
+* Suicune is in the Bell Tower after you get the Clear Bell.
+* Lugia is in the Whirl Islands after you catch all three legendary birds and get the Silver Wing.
+* Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and get the Rainbow Wing.
+* Mewtwo is in Cerulean Cave.
+* Mew and Celebi are a secret!
+
+**I don't like non-canon Pokémon types!**
+
+I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
