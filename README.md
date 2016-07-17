@@ -217,7 +217,19 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
    * Regular Paras is more golden, shiny Paras is more red
-   * Match Nidoqueen's shiny palette with Nidoking's regular one
+   * Shiny Charizard has a more accurate palette
+   * Shiny Sneasel has a more accurate palette
+   * Shiny Nidoqueen is purple to match regular Nidoking
+   * Shiny Dragonite is blue like regular Dragonair, not gray
+   * Shiny Espeon is sky blue, not lime green
+   * Shiny Scizor is silver, not lime green
+   * Shiny Ursaring is black, not lime green
+   * Shiny Forretress is forest green, not dark gold
+   * Shiny Seel and Dewgong are salmon, not white
+   * Shiny Mewtwo is dark blue, not goldenrod
+   * Shiny Butterfree is orange, not pink
+   * Shiny Elekid and Electabuzz are red like Magmar, not dark yellow
+   * Shiny Magby and Magmar are yellow like Electabuzz, not light red
    * Rocket Executives use Team Rocket battle music
    * Show Sylveon during Prof. Oak's intro speech
 * Increased difficulty:
@@ -320,8 +332,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Aesthetic updates:
    * Animate new Pokémon sprites
    * Design custom animations for new moves
-   * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, etc)
-   * Improve certain shiny palettes (blue Dragonite, silver Scizor, blue Espeon, black Ursaring, dark green Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprites
    * Low-pitched cries when fainting
