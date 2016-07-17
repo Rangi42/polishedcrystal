@@ -228,10 +228,6 @@ The game's data files do a fairly good job of listing things you'll want to know
 
 **How do I evolve Leafeon? Glaceon? Sylveon? Magnezone?**
 
-![moss-rock](screenshots/moss-rock.png)
-![ice-rock](screenshots/ice-rock.png)
-![rock-tunnel](screenshots/rock-tunnel.png)
-
 * Eevee evolves into Leafeon in Ilex Forest, site of the Moss Rock.
 * Eevee evolves into Glaceon in the Ice Path, site of the Ice Rock.
 * Eevee evolves into Sylveon with a Shiny Stone.
