@@ -329,7 +329,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add more moves learned at level 1 for relearning
 * Fix bugs:
    * Some overworld sprites glitch when walking
-   * Move Reminder doesn't list all the correct moves
+   * Move Reminder doesn't list all possible moves
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix delay before last text box when Wonder Trading

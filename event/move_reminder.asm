@@ -1,6 +1,7 @@
 ; Move Reminder code originally TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/event/move_relearner.asm
 
+
 MoveReminder:
 	ld hl, Text_MoveReminderIntro
 	call PrintText
@@ -96,6 +97,7 @@ MoveReminder:
 	call PrintText
 	ret
 
+
 GetRemindableMoves:
 ; Get moves remindable by CurPartyMon
 ; Returns z if no moves can be reminded.
@@ -166,16 +168,16 @@ endr
 	inc b
 	push bc
 	jr .loop_moves
+
 .done
-	callba GetPreEvolution
 	pop bc
-	jr c, .loop
 	pop af
 	ld [CurPartySpecies], a
 	ld a, b
 	ld [wd002], a
 	and a
 	ret
+
 
 CheckAlreadyInList:
 	push hl
@@ -193,6 +195,7 @@ CheckAlreadyInList:
 	pop hl
 	and a
 	ret
+
 
 CheckPokemonAlreadyKnowsMove:
 	push hl
@@ -215,6 +218,7 @@ CheckPokemonAlreadyKnowsMove:
 	pop hl
 	scf
 	ret
+
 
 ChooseMoveToLearn:
 	; Number of items stored in wd002
@@ -386,6 +390,7 @@ ChooseMoveToLearn:
 	hlcoord 1, 14
 	predef PrintMoveDesc
 	ret
+
 
 Text_MoveReminderIntro:
 	text_jump MoveReminderIntroText
