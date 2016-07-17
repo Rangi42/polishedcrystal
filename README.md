@@ -216,6 +216,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add Celadon Hotel and the "Chief" house from RBY
    * The Ruins of Alph tile with their surrounding maps
    * Use devamped Town Map graphics from HGSS
+   * Regular Paras is more golden, shiny Paras is more red
    * Match Nidoqueen's shiny palette with Nidoking's regular one
    * Rocket Executives use Team Rocket battle music
    * Show Sylveon during Prof. Oak's intro speech
@@ -243,7 +244,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Battle Green after Red on Navel Rock
    * The old man in Pewter City gives you Old Amber
    * Bill's grandpa gives you one of each evolutionary stone
-   * Removed Brick Piece
    * New default player names
    * Goldenrod Game Corner offers Clefairy as a prize
    * Odd Egg is always shiny, with an equal chance to be either gender
@@ -307,7 +307,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
    * Lt. Surge's traps from RBY
    * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
-   * Tune Gym Leaders' rematch movesets, levels, held items, and text
    * Respawn uncaught legendaries after beating the Elite Four
    * Move Relearner that accepts Gold Leaves
    * Add more moves learned at level 1 for relearning
@@ -320,8 +319,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 * Aesthetic updates:
    * Animate new Pokémon sprites
-   * Add custom animations for new moves
-   * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, Paras, etc)
+   * Design custom animations for new moves
+   * Use updated Pokémon palettes, including shiny ones (changed ones: Charizard, Kangaskhan, etc)
    * Improve certain shiny palettes (blue Dragonite, silver Scizor, blue Espeon, black Ursaring, dark green Forretress)
    * Show Pokémon portraits when using field moves
    * Better Substitute sprites
