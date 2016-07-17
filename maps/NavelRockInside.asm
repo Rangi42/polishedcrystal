@@ -1,4 +1,6 @@
 const_value set 2
+	const NAVELROCKINSIDE_POKE_BALL1
+	const NAVELROCKINSIDE_POKE_BALL2
 
 NavelRockInside_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +8,12 @@ NavelRockInside_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+NavelRockInsideSacredAsh:
+	itemball SACRED_ASH
+
+NavelRockInsideMasterBall:
+	itemball MASTER_BALL
 
 NavelRockInside_MapEventHeader:
 	; filler
@@ -35,4 +43,6 @@ NavelRockInside_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 2
+	person_event SPRITE_POKE_BALL, 10, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, NavelRockInsideSacredAsh, EVENT_NAVEL_ROCK_SACRED_ASH
+	person_event SPRITE_POKE_BALL, 10, 37, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, NavelRockInsideMasterBall, EVENT_NAVEL_ROCK_MASTER_BALL
