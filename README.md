@@ -115,7 +115,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Revised set of 60 TMs, 8 HMs, and 16 move tutors (one Silver Leaf per tutoring)
 * Modern battle mechanics:
    * Physical/Special split, with display
-   * Updated Pokémon base stats and move attributes
+   * Updated Pokémon base stats and move attributes to Gen VI
+   * Gain experience from catching Pokémon like in Gen VI
    * Steel does not resist Ghost or Dark
    * Type-enhancing items raise by 20%, not 10%
    * Light Ball doubles Pikachu's Attack as well as Special Attack
@@ -289,7 +290,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Modern battle mechanics:
    * http://smogon.site/forums/threads/gsc-mechanics.3542417/
    * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
-   * Gain experience from catching Pokémon like in Gen VI
    * Sound-based moves bypass Substitute
    * Struggle does 25% recoil damage
    * Drain Kiss drains 75% HP

@@ -2263,36 +2263,14 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 	ld a, [wBattleResult]
 	and $c0
 	ld [wBattleResult], a
-	call IsAnyMonHoldingExpShare
-	jr z, .skip_exp
-	ld hl, EnemyMonBaseStats
-	ld b, EnemyMonEnd - EnemyMonBaseStats
-.loop
-	srl [hl]
-	inc hl
-	dec b
-	jr nz, .loop
 
-.skip_exp
-	ld hl, EnemyMonBaseStats
-	ld de, wBackupEnemyMonBaseStats
-	ld bc, EnemyMonEnd - EnemyMonBaseStats
-	call CopyBytes
-	xor a
-	ld [wGivingExperienceToExpShareHolders], a
-	call GiveExperiencePoints
+GiveExperiencePointsAfterCatch:
 	call IsAnyMonHoldingExpShare
-	ret z
-
 	ld a, [wBattleParticipantsNotFainted]
 	push af
-	ld a, d
+	or d
 	ld [wBattleParticipantsNotFainted], a
-	ld hl, wBackupEnemyMonBaseStats
-	ld de, EnemyMonBaseStats
-	ld bc, EnemyMonEnd - EnemyMonBaseStats
-	call CopyBytes
-	ld a, $1
+	xor a
 	ld [wGivingExperienceToExpShareHolders], a
 	call GiveExperiencePoints
 	pop af
