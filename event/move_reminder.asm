@@ -1,12 +1,10 @@
+; Move Reminder code originally TPP Anniversary Crystal 251
+; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/event/move_relearner.asm
+
 MoveReminder:
 	ld hl, Text_MoveReminderIntro
 	call PrintText
 	call JoyWaitAorB
-
-	; TODO: remove this block once reminding works
-	ld hl, Text_MoveReminderSorry
-	call PrintText
-	ret
 
 	ld a, GOLD_LEAF
 	ld [CurItem], a
@@ -23,7 +21,7 @@ MoveReminder:
 	call PrintText
 	call JoyWaitAorB
 
-	ld b, 6
+	ld b, $6
 	callba SelectMonFromParty
 	jr c, .cancel
 
@@ -65,6 +63,7 @@ MoveReminder:
 	ld [CurItemQuantity], a
 	ld hl, NumItems
 	call TossItem
+
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
@@ -97,30 +96,33 @@ MoveReminder:
 	call PrintText
 	ret
 
-; TODO: fix this routine
 GetRemindableMoves:
+; Get moves remindable by CurPartyMon
+; Returns z if no moves can be reminded.
 	GLOBAL EvosAttacksPointers, EvosAttacks
-	; Get moves remindable by CurPartyMon
-	; Returns z if no moves can be reminded.
 	ld hl, wd002
 	xor a
 	ld [hli], a
 	ld [hl], $ff
+
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [CurPartySpecies], a
+
 	push af
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [CurPartyLevel], a
+
 	ld b, 0
 	ld de, wd002 + 1
+; based on GetEggMove in engine/breeding/egg.asm
 .loop
-	push bc
 	ld a, [CurPartySpecies]
 	dec a
+	push bc
 	ld b, 0
 	ld c, a
 	ld hl, EvosAttacksPointers
@@ -130,50 +132,26 @@ endr
 	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
 .skip_evos
-	ld a, BANK(EvosAttacksPointers)
+	ld a, BANK(EvosAttacks)
 	call GetFarByte
+	inc hl
 	and a
 	jr nz, .skip_evos
 
-;	ld a, EXTREMESPEED
-;	ld [de], a
-;	inc de
-;	ld a, $ff
-;	ld [de], a
-;	pop bc
-;	inc b
-;	push bc
-
-;	ld a, FLAMETHROWER
-;	ld [de], a
-;	inc de
-;	ld a, $ff
-;	ld [de], a
-;	pop bc
-;	inc b
-;	push bc
-
-;	ld a, CALM_MIND
-;	ld [de], a
-;	inc de
-;	ld a, $ff
-;	ld [de], a
-;	pop bc
-;	inc b
-;	push bc
-
 .loop_moves
-	ld a, BANK(EvosAttacksPointers)
+	ld a, BANK(EvosAttacks)
 	call GetFarByte
+	inc hl
 	and a
 	jr z, .done
 	ld c, a
 	ld a, [CurPartyLevel]
 	cp c
-	ld a, BANK(EvosAttacksPointers)
+	ld a, BANK(EvosAttacks)
 	call GetFarByte
+	inc hl
 	jr c, .loop_moves
-.okay
+
 	ld c, a
 	call CheckAlreadyInList
 	jr c, .loop_moves
@@ -217,8 +195,6 @@ CheckAlreadyInList:
 	ret
 
 CheckPokemonAlreadyKnowsMove:
-	; Check if move c is in the selected pokemon's movepool already.
-	; Returns c if yes.
 	push hl
 	push bc
 	ld a, MON_MOVES
@@ -241,15 +217,8 @@ CheckPokemonAlreadyKnowsMove:
 	ret
 
 ChooseMoveToLearn:
-	; Open a full-screen scrolling menu
 	; Number of items stored in wd002
 	; List of items stored in wd002 + 1
-	; Print move names, PP, details, and descriptions
-	; Enable Up, Down, A, and B
-	; Up scrolls up
-	; Down scrolls down
-	; A confirms selection
-	; B backs out
 	call FadeToMenu
 	callba BlankScreen
 	call UpdateSprites
@@ -257,7 +226,6 @@ ChooseMoveToLearn:
 	call CopyMenuDataHeader
 	xor a
 	ld [wMenuCursorBuffer], a
-	ld a, 1
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 	call SpeechTextBox
@@ -273,15 +241,14 @@ ChooseMoveToLearn:
 	scf
 	ret
 
-.MenuDataHeader: ; 0x15e18
+.MenuDataHeader:
 	db $40 ; flags
 	db 01, 01 ; start coords
 	db 11, 19 ; end coords
 	dw .menudata2
 	db 1 ; default option
-; 0x15e20
 
-.menudata2: ; 0x15e20
+.menudata2:
 	db $30 ; pointers
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
@@ -298,6 +265,7 @@ ChooseMoveToLearn:
 	pop hl
 	call PlaceString
 	ret
+
 .PrintDetails
 	ld hl, StringBuffer1
 	ld bc, StringBuffer2 - StringBuffer1
@@ -314,11 +282,12 @@ ChooseMoveToLearn:
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld [wd265], a
-	; 5 characters
+	; c = a * 7
 	ld c, a
 	add a
 	add a
-	add c
+	add a
+	sub c
 	ld c, a
 	ld b, 0
 	ld hl, .Types
@@ -327,9 +296,9 @@ ChooseMoveToLearn:
 	ld e, l
 
 	ld hl, StringBuffer1
-	ld bc, 5
+	ld bc, 7
 	call PlaceString
-	ld hl, StringBuffer1 + 4
+	ld hl, StringBuffer1 + 6
 	ld [hl], "/"
 
 	ld a, [MenuSelection]
@@ -350,10 +319,10 @@ ChooseMoveToLearn:
 	ld d, h
 	ld e, l
 
-	ld hl, StringBuffer1 + 5
-	ld bc, 5
+	ld hl, StringBuffer1 + 7
+	ld bc, 7
 	call PlaceString
-	ld hl, StringBuffer1 + 9
+	ld hl, StringBuffer1 + 11
 	ld [hl], "/"
 
 	ld a, [MenuSelection]
@@ -364,14 +333,14 @@ ChooseMoveToLearn:
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld [EngineBuffer1], a
-	ld hl, StringBuffer1 + 10
-	ld de, EngineBuffer1
-	ld bc, $102
-	call PrintNum
 	ld hl, StringBuffer1 + 12
+	ld de, EngineBuffer1
+	lb bc, 1, 2
+	call PrintNum
+	ld hl, StringBuffer1 + 14
 	ld [hl], "@"
 
-	ld hl, SCREEN_WIDTH - 3
+	ld hl, SCREEN_WIDTH - 6
 	pop de
 	add hl, de
 	push de
@@ -381,25 +350,26 @@ ChooseMoveToLearn:
 	ret
 
 .Types
-	db "Norm@"
-	db "Fght@"
-	db " Fly@"
-	db " Psn@"
-	db "Grnd@"
-	db "Rock@"
-	db " Bug@"
-	db "Ghst@"
-	db " Stl@"
-	db "Fire@"
-	db "Watr@"
-	db "Gras@"
-	db "Elec@"
-	db "Psyc@"
-	db " Ice@"
-	db "Drgn@"
-	db "Dark@"
-	db "Fary@"
-	db " ???@"
+	db "Normal@"
+	db " Fight@"
+	db "Flying@"
+	db "Poison@"
+	db "Ground@"
+	db "  Rock@"
+	db "   Bug@"
+	db " Ghost@"
+	db " Steel@"
+	db "  Fire@"
+	db " Water@"
+	db " Grass@"
+	db "Electr@"
+	db "Psychc@"
+	db "   Ice@"
+	db "Dragon@"
+	db "  Dark@"
+	db " Fairy@"
+	db "   ???@"
+
 .Classes
 	db "Phys@"
 	db "Spcl@"
@@ -451,8 +421,4 @@ Text_MoveReminderNoMon:
 
 Text_MoveReminderNoMoves:
 	text_jump MoveReminderNoMovesText
-	db "@"
-
-Text_MoveReminderSorry:
-	text_jump MoveReminderSorryText
 	db "@"

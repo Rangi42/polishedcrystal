@@ -177,13 +177,14 @@ MoveReminderWhichMoveText::
 	line "it remember?"
 	done
 
-MoveReminderCancelText::
 MoveReminderNoGoldLeafText::
-	text "If your #mon"
-	line "needs to learn a"
+	text "Huh? You don't"
+	line "have any Gold"
+	cont "Leaves."
 
-	para "move, come back"
-	line "with a Gold Leaf."
+	para "Sometimes you can"
+	line "find them on wild"
+	cont "Bellsprout."
 	done
 
 MoveReminderEggText::
@@ -204,8 +205,10 @@ MoveReminderNoMovesText::
 	line "remember."
 	done
 
-MoveReminderSorryText::
-	text "I can't do it"
-	line "yet, though."
-	cont "Sorry."
+MoveReminderCancelText::
+	text "If your #mon"
+	line "needs to learn a"
+
+	para "move, come back"
+	line "with a Gold Leaf."
 	done

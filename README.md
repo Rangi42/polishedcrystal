@@ -153,6 +153,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
      Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/)
    * Cut is Steel-type, and has 60 power and 100% accuracy
    * Hidden Power is ???-type and has 70 power
+   * Metronome is ???-type
    * Sing has 75% accuracy (matching Lovely Kiss)
    * Supersonic has 65% accuracy
    * Fly has 100% accuracy
@@ -245,6 +246,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Improved some trainers' rosters, movesets, and DVs (Gym Leaders, the Elite Four, and other bosses)
 * Custom features:
    * A randomized Wonder Trade Hub replaces the PokéCom Center's Mobile Trade Corner
+   * Move Reminder in the same house as Move Deleter, teaches one move for a Gold Leaf
    * Yellow Forest replaces the Johto Safari Zone
    * Cherrygrove Bay connects Cherrygrove City and Route 32
    * Individual party/day-care icons for each Pokémon
@@ -327,7 +329,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Add more moves learned at level 1 for relearning
 * Fix bugs:
    * Some overworld sprites glitch when walking
-   * Move Reminder doesn't work
+   * Move Reminder doesn't list all the correct moves
    * Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
    * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
    * Fix delay before last text box when Wonder Trading
