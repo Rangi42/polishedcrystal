@@ -151,7 +151,8 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 * Pokémon and move edits (not in faithful version):
    * Many base stat changes, mostly based on [Drayano's Sacred Gold/Storm
      Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/)
-   * Cut is Steel-type, 60 power, 100% accuracy
+   * Cut is Steel-type, and has 60 power and 100% accuracy
+   * Hidden Power is ???-type and has 70 power
    * Sing has 75% accuracy (matching Lovely Kiss)
    * Supersonic has 65% accuracy
    * Fly has 100% accuracy
