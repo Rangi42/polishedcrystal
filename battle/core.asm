@@ -2348,7 +2348,8 @@ FaintYourPokemon: ; 3cef1
 	ld a, $f0
 	ld [CryTracks], a
 	ld a, [BattleMonSpecies]
-	call PlayStereoCry
+	ld b, a
+	callba PlayFaintingCry
 	call PlayerMonFaintedAnimation
 	hlcoord 9, 7
 	lb bc, 5, 11
@@ -2359,6 +2360,11 @@ FaintYourPokemon: ; 3cef1
 
 FaintEnemyPokemon: ; 3cf14
 	call WaitSFX
+	ld a, $0f
+	ld [CryTracks], a
+	ld a, [EnemyMonSpecies]
+	ld b, a
+	callba PlayFaintingCry
 	ld de, SFX_KINESIS
 	call PlaySFX
 	call EnemyMonFaintedAnimation
@@ -4375,7 +4381,7 @@ PursuitSwitch: ; 3dc5b
 	call GetMoveEffect
 	ld a, b
 	cp EFFECT_PURSUIT
-	jr nz, .done
+	jp nz, PursuitSwitch_done
 
 	ld a, [CurBattleMon]
 	push af
@@ -4408,12 +4414,13 @@ PursuitSwitch: ; 3dc5b
 	ld hl, BattleMonHP
 	ld a, [hli]
 	or [hl]
-	jr nz, .done
+	jp nz, PursuitSwitch_done
 
 	ld a, $f0
 	ld [CryTracks], a
 	ld a, [BattleMonSpecies]
-	call PlayStereoCry
+	ld b, a
+	call PlayFaintingCry
 	ld a, [LastPlayerMon]
 	ld c, a
 	ld hl, wBattleParticipantsNotFainted
@@ -4427,8 +4434,13 @@ PursuitSwitch: ; 3dc5b
 	ld hl, EnemyMonHP
 	ld a, [hli]
 	or [hl]
-	jr nz, .done
+	jp nz, PursuitSwitch_done
 
+	ld a, $0f
+	ld [CryTracks], a
+	ld a, [EnemyMonSpecies]
+	ld b, a
+	callba PlayFaintingCry
 	ld de, SFX_KINESIS
 	call PlaySFX
 	call WaitSFX
@@ -4443,7 +4455,7 @@ PursuitSwitch: ; 3dc5b
 	scf
 	ret
 
-.done
+PursuitSwitch_done
 	and a
 	ret
 ; 3dce6

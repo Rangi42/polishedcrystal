@@ -180,6 +180,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Title case for Pokémon, moves, items, trainers, types, etc
    * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
    * Use some music from RBY and HGSS in Kanto
+   * Play low-pitched cries when a player or foe Pokémon faints
    * Poké → ()PC on Pokémon Center signs from the Japanese version
    * Berry → Oran Berry, Burnt Berry → Rawst Berry, etc
    * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
@@ -334,7 +335,6 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Design custom animations for new moves
    * Show Pokémon portraits when using field moves
    * Better Substitute sprites
-   * Low-pitched cries when fainting
    * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
    * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
    * Add Young Couple and Double Team trainer classes
