@@ -155,15 +155,14 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 ![title-screen](screenshots/title-screen.png)
 ![running-shoes](screenshots/running-shoes.png)
 ![town-map](screenshots/town-map.png)
-  
 ![cherrygrove-city](screenshots/cherrygrove-city.png)
+  
 ![sage-nico](screenshots/sage-nico.png)
 ![oaks-aide](screenshots/oaks-aide.png)
-  
 ![elder-li](screenshots/elder-li.png)
 ![move-tutor](screenshots/move-tutor.png)
-![moss-rock](screenshots/moss-rock.png)
   
+![moss-rock](screenshots/moss-rock.png)
 ![rich-boy](screenshots/rich-boy.png)
 ![tm58](screenshots/tm58.png)
 ![game-corner-prizes](screenshots/game-corner-prizes.png)
@@ -171,23 +170,24 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 ![goldenrod-move-tutor](screenshots/goldenrod-move-tutor.png)
 ![eviolite](screenshots/eviolite.png)
 ![wonder-trade](screenshots/wonder-trade.png)
-  
 ![cowgirl](screenshots/cowgirl.png)
+  
 ![olivine-city](screenshots/olivine-city.png)
 ![remoraid](screenshots/remoraid.png)
-  
 ![shiny-bellossom](screenshots/shiny-bellossom.png)
 ![hex-maniac](screenshots/hex-maniac.png)
+  
 ![team-rocket](screenshots/team-rocket.png)
-  
 ![steelix](screenshots/steelix.png)
+![custom-map](screenshots/custom-map.png)
 ![ice-rock](screenshots/ice-rock.png)
+  
 ![sitrus-berry](screenshots/sitrus-berry.png)
-  
 ![weavile](screenshots/weavile.png)
+![move-reminder](screenshots/move-reminder.png)
 ![moves](screenshots/moves.png)
-![sylveon-moonblast](screenshots/sylveon-moonblast.png)
   
+![sylveon-moonblast](screenshots/sylveon-moonblast.png)
 ![togetic-fairy-wind](screenshots/togetic-fairy-wind.png)
 ![aerodactyl-fossil](screenshots/aerodactyl-fossil.png)
 ![cerulean-city](screenshots/cerulean-city.png)
@@ -195,15 +195,14 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 ![celadon-city](screenshots/celadon-city.png)
 ![fly-to-rock-tunnel](screenshots/fly-to-rock-tunnel.png)
 ![viridian-forest](screenshots/viridian-forest.png)
-  
 ![mismagius](screenshots/mismagius.png)
+  
 ![fighting-dojo](screenshots/fighting-dojo.png)
 ![silph-co](screenshots/silph-co.png)
-  
 ![new-balls](screenshots/new-balls.png)
 ![rock-tunnel](screenshots/rock-tunnel.png)
-![safari-zone](screenshots/safari-zone.png)
   
+![safari-zone](screenshots/safari-zone.png)
 ![soul-house](screenshots/soul-house.png)
 ![cinnabar-island](screenshots/cinnabar-island.png)
 ![seafoam-islands](screenshots/seafoam-islands.png)
