@@ -36,6 +36,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 * Rematch Gym Leaders in the Fighting Dojo
 * Wonder Trade up to three times a day in the Goldenrod PokéCom Center
 * Move Reminder in the same house as the Move Deleter
+* Beating Red is not the end of the game
 
 * The Fairy type, with the Pink Bow as its type-enhancing item
 * Type chart, base stats, and move attributes all updated to Gen VI
