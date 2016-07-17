@@ -218,6 +218,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Use devamped Town Map graphics from HGSS
    * Match Nidoqueen's shiny palette with Nidoking's regular one
    * Rocket Executives use Team Rocket battle music
+   * Show Sylveon during Prof. Oak's intro speech
 * Increased difficulty:
    * Default Set battle style
    * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops
@@ -349,6 +350,7 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
    * Aurora Orb boosts Suicune's Defense and Special Defense
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
    * Fourth stat screen showing Poké Seer's data
+   * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
    * Color party/day-care sprites by species
    * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
    * Battle with Giovanni either in Radio Tower or with Celebi time traveling
