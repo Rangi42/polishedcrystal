@@ -35,6 +35,7 @@
    * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
    * Respawn uncaught legendaries after beating the Elite Four
    * Add more moves learned at level 1 for relearning
+   * Evolve some Pokémon by knowing a certain move
 
 * Fix bugs:
    * Some overworld sprites glitch when walking
@@ -69,7 +70,7 @@
    * Increase limits on Pokémon per box, number of boxes, coins in coin case, etc
    * More frequently successful fishing and Headbutting
    * More likely to find roaming Pokémon when on the correct route
-   * The old man in Pewter City shows you Raikou and Entei in case you've never encountered them roaming
+   * Somebody post–Elite Four shows you Raikou and Entei in case you've never encountered them roaming
    * Suicune roams if you don't catch it in Bell Tower
    * Aurora Orb boosts Suicune's Defense and Special Defense
    * Have Moves as an option in the party Pokémon menu during battle (might be too complicated to avoid glitches since moves can be reordered; also graphics glitches when the mini sprite overwrites the back sprite)
