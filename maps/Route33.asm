@@ -1,6 +1,6 @@
 const_value set 2
 	const ROUTE33_POKEFAN_M
-	const ROUTE33_LASS
+	const ROUTE33_TWIN
 	const ROUTE33_FRUIT_TREE
 
 Route33_MapScriptHeader:
@@ -9,9 +9,6 @@ Route33_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
-
-Route33LassScript:
-	jumptextfaceplayer Route33LassText
 
 TrainerHikerAnthony:
 	trainer EVENT_BEAT_HIKER_ANTHONY, HIKER, ANTHONY2, HikerAnthony2SeenText, HikerAnthony2BeatenText, 0, .Script
@@ -138,6 +135,17 @@ TrainerHikerAnthony:
 	jumpstd rematchm
 	end
 
+TrainerSchoolgirlImogen:
+	trainer EVENT_BEAT_SCHOOLGIRL_IMOGEN, SCHOOLGIRL, IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText, 0, SchoolgirlImogenScript
+
+SchoolgirlImogenScript:
+	end_if_just_battled
+	opentext
+	writetext SchoolgirlImogenAfterText
+	waitbutton
+	closetext
+	end
+
 Route33Sign:
 	jumptext Route33SignText
 
@@ -174,6 +182,23 @@ HikerAnthonyDunsparceText:
 	cont "got a funny face!"
 	done
 
+SchoolgirlImogenSeenText:
+	text "I'm the best in my"
+	line "class at #mon."
+	done
+
+SchoolgirlImogenBeatenText:
+	text "So there are bet-"
+	line "ter trainers…"
+	done
+
+SchoolgirlImogenAfterText:
+	text "I'm trying hard so"
+	line "I can be the star"
+	cont "in my class."
+	done
+
+; unused
 Route33LassText:
 	text "Pant, pant…"
 
@@ -212,5 +237,5 @@ Route33_MapEventHeader:
 .PersonEvents:
 	db 3
 	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	person_event SPRITE_LASS, 16, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route33LassScript, -1
+	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
 	person_event SPRITE_FRUIT_TREE, 16, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route33FruitTreeScript, -1

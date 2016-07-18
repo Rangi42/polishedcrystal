@@ -1,7 +1,12 @@
 	db POLITOED ; 186
 
-	db  90,  75,  75,  80,  90, 100
+if DEF(FAITHFUL)
+	db  90,  75,  75,  70,  90, 100
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  90,  75,  80,  80,  90, 100
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, WATER
 	db 45 ; catch rate

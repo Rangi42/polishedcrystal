@@ -3,7 +3,11 @@
 	db  80,  82,  78,  85,  95,  80
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
+	db WATER, WATER
+else
 	db WATER, PSYCHIC
+endc
 	db 75 ; catch rate
 	db 174 ; base exp
 	db NO_ITEM ; item 1

@@ -1,4 +1,5 @@
 const_value set 2
+	const QUIETCAVE1F_HEX_MANIAC
 	const QUIETCAVE1F_POKE_BALL1
 	const QUIETCAVE1F_POKE_BALL2
 	const QUIETCAVE1F_POKE_BALL3
@@ -11,6 +12,17 @@ QuietCave1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+TrainerHexManiacAshley:
+	trainer EVENT_BEAT_HEX_MANIAC_ASHLEY, HEX_MANIAC, ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText, 0, HexManiacAshleyScript
+
+HexManiacAshleyScript:
+	end_if_just_battled
+	opentext
+	writetext HexManiacAshleyAfterText
+	waitbutton
+	closetext
+	end
+
 QuietCave1FNugget:
 	itemball NUGGET
 
@@ -22,6 +34,22 @@ QuietCave1FDuskStone:
 
 QuietCave1FDuskBall:
 	itemball DUSK_BALL
+
+HexManiacAshleySeenText:
+	text "The spirits have"
+	line "shown me your"
+	cont "defeat!"
+	done
+
+HexManiacAshleyBeatenText:
+	text "No! The spirits"
+	line "can't be wrong!"
+	done
+
+HexManiacAshleyAfterText:
+	text "I see things that"
+	line "others can't see…"
+	done
 
 QuietCave1F_MapEventHeader:
 	; filler
@@ -44,6 +72,7 @@ QuietCave1F_MapEventHeader:
 
 .PersonEvents:
 	db 4
+	person_event SPRITE_HEX_MANIAC, 8, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHexManiacAshley, -1
 	person_event SPRITE_POKE_BALL, 23, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCave1FNugget, EVENT_QUIET_CAVE_1F_NUGGET
 	person_event SPRITE_POKE_BALL, 4, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCave1FTwistedSpoon, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
 	person_event SPRITE_POKE_BALL, 2, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, QuietCave1FDuskStone, EVENT_QUIET_CAVE_1F_DUSK_STONE

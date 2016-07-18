@@ -2,6 +2,8 @@ PYTHON := python
 MD5 := md5sum -c --quiet
 
 NAME = polishedcrystal
+FNAME = polishedcrystalf
+FAITHFUL =
 
 
 .SUFFIXES:
@@ -30,10 +32,12 @@ text/common_text.o \
 gfx/pics.o
 
 
-roms := $(NAME).gbc
+roms := $(NAME).gbc $(FNAME).gbc
 
-all: $(roms)
+all: crystal
 crystal: $(NAME).gbc
+faithful: FAITHFUL += -DFAITHFUL
+faithful: $(FNAME).gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
@@ -42,10 +46,14 @@ clean:
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
-	rgbasm -o $@ $<
+	rgbasm $(FAITHFUL) -o $@ $<
 
 $(NAME).gbc: $(crystal_obj)
 	rgblink -n $(NAME).sym -m $(NAME).map -o $@ $^
+	rgbfix -Cjv -t PKPCRYSTAL -i PKPC -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 $@
+
+$(FNAME).gbc: $(crystal_obj)
+	rgblink -n $(FNAME).sym -m $(FNAME).map -o $@ $^
 	rgbfix -Cjv -t PKPCRYSTAL -i PKPC -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 $@
 
 %.png: ;

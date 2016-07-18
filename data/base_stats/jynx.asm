@@ -1,7 +1,12 @@
 	db JYNX ; 124
 
+if DEF(FAITHFUL)
 	db  65,  50,  35,  95, 115,  95
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  65,  50,  35,  95, 120,  95
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ICE, PSYCHIC
 	db 45 ; catch rate

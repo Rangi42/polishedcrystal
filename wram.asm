@@ -2635,7 +2635,7 @@ wMobileBattleRoomTrigger::                   ds 1 ; d9c0
 wVermilionCityTrigger::                      ds 1
 wSeagallopFerryVermilionGateTrigger::        ds 1
 wSeagallopFerryNavelGateTrigger::            ds 1
-wSeagallopFerryFarawayGateTrigger::          ds 1
+wFarawayIslandTrigger::                      ds 1
 wRoute48Trigger::                            ds 1
 
 	ds 44

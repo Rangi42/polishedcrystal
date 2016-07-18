@@ -1,4 +1,5 @@
 const_value set 2
+	const SAFARIZONENORTH_BATTLE_GIRL
 	const SAFARIZONENORTH_COOLTRAINER_F
 	const SAFARIZONENORTH_POKE_BALL1
 	const SAFARIZONENORTH_POKE_BALL2
@@ -9,6 +10,17 @@ SafariZoneNorth_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerBattleGirlPadma:
+	trainer EVENT_BEAT_BATTLE_GIRL_PADMA, BATTLE_GIRL, PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript
+
+BattleGirlPadmaScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlPadmaAfterText
+	waitbutton
+	closetext
+	end
 
 SafariZoneNorthCooltrainerFScript:
 	faceplayer
@@ -69,6 +81,21 @@ SafariZoneNorthProtein:
 
 SafariZoneNorthHiddenLuckyPunch:
 	dwb EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH, LUCKY_PUNCH
+
+BattleGirlPadmaSeenText:
+	text "I spar with my"
+	line "#mon to improve"
+	cont "as a team!"
+	done
+
+BattleGirlPadmaBeatenText:
+	text "We'll have to"
+	line "train harder!"
+	done
+
+BattleGirlPadmaAfterText:
+	text "TODO"
+	done
 
 SafariZoneNorthCooltrainerFText:
 	text "I caught a"
@@ -174,7 +201,8 @@ SafariZoneNorth_MapEventHeader:
 	signpost 13, 23, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
 
 .PersonEvents:
-	db 3
+	db 4
+	person_event SPRITE_COOLTRAINER_F, 17, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
 	person_event SPRITE_COOLTRAINER_F, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
 	person_event SPRITE_POKE_BALL, 12, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthQuickClaw, EVENT_SAFARI_ZONE_NORTH_QUICK_CLAW
 	person_event SPRITE_POKE_BALL, 3, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthProtein, EVENT_SAFARI_ZONE_NORTH_PROTEIN

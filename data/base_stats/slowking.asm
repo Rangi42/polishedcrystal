@@ -1,7 +1,12 @@
 	db SLOWKING ; 199
 
+if DEF(FAITHFUL)
 	db  95,  75,  80,  30, 100, 110
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  95,  75,  80,  30, 110, 110
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, PSYCHIC
 	db 70 ; catch rate

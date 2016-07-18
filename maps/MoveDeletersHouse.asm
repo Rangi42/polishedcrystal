@@ -1,5 +1,6 @@
 const_value set 2
-	const MOVEDELETERSHOUSE_SUPER_NERD
+	const MOVEDELETERSHOUSE_MOVE_DELETER
+	const MOVEDELETERSHOUSE_MOVE_REMINDER
 
 MoveDeletersHouse_MapScriptHeader:
 .MapTriggers:
@@ -8,10 +9,18 @@ MoveDeletersHouse_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-MoveDeleter:
+MoveDeleterScript:
 	faceplayer
 	opentext
 	special MoveDeletion
+	waitbutton
+	closetext
+	end
+
+MoveReminderScript:
+	faceplayer
+	opentext
+	special MoveReminder
 	waitbutton
 	closetext
 	end
@@ -37,5 +46,6 @@ MoveDeletersHouse_MapEventHeader:
 	signpost 1, 1, SIGNPOST_READ, MoveDeletersHouseBookshelf
 
 .PersonEvents:
-	db 1
-	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveDeleter, -1
+	db 2
+	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveDeleterScript, -1
+	person_event SPRITE_HEX_MANIAC, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveReminderScript, -1

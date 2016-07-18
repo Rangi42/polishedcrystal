@@ -1,4 +1,6 @@
 const_value set 2
+	const MOUNTMORTAR1FOUTSIDE_COOLTRAINER_F1
+	const MOUNTMORTAR1FOUTSIDE_COOLTRAINER_F2
 	const MOUNTMORTAR1FOUTSIDE_POKE_BALL1
 	const MOUNTMORTAR1FOUTSIDE_POKE_BALL2
 
@@ -9,6 +11,28 @@ MountMortar1FOutside_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+TrainerBattleGirlSubaru:
+	trainer EVENT_BEAT_BATTLE_GIRL_SUBARU, BATTLE_GIRL, SUBARU, BattleGirlSubaruSeenText, BattleGirlSubaruBeatenText, 0, BattleGirlSubaruScript
+
+BattleGirlSubaruScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlSubaruAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerBattleGirlDiane:
+	trainer EVENT_BEAT_BATTLE_GIRL_DIANE, BATTLE_GIRL, DIANE, BattleGirlDianeSeenText, BattleGirlDianeBeatenText, 0, BattleGirlDianeScript
+
+BattleGirlDianeScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlDianeAfterText
+	waitbutton
+	closetext
+	end
+
 MountMortar1FOutsideEther:
 	itemball ETHER
 
@@ -18,6 +42,29 @@ MountMortar1FOutsideRevive:
 MountMortar1FOutsideHiddenHyperPotion:
 	dwb EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION, HYPER_POTION
 
+BattleGirlSubaruSeenText:
+	text "Kiyaah!"
+	done
+
+BattleGirlSubaruBeatenText:
+	text "TODO"
+	done
+
+BattleGirlSubaruAfterText:
+	text "TODO"
+	done
+
+BattleGirlDianeSeenText:
+	text "Hii-yaah!"
+	done
+
+BattleGirlDianeBeatenText:
+	text "TODO"
+	done
+
+BattleGirlDianeAfterText:
+	text "TODO"
+	done
 
 MountMortar1FOutside_MapEventHeader:
 	; filler
@@ -43,6 +90,8 @@ MountMortar1FOutside_MapEventHeader:
 	signpost 22, 25, SIGNPOST_ITEM, MountMortar1FOutsideHiddenHyperPotion
 
 .PersonEvents:
-	db 2
+	db 4
+	person_event SPRITE_COOLTRAINER_F, 15, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBattleGirlSubaru, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlDiane, -1
 	person_event SPRITE_POKE_BALL, 15, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortar1FOutsideEther, EVENT_MOUNT_MORTAR_1F_OUTSIDE_ETHER
 	person_event SPRITE_POKE_BALL, 18, 31, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortar1FOutsideRevive, EVENT_MOUNT_MORTAR_1F_OUTSIDE_REVIVE

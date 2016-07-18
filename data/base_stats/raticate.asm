@@ -1,7 +1,12 @@
 	db RATICATE ; 020
 
+if DEF(FAITHFUL)
 	db  55,  81,  60,  97,  50,  70
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  65,  91,  60, 107,  50,  70
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db NORMAL, NORMAL
 	db 90 ; catch rate

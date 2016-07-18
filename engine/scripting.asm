@@ -243,6 +243,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_wonder_trade               ; aa
 	dw Script_count_caught               ; ab
 	dw Script_trainerpic                 ; ac
+	dw Script_respawn_one_offs           ; ad
 ; 96e05
 
 StartScript: ; 96e05
@@ -3270,6 +3271,11 @@ Script_trainerpic:
 	ret
 ; 96f29
 
+Script_respawn_one_offs:
+; script command 0xad
+
+	; TODO: respawn one-off Pokémon
+	ret
 
 ; 97c20 unreferenced
 	ld a, [.byte]

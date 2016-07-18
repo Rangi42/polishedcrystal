@@ -435,3 +435,21 @@ LawrenceSprite:
 
 FossilSprite:
 	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
+
+CowgirlSprite:
+	sprite_header CowgirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
+RichBoySprite:
+	sprite_header RichBoySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+HexManiacSprite:
+	sprite_header HexManiacSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
+JamesSprite:
+	sprite_header JamesSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+JessieSprite:
+	sprite_header JessieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+GiovanniSprite:
+	sprite_header GiovanniSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN

@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE45_BATTLE_GIRL
 	const ROUTE45_POKEFAN_M1
 	const ROUTE45_POKEFAN_M2
 	const ROUTE45_POKEFAN_M3
@@ -20,6 +21,17 @@ Route45_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerBattleGirlNozomi:
+	trainer EVENT_BEAT_BATTLE_GIRL_NOZOMI, BATTLE_GIRL, NOZOMI, BattleGirlNozomiSeenText, BattleGirlNozomiBeatenText, 0, BattleGirlNozomiScript
+
+BattleGirlNozomiScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlNozomiAfterText
+	waitbutton
+	closetext
+	end
 
 TrainerBlackbeltKenji:
 	trainer EVENT_BEAT_BLACKBELT_KENJI, BLACKBELT_T, KENJI3, BlackbeltKenji3SeenText, BlackbeltKenji3BeatenText, 0, BlackbeltKenji3Script
@@ -318,6 +330,17 @@ Route45MaxPotion:
 Route45HiddenPpUp:
 	dwb EVENT_ROUTE_45_HIDDEN_PP_UP, PP_UP
 
+BattleGirlNozomiSeenText:
+	text "TODO"
+	done
+
+BattleGirlNozomiBeatenText:
+	text "TODO"
+	done
+
+BattleGirlNozomiAfterText:
+	text "TODO"
+	done
 
 HikerErikSeenText:
 	text "Be prepared for"
@@ -553,7 +576,8 @@ Route45_MapEventHeader:
 	signpost 80, 13, SIGNPOST_ITEM, Route45HiddenPpUp
 
 .PersonEvents:
-	db 14
+	db 15
+	person_event SPRITE_COOLTRAINER_F, 59, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlNozomi, -1
 	person_event SPRITE_POKEFAN_M, 16, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerErik, -1
 	person_event SPRITE_POKEFAN_M, 65, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerMichael, -1
 	person_event SPRITE_POKEFAN_M, 28, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerParry, -1

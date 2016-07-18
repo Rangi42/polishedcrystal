@@ -23,6 +23,45 @@ TwinScript_0x195b7f:
 CooltrainerMScript_0x195b82:
 	jumpstd happinesschecknpc
 
+ProfOaksAide3Script:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
+	iftrue .Explain
+	writetext ProfOaksAide3HiText
+	waitbutton
+	count_caught
+	checkcode VAR_DEXCAUGHT
+	if_greater_than 74, .HereYouGo
+.UhOh
+	writetext ProfOaksAide3UhOhText
+	waitbutton
+	closetext
+	end
+
+.HereYouGo
+	writetext ProfOaksAide3HereYouGoText
+	waitbutton
+	giveitem LUCKY_EGG
+	waitsfx
+	iffalse .NoRoom
+	writetext ProfOaksAide3LuckyEggText
+	playsound SFX_ITEM
+	waitsfx
+	itemnotify
+	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
+.Explain
+	writetext ProfOaksAide3ExplainText
+	waitbutton
+	closetext
+	end
+
+.NoRoom
+	writetext ProfOaksAide3NoRoomText
+	waitbutton
+	closetext
+	end
+
 UnknownText_0x195b85:
 	text "Deep inside far-"
 	line "off Indigo Plateau"
@@ -49,6 +88,72 @@ UnknownText_0x195bfd:
 	cont "forget an HM move."
 	done
 
+ProfOaksAide3HiText:
+	text "Hello there! I'm"
+	line "Prof.Oak's aide."
+
+	para "If you caught 75"
+	line "kinds of #mon,"
+
+	para "I'm supposed to"
+	line "give you an item."
+
+	para "So, <PLAYER>,"
+	line "have you caught"
+
+	para "at least 75 kinds"
+	line "of #mon?"
+	done
+
+ProfOaksAide3UhOhText:
+	text "Let's see…"
+	line "Uh-oh! You've only"
+
+	para "caught @"
+	deciram wd002, 1, 3
+	text " kinds"
+	line "of #mon."
+
+	para "Come back and see"
+	line "me when you catch"
+	cont "75 kinds."
+	done
+
+ProfOaksAide3HereYouGoText:
+	text "Let's see…"
+	line "Great job! You've"
+
+	para "caught @"
+	deciram wd002, 1, 3
+	text " kinds"
+	line "of #mon."
+
+	para "Congratulations!"
+	line "Here you go!"
+	done
+
+ProfOaksAide3NoRoomText:
+	text "Oh! I see you"
+	line "don't have any"
+	cont "room for this."
+	done
+
+ProfOaksAide3LuckyEggText:
+	text "<PLAYER> received"
+	line "Lucky Egg."
+	done
+
+ProfOaksAide3ExplainText:
+	text "That Lucky Egg"
+	line "helps a #mon"
+
+	para "gain more exper-"
+	line "ience than usual."
+
+	para "Use it to com-"
+	line "plete the #dex!"
+	done
+
 BlackthornPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -66,8 +171,9 @@ BlackthornPokeCenter1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_NURSE, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x195b79, -1
 	person_event SPRITE_GENTLEMAN, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x195b7c, -1
 	person_event SPRITE_TWIN, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x195b7f, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x195b82, -1
+	person_event SPRITE_SCIENTIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, -1

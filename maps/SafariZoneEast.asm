@@ -1,4 +1,5 @@
 const_value set 2
+	const SAFARIZONEEAST_COWGIRL
 	const SAFARIZONEEAST_POKE_BALL1
 	const SAFARIZONEEAST_POKE_BALL2
 	const SAFARIZONEEAST_POKE_BALL3
@@ -9,6 +10,17 @@ SafariZoneEast_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerCowgirlApril:
+	trainer EVENT_BEAT_COWGIRL_APRIL, COWGIRL, APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText, 0, CowgirlAprilScript
+
+CowgirlAprilScript:
+	end_if_just_battled
+	opentext
+	writetext CowgirlAprilAfterText
+	waitbutton
+	closetext
+	end
 
 SafariZoneEastAreaSign:
 	jumptext SafariZoneEastAreaSignText
@@ -27,6 +39,21 @@ SafariZoneEastSilverPowder:
 
 SafariZoneEastFullRestore:
 	itemball FULL_RESTORE
+
+CowgirlAprilSeenText:
+	text "Yeehaw!"
+	line "I just caught a"
+	cont "whole herd of"
+	cont "#mon!"
+	done
+
+CowgirlAprilBeatenText:
+	text "Well, shoot!"
+	done
+
+CowgirlAprilAfterText:
+	text "TODO"
+	done
 
 SafariZoneEastAreaSignText:
 	text "Safari Zone"
@@ -67,7 +94,8 @@ SafariZoneEast_MapEventHeader:
 	signpost 4, 6, SIGNPOST_READ, SafariZoneEastTrainerTipsSign
 
 .PersonEvents:
-	db 3
+	db 4
+	person_event SPRITE_COWGIRL, 9, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerCowgirlApril, -1
 	person_event SPRITE_POKE_BALL, 13, 20, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneEastCarbos, EVENT_SAFARI_ZONE_EAST_CARBOS
 	person_event SPRITE_POKE_BALL, 11, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneEastSilverPowder, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
 	person_event SPRITE_POKE_BALL, 1, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SafariZoneEastFullRestore, EVENT_SAFARI_ZONE_FULL_RESTORE

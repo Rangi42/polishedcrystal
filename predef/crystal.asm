@@ -248,6 +248,8 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .bellchime_trail
 	cp TILESET_YELLOW_FOREST
 	jr z, .yellow_forest
+	cp TILESET_FARAWAY_ISLAND
+	jr z, .faraway_island
 	cp TILESET_SPECIAL_CAVE
 	jr z, .special_cave
 	jr .do_nothing
@@ -293,6 +295,11 @@ LoadSpecialMapPalette: ; 494ac
 
 .yellow_forest
 	call LoadYellowForestPalette
+	scf
+	ret
+
+.faraway_island
+	call LoadFarawayIslandPalette
 	scf
 	ret
 
@@ -374,6 +381,21 @@ LoadYellowForestPalette:
 
 YellowForestPalette:
 INCLUDE "tilesets/yellow_forest.pal"
+
+LoadFarawayIslandPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, FarawayIslandPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+FarawayIslandPalette:
+INCLUDE "tilesets/faraway_island.pal"
 
 LoadSpecialCavePalette:
 	ld a, [MapGroup]

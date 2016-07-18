@@ -1,7 +1,12 @@
 	db LANTURN ; 171
 
+if DEF(FAITHFUL)
 	db 125,  58,  58,  67,  76,  76
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 125,  58,  58,  67,  86,  86
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, ELECTRIC
 	db 75 ; catch rate

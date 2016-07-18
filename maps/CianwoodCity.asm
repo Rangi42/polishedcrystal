@@ -36,7 +36,7 @@ CianwoodCity_MapScriptHeader:
 .FlyPointAndSuicune:
 	setflag ENGINE_FLYPOINT_CIANWOOD
 	setevent EVENT_EUSINE_IN_BURNED_TOWER
-	checkevent EVENT_FOUGHT_EUSINE
+	checkevent EVENT_BEAT_EUSINE
 	iffalse UnknownScript_0x1a001d
 	disappear CIANWOODCITY_EUSINE
 UnknownScript_0x1a001d:
@@ -57,9 +57,9 @@ UnknownScript_0x1a001e:
 	dotrigger $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	domaptrigger ROUTE_42, $1
-	checkevent EVENT_FOUGHT_EUSINE
+	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
-	setevent EVENT_FOUGHT_EUSINE
+	setevent EVENT_BEAT_EUSINE
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7

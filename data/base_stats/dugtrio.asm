@@ -1,7 +1,12 @@
 	db DUGTRIO ; 051
 
+if DEF(FAITHFUL)
 	db  35,  80,  50, 120,  50,  70
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  35, 100,  50, 120,  50,  70
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db GROUND, GROUND
 	db 50 ; catch rate

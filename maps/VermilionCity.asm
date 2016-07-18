@@ -93,6 +93,38 @@ LawrenceRightIntroScript:
 	special RestartMapMusic
 	end
 
+VermilionCityLawrenceScript:
+	special Special_FadeOutMusic
+	pause 15
+	opentext
+	writetext LawrenceOverheardText
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
+	pause 15
+	faceplayer
+	playmusic MUSIC_LAWRENCE
+	opentext
+	writetext LawrenceIntroText
+	waitbutton
+	closetext
+	checkcode VAR_FACING
+	if_equal UP, .HaveToGoAround
+	spriteface PLAYER, DOWN
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartDownMovementData
+	dotrigger $1
+	disappear VERMILIONCITY_LAWRENCE
+	special RestartMapMusic
+	end
+
+.HaveToGoAround
+	spriteface PLAYER, DOWN
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartAroundMovementData
+	dotrigger $1
+	disappear VERMILIONCITY_LAWRENCE
+	special RestartMapMusic
+	end
+
 LawrenceEnterLeftMovementData:
 	step_down
 	step_down
@@ -152,6 +184,25 @@ LawrenceWalkAroundRightMovementData:
 	step_down
 	step_down
 	turn_head_right
+	step_end
+
+LawrenceDepartDownMovementData:
+	step_down
+	step_down
+	step_down
+	step_down
+	step_down
+	step_down
+	step_end
+
+LawrenceDepartAroundMovementData:
+	step_right
+	step_down
+	step_down
+	step_down
+	step_down
+	step_down
+	step_down
 	step_end
 
 TeacherScript_0x1aa983:
@@ -483,4 +534,4 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 16, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1aa99b, -1
 	person_event SPRITE_BIG_SNORLAX, 8, 34, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_POKEFAN_M, 12, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
-	person_event SPRITE_LAWRENCE, 18, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
+	person_event SPRITE_LAWRENCE, 18, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityLawrenceScript, EVENT_LAWRENCE_VERMILION_CITY

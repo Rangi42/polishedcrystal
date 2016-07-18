@@ -104,8 +104,8 @@ SeagallopFerryVermilionGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
-	domaptrigger SEAGALLOP_FERRY_FARAWAY_GATE, $1
-	warp SEAGALLOP_FERRY_FARAWAY_GATE, $6, $5
+	domaptrigger FARAWAY_ISLAND, $1
+	warp FARAWAY_ISLAND, $c, $2a
 	end
 
 .RefuseFerry
@@ -141,6 +141,7 @@ SeagallopFerryVermilionGatePlayerArriveMovementData:
 	step_up
 	step_up
 	step_up
+	turn_head_down
 	step_end
 
 SeagallopFerryVermilionGateSailorArrive1MovementData:

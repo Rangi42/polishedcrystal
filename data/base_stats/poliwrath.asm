@@ -1,7 +1,12 @@
 	db POLIWRATH ; 062
 
+if DEF(FAITHFUL)
 	db  90,  95,  95,  70,  70,  90
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  90,  95, 100,  70,  70,  90
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, FIGHTING
 	db 45 ; catch rate

@@ -1,12 +1,13 @@
 ; See song sections in main.asm:
-; 	Songs i
-; 	Songs ii
-; 	Songs iii
-; 	Songs I
-; 	Songs II
-; 	Songs III
-; 	Songs IV
-; 	Songs V
+; 	Songs 1
+; 	Songs 2
+; 	Songs 3
+; 	Songs 4
+; 	Songs 5
+; 	Extra Songs 1
+; 	Extra Songs 2
+; 	Extra Songs 3
+; 	Extra Songs 4
 
 ; e906e
 	dba Music_Nothing ; 0xe91a3
@@ -125,6 +126,8 @@
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
 	dba Music_Route210DPPt
+	dba Music_ReversalMountainWhite2
+	dba Music_PowerPlantXY
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY

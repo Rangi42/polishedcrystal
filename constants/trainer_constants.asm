@@ -86,7 +86,6 @@ KRIS EQU __enum__
 	const ALBERT
 	const GORDON
 	const SAMUEL
-	const IAN
 	const JOEY2
 	const JOEY3
 	const WARREN
@@ -264,6 +263,7 @@ KRIS EQU __enum__
 	const ANTHONY5
 	const EDWIN
 	const DEVIN
+	const SEAMUS
 
 	trainerclass GRUNTM ; 23
 
@@ -428,6 +428,11 @@ KRIS EQU __enum__
 
 	trainerclass SCHOOLGIRL ; 30
 	const AUDREY
+	const ELIZA
+	const FAITH
+	const SARAH
+	const ISABEL
+	const IMOGEN
 
 	trainerclass PSYCHIC_T ; 31
 	const NATHAN
@@ -442,8 +447,15 @@ KRIS EQU __enum__
 	const GILBERT
 	const JARED
 	const RODNEY
+	const LEON
 
 	trainerclass HEX_MANIAC ; 32
+	const TAMARA
+	const ASHLEY
+	const AMY
+	const LUNA
+	const NATALIE
+	const VIVIAN
 
 	trainerclass SAGE ; 33
 	const CHOW
@@ -486,9 +498,14 @@ KRIS EQU __enum__
 	const MILTON
 
 	trainerclass RICH_BOY ; 38
+	const WINSTON
+	const GERALD
+	const IRVING
 
 	trainerclass COWGIRL ; 39
 	const ANNIE
+	const APRIL
+	const DANIELA
 
 	trainerclass SAILOR ; 3a
 	const EUGENE
@@ -598,11 +615,18 @@ KRIS EQU __enum__
 	const WAI
 
 	trainerclass BATTLE_GIRL ; 42
+	const SUBARU
+	const DIANE
+	const KAGAMI
+	const NOZOMI
+	const RONDA
+	const PADMA
 
 	trainerclass TEACHER ; 43
 	const COLETTE
 	const HILLARY
 	const SHIRLEY
+	const KATHRYN
 
 	trainerclass GUITARIST ; 44
 	const CLYDE
@@ -646,6 +670,7 @@ KRIS EQU __enum__
 	const THOM
 	const MATT
 	const RINGO
+	const HENRI
 
 	trainerclass COOLTRAINERF ; 47
 	const GWEN
@@ -683,6 +708,9 @@ KRIS EQU __enum__
 	trainerclass POKEMON_PROF ; 4a
 
 	trainerclass GAME_FREAK ; 4b
+	const MORIMOTO
+	const NISHINO
+	const ISHIHARA
 
 	trainerclass MYSTICALMAN ; 4c
 	const EUSINE
@@ -695,7 +723,7 @@ KRIS EQU __enum__
 
 	trainerclass YELLOW ; 50
 
-	trainerclass BILL ; 51
+	trainerclass BILL_T ; 51
 
 	trainerclass LAWRENCE ; 52
 

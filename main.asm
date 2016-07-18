@@ -6496,6 +6496,10 @@ SECTION "Tileset Data 9", ROMX
 
 INCLUDE "tilesets/data_9.asm"
 
+SECTION "Tileset Data 10", ROMX
+
+INCLUDE "tilesets/data_10.asm"
+
 SECTION "bank7B", ROMX, BANK[$7B]
 
 INCLUDE "text/battle_tower.asm"
@@ -6551,9 +6555,49 @@ SECTION "bank7E", ROMX, BANK[$7E]
 
 INCLUDE "data/battle_tower.asm"
 INCLUDE "data/odd_eggs.asm"
+INCLUDE "engine/shiny_ditto_egg.asm"
 
 SECTION "bank7F", ROMX, BANK[$7F]
 
 SECTION "stadium2", ROMX[$8000-$220], BANK[$7F]
 
 INCBIN "misc/stadium2_2.bin"
+
+; Low-pitched fainting cry routine from Pokémon TPP Anniversary Crystal 251
+; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
+SECTION "Fainting Cry", ROMX
+
+PlayFaintingCry:
+; b contains species index
+	ld a, b
+	call LoadCryHeader
+	ret c
+	ld hl, CryPitch
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, -$38
+	add hl, bc
+	ld a, l
+	ld [CryPitch], a
+	ld a, h
+	ld [CryPitch + 1], a
+	ld hl, CryLength
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, $18
+	add hl, bc
+	ld a, l
+	ld [CryLength], a
+	ld a, h
+	ld [CryLength + 1], a
+	ld a, 1
+	ld [wStereoPanningMask], a
+	callba _PlayCryHeader
+	call WaitSFX
+	ret
+
+SECTION "Move Reminder", ROMX
+
+INCLUDE "event/move_reminder.asm"

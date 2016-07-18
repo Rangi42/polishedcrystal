@@ -1,6 +1,10 @@
 const_value set 2
+	const YELLOWFOREST_TWIN1
+	const YELLOWFOREST_TWIN2
+	const YELLOWFOREST_TEACHER
+	const YELLOWFOREST_COOLTRAINER_M1
 	const YELLOWFOREST_YELLOW
-	const YELLOWFOREST_COOLTRAINER_F
+	const YELLOWFOREST_COOLTRAINER_M2
 	const YELLOWFOREST_POKE_BALL1
 	const YELLOWFOREST_POKE_BALL2
 	const YELLOWFOREST_POKE_BALL3
@@ -12,6 +16,50 @@ YellowForest_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerSchoolgirlSarah:
+	trainer EVENT_BEAT_SCHOOLGIRL_SARAH, SCHOOLGIRL, SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText, 0, SchoolgirlSarahScript
+
+SchoolgirlSarahScript:
+	end_if_just_battled
+	opentext
+	writetext SchoolgirlSarahAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSchoolgirlIsabel:
+	trainer EVENT_BEAT_SCHOOLGIRL_ISABEL, SCHOOLGIRL, ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
+
+SchoolgirlIsabelScript:
+	end_if_just_battled
+	opentext
+	writetext SchoolgirlIsabelAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerTeacherKathryn:
+	trainer EVENT_BEAT_TEACHER_KATHRYN, TEACHER, KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
+
+TeacherKathrynScript:
+	end_if_just_battled
+	opentext
+	writetext TeacherKathrynAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainermHenri:
+	trainer EVENT_BEAT_COOLTRAINERM_HENRI, COOLTRAINERM, HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText, 0, CooltrainermHenriScript
+
+CooltrainermHenriScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermHenriAfterText
+	waitbutton
+	closetext
+	end
 
 YellowScript:
 	faceplayer
@@ -54,12 +102,12 @@ NoRoomForLightBallScript:
 	closetext
 	end
 
-YellowForestCooltrainerFScript:
+YellowForestCooltrainerMScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_SEED_BOMB_INTRO
 	iftrue YellowForestTutorSeedBombScript
-	writetext YellowForestCooltrainerFText
+	writetext YellowForestCooltrainerMText
 	waitbutton
 	setevent EVENT_LISTENED_TO_SEED_BOMB_INTRO
 YellowForestTutorSeedBombScript:
@@ -127,6 +175,81 @@ YellowForestHiddenGoldLeaf1:
 YellowForestHiddenGoldLeaf2:
 	dwb EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2, GOLD_LEAF
 
+SchoolgirlSarahSeenText:
+	text "Ooh, a trainer!"
+	line "I want to battle!"
+	done
+
+SchoolgirlSarahBeatenText:
+	text "Sniff…"
+	line "You made me lose!"
+	done
+
+SchoolgirlSarahAfterText:
+	text "If we were at my"
+	line "school, I'd have"
+	cont "beaten you!"
+	done
+
+SchoolgirlIsabelSeenText:
+	text "Do you have cute"
+	line "#mon like the"
+	cont "ones here?"
+	done
+
+SchoolgirlIsabelBeatenText:
+	text "You have really"
+	line "strong #mon!"
+	done
+
+SchoolgirlIsabelAfterText:
+	text "We're learning"
+	line "about how #mon"
+
+	para "thrive together"
+	line "in the wild."
+	done
+
+TeacherKathrynSeenText:
+	text "You there!"
+	line "You're a trainer?"
+
+	para "You had better not"
+	line "make my students"
+	cont "cry!"
+	done
+
+TeacherKathrynBeatenText:
+	text "I won't let this"
+	line "make me cry…"
+	done
+
+TeacherKathrynAfterText:
+	text "Keeping an eye on"
+	line "everyone during a"
+
+	para "field trip is"
+	line "hard work."
+	done
+
+CooltrainermHenriSeenText:
+	text "Can you handle my"
+	line "balanced team of"
+	cont "#mon?"
+	done
+
+CooltrainermHenriBeatenText:
+	text "I guess you can!"
+	done
+
+CooltrainermHenriAfterText:
+	text "Having a diverse"
+	line "team to support"
+
+	para "each others' weak-"
+	line "nesses is key."
+	done
+
 YellowText_Greeting:
 	text "Yellow: Hi!"
 	line "I'm Yellow!"
@@ -185,7 +308,7 @@ YellowText_Goodbye:
 	line "its power."
 	done
 
-YellowForestCooltrainerFText:
+YellowForestCooltrainerMText:
 	text "Seeds are surpris-"
 	line "ingly powerful."
 
@@ -264,9 +387,13 @@ YellowForest_MapEventHeader:
 	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
 
 .PersonEvents:
-	db 6
+	db 10
+	person_event SPRITE_TWIN, 39, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
+	person_event SPRITE_TWIN, 32, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
+	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
+	person_event SPRITE_COOLTRAINER_M, 35, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermHenri, -1
 	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowScript, -1
-	person_event SPRITE_COOLTRAINER_F, 32, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerFScript, -1
+	person_event SPRITE_COOLTRAINER_M, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
 	person_event SPRITE_POKE_BALL, 16, 25, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestThunderStone, EVENT_YELLOW_FOREST_THUNDERSTONE
 	person_event SPRITE_POKE_BALL, 24, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestMiracleSeed, EVENT_YELLOW_FOREST_MIRACLE_SEED
 	person_event SPRITE_POKE_BALL, 21, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestUltraBall, EVENT_YELLOW_FOREST_ULTRA_BALL

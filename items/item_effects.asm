@@ -383,7 +383,7 @@ endr
 	call DelayFrames
 
 	ld a, [CurItem]
-	cp POKE_BALL + 1 ; Assumes Master/Ultra/Great come before
+	cp MASTER_BALL + 1 ; Assumes Poke/Great/Ultra come before
 	jr c, .not_kurt_ball
 	ld a, POKE_BALL
 .not_kurt_ball
@@ -440,7 +440,15 @@ endr
 	jr .not_ditto
 
 .ditto
+	ld a, [BattleType]
+	cp BATTLETYPE_KANTO_LEGEND
+	jr z, .mew
 	ld a, DITTO
+	ld [TempEnemyMonSpecies], a
+	jr .load_data
+
+.mew
+	ld a, MEW
 	ld [TempEnemyMonSpecies], a
 	jr .load_data
 
@@ -489,6 +497,7 @@ endr
 .Transformed:
 
 	ld a, [EnemyMonSpecies]
+	push af
 	ld [wWildMon], a
 	ld [CurPartySpecies], a
 	ld [wd265], a
@@ -503,7 +512,14 @@ endr
 
 	call ClearSprites
 
-	ld a, [wd265]
+	callba GiveExperiencePointsAfterCatch
+	ld a, [EnemyMonLevel]
+	ld [CurPartyLevel], a
+	pop af
+	ld [wWildMon], a
+	ld [CurPartySpecies], a
+	ld [wd265], a
+
 	dec a
 	call CheckCaughtMon
 
@@ -679,6 +695,7 @@ endr
 	jr .return_from_capture
 
 .FinishTutorial:
+	pop af
 	ld hl, Text_GotchaMonWasCaught
 
 .shake_and_break_free

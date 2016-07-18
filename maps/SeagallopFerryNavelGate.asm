@@ -73,6 +73,7 @@ SeagallopFerryNavelGatePlayerArriveMovementData:
 	step_up
 	step_up
 	step_up
+	turn_head_down
 	step_end
 
 SeagallopFerryNavelGateSailorArrive1MovementData:

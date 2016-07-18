@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE27_BATTLE_GIRL
 	const ROUTE27_COOLTRAINER_M1
 	const ROUTE27_COOLTRAINER_M2
 	const ROUTE27_COOLTRAINER_F1
@@ -53,6 +54,17 @@ FisherScript_0x1a089c:
 
 FruitTreeScript_Route27MiracleBerry:
 	fruittree FRUITTREE_ROUTE_27
+
+TrainerBattleGirlRonda:
+	trainer EVENT_BEAT_BATTLE_GIRL_RONDA, BATTLE_GIRL, RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText, 0, BattleGirlRondaScript
+
+BattleGirlRondaScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlRondaAfterText
+	waitbutton
+	closetext
+	end
 
 TrainerPsychicGilbert:
 	trainer EVENT_BEAT_PSYCHIC_GILBERT, PSYCHIC_T, GILBERT, PsychicGilbertSeenText, PsychicGilbertBeatenText, 0, PsychicGilbertScript
@@ -338,6 +350,18 @@ UnknownText_0x1a0a71:
 	line "gear Map and see."
 	done
 
+BattleGirlRondaSeenText:
+	text "TODO"
+	done
+
+BattleGirlRondaBeatenText:
+	text "TODO"
+	done
+
+BattleGirlRondaAfterText:
+	text "TODO"
+	done
+
 CooltrainermBlakeSeenText:
 	text "You look pretty"
 	line "strong."
@@ -493,7 +517,8 @@ Route27_MapEventHeader:
 	signpost 7, 25, SIGNPOST_READ, TohjoFallsSign
 
 .PersonEvents:
-	db 10
+	db 11
+	person_event SPRITE_COOLTRAINER_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainermBrian, -1
 	person_event SPRITE_COOLTRAINER_F, 10, 72, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1

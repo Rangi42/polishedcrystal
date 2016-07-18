@@ -24,6 +24,10 @@ INCLUDE "maps/blockdata_2.asm"
 SECTION "Map Blockdata 3", ROMX, BANK[MAPS_3]
 
 INCLUDE "maps/blockdata_3.asm"
+
+
+SECTION "Map Blockdata 4", ROMX
+
 INCLUDE "maps/blockdata_4.asm"
 
 
@@ -301,7 +305,6 @@ INCLUDE "maps/CeruleanGym.asm"
 INCLUDE "maps/CeruleanMart.asm"
 INCLUDE "maps/Route10PokeCenter1F.asm"
 INCLUDE "maps/PowerPlant.asm"
-INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/SaffronGym.asm"
 INCLUDE "maps/SaffronMart.asm"
@@ -524,6 +527,7 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
+INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/YellowForest.asm"
 INCLUDE "maps/YellowForestGate.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
@@ -547,7 +551,6 @@ INCLUDE "maps/FarawayIsland.asm"
 INCLUDE "maps/FarawayJungle.asm"
 INCLUDE "maps/SeagallopFerryVermilionGate.asm"
 INCLUDE "maps/SeagallopFerryNavelGate.asm"
-INCLUDE "maps/SeagallopFerryFarawayGate.asm"
 INCLUDE "maps/SilphCo2F.asm"
 INCLUDE "maps/SilphCo3F.asm"
 INCLUDE "maps/CinnabarVolcano1F.asm"

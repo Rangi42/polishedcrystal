@@ -1,11 +1,25 @@
 	db BUTTERFREE ; 012
 
+
+if DEF(FAITHFUL)
 	db  60,  45,  50,  70,  90,  80
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  60,  45,  50,  80, 110, 110
+	;   hp  atk  def  spd  sat  sdf
+endc
 
+if DEF(FAITHFUL)
+	db BUG, FLYING
+else
 	db BUG, PSYCHIC
+endc
 	db 45 ; catch rate
+if DEF(FAITHFUL)
 	db 160 ; base exp
+else
+	db 185 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db SILVERPOWDER ; item 2
 	db 127 ; gender

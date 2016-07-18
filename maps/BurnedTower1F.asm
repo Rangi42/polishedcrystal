@@ -4,6 +4,8 @@ const_value set 2
 	const BURNEDTOWER1F_SILVER
 	const BURNEDTOWER1F_MORTY
 	const BURNEDTOWER1F_POKE_BALL
+	const BURNEDTOWER1F_HEX_MANIAC
+	const BURNEDTOWER1F_FISHER
 
 BurnedTower1F_MapScriptHeader:
 .MapTriggers:
@@ -132,16 +134,36 @@ BurnedTower1FEusineScript:
 BurnedTower1FMortyScript:
 	jumptextfaceplayer BurnedTower1FMortyText
 
+TrainerHexManiacTamara:
+	trainer EVENT_BEAT_HEX_MANIAC_TAMARA, HEX_MANIAC, TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText, 0, HexManiacTamaraScript
+
+HexManiacTamaraScript:
+	end_if_just_battled
+	opentext
+	writetext HexManiacTamaraAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerFirebreatherNed:
+	trainer EVENT_BEAT_FIREBREATHER_NED, FIREBREATHER, NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
+
+FirebreatherNedScript:
+	end_if_just_battled
+	opentext
+	writetext FirebreatherNedAfterText
+	waitbutton
+	closetext
+	end
+
 BurnedTower1FRock:
 	jumpstd smashrock
 
 BurnedTower1FHiddenEther:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ETHER, ETHER
 
-
 BurnedTower1FHiddenUltraBall:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
-
 
 BurnedTower1FHPUp:
 	itemball HP_UP
@@ -284,6 +306,45 @@ BurnedTower1FMortyText:
 	line "Tower with him."
 	done
 
+HexManiacTamaraSeenText:
+	text "A strange power is"
+	line "present here…"
+	done
+
+HexManiacTamaraBeatenText:
+	text "I have lost…"
+	done
+
+HexManiacTamaraAfterText:
+	text "There are powers"
+	line "beyond our under-"
+
+	para "standing in the"
+	line "world…"
+	done
+
+FirebreatherNedSeenText:
+	text "My soul is on"
+	line "fire. I'll show"
+
+	para "you how hot it"
+	line "burns!"
+	done
+
+FirebreatherNedBeatenText:
+	text "Still not hot"
+	line "enough…"
+	done
+
+FirebreatherNedAfterText:
+	text "We Firebreathers"
+	line "know the true"
+
+	para "power of fire"
+	line "better than"
+	cont "anyone!"
+	done
+
 BurnedTower1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -315,9 +376,11 @@ BurnedTower1F_MapEventHeader:
 	signpost 11, 13, SIGNPOST_ITEM, BurnedTower1FHiddenUltraBall
 
 .PersonEvents:
-	db 5
+	db 7
 	person_event SPRITE_ROCK, 4, 15, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BurnedTower1FRock, -1
 	person_event SPRITE_SUPER_NERD, 12, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BurnedTower1FEusineScript, EVENT_BURNED_TOWER_1F_EUSINE
 	person_event SPRITE_SILVER, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	person_event SPRITE_MORTY, 14, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BurnedTower1FMortyScript, EVENT_BURNED_TOWER_MORTY
-	person_event SPRITE_POKE_BALL, 2, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, BurnedTower1FHPUp, EVENT_BURNED_TOWER_1F_HP_UP
+	person_event SPRITE_POKE_BALL, 1, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, BurnedTower1FHPUp, EVENT_BURNED_TOWER_1F_HP_UP
+	person_event SPRITE_HEX_MANIAC, 1, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
+	person_event SPRITE_FISHER, 3, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1

@@ -3,6 +3,7 @@ const_value set 2
 	const ROUTE47_YOUNGSTER
 	const ROUTE47_COOLTRAINER_M
 	const ROUTE47_COOLTRAINER_F
+	const ROUTE47_COWGIRL
 	const ROUTE47_ROCKET1
 	const ROUTE47_ROCKET2
 	const ROUTE47_ROCKET3
@@ -58,6 +59,17 @@ CooltrainerfKaeScript:
 	end_if_just_battled
 	opentext
 	writetext CooltrainerfKaeAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCowgirlDaniela:
+	trainer EVENT_BEAT_COWGIRL_DANIELA, COWGIRL, DANIELA, CowgirlDanielaSeenText, CowgirlDanielaBeatenText, 0, CowgirlDanielaScript
+
+CowgirlDanielaScript:
+	end_if_just_battled
+	opentext
+	writetext CowgirlDanielaAfterText
 	waitbutton
 	closetext
 	end
@@ -184,6 +196,18 @@ CooltrainerfKaeAfterText:
 	cont "battle!"
 	done
 
+CowgirlDanielaSeenText:
+	text "TODO"
+	done
+
+CowgirlDanielaBeatenText:
+	text "TODO"
+	done
+
+CowgirlDanielaAfterText:
+	text "TODO"
+	done
+
 GruntF6SeenText:
 	text "Why should we"
 	line "raise #mon like"
@@ -265,14 +289,15 @@ Route47_MapEventHeader:
 	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermThom, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_COOLTRAINER_F, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKae, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_COWGIRL, 8, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerCowgirlDaniela, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 9, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 9, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_POKE_BALL, 28, 39, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47Revive, EVENT_ROUTE_47_REVIVE
 	person_event SPRITE_POKE_BALL, 32, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47MysticWater, EVENT_ROUTE_47_MYSTIC_WATER
 	person_event SPRITE_POKE_BALL, 20, 31, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47QuickClaw, EVENT_ROUTE_47_QUICK_CLAW

@@ -110,6 +110,12 @@
 	const SPRITE_LEAF ; 6a
 	const SPRITE_LAWRENCE ; 6b
 	const SPRITE_FOSSIL ; 6c
+	const SPRITE_COWGIRL ; 6d
+	const SPRITE_RICH_BOY ; 6e
+	const SPRITE_HEX_MANIAC ; 6f
+	const SPRITE_JAMES ; 70
+	const SPRITE_JESSIE ; 71
+	const SPRITE_GIOVANNI ; 72
 
 const_value SET $80
 

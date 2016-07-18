@@ -36,7 +36,7 @@ BellchimeTrail_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 8
+	db 1
 	signpost 10, 22, SIGNPOST_READ, TinTowerSign
 
 .PersonEvents:

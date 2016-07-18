@@ -191,6 +191,10 @@ SpecialsPointers:: ; c029
 	add_special FindItemInPCOrBag
 	add_special Special_InitialSetDSTFlag
 	add_special Special_InitialClearDSTFlag
+
+; Polished Crystal
+	add_special GiveShinyDittoEgg
+	add_special MoveReminder
 	add_special SpecialNone
 ; c224
 
@@ -647,3 +651,4 @@ SpecialTrainerHouse: ; 0xc4b9
 	ld a, [sMysteryGiftTrainerHouseFlag]
 	ld [ScriptVar], a
 	jp CloseSRAM
+

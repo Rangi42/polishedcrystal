@@ -332,7 +332,7 @@ TrainerClassAttributes: ; 3959c
 
 ; Rich Boy
 	db MAX_POTION, 0 ; items
-	db 30 ; base reward
+	db 50 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
@@ -480,7 +480,7 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
-; Bill
+; Bill T
 	db X_SPEED, FULL_RESTORE ; items
 	db 24 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY

@@ -1,11 +1,20 @@
 	db CORSOLA ; 222
 
+if DEF(FAITHFUL)
 	db  55,  55,  85,  35,  65,  85
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  55,  55, 115,  35, 105, 110
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db WATER, ROCK
 	db 60 ; catch rate
+if DEF(FAITHFUL)
 	db 113 ; base exp
+else
+	db 128 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db HARD_STONE ; item 2
 	db 191 ; gender
