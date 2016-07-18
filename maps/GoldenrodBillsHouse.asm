@@ -56,7 +56,7 @@ BattleBillScript:
 	waitbutton
 	closetext
 	winlosstext PokemaniacBillBeatenText, 0
-	loadtrainer BILL, 1
+	loadtrainer BILL_T, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEMANIAC_BILL

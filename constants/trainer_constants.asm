@@ -723,7 +723,7 @@ KRIS EQU __enum__
 
 	trainerclass YELLOW ; 50
 
-	trainerclass BILL ; 51
+	trainerclass BILL_T ; 51
 
 	trainerclass LAWRENCE ; 52
 
