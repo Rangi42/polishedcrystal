@@ -249,3 +249,11 @@ The game's data files do a fairly good job of listing things you'll want to know
 **I don't like non-canon Pokémon types!**
 
 I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
+
+
+## Changes in 1.1.0
+
+These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
+
+* Fixed Firebreather Bill (was using Kimono Girl Sayo's name and Pokémon)
+* New Twins sprite
