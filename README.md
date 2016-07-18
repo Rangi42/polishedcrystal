@@ -256,4 +256,4 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
 
 * Fixed Firebreather Bill (was using Kimono Girl Sayo's name and Pokémon)
-* New Twins sprite
+* New sprites for Twins and Green
