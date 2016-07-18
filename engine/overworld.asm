@@ -1069,7 +1069,7 @@ Group8Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_KURT_OUTSIDE
-	; 10 walking sprites
+	; 10 walking sprites (TODO: reduce this? does KURT_OUTSIDE walk?)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_SLOWPOKE
 	; 12 total sprites
@@ -1317,7 +1317,7 @@ Group17Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 10 walking sprites
+	; 10 walking sprites (TODO: reduce this)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	; 12 total sprites
