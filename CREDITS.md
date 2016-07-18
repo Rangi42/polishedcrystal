@@ -4,7 +4,7 @@
 * Crystal_ for their in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks
 * Mateo for their thorough Red++ ROM hack, help on Skeetendo, and some sprites and tiles
 * Tauwasser, comet, and other members of Skeetendo for helpful advice
-* PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (namely the Move Relearner code)
+* PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (namely the Move Relearner code)
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many Pokémon sprites and icons
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
