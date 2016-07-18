@@ -1,5 +1,5 @@
 ; Pokémon X/Y - Power Plant
-; Demixed by huderlem
+; Demixed by ShantyTown
 ; https://github.com/huderlem/pokestyle-music-devamps/blob/master/music/kalos_powerplant.asm
 
 Music_PowerPlantXY:

@@ -11,7 +11,7 @@
 * Pum for the Route 47 music
 * Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
 * Mmmmmm for the Cinnabar Volcano and Faraway Island music
-* huderlem for the Rock Tunnel music
+* ShantyTown for the Rock Tunnel music
 * jpmac26 for editing the Pokémon Center signs
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite
