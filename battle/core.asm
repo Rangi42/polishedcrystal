@@ -4420,7 +4420,7 @@ PursuitSwitch: ; 3dc5b
 	ld [CryTracks], a
 	ld a, [BattleMonSpecies]
 	ld b, a
-	call PlayFaintingCry
+	callba PlayFaintingCry
 	ld a, [LastPlayerMon]
 	ld c, a
 	ld hl, wBattleParticipantsNotFainted
