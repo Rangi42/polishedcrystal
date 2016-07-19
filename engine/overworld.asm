@@ -834,17 +834,17 @@ Group22Sprites:
 	db SPRITE_OLIVINE_RIVAL
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
-	db SPRITE_ROCKET
 	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD
 	db SPRITE_SWIMMER_GIRL
-	; 10 walking sprites (TODO: reduce this)
+	db SPRITE_ROCKET ; doesn't move
+	; 10 walking sprites (9 that walk)
 	db SPRITE_STANDING_YOUNGSTER
 	db SPRITE_TAUROS
 	db SPRITE_FRUIT_TREE
 	db SPRITE_ROCK
 	db SPRITE_SUICUNE
-	; 15 total sprites (TODO: reduce this)
+	; 15 total sprites (TODO: reduce this?)
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -894,17 +894,17 @@ Group3Sprites:
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
-	db SPRITE_RICH_BOY
 	db SPRITE_ROCKER
 	db SPRITE_SCIENTIST
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 10 walking sprites (TODO: reduce this)
+	; 9 walking sprites
 	db SPRITE_GAMEBOY_KID
 	db SPRITE_GROWLITHE
 	db SPRITE_POKE_BALL
-	; 13 total sprites
+	; 12 total sprites
+	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
