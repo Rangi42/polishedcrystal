@@ -202,16 +202,11 @@ GetStormBadgeText:
 
 ChuckExplainBadgeText:
 	text "The Storm Badge"
-	line "makes all #mon up"
+	para "lets your #mon"
 
-	para "to L70 obey, even"
-	line "traded ones."
-
-	para "It also lets your"
-	line "#mon use Fly"
-
-	para "when you're not in"
-	line "a battle."
+	para "Fly to any city"
+	line "or town you've"
+	cont "already been to."
 
 	para "Here, take this"
 	line "too!"

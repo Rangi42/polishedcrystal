@@ -258,6 +258,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Title screen version number ends in "F" for the faithful version
 * Add: New sprites for Twins and another trainer
 * Add: Wild Gengar in Cerulean Cave at night
+* Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item
 * Fix: Some items' names were displayed wrong when held

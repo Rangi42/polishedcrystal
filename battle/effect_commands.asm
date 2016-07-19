@@ -738,8 +738,8 @@ BattleCommand_CheckObedience: ; 343db
 	ld a, MAX_LEVEL + 1
 	jr nz, .getlevel
 
-	; stormbadge
-	bit STORMBADGE, [hl]
+	; mineralbadge
+	bit MINERALBADGE, [hl]
 	ld a, 70
 	jr nz, .getlevel
 
