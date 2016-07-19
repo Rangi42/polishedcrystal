@@ -155,7 +155,7 @@ endr
 	ld a, [TempMonItem]
 
 	cp b
-	jp nz, .dont_evolve_2
+	jp nz, .dont_evolve_3
 
 	xor a
 	ld [TempMonItem], a

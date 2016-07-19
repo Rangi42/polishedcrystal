@@ -721,9 +721,6 @@ endr
 	ld a, [TempMonItem]
 	and a
 	ret z
-	ld b, a
-	callba TimeCapsule_ReplaceTeruSama
-	ld a, b
 	ld [wd265], a
 	call GetItemName
 	ret

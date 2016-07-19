@@ -788,6 +788,7 @@ SpriteMons: ; 14495
 
 OutdoorSprites: ; 144b8
 ; Valid sprite IDs for each map group.
+; Maximum 9 (11?) walking sprites and 13 total sprites used per group.
 
 	dw Group1Sprites
 	dw Group2Sprites
@@ -837,12 +838,14 @@ Group22Sprites:
 	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD
 	db SPRITE_SWIMMER_GIRL
-	db SPRITE_SWIMMER_GUY
+	; 10 walking sprites (TODO: reduce this)
 	db SPRITE_STANDING_YOUNGSTER
 	db SPRITE_TAUROS
 	db SPRITE_FRUIT_TREE
 	db SPRITE_ROCK
 	db SPRITE_SUICUNE
+	; 15 total sprites (TODO: reduce this)
+	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -864,9 +867,11 @@ Group2Sprites:
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
+	; 8 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
+	; 11 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -886,7 +891,6 @@ Group3Sprites:
 ; NationalParkBugContest
 ; RuinsofAlphOutside
 	db SPRITE_FISHER
-	db SPRITE_GROWLITHE
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
@@ -896,8 +900,11 @@ Group3Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
+	; 10 walking sprites (TODO: reduce this)
 	db SPRITE_GAMEBOY_KID
+	db SPRITE_GROWLITHE
 	db SPRITE_POKE_BALL
+	; 13 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -941,11 +948,13 @@ Group26Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	db SPRITE_SUDOWOODO
+	; 15 walking sprites (TODO: reduce this)
 	db SPRITE_WEIRD_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
+	; 19 total sprites (TODO: reduce this)
+	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_POKE_BALL
@@ -963,8 +972,10 @@ Group5Sprites:
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
+	; 8 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	; 10 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -994,7 +1005,9 @@ Group6Sprites:
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_YOUNGSTER
+	; 8 walking sprites
 	db SPRITE_POKE_BALL
+	; 9 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1024,8 +1037,10 @@ Group7Sprites:
 	db SPRITE_ROCKET
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
+	; 8 walking sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_SLOWPOKE
+	; 10 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1054,8 +1069,10 @@ Group8Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_KURT_OUTSIDE
+	; 10 walking sprites (TODO: reduce this? does KURT_OUTSIDE walk?)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_SLOWPOKE
+	; 12 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1080,9 +1097,11 @@ Group9Sprites:
 	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
+	; 8 walking sprites
 	db SPRITE_GYARADOS
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	; 11 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1110,9 +1129,11 @@ Group11Sprites:
 	db SPRITE_RICH_BOY
 	db SPRITE_ROCKET
 	db SPRITE_YOUNGSTER
+	; 9 walking sprites
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
 	db SPRITE_POKE_BALL
+	; 12 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1126,32 +1147,44 @@ Group11Sprites:
 	db SPRITE_POKE_BALL
 
 
+; VermilionCity connects to Route6
 Group12Sprites:
 ; Route11
 ; VermilionCity
+Group25Sprites:
+; Route5
+; Route6
+; Route7
+; Route8
+; SaffronCity
+; Route47
+; Route48
+; YellowForest
+	db SPRITE_BIKER
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_COWGIRL
+	db SPRITE_FISHER
+	db SPRITE_GENTLEMAN
 	db SPRITE_GRAMPS
+	db SPRITE_JAMES
+	db SPRITE_JESSIE
+	db SPRITE_LASS
+	db SPRITE_LAWRENCE
 	db SPRITE_POKEFAN_M
+	db SPRITE_ROCKET
+	db SPRITE_ROCKET_GIRL
 	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
+	db SPRITE_TWIN
+	db SPRITE_YELLOW
 	db SPRITE_YOUNGSTER
-	db SPRITE_LAWRENCE
-	db SPRITE_BIG_SNORLAX
+	; 19 walking sprites (TODO: reduce this)
+	db SPRITE_BIG_SNORLAX ; counts as 4
 	db SPRITE_MACHOP
 	db SPRITE_FRUIT_TREE
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
 	db SPRITE_POKE_BALL
+	; 26 total sprites (TODO: reduce this)
 
 
 Group13Sprites:
@@ -1162,7 +1195,9 @@ Group13Sprites:
 	db SPRITE_FISHER
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	; 5 walking sprites
 	db SPRITE_FRUIT_TREE
+	; 6 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1190,7 +1225,9 @@ Group14Sprites:
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
+	; 5 walking sprites
 	db SPRITE_FRUIT_TREE
+	; 6 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1216,13 +1253,15 @@ Group15Sprites:
 ; MountMoonSquare
 ; TinTowerRoof
 	db SPRITE_COOLTRAINER_F
+	db SPRITE_FAIRY
 	db SPRITE_FISHING_GURU
 	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	db SPRITE_FAIRY
+	; 6 walking sprites
 	db SPRITE_HO_OH
 	db SPRITE_ROCK
+	; 8 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1242,6 +1281,8 @@ Group15Sprites:
 
 Group16Sprites:
 ; Route23
+	; 0 walking sprites
+	; 0 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1286,8 +1327,10 @@ Group17Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
+	; 10 walking sprites (TODO: reduce this)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	; 12 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1311,7 +1354,9 @@ Group18Sprites:
 	db SPRITE_POKEFAN_M
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	; 6 walking sprites
 	db SPRITE_POKE_BALL
+	; 7 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1337,6 +1382,8 @@ Group19Sprites:
 ; FarawayJungle
 	db SPRITE_SAILOR
 	db SPRITE_MONSTER
+	; 2 walking sprites
+	; 2 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1362,6 +1409,8 @@ Group19Sprites:
 
 Group20Sprites:
 ; (nothing)
+	; 0 walking sprites
+	; 0 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1398,7 +1447,9 @@ Group21Sprites:
 	db SPRITE_LASS
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	; 6 walking sprites
 	db SPRITE_POLIWAG
+	; 7 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1426,8 +1477,10 @@ Group23Sprites:
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
+	; 4 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	; 6 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1461,8 +1514,10 @@ Group24Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
 	db SPRITE_MONSTER
+	; 9 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	; 11 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1471,40 +1526,6 @@ Group24Sprites:
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_POKE_BALL
-
-
-Group25Sprites:
-; Route5
-; Route6
-; Route7
-; Route8
-; SaffronCity
-; Route47
-; Route48
-; YellowForest
-	db SPRITE_BIKER
-	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
-	db SPRITE_COWGIRL
-	db SPRITE_FISHER
-	db SPRITE_GENTLEMAN
-	db SPRITE_JAMES
-	db SPRITE_JESSIE
-	db SPRITE_LASS
-	db SPRITE_POKEFAN_M
-	db SPRITE_ROCKET
-	db SPRITE_ROCKET_GIRL
-	db SPRITE_SUPER_NERD
-	db SPRITE_TEACHER
-	db SPRITE_TWIN
-	db SPRITE_YELLOW
-	db SPRITE_YOUNGSTER
-	db SPRITE_FRUIT_TREE
-	db SPRITE_POKE_BALL
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU

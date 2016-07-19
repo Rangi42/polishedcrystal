@@ -15,7 +15,7 @@ CeladonGameCornerPrizeRoomGentlemanScript:
 CeladonGameCornerPrizeRoomPharmacistScript:
 	jumptextfaceplayer CeladonGameCornerPrizeRoomPharmacistText
 
-GoldenrodGameCornerTMVendor:
+CeladonGameCornerTMVendor:
 	faceplayer
 	opentext
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
@@ -119,7 +119,7 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db "Cancel@"
 
 
-GoldenrodGameCornerPokemonVendor:
+CeladonGameCornerPokemonVendor:
 	faceplayer
 	opentext
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
@@ -132,12 +132,12 @@ GoldenrodGameCornerPokemonVendor:
 	loadmenudata .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .mr_mime
+	if_equal $1, .mr__mime
 	if_equal $2, .eevee
 	if_equal $3, .porygon
 	jump CeladonPrizeRoom_cancel
 
-.mr_mime
+.mr__mime
 	checkcoins 3333
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
@@ -202,9 +202,9 @@ GoldenrodGameCornerPokemonVendor:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Pikachu    2222@"
-	db "Porygon    5555@"
-	db "Larvitar   8888@"
+	db "Mr. Mime   3333@"
+	db "Eevee      6666@"
+	db "Porygon    9999@"
 	db "Cancel@"
 
 
@@ -283,8 +283,8 @@ CeladonGameCornerPrizeRoom_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 1, 2, SIGNPOST_READ, GoldenrodGameCornerTMVendor
-	signpost 1, 4, SIGNPOST_READ, GoldenrodGameCornerPokemonVendor
+	signpost 1, 2, SIGNPOST_READ, CeladonGameCornerTMVendor
+	signpost 1, 4, SIGNPOST_READ, CeladonGameCornerPokemonVendor
 
 .PersonEvents:
 	db 2

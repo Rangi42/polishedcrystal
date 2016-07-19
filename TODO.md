@@ -92,3 +92,5 @@
    * N would sympathize with the Ruins of Alph message about how "we depart for their sakes"
    * Somtimes wild Pokémon know an egg move
    * Rock Smash breaks screens instead of lowering Defense (like Brick Break)
+   * Add female Guitarist
+   * Title screen should say "F1.0.0" not "v1.0.0" for faithful version

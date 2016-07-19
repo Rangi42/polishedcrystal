@@ -122,11 +122,19 @@ _TitleScreen: ; 10ed67
 	call DrawTitleGraphic
 
 ; Draw copyright text
-	hlbgcoord 3, 0, VBGMap1
+	hlbgcoord 4, 0, VBGMap1
 	lb bc, 1, 13
 	ld d, $c
 	ld e, $10
 	call DrawTitleGraphic
+
+IF DEF(FAITHFUL)
+	hlbgcoord 17, 0, VBGMap1
+	lb bc, 1, 1
+	ld d, $19
+	ld e, $10
+	call DrawTitleGraphic
+endc
 
 ; Initialize running Suicune?
 	ld d, $0
