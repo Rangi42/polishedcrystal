@@ -377,6 +377,8 @@ MAP_NONE   EQU 0
 	mapgroup TIME_CAPSULE,                                4,  5 ;  4
 	mapgroup MOBILE_TRADE_ROOM_MOBILE,                    4,  5 ;  5
 	mapgroup MOBILE_BATTLE_ROOM,                          4,  5 ;  6
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  7
+	mapgroup YELLOW_FOREST,                              25, 29 ;  8
 
 	newgroup                                                    ; 21
 
@@ -463,35 +465,25 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 25
 
+	mapgroup SAFFRON_CITY,                               18, 20 ;  1
+	mapgroup FIGHTING_DOJO,                               6,  5 ;  2
+	mapgroup SAFFRON_GYM,                                 9, 10 ;  3
+	mapgroup SAFFRON_MART,                                4,  6 ;  4
+	mapgroup SAFFRON_POKECENTER_1F,                       4,  5 ;  5
+	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ;  6
+	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ;  7
+	mapgroup SILPH_CO_1F,                                 4,  8 ;  8
+	mapgroup SILPH_CO_2F,                                 4,  8 ;  9
+	mapgroup SILPH_CO_3F,                                 4,  8 ; 10
+	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 11
+	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 12
 	mapgroup ROUTE_5,                                     9, 10 ;  1
 	mapgroup ROUTE_6,                                     9, 10 ;  2
 	mapgroup ROUTE_7,                                     9, 10 ;  3
 	mapgroup ROUTE_8,                                     9, 20 ;  4
-	mapgroup SAFFRON_CITY,                               18, 20 ;  5
-	mapgroup FIGHTING_DOJO,                               6,  5 ;  6
-	mapgroup SAFFRON_GYM,                                 9, 10 ;  7
-	mapgroup SAFFRON_MART,                                4,  6 ;  8
-	mapgroup SAFFRON_POKECENTER_1F,                       4,  5 ;  9
-	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ; 10
-	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ; 11
-	mapgroup SILPH_CO_1F,                                 4,  8 ; 12
-	mapgroup SILPH_CO_2F,                                 4,  8 ; 13
-	mapgroup SILPH_CO_3F,                                 4,  8 ; 14
-	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 15
-	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 16
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 17
-	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 18
-	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 19
-	mapgroup CLIFF_EDGE_GATE,                            11, 10 ; 20
-	mapgroup ROUTE_47,                                   19, 39 ; 21
-	mapgroup CLIFF_CAVE,                                 20,  7 ; 22
-	mapgroup ROUTE_48,                                   11, 18 ; 23
-	mapgroup YELLOW_FOREST_GATE,                          4,  5 ; 24
-	mapgroup YELLOW_FOREST,                              25, 29 ; 25
-	mapgroup QUIET_CAVE_1F,                              18, 18 ; 26
-	mapgroup QUIET_CAVE_B1F,                             18, 18 ; 27
-	mapgroup QUIET_CAVE_B2F,                             18, 18 ; 28
-	mapgroup QUIET_CAVE_B3F,                             18, 18 ; 29
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ;  5
+	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ;  6
+	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ;  7
 
 	newgroup                                                    ; 26
 
@@ -507,6 +499,18 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_30_BERRY_SPEECH_HOUSE,                 4,  4 ; 10
 	mapgroup MR_POKEMONS_HOUSE,                           4,  4 ; 11
 	mapgroup ROUTE_31_VIOLET_GATE,                        4,  5 ; 12
+
+	newgroup                                                    ; 27
+
+	mapgroup CLIFF_EDGE_GATE,                            11, 10 ;  1
+	mapgroup CLIFF_CAVE,                                 20,  7 ;  2
+	mapgroup ROUTE_47,                                   19, 39 ;  3
+	mapgroup ROUTE_48,                                   11, 18 ;  4
+	mapgroup QUIET_CAVE_1F,                              18, 18 ;  5
+	mapgroup QUIET_CAVE_B1F,                             18, 18 ;  6
+	mapgroup QUIET_CAVE_B2F,                             18, 18 ;  7
+	mapgroup QUIET_CAVE_B3F,                             18, 18 ;  8
+
 
 
 ; elevator floors
