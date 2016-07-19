@@ -255,6 +255,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
 
+* Title screen version number ends in "F" for the faithful version
 * Fixed Firebreather Bill (was using Kimono Girl Sayo's name and Pokémon)
 * Fixed evolution by held item happening incorrectly when no item is held
 * Can't get stuck in Cerulean Cave without Surf or Fly
