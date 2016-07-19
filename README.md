@@ -258,4 +258,5 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fixed Firebreather Bill (was using Kimono Girl Sayo's name and Pokémon)
 * Fixed evolution by held item happening incorrectly when no item is held
 * New sprites for Twins and another trainer
+* Wild Gengar in Cerulean Cave at night
 * Celadon Game Corner has Mr. Mime for 3333 coins, Eevee for 6666, and Porygon for 9999
