@@ -255,6 +255,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
 
 * Add: Title screen version number ends in "F" for the faithful version
+* Add: Unlimited-use TMs from Gen V
 * Add: New sprites for Twins and another trainer
 * Add: Guitarist♀ trainer class
 * Add: Wild Gengar in Cerulean Cave at night

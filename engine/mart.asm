@@ -415,6 +415,9 @@ endr
 ; 15c91
 
 MartAskPurchaseQuantity: ; 15c91
+	ld a, [CurItem]
+	cp TM01
+	jr nc, .PurchaseQuantityOfTM
 	call GetMartDialogGroup ; gets a pointer from GetMartDialogGroup.MartTextFunctionPointers
 rept 2
 	inc hl
@@ -426,6 +429,44 @@ endr
 	jp z, BargainShopAskPurchaseQuantity
 	jp RooftopSaleAskPurchaseQuantity
 ; 15ca3
+
+.PurchaseQuantityOfTM
+	push de
+	ld hl, NumItems
+	call CheckItem
+	pop de
+	jp c, .AlreadyHaveTM
+	callba GetItemPrice
+	ld a, d
+	ld [Buffer1], a
+	ld a, e
+	ld [Buffer2], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld a, 99
+	ld [wItemQuantityBuffer], a
+	callba BuySell_MultiplyPrice
+	push hl
+	ld hl, hMoneyTemp
+	ld a, [hProduct + 1]
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+	pop hl
+	ret
+
+.AlreadyHaveTM
+	ld hl, .AlreadyHaveTMText
+	call PrintText
+	call JoyWaitAorB
+	scf
+	ret
+
+.AlreadyHaveTMText
+	text_jump AlreadyHaveTMText
+	db "@"
 
 GetMartDialogGroup: ; 15ca3
 	ld a, [EngineBuffer1]

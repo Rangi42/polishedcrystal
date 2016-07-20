@@ -33,7 +33,6 @@
 
 ## Other mechanics
 
-* Unlimited-use TMs from Gen V
 * Continuous Repel system from Gen V
 * Catch rate formula from Gen III
 * Money loss formula from Gen III when whiting out

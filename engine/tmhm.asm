@@ -102,7 +102,7 @@ TMHMMoves: ; 1167a
 	db FALSE_SWIPE  ; TM54 (Goldenrod Dept.Store)
 	db SCALD        ; TM55 (Misty)
 	db X_SCISSOR    ; TM56 (Underground Warehouse)
-	db DARK_PULSE   ; TM57 (Dark Cave)
+	db DARK_PULSE   ; TM57 (Dark Cave, Celadon Game Corner)
 	db ENDURE       ; TM58 (Burned Tower)
 	db DRAGON_PULSE ; TM59 (Route 26)
 	db DAZZLINGLEAM ; TM60 (Bellchime Trail)
