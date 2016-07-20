@@ -43,17 +43,12 @@
 * Select reorders Pokémon in party menu
 * Pokédex area display uses whiever region you're in (edit engine/pokegear.asm:_Area)
 * Send gift Pokémon to the PC if the party is full
+* Bill calls to switch boxes when one is full
+* Respawn uncaught legendaries after beating the Elite Four (Suicune roams)
 * More frequently successful fishing and Headbutting
 * More likely to find roaming Pokémon when on the correct route
 * Add more moves learned at level 1 for relearning
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
-
-
-## Events
-
-* Lt. Surge's traps from RBY
-* Bill calls to switch boxes when one is full
-* Respawn uncaught legendaries after beating the Elite Four (Suicune roams)
 
 
 ## Aesthetic updates
@@ -77,6 +72,7 @@
 ## New content
 
 * Add Young Couple and Double Team trainer classes
+* Lt. Surge's traps from RBY
 * Unown ? and ! from Gen III
 * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
 * Aurora Orb boosts Suicune's Defense and Special Defense
