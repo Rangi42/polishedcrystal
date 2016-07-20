@@ -1,5 +1,5 @@
 const_value set 2
-	const CHERRYGROVEBAY_POKEFAN_M
+	const CHERRYGROVEBAY_FISHER
 	const CHERRYGROVEBAY_POKE_BALL
 
 CherrygroveBay_MapScriptHeader:
@@ -9,12 +9,12 @@ CherrygroveBay_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-CherrygroveBayPokefanMScript:
+CherrygroveBayFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_EARTH_POWER_INTRO
 	iftrue CherrygroveBayTutorEarthPowerScript
-	writetext CherrygroveBayPokefanMText
+	writetext CherrygroveBayFisherText
 	waitbutton
 	setevent EVENT_LISTENED_TO_EARTH_POWER_INTRO
 CherrygroveBayTutorEarthPowerScript:
@@ -51,7 +51,7 @@ CherrygroveBayTutorEarthPowerScript:
 CherrygroveBayShinyStone:
 	itemball SHINY_STONE
 
-CherrygroveBayPokefanMText:
+CherrygroveBayFisherText:
 	text "I don't believe in"
 	line "legendary #mon"
 	cont "creation myths."
@@ -111,5 +111,5 @@ CherrygroveBay_MapEventHeader:
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_POKEFAN_M, 20, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayPokefanMScript, -1
+	person_event SPRITE_FISHER, 20, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygroveBayFisherScript, -1
 	person_event SPRITE_POKE_BALL, 12, 22, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CherrygroveBayShinyStone, EVENT_CHERRYGROVE_BAY_SHINY_STONE

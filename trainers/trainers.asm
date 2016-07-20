@@ -7700,9 +7700,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 9, MAREEP
-	db 8, WOOPER
-	db 10, TEDDIURSA
+	db 7, VULPIX
+	db 6, MAREEP
+	db 8, TEDDIURSA
 
 	db $ff ; end
 

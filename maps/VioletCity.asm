@@ -1,7 +1,7 @@
 const_value set 2
 	const VIOLETCITY_EARL
 	const VIOLETCITY_LASS
-	const VIOLETCITY_SUPER_NERD
+	const VIOLETCITY_COOLTRAINER_M
 	const VIOLETCITY_GRAMPS
 	const VIOLETCITY_YOUNGSTER
 	const VIOLETCITY_FRUIT_TREE
@@ -63,8 +63,8 @@ VioletCityEarlScript:
 VioletCityLassScript:
 	jumptextfaceplayer VioletCityLassText
 
-VioletCitySuperNerdScript:
-	jumptextfaceplayer VioletCitySuperNerdText
+VioletCityCooltrainerMScript:
+	jumptextfaceplayer VioletCityCooltrainerMText
 
 VioletCityGrampsScript:
 	jumptextfaceplayer VioletCityGrampsText
@@ -218,7 +218,7 @@ VioletCityLassText:
 	line "ghosts."
 	done
 
-VioletCitySuperNerdText:
+VioletCityCooltrainerMText:
 	text "Hey, you're a"
 	line "#mon trainer?"
 
@@ -315,7 +315,7 @@ VioletCity_MapEventHeader:
 	db 8
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
 	person_event SPRITE_LASS, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
-	person_event SPRITE_SUPER_NERD, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCitySuperNerdScript, -1
+	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerMScript, -1
 	person_event SPRITE_GRAMPS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGrampsScript, -1
 	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
 	person_event SPRITE_FRUIT_TREE, 33, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1

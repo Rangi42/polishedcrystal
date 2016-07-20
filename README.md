@@ -210,7 +210,6 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 ## Bugs
 
-* Some overworld sprites glitch when walking.
 * Pokémon overworld sprites are frequently incorrect. This is partly because the original game would use, for example, a cow-shaped `SPRITE_TAUROS` for both Tauros and Miltank, but there's also a bug where Pokémon icons change when you view the party menu.
 * The Move Reminder doesn't list all the possible moves.
 
@@ -259,6 +258,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: New sprites for Twins and another trainer
 * Add: Wild Gengar in Cerulean Cave at night
 * Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
+* Fix: Some sprites glitch when walking.
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item
 * Fix: Some items' names were displayed wrong when held

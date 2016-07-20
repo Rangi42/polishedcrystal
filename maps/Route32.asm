@@ -6,7 +6,6 @@ const_value set 2
 	const ROUTE32_YOUNGSTER2
 	const ROUTE32_YOUNGSTER3
 	const ROUTE32_LASS1
-	const ROUTE32_TWIN
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_YOUNGSTER4
 	const ROUTE32_FISHER4
@@ -424,17 +423,6 @@ TrainerPicnickerLiz1:
 	jumpstd rematchf
 	end
 
-TrainerSchoolgirlAudrey
-	trainer EVENT_BEAT_SCHOOLGIRL_AUDREY, SCHOOLGIRL, AUDREY, SchoolgirlAudreySeenText, SchoolgirlAudreyBeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	opentext
-	writetext SchoolgirlAudreyAfterText
-	waitbutton
-	closetext
-	end
-
 TrainerYoungsterAlbert:
 	trainer EVENT_BEAT_YOUNGSTER_ALBERT, YOUNGSTER, ALBERT, YoungsterAlbertSeenText, YoungsterAlbertBeatenText, 0, .Script
 
@@ -760,21 +748,6 @@ FisherHenryAfterText:
 	line "raised ones."
 	done
 
-SchoolgirlAudreySeenText:
-	text "Mr.Earl taught me"
-	line "how to battle with"
-	cont "#mon!"
-	done
-
-SchoolgirlAudreyBeatenText:
-	text "My studying…"
-	done
-
-SchoolgirlAudreyAfterText:
-	text "I still have a"
-	line "lot to learn."
-	done
-
 YoungsterAlbertSeenText:
 	text "I haven't seen you"
 	line "around before."
@@ -988,7 +961,7 @@ Route32_MapEventHeader:
 	signpost 40, 11, SIGNPOST_ITEM, Route32HiddenSuperPotion
 
 .PersonEvents:
-	db 15
+	db 14
 	person_event SPRITE_FISHER, 49, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherJustin, -1
 	person_event SPRITE_FISHER, 56, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherRalph1, -1
 	person_event SPRITE_FISHER, 48, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHenry, -1
@@ -996,7 +969,6 @@ Route32_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 63, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterGordon, -1
 	person_event SPRITE_YOUNGSTER, 45, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperRoland, -1
 	person_event SPRITE_LASS, 30, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
-	person_event SPRITE_TWIN, 27, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlAudrey, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CooltrainerMScript, -1
 	person_event SPRITE_YOUNGSTER, 82, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperPeter, -1
 	person_event SPRITE_FISHER, 70, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
