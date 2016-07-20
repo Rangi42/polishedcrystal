@@ -612,8 +612,9 @@ WillOWisp:
 	usedmovetext
 	doturn
 	checkhit
+	stab
 	checksafeguard
-	burntarget
+	burn
 	endmove
 
 DoParalyze:

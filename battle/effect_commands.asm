@@ -6346,6 +6346,90 @@ BattleCommand_Curl: ; 365a7
 ; 365af
 
 
+BattleCommand_Burn:
+; burn
+
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	bit BRN, a
+	jp nz, .burned
+	ld a, [TypeModifier]
+	and $7f
+	jp z, .didnt_affect
+	call CheckIfTargetIsFireType
+	jp z, .didnt_affect
+	call GetOpponentItem
+	ld a, b
+	cp HELD_PREVENT_BURN
+	jr nz, .no_item_protection
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	call AnimateFailedMove
+	ld hl, ProtectedByText
+	jp StdBattleTextBox
+
+.no_item_protection
+	ld a, [hBattleTurn]
+	and a
+	jr z, .dont_sample_failure
+
+	ld a, [wLinkMode]
+	and a
+	jr nz, .dont_sample_failure
+
+	ld a, [InBattleTowerBattle]
+	and a
+	jr nz, .dont_sample_failure
+
+	ld a, [PlayerSubStatus5]
+	bit SUBSTATUS_LOCK_ON, a
+	jr nz, .dont_sample_failure
+
+	call BattleRandom
+	cp 1 + 25 percent
+	jr c, .failed
+
+.dont_sample_failure
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	and a
+	jr nz, .failed
+	ld a, [AttackMissed]
+	and a
+	jr nz, .failed
+	call CheckSubstituteOpp
+	jr nz, .failed
+	ld c, 30
+	call DelayFrames
+	call AnimateCurrentMove
+	ld a, $1
+	ld [hBGMapMode], a
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set BRN, [hl]
+	call UpdateOpponentInParty
+	ld hl, ApplyBrnEffectOnAttack
+	call CallBattleCore
+	call UpdateBattleHuds
+	ld hl, WasBurnedText
+	call StdBattleTextBox
+	ld hl, UseHeldStatusHealingItem
+	jp CallBattleCore
+
+.burned
+	call AnimateFailedMove
+	ld hl, AlreadyBurnedText
+	jp StdBattleTextBox
+
+.failed
+	jp PrintDidntAffect2
+
+.didnt_affect
+	call AnimateFailedMove
+	jp PrintDoesntAffect
+
+
 BattleCommand_RaiseSubNoAnim: ; 365af
 	ld hl, GetMonBackpic
 	ld a, [hBattleTurn]

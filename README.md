@@ -258,11 +258,12 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: New sprites for Twins and another trainer
 * Add: Wild Gengar in Cerulean Cave at night
 * Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
-* Fix: Some sprites glitch when walking.
+* Fix: Some sprites glitch when walking
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item
 * Fix: Some items' names were displayed wrong when held
 * Fix: Can't get stuck in Cerulean Cave without Surf or Fly
 * Fix: Pursuit causing a switching-out Pokémon to faint crashes the game
 * Fix: Astonish has a 30% chance to flinch
+* Fix: Will-O-Wisp hits through Dig
 * Fix: Celadon Game Corner prizes and prices match the displayed ones

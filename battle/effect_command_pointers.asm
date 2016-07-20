@@ -175,4 +175,5 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_SuperEffectiveLoopText ; 351a5
 	dw BattleCommand_StartLoop ; 35197
 	dw BattleCommand_Curl ; 365a7
+	dw BattleCommand_Burn
 ; 3fe86

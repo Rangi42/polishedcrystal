@@ -835,6 +835,11 @@ DefrostedOpponentText: ; 0x8124b
 	prompt
 ; 0x8125d
 
+AlreadyBurnedText:
+	text "<TARGET>'s"
+	line "already burned!"
+	prompt
+
 WasFrozenText: ; 0x8125d
 	text "<TARGET>"
 	line "was frozen solid!"

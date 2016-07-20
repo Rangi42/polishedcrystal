@@ -179,6 +179,7 @@ endm
 	command supereffectivelooptext  ; ac
 	command startloop               ; ad
 	command curl                    ; ae
+	command burn                    ; af
 
 	enum_start -1, -1
 	command endmove
