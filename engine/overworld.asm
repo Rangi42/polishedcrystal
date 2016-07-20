@@ -993,6 +993,7 @@ Group5Sprites:
 
 
 Group6Sprites:
+; Route19
 ; Route20
 ; Route21
 ; CinnabarIsland
@@ -1148,26 +1149,24 @@ Group11Sprites:
 	db SPRITE_POKE_BALL
 
 
-; VermilionCity connects to Route6
 Group12Sprites:
+; Route6
 ; Route11
 ; VermilionCity
-Group25Sprites:
-; SaffronCity
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
 	db SPRITE_GRAMPS
-	db SPRITE_LASS
 	db SPRITE_LAWRENCE
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
+	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	; 7 walking sprites
 	db SPRITE_BIG_SNORLAX
-	db SPRITE_FRUIT_TREE
 	db SPRITE_MACHOP
-	; 12 total sprites
+	db SPRITE_FRUIT_TREE
+	; 10 total sprites
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1306,25 +1305,25 @@ Group17Sprites:
 ; Route13
 ; Route14
 ; Route15
+; Route18
 ; FuchsiaCity
 ; SafariZoneEast
 ; SafariZoneHub
 ; SafariZoneNorth
-; Route19
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COWGIRL
-	db SPRITE_FISHER
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
-	db SPRITE_SWIMMER_GIRL
-	db SPRITE_SWIMMER_GUY
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 10 walking sprites (TODO: reduce this)
+	; 7 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 12 total sprites
+	; 9 total sprites
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
@@ -1339,22 +1338,23 @@ Group17Sprites:
 
 
 Group18Sprites:
+; Route8
 ; Route12
 ; Route10South
 ; LavenderTown
+	db SPRITE_BIKER
 	db SPRITE_FISHER
+	db SPRITE_GENTLEMAN
 	db SPRITE_GRAMPS
 	db SPRITE_HEX_MANIAC
 	db SPRITE_POKEFAN_M
+	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	; 6 walking sprites
+	; 9 walking sprites
+	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 7 total sprites
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
+	; 11 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1431,9 +1431,9 @@ Group20Sprites:
 
 
 Group21Sprites:
+; Route7
 ; Route16
 ; Route17
-; Route18
 ; CeladonCity
 	db SPRITE_BIKER
 	db SPRITE_FISHER
@@ -1512,6 +1512,36 @@ Group24Sprites:
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	; 11 total sprites
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_POKE_BALL
+
+
+Group25Sprites:
+; SaffronCity
+; Route5
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_FISHER
+	db SPRITE_LASS
+	db SPRITE_POKEFAN_M
+	db SPRITE_YOUNGSTER
+	; 6 walking sprites
+	; 6 total sprites
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
