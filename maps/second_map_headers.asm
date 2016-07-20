@@ -450,6 +450,7 @@
 	map_header_2 Route35NationalParkgate, ROUTE_35_NATIONAL_PARK_GATE, $0, 0
 	map_header_2 Route36RuinsofAlphgate, ROUTE_36_RUINS_OF_ALPH_GATE, $0, 0
 	map_header_2 Route36NationalParkgate, ROUTE_36_NATIONAL_PARK_GATE, $0, 0
+	map_header_2 Route36VioletGate, ROUTE_36_VIOLET_GATE, $0, 0
 	map_header_2 GoldenrodGym, GOLDENROD_GYM, $0, 0
 	map_header_2 GoldenrodBikeShop, GOLDENROD_BIKE_SHOP, $0, 0
 	map_header_2 GoldenrodHappinessRater, GOLDENROD_HAPPINESS_RATER, $0, 0

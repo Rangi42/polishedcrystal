@@ -285,7 +285,7 @@ VioletCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 9
+	db 11
 	warp_def $15, $9, 2, VIOLET_MART
 	warp_def $15, $12, 1, VIOLET_GYM
 	warp_def $15, $1e, 1, EARLS_POKEMON_ACADEMY
@@ -295,6 +295,8 @@ VioletCity_MapEventHeader:
 	warp_def $5, $17, 1, SPROUT_TOWER_1F
 	warp_def $1c, $27, 1, ROUTE_31_VIOLET_GATE
 	warp_def $1d, $27, 2, ROUTE_31_VIOLET_GATE
+	warp_def $c, $2, 3, ROUTE_36_VIOLET_GATE
+	warp_def $d, $2, 4, ROUTE_36_VIOLET_GATE
 
 .XYTriggers:
 	db 0

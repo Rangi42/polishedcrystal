@@ -845,7 +845,7 @@ Group22Sprites:
 	db SPRITE_FRUIT_TREE
 	db SPRITE_ROCK
 	db SPRITE_SUICUNE
-	; 15 total sprites (TODO: reduce this?)
+	; 15 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -918,43 +918,33 @@ Group3Sprites:
 	db SPRITE_POKE_BALL
 
 
-; EcruteakCity connects to Route37
-; Route32 connects to CherrygroveBay
 Group4Sprites:
 ; EcruteakCity
-; BellchimeTrail
-Group10Sprites:
-; Route32
 ; Route35
 ; Route36
 ; Route37
-; VioletCity
-Group26Sprites:
-; Route30
-; Route31
-; CherrygroveBay
-; CherrygroveCity
+; BellchimeTrail
 	db SPRITE_BUENA
 	db SPRITE_BUG_CATCHER
-	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
-	db SPRITE_MONSTER
 	db SPRITE_OFFICER
-	db SPRITE_POKEFAN_M
-	db SPRITE_SILVER
 	db SPRITE_SUPER_NERD
-	db SPRITE_TEACHER
-	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 15 walking sprites (TODO: reduce this)
-	db SPRITE_WEIRD_TREE
+	; 8 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
-	; 19 total sprites (TODO: reduce this)
+	db SPRITE_WEIRD_TREE
+	; 12 total sprites
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
@@ -1108,6 +1098,42 @@ Group9Sprites:
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_ENTEI
+	db SPRITE_RAIKOU
+	db SPRITE_POKE_BALL
+
+
+; Route32 connects to CherrygroveBay
+Group10Sprites:
+; Route32
+; VioletCity
+Group26Sprites:
+; Route30
+; Route31
+; CherrygroveBay
+; CherrygroveCity
+	db SPRITE_BUG_CATCHER
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_FISHER
+	db SPRITE_GRAMPS
+	db SPRITE_LASS
+	db SPRITE_MONSTER
+	db SPRITE_POKEFAN_M
+	db SPRITE_SILVER
+	db SPRITE_SUPER_NERD
+	db SPRITE_TEACHER
+	db SPRITE_TWIN
+	db SPRITE_YOUNGSTER
+	; 13 walking sprites (TODO: remove 4)
+	db SPRITE_FRUIT_TREE
+	db SPRITE_POKE_BALL
+	; 15 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU

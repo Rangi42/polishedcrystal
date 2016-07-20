@@ -527,7 +527,6 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
-INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/YellowForest.asm"
 INCLUDE "maps/YellowForestGate.asm"
@@ -559,3 +558,9 @@ INCLUDE "maps/CinnabarVolcanoB1F.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
+
+
+SECTION "Map Scripts 27", ROMX
+
+INCLUDE "maps/Route11Gate.asm"
+INCLUDE "maps/Route36VioletGate.asm"

@@ -136,7 +136,15 @@ MAP_NONE   EQU 0
 	mapgroup ECRUTEAK_GYM,                                9,  5 ;  7
 	mapgroup ECRUTEAK_ITEMFINDER_HOUSE,                   4,  4 ;  8
 	mapgroup ECRUTEAK_CITY,                              18, 20 ;  9
-	mapgroup BELLCHIME_TRAIL,                             6, 12 ; 10
+	mapgroup ROUTE_35,                                   18, 10 ; 10
+	mapgroup ROUTE_36,                                    9, 30 ; 11
+	mapgroup ROUTE_37,                                    9, 10 ; 12
+	mapgroup ROUTE_35_GOLDENROD_GATE,                     4,  5 ; 13
+	mapgroup ROUTE_35_NATIONAL_PARK_GATE,                 4,  4 ; 14
+	mapgroup ROUTE_36_RUINS_OF_ALPH_GATE,                 4,  5 ; 15
+	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 16
+	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ; 17
+	mapgroup BELLCHIME_TRAIL,                             6, 12 ; 18
 
 	newgroup                                                    ;  5
 
@@ -213,22 +221,15 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 10
 
 	mapgroup ROUTE_32,                                   45, 10 ;  1
-	mapgroup ROUTE_35,                                   18, 10 ;  2
-	mapgroup ROUTE_36,                                    9, 30 ;  3
-	mapgroup ROUTE_37,                                    9, 10 ;  4
-	mapgroup VIOLET_CITY,                                20, 20 ;  5
-	mapgroup VIOLET_MART,                                 4,  6 ;  6
-	mapgroup VIOLET_GYM,                                  8,  5 ;  7
-	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  8
-	mapgroup VIOLET_NICKNAME_SPEECH_HOUSE,                4,  4 ;  9
-	mapgroup VIOLET_POKECENTER_1F,                        4,  5 ; 10
-	mapgroup VIOLET_ONIX_TRADE_HOUSE,                     4,  4 ; 11
-	mapgroup ROUTE_32_RUINS_OF_ALPH_GATE,                 4,  5 ; 12
-	mapgroup ROUTE_32_POKECENTER_1F,                      4,  5 ; 13
-	mapgroup ROUTE_35_GOLDENROD_GATE,                     4,  5 ; 14
-	mapgroup ROUTE_35_NATIONAL_PARK_GATE,                 4,  4 ; 15
-	mapgroup ROUTE_36_RUINS_OF_ALPH_GATE,                 4,  5 ; 16
-	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 17
+	mapgroup VIOLET_CITY,                                20, 20 ;  2
+	mapgroup VIOLET_MART,                                 4,  6 ;  3
+	mapgroup VIOLET_GYM,                                  8,  5 ;  4
+	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  5
+	mapgroup VIOLET_NICKNAME_SPEECH_HOUSE,                4,  4 ;  6
+	mapgroup VIOLET_POKECENTER_1F,                        4,  5 ;  7
+	mapgroup VIOLET_ONIX_TRADE_HOUSE,                     4,  4 ;  8
+	mapgroup ROUTE_32_RUINS_OF_ALPH_GATE,                 4,  5 ;  9
+	mapgroup ROUTE_32_POKECENTER_1F,                      4,  5 ; 10
 
 	newgroup                                                    ; 11
 

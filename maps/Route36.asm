@@ -670,11 +670,13 @@ Route36_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 6
 	warp_def $8, $12, 3, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def $9, $12, 4, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def $d, $2f, 1, ROUTE_36_RUINS_OF_ALPH_GATE
 	warp_def $d, $30, 2, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def $8, $39, 1, ROUTE_36_VIOLET_GATE
+	warp_def $9, $39, 2, ROUTE_36_VIOLET_GATE
 
 .XYTriggers:
 	db 2
