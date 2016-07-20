@@ -7072,20 +7072,6 @@ BattleCommand_EndLoop: ; 369b6
 ; 36a82
 
 
-BattleCommand_Astonish:
-	ld a, [AttackMissed]
-	and a
-	ret nz
-
-	call CheckSubstituteOpp
-	ret nz
-
-	call CheckOpponentWentFirst
-	ret nz
-
-	jp FlinchTarget
-
-
 BattleCommand_FlinchTarget: ; 36aa0
 	call CheckSubstituteOpp
 	ret nz

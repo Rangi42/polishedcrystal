@@ -152,34 +152,33 @@ endm
 	command statdownanim            ; 91
 	command statupanim              ; 92
 	command switchturn              ; 93
-	command astonish                ; 94
-	command bellydrum               ; 95
-	command psychup                 ; 96
-	command rage                    ; 97
-	command doubleflyingdamage      ; 98
-	command doubleundergrounddamage ; 99
-	command mirrorcoat              ; 9a
-	command checkfuturesight        ; 9b
-	command futuresight             ; 9c
-	command doubleminimizedamage    ; 9d
-	command skipsuncharge           ; 9e
-	command thunderaccuracy         ; 9f
-	command teleport                ; a0
-	command beatup                  ; a1
-	command ragedamage              ; a2
-	command resettypematchup        ; a3
-	command allstatsup              ; a4
-	command calmmind                ; a5
-	command raisesubnoanim          ; a6
-	command lowersubnoanim          ; a7
-	command dragondance             ; a8
-	command clearmissdamage         ; a9
-	command movedelay               ; aa
-	command hittarget               ; ab
-	command tristatuschance         ; ac
-	command supereffectivelooptext  ; ad
-	command startloop               ; ae
-	command curl                    ; af
+	command bellydrum               ; 94
+	command psychup                 ; 95
+	command rage                    ; 96
+	command doubleflyingdamage      ; 97
+	command doubleundergrounddamage ; 98
+	command mirrorcoat              ; 99
+	command checkfuturesight        ; 9a
+	command futuresight             ; 9b
+	command doubleminimizedamage    ; 9c
+	command skipsuncharge           ; 9d
+	command thunderaccuracy         ; 9e
+	command teleport                ; 9f
+	command beatup                  ; a0
+	command ragedamage              ; a1
+	command resettypematchup        ; a2
+	command allstatsup              ; a3
+	command calmmind                ; a4
+	command raisesubnoanim          ; a5
+	command lowersubnoanim          ; a6
+	command dragondance             ; a7
+	command clearmissdamage         ; a8
+	command movedelay               ; a9
+	command hittarget               ; aa
+	command tristatuschance         ; ab
+	command supereffectivelooptext  ; ac
+	command startloop               ; ad
+	command curl                    ; ae
 
 	enum_start -1, -1
 	command endmove

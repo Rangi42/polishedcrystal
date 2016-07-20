@@ -151,6 +151,7 @@ WildCharge:
 
 FlinchHit:
 AirSlash:
+Astonish:
 Bite:
 DarkPulse:
 Extrasensory:
@@ -2092,27 +2093,6 @@ DefenseCurl:
 	raisesub
 	statupmessage
 	statupfailtext
-	endmove
-
-Astonish:
-	checkobedience
-	usedmovetext
-	doturn
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	effectchance
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	astonish
 	endmove
 
 FlareBlitz:

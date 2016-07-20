@@ -140,7 +140,6 @@
 	dw Teleport
 	dw Fly
 	dw DefenseCurl
-	dw Astonish
 	dw FlareBlitz
 	dw Avalanche
 	dw NormalHit

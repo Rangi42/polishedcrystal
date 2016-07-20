@@ -264,4 +264,5 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fix: Some items' names were displayed wrong when held
 * Fix: Can't get stuck in Cerulean Cave without Surf or Fly
 * Fix: Pursuit causing a switching-out Pokémon to faint crashes the game
+* Fix: Astonish has a 30% chance to flinch
 * Fix: Celadon Game Corner prizes and prices match the displayed ones
