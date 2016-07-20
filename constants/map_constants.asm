@@ -271,6 +271,7 @@ MAP_NONE   EQU 0
 	mapgroup VERMILION_GYM,                               9,  5 ; 10
 	mapgroup ROUTE_6_SAFFRON_GATE,                        4,  5 ; 11
 	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 12
+	mapgroup ROUTE_11_GATE,                               4,  5 ; 13
 
 	newgroup                                                    ; 13
 

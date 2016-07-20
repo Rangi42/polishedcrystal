@@ -213,6 +213,7 @@ Route32RuinsofAlphGate_BlockData:
 IlexForestAzaleaGate_BlockData:
 Route15FuchsiaGate_BlockData:
 Route8SaffronGate_BlockData:
+Route11Gate_BlockData:
 Route16Gate_BlockData:
 Route7SaffronGate_BlockData:
 Route1718Gate_BlockData:

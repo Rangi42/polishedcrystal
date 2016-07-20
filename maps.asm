@@ -527,6 +527,7 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 26", ROMX
 
+INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/YellowForest.asm"
 INCLUDE "maps/YellowForestGate.asm"
