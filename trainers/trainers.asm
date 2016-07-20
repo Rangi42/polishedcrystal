@@ -9931,11 +9931,11 @@ TeacherGroup:
 
 
 
-GuitaristGroup:
+GuitaristMGroup:
 ; ================================
 ; ================
 
-	; GUITARIST (1)
+	; GUITARISTM (1)
 	db "Clyde@"
 	db 0 ; normal
 
@@ -9946,7 +9946,7 @@ GuitaristGroup:
 
 ; ================
 
-	; GUITARIST (2)
+	; GUITARISTM (2)
 	db "Vincent@"
 	db 0 ; normal
 
@@ -9954,6 +9954,40 @@ GuitaristGroup:
 	db 43, VOLTORB
 	db 42, MAGNEMITE
 	db 45, JOLTEON
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+GuitaristFGroup:
+; ================================
+; ================
+
+	; GUITARISTF (1)
+	db "Janet@"
+	db 1 ; moves
+
+	; party
+
+	db 46, PIKACHU
+		db IRON_TAIL
+		db EXTREMESPEED
+		db SURF
+		db THUNDERBOLT
+
+	db 44, ELECTABUZZ
+		db LIGHT_SCREEN
+		db THUNDERPUNCH
+		db CROSS_CHOP
+		db SCREECH
+
+	db 45, RAICHU
+		db EXTREMESPEED
+		db SURF
+		db THUNDERBOLT
+		db AGILITY
 
 	db $ff ; end
 

@@ -3,6 +3,7 @@ const_value set 2
 	const VERMILIONGYM_GENTLEMAN
 	const VERMILIONGYM_ROCKER
 	const VERMILIONGYM_SUPER_NERD
+	const VERMILIONGYM_COOLTRAINER_F
 	const VERMILIONGYM_GYM_GUY
 
 VermilionGym_MapScriptHeader:
@@ -26,8 +27,9 @@ SurgeScript_0x1920a5:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LTSURGE
 	setevent EVENT_BEAT_GENTLEMAN_GREGORY
-	setevent EVENT_BEAT_GUITARIST_VINCENT
+	setevent EVENT_BEAT_GUITARISTM_VINCENT
 	setevent EVENT_BEAT_JUGGLER_HORTON
+	setevent EVENT_BEAT_GUITARISTF_JANET
 	opentext
 	writetext UnknownText_0x192277
 	playsound SFX_GET_BADGE
@@ -64,10 +66,10 @@ GentlemanGregoryScript:
 	closetext
 	end
 
-TrainerGuitaristVincent:
-	trainer EVENT_BEAT_GUITARIST_VINCENT, GUITARIST, VINCENT, GuitaristVincentSeenText, GuitaristVincentBeatenText, 0, GuitaristVincentScript
+TrainerGuitaristmVincent:
+	trainer EVENT_BEAT_GUITARISTM_VINCENT, GUITARISTM, VINCENT, GuitaristmVincentSeenText, GuitaristmVincentBeatenText, 0, GuitaristmVincentScript
 
-GuitaristVincentScript:
+GuitaristmVincentScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x19244b
@@ -82,6 +84,17 @@ JugglerHortonScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1924d6
+	waitbutton
+	closetext
+	end
+
+TrainerGuitaristfJanet:
+	trainer EVENT_BEAT_GUITARISTF_JANET, GUITARISTF, JANET, GuitaristfJanetSeenText, GuitaristfJanetBeatenText, 0, GuitaristfJanetScript
+
+GuitaristfJanetScript:
+	end_if_just_battled
+	opentext
+	writetext GuitaristfJanetAfterText
 	waitbutton
 	closetext
 	end
@@ -200,7 +213,7 @@ UnknownText_0x1923b0:
 	line "life."
 	done
 
-GuitaristVincentSeenText:
+GuitaristmVincentSeenText:
 	text "Lt.Surge recog-"
 	line "nized my potential"
 
@@ -211,7 +224,7 @@ GuitaristVincentSeenText:
 	line "me?"
 	done
 
-GuitaristVincentBeatenText:
+GuitaristmVincentBeatenText:
 	text "Ooh, how shocking!"
 	done
 
@@ -240,6 +253,24 @@ UnknownText_0x1924d6:
 
 	para "beating me…"
 	line "Lt.Surge is tough."
+	done
+
+GuitaristfJanetSeenText:
+	text "I'm a lightweight,"
+	line "but I'm good with"
+	cont "electricity!"
+	done
+
+GuitaristfJanetBeatenText:
+	text "Fried!"
+	done
+
+GuitaristfJanetAfterText:
+	text "Lt.Surge may not"
+	line "have his traps,"
+
+	para "but he can still"
+	line "shock you!"
 	done
 
 VermilionGymGuyText:
@@ -310,9 +341,10 @@ VermilionGym_MapEventHeader:
 	signpost 15, 6, SIGNPOST_READ, VermilionGymStatue
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_SURGE, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SurgeScript_0x1920a5, -1
 	person_event SPRITE_GENTLEMAN, 8, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGregory, -1
-	person_event SPRITE_ROCKER, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristVincent, -1
+	person_event SPRITE_ROCKER, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmVincent, -1
 	person_event SPRITE_SUPER_NERD, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerJugglerHorton, -1
+	person_event SPRITE_COOLTRAINER_F, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristfJanet, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, VermilionGymGuyScript, -1

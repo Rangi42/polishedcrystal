@@ -205,7 +205,7 @@ Function_LoadRandomBattleTowerPkmn: ; 1f8081
 BattleTowerTrainers: ; 1f814e
 	db "Hanson@@@@", FISHER
 	db "Sawyer@@@@", POKEMANIAC
-	db "Masuda@@@@", GUITARIST
+	db "Masuda@@@@", GUITARISTM
 	db "Nickel@@@@", SCIENTIST
 	db "Olson@@@@@", POKEFANM
 	db "Zaborowski", LASS
@@ -264,7 +264,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Walker@@@@", SCHOOLBOY
 	db "Meyer@@@@@", SWIMMERF
 	db "Johnson@@@", YOUNGSTER
-	db "Adams@@@@@", GUITARIST
+	db "Adams@@@@@", GUITARISTM
 	db "Smith@@@@@", BUG_CATCHER
 	db "Tajiri@@@@", BUG_CATCHER
 	db "Baker@@@@@", POKEMANIAC

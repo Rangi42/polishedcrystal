@@ -31,7 +31,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 * Added locations from R/B/Y and HG/SS: Viridian Forest, Pewter Museum, Celadon Hotel, Silph Co., Pokémon Mansion, Seafoam Islands, Cerulean Cave, Goldenrod PokéCom Center, and Bellchime Trail
 * New locations, including Cinnabar Volcano, Cherrygrove Bay, Goldenrod Harbor, a new floor of Rock Tunnel, and custom-designed PokéWalker routes
 * Battle more trainers, including Lorelei, Agatha, and Bill
-* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, and Hex Maniac
+* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, Hex Maniac, and Guitarist♀
 * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them at higher levels
 * Rematch Gym Leaders in the Fighting Dojo
 * Wonder Trade up to three times a day in the Goldenrod PokéCom Center
@@ -256,6 +256,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 
 * Add: Title screen version number ends in "F" for the faithful version
 * Add: New sprites for Twins and another trainer
+* Add: Guitarist♀ trainer class
 * Add: Wild Gengar in Cerulean Cave at night
 * Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
 * Fix: Some sprites glitch when walking

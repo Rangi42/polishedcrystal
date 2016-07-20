@@ -44,10 +44,10 @@ BeautyCassieScript:
 	closetext
 	end
 
-TrainerGuitaristClyde:
-	trainer EVENT_BEAT_GUITARIST_CLYDE, GUITARIST, CLYDE, GuitaristClydeSeenText, GuitaristClydeBeatenText, 0, GuitaristClydeScript
+TrainerGuitaristmClyde:
+	trainer EVENT_BEAT_GUITARISTM_CLYDE, GUITARISTM, CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript
 
-GuitaristClydeScript:
+GuitaristmClydeScript:
 	end_if_just_battled
 	special Mobile_DummyReturnFalse
 	iftrue .mobile
@@ -169,7 +169,7 @@ UnknownText_0x75c43:
 	cont "for grieving."
 	done
 
-GuitaristClydeSeenText:
+GuitaristmClydeSeenText:
 	text "I'm going to audi-"
 	line "tion my songs at"
 
@@ -177,7 +177,7 @@ GuitaristClydeSeenText:
 	line "Station."
 	done
 
-GuitaristClydeBeatenText:
+GuitaristmClydeBeatenText:
 	text "Yowza!"
 	line "Total distortion!"
 	done
@@ -248,4 +248,4 @@ FastShipCabins_SW_SSW_NW_MapEventHeader:
 	person_event SPRITE_FISHER, 15, 1, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_BUG_CATCHER, 15, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	person_event SPRITE_BUENA, 26, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_ROCKER, 28, 3, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	person_event SPRITE_ROCKER, 28, 3, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND

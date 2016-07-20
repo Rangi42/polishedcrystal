@@ -66,7 +66,8 @@
 	add_pic BlackbeltTPic
 	add_pic BattleGirlPic
 	add_pic TeacherPic
-	add_pic GuitaristPic
+	add_pic GuitaristmPic
+	add_pic GuitaristfPic
 	add_pic BikerPic
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
