@@ -1109,9 +1109,15 @@ Group9Sprites:
 
 
 ; Route32 connects to CherrygroveBay
+; CherrygroveCity connects to Route29
 Group10Sprites:
 ; Route32
 ; VioletCity
+Group24Sprites:
+; Route26
+; Route27
+; Route29
+; NewBarkTown
 Group26Sprites:
 ; Route30
 ; Route31
@@ -1506,38 +1512,6 @@ Group23Sprites:
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_ENTEI
-	db SPRITE_RAIKOU
-	db SPRITE_POKE_BALL
-
-
-Group24Sprites:
-; Route26
-; Route27
-; Route29
-; NewBarkTown
-	db SPRITE_BUG_CATCHER
-	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
-	db SPRITE_GRAMPS
-	db SPRITE_SILVER
-	db SPRITE_TEACHER
-	db SPRITE_YOUNGSTER
-	db SPRITE_MONSTER
-	; 9 walking sprites
-	db SPRITE_FRUIT_TREE
-	db SPRITE_POKE_BALL
-	; 11 total sprites
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
