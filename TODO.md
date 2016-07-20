@@ -77,7 +77,6 @@
 ## New content
 
 * Add Young Couple and Double Team trainer classes
-* Add female Guitarist
 * Unown ? and ! from Gen III
 * More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
 * Aurora Orb boosts Suicune's Defense and Special Defense
