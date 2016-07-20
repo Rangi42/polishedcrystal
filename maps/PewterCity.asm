@@ -33,7 +33,9 @@ GrampsScript_0x18c00f:
 	writetext UnknownText_0x18c0c6
 	buttonsound
 	verbosegiveitem OLD_AMBER
+	iffalse .Done
 	setevent EVENT_GOT_OLD_AMBER
+.Done
 	closetext
 	end
 

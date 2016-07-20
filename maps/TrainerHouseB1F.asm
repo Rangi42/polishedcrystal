@@ -138,6 +138,7 @@ TrainerHouseReceptionist2Script:
 	writetext TrainerHouseReceptionist2CongratulationsText
 	waitbutton
 	verbosegiveitem NUGGET
+	iffalse .Finished
 	setevent EVENT_GOT_TRAINER_HOUSE_REWARD
 	jump .Finished
 .Challenge

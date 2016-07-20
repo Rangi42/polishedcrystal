@@ -269,3 +269,5 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fix: Astonish has a 30% chance to flinch
 * Fix: Will-O-Wisp hits through Dig
 * Fix: Celadon Game Corner prizes and prices match the displayed ones
+* Fix: Pokémon levels for Boarder Stefan, Hiker Kenny, and Bug Catcher Ellis
+* Fix: Old Amber in Pewter City and Nugget in Trainer Hall with a full Bag

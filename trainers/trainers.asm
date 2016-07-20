@@ -3425,8 +3425,8 @@ BugCatcherGroup:
 	db 0 ; normal
 
 	; party
-	db 28, WEEDLE
-	db 38, KAKUNA
+	db 40, WEEDLE
+	db 44, KAKUNA
 	db 48, BEEDRILL
 
 	db $ff ; end
@@ -5206,10 +5206,10 @@ HikerGroup:
 	db 0 ; normal
 
 	; party
-	db 27, SANDSLASH
-	db 29, GRAVELER
-	db 33, GOLEM
-	db 29, GRAVELER
+	db 34, SANDSLASH
+	db 36, GRAVELER
+	db 40, GOLEM
+	db 36, GRAVELER
 
 	db $ff ; end
 
@@ -9543,7 +9543,7 @@ BoarderGroup:
 	; party
 	db 27, SWINUB
 	db 27, SWINUB
-	db 38, SNEASEL
+	db 28, SNEASEL
 
 	db $ff ; end
 
