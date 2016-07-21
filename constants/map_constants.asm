@@ -109,7 +109,7 @@ MAP_NONE   EQU 0
 	mapgroup WHIRL_ISLAND_LUGIA_CHAMBER,                  9, 10 ; 73
 	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 74
 	mapgroup SILVER_CAVE_ROOM_2,                         18, 15 ; 75
-	mapgroup SILVER_CAVE_ROOM_3,                         18, 10 ; 76
+	mapgroup SILVER_CAVE_ROOM_3,                         19, 10 ; 76
 	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9, 10 ; 77
 	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 78
 	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              18, 15 ; 79

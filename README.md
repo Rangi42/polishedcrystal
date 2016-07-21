@@ -276,3 +276,4 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fix: Pokémon levels for Boarder Stefan, Hiker Kenny, and Bug Catcher Ellis
 * Fix: Old Amber in Pewter City and Nugget in Trainer Hall with a full Bag
 * Fix: NPC text contradicts new Poison mechanic
+* Fix: Silver Cave has a black background in Red's room, not blue

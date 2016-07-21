@@ -368,7 +368,7 @@
 	map_header_2 WhirlIslandLugiaChamber, WHIRL_ISLAND_LUGIA_CHAMBER, $f, 0
 	map_header_2 SilverCaveRoom1, SILVER_CAVE_ROOM_1, $9, 0
 	map_header_2 SilverCaveRoom2, SILVER_CAVE_ROOM_2, $9, 0
-	map_header_2 SilverCaveRoom3, SILVER_CAVE_ROOM_3, $9, 0
+	map_header_2 SilverCaveRoom3, SILVER_CAVE_ROOM_3, $0, 0
 	map_header_2 SilverCaveItemRooms, SILVER_CAVE_ITEM_ROOMS, $9, 0
 	map_header_2 DarkCaveVioletEntrance, DARK_CAVE_VIOLET_ENTRANCE, $9, 0
 	map_header_2 DarkCaveBlackthornEntrance, DARK_CAVE_BLACKTHORN_ENTRANCE, $9, 0
