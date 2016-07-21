@@ -42,7 +42,7 @@
 * Send gift Pokémon to the PC if the party is full
 * Bill calls to switch boxes when one is full
 * Respawn uncaught legendaries after beating the Elite Four (Suicune roams)
-* More frequently successful fishing and Headbutting
+* More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
 * Add more moves learned at level 1 for relearning
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
