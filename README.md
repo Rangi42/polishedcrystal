@@ -263,6 +263,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Wild Gengar in Cerulean Cave at night
 * Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
 * Add: Higher levels in Kanto
+* Add: Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
 * Add: Sleep lasts 1-3 turns, not 1-7
 * Add: Fishing works 75% of the time, not 50%
 * Fix: Some sprites glitch when walking

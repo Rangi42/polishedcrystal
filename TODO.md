@@ -20,7 +20,6 @@
 * Avalanche doubles damage if user is hit first
 * Hex doubles damage if foe has a status condition
 * Low Kick's power is based on weight
-* Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
 * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
 * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
 * Thunder ignores accuracy and evasion in rain

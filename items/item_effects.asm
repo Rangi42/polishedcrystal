@@ -2213,8 +2213,10 @@ GetOneFifthMaxHP: ; f378 (3:7378)
 	ret
 
 GetHealingItemAmount: ; f395 (3:7395)
-	push hl
 	ld a, [CurItem]
+	cp GOLD_BERRY
+	jr z, .gold_berry
+	push hl
 	ld hl, .Healing
 	ld d, a
 .next
@@ -2238,6 +2240,23 @@ endr
 	ret
 ; f3af (3:73af)
 
+.gold_berry
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+	srl d
+	rr e
+	srl d
+	rr e
+	ld a, d
+	or e
+	jr nz, .okay
+	ld e, 1
+.okay
+	ret
+
 .Healing: ; f3af
 	dbw FRESH_WATER,   50
 	dbw SODA_POP,      60
@@ -2249,7 +2268,6 @@ endr
 	dbw FULL_RESTORE, 999
 	dbw MOOMOO_MILK,  100
 	dbw BERRY,         10
-	dbw GOLD_BERRY,    30
 	dbw ENERGYPOWDER,  50
 	dbw ENERGY_ROOT,  200
 	dbw RAGECANDYBAR,  20
