@@ -11,7 +11,6 @@
 
 * http://smogon.site/forums/threads/gsc-mechanics.3542417/
 * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
-* Sleep lasts 1-3 turns, not 1-7
 * Freeze has a 20% chance to dethaw, can attack on that turn (like waking up), and the freeze animation happens each turn (like the other conditions)
 * Sound-based moves bypass Substitute
 * Struggle does 25% recoil damage

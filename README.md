@@ -261,6 +261,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Wild Gengar in Cerulean Cave at night
 * Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
 * Add: Higher levels in Kanto
+* Add: Sleep lasts 1-3 turns, not 1-7
 * Fix: Some sprites glitch when walking
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item
