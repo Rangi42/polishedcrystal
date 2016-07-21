@@ -38,7 +38,6 @@
 * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
 * Brief beeping with low HP
 * Select reorders Pokémon in party menu
-* Pokédex area display uses whiever region you're in (edit engine/pokegear.asm:_Area)
 * Send gift Pokémon to the PC if the party is full
 * Bill calls to switch boxes when one is full
 * Respawn uncaught legendaries after beating the Elite Four (Suicune roams)
