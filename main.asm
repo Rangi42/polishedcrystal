@@ -459,6 +459,20 @@ RepelWoreOffScript:: ; 0x13619
 	text_jump UnknownText_0x1bd308
 	db "@"
 
+UseAnotherRepelScript::
+	opentext
+	writetext .text
+	yesorno
+	iffalse .done
+	callasm DoItemEffect
+.done
+	closetext
+	end
+
+.text:
+	text_jump UseAnotherRepelText
+	db "@"
+
 HiddenItemScript:: ; 0x13625
 	opentext
 	copybytetovar EngineBuffer3

@@ -32,7 +32,6 @@
 
 ## Other mechanics
 
-* Continuous Repel system from Gen V
 * Catch rate formula from Gen III
 * Money loss formula from Gen III when whiting out
 * Show stat changes and then absolute values on level up

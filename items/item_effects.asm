@@ -2362,6 +2362,10 @@ UseRepel: ; f46c
 
 	ld a, b
 	ld [wRepelEffect], a
+
+	ld a, [CurItem]
+	ld [wRepelType], a
+
 	jp UseItemText
 
 
