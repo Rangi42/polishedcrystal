@@ -36,6 +36,8 @@
 * Show stat changes and then absolute values on level up
 * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
 * Brief beeping with low HP
+* Healing items activate at 1/3 HP, not 1/2 (edit HandleHPHealingItem)
+* Gold Berry heals 25% HP even in battle (edit ConsumeHeldItem)
 * Select reorders Pokémon in party menu
 * Send gift Pokémon to the PC if the party is full
 * Bill calls to switch boxes when one is full
