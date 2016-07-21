@@ -255,7 +255,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
 
 * Add: Title screen version number ends in "F" for the faithful version
-* Add: Unlimited-use TMs from Gen V
+* Add: Unlimited-use TMs from Gen V (also more expensive)
 * Add: Continuous Repel system from Gen V
 * Add: New sprites for Twins and another trainer
 * Add: Guitarist♀ trainer class
@@ -277,3 +277,4 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fix: Old Amber in Pewter City and Nugget in Trainer Hall with a full Bag
 * Fix: NPC text contradicts new Poison mechanic
 * Fix: Silver Cave has a black background in Red's room, not blue
+* Fix: Elemental punch move tutor charges 200 coins, not 4000

@@ -67,48 +67,48 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	loadmenudata GoldenrodGameCornerTMVendorMenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .Thunder
-	if_equal $2, .Blizzard
-	if_equal $3, .FireBlast
+	if_equal $1, .flamethrower
+	if_equal $2, .ice_beam
+	if_equal $3, .thunderbolt
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
-.Thunder:
-	checkitem TM_THUNDER
+.flamethrower:
+	checkitem TM_FLAMETHROWER
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 5500
+	checkcoins 4000
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_THUNDER, $0
+	itemtotext TM_FLAMETHROWER, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_THUNDER
+	giveitem TM_FLAMETHROWER
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	takecoins 5500
+	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
-.Blizzard:
-	checkitem TM_BLIZZARD
+.ice_beam:
+	checkitem TM_ICE_BEAM
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 5500
+	checkcoins 4000
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_BLIZZARD, $0
+	itemtotext TM_ICE_BEAM, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_BLIZZARD
+	giveitem TM_ICE_BEAM
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	takecoins 5500
+	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
-.FireBlast:
-	checkitem TM_FIRE_BLAST
+.thunderbolt:
+	checkitem TM_THUNDERBOLT
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 5500
+	checkcoins 4000
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_FIRE_BLAST, $0
+	itemtotext TM_THUNDERBOLT, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_FIRE_BLAST
+	giveitem TM_THUNDERBOLT
 	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
-	takecoins 5500
+	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
 GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript:
@@ -163,9 +163,9 @@ GoldenrodGameCornerTMVendorMenuData:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "TM25    5500@"
-	db "TM14    5500@"
-	db "TM38    5500@"
+	db "TM35    4000@"
+	db "TM13    4000@"
+	db "TM24    4000@"
 	db "Cancel@"
 
 
