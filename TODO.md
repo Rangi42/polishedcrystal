@@ -90,3 +90,5 @@
   * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
 * Add a store to buy room decorations that Mom doesn't
 * Somtimes wild Pokémon know an egg move
+* Breedable legendary trios with a certain held item
+* Longer player and rival names
