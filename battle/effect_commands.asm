@@ -1789,6 +1789,8 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 	cp EFFECT_TRAP
 	jr z, .blocked
+	xor a
+	and a
 	ret
 .blocked
 	ld a, 1

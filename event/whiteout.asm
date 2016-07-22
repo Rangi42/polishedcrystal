@@ -15,7 +15,7 @@ Script_Whiteout: ; 0x124ce
 	special HealParty
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .bug_contest
-	callasm HalveMoney
+	callasm LoseMoney
 	callasm GetWhiteoutSpawn
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
@@ -48,24 +48,91 @@ BattleBGMap: ; 1250a
 	ret
 ; 12513
 
-HalveMoney: ; 12513
-
-; Empty function...
-	callba MobileFn_1060c7
-
-; Halve the player's money.
+; Gen VI money loss code by TPP Anniversary Crystal 251
+; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
+LoseMoney: ; 12513
 	ld hl, Money
+	ld a, [hli]
+	or [hl]
+	inc hl
+	or [hl]
+	ld a, 0
+	jr z, .load
+	; 806e1
+	ld hl, Badges
+	ld b, 2
+	call CountSetBits
+	cp 9
+	jr c, .okay
+	ld c, 8
+.okay
+	ld b, 0
+	ld hl, .BasePayouts
+	add hl, bc
 	ld a, [hl]
-	srl a
-	ld [hli], a
+	ld [hMultiplier], a
+	ld a, [PartyCount]
+	ld c, a
+	ld b, 0
+	ld hl, PartyMon1Level
+	ld de, PARTYMON_STRUCT_LENGTH
+.loop
 	ld a, [hl]
-	rra
-	ld [hli], a
-	ld a, [hl]
-	rra
-	ld [hl], a
+	cp b
+	jr c, .next
+	ld b, a
+.next
+	add hl, de
+	dec c
+	jr nz, .loop
+	xor a
+	ld [hMultiplicand], a
+	ld [hMultiplicand + 1], a
+	ld a, b
+	ld [hMultiplicand + 2], a
+	call Multiply
+	ld de, hMoneyTemp
+	ld hl, hProduct + 1
+	call .copy
+	ld de, Money
+	ld bc, hMoneyTemp
+	push bc
+	push de
+	callba CompareMoney
+	jr nc, .nonzero
+	ld hl, Money
+	ld de, hMoneyTemp
+	call .copy
+.nonzero
+	pop de
+	pop bc
+	callba TakeMoney
+	ld a, 1
+.load
+	ld [ScriptVar], a
 	ret
-; 12527
+
+.copy
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	ret
+
+.BasePayouts
+	db 8
+	db 16
+	db 24
+	db 36
+	db 48
+	db 64
+	db 80
+	db 100
+	db 120
 
 
 GetWhiteoutSpawn: ; 12527

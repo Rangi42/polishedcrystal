@@ -257,6 +257,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Title screen version number ends in "F" for the faithful version
 * Add: Unlimited-use TMs from Gen V (also more expensive)
 * Add: Continuous Repel system from Gen V
+* Add: Money loss formula from Gen V
 * Add: Pokédex area display uses whiever region you're in
 * Add: New sprites for Twins and another trainer
 * Add: Guitarist♀ trainer class
