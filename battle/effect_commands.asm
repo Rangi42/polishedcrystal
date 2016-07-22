@@ -3117,6 +3117,7 @@ SpeciesItemBoost: ; 353d1
 
 
 EnemyAttackDamage: ; 353f6
+
 	call ResetDamage
 
 ; No damage dealt with 0 power.
@@ -6422,6 +6423,15 @@ BattleCommand_Burn:
 .didnt_affect
 	call AnimateFailedMove
 	jp PrintDoesntAffect
+
+
+BattleCommand_Hex:
+; hex
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret z
+	jp DoubleDamage
 
 
 BattleCommand_RaiseSubNoAnim: ; 365af

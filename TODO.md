@@ -18,7 +18,6 @@
 * Double-Edge does 33% recoil damage
 * Flare Blitz does 33% recoil damage
 * Avalanche doubles damage if user is hit first
-* Hex doubles damage if foe has a status condition
 * Low Kick's power is based on weight
 * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
 * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely

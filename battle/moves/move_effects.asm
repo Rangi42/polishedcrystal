@@ -1,6 +1,7 @@
 NormalHit:
 Aeroblast:
 AquaTail:
+Avalanche:
 BulletPunch:
 Crabhammer:
 CrossChop:
@@ -12,7 +13,6 @@ EggBomb:
 Extremespeed:
 FeintAttack:
 FairyWind:
-Hex:
 HiJumpKick:
 HornAttack:
 HydroPump:
@@ -2119,7 +2119,7 @@ FlareBlitz:
 	burntarget
 	endmove
 
-Avalanche:
+Hex:
 	checkobedience
 	usedmovetext
 	doturn
@@ -2127,8 +2127,9 @@ Avalanche:
 	damagestats
 	damagecalc
 	stab
-	damagevariation
 	checkhit
+	hex
+	damagevariation
 	hittarget
 	failuretext
 	checkfaint

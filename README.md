@@ -265,6 +265,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Higher levels in Kanto
 * Add: Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
 * Add: Sleep lasts 1-3 turns, not 1-7
+* Add: Hex doubles damage if foe has a status condition
 * Add: Fishing works 75% of the time, not 50%
 * Fix: Some sprites glitch when walking
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon

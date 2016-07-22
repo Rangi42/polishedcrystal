@@ -180,6 +180,8 @@ endm
 	command startloop               ; ad
 	command curl                    ; ae
 	command burn                    ; af
+	command avalanche               ; b0
+	command hex                     ; b1
 
 	enum_start -1, -1
 	command endmove

@@ -141,7 +141,8 @@
 	dw Fly
 	dw DefenseCurl
 	dw FlareBlitz
-	dw Avalanche
+	dw NormalHit
+	dw Hex
 	dw NormalHit
 	dw OHKOHit
 	dw NormalHit
