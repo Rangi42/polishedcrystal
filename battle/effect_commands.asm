@@ -1678,9 +1678,6 @@ BattleCommand_CheckHit: ; 34d32
 	call .ThunderRain
 	ret z
 
-	call .XAccuracy
-	ret nz
-
 	; Perfect-accuracy moves
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -1887,13 +1884,6 @@ BattleCommand_CheckHit: ; 34d32
 
 	ld a, [Weather]
 	cp WEATHER_RAIN
-	ret
-
-
-.XAccuracy:
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
-	bit SUBSTATUS_X_ACCURACY, a
 	ret
 
 

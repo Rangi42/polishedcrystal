@@ -20,7 +20,6 @@
 * Avalanche doubles damage if user is hit first
 * Low Kick's power is based on weight
 * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
-* X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
 * Thunder ignores accuracy and evasion in rain
 * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
 * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore

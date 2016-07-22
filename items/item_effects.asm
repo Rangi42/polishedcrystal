@@ -2394,15 +2394,6 @@ TextJump_RepelUsedEarlierIsStillInEffect: ; 0xf47d
 ; 0xf482
 
 
-XAccuracy: ; f482
-	ld hl, PlayerSubStatus4
-	bit SUBSTATUS_X_ACCURACY, [hl]
-	jp nz, WontHaveAnyEffect_NotUsedMessage
-	set SUBSTATUS_X_ACCURACY, [hl]
-	jp UseItemText
-; f48f
-
-
 PokeDoll: ; f48f
 	ld a, [wBattleMode]
 	dec a
@@ -2444,7 +2435,8 @@ XAttack:
 XDefend:
 XSpeed:
 XSpclAtk:
-XSpclDef: ; f4c5
+XSpclDef:
+XAccuracy: ; f4c5
 	call UseItemText
 
 	ld a, [CurItem]
@@ -2484,6 +2476,7 @@ endr
 	db X_SPEED,    SPEED
 	db X_SPCL_ATK, SP_ATTACK
 	db X_SPCL_DEF, SP_DEFENSE
+	db X_ACCURACY, ACCURACY
 ; f50c
 
 

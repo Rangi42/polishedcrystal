@@ -284,7 +284,6 @@ AI_Items: ; 39196
 	dbw HYPER_POTION, .HyperPotion
 	dbw SUPER_POTION, .SuperPotion
 	dbw POTION,       .Potion
-	dbw X_ACCURACY,   .XAccuracy
 	dbw FULL_HEAL,    .FullHeal
 	dbw GUARD_SPEC,   .GuardSpec
 	dbw DIRE_HIT,     .DireHit
@@ -293,6 +292,7 @@ AI_Items: ; 39196
 	dbw X_SPEED,      .XSpeed
 	dbw X_SPCL_ATK,   .XSpclAtk
 	dbw X_SPCL_DEF,   .XSpclDef
+	dbw X_ACCURACY,   .XAccuracy
 	db $ff
 ; 381be
 
@@ -461,13 +461,6 @@ AI_Items: ; 39196
 	jp .DontUse
 ; 382f9
 
-.XAccuracy: ; 382f9
-	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXAccuracy
-	jp .Use
-; 38305
-
 .GuardSpec: ; 38305
 	call .XItem
 	jp c, .DontUse
@@ -515,6 +508,13 @@ AI_Items: ; 39196
 	jp c, .DontUse
 	call EnemyUsedXSpclDef
 	jp .Use
+
+.XAccuracy: ; 382f9
+	call .XItem
+	jp c, .DontUse
+	call EnemyUsedXAccuracy
+	jp .Use
+; 38305
 
 .XItem: ; 3834d (e:434d)
 	ld a, [EnemyTurnsTaken]
@@ -774,14 +774,6 @@ AI_HealStatus: ; 384e0
 	ret
 ; 384f7
 
-EnemyUsedXAccuracy: ; 384f7
-	call AIUsedItemSound
-	ld hl, EnemySubStatus4
-	set SUBSTATUS_X_ACCURACY, [hl]
-	ld a, X_ACCURACY
-	jp PrintText_UsedItemOn_AND_AIUpdateHUD
-; 38504
-
 EnemyUsedGuardSpec: ; 38504
 	call AIUsedItemSound
 	ld hl, EnemySubStatus4
@@ -845,10 +837,16 @@ EnemyUsedXSpeed: ; 3854d
 EnemyUsedXSpclAtk: ; 38553
 	ld b, SP_ATTACK
 	ld a, X_SPCL_ATK
+	jr EnemyUsedXItem
 
 EnemyUsedXSpclDef: ; 38553
 	ld b, SP_DEFENSE
 	ld a, X_SPCL_DEF
+
+EnemyUsedXAccuracy: ; 384f7
+	ld b, ACCURACY
+	ld a, X_ACCURACY
+; 38504
 
 
 ; Parameter

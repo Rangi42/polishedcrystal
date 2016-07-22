@@ -268,6 +268,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Hex doubles damage if foe has a status condition
 * Add: Fishing works 75% of the time, not 50%
 * Add: Paralyze and Freeze animations play each turn
+* Add: X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
 * Fix: Some sprites glitch when walking
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item
