@@ -222,6 +222,10 @@ CheckPlayerTurn:
 
 	ld hl, FrozenSolidText
 	call StdBattleTextBox
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_FRZ
+	call FarPlayBattleAnimation
 
 	call CantMove
 	jp EndTurn
@@ -352,6 +356,10 @@ CheckPlayerTurn:
 
 	ld hl, FullyParalyzedText
 	call StdBattleTextBox
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_PAR
+	call FarPlayBattleAnimation
 	call CantMove
 	jp EndTurn
 
