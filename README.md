@@ -272,7 +272,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Struggle does 25% of max HP recoil damage
 * Add: Double-Edge and Flare Blitz do 33% recoil damage
 * Add: Twineedle checks for poison after each hit
-* Add: Substitute blocks Transform
+* Add: Substitute blocks Transform, Swagger, and trapping moves
 * Add: Substitute does not block draining moves
 * Add: Protect works from behind a Substitute
 * Fix: Some sprites glitch when walking

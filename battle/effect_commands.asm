@@ -1663,6 +1663,9 @@ BattleCommand_CheckHit: ; 34d32
 	call .Protect
 	jp nz, .Miss
 
+	call .Substitute
+	jp nz, .Miss
+
 	call .LockOn
 	ret nz
 
@@ -1771,6 +1774,23 @@ BattleCommand_CheckHit: ; 34d32
 	ld c, 40
 	call DelayFrames
 
+	ld a, 1
+	and a
+	ret
+
+
+.Substitute:
+; Return nz if the opponent is behind a Substitute for certain moves
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp SWAGGER
+	jr z, .blocked
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_TRAP
+	jr z, .blocked
+	ret
+.blocked
 	ld a, 1
 	and a
 	ret
