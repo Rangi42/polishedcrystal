@@ -33,7 +33,7 @@ HallOfFame:: ; 0x8640e
 	ret
 ; 0x86455
 
-RedCredits:: ; 86455
+LeafCredits:: ; 86455
 	ld a, MUSIC_NONE % $100
 	ld [MusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
@@ -48,7 +48,7 @@ RedCredits:: ; 86455
 	ld c, 8
 	call DelayFrames
 	call DisableSpriteUpdates
-	ld a, SPAWN_RED
+	ld a, SPAWN_LEAF
 	ld [wSpawnAfterChampion], a
 	ld a, [StatusFlags]
 	ld b, a

@@ -3205,7 +3205,7 @@ Script_halloffame: ; 97bd5
 Script_credits: ; 97bf3
 ; script command 0xa2
 
-	callba RedCredits
+	callba LeafCredits
 ReturnFromCredits:
 	call Script_end_all
 	ld a, $3

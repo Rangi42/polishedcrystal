@@ -290,4 +290,5 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fix: Old Amber in Pewter City and Nugget in Trainer Hall with a full Bag
 * Fix: NPC text contradicts new Poison mechanic
 * Fix: Silver Cave has a black background in Red's room, not blue
+* Fix: Warp home after the final battle, not outside Mt. Silver
 * Fix: Elemental punch move tutor charges 200 coins, not 4000
