@@ -1781,6 +1781,8 @@ BattleCommand_CheckHit: ; 34d32
 
 .Substitute:
 ; Return nz if the opponent is behind a Substitute for certain moves
+	call CheckSubstituteOpp
+	jr z, .not_blocked
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp SWAGGER
@@ -1789,6 +1791,7 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 	cp EFFECT_TRAP
 	jr z, .blocked
+.not_blocked
 	xor a
 	and a
 	ret
