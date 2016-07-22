@@ -3,12 +3,20 @@ BattleCommand_Transform: ; 371cd
 ; transform
 
 	call ClearLastMove
+
 	ld a, BATTLE_VARS_SUBSTATUS5_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, BattleEffect_ButItFailed
+
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	call GetBattleVarAddr
+	bit SUBSTATUS_SUBSTITUTE, [hl]
+	jp nz, BattleEffect_ButItFailed
+
 	call CheckHiddenOpponent
 	jp nz, BattleEffect_ButItFailed
+
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a

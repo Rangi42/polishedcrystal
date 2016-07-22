@@ -1663,9 +1663,6 @@ BattleCommand_CheckHit: ; 34d32
 	call .Protect
 	jp nz, .Miss
 
-	;call .DrainSub
-	;jp z, .Miss
-
 	call .LockOn
 	ret nz
 
@@ -1817,25 +1814,6 @@ BattleCommand_CheckHit: ; 34d32
 	ret
 
 .NotAPoisonType:
-	ld a, 1
-	and a
-	ret
-
-
-.DrainSub:
-; Return z if using an HP drain move on a substitute.
-	call CheckSubstituteOpp
-	jr z, .not_draining_sub
-
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-
-	cp EFFECT_LEECH_HIT
-	ret z
-	cp EFFECT_DREAM_EATER
-	ret z
-
-.not_draining_sub
 	ld a, 1
 	and a
 	ret
@@ -7382,17 +7360,10 @@ BattleCommand_Charge: ; 36b4d
 	start_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-;	cp RAZOR_WIND
-;	ld hl, .RazorWind
-;	jr z, .done
 
 	cp SOLAR_BEAM
 	ld hl, .SolarBeam
 	jr z, .done
-
-;	cp SKULL_BASH
-;	ld hl, .SkullBash
-;	jr z, .done
 
 	cp SKY_ATTACK
 	ld hl, .SkyAttack
@@ -7408,19 +7379,9 @@ BattleCommand_Charge: ; 36b4d
 .done
 	ret
 
-.RazorWind:
-; 'made a whirlwind!'
-	text_jump UnknownText_0x1c0d12
-	db "@"
-
 .SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
-	db "@"
-
-.SkullBash:
-; 'lowered its head!'
-	text_jump UnknownText_0x1c0d3a
 	db "@"
 
 .SkyAttack:
@@ -8000,53 +7961,6 @@ DoubleDamage: ; 36f37
 
 BattleCommand_Mimic: ; 36f46
 ; mimic
-
-;	call ClearLastMove
-;	call BattleCommand_MoveDelay
-;	ld a, [AttackMissed]
-;	and a
-;	jr nz, .fail
-;	ld hl, BattleMonMoves
-;	ld a, [hBattleTurn]
-;	and a
-;	jr z, .player_turn
-;	ld hl, EnemyMonMoves
-;.player_turn
-;	call CheckHiddenOpponent
-;	jr nz, .fail
-;	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-;	call GetBattleVar
-;	and a
-;	jr z, .fail
-;	cp STRUGGLE
-;	jr z, .fail
-;	ld b, a
-;	ld c, NUM_MOVES
-;.check_already_knows_move
-;	ld a, [hli]
-;	cp b
-;	jr z, .fail
-;	dec c
-;	jr nz, .check_already_knows_move
-;	dec hl
-;.find_mimic
-;	ld a, [hld]
-;	cp MIMIC
-;	jr nz, .find_mimic
-;	inc hl
-;	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-;	call GetBattleVar
-;	ld [hl], a
-;	ld [wNamedObjectIndexBuffer], a
-;	ld bc, BattleMonPP - BattleMonMoves
-;	add hl, bc
-;	ld [hl], 5
-;	call GetMoveName
-;	call AnimateCurrentMove
-;	ld hl, LearnedMoveText
-;	jp StdBattleTextBox
-;
-;.fail
 	jp FailMimic
 
 ; 36f9d
@@ -8886,30 +8800,6 @@ INCLUDE "battle/effects/present.asm"
 
 BattleCommand_FrustrationPower: ; 3790e
 ; frustrationpower
-
-;	push bc
-;	ld hl, BattleMonHappiness
-;	ld a, [hBattleTurn]
-;	and a
-;	jr z, .got_happiness
-;	ld hl, EnemyMonHappiness
-;.got_happiness
-;	ld a, $ff
-;	sub [hl]
-;	ld [hMultiplicand + 2], a
-;	xor a
-;	ld [hMultiplicand + 0], a
-;	ld [hMultiplicand + 1], a
-;	ld a, 10
-;	ld [hMultiplier], a
-;	call Multiply
-;	ld a, 25
-;	ld [hDivisor], a
-;	ld b, 4
-;	call Divide
-;	ld a, [hQuotient + 2]
-;	ld d, a
-;	pop bc
 	ret
 
 ; 37939
@@ -9509,53 +9399,6 @@ BattleCommand_BellyDrum: ; 37c1a
 
 BattleCommand_PsychUp: ; 37c55
 ; psychup
-
-;	ld hl, EnemyStatLevels
-;	ld de, PlayerStatLevels
-;	ld a, [hBattleTurn]
-;	and a
-;	jr z, .pointers_correct
-;; It's the enemy's turn, so swap the pointers.
-;	push hl
-;	ld h, d
-;	ld l, e
-;	pop de
-;.pointers_correct
-;	push hl
-;	ld b, NUM_LEVEL_STATS
-;; If any of the enemy's stats is modified from its base level,
-;; the move succeeds.  Otherwise, it fails.
-;.loop
-;	ld a, [hli]
-;	cp BASE_STAT_LEVEL
-;	jr nz, .break
-;	dec b
-;	jr nz, .loop
-;	pop hl
-;	call AnimateFailedMove
-;	jp PrintButItFailed
-;
-;.break
-;	pop hl
-;	ld b, NUM_LEVEL_STATS
-;.loop2
-;	ld a, [hli]
-;	ld [de], a
-;	inc de
-;	dec b
-;	jr nz, .loop2
-;	ld a, [hBattleTurn]
-;	and a
-;	jr nz, .calc_enemy_stats
-;	call CalcPlayerStats
-;	jr .merge
-;
-;.calc_enemy_stats
-;	call CalcEnemyStats
-;.merge
-;	call AnimateCurrentMove
-;	ld hl, CopiedStatsText
-;	jp StdBattleTextBox
 	ret
 
 ; 37c95
