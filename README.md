@@ -292,3 +292,4 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Fix: Silver Cave has a black background in Red's room, not blue
 * Fix: Warp home after the final battle, not outside Mt. Silver
 * Fix: Elemental punch move tutor charges 200 coins, not 4000
+* Fix: Music resumes after certain trainer battles

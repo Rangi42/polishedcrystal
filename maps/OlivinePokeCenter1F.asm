@@ -39,7 +39,6 @@ BeautyCharlotteScript:
 	setlasttalked OLIVINEPOKECENTER1F_BEAUTY
 	loadtrainer BEAUTY, CHARLOTTE
 	startbattle
-	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BEAUTY_CHARLOTTE
 	opentext

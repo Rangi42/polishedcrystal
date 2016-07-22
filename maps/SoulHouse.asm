@@ -36,7 +36,6 @@ AgathaScript:
 	setlasttalked SOULHOUSE_AGATHA
 	loadtrainer AGATHA, 1
 	startbattle
-	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_AGATHA
 	opentext

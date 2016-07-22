@@ -42,7 +42,6 @@ LoreleiAfterIntroScript:
 	setlasttalked ICEPATHB3F_LORELEI
 	loadtrainer LORELEI, 1
 	startbattle
-	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LORELEI
 	opentext
@@ -68,7 +67,6 @@ LoreleiRematchScript:
 	setlasttalked ICEPATHB3F_LORELEI
 	loadtrainer LORELEI, 2
 	startbattle
-	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LORELEI_AGAIN
 	opentext
