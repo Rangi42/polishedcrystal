@@ -13,10 +13,7 @@
 * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
 * Freeze has a 20% chance to dethaw, and can attack on that turn (like waking up)
 * Sound-based moves bypass Substitute
-* Struggle does 25% recoil damage
 * Drain Kiss drains 75% HP
-* Double-Edge does 33% recoil damage
-* Flare Blitz does 33% recoil damage
 * Avalanche doubles damage if user is hit first
 * Low Kick's power is based on weight
 * Oran Berry, Sitrus Berry, and Berry Juice activate at 1/3 HP, not 1/2
