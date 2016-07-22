@@ -275,6 +275,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: Substitute blocks Transform, Swagger, and trapping moves
 * Add: Substitute does not block draining moves
 * Add: Protect works from behind a Substitute
+* Add: Substitute prevents gaining money from Pay Day
 * Fix: Some sprites glitch when walking
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item

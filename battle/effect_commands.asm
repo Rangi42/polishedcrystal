@@ -8113,6 +8113,9 @@ BattleCommand_Disable: ; 36fed
 BattleCommand_PayDay: ; 3705c
 ; payday
 
+	call CheckSubstituteOpp
+	ret nz
+
 	xor a
 	ld hl, StringBuffer1
 	ld [hli], a
