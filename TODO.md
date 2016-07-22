@@ -11,7 +11,7 @@
 
 * http://smogon.site/forums/threads/gsc-mechanics.3542417/
 * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
-* Freeze has a 20% chance to dethaw, and can attack on that turn (like waking up)
+* Defrosted Pokémon can attack on that turn (like waking up)
 * Substitute does not block sound-based moves
 * Substitute prevents building Rage
 * Drain Kiss drains 75% HP
