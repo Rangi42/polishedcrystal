@@ -12,7 +12,9 @@
 * http://smogon.site/forums/threads/gsc-mechanics.3542417/
 * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
 * Freeze has a 20% chance to dethaw, and can attack on that turn (like waking up)
-* Sound-based moves bypass Substitute
+* Substitute blocks Swagger, Transform, and trapping moves
+* Substitute does not block sound-based moves
+* Substitute prevents building Rage and gaining money from Pay Day
 * Drain Kiss drains 75% HP
 * Avalanche doubles damage if user is hit first
 * Low Kick's power is based on weight

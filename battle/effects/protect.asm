@@ -26,13 +26,6 @@ ProtectChance: ; 3762c
 	call CheckOpponentWentFirst
 	jr nz, .failed
 
-; Can't have a substitute.
-
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
-	jr nz, .failed
-
 ; Halve the chance of a successful Protect for each consecutive use.
 
 	ld b, $ff

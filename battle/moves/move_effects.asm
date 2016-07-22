@@ -1315,10 +1315,10 @@ Twineedle:
 	supereffectivelooptext
 	checkdestinybond
 	buildopponentrage
+	poisontarget
 	endloop
 	raisesub
 	kingsrock
-	poisontarget
 	endmove
 
 Substitute:

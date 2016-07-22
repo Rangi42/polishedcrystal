@@ -1663,8 +1663,8 @@ BattleCommand_CheckHit: ; 34d32
 	call .Protect
 	jp nz, .Miss
 
-	call .DrainSub
-	jp z, .Miss
+	;call .DrainSub
+	;jp z, .Miss
 
 	call .LockOn
 	ret nz
