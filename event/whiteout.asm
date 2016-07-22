@@ -8,14 +8,24 @@ Script_OverworldWhiteout:: ; 0x124c8
 	callasm OverworldBGMap
 
 Script_Whiteout: ; 0x124ce
+	callasm LoseMoney
+	iffalse .whiteout_text
+	callasm DetermineWildBattlePanic
+	iffalse .whiteout_wild_text
+	writetext .WhitedOutToTrainerText
+	jump .text_done
+.whiteout_wild_text
+	writetext .WhitedOutToWildText
+	jump .text_done
+.whiteout_text
 	writetext .WhitedOutText
+.text_done
 	waitbutton
 	special FadeOutPalettes
 	pause 40
 	special HealParty
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .bug_contest
-	callasm LoseMoney
 	callasm GetWhiteoutSpawn
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
@@ -28,9 +38,17 @@ Script_Whiteout: ; 0x124ce
 
 .WhitedOutText: ; 0x124f5
 	; is out of useable #MON!  whited out!
-	text_jump UnknownText_0x1c0a4e
+	text_jump WhiteoutText
 	db "@"
 ; 0x124fa
+
+.WhitedOutToWildText:
+	text_jump WhiteoutToWildText
+	db "@"
+
+.WhitedOutToTrainerText:
+	text_jump WhiteoutToTrainerText
+	db "@"
 
 OverworldBGMap: ; 124fa
 	call ClearPalettes
@@ -133,6 +151,16 @@ LoseMoney: ; 12513
 	db 80
 	db 100
 	db 120
+
+
+DetermineWildBattlePanic:
+	ld hl, wWildBattlePanic
+	ld a, [hl]
+	and $1
+	ld [ScriptVar], a
+	xor a
+	ld [hl], a
+	ret
 
 
 GetWhiteoutSpawn: ; 12527

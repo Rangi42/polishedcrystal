@@ -27,7 +27,6 @@
 ## Other mechanics
 
 * Catch rate formula from Gen III
-* Show amount of money lost when blacking out
 * Show stat changes and then absolute values on level up
 * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
 * Brief beeping with low HP
