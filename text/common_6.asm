@@ -212,3 +212,8 @@ MoveReminderCancelText::
 	para "move, come back"
 	line "with a Gold Leaf."
 	done
+
+AlreadyHaveTMText::
+	text "You already have"
+	line "that TM."
+	done

@@ -94,7 +94,8 @@ TrainerClassDVs: ; 270d6
 	db $FD, $DD ; blackbelt
 	db $7D, $DD ; battle girl
 	db $DD, $DD ; teacher
-	db $DD, $DD ; guitarist
+	db $DD, $DD ; guitaristm
+	db $7D, $DD ; guitaristf
 	db $DD, $DD ; biker
 	db $EE, $EE ; cooltrainerm
 	db $7E, $EE ; cooltrainerf

@@ -68,7 +68,8 @@ TrainerGroups: ; 0x39999
 	dw BlackbeltGroup
 	dw BattleGirlGroup
 	dw TeacherGroup
-	dw GuitaristGroup
+	dw GuitaristMGroup
+	dw GuitaristFGroup
 	dw BikerGroup
 	dw CooltrainerMGroup
 	dw CooltrainerFGroup

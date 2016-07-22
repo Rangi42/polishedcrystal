@@ -1,5 +1,5 @@
 const_value set 2
-	const VERMILIONCITY_TEACHER
+	const VERMILIONCITY_COOLTRAINERF
 	const VERMILIONCITY_GRAMPS
 	const VERMILIONCITY_MACHOP
 	const VERMILIONCITY_SUPER_NERD
@@ -205,7 +205,7 @@ LawrenceDepartAroundMovementData:
 	step_down
 	step_end
 
-TeacherScript_0x1aa983:
+CooltrainerFScript_0x1aa983:
 	jumptextfaceplayer UnknownText_0x1aaa15
 
 VermilionMachopOwner:
@@ -528,7 +528,7 @@ VermilionCity_MapEventHeader:
 
 .PersonEvents:
 	db 7
-	person_event SPRITE_TEACHER, 9, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1aa983, -1
+	person_event SPRITE_COOLTRAINER_F, 9, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1aa983, -1
 	person_event SPRITE_GRAMPS, 6, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionMachopOwner, -1
 	person_event SPRITE_MACHOP, 7, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
 	person_event SPRITE_SUPER_NERD, 16, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1aa99b, -1

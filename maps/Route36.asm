@@ -7,6 +7,7 @@ const_value set 2
 	const ROUTE36_FRUIT_TREE
 	const ROUTE36_ARTHUR
 	const ROUTE36_FLORIA
+	const ROUTE36_TWIN
 	const ROUTE36_SUICUNE
 
 Route36_MapScriptHeader:
@@ -86,7 +87,6 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	setevent EVENT_FOUGHT_SUDOWOODO
 	if_equal $2, DidntCatchSudowoodo
 	disappear ROUTE36_WEIRD_TREE
-	variablesprite SPRITE_WEIRD_TREE, SPRITE_TWIN
 	reloadmapafterbattle
 	end
 
@@ -98,7 +98,6 @@ DidntCatchSudowoodo:
 	reloadmapafterbattle
 	applymovement ROUTE36_WEIRD_TREE, WeirdTreeMovement_Flee
 	disappear ROUTE36_WEIRD_TREE
-	variablesprite SPRITE_WEIRD_TREE, SPRITE_TWIN
 	special RunCallback_04
 	special RefreshSprites
 	end
@@ -316,6 +315,17 @@ TrainerPsychicMark:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x19471e
+	waitbutton
+	closetext
+	end
+
+TrainerSchoolgirlAudrey
+	trainer EVENT_BEAT_SCHOOLGIRL_AUDREY, SCHOOLGIRL, AUDREY, SchoolgirlAudreySeenText, SchoolgirlAudreyBeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext SchoolgirlAudreyAfterText
 	waitbutton
 	closetext
 	end
@@ -567,6 +577,21 @@ UnknownText_0x19471e:
 	line "was thinking."
 	done
 
+SchoolgirlAudreySeenText:
+	text "Mr.Earl taught me"
+	line "how to battle with"
+	cont "#mon!"
+	done
+
+SchoolgirlAudreyBeatenText:
+	text "My studying…"
+	done
+
+SchoolgirlAudreyAfterText:
+	text "I still have a"
+	line "lot to learn."
+	done
+
 SchoolboyAlan1SeenText:
 	text "Thanks to my stud-"
 	line "ies, I'm ready for"
@@ -670,11 +695,13 @@ Route36_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 6
 	warp_def $8, $12, 3, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def $9, $12, 4, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def $d, $2f, 1, ROUTE_36_RUINS_OF_ALPH_GATE
 	warp_def $d, $30, 2, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def $8, $39, 1, ROUTE_36_VIOLET_GATE
+	warp_def $9, $39, 2, ROUTE_36_VIOLET_GATE
 
 .XYTriggers:
 	db 2
@@ -689,13 +716,14 @@ Route36_MapEventHeader:
 	signpost 7, 21, SIGNPOST_READ, Route36TrainerTips1
 
 .PersonEvents:
-	db 9
+	db 10
 	person_event SPRITE_YOUNGSTER, 13, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicMark, -1
 	person_event SPRITE_YOUNGSTER, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
-	person_event SPRITE_WEIRD_TREE, 9, 35, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
+	person_event SPRITE_SUDOWOODO, 9, 35, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
 	person_event SPRITE_LASS, 8, 51, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
 	person_event SPRITE_FISHER, 9, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
 	person_event SPRITE_FRUIT_TREE, 4, 21, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36FruitTree, -1
 	person_event SPRITE_YOUNGSTER, 6, 46, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
 	person_event SPRITE_LASS, 12, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
+	person_event SPRITE_TWIN, 4, 47, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlAudrey, -1
 	person_event SPRITE_SUICUNE, 6, 21, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36

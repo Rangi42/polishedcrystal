@@ -29,11 +29,13 @@ CeladonPrizeRoom_tmcounterloop:
 	verticalmenu
 	closewindow
 	if_equal $1, .doubleteam
-	if_equal $2, .psychic
+	if_equal $2, .darkpulse
 	if_equal $3, .hyperbeam
 	jump CeladonPrizeRoom_cancel
 
 .doubleteam
+	checkitem TM_DOUBLE_TEAM
+	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 1500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	itemtotext TM_DOUBLE_TEAM, $0
@@ -44,18 +46,22 @@ CeladonPrizeRoom_tmcounterloop:
 	takecoins 1500
 	jump CeladonPrizeRoom_purchased
 
-.psychic
+.darkpulse
+	checkitem TM_DARK_PULSE
+	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 3500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	itemtotext TM_PSYCHIC, $0
+	itemtotext TM_DARK_PULSE, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
-	giveitem TM_PSYCHIC
+	giveitem TM_DARK_PULSE
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins 3500
 	jump CeladonPrizeRoom_purchased
 
 .hyperbeam
+	checkitem TM_HYPER_BEAM
+	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 7500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	itemtotext TM_HYPER_BEAM, $0
@@ -75,6 +81,11 @@ CeladonPrizeRoom_purchased:
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
+	waitbutton
+	jump CeladonPrizeRoom_tmcounterloop
+
+CeladonPrizeRoom_alreadyhavetm:
+	writetext CeladonPrizeRoom_AlreadyHaveTMText
 	waitbutton
 	jump CeladonPrizeRoom_tmcounterloop
 
@@ -114,7 +125,7 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db $80 ; flags
 	db 4 ; items
 	db "TM32    1500@"
-	db "TM29    3500@"
+	db "TM57    3500@"
 	db "TM15    7500@"
 	db "Cancel@"
 
@@ -247,6 +258,11 @@ CeladonPrizeRoom_ConfirmPurchaseText:
 
 CeladonPrizeRoom_HereYouGoText:
 	text "Here you go!"
+	done
+
+CeladonPrizeRoom_AlreadyHaveTMText:
+	text "You already have"
+	line "that TM."
 	done
 
 CeladonPrizeRoom_NotEnoughCoinsText:

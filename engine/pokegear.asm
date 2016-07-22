@@ -2506,12 +2506,19 @@ _Area: ; 91d11
 	ld c, 4
 	call Request2bpp
 	call LoadTownMapGFX
+
+	ld a, [wd002]
+	cp FAST_SHIP
+	jr z, .area_johto_map
+	cp KANTO_LANDMARK
+	jr c, .area_johto_map
+.area_kanto_map
 	call FillKantoMap
-	call .PlaceString_MonsNest
-	call TownMapPals
-	hlbgcoord 0, 0, VBGMap1
-	call TownMapBGUpdate
+	jr .area_continue
+.area_johto_map
 	call FillJohtoMap
+.area_continue
+
 	call .PlaceString_MonsNest
 	call TownMapPals
 	hlbgcoord 0, 0
@@ -2521,7 +2528,19 @@ _Area: ; 91d11
 	call SetPalettes
 	xor a
 	ld [hBGMapMode], a
-	xor a ; Johto
+
+	ld a, [wd002]
+	cp FAST_SHIP
+	jr z, .area_johto_nests
+	cp KANTO_LANDMARK
+	jr c, .area_johto_nests
+.area_kanto_nests
+	ld a, 1
+	jr .place_nests
+.area_johto_nests
+	xor a
+.place_nests
+
 	call .GetAndPlaceNest
 .loop
 	call JoyTextDelay

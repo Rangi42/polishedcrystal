@@ -51,7 +51,7 @@ endc
 	move HEADBUTT,     EFFECT_FLINCH_HIT,         70, NORMAL,    100, 15,  30, PHYSICAL
 	move HORN_ATTACK,  EFFECT_NORMAL_HIT,         65, NORMAL,    100, 25,   0, PHYSICAL
 	move FURY_ATTACK,  EFFECT_MULTI_HIT,          15, NORMAL,     85, 20,   0, PHYSICAL
-	move HEX,          EFFECT_NORMAL_HIT,         65, GHOST,     100, 10,   0, SPECIAL
+	move HEX,          EFFECT_HEX,                65, GHOST,     100, 10,   0, SPECIAL
 	move TACKLE,       EFFECT_NORMAL_HIT,         50, NORMAL,    100, 35,   0, PHYSICAL
 	move BODY_SLAM,    EFFECT_PARALYZE_HIT,       85, NORMAL,    100, 15,  30, PHYSICAL
 	move WRAP,         EFFECT_TRAP,               15, NORMAL,     90, 20,   0, PHYSICAL
@@ -208,7 +208,7 @@ endc
 	move AEROBLAST,    EFFECT_NORMAL_HIT,        100, FLYING,     95,  5,   0, SPECIAL
 	move SEED_BOMB,    EFFECT_NORMAL_HIT,         80, GRASS,     100, 15,   0, PHYSICAL
 	move REVERSAL,     EFFECT_REVERSAL,            1, FIGHTING,  100, 15,   0, PHYSICAL
-	move ASTONISH,     EFFECT_ASTONISH,           30, GHOST,     100, 15,   0, SPECIAL
+	move ASTONISH,     EFFECT_FLINCH_HIT,         30, GHOST,     100, 15,  30, SPECIAL
 	move POWDER_SNOW,  EFFECT_FREEZE_HIT,         40, ICE,       100, 25,  10, SPECIAL
 	move PROTECT,      EFFECT_PROTECT,             0, NORMAL,    100, 10,   0, STATUS
 	move MACH_PUNCH,   EFFECT_PRIORITY_HIT,       40, FIGHTING,  100, 30,   0, PHYSICAL

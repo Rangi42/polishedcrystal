@@ -3425,8 +3425,8 @@ BugCatcherGroup:
 	db 0 ; normal
 
 	; party
-	db 28, WEEDLE
-	db 38, KAKUNA
+	db 40, WEEDLE
+	db 44, KAKUNA
 	db 48, BEEDRILL
 
 	db $ff ; end
@@ -5206,10 +5206,10 @@ HikerGroup:
 	db 0 ; normal
 
 	; party
-	db 27, SANDSLASH
-	db 29, GRAVELER
-	db 33, GOLEM
-	db 29, GRAVELER
+	db 34, SANDSLASH
+	db 36, GRAVELER
+	db 40, GOLEM
+	db 36, GRAVELER
 
 	db $ff ; end
 
@@ -7700,9 +7700,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 9, MAREEP
-	db 8, WOOPER
-	db 10, TEDDIURSA
+	db 7, VULPIX
+	db 6, MAREEP
+	db 8, TEDDIURSA
 
 	db $ff ; end
 
@@ -9543,7 +9543,7 @@ BoarderGroup:
 	; party
 	db 27, SWINUB
 	db 27, SWINUB
-	db 38, SNEASEL
+	db 28, SNEASEL
 
 	db $ff ; end
 
@@ -9931,11 +9931,11 @@ TeacherGroup:
 
 
 
-GuitaristGroup:
+GuitaristMGroup:
 ; ================================
 ; ================
 
-	; GUITARIST (1)
+	; GUITARISTM (1)
 	db "Clyde@"
 	db 0 ; normal
 
@@ -9946,7 +9946,7 @@ GuitaristGroup:
 
 ; ================
 
-	; GUITARIST (2)
+	; GUITARISTM (2)
 	db "Vincent@"
 	db 0 ; normal
 
@@ -9954,6 +9954,40 @@ GuitaristGroup:
 	db 43, VOLTORB
 	db 42, MAGNEMITE
 	db 45, JOLTEON
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+GuitaristFGroup:
+; ================================
+; ================
+
+	; GUITARISTF (1)
+	db "Janet@"
+	db 1 ; moves
+
+	; party
+
+	db 46, PIKACHU
+		db IRON_TAIL
+		db EXTREMESPEED
+		db SURF
+		db THUNDERBOLT
+
+	db 44, ELECTABUZZ
+		db LIGHT_SCREEN
+		db THUNDERPUNCH
+		db CROSS_CHOP
+		db SCREECH
+
+	db 45, RAICHU
+		db EXTREMESPEED
+		db SURF
+		db THUNDERBOLT
+		db AGILITY
 
 	db $ff ; end
 

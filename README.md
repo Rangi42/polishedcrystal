@@ -10,7 +10,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 The most recent version is 1.0.0 as of July 17, 2016.
 
-To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) to apply the patch to a default Crystal ROM.
+To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
 This is the ROM you should use:
 
@@ -31,7 +31,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 * Added locations from R/B/Y and HG/SS: Viridian Forest, Pewter Museum, Celadon Hotel, Silph Co., Pokémon Mansion, Seafoam Islands, Cerulean Cave, Goldenrod PokéCom Center, and Bellchime Trail
 * New locations, including Cinnabar Volcano, Cherrygrove Bay, Goldenrod Harbor, a new floor of Rock Tunnel, and custom-designed PokéWalker routes
 * Battle more trainers, including Lorelei, Agatha, and Bill
-* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, and Hex Maniac
+* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, Hex Maniac, and Guitarist♀
 * Get a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them at higher levels
 * Rematch Gym Leaders in the Fighting Dojo
 * Wonder Trade up to three times a day in the Goldenrod PokéCom Center
@@ -210,7 +210,6 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 ## Bugs
 
-* Some overworld sprites glitch when walking.
 * Pokémon overworld sprites are frequently incorrect. This is partly because the original game would use, for example, a cow-shaped `SPRITE_TAUROS` for both Tauros and Miltank, but there's also a bug where Pokémon icons change when you view the party menu.
 * The Move Reminder doesn't list all the possible moves.
 
@@ -256,10 +255,39 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
 
 * Add: Title screen version number ends in "F" for the faithful version
+* Add: Unlimited-use TMs from Gen V (also more expensive)
+* Add: Continuous Repel system from Gen V
+* Add: Pokédex area display uses whiever region you're in
 * Add: New sprites for Twins and another trainer
+* Add: Guitarist♀ trainer class
 * Add: Wild Gengar in Cerulean Cave at night
+* Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
+* Add: Higher levels in Kanto
+* Add: Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
+* Add: Sleep lasts 1-3 turns, not 1-7
+* Add: Hex doubles damage if foe has a status condition
+* Add: Fishing works 75% of the time, not 50%
+* Add: Paralyze and Freeze animations play each turn
+* Add: X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
+* Add: Struggle does 25% of max HP recoil damage
+* Add: Double-Edge and Flare Blitz do 33% recoil damage
+* Add: Twineedle checks for poison after each hit
+* Add: Substitute blocks Transform, Swagger, and trapping moves
+* Add: Substitute does not block draining moves
+* Add: Protect works from behind a Substitute
+* Add: Substitute prevents gaining money from Pay Day
+* Add: 20% chance to defrost, not 10%
+* Fix: Some sprites glitch when walking
 * Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
 * Fix: Evolution by held item no longer happens without the right item
 * Fix: Some items' names were displayed wrong when held
 * Fix: Can't get stuck in Cerulean Cave without Surf or Fly
+* Fix: Pursuit causing a switching-out Pokémon to faint crashes the game
+* Fix: Astonish has a 30% chance to flinch
+* Fix: Will-O-Wisp hits through Dig
 * Fix: Celadon Game Corner prizes and prices match the displayed ones
+* Fix: Pokémon levels for Boarder Stefan, Hiker Kenny, and Bug Catcher Ellis
+* Fix: Old Amber in Pewter City and Nugget in Trainer Hall with a full Bag
+* Fix: NPC text contradicts new Poison mechanic
+* Fix: Silver Cave has a black background in Red's room, not blue
+* Fix: Elemental punch move tutor charges 200 coins, not 4000

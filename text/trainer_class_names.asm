@@ -66,6 +66,7 @@
 	db "Battle Girl@"
 	db "Teacher@"
 	db "Guitarist@"
+	db "Guitarist@"
 	db "Biker@"
 	db "Ace Trainer@"
 	db "Ace Trainer@"

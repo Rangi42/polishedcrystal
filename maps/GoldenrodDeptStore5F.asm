@@ -39,6 +39,8 @@ ReceptionistScript_0x560ce:
 	opentext
 	checkcode VAR_WEEKDAY
 	if_not_equal SUNDAY, .EventIsOver
+	checkitem TM_RETURN
+	iftrue .EventIsOver
 	checkflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
 	iftrue .EventIsOver
 	special GetFirstPokemonHappiness

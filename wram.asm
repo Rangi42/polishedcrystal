@@ -2780,7 +2780,7 @@ StepCount:: ; dc73
 PoisonStepCount:: ; dc74
 	ds 1
 
-	ds 2
+	ds 1
 wHappinessStepCount:: ds 1
 	ds 1
 wParkBallsRemaining::
@@ -2792,6 +2792,7 @@ wPhoneList:: ds CONTACT_LIST_SIZE ; dc7c
 wLuckyNumberShowFlag:: ds 2 ; dc9d
 wLuckyIDNumber:: ds 2 ; dc9f
 wRepelEffect:: ds 1 ; If a Repel is in use, it contains the nr of steps it's still active
+wRepelType:: ds 1
 wBikeStep:: ds 2
 wKurtApricornQuantity:: ds 1
 

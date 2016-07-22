@@ -140,9 +140,9 @@
 	dw Teleport
 	dw Fly
 	dw DefenseCurl
-	dw Astonish
 	dw FlareBlitz
-	dw Avalanche
+	dw NormalHit
+	dw Hex
 	dw NormalHit
 	dw OHKOHit
 	dw NormalHit

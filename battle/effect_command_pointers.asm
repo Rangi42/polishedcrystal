@@ -148,7 +148,6 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_StatDownAnim ; 34fdb
 	dw BattleCommand_StatUpAnim ; 34fd1
 	dw BattleCommand_SwitchTurn ; 34ffd - 93
-	dw BattleCommand_Astonish ; 36a82
 	dw BattleCommand_BellyDrum ; 37c1a
 	dw BattleCommand_PsychUp ; 37c55
 	dw BattleCommand_Rage ; 36f1d
@@ -176,4 +175,6 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_SuperEffectiveLoopText ; 351a5
 	dw BattleCommand_StartLoop ; 35197
 	dw BattleCommand_Curl ; 365a7
+	dw BattleCommand_Burn
+	dw BattleCommand_Hex
 ; 3fe86

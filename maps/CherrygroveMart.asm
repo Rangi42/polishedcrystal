@@ -64,8 +64,8 @@ UnknownText_0x1968a0:
 	line "soned my #mon!"
 
 	para "I just kept going,"
-	line "but then my"
-	cont "#mon fainted."
+	line "and my #mon"
+	cont "barely recovered."
 
 	para "You should keep an"
 	line "Antidote with you."

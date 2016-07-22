@@ -368,7 +368,7 @@
 	map_header_2 WhirlIslandLugiaChamber, WHIRL_ISLAND_LUGIA_CHAMBER, $f, 0
 	map_header_2 SilverCaveRoom1, SILVER_CAVE_ROOM_1, $9, 0
 	map_header_2 SilverCaveRoom2, SILVER_CAVE_ROOM_2, $9, 0
-	map_header_2 SilverCaveRoom3, SILVER_CAVE_ROOM_3, $9, 0
+	map_header_2 SilverCaveRoom3, SILVER_CAVE_ROOM_3, $0, 0
 	map_header_2 SilverCaveItemRooms, SILVER_CAVE_ITEM_ROOMS, $9, 0
 	map_header_2 DarkCaveVioletEntrance, DARK_CAVE_VIOLET_ENTRANCE, $9, 0
 	map_header_2 DarkCaveBlackthornEntrance, DARK_CAVE_BLACKTHORN_ENTRANCE, $9, 0
@@ -450,6 +450,7 @@
 	map_header_2 Route35NationalParkgate, ROUTE_35_NATIONAL_PARK_GATE, $0, 0
 	map_header_2 Route36RuinsofAlphgate, ROUTE_36_RUINS_OF_ALPH_GATE, $0, 0
 	map_header_2 Route36NationalParkgate, ROUTE_36_NATIONAL_PARK_GATE, $0, 0
+	map_header_2 Route36VioletGate, ROUTE_36_VIOLET_GATE, $0, 0
 	map_header_2 GoldenrodGym, GOLDENROD_GYM, $0, 0
 	map_header_2 GoldenrodBikeShop, GOLDENROD_BIKE_SHOP, $0, 0
 	map_header_2 GoldenrodHappinessRater, GOLDENROD_HAPPINESS_RATER, $0, 0
@@ -480,6 +481,7 @@
 	map_header_2 VermilionGym, VERMILION_GYM, $0, 0
 	map_header_2 Route6SaffronGate, ROUTE_6_SAFFRON_GATE, $0, 0
 	map_header_2 Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
+	map_header_2 Route11Gate, ROUTE_11_GATE, $0, 0
 	map_header_2 RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_header_2 RedsHouse2F, REDS_HOUSE_2F, $0, 0
 	map_header_2 BluesHouse, BLUES_HOUSE, $0, 0

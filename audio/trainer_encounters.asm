@@ -90,7 +90,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; blackbelt_t
 	db MUSIC_BEAUTY_ENCOUNTER		; battle_girl
 	db MUSIC_BEAUTY_ENCOUNTER		; teacher
-	db MUSIC_HIKER_ENCOUNTER		; guitarist
+	db MUSIC_HIKER_ENCOUNTER		; guitaristm
+	db MUSIC_BEAUTY_ENCOUNTER		; guitaristf
 	db MUSIC_HIKER_ENCOUNTER		; biker
 	db MUSIC_HIKER_ENCOUNTER		; cooltrainerm
 	db MUSIC_BEAUTY_ENCOUNTER		; cooltrainerf

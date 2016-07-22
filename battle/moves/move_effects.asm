@@ -1,6 +1,7 @@
 NormalHit:
 Aeroblast:
 AquaTail:
+Avalanche:
 BulletPunch:
 Crabhammer:
 CrossChop:
@@ -12,7 +13,6 @@ EggBomb:
 Extremespeed:
 FeintAttack:
 FairyWind:
-Hex:
 HiJumpKick:
 HornAttack:
 HydroPump:
@@ -151,6 +151,7 @@ WildCharge:
 
 FlinchHit:
 AirSlash:
+Astonish:
 Bite:
 DarkPulse:
 Extrasensory:
@@ -611,8 +612,9 @@ WillOWisp:
 	usedmovetext
 	doturn
 	checkhit
+	stab
 	checksafeguard
-	burntarget
+	burn
 	endmove
 
 DoParalyze:
@@ -1313,10 +1315,10 @@ Twineedle:
 	supereffectivelooptext
 	checkdestinybond
 	buildopponentrage
+	poisontarget
 	endloop
 	raisesub
 	kingsrock
-	poisontarget
 	endmove
 
 Substitute:
@@ -2094,27 +2096,6 @@ DefenseCurl:
 	statupfailtext
 	endmove
 
-Astonish:
-	checkobedience
-	usedmovetext
-	doturn
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	effectchance
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	astonish
-	endmove
-
 FlareBlitz:
 	checkobedience
 	usedmovetext
@@ -2138,7 +2119,7 @@ FlareBlitz:
 	burntarget
 	endmove
 
-Avalanche:
+Hex:
 	checkobedience
 	usedmovetext
 	doturn
@@ -2146,8 +2127,9 @@ Avalanche:
 	damagestats
 	damagecalc
 	stab
-	damagevariation
 	checkhit
+	hex
+	damagevariation
 	hittarget
 	failuretext
 	checkfaint

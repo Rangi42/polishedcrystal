@@ -151,7 +151,9 @@ Route11_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 0
+	db 2
+	warp_def $8, $23, 1, ROUTE_11_GATE
+	warp_def $9, $23, 2, ROUTE_11_GATE
 
 .XYTriggers:
 	db 0

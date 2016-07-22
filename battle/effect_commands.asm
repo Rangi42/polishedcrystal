@@ -222,6 +222,10 @@ CheckPlayerTurn:
 
 	ld hl, FrozenSolidText
 	call StdBattleTextBox
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_FRZ
+	call FarPlayBattleAnimation
 
 	call CantMove
 	jp EndTurn
@@ -352,6 +356,10 @@ CheckPlayerTurn:
 
 	ld hl, FullyParalyzedText
 	call StdBattleTextBox
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_PAR
+	call FarPlayBattleAnimation
 	call CantMove
 	jp EndTurn
 
@@ -738,8 +746,8 @@ BattleCommand_CheckObedience: ; 343db
 	ld a, MAX_LEVEL + 1
 	jr nz, .getlevel
 
-	; stormbadge
-	bit STORMBADGE, [hl]
+	; mineralbadge
+	bit MINERALBADGE, [hl]
 	ld a, 70
 	jr nz, .getlevel
 
@@ -1655,8 +1663,8 @@ BattleCommand_CheckHit: ; 34d32
 	call .Protect
 	jp nz, .Miss
 
-	call .DrainSub
-	jp z, .Miss
+	call .Substitute
+	jp nz, .Miss
 
 	call .LockOn
 	ret nz
@@ -1669,9 +1677,6 @@ BattleCommand_CheckHit: ; 34d32
 
 	call .ThunderRain
 	ret z
-
-	call .XAccuracy
-	ret nz
 
 	; Perfect-accuracy moves
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -1774,6 +1779,23 @@ BattleCommand_CheckHit: ; 34d32
 	ret
 
 
+.Substitute:
+; Return nz if the opponent is behind a Substitute for certain moves
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp SWAGGER
+	jr z, .blocked
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_TRAP
+	jr z, .blocked
+	ret
+.blocked
+	ld a, 1
+	and a
+	ret
+
+
 .LockOn:
 ; Return nz if we are locked-on and aren't trying to use Earthquake
 ; or Magnitude on a monster that is flying.
@@ -1812,25 +1834,6 @@ BattleCommand_CheckHit: ; 34d32
 	ret
 
 .NotAPoisonType:
-	ld a, 1
-	and a
-	ret
-
-
-.DrainSub:
-; Return z if using an HP drain move on a substitute.
-	call CheckSubstituteOpp
-	jr z, .not_draining_sub
-
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-
-	cp EFFECT_LEECH_HIT
-	ret z
-	cp EFFECT_DREAM_EATER
-	ret z
-
-.not_draining_sub
 	ld a, 1
 	and a
 	ret
@@ -1879,13 +1882,6 @@ BattleCommand_CheckHit: ; 34d32
 
 	ld a, [Weather]
 	cp WEATHER_RAIN
-	ret
-
-
-.XAccuracy:
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVar
-	bit SUBSTATUS_X_ACCURACY, a
 	ret
 
 
@@ -3117,6 +3113,7 @@ SpeciesItemBoost: ; 353d1
 
 
 EnemyAttackDamage: ; 353f6
+
 	call ResetDamage
 
 ; No damage dealt with 0 power.
@@ -3204,182 +3201,182 @@ EnemyAttackDamage: ; 353f6
 BattleCommand_BeatUp: ; 35461
 ; beatup
 
-	call ResetDamage
-	ld a, [hBattleTurn]
-	and a
-	jp nz, .enemy_beats_up
-	ld a, [PlayerSubStatus3]
-	bit SUBSTATUS_IN_LOOP, a
-	jr nz, .next_mon
-	ld c, 20
-	call DelayFrames
-	xor a
-	ld [PlayerRolloutCount], a
-	ld [wd002], a
-	ld [wBeatUpHitAtLeastOnce], a
-	jr .got_mon
-
-.next_mon
-	ld a, [PlayerRolloutCount]
-	ld b, a
-	ld a, [PartyCount]
-	sub b
-	ld [wd002], a
-
-.got_mon
-	ld a, [wd002]
-	ld hl, PartyMonNicknames
-	call GetNick
-	ld a, MON_HP
-	call GetBeatupMonLocation
-	ld a, [hli]
-	or [hl]
-	jp z, .beatup_fail ; fainted
-	ld a, [wd002]
-	ld c, a
-	ld a, [CurBattleMon]
-	cp [hl]
-	ld hl, BattleMonStatus
-	jr z, .active_mon
-	ld a, MON_STATUS
-	call GetBeatupMonLocation
-.active_mon
-	ld a, [hl]
-	and a
-	jp nz, .beatup_fail
-
-	ld a, $1
-	ld [wBeatUpHitAtLeastOnce], a
-	ld hl, BeatUpAttackText
-	call StdBattleTextBox
-	ld a, [EnemyMonSpecies]
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, [BaseDefense]
-	ld c, a
-	push bc
-	ld a, MON_SPECIES
-	call GetBeatupMonLocation
-	ld a, [hl]
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, [BaseAttack]
-	pop bc
-	ld b, a
-	push bc
-	ld a, MON_LEVEL
-	call GetBeatupMonLocation
-	ld a, [hl]
-	ld e, a
-	pop bc
-	ld a, [wPlayerMoveStructPower]
-	ld d, a
-	ret
-
-.enemy_beats_up
-	ld a, [EnemySubStatus3]
-	bit SUBSTATUS_IN_LOOP, a
-	jr nz, .not_first_enemy_beatup
-
-	xor a
-	ld [EnemyRolloutCount], a
-	ld [wd002], a
-	ld [wBeatUpHitAtLeastOnce], a
-	jr .enemy_continue
-
-.not_first_enemy_beatup
-	ld a, [EnemyRolloutCount]
-	ld b, a
-	ld a, [OTPartyCount]
-	sub b
-	ld [wd002], a
-.enemy_continue
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-
-	ld a, [wLinkMode]
-	and a
-	jr nz, .link_or_tower
-
-	ld a, [InBattleTowerBattle]
-	and a
-	jr nz, .link_or_tower
-
-	ld a, [wd002]
-	ld c, a
-	ld b, 0
-	ld hl, OTPartySpecies
-	add hl, bc
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	jr .got_enemy_nick
-
-.link_or_tower
-	ld a, [wd002]
-	ld hl, OTPartyMonNicknames
-	ld bc, NAME_LENGTH
-	call AddNTimes
-	ld de, StringBuffer1
-	call CopyBytes
-.got_enemy_nick
-	ld a, MON_HP
-	call GetBeatupMonLocation
-	ld a, [hli]
-	or [hl]
-	jp z, .beatup_fail
-	ld a, [wd002]
-	ld b, a
-	ld a, [CurOTMon]
-	cp b
-	ld hl, EnemyMonStatus
-	jr z, .active_enemy
-
-	ld a, MON_STATUS
-	call GetBeatupMonLocation
-.active_enemy
-	ld a, [hl]
-	and a
-	jr nz, .beatup_fail
-
-	ld a, $1
-	ld [wBeatUpHitAtLeastOnce], a
-	jr .finish_beatup
-
-.wild
-	ld a, [EnemyMonSpecies]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld hl, BeatUpAttackText
-	call StdBattleTextBox
-	jp EnemyAttackDamage
-
-.finish_beatup
-	ld hl, BeatUpAttackText
-	call StdBattleTextBox
-	ld a, [BattleMonSpecies]
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, [BaseDefense]
-	ld c, a
-	push bc
-	ld a, MON_SPECIES
-	call GetBeatupMonLocation
-	ld a, [hl]
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, [BaseAttack]
-	pop bc
-	ld b, a
-	push bc
-	ld a, MON_LEVEL
-	call GetBeatupMonLocation
-	ld a, [hl]
-	ld e, a
-	pop bc
-	ld a, [wEnemyMoveStructPower]
-	ld d, a
+;	call ResetDamage
+;	ld a, [hBattleTurn]
+;	and a
+;	jp nz, .enemy_beats_up
+;	ld a, [PlayerSubStatus3]
+;	bit SUBSTATUS_IN_LOOP, a
+;	jr nz, .next_mon
+;	ld c, 20
+;	call DelayFrames
+;	xor a
+;	ld [PlayerRolloutCount], a
+;	ld [wd002], a
+;	ld [wBeatUpHitAtLeastOnce], a
+;	jr .got_mon
+;
+;.next_mon
+;	ld a, [PlayerRolloutCount]
+;	ld b, a
+;	ld a, [PartyCount]
+;	sub b
+;	ld [wd002], a
+;
+;.got_mon
+;	ld a, [wd002]
+;	ld hl, PartyMonNicknames
+;	call GetNick
+;	ld a, MON_HP
+;	call GetBeatupMonLocation
+;	ld a, [hli]
+;	or [hl]
+;	jp z, .beatup_fail ; fainted
+;	ld a, [wd002]
+;	ld c, a
+;	ld a, [CurBattleMon]
+;	cp [hl]
+;	ld hl, BattleMonStatus
+;	jr z, .active_mon
+;	ld a, MON_STATUS
+;	call GetBeatupMonLocation
+;.active_mon
+;	ld a, [hl]
+;	and a
+;	jp nz, .beatup_fail
+;
+;	ld a, $1
+;	ld [wBeatUpHitAtLeastOnce], a
+;	ld hl, BeatUpAttackText
+;	call StdBattleTextBox
+;	ld a, [EnemyMonSpecies]
+;	ld [CurSpecies], a
+;	call GetBaseData
+;	ld a, [BaseDefense]
+;	ld c, a
+;	push bc
+;	ld a, MON_SPECIES
+;	call GetBeatupMonLocation
+;	ld a, [hl]
+;	ld [CurSpecies], a
+;	call GetBaseData
+;	ld a, [BaseAttack]
+;	pop bc
+;	ld b, a
+;	push bc
+;	ld a, MON_LEVEL
+;	call GetBeatupMonLocation
+;	ld a, [hl]
+;	ld e, a
+;	pop bc
+;	ld a, [wPlayerMoveStructPower]
+;	ld d, a
+;	ret
+;
+;.enemy_beats_up
+;	ld a, [EnemySubStatus3]
+;	bit SUBSTATUS_IN_LOOP, a
+;	jr nz, .not_first_enemy_beatup
+;
+;	xor a
+;	ld [EnemyRolloutCount], a
+;	ld [wd002], a
+;	ld [wBeatUpHitAtLeastOnce], a
+;	jr .enemy_continue
+;
+;.not_first_enemy_beatup
+;	ld a, [EnemyRolloutCount]
+;	ld b, a
+;	ld a, [OTPartyCount]
+;	sub b
+;	ld [wd002], a
+;.enemy_continue
+;	ld a, [wBattleMode]
+;	dec a
+;	jr z, .wild
+;
+;	ld a, [wLinkMode]
+;	and a
+;	jr nz, .link_or_tower
+;
+;	ld a, [InBattleTowerBattle]
+;	and a
+;	jr nz, .link_or_tower
+;
+;	ld a, [wd002]
+;	ld c, a
+;	ld b, 0
+;	ld hl, OTPartySpecies
+;	add hl, bc
+;	ld a, [hl]
+;	ld [wNamedObjectIndexBuffer], a
+;	call GetPokemonName
+;	jr .got_enemy_nick
+;
+;.link_or_tower
+;	ld a, [wd002]
+;	ld hl, OTPartyMonNicknames
+;	ld bc, NAME_LENGTH
+;	call AddNTimes
+;	ld de, StringBuffer1
+;	call CopyBytes
+;.got_enemy_nick
+;	ld a, MON_HP
+;	call GetBeatupMonLocation
+;	ld a, [hli]
+;	or [hl]
+;	jp z, .beatup_fail
+;	ld a, [wd002]
+;	ld b, a
+;	ld a, [CurOTMon]
+;	cp b
+;	ld hl, EnemyMonStatus
+;	jr z, .active_enemy
+;
+;	ld a, MON_STATUS
+;	call GetBeatupMonLocation
+;.active_enemy
+;	ld a, [hl]
+;	and a
+;	jr nz, .beatup_fail
+;
+;	ld a, $1
+;	ld [wBeatUpHitAtLeastOnce], a
+;	jr .finish_beatup
+;
+;.wild
+;	ld a, [EnemyMonSpecies]
+;	ld [wNamedObjectIndexBuffer], a
+;	call GetPokemonName
+;	ld hl, BeatUpAttackText
+;	call StdBattleTextBox
+;	jp EnemyAttackDamage
+;
+;.finish_beatup
+;	ld hl, BeatUpAttackText
+;	call StdBattleTextBox
+;	ld a, [BattleMonSpecies]
+;	ld [CurSpecies], a
+;	call GetBaseData
+;	ld a, [BaseDefense]
+;	ld c, a
+;	push bc
+;	ld a, MON_SPECIES
+;	call GetBeatupMonLocation
+;	ld a, [hl]
+;	ld [CurSpecies], a
+;	call GetBaseData
+;	ld a, [BaseAttack]
+;	pop bc
+;	ld b, a
+;	push bc
+;	ld a, MON_LEVEL
+;	call GetBeatupMonLocation
+;	ld a, [hl]
+;	ld e, a
+;	pop bc
+;	ld a, [wEnemyMoveStructPower]
+;	ld d, a
 	ret
 
 ; 355b0
@@ -5025,17 +5022,11 @@ BattleCommand_SleepTarget: ; 35e5c
 	jr nz, .fail
 
 	call AnimateCurrentMove
-	ld b, $7
-	ld a, [InBattleTowerBattle]
-	and a
-	jr z, .random_loop
 	ld b, $3
 
 .random_loop
 	call BattleRandom
 	and b
-	jr z, .random_loop
-	cp 7
 	jr z, .random_loop
 	inc a
 	ld [de], a
@@ -6346,6 +6337,99 @@ BattleCommand_Curl: ; 365a7
 ; 365af
 
 
+BattleCommand_Burn:
+; burn
+
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	bit BRN, a
+	jp nz, .burned
+	ld a, [TypeModifier]
+	and $7f
+	jp z, .didnt_affect
+	call CheckIfTargetIsFireType
+	jp z, .didnt_affect
+	call GetOpponentItem
+	ld a, b
+	cp HELD_PREVENT_BURN
+	jr nz, .no_item_protection
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	call AnimateFailedMove
+	ld hl, ProtectedByText
+	jp StdBattleTextBox
+
+.no_item_protection
+	ld a, [hBattleTurn]
+	and a
+	jr z, .dont_sample_failure
+
+	ld a, [wLinkMode]
+	and a
+	jr nz, .dont_sample_failure
+
+	ld a, [InBattleTowerBattle]
+	and a
+	jr nz, .dont_sample_failure
+
+	ld a, [PlayerSubStatus5]
+	bit SUBSTATUS_LOCK_ON, a
+	jr nz, .dont_sample_failure
+
+	call BattleRandom
+	cp 1 + 25 percent
+	jr c, .failed
+
+.dont_sample_failure
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	and a
+	jr nz, .failed
+	ld a, [AttackMissed]
+	and a
+	jr nz, .failed
+	call CheckSubstituteOpp
+	jr nz, .failed
+	ld c, 30
+	call DelayFrames
+	call AnimateCurrentMove
+	ld a, $1
+	ld [hBGMapMode], a
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set BRN, [hl]
+	call UpdateOpponentInParty
+	ld hl, ApplyBrnEffectOnAttack
+	call CallBattleCore
+	call UpdateBattleHuds
+	ld hl, WasBurnedText
+	call StdBattleTextBox
+	ld hl, UseHeldStatusHealingItem
+	jp CallBattleCore
+
+.burned
+	call AnimateFailedMove
+	ld hl, AlreadyBurnedText
+	jp StdBattleTextBox
+
+.failed
+	jp PrintDidntAffect2
+
+.didnt_affect
+	call AnimateFailedMove
+	jp PrintDoesntAffect
+
+
+BattleCommand_Hex:
+; hex
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret z
+	jp DoubleDamage
+
+
 BattleCommand_RaiseSubNoAnim: ; 365af
 	ld hl, GetMonBackpic
 	ld a, [hBattleTurn]
@@ -7072,20 +7156,6 @@ BattleCommand_EndLoop: ; 369b6
 ; 36a82
 
 
-BattleCommand_Astonish:
-	ld a, [AttackMissed]
-	and a
-	ret nz
-
-	call CheckSubstituteOpp
-	ret nz
-
-	call CheckOpponentWentFirst
-	ret nz
-
-	jp FlinchTarget
-
-
 BattleCommand_FlinchTarget: ; 36aa0
 	call CheckSubstituteOpp
 	ret nz
@@ -7310,17 +7380,10 @@ BattleCommand_Charge: ; 36b4d
 	start_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-;	cp RAZOR_WIND
-;	ld hl, .RazorWind
-;	jr z, .done
 
 	cp SOLAR_BEAM
 	ld hl, .SolarBeam
 	jr z, .done
-
-;	cp SKULL_BASH
-;	ld hl, .SkullBash
-;	jr z, .done
 
 	cp SKY_ATTACK
 	ld hl, .SkyAttack
@@ -7336,19 +7399,9 @@ BattleCommand_Charge: ; 36b4d
 .done
 	ret
 
-.RazorWind:
-; 'made a whirlwind!'
-	text_jump UnknownText_0x1c0d12
-	db "@"
-
 .SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
-	db "@"
-
-.SkullBash:
-; 'lowered its head!'
-	text_jump UnknownText_0x1c0d3a
 	db "@"
 
 .SkyAttack:
@@ -7476,9 +7529,17 @@ BattleCommand_Recoil: ; 36cb2
 	ld hl, BattleMonMaxHP
 	ld a, [hBattleTurn]
 	and a
+	ld a, [LastPlayerMove]
 	jr z, .got_hp
 	ld hl, EnemyMonMaxHP
+	ld a, [LastEnemyMove]
 .got_hp
+	cp STRUGGLE
+	jp z, .StruggleRecoil
+	cp DOUBLE_EDGE
+	jr z, .OneThirdRecoil
+	cp FLARE_BLITZ
+	jr z, .OneThirdRecoil
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld d, a
@@ -7491,6 +7552,7 @@ BattleCommand_Recoil: ; 36cb2
 	rr c
 	srl b
 	rr c
+.recoil_floor
 	ld a, b
 	or c
 	jr nz, .min_damage
@@ -7531,8 +7593,35 @@ BattleCommand_Recoil: ; 36cb2
 	ld [wWhichHPBar], a
 	predef AnimateHPBar
 	call RefreshBattleHuds
+.recoil_text
 	ld hl, RecoilText
 	jp StdBattleTextBox
+
+.StruggleRecoil
+	ld hl, GetQuarterMaxHP
+	call CallBattleCore
+	ld hl, SubtractHPFromUser
+	call CallBattleCore
+	call UpdateUserInParty
+	jp .recoil_text
+
+.OneThirdRecoil
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld d, a
+	ld a, [CurDamage]
+	ld [hDividend], a
+	ld a, [CurDamage + 1]
+	ld [hDividend + 1], a
+	ld a, 3
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hQuotient + 2]
+	ld c, a
+	ld a, [hQuotient + 1]
+	ld b, a
+	jr .recoil_floor
 
 ; 36d1d
 
@@ -7892,53 +7981,6 @@ DoubleDamage: ; 36f37
 
 BattleCommand_Mimic: ; 36f46
 ; mimic
-
-;	call ClearLastMove
-;	call BattleCommand_MoveDelay
-;	ld a, [AttackMissed]
-;	and a
-;	jr nz, .fail
-;	ld hl, BattleMonMoves
-;	ld a, [hBattleTurn]
-;	and a
-;	jr z, .player_turn
-;	ld hl, EnemyMonMoves
-;.player_turn
-;	call CheckHiddenOpponent
-;	jr nz, .fail
-;	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-;	call GetBattleVar
-;	and a
-;	jr z, .fail
-;	cp STRUGGLE
-;	jr z, .fail
-;	ld b, a
-;	ld c, NUM_MOVES
-;.check_already_knows_move
-;	ld a, [hli]
-;	cp b
-;	jr z, .fail
-;	dec c
-;	jr nz, .check_already_knows_move
-;	dec hl
-;.find_mimic
-;	ld a, [hld]
-;	cp MIMIC
-;	jr nz, .find_mimic
-;	inc hl
-;	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-;	call GetBattleVar
-;	ld [hl], a
-;	ld [wNamedObjectIndexBuffer], a
-;	ld bc, BattleMonPP - BattleMonMoves
-;	add hl, bc
-;	ld [hl], 5
-;	call GetMoveName
-;	call AnimateCurrentMove
-;	ld hl, LearnedMoveText
-;	jp StdBattleTextBox
-;
-;.fail
 	jp FailMimic
 
 ; 36f9d
@@ -8070,6 +8112,9 @@ BattleCommand_Disable: ; 36fed
 
 BattleCommand_PayDay: ; 3705c
 ; payday
+
+	call CheckSubstituteOpp
+	ret nz
 
 	xor a
 	ld hl, StringBuffer1
@@ -8778,30 +8823,6 @@ INCLUDE "battle/effects/present.asm"
 
 BattleCommand_FrustrationPower: ; 3790e
 ; frustrationpower
-
-	push bc
-	ld hl, BattleMonHappiness
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_happiness
-	ld hl, EnemyMonHappiness
-.got_happiness
-	ld a, $ff
-	sub [hl]
-	ld [hMultiplicand + 2], a
-	xor a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
-	ld a, 10
-	ld [hMultiplier], a
-	call Multiply
-	ld a, 25
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-	ld a, [hQuotient + 2]
-	ld d, a
-	pop bc
 	ret
 
 ; 37939
@@ -9401,53 +9422,7 @@ BattleCommand_BellyDrum: ; 37c1a
 
 BattleCommand_PsychUp: ; 37c55
 ; psychup
-
-	ld hl, EnemyStatLevels
-	ld de, PlayerStatLevels
-	ld a, [hBattleTurn]
-	and a
-	jr z, .pointers_correct
-; It's the enemy's turn, so swap the pointers.
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-.pointers_correct
-	push hl
-	ld b, NUM_LEVEL_STATS
-; If any of the enemy's stats is modified from its base level,
-; the move succeeds.  Otherwise, it fails.
-.loop
-	ld a, [hli]
-	cp BASE_STAT_LEVEL
-	jr nz, .break
-	dec b
-	jr nz, .loop
-	pop hl
-	call AnimateFailedMove
-	jp PrintButItFailed
-
-.break
-	pop hl
-	ld b, NUM_LEVEL_STATS
-.loop2
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .loop2
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .calc_enemy_stats
-	call CalcPlayerStats
-	jr .merge
-
-.calc_enemy_stats
-	call CalcEnemyStats
-.merge
-	call AnimateCurrentMove
-	ld hl, CopiedStatsText
-	jp StdBattleTextBox
+	ret
 
 ; 37c95
 

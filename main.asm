@@ -459,6 +459,20 @@ RepelWoreOffScript:: ; 0x13619
 	text_jump UnknownText_0x1bd308
 	db "@"
 
+UseAnotherRepelScript::
+	opentext
+	writetext .text
+	yesorno
+	iffalse .done
+	callasm DoItemEffect
+.done
+	closetext
+	end
+
+.text:
+	text_jump UseAnotherRepelText
+	db "@"
+
 HiddenItemScript:: ; 0x13625
 	opentext
 	copybytetovar EngineBuffer3
@@ -3835,44 +3849,56 @@ Function4e930: ; 4e930
 	ret
 
 MaleTrainers: ; 4e95d
-	db BURGLAR
 	db YOUNGSTER
-	db SCHOOLBOY
-	db BIRD_KEEPER
-	db POKEMANIAC
-	db GENTLEMAN
 	db BUG_CATCHER
-	db FISHER
-	db SWIMMERM
-	db SAILOR
-	db SUPER_NERD
-	db GUITARIST
-	db HIKER
-	db FIREBREATHER
-	db BLACKBELT_T
-	db PSYCHIC_T
 	db CAMPER
-	db COOLTRAINERM
-	db BOARDER
-	db JUGGLER
+	db FISHER
+	db BIRD_KEEPER
+	db HIKER
+	db GRUNTM
 	db POKEFANM
 	db OFFICER
+	db POKEMANIAC
+	db SUPER_NERD
+	db FIREBREATHER
+	db JUGGLER
+	db SCHOOLBOY
+	db PSYCHIC_T
 	db SAGE
-	db BIKER
+	db ELDER
+	db GENTLEMAN
+	db RICH_BOY
+	db SAILOR
+	db SWIMMERM
+	db BURGLAR
 	db SCIENTIST
+	db BOARDER
+	db BLACKBELT_T
+	db GUITARISTM
+	db BIKER
+	db COOLTRAINERM
+	db EXECUTIVEM
 MaleTrainersEnd:
 
 FemaleTrainers: ; 4e976
-	db MEDIUM
+	db PICNICKER
+	db TWINS
+	db GRUNTF
+	db POKEFANF
 	db LASS
 	db BEAUTY
-	db SKIER
-	db TEACHER
-	db SWIMMERF
-	db PICNICKER
+	db SCHOOLGIRL
+	db HEX_MANIAC
+	db MEDIUM
 	db KIMONO_GIRL
-	db POKEFANF
+	db COWGIRL
+	db SWIMMERF
+	db SKIER
+	db BATTLE_GIRL
+	db TEACHER
+	db GUITARISTF
 	db COOLTRAINERF
+	db EXECUTIVEF
 FemaleTrainersEnd:
 
 INCLUDE "battle/sliding_intro.asm"

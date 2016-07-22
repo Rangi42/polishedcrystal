@@ -370,19 +370,9 @@ UnknownText_0x1c0d06::
 UnknownText_0x1c0d0e::
 	text "<USER>@@"
 
-UnknownText_0x1c0d12::
-	text ""
-	line "made a whirlwind!"
-	prompt
-
 UnknownText_0x1c0d26::
 	text ""
 	line "took in sunlight!"
-	prompt
-
-UnknownText_0x1c0d3a::
-	text ""
-	line "lowered its head!"
 	prompt
 
 UnknownText_0x1c0d4e::

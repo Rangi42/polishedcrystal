@@ -210,9 +210,11 @@ KrissHouse1F_BlockData:
 Route38EcruteakGate_BlockData:
 Route42EcruteakGate_BlockData:
 Route32RuinsofAlphGate_BlockData:
+Route36VioletGate_BlockData:
 IlexForestAzaleaGate_BlockData:
 Route15FuchsiaGate_BlockData:
 Route8SaffronGate_BlockData:
+Route11Gate_BlockData:
 Route16Gate_BlockData:
 Route7SaffronGate_BlockData:
 Route1718Gate_BlockData:

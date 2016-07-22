@@ -139,6 +139,15 @@ UnknownText_0x9c33a:
 	done
 
 UnknownText_0x9c354:
+	text "With that Badge,"
+	line "all #mon up"
+
+	para "to L70, even"
+	line "traded ones, will"
+
+	para "obey you without"
+	line "question."
+
 	text "…Um… Please take"
 	line "this too…"
 	done
