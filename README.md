@@ -76,7 +76,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
    * Pokédex area display uses whiever region you're in
    * Maximum $9,999,999 money and 50,000 coins
    * Maximum 30 items and 16 Balls in your bag
-   * Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
+   * Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS
    * Fishing works 75% of the time, not 50%
 
 * Updated battle mechanics
@@ -281,7 +281,7 @@ These changes have been made since the previous 1.0.0 release. If you build the 
 * Add: New sprites for Twins and another trainer
 * Add: Guitarist♀ trainer class
 * Add: Wild Gengar in Cerulean Cave at night
-* Add: Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
+* Add: Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS
 * Add: Higher levels in Kanto
 * Add: Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
 * Add: Sleep lasts 1-3 turns, not 1-7
