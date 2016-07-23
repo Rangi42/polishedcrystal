@@ -8,7 +8,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is 1.0.0 as of July 17, 2016.
+The most recent version is 1.1.0 as of July 23, 2016.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
@@ -21,10 +21,10 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
-* [Pokémon Polished Crystal 1.0.0](patches/polishedcrystal-1.0.0.ips)  
-  (ROM `md5: 16f736523d5d0033205401b6ef2bac24`)
-* [Pokémon Polished Crystal (Faithful) 1.0.0](patches/polishedcrystal-faithful-1.0.0.ips)  
-  (ROM `md5: 91127ffc4fbfe7594f9764515139fd64`)
+* [Pokémon Polished Crystal 1.1.0](patches/polishedcrystal-1.1.0.ips)  
+  (Patched ROM `md5: 63821253abc4b98083a67556eb9cdf41`)
+* [Pokémon Polished Crystal (Faithful) 1.1.0](patches/polishedcrystal-faithful-1.1.0.ips)  
+  (Patched ROM `md5: 1a3bbabf4b9fd1ad687a374c9f70bf69`)
 
 ## Features
 
@@ -65,13 +65,19 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 * Updated gameplay elements
    * Hold B to use Running Shoes
+   * Unlimited-use TMs (also more expensive)
+   * Continuous Repel system
    * Gain experience from catching Pokémon
+   * Lose money when blacking out based on your Pokémon level and number of badges
    * Play low-pitched cries when a player or foe Pokémon faints
    * Cure poison when it reaches 1 HP outside a battle
    * Eggs hatch at level 1
    * Surf at Bicycle/Running Shoes speed
+   * Pokédex area display uses whiever region you're in
    * Maximum $9,999,999 money and 50,000 coins
    * Maximum 30 items and 16 Balls in your bag
+   * Mineral Badge, not Fog Badge, makes Pokémon up to L70 obey, like in HG/SS
+   * Fishing works 75% of the time, not 50%
 
 * Updated battle mechanics
    * Type-enhancing items raise by 20%, not 10%
@@ -86,10 +92,20 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
    * Roar, Whirlwind, and Struggle are unaffected by accuracy or evasion, like Swift
    * Growth raises Attack and Special Attack, by two stages in sunlight
    * Hidden Power is always 70 power
+   * Double-Edge and Flare Blitz do 33% recoil damage
+   * Twineedle checks for poison after each hit
    * Sandstorm does 1/16 damage per turn
+   * Substitute blocks Transform, Swagger, and trapping moves; does not block draining moves; and prevents gaining money from Pay Day
+   * Protect works from behind a Substitute
+   * Struggle does 25% of max HP recoil damage
+   * Sleep lasts 1-3 turns, not 1-7
+   * 20% chance to defrost each turn, not 10%
    * Disable lasts for 4 turns
    * Waterfall has a 20% flinch chance
+   * X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
    * Leppa Berry (formerly MysteryBerry) restores 10 PP, not 5
+   * Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
+   * Paralyze and Freeze animations play each turn
 
 * Fixed bugs:
    * Dragon Fang boosts Dragon-type moves, not Dragon Scale
@@ -110,6 +126,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
    * No badge boosts to stats or types
    * Improved items used by some trainers
    * Improved some trainers' rosters, movesets, and DVs (particularly Gym Leaders, the Elite Four, and other bosses)
+   * Raised wild Pokémon levels in Kanto to 40–50
 
 * Shiny Pokémon changes:
    * Shiny Pokémon have an odd Attack DV, 2, 3, 7, or 11 Defense, 5 or 13 Speed, and perfect 15 Special, so 1/1024 Pokémon is shiny
@@ -118,6 +135,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
    * The Odd Egg is always shiny, with an equal chance to be either gender
 
 * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀
+* Replaced sprite for Twins with a devamped one from B/W
 * New music ported from RBY and devamped from future generations (see [the credits](CREDITS.md) for who composed it)
 * Unique mini sprites for each Pokémon (thanks to [this patch](http://www.pokecommunity.com/showthread.php?t=338470))
 
@@ -212,6 +230,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 * Pokémon overworld sprites are frequently incorrect. This is partly because the original game would use, for example, a cow-shaped `SPRITE_TAUROS` for both Tauros and Miltank, but there's also a bug where Pokémon icons change when you view the party menu.
 * The Move Reminder doesn't list all the possible moves.
+* Gold Berry restores 25% of HP when used, but 30 HP when held.
 
 ## FAQ
 
@@ -240,8 +259,8 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Moltres is inside Cinnabar Volcano.
 * Raikou and Entei are roaming Johto.
 * Suicune is in the Bell Tower after you get the Clear Bell.
-* Lugia is in the Whirl Islands after you catch all three legendary birds and get the Silver Wing.
-* Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and get the Rainbow Wing.
+* Lugia is in the Whirl Islands after you catch all three legendary birds and get the Silver Wing. You'll receive the Silver Wing by triggering a certain event in Victory Road.
+* Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and get the Rainbow Wing. You'll receive the Rainbow Wing in the Bell Tower.
 * Mewtwo is in Cerulean Cave.
 * Mew and Celebi are a secret!
 
