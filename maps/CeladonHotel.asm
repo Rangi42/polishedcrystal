@@ -31,7 +31,6 @@ CeladonHotelRichBoyGeraldScript:
 	setlasttalked CELADONHOTEL_RICH_BOY
 	loadtrainer RICH_BOY, GERALD
 	startbattle
-	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_RICH_BOY_GERALD
 	end

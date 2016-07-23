@@ -89,7 +89,7 @@ NUM_OBJECT_STRUCTS EQU 13
 
 ; After-Champion Spawn
 SPAWN_LANCE EQU 1
-SPAWN_RED EQU 2
+SPAWN_LEAF EQU 2
 
 ; wPokemonWithdrawDepositParameter
 PC_WITHDRAW EQU 0

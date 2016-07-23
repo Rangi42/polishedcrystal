@@ -1,4 +1,4 @@
-; Move Reminder code originally TPP Anniversary Crystal 251
+; Move Reminder code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/event/move_relearner.asm
 
 

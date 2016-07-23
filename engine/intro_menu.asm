@@ -403,8 +403,8 @@ Continue: ; 5d65
 	jp FinishContinueFunction
 ; 5de2
 
-SpawnAfterRed: ; 5de2
-	ld a, SPAWN_MT_SILVER
+SpawnAfterLeaf: ; 5de2
+	ld a, SPAWN_HOME
 	ld [DefaultSpawnpoint], a
 ; 5de7
 
@@ -491,12 +491,12 @@ FinishContinueFunction: ; 5e5d
 	set 1, [hl]
 	callba OverworldLoop
 	ld a, [wSpawnAfterChampion]
-	cp SPAWN_RED
-	jr z, .AfterRed
+	cp SPAWN_LEAF
+	jr z, .AfterLeaf
 	jp Reset
 
-.AfterRed:
-	call SpawnAfterRed
+.AfterLeaf:
+	call SpawnAfterLeaf
 	jr .loop
 ; 5e85
 

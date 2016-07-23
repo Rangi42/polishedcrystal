@@ -2254,8 +2254,9 @@ wScriptTextAddr:: ds 2 ; d44f
 	ds 1
 wWildEncounterCooldown:: ds 1 ; d452
 wXYComparePointer:: ds 2 ; d453
-	ds 4
+	ds 3
 
+wWildBattlePanic:: ds 1
 wBattleScriptFlags:: ds 2 ; d459
 wPlayerSpriteSetupFlags:: ds 1 ; d45b
 ; bit 7: if set, cancel PlayerAction

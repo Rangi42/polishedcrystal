@@ -38,9 +38,7 @@ Route48JessieJamesScript:
 	setlasttalked ROUTE48_JESSIE
 	loadtrainer JESSIE_JAMES, 1
 	startbattle
-	dontrestartmapmusic
 	reloadmapafterbattle
-	special PlayMapMusic
 	opentext
 	writetext Route48JessieJamesAfterText
 	waitbutton

@@ -11395,9 +11395,9 @@ GameFreakGroup:
 
 	; party
 	db 57, HOUNDOOM
-	db 57, JOLTEON
-	db 57, FLAREON
-	db 57, VAPOREON
+	db 58, JOLTEON
+	db 58, FLAREON
+	db 58, VAPOREON
 	db 57, STEELIX
 	db 57, RAICHU
 
@@ -11410,11 +11410,11 @@ GameFreakGroup:
 	db 0 ; normal
 
 	; party
-	db 57, CLEFABLE
+	db 58, CLEFABLE
 	db 57, AZUMARILL
 	db 57, WIGGLYTUFF
-	db 57, BLISSEY
-	db 57, SNORLAX
+	db 58, BLISSEY
+	db 58, SNORLAX
 	db 57, GOLEM
 
 	db $ff ; end
@@ -11426,11 +11426,11 @@ GameFreakGroup:
 	db 0 ; normal
 
 	; party
-	db 57, EXEGGUTOR
-	db 57, PORYGON_Z
+	db 59, EXEGGUTOR
+	db 58, PORYGON_Z
 	db 57, FLAREON
-	db 57, DUGTRIO
-	db 57, LAPRAS
+	db 56, DUGTRIO
+	db 58, LAPRAS
 	db 57, RHYDON
 
 	db $ff ; end

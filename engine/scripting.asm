@@ -1555,6 +1555,8 @@ Script_reloadmapafterbattle: ; 97459
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	ld [hl], $0
+	ld hl, wWildBattlePanic
+	ld [hl], d
 	ld a, [wBattleResult]
 	and $3f
 	cp $1
@@ -3205,7 +3207,7 @@ Script_halloffame: ; 97bd5
 Script_credits: ; 97bf3
 ; script command 0xa2
 
-	callba RedCredits
+	callba LeafCredits
 ReturnFromCredits:
 	call Script_end_all
 	ld a, $3

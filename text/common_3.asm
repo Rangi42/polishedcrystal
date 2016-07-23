@@ -215,9 +215,43 @@ UnknownText_0x1c0a2c::
 	cont "items."
 	done
 
-UnknownText_0x1c0a4e::
+WhiteoutText::
 	text "<PLAYER> is out of"
 	line "useable #mon!"
+
+	para "<PLAYER> blacked"
+	line "out!"
+	done
+
+WhiteoutToWildText::
+	text "<PLAYER> is out of"
+	line "useable #mon!"
+
+	para "<PLAYER> panicked"
+	line "and dropped"
+	cont "¥@"
+	deciram hMoneyTemp, 3, 6
+	text "…"
+
+	para "<......><......><......>"
+	line "<......><......><......>"
+
+	para "<PLAYER> blacked"
+	line "out!"
+	done
+
+WhiteoutToTrainerText::
+	text "<PLAYER> is out of"
+	line "useable #mon!"
+
+	para "<PLAYER> paid"
+	line "¥@"
+	deciram hMoneyTemp, 3, 6
+	text " to the"
+	cont "winner…"
+
+	para "<......><......><......>"
+	line "<......><......><......>"
 
 	para "<PLAYER> blacked"
 	line "out!"

@@ -5,6 +5,7 @@
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Make the gatehouse roof inside Yellow Forest the same as outside
+* Falkner still says TMs are one use only
 
 
 ## Battle mechanics
@@ -27,7 +28,6 @@
 ## Other mechanics
 
 * Catch rate formula from Gen III
-* Money loss formula from Gen III when whiting out
 * Show stat changes and then absolute values on level up
 * Some Pokémon evolve by knowing a certain move (Tangela, Yanma, and Pilowsine by knowing AncientPower)
 * Brief beeping with low HP
@@ -89,4 +89,8 @@
 * Include Lyra/Kotone as a friendly rival like in HGSS
   * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
 * Add a store to buy room decorations that Mom doesn't
-* Somtimes wild Pokémon know an egg move
+* Sometimes wild Pokémon know an egg move
+* Breedable legendary trios with a certain held item
+* Longer player and rival names
+* More Bag pockets (split Items into Items, Medicine, and Berries)
+* Press Start to auto-sort items
