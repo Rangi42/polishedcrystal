@@ -92,3 +92,5 @@
 * Sometimes wild Pokémon know an egg move
 * Breedable legendary trios with a certain held item
 * Longer player and rival names
+* More Bag pockets (split Items into Items, Medicine, and Berries)
+* Press Start to auto-sort items
