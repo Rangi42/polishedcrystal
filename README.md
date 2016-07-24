@@ -269,47 +269,11 @@ The game's data files do a fairly good job of listing things you'll want to know
 I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
 
 
-## Changes in 1.1.0
+## Changes in 1.1.1
 
-These changes have been made since the previous 1.0.0 release. If you build the project as-is, it will include all of them.
+These changes have been made since the previous 1.1.0 release. If you build the project as-is, it will include all of them.
 
-* Add: Title screen version number ends in "F" for the faithful version
-* Add: Unlimited-use TMs from Gen V (also more expensive)
-* Add: Continuous Repel system from Gen V
-* Add: Money loss formula from Gen V
-* Add: Pokédex area display uses whiever region you're in
-* Add: New sprites for Twins and another trainer
-* Add: Guitarist♀ trainer class
-* Add: Wild Gengar in Cerulean Cave at night
-* Add: Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS
-* Add: Higher levels in Kanto
-* Add: Sitrus Berry (formerly Gold Berry) restores 25% of max HP, not 30 HP
-* Add: Sleep lasts 1-3 turns, not 1-7
-* Add: Hex doubles damage if foe has a status condition
-* Add: Fishing works 75% of the time, not 50%
-* Add: Paralyze and Freeze animations play each turn
-* Add: X Accuracy boosts accuracy, it does not ignore accuracy checks entirely
-* Add: Struggle does 25% of max HP recoil damage
-* Add: Double-Edge and Flare Blitz do 33% recoil damage
-* Add: Twineedle checks for poison after each hit
-* Add: Substitute blocks Transform, Swagger, and trapping moves
-* Add: Substitute does not block draining moves
-* Add: Protect works from behind a Substitute
-* Add: Substitute prevents gaining money from Pay Day
-* Add: 20% chance to defrost, not 10%
-* Fix: Some sprites glitch when walking
-* Fix: Firebreather Bill was using Kimono Girl Sayo's name and Pokémon
-* Fix: Evolution by held item no longer happens without the right item
-* Fix: Some items' names were displayed wrong when held
-* Fix: Can't get stuck in Cerulean Cave without Surf or Fly
-* Fix: Pursuit causing a switching-out Pokémon to faint crashes the game
-* Fix: Astonish has a 30% chance to flinch
-* Fix: Will-O-Wisp hits through Dig
-* Fix: Celadon Game Corner prizes and prices match the displayed ones
-* Fix: Pokémon levels for Boarder Stefan, Hiker Kenny, and Bug Catcher Ellis
-* Fix: Old Amber in Pewter City and Nugget in Trainer Hall with a full Bag
-* Fix: NPC text contradicts new Poison mechanic
-* Fix: Silver Cave has a black background in Red's room, not blue
-* Fix: Warp home after the final battle, not outside Mt. Silver
-* Fix: Elemental punch move tutor charges 200 coins, not 4000
-* Fix: Music resumes after certain trainer battles
+* Add: Wild Sneasel may hold a Razor Claw.
+* Add: Wild Gligar may hold a Razor Fang.
+* Fix: Falkner says TMs are one use only.
+

@@ -172,9 +172,9 @@ UnknownText_0x68648:
 	para "instantly learn a"
 	line "new move."
 
-	para "Think before you"
-	line "act--a TM can be"
-	cont "used only once."
+	para "A TM can be used"
+	line "as many times as"
+	cont "you want."
 
 	para "TM31 contains"
 	line "Mud-Slap."
