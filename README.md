@@ -275,5 +275,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
+* Add: Encounter rival in Azalea Town after beating Bugsy.
 * Fix: Falkner says TMs are one use only.
+* Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 
