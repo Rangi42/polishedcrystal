@@ -4,13 +4,17 @@ if DEF(FAITHFUL)
 	db  73,  95,  62,  85,  85,  65
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  73, 100,  62,  85,  85,  65
+	db  73, 100,  62,  95,  85,  65
 	;   hp  atk  def  spd  sat  sdf
 endc
 
 	db NORMAL, NORMAL
 	db 45 ; catch rate
+if DEF(FAITHFUL)
 	db 165 ; base exp
+else
+	db 170 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
