@@ -279,15 +279,22 @@ UnknownText_0x75996:
 	done
 
 RichBoyWinstonSeenText:
-	text "TODO"
+	text "There's no way you"
+	line "could afford a"
+	cont "ticket."
+
+	para "It looks like we've"
+	line "got a stowaway!"
 	done
 
 RichBoyWinstonBeatenText:
-	text "TODO"
+	text "Wow! Who'd you buy"
+	line "your #mon from?"
 	done
 
 RichBoyWinstonAfterText:
-	text "TODO"
+	text "This boat is so"
+	line "drab."
 	done
 
 FastShipCabins_NNW_NNE_NE_MapEventHeader:

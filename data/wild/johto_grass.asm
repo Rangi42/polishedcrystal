@@ -1408,16 +1408,16 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 13, LEDYBA
-	db 14, GROWLITHE
-	db 15, PIDGEY
+	db 14, PIDGEY
+	db 14, ELEKID
 	db 16, GROWLITHE
 	db 15, PIDGEOTTO
 	db 15, LEDIAN
 	db 15, LEDIAN
 	; day
-	db 13, PIDGEY
+	db 14, PIDGEY
 	db 14, GROWLITHE
-	db 15, PIDGEY
+	db 14, ELEKID
 	db 16, GROWLITHE
 	db 15, PIDGEOTTO
 	db 15, PIDGEY

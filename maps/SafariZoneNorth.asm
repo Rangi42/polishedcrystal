@@ -94,7 +94,11 @@ BattleGirlPadmaBeatenText:
 	done
 
 BattleGirlPadmaAfterText:
-	text "TODO"
+	text "If you throw your"
+	line "emotions into"
+
+	para "training, you'll"
+	line "become strong!"
 	done
 
 SafariZoneNorthCooltrainerFText:

@@ -405,14 +405,12 @@ SchoolboyJohnnyAfterText:
 	done
 
 UnknownText_0x5c3bc:
-	text "I take walks in"
-	line "the park, but I"
+	text "Those kids should"
+	line "battle inside the"
+	cont "grass."
 
-	para "never go into the"
-	line "grass."
-
-	para "Trainers always"
-	line "want to battle…"
+	para "They're disturbing"
+	line "my quiet walk…"
 	done
 
 NationalParkPersianText:

@@ -351,15 +351,23 @@ UnknownText_0x1a0a71:
 	done
 
 BattleGirlRondaSeenText:
-	text "TODO"
+	text "Stop! I challenge"
+	line "you to a duel!"
 	done
 
 BattleGirlRondaBeatenText:
-	text "TODO"
+	text "Victory is yours!"
 	done
 
 BattleGirlRondaAfterText:
-	text "TODO"
+	text "You see some of"
+	line "the world's str-"
+
+	para "ongest trainers"
+	line "come through here."
+
+	para "And I get to fight"
+	line "them all!"
 	done
 
 CooltrainermBlakeSeenText:

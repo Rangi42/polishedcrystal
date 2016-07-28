@@ -47,11 +47,13 @@ BattleGirlSubaruSeenText:
 	done
 
 BattleGirlSubaruBeatenText:
-	text "TODO"
+	text "Ooof!"
 	done
 
 BattleGirlSubaruAfterText:
-	text "TODO"
+	text "All this climbing"
+	line "and I'm still not"
+	cont "the toughest…"
 	done
 
 BattleGirlDianeSeenText:
@@ -59,11 +61,12 @@ BattleGirlDianeSeenText:
 	done
 
 BattleGirlDianeBeatenText:
-	text "TODO"
+	text "This round goes"
+	line "to you."
 	done
 
 BattleGirlDianeAfterText:
-	text "TODO"
+	text "I bow to you."
 	done
 
 MountMortar1FOutside_MapEventHeader:

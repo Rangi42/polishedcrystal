@@ -1,7 +1,12 @@
 	db ELEKID ; 239
 
+if DEF(FAITHFUL)
 	db  45,  63,  37,  95,  65,  55
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  50,  63,  37, 100,  65,  55
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ELECTRIC, ELECTRIC
 	db 45 ; catch rate

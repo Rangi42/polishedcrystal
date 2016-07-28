@@ -8272,7 +8272,7 @@ KimonoGirlGroup:
 	db 0 ; normal
 
 	; party
-	db 17, FLAREON
+	db 20, FLAREON
 
 	db $ff ; end
 
@@ -8283,7 +8283,7 @@ KimonoGirlGroup:
 	db 0 ; normal
 
 	; party
-	db 17, ESPEON
+	db 20, ESPEON
 
 	db $ff ; end
 
@@ -8294,7 +8294,7 @@ KimonoGirlGroup:
 	db 0 ; normal
 
 	; party
-	db 17, UMBREON
+	db 20, UMBREON
 
 	db $ff ; end
 
@@ -8305,7 +8305,7 @@ KimonoGirlGroup:
 	db 0 ; normal
 
 	; party
-	db 17, VAPOREON
+	db 20, VAPOREON
 
 	db $ff ; end
 
@@ -8316,7 +8316,7 @@ KimonoGirlGroup:
 	db 0 ; normal
 
 	; party
-	db 17, JOLTEON
+	db 20, JOLTEON
 
 	db $ff ; end
 

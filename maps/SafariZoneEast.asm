@@ -52,7 +52,11 @@ CowgirlAprilBeatenText:
 	done
 
 CowgirlAprilAfterText:
-	text "TODO"
+	text "Sometimes you'll"
+	line "see 10 of the same"
+
+	para "#mon, all in a"
+	line "row!"
 	done
 
 SafariZoneEastAreaSignText:
