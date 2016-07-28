@@ -5,7 +5,8 @@
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Make the gatehouse roof inside Yellow Forest the same as outside
-* Falkner still says TMs are one use only
+* Make the gatehouse above the Ruins of Alph the same from Route 36
+* Rocket outside Radio Tower isn't visible from Goldenrod Harbor (event is EVENT\_GOLDENROD\_CITY\_ROCKET\_SCOUT)
 
 
 ## Battle mechanics

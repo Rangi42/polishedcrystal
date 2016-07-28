@@ -103,25 +103,25 @@ BugsyGroup:
 
 	; party
 
-	db 15, BUTTERFREE, NO_ITEM
+	db 14, BUTTERFREE, NO_ITEM
 		db TACKLE
 		db POISONPOWDER
 		db SLEEP_POWDER
 		db CONFUSION
 
-	db 15, BEEDRILL, NO_ITEM
+	db 14, BEEDRILL, NO_ITEM
 		db POISON_STING
 		db STRING_SHOT
 		db HARDEN
 		db FURY_ATTACK
 
-	db 14, YANMA, NO_ITEM
+	db 12, YANMA, NO_ITEM
+		db TACKLE
 		db FORESIGHT
 		db QUICK_ATTACK
 		db DOUBLE_TEAM
-		db SONIC_BOOM
 
-	db 17, SCYTHER, BERRY
+	db 16, SCYTHER, BERRY
 		db QUICK_ATTACK
 		db LEER
 		db PURSUIT
@@ -207,7 +207,7 @@ WhitneyGroup:
 		db DEFENSE_CURL
 		db ROLLOUT
 
-	db 18, JIGGLYPUFF, NO_ITEM
+	db 17, JIGGLYPUFF, NO_ITEM
 		db SING
 		db DIZZY_PUNCH
 		db DEFENSE_CURL
@@ -7700,9 +7700,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 7, VULPIX
-	db 6, MAREEP
-	db 8, TEDDIURSA
+	db 6, VULPIX
+	db 5, MAREEP
+	db 7, TEDDIURSA
 
 	db $ff ; end
 
@@ -7764,9 +7764,9 @@ SchoolgirlGroup:
 	db 0 ; normal
 
 	; party
-	db 11, BULBASAUR
-	db 10, SANDSHREW
-	db 10, POLIWAG
+	db 10, BULBASAUR
+	db 9, SANDSHREW
+	db 9, POLIWAG
 
 	db $ff ; end
 

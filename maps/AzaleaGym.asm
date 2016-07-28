@@ -34,6 +34,7 @@ BugsyScript:
 	setflag ENGINE_HIVEBADGE
 	checkcode VAR_BADGES
 	scall AzaleaGymTriggerRockets
+	domaptrigger AZALEA_TOWN, $1
 .FightDone:
 	checkevent EVENT_GOT_TM49_FURY_CUTTER
 	iftrue .GotFuryCutter
