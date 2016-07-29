@@ -275,8 +275,13 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
-* Add: Encounter rival in Azalea Town after beating Bugsy.
-* Add: Buff Qwilfish, Stantler, and Corsola.
+* Edit: Encounter rival in Azalea Town after beating Bugsy.
+* Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
+* Edit: Better in-game trade DVs.
+* Edit: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
+* Edit: Cheaper TMs in Goldenrod Dept. Store.
 * Fix: Falkner says TMs are one use only.
 * Fix: Slightly debuff Bugsy, Whitney, and two trainers.
+* Fix: Buff Kimono Girls.
+* Fix: Crunch lowers Defense, not Special Defense.
 

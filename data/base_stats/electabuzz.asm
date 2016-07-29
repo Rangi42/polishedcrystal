@@ -1,7 +1,12 @@
 	db ELECTABUZZ ; 125
 
+if DEF(FAITHFUL)
 	db  65,  83,  57, 105,  95,  85
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  65,  88,  57, 105,  95,  85
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ELECTRIC, ELECTRIC
 	db 45 ; catch rate

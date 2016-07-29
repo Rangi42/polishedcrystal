@@ -439,13 +439,20 @@ npctrade: MACRO
 ENDM
 
 
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $37, $66, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $96, $66, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $98, $88, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 3, DRAGONAIR,  CHANSEY,    "Doris@@@@@@", $77, $66, SMOKE_BALL,   00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $96, $86, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
-	npctrade 3, CHANSEY,    AERODACTYL, "Aeroy@@@@@@", $96, $66, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
-	npctrade 0, DUGTRIO,    MAGNETON,   "Maggie@@@@@", $96, $66, METAL_COAT,   50082, "Forest@@@@@", TRADE_EITHER_GENDER
+	; Goldenrod City
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $A8, $88, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
+	; Violet City
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $88, $88, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
+	; Olivine City
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $C8, $88, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
+	; Blackthorn City
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $38, $8C, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
+	; Pewter City
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $CA, $8A, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
+	; Route 14
+	npctrade 3, CHANSEY,    AERODACTYL, "Aeroy@@@@@@", $AA, $8C, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	; Power Plant
+	npctrade 0, DUGTRIO,    MAGNETON,   "Maggie@@@@@", $8A, $CA, METAL_COAT,   50082, "Forest@@@@@", TRADE_EITHER_GENDER
 ; fcf38
 
 

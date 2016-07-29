@@ -331,15 +331,17 @@ Route45HiddenPpUp:
 	dwb EVENT_ROUTE_45_HIDDEN_PP_UP, PP_UP
 
 BattleGirlNozomiSeenText:
-	text "TODO"
+	text "This is no place"
+	line "for weak #mon!"
 	done
 
 BattleGirlNozomiBeatenText:
-	text "TODO"
+	text "What a fight!"
 	done
 
 BattleGirlNozomiAfterText:
-	text "TODO"
+	text "Thanks for the"
+	line "workout, <PLAYER>!"
 	done
 
 HikerErikSeenText:

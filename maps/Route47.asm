@@ -197,15 +197,18 @@ CooltrainerfKaeAfterText:
 	done
 
 CowgirlDanielaSeenText:
-	text "TODO"
+	text "Hiya, cutie!"
 	done
 
 CowgirlDanielaBeatenText:
-	text "TODO"
+	text "Well aren't you a"
+	line "feisty one?"
 	done
 
 CowgirlDanielaAfterText:
-	text "TODO"
+	text "Have you ever"
+	line "tried to ride a"
+	cont "Tauros?"
 	done
 
 GruntF6SeenText:
