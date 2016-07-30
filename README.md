@@ -239,7 +239,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 The game's data files do a fairly good job of listing things you'll want to know.
 
 * [Base stats and TM learnsets](data/base_stats/)
-* [Learnsets by level-up](data/evos_attacks.asm)
+* [Level-up learnsets and evolution methods](data/evos_attacks.asm)
 * [Egg moves](data/egg_moves.asm)
 * [Move attributes](battle/moves/moves.asm)
 * [TM+HM+tutor list](engine/tmhm.asm) (scroll to the bottom)
