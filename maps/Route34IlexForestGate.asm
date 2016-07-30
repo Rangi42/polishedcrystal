@@ -1,6 +1,6 @@
 const_value set 2
 	const ROUTE34ILEXFORESTGATE_TEACHER1
-	const ROUTE34ILEXFORESTGATE_BUTTERFREE
+	const ROUTE34ILEXFORESTGATE_HERACROSS
 	const ROUTE34ILEXFORESTGATE_LASS
 	const ROUTE34ILEXFORESTGATE_TEACHER2
 
@@ -50,13 +50,13 @@ TeacherScript_0x62d63:
 	opentext
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iftrue UnknownScript_0x62d84
-	checkevent EVENT_GOT_TM04_CALM_MIND
+	checkevent EVENT_GOT_TM54_FALSE_SWIPE
 	iftrue UnknownScript_0x62d7e
 	writetext UnknownText_0x62d9d
 	buttonsound
-	verbosegiveitem TM_CALM_MIND
+	verbosegiveitem TM_FALSE_SWIPE
 	iffalse UnknownScript_0x62d82
-	setevent EVENT_GOT_TM04_CALM_MIND
+	setevent EVENT_GOT_TM54_FALSE_SWIPE
 UnknownScript_0x62d7e:
 	writetext UnknownText_0x62df6
 	waitbutton
@@ -70,10 +70,10 @@ UnknownScript_0x62d84:
 	closetext
 	end
 
-IlexGateButterfree:
+IlexGateHeracross:
 	opentext
 	writetext UnknownText_0x62e83
-	cry BUTTERFREE
+	cry HERACROSS
 	waitbutton
 	closetext
 	end
@@ -104,7 +104,7 @@ UnknownText_0x62d9d:
 	done
 
 UnknownText_0x62df6:
-	text "It's Calm Mind."
+	text "It's False Swipe."
 
 	para "Teach it to a"
 	line "special #mon."
@@ -119,7 +119,7 @@ UnknownText_0x62e41:
 	done
 
 UnknownText_0x62e83:
-	text "Butterfree: Freeh!"
+	text "Heracross: Cross!"
 	done
 
 UnknownText_0x62e97:
@@ -157,6 +157,6 @@ Route34IlexForestGate_MapEventHeader:
 .PersonEvents:
 	db 4
 	person_event SPRITE_TEACHER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
-	person_event SPRITE_BUTTERFREE, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IlexGateButterfree, -1
+	person_event SPRITE_BUTTERFREE, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IlexGateHeracross, -1
 	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x62d94, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY

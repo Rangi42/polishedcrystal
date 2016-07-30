@@ -1761,7 +1761,7 @@ SabrinaGroup:
 		db PSYCHIC_M
 		db CRUNCH
 		db AGILITY
-		db BATON_PASS
+		db CALM_MIND
 
 	db 52, MR__MIME, NO_ITEM
 		db BARRIER
@@ -1810,8 +1810,8 @@ SabrinaGroup:
 		db ENCORE
 
 	db 66, GIRAFARIG, BRIGHTPOWDER
-		db CALM_MIND
-		db BATON_PASS
+		db NASTY_PLOT
+		db SHADOW_BALL
 		db HYPER_VOICE
 		db PSYCHIC_M
 

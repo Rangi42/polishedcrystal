@@ -280,8 +280,11 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Edit: Better in-game trade DVs.
 * Edit: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
 * Edit: Cheaper TMs in Goldenrod Dept. Store.
+* Edit: Lower Pokédex requirements for items from Prof. Oak's aides.
+* Edit: Get False Swipe TM as a gift, not Calm Mind.
 * Fix: Falkner says TMs are one use only.
 * Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 * Fix: Buff Kimono Girls.
 * Fix: Crunch lowers Defense, not Special Defense.
+* Fix: Astonish is physical, not special.
 
