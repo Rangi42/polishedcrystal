@@ -1605,6 +1605,10 @@ PlayBattleMusic: ; 2ee6c
 	cp RED
 	jr z, .done
 
+	ld de, MUSIC_CHAMPION_BATTLE_B2W2
+	cp LEAF
+	jr z, .done
+
 	ld de, MUSIC_ROCKET_BATTLE
 	cp GRUNTM
 	jr z, .done

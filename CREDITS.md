@@ -10,7 +10,7 @@
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
 * Pum for the Route 47 music
 * Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
-* Mmmmmm for the Cinnabar Volcano and Faraway Island music
+* Mmmmmm for the Cinnabar Volcano, Faraway Island, and final battle music
 * ShantyTown for the Rock Tunnel music
 * Serious Senator for some trainer dialogs
 * comet for fixing the bug with loading Pokémon overworld sprites

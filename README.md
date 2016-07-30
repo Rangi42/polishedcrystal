@@ -275,6 +275,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 1.1.0 release. If you build the project as-is, it will include all of them.
 
+* Add: Music by Mmmmmm for the final battle.
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
 * Add: Wild Oddish are rare in Ilex Forest during the day.

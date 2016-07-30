@@ -109,6 +109,7 @@ Music_HoOhBattleHGSS
 Music_LugiaBattleHGSS
 Music_Route210DPPt
 Music_ReversalMountainWhite2
+Music_ChampionBattleB2W2
 Music_PowerPlantXY
 Music_PokemonTowerRBY
 Music_CinnabarMansionRBY
