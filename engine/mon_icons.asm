@@ -1,5 +1,6 @@
 LoadOverworldMonIcon: ; 8e82b
 	ld a, e
+	ld [CurIcon], a
 	call ReadMonMenuIcon
 	ld l, a
 	ld h, 0

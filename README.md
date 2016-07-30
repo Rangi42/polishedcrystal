@@ -228,7 +228,6 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 ## Bugs
 
-* Pokémon overworld sprites are frequently incorrect. This is partly because the original game would use, for example, a cow-shaped `SPRITE_TAUROS` for both Tauros and Miltank, but there's also a bug where Pokémon icons change when you view the party menu.
 * The Move Reminder doesn't list all the possible moves.
 * Gold Berry restores 25% of HP when used, but 30 HP when held.
 
@@ -283,6 +282,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Edit: Cheaper TMs in Goldenrod Dept. Store.
 * Edit: Lower Pokédex requirements for items from Prof. Oak's aides.
 * Edit: Get False Swipe TM as a gift, not Calm Mind.
+* Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
 * Fix: Falkner says TMs are one use only.
 * Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 * Fix: Buff Kimono Girls.

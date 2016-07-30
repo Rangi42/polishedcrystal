@@ -13,6 +13,7 @@
 * Mmmmmm for the Cinnabar Volcano and Faraway Island music
 * ShantyTown for the Rock Tunnel music
 * Serious Senator for some trainer dialogs
+* comet for fixing the bug with loading Pokémon overworld sprites
 * jpmac26 for editing the Pokémon Center signs
 * Twilir for Lyra's sprite
 * Danny-E for Lorelei's sprite
