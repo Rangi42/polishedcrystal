@@ -660,10 +660,10 @@ GetWonderTradeOTName:
 	db "Dykstra@" ; $dd
 	db "Eaton@@@" ; $de
 	db "Wong@@@@" ; $df
-	db "Nemo@@@@" ; $e0
-	db "Nemo@@@@" ; $e1
-	db "Nemo@@@@" ; $e2
-	db "Nemo@@@@" ; $e3
+	db "Candela@" ; $e0
+	db "Blanche@" ; $e1
+	db "Spark@@@" ; $e2
+	db "Willow@@" ; $e3
 	db "Nemo@@@@" ; $e4
 	db "Nemo@@@@" ; $e5
 	db "Nemo@@@@" ; $e6
@@ -759,15 +759,15 @@ GetWonderTradeHeldItem:
 	ret
 
 .HeldItemsTable:
-	db NO_ITEM
-	db BERRY
-	db GOLD_BERRY
-	db MYSTERYBERRY
-	db QUICK_CLAW
-	db SCOPE_LENS
-	db KINGS_ROCK
-	db LEFTOVERS
-	db LUCKY_EGG
+	db NO_ITEM      ; 1/2
+	db BERRY        ; 1/4
+	db GOLD_BERRY   ; 1/8
+	db MYSTERYBERRY ; 1/16
+	db QUICK_CLAW   ; 1/32
+	db SCOPE_LENS   ; 1/64
+	db KINGS_ROCK   ; 1/128
+	db LEFTOVERS    ; 1/256
+	db LUCKY_EGG    ; 1/256
 
 CheckValidLevel:
 ; Don't receive Pokémon outside a valid level range.

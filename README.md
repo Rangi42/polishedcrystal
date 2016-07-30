@@ -239,7 +239,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 The game's data files do a fairly good job of listing things you'll want to know.
 
 * [Base stats and TM learnsets](data/base_stats/)
-* [Learnsets by level-up](data/evos_attacks.asm)
+* [Level-up learnsets and evolution methods](data/evos_attacks.asm)
 * [Egg moves](data/egg_moves.asm)
 * [Move attributes](battle/moves/moves.asm)
 * [TM+HM+tutor list](engine/tmhm.asm) (scroll to the bottom)
@@ -275,13 +275,17 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
+* Add: Pokémon Go character names as possible Wonder Trade OTs.
 * Edit: Encounter rival in Azalea Town after beating Bugsy.
 * Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
 * Edit: Better in-game trade DVs.
 * Edit: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
 * Edit: Cheaper TMs in Goldenrod Dept. Store.
+* Edit: Lower Pokédex requirements for items from Prof. Oak's aides.
+* Edit: Get False Swipe TM as a gift, not Calm Mind.
 * Fix: Falkner says TMs are one use only.
 * Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 * Fix: Buff Kimono Girls.
 * Fix: Crunch lowers Defense, not Special Defense.
+* Fix: Astonish is physical, not special.
 
