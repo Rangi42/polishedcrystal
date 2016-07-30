@@ -306,7 +306,7 @@
 	db 15, ZUBAT
 	db 12, SLUGMA
 	db 16, WEEZING
-	db 16, MAGMAR
+	db 16, MAGBY
 	; day
 	db 14, RATTATA
 	db 14, KOFFING
@@ -314,7 +314,7 @@
 	db 15, ZUBAT
 	db 12, SLUGMA
 	db 16, WEEZING
-	db 16, MAGMAR
+	db 16, MAGBY
 	; nite
 	db 14, RATTATA
 	db 14, KOFFING
@@ -322,7 +322,7 @@
 	db 15, ZUBAT
 	db 12, SLUGMA
 	db 16, WEEZING
-	db 16, MAGMAR
+	db 16, MAGBY
 
 	map NATIONAL_PARK
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -555,9 +555,9 @@
 	db 5, WEEDLE
 	db 7, METAPOD
 	db 7, KAKUNA
+	db 6, PARAS
+	db 5, ODDISH
 	db 7, PIDGEY
-	db 6, PARAS
-	db 6, PARAS
 	; nite
 	db 5, ODDISH
 	db 5, VENONAT

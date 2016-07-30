@@ -169,7 +169,6 @@ WartortleEvosAttacks:
 BlastoiseEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ZAP_CANNON ; event move
-	db 1, FLASH_CANNON
 	db 1, OUTRAGE ; HGSS tutor move
 	db 1, TACKLE
 	db 4, TAIL_WHIP
@@ -181,6 +180,7 @@ BlastoiseEvosAttacks:
 	db 24, PROTECT
 	db 28, BUBBLE_BEAM ; Water Pulse → similar move
 	db 32, AQUA_TAIL
+	db 36, FLASH_CANNON
 	db 39, SUBMISSION ; Skull Bash → RBY TM move
 	db 46, MIRROR_COAT ; Iron Defense → egg move
 	db 53, RAIN_DANCE

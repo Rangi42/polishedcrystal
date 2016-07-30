@@ -2141,10 +2141,11 @@ Rival1Group:
 
 	; RIVAL1 (1)
 	db "?@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 5, CHIKORITA
+	db 5, SENTRET, NO_ITEM
+	db 6, CHIKORITA, BERRY
 
 	db $ff ; end
 
@@ -2152,10 +2153,11 @@ Rival1Group:
 
 	; RIVAL1 (2)
 	db "?@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 5, CYNDAQUIL
+	db 5, SENTRET, NO_ITEM
+	db 6, CYNDAQUIL, BERRY
 
 	db $ff ; end
 
@@ -2163,10 +2165,11 @@ Rival1Group:
 
 	; RIVAL1 (3)
 	db "?@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 5, TOTODILE
+	db 5, SENTRET, NO_ITEM
+	db 6, TOTODILE, BERRY
 
 	db $ff ; end
 
@@ -2174,12 +2177,13 @@ Rival1Group:
 
 	; RIVAL1 (4)
 	db "?@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 14, GASTLY
-	db 16, ZUBAT
-	db 18, BAYLEEF
+	db 14, GASTLY, NO_ITEM
+	db 16, ZUBAT, NO_ITEM
+	db 15, GEODUDE, NO_ITEM
+	db 18, BAYLEEF, BERRY
 
 	db $ff ; end
 
@@ -2187,12 +2191,13 @@ Rival1Group:
 
 	; RIVAL1 (5)
 	db "?@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 14, GASTLY
-	db 16, ZUBAT
-	db 18, QUILAVA
+	db 14, GASTLY, NO_ITEM
+	db 16, ZUBAT, NO_ITEM
+	db 15, GEODUDE, NO_ITEM
+	db 18, QUILAVA, BERRY
 
 	db $ff ; end
 
@@ -2200,12 +2205,13 @@ Rival1Group:
 
 	; RIVAL1 (6)
 	db "?@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 14, GASTLY
-	db 16, ZUBAT
-	db 18, CROCONAW
+	db 14, GASTLY, NO_ITEM
+	db 16, ZUBAT, NO_ITEM
+	db 15, GEODUDE, NO_ITEM
+	db 18, CROCONAW, BERRY
 
 	db $ff ; end
 
@@ -2213,29 +2219,35 @@ Rival1Group:
 
 	; RIVAL1 (7)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 20, HAUNTER
+	db 20, HAUNTER, NO_ITEM
 		db LICK
 		db CONFUSE_RAY
 		db MEAN_LOOK
 		db CURSE
 
-	db 18, MAGNEMITE
+	db 18, MAGNEMITE, NO_ITEM
 		db TACKLE
 		db THUNDERSHOCK
 		db SUPERSONIC
 		db SONIC_BOOM
 
-	db 20, ZUBAT
+	db 19, DROWZEE, NO_ITEM
+		db HYPNOSIS
+		db CONFUSION
+		db HEADBUTT
+		db LOW_KICK
+
+	db 20, ZUBAT, NO_ITEM
 		db LEECH_LIFE
 		db SUPERSONIC
 		db BITE
 		db CONFUSE_RAY
 
-	db 22, BAYLEEF
+	db 22, BAYLEEF, BERRY
 		db GROWL
 		db REFLECT
 		db RAZOR_LEAF
@@ -2247,29 +2259,35 @@ Rival1Group:
 
 	; RIVAL1 (8)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 20, HAUNTER
+	db 20, HAUNTER, NO_ITEM
 		db LICK
 		db CONFUSE_RAY
 		db MEAN_LOOK
 		db CURSE
 
-	db 18, MAGNEMITE
+	db 18, MAGNEMITE, NO_ITEM
 		db TACKLE
 		db THUNDERSHOCK
 		db SUPERSONIC
 		db SONIC_BOOM
 
-	db 20, ZUBAT
+	db 19, DROWZEE, NO_ITEM
+		db HYPNOSIS
+		db CONFUSION
+		db HEADBUTT
+		db LOW_KICK
+
+	db 20, ZUBAT, NO_ITEM
 		db LEECH_LIFE
 		db SUPERSONIC
 		db BITE
 		db CONFUSE_RAY
 
-	db 22, QUILAVA
+	db 22, QUILAVA, BERRY
 		db LEER
 		db SMOKESCREEN
 		db EMBER
@@ -2281,29 +2299,35 @@ Rival1Group:
 
 	; RIVAL1 (9)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 20, HAUNTER
+	db 20, HAUNTER, NO_ITEM
 		db LICK
 		db CONFUSE_RAY
 		db MEAN_LOOK
 		db CURSE
 
-	db 18, MAGNEMITE
+	db 18, MAGNEMITE, NO_ITEM
 		db TACKLE
 		db THUNDERSHOCK
 		db SUPERSONIC
 		db SONIC_BOOM
 
-	db 20, ZUBAT
+	db 19, DROWZEE, NO_ITEM
+		db HYPNOSIS
+		db CONFUSION
+		db HEADBUTT
+		db LOW_KICK
+
+	db 20, ZUBAT, NO_ITEM
 		db LEECH_LIFE
 		db SUPERSONIC
 		db BITE
 		db CONFUSE_RAY
 
-	db 22, CROCONAW
+	db 22, CROCONAW, BERRY
 		db LEER
 		db RAGE
 		db WATER_GUN
@@ -2315,35 +2339,41 @@ Rival1Group:
 
 	; RIVAL1 (10)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 32, GOLBAT
+	db 32, GOLBAT, NO_ITEM
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 30, MAGNEMITE
+	db 30, MAGNEMITE, NO_ITEM
 		db TACKLE
 		db THUNDERSHOCK
 		db SONIC_BOOM
 		db THUNDER_WAVE
 
-	db 30, HAUNTER
+	db 31, TAUROS, NO_ITEM
+		db HORN_ATTACK
+		db PURSUIT
+		db QUICK_ATTACK
+		db BULK_UP
+
+	db 30, HAUNTER, NO_ITEM
 		db LICK
 		db MEAN_LOOK
 		db CURSE
 		db SHADOW_BALL
 
-	db 34, SNEASEL
+	db 34, SNEASEL, NO_ITEM
 		db LEER
 		db QUICK_ATTACK
 		db SCREECH
 		db FEINT_ATTACK
 
-	db 34, MEGANIUM
+	db 34, MEGANIUM, GOLD_BERRY
 		db REFLECT
 		db RAZOR_LEAF
 		db POISONPOWDER
@@ -2355,35 +2385,41 @@ Rival1Group:
 
 	; RIVAL1 (11)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 32, GOLBAT
+	db 32, GOLBAT, NO_ITEM
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 30, MAGNEMITE
+	db 30, MAGNEMITE, NO_ITEM
 		db TACKLE
 		db THUNDERSHOCK
 		db SONIC_BOOM
 		db THUNDER_WAVE
 
-	db 30, HAUNTER
+	db 31, TAUROS, NO_ITEM
+		db HORN_ATTACK
+		db PURSUIT
+		db QUICK_ATTACK
+		db BULK_UP
+
+	db 30, HAUNTER, NO_ITEM
 		db LICK
 		db MEAN_LOOK
 		db CURSE
 		db SHADOW_BALL
 
-	db 34, SNEASEL
+	db 34, SNEASEL, NO_ITEM
 		db LEER
 		db QUICK_ATTACK
 		db SCREECH
 		db FEINT_ATTACK
 
-	db 34, QUILAVA
+	db 34, QUILAVA, GOLD_BERRY
 		db SMOKESCREEN
 		db EMBER
 		db QUICK_ATTACK
@@ -2395,35 +2431,41 @@ Rival1Group:
 
 	; RIVAL1 (12)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 32, GOLBAT
+	db 32, GOLBAT, NO_ITEM
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 30, MAGNEMITE
+	db 30, MAGNEMITE, NO_ITEM
 		db TACKLE
 		db THUNDERSHOCK
 		db SONIC_BOOM
 		db THUNDER_WAVE
 
-	db 30, HAUNTER
+	db 31, TAUROS, NO_ITEM
+		db HORN_ATTACK
+		db PURSUIT
+		db QUICK_ATTACK
+		db BULK_UP
+
+	db 30, HAUNTER, NO_ITEM
 		db LICK
 		db MEAN_LOOK
 		db CURSE
 		db SHADOW_BALL
 
-	db 34, SNEASEL
+	db 34, SNEASEL, NO_ITEM
 		db LEER
 		db QUICK_ATTACK
 		db SCREECH
 		db FEINT_ATTACK
 
-	db 34, FERALIGATR
+	db 34, FERALIGATR, GOLD_BERRY
 		db RAGE
 		db WATER_GUN
 		db BITE
@@ -2435,41 +2477,41 @@ Rival1Group:
 
 	; RIVAL1 (13)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 36, SNEASEL
+	db 36, SNEASEL, NO_ITEM
 		db QUICK_ATTACK
 		db SCREECH
 		db FEINT_ATTACK
 		db FURY_CUTTER
 
-	db 38, GOLBAT
+	db 38, GOLBAT, NO_ITEM
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 37, MAGNETON
+	db 37, MAGNETON, NO_ITEM
 		db THUNDERSHOCK
 		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
-	db 37, HAUNTER
+	db 37, HAUNTER, NO_ITEM
 		db MEAN_LOOK
 		db CURSE
 		db SHADOW_BALL
 		db CONFUSE_RAY
 
-	db 37, KADABRA
+	db 37, KADABRA, NO_ITEM
 		db DISABLE
 		db PSYBEAM
 		db RECOVER
 		db FUTURE_SIGHT
 
-	db 40, MEGANIUM
+	db 40, MEGANIUM, GOLD_BERRY
 		db REFLECT
 		db RAZOR_LEAF
 		db POISONPOWDER
@@ -2481,41 +2523,41 @@ Rival1Group:
 
 	; RIVAL1 (14)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 36, SNEASEL
+	db 36, SNEASEL, NO_ITEM
 		db QUICK_ATTACK
 		db SCREECH
 		db FEINT_ATTACK
 		db FURY_CUTTER
 
-	db 38, GOLBAT
+	db 38, GOLBAT, NO_ITEM
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 37, MAGNETON
+	db 37, MAGNETON, NO_ITEM
 		db THUNDERSHOCK
 		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
-	db 37, HAUNTER
+	db 37, HAUNTER, NO_ITEM
 		db MEAN_LOOK
 		db CURSE
 		db SHADOW_BALL
 		db CONFUSE_RAY
 
-	db 37, KADABRA
+	db 37, KADABRA, NO_ITEM
 		db DISABLE
 		db PSYBEAM
 		db RECOVER
 		db FUTURE_SIGHT
 
-	db 40, TYPHLOSION
+	db 40, TYPHLOSION, GOLD_BERRY
 		db SMOKESCREEN
 		db EMBER
 		db QUICK_ATTACK
@@ -2527,41 +2569,41 @@ Rival1Group:
 
 	; RIVAL1 (15)
 	db "?@"
-	db 1 ; moves
+	db 3 ; item + moves
 
 	; party
 
-	db 36, SNEASEL
+	db 36, SNEASEL, NO_ITEM
 		db QUICK_ATTACK
 		db SCREECH
 		db FEINT_ATTACK
 		db FURY_CUTTER
 
-	db 38, GOLBAT
+	db 38, GOLBAT, NO_ITEM
 		db LEECH_LIFE
 		db BITE
 		db CONFUSE_RAY
 		db WING_ATTACK
 
-	db 37, MAGNETON
+	db 37, MAGNETON, NO_ITEM
 		db THUNDERSHOCK
 		db SONIC_BOOM
 		db THUNDER_WAVE
 		db SWIFT
 
-	db 37, HAUNTER
+	db 37, HAUNTER, NO_ITEM
 		db MEAN_LOOK
 		db CURSE
 		db SHADOW_BALL
 		db CONFUSE_RAY
 
-	db 37, KADABRA
+	db 37, KADABRA, NO_ITEM
 		db DISABLE
 		db PSYBEAM
 		db RECOVER
 		db FUTURE_SIGHT
 
-	db 40, FERALIGATR
+	db 40, FERALIGATR, GOLD_BERRY
 		db RAGE
 		db SURF
 		db SCARY_FACE
@@ -11707,7 +11749,7 @@ BillGroup:
 		db THUNDER_WAVE
 		db THUNDERBOLT
 		db LIGHT_SCREEN
-		dn QUICK_ATTACK
+		db QUICK_ATTACK
 
 	db 55, FLAREON, CHARCOAL
 		db FLARE_BLITZ
