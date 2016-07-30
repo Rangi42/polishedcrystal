@@ -275,6 +275,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
+* Add: Pokémon Go character names as possible Wonder Trade OTs.
 * Edit: Encounter rival in Azalea Town after beating Bugsy.
 * Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
 * Edit: Better in-game trade DVs.
