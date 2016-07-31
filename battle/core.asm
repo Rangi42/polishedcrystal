@@ -4950,6 +4950,14 @@ PrintPlayerHUD: ; 3dfbf
 	pop hl
 	dec hl
 
+	ld bc, BattleMonDVs
+	farcall CheckShininess
+	jr nc, .not_own_shiny
+	ld a, "<SHINYB>"
+	hlcoord 18, 8
+	ld [hl], a
+
+.not_own_shiny
 	ld a, BREEDMON
 	ld [MonType], a
 	callab GetGender
