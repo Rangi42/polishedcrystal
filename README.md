@@ -285,6 +285,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Typhlosion is Fire/Ground, Feraligatr is Water/Dark, and Blastoise is Water/Steel.
 * Add: Goldenrod City move tutor is no longer once per day.
 * Add: Show shiny icon in battle (thanks to tonyism).
+* Add: Sprite for Rocket Grunt♀ by Mateo.
 * Edit: Encounter rival in Azalea Town after beating Bugsy.
 * Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
 * Edit: Better in-game trade DVs.
@@ -299,4 +300,4 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Fix: Buff Kimono Girls.
 * Fix: Crunch lowers Defense, not Special Defense.
 * Fix: Astonish is physical, not special.
-
+* Fix: Cliff Edge Gate uses Route 36 music.
