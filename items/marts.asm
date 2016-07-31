@@ -363,12 +363,13 @@ Mart25: ; 161ce
 ; 161d5
 
 Mart26: ; 161d5
-	db 7 ; # items
+	db 8 ; # items
 	db POKE_DOLL
 	db FIRE_STONE
 	db WATER_STONE
 	db THUNDERSTONE
 	db LEAF_STONE
+	db EXP_SHARE
 	db LOVELY_MAIL
 	db SURF_MAIL
 	db $ff

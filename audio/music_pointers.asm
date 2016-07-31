@@ -127,6 +127,7 @@
 	dba Music_LugiaBattleHGSS
 	dba Music_Route210DPPt
 	dba Music_ReversalMountainWhite2
+	dba Music_ChampionBattleB2W2
 	dba Music_PowerPlantXY
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY

@@ -17,30 +17,7 @@ GoldenrodGameCorner_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
-
-	; callbacks
-
-	dbw MAPCALLBACK_OBJECTS, .Callback
-
-.Callback:
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalse .finish
-	checkitem COIN_CASE
-	iffalse .move_tutor_inside
-	checkcode VAR_WEEKDAY
-	if_equal WEDNESDAY, .move_tutor_outside
-	if_equal SATURDAY, .move_tutor_outside
-.move_tutor_inside
-	appear GOLDENRODGAMECORNER_POKEFAN_M3
-	return
-
-.move_tutor_outside
-	checkflag ENGINE_DAILY_MOVE_TUTOR
-	iftrue .finish
-	disappear GOLDENRODGAMECORNER_POKEFAN_M3
-.finish
-	return
+	db 0
 
 GoldenrodGameCornerPokefanM3Script:
 	faceplayer
@@ -520,4 +497,4 @@ GoldenrodGameCorner_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 3, 10, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerCooltrainerFScript, -1
 	person_event SPRITE_GENTLEMAN, 10, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerGentlemanScript, -1
 	person_event SPRITE_POKEFAN_M, 9, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPokefanM2Script, -1
-	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPokefanM3Script, EVENT_GOLDENROD_GAME_CORNER_MOVE_TUTOR
+	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPokefanM3Script, -1

@@ -159,11 +159,14 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
    * Fly has 100% accuracy
    * Rock Smash has 75 power
    * Pain Split is Ghost-type
+   * Blastoise is Water/Steel
    * Butterfree is Bug/Psychic
    * Persian is Normal/Dark
    * Farfetch'd is Fighting/Flying
    * Ninetales is Fire/Ghost
    * Golduck is Water/Psychic
+   * Typhlosion is Fire/Ground
+   * Feraligatr is Water/Dark
    * Noctowl is Flying/Psychic
    * Ledian is Bug/Fighting
    * Dunsparce is Normal/Ground
@@ -228,7 +231,6 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 ## Bugs
 
-* Pokémon overworld sprites are frequently incorrect. This is partly because the original game would use, for example, a cow-shaped `SPRITE_TAUROS` for both Tauros and Miltank, but there's also a bug where Pokémon icons change when you view the party menu.
 * The Move Reminder doesn't list all the possible moves.
 * Gold Berry restores 25% of HP when used, but 30 HP when held.
 
@@ -273,9 +275,17 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 1.1.0 release. If you build the project as-is, it will include all of them.
 
+* Add: Music by Mmmmmm for the final battle.
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
+* Add: Wild Oddish are rare in Ilex Forest during the day.
 * Add: Pokémon Go character names as possible Wonder Trade OTs.
+* Add: Buy Exp. Share in Celadon Dept. Store.
+* Add: Buff rival's teams.
+* Add: Typhlosion is Fire/Ground, Feraligatr is Water/Dark, and Blastoise is Water/Steel.
+* Add: Goldenrod City move tutor is no longer once per day.
+* Add: Show shiny icon in battle (thanks to tonyism).
+* Add: Sprite for Rocket Grunt♀ by Mateo.
 * Edit: Encounter rival in Azalea Town after beating Bugsy.
 * Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
 * Edit: Better in-game trade DVs.
@@ -283,9 +293,11 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Edit: Cheaper TMs in Goldenrod Dept. Store.
 * Edit: Lower Pokédex requirements for items from Prof. Oak's aides.
 * Edit: Get False Swipe TM as a gift, not Calm Mind.
+* Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
+* Fix: Bill's team is broken.
 * Fix: Falkner says TMs are one use only.
 * Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 * Fix: Buff Kimono Girls.
 * Fix: Crunch lowers Defense, not Special Defense.
 * Fix: Astonish is physical, not special.
-
+* Fix: Cliff Edge Gate uses Route 36 music.

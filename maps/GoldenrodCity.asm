@@ -40,9 +40,6 @@ GoldenrodCity_MapScriptHeader:
 	iffalse .MoveTutorDone
 	checkitem COIN_CASE
 	iffalse .MoveTutorDisappear
-.MoveTutorAppear:
-	checkflag ENGINE_DAILY_MOVE_TUTOR
-	iftrue .MoveTutorDone
 	appear GOLDENRODCITY_POKEFAN_M2
 .MoveTutorDone:
 	return
@@ -133,19 +130,6 @@ MoveTutor:
 	writetext UnknownText_0x19918b
 	waitbutton
 	closetext
-	checkcode VAR_FACING
-	if_equal LEFT, .WalkAroundPlayer
-	applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a5f
-	jump .GoInside
-
-.WalkAroundPlayer:
-	applymovement GOLDENRODCITY_POKEFAN_M2, MovementData_0x198a63
-.GoInside:
-	playsound SFX_ENTER_DOOR
-	disappear GOLDENRODCITY_POKEFAN_M2
-	clearevent EVENT_GOLDENROD_GAME_CORNER_MOVE_TUTOR
-	setflag ENGINE_DAILY_MOVE_TUTOR
-	waitsfx
 	end
 
 .Incompatible:
@@ -271,20 +255,6 @@ GoldenrodCityPokeCenterSign:
 
 GoldenrodCityFlowerShopSign:
 	jumptext GoldenrodCityFlowerShopSignText
-
-MovementData_0x198a5f:
-	step_right
-	step_right
-	step_up
-	step_end
-
-MovementData_0x198a63:
-	step_down
-	step_right
-	step_right
-	step_up
-	step_up
-	step_end
 
 UnknownText_0x198a69:
 	text "They built the new"
@@ -537,7 +507,7 @@ UnknownText_0x19913a:
 
 UnknownText_0x19918b:
 	text "Wahahah!"
-	line "Farewell, kid!"
+	line "Good day, kid!"
 	done
 
 UnknownText_0x1991a4:

@@ -1,7 +1,6 @@
 ## Bugs
 
 * Move Reminder doesn't list all possible moves
-* Overworld Pokémon sprites can only be from one bank (always BANK(Icons1) at first) (if you view your party, whichever bank the last Pokémon is from gets used for the overworld)
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Make the gatehouse roof inside Yellow Forest the same as outside
@@ -67,10 +66,13 @@
 * Add Young Couple and Double Team trainer classes
 * Lt. Surge's traps from RBY
 * Unown ? and ! from Gen III
-* More held items (some of: Life Orb, Light Clay, Damp Rock, Heat Rock, Smooth Rock, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens)
+* More held items (some of: Life Orb, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens, Light Clay, Damp Rock, Heat Rock, Smooth Rock)
 * Aurora Orb boosts Suicune's Defense and Special Defense
 * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
+* Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Aurora Orb)
+* Battle with Steven in some southern ruins ("Hojo Ruins"?), or in Mt. Quena (north of Olivine City?) (reward: ?)
+* Battle Caitlin and Darach somewhere, possibly around the Battle Tower
 * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
 * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
 

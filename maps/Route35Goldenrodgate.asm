@@ -68,8 +68,10 @@ GiftFarfetch_dMail:
 	db   FLOWER_MAIL
 	db   "Dark Cave leads"
 	next "to another road@"
+
 GiftFarfetch_dName:
 	db "Kenya@"
+
 GiftFarfetch_dOTName:
 	db "Randy@"
 

@@ -29,6 +29,7 @@ BillsHouseBill:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke EEVEE, 20
+	givepokeitem GiftEeveeMail
 	setevent EVENT_GOT_EEVEE
 	writetext UnknownText_0x54dc1
 	waitbutton
@@ -46,6 +47,13 @@ UnknownScript_0x54c19:
 	waitbutton
 	closetext
 	end
+
+GiftEeveeMail:
+	db   EON_MAIL
+	db   "Greetings from"
+	next "Kanto! - Oak@"
+
+	db 0
 
 BattleBillScript:
 	writetext BillEeveelutionLegendText

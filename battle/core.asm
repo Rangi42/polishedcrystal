@@ -5028,6 +5028,14 @@ DrawEnemyHUD: ; 3e043
 	ld a, [hl]
 	ld [de], a
 
+	ld bc, EnemyMonDVs
+	farcall CheckShininess
+	jr nc, .not_shiny
+	ld a, "<SHINYB>"
+	hlcoord 10, 1
+	ld [hl], a
+
+.not_shiny
 	ld a, BREEDMON
 	ld [MonType], a
 	callab GetGender
