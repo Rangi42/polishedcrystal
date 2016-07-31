@@ -294,6 +294,8 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Cheaper TMs in Goldenrod Dept. Store.
 * Add: Lower Pokédex requirements for items from Prof. Oak's aides.
 * Add: Get False Swipe TM as a gift, not Calm Mind.
+* Add: Whitney uses Attract.
+* Add: Pryce uses Mamoswine, not Piloswine.
 * Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
 * Fix: Bill's team is broken.
 * Fix: Falkner says TMs are one use only.
@@ -302,3 +304,4 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Fix: Crunch lowers Defense, not Special Defense.
 * Fix: Astonish is physical, not special.
 * Fix: Cliff Edge Gate uses Route 36 music.
+* Fix: "Vulipx" typo.

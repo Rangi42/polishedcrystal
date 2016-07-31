@@ -371,7 +371,7 @@ UnknownText_0x5c30d:
 	done
 
 SchoolgirlElizaSeenText:
-	text "Vulipx is just"
+	text "Vulpix is just"
 	line "the cutest!"
 
 	para "Don't you agree?"
