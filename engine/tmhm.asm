@@ -99,7 +99,7 @@ TMHMMoves: ; 1167a
 	db BODY_SLAM    ; TM51 (Fast Ship)
 	db FOCUS_BLAST  ; TM52 (Quiet Cave)
 	db FLASH_CANNON ; TM53 (Route 9)
-	db FALSE_SWIPE  ; TM54 (Goldenrod Dept.Store)
+	db FALSE_SWIPE  ; TM54 (Ilex Forest Gate, Goldenrod Dept.Store)
 	db SCALD        ; TM55 (Misty)
 	db X_SCISSOR    ; TM56 (Underground Warehouse)
 	db DARK_PULSE   ; TM57 (Dark Cave, Celadon Game Corner)

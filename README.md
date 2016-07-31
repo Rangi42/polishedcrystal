@@ -287,13 +287,13 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Show shiny icon in battle (thanks to tonyism).
 * Add: Sprite for Rocket Grunt♀ by Mateo.
 * Add: Receive Eevee from Bill in Ecruteak City.
-* Edit: Encounter rival in Azalea Town *after* beating Bugsy.
-* Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
-* Edit: Better in-game trade DVs.
-* Edit: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
-* Edit: Cheaper TMs in Goldenrod Dept. Store.
-* Edit: Lower Pokédex requirements for items from Prof. Oak's aides.
-* Edit: Get False Swipe TM as a gift, not Calm Mind.
+* Add: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, and Mr. Mime.
+* Add: Encounter rival in Azalea Town *after* beating Bugsy.
+* Add: Better in-game trade DVs.
+* Add: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
+* Add: Cheaper TMs in Goldenrod Dept. Store.
+* Add: Lower Pokédex requirements for items from Prof. Oak's aides.
+* Add: Get False Swipe TM as a gift, not Calm Mind.
 * Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
 * Fix: Bill's team is broken.
 * Fix: Falkner says TMs are one use only.
