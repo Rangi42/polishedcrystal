@@ -281,7 +281,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Wild Oddish are rare in Ilex Forest during the day.
 * Add: Pokémon Go character names as possible Wonder Trade OTs.
 * Add: Buy Exp. Share in Celadon Dept. Store.
-* Add: Buff rival's teams.
+* Add: Buff trainers and wild Pokémon so that the level curve ends at 100 for the final battle.
 * Add: Typhlosion is Fire/Ground, Feraligatr is Water/Dark, and Blastoise is Water/Steel.
 * Add: Goldenrod City move tutor is no longer once per day.
 * Add: Show shiny icon in battle (thanks to tonyism).
@@ -296,6 +296,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Get False Swipe TM as a gift, not Calm Mind.
 * Add: Whitney uses Attract.
 * Add: Pryce uses Mamoswine, not Piloswine.
+* Add: Can't fight Pryce before Jasmine.
 * Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
 * Fix: Bill's team is broken.
 * Fix: Falkner says TMs are one use only.

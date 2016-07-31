@@ -1873,7 +1873,7 @@ ElectrodeEvosAttacks:
 ExeggcuteEvosAttacks:
 	db EVOLVE_ITEM, LEAF_STONE, EXEGGUTOR
 	db 0 ; no more evolutions
-	db 1, FURY_ATTACK ; Barrage → similar move
+	db 1, TACKLE ; Barrage → new move
 	db 1, HYPNOSIS
 	db 7, REFLECT
 	db 11, LEECH_SEED
@@ -1891,7 +1891,7 @@ ExeggcuteEvosAttacks:
 
 ExeggutorEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, FURY_ATTACK ; Barrage → similar move
+	db 1, TACKLE ; Barrage → new move
 	db 1, HYPNOSIS
 	db 1, CONFUSION
 	db 1, STOMP
@@ -2478,7 +2478,7 @@ JolteonEvosAttacks:
 	db 25, PIN_MISSILE
 	db 29, AGILITY
 	db 33, THUNDER_WAVE
-	db 37, WILD_CHARGE ; Discharge → TM move
+	db 37, THUNDERBOLT ; Discharge → TM move
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
 	db 45, THUNDER
 	db 0 ; no more level-up moves
@@ -3598,9 +3598,9 @@ UmbreonEvosAttacks:
 	db 25, TOXIC ; Assurance → TM move
 	db 29, SCREECH
 	db 33, MOONLIGHT
-	db 37, MEAN_LOOK
+	db 37, DARK_PULSE ; Mean Look → TM move
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
-	db 45, DARK_PULSE ; Guard Swap → TM move
+	db 45, MEAN_LOOK ; Guard Swap → Mean Look
 	db 0 ; no more level-up moves
 
 LeafeonEvosAttacks:
@@ -3615,9 +3615,9 @@ LeafeonEvosAttacks:
 	db 25, GIGA_DRAIN
 	db 29, SWORDS_DANCE
 	db 33, SYNTHESIS
-	db 37, SUNNY_DAY
+	db 37, SEED_BOMB ; Sunny Day → tutor move
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
-	db 45, SEED_BOMB ; Leaf Blade → tutor move
+	db 45, SUNNY_DAY ; Leaf Blade → Sunny Day
 	db 0 ; no more level-up moves
 
 GlaceonEvosAttacks:
@@ -3632,7 +3632,7 @@ GlaceonEvosAttacks:
 	db 25, RECOVER ; Ice Shard → new move
 	db 29, BARRIER
 	db 33, MIRROR_COAT
-	db 37, AVALANCHE ; Hail → TM move
+	db 37, ICE_BEAM ; Hail → TM move
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
 	db 45, BLIZZARD
 	db 0 ; no more level-up moves
