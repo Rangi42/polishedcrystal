@@ -15,47 +15,6 @@ BillsHouseBill:
 	opentext
 	checkevent EVENT_BEAT_POKEMANIAC_BILL
 	iftrue AfterBillBattleScript
-	checkevent EVENT_GOT_EEVEE
-	iftrue BattleBillScript
-	writetext UnknownText_0x54c74
-	yesorno
-	iffalse UnknownScript_0x54c19
-	writetext UnknownText_0x54d3f
-	buttonsound
-	waitsfx
-	checkcode VAR_PARTYCOUNT
-	if_equal $6, UnknownScript_0x54c13
-	writetext UnknownText_0x54dae
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke EEVEE, 20
-	givepokeitem GiftEeveeMail
-	setevent EVENT_GOT_EEVEE
-	writetext UnknownText_0x54dc1
-	waitbutton
-	closetext
-	end
-
-UnknownScript_0x54c13:
-	writetext UnknownText_0x54e02
-	waitbutton
-	closetext
-	end
-
-UnknownScript_0x54c19:
-	writetext UnknownText_0x54e2d
-	waitbutton
-	closetext
-	end
-
-GiftEeveeMail:
-	db   EON_MAIL
-	db   "Greetings from"
-	next "Kanto! - Oak@"
-
-	db 0
-
-BattleBillScript:
 	writetext BillEeveelutionLegendText
 	waitbutton
 	special SpecialBeastsCheck
@@ -79,7 +38,7 @@ DontBattleBillScript:
 BillsMom:
 	faceplayer
 	opentext
-	checkevent EVENT_MET_BILL
+	checkevent EVENT_NEVER_MET_BILL
 	iffalse UnknownScript_0x54c33
 	writetext UnknownText_0x54ea8
 	waitbutton
@@ -132,64 +91,6 @@ BillsHouseBookshelf2:
 
 BillsHouseRadio:
 	jumpstd radio2
-
-UnknownText_0x54c74:
-	text "Bill: Hi, <PLAYER>!"
-	line "Do us a favor and"
-	cont "take this Eevee."
-
-	para "It came over when"
-	line "I was adjusting"
-	cont "the Time Capsule."
-
-	para "Someone has to"
-	line "take care of it,"
-
-	para "but I don't like"
-	line "being outside."
-
-	para "Can I count on you"
-	line "to play with it,"
-	cont "<PLAYER>?"
-	done
-
-UnknownText_0x54d3f:
-	text "Bill: I knew you'd"
-	line "come through!"
-
-	para "Way to go! You're"
-	line "the real deal!"
-
-	para "OK, I'm counting"
-	line "on you."
-
-	para "Take good care of"
-	line "it!"
-	done
-
-UnknownText_0x54dae:
-	text "<PLAYER> received"
-	line "Eevee!"
-	done
-
-UnknownText_0x54dc1:
-	text "Bill: Prof.Elm"
-	line "claims Eevee may"
-
-	para "evolve in new and"
-	line "unknown ways."
-	done
-
-UnknownText_0x54e02:
-	text "Whoa, wait. You"
-	line "can't carry any"
-	cont "more #mon."
-	done
-
-UnknownText_0x54e2d:
-	text "Oh… Now what to"
-	line "do?"
-	done
 
 BillEeveelutionLegendText:
 	text "Bill: Eevee is"
@@ -338,6 +239,6 @@ GoldenrodBillsHouse_MapEventHeader:
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_BILL, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsHouseBill, EVENT_MET_BILL
+	person_event SPRITE_BILL, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsHouseBill, EVENT_NEVER_MET_BILL
 	person_event SPRITE_POKEFAN_F, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsMom, -1
 	person_event SPRITE_TWIN, 4, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BillsSister, -1

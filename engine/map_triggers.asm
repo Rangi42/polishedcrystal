@@ -47,7 +47,7 @@ ENDM
 	trigger_def ROUTE_34_ILEX_FOREST_GATE,              wRoute34IlexForestGateTrigger
 	trigger_def ECRUTEAK_HOUSE,                         wEcruteakHouseTrigger
 	trigger_def WISE_TRIOS_ROOM,                        wWiseTriosRoomTrigger
-	trigger_def ECRUTEAK_POKECENTER_1F,                 wEcruteakPokecenter1FTrigger
+	trigger_def ECRUTEAK_POKECENTER_1F,                 wEcruteakPokecenter1FTrigger ; TODO: remove unused trigger
 	trigger_def ECRUTEAK_GYM,                           wEcruteakGymTrigger
 	trigger_def MAHOGANY_TOWN,                          wMahoganyTownTrigger
 	trigger_def ROUTE_42,                               wRoute42Trigger

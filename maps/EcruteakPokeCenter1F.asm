@@ -25,39 +25,75 @@ EcruteakPokeCenter1F_MapScriptHeader:
 
 .BillActivatesTimeCapsule:
 	pause 30
+	moveperson ECRUTEAKPOKECENTER1F_BILL, 0, 7
 	playsound SFX_EXIT_BUILDING
 	appear ECRUTEAKPOKECENTER1F_BILL
+	spriteface ECRUTEAKPOKECENTER1F_BILL, RIGHT
 	waitsfx
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement1
-	applymovement PLAYER, EcruteakPokeCenter1FPlayerMovement1
-	spriteface ECRUTEAKPOKECENTER1F_NURSE, UP
-	pause 10
-	spriteface ECRUTEAKPOKECENTER1F_NURSE, DOWN
-	pause 30
-	spriteface ECRUTEAKPOKECENTER1F_NURSE, UP
-	pause 10
-	spriteface ECRUTEAKPOKECENTER1F_NURSE, DOWN
-	pause 20
-	spriteface ECRUTEAKPOKECENTER1F_BILL, DOWN
-	pause 10
-	opentext
-	writetext EcruteakPokeCenter1F_BillText1
-	buttonsound
-	jump .PointlessJump
+	pause 60
+	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement2
+	setflag ENGINE_TIME_CAPSULE
+	clearevent EVENT_ECRUTEAK_POKE_CENTER_BILL
+	dotrigger $1
+	end
 
-.PointlessJump:
-	writetext EcruteakPokeCenter1F_BillText2
+EcruteakPokeCenter1FBillScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_BILL_INTRO
+	iftrue .heardintro
+	writetext EcruteakPokeCenter1FBillIntroText
+	waitbutton
+	setevent EVENT_LISTENED_TO_BILL_INTRO
+.heardintro
+	writetext UnknownText_0x54c74
+	yesorno
+	iffalse UnknownScript_0x54c19
+	writetext UnknownText_0x54d3f
+	buttonsound
+	waitsfx
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, UnknownScript_0x54c13
+	writetext UnknownText_0x54dae
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke EEVEE, 20
+	givepokeitem GiftEeveeMail
+	setevent EVENT_GOT_EEVEE
+	writetext UnknownText_0x54dc1
 	waitbutton
 	closetext
 	spriteface PLAYER, DOWN
-	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement2
+	checkcode VAR_FACING
+	if_not_equal UP, .noleftstep
+	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement3
+.noleftstep
+	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement4
 	playsound SFX_EXIT_BUILDING
 	disappear ECRUTEAKPOKECENTER1F_BILL
-	clearevent EVENT_MET_BILL
-	setflag ENGINE_TIME_CAPSULE
-	dotrigger $1
+	clearevent EVENT_NEVER_MET_BILL
 	waitsfx
 	end
+
+UnknownScript_0x54c13:
+	writetext UnknownText_0x54e02
+	waitbutton
+	closetext
+	end
+
+UnknownScript_0x54c19:
+	writetext UnknownText_0x54e2d
+	waitbutton
+	closetext
+	end
+
+GiftEeveeMail:
+	db   EON_MAIL
+	db   "Greetings from"
+	next "Kanto! - Oak@"
+
+	db 0
 
 EcruteakPokeCenter1FNurseScript:
 	jumpstd pokecenternurse
@@ -89,79 +125,102 @@ EcruteakPokeCenter1FBillMovement1:
 
 EcruteakPokeCenter1FBillMovement2:
 	step_right
+	turn_head_down
+	step_end
+
+EcruteakPokeCenter1FBillMovement3:
+	step_left
+	step_end
+
+EcruteakPokeCenter1FBillMovement4:
 	step_down
 	step_down
 	step_down
 	step_down
 	step_end
 
-EcruteakPokeCenter1FPlayerMovement1:
-	step_up
-	step_up
-	step_up
-	step_end
-
-EcruteakPokeCenter1F_BillText1:
+EcruteakPokeCenter1FBillIntroText:
 	text "Hi, I'm Bill. And"
 	line "who are you?"
 
 	para "Hmm, <PLAYER>, huh?"
 	line "You've come at the"
 	cont "right time."
-	done
 
-EcruteakPokeCenter1F_BillText2:
-	text "I just finished"
+	para "I just finished"
 	line "adjustments on my"
 	cont "Time Capsule."
-
-	para "You know that"
-	line "#mon can be"
-	cont "traded, right?"
-
-	para "My Time Capsule"
-	line "was developed to"
-
-	para "enable trades with"
-	line "the past."
-
-	para "But you can't send"
-	line "anything that"
-
-	para "didn't exist in"
-	line "the past."
-
-	para "If you did, the PC"
-	line "in the past would"
-	cont "have a breakdown."
-
-	para "So you have to"
-	line "remove anything"
-
-	para "that wasn't around"
-	line "in the past."
-
-	para "Put simply, no"
-	line "sending new moves"
-
-	para "or new #mon in"
-	line "the Time Capsule."
-
-	para "Don't you worry."
-	line "I'm done with the"
-	cont "adjustments."
 
 	para "Tomorrow, Time"
 	line "Capsules will be"
 
 	para "running at all"
 	line "#mon Centers."
+	done
+
+UnknownText_0x54c74:
+	text "Bill: This Eevee"
+	line "came over when I"
+
+	para "was making the"
+	line "adjustments."
+
+	para "Someone has to"
+	line "take care of it,"
+
+	para "but I don't like"
+	line "being outside."
+
+	para "Can I count on you"
+	line "to play with it,"
+	cont "<PLAYER>?"
+	done
+
+UnknownText_0x54d3f:
+	text "Bill: I knew you'd"
+	line "come through!"
+
+	para "Way to go! You're"
+	line "the real deal!"
+
+	para "OK, I'm counting"
+	line "on you."
+
+	para "Take good care of"
+	line "it!"
+	done
+
+UnknownText_0x54dae:
+	text "<PLAYER> received"
+	line "Eevee!"
+	done
+
+UnknownText_0x54e02:
+	text "Whoa, wait. You"
+	line "can't carry any"
+	cont "more #mon."
+	done
+
+UnknownText_0x54dc1:
+	text "Bill: Prof.Elm"
+	line "claims Eevee may"
+
+	para "evolve in new and"
+	line "unknown ways."
 
 	para "I have to hurry on"
 	line "back to Goldenrod"
-	cont "and see my folks."
+	cont "and see my folks,"
+
+	para "and then it's back"
+	line "to Kanto for me."
 
 	para "Buh-bye!"
+	done
+
+UnknownText_0x54e2d:
+	text "Oh… Now what to"
+	line "do?"
 	done
 
 EcruteakPokeCenter1FPokefanMText:
@@ -230,4 +289,4 @@ EcruteakPokeCenter1F_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1
 	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FCooltrainerFScript, -1
 	person_event SPRITE_GYM_GUY, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FGymGuyScript, -1
-	person_event SPRITE_BILL, 7, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_POKE_CENTER_BILL
+	person_event SPRITE_BILL, 3, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FBillScript, EVENT_ECRUTEAK_POKE_CENTER_BILL

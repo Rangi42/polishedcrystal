@@ -301,7 +301,7 @@ Script_TimeCapsuleClosed:
 	end
 
 LinkReceptionistScript_TimeCapsule:
-	checkevent EVENT_MET_BILL
+	checkevent EVENT_NEVER_MET_BILL
 	iftrue Script_TimeCapsuleClosed
 	checkflag ENGINE_TIME_CAPSULE
 	iftrue Script_TimeCapsuleClosed

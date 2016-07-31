@@ -286,7 +286,8 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Goldenrod City move tutor is no longer once per day.
 * Add: Show shiny icon in battle (thanks to tonyism).
 * Add: Sprite for Rocket Grunt♀ by Mateo.
-* Edit: Encounter rival in Azalea Town after beating Bugsy.
+* Add: Receive Eevee from Bill in Ecruteak City.
+* Edit: Encounter rival in Azalea Town *after* beating Bugsy.
 * Edit: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, Mr. Mime
 * Edit: Better in-game trade DVs.
 * Edit: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
