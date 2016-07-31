@@ -885,12 +885,12 @@ Group2Sprites:
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	db SPRITE_ROCKET_GIRL ; doesn't walk
+	; 9 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
-	; 11 total sprites
-	db SPRITE_RAIKOU
+	; 12 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI

@@ -7,6 +7,7 @@ const_value set 2
 	const ROUTE47_ROCKET1
 	const ROUTE47_ROCKET2
 	const ROUTE47_ROCKET3
+	const ROUTE47_ROCKET4
 	const ROUTE47_POKE_BALL1
 	const ROUTE47_POKE_BALL2
 	const ROUTE47_POKE_BALL3
@@ -106,6 +107,9 @@ GruntM26Script:
 	waitbutton
 	closetext
 	end
+
+Route47RocketGirlScript:
+	jumptextfaceplayer Route47RocketGirlText
 
 Route47QuietCaveSign:
 	jumptext Route47QuietCaveSignText
@@ -265,6 +269,12 @@ GruntM26AfterText:
 	cont "of your business!"
 	done
 
+Route47RocketGirlText:
+	text "What are you head-"
+	line "ing this way for,"
+	cont "your brat?"
+	done
+
 Route47QuietCaveSignText:
 	text "West to"
 	line "Quiet Cave"
@@ -292,7 +302,7 @@ Route47_MapEventHeader:
 	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust
 
 .PersonEvents:
-	db 12
+	db 13
 	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermThom, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
@@ -301,6 +311,7 @@ Route47_MapEventHeader:
 	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 9, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET_GIRL, 24, 47, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route47RocketGirlScript, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_POKE_BALL, 28, 39, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47Revive, EVENT_ROUTE_47_REVIVE
 	person_event SPRITE_POKE_BALL, 32, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47MysticWater, EVENT_ROUTE_47_MYSTIC_WATER
 	person_event SPRITE_POKE_BALL, 20, 31, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route47QuickClaw, EVENT_ROUTE_47_QUICK_CLAW
