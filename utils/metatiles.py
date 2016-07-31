@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """
 Generate a .png of a 32x32 metatileset from its corresponding 8x8 tileset,

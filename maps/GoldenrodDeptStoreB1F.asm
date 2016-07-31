@@ -6,7 +6,7 @@ const_value set 2
 	const GOLDENRODDEPTSTOREB1F_BLACK_BELT1
 	const GOLDENRODDEPTSTOREB1F_BLACK_BELT2
 	const GOLDENRODDEPTSTOREB1F_BLACK_BELT3
-	const GOLDENRODDEPTSTOREB1F_MACHOP
+	const GOLDENRODDEPTSTOREB1F_MACHOKE
 
 GoldenrodDeptStoreB1F_MapScriptHeader:
 .MapTriggers:
@@ -59,7 +59,7 @@ BlackBeltScript_0x7d7b3:
 BlackBeltScript_0x7d7b6:
 	jumptextfaceplayer UnknownText_0x7d875
 
-MachopScript_0x7d7b9:
+MachokeScript_0x7d7b9:
 	opentext
 	writetext UnknownText_0x7d8bb
 	cry MACHOKE
@@ -138,4 +138,4 @@ GoldenrodDeptStoreB1F_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 10, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7d7b0, -1
 	person_event SPRITE_BLACK_BELT, 8, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7d7b3, -1
 	person_event SPRITE_BLACK_BELT, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7d7b6, -1
-	person_event SPRITE_MACHOP, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MachopScript_0x7d7b9, -1
+	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MachokeScript_0x7d7b9, -1

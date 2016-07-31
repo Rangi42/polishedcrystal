@@ -13,6 +13,7 @@ ReadMonMenuIcon: ; 8eab3
 	ret
 ; 8eac4
 
+; TODO: factor out this redundant table
 MonMenuIcons: ; 8eac4
 	db ICON_BULBASAUR
 	db ICON_IVYSAUR

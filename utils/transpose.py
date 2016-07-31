@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """
 Transposes the bytes of the metatiles.bin and palette_map.asm files for a

@@ -31,7 +31,11 @@ Route10North_MapScriptHeader:
 
 Route10Zapdos:
 	faceplayer
+	opentext
+	writetext ZapdosText
 	cry ZAPDOS
+	pause 15
+	closetext
 	loadwildmon ZAPDOS, 60
 	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
@@ -46,6 +50,10 @@ PowerPlantSign:
 
 Route10PokeCenterSign:
 	jumpstd pokecentersign
+
+ZapdosText:
+	text "Gyaoo!"
+	done
 
 PowerPlantSignText:
 	text "Kanto Power Plant"
@@ -71,4 +79,4 @@ Route10North_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_BIRD, 5, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
+	person_event SPRITE_ZAPDOS, 5, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS

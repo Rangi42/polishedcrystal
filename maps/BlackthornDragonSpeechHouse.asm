@@ -1,6 +1,6 @@
 const_value set 2
 	const BLACKTHORNDRAGONSPEECHHOUSE_GRANNY
-	const BLACKTHORNDRAGONSPEECHHOUSE_EKANS
+	const BLACKTHORNDRAGONSPEECHHOUSE_DRATINI
 
 BlackthornDragonSpeechHouse_MapScriptHeader:
 .MapTriggers:
@@ -63,4 +63,4 @@ BlackthornDragonSpeechHouse_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_GRANNY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x195949, -1
-	person_event SPRITE_EKANS, 5, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Dratini, -1
+	person_event SPRITE_DRATINI, 5, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Dratini, -1

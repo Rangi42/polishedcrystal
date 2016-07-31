@@ -63,7 +63,7 @@
 
 ## New content
 
-* Add Young Couple and Double Team trainer classes
+* Add Young Couple, Double Team, Dragon Tamer, PI, and Roughneck/Cue Ball trainer classes
 * Lt. Surge's traps from RBY
 * Unown ? and ! from Gen III
 * More held items (some of: Life Orb, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens, Light Clay, Damp Rock, Heat Rock, Smooth Rock)

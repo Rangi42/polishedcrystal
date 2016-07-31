@@ -12,7 +12,11 @@ SeafoamIslandsB4F_MapScriptHeader:
 
 SeafoamIslandsArticuno:
 	faceplayer
+	opentext
+	writetext ArticunoText
 	cry ARTICUNO
+	pause 15
+	closetext
 	loadwildmon ARTICUNO, 60
 	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
@@ -26,6 +30,10 @@ SeafoamIslandsB4FNeverMeltIce:
 
 SeafoamIslandsB4FUltraBall:
 	itemball ULTRA_BALL
+
+ArticunoText:
+	text "Gyaoo!"
+	done
 
 SeafoamIslandsB4F_MapEventHeader:
 	; filler
@@ -48,6 +56,6 @@ SeafoamIslandsB4F_MapEventHeader:
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_BIRD, 13, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	person_event SPRITE_ARTICUNO, 13, 22, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	person_event SPRITE_POKE_BALL, 7, 33, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB4FNeverMeltIce, EVENT_SEAFOAM_ISLANDS_B4F_NEVERMELTICE
 	person_event SPRITE_POKE_BALL, 2, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB4FUltraBall, EVENT_SEAFOAM_ISLANDS_B4F_ULTRA_BALL
