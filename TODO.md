@@ -2,11 +2,17 @@
 
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
+* TMs refresh PP
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Make the gatehouse roof inside Yellow Forest the same as outside
 * Make the gatehouse above the Ruins of Alph the same from Route 36
 * Rocket outside Radio Tower isn't visible from Goldenrod Harbor (event is EVENT\_GOLDENROD\_CITY\_ROCKET\_SCOUT)
+* Ellipses print too high in [a certain message](http://imgur.com/a/fBKWK)
+* Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
+* Dig sometimes prints that both Pokémon dug a hole
+* Per-turn status animations might not always work
+* Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313)?
 
 
 ## Battle mechanics
@@ -65,7 +71,12 @@
 ## New content
 
 * Add Young Couple, Double Team, Dragon Tamer, PI, and Roughneck/Cue Ball trainer classes
+* Use Mmmmmm's Shoal Cave / Mt. Pyre music for Seafoam Islands
 * Use Mmmmmm's B/W Route 12 music for a new location
+* Extend Lugia's chamber with flute music
+* Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
+* Use Mateo's X/Y Hex Maniac sprite devamp (or make an X/Y one)?
+* Add wild Pokémon to Navel Rock?
 * Lt. Surge's traps from RBY
 * Unown ? and ! from Gen III
 * More held items (some of: Life Orb, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens, Light Clay, Damp Rock, Heat Rock, Smooth Rock)
@@ -95,9 +106,15 @@
 * Replace Cal in Trainer Hall with whichever gender character you don't pick
 * Include Lyra/Kotone as a friendly rival like in HGSS
   * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
-* Add a store to buy room decorations that Mom doesn't
+* Add a store to buy room decorations that Mom doesn't (the Goldenrod Dept. Store rooftop bargain sale and the harbor are good)
 * Sometimes wild Pokémon know an egg move
 * Breedable legendary trios with a certain held item
 * Longer player and rival names
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
+* Replace Smoochum and Stantler with Electivire and Magmortar (Magmarizer in Cinnabar Volcano, Electirizer in Rock Tunnel 2F)
+* Replace Hoppip+Skiploom+Jumpluff with Sunkern+Sunflora and Rhyperior (Protector in Mt. Mortar)
+* Replace Aipom with Shuckle
+* Retype Sunflora to Grass/Fire
+* Retype Electivire to Electric/Fighting
+* Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
