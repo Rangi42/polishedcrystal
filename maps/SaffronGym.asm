@@ -271,15 +271,18 @@ UnknownText_0x18a136:
 	done
 
 PsychicLeonSeenText:
-	text "TODO"
+	text "You cannot resist"
+	line "my psychic power!"
 	done
 
 PsychicLeonBeatenText:
-	text "TODO"
+	text "My prediction was"
+	line "inaccurate…"
 	done
 
 PsychicLeonAfterText:
-	text "TODO"
+	text "Sabrina's power is"
+	line "greater than mine!"
 	done
 
 PsychicJaredSeenText:
@@ -302,27 +305,36 @@ UnknownText_0x18a1b3:
 	done
 
 HexManiacLunaSeenText:
-	text "TODO"
+	text "Abra, Kadabra,"
+	line "Alakazam!"
 	done
 
 HexManiacLunaBeatenText:
-	text "TODO"
+	text "My curse failed?"
 	done
 
 HexManiacLunaAfterText:
-	text "TODO"
+	text "Alakazam is a pow-"
+	line "erful #mon,"
+
+	para "so Hex Maniacs use"
+	line "its name for"
+	cont "powerful spells."
 	done
 
 HexManiacNatalieSeenText:
-	text "TODO"
+	text "Let us do battle!"
+	line "Mwahaha!"
 	done
 
 HexManiacNatalieBeatenText:
-	text "TODO"
+	text "Mwaha--cough!"
 	done
 
 HexManiacNatalieAfterText:
-	text "TODO"
+	text "Maybe I'm not cut"
+	line "out to be a Hex"
+	cont "Maniac…"
 	done
 
 PsychicFranklinSeenText:

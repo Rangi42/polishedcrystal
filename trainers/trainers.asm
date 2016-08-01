@@ -8098,9 +8098,9 @@ HexManiacGroup:
 	db 0 ; normal
 
 	; party
-	db 44, DROWZEE
-	db 44, DROWZEE
-	db 46, HYPNO
+	db 45, DROWZEE
+	db 45, DROWZEE
+	db 47, HYPNO
 
 	db $ff ; end
 
