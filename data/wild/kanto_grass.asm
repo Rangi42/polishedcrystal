@@ -516,25 +516,25 @@
 	map ROUTE_13
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 43, NIDORINO
-	db 43, NIDORINA
+	db 44, NIDORINO
+	db 44, NIDORINA
 	db 45, PIDGEOTTO
 	db 45, WEEPINBELL
 	db 48, SKIPLOOM
 	db 45, JUMPLUFF
 	db 46, JUMPLUFF
 	; day
-	db 43, NIDORINO
-	db 43, NIDORINA
+	db 44, NIDORINO
+	db 44, NIDORINA
 	db 45, PIDGEOTTO
 	db 45, WEEPINBELL
 	db 48, SKIPLOOM
 	db 45, JUMPLUFF
 	db 46, JUMPLUFF
 	; nite
-	db 43, VENOMOTH
+	db 44, VENOMOTH
 	db 45, NOCTOWL
-	db 43, QUAGSIRE
+	db 44, QUAGSIRE
 	db 45, GLOOM
 	db 45, VENOMOTH
 	db 47, QUAGSIRE
@@ -759,29 +759,29 @@
 	map ROUTE_25
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 43, BUTTERFREE
-	db 43, BEEDRILL
-	db 46, PIDGEOTTO
-	db 45, WEEPINBELL
-	db 44, PIDGEOTTO
+	db 44, BUTTERFREE
+	db 44, BEEDRILL
+	db 47, PIDGEOTTO
+	db 46, WEEPINBELL
+	db 45, PIDGEOTTO
+	db 48, KADABRA
 	db 47, KADABRA
-	db 46, KADABRA
 	; day
-	db 43, BUTTERFREE
-	db 43, BEEDRILL
-	db 46, PIDGEOTTO
-	db 45, WEEPINBELL
-	db 44, PIDGEOTTO
+	db 44, BUTTERFREE
+	db 44, BEEDRILL
+	db 47, PIDGEOTTO
+	db 46, WEEPINBELL
+	db 45, PIDGEOTTO
+	db 48, KADABRA
 	db 47, KADABRA
-	db 46, KADABRA
 	; nite
-	db 43, VENOMOTH
-	db 43, VENOMOTH
-	db 46, NOCTOWL
+	db 44, VENOMOTH
+	db 44, VENOMOTH
+	db 47, NOCTOWL
+	db 46, GLOOM
 	db 45, GLOOM
-	db 44, GLOOM
+	db 48, KADABRA
 	db 47, KADABRA
-	db 46, KADABRA
 
 	map ROUTE_26
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1218,82 +1218,82 @@
 	map CINNABAR_VOLCANO_1F
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 42, KOFFING
-	db 44, GRAVELER
+	db 46, KOFFING
+	db 47, GRAVELER
 	db 48, SLUGMA
-	db 42, MAGCARGO
+	db 46, MAGCARGO
 	db 48, MAGMAR
 	db 48, MAGMAR
 	db 49, MAGMAR
 	; day
-	db 42, KOFFING
-	db 44, GRAVELER
+	db 46, KOFFING
+	db 47, GRAVELER
 	db 48, SLUGMA
-	db 42, MAGCARGO
+	db 46, MAGCARGO
 	db 48, MAGMAR
 	db 48, MAGMAR
 	db 49, MAGMAR
 	; nite
-	db 42, KOFFING
+	db 46, KOFFING
 	db 48, GASTLY
-	db 44, GRAVELER
+	db 47, GRAVELER
 	db 48, SLUGMA
-	db 42, MAGCARGO
+	db 46, MAGCARGO
 	db 48, MAGMAR
 	db 49, MAGMAR
 
 	map CINNABAR_VOLCANO_B1F
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 44, GRAVELER
-	db 46, WEEZING
-	db 44, MAGCARGO
-	db 42, MAGMAR
-	db 44, MAGMAR
+	db 47, GRAVELER
+	db 48, WEEZING
+	db 47, MAGCARGO
+	db 46, MAGMAR
+	db 49, MAGMAR
+	db 50, STEELIX
 	db 48, STEELIX
-	db 46, STEELIX
 	; day
-	db 44, GRAVELER
-	db 46, WEEZING
-	db 44, MAGCARGO
-	db 42, MAGMAR
-	db 44, MAGMAR
+	db 47, GRAVELER
+	db 48, WEEZING
+	db 47, MAGCARGO
+	db 46, MAGMAR
+	db 49, MAGMAR
+	db 50, STEELIX
 	db 48, STEELIX
-	db 46, STEELIX
 	; nite
-	db 44, HAUNTER
-	db 44, GRAVELER
-	db 46, WEEZING
-	db 44, MAGCARGO
-	db 42, MAGMAR
-	db 44, MAGMAR
+	db 47, HAUNTER
+	db 48, GRAVELER
+	db 47, WEEZING
+	db 46, MAGCARGO
+	db 49, MAGMAR
+	db 50, MAGMAR
 	db 48, STEELIX
 
 	map CINNABAR_VOLCANO_B2F
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 48, MAGCARGO
-	db 50, WEEZING
-	db 48, SLUGMA
-	db 50, MAGMAR
-	db 44, MAGMAR
-	db 48, STEELIX
-	db 50, STEELIX
+	db 49, MAGCARGO
+	db 51, WEEZING
+	db 49, SLUGMA
+	db 51, MAGMAR
+	db 47, MAGMAR
+	db 49, STEELIX
+	db 51, STEELIX
 	; day
-	db 48, MAGCARGO
-	db 50, WEEZING
-	db 48, SLUGMA
-	db 50, MAGMAR
-	db 44, MAGMAR
-	db 48, STEELIX
-	db 50, STEELIX
+	db 49, MAGCARGO
+	db 51, WEEZING
+	db 49, SLUGMA
+	db 51, MAGMAR
+	db 47, MAGMAR
+	db 49, STEELIX
+	db 51, STEELIX
 	; nite
-	db 48, MAGCARGO
-	db 50, WEEZING
-	db 50, MAGMAR
-	db 44, MAGMAR
-	db 50, STEELIX
-	db 48, GENGAR
-	db 50, GENGAR
+	db 49, MAGCARGO
+	db 51, WEEZING
+	db 51, MAGMAR
+	db 47, MAGMAR
+	db 51, STEELIX
+	db 49, GENGAR
+	db 51, GENGAR
 
 	db -1 ; end

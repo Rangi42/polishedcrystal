@@ -1029,26 +1029,26 @@
 	map SILVER_CAVE_ROOM_1
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 53, GRAVELER
+	db 54, GRAVELER
 	db 54, URSARING
-	db 52, ONIX
+	db 53, ONIX
 	db 55, MAGMAR
 	db 55, GOLBAT
 	db 15, LARVITAR
 	db 15, LARVITAR
 	; day
-	db 53, GRAVELER
+	db 54, GRAVELER
 	db 54, URSARING
-	db 52, ONIX
+	db 53, ONIX
 	db 55, MAGMAR
 	db 55, GOLBAT
 	db 15, LARVITAR
 	db 15, LARVITAR
 	; nite
-	db 53, GRAVELER
+	db 54, GRAVELER
 	db 54, GOLBAT
-	db 52, ONIX
-	db 52, GOLBAT
+	db 53, ONIX
+	db 53, GOLBAT
 	db 55, GOLDUCK
 	db 56, GOLBAT
 	db 56, GOLBAT
