@@ -14,9 +14,9 @@
 
 	map ROUTE_4
 	db 4 percent ; encounter rate
-	db 40, MAGIKARP
-	db 45, POLIWAG
-	db 40, POLIWHIRL
+	db 45, MAGIKARP
+	db 50, POLIWAG
+	db 45, POLIWHIRL
 
 	map ROUTE_6
 	db 2 percent ; encounter rate
@@ -26,63 +26,63 @@
 
 	map ROUTE_9
 	db 4 percent ; encounter rate
-	db 45, MAGIKARP
-	db 40, POLIWAG
-	db 45, POLIWHIRL
+	db 47, MAGIKARP
+	db 42, POLIWAG
+	db 47, POLIWHIRL
 
 	map ROUTE_10_NORTH
 	db 4 percent ; encounter rate
-	db 45, MAGIKARP
-	db 40, PSYDUCK
-	db 45, GOLDUCK
+	db 47, MAGIKARP
+	db 42, PSYDUCK
+	db 47, GOLDUCK
 
 	map ROUTE_12
 	db 6 percent ; encounter rate
 	db 45, TENTACOOL
-	db 45, QUAGSIRE
-	db 45, TENTACRUEL
+	db 50, QUAGSIRE
+	db 50, TENTACRUEL
 
 	map ROUTE_13
 	db 6 percent ; encounter rate
 	db 45, TENTACOOL
-	db 45, QUAGSIRE
-	db 45, TENTACRUEL
+	db 50, QUAGSIRE
+	db 50, TENTACRUEL
 
 	map ROUTE_19
 	db 6 percent ; encounter rate
 	db 45, TENTACOOL
-	db 40, TENTACOOL
-	db 45, TENTACRUEL
+	db 50, TENTACOOL
+	db 50, TENTACRUEL
 
 	map ROUTE_20
 	db 6 percent ; encounter rate
 	db 45, TENTACOOL
-	db 40, TENTACOOL
-	db 45, TENTACRUEL
+	db 50, TENTACOOL
+	db 50, TENTACRUEL
 
 	map ROUTE_21
 	db 6 percent ; encounter rate
 	db 45, TENTACOOL
-	db 40, TENTACOOL
-	db 45, TENTACRUEL
+	db 50, TENTACOOL
+	db 50, TENTACRUEL
 
 	map ROUTE_22
 	db 2 percent ; encounter rate
-	db 40, MAGIKARP
+	db 45, MAGIKARP
 	db 45, POLIWAG
-	db 40, POLIWHIRL
+	db 50, POLIWHIRL
 
 	map ROUTE_24
 	db 4 percent ; encounter rate
-	db 40, MAGIKARP
-	db 45, POLIWAG
-	db 40, POLIWHIRL
+	db 42, MAGIKARP
+	db 47, POLIWAG
+	db 42, POLIWHIRL
 
 	map ROUTE_25
 	db 4 percent ; encounter rate
-	db 40, MAGIKARP
-	db 45, POLIWAG
-	db 40, POLIWHIRL
+	db 42, MAGIKARP
+	db 47, POLIWAG
+	db 42, POLIWHIRL
 
 	map ROUTE_26
 	db 6 percent ; encounter rate

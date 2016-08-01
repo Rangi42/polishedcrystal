@@ -297,6 +297,7 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 * Add: Whitney uses Attract.
 * Add: Pryce uses Mamoswine, not Piloswine.
 * Add: Can't fight Pryce before Jasmine.
+* Add: Guide the player in order: Vermilion City, Saffron City, Cerulean City, Rock Tunnel, Lavender Town.
 * Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
 * Fix: Bill's team is broken.
 * Fix: Falkner says TMs are one use only.

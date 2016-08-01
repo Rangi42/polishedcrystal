@@ -1491,9 +1491,9 @@ Group21Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
 	; 6 walking sprites
+	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWAG
-	; 7 total sprites
-	db SPRITE_RAIKOU
+	; 8 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI
