@@ -8,7 +8,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is 1.1.0 as of July 23, 2016.
+The most recent version is 1.1.1 as of August 1, 2016.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
@@ -21,10 +21,10 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
-* [Pokémon Polished Crystal 1.1.0](patches/polishedcrystal-1.1.0.ips)  
-  (Patched ROM `md5: 63821253abc4b98083a67556eb9cdf41`)
-* [Pokémon Polished Crystal (Faithful) 1.1.0](patches/polishedcrystal-faithful-1.1.0.ips)  
-  (Patched ROM `md5: 1a3bbabf4b9fd1ad687a374c9f70bf69`)
+* [Pokémon Polished Crystal 1.1.1](patches/polishedcrystal-1.1.1.ips)  
+  (Patched ROM `md5: ae1b9a12a4a303ae67f388aecf2d3179`)
+* [Pokémon Polished Crystal (Faithful) 1.1.1](patches/polishedcrystal-faithful-1.1.1.ips)  
+  (Patched ROM `md5: 5db2c6000b19b60ec7662a024b95438c`)
 
 ## Features
 
@@ -140,7 +140,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 * Unique mini sprites for each Pokémon (thanks to [this patch](http://www.pokecommunity.com/showthread.php?t=338470))
 
 * Three of Prof. Oak's aides give you items as you complete the Pokédex
-* Bill's grandpa gives you one of each evolutionary stone
+* Bill's grandpa gives you one of each evolutionary stone in Goldenrod City
 * Nidorina and Nidoqueen can breed
 * Fly to the Rock Tunnel/Power Plant Pokémon Center
 * Always show numbers in Pokédex, even in Johto order
@@ -277,33 +277,34 @@ These changes have been made since the previous 1.1.0 release. If you build the 
 
 * Add: New music by Mmmmmm and Pum.
 * Add: More trainer dialog.
+* Add: Encounter rival in Azalea Town *after* beating Bugsy.
+* Add: Can't fight Pryce before Jasmine.
+* Add: Guide the player in order: Vermilion City, Saffron City, Cerulean City, Rock Tunnel, Lavender Town.
+* Add: Receive Eevee from Bill in Ecruteak City.
+* Add: Move Bill's grandfather to Goldenrod City and Bill to Cerulean Cape
+* Add: Buff trainers and wild Pokémon so that the level curve ends at 100 for the final battle.
+* Add: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, and Mr. Mime.
+* Add: Typhlosion is Fire/Ground, Feraligatr is Water/Dark, and Blastoise is Water/Steel.
+* Add: Goldenrod City move tutor is no longer once per day.
+* Add: Buy Exp. Share in Celadon Dept. Store.
+* Add: Cheaper TMs in Goldenrod Dept. Store.
+* Add: Better in-game trade DVs.
+* Add: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
+* Add: Lower Pokédex requirements for items from Prof. Oak's aides.
+* Add: Get False Swipe TM as a gift, not Calm Mind.
+* Add: Show shiny icon in battle (thanks to tonyism).
+* Add: Sprite for Rocket Grunt♀ by Mateo.
+* Add: Pryce uses Mamoswine, not Piloswine.
+* Add: Whitney uses Attract.
 * Add: Wild Sneasel may hold a Razor Claw.
 * Add: Wild Gligar may hold a Razor Fang.
 * Add: Wild Oddish are rare in Ilex Forest during the day.
 * Add: Pokémon Go character names as possible Wonder Trade OTs.
-* Add: Buy Exp. Share in Celadon Dept. Store.
-* Add: Buff trainers and wild Pokémon so that the level curve ends at 100 for the final battle.
-* Add: Typhlosion is Fire/Ground, Feraligatr is Water/Dark, and Blastoise is Water/Steel.
-* Add: Goldenrod City move tutor is no longer once per day.
-* Add: Show shiny icon in battle (thanks to tonyism).
-* Add: Sprite for Rocket Grunt♀ by Mateo.
-* Add: Receive Eevee from Bill in Ecruteak City.
-* Add: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, and Mr. Mime.
-* Add: Encounter rival in Azalea Town *after* beating Bugsy.
-* Add: Better in-game trade DVs.
-* Add: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
-* Add: Cheaper TMs in Goldenrod Dept. Store.
-* Add: Lower Pokédex requirements for items from Prof. Oak's aides.
-* Add: Get False Swipe TM as a gift, not Calm Mind.
-* Add: Whitney uses Attract.
-* Add: Pryce uses Mamoswine, not Piloswine.
-* Add: Can't fight Pryce before Jasmine.
-* Add: Guide the player in order: Vermilion City, Saffron City, Cerulean City, Rock Tunnel, Lavender Town.
 * Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
 * Fix: Bill's team is broken.
 * Fix: Falkner says TMs are one use only.
-* Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 * Fix: Buff Kimono Girls.
+* Fix: Slightly debuff Bugsy, Whitney, and two trainers.
 * Fix: Crunch lowers Defense, not Special Defense.
 * Fix: Astonish is physical, not special.
 * Fix: Cliff Edge Gate uses Route 36 music.
