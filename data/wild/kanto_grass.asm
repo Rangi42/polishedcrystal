@@ -138,29 +138,29 @@
 	map VICTORY_ROAD
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 34, GRAVELER
-	db 32, RHYHORN
-	db 33, ONIX
-	db 36, GOLBAT
-	db 38, SANDSLASH
-	db 40, RHYDON
-	db 40, RHYDON
+	db 39, GRAVELER
+	db 38, RHYHORN
+	db 37, ONIX
+	db 38, GOLBAT
+	db 40, SANDSLASH
+	db 42, RHYDON
+	db 41, STEELIX
 	; day
-	db 34, GRAVELER
-	db 32, RHYHORN
-	db 33, ONIX
-	db 36, GOLBAT
-	db 38, SANDSLASH
-	db 40, RHYDON
-	db 40, RHYDON
+	db 39, GRAVELER
+	db 38, RHYHORN
+	db 37, ONIX
+	db 38, GOLBAT
+	db 40, SANDSLASH
+	db 42, RHYDON
+	db 41, STEELIX
 	; nite
-	db 34, GOLBAT
-	db 32, GRAVELER
-	db 33, ONIX
-	db 36, GRAVELER
-	db 38, HAUNTER
-	db 40, STEELIX
-	db 40, STEELIX
+	db 39, GOLBAT
+	db 38, GRAVELER
+	db 37, ONIX
+	db 38, GRAVELER
+	db 40, HAUNTER
+	db 42, STEELIX
+	db 41, RHYDON
 
 	map TOHJO_FALLS
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
@@ -786,56 +786,56 @@
 	map ROUTE_26
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 28, DODUO
-	db 28, SANDSLASH
-	db 32, PONYTA
-	db 30, RATICATE
-	db 30, DODUO
-	db 30, ARBOK
-	db 30, ARBOK
+	db 36, DODUO
+	db 36, SANDSLASH
+	db 40, PONYTA
+	db 38, RATICATE
+	db 38, DODUO
+	db 38, ARBOK
+	db 38, ARBOK
 	; day
-	db 28, DODUO
-	db 28, SANDSLASH
-	db 32, PONYTA
-	db 30, RATICATE
-	db 30, DODUO
-	db 30, ARBOK
-	db 30, ARBOK
+	db 36, DODUO
+	db 36, SANDSLASH
+	db 40, PONYTA
+	db 38, RATICATE
+	db 38, DODUO
+	db 38, ARBOK
+	db 38, ARBOK
 	; nite
-	db 28, NOCTOWL
-	db 28, RATICATE
-	db 32, NOCTOWL
-	db 30, RATICATE
-	db 30, QUAGSIRE
-	db 30, QUAGSIRE
-	db 30, QUAGSIRE
+	db 36, NOCTOWL
+	db 36, RATICATE
+	db 40, NOCTOWL
+	db 38, RATICATE
+	db 38, QUAGSIRE
+	db 38, QUAGSIRE
+	db 38, QUAGSIRE
 
 	map ROUTE_27
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 28, DODUO
-	db 28, ARBOK
-	db 30, RATICATE
-	db 30, DODUO
-	db 32, PONYTA
-	db 30, DODRIO
-	db 30, DODRIO
+	db 35, DODUO
+	db 35, ARBOK
+	db 37, RATICATE
+	db 37, DODUO
+	db 39, PONYTA
+	db 37, DODRIO
+	db 37, DODRIO
 	; day
-	db 28, DODUO
-	db 28, ARBOK
-	db 30, RATICATE
-	db 30, DODUO
-	db 32, PONYTA
-	db 30, DODRIO
-	db 30, DODRIO
+	db 35, DODUO
+	db 35, ARBOK
+	db 37, RATICATE
+	db 37, DODUO
+	db 39, PONYTA
+	db 37, DODRIO
+	db 37, DODRIO
 	; nite
-	db 28, QUAGSIRE
-	db 28, NOCTOWL
-	db 30, RATICATE
-	db 30, QUAGSIRE
-	db 32, NOCTOWL
-	db 32, NOCTOWL
-	db 32, NOCTOWL
+	db 35, QUAGSIRE
+	db 35, NOCTOWL
+	db 37, RATICATE
+	db 37, QUAGSIRE
+	db 39, NOCTOWL
+	db 37, NOCTOWL
+	db 37, NOCTOWL
 
 	map ROUTE_28
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

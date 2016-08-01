@@ -1,6 +1,7 @@
 ## Bugs
 
 * Move Reminder doesn't list all possible moves
+* Thief permanently steals held items
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Make the gatehouse roof inside Yellow Forest the same as outside
@@ -64,6 +65,7 @@
 ## New content
 
 * Add Young Couple, Double Team, Dragon Tamer, PI, and Roughneck/Cue Ball trainer classes
+* Use Mmmmmm's B/W Route 12 music for a new location
 * Lt. Surge's traps from RBY
 * Unown ? and ! from Gen III
 * More held items (some of: Life Orb, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens, Light Clay, Damp Rock, Heat Rock, Smooth Rock)
@@ -75,10 +77,12 @@
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower
 * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
 * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
+* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere
 
 
 ## New features
 
+* Former trade evolutions work by maximizing vitamins (Machoke: Protein, Graveler: Iron, Haunter: Carbos, Alakazam: Calcium)
 * Somebody post–Elite Four shows you Raikou and Entei in case you've never encountered them roaming
 * Add an event based on the Spell of the Unown movie after you catch all 26
 * Fourth stat screen showing Poké Seer's data

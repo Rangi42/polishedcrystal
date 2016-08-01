@@ -108,6 +108,7 @@ Music_Route47HGSS
 Music_HoOhBattleHGSS
 Music_LugiaBattleHGSS
 Music_Route210DPPt
+Music_Route12BW
 Music_ReversalMountainWhite2
 Music_ChampionBattleB2W2
 Music_PowerPlantXY
@@ -115,6 +116,7 @@ Music_PokemonTowerRBY
 Music_CinnabarMansionRBY
 Music_DiglettsCaveRBY
 Music_CeruleanCaveRBY
+Music_Route120RSE
 Music_AbandonedShipRSE
 Music_FrontierBrainBattleRSE
 Music_KantoLegendBattleXY

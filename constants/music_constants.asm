@@ -110,17 +110,19 @@
 	const MUSIC_HO_OH_BATTLE_HGSS            ; 6b
 	const MUSIC_LUGIA_BATTLE_HGSS            ; 6c
 	const MUSIC_ROUTE_210_DPPT               ; 6d
-	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 6e
-	const MUSIC_CHAMPION_BATTLE_B2W2         ; 6f
-	const MUSIC_POWER_PLANT_XY               ; 70
-	const MUSIC_POKEMON_TOWER_RBY            ; 71
-	const MUSIC_CINNABAR_MANSION_RBY         ; 72
-	const MUSIC_DIGLETTS_CAVE_RBY            ; 73
-	const MUSIC_CERULEAN_CAVE_RBY            ; 74
-	const MUSIC_ABANDONED_SHIP_RSE           ; 75
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 76
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 77
-	const MUSIC_SURFING_PIKACHU              ; 78
-	const MUSIC_LAWRENCE                     ; 79
+	const MUSIC_ROUTE_12_BW                  ; 6e
+	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 6f
+	const MUSIC_CHAMPION_BATTLE_B2W2         ; 70
+	const MUSIC_POWER_PLANT_XY               ; 71
+	const MUSIC_POKEMON_TOWER_RBY            ; 72
+	const MUSIC_CINNABAR_MANSION_RBY         ; 73
+	const MUSIC_DIGLETTS_CAVE_RBY            ; 74
+	const MUSIC_CERULEAN_CAVE_RBY            ; 75
+	const MUSIC_ROUTE_120_RSE                ; 76
+	const MUSIC_ABANDONED_SHIP_RSE           ; 77
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 78
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 79
+	const MUSIC_SURFING_PIKACHU              ; 7a
+	const MUSIC_LAWRENCE                     ; 7b
 
 MUSIC_MAHOGANY_MART EQU $64 ; leftover from gold

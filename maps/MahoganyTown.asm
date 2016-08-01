@@ -3,7 +3,6 @@ const_value set 2
 	const MAHOGANYTOWN_GRAMPS
 	const MAHOGANYTOWN_FISHER
 	const MAHOGANYTOWN_LASS
-	const MAHOGANYTOWN_ROCKET_GIRL
 
 MahoganyTown_MapScriptHeader:
 .MapTriggers:
@@ -113,9 +112,6 @@ FisherScript_0x190092:
 
 LassScript_0x190095:
 	jumptextfaceplayer UnknownText_0x1902f2
-
-MahoganyTownRocketGirlScript:
-	jumptextfaceplayer MahoganyTownRocketGirlText
 
 MahoganyTownSign:
 	jumptext MahoganyTownSignText
@@ -230,14 +226,6 @@ UnknownText_0x1902f2:
 	line "else has."
 	done
 
-MahoganyTownRocketGirlText:
-	text "You can't go this"
-	line "way."
-
-	para "Now beat it before"
-	line "I beat you!"
-	done
-
 MahoganyTownSignText:
 	text "Mahogany Town"
 
@@ -285,9 +273,8 @@ MahoganyTown_MapEventHeader:
 	signpost 13, 16, SIGNPOST_READ, MahoganyTownPokeCenterSign
 
 .PersonEvents:
-	db 5
+	db 4
 	person_event SPRITE_POKEFAN_M, 8, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
 	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x190092, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
 	person_event SPRITE_LASS, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x190095, EVENT_MAHOGANY_MART_OWNERS
-	person_event SPRITE_ROCKET_GIRL, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MahoganyTownRocketGirlScript, EVENT_BEAT_JASMINE

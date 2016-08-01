@@ -8,6 +8,8 @@ const_value set 2
 	const ROUTE42_POKE_BALL1
 	const ROUTE42_POKE_BALL2
 	const ROUTE42_SUICUNE
+	const ROUTE42_OFFICER1
+	const ROUTE42_OFFICER2
 
 Route42_MapScriptHeader:
 .MapTriggers:
@@ -186,6 +188,9 @@ HikerBenjaminScript:
 	closetext
 	end
 
+Route42OfficerScript:
+	jumptextfaceplayer Route42OfficerText
+
 Route42Sign1:
 	jumptext Route42Sign1Text
 
@@ -293,6 +298,18 @@ UnknownText_0x1a94d6:
 	line "it. Please?"
 	done
 
+Route42OfficerText:
+	text "Sorry, you can't"
+	line "come this way."
+
+	para "There's been an"
+	line "avalanche on"
+	cont "Mt.Mortar."
+
+	para "We're still clear-"
+	line "ing the rubble."
+	done
+
 Route42Sign1Text:
 	text "Route 42"
 
@@ -346,7 +363,7 @@ Route42_MapEventHeader:
 	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
 
 .PersonEvents:
-	db 9
+	db 11
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
@@ -356,3 +373,5 @@ Route42_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 4, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
 	person_event SPRITE_POKE_BALL, 8, 33, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION
 	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE

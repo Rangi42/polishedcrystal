@@ -165,18 +165,20 @@ INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rse/route120.asm"
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
-INCLUDE "audio/music/xy/kantolegendbattle.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
 INCLUDE "audio/music/rby/lawrence.asm"
 
 
 SECTION "Extra Songs 4", ROMX
 
+INCLUDE "audio/music/bw/route12.asm"
 INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 INCLUDE "audio/music/b2w2/championbattle.asm"
 INCLUDE "audio/music/xy/powerplant.asm"
+INCLUDE "audio/music/xy/kantolegendbattle.asm"
 
 
 SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]

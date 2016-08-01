@@ -91,7 +91,7 @@ GyaradosScript_0x70063:
 	pause 15
 	cry GYARADOS
 	closetext
-	loadwildmon GYARADOS, 30
+	loadwildmon GYARADOS, 35
 	writecode VAR_BATTLETYPE, BATTLETYPE_SHINY
 	startbattle
 	if_equal $1, UnknownScript_0x7007a

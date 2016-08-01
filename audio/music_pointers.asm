@@ -126,6 +126,7 @@
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
 	dba Music_Route210DPPt
+	dba Music_Route12BW
 	dba Music_ReversalMountainWhite2
 	dba Music_ChampionBattleB2W2
 	dba Music_PowerPlantXY
@@ -133,6 +134,7 @@
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
+	dba Music_Route120RSE
 	dba Music_AbandonedShipRSE
 	dba Music_FrontierBrainBattleRSE
 	dba Music_KantoLegendBattleXY

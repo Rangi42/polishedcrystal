@@ -228,7 +228,7 @@ GruntM19Script:
 
 RocketElectrode1:
 	cry ELECTRODE
-	loadwildmon ELECTRODE, 23
+	loadwildmon ELECTRODE, 33
 	startbattle
 	iftrue UnknownScript_0x6d182
 	disappear TEAMROCKETBASEB2F_ELECTRODE1
@@ -246,7 +246,7 @@ RocketElectrode1:
 
 RocketElectrode2:
 	cry ELECTRODE
-	loadwildmon ELECTRODE, 23
+	loadwildmon ELECTRODE, 33
 	startbattle
 	iftrue UnknownScript_0x6d182
 	disappear TEAMROCKETBASEB2F_ELECTRODE2
@@ -264,7 +264,7 @@ RocketElectrode2:
 
 RocketElectrode3:
 	cry ELECTRODE
-	loadwildmon ELECTRODE, 23
+	loadwildmon ELECTRODE, 33
 	startbattle
 	iftrue UnknownScript_0x6d182
 	disappear TEAMROCKETBASEB2F_ELECTRODE3
