@@ -2248,10 +2248,10 @@ Rival1Group:
 		db CONFUSE_RAY
 
 	db 22, BAYLEEF, BERRY
-		db GROWL
 		db REFLECT
 		db RAZOR_LEAF
 		db POISONPOWDER
+		db FAIRY_WIND
 
 	db $ff ; end
 
@@ -2469,7 +2469,7 @@ Rival1Group:
 		db SLASH
 		db SURF
 		db CRUNCH
-		db LEER
+		db NIGHT_SLASH
 
 	db $ff ; end
 
@@ -2703,8 +2703,8 @@ Rival2Group:
 
 	db 65, TYPHLOSION, CHARCOAL
 		db FLAME_WHEEL
-		db REVERSAL
-		db QUICK_ATTACK
+		db EARTH_POWER
+		db THUNDERPUNCH
 		db SMOKESCREEN
 
 	db $ff ; end
@@ -2794,8 +2794,8 @@ Rival2Group:
 		db REFLECT
 
 	db 72, MEGANIUM, LEFTOVERS
-		db GIGA_DRAIN
-		db BODY_SLAM
+		db PETAL_DANCE
+		db MOONBLAST
 		db LIGHT_SCREEN
 		db SAFEGUARD
 
@@ -2842,7 +2842,7 @@ Rival2Group:
 	db 72, TYPHLOSION, LEFTOVERS
 		db FIRE_BLAST
 		db FOCUS_BLAST
-		db EXTRASENSORY
+		db EARTH_POWER
 		db SMOKESCREEN
 
 	db $ff ; end
