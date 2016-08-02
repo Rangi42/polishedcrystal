@@ -165,6 +165,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
    * Farfetch'd is Fighting/Flying
    * Ninetales is Fire/Ghost
    * Golduck is Water/Psychic
+   * Meganium is Grass/Fairy
    * Typhlosion is Fire/Ground
    * Feraligatr is Water/Dark
    * Noctowl is Flying/Psychic
