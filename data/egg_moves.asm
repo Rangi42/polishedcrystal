@@ -508,6 +508,7 @@ ChikoritaEggMoves:
 	db ANCIENTPOWER
 	db COUNTER
 	db SWORDS_DANCE
+	db CHARM
 	db $ff
 
 CyndaquilEggMoves:

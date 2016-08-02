@@ -278,5 +278,8 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 1.1.1 release. If you build the project as-is, it will include all of them.
 
+* Add: Meganium is Grass/Fairy, and learns Fairy Wind, Moonblast, and DazzlinGleam.
+* Add: Typhlosion learns Earth Power and Earthquake.
+* Add: Feraligatr learns Night Slash.
 * Add: Blastoise learns Iron Head.
 * Add: Buff Smeargle.

@@ -2788,7 +2788,7 @@ ChikoritaEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, SYNTHESIS
 	db 17, REFLECT
-	db 20, LEECH_SEED ; Magical Leaf → egg move
+	db 20, FAIRY_WIND ; Magical Leaf → new move
 	db 23, SEED_BOMB ; Natural Gift → tutor move
 	db 28, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 31, LIGHT_SCREEN
@@ -2797,6 +2797,7 @@ ChikoritaEvosAttacks:
 	db 42, HEAL_BELL ; Aromatherapy → similar move
 	db 45, SOLAR_BEAM
 	db 48, OUTRAGE ; HGSS tutor move
+	db 53, MOONBLAST ; new move
 	db 0 ; no more level-up moves
 
 BayleefEvosAttacks:
@@ -2808,7 +2809,7 @@ BayleefEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, SYNTHESIS
 	db 18, REFLECT
-	db 22, LEECH_SEED ; Magical Leaf → egg move
+	db 22, FAIRY_WIND ; Magical Leaf → new move
 	db 26, SEED_BOMB ; Natural Gift → tutor move
 	db 32, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 36, LIGHT_SCREEN
@@ -2817,6 +2818,7 @@ BayleefEvosAttacks:
 	db 50, HEAL_BELL ; Aromatherapy → similar move
 	db 54, SOLAR_BEAM
 	db 58, OUTRAGE ; HGSS tutor move
+	db 64, MOONBLAST ; new move
 	db 0 ; no more level-up moves
 
 MeganiumEvosAttacks:
@@ -2827,7 +2829,7 @@ MeganiumEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, SYNTHESIS
 	db 18, REFLECT
-	db 22, LEECH_SEED ; Magical Leaf → egg move
+	db 22, FAIRY_WIND ; Magical Leaf → new move
 	db 26, SEED_BOMB ; Natural Gift → tutor move
 	db 32, PETAL_DANCE
 	db 34, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
@@ -2837,6 +2839,7 @@ MeganiumEvosAttacks:
 	db 60, HEAL_BELL ; Aromatherapy → similar move
 	db 66, SOLAR_BEAM
 	db 72, OUTRAGE ; HGSS tutor move
+	db 80, MOONBLAST ; new move
 	db 0 ; no more level-up moves
 
 CyndaquilEvosAttacks:
@@ -2853,10 +2856,11 @@ CyndaquilEvosAttacks:
 	db 31, SWIFT
 	db 37, REVERSAL ; Lava Plume → egg move
 	db 40, FLAMETHROWER
-	db 46, EXTRASENSORY ; Inferno → egg move
+	db 46, EARTH_POWER ; Inferno → new move
 	db 49, ROLLOUT
 	db 55, DOUBLE_EDGE
-	db 58, FLARE_BLITZ ; Eruption → egg move
+	db 58, EARTHQUAKE ; TM move
+	db 64, FLARE_BLITZ ; Eruption → egg move
 	db 0 ; no more level-up moves
 
 QuilavaEvosAttacks:
@@ -2873,10 +2877,11 @@ QuilavaEvosAttacks:
 	db 35, DIG ; Flame Charge → TM move
 	db 42, REVERSAL ; Lava Plume → egg move
 	db 46, FLAMETHROWER
-	db 53, EXTRASENSORY ; Inferno → egg move
+	db 53, EARTH_POWER ; Inferno → new move
 	db 57, ROLLOUT
 	db 64, DOUBLE_EDGE
-	db 68, FLARE_BLITZ ; Eruption → egg move
+	db 68, EARTHQUAKE ; TM move
+	db 75, FLARE_BLITZ ; Eruption → egg move
 	db 0 ; no more level-up moves
 
 TyphlosionEvosAttacks:
@@ -2893,10 +2898,11 @@ TyphlosionEvosAttacks:
 	db 36, FIRE_PUNCH ; tutor move
 	db 43, REVERSAL ; Lava Plume → egg move
 	db 48, FLAMETHROWER
-	db 56, EXTRASENSORY ; Inferno → egg move
+	db 56, EARTH_POWER ; Inferno → new move
 	db 61, ROLLOUT
 	db 69, DOUBLE_EDGE
-	db 74, FLARE_BLITZ ; Eruption → egg move
+	db 74, EARTHQUAKE ; TM move
+	db 81, FLARE_BLITZ ; Eruption → egg move
 	db 0 ; no more level-up moves
 
 TotodileEvosAttacks:
@@ -2910,14 +2916,15 @@ TotodileEvosAttacks:
 	db 15, SCARY_FACE
 	db 20, METAL_CLAW ; Ice Fang → egg move
 	db 22, FLAIL
-	db 27, CRUNCH
-	db 29, ANCIENTPOWER ; Chip Away → HGSS tutor move
-	db 34, SLASH
-	db 36, SCREECH
-	db 41, THRASH
-	db 43, AQUA_TAIL
-	db 48, SUBMISSION ; Superpower → event move
-	db 50, HYDRO_PUMP
+	db 27, AGILITY ; Feraligatr move
+	db 29, CRUNCH
+	db 34, ANCIENTPOWER ; Chip Away → HGSS tutor move
+	db 36, SLASH
+	db 41, SCREECH
+	db 43, THRASH
+	db 48, AQUA_TAIL
+	db 50, SUBMISSION ; Superpower → event move
+	db 56, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
 CroconawEvosAttacks:
@@ -2931,14 +2938,15 @@ CroconawEvosAttacks:
 	db 15, SCARY_FACE
 	db 21, METAL_CLAW ; Ice Fang → egg move
 	db 24, FLAIL
-	db 30, CRUNCH
-	db 33, ANCIENTPOWER ; Chip Away → HGSS tutor move
-	db 39, SLASH
-	db 42, SCREECH
-	db 48, THRASH
-	db 51, AQUA_TAIL
-	db 57, SUBMISSION ; Superpower → event move
-	db 60, HYDRO_PUMP
+	db 30, AGILITY ; Feraligatr move
+	db 33, CRUNCH
+	db 39, ANCIENTPOWER ; Chip Away → HGSS tutor move
+	db 42, SLASH
+	db 48, SCREECH
+	db 51, THRASH
+	db 57, AQUA_TAIL
+	db 60, SUBMISSION ; Superpower → event move
+	db 66, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
 FeraligatrEvosAttacks:
@@ -2951,16 +2959,17 @@ FeraligatrEvosAttacks:
 	db 15, SCARY_FACE
 	db 21, METAL_CLAW ; Ice Fang → egg move
 	db 24, FLAIL
-	db 30, AGILITY
-	db 32, CRUNCH
-	db 37, ANCIENTPOWER ; Chip Away → HGSS tutor move
-	db 45, SLASH
-	db 50, SCREECH
-	db 56, THRASH
-	db 62, OUTRAGE ; HGSS tutor move
-	db 68, AQUA_TAIL
-	db 73, SUBMISSION ; Superpower → event move
-	db 78, HYDRO_PUMP
+	db 30, NIGHT_SLASH ; new move
+	db 32, AGILITY
+	db 37, CRUNCH
+	db 45, ANCIENTPOWER ; Chip Away → HGSS tutor move
+	db 50, SLASH
+	db 56, SCREECH
+	db 62, THRASH
+	db 68, OUTRAGE ; HGSS tutor move
+	db 73, AQUA_TAIL
+	db 78, SUBMISSION ; Superpower → event move
+	db 84, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
 SentretEvosAttacks:
