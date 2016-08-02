@@ -2796,8 +2796,9 @@ ChikoritaEvosAttacks:
 	db 39, SAFEGUARD
 	db 42, HEAL_BELL ; Aromatherapy → similar move
 	db 45, SOLAR_BEAM
-	db 48, OUTRAGE ; HGSS tutor move
-	db 53, MOONBLAST ; new move
+	db 48, CALM_MIND ; new move
+	db 51, OUTRAGE ; HGSS tutor move
+	db 56, MOONBLAST ; new move
 	db 0 ; no more level-up moves
 
 BayleefEvosAttacks:
@@ -2814,9 +2815,10 @@ BayleefEvosAttacks:
 	db 32, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 36, LIGHT_SCREEN
 	db 40, BODY_SLAM
-	db 46, SAFEGUARD
-	db 50, HEAL_BELL ; Aromatherapy → similar move
-	db 54, SOLAR_BEAM
+	db 43, SAFEGUARD
+	db 47, HEAL_BELL ; Aromatherapy → similar move
+	db 51, SOLAR_BEAM
+	db 54, CALM_MIND ; new move
 	db 58, OUTRAGE ; HGSS tutor move
 	db 64, MOONBLAST ; new move
 	db 0 ; no more level-up moves
@@ -2835,9 +2837,10 @@ MeganiumEvosAttacks:
 	db 34, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 40, LIGHT_SCREEN
 	db 46, BODY_SLAM
-	db 54, SAFEGUARD
-	db 60, HEAL_BELL ; Aromatherapy → similar move
-	db 66, SOLAR_BEAM
+	db 50, SAFEGUARD
+	db 56, HEAL_BELL ; Aromatherapy → similar move
+	db 62, SOLAR_BEAM
+	db 66, CALM_MIND ; new move
 	db 72, OUTRAGE ; HGSS tutor move
 	db 80, MOONBLAST ; new move
 	db 0 ; no more level-up moves
