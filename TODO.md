@@ -119,4 +119,3 @@
 * Retype Electivire to Electric/Fighting
 * Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
-* Give Team Rocket more diverse Pokémon: Qwilfish, Tentacool/Tentacruel, Gastly/Haunter/Gengar, Houndour/Houndoom, Murkrow/Honchkrow, Sneasel/Weavile, Umbreon, Meowth/Persian

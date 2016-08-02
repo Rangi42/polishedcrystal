@@ -1920,7 +1920,7 @@ BlaineGroup:
 	db 72, TYPHLOSION, LEFTOVERS
 		db FIRE_BLAST
 		db FOCUS_BLAST
-		db EXTRASENSORY
+		db EARTH_POWER
 		db HIDDEN_POWER ; Grass
 
 	db 75, RAPIDASH, POISON_BARB
@@ -2376,7 +2376,7 @@ Rival1Group:
 	db 41, MEGANIUM, GOLD_BERRY
 		db REFLECT
 		db LIGHT_SCREEN
-		db SEED_BOMB
+		db PETAL_DANCE
 		db ANCIENTPOWER
 
 	db $ff ; end
@@ -2702,7 +2702,7 @@ Rival2Group:
 		db PSYCHIC_M
 
 	db 65, TYPHLOSION, CHARCOAL
-		db FLAME_WHEEL
+		db FLAMETHROWER
 		db EARTH_POWER
 		db THUNDERPUNCH
 		db SMOKESCREEN
@@ -2797,7 +2797,7 @@ Rival2Group:
 		db PETAL_DANCE
 		db MOONBLAST
 		db LIGHT_SCREEN
-		db SAFEGUARD
+		db ANCIENTPOWER
 
 	db $ff ; end
 
@@ -5414,7 +5414,8 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 8, ZUBAT
+	db 10, ZUBAT
+	db 12, QWILFISH
 	db 14, KOFFING
 
 	db $ff ; end
@@ -5428,7 +5429,7 @@ GruntMGroup:
 	; party
 	db 7, RATTATA
 	db 9, ZUBAT
-	db 9, ZUBAT
+	db 9, GASTLY
 
 	db $ff ; end
 
@@ -5440,7 +5441,7 @@ GruntMGroup:
 
 	; party
 	db 33, RATICATE
-	db 33, RATICATE
+	db 33, SNEASEL
 
 	db $ff ; end
 
@@ -5452,7 +5453,7 @@ GruntMGroup:
 
 	; party
 	db 32, GRIMER
-	db 32, GRIMER
+	db 33, HOUNDOUR
 	db 34, MUK
 
 	db $ff ; end
@@ -5465,10 +5466,10 @@ GruntMGroup:
 
 	; party
 	db 31, RATTATA
-	db 31, RATTATA
-	db 33, RATICATE
-	db 33, RATICATE
-	db 33, RATTATA
+	db 33, HOUNDOUR
+	db 32, RATICATE
+	db 32, RATICATE
+	db 33, MEOWTH
 
 	db $ff ; end
 
@@ -5480,7 +5481,7 @@ GruntMGroup:
 
 	; party
 	db 36, GOLBAT
-	db 36, GOLBAT
+	db 36, VENOMOTH
 
 	db $ff ; end
 
@@ -5542,7 +5543,7 @@ GruntMGroup:
 
 	; party
 	db 34, MUK
-	db 35, KOFFING
+	db 35, HAUNTER
 	db 36, RATICATE
 
 	db $ff ; end
@@ -5554,7 +5555,8 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 22, RATICATE
+	db 20, RATICATE
+	db 21, PERSIAN
 
 	db $ff ; end
 
@@ -5600,8 +5602,8 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 26, RATTATA
-	db 26, RATTATA
+	db 26, MEOWTH
+	db 26, GASTLY
 	db 27, RATICATE
 	db 26, RATTATA
 
@@ -5625,7 +5627,7 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 27, RATTATA
+	db 27, HOUNDOUR
 	db 28, GOLBAT
 	db 28, RATICATE
 
@@ -5650,8 +5652,9 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 27, DROWZEE
-	db 29, ZUBAT
+	db 26, ZUBAT
+	db 27, GRIMER
+	db 28, MEOWTH
 
 	db $ff ; end
 
@@ -5662,9 +5665,9 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 26, ZUBAT
-	db 27, GRIMER
-	db 28, RATTATA
+	db 26, DROWZEE
+	db 27, ZUBAT
+	db 28, HAUNTER
 
 	db $ff ; end
 
@@ -5676,6 +5679,7 @@ GruntMGroup:
 
 	; party
 	db 20, GOLBAT
+	db 20, HAUNTER
 	db 20, GOLBAT
 
 	db $ff ; end
@@ -5688,7 +5692,7 @@ GruntMGroup:
 
 	; party
 	db 19, KOFFING
-	db 19, KOFFING
+	db 20, HOUNDOUR
 	db 19, KOFFING
 
 	db $ff ; end
@@ -5712,7 +5716,7 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 34, KOFFING
+	db 34, TENTACOOL
 	db 35, MUK
 
 	db $ff ; end
@@ -5726,7 +5730,7 @@ GruntMGroup:
 	; party
 	db 19, ZUBAT
 	db 21, RATICATE
-	db 22, RATICATE
+	db 22, MURKROW
 
 	db $ff ; end
 
@@ -5761,7 +5765,7 @@ GruntMGroup:
 
 	; party
 	db 9, RATTATA
-	db 9, RATTATA
+	db 9, MEOWTH
 
 	db $ff ; end
 
@@ -5786,6 +5790,8 @@ GruntMGroup:
 
 	; party
 	db 39, GOLBAT
+	db 40, WEEZING
+	db 39, MUK
 
 	db $ff ; end
 
@@ -5825,7 +5831,7 @@ GruntFGroup:
 	db 0 ; normal
 
 	; party
-	db 35, GLOOM
+	db 34, UMBREON
 	db 35, GLOOM
 
 	db $ff ; end
@@ -5857,6 +5863,12 @@ GruntFGroup:
 		db LEER
 		db POISON_STING
 		db BITE
+
+	db 18, QWILFISH
+		db DEFENSE_CURL
+		db MINIMIZE
+		db BUBBLE
+		db ROLLOUT
 
 	db 18, GLOOM
 		db ABSORB
@@ -11233,6 +11245,12 @@ ExecutiveMGroup:
 		db HYPER_FANG
 		db DOUBLE_EDGE
 
+	db 38, GENGAR, SPELL_TAG
+		db HYPNOSIS
+		db CONFUSE_RAY
+		db PAIN_SPLIT
+		db SHADOW_BALL
+
 	db 39, WEEZING, BRIGHTPOWDER
 		db SMOKESCREEN
 		db WILL_O_WISP
@@ -11256,11 +11274,17 @@ ExecutiveMGroup:
 
 	; party
 
-	db 39, GOLBAT, KINGS_ROCK
+	db 38, GOLBAT, KINGS_ROCK
 		db WING_ATTACK
 		db CONFUSE_RAY
 		db SUPER_FANG
 		db POISON_JAB
+
+	db 39, QWILFISH, BRIGHTPOWDER
+		db MINIMIZE
+		db BUBBLE_BEAM
+		db PAIN_SPLIT
+		db ROLLOUT
 
 	db 40, WEEZING, CHARCOAL
 		db FIRE_BLAST
@@ -11285,35 +11309,29 @@ ExecutiveMGroup:
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 37, KOFFING, EVIOLITE
-		db TACKLE
-		db SELFDESTRUCT
-		db SLUDGE
-		db SMOKESCREEN
+	db 37, GOLBAT, EVIOLITE
+		db LEECH_LIFE
+		db WING_ATTACK
+		db CONFUSE_RAY
+		db SUPER_FANG
 
-	db 37, KOFFING, EVIOLITE
-		db TACKLE
-		db SELFDESTRUCT
-		db SLUDGE
-		db SMOKESCREEN
+	db 40, PERSIAN, BLACKGLASSES
+		db PLAY_ROUGH
+		db SCREECH
+		db FEINT_ATTACK
+		db SLASH
 
-	db 40, WEEZING, SILK_SCARF
+	db 38, WEEZING, SILK_SCARF
 		db TACKLE
 		db EXPLOSION
 		db SLUDGE
 		db SMOKESCREEN
 
-	db 37, KOFFING, EVIOLITE
-		db TACKLE
-		db SELFDESTRUCT
-		db SLUDGE
-		db SMOKESCREEN
-
-	db 37, KOFFING, EVIOLITE
-		db TACKLE
-		db SELFDESTRUCT
-		db SLUDGE
-		db SMOKESCREEN
+	db 37, RATICATE, KINGS_ROCK
+		db QUICK_ATTACK
+		db SCREECH
+		db CRUNCH
+		db SUPER_FANG
 
 	db $ff ; end
 
@@ -11332,6 +11350,12 @@ ExecutiveMGroup:
 		db CONFUSE_RAY
 		db SUPER_FANG
 
+	db 34, PERSIAN, HARD_STONE
+		db PLAY_ROUGH
+		db FURY_SWIPES
+		db SCREECH
+		db FEINT_ATTACK
+
 	db 34, RATICATE, KINGS_ROCK
 		db SWORDS_DANCE
 		db CRUNCH
@@ -11349,6 +11373,7 @@ ExecutiveMGroup:
 ; ================
 
 	; EXECUTIVEM (5)
+	; (Archer)
 	db "Executive@"
 	db 3 ; item + moves
 
@@ -11359,6 +11384,12 @@ ExecutiveMGroup:
 		db SMOKESCREEN
 		db BITE
 		db SUPER_FANG
+
+	db 26, HAUNTER, SPELL_TAG
+		db DISABLE
+		db NIGHT_SHADE
+		db CONFUSE_RAY
+		db SHADOW_BALL
 
 	db 27, RATICATE, BLACKGLASSES
 		db PURSUIT
