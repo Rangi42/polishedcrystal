@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """Convert a .pal file to a .html file for viewing."""
 

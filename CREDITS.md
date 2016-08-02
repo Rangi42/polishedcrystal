@@ -10,7 +10,7 @@
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
 * Mmmmmm for the Cinnabar Volcano, Faraway Island, and final battle music
 * Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
-* Pum for the Route 47 music
+* Pum for the Route 47 and Yellow Forest music
 * ShantyTown for the Rock Tunnel music
 * Serious Senator for some trainer dialogs
 * tonyism for the in-battle shiny icon code

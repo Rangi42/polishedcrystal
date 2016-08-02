@@ -1,7 +1,7 @@
 const_value set 2
 	const CERULEANTRADESPEECHHOUSE_GRANNY
 	const CERULEANTRADESPEECHHOUSE_GRAMPS
-	const CERULEANTRADESPEECHHOUSE_RHYDON
+	const CERULEANTRADESPEECHHOUSE_KANGASKHAN
 	const CERULEANTRADESPEECHHOUSE_ZUBAT
 
 CeruleanTradeSpeechHouse_MapScriptHeader:
@@ -17,7 +17,7 @@ GrannyScript_0x188133:
 GrampsScript_0x188136:
 	jumptextfaceplayer UnknownText_0x18818a
 
-RhydonScript_0x188139:
+KangaskhanScript_0x188139:
 	opentext
 	writetext UnknownText_0x18819c
 	cry KANGASKHAN
@@ -72,5 +72,5 @@ CeruleanTradeSpeechHouse_MapEventHeader:
 	db 4
 	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrannyScript_0x188133, -1
 	person_event SPRITE_GRAMPS, 2, 1, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x188136, -1
-	person_event SPRITE_RHYDON, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RhydonScript_0x188139, -1
-	person_event SPRITE_ZUBAT, 6, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ZubatScript_0x188143, -1
+	person_event SPRITE_KANGASKHAN, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KangaskhanScript_0x188139, -1
+	person_event SPRITE_ZUBAT, 6, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ZubatScript_0x188143, -1

@@ -1,7 +1,7 @@
 const_value set 2
 	const COPYCATSHOUSE1F_POKEFAN_M
 	const COPYCATSHOUSE1F_POKEFAN_F
-	const COPYCATSHOUSE1F_CLEFAIRY
+	const COPYCATSHOUSE1F_BLISSEY
 
 CopycatsHouse1F_MapScriptHeader:
 .MapTriggers:
@@ -29,7 +29,7 @@ UnknownScript_0x18ad24:
 	closetext
 	end
 
-ClefairyScript_0x18ad2a:
+BlisseyScript_0x18ad2a:
 	opentext
 	writetext UnknownText_0x18ae4b
 	cry BLISSEY
@@ -92,4 +92,4 @@ CopycatsHouse1F_MapEventHeader:
 	db 3
 	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x18ad13, -1
 	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x18ad16, -1
-	person_event SPRITE_CLEFAIRY, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClefairyScript_0x18ad2a, -1
+	person_event SPRITE_BLISSEY, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlisseyScript_0x18ad2a, -1

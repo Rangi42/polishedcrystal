@@ -1,3 +1,6 @@
+const_value set 2
+	const ROUTE7_BIG_SNORLAX
+
 Route7_MapScriptHeader:
 .MapTriggers:
 	db 0
@@ -5,11 +8,47 @@ Route7_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+Route7Snorlax:
+	opentext
+	special SpecialSnorlaxAwake
+	iftrue Route7SnorlaxAwake
+	writetext Route7SnorlaxAsleepText
+	waitbutton
+	closetext
+	end
+
+Route7SnorlaxAwake:
+	writetext Route7SnorlaxAwakeText
+	pause 15
+	cry SNORLAX
+	closetext
+	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	loadwildmon SNORLAX, 50
+	startbattle
+	disappear ROUTE7_BIG_SNORLAX
+	reloadmapafterbattle
+	end
+
 Route7UndergroundPathSign:
 	jumptext Route7UndergroundPathSignText
 
 Route7LockedDoor:
 	jumptext Route7LockedDoorText
+
+Route7SnorlaxAsleepText:
+	text "Snorlax is snoring"
+	line "peacefully…"
+	done
+
+Route7SnorlaxAwakeText:
+	text "The #gear was"
+	line "placed near the"
+	cont "sleeping Snorlax…"
+
+	para "…"
+
+	para "Snorlax woke up!"
+	done
 
 Route7UndergroundPathSignText:
 	text "What's this flyer?"
@@ -52,4 +91,5 @@ Route7_MapEventHeader:
 	signpost 9, 6, SIGNPOST_READ, Route7LockedDoor
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_BIG_SNORLAX, 0, 0, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX

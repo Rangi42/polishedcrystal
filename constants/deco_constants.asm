@@ -102,7 +102,7 @@ __enum__ = 0
 	deco  SQUIRTLE_DOLL ; 24 (1c)
 	deco  POLIWAG_DOLL ; 25 (1d)
 	deco  DIGLETT_DOLL ; 26 (1e)
-	deco  STARMIE_DOLL ; 27 (1f)
+	deco  STARYU_DOLL ; 27 (1f)
 	deco  MAGIKARP_DOLL ; 28 (20)
 	deco  ODDISH_DOLL ; 29 (21)
 	deco  GENGAR_DOLL ; 2a (22)

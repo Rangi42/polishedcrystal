@@ -44,7 +44,7 @@
 
 	map MOUNT_MORTAR_1F_OUTSIDE
 	db 4 percent ; encounter rate
-	db 15, PSYDUCK
+	db 20, PSYDUCK
 	db 20, MARILL
 	db 20, GOLDUCK
 
@@ -62,21 +62,21 @@
 
 	map WHIRL_ISLAND_SW
 	db 4 percent ; encounter rate
-	db 15, HORSEA
-	db 20, TENTACOOL
-	db 20, OCTILLERY
+	db 20, HORSEA
+	db 25, TENTACOOL
+	db 30, OCTILLERY
 
 	map WHIRL_ISLAND_B2F
 	db 4 percent ; encounter rate
-	db 15, HORSEA
-	db 20, TENTACRUEL
-	db 20, OCTILLERY
+	db 20, HORSEA
+	db 25, TENTACRUEL
+	db 30, OCTILLERY
 
 	map WHIRL_ISLAND_LUGIA_CHAMBER
 	db 4 percent ; encounter rate
-	db 20, HORSEA
-	db 20, TENTACRUEL
-	db 20, SEADRA
+	db 25, HORSEA
+	db 25, TENTACRUEL
+	db 30, SEADRA
 
 	map SILVER_CAVE_ROOM_2
 	db 2 percent ; encounter rate
@@ -104,9 +104,9 @@
 
 	map DRAGONS_DEN_B1F
 	db 4 percent ; encounter rate
-	db 15, MAGIKARP
-	db 10, MAGIKARP
-	db 10, DRATINI
+	db 25, MAGIKARP
+	db 30, MAGIKARP
+	db 20, DRATINI
 
 	map OLIVINE_PORT
 	db 2 percent ; encounter rate
@@ -159,20 +159,20 @@
 	map ROUTE_42
 	db 4 percent ; encounter rate
 	db 20, MAGIKARP
-	db 15, PSYDUCK
+	db 20, PSYDUCK
 	db 20, GOLDUCK
 
 	map ROUTE_43
 	db 2 percent ; encounter rate
+	db 25, MAGIKARP
 	db 20, MAGIKARP
-	db 15, MAGIKARP
 	db 10, MAGIKARP
 
 	map ROUTE_44
 	db 2 percent ; encounter rate
 	db 25, POLIWAG
-	db 20, POLIWAG
-	db 25, POLIWHIRL
+	db 30, POLIWAG
+	db 30, POLIWHIRL
 
 	map ROUTE_45
 	db 2 percent ; encounter rate
@@ -236,9 +236,9 @@
 
 	map LAKE_OF_RAGE
 	db 6 percent ; encounter rate
-	db 15, MAGIKARP
-	db 10, MAGIKARP
-	db 15, GYARADOS
+	db 25, MAGIKARP
+	db 20, MAGIKARP
+	db 25, GYARADOS
 
 	map BLACKTHORN_CITY
 	db 4 percent ; encounter rate
@@ -260,20 +260,20 @@
 
 	map QUIET_CAVE_B1F
 	db 6 percent ; encounter rate
-	db 10, MAGIKARP
-	db 15, MAGIKARP
-	db 20, CHINCHOU
+	db 20, MAGIKARP
+	db 25, MAGIKARP
+	db 30, CHINCHOU
 
 	map QUIET_CAVE_B2F
 	db 6 percent ; encounter rate
-	db 10, MAGIKARP
-	db 15, MAGIKARP
-	db 20, CHINCHOU
+	db 20, MAGIKARP
+	db 25, MAGIKARP
+	db 30, CHINCHOU
 
 	map QUIET_CAVE_B3F
 	db 6 percent ; encounter rate
-	db 10, MAGIKARP
-	db 15, MAGIKARP
-	db 20, CHINCHOU
+	db 20, MAGIKARP
+	db 25, MAGIKARP
+	db 30, CHINCHOU
 
 	db -1 ; end

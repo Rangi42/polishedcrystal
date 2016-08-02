@@ -664,10 +664,10 @@ GetWonderTradeOTName:
 	db "Blanche@" ; $e1
 	db "Spark@@@" ; $e2
 	db "Willow@@" ; $e3
-	db "Nemo@@@@" ; $e4
-	db "Nemo@@@@" ; $e5
-	db "Nemo@@@@" ; $e6
-	db "Nemo@@@@" ; $e7
+	db "Mallow@@" ; $e4
+	db "Lana@@@@" ; $e5
+	db "Sophos@@" ; $e6
+	db "Kiawe@@@" ; $e7
 	db "Nemo@@@@" ; $e8
 	db "Nemo@@@@" ; $e9
 	db "Nemo@@@@" ; $ea

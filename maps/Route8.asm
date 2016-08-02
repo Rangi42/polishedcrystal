@@ -7,6 +7,9 @@ const_value set 2
 	const ROUTE8_GENTLEMAN
 	const ROUTE8_POKEMANIAC
 	const ROUTE8_FRUIT_TREE
+	const ROUTE8_BIKER4
+	const ROUTE8_BIKER5
+	const ROUTE8_BIKER6
 
 Route8_MapScriptHeader:
 .MapTriggers:
@@ -14,6 +17,15 @@ Route8_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+Route8BikerDwayneScript:
+	jumptextfaceplayer Route8BikerDwayneProtestText
+
+Route8BikerHarrisScript:
+	jumptextfaceplayer Route8BikerHarrisProtestText
+
+Route8BikerZekeScript:
+	jumptextfaceplayer Route8BikerZekeProtestText
 
 TrainerBikerDwayne:
 	trainer EVENT_BEAT_BIKER_DWAYNE, BIKER, DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText, 0, BikerDwayneScript
@@ -101,6 +113,27 @@ Route8UndergroundPathSign:
 FruitTreeScript_0x6c06c:
 	fruittree FRUITTREE_ROUTE_8
 
+Route8BikerDwayneProtestText:
+	text "We're the Kanto"
+	line "#mon Federation"
+	cont "trainer group."
+
+	para "We're holding a"
+	line "protest!"
+	done
+
+Route8BikerZekeProtestText:
+	text "We're the Kanto"
+	line "#mon Federa-"
+	cont "tion!"
+
+	para "The cops can't"
+	line "stop us from"
+
+	para "using the Under-"
+	line "ground Path!"
+	done
+
 BikerDwayneSeenText:
 	text "We're the Kanto"
 	line "#mon Federation"
@@ -120,6 +153,7 @@ UnknownText_0x6c0c8:
 	cont "never fall!"
 	done
 
+Route8BikerHarrisProtestText:
 BikerHarrisSeenText:
 	text "The cops shut down"
 	line "our Underground"
@@ -250,12 +284,15 @@ Route8_MapEventHeader:
 	signpost 5, 10, SIGNPOST_READ, Route8LockedDoor
 
 .PersonEvents:
-	db 8
-	person_event SPRITE_BIKER, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, -1
-	person_event SPRITE_BIKER, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBikerHarris, -1
-	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBikerZeke, -1
+	db 11
+	person_event SPRITE_BIKER, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	person_event SPRITE_BIKER, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBikerHarris, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBikerZeke, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	person_event SPRITE_SUPER_NERD, 2, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdSam, -1
-	person_event SPRITE_SUPER_NERD, 8, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSupernerdTom, -1
+	person_event SPRITE_SUPER_NERD, 7, 26, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdTom, -1
 	person_event SPRITE_GENTLEMAN, 12, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanMilton, -1
 	person_event SPRITE_SUPER_NERD, 7, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMoe, -1
 	person_event SPRITE_FRUIT_TREE, 5, 33, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x6c06c, -1
+	person_event SPRITE_BIKER, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route8BikerDwayneScript, EVENT_RETURNED_MACHINE_PART
+	person_event SPRITE_BIKER, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route8BikerHarrisScript, EVENT_RETURNED_MACHINE_PART
+	person_event SPRITE_BIKER, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route8BikerZekeScript, EVENT_RETURNED_MACHINE_PART

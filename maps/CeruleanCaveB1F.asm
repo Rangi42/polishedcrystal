@@ -12,7 +12,11 @@ CeruleanCaveB1F_MapScriptHeader:
 
 CeruleanCaveMewtwo:
 	faceplayer
+	opentext
+	writetext MewtwoText
 	cry MEWTWO
+	pause 15
+	closetext
 	loadwildmon MEWTWO, 80
 	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
 	startbattle
@@ -33,6 +37,10 @@ CeruleanCaveB1FHiddenMaxRevive:
 CeruleanCaveB1FHiddenUltraBall:
 	dwb EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
 
+MewtwoText:
+	text "Myuu!"
+	done
+
 CeruleanCaveB1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -51,6 +59,6 @@ CeruleanCaveB1F_MapEventHeader:
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_MONSTER, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO
+	person_event SPRITE_MEWTWO, 13, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO
 	person_event SPRITE_POKE_BALL, 9, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCaveB1FMaxElixer, EVENT_CERULEAN_CAVE_B1F_MAX_ELIXER
 	person_event SPRITE_POKE_BALL, 3, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCaveB1FUltraBall, EVENT_CERULEAN_CAVE_B1F_ULTRA_BALL
