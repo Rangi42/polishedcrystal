@@ -279,4 +279,4 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 1.1.2 release. If you build the project as-is, it will include all of them.
 
-* (Nothing yet.)
+* Slightly debuff the Kimono Girls.
