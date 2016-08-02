@@ -272,7 +272,7 @@ GruntM26AfterText:
 Route47RocketGirlText:
 	text "What are you head-"
 	line "ing this way for,"
-	cont "your brat?"
+	cont "you brat?"
 	done
 
 Route47QuietCaveSignText:
