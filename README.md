@@ -232,7 +232,10 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 ## Bugs
 
 * The Move Reminder doesn't list all the possible moves.
-* Gold Berry restores 25% of HP when used, but 30 HP when held.
+* Sitrus Berry heals 25% max HP when used, but 30 HP when held.
+* Thief permanently steals held items.
+* TMs can restore PP.
+* Avalanche's power doesn't double.
 
 ## FAQ
 
@@ -271,41 +274,9 @@ The game's data files do a fairly good job of listing things you'll want to know
 I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
 
 
-## Changes in 1.1.1
+## Changes in 1.2.0
 
-These changes have been made since the previous 1.1.0 release. If you build the project as-is, it will include all of them.
+These changes have been made since the previous 1.1.1 release. If you build the project as-is, it will include all of them.
 
-* Add: New music by Mmmmmm and Pum.
-* Add: More trainer dialog.
-* Add: Encounter rival in Azalea Town *after* beating Bugsy.
-* Add: Can't fight Pryce before Jasmine.
-* Add: Guide the player in order: Vermilion City, Saffron City, Cerulean City, Rock Tunnel, Lavender Town.
-* Add: Receive Eevee from Bill in Ecruteak City.
-* Add: Move Bill's grandfather to Goldenrod City and Bill to Cerulean Cape
-* Add: Buff trainers and wild Pokémon so that the level curve ends at 100 for the final battle.
-* Add: Buff Qwilfish, Stantler, Corsola, Rhydon, Electabuzz, Magby, Elekid, Jynx, and Mr. Mime.
-* Add: Typhlosion is Fire/Ground, Feraligatr is Water/Dark, and Blastoise is Water/Steel.
-* Add: Goldenrod City move tutor is no longer once per day.
-* Add: Buy Exp. Share in Celadon Dept. Store.
-* Add: Cheaper TMs in Goldenrod Dept. Store.
-* Add: Better in-game trade DVs.
-* Add: Trade Jynx for Mr. Mime, not Dragonair for Chansey.
-* Add: Lower Pokédex requirements for items from Prof. Oak's aides.
-* Add: Get False Swipe TM as a gift, not Calm Mind.
-* Add: Show shiny icon in battle (thanks to tonyism).
-* Add: Sprite for Rocket Grunt♀ by Mateo.
-* Add: Pryce uses Mamoswine, not Piloswine.
-* Add: Whitney uses Attract.
-* Add: Wild Sneasel may hold a Razor Claw.
-* Add: Wild Gligar may hold a Razor Fang.
-* Add: Wild Oddish are rare in Ilex Forest during the day.
-* Add: Pokémon Go character names as possible Wonder Trade OTs.
-* Fix: Pokémon overworld sprites are sometimes loaded from the wrong bank (thanks to [comet](https://hax.iimarck.us/post/42512/#p42512))
-* Fix: Bill's team is broken.
-* Fix: Falkner says TMs are one use only.
-* Fix: Buff Kimono Girls.
-* Fix: Slightly debuff Bugsy, Whitney, and two trainers.
-* Fix: Crunch lowers Defense, not Special Defense.
-* Fix: Astonish is physical, not special.
-* Fix: Cliff Edge Gate uses Route 36 music.
-* Fix: "Vulipx" typo.
+* Add: Blastoise learns Iron Head.
+* Add: Buff Smeargle.

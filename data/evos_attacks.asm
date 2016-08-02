@@ -185,6 +185,7 @@ BlastoiseEvosAttacks:
 	db 46, MIRROR_COAT ; Iron Defense → egg move
 	db 53, RAIN_DANCE
 	db 60, HYDRO_PUMP
+	db 67, IRON_HEAD ; TM move
 	db 0 ; no more level-up moves
 
 CaterpieEvosAttacks:
