@@ -8,7 +8,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is 1.1.1 as of August 1, 2016.
+The most recent version is 1.1.2 as of August 2, 2016.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
@@ -21,10 +21,10 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
-* [Pokémon Polished Crystal 1.1.1](patches/polishedcrystal-1.1.1.ips)  
-  (Patched ROM `md5: ae1b9a12a4a303ae67f388aecf2d3179`)
-* [Pokémon Polished Crystal (Faithful) 1.1.1](patches/polishedcrystal-faithful-1.1.1.ips)  
-  (Patched ROM `md5: 5db2c6000b19b60ec7662a024b95438c`)
+* [Pokémon Polished Crystal 1.1.2](patches/polishedcrystal-1.1.2.ips)  
+  (Patched ROM `md5: b6aaa84f3aec1924ba260d5e1018459e`)
+* [Pokémon Polished Crystal (Faithful) 1.1.2](patches/polishedcrystal-faithful-1.1.2.ips)  
+  (Patched ROM `md5: 1945c529b78b4710dc136e627ee8d67b`)
 
 ## Features
 
@@ -276,11 +276,6 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 ## Changes in 1.2.0
 
-These changes have been made since the previous 1.1.1 release. If you build the project as-is, it will include all of them.
+These changes have been made since the previous 1.1.2 release. If you build the project as-is, it will include all of them.
 
-* Add: Give Team Rocket more diverse Pokémon.
-* Add: Meganium is Grass/Fairy, and learns Fairy Wind, Moonblast, and DazzlinGleam.
-* Add: Typhlosion learns Earth Power and Earthquake.
-* Add: Feraligatr learns Night Slash.
-* Add: Blastoise learns Iron Head.
-* Add: Buff Smeargle.
+* (Nothing yet.)
