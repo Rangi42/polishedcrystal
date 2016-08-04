@@ -708,8 +708,16 @@ KRIS EQU __enum__
 	const KOTORI
 
 	trainerclass EXECUTIVEM ; 4a
+	const ARCHER2
+	const PROTON2
+	const PETREL2
+	const PETREL1
+	const PROTON1
+	const ARCHER1
 
 	trainerclass EXECUTIVEF ; 4b
+	const ARIANA2
+	const ARIANA1
 
 	trainerclass POKEMON_PROF ; 4c
 

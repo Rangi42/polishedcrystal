@@ -92,7 +92,7 @@ Route48RocketExecutiveScript:
 	closetext
 	winlosstext Route48RocketExecutiveBeatenText, 0
 	setlasttalked ROUTE48_ROCKET
-	loadtrainer EXECUTIVEM, 5
+	loadtrainer EXECUTIVEM, ARCHER1
 	startbattle
 	reloadmapafterbattle
 	opentext
@@ -104,7 +104,7 @@ Route48RocketExecutiveScript:
 	disappear ROUTE48_ROCKET
 	pause 15
 	special Special_FadeInQuickly
-	setevent EVENT_BEAT_ROCKET_EXECUTIVEM_5
+	setevent EVENT_BEAT_ROCKET_EXECUTIVEM_6
 	setevent EVENT_CLEARED_YELLOW_FOREST
 	clearevent EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	special PlayMapMusic

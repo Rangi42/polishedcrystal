@@ -5460,8 +5460,8 @@ GruntMGroup:
 ; ================================
 ; ================
 
+	; unused
 	; GRUNTM (1)
-	; (HGSS Executive Proton)
 	db "Grunt@"
 	db 0 ; normal
 
@@ -5790,7 +5790,7 @@ GruntMGroup:
 
 	; unused
 	; GRUNTM (27)
-	db "Executive@"
+	db "Grunt@"
 	db 0 ; normal
 
 	; party
@@ -11425,6 +11425,20 @@ ExecutiveMGroup:
 ; ================
 
 	; EXECUTIVEM (5)
+	; (HGSS Executive Proton)
+	db "Executive@"
+	db 0 ; normal
+
+	; party
+	db 10, ZUBAT
+	db 12, QWILFISH
+	db 14, KOFFING
+
+	db $ff ; end
+
+; ================
+
+	; EXECUTIVEM (6)
 	; (Archer)
 	db "Executive@"
 	db 3 ; item + moves
@@ -11472,23 +11486,23 @@ ExecutiveFGroup:
 
 	; party
 
-	db 32, ARBOK, BLACKGLASSES
-		db WRAP
+	db 38, ARBOK, POISON_BARB
+		db GLARE
+		db SCREECH
 		db ACID
 		db CRUNCH
-		db GLARE
 
-	db 32, VILEPLUME, MIRACLE_SEED
-		db MEGA_DRAIN
-		db GROWTH
-		db SLEEP_POWDER
+	db 39, GLOOM, MIRACLE_SEED
+		db LEECH_SEED
 		db ACID
+		db SLEEP_POWDER
+		db GIGA_DRAIN
 
-	db 32, HONCHKROW, KINGS_ROCK
+	db 40, MURKROW, BLACKGLASSES
 		db WING_ATTACK
-		db PURSUIT
-		db CONFUSE_RAY
 		db NIGHT_SHADE
+		db CONFUSE_RAY
+		db FEINT_ATTACK
 
 	db $ff ; end
 
@@ -11501,23 +11515,23 @@ ExecutiveFGroup:
 
 	; party
 
-	db 34, ARBOK, POISON_BARB
-		db GLARE
-		db SCREECH
+	db 33, ARBOK, BLACKGLASSES
+		db WRAP
 		db ACID
 		db CRUNCH
+		db GLARE
 
-	db 35, GLOOM, MIRACLE_SEED
-		db LEECH_SEED
-		db ACID
+	db 34, VILEPLUME, MIRACLE_SEED
+		db MEGA_DRAIN
+		db GROWTH
 		db SLEEP_POWDER
-		db GIGA_DRAIN
+		db ACID
 
-	db 36, MURKROW, BLACKGLASSES
+	db 35, HONCHKROW, KINGS_ROCK
 		db WING_ATTACK
-		db NIGHT_SHADE
+		db PURSUIT
 		db CONFUSE_RAY
-		db FEINT_ATTACK
+		db NIGHT_SHADE
 
 	db $ff ; end
 

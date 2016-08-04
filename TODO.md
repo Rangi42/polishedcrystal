@@ -1,10 +1,8 @@
 ## Use or remove
 
 * Use EMOTE_QUESTION, EMOTE_HAPPY, EMOTE_SAD, and EMOTE_SLEEP somewhere
-* Use constants for Rocket Executives (ARCHER1, etc)
 * Use SPRITE_UNUSED_GUY (a still moustached man) somewhere
 * Use or remove SPRITE_OLD_LINK_RECEPTIONIST
-* Add SPRITE_LAPRAS for the Union Cave Lapras, don't use SPRITE_SURF
 * Phase out SPRITE_MONSTER, SPRITE_FAIRY, SPRITE_BIRD, and SPRITE_DRAGON
 * Add a variable sprite for Lyra that turns into Lass
 * Add a variable sprite for Silver that turns into Bug Catcher
@@ -131,4 +129,3 @@
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
-* Put Executive Proton in Slowpoke Well like in HGSS
