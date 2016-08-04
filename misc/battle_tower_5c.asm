@@ -1681,6 +1681,8 @@ Function_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 ; 170b90
 
 .Sprites:
+	db SPRITE_KRIS
+	db SPRITE_CHRIS
 	db SPRITE_FALKNER
 	db SPRITE_BUGSY
 	db SPRITE_WHITNEY
@@ -1706,7 +1708,6 @@ Function_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_LEAF
 	db SPRITE_SILVER
 	db SPRITE_SILVER
-	db SPRITE_CHRIS
 	db SPRITE_YOUNGSTER
 	db SPRITE_BUG_CATCHER
 	db SPRITE_YOUNGSTER

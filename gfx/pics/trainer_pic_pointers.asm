@@ -1,4 +1,6 @@
 
+	add_pic KayPic
+	add_pic CalPic
 	add_pic FalknerPic
 	add_pic BugsyPic
 	add_pic WhitneyPic
@@ -24,7 +26,6 @@
 	add_pic LeafPic
 	add_pic Rival1Pic
 	add_pic Rival2Pic
-	add_pic CalPic
 	add_pic YoungsterPic
 	add_pic BugCatcherPic
 	add_pic CamperPic

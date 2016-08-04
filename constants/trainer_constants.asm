@@ -9,6 +9,13 @@ CHRIS EQU __enum__
 	const PHONECONTACT_BUENA
 
 KRIS EQU __enum__
+	trainerclass KAY
+	const KAY1
+
+	trainerclass CAL ; 1a
+	const CAL1
+	const CAL2
+
 	trainerclass FALKNER ; 1
 
 	trainerclass BUGSY ; 2
@@ -75,10 +82,6 @@ KRIS EQU __enum__
 	const RIVAL1_15
 
 	trainerclass RIVAL2 ; 19
-
-	trainerclass CAL ; 1a
-	const CAL1
-	const CAL2
 
 	trainerclass YOUNGSTER ; 1b
 	const JOEY1

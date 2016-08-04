@@ -27,6 +27,8 @@ endr
 TrainerClassDVs: ; 270d6
 	;  Atk  Spd
 	;  Def  Spc
+	db $FF, $FF ; kay
+	db $FF, $FF ; cal
 	db $CC, $CC ; falkner
 	db $CC, $CC ; bugsy
 	db $7D, $DD ; whitney
@@ -52,7 +54,6 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; leaf
 	db $FF, $FF ; rival1
 	db $FF, $FF ; rival2
-	db $FF, $FF ; cal
 	db $87, $77 ; youngster
 	db $88, $F8 ; bug catcher
 	db $99, $99 ; camper

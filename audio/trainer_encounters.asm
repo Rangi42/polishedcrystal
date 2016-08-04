@@ -23,6 +23,8 @@ PlayTrainerEncounterMusic:: ; e900a
 
 TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER
+	db MUSIC_HIKER_ENCOUNTER		; kay
+	db MUSIC_HIKER_ENCOUNTER		; cal
 	db MUSIC_YOUNGSTER_ENCOUNTER	; falkner
 	db MUSIC_YOUNGSTER_ENCOUNTER	; bugsy
 	db MUSIC_OFFICER_ENCOUNTER		; morty
@@ -48,7 +50,6 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; leaf
 	db MUSIC_RIVAL_ENCOUNTER		; rival1
 	db MUSIC_RIVAL_ENCOUNTER		; rival2
-	db MUSIC_HIKER_ENCOUNTER		; cal
 	db MUSIC_YOUNGSTER_ENCOUNTER	; youngster
 	db MUSIC_YOUNGSTER_ENCOUNTER	; bug_catcher
 	db MUSIC_YOUNGSTER_ENCOUNTER	; camper

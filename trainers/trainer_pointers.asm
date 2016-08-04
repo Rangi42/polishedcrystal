@@ -1,6 +1,8 @@
 ; Each trainer class has its own group. See trainers.asm.
 
 TrainerGroups: ; 0x39999
+	dw KayGroup
+	dw CalGroup
 	dw FalknerGroup
 	dw BugsyGroup
 	dw WhitneyGroup
@@ -26,7 +28,6 @@ TrainerGroups: ; 0x39999
 	dw LeafGroup
 	dw Rival1Group
 	dw Rival2Group
-	dw PKMNTrainerGroup
 	dw YoungsterGroup
 	dw BugCatcherGroup
 	dw CamperGroup

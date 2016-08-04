@@ -103,7 +103,6 @@
 * Use the News Machine for something (Mystery Gift?)
 * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
-* Replace Cal in Trainer Hall with whichever gender character you don't pick
 * Include Lyra/Kotone as a friendly rival like in HGSS
   * She starts out with Marill, then takes whichever starter is left and battles you; her Pokémon do evolve, but her team is small (Azumarill, starter, Girafarig, Furret which she caught to teach you how)
 * Add a store to buy room decorations that Mom doesn't (the Goldenrod Dept. Store rooftop bargain sale and the harbor are good)

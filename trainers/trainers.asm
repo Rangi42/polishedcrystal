@@ -13,6 +13,121 @@ Trainers:
 	; $ff
 
 
+KayGroup:
+; ================================
+; ================
+
+	; KAY (1)
+	db "Kay@"
+	db 3 ; item + moves
+
+	; party
+
+	db 60, MEGANIUM, GOLD_BERRY
+		db GIGA_DRAIN
+		db PROTECT
+		db LEECH_SEED
+		db TOXIC
+
+	db 60, TYPHLOSION, QUICK_CLAW
+		db SUNNY_DAY
+		db THUNDERPUNCH
+		db FLAMETHROWER
+		db SUBSTITUTE
+
+	db 60, FERALIGATR, MIRACLEBERRY
+		db SURF
+		db CRUNCH
+		db ICE_PUNCH
+		db ROCK_SLIDE
+
+	db 60, STEELIX, MINT_BERRY
+		db IRON_TAIL
+		db ROCK_SLIDE
+		db EARTHQUAKE
+		db REST
+
+	db 60, UMBREON, LEFTOVERS
+		db CONFUSE_RAY
+		db CURSE
+		db FEINT_ATTACK
+		db PROTECT
+
+	db 60, CLEFABLE, PINK_BOW
+		db SING
+		db MOONLIGHT
+		db METRONOME
+		db MOONBLAST
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+CalGroup:
+; ================================
+; ================
+
+	; CAL (1)
+	db "Cal@"
+	db 3 ; item + moves
+
+	; party
+
+	db 60, TYPHLOSION, QUICK_CLAW
+		db SUNNY_DAY
+		db THUNDERPUNCH
+		db FLAMETHROWER
+		db SUBSTITUTE
+
+	db 60, MEGANIUM, GOLD_BERRY
+		db GIGA_DRAIN
+		db PROTECT
+		db LEECH_SEED
+		db TOXIC
+
+	db 60, FERALIGATR, MIRACLEBERRY
+		db SURF
+		db CRUNCH
+		db ICE_PUNCH
+		db ROCK_SLIDE
+
+	db 60, STEELIX, MINT_BERRY
+		db IRON_TAIL
+		db ROCK_SLIDE
+		db EARTHQUAKE
+		db REST
+
+	db 60, UMBREON, LEFTOVERS
+		db CONFUSE_RAY
+		db CURSE
+		db FEINT_ATTACK
+		db PROTECT
+
+	db 60, CLEFABLE, PINK_BOW
+		db SING
+		db MOONLIGHT
+		db METRONOME
+		db MOONBLAST
+
+	db $ff ; end
+
+; ================
+
+	; CAL (2)
+	db "Cal@"
+	db 0 ; normal
+
+	; party
+	db 60, BLISSEY
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
 FalknerGroup:
 ; ================================
 ; ================
@@ -2890,69 +3005,6 @@ Rival2Group:
 		db CRUNCH
 		db SLASH
 		db OUTRAGE
-
-	db $ff ; end
-
-; ================
-; ================================
-
-
-PKMNTrainerGroup:
-; ================================
-; ================
-
-	; CAL (1)
-	db "Cal@"
-	db 3 ; item + moves
-
-	; party
-
-	db 60, MEGANIUM, GOLD_BERRY
-		db GIGA_DRAIN
-		db PROTECT
-		db LEECH_SEED
-		db TOXIC
-
-	db 60, TYPHLOSION, QUICK_CLAW
-		db SUNNY_DAY
-		db THUNDERPUNCH
-		db FLAMETHROWER
-		db SUBSTITUTE
-
-	db 60, FERALIGATR, MIRACLEBERRY
-		db SURF
-		db CRUNCH
-		db ICE_PUNCH
-		db ROCK_SLIDE
-
-	db 60, STEELIX, MINT_BERRY
-		db IRON_TAIL
-		db ROCK_SLIDE
-		db EARTHQUAKE
-		db REST
-
-	db 60, UMBREON, LEFTOVERS
-		db CONFUSE_RAY
-		db CURSE
-		db FEINT_ATTACK
-		db PROTECT
-
-	db 60, CLEFABLE, PINK_BOW
-		db SING
-		db MOONLIGHT
-		db METRONOME
-		db MOONBLAST
-
-	db $ff ; end
-
-; ================
-
-	; CAL (2)
-	db "Cal@"
-	db 0 ; normal
-
-	; party
-	db 60, BLISSEY
 
 	db $ff ; end
 

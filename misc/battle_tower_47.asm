@@ -80,6 +80,8 @@ endr
 INCLUDE "misc/fixed_words.asm"
 
 BTTrainerClassGenders: ; 11f2f0
+	db FEMALE ; KAY
+	db MALE   ; CAL
 	db MALE   ; FALKNER
 	db FEMALE ; BUGSY
 	db FEMALE ; WHITNEY
@@ -105,7 +107,6 @@ BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; LEAF
 	db MALE   ; RIVAL1
 	db MALE   ; RIVAL2
-	db MALE   ; CAL
 	db MALE   ; YOUNGSTER
 	db MALE   ; BUG_CATCHER
 	db MALE   ; CAMPER

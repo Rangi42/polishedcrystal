@@ -1,7 +1,8 @@
 const_value set 2
+	const TRAINERHOUSEB1F_CAL
+	const TRAINERHOUSEB1F_KAY
 	const TRAINERHOUSEB1F_RECEPTIONIST1
 	const TRAINERHOUSEB1F_RECEPTIONIST2
-	const TRAINERHOUSEB1F_CHRIS
 	const TRAINERHOUSEB1F_COOLTRAINERM1
 	const TRAINERHOUSEB1F_COOLTRAINERM2
 	const TRAINERHOUSEB1F_COOLTRAINERF1
@@ -29,11 +30,21 @@ TrainerHouseReceptionist1Script:
 	writetext TrainerHouseB1FIntroText
 	buttonsound
 	special SpecialTrainerHouse
-	iffalse .GetCal3Name
+	iffalse .GetDefaultName
+	disappear TRAINERHOUSEB1F_KAY
+	appear TRAINERHOUSEB1F_CAL
 	trainertotext CAL, CAL2, $0
 	jump .GotName
-
-.GetCal3Name:
+.GetDefaultName:
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .GetCalName
+	disappear TRAINERHOUSEB1F_CAL
+	appear TRAINERHOUSEB1F_KAY
+	trainertotext KAY, KAY1, $0
+	jump .GotName
+.GetCalName
+	disappear TRAINERHOUSEB1F_KAY
+	appear TRAINERHOUSEB1F_CAL
 	trainertotext CAL, CAL1, $0
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
@@ -53,15 +64,22 @@ TrainerHouseReceptionist1Script:
 	special SpecialTrainerHouse
 	iffalse .NoSpecialBattle
 	winlosstext TrainerHouseB1FCalBeatenText, 0
-	setlasttalked TRAINERHOUSEB1F_CHRIS
+	setlasttalked TRAINERHOUSEB1F_CAL
 	loadtrainer CAL, CAL2
 	startbattle
 	reloadmapafterbattle
 	iffalse .End
 .NoSpecialBattle:
 	winlosstext TrainerHouseB1FCalBeatenText, 0
-	setlasttalked TRAINERHOUSEB1F_CHRIS
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .LoadTrainerCal
+	setlasttalked TRAINERHOUSEB1F_KAY
+	loadtrainer KAY, KAY1
+	jump .StartBattle
+.LoadTrainerCal
+	setlasttalked TRAINERHOUSEB1F_CAL
 	loadtrainer CAL, CAL1
+.StartBattle
 	startbattle
 	reloadmapafterbattle
 .End:
@@ -386,9 +404,10 @@ TrainerHouseB1F_MapEventHeader:
 
 .PersonEvents:
 	db 8
+	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
+	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_KAY
 	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_RECEPTIONIST, 1, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_COOLTRAINER_M, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainermAbdul, -1
 	person_event SPRITE_COOLTRAINER_M, 13, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainermElan, -1
 	person_event SPRITE_COOLTRAINER_F, 9, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainerfSalma, -1

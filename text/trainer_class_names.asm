@@ -1,3 +1,5 @@
+	db "<PKMN> Trainer@"
+	db "<PKMN> Trainer@"
 	db "Leader@"
 	db "Leader@"
 	db "Leader@"
@@ -23,7 +25,6 @@
 	db "<PKMN> Trainer@"
 	db "Rival@"
 	db "Rival@"
-	db "<PKMN> Trainer@"
 	db "Youngster@"
 	db "Bug Catcher@"
 	db "Camper@"
