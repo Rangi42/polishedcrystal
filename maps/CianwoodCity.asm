@@ -162,20 +162,18 @@ CianwoodCityHiddenMaxEther:
 	dwb EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER, MAX_ETHER
 
 MovementData_0x1a00da:
-	db $39 ; movement
+	fix_facing
 	fast_jump_step_down
 	fast_jump_step_down
 	fast_jump_step_right
-	db $38 ; movement
 	step_end
 
 MovementData_0x1a00e0:
-	db $39 ; movement
+	fix_facing
 	fast_jump_step_right
 	fast_jump_step_up
 	fast_jump_step_right
 	fast_jump_step_right
-	db $38 ; movement
 	step_end
 
 MovementData_0x1a00e7:
@@ -451,4 +449,4 @@ CianwoodCity_MapEventHeader:
 	person_event SPRITE_POKEFAN_F, 46, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a0084, -1
 	person_event SPRITE_ROCKET, 26, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRocketScript, EVENT_BEAT_CHUCK
 	person_event SPRITE_SUPER_NERD, 21, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
-	person_event SPRITE_SUICUNE, 14, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
+	person_event SPRITE_SUICUNE, 14, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY

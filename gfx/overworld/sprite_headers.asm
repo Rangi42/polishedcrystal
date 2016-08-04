@@ -334,8 +334,8 @@ N64Sprite: ; 14916
 	sprite_header N64SpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
 ; 1491c
 
-SudowoodoSprite: ; 1491c
-	sprite_header SudowoodoSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
+WeirdTreeSprite: ; 1491c
+	sprite_header WeirdTreeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
 ; 14922
 
 SurfSprite: ; 14922
@@ -401,18 +401,6 @@ KrisBikeSprite: ; 14976
 KurtOutsideSprite: ; 1497c
 	sprite_header KurtOutsideSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 14982
-
-SuicuneSprite: ; 14982
-	sprite_header SuicuneSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
-; 14988
-
-EnteiSprite: ; 14988
-	sprite_header EnteiSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
-; 1498e
-
-RaikouSprite: ; 1498e
-	sprite_header RaikouSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
-; 14994
 
 StandingYoungsterSprite: ; 14994
 	sprite_header StandingYoungsterSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE

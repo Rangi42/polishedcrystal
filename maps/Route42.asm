@@ -223,14 +223,13 @@ Route42HiddenMaxPotion:
 
 
 MovementData_0x1a9356:
-	db $39 ; movement
+	fix_facing
 	fast_jump_step_up
 	fast_jump_step_up
 	fast_jump_step_up
 	fast_jump_step_right
 	fast_jump_step_right
 	fast_jump_step_right
-	db $38 ; movement
 	step_end
 
 FisherTully1SeenText:
@@ -372,6 +371,6 @@ Route42_MapEventHeader:
 	person_event SPRITE_FRUIT_TREE, 16, 29, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1
 	person_event SPRITE_POKE_BALL, 4, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
 	person_event SPRITE_POKE_BALL, 8, 33, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION
-	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE

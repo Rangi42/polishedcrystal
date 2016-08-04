@@ -130,53 +130,47 @@ BurnedTowerB1FBoulder:
 	jumpstd strengthboulder
 
 BurnedTowerRaikouMovement:
-	set_sliding
+	fix_facing
 	fast_jump_step_down
 	fast_jump_step_left
-	remove_sliding
 	step_end
 
 BurnedTowerEnteiMovement:
-	set_sliding
+	fix_facing
 	fast_jump_step_right
 	fast_jump_step_down
 	fast_jump_step_right
-	remove_sliding
 	step_end
 
 BurnedTowerSuicuneMovement1:
-	set_sliding
+	fix_facing
 	fast_jump_step_right
 	fast_jump_step_down
 	fast_jump_step_down
 	fast_jump_step_left
-	remove_sliding
 	step_end
 
 BurnedTowerSuicuneMovement2:
-	set_sliding
+	fix_facing
 	fast_jump_step_left
 	fast_jump_step_up
 	big_step_up
 	fast_jump_step_right
-	remove_sliding
 	step_end
 
 MovementData_0x18624f:
-	set_sliding
+	fix_facing
 	big_step_down
-	remove_sliding
 	step_end
 
 BurnedTowerSuicuneMovement3:
-	set_sliding
+	fix_facing
 	big_step_up
 	fast_jump_step_right
 	fast_jump_step_down
 	fast_jump_step_down
 	fast_jump_step_down
 	fast_jump_step_down
-	remove_sliding
 	step_end
 
 BurnedTowerB1FEusineMovement2:

@@ -4,7 +4,6 @@
 * Use constants for Rocket Executives (ARCHER1, etc)
 * Use SPRITE_UNUSED_GUY (a still moustached man) somewhere
 * Use or remove SPRITE_OLD_LINK_RECEPTIONIST
-* Make SPRITE_RAIKOU, SPRITE_ENTEI, and SPRITE_SUICUNE use the Pokémon icons
 * Add SPRITE_LAPRAS for the Union Cave Lapras, don't use SPRITE_SURF
 * Phase out SPRITE_MONSTER, SPRITE_FAIRY, SPRITE_BIRD, and SPRITE_DRAGON
 * Add a variable sprite for Lyra that turns into Lass

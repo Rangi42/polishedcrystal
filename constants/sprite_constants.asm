@@ -83,7 +83,7 @@
 	const SPRITE_DRAGON ; 4f
 	const SPRITE_BIG_ONIX ; 50
 	const SPRITE_N64 ; 51
-	const SPRITE_SUDOWOODO ; 52
+	const SPRITE_WEIRD_TREE ; 52
 	const SPRITE_SURF ; 53
 	const SPRITE_POKE_BALL ; 54
 	const SPRITE_POKEDEX ; 55
@@ -100,22 +100,19 @@
 	const SPRITE_KRIS ; 60
 	const SPRITE_KRIS_BIKE ; 61
 	const SPRITE_KURT_OUTSIDE ; 62
-	const SPRITE_SUICUNE ; 63
-	const SPRITE_ENTEI ; 64
-	const SPRITE_RAIKOU ; 65
-	const SPRITE_STANDING_YOUNGSTER ; 66
-	const SPRITE_LORELEI ; 67
-	const SPRITE_AGATHA ; 68
-	const SPRITE_YELLOW ; 69
-	const SPRITE_LEAF ; 6a
-	const SPRITE_LAWRENCE ; 6b
-	const SPRITE_FOSSIL ; 6c
-	const SPRITE_COWGIRL ; 6d
-	const SPRITE_RICH_BOY ; 6e
-	const SPRITE_HEX_MANIAC ; 6f
-	const SPRITE_JAMES ; 70
-	const SPRITE_JESSIE ; 71
-	const SPRITE_GIOVANNI ; 72
+	const SPRITE_STANDING_YOUNGSTER ; 63
+	const SPRITE_LORELEI ; 64
+	const SPRITE_AGATHA ; 65
+	const SPRITE_YELLOW ; 66
+	const SPRITE_LEAF ; 67
+	const SPRITE_LAWRENCE ; 68
+	const SPRITE_FOSSIL ; 69
+	const SPRITE_COWGIRL ; 6a
+	const SPRITE_RICH_BOY ; 6b
+	const SPRITE_HEX_MANIAC ; 6c
+	const SPRITE_JAMES ; 6d
+	const SPRITE_JESSIE ; 6e
+	const SPRITE_GIOVANNI ; 6f
 
 const_value SET $80
 
@@ -171,8 +168,11 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_UNOWN ; b0
 	const SPRITE_MILTANK ; b1
 	const SPRITE_BLISSEY ; b2
-	const SPRITE_LUGIA ; b3
-	const SPRITE_HO_OH ; b4
+	const SPRITE_RAIKOU ; b2
+	const SPRITE_ENTEI ; b3
+	const SPRITE_SUICUNE ; b4
+	const SPRITE_LUGIA ; b5
+	const SPRITE_HO_OH ; b6
 
 const_value SET $e0
 	const SPRITE_DAYCARE_MON_1 ; e0

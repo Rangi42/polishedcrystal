@@ -35,7 +35,7 @@ BirdSpriteGFX:                INCBIN "gfx/overworld/bird.2bpp" ; c6d80
 DragonSpriteGFX:              INCBIN "gfx/overworld/dragon.2bpp" ; c6f00
 BigOnixSpriteGFX:             INCBIN "gfx/overworld/big_onix.2bpp" ; c7080
 N64SpriteGFX:                 INCBIN "gfx/overworld/n64.2bpp" ; c7140
-SudowoodoSpriteGFX:           INCBIN "gfx/overworld/sudowoodo.2bpp" ; c7180
+WeirdTreeSpriteGFX:           INCBIN "gfx/overworld/weird_tree.2bpp" ; c7180
 SurfSpriteGFX:                INCBIN "gfx/overworld/surf.2bpp" ; c7200
 PokeBallSpriteGFX:            INCBIN "gfx/overworld/poke_ball.2bpp" ; c7380
 PokedexSpriteGFX:             INCBIN "gfx/overworld/pokedex.2bpp" ; c7500
@@ -52,7 +52,4 @@ SilverTrophySpriteGFX:        INCBIN "gfx/overworld/silver_trophy.2bpp" ; c7a00
 KrisSpriteGFX:                INCBIN "gfx/overworld/kris.2bpp" ; c7a40
 KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
 KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
-SuicuneSpriteGFX:             INCBIN "gfx/overworld/suicune.2bpp" ; c7e00
-EnteiSpriteGFX:               INCBIN "gfx/overworld/entei.2bpp" ; c7e40
-RaikouSpriteGFX:              INCBIN "gfx/overworld/raikou.2bpp" ; c7e80
 StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0

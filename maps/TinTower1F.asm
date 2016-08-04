@@ -243,37 +243,32 @@ TinTowerPlayerMovement1:
 	step_end
 
 TinTowerRaikouMovement1:
-	set_sliding
+	fix_facing
 	fast_jump_step_down
-	remove_sliding
 	step_end
 
 TinTowerRaikouMovement2:
-	set_sliding
+	fix_facing
 	fast_jump_step_down
 	fast_jump_step_right
 	fast_jump_step_down
-	remove_sliding
 	step_end
 
 TinTowerEnteiMovement1:
-	set_sliding
+	fix_facing
 	fast_jump_step_down
-	remove_sliding
 	step_end
 
 TinTowerEnteiMovement2:
-	set_sliding
+	fix_facing
 	fast_jump_step_down
 	fast_jump_step_left
 	fast_jump_step_down
-	remove_sliding
 	step_end
 
 TinTowerSuicuneMovement:
-	set_sliding
+	fix_facing
 	fast_jump_step_down
-	remove_sliding
 	step_end
 
 TinTowerPlayerMovement2:
@@ -546,9 +541,9 @@ TinTower1F_MapEventHeader:
 
 .PersonEvents:
 	db 10
-	person_event SPRITE_SUICUNE, 9, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
-	person_event SPRITE_RAIKOU, 9, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
-	person_event SPRITE_ENTEI, 9, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
+	person_event SPRITE_SUICUNE, 9, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
+	person_event SPRITE_RAIKOU, 9, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
+	person_event SPRITE_ENTEI, 9, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
 	person_event SPRITE_SUPER_NERD, 3, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TinTowerEusine, EVENT_TIN_TOWER_1F_EUSINE
 	person_event SPRITE_SAGE, 9, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x185173, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	person_event SPRITE_SAGE, 11, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x185176, EVENT_TIN_TOWER_1F_WISE_TRIO_1
