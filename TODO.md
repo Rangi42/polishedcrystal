@@ -1,6 +1,5 @@
 ## Bugs
 
-* Fix Trainer Hall tiles.
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
 * TMs refresh PP

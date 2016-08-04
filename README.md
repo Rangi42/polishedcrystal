@@ -281,4 +281,5 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 
 * Add: Meganium can learn Calm Mind.
 * Fix: Slightly debuff the Kimono Girls.
+* Fix: Replace broken Trainer House tiles with a Poké Ball pattern.
 * Fix: Typo "your" for "you" (thanks, jpmac26).
