@@ -794,6 +794,7 @@ SpriteMons: ; 14495
 	db MEW
 	db BAYLEEF
 	db HOOTHOOT
+	db AMPHAROS
 	db MURKROW
 	db UNOWN
 	db MILTANK

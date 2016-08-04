@@ -119,3 +119,8 @@
 * Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
 * Add a third Trainer Card page for Kanto badges
+* Adjust Kanto trainers' levels closer to Gym Leaders
+* Use EMOTE_QUESTION, EMOTE_HAPPY, EMOTE_SAD, and EMOTE_SLEEP somewhere
+* Use constants for Rocket Executives (ARCHER1, etc)
+* Use SPRITE_UNUSED_GUY (a still moustached man) somewhere
+* Put Executive Proton in Slowpoke Well like in HGSS

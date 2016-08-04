@@ -1,6 +1,6 @@
 const_value set 2
 	const OLIVINELIGHTHOUSE6F_JASMINE
-	const OLIVINELIGHTHOUSE6F_MONSTER
+	const OLIVINELIGHTHOUSE6F_AMPHAROS
 	const OLIVINELIGHTHOUSE6F_POKE_BALL
 
 OlivineLighthouse6F_MapScriptHeader:
@@ -38,7 +38,7 @@ UnknownScript_0x60bab:
 	closetext
 	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	spriteface OLIVINELIGHTHOUSE6F_MONSTER, LEFT
+	spriteface OLIVINELIGHTHOUSE6F_AMPHAROS, LEFT
 	opentext
 	playmusic MUSIC_HEAL
 	writetext UnknownText_0x60e44
@@ -54,14 +54,7 @@ UnknownScript_0x60bab:
 	writetext UnknownText_0x60f3d
 	waitbutton
 	closetext
-	spriteface OLIVINELIGHTHOUSE6F_MONSTER, RIGHT
-	pause 10
-	spriteface OLIVINELIGHTHOUSE6F_MONSTER, LEFT
-	pause 10
-	spriteface OLIVINELIGHTHOUSE6F_MONSTER, RIGHT
-	pause 10
-	spriteface OLIVINELIGHTHOUSE6F_MONSTER, LEFT
-	pause 10
+	showemote EMOTE_BOLT, OLIVINELIGHTHOUSE6F_AMPHAROS, 15
 	faceplayer
 	opentext
 	writetext UnknownText_0x60e6c
@@ -92,7 +85,7 @@ UnknownScript_0x60c25:
 	closetext
 	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	spriteface OLIVINELIGHTHOUSE6F_MONSTER, LEFT
+	spriteface OLIVINELIGHTHOUSE6F_AMPHAROS, LEFT
 	opentext
 	writetext UnknownText_0x60ef1
 	waitbutton
@@ -276,5 +269,5 @@ OlivineLighthouse6F_MapEventHeader:
 .PersonEvents:
 	db 3
 	person_event SPRITE_JASMINE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	person_event SPRITE_MONSTER, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
+	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
 	person_event SPRITE_POKE_BALL, 4, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, OlivineLighthouse6FSuperPotion, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
