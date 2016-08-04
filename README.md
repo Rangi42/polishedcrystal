@@ -283,6 +283,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Meganium can learn Calm Mind.
 * Add: Pokémon sprites for Joey and Mike's battle and for Amphy.
 * Add: Rocket Executive in Slowpoke Well.
+* Add: Pokémon are found via Headbutt on Route 47+48 and in Yellow Forest.
 * Fix: Slightly debuff the Kimono Girls.
 * Fix: Replace broken Trainer House tiles with a Poké Ball pattern.
 * Fix: Typo "your" for "you" (thanks, jpmac26).

@@ -485,6 +485,8 @@ endm
 	treemon_map ROUTE_44, 1
 	treemon_map ROUTE_45, 1
 	treemon_map ROUTE_46, 1
+	treemon_map ROUTE_47, 1
+	treemon_map ROUTE_48, 1
 	treemon_map NEW_BARK_TOWN, 0
 	treemon_map CHERRYGROVE_CITY, 0
 	treemon_map VIOLET_CITY, 0
@@ -499,6 +501,7 @@ endm
 	treemon_map SILVER_CAVE_OUTSIDE, 0
 	treemon_map ILEX_FOREST, 6
 	treemon_map VIRIDIAN_FOREST, 6
+	treemon_map YELLOW_FOREST, 6
 	db -1
 ; b82c5
 
@@ -555,15 +558,15 @@ TreeMons: ; b82e8
 ;	db  %, species, level
 
 TreeMons1: ; b82fa
-	db 50, PIDGEY,    10
-	db 15, PIDGEY,    10
-	db 15, PIDGEY,    10
+	db 50, PIDGEY,     10
+	db 15, PIDGEY,     10
+	db 15, PIDGEY,     10
 	db 10, AIPOM,      10
 	db  5, AIPOM,      10
 	db  5, AIPOM,      10
 	db -1
 
-	db 50, PIDGEY,    10
+	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
 	db 10, AIPOM,      10
@@ -572,15 +575,15 @@ TreeMons1: ; b82fa
 	db -1
 
 TreeMons2: ; b8320
-	db 50, PIDGEY,    10
+	db 50, PIDGEY,     10
 	db 15, EKANS,      10
-	db 15, PIDGEY,    10
+	db 15, PIDGEY,     10
 	db 10, AIPOM,      10
 	db  5, AIPOM,      10
 	db  5, AIPOM,      10
 	db -1
 
-	db 50, PIDGEY,    10
+	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
 	db 10, AIPOM,      10
