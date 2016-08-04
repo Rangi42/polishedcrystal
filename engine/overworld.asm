@@ -1149,11 +1149,12 @@ Group26Sprites:
 	db SPRITE_SILVER
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	db SPRITE_MONSTER ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 9 walking sprites
 	db SPRITE_FRUIT_TREE
+	db SPRITE_PIDGEY
 	db SPRITE_POKE_BALL
-	; 12 total sprites
+	db SPRITE_RATTATA
+	; 13 total sprites
 	db SPRITE_ENTEI
 	db SPRITE_RAIKOU
 	db SPRITE_ENTEI

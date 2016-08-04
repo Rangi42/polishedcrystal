@@ -3032,8 +3032,8 @@ YoungsterGroup:
 	db 0 ; normal
 
 	; party
-	db 2, PIDGEY
-	db 4, RATTATA
+	db 2, RATTATA
+	db 4, PIDGEY
 
 	db $ff ; end
 
