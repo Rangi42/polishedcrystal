@@ -118,3 +118,4 @@
 * Retype Electivire to Electric/Fighting
 * Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
+* Add a third Trainer Card page for Kanto badges

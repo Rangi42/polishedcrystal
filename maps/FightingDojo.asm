@@ -192,7 +192,7 @@ RematchBrown1Script:
 	if_equal WEDNESDAY, .Brown1Wednesday
 	if_equal FRIDAY, .Brown1Friday
 	if_equal SATURDAY, .Brown1Saturday
-	jump RematchBlaineScript
+	jump RematchPryceScript
 .Brown1Wednesday
 	jump RematchBrockScript
 .Brown1Friday
@@ -203,7 +203,7 @@ RematchBrown1Script:
 RematchBrown2Script:
 	checkcode VAR_WEEKDAY
 	if_equal THURSDAY, .Brown2Thursday
-	jump RematchPryceScript
+	jump RematchBlaineScript
 .Brown2Thursday
 	jump RematchMortyScript
 

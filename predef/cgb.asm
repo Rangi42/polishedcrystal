@@ -689,25 +689,25 @@ _CGB_TrainerCard: ; 9289
 	xor a
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $1
-	call GetTrainerPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
 	ld a, $3
-	call GetTrainerPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	ld a, $2
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, $4
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $7
+	ld a, $5
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, $6
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $5
+	ld a, $7
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, $8
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, $2
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, $24
