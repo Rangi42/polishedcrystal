@@ -730,6 +730,9 @@ KRIS EQU __enum__
 	const EUSINE
 
 	trainerclass LYRA ; 4f
+	const LYRA_1
+	const LYRA_2
+	const LYRA_3
 
 	trainerclass LORELEI ; 50
 

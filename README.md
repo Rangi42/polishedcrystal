@@ -279,6 +279,8 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 1.1.2 release. If you build the project as-is, it will include all of them.
 
+* Add: Lyra is your friendly rival.
+   * Battle Lyra in Prof. Elm's lab.
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy
 * Add: Meganium can learn Calm Mind.
 * Add: Pokémon sprites for Joey and Mike's battle and for Amphy.

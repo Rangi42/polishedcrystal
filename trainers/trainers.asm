@@ -11645,6 +11645,39 @@ MysticalmanGroup:
 LyraGroup:
 ; ================================
 ; ================
+
+	; LYRA (1)
+	db "Lyra@"
+	db 0 ; normal
+
+	; party
+	db 5, CHIKORITA
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (2)
+	db "Lyra@"
+	db 0 ; normal
+
+	; party
+	db 5, CYNDAQUIL
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (3)
+	db "Lyra@"
+	db 0 ; normal
+
+	; party
+	db 5, TOTODILE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
