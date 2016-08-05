@@ -15,7 +15,7 @@
 * Serious Senator for some trainer dialogs
 * tonyism for the in-battle shiny icon code
 * jpmac26 for editing the Pokémon Center signs and fixing a typo
-* Twilir for Lyra's sprite
+* Twilir for Lyra's sprites
 * Danny-E for Lorelei's sprite
 * Poketto for Giovanni's sprite
 * Nic7C5 for Yellow's sprite

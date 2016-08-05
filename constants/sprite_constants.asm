@@ -113,6 +113,7 @@
 	const SPRITE_JAMES ; 6d
 	const SPRITE_JESSIE ; 6e
 	const SPRITE_GIOVANNI ; 6f
+	const SPRITE_LYRA ; 70
 
 const_value SET $80
 
@@ -174,26 +175,29 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_LUGIA ; b5
 	const SPRITE_HO_OH ; b6
 
-const_value SET $e0
-	const SPRITE_DAYCARE_MON_1 ; e0
-	const SPRITE_DAYCARE_MON_2 ; e1
+const_value SET $d0
+	const SPRITE_DAYCARE_MON_1 ; d0
+	const SPRITE_DAYCARE_MON_2 ; d1
 
-const_value SET $f0
+const_value SET $e0
 SPRITE_VARS EQU const_value
-	const SPRITE_CONSOLE ; f0
-	const SPRITE_DOLL_1 ; f1
-	const SPRITE_DOLL_2 ; f2
-	const SPRITE_BIG_DOLL ; f3
-	const SPRITE_OLIVINE_RIVAL ; f4
-	const SPRITE_AZALEA_ROCKET ; f5
-	const SPRITE_FUCHSIA_GYM_1 ; f6
-	const SPRITE_FUCHSIA_GYM_2 ; f7
-	const SPRITE_FUCHSIA_GYM_3 ; f8
-	const SPRITE_FUCHSIA_GYM_4 ; f9
-	const SPRITE_COPYCAT ; fa
-	const SPRITE_JANINE_IMPERSONATOR ; fb
-	const SPRITE_REMATCH_GYM_LEADER_1 ; fc
-	const SPRITE_REMATCH_GYM_LEADER_2 ; fd
+	const SPRITE_CONSOLE ; e0
+	const SPRITE_DOLL_1 ; e1
+	const SPRITE_DOLL_2 ; e2
+	const SPRITE_BIG_DOLL ; e3
+	const SPRITE_FUCHSIA_GYM_1 ; e4
+	const SPRITE_FUCHSIA_GYM_2 ; e5
+	const SPRITE_FUCHSIA_GYM_3 ; e6
+	const SPRITE_FUCHSIA_GYM_4 ; e7
+	const SPRITE_COPYCAT ; e8
+	const SPRITE_JANINE_IMPERSONATOR ; e9
+	const SPRITE_REMATCH_GYM_LEADER_1 ; ea
+	const SPRITE_REMATCH_GYM_LEADER_2 ; eb
+	const SPRITE_REMATCH_GYM_LEADER_3 ; ec
+	const SPRITE_NEW_BARK_LYRA ; ed
+	const SPRITE_AZALEA_ROCKET ; ee
+	const SPRITE_CHERRYGROVE_RIVAL ; ef
+	const SPRITE_OLIVINE_RIVAL ; f0
 
 ; sprite types
 const_value SET 1

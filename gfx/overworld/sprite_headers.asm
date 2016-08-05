@@ -441,3 +441,6 @@ JessieSprite:
 
 GiovanniSprite:
 	sprite_header GiovanniSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
+LyraSprite:
+	sprite_header LyraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
