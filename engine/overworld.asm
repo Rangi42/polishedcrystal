@@ -1429,9 +1429,10 @@ Group19Sprites:
 ; FarawayIsland
 ; FarawayJungle
 	db SPRITE_SAILOR
-	db SPRITE_MONSTER
-	; 2 walking sprites
+	; 1 walking sprite
+	db SPRITE_MEW
 	; 2 total sprites
+	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1497,9 +1498,8 @@ Group21Sprites:
 	db SPRITE_YOUNGSTER
 	; 6 walking sprites
 	db SPRITE_BIG_SNORLAX
-	db SPRITE_POLIWAG
-	; 8 total sprites
-	db SPRITE_GOLD_TROPHY
+	db SPRITE_POLIWRATH
+	; 9 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
