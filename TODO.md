@@ -130,3 +130,4 @@
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
+* Retype Politoed to Water/Grass
