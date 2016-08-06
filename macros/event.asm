@@ -1075,6 +1075,11 @@ count_caught: macro
 	db count_caught_command
 	endm
 
+	enum count_unown_caught_command
+count_unown_caught: macro
+	db count_unown_caught_command
+	endm
+
 	enum trainerpic_command
 trainerpic: macro
 	db trainerpic_command

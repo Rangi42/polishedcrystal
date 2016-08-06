@@ -74,6 +74,7 @@ ScientistScript_0x591d1:
 	closetext
 	end
 
+; TODO: reward for catching all the Unown
 UnknownScript_0x591df:
 	writetext UnknownText_0x5935f
 	waitbutton
@@ -156,39 +157,21 @@ ResearchOngoingScript_0x59669:
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-	iftrue UnknownScript_0x59241
-	checkcode VAR_UNOWNCOUNT
-	if_equal 26, UnknownScript_0x59247
+	;iftrue UnknownScript_0x59241
+	count_unown_caught
+	writetext UnknownText_0x597d9
+	waitbutton
+	closetext
+	end
+
 UnknownScript_0x59241:
 	writetext UnknownText_0x597b6
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x59247:
-	writetext UnknownText_0x597d9
-	waitbutton
-	closetext
-	end
-
 MapRuinsofAlphResearchCenterSignpost2Script:
-	opentext
-	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-	iftrue UnknownScript_0x5925a
-	checkcode VAR_UNOWNCOUNT
-	if_equal 26, UnknownScript_0x59260
-UnknownScript_0x5925a:
-	writetext UnknownText_0x5980e
-	waitbutton
-	closetext
-	end
-
-UnknownScript_0x59260:
-	writetext UnknownText_0x5982d
-	waitbutton
-	special Special_UnownPrinter
-	closetext
-	end
+	jumptext UnknownText_0x5980e
 
 UnknownScript_0x59269:
 	jumptext UnknownText_0x59848
@@ -248,13 +231,6 @@ UnknownText_0x5935f:
 
 	para "That's a great"
 	line "achievement!"
-
-	para "I've set up the"
-	line "printer here for"
-	cont "handling Unown."
-
-	para "Feel free to use"
-	line "it anytime."
 	done
 
 UnknownText_0x593ed:
@@ -380,18 +356,19 @@ UnknownText_0x597d9:
 	text "Mystery #mon"
 	line "Name: Unown"
 
-	para "A total of 26"
+	para "A total of @"
+	deciram wd002, 1, 2
+	text ""
 	line "kinds found."
 	done
 
 UnknownText_0x5980e:
-	text "This doesn't seem"
-	line "to work yet."
-	done
+	text "It's a printer."
+	line "The display says"
+	cont "<``>PC LOAD LETTER<''>."
 
-UnknownText_0x5982d:
-	text "Unown may be"
-	line "printed out."
+	para "… What does that"
+	line "mean?"
 	done
 
 ; possibly unused

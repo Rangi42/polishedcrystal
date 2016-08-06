@@ -242,8 +242,9 @@ ScriptCommandTable: ; 96cb1
 	dw Script_check_save                 ; a9
 	dw Script_wonder_trade               ; aa
 	dw Script_count_caught               ; ab
-	dw Script_trainerpic                 ; ac
-	dw Script_respawn_one_offs           ; ad
+	dw Script_count_unown_caught         ; ac
+	dw Script_trainerpic                 ; ad
+	dw Script_respawn_one_offs           ; ae
 ; 96e05
 
 StartScript: ; 96e05
@@ -3258,8 +3259,17 @@ Script_count_caught:
 	ld [wd002], a
 	ret
 
-Script_trainerpic:
+Script_count_unown_caught:
 ; script command 0xac
+
+	ld a, VAR_UNOWNCOUNT
+	call GetVarAction
+	ld a, [de]
+	ld [wd002], a
+	ret
+
+Script_trainerpic:
+; script command 0xad
 ; parameters:
 ;     trainer (TrainerParam)
 
@@ -3274,7 +3284,7 @@ Script_trainerpic:
 ; 96f29
 
 Script_respawn_one_offs:
-; script command 0xad
+; script command 0xae
 
 	; TODO: respawn one-off Pokémon
 	ret
