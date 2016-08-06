@@ -157,7 +157,7 @@ ResearchOngoingScript_0x59669:
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-	;iftrue UnknownScript_0x59241
+	iftrue UnknownScript_0x59241
 	count_unown_caught
 	writetext UnknownText_0x597d9
 	waitbutton
@@ -173,7 +173,7 @@ UnknownScript_0x59241:
 MapRuinsofAlphResearchCenterSignpost2Script:
 	jumptext UnknownText_0x5980e
 
-UnknownScript_0x59269:
+MapRuinsofAlphResearchCenterSignpost3Script:
 	jumptext UnknownText_0x59848
 
 MapRuinsofAlphResearchCenterSignpost0Script:
@@ -305,7 +305,6 @@ UnknownText_0x595cb:
 	cont "kinds of them…"
 	done
 
-; possibly unused
 UnknownText_0x59669:
 	text "We think something"
 	line "caused the cryptic"
@@ -371,7 +370,6 @@ UnknownText_0x5980e:
 	line "mean?"
 	done
 
-; possibly unused
 UnknownText_0x59848:
 	text "It's a photo of"
 	line "the Research"
@@ -402,10 +400,11 @@ RuinsofAlphResearchCenter_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 4
 	signpost 5, 6, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost0Script
 	signpost 4, 3, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
 	signpost 1, 7, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost2Script
+	signpost 0, 5, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost3Script
 
 .PersonEvents:
 	db 3
