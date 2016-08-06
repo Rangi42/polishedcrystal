@@ -37,11 +37,14 @@ LyrasHouseRadio:
 	closetext
 	end
 
-LyrasHouseBookshelf:
-	jumpstd picturebookshelf
-
 LyrasHousePC:
 	jumptext LyrasHousePCText
+
+LyrasHouseN64:
+	jumptext LyrasHouseN64Text
+
+LyrasHouseBookshelf:
+	jumpstd picturebookshelf
 
 LyrasRadioText1:
 	text "Prof.Oak's #mon"
@@ -64,7 +67,13 @@ LyrasRadioText4:
 	done
 
 LyrasHousePCText:
-	text "TODO"
+	text "You shouldn't mess"
+	line "with someone"
+	cont "else's PC!"
+	done
+
+LyrasHouseN64Text:
+	text "It's an N64."
 	done
 
 LyrasHouse2F_MapEventHeader:
@@ -73,16 +82,17 @@ LyrasHouse2F_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $0, $7, 3, LYRAS_HOUSE_1F
+	warp_def $0, $0, 3, LYRAS_HOUSE_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 2, SIGNPOST_UP, LyrasHousePC
-	signpost 1, 3, SIGNPOST_READ, LyrasHouseRadio
-	signpost 1, 5, SIGNPOST_READ, LyrasHouseBookshelf
+	db 4
+	signpost 1, 4, SIGNPOST_UP, LyrasHousePC
+	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
+	signpost 1, 7, SIGNPOST_READ, LyrasHouseBookshelf
+	signpost 2, 6, SIGNPOST_READ, LyrasHouseN64
 
 .PersonEvents:
 	db 0

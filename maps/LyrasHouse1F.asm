@@ -1,4 +1,5 @@
 const_value set 2
+	const LYRASHOUSE1F_DAD
 
 LyrasHouse1F_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,9 @@ LyrasHouse1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+LyrasDadScript:
+	jumptextfaceplayer LyrasDadText2
 
 LyrasTVScript:
 	jumptext LyrasTVText
@@ -19,17 +23,33 @@ LyrasSinkScript:
 LyrasFridgeScript:
 	jumptext LyrasFridgeText
 
-LyrasStoveText:
-	text "Mom's specialty!"
+; TODO: use this text
+LyrasDadText1:
+	text "Hi, <PLAYER>!"
+	line "Lyra is upstairs."
 
-	para "Cinnabar Volcano"
-	line "Burger!"
+	para "She's playing"
+	line "with her #mon"
+	cont "as usual."
+	done
+
+LyrasDadText2:
+	text "Hi, <PLAYER>!"
+	line "Lyra isn't here."
+
+	para "She's been busy"
+	line "helping the prof-"
+	cont "essor."
+	done
+
+LyrasStoveText:
+	text "Curry is simmering"
+	line "on the stove."
 	done
 
 LyrasSinkText:
 	text "The sink is spot-"
-	line "less. Mom likes it"
-	cont "clean."
+	line "less."
 	done
 
 LyrasFridgeText:
@@ -37,18 +57,19 @@ LyrasFridgeText:
 	line "in the fridge…"
 
 	para "Fresh Water and"
-	line "tasty Lemonade!"
+	line "rice balls!"
 	done
 
 LyrasTVText:
 	text "There's a movie on"
-	line "TV: Stars dot the"
+	line "TV: A girl with"
 
-	para "sky as two boys"
-	line "ride on a train…"
+	para "her hair in pig-"
+	line "tails is walking"
+	cont "up a brick road."
 
 	para "I'd better get"
-	line "rolling too!"
+	line "going too!"
 	done
 
 LyrasHouse1F_MapEventHeader:
@@ -57,19 +78,20 @@ LyrasHouse1F_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $7, $6, 4, NEW_BARK_TOWN
-	warp_def $7, $7, 4, NEW_BARK_TOWN
-	warp_def $0, $9, 1, LYRAS_HOUSE_2F
+	warp_def $7, $2, 4, NEW_BARK_TOWN
+	warp_def $7, $3, 4, NEW_BARK_TOWN
+	warp_def $0, $0, 1, LYRAS_HOUSE_2F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 4
-	signpost 1, 0, SIGNPOST_READ, LyrasStoveScript
-	signpost 1, 1, SIGNPOST_READ, LyrasSinkScript
-	signpost 1, 2, SIGNPOST_READ, LyrasFridgeScript
+	signpost 1, 8, SIGNPOST_READ, LyrasStoveScript
+	signpost 1, 9, SIGNPOST_READ, LyrasSinkScript
+	signpost 1, 7, SIGNPOST_READ, LyrasFridgeScript
 	signpost 1, 4, SIGNPOST_READ, LyrasTVScript
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_DAD, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LyrasDadScript, -1

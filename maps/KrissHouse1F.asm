@@ -210,15 +210,17 @@ MovementData_0x7a602:
 	step_end
 
 UnknownText_0x7a604:
-	text "Oh, <PLAYER>…! Our"
+	text "Oh, <PLAYER>!"
+	line "You're awake."
+
+	para "Your friend Lyra"
+	line "was just here."
+
+	para "She said that our"
 	line "neighbor, Prof."
 
 	para "Elm, was looking"
 	line "for you."
-
-	para "He said he wanted"
-	line "you to do some-"
-	cont "thing for him."
 
 	para "Oh! I almost for-"
 	line "got! Your #mon"
@@ -258,8 +260,9 @@ UnknownText_0x7a763:
 
 	para "By the way, do"
 	line "you know how to"
-	cont "use your new"
-	cont "Running Shoes?"
+
+	para "use your new"
+	line "Running Shoes?"
 	done
 
 UnknownText_0x7a807:

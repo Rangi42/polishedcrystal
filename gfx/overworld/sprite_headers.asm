@@ -258,8 +258,8 @@ SageSprite: ; 148a4
 	sprite_header SageSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 148aa
 
-UnusedGuySprite: ; 148aa
-	sprite_header UnusedGuySpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+DadSprite: ; 148aa
+	sprite_header DadSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 148b0
 
 GentlemanSprite: ; 148b0

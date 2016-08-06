@@ -16,7 +16,7 @@ FishingGuruSpriteGFX:         INCBIN "gfx/overworld/fishing_guru.2bpp" ; c5340
 ScientistSpriteGFX:           INCBIN "gfx/overworld/scientist.2bpp" ; c54c0
 KimonoGirlSpriteGFX:          INCBIN "gfx/overworld/kimono_girl.2bpp" ; c5640
 SageSpriteGFX:                INCBIN "gfx/overworld/sage.2bpp" ; c57c0
-UnusedGuySpriteGFX:           INCBIN "gfx/overworld/unused_guy.2bpp" ; c5940
+DadSpriteGFX:                 INCBIN "gfx/overworld/dad.2bpp" ; c5940
 GentlemanSpriteGFX:           INCBIN "gfx/overworld/gentleman.2bpp" ; c5ac0
 BlackBeltSpriteGFX:           INCBIN "gfx/overworld/black_belt.2bpp" ; c5c40
 ReceptionistSpriteGFX:        INCBIN "gfx/overworld/receptionist.2bpp" ; c5dc0

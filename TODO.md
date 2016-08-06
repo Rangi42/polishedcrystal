@@ -1,11 +1,8 @@
 ## Use or remove
 
 * Use EMOTE_QUESTION, EMOTE_HAPPY, EMOTE_SAD, and EMOTE_SLEEP somewhere
-* Use SPRITE_UNUSED_GUY (a still moustached man) somewhere
 * Use or remove SPRITE_OLD_LINK_RECEPTIONIST
 * Phase out SPRITE_MONSTER, SPRITE_FAIRY, SPRITE_BIRD, and SPRITE_DRAGON
-* Add a variable sprite for Lyra that turns into Lass
-* Add a variable sprite for Silver that turns into Bug Catcher
 
 ## Bugs
 
