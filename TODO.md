@@ -18,7 +18,6 @@
 * Make the gatehouse roof inside Yellow Forest the same as outside
 * Make the gatehouse above the Ruins of Alph the same from Route 36
 * Rocket outside Radio Tower isn't visible from Goldenrod Harbor (event is EVENT\_GOLDENROD\_CITY\_ROCKET\_SCOUT)
-* Ellipses print too high in [a certain message](http://imgur.com/a/fBKWK)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
