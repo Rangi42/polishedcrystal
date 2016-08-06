@@ -1,10 +1,10 @@
 	db ELECTIVIRE ; 466
 
 if DEF(FAITHFUL)
-	db  75, 123,  67, 105,  95,  85
+	db  75, 123,  67,  95,  95,  85
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  75, 123,  67,  95,  95,  85
+	db  75, 123,  67, 105,  95,  85
 	;   hp  atk  def  spd  sat  sdf
 endc
 
