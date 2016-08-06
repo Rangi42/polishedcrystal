@@ -6807,7 +6807,6 @@ CheckSleepingTreeMon: ; 3eb38
 	db EKANS
 	db EXEGGCUTE
 	db LEDYBA
-	db AIPOM
 	db -1 ; end
 
 .Day:

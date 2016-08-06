@@ -361,18 +361,16 @@
 	add_pic AmpharosBackpic
 	add_pic BellossomFrontpic
 	add_pic BellossomBackpic
+	add_pic RhyperiorFrontpic
+	add_pic RhyperiorBackpic
 	add_pic SudowoodoFrontpic
 	add_pic SudowoodoBackpic
 	add_pic PolitoedFrontpic
 	add_pic PolitoedBackpic
-	add_pic HoppipFrontpic
-	add_pic HoppipBackpic
-	add_pic SkiploomFrontpic
-	add_pic SkiploomBackpic
-	add_pic JumpluffFrontpic
-	add_pic JumpluffBackpic
-	add_pic AipomFrontpic
-	add_pic AipomBackpic
+	add_pic SunkernFrontpic
+	add_pic SunkernBackpic
+	add_pic SunfloraFrontpic
+	add_pic SunfloraBackpic
 	add_pic YanmaFrontpic
 	add_pic YanmaBackpic
 	add_pic YanmegaFrontpic
@@ -404,6 +402,8 @@
 	dbw -1, -1
 	dbw -1, -1
 
+	add_pic WobbuffetFrontpic
+	add_pic WobbuffetBackpic
 	add_pic GirafarigFrontpic
 	add_pic GirafarigBackpic
 	add_pic PinecoFrontpic
@@ -468,20 +468,20 @@
 	add_pic DonphanBackpic
 	add_pic Porygon2Frontpic
 	add_pic Porygon2Backpic
-	add_pic StantlerFrontpic
-	add_pic StantlerBackpic
 	add_pic SmeargleFrontpic
 	add_pic SmeargleBackpic
 	add_pic TyrogueFrontpic
 	add_pic TyrogueBackpic
 	add_pic HitmontopFrontpic
 	add_pic HitmontopBackpic
-	add_pic SmoochumFrontpic
-	add_pic SmoochumBackpic
 	add_pic ElekidFrontpic
 	add_pic ElekidBackpic
+	add_pic ElectivireFrontpic
+	add_pic ElectivireBackpic
 	add_pic MagbyFrontpic
 	add_pic MagbyBackpic
+	add_pic MagmortarFrontpic
+	add_pic MagmortarBackpic
 	add_pic MiltankFrontpic
 	add_pic MiltankBackpic
 	add_pic BlisseyFrontpic

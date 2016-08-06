@@ -561,34 +561,34 @@ TreeMons1: ; b82fa
 	db 50, PIDGEY,     10
 	db 15, PIDGEY,     10
 	db 15, PIDGEY,     10
-	db 10, AIPOM,      10
-	db  5, AIPOM,      10
-	db  5, AIPOM,      10
+	db 10, PIDGEY,     10
+	db  5, MEOWTH,     10
+	db  5, MEOWTH,     10
 	db -1
 
 	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
-	db 10, AIPOM,      10
-	db  5, AIPOM,      10
-	db  5, AIPOM,      10
+	db 10, PIDGEY,     10
+	db  5, MEOWTH,     10
+	db  5, MEOWTH,     10
 	db -1
 
 TreeMons2: ; b8320
 	db 50, PIDGEY,     10
 	db 15, EKANS,      10
-	db 15, PIDGEY,     10
-	db 10, AIPOM,      10
-	db  5, AIPOM,      10
-	db  5, AIPOM,      10
+	db 15, EKANS,      10
+	db 10, PIDGEY,     10
+	db  5, MEOWTH,     10
+	db  5, MEOWTH,     10
 	db -1
 
 	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
-	db 10, AIPOM,      10
-	db  5, AIPOM,      10
-	db  5, AIPOM,      10
+	db 10, PIDGEY,     10
+	db  5, MEOWTH,     10
+	db  5, MEOWTH,     10
 	db -1
 
 TreeMons3: ; b8346

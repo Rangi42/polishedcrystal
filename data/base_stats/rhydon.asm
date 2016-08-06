@@ -1,10 +1,10 @@
 	db RHYDON ; 112
 
 if DEF(FAITHFUL)
-	db 110, 135, 125,  40,  48,  48
+	db 105, 130, 120,  40,  45,  45
 	;   hp  atk  def  spd  sat  sdf
 else
-	db 105, 130, 120,  40,  45,  45
+	db 110, 135, 125,  40,  48,  48
 	;   hp  atk  def  spd  sat  sdf
 endc
 

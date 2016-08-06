@@ -51,7 +51,7 @@
 	dba Cry_Chikorita
 	dba Cry_Totodile
 	dba Cry_Gligar
-	dba Cry_Hoppip
+	dba Cry_Bellossom
 	dba Cry_Slugma
 	dba Cry_Ledyba
 	dba Cry_Entei
@@ -64,7 +64,7 @@
 	dba Cry_Ampharos
 	dba Cry_Magcargo
 	dba Cry_Pichu
-	dba Cry_Aipom
+	dba Cry_Tyrogue
 	dba Cry_Dunsparce
 	dba Cry_Donphan
 ; e927c

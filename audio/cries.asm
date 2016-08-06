@@ -130,10 +130,10 @@ Cry_Totodile: ; f2e35
 	musicheader 1, 8, Cry_Totodile_Ch8
 ; f2e3e
 
-Cry_Hoppip: ; f2e3e
-	musicheader 3, 5, Cry_Hoppip_Ch5
-	musicheader 1, 6, Cry_Hoppip_Ch6
-	musicheader 1, 8, Cry_Hoppip_Ch8
+Cry_Bellossom: ; f2e3e
+	musicheader 3, 5, Cry_Bellossom_Ch5
+	musicheader 1, 6, Cry_Bellossom_Ch6
+	musicheader 1, 8, Cry_Bellossom_Ch8
 ; f2e47
 
 Cry_Pichu: ; f2e47
@@ -142,10 +142,10 @@ Cry_Pichu: ; f2e47
 	musicheader 1, 8, Cry_Pichu_Ch8
 ; f2e50
 
-Cry_Aipom: ; f2e50
-	musicheader 3, 5, Cry_Aipom_Ch5
-	musicheader 1, 6, Cry_Aipom_Ch6
-	musicheader 1, 8, Cry_Aipom_Ch8
+Cry_Tyrogue: ; f2e50
+	musicheader 3, 5, Cry_Tyrogue_Ch5
+	musicheader 1, 6, Cry_Tyrogue_Ch6
+	musicheader 1, 8, Cry_Tyrogue_Ch8
 ; f2e59
 
 Cry_Dunsparce: ; f2e59
@@ -862,7 +862,7 @@ Cry_Totodile_Ch8: ; f33c8
 	endchannel
 ; f33d5
 
-Cry_Hoppip_Ch5: ; f33d5
+Cry_Bellossom_Ch5: ; f33d5
 	unknownmusic0xde $39
 	soundinput $ff
 	sound __,  3, $f8, $0720
@@ -878,7 +878,7 @@ Cry_Hoppip_Ch5: ; f33d5
 	endchannel
 ; f33fc
 
-Cry_Hoppip_Ch6: ; f33fc
+Cry_Bellossom_Ch6: ; f33fc
 	unknownmusic0xde $22
 	sound __,  7, $b2, $071e
 	sound __,  6, $92, $0779
@@ -887,7 +887,7 @@ Cry_Hoppip_Ch6: ; f33fc
 	endchannel
 ; f340f
 
-Cry_Hoppip_Ch8: ; f340f
+Cry_Bellossom_Ch8: ; f340f
 	noise __,  3, $64, $7f
 	noise __,  3, $84, $7d
 	noise __,  3, $a4, $6f
@@ -897,7 +897,7 @@ Cry_Hoppip_Ch8: ; f340f
 	endchannel
 ; f3422
 
-Cry_Aipom_Ch5: ; f3422
+Cry_Tyrogue_Ch5: ; f3422
 	unknownmusic0xde $d2
 	sound __,  4, $f8, $06b0
 	sound __,  2, $f8, $06a5
@@ -909,25 +909,25 @@ Cry_Aipom_Ch5: ; f3422
 	endchannel
 ; f3441
 
-Cry_Aipom_Ch6: ; f3441
+Cry_Tyrogue_Ch6: ; f3441
 	unknownmusic0xde $27
-Cry_Aipom_branch_f3443: ; f3443
+Cry_Tyrogue_branch_f3443: ; f3443
 	sound __,  2, $f1, $07b4
-	loopchannel 8, Cry_Aipom_branch_f3443
-Cry_Aipom_branch_f344b: ; f344b
+	loopchannel 8, Cry_Tyrogue_branch_f3443
+Cry_Tyrogue_branch_f344b: ; f344b
 	sound __,  2, $c1, $0790
-	loopchannel 3, Cry_Aipom_branch_f344b
-Cry_Aipom_branch_f3453: ; f3453
+	loopchannel 3, Cry_Tyrogue_branch_f344b
+Cry_Tyrogue_branch_f3453: ; f3453
 	sound __,  2, $b1, $078d
-	loopchannel 2, Cry_Aipom_branch_f3453
+	loopchannel 2, Cry_Tyrogue_branch_f3453
 	sound C_,  1, $92, $0795
 	endchannel
 ; f3460
 
-Cry_Aipom_Ch8: ; f3460
-Cry_Aipom_branch_f3460: ; f3460
+Cry_Tyrogue_Ch8: ; f3460
+Cry_Tyrogue_branch_f3460: ; f3460
 	noise __,  1, $f1, $28
-	loopchannel 4, Cry_Aipom_branch_f3460
+	loopchannel 4, Cry_Tyrogue_branch_f3460
 	noise __,  1, $91, $49
 	noise __,  2, $a8, $4a
 	noise __,  1, $e1, $4b

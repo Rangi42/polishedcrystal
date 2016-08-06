@@ -875,7 +875,9 @@ Text_IlexForestTutorNoSilverLeaf:
 
 	para "Sometimes you can"
 	line "find them on wild"
-	cont "Oddish."
+
+	para "Oddish, or lying"
+	line "on the ground."
 	done
 
 Text_IlexForestTutorQuestion:

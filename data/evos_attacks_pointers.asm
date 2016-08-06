@@ -184,12 +184,11 @@ EvosAttacksPointers:: ; 0x425b1
 	dw FlaaffyEvosAttacks
 	dw AmpharosEvosAttacks
 	dw BellossomEvosAttacks
+	dw RhyperiorEvosAttacks
 	dw SudowoodoEvosAttacks
 	dw PolitoedEvosAttacks
-	dw HoppipEvosAttacks
-	dw SkiploomEvosAttacks
-	dw JumpluffEvosAttacks
-	dw AipomEvosAttacks
+	dw SunkernEvosAttacks
+	dw SunfloraEvosAttacks
 	dw YanmaEvosAttacks
 	dw YanmegaEvosAttacks
 	dw WooperEvosAttacks
@@ -204,6 +203,7 @@ EvosAttacksPointers:: ; 0x425b1
 	dw MisdreavusEvosAttacks
 	dw MismagiusEvosAttacks
 	dw UnownEvosAttacks
+	dw WobbuffetEvosAttacks
 	dw GirafarigEvosAttacks
 	dw PinecoEvosAttacks
 	dw ForretressEvosAttacks
@@ -236,13 +236,13 @@ EvosAttacksPointers:: ; 0x425b1
 	dw PhanpyEvosAttacks
 	dw DonphanEvosAttacks
 	dw Porygon2EvosAttacks
-	dw StantlerEvosAttacks
 	dw SmeargleEvosAttacks
 	dw TyrogueEvosAttacks
 	dw HitmontopEvosAttacks
-	dw SmoochumEvosAttacks
 	dw ElekidEvosAttacks
+	dw ElectivireEvosAttacks
 	dw MagbyEvosAttacks
+	dw MagmortarEvosAttacks
 	dw MiltankEvosAttacks
 	dw BlisseyEvosAttacks
 	dw RaikouEvosAttacks

@@ -161,49 +161,48 @@
 	const BERSERK_GENE  ; $8e
 	const EVIOLITE      ; $8f
 	const LIFE_ORB      ; $90
+	const AURA_ORB      ; $91
 
-	const DRAGON_SCALE  ; $91
-	const UP_GRADE      ; $92
-	const DUBIOUS_DISC  ; $93
-	const RAZOR_FANG    ; $94
-	const RAZOR_CLAW    ; $95
+	const DRAGON_SCALE  ; $92
+	const UP_GRADE      ; $93
+	const DUBIOUS_DISC  ; $94
+	const PROTECTOR     ; $95
+	const ELECTIRIZER   ; $96
+	const MAGMARIZER    ; $97
+	const RAZOR_FANG    ; $98
+	const RAZOR_CLAW    ; $99
 
-	const NUGGET        ; $96
-	const TINYMUSHROOM  ; $97
-	const BIG_MUSHROOM  ; $98
-	const PEARL         ; $99
-	const BIG_PEARL     ; $9a
-	const STARDUST      ; $9b
-	const STAR_PIECE    ; $9c
-	const SILVER_LEAF   ; $9d
-	const GOLD_LEAF     ; $9e
-	const SLOWPOKETAIL  ; $9f
+	const NUGGET        ; $9a
+	const TINYMUSHROOM  ; $9b
+	const BIG_MUSHROOM  ; $9c
+	const PEARL         ; $9d
+	const BIG_PEARL     ; $9e
+	const STARDUST      ; $9f
+	const STAR_PIECE    ; $a0
+	const SILVER_LEAF   ; $a1
+	const GOLD_LEAF     ; $a2
+	const SLOWPOKETAIL  ; $a3
 
-	const PARK_BALL     ; $a0
-	const REPEAT_BALL   ; $a1
-	const TIMER_BALL    ; $a2
-	const QUICK_BALL    ; $a3
-	const DUSK_BALL     ; $a4
+	const PARK_BALL     ; $a4
+	const REPEAT_BALL   ; $a5
+	const TIMER_BALL    ; $a6
+	const QUICK_BALL    ; $a7
+	const DUSK_BALL     ; $a8
 
-	const HELIX_FOSSIL  ; $a5
-	const DOME_FOSSIL   ; $a6
-	const OLD_AMBER     ; $a7
+	const HELIX_FOSSIL  ; $a9
+	const DOME_FOSSIL   ; $aa
+	const OLD_AMBER     ; $ab
 
-	const FLOWER_MAIL   ; $a8
-	const SURF_MAIL     ; $a9
-	const LITEBLUEMAIL  ; $aa
-	const PORTRAITMAIL  ; $ab
-	const LOVELY_MAIL   ; $ac
-	const EON_MAIL      ; $ad
-	const MORPH_MAIL    ; $ae
-	const BLUESKY_MAIL  ; $af
-	const MUSIC_MAIL    ; $b0
-	const MIRAGE_MAIL   ; $b1
-
-	const ITEM_B2       ; $b2
-	const ITEM_B3       ; $b3
-	const ITEM_B4       ; $b4
-	const ITEM_B5       ; $b5
+	const FLOWER_MAIL   ; $ac
+	const SURF_MAIL     ; $ad
+	const LITEBLUEMAIL  ; $ae
+	const PORTRAITMAIL  ; $af
+	const LOVELY_MAIL   ; $b0
+	const EON_MAIL      ; $b1
+	const MORPH_MAIL    ; $b2
+	const BLUESKY_MAIL  ; $b3
+	const MUSIC_MAIL    ; $b4
+	const MIRAGE_MAIL   ; $b5
 
 	add_tm DYNAMICPUNCH ; $b6
 	add_tm DRAGON_CLAW  ; $b7

@@ -182,12 +182,11 @@ const_value set 1
 	const FLAAFFY
 	const AMPHAROS
 	const BELLOSSOM
+	const RHYPERIOR
 	const SUDOWOODO
 	const POLITOED
-	const HOPPIP
-	const SKIPLOOM
-	const JUMPLUFF
-	const AIPOM
+	const SUNKERN
+	const SUNFLORA
 	const YANMA
 	const YANMEGA
 	const WOOPER
@@ -202,6 +201,7 @@ const_value set 1
 	const MISDREAVUS
 	const MISMAGIUS
 	const UNOWN
+	const WOBBUFFET
 	const GIRAFARIG
 	const PINECO
 	const FORRETRESS
@@ -234,13 +234,13 @@ const_value set 1
 	const PHANPY
 	const DONPHAN
 	const PORYGON2
-	const STANTLER
 	const SMEARGLE
 	const TYROGUE
 	const HITMONTOP
-	const SMOOCHUM
 	const ELEKID
+	const ELECTIVIRE
 	const MAGBY
+	const MAGMORTAR
 	const MILTANK
 	const BLISSEY
 	const RAIKOU

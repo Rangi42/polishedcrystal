@@ -562,7 +562,7 @@ Pokered_MonIndices: ; fb91c
 	db SNORLAX
 	db MAGIKARP
 	db PORYGON2
-	db STANTLER
+	db MAGMORTAR
 	db MUK
 	db SMEARGLE
 	db KINGLER
@@ -583,7 +583,7 @@ Pokered_MonIndices: ; fb91c
 	db BULBASAUR
 	db VENUSAUR
 	db TENTACRUEL
-	db SMOOCHUM
+	db ELECTIVIRE
 	db HONCHKROW
 	db MUNCHLAX
 	db ELEKID
@@ -653,10 +653,10 @@ Pokered_MonIndices: ; fb91c
 	db AZUMARILL
 	db SUDOWOODO
 	db POLITOED
-	db HOPPIP
-	db SKIPLOOM
-	db JUMPLUFF
-	db AIPOM
+	db RHYPERIOR
+	db SUNKERN
+	db SUNFLORA
+	db WOBBUFFET
 	db MAMOSWINE
 	db TANGROWTH
 	db YANMA

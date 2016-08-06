@@ -1,13 +1,13 @@
-SpecialGiveAipom: ; 7305
+SpecialGiveWobbuffet: ; 7305
 
 ; Adding to the party.
 	xor a
 	ld [MonType], a
 
-; Level 15 Aipom.
-	ld a, AIPOM
+; Level 20 Wobbuffet.
+	ld a, WOBBUFFET
 	ld [CurPartySpecies], a
-	ld a, 15
+	ld a, 20
 	ld [CurPartyLevel], a
 
 	predef TryAddMonToParty
@@ -41,7 +41,7 @@ SpecialGiveAipom: ; 7305
 	dec a
 	ld hl, PartyMonNicknames
 	call SkipNames
-	ld de, SpecialAipomNick
+	ld de, SpecialWobbuffetNick
 	call CopyName2
 
 ; OT.
@@ -49,12 +49,12 @@ SpecialGiveAipom: ; 7305
 	dec a
 	ld hl, PartyMonOT
 	call SkipNames
-	ld de, SpecialAipomOT
+	ld de, SpecialWobbuffetOT
 	call CopyName2
 
 ; Engine flag for this event.
 	ld hl, DailyFlags
-	set 5, [hl] ; ENGINE_AIPOM_GIVEN
+	set 5, [hl] ; ENGINE_WOBBUFFET_GIVEN
 	ld a, 1
 	ld [ScriptVar], a
 	ret
@@ -64,17 +64,17 @@ SpecialGiveAipom: ; 7305
 	ld [ScriptVar], a
 	ret
 
-SpecialAipomOT:
+SpecialWobbuffetOT:
 	db "Kirk@"
-SpecialAipomNick:
-	db "Pom-Pom@"
+SpecialWobbuffetNick:
+	db "Buffy@"
 
-SpecialReturnAipom: ; 737e
+SpecialReturnWobbuffet: ; 737e
 	callba SelectMonFromParty
 	jr c, .refused
 
 	ld a, [CurPartySpecies]
-	cp AIPOM
+	cp WOBBUFFET
 	jr nz, .DontReturn
 
 	ld a, [CurPartyMon]
@@ -94,7 +94,7 @@ SpecialReturnAipom: ; 737e
 	ld a, [CurPartyMon]
 	ld hl, PartyMonOT
 	call SkipNames
-	ld de, SpecialAipomOT
+	ld de, SpecialWobbuffetOT
 .CheckOT:
 	ld a, [de]
 	cp [hl]

@@ -1183,8 +1183,8 @@
 	db 23, GEODUDE
 	db 23, ZUBAT
 	db 25, GRAVELER
-	db 20, GRAVELER
-	db 25, GOLBAT
+	db 20, WOBBUFFET
+	db 25, WOBBUFFET
 	db 23, GOLBAT
 	db 23, DUNSPARCE
 
@@ -1196,16 +1196,16 @@
 	db 3, PIDGEY
 	db 3, SENTRET
 	db 2, RATTATA
-	db 3, HOPPIP
-	db 3, HOPPIP
+	db 3, SUNKERN
+	db 3, SUNKERN
 	; day
 	db 2, PIDGEY
 	db 2, SENTRET
 	db 3, PIDGEY
 	db 3, SENTRET
 	db 2, RATTATA
-	db 3, HOPPIP
-	db 3, HOPPIP
+	db 3, SUNKERN
+	db 3, SUNKERN
 	; nite
 	db 2, HOOTHOOT
 	db 2, RATTATA
@@ -1223,16 +1223,16 @@
 	db 4, CATERPIE
 	db 4, PIDGEY
 	db 3, WEEDLE
-	db 4, HOPPIP
-	db 4, HOPPIP
+	db 4, SUNKERN
+	db 4, SUNKERN
 	; day
 	db 3, PIDGEY
 	db 3, CATERPIE
 	db 4, CATERPIE
 	db 4, PIDGEY
 	db 3, WEEDLE
-	db 4, HOPPIP
-	db 4, HOPPIP
+	db 4, SUNKERN
+	db 4, SUNKERN
 	; nite
 	db 3, SPINARAK
 	db 3, HOOTHOOT
@@ -1250,16 +1250,16 @@
 	db 5, BELLSPROUT
 	db 5, PIDGEY
 	db 4, WEEDLE
-	db 5, HOPPIP
-	db 5, HOPPIP
+	db 5, SUNKERN
+	db 5, SUNKERN
 	; day
 	db 4, PIDGEY
 	db 4, CATERPIE
 	db 5, BELLSPROUT
 	db 5, PIDGEY
 	db 4, WEEDLE
-	db 5, HOPPIP
-	db 5, HOPPIP
+	db 5, SUNKERN
+	db 5, SUNKERN
 	; nite
 	db 4, SPINARAK
 	db 4, POLIWAG
@@ -1276,17 +1276,17 @@
 	db 5, RATTATA
 	db 7, BELLSPROUT
 	db 6, MAREEP
-	db 6, HOPPIP
-	db 7, HOPPIP
-	db 7, HOPPIP
+	db 7, MAREEP
+	db 6, SUNKERN
+	db 7, SUNKERN
 	; day
 	db 4, EKANS
 	db 5, RATTATA
 	db 7, BELLSPROUT
 	db 6, MAREEP
-	db 6, HOPPIP
-	db 7, HOPPIP
-	db 7, HOPPIP
+	db 7, MAREEP
+	db 6, SUNKERN
+	db 7, SUNKERN
 	; nite
 	db 4, WOOPER
 	db 5, RATTATA
@@ -1302,18 +1302,18 @@
 	db 6, RATTATA
 	db 6, PIDGEY
 	db 6, GEODUDE
-	db 6, HOPPIP
+	db 6, SANDSHREW
 	db 7, EKANS
-	db 7, HOPPIP
-	db 7, HOPPIP
+	db 7, SUNKERN
+	db 7, SUNKERN
 	; day
 	db 6, RATTATA
 	db 6, PIDGEY
 	db 6, GEODUDE
-	db 6, HOPPIP
+	db 6, SANDSHREW
 	db 7, EKANS
-	db 7, HOPPIP
-	db 7, HOPPIP
+	db 7, SUNKERN
+	db 7, SUNKERN
 	; nite
 	db 6, RATTATA
 	db 6, ZUBAT
@@ -1424,9 +1424,9 @@
 	db 15, PIDGEY
 	; nite
 	db 13, SPINARAK
-	db 14, STANTLER
+	db 14, ARIADOS
+	db 14, HOOTHOOT
 	db 15, NOCTOWL
-	db 15, ARIADOS
 	db 16, VULPIX
 	db 16, HOUNDOUR
 	db 16, HOUNDOUR
@@ -1652,7 +1652,7 @@
 	; morn
 	db 25, FARFETCH_D
 	db 24, TAUROS
-	db 22, HOPPIP
+	db 22, SUNFLORA
 	db 22, GROWLITHE
 	db 21, FARFETCH_D
 	db 20, GIRAFARIG

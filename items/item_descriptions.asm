@@ -177,9 +177,13 @@ ItemDescriptions:
 	dw BerserkGeneDesc
 	dw EvioliteDesc
 	dw LifeOrbDesc
+	dw AuraOrbDesc
 	dw DragonScaleDesc
 	dw UpGradeDesc
 	dw DubiousDiscDesc
+	dw ProtectorDesc
+	dw ElectirizerDesc
+	dw MagmarizerDesc
 	dw RazorFangDesc
 	dw RazorClawDesc
 	dw NuggetDesc
@@ -210,10 +214,6 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -871,6 +871,18 @@ DubiousDiscDesc:
 	db   "A transparent disc"
 	next "of unknown origin.@"
 
+ProtectorDesc:
+	db   "A protective item."
+	next "Stiff and heavy.@"
+
+ElectirizerDesc:
+	db   "A box packed with"
+	next "electric energy.@"
+
+MagmarizerDesc:
+	db   "A box packed with"
+	next "magma energy.@"
+
 RazorFangDesc:
 	db   "May make the foe"
 	next "flinch. (Hold)@"
@@ -990,6 +1002,10 @@ MusicMailDesc:
 MirageMailDesc:
 	db   "Mew-print Mail."
 	next "(Hold)@"
+
+AuraOrbDesc:
+	db   "Ups Def and Spcl."
+	next "Def of legends.@"
 
 TeruSamaDesc:
 	db   "?@"

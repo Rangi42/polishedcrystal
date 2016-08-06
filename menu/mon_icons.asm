@@ -196,12 +196,11 @@ MonMenuIcons: ; 8eac4
 	db ICON_FLAAFFY
 	db ICON_AMPHAROS
 	db ICON_BELLOSSOM
+	db ICON_RHYPERIOR
 	db ICON_SUDOWOODO
 	db ICON_POLITOED
-	db ICON_HOPPIP
-	db ICON_SKIPLOOM
-	db ICON_JUMPLUFF
-	db ICON_AIPOM
+	db ICON_SUNKERN
+	db ICON_SUNFLORA
 	db ICON_YANMA
 	db ICON_YANMEGA
 	db ICON_WOOPER
@@ -216,6 +215,7 @@ MonMenuIcons: ; 8eac4
 	db ICON_MISDREAVUS
 	db ICON_MISMAGIUS
 	db ICON_UNOWN
+	db ICON_WOBBUFFET
 	db ICON_GIRAFARIG
 	db ICON_PINECO
 	db ICON_FORRETRESS
@@ -248,13 +248,13 @@ MonMenuIcons: ; 8eac4
 	db ICON_PHANPY
 	db ICON_DONPHAN
 	db ICON_PORYGON2
-	db ICON_STANTLER
 	db ICON_SMEARGLE
 	db ICON_TYROGUE
 	db ICON_HITMONTOP
-	db ICON_SMOOCHUM
 	db ICON_ELEKID
+	db ICON_ELECTIVIRE
 	db ICON_MAGBY
+	db ICON_MAGMORTAR
 	db ICON_MILTANK
 	db ICON_BLISSEY
 	db ICON_RAIKOU
@@ -453,12 +453,11 @@ IconPointers:
 	dw FlaaffyIcon
 	dw AmpharosIcon
 	dw BellossomIcon
+	dw RhyperiorIcon
 	dw SudowoodoIcon
 	dw PolitoedIcon
-	dw HoppipIcon
-	dw SkiploomIcon
-	dw JumpluffIcon
-	dw AipomIcon
+	dw SunkernIcon
+	dw SunfloraIcon
 	dw YanmaIcon
 	dw YanmegaIcon
 	dw WooperIcon
@@ -473,6 +472,7 @@ IconPointers:
 	dw MisdreavusIcon
 	dw MismagiusIcon
 	dw UnownIcon
+	dw WobbuffetIcon
 	dw GirafarigIcon
 	dw PinecoIcon
 	dw ForretressIcon
@@ -505,13 +505,13 @@ IconPointers:
 	dw PhanpyIcon
 	dw DonphanIcon
 	dw Porygon2Icon
-	dw StantlerIcon
 	dw SmeargleIcon
 	dw TyrogueIcon
 	dw HitmontopIcon
-	dw SmoochumIcon
 	dw ElekidIcon
+	dw ElectivireIcon
 	dw MagbyIcon
+	dw MagmortarIcon
 	dw MiltankIcon
 	dw BlisseyIcon
 	dw RaikouIcon

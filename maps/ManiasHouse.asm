@@ -11,29 +11,29 @@ ManiasHouse_MapScriptHeader:
 ManiaScript:
 	faceplayer
 	opentext
-	checkevent EVENT_MANIA_TOOK_POM_POM_OR_LET_YOU_KEEP_HIM
+	checkevent EVENT_MANIA_TOOK_BUFFY_OR_LET_YOU_KEEP_HIM
 	iftrue .default_postevent
-	checkevent EVENT_GOT_POM_POM
-	iftrue .alreadyhavepompom
-	writetext ManiaText_AskLookAfterAipom
+	checkevent EVENT_GOT_BUFFY
+	iftrue .alreadyhavebuffy
+	writetext ManiaText_AskLookAfterWobbuffet
 	yesorno
-	iffalse .refusetotakepompom
-	special SpecialGiveAipom
+	iffalse .refusetotakebuffy
+	special SpecialGiveWobbuffet
 	iffalse .partyfull
-	writetext ManiaText_TakeCareOfAipom
+	writetext ManiaText_TakeCareOfWobbuffet
 	buttonsound
 	waitsfx
-	writetext ManiaText_GotAipom
+	writetext ManiaText_GotWobbuffet
 	playsound SFX_KEY_ITEM
 	waitsfx
 	closetext
-	setevent EVENT_GOT_POM_POM
+	setevent EVENT_GOT_BUFFY
 	end
 
-.alreadyhavepompom
-	checkflag ENGINE_AIPOM_GIVEN
-	iffalse .returnpompom
-	writetext ManiaText_TakeCareOfAipom
+.alreadyhavebuffy
+	checkflag ENGINE_WOBBUFFET_GIVEN
+	iffalse .returnbuffy
+	writetext ManiaText_TakeCareOfWobbuffet
 	waitbutton
 	closetext
 	end
@@ -44,17 +44,17 @@ ManiaScript:
 	closetext
 	end
 
-.refusetotakepompom
+.refusetotakebuffy
 	writetext ManiaText_IfHeComesBack
 	waitbutton
 	closetext
 	end
 
-.returnpompom
+.returnbuffy
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
 	iffalse .refused
-	special SpecialReturnAipom
+	special SpecialReturnWobbuffet
 	if_equal $0, .wrong
 	if_equal $1, .refused
 	if_equal $3, .superhappy
@@ -62,20 +62,20 @@ ManiaScript:
 	writetext ManiaText_ThankYou
 	waitbutton
 	closetext
-	setevent EVENT_MANIA_TOOK_POM_POM_OR_LET_YOU_KEEP_HIM
+	setevent EVENT_MANIA_TOOK_BUFFY_OR_LET_YOU_KEEP_HIM
 	end
 
 .wrong
-	writetext ManiaText_AipomNotThere
+	writetext ManiaText_WobbuffetNotThere
 	waitbutton
 	closetext
 	end
 
 .superhappy
-	writetext ManiaText_AipomLikesYou
+	writetext ManiaText_WobbuffetLikesYou
 	waitbutton
 	closetext
-	setevent EVENT_MANIA_TOOK_POM_POM_OR_LET_YOU_KEEP_HIM
+	setevent EVENT_MANIA_TOOK_BUFFY_OR_LET_YOU_KEEP_HIM
 	end
 
 .refused
@@ -85,7 +85,7 @@ ManiaScript:
 	end
 
 .nothingleft
-	writetext ManiaText_AipomIsYourLastMon
+	writetext ManiaText_WobbuffetIsYourLastMon
 	waitbutton
 	closetext
 	end
@@ -99,7 +99,7 @@ ManiaScript:
 UnknownScript_0x9d300:
 	jumpstd picturebookshelf
 
-ManiaText_AskLookAfterAipom:
+ManiaText_AskLookAfterWobbuffet:
 	text "I, I'm in shock!"
 
 	para "A guy about your"
@@ -123,14 +123,14 @@ ManiaText_AskLookAfterAipom:
 	line "for a while?"
 	done
 
-ManiaText_TakeCareOfAipom:
+ManiaText_TakeCareOfWobbuffet:
 	text "Oh, thank you!"
 
 	para "Take good care of"
 	line "it, please!"
 	done
 
-ManiaText_GotAipom:
+ManiaText_GotWobbuffet:
 	text "<PLAYER> received a"
 	line "#mon."
 	done
@@ -159,13 +159,13 @@ ManiaText_ThankYou:
 	text "Thank you!"
 	done
 
-ManiaText_AipomNotThere:
+ManiaText_WobbuffetNotThere:
 	text "Hey, you don't"
 	line "have my #mon"
 	cont "with you."
 	done
 
-ManiaText_AipomLikesYou:
+ManiaText_WobbuffetLikesYou:
 	text "My #mon has"
 	line "come to like you."
 
@@ -190,7 +190,7 @@ ManiaText_HappinessSpeech:
 	line "treats them well."
 	done
 
-ManiaText_AipomIsYourLastMon:
+ManiaText_WobbuffetIsYourLastMon:
 	text "If I take my #-"
 	line "mon back, what are"
 

@@ -3232,7 +3232,6 @@ Function11d4aa: ; 11d4aa
 
 SortedPokemon:
 ; Pokemon sorted by kana.
-; Notably, Rhydon is missing.
 	dw .a
 	dw .i
 	dw .u
@@ -3279,91 +3278,50 @@ SortedPokemon:
 	dw .wa
 	dw .end
 
-.a:			db EKANS, ARBOK, ARIADOS, CROCONAW, UNOWN
-			db -1
-.i:			db EEVEE, GEODUDE, SPINARAK, PILOSWINE, ONIX
-			db -1
-.u:			db ARCANINE, SUDOWOODO, WEEPINBELL, VICTREEBEL, WOOPER, SWINUB
-			db -1
-.e:			db SKARMORY, AIPOM, ESPEON, HITMONCHAN, ELEKID, ELECTABUZZ, ENTEI
-			db -1
-.o:			db FERALIGATR, FURRET, OCTILLERY, PRIMEAPE, SENTRET, STANTLER, OMASTAR, OMANYTE
-			db -1
-.ka_ga		db GROWLITHE, MACHAMP, DRAGONITE, PINSIR, SNORLAX, KABUTO, KABUTOPS, HITMONTOP, WARTORTLE, BLASTOISE, FARFETCH_D, CUBONE, MAROWAK, KANGASKHAN
-			db -1
-.ki_gi		db CATERPIE, GYARADOS, RAPIDASH, NINETALES, GIRAFARIG, BELLOSSOM, KINGDRA, KINGLER
-			db -1
-.ku_gu		db GLOOM, PINECO, GLIGAR, KRABBY, GRANBULL, GLACEON, CROBAT
-			db -1
-.ke_ge		db ABRA, GENGAR, TAUROS
-			db -1
-.ko_go		db MAGIKARP, MAGNEMITE, GASTLY, HAUNTER, MACHOKE, KAKUNA, PSYDUCK, PHANPY, RATTATA, GOLDUCK, GOLBAT, GOLEM, GRAVELER, VENONAT
-			db -1
-.sa_za		db RHYHORN, RHYDON, PUPITAR, CORSOLA, HITMONLEE, ZAPDOS, JOLTEON, SANDSHREW, SANDSLASH ; RHYDON should lead this list
-			db -1
-.shi_ji	db SEADRA, SHELLDER, VAPOREON, DEWGONG
-			db -1
-.su_zu		db SUICUNE, STARMIE, SCYTHER, ZUBAT, BEEDRILL, HYPNO, DROWZEE
-			db -1
-.se_ze		db SQUIRTLE, CELEBI
-			db -1
+.a:			db -1
+.i:			db -1
+.u:			db -1
+.e:			db -1
+.o:			db -1
+.ka_ga		db -1
+.ki_gi		db -1
+.ku_gu		db -1
+.ke_ge		db -1
+.ko_go		db -1
+.sa_za		db -1
+.shi_ji		db -1
+.su_zu		db -1
+.se_ze		db -1
 .so_zo		db -1
-.ta_da		db DUGTRIO, HORSEA, EXEGGCUTE
-			db -1
-.chi_dhi	db CHIKORITA, CHINCHOU
-			db -1
-.tsu_du	db -1
-.te_de		db DIGLETT, REMORAID, HOUNDOUR, AMPHAROS
-			db -1
-.to_do		db DODUO, DODRIO, SMEARGLE, KOFFING, TENTACRUEL, TOGETIC, TOGEPI, METAPOD, DONPHAN
-			db -1
-.na		db ODDISH, EXEGGUTOR
-			db -1
-.ni		db NIDOKING, NIDOQUEEN, NIDORAN_M, NIDORAN_F, NIDORINA, NIDORINO, MEOWTH, SNEASEL, POLIWHIRL, POLITOED, POLIWRATH, POLIWAG
-			db -1
-.nu		db QUAGSIRE
-			db -1
-.ne		db NATU, XATU
-			db -1
-.no		db DUNSPARCE
-			db -1
-.ha_ba_pa	db SEEL, STEELIX, TYPHLOSION, DRAGONAIR, BUTTERFREE, SCIZOR, HOPPIP, BLISSEY, PARAS, PARASECT, QWILFISH, MR__MIME, TYROGUE, CLOYSTER, TYRANITAR
-			db -1
-.hi_bi_pi	db WEEDLE, PIKACHU, CLEFABLE, PIDGEOT, PIDGEOTTO, PICHU, CLEFAIRY, CHARMANDER, STARYU, CYNDAQUIL, TEDDIURSA, VOLTORB
-			db -1
-.fu_bu_pu	db MOLTRES, FLAREON, ALAKAZAM, MAGMAR, FORRETRESS, WIGGLYTUFF, IVYSAUR, BULBASAUR, VENUSAUR, AERODACTYL, MAGBY, UMBREON, ARTICUNO, JIGGLYPUFF, SNUBBULL
-			db -1
-.he_be_pe	db BAYLEEF, GRIMER, MUK, HERACROSS, HOUNDOOM, PERSIAN
-			db -1
-.ho_bo_po	db HO_OH, HOOTHOOT, PIDGEY, PONYTA, SKIPLOOM, PORYGON, PORYGON2
-			db -1
-.ma		db MAGCARGO, SLUGMA, QUILAVA, BELLSPROUT, WEEZING, MARILL, AZUMARILL, ELECTRODE, MANKEY, MANTINE
-			db -1
-.mi		db DRATINI, MEW, MEWTWO, MILTANK
-			db -1
-.mu		db MISDREAVUS, SMOOCHUM
-			db -1
-.me		db MEGANIUM, DITTO, TENTACOOL, MAREEP
-			db -1
-.mo		db FLAAFFY, VENOMOTH, TANGELA
-			db -1
-.ya		db SLOWKING, SLOWBRO, SLOWPOKE, MURKROW, YANMA
-			db -1
-.yu		db KADABRA
-			db -1
-.yo		db LARVITAR, NOCTOWL
-			db -1
-.ra		db RAIKOU, RAICHU, CHANSEY, RATICATE, LAPRAS, VILEPLUME, LANTURN
-			db -1
-.ri		db CHARMELEON, CHARIZARD, URSARING, LEAFEON
-			db -1
-.ru		db JYNX, LUGIA
-			db -1
-.re		db MAGNETON, LEDIAN, LEDYBA
-			db -1
-.ro		db VULPIX
-			db -1
-.wa		db JUMPLUFF, TOTODILE, MACHOP
+.ta_da		db -1
+.chi_dhi	db -1
+.tsu_du		db -1
+.te_de		db -1
+.to_do		db -1
+.na			db -1
+.ni			db -1
+.nu			db -1
+.ne			db -1
+.no			db -1
+.ha_ba_pa	db -1
+.hi_bi_pi	db -1
+.fu_bu_pu	db -1
+.he_be_pe	db -1
+.ho_bo_po	db -1
+.ma			db -1
+.mi			db -1
+.mu			db -1
+.me			db -1
+.mo			db -1
+.ya			db -1
+.yu			db -1
+.yo			db -1
+.ra			db -1
+.ri			db -1
+.ru			db -1
+.re			db -1
+.ro			db -1
+.wa
 .end		db -1
 ; 11d67e
 

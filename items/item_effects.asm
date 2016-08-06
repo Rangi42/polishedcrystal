@@ -158,9 +158,13 @@ ItemEffects: ; e73c
 	dw BerserkGene
 	dw Eviolite
 	dw LifeOrb
+	dw AuraOrb
 	dw DragonScale
 	dw UpGrade
 	dw DubiousDisc
+	dw Protector
+	dw Electirizer
+	dw Magmarizer
 	dw RazorFang
 	dw RazorClaw
 	dw Nugget
@@ -2997,7 +3001,11 @@ MysticTicket:
 OldSeaMap:
 Eviolite:
 LifeOrb:
+AuraOrb:
 DubiousDisc:
+Protector:
+Electirizer:
+Magmarizer:
 RazorFang:
 RazorClaw:
 TeruSama: ; f77d

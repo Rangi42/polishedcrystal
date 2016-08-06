@@ -180,12 +180,11 @@ AnimationPointers:
 	dw FlaaffyAnimation
 	dw AmpharosAnimation
 	dw BellossomAnimation
+	dw RhyperiorAnimation
 	dw SudowoodoAnimation
 	dw PolitoedAnimation
-	dw HoppipAnimation
-	dw SkiploomAnimation
-	dw JumpluffAnimation
-	dw AipomAnimation
+	dw SunkernAnimation
+	dw SunfloraAnimation
 	dw YanmaAnimation
 	dw YanmegaAnimation
 	dw WooperAnimation
@@ -200,6 +199,7 @@ AnimationPointers:
 	dw MisdreavusAnimation
 	dw MismagiusAnimation
 	dw UnownAnimation
+	dw WobbuffetAnimation
 	dw GirafarigAnimation
 	dw PinecoAnimation
 	dw ForretressAnimation
@@ -232,13 +232,13 @@ AnimationPointers:
 	dw PhanpyAnimation
 	dw DonphanAnimation
 	dw Porygon2Animation
-	dw StantlerAnimation
 	dw SmeargleAnimation
 	dw TyrogueAnimation
 	dw HitmontopAnimation
-	dw SmoochumAnimation
 	dw ElekidAnimation
+	dw ElectivireAnimation
 	dw MagbyAnimation
+	dw MagmortarAnimation
 	dw MiltankAnimation
 	dw BlisseyAnimation
 	dw RaikouAnimation

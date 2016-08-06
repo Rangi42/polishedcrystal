@@ -94,11 +94,8 @@ ENDM
 
 prob_total = 0
 ; Pichu
-	prob 4
-	prob 4
-; Smoochum
-	prob 12
-	prob 12
+	prob 6
+	prob 6
 ; Magby
 	prob 12
 	prob 12
@@ -106,11 +103,11 @@ prob_total = 0
 	prob 12
 	prob 12
 ; Tyrogue
-	prob 5
-	prob 5
+	prob 10
+	prob 10
 ; Munchlax
-	prob 5
-	prob 5
+	prob 10
+	prob 10
 ; 1fb56e
 
 
@@ -167,58 +164,6 @@ OddEgg2:
 	bigdw 5 ; Def
 	bigdw 6 ; Spd
 	bigdw 6 ; SAtk
-	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
-
-	db SMOOCHUM
-	db NO_ITEM
-	db POUND, LICK, DIZZY_PUNCH, 0
-	dw 03584 ; OT ID
-	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
-	db 35, 30, 10, 0 ; PP
-	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db EGG_LEVEL ; Level
-	db 0, 0 ; Status
-	bigdw 0 ; HP
-	bigdw 12 ; Max HP
-	bigdw 5 ; Atk
-	bigdw 5 ; Def
-	bigdw 6 ; Spd
-	bigdw 7 ; SAtk
-	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
-
-	db SMOOCHUM
-	db NO_ITEM
-	db POUND, LICK, DIZZY_PUNCH, 0
-	dw 00512 ; OT ID
-	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	db $7b, SPDSPCDV_SHINY ; DVs
-	db 35, 30, 10, 0 ; PP
-	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
-	db EGG_LEVEL ; Level
-	db 0, 0 ; Status
-	bigdw 0 ; HP
-	bigdw 12 ; Max HP
-	bigdw 5 ; Atk
-	bigdw 5 ; Def
-	bigdw 6 ; Spd
-	bigdw 7 ; SAtk
 	bigdw 6 ; SDef
 	db "Egg@@@@@@@@"
 

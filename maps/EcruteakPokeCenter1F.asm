@@ -58,7 +58,7 @@ EcruteakPokeCenter1FBillScript:
 	writetext UnknownText_0x54dae
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	givepoke EEVEE, 20
+	givepoke EEVEE, 15
 	givepokeitem GiftEeveeMail
 	setevent EVENT_GOT_EEVEE
 	writetext UnknownText_0x54dc1

@@ -181,12 +181,11 @@
 	dw FlaaffyPokedexEntry
 	dw AmpharosPokedexEntry
 	dw BellossomPokedexEntry
+	dw RhyperiorPokedexEntry
 	dw SudowoodoPokedexEntry
 	dw PolitoedPokedexEntry
-	dw HoppipPokedexEntry
-	dw SkiploomPokedexEntry
-	dw JumpluffPokedexEntry
-	dw AipomPokedexEntry
+	dw SunkernPokedexEntry
+	dw SunfloraPokedexEntry
 	dw YanmaPokedexEntry
 	dw YanmegaPokedexEntry
 	dw WooperPokedexEntry
@@ -201,6 +200,7 @@
 	dw MisdreavusPokedexEntry
 	dw MismagiusPokedexEntry
 	dw UnownPokedexEntry
+	dw WobbuffetPokedexEntry
 	dw GirafarigPokedexEntry
 	dw PinecoPokedexEntry
 	dw ForretressPokedexEntry
@@ -233,13 +233,13 @@
 	dw PhanpyPokedexEntry
 	dw DonphanPokedexEntry
 	dw Porygon2PokedexEntry
-	dw StantlerPokedexEntry
 	dw SmearglePokedexEntry
 	dw TyroguePokedexEntry
 	dw HitmontopPokedexEntry
-	dw SmoochumPokedexEntry
 	dw ElekidPokedexEntry
+	dw ElectivirePokedexEntry
 	dw MagbyPokedexEntry
+	dw MagmortarPokedexEntry
 	dw MiltankPokedexEntry
 	dw BlisseyPokedexEntry
 	dw RaikouPokedexEntry

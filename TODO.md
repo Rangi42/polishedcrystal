@@ -121,13 +121,10 @@
 * Longer player and rival names
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
-* Replace Smoochum and Stantler with Electivire and Magmortar (Magmarizer in Cinnabar Volcano, Electirizer in Rock Tunnel 2F)
-* Replace Hoppip+Skiploom+Jumpluff with Sunkern+Sunflora and Rhyperior (Protector in Mt. Mortar)
-* Replace Aipom with Shuckle
-* Retype Sunflora to Grass/Fire
-* Retype Electivire to Electric/Fighting
 * Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
-* Retype Politoed to Water/Grass
+* Add a Protector in Mt. Mortar
+* Add an Electirizer in Rock Tunnel
+* Add a Magmarizer on Cinnabar Island

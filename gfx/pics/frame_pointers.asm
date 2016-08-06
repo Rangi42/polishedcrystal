@@ -180,12 +180,11 @@ FramesPointers:
 	dw FlaaffyFrames
 	dw AmpharosFrames
 	dw BellossomFrames
+	dw RhyperiorFrames
 	dw SudowoodoFrames
 	dw PolitoedFrames
-	dw HoppipFrames
-	dw SkiploomFrames
-	dw JumpluffFrames
-	dw AipomFrames
+	dw SunkernFrames
+	dw SunfloraFrames
 	dw YanmaFrames
 	dw YanmegaFrames
 	dw WooperFrames
@@ -200,6 +199,7 @@ FramesPointers:
 	dw MisdreavusFrames
 	dw MismagiusFrames
 	dw UnownFrames
+	dw WobbuffetFrames
 	dw GirafarigFrames
 	dw PinecoFrames
 	dw ForretressFrames
@@ -232,13 +232,13 @@ FramesPointers:
 	dw PhanpyFrames
 	dw DonphanFrames
 	dw Porygon2Frames
-	dw StantlerFrames
 	dw SmeargleFrames
 	dw TyrogueFrames
 	dw HitmontopFrames
-	dw SmoochumFrames
 	dw ElekidFrames
+	dw ElectivireFrames
 	dw MagbyFrames
+	dw MagmortarFrames
 	dw MiltankFrames
 	dw BlisseyFrames
 	dw RaikouFrames

@@ -55,7 +55,7 @@
 	const CRY_CHIKORITA
 	const CRY_TOTODILE
 	const CRY_GLIGAR
-	const CRY_HOPPIP
+	const CRY_BELLOSSOM
 	const CRY_SLUGMA
 	const CRY_LEDYBA
 	const CRY_ENTEI
@@ -68,6 +68,6 @@
 	const CRY_AMPHAROS
 	const CRY_MAGCARGO
 	const CRY_PICHU
-	const CRY_AIPOM
+	const CRY_TYROGUE
 	const CRY_DUNSPARCE
 	const CRY_DONPHAN

@@ -180,12 +180,11 @@ EggMovePointers:: ; 0x23b11
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
 	dw SudowoodoEggMoves
 	dw NoEggMoves
-	dw HoppipEggMoves
+	dw SunkernEggMoves
 	dw NoEggMoves
-	dw NoEggMoves
-	dw AipomEggMoves
 	dw YanmaEggMoves
 	dw NoEggMoves
 	dw WooperEggMoves
@@ -200,6 +199,7 @@ EggMovePointers:: ; 0x23b11
 	dw MisdreavusEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw WobbuffetEggMoves
 	dw GirafarigEggMoves
 	dw PinecoEggMoves
 	dw NoEggMoves
@@ -232,13 +232,13 @@ EggMovePointers:: ; 0x23b11
 	dw PhanpyEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw StantlerEggMoves
 	dw NoEggMoves
 	dw TyrogueEggMoves
 	dw NoEggMoves
-	dw SmoochumEggMoves
 	dw ElekidEggMoves
+	dw NoEggMoves
 	dw MagbyEggMoves
+	dw NoEggMoves
 	dw MiltankEggMoves
 	dw NoEggMoves
 	dw NoEggMoves

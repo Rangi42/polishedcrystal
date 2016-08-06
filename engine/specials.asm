@@ -95,8 +95,8 @@ SpecialsPointers:: ; c029
 	add_special Special_ActivateFishingSwarm
 	add_special ToggleMaptileDecorations
 	add_special ToggleDecorationsVisibility
-	add_special SpecialGiveAipom
-	add_special SpecialReturnAipom
+	add_special SpecialGiveWobbuffet
+	add_special SpecialReturnWobbuffet
 	add_special Special_BillsGrandfather
 	add_special SpecialCheckPokerus
 	add_special Special_DisplayCoinCaseBalance

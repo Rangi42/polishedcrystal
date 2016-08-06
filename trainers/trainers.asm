@@ -1382,7 +1382,7 @@ BrockGroup:
 		db ROCK_SLIDE
 		db EARTHQUAKE
 
-	db 63, RHYDON, NO_ITEM
+	db 63, RHYPERIOR, NO_ITEM
 		db SCARY_FACE
 		db ROCK_SLIDE
 		db EARTHQUAKE
@@ -1428,7 +1428,7 @@ BrockGroup:
 		db EARTHQUAKE
 		db SANDSTORM
 
-	db 73, RHYDON, KINGS_ROCK
+	db 73, RHYPERIOR, KINGS_ROCK
 		db SCARY_FACE
 		db ROCK_SLIDE
 		db EARTHQUAKE
@@ -1572,7 +1572,7 @@ LtSurgeGroup:
 
 	; party
 
-	db 58, ELECTABUZZ, NO_ITEM
+	db 58, ELECTIVIRE, NO_ITEM
 		db QUICK_ATTACK
 		db THUNDERPUNCH
 		db LIGHT_SCREEN
@@ -1618,9 +1618,9 @@ LtSurgeGroup:
 
 	; party
 
-	db 74, ELECTABUZZ, BLACK_BELT
+	db 74, ELECTIVIRE, BLACK_BELT
 		db CROSS_CHOP
-		db THUNDERBOLT
+		db THUNDERPUNCH
 		db LIGHT_SCREEN
 		db WILD_CHARGE
 
@@ -1676,11 +1676,11 @@ ErikaGroup:
 		db GIGA_DRAIN
 		db SLEEP_POWDER
 
-	db 61, JUMPLUFF, NO_ITEM
-		db FAIRY_WIND
+	db 61, SUNFLORA, NO_ITEM
+		db SUNNY_DAY
 		db SYNTHESIS
-		db LEECH_SEED
 		db GIGA_DRAIN
+		db FLAMETHROWER
 
 	db 61, PARASECT, NO_ITEM
 		db SPORE
@@ -1722,11 +1722,11 @@ ErikaGroup:
 		db GIGA_DRAIN
 		db SLEEP_POWDER
 
-	db 72, JUMPLUFF, BRIGHTPOWDER
-		db FAIRY_WIND
-		db SLEEP_POWDER
+	db 72, SUNFLORA, BRIGHTPOWDER
+		db SUNNY_DAY
 		db LEECH_SEED
 		db GIGA_DRAIN
+		db FIRE_BLAST
 
 	db 73, VICTREEBEL, POISON_BARB
 		db SWORDS_DANCE
@@ -1970,11 +1970,11 @@ BlaineGroup:
 		db FLAMETHROWER
 		db ROCK_SLIDE
 
-	db 68, MAGMAR, NO_ITEM
-		db THUNDERPUNCH
-		db FIRE_PUNCH
+	db 68, MAGMORTAR, NO_ITEM
 		db SUNNY_DAY
-		db CONFUSE_RAY
+		db THUNDERPUNCH
+		db FLAMETHROWER
+		db FLASH_CANNON
 
 	db 66, ARCANINE, NO_ITEM
 		db CRUNCH
@@ -2014,11 +2014,11 @@ BlaineGroup:
 		db FLAME_WHEEL
 		db ROCK_SLIDE
 
-	db 72, MAGMAR, BLACK_BELT
-		db FLAMETHROWER
+	db 72, MAGMORTAR, BLACK_BELT
+		db SUNNY_DAY
 		db FOCUS_BLAST
-		db FIRE_PUNCH
-		db WILL_O_WISP
+		db FIRE_BLAST
+		db FLASH_CANNON
 
 	db 73, ARCANINE, KINGS_ROCK
 		db CRUNCH
@@ -2072,7 +2072,7 @@ BlueGroup:
 		db STONE_EDGE
 		db THUNDERPUNCH
 
-	db 67, RHYDON, SOFT_SAND
+	db 67, RHYPERIOR, SOFT_SAND
 		db FURY_ATTACK
 		db SANDSTORM
 		db STONE_EDGE
@@ -3850,7 +3850,7 @@ CamperGroup:
 	db 0 ; normal
 
 	; party
-	db 21, SKIPLOOM
+	db 21, SUNFLORA
 	db 21, MARILL
 
 	db $ff ; end
@@ -3879,8 +3879,8 @@ PicnickerGroup:
 	db 0 ; normal
 
 	; party
-	db 9, HOPPIP
-	db 9, HOPPIP
+	db 9, SUNKERN
+	db 9, SUNKERN
 	db 12, BULBASAUR
 
 	db $ff ; end
@@ -3964,8 +3964,8 @@ PicnickerGroup:
 	db 0 ; normal
 
 	; party
-	db 14, HOPPIP
-	db 14, HOPPIP
+	db 14, SUNKERN
+	db 14, SUNKERN
 	db 17, IVYSAUR
 
 	db $ff ; end
@@ -4014,8 +4014,8 @@ PicnickerGroup:
 	db 0 ; normal
 
 	; party
-	db 43, SKIPLOOM
-	db 43, SKIPLOOM
+	db 43, SUNFLORA
+	db 43, SUNFLORA
 
 	db $ff ; end
 
@@ -4038,8 +4038,8 @@ PicnickerGroup:
 	db 0 ; normal
 
 	; party
-	db 26, SKIPLOOM
-	db 26, SKIPLOOM
+	db 26, SUNFLORA
+	db 27, SUNFLORA
 	db 29, IVYSAUR
 
 	db $ff ; end
@@ -4191,8 +4191,8 @@ PicnickerGroup:
 	db 0 ; normal
 
 	; party
-	db 30, SKIPLOOM
-	db 30, SKIPLOOM
+	db 30, SUNFLORA
+	db 31, SUNFLORA
 	db 32, IVYSAUR
 
 	db $ff ; end
@@ -4205,17 +4205,17 @@ PicnickerGroup:
 
 	; party
 
-	db 33, JUMPLUFF
-		db SUNNY_DAY
-		db STUN_SPORE
+	db 33, SUNFLORA
 		db LEECH_SEED
-		db SYNTHESIS
+		db GIGA_DRAIN
+		db FLAMETHROWER
+		db SUNNY_DAY
 
-	db 33, JUMPLUFF
+	db 34, SUNFLORA
+		db GIGA_DRAIN
+		db FLAMETHROWER
+		db SOLAR_BEAM
 		db SUNNY_DAY
-		db SLEEP_POWDER
-		db LEECH_SEED
-		db SYNTHESIS
 
 	db 38, VENUSAUR
 		db SOLAR_BEAM
@@ -6218,7 +6218,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 43, AIPOM, GOLD_BERRY
+	db 43, PERSIAN, GOLD_BERRY
 	db 41, WIGGLYTUFF, GOLD_BERRY
 
 	db $ff ; end
@@ -6230,7 +6230,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 43, AIPOM, GOLD_BERRY
+	db 43, GRANBULL, GOLD_BERRY
 	db 41, CLEFABLE, GOLD_BERRY
 
 	db $ff ; end
@@ -6841,9 +6841,9 @@ LassGroup:
 	db 0 ; normal
 
 	; party
-	db 44, SKIPLOOM
-	db 45, HOPPIP
-	db 46, JUMPLUFF
+	db 44, LEAFEON
+	db 45, TANGELA
+	db 46, SUNFLORA
 
 	db $ff ; end
 
@@ -7195,21 +7195,13 @@ BeautyGroup:
 
 	; BEAUTY (16)
 	db "Valencia@"
-	db 1 ; moves
+	db 0 ; normal
 
 	; party
 
-	db 18, HOPPIP
-		db SYNTHESIS
-		db TAIL_WHIP
-		db TACKLE
-		db POISONPOWDER
-
-	db 18, SKIPLOOM
-		db SYNTHESIS
-		db TAIL_WHIP
-		db TACKLE
-		db STUN_SPORE
+	db 18, SUNKERN
+	db 18, SUNFLORA
+	db 18, SUNFLORA
 
 	db $ff ; end
 
@@ -7599,7 +7591,7 @@ SchoolboyGroup:
 	db 0 ; normal
 
 	; party
-	db 38, AIPOM
+	db 38, GIRAFARIG
 	db 40, DITTO
 
 	db $ff ; end
@@ -10022,8 +10014,8 @@ TeacherGroup:
 	db 0 ; normal
 
 	; party
-	db 37, AIPOM
-	db 36, HOPPIP
+	db 37, PERSIAN
+	db 36, SUNFLORA
 	db 41, CUBONE
 
 	db $ff ; end
@@ -10625,7 +10617,7 @@ CooltrainerMGroup:
 
 	; party
 
-	db 53, STANTLER
+	db 53, GIRAFARIG
 	db 52, TAUROS
 
 	db $ff ; end
@@ -10800,7 +10792,7 @@ CooltrainerFGroup:
 	db 0 ; normal
 
 	; party
-	db 29, SKIPLOOM
+	db 29, SUNFLORA
 	db 29, NINETALES
 
 	db $ff ; end
@@ -11624,11 +11616,11 @@ MysticalmanGroup:
 		db CONFUSE_RAY
 		db CURSE
 
-	db 26, JUMPLUFF, PINK_BOW
-		db GIGA_DRAIN
-		db SYNTHESIS
-		db FAIRY_WIND
+	db 26, SUNFLORA, CHARCOAL
+		db GROWTH
 		db LEECH_SEED
+		db GIGA_DRAIN
+		db FLAMETHROWER
 
 	db 28, ELECTRODE, MAGNET
 		db THUNDER

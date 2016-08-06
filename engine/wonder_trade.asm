@@ -923,9 +923,9 @@ CheckValidLevel:
 	db  33, 100 ; Starmie
 	db   1, 100 ; Mr.Mime
 	db  10, 100 ; Scyther
-	db  20, 100 ; Jynx
-	db  20,  36 ; Electabuzz
-	db  20,  36 ; Magmar
+	db   1, 100 ; Jynx
+	db  20,  46 ; Electabuzz
+	db  20,  46 ; Magmar
 	db  10, 100 ; Pinsir
 	db   1, 100 ; Tauros
 	db   1,  19 ; Magikarp
@@ -981,12 +981,11 @@ CheckValidLevel:
 	db  15,  29 ; Flaaffy
 	db  30, 100 ; Ampharos
 	db  32, 100 ; Bellossom
+	db  55, 100 ; Rhyperior
 	db   1, 100 ; Sudowoodo
 	db  36, 100 ; Politoed
-	db   1,  17 ; Hoppip
-	db  18,  26 ; Skiploom
-	db  27, 100 ; Jumpluff
-	db   1, 100 ; Aipom
+	db   1,  31 ; Sunkern
+	db  32, 100 ; Sunflora
 	db   1,  37 ; Yanma
 	db  38, 100 ; Yanmega
 	db   1,  19 ; Wooper
@@ -1001,6 +1000,7 @@ CheckValidLevel:
 	db   1,  19 ; Misdreavus
 	db  20, 100 ; Mismagius
 	db   1, 100 ; Unown
+	db   1, 100 ; Wobbuffet
 	db   1, 100 ; Girafarig
 	db   1,  30 ; Pineco
 	db  31, 100 ; Forretress
@@ -1033,13 +1033,13 @@ CheckValidLevel:
 	db   1,  24 ; Phanpy
 	db  25, 100 ; Donphan
 	db  20,  39 ; Porygon2
-	db   1, 100 ; Stantler
 	db   1, 100 ; Smeargle
 	db   1,  19 ; Tyrogue
 	db  20, 100 ; Hitmontop
-	db   1,  19 ; Smoochum
 	db   1,  19 ; Elekid
+	db  47, 100 ; Electivire
 	db   1,  19 ; Magby
+	db  47, 100 ; Magmortar
 	db   1,  19 ; Miltank
 	db  20, 100 ; Blissey
 	db 255, 255 ; Raikou
