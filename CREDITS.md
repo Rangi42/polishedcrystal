@@ -8,7 +8,7 @@
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many Pokémon sprites and icons
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
-* Mmmmmm for the Cinnabar Volcano, Faraway Island, and final battle music
+* Mmmmmm for many music covers
 * Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
 * Pum for the Route 47 and Yellow Forest music
 * ShantyTown for the Rock Tunnel music

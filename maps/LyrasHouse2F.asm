@@ -89,7 +89,7 @@ LyrasHouse2F_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 1, 4, SIGNPOST_UP, LyrasHousePC
+	signpost 1, 4, SIGNPOST_READ, LyrasHousePC
 	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
 	signpost 1, 7, SIGNPOST_READ, LyrasHouseBookshelf
 	signpost 2, 6, SIGNPOST_READ, LyrasHouseN64

@@ -135,6 +135,7 @@
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
 	dba Music_Route120RSE
+	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE
 	dba Music_FrontierBrainBattleRSE
 	dba Music_KantoLegendBattleXY

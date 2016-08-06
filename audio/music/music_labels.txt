@@ -117,6 +117,7 @@ Music_CinnabarMansionRBY
 Music_DiglettsCaveRBY
 Music_CeruleanCaveRBY
 Music_Route120RSE
+Music_MountPyreRSE
 Music_AbandonedShipRSE
 Music_FrontierBrainBattleRSE
 Music_KantoLegendBattleXY

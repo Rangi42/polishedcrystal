@@ -119,10 +119,11 @@
 	const MUSIC_DIGLETTS_CAVE_RBY            ; 74
 	const MUSIC_CERULEAN_CAVE_RBY            ; 75
 	const MUSIC_ROUTE_120_RSE                ; 76
-	const MUSIC_ABANDONED_SHIP_RSE           ; 77
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 78
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 79
-	const MUSIC_SURFING_PIKACHU              ; 7a
-	const MUSIC_LAWRENCE                     ; 7b
+	const MUSIC_MOUNT_PYRE_RSE               ; 77
+	const MUSIC_ABANDONED_SHIP_RSE           ; 78
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 79
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 7a
+	const MUSIC_SURFING_PIKACHU              ; 7b
+	const MUSIC_LAWRENCE                     ; 7c
 
 MUSIC_MAHOGANY_MART EQU $64 ; leftover from gold
