@@ -1,6 +1,7 @@
 const_value set 2
 	const ROCKTUNNEL2F_POKE_BALL1
 	const ROCKTUNNEL2F_POKE_BALL2
+	const ROCKTUNNEL2F_POKE_BALL3
 	const ROCKTUNNEL2F_ROCK
 	const ROCKTUNNEL2F_BOULDER1
 	const ROCKTUNNEL2F_BOULDER2
@@ -18,6 +19,9 @@ RockTunnel2FThunderStone:
 
 RockTunnel2FTMThunderWave:
 	itemball TM_THUNDER_WAVE
+
+RockTunnel2FElectirizer:
+	itemball ELECTIRIZER
 
 MapRockTunnel2FLodestoneScript:
 	jumptext MapRockTunnel2FLodestoneText
@@ -57,9 +61,10 @@ RockTunnel2F_MapEventHeader:
 	signpost 23, 10, SIGNPOST_ITEM, RockTunnel2FHiddenMaxEther
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_POKE_BALL, 23, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RockTunnel2FThunderStone, EVENT_ROCK_TUNNEL_2F_THUNDERSTONE
 	person_event SPRITE_POKE_BALL, 9, 25, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RockTunnel2FTMThunderWave, EVENT_ROCK_TUNNEL_2F_TM_THUNDER_WAVE
+	person_event SPRITE_POKE_BALL, 3, 21, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RockTunnel2FElectirizer, EVENT_ROCK_TUNNEL_2F_ELECTIRIZER
 	person_event SPRITE_ROCK, 12, 9, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockTunnel2FRock, -1
 	person_event SPRITE_BOULDER, 2, 12, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockTunnel2FBoulder, -1
 	person_event SPRITE_BOULDER, 3, 12, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockTunnel2FBoulder, -1

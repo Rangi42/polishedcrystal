@@ -1,5 +1,6 @@
 const_value set 2
 	const CINNABARISLAND_BLUE
+	const CINNABARISLAND_POKE_BALL
 
 CinnabarIsland_MapScriptHeader:
 .MapTriggers:
@@ -26,6 +27,9 @@ CinnabarIslandBlue:
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
+
+CinnabarIslandMagmarizer:
+	itemball MAGMARIZER
 
 CinnabarIslandPokeCenterSign:
 	jumpstd pokecentersign
@@ -167,5 +171,6 @@ CinnabarIsland_MapEventHeader:
 	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
 
 .PersonEvents:
-	db 1
+	db 2
 	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	person_event SPRITE_POKE_BALL, 2, 22, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CinnabarIslandMagmarizer, EVENT_CINNABAR_ISLAND_MAGMARIZER

@@ -280,6 +280,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 1.1.2 release. If you build the project as-is, it will include all of them.
 
 * Add: Replace {Hoppip, Skiploom, Jumpluff, Aipom, Stantler, Smoochum} with {Rhyperior, Electivire, Magmortar, Sunkern, Sunflora, Wobbuffet}.
+* Add: Add Protector, Electirizer, and Magmarizer items.
 * Add: Lyra is your friendly rival.
    * Battle Lyra in Prof. Elm's lab.
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy

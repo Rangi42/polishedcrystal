@@ -125,6 +125,3 @@
 * Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
-* Add a Protector in Mt. Mortar
-* Add an Electirizer in Rock Tunnel
-* Add a Magmarizer on Cinnabar Island
