@@ -307,9 +307,11 @@ NewBarkTownRivalText2:
 	done
 
 Text_LyraIntro:
-	text "Oh hi, <PLAYER>!"
-	line "Are you meeting"
-	cont "Prof.Elm?"
+	text "Lyra: Oh, hello,"
+	line "<PLAYER>!"
+
+	para "Are you meeting"
+	line "Prof.Elm?"
 
 	para "Let me come with"
 	line "you! He always has"
