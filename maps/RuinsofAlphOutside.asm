@@ -14,10 +14,11 @@ RuinsofAlphOutside_MapScriptHeader:
 	dw UnknownScript_0x5800e, 0
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
 
+	dbw MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
 UnknownScript_0x5800d:
@@ -25,6 +26,13 @@ UnknownScript_0x5800d:
 
 UnknownScript_0x5800e:
 	end
+
+RuinsofAlphOutsideTileScript:
+	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	iffalse .locked
+	changeblock $a, $8, $73
+.locked
+	return
 
 UnknownScript_0x5800f:
 	checkflag ENGINE_UNOWN_DEX
@@ -292,7 +300,7 @@ RuinsofAlphOutside_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 11
+	db 12
 	warp_def $17, $4, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def $d, $10, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
 	warp_def $23, $4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
@@ -304,6 +312,7 @@ RuinsofAlphOutside_MapEventHeader:
 	warp_def $5, $3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
 	warp_def $1a, $f, 1, ROUTE_32_RUINS_OF_ALPH_GATE
 	warp_def $1b, $f, 2, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def $9, $a, 1, RUINS_OF_ALPH_RESEARCH_CENTER
 
 .XYTriggers:
 	db 2
