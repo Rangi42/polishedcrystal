@@ -166,7 +166,7 @@ MapNewBarkTownSignpost2Script:
 	jumptext ElmsLabSignText
 
 MapNewBarkTownSignpost3Script:
-	jumptext ElmsHouseSignText
+	jumptext LyrasHouseSignText
 
 Movement_TeacherRunsToYou1_NBT:
 	step_left
@@ -335,8 +335,8 @@ ElmsLabSignText:
 	text "Elm #mon Lab"
 	done
 
-ElmsHouseSignText:
-	text "Elm's House"
+LyrasHouseSignText:
+	text "Lyra's House"
 	done
 
 NewBarkTown_MapEventHeader:
@@ -344,11 +344,12 @@ NewBarkTown_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 5
 	warp_def $3, $6, 1, ELMS_LAB
-	warp_def $5, $d, 1, KRISS_HOUSE_1F
+	warp_def $5, $f, 1, KRISS_HOUSE_1F
 	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
-	warp_def $d, $b, 1, ELMS_HOUSE
+	warp_def $d, $b, 1, LYRAS_HOUSE_1F
+	warp_def $2, $a, 2, ELMS_HOUSE
 
 .XYTriggers:
 	db 3
@@ -359,7 +360,7 @@ NewBarkTown_MapEventHeader:
 .Signposts:
 	db 4
 	signpost 8, 8, SIGNPOST_READ, NewBarkTownSign
-	signpost 5, 11, SIGNPOST_READ, MapNewBarkTownSignpost1Script
+	signpost 5, 13, SIGNPOST_READ, MapNewBarkTownSignpost1Script
 	signpost 3, 3, SIGNPOST_READ, MapNewBarkTownSignpost2Script
 	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
 

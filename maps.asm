@@ -564,3 +564,5 @@ SECTION "Map Scripts 27", ROMX
 
 INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/Route36VioletGate.asm"
+INCLUDE "maps/LyrasHouse1F.asm"
+INCLUDE "maps/LyrasHouse2F.asm"

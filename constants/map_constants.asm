@@ -462,11 +462,13 @@ MAP_NONE   EQU 0
 	mapgroup KRISS_HOUSE_1F,                              4,  5 ;  6
 	mapgroup KRISS_HOUSE_2F,                              3,  4 ;  7
 	mapgroup KRISS_NEIGHBORS_HOUSE,                       4,  4 ;  8
-	mapgroup ELMS_HOUSE,                                  4,  4 ;  9
-	mapgroup ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 10
-	mapgroup ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 11
-	mapgroup ROUTE_27_SANDSTORM_HOUSE,                    4,  4 ; 12
-	mapgroup ROUTE_29_46_GATE,                            4,  5 ; 13
+	mapgroup LYRAS_HOUSE_1F,                              4,  5 ;  9
+	mapgroup LYRAS_HOUSE_2F,                              3,  4 ; 10
+	mapgroup ELMS_HOUSE,                                  4,  4 ; 11
+	mapgroup ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 12
+	mapgroup ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 13
+	mapgroup ROUTE_27_SANDSTORM_HOUSE,                    4,  4 ; 14
+	mapgroup ROUTE_29_46_GATE,                            4,  5 ; 15
 
 	newgroup                                                    ; 25
 

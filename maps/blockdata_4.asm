@@ -126,3 +126,9 @@ PokemonMansion1F_BlockData:
 
 PokemonMansionB1F_BlockData:
 	INCBIN "maps/PokemonMansionB1F.blk"
+
+LyrasHouse1F_BlockData:
+	INCBIN "maps/LyrasHouse1F.blk"
+
+LyrasHouse2F_BlockData:
+	INCBIN "maps/LyrasHouse2F.blk"
