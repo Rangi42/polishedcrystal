@@ -325,7 +325,6 @@ ElmDirectionsScript:
 	closetext
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	dotrigger $5
 	dotrigger $7
 	domaptrigger NEW_BARK_TOWN, $1
 	end
@@ -566,7 +565,7 @@ LyraBattleScript:
 	spriteface PLAYER, DOWN
 	applymovement ELMSLAB_LYRA, LyraLeaveMovement
 	disappear ELMSLAB_LYRA
-	dotrigger $7
+	dotrigger $5
 	special HealParty
 	end
 
