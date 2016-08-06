@@ -234,7 +234,7 @@ BattleAnimations::
 	dw BattleAnim_MetalClaw
 	dw BattleAnim_VitalThrow
 	dw BattleAnim_MorningSun
-	dw BattleAnim_Synthesis
+	dw BattleAnim_Hurricane
 	dw BattleAnim_Moonlight
 	dw BattleAnim_HiddenPower
 	dw BattleAnim_CrossChop
@@ -2123,6 +2123,7 @@ BattleAnim_Submission:
 	anim_ret
 
 BattleAnim_Whirlwind:
+BattleAnim_Hurricane: ; TODO: design custom animation for Hurricane
 	anim_1gfx ANIM_GFX_WIND
 .loop
 	anim_sound 0, 0, SFX_RAZOR_WIND
@@ -4064,23 +4065,6 @@ BattleAnim_MorningSun:
 	anim_call BattleAnim_MorningSun_branch_cbc80
 	anim_ret
 
-BattleAnim_Synthesis:
-	anim_1gfx ANIM_GFX_SHINE
-	anim_call BattleAnim_FollowEnemyFeet_0
-	anim_bgeffect ANIM_BG_18, $0, $1, $40
-	anim_bgeffect ANIM_BG_07, $0, $0, $0
-	anim_sound 0, 0, SFX_OUTRAGE
-	anim_wait 72
-	anim_incbgeffect ANIM_BG_18
-	anim_call BattleAnim_ShowMon_0
-	anim_jumpif $1, BattleAnim_Synthesis_branch_cb77a
-	anim_call BattleAnim_Synthesis_branch_cbc6a
-	anim_ret
-
-BattleAnim_Synthesis_branch_cb77a:
-	anim_call BattleAnim_Synthesis_branch_cbc80
-	anim_ret
-
 BattleAnim_Crunch:
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT
 	anim_bgp $1b
@@ -4896,4 +4880,21 @@ BattleAnim_SpiderWeb: ; removed
 	anim_wait 4
 	anim_obj ANIM_OBJ_5A,   8, 0,  10, 4, $0
 	anim_wait 64
+	anim_ret
+
+BattleAnim_Synthesis: ; removed
+	anim_1gfx ANIM_GFX_SHINE
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_18, $0, $1, $40
+	anim_bgeffect ANIM_BG_07, $0, $0, $0
+	anim_sound 0, 0, SFX_OUTRAGE
+	anim_wait 72
+	anim_incbgeffect ANIM_BG_18
+	anim_call BattleAnim_ShowMon_0
+	anim_jumpif $1, BattleAnim_Synthesis_branch_cb77a
+	anim_call BattleAnim_Synthesis_branch_cbc6a
+	anim_ret
+
+BattleAnim_Synthesis_branch_cb77a:
+	anim_call BattleAnim_Synthesis_branch_cbc80
 	anim_ret

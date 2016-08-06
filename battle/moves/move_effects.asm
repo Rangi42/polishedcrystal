@@ -313,6 +313,7 @@ Confusion:
 DizzyPunch:
 Psybeam:
 Dynamicpunch:
+Hurricane:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1834,14 +1835,7 @@ MorningSun:
 	checkobedience
 	usedmovetext
 	doturn
-	healmorn
-	endmove
-
-Synthesis:
-	checkobedience
-	usedmovetext
-	doturn
-	healday
+	healmornorday
 	endmove
 
 Moonlight:

@@ -142,7 +142,7 @@ OddishEggMoves:
 	db CHARM
 	db FLAIL
 	db RAZOR_LEAF
-	db SYNTHESIS
+	db MORNING_SUN
 	db SWORDS_DANCE
 	db $ff
 
@@ -243,7 +243,7 @@ BellsproutEggMoves:
 	db LEECH_LIFE
 	db SWORDS_DANCE
 	db REFLECT
-	db SYNTHESIS
+	db MORNING_SUN
 	db $ff
 
 TentacoolEggMoves:
@@ -358,7 +358,7 @@ KrabbyEggMoves:
 ExeggcuteEggMoves:
 	db MEGA_DRAIN
 	db MOONLIGHT
-	db SYNTHESIS
+	db MORNING_SUN
 	db ANCIENTPOWER
 	db REFLECT
 	db $ff

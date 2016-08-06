@@ -34,6 +34,7 @@
 * Substitute prevents building Rage
 * Drain Kiss drains 75% HP
 * Avalanche doubles damage if user is hit first
+* Hurricane cannot miss in rain
 * Low Kick's power is based on weight
 * Thunder ignores accuracy and evasion in rain
 * Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
@@ -122,6 +123,5 @@
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
 * Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
-* Merge Morning Sun and Synthesis into Sunlight, and add Hurricane
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders

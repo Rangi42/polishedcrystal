@@ -383,7 +383,6 @@ AI_Smart: ; 386be
 	dbw EFFECT_PURSUIT,          AI_Smart_Pursuit
 	dbw EFFECT_RAPID_SPIN,       AI_Smart_RapidSpin
 	dbw EFFECT_MORNING_SUN,      AI_Smart_MorningSun
-	dbw EFFECT_SYNTHESIS,        AI_Smart_Synthesis
 	dbw EFFECT_MOONLIGHT,        AI_Smart_Moonlight
 	dbw EFFECT_HIDDEN_POWER,     AI_Smart_HiddenPower
 	dbw EFFECT_RAIN_DANCE,       AI_Smart_RainDance
@@ -992,7 +991,6 @@ AI_Smart_Whirlwind: ; 38a2a
 
 AI_Smart_Heal:
 AI_Smart_MorningSun:
-AI_Smart_Synthesis:
 AI_Smart_Moonlight: ; 38a3a
 ; 90% chance to greatly encourage this move if enemy's HP is below 25%.
 ; Discourage this move if enemy's HP is higher than 50%.
@@ -2635,7 +2633,6 @@ SunnyDayMoves: ; 39134
 	db SACRED_FIRE
 	db FLARE_BLITZ
 	db MORNING_SUN
-	db SYNTHESIS
 	db $ff
 ; 3913d
 
@@ -3151,6 +3148,7 @@ UsefulMoves: ; 39301
 	db SUPER_FANG
 	db MOONBLAST
 	db PLAY_ROUGH
+	db HURRICANE
 	db $ff
 ; 39315
 

@@ -106,8 +106,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_BatonPass ; 379c9
 	dw BattleCommand_Pursuit ; 37b1d
 	dw BattleCommand_ClearHazards ; 37b39
-	dw BattleCommand_HealMorn ; 37b74
-	dw BattleCommand_HealDay ; 37b78
+	dw BattleCommand_HealMornOrDay ; 37b74
 	dw BattleCommand_HealNite ; 37b7c
 	dw BattleCommand_HiddenPower ; 37be8
 	dw BattleCommand_StartRain ; 37bf4

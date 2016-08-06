@@ -24,7 +24,7 @@ BulbasaurEvosAttacks:
 	db 25, GROWTH
 	db 27, DOUBLE_EDGE
 	db 31, ANCIENTPOWER ; Worry Seed → event move
-	db 33, SYNTHESIS
+	db 33, MORNING_SUN ; Synthesis → similar move
 	db 37, SEED_BOMB
 	db 43, SLUDGE_BOMB ; TM move
 	db 0 ; no more level-up moves
@@ -44,7 +44,7 @@ IvysaurEvosAttacks:
 	db 28, GROWTH
 	db 31, DOUBLE_EDGE
 	db 36, ANCIENTPOWER ; Worry Seed → event move
-	db 39, SYNTHESIS
+	db 39, MORNING_SUN ; Synthesis → similar move
 	db 44, SEED_BOMB
 	db 50, SLUDGE_BOMB ; TM move
 	db 0 ; no more level-up moves
@@ -65,7 +65,7 @@ VenusaurEvosAttacks:
 	db 31, DOUBLE_EDGE
 	db 32, PETAL_DANCE
 	db 39, ANCIENTPOWER ; Worry Seed → event move
-	db 45, SYNTHESIS
+	db 45, MORNING_SUN ; Synthesis → similar move
 	db 50, SEED_BOMB
 	db 53, SLUDGE_BOMB ; Solar Beam → Sludge Bomb
 	db 60, SOLAR_BEAM
@@ -273,7 +273,8 @@ PidgeyEvosAttacks:
 	db 41, DRILL_PECK ; Tailwind → new move
 	db 45, STEEL_WING ; Mirror Move → TM move
 	db 49, AIR_SLASH
-	db 53, SKY_ATTACK ; Hurricane → RBY TM move
+	db 53, HURRICANE
+	db 57, SKY_ATTACK ; RBY TM move
 	db 0 ; no more level-up moves
 
 PidgeottoEvosAttacks:
@@ -292,7 +293,8 @@ PidgeottoEvosAttacks:
 	db 47, DRILL_PECK ; Tailwind → new move
 	db 52, STEEL_WING ; Mirror Move → TM move
 	db 57, AIR_SLASH
-	db 62, SKY_ATTACK ; Hurricane → RBY TM move
+	db 62, HURRICANE
+	db 67, SKY_ATTACK ; RBY TM move
 	db 0 ; no more level-up moves
 
 PidgeotEvosAttacks:
@@ -311,7 +313,8 @@ PidgeotEvosAttacks:
 	db 50, DRILL_PECK ; Tailwind → new move
 	db 56, STEEL_WING ; Mirror Move → TM move
 	db 62, AIR_SLASH
-	db 68, SKY_ATTACK ; Hurricane → RBY TM move
+	db 68, HURRICANE
+	db 74, SKY_ATTACK ; RBY TM move
 	db 0 ; no more level-up moves
 
 RattataEvosAttacks:
@@ -812,7 +815,7 @@ ParasEvosAttacks:
 	db 33, GROWTH
 	db 38, GIGA_DRAIN
 	db 43, METAL_CLAW ; Aromatherapy → egg move
-	db 49, SYNTHESIS ; Rage Powder → HGSS tutor move
+	db 49, MORNING_SUN ; Rage Powder → new move
 	db 54, X_SCISSOR
 	db 0 ; no more level-up moves
 
@@ -828,7 +831,7 @@ ParasectEvosAttacks:
 	db 37, GROWTH
 	db 44, GIGA_DRAIN
 	db 51, METAL_CLAW ; Aromatherapy → egg move
-	db 59, SYNTHESIS ; Rage Powder → HGSS tutor move
+	db 59, MORNING_SUN ; Rage Powder → new move
 	db 66, X_SCISSOR
 	db 0 ; no more level-up moves
 
@@ -1231,7 +1234,7 @@ BellsproutEvosAttacks:
 	db 23, ACID
 	db 27, ENCORE ; Knock Off → egg move
 	db 29, SWEET_KISS ; Sweet Scent → event move
-	db 35, SYNTHESIS ; Gastro Acid → GSC move
+	db 35, MORNING_SUN ; Gastro Acid → new move
 	db 39, RAZOR_LEAF
 	db 41, SLAM
 	db 47, SWORDS_DANCE ; Wring Out → egg move
@@ -1249,7 +1252,7 @@ WeepinbellEvosAttacks:
 	db 23, ACID
 	db 27, ENCORE ; Knock Off → egg move
 	db 29, SWEET_KISS ; Sweet Scent → event move
-	db 35, SYNTHESIS ; Gastro Acid → GSC move
+	db 35, MORNING_SUN ; Gastro Acid → new move
 	db 39, RAZOR_LEAF
 	db 41, SLAM
 	db 47, SWORDS_DANCE ; Wring Out → egg move
@@ -1259,7 +1262,7 @@ VictreebelEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, VINE_WHIP
 	db 1, SLEEP_POWDER
-	db 1, SYNTHESIS ; Sweet Scent → GSC move
+	db 1, MORNING_SUN ; Sweet Scent → new move
 	db 1, RAZOR_LEAF
 	db 47, SEED_BOMB ; Leaf Blade → tutor move
 	db 0 ; no more level-up moves
@@ -1884,7 +1887,7 @@ ExeggcuteEvosAttacks:
 	db 23, SLEEP_POWDER
 	db 27, CONFUSION
 	db 33, ANCIENTPOWER ; Worry Seed → HGSS tutor move
-	db 37, SYNTHESIS ; Natural Gift → HGSS tutor move
+	db 37, MORNING_SUN ; Natural Gift → new move
 	db 43, SOLAR_BEAM
 	db 47, EXTRASENSORY
 	db 50, NIGHTMARE ; Bestow → GSC TM move
@@ -2091,7 +2094,7 @@ TangelaEvosAttacks:
 	db 23, MEGA_DRAIN
 	db 27, PAIN_SPLIT ; Knock Off → HGSS tutor move
 	db 30, STUN_SPORE
-	db 33, SYNTHESIS ; Natural Gift → HGSS tutor move
+	db 33, MORNING_SUN ; Natural Gift → new move
 	db 36, GIGA_DRAIN
 	db 38, ANCIENTPOWER
 	db 41, SLAM
@@ -2654,7 +2657,8 @@ ArticunoEvosAttacks:
 	db 71, BLIZZARD
 	db 78, SKY_ATTACK ; Sheer Cold → HGSS tutor move
 	db 85, EXTRASENSORY ; Roost → event move
-	db 92, AEROBLAST ; Hurricane → new move
+	db 92, HURRICANE
+	db 99, AEROBLAST ; new move
 	db 0 ; no more level-up moves
 
 ZapdosEvosAttacks:
@@ -2673,7 +2677,8 @@ ZapdosEvosAttacks:
 	db 71, THUNDER ; Drill Peck → Thunder
 	db 78, SKY_ATTACK ; Thunder → HGSS tutor move
 	db 85, EXTRASENSORY ; Roost → event move
-	db 92, ZAP_CANNON
+	db 92, HURRICANE ; Zap Cannon → new move
+	db 99, ZAP_CANNON
 	db 0 ; no more level-up moves
 
 MoltresEvosAttacks:
@@ -2689,10 +2694,11 @@ MoltresEvosAttacks:
 	db 50, AIR_SLASH
 	db 57, SUNNY_DAY
 	db 64, WILL_O_WISP ; Heat Wave → event move
-	db 71, SOLAR_BEAM
+	db 71, FIRE_BLAST ; Solar Beam → TM move
 	db 78, SKY_ATTACK
 	db 85, EXTRASENSORY ; Roost → event move
-	db 92, FIRE_BLAST ; Hurricane → Fire Blast
+	db 92, HURRICANE
+	db 99, SOLAR_BEAM
 	db 0 ; no more level-up moves
 
 DratiniEvosAttacks:
@@ -2791,7 +2797,7 @@ ChikoritaEvosAttacks:
 	db 1, GROWL
 	db 6, RAZOR_LEAF
 	db 9, POISONPOWDER
-	db 12, SYNTHESIS
+	db 12, MORNING_SUN ; Synthesis → similar move
 	db 17, REFLECT
 	db 20, FAIRY_WIND ; Magical Leaf → new move
 	db 23, SEED_BOMB ; Natural Gift → tutor move
@@ -2813,7 +2819,7 @@ BayleefEvosAttacks:
 	db 1, GROWL
 	db 6, RAZOR_LEAF
 	db 9, POISONPOWDER
-	db 12, SYNTHESIS
+	db 12, MORNING_SUN ; Synthesis → similar move
 	db 18, REFLECT
 	db 22, FAIRY_WIND ; Magical Leaf → new move
 	db 26, SEED_BOMB ; Natural Gift → tutor move
@@ -2834,7 +2840,7 @@ MeganiumEvosAttacks:
 	db 1, GROWL
 	db 6, RAZOR_LEAF
 	db 9, POISONPOWDER
-	db 12, SYNTHESIS
+	db 12, MORNING_SUN ; Synthesis → similar move
 	db 18, REFLECT
 	db 22, FAIRY_WIND ; Magical Leaf → new move
 	db 26, SEED_BOMB ; Natural Gift → tutor move
@@ -3270,7 +3276,7 @@ TangrowthEvosAttacks:
 	db 23, MEGA_DRAIN
 	db 27, PAIN_SPLIT ; Knock Off → HGSS tutor move
 	db 30, STUN_SPORE
-	db 33, SYNTHESIS ; Natural Gift → HGSS tutor move
+	db 33, MORNING_SUN ; Natural Gift → new move
 	db 36, GIGA_DRAIN
 	db 40, ANCIENTPOWER
 	db 43, SLAM
@@ -3457,7 +3463,7 @@ SunkernEvosAttacks:
 	db 19, PROTECT ; Worry Seed → TM move
 	db 22, GIGA_DRAIN
 	db 25, SAFEGUARD ; Endeavor → TM move
-	db 28, SYNTHESIS
+	db 28, MORNING_SUN ; Synthesis → similar move
 	db 31, EARTH_POWER ; Natural Gift → tutor move
 	db 34, SOLAR_BEAM
 	db 37, DOUBLE_EDGE
@@ -3609,7 +3615,7 @@ LeafeonEvosAttacks:
 	db 20, IRON_TAIL ; Magical Leaf → TM move
 	db 25, GIGA_DRAIN
 	db 29, SWORDS_DANCE
-	db 33, SYNTHESIS
+	db 33, MORNING_SUN ; Synthesis → similar move
 	db 37, SEED_BOMB ; Sunny Day → tutor move
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
 	db 45, SUNNY_DAY ; Leaf Blade → Sunny Day
@@ -4545,6 +4551,7 @@ RaikouEvosAttacks:
 	db 78, CALM_MIND
 	db 85, WILD_CHARGE ; Thunder → TM move
 	db 92, THUNDER
+	db 99, HIDDEN_POWER ; TM move
 	db 0 ; no more level-up moves
 
 EnteiEvosAttacks:
@@ -4564,6 +4571,7 @@ EnteiEvosAttacks:
 	db 78, CALM_MIND
 	db 85, FLARE_BLITZ ; Eruption → event move
 	db 92, SACRED_FIRE
+	db 99, HIDDEN_POWER ; TM move
 	db 0 ; no more level-up moves
 
 SuicuneEvosAttacks:
@@ -4583,6 +4591,7 @@ SuicuneEvosAttacks:
 	db 78, CALM_MIND
 	db 85, HYPER_BEAM ; Blizzard → TM move
 	db 92, BLIZZARD
+	db 99, HIDDEN_POWER ; TM move
 	db 0 ; no more level-up moves
 
 LarvitarEvosAttacks:

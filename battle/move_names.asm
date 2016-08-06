@@ -232,7 +232,7 @@
 	db "Metal Claw@"
 	db "Vital Throw@"
 	db "Morning Sun@"
-	db "Synthesis@"
+	db "Hurricane@"
 	db "Moonlight@"
 	db "Hidden Power@"
 	db "Cross Chop@"

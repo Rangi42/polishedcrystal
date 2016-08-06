@@ -235,7 +235,7 @@
 	const METAL_CLAW   ; $e8
 	const VITAL_THROW  ; $e9
 	const MORNING_SUN  ; $ea
-	const SYNTHESIS    ; $eb
+	const HURRICANE    ; $eb
 	const MOONLIGHT    ; $ec
 	const HIDDEN_POWER ; $ed
 	const CROSS_CHOP   ; $ee

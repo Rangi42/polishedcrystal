@@ -40,7 +40,6 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_SUNNY_DAY,    .SunnyDay
 	dbw EFFECT_TELEPORT,     .Teleport
 	dbw EFFECT_MORNING_SUN,  .MorningSun
-	dbw EFFECT_SYNTHESIS,    .Synthesis
 	dbw EFFECT_MOONLIGHT,    .Moonlight
 	dbw EFFECT_SWAGGER,      .Swagger
 	dbw EFFECT_FUTURE_SIGHT, .FutureSight
@@ -182,7 +181,6 @@ AI_Redundant: ; 2c41a
 
 .Heal:
 .MorningSun:
-.Synthesis:
 .Moonlight: ; 2c539
 	callba AICheckEnemyMaxHP
 	jr nc, .NotRedundant

@@ -233,7 +233,7 @@
 	dw MetalClawDescription
 	dw VitalThrowDescription
 	dw MorningSunDescription
-	dw SynthesisDescription
+	dw HurricaneDescription
 	dw MoonlightDescription
 	dw HiddenPowerDescription
 	dw CrossChopDescription
@@ -359,6 +359,7 @@ BlizzardDescription:
 PsybeamDescription:
 ConfusionDescription:
 DizzyPunchDescription:
+HurricaneDescription:
 	db   "An attack that may"
 	next "confuse the foe.@"
 
@@ -1028,12 +1029,8 @@ VitalThrowDescription:
 	next "that never misses.@"
 
 MorningSunDescription:
-	db   "Restores HP"
-	next "(best at morning).@"
-
-SynthesisDescription:
-	db   "Restores HP"
-	next "(best at daytime).@"
+	db   "Restores HP (best"
+	next "at morn or day).@"
 
 MoonlightDescription:
 	db   "Restores HP"

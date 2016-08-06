@@ -123,7 +123,6 @@
 	dw Pursuit
 	dw RapidSpin
 	dw MorningSun
-	dw Synthesis
 	dw Moonlight
 	dw HiddenPower
 	dw RainDance
