@@ -3462,7 +3462,7 @@ SunkernEvosAttacks:
 	db 16, RAZOR_LEAF
 	db 19, PROTECT ; Worry Seed → TM move
 	db 22, GIGA_DRAIN
-	db 25, SAFEGUARD ; Endeavor → TM move
+	db 25, AGILITY ; Endeavor → new move
 	db 28, MORNING_SUN ; Synthesis → similar move
 	db 31, EARTH_POWER ; Natural Gift → tutor move
 	db 34, SOLAR_BEAM
@@ -3483,7 +3483,7 @@ SunfloraEvosAttacks:
 	db 16, RAZOR_LEAF
 	db 19, PROTECT ; Worry Seed → TM move
 	db 22, GIGA_DRAIN
-	db 25, SAFEGUARD ; Bullet Seed → TM move
+	db 25, AGILITY ; Bullet Seed → TM move
 	db 28, PETAL_DANCE
 	db 31, FLAMETHROWER ; Natural Gift → TM move
 	db 34, SOLAR_BEAM
