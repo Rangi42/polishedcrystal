@@ -269,7 +269,7 @@ AzaleaTownRivalBeforeText:
 	done
 
 AzaleaTownRivalWinText:
-	text "… Humph! Useless"
+	text "…Humph! Useless"
 	line "#mon!"
 
 	para "Listen, you. You"

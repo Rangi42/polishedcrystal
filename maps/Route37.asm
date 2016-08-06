@@ -226,7 +226,7 @@ SunnyGaveGiftText:
 
 	para "Um…"
 
-	para "… What was it now…"
+	para "…What was it now…"
 
 	para "…"
 

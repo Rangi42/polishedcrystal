@@ -321,7 +321,7 @@ Bug_catcherWade1AfterText:
 	done
 
 Text_Route31SleepyMan:
-	text "… Hnuurg… Huh?"
+	text "…Hnuurg… Huh?"
 
 	para "I walked too far"
 	line "today looking for"

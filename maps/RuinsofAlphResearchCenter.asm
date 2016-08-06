@@ -367,7 +367,7 @@ UnknownText_0x5980e:
 	line "The display says"
 	cont "<``>PC LOAD LETTER<''>."
 
-	para "… What does that"
+	para "…What does that"
 	line "mean?"
 	done
 

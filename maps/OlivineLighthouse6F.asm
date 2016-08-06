@@ -155,7 +155,7 @@ MovementData_0x60c79:
 	step_end
 
 UnknownText_0x60c81:
-	text "Jasmine: … This"
+	text "Jasmine: …This"
 	line "#mon always"
 
 	para "kept the sea lit"

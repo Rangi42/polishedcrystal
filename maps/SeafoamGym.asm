@@ -325,7 +325,7 @@ UnknownText_0x1ab71c:
 SeafoamGymGuyWinText:
 	text "Yo!"
 
-	para "… Huh? It's over"
+	para "…Huh? It's over"
 	line "already?"
 
 	para "Sorry, sorry!"
