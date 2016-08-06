@@ -3446,7 +3446,7 @@ PolitoedEvosAttacks:
 	db 1, DOUBLE_SLAP
 	db 1, PERISH_SONG
 	db 27, SWAGGER
-	db 37, FOCUS_BLAST ; Bounce → TM move
+	db 37, GIGA_DRAIN ; Bounce → TM move
 	db 48, HYPER_VOICE
 	db 0 ; no more level-up moves
 
