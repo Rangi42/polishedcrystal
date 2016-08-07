@@ -78,7 +78,6 @@
 ## New content
 
 * Add Young Couple, Double Team, Dragon Tamer, PI, and Roughneck/Cue Ball trainer classes
-* Use Mmmmmm's Shoal Cave / Mt. Pyre music for Seafoam Islands
 * Use Mmmmmm's B/W Route 12 music for a new location
 * Extend Lugia's chamber with flute music
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
