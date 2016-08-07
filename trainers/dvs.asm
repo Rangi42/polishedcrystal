@@ -67,7 +67,8 @@ TrainerClassDVs: ; 270d6
 	db $AA, $AA ; jessie&james
 	db $AA, $AA ; pokefanm
 	db $5A, $AA ; pokefanf
-	db $DB, $DB ; officer
+	db $DB, $DB ; officerm
+	db $7B, $DB ; officerf
 	db $FB, $BF ; pokemaniac
 	db $FB, $BB ; super nerd
 	db $5B, $BB ; lass
@@ -82,6 +83,8 @@ TrainerClassDVs: ; 270d6
 	db $7C, $CC ; medium
 	db $6E, $EE ; kimono girl
 	db $DD, $DD ; elder
+	db $5C, $CC ; lass
+	db $7C, $CC ; couple
 	db $CC, $CC ; gentleman
 	db $CC, $CC ; rich boy
 	db $7C, $CC ; cowgirl
@@ -89,15 +92,18 @@ TrainerClassDVs: ; 270d6
 	db $CC, $CC ; swimmerm
 	db $7C, $CC ; swimmerf
 	db $FA, $CA ; burglar
+	db $FA, $CA ; pi
 	db $CC, $CF ; scientist
 	db $DD, $DD ; boarder
 	db $7D, $DD ; skier
 	db $FD, $DD ; blackbelt
 	db $7D, $DD ; battle girl
+	db $FD, $FD ; dragon tamer
 	db $DD, $DD ; teacher
 	db $DD, $DD ; guitaristm
 	db $7D, $DD ; guitaristf
 	db $DD, $DD ; biker
+	db $DD, $DD ; roughneck
 	db $EE, $EE ; cooltrainerm
 	db $7E, $EE ; cooltrainerf
 	db $DF, $FF ; executivem
@@ -112,6 +118,8 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; bill
 	db $FF, $FF ; lawrence
 	db $FF, $FF ; giovanni
+	db $FF, $FF ; steven
+	db $FF, $FF ; cynthia
 	db $FF, $FF ; towertycoon
 	db $7F, $FF ; valerie
 	db $00, $00 ; omastar fossil

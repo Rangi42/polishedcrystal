@@ -7,7 +7,7 @@ const_value set 2
 	const ROUTE35_FISHER
 	const ROUTE35_BUG_CATCHER
 	const ROUTE35_SUPER_NERD
-	const ROUTE35_OFFICER
+	const ROUTE35_OFFICER_M
 	const ROUTE35_FRUIT_TREE
 	const ROUTE35_POKE_BALL
 
@@ -236,22 +236,22 @@ FirebreatherWaltScript:
 	closetext
 	end
 
-OfficerScript_0x19ca49:
+OfficermScript_0x19ca49:
 	faceplayer
 	opentext
 	checknite
 	iffalse UnknownScript_0x19ca73
-	checkevent EVENT_BEAT_OFFICER_DIRK
+	checkevent EVENT_BEAT_OFFICERM_DIRK
 	iftrue UnknownScript_0x19ca6d
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext UnknownText_0x19ceea
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x19cf06, 0
-	loadtrainer OFFICER, DIRK
+	loadtrainer OFFICERM, DIRK
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_OFFICER_DIRK
+	setevent EVENT_BEAT_OFFICERM_DIRK
 	closetext
 	end
 
@@ -490,6 +490,6 @@ Route35_MapEventHeader:
 	person_event SPRITE_FISHER, 10, 2, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1
 	person_event SPRITE_BUG_CATCHER, 7, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
 	person_event SPRITE_SUPER_NERD, 10, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
-	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ca49, -1
+	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
 	person_event SPRITE_FRUIT_TREE, 25, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19ca7e, -1
 	person_event SPRITE_POKE_BALL, 16, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route35TMRollout, EVENT_ROUTE_35_TM_ROLLOUT

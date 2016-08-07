@@ -63,7 +63,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_ROCKET_ENCOUNTER		; jessie&james
 	db MUSIC_HIKER_ENCOUNTER		; pokefanm
 	db MUSIC_BEAUTY_ENCOUNTER		; pokefanf
-	db MUSIC_HIKER_ENCOUNTER		; officer
+	db MUSIC_HIKER_ENCOUNTER		; officerm
+	db MUSIC_HIKER_ENCOUNTER		; officerf
 	db MUSIC_POKEMANIAC_ENCOUNTER	; pokemaniac
 	db MUSIC_POKEMANIAC_ENCOUNTER	; super_nerd
 	db MUSIC_LASS_ENCOUNTER			; lass
@@ -78,6 +79,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_SAGE_ENCOUNTER			; medium
 	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl
 	db MUSIC_SAGE_ENCOUNTER			; elder
+	db MUSIC_LASS_ENCOUNTER			; sr_and_jr
+	db MUSIC_HIKER_ENCOUNTER		; couple
 	db MUSIC_HIKER_ENCOUNTER		; gentleman
 	db MUSIC_YOUNGSTER_ENCOUNTER	; rich_boy
 	db MUSIC_LASS_ENCOUNTER			; cowgirl
@@ -85,15 +88,18 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; swimmerm
 	db MUSIC_BEAUTY_ENCOUNTER		; swimmerf
 	db MUSIC_POKEMANIAC_ENCOUNTER	; burglar
+	db MUSIC_POKEMANIAC_ENCOUNTER	; pi
 	db MUSIC_ROCKET_ENCOUNTER		; scientist
 	db MUSIC_HIKER_ENCOUNTER		; boarder
 	db MUSIC_BEAUTY_ENCOUNTER		; skier
 	db MUSIC_HIKER_ENCOUNTER		; blackbelt_t
 	db MUSIC_BEAUTY_ENCOUNTER		; battle_girl
+	db MUSIC_HIKER_ENCOUNTER		; dragon_tamer
 	db MUSIC_BEAUTY_ENCOUNTER		; teacher
 	db MUSIC_HIKER_ENCOUNTER		; guitaristm
 	db MUSIC_BEAUTY_ENCOUNTER		; guitaristf
 	db MUSIC_HIKER_ENCOUNTER		; biker
+	db MUSIC_HIKER_ENCOUNTER		; roughneck
 	db MUSIC_HIKER_ENCOUNTER		; cooltrainerm
 	db MUSIC_BEAUTY_ENCOUNTER		; cooltrainerf
 	db MUSIC_ROCKET_ENCOUNTER		; executivem
@@ -107,6 +113,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_POKEMANIAC_ENCOUNTER	; bill
 	db MUSIC_HIKER_ENCOUNTER		; lawrence
 	db MUSIC_ROCKET_ENCOUNTER		; giovanni
+	db MUSIC_HIKER_ENCOUNTER		; steven
+	db MUSIC_HIKER_ENCOUNTER		; cynthia
 	db MUSIC_HIKER_ENCOUNTER		; towertycoon
 	db MUSIC_KIMONO_ENCOUNTER		; valerie
 ; e906e

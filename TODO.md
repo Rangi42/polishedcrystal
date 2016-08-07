@@ -77,7 +77,6 @@
 
 ## New content
 
-* Add Young Couple, Double Team, Dragon Tamer, PI, and Roughneck/Cue Ball trainer classes
 * Use Mmmmmm's B/W Route 12 music for a new location
 * Extend Lugia's chamber with flute music
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
@@ -89,8 +88,8 @@
 * Aurora Orb boosts Suicune's Defense and Special Defense
 * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
-* Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Aurora Orb)
-* Battle with Steven in some southern ruins ("Hojo Ruins"?), or in Mt. Quena (north of Olivine City?) (reward: ?)
+* Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Aura Orb)
+* Battle with Steven in the Embedded Tower (reward: ?)
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower
 * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
 * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
@@ -105,7 +104,7 @@
 * Fourth stat screen showing Poké Seer's data
 * Restore [unused memory game](http://iimarck.us/i/memory/)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
-* Pickup ability for Meowth, Aipom, Teddiursa, and/or Phanpy
+* Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
 * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)

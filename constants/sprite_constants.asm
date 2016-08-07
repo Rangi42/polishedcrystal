@@ -114,6 +114,7 @@
 	const SPRITE_JESSIE ; 6e
 	const SPRITE_GIOVANNI ; 6f
 	const SPRITE_LYRA ; 70
+	const SPRITE_OFFICER_F ; 71
 
 const_value SET $80
 

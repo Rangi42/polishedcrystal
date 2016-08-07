@@ -444,3 +444,6 @@ GiovanniSprite:
 
 LyraSprite:
 	sprite_header LyraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+OfficerFSprite:
+	sprite_header OfficerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE

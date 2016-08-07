@@ -39,7 +39,8 @@
 	add_pic JessieJamesPic
 	add_pic PokefanmPic
 	add_pic PokefanfPic
-	add_pic OfficerPic
+	add_pic OfficermPic
+	add_pic OfficerfPic
 	add_pic PokemaniacPic
 	add_pic SuperNerdPic
 	add_pic LassPic
@@ -54,6 +55,8 @@
 	add_pic MediumPic
 	add_pic KimonoGirlPic
 	add_pic ElderPic
+	add_pic SrAndJrPic
+	add_pic CouplePic
 	add_pic GentlemanPic
 	add_pic RichBoyPic
 	add_pic CowgirlPic
@@ -61,15 +64,18 @@
 	add_pic SwimmermPic
 	add_pic SwimmerfPic
 	add_pic BurglarPic
+	add_pic PIPic
 	add_pic ScientistPic
 	add_pic BoarderPic
 	add_pic SkierPic
 	add_pic BlackbeltTPic
 	add_pic BattleGirlPic
+	add_pic DragonTamerPic
 	add_pic TeacherPic
 	add_pic GuitaristmPic
 	add_pic GuitaristfPic
 	add_pic BikerPic
+	add_pic RoughneckPic
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
 	add_pic ExecutivemPic
@@ -84,6 +90,8 @@
 	add_pic BillPic
 	add_pic LawrencePic
 	add_pic GiovanniPic
+	add_pic StevenPic
+	add_pic CynthiaPic
 	add_pic TowerTycoonPic
 	add_pic ValeriePic
 	add_pic OmastarFossilPic

@@ -240,7 +240,13 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_TYPES + AI_SMART + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
-; Officer
+; Officerm
+	db 0, 0 ; items
+	db 15 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Officerf
 	db 0, 0 ; items
 	db 15 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
@@ -330,6 +336,18 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Sr and Jr
+	db 0, 0 ; items
+	db 16 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_OFTEN
+
+; Couple
+	db 0, 0 ; items
+	db 18 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_OFTEN
+
 ; Gentleman
 	db 0, 0 ; items
 	db 16 ; base reward
@@ -372,6 +390,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_OFFENSIVE + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; PI
+	db 0, 0 ; items
+	db 20 ; base reward
+	dw AI_BASIC + AI_OFFENSIVE + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Scientist
 	db 0, 0 ; items
 	db 25 ; base reward
@@ -402,6 +426,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_OFFENSIVE + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Dragon Tamer
+	db 0, 0 ; items
+	db 15 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Teacher
 	db 0, 0 ; items
 	db 18 ; base reward
@@ -421,6 +451,12 @@ TrainerClassAttributes: ; 3959c
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Biker
+	db 0, 0 ; items
+	db 18 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Roughneck
 	db 0, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_STATUS + AI_RISKY
@@ -506,6 +542,18 @@ TrainerClassAttributes: ; 3959c
 
 ; Giovanni
 	db HYPER_POTION, 0 ; items
+	db 25 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Steven
+	db FULL_HEAL, FULL_RESTORE ; items
+	db 25 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Cynthia
+	db FULL_HEAL, FULL_RESTORE ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES

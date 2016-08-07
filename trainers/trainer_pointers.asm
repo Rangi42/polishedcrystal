@@ -41,7 +41,8 @@ TrainerGroups: ; 0x39999
 	dw JessieJamesGroup
 	dw PokefanMGroup
 	dw PokefanFGroup
-	dw OfficerGroup
+	dw OfficerMGroup
+	dw OfficerFGroup
 	dw PokemaniacGroup
 	dw SuperNerdGroup
 	dw LassGroup
@@ -56,6 +57,8 @@ TrainerGroups: ; 0x39999
 	dw MediumGroup
 	dw KimonoGirlGroup
 	dw ElderGroup
+	dw SrAndJrGroup
+	dw CoupleGroup
 	dw GentlemanGroup
 	dw RichBoyGroup
 	dw CowgirlGroup
@@ -63,15 +66,18 @@ TrainerGroups: ; 0x39999
 	dw SwimmerMGroup
 	dw SwimmerFGroup
 	dw BurglarGroup
+	dw PIGroup
 	dw ScientistGroup
 	dw BoarderGroup
 	dw SkierGroup
 	dw BlackbeltGroup
 	dw BattleGirlGroup
+	dw DragonTamerGroup
 	dw TeacherGroup
 	dw GuitaristMGroup
 	dw GuitaristFGroup
 	dw BikerGroup
+	dw RoughneckGroup
 	dw CooltrainerMGroup
 	dw CooltrainerFGroup
 	dw ExecutiveMGroup
@@ -86,6 +92,8 @@ TrainerGroups: ; 0x39999
 	dw BillGroup
 	dw LawrenceGroup
 	dw GiovanniGroup
+	dw StevenGroup
+	dw CynthiaGroup
 	dw TowerTycoonGroup
 	dw ValerieGroup
 	dw OmastarFossilGroup
