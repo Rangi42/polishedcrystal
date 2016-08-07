@@ -1,10 +1,10 @@
 const_value set 2
-	const ROUTE29_COOLTRAINER_M1
+	const ROUTE29_LYRA
 	const ROUTE29_YOUNGSTER
 	const ROUTE29_TEACHER1
 	const ROUTE29_FRUIT_TREE
 	const ROUTE29_FISHER
-	const ROUTE29_COOLTRAINER_M2
+	const ROUTE29_COOLTRAINER_M
 	const ROUTE29_TUSCANY
 	const ROUTE29_POKE_BALL
 
@@ -44,103 +44,73 @@ Route29_MapScriptHeader:
 	return
 
 Route29Tutorial1:
-	spriteface ROUTE29_COOLTRAINER_M1, UP
-	showemote EMOTE_SHOCK, ROUTE29_COOLTRAINER_M1, 15
-	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData1a
+	spriteface ROUTE29_LYRA, UP
+	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
+	applymovement ROUTE29_LYRA, LyraMovementData1a
 	spriteface PLAYER, LEFT
-	setevent EVENT_DUDE_TALKED_TO_YOU
 	opentext
 	writetext CatchingTutorialIntroText
-	yesorno
-	iffalse Script_RefusedTutorial1
-	closetext
-	follow ROUTE29_COOLTRAINER_M1, PLAYER
-	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData1b
-	stopfollow
-	loadwildmon RATTATA, 5
-	catchtutorial BATTLETYPE_TUTORIAL
-	spriteface ROUTE29_COOLTRAINER_M1, UP
-	opentext
-	writetext CatchingTutorialDebriefText
 	waitbutton
 	closetext
+	follow ROUTE29_LYRA, PLAYER
+	applymovement ROUTE29_LYRA, LyraMovementData1b
+	stopfollow
+	loadwildmon SENTRET, 5
+	catchtutorial BATTLETYPE_TUTORIAL
+	spriteface ROUTE29_LYRA, UP
+	opentext
+	writetext CatchingTutorialDebriefText
+	buttonsound
+	itemtotext POKE_BALL, $1
+	scall LyraScript_ReceiveTheBalls
+	giveitem POKE_BALL, 5
+	itemnotify
+	writetext CatchingTutorialGoodbyeText
+	waitbutton
+	closetext
+	applymovement ROUTE29_LYRA, LyraMovementData3
+	disappear ROUTE29_LYRA
 	dotrigger $0
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	special RunCallback_04
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	end
 
 Route29Tutorial2:
-	spriteface ROUTE29_COOLTRAINER_M1, UP
-	showemote EMOTE_SHOCK, ROUTE29_COOLTRAINER_M1, 15
-	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData2a
+	spriteface ROUTE29_LYRA, UP
+	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
+	applymovement ROUTE29_LYRA, LyraMovementData2a
 	spriteface PLAYER, LEFT
-	setevent EVENT_DUDE_TALKED_TO_YOU
 	opentext
 	writetext CatchingTutorialIntroText
-	yesorno
-	iffalse Script_RefusedTutorial2
+	waitbutton
 	closetext
-	follow ROUTE29_COOLTRAINER_M1, PLAYER
-	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData2b
+	follow ROUTE29_LYRA, PLAYER
+	applymovement ROUTE29_LYRA, LyraMovementData2b
 	stopfollow
-	loadwildmon RATTATA, 5
+	loadwildmon SENTRET, 5
 	catchtutorial BATTLETYPE_TUTORIAL
-	spriteface ROUTE29_COOLTRAINER_M1, UP
+	spriteface ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
+	buttonsound
+	itemtotext POKE_BALL, $1
+	scall LyraScript_ReceiveTheBalls
+	giveitem POKE_BALL, 5
+	itemnotify
+	writetext CatchingTutorialGoodbyeText
 	waitbutton
 	closetext
+	applymovement ROUTE29_LYRA, LyraMovementData3
+	disappear ROUTE29_LYRA
 	dotrigger $0
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	special RunCallback_04
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	end
 
-Script_RefusedTutorial1:
-	writetext CatchingTutorialDeclinedText
-	waitbutton
-	closetext
-	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData1b
-	dotrigger $0
-	end
-
-Script_RefusedTutorial2:
-	writetext CatchingTutorialDeclinedText
-	waitbutton
-	closetext
-	applymovement ROUTE29_COOLTRAINER_M1, DudeMovementData2b
-	dotrigger $0
-	end
-
-CatchingTutorialDudeScript:
-	faceplayer
-	opentext
-	checkcode VAR_BOXSPACE
-	if_equal $0, .BoxFull
-	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
-	iftrue .BoxFull
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse .BoxFull
-	writetext CatchingTutorialRepeatText
-	yesorno
-	iffalse .Declined
-	closetext
-	loadwildmon RATTATA, 5
-	catchtutorial BATTLETYPE_TUTORIAL
-	opentext
-	writetext CatchingTutorialDebriefText
-	waitbutton
-	closetext
-	setevent EVENT_LEARNED_TO_CATCH_POKEMON
-	end
-
-.BoxFull:
-	writetext UnknownText_0x1a10a7
-	waitbutton
-	closetext
-	end
-
-.Declined:
-	writetext CatchingTutorialDeclinedText
-	waitbutton
-	closetext
+LyraScript_ReceiveTheBalls:
+	jumpstd receiveitem
 	end
 
 Route29YoungsterScript:
@@ -219,7 +189,7 @@ Route29FruitTree:
 Route29Potion:
 	itemball POTION
 
-DudeMovementData1a:
+LyraMovementData1a:
 	step_up
 	step_up
 	step_up
@@ -228,7 +198,7 @@ DudeMovementData1a:
 	step_right
 	step_end
 
-DudeMovementData2a:
+LyraMovementData2a:
 	step_up
 	step_up
 	step_up
@@ -236,7 +206,7 @@ DudeMovementData2a:
 	step_right
 	step_end
 
-DudeMovementData1b:
+LyraMovementData1b:
 	step_left
 	step_left
 	step_down
@@ -245,7 +215,7 @@ DudeMovementData1b:
 	step_down
 	step_end
 
-DudeMovementData2b:
+LyraMovementData2b:
 	step_left
 	step_left
 	step_down
@@ -253,49 +223,38 @@ DudeMovementData2b:
 	step_down
 	step_end
 
-UnknownText_0x1a10a7:
-	text "#mon hide in"
-	line "the grass. Who"
-
-	para "knows when they'll"
-	line "pop out…"
-	done
+LyraMovementData3:
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
 
 CatchingTutorialIntroText:
-	text "I've seen you a"
-	line "couple times. How"
+	text "Lyra: <PLAYER>!"
 
-	para "many #mon have"
-	line "you caught?"
+	para "You can catch wild"
+	line "#mon with #"
 
-	para "Would you like me"
-	line "to show you how to"
-	cont "catch #mon?"
+	para "Balls. Follow me"
+	line "and I'll show you!"
 	done
 
 CatchingTutorialDebriefText:
-	text "That's how you do"
-	line "it."
+	text "See? Just like"
+	line "that!"
 
 	para "If you weaken them"
 	line "first, #mon are"
 	cont "easier to catch."
+
+	para "I'll give you"
+	line "these. Good luck!"
 	done
 
-CatchingTutorialDeclinedText:
-	text "Oh. Fine, then."
-
-	para "Anyway, if you"
-	line "want to catch"
-
-	para "#mon, you have"
-	line "to walk a lot."
-	done
-
-CatchingTutorialRepeatText:
-	text "Huh? You want me"
-	line "to show you how to"
-	cont "catch #mon?"
+CatchingTutorialGoodbyeText:
+	text "Lyra: See you!"
 	done
 
 Route29YoungsterText:
@@ -379,7 +338,7 @@ TuscanyGivesGiftText:
 TuscanyGaveGiftText:
 	text "Tuscany: Wouldn't"
 	line "you agree that it"
-	cont "is most adorable?"
+	cont "is most elegant?"
 
 	para "It strengthens"
 	line "Normal-type moves."
@@ -440,7 +399,7 @@ Route29_MapEventHeader:
 
 .PersonEvents:
 	db 8
-	person_event SPRITE_COOLTRAINER_M, 12, 50, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CatchingTutorialDudeScript, -1
+	person_event SPRITE_NEW_BARK_LYRA, 12, 50, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
 	person_event SPRITE_YOUNGSTER, 16, 27, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route29YoungsterScript, -1
 	person_event SPRITE_TEACHER, 11, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route29TeacherScript, -1
 	person_event SPRITE_FRUIT_TREE, 2, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route29FruitTree, -1

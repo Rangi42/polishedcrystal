@@ -760,11 +760,18 @@ GetPlayerOrMonPalettePointer:
 	ld a, [PlayerGender]
 	and a
 	jr z, .male
+	ld a, [BattleType]
+	cp BATTLETYPE_TUTORIAL
+	jr z, .lyra
 	ld hl, KrisPalette
 	ret
 
 .male
 	ld hl, PlayerPalette
+	ret
+
+.lyra
+	ld hl, LyraPalette
 	ret
 
 GetFrontpicPalettePointer:

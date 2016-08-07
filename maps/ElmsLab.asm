@@ -325,7 +325,7 @@ ElmDirectionsScript:
 	closetext
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	dotrigger $7
+	dotrigger $6
 	domaptrigger NEW_BARK_TOWN, $1
 	end
 
@@ -392,13 +392,14 @@ ElmAfterTheftScript:
 	buttonsound
 	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	setflag ENGINE_BUG_CONTEST_ON
+	clearevent EVENT_LYRA_ROUTE_29
 	domaptrigger ROUTE_29, $1
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
 	writetext ElmAfterTheftText6
 	waitbutton
 	closetext
-	dotrigger $6
+	dotrigger $2
 	end
 
 ElmStudyingEggScript:
@@ -563,7 +564,7 @@ LyraBattleScript:
 	closetext
 .FinishLyra:
 	spriteface PLAYER, DOWN
-	applymovement ELMSLAB_LYRA, LyraLeaveMovement
+	applymovement ELMSLAB_LYRA, LyraLeavesMovement
 	disappear ELMSLAB_LYRA
 	dotrigger $5
 	special HealParty
@@ -594,47 +595,16 @@ AideScript_GivePotions:
 	dotrigger $2
 	end
 
-AideScript_WalkBalls1:
-	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight1
-	spriteface PLAYER, DOWN
-	scall AideScript_GiveYouBalls
-	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft1
-	end
-
-AideScript_WalkBalls2:
-	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight2
-	spriteface PLAYER, DOWN
-	scall AideScript_GiveYouBalls
-	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft2
-	end
-
-AideScript_GiveYouBalls:
-	opentext
-	writetext AideText_GiveYouBalls
-	buttonsound
-	itemtotext POKE_BALL, $1
-	scall AideScript_ReceiveTheBalls
-	giveitem POKE_BALL, 5
-	writetext AideText_ExplainBalls
-	buttonsound
-	itemnotify
-	closetext
-	dotrigger $2
-	end
-
-AideScript_ReceiveTheBalls:
-	jumpstd receiveitem
-	end
-
 ElmsAideScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	iftrue AideScript_AfterTheft
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue AideScript_ExplainBalls
+	iftrue AideScript_AlwaysBusy
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	iftrue AideScript_TheftTestimony
+AideScript_AlwaysBusy:
 	writetext AideText_AlwaysBusy
 	waitbutton
 	closetext
@@ -642,12 +612,6 @@ ElmsAideScript:
 
 AideScript_TheftTestimony:
 	writetext AideText_TheftTestimony
-	waitbutton
-	closetext
-	end
-
-AideScript_ExplainBalls:
-	writetext AideText_ExplainBalls
 	waitbutton
 	closetext
 	end
@@ -667,13 +631,37 @@ CopScript:
 	spriteface ELMSLAB_OFFICER, LEFT
 	opentext
 	writetext ElmsLabOfficerText1
-	buttonsound
-	special SpecialNameRival
-	writetext ElmsLabOfficerText2
 	waitbutton
 	closetext
+	disappear ELMSLAB_LYRA
+	moveperson ELMSLAB_LYRA, 5, 8
+	appear ELMSLAB_LYRA
+	applymovement ELMSLAB_LYRA, LyraRunsInMovement
+	spriteface ELMSLAB_OFFICER, DOWN
+	opentext
+	writetext ElmsLabLyraTheftInnocentText
+	waitbutton
+	closetext
+	pause 15
+	spriteface ELMSLAB_OFFICER, LEFT
+	opentext
+	writetext ElmsLabOfficerText2
+	buttonsound
+	special SpecialNameRival
+	writetext ElmsLabOfficerText3
+	waitbutton
+	closetext
+	applymovement ELMSLAB_LYRA, LyraStepsAsideMovement
 	applymovement ELMSLAB_OFFICER, OfficerLeavesMovement
 	disappear ELMSLAB_OFFICER
+	spriteface ELMSLAB_LYRA, UP
+	spriteface PLAYER, DOWN
+	opentext
+	writetext ElmsLabLyraTheftGoodbyeText
+	waitbutton
+	closetext
+	applymovement ELMSLAB_LYRA, LyraLeavesMovement
+	disappear ELMSLAB_LYRA
 	dotrigger $2
 	end
 
@@ -789,12 +777,24 @@ LyraBattleMovement:
 	turn_head_left
 	step_end
 
-LyraLeaveMovement:
+LyraLeavesMovement:
 	step_down
 	step_down
 	step_down
 	step_down
 	step_down
+	step_end
+
+LyraRunsInMovement:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
+
+LyraStepsAsideMovement:
+	step_left
+	turn_head_right
 	step_end
 
 MeetCopScript2_StepLeft:
@@ -1443,36 +1443,23 @@ AideText_TheftTestimony:
 	line "itself."
 	done
 
-AideText_GiveYouBalls:
-	text "<PLAY_G>!"
-
-	para "Use these on your"
-	line "#dex quest!"
-	done
-
-AideText_ExplainBalls:
-	text "To add to your"
-	line "#dex, you have"
-	cont "to catch #mon."
-
-	para "Throw # Balls"
-	line "at wild #mon"
-	cont "to get them."
-	done
-
 ElmsLabOfficerText1:
 	text "I heard a #mon"
-	line "was stolen here…"
+	line "was stolen here."
 
-	para "I was just getting"
-	line "some information"
-	cont "from Prof.Elm."
+	para "Rule number one!"
+	line "<``>The criminal will"
 
-	para "Apparently, it was"
-	line "a young male with"
-	cont "long, red hair…"
+	para "always return to"
+	line "the scene of the"
+	cont "crime…<''>"
 
-	para "What?"
+	para "Oh my… So you're"
+	line "the thief?"
+	done
+
+ElmsLabOfficerText2:
+	text "What?"
 
 	para "You battled a"
 	line "trainer like that?"
@@ -1481,7 +1468,7 @@ ElmsLabOfficerText1:
 	line "get his name?"
 	done
 
-ElmsLabOfficerText2:
+ElmsLabOfficerText3:
 	text "OK! So <RIVAL>"
 	line "was his name."
 
@@ -1543,6 +1530,26 @@ ElmsLabLyraText_YouLost:
 
 	para "Have fun on your"
 	line "errand!"
+	done
+
+ElmsLabLyraTheftInnocentText:
+	text "Lyra: Hold on!"
+	line "<PLAYER> has noth-"
+	cont "ing to do with it!"
+
+	para "I saw a red-haired"
+	line "boy spying on the"
+	cont "building!"
+	done
+
+ElmsLabLyraTheftGoodbyeText:
+	text "Lyra: <PLAYER>,"
+	line "I'm glad he under-"
+
+	para "stood that you're"
+	line "innocent."
+
+	para "See you later!"
 	done
 
 ElmsLabWindowText1:
@@ -1625,16 +1632,14 @@ ElmsLab_MapEventHeader:
 	warp_def $b, $5, 1, NEW_BARK_TOWN
 
 .XYTriggers:
-	db 9
+	db 7
 	xy_trigger 1, $6, $4, $0, LabTryToLeaveScript, $0, $0
 	xy_trigger 1, $6, $5, $0, LabTryToLeaveScript, $0, $0
 	xy_trigger 3, $5, $4, $0, MeetCopScript, $0, $0
 	xy_trigger 3, $5, $5, $0, MeetCopScript2, $0, $0
 	xy_trigger 5, $8, $4, $0, AideScript_WalkPotions1, $0, $0
 	xy_trigger 5, $8, $5, $0, AideScript_WalkPotions2, $0, $0
-	xy_trigger 6, $8, $4, $0, AideScript_WalkBalls1, $0, $0
-	xy_trigger 6, $8, $5, $0, AideScript_WalkBalls2, $0, $0
-	xy_trigger 7, $6, $4, $0, LyraBattleScript, $0, $0
+	xy_trigger 6, $6, $4, $0, LyraBattleScript, $0, $0
 
 .Signposts:
 	db 16

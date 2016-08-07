@@ -3713,14 +3713,14 @@ CatchTutorial:: ; 4e554
 	ld hl, wDudeNumBalls
 	ld a, 1
 	ld [hli], a
-	ld a, POKE_BALL ; 5
+	ld a, POKE_BALL
 	ld [hli], a
 	ld [hli], a
 	ld [hl], -1
 	ret
 
 .Dude: ; 4e5da
-	db "Dude@"
+	db "Lyra@"
 
 .AutoInput: ; 4e5df
 	db NO_INPUT, $ff ; end

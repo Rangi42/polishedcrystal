@@ -7,7 +7,7 @@ UnusedPhoneScript: ; 0xbcea5
 MomPhoneScript: ; 0xbceaa
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iftrue .bcec5
-	checkevent EVENT_DUDE_TALKED_TO_YOU
+	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
 	iftrue MomPhoneLectureScript
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue MomPhoneNoGymQuestScript
