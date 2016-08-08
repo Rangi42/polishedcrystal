@@ -66,9 +66,6 @@ endr
 
 	ld b, a
 
-	cp EVOLVE_HOLDING
-	jr z, .holding
-
 	ld a, [wLinkMode]
 	and a
 	jp nz, .dont_evolve_2
@@ -82,16 +79,18 @@ endr
 	jp nz, .dont_evolve_2
 
 	ld a, b
+	cp EVOLVE_HOLDING
+	jp z, .holding
 	cp EVOLVE_LOCATION
 	jp z, .location
-
-	ld a, b
+	cp EVOLVE_MOVE
+	jp z, .move
+	cp EVOLVE_STAT_EXP
+	jp z, .stat_exp
 	cp EVOLVE_LEVEL
 	jp z, .level
-
 	cp EVOLVE_HAPPINESS
-	jr z, .happiness
-
+	jp z, .happiness
 
 ; EVOLVE_STAT
 	ld a, [TempMonLevel]
@@ -119,12 +118,12 @@ endr
 	jp nz, .dont_evolve_2
 
 	inc hl
-	jr .proceed
+	jp .proceed
 
 
 .happiness
 	ld a, [TempMonHappiness]
-	cp 220
+	cp HAPPINESS_TO_EVOLVE
 	jp c, .dont_evolve_2
 
 	call IsMonHoldingEverstone
@@ -132,35 +131,21 @@ endr
 
 	ld a, [hli]
 	cp TR_ANYTIME
-	jr z, .proceed
+	jp z, .proceed
 	cp TR_MORNDAY
-	jr z, .happiness_daylight
+	jp z, .happiness_daylight
 
 ; TR_NITE
 	ld a, [TimeOfDay]
 	cp NITE
 	jp nz, .dont_evolve_3
-	jr .proceed
+	jp .proceed
 
 .happiness_daylight
 	ld a, [TimeOfDay]
 	cp NITE
 	jp z, .dont_evolve_3
-	jr .proceed
-
-
-.holding
-	ld a, [hli]
-	ld b, a
-	ld a, [TempMonItem]
-
-	cp b
-	jp nz, .dont_evolve_3
-
-	xor a
-	ld [TempMonItem], a
-
-	jr .proceed
+	jp .proceed
 
 .item
 	ld a, [hli]
@@ -175,7 +160,17 @@ endr
 	ld a, [wLinkMode]
 	and a
 	jp nz, .dont_evolve_3
-	jr .proceed
+	jp .proceed
+
+.holding
+	ld a, [hli]
+	ld b, a
+	ld a, [TempMonItem]
+	cp b
+	jp nz, .dont_evolve_3
+	xor a
+	ld [TempMonItem], a
+	jp .proceed
 
 .location
 	ld a, [MapGroup]
@@ -189,7 +184,42 @@ endr
 	ld a, [hli]
 	cp b
 	jp nz, .dont_evolve_3
-	jr .proceed
+	jp .proceed
+
+.move
+	ld a, [hli]
+	push hl
+	push bc
+	ld b, a
+	ld hl, TempMonMoves
+rept 4
+	ld a, [hli]
+	cp b
+	jp z, .move_proceed
+endr
+	pop bc
+	pop hl
+	jp .dont_evolve_3
+
+.move_proceed
+	pop bc
+	pop hl
+	jp .proceed
+
+.stat_exp
+	ld a, [hli]
+	push hl
+	push bc
+	ld hl, TempMonStatExp
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	pop bc
+	pop hl
+	cp STAT_EXP_TO_EVOLVE
+	jp c, .dont_evolve_3
+	jp .proceed
 
 .level
 	ld a, [hli]
