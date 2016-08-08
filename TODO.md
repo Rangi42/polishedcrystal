@@ -111,3 +111,5 @@
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
 * Add Mart12, plant deco sale, doll sale, and chinchou for lemonade fisherman in the harbor
+* Get Metal Coat from Lyra in Cianwood City, and Life Orb from the Captain
+* Lyra phones you post-Chuck to indicate that Yellow Forest is being attacked by Team Rocket
