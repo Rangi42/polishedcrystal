@@ -210,7 +210,7 @@ endr
 	ld a, [hli]
 	push hl
 	push bc
-	ld hl, TempMonStatExp
+	ld hl, TempMonSpecies
 	ld c, a
 	ld b, 0
 	add hl, bc

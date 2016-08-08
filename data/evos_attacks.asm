@@ -1121,7 +1121,7 @@ AbraEvosAttacks:
 	db 0 ; no more level-up moves
 
 KadabraEvosAttacks:
-	db EVOLVE_STAT_EXP, MON_SPC_EXP - MON_STAT_EXP, ALAKAZAM
+	db EVOLVE_STAT_EXP, MON_SPC_EXP, ALAKAZAM
 	db 0 ; no more evolutions
 	db 1, TELEPORT
 	db 16, CONFUSION
@@ -1179,7 +1179,7 @@ MachopEvosAttacks:
 	db 0 ; no more level-up moves
 
 MachokeEvosAttacks:
-	db EVOLVE_STAT_EXP, MON_ATK_EXP - MON_STAT_EXP, MACHAMP
+	db EVOLVE_STAT_EXP, MON_ATK_EXP, MACHAMP
 	db 0 ; no more evolutions
 	db 1, LOW_KICK
 	db 1, LEER
@@ -1330,7 +1330,7 @@ GeodudeEvosAttacks:
 	db 0 ; no more level-up moves
 
 GravelerEvosAttacks:
-	db EVOLVE_STAT_EXP, MON_DEF_EXP - MON_STAT_EXP, GOLEM
+	db EVOLVE_STAT_EXP, MON_DEF_EXP, GOLEM
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1691,7 +1691,7 @@ GastlyEvosAttacks:
 	db 0 ; no more level-up moves
 
 HaunterEvosAttacks:
-	db EVOLVE_STAT_EXP, MON_SPD_EXP - MON_STAT_EXP, GENGAR
+	db EVOLVE_STAT_EXP, MON_SPD_EXP, GENGAR
 	db 0 ; no more evolutions
 	db 1, HYPNOSIS
 	db 1, LICK
