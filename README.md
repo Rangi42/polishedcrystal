@@ -291,7 +291,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
    * Lyra shows you how to catch Pokémon (from HG/SS).
    * Battle Lyra on Route 34.
    * Get Lyra's phone number (from HG/SS).
-* Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy
+* Add: Replace Cianwood Photo Studio with an event that makes your Pokémon happier.
+* Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy.
 * Add: Meganium can learn Calm Mind.
 * Add: Pokémon sprites for Joey and Mike's battle and for Amphy.
 * Add: Rocket Executive in Slowpoke Well.
@@ -302,7 +303,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Electivire is Electric/Fighting.
 * Add: Magmortar is Fire/Steel.
 * Add: Improve Buena's prizes.
-* Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower
+* Fix: No more daily limit on Wonder Trades.
+* Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
 * Fix: Replace broken Trainer House tiles with a Poké Ball pattern.
 * Fix: Ellipses print too high during battle (thanks, comet).

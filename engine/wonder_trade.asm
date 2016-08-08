@@ -1,13 +1,4 @@
 WonderTrade::
-	ld hl, DailyFlags2
-	bit 3, [hl] ; ENGINE_DAILY_WONDER_TRADE_1
-	jp z, .can_still_trade
-	bit 4, [hl] ; ENGINE_DAILY_WONDER_TRADE_2
-	jp z, .can_still_trade
-	bit 5, [hl] ; ENGINE_DAILY_WONDER_TRADE_3
-	jp nz, .already_traded
-
-.can_still_trade
 	ld hl, .Text_WonderTradeQuestion
 	call PrintText
 	call YesNoBox
@@ -42,22 +33,6 @@ WonderTrade::
 	predef TradeAnimation
 	call ReturnToMapWithSpeechTextbox
 
-	ld hl, DailyFlags2
-	bit 3, [hl] ; ENGINE_DAILY_WONDER_TRADE_1
-	jp z, .set_first_trade
-	bit 4, [hl] ; ENGINE_DAILY_WONDER_TRADE_2
-	jp z, .set_second_trade
-	set 5, [hl] ; ENGINE_DAILY_WONDER_TRADE_3
-	jp .trade_complete
-
-.set_first_trade
-	set 3, [hl] ; ENGINE_DAILY_WONDER_TRADE_1
-	jp .trade_complete
-
-.set_second_trade
-	set 4, [hl] ; ENGINE_DAILY_WONDER_TRADE_2
-
-.trade_complete
 	ld hl, .Text_WonderTradeComplete
 	call PrintText
 
@@ -79,11 +54,6 @@ WonderTrade::
 	ld b, SET_FLAG
 	call EventFlagAction
 	ld hl, .Text_WonderTradeForGSBallPichuText
-	call PrintText
-	ret
-
-.already_traded
-	ld hl, .Text_WonderTradeAlreadyDone
 	call PrintText
 	ret
 
@@ -118,10 +88,6 @@ WonderTrade::
 
 .trade_done
 	text_jump WonderTradeDoneFanfare
-	db "@"
-
-.Text_WonderTradeAlreadyDone:
-	text_jump WonderTradeAlreadyDoneText
 	db "@"
 
 .Text_WonderTradeForGSBallPichuText:

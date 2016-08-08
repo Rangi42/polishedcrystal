@@ -1833,19 +1833,3 @@ UnknownText_0x1bdff2::
 	line "in your party."
 	cont "Come back later."
 	done
-
-UnknownText_0x1be024::
-	text "Which #mon"
-	line "should I photo-"
-	cont "graph?"
-	prompt
-
-UnknownText_0x1be047::
-	text "All righty. Hold"
-	line "still for a bit."
-	prompt
-
-UnknownText_0x1be06a::
-	text "Presto! All done."
-	line "Come again, OK?"
-	done

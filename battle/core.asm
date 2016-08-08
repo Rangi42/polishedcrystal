@@ -2736,18 +2736,19 @@ JohtoGymLeaders:
 	db WHITNEY
 	db BUGSY
 	db MORTY
-	db PRYCE
-	db JASMINE
 	db CHUCK
+	db JASMINE
+	db PRYCE
 	db CLAIR
 	db WILL
+	db KOGA
 	db BRUNO
 	db KAREN
-	db KOGA
-; fallthrough
-; these two entries are unused
 	db CHAMPION
-	db RED
+	db STEVEN
+	db CYNTHIA
+	db VALERIE
+	db TOWERTYCOON
 ; fallthrough
 KantoGymLeaders:
 	db BROCK
@@ -2758,6 +2759,11 @@ KantoGymLeaders:
 	db SABRINA
 	db BLAINE
 	db BLUE
+	db RED
+	db LEAF
+	db LORELEI
+	db AGATHA
+	db GIOVANNI
 	db -1
 
 

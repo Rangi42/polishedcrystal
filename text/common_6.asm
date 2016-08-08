@@ -53,15 +53,6 @@ WonderTradeDoneFanfare::
 	interpret_data
 	db "@@"
 
-WonderTradeAlreadyDoneText::
-	text "You traded a"
-	line "#mon with us"
-	cont "three times today."
-
-	para "Please come back"
-	line "later."
-	prompt
-
 WonderTradeForGSBallPichuText::
 	text "…But what's this?"
 	line "Is something wrong"

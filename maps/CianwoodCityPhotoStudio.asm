@@ -11,23 +11,60 @@ CianwoodCityPhotoStudio_MapScriptHeader:
 FishingGuruScript_0x9e0e0:
 	faceplayer
 	opentext
-	writetext UnknownText_0x9e0f9
+	checkflag ENGINE_DAILY_PHOTOGRAPH
+	iftrue .AlreadyTookPhoto
+	writetext PhotoStudioGreetingText
 	yesorno
-	iffalse UnknownScript_0x9e0f3
-	writetext UnknownText_0x9e142
+	iffalse .RefusedPhoto
+	writetext PhotoStudioWhichMonText
+	buttonsound
+	special Special_CianwoodPhotograph
+	if_equal $0, .NoPicture
+	if_equal $1, .EggPicture
+	setflag ENGINE_DAILY_PHOTOGRAPH
+	writetext PhotoStudioHoldStillText
 	waitbutton
-	special PhotoStudio
+	closetext
+	special FadeOutPalettes
+	pause 10
+	playsound SFX_DOUBLE_SLAP
+	waitsfx
+	pause 10
+	special FadeInPalettes
+	opentext
+	writetext PhotoStudioPrestoText
+	special PlayCurMonCry
+	waitbutton
+	writetext PhotoStudioComeAgainText
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x9e0f3:
-	writetext UnknownText_0x9e156
+.AlreadyTookPhoto:
+	writetext PhotoStudioAlreadyDoneText
 	waitbutton
 	closetext
 	end
 
-UnknownText_0x9e0f9:
+.RefusedPhoto:
+	writetext PhotoStudioRefusedText
+	waitbutton
+	closetext
+	end
+
+.NoPicture:
+	writetext PhotoStudioNoPictureText
+	waitbutton
+	closetext
+	end
+
+.EggPicture:
+	writetext PhotoStudioEggPictureText
+	waitbutton
+	closetext
+	end
+
+PhotoStudioGreetingText:
 	text "You have magnifi-"
 	line "cent #mon with"
 	cont "you."
@@ -36,16 +73,55 @@ UnknownText_0x9e0f9:
 	line "for a souvenir?"
 	done
 
-UnknownText_0x9e142:
+PhotoStudioWhichMonText:
 	text "OK! Big smile now!"
+
+	para "Which #mon"
+	line "should I photo-"
+	cont "graph?"
 	done
 
-UnknownText_0x9e156:
+PhotoStudioHoldStillText:
+	text "All righty. Hold"
+	line "still for a bit."
+	done
+
+PhotoStudioPrestoText:
+	text "Presto! All done."
+
+	para "Your #mon"
+	line "looks happier!"
+	done
+
+PhotoStudioComeAgainText:
+	text "Come again, OK?"
+	done
+
+PhotoStudioAlreadyDoneText:
+	text "I've already taken"
+	line "a photo for you"
+	cont "today."
+
+	para "Come back again"
+	line "tomorrow."
+	done
+
+PhotoStudioRefusedText:
 	text "Oh, that's too"
 	line "bad. I thought it"
 
 	para "would be a great"
 	line "memento…"
+	done
+
+PhotoStudioNoPictureText:
+	text "Oh, no picture?"
+	line "Come again, OK?"
+	done
+
+PhotoStudioEggPictureText:
+	text "An Egg? My talent"
+	line "is worth more…"
 	done
 
 CianwoodCityPhotoStudio_MapEventHeader:

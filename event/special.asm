@@ -163,6 +163,10 @@ Special_OlderHaircutBrother: ; 7418
 
 Special_DaisyMassage: ; 741d
 	ld hl, Data_DaisyMassage
+	jr MassageOrHaircut
+
+Special_CianwoodPhotograph:
+	ld hl, Data_CianwoodPhotograph
 
 MassageOrHaircut: ; 7420
 	push hl
@@ -177,13 +181,6 @@ MassageOrHaircut: ; 7420
 	call CopyPokemonName_Buffer1_Buffer3
 	pop hl
 	call Random
-; Bug: Subtracting $ff from $ff fails to set c.
-; This can result in overflow into the next data array.
-; In the case of getting a massage from Daisy, we bleed
-; into CopyPokemonName_Buffer1_Buffer3, which passes
-; $d0 to ChangeHappiness and returns $73 to the script.
-; The end result is that there is a 0.4% chance your
-; Pokemon's happiness will not change at all.
 .loop
 	sub [hl]
 	jr c, .ok
@@ -221,7 +218,12 @@ Data_OlderHaircutBrother: ; 7462
 	db $ff, 4, HAPPINESS_OLDERCUT3 ; 30% chance
 
 Data_DaisyMassage: ; 746b
-	db $ff, 2, HAPPINESS_MASSAGE ; 99.6% chance
+	db $80, 2, HAPPINESS_MASSAGE ; 50% chance
+	db $ff, 2, HAPPINESS_MASSAGE ; 50% chance
+
+Data_CianwoodPhotograph:
+	db $80, 2, HAPPINESS_PHOTOGRAPH ; 50% chance
+	db $ff, 2, HAPPINESS_PHOTOGRAPH ; 50% chance
 
 CopyPokemonName_Buffer1_Buffer3: ; 746e
 	ld hl, StringBuffer1
