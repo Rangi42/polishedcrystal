@@ -11576,6 +11576,22 @@ ExecutiveFGroup:
 PokemonProfGroup:
 ; ================================
 ; ================
+
+	; unused
+	; POKEMON_PROF (1)
+	db "Oak@"
+	db 0 ; normal
+
+	; party
+	db 100, TAUROS
+	db 100, VENUSAUR
+	db 100, CHARIZARD
+	db 100, BLASTOISE
+	db 100, ALAKAZAM
+	db 100, DRAGONITE
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -11709,6 +11725,48 @@ LyraGroup:
 
 	; party
 	db 5, TOTODILE
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (4)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 15, PIDGEY, NO_ITEM
+	db 17, MARILL, NO_ITEM
+	db 16, SENTRET, NO_ITEM
+	db 18, BAYLEEF, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (5)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 15, PIDGEY, NO_ITEM
+	db 17, SUNKERN, NO_ITEM
+	db 16, SENTRET, NO_ITEM
+	db 18, QUILAVA, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (6)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 15, PIDGEY, NO_ITEM
+	db 17, GROWLITHE, NO_ITEM
+	db 16, SENTRET, NO_ITEM
+	db 18, CROCONAW, BERRY
 
 	db $ff ; end
 
@@ -12026,6 +12084,7 @@ GiovanniGroup:
 ; ================================
 ; ================
 
+	; unused
 	; GIOVANNI (1)
 	db "Giovanni@"
 	db 3 ; item + moves
@@ -12078,6 +12137,7 @@ StevenGroup:
 ; ================================
 ; ================
 
+	; unused
 	; STEVEN (1)
 	db "Steven@"
 	db 0 ; normal
@@ -12100,17 +12160,18 @@ CynthiaGroup:
 ; ================================
 ; ================
 
+	; unused
 	; CYNTHIA (1)
 	db "Cynthia@"
 	db 0 ; normal
 
 	; party
+	db 58, LEAFEON
 	db 58, NINETALES
-	db 58, BELLOSSOM
 	db 60, TOGEKISS
-	db 60, HERACROSS
-	db 58, LAPRAS
-	db 62, TYRANITAR
+	db 58, HERACROSS
+	db 60, KINGDRA
+	db 62, RHYPERIOR
 
 	db $ff ; end
 
@@ -12122,6 +12183,7 @@ TowerTycoonGroup:
 ; ================================
 ; ================
 
+	; unused
 	; TOWERTYCOON (1)
 	db "Palmer@"
 	db 0 ; normal
@@ -12141,6 +12203,7 @@ ValerieGroup:
 ; ================================
 ; ================
 
+	; unused
 	; VALERIE (1)
 	db "Valerie@"
 	db 3 ; item + moves

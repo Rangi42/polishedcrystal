@@ -17,7 +17,6 @@
 * jpmac26 for editing the Pokémon Center signs and fixing a typo
 * Twilir for Lyra's back sprite
 * Danny-E for Lorelei's sprite
-* Poketto for Giovanni's sprite
 * Nic7C5 for Yellow's sprite
 * BettyNewbie for Green's sprite
 * bloodless for Game Freak's sprite
