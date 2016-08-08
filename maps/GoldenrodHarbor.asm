@@ -1,6 +1,7 @@
 const_value set 2
 	const GOLDENRODHARBOR_FISHER
 	const GOLDENRODHARBOR_POKE_BALL
+	const GOLDENRODHARBOR_ROCKET
 
 GoldenrodHarbor_MapScriptHeader:
 .MapTriggers:
@@ -112,6 +113,7 @@ GoldenrodHarbor_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_FISHER, 7, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	person_event SPRITE_POKE_BALL, 8, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, GoldenrodHarborStarPiece, EVENT_GOLDENROD_HARBOR_STAR_PIECE
+	person_event SPRITE_ROCKET, 16, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT

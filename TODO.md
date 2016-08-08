@@ -12,9 +12,6 @@
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Headbutt animation looks weird (wrong tile ID?)
-* Make the gatehouse roof inside Yellow Forest the same as outside
-* Make the gatehouse above the Ruins of Alph the same from Route 36
-* Rocket outside Radio Tower isn't visible from Goldenrod Harbor (event is EVENT\_GOLDENROD\_CITY\_ROCKET\_SCOUT)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
@@ -53,7 +50,6 @@
 * Respawn uncaught legendaries after beating the Elite Four (Suicune roams)
 * More frequently successful Headbutting (edit Script_respawn_one_offs)
 * More likely to find roaming Pokémon when on the correct route
-* Add more moves learned at level 1 for relearning
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
 
 
