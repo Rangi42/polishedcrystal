@@ -7,6 +7,15 @@ INCBIN "tilesets/40_metatiles.bin"
 Tileset40Coll:
 INCBIN "tilesets/40_collision.bin"
 
+Tileset41GFX:
+INCBIN "gfx/tilesets/41.2bpp.lz"
+
+Tileset41Meta:
+INCBIN "tilesets/41_metatiles.bin"
+
+Tileset41Coll:
+INCBIN "tilesets/41_collision.bin"
+
 Tileset42GFX:
 INCBIN "gfx/tilesets/42.2bpp.lz"
 

@@ -182,9 +182,16 @@ Mart11: ; 16146
 	db $ff
 ; 1614c
 
-; unused
 Mart12: ; 1614c
-	db 0 ; # items
+	db 8 ; # items
+	db GREAT_BALL
+	db FRESH_WATER
+	db ETHER
+	db ELIXER
+	db RARE_CANDY
+	db BRIGHTPOWDER
+	db SCOPE_LENS
+	db SURF_MAIL
 	db $ff
 ; 16153
 

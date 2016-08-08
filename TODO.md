@@ -93,7 +93,6 @@
 
 ## New features
 
-* Former trade evolutions work by maximizing vitamins (Machoke: Protein, Graveler: Iron, Haunter: Carbos, Alakazam: Calcium)
 * Somebody post–Elite Four shows you Raikou and Entei in case you've never encountered them roaming
 * Add an event based on the Spell of the Unown movie after you catch all 26
 * Fourth stat screen showing Poké Seer's data
@@ -111,3 +110,4 @@
 * Press Start to auto-sort items
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
+* Add Mart12, plant deco sale, doll sale, and chinchou for lemonade fisherman in the harbor
