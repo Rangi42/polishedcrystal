@@ -346,7 +346,6 @@ INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/KurtsHouse.asm"
 INCLUDE "maps/AzaleaGym.asm"
 INCLUDE "maps/TrainerHouse1F.asm"
-INCLUDE "maps/TrainerHouseB1F.asm"
 
 
 SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]
@@ -368,6 +367,7 @@ INCLUDE "maps/Colosseum.asm"
 INCLUDE "maps/TimeCapsule.asm"
 INCLUDE "maps/MobileTradeRoomMobile.asm"
 INCLUDE "maps/MobileBattleRoom.asm"
+INCLUDE "maps/TrainerHouseB1F.asm"
 
 
 SECTION "Map Scripts 18", ROMX, BANK[MAP_SCRIPTS_18]

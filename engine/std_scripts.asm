@@ -486,6 +486,7 @@ BugContestResults_CopyContestantsToResults ; 0xbc380
 
 InitializeEventsScript:
 	setevent EVENT_EARLS_ACADEMY_EARL
+	setevent EVENT_VIOLET_GYM_FALKNER
 	setevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	setevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setevent EVENT_RADIO_TOWER_CIVILIANS_AFTER

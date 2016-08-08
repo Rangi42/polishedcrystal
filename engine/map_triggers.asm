@@ -93,5 +93,7 @@ ENDM
 	trigger_def FARAWAY_ISLAND,                         wFarawayIslandTrigger
 	trigger_def ROUTE_48,                               wRoute48Trigger
 	trigger_def DAYCARE,                                wDayCareTrigger
+	trigger_def DARK_CAVE_VIOLET_ENTRANCE,              wDarkCaveVioletEntranceTrigger
+	trigger_def VIOLET_GYM,                             wVioletGymTrigger
 	db -1
 ; 4d15b

@@ -109,6 +109,5 @@
 * Longer player and rival names
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
-* Meet Falkner in Dark Cave to have him return to the gym, thus making you fight Sprout Tower first
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders

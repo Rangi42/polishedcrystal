@@ -797,6 +797,7 @@ SpriteMons: ; 14495
 	db AMPHAROS
 	db MURKROW
 	db UNOWN
+	db URSARING
 	db MILTANK
 	db BLISSEY
 	db RAIKOU
