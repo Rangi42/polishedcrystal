@@ -6,6 +6,7 @@ CHRIS EQU __enum__
 	const PHONECONTACT_BIKESHOP
 	const PHONECONTACT_BILL
 	const PHONECONTACT_ELM
+	const PHONECONTACT_LYRA
 	const PHONECONTACT_BUENA
 
 KRIS EQU __enum__
@@ -745,6 +746,9 @@ KRIS EQU __enum__
 	const LYRA_1
 	const LYRA_2
 	const LYRA_3
+	const LYRA_4
+	const LYRA_5
+	const LYRA_6
 
 	trainerclass LORELEI ; 56
 

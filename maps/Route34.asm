@@ -5,17 +5,23 @@ const_value set 2
 	const ROUTE34_LASS
 	const ROUTE34_OFFICER_M
 	const ROUTE34_POKEFAN_M
-	const ROUTE34_GRAMPS
+	const ROUTE34_GRAMPS1
 	const ROUTE34_DAYCARE_MON_1
 	const ROUTE34_DAYCARE_MON_2
 	const ROUTE34_COOLTRAINER_F1
 	const ROUTE34_COOLTRAINER_F2
 	const ROUTE34_COOLTRAINER_F3
 	const ROUTE34_POKE_BALL
+	const ROUTE34_LYRA
+	const ROUTE34_GRAMPS2
 
 Route34_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 1
@@ -23,6 +29,12 @@ Route34_MapScriptHeader:
 	; callbacks
 
 	dbw MAPCALLBACK_OBJECTS, .EggCheckCallback
+
+.Trigger0:
+	end
+
+.Trigger1:
+	end
 
 .EggCheckCallback:
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
@@ -56,6 +68,99 @@ Route34_MapScriptHeader:
 	setevent EVENT_DAYCARE_MON_2
 	return
 
+Route34LyraTrigger1:
+	applymovement PLAYER, Route34MovementData_AdjustPlayer1
+	jump Route34LyraTrigger2
+
+Route34LyraTrigger3:
+	applymovement PLAYER, Route34MovementData_AdjustPlayer2
+Route34LyraTrigger2:
+	opentext
+	writetext Route34LyraText_Grandpa
+	waitbutton
+	closetext
+	appear ROUTE34_LYRA
+	spriteface ROUTE34_GRAMPS2, UP
+	pause 10
+	applymovement ROUTE34_LYRA, Route34MovementData_LyraComesDown
+	spriteface ROUTE34_GRAMPS2, LEFT
+	opentext
+	writetext Route34LyraGoodWorkText
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
+	spriteface ROUTE34_LYRA, DOWN
+	opentext
+	writetext Route34LyraGreetingText
+	waitbutton
+	closetext
+	applymovement PLAYER, Route34MovementData_PlayerApproachesLyra
+	pause 10
+	spriteface ROUTE34_LYRA, RIGHT
+	opentext
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .IntroduceFemale
+	writetext Route34LyraIntroductionText1
+	jump .Continue
+.IntroduceFemale:
+	writetext Route34LyraIntroductionText2
+.Continue:
+	waitbutton
+	closetext
+	spriteface ROUTE34_LYRA, DOWN
+	pause 10
+	opentext
+	writetext Route34LyraChallengeText
+	waitbutton
+	closetext
+	setevent EVENT_LYRA_ROUTE_34
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Totodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Chikorita
+	winlosstext Route34LyraWinText, Route34LyraLossText
+	setlasttalked ROUTE34_LYRA
+	loadtrainer LYRA, LYRA_4
+	startbattle
+	reloadmapafterbattle
+	jump .AfterBattle
+
+.Totodile:
+	winlosstext Route34LyraWinText, Route34LyraLossText
+	setlasttalked ROUTE34_LYRA
+	loadtrainer LYRA, LYRA_5
+	startbattle
+	reloadmapafterbattle
+	jump .AfterBattle
+
+.Chikorita:
+	winlosstext Route34LyraWinText, Route34LyraLossText
+	setlasttalked ROUTE34_LYRA
+	loadtrainer LYRA, LYRA_6
+	startbattle
+	reloadmapafterbattle
+.AfterBattle
+	opentext
+	writetext Route34LyraFollowMeText
+	waitbutton
+	closetext
+	applymovement ROUTE34_GRAMPS2, Route34MovementData_GrampsEntersDayCare
+	playsound SFX_EXIT_BUILDING
+	disappear ROUTE34_GRAMPS2
+	follow ROUTE34_LYRA, PLAYER
+	applymovement ROUTE34_LYRA, Route34MovementData_LyraEntersDayCare
+	stopfollow
+	playsound SFX_EXIT_BUILDING
+	disappear ROUTE34_LYRA
+	applymovement PLAYER, Route34MovementData_PlayerEntersDayCare
+	playsound SFX_EXIT_BUILDING
+	disappear PLAYER
+	dotrigger $0
+	special FadeOutPalettes
+	pause 15
+	warpfacing RIGHT, DAYCARE, $0, $6
+	end
+
 DayCareManScript_Outside:
 	faceplayer
 	opentext
@@ -66,16 +171,16 @@ DayCareManScript_Outside:
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
 	if_equal RIGHT, .walk_around_player
-	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside
+	applymovement ROUTE34_GRAMPS1, Route34MovementData_DayCareManWalksBackInside
 	playsound SFX_ENTER_DOOR
-	disappear ROUTE34_GRAMPS
+	disappear ROUTE34_GRAMPS1
 .end_fail
 	end
 
 .walk_around_player
-	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer
+	applymovement ROUTE34_GRAMPS1, Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer
 	playsound SFX_ENTER_DOOR
-	disappear ROUTE34_GRAMPS
+	disappear ROUTE34_GRAMPS1
 	end
 
 DaycareMon1Script:
@@ -475,9 +580,6 @@ TrainerCooltrainerfKate:
 	closetext
 	end
 
-; unused
-	jumptext MapRoute34UnusedSignpostText
-
 Route34Sign:
 	jumptext Route34SignText
 
@@ -493,10 +595,8 @@ Route34Nugget:
 Route34HiddenRareCandy:
 	dwb EVENT_ROUTE_34_HIDDEN_RARE_CANDY, RARE_CANDY
 
-
 Route34HiddenSuperPotion:
 	dwb EVENT_ROUTE_34_HIDDEN_SUPER_POTION, SUPER_POTION
-
 
 Route34MovementData_DayCareManWalksBackInside:
 	slow_step_left
@@ -511,6 +611,101 @@ Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up
 	slow_step_up
 	step_end
+
+Route34MovementData_AdjustPlayer1:
+	step_right
+	turn_head_up
+	step_end
+
+Route34MovementData_AdjustPlayer2:
+	step_left
+	turn_head_up
+	step_end
+
+Route34MovementData_LyraComesDown:
+	step_down
+	step_down
+	step_down
+	step_right
+	step_end
+
+Route34MovementData_PlayerApproachesLyra:
+	step_up
+	step_end
+
+Route34MovementData_GrampsEntersDayCare:
+	slow_step_right
+	step_end
+
+Route34MovementData_LyraEntersDayCare:
+	step_right
+Route34MovementData_PlayerEntersDayCare:
+	step_right
+	step_end
+
+Route34LyraText_Grandpa:
+	text "Lyra: Grandpa!"
+	done
+
+Route34LyraGoodWorkText:
+	text "Lyra: Good work,"
+	line "Grandpa!"
+
+	para "The #mon you"
+	line "raised for me is"
+	cont "healthy as can be!"
+
+	para "You look fit,"
+	line "too!"
+	done
+
+Route34LyraGreetingText:
+	text "Lyra: Hi, <PLAYER>!"
+	done
+
+Route34LyraIntroductionText1:
+	text "This is <PLAYER>."
+	line "He's a trainer."
+
+	para "He's quite good at"
+	line "raising #mon."
+
+	para "Well, not as good"
+	line "as you, of course!"
+	done
+
+Route34LyraIntroductionText2:
+	text "This is <PLAYER>."
+	line "She's a trainer."
+
+	para "She's quite good at"
+	line "raising #mon."
+
+	para "Well, not as good"
+	line "as you, of course!"
+	done
+
+Route34LyraChallengeText:
+	text "<PLAYER>, why don't"
+	line "we show Grandpa"
+	cont "how good you are?"
+	done
+
+Route34LyraWinText:
+	text "You're even better"
+	line "than I thought!"
+	done
+
+Route34LyraLossText:
+	text "Well, you're still"
+	line "getting better…"
+	done
+
+Route34LyraFollowMeText:
+	text "Lyra: Let me"
+	line "introduce you to"
+	cont "Grandma, too!"
+	done
 
 YoungsterSamuelSeenText:
 	text "This is where I do"
@@ -735,11 +930,6 @@ CooltrainerfKateAfterText:
 	line "startled us."
 	done
 
-MapRoute34UnusedSignpostText:
-	text "Ilex Forest"
-	line "Through The Gate"
-	done
-
 Route34SignText:
 	text "Route 34"
 
@@ -782,7 +972,10 @@ Route34_MapEventHeader:
 	warp_def $f, $d, 3, DAYCARE
 
 .XYTriggers:
-	db 0
+	db 3
+	xy_trigger 1, $11, $8, $0, Route34LyraTrigger1, $0, $0
+	xy_trigger 1, $11, $9, $0, Route34LyraTrigger2, $0, $0
+	xy_trigger 1, $11, $a, $0, Route34LyraTrigger3, $0, $0
 
 .Signposts:
 	db 5
@@ -793,7 +986,7 @@ Route34_MapEventHeader:
 	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
 
 .PersonEvents:
-	db 13
+	db 15
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	person_event SPRITE_YOUNGSTER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyIrving, -1
@@ -807,3 +1000,5 @@ Route34_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 48, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
 	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
 	person_event SPRITE_POKE_BALL, 30, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET
+	person_event SPRITE_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
+	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GRANDPA_ROUTE_34

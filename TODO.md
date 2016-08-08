@@ -104,8 +104,6 @@
 * Use the News Machine for something (Mystery Gift?)
 * Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
-* Include Lyra/Kotone as a friendly rival like in HGSS
-  * Cyndaquil/Growlithe, Totodile/Marill, Chikorita/Sunkern, Sentret (caught to show you how), Girafarig, Pidgey
 * Add a store to buy room decorations that Mom doesn't (the Goldenrod Dept. Store rooftop bargain sale and the harbor are good)
 * Sometimes wild Pokémon know an egg move
 * Breedable legendary trios with a certain held item

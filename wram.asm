@@ -2638,8 +2638,9 @@ wSeagallopFerryVermilionGateTrigger::        ds 1
 wSeagallopFerryNavelGateTrigger::            ds 1
 wFarawayIslandTrigger::                      ds 1
 wRoute48Trigger::                            ds 1
+wDayCareTrigger::                            ds 1
 
-	ds 44
+	ds 43
 
 
 ;SECTION "Events", WRAMX, BANK [1]

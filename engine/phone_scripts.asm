@@ -296,6 +296,31 @@ ElmPhoneScript2: ; 0xbd081
 	end
 ; bd0d0
 
+; Lyra
+
+LyraPhoneScript:
+	checkday
+	iftrue .daygreet
+	checknite
+	iftrue .nitegreet
+	farwritetext LyraPhoneMornGreetingText
+	buttonsound
+	jump .main
+
+.daygreet
+	farwritetext LyraPhoneDayGreetingText
+	buttonsound
+	jump .main
+
+.nitegreet
+	farwritetext LyraPhoneNiteGreetingText
+	buttonsound
+	jump .main
+
+.main
+	farwritetext LyraPhoneMainText
+	end
+
 ; Jack
 
 JackPhoneScript1:

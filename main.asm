@@ -5168,6 +5168,7 @@ INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 SECTION "bank19", ROMX, BANK[$19]
 
 INCLUDE "text/phone/extra.asm"
+INCLUDE "text/phone/lyra.asm"
 
 SECTION "bank20", ROMX, BANK[$20]
 

@@ -287,6 +287,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
    * Battle Lyra in Prof. Elm's lab.
    * Lyra defends you after the Pokémon theft (from HG/SS).
    * Lyra shows you how to catch Pokémon (from HG/SS).
+   * Battle Lyra on Route 34.
+   * Get Lyra's phone number (from HG/SS).
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy
 * Add: Meganium can learn Calm Mind.
 * Add: Pokémon sprites for Joey and Mike's battle and for Amphy.

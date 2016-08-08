@@ -92,5 +92,6 @@ ENDM
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
 	trigger_def FARAWAY_ISLAND,                         wFarawayIslandTrigger
 	trigger_def ROUTE_48,                               wRoute48Trigger
+	trigger_def DAYCARE,                                wDayCareTrigger
 	db -1
 ; 4d15b

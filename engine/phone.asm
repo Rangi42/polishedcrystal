@@ -716,13 +716,15 @@ NonTrainerCallerNames: ; 903d6
 	dw .bikeshop
 	dw .bill
 	dw .elm
+	dw .lyra
 	dw .buena
 
 .none db "----------@"
 .mom db "Mom:@"
-.bill db "Bill:@"
-.elm db "Prof.Elm:@"
+.bill db "Bill:", $22, "   #maniac@"
+.elm db "Prof.Elm:", $22, "   #mon Prof.@"
 .bikeshop db "Bike Shop:@"
+.lyra db "Lyra:", $22, "   <PKMN> Trainer@"
 .buena db "Buena:", $22, "   Disc Jockey@"
 ; 90423
 
@@ -779,10 +781,10 @@ ENDM
 	phone TRAINER_NONE, PHONECONTACT_BIKESHOP, OAKS_LAB,                  0, UnusedPhoneScript,   0, UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_BILL,     N_A,                       7, BillPhoneScript1,    0, BillPhoneScript2
 	phone TRAINER_NONE, PHONECONTACT_ELM,      ELMS_LAB,                  7, ElmPhoneScript1,     0, ElmPhoneScript2
+	phone TRAINER_NONE, PHONECONTACT_LYRA,     LYRAS_HOUSE_1F,            7, LyraPhoneScript,     0, LyraPhoneScript
 	phone SCHOOLBOY,    JACK1,                 NATIONAL_PARK,             7, JackPhoneScript1,    7, JackPhoneScript2
 	phone POKEFANF,     BEVERLY1,              NATIONAL_PARK,             7, BeverlyPhoneScript1, 7, BeverlyPhoneScript2
 	phone SAILOR,       HUEY1,                 OLIVINE_LIGHTHOUSE_2F,     7, HueyPhoneScript1,    7, HueyPhoneScript2
-	phone TRAINER_NONE, PHONE_00,              N_A,                       0, UnusedPhoneScript,   0, UnusedPhoneScript
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0, UnusedPhoneScript,   0, UnusedPhoneScript
 	phone TRAINER_NONE, PHONE_00,              N_A,                       0, UnusedPhoneScript,   0, UnusedPhoneScript
 	phone COOLTRAINERM, GAVEN3,                ROUTE_26,                  7, GavenPhoneScript1,   7, GavenPhoneScript2

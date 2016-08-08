@@ -106,6 +106,7 @@ AzaleaTownRivalBattleScript:
 	applymovement AZALEATOWN_SILVER, AzaleaTownRivalBattleExitMovement
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_SILVER
+	domaptrigger ROUTE_34, $1
 	dotrigger $0
 	waitsfx
 	playmapmusic
