@@ -3,8 +3,8 @@ const_value set 2
 	const GOLDENRODHARBOR_POKE_BALL
 	const GOLDENRODHARBOR_ROCKET
 	const GOLDENRODHARBOR_COOLTRAINER_F
-	const GOLDENRODHARBOR_CLEFAIRY
 	const GOLDENRODHARBOR_POKEFAN_M
+	const GOLDENRODHARBOR_MAGIKARP
 	const GOLDENRODHARBOR_YOUNGSTER
 	const GOLDENRODHARBOR_FISHER2
 
@@ -63,8 +63,8 @@ GoldenrodHarborCooltrainerfScript:
 	closetext
 	end
 
-GoldenrodHarborClefairyDollScript:
-	jumptextfaceplayer GoldenrodHarborClefairyDollText
+GoldenrodHarborMagikarpScript:
+	jumptextfaceplayer GoldenrodHarborMagikarpText
 
 GoldenrodHarborPokefanmScript:
 	; EVENT_DECO_TENTACOOL_DOLL
@@ -143,8 +143,8 @@ GoldenrodHarborCooltrainerfText:
 	line "rare items abroad!"
 	done
 
-GoldenrodHarborClefairyDollText:
-	text "This is a rare"
+GoldenrodHarborMagikarpText:
+	text "This is a Fish"
 	line "#mon! Huh?"
 
 	para "It's only a doll…"
@@ -195,7 +195,7 @@ GoldenrodHarbor_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 8, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, GoldenrodHarborStarPiece, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	person_event SPRITE_ROCKET, 16, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	person_event SPRITE_COOLTRAINER_F, 15, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborCooltrainerfScript, -1
-	person_event SPRITE_CLEFAIRY, 15, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborClefairyDollScript, -1
-	person_event SPRITE_POKEFAN_M, 15, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
+	person_event SPRITE_POKEFAN_M, 15, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
+	person_event SPRITE_MAGIKARP, 15, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborMagikarpScript, -1
 	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
 	person_event SPRITE_FISHER, 21, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisher2Script, -1
