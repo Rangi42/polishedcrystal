@@ -12145,9 +12145,13 @@ StevenGroup:
 	; party
 	db 57, SKARMORY
 	db 57, FORRETRESS
-	db 57, BLASTOISE
-	db 57, MAGNEZONE
+if DEF(FAITHFUL)
 	db 57, SCIZOR
+else
+	db 57, BLASTOISE
+endc
+	db 57, MAGNEZONE
+	db 57, AERODACTYL
 	db 59, STEELIX
 
 	db $ff ; end

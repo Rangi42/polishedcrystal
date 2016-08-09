@@ -1188,10 +1188,11 @@ Group11Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_ROCKET ; doesn't walk
 	; 10 walking sprites (9 that walk)
+	db SPRITE_CLEFAIRY
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
 	db SPRITE_POKE_BALL
-	; 13 total sprites
+	; 14 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
