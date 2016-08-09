@@ -29,14 +29,40 @@ CeladonEusine:
 	opentext
 	writetext CeladonEusineText1
 	buttonsound
-	writebyte SUICUNE
-	special SpecialMonCheck
-	iffalse .NoSuicune
 	special SpecialBeastsCheck
 	iftrue .HoOh
-	writetext NoBeastsText
+	writetext NoBeastsText1
 	waitbutton
-.NoSuicune:
+	closetext
+	refreshscreen $0
+	pokepic RAIKOU
+	cry RAIKOU
+	waitbutton
+	closepokepic
+	sawpokemon RAIKOU
+	opentext
+	writetext NoBeastsText2
+	waitbutton
+	closetext
+	refreshscreen $0
+	pokepic ENTEI
+	cry ENTEI
+	waitbutton
+	closepokepic
+	sawpokemon ENTEI
+	opentext
+	writetext NoBeastsText3
+	waitbutton
+	closetext
+	refreshscreen $0
+	pokepic SUICUNE
+	cry SUICUNE
+	waitbutton
+	closepokepic
+	sawpokemon SUICUNE
+	opentext
+	writetext NoBeastsText4
+	waitbutton
 	closetext
 	end
 
@@ -123,21 +149,36 @@ EusineLeavesCeladonText:
 	line "you, <PLAYER>!"
 	done
 
-NoBeastsText:
+NoBeastsText1:
 	text "Oh, by the way,"
 	line "<PLAYER>."
 
 	para "Have you caught"
 	line "the legendary"
-
-	para "#mon Raikou and"
-	line "Entei?"
+	cont "beast #mon?"
 
 	para $56, $56, $56
 
 	para "Okay…"
 
-	para "If you catch even"
+	para "Let me give you"
+	line "my research notes."
+
+	para "This is Raikou:"
+	done
+
+NoBeastsText2:
+	text "This is Entei:"
+	done
+
+NoBeastsText3:
+	text "And this, of"
+	line "course, is Sui-"
+	cont "cune."
+	done
+
+NoBeastsText4:
+	text "If you catch even"
 	line "one, I hope that"
 	cont "you'll inform me."
 

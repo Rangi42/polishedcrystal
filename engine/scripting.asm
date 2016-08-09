@@ -245,6 +245,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_count_unown_caught         ; ac
 	dw Script_trainerpic                 ; ad
 	dw Script_respawn_one_offs           ; ae
+	dw Script_sawpokemon                 ; af
 ; 96e05
 
 StartScript: ; 96e05
@@ -3286,8 +3287,6 @@ Script_trainerpic:
 Script_respawn_one_offs:
 ; script command 0xae
 
-	; TODO: respawn one-off Pokémon
-
 	ld a, ARTICUNO
 	dec a
 	call CheckCaughtMon
@@ -3426,6 +3425,19 @@ Script_respawn_one_offs:
 	call EventFlagAction
 
 .CaughtHoOh
+	ret
+
+Script_sawpokemon:
+; script command 0xaf
+; parameters:
+;     pokemon (PokemonParam)
+
+	call GetScriptByte
+	dec a
+	ld c, a
+	ld b, SET_FLAG
+	ld hl, PokedexSeen
+	predef FlagPredef
 	ret
 
 ; 97c20 unreferenced

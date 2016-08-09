@@ -1090,3 +1090,9 @@ trainerpic: macro
 respawn_one_offs: macro
 	db respawn_one_offs_command
 	endm
+
+	enum sawpokemon_command
+sawpokemon: macro
+	db sawpokemon_command
+	db \1 ; pokemon
+	endm

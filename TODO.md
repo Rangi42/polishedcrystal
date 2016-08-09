@@ -92,7 +92,6 @@
 
 ## New features
 
-* Somebody post–Elite Four shows you Raikou and Entei in case you've never encountered them roaming
 * Add an event based on the Spell of the Unown movie after you catch all 26
 * Fourth stat screen showing Poké Seer's data
 * Restore [unused memory game](http://iimarck.us/i/memory/)
