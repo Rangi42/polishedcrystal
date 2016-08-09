@@ -749,6 +749,12 @@ KRIS EQU __enum__
 	const LYRA_4
 	const LYRA_5
 	const LYRA_6
+	const LYRA_7
+	const LYRA_8
+	const LYRA_9
+	const LYRA_10
+	const LYRA_11
+	const LYRA_12
 
 	trainerclass LORELEI ; 56
 

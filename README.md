@@ -293,6 +293,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
    * Get Lyra's phone number (from HG/SS).
 * Add: Replace Cianwood Photo Studio with an event that makes your Pokémon happier.
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy.
+* Add: Respawn uncaught legendaries (except for Celebi) after beating the Elite Four (Suicune roams).
 * Add: Meganium can learn Calm Mind.
 * Add: Pokémon sprites for Joey and Mike's battle and for Amphy.
 * Add: Rocket Executive in Slowpoke Well.

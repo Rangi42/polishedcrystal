@@ -11771,6 +11771,99 @@ LyraGroup:
 	db $ff ; end
 
 ; ================
+
+	; LYRA (7)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 22, PIDGEOTTO, NO_ITEM
+	db 24, GROWLITHE, NO_ITEM
+	db 24, AZUMARILL, NO_ITEM
+	db 23, FURRET, NO_ITEM
+	db 26, BAYLEEF, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (8)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 22, PIDGEOTTO, NO_ITEM
+	db 24, SUNFLORA, NO_ITEM
+	db 24, AZUMARILL, NO_ITEM
+	db 23, FURRET, NO_ITEM
+	db 26, QUILAVA, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (9)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 22, PIDGEOTTO, NO_ITEM
+	db 24, SUNFLORA, NO_ITEM
+	db 24, GROWLITHE, NO_ITEM
+	db 23, FURRET, NO_ITEM
+	db 26, CROCONAW, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (10)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 32, PIDGEOTTO, NO_ITEM
+	db 34, ARCANINE, NO_ITEM
+	db 34, AZUMARILL, NO_ITEM
+	db 33, FURRET, NO_ITEM
+	db 35, GIRAFARIG, NO_ITEM
+	db 36, MEGANIUM, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (11)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 32, PIDGEOTTO, NO_ITEM
+	db 34, SUNFLORA, NO_ITEM
+	db 34, AZUMARILL, NO_ITEM
+	db 33, FURRET, NO_ITEM
+	db 35, GIRAFARIG, NO_ITEM
+	db 36, TYPHLOSION, BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA (12)
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 32, PIDGEOTTO, NO_ITEM
+	db 34, SUNFLORA, NO_ITEM
+	db 34, ARCANINE, NO_ITEM
+	db 33, FURRET, NO_ITEM
+	db 35, GIRAFARIG, NO_ITEM
+	db 36, FERALIGATR, BERRY
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

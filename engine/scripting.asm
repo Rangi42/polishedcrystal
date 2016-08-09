@@ -3287,6 +3287,145 @@ Script_respawn_one_offs:
 ; script command 0xae
 
 	; TODO: respawn one-off Pokémon
+
+	ld a, ARTICUNO
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtArticuno
+	ld de, EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtArticuno:
+	ld a, ZAPDOS
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtZapdos
+	ld de, EVENT_ROUTE_10_ZAPDOS
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_ZAPDOS_GONE
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtZapdos:
+	ld a, MOLTRES
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtMoltres
+	ld de, EVENT_CINNABAR_VOLCANO_MOLTRES
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtMoltres:
+	ld a, MEWTWO
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtMewtwo
+	ld de, EVENT_CERULEAN_CAVE_MEWTWO
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtMewtwo
+	ld a, MEW
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtMew
+	ld de, EVENT_FARAWAY_JUNGLE_MEW
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtMew
+	ld a, RAIKOU
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtRaikou
+	ld hl, wRoamMon1Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtRaikou
+	ld a, RAIKOU
+	ld [wRoamMon1Species], a
+	ld a, 50
+	ld [wRoamMon1Level], a
+	ld a, GROUP_ROUTE_42
+	ld [wRoamMon1MapGroup], a
+	ld a, MAP_ROUTE_42
+	ld [wRoamMon1MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon1HP], a
+
+.CaughtRaikou:
+	ld a, ENTEI
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtEntei
+	ld hl, wRoamMon2Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtEntei
+	ld a, ENTEI
+	ld [wRoamMon2Species], a
+	ld a, 50
+	ld [wRoamMon2Level], a
+	ld a, GROUP_ROUTE_37
+	ld [wRoamMon2MapGroup], a
+	ld a, MAP_ROUTE_37
+	ld [wRoamMon2MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon2HP], a
+
+.CaughtEntei:
+	ld de, EVENT_FOUGHT_SUICUNE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .CaughtSuicune
+	ld a, SUICUNE
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtSuicune
+	ld hl, wRoamMon3Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtSuicune
+	ld a, SUICUNE
+	ld [wRoamMon3Species], a
+	ld a, 50
+	ld [wRoamMon3Level], a
+	ld a, GROUP_ROUTE_38
+	ld [wRoamMon3MapGroup], a
+	ld a, MAP_ROUTE_38
+	ld [wRoamMon3MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon3HP], a
+
+.CaughtSuicune:
+	ld a, LUGIA
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtLugia
+	ld de, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_FOUGHT_LUGIA
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtLugia:
+	ld a, HO_OH
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtHoOh
+	ld de, EVENT_TIN_TOWER_ROOF_HO_OH
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_FOUGHT_HO_OH
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtHoOh
 	ret
 
 ; 97c20 unreferenced
