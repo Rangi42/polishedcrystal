@@ -167,8 +167,6 @@ DoWonderTrade:
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
-	; BUG: Caught data doesn't seem to be saved.
-	; Look at source code for SetGiftPartyMonCaughtData.
 	xor a
 	ld [wOTTrademonCaughtData], a
 
@@ -185,8 +183,8 @@ DoWonderTrade:
 	callab RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
-	ld b, RESET_FLAG
-	callba SetGiftPartyMonCaughtData
+	;ld b, SET_FLAG
+	;callba SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonNickname
@@ -317,8 +315,6 @@ GetGSBallPichu:
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
-	; BUG: Caught data doesn't seem to be saved.
-	; Look at source code for SetGiftPartyMonCaughtData.
 	xor a
 	ld [wOTTrademonCaughtData], a
 
@@ -335,7 +331,7 @@ GetGSBallPichu:
 	callab RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
-	ld b, RESET_FLAG
+	ld b, SET_FLAG
 	callba SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
@@ -400,7 +396,7 @@ GetWonderTradeOTName:
 	call AddNTimes
 	ret
 
-; TODO: Associate each OT name with a correct gender (via wOTTrademonCaughtData?)
+; TODO: Associate each OT name with a correct gender (via wOTTrademonCaughtData)
 .WonderTradeOTNameTable:
 	db "Nemo@@@@" ; $00
 	db "Rangi@@@" ; $01

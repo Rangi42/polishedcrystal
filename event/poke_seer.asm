@@ -124,7 +124,7 @@ ReadCaughtData: ; 4f134
 
 	inc hl
 	ld a, [PlayerID + 1]
-	; cp [hl]
+	cp [hl]
 	jr nz, .traded
 
 	ld a, SEERACTION_MET
