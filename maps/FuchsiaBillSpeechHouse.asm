@@ -18,7 +18,7 @@ YoungsterScript_0x1963c0:
 UnknownText_0x1963c3:
 	text "My grandpa is at "
 	line "my brother Bill's"
-	cont "on Cerulean Cape."
+	cont "in Goldenrod City."
 	done
 
 UnknownText_0x1963f9:

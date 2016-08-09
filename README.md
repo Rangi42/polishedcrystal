@@ -305,6 +305,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Electivire is Electric/Fighting.
 * Add: Magmortar is Fire/Steel.
 * Add: Improve Buena's prizes.
+* Add: Missing ice puzzle in Seafoam Islands.
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
@@ -314,3 +315,4 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Consistent gatehouse between Route 36 and the Ruins of Alph.
 * Fix: Consistent gatehouse between Route 48 and Yellow Forest.
 * Fix: Rocket outside Radio Tower isn't visible from Goldenrod Harbor.
+* Fix: Bill's sister says his grandpa is still in Cerulean Cape house.
