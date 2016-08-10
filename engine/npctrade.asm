@@ -440,19 +440,19 @@ ENDM
 
 
 	; Goldenrod City
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $A8, $88, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $FC, $CC, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
 	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $88, $88, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $CC, $DD, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
 	; Olivine City
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $C8, $88, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $FC, $CC, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
 	; Blackthorn City
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $38, $8C, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $3C, $CF, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
 	; Pewter City
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $CA, $8A, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $FC, $AC, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
 	; Route 14
-	npctrade 3, CHANSEY,    AERODACTYL, "Aeroy@@@@@@", $AA, $8C, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 3, CHANSEY,    AERODACTYL, "Aeroy@@@@@@", $CC, $AF, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
 	; Power Plant
-	npctrade 0, DUGTRIO,    MAGNETON,   "Maggie@@@@@", $8A, $CA, METAL_COAT,   50082, "Forest@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, DUGTRIO,    MAGNETON,   "Maggie@@@@@", $7C, $FC, METAL_COAT,   50082, "Forest@@@@@", TRADE_EITHER_GENDER
 ; fcf38
 
 
