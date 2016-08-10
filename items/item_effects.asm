@@ -157,8 +157,8 @@ ItemEffects: ; e73c
 	dw MetalPowder
 	dw BerserkGene
 	dw Eviolite
-	dw LifeOrb
-	dw AuraOrb
+	dw MuscleBand
+	dw ExpertBelt
 	dw DragonScale
 	dw UpGrade
 	dw DubiousDisc
@@ -3000,8 +3000,8 @@ OldAmber:
 MysticTicket:
 OldSeaMap:
 Eviolite:
-LifeOrb:
-AuraOrb:
+MuscleBand:
+ExpertBelt:
 DubiousDisc:
 Protector:
 Electirizer:

@@ -306,6 +306,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Magmortar is Fire/Steel.
 * Add: Improve Buena's prizes.
 * Add: Missing ice puzzle in Seafoam Islands.
+* Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.

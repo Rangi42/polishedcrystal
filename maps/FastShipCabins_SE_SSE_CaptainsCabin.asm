@@ -87,7 +87,7 @@ UnknownScript_0x75f09:
 GentlemanScript_0x75f1f:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
+	checkevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
 	iftrue UnknownScript_0x75f67
 	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
 	iftrue UnknownScript_0x75f58
@@ -100,9 +100,9 @@ GentlemanScript_0x75f1f:
 UnknownScript_0x75f37:
 	writetext UnknownText_0x7619b
 	buttonsound
-	verbosegiveitem METAL_COAT
+	verbosegiveitem TM_BODY_SLAM
 	iffalse UnknownScript_0x75f44
-	setevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
+	setevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
 UnknownScript_0x75f44:
 	closetext
 	waitsfx
@@ -119,9 +119,9 @@ UnknownScript_0x75f44:
 UnknownScript_0x75f58:
 	writetext UnknownText_0x7619b
 	buttonsound
-	verbosegiveitem METAL_COAT
+	verbosegiveitem TM_BODY_SLAM
 	iffalse UnknownScript_0x75f65
-	setevent EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA
+	setevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
 UnknownScript_0x75f65:
 	closetext
 	end

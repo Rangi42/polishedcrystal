@@ -146,7 +146,7 @@ GetBattleVar:: ; 39e1
 
 GetBattleVarAddr:: ; 39e7
 ; Get variable from pair a, depending on whose turn it is.
-; There are 21 variable pairs.
+; There are 22 variable pairs.
 
 	push bc
 
@@ -191,7 +191,7 @@ endr
 .battlevarpairs
 	dw .substatus1, .substatus2, .substatus3, .substatus4, .substatus5
 	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp, .substatus5opp
-	dw .status, .statusopp, .animation, .effect, .power, .type
+	dw .status, .statusopp, .animation, .effect, .power, .type, .category
 	dw .curmove, .lastcounter, .lastcounteropp, .lastmove, .lastmoveopp
 
 ;                       player                     enemy
@@ -211,6 +211,7 @@ endr
 .effect         db PLAYER_MOVE_EFFECT,    ENEMY_MOVE_EFFECT
 .power          db PLAYER_MOVE_POWER,     ENEMY_MOVE_POWER
 .type           db PLAYER_MOVE_TYPE,      ENEMY_MOVE_TYPE
+.category       db PLAYER_MOVE_CATEGORY,  ENEMY_MOVE_CATEGORY
 .curmove        db PLAYER_CUR_MOVE,       ENEMY_CUR_MOVE
 .lastcounter    db PLAYER_COUNTER_MOVE,   ENEMY_COUNTER_MOVE
 .lastcounteropp db ENEMY_COUNTER_MOVE,    PLAYER_COUNTER_MOVE
@@ -228,6 +229,7 @@ endr
 	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect
 	dw wPlayerMoveStructPower,       wEnemyMoveStructPower
 	dw wPlayerMoveStructType,        wEnemyMoveStructType
+	dw wPlayerMoveStructCategory,    wEnemyMoveStructCategory
 	dw CurPlayerMove,                CurEnemyMove
 	dw LastEnemyCounterMove,         LastPlayerCounterMove
 	dw LastPlayerMove,               LastEnemyMove

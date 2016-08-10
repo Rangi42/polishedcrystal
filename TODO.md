@@ -77,17 +77,14 @@
 * Use Mateo's X/Y Hex Maniac sprite devamp (or make an X/Y one)?
 * Add wild Pokémon to Navel Rock?
 * Lt. Surge's traps from RBY
-* Unown ? and ! from Gen III
-* More held items (some of: Life Orb, Expert Belt, Muscle Band, Wise Glasses, Wide Lens, Zoom Lens, Light Clay, Damp Rock, Heat Rock, Smooth Rock)
-* Aurora Orb boosts Suicune's Defense and Special Defense
 * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
-* Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Aura Orb)
-* Battle with Steven in the Embedded Tower (reward: ?)
-* Battle Caitlin and Darach somewhere, possibly around the Battle Tower
+* Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Expert Belt)
+* Battle with Steven in the Embedded Tower (reward: Muscle Band)
+* Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
 * Cameo battle with Valerie on the Bellchime Trail after the Suicune event (Clefable, Mr. Mime, Wigglytuff, Azumarill, Togekiss, Sylveon) (reward: TM for DazzlinGleam)
 * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
-* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere
+* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
 
 
 ## New features
@@ -102,12 +99,10 @@
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add a store to buy room decorations that Mom doesn't (the Goldenrod Dept. Store rooftop bargain sale and the harbor are good)
 * Sometimes wild Pokémon know an egg move
-* Breedable legendary trios with a certain held item
 * Longer player and rival names
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
-* Add Mart12, plant deco sale, doll sale, and chinchou for lemonade fisherman in the harbor
-* Get Metal Coat from Lyra in Cianwood City, and Life Orb from the Captain
-* Lyra phones you post-Chuck to indicate that Yellow Forest is being attacked by Team Rocket
+* Add plant deco sale, doll sale, and chinchou for lemonade fisherman in the harbor
+* Battle Lyra for the last time on the route to Ice Path

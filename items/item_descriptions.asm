@@ -176,8 +176,8 @@ ItemDescriptions:
 	dw MetalPowderDesc
 	dw BerserkGeneDesc
 	dw EvioliteDesc
-	dw LifeOrbDesc
-	dw AuraOrbDesc
+	dw MuscleBandDesc
+	dw ExpertBeltDesc
 	dw DragonScaleDesc
 	dw UpGradeDesc
 	dw DubiousDiscDesc
@@ -855,9 +855,13 @@ EvioliteDesc:
 	db   "Ups Def and Spcl."
 	next "Def of evolvers.@"
 
-LifeOrbDesc:
-	db   "Boosts power but"
-	next "costs HP.@"
+MuscleBandDesc:
+	db   "Powers up physical"
+	next "moves. (Hold)@"
+
+ExpertBeltDesc:
+	db   "Powers up special"
+	next "moves. (Hold)@"
 
 DragonScaleDesc:
 	db   "A rare Dragon-type"
@@ -1002,10 +1006,6 @@ MusicMailDesc:
 MirageMailDesc:
 	db   "Mew-print Mail."
 	next "(Hold)@"
-
-AuraOrbDesc:
-	db   "Ups Def and Spcl."
-	next "Def of legends.@"
 
 TeruSamaDesc:
 	db   "?@"

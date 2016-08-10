@@ -160,8 +160,8 @@
 	const METAL_POWDER  ; $8d
 	const BERSERK_GENE  ; $8e
 	const EVIOLITE      ; $8f
-	const LIFE_ORB      ; $90
-	const AURA_ORB      ; $91
+	const MUSCLE_BAND   ; $90
+	const EXPERT_BELT   ; $91
 
 	const DRAGON_SCALE  ; $92
 	const UP_GRADE      ; $93
@@ -358,9 +358,8 @@ const_value SET 30
 	const HELD_38
 
 const_value SET 40
-	const HELD_EVIOLITE
-	const HELD_LIFE_ORB
 	const HELD_METAL_POWDER
+	const HELD_EVIOLITE
 
 const_value SET 50
 	const HELD_NORMAL_BOOST
@@ -381,6 +380,8 @@ const_value SET 50
 	const HELD_DARK_BOOST
 	const HELD_STEEL_BOOST
 	const HELD_FAIRY_BOOST
+	const HELD_PHYSICAL_BOOST
+	const HELD_SPECIAL_BOOST
 
 const_value SET 70
 	const HELD_CATCH_CHANCE

@@ -3569,13 +3569,27 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, [hli]
 	jr nz, .NextItem
 
+	cp PHYSICAL
+	jr z, .CategoryBoost
+	cp SPECIAL
+	jr z, .CategoryBoost
+
 ; Type
 	ld b, a
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
 	jr nz, .DoneItem
+	jr .ApplyBoost
 
+.CategoryBoost
+	ld b, a
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp b
+	jr nz, .DoneItem
+
+.ApplyBoost
 ; * 100 + item effect amount
 	ld a, c
 	add 100
@@ -3720,6 +3734,8 @@ TypeBoostItems: ; 35703
 	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
 	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
 	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
+	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
+	db HELD_SPECIAL_BOOST,  SPECIAL  ; Expert Belt
 	db $ff
 ; 35726
 
