@@ -148,7 +148,7 @@ UnknownText_0x9c354:
 	para "obey you without"
 	line "question."
 
-	text "…Um… Please take"
+	para "…Um… Please take"
 	line "this too…"
 	done
 

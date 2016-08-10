@@ -202,7 +202,7 @@ GetStormBadgeText:
 
 ChuckExplainBadgeText:
 	text "The Storm Badge"
-	para "lets your #mon"
+	line "lets your #mon"
 
 	para "Fly to any city"
 	line "or town you've"
