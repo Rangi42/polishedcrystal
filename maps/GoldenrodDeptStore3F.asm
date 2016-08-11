@@ -41,7 +41,7 @@ UnknownText_0x55dcc:
 UnknownText_0x55e15:
 	text "Hey! When you bat-"
 	line "tle, do you use X"
-	cont "Special?"
+	cont "Spcl.Atk?"
 
 	para "It's awesome. It"
 	line "really jacks up"
