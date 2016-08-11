@@ -27,10 +27,15 @@ HallOfFameScript:
 	opentext
 	writetext HallOfFame_LanceText
 	waitbutton
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	checkcode VAR_BADGES
+	if_equal 16, .CheckGoldTrophy
+	checkevent EVENT_DECO_SILVER_TROPHY
 	iftrue .NoTrophy
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .GoldTrophy
+	jump .SilverTrophy
+.CheckGoldTrophy
+	checkevent EVENT_DECO_GOLD_TROPHY
+	iftrue .NoTrophy
+	jump .GoldTrophy
 .SilverTrophy
 	writetext HallOfFame_LanceTrophyText
 	waitbutton

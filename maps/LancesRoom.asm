@@ -64,8 +64,8 @@ LanceScript_0x180e7b:
 	closetext
 	winlosstext LanceBattleWinText, 0
 	setlasttalked LANCESROOM_LANCE
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue LanceRematchScript
+	checkcode VAR_BADGES
+	if_equal 16, LanceRematchScript
 	loadtrainer CHAMPION, LANCE
 	startbattle
 LanceEndBattleScript:
@@ -141,8 +141,7 @@ LanceEndBattleScript:
 LanceRematchScript:
 	loadtrainer CHAMPION, LANCE2
 	startbattle
-	scall LanceEndBattleScript
-	end
+	jump LanceEndBattleScript
 
 LancesRoom_PlayerWalksInMovementData:
 	step_up

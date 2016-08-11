@@ -56,8 +56,8 @@ WillScript_0x1804f8:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x18062c, 0
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue WillRematchScript
+	checkcode VAR_BADGES
+	if_equal 16, WillRematchScript
 	loadtrainer WILL, 1
 	startbattle
 WillEndBattleScript:
@@ -78,8 +78,7 @@ WillEndBattleScript:
 WillRematchScript:
 	loadtrainer WILL, 2
 	startbattle
-	scall WillEndBattleScript
-	end
+	jump WillEndBattleScript
 
 UnknownScript_0x180526:
 	writetext UnknownText_0x180644

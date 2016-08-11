@@ -1394,6 +1394,18 @@ ElmGiveTicketText1:
 
 	para "Now you can catch"
 	line "#mon in Kanto."
+
+	para "You can also take"
+	line "on new Gyms."
+
+	para "If you earn eight"
+	line "more badges,"
+
+	para "the Elite Four"
+	line "will battle you"
+
+	para "with all their"
+	line "strength."
 	done
 
 ElmGiveTicketText2:

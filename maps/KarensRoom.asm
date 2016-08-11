@@ -56,8 +56,8 @@ KarenScript_0x180bee:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x180cf8, 0
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue KarenRematchScript
+	checkcode VAR_BADGES
+	if_equal 16, KarenRematchScript
 	loadtrainer KAREN, 1
 	startbattle
 KarenEndBattleScript:
@@ -78,8 +78,7 @@ KarenEndBattleScript:
 KarenRematchScript:
 	loadtrainer KAREN, 2
 	startbattle
-	scall KarenEndBattleScript
-	end
+	jump KarenEndBattleScript
 
 UnknownScript_0x180c1c:
 	writetext UnknownText_0x180d29

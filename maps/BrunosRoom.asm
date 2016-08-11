@@ -56,8 +56,8 @@ BrunoScript_0x1809c5:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x180b23, 0
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue BrunoRematchScript
+	checkcode VAR_BADGES
+	if_equal 16, BrunoRematchScript
 	loadtrainer BRUNO, 1
 	startbattle
 BrunoEndBattleScript:
@@ -78,8 +78,7 @@ BrunoEndBattleScript:
 BrunoRematchScript:
 	loadtrainer BRUNO, 2
 	startbattle
-	scall BrunoEndBattleScript
-	end
+	jump BrunoEndBattleScript
 
 UnknownScript_0x1809f3:
 	writetext UnknownText_0x180b3c

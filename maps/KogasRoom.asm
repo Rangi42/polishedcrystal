@@ -56,8 +56,8 @@ KogaScript_0x18075a:
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x1808a9, 0
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue KogaRematchScript
+	checkcode VAR_BADGES
+	if_equal 16, KogaRematchScript
 	loadtrainer KOGA, 1
 	startbattle
 KogaEndBattleScript:
@@ -78,8 +78,7 @@ KogaEndBattleScript:
 KogaRematchScript:
 	loadtrainer KOGA, 2
 	startbattle
-	scall KogaEndBattleScript
-	end
+	jump KogaEndBattleScript
 
 UnknownScript_0x180788:
 	writetext UnknownText_0x1808ca
