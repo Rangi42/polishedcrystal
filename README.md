@@ -307,7 +307,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Improve Buena's prizes.
 * Add: Missing ice puzzle in Seafoam Islands.
 * Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
-* Add: Use beta pagodas for Johto towers.
+* Add: Use beta pagodas for Sprout Tower, Bell Tower, and Dragon's Den.
 * Add: Pan up on entering Bell Tower.
 * Add: Rematch Elite Four only after getting all 16 badges (Prof. Elm and Blue both explain this).
 * Fix: No more daily limit on Wonder Trades.

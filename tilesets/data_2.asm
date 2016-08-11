@@ -1,12 +1,3 @@
-Tileset05GFX:
-INCBIN "gfx/tilesets/05.2bpp.lz"
-
-Tileset05Meta:
-INCBIN "tilesets/05_metatiles.bin"
-
-Tileset05Coll:
-INCBIN "tilesets/05_collision.bin"
-
 Tileset06GFX:
 INCBIN "gfx/tilesets/06.2bpp.lz"
 
