@@ -164,6 +164,16 @@ BlueOutroText:
 	para "Meet me there and"
 	line "I'll show you my"
 	cont "real power!"
+
+	para "Or you can always"
+	line "rematch the Elite"
+	cont "Four."
+
+	para "With badges from"
+	line "two regions,"
+
+	para "they'll show you"
+	line "no mercy."
 	done
 
 LeaderBlueEpilogueText:
