@@ -1890,11 +1890,11 @@ SabrinaGroup:
 		db NIGHTMARE
 		db PSYCHIC_M
 
-	db 58, NOCTOWL, NO_ITEM
-		db PSYCHIC_M
-		db NIGHTMARE
-		db HYPNOSIS
-		db AIR_SLASH
+	db 58, WOBBUFFET, NO_ITEM
+		db COUNTER
+		db MIRROR_COAT
+		db SAFEGUARD
+		db DESTINY_BOND
 
 	db 62, ALAKAZAM, GOLD_BERRY
 		db RECOVER
@@ -5959,6 +5959,7 @@ JessieJamesGroup:
 	db 23, WEEZING
 	db 23, ARBOK
 	db 21, VICTREEBEL
+	db 21, WOBBUFFET
 	db 25, MEOWTH
 
 	db $ff ; end
