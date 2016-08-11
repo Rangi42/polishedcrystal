@@ -105,4 +105,3 @@
 * Adjust Kanto trainers' levels closer to Gym Leaders
 * Add plant deco sale, doll sale, and chinchou for lemonade fisherman in the harbor
 * Battle Lyra for the last time on the route to Ice Path
-* Pan up on entering Bell Tower

@@ -2641,8 +2641,9 @@ wRoute48Trigger::                            ds 1
 wDayCareTrigger::                            ds 1
 wDarkCaveVioletEntranceTrigger::             ds 1
 wVioletGymTrigger::                          ds 1
+wBellchimeTrailTrigger::                     ds 1
 
-	ds 41
+	ds 40
 
 
 ;SECTION "Events", WRAMX, BANK [1]
