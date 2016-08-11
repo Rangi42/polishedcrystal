@@ -65,7 +65,6 @@
 * Add river to Route 46 from HGSS
 * Add umbrellas to Olivine City benches
 * Add Celadon Dept. Store electronics floor from RBY
-* Use pagodas from [beta tilesets](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Tilesets)
 * Merge gray and roof colors on Faraway Island to make room for another green
 
 
