@@ -313,6 +313,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
+* Fix: Prof. Oak's third aide requires 50 Pokémon, not 75.
 * Fix: Replace broken Trainer House tiles with a Poké Ball pattern.
 * Fix: Consistent gatehouse between Route 36 and the Ruins of Alph.
 * Fix: Consistent gatehouse between Route 48 and Yellow Forest.

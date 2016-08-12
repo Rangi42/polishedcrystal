@@ -32,7 +32,7 @@ ProfOaksAide3Script:
 	waitbutton
 	count_caught
 	checkcode VAR_DEXCAUGHT
-	if_greater_than 74, .HereYouGo
+	if_greater_than 49, .HereYouGo
 .UhOh
 	writetext ProfOaksAide3UhOhText
 	waitbutton
@@ -92,7 +92,7 @@ ProfOaksAide3HiText:
 	text "Hello there! I'm"
 	line "Prof.Oak's aide."
 
-	para "If you caught 75"
+	para "If you caught 50"
 	line "kinds of #mon,"
 
 	para "I'm supposed to"
@@ -101,7 +101,7 @@ ProfOaksAide3HiText:
 	para "So, <PLAYER>,"
 	line "have you caught"
 
-	para "at least 75 kinds"
+	para "at least 50 kinds"
 	line "of #mon?"
 	done
 
@@ -116,7 +116,7 @@ ProfOaksAide3UhOhText:
 
 	para "Come back and see"
 	line "me when you catch"
-	cont "75 kinds."
+	cont "50 kinds."
 	done
 
 ProfOaksAide3HereYouGoText:
