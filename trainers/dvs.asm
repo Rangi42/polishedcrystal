@@ -122,6 +122,7 @@ TrainerClassDVs: ; 270d6
 	db $FF, $FF ; cynthia
 	db $FF, $FF ; towertycoon
 	db $7F, $FF ; valerie
+	db $6E, $EE ; rei
 	db $00, $00 ; omastar fossil
 	db $00, $00 ; kabutops fossil
 	db $00, $00 ; aerodactyl fossil

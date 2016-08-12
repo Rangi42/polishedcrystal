@@ -195,6 +195,7 @@ SpecialsPointers:: ; c029
 ; Polished Crystal
 	add_special GiveShinyDittoEgg
 	add_special MoveReminder
+	add_special Special_ReiBlessing
 	add_special SpecialNone
 ; c224
 

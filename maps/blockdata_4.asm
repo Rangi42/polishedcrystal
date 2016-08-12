@@ -132,3 +132,9 @@ LyrasHouse1F_BlockData:
 
 LyrasHouse2F_BlockData:
 	INCBIN "maps/LyrasHouse2F.blk"
+
+EcruteakShrineOutside_BlockData:
+	INCBIN "maps/EcruteakShrineOutside.blk"
+
+EcruteakShrineInside_BlockData:
+	INCBIN "maps/EcruteakShrineInside.blk"

@@ -167,6 +167,10 @@ Special_DaisyMassage: ; 741d
 
 Special_CianwoodPhotograph:
 	ld hl, Data_CianwoodPhotograph
+	jr MassageOrHaircut
+
+Special_ReiBlessing:
+	ld hl, Data_ReiBlessing
 
 MassageOrHaircut: ; 7420
 	push hl
@@ -224,6 +228,10 @@ Data_DaisyMassage: ; 746b
 Data_CianwoodPhotograph:
 	db $80, 2, HAPPINESS_PHOTOGRAPH ; 50% chance
 	db $ff, 2, HAPPINESS_PHOTOGRAPH ; 50% chance
+
+Data_ReiBlessing:
+	db $80, 2, HAPPINESS_BLESSING ; 50% chance
+	db $ff, 2, HAPPINESS_BLESSING ; 50% chance
 
 CopyPokemonName_Buffer1_Buffer3: ; 746e
 	ld hl, StringBuffer1

@@ -793,6 +793,7 @@ SpriteMons: ; 14495
 	db MEWTWO
 	db MEW
 	db BAYLEEF
+	db FURRET
 	db HOOTHOOT
 	db AMPHAROS
 	db MURKROW
@@ -946,6 +947,7 @@ Group4Sprites:
 ; Route36
 ; Route37
 ; BellchimeTrail
+; EcruteakShrineOutside
 	db SPRITE_BUENA
 	db SPRITE_BUG_CATCHER
 	db SPRITE_FISHER
@@ -957,11 +959,11 @@ Group4Sprites:
 	db SPRITE_YOUNGSTER
 	; 9 walking sprites
 	db SPRITE_FRUIT_TREE
+	db SPRITE_HOOTHOOT
 	db SPRITE_POKE_BALL
-	db SPRITE_WEIRD_TREE
 	db SPRITE_SUICUNE
-	; 13 total sprites
-	db SPRITE_SILVER_TROPHY
+	db SPRITE_WEIRD_TREE
+	; 14 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY

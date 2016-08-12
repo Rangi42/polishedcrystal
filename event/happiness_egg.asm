@@ -123,6 +123,7 @@ endr
 	db  +3,  +3,  +1 ; Grooming
 	db +10,  +6,  +4 ; Gained a level in the place where it was caught
 	db  +5,  +3,  +2 ; Took a photograph
+	db  +5,  +3,  +2 ; Received a blessing
 
 StepHappiness:: ; 725a
 ; Raise the party's happiness by 1 point every other step cycle.

@@ -80,6 +80,9 @@ EcruteakDanceTheaterSign:
 BurnedTowerSign:
 	jumptext BurnedTowerSignText
 
+EcruteakShrineSign:
+	jumptext EcruteakShrineSignText
+
 EcruteakCityPokeCenterSign:
 	jumpstd pokecentersign
 
@@ -134,11 +137,11 @@ UnknownText_0x1a4147:
 	done
 
 UnknownText_0x1a41db:
-	text "I'm going to prac-"
-	line "tice at the Dance"
+	text "I'm going to get"
+	line "my #mon blessed"
 
-	para "Theater. Care to"
-	line "join me?"
+	para "at the shrine."
+	line "Care to join me?"
 	done
 
 UnknownText_0x1a421a:
@@ -250,6 +253,10 @@ BurnedTowerSignText:
 	line "as it is unsafe."
 	done
 
+EcruteakShrineSignText:
+	text "Ecruteak Shrine"
+	done
+
 EcruteakCity_MapEventHeader:
 	; filler
 	db 0, 0
@@ -258,16 +265,16 @@ EcruteakCity_MapEventHeader:
 	db 15
 	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def $1b, $23, 2, ROUTE_42_ECRUTEAK_GATE
-	warp_def $b, $12, 1, ECRUTEAK_HOUSE
-	warp_def $2, $14, 1, WISE_TRIOS_ROOM ; unused
-	warp_def $3, $14, 2, WISE_TRIOS_ROOM ; unused
+	warp_def $b, $13, 1, ECRUTEAK_HOUSE
+	warp_def $b, $d, 3, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def $b, $e, 4, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def $1b, $17, 1, ECRUTEAK_POKECENTER_1F
 	warp_def $15, $5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
 	warp_def $15, $17, 1, DANCE_THEATRE
 	warp_def $15, $1d, 2, ECRUTEAK_MART
 	warp_def $1b, $6, 1, ECRUTEAK_GYM
 	warp_def $1b, $d, 1, ECRUTEAK_ITEMFINDER_HOUSE
-	warp_def $7, $25, 1, TIN_TOWER_1F ; unused
+	warp_def $7, $27, 1, TIN_TOWER_1F ; unused
 	warp_def $5, $5, 1, BURNED_TOWER_1F
 	warp_def $12, $0, 3, ROUTE_38_ECRUTEAK_GATE
 	warp_def $13, $0, 4, ROUTE_38_ECRUTEAK_GATE
@@ -276,7 +283,7 @@ EcruteakCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 7
+	db 8
 	signpost 21, 15, SIGNPOST_READ, EcruteakCitySign
 	signpost 28, 8, SIGNPOST_READ, EcruteakGymSign
 	signpost 21, 21, SIGNPOST_READ, EcruteakDanceTheaterSign
@@ -284,6 +291,7 @@ EcruteakCity_MapEventHeader:
 	signpost 27, 24, SIGNPOST_READ, EcruteakCityPokeCenterSign
 	signpost 21, 30, SIGNPOST_READ, EcruteakCityMartSign
 	signpost 14, 23, SIGNPOST_ITEM, EcruteakCityHiddenHyperPotion
+	signpost 11, 16, SIGNPOST_READ, EcruteakShrineSign
 
 .PersonEvents:
 	db 7

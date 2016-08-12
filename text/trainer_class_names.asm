@@ -93,6 +93,7 @@
 	db "Champion@"
 	db "TowerTycoon@"
 	db "<PKMN> Trainer@"
+	db "Shrine@"
 	db "Fossil@"
 	db "Fossil@"
 	db "Fossil@"

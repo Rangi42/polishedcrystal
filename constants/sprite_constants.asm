@@ -164,18 +164,19 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_MEWTWO ; aa
 	const SPRITE_MEW ; ab
 	const SPRITE_BAYLEEF ; ac
-	const SPRITE_HOOTHOOT ; ad
-	const SPRITE_AMPHAROS ; ae
-	const SPRITE_MURKROW ; af
-	const SPRITE_UNOWN ; b0
-	const SPRITE_URSARING ; b1
-	const SPRITE_MILTANK ; b2
-	const SPRITE_BLISSEY ; b3
-	const SPRITE_RAIKOU ; b4
-	const SPRITE_ENTEI ; b5
-	const SPRITE_SUICUNE ; b6
-	const SPRITE_LUGIA ; b7
-	const SPRITE_HO_OH ; b8
+	const SPRITE_FURRET ; ad
+	const SPRITE_HOOTHOOT ; ae
+	const SPRITE_AMPHAROS ; af
+	const SPRITE_MURKROW ; b0
+	const SPRITE_UNOWN ; b1
+	const SPRITE_URSARING ; b2
+	const SPRITE_MILTANK ; b3
+	const SPRITE_BLISSEY ; b4
+	const SPRITE_RAIKOU ; b5
+	const SPRITE_ENTEI ; b6
+	const SPRITE_SUICUNE ; b7
+	const SPRITE_LUGIA ; b8
+	const SPRITE_HO_OH ; b9
 
 const_value SET $d0
 	const SPRITE_DAYCARE_MON_1 ; d0

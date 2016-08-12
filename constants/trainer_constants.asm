@@ -776,11 +776,13 @@ KRIS EQU __enum__
 
 	trainerclass VALERIE ; 5f
 
-	trainerclass OMASTAR_FOSSIL ; 60
+	trainerclass REI ; 60
 
-	trainerclass KABUTOPS_FOSSIL ; 61
+	trainerclass OMASTAR_FOSSIL ; 61
 
-	trainerclass AERODACTYL_FOSSIL ; 62
+	trainerclass KABUTOPS_FOSSIL ; 62
+
+	trainerclass AERODACTYL_FOSSIL ; 63
 
 NUM_TRAINER_CLASSES EQU __enum__
 

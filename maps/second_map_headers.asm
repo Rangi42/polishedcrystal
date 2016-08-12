@@ -405,6 +405,8 @@
 	map_header_2 EcruteakMart, ECRUTEAK_MART, $0, 0
 	map_header_2 EcruteakGym, ECRUTEAK_GYM, $0, 0
 	map_header_2 EcruteakItemfinderHouse, ECRUTEAK_ITEMFINDER_HOUSE, $0, 0
+	map_header_2 EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $5, 0
+	map_header_2 EcruteakShrineInside, ECRUTEAK_SHRINE_INSIDE, $0, 0
 	map_header_2 BlackthornGym1F, BLACKTHORN_GYM_1F, $0, 0
 	map_header_2 BlackthornGym2F, BLACKTHORN_GYM_2F, $0, 0
 	map_header_2 BlackthornDragonSpeechHouse, BLACKTHORN_DRAGON_SPEECH_HOUSE, $0, 0

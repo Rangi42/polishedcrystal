@@ -12353,6 +12353,27 @@ ValerieGroup:
 ; ================================
 
 
+ReiGroup:
+; ================================
+; ================
+
+	; REI (1)
+	db "Maiden Rei@"
+	db 0 ; normal
+
+	; party
+	db 20, FLAREON
+	db 19, MURKROW
+	db 18, NOCTOWL
+	db 18, KADABRA
+	db 21, NINETALES
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
 OmastarFossilGroup:
 ; ================================
 ; ================

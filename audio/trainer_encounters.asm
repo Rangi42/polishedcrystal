@@ -117,4 +117,5 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; cynthia
 	db MUSIC_HIKER_ENCOUNTER		; towertycoon
 	db MUSIC_KIMONO_ENCOUNTER		; valerie
+	db MUSIC_KIMONO_ENCOUNTER		; rei
 ; e906e

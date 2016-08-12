@@ -173,6 +173,7 @@ const_value = 1
 	const HAPPINESS_MASSAGE           ; 12
 	const HAPPINESS_GAINLEVELATHOME   ; 13
 	const HAPPINESS_PHOTOGRAPH        ; 14
+	const HAPPINESS_BLESSING          ; 15
 
 
 	const_def

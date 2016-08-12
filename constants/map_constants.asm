@@ -145,6 +145,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 16
 	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ; 17
 	mapgroup BELLCHIME_TRAIL,                             7, 12 ; 18
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     7,  6 ; 19
+	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 20
 
 	newgroup                                                    ;  5
 

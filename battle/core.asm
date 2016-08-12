@@ -2747,8 +2747,9 @@ JohtoGymLeaders:
 	db CHAMPION
 	db STEVEN
 	db CYNTHIA
-	db VALERIE
 	db TOWERTYCOON
+	db VALERIE
+	db REI
 ; fallthrough
 KantoGymLeaders:
 	db BROCK

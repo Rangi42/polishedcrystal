@@ -234,6 +234,12 @@
 	db 15, POLIWAG
 	db 20, POLIWHIRL
 
+	map ECRUTEAK_SHRINE_OUTSIDE
+	db 2 percent ; encounter rate
+	db 20, POLIWAG
+	db 15, PSYDUCK
+	db 20, POLIWHIRL
+
 	map LAKE_OF_RAGE
 	db 6 percent ; encounter rate
 	db 25, MAGIKARP

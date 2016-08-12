@@ -96,6 +96,7 @@ TrainerGroups: ; 0x39999
 	dw CynthiaGroup
 	dw TowerTycoonGroup
 	dw ValerieGroup
+	dw ReiGroup
 	dw OmastarFossilGroup
 	dw KabutopsFossilGroup
 	dw AerodactylFossilGroup
