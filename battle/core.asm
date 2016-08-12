@@ -2749,7 +2749,6 @@ JohtoGymLeaders:
 	db CYNTHIA
 	db TOWERTYCOON
 	db VALERIE
-	db REI
 ; fallthrough
 KantoGymLeaders:
 	db BROCK
@@ -2760,11 +2759,11 @@ KantoGymLeaders:
 	db SABRINA
 	db BLAINE
 	db BLUE
-	db RED
-	db LEAF
 	db LORELEI
 	db AGATHA
 	db GIOVANNI
+	db RED
+	db LEAF
 	db -1
 
 
