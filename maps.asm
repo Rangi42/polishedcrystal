@@ -470,7 +470,6 @@ INCLUDE "maps/Route15.asm"
 INCLUDE "maps/VermilionCity.asm"
 INCLUDE "maps/Route9.asm"
 INCLUDE "maps/CinnabarPokeCenter1F.asm"
-INCLUDE "maps/Route19FuchsiaGate.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
@@ -497,6 +496,7 @@ INCLUDE "maps/Route10South.asm"
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/SilverCavePokeCenter1F.asm"
 INCLUDE "maps/Route28FamousSpeechHouse.asm"
+INCLUDE "maps/Route19FuchsiaGate.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]

@@ -288,9 +288,11 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Lyra is your friendly rival.
    * Battle Lyra in Prof. Elm's lab.
    * Lyra defends you after the Pokémon theft (from HG/SS).
-   * Lyra shows you how to catch Pokémon (from HG/SS).
+   * Lyra shows you how to catch Pokémon on Route 29 (from HG/SS).
    * Battle Lyra on Route 34.
-   * Get Lyra's phone number (from HG/SS).
+   * Get Lyra's phone number in the Day-Care (from HG/SS).
+   * Get Amulet Coin from Lyra in Olivine City.
+   * Battle Lyra in New Bark Town before Victory Road.
 * Add: Replace Cianwood Photo Studio with an event that makes your Pokémon happier.
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy.
 * Add: Eusine shows you the legendary beasts in Celadon City in case you haven't found them roaming.

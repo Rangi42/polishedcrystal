@@ -104,4 +104,4 @@
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
 * Add plant deco sale, doll sale, and chinchou for lemonade fisherman in the harbor
-* Battle Lyra for the last time on the route to Ice Path
+* Battle Lyra for the third time in Olivine City

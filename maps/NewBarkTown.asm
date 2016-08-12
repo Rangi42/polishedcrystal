@@ -76,7 +76,7 @@ NewBarkTown_TeacherStopsYouTrigger2:
 	special RestartMapMusic
 	end
 
-NewBarkTown_LyraTrigger:
+NewBarkTown_LyraIntroTrigger:
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraEnters_NBT
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
@@ -98,6 +98,65 @@ NewBarkTown_LyraTrigger:
 	special FadeOutPalettes
 	pause 15
 	warpfacing UP, ELMS_LAB, $4, $b
+	end
+
+NewBarkTown_LyraFinalTrigger1:
+	moveperson NEWBARKTOWN_LYRA, $e, $b
+	jump NewBarkTown_LyraFinalTrigger
+
+NewBarkTown_LyraFinalTrigger2:
+	moveperson NEWBARKTOWN_LYRA, $e, $c
+	jump NewBarkTown_LyraFinalTrigger
+
+NewBarkTown_LyraFinalTrigger3:
+	moveperson NEWBARKTOWN_LYRA, $e, $d
+	jump NewBarkTown_LyraFinalTrigger
+
+NewBarkTown_LyraFinalTrigger4:
+	moveperson NEWBARKTOWN_LYRA, $e, $e
+
+NewBarkTown_LyraFinalTrigger:
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	special RunCallback_04
+	appear NEWBARKTOWN_LYRA
+	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
+	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
+	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye2_NBT
+	spriteface PLAYER, LEFT
+	opentext
+	writetext Text_LyraGoodbye1
+	waitbutton
+	closetext
+	setevent EVENT_LYRA_NEW_BARK_TOWN
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	winlosstext Text_LyraGoodbyeWin, Text_LyraGoodbyeLoss
+	setlasttalked NEWBARKTOWN_LYRA
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Totodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Chikorita
+	loadtrainer LYRA, LYRA_10
+	jump .AfterBattle
+
+.Totodile:
+	loadtrainer LYRA, LYRA_11
+	jump .AfterBattle
+
+.Chikorita:
+	loadtrainer LYRA, LYRA_12
+.AfterBattle
+	startbattle
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	reloadmapafterbattle
+	opentext
+	writetext Text_LyraGoodbye2
+	waitbutton
+	closetext
+	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye3_NBT
+	disappear NEWBARKTOWN_LYRA
+	dotrigger $2
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	special RunCallback_04
 	end
 
 NewBarkTownTeacherScript:
@@ -233,6 +292,28 @@ Movement_PlayerOrLyraEntersLab_NBT:
 	step_up
 	step_end
 
+Movement_LyraSaysGoodbye1_NBT:
+	step_up
+	step_up
+	step_end
+
+Movement_LyraSaysGoodbye2_NBT:
+	step_right
+	step_up
+	step_up
+	step_up
+	step_right
+	step_end
+
+Movement_LyraSaysGoodbye3_NBT:
+	step_left
+	step_down
+	step_down
+	step_down
+	step_down
+	step_down
+	step_end
+
 Text_GearIsImpressive:
 	text "Wow, your #gear"
 	line "is impressive!"
@@ -321,6 +402,71 @@ Text_LyraIntro:
 	cont "#mon."
 	done
 
+Text_LyraGoodbye1:
+	text "Lyra: <PLAYER>!"
+
+	para "I heard that you"
+	line "have all the Gym"
+	cont "badges in Johto."
+
+	para "…You're really"
+	line "something,"
+	cont "<PLAYER>."
+
+	para "To think that we"
+	line "both started our"
+
+	para "journeys in this"
+	line "town…"
+
+	para "I do what I can"
+	line "to help the prof-"
+	cont "essor, but I could"
+
+	para "never take on the"
+	line "League Champion."
+
+	para "…Before you go…"
+
+	para "How about one"
+	line "more battle?"
+
+	para "I want to see the"
+	line "kind of trainer"
+	cont "you've become!"
+	done
+
+Text_LyraGoodbyeWin:
+	text "You're as talented"
+	line "as I expected!"
+	done
+
+Text_LyraGoodbyeLoss:
+	text "I hope you didn't"
+	line "let me win…"
+	done
+
+Text_LyraGoodbye2:
+	text "…Thanks, <PLAYER>."
+
+	para "I can tell how"
+	line "much work and"
+
+	para "love you put into"
+	line "raising your"
+	cont "#mon."
+
+	para "…So, this is"
+	line "goodbye."
+
+	para "I know you can"
+	line "beat the #mon"
+	cont "League!"
+
+	para "You're going to be"
+	line "a great Champion!"
+	done
+
 NewBarkTownSignText:
 	text "New Bark Town"
 
@@ -354,10 +500,14 @@ NewBarkTown_MapEventHeader:
 	warp_def $2, $a, 2, ELMS_HOUSE
 
 .XYTriggers:
-	db 3
+	db 7
 	xy_trigger 0, $8, $1, $0, NewBarkTown_TeacherStopsYouTrigger1, $0, $0
 	xy_trigger 0, $9, $1, $0, NewBarkTown_TeacherStopsYouTrigger2, $0, $0
-	xy_trigger 0, $4, $6, $0, NewBarkTown_LyraTrigger, $0, $0
+	xy_trigger 0, $4, $6, $0, NewBarkTown_LyraIntroTrigger, $0, $0
+	xy_trigger 1, $6, $11, $0, NewBarkTown_LyraFinalTrigger1, $0, $0
+	xy_trigger 1, $7, $11, $0, NewBarkTown_LyraFinalTrigger2, $0, $0
+	xy_trigger 1, $8, $11, $0, NewBarkTown_LyraFinalTrigger3, $0, $0
+	xy_trigger 1, $9, $11, $0, NewBarkTown_LyraFinalTrigger4, $0, $0
 
 .Signposts:
 	db 4

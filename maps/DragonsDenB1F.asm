@@ -86,6 +86,8 @@ DragonsDenB1F_ClairTrigger:
 	special RestartMapMusic
 	disappear DRAGONSDENB1F_CLAIR
 	dotrigger $0
+	domaptrigger NEW_BARK_TOWN, $1
+	clearevent EVENT_LYRA_IN_HER_ROOM
 	end
 
 TrainerCooltrainermDarin:

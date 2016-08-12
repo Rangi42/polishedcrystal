@@ -9,7 +9,20 @@ LyrasHouse1F_MapScriptHeader:
 	db 0
 
 LyrasDadScript:
-	jumptextfaceplayer LyrasDadText2
+	faceplayer
+	opentext
+	checkevent EVENT_LYRA_IN_HER_ROOM
+	iftrue .LyraOutside
+	writetext LyrasDadText1
+	waitbutton
+	closetext
+	end
+
+.LyraOutside
+	writetext LyrasDadText2
+	waitbutton
+	closetext
+	end
 
 LyrasTVScript:
 	jumptext LyrasTVText
@@ -23,7 +36,6 @@ LyrasSinkScript:
 LyrasFridgeScript:
 	jumptext LyrasFridgeText
 
-; TODO: use this text
 LyrasDadText1:
 	text "Hi, <PLAYER>!"
 	line "Lyra is upstairs."

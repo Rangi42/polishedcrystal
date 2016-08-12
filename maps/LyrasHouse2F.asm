@@ -1,4 +1,6 @@
 const_value set 2
+	const LYRASHOUSE2F_LYRA
+	const LYRASHOUSE2F_PIDGEOT
 
 LyrasHouse2F_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +8,17 @@ LyrasHouse2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+LyrasHouseLyra:
+	jumptextfaceplayer LyrasHouseLyraText
+
+LyrasHousePidgeot:
+	opentext
+	writetext LyrasHousePidgeotText
+	cry PIDGEOT
+	waitbutton
+	closetext
+	end
 
 LyrasHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -45,6 +58,20 @@ LyrasHouseN64:
 
 LyrasHouseBookshelf:
 	jumpstd picturebookshelf
+
+LyrasHouseLyraText:
+	text "Lyra: Hi, <PLAYER>!"
+
+	para "Hmm… My #mon"
+	line "may be putting"
+
+	para "on some weight"
+	line "lately…"
+	done
+
+LyrasHousePidgeotText:
+	text "Pidgeot: Geot!"
+	done
 
 LyrasRadioText1:
 	text "Prof.Oak's #mon"
@@ -95,4 +122,6 @@ LyrasHouse2F_MapEventHeader:
 	signpost 2, 6, SIGNPOST_READ, LyrasHouseN64
 
 .PersonEvents:
-	db 0
+	db 2
+	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseLyra, EVENT_LYRA_IN_HER_ROOM
+	person_event SPRITE_PIDGEOT, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, LyrasHousePidgeot, EVENT_LYRA_IN_HER_ROOM

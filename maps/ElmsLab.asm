@@ -326,7 +326,6 @@ ElmDirectionsScript:
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	dotrigger $6
-	domaptrigger NEW_BARK_TOWN, $1
 	end
 
 ElmDescribesMrPokemonScript:
