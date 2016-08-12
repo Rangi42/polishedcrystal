@@ -371,37 +371,37 @@ UnknownText_0x5c30d:
 	done
 
 SchoolgirlElizaSeenText:
-	text "Vulpix is just"
+	text "Oddish is just"
 	line "the cutest!"
 
 	para "Don't you agree?"
 	done
 
 SchoolgirlElizaBeatenText:
-	text "My poor Vulpix…"
+	text "My poor Oddish…"
 	done
 
 SchoolgirlElizaAfterText:
 	text "I don't care!"
 	line "I still love"
-	cont "Vulpix."
+	cont "Oddish."
 	done
 
 SchoolboyJohnnySeenText:
-	text "Growlithe is just"
+	text "Bellsprout is just"
 	line "the coolest!"
 
 	para "Aren't I right?"
 	done
 
 SchoolboyJohnnyBeatenText:
-	text "Growlithe, no…"
+	text "Bellsprout, no…"
 	done
 
 SchoolboyJohnnyAfterText:
 	text "Yeah, well, I"
 	line "still prefer"
-	cont "Growlithe."
+	cont "Bellsprout."
 	done
 
 UnknownText_0x5c3bc:
@@ -450,7 +450,7 @@ UnknownText_0x5c4f3:
 
 	para "For example…"
 
-	para "There are 50 kinds"
+	para "There are 65 kinds"
 	line "of TMs."
 
 	para "Traded #mon"

@@ -4289,17 +4289,17 @@ TwinsGroup:
 
 	; party
 
-	db 16, JIGGLYPUFF
-		db SING
+	db 16, MARILL
 		db DEFENSE_CURL
-		db POUND
-		db DISABLE
+		db ROLLOUT
+		db BUBBLE_BEAM
+		db DIZZY_PUNCH
 
-	db 16, CLEFAIRY
+	db 16, MAREEP
 		db GROWL
-		db ENCORE
-		db DOUBLE_SLAP
-		db METRONOME
+		db THUNDER_WAVE
+		db THUNDERSHOCK
+		db SAND_ATTACK
 
 	db $ff ; end
 
@@ -7499,11 +7499,12 @@ SchoolboyGroup:
 
 	; SCHOOLBOY (4)
 	db "Johnny@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 18, GROWLITHE
-	db 17, RATTATA
+	db 18, BELLSPROUT, GOLD_LEAF
+	db 16, SPINARAK, NO_ITEM
+	db 17, RATTATA, BERRY
 
 	db $ff ; end
 
@@ -7836,11 +7837,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL (2)
 	db "Eliza@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 18, VULPIX
-	db 17, SENTRET
+	db 18, ODDISH, SILVER_LEAF
+	db 16, LEDYBA, NO_ITEM
+	db 17, SENTRET, BERRY
 
 	db $ff ; end
 
@@ -8245,6 +8247,7 @@ SageGroup:
 
 	; party
 	db 22, HAUNTER
+	db 20, VULPIX
 
 	db $ff ; end
 
@@ -8255,11 +8258,11 @@ SageGroup:
 	db 0 ; normal
 
 	; party
-	db 16, GASTLY
-	db 16, GASTLY
-	db 16, GASTLY
-	db 16, GASTLY
-	db 16, GASTLY
+	db 17, GASTLY
+	db 17, HOOTHOOT
+	db 18, VULPIX
+	db 17, GASTLY
+	db 18, NOCTOWL
 
 	db $ff ; end
 
@@ -8302,7 +8305,7 @@ MediumGroup:
 	; party
 	db 18, GASTLY
 	db 20, HAUNTER
-	db 20, GASTLY
+	db 20, MISDREAVUS
 
 	db $ff ; end
 
@@ -8314,7 +8317,7 @@ MediumGroup:
 
 	; party
 	db 20, HAUNTER
-	db 20, HAUNTER
+	db 20, MISDREAVUS
 
 	db $ff ; end
 

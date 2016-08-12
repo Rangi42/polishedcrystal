@@ -63,33 +63,42 @@ UnknownText_0x62260:
 PokefanFScript_0x61024:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
+	iftrue .GotEviolite
 	writetext UnknownText_0x623fb
 	waitbutton
 	writetext UnknownText_0x6248c
 	yesorno
-	iffalse UnknownScript_0x6104b
+	iffalse .NoEviolite
 	takeitem EON_MAIL
-	iffalse UnknownScript_0x6104b
+	iffalse .NoEviolite
 	writetext UnknownText_0x62549
 	waitbutton
 	writetext UnknownText_0x624a4
 	waitbutton
 	verbosegiveitem EVIOLITE
-	iffalse UnknownScript_0x61051
+	iffalse .NoRoomForEviolite
+	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
 	writetext UnknownText_0x624e9
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x6104b:
+.NoEviolite:
 	writetext UnknownText_0x62509
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x61051:
+.NoRoomForEviolite:
 	giveitem EON_MAIL
 	writetext UnknownText_0x6252a
+	waitbutton
+	closetext
+	end
+
+.GotEviolite:
+	writetext GoldenrodPokeComCenter1FPokefanFGotEvioliteText
 	waitbutton
 	closetext
 	end
@@ -140,6 +149,14 @@ UnknownText_0x6252a:
 UnknownText_0x62549:
 	text "<PLAYER> gave away"
 	line "the Eon Mail."
+	done
+
+GoldenrodPokeComCenter1FPokefanFGotEvioliteText:
+	text "Thank you for"
+	line "the Eon Mail!"
+
+	para "My daughter will"
+	line "be delighted!"
 	done
 
 WonderTradeReceptionistScript:
