@@ -892,7 +892,7 @@ Group2Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 10 walking sprites (8 that walk)
+	; 12 walking sprites (8 that walk)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
@@ -1150,16 +1150,16 @@ Group26Sprites:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
-	db SPRITE_LASS
 	db SPRITE_NEW_BARK_LYRA
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	; 8 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_PIDGEY
 	db SPRITE_POKE_BALL
 	db SPRITE_RATTATA
-	; 13 total sprites
+	; 12 total sprites
+	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
