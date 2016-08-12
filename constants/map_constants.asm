@@ -145,8 +145,6 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 16
 	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ; 17
 	mapgroup BELLCHIME_TRAIL,                             7, 12 ; 18
-	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     7,  6 ; 19
-	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 20
 
 	newgroup                                                    ;  5
 
@@ -386,6 +384,8 @@ MAP_NONE   EQU 0
 	mapgroup MOBILE_BATTLE_ROOM,                          4,  5 ;  6
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  7
 	mapgroup YELLOW_FOREST,                              25, 29 ;  8
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  9
+	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 10
 
 	newgroup                                                    ; 21
 

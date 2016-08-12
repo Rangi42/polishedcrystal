@@ -20,6 +20,9 @@ EcruteakShrineOutsideHoothootScript:
 	closetext
 	end
 
+EcruteakShrineOutsideStatueScript:
+	jumptext EcruteakShrineOutsideStatueText
+
 EcruteakShrineOutsideTwinText:
 	text "My Hoothoot's"
 	line "Foresight helps"
@@ -30,6 +33,13 @@ EcruteakShrineOutsideHoothootText:
 	text "Hoothoot: Hoot!"
 	done
 
+EcruteakShrineOutsideStatueText:
+	text "A #mon statue…"
+
+	para "It looks very"
+	line "serene."
+	done
+
 EcruteakShrineOutside_MapEventHeader:
 	; filler
 	db 0, 0
@@ -37,16 +47,18 @@ EcruteakShrineOutside_MapEventHeader:
 .Warps:
 	db 5
 	warp_def $3, $5, 1, ECRUTEAK_SHRINE_INSIDE
-	warp_def $9, $4, 4, ECRUTEAK_CITY
-	warp_def $9, $5, 4, ECRUTEAK_CITY
-	warp_def $9, $6, 5, ECRUTEAK_CITY
-	warp_def $9, $7, 5, ECRUTEAK_CITY
+	warp_def $b, $4, 4, ECRUTEAK_CITY
+	warp_def $b, $5, 4, ECRUTEAK_CITY
+	warp_def $b, $6, 5, ECRUTEAK_CITY
+	warp_def $b, $7, 5, ECRUTEAK_CITY
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 8, 3, SIGNPOST_READ, EcruteakShrineOutsideStatueScript
+	signpost 8, 8, SIGNPOST_READ, EcruteakShrineOutsideStatueScript
 
 .PersonEvents:
 	db 2

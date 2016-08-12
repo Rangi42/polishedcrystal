@@ -947,7 +947,6 @@ Group4Sprites:
 ; Route36
 ; Route37
 ; BellchimeTrail
-; EcruteakShrineOutside
 	db SPRITE_BUENA
 	db SPRITE_BUG_CATCHER
 	db SPRITE_FISHER
@@ -959,11 +958,11 @@ Group4Sprites:
 	db SPRITE_YOUNGSTER
 	; 9 walking sprites
 	db SPRITE_FRUIT_TREE
-	db SPRITE_HOOTHOOT
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
 	db SPRITE_WEIRD_TREE
-	; 14 total sprites
+	; 13 total sprites
+	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1462,14 +1461,15 @@ Group19Sprites:
 
 Group20Sprites:
 ; YellowForest
+; EcruteakShrineOutside
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YELLOW
 	; 4 walking sprites
+	db SPRITE_HOOTHOOT
 	db SPRITE_POKE_BALL
-	; 5 total sprites
-	db SPRITE_SILVER_TROPHY
+	; 6 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY

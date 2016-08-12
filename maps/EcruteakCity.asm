@@ -268,7 +268,7 @@ EcruteakCity_MapEventHeader:
 	warp_def $b, $13, 1, ECRUTEAK_HOUSE
 	warp_def $b, $d, 3, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def $b, $e, 4, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def $1b, $17, 1, ECRUTEAK_POKECENTER_1F
+	warp_def $1b, $17, 1, YELLOW_FOREST
 	warp_def $15, $5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
 	warp_def $15, $17, 1, DANCE_THEATRE
 	warp_def $15, $1d, 2, ECRUTEAK_MART

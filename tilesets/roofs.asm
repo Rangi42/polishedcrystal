@@ -38,14 +38,14 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 17
 	db -1 ; group 18
 	db -1 ; group 19
-	db -1 ; group 20
+	db  5 ; group 20 (Ecruteak Shrine)
 	db -1 ; group 21
 	db  3 ; group 22 (Cianwood City)
 	db -1 ; group 23
 	db  0 ; group 24 (New Bark Town)
 	db -1 ; group 25
-	db -1 ; group 26 (Cherrygrove City)
-	db  3 ; group 27 (Route 48)
+	db  0 ; group 26 (Cherrygrove City)
+	db -1 ; group 27
 ; 1c03c
 
 Roofs: ; 1c03c
@@ -54,4 +54,5 @@ INCBIN "gfx/tilesets/roofs/1.2bpp"
 INCBIN "gfx/tilesets/roofs/2.2bpp"
 INCBIN "gfx/tilesets/roofs/3.2bpp"
 INCBIN "gfx/tilesets/roofs/4.2bpp"
+INCBIN "gfx/tilesets/roofs/5.2bpp"
 ; 1c30c
