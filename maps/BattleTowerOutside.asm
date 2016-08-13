@@ -6,7 +6,11 @@ const_value set 2
 
 BattleTowerOutside_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 2
@@ -22,6 +26,52 @@ BattleTowerOutside_MapScriptHeader:
 	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
 	return
 
+.Trigger0:
+	priorityjump BattleTowerOutsideStepDownScript
+	end
+
+.Trigger1:
+	end
+
+BattleTowerOutsideStepDownScript:
+	checkcode VAR_YCOORD
+	if_not_equal $9, .Done
+	checkcode VAR_XCOORD
+	if_equal $8, .Down
+	if_equal $9, .Down
+	jump .Done
+.Down
+	applymovement PLAYER, BattleTowerOutsideStepDownMovementData
+.Done
+	dotrigger $1
+	end
+
+BattleTowerOutsidePanUpScript1:
+	playsound SFX_EXIT_BUILDING
+	applymovement PLAYER, BattleTowerOutsideHidePlayerMovementData
+	waitsfx
+	applymovement PLAYER, BattleTowerOutsidePanUpMovementData
+	disappear PLAYER
+	pause 10
+	special FadeOutPalettes
+	pause 15
+	dotrigger $0
+	warpfacing UP, BATTLE_TOWER_1F, $7, $9
+	end
+
+BattleTowerOutsidePanUpScript2:
+	playsound SFX_EXIT_BUILDING
+	applymovement PLAYER, BattleTowerOutsideHidePlayerMovementData
+	waitsfx
+	applymovement PLAYER, BattleTowerOutsidePanUpMovementData
+	disappear PLAYER
+	pause 10
+	special FadeOutPalettes
+	pause 15
+	dotrigger $0
+	warpfacing UP, BATTLE_TOWER_1F, $8, $9
+	end
+
 BattleTowerOutsideYoungsterScript:
 	jumptextfaceplayer BattleTowerOutsideYoungsterText
 
@@ -33,6 +83,22 @@ BattleTowerOutsideSailorScript:
 
 MapBattleTowerOutsideSignpost0Script:
 	jumptext BattleTowerOutsideText_UltimateChallenge
+
+BattleTowerOutsideStepDownMovementData:
+	step_down
+	step_end
+
+BattleTowerOutsideHidePlayerMovementData:
+	hide_person
+	step_end
+
+BattleTowerOutsidePanUpMovementData:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
 
 BattleTowerOutsideUnusedText1:
 	text "Wow, the Battle"
@@ -136,11 +202,13 @@ BattleTowerOutside_MapEventHeader:
 	db 4
 	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE
 	warp_def $15, $9, 4, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $9, $8, 1, BATTLE_TOWER_1F
-	warp_def $9, $9, 2, BATTLE_TOWER_1F
+	warp_def $9, $8, 1, BATTLE_TOWER_1F ; hole
+	warp_def $9, $9, 2, BATTLE_TOWER_1F ; hole
 
 .XYTriggers:
-	db 0
+	db 2
+	xy_trigger 1, $9, $8, $0, BattleTowerOutsidePanUpScript1, $0, $0
+	xy_trigger 1, $9, $9, $0, BattleTowerOutsidePanUpScript2, $0, $0
 
 .Signposts:
 	db 1
