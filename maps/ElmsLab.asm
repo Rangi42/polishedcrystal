@@ -393,7 +393,6 @@ ElmAfterTheftScript:
 	setflag ENGINE_BUG_CONTEST_ON
 	clearevent EVENT_LYRA_ROUTE_29
 	domaptrigger ROUTE_29, $1
-	domaptrigger DARK_CAVE_VIOLET_ENTRANCE, $1
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
 	writetext ElmAfterTheftText6

@@ -66,7 +66,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	pause 15
 	clearevent EVENT_VIOLET_GYM_FALKNER
 	domaptrigger VIOLET_GYM, $1
-	dotrigger $0
+	dotrigger $1
 	end
 
 DarkCaveVioletEntrancePotion:
@@ -162,7 +162,7 @@ DarkCaveVioletEntrance_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $2, $5, $0, DarkCaveVioletEntranceFalknerTrigger, $0, $0
+	xy_trigger 0, $2, $5, $0, DarkCaveVioletEntranceFalknerTrigger, $0, $0
 
 .Signposts:
 	db 1
