@@ -33,6 +33,8 @@ SeagallopFerryVermilionGate_PlayerArrives:
 SeagallopFerryVermilionGateSailorScript:
 	faceplayer
 	opentext
+	giveitem MYSTICTICKET
+	giveitem OLD_SEA_MAP
 	checkitem MYSTICTICKET
 	iffalse .MaybeOldSeaMap
 	checkitem OLD_SEA_MAP
