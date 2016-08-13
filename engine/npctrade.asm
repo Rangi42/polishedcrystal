@@ -450,9 +450,9 @@ ENDM
 	; Pewter City
 	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $FC, $AC, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
 	; Route 14
-	npctrade 3, CHANSEY,    AERODACTYL, "Aeroy@@@@@@", $CC, $AF, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
-	; Power Plant
-	npctrade 0, DUGTRIO,    MAGNETON,   "Maggie@@@@@", $7C, $FC, METAL_COAT,   50082, "Forest@@@@@", TRADE_EITHER_GENDER
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $7F, $FF, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	; Goldenrod Harbor
+	npctrade 0, GYARADOS,   CHINCHOU,   "Lenie@@@@@@", $DD, $FF, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
 ; fcf38
 
 

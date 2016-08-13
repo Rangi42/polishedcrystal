@@ -1,12 +1,12 @@
 const_value set 2
-	const GOLDENRODHARBOR_FISHER1
+	const GOLDENRODHARBOR_FISHER
 	const GOLDENRODHARBOR_POKE_BALL
 	const GOLDENRODHARBOR_ROCKET
 	const GOLDENRODHARBOR_COOLTRAINER_F
 	const GOLDENRODHARBOR_POKEFAN_M
 	const GOLDENRODHARBOR_MAGIKARP
 	const GOLDENRODHARBOR_YOUNGSTER
-	const GOLDENRODHARBOR_FISHER2
+	const GOLDENRODHARBOR_JACQUES
 
 GoldenrodHarbor_MapScriptHeader:
 .MapTriggers:
@@ -15,12 +15,12 @@ GoldenrodHarbor_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-GoldenrodHarborFisher1Script:
+GoldenrodHarborFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_HYPER_VOICE_INTRO
 	iftrue GoldenrodHarborTutorHyperVoiceScript
-	writetext GoldenrodHarborFisher1Text
+	writetext GoldenrodHarborFisherText
 	waitbutton
 	setevent EVENT_LISTENED_TO_HYPER_VOICE_INTRO
 GoldenrodHarborTutorHyperVoiceScript:
@@ -79,8 +79,13 @@ GoldenrodHarborYoungsterScript:
 	; EVENT_DECO_PLANT_3
 	jumptextfaceplayer GoldenrodHarborYoungsterText
 
-GoldenrodHarborFisher2Script:
-	jumptextfaceplayer GoldenrodHarborFisher2Text
+Jacques:
+	faceplayer
+	opentext
+	trade $6
+	waitbutton
+	closetext
+	end
 
 GoldenrodHarborStarPiece:
 	itemball STAR_PIECE
@@ -91,7 +96,7 @@ GoldenrodHarborSign:
 GoldenrodHarborCrateSign:
 	jumptext GoldenrodHarborCrateSignText
 
-GoldenrodHarborFisher1Text:
+GoldenrodHarborFisherText:
 	text "If you're fishing,"
 	line "you have to be"
 
@@ -160,11 +165,6 @@ GoldenrodHarborYoungsterText:
 	line "Magna Plant"
 	done
 
-GoldenrodHarborFisher2Text:
-	text "TODO"
-	line "Chinchou"
-	done
-
 GoldenrodHarborSignText:
 	text "Goldenrod Harbor"
 	done
@@ -191,11 +191,11 @@ GoldenrodHarbor_MapEventHeader:
 
 .PersonEvents:
 	db 8
-	person_event SPRITE_FISHER, 7, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisher1Script, -1
+	person_event SPRITE_FISHER, 7, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	person_event SPRITE_POKE_BALL, 8, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, GoldenrodHarborStarPiece, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	person_event SPRITE_ROCKET, 16, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	person_event SPRITE_COOLTRAINER_F, 15, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborCooltrainerfScript, -1
 	person_event SPRITE_POKEFAN_M, 15, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
 	person_event SPRITE_MAGIKARP, 15, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborMagikarpScript, -1
 	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
-	person_event SPRITE_FISHER, 21, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisher2Script, -1
+	person_event SPRITE_FISHER, 21, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Jacques, -1
