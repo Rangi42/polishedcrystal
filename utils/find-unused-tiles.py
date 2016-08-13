@@ -12,8 +12,8 @@ code_directory         = './'
 tileset_filename       = 'constants/tilemap_constants.asm'
 map_headers_filename   = 'maps/map_headers.asm'
 map_headers_2_filename = 'maps/second_map_headers.asm'
-block_data_filenames   = ['maps/blockdata_1.asm', 'maps/blockdata_2.asm',
-                          'maps/blockdata_3.asm', 'maps/blockdata_4.asm']
+block_data_filenames   = {'maps/blockdata_1.asm', 'maps/blockdata_2.asm',
+                          'maps/blockdata_3.asm', 'maps/blockdata_4.asm'}
 block_filename_fmt     = 'maps/%s.blk'
 metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 
@@ -21,6 +21,9 @@ metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 tileset_ids = {}
 # {'OlivinePokeCenter1F': '01', ...}
 map_tilesets = {}
+
+# {'OlivineTimsHouse': 'House1', ...}
+map_block_data_exceptions = {}
 
 # {tileset '01': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_used_tile_ids = defaultdict(lambda: set())
@@ -61,6 +64,21 @@ def read_map_tilesets():
 				tileset_name = parts[2].rstrip(',')
 				tileset_id = tileset_ids[tileset_name]
 				map_tilesets[map_name] = tileset_id
+
+def read_block_filenames():
+	for block_data_filename in block_data_filenames:
+		with open(code_directory + block_data_filename, 'r') as f:
+			map_names = []
+			for line in f:
+				line = line.strip()
+				if line.endswith('_BlockData:'):
+					map_names.append(line[:-11])
+				elif line.startswith('INCBIN "maps/') and line.endswith('.blk"'):
+					block_data_name = line[13:-5]
+					for map_name in map_names:
+						if map_name != block_data_name:
+							map_block_data_exceptions[map_name] = block_data_name
+					map_names[:] = []
 
 def read_used_block_ids():
 	for map_name, tileset_id in map_tilesets.items():
@@ -121,8 +139,10 @@ def find_unused_tile_ids():
 def main():
 	print >> stderr, 'Reading tileset IDs from %s...' % tileset_filename
 	read_tileset_ids()
-	print >> stderr, 'Reading tileset IDs from %s...' % ', '.join(block_data_filenames)
+	print >> stderr, 'Reading map tilesets from %s...' % map_headers_filename
 	read_map_tilesets()
+	print >> stderr, 'Reading block file names from %s...' % ', '.join(block_data_filenames)
+	read_block_filenames()
 	print >> stderr, 'Reading used block IDs from each %s...' % (block_filename_fmt % '<name>')
 	read_used_block_ids()
 	print >> stderr, 'Reading used block IDs from %s...' % map_headers_2_filename
@@ -139,159 +159,6 @@ def main():
 		print '\tunused tiles = %s' % ' '.join(sorted(tileset_unused_tile_ids[tileset_id]))
 		print '\tunused blocks = %s' % ' '.join(sorted(tileset_unused_block_ids[tileset_id]))
 		print
-
-map_block_data_exceptions = {
-'OlivineTimsHouse': 'House1',
-'OlivinePunishmentSpeechHouse': 'House1',
-'OlivineGoodRodHouse': 'House1',
-'Route39Farmhouse': 'House1',
-'MahoganyRedGyaradosSpeechHouse': 'House1',
-'BlackthornDragonSpeechHouse': 'House1',
-'BlackthornEmysHouse': 'House1',
-'MoveDeletersHouse': 'House1',
-'CeruleanGymBadgeSpeechHouse': 'House1',
-'CeruleanPoliceStation': 'House1',
-'CeruleanTradeSpeechHouse': 'House1',
-'BillsHouse': 'House1',
-'CharcoalKiln': 'House1',
-'LakeofRageHiddenPowerHouse': 'House1',
-'LakeofRageMagikarpHouse': 'House1',
-'GoldenrodHappinessRater': 'House1',
-'GoldenrodBillsHouse': 'House1',
-'GoldenrodPPSpeechHouse': 'House1',
-'GoldenrodNameRater': 'House1',
-'VermilionHouseFishingSpeechHouse': 'House1',
-'VermilionMagnetTrainSpeechHouse': 'House1',
-'VermilionHouseDiglettsCaveSpeechHouse': 'House1',
-'BluesHouse': 'House1',
-'PewterNidoranSpeechHouse': 'House1',
-'PewterSnoozeSpeechHouse': 'House1',
-'FuchsiaBillSpeechHouse': 'House1',
-'LavenderTownSpeechHouse': 'House1',
-'LavenderNameRater': 'House1',
-'Route12SuperRodHouse': 'House1',
-'Route28FamousSpeechHouse': 'House1',
-'CeladonMansionRoofHouse': 'House1',
-'Route16FuchsiaSpeechHouse': 'House1',
-'ManiasHouse': 'House1',
-'CianwoodPharmacy': 'House1',
-'CianwoodCityPhotoStudio': 'House1',
-'CianwoodLugiaSpeechHouse': 'House1',
-'PokeSeersHouse': 'House1',
-'ViridianNicknameSpeechHouse': 'House1',
-'Route2NuggetSpeechHouse': 'House1',
-'KrissNeighborsHouse': 'House1',
-'Route26HealSpeechHouse': 'House1',
-'Route26DayofWeekSiblingsHouse': 'House1',
-'Route27SandstormHouse': 'House1',
-'MrPsychicsHouse': 'House1',
-'Route5CleanseTagSpeechHouse': 'House1',
-'CherrygroveGymSpeechHouse': 'House1',
-'GuideGentsHouse': 'House1',
-'CherrygroveEvolutionSpeechHouse': 'House1',
-'Route30BerrySpeechHouse': 'House1',
-'Route19FuchsiaGate': 'NorthSouthGate',
-'Route43MahoganyGate': 'NorthSouthGate',
-'Route43Gate': 'NorthSouthGate',
-'Route35Goldenrodgate': 'NorthSouthGate',
-'Route36RuinsofAlphgate': 'NorthSouthGate',
-'Route34IlexForestGate': 'NorthSouthGate',
-'Route6SaffronGate': 'NorthSouthGate',
-'Route40BattleTowerGate': 'NorthSouthGate',
-'Route2Gate': 'NorthSouthGate',
-'Route2946Gate': 'NorthSouthGate',
-'Route5SaffronCityGate': 'NorthSouthGate',
-'ViridianForestViridianGate': 'NorthSouthGate',
-'ViridianForestPewterGate': 'NorthSouthGate',
-'YellowForestGate': 'NorthSouthGate',
-'SafariZoneFuchsiaGate': 'NorthSouthGate',
-'Route38EcruteakGate': 'EastWestGate',
-'Route42EcruteakGate': 'EastWestGate',
-'Route32RuinsofAlphGate': 'EastWestGate',
-'Route36VioletGate': 'EastWestGate',
-'IlexForestAzaleaGate': 'EastWestGate',
-'Route15FuchsiaGate': 'EastWestGate',
-'Route8SaffronGate': 'EastWestGate',
-'Route11Gate': 'EastWestGate',
-'Route16Gate': 'EastWestGate',
-'Route7SaffronGate': 'EastWestGate',
-'Route1718Gate': 'EastWestGate',
-'Route31VioletGate': 'EastWestGate',
-'OlivineMart': 'Mart',
-'EcruteakMart': 'Mart',
-'BlackthornMart': 'Mart',
-'CeruleanMart': 'Mart',
-'AzaleaMart': 'Mart',
-'VioletMart': 'Mart',
-'VermilionMart': 'Mart',
-'PewterMart': 'Mart',
-'FuchsiaMart': 'Mart',
-'LavenderMart': 'Mart',
-'ViridianMart': 'Mart',
-'SaffronMart': 'Mart',
-'CherrygroveMart': 'Mart',
-'OlivinePokeCenter1F': 'PokeCenter1F',
-'MahoganyPokeCenter1F': 'PokeCenter1F',
-'EcruteakPokeCenter1F': 'PokeCenter1F',
-'BlackthornPokeCenter1F': 'PokeCenter1F',
-'CinnabarPokeCenter1F': 'PokeCenter1F',
-'CeruleanPokeCenter1F': 'PokeCenter1F',
-'Route10PokeCenter1F': 'PokeCenter1F',
-'AzaleaPokeCenter1F': 'PokeCenter1F',
-'VioletPokeCenter1F': 'PokeCenter1F',
-'Route32PokeCenter1F': 'PokeCenter1F',
-'VermilionPokeCenter1F': 'PokeCenter1F',
-'PewterPokeCenter1F': 'PokeCenter1F',
-'FuchsiaPokeCenter1F': 'PokeCenter1F',
-'LavenderPokeCenter1F': 'PokeCenter1F',
-'SilverCavePokeCenter1F': 'PokeCenter1F',
-'CeladonPokeCenter1F': 'PokeCenter1F',
-'CianwoodPokeCenter1F': 'PokeCenter1F',
-'ViridianPokeCenter1F': 'PokeCenter1F',
-'SaffronPokeCenter1F': 'PokeCenter1F',
-'CherrygrovePokeCenter1F': 'PokeCenter1F',
-'GoldenrodDeptStore1F': 'DeptStore1F',
-'CeladonDeptStore1F': 'DeptStore1F',
-'GoldenrodDeptStore2F': 'DeptStore2F',
-'CeladonDeptStore2F': 'DeptStore2F',
-'GoldenrodDeptStore3F': 'DeptStore3F',
-'CeladonDeptStore3F': 'DeptStore3F',
-'GoldenrodDeptStore4F': 'DeptStore4F',
-'CeladonDeptStore4F': 'DeptStore4F',
-'GoldenrodDeptStore5F': 'DeptStore5F',
-'CeladonDeptStore5F': 'DeptStore5F',
-'GoldenrodDeptStore6F': 'DeptStore6F',
-'CeladonDeptStore6F': 'DeptStore6F',
-'GoldenrodDeptStoreElevator': 'DeptStoreElevator',
-'CeladonDeptStoreElevator': 'DeptStoreElevator',
-'TimeCapsule': 'TradeCenter',
-'EcruteakLugiaSpeechHouse': 'House2',
-'EcruteakItemfinderHouse': 'House2',
-'VioletNicknameSpeechHouse': 'House2',
-'VioletOnixTradeHouse': 'House2',
-'NationalParkBugContest': 'NationalPark',
-'Route6UndergroundEntrance': 'UndergroundPathEntrance',
-'Route5UndergroundEntrance': 'UndergroundPathEntrance',
-'RuinsofAlphHoOhChamber': 'RuinsofAlphPuzzleChamber',
-'RuinsofAlphKabutoChamber': 'RuinsofAlphPuzzleChamber',
-'RuinsofAlphOmanyteChamber': 'RuinsofAlphPuzzleChamber',
-'RuinsofAlphAerodactylChamber': 'RuinsofAlphPuzzleChamber',
-'MahoganyMart1F': 'GiftShop',
-'MountMoonGiftShop': 'GiftShop',
-'SafariZoneMainOffice': 'OlivineCafe',
-'SafariZoneWardensHome': 'PokemonFanClub',
-'OlivinePortPassage': 'PortPassage',
-'VermilionPortPassage': 'PortPassage',
-'RuinsofAlphHoOhItemRoom': 'RuinsofAlphItemRoom',
-'RuinsofAlphKabutoItemRoom': 'RuinsofAlphItemRoom',
-'RuinsofAlphOmanyteItemRoom': 'RuinsofAlphItemRoom',
-'RuinsofAlphAerodactylItemRoom': 'RuinsofAlphItemRoom',
-'SafariZoneHubRestHouse': 'SafariZoneRestHouse',
-'SafariZoneEastRestHouse': 'SafariZoneRestHouse',
-'SafariZoneNorthRestHouse': 'SafariZoneRestHouse',
-'SeagallopFerryVermilionGate': 'SeagallopFerryGate',
-'SeagallopFerryNavelGate': 'SeagallopFerryGate',
-}
 
 if __name__ == '__main__':
 	main()
