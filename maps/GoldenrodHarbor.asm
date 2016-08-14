@@ -67,17 +67,168 @@ GoldenrodHarborMagikarpScript:
 	jumptextfaceplayer GoldenrodHarborMagikarpText
 
 GoldenrodHarborPokefanmScript:
-	; EVENT_DECO_TENTACOOL_DOLL
-	; EVENT_DECO_STARYU_DOLL
-	; EVENT_DECO_SHELLDER_DOLL
-	; EVENT_DECO_MAGIKARP_DOLL
-	jumptextfaceplayer GoldenrodHarborPokefanmText
+	faceplayer
+	opentext
+	writetext GoldenrodHarborDollVendorText
+.Start:
+	special PlaceMoneyTopRight
+	loadmenudata .MenuData
+	verticalmenu
+	closewindow
+	if_equal $1, .MagikarpDoll
+	if_equal $2, .TentacoolDoll
+	if_equal $3, .ShellderDoll
+	closetext
+	end
+
+.MagikarpDoll:
+	checkmoney $0, 1200
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_MAGIKARP_DOLL
+	iftrue .AlreadyBought
+	takemoney $0, 1200
+	setevent EVENT_DECO_MAGIKARP_DOLL
+	writetext GoldenrodHarborMagikarpDollText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GoldenrodHarborMagikarpDollSentText
+	waitbutton
+	jump .Start
+
+.TentacoolDoll:
+	checkmoney $0, 2400
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_TENTACOOL_DOLL
+	iftrue .AlreadyBought
+	takemoney $0, 2400
+	setevent EVENT_DECO_TENTACOOL_DOLL
+	writetext GoldenrodHarborTentacoolDollText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GoldenrodHarborTentacoolDollSentText
+	waitbutton
+	jump .Start
+
+.ShellderDoll:
+	checkmoney $0, 3600
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_SHELLDER_DOLL
+	iftrue .AlreadyBought
+	takemoney $0, 3600
+	setevent EVENT_DECO_SHELLDER_DOLL
+	writetext GoldenrodHarborShellderDollText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GoldenrodHarborShellderDollSentText
+	waitbutton
+	jump .Start
+
+.NotEnoughMoney:
+	writetext GoldenrodHarborNoMoneyText
+	waitbutton
+	jump .Start
+
+.AlreadyBought:
+	writetext GoldenrodHarborAlreadyBoughtText
+	waitbutton
+	jump .Start
+
+.MenuData:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "Magikarp    ¥1200@"
+	db "Tentacool   ¥2400@"
+	db "Shellder    ¥3600@"
+	db "Cancel@"
 
 GoldenrodHarborYoungsterScript:
-	; EVENT_DECO_PLANT_1
-	; EVENT_DECO_PLANT_2
-	; EVENT_DECO_PLANT_3
-	jumptextfaceplayer GoldenrodHarborYoungsterText
+	faceplayer
+	opentext
+	writetext GoldenrodHarborPlantVendorText
+.Start:
+	special PlaceMoneyTopRight
+	loadmenudata .MenuData
+	verticalmenu
+	closewindow
+	if_equal $1, .MagnaPlant
+	if_equal $2, .TropicPlant
+	if_equal $3, .JumboPlant
+	closetext
+	end
+
+.MagnaPlant:
+	checkmoney $0, 5400
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_PLANT_1
+	iftrue .AlreadyBought
+	takemoney $0, 5400
+	setevent EVENT_DECO_PLANT_1
+	writetext GoldenrodHarborMagnaPlantText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GoldenrodHarborMagnaPlantSentText
+	waitbutton
+	jump .Start
+
+.TropicPlant:
+	checkmoney $0, 8600
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_PLANT_2
+	iftrue .AlreadyBought
+	takemoney $0, 8600
+	setevent EVENT_DECO_PLANT_2
+	writetext GoldenrodHarborTropicPlantText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GoldenrodHarborTropicPlantSentText
+	waitbutton
+	jump .Start
+
+.JumboPlant:
+	checkmoney $0, 10800
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_PLANT_3
+	iftrue .AlreadyBought
+	takemoney $0, 10800
+	setevent EVENT_DECO_PLANT_3
+	writetext GoldenrodHarborJumboPlantText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GoldenrodHarborJumboPlantSentText
+	waitbutton
+	jump .Start
+
+.NotEnoughMoney:
+	writetext GoldenrodHarborNoMoneyText
+	waitbutton
+	jump .Start
+
+.AlreadyBought:
+	writetext GoldenrodHarborAlreadyBoughtText
+	waitbutton
+	jump .Start
+
+.MenuData:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "Magna P.    ¥5400@"
+	db "Tropic P.   ¥8600@"
+	db "Jumbo P.   ¥10800@"
+	db "Cancel@"
 
 Jacques:
 	faceplayer
@@ -155,14 +306,88 @@ GoldenrodHarborMagikarpText:
 	para "It's only a doll…"
 	done
 
-GoldenrodHarborPokefanmText:
-	text "TODO"
-	line "Doll Mart"
+GoldenrodHarborDollVendorText:
+	text "Welcome! I have"
+	line "adorable aquatic"
+	cont "dolls for sale."
 	done
 
-GoldenrodHarborYoungsterText:
-	text "TODO"
-	line "Magna Plant"
+GoldenrodHarborMagikarpDollText:
+	text "<PLAYER> bought"
+	line "Magikarp Doll."
+	done
+
+GoldenrodHarborMagikarpDollSentText:
+	text "Magikarp Doll"
+	line "was sent home."
+	done
+
+GoldenrodHarborTentacoolDollText:
+	text "<PLAYER> bought"
+	line "Tentacool Doll."
+	done
+
+GoldenrodHarborTentacoolDollSentText:
+	text "Tentacool Doll"
+	line "was sent home."
+	done
+
+GoldenrodHarborShellderDollText:
+	text "<PLAYER> bought"
+	line "Shellder Doll."
+	done
+
+GoldenrodHarborShellderDollSentText:
+	text "Shellder Doll"
+	line "was sent home."
+	done
+
+GoldenrodHarborNoMoneyText:
+	text "You can't afford"
+	line "that!"
+	done
+
+GoldenrodHarborAlreadyBoughtText:
+	text "You already have"
+	line "that!"
+	done
+
+GoldenrodHarborPlantVendorText:
+	text "Welcome! I have"
+	line "a selection of"
+
+	para "exotic plants to"
+	line "adorn your home."
+	done
+
+GoldenrodHarborMagnaPlantText:
+	text "<PLAYER> bought"
+	line "Magna Plant."
+	done
+
+GoldenrodHarborMagnaPlantSentText:
+	text "Magna Plant"
+	line "was sent home."
+	done
+
+GoldenrodHarborTropicPlantText:
+	text "<PLAYER> bought"
+	line "Tropic Plant."
+	done
+
+GoldenrodHarborTropicPlantSentText:
+	text "Tropic Plant"
+	line "was sent home."
+	done
+
+GoldenrodHarborJumboPlantText:
+	text "<PLAYER> bought"
+	line "Jumbo Plant."
+	done
+
+GoldenrodHarborJumboPlantSentText:
+	text "Jumbo Plant"
+	line "was sent home."
 	done
 
 GoldenrodHarborSignText:

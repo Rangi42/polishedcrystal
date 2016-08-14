@@ -294,6 +294,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
    * Get Amulet Coin from Lyra in Olivine City.
    * Battle Lyra in New Bark Town before Victory Road.
 * Add: Shrine in Ecruteak City from Mateo's [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172).
+* Add: Buy dolls and plants to decorate your room in Goldenrod Harbor.
 * Add: Replace Cianwood Photo Studio with an event that makes your Pokémon happier.
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy.
 * Add: Eusine shows you the legendary beasts in Celadon City in case you haven't found them roaming.

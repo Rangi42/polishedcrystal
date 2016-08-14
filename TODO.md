@@ -103,5 +103,4 @@
 * Press Start to auto-sort items
 * Add a third Trainer Card page for Kanto badges
 * Adjust Kanto trainers' levels closer to Gym Leaders
-* Add marts for dolls and plants in Goldenrod Harbor
 * Battle Lyra for the third time in Olivine, Cianwood, or Mahogany
