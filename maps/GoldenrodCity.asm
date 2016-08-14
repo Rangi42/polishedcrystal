@@ -17,7 +17,11 @@ const_value set 2
 
 GoldenrodCity_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 2
@@ -48,6 +52,35 @@ GoldenrodCity_MapScriptHeader:
 	disappear GOLDENRODCITY_POKEFAN_M2
 	return
 
+.Trigger0:
+	priorityjump GoldenrodCityStepDownScript
+	end
+
+.Trigger1:
+	end
+
+GoldenrodCityStepDownScript:
+	checkcode VAR_YCOORD
+	if_not_equal $f, .Done
+	checkcode VAR_XCOORD
+	if_not_equal $5, .Done
+	applymovement PLAYER, GoldenrodCityStepDownMovementData
+.Done
+	dotrigger $1
+	end
+
+GoldenrodCityPanUpScript:
+	playsound SFX_EXIT_BUILDING
+	applymovement PLAYER, GoldenrodCityHidePlayerMovementData
+	waitsfx
+	applymovement PLAYER, GoldenrodCityPanUpMovementData
+	disappear PLAYER
+	pause 10
+	special FadeOutPalettes
+	pause 15
+	dotrigger $0
+	warpfacing UP, RADIO_TOWER_1F, $2, $7
+	end
 
 MoveTutor:
 	faceplayer
@@ -91,7 +124,6 @@ MoveTutor:
 	if_equal $0, .TeachMove
 	jump .Incompatible
 
-
 .MoveMenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -106,7 +138,6 @@ MoveTutor:
 	db "ThunderPunch@"
 	db "Ice Punch@"
 	db "Cancel@"
-
 
 .Refused:
 	writetext UnknownText_0x1990b4
@@ -255,6 +286,24 @@ GoldenrodCityPokeCenterSign:
 
 GoldenrodCityFlowerShopSign:
 	jumptext GoldenrodCityFlowerShopSignText
+
+GoldenrodCityStepDownMovementData:
+	step_down
+	step_end
+
+GoldenrodCityHidePlayerMovementData:
+	hide_person
+	step_end
+
+GoldenrodCityPanUpMovementData:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
 
 UnknownText_0x198a69:
 	text "They built the new"
@@ -539,14 +588,15 @@ GoldenrodCity_MapEventHeader:
 	warp_def $7, $f, 1, GOLDENROD_NAME_RATER
 	warp_def $1b, $18, 1, GOLDENROD_DEPT_STORE_1F
 	warp_def $15, $e, 1, GOLDENROD_GAME_CORNER
-	warp_def $f, $5, 1, RADIO_TOWER_1F
+	warp_def $f, $5, 1, RADIO_TOWER_1F ; hole
 	warp_def $1, $13, 3, ROUTE_35_GOLDENROD_GATE
 	warp_def $5, $9, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 	warp_def $1d, $9, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 	warp_def $1b, $e, 2, GOLDENROD_POKECOM_CENTER_1F
 
 .XYTriggers:
-	db 0
+	db 1
+	xy_trigger 1, $f, $5, $0, GoldenrodCityPanUpScript, $0, $0
 
 .Signposts:
 	db 12

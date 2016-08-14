@@ -96,5 +96,6 @@ ENDM
 	trigger_def DARK_CAVE_VIOLET_ENTRANCE,              wDarkCaveVioletEntranceTrigger
 	trigger_def VIOLET_GYM,                             wVioletGymTrigger
 	trigger_def BELLCHIME_TRAIL,                        wBellchimeTrailTrigger
+	trigger_def GOLDENROD_CITY,                         wGoldenrodCityTrigger
 	db -1
 ; 4d15b

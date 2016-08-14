@@ -9,6 +9,7 @@ const_value set 2
 	const YELLOWFOREST_POKE_BALL2
 	const YELLOWFOREST_POKE_BALL3
 	const YELLOWFOREST_POKE_BALL4
+	const YELLOWFOREST_POKE_BALL5
 
 YellowForest_MapScriptHeader:
 .MapTriggers:
@@ -150,8 +151,11 @@ YellowForestMiracleSeed:
 YellowForestUltraBall:
 	itemball ULTRA_BALL
 
+YellowForestLemonade:
+	itemball LEMONADE
+
 YellowForestSurfPikachuDoll:
-	disappear YELLOWFOREST_POKE_BALL4
+	disappear YELLOWFOREST_POKE_BALL5
 	setevent EVENT_DECO_SURFING_PIKACHU_DOLL
 	opentext
 	writetext YellowForestSurfPikachuDollText
@@ -387,7 +391,7 @@ YellowForest_MapEventHeader:
 	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
 
 .PersonEvents:
-	db 10
+	db 11
 	person_event SPRITE_TWIN, 39, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
 	person_event SPRITE_TWIN, 32, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
 	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
@@ -397,4 +401,5 @@ YellowForest_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 16, 25, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestThunderStone, EVENT_YELLOW_FOREST_THUNDERSTONE
 	person_event SPRITE_POKE_BALL, 24, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestMiracleSeed, EVENT_YELLOW_FOREST_MIRACLE_SEED
 	person_event SPRITE_POKE_BALL, 21, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestUltraBall, EVENT_YELLOW_FOREST_ULTRA_BALL
-	person_event SPRITE_POKE_BALL, 24, 49, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
+	person_event SPRITE_POKE_BALL, 24, 49, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestLemonade, EVENT_YELLOW_FOREST_LEMONADE
+	person_event SPRITE_POKE_BALL, 16, 41, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL

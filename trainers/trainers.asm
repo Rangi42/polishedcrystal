@@ -604,11 +604,11 @@ JasmineGroup:
 		db THUNDER_WAVE
 		db THUNDERBOLT
 
-	db 29, MAGNEMITE, NO_ITEM
-		db SUPERSONIC
-		db THUNDER_WAVE
-		db METAL_SOUND
-		db THUNDERBOLT
+	db 31, FORRETRESS, NO_ITEM
+		db SPIKES
+		db FLASH_CANNON
+		db DEFENSE_CURL
+		db ROLLOUT
 
 	db 30, MAGNETON, NO_ITEM
 		db SUPERSONIC
@@ -650,11 +650,11 @@ JasmineGroup:
 		db FLASH_CANNON
 		db EXPLOSION
 
-	db 70, AMPHAROS, MAGNET
-		db THUNDERBOLT
-		db FOCUS_BLAST
-		db SAFEGUARD
-		db LIGHT_SCREEN
+	db 70, FORRETRESS, SOFT_SAND
+		db EARTHQUAKE
+		db RAPID_SPIN
+		db EXPLOSION
+		db SPIKES
 
 	db 73, MAGNEZONE, CHARCOAL
 		db THUNDERBOLT
@@ -5607,8 +5607,8 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 20, RATICATE
-	db 21, PERSIAN
+	db 23, RATICATE
+	db 24, PERSIAN
 
 	db $ff ; end
 
@@ -5730,9 +5730,9 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 20, GOLBAT
-	db 20, HAUNTER
-	db 20, GOLBAT
+	db 23, GOLBAT
+	db 23, HAUNTER
+	db 23, GOLBAT
 
 	db $ff ; end
 
@@ -5743,9 +5743,9 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 19, KOFFING
-	db 20, HOUNDOUR
-	db 19, KOFFING
+	db 23, KOFFING
+	db 25, HOUNDOUR
+	db 23, KOFFING
 
 	db $ff ; end
 
@@ -5780,9 +5780,9 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 19, ZUBAT
-	db 21, RATICATE
-	db 22, MURKROW
+	db 23, ZUBAT
+	db 24, RATICATE
+	db 25, MURKROW
 
 	db $ff ; end
 
@@ -5937,9 +5937,9 @@ GruntFGroup:
 	db 0 ; normal
 
 	; party
-	db 17, EKANS
-	db 19, ARBOK
-	db 18, GLOOM
+	db 22, EKANS
+	db 23, ARBOK
+	db 23, GLOOM
 
 	db $ff ; end
 
@@ -5956,11 +5956,11 @@ JessieJamesGroup:
 	db 0 ; normal
 
 	; party
-	db 23, WEEZING
-	db 23, ARBOK
-	db 21, VICTREEBEL
-	db 21, WOBBUFFET
-	db 25, MEOWTH
+	db 25, WEEZING
+	db 25, ARBOK
+	db 23, VICTREEBEL
+	db 23, WOBBUFFET
+	db 27, MEOWTH
 
 	db $ff ; end
 
@@ -11483,25 +11483,25 @@ ExecutiveMGroup:
 
 	; party
 
-	db 25, HOUNDOUR, KINGS_ROCK
+	db 31, HOUNDOUR, KINGS_ROCK
 		db EMBER
 		db SMOKESCREEN
 		db BITE
 		db SUPER_FANG
 
-	db 26, HAUNTER, SPELL_TAG
+	db 27, HAUNTER, SPELL_TAG
 		db DISABLE
 		db NIGHT_SHADE
 		db CONFUSE_RAY
 		db SHADOW_BALL
 
-	db 27, RATICATE, BLACKGLASSES
+	db 29, RATICATE, BLACKGLASSES
 		db PURSUIT
 		db HYPER_FANG
 		db SCARY_FACE
 		db CRUNCH
 
-	db 26, WEEZING, SILK_SCARF
+	db 27, WEEZING, SILK_SCARF
 		db WILL_O_WISP
 		db SELFDESTRUCT
 		db SLUDGE
