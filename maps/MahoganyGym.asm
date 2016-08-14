@@ -201,9 +201,10 @@ UnknownText_0x199d3b:
 
 UnknownText_0x199d55:
 	text "That Badge will"
-	line "let your #mon use"
-	cont "Whirlpool to get"
-	cont "across whirlpools."
+	line "let your #mon"
+
+	para "use Whirlpool to"
+	line "cross whirlpools."
 
 	para "And this… This is"
 	line "a gift from me!"
