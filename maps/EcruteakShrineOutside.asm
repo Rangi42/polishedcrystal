@@ -1,6 +1,7 @@
 const_value set 2
 	const ECRUTEAKSHRINEOUTSIDE_TWIN
 	const ECRUTEAKSHRINEOUTSIDE_HOOTHOOT
+	const ECRUTEAKSHRINEOUTSIDE_SAGE
 
 EcruteakShrineOutside_MapScriptHeader:
 .MapTriggers:
@@ -20,6 +21,9 @@ EcruteakShrineOutsideHoothootScript:
 	closetext
 	end
 
+EcruteakShrineOutsideSageScript:
+	jumptextfaceplayer EcruteakShrineOutsideSageText
+
 EcruteakShrineOutsideStatueScript:
 	jumptext EcruteakShrineOutsideStatueText
 
@@ -31,6 +35,15 @@ EcruteakShrineOutsideTwinText:
 
 EcruteakShrineOutsideHoothootText:
 	text "Hoothoot: Hoot!"
+	done
+
+EcruteakShrineOutsideSageText:
+	text "On New Year's Eve,"
+	line "people visit this"
+
+	para "shrine and make"
+	line "wishes for their"
+	cont "future."
 	done
 
 EcruteakShrineOutsideStatueText:
@@ -61,6 +74,7 @@ EcruteakShrineOutside_MapEventHeader:
 	signpost 8, 8, SIGNPOST_READ, EcruteakShrineOutsideStatueScript
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_TWIN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideTwinScript, -1
 	person_event SPRITE_HOOTHOOT, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideHoothootScript, -1
+	person_event SPRITE_SAGE, 10, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideSageScript, -1

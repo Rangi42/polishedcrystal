@@ -86,6 +86,9 @@ EcruteakShrineInsideGrampsScript:
 EcruteakShrineInsideSageScript:
 	jumptextfaceplayer EcruteakShrineInsideSageText
 
+EcruteakShrineInsideAltarScript:
+	jumptext EcruteakShrineInsideAltarText
+
 EcruteakShrineInsideReiGreetingText:
 	text "Rei: Oh, hello."
 	line "Welcome to our"
@@ -156,6 +159,12 @@ EcruteakShrineInsideSageText:
 	cont "Psychic types."
 	done
 
+EcruteakShrineInsideAltarText:
+	text "Please show honor"
+	line "and respect while"
+	cont "visiting."
+	done
+
 EcruteakShrineInside_MapEventHeader:
 	; filler
 	db 0, 0
@@ -169,7 +178,9 @@ EcruteakShrineInside_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 6, 5, SIGNPOST_READ, EcruteakShrineInsideAltarScript
+	signpost 6, 6, SIGNPOST_READ, EcruteakShrineInsideAltarScript
 
 .PersonEvents:
 	db 4

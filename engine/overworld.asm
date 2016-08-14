@@ -1463,14 +1463,14 @@ Group20Sprites:
 ; YellowForest
 ; EcruteakShrineOutside
 	db SPRITE_COOLTRAINER_M
+	db SPRITE_SAGE
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YELLOW
-	; 4 walking sprites
+	; 5 walking sprites
 	db SPRITE_HOOTHOOT
 	db SPRITE_POKE_BALL
-	; 6 total sprites
-	db SPRITE_GOLD_TROPHY
+	; 7 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
