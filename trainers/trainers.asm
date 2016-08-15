@@ -5432,9 +5432,9 @@ HikerGroup:
 	db 0 ; normal
 
 	; party
-	db 19, DUNSPARCE
-	db 19, DUNSPARCE
-	db 19, DUNSPARCE
+	db 22, DUNSPARCE
+	db 22, DUNSPARCE
+	db 22, DUNSPARCE
 
 	db $ff ; end
 
@@ -11483,12 +11483,6 @@ ExecutiveMGroup:
 
 	; party
 
-	db 31, HOUNDOUR, KINGS_ROCK
-		db EMBER
-		db SMOKESCREEN
-		db BITE
-		db SUPER_FANG
-
 	db 27, HAUNTER, SPELL_TAG
 		db DISABLE
 		db NIGHT_SHADE
@@ -11506,6 +11500,12 @@ ExecutiveMGroup:
 		db SELFDESTRUCT
 		db SLUDGE
 		db SMOKESCREEN
+
+	db 31, HOUNDOUR, KINGS_ROCK
+		db EMBER
+		db SMOKESCREEN
+		db BITE
+		db SUPER_FANG
 
 	db $ff ; end
 
