@@ -1012,7 +1012,6 @@ Group6Sprites:
 ; CinnabarIsland
 ; Route9
 ; Route10North
-	db SPRITE_BIRD
 	db SPRITE_BLUE
 	db SPRITE_FISHER
 	db SPRITE_LASS
@@ -1020,8 +1019,9 @@ Group6Sprites:
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	; 7 walking sprites
 	db SPRITE_POKE_BALL
+	db SPRITE_ZAPDOS
 	; 9 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
