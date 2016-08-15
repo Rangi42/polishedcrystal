@@ -2424,10 +2424,18 @@ BillsPC_PrintBoxCountAndCapacity: ; e3632
 	db "@"
 ; e366c
 
+GetBoxCountWithC:
+	ld a, [wCurBox]
+	ld b, a
+	ld a, c
+	ld c, b
+	jr BoxSelectionJumpIn
+
 GetBoxCount: ; e366c (38:766c)
 	ld a, [wCurBox]
 	ld c, a
 	ld a, [MenuSelection]
+BoxSelectionJumpIn:
 	dec a
 	cp c
 	jr z, .activebox

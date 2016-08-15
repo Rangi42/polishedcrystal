@@ -45,7 +45,6 @@
 * Gold Berry heals 25% HP even in battle (edit ConsumeHeldItem)
 * Select reorders Pokémon in party menu
 * Send gift Pokémon to the PC if the party is full
-* Bill calls to switch boxes when one is full
 * More frequently successful Headbutting (edit Script_respawn_one_offs)
 * More likely to find roaming Pokémon when on the correct route
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female

@@ -169,7 +169,7 @@ BillPhoneScript1: ; 0xbcfc5
 	jump .main
 
 .main ; 0xbcfe7
-	farwritetext BillPhoneGeneriText
+	farwritetext BillPhoneGenericText
 	buttonsound
 	checkcode VAR_BOXSPACE
 	RAM2MEM $0
@@ -184,10 +184,28 @@ BillPhoneScript1: ; 0xbcfc5
 
 .full ; 0xbd002
 	farwritetext BillPhoneFullText
-	end
+	jump BillPhoneScriptCheckForBoxes
 
 BillPhoneScript2: ; 0xbd007
 	farwritetext BillPhoneNewlyFullText
+BillPhoneScriptCheckForBoxes:
+	special BillBoxSwitchCheck
+	if_equal 0, BillPhoneWholePCFull
+	farwritetext BillWantNextBox
+	farwritetext UnknownText_0x1c462a
+	yesorno
+	iffalse .refused
+	special BillBoxSwitch
+	jump .hang_up
+
+.refused
+	farwritetext BillCallMeToSwitch
+.hang_up
+	farwritetext BillThankYouText
+	end
+
+BillPhoneWholePCFull:
+	farwritetext BillWholePCFullText
 	waitbutton
 	end
 

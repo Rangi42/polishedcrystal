@@ -37,7 +37,6 @@ Function14a58: ; 14a58
 	ret
 ; 14a83
 
-
 ChangeBoxSaveGame: ; 14a83 (5:4a83)
 	push de
 	ld hl, UnknownText_0x152a1
@@ -47,6 +46,14 @@ ChangeBoxSaveGame: ; 14a83 (5:4a83)
 	jr c, .refused
 	call AskOverwriteSaveFile
 	jr c, .refused
+	jr nc, SaveAndChangeBox
+.refused
+	pop de
+	ret
+
+ChangeBoxSaveGameNoConfirm:
+	push de
+SaveAndChangeBox:
 	call SetWRAMStateForSave
 	call SavingDontTurnOffThePower
 	call SaveBox
@@ -57,9 +64,6 @@ ChangeBoxSaveGame: ; 14a83 (5:4a83)
 	call SavedTheGame
 	call ClearWRAMStateAfterSave
 	and a
-	ret
-.refused
-	pop de
 	ret
 
 Link_SaveGame: ; 14ab2

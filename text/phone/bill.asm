@@ -28,7 +28,7 @@ BillPhoneNiteGreetingText: ; 0x1b44b5
 	line "Service."
 	done
 
-BillPhoneGeneriText: ; 0x1b44fe
+BillPhoneGenericText: ; 0x1b44fe
 	text "Who's calling?"
 
 	para "<PLAY_G>, is it?"
@@ -78,7 +78,7 @@ BillPhoneFullText: ; 0x1b45ed
 
 	para "you want to catch"
 	line "more #mon."
-	done
+	prompt
 
 BillPhoneNewlyFullText: ; 0x1b4652
 	text "Hi, <PLAY_G>?"
@@ -96,6 +96,40 @@ BillPhoneNewlyFullText: ; 0x1b4652
 
 	para "you want to catch"
 	line "more #mon."
+	prompt
 
-	para "Bye now!"
+BillWholePCFullText:
+	text "Wow, you filled"
+	line "a whole server."
+
+	para "You'll have to"
+	line "release #mon"
+	cont "to make space."
 	done
+
+BillWantNextBox:
+	text "I'll swap to the"
+	line "next Box with"
+	cont "space for you."
+
+	para "However…"
+	prompt
+
+BillThankYouText:
+	text "Thank you for"
+	line "using the PC"
+	cont "Storage System!"
+	done
+
+BillCallMeToSwitch:
+	text "Okay, I'll leave"
+	line "it alone."
+
+	para "Call me back if"
+	line "you change your"
+	cont "mind."
+
+	para "You can also"
+	line "change boxes your-"
+	cont "self via PC."
+	prompt

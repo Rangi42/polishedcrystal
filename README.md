@@ -299,6 +299,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy.
 * Add: Eusine shows you the legendary beasts in Celadon City in case you haven't found them roaming.
 * Add: Respawn uncaught legendaries (except for Celebi) after beating the Elite Four (Suicune roams).
+* Add: Bill calls to switch boxes when one is full (copied from [TPP Anniversary Crystal](https://github.com/TwitchPlaysPokemon/tppcrystal251pub/))
 * Add: Meganium can learn Calm Mind.
 * Add: Pokémon sprites for Joey and Mike's battle and for Amphy.
 * Add: Rocket Executive in Slowpoke Well.
