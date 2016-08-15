@@ -310,6 +310,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Electivire is Electric/Fighting.
 * Add: Magmortar is Fire/Steel.
 * Add: Improve Buena's prizes.
+* Add: Add river to Route 45 from HGSS.
 * Add: Missing ice puzzle in Seafoam Islands.
 * Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
 * Add: Use beta pagodas for Sprout Tower, Bell Tower, and Dragon's Den.

@@ -138,7 +138,7 @@ MAP_NONE   EQU 0
 	mapgroup ECRUTEAK_CITY,                              18, 20 ;  9
 	mapgroup ROUTE_35,                                   18, 10 ; 10
 	mapgroup ROUTE_36,                                    9, 30 ; 11
-	mapgroup ROUTE_37,                                    9, 10 ; 12
+	mapgroup ROUTE_37,                                   10, 10 ; 12
 	mapgroup ROUTE_35_GOLDENROD_GATE,                     4,  5 ; 13
 	mapgroup ROUTE_35_NATIONAL_PARK_GATE,                 4,  4 ; 14
 	mapgroup ROUTE_36_RUINS_OF_ALPH_GATE,                 4,  5 ; 15
@@ -155,9 +155,9 @@ MAP_NONE   EQU 0
 	mapgroup BLACKTHORN_MART,                             4,  6 ;  5
 	mapgroup BLACKTHORN_POKECENTER_1F,                    4,  5 ;  6
 	mapgroup MOVE_DELETERS_HOUSE,                         4,  4 ;  7
-	mapgroup ROUTE_45,                                   45, 10 ;  8
+	mapgroup ROUTE_45,                                   46, 12 ;  8
 	mapgroup ROUTE_46,                                   18, 10 ;  9
-	mapgroup BLACKTHORN_CITY,                            18, 20 ; 10
+	mapgroup BLACKTHORN_CITY,                            19, 20 ; 10
 
 	newgroup                                                    ;  6
 
@@ -419,7 +419,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 22
 
-	mapgroup ROUTE_40,                                   18, 10 ;  1
+	mapgroup ROUTE_40,                                   19, 10 ;  1
 	mapgroup ROUTE_41,                                   27, 25 ;  2
 	mapgroup CIANWOOD_CITY,                              27, 15 ;  3
 	mapgroup MANIAS_HOUSE,                                4,  4 ;  4

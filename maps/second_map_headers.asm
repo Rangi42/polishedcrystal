@@ -41,9 +41,8 @@
 	map_header_2 LakeofRage, LAKE_OF_RAGE, $5, SOUTH
 	connection south, ROUTE_43, Route43, 5, 0, 10, LAKE_OF_RAGE
 
-	map_header_2 BlackthornCity, BLACKTHORN_CITY, $71, SOUTH | WEST
-	connection south, ROUTE_45, Route45, 0, 0, 10, BLACKTHORN_CITY
-	connection west, ROUTE_44, Route44, 9, 0, 9, BLACKTHORN_CITY
+	map_header_2 BlackthornCity, BLACKTHORN_CITY, $71, SOUTH
+	connection south, ROUTE_45, Route45, -2, 0, 12, BLACKTHORN_CITY
 
 	map_header_2 SilverCaveOutside, SILVER_CAVE_OUTSIDE, $2c, EAST
 	connection east, ROUTE_28, Route28, 9, 0, 9, SILVER_CAVE_OUTSIDE
@@ -121,17 +120,16 @@
 	connection north, LAKE_OF_RAGE, LakeofRage, -3, 2, 16, ROUTE_43
 	connection south, MAHOGANY_TOWN, MahoganyTown, 0, 0, 10, ROUTE_43
 
-	map_header_2 Route44, ROUTE_44, $71, WEST | EAST
+	map_header_2 Route44, ROUTE_44, $71, WEST
 	connection west, MAHOGANY_TOWN, MahoganyTown, 0, 0, 9, ROUTE_44
-	connection east, BLACKTHORN_CITY, BlackthornCity, -3, 6, 12, ROUTE_44
 
 	map_header_2 Route45, ROUTE_45, $71, NORTH | WEST
-	connection north, BLACKTHORN_CITY, BlackthornCity, 0, 0, 13, ROUTE_45
-	connection west, ROUTE_46, Route46, 36, 0, 12, ROUTE_45
+	connection north, BLACKTHORN_CITY, BlackthornCity, 1, -1, 12, ROUTE_45
+	connection west, ROUTE_46, Route46, 37, 0, 12, ROUTE_45
 
 	map_header_2 Route46, ROUTE_46, $5, SOUTH | EAST
 	connection south, ROUTE_29, Route29, -3, 7, 16, ROUTE_46
-	connection east, ROUTE_45, Route45, -3, 33, 12, ROUTE_46
+	connection east, ROUTE_45, Route45, -3, 34, 12, ROUTE_46
 
 	map_header_2 PewterCity, PEWTER_CITY, $f, SOUTH | EAST
 	connection south, ROUTE_2, Route2, 5, 0, 10, PEWTER_CITY

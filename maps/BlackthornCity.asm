@@ -326,7 +326,7 @@ BlackthornCity_MapEventHeader:
 	warp_def $17, $1d, 1, BLACKTHORN_EMYS_HOUSE
 	warp_def $1d, $f, 2, BLACKTHORN_MART
 	warp_def $1d, $15, 1, BLACKTHORN_POKECENTER_1F
-	warp_def $1f, $9, 1, MOVE_DELETERS_HOUSE
+	warp_def $1d, $9, 1, MOVE_DELETERS_HOUSE
 	warp_def $9, $24, 2, ICE_PATH_1F
 	warp_def $1, $14, 1, DRAGONS_DEN_1F
 
@@ -337,9 +337,9 @@ BlackthornCity_MapEventHeader:
 	db 7
 	signpost 24, 34, SIGNPOST_READ, BlackthornCitySign
 	signpost 13, 17, SIGNPOST_READ, BlackthornGymSign
-	signpost 31, 7, SIGNPOST_READ, MoveDeletersHouseSign
+	signpost 29, 7, SIGNPOST_READ, MoveDeletersHouseSign
 	signpost 3, 21, SIGNPOST_READ, DragonDensSign
-	signpost 25, 5, SIGNPOST_READ, BlackthornCityTrainerTips
+	signpost 19, 9, SIGNPOST_READ, BlackthornCityTrainerTips
 	signpost 29, 16, SIGNPOST_READ, BlackthornCityMartSign
 	signpost 29, 22, SIGNPOST_READ, BlackthornCityPokeCenterSign
 
