@@ -134,7 +134,7 @@ UnknownText_0x5ecef:
 	text "Mary: It's just"
 	line "right for #mon"
 
-	para "that know Normal-"
+	para "that know Fairy-"
 	line "type moves."
 	done
 

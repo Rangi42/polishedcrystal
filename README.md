@@ -330,6 +330,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Text errors in Olivine, Cianwood, and Mahogany Gyms.
 * Fix: Ellipses print too high during battle (thanks, comet).
 * Fix: Typo "your" for "you" (thanks, jpmac26).
+* Fix: Pink Bow powers up Fairy-type moves (thanks, Pokemaster).
 * Fix: X Special → X Spcl.Atk (thanks, Mmmmmm).
 * Fix: 50 TMs → 65 TMs.
 * Fix: Edit some trainers' rosters.
