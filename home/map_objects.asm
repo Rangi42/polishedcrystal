@@ -204,6 +204,26 @@ CheckWaterfallTile:: ; 18bd
 	ret
 ; 18c3
 
+CheckSpinTile::
+	cp $81
+	ld c, UP
+	ret z
+	cp $82
+	ld c, DOWN
+	ret z
+	cp $83
+	ld c, LEFT
+	ret z
+	cp $84
+	ld c, RIGHT
+	ret z
+	ld c, STANDING
+	ret
+
+CheckStopSpinTile::
+	cp $80
+	ret
+
 CheckStandingOnEntrance:: ; 18c3
 	ld a, [PlayerStandingTile]
 	cp $71 ; door

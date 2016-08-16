@@ -3188,3 +3188,6 @@ INCLUDE "sram.asm"
 SECTION "WRAM 7", WRAMX, BANK [7]
 wWindowStack:: ds $1000 - 1
 wWindowStackBottom:: ds 1
+
+SECTION "Spinners", WRAMX
+wSpinning:: ds 1

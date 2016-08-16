@@ -69,6 +69,8 @@ BattleBGMap: ; 1250a
 ; Gen VI money loss code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
 LoseMoney: ; 12513
+	xor a
+	ld [wSpinning], a
 	ld hl, Money
 	ld a, [hli]
 	or [hl]
