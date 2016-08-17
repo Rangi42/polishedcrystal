@@ -441,7 +441,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_2,                                    27, 10 ;  1
 	mapgroup ROUTE_22,                                    9, 20 ;  2
 	mapgroup VIRIDIAN_CITY,                              18, 20 ;  3
-	mapgroup VIRIDIAN_GYM,                                9,  5 ;  4
+	mapgroup VIRIDIAN_GYM,                               23,  7 ;  4
 	mapgroup VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
 	mapgroup TRAINER_HOUSE_1F,                            7,  5 ;  6
 	mapgroup TRAINER_HOUSE_B1F,                           8, 10 ;  7

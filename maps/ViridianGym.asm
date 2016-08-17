@@ -221,18 +221,18 @@ ViridianGym_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $11, $4, 1, VIRIDIAN_CITY
-	warp_def $11, $5, 1, VIRIDIAN_CITY
+	warp_def $2d, $6, 1, VIRIDIAN_CITY
+	warp_def $2d, $7, 1, VIRIDIAN_CITY
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 13, 3, SIGNPOST_READ, ViridianGymStatue
-	signpost 13, 6, SIGNPOST_READ, ViridianGymStatue
+	signpost 43, 4, SIGNPOST_READ, ViridianGymStatue
+	signpost 43, 9, SIGNPOST_READ, ViridianGymStatue
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_BLUE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
-	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
+	person_event SPRITE_BLUE, 2, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
+	person_event SPRITE_GYM_GUY, 43, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
