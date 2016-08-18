@@ -723,6 +723,8 @@ KRIS EQU __enum__
 	trainerclass ACE_DUO ; 50
 	const ELANANDIDA1
 	const ELANANDIDA2
+	const ARAANDBELA1
+	const ARAANDBELA2
 
 	trainerclass EXECUTIVEM ; 51
 	const ARCHER2

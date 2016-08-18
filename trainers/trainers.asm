@@ -10639,6 +10639,7 @@ CooltrainerMGroup:
 
 ; ================
 
+	; unused
 	; COOLTRAINERM (21)
 	db "Abdul@"
 	db 0 ; normal
@@ -11321,6 +11322,32 @@ AceDuoGroup:
 
 	db 55, AZUMARILL
 	db 55, PORYGON2
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (3)
+	db "Ara & Bela@"
+	db 0 ; normal
+
+	; party
+
+	db 53, GIRAFARIG
+	db 52, TAUROS
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (4)
+	db "Ara & Bela@"
+	db 0 ; normal
+
+	; party
+
+	db 52, TAUROS
+	db 53, GIRAFARIG
 
 	db $ff ; end
 

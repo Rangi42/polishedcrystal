@@ -45,15 +45,12 @@ UnknownText_0x9b6ad:
 	done
 
 UnknownText_0x9b6f5:
-	text "There are no Gym"
-	line "Trainers at the"
-	cont "Viridian Gym."
+	text "There are strong"
+	line "Gym Trainers at"
+	cont "the Viridian Gym."
 
-	para "The Leader claims"
-	line "his policy is to"
-
-	para "win without having"
-	line "any underlings."
+	para "Someday I'm going"
+	line "to join them!"
 	done
 
 UnknownText_0x9b76b:

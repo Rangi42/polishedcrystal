@@ -4,8 +4,9 @@ const_value set 2
 	const VIRIDIANGYM_COOLTRAINERM1
 	const VIRIDIANGYM_COOLTRAINERF1
 	const VIRIDIANGYM_COOLTRAINERF2
-	const VIRIDIANGYM_COOLTRAINERM2
 	const VIRIDIANGYM_COOLTRAINERF3
+	const VIRIDIANGYM_COOLTRAINERM2
+	const VIRIDIANGYM_COOLTRAINERF4
 
 ViridianGym_MapScriptHeader:
 .MapTriggers:
@@ -27,7 +28,7 @@ BlueScript_0x9aa26:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLUE
-	setevent EVENT_BEAT_COOLTRAINERM_ABDUL
+	setevent EVENT_BEAT_ACE_DUO_ARA_AND_BELA
 	setevent EVENT_BEAT_COOLTRAINERF_SALMA
 	setevent EVENT_BEAT_COOLTRAINERF_BONITA
 	setevent EVENT_BEAT_ACE_DUO_ELAN_AND_IDA
@@ -72,13 +73,24 @@ ViridianGymGuyScript:
 	closetext
 	end
 
-TrainerCooltrainermAbdul:
-	trainer EVENT_BEAT_COOLTRAINERM_ABDUL, COOLTRAINERM, ABDUL, CooltrainermAbdulSeenText, CooltrainermAbdulBeatenText, 0, CooltrainermAbdulScript
+TrainerAceDuoAraandbela1:
+	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA1, AceDuoAraandbela1SeenText, AceDuoAraandbela1BeatenText, 0, AceDuoAraandbela1Script
 
-CooltrainermAbdulScript:
+AceDuoAraandbela1Script:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermAbdulAfterText
+	writetext AceDuoAraandbela1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoAraandbela2:
+	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA2, AceDuoAraandbela2SeenText, AceDuoAraandbela2BeatenText, 0, AceDuoAraandbela2Script
+
+AceDuoAraandbela2Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoAraandbela2AfterText
 	waitbutton
 	closetext
 	end
@@ -276,19 +288,38 @@ ViridianGymGuyWinText:
 	line "tears to my eyes."
 	done
 
-CooltrainermAbdulSeenText:
-	text "Fight me and see"
-	line "how good I am!"
+AceDuoAraandbela1SeenText:
+	text "Ara: Come on,"
+	line "fight us and see"
+	cont "how good we are!"
 	done
 
-CooltrainermAbdulBeatenText:
-	text "I was deceived!"
+AceDuoAraandbela1BeatenText:
+	text "Ara: We were"
+	line "deceived!"
 	done
 
-CooltrainermAbdulAfterText:
-	text "Me, I should be"
-	line "a pretty good"
+AceDuoAraandbela1AfterText:
+	text "Ara: Me, I should"
+	line "be a pretty good"
 	cont "practice partner…"
+	done
+
+AceDuoAraandbela2SeenText:
+	text "Bela: Come on,"
+	line "fight us and see"
+	cont "how good we are!"
+	done
+
+AceDuoAraandbela2BeatenText:
+	text "Bela: We were"
+	line "deceived!"
+	done
+
+AceDuoAraandbela2AfterText:
+	text "Bela: Our practice"
+	line "battles didn't pre-"
+	cont "pare us for this."
 	done
 
 CooltrainerfSalmaSeenText:
@@ -387,10 +418,11 @@ ViridianGym_MapEventHeader:
 	signpost 43, 9, SIGNPOST_READ, ViridianGymStatue
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_BLUE, 2, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
 	person_event SPRITE_GYM_GUY, 43, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
-	person_event SPRITE_COOLTRAINER_M, 35, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermAbdul, -1
+	person_event SPRITE_COOLTRAINER_M, 35, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoAraandbela1, -1
+	person_event SPRITE_COOLTRAINER_F, 35, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoAraandbela2, -1
 	person_event SPRITE_COOLTRAINER_F, 34, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfSalma, -1
 	person_event SPRITE_COOLTRAINER_F, 28, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfBonita, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida1, -1
