@@ -77,6 +77,7 @@
 	db "Roughneck@"
 	db "Ace Trainer@"
 	db "Ace Trainer@"
+	db "Ace Duo@"
 	db "Rocket@"
 	db "Rocket@"
 	db "#mon Prof.@"

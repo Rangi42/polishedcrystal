@@ -78,6 +78,7 @@
 	add_pic RoughneckPic
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
+	add_pic AceDuoPic
 	add_pic ExecutivemPic
 	add_pic ExecutivefPic
 	add_pic PokemonProfPic

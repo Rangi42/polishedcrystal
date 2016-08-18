@@ -106,6 +106,7 @@ TrainerClassDVs: ; 270d6
 	db $DD, $DD ; roughneck
 	db $EE, $EE ; cooltrainerm
 	db $7E, $EE ; cooltrainerf
+	db $EE, $EE ; ace duo
 	db $DF, $FF ; executivem
 	db $7F, $FF ; executivef
 	db $FF, $FF ; pokemon prof
