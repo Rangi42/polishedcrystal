@@ -462,7 +462,6 @@ INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/VioletCity.asm"
 INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/Route37.asm"
-INCLUDE "maps/Route42.asm"
 INCLUDE "maps/Route46.asm"
 INCLUDE "maps/ViridianCity.asm"
 INCLUDE "maps/CeladonCity.asm"
@@ -470,6 +469,8 @@ INCLUDE "maps/Route15.asm"
 INCLUDE "maps/VermilionCity.asm"
 INCLUDE "maps/Route9.asm"
 INCLUDE "maps/CinnabarPokeCenter1F.asm"
+INCLUDE "maps/Route11Gate.asm"
+INCLUDE "maps/Route36VioletGate.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
@@ -562,8 +563,7 @@ INCLUDE "maps/PokemonMansionB1F.asm"
 
 SECTION "Map Scripts 27", ROMX
 
-INCLUDE "maps/Route11Gate.asm"
-INCLUDE "maps/Route36VioletGate.asm"
+INCLUDE "maps/Route42.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
 INCLUDE "maps/EcruteakShrineOutside.asm"

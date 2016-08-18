@@ -292,8 +292,8 @@ UnknownScript_0x6d184:
 	opentext
 	writetext UnknownText_0x6d809
 	buttonsound
-	verbosegiveitem HM_WHIRLPOOL
-	setevent EVENT_GOT_HM06_WHIRLPOOL
+	verbosegiveitem TM_THIEF
+	setevent EVENT_GOT_TM46_THIEF_FROM_LANCE
 	writetext UnknownText_0x6d8f8
 	waitbutton
 	closetext
@@ -359,12 +359,11 @@ UnknownScript_0x6d207:
 	closetext
 	end
 
-TeamRocketBaseB2FTMThief:
-	itemball TM_THIEF
+TeamRocketBaseB2FHyperPotion:
+	itemball HYPER_POTION
 
 TeamRocketBaseB2FHiddenFullHeal:
 	dwb EVENT_TEAM_ROCKET_BASE_B2F_HIDDEN_FULL_HEAL, FULL_HEAL
-
 
 MovementData_0x6d212:
 	step_right
@@ -741,26 +740,12 @@ UnknownText_0x6d809:
 	cont "any need for it."
 	done
 
-UnknownText_0x6d8e6:
-	text "<PLAYER> received"
-	line "HM06."
-	done
-
 UnknownText_0x6d8f8:
-	text "That's Whirlpool."
-	line "Teach it to a"
+	text "That's Thief."
+	line "I trust you won't"
 
-	para "#mon to get"
-	line "across wild water."
-
-	para "But keep this in"
-	line "mind."
-
-	para "You can use that"
-	line "out of battle only"
-
-	para "with the Badge"
-	line "from Mahogany Gym."
+	para "abuse it the way"
+	line "Team Rocket does."
 	done
 
 UnknownText_0x6d994:
@@ -981,4 +966,4 @@ TeamRocketBaseB2F_MapEventHeader:
 	person_event SPRITE_ROCKET, 13, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM17, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_ROCKET, 1, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM18, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_ROCKET, 14, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM19, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_POKE_BALL, 10, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, TeamRocketBaseB2FTMThief, EVENT_TEAM_ROCKET_BASE_B2F_TM_THIEF
+	person_event SPRITE_POKE_BALL, 10, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, TeamRocketBaseB2FHyperPotion, EVENT_TEAM_ROCKET_BASE_B2F_HYPER_POTION

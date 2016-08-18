@@ -22,6 +22,7 @@ JasmineScript_0x9c12f:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
+	domaptrigger ROUTE_42, $1
 	opentext
 	writetext UnknownText_0x9c33a
 	playsound SFX_GET_BADGE

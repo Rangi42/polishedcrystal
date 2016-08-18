@@ -10,22 +10,110 @@ const_value set 2
 	const ROUTE42_SUICUNE
 	const ROUTE42_OFFICERM
 	const ROUTE42_OFFICERF
+	const ROUTE42_LYRA
 
 Route42_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 3
 
 	; triggers
-	dw UnknownScript_0x1a9216, 0
-	dw UnknownScript_0x1a9217, 0
+	maptrigger .Trigger0
+	maptrigger .Trigger1
+	maptrigger .Trigger2
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x1a9216:
+.Trigger0:
 	end
 
-UnknownScript_0x1a9217:
+.Trigger1:
+	end
+
+.Trigger2:
+	end
+
+Route42LyraScript1:
+	spriteface PLAYER, LEFT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	special RunCallback_04
+	playsound SFX_ENTER_DOOR
+	appear ROUTE42_LYRA
+	waitsfx
+	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach1
+	jump Route42LyraScript
+
+Route42LyraScript2:
+	spriteface PLAYER, LEFT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	special RunCallback_04
+	playsound SFX_ENTER_DOOR
+	appear ROUTE42_LYRA
+	waitsfx
+	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach2
+	jump Route42LyraScript
+
+Route42LyraScript3:
+	spriteface PLAYER, LEFT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	special RunCallback_04
+	playsound SFX_ENTER_DOOR
+	appear ROUTE42_LYRA
+	waitsfx
+	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach3
+	jump Route42LyraScript
+
+Route42LyraScript4:
+	spriteface PLAYER, LEFT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	special RunCallback_04
+	playsound SFX_ENTER_DOOR
+	appear ROUTE42_LYRA
+	waitsfx
+	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach4
+Route42LyraScript:
+	opentext
+	writetext Route42LyraGreetingText
+	waitbutton
+	closetext
+	setevent EVENT_LYRA_ROUTE_42
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	winlosstext Route42LyraWinText, Route42LyraLossText
+	setlasttalked ROUTE42_LYRA
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Totodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Chikorita
+	loadtrainer LYRA, LYRA_7
+	jump .AfterBattle
+
+.Totodile:
+	loadtrainer LYRA, LYRA_8
+	jump .AfterBattle
+
+.Chikorita:
+	loadtrainer LYRA, LYRA_9
+.AfterBattle
+	startbattle
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	reloadmapafterbattle
+	opentext
+	writetext Route42LyraPresentText
+	buttonsound
+	verbosegiveitem HM_WHIRLPOOL
+	setevent EVENT_GOT_HM06_WHIRLPOOL
+	writetext Route42LyraWhirlpoolText
+	waitbutton
+	closetext
+	applymovement ROUTE42_LYRA, MovementData_Route42LyraLeave
+	disappear ROUTE42_LYRA
+	dotrigger $2
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	special RunCallback_04
 	end
 
 Route42SuicuneScript:
@@ -221,6 +309,24 @@ FruitTreeScript_0x1a9351:
 Route42HiddenMaxPotion:
 	dwb EVENT_ROUTE_42_HIDDEN_MAX_POTION, MAX_POTION
 
+MovementData_Route42LyraApproach4:
+	step_down
+MovementData_Route42LyraApproach3:
+	step_down
+MovementData_Route42LyraApproach2:
+	step_down
+MovementData_Route42LyraApproach1:
+	step_down
+	step_right
+	step_end
+
+MovementData_Route42LyraLeave:
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
 
 MovementData_0x1a9356:
 	fix_facing
@@ -231,6 +337,71 @@ MovementData_0x1a9356:
 	fast_jump_step_right
 	fast_jump_step_right
 	step_end
+
+Route42LyraGreetingText:
+	text "Lyra: Hi, <PLAYER>!"
+
+	para "What a coinci-"
+	line "dence. I was just"
+
+	para "studying the eff-"
+	line "ects of the recent"
+
+	para "avalanche on wild"
+	line "#mon."
+
+	para "So you're heading"
+	line "to Mahogany Town"
+
+	para "for another Gym"
+	line "badge?"
+
+	para "Then I have a"
+	line "present for you!"
+
+	para "But you'll have to"
+	line "beat me first!"
+	done
+
+Route42LyraWinText:
+	text "You've earned this"
+	line "gift!"
+	done
+
+Route42LyraLossText:
+	text "Better luck next"
+	line "time…"
+	done
+
+Route42LyraPresentText:
+	text "Lyra: Wow, you're"
+	line "getting really"
+	cont "strong, <PLAYER>!"
+
+	para "I'm sure you can"
+	line "beat the Mahogany"
+	cont "Gym Leader."
+
+	para "And then you can"
+	line "use this!"
+	done
+
+Route42LyraWhirlpoolText:
+	text "Lyra: That's"
+	line "Whirlpool."
+
+	para "Teach it to a"
+	line "#mon to get"
+	cont "across wild water."
+
+	para "I should get"
+	line "going. It was"
+
+	para "nice seeing you,"
+	line "<PLAYER>!"
+
+	para "Bye now!"
+	done
 
 FisherTully1SeenText:
 	text "Let me demonstrate"
@@ -350,8 +521,12 @@ Route42_MapEventHeader:
 	warp_def $7, $2e, 3, MOUNT_MORTAR_1F_OUTSIDE
 
 .XYTriggers:
-	db 1
-	xy_trigger 1, $e, $18, $0, Route42SuicuneScript, $0, $0
+	db 5
+	xy_trigger 1, $6, $c, $0, Route42LyraScript1, $0, $0
+	xy_trigger 1, $7, $c, $0, Route42LyraScript2, $0, $0
+	xy_trigger 1, $8, $c, $0, Route42LyraScript3, $0, $0
+	xy_trigger 1, $9, $c, $0, Route42LyraScript4, $0, $0
+	xy_trigger 2, $e, $18, $0, Route42SuicuneScript, $0, $0
 
 .Signposts:
 	db 5
@@ -362,7 +537,7 @@ Route42_MapEventHeader:
 	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
@@ -374,3 +549,4 @@ Route42_MapEventHeader:
 	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42

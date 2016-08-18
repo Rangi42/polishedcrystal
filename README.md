@@ -292,6 +292,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
    * Battle Lyra on Route 34.
    * Get Lyra's phone number in the Day-Care (from HG/SS).
    * Get Amulet Coin from Lyra in Olivine City.
+   * Battle Lyra on Route 42 and get HM06.
    * Battle Lyra in New Bark Town before Victory Road.
 * Add: Shrine in Ecruteak City from Mateo's [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172).
 * Add: Buy dolls and plants to decorate your room in Goldenrod Harbor.

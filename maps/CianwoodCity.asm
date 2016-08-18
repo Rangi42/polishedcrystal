@@ -56,7 +56,6 @@ UnknownScript_0x1a001e:
 	pause 10
 	dotrigger $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
-	domaptrigger ROUTE_42, $1
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE
