@@ -1,14 +1,7 @@
 ReturnFromMapSetupScript:: ; b8000
 	xor a
 	ld [hBGMapMode], a
-	; For some reson, GameFreak chose to use a callba here instead of just falling through.
-	; No other function in the game references the function at 2E:400A, here labeled
-	; ReturnFromMapSetupScript.inefficientcallba.
-	callba .inefficientcallba ; this is a waste of 6 ROM bytes and 6 stack bytes
-	ret
-; b800a
 
-.inefficientcallba ; b800a
 	ld a, [MapGroup]
 	ld b, a
 	ld a, [MapNumber]
@@ -600,9 +593,9 @@ TreeMons3: ; b8346
 	db  5, EXEGGCUTE,  10
 	db -1
 
-	db 50, HOOTHOOT,   10
-	db 15, PINECO,     10
-	db 15, PINECO,     10
+	db 40, MURKROW,    10
+	db 20, PINECO,     10
+	db 20, PINECO,     10
 	db 10, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
@@ -617,9 +610,9 @@ TreeMons4: ; b836c
 	db  5, EXEGGCUTE,  10
 	db -1
 
-	db 50, HOOTHOOT,   10
-	db 15, PINECO,     10
-	db 15, PINECO,     10
+	db 40, MURKROW,    10
+	db 20, PINECO,     10
+	db 20, PINECO,     10
 	db 10, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10

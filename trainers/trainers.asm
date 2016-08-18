@@ -1088,11 +1088,11 @@ BrunoGroup:
 		db DIG
 		db PROTECT
 
-	db 52, ONIX, NO_ITEM
-		db SCREECH
+	db 52, PINSIR, NO_ITEM
+		db SWORDS_DANCE
+		db VITAL_THROW
 		db EARTHQUAKE
-		db SANDSTORM
-		db ROCK_SLIDE
+		db X_SCISSOR
 
 	db 50, HITMONLEE, NO_ITEM
 		db SWAGGER
@@ -1134,11 +1134,11 @@ BrunoGroup:
 		db COUNTER
 		db HI_JUMP_KICK
 
-	db 71, ONIX, EVIOLITE
-		db SCREECH
+	db 71, PINSIR, SILVERPOWDER
+		db SWORDS_DANCE
+		db VITAL_THROW
 		db EARTHQUAKE
-		db SANDSTORM
-		db ROCK_SLIDE
+		db MEGAHORN
 
 	db 70, HITMONLEE, FOCUS_BAND
 		db MEDITATE
@@ -2470,12 +2470,6 @@ Rival1Group:
 		db FLASH_CANNON
 		db THUNDER_WAVE
 
-	db 38, TAUROS, NO_ITEM
-		db HORN_ATTACK
-		db ZEN_HEADBUTT
-		db QUICK_ATTACK
-		db BULK_UP
-
 	db 37, HAUNTER, NO_ITEM
 		db PAIN_SPLIT
 		db MEAN_LOOK
@@ -2516,12 +2510,6 @@ Rival1Group:
 		db FLASH_CANNON
 		db THUNDER_WAVE
 
-	db 38, TAUROS, NO_ITEM
-		db HORN_ATTACK
-		db ZEN_HEADBUTT
-		db QUICK_ATTACK
-		db BULK_UP
-
 	db 37, HAUNTER, NO_ITEM
 		db PAIN_SPLIT
 		db MEAN_LOOK
@@ -2561,12 +2549,6 @@ Rival1Group:
 		db THUNDERBOLT
 		db FLASH_CANNON
 		db THUNDER_WAVE
-
-	db 38, TAUROS, NO_ITEM
-		db HORN_ATTACK
-		db ZEN_HEADBUTT
-		db QUICK_ATTACK
-		db BULK_UP
 
 	db 37, HAUNTER, NO_ITEM
 		db PAIN_SPLIT
@@ -5532,8 +5514,8 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 36, GOLBAT
-	db 36, VENOMOTH
+	db 34, GOLBAT
+	db 34, VENOMOTH
 
 	db $ff ; end
 
@@ -5569,7 +5551,7 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 34, RATICATE
+	db 35, RATICATE
 	db 36, WEEZING
 
 	db $ff ; end
@@ -5745,7 +5727,7 @@ GruntMGroup:
 	; party
 	db 23, KOFFING
 	db 25, HOUNDOUR
-	db 23, KOFFING
+	db 23, TENTACOOL
 
 	db $ff ; end
 
@@ -5756,8 +5738,8 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 36, KOFFING
-	db 35, WEEZING
+	db 37, HAUNTER
+	db 36, WEEZING
 
 	db $ff ; end
 
@@ -5768,7 +5750,7 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 34, TENTACOOL
+	db 36, TENTACRUEL
 	db 35, MUK
 
 	db $ff ; end
@@ -5883,7 +5865,7 @@ GruntFGroup:
 	db 0 ; normal
 
 	; party
-	db 34, UMBREON
+	db 36, UMBREON
 	db 35, GLOOM
 
 	db $ff ; end
@@ -5895,10 +5877,10 @@ GruntFGroup:
 	db 0 ; normal
 
 	; party
-	db 31, EKANS
-	db 33, ODDISH
-	db 32, ARBOK
-	db 34, GLOOM
+	db 33, EKANS
+	db 34, ODDISH
+	db 35, ARBOK
+	db 36, GLOOM
 
 	db $ff ; end
 
@@ -5906,27 +5888,27 @@ GruntFGroup:
 
 	; GRUNTF (5)
 	db "Grunt@"
-	db 1 ; moves
+	db 0 ; normal
 
 	; party
 
-	db 18, EKANS
-		db WRAP
-		db LEER
-		db POISON_STING
-		db BITE
+	db 29, ARBOK
+		db GLARE
+		db SCREECH
+		db ACID
+		db CRUNCH
 
-	db 18, QWILFISH
+	db 28, QWILFISH
 		db DEFENSE_CURL
 		db MINIMIZE
 		db BUBBLE
 		db ROLLOUT
 
-	db 18, GLOOM
-		db ABSORB
+	db 28, GLOOM
 		db GROWTH
 		db STUN_SPORE
 		db SLEEP_POWDER
+		db MEGA_DRAIN
 
 	db $ff ; end
 
@@ -9492,8 +9474,8 @@ ScientistGroup:
 	db 0 ; normal
 
 	; party
-	db 22, KOFFING
-	db 22, KOFFING
+	db 30, KOFFING
+	db 30, KOFFING
 
 	db $ff ; end
 
@@ -9516,9 +9498,9 @@ ScientistGroup:
 	db 0 ; normal
 
 	; party
-	db 30, MAGNEMITE
-	db 30, MAGNEMITE
-	db 30, MAGNEMITE
+	db 29, MAGNEMITE
+	db 30, MAGNETON
+	db 29, MAGNEMITE
 
 	db $ff ; end
 
@@ -9529,9 +9511,9 @@ ScientistGroup:
 	db 0 ; normal
 
 	; party
+	db 35, MAGNETON
 	db 36, MAGNEMITE
-	db 36, MAGNEMITE
-	db 36, MAGNEMITE
+	db 35, MAGNETON
 
 	db $ff ; end
 
@@ -9543,7 +9525,7 @@ ScientistGroup:
 
 	; party
 
-	db 34, PORYGON_Z
+	db 35, PORYGON_Z
 		db CONVERSION
 		db CONVERSION2
 		db RECOVER
@@ -11323,25 +11305,25 @@ ExecutiveMGroup:
 
 	; party
 
-	db 38, HOUNDOUR, EVIOLITE
+	db 39, HOUNDOUR, EVIOLITE
 		db SUPER_FANG
 		db FIRE_SPIN
 		db FEINT_ATTACK
 		db WILL_O_WISP
 
-	db 40, RATICATE, BLACKGLASSES
+	db 41, RATICATE, BLACKGLASSES
 		db CRUNCH
 		db SUPER_FANG
 		db HYPER_FANG
 		db DOUBLE_EDGE
 
-	db 38, GENGAR, SPELL_TAG
+	db 39, GENGAR, SPELL_TAG
 		db HYPNOSIS
 		db CONFUSE_RAY
 		db PAIN_SPLIT
 		db SHADOW_BALL
 
-	db 39, WEEZING, BRIGHTPOWDER
+	db 40, WEEZING, BRIGHTPOWDER
 		db SMOKESCREEN
 		db WILL_O_WISP
 		db PAIN_SPLIT

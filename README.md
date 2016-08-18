@@ -310,6 +310,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Electivire is Electric/Fighting.
 * Add: Magmortar is Fire/Steel.
 * Add: Improve Buena's prizes.
+* Add: Yanma and Venomoth are available in the Bug-Catching Contest.
+* Add: Murkrow is rare in some Headbutt trees.
 * Add: Add river to Route 45 from HGSS.
 * Add: Missing ice puzzle in Seafoam Islands.
 * Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
@@ -321,16 +323,19 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
 * Fix: Jasmine uses Forretress.
+* Fix: Bruno uses Pinsir.
+* Fix: Silver has six Pokémon only by Victory Road.
 * Fix: Prof. Oak's third aide requires 50 Pokémon, not 75.
 * Fix: Replace broken Trainer House tiles with a Poké Ball pattern.
 * Fix: Consistent gatehouse between Route 36 and the Ruins of Alph.
 * Fix: Consistent gatehouse between Route 48 and Yellow Forest.
 * Fix: Rocket outside Radio Tower isn't visible from Goldenrod Harbor.
 * Fix: Bill's sister says his grandpa is still in Cerulean Cape house.
-* Fix: Text errors in Olivine, Cianwood, and Mahogany Gyms.
+* Fix: Edit some trainers' levels and rosters.
+* Fix: Various text overflow errors.
 * Fix: Ellipses print too high during battle (thanks, comet).
 * Fix: Typo "your" for "you" (thanks, jpmac26).
 * Fix: Pink Bow powers up Fairy-type moves (thanks, Pokemaster).
 * Fix: X Special → X Spcl.Atk (thanks, Mmmmmm).
 * Fix: 50 TMs → 65 TMs.
-* Fix: Edit some trainers' rosters.
+* Fix: Roaming legendary beast music.

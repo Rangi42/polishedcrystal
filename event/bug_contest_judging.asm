@@ -157,7 +157,7 @@ BugContestant_BugCatcherDon:
 
 BugContestant_BugCatcherEd:
 	db BUG_CATCHER, ED
-	dbw BUTTERFREE, 286
+	dbw YANMA,      286
 	dbw BUTTERFREE, 251
 	dbw CATERPIE,   237
 
@@ -169,7 +169,7 @@ BugContestant_CooltrainerMNick:
 
 BugContestant_PokefanMWilliam:
 	db POKEFANM, WILLIAM
-	dbw PINSIR,     332
+	dbw VENOMOTH,   332
 	dbw BUTTERFREE, 324
 	dbw VENONAT,    321
 

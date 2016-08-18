@@ -1575,6 +1575,7 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_KANTO_LEGEND_BATTLE_XY
 	jp z, .done
 	cp BATTLETYPE_ROAMING
+	ld de, MUSIC_SUICUNE_BATTLE
 	jp z, .done
 
 	; Are we fighting a trainer?

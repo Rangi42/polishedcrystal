@@ -298,9 +298,9 @@ CooltrainermGaven3BeatenText:
 
 UnknownText_0x1a4fe4:
 	text "To get to the"
-	line "#mon League, you"
+	line "#mon League,"
 
-	para "have to get"
+	para "you have to get"
 	line "through Victory"
 	cont "Road."
 

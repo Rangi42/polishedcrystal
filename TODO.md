@@ -9,6 +9,7 @@
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
 * TMs refresh PP
+* Lance uses X Spcl. Atk (a more general AI bug?)
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
 * Headbutt animation looks weird (wrong tile ID?)
