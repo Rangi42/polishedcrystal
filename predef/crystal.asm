@@ -252,6 +252,8 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .faraway_island
 	cp TILESET_SPECIAL_CAVE
 	jr z, .special_cave
+	cp TILESET_TRAIN_STATION
+	jr z, .viridian_gym
 	jr .do_nothing
 
 .pokecom_2f
@@ -305,6 +307,17 @@ LoadSpecialMapPalette: ; 494ac
 
 .special_cave
 	call LoadSpecialCavePalette
+	scf
+	ret
+
+.viridian_gym
+	ld a, [MapGroup]
+	cp GROUP_VIRIDIAN_GYM
+	jr nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_VIRIDIAN_GYM
+	jr nz, .do_nothing
+	call LoadViridianGymPalette
 	scf
 	ret
 
@@ -449,6 +462,17 @@ INCLUDE "tilesets/navel_rock.pal"
 
 CinnabarVolcanoPalette:
 INCLUDE "tilesets/cinnabar_volcano.pal"
+
+LoadViridianGymPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, ViridianGymPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+ViridianGymPalette:
+INCLUDE "tilesets/viridian_gym.pal"
 
 LoadHousePalette: ; 495df
 	ld a, $5
