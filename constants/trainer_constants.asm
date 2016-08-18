@@ -180,9 +180,9 @@ KRIS EQU __enum__
 
 	trainerclass TWINS ; 20
 	const AMYANDMAY1
+	const AMYANDMAY2
 	const ANNANDANNE1
 	const ANNANDANNE2
-	const AMYANDMAY2
 	const JOANDZOE1
 	const JOANDZOE2
 	const MEGANDPEG1
@@ -721,6 +721,8 @@ KRIS EQU __enum__
 	const KOTORI
 
 	trainerclass ACE_DUO ; 50
+	const ELANANDIDA1
+	const ELANANDIDA2
 
 	trainerclass EXECUTIVEM ; 51
 	const ARCHER2

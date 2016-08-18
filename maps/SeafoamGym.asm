@@ -103,6 +103,12 @@ BlaineScript_0x1ab4fb:
 .ReturnAfterBattle:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLAINE
+	setevent EVENT_BEAT_SCIENTIST_LOWELL
+	setevent EVENT_BEAT_SCIENTIST_DENNETT
+	setevent EVENT_BEAT_SUPER_NERD_CARY
+	setevent EVENT_BEAT_SCIENTIST_LINDEN
+	setevent EVENT_BEAT_SUPER_NERD_WALDO
+	setevent EVENT_BEAT_SUPER_NERD_MERLE
 	opentext
 	writetext UnknownText_0x1ab683
 	playsound SFX_GET_BADGE

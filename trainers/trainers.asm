@@ -4244,29 +4244,19 @@ TwinsGroup:
 ; ================
 
 	; TWINS (2)
-	db "Tori & Til@"
-	db 1 ; moves
+	db "Amy & Mimi@"
+	db 0 ; normal
 
 	; party
-
-	db 16, CLEFAIRY
-		db GROWL
-		db ENCORE
-		db DOUBLE_SLAP
-		db METRONOME
-
-	db 16, JIGGLYPUFF
-		db SING
-		db DEFENSE_CURL
-		db POUND
-		db DISABLE
+	db 10, LEDYBA
+	db 10, SPINARAK
 
 	db $ff ; end
 
 ; ================
 
 	; TWINS (3)
-	db "Ann & Anne@"
+	db "Tori & Til@"
 	db 1 ; moves
 
 	; party
@@ -4288,12 +4278,22 @@ TwinsGroup:
 ; ================
 
 	; TWINS (4)
-	db "Amy & May@"
-	db 0 ; normal
+	db "Tori & Til@"
+	db 1 ; moves
 
 	; party
-	db 10, LEDYBA
-	db 10, SPINARAK
+
+	db 16, MAREEP
+		db GROWL
+		db THUNDER_WAVE
+		db THUNDERSHOCK
+		db SAND_ATTACK
+
+	db 16, MARILL
+		db DEFENSE_CURL
+		db ROLLOUT
+		db BUBBLE_BEAM
+		db DIZZY_PUNCH
 
 	db $ff ; end
 
@@ -10652,6 +10652,7 @@ CooltrainerMGroup:
 
 ; ================
 
+	; unused
 	; COOLTRAINERM (22)
 	db "Elan@"
 	db 0 ; normal
@@ -11175,6 +11176,7 @@ CooltrainerFGroup:
 
 ; ================
 
+	; unused
 	; COOLTRAINERF (24)
 	db "Ida@"
 	db 0 ; normal
@@ -11297,6 +11299,31 @@ CooltrainerFGroup:
 AceDuoGroup:
 ; ================================
 ; ================
+
+	; ACE_DUO (1)
+	db "Elan & Ida@"
+	db 0 ; normal
+
+	; party
+
+	db 55, PORYGON2
+	db 55, AZUMARILL
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (2)
+	db "Elan & Ida@"
+	db 0 ; normal
+
+	; party
+
+	db 55, AZUMARILL
+	db 55, PORYGON2
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

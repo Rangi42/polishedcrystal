@@ -1,6 +1,11 @@
 const_value set 2
 	const VIRIDIANGYM_BLUE
 	const VIRIDIANGYM_GYM_GUY
+	const VIRIDIANGYM_COOLTRAINERM1
+	const VIRIDIANGYM_COOLTRAINERF1
+	const VIRIDIANGYM_COOLTRAINERF2
+	const VIRIDIANGYM_COOLTRAINERM2
+	const VIRIDIANGYM_COOLTRAINERF3
 
 ViridianGym_MapScriptHeader:
 .MapTriggers:
@@ -22,6 +27,10 @@ BlueScript_0x9aa26:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLUE
+	setevent EVENT_BEAT_COOLTRAINERM_ABDUL
+	setevent EVENT_BEAT_COOLTRAINERF_SALMA
+	setevent EVENT_BEAT_COOLTRAINERF_BONITA
+	setevent EVENT_BEAT_ACE_DUO_ELAN_AND_IDA
 	opentext
 	writetext Text_ReceivedEarthBadge
 	playsound SFX_GET_BADGE
@@ -59,6 +68,61 @@ ViridianGymGuyScript:
 
 .ViridianGymGuyWinScript:
 	writetext ViridianGymGuyWinText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainermAbdul:
+	trainer EVENT_BEAT_COOLTRAINERM_ABDUL, COOLTRAINERM, ABDUL, CooltrainermAbdulSeenText, CooltrainermAbdulBeatenText, 0, CooltrainermAbdulScript
+
+CooltrainermAbdulScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermAbdulAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfSalma:
+	trainer EVENT_BEAT_COOLTRAINERF_SALMA, COOLTRAINERF, SALMA, CooltrainerfSalmaSeenText, CooltrainerfSalmaBeatenText, 0, CooltrainerfSalmaScript
+
+CooltrainerfSalmaScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfSalmaAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainerfBonita:
+	trainer EVENT_BEAT_COOLTRAINERF_BONITA, COOLTRAINERF, BONITA, CooltrainerfBonitaSeenText, CooltrainerfBonitaBeatenText, 0, CooltrainerfBonitaScript
+
+CooltrainerfBonitaScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainerfBonitaAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoElanandida1:
+	trainer EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, ACE_DUO, ELANANDIDA1, AceDuoElanandida1SeenText, AceDuoElanandida1BeatenText, 0, AceDuoElanandida1Script
+
+AceDuoElanandida1Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoElanandida1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoElanandida2:
+	trainer EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, ACE_DUO, ELANANDIDA2, AceDuoElanandida2SeenText, AceDuoElanandida2BeatenText, 0, AceDuoElanandida2Script
+
+AceDuoElanandida2Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoElanandida2AfterText
 	waitbutton
 	closetext
 	end
@@ -145,35 +209,32 @@ BlueOutroText:
 	para "real deal. You are"
 	line "a good trainer."
 
-	para "But I'm going to"
-	line "beat you someday."
+	para "With eight badges"
+	line "from Kanto, you"
 
-	para "Don't you forget"
-	line "it!"
+	para "can challenge the"
+	line "Elite Four again."
 
-	para "I train at the"
-	line "Fighting Dojo in"
+	para "They won't go easy"
+	line "on a trainer who"
+	cont "beat two regions."
 
-	para "Saffron City on"
-	line "Mondays."
+	para "You can practice"
+	line "with me at the"
+
+	para "Fighting Dojo in"
+	line "Saffron City on"
+	cont "Mondays."
 
 	para "All of the Gym"
 	line "Leaders show up"
-	cont "there sometimes."
+	cont "there to train."
 
-	para "Meet me there and"
-	line "I'll show you my"
-	cont "real power!"
+	para "I'm going to beat"
+	line "you someday."
 
-	para "Or you can always"
-	line "rematch the Elite"
-	cont "Four."
-
-	para "With badges from"
-	line "two regions,"
-
-	para "they'll show you"
-	line "no mercy."
+	para "Don't you forget"
+	line "it!"
 	done
 
 LeaderBlueEpilogueText:
@@ -215,6 +276,99 @@ ViridianGymGuyWinText:
 	line "tears to my eyes."
 	done
 
+CooltrainermAbdulSeenText:
+	text "Fight me and see"
+	line "how good I am!"
+	done
+
+CooltrainermAbdulBeatenText:
+	text "I was deceived!"
+	done
+
+CooltrainermAbdulAfterText:
+	text "Me, I should be"
+	line "a pretty good"
+	cont "practice partner…"
+	done
+
+CooltrainerfSalmaSeenText:
+	text "What do you think?"
+
+	para "You've never seen"
+	line "such a wonderful"
+	cont "Gym, have you?"
+	done
+
+CooltrainerfSalmaBeatenText:
+	text "Whatever!"
+	done
+
+CooltrainerfSalmaAfterText:
+	text "There are many"
+	line "Gyms in the world,"
+
+	para "but I really like"
+	line "this one!"
+	done
+
+CooltrainerfBonitaSeenText:
+	text "Looking around the"
+	line "room, doesn't it"
+	cont "make you dizzy?"
+	done
+
+CooltrainerfBonitaBeatenText:
+	text "All of my #mon…"
+
+	para "All dizzy and"
+	line "fainting…"
+	done
+
+CooltrainerfBonitaAfterText:
+	text "Looks like you've"
+	line "still got some"
+	cont "energy left."
+	done
+
+AceDuoElanandida1SeenText:
+	text "Elan: All right,"
+	line "let's get this"
+	cont "fight started!"
+	done
+
+AceDuoElanandida1BeatenText:
+	text "Elan: Well, this"
+	line "is surprising."
+	done
+
+AceDuoElanandida1AfterText:
+	text "Elan: You're"
+	line "stronger than we"
+	cont "anticipated!"
+	done
+
+AceDuoElanandida2SeenText:
+	text "Ida: I'm Ida! Next"
+	line "to me is Elan!"
+
+	para "Together, we're an"
+	line "Ace Duo!"
+	done
+
+AceDuoElanandida2BeatenText:
+	text "Ida: Wow. You're"
+	line "really something."
+	done
+
+AceDuoElanandida2AfterText:
+	text "Ida: If all you"
+	line "have is strength,"
+	cont "you won't do well."
+
+	para "Strategy is also"
+	line "important!"
+	done
+
 ViridianGym_MapEventHeader:
 	; filler
 	db 0, 0
@@ -233,6 +387,11 @@ ViridianGym_MapEventHeader:
 	signpost 43, 9, SIGNPOST_READ, ViridianGymStatue
 
 .PersonEvents:
-	db 2
+	db 7
 	person_event SPRITE_BLUE, 2, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
 	person_event SPRITE_GYM_GUY, 43, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
+	person_event SPRITE_COOLTRAINER_M, 35, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermAbdul, -1
+	person_event SPRITE_COOLTRAINER_F, 34, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfSalma, -1
+	person_event SPRITE_COOLTRAINER_F, 28, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfBonita, -1
+	person_event SPRITE_COOLTRAINER_M, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida1, -1
+	person_event SPRITE_COOLTRAINER_F, 8, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida2, -1
