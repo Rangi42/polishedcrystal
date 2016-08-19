@@ -35,6 +35,9 @@ SailorScript_0x71017:
 TeacherScript_0x7101a:
 	jumptextfaceplayer UnknownText_0x710b6
 
+VideoGameClerkScript:
+	jumptextfaceplayer VideoGameClerkText
+
 CeladonDeptStore5FDirectory:
 	jumptext CeladonDeptStore5FDirectoryText
 
@@ -68,7 +71,10 @@ UnknownText_0x710b6:
 	done
 
 CeladonDeptStore5FDirectoryText:
-	text "5F: Drug Store"
+	text "Bring Out"
+	line "#mon Potential"
+
+	para "5F: Drug Store"
 	done
 
 CeladonDeptStore5F_MapEventHeader:
@@ -94,5 +100,5 @@ CeladonDeptStore5F_MapEventHeader:
 	person_event SPRITE_CLERK, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x71004, -1
 	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x7100c, -1
 	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x71014, -1
-	person_event SPRITE_SAILOR, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x71017, -1
+	person_event SPRITE_SAILOR, 3, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x71017, -1
 	person_event SPRITE_TEACHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7101a, -1

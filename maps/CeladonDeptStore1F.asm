@@ -63,14 +63,14 @@ CeladonDeptStore1FDirectoryText:
 	para "2F: Trainer's"
 	line "    Market"
 
-	para "3F: TM Shop"
+	para "3F: Tech Shop"
 
 	para "4F: Wiseman Gifts"
 
 	para "5F: Drug Store"
 
 	para "6F: Rooftop"
-	line "    Square"
+	line "    Atrium"
 	done
 
 CeladonDeptStore1F_MapEventHeader:

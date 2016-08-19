@@ -2,9 +2,8 @@ const_value set 2
 	const CELADONDEPTSTORE3F_CLERK1
 	const CELADONDEPTSTORE3F_CLERK2
 	const CELADONDEPTSTORE3F_YOUNGSTER
-	const CELADONDEPTSTORE3F_GAMEBOY_KID1
-	const CELADONDEPTSTORE3F_GAMEBOY_KID2
 	const CELADONDEPTSTORE3F_SUPER_NERD
+	const CELADONDEPTSTORE3F_CLERK3
 
 CeladonDeptStore3F_MapScriptHeader:
 .MapTriggers:
@@ -62,24 +61,6 @@ CeladonDeptStore3FTutorCounterScript:
 YoungsterScript_0x70d31:
 	jumptextfaceplayer UnknownText_0x70d53
 
-GameboyKidScript_0x70d34:
-	faceplayer
-	opentext
-	writetext UnknownText_0x70d86
-	waitbutton
-	closetext
-	spriteface CELADONDEPTSTORE3F_GAMEBOY_KID1, DOWN
-	end
-
-GameboyKidScript_0x70d3f:
-	faceplayer
-	opentext
-	writetext UnknownText_0x70dc7
-	waitbutton
-	closetext
-	spriteface CELADONDEPTSTORE3F_GAMEBOY_KID2, DOWN
-	end
-
 SuperNerdScript_0x70d4a:
 	jumptextfaceplayer UnknownText_0x70e61
 
@@ -88,6 +69,24 @@ CeladonDeptStore3FElevatorButton:
 
 CeladonDeptStore3FDirectory:
 	jumptext CeladonDeptStore3FDirectoryText
+
+CeladonDeptStore3FN64:
+	jumptext CeladonDeptStore3FN64Text
+
+CeladonDeptStore3FWii:
+	jumptext CeladonDeptStore3FWiiText
+
+CeladonDeptStore3FRPG:
+	jumptext CeladonDeptStore3FRPGText
+
+CeladonDeptStore3FSportsGame:
+	jumptext CeladonDeptStore3FSportsGameText
+
+CeladonDeptStore3FPuzzleGame:
+	jumptext CeladonDeptStore3FPuzzleGameText
+
+CeladonDeptStore3FFightingGame:
+	jumptext CeladonDeptStore3FFightingGameText
 
 CeladonDeptStore3FClerk2Text:
 	text "There's a neat move"
@@ -136,41 +135,54 @@ UnknownText_0x70d53:
 
 	para "should use this TM"
 	line "on…"
-	done
 
-UnknownText_0x70d86:
-	text "I traded my"
-	line "#mon while"
-
-	para "it was holding"
-	line "an Up-Grade."
-	done
-
-UnknownText_0x70dc7:
-	text "Yeah! I'm finally"
-	line "getting a Porygon!"
-
-	para "I'm no good at the"
-	line "slots, so I could"
-
-	para "never get enough"
-	line "coins…"
-
-	para "I'll raise it with"
-	line "an Up-Grade to"
-	cont "make it evolve!"
+	para "Good thing it"
+	line "doesn't run out."
 	done
 
 UnknownText_0x70e61:
-	text "The TM Shop sells"
-	line "some rare moves."
+	text "The Tech Shop"
+	line "sells some cool"
+	cont "game systems."
+	done
+
+VideoGameClerkText:
+	text "TODO: sell games"
 	done
 
 CeladonDeptStore3FDirectoryText:
-	text "3F: TM Shop"
-
-	para "Make Your #mon"
+	text "Make Your #mon"
 	line "Stronger!"
+
+	para "3F: Tech Shop"
+	done
+
+CeladonDeptStore3FN64Text:
+	text "It's an N64!"
+	done
+
+CeladonDeptStore3FWiiText:
+	text "It's a Wii!"
+	done
+
+CeladonDeptStore3FRPGText:
+	text "An RPG! There's"
+	line "no time for that!"
+	done
+
+CeladonDeptStore3FSportsGameText:
+	text "A sports game!"
+	line "Dad'll like that!"
+	done
+
+CeladonDeptStore3FPuzzleGameText:
+	text "A puzzle game!"
+	line "Looks addictive!"
+	done
+
+CeladonDeptStore3FFightingGameText:
+	text "A fighting game!"
+	line "Looks tough!"
 	done
 
 CeladonDeptStore3F_MapEventHeader:
@@ -187,15 +199,26 @@ CeladonDeptStore3F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 10
 	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore3FDirectory
 	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore3FElevatorButton
+	signpost 3, 1, SIGNPOST_READ, CeladonDeptStore3FN64
+	signpost 5, 1, SIGNPOST_READ, CeladonDeptStore3FN64
+	signpost 3, 4, SIGNPOST_READ, CeladonDeptStore3FWii
+	signpost 5, 4, SIGNPOST_READ, CeladonDeptStore3FWii
+	signpost 3, 2, SIGNPOST_READ, CeladonDeptStore3FRPG
+	signpost 3, 5, SIGNPOST_READ, CeladonDeptStore3FSportsGame
+	signpost 5, 2, SIGNPOST_READ, CeladonDeptStore3FPuzzleGame
+	signpost 5, 5, SIGNPOST_READ, CeladonDeptStore3FFightingGame
 
 .PersonEvents:
-	db 6
-	person_event SPRITE_CLERK, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x70d29, -1
-	person_event SPRITE_CLERK, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
-	person_event SPRITE_YOUNGSTER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70d31, -1
-	person_event SPRITE_GAMEBOY_KID, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x70d34, -1
-	person_event SPRITE_GAMEBOY_KID, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x70d3f, -1
+	db 9
+	person_event SPRITE_CLERK, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x70d29, -1
+	person_event SPRITE_CLERK, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
+	person_event SPRITE_YOUNGSTER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70d31, -1
 	person_event SPRITE_SUPER_NERD, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x70d4a, -1
+	person_event SPRITE_CLERK, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VideoGameClerkScript, -1
+	person_event SPRITE_FAMICOM, 3, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SNES, 5, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_VIRTUAL_BOY, 3, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_N64, 5, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
