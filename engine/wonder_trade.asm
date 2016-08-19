@@ -628,32 +628,32 @@ GetWonderTradeOTName:
 	db "Talan@@@" ; $e3
 	db "Kersh@@@" ; $e4
 	db "Emily@@@" ; $e5
-	db "Nemo@@@@" ; $e6
-	db "Nemo@@@@" ; $e7
-	db "Nemo@@@@" ; $e8
-	db "Nemo@@@@" ; $e9
-	db "Nemo@@@@" ; $ea
-	db "Nemo@@@@" ; $eb
-	db "Nemo@@@@" ; $ec
-	db "Nemo@@@@" ; $ed
-	db "Nemo@@@@" ; $ee
-	db "Nemo@@@@" ; $ef
-	db "Nemo@@@@" ; $f0
-	db "Nemo@@@@" ; $f1
-	db "Nemo@@@@" ; $f2
-	db "Nemo@@@@" ; $f3
-	db "Nemo@@@@" ; $f4
-	db "Nemo@@@@" ; $f5
-	db "Nemo@@@@" ; $f6
-	db "Nemo@@@@" ; $f7
-	db "Nemo@@@@" ; $f8
-	db "Nemo@@@@" ; $f9
-	db "Nemo@@@@" ; $fa
-	db "Nemo@@@@" ; $fb
-	db "Nemo@@@@" ; $fc
-	db "Nemo@@@@" ; $fd
-	db "Nemo@@@@" ; $fe
-	db "Nemo@@@@" ; $ff
+	db "Roxanne@" ; $e6
+	db "Brawly@@" ; $e7
+	db "Wattson@" ; $e8
+	db "Flanery@" ; $e9
+	db "Norman@@" ; $ea
+	db "Winona@@" ; $eb
+	db "Liza@@@@" ; $ec
+	db "Tate@@@@" ; $ed
+	db "Wallace@" ; $ee
+	db "Juan@@@@" ; $ef
+	db "Sidney@@" ; $f0
+	db "Phoebe@@" ; $f1
+	db "Glacia@@" ; $f2
+	db "Drake@@@" ; $f3
+	db "Roark@@@" ; $f4
+	db "Garden@@" ; $f5
+	db "Maylene@" ; $f6
+	db "Wake@@@@" ; $f7
+	db "Fantina@" ; $f8
+	db "Byron@@@" ; $f9
+	db "Candice@" ; $fa
+	db "Volkner@" ; $fb
+	db "Aaron@@@" ; $fc
+	db "Bertha@@" ; $fd
+	db "Flint@@@" ; $fe
+	db "Lucian@@" ; $ff
 
 
 GetWonderTradeHeldItem:

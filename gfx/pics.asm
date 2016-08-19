@@ -404,7 +404,6 @@ PoliwrathBackpic:    INCBIN "gfx/pics/poliwrath/back.2bpp.lz"
 SwimmermPic:         INCBIN "gfx/trainers/swimmer_m.2bpp.lz"
 NidorinoBackpic:     INCBIN "gfx/pics/nidorino/back.2bpp.lz"
 MysticalmanPic:      INCBIN "gfx/trainers/mysticalman.2bpp.lz"
-ValeriePic:          ; TODO
 CooltrainerfPic:     INCBIN "gfx/trainers/cooltrainer_f.2bpp.lz"
 ElectrodeFrontpic:   INCBIN "gfx/pics/electrode/front.2bpp.lz"
 ; 153fe3
@@ -772,3 +771,4 @@ StevenPic:           INCBIN "gfx/trainers/steven.2bpp.lz"
 CynthiaPic:          INCBIN "gfx/trainers/cynthia.2bpp.lz"
 ReiPic:              INCBIN "gfx/trainers/rei.2bpp.lz"
 TowerTycoonPic:      INCBIN "gfx/trainers/towertycoon.2bpp.lz"
+ValeriePic:          INCBIN "gfx/trainers/valerie.2bpp.lz"

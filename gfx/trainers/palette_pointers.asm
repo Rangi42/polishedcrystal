@@ -98,7 +98,7 @@ GiovanniPalette:         INCLUDE "gfx/trainers/giovanni.pal"
 StevenPalette:           INCLUDE "gfx/trainers/steven.pal"
 CynthiaPalette:          INCLUDE "gfx/trainers/cynthia.pal"
 TowerTycoonPalette:      INCLUDE "gfx/trainers/towertycoon.pal"
-ValeriePalette:          INCLUDE "gfx/trainers/cal.pal" ; TODO
+ValeriePalette:          INCLUDE "gfx/trainers/valerie.pal"
 ReiPalette:              INCLUDE "gfx/trainers/rei.pal"
 OmastarFossilPalette:    INCLUDE "gfx/trainers/omastarfossil.pal"
 KabutopsFossilPalette:   INCLUDE "gfx/trainers/kabutopsfossil.pal"
