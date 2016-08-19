@@ -101,6 +101,7 @@ EcruteakLugiaSpeechHouse_BlockData:
 EcruteakItemfinderHouse_BlockData:
 VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
+ValeriesHouse_BlockData:
 	INCBIN "maps/House2.blk"
 
 UnionCaveB1F_BlockData:

@@ -144,7 +144,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_36_RUINS_OF_ALPH_GATE,                 4,  5 ; 15
 	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 16
 	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ; 17
-	mapgroup BELLCHIME_TRAIL,                             7, 12 ; 18
+	mapgroup VALERIES_HOUSE,                              4,  4 ; 18
 
 	newgroup                                                    ;  5
 
@@ -320,6 +320,7 @@ MAP_NONE   EQU 0
 	mapgroup KARENS_ROOM,                                 9,  5 ;  6
 	mapgroup LANCES_ROOM,                                12,  5 ;  7
 	mapgroup HALL_OF_FAME,                                7,  5 ;  8
+	mapgroup BELLCHIME_TRAIL,                             7, 12 ;  9
 
 	newgroup                                                    ; 17
 

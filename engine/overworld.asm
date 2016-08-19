@@ -946,7 +946,6 @@ Group4Sprites:
 ; Route35
 ; Route36
 ; Route37
-; BellchimeTrail
 	db SPRITE_BUENA
 	db SPRITE_BUG_CATCHER
 	db SPRITE_FISHER
@@ -1331,9 +1330,10 @@ Group15Sprites:
 
 Group16Sprites:
 ; Route23
-	; 0 walking sprites
-	; 0 total sprites
-	db SPRITE_GOLD_TROPHY
+; BellchimeTrail
+	db SPRITE_VALERIE
+	; 1 walking sprite
+	; 1 total sprite
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY

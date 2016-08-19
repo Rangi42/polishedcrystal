@@ -268,13 +268,13 @@ EcruteakCity_MapEventHeader:
 	warp_def $b, $13, 1, ECRUTEAK_HOUSE
 	warp_def $b, $d, 3, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def $b, $e, 4, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def $1b, $17, 1, YELLOW_FOREST
+	warp_def $1b, $17, 1, ECRUTEAK_POKECENTER_1F
 	warp_def $15, $5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
 	warp_def $15, $17, 1, DANCE_THEATRE
 	warp_def $15, $1d, 2, ECRUTEAK_MART
 	warp_def $1b, $6, 1, ECRUTEAK_GYM
 	warp_def $1b, $d, 1, ECRUTEAK_ITEMFINDER_HOUSE
-	warp_def $7, $27, 1, TIN_TOWER_1F ; unused
+	warp_def $11, $5, 1, VALERIES_HOUSE
 	warp_def $5, $5, 1, BURNED_TOWER_1F
 	warp_def $12, $0, 3, ROUTE_38_ECRUTEAK_GATE
 	warp_def $13, $0, 4, ROUTE_38_ECRUTEAK_GATE

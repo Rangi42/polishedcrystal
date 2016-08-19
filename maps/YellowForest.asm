@@ -91,7 +91,8 @@ YellowBattleScript:
 
 YellowBattleAfterBallScript:
 	faceplayer
-	opentext YellowText_AfterBattle
+	opentext
+	writetext YellowText_AfterBattle
 YellowTryGiveLightBallScript:
 	buttonsound
 	verbosegiveitem LIGHT_BALL

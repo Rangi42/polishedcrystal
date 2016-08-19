@@ -447,3 +447,6 @@ LyraSprite:
 
 OfficerFSprite:
 	sprite_header OfficerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+ValerieSprite:
+	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

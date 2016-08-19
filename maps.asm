@@ -536,7 +536,6 @@ INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/SilverCaveOutside.asm"
-INCLUDE "maps/BellchimeTrail.asm"
 INCLUDE "maps/SeafoamGym.asm"
 INCLUDE "maps/QuietCave1F.asm"
 INCLUDE "maps/QuietCaveB1F.asm"
@@ -559,10 +558,12 @@ INCLUDE "maps/CinnabarVolcanoB1F.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
+INCLUDE "maps/ValeriesHouse.asm"
 
 
 SECTION "Map Scripts 27", ROMX
 
+INCLUDE "maps/BellchimeTrail.asm"
 INCLUDE "maps/Route42.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"

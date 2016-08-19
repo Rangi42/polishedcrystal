@@ -124,8 +124,8 @@ DarkCaveVioletEntranceFalknerIntroText:
 	line "a trainer."
 
 	para "I'm Falkner, the"
-	line "Violet #mon Gym"
-	cont "Leader."
+	line "Violet #mon"
+	cont "Gym Leader."
 
 	para "I don't explore"
 	line "caves for fun,"
