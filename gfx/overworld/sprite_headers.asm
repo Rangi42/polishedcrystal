@@ -35,7 +35,7 @@ RedSprite: ; 14754
 ; 1475a
 
 BlueSprite: ; 1475a
-	sprite_header BlueSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+	sprite_header BlueSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 14760
 
 BillSprite: ; 14760

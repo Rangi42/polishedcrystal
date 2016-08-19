@@ -36,17 +36,14 @@ const_value SET 1
 	const TILESET_ICE_PATH             ; 1d
 	const TILESET_WHIRL_ISLANDS        ; 1e
 	const TILESET_ILEX_FOREST          ; 1f
-	const TILESET_BELLCHIME_TRAIL      ; 20
+	const TILESET_SAFARI_ZONE          ; 20
 	const TILESET_HO_OH_WORD_ROOM      ; 21
 	const TILESET_KABUTO_WORD_ROOM     ; 22
 	const TILESET_OMANYTE_WORD_ROOM    ; 23
 	const TILESET_AERODACTYL_WORD_ROOM ; 24
-	const TILESET_SPECIAL_CAVE         ; 25
-	const TILESET_YELLOW_FOREST        ; 26
-	const TILESET_SAFARI_ZONE          ; 27
-	const TILESET_FARAWAY_ISLAND       ; 28
-	const TILESET_POKEMON_MANSION      ; 29
-	const TILESET_ROCK_TUNNEL          ; 2a
+	const TILESET_POKEMON_MANSION      ; 25
+	const TILESET_FARAWAY_ISLAND       ; 26
+	const TILESET_ROCK_TUNNEL          ; 27
 
 	const_def
 	const PAL_BG_GRAY

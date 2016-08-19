@@ -1,6 +1,5 @@
 Tileset00PalMap:
 Tileset01PalMap:
-Tileset32PalMap:
 INCLUDE "tilesets/01_palette_map.asm"
 
 Tileset02PalMap:
@@ -71,7 +70,6 @@ INCLUDE "tilesets/23_palette_map.asm"
 
 Tileset24PalMap:
 Tileset30PalMap:
-Tileset37PalMap:
 INCLUDE "tilesets/24_palette_map.asm"
 
 Tileset25PalMap:
@@ -94,17 +92,16 @@ Tileset29PalMap:
 INCLUDE "tilesets/29_palette_map.asm"
 
 Tileset31PalMap:
-Tileset38PalMap:
 INCLUDE "tilesets/31_palette_map.asm"
+
+Tileset32PalMap:
+INCLUDE "tilesets/32_palette_map.asm"
+
+Tileset37PalMap:
+INCLUDE "tilesets/37_palette_map.asm"
+
+Tileset38PalMap:
+INCLUDE "tilesets/38_palette_map.asm"
 
 Tileset39PalMap:
 INCLUDE "tilesets/39_palette_map.asm"
-
-Tileset40PalMap:
-INCLUDE "tilesets/40_palette_map.asm"
-
-Tileset41PalMap:
-INCLUDE "tilesets/41_palette_map.asm"
-
-Tileset42PalMap:
-INCLUDE "tilesets/42_palette_map.asm"

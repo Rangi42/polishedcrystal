@@ -233,7 +233,7 @@ Function49496: ; 49496
 LoadSpecialMapPalette: ; 494ac
 	ld a, [wTileset]
 	cp TILESET_POKECOM_CENTER
-	jr z, .pokecom_2f
+	jr z, .pokecom_center
 	cp TILESET_BATTLE_TOWER
 	jr z, .battle_tower
 	cp TILESET_ICE_PATH
@@ -244,19 +244,19 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .radio_tower
 	cp TILESET_CELADON_MANSION
 	jr z, .mansion_mobile
-	cp TILESET_BELLCHIME_TRAIL
-	jr z, .bellchime_trail
-	cp TILESET_YELLOW_FOREST
-	jr z, .yellow_forest
 	cp TILESET_FARAWAY_ISLAND
 	jr z, .faraway_island
-	cp TILESET_SPECIAL_CAVE
-	jr z, .special_cave
+	cp TILESET_JOHTO_1
+	jr z, .maybe_bellchime_trail
+	cp TILESET_ILEX_FOREST
+	jr z, .maybe_yellow_forest
 	cp TILESET_TRAIN_STATION
-	jr z, .viridian_gym
-	jr .do_nothing
+	jr z, .maybe_viridian_gym
+	cp TILESET_CAVE
+	jr z, .maybe_special_cave
+	jp .do_nothing
 
-.pokecom_2f
+.pokecom_center
 	call LoadPokeComPalette
 	scf
 	ret
@@ -270,7 +270,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [wPermission] ; permission
 	and 7
 	cp 3 ; Hall of Fame
-	jr z, .do_nothing
+	jp z, .do_nothing
 	call LoadIcePathPalette
 	scf
 	ret
@@ -290,27 +290,34 @@ LoadSpecialMapPalette: ; 494ac
 	scf
 	ret
 
-.bellchime_trail
-	call LoadBellchimeTrailPalette
-	scf
-	ret
-
-.yellow_forest
-	call LoadYellowForestPalette
-	scf
-	ret
-
 .faraway_island
 	call LoadFarawayIslandPalette
 	scf
 	ret
 
-.special_cave
-	call LoadSpecialCavePalette
+.maybe_bellchime_trail
+	ld a, [MapGroup]
+	cp GROUP_BELLCHIME_TRAIL
+	jr nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_BELLCHIME_TRAIL
+	jr nz, .do_nothing
+	call LoadBellchimeTrailPalette
 	scf
 	ret
 
-.viridian_gym
+.maybe_yellow_forest
+	ld a, [MapGroup]
+	cp GROUP_YELLOW_FOREST
+	jr nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_YELLOW_FOREST
+	jr nz, .do_nothing
+	call LoadYellowForestPalette
+	scf
+	ret
+
+.maybe_viridian_gym
 	ld a, [MapGroup]
 	cp GROUP_VIRIDIAN_GYM
 	jr nz, .do_nothing
@@ -318,6 +325,42 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_VIRIDIAN_GYM
 	jr nz, .do_nothing
 	call LoadViridianGymPalette
+	scf
+	ret
+
+.maybe_special_cave
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	cp CINNABAR_VOLCANO
+	jr z, .cinnabar_volcano
+	cp CERULEAN_CAVE
+	jr z, .cerulean_cave
+	cp SILVER_CAVE
+	jr z, .silver_cave
+	cp NAVEL_ROCK
+	jr z, .navel_rock
+	jp .do_nothing
+
+.cinnabar_volcano
+	call LoadCinnabarVolcanoPalette
+	scf
+	ret
+
+.cerulean_cave
+	call LoadCeruleanCavePalette
+	scf
+	ret
+
+.silver_cave
+	call LoadSilverCavePalette
+	scf
+	ret
+
+.navel_rock
+	call LoadNavelRockPalette
 	scf
 	ret
 
@@ -365,115 +408,6 @@ IcePathPalette: ; 4959f
 INCLUDE "tilesets/ice_path.pal"
 ; 495df
 
-LoadBellchimeTrailPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, BellchimeTrailPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-BellchimeTrailPalette:
-INCLUDE "tilesets/bellchime_trail.pal"
-
-LoadYellowForestPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, YellowForestPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-YellowForestPalette:
-INCLUDE "tilesets/yellow_forest.pal"
-
-LoadFarawayIslandPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, FarawayIslandPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-FarawayIslandPalette:
-INCLUDE "tilesets/faraway_island.pal"
-
-LoadSpecialCavePalette:
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp SILVER_CAVE
-	jr z, .SilverCave
-	cp NAVEL_ROCK
-	jr z, .NavelRock
-	cp CINNABAR_VOLCANO
-	jr z, .CinnabarVolcano
-.CeruleanCave
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, CeruleanCavePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-.SilverCave
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, SilverCavePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-.NavelRock
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, NavelRockPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-.CinnabarVolcano
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, CinnabarVolcanoPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-CeruleanCavePalette:
-INCLUDE "tilesets/cerulean_cave.pal"
-
-SilverCavePalette:
-INCLUDE "tilesets/silver_cave.pal"
-
-NavelRockPalette:
-INCLUDE "tilesets/navel_rock.pal"
-
-CinnabarVolcanoPalette:
-INCLUDE "tilesets/cinnabar_volcano.pal"
-
-LoadViridianGymPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, ViridianGymPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-ViridianGymPalette:
-INCLUDE "tilesets/viridian_gym.pal"
-
 LoadHousePalette: ; 495df
 	ld a, $5
 	ld de, UnknBGPals
@@ -499,6 +433,30 @@ LoadRadioTowerPalette: ; 4962e
 RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
+
+LoadMansionPalette: ; 496c5
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, MansionPalette1
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ld a, $5
+	ld de, UnknBGPals + 4 palettes
+	ld hl, MansionPalette2
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ld a, $5
+	ld de, UnknBGPals + 3 palettes
+	ld hl, MansionPalette3
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ld a, $5
+	ld de, UnknBGPals + 6 palettes
+	ld hl, MansionPalette4
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+; 496fe
 
 MansionPalette1: ; 4967d
 	RGB 30, 28, 26
@@ -531,6 +489,13 @@ MansionPalette1: ; 4967d
 	RGB 16, 13, 03
 	RGB 07, 07, 07
 
+MansionPalette2: ; 496fe
+	RGB 25, 24, 23
+	RGB 20, 19, 19
+	RGB 14, 16, 31
+	RGB 07, 07, 07
+; 49706
+
 MansionPalette3: ; 496ad
 	RGB 30, 28, 26
 	RGB 17, 19, 31
@@ -550,36 +515,105 @@ MansionPalette4: ; 496bd
 	RGB 31, 31, 31
 ; 496c5
 
-LoadMansionPalette: ; 496c5
+LoadFarawayIslandPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, FarawayIslandPalette
+	call AddNTimes
 	ld a, $5
 	ld de, UnknBGPals
-	ld hl, MansionPalette1
 	ld bc, 8 palettes
 	call FarCopyWRAM
+	ret
+
+FarawayIslandPalette:
+INCLUDE "tilesets/faraway_island.pal"
+
+LoadBellchimeTrailPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, BellchimeTrailPalette
+	call AddNTimes
 	ld a, $5
-	ld de, UnknBGPals + 4 palettes
-	ld hl, MansionPalette2
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ld a, $5
-	ld de, UnknBGPals + 3 palettes
-	ld hl, MansionPalette3
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ld a, $5
-	ld de, UnknBGPals + 6 palettes
-	ld hl, MansionPalette4
-	ld bc, 1 palettes
+	ld de, UnknBGPals
+	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
-; 496fe
 
-MansionPalette2: ; 496fe
-	RGB 25, 24, 23
-	RGB 20, 19, 19
-	RGB 14, 16, 31
-	RGB 07, 07, 07
-; 49706
+BellchimeTrailPalette:
+INCLUDE "tilesets/bellchime_trail.pal"
+
+LoadYellowForestPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, YellowForestPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+YellowForestPalette:
+INCLUDE "tilesets/yellow_forest.pal"
+
+LoadViridianGymPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, ViridianGymPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+ViridianGymPalette:
+INCLUDE "tilesets/viridian_gym.pal"
+
+LoadCinnabarVolcanoPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, CinnabarVolcanoPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+CinnabarVolcanoPalette:
+INCLUDE "tilesets/cinnabar_volcano.pal"
+
+LoadCeruleanCavePalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, CeruleanCavePalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+CeruleanCavePalette:
+INCLUDE "tilesets/cerulean_cave.pal"
+
+LoadSilverCavePalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, SilverCavePalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+SilverCavePalette:
+INCLUDE "tilesets/silver_cave.pal"
+
+LoadNavelRockPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, NavelRockPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+NavelRockPalette:
+INCLUDE "tilesets/navel_rock.pal"
 
 MG_Mobile_Layout02: ; 49706
 	ld hl, Palette_49732

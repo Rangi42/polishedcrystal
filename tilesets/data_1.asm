@@ -1,16 +1,13 @@
 Tileset00GFX:
 Tileset01GFX:
-Tileset32GFX:
 INCBIN "gfx/tilesets/01.2bpp.lz"
 
 Tileset00Meta:
 Tileset01Meta:
-Tileset32Meta:
 INCBIN "tilesets/01_metatiles.bin"
 
 Tileset00Coll:
 Tileset01Coll:
-Tileset32Coll:
 INCBIN "tilesets/01_collision.bin"
 
 Tileset03GFX:
