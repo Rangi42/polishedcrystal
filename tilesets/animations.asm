@@ -40,7 +40,6 @@ endr
 Tileset00Anim:
 Tileset01Anim:
 Tileset02Anim:
-Tileset32Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -112,7 +111,6 @@ Tileset23Anim:
 
 Tileset24Anim:
 Tileset30Anim:
-Tileset37Anim:
 	dw NULL,  SafariFountainAnim4
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -165,7 +163,6 @@ Tileset29Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset31Anim:
-Tileset38Anim:
 	dw NULL,  ForestTreeLeftAnimation
 	dw NULL,  ForestTreeRightAnimation
 	dw NULL,  WaitTileAnimation
@@ -179,7 +176,7 @@ Tileset38Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset39Anim:
+Tileset32Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -192,7 +189,7 @@ Tileset39Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset40Anim:
+Tileset38Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -206,7 +203,7 @@ Tileset40Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset42Anim:
+Tileset39Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -254,7 +251,7 @@ Tileset33Anim:
 Tileset34Anim:
 Tileset35Anim:
 Tileset36Anim:
-Tileset41Anim:
+Tileset37Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
