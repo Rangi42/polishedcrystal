@@ -21,6 +21,7 @@
 * BettyNewbie for Green's sprite
 * bloodless for Game Freak's sprite
 * Fo0xerz for Lawrence III's sprite (devamped by me)
+* Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place
 
 Please let me know if I've failed to credit anyone or if you don't want your work being used.
