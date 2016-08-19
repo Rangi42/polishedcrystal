@@ -31,6 +31,11 @@ SECTION "Map Blockdata 4", ROMX
 INCLUDE "maps/blockdata_4.asm"
 
 
+SECTION "Map Blockdata 5", ROMX
+
+INCLUDE "maps/blockdata_5.asm"
+
+
 
 SECTION "Map Scripts 1", ROMX, BANK[MAP_SCRIPTS_1]
 

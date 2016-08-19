@@ -7,14 +7,14 @@ INCBIN "tilesets/09_metatiles.bin"
 Tileset09Coll:
 INCBIN "tilesets/09_collision.bin"
 
-Tileset12GFX:
-INCBIN "gfx/tilesets/12.2bpp.lz"
+Tileset13GFX:
+INCBIN "gfx/tilesets/13.2bpp.lz"
 
-Tileset12Meta:
-INCBIN "tilesets/12_metatiles.bin"
+Tileset13Meta:
+INCBIN "tilesets/13_metatiles.bin"
 
-Tileset12Coll:
-INCBIN "tilesets/12_collision.bin"
+Tileset13Coll:
+INCBIN "tilesets/13_collision.bin"
 
 Tileset14GFX:
 INCBIN "gfx/tilesets/14.2bpp.lz"

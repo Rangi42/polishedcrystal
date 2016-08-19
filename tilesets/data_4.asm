@@ -1,11 +1,11 @@
-Tileset13GFX:
-INCBIN "gfx/tilesets/13.2bpp.lz"
+Tileset16GFX:
+INCBIN "gfx/tilesets/16.2bpp.lz"
 
-Tileset13Meta:
-INCBIN "tilesets/13_metatiles.bin"
+Tileset16Meta:
+INCBIN "tilesets/16_metatiles.bin"
 
-Tileset13Coll:
-INCBIN "tilesets/13_collision.bin"
+Tileset16Coll:
+INCBIN "tilesets/16_collision.bin"
 
 Tileset15GFX:
 INCBIN "gfx/tilesets/15.2bpp.lz"

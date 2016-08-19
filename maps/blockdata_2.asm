@@ -45,32 +45,25 @@ EarlsPokemonAcademy_BlockData:
 	INCBIN "maps/EarlsPokemonAcademy.blk"
 
 GoldenrodDeptStore1F_BlockData:
-CeladonDeptStore1F_BlockData:
-	INCBIN "maps/DeptStore1F.blk"
+	INCBIN "maps/GoldenrodDeptStore1F.blk"
 
 GoldenrodDeptStore2F_BlockData:
-CeladonDeptStore2F_BlockData:
-	INCBIN "maps/DeptStore2F.blk"
+	INCBIN "maps/GoldenrodDeptStore2F.blk"
 
 GoldenrodDeptStore3F_BlockData:
-CeladonDeptStore3F_BlockData:
-	INCBIN "maps/DeptStore3F.blk"
+	INCBIN "maps/GoldenrodDeptStore3F.blk"
 
 GoldenrodDeptStore4F_BlockData:
-CeladonDeptStore4F_BlockData:
-	INCBIN "maps/DeptStore4F.blk"
+	INCBIN "maps/GoldenrodDeptStore4F.blk"
 
 GoldenrodDeptStore5F_BlockData:
-CeladonDeptStore5F_BlockData:
-	INCBIN "maps/DeptStore5F.blk"
+	INCBIN "maps/GoldenrodDeptStore5F.blk"
 
 GoldenrodDeptStore6F_BlockData:
-CeladonDeptStore6F_BlockData:
-	INCBIN "maps/DeptStore6F.blk"
+	INCBIN "maps/GoldenrodDeptStore6F.blk"
 
 GoldenrodDeptStoreElevator_BlockData:
-CeladonDeptStoreElevator_BlockData:
-	INCBIN "maps/DeptStoreElevator.blk"
+	INCBIN "maps/GoldenrodDeptStoreElevator.blk"
 
 CeladonMansion1F_BlockData:
 	INCBIN "maps/CeladonMansion1F.blk"
