@@ -315,7 +315,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Yanma and Venomoth are available in the Bug-Catching Contest.
 * Add: Murkrow is rare in some Headbutt trees.
 * Add: Add river to Route 45 from HGSS.
-* Add: Add Celadon Dept. Store electronics floor from RBY.
+* Add: Celadon Dept. Store TV game floor from RBY.
+* Add: Lt. Surge's electric traps from RBY.
 * Add: Missing ice puzzle in Seafoam Islands.
 * Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
 * Add: Update Pokémon Center and Poké Mart style.

@@ -73,7 +73,6 @@
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Use Mateo's X/Y Hex Maniac sprite devamp (or make an X/Y one)?
 * Add wild Pokémon to Navel Rock?
-* Lt. Surge's traps from RBY
 * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Expert Belt)
