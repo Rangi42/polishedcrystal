@@ -63,7 +63,6 @@
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
 * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches
-* Add Celadon Dept. Store electronics floor from RBY
 * Merge gray and roof colors on Faraway Island to make room for another green
 
 

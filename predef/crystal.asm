@@ -244,6 +244,8 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .radio_tower
 	cp TILESET_CELADON_MANSION
 	jr z, .mansion_mobile
+	cp TILESET_POKECENTER
+	jr z, .pokecenter
 	cp TILESET_FARAWAY_ISLAND
 	jr z, .faraway_island
 	cp TILESET_JOHTO_1
@@ -287,6 +289,18 @@ LoadSpecialMapPalette: ; 494ac
 
 .mansion_mobile
 	call LoadMansionPalette
+	scf
+	ret
+
+.pokecenter
+	ld a, [MapGroup]
+	cp GROUP_CELADON_HOTEL
+	jr nz, .ok
+	ld a, [MapNumber]
+	cp MAP_CELADON_HOTEL
+	jr z, .do_nothing
+.ok
+	call LoadPokeCenterPalette
 	scf
 	ret
 
@@ -514,6 +528,17 @@ MansionPalette4: ; 496bd
 	RGB 00, 00, 00
 	RGB 31, 31, 31
 ; 496c5
+
+LoadPokeCenterPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, PokeCenterPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+PokeCenterPalette:
+INCLUDE "tilesets/pokecenter.pal"
 
 LoadFarawayIslandPalette:
 	ld a, [TimeOfDayPal]
