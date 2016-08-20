@@ -12,6 +12,7 @@ Music_Route47HGSS_Ch1:
 	volume $77
 	dutycycle 2
 	notetype $C, $94
+	stereopanning $F0
 	note __, 4
 	octave 6
 	note C_, 1
@@ -32,8 +33,9 @@ Music_Route47HGSS_Ch1:
 	note A_, 1
 	tempo $5D
 Music_Route47HGSS_Loop1:
-	note __, 16
 	notetype $C, $61
+	stereopanning $FF
+	note __, 16
 	octave 3
 	note C_, 1
 	note F_, 1
@@ -246,7 +248,7 @@ Music_Route47HGSS_Loop1:
 	note E_, 8
 	note A_, 8
 	note G_, 8
-	notetype $C, $75
+	notetype $C, $77
 	note F_, 12
 	note G_, 8
 	note F_, 8
@@ -290,10 +292,28 @@ Music_Route47HGSS_Loop1:
 
 Music_Route47HGSS_Ch2:
 	dutycycle 2
-	notetype $C, $48
-	note __, 16
+	notetype $C, $58
+	note __, 3
+	octave 6
+	note C_, 1
+	octave 5
+	note G_, 1
+	note F_, 1
+	note G_, 1
+	note F_, 1
+	note C_, 1
+	note F_, 1
+	note C_, 1
+	octave 4
+	note A#, 1
+	octave 5
+	note C_, 1
+	octave 4
+	note A#, 1
+	note A_, 2
 	octave 3
 Music_Route47HGSS_Loop2:
+	notetype $C, $48
 	note C_, 16
 	note C_, 8
 	note E_, 8

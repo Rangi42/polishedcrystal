@@ -184,15 +184,16 @@ def main():
 			valid = True
 
 	if not valid:
-		print('Usage: %s tileset [palette_map.asm metatiles.bin]' % sys.argv[0])
-		print('       Generate a .png of a metatileset for viewing')
-		print()
-		print('       If tileset is gfx/tilesets/##.{2bpp.lz,2bpp,png},')
-		print('       the other parameters will be inferred as')
-		print('       tilesets/##_palette_map.asm and tilesets/##_metatiles.bin.')
-		print()
-		print('       If tileset is ##, it will first be inferred as')
-		print('       gfx/tilesets/##.2bpp.lz.')
+		usage = '''Usage: %s tileset [palette_map.asm metatiles.bin]
+       Generate a .png of a metatileset for viewing
+
+       If tileset is gfx/tilesets/##.{2bpp.lz,2bpp,png},
+       the other parameters will be inferred as
+       tilesets/##_palette_map.asm and tilesets/##_metatiles.bin.
+
+       If tileset is ##, it will first be inferred as
+       gfx/tilesets/##.2bpp.lz.'''
+		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
 
 	if not tileset.endswith('.png'):
@@ -203,7 +204,6 @@ def main():
 		tileset = tileset[:-8] + '.png'
 
 	process(tileset, palette_map, metatiles)
-
 
 if __name__ == '__main__':
 	main()

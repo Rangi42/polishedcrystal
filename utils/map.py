@@ -104,8 +104,9 @@ def process(blockfile_name, height, metatiles_name):
 
 def main():
 	if len(sys.argv) < 4:
-		print('Usage: %s map.blk height tilesetID' % sys.argv[0])
-		print('       Generate a .png of a map for viewing')
+		usage = '''Usage: %s map.blk height tilesetID
+       Generate a .png of a map for viewing'''
+		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
 
 	blockfile = sys.argv[1]

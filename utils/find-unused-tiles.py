@@ -5,7 +5,9 @@ Find unused tiles and blocks.
 Usage: utils/find-unused-tiles.py > unused-tiles.txt
 """
 
-from sys import stderr
+from __future__ import print_function
+
+import sys
 from collections import defaultdict
 
 code_directory         = './'
@@ -137,28 +139,28 @@ def find_unused_tile_ids():
 		tileset_unused_tile_ids[tileset_id].update(unused_tile_ids)
 
 def main():
-	print >> stderr, 'Reading tileset IDs from %s...' % tileset_filename
+	print('Reading tileset IDs from %s...' % tileset_filename, file=sys.stderr)
 	read_tileset_ids()
-	print >> stderr, 'Reading map tilesets from %s...' % map_headers_filename
+	print('Reading map tilesets from %s...' % map_headers_filename, file=sys.stderr)
 	read_map_tilesets()
-	print >> stderr, 'Reading block file names from %s...' % ', '.join(block_data_filenames)
+	print('Reading block file names from %s...' % ', '.join(block_data_filenames), file=sys.stderr)
 	read_block_filenames()
-	print >> stderr, 'Reading used block IDs from each %s...' % (block_filename_fmt % '<name>')
+	print('Reading used block IDs from each %s...' % (block_filename_fmt % '<name>'), file=sys.stderr)
 	read_used_block_ids()
-	print >> stderr, 'Reading used block IDs from %s...' % map_headers_2_filename
+	print('Reading used block IDs from %s...' % map_headers_2_filename, file=sys.stderr)
 	read_used_block_ids_2()
-	print >> stderr, 'Reading used tile IDs from each %s...' % (metatile_filename_fmt % '##')
+	print('Reading used tile IDs from each %s...' % (metatile_filename_fmt % '##'), file=sys.stderr)
 	read_used_tile_ids()
-	print >> stderr, 'Finding unused block IDs...'
+	print('Finding unused block IDs...', file=sys.stderr)
 	find_unused_block_ids()
-	print >> stderr, 'Finding unused tile IDs...'
+	print('Finding unused tile IDs...', file=sys.stderr)
 	find_unused_tile_ids()
-	print >> stderr, 'Printing results...'
+	print('Printing results...', file=sys.stderr)
 	for tileset_id in sorted(tileset_unused_tile_ids):
-		print 'tileset %s:' % tileset_id
-		print '\tunused tiles = %s' % ' '.join(sorted(tileset_unused_tile_ids[tileset_id]))
-		print '\tunused blocks = %s' % ' '.join(sorted(tileset_unused_block_ids[tileset_id]))
-		print
+		print('tileset %s:' % tileset_id)
+		print('\tunused tiles = %s' % ' '.join(sorted(tileset_unused_tile_ids[tileset_id])))
+		print('\tunused blocks = %s' % ' '.join(sorted(tileset_unused_block_ids[tileset_id])))
+		print()
 
 if __name__ == '__main__':
 	main()

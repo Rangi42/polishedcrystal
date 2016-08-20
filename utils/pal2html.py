@@ -12,7 +12,7 @@ def process(filepath):
 		dir, filename = os.path.split(filepath)
 		basename, ext = filename.rsplit('.', 1)
 		if ext.lower() != 'pal':
-			print('error: must input a .pal file')
+			print('error: must input a .pal file', file=sys.stderr)
 			sys.exit(2)
 		content = convert_to_html(f.read())
 		outname = basename + '.html'
@@ -41,11 +41,10 @@ def convert_to_html(content):
 
 def main():
 	if len(sys.argv) < 2:
-		print('Usage: %s foo.pal')
-		print('       Convert foo.pal file to foo.html file for viewing')
+		print('Usage: %s foo.pal', file=sys.stderr)
+		print('       Convert foo.pal file to foo.html file for viewing', file=sys.stderr)
 		sys.exit(1)
 	process(sys.argv[1])
-
 
 if __name__ == '__main__':
 	main()
