@@ -1,5 +1,8 @@
 const_value set 2
 	const CELADONHOMEDECORSTORE1F_RECEPTIONIST
+	const CELADONHOMEDECORSTORE1F_GRIMER_DOLL
+	const CELADONHOMEDECORSTORE1F_MACHOP_DOLL
+	const CELADONHOMEDECORSTORE1F_STARYU_DOLL
 
 CeladonHomeDecorStore1F_MapScriptHeader:
 .MapTriggers:
@@ -139,5 +142,8 @@ CeladonHomeDecorStore1F_MapEventHeader:
 	signpost 1, 1, SIGNPOST_UP, CeladonHomeDecorStore1FVendingMachine
 
 .PersonEvents:
-	db 1
+	db 4
 	person_event SPRITE_RECEPTIONIST, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_GRIMER, 5, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_MACHOP, 5, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_STARYU, 5, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
