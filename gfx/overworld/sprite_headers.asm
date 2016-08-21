@@ -47,7 +47,7 @@ ElderSprite: ; 14766
 ; 1476c
 
 JanineSprite: ; 1476c
-	sprite_header JanineSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+	sprite_header JanineSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 ; 14772
 
 KurtSprite: ; 14772
@@ -139,7 +139,7 @@ ErikaSprite: ; 147f0
 ; 147f6
 
 KogaSprite: ; 147f6
-	sprite_header KogaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+	sprite_header KogaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 ; 147fc
 
 SabrinaSprite: ; 147fc
@@ -354,8 +354,8 @@ PaperSprite: ; 14934
 	sprite_header PaperSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
 ; 1493a
 
-VirtualBoySprite: ; 1493a
-	sprite_header VirtualBoySpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
+GameCubeSprite: ; 1493a
+	sprite_header GameCubeSpriteGFX, 1, STILL_SPRITE, PAL_OW_PURPLE
 ; 14940
 
 OldLinkReceptionistSprite: ; 14940
@@ -371,11 +371,11 @@ BoulderSprite: ; 1494c
 ; 14952
 
 SnesSprite: ; 14952
-	sprite_header SnesSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
+	sprite_header SnesSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
 ; 14958
 
-FamicomSprite: ; 14958
-	sprite_header FamicomSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
+WiiSprite: ; 14958
+	sprite_header WiiSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
 ; 1495e
 
 FruitTreeSprite: ; 1495e
@@ -431,7 +431,7 @@ RichBoySprite:
 	sprite_header RichBoySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
 HexManiacSprite:
-	sprite_header HexManiacSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+	sprite_header HexManiacSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 JamesSprite:
 	sprite_header JamesSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE

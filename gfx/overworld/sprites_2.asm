@@ -40,12 +40,12 @@ SurfSpriteGFX:                INCBIN "gfx/overworld/surf.2bpp" ; c7200
 PokeBallSpriteGFX:            INCBIN "gfx/overworld/poke_ball.2bpp" ; c7380
 PokedexSpriteGFX:             INCBIN "gfx/overworld/pokedex.2bpp" ; c7500
 PaperSpriteGFX:               INCBIN "gfx/overworld/paper.2bpp" ; c7680
-VirtualBoySpriteGFX:          INCBIN "gfx/overworld/gamecube.2bpp" ; c7800
+GameCubeSpriteGFX:            INCBIN "gfx/overworld/gamecube.2bpp" ; c7800
 OldLinkReceptionistSpriteGFX: INCBIN "gfx/overworld/old_link_receptionist.2bpp" ; c7840
 RockSpriteGFX:                INCBIN "gfx/overworld/rock.2bpp" ; c7880
 BoulderSpriteGFX:             INCBIN "gfx/overworld/boulder.2bpp" ; c78c0
 SnesSpriteGFX:                INCBIN "gfx/overworld/snes.2bpp" ; c7900
-FamicomSpriteGFX:             INCBIN "gfx/overworld/famicom.2bpp" ; c7940
+WiiSpriteGFX:                 INCBIN "gfx/overworld/wii.2bpp" ; c7940
 FruitTreeSpriteGFX:           INCBIN "gfx/overworld/fruit_tree.2bpp" ; c7980
 GoldTrophySpriteGFX:          INCBIN "gfx/overworld/gold_trophy.2bpp" ; c79c0
 SilverTrophySpriteGFX:        INCBIN "gfx/overworld/silver_trophy.2bpp" ; c7a00

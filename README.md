@@ -315,7 +315,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Yanma and Venomoth are available in the Bug-Catching Contest.
 * Add: Murkrow is rare in some Headbutt trees.
 * Add: Add river to Route 45 from HGSS.
-* Add: Celadon Dept. Store TV game floor from RBY.
+* Add: Celadon Dept. Store TV game floor from RBY, with game system decorations for sale.
 * Add: Lt. Surge's electric traps from RBY.
 * Add: Missing ice puzzle in Seafoam Islands.
 * Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
@@ -324,6 +324,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Pan up on entering Bell Tower, Battle Tower, and Radio Tower.
 * Add: Rematch Elite Four only after getting all 16 badges (Prof. Elm and Blue both explain this).
 * Add: Accessible waterfall in Yellow Forest.
+* Add: Replace NES with Wii.
+* Add: Purple overworld sprites (used for Eusine, Koga, Janine, PokéManiacs, Hex Maniacs, Burglars, Executive♂s, and GameCube).
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.

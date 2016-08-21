@@ -12,10 +12,10 @@ const_value = 1
 	const TROPICPLANT
 	const JUMBOPLANT
 	const TOWN_MAP_D
-	const FAMICOM
 	const SUPER_NES
 	const NINTENDO_64
-	const VIRTUAL_BOY
+	const GAMECUBE
+	const WII
 	const GOLD_TROPHY
 	const SILVER_TROPHY
 	const SURF_PIKA_DOLL
@@ -82,10 +82,10 @@ __enum__ = 0
 	deco  JIGGLYPUFF_POSTER ; 13(e)
 
 	const CONSOLES
-	deco  FAMICOM ; 15 (f)
-	deco  SNES ; 16 (10)
-	deco  N64 ; 17 (11)
-	deco  VIRTUAL_BOY ; 18 (12)
+	deco  SNES ; 15 (f)
+	deco  N64 ; 16 (10)
+	deco  GAMECUBE ; 17 (11)
+	deco  WII ; 18 (12)
 
 	const BIG_DOLLS
 	deco  BIG_SNORLAX_DOLL ; 1a (13)

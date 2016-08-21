@@ -295,10 +295,10 @@ FindOwnedConsoles: ; 26910
 ; 26918
 
 .consoles ; 26918
-	db DECO_FAMICOM ; 15
-	db DECO_SNES ; 16
-	db DECO_N64 ; 17
-	db DECO_VIRTUAL_BOY ; 18
+	db DECO_SNES ; 15
+	db DECO_N64 ; 16
+	db DECO_GAMECUBE ; 17
+	db DECO_WII ; 18
 	db -1
 ; 2691d
 
@@ -570,10 +570,10 @@ DecorationAttributes: ; 26a4f
 	decoration DECO_POSTER,   CLEFAIRY,          SET_UP_POSTER,      EVENT_DECO_POSTER_2,               $24
 	decoration DECO_POSTER,   JIGGLYPUFF,        SET_UP_POSTER,      EVENT_DECO_POSTER_3,               $25
 	decoration DECO_PLANT,    PUT_IT_AWAY,       PUT_AWAY_CONSOLE,   EVENT_GAVE_KURT_APRICORNS,                         $00
-	decoration DECO_PLANT,    FAMICOM,           SET_UP_CONSOLE,     EVENT_DECO_FAMICOM,                SPRITE_FAMICOM
 	decoration DECO_PLANT,    SUPER_NES,         SET_UP_CONSOLE,     EVENT_DECO_SNES,                   SPRITE_SNES
 	decoration DECO_PLANT,    NINTENDO_64,       SET_UP_CONSOLE,     EVENT_DECO_N64,                    SPRITE_N64
-	decoration DECO_PLANT,    VIRTUAL_BOY,       SET_UP_CONSOLE,     EVENT_DECO_VIRTUAL_BOY,            SPRITE_VIRTUAL_BOY
+	decoration DECO_PLANT,    GAMECUBE,          SET_UP_CONSOLE,     EVENT_DECO_GAMECUBE,               SPRITE_GAMECUBE
+	decoration DECO_PLANT,    WII,               SET_UP_CONSOLE,     EVENT_DECO_WII,                    SPRITE_WII
 	decoration DECO_PLANT,    PUT_IT_AWAY,       PUT_AWAY_BIG_DOLL,  EVENT_GAVE_KURT_APRICORNS,                         $00
 	decoration DECO_BIGDOLL,  SNORLAX,           SET_UP_BIG_DOLL,    EVENT_DECO_BIG_SNORLAX_DOLL,       SPRITE_BIG_SNORLAX
 	decoration DECO_BIGDOLL,  ONIX,              SET_UP_BIG_DOLL,    EVENT_DECO_BIG_ONIX_DOLL,          SPRITE_BIG_ONIX
@@ -1166,10 +1166,10 @@ DecorationIDs: ; 26f2b
 	db DECO_CLEFAIRY_POSTER ; 12
 	db DECO_JIGGLYPUFF_POSTER ; 13
 
-	db DECO_FAMICOM ; 15
-	db DECO_SNES ; 16
-	db DECO_N64 ; 17
-	db DECO_VIRTUAL_BOY ; 18
+	db DECO_SNES ; 15
+	db DECO_N64 ; 16
+	db DECO_GAMECUBE ; 17
+	db DECO_WII ; 18
 
 	db DECO_PIKACHU_DOLL ; 1e
 	db DECO_SURF_PIKACHU_DOLL ; 1f

@@ -35,9 +35,6 @@ SailorScript_0x71017:
 TeacherScript_0x7101a:
 	jumptextfaceplayer UnknownText_0x710b6
 
-VideoGameClerkScript:
-	jumptextfaceplayer VideoGameClerkText
-
 CeladonDeptStore5FDirectory:
 	jumptext CeladonDeptStore5FDirectoryText
 
