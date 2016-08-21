@@ -65,6 +65,9 @@ CeladonGymSign:
 CeladonCityDeptStoreSign:
 	jumptext CeladonCityDeptStoreSignText
 
+CeladonCityHomeDecorStoreSign:
+	jumptext CeladonCityHomeDecorStoreSignText
+
 CeladonCityMansionSign:
 	jumptext CeladonCityMansionSignText
 
@@ -212,6 +215,11 @@ CeladonCityDeptStoreSignText:
 	cont "Dept.Store!"
 	done
 
+CeladonCityHomeDecorStoreSignText:
+	text "Celadon Dept.Store"
+	line "Home Decor Wing"
+	done
+
 CeladonCityMansionSignText:
 	text "Celadon Mansion"
 	done
@@ -258,10 +266,11 @@ CeladonCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 8
+	db 9
 	signpost 18, 9, SIGNPOST_READ, CeladonCitySign
 	signpost 31, 11, SIGNPOST_READ, CeladonGymSign
 	signpost 9, 6, SIGNPOST_READ, CeladonCityDeptStoreSign
+	signpost 9, 10, SIGNPOST_READ, CeladonCityHomeDecorStoreSign
 	signpost 9, 13, SIGNPOST_READ, CeladonCityMansionSign
 	signpost 21, 19, SIGNPOST_READ, CeladonCityGameCornerSign
 	signpost 21, 29, SIGNPOST_READ, CeladonCityTrainerTips

@@ -57,6 +57,20 @@ FisherScript_0x56749:
 	opentext
 	writetext UnknownText_0x567d2
 	waitbutton
+	checkevent EVENT_DECO_VOLTORB_DOLL
+	iftrue .AlreadyGotVoltorbDoll
+	writetext GoldenrodDeptStoreRoofFisherDuplicateText
+	waitbutton
+	setevent EVENT_DECO_VOLTORB_DOLL
+	writetext GotVoltorbDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext VoltorbDollSentText
+	waitbutton
+	writetext GoldenrodDeptStoreRoofFisherCatchEmAllText
+	waitbutton
+.AlreadyGotVoltorbDoll
 	closetext
 	spriteface GOLDENRODDEPTSTOREROOF_FISHER, UP
 	end
@@ -96,7 +110,85 @@ Binoculars3:
 	jumptext Binoculars3Text
 
 PokeDollVendingMachine:
-	jumptext PokeDollVendingMachineText
+	opentext
+	writetext PokeDollVendingMachineText
+.Start:
+	special PlaceMoneyTopRight
+	loadmenudata .MenuData
+	verticalmenu
+	closewindow
+	if_equal $1, .JigglypuffDoll
+	if_equal $2, .GeodudeDoll
+	if_equal $3, .OddishDoll
+	closetext
+	end
+
+.JigglypuffDoll:
+	checkmoney $0, 2400
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_JIGGLYPUFF_DOLL
+	iftrue .AlreadyBought
+	takemoney $0, 2400
+	setevent EVENT_DECO_JIGGLYPUFF_DOLL
+	writetext BoughtJigglypuffDollText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext JigglypuffDollSentText
+	waitbutton
+	jump .Start
+
+.GeodudeDoll:
+	checkmoney $0, 2400
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_GEODUDE_DOLL
+	iftrue .AlreadyBought
+	takemoney $0, 2400
+	setevent EVENT_DECO_GEODUDE_DOLL
+	writetext BoughtGeodudeDollText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext GeodudeDollSentText
+	waitbutton
+	jump .Start
+
+.OddishDoll:
+	checkmoney $0, 2400
+	if_equal $2, .NotEnoughMoney
+	checkevent EVENT_DECO_ODDISH_DOLL
+	iftrue .AlreadyBought
+	takemoney $0, 2400
+	setevent EVENT_DECO_ODDISH_DOLL
+	writetext BoughtOddishDollText
+	playsound SFX_TRANSACTION
+	waitbutton
+	writetext OddishDollSentText
+	waitbutton
+	jump .Start
+
+.NotEnoughMoney:
+	writetext PokeDollVendingMachineNoMoneyText
+	waitbutton
+	jump .Start
+
+.AlreadyBought:
+	writetext PokeDollVendingMachineAlreadyBoughtText
+	waitbutton
+	jump .Start
+
+.MenuData:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "Jigglypuff  ¥2400@"
+	db "Geodude     ¥2400@"
+	db "Oddish      ¥2400@"
+	db "Cancel@"
 
 UnknownText_0x5677f:
 	text "Whew, I'm tired."
@@ -118,6 +210,27 @@ UnknownText_0x567d2:
 
 	para "collect all the"
 	line "dolls!"
+	done
+
+GoldenrodDeptStoreRoofFisherDuplicateText:
+	text "This one is a"
+	line "duplicate. Here,"
+	cont "you can have it."
+	done
+
+GotVoltorbDollText:
+	text "<PLAYER> received"
+	line "Voltorb Doll."
+	done
+
+VoltorbDollSentText:
+	text "Voltorb Doll"
+	line "was sent home."
+	done
+
+GoldenrodDeptStoreRoofFisherCatchEmAllText:
+	text "I heard there are"
+	line "21 kinds of dolls."
 	done
 
 UnknownText_0x56839:
@@ -206,13 +319,45 @@ Binoculars3Text:
 
 PokeDollVendingMachineText:
 	text "A vending machine"
-	line "for #mon dolls?"
+	line "for #mon dolls!"
+	done
 
-	para "Insert money, then"
-	line "turn the crank…"
+PokeDollVendingMachineNoMoneyText:
+	text "It costs too much!"
+	done
 
-	para "But it's almost"
-	line "empty…"
+PokeDollVendingMachineAlreadyBoughtText:
+	text "It's a duplicate!"
+	done
+
+BoughtJigglypuffDollText:
+	text "<PLAYER> bought"
+	line "Jigglypuff Doll."
+	done
+
+JigglypuffDollSentText:
+	text "Jigglypuff Doll"
+	line "was sent home."
+	done
+
+BoughtGeodudeDollText:
+	text "<PLAYER> bought"
+	line "Geodude Doll."
+	done
+
+GeodudeDollSentText:
+	text "Geodude Doll"
+	line "was sent home."
+	done
+
+BoughtOddishDollText:
+	text "<PLAYER> bought"
+	line "Oddish Doll."
+	done
+
+OddishDollSentText:
+	text "Oddish Doll"
+	line "was sent home."
 	done
 
 GoldenrodDeptStoreRoof_MapEventHeader:
