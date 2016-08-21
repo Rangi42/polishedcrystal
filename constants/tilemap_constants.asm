@@ -44,6 +44,7 @@ const_value SET 1
 	const TILESET_POKEMON_MANSION      ; 25
 	const TILESET_FARAWAY_ISLAND       ; 26
 	const TILESET_ROCK_TUNNEL          ; 27
+	const TILESET_HOME_DECOR_STORE     ; 28
 
 	const_def
 	const PAL_BG_GRAY
