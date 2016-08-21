@@ -95,24 +95,24 @@ CamperIvanScript:
 	closetext
 	end
 
-TrainerCamperElliot:
-	trainer EVENT_BEAT_CAMPER_ELLIOT, CAMPER, ELLIOT, CamperElliotSeenText, CamperElliotBeatenText, 0, CamperElliotScript
+TrainerCoupleBrookandeli1:
+	trainer EVENT_BEAT_COUPLE_BROOK_AND_ELI, COUPLE, BROOKANDELI1, CoupleBrookandeli1SeenText, CoupleBrookandeli1BeatenText, 0, CoupleBrookandeli1Script
 
-CamperElliotScript:
+CoupleBrookandeli1Script:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x19cb47
+	writetext CoupleBrookandeli1AfterText
 	waitbutton
 	closetext
 	end
 
-TrainerPicnickerBrooke:
-	trainer EVENT_BEAT_PICNICKER_BROOKE, PICNICKER, BROOKE, PicnickerBrookeSeenText, PicnickerBrookeBeatenText, 0, PicnickerBrookeScript
+TrainerCoupleBrookandeli2:
+	trainer EVENT_BEAT_COUPLE_BROOK_AND_ELI, COUPLE, BROOKANDELI2, CoupleBrookandeli2SeenText, CoupleBrookandeli2BeatenText, 0, CoupleBrookandeli2Script
 
-PicnickerBrookeScript:
+CoupleBrookandeli2Script:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x19cbba
+	writetext CoupleBrookandeli2AfterText
 	waitbutton
 	closetext
 	end
@@ -294,38 +294,38 @@ UnknownText_0x19cac4:
 	cont "of wild #mon."
 	done
 
-CamperElliotSeenText:
-	text "I'm gonna show my"
-	line "girlfriend I'm hot"
-	cont "stuff!"
+CoupleBrookandeli1SeenText:
+	text "Eli: I'm gonna"
+	line "show my girlfriend"
+	cont "I'm hot stuff!"
 	done
 
-CamperElliotBeatenText:
-	text "I wish you would"
+CoupleBrookandeli1BeatenText:
+	text "Eli: I wish you'd"
 	line "have lost for me…"
 	done
 
-UnknownText_0x19cb47:
-	text "I was humiliated"
-	line "in front of my"
-	cont "girlfriend…"
+CoupleBrookandeli1AfterText:
+	text "Eli: I was humili-"
+	line "ated in front of"
+	cont "my girlfriend…"
 	done
 
-PicnickerBrookeSeenText:
-	text "My boyfriend's"
-	line "weak, so I can't"
-	cont "rely on him."
+CoupleBrookandeli2SeenText:
+	text "Brook: My boy-"
+	line "friend's weak, so I"
+	cont "can't rely on him."
 	done
 
-PicnickerBrookeBeatenText:
-	text "Oh, my! You're so"
-	line "strong!"
+CoupleBrookandeli2BeatenText:
+	text "Brook: Oh, my!"
+	line "You're so strong!"
 	done
 
-UnknownText_0x19cbba:
-	text "I can count on my"
-	line "#mon more than"
-	cont "my boyfriend."
+CoupleBrookandeli2AfterText:
+	text "Brook: I can count"
+	line "on my #mon more"
+	cont "than my boyfriend."
 	done
 
 PicnickerKimSeenText:
@@ -483,8 +483,8 @@ Route35_MapEventHeader:
 .PersonEvents:
 	db 11
 	person_event SPRITE_YOUNGSTER, 19, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
-	person_event SPRITE_YOUNGSTER, 20, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperElliot, -1
-	person_event SPRITE_LASS, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerBrooke, -1
+	person_event SPRITE_YOUNGSTER, 20, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleBrookandeli1, -1
+	person_event SPRITE_LASS, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleBrookandeli2, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerKim, -1
 	person_event SPRITE_YOUNGSTER, 28, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerBird_keeperBryan, -1
 	person_event SPRITE_FISHER, 10, 2, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1

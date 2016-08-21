@@ -526,9 +526,6 @@ INCLUDE "maps/SafariZoneFuchsiaGate.asm"
 INCLUDE "maps/SafariZoneHub.asm"
 INCLUDE "maps/SafariZoneEast.asm"
 INCLUDE "maps/SafariZoneNorth.asm"
-INCLUDE "maps/SafariZoneHubRestHouse.asm"
-INCLUDE "maps/SafariZoneEastRestHouse.asm"
-INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 
 SECTION "Map Scripts 26", ROMX
@@ -564,6 +561,9 @@ INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
 INCLUDE "maps/ValeriesHouse.asm"
+INCLUDE "maps/SafariZoneHubRestHouse.asm"
+INCLUDE "maps/SafariZoneEastRestHouse.asm"
+INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 
 SECTION "Map Scripts 27", ROMX

@@ -3,6 +3,8 @@ const_value set 2
 	const ROUTE3_YOUNGSTER1
 	const ROUTE3_YOUNGSTER2
 	const ROUTE3_FISHER2
+	const ROUTE3_COOLTRAINER_M
+	const ROUTE3_COOLTRAINER_F
 
 Route3_MapScriptHeader:
 .MapTriggers:
@@ -51,6 +53,28 @@ FirebreatherBurtScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1ae118
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoZacandjen1:
+	trainer EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, ACE_DUO, ZACANDJEN1, AceDuoZacandjen1SeenText, AceDuoZacandjen1BeatenText, 0, AceDuoZacandjen1Script
+
+AceDuoZacandjen1Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoZacandjen1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoZacandjen2:
+	trainer EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, ACE_DUO, ZACANDJEN2, AceDuoZacandjen2SeenText, AceDuoZacandjen2BeatenText, 0, AceDuoZacandjen2Script
+
+AceDuoZacandjen2Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoZacandjen2AfterText
 	waitbutton
 	closetext
 	end
@@ -125,6 +149,45 @@ UnknownText_0x1ae118:
 	line "trainer…"
 	done
 
+AceDuoZacandjen1SeenText:
+	text "Zac: Really, you"
+	line "want to battle us?"
+
+	para "You've got a lot"
+	line "of courage for"
+	cont "someone so young."
+	done
+
+AceDuoZacandjen1BeatenText:
+	text "Zac: You weren't"
+	line "bluffing…"
+	done
+
+AceDuoZacandjen1AfterText:
+	text "Zac: Your future"
+	line "looks promising."
+	done
+
+AceDuoZacandjen2SeenText:
+	text "Jen: Huh? You'd"
+	line "like to go up"
+	cont "against us? Great!"
+	done
+
+AceDuoZacandjen2BeatenText:
+	text "Jen: You're so"
+	line "much stronger than"
+	cont "I thought."
+	done
+
+AceDuoZacandjen2AfterText:
+	text "Jen: I'm looking"
+	line "forward to seeing"
+	para "what kind of"
+	line "trainer you'll"
+	cont "become."
+	done
+
 UnknownText_0x1ae163:
 	text "Mt.Moon Square"
 
@@ -148,8 +211,10 @@ Route3_MapEventHeader:
 	signpost 13, 53, SIGNPOST_READ, MapRoute3Signpost0Script
 
 .PersonEvents:
-	db 4
+	db 6
 	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
 	person_event SPRITE_YOUNGSTER, 7, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterWarren, -1
 	person_event SPRITE_YOUNGSTER, 3, 16, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
 	person_event SPRITE_FISHER, 5, 53, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherBurt, -1
+	person_event SPRITE_COOLTRAINER_M, 11, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1

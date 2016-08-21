@@ -1244,14 +1244,14 @@ Group14Sprites:
 ; Route3
 ; PewterCity
 	db SPRITE_BUG_CATCHER
+	db SPRITE_COOLTRAINER_M
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
-	; 5 walking sprites
+	; 6 walking sprites
 	db SPRITE_FRUIT_TREE
-	; 6 total sprites
-	db SPRITE_GOLD_TROPHY
+	; 7 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY

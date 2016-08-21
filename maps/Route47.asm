@@ -1,8 +1,10 @@
 const_value set 2
 	const ROUTE47_POKEFAN_M
-	const ROUTE47_YOUNGSTER
+	const ROUTE47_YOUNGSTER1
 	const ROUTE47_COOLTRAINER_M
-	const ROUTE47_COOLTRAINER_F
+	const ROUTE47_COOLTRAINER_F1
+	const ROUTE47_YOUNGSTER2
+	const ROUTE47_COOLTRAINER_F2
 	const ROUTE47_COWGIRL
 	const ROUTE47_ROCKET1
 	const ROUTE47_ROCKET2
@@ -42,24 +44,46 @@ CamperGrantScript:
 	closetext
 	end
 
-TrainerCooltrainermThom:
-	trainer EVENT_BEAT_COOLTRAINERM_THOM, COOLTRAINERM, THOM, CooltrainermThomSeenText, CooltrainermThomBeatenText, 0, CooltrainermThomScript
+TrainerAceDuoThomandkae1:
+	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE1, AceDuoThomandkae1SeenText, AceDuoThomandkae1BeatenText, 0, AceDuoThomandkae1Script
 
-CooltrainermThomScript:
+AceDuoThomandkae1Script:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermThomAfterText
+	writetext AceDuoThomandkae1AfterText
 	waitbutton
 	closetext
 	end
 
-TrainerCooltrainerfKae:
-	trainer EVENT_BEAT_COOLTRAINERF_KAE, COOLTRAINERF, KAE, CooltrainerfKaeSeenText, CooltrainerfKaeBeatenText, 0, CooltrainerfKaeScript
+TrainerAceDuoThomandkae2:
+	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE2, AceDuoThomandkae2SeenText, AceDuoThomandkae2BeatenText, 0, AceDuoThomandkae2Script
 
-CooltrainerfKaeScript:
+AceDuoThomandkae2Script:
 	end_if_just_battled
 	opentext
-	writetext CooltrainerfKaeAfterText
+	writetext AceDuoThomandkae2AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCoupleDuffandeda1:
+	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA1, CoupleDuffandeda1SeenText, CoupleDuffandeda1BeatenText, 0, CoupleDuffandeda1Script
+
+CoupleDuffandeda1Script:
+	end_if_just_battled
+	opentext
+	writetext CoupleDuffandeda1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCoupleDuffandeda2:
+	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA2, CoupleDuffandeda2SeenText, CoupleDuffandeda2BeatenText, 0, CoupleDuffandeda2Script
+
+CoupleDuffandeda2Script:
+	end_if_just_battled
+	opentext
+	writetext CoupleDuffandeda2AfterText
 	waitbutton
 	closetext
 	end
@@ -165,39 +189,80 @@ CamperGrantAfterText:
 	text "See ya!"
 	done
 
-CooltrainermThomSeenText:
-	text "Together, my"
-	line "#mon and I are"
-	cont "much stronger!"
+AceDuoThomandkae1SeenText:
+	text "Thom: One plus one"
+	line "is two. But the"
+
+	para "two of us together"
+	line "is much stronger!"
 	done
 
-CooltrainermThomBeatenText:
-	text "That wasn't what"
-	line "I expected…"
+AceDuoThomandkae1BeatenText:
+	text "Thom: That wasn't"
+	line "what I expected…"
 	done
 
-CooltrainermThomAfterText:
-	text "Your power is"
-	line "impossible to"
+AceDuoThomandkae1AfterText:
+	text "Thom: Your power"
+	line "is impossible to"
 	cont "predict!"
 	done
 
-CooltrainerfKaeSeenText:
-	text "Standing atop"
-	line "these cliffs"
-	cont "makes my heart"
-	cont "soar!"
+AceDuoThomandkae2SeenText:
+	text "Kae: The two of us"
+	line "aren't just some"
+	cont "boring pair!"
 	done
 
-CooltrainerfKaeBeatenText:
-	text "I was no match"
-	line "for you…"
+AceDuoThomandkae2BeatenText:
+	text "Kae: You're"
+	line "unusual, too!"
 	done
 
-CooltrainerfKaeAfterText:
-	text "Thank you for the"
-	line "awe-inspiring"
-	cont "battle!"
+AceDuoThomandkae2AfterText:
+	text "Kae: I figured you"
+	line "were an ordinary"
+
+	para "lone trainer."
+	line "Boy, was I wrong!"
+	done
+
+CoupleDuffandeda1SeenText:
+	text "Duff: Watching"
+	line "over my girlfriend"
+
+	para "makes my heart"
+	line "soar!"
+	done
+
+CoupleDuffandeda1BeatenText:
+	text "Duff: I was no"
+	line "match for you…"
+	done
+
+CoupleDuffandeda1AfterText:
+	text "Duff: Thank you"
+	line "for the awe-"
+	cont "inspiring battle!"
+	done
+
+CoupleDuffandeda2SeenText:
+	text "Eda: My feelings"
+	line "for my boyfriend"
+
+	para "are as wide and"
+	line "deep as the ocean."
+	done
+
+CoupleDuffandeda2BeatenText:
+	text "Eda: You're really"
+	line "something…"
+	done
+
+CoupleDuffandeda2AfterText:
+	text "Eda: You should"
+	line "find a wonderful"
+	cont "partner, too."
 	done
 
 CowgirlDanielaSeenText:
@@ -302,11 +367,13 @@ Route47_MapEventHeader:
 	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust
 
 .PersonEvents:
-	db 13
+	db 15
 	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermThom, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_COOLTRAINER_F, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKae, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoThomandkae1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_COOLTRAINER_F, 18, 39, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoThomandkae2, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_YOUNGSTER, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleDuffandeda1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_COOLTRAINER_F, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleDuffandeda2, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_COWGIRL, 8, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerCowgirlDaniela, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST

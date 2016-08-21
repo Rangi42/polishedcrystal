@@ -3564,18 +3564,6 @@ CamperGroup:
 ; ================
 
 	; CAMPER (4)
-	db "Elliot@"
-	db 0 ; normal
-
-	; party
-	db 13, SANDSHREW
-	db 15, MARILL
-
-	db $ff ; end
-
-; ================
-
-	; CAMPER (5)
 	db "Barry@"
 	db 0 ; normal
 
@@ -3586,7 +3574,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (6)
+	; CAMPER (5)
 	db "Lloyd@"
 	db 0 ; normal
 
@@ -3597,7 +3585,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (7)
+	; CAMPER (6)
 	db "Dean@"
 	db 0 ; normal
 
@@ -3609,7 +3597,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (8)
+	; CAMPER (7)
 	db "Sid@"
 	db 0 ; normal
 
@@ -3623,7 +3611,7 @@ CamperGroup:
 ; ================
 
 	; unused
-	; CAMPER (9)
+	; CAMPER (8)
 	db "Harvey@"
 	db 0 ; normal
 
@@ -3635,7 +3623,7 @@ CamperGroup:
 ; ================
 
 	; unused
-	; CAMPER (10)
+	; CAMPER (9)
 	db "Dale@"
 	db 0 ; normal
 
@@ -3646,7 +3634,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (11)
+	; CAMPER (10)
 	db "Ted@"
 	db 0 ; normal
 
@@ -3657,7 +3645,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (12)
+	; CAMPER (11)
 	db "Todd@"
 	db 0 ; normal
 
@@ -3670,7 +3658,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (13)
+	; CAMPER (12)
 	db "Todd@"
 	db 0 ; normal
 
@@ -3684,7 +3672,7 @@ CamperGroup:
 ; ================
 
 	; unused
-	; CAMPER (14)
+	; CAMPER (13)
 	db "Thomas@"
 	db 0 ; normal
 
@@ -3699,7 +3687,7 @@ CamperGroup:
 ; ================
 
 	; unused
-	; CAMPER (15)
+	; CAMPER (14)
 	db "Leroy@"
 	db 0 ; normal
 
@@ -3714,7 +3702,7 @@ CamperGroup:
 ; ================
 
 	; unused
-	; CAMPER (16)
+	; CAMPER (15)
 	db "David@"
 	db 0 ; normal
 
@@ -3728,7 +3716,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (17)
+	; CAMPER (16)
 	db "John@"
 	db 0 ; normal
 
@@ -3742,7 +3730,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (18)
+	; CAMPER (17)
 	db "Jerry@"
 	db 0 ; normal
 
@@ -3753,7 +3741,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (19)
+	; CAMPER (18)
 	db "Spencer@"
 	db 0 ; normal
 
@@ -3766,7 +3754,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (20)
+	; CAMPER (19)
 	db "Todd@"
 	db 0 ; normal
 
@@ -3780,7 +3768,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (21)
+	; CAMPER (20)
 	db "Todd@"
 	db 1 ; moves
 
@@ -3814,7 +3802,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (22)
+	; CAMPER (21)
 	db "Quentin@"
 	db 0 ; normal
 
@@ -3827,7 +3815,7 @@ CamperGroup:
 
 ; ================
 
-	; CAMPER (23)
+	; CAMPER (22)
 	db "Grant@"
 	db 0 ; normal
 
@@ -3870,22 +3858,6 @@ PicnickerGroup:
 ; ================
 
 	; PICNICKER (3)
-	db "Brooke@"
-	db 1 ; moves
-
-	; party
-
-	db 16, PIKACHU
-		db THUNDERSHOCK
-		db GROWL
-		db QUICK_ATTACK
-		db DOUBLE_TEAM
-
-	db $ff ; end
-
-; ================
-
-	; PICNICKER (4)
 	db "Kim@"
 	db 0 ; normal
 
@@ -3896,7 +3868,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (5)
+	; PICNICKER (4)
 	db "Cindy@"
 	db 0 ; normal
 
@@ -3907,7 +3879,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (6)
+	; PICNICKER (5)
 	db "Hope@"
 	db 0 ; normal
 
@@ -3918,7 +3890,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (7)
+	; PICNICKER (6)
 	db "Sharon@"
 	db 0 ; normal
 
@@ -3930,7 +3902,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (8)
+	; PICNICKER (7)
 	db "Debra@"
 	db 0 ; normal
 
@@ -3941,7 +3913,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (9)
+	; PICNICKER (8)
 	db "Gina@"
 	db 0 ; normal
 
@@ -3954,7 +3926,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (10)
+	; PICNICKER (9)
 	db "Erin@"
 	db 0 ; normal
 
@@ -3966,7 +3938,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (11)
+	; PICNICKER (10)
 	db "Liz@"
 	db 0 ; normal
 
@@ -3978,7 +3950,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (12)
+	; PICNICKER (11)
 	db "Liz@"
 	db 0 ; normal
 
@@ -3991,7 +3963,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (13)
+	; PICNICKER (12)
 	db "Heidi@"
 	db 0 ; normal
 
@@ -4003,7 +3975,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (14)
+	; PICNICKER (13)
 	db "Edna@"
 	db 0 ; normal
 
@@ -4015,7 +3987,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (15)
+	; PICNICKER (14)
 	db "Gina@"
 	db 0 ; normal
 
@@ -4028,7 +4000,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (16)
+	; PICNICKER (15)
 	db "Tiffany@"
 	db 1 ; moves
 
@@ -4044,7 +4016,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (17)
+	; PICNICKER (16)
 	db "Tiffany@"
 	db 1 ; moves
 
@@ -4060,7 +4032,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (18)
+	; PICNICKER (17)
 	db "Erin@"
 	db 0 ; normal
 
@@ -4072,7 +4044,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (19)
+	; PICNICKER (18)
 	db "Tanya@"
 	db 0 ; normal
 
@@ -4083,7 +4055,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (20)
+	; PICNICKER (19)
 	db "Tiffany@"
 	db 1 ; moves
 
@@ -4099,7 +4071,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (21)
+	; PICNICKER (20)
 	db "Erin@"
 	db 1 ; moves
 
@@ -4127,7 +4099,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (22)
+	; PICNICKER (21)
 	db "Liz@"
 	db 0 ; normal
 
@@ -4140,7 +4112,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (23)
+	; PICNICKER (22)
 	db "Liz@"
 	db 1 ; moves
 
@@ -4168,7 +4140,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (24)
+	; PICNICKER (23)
 	db "Gina@"
 	db 0 ; normal
 
@@ -4181,7 +4153,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (25)
+	; PICNICKER (24)
 	db "Gina@"
 	db 1 ; moves
 
@@ -4209,7 +4181,7 @@ PicnickerGroup:
 
 ; ================
 
-	; PICNICKER (26)
+	; PICNICKER (25)
 	db "Tiffany@"
 	db 1 ; moves
 
@@ -8496,6 +8468,61 @@ SrAndJrGroup:
 CoupleGroup:
 ; ================================
 ; ================
+
+	; COUPLE (1)
+	db "Gail & Eli@"
+	db 0 ; normal
+
+	; party
+
+	db 13, SANDSHREW
+	db 15, MARILL
+	db 15, PIKACHU
+	db 13, POLIWAG
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE (2)
+	db "Gail & Eli@"
+	db 0 ; normal
+
+	; party
+
+	db 15, PIKACHU
+	db 13, POLIWAG
+	db 13, SANDSHREW
+	db 15, MARILL
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE (3)
+	db "Duff & Eda@"
+	db 0 ; normal
+
+	; party
+
+	db 25, CLOYSTER
+	db 25, ONIX
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE (4)
+	db "Duff & Eda@"
+	db 0 ; normal
+
+	; party
+
+	db 25, ONIX
+	db 25, CLOYSTER
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -10680,19 +10707,6 @@ CooltrainerMGroup:
 ; ================
 
 	; COOLTRAINERM (24)
-	db "Thom@"
-	db 0 ; normal
-
-	; party
-
-	db 25, MAGMAR
-	db 25, ELECTABUZZ
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM (25)
 	db "Matt@"
 	db 3 ; item + moves
 
@@ -10738,7 +10752,7 @@ CooltrainerMGroup:
 
 ; ================
 
-	; COOLTRAINERM (26)
+	; COOLTRAINERM (25)
 	db "Ringo@"
 	db 3 ; item + moves
 
@@ -10784,7 +10798,7 @@ CooltrainerMGroup:
 
 ; ================
 
-	; COOLTRAINERM (27)
+	; COOLTRAINERM (26)
 	db "Henri@"
 	db 0 ; normal
 
@@ -11191,19 +11205,6 @@ CooltrainerFGroup:
 ; ================
 
 	; COOLTRAINERF (25)
-	db "Kae@"
-	db 0 ; normal
-
-	; party
-
-	db 25, CLOYSTER
-	db 25, ONIX
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERF (26)
 	db "Joanne@"
 	db 3 ; item + moves
 
@@ -11249,7 +11250,7 @@ CooltrainerFGroup:
 
 ; ================
 
-	; COOLTRAINERF (27)
+	; COOLTRAINERF (26)
 	db "Kotori@"
 	db 3 ; item + moves
 
@@ -11348,6 +11349,58 @@ AceDuoGroup:
 
 	db 52, TAUROS
 	db 53, GIRAFARIG
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (5)
+	db "Thom & Kae@"
+	db 0 ; normal
+
+	; party
+
+	db 25, MAGMAR
+	db 25, ELECTABUZZ
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (6)
+	db "Thom & Kae@"
+	db 0 ; normal
+
+	; party
+
+	db 25, ELECTABUZZ
+	db 25, MAGMAR
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (7)
+	db "Zac & Jen@"
+	db 0 ; normal
+
+	; party
+
+	db 47, DUGTRIO
+	db 47, ELECTABUZZ
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO (8)
+	db "Zac & Jen@"
+	db 0 ; normal
+
+	; party
+
+	db 47, ELECTABUZZ
+	db 47, DUGTRIO
 
 	db $ff ; end
 

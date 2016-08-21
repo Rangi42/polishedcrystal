@@ -129,7 +129,6 @@ KRIS EQU __enum__
 	const ROLAND
 	const TODD1
 	const IVAN
-	const ELLIOT
 	const BARRY
 	const LLOYD
 	const DEAN
@@ -153,7 +152,6 @@ KRIS EQU __enum__
 	trainerclass PICNICKER ; 1f
 	const LIZ1
 	const GINA1
-	const BROOKE
 	const KIM
 	const CINDY
 	const HOPE
@@ -498,6 +496,10 @@ KRIS EQU __enum__
 	trainerclass SR_AND_JR ; 39
 
 	trainerclass COUPLE ; 3a
+	const BROOKANDELI1
+	const BROOKANDELI2
+	const DUFFANDEDA1
+	const DUFFANDEDA2
 
 	trainerclass GENTLEMAN ; 3b
 	const PRESTON
@@ -686,7 +688,6 @@ KRIS EQU __enum__
 	const ABDUL
 	const ELAN
 	const FRENCH
-	const THOM
 	const MATT
 	const RINGO
 	const HENRI
@@ -716,7 +717,6 @@ KRIS EQU __enum__
 	const SALMA
 	const BONITA
 	const IDA
-	const KAE
 	const JOANNE
 	const KOTORI
 
@@ -725,6 +725,10 @@ KRIS EQU __enum__
 	const ELANANDIDA2
 	const ARAANDBELA1
 	const ARAANDBELA2
+	const THOMANDKAE1
+	const THOMANDKAE2
+	const ZACANDJEN1
+	const ZACANDJEN2
 
 	trainerclass EXECUTIVEM ; 51
 	const ARCHER2
