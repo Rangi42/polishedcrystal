@@ -18,3 +18,15 @@ CeladonDeptStore6F_BlockData:
 
 CeladonDeptStoreElevator_BlockData:
 	INCBIN "maps/CeladonDeptStoreElevator.blk"
+
+CeladonHomeDecorStore1F_BlockData:
+	INCBIN "maps/CeladonHomeDecorStore1F.blk"
+
+CeladonHomeDecorStore2F_BlockData:
+	INCBIN "maps/CeladonHomeDecorStore2F.blk"
+
+CeladonHomeDecorStore3F_BlockData:
+	INCBIN "maps/CeladonHomeDecorStore3F.blk"
+
+CeladonHomeDecorStore4F_BlockData:
+	INCBIN "maps/CeladonHomeDecorStore4F.blk"

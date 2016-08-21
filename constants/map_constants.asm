@@ -417,6 +417,10 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_16_GATE,                               4,  5 ; 26
 	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 27
 	mapgroup ROUTE_17_18_GATE,                            4,  5 ; 28
+	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 29
+	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 30
+	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 31
+	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 32
 
 	newgroup                                                    ; 22
 

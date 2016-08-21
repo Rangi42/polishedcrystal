@@ -249,7 +249,7 @@ CeladonCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 11
+	db 12
 	warp_def $9, $4, 1, CELADON_DEPT_STORE_1F
 	warp_def $9, $10, 1, CELADON_MANSION_1F
 	warp_def $3, $10, 3, CELADON_MANSION_1F
@@ -261,6 +261,7 @@ CeladonCity_MapEventHeader:
 	warp_def $1d, $15, 1, CELADON_CAFE
 	warp_def $1d, $1d, 1, CELADON_CHIEF_HOUSE
 	warp_def $1d, $21, 1, CELADON_HOTEL
+	warp_def $9, $9, 1, CELADON_HOME_DECOR_STORE_1F
 
 .XYTriggers:
 	db 0
