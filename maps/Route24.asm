@@ -31,6 +31,8 @@ RocketScript_0x1adbfa:
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear ROUTE24_ROCKET
+	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
+	domaptrigger ROUTE_25, $1
 	pause 25
 	special Special_FadeInQuickly
 	playmapmusic

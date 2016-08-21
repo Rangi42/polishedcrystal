@@ -51,9 +51,7 @@ UnknownScript_0x1883de:
 	disappear CERULEANGYM_ROCKET
 	setevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
 	clearevent EVENT_ROUTE_24_ROCKET
-	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
 	dotrigger $0
-	domaptrigger ROUTE_25, $1
 	domaptrigger POWER_PLANT, $0
 	waitsfx
 	special RestartMapMusic
