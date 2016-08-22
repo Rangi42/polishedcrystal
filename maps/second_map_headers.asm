@@ -327,6 +327,7 @@
 	map_header_2 RuinsofAlphKabutoWordRoom, RUINS_OF_ALPH_KABUTO_WORD_ROOM, $0, 0
 	map_header_2 RuinsofAlphOmanyteWordRoom, RUINS_OF_ALPH_OMANYTE_WORD_ROOM, $0, 0
 	map_header_2 RuinsofAlphAerodactylWordRoom, RUINS_OF_ALPH_AERODACTYL_WORD_ROOM, $0, 0
+	map_header_2 RuinsofAlphSinjohChamber, RUINS_OF_ALPH_SINJOH_CHAMBER, $0, 0
 	map_header_2 UnionCave1F, UNION_CAVE_1F, $9, 0
 	map_header_2 UnionCaveB1F, UNION_CAVE_B1F, $9, 0
 	map_header_2 UnionCaveB2F, UNION_CAVE_B2F, $9, 0
@@ -439,6 +440,10 @@
 	map_header_2 LakeofRageMagikarpHouse, LAKE_OF_RAGE_MAGIKARP_HOUSE, $0, 0
 	map_header_2 Route43MahoganyGate, ROUTE_43_MAHOGANY_GATE, $0, 0
 	map_header_2 Route43Gate, ROUTE_43_GATE, $0, 0
+	map_header_2 SinjohRuins, SINJOH_RUINS, $1, 0
+	map_header_2 SinjohRuinsHouse, SINJOH_RUINS_HOUSE, $0, 0
+	map_header_2 MystriStage, MYSTRI_STAGE, $0, 0
+	map_header_2 EmbeddedTower, EMBEDDED_TOWER, $0, 0
 	map_header_2 VioletMart, VIOLET_MART, $0, 0
 	map_header_2 VioletGym, VIOLET_GYM, $0, 0
 	map_header_2 EarlsPokemonAcademy, EARLS_POKEMON_ACADEMY, $0, 0

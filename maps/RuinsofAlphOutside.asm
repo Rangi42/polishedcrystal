@@ -312,7 +312,7 @@ RuinsofAlphOutside_MapEventHeader:
 	warp_def $5, $3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
 	warp_def $1a, $f, 1, ROUTE_32_RUINS_OF_ALPH_GATE
 	warp_def $1b, $f, 2, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $9, $a, 1, RUINS_OF_ALPH_RESEARCH_CENTER
+	warp_def $9, $a, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
 
 .XYTriggers:
 	db 2

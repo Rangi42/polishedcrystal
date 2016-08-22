@@ -112,6 +112,7 @@ ENDM
 	landmark 120,  84, DarkCaveName
 	landmark 132, 104, Route46Name
 	landmark 156,  84, SilverCaveName
+	landmark 156,  48, SinjohRuinsName
 	landmark  60, 124, PalletTownName
 	landmark  60, 108, Route1Name
 	landmark  60,  92, ViridianCityName
@@ -282,6 +283,7 @@ CherrygroveBayName:  db "Cherrygrove¯Bay@"
 GoldenrodHarborName: db "Goldenrod¯Harbor@"
 NavelRockName:       db "Navel Rock@"
 FarawayIslandName:   db "Faraway¯Island@"
+SinjohRuinsName:     db "Sinjoh Ruins@"
 SpecialMapName:      db "Special@"
 
 

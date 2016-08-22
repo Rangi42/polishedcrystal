@@ -70,60 +70,61 @@ MAP_NONE   EQU 0
 	mapgroup RUINS_OF_ALPH_KABUTO_WORD_ROOM,              7, 10 ; 34
 	mapgroup RUINS_OF_ALPH_OMANYTE_WORD_ROOM,             8, 10 ; 35
 	mapgroup RUINS_OF_ALPH_AERODACTYL_WORD_ROOM,          7, 10 ; 36
-	mapgroup UNION_CAVE_1F,                              18, 10 ; 37
-	mapgroup UNION_CAVE_B1F,                             18, 10 ; 38
-	mapgroup UNION_CAVE_B2F,                             18, 10 ; 39
-	mapgroup SLOWPOKE_WELL_B1F,                           9, 10 ; 40
-	mapgroup SLOWPOKE_WELL_B2F,                           9, 10 ; 41
-	mapgroup OLIVINE_LIGHTHOUSE_1F,                       9, 10 ; 42
-	mapgroup OLIVINE_LIGHTHOUSE_2F,                       9, 10 ; 43
-	mapgroup OLIVINE_LIGHTHOUSE_3F,                       9, 10 ; 44
-	mapgroup OLIVINE_LIGHTHOUSE_4F,                       9, 10 ; 45
-	mapgroup OLIVINE_LIGHTHOUSE_5F,                       9, 10 ; 46
-	mapgroup OLIVINE_LIGHTHOUSE_6F,                       9, 10 ; 47
-	mapgroup MAHOGANY_MART_1F,                            4,  4 ; 48
-	mapgroup TEAM_ROCKET_BASE_B1F,                        9, 15 ; 49
-	mapgroup TEAM_ROCKET_BASE_B2F,                        9, 15 ; 50
-	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 51
-	mapgroup ILEX_FOREST,                                27, 15 ; 52
-	mapgroup WAREHOUSE_ENTRANCE,                         18, 15 ; 53
-	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     18, 15 ; 54
-	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 55
-	mapgroup UNDERGROUND_WAREHOUSE,                       9, 10 ; 56
-	mapgroup MOUNT_MORTAR_1F_OUTSIDE,                    18, 20 ; 57
-	mapgroup MOUNT_MORTAR_1F_INSIDE,                     27, 20 ; 58
-	mapgroup MOUNT_MORTAR_2F_INSIDE,                     18, 20 ; 59
-	mapgroup MOUNT_MORTAR_B1F,                           18, 20 ; 60
-	mapgroup ICE_PATH_1F,                                18, 20 ; 61
-	mapgroup ICE_PATH_B1F,                               18, 10 ; 62
-	mapgroup ICE_PATH_B2F_MAHOGANY_SIDE,                  9, 10 ; 63
-	mapgroup ICE_PATH_B2F_BLACKTHORN_SIDE,                9,  5 ; 64
-	mapgroup ICE_PATH_B3F,                                9, 10 ; 65
-	mapgroup WHIRL_ISLAND_NW,                             9,  5 ; 66
-	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 67
-	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 68
-	mapgroup WHIRL_ISLAND_CAVE,                           9,  5 ; 69
-	mapgroup WHIRL_ISLAND_SE,                             9,  5 ; 70
-	mapgroup WHIRL_ISLAND_B1F,                           18, 20 ; 71
-	mapgroup WHIRL_ISLAND_B2F,                           18, 10 ; 72
-	mapgroup WHIRL_ISLAND_LUGIA_CHAMBER,                  9, 10 ; 73
-	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 74
-	mapgroup SILVER_CAVE_ROOM_2,                         18, 15 ; 75
-	mapgroup SILVER_CAVE_ROOM_3,                         19, 10 ; 76
-	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9, 10 ; 77
-	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 78
-	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              18, 15 ; 79
-	mapgroup DRAGONS_DEN_1F,                              9,  5 ; 80
-	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 81
-	mapgroup DRAGON_SHRINE,                               5,  5 ; 82
-	mapgroup TOHJO_FALLS,                                 9, 15 ; 83
-	mapgroup DIGLETTS_CAVE,                              18, 10 ; 84
-	mapgroup MOUNT_MOON,                                  9, 15 ; 85
-	mapgroup UNDERGROUND,                                14,  3 ; 86
-	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 87
-	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 88
-	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 89
-	mapgroup VICTORY_ROAD,                               36, 10 ; 90
+	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  4 ; 37
+	mapgroup UNION_CAVE_1F,                              18, 10 ; 38
+	mapgroup UNION_CAVE_B1F,                             18, 10 ; 39
+	mapgroup UNION_CAVE_B2F,                             18, 10 ; 40
+	mapgroup SLOWPOKE_WELL_B1F,                           9, 10 ; 41
+	mapgroup SLOWPOKE_WELL_B2F,                           9, 10 ; 42
+	mapgroup OLIVINE_LIGHTHOUSE_1F,                       9, 10 ; 43
+	mapgroup OLIVINE_LIGHTHOUSE_2F,                       9, 10 ; 44
+	mapgroup OLIVINE_LIGHTHOUSE_3F,                       9, 10 ; 45
+	mapgroup OLIVINE_LIGHTHOUSE_4F,                       9, 10 ; 46
+	mapgroup OLIVINE_LIGHTHOUSE_5F,                       9, 10 ; 47
+	mapgroup OLIVINE_LIGHTHOUSE_6F,                       9, 10 ; 48
+	mapgroup MAHOGANY_MART_1F,                            4,  4 ; 49
+	mapgroup TEAM_ROCKET_BASE_B1F,                        9, 15 ; 50
+	mapgroup TEAM_ROCKET_BASE_B2F,                        9, 15 ; 51
+	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 52
+	mapgroup ILEX_FOREST,                                27, 15 ; 53
+	mapgroup WAREHOUSE_ENTRANCE,                         18, 15 ; 54
+	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     18, 15 ; 55
+	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 56
+	mapgroup UNDERGROUND_WAREHOUSE,                       9, 10 ; 57
+	mapgroup MOUNT_MORTAR_1F_OUTSIDE,                    18, 20 ; 58
+	mapgroup MOUNT_MORTAR_1F_INSIDE,                     27, 20 ; 59
+	mapgroup MOUNT_MORTAR_2F_INSIDE,                     18, 20 ; 60
+	mapgroup MOUNT_MORTAR_B1F,                           18, 20 ; 61
+	mapgroup ICE_PATH_1F,                                18, 20 ; 62
+	mapgroup ICE_PATH_B1F,                               18, 10 ; 63
+	mapgroup ICE_PATH_B2F_MAHOGANY_SIDE,                  9, 10 ; 64
+	mapgroup ICE_PATH_B2F_BLACKTHORN_SIDE,                9,  5 ; 65
+	mapgroup ICE_PATH_B3F,                                9, 10 ; 66
+	mapgroup WHIRL_ISLAND_NW,                             9,  5 ; 67
+	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 68
+	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 69
+	mapgroup WHIRL_ISLAND_CAVE,                           9,  5 ; 70
+	mapgroup WHIRL_ISLAND_SE,                             9,  5 ; 71
+	mapgroup WHIRL_ISLAND_B1F,                           18, 20 ; 72
+	mapgroup WHIRL_ISLAND_B2F,                           18, 10 ; 73
+	mapgroup WHIRL_ISLAND_LUGIA_CHAMBER,                  9, 10 ; 74
+	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 75
+	mapgroup SILVER_CAVE_ROOM_2,                         18, 15 ; 76
+	mapgroup SILVER_CAVE_ROOM_3,                         19, 10 ; 77
+	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9, 10 ; 78
+	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 79
+	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              18, 15 ; 80
+	mapgroup DRAGONS_DEN_1F,                              9,  5 ; 81
+	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 82
+	mapgroup DRAGON_SHRINE,                               5,  5 ; 83
+	mapgroup TOHJO_FALLS,                                 9, 15 ; 84
+	mapgroup DIGLETTS_CAVE,                              18, 10 ; 85
+	mapgroup MOUNT_MOON,                                  9, 15 ; 86
+	mapgroup UNDERGROUND,                                14,  3 ; 87
+	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 88
+	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 89
+	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 90
+	mapgroup VICTORY_ROAD,                               36, 10 ; 91
 
 	newgroup                                                    ;  4
 
@@ -217,6 +218,10 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_43_GATE,                               4,  5 ;  4
 	mapgroup ROUTE_43,                                   27, 10 ;  5
 	mapgroup LAKE_OF_RAGE,                               18, 20 ;  6
+	mapgroup SINJOH_RUINS,                               13,  9 ;  7
+	mapgroup SINJOH_RUINS_HOUSE,                           4, 4 ;  8
+	mapgroup MYSTRI_STAGE,                                9,  7 ;  9
+	mapgroup EMBEDDED_TOWER,                            12,  11 ; 10
 
 	newgroup                                                    ; 10
 

@@ -20,7 +20,18 @@ Route47_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_TILES, Route47TileScript
+
+Route47TileScript:
+	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	iffalse .locked
+	changeblock $8, $16, $2b
+.locked
+	return
 
 TrainerHikerDevin:
 	trainer EVENT_BEAT_HIKER_DEVIN, HIKER, DEVIN, HikerDevinSeenText, HikerDevinBeatenText, 0, HikerDevinScript
@@ -350,12 +361,13 @@ Route47_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 5
+	db 6
 	warp_def $15, $43, 2, CLIFF_EDGE_GATE
 	warp_def $15, $35, 1, CLIFF_CAVE
 	warp_def $11, $34, 2, CLIFF_CAVE
 	warp_def $1d, $35, 3, CLIFF_CAVE
 	warp_def $17, $b, 1, QUIET_CAVE_1F
+	warp_def $17, $8, 1, EMBEDDED_TOWER
 
 .XYTriggers:
 	db 0

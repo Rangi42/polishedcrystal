@@ -149,6 +149,7 @@ CherrygroveGymSpeechHouse_BlockData:
 GuideGentsHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
+SinjohRuinsHouse_BlockData:
 	INCBIN "maps/House1.blk"
 
 Route19FuchsiaGate_BlockData:

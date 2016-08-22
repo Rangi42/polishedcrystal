@@ -30,3 +30,15 @@ CeladonHomeDecorStore3F_BlockData:
 
 CeladonHomeDecorStore4F_BlockData:
 	INCBIN "maps/CeladonHomeDecorStore4F.blk"
+
+RuinsofAlphSinjohChamber_BlockData:
+	INCBIN "maps/RuinsofAlphSinjohChamber.blk"
+
+SinjohRuins_BlockData:
+	INCBIN "maps/SinjohRuins.blk"
+
+MystriStage_BlockData:
+	INCBIN "maps/MystriStage.blk"
+
+EmbeddedTower_BlockData:
+	INCBIN "maps/EmbeddedTower.blk"
