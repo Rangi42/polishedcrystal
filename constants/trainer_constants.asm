@@ -133,14 +133,9 @@ KRIS EQU __enum__
 	const LLOYD
 	const DEAN
 	const SID
-	const HARVEY
-	const DALE
 	const TED
 	const TODD2
 	const TODD3
-	const THOMAS
-	const LEROY
-	const DAVID
 	const JOHN
 	const JERRY
 	const SPENCER
@@ -327,16 +322,11 @@ KRIS EQU __enum__
 	trainerclass SUPER_NERD ; 2c
 	const STAN
 	const ERIC
-	const GREGG
-	const JAY
-	const DAVE
 	const SAM
 	const TOM
 	const PAT
 	const SHAWN
 	const TERU
-	const RUSS
-	const NORTON
 	const HUGH
 	const MARKUS
 	const CARY
@@ -366,19 +356,8 @@ KRIS EQU __enum__
 	trainerclass BEAUTY ; 2e
 	const VICTORIA
 	const SAMANTHA
-	const JULIE
-	const JACLYN
-	const BRENDA
 	const CASSIE
-	const CAROLINE
-	const CARLENE
-	const JESSICA
-	const RACHAEL
-	const ANGELICA
-	const KENDRA
-	const VERONICA
 	const JULIA
-	const THERESA
 	const VALENCIA
 	const OLIVIA
 	const CALLIE
@@ -474,9 +453,6 @@ KRIS EQU __enum__
 	trainerclass MEDIUM ; 36
 	const MARTHA
 	const GRACE
-	const BETHANY
-	const MARGRET
-	const ETHEL
 	const REBECCA
 	const DORIS
 
@@ -505,7 +481,6 @@ KRIS EQU __enum__
 	const PRESTON
 	const EDWARD
 	const GREGORY
-	const VIRGIL
 	const ALFRED
 	const MILTON
 
@@ -546,17 +521,12 @@ KRIS EQU __enum__
 	const KIRK
 	const MATHEW
 	const HAL
-	const PATON
-	const DARYL
-	const WALTER
-	const TONY
 	const JEROME
 	const TUCKER
 	const RICK
 	const CAMERON
 	const SETH
 	const JAMES
-	const LEWIS
 
 	trainerclass SWIMMERF ; 40
 	const ELAINE
@@ -566,15 +536,10 @@ KRIS EQU __enum__
 	const DENISE
 	const KARA
 	const WENDY
-	const LISA
-	const JILL
 	const MARY
-	const KATIE
 	const DAWN
-	const TARA
 	const NICOLE
 	const LORI
-	const JODY
 	const NIKKI
 	const DIANA
 	const BRIANA
@@ -652,8 +617,6 @@ KRIS EQU __enum__
 	const JANET
 
 	trainerclass BIKER ; 4c
-	const BIKER_BENNY
-	const KAZU
 	const DWAYNE
 	const HARRIS
 	const ZEKE
@@ -677,16 +640,11 @@ KRIS EQU __enum__
 	const GAVEN3
 	const BLAKE
 	const BRIAN
-	const ERICK
 	const ANDY
-	const TYLER
 	const SEAN
 	const KEVIN
-	const STEVE
 	const ALLEN
 	const DARIN
-	const ABDUL
-	const ELAN
 	const FRENCH
 	const MATT
 	const RINGO
@@ -716,7 +674,6 @@ KRIS EQU __enum__
 	const CARA
 	const SALMA
 	const BONITA
-	const IDA
 	const JOANNE
 	const KOTORI
 
