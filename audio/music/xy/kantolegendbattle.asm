@@ -1,7 +1,7 @@
 ; Pokémon X/Y - Battle! Kanto Legendary Pokémon
 ; Demixed by Pigu
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/kantolegend.asm
-; https://pigu-a.bandcamp.com/releases
+; https://pigu-a.bandcamp.com/album/pok-mon-anniversary-crystal-pigus-arranges
 
 Music_KantoLegendBattleXY:
 	dbw $80, Music_KantoLegendBattleXY_Ch1

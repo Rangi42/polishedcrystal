@@ -1,7 +1,7 @@
 ; Pokémon HG/SS - Battle! Lugia
 ; Demixed by Pigu
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/audio/music/custom/lugiabattle.asm
-; https://pigu-a.bandcamp.com/releases
+; https://pigu-a.bandcamp.com/album/pok-mon-anniversary-crystal-pigus-arranges
 
 Music_LugiaBattleHGSS:
 	dbw $80, Music_LugiaBattleHGSS_Ch1

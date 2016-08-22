@@ -9,7 +9,7 @@
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many sprites and icons
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
 * Mmmmmm for many music covers
-* Pigu for the Ho-oh, Lugia, and Kanto legendary battle music
+* Pigu for many music covers from TPP Anniversary Crystal 251
 * Pum for the Route 47 and Yellow Forest music
 * ShantyTown for the Rock Tunnel music
 * Serious Senator for some trainer dialogs

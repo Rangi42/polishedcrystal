@@ -157,6 +157,7 @@ INCLUDE "audio/music/postcredits.asm"
 SECTION "Extra Songs 3", ROMX
 
 INCLUDE "audio/music/titlescreen.asm"
+INCLUDE "audio/music/hgss/mart.asm"
 INCLUDE "audio/music/hgss/route47.asm"
 INCLUDE "audio/music/hgss/hoohbattle.asm"
 INCLUDE "audio/music/hgss/lugiabattle.asm"
@@ -176,6 +177,7 @@ INCLUDE "audio/music/rby/lawrence.asm"
 SECTION "Extra Songs 4", ROMX
 
 INCLUDE "audio/music/bw/route12.asm"
+INCLUDE "audio/music/bw/wcsbattle.asm"
 INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 INCLUDE "audio/music/b2w2/championbattle.asm"
 INCLUDE "audio/music/xy/powerplant.asm"

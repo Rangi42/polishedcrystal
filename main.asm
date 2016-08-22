@@ -1602,6 +1602,8 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION
 	jr z, .done
+
+	ld de, MUSIC_WCS_BATTLE_BW
 	cp RED
 	jr z, .done
 

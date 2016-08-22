@@ -119,6 +119,7 @@
 
 ; Polished Crystal adds the following songs:
 
+	dba Music_MartHGSS
 	dba Music_CeruleanCityHGSS
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
@@ -127,6 +128,7 @@
 	dba Music_LugiaBattleHGSS
 	dba Music_Route210DPPt
 	dba Music_Route12BW
+	dba Music_WCSBattleBW
 	dba Music_ReversalMountainWhite2
 	dba Music_ChampionBattleB2W2
 	dba Music_PowerPlantXY
