@@ -140,6 +140,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; COUPLE
 	db MALE   ; GENTLEMAN
 	db MALE   ; RICH_BOY
+	db FEMALE ; BREEDER
 	db FEMALE ; COWGIRL
 	db MALE   ; SAILOR
 	db MALE   ; SWIMMERM

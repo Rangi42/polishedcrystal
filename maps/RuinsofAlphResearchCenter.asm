@@ -223,6 +223,13 @@ UnknownText_0x59311:
 
 	para "Check to see how"
 	line "many kinds exist."
+
+	para "You're doing a"
+	line "favor for us, so"
+
+	para "I'll give you some-"
+	line "thing nice if you"
+	cont "find all of them."
 	done
 
 UnknownText_0x5935f:

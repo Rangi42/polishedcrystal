@@ -61,6 +61,7 @@ TrainerGroups: ; 0x39999
 	dw CoupleGroup
 	dw GentlemanGroup
 	dw RichBoyGroup
+	dw BreederGroup
 	dw CowgirlGroup
 	dw SailorGroup
 	dw SwimmerMGroup

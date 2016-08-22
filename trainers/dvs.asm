@@ -87,6 +87,7 @@ TrainerClassDVs: ; 270d6
 	db $7C, $CC ; couple
 	db $CC, $CC ; gentleman
 	db $CC, $CC ; rich boy
+	db $5C, $CC ; breeder
 	db $7C, $CC ; cowgirl
 	db $CC, $CC ; sailor
 	db $CC, $CC ; swimmerm

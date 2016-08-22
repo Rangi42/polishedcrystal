@@ -83,6 +83,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; couple
 	db MUSIC_HIKER_ENCOUNTER		; gentleman
 	db MUSIC_YOUNGSTER_ENCOUNTER	; rich_boy
+	db MUSIC_LASS_ENCOUNTER			; breeder
 	db MUSIC_LASS_ENCOUNTER			; cowgirl
 	db MUSIC_HIKER_ENCOUNTER		; sailor
 	db MUSIC_HIKER_ENCOUNTER		; swimmerm

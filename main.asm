@@ -3901,6 +3901,7 @@ FemaleTrainers: ; 4e976
 	db MEDIUM
 	db KIMONO_GIRL
 	db SR_AND_JR
+	db BREEDER
 	db COWGIRL
 	db SWIMMERF
 	db SKIER

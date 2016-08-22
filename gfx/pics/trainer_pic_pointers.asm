@@ -59,6 +59,7 @@
 	add_pic CouplePic
 	add_pic GentlemanPic
 	add_pic RichBoyPic
+	add_pic BreederPic
 	add_pic CowgirlPic
 	add_pic SailorPic
 	add_pic SwimmermPic

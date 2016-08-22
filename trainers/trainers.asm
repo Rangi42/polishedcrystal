@@ -3453,8 +3453,8 @@ BugCatcherGroup:
 	db 0 ; normal
 
 	; party
-	db 8, LEDYBA
-	db 10, PARAS
+	db 9, PARAS
+	db 10, PINECO
 
 	db $ff ; end
 
@@ -5065,8 +5065,8 @@ HikerGroup:
 	db 0 ; normal
 
 	; party
-	db 35, MACHOKE
-	db 37, GRAVELER
+	db 35, GRAVELER
+	db 37, DONPHAN
 	db 37, GLIGAR
 
 	db $ff ; end
@@ -5092,7 +5092,7 @@ HikerGroup:
 
 	; party
 	db 36, ONIX
-	db 35, SWINUB
+	db 35, PILOSWINE
 
 	db $ff ; end
 
@@ -8322,6 +8322,13 @@ RichBoyGroup:
 
 	db $ff ; end
 
+; ================
+; ================================
+
+
+BreederGroup:
+; ================================
+; ================
 ; ================
 ; ================================
 
@@ -11871,11 +11878,11 @@ ValerieGroup:
 		db DIZZY_PUNCH
 		db ROLLOUT
 
-	db 36, TOGEKISS, NO_ITEM
+	db 36, TOGETIC, NO_ITEM
 		db ANCIENTPOWER
 		db SOFTBOILED
 		db FAIRY_WIND
-		db AIR_SLASH
+		db ENCORE
 
 	db 38, SYLVEON, GOLD_BERRY
 		db MOONBLAST

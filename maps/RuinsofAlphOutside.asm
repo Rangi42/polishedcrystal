@@ -43,7 +43,7 @@ UnknownScript_0x5800f:
 
 UnknownScript_0x5801e:
 	checkcode VAR_UNOWNCOUNT
-	if_greater_than $2, UnknownScript_0x58027
+	if_greater_than $0, UnknownScript_0x58027
 	jump UnknownScript_0x5802c
 
 UnknownScript_0x58027:
