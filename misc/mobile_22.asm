@@ -2170,7 +2170,7 @@ Function89d0d: ; 89d0d (22:5d0d)
 	pop af
 	ld [rSVBK], a
 	call SetPalettes
-	callba Function845db
+	;callba Function845db
 	call Function89240
 	ld c, $18
 	call DelayFrames

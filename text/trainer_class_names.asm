@@ -58,6 +58,7 @@
 	db "Couple@"
 	db "Gentleman@"
 	db "Rich Boy@"
+	db "Breeder@"
 	db "Cowgirl@"
 	db "Sailor@"
 	db "Swimmer@"

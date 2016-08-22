@@ -280,7 +280,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 1.1.2 release. If you build the project as-is, it will include all of them.
 
 * Add: Replace {Hoppip, Skiploom, Jumpluff, Aipom, Stantler, Smoochum} with {Rhyperior, Electivire, Magmortar, Sunkern, Sunflora, Wobbuffet}.
-* Add: New trainer classes: Officer♀, Sr. & Jr., Couple, PI, Dragon Tamer, Ace Duo, Roughneck, Steven, and Cynthia.
+* Add: New trainer classes: Officer♀, Sr. & Jr., Couple, Breeder, PI, Dragon Tamer, Ace Duo, Roughneck, Steven, and Cynthia.
 * Add: Add Protector, Electirizer, and Magmarizer items.
 * Add: Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient stat exp in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is sufficient).
 * Add: Replace Synthesis with Hurricane.

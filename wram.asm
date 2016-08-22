@@ -1025,36 +1025,10 @@ wCreditsFaux2bpp::
 wca00:: ds 1
 wca01:: ds 1
 wca02:: ds 14
-wca10:: ds 16
-wca20:: ds 16
-wca30:: ds 16
-wca40:: ds 16
-wca50:: ds 16
-wca60:: ds 16
-wca70:: ds 16
-wca80:: ds 1
-wca81:: ds 1
-wca82:: ds 1
-wca83:: ds 1
-wca84:: ds 1
-wca85:: ds 1
-wca86:: ds 1
-wca87:: ds 1
-
-; Gameboy Printer
-wca88:: ds 1
-wca89::
-; bit 7: set if error 1
-; bit 6: set if error 4
-; bit 5: set if error 3
-	ds 1
+	ds 122
 
 wca8a:: ds 1
-wca8b:: ds 1
-wca8c:: ds 1
-wca8d:: ds 1
-wca8e:: ds 1
-wca8f:: ds 1
+	ds 6
 
 ; tilemap backup?
 wca90:: ds 16
@@ -1092,11 +1066,8 @@ wcb84:: ds 100
 wcbe8:: dw
 wLinkOTPartyMonTypes::
 	ds 2 * PARTY_LENGTH
-	ds 2
+	ds 84
 
-wcbf8:: ds 2
-wcbfa:: ds 1
-wcbfb:: ds 79
 wcc4a:: ds 22
 wcc60:: ds 1
 wcc61:: ds 1

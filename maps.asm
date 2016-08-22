@@ -185,7 +185,7 @@ INCLUDE "maps/TinTowerRoof.asm"
 SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
 
 INCLUDE "maps/Route34.asm"
-INCLUDE "maps/ElmsLab.asm"
+INCLUDE "maps/Route42.asm"
 INCLUDE "maps/KrissHouse1F.asm"
 INCLUDE "maps/KrissHouse2F.asm"
 INCLUDE "maps/KrissNeighborsHouse.asm"
@@ -568,8 +568,8 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 
 SECTION "Map Scripts 27", ROMX
 
+INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/BellchimeTrail.asm"
-INCLUDE "maps/Route42.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
 INCLUDE "maps/EcruteakShrineOutside.asm"

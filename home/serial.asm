@@ -11,8 +11,6 @@ Serial:: ; 6ef
 	jr nz, .mobile
 
 	ld a, [wc2d4]
-	bit 0, a
-	jr nz, .printer
 
 	ld a, [hLinkPlayerNumber]
 	inc a ; is it equal to -1?
@@ -36,10 +34,6 @@ Serial:: ; 6ef
 
 .mobile
 	call MobileReceive
-	jr .end
-
-.printer
-	call PrinterReceive
 	jr .end
 
 .init_player_number

@@ -32,38 +32,10 @@ UnknownScript_0x7167e:
 	writetext UnknownText_0x71763
 	waitbutton
 	closetext
-	setevent EVENT_ENABLE_DIPLOMA_PRINTING
 	end
 
 GymGuyScript_0x71696:
-	faceplayer
-	opentext
-	checkevent EVENT_ENABLE_DIPLOMA_PRINTING
-	iftrue UnknownScript_0x716a4
-	writetext UnknownText_0x717b4
-	waitbutton
-	closetext
-	end
-
-UnknownScript_0x716a4:
-	writetext UnknownText_0x717d8
-	yesorno
-	iffalse UnknownScript_0x716b0
-	special PrintDiploma
-	closetext
-	end
-
-UnknownScript_0x716b0:
-	writetext UnknownText_0x71830
-	waitbutton
-	closetext
-	end
-
-UnknownScript_0x716b6:
-	writetext UnknownText_0x71863
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x717b4
 
 SuperNerdScript_0x716bc:
 	jumptextfaceplayer UnknownText_0x71895
@@ -122,29 +94,6 @@ UnknownText_0x717b4:
 	para "I drew you!"
 	done
 
-UnknownText_0x717d8:
-	text "I'm the Graphic"
-	line "Artist."
-
-	para "Oh, you completed"
-	line "your #dex?"
-
-	para "Want me to print"
-	line "out your Diploma?"
-	done
-
-UnknownText_0x71830:
-	text "Give me a shout if"
-	line "you want your"
-	cont "Diploma printed."
-	done
-
-UnknownText_0x71863:
-	text "Something's wrong."
-	line "I'll have to can-"
-	cont "cel printing."
-	done
-
 UnknownText_0x71895:
 	text "Who, me? I'm the"
 	line "Programmer."
@@ -154,7 +103,7 @@ UnknownText_0x71895:
 	done
 
 UnknownText_0x718ca:
-	text "Isn't Bugsy"
+	text "Isn't Lyra"
 	line "adorable?"
 
 	para "Jasmine's pretty"
