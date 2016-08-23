@@ -1333,6 +1333,7 @@ Group16Sprites:
 
 
 Group17Sprites:
+; Route12
 ; Route13
 ; Route14
 ; Route15
@@ -1343,16 +1344,16 @@ Group17Sprites:
 ; SafariZoneNorth
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COWGIRL
+	db SPRITE_FISHER
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 7 walking sprites
+	; 8 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 9 total sprites
-	db SPRITE_SILVER_TROPHY
+	; 10 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1370,11 +1371,10 @@ Group17Sprites:
 
 Group18Sprites:
 ; Route8
-; Route12
 ; Route10South
 ; LavenderTown
 	db SPRITE_BIKER
-	db SPRITE_FISHER
+	db SPRITE_FISHER ; (on connected part of Route12)
 	db SPRITE_GENTLEMAN
 	db SPRITE_GRAMPS
 	db SPRITE_HEX_MANIAC

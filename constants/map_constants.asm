@@ -265,7 +265,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 12
 
-	mapgroup ROUTE_6,                                     9, 10 ;  1
+	mapgroup ROUTE_6,                                    12, 10 ;  1
 	mapgroup ROUTE_11,                                    9, 20 ;  2
 	mapgroup VERMILION_CITY,                             18, 20 ;  3
 	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
@@ -329,6 +329,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 17
 
+	mapgroup ROUTE_12,                                   30, 10 ;  2
 	mapgroup ROUTE_13,                                    9, 30 ;  1
 	mapgroup ROUTE_14,                                   18, 10 ;  2
 	mapgroup ROUTE_15,                                    9, 20 ;  3
@@ -349,11 +350,11 @@ MAP_NONE   EQU 0
 	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 18
 	mapgroup ROUTE_15_FUCHSIA_GATE,                       4,  5 ; 19
 	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 20
+	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 14
 
 	newgroup                                                    ; 18
 
 	mapgroup ROUTE_8,                                     9, 20 ;  1
-	mapgroup ROUTE_12,                                   27, 10 ;  2
 	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  3
 	mapgroup LAVENDER_TOWN,                               9, 10 ;  4
 	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  5
@@ -364,7 +365,6 @@ MAP_NONE   EQU 0
 	mapgroup SOUL_HOUSE,                                  4,  5 ; 11
 	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 12
 	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 13
-	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 14
 
 	newgroup                                                    ; 19
 
@@ -374,7 +374,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
 	mapgroup NAVEL_ROCK_OUTSIDE,                         16, 13 ;  5
 	mapgroup NAVEL_ROCK_INSIDE,                          45, 20 ;  6
-	mapgroup NAVEL_ROCK_ROOF,                             7,  8 ;  7
+	mapgroup NAVEL_ROCK_ROOF,                            11,  8 ;  7
 	mapgroup FARAWAY_ISLAND,                             23, 17 ;  8
 	mapgroup FARAWAY_JUNGLE,                             12, 14 ;  9
 	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  10
@@ -397,7 +397,7 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
 	mapgroup ROUTE_16,                                    9, 10 ;  2
-	mapgroup ROUTE_17,                                   46, 10 ;  3
+	mapgroup ROUTE_17,                                   49, 10 ;  3
 	mapgroup CELADON_CITY,                               18, 20 ;  4
 	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  5
 	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  6

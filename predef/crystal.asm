@@ -233,29 +233,29 @@ Function49496: ; 49496
 LoadSpecialMapPalette: ; 494ac
 	ld a, [wTileset]
 	cp TILESET_POKECOM_CENTER
-	jr z, .pokecom_center
+	jp z, .pokecom_center
 	cp TILESET_BATTLE_TOWER
-	jr z, .battle_tower
+	jp z, .battle_tower
 	cp TILESET_ICE_PATH
-	jr z, .ice_path
+	jp z, .ice_path
 	cp TILESET_HOUSE_1
-	jr z, .house
+	jp z, .house
 	cp TILESET_RADIO_TOWER
-	jr z, .radio_tower
+	jp z, .radio_tower
 	cp TILESET_CELADON_MANSION
-	jr z, .mansion_mobile
+	jp z, .mansion_mobile
 	cp TILESET_POKECENTER
-	jr z, .pokecenter
+	jp z, .pokecenter
 	cp TILESET_FARAWAY_ISLAND
-	jr z, .faraway_island
+	jp z, .faraway_island
 	cp TILESET_JOHTO_1
-	jr z, .maybe_bellchime_trail
+	jp z, .maybe_bellchime_trail
 	cp TILESET_ILEX_FOREST
-	jr z, .maybe_yellow_forest
+	jp z, .maybe_yellow_forest
 	cp TILESET_TRAIN_STATION
-	jr z, .maybe_viridian_gym
+	jp z, .maybe_viridian_gym
 	cp TILESET_CAVE
-	jr z, .maybe_special_cave
+	jp z, .maybe_special_cave
 	jp .do_nothing
 
 .pokecom_center
@@ -298,7 +298,7 @@ LoadSpecialMapPalette: ; 494ac
 	jr nz, .ok
 	ld a, [MapNumber]
 	cp MAP_CELADON_HOTEL
-	jr z, .do_nothing
+	jp z, .do_nothing
 .ok
 	call LoadPokeCenterPalette
 	scf
@@ -312,10 +312,10 @@ LoadSpecialMapPalette: ; 494ac
 .maybe_bellchime_trail
 	ld a, [MapGroup]
 	cp GROUP_BELLCHIME_TRAIL
-	jr nz, .do_nothing
+	jp nz, .do_nothing
 	ld a, [MapNumber]
 	cp MAP_BELLCHIME_TRAIL
-	jr nz, .do_nothing
+	jp nz, .do_nothing
 	call LoadBellchimeTrailPalette
 	scf
 	ret
@@ -323,10 +323,10 @@ LoadSpecialMapPalette: ; 494ac
 .maybe_yellow_forest
 	ld a, [MapGroup]
 	cp GROUP_YELLOW_FOREST
-	jr nz, .do_nothing
+	jp nz, .do_nothing
 	ld a, [MapNumber]
 	cp MAP_YELLOW_FOREST
-	jr nz, .do_nothing
+	jp nz, .do_nothing
 	call LoadYellowForestPalette
 	scf
 	ret
@@ -334,10 +334,10 @@ LoadSpecialMapPalette: ; 494ac
 .maybe_viridian_gym
 	ld a, [MapGroup]
 	cp GROUP_VIRIDIAN_GYM
-	jr nz, .do_nothing
+	jp nz, .do_nothing
 	ld a, [MapNumber]
 	cp MAP_VIRIDIAN_GYM
-	jr nz, .do_nothing
+	jp nz, .do_nothing
 	call LoadViridianGymPalette
 	scf
 	ret
@@ -374,6 +374,17 @@ LoadSpecialMapPalette: ; 494ac
 	ret
 
 .navel_rock
+	ld a, [MapGroup]
+	cp GROUP_NAVEL_ROCK_ROOF
+	jr nz, .navel_rock_day
+	ld a, [MapNumber]
+	cp MAP_NAVEL_ROCK_ROOF
+	jr nz, .navel_rock_day
+	call LoadNavelRockTimePalette
+	scf
+	ret
+
+.navel_rock_day
 	call LoadNavelRockPalette
 	scf
 	ret
@@ -633,6 +644,18 @@ LoadNavelRockPalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld hl, NavelRockPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+LoadNavelRockTimePalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, NavelRockPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret

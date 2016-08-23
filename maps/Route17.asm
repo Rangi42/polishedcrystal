@@ -143,20 +143,20 @@ Route17_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $54, $11, 1, ROUTE_17_18_GATE
-	warp_def $55, $11, 2, ROUTE_17_18_GATE
+	warp_def $5a, $11, 1, ROUTE_17_18_GATE
+	warp_def $5b, $11, 2, ROUTE_17_18_GATE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 54, 9, SIGNPOST_ITEM, Route17HiddenMaxEther
-	signpost 77, 8, SIGNPOST_ITEM, Route17HiddenMaxElixer
+	signpost 60, 9, SIGNPOST_ITEM, Route17HiddenMaxEther
+	signpost 83, 8, SIGNPOST_ITEM, Route17HiddenMaxElixer
 
 .PersonEvents:
 	db 4
 	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerRiley, -1
-	person_event SPRITE_BIKER, 68, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerBikerJoel, -1
-	person_event SPRITE_BIKER, 53, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
-	person_event SPRITE_BIKER, 80, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
+	person_event SPRITE_BIKER, 74, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerBikerJoel, -1
+	person_event SPRITE_BIKER, 58, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
+	person_event SPRITE_BIKER, 86, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1

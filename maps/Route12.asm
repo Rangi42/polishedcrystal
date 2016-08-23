@@ -172,25 +172,28 @@ Route12_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 3
-	warp_def $21, $b, 1, ROUTE_12_SUPER_ROD_HOUSE
-	warp_def $1a, $0, 3, ROUTE_11_GATE
-	warp_def $1b, $0, 4, ROUTE_11_GATE
+	db 6
+	warp_def $27, $b, 1, ROUTE_12_SUPER_ROD_HOUSE
+	warp_def $20, $0, 3, ROUTE_11_GATE
+	warp_def $21, $0, 4, ROUTE_11_GATE
+	warp_def $b, $a, 6, ROUTE_12
+	warp_def $b, $b, 6, ROUTE_12
+	warp_def $f, $a, 4, ROUTE_12
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 3
-	signpost 27, 11, SIGNPOST_READ, Route12Sign
+	signpost 33, 11, SIGNPOST_READ, Route12Sign
 	signpost 9, 13, SIGNPOST_READ, FishingSpotSign
-	signpost 13, 14, SIGNPOST_ITEM, Route12HiddenElixer
+	signpost 19, 14, SIGNPOST_ITEM, Route12HiddenElixer
 
 .PersonEvents:
 	db 6
-	person_event SPRITE_FISHER, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
-	person_event SPRITE_FISHER, 23, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherStephen, -1
-	person_event SPRITE_FISHER, 38, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerFisherBarney, -1
+	person_event SPRITE_FISHER, 19, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
+	person_event SPRITE_FISHER, 29, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherStephen, -1
+	person_event SPRITE_FISHER, 44, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerFisherBarney, -1
 	person_event SPRITE_FISHER, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherKyle, -1
-	person_event SPRITE_POKE_BALL, 45, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
-	person_event SPRITE_POKE_BALL, 52, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET
+	person_event SPRITE_POKE_BALL, 51, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
+	person_event SPRITE_POKE_BALL, 58, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET
