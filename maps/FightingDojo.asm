@@ -311,102 +311,257 @@ RematchClairScript:
 	rematch_script Clair, CLAIR, ENGINE_GYM_LEADER_REMATCH_2
 
 BrockText_Greeting:
-	text "Brock"
-	line "TODO"
+	text "I like Rock-type"
+	line "#mon best."
+
+	para "They're solid and"
+	line "rough, yet brittle"
+	cont "at the same time."
+
+	para "You'll see how"
+	line "much stronger my"
+
+	para "rock #mon have"
+	line "become!"
 	done
 
 MistyText_Greeting:
-	text "Misty"
-	line "TODO"
+	text "I've heard a lot"
+	line "of good things"
+
+	para "about you since"
+	line "our last battle."
+
+	para "Let me test how"
+	line "good you are!"
 	done
 
 SurgeText_Greeting:
-	text "Surge"
-	line "TODO"
+	text "I can feel great"
+	line "electric power"
+
+	para "around the Magnet"
+	line "Train station!"
+
+	para "I'm psyched for"
+	line "an electrifying"
+	cont "battle!"
 	done
 
 ErikaText_Greeting:
-	text "Erika"
-	line "TODO"
+	text "Good to see you"
+	line "again!"
+
+	para "How are you?"
+
+	para "This place doesn't"
+	line "really suit me,"
+	cont "but…"
+
+	para "let's ignore that"
+	line "and battle!"
 	done
 
 JanineText_Greeting:
-	text "Janine"
-	line "TODO"
+	text "I can't use my"
+	line "ninja technique,"
+
+	para "but I won't let"
+	line "you win!"
 	done
 
 SabrinaText_Greeting:
-	text "Sabrina"
-	line "TODO"
+	text "I knew you'd come"
+	line "battle me again."
+
+	para "I had a feeling."
 	done
 
 BlaineText_Greeting:
-	text "Blaine"
-	line "TODO"
+	text "My Gym is still"
+	line "gone, so let's"
+
+	para "hold our rematch"
+	line "right here!"
 	done
 
 BlueText_Greeting:
-	text "Blue"
-	line "TODO"
+	text "Good! You're"
+	line "here too."
+
+	para "Thanks for coming"
+	line "to lose to me!"
 	done
 
 FalknerText_Greeting:
-	text "Falkner"
-	line "TODO"
+	text "I'm in top form"
+	line "today."
+
+	para "It's a pleasure to"
+	line "be able to battle"
+	cont "you again!"
 	done
 
 BugsyText_Greeting:
-	text "Bugsy"
-	line "TODO"
+	text "Good to see you"
+	line "again! Behold my"
+	cont "bug research!"
 	done
 
 WhitneyText_Greeting:
-	text "Whitney"
-	line "TODO"
+	text "Hi, <PLAYER>!"
+	line "Since we're both"
+
+	para "here, let's have"
+	line "a battle!"
+
+	para "Are you ready?"
 	done
 
 MortyText_Greeting:
-	text "Morty"
-	line "TODO"
+	text "The legendary"
+	line "#mon did not"
+	cont "choose me…"
+
+	para "But that does not"
+	line "mean I have lost"
+
+	para "out on my future."
+	line "Let's battle!"
 	done
 
 ChuckText_Greeting:
-	text "Chuck"
-	line "TODO"
+	text "There you are!"
+
+	para "Taste my 24-hour"
+	line "training!
 	done
 
 JasmineText_Greeting:
-	text "Jasmine"
-	line "TODO"
+	text "Hello, <PLAYER>…"
+	line "How are you?"
+	cont "I'm doing well…"
+
+	para "Anyway, are you"
+	line "prepared to"
+	cont "battle me again?"
 	done
 
 PryceText_Greeting:
-	text "Pryce"
-	line "TODO"
+	text "No need for words."
+	line "A #mon battle"
+
+	para "is the way for us"
+	line "to communicate."
 	done
 
 ClairText_Greeting:
-	text "Clair"
-	line "TODO"
+	text "…So you are here."
+
+	para "Now let's battle!"
 	done
 
 BrockText_WinLoss:
+	text "I've lost again…"
+
+	para "You aren't adven-"
+	line "turing around"
+	cont "for nothing!"
+	done
+
 MistyText_WinLoss:
+	text "Wow! You're"
+	line "getting stronger"
+	cont "by the battle!"
+	done
+
 SurgeText_WinLoss:
+	text "You're very"
+	line "strong!"
+
+	para "But I'll repay my"
+	line "debt someday!"
+	done
+
 ErikaText_WinLoss:
+	text "You have grown"
+	line "even stronger…"
+	done
+
 JanineText_WinLoss:
+	text "I lost today, but"
+	line "I'll win next time!"
+	done
+
 SabrinaText_WinLoss:
+	text "I know… we will"
+	line "meet again some-"
+	cont "time."
+	done
+
 BlaineText_WinLoss:
+	text "Waaah! I've burned"
+	line "out again!"
+	done
+
 BlueText_WinLoss:
+	text "Just as I"
+	line "expected!"
+
+	para "No wonder you've"
+	line "become the"
+	cont "Champion…"
+	done
+
 FalknerText_WinLoss:
+	text "Mmm… It's still a"
+	line "long way to become"
+	cont "the best trainer…"
+	done
+
 BugsyText_WinLoss:
+	text "You must have"
+	line "studied a lot"
+	cont "about #mon!"
+	done
+
 WhitneyText_WinLoss:
+	text "You really are"
+	line "strong!"
+
+	para "But I won't lose"
+	line "next time!"
+	done
+
 MortyText_WinLoss:
+	text "I've lost again…"
+	line "You have something"
+
+	para "more than just"
+	line "strength."
+	done
+
 ChuckText_WinLoss:
+	text "Wahaha!"
+	line "A battle with you"
+	cont "is never boring!"
+	done
+
 JasmineText_WinLoss:
+	text "True to your"
+	line "reputation…"
+	done
+
 PryceText_WinLoss:
+	text "Mmm… Impressive!"
+	done
+
 ClairText_WinLoss:
-	text "I lost again…"
+	text "Way to go."
+	line "…"
+
+	para "Now give it"
+	line "your all!"
 	done
 
 BrockText_Done:

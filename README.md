@@ -327,6 +327,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Accessible waterfall in Yellow Forest.
 * Add: Replace NES with Wii.
 * Add: Purple overworld sprites (used for Eusine, Koga, Janine, PokéManiacs, Hex Maniacs, Burglars, Executive♂s, and GameCube).
+* Add: Proper text for Gym Leader rematches.
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
