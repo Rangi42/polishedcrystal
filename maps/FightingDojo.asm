@@ -434,7 +434,7 @@ ChuckText_Greeting:
 	text "There you are!"
 
 	para "Taste my 24-hour"
-	line "training!
+	line "training!"
 	done
 
 JasmineText_Greeting:
