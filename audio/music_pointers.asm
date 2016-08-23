@@ -1,14 +1,3 @@
-; See song sections in main.asm:
-; 	Songs 1
-; 	Songs 2
-; 	Songs 3
-; 	Songs 4
-; 	Songs 5
-; 	Extra Songs 1
-; 	Extra Songs 2
-; 	Extra Songs 3
-; 	Extra Songs 4
-
 ; e906e
 	dba Music_Nothing ; 0xe91a3
 	dba Music_TitleScreen ; 0xeb808
@@ -124,9 +113,13 @@
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
 	dba Music_Route47HGSS
+	dba Music_LyraHGSS
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
+	dba Music_SummoningDanceHGSS
+	dba Music_SpikyEaredPichuHGSS
 	dba Music_Route210DPPt
+	dba Music_GameCornerDPPt
 	dba Music_Route12BW
 	dba Music_WCSBattleBW
 	dba Music_ReversalMountainWhite2
@@ -143,5 +136,6 @@
 	dba Music_KantoLegendBattleXY
 	dba Music_SurfingPikachu
 	dba Music_Lawrence
+	dba Music_LugiasSong2000
 
 ; e91a3

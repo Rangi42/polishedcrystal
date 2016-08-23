@@ -108,24 +108,29 @@
 	const MUSIC_CINNABAR_ISLAND_HGSS         ; 69
 	const MUSIC_NUGGET_BRIDGE_HGSS           ; 6a
 	const MUSIC_ROUTE_47_HGSS                ; 6b
-	const MUSIC_HO_OH_BATTLE_HGSS            ; 6c
-	const MUSIC_LUGIA_BATTLE_HGSS            ; 6d
-	const MUSIC_ROUTE_210_DPPT               ; 6e
-	const MUSIC_ROUTE_12_BW                  ; 6f
-	const MUSIC_WCS_BATTLE_BW                ; 70
-	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 71
-	const MUSIC_CHAMPION_BATTLE_B2W2         ; 72
-	const MUSIC_POWER_PLANT_XY               ; 73
-	const MUSIC_POKEMON_TOWER_RBY            ; 74
-	const MUSIC_CINNABAR_MANSION_RBY         ; 75
-	const MUSIC_DIGLETTS_CAVE_RBY            ; 76
-	const MUSIC_CERULEAN_CAVE_RBY            ; 77
-	const MUSIC_ROUTE_120_RSE                ; 78
-	const MUSIC_MOUNT_PYRE_RSE               ; 79
-	const MUSIC_ABANDONED_SHIP_RSE           ; 7a
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 7b
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 7c
-	const MUSIC_SURFING_PIKACHU              ; 7d
-	const MUSIC_LAWRENCE                     ; 7e
+	const MUSIC_LYRA_HGSS                    ; 6c
+	const MUSIC_HO_OH_BATTLE_HGSS            ; 6d
+	const MUSIC_LUGIA_BATTLE_HGSS            ; 6e
+	const MUSIC_SUMMONING_DANCE_HGSS         ; 6f
+	const MUSIC_SPIKY_EARED_PICHU_HGSS       ; 70
+	const MUSIC_ROUTE_210_DPPT               ; 71
+	const MUSIC_GAME_CORNER_DPPT             ; 72
+	const MUSIC_ROUTE_12_BW                  ; 73
+	const MUSIC_WCS_BATTLE_BW                ; 74
+	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 75
+	const MUSIC_CHAMPION_BATTLE_B2W2         ; 76
+	const MUSIC_POWER_PLANT_XY               ; 77
+	const MUSIC_POKEMON_TOWER_RBY            ; 78
+	const MUSIC_CINNABAR_MANSION_RBY         ; 79
+	const MUSIC_DIGLETTS_CAVE_RBY            ; 7a
+	const MUSIC_CERULEAN_CAVE_RBY            ; 7b
+	const MUSIC_ROUTE_120_RSE                ; 7c
+	const MUSIC_MOUNT_PYRE_RSE               ; 7d
+	const MUSIC_ABANDONED_SHIP_RSE           ; 7e
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 7f
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 80
+	const MUSIC_SURFING_PIKACHU              ; 81
+	const MUSIC_LAWRENCE                     ; 82
+	const MUSIC_LUGIAS_SONG_2000             ; 83
 
 MUSIC_MAHOGANY_MART EQU $64 ; leftover from gold
