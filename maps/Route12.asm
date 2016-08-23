@@ -176,9 +176,9 @@ Route12_MapEventHeader:
 	warp_def $27, $b, 1, ROUTE_12_SUPER_ROD_HOUSE
 	warp_def $20, $0, 3, ROUTE_11_GATE
 	warp_def $21, $0, 4, ROUTE_11_GATE
-	warp_def $b, $a, 6, ROUTE_12
-	warp_def $b, $b, 6, ROUTE_12
-	warp_def $f, $a, 4, ROUTE_12
+	warp_def $b, $a, 1, ROUTE_12_GATE
+	warp_def $b, $b, 2, ROUTE_12_GATE
+	warp_def $f, $a, 3, ROUTE_12_GATE
 
 .XYTriggers:
 	db 0

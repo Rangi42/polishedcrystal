@@ -329,42 +329,43 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 17
 
-	mapgroup ROUTE_12,                                   30, 10 ;  2
-	mapgroup ROUTE_13,                                    9, 30 ;  1
-	mapgroup ROUTE_14,                                   18, 10 ;  2
-	mapgroup ROUTE_15,                                    9, 20 ;  3
-	mapgroup ROUTE_18,                                    9, 10 ;  4
-	mapgroup FUCHSIA_CITY,                               18, 20 ;  5
-	mapgroup FUCHSIA_MART,                                4,  6 ;  6
-	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  7
-	mapgroup FUCHSIA_GYM,                                 9,  5 ;  8
-	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ;  9
-	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 10
-	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 11
-	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 12
-	mapgroup SAFARI_ZONE_HUB,                            15, 15 ; 13
-	mapgroup SAFARI_ZONE_EAST,                           13, 15 ; 14
-	mapgroup SAFARI_ZONE_NORTH,                          16, 15 ; 15
-	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 16
-	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 17
-	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 18
-	mapgroup ROUTE_15_FUCHSIA_GATE,                       4,  5 ; 19
-	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 20
-	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 14
+	mapgroup ROUTE_12,                                   30, 10 ;  1
+	mapgroup ROUTE_13,                                    9, 30 ;  2
+	mapgroup ROUTE_14,                                   18, 10 ;  3
+	mapgroup ROUTE_15,                                    9, 20 ;  4
+	mapgroup ROUTE_18,                                    9, 10 ;  5
+	mapgroup FUCHSIA_CITY,                               18, 20 ;  6
+	mapgroup FUCHSIA_MART,                                4,  6 ;  7
+	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  8
+	mapgroup FUCHSIA_GYM,                                 9,  5 ;  9
+	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ; 10
+	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 11
+	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
+	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 13
+	mapgroup SAFARI_ZONE_HUB,                            15, 15 ; 14
+	mapgroup SAFARI_ZONE_EAST,                           13, 15 ; 15
+	mapgroup SAFARI_ZONE_NORTH,                          16, 15 ; 16
+	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 17
+	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 18
+	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 19
+	mapgroup ROUTE_12_GATE,                               4,  5 ; 20
+	mapgroup ROUTE_15_FUCHSIA_GATE,                       4,  5 ; 21
+	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 22
+	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 23
 
 	newgroup                                                    ; 18
 
 	mapgroup ROUTE_8,                                     9, 20 ;  1
-	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  3
-	mapgroup LAVENDER_TOWN,                               9, 10 ;  4
-	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  5
-	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  7
-	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  8
-	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  9
-	mapgroup LAVENDER_MART,                               4,  6 ; 10
-	mapgroup SOUL_HOUSE,                                  4,  5 ; 11
-	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 12
-	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 13
+	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
+	mapgroup LAVENDER_TOWN,                               9, 10 ;  3
+	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
+	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  5
+	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  6
+	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  7
+	mapgroup LAVENDER_MART,                               4,  6 ;  8
+	mapgroup SOUL_HOUSE,                                  4,  5 ;  9
+	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 10
+	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 11
 
 	newgroup                                                    ; 19
 

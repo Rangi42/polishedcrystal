@@ -152,6 +152,7 @@ Route30BerrySpeechHouse_BlockData:
 SinjohRuinsHouse_BlockData:
 	INCBIN "maps/House1.blk"
 
+Route12Gate_BlockData:
 Route19FuchsiaGate_BlockData:
 Route43MahoganyGate_BlockData:
 Route43Gate_BlockData:

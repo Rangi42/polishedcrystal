@@ -522,6 +522,7 @@
 	map_header_2 FuchsiaBillSpeechHouse, FUCHSIA_BILL_SPEECH_HOUSE, $0, 0
 	map_header_2 FuchsiaPokeCenter1F, FUCHSIA_POKECENTER_1F, $0, 0
 	map_header_2 SafariZoneWardensHome, SAFARI_ZONE_WARDENS_HOME, $0, 0
+	map_header_2 Route12Gate, ROUTE_12_GATE, $0, 0
 	map_header_2 Route15FuchsiaGate, ROUTE_15_FUCHSIA_GATE, $0, 0
 	map_header_2 LavenderPokeCenter1F, LAVENDER_POKECENTER_1F, $0, 0
 	map_header_2 MrFujisHouse, MR_FUJIS_HOUSE, $0, 0
