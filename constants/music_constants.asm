@@ -108,7 +108,7 @@
 	const MUSIC_CINNABAR_ISLAND_HGSS         ; 69
 	const MUSIC_NUGGET_BRIDGE_HGSS           ; 6a
 	const MUSIC_ROUTE_47_HGSS                ; 6b
-	const MUSIC_LYRA_HGSS                    ; 6c
+	const MUSIC_LYRA_ENCOUNTER_HGSS          ; 6c
 	const MUSIC_HO_OH_BATTLE_HGSS            ; 6d
 	const MUSIC_LUGIA_BATTLE_HGSS            ; 6e
 	const MUSIC_SUMMONING_DANCE_HGSS         ; 6f

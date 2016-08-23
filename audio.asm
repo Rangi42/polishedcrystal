@@ -159,7 +159,7 @@ SECTION "Extra Songs 3", ROMX
 
 INCLUDE "audio/music/hgss/route47.asm"
 INCLUDE "audio/music/hgss/mart.asm"
-INCLUDE "audio/music/hgss/lyra.asm"
+INCLUDE "audio/music/hgss/lyraencounter.asm"
 INCLUDE "audio/music/hgss/ceruleancity.asm"
 INCLUDE "audio/music/hgss/cinnabarisland.asm"
 INCLUDE "audio/music/hgss/nuggetbridge.asm"

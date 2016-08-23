@@ -510,42 +510,45 @@ ElmJumpRightScript:
 
 LyraBattleScript:
 	spriteface ELMSLAB_LYRA, DOWN
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext ElmsLabLyraChallengeText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraBattleMovement
 	spriteface PLAYER, RIGHT
+	winlosstext ElmsLabLyraWinText, ElmsLabLyraLossText
+	setlasttalked ELMSLAB_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
-	winlosstext ElmsLabLyraWinText, ElmsLabLyraLossText
-	setlasttalked ELMSLAB_LYRA
 	loadtrainer LYRA, LYRA_1
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
+	dontrestartmapmusic
 	reloadmap
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
 .Totodile:
-	winlosstext ElmsLabLyraWinText, ElmsLabLyraLossText
-	setlasttalked ELMSLAB_LYRA
 	loadtrainer LYRA, LYRA_2
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
+	dontrestartmapmusic
 	reloadmap
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
 .Chikorita:
-	winlosstext ElmsLabLyraWinText, ElmsLabLyraLossText
-	setlasttalked ELMSLAB_LYRA
 	loadtrainer LYRA, LYRA_3
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
+	dontrestartmapmusic
 	reloadmap
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
@@ -565,8 +568,9 @@ LyraBattleScript:
 	spriteface PLAYER, DOWN
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement
 	disappear ELMSLAB_LYRA
-	dotrigger $5
 	special HealParty
+	dotrigger $5
+	playmapmusic
 	end
 
 AideScript_WalkPotions1:
@@ -1190,7 +1194,7 @@ ElmAfterTheftText4:
 	done
 
 ElmAfterTheftText5:
-	text "Elm: What?!?"
+	text "Elm: What?!"
 
 	para "Prof.Oak gave you"
 	line "a #dex?"
@@ -1521,7 +1525,7 @@ ElmsLabLyraGoodChoiceText:
 	done
 
 ElmsLabLyraChallengeText:
-	text "<PLAYER>!"
+	text "Lyra: <PLAYER>!"
 	line "Let's get to know"
 
 	para "our #mon with"

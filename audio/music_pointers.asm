@@ -113,7 +113,7 @@
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
 	dba Music_Route47HGSS
-	dba Music_LyraHGSS
+	dba Music_LyraEncounterHGSS
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS

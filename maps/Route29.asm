@@ -48,6 +48,7 @@ Route29Tutorial1:
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	applymovement ROUTE29_LYRA, LyraMovementData1a
 	spriteface PLAYER, LEFT
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext CatchingTutorialIntroText
 	waitbutton
@@ -79,8 +80,11 @@ Route29Tutorial1:
 Route29Tutorial2:
 	spriteface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
+	special Special_FadeOutMusic
+	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData2a
 	spriteface PLAYER, LEFT
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext CatchingTutorialIntroText
 	waitbutton

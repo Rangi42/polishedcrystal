@@ -80,8 +80,11 @@ NewBarkTown_LyraIntroTrigger:
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraEnters_NBT
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
+	special Special_FadeOutMusic
+	pause 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraApproaches_NBT
 	spriteface PLAYER, LEFT
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Text_LyraIntro
 	waitbutton
@@ -121,8 +124,11 @@ NewBarkTown_LyraFinalTrigger:
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
+	special Special_FadeOutMusic
+	pause 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye2_NBT
 	spriteface PLAYER, LEFT
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Text_LyraGoodbye1
 	waitbutton
@@ -146,17 +152,20 @@ NewBarkTown_LyraFinalTrigger:
 	loadtrainer LYRA, LYRA_12
 .AfterBattle
 	startbattle
+	dontrestartmapmusic
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	reloadmapafterbattle
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Text_LyraGoodbye2
 	waitbutton
 	closetext
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye3_NBT
 	disappear NEWBARKTOWN_LYRA
-	dotrigger $2
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
+	dotrigger $2
+	playmapmusic
 	end
 
 NewBarkTownTeacherScript:

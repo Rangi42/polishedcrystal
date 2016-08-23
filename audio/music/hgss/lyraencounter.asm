@@ -1,15 +1,15 @@
-; Pokémon HG/SS - Lyra
+; Pokémon HG/SS - Encounter! Lyra
 ; Demixed by Mmmmmm
 ; http://pastebin.com/fL7d2CrB
 ; https://hax.iimarck.us/topic/6777/3/
 
-Music_LyraHGSS:
-	musicheader 4, 1, Music_LyraHGSS_Ch1
-	musicheader 1, 2, Music_LyraHGSS_Ch2
-	musicheader 1, 3, Music_LyraHGSS_Ch3
-	musicheader 1, 4, Music_LyraHGSS_Ch4
+Music_LyraEncounterHGSS:
+	musicheader 4, 1, Music_LyraEncounterHGSS_Ch1
+	musicheader 1, 2, Music_LyraEncounterHGSS_Ch2
+	musicheader 1, 3, Music_LyraEncounterHGSS_Ch3
+	musicheader 1, 4, Music_LyraEncounterHGSS_Ch4
 
-Music_LyraHGSS_Ch1:
+Music_LyraEncounterHGSS_Ch1:
 	tempo 184
 	dutycycle 1
 	notetype $c, $85
@@ -21,7 +21,7 @@ Music_LyraHGSS_Ch1:
 	octave 4
 	note C_, 2
 	note D#, 9
-Music_LyraHGSS_Ch1_loop:
+Music_LyraEncounterHGSS_Ch1_loop:
 	octave 3
 	note D#, 6
 	note G_, 1
@@ -183,9 +183,9 @@ Music_LyraHGSS_Ch1_loop:
 	note D_, 1
 	note D#, 2
 	note F_, 3
-	loopchannel 0, Music_LyraHGSS_Ch1_loop
+	loopchannel 0, Music_LyraEncounterHGSS_Ch1_loop
 
-Music_LyraHGSS_Ch2:
+Music_LyraEncounterHGSS_Ch2:
 	dutycycle 2
 	notetype $c, $b4
 	octave 4
@@ -199,7 +199,7 @@ Music_LyraHGSS_Ch2:
 	note __, 1
 	intensity $b7
 	note D#, 9
-Music_LyraHGSS_Ch2_loop:
+Music_LyraEncounterHGSS_Ch2_loop:
 	note __, 4
 	octave 4
 	intensity $b4
@@ -295,9 +295,9 @@ Music_LyraHGSS_Ch2_loop:
 	intensity $b7
 	note A#, 9
 	note __, 8
-	loopchannel 0, Music_LyraHGSS_Ch2_loop
+	loopchannel 0, Music_LyraEncounterHGSS_Ch2_loop
 
-Music_LyraHGSS_Ch3:
+Music_LyraEncounterHGSS_Ch3:
 	notetype $c, $15
 	intensity $10
 	octave 2
@@ -313,7 +313,7 @@ Music_LyraHGSS_Ch3:
 	note A#, 3
 	note __, 1
 	note A#, 1
-Music_LyraHGSS_Ch3_loop:
+Music_LyraEncounterHGSS_Ch3_loop:
 	octave 3
 	note D#, 2
 	note __, 1
@@ -484,9 +484,9 @@ Music_LyraHGSS_Ch3_loop:
 	octave 3
 	note C_, 2
 	note D_, 3
-	loopchannel 0, Music_LyraHGSS_Ch3_loop
+	loopchannel 0, Music_LyraEncounterHGSS_Ch3_loop
 
-Music_LyraHGSS_Ch4:
+Music_LyraEncounterHGSS_Ch4:
 	togglenoise $3
 	notetype $6
 	note D_, 2
@@ -501,11 +501,11 @@ Music_LyraHGSS_Ch4:
 	note C_, 2
 	note C_, 2
 	note D#, 4
-Music_LyraHGSS_Ch4_loop:
+Music_LyraEncounterHGSS_Ch4_loop:
 	note D#, 4
 	note D#, 2
 	note D#, 2
 	note C_, 4
 	note D#, 2
 	note D#, 2
-	loopchannel 0, Music_LyraHGSS_Ch4_loop
+	loopchannel 0, Music_LyraEncounterHGSS_Ch4_loop
