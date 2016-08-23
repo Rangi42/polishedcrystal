@@ -89,7 +89,10 @@ Route34LyraTrigger2:
 	waitbutton
 	closetext
 	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
+	special Special_FadeOutMusic
+	pause 15
 	spriteface ROUTE34_LYRA, DOWN
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Route34LyraGreetingText
 	waitbutton
@@ -122,7 +125,9 @@ Route34LyraTrigger2:
 	setlasttalked ROUTE34_LYRA
 	loadtrainer LYRA, LYRA_4
 	startbattle
+	dontrestartmapmusic
 	reloadmapafterbattle
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	jump .AfterBattle
 
 .Totodile:
@@ -130,7 +135,9 @@ Route34LyraTrigger2:
 	setlasttalked ROUTE34_LYRA
 	loadtrainer LYRA, LYRA_5
 	startbattle
+	dontrestartmapmusic
 	reloadmapafterbattle
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	jump .AfterBattle
 
 .Chikorita:
@@ -138,7 +145,9 @@ Route34LyraTrigger2:
 	setlasttalked ROUTE34_LYRA
 	loadtrainer LYRA, LYRA_6
 	startbattle
+	dontrestartmapmusic
 	reloadmapafterbattle
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 .AfterBattle
 	opentext
 	writetext Route34LyraFollowMeText

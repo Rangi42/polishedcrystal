@@ -36,6 +36,8 @@ Route42_MapScriptHeader:
 Route42LyraScript1:
 	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special RunCallback_04
 	playsound SFX_ENTER_DOOR
@@ -47,6 +49,8 @@ Route42LyraScript1:
 Route42LyraScript2:
 	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special RunCallback_04
 	playsound SFX_ENTER_DOOR
@@ -58,6 +62,8 @@ Route42LyraScript2:
 Route42LyraScript3:
 	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special RunCallback_04
 	playsound SFX_ENTER_DOOR
@@ -76,6 +82,7 @@ Route42LyraScript4:
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach4
 Route42LyraScript:
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Route42LyraGreetingText
 	waitbutton
@@ -100,7 +107,9 @@ Route42LyraScript:
 .AfterBattle
 	startbattle
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	dontrestartmapmusic
 	reloadmapafterbattle
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Route42LyraPresentText
 	buttonsound
@@ -114,6 +123,7 @@ Route42LyraScript:
 	dotrigger $2
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
+	playmapmusic
 	end
 
 Route42SuicuneScript:
