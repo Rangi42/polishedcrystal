@@ -1,9 +1,10 @@
 const_value set 2
 	const RUINSOFALPHOUTSIDE_YOUNGSTER1
-	const RUINSOFALPHOUTSIDE_SCIENTIST
+	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_FISHER
 	const RUINSOFALPHOUTSIDE_YOUNGSTER2
 	const RUINSOFALPHOUTSIDE_YOUNGSTER3
+	const RUINSOFALPHOUTSIDE_SCIENTIST2
 
 RuinsofAlphOutside_MapScriptHeader:
 .MapTriggers:
@@ -22,6 +23,8 @@ RuinsofAlphOutside_MapScriptHeader:
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
 UnknownScript_0x5800d:
+	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
+	iftrue RuinsofAlphOutsideClimaxScript
 	end
 
 UnknownScript_0x5800e:
@@ -47,22 +50,22 @@ UnknownScript_0x5801e:
 	jump UnknownScript_0x5802c
 
 UnknownScript_0x58027:
-	appear RUINSOFALPHOUTSIDE_SCIENTIST
+	appear RUINSOFALPHOUTSIDE_SCIENTIST1
 	dotrigger $1
 	return
 
 UnknownScript_0x5802c:
-	disappear RUINSOFALPHOUTSIDE_SCIENTIST
+	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	dotrigger $0
 	return
 
 UnknownScript_0x58031:
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST, UP
+	spriteface RUINSOFALPHOUTSIDE_SCIENTIST1, UP
 	spriteface PLAYER, DOWN
 	jump UnknownScript_0x58044
 
 UnknownScript_0x5803a:
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST, LEFT
+	spriteface RUINSOFALPHOUTSIDE_SCIENTIST1, LEFT
 	spriteface PLAYER, RIGHT
 	jump UnknownScript_0x58044
 
@@ -74,13 +77,33 @@ UnknownScript_0x58044:
 	waitbutton
 	closetext
 	playmusic MUSIC_SHOW_ME_AROUND
-	follow RUINSOFALPHOUTSIDE_SCIENTIST, PLAYER
-	applymovement RUINSOFALPHOUTSIDE_SCIENTIST, MovementData_0x580ba
-	disappear RUINSOFALPHOUTSIDE_SCIENTIST
+	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, MovementData_0x580ba
+	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	stopfollow
 	applymovement PLAYER, MovementData_0x580c5
 	domaptrigger RUINS_OF_ALPH_RESEARCH_CENTER, $1
 	warpcheck
+	end
+
+RuinsofAlphOutsideClimaxScript:
+	opentext
+	writetext RuinsofAlphScientistClimax1Text
+	waitbutton
+	closetext
+	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
+	stopfollow
+	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
+	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
+	opentext
+	writetext RuinsofAlphScientistClimax2Text
+	waitbutton
+	closetext
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
+	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
+	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
+	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	end
 
 FisherScript_0x58061:
@@ -162,6 +185,37 @@ MovementData_0x580ba:
 
 MovementData_0x580c5:
 	step_up
+	step_end
+
+RuinsofAlphScientistClimaxApproachMovementData:
+	step_left
+	step_up
+	step_up
+	step_up
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
+
+RuinsofAlphScientistClimaxLeaveMovementData:
+	step_right
+	step_down
+	step_down
+	step_down
+	step_down
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
 	step_end
 
 UnknownText_0x580c7:
@@ -295,6 +349,26 @@ UnknownText_0x5848e:
 	line "message!"
 	done
 
+RuinsofAlphScientistClimax1Text:
+	text "That sounded like"
+	line "it came from over"
+	cont "here…"
+	done
+
+RuinsofAlphScientistClimax2Text:
+	text "Incredible!"
+
+	para "Another chamber"
+	line "was hidden here"
+	cont "all this time!"
+
+	para "I'll go tell my"
+	line "colleagues."
+
+	para "We could spend"
+	line "years studying it!"
+	done
+
 RuinsofAlphOutside_MapEventHeader:
 	; filler
 	db 0, 0
@@ -326,9 +400,10 @@ RuinsofAlphOutside_MapEventHeader:
 	signpost 18, 20, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_YOUNGSTER, 26, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
 	person_event SPRITE_SCIENTIST, 21, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	person_event SPRITE_FISHER, 23, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	person_event SPRITE_YOUNGSTER, 17, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	person_event SPRITE_YOUNGSTER, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	person_event SPRITE_SCIENTIST, 18, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX

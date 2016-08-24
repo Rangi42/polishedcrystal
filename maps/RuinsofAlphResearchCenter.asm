@@ -67,6 +67,8 @@ UnknownScript_0x59192:
 ScientistScript_0x591d1:
 	faceplayer
 	opentext
+	checkevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
+	iftrue .Conclusion
 	checkcode VAR_UNOWNCOUNT
 	if_equal 26, UnknownScript_0x591df
 	writetext UnknownText_0x59311
@@ -74,12 +76,74 @@ ScientistScript_0x591d1:
 	closetext
 	end
 
-; TODO: reward for catching all the Unown
-UnknownScript_0x591df:
-	writetext UnknownText_0x5935f
+.Conclusion:
+	writetext RuinsofAlphResearchCenterScientistConclusionText
 	waitbutton
 	closetext
 	end
+
+UnknownScript_0x591df:
+	writetext UnknownText_0x5935f
+	buttonsound
+	setevent EVENT_DECO_UNOWN_DOLL
+	writetext GotUnownDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext UnownDollSentText
+	buttonsound
+	writetext RuinsofAlphResearchCenterScientistRewardText
+	buttonsound
+	writetext RuinsofAlphResearchCenterScientistInterruptedText
+	pause 30
+	closetext
+	pause 15
+	playsound SFX_EMBER
+	earthquake 50
+	setevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	showemote EMOTE_SHOCK, PLAYER, 15
+	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 15
+	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST1, 15
+	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST2, 15
+	waitsfx
+	opentext
+	writetext RuinsofAlphResearchCenterScientistShockedText
+	waitbutton
+	closetext
+	checkcode VAR_FACING
+	if_equal UP, .GoAround
+	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
+	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave2MovementData
+	stopfollow
+	jump .Continue
+.GoAround:
+	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterScientistStepAsideMovementData
+	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
+	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave1MovementData
+	stopfollow
+.Continue:
+	playsound SFX_EXIT_BUILDING
+	disappear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
+	applymovement PLAYER, RuinsofAlphResearchCenterLeave1MovementData
+	playsound SFX_EXIT_BUILDING
+	disappear PLAYER
+	special FadeOutPalettes
+	clearevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
+	pause 15
+	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, $13, $12
+	end
+
+RuinsofAlphResearchCenterScientistStepAsideMovementData:
+	step_right
+	step_down
+	step_end
+
+RuinsofAlphResearchCenterLeave2MovementData:
+	step_down
+RuinsofAlphResearchCenterLeave1MovementData:
+	step_down
+	step_end
 
 ScientistScript_0x591e5:
 	faceplayer
@@ -118,7 +182,7 @@ ScientistScript_0x59214:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	if_equal 26, UnknownScript_0x5922e
+	if_greater_than 3, UnknownScript_0x5922e
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue UnknownScript_0x59228
 	writetext UnknownText_0x5954f
@@ -157,15 +221,17 @@ ResearchOngoingScript_0x59669:
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	iffalse UnknownScript_0x59241
+	checkevent EVENT_DECO_UNOWN_DOLL
 	iftrue UnknownScript_0x59241
-	count_unown_caught
-	writetext UnknownText_0x597d9
+	writetext UnknownText_0x597b6
 	waitbutton
 	closetext
 	end
 
 UnknownScript_0x59241:
-	writetext UnknownText_0x597b6
+	count_unown_caught
+	writetext UnknownText_0x597d9
 	waitbutton
 	closetext
 	end
@@ -238,6 +304,48 @@ UnknownText_0x5935f:
 
 	para "That's a great"
 	line "achievement!"
+
+	para "You've been very"
+	line "helpful to our"
+	cont "research."
+
+	para "Let me give you"
+	line "this."
+	done
+
+GotUnownDollText:
+	text "<PLAYER> received"
+	line "Unown Doll."
+	done
+
+UnownDollSentText:
+	text "Unown Doll"
+	line "was sent home."
+	done
+
+RuinsofAlphResearchCenterScientistRewardText:
+	text "I designed that"
+	line "doll myself!"
+	done
+
+RuinsofAlphResearchCenterScientistInterruptedText:
+	text "You can--"
+	done
+
+RuinsofAlphResearchCenterScientistShockedText:
+	text "What was THAT?!"
+	done
+
+RuinsofAlphResearchCenterScientistConclusionText:
+	text "We're going to"
+	line "gradually study"
+
+	para "the chamber that"
+	line "opened up."
+
+	para "We have to take"
+	line "care not to"
+	cont "disturb the site."
 	done
 
 UnknownText_0x593ed:

@@ -73,7 +73,7 @@ GaveGoodRodText:
 
 DontWantGoodRodText:
 	text "Whaaat? You don't"
-	line "like to fish!?"
+	line "like to fish?!"
 	cont "Incomprehensible!"
 	done
 

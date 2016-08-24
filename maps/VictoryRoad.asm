@@ -448,7 +448,7 @@ LawrenceSeenText:
 	line "guardian of the"
 	cont "sea…"
 
-	para "What!?"
+	para "What?!"
 
 	para "You encountered"
 	line "the legendary"

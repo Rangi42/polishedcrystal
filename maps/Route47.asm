@@ -300,7 +300,7 @@ GruntF6SeenText:
 	done
 
 GruntF6BeatenText:
-	text "Who are you!?"
+	text "Who are you?!"
 	done
 
 GruntF6AfterText:

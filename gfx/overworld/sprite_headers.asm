@@ -450,3 +450,9 @@ OfficerFSprite:
 
 ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+StevenSprite:
+	sprite_header StevenSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+CynthiaSprite:
+	sprite_header CynthiaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE

@@ -65,7 +65,7 @@ FisherScript_0x56749:
 	writetext GotVoltorbDollText
 	playsound SFX_ITEM
 	pause 60
-	waitbutton
+	buttonsound
 	writetext VoltorbDollSentText
 	waitbutton
 	writetext GoldenrodDeptStoreRoofFisherCatchEmAllText

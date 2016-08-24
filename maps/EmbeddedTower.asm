@@ -25,4 +25,4 @@ EmbeddedTower_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_COOLTRAINER_M, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

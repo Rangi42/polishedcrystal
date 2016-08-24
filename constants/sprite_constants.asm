@@ -116,6 +116,8 @@
 	const SPRITE_LYRA ; 70
 	const SPRITE_OFFICER_F ; 71
 	const SPRITE_VALERIE ; 72
+	const SPRITE_STEVEN ; 73
+	const SPRITE_CYNTHIA ; 74
 
 const_value SET $80
 

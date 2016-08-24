@@ -1283,7 +1283,7 @@ ShowElmTogepiText1:
 
 ShowElmTogepiText2:
 	text "What?"
-	line "That #mon!?!"
+	line "That #mon?!"
 	done
 
 ShowElmTogepiText3:
