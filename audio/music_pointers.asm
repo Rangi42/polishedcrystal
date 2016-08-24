@@ -119,6 +119,7 @@
 	dba Music_SummoningDanceHGSS
 	dba Music_SpikyEaredPichuHGSS
 	dba Music_Route210DPPt
+	dba Music_MountCoronetDPPt
 	dba Music_GameCornerDPPt
 	dba Music_Route12BW
 	dba Music_WCSBattleBW
