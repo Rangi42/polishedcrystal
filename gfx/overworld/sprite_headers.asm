@@ -456,3 +456,15 @@ StevenSprite:
 
 CynthiaSprite:
 	sprite_header CynthiaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+UnownWSprite:
+	sprite_header UnownWSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+
+UnownASprite:
+	sprite_header UnownASpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+
+UnownRSprite:
+	sprite_header UnownRSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+
+UnownPSprite:
+	sprite_header UnownPSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE

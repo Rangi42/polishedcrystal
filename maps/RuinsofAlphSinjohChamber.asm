@@ -1,4 +1,8 @@
 const_value set 2
+	const RUINSOFALPHSINJOHCHAMBER_UNOWN_W
+	const RUINSOFALPHSINJOHCHAMBER_UNOWN_A
+	const RUINSOFALPHSINJOHCHAMBER_UNOWN_R
+	const RUINSOFALPHSINJOHCHAMBER_UNOWN_P
 
 RuinsofAlphSinjohChamber_MapScriptHeader:
 .MapTriggers:
@@ -15,21 +19,37 @@ RuinsofAlphSinjohChamberSignpost:
 	special Special_FadeOutMusic
 	pause 30
 	playsound SFX_INTRO_UNOWN_3
+	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_W
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, DOWN
 	waitsfx
+	pause 7
 	playsound SFX_INTRO_UNOWN_2
+	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_A
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, DOWN
 	waitsfx
+	pause 7
 	playsound SFX_INTRO_UNOWN_1
+	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_R
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, DOWN
 	waitsfx
+	pause 7
 	playsound SFX_INTRO_UNOWN_2
+	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_P
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, DOWN
 	waitsfx
+	pause 7
 	; Call assembly so the fourth sound will play
 	callasm PlayUnownSound3 ; playsound SFX_INTRO_UNOWN_3
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, UP
 	pause 10
 	callasm PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, UP
 	pause 10
 	callasm PlayUnownSound1 ; playsound SFX_INTRO_UNOWN_1
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, UP
 	pause 10
 	callasm PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
+	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, UP
 	waitsfx
 	pause 30
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -37,6 +57,10 @@ RuinsofAlphSinjohChamberSignpost:
 	applymovement PLAYER, MovementData_WarpToSinjohRuins
 	waitsfx
 	special FadeOutPalettes
+	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_W
+	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_A
+	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_R
+	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_P
 	warp MYSTRI_STAGE, $6, $d
 	end
 
@@ -88,7 +112,11 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 	signpost 3, 4, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
 
 .PersonEvents:
-	db 0
+	db 4
+	person_event SPRITE_UNOWN_W, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
+	person_event SPRITE_UNOWN_A, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
+	person_event SPRITE_UNOWN_R, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
+	person_event SPRITE_UNOWN_P, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
 
 PlayUnownSound1:
 	call SFXChannelsOff

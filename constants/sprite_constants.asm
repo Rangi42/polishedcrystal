@@ -118,6 +118,10 @@
 	const SPRITE_VALERIE ; 72
 	const SPRITE_STEVEN ; 73
 	const SPRITE_CYNTHIA ; 74
+	const SPRITE_UNOWN_W ; 75
+	const SPRITE_UNOWN_A ; 76
+	const SPRITE_UNOWN_R ; 77
+	const SPRITE_UNOWN_P ; 78
 
 const_value SET $80
 
