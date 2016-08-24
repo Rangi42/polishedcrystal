@@ -8,6 +8,132 @@ Music_Route47HGSS:
 	musicheader 1, 3, Music_Route47HGSS_Ch3
 
 Music_Route47HGSS_Ch1:
+	dutycycle 2
+	notetype $C, $58
+	note __, 3
+	octave 6
+	note C_, 1
+	octave 5
+	note G_, 1
+	note F_, 1
+	note G_, 1
+	note F_, 1
+	note C_, 1
+	note F_, 1
+	note C_, 1
+	octave 4
+	note A#, 1
+	octave 5
+	note C_, 1
+	octave 4
+	note A#, 1
+	note A_, 2
+	octave 3
+Music_Route47HGSS_Loop1:
+	notetype $C, $48
+	note C_, 16
+	note C_, 8
+	note E_, 8
+	note F_, 16
+	note F_, 8
+	note C_, 8
+	note F_, 16
+	octave 2
+	note A_, 8
+	octave 3
+	note C_, 8
+	octave 2
+	note G#, 16
+	note A#, 16
+	octave 1
+	note F_, 16
+	note F_, 16
+	note A#, 16
+	octave 2
+	note C_, 16
+	note D_, 16
+	octave 1
+	note A_, 16
+	note A#, 8
+	note G_, 8
+	octave 2
+	note C_, 8
+	octave 1
+	note A#, 8
+	note A_, 16
+	octave 2
+	note D_, 16
+	octave 1
+	note G_, 16
+	note A#, 16
+	note F_, 16
+	note F_, 16
+	note __, 16
+	note __, 16
+	notetype $C, $87
+	note F_, 16
+	note __, 16
+	note C_, 16
+	note __, 16
+	note F_, 16
+	note __, 16
+	note A_, 16
+	note __, 16
+	note D_, 16
+	note __, 16
+	note C_, 16
+	note __, 16
+	note A_, 16
+	note __, 16
+	note F_, 16
+	note __, 16
+	note F_, 16
+	note __, 16
+	note __, 16
+	note __, 16
+	note __, 16
+	note __, 16
+	note __, 16
+	note __, 16
+	notetype $C, $38
+	octave 4
+	note C_, 7
+	note __, 1
+	note C_, 1
+	note __, 3
+	note D_, 7
+	note __, 1
+	note D_, 1
+	note __, 3
+	note F_, 7
+	note __, 1
+	note F_, 1
+	note __, 3
+	note A_, 7
+	note __, 1
+	note A_, 1
+	note __, 3
+	octave 5
+	note C_, 5
+	note __, 1
+	note C_, 1
+	note __, 1
+	octave 4
+	note F_, 5
+	note __, 1
+	note F_, 1
+	note __, 1
+	notetype $C, $37
+	octave 5
+	note C_, 16
+	octave 4
+	note D#, 16
+	note B_, 16
+	note C_, 16
+	notetype $C, $38
+	loopchannel 0, Music_Route47HGSS_Loop1
+
+Music_Route47HGSS_Ch2:
 	tempo $80
 	volume $77
 	dutycycle 2
@@ -32,7 +158,7 @@ Music_Route47HGSS_Ch1:
 	note A#, 1
 	note A_, 1
 	tempo $5D
-Music_Route47HGSS_Loop1:
+Music_Route47HGSS_Loop2:
 	notetype $C, $61
 	stereopanning $FF
 	note __, 16
@@ -288,132 +414,6 @@ Music_Route47HGSS_Loop1:
 	note A#, 8
 	note D_, 8
 	note E_, 8
-	loopchannel 0, Music_Route47HGSS_Loop1
-
-Music_Route47HGSS_Ch2:
-	dutycycle 2
-	notetype $C, $58
-	note __, 3
-	octave 6
-	note C_, 1
-	octave 5
-	note G_, 1
-	note F_, 1
-	note G_, 1
-	note F_, 1
-	note C_, 1
-	note F_, 1
-	note C_, 1
-	octave 4
-	note A#, 1
-	octave 5
-	note C_, 1
-	octave 4
-	note A#, 1
-	note A_, 2
-	octave 3
-Music_Route47HGSS_Loop2:
-	notetype $C, $48
-	note C_, 16
-	note C_, 8
-	note E_, 8
-	note F_, 16
-	note F_, 8
-	note C_, 8
-	note F_, 16
-	octave 2
-	note A_, 8
-	octave 3
-	note C_, 8
-	octave 2
-	note G#, 16
-	note A#, 16
-	octave 1
-	note F_, 16
-	note F_, 16
-	note A#, 16
-	octave 2
-	note C_, 16
-	note D_, 16
-	octave 1
-	note A_, 16
-	note A#, 8
-	note G_, 8
-	octave 2
-	note C_, 8
-	octave 1
-	note A#, 8
-	note A_, 16
-	octave 2
-	note D_, 16
-	octave 1
-	note G_, 16
-	note A#, 16
-	note F_, 16
-	note F_, 16
-	note __, 16
-	note __, 16
-	notetype $C, $87
-	note F_, 16
-	note __, 16
-	note C_, 16
-	note __, 16
-	note F_, 16
-	note __, 16
-	note A_, 16
-	note __, 16
-	note D_, 16
-	note __, 16
-	note C_, 16
-	note __, 16
-	note A_, 16
-	note __, 16
-	note F_, 16
-	note __, 16
-	note F_, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	notetype $C, $38
-	octave 4
-	note C_, 7
-	note __, 1
-	note C_, 1
-	note __, 3
-	note D_, 7
-	note __, 1
-	note D_, 1
-	note __, 3
-	note F_, 7
-	note __, 1
-	note F_, 1
-	note __, 3
-	note A_, 7
-	note __, 1
-	note A_, 1
-	note __, 3
-	octave 5
-	note C_, 5
-	note __, 1
-	note C_, 1
-	note __, 1
-	octave 4
-	note F_, 5
-	note __, 1
-	note F_, 1
-	note __, 1
-	notetype $C, $37
-	octave 5
-	note C_, 16
-	octave 4
-	note D#, 16
-	note B_, 16
-	note C_, 16
-	notetype $C, $38
 	loopchannel 0, Music_Route47HGSS_Loop2
 
 Music_Route47HGSS_Ch3:

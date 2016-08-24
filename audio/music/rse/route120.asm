@@ -9,11 +9,250 @@ Music_Route120RSE:
 	dbw $03, Music_Route120RSE_Ch4
 
 Music_Route120RSE_Ch1:
+Music_Route120RSE_Loop1:
+	dutycycle 2
+	notetype $C, $B7
+	stereopanning $f0
+	note __, 16
+	note __, 16
+	note __, 16
+	note __, 16
+	octave 3
+	note G_, 4
+	note __, 1
+	note A_, 4
+	note __, 2
+	note B_, 4
+	note __, 1
+	octave 4
+	notetype $C, $B8
+	note D_, 16
+	notetype $C, $B7
+	note D_, 16
+	note __, 16
+	note __, 16
+	octave 3
+	note A_, 4
+	note __, 1
+	note B_, 4
+	note __, 2
+	note A_, 4
+	note __, 1
+	octave 4
+	notetype $C, $B8
+	note C_, 16
+	notetype $C, $B7
+	note C_, 16
+	note __, 16
+	note G#, 4
+	note __, 1
+	note A_, 4
+	note __, 2
+	note F#, 4
+	note __, 1
+	notetype $C, $B8
+	note G#, 16
+	notetype $C, $B7
+	note G#, 16
+	note __, 16
+	note __, 3
+	octave 2
+	note A_, 2
+	note __, 6
+	note A_, 2
+	note __, 1
+	note A_, 1
+	note __, 1
+	notetype $C, $B8
+	note A_, 16
+	notetype $C, $B7
+	note A_, 16
+	note G_, 8
+	octave 3
+	note D_, 8
+	note C#, 8
+	octave 2
+	note B_, 8
+	note G_, 8
+	note A_, 8
+	note B_, 8
+	octave 3
+	note D_, 8
+	notetype $C, $B8
+	note C_, 16
+	notetype $C, $B7
+	note C_, 16
+	octave 2
+	notetype $C, $B8
+	note A_, 16
+	notetype $C, $B7
+	note A_, 16
+	note E_, 8
+	note A_, 8
+	note B_, 8
+	note A_, 8
+	note G#, 4
+	note __, 1
+	note B_, 4
+	note __, 1
+	octave 3
+	note F#, 4
+	note __, 2
+	notetype $C, $B8
+	note G#, 8
+	notetype $C, $B7
+	note G#, 8
+	note __, 16
+	note __, 8
+	note A_, 8
+	notetype $C, $B8
+	note G#, 8
+	notetype $C, $B7
+	note G#, 8
+	note A_, 5
+	note G#, 6
+	note A_, 5
+	notetype $C, $B8
+	note G_, 12
+	notetype $C, $B7
+	note G_, 12
+	note E_, 8
+	note A_, 4
+	note __, 1
+	note B_, 4
+	note __, 2
+	octave 4
+	note C#, 4
+	note __, 1
+	octave 3
+	note A_, 15
+	note __, 1
+	note A_, 11
+	note F_, 2
+	note G_, 3
+	note A_, 4
+	note __, 1
+	note B_, 4
+	note __, 2
+	note A_, 4
+	note __, 1
+	octave 4
+	note C#, 11
+	octave 3
+	note B_, 2
+	octave 4
+	note C#, 3
+	octave 3
+	notetype $C, $B8
+	note A_, 8
+	notetype $C, $B7
+	note A_, 8
+	note D_, 15
+	note __, 1
+	note D_, 4
+	note __, 1
+	note E_, 4
+	note __, 2
+	note D_, 4
+	note __, 1
+	note E_, 11
+	note D_, 2
+	note C#, 3
+	octave 2
+	note B_, 3
+	octave 3
+	note C#, 2
+	note D_, 3
+	note E_, 3
+	note F#, 2
+	note G#, 3
+	note A_, 10
+	note __, 1
+	note A_, 2
+	note B_, 3
+	octave 4
+	note C#, 4
+	note __, 1
+	octave 3
+	note B_, 4
+	note __, 2
+	octave 4
+	note C#, 4
+	note __, 1
+	octave 3
+	note G#, 4
+	note __, 1
+	note A_, 4
+	note __, 2
+	note B_, 4
+	note __, 1
+	notetype $C, $B8
+	note G#, 8
+	notetype $C, $B7
+	note G#, 8
+	note E_, 3
+	note __, 13
+	note B_, 4
+	note __, 1
+	octave 4
+	note C#, 4
+	note __, 2
+	octave 3
+	note B_, 4
+	note __, 1
+	octave 4
+	note D_, 4
+	note __, 1
+	note C#, 4
+	note __, 2
+	octave 3
+	note A_, 4
+	note __, 1
+	notetype $C, $B8
+	note D_, 8
+	notetype $C, $B7
+	note D_, 8
+	note __, 16
+	note F_, 4
+	note __, 1
+	note G_, 4
+	note __, 2
+	note F_, 4
+	note __, 1
+	note A_, 10
+	note __, 1
+	note A_, 2
+	note G#, 3
+	notetype $C, $B8
+	note E_, 8
+	notetype $C, $B7
+	note E_, 7
+	note __, 1
+	note E_, 11
+	note D_, 2
+	note E_, 3
+	note F#, 4
+	note __, 1
+	note G#, 4
+	note __, 2
+	note F#, 4
+	note __, 1
+	note G#, 10
+	note __, 1
+	note G#, 2
+	note A_, 3
+	notetype $C, $B8
+	note B_, 8
+	notetype $C, $B7
+	note B_, 8
+	loopchannel 0, Music_Route120RSE_Loop1
+
+Music_Route120RSE_Ch2:
 	tempo $4A
 	volume $55
 	dutycycle 1
 	notetype $C, $F7
-Music_Route120RSE_Loop1:
+Music_Route120RSE_Loop2:
 	note __, 8
 	octave 4
 	note E_, 8
@@ -264,247 +503,6 @@ Music_Route120RSE_Loop1:
 	octave 5
 	note C#, 3
 	note D_, 16
-	loopchannel 0, Music_Route120RSE_Loop1
-
-Music_Route120RSE_Ch2:
-Music_Route120RSE_Loop2:
-	dutycycle 2
-	notetype $C, $B7
-	; ?
-	db $ef
-	db $f0
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	octave 3
-	note G_, 4
-	note __, 1
-	note A_, 4
-	note __, 2
-	note B_, 4
-	note __, 1
-	octave 4
-	notetype $C, $B8
-	note D_, 16
-	notetype $C, $B7
-	note D_, 16
-	note __, 16
-	note __, 16
-	octave 3
-	note A_, 4
-	note __, 1
-	note B_, 4
-	note __, 2
-	note A_, 4
-	note __, 1
-	octave 4
-	notetype $C, $B8
-	note C_, 16
-	notetype $C, $B7
-	note C_, 16
-	note __, 16
-	note G#, 4
-	note __, 1
-	note A_, 4
-	note __, 2
-	note F#, 4
-	note __, 1
-	notetype $C, $B8
-	note G#, 16
-	notetype $C, $B7
-	note G#, 16
-	note __, 16
-	note __, 3
-	octave 2
-	note A_, 2
-	note __, 6
-	note A_, 2
-	note __, 1
-	note A_, 1
-	note __, 1
-	notetype $C, $B8
-	note A_, 16
-	notetype $C, $B7
-	note A_, 16
-	note G_, 8
-	octave 3
-	note D_, 8
-	note C#, 8
-	octave 2
-	note B_, 8
-	note G_, 8
-	note A_, 8
-	note B_, 8
-	octave 3
-	note D_, 8
-	notetype $C, $B8
-	note C_, 16
-	notetype $C, $B7
-	note C_, 16
-	octave 2
-	notetype $C, $B8
-	note A_, 16
-	notetype $C, $B7
-	note A_, 16
-	note E_, 8
-	note A_, 8
-	note B_, 8
-	note A_, 8
-	note G#, 4
-	note __, 1
-	note B_, 4
-	note __, 1
-	octave 3
-	note F#, 4
-	note __, 2
-	notetype $C, $B8
-	note G#, 8
-	notetype $C, $B7
-	note G#, 8
-	note __, 16
-	note __, 8
-	note A_, 8
-	notetype $C, $B8
-	note G#, 8
-	notetype $C, $B7
-	note G#, 8
-	note A_, 5
-	note G#, 6
-	note A_, 5
-	notetype $C, $B8
-	note G_, 12
-	notetype $C, $B7
-	note G_, 12
-	note E_, 8
-	note A_, 4
-	note __, 1
-	note B_, 4
-	note __, 2
-	octave 4
-	note C#, 4
-	note __, 1
-	octave 3
-	note A_, 15
-	note __, 1
-	note A_, 11
-	note F_, 2
-	note G_, 3
-	note A_, 4
-	note __, 1
-	note B_, 4
-	note __, 2
-	note A_, 4
-	note __, 1
-	octave 4
-	note C#, 11
-	octave 3
-	note B_, 2
-	octave 4
-	note C#, 3
-	octave 3
-	notetype $C, $B8
-	note A_, 8
-	notetype $C, $B7
-	note A_, 8
-	note D_, 15
-	note __, 1
-	note D_, 4
-	note __, 1
-	note E_, 4
-	note __, 2
-	note D_, 4
-	note __, 1
-	note E_, 11
-	note D_, 2
-	note C#, 3
-	octave 2
-	note B_, 3
-	octave 3
-	note C#, 2
-	note D_, 3
-	note E_, 3
-	note F#, 2
-	note G#, 3
-	note A_, 10
-	note __, 1
-	note A_, 2
-	note B_, 3
-	octave 4
-	note C#, 4
-	note __, 1
-	octave 3
-	note B_, 4
-	note __, 2
-	octave 4
-	note C#, 4
-	note __, 1
-	octave 3
-	note G#, 4
-	note __, 1
-	note A_, 4
-	note __, 2
-	note B_, 4
-	note __, 1
-	notetype $C, $B8
-	note G#, 8
-	notetype $C, $B7
-	note G#, 8
-	note E_, 3
-	note __, 13
-	note B_, 4
-	note __, 1
-	octave 4
-	note C#, 4
-	note __, 2
-	octave 3
-	note B_, 4
-	note __, 1
-	octave 4
-	note D_, 4
-	note __, 1
-	note C#, 4
-	note __, 2
-	octave 3
-	note A_, 4
-	note __, 1
-	notetype $C, $B8
-	note D_, 8
-	notetype $C, $B7
-	note D_, 8
-	note __, 16
-	note F_, 4
-	note __, 1
-	note G_, 4
-	note __, 2
-	note F_, 4
-	note __, 1
-	note A_, 10
-	note __, 1
-	note A_, 2
-	note G#, 3
-	notetype $C, $B8
-	note E_, 8
-	notetype $C, $B7
-	note E_, 7
-	note __, 1
-	note E_, 11
-	note D_, 2
-	note E_, 3
-	note F#, 4
-	note __, 1
-	note G#, 4
-	note __, 2
-	note F#, 4
-	note __, 1
-	note G#, 10
-	note __, 1
-	note G#, 2
-	note A_, 3
-	notetype $C, $B8
-	note B_, 8
-	notetype $C, $B7
-	note B_, 8
 	loopchannel 0, Music_Route120RSE_Loop2
 
 Music_Route120RSE_Ch3:
