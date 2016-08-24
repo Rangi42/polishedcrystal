@@ -50,7 +50,7 @@ Oak:
 	setevent EVENT_OPENED_MT_SILVER
 	jump .CheckPokedex
 
-.Complain2:
+.Complain1:
 	writetext OakNoEliteFourRematchText
 	buttonsound
 	jump .CheckPokedex
