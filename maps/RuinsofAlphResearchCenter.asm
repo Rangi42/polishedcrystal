@@ -129,6 +129,7 @@ UnknownScript_0x591df:
 	disappear PLAYER
 	special FadeOutPalettes
 	clearevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	pause 15
 	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, $13, $12

@@ -362,11 +362,20 @@ RuinsofAlphScientistClimax2Text:
 	line "was hidden here"
 	cont "all this time!"
 
-	para "I'll go tell my"
-	line "colleagues."
-
 	para "We could spend"
 	line "years studying it!"
+
+	para "…Although, that"
+	line "was quite a loud"
+	cont "earthquake."
+
+	para "Could there be"
+	line "more than one"
+	cont "hidden chamber?"
+
+	para "Anyway, I'll go"
+	line "tell my colleagues"
+	cont "about this."
 	done
 
 RuinsofAlphOutside_MapEventHeader:

@@ -11,7 +11,7 @@ SinjohRuinsSignpost:
 	jumptext SinjohRuinsSignpostText
 
 SinjohRuinsSignpostText:
-	text "Sinjoh Ruins"
+	text "The Sinjoh Ruins"
 	done
 
 SinjohRuins_MapEventHeader:
