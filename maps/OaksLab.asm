@@ -215,11 +215,11 @@ OakOpenMtSilverText:
 	line "that you can go to"
 	cont "Mt.Silver."
 
-	para "Mt.Silver is a big"
-	line "mountain that is"
+	para "Mt.Silver is a"
+	line "tall mountain that"
 
-	para "home to many wild"
-	line "#mon."
+	para "is home to many"
+	line "wild #mon."
 
 	para "It's too dangerous"
 	line "for your average"
@@ -236,6 +236,17 @@ OakOpenMtSilverText:
 
 	para "reach Mt.Silver"
 	line "from there."
+
+	para "…"
+
+	para "I let Red train on"
+	line "Mt.Silver after"
+
+	para "his first defeat"
+	line "as Champion."
+
+	para "But he hasn't"
+	line "come back…"
 	done
 
 OakNoKantoBadgesText:
