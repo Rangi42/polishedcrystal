@@ -400,9 +400,8 @@ GuideGentSeaText:
 	text "This is the sea,"
 	line "as you can see."
 
-	para "Some #mon are"
-	line "found only in"
-	cont "water."
+	para "Route 32 is just"
+	line "across this bay."
 	done
 
 GuideGentGiftText:
