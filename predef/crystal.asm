@@ -254,6 +254,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_yellow_forest
 	cp TILESET_TRAIN_STATION
 	jp z, .maybe_viridian_gym
+	cp TILESET_SPROUT_TOWER
+	jp z, .maybe_mystri_or_tower
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
 	jp .do_nothing
@@ -339,6 +341,28 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_VIRIDIAN_GYM
 	jp nz, .do_nothing
 	call LoadViridianGymPalette
+	scf
+	ret
+
+.maybe_mystri_or_tower
+	ld a, [MapGroup]
+	cp GROUP_MYSTRI_STAGE
+	jp nz, .maybe_embedded_tower
+	ld a, [MapNumber]
+	cp MAP_MYSTRI_STAGE
+	jp nz, .maybe_embedded_tower
+	call LoadMystriStagePalette
+	scf
+	ret
+
+.maybe_embedded_tower
+	ld a, [MapGroup]
+	cp GROUP_EMBEDDED_TOWER
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_EMBEDDED_TOWER
+	jp nz, .do_nothing
+	call LoadEmbeddedTowerPalette
 	scf
 	ret
 
@@ -606,6 +630,28 @@ LoadViridianGymPalette:
 
 ViridianGymPalette:
 INCLUDE "tilesets/viridian_gym.pal"
+
+LoadMystriStagePalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, MystriStagePalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+MystriStagePalette:
+INCLUDE "tilesets/mystri_stage.pal"
+
+LoadEmbeddedTowerPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, EmbeddedTowerPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+EmbeddedTowerPalette:
+INCLUDE "tilesets/embedded_tower.pal"
 
 LoadCinnabarVolcanoPalette:
 	ld a, $5
