@@ -310,6 +310,7 @@ INCLUDE "maps/CeruleanGym.asm"
 INCLUDE "maps/CeruleanMart.asm"
 INCLUDE "maps/Route10PokeCenter1F.asm"
 INCLUDE "maps/PowerPlant.asm"
+INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/SaffronGym.asm"
 INCLUDE "maps/SaffronMart.asm"
 INCLUDE "maps/SaffronPokeCenter1F.asm"
@@ -317,15 +318,14 @@ INCLUDE "maps/SaffronTrainStation.asm"
 INCLUDE "maps/SilphCo1F.asm"
 INCLUDE "maps/CopycatsHouse1F.asm"
 INCLUDE "maps/CopycatsHouse2F.asm"
-INCLUDE "maps/Route5UndergroundEntrance.asm"
-INCLUDE "maps/Route5SaffronCityGate.asm"
-INCLUDE "maps/Route5CleanseTagSpeechHouse.asm"
-INCLUDE "maps/CeladonChiefHouse.asm"
-INCLUDE "maps/Route12Gate.asm"
 
 
 SECTION "Map Scripts 16", ROMX, BANK[MAP_SCRIPTS_16]
 
+INCLUDE "maps/Route5UndergroundEntrance.asm"
+INCLUDE "maps/Route5SaffronCityGate.asm"
+INCLUDE "maps/Route5CleanseTagSpeechHouse.asm"
+INCLUDE "maps/CeladonChiefHouse.asm"
 INCLUDE "maps/PewterCity.asm"
 INCLUDE "maps/WhirlIslandNW.asm"
 INCLUDE "maps/WhirlIslandNE.asm"
@@ -569,7 +569,6 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 SECTION "Map Scripts 27", ROMX
 
 INCLUDE "maps/ElmsLab.asm"
-INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/BellchimeTrail.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
@@ -580,11 +579,8 @@ INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
 INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
-INCLUDE "maps/EmbeddedTower.asm"
-
-
-SECTION "Map Scripts 28", ROMX
-
 INCLUDE "maps/SinjohRuins.asm"
 INCLUDE "maps/SinjohRuinsHouse.asm"
 INCLUDE "maps/MystriStage.asm"
+INCLUDE "maps/EmbeddedTower.asm"
+INCLUDE "maps/Route12Gate.asm"
