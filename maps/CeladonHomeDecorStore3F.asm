@@ -1,5 +1,7 @@
 const_value set 2
 	const CELADONHOMEDECORSTORE3F_CLERK
+	const CELADONHOMEDECORSTORE3F_YOUNGSTER
+	const CELADONHOMEDECORSTORE3F_BUENA
 
 CeladonHomeDecorStore3F_MapScriptHeader:
 .MapTriggers:
@@ -8,8 +10,25 @@ CeladonHomeDecorStore3F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+CeladonHomeDecorStore3FYoungsterScript:
+	jumptextfaceplayer CeladonHomeDecorStore3FYoungsterText
+
+CeladonHomeDecorStore3FBeautyScript:
+	jumptextfaceplayer CeladonHomeDecorStore3FBeautyText
+
 CeladonHomeDecorStore3FDirectory:
 	jumptext CeladonHomeDecorStore3FDirectoryText
+
+CeladonHomeDecorStore3FYoungsterText:
+	text "This carpet feels"
+	line "so plush!"
+	done
+
+CeladonHomeDecorStore3FBeautyText:
+	text "Some of these"
+	line "carpets are im-"
+	cont "ported from Kalos!"
+	done
 
 CeladonHomeDecorStore3FDirectoryText:
 	text "Colorful Elegance"
@@ -34,5 +53,7 @@ CeladonHomeDecorStore3F_MapEventHeader:
 	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore3FDirectory
 
 .PersonEvents:
-	db 1
+	db 3
 	person_event SPRITE_CLERK, 7, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_YOUNGSTER, 5, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FYoungsterScript, -1
+	person_event SPRITE_BUENA, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FBeautyScript, -1

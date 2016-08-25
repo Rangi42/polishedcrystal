@@ -4,6 +4,7 @@ const_value set 2
 	const CELADONHOMEDECORSTORE1F_GRIMER_DOLL
 	const CELADONHOMEDECORSTORE1F_MACHOP_DOLL
 	const CELADONHOMEDECORSTORE1F_STARYU_DOLL
+	const CELADONHOMEDECORSTORE1F_COOLTRAINER_F
 
 CeladonHomeDecorStore1F_MapScriptHeader:
 .MapTriggers:
@@ -180,6 +181,9 @@ CeladonHomeDecorStore1FMachopDollScript:
 CeladonHomeDecorStore1FStaryuDollScript:
 	jumptext CeladonHomeDecorStore1FStaryuDollText
 
+CeladonHomeDecorStore1FCooltrainerfScript:
+	jumptextfaceplayer CeladonHomeDecorStore1FCooltrainerfText
+
 CeladonHomeDecorStore1FDirectory:
 	jumptext CeladonHomeDecorStore1FDirectoryText
 
@@ -239,7 +243,7 @@ CeladonHomeDecorStore1FAlreadyBoughtText:
 	done
 
 CeladonHomeDecorStore1FGrimerDollText:
-	text "It's a cute"
+	text "It's a quirky"
 	line "Grimer doll!"
 	done
 
@@ -251,6 +255,14 @@ CeladonHomeDecorStore1FMachopDollText:
 CeladonHomeDecorStore1FStaryuDollText:
 	text "It's a pretty"
 	line "Staryu doll!"
+	done
+
+CeladonHomeDecorStore1FCooltrainerfText:
+	text "This new wing"
+	line "feels more upscale"
+
+	para "than the main"
+	line "Dept.Store."
 	done
 
 CeladonHomeDecorStore1FVendingText:
@@ -307,9 +319,10 @@ CeladonHomeDecorStore1F_MapEventHeader:
 	signpost 1, 1, SIGNPOST_UP, CeladonHomeDecorStore1FVendingMachine
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_RECEPTIONIST, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FReceptionistScript, -1
 	person_event SPRITE_CLERK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
 	person_event SPRITE_GRIMER, 5, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FGrimerDollScript, -1
 	person_event SPRITE_MACHOP, 5, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FMachopDollScript, -1
 	person_event SPRITE_STARYU, 5, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FStaryuDollScript, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FCooltrainerfScript, -1

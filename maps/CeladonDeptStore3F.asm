@@ -341,8 +341,8 @@ UnknownText_0x70d53:
 	text "I can't decide"
 	line "which #mon I"
 
-	para "should use this TM"
-	line "on…"
+	para "should use this"
+	line "TM on…"
 
 	para "Good thing it"
 	line "doesn't run out."
