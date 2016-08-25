@@ -69,14 +69,10 @@
 ## New content
 
 * Use Mmmmmm's B/W Route 12 music for a new location
-* Extend Lugia's chamber with flute music
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
-* Use Mateo's X/Y Hex Maniac sprite devamp (or make an X/Y one)?
 * Add wild Pokémon to Navel Rock?
 * Battle with Tower Tycoon Palmer as the last battle of every 5th and 10th 7-battle set in the Battle Tower
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
-* Battle with Cynthia in the Sinjoh Ruins after catching all 26 Unown (reward: Expert Belt)
-* Battle with Steven in the Embedded Tower (reward: Muscle Band)
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
 * Battle with [Shigeki Morimoto](http://bulbapedia.bulbagarden.net/wiki/Shigeki_Morimoto) (game designer and programmer), [Kōji Nishino](http://bulbapedia.bulbagarden.net/wiki/K%C5%8Dji_Nishino) (planner), [Tsunekazu Ishihara](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue#Deleted_Maps) (president and CEO), and/or Satoshi Tajiri (creator) in Celadon Mansion once a day
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
@@ -84,18 +80,15 @@
 
 ## New features
 
-* Add an event based on the Spell of the Unown movie after you catch all 26
 * Fourth stat screen showing Poké Seer's data
+* Add a third Trainer Card page for Kanto badges
 * Restore [unused memory game](http://iimarck.us/i/memory/)
+* Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
+* Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
-* Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
-* Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
-* Add a store to buy room decorations that Mom doesn't (the Goldenrod Dept. Store rooftop bargain sale and the harbor are good)
-* Sometimes wild Pokémon know an egg move
-* Longer player and rival names
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
-* Add a third Trainer Card page for Kanto badges
-* Adjust Kanto trainers' levels closer to Gym Leaders
+* Longer player and rival names
+* Sometimes wild Pokémon know an egg move
