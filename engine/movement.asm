@@ -747,6 +747,11 @@ NormalStep: ; 5412
 	add hl, bc
 	ld [hl], PERSON_ACTION_STEP
 
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	bit INVISIBLE, [hl]
+	jr nz, .skip_grass
+
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
