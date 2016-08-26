@@ -317,6 +317,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Murkrow is rare in some Headbutt trees.
 * Add: Add river to Route 45 from HGSS.
 * Add: Celadon Dept. Store TV game floor from RBY, with game system decorations for sale.
+* Add: Celadon Dept. Store Home Decor wing.
 * Add: Lt. Surge's electric traps from RBY.
 * Add: Missing ice puzzle in Seafoam Islands.
 * Add: Get Amulet Coin from Lyra in Olivine City, and Metal Coat in the Goldenrod Dept. Store basement.
