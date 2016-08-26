@@ -1,5 +1,5 @@
-GiveShinyDittoEgg:
-	ld hl, ShinyDittoEgg
+GiveMystriEgg:
+	ld hl, MystriEgg
 	ld de, OddEggSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
 	call CopyBytes
@@ -20,7 +20,7 @@ GiveShinyDittoEgg:
 	ld [wMobileMonStructurePointerBuffer + 1], a
 
 	; load Egg name in wTempOddEggNickname
-	ld hl, .ShinyDittoEggName
+	ld hl, .MystriEggName
 	ld de, wTempOddEggNickname
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
@@ -38,13 +38,13 @@ GiveShinyDittoEgg:
 	callba AddMobileMonToParty
 	ret
 
-.ShinyDittoEggName:
+.MystriEggName:
 	db "Egg@@@@@@@@@"
 
-ShinyDittoEgg:
-	db DITTO
+MystriEgg:
+	db TOGEPI
 	db NO_ITEM
-	db TRANSFORM, 0, 0, 0
+	db GROWL, CHARM, MOONBLAST, AEROBLAST
 	dw 08192 ; OT ID
 	dt 0 ; Exp
 	; Stat exp
@@ -54,16 +54,16 @@ ShinyDittoEgg:
 	bigdw 0
 	bigdw 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
-	db 10, 0, 0, 0 ; PP
+	db 40, 20, 15, 5 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 12 ; Max HP
-	bigdw 6 ; Atk
+	bigdw 5 ; Atk
 	bigdw 6 ; Def
-	bigdw 6 ; Spd
+	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
 	db "Egg@@@@@@@@"

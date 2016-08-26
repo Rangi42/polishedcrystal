@@ -97,5 +97,6 @@ ENDM
 	trigger_def VIOLET_GYM,                             wVioletGymTrigger
 	trigger_def BELLCHIME_TRAIL,                        wBellchimeTrailTrigger
 	trigger_def GOLDENROD_CITY,                         wGoldenrodCityTrigger
+	trigger_def MYSTRI_STAGE,                           wMystriStageTrigger
 	db -1
 ; 4d15b

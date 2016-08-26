@@ -297,6 +297,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: New music for the Goldenrod Game Corner and Lugia's and Ho-Oh's maps
 * Add: Shrine in Ecruteak City from Mateo's [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172).
 * Add: Battle with Valerie on Bellchime Trail after Suicune (reward: TM for DazzlinGleam).
+* Add: Special event after you catch all 26 Unown.
 * Add: Buy dolls and plants to decorate your room in Goldenrod Harbor.
 * Add: Replace Cianwood Photo Studio with an event that makes your Pokémon happier.
 * Add: Battle Cal in Trainer House if you're a girl, Kay if you're a boy.

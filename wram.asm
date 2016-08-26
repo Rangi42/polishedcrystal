@@ -2614,8 +2614,9 @@ wDarkCaveVioletEntranceTrigger::             ds 1
 wVioletGymTrigger::                          ds 1
 wBellchimeTrailTrigger::                     ds 1
 wGoldenrodCityTrigger::                      ds 1
+wMystriStageTrigger::                        ds 1
 
-	ds 39
+	ds 38
 
 
 ;SECTION "Events", WRAMX, BANK [1]

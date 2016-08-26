@@ -1,12 +1,381 @@
 const_value set 2
-	const MYSTRISTAGE_CYNTHIA
+	const MYSTRISTAGE_CYNTHIA1
+	const MYSTRISTAGE_CYNTHIA2
+	const MYSTRISTAGE_EGG
 
 MystriStage_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 0
+
+.Trigger0:
+	end
+
+.Trigger1:
+	end
+
+MystriStageTrigger1Script:
+	spriteface PLAYER, UP
+	pause 10
+	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
+	pause 10
+	spriteface MYSTRISTAGE_CYNTHIA1, DOWN
+	jump MystriStageTriggerScript
+
+MystriStageTrigger2Script:
+	applymovement PLAYER, MystriStageMovementData_PlayerStepsUp
+	spriteface PLAYER, LEFT
+	pause 10
+	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
+	pause 10
+	spriteface MYSTRISTAGE_CYNTHIA1, RIGHT
+	jump MystriStageTriggerScript
+
+MystriStageCynthiaSafeguardScript:
+	faceplayer
+MystriStageTriggerScript:
+	opentext
+	writetext MystriStageCynthiaIntroText
+	waitbutton
+	closetext
+	follow MYSTRISTAGE_CYNTHIA1, PLAYER
+	applymovement MYSTRISTAGE_CYNTHIA1, MystriStageMovementData_CynthiaStepsUp
+	stopfollow
+	spriteface MYSTRISTAGE_CYNTHIA1, LEFT
+	spriteface PLAYER, RIGHT
+	opentext
+	writetext MystriStageCynthiaSpeechText
+	waitbutton
+	writetext MystriStageCynthiaLeadText1
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
+	opentext
+	writetext MystriStageCynthiaLeadText2
+	waitbutton
+	appear MYSTRISTAGE_CYNTHIA2
+	disappear MYSTRISTAGE_CYNTHIA1
+	setevent EVENT_LISTENED_TO_CYNTHIA_INTRO
+	dotrigger $0
+	jump MystriStageCynthiaContinueScript
+
+MystriStageCynthiaScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_CYNTHIA
+	iftrue MystriStageBeatCynthiaScript
+MystriStageCynthiaContinueScript:
+	writetext MystriStageCynthiaIdeaText
+	waitbutton
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iffalse .NotYet
+	writetext MystriStageCynthiaChallengeText
+	yesorno
+	iffalse .Refused
+	writetext MystriStageCynthiaYesText
+	waitbutton
+	closetext
+	winlosstext MystriStageCynthiaWinText, 0
+	setlasttalked MYSTRISTAGE_CYNTHIA2
+	loadtrainer CYNTHIA, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_CYNTHIA
+	opentext
+	jump MystriStageBeatCynthiaScript
+
+.NotYet:
+	writetext MystriStageCynthiaNotNowText
+	waitbutton
+	closetext
+	end
+
+.Refused:
+	writetext MystriStageCynthiaNoText
+	waitbutton
+	closetext
+	end
+
+MystriStageBeatCynthiaScript:
+	checkevent EVENT_GOT_EXPERT_BELT_FROM_CYNTHIA
+	iftrue .GotExpertBelt
+	writetext MystriStageCynthiaItemText
+	waitbutton
+	verbosegiveitem EXPERT_BELT
+	iffalse .Done
+	setevent EVENT_GOT_EXPERT_BELT_FROM_CYNTHIA
+	writetext MystriStageCynthiaAfterText
+	waitbutton
+	closetext
+	pause 15
+	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA2, 15
+	special Special_FadeOutMusic
+	pause 15
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	pause 15
+	playsound SFX_UNKNOWN_60
+	waitsfx
+	pause 20
+	playsound SFX_METRONOME
+	waitsfx
+	special Special_FadeInQuickly
+	pause 10
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playsound SFX_PROTECT
+	waitsfx
+	special Special_FadeInQuickly
+	pause 10
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	pause 20
+	playsound SFX_EGG_HATCH
+	waitsfx
+	appear MYSTRISTAGE_EGG
+	faceplayer
+	pause 30
+	special RestartMapMusic
+	special Special_FadeInQuickly
+	pause 20
+	spriteface MYSTRISTAGE_CYNTHIA2, DOWN
+	pause 40
+	faceplayer
+	opentext
+	writetext MystriStageCynthiaEggText
+	waitbutton
+.Done:
+	closetext
+	end
+
+.GotExpertBelt:
+	writetext MystriStageCynthiaFinalText
+	waitbutton
+	closetext
+	end
+
+MystriStageEggScript:
+	checkcode VAR_PARTYCOUNT
+	if_equal PARTY_LENGTH, .PartyFull
+	special GiveMystriEgg
+	disappear MYSTRISTAGE_EGG
+	opentext
+	writetext MystriStageEggText
+	playsound SFX_KEY_ITEM
+	waitsfx
+	waitbutton
+	closetext
+	end
+
+.PartyFull:
+	jumptext MystriStageNoRoomText
+
+MystriStageCynthiaIntroText:
+	text "My name is"
+	line "Cynthia. I am a"
+	cont "#mon trainer."
+
+	para "And you are?"
+
+	para "…I see. The power"
+	line "of the Unown"
+	cont "brought you here."
+	done
+
+MystriStageCynthiaSpeechText:
+	text "Cynthia: These are"
+	line "the Sinjoh Ruins."
+
+	para "A long time ago…"
+	line "people came from"
+
+	para "Sinnoh, my home"
+	line "region, to live"
+	cont "here."
+
+	para "They must have"
+	line "longed for home,"
+
+	para "and built this"
+	line "temple to honor"
+	cont "their traditions."
+
+	para "We are standing on"
+	line "the Mystri Stage."
+
+	para "People once cele-"
+	line "brated here with"
+	cont "music and dance."
+	done
+
+MystriStageCynthiaLeadText1:
+	text "Cynthia: I study"
+	line "myths about"
+
+	para "ancient sites like"
+	line "the Sinjoh Ruins."
+
+	para "One claims that"
+	line "this stage is"
+
+	para "imbued with the"
+	line "power of creation."
+
+	para "It speaks of when"
+	line "<``>the lead enters"
+
+	para "the Mystri Stage"
+	line "at last…<''>"
+	done
+
+MystriStageCynthiaLeadText2:
+	text "Cynthia: What?"
+	line "You read that"
+
+	para "phrase in the"
+	line "Ruins of Alph?"
+
+	para "That is very"
+	line "intriguing."
+
+	para "Could <``>the lead<''>"
+	line "be a #mon?"
+	cont "Or a person?"
+	done
+
+MystriStageCynthiaIdeaText:
+	text "Cynthia: …I have"
+	line "an idea. Call it"
+
+	para "a trainer's"
+	line "intuition."
+
+	para "When you and I"
+	line "battle on this"
+
+	para "stage, something"
+	line "will happen."
+	done
+
+MystriStageCynthiaNotNowText:
+	text "Cynthia: But I"
+	line "don't think we"
+
+	para "should battle now."
+	line "You aren't ready."
+
+	para "Come back when"
+	line "you've beaten the"
+	cont "Elite Four."
+	done
+
+MystriStageCynthiaChallengeText:
+	text "Cynthia: Are you"
+	line "prepared to be my"
+	cont "opponent?"
+	done
+
+MystriStageCynthiaNoText:
+	text "Cynthia: Come back"
+	line "when you're ready."
+	done
+
+MystriStageCynthiaYesText:
+	text "Cynthia: Before"
+	line "I send out my"
+	cont "#mon,"
+
+	para "my heart always"
+	line "begins to race…" 
+	done
+
+MystriStageCynthiaWinText:
+	text "I can't remember"
+	line "the last time I"
+
+	para "was outclassed"
+	line "like this!"
+	done
+
+MystriStageCynthiaItemText:
+	text "Cynthia: That was"
+	line "beyond my expec-"
+	cont "tation!"
+
+	para "What an excep-"
+	line "tional battle!"
+
+	para "Please take this"
+	line "item. I believe"
+
+	para "you will know how"
+	line "to use it well."
+	done
+
+MystriStageCynthiaAfterText:
+	text "Cynthia: But did"
+	line "our battle affect"
+	cont "the Mystri Stage?"
+	done
+
+MystriStageCynthiaEggText:
+	text "Cynthia: Could it"
+	line "be… an Egg?"
+
+	para "Did we just"
+	line "witness the very"
+
+	para "moment an Egg was"
+	line "brought to this"
+	cont "world?"
+
+	para "A moment no one"
+	line "has ever seen?"
+	done
+
+MystriStageCynthiaFinalText:
+	text "Cynthia: An Egg"
+	line "is the cradle of"
+	cont "every being."
+
+	para "The planet itself"
+	line "is an Egg in a"
+	cont "sense…"
+
+	para "Life that comes"
+	line "from an Egg will"
+	cont "come to an end in"
+
+	para "due course… to"
+	line "begin anew…"
+	done
+
+MystriStageEggText:
+	text "<PLAYER> received"
+	line "Egg!"
+	done
+
+MystriStageNoRoomText:
+	text "You don't have"
+	line "room for this!"
+	done
+
+MystriStageMovementData_PlayerStepsUp:
+	step_up
+	step_end
+
+MystriStageMovementData_CynthiaStepsUp:
+	step_up
+	step_up
+	step_up
+	step_right
+	step_end
 
 MystriStage_MapEventHeader:
 	; filler
@@ -18,11 +387,15 @@ MystriStage_MapEventHeader:
 	warp_def $11, $7, 1, SINJOH_RUINS
 
 .XYTriggers:
-	db 0
+	db 2
+	xy_trigger 1, $9, $6, $0, MystriStageTrigger1Script, $0, $0
+	xy_trigger 1, $9, $7, $0, MystriStageTrigger2Script, $0, $0
 
 .Signposts:
 	db 0
 
 .PersonEvents:
-	db 1
-	person_event SPRITE_CYNTHIA, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	db 3
+	person_event SPRITE_CYNTHIA, 8, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
+	person_event SPRITE_CYNTHIA, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
+	person_event SPRITE_EGG, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG

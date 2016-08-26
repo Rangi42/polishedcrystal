@@ -184,6 +184,7 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_SUICUNE ; b7
 	const SPRITE_LUGIA ; b8
 	const SPRITE_HO_OH ; b9
+	const SPRITE_EGG ; ba
 
 const_value SET $d0
 	const SPRITE_DAYCARE_MON_1 ; d0

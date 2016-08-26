@@ -806,6 +806,7 @@ SpriteMons: ; 14495
 	db SUICUNE
 	db LUGIA
 	db HO_OH
+	db EGG
 ; 144b8
 
 

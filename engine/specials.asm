@@ -192,6 +192,7 @@ SpecialsPointers:: ; c029
 
 ; Polished Crystal
 	add_special GiveShinyDittoEgg
+	add_special GiveMystriEgg
 	add_special MoveReminder
 	add_special Special_ReiBlessing
 	add_special BillBoxSwitchCheck
