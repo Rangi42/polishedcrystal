@@ -32,13 +32,10 @@ VermilionCity_MapScriptHeader:
 	return
 
 LawrenceLeftIntroScript:
-	disappear VERMILIONCITY_LAWRENCE
-	appear VERMILIONCITY_LAWRENCE
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceEnterLeftMovementData
 	opentext
 	writetext LawrenceOverheardText
 	waitbutton
@@ -57,19 +54,17 @@ LawrenceLeftIntroScript:
 	closetext
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
-	dotrigger $1
+	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
+	dotrigger $1
 	special RestartMapMusic
 	end
 
 LawrenceRightIntroScript:
-	disappear VERMILIONCITY_LAWRENCE
-	appear VERMILIONCITY_LAWRENCE
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceEnterRightMovementData
 	opentext
 	writetext LawrenceOverheardText
 	waitbutton
@@ -88,51 +83,16 @@ LawrenceRightIntroScript:
 	closetext
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
-	dotrigger $1
+	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
+	dotrigger $1
 	special RestartMapMusic
 	end
-
-VermilionCityLawrenceScript:
-	special Special_FadeOutMusic
-	pause 15
-	opentext
-	writetext LawrenceOverheardText
-	waitbutton
-	closetext
-	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
-	pause 15
-	faceplayer
-	playmusic MUSIC_LAWRENCE
-	opentext
-	writetext LawrenceIntroText
-	waitbutton
-	closetext
-	checkcode VAR_FACING
-	if_equal UP, .HaveToGoAround
-	spriteface PLAYER, DOWN
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartDownMovementData
-	dotrigger $1
-	disappear VERMILIONCITY_LAWRENCE
-	special RestartMapMusic
-	end
-
-.HaveToGoAround
-	spriteface PLAYER, DOWN
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartAroundMovementData
-	dotrigger $1
-	disappear VERMILIONCITY_LAWRENCE
-	special RestartMapMusic
-	end
-
-LawrenceEnterLeftMovementData:
-	step_down
-	step_down
-	turn_head_up
-	step_end
 
 LawrenceApproachLeftMovementData:
+	step_left
 LawrenceApproachRightMovementData:
+	step_down
 	step_down
 	step_down
 	step_end
@@ -153,32 +113,6 @@ LawrenceWalkAroundLeftMovementData:
 	turn_head_left
 	step_end
 
-LawrenceDepartLeftMovementData:
-	step_down
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_end
-
-LawrenceDepartRightMovementData:
-	step_down
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_end
-
-LawrenceEnterRightMovementData:
-	step_right
-	step_down
-	step_down
-	turn_head_up
-	step_end
-
 LawrenceWalkAroundRightMovementData:
 	step_left
 	step_down
@@ -186,20 +120,14 @@ LawrenceWalkAroundRightMovementData:
 	turn_head_right
 	step_end
 
-LawrenceDepartDownMovementData:
+LawrenceDepartLeftMovementData:
 	step_down
 	step_down
-	step_down
-	step_down
-	step_down
+	step_left
 	step_down
 	step_end
 
-LawrenceDepartAroundMovementData:
-	step_right
-	step_down
-	step_down
-	step_down
+LawrenceDepartRightMovementData:
 	step_down
 	step_down
 	step_down
@@ -512,8 +440,8 @@ VermilionCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $17, $1c, $0, LawrenceLeftIntroScript, $0, $0
-	xy_trigger 0, $17, $1d, $0, LawrenceRightIntroScript, $0, $0
+	xy_trigger 0, $1c, $12, $0, LawrenceLeftIntroScript, $0, $0
+	xy_trigger 0, $1c, $13, $0, LawrenceRightIntroScript, $0, $0
 
 .Signposts:
 	db 8
@@ -534,4 +462,4 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 16, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1aa99b, -1
 	person_event SPRITE_BIG_SNORLAX, 8, 34, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_POKEFAN_M, 12, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
-	person_event SPRITE_LAWRENCE, 18, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityLawrenceScript, EVENT_LAWRENCE_VERMILION_CITY
+	person_event SPRITE_LAWRENCE, 24, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
