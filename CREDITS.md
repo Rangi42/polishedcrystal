@@ -19,6 +19,7 @@
 * Twilir for Lyra's back sprite
 * Danny-E for Lorelei's sprite
 * Nic7C5 for Yellow's sprite
+* isamuakai01 for Steven's sprite
 * BettyNewbie for Green's sprite
 * bloodless for Game Freak's sprite
 * Fo0xerz for Lawrence III's sprite (devamped by me)
