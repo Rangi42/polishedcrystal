@@ -41,7 +41,7 @@ FakeDirectorScript:
 	closetext
 	winlosstext FakeDirectorWinText, 0
 	setlasttalked RADIOTOWER5F_DIRECTOR
-	loadtrainer EXECUTIVEM, PETREL2
+	loadtrainer PETREL, PETREL1
 	startbattle
 	reloadmapafterbattle
 	opentext
@@ -50,7 +50,7 @@ FakeDirectorScript:
 	verbosegiveitem BASEMENT_KEY
 	closetext
 	dotrigger $1
-	setevent EVENT_BEAT_ROCKET_EXECUTIVEM_3
+	setevent EVENT_BEAT_PETREL_1
 	end
 
 Director:
@@ -69,13 +69,13 @@ Director:
 	closetext
 	end
 
-TrainerExecutivef1:
-	trainer EVENT_BEAT_ROCKET_EXECUTIVEF_1, EXECUTIVEF, ARIANA2, Executivef1SeenText, Executivef1BeatenText, 0, Executivef1Script
+TrainerAriana1:
+	trainer EVENT_BEAT_ARIANA_1, ARIANA, ARIANA1, Ariana1SeenText, Ariana1BeatenText, 0, Ariana1Script
 
-Executivef1Script:
+Ariana1Script:
 	end_if_just_battled
 	opentext
-	writetext Executivef1AfterText
+	writetext Ariana1AfterText
 	waitbutton
 	closetext
 	end
@@ -90,7 +90,7 @@ RadioTower5FRocketBossTrigger:
 	closetext
 	winlosstext RadioTower5FRocketBossWinText, 0
 	setlasttalked RADIOTOWER5F_ROCKET
-	loadtrainer EXECUTIVEM, ARCHER2
+	loadtrainer ARCHER, ARCHER1
 	startbattle
 	reloadmapafterbattle
 	opentext
@@ -103,7 +103,7 @@ RadioTower5FRocketBossTrigger:
 	disappear RADIOTOWER5F_ROCKET_GIRL
 	pause 15
 	special Special_FadeInQuickly
-	setevent EVENT_BEAT_ROCKET_EXECUTIVEM_1
+	setevent EVENT_BEAT_ARCHER_1
 	setevent EVENT_CLEARED_RADIO_TOWER
 	clearflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	setevent EVENT_GOLDENROD_CITY_ROCKET_SCOUT
@@ -241,7 +241,7 @@ FakeDirectorTextAfter:
 	line "get that far."
 	done
 
-Executivef1SeenText:
+Ariana1SeenText:
 	text "Remember me from"
 	line "the hideout in"
 	cont "Mahogany Town?"
@@ -250,7 +250,7 @@ Executivef1SeenText:
 	line "won't this time."
 	done
 
-Executivef1BeatenText:
+Ariana1BeatenText:
 	text "This can't be"
 	line "happening!"
 
@@ -258,7 +258,7 @@ Executivef1BeatenText:
 	line "I still lost…"
 	done
 
-Executivef1AfterText:
+Ariana1AfterText:
 	text "<PLAYER>, isn't it?"
 
 	para "A brat like you"
@@ -447,7 +447,7 @@ RadioTower5F_MapEventHeader:
 .PersonEvents:
 	db 5
 	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, -1
-	person_event SPRITE_ROCKET, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET_GIRL, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerExecutivef1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET_GIRL, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_POKE_BALL, 5, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RadioTower5FUltraBall, EVENT_RADIO_TOWER_5F_ULTRA_BALL

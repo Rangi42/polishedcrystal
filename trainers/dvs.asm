@@ -108,8 +108,10 @@ TrainerClassDVs: ; 270d6
 	db $EE, $EE ; cooltrainerm
 	db $7E, $EE ; cooltrainerf
 	db $EE, $EE ; ace duo
-	db $DF, $FF ; executivem
-	db $7F, $FF ; executivef
+	db $CF, $FF ; proton
+	db $CF, $FF ; petrel
+	db $DF, $FF ; archer
+	db $7F, $FF ; ariana
 	db $FF, $FF ; pokemon prof
 	db $FF, $FF ; game freak
 	db $FF, $FF ; mysticalman

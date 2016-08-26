@@ -83,20 +83,12 @@ JamesLeaveMovementData:
 	big_step_right
 	step_end
 
-Route48RocketExecutiveScript:
-	playmusic MUSIC_ROCKET_ENCOUNTER
-	faceplayer
+TrainerArcher2:
+	trainer EVENT_BEAT_ARCHER_2, ARCHER, ARCHER2, Archer2SeenText, Archer2BeatenText, 0, Archer2Script
+
+Archer2Script:
 	opentext
-	writetext Route48RocketExecutiveSeenText
-	waitbutton
-	closetext
-	winlosstext Route48RocketExecutiveBeatenText, 0
-	setlasttalked ROUTE48_ROCKET
-	loadtrainer EXECUTIVEM, ARCHER1
-	startbattle
-	reloadmapafterbattle
-	opentext
-	writetext Route48RocketExecutiveAfterText
+	writetext Archer2AfterText
 	waitbutton
 	closetext
 	special Special_FadeBlackQuickly
@@ -104,10 +96,8 @@ Route48RocketExecutiveScript:
 	disappear ROUTE48_ROCKET
 	pause 15
 	special Special_FadeInQuickly
-	setevent EVENT_BEAT_ROCKET_EXECUTIVEM_6
 	setevent EVENT_CLEARED_YELLOW_FOREST
 	clearevent EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	special PlayMapMusic
 	end
 
 Route48YellowForestSign:
@@ -144,7 +134,7 @@ Route48JessieJamesAfterText:
 	cont "off again!"
 	done
 
-Route48RocketExecutiveSeenText:
+Archer2SeenText:
 	text "So you want to"
 	line "interfere with"
 
@@ -163,12 +153,12 @@ Route48RocketExecutiveSeenText:
 	cont "it!"
 	done
 
-Route48RocketExecutiveBeatenText:
+Archer2BeatenText:
 	text "This is so"
 	line "frustrating…"
 	done
 
-Route48RocketExecutiveAfterText:
+Archer2AfterText:
 	text "…Have it your"
 	line "way."
 
@@ -203,7 +193,7 @@ Route48_MapEventHeader:
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_ROCKET, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route48RocketExecutiveScript, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_JESSIE, 12, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
 	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
 	person_event SPRITE_POKE_BALL, 13, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route48Nugget, EVENT_ROUTE_48_NUGGET

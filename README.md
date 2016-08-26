@@ -327,6 +327,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Pan up on entering Bell Tower, Battle Tower, and Radio Tower.
 * Add: Rematch Elite Four only after getting all 16 badges (Prof. Elm and Blue both explain this).
 * Add: Accessible waterfall in Yellow Forest.
+* Add: Devamped HGSS sprites for Team Rocket Executives.
 * Add: Replace NES with Wii.
 * Add: Purple overworld sprites (used for Eusine, Koga, Janine, PokéManiacs, Hex Maniacs, Burglars, Executive♂s, and GameCube).
 * Add: Proper text for Gym Leader rematches.

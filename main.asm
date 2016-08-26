@@ -1590,38 +1590,42 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_JOHTO_WILD_BATTLE
 	ld a, [TimeOfDay]
 	cp NITE
-	jr nz, .done
+	jp nz, .done
 	ld de, MUSIC_JOHTO_WILD_BATTLE_NIGHT
-	jr .done
+	jp .done
 
 .kantowild
 	ld de, MUSIC_KANTO_WILD_BATTLE
-	jr .done
+	jp .done
 
 .trainermusic
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION
-	jr z, .done
+	jp z, .done
 
 	ld de, MUSIC_WCS_BATTLE_BW
 	cp RED
-	jr z, .done
+	jp z, .done
 
 	ld de, MUSIC_CHAMPION_BATTLE_B2W2
 	cp LEAF
-	jr z, .done
+	jp z, .done
 
 	ld de, MUSIC_ROCKET_BATTLE
 	cp GRUNTM
-	jr z, .done
+	jp z, .done
 	cp GRUNTF
-	jr z, .done
-	cp EXECUTIVEM
-	jr z, .done
-	cp EXECUTIVEF
-	jr z, .done
+	jp z, .done
+	cp PROTON
+	jp z, .done
+	cp PETREL
+	jp z, .done
+	cp ARCHER
+	jp z, .done
+	cp ARIANA
+	jp z, .done
 	cp JESSIE_JAMES
-	jr z, .done
+	jp z, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	callba IsKantoGymLeader
@@ -3886,7 +3890,6 @@ MaleTrainers: ; 4e95d
 	db BIKER
 	db ROUGHNECK
 	db COOLTRAINERM
-	db EXECUTIVEM
 MaleTrainersEnd:
 
 FemaleTrainers: ; 4e976
@@ -3910,7 +3913,6 @@ FemaleTrainers: ; 4e976
 	db TEACHER
 	db GUITARISTF
 	db COOLTRAINERF
-	db EXECUTIVEF
 FemaleTrainersEnd:
 
 INCLUDE "battle/sliding_intro.asm"

@@ -30,12 +30,12 @@ GruntM29Script:
 	closetext
 	end
 
-TrainerExecutiveM5:
-	trainer EVENT_BEAT_ROCKET_EXECUTIVEM_5, EXECUTIVEM, PROTON1, ExecutiveM5SeenText, ExecutiveM5BeatenText, 0, ExecutiveM5Script
+TrainerProton2:
+	trainer EVENT_BEAT_PROTON_2, PROTON, PROTON2, Proton2SeenText, Proton2BeatenText, 0, Proton2Script
 
-ExecutiveM5Script:
+Proton2Script:
 	opentext
-	writetext TrainerExecutiveM5WhenTalkText
+	writetext TrainerProton2WhenTalkText
 	waitbutton
 	closetext
 	special Special_FadeBlackQuickly
@@ -223,7 +223,7 @@ TrainerGruntM29SlowpokeProfitText:
 	line "thing for money!"
 	done
 
-ExecutiveM5SeenText:
+Proton2SeenText:
 	text "What do you want?"
 
 	para "If you interrupt"
@@ -231,13 +231,13 @@ ExecutiveM5SeenText:
 	cont "expect any mercy!"
 	done
 
-ExecutiveM5BeatenText:
+Proton2BeatenText:
 	text "You did OK today,"
 	line "but wait till next"
 	cont "time!"
 	done
 
-TrainerExecutiveM5WhenTalkText:
+TrainerProton2WhenTalkText:
 	text "Yeah, Team Rocket"
 	line "was broken up"
 	cont "three years ago."
@@ -337,7 +337,7 @@ SlowpokeWellB1F_MapEventHeader:
 .PersonEvents:
 	db 9
 	person_event SPRITE_ROCKET, 7, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM29, EVENT_SLOWPOKE_WELL_ROCKETS
-	person_event SPRITE_ROCKET, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerExecutiveM5, EVENT_SLOWPOKE_WELL_ROCKETS
+	person_event SPRITE_ROCKET, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerProton2, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM2, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_ROCKET_GIRL, 4, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_SLOWPOKE, 4, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a681, EVENT_SLOWPOKE_WELL_SLOWPOKES

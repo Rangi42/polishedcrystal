@@ -82,8 +82,10 @@ TrainerGroups: ; 0x39999
 	dw CooltrainerMGroup
 	dw CooltrainerFGroup
 	dw AceDuoGroup
-	dw ExecutiveMGroup
-	dw ExecutiveFGroup
+	dw ProtonGroup
+	dw PetrelGroup
+	dw ArcherGroup
+	dw ArianaGroup
 	dw PokemonProfGroup
 	dw GameFreakGroup
 	dw MysticalmanGroup

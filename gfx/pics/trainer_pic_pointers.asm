@@ -80,8 +80,10 @@
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
 	add_pic AceDuoPic
-	add_pic ExecutivemPic
-	add_pic ExecutivefPic
+	add_pic ProtonPic
+	add_pic PetrelPic
+	add_pic ArcherPic
+	add_pic ArianaPic
 	add_pic PokemonProfPic
 	add_pic GameFreakPic
 	add_pic MysticalmanPic

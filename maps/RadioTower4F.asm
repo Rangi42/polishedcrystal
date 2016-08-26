@@ -66,10 +66,10 @@ GruntM10Script:
 	closetext
 	end
 
-TrainerExecutivem2:
-	trainer EVENT_BEAT_ROCKET_EXECUTIVEM_2, EXECUTIVEM, PROTON2, Executivem2SeenText, Executivem2BeatenText, 0, Executivem2Script
+TrainerProton1:
+	trainer EVENT_BEAT_PROTON_1, PROTON, PROTON1, Proton1SeenText, Proton1BeatenText, 0, Proton1Script
 
-Executivem2Script:
+Proton1Script:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x5ee69
@@ -168,7 +168,7 @@ UnknownText_0x5ede2:
 	line "it! I was beaten!"
 	done
 
-Executivem2SeenText:
+Proton1SeenText:
 	text "Stop! I'm known as"
 	line "the Team Rocket"
 	cont "fortress!"
@@ -177,7 +177,7 @@ Executivem2SeenText:
 	line "another step!"
 	done
 
-Executivem2BeatenText:
+Proton1BeatenText:
 	text "The fortress came"
 	line "down!"
 	done
@@ -270,6 +270,6 @@ RadioTower4F_MapEventHeader:
 	person_event SPRITE_TEACHER, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5eb85, -1
 	person_event SPRITE_MEOWTH, 7, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTowerMeowth, -1
 	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerExecutivem2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 4, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_SCIENTIST, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

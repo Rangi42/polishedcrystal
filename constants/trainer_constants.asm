@@ -689,29 +689,33 @@ KRIS EQU __enum__
 	const ZACANDJEN1
 	const ZACANDJEN2
 
-	trainerclass EXECUTIVEM ; 52
-	const ARCHER2
-	const PROTON2
-	const PETREL2
-	const PETREL1
+	trainerclass PROTON ; 52
 	const PROTON1
-	const ARCHER1
+	const PROTON2
 
-	trainerclass EXECUTIVEF ; 53
+	trainerclass PETREL ; 53
+	const PETREL1
+	const PETREL2
+
+	trainerclass ARCHER ; 54
+	const ARCHER1
+	const ARCHER2
+
+	trainerclass ARIANA ; 55
 	const ARIANA2
 	const ARIANA1
 
-	trainerclass POKEMON_PROF ; 54
+	trainerclass POKEMON_PROF ; 56
 
-	trainerclass GAME_FREAK ; 55
+	trainerclass GAME_FREAK ; 57
 	const MORIMOTO
 	const NISHINO
 	const ISHIHARA
 
-	trainerclass MYSTICALMAN ; 56
+	trainerclass MYSTICALMAN ; 58
 	const EUSINE
 
-	trainerclass LYRA ; 57
+	trainerclass LYRA ; 59
 	const LYRA_1
 	const LYRA_2
 	const LYRA_3
@@ -725,33 +729,33 @@ KRIS EQU __enum__
 	const LYRA_11
 	const LYRA_12
 
-	trainerclass LORELEI ; 58
+	trainerclass LORELEI ; 5a
 
-	trainerclass AGATHA ; 59
+	trainerclass AGATHA ; 5b
 
-	trainerclass YELLOW ; 5a
+	trainerclass YELLOW ; 5c
 
-	trainerclass BILL_T ; 5b
+	trainerclass BILL_T ; 5d
 
-	trainerclass LAWRENCE ; 5c
+	trainerclass LAWRENCE ; 5e
 
-	trainerclass GIOVANNI ; 5d
+	trainerclass GIOVANNI ; 5f
 
-	trainerclass STEVEN ; 5e
+	trainerclass STEVEN ; 60
 
-	trainerclass CYNTHIA ; 5f
+	trainerclass CYNTHIA ; 61
 
-	trainerclass TOWERTYCOON ; 60
+	trainerclass TOWERTYCOON ; 62
 
-	trainerclass VALERIE ; 61
+	trainerclass VALERIE ; 63
 
-	trainerclass REI ; 62
+	trainerclass REI ; 64
 
-	trainerclass OMASTAR_FOSSIL ; 63
+	trainerclass OMASTAR_FOSSIL ; 65
 
-	trainerclass KABUTOPS_FOSSIL ; 64
+	trainerclass KABUTOPS_FOSSIL ; 66
 
-	trainerclass AERODACTYL_FOSSIL ; 65
+	trainerclass AERODACTYL_FOSSIL ; 67
 
 NUM_TRAINER_CLASSES EQU __enum__
 

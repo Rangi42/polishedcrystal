@@ -10856,54 +10856,12 @@ AceDuoGroup:
 ; ================================
 
 
-ExecutiveMGroup:
+ProtonGroup:
 ; ================================
 ; ================
 
-	; EXECUTIVEM
-	; (HGSS Executive Archer)
-	db "Executive@"
-	db 3 ; item + moves
-
-	; party
-
-	db 39, HOUNDOUR, EVIOLITE
-		db SUPER_FANG
-		db FIRE_SPIN
-		db FEINT_ATTACK
-		db WILL_O_WISP
-
-	db 41, RATICATE, BLACKGLASSES
-		db CRUNCH
-		db SUPER_FANG
-		db HYPER_FANG
-		db DOUBLE_EDGE
-
-	db 39, GENGAR, SPELL_TAG
-		db HYPNOSIS
-		db CONFUSE_RAY
-		db PAIN_SPLIT
-		db SHADOW_BALL
-
-	db 40, WEEZING, BRIGHTPOWDER
-		db SMOKESCREEN
-		db WILL_O_WISP
-		db PAIN_SPLIT
-		db SLUDGE_BOMB
-
-	db 42, HOUNDOOM, KINGS_ROCK
-		db SMOKESCREEN
-		db SUPER_FANG
-		db FEINT_ATTACK
-		db FLAMETHROWER
-
-	db $ff ; end
-
-; ================
-
-	; EXECUTIVEM
-	; (HGSS Executive Proton)
-	db "Executive@"
+	; PROTON
+	db "Proton@"
 	db 3 ; item + moves
 
 	; party
@@ -10930,9 +10888,27 @@ ExecutiveMGroup:
 
 ; ================
 
-	; EXECUTIVEM
-	; (HGSS Executive Petrel)
-	db "Executive@"
+	; PROTON
+	db "Proton@"
+	db 0 ; normal
+
+	; party
+	db 10, ZUBAT
+	db 12, QWILFISH
+	db 14, KOFFING
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+PetrelGroup:
+; ================================
+; ================
+
+	; PETREL
+	db "Petrel@"
 	db 3 ; item + moves
 
 	; party
@@ -10971,9 +10947,8 @@ ExecutiveMGroup:
 
 ; ================
 
-	; EXECUTIVEM
-	; (HGSS Executive Petrel)
-	db "Executive@"
+	; PETREL
+	db "Petrel@"
 	db 3 ; item + moves
 
 	; party
@@ -11005,24 +10980,55 @@ ExecutiveMGroup:
 	db $ff ; end
 
 ; ================
+; ================================
 
-	; EXECUTIVEM
-	; (HGSS Executive Proton)
-	db "Executive@"
-	db 0 ; normal
+
+ArcherGroup:
+; ================================
+; ================
+
+	; ARCHER
+	db "Archer@"
+	db 3 ; item + moves
 
 	; party
-	db 10, ZUBAT
-	db 12, QWILFISH
-	db 14, KOFFING
+
+	db 39, HOUNDOUR, EVIOLITE
+		db SUPER_FANG
+		db FIRE_SPIN
+		db FEINT_ATTACK
+		db WILL_O_WISP
+
+	db 41, RATICATE, BLACKGLASSES
+		db CRUNCH
+		db SUPER_FANG
+		db HYPER_FANG
+		db DOUBLE_EDGE
+
+	db 39, GENGAR, SPELL_TAG
+		db HYPNOSIS
+		db CONFUSE_RAY
+		db PAIN_SPLIT
+		db SHADOW_BALL
+
+	db 40, WEEZING, BRIGHTPOWDER
+		db SMOKESCREEN
+		db WILL_O_WISP
+		db PAIN_SPLIT
+		db SLUDGE_BOMB
+
+	db 42, HOUNDOOM, KINGS_ROCK
+		db SMOKESCREEN
+		db SUPER_FANG
+		db FEINT_ATTACK
+		db FLAMETHROWER
 
 	db $ff ; end
 
 ; ================
 
-	; EXECUTIVEM
-	; (Archer)
-	db "Executive@"
+	; ARCHER
+	db "Archer@"
 	db 3 ; item + moves
 
 	; party
@@ -11057,13 +11063,12 @@ ExecutiveMGroup:
 ; ================================
 
 
-ExecutiveFGroup:
+ArianaGroup:
 ; ================================
 ; ================
 
-	; EXECUTIVEF
-	; (HGSS Executive Ariana)
-	db "Executive@"
+	; ARIANA
+	db "Ariana@"
 	db 3 ; item + moves
 
 	; party
@@ -11090,9 +11095,8 @@ ExecutiveFGroup:
 
 ; ================
 
-	; EXECUTIVEF
-	; (HGSS Executive Ariana)
-	db "Executive@"
+	; ARIANA
+	db "Ariana@"
 	db 3 ; item + moves
 
 	; party
