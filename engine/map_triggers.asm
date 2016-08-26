@@ -98,5 +98,6 @@ ENDM
 	trigger_def BELLCHIME_TRAIL,                        wBellchimeTrailTrigger
 	trigger_def GOLDENROD_CITY,                         wGoldenrodCityTrigger
 	trigger_def MYSTRI_STAGE,                           wMystriStageTrigger
+	trigger_def ROUTE_10_NORTH,                         wRoute10NorthTrigger
 	db -1
 ; 4d15b

@@ -312,7 +312,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Politoed is Water/Grass.
 * Add: Sunflora is Grass/Fire.
 * Add: Electivire is Electric/Fighting.
-* Add: Magmortar is Fire/Steel.
+* Add: Magmortar is Fire/Fighting.
+* Add: Rhyperior is Ground/Steel.
 * Add: Improve Buena's prizes.
 * Add: Yanma and Venomoth are available in the Bug-Catching Contest.
 * Add: Murkrow is rare in some Headbutt trees.

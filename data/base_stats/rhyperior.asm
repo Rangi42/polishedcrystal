@@ -8,7 +8,11 @@ else
 	;   hp  atk  def  spd  sat  sdf
 endc
 
+if DEF(FAITHFUL)
 	db GROUND, ROCK
+else
+	db GROUND, STEEL
+endc
 	db 30 ; catch rate
 	db 217 ; base exp
 	db NO_ITEM ; item 1

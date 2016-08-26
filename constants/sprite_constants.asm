@@ -209,6 +209,7 @@ SPRITE_VARS EQU const_value
 	const SPRITE_AZALEA_ROCKET ; ee
 	const SPRITE_CHERRYGROVE_RIVAL ; ef
 	const SPRITE_OLIVINE_RIVAL ; f0
+	const SPRITE_CERULEAN_CAPE_MISTY ; f1
 
 ; sprite types
 const_value SET 1

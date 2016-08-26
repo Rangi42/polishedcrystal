@@ -1018,25 +1018,25 @@ Group7Sprites:
 ; Route24
 ; Route25
 ; CeruleanCity
+	db SPRITE_CERULEAN_CAPE_MISTY
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_LASS
-	db SPRITE_MISTY
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_YOUNGSTER
+	db SPRITE_CHRIS ; doesn't walk
+	db SPRITE_KRIS ; doesn't walk
 	db SPRITE_COOLTRAINER_M ; doesn't walk
 	db SPRITE_BLUE ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	; 12 walking sprites (9 that walk)
+	; 14 walking sprites (9 that walk)
 	db SPRITE_POKE_BALL
 	db SPRITE_SLOWPOKE
 	db SPRITE_ZAPDOS
-	; 15 total sprites
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
+	; 17 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY

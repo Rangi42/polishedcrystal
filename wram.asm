@@ -2615,8 +2615,9 @@ wVioletGymTrigger::                          ds 1
 wBellchimeTrailTrigger::                     ds 1
 wGoldenrodCityTrigger::                      ds 1
 wMystriStageTrigger::                        ds 1
+wRoute10NorthTrigger::                       ds 1
 
-	ds 38
+	ds 37
 
 
 ;SECTION "Events", WRAMX, BANK [1]

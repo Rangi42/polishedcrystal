@@ -11782,22 +11782,22 @@ StevenGroup:
 ; ================================
 ; ================
 
-	; unused
 	; STEVEN
 	db "Steven@"
 	db 0 ; normal
 
 	; party
-	db 57, SKARMORY
-	db 57, FORRETRESS
+	db 61, SKARMORY
+	db 60, FORRETRESS
 if DEF(FAITHFUL)
-	db 57, SCIZOR
+	db 58, SCIZOR
+	db 58, MAGNEZONE
 else
-	db 57, BLASTOISE
+	db 58, BLASTOISE
+	db 58, RHYPERIOR
 endc
-	db 57, MAGNEZONE
-	db 57, AERODACTYL
-	db 59, STEELIX
+	db 58, AERODACTYL
+	db 62, STEELIX
 
 	db $ff ; end
 
@@ -11809,7 +11809,6 @@ CynthiaGroup:
 ; ================================
 ; ================
 
-	; unused
 	; CYNTHIA
 	db "Cynthia@"
 	db 0 ; normal
@@ -11817,10 +11816,10 @@ CynthiaGroup:
 	; party
 	db 60, TOGEKISS
 	db 58, LEAFEON
-	db 58, MAGNEZONE
+	db 58, ELECTIVIRE
 	db 58, YANMEGA
 	db 62, KINGDRA
-	db 61, RHYPERIOR
+	db 61, GLISCOR
 
 	db $ff ; end
 

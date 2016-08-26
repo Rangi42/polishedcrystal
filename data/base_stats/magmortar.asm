@@ -11,7 +11,7 @@ endc
 if DEF(FAITHFUL)
 	db FIRE, FIRE
 else
-	db FIRE, STEEL
+	db FIRE, FIGHTING
 endc
 	db 30 ; catch rate
 	db 199 ; base exp

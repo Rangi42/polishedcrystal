@@ -56,6 +56,7 @@ LawrenceLeftIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
+	domaptrigger ROUTE_10_NORTH, $1
 	dotrigger $1
 	special RestartMapMusic
 	end
@@ -85,6 +86,7 @@ LawrenceRightIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
+	domaptrigger ROUTE_10_NORTH, $1
 	dotrigger $1
 	special RestartMapMusic
 	end
