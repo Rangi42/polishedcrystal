@@ -45,6 +45,9 @@ SafariZoneClosedSign:
 NoLitteringSign:
 	jumptext NoLitteringSignText
 
+SafariZoneExhibitSign:
+	jumptext SafariZoneExhibitSignText
+
 FuchsiaCityPokeCenterSign:
 	jumpstd pokecentersign
 
@@ -131,6 +134,11 @@ NoLitteringSignText:
 	line "waste with you."
 	done
 
+SafariZoneExhibitSignText:
+	text "The sign has been"
+	line "torn away…"
+	done
+
 FuchsiaCity_MapEventHeader:
 	; filler
 	db 0, 0
@@ -153,19 +161,24 @@ FuchsiaCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 8
+	db 13
 	signpost 15, 21, SIGNPOST_READ, FuchsiaCitySign
 	signpost 29, 5, SIGNPOST_READ, FuchsiaGymSign
 	signpost 15, 25, SIGNPOST_READ, SafariZoneOfficeSign
 	signpost 29, 27, SIGNPOST_READ, WardensHomeSign
 	signpost 5, 17, SIGNPOST_READ, SafariZoneClosedSign
-	signpost 15, 13, SIGNPOST_READ, NoLitteringSign
+	signpost 19, 14, SIGNPOST_READ, NoLitteringSign
 	signpost 27, 20, SIGNPOST_READ, FuchsiaCityPokeCenterSign
 	signpost 13, 6, SIGNPOST_READ, FuchsiaCityMartSign
+	signpost 7, 7, SIGNPOST_READ, SafariZoneExhibitSign
+	signpost 7, 13, SIGNPOST_READ, SafariZoneExhibitSign
+	signpost 7, 27, SIGNPOST_READ, SafariZoneExhibitSign
+	signpost 7, 33, SIGNPOST_READ, SafariZoneExhibitSign
+	signpost 13, 31, SIGNPOST_READ, SafariZoneExhibitSign
 
 .PersonEvents:
 	db 4
 	person_event SPRITE_YOUNGSTER, 18, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x194b22, -1
-	person_event SPRITE_POKEFAN_M, 8, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x194b25, -1
-	person_event SPRITE_TEACHER, 14, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x194b28, -1
-	person_event SPRITE_FRUIT_TREE, 1, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x194b43, -1
+	person_event SPRITE_POKEFAN_M, 8, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x194b25, -1
+	person_event SPRITE_TEACHER, 13, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x194b28, -1
+	person_event SPRITE_FRUIT_TREE, 17, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x194b43, -1

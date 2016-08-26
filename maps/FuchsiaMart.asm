@@ -27,7 +27,10 @@ UnknownText_0x195cf5:
 	line "buy some Safari"
 
 	para "Zone souvenirs,"
-	line "but it's closed…"
+	line "but they're not"
+
+	para "being sold any"
+	line "more…"
 	done
 
 UnknownText_0x195d36:
