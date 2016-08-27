@@ -332,6 +332,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Replace NES with Wii.
 * Add: Purple overworld sprites (used for Eusine, Koga, Janine, PokéManiacs, Hex Maniacs, Burglars, Executive♂s, and GameCube).
 * Add: Proper text for Gym Leader rematches.
+* Fix: Gen VI wild held item chances (50% common, 5% rare, 45% none)
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
