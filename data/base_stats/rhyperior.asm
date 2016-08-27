@@ -11,7 +11,7 @@ endc
 if DEF(FAITHFUL)
 	db GROUND, ROCK
 else
-	db GROUND, STEEL
+	db STEEL, ROCK
 endc
 	db 30 ; catch rate
 	db 217 ; base exp
