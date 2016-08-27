@@ -1,10 +1,11 @@
 const_value set 2
-	const ROUTE26_COOLTRAINER_M1
-	const ROUTE26_COOLTRAINER_M2
+	const ROUTE26_DRAGON_TAMER1
+	const ROUTE26_COOLTRAINER_M
 	const ROUTE26_COOLTRAINER_F1
 	const ROUTE26_COOLTRAINER_F2
 	const ROUTE26_YOUNGSTER
 	const ROUTE26_FISHER
+	const ROUTE26_DRAGON_TAMER2
 	const ROUTE26_FRUIT_TREE
 	const ROUTE26_POKE_BALL1
 	const ROUTE26_POKE_BALL2
@@ -16,10 +17,10 @@ Route26_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-TrainerCooltrainermJake:
-	trainer EVENT_BEAT_COOLTRAINERM_JAKE, COOLTRAINERM, JAKE, CooltrainermJakeSeenText, CooltrainermJakeBeatenText, 0, CooltrainermJakeScript
+TrainerDragonTamerKazu:
+	trainer EVENT_BEAT_DRAGON_TAMER_KAZU, DRAGON_TAMER, KAZU, DragonTamerKazuSeenText, DragonTamerKazuBeatenText, 0, DragonTamerKazuScript
 
-CooltrainermJakeScript:
+DragonTamerKazuScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1a4f08
@@ -246,6 +247,17 @@ FisherScottScript:
 	closetext
 	end
 
+TrainerDragonTamerErick:
+	trainer EVENT_BEAT_DRAGON_TAMER_ERICK, DRAGON_TAMER, ERICK, DragonTamerErickSeenText, DragonTamerErickBeatenText, 0, DragonTamerErickScript
+
+DragonTamerErickScript:
+	end_if_just_battled
+	opentext
+	writetext DragonTamerErickAfterText
+	waitbutton
+	closetext
+	end
+
 Route26Sign:
 	jumptext Route26SignText
 
@@ -258,7 +270,7 @@ Route26MaxElixer:
 Route26TMDragonPulse:
 	itemball TM_DRAGON_PULSE
 
-CooltrainermJakeSeenText:
+DragonTamerKazuSeenText:
 	text "I'm making my"
 	line "final preparations"
 
@@ -266,7 +278,7 @@ CooltrainermJakeSeenText:
 	line "League."
 	done
 
-CooltrainermJakeBeatenText:
+DragonTamerKazuBeatenText:
 	text "I blew it!"
 	done
 
@@ -410,6 +422,24 @@ UnknownText_0x1a5326:
 	line "give up."
 	done
 
+DragonTamerErickSeenText:
+	text "Here be dragons!"
+	done
+
+DragonTamerErickBeatenText:
+	text "My dragons were"
+	line "conquered…"
+	done
+
+DragonTamerErickAfterText:
+	text "Victory Road is"
+	line "harsh."
+
+	para "Every trainer must"
+	line "forge their own"
+	cont "way through it."
+	done
+
 Route26SignText:
 	text "Route 26"
 
@@ -435,13 +465,14 @@ Route26_MapEventHeader:
 	signpost 6, 8, SIGNPOST_READ, Route26Sign
 
 .PersonEvents:
-	db 9
-	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermJake, -1
-	person_event SPRITE_COOLTRAINER_M, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermGaven3, -1
+	db 10
+	person_event SPRITE_DRAGON_TAMER, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
+	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven3, -1
 	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
 	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
 	person_event SPRITE_YOUNGSTER, 79, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1
-	person_event SPRITE_FISHER, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherScott, -1
+	person_event SPRITE_FISHER, 100, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
+	person_event SPRITE_DRAGON_TAMER, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
 	person_event SPRITE_FRUIT_TREE, 54, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a4ec2, -1
 	person_event SPRITE_POKE_BALL, 15, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route26MaxElixer, EVENT_ROUTE_26_MAX_ELIXER
 	person_event SPRITE_POKE_BALL, 34, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route26TMDragonPulse, EVENT_ROUTE_26_TM_DRAGON_PULSE

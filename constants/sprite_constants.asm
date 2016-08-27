@@ -122,6 +122,7 @@
 	const SPRITE_UNOWN_A ; 76
 	const SPRITE_UNOWN_R ; 77
 	const SPRITE_UNOWN_P ; 78
+	const SPRITE_DRAGON_TAMER ; 79
 
 const_value SET $80
 

@@ -4,6 +4,7 @@ const_value set 2
 	const ROUTE27_COOLTRAINER_M2
 	const ROUTE27_COOLTRAINER_F1
 	const ROUTE27_COOLTRAINER_F2
+	const ROUTE27_COOLTRAINER_F3
 	const ROUTE27_YOUNGSTER1
 	const ROUTE27_YOUNGSTER2
 	const ROUTE27_POKE_BALL1
@@ -201,13 +202,24 @@ CooltrainermBlakeScript:
 	closetext
 	end
 
-TrainerCooltrainermBrian:
-	trainer EVENT_BEAT_COOLTRAINERM_BRIAN, COOLTRAINERM, BRIAN, CooltrainermBrianSeenText, CooltrainermBrianBeatenText, 0, CooltrainermBrianScript
+TrainerAceDuoJakeandbri1:
+	trainer EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, ACE_DUO, JAKEANDBRI1, AceDuoJakeandbri1SeenText, AceDuoJakeandbri1BeatenText, 0, AceDuoJakeandbri1Script
 
-CooltrainermBrianScript:
+AceDuoJakeandbri1Script:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x1a0bac
+	writetext AceDuoJakeandbri1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoJakeandbri2:
+	trainer EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, ACE_DUO, JAKEANDBRI2, AceDuoJakeandbri2SeenText, AceDuoJakeandbri2BeatenText, 0, AceDuoJakeandbri2Script
+
+AceDuoJakeandbri2Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoJakeandbri2AfterText
 	waitbutton
 	closetext
 	end
@@ -392,19 +404,41 @@ UnknownText_0x1a0b0b:
 	cont "something cool."
 	done
 
-CooltrainermBrianSeenText:
-	text "Hm? You're good,"
-	line "aren't you?"
+AceDuoJakeandbri1SeenText:
+	text "Jake: Hm? You're"
+	line "good, aren't you?"
 	done
 
-CooltrainermBrianBeatenText:
-	text "Just as I thought!"
+AceDuoJakeandbri1BeatenText:
+	text "Jake: Just as I"
+	line "thought!"
 	done
 
-UnknownText_0x1a0bac:
-	text "A good trainer can"
-	line "recognize other"
-	cont "good trainers."
+AceDuoJakeandbri1AfterText:
+	text "Jake: A good"
+	line "trainer can recog-"
+
+	para "nize other good"
+	line "trainers."
+	done
+
+AceDuoJakeandbri2SeenText:
+	text "Bri: The two of"
+	line "us together are"
+	cont "unstoppable!"
+	done
+
+AceDuoJakeandbri2BeatenText:
+	text "Bri: Our teamwork"
+	line "wasn't enough…"
+	done
+
+AceDuoJakeandbri2AfterText:
+	text "Bri: Good trainers"
+	line "also know how to"
+
+	para "fight alongside"
+	line "each other."
 	done
 
 CooltrainerfReena1SeenText:
@@ -525,10 +559,11 @@ Route27_MapEventHeader:
 	signpost 7, 25, SIGNPOST_READ, TohjoFallsSign
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_COOLTRAINER_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
-	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainermBrian, -1
+	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
+	person_event SPRITE_COOLTRAINER_F, 6, 59, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
 	person_event SPRITE_COOLTRAINER_F, 10, 72, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 37, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
 	person_event SPRITE_YOUNGSTER, 7, 65, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicGilbert, -1

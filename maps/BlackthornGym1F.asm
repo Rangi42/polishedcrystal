@@ -1,7 +1,7 @@
 const_value set 2
 	const BLACKTHORNGYM1F_CLAIR
-	const BLACKTHORNGYM1F_COOLTRAINER_M1
-	const BLACKTHORNGYM1F_COOLTRAINER_M2
+	const BLACKTHORNGYM1F_COOLTRAINER_M
+	const BLACKTHORNGYM1F_DRAGON_TAMER
 	const BLACKTHORNGYM1F_COOLTRAINER_F
 	const BLACKTHORNGYM1F_GYM_GUY
 
@@ -49,7 +49,7 @@ BlackthornGymClairScript:
 	writetext ClairText_GoToDragonsDen
 	waitbutton
 	closetext
-	setevent EVENT_BEAT_COOLTRAINERM_PAUL
+	setevent EVENT_BEAT_DRAGON_TAMER_PAUL
 	setevent EVENT_BEAT_COOLTRAINERM_CODY
 	setevent EVENT_BEAT_COOLTRAINERM_MIKE
 	setevent EVENT_BEAT_COOLTRAINERF_FRAN
@@ -94,13 +94,13 @@ BlackthornGymClairScript:
 	closetext
 	end
 
-TrainerCooltrainermPaul:
-	trainer EVENT_BEAT_COOLTRAINERM_PAUL, COOLTRAINERM, PAUL, CooltrainermPaulSeenText, CooltrainermPaulBeatenText, 0, CooltrainermPaulScript
+TrainerDragonTamerPaul:
+	trainer EVENT_BEAT_DRAGON_TAMER_PAUL, DRAGON_TAMER, PAUL, DragonTamerPaulSeenText, DragonTamerPaulBeatenText, 0, DragonTamerPaulScript
 
-CooltrainermPaulScript:
+DragonTamerPaulScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermPaulAfterText
+	writetext DragonTamerPaulAfterText
 	waitbutton
 	closetext
 	end
@@ -287,7 +287,7 @@ BlackthornGymClairText_League:
 	line "thing you've got."
 	done
 
-CooltrainermPaulSeenText:
+DragonTamerPaulSeenText:
 	text "Your first battle"
 	line "against dragons?"
 
@@ -295,12 +295,12 @@ CooltrainermPaulSeenText:
 	line "tough they are!"
 	done
 
-CooltrainermPaulBeatenText:
+DragonTamerPaulBeatenText:
 	text "My dragon #mon"
 	line "lost?"
 	done
 
-CooltrainermPaulAfterText:
+DragonTamerPaulAfterText:
 	text "Lance told you"
 	line "that he'd like to"
 
@@ -414,6 +414,6 @@ BlackthornGym1F_MapEventHeader:
 	db 5
 	person_event SPRITE_CLAIR, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermMike, -1
-	person_event SPRITE_COOLTRAINER_M, 14, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermPaul, -1
+	person_event SPRITE_DRAGON_TAMER, 14, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerPaul, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfLola, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1

@@ -604,6 +604,9 @@ KRIS EQU __enum__
 	const PADMA
 
 	trainerclass DRAGON_TAMER ; 49
+	const PAUL
+	const ERICK
+	const KAZU
 
 	trainerclass TEACHER ; 4a
 	const COLETTE
@@ -632,16 +635,13 @@ KRIS EQU __enum__
 	trainerclass COOLTRAINERM ; 4f
 	const NICK
 	const AARON
-	const PAUL
 	const CODY
 	const MIKE
 	const GAVEN1
 	const GAVEN2
 	const RYAN
-	const JAKE
 	const GAVEN3
 	const BLAKE
-	const BRIAN
 	const ANDY
 	const SEAN
 	const KEVIN
@@ -688,6 +688,8 @@ KRIS EQU __enum__
 	const THOMANDKAE2
 	const ZACANDJEN1
 	const ZACANDJEN2
+	const JAKEANDBRI1
+	const JAKEANDBRI2
 
 	trainerclass PROTON ; 52
 	const PROTON1

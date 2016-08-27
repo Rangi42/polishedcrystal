@@ -468,3 +468,6 @@ UnownRSprite:
 
 UnownPSprite:
 	sprite_header UnownPSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+
+DragonTamerSprite:
+	sprite_header DragonTamerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE

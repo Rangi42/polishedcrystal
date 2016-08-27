@@ -9596,6 +9596,74 @@ BattleGirlGroup:
 DragonTamerGroup:
 ; ================================
 ; ================
+
+	; DRAGON_TAMER
+	db "Paul@"
+	db 0 ; normal
+
+	; party
+	db 37, DRATINI
+	db 37, DRATINI
+	db 37, DRATINI
+
+	db $ff ; end
+
+; ================
+
+	; DRAGON_TAMER
+	db "Erick@"
+	db 1 ; moves
+
+	; party
+
+	db 39, DRAGONAIR
+		db THUNDER_WAVE
+		db DRAGON_RAGE
+		db AQUA_TAIL
+		db SLAM
+
+	db 38, SEADRA
+		db SMOKESCREEN
+		db TWISTER
+		db BUBBLE_BEAM
+		db OUTRAGE
+
+	db 40, DRAGONAIR
+		db WRAP
+		db DRAGON_RAGE
+		db AQUA_TAIL
+		db DRAGON_PULSE
+
+	db $ff ; end
+
+; ================
+
+	; DRAGON_TAMER
+	db "Kazu@"
+	db 1 ; moves
+
+	; party
+
+	db 40, DRAGONAIR
+		db THUNDER_WAVE
+		db DRAGON_RAGE
+		db AQUA_TAIL
+		db FLAMETHROWER
+
+	db 40, DRAGONAIR
+		db THUNDER_WAVE
+		db DRAGON_RAGE
+		db AQUA_TAIL
+		db THUNDERBOLT
+
+	db 40, DRAGONAIR
+		db THUNDER_WAVE
+		db DRAGON_RAGE
+		db AQUA_TAIL
+		db ICE_BEAM
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -9864,19 +9932,6 @@ CooltrainerMGroup:
 ; ================
 
 	; COOLTRAINERM
-	db "Paulo@"
-	db 0 ; normal
-
-	; party
-	db 37, DRATINI
-	db 37, DRATINI
-	db 37, DRATINI
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM
 	db "Cody@"
 	db 0 ; normal
 
@@ -9978,34 +10033,6 @@ CooltrainerMGroup:
 ; ================
 
 	; COOLTRAINERM
-	db "Jake@"
-	db 1 ; moves
-
-	; party
-
-	db 40, PARASECT
-		db LEECH_LIFE
-		db SPORE
-		db SLASH
-		db SWORDS_DANCE
-
-	db 42, GOLDUCK
-		db ZEN_HEADBUTT
-		db SCREECH
-		db CALM_MIND
-		db AQUA_TAIL
-
-	db 40, VAPOREON
-		db SAND_ATTACK
-		db SURF
-		db AURORA_BEAM
-		db RECOVER
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM
 	db "Gaven@"
 	db 1 ; moves
 
@@ -10056,22 +10083,6 @@ CooltrainerMGroup:
 		db CONFUSION
 		db SLEEP_POWDER
 		db SOLAR_BEAM
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM
-	db "Brian@"
-	db 1 ; moves
-
-	; party
-
-	db 42, SANDSLASH
-		db SLASH
-		db DIG
-		db METAL_CLAW
-		db SWORDS_DANCE
 
 	db $ff ; end
 
@@ -10849,6 +10860,36 @@ AceDuoGroup:
 
 	db 47, ELECTABUZZ
 	db 47, DUGTRIO
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO
+	db "Jake & Bri@"
+	db 0 ; normal
+
+	; party
+
+	db 37, SANDSLASH
+	db 39, GOLDUCK
+	db 37, PARASECT
+	db 39, VAPOREON
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO
+	db "Jake & Bri@"
+	db 0 ; normal
+
+	; party
+
+	db 37, PARASECT
+	db 39, VAPOREON
+	db 37, SANDSLASH
+	db 39, GOLDUCK
 
 	db $ff ; end
 
