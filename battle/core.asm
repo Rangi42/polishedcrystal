@@ -6369,10 +6369,31 @@ LoadEnemyMon: ; 3e8eb
 	jr z, .UpdateItem
 
 ; Failing that, it's all up to chance
-;  Effective chances:
-;    45% None
-;    50% Item1
-;     5% Item2
+
+; If the party lead holds an Amulet Coin, chances are increased
+	ld hl, PartyMon1Item
+	ld a, [hl]
+	cp AMULET_COIN
+	jr nz, .noamuletcoin
+
+; 60% chance of getting Item1 with an Amulet Coin
+	call BattleRandom
+	cp a, 60 percent
+	ld a, [BaseItems]
+	jr c, .UpdateItem
+
+; 10% chance of getting Item2 (25% of (100% - 60%) = 10%) with an Amulet Coin
+	call BattleRandom
+	cp a, 25 percent
+	ld a, [BaseItems+1]
+	jr c, .UpdateItem
+
+; 30% chance of not getting an item (100% - 60% - 10% = 30%)
+	ld a, NO_ITEM
+	jr .UpdateItem
+
+; Default chances without an Amulet Coin
+.noamuletcoin
 
 ; 50% chance of getting Item1
 	call BattleRandom
@@ -6386,7 +6407,7 @@ LoadEnemyMon: ; 3e8eb
 	ld a, [BaseItems+1]
 	jr c, .UpdateItem
 
-; 45% chance of not getting an item
+; 45% chance of not getting an item (100% - 50% - 5% = 45%)
 	ld a, NO_ITEM
 
 
