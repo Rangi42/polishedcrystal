@@ -4256,13 +4256,13 @@ TwinsGroup:
 
 	; party
 
-	db 35, DRATINI
+	db 38, DRATINI
 		db THUNDER_WAVE
 		db TWISTER
 		db FLAMETHROWER
 		db HEADBUTT
 
-	db 35, DRATINI
+	db 38, DRATINI
 		db THUNDER_WAVE
 		db TWISTER
 		db ICE_BEAM
@@ -9611,6 +9611,35 @@ DragonTamerGroup:
 ; ================
 
 	; DRAGON_TAMER
+	db "Darin@"
+	db 1 ; moves
+
+	; party
+
+	db 38, DRAGONAIR
+		db SLAM
+		db SURF
+		db DRAGON_PULSE
+		db AQUA_TAIL
+
+	db $ff ; end
+
+; ================
+
+	; DRAGON_TAMER
+	db "Adam@"
+	db 0 ; normal
+
+	; party
+	db 37, HORSEA
+	db 38, DRATINI
+	db 39, SEADRA
+
+	db $ff ; end
+
+; ================
+
+	; DRAGON_TAMER
 	db "Erick@"
 	db 1 ; moves
 
@@ -10150,22 +10179,6 @@ CooltrainerMGroup:
 ; ================
 
 	; COOLTRAINERM
-	db "Darin@"
-	db 1 ; moves
-
-	; party
-
-	db 38, DRAGONAIR
-		db SLAM
-		db SURF
-		db DRAGON_PULSE
-		db AQUA_TAIL
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM
 	db "French@"
 	db 0 ; normal
 
@@ -10610,34 +10623,6 @@ CooltrainerFGroup:
 ; ================
 
 	; COOLTRAINERF
-	db "Piper@"
-	db 1 ; moves
-
-	; party
-
-	db 35, HORSEA
-		db SMOKESCREEN
-		db BUBBLE_BEAM
-		db TWISTER
-		db WHIRLPOOL
-
-	db 36, SEADRA
-		db SMOKESCREEN
-		db BUBBLE_BEAM
-		db OUTRAGE
-		db WHIRLPOOL
-
-	db 37, SEADRA
-		db SMOKESCREEN
-		db BUBBLE_BEAM
-		db OUTRAGE
-		db WATERFALL
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERF
 	db "Salma@"
 	db 0 ; normal
 
@@ -10890,6 +10875,50 @@ AceDuoGroup:
 	db 39, VAPOREON
 	db 37, SANDSLASH
 	db 39, GOLDUCK
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO
+	db "Dan & Cara@"
+	db 1 ; moves
+
+	; party
+
+	db 38, SEADRA
+		db SMOKESCREEN
+		db BUBBLE_BEAM
+		db OUTRAGE
+		db WATERFALL
+
+	db 38, SEADRA
+		db SMOKESCREEN
+		db BUBBLE_BEAM
+		db OUTRAGE
+		db WHIRLPOOL
+
+	db $ff ; end
+
+; ================
+
+	; ACE_DUO
+	db "Dan & Cara@"
+	db 1 ; moves
+
+	; party
+
+	db 38, SEADRA
+		db SMOKESCREEN
+		db BUBBLE_BEAM
+		db OUTRAGE
+		db WHIRLPOOL
+
+	db 38, SEADRA
+		db SMOKESCREEN
+		db BUBBLE_BEAM
+		db OUTRAGE
+		db WATERFALL
 
 	db $ff ; end
 

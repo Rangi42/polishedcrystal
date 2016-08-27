@@ -605,6 +605,8 @@ KRIS EQU __enum__
 
 	trainerclass DRAGON_TAMER ; 49
 	const PAUL
+	const DARIN
+	const ADAM
 	const ERICK
 	const KAZU
 
@@ -646,7 +648,6 @@ KRIS EQU __enum__
 	const SEAN
 	const KEVIN
 	const ALLEN
-	const DARIN
 	const FRENCH
 	const MATT
 	const RINGO
@@ -673,7 +674,6 @@ KRIS EQU __enum__
 	const BETH3
 	const REENA2
 	const REENA3
-	const CARA
 	const SALMA
 	const BONITA
 	const JOANNE
@@ -690,6 +690,8 @@ KRIS EQU __enum__
 	const ZACANDJEN2
 	const JAKEANDBRI1
 	const JAKEANDBRI2
+	const DANANDCARA1
+	const DANANDCARA2
 
 	trainerclass PROTON ; 52
 	const PROTON1

@@ -1,11 +1,13 @@
 const_value set 2
-	const DRAGONSDENB1F_POKE_BALL1
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
+	const DRAGONSDENB1F_DRAGON_TAMER1
+	const DRAGONSDENB1F_DRAGON_TAMER2
 	const DRAGONSDENB1F_COOLTRAINER_M
 	const DRAGONSDENB1F_COOLTRAINER_F
 	const DRAGONSDENB1F_TWIN1
 	const DRAGONSDENB1F_TWIN2
+	const DRAGONSDENB1F_POKE_BALL1
 	const DRAGONSDENB1F_POKE_BALL2
 	const DRAGONSDENB1F_POKE_BALL3
 
@@ -90,24 +92,46 @@ DragonsDenB1F_ClairTrigger:
 	clearevent EVENT_LYRA_IN_HER_ROOM
 	end
 
-TrainerCooltrainermDarin:
-	trainer EVENT_BEAT_COOLTRAINERM_DARIN, COOLTRAINERM, DARIN, CooltrainermDarinSeenText, CooltrainermDarinBeatenText, 0, CooltrainermDarinScript
+TrainerDragonTamerDarin:
+	trainer EVENT_BEAT_DRAGON_TAMER_DARIN, DRAGON_TAMER, DARIN, DragonTamerDarinSeenText, DragonTamerDarinBeatenText, 0, DragonTamerDarinScript
 
-CooltrainermDarinScript:
+DragonTamerDarinScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermDarinAfterText
+	writetext DragonTamerDarinAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerCooltrainerfCara:
-	trainer EVENT_BEAT_COOLTRAINERF_CARA, COOLTRAINERF, CARA, CooltrainerfCaraSeenText, CooltrainerfCaraBeatenText, 0, CooltrainerfCaraScript
+TrainerDragonTamerAdam:
+	trainer EVENT_BEAT_DRAGON_TAMER_ADAM, DRAGON_TAMER, ADAM, DragonTamerAdamSeenText, DragonTamerAdamBeatenText, 0, DragonTamerAdamScript
 
-CooltrainerfCaraScript:
+DragonTamerAdamScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainerfCaraAfterText
+	writetext DragonTamerAdamAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoDanandcara1:
+	trainer EVENT_BEAT_ACE_DUO_DAN_AND_CARA, ACE_DUO, DANANDCARA1, AceDuoDanandcara1SeenText, AceDuoDanandcara1BeatenText, 0, AceDuoDanandcara1Script
+
+AceDuoDanandcara1Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoDanandcara1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerAceDuoDanandcara2:
+	trainer EVENT_BEAT_ACE_DUO_DAN_AND_CARA, ACE_DUO, DANANDCARA2, AceDuoDanandcara2SeenText, AceDuoDanandcara2BeatenText, 0, AceDuoDanandcara2Script
+
+AceDuoDanandcara2Script:
+	end_if_just_battled
+	opentext
+	writetext AceDuoDanandcara2AfterText
 	waitbutton
 	closetext
 	end
@@ -118,7 +142,7 @@ TrainerTwinsLeaandpia1:
 TwinsLeaandpia1Script:
 	end_if_just_battled
 	opentext
-	writetext TrinsLeaandpia1AfterText
+	writetext TwinsLeaandpia1AfterText
 	waitbutton
 	closetext
 	end
@@ -129,33 +153,7 @@ TrainerTwinsLeaandpia2:
 TwinsLeaandpia2Script:
 	end_if_just_battled
 	opentext
-	writetext TrinsLeaandpia2AfterText
-	waitbutton
-	closetext
-	end
-
-PokeBallScript_0x18c95a:
-; This whole script is written out rather than as an
-; item fragment because it's left over from the GS
-; event.
-	giveitem DRAGON_FANG
-	iffalse .BagFull
-	disappear DRAGONSDENB1F_POKE_BALL1
-	opentext
-	itemtotext DRAGON_FANG, $0
-	writetext Text_FoundDragonFang
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	closetext
-	end
-
-.BagFull:
-	opentext
-	itemtotext DRAGON_FANG, $0
-	writetext Text_FoundDragonFang
-	buttonsound
-	writetext Text_NoRoomForDragonFang
+	writetext TwinsLeaandpia2AfterText
 	waitbutton
 	closetext
 	end
@@ -182,6 +180,9 @@ SilverScript_0x18c97e:
 
 MapDragonsDenB1FSignpost0Script:
 	jumptext DragonShrineSignpostText
+
+DragonsDenB1FDragonFang:
+	itemball DRAGON_FANG
 
 DragonsDenB1FCalcium:
 	itemball CALCIUM
@@ -325,16 +326,16 @@ SilverText_Training2:
 	line "of my way…"
 	done
 
-CooltrainermDarinSeenText:
+DragonTamerDarinSeenText:
 	text "You! How dare you"
 	line "enter uninvited!"
 	done
 
-CooltrainermDarinBeatenText:
+DragonTamerDarinBeatenText:
 	text "S-strong!"
 	done
 
-CooltrainermDarinAfterText:
+DragonTamerDarinAfterText:
 	text "The Shrine ahead"
 	line "is home to the"
 
@@ -345,17 +346,41 @@ CooltrainermDarinAfterText:
 	line "to just go in!"
 	done
 
-CooltrainerfCaraSeenText:
+DragonTamerAdamSeenText:
 	text "You shouldn't be"
 	line "in here!"
 	done
 
-CooltrainerfCaraBeatenText:
-	text "Oh yikes, I lost!"
+DragonTamerAdamBeatenText:
+	text "No! I was"
+	line "defeated!"
 	done
 
-CooltrainerfCaraAfterText:
-	text "Soon I'm going to"
+DragonTamerAdamAfterText:
+	text "Not even the power"
+	line "of dragons could"
+	cont "stop you."
+
+	para "You may be the"
+	line "kind of trainer"
+
+	para "our Master is"
+	line "looking for."
+	done
+
+AceDuoDanandcara1SeenText:
+	text "Dan: I may not"
+	line "use dragons, but"
+	cont "I'm still strong!"
+	done
+
+AceDuoDanandcara1BeatenText:
+	text "Dan: You were"
+	line "even stronger!"
+	done
+
+AceDuoDanandcara1AfterText:
+	text "Dan: Soon I'll"
 	line "get permission"
 
 	para "from our Master to"
@@ -371,6 +396,28 @@ CooltrainerfCaraAfterText:
 	line "approval."
 	done
 
+AceDuoDanandcara2SeenText:
+	text "Cara: Do you want"
+	line "to train dragons"
+	cont "too?"
+	done
+
+AceDuoDanandcara2BeatenText:
+	text "Cara: Oh yikes,"
+	line "I lost!"
+	done
+
+AceDuoDanandcara2AfterText:
+	text "Cara: Dragons are"
+	line "difficult to"
+
+	para "raise, and very"
+	line "powerful."
+
+	para "They're not for"
+	line "everyone."
+	done
+
 TwinsLeaandpia1SeenText:
 	text "It's a stranger we"
 	line "don't know."
@@ -380,7 +427,7 @@ TwinsLeaandpia1BeatenText:
 	text "Ouchies."
 	done
 
-TrinsLeaandpia1AfterText:
+TwinsLeaandpia1AfterText:
 	text "It was like having"
 	line "to battle Lance."
 	done
@@ -393,24 +440,11 @@ TwinsLeaandpia2BeatenText:
 	text "Meanie."
 	done
 
-TrinsLeaandpia2AfterText:
+TwinsLeaandpia2AfterText:
 	text "We'll tell on you."
 
 	para "Master will be"
 	line "angry with you."
-	done
-
-Text_FoundDragonFang:
-	text "<PLAYER> found"
-	line "@"
-	text_from_ram StringBuffer3
-	text "!"
-	done
-
-Text_NoRoomForDragonFang:
-	text "But <PLAYER> can't"
-	line "carry any more"
-	cont "items."
 	done
 
 DragonsDenB1F_MapEventHeader:
@@ -434,13 +468,15 @@ DragonsDenB1F_MapEventHeader:
 	signpost 15, 31, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxElixer
 
 .PersonEvents:
-	db 9
-	person_event SPRITE_POKE_BALL, 16, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokeBallScript_0x18c95a, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
+	db 11
 	person_event SPRITE_CLAIR, 30, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
 	person_event SPRITE_SILVER, 23, 20, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverScript_0x18c97e, EVENT_RIVAL_DRAGONS_DEN
-	person_event SPRITE_COOLTRAINER_M, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainermDarin, -1
-	person_event SPRITE_COOLTRAINER_F, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfCara, -1
-	person_event SPRITE_TWIN, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
-	person_event SPRITE_TWIN, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
+	person_event SPRITE_DRAGON_TAMER, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerDragonTamerDarin, -1
+	person_event SPRITE_DRAGON_TAMER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerAdam, -1
+	person_event SPRITE_COOLTRAINER_M, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara1, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara2, -1
+	person_event SPRITE_TWIN, 29, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
+	person_event SPRITE_TWIN, 29, 31, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
+	person_event SPRITE_POKE_BALL, 16, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FDragonFang, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
 	person_event SPRITE_POKE_BALL, 4, 30, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	person_event SPRITE_POKE_BALL, 20, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER

@@ -289,12 +289,6 @@ CamperQuentinScript:
 	closetext
 	end
 
-UnknownScript_0x19e28b:
-	writetext UnknownText_0x19e830
-	waitbutton
-	closetext
-	end
-
 Route45Sign:
 	jumptext Route45SignText
 
@@ -518,18 +512,13 @@ UnknownText_0x19e7d1:
 	cont "to harm #mon."
 	done
 
-UnknownText_0x19e830:
+UnknownText_0x19e87f:
 	text "I'm really, really"
 	line "tough!"
 
 	para "Is there anywhere"
 	line "I can prove how"
 	cont "tough I really am?"
-	done
-
-UnknownText_0x19e87f:
-	text "I'm really, really"
-	line "tough!"
 	done
 
 UnknownText_0x19e899:
