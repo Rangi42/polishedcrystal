@@ -1,15 +1,46 @@
-
-
 SpecialHoOhChamber: ; 0x8addb
 	ld hl, PartySpecies
 	ld a, [hl]
-	cp HO_OH ; is Ho-oh the first Pokémon in the party?
-	jr nz, .done ; if not, we're done
+	cp AZUMARILL
+	jr z, .ok
+	cp CLEFABLE
+	jr z, .ok
+	cp CLEFAIRY
+	jr z, .ok
+	cp GRANBULL
+	jr z, .ok
+	cp JIGGLYPUFF
+	jr z, .ok
+	cp MARILL
+	jr z, .ok
+	cp MR__MIME
+	jr z, .ok
+	cp SNUBBULL
+	jr z, .ok
+	cp SYLVEON
+	jr z, .ok
+	cp TOGEKISS
+	jr z, .ok
+	cp TOGEPI
+	jr z, .ok
+	cp TOGETIC
+	jr z, .ok
+	cp WIGGLYTUFF
+	jr z, .ok
+if DEF(FAITHFUL)
+else
+	cp MEGANIUM
+	jr z, .ok
+	cp MISMAGIUS
+	jr z, .ok
+endc
+	ret
+
+.ok
 	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ld b, SET_FLAG
 	call EventFlagAction
-.done
 	ret
 ; 0x8adef
 
@@ -158,10 +189,10 @@ endr
 ; 8aebc
 
 Unknown_8aebc: ; 8aebc
-	db $08, $44, $04, $00, $2e, $08, $ff
-	db $26, $20, $0c, $0e, $46, $ff
-	db $4c, $00, $46, $08, $42, $ff
-	db $0e, $2c, $64, $2c, $0e, $ff
+	db $08, $44, $04, $00, $2e, $08, $ff ; E, S, C, A, P, E
+	db $26, $20, $0c, $0e, $46, $ff ; L, I, G, H, T
+	db $4c, $00, $46, $08, $42, $ff ; W, A, T, E, R
+	db $0a, $00, $20, $42, $4e, $ff ; F, A, I, R, Y
 ; 8aed5
 
 MenuDataHeader_0x8aed5: ; 0x8aed5

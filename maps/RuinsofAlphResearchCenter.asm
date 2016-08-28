@@ -99,13 +99,13 @@ UnknownScript_0x591df:
 	closetext
 	pause 15
 	playsound SFX_EMBER
-	earthquake 50
+	earthquake 60
+	waitsfx
 	setevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	showemote EMOTE_SHOCK, PLAYER, 15
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 15
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST1, 15
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST2, 15
-	waitsfx
 	opentext
 	writetext RuinsofAlphResearchCenterScientistShockedText
 	waitbutton
