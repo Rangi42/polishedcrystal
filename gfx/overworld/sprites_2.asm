@@ -22,7 +22,6 @@ BlackBeltSpriteGFX:           INCBIN "gfx/overworld/black_belt.2bpp" ; c5c40
 ReceptionistSpriteGFX:        INCBIN "gfx/overworld/receptionist.2bpp" ; c5dc0
 OfficerSpriteGFX:             INCBIN "gfx/overworld/officer.2bpp" ; c5f40
 CalSpriteGFX:                 INCBIN "gfx/overworld/cal.2bpp" ; c60c0
-SlowpokeSpriteGFX:            INCBIN "gfx/overworld/slowpoke.2bpp" ; c6240
 CaptainSpriteGFX:             INCBIN "gfx/overworld/captain.2bpp" ; c6280
 BigLaprasSpriteGFX:           INCBIN "gfx/overworld/big_lapras.2bpp" ; c6400
 GymGuySpriteGFX:              INCBIN "gfx/overworld/gym_guy.2bpp" ; c6480
@@ -41,7 +40,6 @@ PokeBallSpriteGFX:            INCBIN "gfx/overworld/poke_ball.2bpp" ; c7380
 PokedexSpriteGFX:             INCBIN "gfx/overworld/pokedex.2bpp" ; c7500
 PaperSpriteGFX:               INCBIN "gfx/overworld/paper.2bpp" ; c7680
 GameCubeSpriteGFX:            INCBIN "gfx/overworld/gamecube.2bpp" ; c7800
-OldLinkReceptionistSpriteGFX: INCBIN "gfx/overworld/old_link_receptionist.2bpp" ; c7840
 RockSpriteGFX:                INCBIN "gfx/overworld/rock.2bpp" ; c7880
 BoulderSpriteGFX:             INCBIN "gfx/overworld/boulder.2bpp" ; c78c0
 SnesSpriteGFX:                INCBIN "gfx/overworld/snes.2bpp" ; c7900
@@ -53,3 +51,4 @@ KrisSpriteGFX:                INCBIN "gfx/overworld/kris.2bpp" ; c7a40
 KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
 KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
 StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
+BreederSpriteGFX:             INCBIN "gfx/overworld/breeder.2bpp"

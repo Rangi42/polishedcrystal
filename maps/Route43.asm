@@ -5,6 +5,7 @@ const_value set 2
 	const ROUTE43_FISHER
 	const ROUTE43_LASS
 	const ROUTE43_YOUNGSTER
+	const ROUTE43_BREEDER
 	const ROUTE43_FRUIT_TREE
 	const ROUTE43_POKE_BALL
 
@@ -13,11 +14,16 @@ Route43_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
 
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
+	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
+
+Route43RebattleBreederScript:
+	clearevent EVENT_BEAT_BREEDER_JODY
+	return
 
 UnknownScript_0x19d051:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
@@ -28,6 +34,17 @@ UnknownScript_0x19d051:
 UnknownScript_0x19d05c:
 	domaptrigger ROUTE_43_GATE, $1
 	return
+
+TrainerBreederJody:
+	trainer EVENT_BEAT_BREEDER_JODY, BREEDER, JODY, BreederJodySeenText, BreederJodyBeatenText, 0, BreederJodyScript
+
+BreederJodyScript:
+	end_if_just_battled
+	opentext
+	writetext BreederJodyAfterText
+	waitbutton
+	closetext
+	end
 
 TrainerCamperSpencer:
 	trainer EVENT_BEAT_CAMPER_SPENCER, CAMPER, SPENCER, CamperSpencerSeenText, CamperSpencerBeatenText, 0, CamperSpencerScript
@@ -467,6 +484,28 @@ UnknownText_0x19d64b:
 	cont "adorable thing?"
 	done
 
+BreederJodySeenText:
+	text "I bred my #mon"
+	line "so they know"
+	cont "special moves!"
+	done
+
+BreederJodyBeatenText:
+	text "I lost anyway!"
+	done
+
+BreederJodyAfterText:
+	text "A baby #mon"
+	line "can sometimes"
+
+	para "inherit a move"
+	line "from its father,"
+
+	para "even one that it"
+	line "wouldn't normally"
+	cont "learn."
+	done
+
 Route43Sign1Text:
 	text "Route 43"
 
@@ -525,12 +564,13 @@ Route43_MapEventHeader:
 	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
 
 .PersonEvents:
-	db 8
+	db 9
 	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
 	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
 	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
 	person_event SPRITE_FISHER, 16, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerFisherMarvin, -1
 	person_event SPRITE_LASS, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany3, -1
 	person_event SPRITE_YOUNGSTER, 40, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperSpencer, -1
+	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
 	person_event SPRITE_FRUIT_TREE, 26, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19d266, -1
 	person_event SPRITE_POKE_BALL, 32, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route43MaxEther, EVENT_ROUTE_43_MAX_ETHER

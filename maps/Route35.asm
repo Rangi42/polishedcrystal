@@ -3,7 +3,7 @@ const_value set 2
 	const ROUTE35_YOUNGSTER2
 	const ROUTE35_LASS1
 	const ROUTE35_LASS2
-	const ROUTE35_YOUNGSTER3
+	const ROUTE35_BREEDER
 	const ROUTE35_FISHER
 	const ROUTE35_BUG_CATCHER
 	const ROUTE35_SUPER_NERD
@@ -16,12 +16,20 @@ Route35_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
 
-TrainerBird_keeperBryan:
-	trainer EVENT_BEAT_BIRD_KEEPER_BRYAN, BIRD_KEEPER, BRYAN, Bird_keeperBryanSeenText, Bird_keeperBryanBeatenText, 0, Bird_keeperBryanScript
+	; callbacks
 
-Bird_keeperBryanScript:
+	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
+
+.RebattleBreeder:
+	clearevent EVENT_BEAT_BREEDER_THERESA
+	return
+
+TrainerBreederTheresa:
+	trainer EVENT_BEAT_BREEDER_THERESA, BREEDER, THERESA, BreederTheresaSeenText, BreederTheresaBeatenText, 0, BreederTheresaScript
+
+BreederTheresaScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x19cc87
@@ -344,30 +352,25 @@ UnknownText_0x19cc21:
 	cont "them."
 	done
 
-Bird_keeperBryanSeenText:
-	text "What kinds of"
-	line "Balls do you use?"
+BreederTheresaSeenText:
+	text "How do you care"
+	line "for your #mon?"
 	done
 
-Bird_keeperBryanBeatenText:
-	text "Yikes! Not fast"
-	line "enough!"
+BreederTheresaBeatenText:
+	text "Ah! You take good"
+	line "care of them!"
 	done
 
 UnknownText_0x19cc87:
-	text "Some #mon flee"
-	line "right away."
+	text "I take my #mon"
+	line "to get haircuts"
 
-	para "Try catching them"
-	line "with Kurt's Fast"
-	cont "Ball."
+	para "in Goldenrod City,"
+	line "and blessings in"
+	cont "Ecruteak City."
 
-	para "Whenever I find a"
-	line "Wht Apricorn, I"
-	cont "take it to Kurt."
-
-	para "He turns it into a"
-	line "custom Ball."
+	para "They're so happy!"
 	done
 
 JugglerIrwin1SeenText:
@@ -486,7 +489,7 @@ Route35_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 20, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleBrookandeli1, -1
 	person_event SPRITE_LASS, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleBrookandeli2, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerKim, -1
-	person_event SPRITE_YOUNGSTER, 28, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerBird_keeperBryan, -1
+	person_event SPRITE_BREEDER, 29, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerBreederTheresa, -1
 	person_event SPRITE_FISHER, 10, 2, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1
 	person_event SPRITE_BUG_CATCHER, 7, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
 	person_event SPRITE_SUPER_NERD, 10, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1

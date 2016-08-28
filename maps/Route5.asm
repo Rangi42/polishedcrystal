@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE5_BREEDER
 	const ROUTE5_POKEFAN_M
 
 Route5_MapScriptHeader:
@@ -6,7 +7,26 @@ Route5_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
+
+.RebattleBreeder:
+	clearevent EVENT_BEAT_BREEDER_CARLENE
+	return
+
+TrainerBreederCarlene:
+	trainer EVENT_BEAT_BREEDER_CARLENE, BREEDER, CARLENE, BreederCarleneSeenText, BreederCarleneBeatenText, 0, BreederCarleneScript
+
+BreederCarleneScript:
+	end_if_just_battled
+	opentext
+	writetext BreederCarleneAfterText
+	waitbutton
+	closetext
+	end
 
 PokefanMScript_0x1adb19:
 	jumptextfaceplayer UnknownText_0x1adb22
@@ -16,6 +36,28 @@ Route5UndergroundPathSign:
 
 HouseForSaleSign:
 	jumptext HouseForSaleSignText
+
+BreederCarleneSeenText:
+	text "My team is bred"
+	line "to handle any"
+	cont "situation!"
+	done
+
+BreederCarleneBeatenText:
+	text "We couldn't"
+	line "handle you!"
+	done
+
+BreederCarleneAfterText:
+	text "I make my Smeargle"
+	line "Sketch a move,"
+
+	para "then breed it"
+	line "to pass the move"
+	cont "down!"
+
+	para "Isn't that smart?"
+	done
 
 UnknownText_0x1adb22:
 	text "The road is closed"
@@ -59,5 +101,6 @@ Route5_MapEventHeader:
 	signpost 11, 10, SIGNPOST_READ, HouseForSaleSign
 
 .PersonEvents:
-	db 1
+	db 2
+	person_event SPRITE_BREEDER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerBreederCarlene, -1
 	person_event SPRITE_POKEFAN_M, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1adb19, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH

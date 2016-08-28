@@ -89,7 +89,6 @@ KRIS EQU __enum__
 	const MIKEY
 	const ALBERT
 	const GORDON
-	const SAMUEL
 	const JOEY2
 	const JOEY3
 	const WARREN
@@ -217,7 +216,6 @@ KRIS EQU __enum__
 	trainerclass BIRD_KEEPER ; 22
 	const ROD
 	const ABE
-	const BRYAN
 	const THEO
 	const TOBY
 	const DENIS
@@ -492,6 +490,10 @@ KRIS EQU __enum__
 	const IRVING
 
 	trainerclass BREEDER ; 3d
+	const JULIE
+	const THERESA
+	const JODY
+	const CARLENE
 
 	trainerclass COWGIRL ; 3e
 	const ANNIE

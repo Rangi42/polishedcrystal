@@ -1,6 +1,6 @@
 const_value set 2
-	const ROUTE34_YOUNGSTER1
-	const ROUTE34_YOUNGSTER2
+	const ROUTE34_YOUNGSTER
+	const ROUTE34_BREEDER
 	const ROUTE34_RICH_BOY
 	const ROUTE34_LASS
 	const ROUTE34_OFFICER_F
@@ -37,6 +37,8 @@ Route34_MapScriptHeader:
 	end
 
 .EggCheckCallback:
+	clearevent EVENT_BEAT_BREEDER_JULIE
+
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
 	iftrue .PutDaycareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
@@ -498,13 +500,13 @@ OfficerfMaraScript:
 	closetext
 	end
 
-TrainerYoungsterSamuel:
-	trainer EVENT_BEAT_YOUNGSTER_SAMUEL, YOUNGSTER, SAMUEL, YoungsterSamuelSeenText, YoungsterSamuelBeatenText, 0, .Script
+TrainerBreederJulie:
+	trainer EVENT_BEAT_BREEDER_JULIE, BREEDER, JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext YoungsterSamuelAfterText
+	writetext BreederJulieAfterText
 	waitbutton
 	closetext
 	end
@@ -716,17 +718,18 @@ Route34LyraFollowMeText:
 	cont "Grandma, too!"
 	done
 
-YoungsterSamuelSeenText:
-	text "This is where I do"
-	line "my training!"
+BreederJulieSeenText:
+	text "This is where I"
+	line "train my baby"
+	cont "#mon!"
 	done
 
-YoungsterSamuelBeatenText:
+BreederJulieBeatenText:
 	text "Beaten by a"
 	line "passing stranger!"
 	done
 
-YoungsterSamuelMobileText:
+BreederJulieAfterText:
 	text "Have you been to"
 	line "Goldenrod City?"
 
@@ -735,15 +738,6 @@ YoungsterSamuelMobileText:
 
 	para "changed the"
 	line "#mon Center?"
-	done
-
-YoungsterSamuelAfterText:
-	text "I'm going to train"
-	line "even harder."
-
-	para "After all, I'm"
-	line "trying to become"
-	cont "a Gym Leader."
 	done
 
 RichBoyIrvingSeenText:
@@ -997,7 +991,7 @@ Route34_MapEventHeader:
 .PersonEvents:
 	db 15
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
-	person_event SPRITE_YOUNGSTER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
+	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyIrving, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
 	person_event SPRITE_OFFICER_F, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1

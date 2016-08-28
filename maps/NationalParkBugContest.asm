@@ -181,7 +181,7 @@ UnknownText_0x5cac8:
 	done
 
 UnknownText_0x5cb25:
-	text "Samuel: If you've"
+	text "Johnny: If you've"
 	line "got the time to"
 
 	para "chat, go find some"

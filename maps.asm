@@ -483,7 +483,6 @@ INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route14.asm"
 INCLUDE "maps/LavenderTown.asm"
 INCLUDE "maps/Route6.asm"
-INCLUDE "maps/Route5.asm"
 INCLUDE "maps/CinnabarVolcano1F.asm"
 INCLUDE "maps/CinnabarVolcanoB1F.asm"
 
@@ -563,6 +562,7 @@ INCLUDE "maps/SinjohRuins.asm"
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
+INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route16.asm"
 INCLUDE "maps/Route17.asm"
 INCLUDE "maps/CeladonHomeDecorStore1F.asm"

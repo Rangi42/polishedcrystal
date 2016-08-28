@@ -145,7 +145,7 @@ BugContestantPointers: ; 13783
 	dw BugContestant_CamperBarry
 	dw BugContestant_PicnickerCindy
 	dw BugContestant_BugCatcherJosh
-	dw BugContestant_YoungsterSamuel
+	dw BugContestant_SchoolboyJohnny
 	dw BugContestant_SchoolboyKipp
 ; 13799
 
@@ -197,8 +197,8 @@ BugContestant_BugCatcherJosh:
 	dbw BUTTERFREE, 292
 	dbw METAPOD,    282
 
-BugContestant_YoungsterSamuel:
-	db YOUNGSTER, SAMUEL
+BugContestant_SchoolboyJohnny:
+	db SCHOOLBOY, JOHNNY
 	dbw WEEDLE,     270
 	dbw PINSIR,     282
 	dbw CATERPIE,   251

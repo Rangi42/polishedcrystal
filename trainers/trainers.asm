@@ -3045,20 +3045,6 @@ YoungsterGroup:
 ; ================
 
 	; YOUNGSTER
-	db "Samuel@"
-	db 0 ; normal
-
-	; party
-	db 7, RATTATA
-	db 10, SANDSHREW
-	db 8, PIDGEY
-	db 8, RATTATA
-
-	db $ff ; end
-
-; ================
-
-	; YOUNGSTER
 	db "Joey@"
 	db 0 ; normal
 
@@ -4753,18 +4739,6 @@ BirdKeeperGroup:
 
 	; party
 	db 9, PIDGEY
-
-	db $ff ; end
-
-; ================
-
-	; BIRD_KEEPER
-	db "Bryan@"
-	db 0 ; normal
-
-	; party
-	db 12, PIDGEY
-	db 14, PIDGEOTTO
 
 	db $ff ; end
 
@@ -8352,6 +8326,86 @@ RichBoyGroup:
 BreederGroup:
 ; ================================
 ; ================
+
+	; BREEDER
+	db "Julie@"
+	db 2 ; item
+
+	; party
+	db 7, PICHU, EVIOLITE
+	db 10, DITTO, METAL_POWDER
+	db 8, TOGEPI, EVIOLITE
+
+	db $ff ; end
+
+; ================
+
+	; BREEDER
+	db "Theresa@"
+	db 2 ; item
+
+	; party
+	db 14, ELEKID, EVIOLITE
+	db 14, MAGBY, EVIOLITE
+
+	db $ff ; end
+
+; ================
+
+	; BREEDER
+	db "Jody@"
+	db 3 ; item + moves
+
+	; party
+
+	db 27, TYROGUE, EVIOLITE
+		db TACKLE
+		db RAGE
+		db FORESIGHT
+		db HI_JUMP_KICK
+
+	db 28, MUNCHLAX, EVIOLITE
+		db METRONOME
+		db BODY_SLAM
+		db SCREECH
+		db GUNK_SHOT
+
+	db 29, DITTO, METAL_POWDER
+		db TRANSFORM
+		db NO_MOVE
+		db NO_MOVE
+		db NO_MOVE
+
+	db $ff ; end
+
+; ================
+
+	; BREEDER
+	db "Carlene@"
+	db 3 ; item + moves
+
+	; party
+
+	db 49, SMEARGLE, EXPERT_BELT
+		db SPORE
+		db NASTY_PLOT
+		db HYPER_VOICE
+		db PSYCHIC_M
+
+	db 49, SMEARGLE, MUSCLE_BAND
+		db SPORE
+		db SWORDS_DANCE
+		db BODY_SLAM
+		db EARTHQUAKE
+
+	db 55, DITTO, METAL_POWDER
+		db TRANSFORM
+		db NO_MOVE
+		db NO_MOVE
+		db NO_MOVE
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
