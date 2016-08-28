@@ -173,13 +173,11 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_20,                                    9, 30 ;  9
 	mapgroup ROUTE_21,                                   18, 10 ; 10
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 11
-	mapgroup ROUTE_9,                                     9, 30 ; 12
-	mapgroup ROUTE_10_NORTH,                              9, 10 ; 13
-	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 14
-	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 15
-	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ; 16
-	mapgroup POKEMON_MANSION_1F,                         14, 15 ; 17
-	mapgroup POKEMON_MANSION_B1F,                        16, 17 ; 18
+	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 12
+	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 13
+	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ; 14
+	mapgroup POKEMON_MANSION_1F,                         14, 15 ; 15
+	mapgroup POKEMON_MANSION_B1F,                        16, 17 ; 16
 
 	newgroup                                                    ;  7
 
@@ -527,6 +525,11 @@ MAP_NONE   EQU 0
 	mapgroup QUIET_CAVE_B1F,                             18, 18 ;  6
 	mapgroup QUIET_CAVE_B2F,                             18, 18 ;  7
 	mapgroup QUIET_CAVE_B3F,                             18, 18 ;  8
+
+	newgroup                                                    ; 28
+
+	mapgroup ROUTE_9,                                     9, 30 ;  1
+	mapgroup ROUTE_10_NORTH,                              9, 10 ;  2
 
 
 

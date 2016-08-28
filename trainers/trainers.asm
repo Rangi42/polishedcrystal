@@ -138,19 +138,19 @@ FalknerGroup:
 
 	; party
 
-	db 9, PIDGEY, NO_ITEM
+	db 10, PIDGEY, NO_ITEM
 		db TACKLE
 		db SAND_ATTACK
 		db GUST
 		db MUD_SLAP
 
-	db 9, HOOTHOOT, NO_ITEM
+	db 10, HOOTHOOT, NO_ITEM
 		db TACKLE
 		db GROWL
 		db HYPNOSIS
 		db MUD_SLAP
 
-	db 12, PIDGEOTTO, MINT_BERRY
+	db 13, PIDGEOTTO, MINT_BERRY
 		db QUICK_ATTACK
 		db SAND_ATTACK
 		db GUST
@@ -236,7 +236,7 @@ BugsyGroup:
 		db QUICK_ATTACK
 		db DOUBLE_TEAM
 
-	db 16, SCYTHER, BERRY
+	db 17, SCYTHER, BERRY
 		db QUICK_ATTACK
 		db LEER
 		db PURSUIT

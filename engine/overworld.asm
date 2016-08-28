@@ -843,6 +843,7 @@ OutdoorSprites: ; 144b8
 	dw Group25Sprites
 	dw Group26Sprites
 	dw Group27Sprites
+	dw Group28Sprites
 
 
 ; OlivineCity connects to Route40
@@ -1007,16 +1008,50 @@ Group5Sprites:
 	db SPRITE_POKE_BALL
 
 
-; TODO: move Route9 and Route10North to their own group
-; Route9 connects to CeruleanCity
-; CeruleanCity connects to Route5
+; Route21 connects to PalletTown
+; Route1 connects to ViridianCity
 Group6Sprites:
 ; Route19
 ; Route20
 ; Route21
 ; CinnabarIsland
-; Route9
-; Route10North
+Group13Sprites:
+; Route1
+; PalletTown
+Group23Sprites:
+; Route2
+; Route22
+; ViridianCity
+; ViridianForest
+	db SPRITE_BUG_CATCHER
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_FISHER
+	db SPRITE_GRAMPS
+	db SPRITE_SWIMMER_GIRL
+	db SPRITE_SWIMMER_GUY
+	db SPRITE_TEACHER
+	db SPRITE_YOUNGSTER
+	db SPRITE_BLUE ; doesn't walk
+	; 10 walking sprites (9 that walk)
+	db SPRITE_FRUIT_TREE
+	db SPRITE_POKE_BALL
+	; 12 total sprites
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_POKE_BALL
+
+
+; CeruleanCity connects to Route5
+; CeruleanCity connects to Route9
 Group7Sprites:
 ; Route4
 ; Route24
@@ -1025,26 +1060,29 @@ Group7Sprites:
 Group25Sprites:
 ; SaffronCity
 ; Route5
+Group28Sprites:
+; Route9
+; Route10North
 	db SPRITE_CERULEAN_CAPE_MISTY
 	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
-	db SPRITE_SWIMMER_GIRL
-	db SPRITE_SWIMMER_GUY
 	db SPRITE_YOUNGSTER
-	db SPRITE_BREEDER ; doesn't walk
+	db SPRITE_BREEDER
 	db SPRITE_CHRIS ; doesn't walk
 	db SPRITE_KRIS ; doesn't walk
-	db SPRITE_COOLTRAINER_M ; doesn't walk
-	db SPRITE_BLUE ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	; 15 walking sprites (9 that walk)
+	; 12 walking sprites (9 that walk)
 	db SPRITE_POKE_BALL
 	db SPRITE_SLOWBRO
 	db SPRITE_ZAPDOS
-	; 18 total sprites
+	; 15 total sprites
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1201,36 +1239,6 @@ Group12Sprites:
 	db SPRITE_MACHOP
 	db SPRITE_FRUIT_TREE
 	; 10 total sprites
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_POKE_BALL
-
-
-Group13Sprites:
-; Route1
-; PalletTown
-	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
-	db SPRITE_TEACHER
-	db SPRITE_YOUNGSTER
-	; 5 walking sprites
-	db SPRITE_FRUIT_TREE
-	; 6 total sprites
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1485,38 +1493,6 @@ Group21Sprites:
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
 	; 9 total sprites
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_POKE_BALL
-
-
-Group23Sprites:
-; Route2
-; Route22
-; ViridianCity
-; ViridianForest
-	db SPRITE_BUG_CATCHER
-	db SPRITE_FISHER
-	db SPRITE_GRAMPS
-	db SPRITE_YOUNGSTER
-	; 4 walking sprites
-	db SPRITE_FRUIT_TREE
-	db SPRITE_POKE_BALL
-	; 6 total sprites
-	db SPRITE_GOLD_TROPHY
-	db SPRITE_SILVER_TROPHY
-	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY

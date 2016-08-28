@@ -1,8 +1,7 @@
 ## Use or remove
 
 * Use EMOTE_QUESTION, EMOTE_HAPPY, EMOTE_SAD, and EMOTE_SLEEP somewhere
-* Use or remove SPRITE_OLD_LINK_RECEPTIONIST
-* Phase out SPRITE_MONSTER, SPRITE_FAIRY, SPRITE_BIRD, and SPRITE_DRAGON
+
 
 ## Bugs
 
