@@ -1471,9 +1471,10 @@ Group21Sprites:
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
+	db SPRITE_OFFICER_F
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	; 6 walking sprites
+	; 7 walking sprites
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
 	; 9 total sprites

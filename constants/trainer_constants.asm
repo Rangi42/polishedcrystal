@@ -299,6 +299,7 @@ KRIS EQU __enum__
 	const DIRK
 
 	trainerclass OFFICERF ; 2a
+	const JENNY
 
 	trainerclass POKEMANIAC ; 2b
 	const LARRY
@@ -631,8 +632,14 @@ KRIS EQU __enum__
 	const RILEY
 	const JOEL
 	const GLENN
+	const DALE
+	const JACOB
+	const AIDEN
 
 	trainerclass ROUGHNECK ; 4e
+	const BRIAN
+	const THERON
+	const MARKEY
 
 	trainerclass COOLTRAINERM ; 4f
 	const NICK

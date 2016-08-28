@@ -6157,6 +6157,18 @@ OfficerMGroup:
 OfficerFGroup:
 ; ================================
 ; ================
+
+	; OFFICERF
+	db "Jenny@"
+	db 0 ; normal
+
+	; party
+	db 47, ARCANINE
+	db 46, ARCANINE
+	db 46, BLASTOISE
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -9905,12 +9917,84 @@ BikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; BIKER
+	db "Dale@"
+	db 0 ; normal
+
+	; party
+	db 47, MUK
+	db 47, WEEZING
+
+	db $ff ; end
+
+; ================
+
+	; BIKER
+	db "Jacob@"
+	db 0 ; normal
+
+	; party
+	db 43, MAGMAR
+	db 43, TENTACRUEL
+
+	db $ff ; end
+
+; ================
+
+	; BIKER
+	db "Aiden@"
+	db 0 ; normal
+
+	; party
+	db 43, URSARING
+	db 43, AZUMARILL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
 RoughneckGroup:
 ; ================================
 ; ================
+
+	; ROUGHNECK
+	db "Brian@"
+	db 0 ; normal
+
+	; party
+	db 45, TENTACRUEL
+	db 45, WEEZING
+	db 45, WEEZING
+
+	db $ff ; end
+
+; ================
+
+	; ROUGHNECK
+	db "Theron@"
+	db 0 ; normal
+
+	; party
+	db 45, MUK
+	db 45, POLIWRATH
+
+	db $ff ; end
+
+; ================
+
+	; ROUGHNECK
+	db "Markey@"
+	db 0 ; normal
+
+	; party
+	db 47, ARBOK
+	db 46, HOUNDOOM
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

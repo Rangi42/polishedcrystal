@@ -479,13 +479,13 @@ INCLUDE "maps/Route21.asm"
 INCLUDE "maps/CinnabarIsland.asm"
 INCLUDE "maps/Route20.asm"
 INCLUDE "maps/Route18.asm"
-INCLUDE "maps/Route17.asm"
-INCLUDE "maps/Route16.asm"
 INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route14.asm"
 INCLUDE "maps/LavenderTown.asm"
 INCLUDE "maps/Route6.asm"
 INCLUDE "maps/Route5.asm"
+INCLUDE "maps/CinnabarVolcano1F.asm"
+INCLUDE "maps/CinnabarVolcanoB1F.asm"
 
 
 SECTION "Map Scripts 23", ROMX, BANK[MAP_SCRIPTS_23]
@@ -563,19 +563,19 @@ INCLUDE "maps/SinjohRuins.asm"
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
-INCLUDE "maps/CinnabarVolcano1F.asm"
-INCLUDE "maps/CinnabarVolcanoB1F.asm"
+INCLUDE "maps/Route16.asm"
+INCLUDE "maps/Route17.asm"
 INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
-INCLUDE "maps/MystriStage.asm"
-INCLUDE "maps/EmbeddedTower.asm"
 
 
 SECTION "Map Scripts 26", ROMX
 
 INCLUDE "maps/SinjohRuinsHouse.asm"
+INCLUDE "maps/MystriStage.asm"
+INCLUDE "maps/EmbeddedTower.asm"
 INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
