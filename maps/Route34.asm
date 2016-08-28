@@ -3,7 +3,7 @@ const_value set 2
 	const ROUTE34_YOUNGSTER2
 	const ROUTE34_RICH_BOY
 	const ROUTE34_LASS
-	const ROUTE34_OFFICER_M
+	const ROUTE34_OFFICER_F
 	const ROUTE34_POKEFAN_M
 	const ROUTE34_GRAMPS1
 	const ROUTE34_DAYCARE_MON_1
@@ -467,33 +467,33 @@ TrainerPicnickerGina1:
 	jumpstd packfullf
 	end
 
-OfficermKeithScript:
+OfficerfMaraScript:
 	faceplayer
 	opentext
 	checknite
 	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERM_KEITH
+	checkevent EVENT_BEAT_OFFICERF_MARA
 	iftrue .AfterScript
 	playmusic MUSIC_OFFICER_ENCOUNTER
-	writetext OfficermKeithSeenText
+	writetext OfficerfMaraSeenText
 	waitbutton
 	closetext
-	winlosstext OfficermKeithWinText, 0
-	loadtrainer OFFICERM, KEITH
+	winlosstext OfficerfMaraWinText, 0
+	loadtrainer OFFICERF, MARA
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_OFFICERM_KEITH
+	setevent EVENT_BEAT_OFFICERF_MARA
 	closetext
 	end
 
 .AfterScript:
-	writetext OfficermKeithAfterText
+	writetext OfficerfMaraAfterText
 	waitbutton
 	closetext
 	end
 
 .NoFight:
-	writetext OfficermKeithDaytimeText
+	writetext OfficerfMaraDaytimeText
 	waitbutton
 	closetext
 	end
@@ -813,26 +813,26 @@ PicnickerGina1AfterText:
 	cont "partner."
 	done
 
-OfficermKeithSeenText:
+OfficerfMaraSeenText:
 	text "Who goes there?"
 	line "What are you up"
 	cont "to?"
 	done
 
-OfficermKeithWinText:
+OfficerfMaraWinText:
 	text "You're a tough"
 	line "little kid."
 	done
 
-OfficermKeithAfterText:
-	text "Yep, I see nothing"
+OfficerfMaraAfterText:
+	text "Yes, I see nothing"
 	line "wrong today. You"
 
 	para "be good and stay"
 	line "out of trouble."
 	done
 
-OfficermKeithDaytimeText:
+OfficerfMaraDaytimeText:
 	text "I'm on patrol for"
 	line "suspicious indi-"
 	cont "viduals."
@@ -1000,7 +1000,7 @@ Route34_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterSamuel, -1
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyIrving, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	person_event SPRITE_OFFICER, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, -1
+	person_event SPRITE_OFFICER_F, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
 	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
 	person_event SPRITE_GRAMPS, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
 	person_event SPRITE_DAYCARE_MON_1, 18, 14, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1

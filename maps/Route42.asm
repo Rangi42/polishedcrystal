@@ -8,8 +8,9 @@ const_value set 2
 	const ROUTE42_POKE_BALL1
 	const ROUTE42_POKE_BALL2
 	const ROUTE42_SUICUNE
-	const ROUTE42_OFFICERM
+	const ROUTE42_OFFICERM1
 	const ROUTE42_OFFICERF
+	const ROUTE42_OFFICERM2
 	const ROUTE42_LYRA
 
 Route42_MapScriptHeader:
@@ -286,6 +287,37 @@ HikerBenjaminScript:
 	closetext
 	end
 
+OfficermKeithScript:
+	faceplayer
+	opentext
+	checknite
+	iffalse .NoFight
+	checkevent EVENT_BEAT_OFFICERM_KEITH
+	iftrue .AfterScript
+	playmusic MUSIC_OFFICER_ENCOUNTER
+	writetext OfficermKeithSeenText
+	waitbutton
+	closetext
+	winlosstext OfficermKeithWinText, 0
+	loadtrainer OFFICERM, KEITH
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_OFFICERM_KEITH
+	closetext
+	end
+
+.AfterScript:
+	writetext OfficermKeithAfterText
+	waitbutton
+	closetext
+	end
+
+.NoFight:
+	writetext OfficermKeithDaytimeText
+	waitbutton
+	closetext
+	end
+
 Route42OfficerScript:
 	jumptextfaceplayer Route42OfficerText
 
@@ -411,6 +443,32 @@ Route42LyraWhirlpoolText:
 	line "<PLAYER>!"
 
 	para "Bye now!"
+	done
+
+OfficermKeithSeenText:
+	text "Halt! What are"
+	line "you doing?"
+	done
+
+OfficermKeithWinText:
+	text "You know how to"
+	line "defend yourself."
+	done
+
+OfficermKeithAfterText:
+	text "Explore the mount-"
+	line "ain if you want."
+
+	para "I'm not worried"
+	line "about you."
+	done
+
+OfficermKeithDaytimeText:
+	text "The avalanche is"
+	line "cleared, but you"
+
+	para "can still get lost"
+	line "or hurt in caves."
 	done
 
 FisherTully1SeenText:
@@ -547,7 +605,7 @@ Route42_MapEventHeader:
 	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
 
 .PersonEvents:
-	db 12
+	db 13
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
@@ -559,4 +617,5 @@ Route42_MapEventHeader:
 	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
 	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42

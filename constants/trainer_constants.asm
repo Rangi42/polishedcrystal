@@ -300,6 +300,7 @@ KRIS EQU __enum__
 
 	trainerclass OFFICERF ; 2a
 	const JENNY
+	const MARA
 
 	trainerclass POKEMANIAC ; 2b
 	const LARRY

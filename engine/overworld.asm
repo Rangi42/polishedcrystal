@@ -952,11 +952,11 @@ Group4Sprites:
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
-	db SPRITE_OFFICER
 	db SPRITE_SUPER_NERD
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	db SPRITE_OFFICER ; doesn't walk
+	; 9 walking sprites (8 that walk)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
@@ -1156,12 +1156,12 @@ Group11Sprites:
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
 	db SPRITE_LYRA
-	db SPRITE_OFFICER
 	db SPRITE_POKEFAN_M
 	db SPRITE_RICH_BOY
 	db SPRITE_YOUNGSTER
+	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 10 walking sprites (8 that walk)
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
 	db SPRITE_MAGIKARP
@@ -1471,10 +1471,10 @@ Group21Sprites:
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
-	db SPRITE_OFFICER_F
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	; 7 walking sprites
+	db SPRITE_OFFICER_F ; doesn't walk
+	; 7 walking sprites (6 that walk)
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
 	; 9 total sprites

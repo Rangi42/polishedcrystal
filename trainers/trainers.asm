@@ -6134,7 +6134,7 @@ OfficerMGroup:
 	db 0 ; normal
 
 	; party
-	db 17, GROWLITHE
+	db 30, GROWLITHE
 
 	db $ff ; end
 
@@ -6166,6 +6166,17 @@ OfficerFGroup:
 	db 47, ARCANINE
 	db 46, ARCANINE
 	db 46, BLASTOISE
+
+	db $ff ; end
+
+; ================
+
+	; OFFICERF
+	db "Mara@"
+	db 0 ; normal
+
+	; party
+	db 17, GROWLITHE
 
 	db $ff ; end
 
