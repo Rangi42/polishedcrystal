@@ -68,11 +68,11 @@ StringOptions: ; e4241
 	db "        :<LNBRK>"
 	db "Battle Style<LNBRK>"
 	db "        :<LNBRK>"
+	db "Running Shoes<LNBRK>"
+	db "        :<LNBRK>"
 	db "Sound<LNBRK>"
 	db "        :<LNBRK>"
 	db "Print<LNBRK>"
-	db "        :<LNBRK>"
-	db "Menu Captions<LNBRK>"
 	db "        :<LNBRK>"
 	db "Frame<LNBRK>"
 	db "        :Type<LNBRK>"
@@ -98,9 +98,9 @@ endr
 	dw Options_TextSpeed
 	dw Options_BattleScene
 	dw Options_BattleStyle
+	dw Options_RunningShoes
 	dw Options_Sound
 	dw Options_Print
-	dw Options_MenuAccount
 	dw Options_Frame
 	dw Options_Cancel
 ; e42f5
@@ -279,6 +279,49 @@ Options_BattleStyle: ; e43a0
 ; e43dd
 
 
+Options_RunningShoes: ; e44c1
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit MENU_ACCOUNT, [hl]
+	jr nz, .ToggleOn
+	jr .ToggleOff
+
+.LeftPressed:
+	bit MENU_ACCOUNT, [hl]
+	jr z, .ToggleOff
+	jr .ToggleOn
+
+.NonePressed:
+	bit MENU_ACCOUNT, [hl]
+	jr nz, .ToggleOff
+
+.ToggleOn:
+	res MENU_ACCOUNT, [hl]
+	ld de, .On
+	jr .Display
+
+.ToggleOff:
+	set MENU_ACCOUNT, [hl]
+	ld de, .Off
+
+.Display:
+	hlcoord 11, 9
+	call PlaceString
+	and a
+	ret
+; e44f2
+
+.On:
+	db "On @"
+.Off:
+	db "Off@"
+; e44fa
+
+
 Options_Sound: ; e43dd
 	ld hl, Options
 	ld a, [hJoyPressed]
@@ -316,7 +359,7 @@ Options_Sound: ; e43dd
 	ld de, .Stereo
 
 .Display:
-	hlcoord 11, 9
+	hlcoord 11, 11
 	call PlaceString
 	and a
 	ret
@@ -369,7 +412,7 @@ endr
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	hlcoord 11, 11
+	hlcoord 11, 13
 	call PlaceString
 	and a
 	ret
@@ -429,48 +472,6 @@ GetPrinterSetting: ; e4491
 	lb de, PRINT_DARKER, PRINT_LIGHTEST ; the 2 values next to this setting
 	ret
 ; e44c1
-
-Options_MenuAccount: ; e44c1
-	ld hl, Options2
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit MENU_ACCOUNT, [hl]
-	jr nz, .ToggleOn
-	jr .ToggleOff
-
-.LeftPressed:
-	bit MENU_ACCOUNT, [hl]
-	jr z, .ToggleOff
-	jr .ToggleOn
-
-.NonePressed:
-	bit MENU_ACCOUNT, [hl]
-	jr nz, .ToggleOff
-
-.ToggleOn:
-	res MENU_ACCOUNT, [hl]
-	ld de, .On
-	jr .Display
-
-.ToggleOff:
-	set MENU_ACCOUNT, [hl]
-	ld de, .Off
-
-.Display:
-	hlcoord 11, 13
-	call PlaceString
-	and a
-	ret
-; e44f2
-
-.On:
-	db "On @"
-.Off:
-	db "Off@"
-; e44fa
 
 
 Options_Frame: ; e44fa

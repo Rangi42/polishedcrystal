@@ -285,9 +285,19 @@ DoPlayerMovement:: ; 80000
 	call CheckIceTile
 	jr nc, .ice
 
+	ld a, [Options2]
+	xor 1
+	jr nz, .RunByDefault
+
 	call .RunCheck
 	jr z, .fast
+	jp .DoNotRun
 
+.RunByDefault
+	call .RunCheck
+	jr nz, .fast
+
+.DoNotRun
 ; Downhill riding is slower when not moving down.
 	call .BikeCheck
 	jr nz, .walk

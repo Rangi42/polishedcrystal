@@ -331,6 +331,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Devamped HGSS sprites for Team Rocket Executives.
 * Add: Replace NES with Wii.
 * Add: Purple overworld sprites (used for Eusine, Koga, Janine, PokéManiacs, Hex Maniacs, Burglars, Executive♂s, and GameCube).
+* Add: Option to run by default.
 * Add: Proper text for Gym Leader rematches.
 * Fix: Gen VI wild held item chances (50% common, 5% rare, 45% none)
 * Fix: No more daily limit on Wonder Trades.

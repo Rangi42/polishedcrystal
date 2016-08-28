@@ -18,7 +18,6 @@ StartMenu:: ; 125cd
 	call .SetUpMenuItems
 	ld a, [wd0d2]
 	ld [wMenuCursorBuffer], a
-	call .DrawMenuAccount_
 	call MenuFunc_1e7f
 	call .DrawBugContestStatusBox
 	call Function2e31
@@ -38,7 +37,6 @@ StartMenu:: ; 125cd
 .Select:
 	call .GetInput
 	jr c, .Exit
-	call .DrawMenuAccount
 	ld a, [wMenuCursorBuffer]
 	ld [wd0d2], a
 	call PlayClickSFX
@@ -85,12 +83,10 @@ StartMenu:: ; 125cd
 ; Return carry on exit, and no-carry on selection.
 	xor a
 	ld [hBGMapMode], a
-	call .DrawMenuAccount
 	call SetUpMenu
 	ld a, $ff
 	ld [MenuSelection], a
 .loop
-	call .PrintMenuAccount
 	call GetScrollingMenuJoypad
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
@@ -141,7 +137,6 @@ StartMenu:: ; 125cd
 	call ClearBGPalettes
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
-	call .DrawMenuAccount_
 	call MenuFunc_1e7f
 	call .DrawBugContestStatus
 	call UpdateSprites
@@ -173,15 +168,15 @@ StartMenu:: ; 125cd
 	dw .Items
 
 .Items:
-	dw StartMenu_Pokedex,  .PokedexString,  .PokedexDesc
-	dw StartMenu_Pokemon,  .PartyString,    .PartyDesc
-	dw StartMenu_Pack,     .PackString,     .PackDesc
-	dw StartMenu_Status,   .StatusString,   .StatusDesc
-	dw StartMenu_Save,     .SaveString,     .SaveDesc
-	dw StartMenu_Option,   .OptionString,   .OptionDesc
-	dw StartMenu_Exit,     .ExitString,     .ExitDesc
-	dw StartMenu_Pokegear, .PokegearString, .PokegearDesc
-	dw StartMenu_Quit,     .QuitString,     .QuitDesc
+	dw StartMenu_Pokedex,  .PokedexString,  .NullDesc
+	dw StartMenu_Pokemon,  .PartyString,    .NullDesc
+	dw StartMenu_Pack,     .PackString,     .NullDesc
+	dw StartMenu_Status,   .StatusString,   .NullDesc
+	dw StartMenu_Save,     .SaveString,     .NullDesc
+	dw StartMenu_Option,   .OptionString,   .NullDesc
+	dw StartMenu_Exit,     .ExitString,     .NullDesc
+	dw StartMenu_Pokegear, .PokegearString, .NullDesc
+	dw StartMenu_Quit,     .QuitString,     .NullDesc
 
 .PokedexString: 	db "#dex@"
 .PartyString:   	db "#mon@"
@@ -193,33 +188,8 @@ StartMenu:: ; 125cd
 .PokegearString:	db $24, "gear@"
 .QuitString:    	db "Quit@"
 
-.PokedexDesc:  db   "#mon"
-              next "database@"
-
-.PartyDesc:    db   "Party ", $4a
-              next "status@"
-
-.PackDesc:     db   "Contains"
-              next "items@"
-
-.PokegearDesc: db   "Trainer's"
-              next "key device@"
-
-.StatusDesc:   db   "Your own"
-              next "status@"
-
-.SaveDesc:     db   "Save your"
-              next "progress@"
-
-.OptionDesc:   db   "Change"
-              next "settings@"
-
-.ExitDesc:     db   "Close this"
-              next "menu@"
-
-.QuitDesc:     db   "Quit and"
-              next "be judged.@"
-
+; Menu accounts are removed; this is vestigial
+.NullDesc:      	db "@"
 
 .OpenMenu: ; 127e5
 	ld a, [MenuSelection]
@@ -358,36 +328,6 @@ endr
 	inc c
 	ret
 ; 128a4
-
-.DrawMenuAccount_: ; 128a4
-	jp .DrawMenuAccount
-; 128a7
-
-.PrintMenuAccount: ; 128a7
-	call .IsMenuAccountOn
-	ret z
-	call .DrawMenuAccount
-	decoord 0, 14
-	jp .MenuDesc
-; 128b4
-
-.DrawMenuAccount: ; 128b4
-	call .IsMenuAccountOn
-	ret z
-	hlcoord 0, 13
-	lb bc, 5, 10
-	call ClearBox
-	hlcoord 0, 13
-	ld b, 3
-	ld c, 8
-	jp TextBoxPalette
-; 128cb
-
-.IsMenuAccountOn: ; 128cb
-	ld a, [Options2]
-	xor 1
-	ret
-; 128d1
 
 .DrawBugContestStatusBox: ; 128d1
 	ld hl, StatusFlags2
