@@ -121,7 +121,6 @@
 	const SPRITE_BIRD ; 75
 	const SPRITE_DRAGON ; 76
 	const SPRITE_FAIRY ; 77
-	const SPRITE_MONSTER ; 78
 
 const_value SET $80
 

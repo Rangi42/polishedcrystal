@@ -233,25 +233,6 @@ ClearActorHud: ; cc207
 	ret
 ; cc220
 
-Functioncc220: ; cc220
-; Appears to be unused.
-	xor a
-	ld [hBGMapMode], a
-	ld a, (VBGMap0 tile $28) % $100
-	ld [hBGMapAddress], a
-	ld a, (VBGMap0 tile $28) / $100
-	ld [hBGMapAddress + 1], a
-	call WaitBGMap2
-	ld a, $60
-	ld [hWY], a
-	xor a
-	ld [hBGMapAddress], a
-	ld a, VBGMap0 / $100
-	ld [hBGMapAddress + 1], a
-	call BattleAnimDelayFrame
-	ret
-; cc23d
-
 
 BattleAnim_ClearCGB_OAMFlags: ; cc23d
 
@@ -972,14 +953,14 @@ BattleAnimCmd_RaiseSub: ; cc640 (33:4640)
 
 	ld a, [rSVBK]
 	push af
-	ld a, 1
+	ld a, 6
 	ld [rSVBK], a
 	xor a
 	call GetSRAMBank
 
 GetSubstitutePic: ; cc64c
 
-	ld hl, sScratch
+	ld hl, $a000
 	ld bc, (7 * 7) tiles
 .loop
 	xor a
@@ -993,19 +974,11 @@ GetSubstitutePic: ; cc64c
 	and a
 	jr z, .player
 
-	ld hl, MonsterSpriteGFX + 0 tiles
-	ld de, sScratch + (2 * 7 + 5) tiles
-	call .CopyTile
-	ld hl, MonsterSpriteGFX + 1 tiles
-	ld de, sScratch + (3 * 7 + 5) tiles
-	call .CopyTile
-	ld hl, MonsterSpriteGFX + 2 tiles
-	ld de, sScratch + (2 * 7 + 6) tiles
-	call .CopyTile
-	ld hl, MonsterSpriteGFX + 3 tiles
-	ld de, sScratch + (3 * 7 + 6) tiles
-	call .CopyTile
-
+	ld hl, SubstituteFrontpic
+	ld a, BANK(SubstituteFrontpic)
+	ld de, $d000
+	call FarDecompress
+	call .CopyPic
 	ld hl, VTiles2 tile $00
 	ld de, sScratch
 	lb bc, BANK(GetSubstitutePic), 7 * 7
@@ -1013,19 +986,11 @@ GetSubstitutePic: ; cc64c
 	jr .done
 
 .player
-	ld hl, MonsterSpriteGFX + 4 tiles
-	ld de, sScratch + (2 * 6 + 4) tiles
-	call .CopyTile
-	ld hl, MonsterSpriteGFX + 5 tiles
-	ld de, sScratch + (3 * 6 + 4) tiles
-	call .CopyTile
-	ld hl, MonsterSpriteGFX + 6 tiles
-	ld de, sScratch + (2 * 6 + 5) tiles
-	call .CopyTile
-	ld hl, MonsterSpriteGFX + 7 tiles
-	ld de, sScratch + (3 * 6 + 5) tiles
-	call .CopyTile
-
+	ld hl, SubstituteBackpic
+	ld a, BANK(SubstituteBackpic)
+	ld de, $d000
+	call FarDecompress
+	call .CopyPic
 	ld hl, VTiles2 tile $31
 	ld de, sScratch
 	lb bc, BANK(GetSubstitutePic), 6 * 6
@@ -1037,9 +1002,73 @@ GetSubstitutePic: ; cc64c
 	ld [rSVBK], a
 	ret
 
-.CopyTile: ; cc6c6 (33:46c6)
+.CopyPic
+	ld b, 4
+.loop1
+	push bc
+	ld c, 4
+.loop2
+	push bc
+	call .GetTile
+	call .CopyTile
+	pop bc
+	dec c
+	jr nz, .loop2
+	pop bc
+	dec b
+	jr nz, .loop1
+	ret
+
+.GetTile:
+	; hl = $d000 + $40 * (4-b) + $10 * (4-c)
+	; de = $a000 + $70 * (1 + 4-c) + $10 * (2 + 4-b) if enemy
+	; de = $a000 + $60 * (1 + 4-c) + $10 * (1 + 4-b) if player
+	ld a, 4
+	sub b
+	ld b, a
+	ld a, 4
+	sub c
+	ld c, a
+	push bc
+	push bc
+	inc c
+	ld a, [hBattleTurn]
+	and a
+	ld a, c
+	ld bc, $60
+	ld hl, sScratch
+	jr z, .okay1
+	ld bc, $70
+	ld hl, sScratch + $10
+.okay1
+	call AddNTimes
+	pop bc
+	inc b
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .okay2
+	inc b
+.okay2
+	ld a, b
+	ld bc, $10
+	call AddNTimes
+	ld d, h
+	ld e, l
+	pop bc
+	push bc
+	ld a, b
+	ld bc, $40
+	ld hl, $d000
+	call AddNTimes
+	pop bc
+	swap c
+	ld b, 0
+	add hl, bc
+	ret
+
+.CopyTile ; cc6c6 (33:46c6)
 	ld bc, 1 tiles
-	ld a, BANK(MonsterSpriteGFX)
+	ld a, BANK(GetSubstitutePic)
 	call FarCopyBytes
 	ret
 
@@ -1076,7 +1105,7 @@ GetMinimizePic: ; cc6e7 (33:46e7)
 	call CopyMinimizePic
 	ld hl, VTiles2 tile $00
 	ld de, sScratch
-	lb bc, BANK(GetMinimizePic), $31
+	lb bc, BANK(GetMinimizePic), 7 * 7
 	ret
 
 .player
@@ -1084,7 +1113,7 @@ GetMinimizePic: ; cc6e7 (33:46e7)
 	call CopyMinimizePic
 	ld hl, VTiles2 tile $31
 	ld de, sScratch
-	lb bc, BANK(GetMinimizePic), $24
+	lb bc, BANK(GetMinimizePic), 6 * 6
 	ret
 
 CopyMinimizePic: ; cc719 (33:4719)

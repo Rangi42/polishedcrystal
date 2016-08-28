@@ -28,7 +28,6 @@ GymGuySpriteGFX:              INCBIN "gfx/overworld/gym_guy.2bpp" ; c6480
 SailorSpriteGFX:              INCBIN "gfx/overworld/sailor.2bpp" ; c6600
 BikerSpriteGFX:               INCBIN "gfx/overworld/biker.2bpp" ; c6780
 PharmacistSpriteGFX:          INCBIN "gfx/overworld/pharmacist.2bpp" ; c6900
-MonsterSpriteGFX:             INCBIN "gfx/overworld/monster.2bpp" ; c6a80
 FairySpriteGFX:               INCBIN "gfx/overworld/fairy.2bpp" ; c6c00
 BirdSpriteGFX:                INCBIN "gfx/overworld/bird.2bpp" ; c6d80
 DragonSpriteGFX:              INCBIN "gfx/overworld/dragon.2bpp" ; c6f00
@@ -51,4 +50,3 @@ KrisSpriteGFX:                INCBIN "gfx/overworld/kris.2bpp" ; c7a40
 KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
 KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
 StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
-BreederSpriteGFX:             INCBIN "gfx/overworld/breeder.2bpp"

@@ -462,7 +462,3 @@ DragonSprite: ; 1490a
 FairySprite: ; 148fe
 	sprite_header FairySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14904
-
-MonsterSprite: ; 148f8
-	sprite_header MonsterSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 148fe

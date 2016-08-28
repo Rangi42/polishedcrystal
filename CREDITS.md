@@ -4,7 +4,7 @@
 * Crystal_ for their in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks
 * Mateo for their thorough Red++ ROM hack, help on Skeetendo, and some sprites and tiles
 * Tauwasser, comet, and other members of Skeetendo for help and advice
-* PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (specifically: the Move Relearner, automatic box swtching, and Gen VI money loss code)
+* PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (specifically: the Move Relearner, automatic box swtching, Gen VI money loss, and Substitute sprite code)
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many sprites and icons
 * metalflygon08 for the HGSS Executive sprites

@@ -5653,6 +5653,11 @@ LoadPoisonBGPals: ; cbcdd
 TheEndGFX:: ; cbd2e
 INCBIN "gfx/credits/theend.2bpp"
 
+SECTION "Substitute Pics", ROMX
+
+SubstituteFrontpic: INCBIN "gfx/battle/substitute-front.2bpp.lz"
+SubstituteBackpic:  INCBIN "gfx/battle/substitute-back.2bpp.lz"
+
 SECTION "bank33", ROMX, BANK[$33]
 
 DisplayCaughtContestMonStats: ; cc000

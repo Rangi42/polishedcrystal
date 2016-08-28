@@ -55,7 +55,6 @@
 * Animate new Pokémon sprites
 * Design custom animations for new moves
 * Show Pokémon portraits when using field moves
-* Better Substitute sprites
 * Color party/day-care sprites by species
 * Special sprites for Pikachu that know Surf or Fly
 * Yellow Pikachu Surfing music
