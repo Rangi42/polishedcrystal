@@ -1599,6 +1599,10 @@ PlayBattleMusic: ; 2ee6c
 	jp .done
 
 .trainermusic
+	ld de, MUSIC_RIVAL_BATTLE_XY
+	cp LYRA
+	jp z, .done
+
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION
 	jp z, .done

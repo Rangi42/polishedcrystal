@@ -114,6 +114,7 @@
 	dba Music_NuggetBridgeHGSS
 	dba Music_Route47HGSS
 	dba Music_LyraEncounterHGSS
+	dba Music_LyraDepartureHGSS
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS
@@ -126,6 +127,7 @@
 	dba Music_ReversalMountainWhite2
 	dba Music_ChampionBattleB2W2
 	dba Music_PowerPlantXY
+	dba Music_RivalBattleXY
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY

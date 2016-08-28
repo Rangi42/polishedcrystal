@@ -129,7 +129,7 @@ Route34LyraTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	jump .AfterBattle
 
 .Totodile:
@@ -139,7 +139,7 @@ Route34LyraTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	jump .AfterBattle
 
 .Chikorita:
@@ -149,7 +149,7 @@ Route34LyraTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 .AfterBattle
 	opentext
 	writetext Route34LyraFollowMeText

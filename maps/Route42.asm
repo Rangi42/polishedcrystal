@@ -110,7 +110,7 @@ Route42LyraScript:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	dontrestartmapmusic
 	reloadmapafterbattle
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext Route42LyraPresentText
 	buttonsound

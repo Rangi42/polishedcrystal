@@ -528,7 +528,7 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
@@ -538,7 +538,7 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
@@ -548,7 +548,7 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
