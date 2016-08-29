@@ -492,7 +492,6 @@ SECTION "Map Scripts 23", ROMX, BANK[MAP_SCRIPTS_23]
 INCLUDE "maps/Route3.asm"
 INCLUDE "maps/Route4.asm"
 INCLUDE "maps/Route10South.asm"
-INCLUDE "maps/Route12Gate.asm"
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/Route24.asm"
 INCLUDE "maps/SilverCavePokeCenter1F.asm"
@@ -518,12 +517,11 @@ INCLUDE "maps/SafariZoneEast.asm"
 INCLUDE "maps/SafariZoneNorth.asm"
 INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
-INCLUDE "maps/YellowForest.asm"
-INCLUDE "maps/YellowForestGate.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
 
+INCLUDE "maps/Route12Gate.asm"
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
 INCLUDE "maps/SilverCaveOutside.asm"
@@ -556,8 +554,6 @@ INCLUDE "maps/ValeriesHouse.asm"
 INCLUDE "maps/EcruteakShrineOutside.asm"
 INCLUDE "maps/EcruteakShrineInside.asm"
 INCLUDE "maps/BellchimeTrail.asm"
-INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
-INCLUDE "maps/SinjohRuins.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
@@ -569,15 +565,23 @@ INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
+
+
+SECTION "Map Scripts 26", ROMX, BANK[$75]
+
+INCLUDE "maps/YellowForestGate.asm"
+INCLUDE "maps/YellowForest.asm"
+INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
+INCLUDE "maps/SinjohRuins.asm"
 INCLUDE "maps/SinjohRuinsHouse.asm"
-
-
-SECTION "Map Scripts 26", ROMX
-
 INCLUDE "maps/MystriStage.asm"
 INCLUDE "maps/EmbeddedTower.asm"
-INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/SeafoamIslandsB4F.asm"
 INCLUDE "maps/Route45.asm"
+
+
+SECTION "Map Scripts 27", ROMX
+
+INCLUDE "maps/ElmsLab.asm"

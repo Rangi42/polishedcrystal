@@ -11821,6 +11821,39 @@ YellowGroup:
 WalkerGroup:
 ; ================================
 ; ================
+
+	; WALKER
+	db "Walker@"
+	db 3 ; item + moves
+
+	; party
+
+	db 28, NOCTOWL, NO_ITEM
+		db WING_ATTACK
+		db NIGHT_SHADE
+		db REFLECT
+		db CONFUSION
+
+	db 29, PIDGEOT, NO_ITEM
+		db GUST
+		db TWISTER
+		db SWIFT
+		db MUD_SLAP
+
+	db 28, AERODACTYL, NO_ITEM
+		db WING_ATTACK
+		db SUPERSONIC
+		db BITE
+		db ANCIENTPOWER
+
+	db 31, SKARMORY, GOLD_BERRY
+		db METAL_CLAW
+		db FURY_ATTACK
+		db DRILL_PECK
+		db SWIFT
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

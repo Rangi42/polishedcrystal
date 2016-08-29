@@ -164,32 +164,33 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_VOLTORB ; a1
 	const SPRITE_ELECTRODE ; a2
 	const SPRITE_RHYDON ; a3
-	const SPRITE_KANGASKHAN ; a4
-	const SPRITE_STARYU ; a5
-	const SPRITE_MAGIKARP ; a6
-	const SPRITE_GYARADOS ; a7
-	const SPRITE_ARTICUNO ; a8
-	const SPRITE_ZAPDOS ; a9
-	const SPRITE_MOLTRES ; aa
-	const SPRITE_DRATINI ; ab
-	const SPRITE_MEWTWO ; ac
-	const SPRITE_MEW ; ad
-	const SPRITE_BAYLEEF ; ae
-	const SPRITE_FURRET ; af
-	const SPRITE_HOOTHOOT ; b0
-	const SPRITE_AMPHAROS ; b1
-	const SPRITE_MURKROW ; b2
-	const SPRITE_UNOWN ; b3
-	const SPRITE_URSARING ; b4
-	const SPRITE_SKARMORY ; b5
-	const SPRITE_MILTANK ; b6
-	const SPRITE_BLISSEY ; b7
-	const SPRITE_RAIKOU ; b8
-	const SPRITE_ENTEI ; b9
-	const SPRITE_SUICUNE ; ba
-	const SPRITE_LUGIA ; bb
-	const SPRITE_HO_OH ; bc
-	const SPRITE_EGG ; bd
+	const SPRITE_CHANSEY ; a4
+	const SPRITE_KANGASKHAN ; a5
+	const SPRITE_STARYU ; a6
+	const SPRITE_MAGIKARP ; a7
+	const SPRITE_GYARADOS ; a8
+	const SPRITE_ARTICUNO ; a9
+	const SPRITE_ZAPDOS ; aa
+	const SPRITE_MOLTRES ; ab
+	const SPRITE_DRATINI ; ac
+	const SPRITE_MEWTWO ; ad
+	const SPRITE_MEW ; ae
+	const SPRITE_BAYLEEF ; af
+	const SPRITE_FURRET ; b0
+	const SPRITE_HOOTHOOT ; b1
+	const SPRITE_AMPHAROS ; b2
+	const SPRITE_MURKROW ; b3
+	const SPRITE_UNOWN ; b4
+	const SPRITE_URSARING ; b5
+	const SPRITE_SKARMORY ; b6
+	const SPRITE_MILTANK ; b7
+	const SPRITE_BLISSEY ; b8
+	const SPRITE_RAIKOU ; b9
+	const SPRITE_ENTEI ; ba
+	const SPRITE_SUICUNE ; bb
+	const SPRITE_LUGIA ; bc
+	const SPRITE_HO_OH ; bd
+	const SPRITE_EGG ; be
 
 const_value SET $d0
 	const SPRITE_DAYCARE_MON_1 ; d0

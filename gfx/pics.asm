@@ -772,7 +772,11 @@ StevenPic:           INCBIN "gfx/trainers/steven.2bpp.lz"
 CynthiaPic:          INCBIN "gfx/trainers/cynthia.2bpp.lz"
 ReiPic:              INCBIN "gfx/trainers/rei.2bpp.lz"
 TowerTycoonPic:      INCBIN "gfx/trainers/towertycoon.2bpp.lz"
-ValeriePic:          INCBIN "gfx/trainers/valerie.2bpp.lz"
 ProtonPic:           INCBIN "gfx/trainers/proton.2bpp.lz"
 PetrelPic:           INCBIN "gfx/trainers/petrel.2bpp.lz"
+
+
+SECTION "Pics 22", ROMX
+
+ValeriePic:          INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:           INCBIN "gfx/trainers/walker.2bpp.lz"
