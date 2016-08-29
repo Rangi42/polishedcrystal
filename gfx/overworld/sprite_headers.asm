@@ -329,6 +329,12 @@ TwinSprite: ; 14814
 	sprite_header TwinSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 1481a
 
+VeteranMSprite:
+	sprite_header VeteranMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
+VeteranFSprite:
+	sprite_header VeteranFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
 YoungsterSprite: ; 1481a
 	sprite_header YoungsterSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 14820
@@ -432,6 +438,9 @@ BoulderSprite: ; 1494c
 FruitTreeSprite: ; 1495e
 	sprite_header FruitTreeSpriteGFX, 1, STILL_SPRITE, PAL_OW_TREE
 ; 14964
+
+ElectricFenceSprite:
+	sprite_header ElectricFenceSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 
 FossilSprite:
 	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN

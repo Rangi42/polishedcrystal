@@ -189,6 +189,9 @@ VermilionGymStatue:
 	trainertotext LT_SURGE, 1, $1
 	jumpstd gymstatue2
 
+VermilionGymElectricFenceScript:
+	jumptext VermilionGymElectricFenceText
+
 UnknownText_0x192142:
 	text "Surge: Hey, you"
 	line "little tyke!"
@@ -395,6 +398,11 @@ UnknownText_0x19261e:
 	line "but trash."
 	done
 
+VermilionGymElectricFenceText:
+	text "An electric fence!"
+	line "Don't touch it!"
+	done
+
 VermilionGym_MapEventHeader:
 	; filler
 	db 0, 0
@@ -435,10 +443,10 @@ VermilionGym_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerJugglerHorton, -1
 	person_event SPRITE_COOLTRAINER_F, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristfJanet, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, VermilionGymGuyScript, -1
-	person_event SPRITE_GAMEBOY_KID, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_GAMEBOY_KID, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_GAMEBOY_KID, 4, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_VERMILION_GYM_SWITCH_2
-	person_event SPRITE_GAMEBOY_KID, 4, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE, 4, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE, 4, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
 
 ; Vermilion Gym trash can code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/maps/VermilionGym.asm

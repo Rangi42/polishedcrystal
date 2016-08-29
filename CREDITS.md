@@ -16,13 +16,13 @@
 * Serious Senator for some trainer dialogs
 * tonyism for the in-battle shiny icon code
 * jpmac26 for editing the Pokémon Center signs and fixing a typo
+* bloodless for Veteran♂'s sprite
 * Twilir for Lyra's back sprite
 * Danny-E for Lorelei's sprite
 * Nic7C5 for Yellow's sprite
 * isamuakai01 for Steven's sprite
 * Kage for Walker's sprite
 * BettyNewbie for Green's sprite
-* bloodless for Game Freak's sprite
 * Fo0xerz for Lawrence III's sprite (devamped by me)
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place

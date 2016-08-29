@@ -3894,6 +3894,7 @@ MaleTrainers: ; 4e95d
 	db BIKER
 	db ROUGHNECK
 	db COOLTRAINERM
+	db VETERANM
 MaleTrainersEnd:
 
 FemaleTrainers: ; 4e976
@@ -3917,6 +3918,7 @@ FemaleTrainers: ; 4e976
 	db TEACHER
 	db GUITARISTF
 	db COOLTRAINERF
+	db VETERANF
 FemaleTrainersEnd:
 
 INCLUDE "battle/sliding_intro.asm"

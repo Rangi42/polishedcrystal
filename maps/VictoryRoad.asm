@@ -1,10 +1,10 @@
 const_value set 2
 	const VICTORYROAD_SILVER
 	const VICTORYROAD_LAWRENCE
-	const VICTORYROAD_COOLTRAINERM1
-	const VICTORYROAD_COOLTRAINERF1
-	const VICTORYROAD_COOLTRAINERF2
-	const VICTORYROAD_COOLTRAINERM2
+	const VICTORYROAD_VETERANM1
+	const VICTORYROAD_VETERANF1
+	const VICTORYROAD_VETERANF2
+	const VICTORYROAD_VETERANM2
 	const VICTORYROAD_POKE_BALL1
 	const VICTORYROAD_POKE_BALL2
 	const VICTORYROAD_POKE_BALL3
@@ -234,46 +234,46 @@ LawrenceLeftLeaveMovementData:
 	step_down
 	step_end
 
-TrainerCooltrainermMatt:
-	trainer EVENT_BEAT_COOLTRAINERM_MATT, COOLTRAINERM, MATT, CooltrainermMattSeenText, CooltrainermMattBeatenText, 0, CooltrainermMattScript
+TrainerVeteranmMatt:
+	trainer EVENT_BEAT_VETERANM_MATT, VETERANM, MATT, VeteranmMattSeenText, VeteranmMattBeatenText, 0, VeteranmMattScript
 
-CooltrainermMattScript:
+VeteranmMattScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermMattAfterText
+	writetext VeteranmMattAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerCooltrainerfJoanne:
-	trainer EVENT_BEAT_COOLTRAINERF_JOANNE, COOLTRAINERF, JOANNE, CooltrainerfJoanneSeenText, CooltrainerfJoanneBeatenText, 0, CooltrainerfJoanneScript
+TrainerVeteranfJoanne:
+	trainer EVENT_BEAT_VETERANF_JOANNE, VETERANF, JOANNE, VeteranfJoanneSeenText, VeteranfJoanneBeatenText, 0, VeteranfJoanneScript
 
-CooltrainerfJoanneScript:
+VeteranfJoanneScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainerfJoanneAfterText
+	writetext VeteranfJoanneAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerCooltrainerfKotori:
-	trainer EVENT_BEAT_COOLTRAINERF_KOTORI, COOLTRAINERF, KOTORI, CooltrainerfKotoriSeenText, CooltrainerfKotoriBeatenText, 0, CooltrainerfKotoriScript
+TrainerVeteranfKotori:
+	trainer EVENT_BEAT_VETERANF_KOTORI, VETERANF, KOTORI, VeteranfKotoriSeenText, VeteranfKotoriBeatenText, 0, VeteranfKotoriScript
 
-CooltrainerfKotoriScript:
+VeteranfKotoriScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainerfKotoriAfterText
+	writetext VeteranfKotoriAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerCooltrainermRingo:
-	trainer EVENT_BEAT_COOLTRAINERM_RINGO, COOLTRAINERM, RINGO, CooltrainermRingoSeenText, CooltrainermRingoBeatenText, 0, CooltrainermRingoScript
+TrainerVeteranmRingo:
+	trainer EVENT_BEAT_VETERANM_RINGO, VETERANM, RINGO, VeteranmRingoSeenText, VeteranmRingoBeatenText, 0, VeteranmRingoScript
 
-CooltrainermRingoScript:
+VeteranmRingoScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermRingoAfterText
+	writetext VeteranmRingoAfterText
 	waitbutton
 	closetext
 	end
@@ -534,38 +534,38 @@ LawrenceGoodbyeText:
 	para "Farewell."
 	done
 
-CooltrainermMattSeenText:
+VeteranmMattSeenText:
 	text "I can see you're"
 	line "good! Let me see"
 	cont "exactly how good!"
 	done
 
-CooltrainermMattBeatenText:
+VeteranmMattBeatenText:
 	text "I had a chance…"
 	done
 
-CooltrainermMattAfterText:
+VeteranmMattAfterText:
 	text "I concede, you're"
 	line "better than me!"
 	done
 
-CooltrainerfJoanneSeenText:
+VeteranfJoanneSeenText:
 	text "Victory Road is"
 	line "the final test"
 	cont "for trainers!"
 	done
 
-CooltrainerfJoanneBeatenText:
+VeteranfJoanneBeatenText:
 	text "Aiyah!"
 	done
 
-CooltrainerfJoanneAfterText:
+VeteranfJoanneAfterText:
 	text "You earned the"
 	line "right to be on"
 	cont "Victory Road!"
 	done
 
-CooltrainerfKotoriSeenText:
+VeteranfKotoriSeenText:
 	text "There's supposed"
 	line "to be a Moltres"
 	cont "roosting here."
@@ -574,19 +574,19 @@ CooltrainerfKotoriSeenText:
 	line "it!"
 	done
 
-CooltrainerfKotoriBeatenText:
+VeteranfKotoriBeatenText:
 	text "I'd have won if"
 	line "I had a legendary"
 	cont "#mon…"
 	done
 
-CooltrainerfKotoriAfterText:
+VeteranfKotoriAfterText:
 	text "Did somebody"
 	line "capture Moltres"
 	cont "already?"
 	done
 
-CooltrainermRingoSeenText:
+VeteranmRingoSeenText:
 	text "If you can get"
 	line "through here, you"
 
@@ -594,12 +594,12 @@ CooltrainermRingoSeenText:
 	line "Elite Four!"
 	done
 
-CooltrainermRingoBeatenText:
+VeteranmRingoBeatenText:
 	text "No!"
 	line "Inconceivable!"
 	done
 
-CooltrainermRingoAfterText:
+VeteranmRingoAfterText:
 	text "I can beat you"
 	line "when it comes to"
 
@@ -640,10 +640,10 @@ VictoryRoad_MapEventHeader:
 	db 12
 	person_event SPRITE_SILVER, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	person_event SPRITE_LAWRENCE, 62, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
-	person_event SPRITE_COOLTRAINER_M, 52, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermMatt, -1
-	person_event SPRITE_COOLTRAINER_F, 35, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfJoanne, -1
-	person_event SPRITE_COOLTRAINER_F, 27, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfKotori, -1
-	person_event SPRITE_COOLTRAINER_M, 13, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainermRingo, -1
+	person_event SPRITE_VETERAN_M, 52, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmMatt, -1
+	person_event SPRITE_VETERAN_F, 35, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
+	person_event SPRITE_VETERAN_F, 27, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerVeteranfKotori, -1
+	person_event SPRITE_VETERAN_M, 13, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranmRingo, -1
 	person_event SPRITE_POKE_BALL, 28, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadTMEarthquake, EVENT_VICTORY_ROAD_TM_EARTHQUAKE
 	person_event SPRITE_POKE_BALL, 48, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadMaxRevive, EVENT_VICTORY_ROAD_MAX_REVIVE
 	person_event SPRITE_POKE_BALL, 29, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadFullRestore, EVENT_VICTORY_ROAD_FULL_RESTORE

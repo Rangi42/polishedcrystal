@@ -659,8 +659,6 @@ KRIS EQU __enum__
 	const KEVIN
 	const ALLEN
 	const FRENCH
-	const MATT
-	const RINGO
 	const HENRI
 
 	trainerclass COOLTRAINERF ; 50
@@ -686,8 +684,6 @@ KRIS EQU __enum__
 	const REENA3
 	const SALMA
 	const BONITA
-	const JOANNE
-	const KOTORI
 
 	trainerclass ACE_DUO ; 51
 	const ELANANDIDA1
@@ -703,33 +699,37 @@ KRIS EQU __enum__
 	const DANANDCARA1
 	const DANANDCARA2
 
-	trainerclass PROTON ; 52
+	trainerclass VETERANM ; 52
+	const MATT
+	const RINGO
+
+	trainerclass VETERANF ; 53
+	const JOANNE
+	const KOTORI
+
+	trainerclass PROTON ; 54
 	const PROTON1
 	const PROTON2
 
-	trainerclass PETREL ; 53
+	trainerclass PETREL ; 55
 	const PETREL1
 	const PETREL2
 
-	trainerclass ARCHER ; 54
+	trainerclass ARCHER ; 56
 	const ARCHER1
 	const ARCHER2
 
-	trainerclass ARIANA ; 55
+	trainerclass ARIANA ; 57
 	const ARIANA2
 	const ARIANA1
 
-	trainerclass POKEMON_PROF ; 56
+	trainerclass POKEMON_PROF ; 58
+	const OAK
 
-	trainerclass GAME_FREAK ; 57
-	const MORIMOTO
-	const NISHINO
-	const ISHIHARA
-
-	trainerclass MYSTICALMAN ; 58
+	trainerclass MYSTICALMAN ; 59
 	const EUSINE
 
-	trainerclass LYRA ; 59
+	trainerclass LYRA ; 5a
 	const LYRA_1
 	const LYRA_2
 	const LYRA_3
@@ -743,35 +743,35 @@ KRIS EQU __enum__
 	const LYRA_11
 	const LYRA_12
 
-	trainerclass LORELEI ; 5a
+	trainerclass LORELEI ; 5b
 
-	trainerclass AGATHA ; 5b
+	trainerclass AGATHA ; 5c
 
-	trainerclass YELLOW ; 5c
+	trainerclass YELLOW ; 5d
 
-	trainerclass WALKER ; 5d
+	trainerclass WALKER ; 5e
 
-	trainerclass BILL_T ; 5e
+	trainerclass BILL_T ; 5f
 
-	trainerclass LAWRENCE ; 5f
+	trainerclass LAWRENCE ; 60
 
-	trainerclass GIOVANNI ; 60
+	trainerclass GIOVANNI ; 61
 
-	trainerclass STEVEN ; 61
+	trainerclass STEVEN ; 62
 
-	trainerclass CYNTHIA ; 62
+	trainerclass CYNTHIA ; 63
 
-	trainerclass TOWERTYCOON ; 63
+	trainerclass TOWERTYCOON ; 64
 
-	trainerclass VALERIE ; 64
+	trainerclass VALERIE ; 65
 
-	trainerclass REI ; 65
+	trainerclass REI ; 66
 
-	trainerclass OMASTAR_FOSSIL ; 66
+	trainerclass OMASTAR_FOSSIL ; 67
 
-	trainerclass KABUTOPS_FOSSIL ; 67
+	trainerclass KABUTOPS_FOSSIL ; 68
 
-	trainerclass AERODACTYL_FOSSIL ; 68
+	trainerclass AERODACTYL_FOSSIL ; 69
 
 NUM_TRAINER_CLASSES EQU __enum__
 

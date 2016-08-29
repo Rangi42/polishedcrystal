@@ -261,7 +261,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Thornton@@", LASS
 	db "Turner@@@@", OFFICERM
 	db "Van Dyke@@", SKIER
-	db "Walker@@@@", SCHOOLBOY
+	db "Wayne@@@@@", SCHOOLBOY
 	db "Meyer@@@@@", SWIMMERF
 	db "Johnson@@@", YOUNGSTER
 	db "Adams@@@@@", GUITARISTM

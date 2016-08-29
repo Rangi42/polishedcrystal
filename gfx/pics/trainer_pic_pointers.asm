@@ -80,12 +80,13 @@
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
 	add_pic AceDuoPic
+	add_pic VeteranmPic
+	add_pic VeteranfPic
 	add_pic ProtonPic
 	add_pic PetrelPic
 	add_pic ArcherPic
 	add_pic ArianaPic
 	add_pic PokemonProfPic
-	add_pic GameFreakPic
 	add_pic MysticalmanPic
 	add_pic LyraPic
 	add_pic LoreleiPic

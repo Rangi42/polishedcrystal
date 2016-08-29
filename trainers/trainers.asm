@@ -10332,98 +10332,6 @@ CooltrainerMGroup:
 ; ================
 
 	; COOLTRAINERM
-	db "Matt@"
-	db 3 ; item + moves
-
-	; party
-
-	db 40, FERALIGATR, KINGS_ROCK
-		db SCARY_FACE
-		db METAL_CLAW
-		db CRUNCH
-		db WATERFALL
-
-	db 38, AMPHAROS, MAGNET
-		db HEAL_BELL
-		db CONFUSE_RAY
-		db FIRE_PUNCH
-		db THUNDERBOLT
-
-	db 37, URSARING, LEFTOVERS
-		db BELLY_DRUM
-		db PLAY_ROUGH
-		db SLASH
-		db STRENGTH
-
-	db 37, NOCTOWL, QUICK_CLAW
-		db REFLECT
-		db PSYBEAM
-		db SHADOW_BALL
-		db FLY
-
-	db 39, ARCANINE, CHARCOAL
-		db FLAME_WHEEL
-		db FLAMETHROWER
-		db DOUBLE_KICK
-		db TAKE_DOWN
-
-	db 36, SANDSLASH, HARD_STONE
-		db SLASH
-		db EARTHQUAKE
-		db DEFENSE_CURL
-		db ROLLOUT
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM
-	db "Ringo@"
-	db 3 ; item + moves
-
-	; party
-
-	db 42, BLASTOISE, MYSTIC_WATER
-		db SURF
-		db AQUA_TAIL
-		db FLASH_CANNON
-		db ICE_BEAM
-
-	db 41, NINETALES, CHARCOAL
-		db FLAMETHROWER
-		db SHADOW_BALL
-		db CONFUSE_RAY
-		db EXTRASENSORY
-
-	db 39, VICTREEBEL, MIRACLE_SEED
-		db SLUDGE_BOMB
-		db SEED_BOMB
-		db SLEEP_POWDER
-		db SWORDS_DANCE
-
-	db 39, RAICHU, SILK_SCARF
-		db SURF
-		db THUNDERBOLT
-		db EXTREMESPEED
-		db NASTY_PLOT
-
-	db 40, ALAKAZAM, TWISTEDSPOON
-		db TRI_ATTACK
-		db PSYBEAM
-		db RECOVER
-		db REFLECT
-
-	db 38, SKARMORY, SHARP_BEAK
-		db DRILL_PECK
-		db SWIFT
-		db STEEL_WING
-		db ROCK_SMASH
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERM
 	db "Henri@"
 	db 0 ; normal
 
@@ -10785,98 +10693,6 @@ CooltrainerFGroup:
 	db $ff ; end
 
 ; ================
-
-	; COOLTRAINERF
-	db "Joanne@"
-	db 3 ; item + moves
-
-	; party
-
-	db 41, VENUSAUR, MIRACLE_SEED
-		db GROWTH
-		db SLUDGE_BOMB
-		db PETAL_DANCE
-		db SLEEP_POWDER
-
-	db 38, PIDGEOT, QUICK_CLAW
-		db FLY
-		db SWIFT
-		db TWISTER
-		db WHIRLWIND
-
-	db 39, SCYTHER, EVIOLITE
-		db SLASH
-		db WING_ATTACK
-		db SWORDS_DANCE
-		db PURSUIT
-
-	db 38, ELECTABUZZ, MAGNET
-		db THUNDERBOLT
-		db MEDITATE
-		db KARATE_CHOP
-		db LIGHT_SCREEN
-
-	db 40, POLIWRATH, KINGS_ROCK
-		db WATERFALL
-		db SURF
-		db STRENGTH
-		db BODY_SLAM
-
-	db 37, FLAREON, CHARCOAL
-		db SMOKESCREEN
-		db FLAME_WHEEL
-		db QUICK_ATTACK
-		db IRON_TAIL
-
-	db $ff ; end
-
-; ================
-
-	; COOLTRAINERF
-	db "Kotori@"
-	db 3 ; item + moves
-
-	; party
-
-	db 41, TYPHLOSION, CHARCOAL
-		db FLAME_WHEEL
-		db THUNDERPUNCH
-		db DIG
-		db STRENGTH
-
-	db 40, GLACEON, NEVERMELTICE
-		db ICE_BEAM
-		db RECOVER
-		db BARRIER
-		db IRON_TAIL
-
-	db 39, TOGEKISS, LEFTOVERS
-		db FLY
-		db SOFTBOILED
-		db FOCUS_BLAST
-		db EXTREMESPEED
-
-	db 39, OCTILLERY, QUICK_CLAW
-		db SURF
-		db ICE_BEAM
-		db PSYBEAM
-		db SEED_BOMB
-
-	db 37, HERACROSS, KINGS_ROCK
-		db ROCK_SMASH
-		db STRENGTH
-		db COUNTER
-		db DOUBLE_TEAM
-
-	db 38, PUPITAR, EVIOLITE
-		db EARTHQUAKE
-		db ROCK_SLIDE
-		db SCARY_FACE
-		db DARK_PULSE
-
-	db $ff ; end
-
-; ================
 ; ================================
 
 
@@ -11047,6 +10863,202 @@ AceDuoGroup:
 		db BUBBLE_BEAM
 		db OUTRAGE
 		db WATERFALL
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+VeteranMGroup:
+; ================================
+; ================
+
+	; VETERANM
+	db "Matt@"
+	db 3 ; item + moves
+
+	; party
+
+	db 40, FERALIGATR, KINGS_ROCK
+		db SCARY_FACE
+		db METAL_CLAW
+		db CRUNCH
+		db WATERFALL
+
+	db 38, AMPHAROS, MAGNET
+		db HEAL_BELL
+		db CONFUSE_RAY
+		db FIRE_PUNCH
+		db THUNDERBOLT
+
+	db 37, URSARING, LEFTOVERS
+		db BELLY_DRUM
+		db PLAY_ROUGH
+		db SLASH
+		db STRENGTH
+
+	db 37, NOCTOWL, QUICK_CLAW
+		db REFLECT
+		db PSYBEAM
+		db SHADOW_BALL
+		db FLY
+
+	db 39, ARCANINE, CHARCOAL
+		db FLAME_WHEEL
+		db FLAMETHROWER
+		db DOUBLE_KICK
+		db TAKE_DOWN
+
+	db 36, SANDSLASH, HARD_STONE
+		db SLASH
+		db EARTHQUAKE
+		db DEFENSE_CURL
+		db ROLLOUT
+
+	db $ff ; end
+
+; ================
+
+	; VETERANM
+	db "Ringo@"
+	db 3 ; item + moves
+
+	; party
+
+	db 42, BLASTOISE, MYSTIC_WATER
+		db SURF
+		db AQUA_TAIL
+		db FLASH_CANNON
+		db ICE_BEAM
+
+	db 41, NINETALES, CHARCOAL
+		db FLAMETHROWER
+		db SHADOW_BALL
+		db CONFUSE_RAY
+		db EXTRASENSORY
+
+	db 39, VICTREEBEL, MIRACLE_SEED
+		db SLUDGE_BOMB
+		db SEED_BOMB
+		db SLEEP_POWDER
+		db SWORDS_DANCE
+
+	db 39, RAICHU, SILK_SCARF
+		db SURF
+		db THUNDERBOLT
+		db EXTREMESPEED
+		db NASTY_PLOT
+
+	db 40, ALAKAZAM, TWISTEDSPOON
+		db TRI_ATTACK
+		db PSYBEAM
+		db RECOVER
+		db REFLECT
+
+	db 38, SKARMORY, SHARP_BEAK
+		db DRILL_PECK
+		db SWIFT
+		db STEEL_WING
+		db ROCK_SMASH
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+VeteranFGroup:
+; ================================
+; ================
+
+	; VETERANF
+	db "Joanne@"
+	db 3 ; item + moves
+
+	; party
+
+	db 41, VENUSAUR, MIRACLE_SEED
+		db GROWTH
+		db SLUDGE_BOMB
+		db PETAL_DANCE
+		db SLEEP_POWDER
+
+	db 38, PIDGEOT, QUICK_CLAW
+		db FLY
+		db SWIFT
+		db TWISTER
+		db WHIRLWIND
+
+	db 39, SCYTHER, EVIOLITE
+		db SLASH
+		db WING_ATTACK
+		db SWORDS_DANCE
+		db PURSUIT
+
+	db 38, ELECTABUZZ, MAGNET
+		db THUNDERBOLT
+		db MEDITATE
+		db KARATE_CHOP
+		db LIGHT_SCREEN
+
+	db 40, POLIWRATH, KINGS_ROCK
+		db WATERFALL
+		db SURF
+		db STRENGTH
+		db BODY_SLAM
+
+	db 37, FLAREON, CHARCOAL
+		db SMOKESCREEN
+		db FLAME_WHEEL
+		db QUICK_ATTACK
+		db IRON_TAIL
+
+	db $ff ; end
+
+; ================
+
+	; VETERANF
+	db "Kotori@"
+	db 3 ; item + moves
+
+	; party
+
+	db 41, TYPHLOSION, CHARCOAL
+		db FLAME_WHEEL
+		db THUNDERPUNCH
+		db DIG
+		db STRENGTH
+
+	db 40, GLACEON, NEVERMELTICE
+		db ICE_BEAM
+		db RECOVER
+		db BARRIER
+		db IRON_TAIL
+
+	db 39, TOGEKISS, LEFTOVERS
+		db FLY
+		db SOFTBOILED
+		db FOCUS_BLAST
+		db EXTREMESPEED
+
+	db 39, OCTILLERY, QUICK_CLAW
+		db SURF
+		db ICE_BEAM
+		db PSYBEAM
+		db SEED_BOMB
+
+	db 37, HERACROSS, KINGS_ROCK
+		db ROCK_SMASH
+		db STRENGTH
+		db COUNTER
+		db DOUBLE_TEAM
+
+	db 38, PUPITAR, EVIOLITE
+		db EARTHQUAKE
+		db ROCK_SLIDE
+		db SCARY_FACE
+		db DARK_PULSE
 
 	db $ff ; end
 
@@ -11338,63 +11350,6 @@ PokemonProfGroup:
 	db 80, CHARIZARD
 	db 80, BLASTOISE
 	db 82, KANGASKHAN
-
-	db $ff ; end
-
-; ================
-; ================================
-
-
-GameFreakGroup:
-; ================================
-; ================
-
-	; unused
-	; GAME_FREAK
-	db "Morimoto@"
-	db 0 ; normal
-
-	; party
-	db 57, HOUNDOOM
-	db 58, JOLTEON
-	db 58, FLAREON
-	db 58, VAPOREON
-	db 57, STEELIX
-	db 57, RAICHU
-
-	db $ff ; end
-
-; ================
-
-	; unused
-	; GAME_FREAK
-	db "Nishino@"
-	db 0 ; normal
-
-	; party
-	db 58, CLEFABLE
-	db 57, AZUMARILL
-	db 57, WIGGLYTUFF
-	db 58, BLISSEY
-	db 58, SNORLAX
-	db 57, GOLEM
-
-	db $ff ; end
-
-; ================
-
-	; unused
-	; GAME_FREAK
-	db "Ishihara@"
-	db 0 ; normal
-
-	; party
-	db 59, EXEGGUTOR
-	db 58, PORYGON_Z
-	db 57, FLAREON
-	db 56, DUGTRIO
-	db 58, LAPRAS
-	db 57, RHYDON
 
 	db $ff ; end
 
