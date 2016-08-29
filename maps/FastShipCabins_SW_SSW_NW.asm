@@ -49,17 +49,8 @@ TrainerGuitaristmClyde:
 
 GuitaristmClydeScript:
 	end_if_just_battled
-	special Mobile_DummyReturnFalse
-	iftrue .mobile
 	opentext
 	writetext UnknownText_0x75d65
-	waitbutton
-	closetext
-	end
-
-.mobile
-	opentext
-	writetext UnknownText_0x75cfe
 	waitbutton
 	closetext
 	end
@@ -180,16 +171,6 @@ GuitaristmClydeSeenText:
 GuitaristmClydeBeatenText:
 	text "Yowza!"
 	line "Total distortion!"
-	done
-
-UnknownText_0x75cfe:
-	text "I was going to"
-	line "make my debut at"
-	cont "the Battle Tower…"
-
-	para "I should go back"
-	line "to Vermilion and"
-	cont "redo my training…"
 	done
 
 UnknownText_0x75d65:

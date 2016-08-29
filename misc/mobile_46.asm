@@ -4743,11 +4743,11 @@ Function11a235: ; 11a235
 ; 11a2cf
 
 String_11a2cf: ; 11a2cf
-	db "Yes@"
+	db "YES@"
 ; 11a2d3
 
 String_11a2d3: ; 11a2d3
-	db "No@"
+	db "NO@"
 ; 11a2d6
 
 MenuDataHeader_11a2d6: ; 11a2d6
@@ -5607,40 +5607,40 @@ Function11a9f4: ; 11a9f4
 ; 11aa13
 
 Text_SaveFileWillBeSent: ; 0x11aa13
-	text "Save file will be"
+	text "SAVE FILE will be"
 	line "sent."
 	done
 ; 0x11aa2c
 
 Text_SentSaveFileReadingNews: ; 0x11aa2c
-	text "Sent save file."
-	line "Reading News…"
+	text "Sent SAVE FILE."
+	line "Reading NEWS…"
 	done
 ; 0x11aa4b
 
 Text_ReadingNews: ; 0x11aa4b
-	text "Reading News…"
+	text "Reading NEWS…"
 	done
 ; 0x11aa5a
 
 Text_ReceivedNews: ; 0x11aa5a
-	text "Received News!"
+	text "Received NEWS!"
 	done
 ; 0x11aa6a
 
 Text_QuitReadingNews: ; 0x11aa6a
-	text "Quit reading News?"
+	text "Quit reading NEWS?"
 	done
 ; 0x11aa7e
 
 Text_CanceledSendingSaveFile: ; 0x11aa7e
 	text "Canceled sending"
-	line "save file."
+	line "SAVE FILE."
 	done
 ; 0x11aa9b
 
 Text_ReceivedOddEgg: ; 0x11aa9b
-	text "Odd Egg"
+	text "ODD EGG"
 	line "was received!"
 	done
 ; 0x11aab2
@@ -5653,12 +5653,12 @@ Text_RegisteringRecord: ; 0x11aab2
 
 Text_BattleRoomVisitLimit: ; 0x11aacc
 	text "One visit per day"
-	line "per Battle Room!"
+	line "per BATTLE ROOM!"
 	done
 ; 0x11aaf0
 
 Text_PartyMonTopsThisLevel: ; 0x11aaf0
-	text "A party #mon"
+	text "A party #MON"
 	line "tops this level."
 	done
 ; 0x11ab0f
@@ -5666,28 +5666,28 @@ Text_PartyMonTopsThisLevel: ; 0x11aaf0
 Text_UberRestriction: ; 0x11ab0f
 	text_from_ram wcd49
 	text " may go"
-	line "only to Battle"
+	line "only to BATTLE"
 
-	para "Rooms that are"
+	para "ROOMS that are"
 	line "Lv.70 or higher."
 	done
 ; 0x11ab4a
 
 Text_CancelBattleRoomChallenge: ; 0x11ab4a
-	text "Cancel your Battle"
-	line "Room challenge?"
+	text "Cancel your BATTLE"
+	line "ROOM challenge?"
 	done
 ; 0x11ab6e
 
 Text_ExitGymLeaderHonorRoll: ; 0x11ab6e
-	text "Exit Gym Leader"
-	line "Honor Roll?"
+	text "Exit GYM LEADER"
+	line "HONOR ROLL?"
 	done
 ; 0x11ab8b
 
 Text_LinkingWithCenter: ; 0x11ab8b
 	text "Linking with the"
-	line "Center…"
+	line "CENTER…"
 	done
 ; 0x11aba5
 
@@ -5698,25 +5698,25 @@ Text_WhatLevelDoYouWantToChallenge: ; 0x11aba5
 ; 0x11abcb
 
 Text_CheckBattleRoomListByMaxLevel: ; 0x11abcb
-	text "Check Battle Room"
+	text "Check BATTLE ROOM"
 	line "list by max level?"
 	done
 ; 0x11abf1
 
 Text_EnterWhichBattleRoom: ; 0x11abf1
 	text "Enter which"
-	line "Battle Room?"
+	line "BATTLE ROOM?"
 	done
 ; 0x11ac0b
 
 Text_WhichBattleRoom: ; 0x11ac0b
-	text "Which Battle Room?"
+	text "Which BATTLE ROOM?"
 	done
 ; 0x11ac1f
 
 Text_ThisBattleRoomPleaseWait: ; 0x11ac1f
 	text_from_ram StringBuffer3
-	text "'s Room"
+	text "'s ROOM"
 	line "@"
 	text_from_ram StringBuffer4
 	text "?"

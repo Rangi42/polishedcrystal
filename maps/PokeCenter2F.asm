@@ -2,7 +2,6 @@ const_value set 2
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
-	const POKECENTER2F_OFFICER
 
 PokeCenter2F_MapScriptHeader:
 .MapTriggers:
@@ -20,14 +19,6 @@ PokeCenter2F_MapScriptHeader:
 	db 0
 
 .Trigger0:
-	special Special_CheckMysteryGift
-	if_equal $0, .Trigger0Done
-	clearevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
-	iftrue .Trigger0Done
-	priorityjump PokeCenter2F_AppearMysteryGiftDeliveryGuy
-
-.Trigger0Done:
 	end
 
 .Trigger1:
@@ -48,11 +39,6 @@ PokeCenter2F_MapScriptHeader:
 
 .Trigger5:
 	priorityjump Script_LeftMobileBattleRoom
-	end
-
-PokeCenter2F_AppearMysteryGiftDeliveryGuy:
-	appear POKECENTER2F_OFFICER
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
 	end
 
 Script_TradeCenterClosed:
@@ -78,13 +64,6 @@ LinkReceptionistScript_Trade:
 	writetext Text_TradeReceptionistIntro
 	yesorno
 	iffalse .Cancel
-	special Mobile_DummyReturnFalse ; always returns false
-	iffalse .NoMobile
-	writetext Text_TradeReceptionistMobile
-	special AskMobileOrCable
-	iffalse .Cancel
-	if_equal $1, .Mobile
-.NoMobile:
 	special Special_SetBitsForLinkTradeRequest
 	writetext Text_PleaseWait
 	special Special_WaitForLinkedFriend
@@ -139,40 +118,6 @@ LinkReceptionistScript_Trade:
 	closetext
 	end
 
-.Mobile:
-	scall .Mobile_TrySave
-	iftrue .Mobile_Abort
-	scall BattleTradeMobile_WalkIn
-	warpcheck
-	end
-
-.Mobile_Abort:
-	end
-
-.Mobile_TrySave:
-	writetext Text_MustSaveGame
-	yesorno
-	iffalse .Mobile_DidNotSave
-	special Special_TryQuickSave
-	iffalse .Mobile_DidNotSave
-	special Function1011f1
-	writetext Text_PleaseComeIn2
-	waitbutton
-	closetext
-	writebyte $0
-	end
-
-.Mobile_DidNotSave:
-	writetext Text_PleaseComeAgain
-	closetext
-	writebyte $1
-	end
-
-BattleTradeMobile_WalkIn:
-	applymovement2 PokeCenter2FMobileMobileMovementData_ReceptionistWalksUpAndLeft_LookDown
-	applymovement PLAYER, PokeCenter2FMobileMovementData_PlayerWalksIntoMobileBattleRoom
-	end
-
 LinkReceptionistScript_Battle:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalse Script_BattleRoomClosed
@@ -180,13 +125,6 @@ LinkReceptionistScript_Battle:
 	writetext Text_BattleReceptionistIntro
 	yesorno
 	iffalse .Cancel
-	special Mobile_DummyReturnFalse ; always returns false
-	iffalse .NoMobile
-	writetext Text_BattleReceptionistMobile
-	special AskMobileOrCable
-	iffalse .Cancel
-	if_equal $1, .Mobile
-.NoMobile:
 	special Special_SetBitsForBattleRequest
 	writetext Text_PleaseWait
 	special Special_WaitForLinkedFriend
@@ -239,57 +177,6 @@ LinkReceptionistScript_Battle:
 	special WaitForOtherPlayerToExit
 .Cancel:
 	closetext
-	end
-
-.Mobile:
-	scall .SelectThreeMons
-	iffalse .Mobile_Abort
-	scall .Mobile_TrySave
-	iftrue .Mobile_Abort
-	scall BattleTradeMobile_WalkIn
-	warpcheck
-	end
-
-.Mobile_Abort:
-	end
-
-.Mobile_TrySave:
-	writetext Text_MustSaveGame
-	yesorno
-	iffalse .Mobile_DidNotSave
-	special Function103780
-	iffalse .Mobile_DidNotSave
-	special Function1011f1
-	writetext Text_PleaseComeIn2
-	waitbutton
-	closetext
-	writebyte $0
-	end
-
-.Mobile_DidNotSave:
-	writetext Text_PleaseComeAgain
-	closetext
-	writebyte $1
-	end
-
-.SelectThreeMons:
-	special Mobile_SelectThreeMons
-	iffalse .Mobile_DidNotSelect
-	if_equal $1, .Mobile_OK
-	if_equal $2, .Mobile_OK
-	if_equal $3, .Mobile_InvalidParty
-	jump .Mobile_DidNotSelect
-
-.Mobile_InvalidParty:
-	writetext Text_BrokeStadiumRules
-	waitbutton
-.Mobile_DidNotSelect:
-	closetext
-	writebyte $0
-	end
-
-.Mobile_OK:
-	writebyte $1
 	end
 
 Script_TimeCapsuleClosed:
@@ -591,49 +478,10 @@ MapPokeCenter2FSignpost0Script:
 	closetext
 	end
 
-OfficerScript_0x192c9a:
-	faceplayer
-	opentext
-	checkevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-	iftrue .AlreadyGotGift
-	writetext Text_MysteryGiftDeliveryGuy_Intro
-	yesorno
-	iffalse .RefusedGift
-	writetext Text_MysteryGiftDeliveryGuy_HereYouGo
-	buttonsound
-	waitsfx
-	special Special_GetMysteryGiftItem
-	iffalse .BagIsFull
-	itemnotify
-	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-.AlreadyGotGift:
-	writetext Text_MysteryGiftDeliveryGuy_Outro
-	waitbutton
-	closetext
-	end
-
-.BagIsFull:
-	writetext Text_MysteryGiftDeliveryGuy_NoRoom
-	waitbutton
-	closetext
-	end
-
-.RefusedGift:
-	writetext Text_MysteryGiftDeliveryGuy_SaidNo
-	waitbutton
-	closetext
-	end
-
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
 	slow_step_up
 	slow_step_left
 	turn_head_right
-	step_end
-
-PokeCenter2FMobileMobileMovementData_ReceptionistWalksUpAndLeft_LookDown:
-	slow_step_up
-	slow_step_left
-	turn_head_down
 	step_end
 
 PokeCenter2FMovementData_ReceptionistStepsLeftLooksDown:
@@ -668,13 +516,6 @@ PokeCenter2FMovementData_PlayerTakesTwoStepsUp:
 	step_end
 
 PokeCenter2FMovementData_PlayerTakesOneStepUp:
-	step_up
-	step_end
-
-PokeCenter2FMobileMovementData_PlayerWalksIntoMobileBattleRoom:
-	step_up
-	step_up
-	step_right
 	step_up
 	step_end
 
@@ -800,27 +641,6 @@ PokeCenter2FMovementData_ReceptionistStepsRightLooksLeft_2:
 	slow_step_right
 	turn_head_left
 	step_end
-
-Text_BattleReceptionistMobile:
-	text "Would you like to"
-	line "battle over a Game"
-
-	para "Link cable or by"
-	line "mobile phone?"
-	done
-
-Text_TradeReceptionistMobile:
-	text "Would you like to"
-	line "trade over a Game"
-
-	para "Link cable or by"
-	line "mobile phone?"
-	done
-
-Text_ThisWayToMobileRoom:
-	text "This way to the"
-	line "Mobile Room."
-	done
 
 Text_BattleReceptionistIntro:
 	text "Welcome to Cable"
@@ -957,39 +777,6 @@ Text_BattleRoomClosed:
 	cont "being adjusted."
 	done
 
-Text_MysteryGiftDeliveryGuy_Intro:
-	text "Hello! You're"
-	line "<PLAYER>, right?"
-
-	para "I have some-"
-	line "thing for you."
-	done
-
-Text_MysteryGiftDeliveryGuy_HereYouGo:
-	text "Here you go!"
-	done
-
-Text_MysteryGiftDeliveryGuy_Outro:
-	text "We hope to serve"
-	line "you again."
-	done
-
-Text_MysteryGiftDeliveryGuy_NoRoom:
-	text "Oh, you have no"
-	line "space for this."
-
-	para "Stop in at any"
-	line "#mon Center"
-
-	para "across the country"
-	line "to pick it up."
-	done
-
-Text_MysteryGiftDeliveryGuy_SaidNo:
-	text "No? That's very"
-	line "strange…"
-	done
-
 Text_OhPleaseWait:
 	text "Oh, please wait."
 	done
@@ -1002,26 +789,6 @@ Text_ChangeTheLook:
 Text_LikeTheLook:
 	text "How does this"
 	line "style look to you?"
-	done
-
-Text_BrokeStadiumRules:
-	text "Excuse me!"
-
-	para "For Stadium rules,"
-	line "please bring six"
-
-	para "different #mon,"
-	line "excluding Eggs."
-
-	para "The six #mon"
-	line "must be different."
-
-	para "Also, they must"
-	line "not be holding"
-	cont "identical items."
-
-	para "Please come back"
-	line "when you're ready."
 	done
 
 PokeCenter2F_MapEventHeader:
@@ -1045,8 +812,7 @@ PokeCenter2F_MapEventHeader:
 	signpost 3, 7, SIGNPOST_READ, MapPokeCenter2FSignpost0Script
 
 .PersonEvents:
-	db 4
+	db 3
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
-	person_event SPRITE_OFFICER, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x192c9a, EVENT_MYSTERY_GIFT_DELIVERY_GUY

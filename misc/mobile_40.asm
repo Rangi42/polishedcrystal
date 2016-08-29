@@ -6016,7 +6016,7 @@ Function1027eb: ; 1027eb
 ; 102804
 
 .Stats_Trade: ; 102804
-	db "Stats     Trade@"
+	db "STATS     TRADE@"
 ; 102814
 
 Function102814: ; 102814
@@ -6345,8 +6345,8 @@ Function1029fe: ; 1029fe
 ; 102a26
 
 String_102a26: ; 102a26
-	db   "Trade"
-	next "Cancel"
+	db   "TRADE"
+	next "CANCEL"
 	db   "@"
 ; 102a33
 
@@ -6892,7 +6892,7 @@ Function102e3e: ; 102e3e
 ; 102e48
 
 .CANCEL: ; 102e48
-	db "Cancel@"
+	db "CANCEL@"
 ; 102e4f
 
 Function102e4f: ; 102e4f

@@ -499,44 +499,6 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 	ret
 ; 2cadf (b:4adf)
 
-Function2cadf: ; 2cadf
-; unreferenced
-	call ConvertCurItemIntoCurTMHM
-	call .CheckHaveRoomForTMHM
-	ld hl, .NoRoomText
-	jr nc, .print
-	ld hl, .ReceivedText
-.print
-	jp PrintText
-; 2caf0
-
-.NoRoomText: ; 0x2caf0
-	; You have no room for any more @ S.
-	text_jump UnknownText_0x1c03fa
-	db "@"
-; 0x2caf5
-
-.ReceivedText: ; 0x2caf5
-	; You received @ !
-	text_jump UnknownText_0x1c0421
-	db "@"
-; 0x2cafa
-
-.CheckHaveRoomForTMHM: ; 2cafa
-	ld a, [wd265]
-	dec a
-	ld hl, TMsHMs
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
-	inc a
-	cp NUM_TMS * 2
-	ret nc
-	ld [hl], a
-	ret
-; 2cb0c
-
 ConsumeTM: ; 2cb0c (b:4b0c)
 	call ConvertCurItemIntoCurTMHM
 	ld a, [wd265]

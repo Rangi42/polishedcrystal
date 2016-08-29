@@ -1317,16 +1317,6 @@ UnknownText_0x1bd39e::
 	line "Don't turn off!"
 	done
 
-UnknownText_0x1bd3be::
-	text_from_ram PlayerName
-	text " received"
-	line "@"
-	text_from_ram StringBuffer1
-	text "!@"
-	sound_item
-	text_waitbutton
-	db "@@"
-
 UnknownText_0x1bd3d7::
 	text "You have no coins."
 	prompt

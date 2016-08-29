@@ -72,21 +72,7 @@ ReceptionistScript_0x560ce:
 	end
 
 Carrie:
-	faceplayer
-	opentext
-	special SpecialGameboyCheck
-	if_not_equal $2, .NotGBC ; This is a dummy check from Gold and Silver.  In normal gameplay, this would not be checked.
-	writetext UnknownText_0x56241
-	waitbutton
-	closetext
-	special Special_UnlockMysteryGift
-	end
-
-.NotGBC:
-	writetext UnknownText_0x56279
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x56279
 
 LassScript_0x56130:
 	jumptextfaceplayer UnknownText_0x562ad
@@ -135,14 +121,6 @@ UnknownText_0x56202:
 
 	para "just perfect for"
 	line "your #mon."
-	done
-
-UnknownText_0x56241:
-	text "Mystery Gift."
-
-	para "With just a"
-	line "little beep, you"
-	cont "get a gift."
 	done
 
 UnknownText_0x56279:

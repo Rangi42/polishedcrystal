@@ -35,9 +35,6 @@ SpecialsPointers:: ; c029
 	add_special Special_Colosseum
 	add_special Special_TimeCapsule
 	add_special Special_CableClubCheckWhichChris
-	add_special Special_CheckMysteryGift
-	add_special Special_GetMysteryGiftItem
-	add_special Special_UnlockMysteryGift
 
 ; Map Events
 	add_special BugContestJudging
@@ -122,7 +119,6 @@ SpecialsPointers:: ; c029
 	add_special PlayCurMonCry
 	add_special ProfOaksPCBoot
 	add_special SpecialGameboyCheck
-	add_special SpecialTrainerHouse
 	add_special Special_CianwoodPhotograph
 	add_special InitRoamMons
 	add_special Special_FadeOutMusic
@@ -147,7 +143,6 @@ SpecialsPointers:: ; c029
 	add_special SpecialCheckForBattleTowerRules
 	add_special Special_GiveOddEgg
 	add_special Reset
-	add_special Function1011f1
 	add_special Function101220
 	add_special Function101225
 	add_special Function101231
@@ -181,12 +176,10 @@ SpecialsPointers:: ; c029
 	add_special Mobile_HealParty
 	add_special RefreshSprites
 	add_special Function1037c2
-	add_special Mobile_DummyReturnFalse
 	add_special Function103780
 	add_special Function10387b
 	add_special AskRememberPassword
 	add_special LoadMapPalettes
-	add_special FindItemInPCOrBag
 	add_special Special_InitialSetDSTFlag
 	add_special Special_InitialClearDSTFlag
 
@@ -314,55 +307,6 @@ Special_KrissHousePC: ; c2e7
 	ld [ScriptVar], a
 	ret
 ; c2f6
-
-Special_CheckMysteryGift: ; c2f6
-	ld a, BANK(sMysteryGiftItem)
-	call GetSRAMBank
-	ld a, [sMysteryGiftItem]
-	and a
-	jr z, .no
-	inc a
-
-.no
-	ld [ScriptVar], a
-	call CloseSRAM
-	ret
-; c309
-
-Special_GetMysteryGiftItem: ; c309
-	ld a, BANK(sMysteryGiftItem)
-	call GetSRAMBank
-	ld a, [sMysteryGiftItem]
-	ld [CurItem], a
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	ld hl, NumItems
-	call ReceiveItem
-	jr nc, .no_room
-	xor a
-	ld [sMysteryGiftItem], a
-	call CloseSRAM
-	ld a, [CurItem]
-	ld [wd265], a
-	call GetItemName
-	ld hl, .ReceiveItemText
-	call PrintText
-	ld a, TRUE
-	ld [ScriptVar], a
-	ret
-
-.no_room
-	call CloseSRAM
-	xor a
-	ld [ScriptVar], a
-	ret
-; c345
-
-.ReceiveItemText: ; 0xc345
-	; received item
-	text_jump UnknownText_0x1bd3be
-	db "@"
-; 0xc34a
 
 BugContestJudging: ; c34a
 	callba _BugContestJudging
@@ -600,13 +544,6 @@ Diploma: ; c49f
 	call ExitAllMenus
 	ret
 ; c4ac
-
-SpecialTrainerHouse: ; 0xc4b9
-	ld a, BANK(sMysteryGiftTrainerHouseFlag)
-	call GetSRAMBank
-	ld a, [sMysteryGiftTrainerHouseFlag]
-	ld [ScriptVar], a
-	jp CloseSRAM
 
 BillBoxSwitchCheck:
 	ld a, [wCurBox]

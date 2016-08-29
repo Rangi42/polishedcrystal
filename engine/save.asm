@@ -26,7 +26,6 @@ SaveMenu: ; 14a1a
 Function14a58: ; 14a58
 	call SetWRAMStateForSave
 	callba StageRTCTimeForSave
-	callba BackupMysteryGift
 	call SavePokemonData
 	call SaveChecksum
 	call SaveBackupPokemonData
@@ -100,7 +99,6 @@ Function14ad5: ; 14ad5
 	ld a, $1
 	ld [wSaveFileExists], a
 	callba StageRTCTimeForSave
-	callba BackupMysteryGift
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -276,7 +274,6 @@ SaveGameData_: ; 14c10
 	ld a, 1
 	ld [wSaveFileExists], a
 	callba StageRTCTimeForSave
-	callba BackupMysteryGift
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -375,7 +372,6 @@ ErasePreviousSave: ; 14cbb
 	call EraseBoxes
 	call EraseHallOfFame
 	call EraseLinkBattleStats
-	call EraseMysteryGift
 	call SaveData
 	call EraseBattleTowerStatus
 	ld a, BANK(sStackTop)
@@ -398,16 +394,6 @@ EraseLinkBattleStats: ; 14ce2
 	call ByteFill
 	jp CloseSRAM
 ; 14cf4
-
-EraseMysteryGift: ; 14cf4
-	ld a, BANK(sBackupMysteryGiftItem)
-	call GetSRAMBank
-	ld hl, sBackupMysteryGiftItem
-	ld bc, sBackupMysteryGiftItemEnd - sBackupMysteryGiftItem
-	xor a
-	call ByteFill
-	jp CloseSRAM
-; 14d06
 
 EraseHallOfFame: ; 14d06
 	ld a, BANK(sHallOfFame)
@@ -637,7 +623,6 @@ TryLoadSaveFile: ; 14ea5 (5:4ea5)
 	call LoadBox
 	callba RestorePartyMonMail
 	callba RestoreMobileEventIndex
-	callba RestoreMysteryGift
 	call ValidateBackupSave
 	call SaveBackupOptions
 	call SaveBackupPlayerData
@@ -654,7 +639,6 @@ TryLoadSaveFile: ; 14ea5 (5:4ea5)
 	call LoadBox
 	callba RestorePartyMonMail
 	callba RestoreMobileEventIndex
-	callba RestoreMysteryGift
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData

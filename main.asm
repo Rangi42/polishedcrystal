@@ -1370,8 +1370,6 @@ INCLUDE "battle/ai/redundant.asm"
 
 INCLUDE "event/move_deleter.asm"
 
-INCLUDE "engine/mysterygift2.asm"
-
 INCLUDE "engine/tmhm2.asm"
 
 MoveDescriptions:: ; 2cb52
@@ -1792,7 +1790,7 @@ SECTION "Effect Commands", ROMX, BANK[$D]
 
 INCLUDE "battle/effect_commands.asm"
 
-SECTION "Enemy Trainers", ROMX, BANK[$E]
+SECTION "Enemy Trainers", ROMX
 
 INCLUDE "battle/ai/items.asm"
 
@@ -1866,7 +1864,7 @@ GetTrainerAttributes: ; 3957b
 
 INCLUDE "trainers/attributes.asm"
 
-SECTION "Enemy Trainer Parties", ROMX
+SECTION "Enemy Trainer Parties", ROMX, BANK[$E]
 
 INCLUDE "trainers/read_party.asm"
 
@@ -6005,8 +6003,6 @@ INCLUDE "misc/gfx_41.asm"
 
 INCLUDE "engine/warp_connection.asm"
 
-INCLUDE "engine/mysterygift.asm"
-
 INCLUDE "battle/used_move_text.asm"
 
 INCLUDE "misc/mobile_41.asm"
@@ -6020,11 +6016,12 @@ SECTION "Intro Logo", ROMX, BANK[$42]
 IntroLogoGFX: ; 109407
 INCBIN "gfx/intro/logo.2bpp.lz"
 
-INCLUDE "misc/unused_title.asm"
+SECTION "bank43", ROMX, BANK[$43]
 
 INCLUDE "engine/title.asm"
 
 INCLUDE "misc/mobile_45.asm"
+
 INCLUDE "misc/mobile_46.asm"
 
 SECTION "bank47", ROMX, BANK[$47]
@@ -6055,6 +6052,8 @@ _UpdateBattleHUDs:
 	call SetHPPal
 	callba FinishBattleAnim
 	ret
+
+SECTION "bank5F", ROMX, BANK[$5F]
 
 INCLUDE "misc/mobile_5f.asm"
 
@@ -6607,10 +6606,6 @@ INCLUDE "engine/shiny_ditto_egg.asm"
 INCLUDE "engine/mystri_egg.asm"
 
 SECTION "bank7F", ROMX, BANK[$7F]
-
-SECTION "stadium2", ROMX[$8000-$220], BANK[$7F]
-
-INCBIN "misc/stadium2_2.bin"
 
 ; Low-pitched fainting cry routine from Pokémon TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm

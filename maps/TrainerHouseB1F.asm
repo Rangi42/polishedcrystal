@@ -23,13 +23,6 @@ TrainerHouseReceptionistScript:
 	iftrue .FoughtTooManyTimes
 	writetext TrainerHouseB1FIntroText
 	buttonsound
-	special SpecialTrainerHouse
-	iffalse .GetDefaultName
-	disappear TRAINERHOUSEB1F_KAY
-	appear TRAINERHOUSEB1F_CAL
-	trainertotext CAL, CAL2, $0
-	jump .GotName
-.GetDefaultName:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .GetCalName
 	disappear TRAINERHOUSEB1F_CAL
@@ -55,15 +48,6 @@ TrainerHouseReceptionistScript:
 	writetext TrainerHouseB1FCalBeforeText
 	waitbutton
 	closetext
-	special SpecialTrainerHouse
-	iffalse .NoSpecialBattle
-	winlosstext TrainerHouseB1FCalBeatenText, 0
-	setlasttalked TRAINERHOUSEB1F_CAL
-	loadtrainer CAL, CAL2
-	startbattle
-	reloadmapafterbattle
-	iffalse .End
-.NoSpecialBattle:
 	winlosstext TrainerHouseB1FCalBeatenText, 0
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .LoadTrainerCal

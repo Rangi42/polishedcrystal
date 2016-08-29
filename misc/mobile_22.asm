@@ -2170,7 +2170,6 @@ Function89d0d: ; 89d0d (22:5d0d)
 	pop af
 	ld [rSVBK], a
 	call SetPalettes
-	;callba Function845db
 	call Function89240
 	ld c, $18
 	call DelayFrames
@@ -4146,7 +4145,6 @@ Function8ab77: ; 8ab77 (22:6b77)
 Function8ab93: ; 8ab93 (22:6b93)
 	call ClearBGPalettes
 	call LoadStandardMenuDataHeader
-	callba Function105688
 	call ClearSprites
 	call Function891fe
 	call Function89b28
