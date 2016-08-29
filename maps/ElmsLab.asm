@@ -548,11 +548,11 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
 .AfterVictorious:
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext ElmsLabLyraText_YouWon
 	waitbutton
@@ -560,6 +560,7 @@ LyraBattleScript:
 	jump .FinishLyra
 
 .AfterYourDefeat:
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext ElmsLabLyraText_YouLost
 	waitbutton

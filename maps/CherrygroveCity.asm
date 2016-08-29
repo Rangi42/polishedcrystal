@@ -463,23 +463,13 @@ SilverCherrygroveWinText:
 	line "happy you won?"
 	done
 
-CherrygroveRivalText_YouLost:
-	text "<......> <......> <......>"
-
-	para "My name's ???."
-
-	para "I'm going to be"
-	line "the world's great-"
-	cont "est #mon"
-	cont "trainer."
-	done
-
 SilverCherrygroveLossText:
 	text "Humph. That was a"
 	line "waste of time."
 	done
 
 CherrygroveRivalText_YouWon:
+CherrygroveRivalText_YouLost:
 	text "<......> <......> <......>"
 
 	para "My name's ???."

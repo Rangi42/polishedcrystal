@@ -11348,18 +11348,17 @@ PokemonProfGroup:
 ; ================================
 ; ================
 
-	; unused
 	; POKEMON_PROF
 	db "Oak@"
 	db 0 ; normal
 
 	; party
-	db 100, TAUROS
-	db 100, VENUSAUR
-	db 100, CHARIZARD
-	db 100, BLASTOISE
-	db 100, ALAKAZAM
-	db 100, DRAGONITE
+	db 78, TAUROS
+	db 76, DODRIO
+	db 80, VENUSAUR
+	db 80, CHARIZARD
+	db 80, BLASTOISE
+	db 82, KANGASKHAN
 
 	db $ff ; end
 

@@ -29,7 +29,7 @@ Oak:
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
 .CheckBadges:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .OpenMtSilver
+	iftrue .BattleOak
 	checkcode VAR_BADGES
 	if_equal 16, .Complain1
 	if_equal  8, .Complain2
@@ -44,10 +44,27 @@ Oak:
 	closetext
 	end
 
-.OpenMtSilver:
+.BattleOak:
+	writetext OakChallengeText
+	yesorno
+	iffalse .NotReady
+	writetext OakSeenText
+	waitbutton
+	closetext
+	winlosstext OakWinText, 0
+	setlasttalked OAKSLAB_OAK
+	loadtrainer POKEMON_PROF, 1
+	startbattle
+	reloadmapafterbattle
+	opentext
 	writetext OakOpenMtSilverText
 	buttonsound
 	setevent EVENT_OPENED_MT_SILVER
+	jump .CheckPokedex
+
+.NotReady:
+	writetext OakRefusedText
+	buttonsound
 	jump .CheckPokedex
 
 .Complain1:
@@ -197,7 +214,7 @@ OakLabGoodbyeText:
 	cont "come visit again."
 	done
 
-OakOpenMtSilverText:
+OakChallengeText:
 	text "Oak: Incredible,"
 	line "<PLAY_G>!"
 
@@ -205,14 +222,8 @@ OakOpenMtSilverText:
 	line "the Elite Four"
 	cont "a second time!"
 
-	para "I was right in my"
-	line "assessment of you."
-
-	para "Tell you what,"
-	line "<PLAY_G>. I'll make"
-
-	para "arrangements so"
-	line "that you can go to"
+	para "You just might be"
+	line "ready to ascend"
 	cont "Mt.Silver."
 
 	para "Mt.Silver is a"
@@ -225,11 +236,47 @@ OakOpenMtSilverText:
 	line "for your average"
 
 	para "trainer, so it's"
-	line "off limits. But"
+	line "off limits."
 
-	para "we can make an"
-	line "exception in your"
-	cont "case, <PLAY_G>."
+	para "I'll need to see"
+	line "your skills for"
+	cont "myself."
+
+	para "Are you ready for"
+	line "a battle?"
+	done
+
+OakRefusedText:
+	text "Oak: Come back"
+	line "when you're ready."
+	done
+
+OakSeenText:
+	text "Oak: Put every-"
+	line "thing you have"
+	cont "into this battle!"
+	done
+
+OakWinText:
+	text "I was right in my"
+	line "assessment of you!"
+	done
+
+OakOpenMtSilverText:
+	text "Oak: Spectacular,"
+	line "<PLAY_G>!"
+
+	para "I'll make arrange-"
+	line "ments so that you"
+
+	para "can go to Mt."
+	line "Silver."
+
+	para "It's unusual, but"
+	line "we can make an"
+
+	para "exception in your"
+	line "case, <PLAY_G>."
 
 	para "Go up to Indigo"
 	line "Plateau. You can"

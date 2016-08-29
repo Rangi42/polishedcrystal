@@ -327,6 +327,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Use beta pagodas for Sprout Tower, Bell Tower, and Dragon's Den.
 * Add: Pan up on entering Bell Tower, Battle Tower, and Radio Tower.
 * Add: Rematch Elite Four only after getting all 16 badges (Prof. Elm and Blue both explain this).
+* Add: Battle Prof. Oak to access Mt. Silver.
 * Add: Accessible waterfall in Yellow Forest.
 * Add: Devamped HGSS sprites for Team Rocket Executives.
 * Add: Replace NES with Wii.
