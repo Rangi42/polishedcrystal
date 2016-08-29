@@ -781,7 +781,7 @@ ENDM
 	phone TRAINER_NONE, PHONECONTACT_BIKESHOP, OAKS_LAB,                  0, UnusedPhoneScript,   0, UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_BILL,     N_A,                       7, BillPhoneScript1,    0, BillPhoneScript2
 	phone TRAINER_NONE, PHONECONTACT_ELM,      ELMS_LAB,                  7, ElmPhoneScript1,     0, ElmPhoneScript2
-	phone TRAINER_NONE, PHONECONTACT_LYRA,     LYRAS_HOUSE_1F,            7, LyraPhoneScript,     0, LyraPhoneScript
+	phone TRAINER_NONE, PHONECONTACT_LYRA,     LYRAS_HOUSE_1F,            7, LyraPhoneScript,     0, LyraPhoneScript2
 	phone SCHOOLBOY,    JACK1,                 NATIONAL_PARK,             7, JackPhoneScript1,    7, JackPhoneScript2
 	phone POKEFANF,     BEVERLY1,              NATIONAL_PARK,             7, BeverlyPhoneScript1, 7, BeverlyPhoneScript2
 	phone SAILOR,       HUEY1,                 OLIVINE_LIGHTHOUSE_2F,     7, HueyPhoneScript1,    7, HueyPhoneScript2
@@ -848,6 +848,10 @@ SpecialPhoneCallList: ; 90627
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_ELM
 	dba ElmPhoneScript2
+
+	dw SpecialCallOnlyWhenOutside
+	db PHONE_LYRA
+	dba LyraPhoneScript2
 ; 90657
 
 UnknownScript_0x90657: ; 0x90657

@@ -89,29 +89,16 @@ UnknownScript_0x1a001e:
 PokefanFScript_0x1a0084:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HM02_FLY
-	iftrue UnknownScript_0x1a00ad
-	writetext UnknownText_0x1a00f1
-	buttonsound
 	checkevent EVENT_BEAT_CHUCK
 	iftrue UnknownScript_0x1a009c
-	writetext UnknownText_0x1a0163
+	writetext UnknownText_0x1a00f1
 	waitbutton
 	closetext
 	end
 
 UnknownScript_0x1a009c:
-	writetext UnknownText_0x1a01e3
-	buttonsound
-	verbosegiveitem HM_FLY
-	iffalse UnknownScript_0x1a00b1
-	setevent EVENT_GOT_HM02_FLY
-	writetext UnknownText_0x1a021d
-	buttonsound
-UnknownScript_0x1a00ad:
 	writetext UnknownText_0x1a0277
 	waitbutton
-UnknownScript_0x1a00b1:
 	closetext
 	end
 
@@ -203,46 +190,23 @@ UnknownText_0x1a00f1:
 	line "to Fly…"
 	done
 
-UnknownText_0x1a0163:
-	text "But you can't use"
-	line "Fly without this"
-	cont "city's Gym Badge."
-
-	para "If you beat the"
-	line "Gym Leader here,"
-	cont "come see me."
-
-	para "I'll have a nice"
-	line "gift for you."
-	done
-
-UnknownText_0x1a01e3:
-	text "That's Cianwood's"
-	line "Gym Badge!"
-
-	para "Then you should"
-	line "take this HM."
-	done
-
-UnknownText_0x1a021d:
-	text "Teach Fly to your"
-	line "#mon."
-
-	para "You will be able"
-	line "to Fly instantly"
-
-	para "to anywhere you "
-	line "have visited."
-	done
-
 UnknownText_0x1a0277:
-	text "My husband lost to"
+	text "That's Cianwood's"
+	line "Gym badge!"
+
+	para "My husband lost to"
 	line "you, so he needs"
 	cont "to train harder."
 
 	para "That's good, since"
 	line "he was getting a"
 	cont "little chubby."
+
+	para "The waterfalls on"
+	line "Route 47 north of"
+
+	para "here are a good"
+	line "training spot."
 	done
 
 UnknownText_0x1a02df:

@@ -49,6 +49,7 @@ ChuckScript_0x9d60f:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_STORMBADGE
+	specialphonecall SPECIALCALL_YELLOWFOREST
 	checkcode VAR_BADGES
 	scall CianwoodGymTriggerRockets
 .FightDone:

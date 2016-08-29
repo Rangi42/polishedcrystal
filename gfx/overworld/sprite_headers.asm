@@ -165,6 +165,12 @@ LoreleiSprite:
 AgathaSprite:
 	sprite_header AgathaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
+PalmerSprite:
+	sprite_header PalmerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+WalkerSprite:
+	sprite_header WalkerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
 LawrenceSprite:
 	sprite_header LawrenceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 
@@ -264,6 +270,9 @@ OfficerFSprite:
 PharmacistSprite: ; 148f2
 	sprite_header PharmacistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 148f8
+
+PISprite:
+	sprite_header PISpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
 PokefanFSprite: ; 14844
 	sprite_header PokefanFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
@@ -368,6 +377,10 @@ SurfSprite: ; 14922
 	sprite_header SurfSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 14928
 
+SurfingPikachuSprite: ; 14868
+	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 1486e
+
 BigSnorlaxSprite: ; 14862
 	sprite_header BigSnorlaxSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 ; 14868
@@ -379,10 +392,6 @@ BigLaprasSprite: ; 148da
 BigOnixSprite: ; 14910
 	sprite_header BigOnixSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 14916
-
-SurfingPikachuSprite: ; 14868
-	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1486e
 
 WeirdTreeSprite: ; 1491c
 	sprite_header WeirdTreeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN

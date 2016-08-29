@@ -339,6 +339,17 @@ LyraPhoneScript:
 	farwritetext LyraPhoneMainText
 	end
 
+LyraPhoneScript2:
+	checkcode VAR_SPECIALPHONECALL
+	if_equal $9, .yellowforest
+	specialphonecall SPECIALCALL_NONE
+	jump LyraPhoneScript
+
+.yellowforest
+	farwritetext LyraPhoneYellowForestText
+	specialphonecall SPECIALCALL_NONE
+	end
+
 ; Jack
 
 JackPhoneScript1:

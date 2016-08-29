@@ -91,6 +91,7 @@
 	add_pic LoreleiPic
 	add_pic AgathaPic
 	add_pic YellowPic
+	add_pic WalkerPic
 	add_pic BillPic
 	add_pic LawrencePic
 	add_pic GiovanniPic

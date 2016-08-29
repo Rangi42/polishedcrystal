@@ -93,6 +93,7 @@ TrainerGroups: ; 0x39999
 	dw LoreleiGroup
 	dw AgathaGroup
 	dw YellowGroup
+	dw WalkerGroup
 	dw BillGroup
 	dw LawrenceGroup
 	dw GiovanniGroup

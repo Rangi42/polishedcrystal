@@ -114,6 +114,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; lorelei
 	db MUSIC_SAGE_ENCOUNTER			; agatha
 	db MUSIC_LASS_ENCOUNTER			; yellow
+	db MUSIC_HIKER_ENCOUNTER		; walker
 	db MUSIC_POKEMANIAC_ENCOUNTER	; bill
 	db MUSIC_HIKER_ENCOUNTER		; lawrence
 	db MUSIC_ROCKET_ENCOUNTER		; giovanni

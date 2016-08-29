@@ -749,27 +749,29 @@ KRIS EQU __enum__
 
 	trainerclass YELLOW ; 5c
 
-	trainerclass BILL_T ; 5d
+	trainerclass WALKER ; 5d
 
-	trainerclass LAWRENCE ; 5e
+	trainerclass BILL_T ; 5e
 
-	trainerclass GIOVANNI ; 5f
+	trainerclass LAWRENCE ; 5f
 
-	trainerclass STEVEN ; 60
+	trainerclass GIOVANNI ; 60
 
-	trainerclass CYNTHIA ; 61
+	trainerclass STEVEN ; 61
 
-	trainerclass TOWERTYCOON ; 62
+	trainerclass CYNTHIA ; 62
 
-	trainerclass VALERIE ; 63
+	trainerclass TOWERTYCOON ; 63
 
-	trainerclass REI ; 64
+	trainerclass VALERIE ; 64
 
-	trainerclass OMASTAR_FOSSIL ; 65
+	trainerclass REI ; 65
 
-	trainerclass KABUTOPS_FOSSIL ; 66
+	trainerclass OMASTAR_FOSSIL ; 66
 
-	trainerclass AERODACTYL_FOSSIL ; 67
+	trainerclass KABUTOPS_FOSSIL ; 67
+
+	trainerclass AERODACTYL_FOSSIL ; 68
 
 NUM_TRAINER_CLASSES EQU __enum__
 

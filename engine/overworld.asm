@@ -1454,12 +1454,12 @@ Group20Sprites:
 	db SPRITE_SAGE
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
+	db SPRITE_WALKER
 	db SPRITE_YELLOW
-	; 5 walking sprites
+	; 6 walking sprites
 	db SPRITE_HOOTHOOT
 	db SPRITE_POKE_BALL
-	; 7 total sprites
-	db SPRITE_SILVER_TROPHY
+	; 8 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY

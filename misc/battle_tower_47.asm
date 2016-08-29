@@ -172,6 +172,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; LORELEI
 	db FEMALE ; AGATHA
 	db MALE   ; YELLOW
+	db MALE   ; WALKER
 	db MALE   ; BILL
 	db MALE   ; LAWRENCE
 	db MALE   ; GIOVANNI

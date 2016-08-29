@@ -87,6 +87,7 @@
 	db "Game Freak@"
 	db "Mystery Man@"
 	db "<PKMN> Trainer@"
+	db "Ex-Leader@"
 	db "Ex-Elite@"
 	db "Ex-Elite@"
 	db "<PKMN> Trainer@"

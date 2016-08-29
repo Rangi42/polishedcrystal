@@ -1186,6 +1186,8 @@
 	const EVENT_BEAT_AGATHA
 ; Yellow
 	const EVENT_BEAT_YELLOW
+; Walker
+	const EVENT_BEAT_WALKER
 ; Bill
 	const EVENT_BEAT_POKEMANIAC_BILL
 ; Steven
