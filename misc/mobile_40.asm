@@ -1779,32 +1779,6 @@ Unknown_100b0a: ; 100b0a
 
 SECTION "bank40_2", ROMX, BANK[$40]
 
-Function100b45: ; 100b45
-	call Function100b7a
-.loop
-	call Mobile_SetOverworldDelay
-	callba MobileMenuJoypad
-	push bc
-	callba Function10402d
-	call Function100e2d
-	pop bc
-	jr c, .asm_100b6b
-	ld a, [wMenuJoypadFilter]
-	and c
-	jr z, .loop
-	callba Mobile_GetMenuSelection
-	ret
-
-.asm_100b6b
-	ld a, [w2DMenuNumCols]
-	ld c, a
-	ld a, [w2DMenuNumRows]
-	call SimpleMultiply
-	ld [wMenuCursorBuffer], a
-	and a
-	ret
-; 100b7a
-
 Function100b7a: ; 100b7a
 	ld hl, CopyMenuData2
 	ld a, [wMenuData2_2DMenuItemStringsBank]
@@ -1863,27 +1837,6 @@ Mobile_SetOverworldDelay: ; 100dd2
 	ld [OverworldDelay], a
 	ret
 ; 100dd8
-
-Function100dd8: ; 100dd8
-	ld c, $01
-	ld b, $03
-	callba Function10062d
-	jr c, .asm_100dfb
-	ld c, $3c
-	ld b, $01
-	call Function10079c
-	jr c, .asm_100dfb
-	callba Function10032e
-	ld a, [wcd2b]
-	and a
-	jr nz, .asm_100dfb
-	xor a
-	ret
-
-.asm_100dfb
-	scf
-	ret
-; 100dfd
 
 Function100dfd: ; 100dfd
 	ld a, [OverworldDelay]
@@ -1953,20 +1906,6 @@ Function100e63: ; 100e63
 	call PlaySFX
 	ret
 ; 100e72
-
-Function100e72: ; 100e72
-	xor a
-	ld hl, wcd29
-	bit 0, [hl]
-	jr z, .asm_100e7c
-	ld a, $0a
-
-.asm_100e7c
-	ld [wcd67], a
-	xor a
-	ld [wcd68], a
-	ret
-; 100e84
 
 Function100e84: ; 100e84
 	ld a, [wcd67]
@@ -2228,15 +2167,6 @@ Unknown_100ff3: ; 100ff3
 	dbwww $04, $a603, 8, NULL
 	dbwww $04, $a007, PARTYMON_STRUCT_LENGTH, NULL
 	db -1
-
-Unknown_10102c: ; 10102c
-	dbwww $80, OTPlayerName, NAME_LENGTH, NULL
-	dbwww $80, OTPlayerID, 2, NULL
-	dbwww $80, OTPartyMonNicknames, PKMN_NAME_LENGTH * PARTY_LENGTH, NULL
-	dbwww $80, OTPartyMonOT, NAME_LENGTH * PARTY_LENGTH, NULL
-	dbwww $80, OTPartyMons, PARTYMON_STRUCT_LENGTH * PARTY_LENGTH, NULL
-	db -1
-; 10104f
 
 Function101050: ; 101050
 	call Function10107d

@@ -272,6 +272,10 @@ UnknownText_0x7a807:
 	para "Just hold down the"
 	line "B Button to run,"
 	cont "indoors or out."
+
+	para "Or use the Option"
+	line "to always run, and"
+	cont "hold B to walk."
 	done
 
 UnknownText_0x7a850:

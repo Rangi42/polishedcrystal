@@ -77,18 +77,6 @@ Function17005a: ; 17005a
 
 INCLUDE "misc/battle_tower_5c.asm"
 
-Function170be4: ; 170be4
-	ld a, $5
-	call GetSRAMBank
-	xor a
-	ld hl, $a894
-	ld bc, $0008
-	call ByteFill
-	call CloseSRAM
-	ret
-
-; 170bf7
-
 Clears5_a89a: ; 170bf7
 	ld a, $5
 	call GetSRAMBank
@@ -208,18 +196,6 @@ INCBIN "gfx/unknown/1715a4.2bpp.lz"
 
 GFX_171848:
 INCBIN "gfx/unknown/171848.2bpp"
-
-Function1719d6: ; 1719d6 (5c:59d6)
-	callba Function1183cb
-	call Function1719ed
-	ld a, [rSVBK]
-	push af
-	ld a, $5
-	ld [rSVBK], a
-	call Function171a11
-	pop af
-	ld [rSVBK], a
-	ret
 
 Function1719ed: ; 1719ed (5c:59ed)
 	xor a
@@ -818,11 +794,7 @@ GFX_172f1f:
 INCBIN "gfx/unknown/172f1f.2bpp"
 
 Tilemap_1733af:
-IF DEF(CRYSTAL11)
-INCBIN "gfx/unknown/1733af_corrupt.tilemap"
-ELSE
 INCBIN "gfx/unknown/1733af.tilemap"
-ENDC
 
 Attrmap_173517:
 INCBIN "gfx/unknown/173517.attrmap"

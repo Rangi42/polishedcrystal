@@ -1,34 +1,3 @@
-GetMysteryGift_MobileAdapterLayout: ; 4930f (mobile)
-	ld a, b
-	cp SCGB_RAM
-	jr nz, .not_ram
-	ld a, [SGBPredef]
-.not_ram
-	push af
-	callba Function9673
-	pop af
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, .dw
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, .done
-	push de
-	jp [hl]
-.done
-	ret
-; 49330 (12:5330)
-
-.dw ; 49330
-
-	dw MG_Mobile_Layout00
-	dw MG_Mobile_Layout01
-	dw MG_Mobile_Layout02
-; 49336
-
 MG_Mobile_Layout_FillBox: ; 49336
 .row
 	push bc
@@ -64,14 +33,6 @@ MG_Mobile_Layout_LoadPals: ; 49351 (12:5351)
 	ld bc, 1 palettes
 	ld a, $5 ; BANK(UnknBGPals)
 	call FarCopyWRAM
-	ret
-
-MG_Mobile_Layout00: ; 4936e (12:536e)
-	call MG_Mobile_Layout_LoadPals
-	call MG_Mobile_Layout_WipeAttrMap
-	call MG_Mobile_Layout_CreatePalBoxes
-	callba ApplyAttrMap
-	callba ApplyPals
 	ret
 
 MG_Mobile_Layout_CreatePalBoxes: ; 49384 (12:5384)
@@ -163,46 +124,6 @@ Function49420:: ; 49420 (12:5420)
 	call FarCopyWRAM
 	ret
 ; 4942f (12:542f)
-
-MG_Mobile_Layout01: ; 4942f
-	call MG_Mobile_Layout_LoadPals
-	ld de, UnknBGPals + $38
-	ld hl, Palette_49478
-	ld bc, $8
-	ld a, $5 ; BANK(UnknBGPals)
-	call FarCopyWRAM
-	call MG_Mobile_Layout_WipeAttrMap
-	hlcoord 0, 0, AttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	xor a
-	call ByteFill
-	hlcoord 0, 14, AttrMap
-	ld bc, 4 * SCREEN_WIDTH
-	ld a, $7
-	call ByteFill
-	ld a, [wd002]
-	bit 6, a
-	jr z, .asm_49464
-	call Function49480
-	jr .asm_49467
-
-.asm_49464
-	call Function49496
-
-.asm_49467
-	callba ApplyAttrMap
-	callba ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
-; 49478
-
-Palette_49478: ; 49478
-	RGB 31, 31, 31
-	RGB 26, 31, 00
-	RGB 20, 16, 03
-	RGB 00, 00, 00
-; 49480
 
 Function49480: ; 49480
 	hlcoord 0, 0, AttrMap
@@ -708,37 +629,6 @@ LoadNavelRockTimePalette:
 
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"
-
-MG_Mobile_Layout02: ; 49706
-	ld hl, Palette_49732
-	ld de, UnknBGPals
-	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
-	callba ApplyPals
-	call MG_Mobile_Layout_WipeAttrMap
-	callba ApplyAttrMap
-	ld hl, Palette_4973a
-	ld de, UnknOBPals
-	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
-	ret
-; 49732
-
-Palette_49732: ; 49732
-	RGB 31, 31, 31
-	RGB 23, 16, 07
-	RGB 23, 07, 07
-	RGB 03, 07, 20
-; 4973a
-
-Palette_4973a: ; 4973a
-	RGB 00, 00, 00
-	RGB 07, 05, 31
-	RGB 14, 18, 31
-	RGB 31, 31, 31
-; 49742
 
 Function49742: ; 49742
 	ld hl, Palette_49757

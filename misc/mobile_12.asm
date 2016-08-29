@@ -395,7 +395,6 @@ Mobile12_Bin2Dec: ; 48444 (12:4444)
 	db "9@"
 ; 48471
 
-MobileProfileString:         db "  Mobile Profile@"
 MobileString_OK:             db "OK@"
 MobileString_ProfileChanged: db "Profile Changed@"
 MobileDesc_Gender:           db "Boy or girl?@"
@@ -447,8 +446,7 @@ MenuData2_0x4851b: ; 0x4851b
 	db $1d ; flags
 	db 6 ; items
 
-Prefectures:
-Wakayama:  db "わかやまけん@" ; Wakayama
+Prefectures: db "@"
 ; 48689
 
 Function486bf: ; 486bf (12:46bf)
@@ -1469,36 +1467,4 @@ Function48d4a: ; 48d4a (12:4d4a)
 	ld a, c
 	ld [hld], a
 	ld [hl], b
-	ret
-
-Function48d94: ; 48d94 (12:4d94)
-	xor a
-	ld [hDividend + 0], a
-	ld [hDividend + 1], a
-	ld a, [hli]
-	ld [hDividend + 0], a
-	ld a, [hl]
-	ld [hDividend + 1], a
-	ld a, 100
-	ld [hDivisor], a
-	ld b, 2
-	call Divide
-	ld a, [hRemainder]
-	ld c, 10
-	call SimpleDivide
-	sla b
-	sla b
-	sla b
-	sla b
-	or b
-	ld [hld], a
-	ld a, [hQuotient + 2]
-	ld c, 10
-	call SimpleDivide
-	sla b
-	sla b
-	sla b
-	sla b
-	or b
-	ld [hl], a
 	ret

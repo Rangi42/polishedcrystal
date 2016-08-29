@@ -6036,12 +6036,6 @@ SECTION "bank77", ROMX, BANK[$77]
 UnownFont: ; 1dc000
 INCBIN "gfx/misc/unown_font.2bpp"
 
-MobileHPIcon: ; 1dc591
-INCBIN "gfx/mobile/hp.1bpp"
-
-MobileLvIcon: ; 1dc599
-INCBIN "gfx/mobile/lv.1bpp"
-
 SECTION "Tileset Data 7", ROMX, BANK[TILESETS_7]
 
 INCLUDE "tilesets/data_7.asm"

@@ -625,12 +625,6 @@ endr
 
 ; functions related to the cable club and various NPC scripts referencing mobile communications
 
-Mobile_DummyReturnFalse: ; 10630f
-	xor a
-	ld [ScriptVar], a
-	ret
-; 106314
-
 MobileFn_106314: mobile ; 106314
 	ld a, $4
 	call GetSRAMBank
@@ -844,38 +838,6 @@ Function106464:: ; 106464
 	callba LoadFrame
 	ret
 ; 10649b
-
-Function1064c3: ; 1064c3
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-	push bc
-	push hl
-	ld hl, Function3f88
-	ld a, b
-	rst FarCall
-	pop hl
-	pop bc
-	pop af
-	ld [rSVBK], a
-	ld de, wDecompressScratch
-	ld b, $0
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-	ld a, [rVBK]
-	push af
-	ld a, $1
-	ld [rVBK], a
-	call Get2bpp
-	pop af
-	ld [rVBK], a
-	pop af
-	ld [rSVBK], a
-	ret
-; 10650a
 
 GFX_106514:
 INCBIN "gfx/unknown/106514.2bpp"

@@ -1,38 +1,3 @@
-Function16c031: ; 16c031
-	xor a
-	ld [wJumptableIndex], a
-	ld [wcf64], a
-	ld [wd002], a
-	ld [wd003], a
-.asm_16c03e
-	call DelayFrame
-	callba Function10635c
-	ld a, [wd002]
-	ld hl, Jumptable_16c05c
-	rst JumpTable
-	call Function16cb2e
-	call Function16cbae
-	ld a, [wd002]
-	cp $ff
-	jr nz, .asm_16c03e
-	ret
-; 16c05c
-
-Jumptable_16c05c: ; 16c05c
-	dw Function16c074
-	dw Function16c0ba
-	dw Function16c089
-	dw Function16c09e
-	dw Function16c0a8
-	dw Function16c0dc
-	dw Function16c0ec
-	dw Function16c0ba
-	dw Function16c0ca
-	dw Function16c0dc
-	dw Function16c0ec
-	dw Function16c081
-; 16c074
-
 Function16c074: ; 16c074
 	ld a, [wcf64]
 	and a
@@ -136,24 +101,6 @@ Function16c0fa: ; 16c0fa
 	pop af
 	ret
 ; 16c108
-
-Function16c108: ; 16c108
-	call DisableLCD
-	ld hl, VTiles2
-	ld de, GFX_16c173
-	lb bc, BANK(GFX_16c173), $68
-	call Get2bpp
-	call Function16c130
-	call Function16c145
-	call Function16c15c
-	hlbgcoord 0, 0
-	call Function16cc73
-	call Function16cc02
-	xor a
-	ld [hBGMapMode], a
-	call EnableLCD
-	ret
-; 16c130
 
 Function16c130: ; 16c130
 	ld de, UnknBGPals

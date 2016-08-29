@@ -37,13 +37,6 @@ Function89174: ; 89174 (22:5174)
 	bit 7, [hl]
 	ret
 
-Function8917a: ; 8917a (22:517a)
-	ld hl, wd002
-	ld bc, $32
-	xor a
-	call ByteFill
-	ret
-
 Function89185: ; 89185 (22:5185)
 ; Compares c bytes starting at de and hl and incrementing together until a match is found.
 	push de
@@ -1771,12 +1764,6 @@ Function89b00: ; 89b00 (22:5b00)
 	ret
 ; 89b07 (22:5b07)
 
-Function89b07: ; 89b07
-	call Function8923c
-	call DelayFrame
-	ret
-; 89b14
-
 Function89b1e: ; 89b1e (22:5b1e)
 	call Function89b00
 	ret
@@ -2232,28 +2219,6 @@ Function89dab: ; 89dab (22:5dab)
 	ld a, $1
 	and a
 	ret
-
-Function89e0a: ; 89e0a (22:5e0a)
-	call OpenSRAMBank4
-	call Function8b3b0
-	call CloseSRAM
-	ld hl, Jumptable_89e18
-	rst JumpTable
-	ret
-
-Jumptable_89e18: ; 89e18 (22:5e18)
-	dw Function89e1e
-	dw Function8a116
-	dw Function8a2aa
-
-
-Function89e1e: ; 89e1e (22:5e1e)
-	call OpenSRAMBank4
-	ld bc, $a037
-	call Function8b36c
-	call CloseSRAM
-	xor a
-	ld [wd02d], a
 
 asm_89e2e: ; 89e2e (22:5e2e)
 	ld a, [wd02d]
@@ -2975,50 +2940,6 @@ Function8a313: ; 8a313 (22:6313)
 	ld [$a60b], a
 	ret
 
-Function8a31c: ; 8a31c (22:631c)
-	push bc
-	call Function8923c
-	callba MG_Mobile_Layout_CreatePalBoxes
-	hlcoord 1, 0
-	call Function8a53d
-	hlcoord 12, 4
-	call Function8a58d
-	call Function8a3b2
-	pop bc
-	ld a, c
-	ld [wMenuCursorBuffer], a
-	ld [MenuSelection], a
-	call PlaceVerticalMenuItems
-	call InitVerticalMenuCursor
-	ld hl, w2DMenuFlags1
-	set 7, [hl]
-.asm_8a34e
-	call Function8a3a2
-	call Function8923c
-	call Function8a453
-	call Function8a4d3
-	call Function8a4fc
-	call Function891ab
-	call SetPalettes
-	call Function8a383
-	jr c, .asm_8a370
-	jr z, .asm_8a34e
-.asm_8a36a
-	call Function89448
-	xor a
-	ld e, a
-	ret
-.asm_8a370
-	call Function89448
-	call PlaceHollowCursor
-	call Function8a3a2
-	ld a, [MenuSelection]
-	cp $ff
-	jr z, .asm_8a36a
-	ld e, a
-	and a
-	ret
-
 Function8a383: ; 8a383 (22:6383)
 	callba MobileMenuJoypad
 	ld a, c
@@ -3391,51 +3312,6 @@ Palette_8a624: ; 8a624
 	RGB 31, 31, 31
 	RGB 00, 00, 00
 ; 8a62c
-
-Function8a62c: ; 8a62c (22:662c)
-	call LoadStandardMenuDataHeader
-	call Function891fe
-	xor a
-	call Function8b94a
-	call Function8b677
-.asm_8a639
-	xor a
-	ld [wd033], a
-	ld [wd032], a
-	ld [wd0e3], a
-	call Function8b7bd
-	ld a, c
-	and a
-	jr z, .asm_8a66a
-	ld [MenuSelection], a
-	ld b, a
-	ld a, [wScrollingMenuCursorPosition]
-	inc a
-	ld [wd034], a
-	push bc
-	call Function8b960
-	ld a, c
-	pop bc
-	jr z, .asm_8a639
-	ld c, a
-	ld hl, Jumptable_8a671
-	ld a, b
-	ld [MenuSelection], a
-	ld a, c
-	dec a
-	rst JumpTable
-	jr .asm_8a639
-.asm_8a66a
-	call Function891fe
-	call Function89b28
-	ret
-
-Jumptable_8a671: ; 8a671 (22:6671)
-	dw Function8a679
-	dw Function8a6cd
-	dw Function8a8c3
-	dw Function8a930
-
 
 Function8a679: ; 8a679 (22:6679)
 	call Function891de
@@ -3814,36 +3690,6 @@ Function8a930: ; 8a930 (22:6930)
 	call CloseSRAM
 	ret
 
-Function8a999: ; 8a999 (22:6999)
-	ld hl, MenuDataHeader_0x8a9c9
-	call LoadMenuDataHeader
-	ld c, $1
-.asm_8a9a1
-	call Function8a9ce
-	jr c, .asm_8a9bb
-	push bc
-	push de
-	call LoadStandardMenuDataHeader
-	pop de
-	dec e
-	ld a, e
-	ld hl, Jumptable_8a9c5
-	rst JumpTable
-	call Function891fe
-	call Function89b28
-	pop bc
-	jr .asm_8a9a1
-.asm_8a9bb
-	call Function89209
-	call CloseWindow
-	call Function8920f
-	ret
-
-Jumptable_8a9c5: ; 8a9c5 (22:69c5)
-	dw Function8aa0a
-	dw Function8ab3b
-; 8a9c9 (22:69c9)
-
 MenuDataHeader_0x8a9c9: ; 0x8a9c9
 	db $40 ; flags
 	db 04, 11 ; start coords
@@ -4076,15 +3922,6 @@ Function8ab77: ; 8ab77 (22:6b77)
 	call PlayClickSFX
 	and a
 	ret
-
-Function8ab93: ; 8ab93 (22:6b93)
-	call ClearBGPalettes
-	call LoadStandardMenuDataHeader
-	call ClearSprites
-	call Function891fe
-	call Function89b28
-	ret
-; 8aba9 (22:6ba9)
 
 Function8aba9: ; 8aba9
 	ld a, $2

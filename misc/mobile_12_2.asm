@@ -292,36 +292,6 @@ Function4aa25: ; 4aa25
 	callba InitPartyMenuWithCancel
 	call Function4aad3
 
-Function4aa34: ; 4aa34
-	ld a, $9
-	ld [PartyMenuActionText], a
-	callba WritePartyMenuTilemap
-	xor a
-	ld [PartyMenuActionText], a
-	callba PrintPartyMenuText
-	call Function4aab6
-	call WaitBGMap
-	call SetPalettes
-	call DelayFrame
-	call Function4ab1a
-	jr z, .asm_4aa66
-	push af
-	call Function4aafb
-	jr c, .asm_4aa67
-	call Function4ab06
-	jr c, .asm_4aa67
-	pop af
-
-.asm_4aa66
-	ret
-
-.asm_4aa67
-	ld hl, wd019
-	set 1, [hl]
-	pop af
-	ret
-; 4aa6e
-
 Function4aa7a: ; 4aa7a
 	ld hl, wd002
 	ld d, $3

@@ -1341,37 +1341,6 @@ Function118ad0:
 	ld bc, $1000
 	jr Function118b10
 
-Function118ae4:
-	push bc
-	push de
-	push hl
-	ld a, $8
-	ld [wcd3c], a
-	call Function119ed8
-	pop hl
-	ld c, $0
-	ld de, wcc60
-.asm_118af5
-	ld a, [hli]
-	ld [de], a
-	inc de
-	and a
-	jr z, .asm_118b06
-	inc c
-	ld a, c
-	cp $a6
-	jr c, .asm_118af5
-	ld a, $da
-	jp Function118805
-
-.asm_118b06
-	call Function118b24
-	pop de
-	pop bc
-	ld a, $2a
-	jp Function119e2b
-; 118b10
-
 Function118b10:
 	push de
 	push bc
