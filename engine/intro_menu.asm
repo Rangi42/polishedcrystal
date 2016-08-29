@@ -758,7 +758,7 @@ OakText1: ; 0x6045
 OakText2: ; 0x604a
 	text_jump _OakText2
 	start_asm
-	ld a, WOOPER
+	ld a, SYLVEON
 	call PlayCry
 	call WaitSFX
 	ld hl, OakText3
