@@ -1,6 +1,7 @@
 const_value set 2
 	const VIRIDIAN_FOREST_POKE_BALL1
 	const VIRIDIAN_FOREST_POKE_BALL2
+	const VIRIDIAN_FOREST_POKE_BALL3
 	const VIRIDIAN_FOREST_BUG_CATCHER1
 	const VIRIDIAN_FOREST_BUG_CATCHER2
 	const VIRIDIAN_FOREST_BUG_CATCHER3
@@ -65,6 +66,19 @@ TrainerBug_catcherAbner:
 	end_if_just_battled
 	opentext
 	writetext BugCatcherAbnerAfterText
+	waitbutton
+	closetext
+	end
+
+ViridianForestWeedleDoll:
+	disappear VIRIDIAN_FOREST_POKE_BALL3
+	setevent EVENT_DECO_WEEDLE_DOLL
+	opentext
+	writetext ViridianForestWeedleDollText
+	playsound SFX_ITEM
+	pause 60
+	waitbutton
+	writetext ViridianForestWeedleSentText
 	waitbutton
 	closetext
 	end
@@ -209,6 +223,16 @@ BugCatcherAbnerAfterText:
 	cont "all look cute."
 	done
 
+ViridianForestWeedleDollText:
+	text "<PLAYER> found"
+	line "Weedle Doll."
+	done
+
+ViridianForestWeedleSentText:
+	text "Weedle Doll"
+	line "was sent home."
+	done
+
 ViridianForestSignText1:
 	text "Leaving"
 	line "Viridian Forest"
@@ -288,9 +312,10 @@ ViridianForest_MapEventHeader:
 	signpost 12, 1, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_POKE_BALL, 29, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
 	person_event SPRITE_POKE_BALL, 31, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
+	person_event SPRITE_POKE_BALL, 16, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
 	person_event SPRITE_BUG_CATCHER, 40, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDane, -1
 	person_event SPRITE_BUG_CATCHER, 33, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_catcherDion, -1
 	person_event SPRITE_BUG_CATCHER, 19, 30, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherStacey, -1
