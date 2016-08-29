@@ -29,7 +29,6 @@ InitMobileProfile: ; 4802f (12:402f)
 	ld hl, VTiles2 tile $11
 	lb bc, BANK(GFX_488cb), 1
 	call Request1bpp
-	call Function4a3a7
 	call ClearBGPalettes
 	ld a, [wd002]
 	bit 6, a

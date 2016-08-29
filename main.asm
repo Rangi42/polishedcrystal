@@ -2318,7 +2318,6 @@ Unknown_4985a: ; unreferenced
 
 INCLUDE "event/celebi.asm"
 INCLUDE "engine/main_menu.asm"
-INCLUDE "misc/mobile_menu.asm"
 INCLUDE "engine/search.asm"
 INCLUDE "misc/mobile_12_2.asm"
 ; mobile battle selection

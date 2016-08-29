@@ -1798,7 +1798,6 @@ Function89b00: ; 89b00 (22:5b00)
 Function89b07: ; 89b07
 	call Function8923c
 	call DelayFrame
-	callba Function4a3a7
 	ret
 ; 89b14
 
@@ -1810,7 +1809,6 @@ Function89b14: ; 89b14
 ; 89b1e
 
 Function89b1e: ; 89b1e (22:5b1e)
-	callba Function4a485
 	call Function89b00
 	ret
 
@@ -2418,7 +2416,6 @@ Function89ee1: ; 89ee1 (22:5ee1)
 	call ClearBGPalettes
 	call Function893e2
 	call Function8923c
-	callba Function4a3a7
 	callba MG_Mobile_Layout_CreatePalBoxes
 	hlcoord 1, 0
 	call Function8a53d
@@ -2948,7 +2945,6 @@ Function8a262: ; 8a262 (22:6262)
 	call ClearBGPalettes
 	call Function893e2
 	call Function8923c
-	callba Function4a3a7
 	callba MG_Mobile_Layout_CreatePalBoxes
 	hlcoord 1, 0
 	call Function8a53d
@@ -3042,7 +3038,6 @@ Function8a313: ; 8a313 (22:6313)
 Function8a31c: ; 8a31c (22:631c)
 	push bc
 	call Function8923c
-	callba Function4a3a7
 	callba MG_Mobile_Layout_CreatePalBoxes
 	hlcoord 1, 0
 	call Function8a53d
