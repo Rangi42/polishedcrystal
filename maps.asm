@@ -569,11 +569,11 @@ INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
+INCLUDE "maps/SinjohRuinsHouse.asm"
 
 
 SECTION "Map Scripts 26", ROMX
 
-INCLUDE "maps/SinjohRuinsHouse.asm"
 INCLUDE "maps/MystriStage.asm"
 INCLUDE "maps/EmbeddedTower.asm"
 INCLUDE "maps/ElmsLab.asm"

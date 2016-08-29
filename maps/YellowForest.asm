@@ -3,8 +3,10 @@ const_value set 2
 	const YELLOWFOREST_TWIN2
 	const YELLOWFOREST_TEACHER
 	const YELLOWFOREST_COOLTRAINER_M1
-	const YELLOWFOREST_YELLOW
 	const YELLOWFOREST_COOLTRAINER_M2
+	const YELLOWFOREST_WALKER
+	const YELLOWFOREST_SKARMORY
+	const YELLOWFOREST_YELLOW
 	const YELLOWFOREST_POKE_BALL1
 	const YELLOWFOREST_POKE_BALL2
 	const YELLOWFOREST_POKE_BALL3
@@ -60,6 +62,48 @@ CooltrainermHenriScript:
 	writetext CooltrainermHenriAfterText
 	waitbutton
 	closetext
+	end
+
+WalkerScript:
+	faceplayer
+	opentext
+	writetext WalkerSeenText
+	waitbutton
+	closetext
+	winlosstext WalkerBeatenText, 0
+	setlasttalked YELLOWFOREST_WALKER
+	loadtrainer WALKER, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_WALKER
+	opentext
+	writetext WalkerAfterText
+	buttonsound
+	verbosegiveitem HM_FLY
+	setevent EVENT_GOT_HM02_FLY
+	writetext WalkerFinalText
+	waitbutton
+	closetext
+	appear YELLOWFOREST_SKARMORY
+	playsound SFX_BALL_POOF
+	spriteface YELLOWFOREST_WALKER, RIGHT
+	waitsfx
+	pause 15
+	cry SKARMORY
+	waitsfx
+	spriteface YELLOWFOREST_WALKER, DOWN
+	opentext
+	writetext WalkerFlyText
+	waitbutton
+	closetext
+	playsound SFX_FLY
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear YELLOWFOREST_WALKER
+	disappear YELLOWFOREST_SKARMORY
+	waitsfx
+	pause 15
+	special Special_FadeInQuickly
 	end
 
 YellowScript:
@@ -255,6 +299,88 @@ CooltrainermHenriAfterText:
 	line "nesses is key."
 	done
 
+WalkerSeenText:
+	text "Hello there!"
+	line "The name's Walker."
+
+	para "I was once the Gym"
+	line "Leader of Violet"
+
+	para "City, but I left"
+	line "that to my son."
+
+	para "Now I wander"
+	line "through Johto and"
+
+	para "take in the"
+	line "sights."
+
+	para "Walker: You're"
+	line "collecting Gym"
+	cont "badges, huh?"
+
+	para "Then my son lost"
+	line "to you!"
+
+	para "Now I want to"
+	line "test your skill"
+	cont "for myself."
+
+	para "I don't have a"
+	line "badge, but you'll"
+
+	para "get something"
+	line "nice if you win!"
+	done
+
+WalkerBeatenText:
+	text "My bird #mon…"
+	line "Taken down!"
+	done
+
+WalkerAfterText:
+	text "Walker: Well, I"
+	line "can see why you"
+
+	para "won against"
+	line "Falkner."
+
+	para "You know your"
+	line "#mon inside"
+	cont "and out!"
+
+	para "You've earned"
+	line "this HM."
+	done
+
+WalkerFinalText:
+	text "Walker: Bird"
+	line "#mon soar"
+
+	para "through the sky"
+	line "because that's"
+
+	para "what they want to"
+	line "do with all their"
+	cont "heart."
+
+	para "If you want some-"
+	line "thing that badly,"
+
+	para "I know you can"
+	line "reach it."
+
+	para "What I want is"
+	line "to keep wandering."
+
+	para "Goodbye!"
+	done
+
+WalkerFlyText:
+	text "Skarmory,"
+	line "let's Fly!"
+	done
+
 YellowText_Greeting:
 	text "Yellow: Hi!"
 	line "I'm Yellow!"
@@ -392,13 +518,15 @@ YellowForest_MapEventHeader:
 	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
 
 .PersonEvents:
-	db 11
+	db 13
 	person_event SPRITE_TWIN, 39, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
 	person_event SPRITE_TWIN, 32, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
 	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
 	person_event SPRITE_COOLTRAINER_M, 35, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermHenri, -1
-	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowScript, -1
 	person_event SPRITE_COOLTRAINER_M, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
+	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, WalkerScript, EVENT_YELLOW_FOREST_WALKER
+	person_event SPRITE_SKARMORY, 22, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
+	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowScript, -1
 	person_event SPRITE_POKE_BALL, 16, 25, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestThunderStone, EVENT_YELLOW_FOREST_THUNDERSTONE
 	person_event SPRITE_POKE_BALL, 24, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestMiracleSeed, EVENT_YELLOW_FOREST_MIRACLE_SEED
 	person_event SPRITE_POKE_BALL, 21, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestUltraBall, EVENT_YELLOW_FOREST_ULTRA_BALL

@@ -5768,7 +5768,6 @@ GruntFGroup:
 	db 0 ; normal
 
 	; party
-
 	db 29, ARBOK
 		db GLARE
 		db SCREECH
@@ -6285,7 +6284,6 @@ PokemaniacGroup:
 	db 0 ; normal
 
 	; party
-
 	db 12, SLOWPOKE
 
 	db $ff ; end
@@ -6885,7 +6883,6 @@ BeautyGroup:
 	db 0 ; normal
 
 	; party
-
 	db 18, SUNKERN
 	db 18, SUNFLORA
 	db 18, SUNFLORA
@@ -8163,7 +8160,6 @@ CoupleGroup:
 	db 0 ; normal
 
 	; party
-
 	db 13, SANDSHREW
 	db 15, MARILL
 	db 15, PIKACHU
@@ -8178,7 +8174,6 @@ CoupleGroup:
 	db 0 ; normal
 
 	; party
-
 	db 15, PIKACHU
 	db 13, POLIWAG
 	db 13, SANDSHREW
@@ -8193,7 +8188,6 @@ CoupleGroup:
 	db 0 ; normal
 
 	; party
-
 	db 25, CLOYSTER
 	db 25, ONIX
 
@@ -8206,7 +8200,6 @@ CoupleGroup:
 	db 0 ; normal
 
 	; party
-
 	db 25, ONIX
 	db 25, CLOYSTER
 
@@ -8900,7 +8893,6 @@ SwimmerFGroup:
 	db 0 ; normal
 
 	; party
-
 	db 20, PSYDUCK
 	db 22, SEEL
 
@@ -10332,7 +10324,6 @@ CooltrainerMGroup:
 	db 0 ; normal
 
 	; party
-
 	db 47, HOUNDOOM
 	db 47, ALAKAZAM
 
@@ -10776,7 +10767,6 @@ CooltrainerFGroup:
 	db 0 ; normal
 
 	; party
-
 	db 50, SLOWKING
 	db 53, KANGASKHAN
 
@@ -10789,7 +10779,6 @@ CooltrainerFGroup:
 	db 0 ; normal
 
 	; party
-
 	db 50, GIRAFARIG
 	db 52, SUDOWOODO
 
@@ -10900,7 +10889,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 55, PORYGON2
 	db 55, AZUMARILL
 
@@ -10913,7 +10901,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 55, AZUMARILL
 	db 55, PORYGON2
 
@@ -10926,7 +10913,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 53, GIRAFARIG
 	db 52, TAUROS
 
@@ -10939,7 +10925,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 52, TAUROS
 	db 53, GIRAFARIG
 
@@ -10952,7 +10937,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 25, MAGMAR
 	db 25, ELECTABUZZ
 
@@ -10965,7 +10949,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 25, ELECTABUZZ
 	db 25, MAGMAR
 
@@ -10978,7 +10961,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 47, DUGTRIO
 	db 47, ELECTABUZZ
 
@@ -10991,7 +10973,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 47, ELECTABUZZ
 	db 47, DUGTRIO
 
@@ -11004,7 +10985,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 37, SANDSLASH
 	db 39, GOLDUCK
 	db 37, PARASECT
@@ -11019,7 +10999,6 @@ AceDuoGroup:
 	db 0 ; normal
 
 	; party
-
 	db 37, PARASECT
 	db 39, VAPOREON
 	db 37, SANDSLASH

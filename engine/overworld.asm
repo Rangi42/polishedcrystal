@@ -801,6 +801,7 @@ SpriteMons: ; 14495
 	db MURKROW
 	db UNOWN
 	db URSARING
+	db SKARMORY
 	db MILTANK
 	db BLISSEY
 	db RAIKOU
@@ -1459,8 +1460,8 @@ Group20Sprites:
 	; 6 walking sprites
 	db SPRITE_HOOTHOOT
 	db SPRITE_POKE_BALL
-	; 8 total sprites
-	db SPRITE_GOLD_TROPHY
+	db SPRITE_SKARMORY
+	; 9 total sprites
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
