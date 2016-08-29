@@ -201,6 +201,7 @@ MetapodEvosAttacks:
 	db 1, TACKLE ; new move
 	db 1, STRING_SHOT ; new move
 	db 1, HARDEN
+	db 7, HARDEN
 	db 0 ; no more level-up moves
 
 ButterfreeEvosAttacks:
@@ -237,6 +238,7 @@ KakunaEvosAttacks:
 	db 1, POISON_STING ; new move
 	db 1, STRING_SHOT ; new move
 	db 1, HARDEN
+	db 7, HARDEN
 	db 0 ; no more level-up moves
 
 BeedrillEvosAttacks:

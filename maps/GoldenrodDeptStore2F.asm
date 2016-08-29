@@ -48,27 +48,6 @@ GoldenrodDeptStore2FDirectory:
 GoldenrodDeptStore2FElevatorButton:
 	jumpstd elevatorbutton
 
-; possibly unused
-UnknownText_0x55b7c:
-	text "We intend to sell"
-	line "items for #mon"
-	cont "to hold."
-
-	para "This is a free"
-	line "gift. Have a #-"
-	cont "mon hold it."
-	done
-
-; possibly unused
-UnknownText_0x55bd3:
-	text "By giving #mon"
-	line "items to hold, I"
-
-	para "bet trainers will"
-	line "develop new battle"
-	cont "techniques."
-	done
-
 UnknownText_0x55c25:
 	text "#gear can store"
 	line "up to ten phone"

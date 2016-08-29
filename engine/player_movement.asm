@@ -341,10 +341,6 @@ DoPlayerMovement:: ; 80000
 	scf
 	ret
 
-; unused?
-	xor a
-	ret
-
 .bump
 	xor a
 	ld [wSpinning], a

@@ -535,14 +535,6 @@ Function893ef: ; 893ef
 	ret
 ; 893fe
 
-Function893fe: ; 893fe
-	call DisableLCD
-	call Function893ef
-	call EnableLCD
-	call DelayFrame
-	ret
-; 8940b
-
 GFX_8940b: ; 8940b
 INCBIN "gfx/unknown/08940b.2bpp"
 ; 8942b
@@ -838,14 +830,6 @@ Palette_895de: ; 895de
 	RGB 00, 00, 00
 ; 895e6
 
-Function895e6: ; 895e6
-	ld a, 7
-	hlcoord 0, 0, AttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
-	ret
-; 895f2
-
 Function895f2: ; 895f2
 	push bc
 	xor a
@@ -1047,14 +1031,6 @@ rept 2
 	inc hl
 endr
 	ld b, 2
-
-ClearScreenArea: ; 0x896ff
-; clears an area of the screen
-; INPUT:
-; hl = address of upper left corner of the area
-; b = height
-; c = width
-
 	ld a, " " ; blank tile
 	ld de, 20 ; screen width
 .loop
@@ -1801,13 +1777,6 @@ Function89b07: ; 89b07
 	ret
 ; 89b14
 
-Function89b14: ; 89b14
-	call ClearBGPalettes
-	call Function89b07
-	call Function89b00
-	ret
-; 89b1e
-
 Function89b1e: ; 89b1e (22:5b1e)
 	call Function89b00
 	ret
@@ -2263,35 +2232,6 @@ Function89dab: ; 89dab (22:5dab)
 	ld a, $1
 	and a
 	ret
-
-Function89de0: ; 89de0 (22:5de0)
-	call ClearSprites
-	call Function89e0a
-	jr c, .asm_89e00
-	ld c, $1
-.asm_89dea
-	call Function8a31c
-	jr z, .asm_89dfd
-	ld a, [wMenuCursorY]
-	ld c, a
-	push bc
-	ld hl, Jumptable_89e04
-	ld a, e
-	dec a
-	rst JumpTable
-	pop bc
-	jr .asm_89dea
-.asm_89dfd
-	call Function891fe
-.asm_89e00
-	call Function8917a
-	ret
-
-Jumptable_89e04: ; 89e04 (22:5e04)
-	dw Function8a62c
-	dw Function8a999
-	dw Function8ab93
-
 
 Function89e0a: ; 89e0a (22:5e0a)
 	call OpenSRAMBank4
@@ -4411,14 +4351,6 @@ Function8adb3: ; 8adb3
 	pop af
 	ret
 ; 8adbf
-
-Function8adbf: ; 8adbf
-	call OpenSRAMBank4
-	ld hl, $a603
-	call Function89b45
-	call CloseSRAM
-	ret
-; 8adcc
 
 Function8adcc: ; 8adcc
 	call OpenSRAMBank4

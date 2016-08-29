@@ -278,13 +278,6 @@ WillPersonBumpIntoSomeoneElse: ; 7009
 	jr IsNPCAtCoord
 ; 7015
 
-Function7015: ; unreferenced
-	ld a, [hMapObjectIndexBuffer]
-	call GetObjectStruct
-	call .CheckWillBeFacingNPC
-	call IsNPCAtCoord
-	ret
-
 .CheckWillBeFacingNPC: ; 7021
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
@@ -480,73 +473,6 @@ IsPersonMovingOffEdgeOfScreen: ; 70ed
 	scf
 	ret
 ; 7113
-
-Function7113: ; unreferenced
-	ld a, [PlayerStandingMapX]
-	ld d, a
-	ld a, [PlayerStandingMapY]
-	ld e, a
-	ld bc, ObjectStructs
-	xor a
-.loop
-	ld [hObjectStructIndexBuffer], a
-	call GetObjectSprite
-	jr z, .next
-	ld hl, OBJECT_MOVEMENTTYPE
-	add hl, bc
-	ld a, [hl]
-	cp SPRITEMOVEDATA_SNORLAX
-	jr nz, .not_snorlax
-	call Function7171
-	jr c, .yes
-	jr .next
-
-.not_snorlax
-	ld hl, OBJECT_NEXT_MAP_Y
-	add hl, bc
-	ld a, [hl]
-	cp e
-	jr nz, .check_current_coords
-	ld hl, OBJECT_NEXT_MAP_X
-	add hl, bc
-	ld a, [hl]
-	cp d
-	jr nz, .check_current_coords
-	ld a, [hObjectStructIndexBuffer]
-	cp $0
-	jr z, .next
-	jr .yes
-
-.check_current_coords
-	ld hl, OBJECT_MAP_Y
-	add hl, bc
-	ld a, [hl]
-	cp e
-	jr nz, .next
-	ld hl, OBJECT_MAP_X
-	add hl, bc
-	ld a, [hl]
-	cp d
-	jr nz, .next
-	jr .yes
-
-.next
-	ld hl, OBJECT_STRUCT_LENGTH
-	add hl, bc
-	ld b, h
-	ld c, l
-	ld a, [hObjectStructIndexBuffer]
-	inc a
-	cp NUM_OBJECT_STRUCTS
-	jr nz, .loop
-	xor a
-	ret
-
-.yes
-	scf
-	ret
-; 7171
-
 
 Function7171: ; 7171
 	ld hl, OBJECT_NEXT_MAP_X

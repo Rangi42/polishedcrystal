@@ -143,12 +143,6 @@ MapCeladonGameCornerSignpost9Script:
 	closetext
 	end
 
-MovementData_0x721cd:
-; Unreferenced.
-	step_right
-	turn_head_left
-	step_end
-
 UnknownText_0x721d0:
 	text "Welcome!"
 

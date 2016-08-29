@@ -308,12 +308,6 @@ ElmPhoneScript2: ; 0xbd081
 	specialphonecall SPECIALCALL_NONE
 	end
 
-.unused ; 0xbd0c8
-	farwritetext ElmPhoneUnusedText
-	specialphonecall SPECIALCALL_NONE
-	end
-; bd0d0
-
 ; Lyra
 
 LyraPhoneScript:

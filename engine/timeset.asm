@@ -194,34 +194,6 @@ DisplayHourOClock: ; 907de (24:47de)
 	ret
 ; 907f1 (24:47f1)
 
-UnreferencedFunction907f1: ; 907f1
-	ld h, d
-	ld l, e
-	push hl
-	call DisplayHourOClock
-	pop de
-rept 2
-	inc de
-endr
-	ld a, ":"
-	ld [de], a
-	inc de
-	push de
-	ld hl, 3
-	add hl, de
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld a, [de]
-	ld [hl], a
-	pop hl
-	call DisplayMinutesWithMinString
-rept 3
-	inc hl
-endr
-	ret
-; 90810
-
 SetMinutes: ; 90810 (24:4810)
 	ld a, [hJoyPressed]
 	and A_BUTTON

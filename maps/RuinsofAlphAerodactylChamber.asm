@@ -97,7 +97,7 @@ MapRuinsofAlphAerodactylChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iftrue UnknownScript_0x58e46
 	opentext
-	writetext UnknownText_0x58e81
+	writetext UnknownText_0x58e4f
 	writebyte $1
 	special Special_DisplayUnownWords
 	closetext
@@ -115,16 +115,6 @@ MovementData_0x58e4d:
 	step_end
 
 UnknownText_0x58e4f:
-	text "Patterns appeared"
-	line "on the walls…"
-	done
-
-; possibly unused.. again?
-UnknownText_0x58e70:
-	text "It's Unown text!"
-	done
-
-UnknownText_0x58e81:
 	text "Patterns appeared"
 	line "on the walls…"
 	done

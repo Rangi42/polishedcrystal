@@ -137,7 +137,7 @@ MapRuinsofAlphKabutoChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue UnknownScript_0x587f7
 	opentext
-	writetext UnknownText_0x58ad9
+	writetext UnknownText_0x58aa7
 	writebyte $0
 	special Special_DisplayUnownWords
 	closetext
@@ -209,36 +209,7 @@ UnknownText_0x589b8:
 	cont "this wall here…"
 	done
 
-; possibly unused
-UnknownText_0x58a03:
-	text "The patterns on"
-	line "the wall appear to"
-	cont "be words!"
-
-	para "And those sliding"
-	line "stone panels seem"
-
-	para "to be signals of"
-	line "some kind."
-
-	para "I think they make"
-	line "#mon appear,"
-
-	para "but it's not clear"
-	line "yet…"
-	done
-
 UnknownText_0x58aa7:
-	text "Patterns appeared"
-	line "on the walls…"
-	done
-
-; possibly unused
-UnknownText_0x58ac8:
-	text "It's Unown text!"
-	done
-
-UnknownText_0x58ad9:
 	text "Patterns appeared"
 	line "on the walls…"
 	done

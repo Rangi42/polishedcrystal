@@ -63,11 +63,6 @@ UnknownText_0x1c073b::
 	para ""
 	done
 
-UnknownText_0x1c0751::
-	text "A #mon is using"
-	line "Strength already."
-	prompt
-
 UnknownText_0x1c0774::
 	text_from_ram StringBuffer2
 	text " used"
@@ -164,11 +159,6 @@ UnknownText_0x1c0958::
 
 UnknownText_0x1c0965::
 	text "Not even a nibble!"
-	prompt
-
-UnknownText_0x1c0979::
-	text "Looks like there's"
-	line "nothing here."
 	prompt
 
 UnknownText_0x1c099a::
@@ -611,21 +601,6 @@ UnknownText_0x1c102b::
 
 	para "Please remove the"
 	line "Mail."
-	prompt
-
-UnknownText_0x1c1062::
-	text "You don't have a"
-	line "single #mon!"
-	prompt
-
-UnknownText_0x1c1080::
-	text "You can't deposit"
-	line "your last #mon!"
-	prompt
-
-UnknownText_0x1c10a2::
-	text "You can't take any"
-	line "more #mon."
 	prompt
 
 UnknownText_0x1c10c0::

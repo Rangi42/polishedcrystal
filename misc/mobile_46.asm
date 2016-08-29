@@ -341,45 +341,6 @@ Function118284: ; 118284
 	ret
 ; 1182d5 (46:42d5)
 
-
-Function1182d5: ; 1182d5
-	call Function1183cb
-	ld a, $18
-	ld [wcd33], a
-	ld a, $19
-	ld [wcd34], a
-	ld a, $4
-	ld [wc3f0], a
-	ld a, [rSVBK]
-	push af
-	ld a, $3
-	ld [rSVBK], a
-.asm_1182ee
-	call JoyTextDelay
-	call Function118473
-	ld a, [wcf66]
-	cp $1b
-	jr c, .asm_118301
-	ld a, [wcd34]
-	ld [wcf66], a
-
-.asm_118301
-	call Function118746
-	call Function11a8fa
-	callba Function115dd3
-	callba Function11619d
-	call DelayFrame
-	ld a, [wcf66]
-	ld hl, wcd33
-	cp [hl]
-	jr nz, .asm_1182ee
-	pop af
-	ld [rSVBK], a
-	call Function118452
-	call ReturnToMapFromSubmenu
-	ret
-; 118329
-
 Function118329: ; 118329
 	call Function1183cb
 	ld a, $15
@@ -1081,24 +1042,6 @@ Function118880: ; 118880 (46:4880)
 	jp Function119e2b
 ; 118896 (46:4896)
 
-Function118896: ; 118896
-	ld a, [wc821]
-	bit 1, a
-	jr nz, .asm_1188a5
-	bit 2, a
-	jr nz, .asm_1188a5
-	bit 0, a
-	jr z, .asm_1188aa
-
-.asm_1188a5
-	ld a, $34
-	jp Function119e2b
-
-.asm_1188aa
-	call Function119e2e
-	jp Function119e2e
-; 1188b0
-
 Function1188b0: ; 1188b0 (46:48b0)
 	ld de, $c346
 	ld a, $c
@@ -1347,28 +1290,6 @@ Function118982:
 	ld [wcd46], a
 	ret
 
-
-
-Function118a54: ; 118a54
-	ld a, [wcd55]
-	ld l, a
-	ld a, [wcd56]
-	ld h, a
-	ld de, wc3ec
-	ld bc, $0004
-	jp Function118ae4
-; 118a65
-
-Function118a65: ; 118a65
-	ld hl, BattleDownloadURL
-	ld de, wcc60
-	ld bc, $80
-	call CopyBytes
-	ld de, w3_d000
-	ld bc, $1000
-	jp Function118b10
-; 118a7a
-
 Function118a7a: ; 118a7a
 	ld hl, BattleDownloadURL
 	ld de, wcc60
@@ -1557,51 +1478,6 @@ MenuDownloadURL: ; 0x118c95
 
 IndexDownloadURL: ; 0x118ce5
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/tamago/index.txt", 0
-
-
-Function118d35: ; 118d35
-; unreferenced
-	ld hl, $d200
-	ld a, [wcd38]
-	and a
-	jr nz, .asm_118d6e
-	ld a, [hli]
-	cp $94
-	jr nz, .asm_118d7b
-	ld a, [hl]
-	cp $5
-	jr nz, .asm_118d7b
-	ld a, [wcd4f]
-	sla a
-	ld b, a
-	sla a
-	sla a
-	add b
-	ld b, a
-	ld a, $5
-	call GetSRAMBank
-	ld a, b
-	ld [$b2fb], a
-	call CloseSRAM
-	callba Function170be4
-	callba Function1700c4
-	jr .asm_118d78
-
-.asm_118d6e
-	ld a, [hli]
-	cp $96
-	jr nz, .asm_118d7b
-	ld a, [hl]
-	cp $0
-	jr nz, .asm_118d7b
-
-.asm_118d78
-	jp Function119e2e
-
-.asm_118d7b
-	ld a, $d3
-	jp Function118805
-; 118d80
 
 Function118d80: ; 118d80
 	call Function118e06
@@ -3956,14 +3832,6 @@ MenuDataHeader_119cf7: ; 119cf7
 	db 0 ; default option
 ; 119cff
 
-MenuData_119cff: ; 119cff
-	db $40 ; flags
-	db  7, 15 ; start coords
-	db 11, 19 ; end coords
-	dw NULL
-	db 0 ; default option
-; 119d07
-
 String_119d07:
 	db "   ▼@"
 
@@ -3978,18 +3846,14 @@ Strings_L10ToL100: ; 119d0c
 	db " L:80 @@"
 	db " L:90 @@"
 	db " L:100@@"
-	db "CANCEL@@"
+	db "Cancel@@"
 
 Strings_Ll0ToL40: ; 119d64
 	db " L:10 @@"
 	db " L:20 @@"
 	db " L:30 @@"
 	db " L:40 @@"
-	db "CANCEL@@"
-
-String_119d8c:
-	db "CANCEL@"
-; 119d93
+	db "Cancel@@"
 
 Function119d93: ; 119d93 (46:5d93)
 	ld a, [rSVBK]
@@ -4102,12 +3966,10 @@ Function119e2e: ; 119e2e (46:5e2e)
 
 XGameCodePrefix: ; 119e33
 INCBIN "data/mobile/x-game-code-prefix.txt"
-XGameCodePrefixEnd:
 ;119e40
 
 XGameResultPrefix: ; 119e40
 INCBIN "data/mobile/x-game-result-prefix.txt"
-XGameResultPrefixEnd:
 ; 119e4f
 
 Function119e4f: ; 119e4f
@@ -4750,14 +4612,6 @@ String_11a2d3: ; 11a2d3
 	db "NO@"
 ; 11a2d6
 
-MenuDataHeader_11a2d6: ; 11a2d6
-	db $40 ; flags
-	db  6, 14 ; start coords
-	db 10, 19 ; end coords
-	dw NULL
-	db 0 ; default option
-; 11a2de
-
 MenuDataHeader_11a2de: ; 11a2de
 	db $40 ; flags
 	db  7, 14 ; start coords
@@ -5322,14 +5176,6 @@ String_11a7f4: ; 11a7f4
 	db   "               @"
 ; 11a804
 
-MenuDataHeader_11a804: ; 11a804
-	db $40 ; flags
-	db  0,  0 ; start coords
-	db  5, 19 ; end coords
-	dw NULL
-	db 0 ; default option
-; 11a80c
-
 Function11a80c: ; 11a80c
 	ld de, hDivisor
 	ld bc, hDividend
@@ -5586,26 +5432,6 @@ Function11a9f0: ; 11a9f0
 	ret
 ; 11a9f4
 
-Function11a9f4: ; 11a9f4
-	ld a, [wcd8a]
-	ld l, a
-	ld a, [wcd8b]
-	ld h, a
-	inc hl
-	ld a, l
-	ld [wcd8a], a
-	ld a, h
-	ld [wcd8b], a
-	ld de, $d5d0
-	add hl, de
-	bit 7, h
-	ret nz
-	ld a, $d6
-	call Function118805
-	and a
-	ret
-; 11aa13
-
 Text_SaveFileWillBeSent: ; 0x11aa13
 	text "SAVE FILE will be"
 	line "sent."
@@ -5633,29 +5459,11 @@ Text_QuitReadingNews: ; 0x11aa6a
 	done
 ; 0x11aa7e
 
-Text_CanceledSendingSaveFile: ; 0x11aa7e
-	text "Canceled sending"
-	line "SAVE FILE."
-	done
-; 0x11aa9b
-
-Text_ReceivedOddEgg: ; 0x11aa9b
-	text "ODD EGG"
-	line "was received!"
-	done
-; 0x11aab2
-
 Text_RegisteringRecord: ; 0x11aab2
 	text "Registering your"
 	line "record…"
 	done
 ; 0x11aacc
-
-Text_BattleRoomVisitLimit: ; 0x11aacc
-	text "One visit per day"
-	line "per BATTLE ROOM!"
-	done
-; 0x11aaf0
 
 Text_PartyMonTopsThisLevel: ; 0x11aaf0
 	text "A party #MON"
@@ -5685,12 +5493,6 @@ Text_ExitGymLeaderHonorRoll: ; 0x11ab6e
 	done
 ; 0x11ab8b
 
-Text_LinkingWithCenter: ; 0x11ab8b
-	text "Linking with the"
-	line "CENTER…"
-	done
-; 0x11aba5
-
 Text_WhatLevelDoYouWantToChallenge: ; 0x11aba5
 	text "What level do you"
 	line "want to challenge?"
@@ -5702,27 +5504,6 @@ Text_CheckBattleRoomListByMaxLevel: ; 0x11abcb
 	line "list by max level?"
 	done
 ; 0x11abf1
-
-Text_EnterWhichBattleRoom: ; 0x11abf1
-	text "Enter which"
-	line "BATTLE ROOM?"
-	done
-; 0x11ac0b
-
-Text_WhichBattleRoom: ; 0x11ac0b
-	text "Which BATTLE ROOM?"
-	done
-; 0x11ac1f
-
-Text_ThisBattleRoomPleaseWait: ; 0x11ac1f
-	text_from_ram StringBuffer3
-	text "'s ROOM"
-	line "@"
-	text_from_ram StringBuffer4
-	text "?"
-	cont "Please wait…"
-	done
-; 0x11ac3e
 
 Function11ac3e: ; 11ac3e
 	call SpeechTextBox
@@ -6617,24 +6398,6 @@ Function11b175: ; 11b175
 	ret
 ; 11b1f7
 
-Function11b1f7: ; 11b1f7
-	hlcoord 0, 0
-	ld a, $32
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
-	ret
-; 11b203
-
-Function11b203: ; 11b203
-.asm_11b203
-	ld a, [de]
-	cp $ff
-	ret z
-	inc de
-	ld [hli], a
-	jr .asm_11b203
-; 11b20b
-
 Function11b20b: ; 11b20b
 	ld a, [wc7d1]
 	ld hl, wc7d0
@@ -6803,14 +6566,6 @@ Function11b295: ; 11b295
 	ret
 ; 11b2fe
 
-String_11b2fe: ; 11b2fe
-	db "あげる#@"
-; 11b303
-
-String_11b303: ; 11b303
-	db "ほしい#@"
-; 11b308
-
 String_11b308: ; 11b308
 	db "     @"
 ; 11b30e
@@ -6950,37 +6705,6 @@ Function11b397: ; 11b397
 	inc de
 	jr .loop
 ; 11b3b6
-
-Function11b3b6: ; 11b3b6
-; unreferenced
-.loop
-	ld a, [hl]
-	cp -1
-	ret z
-	ld a, [wcd4d]
-	and $7
-	swap a
-	add [hl]
-	inc hl
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	push hl
-	ld l, c
-	ld h, b
-	ld a, [wcd4e]
-	add [hl]
-	inc bc
-	ld [de], a
-	inc de
-	pop hl
-	ld a, $5
-	ld [de], a
-	inc de
-	jr .loop
-; 11b3d9
 
 Function11b3d9: ; 11b3d9
 	ld de, Sprites + 28 * 4

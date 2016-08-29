@@ -198,23 +198,6 @@ SchoolgirlImogenAfterText:
 	cont "in my class."
 	done
 
-; unused
-Route33LassText:
-	text "Pant, pant…"
-
-	para "I finally got"
-	line "through that cave."
-
-	para "It was much bigger"
-	line "than I'd expected."
-
-	para "I got too tired to"
-	line "explore the whole"
-
-	para "thing, so I came"
-	line "outside."
-	done
-
 Route33SignText:
 	text "Route 33"
 	done

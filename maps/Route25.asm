@@ -428,10 +428,6 @@ BillsHouseSignText:
 	line "Bill's House"
 	done
 
-; unused
-	text "Bill's House"
-	done
-
 Route25_MapEventHeader:
 	; filler
 	db 0, 0

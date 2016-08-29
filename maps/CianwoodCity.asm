@@ -114,9 +114,6 @@ LassScript_0x1a00b9:
 CianwoodCityRocketScript:
 	jumptextfaceplayer CianwoodCityRocketText
 
-UnknownScript_0x1a00bc:
-	jumptextfaceplayer UnknownText_0x1a03cc
-
 CianwoodCitySign:
 	jumptext CianwoodCitySignText
 
@@ -244,17 +241,6 @@ CianwoodCityRocketText:
 
 	para "Why? Mind your"
 	line "own business!"
-	done
-
-; unused
-UnknownText_0x1a03cc:
-	text "There are several"
-	line "islands between"
-	cont "here and Olivine."
-
-	para "A mythical sea"
-	line "creature supposed-"
-	cont "ly lives there."
 	done
 
 UnknownText_0x1a0433:

@@ -5326,8 +5326,6 @@ GruntMGroup:
 
 	; party
 	db 10, ZUBAT
-	db 12, QWILFISH
-	db 14, KOFFING
 
 	db $ff ; end
 
@@ -6107,7 +6105,8 @@ OfficerMGroup:
 	db 0 ; normal
 
 	; party
-	db 30, GROWLITHE
+	db 28, GROWLITHE
+	db 28, GROWLITHE
 
 	db $ff ; end
 

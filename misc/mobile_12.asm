@@ -1,131 +1,8 @@
-InitMobileProfile: ; 4802f (12:402f)
-	xor a
-	set 6, a
-	ld [wd002], a
-	ld hl, wd003
-	set 0, [hl]
-	ld a, c
-	and a
-	call z, InitCrystalData
-	call ClearBGPalettes
-	call Function48d3d
-	ld a, [wd479]
-	bit 1, a
-	jr z, .asm_4805a
-	ld a, [wd003]
-	set 0, a
-	set 1, a
-	set 2, a
-	set 3, a
-	ld [wd003], a
-.asm_4805a
-	call Function486bf
-	call LoadFontsExtra
-	ld de, GFX_488c3
-	ld hl, VTiles2 tile $10
-	lb bc, BANK(GFX_488c3), 1
-	call Request1bpp
-	ld de, GFX_488cb
-	ld hl, VTiles2 tile $11
-	lb bc, BANK(GFX_488cb), 1
-	call Request1bpp
-	call ClearBGPalettes
-	ld a, [wd002]
-	bit 6, a
-	jr z, .asm_4808a
-	call Function48689
-	jr .asm_480d7
-.asm_4808a
-	ld a, $5
-	ld [MusicFade], a
-	ld a, MUSIC_MOBILE_ADAPTER_MENU % $100
-	ld [MusicFadeIDLo], a
-	ld a, MUSIC_MOBILE_ADAPTER_MENU / $100
-	ld [MusicFadeIDHi], a
-	ld c, 20
-	call DelayFrames
-	ld b, $1
-	call GetMysteryGift_MobileAdapterLayout
-	call ClearBGPalettes
-	hlcoord 0, 0
-	ld b,  2
-	ld c, 20
-	call ClearBox
-	hlcoord 0, 1
-	ld a, $c
-	ld [hl], a
-	ld bc, $13
-	add hl, bc
-	ld [hl], a
-	ld de, MobileProfileString
-	hlcoord 1, 1
-	call PlaceString
-	hlcoord 0, 2
-	ld b, $a
-	ld c, $12
-	call Function48cdc
-	hlcoord 2, 4
-	ld de, MobileString_Gender
-	call PlaceString
-.asm_480d7
-	hlcoord 2, 6
-	ld de, MobileString_Age
-	call PlaceString
-	hlcoord 2, 8
-	ld de, MobileString_Address
-	call PlaceString
-	hlcoord 2, 10
-	ld de, MobileString_ZipCode
-	call PlaceString
-	hlcoord 2, 12
-	ld de, MobileString_OK
-	call PlaceString
-	ld a, [wd002]
-	bit 6, a
-	jr nz, .asm_48113
-	ld a, [PlayerGender]
-	ld hl, Strings_484fb
-	call GetNthString
-	ld d, h
-	ld e, l
-	hlcoord 11, 4
-	call PlaceString
-.asm_48113
-	hlcoord 11, 6
-	call Function487ec
-	ld a, [wd474]
-	dec a
-	ld hl, Prefectures
-	call GetNthString
-	ld d, h
-	ld e, l
-	hlcoord 11, 8
-	call PlaceString
-	hlcoord 11, 10
-	call Function489ea
-	hlcoord 0, 14
-	ld b, $2
-	ld c, $12
-	call TextBox
-	hlcoord 1, 16
-	ld de, MobileString_PersonalInfo
-	call PlaceString
-	call Function48187
-	call WaitBGMap2
-	call SetPalettes
-	call StaticMenuJoypad
-	ld hl, wMenuCursorY
-	ld b, [hl]
-	push bc
-	jr asm_4815f
-
 Function48157: ; 48157 (12:4157)
 	call ScrollingMenuJoypad
 	ld hl, wMenuCursorY
 	ld b, [hl]
 	push bc
-
-asm_4815f: ; 4815f (12:415f)
 	bit 0, a
 	jp nz, Function4820d
 	ld b, a
@@ -455,35 +332,6 @@ Function483bb: ; 483bb (12:43bb)
 	ret
 ; 483e8 (12:43e8)
 
-Function483e8: ; 483e8
-	push de
-	ld hl, Prefectures
-	ld a, [MenuSelection]
-	cp $ff
-	jr nz, .asm_483f8
-	ld hl, Wakayama ; last string
-	jr .asm_48405
-
-.asm_483f8
-	ld d, a
-	and a
-	jr z, .asm_48405
-.asm_483fc
-	ld a, [hli]
-	cp "@"
-	jr nz, .asm_483fc
-	ld a, d
-	dec a
-	jr .asm_483f8
-
-.asm_48405
-	ld d, h
-	ld e, l
-	pop hl
-	call PlaceString
-	ret
-; 4840c
-
 Function4840c: ; 4840c (12:440c)
 	call Function48187
 	call Function48283
@@ -548,10 +396,6 @@ Mobile12_Bin2Dec: ; 48444 (12:4444)
 ; 48471
 
 MobileProfileString:         db "  Mobile Profile@"
-MobileString_Gender:         db "Gender@"
-MobileString_Age:            db "Age@"
-MobileString_Address:        db "Address@"
-MobileString_ZipCode:        db "Zip Code@"
 MobileString_OK:             db "OK@"
 MobileString_ProfileChanged: db "Profile Changed@"
 MobileDesc_Gender:           db "Boy or girl?@"
@@ -603,86 +447,9 @@ MenuData2_0x4851b: ; 0x4851b
 	db $1d ; flags
 	db 6 ; items
 
-Unknown_4851d: ; 4851d
-	db $00, $01, $12, $2b, $45, $12, $e8, $43, $00, $00, $00, $00, $00, $00, $2e, $00, $01, $02, $03, $04
-	db $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14, $15, $16, $17, $18
-	db $19, $1a, $1b, $1c, $1d, $1e, $1f, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $2a, $2b, $2c
-	db $2d, $ff
-
 Prefectures:
-Aichi:     db "あいちけん@"   ; Aichi
-Aomori:    db "あおもりけん@" ; Aomori
-Akita:     db "あきたけん@"   ; Akita
-Ishikawa:  db "いしかわけん@" ; Ishikawa
-Ibaraki:   db "いばらきけん@" ; Ibaraki
-Iwate:     db "いわてけん@"   ; Iwate
-Ehime:     db "えひめけん@"   ; Ehime
-Oita:      db "おおいたけん@" ; Oita
-Osakafu:   db "おおさかふ@"   ; Osakafu
-Okayama:   db "おかやまけん@" ; Okayama
-Okinawa:   db "おきなわけん@" ; Okinawa
-Kagawa:    db "かがわけん@"   ; Kagawa
-Kagoshima: db "かごしまけん@" ; Kagoshima
-Kanagawa:  db "かながわけん@" ; Kanagawa
-Gifu:      db "ぎふけん@"     ; Gifu
-Kyotofu:   db "きょうとふ@"   ; Kyotofu
-Kumamoto:  db "くまもとけん@" ; Kumamoto
-Gunma:     db "ぐんまけん@"   ; Gunma
-Kochi:     db "こうちけん@"   ; Kochi
-Saitama:   db "さいたまけん@" ; Saitama
-Saga:      db "さがけん@"     ; Saga
-Shiga:     db "しがけん@"     ; Shiga
-Shizuoka:  db "しずおかけん@" ; Shizuoka
-Shimane:   db "しまねけん@"   ; Shimane
-Chiba:     db "ちばけん@"     ; Chiba
-Tokyo:     db "とうきょうと@" ; Tokyo
-Tokushima: db "とくしまけん@" ; Tokushima
-Tochigi:   db "とちぎけん@"   ; Tochigi
-Tottori:   db "とっとりけん@" ; Tottori
-Toyama:    db "とやまけん@"   ; Toyama
-Nagasaki:  db "ながさきけん@" ; Nagasaki
-Nagano:    db "ながのけん@"   ; Nagano
-Naraken:   db "ならけん@"     ; Naraken
-Niigata:   db "にいがたけん@" ; Niigata
-Hyogo:     db "ひょうごけん@" ; Hyogo
-Hiroshima: db "ひろしまけん@" ; Hiroshima
-Fukui:     db "ふくいけん@"   ; Fukui
-Fukuoka:   db "ふくおかけん@" ; Fukuoka
-Fukushima: db "ふくしまけん@" ; Fukushima
-Hokkaido:  db "ほっかいどう@" ; Hokkaido
-Mie:       db "みえけん@"     ; Mie
-Miyagi:    db "みやぎけん@"   ; Miyagi
-Miyazaki:  db "みやざきけん@" ; Miyazaki
-Yamagata:  db "やまがたけん@" ; Yamagata
-Yamaguchi: db "やまぐちけん@" ; Yamaguchi
-Yamanashi: db "やまなしけん@" ; Yamanashi
 Wakayama:  db "わかやまけん@" ; Wakayama
 ; 48689
-
-Function48689: ; 48689 (12:4689)
-	ld c, 7
-	call DelayFrames
-	ld b, $1
-	call GetMysteryGift_MobileAdapterLayout
-	call ClearBGPalettes
-	hlcoord 0, 0
-	ld b, $4
-	ld c, $14
-	call ClearBox
-	hlcoord 0, 2
-	ld a, $c
-	ld [hl], a
-	ld bc, $13
-	add hl, bc
-	ld [hl], a
-	ld de, MobileProfileString
-	hlcoord 1, 2
-	call PlaceString
-	hlcoord 0, 4
-	ld b, $8
-	ld c, $12
-	call Function48cdc
-	ret
 
 Function486bf: ; 486bf (12:46bf)
 	ld hl, w2DMenuCursorInitY
@@ -1000,12 +767,6 @@ Function488b9: ; 488b9 (12:48b9)
 	ret
 ; 488c3 (12:48c3)
 
-GFX_488c3: ; 488c3
-INCBIN "gfx/unknown/0488c3.2bpp"
-
-GFX_488cb: ; 488cb
-INCBIN "gfx/unknown/0488cb.2bpp"
-
 Function488d3: ; 488d3 (12:48d3)
 	call Function48283
 	hlcoord 1, 16
@@ -1075,24 +836,6 @@ asm_48922: ; 48922 (12:4922)
 	call DelayFrames
 	jr asm_48972
 ; 4895a (12:495a)
-
-Function4895a: ; 4895a
-	ld a, [hJoyPressed]
-	and a
-	jr z, .asm_48965
-	pop bc
-	ld b, $1
-	push bc
-	jr asm_48972
-
-.asm_48965
-	ld a, [hJoyLast]
-	and a
-	jr z, asm_48972
-
-	pop bc
-	ld b, $1
-	push bc
 
 Function4896e: ; 4896e (12:496e)
 	pop bc
@@ -1601,63 +1344,6 @@ Function48c63: ; 48c63
 	ret
 ; 48c8e
 
-Function48c8e: ; 48c8e
-; unreferenced
-	ld hl, $d02a
-	ld d, h
-	ld e, l
-	callba Function48c63
-	hlcoord 10, 7
-	call PlaceString
-	call WaitBGMap
-	ret
-; 48ca3
-
-Function48ca3: ; 48ca3
-	push af
-	push bc
-	push de
-	push hl
-	ld b, 0
-	ld c, 0
-	ld d, 0
-.asm_48cad
-	cp 100
-	jr c, .asm_48cb6
-	sub 100
-	inc b
-	jr .asm_48cad
-
-.asm_48cb6
-	cp 10
-	jr c, .asm_48cbf
-	sub 10
-	inc c
-	jr .asm_48cb6
-
-.asm_48cbf
-	cp 1
-	jr c, .asm_48cc7
-	dec a
-	inc d
-	jr .asm_48cbf
-
-.asm_48cc7
-	ld a, b
-	call Mobile12_Bin2Dec
-	inc hl
-	ld a, c
-	call Mobile12_Bin2Dec
-	inc hl
-	ld a, d
-	call Mobile12_Bin2Dec
-	pop hl
-	pop de
-	pop bc
-	pop af
-	ret
-; 48cda
-
 Function48cda: ; 48cda (12:4cda)
 	ld h, d
 	ld l, e
@@ -1733,13 +1419,6 @@ Function48d30: ; 48d30 (12:4d30)
 	call Function48d4a
 	ld hl, wd477
 	call Function48d4a
-	ret
-
-Function48d3d: ; 48d3d (12:4d3d)
-	ld hl, wd475
-	call Function48d94
-	ld hl, wd477
-	call Function48d94
 	ret
 
 Function48d4a: ; 48d4a (12:4d4a)

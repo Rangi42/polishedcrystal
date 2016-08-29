@@ -3440,11 +3440,4 @@ Script_sawpokemon:
 	predef FlagPredef
 	ret
 
-; 97c20 unreferenced
-	ld a, [.byte]
-	ld [ScriptVar], a
-	ret
-
-.byte
-	db 0
 ; 97c28

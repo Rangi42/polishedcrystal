@@ -158,75 +158,10 @@ Script_BattleTowerHopeToServeYouAgain:
 	closetext
 	end
 
-UnreferencedScript_0x9e4b6:
-	special Function17f53d
-	closetext
-	end
-
 Script_WaitButton: ; 0x9e4bb
 	waitbutton
 	closetext
 	end
-
-
-UnreferencedScript_0x9e4be:
-	writetext Text_SaveBeforeEnteringBattleRoom
-	yesorno
-	iffalse Script_Menu_ChallengeExplanationCancel
-	special Special_TryQuickSave
-	iffalse Script_Menu_ChallengeExplanationCancel
-	writebyte BATTLETOWERACTION_01
-	special BattleTowerAction
-	special Function1700ba
-	if_equal $a, Script_Menu_ChallengeExplanationCancel
-	if_not_equal $0, UnknownScript_0x9e550
-	writetext Text_ReceivedAListOfLeadersOnTheHonorRoll
-	spriteface BATTLETOWER1F_RECEPTIONIST, LEFT
-	writetext Text_PleaseConfirmOnThisMonitor
-	waitbutton
-	spriteface BATTLETOWER1F_RECEPTIONIST, DOWN
-	closetext
-	end
-
-UnreferencedScript_0x9e4ea:
-	writebyte BATTLETOWERACTION_18
-	special BattleTowerAction
-	if_not_equal $0, Script_APkmnLevelExceeds
-	writebyte BATTLETOWERACTION_19
-	special BattleTowerAction
-	if_not_equal $0, Script_MayNotEnterABattleRoomUnderL70
-	special SpecialCheckForBattleTowerRules
-	if_not_equal $0, Script_WaitButton
-	writebyte BATTLETOWERACTION_05
-	special BattleTowerAction
-	if_equal $0, .zero
-	writetext Text_CantBeRegistered_PreviousRecordDeleted
-	jump continue
-
-.zero
-	writetext Text_CantBeRegistered
-continue:
-	yesorno
-	iffalse Script_Menu_ChallengeExplanationCancel
-	writetext Text_SaveBeforeReentry
-	yesorno
-	iffalse Script_Menu_ChallengeExplanationCancel
-	dotrigger $0
-	special Special_TryQuickSave
-	iffalse Script_Menu_ChallengeExplanationCancel
-	dotrigger $1
-	writebyte BATTLETOWERACTION_06
-	special BattleTowerAction
-	writebyte BATTLETOWERACTION_12
-	special BattleTowerAction
-	writetext Text_RightThisWayToYourBattleRoom
-	waitbutton
-	jump Script_ResumeBattleTowerChallenge
-
-UnreferencedScript_0x9e53b:
-	writetext Text_FiveDayBattleLimit_Mobile
-	waitbutton
-	jump Script_BattleTowerHopeToServeYouAgain
 
 Script_APkmnLevelExceeds: ; 0x9e542
 	writetext Text_APkmnLevelExceeds
@@ -489,24 +424,6 @@ Text_ThanksForVisiting: ; 0x9ea49
 	line "visiting!"
 	done
 
-Text_BeatenAllTheTrainers_Mobile:
-	text "Congratulations!"
-
-	para "You've beaten all"
-	line "the trainers!"
-
-	para "Your feat may be"
-	line "worth registering,"
-
-	para "<PLAYER>. With your"
-	line "results, you may"
-
-	para "be chosen as a"
-	line "Room Leader."
-
-	para ""
-	done
-
 Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 	text "Congratulations!"
 
@@ -517,14 +434,6 @@ Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 	line "this great prize!"
 
 	para ""
-	done
-
-Text_AskRegisterRecord_Mobile:
-	text "Would you like to"
-	line "register your"
-
-	para "record with the"
-	line "Center?"
 	done
 
 Text_PlayerGotFive: ; 0x9eb7e
@@ -644,14 +553,6 @@ Text_NextUpOpponentNo: ; 0x9eebc
 	text ". Ready?"
 	done
 
-Text_SaveBeforeConnecting_Mobile:
-	text "Your session will"
-	line "be saved before"
-
-	para "connecting with"
-	line "the Center."
-	done
-
 Text_SaveBeforeEnteringBattleRoom: ; 0x9ef1f
 	text "Before entering"
 	line "the Battle Room,"
@@ -678,61 +579,12 @@ Text_CancelYourBattleRoomChallenge: ; 0x9efbf
 	line "Room challenge?"
 	done
 
-Text_RegisterRecordOnFile_Mobile:
-	text "We have your"
-	line "previous record on"
-
-	para "file. Would you"
-	line "like to register"
-	cont "it at the Center?"
-	done
-
 Text_WeveBeenWaitingForYou:
 	text "We've been waiting"
 	line "for you. This way"
 
 	para "to a Battle Room,"
 	line "please."
-	done
-
-Text_FiveDayBattleLimit_Mobile:
-	text "You may enter only"
-	line "five Battle Rooms"
-	cont "each day."
-
-	para "Please come back"
-	line "tomorrow."
-	done
-
-Text_TooMuchTimeElapsedNoRegister: ; 0x9f0c1
-	text "Sorry, but it's"
-	line "not possible to"
-
-	para "register your"
-	line "current record at"
-
-	para "the Center because"
-	line "too much time has"
-
-	para "elapsed since the"
-	line "start of your"
-	cont "challenge."
-	done
-
-; a dupe?
-Text_RegisterRecordTimedOut_Mobile:
-	text "Sorry, but it's"
-	line "not possible to"
-
-	para "register your most"
-	line "recent record at"
-
-	para "the Center because"
-	line "too much time has"
-
-	para "elapsed since the"
-	line "start of your"
-	cont "challenge."
 	done
 
 Text_APkmnLevelExceeds: ; 0x9f1e5

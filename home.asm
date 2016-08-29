@@ -49,25 +49,7 @@ Function2d43:: ; 2d43
 INCLUDE "home/farcall.asm"
 INCLUDE "home/predef.asm"
 INCLUDE "home/window.asm"
-
-Function2e4e:: ; 2e4e
-; Unreferenced.
-	scf
-	ret
-; 2e50
-
 INCLUDE "home/flag.asm"
-
-Function2ebb:: ; 2ebb
-; unreferenced
-	ld a, [wMonStatusFlags]
-	bit 1, a
-	ret z
-
-	ld a, [hJoyDown]
-	bit B_BUTTON_F, a
-	ret
-; 2ec6
 
 xor_a:: ; 2ec6
 	xor a
@@ -79,15 +61,6 @@ xor_a_dec_a:: ; 2ec8
 	dec a
 	ret
 ; 2ecb
-
-Function2ecb:: ; 2ecb
-; unreferenced
-	push hl
-	ld hl, wMonStatusFlags
-	bit 1, [hl]
-	pop hl
-	ret
-; 2ed3
 
 DisableSpriteUpdates:: ; 0x2ed3
 ; disables overworld sprite updating?
@@ -1547,15 +1520,6 @@ CheckTrainerFlag:: ; 36f5
 ; 3718
 
 PrintWinLossText:: ; 3718
-	ld a, [BattleType]
-	cp BATTLETYPE_CANLOSE
-	jr .canlose ; ??????????
-
-; unreferenced
-	ld hl, wWinTextPointer
-	jr .ok
-
-.canlose
 	ld a, [wBattleResult]
 	ld hl, wWinTextPointer
 	and $f

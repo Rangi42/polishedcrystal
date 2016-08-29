@@ -101,112 +101,6 @@ Clears5_a89a: ; 170bf7
 
 ; 170c06
 
-Function170c06: ; 170c06
-	ld a, $5
-	call GetSRAMBank
-	ld hl, $a894
-	ld a, [wBattleResult]
-	and a
-	jr nz, .asm_170c15
-	inc [hl]
-
-.asm_170c15
-rept 2
-	inc hl
-endr
-	ld a, [$a89b]
-	add [hl]
-	ld [hld], a
-	ld a, [$a89a]
-	adc [hl]
-	ld [hli], a
-	jr nc, .asm_170c27
-	ld a, $ff
-	ld [hld], a
-	ld [hli], a
-
-.asm_170c27
-	inc hl
-	push hl
-	ld de, 0
-	xor a
-	ld [wd265], a
-.asm_170c30
-	ld hl, PartyMon1HP
-	ld a, [wd265]
-	call GetPartyLocation
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-rept 2
-	inc hl
-endr
-	ld a, [hld]
-	sub c
-	ld c, a
-	ld a, [hl]
-	sbc b
-	ld b, a
-	push de
-	pop hl
-	add hl, bc
-	push hl
-	pop de
-	jr c, .asm_170c58
-	ld a, [wd265]
-	inc a
-	ld [wd265], a
-	cp $3
-	jr c, .asm_170c30
-	jr .asm_170c5b
-
-.asm_170c58
-	ld de, -1
-
-.asm_170c5b
-	pop hl
-	inc hl
-	ld a, e
-	add [hl]
-	ld [hld], a
-	ld a, d
-	adc [hl]
-	ld [hli], a
-	jr nc, .asm_170c69
-	ld a, $ff
-	ld [hld], a
-	ld [hli], a
-
-.asm_170c69
-	inc hl
-	push hl
-	ld b, $0
-	ld c, $0
-.asm_170c6f
-	ld hl, PartyMon1HP
-	ld a, b
-	push bc
-	call GetPartyLocation
-	pop bc
-	ld a, [hli]
-	or [hl]
-	jr nz, .asm_170c7d
-	inc c
-
-.asm_170c7d
-	inc b
-	ld a, b
-	cp $3
-	jr c, .asm_170c6f
-	pop hl
-	ld a, [hl]
-	add c
-	ld [hl], a
-	call CloseSRAM
-	ret
-
-; 170c8b
-
 Function170c8b: ; 170c8b
 	ld hl, LastPlayerCounterMove
 	ld b, $5
@@ -314,16 +208,6 @@ INCBIN "gfx/unknown/1715a4.2bpp.lz"
 
 GFX_171848:
 INCBIN "gfx/unknown/171848.2bpp"
-
-Function1719c8: ; 1719c8 (5c:59c8)
-	ld a, [hInMenu]
-	push af
-	ld a, $1
-	ld [hInMenu], a
-	call Function1719d6
-	pop af
-	ld [hInMenu], a
-	ret
 
 Function1719d6: ; 1719d6 (5c:59d6)
 	callba Function1183cb

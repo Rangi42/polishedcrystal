@@ -98,7 +98,7 @@ MapRuinsofAlphOmanyteChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iftrue UnknownScript_0x58c85
 	opentext
-	writetext UnknownText_0x58cc0
+	writetext UnknownText_0x58c8e
 	writebyte $2
 	special Special_DisplayUnownWords
 	closetext
@@ -116,16 +116,6 @@ MovementData_0x58c8c:
 	step_end
 
 UnknownText_0x58c8e:
-	text "Patterns appeared"
-	line "on the walls…"
-	done
-
-; possibly unused.. this again?
-UnknownText_0x58caf:
-	text "It's Unown text!"
-	done
-
-UnknownText_0x58cc0:
 	text "Patterns appeared"
 	line "on the walls…"
 	done

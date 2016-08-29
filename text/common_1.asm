@@ -446,14 +446,6 @@ UnknownText_0x1bc79d::
 	text "."
 	done
 
-UnknownText_0x1bc7b0::
-	text_from_ram wPlayerTrademonSenderName
-	text "'s"
-	line "@"
-	text_from_ram wPlayerTrademonSpeciesName
-	text " trade…"
-	done
-
 UnknownText_0x1bc7c3::
 	text "Take good care of"
 	line "@"
@@ -1217,10 +1209,6 @@ UnknownText_0x1bd1dd::
 	deciram StringBuffer1, 1, 2
 	text "."
 	prompt
-
-UnknownText_0x1bd201::
-	text "Starting link."
-	done
 
 UnknownText_0x1bd211::
 	text "Link terminated."

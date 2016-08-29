@@ -1946,13 +1946,6 @@ Function17dc1f: ; 17dc1f
 	ret
 ; 17dc96
 
-MenuData2_17dc96:
-	db $e0 ; flags
-	db 2
-	db "はい@"
-	db "いいえ@"
-; 17dc9f
-
 Function17dc9f: ; 17dc9f
 	call Function17e415
 	call Function17e41e
@@ -4850,13 +4843,6 @@ Table_17f699: ; 17f699
 	dw String_17fe03
 ; 17f6af
 
-Palette_17f6af: ; 17f6af
-	RGB  5,  5, 16
-	RGB  8, 19, 28
-	RGB  0,  0,  0
-	RGB 31, 31, 31
-; 17f6b7
-
 Function17f6b7: ; 17f6b7
 	ld a, [wc300]
 	call .bcd_two_digits
@@ -4886,13 +4872,6 @@ Function17f6b7: ; 17f6b7
 String_17f6dc: ; 17f6dc
 	db "つうしんエラー   ー@"
 ; 17f6e8
-
-String_17f6e8: ; 17f6e8
-	db   "みていぎ", $25, "エラーです"
-	next "プログラム", $1f
-	next "かくにん してください"
-	db   "@"
-; 17f706
 
 Table_17f706:
 	dw Unknown_17f74e
@@ -5248,14 +5227,6 @@ String_17fe63: ; 17fe63
 	next "タイプが ちがいます"
 	next "くわしくは とりあつかい"
 	next "せつめいしょを ごらんください"
-	db   "@"
-
-String_17fe9a: ; 17fe9a ; unreferenced
-	db   "ポケモンニュースが"
-	next "あたらしくなっているので"
-	next "レポートを おくれません"
-	next "あたらしい ポケモンニュースの"
-	next "よみこみを さきに してください"
 	db   "@"
 
 String_17fedf: ; 17fedf

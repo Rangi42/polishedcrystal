@@ -196,40 +196,8 @@ MobileFn_10602e: mobile ; 10602e (41:602e)
 	ld hl, $a010
 	jp MobileFn_106117
 
-MobileFn_106035: mobile ; 106035
-	ld a, $5
-	call GetSRAMBank
-	ld a, [$aa8d]
-	and a
-	call CloseSRAM
-	ret nz
-	ld hl, $a014
-	jp Function106123
-
 MobileFn_106049: mobile ; 106049
 	ld hl, $a018
-	jp Function10611d
-
-MobileFn_106050: mobile ; 106050
-	ld a, [BattleType]
-	cp BATTLETYPE_TUTORIAL
-	ret z
-	ld hl, $a01b
-	jp Function10611d
-
-MobileFn_10605d: mobile ; 10605d
-	ld a, [BattleType]
-	cp BATTLETYPE_TUTORIAL
-	ret z
-	ld hl, $a01e
-	jp Function10611d
-
-MobileFn_10606a: mobile ; 10606a
-	ld hl, $a021
-	jp Function10611d
-
-MobileFn_106071: mobile ; 106071
-	ld hl, $a024
 	jp Function10611d
 
 Mobile_HallOfFame:: mobile ; 0x106078
@@ -238,10 +206,6 @@ Mobile_HallOfFame:: mobile ; 0x106078
 
 MobileFn_10607f: mobile ; 10607f (41:607f)
 	ld hl, $a02a
-	jp Function10611d
-
-MobileFn_106086: mobile ; 106086
-	ld hl, $a02d
 	jp Function10611d
 
 MobileFn_10608d: mobile ; 10608d (41:608d)
@@ -260,10 +224,6 @@ Mobile_HealParty: mobile ; 1060a2
 	ld hl, $a039
 	jp Function10611d
 
-MobileFn_1060a9: mobile ; 1060a9 (41:60a9)
-	ld hl, $a03c
-	jr Function10611d
-
 MobileFn_1060af: mobile ; 1060af
 	ld hl, $a03f
 	jr Function10611d
@@ -280,24 +240,12 @@ MobileFn_1060c1: mobile ; 1060c1
 	ld hl, $a048
 	jr Function10611d
 
-MobileFn_1060c7: mobile ; 1060c7
-	ld hl, $a04b
-	jr Function10611d
-
 MobileFn_1060cd: mobile ; 1060cd
 	ld hl, $a04e
 	jr Function106123
 
 MobileFn_1060d3: mobile ; 1060d3
 	ld hl, $a051
-	jr Function10611d
-
-MobileFn_1060d9: mobile ; 1060df
-	ld hl, $a054
-	jr Function10611d
-
-MobileFn_1060df: mobile ; 1060df
-	ld hl, $a057
 	jr Function10611d
 
 MobileFn_1060e5: mobile ; 1060e5
@@ -309,10 +257,6 @@ MobileFn_1060e5: mobile ; 1060e5
 
 MobileFn_1060ef: mobile ; 1060ef
 	ld hl, $a05d
-	jr Function10611d
-
-MobileFn_1060f5: mobile ; 1060f5
-	ld hl, $a060
 	jr Function10611d
 
 MobileFn_SaveBattleResult_Win: mobile ; win
@@ -354,10 +298,6 @@ Function106123: ; 106123
 	ld bc, 1
 	jr Function10612d
 ; 106129
-
-Function106129: ; 106129
-	push bc
-	ld bc, 0
 
 Function10612d: ; 10612d
 	ld a, $5
@@ -465,18 +405,6 @@ RestoreMobileEventIndex: ; 10619d (41:619d)
 	ret
 ; 1061b3 (41:61b3)
 
-Function1061b3: ; 1061b3
-	call Function10616e
-	ld hl, $a081 ; s5_a081
-	ld a, d
-	cp [hl]
-	ret nz
-	inc hl
-	ld a, e
-	cp [hl]
-	ret
-; 1061c0
-
 DeleteMobileEventIndex: ; 1061c0 (41:61c0)
 	ld a, BANK(sMobileEventIndex)
 	call GetSRAMBank
@@ -485,24 +413,6 @@ DeleteMobileEventIndex: ; 1061c0 (41:61c0)
 	call CloseSRAM
 	ret
 ; 1061cd (41:61cd)
-
-Function1061cd: ; unreferenced
-	ld hl, $a001
-	ld bc, $82
-	xor a
-	call ByteFill
-	ld hl, $a07d
-	ld a, $3
-	ld [hli], a
-	ld [hl], $e8
-	call Function106162
-	ld hl, $a001
-	ld de, $a084
-	ld bc, $82
-	call CopyBytes
-	ret
-; 1061ef
-
 
 _MobilePrintNum:: ; 1061ef
 ; Supports signed 31-bit integers (up to 10 digits)
@@ -740,42 +650,6 @@ Mobile_AlwaysReturnNotCarry: ; 10632f
 	or a
 	ret
 
-Function106331: ; 106331 - called by Mobile_DummyReturnFalse in Crystal-J
-	; check ~[4:b000] == [7:a800]
-	ld a, $4
-	call GetSRAMBank
-	ld a, [$b000]
-	cpl
-	ld b, a
-	call CloseSRAM
-	ld a, $7
-	call GetSRAMBank
-	ld a, [$a800]
-	ld c, a
-	call CloseSRAM
-	ld a, c
-	cp b
-	jr nz, .nope
-
-	; check [7:a800] != 0
-	and a
-	jr z, .nope
-
-	; check !([7:a800] & %01110000)
-	and %10001111
-	cp c
-	jr nz, .nope
-
-	ld c, a
-	scf
-	ret
-
-.nope
-	xor a
-	ld c, a
-	ret
-; 10635c
-
 Function10635c: ; 10635c
 	ld a, [wcd25]
 	bit 7, a
@@ -971,26 +845,6 @@ Function106464:: ; 106464
 	ret
 ; 10649b
 
-Function10649b: ; 10649b
-	ld a, [TextBoxFrame]
-	and $7
-	ld bc, 3 tiles
-	ld hl, Frames
-	call AddNTimes
-	ld d, h
-	ld e, l
-	ld hl, VTiles2 tile $79
-	ld c, 6
-	ld b, BANK(Frames)
-	call Function1064c3
-	ld hl, VTiles2 tile $7f
-	ld de, TextBoxSpaceGFX
-	ld c, 1
-	ld b, BANK(TextBoxSpaceGFX)
-	call Function1064c3
-	ret
-; 1064c3
-
 Function1064c3: ; 1064c3
 	ld a, [rSVBK]
 	push af
@@ -1005,25 +859,6 @@ Function1064c3: ; 1064c3
 	pop bc
 	pop af
 	ld [rSVBK], a
-	jr asm_1064ed
-
-Function1064d8: ; 1064d8
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-	push bc
-	push hl
-	ld hl, Function3f9f
-	ld a, b
-	rst FarCall
-	pop hl
-	pop bc
-	pop af
-	ld [rSVBK], a
-	jr asm_1064ed
-
-asm_1064ed
 	ld de, wDecompressScratch
 	ld b, $0
 	ld a, [rSVBK]
@@ -1041,13 +876,6 @@ asm_1064ed
 	ld [rSVBK], a
 	ret
 ; 10650a
-
-Function10650a: ; 10650a
-	ld de, MobilePhoneTilesGFX + $20
-	lb bc, BANK(MobilePhoneTilesGFX), $11
-	call Get2bpp
-	ret
-; 106514
 
 GFX_106514:
 INCBIN "gfx/unknown/106514.2bpp"

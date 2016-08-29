@@ -1,26 +1,3 @@
-Function16c000: ; 16c000
-	ld a, [hCGB]
-	and a
-	ret z
-	ld a, [hFFEA]
-	and a
-	ret z
-	ld a, [wcfbe]
-	push af
-	set 7, a
-	ld [wcfbe], a
-	call Function16c108
-	callba Function100063
-	callba Function100082
-	call Function16c031
-	callba Function1000a4
-	xor a
-	ld [hFFEA], a
-	pop af
-	ld [wcfbe], a
-	ret
-; 16c031
-
 Function16c031: ; 16c031
 	xor a
 	ld [wJumptableIndex], a

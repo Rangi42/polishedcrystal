@@ -28,11 +28,6 @@ MenuTextBox:: ; 1d4f
 	jp PrintText
 ; 1d57
 
-ret_1d57:: ; 1d57
-; unreferenced
-	ret
-; 1d58
-
 LoadMenuTextBox:: ; 1d58
 	ld hl, .MenuDataHeader
 	call LoadMenuDataHeader
@@ -452,17 +447,6 @@ PlaceNthMenuStrings:: ; 1f8d
 	call PlaceString
 	ret
 ; 1f9e
-
-Function1f9e:: ; 1f9e
-; unreferenced
-	call GetMenuDataPointerTableEntry
-	inc hl
-	inc hl
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ret
-; 1fa7
 
 MenuJumptable:: ; 1fa7
 	ld a, [MenuSelection]

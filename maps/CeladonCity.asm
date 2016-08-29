@@ -184,15 +184,6 @@ UnknownText_0x1aa25b:
 	line "Kanto…"
 	done
 
-; unused
-UnknownText_0x1aa306:
-	text "Looking at the"
-	line "ground while I was"
-
-	para "walking made me"
-	line "dizzy."
-	done
-
 CeladonCitySignText:
 	text "Celadon City"
 

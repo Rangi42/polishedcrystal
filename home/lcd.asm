@@ -1,18 +1,3 @@
-; LCD handling
-
-
-Function547:: ; 547
-; Unreferenced
-	ld a, [hFFC6]
-	cp rSCX - $ff00
-	ret nz
-	ld c, a
-	ld a, [LYOverrides]
-	ld [$ff00+c], a
-	ret
-; 552
-
-
 LCD:: ; 552
 	push af
 	ld a, [hFFC6]

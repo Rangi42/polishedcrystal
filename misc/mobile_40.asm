@@ -449,12 +449,6 @@ Function100320: ; 100320
 	ret
 ; 100327
 
-Function100327: ; 100327
-	callba Function10402d
-	ret
-; 100327
-
-
 Function10032e: ; 10032e
 	call Function10034d
 	ld e, a
@@ -551,15 +545,6 @@ Function10039c: ; 10039c
 	call FarCopyWRAM
 	ret
 ; 1003ab
-
-Function1003ab: ; 1003ab
-	ld hl, w3_d000
-	ld de, wcc60
-	ld bc, $54
-	ld a, $03
-	call FarCopyWRAM
-	ret
-; 1003ba
 
 Function1003ba: ; 1003ba
 	ld hl, wccb4
@@ -1794,27 +1779,6 @@ Unknown_100b0a: ; 100b0a
 
 SECTION "bank40_2", ROMX, BANK[$40]
 
-Function100b12: ; 100b12
-	call Function100dd8
-	ret c
-	ld hl, BattleMenuDataHeader
-	ld a, BANK(BattleMenuDataHeader)
-	ld de, LoadMenuDataHeader
-	call FarCall_de
-	ld a, BANK(BattleMenuDataHeader)
-	ld [wMenuData2_2DMenuItemStringsBank], a
-	ld a, [wd0d2]
-	ld [wMenuCursorBuffer], a
-	call Function100e72
-	call Function100b45
-	callba InitPartyMenuBGPal7
-	call Function100ed4
-	ld a, [wMenuCursorBuffer]
-	ld [wd0d2], a
-	call ExitMenu
-	ret
-; 100b45
-
 Function100b45: ; 100b45
 	call Function100b7a
 .loop
@@ -1854,72 +1818,6 @@ Function100b7a: ; 100b7a
 	set 7, [hl]
 	ret
 ; 100b9f
-
-Function100c74: ; 100c74
-	hlcoord 0, 8
-	ld b, 8
-	ld c, 8
-	call TextBox
-	ld hl, BattleMonMoves
-	ld de, wListMoves_MoveIndicesBuffer
-	ld bc, NUM_MOVES
-	call CopyBytes
-	ld a, SCREEN_WIDTH * 2
-	ld [Buffer1], a
-	hlcoord 2, 10
-	predef ListMoves
-	ret
-; 100c98
-
-Function100c98: ; 100c98
-	ld de, .attrs
-	call SetMenuAttributes
-	ld a, [wNumMoves]
-	inc a
-	ld [w2DMenuNumRows], a
-	ld a, [CurMoveNum]
-	inc a
-	ld [wMenuCursorY], a
-	ret
-; 100cad
-
-.attrs ; 100cad
-	db 10, 1
-	db 255, 1
-	db $a0, $00
-	dn 2, 0
-	db D_UP | D_DOWN | A_BUTTON | B_BUTTON
-
-Function100d67: ; 100d67
-	ld hl, .MenuDataHeader
-	call CopyMenuDataHeader
-	xor a
-	ld [hBGMapMode], a
-	call MenuBox
-	call UpdateSprites
-	call PlaceVerticalMenuItems
-	call WaitBGMap
-	call CopyMenuData2
-	call InitVerticalMenuCursor
-	ld hl, w2DMenuFlags1
-	set 6, [hl]
-	ret
-; 100d88
-
-.MenuDataHeader: ; 100d88
-	db 0 ; flags
-	db 11, 11 ; start coords
-	db 17, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2: ; 100d90
-	db $c0 ; flags
-	db 3
-	db "いれかえる@"  ; TRADE
-	db "つよさをみる@" ; STATS
-	db "キャンセル@"  ; CANCEL
-; 100da5
 
 Function100da5: ; 100da5
 	ld hl, wcd2a
@@ -2157,11 +2055,6 @@ Function100eed: ; 100eed
 
 Function100ef4: ; 100ef4
 	ld hl, Unknown_100ff3
-	ld c, 1
-	jr asm_100f02
-
-Function100efb: ; 100efb
-	ld hl, Unknown_10102c
 	ld c, 1
 	jr asm_100f02
 
@@ -2583,30 +2476,6 @@ Function1011e8: ; 1011e8
 	ret
 ; 1011f1
 
-Function1011f1: ; 1011f1
-	ld a, $04
-	call GetSRAMBank
-	ld a, [$a60c]
-	ld [wdc41], a
-	call CloseSRAM
-	ld hl, wdc41
-	res 4, [hl]
-	ld hl, GameTimerPause
-	bit 7, [hl]
-	jr z, .skip
-	ld hl, wdc41
-	set 4, [hl]
-
-.skip
-	call Function10209c
-	xor a
-	ld [wdc5f], a
-	ld [wdc60], a
-	ld a, LINK_MOBILE
-	ld [wLinkMode], a
-	ret
-; 101220
-
 Function101220: ; 101220
 	xor a
 	ld [wLinkMode], a
@@ -2874,29 +2743,6 @@ Function1013dd: ; 1013dd
 	ret
 ; 1013e1
 
-Function1013e1: ; 1013e1 ; unreferenced
-	push de
-	inc de
-	ld b, a
-	ld c, 0
-.asm_1013e6
-	inc c
-	ld a, [hli]
-	ld [de], a
-	inc de
-	and a
-	jr z, .asm_1013f1
-	dec b
-	jr nz, .asm_1013e6
-	scf
-
-.asm_1013f1
-	pop de
-	ld a, c
-	ld [de], a
-	ret
-; 1013f5
-
 Function1013f5: ; 1013f5
 	ld a, [hli]
 	ld [de], a
@@ -2910,13 +2756,6 @@ Function1013f5: ; 1013f5
 	jr nz, .asm_1013f9
 	ret
 ; 101400
-
-Function101400: ; 101400 ; unreferenced
-	ld a, [de]
-	inc de
-	cp [hl]
-	jr nz, asm_101416
-	inc hl
 
 Function101406: ; 101406
 	ld c, a
@@ -3098,15 +2937,6 @@ Function101507: ; 101507
 	ld [wcd25], a
 	ret
 ; 10151d
-
-Function10151d: ; 10151d ; unreferenced
-	ld a, $34
-	call Function3e32
-	ld a, [wcd25]
-	inc a
-	ld [wcd25], a
-	ret
-; 10152a
 
 Function10152a: ; 10152a
 	ld a, $36
@@ -3293,13 +3123,6 @@ Function101663: ; 101663
 	call Function10163f
 	ret
 ; 101674
-
-Function101674: ; 101674 ; unreferenced
-	ld a, $05
-	ld hl, w5_dc00
-	call Function101635
-	ret
-; 10167d
 
 Function10167d: ; 10167d
 	ld a, 0
@@ -4184,12 +4007,6 @@ Function101cbc: ; 101cbc
 	ret
 ; 101cc2
 
-Function101cc2: ; 101cc2 ; unreferenced
-	ld a, $02
-	ld [wcd2b], a
-	ret
-; 101cc8
-
 Function101cc8: ; 101cc8
 	ld a, $01
 	ld [wc314], a
@@ -4464,22 +4281,6 @@ Function101e64: ; 101e64
 	ld [wcd2b], a
 	ret
 ; 101e82
-
-Function101e82: ; 101e82 ; unreferenced
-	call Function101ecc
-	ld a, [wcd25]
-	inc a
-	ld [wcd25], a
-	ret
-; 101e8d
-
-Function101e8d: ; 101e8d ; unreferenced
-	call Function101ed3
-	ld a, [wcd25]
-	inc a
-	ld [wcd25], a
-	ret
-; 101e98
 
 Function101e98: ; 101e98
 	call ClearSprites
@@ -4896,10 +4697,6 @@ Function1021e0: ; 1021e0
 	ret
 ; 1021ea
 
-UnknownText_0x1021ea: ; 1021ea
-	text_jump UnknownText_0x1bd201
-	db "@"
-
 UnknownText_0x1021ef:
 	text_jump UnknownText_0x1bd211
 	db "@"
@@ -5276,33 +5073,12 @@ Function10246a: ; 10246a
 	ret
 ; 102480
 
-Function102480: ; 102480
-	ld c, $32
-	call DelayFrames
-	ld a, [wcd49]
-	inc a
-	ld [wcd49], a
-	ret
-; 10248d
-
 Function10248d: ; 10248d
 	ld a, [wcd49]
 	set 7, a
 	ld [wcd49], a
 	ret
 ; 102496
-
-Function102496: ; 102496
-	ld hl, wcd4e
-	dec [hl]
-	ret nz
-	ld a, 0
-	ld [wcd4a], a
-	ld a, [wcd49]
-	inc a
-	ld [wcd49], a
-	ret
-; 1024a8
 
 Function1024a8: ; 1024a8
 	callba Function1009f3
@@ -6287,14 +6063,6 @@ Function102b4e: ; 102b4e
 	ld [w2DMenuNumRows], a
 	ret
 ; 102b68
-
-Function102b68: ; 102b68 ; unreferenced
-	xor a
-	ld hl, wWindowStackPointer
-	ld bc, $10
-	call ByteFill
-	ret
-; 102b73
 
 Unknown_102b73:
 	db 9, 6

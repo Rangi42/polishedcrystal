@@ -2735,10 +2735,7 @@ wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
 	ds 3
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
-wUnusedTwoDayTimerOn:: ds 1 ; dc39
-wUnusedTwoDayTimer:: ds 1
-wUnusedTwoDayTimerStartDate:: ds 1
-	ds 4
+	ds 7 ; dc39
 wMobileOrCable_LastSelection:: ds 1
 wdc41:: ds 1
 wdc42:: ds 8

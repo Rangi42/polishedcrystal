@@ -325,11 +325,6 @@ CherrygroveCity_RivalPushesYouOutOfTheWay:
 	turn_head_up
 	step_end
 
-CherrygroveCity_UnusedMovementData:
-	step_left
-	turn_head_down
-	step_end
-
 CherrygroveCity_RivalExitsStageLeft:
 	big_step_left
 	big_step_left

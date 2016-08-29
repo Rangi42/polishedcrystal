@@ -98,7 +98,7 @@ MapRuinsofAlphHoOhChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	iftrue UnknownScript_0x58609
 	opentext
-	writetext UnknownText_0x58644
+	writetext UnknownText_0x58612
 	writebyte $3
 	special Special_DisplayUnownWords
 	closetext
@@ -116,16 +116,6 @@ MovementData_0x58610:
 	step_end
 
 UnknownText_0x58612:
-	text "Patterns appeared"
-	line "on the walls…"
-	done
-
-; possibly unused
-UnknownText_0x58633:
-	text "It's Unown text!"
-	done
-
-UnknownText_0x58644:
 	text "Patterns appeared"
 	line "on the walls…"
 	done

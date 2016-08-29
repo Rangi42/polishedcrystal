@@ -160,13 +160,9 @@ TeachTMHM: ; 2c867
 	and a
 	ret
 
-.unused
-	ld a, 2
-	ld [wItemEffectSucceeded], a
 .learned_move
 	scf
 	ret
-; 2c8bf (b:48bf)
 
 Text_BootedTM: ; 0x2c8bf
 	; Booted up a TM.
@@ -446,21 +442,6 @@ TMHMPocket_GetCurrentLineCoord: ; 2ca86 (b:4a86)
 	jr nz, .loop
 	ret
 ; 2ca95 (b:4a95)
-
-Function2ca95: ; 2ca95
-; unreferenced
-	pop hl
-	ld bc, 3
-	add hl, bc
-	predef GetTMHMMove
-	ld a, [wd265]
-	ld [wPutativeTMHMMove], a
-	call GetMoveName
-	push hl
-	call PlaceString
-	pop hl
-	ret
-; 2caae
 
 TMHM_String_Cancel: ; 2caae
 	db "Cancel@"

@@ -1207,11 +1207,6 @@ MonMenu_Fly: ; 12e30
 	ld a, $0
 	ret
 
-.Unused:
-	ld a, $1
-	ret
-; 12e55
-
 MonMenu_Flash: ; 12e55
 	callba OWFlash
 	ld a, [wFieldMoveSucceeded]

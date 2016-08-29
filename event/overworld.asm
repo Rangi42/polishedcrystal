@@ -1037,16 +1037,6 @@ StrengthFunction: ; cce5
 	jr c, .Failed
 	jr .UseStrength
 
-.AlreadyUsing: ; unreferenced
-	ld hl, .JumpText
-	call MenuTextBoxBackup
-	ld a, $80
-	ret
-
-.JumpText: ; 0xcd01
-	text_jump UnknownText_0x1c0751
-	db "@"
-
 .Failed: ; cd06
 	ld a, $80
 	ret
@@ -1691,11 +1681,6 @@ UnknownText_0xd0a4: ; 0xd0a4
 UnknownText_0xd0a9: ; 0xd0a9
 	; Not even a nibble!
 	text_jump UnknownText_0x1c0965
-	db "@"
-
-UnknownText_0xd0ae: ; unused
-	; Looks like there's nothing here.
-	text_jump UnknownText_0x1c0979
 	db "@"
 
 BikeFunction: ; d0b3

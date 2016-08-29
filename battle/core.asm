@@ -1956,27 +1956,6 @@ GetMaxHP: ; 3ccac
 	ret
 ; 3ccc2
 
-GetHalfHP: ; 3ccc2
-; unreferenced
-	ld hl, BattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, EnemyMonHP
-.ok
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	srl b
-	rr c
-	ld a, [hli]
-	ld [Buffer2], a
-	ld a, [hl]
-	ld [Buffer1], a
-	ret
-; 3ccde
-
 CheckUserHasEnoughHP: ; 3ccde
 	ld hl, BattleMonHP + 1
 	ld a, [hBattleTurn]
@@ -6729,19 +6708,6 @@ CheckUnownLetter: ; 3eb75
 ; 3ebc7
 
 
-SwapBattlerLevels: ; 3ebc7
-; unreferenced
-	push bc
-	ld a, [BattleMonLevel]
-	ld b, a
-	ld a, [EnemyMonLevel]
-	ld [BattleMonLevel], a
-	ld a, b
-	ld [EnemyMonLevel], a
-	pop bc
-	ret
-; 3ebd8
-
 BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
 	xor a
 	ld [TempEnemyMonSpecies], a
@@ -7066,22 +7032,6 @@ _LoadHPBar: ; 3eda6
 	callab LoadHPBar
 	ret
 ; 3edad
-
-
-LoadHPExpBarGFX: ; unreferenced
-	ld de, EnemyHPBarBorderGFX
-	ld hl, VTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 4
-	call Get1bpp
-	ld de, HPExpBarBorderGFX
-	ld hl, VTiles2 tile $73
-	lb bc, BANK(HPExpBarBorderGFX), 6
-	call Get1bpp
-	ld de, ExpBarGFX
-	ld hl, VTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 8
-	jp Get2bpp
-; 3edd1
 
 
 EmptyBattleTextBox: ; 3edd1
@@ -8006,12 +7956,6 @@ TextJump_GoodComeBack: ; 3f352
 	db "@"
 ; 3f357
 
-UnusedFunction_TextJump_ComeBack: ; 3f357
-; this function doesn't seem to be used
-	ld hl, TextJump_ComeBack
-	ret
-; 3f35b
-
 TextJump_ComeBack: ; 3f35b
 	text_jump Text_ComeBack
 	db "@"
@@ -8286,13 +8230,6 @@ StartBattle: ; 3f4c1
 	scf
 	ret
 ; 3f4d9
-
-
-_DoBattle: ; 3f4d9
-; unreferenced
-	call DoBattle
-	ret
-; 3f4dd
 
 
 BattleIntro: ; 3f4dd

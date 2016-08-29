@@ -100,28 +100,6 @@ BattleTowerOutsidePanUpMovementData:
 	step_up
 	step_end
 
-BattleTowerOutsideUnusedText1:
-	text "Wow, the Battle"
-	line "Tower is huge! My"
-
-	para "neck is tired from"
-	line "looking up at it."
-	done
-
-BattleTowerOutsideUnusedText2:
-	text "Wow, the Battle"
-	line "Tower is huge!"
-
-	para "Since there are a"
-	line "whole bunch of"
-
-	para "trainers inside,"
-	line "there must also be"
-
-	para "a wide variety of"
-	line "#mon."
-	done
-
 BattleTowerOutsideYoungsterText:
 	text "Wow, the Battle"
 	line "Tower is huge!"
@@ -129,17 +107,6 @@ BattleTowerOutsideYoungsterText:
 	para "There must be many"
 	line "kinds of #mon"
 	cont "in there!"
-	done
-
-BattleTowerOutsideUnusedText3:
-	text "What on earth do"
-	line "they do here?"
-
-	para "If the name says"
-	line "anything, I guess"
-
-	para "it must be for"
-	line "#mon battles."
 	done
 
 BattleTowerOutsideBuenaText:
@@ -151,16 +118,6 @@ BattleTowerOutsideBuenaText:
 
 	para "should go into"
 	line "battle…"
-	done
-
-BattleTowerOutsideUnusedText4:
-	text "Ehehehe…"
-	line "I sneaked out of"
-	cont "work to come here."
-
-	para "I'm never giving"
-	line "up until I become"
-	cont "a Leader!"
 	done
 
 BattleTowerOutsideSailorText:

@@ -279,17 +279,6 @@ FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
 	ret
 ; 8e9cc (23:69cc)
 
-GetMonIcon2: ; 8e9cc
-; unreferenced
-	push de
-	ld a, [wd265]
-	call ReadMonMenuIcon
-	ld [CurIcon], a
-	pop de
-	call GetIcon_de
-	ret
-; 8e9db
-
 GetMemIconGFX: ; 8e9db (23:69db)
 	ld a, [wCurIconTile]
 GetIconGFX: ; 8e9de

@@ -84,7 +84,6 @@ SpecialsPointers:: ; c029
 	add_special Special_FindAtLeastThatHappy
 	add_special Special_FindThatSpecies
 	add_special Special_FindThatSpeciesYourTrainerID
-	add_special Special_CheckUnusedTwoDayTimer ; unreferenced
 	add_special Special_DayCareMon1
 	add_special Special_DayCareMon2
 	add_special Special_SelectRandomBugContestContestants
@@ -136,7 +135,6 @@ SpecialsPointers:: ; c029
 	add_special Function1700ba
 	add_special Function170114
 	add_special BattleTowerBattle
-	add_special Function1704e1
 	add_special EmptySpecial_17021d
 	add_special Function_LoadOpponentTrainerAndPokemonsWithOTSprite
 	add_special Function11ba38
@@ -427,13 +425,6 @@ ScriptReturnCarry: ; c3e2
 	ld [ScriptVar], a
 	ret
 ; c3ef
-
-Special_CheckUnusedTwoDayTimer: ; c3ef
-	callba CheckUnusedTwoDayTimer
-	ld a, [wUnusedTwoDayTimer]
-	ld [ScriptVar], a
-	ret
-; c3fc
 
 Special_ActivateFishingSwarm: ; c3fc
 	ld a, [ScriptVar]

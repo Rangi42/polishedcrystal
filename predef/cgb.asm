@@ -362,13 +362,6 @@ _CGB17: ; 8fca
 Function9009: ; 9009
 	ld hl, Palette9036
 	call LoadHLPaletteIntoDE
-	jr .asm_901a
-
-.unused
-	ld bc, TempMonDVs
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-.asm_901a
 	call WipeAttrMap
 	hlcoord 1, 1, AttrMap
 	lb bc, 7, 7

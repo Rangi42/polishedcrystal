@@ -158,8 +158,8 @@ UnknownText_0x1994fe:
 	para "It turns out, I"
 	line "stumbled into the"
 
-	para "unused Gym next"
-	line "door."
+	para "Fighting Dojo"
+	line "next door."
 
 	para "Boy, I was pretty"
 	line "embarrassed."

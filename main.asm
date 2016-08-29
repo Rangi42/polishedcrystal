@@ -583,8 +583,6 @@ ApplyPokerusTick: ; 13988
 
 INCLUDE "event/bug_contest_2.asm"
 
-INCLUDE "unknown/013a47.asm"
-
 GetSquareRoot: ; 13b87
 ; Return the square root of de in b.
 
@@ -1178,17 +1176,6 @@ INCLUDE "engine/wildmons.asm"
 SECTION "bankA", ROMX, BANK[$A]
 
 INCLUDE "engine/link.asm"
-
-Function29fe4: ; unreferenced
-	ld a, $0
-	call GetSRAMBank
-	ld d, $0
-	ld b, CHECK_FLAG
-	predef FlagPredef
-	call CloseSRAM
-	ld a, c
-	and a
-	ret
 
 DetermineLinkBattleResult: ; 2b930
 	callba UpdateEnemyMonInParty
@@ -2305,16 +2292,6 @@ CheckCanLearnMoveTutorMove: ; 492b9
 	db 17, 19 ; end coords
 
 INCLUDE "predef/crystal.asm"
-
-Unknown_4985a: ; unreferenced
-	db $ab, $03, $57, $24, $ac, $0e, $13, $32
-	db $be, $30, $5b, $4c, $47, $60, $ed, $f2
-	db $ab, $03, $55, $26, $aa, $0a, $13, $3a
-	db $be, $28, $33, $24, $6e, $71, $df, $b0
-	db $a8, $00, $e5, $e0, $9a, $fc, $f4, $2c
-	db $fe, $4c, $a3, $5e, $c6, $3a, $ab, $4d
-	db $a8, $00, $b5, $b0, $de, $e8, $fc, $1c
-	db $ba, $66, $f7, $0e, $ba, $5e, $43, $bd
 
 INCLUDE "event/celebi.asm"
 INCLUDE "engine/main_menu.asm"
@@ -4480,34 +4457,6 @@ Function50cd0: ; 50cd0
 	jr nz, .asm_50cd0
 	ret
 
-Function50cdb: ; unreferenced predef
-	push hl
-	push hl
-	ld hl, PartyMonNicknames
-	ld a, [CurPartyMon]
-	call GetNick
-	pop hl
-	call PlaceString
-	call CopyPkmnToTempMon
-	pop hl
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .asm_50d09
-	push hl
-	ld bc, -12
-	add hl, bc
-	ld b, $0
-	call DrawEnemyHP
-	pop hl
-	ld bc, 5
-	add hl, bc
-	push de
-	call PrintLevel
-	pop de
-
-.asm_50d09
-	ret
-
 PlaceStatusString: ; 50d0a
 	push de
 	inc de
@@ -5482,14 +5431,6 @@ Predef36:
 
 INCLUDE "engine/timeofdaypals.asm"
 INCLUDE "engine/battle_start.asm"
-
-Function8c7c9: ; unreferenced
-	ld a, $1
-	ld [hBGMapMode], a
-	call WaitBGMap
-	xor a
-	ld [hBGMapMode], a
-	ret
 
 INCLUDE "event/field_moves.asm"
 INCLUDE "event/magnet_train.asm"

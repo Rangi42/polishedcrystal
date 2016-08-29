@@ -1135,8 +1135,6 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	call Pokedex_PlaceFrontpicTopLeftCorner
 	ret
 
-.Unused: ; 4084f
-	db $5c, $5d, $ff ; No.
 .Height: ; 40852
 	db "Ht  ?", $5e, "??", $5f, $ff ; HT  ?'??"
 .Weight: ; 4085c

@@ -2044,15 +2044,6 @@ Function114c0b: ; 114c0b
 
 ; 114c55
 
-Function114c55: ; 114c55
-	push bc
-	ld bc, $dc00
-	call Function115d80
-	pop bc
-	ret
-
-; 114c5e
-
 Function114c5e: ; 114c5e
 	ld de, PartyMon5Defense
 	push hl

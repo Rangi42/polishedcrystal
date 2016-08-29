@@ -150,12 +150,6 @@ EnterMap: ; 9673e
 	ret
 ; 9676d
 
-UnusedWait30Frames: ; 9676d
-	ld c, 30
-	call DelayFrames
-	ret
-; 96773
-
 HandleMap: ; 96773
 	call ResetOverworldDelay
 	call HandleMapTimeAndJoypad
@@ -516,12 +510,6 @@ CheckTimeEvents: ; 9693a
 	scf
 	ret
 ; 96970
-
-.unused ; 96970
-	ld a, 8
-	scf
-	ret
-; 96974
 
 OWPlayerInput: ; 96974
 
@@ -993,12 +981,6 @@ CountStep: ; 96b79
 	ret
 ; 96bd3
 
-.unreferenced ; 96bd3
-	ld a, 7
-	scf
-	ret
-; 96bd7
-
 DoRepelStep: ; 96bd7
 	ld a, [wRepelEffect]
 	and a
@@ -1067,10 +1049,6 @@ PlayerEventScriptPointers: ; 96c0c
 Invalid_0x96c2d: ; 96c2d
 	end
 ; 96c2e
-
-; unreferenced
-	end
-; 96c2f
 
 HatchEggScript: ; 96c2f
 	callasm OverworldHatchEgg

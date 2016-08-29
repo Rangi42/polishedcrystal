@@ -291,47 +291,6 @@ MobileMenuJoypad: ; 241ba
 ; 241d5
 
 
-Function241d5: ; 241d5
-; Unreferenced
-	call Place2DMenuCursor
-.loop
-	call Move2DMenuCursor
-	call Function10402d ; BUG: This function is in another bank.
-	                    ; Pointer in current bank (9) is bogus.
-	call .loop2
-	jr nc, .done
-	call _2DMenuInterpretJoypad
-	jr c, .done
-	ld a, [w2DMenuFlags1]
-	bit 7, a
-	jr nz, .done
-	call GetMenuJoypad
-	ld c, a
-	ld a, [wMenuJoypadFilter]
-	and c
-	jr z, .loop
-
-.done
-	ret
-
-.loop2
-	call Menu_WasButtonPressed
-	ret c
-	ld c, 1
-	ld b, 3
-	call Function10062d ; BUG: This function is in another bank.
-	                    ; Pointer in current bank (9) is bogus.
-	ret c
-	callba Function100337
-	ret c
-	ld a, [w2DMenuFlags1]
-	bit 7, a
-	jr z, .loop2
-	and a
-	ret
-; 24216
-
-
 MenuJoypadLoop: ; 24216
 .loop
 	call Move2DMenuCursor
@@ -724,40 +683,6 @@ _ExitMenu:: ; 243e8
 	dec [hl]
 	ret
 ; 24423
-
-Function24423: ; 24423
-; Unreferenced
-	ld a, [VramState]
-	bit 0, a
-	ret z
-	xor a
-	call GetSRAMBank
-	hlcoord 0, 0
-	ld de, sScratch
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyBytes
-	call CloseSRAM
-	call OverworldTextModeSwitch
-	xor a
-	call GetSRAMBank
-	ld hl, sScratch
-	decoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-.loop
-	ld a, [hl]
-	cp $61
-	jr c, .next
-	ld [de], a
-.next
-	inc hl
-	inc de
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-	call CloseSRAM
-	ret
-; 2445d
 
 Error_Cant_ExitMenu: ; 2445d
 	ld hl, .Text_NoWindowsAvailableForPopping

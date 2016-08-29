@@ -46,13 +46,6 @@ AnimateMon_Hatch: ; d0032
 	ret
 ; d003a
 
-AnimateMon_Unused: ; d003a
-	ld e, ANIM_MON_UNUSED
-	ld d, $0
-	call AnimateFrontpic
-	ret
-; d0042
-
 
 POKEANIM: MACRO
 	rept _NARG

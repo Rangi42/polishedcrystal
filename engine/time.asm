@@ -6,7 +6,6 @@ _InitializeStartDay: ; 113d6
 ClearDailyTimers: ; 113da
 	xor a
 	ld [wLuckyNumberDayBuffer], a
-	ld [wUnusedTwoDayTimer], a
 	ld [wDailyResetTimer], a
 	ret
 ; 113e5
@@ -210,40 +209,6 @@ CheckPokerusTick:: ; 114e7
 	xor a
 	ret
 ; 114fc
-
-SetUnusedTwoDayTimer: ; 114fc
-	ld a, 2
-	ld hl, wUnusedTwoDayTimer
-	ld [hl], a
-	call UpdateTime
-	ld hl, wUnusedTwoDayTimerStartDate
-	call CopyDayToHL
-	ret
-; 1150c
-
-CheckUnusedTwoDayTimer: ; 1150c
-	ld hl, wUnusedTwoDayTimerStartDate
-	call CalcDaysSince
-	call GetDaysSince
-	ld hl, wUnusedTwoDayTimer
-	call UpdateTimeRemaining
-	ret
-; 1151c
-
-; XXX
-	ld hl, DailyFlags
-	set 2, [hl] ; ENGINE_SPECIAL_WILDDATA
-	ret
-; 11522
-
-; XXX
-	and a
-	ld hl, DailyFlags
-	bit 2, [hl] ; ENGINE_SPECIAL_WILDDATA
-	ret nz
-	scf
-	ret
-; 1152b
 
 RestartLuckyNumberCountdown: ; 1152b
 	call .GetDaysUntilNextFriday

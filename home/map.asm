@@ -1379,14 +1379,6 @@ UpdateBGMapColumn:: ; 27f8
 	ret
 ; 2816
 
-; unreferenced
-	ld hl, BGMapBuffer
-	ld bc, SGBPredef - BGMapBuffer
-	xor a
-	call ByteFill
-	ret
-; 2821
-
 LoadTileset:: ; 2821
 	ld hl, TilesetAddress
 	ld a, [hli]

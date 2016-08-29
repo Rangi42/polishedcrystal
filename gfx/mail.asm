@@ -991,9 +991,6 @@ INCBIN "gfx/mail/0b9b46.1bpp"
 MailSentretGFX: ; b9bce
 INCBIN "gfx/mail/0b9bce.1bpp"
 
-MailUnusedGrassGFX: ; b9bee
-INCBIN "gfx/mail/0b9bee.1bpp"
-
 PortraitMailLargePokeballGFX: ; b9bfe
 INCBIN "gfx/mail/0b9bfe.1bpp"
 

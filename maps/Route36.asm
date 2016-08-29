@@ -537,19 +537,6 @@ UnknownText_0x1945b8:
 	line "opened…"
 	done
 
-; unused
-UnknownText_0x194626:
-	text "An odd tree is"
-	line "blocking the way"
-	cont "to Goldenrod City."
-
-	para "It's preventing"
-	line "me from shopping."
-
-	para "Something should"
-	line "be done about it."
-	done
-
 UnknownText_0x19469e:
 	text "That odd tree dis-"
 	line "appeared without a"

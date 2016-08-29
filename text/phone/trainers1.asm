@@ -1985,5 +1985,5 @@ UnknownText_0x1b75e5: ; 0x1b75e5
 	done
 
 UnusedPhoneText: ; 0x1b7624
-	text "Good morning."
+	text "Hi!"
 	done
