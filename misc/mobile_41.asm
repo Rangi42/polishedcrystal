@@ -192,36 +192,6 @@ endr
 	ret
 ; 106008
 
-MobileFn_106008: mobile ; 106008
-	ld a, $5
-	call GetSRAMBank
-	ld hl, $a07a
-	ld a, [bc]
-	dec bc
-	add [hl]
-	ld [hld], a
-	ld a, [bc]
-	dec bc
-	adc [hl]
-	ld [hld], a
-	ld a, [bc]
-	adc [hl]
-	ld [hld], a
-	jr nc, .asm_106027
-	inc [hl]
-	jr nz, .asm_106027
-	ld a, $ff
-rept 3
-	ld [hli], a
-endr
-	ld [hl], a
-
-.asm_106027
-	call Function106162
-	call CloseSRAM
-	ret
-; 10602e
-
 MobileFn_10602e: mobile ; 10602e (41:602e)
 	ld hl, $a010
 	jp MobileFn_106117

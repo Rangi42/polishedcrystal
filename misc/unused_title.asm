@@ -1,2 +1,0 @@
-
-SECTION "bank43", ROMX, BANK[$43]
