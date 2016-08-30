@@ -1673,59 +1673,6 @@ _LinkBattleSendReceiveAction: ; 100a09
 	ret
 ; 100a87
 
-Function100acf: ; 100acf
-	ld de, Unknown_100b0a
-	ld hl, wccb5
-	ld a, [wd431]
-	ld [hli], a
-	ld c, $01
-.asm_100adb
-	ld a, [de]
-	inc de
-	ld [hli], a
-	inc c
-	and a
-	jr nz, .asm_100adb
-	ld a, c
-	ld [wccb4], a
-	ret
-; 100ae7
-
-Function100ae7: ; 100ae7
-	ld de, Unknown_100b0a
-	ld hl, wcc62
-.asm_100aed
-	ld a, [de]
-	inc de
-	and a
-	jr z, .asm_100af8
-	cp [hl]
-	jr nz, .asm_100aff
-	inc hl
-	jr .asm_100aed
-
-.asm_100af8
-	ld a, [wcc61]
-	ld [wd430], a
-	ret
-
-.asm_100aff
-	ld a, $0f
-	ld [wd430], a
-	ld a, $f1
-	ld [wcd2b], a
-	ret
-; 100b0a
-
-
-SECTION "tetsuji", ROMX, BANK[$40]
-
-	charmap " ", $20 ; revert to ascii
-
-Unknown_100b0a: ; 100b0a
-	db "tetsuji", 0
-; 100b12
-
 
 SECTION "bank40_2", ROMX, BANK[$40]
 

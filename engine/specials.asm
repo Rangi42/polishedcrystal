@@ -146,7 +146,6 @@ SpecialsPointers:: ; c029
 	add_special Function101231
 	add_special Special_MoveTutor
 	add_special SpecialOmanyteChamber
-	add_special Function11c1ab
 	add_special BattleTowerAction
 	add_special Special_DisplayUnownWords
 	add_special Special_Menu_ChallengeExplanationCancel

@@ -4923,28 +4923,6 @@ Text_SaveFileWillBeSent: ; 0x11aa13
 	done
 ; 0x11aa2c
 
-Text_SentSaveFileReadingNews: ; 0x11aa2c
-	text "Sent Save File."
-	line "Reading News…"
-	done
-; 0x11aa4b
-
-Text_ReadingNews: ; 0x11aa4b
-	text "Reading News…"
-	done
-; 0x11aa5a
-
-Text_ReceivedNews: ; 0x11aa5a
-	text "Received News!"
-	done
-; 0x11aa6a
-
-Text_RegisteringRecord: ; 0x11aab2
-	text "Registering your"
-	line "record…"
-	done
-; 0x11aacc
-
 Text_PartyMonTopsThisLevel: ; 0x11aaf0
 	text "A party #mon"
 	line "tops this level."

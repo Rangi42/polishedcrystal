@@ -199,8 +199,6 @@ Function10419d: ; 10419d (41:419d)
 	call Function10424e
 	ld a, $23
 	ld [hDMATransfer], a
-
-WaitDMATransfer: ; 104a14
 .loop
 	call DelayFrame
 	ld a, [hDMATransfer]

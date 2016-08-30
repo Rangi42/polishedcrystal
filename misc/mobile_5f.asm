@@ -4336,22 +4336,6 @@ Function17f382: ; 17f382
 ; 17f3c9
 
 Function17f3c9: ; 17f3c9
-	push bc
-	ld hl, wcd36
-	ld de, $c708
-	ld bc, $000c
-	call CopyBytes
-	pop de
-	ld c, $0
-	callba Function11c075
-	push hl
-	ld hl, $c708
-	ld de, wcd36
-	ld bc, $000c
-	call CopyBytes
-	pop bc
-	pop de
-	and a
 	ret
 ; 17f3f0
 

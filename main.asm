@@ -2296,7 +2296,8 @@ INCLUDE "predef/crystal.asm"
 INCLUDE "event/celebi.asm"
 INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
-INCLUDE "misc/mobile_12_2.asm"
+
+INCLUDE "misc/mobile_12.asm"
 ; mobile battle selection
 
 AskRememberPassword: ; 4ae12
@@ -3897,36 +3898,6 @@ FemaleTrainersEnd:
 
 INCLUDE "battle/sliding_intro.asm"
 
-Function4ea0a: ; 4ea0a
-	ld a, c
-	push af
-	call SpeechTextBox
-	pop af
-	dec a
-	ld bc, $c
-	ld hl, w5_dc1a
-	call AddNTimes
-	ld de, wcd53
-	ld bc, $c
-	ld a, $5 ; BANK(w5_dc1a)
-	call FarCopyWRAM
-
-	ld a, [rSVBK]
-	push af
-	ld a, $1
-	ld [rSVBK], a
-
-	ld bc, wcd53
-	decoord 1, 14
-	callba Function11c0c6
-
-	pop af
-	ld [rSVBK], a
-
-	ld c, 180
-	call DelayFrames
-	ret
-
 CheckBattleScene: ; 4ea44
 ; Return carry if battle scene is turned off.
 	ld a, [Options]
@@ -5375,15 +5346,11 @@ GetKrisBackpic: ; 88ec9
 KrisBackpic: ; 88ed6
 INCBIN "gfx/misc/kris_back.6x6.2bpp"
 
-String_89116:
-	db "-----@"
-
-INCLUDE "misc/mobile_22.asm"
 INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
 INCLUDE "event/dratini.asm"
 INCLUDE "event/battle_tower.asm"
-INCLUDE "misc/mobile_22_2.asm"
+INCLUDE "misc/mobile_22.asm"
 
 SECTION "bank23", ROMX, BANK[$23]
 
