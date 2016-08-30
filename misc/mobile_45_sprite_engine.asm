@@ -365,7 +365,7 @@ Function11619d: ; 11619d
 	call ByteFill
 
 .asm_1161b4
-	call Function1161b8
+	;call Function1161b8
 	ret
 
 ; 1161b8

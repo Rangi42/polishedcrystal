@@ -56,20 +56,6 @@ asm_10802c:
 	mobiletradeanim_showgetmon
 	mobiletradeanim_end
 
-Function10803d: ; 10803d
-	ld a, $0
-	ld [wcf65], a
-	ld de, .TradeAnimScript
-	jp RunMobileTradeAnim_NoFrontpics
-; 108048
-
-.TradeAnimScript:
-	mobiletradeanim_11
-	mobiletradeanim_07
-	mobiletradeanim_receivemon
-	mobiletradeanim_showoddegg
-	mobiletradeanim_end
-
 Function10804d: ; 10804d
 	ld a, $0
 	ld [wcf65], a

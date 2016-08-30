@@ -108,6 +108,8 @@ ENDM
 	engine_flag wMomSavingMoney, 0 ; mom saving money ; $8
 	engine_flag wMomSavingMoney, 7 ; dst
 
+	engine_flag wUnusedTwoDayTimerOn, 0 ; unused
+
 	engine_flag StatusFlags, 0 ; pokedex
 	engine_flag StatusFlags, 1 ; unown dex
 	engine_flag StatusFlags, 3 ; pokerus

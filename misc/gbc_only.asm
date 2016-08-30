@@ -1,5 +1,4 @@
 GBCOnlyScreen: ; 4ea82
-
 	ld a, [hCGB]
 	and a
 	ret nz
@@ -41,7 +40,6 @@ GBCOnlyScreen: ; 4ea82
 
 
 DrawGBCOnlyScreen: ; 4eac5
-
 	call DrawGBCOnlyBorder
 
 	; Pokemon
@@ -67,7 +65,6 @@ DrawGBCOnlyScreen: ; 4eac5
 
 
 DrawGBCOnlyBorder: ; 4eaea
-
 	hlcoord 0, 0
 	ld [hl], 0 ; top-left
 
@@ -137,10 +134,10 @@ DrawGBCOnlyGraphic: ; 4eb27
 
 
 GBCOnlyString: ; 4eb38
-	db   "This Game Pak is"
-	next "designed only for"
-	next "use on the"
-	next "Game Boy Color.@"
+	db   "Please report"
+	next "this crash to"
+	next "the developer,"
+	next "Rangi42.@"
 ; 4eb76
 
 

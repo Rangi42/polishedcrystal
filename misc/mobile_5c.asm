@@ -102,50 +102,6 @@ Function170c8b: ; 170c8b
 
 ; 170c98
 
-CheckBTMonMovesForErrors: ; 170c98
-	ld c, BATTLETOWER_NROFPKMNS
-	ld hl, wBT_OTTempPkmn1Moves
-.loop
-	push hl
-	ld a, [hl]
-	cp NUM_ATTACKS + 1
-	jr c, .okay
-	ld a, POUND
-	ld [hl], a
-
-.okay
-	inc hl
-	ld b, NUM_MOVES - 1
-.loop2
-	ld a, [hl]
-	and a
-	jr z, .loop3
-	cp NUM_ATTACKS + 1
-	jr c, .next
-
-.loop3
-	xor a
-	ld [hl], a
-	inc hl
-	dec b
-	jr nz, .loop3
-	jr .done
-
-.next
-	inc hl
-	dec b
-	jr nz, .loop2
-
-.done
-	pop hl
-	ld de, PARTYMON_STRUCT_LENGTH + PKMN_NAME_LENGTH
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
-
-; 170cc6
-
 Function170cc6: ; 170cc6
 	ld a, [rSVBK]
 	push af
@@ -207,19 +163,6 @@ Function171b42: ; 171b42 (5c:5b42)
 	jr Function171b42
 
 ; 171c6b (5c:5c6b)
-
-MenuDataHeader_171c6b: ; 171c6b
-	db $40 ; flags
-	db 12,  0 ; start coords
-	db 17, 19 ; end coords
-	dw NULL
-	db 0 ; default option
-; 171c73
-
-String_171c73: ; 171c73
-	db   "モバイルセンターを けってい"
-	next "しました@"
-; 171c87
 
 Function171c87: ; 171c87 (5c:5c87)
 	call DisableLCD

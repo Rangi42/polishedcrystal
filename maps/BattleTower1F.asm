@@ -91,7 +91,6 @@ Script_ChoseChallenge: ; 0x9e40f
 	special BattleTowerAction
 	special Function1700b0
 	if_equal $a, Script_Menu_ChallengeExplanationCancel
-	if_not_equal $0, UnknownScript_0x9e550
 	writebyte BATTLETOWERACTION_11
 	special BattleTowerAction
 	writetext Text_RightThisWayToYourBattleRoom
@@ -146,7 +145,7 @@ Script_BattleTowerIntroductionYesNo: ; 0x9e49e
 	yesorno
 	iffalse Script_BattleTowerSkipExplanation
 Script_BattleTowerExplanation: ; 0x9e4a5
-	writetext Text_BattleTowerIntroduction_2
+	writetext Text_BattleTowerIntroduction
 Script_BattleTowerSkipExplanation:
 	writebyte BATTLETOWERACTION_01
 	special BattleTowerAction
@@ -172,11 +171,6 @@ Script_MayNotEnterABattleRoomUnderL70: ; 0x9e549
 	writetext Text_MayNotEnterABattleRoomUnderL70
 	waitbutton
 	jump Script_Menu_ChallengeExplanationCancel
-
-UnknownScript_0x9e550:
-	special Function17f53d
-	closetext
-	end
 
 BattleTower_LeftWithoutSaving:
 	opentext
@@ -300,67 +294,7 @@ Text_RightThisWayToYourBattleRoom: ; 0x9e60a
 	line "your Battle Room."
 	done
 
-Text_BattleTowerIntroduction_1: ; 0x9e62f
-	text "Battle Tower is a"
-	line "facility made for"
-	cont "#mon battles."
-
-	para "Countless #mon"
-	line "trainers gather"
-
-	para "from all over to"
-	line "hold battles in"
-
-	para "specially designed"
-	line "Battle Rooms."
-
-	para "There are many"
-	line "Battle Rooms in"
-	cont "the Battle Tower."
-
-	para "Each Room holds"
-	line "seven trainers."
-
-	para "If you defeat the"
-	line "seven in a Room,"
-
-	para "and you have a"
-	line "good record, you"
-
-	para "could become the"
-	line "Room's Leader."
-
-	para "All Leaders will"
-	line "be recorded in the"
-
-	para "Honor Roll for"
-	line "posterity."
-
-	para "You may challenge"
-	line "in up to five"
-
-	para "Battle Rooms each"
-	line "day."
-
-	para "However, you may"
-	line "battle only once a"
-
-	para "day in any given"
-	line "Room."
-
-	para "To interrupt a"
-	line "session, you must"
-
-	para "save. If not, you"
-	line "won't be able to"
-
-	para "resume your Room"
-	line "challenge."
-
-	para ""
-	done
-
-Text_BattleTowerIntroduction_2: ; 0x9e886
+Text_BattleTowerIntroduction: ; 0x9e886
 	text "Battle Tower is a"
 	line "facility made for"
 	cont "#mon battles."
@@ -392,33 +326,7 @@ Text_BattleTowerIntroduction_2: ; 0x9e886
 
 	para "resume your Room"
 	line "challenge."
-
-	para ""
-	done
-
-Text_ReceivedAListOfLeadersOnTheHonorRoll: ; 0x9e9eb
-	text "Received a list of"
-	line "Leaders on the"
-	cont "Honor Roll."
-
-	para ""
-	done
-
-Text_PleaseConfirmOnThisMonitor: ; 0x9ea1b
-	text "Please confirm on"
-	line "this monitor."
-	done
-
-Text_ThankYou: ; 0x9ea3c
-	text "Thank you!"
-
-	para ""
-	done
-
-Text_ThanksForVisiting: ; 0x9ea49
-	text "Thanks for"
-	line "visiting!"
-	done
+	prompt
 
 Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 	text "Congratulations!"
@@ -428,9 +336,7 @@ Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 
 	para "For that, you get"
 	line "this great prize!"
-
-	para ""
-	done
+	prompt
 
 Text_PlayerGotFive: ; 0x9eb7e
 	text "<PLAYER> got five"
@@ -449,52 +355,15 @@ Text_YourPackIsStuffedFull: ; 0x9eb94
 	line "and come back."
 	done
 
-Text_YourRegistrationIsComplete: ; 0x9ebd6
-	text "Your registration"
-	line "is complete."
-
-	para "Please come again!"
-	done
-
 Text_WeHopeToServeYouAgain: ; 0x9ec09
 	text "We hope to serve"
 	line "you again."
-	done
-
-Text_PleaseStepThisWay: ; 0x9ec26
-	text "Please step this"
-	line "way."
 	done
 
 Text_WouldYouLikeToHearAboutTheBattleTower: ; 0x9ec3d
 	text "Would you like to"
 	line "hear about the"
 	cont "Battle Tower?"
-	done
-
-Text_CantBeRegistered:
-	text "Your record from"
-	line "the previous"
-
-	para "Battle Room can't"
-	line "be registered. OK?"
-	done
-
-Text_CantBeRegistered_PreviousRecordDeleted:
-	text "Your record from"
-	line "the previous"
-
-	para "Battle Room can't"
-	line "be registered."
-
-	para "Also, the existing"
-	line "record will be"
-	cont "deleted. OK?"
-	done
-
-Text_CheckTheLeaderHonorRoll: ; 0x9ed1e
-	text "Check the Leader"
-	line "Honor Roll?"
 	done
 
 Text_ReadBattleTowerRules: ; 0x9ed3c
@@ -536,43 +405,12 @@ Text_BattleTower_LeftWithoutSaving:
 	line "invalid."
 	done
 
-Text_YourPkmnWillBeHealedToFullHealth: ; 0x9ee92
-	text "Your #mon will"
-	line "be healed to full"
-	cont "health."
-	done
-
-Text_NextUpOpponentNo: ; 0x9eebc
-	text "Next up, opponent"
-	line "no.@"
-	text_from_ram StringBuffer3
-	text ". Ready?"
-	done
-
 Text_SaveBeforeEnteringBattleRoom: ; 0x9ef1f
 	text "Before entering"
 	line "the Battle Room,"
 
 	para "your progress will"
 	line "be saved."
-	done
-
-Text_SaveAndEndTheSession: ; 0x9ef5e
-	text "Save and end the"
-	line "session?"
-	done
-
-Text_SaveBeforeReentry:
-	text "Your record will"
-	line "be saved before"
-
-	para "you go back into"
-	line "the previous Room."
-	done
-
-Text_CancelYourBattleRoomChallenge: ; 0x9efbf
-	text "Cancel your Battle"
-	line "Room challenge?"
 	done
 
 Text_WeveBeenWaitingForYou:

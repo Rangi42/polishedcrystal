@@ -914,9 +914,6 @@ OverworldMapEnd::
 wBillsPCPokemonList::
 ; Pokemon, box number, list index
 
-wMysteryGiftPartyTemp:: ; ds PARTY_LENGTH * (1 + 1 + NUM_MOVES)
-wMysteryGiftStaging::
-
 wLinkData:: ; ds $514
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: ds 1
@@ -967,9 +964,6 @@ wc820:: ds 1
 wc821:: ds 15
 wc830:: ds 16
 wc840:: ds 16
-wMysteryGiftTrainerData:: ds (1 + 1 + NUM_MOVES) * PARTY_LENGTH + 2
-wMysteryGiftTrainerDataEnd::
-	ds wMysteryGiftTrainerData - @
 wc850:: ds 16
 wc860:: ds 16
 wc870:: ds 16
@@ -981,33 +975,12 @@ wc8c0:: ds 16
 wc8d0:: ds 16
 wc8e0:: ds 16
 wc8f0:: ds 16
-
-wMysteryGiftPartnerData::
-wc900:: ds 1
-wMysteryGiftPartnerID:: ds 2
-wMysteryGiftPartnerName:: ds NAME_LENGTH
-wMysteryGiftPartnerDexCaught:: ds 1
-wc90f::
-wMysteryGiftPartnerSentDeco:: ds 1
-wMysteryGiftPartnerWhichItem:: ds 1
-wMysteryGiftPartnerWhichDeco:: ds 1
-wMysteryGiftPartnerBackupItem:: ds 2
-wMysteryGiftPartnerDataEnd::
-	ds 12
+wc900:: ds 15
+wc90f:: ds 17
 wc920:: ds 16
 wc930:: ds 16
 wc940:: ds 16
-wMysteryGiftPlayerData::
-wc950:: ds 1
-wMysteryGiftPlayerID:: ds 2
-wMysteryGiftPlayerName:: ds NAME_LENGTH
-wMysteryGiftPlayerDexCaught:: ds 1
-wMysteryGiftPlayerSentDeco:: ds 1
-wMysteryGiftPlayerWhichItem:: ds 1
-wMysteryGiftPlayerWhichDeco:: ds 1
-wMysteryGiftPlayerBackupItem:: ds 2
-wMysteryGiftPlayerDataEnd::
-
+wc950:: ds 20
 wc964:: ds 12
 wc970:: ds 16
 wc980:: ds 16
@@ -2735,7 +2708,8 @@ wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
 	ds 3
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
-	ds 7 ; dc39
+wUnusedTwoDayTimerOn:: ds 3 ; unused
+	ds 4 ; dc39
 wMobileOrCable_LastSelection:: ds 1
 wdc41:: ds 1
 wdc42:: ds 8

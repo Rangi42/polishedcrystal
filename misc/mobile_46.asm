@@ -648,7 +648,7 @@ Function11857c: ; 11857c
 	dw Function118a7a
 	dw Function11878d
 	dw Function11891c
-	dw Function1198ee
+	dw Function11a970
 	dw Function1198f7
 	dw Function11878d
 	dw Function119937
@@ -680,7 +680,7 @@ Function1185c3: ; 1185c3
 	dw Function1188c8
 	dw Function11878d
 	dw Function118903
-	dw Function118aa4
+	dw Function11a970
 	dw Function11878d
 	dw Function118e92
 	dw Function11878d
@@ -690,12 +690,12 @@ Function1185c3: ; 1185c3
 	dw Function118f14
 	dw Function118f5e
 	dw Function11878d
-	dw Function118fc0
+	dw Function11a970
 	dw Function11878d
 	dw Function119054
 	dw Function1190d0
 	dw Function11878d
-	dw Function1190ec
+	dw Function11a970
 	dw Function118e6d
 	dw Function11878d
 	dw Function118e76
@@ -1075,16 +1075,7 @@ Function11891c: ; 11891c
 
 
 Function118922: ; 118922
-	ld a, [wcd38]
-	and a
-	jr nz, .asm_11892d
 	ld hl, Text_WhatLevelDoYouWantToChallenge
-	jr .asm_118930
-
-.asm_11892d
-	ld hl, Text_CheckBattleRoomListByMaxLevel
-
-.asm_118930
 	call Function11a9c0
 	call Function119e2e
 
@@ -1401,9 +1392,6 @@ NewsDownloadURL: ; 0x118c47
 MenuDownloadURL: ; 0x118c95
 	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/POKESTA/menu.cgb", 0
 
-IndexDownloadURL: ; 0x118ce5
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/tamago/index.txt", 0
-
 Function118d80: ; 118d80
 	call Function118e06
 	ld a, [wcd38]
@@ -1575,10 +1563,10 @@ Function118e7e: ; 118e7e (46:4e7e)
 	jp Function119e2b
 
 Function118e87: ; 118e87 (46:4e87)
-	call Function119ed8
-	ret c
-	ld a, [wcd33]
-	ld [wcf66], a
+;	call Function119ed8
+;	ret c
+;	ld a, [wcd33]
+;	ld [wcf66], a
 	ret
 ; 118e92 (46:4e92)
 
@@ -2847,38 +2835,6 @@ Function1196de: ; 1196de (46:56de)
 	ret
 ; 1196f2 (46:56f2)
 
-Function119798: ; 119798
-	ld d, $0
-	ld e, d
-	call Function1197b4
-	swap a
-	or d
-	ld d, a
-	call Function1197b4
-	or d
-	ld d, a
-	call Function1197b4
-	swap a
-	or e
-	ld e, a
-	call Function1197b4
-	or e
-	ld e, a
-	ret
-; 1197b4
-
-Function1197b4: ; 1197b4
-	ld a, [hli]
-	cp $61
-	jr nc, .asm_1197bc
-	sub $30
-	ret
-
-.asm_1197bc
-	sub $57
-	ret
-; 1197bf
-
 Function1197bf: ; 1197bf
 	cp $a
 	jr nc, .asm_1197c6
@@ -3529,22 +3485,7 @@ Function119cb8:
 ; 119cc3
 
 Function119cc3: ; 119cc3
-	ld a, [wcd38]
-	and a
-	jr z, .asm_119cd1
-	dec a
-	jr z, .asm_119cd6
-	ld hl, Text_QuitReadingNews
-	jr .asm_119cd9
-
-.asm_119cd1
 	ld hl, Text_CancelBattleRoomChallenge
-	jr .asm_119cd9
-
-.asm_119cd6
-	ld hl, Text_ExitGymLeaderHonorRoll
-
-.asm_119cd9
 	call Function11a9c0
 	call Function119e2e
 
@@ -4916,113 +4857,6 @@ String_11a7f4: ; 11a7f4
 	db   "               @"
 ; 11a804
 
-Function11a80c: ; 11a80c
-	ld de, hDivisor
-	ld bc, hDividend
-	ld hl, Unknown_11a89a
-	call Function11a88c
-	ld bc, hQuotient
-	ld hl, Unknown_11a8ba
-	call Function11a88c
-	ld bc, hPrintNum3
-	ld hl, Unknown_11a8da
-	call Function11a88c
-	xor a
-	ld b, a
-	ld a, [hDivisor]
-	and $f
-	ld e, a
-	ld a, [hPrintNum7]
-	and $f
-	call Function11a884
-	ld e, a
-	ld a, [hPrintNum9]
-	and $f
-	call Function11a884
-	ld [wcd62], a
-	ld e, b
-	xor a
-	ld b, a
-	ld a, [hDivisor]
-	and $f0
-	swap a
-	call Function11a884
-	ld e, a
-	ld a, [hPrintNum7]
-	and $f0
-	swap a
-	call Function11a884
-	ld e, a
-	ld a, [hPrintNum9]
-	and $f0
-	swap a
-	call Function11a884
-	ld [wcd63], a
-	ld e, b
-	xor a
-	ld b, a
-	ld a, [hMathBuffer]
-	and $f
-	call Function11a884
-	ld e, a
-	ld a, [hPrintNum8]
-	and $f
-	call Function11a884
-	ld e, a
-	ld a, [hPrintNum10]
-	and $f
-	call Function11a884
-	ld [wcd64], a
-	ret
-; 11a884
-
-Function11a884: ; 11a884
-	add e
-	cp $a
-	ret c
-	sub $a
-	inc b
-	ret
-; 11a88c
-
-Function11a88c: ; 11a88c
-	ld a, [bc]
-	sla a
-	ld c, a
-	xor a
-	ld b, a
-	add hl, bc
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-	ret
-; 11a89a
-
-Unknown_11a89a: ; 11a89a
-x = 0
-rept 16
-	bcd x % 100, x / 100
-x = x + 1
-endr
-
-Unknown_11a8ba: ; 11a8ba
-x = 0
-rept 16
-	bcd x % 100, x / 100
-x = x + 16
-endr
-
-Unknown_11a8da: ; 11a8da
-x = 0
-rept 16
-	bcd x % 100, x / 100
-x = x + 256
-endr
-; 11a8fa
-
 Function11a8fa: ; 11a8fa
 	jumptable .Jumptable, $c31a
 ; 11a909
@@ -5173,31 +5007,26 @@ Function11a9f0: ; 11a9f0
 ; 11a9f4
 
 Text_SaveFileWillBeSent: ; 0x11aa13
-	text "SAVE FILE will be"
+	text "Save File will be"
 	line "sent."
 	done
 ; 0x11aa2c
 
 Text_SentSaveFileReadingNews: ; 0x11aa2c
-	text "Sent SAVE FILE."
-	line "Reading NEWS…"
+	text "Sent Save File."
+	line "Reading News…"
 	done
 ; 0x11aa4b
 
 Text_ReadingNews: ; 0x11aa4b
-	text "Reading NEWS…"
+	text "Reading News…"
 	done
 ; 0x11aa5a
 
 Text_ReceivedNews: ; 0x11aa5a
-	text "Received NEWS!"
+	text "Received News!"
 	done
 ; 0x11aa6a
-
-Text_QuitReadingNews: ; 0x11aa6a
-	text "Quit reading NEWS?"
-	done
-; 0x11aa7e
 
 Text_RegisteringRecord: ; 0x11aab2
 	text "Registering your"
@@ -5206,7 +5035,7 @@ Text_RegisteringRecord: ; 0x11aab2
 ; 0x11aacc
 
 Text_PartyMonTopsThisLevel: ; 0x11aaf0
-	text "A party #MON"
+	text "A party #mon"
 	line "tops this level."
 	done
 ; 0x11ab0f
@@ -5214,36 +5043,24 @@ Text_PartyMonTopsThisLevel: ; 0x11aaf0
 Text_UberRestriction: ; 0x11ab0f
 	text_from_ram wcd49
 	text " may go"
-	line "only to BATTLE"
+	line "only to Battle"
 
-	para "ROOMS that are"
-	line "Lv.70 or higher."
+	para "Rooms that are"
+	line "L:70 or higher."
 	done
 ; 0x11ab4a
 
 Text_CancelBattleRoomChallenge: ; 0x11ab4a
-	text "Cancel your BATTLE"
-	line "ROOM challenge?"
+	text "Cancel your Battle"
+	line "Room challenge?"
 	done
 ; 0x11ab6e
-
-Text_ExitGymLeaderHonorRoll: ; 0x11ab6e
-	text "Exit GYM LEADER"
-	line "HONOR ROLL?"
-	done
-; 0x11ab8b
 
 Text_WhatLevelDoYouWantToChallenge: ; 0x11aba5
 	text "What level do you"
 	line "want to challenge?"
 	done
 ; 0x11abcb
-
-Text_CheckBattleRoomListByMaxLevel: ; 0x11abcb
-	text "Check BATTLE ROOM"
-	line "list by max level?"
-	done
-; 0x11abf1
 
 Function11ac3e: ; 11ac3e
 	call SpeechTextBox

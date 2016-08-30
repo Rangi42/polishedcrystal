@@ -114,11 +114,33 @@ Script_BeatenAllTrainers2:
 	writetext Text_CongratulationsYouveBeatenAllTheTrainers
 	jump Script_GivePlayerHisPrize
 
-Text_ReturnedAfterSave_Mobile:
-	text "You'll be returned"
-	line "after you save."
+Text_YourPkmnWillBeHealedToFullHealth: ; 0x9ee92
+	text "Your #mon will"
+	line "be healed to full"
+	cont "health."
 	done
 
+Text_NextUpOpponentNo: ; 0x9eebc
+	text "Next up, opponent"
+	line "no.@"
+	text_from_ram StringBuffer3
+	text ". Ready?"
+	done
+
+Text_SaveAndEndTheSession: ; 0x9ef5e
+	text "Save and end the"
+	line "session?"
+	done
+
+Text_CancelYourBattleRoomChallenge: ; 0x9efbf
+	text "Cancel your Battle"
+	line "Room challenge?"
+	done
+
+Text_ThanksForVisiting: ; 0x9ea49
+	text "Thanks for"
+	line "visiting!"
+	done
 
 BattleTowerBattleRoom_MapEventHeader:
 	; filler

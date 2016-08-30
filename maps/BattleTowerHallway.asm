@@ -80,6 +80,11 @@ BattleTowerHallway_MapScriptHeader:
 	warpcheck
 	end
 
+Text_PleaseStepThisWay: ; 0x9ec26
+	text "Please step this"
+	line "way."
+	done
+
 BattleTowerHallway_MapEventHeader:
 	; filler
 	db 0, 0

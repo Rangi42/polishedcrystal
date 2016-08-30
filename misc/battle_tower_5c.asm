@@ -235,7 +235,7 @@ RunBattleTowerTrainer: ; 17024d
 	ld a, [Options]
 	push af
 	ld hl, Options
-	set BATTLE_SHIFT, [hl] ; SET MODE
+	res BATTLE_SHIFT, [hl] ; SET MODE
 
 	ld a, [InBattleTowerBattle]
 	push af
@@ -244,7 +244,7 @@ RunBattleTowerTrainer: ; 17024d
 
 	xor a
 	ld [wLinkMode], a
-	callba Mobile_HealParty
+	;callba Mobile_HealParty
 	callba HealParty
 	call ReadBTTrainerParty
 	call Clears5_a89a
@@ -283,70 +283,7 @@ ReadBTTrainerParty: ; 1702b7
 ; Initialise the BattleTower-Trainer and his Pkmn
 	call CopyBTTrainer_FromBT_OT_TowBT_OTTemp
 
-; Check the nicknames for illegal characters, and replace bad nicknames
-; with their species names.
-	ld de, wBT_OTTempPkmn1Name ; $c643
-	ld c, PKMN_NAME_LENGTH
-	callba CheckStringForErrors
-	jr nc, .skip_mon_1
-
-	ld a, [wBT_OTTempPkmn1]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld l, e
-	ld h, d
-	ld de, wBT_OTTempPkmn1Name ; $c643
-	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-
-.skip_mon_1
-	ld de, wBT_OTTempPkmn2Name ; $c67e
-	ld c, PKMN_NAME_LENGTH
-	callba CheckStringForErrors
-	jr nc, .skip_mon_2
-	ld a, [wBT_OTTempPkmn2] ; [$c64e]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld l, e
-	ld h, d
-	ld de, wBT_OTTempPkmn2Name ; $c67e
-	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-
-.skip_mon_2
-	ld de, wBT_OTTempPkmn3Name ; $c686 + 51 = $c6b9
-	ld c, PKMN_NAME_LENGTH
-	callba CheckStringForErrors
-	jr nc, .skip_mon_3
-	ld a, [wBT_OTTempPkmn3] ; [$c689]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld l, e
-	ld h, d
-	ld de, wBT_OTTempPkmn3Name ; $c686 + 51 = $c6b9
-	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-
-.skip_mon_3
-; Add the terminator character to each of these names
-	ld a, "@"
-	ld [wBT_OTTempPkmn1NameEnd - 1], a ; $c64d
-	ld [wBT_OTTempPkmn2NameEnd - 1], a ; $c688
-	ld [wBT_OTTempPkmn3NameEnd - 1], a ; $c68a + 57 = $c6c3
-; Fix errors in the movesets
-	call CheckBTMonMovesForErrors
-; Repair the trainer name if needed, then copy it to OTPlayerName
-	ld de, wBT_OTTempName
-	ld c, NAME_LENGTH - 1
-	callba CheckStringForErrors
-	jr nc, .trainer_name_okay
-	ld hl, BT_ChrisName
-	jr .done_trainer_name
-
-.trainer_name_okay
 	ld hl, wBT_OTTempName ; 0xc608
-
-.done_trainer_name
 	ld de, OTPlayerName
 	ld bc, NAME_LENGTH - 1
 	call CopyBytes
@@ -364,7 +301,7 @@ ReadBTTrainerParty: ; 1702b7
 	; Copy Pkmn into Memory from the address in hl
 	ld de, OTPartyMon1Species
 	ld bc, OTPartyCount
-	ld a, BATTLETOWER_NROFPKMNS		; Number of Pkmn the BattleTower-Trainer has
+	ld a, BATTLETOWER_NROFPKMNS ; Number of Pkmn the BattleTower-Trainer has
 	ld [bc], a
 	inc bc
 .otpartymon_loop
@@ -396,119 +333,6 @@ ReadBTTrainerParty: ; 1702b7
 	ld [bc], a
 	ret
 ; 170394
-
-ValidateBTParty: ; 170394
-; Check for and fix errors in party data
-	ld hl, wBT_OTTempPkmn1Species
-	ld d, BATTLETOWER_NROFPKMNS
-.pkmn_loop
-	push de
-	push hl
-	ld b, h
-	ld c, l
-	ld a, [hl]
-	and a
-idx = $ff
-rept ($ff +- NUM_POKEMON)
-	jr z, .invalid
-	cp idx
-idx = idx +- 1
-endr
-	jr nz, .valid
-
-.invalid
-	ld a, SMEARGLE
-	ld [hl], a
-
-.valid
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, $5
-	call GetSRAMBank
-	ld a, [$b2fb] ; s5_b2fb ; max level?
-	call CloseSRAM
-	ld e, a
-	ld hl, MON_LEVEL
-	add hl, bc
-	ld a, [hl]
-	cp MIN_LEVEL
-	ld a, MIN_LEVEL
-	jr c, .load
-	ld a, [hl]
-	cp e
-	jr c, .dont_load
-	ld a, e
-
-.load
-	ld [hl], a
-
-.dont_load
-	ld [CurPartyLevel], a
-	ld hl, MON_MOVES
-	add hl, bc
-	ld d, NUM_MOVES - 1
-	ld a, [hli]
-	and a
-	jr z, .not_move
-	cp NUM_ATTACKS + 1
-	jr nc, .not_move
-	jr .valid_move
-
-.not_move
-	dec hl
-	ld a, POUND
-	ld [hli], a
-	xor a
-rept 2
-	ld [hli], a
-endr
-	ld [hl], a
-	jr .done_moves
-
-.valid_move
-	ld a, [hl]
-	cp NUM_ATTACKS + 1
-	jr c, .next
-	ld [hl], $0
-
-.next
-	inc hl
-	dec d
-	jr nz, .valid_move
-
-.done_moves
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld d, h
-	ld e, l
-	push hl
-	push de
-	ld hl, MON_STAT_EXP - 1
-	add hl, bc
-	ld b, $1
-	predef CalcPkmnStats
-	pop de
-	pop hl
-rept 2
-	dec de
-endr
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	pop hl
-	ld bc, PARTYMON_STRUCT_LENGTH + PKMN_NAME_LENGTH
-	add hl, bc
-	pop de
-	dec d
-	jp nz, .pkmn_loop
-	ret
-; 170426
-
-BT_ChrisName: ; 170426
-	db "Chris@"
-; 17042c
 
 Function17042c: ; 17042c
 	ld hl, w3_d202TrainerData
