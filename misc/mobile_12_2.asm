@@ -347,28 +347,6 @@ Function4aa7a: ; 4aa7a
 	ret
 ; 4aab6
 
-Function4aab6: ; 4aab6
-	ld hl, wd002
-	ld d, $3
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	push de
-	push hl
-	hlcoord 0, 1
-	ld bc, $28
-	call AddNTimes
-	ld [hl], $ec
-	pop hl
-	pop de
-	dec d
-	jr nz, .loop
-
-.done
-	ret
-; 4aad3
-
 Function4aad3: ; 4aad3
 	ld hl, PartyCount
 	ld a, [hli]

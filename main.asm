@@ -5970,7 +5970,6 @@ INCLUDE "misc/battle_tower_47.asm"
 
 SECTION "bank5B", ROMX ; $5B is now PICS_20
 
-INCLUDE "misc/mobile_5b.asm"
 INCLUDE "engine/link_trade.asm"
 
 SECTION "bank5C", ROMX, BANK[$5C]

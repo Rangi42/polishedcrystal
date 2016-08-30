@@ -197,119 +197,6 @@ INCBIN "gfx/unknown/1715a4.2bpp.lz"
 GFX_171848:
 INCBIN "gfx/unknown/171848.2bpp"
 
-Function171a5d: ; 171a5d (5c:5a5d)
-	ld a, [wc821]
-	bit 1, a
-	jr nz, .asm_171a6a
-	bit 0, a
-	ret nz
-	jp Function171c66
-
-.asm_171a6a
-	ld a, $0
-	call Function3e32
-	ld [wc300], a
-	ld a, l
-	ld [wc301], a
-	ld a, h
-	ld [wc302], a
-	ld a, $a
-	call Function3e32
-	ld a, [rSVBK]
-	push af
-	ld a, $1
-	ld [rSVBK], a
-	callba Function118452
-	pop af
-	ld [rSVBK], a
-	ld a, $a
-	ld [wcd49], a
-	ret
-
-Function171a95: ; 171a95 (5c:5a95)
-	callba Function171ccd
-	hlcoord 2, 8
-	ld de, String_171aa7
-	call PlaceString
-	jp Function171c66
-
-; 171aa7 (5c:5aa7)
-
-String_171aa7: ; 171aa7
-	db   "モバイルアダプタに"
-	next "せつぞく しています"
-	next "しばらく おまちください"
-	db   "@"
-; 171ac9
-
-Function171ac9: ; 171ac9 (5c:5ac9)
-	ld de, wcd81
-	ld hl, $5c
-	ld a, $2
-	call Function3e32
-	jp Function171c66
-
-Function171ad7: ; 171ad7 (5c:5ad7)
-	xor a
-	ld hl, $c608
-	ld bc, $66
-	call ByteFill
-	ld de, $c608
-	ld a, $c
-	call Function3e32
-	jp Function171c66
-
-Function171aec: ; 171aec (5c:5aec)
-	ld a, [rSVBK]
-	push af
-	ld a, $1
-	ld [rSVBK], a
-	callba Function118452
-	pop af
-	ld [rSVBK], a
-	hlcoord 2, 6
-	ld a, $8
-.asm_171b01
-	push af
-	push hl
-	xor a
-	ld bc, $10
-	call ByteFill
-	pop hl
-	ld de, $14
-	add hl, de
-	pop af
-	dec a
-	jr nz, .asm_171b01
-	hlcoord 2, 7
-	ld a, $3
-	ld de, $c608
-.asm_171b1b
-	push af
-	push hl
-	ld a, [de]
-	and a
-	jr z, .asm_171b34
-	ld a, [wcd4b]
-	inc a
-	ld [wcd4b], a
-	push hl
-	call Function171b42
-	pop hl
-	ld bc, $ffec
-	add hl, bc
-	call Function171b42
-.asm_171b34
-	pop hl
-	ld bc, $14
-rept 3
-	add hl, bc
-endr
-	pop af
-	dec a
-	jr nz, .asm_171b1b
-	jp Function171c66
-
 Function171b42: ; 171b42 (5c:5b42)
 	ld a, [de]
 	inc de
@@ -318,50 +205,6 @@ Function171b42: ; 171b42 (5c:5b42)
 	sub $20
 	ld [hli], a
 	jr Function171b42
-
-Function171b4b: ; 171b4b (5c:5b4b)
-	depixel 8, 2
-	ld a, SPRITE_ANIM_INDEX_1D
-	call _InitSpriteAnimStruct
-	ld hl, $c
-	add hl, bc
-	ld a, $8
-	ld [hl], a
-	depixel 8, 19
-	ld a, SPRITE_ANIM_INDEX_1D
-	call _InitSpriteAnimStruct
-	ld hl, $c
-	add hl, bc
-	ld a, $9
-	ld [hl], a
-	depixel 17, 14, 2, 0
-	ld a, SPRITE_ANIM_INDEX_1D
-	call _InitSpriteAnimStruct
-	ld hl, $c
-	add hl, bc
-	ld a, $a
-	ld [hl], a
-	ld a, $4
-	ld [wcd23], a
-	ld a, $8
-	ld [wcd24], a
-	jp Function171c66
-
-Function171b85: ; 171b85 (5c:5b85)
-	ld hl, hJoyPressed ; $ffa7
-	ld a, [hl]
-	and $2
-	jp nz, Function171b9f
-	ld a, [hl]
-	and $1
-	jp nz, Function171bbd
-	ld a, [hl]
-	and $40
-	jr nz, asm_171ba5
-	ld a, [hl]
-	and $80
-	jr nz, asm_171baf
-	ret
 
 Function171b9f: ; 171b9f (5c:5b9f)
 	ld a, $80
@@ -393,16 +236,6 @@ Function171bbd: ; 171bbd (5c:5bbd)
 	xor a
 	ld [wcd24], a
 	jp Function171c66
-
-Function171bcc: ; 171bcc (5c:5bcc)
-	ld hl, hJoyPressed ; $ffa7
-	ld a, [hl]
-	and $2
-	jp nz, Function171bdc
-	ld a, [hl]
-	and $1
-	jp nz, Function171beb
-	ret
 
 Function171bdc: ; 171bdc (5c:5bdc)
 	ld a, $4
@@ -439,34 +272,6 @@ Function171beb: ; 171beb (5c:5beb)
 	ld a, $1e
 	ld [wcd4c], a
 	call Function171c66
-
-Function171c2c: ; 171c2c (5c:5c2c)
-	ld hl, wcd4c
-	dec [hl]
-	ret nz
-	call ExitMenu
-	call ClearBGPalettes
-	jr asm_171c60
-
-Function171c39: ; 171c39 (5c:5c39)
-	ld a, $28
-	ld [wcd4c], a
-	call Function171c66
-
-Function171c41: ; 171c41 (5c:5c41)
-	ld hl, wcd4c
-	dec [hl]
-	ret nz
-	call ClearBGPalettes
-	callba MobileFunc_106462
-	callba Function106464
-	ld a, $2
-	ld [wc303], a
-	callba Function17f555
-asm_171c60: ; 171c60 (5c:5c60)
-	ld a, $80
-	ld [wcd49], a
-	ret
 
 Function171c66: ; 171c66 (5c:5c66)
 	ld hl, wcd49
@@ -602,12 +407,8 @@ Tilemap_17251d:
 INCBIN "gfx/unknown/17251d.tilemap"
 Tilemap_1725f9:
 INCBIN "gfx/unknown/1725f9.tilemap"
-Tilemap_172685:
-INCBIN "gfx/unknown/172685.tilemap"
 Attrmap_1727ed:
 INCBIN "gfx/unknown/1727ed.attrmap"
-Attrmap_172955:
-INCBIN "gfx/unknown/172955.attrmap"
 LZ_172abd:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
@@ -617,11 +418,6 @@ String_172e3f: ; 172e3f
 	db "きりかえ やめる  けってい@"
 String_172e4e: ; 172e4e
 	db "きりかえ やめる  "
-String_172e58:
-	db "けってい@"
-String_172e5d: ; 172e5d
-	db "せつぞくする モバイルセンターを"
-	next "えらんで ください@"
 ; 172e78
 
 

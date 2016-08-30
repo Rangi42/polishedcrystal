@@ -1787,22 +1787,6 @@ Function100da5: ; 100da5
 	ret
 ; 100db0
 
-Function100db0: ; 100db0
-	ld hl, wcd2a
-	bit 3, [hl]
-	jr nz, .asm_100dbe
-	ld hl, wcd2a
-	set 3, [hl]
-	scf
-	ret
-
-.asm_100dbe
-	xor a
-	ret
-; 100dc0
-
-
-
 Function100dc0: ; 100dc0
 	ld a, [wLinkMode]
 	cp LINK_MOBILE
@@ -1851,40 +1835,6 @@ Function100dfd: ; 100dfd
 	scf
 	ret
 ; 100e2d
-
-Function100ea2: ; 100ea2 (40:4ea2)
-	call Function100dc0
-	ret nc
-	ld hl, wcd29
-	set 0, [hl]
-	call Function100ec5
-
-Function100eae: ; 100eae
-	scf
-	call Function100eca
-	jr asm_100eb8
-
-Function100eb4: ; 100eb4
-	and a
-	call Function100eca
-
-asm_100eb8
-	ld hl, wcd68
-	inc [hl]
-	ld a, [hl]
-	cp $02
-	ret c
-	ld [hl], 0
-	jr Function100ec5
-
-Function100ec4: ; 100ec4
-	ret
-
-Function100ec5
-	ld hl, wcd67
-	inc [hl]
-	ret
-; 100eca
 
 Function100eca: ; 100eca
 	callba Mobile_InitPartyMenuBGPal7

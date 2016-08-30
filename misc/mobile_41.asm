@@ -625,21 +625,6 @@ endr
 
 ; functions related to the cable club and various NPC scripts referencing mobile communications
 
-MobileFn_106314: mobile ; 106314
-	ld a, $4
-	call GetSRAMBank
-	ld a, c
-	cpl
-	ld [$b000], a
-	call CloseSRAM
-	ld a, $7
-	call GetSRAMBank
-	ld a, c
-	ld [$a800], a
-	call CloseSRAM
-	ret
-; 10632f
-
 Mobile_AlwaysReturnNotCarry: ; 10632f
 	or a
 	ret

@@ -854,41 +854,6 @@ Function1186f5: ; 1186f5 (46:46f5)
 	dw Function118e76
 ; 118746 (46:4746)
 
-Function118746: ; 118746
-	jumptable .Jumptable, wcf66
-; 118755
-
-.Jumptable: ; 118755
-	dw Function11886e
-	dw Function118880
-	dw Function11878d
-	dw Function1188b0
-	dw Function11878d
-	dw Function1188b8
-	dw Function11878d
-	dw Function1188c0
-	dw Function11878d
-	dw Function1188c8
-	dw Function11878d
-	dw Function118903
-	dw Function118ad0
-	dw Function11878d
-	dw Function1196f2
-	dw Function1197c9
-	dw Function1197dc
-	dw Function11878d
-	dw Function118e6d
-	dw Function11878d
-	dw Function119800
-	dw Function118e76
-	dw Function118e7e
-	dw Function11878d
-	dw Function11805e
-	dw Function118e76
-	dw Function118e87
-	dw Function118e76
-; 11878d
-
 Function11878d: ; 11878d (46:478d)
 	ld a, [wc821]
 	bit 1, a

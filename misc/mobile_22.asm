@@ -1,13 +1,3 @@
-String_8911c: ; 8911c
-	db   "でんわばんごうが ただしく"   ; Phone number is not
-	next "はいって いません!@"         ; entered correctly!
-; 89135
-
-String_89135: ; 89135
-	db   "データが かわって いますが"  ; The data has changed.
-	next "かきかえないで やめますか?@" ; Quit anyway?
-; 89153
-
 String_89153: ; 89153
 	db   "メッセージは ありません@"    ; No message
 ; 89160
@@ -88,14 +78,6 @@ Function891b8: ; 891b8
 	call DelayFrame
 	ret
 ; 891ca
-
-
-Function891ca: ; 891ca (22:51ca)
-	push bc
-	call Function891b8
-	call WaitBGMap
-	pop bc
-	ret
 
 Function891de: ; 891de
 	call Function8923c
@@ -190,10 +172,6 @@ Function89245: ; 89245 (22:5245)
 	callba _LoadData
 	and a
 	ret
-
-Function89254: ; 89254 (22:5254)
-	ld bc, $d07
-	jr Function89261
 
 Function89259: ; 89259
 	ld bc, $0e07
@@ -1580,29 +1558,6 @@ Function89a23: ; 89a23 (22:5a23)
 	call Function8921f
 	ret
 
-Function89a2e: ; 89a2e (22:5a2e)
-	hlcoord 11, 12
-	ld b, $2
-	ld c, $6
-	call TextBox
-	hlcoord 13, 13
-	ld de, String_89a4e
-	call PlaceString
-	hlcoord 13, 14
-	ld de, String_89a53
-	call PlaceString
-	call Function89655
-	ret
-; 89a4e (22:5a4e)
-
-String_89a4e: ; 89a4e
-	db "けってい@"
-; 89a53
-
-String_89a53: ; 89a53
-	db "やめる@"
-; 89a57
-
 Function89a57: ; 89a57
 	call Function354b
 	bit 6, c
@@ -1748,15 +1703,6 @@ Function89b1e: ; 89b1e (22:5b1e)
 	call Function89b00
 	ret
 
-Function89b28: ; 89b28 (22:5b28)
-	call Function891de
-	call ClearBGPalettes
-	call Function893e2
-	call Call_ExitMenu
-	call Function891ab
-	call SetPalettes
-	ret
-
 Function89b3b: ; 89b3b (22:5b3b)
 	call Function8923c
 	callba Function48cda
@@ -1877,44 +1823,6 @@ Function89c44: ; 89c44 (22:5c44)
 	ld [hli], a
 	ret
 
-Function89cdf: ; 89cdf (22:5cdf)
-	ld a, $10
-	add b
-	ld b, a
-	ld a, $8
-	add c
-	ld c, a
-	ld e, $2
-	ld a, $2
-	ld hl, Sprites
-.asm_89cee
-	push af
-	push bc
-	ld d, $4
-.asm_89cf2
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	ld a, e
-	ld [hli], a
-	ld a, $1
-	ld [hli], a
-	ld a, $8
-	add c
-	ld c, a
-	inc e
-	dec d
-	jr nz, .asm_89cf2
-	pop bc
-	ld a, $8
-	add b
-	ld b, a
-	pop af
-	dec a
-	jr nz, .asm_89cee
-	ret
-
 Function89d0d: ; 89d0d (22:5d0d)
 	call Function8923c
 	ld a, [rSVBK]
@@ -1958,44 +1866,6 @@ Palette_89d56: ; 89d56
 	RGB 19, 19, 19
 	RGB 00, 00, 00
 ; 89d5e
-
-Function89d5e: ; 89d5e (22:5d5e)
-	push af
-	call CopyMenuDataHeader
-	pop af
-	ld [wMenuCursorBuffer], a
-	call Function8923c
-	call PlaceVerticalMenuItems
-	call InitVerticalMenuCursor
-	ld hl, w2DMenuFlags1
-	set 7, [hl]
-	ret
-
-Function89d75: ; 89d75 (22:5d75)
-	push hl
-	call Function8923c
-	call _hl_
-	callba Function104148
-	pop hl
-	jr asm_89d90
-
-asm_89d90: ; 89d90 (22:5d90)
-	call Function8923c
-	push hl
-	call _hl_
-	call Function89dab
-	ld a, [wMenuCursorY]
-	push af
-	call Function891ab
-	pop af
-	pop hl
-	jr c, .asm_89da9
-	jr z, asm_89d90
-	scf
-	ret
-.asm_89da9
-	and a
-	ret
 
 Function89dab: ; 89dab (22:5dab)
 	call Function8923c
@@ -2483,34 +2353,6 @@ UnknownText_0x8a111: ; 0x8a111
 	db "@"
 ; 0x8a116
 
-Function8a1b0: ; 8a1b0
-	hlcoord 0, 12
-	ld b, $4
-	ld c, $12
-	call TextBox
-	hlcoord 1, 14
-	ld a, [wMenuCursorY]
-	ld de, Strings_8a1cc
-	dec a
-	ld c, a
-	call Function8919e
-	call PlaceString
-	ret
-; 8a1cc
-
-Strings_8a1cc: ; 8a1cc
-	db   "めいし", $25, "せいりと へんしゅうを"
-	next "おこないます"
-	db   "@"
-
-	db   "めいしフ,ルダー", $25, "めいしと"
-	next "あんしょうばんごう", $1f, "けします"
-	db   "@"
-
-	db   "まえ", $25, "がめん", $1d, "もどります"
-	db   "@"
-; 8a20d
-
 Function8a262: ; 8a262 (22:6262)
 	call ClearBGPalettes
 	call Function893e2
@@ -2561,32 +2403,6 @@ Function8a400: ; 8a400 (22:6400)
 	jr nz, Function8a400
 	ret
 ; 8a408 (22:6408)
-
-Function8a515: ; 8a515 (22:6515)
-	ld hl, wd012
-	ld a, [hl]
-	cp $38
-	jr c, .asm_8a520
-	cp $3c
-	ret c
-.asm_8a520
-	ld a, [wd013]
-	cpl
-	inc a
-	ld [wd013], a
-	ret
-
-asm_8a529: ; 8a529 (22:6529)
-	ld hl, wd012
-	ld a, $3c
-	ld [hli], a
-	ld a, $ff
-	ld [hli], a
-	ld hl, Sprites
-	xor a
-	ld bc, $20
-	call ByteFill
-	ret
 
 Function8a53d: ; 8a53d (22:653d)
 	push hl
@@ -2817,76 +2633,6 @@ Function8a765: ; 8a765 (22:6765)
 	ret
 .asm_8a78a
 	scf
-	ret
-
-Function8a818: ; 8a818 (22:6818)
-	call Function89a23
-	ld hl, wd002
-	call Function89331
-	jr c, .asm_8a875
-	ld hl, wd008
-	call Function89b45
-	jr nc, .asm_8a87a
-	call OpenSRAMBank4
-	call Function8a765
-	jr nc, .asm_8a863
-	call Function8931b
-	push bc
-	ld hl, $0
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, wd002
-	ld c, $6
-	call Function89193
-	pop bc
-	ld hl, $11
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, wd008
-	ld c, $8
-	call Function89193
-	hlcoord 1, 13
-	ld de, .string_8a868
-	call PlaceString
-	call WaitBGMap
-	call JoyWaitAorB
-.asm_8a863
-	call CloseSRAM
-	scf
-	ret
-; 8a868 (22:6868)
-
-.string_8a868
-	db "めいし", $1f, "かきかえ まし", $22, "@"
-
-.asm_8a875
-	ld de, String_8a88b
-	jr .asm_8a87d
-.asm_8a87a
-	ld de, String_8911c
-.asm_8a87d
-	hlcoord 1, 13
-	call PlaceString
-	call WaitBGMap
-	call JoyWaitAorB
-	and a
-	ret
-; 8a88b (22:688b)
-
-String_8a88b: ; 8a88b
-	db   "おともだち", $25, "なまえが"
-	next "かかれて いません!@"
-; 8a8a1
-
-Function8ab00: ; 8ab00
-	ld de, String_8911c
-	hlcoord 1, 13
-	call PlaceString
-	call WaitBGMap
-	call Function89235
-	and a
 	ret
 
 Function8ab3b: ; 8ab3b (22:6b3b)
