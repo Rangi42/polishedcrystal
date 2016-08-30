@@ -11,35 +11,35 @@ CheckShininess:
 
 ; Attack must be odd (1, 3, 5, 7, 9, 11, 13, or 15) (1 in 2)
 	ld a, [hl]
-	and $1 << 4
+	and 1 << 4
 	jr z, .NotShiny
 
 ; Defense must be 2, 3, 7, or 11 (1 in 4)
 	ld a, [hli]
 	and $f
-	cp $2
+	cp 2
 	jr z, .MaybeShiny1
-	cp $3
+	cp 3
 	jr z, .MaybeShiny1
-	cp $7
+	cp 7
 	jr z, .MaybeShiny1
-	cp $b
+	cp 11
 	jr nz, .NotShiny
 
 ; Speed must be 5 or 13 (1 in 8)
 .MaybeShiny1
 	ld a, [hl]
-	and $f0
-	cp $5 << 4
+	and $f << 4
+	cp 5 << 4
 	jr z, .MaybeShiny2
-	cp $d << 4
+	cp 13 << 4
 	jr nz, .NotShiny
 
 ; Special must be 15 (1 in 16)
 .MaybeShiny2
 	ld a, [hl]
 	and $f
-	cp $f
+	cp 15
 	jr nz, .NotShiny
 
 .Shiny:

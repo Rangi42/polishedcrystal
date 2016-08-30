@@ -396,20 +396,6 @@ Function4aad3: ; 4aad3
 	ret
 ; 4aafb
 
-Function4ab99: ; 4ab99
-	bit 1, a
-	jr z, .asm_4aba6
-	ld a, [wd002]
-	cp $ff
-	jr z, .asm_4aba6
-	scf
-	ret
-
-.asm_4aba6
-	and a
-	ret
-; 4aba8
-
 Function4aba8: ; 4aba8
 	ld hl, wd004
 	ld a, [hl]
@@ -432,98 +418,6 @@ Function4aba8: ; 4aba8
 	scf
 	ret
 ; 4abc3
-
-Function4abc3: ; 4abc3
-	bit 3, a
-	jr z, .asm_4abd5
-	ld a, [PartyCount]
-	inc a
-	ld [wMenuCursorY], a
-	ld a, $1
-	ld [wMenuCursorX], a
-	jr .asm_4ac29
-
-.asm_4abd5
-	bit 6, a
-	jr z, .asm_4abeb
-	ld a, [wMenuCursorY]
-	ld [wMenuCursorY], a
-	and a
-	jr nz, .asm_4ac29
-	ld a, [PartyCount]
-	inc a
-	ld [wMenuCursorY], a
-	jr .asm_4ac29
-
-.asm_4abeb
-	bit 7, a
-	jr z, .asm_4ac08
-	ld a, [wMenuCursorY]
-	ld [wMenuCursorY], a
-	ld a, [PartyCount]
-rept 2
-	inc a
-endr
-	ld b, a
-	ld a, [wMenuCursorY]
-	cp b
-	jr nz, .asm_4ac29
-	ld a, $1
-	ld [wMenuCursorY], a
-	jr .asm_4ac29
-
-.asm_4ac08
-	bit 4, a
-	jr nz, .asm_4ac10
-	bit 5, a
-	jr z, .asm_4ac56
-
-.asm_4ac10
-	ld a, [wMenuCursorY]
-	ld b, a
-	ld a, [PartyCount]
-	inc a
-	cp b
-	jr nz, .asm_4ac29
-	ld a, [wMenuCursorX]
-	cp $1
-	jr z, .asm_4ac26
-	ld a, $1
-	jr .asm_4ac29
-
-.asm_4ac26
-	ld [wMenuCursorX], a
-
-.asm_4ac29
-	hlcoord 0, 1
-	lb bc, 13, 1
-	call ClearBox
-	call Function4aab6
-	ld a, [PartyCount]
-	hlcoord 6, 1
-.asm_4ac3b
-	ld bc, $28
-	add hl, bc
-	dec a
-	jr nz, .asm_4ac3b
-	ld [hl], $7f
-	ld a, [wMenuCursorY]
-	ld b, a
-	ld a, [PartyCount]
-	inc a
-	cp b
-	jr z, .asm_4ac54
-	ld a, $1
-	ld [wMenuCursorX], a
-
-.asm_4ac54
-	scf
-	ret
-
-.asm_4ac56
-	and a
-	ret
-; 4ac58
 
 Function4ac58: ; 4ac58
 	lb bc, 2, 18
@@ -761,18 +655,3 @@ Function4adc2: ; 4adc2
 	ld [wd004], a
 	ret
 ; 4adf7
-
-Function4adf7: ; 4adf7
-	ld a, [wd019]
-	bit 0, a
-	ret z
-	ld a, [PartyCount]
-	inc a
-	ld [wMenuCursorY], a
-	ld a, $1
-	ld [wMenuCursorX], a
-	ld a, [wd019]
-	res 0, a
-	ld [wd019], a
-	ret
-; 4ae12

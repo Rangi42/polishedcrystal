@@ -1852,46 +1852,12 @@ Function100dfd: ; 100dfd
 	ret
 ; 100e2d
 
-Function100e63: ; 100e63
-	ld a, e
-	cp $02
-	ret nz
-	call Function100db0
-	ret nc
-	ld de, SFX_ELEVATOR_END
-	call PlaySFX
-	ret
-; 100e72
-
-Function100e84: ; 100e84
-	ld a, [wcd67]
-	ld hl, Jumptable_100e8c
-	rst JumpTable
-	ret
-; 100e8c
-
-
-Jumptable_100e8c: ; 100e8c (40:4e8c)
-	dw Function100ea2
-	dw Function100eae
-	dw Function100eb4
-	dw Function100eae
-	dw Function100eb4
-	dw Function100eae
-	dw Function100eb4
-	dw Function100eae
-	dw Function100eb4
-	dw Function100eae
-	dw Function100ec4
-
-
 Function100ea2: ; 100ea2 (40:4ea2)
 	call Function100dc0
 	ret nc
 	ld hl, wcd29
 	set 0, [hl]
 	call Function100ec5
-
 
 Function100eae: ; 100eae
 	scf

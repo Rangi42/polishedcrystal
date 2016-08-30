@@ -124,47 +124,6 @@ UnknownText_0x1c5394::
 	para ""
 	done
 
-UnknownText_0x1c53ee::
-	text "If the Card Folder"
-	line "is deleted, all"
-
-	para "its Cards and the"
-	line "Passcode will also"
-	cont "be deleted."
-
-	para "Beware--a deleted"
-	line "Card Folder can't"
-	cont "be restored."
-
-	para "Want to delete"
-	line "your Card Folder?"
-	done
-
-UnknownText_0x1c5494::
-	text "Are you sure you"
-	line "want to delete it?"
-	done
-
-UnknownText_0x1c54b9::
-	text "The Card Folder"
-	line "has been deleted."
-	para ""
-	done
-
-UnknownText_0x1c54dd::
-	text "There is an older"
-	line "Card Folder from a"
-	cont "previous journey."
-
-	para "Do you want to"
-	line "open it?"
-	done
-
-UnknownText_0x1c552d::
-	text "Delete the old"
-	line "Card Folder?"
-	done
-
 UnknownText_0x1c554a::
 	text "Finish registering"
 	line "Cards?"

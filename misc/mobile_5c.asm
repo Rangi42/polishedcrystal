@@ -197,34 +197,6 @@ INCBIN "gfx/unknown/1715a4.2bpp.lz"
 GFX_171848:
 INCBIN "gfx/unknown/171848.2bpp"
 
-Function171a36: ; 171a36 (5c:5a36)
-	ld a, [wcd49]
-	ld e, a
-	ld d, 0
-	ld hl, Jumptable_171a45
-rept 2
-	add hl, de
-endr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp [hl]
-
-Jumptable_171a45: ; 171a45 (5c:5a45)
-	dw Function171a95
-	dw Function171ac9
-	dw Function171a5d
-	dw Function171ad7
-	dw Function171a5d
-	dw Function171aec
-	dw Function171b4b
-	dw Function171b85
-	dw Function171bcc
-	dw Function171c2c
-	dw Function171c39
-	dw Function171c41
-
-
 Function171a5d: ; 171a5d (5c:5a5d)
 	ld a, [wc821]
 	bit 1, a
@@ -588,34 +560,6 @@ endr
 	hlcoord 3, 16
 	ld de, String_172e4e
 	jp PlaceString
-
-Function171d2b: ; 171d2b (5c:5d2b)
-	call DisableLCD
-	ld hl, GFX_171db1
-	ld de, VTiles2 tile $00
-	ld bc, $6e0
-	call CopyBytes
-	ld hl, LZ_172abd
-	ld de, VTiles0 tile $00
-	call Decompress
-	call EnableLCD
-	ld hl, Tilemap_172685
-	decoord 0, 0
-	ld bc, $168
-	call CopyBytes
-	ld hl, Attrmap_172955
-	decoord 0, 0, AttrMap
-	ld bc, $168
-	call CopyBytes
-	hlcoord 2, 2
-	ld de, String_172e5d
-	call PlaceString
-	hlcoord 14, 16
-	ld de, String_172e58
-	call PlaceString
-	ret
-
-; 171d71 (5c:5d71)
 
 Palette_171d71:
 	RGB  0,  0,  0

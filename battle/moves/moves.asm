@@ -75,7 +75,7 @@ else
 endc
 	move SONIC_BOOM,   EFFECT_STATIC_DAMAGE,      20, NORMAL,     90, 20,   0, SPECIAL
 	move DISABLE,      EFFECT_DISABLE,             0, NORMAL,    100, 20,   0, STATUS
-	move ACID,         EFFECT_DEFENSE_DOWN_HIT,   40, POISON,    100, 30,  10, SPECIAL
+	move ACID,         EFFECT_SP_DEF_DOWN_HIT,    40, POISON,    100, 30,  10, SPECIAL
 	move EMBER,        EFFECT_BURN_HIT,           40, FIRE,      100, 25,  10, SPECIAL
 	move FLAMETHROWER, EFFECT_BURN_HIT,           90, FIRE,      100, 15,  10, SPECIAL
 	move MIST,         EFFECT_MIST,                0, ICE,       100, 30,   0, STATUS

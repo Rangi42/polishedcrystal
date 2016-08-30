@@ -355,5 +355,6 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Typo "your" for "you" (thanks, jpmac26).
 * Fix: Pink Bow powers up Fairy-type moves (thanks, Pokemaster).
 * Fix: X Special → X Spcl.Atk (thanks, Mmmmmm).
+* Fix: Acid lowers Sp.Def, not Defense (thanks, kide).
 * Fix: 50 TMs → 65 TMs.
 * Fix: Roaming legendary beast music.

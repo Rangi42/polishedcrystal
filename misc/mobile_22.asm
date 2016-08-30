@@ -1,4 +1,3 @@
-
 String_8911c: ; 8911c
 	db   "でんわばんごうが ただしく"   ; Phone number is not
 	next "はいって いません!@"         ; entered correctly!
@@ -21,20 +20,9 @@ OpenSRAMBank4: ; 89160
 	ret
 ; 89168
 
-
 Function89168: ; 89168 (22:5168)
 	ld hl, GameTimerPause
 	set 7, [hl]
-	ret
-
-Function8916e: ; 8916e (22:516e)
-	ld hl, GameTimerPause
-	res 7, [hl]
-	ret
-
-Function89174: ; 89174 (22:5174)
-	ld hl, GameTimerPause
-	bit 7, [hl]
 	ret
 
 Function89185: ; 89185 (22:5185)
@@ -106,14 +94,6 @@ Function891ca: ; 891ca (22:51ca)
 	push bc
 	call Function891b8
 	call WaitBGMap
-	pop bc
-	ret
-
-Function891d3: ; 891d3 (22:51d3)
-	push bc
-	call Function891ca
-	ld c, $10
-	call DelayFrames
 	pop bc
 	ret
 
@@ -1855,96 +1835,6 @@ Function89b78: ; 89b78 (22:5b78)
 	pop bc
 	ret
 
-Function89b97: ; 89b97 (22:5b97)
-	call Function89c34
-	jr c, .asm_89ba0
-	call Function89448
-	ret
-.asm_89ba0
-	ld a, [wd011]
-	ld hl, Unknown_89bd8
-	and a
-	jr z, .asm_89bae
-.asm_89ba9
-rept 2
-	inc hl
-endr
-	dec a
-	jr nz, .asm_89ba9
-.asm_89bae
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, Sprites
-.asm_89bb4
-	ld a, [hli]
-	cp $ff
-	ret z
-	ld c, a
-	ld b, $0
-.asm_89bbb
-	push hl
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	add b
-	ld [de], a
-	inc de
-	ld a, $8
-	add b
-	ld b, a
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	pop hl
-	dec c
-	jr nz, .asm_89bbb
-	ld b, $0
-	ld c, $4
-	add hl, bc
-	jr .asm_89bb4
-; 89bd8 (22:5bd8)
-
-Unknown_89bd8: ; 89bd8
-	dw Unknown_89be0
-	dw Unknown_89bf5
-	dw Unknown_89c0a
-	dw Unknown_89c1f
-; 89be0
-
-Unknown_89be0: ; 89be0
-	db $01, $12, $4e, $01, $00
-	db $01, $19, $4e, $01, $40
-	db $01, $12, $72, $01, $20
-	db $01, $19, $72, $01, $60
-	db $ff
-
-Unknown_89bf5: ; 89bf5
-	db $01, $60, $16, $01, $00
-	db $01, $62, $16, $01, $40
-	db $01, $60, $92, $01, $20
-	db $01, $62, $92, $01, $60
-	db $ff
-
-Unknown_89c0a: ; 89c0a
-	db $01, $78, $66, $01, $00
-	db $01, $78, $66, $01, $40
-	db $01, $78, $92, $01, $20
-	db $01, $78, $92, $01, $60
-	db $ff
-
-Unknown_89c1f: ; 89c1f
-	db $01, $80, $66, $01, $00
-	db $01, $80, $66, $01, $40
-	db $01, $80, $92, $01, $20
-	db $01, $80, $92, $01, $60
-	db $ff
-; 89c34
-
 Function89c34: ; 89c34 (22:5c34)
 	push bc
 	ld a, [wd012]
@@ -1986,82 +1876,6 @@ Function89c44: ; 89c44 (22:5c44)
 	xor a
 	ld [hli], a
 	ret
-
-Function89c67: ; 89c67 (22:5c67)
-	call Function354b
-	ld b, $0
-	bit 0, c
-	jr z, .asm_89c74
-	ld b, $1
-	and a
-	ret
-.asm_89c74
-	bit 1, c
-	jr z, .asm_89c7a
-	scf
-	ret
-.asm_89c7a
-	xor a
-	bit 6, c
-	jr z, .asm_89c81
-	ld a, $1
-.asm_89c81
-	bit 7, c
-	jr z, .asm_89c87
-	ld a, $2
-.asm_89c87
-	bit 5, c
-	jr z, .asm_89c8d
-	ld a, $3
-.asm_89c8d
-	bit 4, c
-	jr z, .asm_89c93
-	ld a, $4
-.asm_89c93
-	and a
-	ret z
-	dec a
-	ld c, a
-	ld d, $0
-	ld hl, Unknown_89cbf
-	ld a, [wd02f]
-	and a
-	jr z, .asm_89ca5
-	ld hl, Unknown_89ccf
-.asm_89ca5
-	ld a, [wd011]
-	and a
-	jr z, .asm_89cb1
-	ld e, $4
-.asm_89cad
-	add hl, de
-	dec a
-	jr nz, .asm_89cad
-.asm_89cb1
-	ld e, c
-	add hl, de
-	ld a, [hl]
-	and a
-	ret z
-	dec a
-	ld [wd011], a
-	xor a
-	ld [wd012], a
-	ret
-; 89cbf (22:5cbf)
-
-Unknown_89cbf: ; 89cbf
-	db 0, 2, 0, 0
-	db 1, 3, 0, 0
-	db 2, 4, 0, 0
-	db 3, 0, 0, 0
-
-Unknown_89ccf: ; 89ccf
-	db 0, 0, 0, 0
-	db 0, 3, 0, 0
-	db 2, 4, 0, 0
-	db 3, 0, 0, 0
-; 89cdf
 
 Function89cdf: ; 89cdf (22:5cdf)
 	ld a, $10
@@ -2164,13 +1978,6 @@ Function89d75: ; 89d75 (22:5d75)
 	callba Function104148
 	pop hl
 	jr asm_89d90
-
-Function89d85: ; 89d85 (22:5d85)
-	push hl
-	call Function8923c
-	call _hl_
-	call CGBOnly_LoadEDTile
-	pop hl
 
 asm_89d90: ; 89d90 (22:5d90)
 	call Function8923c
@@ -2676,39 +2483,6 @@ UnknownText_0x8a111: ; 0x8a111
 	db "@"
 ; 0x8a116
 
-Function8a17b: ; 8a17b (22:617b)
-	decoord 14, 0
-	ld b, $5
-	ld c, $4
-	call Function89b3b
-	ld hl, MenuDataHeader_0x8a19a
-	ld a, [wd030]
-	call Function89d5e
-	ld hl, Function8a1b0
-	call Function89d75
-	jr nc, .asm_8a198
-	ld a, $0
-.asm_8a198
-	ld d, a
-	ret
-; 8a19a (22:619a)
-
-MenuDataHeader_0x8a19a: ; 0x8a19a
-	db $40 ; flags
-	db 00, 14 ; start coords
-	db 06, 19 ; end coords
-	dw MenuData2_0x8a1a2
-	db 1 ; default option
-; 0x8a1a2
-
-MenuData2_0x8a1a2: ; 0x8a1a2
-	db $e0 ; flags
-	db 3 ; items
-	db "ひらく@"
-	db "すてる@"
-	db "もどる@"
-; 0x8a1b0
-
 Function8a1b0: ; 8a1b0
 	hlcoord 0, 12
 	ld b, $4
@@ -2737,62 +2511,6 @@ Strings_8a1cc: ; 8a1cc
 	db   "@"
 ; 8a20d
 
-
-Function8a20d: ; 8a20d (22:620d)
-	ld hl, UnknownText_0x8a232
-	call PrintText
-	ld a, $2
-	call Function89259
-	ret c
-	ld hl, UnknownText_0x8a237
-	call PrintText
-	ld a, $2
-	call Function89259
-	ret c
-	xor a
-	call Function8a2fe
-	ld hl, UnknownText_0x8a23c
-	call PrintText
-	xor a
-	and a
-	ret
-; 8a232 (22:6232)
-
-UnknownText_0x8a232: ; 0x8a232
-	; If the CARD FOLDER is deleted, all its CARDS and the PASSCODE will also be deleted. Beware--a deleted CARD FOLDER can't be restored. Want to delete your CARD FOLDER?
-	text_jump UnknownText_0x1c53ee
-	db "@"
-; 0x8a237
-
-UnknownText_0x8a237: ; 0x8a237
-	; Are you sure you want to delete it?
-	text_jump UnknownText_0x1c5494
-	db "@"
-; 0x8a23c
-
-UnknownText_0x8a23c: ; 0x8a23c
-	; The CARD FOLDER has been deleted.
-	text_jump UnknownText_0x1c54b9
-	db "@"
-; 0x8a241
-
-Function8a241: ; 8a241 (22:6241)
-	call LoadStandardMenuDataHeader
-	call Function891fe
-	call Function8a262
-	jr nc, .asm_8a254
-	call Function891fe
-	call Function89b28
-	scf
-	ret
-.asm_8a254
-	call Function891de
-	call ClearBGPalettes
-	call Call_ExitMenu
-	call Function891de
-	and a
-	ret
-
 Function8a262: ; 8a262 (22:6262)
 	call ClearBGPalettes
 	call Function893e2
@@ -2818,18 +2536,6 @@ Function8a262: ; 8a262 (22:6262)
 	call Function8b5e7
 	ret
 
-UnknownText_0x8a2f4: ; 0x8a2f4
-	; There is an older CARD FOLDER from a previous journey. Do you want to open it?
-	text_jump UnknownText_0x1c54dd
-	db "@"
-; 0x8a2f9
-
-UnknownText_0x8a2f9: ; 0x8a2f9
-	; Delete the old CARD FOLDER?
-	text_jump UnknownText_0x1c552d
-	db "@"
-; 0x8a2fe
-
 Function8a2fe: ; 8a2fe (22:62fe)
 	call Function8a313
 	call Function89305
@@ -2847,23 +2553,6 @@ Function8a313: ; 8a313 (22:6313)
 	ld [$a60b], a
 	ret
 
-Function8a3df: ; 8a3df (22:63df)
-	call OpenSRAMBank4
-	ld hl, $a603
-	call Function89b45
-	call CloseSRAM
-	ld hl, wd002
-	jr c, .asm_8a3f8
-	ld de, Unknown_8a408
-	call Function8a400
-	scf
-	ret
-.asm_8a3f8
-	ld de, Unknown_8a40b
-	call Function8a400
-	and a
-	ret
-
 Function8a400: ; 8a400 (22:6400)
 	ld a, [de]
 	inc de
@@ -2872,58 +2561,6 @@ Function8a400: ; 8a400 (22:6400)
 	jr nz, Function8a400
 	ret
 ; 8a408 (22:6408)
-
-Unknown_8a408: db 1, 2, -1
-Unknown_8a40b: db 1, 2, 3, -1
-
-MenuDataHeader_0x8a40f: ; 0x8a40f
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 10 ; end coords
-	dw MenuData2_0x8a417
-	db 1 ; default option
-; 0x8a417
-
-MenuData2_0x8a417: ; 0x8a417
-	db $a0 ; flags
-	db 4 ; items
-	db "めいしりスト@"
-	db "じぶんの めいし@"
-	db "めいしこうかん@"
-	db "やめる@"
-; 0x8a435
-
-MenuDataHeader_0x8a435: ; 0x8a435
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 09, 10 ; end coords
-	dw MenuData2_0x8a43d
-	db 1 ; default option
-; 0x8a43d
-
-MenuData2_0x8a43d: ; 0x8a43d
-	db $a0 ; flags
-	db 3 ; items
-	db "めいしりスト@"
-	db "じぶんの めいし@"
-	db "やめる@"
-; 0x8a453
-
-Function8a4fc: ; 8a4fc (22:64fc)
-	ld a, [MenuSelection]
-	cp $3
-	jr nz, asm_8a529
-	ld hl, wd012
-	ld a, [hli]
-	ld b, a
-	ld a, [hld]
-	add b
-	ld [hl], a
-	ld b, a
-	ld c, $80
-	call Function89cdf
-	call Function8a515
-	ret
 
 Function8a515: ; 8a515 (22:6515)
 	ld hl, wd012
@@ -3158,14 +2795,6 @@ Function8a6c5: ; 8a6c5 (22:66c5)
 	scf
 	ret
 
-Function8a757: ; 8a757 (22:6757)
-	call Function8939a
-	xor a
-	ld [wd010], a
-	ld [wd011], a
-	ld [wd012], a
-	ret
-
 Function8a765: ; 8a765 (22:6765)
 	call Function8931b
 	push bc
@@ -3188,66 +2817,6 @@ Function8a765: ; 8a765 (22:6765)
 	ret
 .asm_8a78a
 	scf
-	ret
-
-Function8a78c: ; 8a78c (22:678c)
-	call Function891fe
-	ld de, wd002
-	ld b, $5
-	callba NamingScreen
-	call OpenSRAMBank4
-	call Function8931b
-	push bc
-	ld hl, $0
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, wd002
-	call InitName
-	call CloseSRAM
-	call DelayFrame
-	call JoyTextDelay
-	call Function891de
-	call ClearBGPalettes
-	call Function893cc
-	call OpenSRAMBank4
-	pop bc
-	call Function89844
-	call CloseSRAM
-	and a
-	ret
-
-Function8a7cb: ; 8a7cb (22:67cb)
-	ld a, [MenuSelection]
-	push af
-	call Function891de
-	ld de, wd008
-	ld c, $0
-	callba Function17a68f
-	jr c, .asm_8a7f4
-	ld hl, wd008
-	ld a, $ff
-	ld bc, $8
-	call ByteFill
-	ld h, d
-	ld l, e
-	ld de, wd008
-	ld c, $8
-	call Function89193
-.asm_8a7f4
-	pop af
-	ld [MenuSelection], a
-	call Function891de
-	call ClearBGPalettes
-	call Function893cc
-	call OpenSRAMBank4
-	call Function8931b
-	call Function89844
-	call Function89856
-	call Function89a2e
-	call Function891ab
-	call CloseSRAM
-	and a
 	ret
 
 Function8a818: ; 8a818 (22:6818)
@@ -3311,83 +2880,12 @@ String_8a88b: ; 8a88b
 	next "かかれて いません!@"
 ; 8a8a1
 
-Function8a8a1: ; 8a8a1 (22:68a1)
-	call OpenSRAMBank4
-	call Function8a765
-	call CloseSRAM
-	jr nc, .asm_8a8bf
-	call Function89a23
-	hlcoord 1, 13
-	ld de, String_89135
-	call PlaceString
-	ld a, $2
-	call Function89254
-	jr c, .asm_8a8c1
-.asm_8a8bf
-	scf
-	ret
-.asm_8a8c1
-	and a
-	ret
-
-Function8aab6: ; 8aab6 (22:6ab6)
-	call Function89a23
-	ld hl, wd008
-	call Function89b45
-	jr nc, Function8ab00
-	call OpenSRAMBank4
-	ld de, wd008
-	ld hl, $a603
-	ld c, $8
-	call Function89185
-	jr z, .asm_8aaeb
-	ld hl, wd008
-	ld de, $a603
-	ld c, $8
-	call Function89193
-	hlcoord 1, 13
-	ld de, String_8aaf0
-	call PlaceString
-	call WaitBGMap
-	call JoyWaitAorB
-.asm_8aaeb
-	call CloseSRAM
-	scf
-	ret
-; 8aaf0 (22:6af0)
-
-String_8aaf0: ; 8aaf0
-	db "あたらしい めいし", $4a, "できまし", $22, "@"
-; 8ab00
-
 Function8ab00: ; 8ab00
 	ld de, String_8911c
 	hlcoord 1, 13
 	call PlaceString
 	call WaitBGMap
 	call Function89235
-	and a
-	ret
-
-Function8ab11: ; 8ab11 (22:6b11)
-	call OpenSRAMBank4
-	ld hl, $a603
-	ld de, wd008
-	ld c, $8
-	call Function89185
-	call CloseSRAM
-	jr z, .asm_8ab37
-	call Function89a23
-	hlcoord 1, 13
-	ld de, String_89135
-	call PlaceString
-	ld a, $2
-	call Function89254
-	jr c, .asm_8ab39
-.asm_8ab37
-	scf
-	ret
-.asm_8ab39
 	and a
 	ret
 
