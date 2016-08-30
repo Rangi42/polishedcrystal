@@ -1836,19 +1836,6 @@ Function100dfd: ; 100dfd
 	ret
 ; 100e2d
 
-Function100eca: ; 100eca
-	callba Mobile_InitPartyMenuBGPal7
-	call Function100ed4
-	ret
-; 100ed4
-
-Function100ed4: ; 100ed4
-	callba ApplyPals
-	ld a, $01
-	ld [hCGBPalUpdate], a
-	ret
-; 100edf
-
 Function100edf: ; 100edf
 	ld hl, Unknown_100fc0
 	ld c, 1

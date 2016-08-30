@@ -47,21 +47,6 @@ Function89193: ; 89193
 	ret
 ; 8919e
 
-
-Function8919e: ; 8919e (22:519e)
-; Searches for the c'th string starting at de.  Returns the pointer in de.
-	ld a, c
-	and a
-	ret z
-.loop
-	ld a, [de]
-	inc de
-	cp "@"
-	jr nz, .loop
-	dec c
-	jr nz, .loop
-	ret
-
 Function891ab: ; 891ab
 	call Function89240
 	callba ReloadMapPart
@@ -125,28 +110,6 @@ Function89215: ; 89215
 	pop hl
 	ret
 ; 8921f
-
-
-Function8921f: ; 8921f (22:521f)
-	push de
-	ld de, SCREEN_WIDTH
-	add hl, de
-	inc hl
-	ld a, $7f
-.loop
-	push bc
-	push hl
-.asm_89229
-	ld [hli], a
-	dec c
-	jr nz, .asm_89229
-	pop hl
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .loop
-	pop de
-	ret
 
 Function89235: ; 89235 (22:5235)
 	call JoyWaitAorB
@@ -1550,14 +1513,6 @@ Function89a0c: ; 89a0c
 	ret
 ; 89a23
 
-
-Function89a23: ; 89a23 (22:5a23)
-	hlcoord 0, 11
-	ld b, $4
-	ld c, $12
-	call Function8921f
-	ret
-
 Function89a57: ; 89a57
 	call Function354b
 	bit 6, c
@@ -1866,36 +1821,6 @@ Palette_89d56: ; 89d56
 	RGB 19, 19, 19
 	RGB 00, 00, 00
 ; 89d5e
-
-Function89dab: ; 89dab (22:5dab)
-	call Function8923c
-	callba MobileMenuJoypad
-	call Function8923c
-	ld a, c
-	ld hl, wMenuJoypadFilter
-	and [hl]
-	ret z
-	bit 0, a
-	jr nz, .asm_89dc7
-	bit 1, a
-	jr nz, .asm_89dd9
-	xor a
-	ret
-.asm_89dc7
-	call PlayClickSFX
-	ld a, [w2DMenuNumRows]
-	ld c, a
-	ld a, [wMenuCursorY]
-	cp c
-	jr z, .asm_89dd9
-	call PlaceHollowCursor
-	scf
-	ret
-.asm_89dd9
-	call PlayClickSFX
-	ld a, $1
-	and a
-	ret
 
 asm_89e2e: ; 89e2e (22:5e2e)
 	ld a, [wd02d]
@@ -2608,30 +2533,6 @@ Function8a6c0: ; 8a6c0 (22:66c0)
 Function8a6c5: ; 8a6c5 (22:66c5)
 	call PlayClickSFX
 	call Function89d0d
-	scf
-	ret
-
-Function8a765: ; 8a765 (22:6765)
-	call Function8931b
-	push bc
-	ld hl, $0
-	add hl, bc
-	ld de, wd002
-	ld c, $6
-	call Function89185
-	pop bc
-	jr nz, .asm_8a78a
-	push bc
-	ld hl, $11
-	add hl, bc
-	ld de, wd008
-	ld c, $8
-	call Function89185
-	pop bc
-	jr nz, .asm_8a78a
-	and a
-	ret
-.asm_8a78a
 	scf
 	ret
 
