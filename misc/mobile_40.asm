@@ -1779,20 +1779,6 @@ Unknown_100b0a: ; 100b0a
 
 SECTION "bank40_2", ROMX, BANK[$40]
 
-Function100b7a: ; 100b7a
-	ld hl, CopyMenuData2
-	ld a, [wMenuData2_2DMenuItemStringsBank]
-	rst FarCall
-	callba Draw2DMenu
-	callba MobileTextBorder
-	call UpdateSprites
-	call ApplyTilemap
-	callba Init2DMenuCursorPosition
-	ld hl, w2DMenuFlags1
-	set 7, [hl]
-	ret
-; 100b9f
-
 Function100da5: ; 100da5
 	ld hl, wcd2a
 	res 3, [hl]
@@ -1865,36 +1851,6 @@ Function100dfd: ; 100dfd
 	scf
 	ret
 ; 100e2d
-
-Function100e2d: ; 100e2d
-	ld a, [OverworldDelay]
-	ld c, a
-	ld a, 30
-	sub c
-	ld c, a
-	ld b, 3
-	push bc
-	callba Function10062d
-	pop bc
-	jr c, .asm_100e61
-	ld b, 1
-	call Function10079c
-	jr c, .asm_100e61
-	call Function1009f3
-	jr c, .asm_100e61
-	callba Function10032e
-	ld a, [wcd2b]
-	and a
-	jr nz, .asm_100e61
-	call Function100e63
-	call Function100e84
-	xor a
-	ret
-
-.asm_100e61
-	scf
-	ret
-; 100e63
 
 Function100e63: ; 100e63
 	ld a, e

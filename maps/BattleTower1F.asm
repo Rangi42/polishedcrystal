@@ -212,10 +212,6 @@ MovementData_BattleTowerHallwayPlayerEntersBattleRoom:
 	step_up
 	step_end
 
-MovementData_BattleTowerElevatorExitElevator:
-	step_down
-	step_end
-
 MovementData_BattleTowerHallwayWalkTo1020Room:
 	step_right
 	step_right

@@ -644,28 +644,6 @@ Mobile_AlwaysReturnNotCarry: ; 10632f
 	or a
 	ret
 
-Function10635c: ; 10635c
-	ld a, [wcd25]
-	bit 7, a
-	ret nz
-	ld a, [wcd25]
-	ld hl, Jumptable_10636a
-	rst JumpTable
-	ret
-; 10636a
-
-Jumptable_10636a: ; 10636a
-	dw Function10637c
-	dw Function106392
-	dw Function1063cc
-	dw Function1063d8
-	dw Function1063e5
-	dw Function1063f3
-	dw Function106403
-	dw Function106442
-	dw Function106453
-; 10637c
-
 Function10637c: ; 10637c
 	ld de, wcd30
 	ld hl, $41

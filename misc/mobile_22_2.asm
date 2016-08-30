@@ -1004,39 +1004,6 @@ Function8b94a: ; 8b94a
 	ret
 ; 8b960
 
-
-Function8b960: ; 8b960 (22:7960)
-	ld hl, MenuDataHeader_0x8b9ac
-	call LoadMenuDataHeader
-	call Function8b9e9
-	jr c, .asm_8b97a
-	hlcoord 11, 0
-	ld b, $6
-	ld c, $7
-	call Function8b703
-	ld hl, MenuDataHeader_0x8b9b1
-	jr .asm_8b987
-.asm_8b97a
-	hlcoord 11, 0
-	ld b, $a
-	ld c, $7
-	call Function8b703
-	ld hl, MenuDataHeader_0x8b9ca
-.asm_8b987
-	ld a, $1
-	call Function89d5e
-	ld hl, Function8b9ab
-	call Function89d85
-	call ExitMenu
-	jr c, .asm_8b99c
-	call Function8b99f
-	jr nz, .asm_8b99d
-.asm_8b99c
-	xor a
-.asm_8b99d
-	ld c, a
-	ret
-
 Function8b99f: ; 8b99f (22:799f)
 	ld hl, wd002
 	dec a

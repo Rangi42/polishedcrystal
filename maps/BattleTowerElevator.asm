@@ -46,6 +46,10 @@ MovementData_BattleTowerElevatorPlayerWalksIn:
 	turn_head_down
 	step_end
 
+MovementData_BattleTowerElevatorExitElevator:
+	step_down
+	step_end
+
 BattleTowerElevator_MapEventHeader:
 	; filler
 	db 0, 0

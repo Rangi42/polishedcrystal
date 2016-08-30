@@ -197,34 +197,6 @@ INCBIN "gfx/unknown/1715a4.2bpp.lz"
 GFX_171848:
 INCBIN "gfx/unknown/171848.2bpp"
 
-Function1719ed: ; 1719ed (5c:59ed)
-	xor a
-	ld [wcd49], a
-	ld [wcd4a], a
-	dec a
-	ld [wcd4b], a
-	call ClearBGPalettes
-	call ClearSprites
-	callba Function171d2b
-	callba ReloadMapPart
-	callba ClearSpriteAnims
-	ret
-
-Function171a11: ; 171a11 (5c:5a11)
-.loop
-	call JoyTextDelay
-	ld a, [wcd49]
-	bit 7, a
-	jr nz, .done
-	call Function171a36
-	callba PlaySpriteAnimations
-	callba ReloadMapPart
-	jr .loop
-.done
-	callba ClearSpriteAnims
-	call ClearSprites
-	ret
-
 Function171a36: ; 171a36 (5c:5a36)
 	ld a, [wcd49]
 	ld e, a

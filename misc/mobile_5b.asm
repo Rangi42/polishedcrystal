@@ -1,96 +1,3 @@
-Function16c074: ; 16c074
-	ld a, [wcf64]
-	and a
-	ret z
-	ld [wd002], a
-	xor a
-	ld [wd003], a
-	ret
-; 16c081
-
-Function16c081: ; 16c081
-	push af
-	ld a, $ff
-	ld [wd002], a
-	pop af
-	ret
-; 16c089
-
-Function16c089: ; 16c089
-	ld a, $1
-	ld [Buffer2], a
-	ld [wd1f1], a
-	xor a
-	ld [hWY], a
-	call Function16c0fa
-	ld a, [wd002]
-	ld [wcf64], a
-	ret
-; 16c09e
-
-Function16c09e: ; 16c09e
-	ld a, [wcf64]
-	cp $4
-	ret nz
-	call Function16c0fa
-	ret
-; 16c0a8
-
-Function16c0a8: ; 16c0a8
-	xor a
-	ld [Buffer2], a
-	ld [wd1f1], a
-	call ClearSprites
-	ld a, $90
-	ld [hWY], a
-	call Function16c0fa
-	ret
-; 16c0ba
-
-Function16c0ba: ; 16c0ba
-	call Function16c943
-	push af
-	ld a, [wd003]
-	inc a
-	ld [wd003], a
-	pop af
-	call c, Function16c0fa
-	ret
-; 16c0ca
-
-Function16c0ca: ; 16c0ca
-	ld a, [wd003]
-	cp $28
-	push af
-	ld a, [wd003]
-	inc a
-	ld [wd003], a
-	pop af
-	call z, Function16c0fa
-	ret
-; 16c0dc
-
-Function16c0dc: ; 16c0dc
-	call Function16ca11
-	push af
-	ld a, [wd003]
-	inc a
-	ld [wd003], a
-	pop af
-	call c, Function16c0fa
-	ret
-; 16c0ec
-
-Function16c0ec: ; 16c0ec
-	call ClearBGPalettes
-	call ClearScreen
-	push af
-	ld a, $ff
-	ld [wd002], a
-	pop af
-	ret
-; 16c0fa
-
 Function16c0fa: ; 16c0fa
 	push af
 	ld a, [wd002]
@@ -101,43 +8,6 @@ Function16c0fa: ; 16c0fa
 	pop af
 	ret
 ; 16c108
-
-Function16c130: ; 16c130
-	ld de, UnknBGPals
-	ld hl, Unknown_16c903
-	ld bc, 8
-	ld a, $5
-	call FarCopyWRAM
-	callba ApplyPals
-	ret
-; 16c145
-
-Function16c145: ; 16c145
-	hlcoord 0, 0
-	ld bc, 20
-	xor a
-	call ByteFill
-	ld hl, Tilemap_16c633
-	decoord 0, 1
-	ld bc, $0154
-	call CopyBytes
-	ret
-; 16c15c
-
-Function16c15c: ; 16c15c
-	hlcoord 0, 0, AttrMap
-	ld bc, SCREEN_WIDTH
-	xor a
-	call ByteFill
-	ld hl, Tilemap_16c79b
-	decoord 0, 1, AttrMap
-	ld bc, 17 * SCREEN_WIDTH
-	call CopyBytes
-	ret
-; 16c173
-
-GFX_16c173:
-INCBIN "gfx/unknown/16c173.2bpp"
 
 Tilemap_16c633:
 INCBIN "gfx/unknown/16c633.tilemap"
@@ -515,17 +385,6 @@ Function16cb0f: ; 16cb0f
 	ret
 ; 16cb2e
 
-Function16cb2e: ; 16cb2e
-	ld a, [Buffer2]
-	and a
-	ret z
-	call Function16cb40
-	ld hl, Unknown_16cb86
-	ld de, Sprites
-	call Function16cb5d
-	ret
-; 16cb40
-
 Function16cb40: ; 16cb40
 	ld hl, wd1ec
 	inc [hl]
@@ -600,15 +459,6 @@ Function16cba3: ; 16cba3
 	ret
 ; 16cbae
 
-Function16cbae: ; 16cbae
-	ld a, [wd1f1]
-	and a
-	ret z
-	call Function16cbba
-	call Function16cbd1
-	ret
-; 16cbba
-
 Function16cbba: ; 16cbba
 	ld hl, wd1f2
 	inc [hl]
@@ -651,17 +501,6 @@ Function16cbd1: ; 16cbd1
 Unknown_16cbfb:
 	db 0, 1, 2, 1, 0, 1, 2
 ; 16cc02
-
-Function16cc02: ; 16cc02
-	call Function16cc18
-	call Function16cc49
-	call Function16cc62
-	call Function16cc25
-	call Function16cc6e
-	call Function16cb0f
-	call Function16cba3
-	ret
-; 16cc18
 
 Function16cc18: ; 16cc18
 	ld hl, VTiles1
