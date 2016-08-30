@@ -410,10 +410,6 @@ SetUpFiveStepWildEncounterCooldown: ; 968d1
 	ret
 ; 968d7
 
-ret_968d7: ; 968d7
-	ret
-;968d8
-
 SetMinTwoStepWildEncounterCooldown: ; 968d8
 	ld a, [wWildEncounterCooldown]
 	cp 2
@@ -817,7 +813,6 @@ PlayerMovement: ; 96af0
 ; 96b10
 
 .seven ; 96b10
-	call ret_968d7 ; mobile
 	xor a
 	ld c, a
 	ret

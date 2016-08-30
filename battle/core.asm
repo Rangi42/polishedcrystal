@@ -5223,7 +5223,7 @@ Battle_StatsScreen: ; 3e308
 	call LowVolume
 	xor a ; PARTYMON
 	ld [MonType], a
-	callba BattleStatsScreenInit
+	callba StatsScreenInit
 	call MaxVolume
 	call DisableLCD
 	ld hl, VTiles0
@@ -5741,7 +5741,6 @@ MoveInfoBox: ; 3e6c8
 	ld b, 3
 	ld c, 9
 	call TextBox
-	call MobileTextBorder
 
 	ld a, [PlayerDisableCount]
 	and a
@@ -9095,7 +9094,6 @@ InitBattleDisplay: ; 3fb6c
 	ld b, 4
 	ld c, 18
 	call TextBox
-	callba MobileTextBorder
 	hlcoord 1, 5
 	lb bc, 3, 7
 	call ClearBox

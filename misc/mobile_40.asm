@@ -1611,19 +1611,7 @@ _LinkBattleSendReceiveAction: ; 100a09
 	call .StageForSend
 	ld [wd431], a
 	callba PlaceWaitingText
-	ld a, [wLinkMode]
-	cp LINK_MOBILE
-	jr nz, .not_mobile
-
-	call .MobileBattle_SendReceiveAction
-	call Function100da5
-	callba FinishBattleAnim
-	jr .done
-
-.not_mobile
 	call .LinkBattle_SendReceiveAction
-
-.done
 	ret
 ; 100a2e
 
@@ -1685,44 +1673,6 @@ _LinkBattleSendReceiveAction: ; 100a09
 	ret
 ; 100a87
 
-.MobileBattle_SendReceiveAction: ; 100a87
-	call Function100acf
-	call Function100641
-	ld a, 0
-	ld [wcd27], a
-.asm_100a92
-	call DelayFrame
-	call GetJoypad
-	callba Function100382
-	ld c, $01
-	ld b, $03
-	push bc
-	call Function10062d
-	pop bc
-	jr c, .asm_100ac7
-	ld b, $01
-	call Function10079c
-	jr c, .asm_100ac7
-	call Function1009f3
-	jr c, .asm_100ac7
-	ld a, [wcd2b]
-	and a
-	jr nz, .asm_100ac7
-	ld a, [wcd27]
-	bit 7, a
-	jr z, .asm_100a92
-	call Function100ae7
-	jr .asm_100ace
-
-.asm_100ac7
-	ld a, $0f
-	ld [wd430], a
-	jr .asm_100ace
-
-.asm_100ace
-	ret
-; 100acf
-
 Function100acf: ; 100acf
 	ld de, Unknown_100b0a
 	ld hl, wccb5
@@ -1778,63 +1728,6 @@ Unknown_100b0a: ; 100b0a
 
 
 SECTION "bank40_2", ROMX, BANK[$40]
-
-Function100da5: ; 100da5
-	ld hl, wcd2a
-	res 3, [hl]
-	ld hl, wcd29
-	res 0, [hl]
-	ret
-; 100db0
-
-Function100dc0: ; 100dc0
-	ld a, [wLinkMode]
-	cp LINK_MOBILE
-	jr nz, .mobile
-	ld hl, wcd2a
-	bit 3, [hl]
-	jr z, .mobile
-	scf
-	ret
-
-.mobile
-	xor a
-	ret
-; 100dd2
-
-Mobile_SetOverworldDelay: ; 100dd2
-	ld a, 30
-	ld [OverworldDelay], a
-	ret
-; 100dd8
-
-Function100dfd: ; 100dfd
-	ld a, [OverworldDelay]
-	ld c, a
-	ld a, 30
-	sub c
-	ld c, a
-	ld b, 3
-	push bc
-	callba Function10062d
-	pop bc
-	jr c, .asm_100e2b
-	ld b, 1
-	call Function10079c
-	jr c, .asm_100e2b
-	call Function1009f3
-	jr c, .asm_100e2b
-	callba Function10032e
-	ld a, [wcd2b]
-	and a
-	jr nz, .asm_100e2b
-	xor a
-	ret
-
-.asm_100e2b
-	scf
-	ret
-; 100e2d
 
 Function100edf: ; 100edf
 	ld hl, Unknown_100fc0
@@ -5897,7 +5790,7 @@ Function102bac: ; 102bac
 	ld [CurPartyMon], a
 	call LowVolume
 	call ClearSprites
-	callba _BattleStatsScreenInit
+	callba StatsScreenInit
 	ld a, [CurPartyMon]
 	inc a
 	ld [wMenuCursorY], a

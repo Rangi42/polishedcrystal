@@ -1720,45 +1720,6 @@ Function118f68:
 	jp Function119e2e
 ; 118fc0
 
-Function118fc0: ; 118fc0
-	call Function118440
-	ld a, [wcd55]
-	ld l, a
-	ld a, [wcd56]
-	ld h, a
-	ld de, wcc60
-	call Function1191ad
-	ret c
-	ld a, [wcc60]
-	and a
-	jr z, .asm_118ffa
-	ld a, [wcd51]
-	ld l, a
-	ld a, [wcd52]
-	ld h, a
-	ld de, wcc60
-	call Function1191ad
-	ret c
-	ld a, [wcc60]
-	and a
-	jr z, .asm_118ff2
-	ld hl, Text_SentSaveFileReadingNews
-	jr .asm_118ff5
-
-.asm_118ff2
-	ld hl, Text_ReadingNews
-
-.asm_118ff5
-	call Function11a9c0
-	jr Function119009
-
-.asm_118ffa
-	ld hl, Text_ReadingNews
-	call Function11a9c0
-	call Function119e2e
-	call Function119e2e
-	jp Function119e2e
-
 Function119009:
 	call Function118440
 	call Function119300
@@ -1868,51 +1829,6 @@ Function1190d0: ; 1190d0
 	ld bc, $1000
 	jp Function118b10
 ; 1190ec
-
-Function1190ec: ; 1190ec
-	ld a, $5
-	call GetSRAMBank
-	ld hl, BGMapBuffer
-	ld de, $aa73
-	ld bc, $000c
-	call CopyBytes
-	call CloseSRAM
-	ld a, $5
-	call GetSRAMBank
-	ld a, $1
-	ld [$aa72], a
-	call CloseSRAM
-	ld a, $6
-	call GetSRAMBank
-	ld a, [w3_d000]
-	ld c, a
-	ld a, [w3_d000 + 1]
-	ld b, a
-	ld hl, wd002
-	ld de, $a000
-	call Function119192
-	ret c
-	ld a, [wcd89]
-	and $1
-	jr z, .asm_11913e
-	ld a, $6
-	ld [rSVBK], a
-	ld a, [w3_d000]
-	ld c, a
-	ld a, [w3_d000 + 1]
-	ld b, a
-	ld hl, wd002
-	call Function119192
-	ret c
-
-.asm_11913e
-	ld a, $3
-	ld [rSVBK], a
-	call CloseSRAM
-	ld hl, Text_ReceivedNews
-	call Function11a9c0
-	jp Function119e2e
-; 11914e
 
 Function11914e: ; 11914e
 	call Function119ed8
@@ -2915,11 +2831,6 @@ Function11984e: ; 11984e
 	callba Function115dc3
 	jp Function119e2e
 ; 1198ee
-
-Function1198ee: ; 1198ee
-	ld hl, Text_RegisteringRecord
-	call Function11a9c0
-	call Function119e2e
 
 Function1198f7:
 	ld a, [$c31a]

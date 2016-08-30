@@ -21,7 +21,6 @@ YellowForestGateNurseScript:
 	closetext
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
-	special Mobile_HealParty
 	playmusic MUSIC_HEAL
 	special HealParty
 	pause 60

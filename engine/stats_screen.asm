@@ -1,22 +1,5 @@
-BattleStatsScreenInit: ; 4dc7b (13:5c7b)
-	ld a, [wLinkMode]
-	cp LINK_MOBILE
-	jr nz, StatsScreenInit
-
-	ld a, [wBattleMode] ; wd22d (aliases: EnemyMonEnd)
-	and a
-	jr z, StatsScreenInit
-	jr _BattleStatsScreenInit
-
 StatsScreenInit: ; 4dc8a
 	ld hl, StatsScreenMain
-	jr StatsScreenInit_gotaddress
-
-_BattleStatsScreenInit: ; 4dc8f
-	ld hl, StatsScreenBattle
-	jr StatsScreenInit_gotaddress
-
-StatsScreenInit_gotaddress: ; 4dc94
 	ld a, [hMapAnims]
 	push af
 	xor a
@@ -73,34 +56,7 @@ StatsScreenMain: ; 0x4dcd2
 	ret
 ; 0x4dcf7
 
-StatsScreenBattle: ; 4dcf7
-	xor a
-	ld [wJumptableIndex], a
-	; stupid interns
-	ld [wcf64], a
-	ld a, [wcf64]
-	and $fc
-	or $1
-	ld [wcf64], a
-.loop
-	callba Mobile_SetOverworldDelay
-	ld a, [wJumptableIndex]
-	and $7f
-	ld hl, StatsScreenPointerTable
-	rst JumpTable
-	call StatsScreen_WaitAnim
-	callba Function100dfd
-	jr c, .exit
-	ld a, [wJumptableIndex]
-	bit 7, a
-	jr z, .loop
-
-.exit
-	ret
-; 4dd2a
-
 StatsScreenPointerTable: ; 4dd2a
-
 	dw MonStatsInit       ; regular pokémon
 	dw EggStatsInit       ; egg
 	dw StatsScreenWaitCry
@@ -110,7 +66,6 @@ StatsScreenPointerTable: ; 4dd2a
 	dw MonStatsJoypad
 	dw StatsScreen_Exit
 ; 4dd3a
-
 
 StatsScreen_WaitAnim: ; 4dd3a (13:5d3a)
 	ld hl, wcf64

@@ -749,25 +749,6 @@ GetMonPalettePointer_:
 	call GetMonPalettePointer
 	ret
 
-Function9779: mobile
-	call CheckCGB
-	ret z
-	ld hl, Palettes_979c
-	ld a, $90
-	ld [rOBPI], a
-	ld c, 6 palettes
-.loop
-	ld a, [hli]
-	ld [rOBPD], a
-	dec c
-	jr nz, .loop
-	ld hl, Palettes_979c
-	ld de, UnknOBPals + 8 * 2
-	ld bc, 2 palettes
-	ld a, $5
-	call FarCopyWRAM
-	ret
-
 Palettes_979c:
 	RGB 31, 31, 31
 	RGB 25, 25, 25
@@ -1965,13 +1946,7 @@ endr
 	db $10, $11, $12, $13, $14, $15, $16, $17 ; nite
 	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
 
-Palette_b309: ; b309 mobile
-	RGB 31, 31, 31
-	RGB 31, 19, 24
-	RGB 30, 10, 06
-	RGB 00, 00, 00
-
-Palette_b311: ; b311 not mobile
+Palette_b311:
 	RGB 31, 31, 31
 	RGB 17, 19, 31
 	RGB 14, 16, 31

@@ -358,7 +358,6 @@ ElmsLabHealingMachine:
 	end
 
 ElmsLabHealingMachine_HealParty:
-	special Mobile_HealParty
 	special HealParty
 	playmusic MUSIC_NONE
 	writebyte 1 ; Machine is in Elm's Lab

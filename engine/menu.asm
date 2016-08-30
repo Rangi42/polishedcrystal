@@ -16,7 +16,6 @@ _InterpretBattleMenu:: ; 24022
 	rst FarCall
 
 	call Draw2DMenu
-	callba MobileTextBorder
 	call UpdateSprites
 	call ApplyTilemap
 	call Get2DMenuSelection
@@ -29,7 +28,6 @@ _InterpretMobileMenu:: ; 2403c
 	rst FarCall
 
 	call Draw2DMenu
-	callba MobileTextBorder
 	call UpdateSprites
 	call ApplyTilemap
 	call Init2DMenuCursorPosition

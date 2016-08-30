@@ -216,14 +216,6 @@ MobileFn_106094: mobile ; 106094
 	ld hl, $a033
 	jp Function10611d
 
-MobileFn_10609b: mobile ; 10609b
-	ld hl, $a036
-	jp Function10611d
-
-Mobile_HealParty: mobile ; 1060a2
-	ld hl, $a039
-	jp Function10611d
-
 MobileFn_1060af: mobile ; 1060af
 	ld hl, $a03f
 	jr Function10611d

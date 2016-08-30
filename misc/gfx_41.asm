@@ -108,44 +108,6 @@ Function104099: ; 104099
 	ret
 ; 1040d4
 
-Function1040d4: ; 1040d4
-	ld hl, .Function
-	jp CallInSafeGFXMode
-
-.Function:
-	ld a, $1
-	ld [rVBK], a
-	ld a, $3
-	ld [rSVBK], a
-	ld de, w3_d800
-	ld a, [hBGMapAddress + 1]
-	ld [rHDMA1], a
-	ld a, [hBGMapAddress]
-	ld [rHDMA2], a
-	ld a, d
-	ld [rHDMA3], a
-	ld a, e
-	ld [rHDMA4], a
-	ld a, $23
-	ld [hDMATransfer], a
-	call WaitDMATransfer
-	ret
-; 1040fb
-
-Function1040fb: ; 1040fb
-	ld hl, .Function
-	jp CallInSafeGFXMode
-
-.Function:
-	ld a, $1
-	ld [rVBK], a
-	ld a, $3
-	ld [rSVBK], a
-	ld hl, w3_d800
-	call Function10419d
-	ret
-; 104110
-
 Function104110:: ; 104110
 ; OpenText
 	ld hl, .Function

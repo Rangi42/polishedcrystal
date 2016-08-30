@@ -522,8 +522,6 @@ Paragraph:: ; 12f2
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr z, .linkbattle
-	cp LINK_MOBILE
-	jr z, .linkbattle
 	call LoadBlinkingCursor
 
 .linkbattle
@@ -595,8 +593,6 @@ PromptText:: ; 135a
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr z, .ok
-	cp LINK_MOBILE
-	jr z, .ok
 	call LoadBlinkingCursor
 
 .ok
@@ -604,8 +600,6 @@ PromptText:: ; 135a
 	call ButtonSound
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, DoneText
-	cp LINK_MOBILE
 	jr z, DoneText
 	call UnloadBlinkingCursor
 
@@ -917,8 +911,6 @@ Text_WAIT_BUTTON:: ; 149f
 
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jp z, Text_0D
-	cp LINK_MOBILE
 	jp z, Text_0D
 
 	push hl

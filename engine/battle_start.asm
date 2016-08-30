@@ -54,19 +54,11 @@ Predef_StartBattle: ; 8c20f
 
 .InitGFX: ; 8c26d
 	ld a, [wLinkMode]
-	cp LINK_MOBILE
-	jr z, .mobile
 	callba Function6454
 	call UpdateSprites
 	call DelayFrame
-	call .NonMobile_LoadPokeballTiles
+	call .LoadPokeballTiles
 	call BattleStart_LoadEDTile
-	jr .resume
-
-.mobile
-	call LoadTrainerBattlePokeballTiles
-
-.resume
 	ld a, SCREEN_HEIGHT_PX
 	ld [hWY], a
 	call DelayFrame
@@ -81,7 +73,7 @@ Predef_StartBattle: ; 8c20f
 	ret
 ; 8c2a0
 
-.NonMobile_LoadPokeballTiles: ; 8c2a0
+.LoadPokeballTiles: ; 8c2a0
 	call LoadTrainerBattlePokeballTiles
 	hlbgcoord 0, 0
 	call Function8c2cf
