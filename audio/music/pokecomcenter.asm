@@ -1,11 +1,11 @@
-Music_MobileCenter: ; 17961d
-	musicheader 4, 1, Music_MobileCenter_Ch1
-	musicheader 1, 2, Music_MobileCenter_Ch2
-	musicheader 1, 3, Music_MobileCenter_Ch3
-	musicheader 1, 4, Music_MobileCenter_Ch4
+Music_PokeComCenter: ; 17961d
+	musicheader 4, 1, Music_PokeComCenter_Ch1
+	musicheader 1, 2, Music_PokeComCenter_Ch2
+	musicheader 1, 3, Music_PokeComCenter_Ch3
+	musicheader 1, 4, Music_PokeComCenter_Ch4
 ; 179629
 
-Music_MobileCenter_Ch1: ; 179629
+Music_PokeComCenter_Ch1: ; 179629
 	tempo 160
 	volume $77
 	dutycycle $1
@@ -20,7 +20,7 @@ Music_MobileCenter_Ch1: ; 179629
 	note G_, 2
 	note A_, 2
 	note B_, 4
-Music_MobileCenter_branch_179642: ; 179642
+Music_PokeComCenter_branch_179642: ; 179642
 	octave 3
 	note E_, 2
 	note C_, 2
@@ -155,10 +155,10 @@ Music_MobileCenter_branch_179642: ; 179642
 	note D_, 2
 	note E_, 2
 	note F_, 2
-	loopchannel 0, Music_MobileCenter_branch_179642
+	loopchannel 0, Music_PokeComCenter_branch_179642
 ; 1796cc
 
-Music_MobileCenter_Ch2: ; 1796cc
+Music_PokeComCenter_Ch2: ; 1796cc
 	notetype $c, $c2
 	dutycycle $3
 	note __, 10
@@ -166,7 +166,7 @@ Music_MobileCenter_Ch2: ; 1796cc
 	note G_, 2
 	note A_, 2
 	note B_, 2
-Music_MobileCenter_branch_1796d6: ; 1796d6
+Music_PokeComCenter_branch_1796d6: ; 1796d6
 	octave 2
 	note C_, 2
 	note E_, 2
@@ -324,10 +324,10 @@ Music_MobileCenter_branch_1796d6: ; 1796d6
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	loopchannel 0, Music_MobileCenter_branch_1796d6
+	loopchannel 0, Music_PokeComCenter_branch_1796d6
 ; 179777
 
-Music_MobileCenter_Ch3: ; 179777
+Music_PokeComCenter_Ch3: ; 179777
 	notetype $c, $24
 	vibrato $10, $34
 	octave 4
@@ -339,7 +339,7 @@ Music_MobileCenter_Ch3: ; 179777
 	note C_, 2
 	note D_, 4
 	notetype $c, $25
-Music_MobileCenter_branch_179788: ; 179788
+Music_PokeComCenter_branch_179788: ; 179788
 	note C_, 2
 	octave 4
 	note G_, 2
@@ -451,10 +451,10 @@ Music_MobileCenter_branch_179788: ; 179788
 	note D_, 2
 	note C_, 8
 	vibrato $10, $34
-	loopchannel 0, Music_MobileCenter_branch_179788
+	loopchannel 0, Music_PokeComCenter_branch_179788
 ; 179807
 
-Music_MobileCenter_Ch4: ; 179807
+Music_PokeComCenter_Ch4: ; 179807
 	togglenoise $3
 	stereopanning $f
 	notetype $c
@@ -464,7 +464,7 @@ Music_MobileCenter_Ch4: ; 179807
 	note C#, 1
 	note C#, 1
 	note C#, 1
-Music_MobileCenter_branch_179813: ; 179813
+Music_PokeComCenter_branch_179813: ; 179813
 	note A_, 2
 	note C#, 2
 	note C#, 2
@@ -473,7 +473,7 @@ Music_MobileCenter_branch_179813: ; 179813
 	note C#, 2
 	note D_, 2
 	note C#, 2
-	loopchannel 3, Music_MobileCenter_branch_179813
+	loopchannel 3, Music_PokeComCenter_branch_179813
 	note A_, 2
 	note C#, 2
 	note C#, 2
@@ -484,5 +484,5 @@ Music_MobileCenter_branch_179813: ; 179813
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 0, Music_MobileCenter_branch_179813
+	loopchannel 0, Music_PokeComCenter_branch_179813
 ; 17982d

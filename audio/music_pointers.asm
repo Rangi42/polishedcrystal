@@ -104,7 +104,7 @@
 	dba Music_BattleTowerTheme ; 0x178889
 	dba Music_SuicuneBattle ; 0x178b81
 	dba Music_BattleTowerLobby ; 0x17948b
-	dba Music_MobileCenter ; 0x17961d
+	dba Music_PokeComCenter ; 0x17961d
 
 ; Polished Crystal adds the following songs:
 
