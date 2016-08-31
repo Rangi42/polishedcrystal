@@ -142,18 +142,6 @@ Function3eea:: ; 3eea
 	ret
 ; 3efd
 
-Function3f20:: ; 3f20
-	hlcoord 0, 0, AttrMap
-	ld b,  6
-	ld c, 20
-	call Function3f35
-	hlcoord 0, 0
-	ld b,  4
-	ld c, 18
-	call MobileHome_PlaceBox
-	ret
-; 3f35
-
 Function3f35:: ; 3f35
 	ld a, 6
 	ld de, SCREEN_WIDTH
@@ -217,12 +205,3 @@ MobileHome_PlaceBox: ; 3f47
 	add hl, de
 	ret
 ; 3f7c
-
-Function3f7c:: ; 3f7c
-	call MenuBoxCoord2Tile
-	call GetMenuBoxDims
-	dec b
-	dec c
-	call Function3eea
-	ret
-; 3f88

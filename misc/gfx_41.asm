@@ -78,36 +78,6 @@ ReloadMapPart:: ; 104061
 	ei
 	ret
 
-Function104099: ; 104099
-	ld hl, ReloadMapPart ; useless
-	ld hl, .Function
-	jp CallInSafeGFXMode
-
-.Function:
-	decoord 0, 0, AttrMap
-	ld hl, wBackupAttrMap
-	call CutAndPasteAttrMap
-	decoord 0, 0
-	ld hl, wDecompressScratch
-	call CutAndPasteTilemap
-	call DelayFrame
-	di
-	ld a, [rVBK]
-	push af
-	ld a, $1
-	ld [rVBK], a
-	ld hl, wBackupAttrMap
-	call Function1041c1
-	ld a, $0
-	ld [rVBK], a
-	ld hl, wDecompressScratch
-	call Function1041c1
-	pop af
-	ld [rVBK], a
-	ei
-	ret
-; 1040d4
-
 Function104110:: ; 104110
 ; OpenText
 	ld hl, .Function
@@ -223,61 +193,9 @@ Function1041b7: ; 1041b7 (41:41b7)
 	ld a, [hBGMapAddress]
 	ld e, a
 	ld c, $24
-	jr asm_104205
-; 1041c1 (41:41c1)
-
-Function1041c1: ; 1041c1
-	ld a, [hBGMapAddress + 1]
-	ld d, a
-	ld a, [hBGMapAddress]
-	ld e, a
-	ld c, $24
-	ld a, h
-	ld [rHDMA1], a
-	ld a, l
-	and $f0
-	ld [rHDMA2], a
-	ld a, d
-	and $1f
-	ld [rHDMA3], a
-	ld a, e
-	and $f0
-	ld [rHDMA4], a
-	ld a, c
-	dec c
-	or $80
-	ld b, a
-	ld a, $7f
-	sub c
-	ld d, a
-.loop1
-	ld a, [rLY]
-	cp d
-	jr nc, .loop1
-.loop2
-	ld a, [rSTAT]
-	and $3
-	jr z, .loop2
-	ld a, b
-	ld [rHDMA5], a
-	ld a, [rLY]
-	inc c
-	ld hl, rLY
-.loop3
-	cp [hl]
-	jr z, .loop3
-	ld a, [hl]
-	dec c
-	jr nz, .loop3
-	ld hl, rHDMA5
-	res 7, [hl]
-	ret
-; 104205
-
-asm_104205:
 	ld b, $7b
 	jr asm_10420b
-
+; 1041c1 (41:41c1)
 
 Function104209:
 ; LY magic

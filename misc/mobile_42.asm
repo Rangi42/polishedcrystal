@@ -1,26 +1,3 @@
-Function108026: ; 108026
-	ld a, $0
-	jr asm_10802c
-
-Function10802a: ; 10802a
-	ld a, $1
-
-asm_10802c:
-	ld [wcf65], a
-	ld de, .TradeAnimScript
-	jp RunMobileTradeAnim_Frontpics
-; 108035
-
-.TradeAnimScript: ; trade
-	mobiletradeanim_showgivemon
-	mobiletradeanim_12
-	mobiletradeanim_02
-	mobiletradeanim_sendmon
-	mobiletradeanim_05
-	mobiletradeanim_receivemon
-	mobiletradeanim_showgetmon
-	mobiletradeanim_end
-
 Function10804d: ; 10804d
 	ld a, $0
 	ld [wcf65], a

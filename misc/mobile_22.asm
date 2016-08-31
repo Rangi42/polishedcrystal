@@ -18,23 +18,6 @@ Function89168: ; 89168 (22:5168)
 	set 7, [hl]
 	ret
 
-Function89185: ; 89185 (22:5185)
-; Compares c bytes starting at de and hl and incrementing together until a match is found.
-	push de
-	push hl
-.loop
-	ld a, [de]
-	inc de
-	cp [hl]
-	jr nz, .done
-	inc hl
-	dec c
-	jr nz, .loop
-.done
-	pop hl
-	pop de
-	ret
-
 Function89193: ; 89193
 ; Copies c bytes from hl to de.
 	push de
@@ -1714,31 +1697,6 @@ Function89b45: ; 89b45
 	ret
 ; 89b78
 
-
-Function89b78: ; 89b78 (22:5b78)
-	push bc
-	ld a, [wd010]
-	cp $10
-	jr c, .asm_89b8c
-	ld a, e
-	and a
-	jr z, .asm_89b89
-	ld c, e
-.asm_89b85
-	inc hl
-	dec c
-	jr nz, .asm_89b85
-.asm_89b89
-	ld a, $7f
-	ld [hl], a
-.asm_89b8c
-	ld a, [wd010]
-	inc a
-	and $1f
-	ld [wd010], a
-	pop bc
-	ret
-
 Function89c34: ; 89c34 (22:5c34)
 	push bc
 	ld a, [wd012]
@@ -1851,7 +1809,6 @@ Jumptable_89e3c: ; 89e3c (22:5e3c)
 	dw Function8a0f5
 	dw Function89e58
 	dw Function89e68
-
 
 Function89e58: ; 89e58 (22:5e58)
 	ld a, $1
@@ -2247,15 +2204,8 @@ Function8a0ec: ; 8a0ec (22:60ec)
 	call PrintText
 	jp Function89e36
 
-Function8a0f5: ; 8a0f5 (22:60f5)
-	call Function8b555
-	jp nc, Function8a0ff
-	ld hl, wd02d
-	inc [hl]
-
-Function8a0ff: ; 8a0ff (22:60ff)
-	jp Function89e36
-; 8a102 (22:6102)
+Function8a0f5:
+	ret
 
 UnknownText_0x8a102: ; 0x8a102
 	; The CARD FOLDER stores your and your friends' CARDS. A CARD contains information like the person's name, phone number and profile.
@@ -2280,31 +2230,6 @@ UnknownText_0x8a111: ; 0x8a111
 	text_jump UnknownText_0x1c5394
 	db "@"
 ; 0x8a116
-
-Function8a262: ; 8a262 (22:6262)
-	call ClearBGPalettes
-	call Function893e2
-	call Function8923c
-	callba MG_Mobile_Layout_CreatePalBoxes
-	hlcoord 1, 0
-	call Function8a53d
-	hlcoord 12, 4
-	call Function8a58d
-	ld a, $5
-	hlcoord 12, 4, AttrMap
-	call Function8a5a3
-	ld a, $6
-	hlcoord 15, 4, AttrMap
-	call Function8a5a3
-	xor a
-	ld [wd02e], a
-	ld bc, wd013
-	call Function8b36c
-	call Function8b493
-	call Function891ab
-	call SetPalettes
-	call Function8b5e7
-	ret
 
 Function8a2fe: ; 8a2fe (22:62fe)
 	call Function8a313
@@ -2579,102 +2504,6 @@ Function8ab77: ; 8ab77 (22:6b77)
 	and a
 	ret
 
-Function8aba9: ; 8aba9
-	ld a, $2
-	call Function8b94a
-	ld a, $1
-	ld [wd032], a
-.asm_8abb3
-	call Function891fe
-	call Function8b677
-.asm_8abb9
-	call Function8b7bd
-	jr z, .asm_8abdf
-	ld a, c
-	ld [MenuSelection], a
-	call OpenSRAMBank4
-	call Function8931b
-	ld hl, $0011
-	add hl, bc
-	call Function89b45
-	call CloseSRAM
-	jr c, .asm_8abe2
-	ld de, SFX_WRONG
-	call WaitPlaySFX
-	call CloseSRAM
-	jr .asm_8abb9
-
-.asm_8abdf
-	xor a
-	ld c, a
-	ret
-
-.asm_8abe2
-	call PlayClickSFX
-.asm_8abe5
-	call Function891de
-	call ClearBGPalettes
-	call Function893cc
-	call OpenSRAMBank4
-	call Function8931b
-	call Function89844
-	call CloseSRAM
-	call OpenSRAMBank4
-	call Function8939a
-	call Function89856
-	hlcoord 1, 13
-	call Function899fe
-	call CloseSRAM
-	call Function891ab
-.asm_8ac0f
-	call Function89a57
-	jr c, .asm_8ac0f
-	and a
-	jr z, .asm_8abe5
-	cp $2
-	jr z, .asm_8ac0f
-	hlcoord 0, 12
-	ld b, $4
-	ld c, $12
-	call TextBox
-	hlcoord 1, 14
-	ld de, String_8ac3b
-	call PlaceString
-	ld a, $1
-	call Function8925e
-	jp c, .asm_8abb3
-	ld a, [MenuSelection]
-	ld c, a
-	ret
-; 8ac3b
-
-String_8ac3b: ; 8ac3b
-	db   "こ", $25, "ともだち", $1d, "でんわを"
-	next "かけますか?@"
-; 8ac4e
-
-Function8ac4e: ; 8ac4e
-	xor a
-	ld [MenuSelection], a
-	push de
-	call Function891de
-	call ClearBGPalettes
-	call Function893cc
-	pop bc
-	call Function89844
-	call Function8939a
-	call Function89856
-	hlcoord 1, 13
-	call Function899fe
-	call Function891ab
-	ret
-; 8ac70
-
-Function8ac70: ; 8ac70
-	push de
-	ld a, $3
-	call Function8b94a
-
 Function8ac76: ; 8ac76
 	call Function891fe
 	call Function8b677
@@ -2836,26 +2665,6 @@ String_8ad9c: ; 8ad9c
 	next "のこして おきますか?@"
 ; 8adb3
 
-Function8adb3: ; 8adb3
-	call Function891de
-	call Function8a262
-	push af
-	call Function891de
-	pop af
-	ret
-; 8adbf
-
-Function8adcc: ; 8adcc
-	call OpenSRAMBank4
-	call Function8b3b0
-	call CloseSRAM
-	ret nc
-	cp $2
-	ret z
-	scf
-	ret
-; 8addb
-
 Function8b342:: ; 8b342
 	call GetSecondaryMapHeaderPointer
 	ld d, h
@@ -2873,78 +2682,6 @@ Function8b36c: ; 8b36c (22:736c)
 	pop bc
 	ret
 
-Function8b379: ; 8b379 (22:7379)
-	push bc
-	ld a, c
-	add e
-	ld c, a
-	ld a, $0
-	adc b
-	ld b, a
-	ld a, [bc]
-	ld d, a
-	pop bc
-	ret
-
-Function8b385: ; 8b385 (22:7385)
-	push bc
-	ld a, c
-	add e
-	ld c, a
-	ld a, $0
-	adc b
-	ld b, a
-	ld a, d
-	ld [bc], a
-	pop bc
-	ret
-
-Function8b391: ; 8b391 (22:7391)
-	push bc
-	ld e, $0
-	ld d, $4
-.asm_8b396
-	ld a, [bc]
-	inc bc
-	cp $ff
-	jr z, .asm_8b3a2
-	inc e
-	dec d
-	jr nz, .asm_8b396
-	dec e
-	scf
-.asm_8b3a2
-	pop bc
-	ret
-
-Function8b3a4: ; 8b3a4 (22:73a4)
-	push de
-	push bc
-	ld d, b
-	ld e, c
-	ld c, $4
-	call Function89185
-	pop bc
-	pop de
-	ret
-
-Function8b3b0: ; 8b3b0 (22:73b0)
-	ld bc, $a037
-	ld a, [$a60b]
-	and a
-	jr z, .asm_8b3c2
-	cp $3
-	jr nc, .asm_8b3c2
-	call Function8b391
-	jr c, .asm_8b3c9
-.asm_8b3c2
-	call Function8b36c
-	xor a
-	ld [$a60b], a
-.asm_8b3c9
-	ld a, [$a60b]
-	ret
-
 Function8b3cd: ; 8b3cd (22:73cd)
 	push de
 	push bc
@@ -2958,118 +2695,6 @@ Function8b3cd: ; 8b3cd (22:73cd)
 	jr nz, .asm_8b3d1
 	pop bc
 	pop de
-	ret
-
-Function8b3dd: ; 8b3dd (22:73dd)
-	push de
-	push bc
-	call Function354b
-	ld a, c
-	pop bc
-	pop de
-	bit 0, a
-	jr nz, .asm_8b3f7
-	bit 1, a
-	jr nz, .asm_8b40e
-	bit 6, a
-	jr nz, .asm_8b429
-	bit 7, a
-	jr nz, .asm_8b443
-	and a
-	ret
-.asm_8b3f7
-	ld a, e
-	cp $3
-	jr z, .asm_8b407
-	inc e
-	ld d, $0
-	call Function8b385
-	xor a
-	ld [wd010], a
-	ret
-.asm_8b407
-	call PlayClickSFX
-	ld d, $0
-	scf
-	ret
-.asm_8b40e
-	ld a, e
-	and a
-	jr nz, .asm_8b41e
-	call PlayClickSFX
-	ld d, $ff
-	call Function8b385
-	ld d, $1
-	scf
-	ret
-.asm_8b41e
-	ld d, $ff
-	call Function8b385
-	dec e
-	xor a
-	ld [wd010], a
-	ret
-.asm_8b429
-	call Function8b379
-	ld a, d
-	cp $a
-	jr c, .asm_8b433
-	ld d, $9
-.asm_8b433
-	inc d
-	ld a, d
-	cp $a
-	jr c, .asm_8b43b
-	ld d, $0
-.asm_8b43b
-	call Function8b385
-	xor a
-	ld [wd010], a
-	ret
-.asm_8b443
-	call Function8b379
-	ld a, d
-	cp $a
-	jr c, .asm_8b44d
-	ld d, $0
-.asm_8b44d
-	ld a, d
-	dec d
-	and a
-	jr nz, .asm_8b454
-	ld d, $9
-.asm_8b454
-	call Function8b385
-	xor a
-	ld [wd010], a
-	ret
-
-Function8b45c: ; 8b45c (22:745c)
-	call Function8b36c
-	xor a
-	ld [wd010], a
-	ld [wd012], a
-	call Function8b391
-	ld d, $0
-	call Function8b385
-.asm_8b46e
-	call Function8923c
-	call Function8b493
-	call Function8b4cc
-	call Function8b518
-	call Function89b78
-	push bc
-	call Function8b4fd
-	call Function89c44
-	ld a, $1
-	ld [hBGMapMode], a
-	pop bc
-	call Function8b3dd
-	jr nc, .asm_8b46e
-	ld a, d
-	and a
-	ret z
-	scf
 	ret
 
 Function8b493: ; 8b493 (22:7493)
@@ -3212,172 +2837,6 @@ Function8b539: ; 8b539 (22:7539)
 	ld e, $0
 	call Function89c44
 	call CGBOnly_LoadEDTile
-	ret
-
-Function8b555: ; 8b555 (22:7555)
-	ld hl, UnknownText_0x8b5ce
-	call PrintText
-	ld bc, wd017
-	call Function8b45c
-	jr c, .asm_8b5c8
-	call Function89448
-	ld bc, wd017
-	call Function8b493
-	ld bc, wd017
-	call Function8b664
-	jr nz, .asm_8b57c
-	ld hl, UnknownText_0x8b5e2
-	call PrintText
-	jr Function8b555
-.asm_8b57c
-	ld hl, UnknownText_0x8b5d3
-	call PrintText
-	ld bc, wd013
-	call Function8b45c
-	jr c, Function8b555
-	ld bc, wd017
-	ld hl, wd013
-	call Function8b3a4
-	jr z, .asm_8b5a6
-	call Function89448
-	ld bc, wd013
-	call Function8b493
-	ld hl, UnknownText_0x8b5d8
-	call PrintText
-	jr .asm_8b57c
-.asm_8b5a6
-	call OpenSRAMBank4
-	ld hl, wd013
-	ld de, $a037
-	ld bc, $4
-	call CopyBytes
-	call CloseSRAM
-	call Function89448
-	ld bc, wd013
-	call Function8b493
-	ld hl, UnknownText_0x8b5dd
-	call PrintText
-	and a
-.asm_8b5c8
-	push af
-	call Function89448
-	pop af
-	ret
-; 8b5ce (22:75ce)
-
-UnknownText_0x8b5ce: ; 0x8b5ce
-	; Please enter any four-digit number.
-	text_jump UnknownText_0x1bc187
-	db "@"
-; 0x8b5d3
-
-UnknownText_0x8b5d3: ; 0x8b5d3
-	; Enter the same number to confirm.
-	text_jump UnknownText_0x1bc1ac
-	db "@"
-; 0x8b5d8
-
-UnknownText_0x8b5d8: ; 0x8b5d8
-	; That's not the same number.
-	text_jump UnknownText_0x1bc1cf
-	db "@"
-; 0x8b5dd
-
-UnknownText_0x8b5dd: ; 0x8b5dd
-	; Your PASSCODE has been set. Enter this number next time to open the CARD FOLDER.
-	text_jump UnknownText_0x1bc1eb
-	db "@"
-; 0x8b5e2
-
-UnknownText_0x8b5e2: ; 0x8b5e2
-	; 0000 is invalid!
-	text_jump UnknownText_0x1bc23e
-	db "@"
-; 0x8b5e7
-
-Function8b5e7: ; 8b5e7 (22:75e7)
-	ld bc, wd013
-	call Function8b36c
-	xor a
-	ld [wd012], a
-	ld [wd02e], a
-	call Function8b493
-	call Function891ab
-	call Function8b4fd
-	ld e, $0
-	call Function89c44
-.asm_8b602
-	ld hl, UnknownText_0x8b642
-	call PrintText
-	ld bc, wd013
-	call Function8b45c
-	jr c, .asm_8b63c
-	call Function89448
-	ld bc, wd013
-	call Function8b493
-	call OpenSRAMBank4
-	ld hl, $a037
-	call Function8b3a4
-	call CloseSRAM
-	jr z, .asm_8b635
-	ld hl, UnknownText_0x8b647
-	call PrintText
-	ld bc, wd013
-	call Function8b36c
-	jr .asm_8b602
-.asm_8b635
-	ld hl, UnknownText_0x8b64c
-	call PrintText
-	and a
-.asm_8b63c
-	push af
-	call Function89448
-	pop af
-	ret
-; 8b642 (22:7642)
-
-UnknownText_0x8b642: ; 0x8b642
-	; Enter the CARD FOLDER PASSCODE.
-	text_jump UnknownText_0x1bc251
-	db "@"
-; 0x8b647
-
-UnknownText_0x8b647: ; 0x8b647
-	; Incorrect PASSCODE!
-	text_jump UnknownText_0x1bc272
-	db "@"
-; 0x8b64c
-
-UnknownText_0x8b64c: ; 0x8b64c
-	; CARD FOLDER open.@ @
-	text_jump UnknownText_0x1bc288
-	start_asm
-	ld de, SFX_TWINKLE
-	call PlaySFX
-	call WaitSFX
-	ld c, $8
-	call DelayFrames
-	ld hl, .string_8b663
-	ret
-.string_8b663
-	db "@"
-; 8b664
-
-Function8b664: ; 8b664 (22:7664)
-	push bc
-	ld de, $4
-.asm_8b668
-	ld a, [bc]
-	cp $0
-	jr nz, .asm_8b66e
-	inc d
-.asm_8b66e
-	inc bc
-	dec e
-	jr nz, .asm_8b668
-	pop bc
-	ld a, d
-	cp $4
 	ret
 
 Function8b677: ; 8b677
@@ -3817,15 +3276,3 @@ String_8b919: db "どの めいしと いれかえますか?@"    ; OK to swap w
 String_8b92a: db "あいてを えらんでください@"        ; Please select an opponent.
 String_8b938: db "いれる ところを えらんでください@" ; Please select a location.
 ; 8b94a
-
-Function8b94a: ; 8b94a
-	ld [wd033], a
-	xor a
-	ld [wMenuScrollPosition], a
-	ld [wd032], a
-	ld [wd0e3], a
-	ld [wd031], a
-	ld a, $1
-	ld [wd030], a
-	ret
-; 8b960

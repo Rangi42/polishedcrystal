@@ -116,15 +116,6 @@ Palette_TextBG7: ; 49418
 	RGB 00, 00, 00
 ; 49420
 
-Function49420:: ; 49420 (12:5420)
-	ld hl, MansionPalette4
-	ld de, UnknBGPals + $30
-	ld bc, $8
-	ld a, $5 ; BANK(UnknBGPals)
-	call FarCopyWRAM
-	ret
-; 4942f (12:542f)
-
 Function49480: ; 49480
 	hlcoord 0, 0, AttrMap
 	lb bc, 4, SCREEN_WIDTH
@@ -629,58 +620,6 @@ LoadNavelRockTimePalette:
 
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"
-
-Function49742: ; 49742
-	ld hl, Palette_49757
-	ld de, UnknBGPals
-	ld bc, $40
-	ld a, $5
-	call FarCopyWRAM
-	callba ApplyPals
-	ret
-; 49757
-
-Palette_49757: ; 49757
-	RGB 31, 31, 63
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-
-	RGB 31, 31, 63
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-
-	RGB 04, 02, 15
-	RGB 21, 00, 21
-	RGB 31, 00, 00
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 21, 00, 21
-	RGB 30, 16, 26
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 21, 00, 21
-	RGB 16, 16, 16
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 21, 00, 21
-	RGB 31, 12, 12
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 21, 00, 21
-	RGB 07, 08, 31
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 21, 00, 21
-	RGB 29, 28, 09
-	RGB 31, 31, 31
-; 49797
 
 _InitMG_Mobile_LinkTradePalMap: ; 49797
 	hlcoord 0, 0, AttrMap
