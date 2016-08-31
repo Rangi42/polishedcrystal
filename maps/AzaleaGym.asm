@@ -191,7 +191,7 @@ BugsyText_HiveBadgeSpeech:
 	cont "Hive Badge?"
 
 	para "If you have it,"
-	line "#mon up to L30"
+	line "#mon up to <LV>30"
 
 	para "will obey you,"
 	line "even traded ones."

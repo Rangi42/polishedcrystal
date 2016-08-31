@@ -18,7 +18,6 @@ includes  := $(PYTHON) utils/scan_includes.py
 crystal_obj := \
 wram.o \
 main.o \
-lib/mobile/main.o \
 home.o \
 audio.o \
 maps.o \
@@ -27,7 +26,7 @@ engine/credits.o \
 data/egg_moves.o \
 data/evos_attacks.o \
 data/pokedex/entries.o \
-misc/crystal_misc.o \
+misc/libmain.o \
 text/common_text.o \
 gfx/pics.o
 

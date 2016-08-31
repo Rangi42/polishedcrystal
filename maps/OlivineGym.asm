@@ -144,7 +144,7 @@ UnknownText_0x9c354:
 	text "With that Badge,"
 	line "all #mon up"
 
-	para "to L70, even"
+	para "to <LV>70, even"
 	line "traded ones, will"
 
 	para "obey you without"

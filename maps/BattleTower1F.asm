@@ -433,7 +433,7 @@ Text_MayNotEnterABattleRoomUnderL70: ; 0x9f217
 	text_from_ram wcd49
 	text " may not"
 	line "enter a Battle"
-	cont "Room under L70."
+	cont "Room under <LV>70."
 
 	para "This Battle Room"
 	line "is for L@"

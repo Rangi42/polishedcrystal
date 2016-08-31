@@ -77,8 +77,6 @@ endr
 	ret
 ; 11c05d
 
-INCLUDE "misc/fixed_words.asm"
-
 BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; KAY
 	db MALE   ; CAL

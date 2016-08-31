@@ -239,7 +239,7 @@ UnknownText_0x9a059:
 	text "By having the Fog"
 	line "Badge, #mon up"
 
-	para "to L50 will obey"
+	para "to <LV>50 will obey"
 	line "you."
 
 	para "Also, #mon that"

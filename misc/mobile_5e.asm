@@ -1,6 +1,3 @@
-INCLUDE "includes.asm"
-
-
 SECTION "Misc Crystal", ROMX, BANK[MISC_CRYSTAL]
 
 MobileAdapterGFX::
