@@ -77,7 +77,7 @@ HallOfFameScript:
 	setevent EVENT_RIVAL_SPROUT_TOWER
 	setevent EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	clearevent EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
-	respawn_one_offs
+	special RespawnOneOffs
 	domaptrigger SPROUT_TOWER_3F, $1
 	special HealParty
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM

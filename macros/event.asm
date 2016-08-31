@@ -1065,11 +1065,6 @@ check_save: macro
 	db check_save_command
 	endm
 
-	enum wonder_trade_command
-wonder_trade: macro
-	db wonder_trade_command
-	endm
-
 	enum count_caught_command
 count_caught: macro
 	db count_caught_command
@@ -1084,15 +1079,4 @@ count_unown_caught: macro
 trainerpic: macro
 	db trainerpic_command
 	db \1 ; trainer
-	endm
-
-	enum respawn_one_offs_command
-respawn_one_offs: macro
-	db respawn_one_offs_command
-	endm
-
-	enum sawpokemon_command
-sawpokemon: macro
-	db sawpokemon_command
-	db \1 ; pokemon
 	endm

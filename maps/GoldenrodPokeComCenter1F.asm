@@ -163,7 +163,7 @@ WonderTradeReceptionistScript:
 	opentext
 	writetext WonderTradeIntroText
 	waitbutton
-	wonder_trade
+	special WonderTrade
 	writetext WonderTradeGoodbyeText
 	waitbutton
 	closetext

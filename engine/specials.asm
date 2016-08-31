@@ -61,7 +61,6 @@ SpecialsPointers:: ; c029
 	add_special Special_SlotMachine
 	add_special Special_CardFlip
 	add_special Special_DummyNonfunctionalGameCornerGame
-	add_special Special_ClearBGPalettesBufferScreen
 	add_special FadeOutPalettes
 	add_special Special_BattleTowerFade
 	add_special Special_FadeBlackQuickly
@@ -80,8 +79,8 @@ SpecialsPointers:: ; c029
 	add_special RestartMapMusic
 	add_special HealMachineAnim
 	add_special Special_SurfStartStep
-	add_special Special_FindGreaterThanThatLevel
-	add_special Special_FindAtLeastThatHappy
+	add_special Special_FindGreaterThanThatLevel ; unused
+	add_special Special_FindAtLeastThatHappy ; unused
 	add_special Special_FindThatSpecies
 	add_special Special_FindThatSpeciesYourTrainerID
 	add_special Special_DayCareMon1
@@ -117,24 +116,18 @@ SpecialsPointers:: ; c029
 	add_special Special_DaisyMassage
 	add_special PlayCurMonCry
 	add_special ProfOaksPCBoot
-	add_special SpecialGameboyCheck
+	add_special SpecialGameboyCheck ; unused
 	add_special Special_CianwoodPhotograph
 	add_special InitRoamMons
 	add_special Special_FadeOutMusic
 	add_special Diploma
 
 	; Crystal
-	add_special Special_InitBattleTowerChallengeRAM
-	add_special BattleTowerBattle
-	add_special Function_LoadOpponentTrainerAndPokemonsWithOTSprite
-	add_special SpecialCheckForBattleTowerRules
 	add_special GiveOddEgg
 	add_special SoftReset
 	add_special Special_MoveTutor
 	add_special SpecialOmanyteChamber
-	add_special BattleTowerAction
 	add_special Special_DisplayUnownWords
-	add_special Special_Menu_ChallengeExplanationCancel
 	add_special SpecialHoOhChamber
 	add_special Special_CelebiShrineEvent
 	add_special CheckCaughtCelebi
@@ -153,7 +146,17 @@ SpecialsPointers:: ; c029
 	add_special Special_InitialSetDSTFlag
 	add_special Special_InitialClearDSTFlag
 
+; Battle Tower
+	add_special Special_InitBattleTowerChallengeRAM
+	add_special BattleTowerBattle
+	add_special Function_LoadOpponentTrainerAndPokemonsWithOTSprite
+	add_special SpecialCheckForBattleTowerRules
+	add_special BattleTowerAction
+	add_special Special_Menu_ChallengeExplanationCancel
+
 ; Polished Crystal
+	add_special WonderTrade
+	add_special RespawnOneOffs
 	add_special GiveShinyDittoEgg
 	add_special GiveMystriEgg
 	add_special MoveReminder
@@ -162,6 +165,7 @@ SpecialsPointers:: ; c029
 	add_special BillBoxSwitch
 	add_special SpecialNone
 ; c224
+
 
 SpecialNone: ; c224
 	ret
@@ -381,12 +385,6 @@ Special_CheckCoins: ; c3ae
 	db "@"
 ; 0xc3db
 
-Special_ClearBGPalettesBufferScreen: ; c3db
-	call ClearBGPalettes
-	call BufferScreen
-	ret
-; c3e2
-
 ScriptReturnCarry: ; c3e2
 	jr c, .carry
 	xor a
@@ -403,7 +401,6 @@ Special_ActivateFishingSwarm: ; c3fc
 	ld [wFishingSwarmFlag], a
 	ret
 ; c403
-
 
 StoreSwarmMapIndices:: ; c403
 	ld a, c
@@ -424,7 +421,6 @@ StoreSwarmMapIndices:: ; c403
 	ret
 ; c419
 
-
 SpecialCheckPokerus: ; c419
 ; Check if a monster in your party has Pokerus
 	callba CheckPokerus
@@ -444,6 +440,7 @@ Special_CheckLuckyNumberShowFlag: ; c434
 	jp ScriptReturnCarry
 ; c43d
 
+
 SpecialSnorlaxAwake: ; 0xc43d
 ; Check if the Poké Flute channel is playing.
 
@@ -462,22 +459,18 @@ SpecialSnorlaxAwake: ; 0xc43d
 	ld [ScriptVar], a
 	ret
 
-
 PlayCurMonCry: ; c472
 	ld a, [CurPartySpecies]
 	jp PlayCry
 ; c478
 
-
 SpecialGameboyCheck: ; c478
 	ld a, [hCGB]
 	and a
 	jr nz, .cgb
-
 	ld a, [hSGB]
 	and a
 	jr nz, .sgb
-
 .gb
 	xor a
 	jr .done
@@ -489,7 +482,6 @@ SpecialGameboyCheck: ; c478
 .done
 	ld [ScriptVar], a
 	ret
-
 
 Special_FadeOutMusic: ; c48f
 	ld a, MUSIC_NONE % $100
@@ -507,6 +499,149 @@ Diploma: ; c49f
 	call ExitAllMenus
 	ret
 ; c4ac
+
+
+RespawnOneOffs:
+	ld a, ARTICUNO
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtArticuno
+	ld de, EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtArticuno:
+	ld a, ZAPDOS
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtZapdos
+	ld de, EVENT_ROUTE_10_ZAPDOS
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_ZAPDOS_GONE
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtZapdos:
+	ld a, MOLTRES
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtMoltres
+	ld de, EVENT_CINNABAR_VOLCANO_MOLTRES
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtMoltres:
+	ld a, MEWTWO
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtMewtwo
+	ld de, EVENT_CERULEAN_CAVE_MEWTWO
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtMewtwo
+	ld a, MEW
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtMew
+	ld de, EVENT_FARAWAY_JUNGLE_MEW
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtMew
+	ld a, RAIKOU
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtRaikou
+	ld hl, wRoamMon1Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtRaikou
+	ld a, RAIKOU
+	ld [wRoamMon1Species], a
+	ld a, 50
+	ld [wRoamMon1Level], a
+	ld a, GROUP_ROUTE_42
+	ld [wRoamMon1MapGroup], a
+	ld a, MAP_ROUTE_42
+	ld [wRoamMon1MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon1HP], a
+
+.CaughtRaikou:
+	ld a, ENTEI
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtEntei
+	ld hl, wRoamMon2Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtEntei
+	ld a, ENTEI
+	ld [wRoamMon2Species], a
+	ld a, 50
+	ld [wRoamMon2Level], a
+	ld a, GROUP_ROUTE_37
+	ld [wRoamMon2MapGroup], a
+	ld a, MAP_ROUTE_37
+	ld [wRoamMon2MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon2HP], a
+
+.CaughtEntei:
+	ld de, EVENT_FOUGHT_SUICUNE
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .CaughtSuicune
+	ld a, SUICUNE
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtSuicune
+	ld hl, wRoamMon3Species
+	ld a, [hl]
+	and a
+	jr nz, .CaughtSuicune
+	ld a, SUICUNE
+	ld [wRoamMon3Species], a
+	ld a, 50
+	ld [wRoamMon3Level], a
+	ld a, GROUP_ROUTE_38
+	ld [wRoamMon3MapGroup], a
+	ld a, MAP_ROUTE_38
+	ld [wRoamMon3MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon3HP], a
+
+.CaughtSuicune:
+	ld a, LUGIA
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtLugia
+	ld de, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_FOUGHT_LUGIA
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtLugia:
+	ld a, HO_OH
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtHoOh
+	ld de, EVENT_TIN_TOWER_ROOF_HO_OH
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_FOUGHT_HO_OH
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtHoOh
+	ret
+
 
 BillBoxSwitchCheck:
 	ld a, [wCurBox]
@@ -544,6 +679,7 @@ BillBoxSwitchCheck:
 	ld [ScriptVar], a
 	ld [EngineBuffer1], a
 	ret
+
 
 BillBoxSwitch:
 	ld hl, wc608

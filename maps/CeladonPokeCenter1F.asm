@@ -39,7 +39,8 @@ CeladonEusine:
 	cry RAIKOU
 	waitbutton
 	closepokepic
-	sawpokemon RAIKOU
+	writebyte RAIKOU
+	special SpecialSeenMon
 	opentext
 	writetext NoBeastsText2
 	waitbutton
@@ -49,7 +50,8 @@ CeladonEusine:
 	cry ENTEI
 	waitbutton
 	closepokepic
-	sawpokemon ENTEI
+	writebyte ENTEI
+	special SpecialSeenMon
 	opentext
 	writetext NoBeastsText3
 	waitbutton
@@ -59,7 +61,8 @@ CeladonEusine:
 	cry SUICUNE
 	waitbutton
 	closepokepic
-	sawpokemon SUICUNE
+	writebyte SUICUNE
+	special SpecialSeenMon
 	opentext
 	writetext NoBeastsText4
 	waitbutton
