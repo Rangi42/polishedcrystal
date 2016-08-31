@@ -41,7 +41,6 @@ Function17a6a8: ; 17a6a8 (5e:66a8)
 	pop de
 	call Function17a6f5
 	call Function17aba0
-	callba Function106464
 	call Function17ac0c
 	callba Function104000
 	call Function17abcf

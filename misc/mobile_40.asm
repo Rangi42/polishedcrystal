@@ -38,7 +38,6 @@ Function100022: ; 100022
 	ld a, b
 	ld [wcd24], a
 	callba Function10127e
-	callba Function106464 ; load broken gfx
 	callba Function11615a ; init RAM
 	ld hl, VramState
 	set 1, [hl]
@@ -314,7 +313,6 @@ Function10020b: ; 10020b
 	xor a
 	ld [wc303], a
 	callba FadeOutPalettes
-	callba Function106464
 	call HideSprites
 	call DelayFrame
 
@@ -332,7 +330,6 @@ Function10020b: ; 10020b
 
 Function100232: ; 100232
 	push de
-	callba Function106464
 	call Function3f20
 	call UpdateSprites
 	hlcoord 1, 2
@@ -435,7 +432,6 @@ Function100301: ; 100301
 	ld hl, wcd2a
 	bit 1, [hl]
 	ret z
-	callba Function106464
 	callba Function10202c
 	callba Function115dd3
 	call Function100320
@@ -2275,7 +2271,6 @@ Function1013aa: ; 1013aa
 	call ClearBGPalettes
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
-	callba Function106464
 	call UpdateSprites
 	call FinishExitMenu
 	ret
@@ -2283,7 +2278,6 @@ Function1013aa: ; 1013aa
 
 Function1013c0: ; 1013c0
 	callba BlankScreen
-	callba Function106464
 	call FinishExitMenu
 	ret
 ; 1013d6

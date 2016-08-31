@@ -244,31 +244,6 @@ endr
 	ret
 ; 10630f
 
-Function106464:: ; 106464
-	ld de, MobilePhoneTilesGFX
-	ld hl, VTiles2 tile $60
-	lb bc, BANK(MobilePhoneTilesGFX), 1
-	call Get2bpp
-	ld de, GFX_f9424
-	ld hl, VTiles2 tile $61
-	lb bc, BANK(GFX_f9424), 1
-	call Get2bpp
-	ld de, GFX_106514
-	ld hl, VTiles2 tile $62
-	ld c, 9
-	ld b, BANK(GFX_106514)
-	call Get2bpp
-	ld de, $40b0
-	ld hl, VTiles2 tile $6b
-	ld b, $f ; XXX no graphics at 0f:40b0
-	call Get2bpp
-	callba LoadFrame
-	ret
-; 10649b
-
-GFX_106514:
-INCBIN "gfx/unknown/106514.2bpp"
-
 LoadOverworldFont:: ; 106594
 	ld de, .bgfont
 	ld hl, VTiles1

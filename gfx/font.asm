@@ -48,25 +48,13 @@ TownMapGFX: ; f8ba0
 INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
 
-OverworldPhoneIconGFX: ; f8f24
-INCBIN "gfx/mobile/overworld_phone_icon.2bpp"
-; f8f34
-
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.2bpp"
 ; f9214
 
-MobilePhoneTilesGFX: ; f9214
-INCBIN "gfx/mobile/phone_tiles.2bpp"
-; f9344
-
 MapEntryFrameGFX: ; f9344
 INCBIN "gfx/frames/map_entry_sign.2bpp"
 ; f9424
-
-GFX_f9424: ; f9424
-INCBIN "gfx/unknown/0f9424.2bpp"
-; f9434
 
 Footprints: ; f9434
 INCBIN "gfx/misc/footprints.1bpp"
@@ -99,30 +87,13 @@ _LoadStandardFont:: ; fb449
 	ret
 ; fb48a
 
-_LoadFontsExtra1:: ; fb48a
-	ld de, MobilePhoneTilesGFX
-	ld hl, VTiles2 tile $60
-	lb bc, BANK(MobilePhoneTilesGFX), 1
-	call Get1bpp_2
-	ld de, OverworldPhoneIconGFX
-	ld hl, VTiles2 tile $62
-	lb bc, BANK(OverworldPhoneIconGFX), 1
-	call Get2bpp_2
+_LoadFontsExtra:: ; fb48a
 	ld de, FontExtra + 3 * LEN_2BPP_TILE
 	ld hl, VTiles2 tile $63
 	lb bc, BANK(FontExtra), $16
 	call Get2bpp_2
 	jr LoadFrame
 ; fb4b0
-
-_LoadFontsExtra2:: ; fb4b0
-	ld de, GFX_f9424
-	ld hl, VTiles2 tile $61
-	ld b, BANK(GFX_f9424)
-	ld c, 1
-	call Get2bpp_2
-	ret
-; fb4be
 
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, FontBattleExtra
@@ -173,10 +144,6 @@ LoadHPBar: ; fb50d
 	ld de, ExpBarGFX
 	ld hl, VTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 9
-	call Get2bpp_2
-	ld de, MobilePhoneTilesGFX + 9 * LEN_2BPP_TILE
-	ld hl, VTiles2 tile $5e
-	lb bc, BANK(MobilePhoneTilesGFX), 2
 	call Get2bpp_2
 	ret
 ; fb53e

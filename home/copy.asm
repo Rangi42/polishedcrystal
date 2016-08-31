@@ -110,14 +110,10 @@ OldDMATransfer:: ; dfd
 	ret
 ; e4a
 
-
-
 ReplaceKrisSprite:: ; e4a
 	callba _ReplaceKrisSprite
 	ret
 ; e51
-
-
 
 LoadStandardFont:: ; e51
 	callba _LoadStandardFont
@@ -129,18 +125,10 @@ LoadFontsBattleExtra:: ; e58
 	ret
 ; e5f
 
-
-
 LoadFontsExtra:: ; e5f
-	callba _LoadFontsExtra1
-	callba _LoadFontsExtra2
+	callba _LoadFontsExtra
 	ret
 ; e6c
-
-LoadFontsExtra2:: ; e6c
-	callba _LoadFontsExtra2
-	ret
-; e73
 
 DecompressRequest2bpp:: ; e73
 	push de

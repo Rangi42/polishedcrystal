@@ -273,7 +273,6 @@ Function1183cb: ; 1183cb
 	ld [hMobileReceive], a
 	ld [hMobile], a
 	ei
-	callba Function106464
 	callba Function115d99
 	callba Function11615a
 	ld a, $5
