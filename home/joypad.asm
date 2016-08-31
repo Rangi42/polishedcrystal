@@ -101,7 +101,7 @@ endr
 ; For example, soft reset:
 	and A_BUTTON | B_BUTTON | SELECT | START
 	cp  A_BUTTON | B_BUTTON | SELECT | START
-	jp z, Reset
+	jp z, SoftReset
 
 	ret
 ; 984

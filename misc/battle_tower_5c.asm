@@ -1,15 +1,9 @@
-Function1700b0: ; 1700b0
+Special_InitBattleTowerChallengeRAM: ; 1700b0
 ; special
 	call InitBattleTowerChallengeRAM
 	callba Function118121
 	ret
 ; 1700ba
-
-Function1700ba: ; 1700ba
-	call InitBattleTowerChallengeRAM
-	callba Function11811a
-	ret
-; 1700c4
 
 Function1700c4: ; 1700c4
 	ld a, [rSVBK]
@@ -1303,10 +1297,6 @@ Function_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_VALERIE
 	db SPRITE_SABRINA
 
-ret_170bd2: ; 170bd2
-	ret
-; 170bd3
-
 SpecialCheckForBattleTowerRules: ; 170bd3
 	callba CheckForBattleTowerRules
 	jr c, .asm_170bde
@@ -1320,3 +1310,28 @@ SpecialCheckForBattleTowerRules: ; 170bd3
 	ld [ScriptVar], a
 	ret
 ; 170be4
+
+Clears5_a89a: ; 170bf7
+	ld a, $5
+	call GetSRAMBank
+	ld hl, $a89a
+	xor a
+	ld [hli], a
+	ld [hl], a
+	call CloseSRAM
+	ret
+
+; 170c06
+
+Function170c8b: ; 170c8b
+	ld hl, LastPlayerCounterMove
+	ld b, $5
+.asm_170c90
+	ld a, [hl]
+	xor $ff
+	ld [hli], a
+	dec b
+	jr nz, .asm_170c90
+	ret
+
+; 170c98

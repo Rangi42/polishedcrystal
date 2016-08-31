@@ -41,7 +41,6 @@ ENDM
 	trigger_def AZALEA_TOWN,                            wAzaleaTownTrigger
 	trigger_def GOLDENROD_GYM,                          wGoldenrodGymTrigger
 	trigger_def GOLDENROD_MAGNET_TRAIN_STATION,         wGoldenrodMagnetTrainStationTrigger
-	trigger_def GOLDENROD_POKECOM_CENTER_1F,            wGoldenrodPokeComCenter1FTrigger
 	trigger_def OLIVINE_CITY,                           wOlivineCityTrigger
 	trigger_def ROUTE_34,                               wRoute34Trigger
 	trigger_def ROUTE_34_ILEX_FOREST_GATE,              wRoute34IlexForestGateTrigger
@@ -85,8 +84,6 @@ ENDM
 	trigger_def FAST_SHIP_1F,                           wFastShip1FTrigger
 	trigger_def FAST_SHIP_B1F,                          wFastShipB1FTrigger
 	trigger_def MOUNT_MOON_SQUARE,                      wMountMoonSquareTrigger
-	trigger_def MOBILE_TRADE_ROOM_MOBILE,               wMobileTradeRoomMobileTrigger
-	trigger_def MOBILE_BATTLE_ROOM,                     wMobileBattleRoomTrigger
 	trigger_def VERMILION_CITY,                         wVermilionCityTrigger
 	trigger_def SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateTrigger
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger

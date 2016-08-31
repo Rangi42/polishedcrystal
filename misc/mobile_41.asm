@@ -621,10 +621,6 @@ Mobile_AlwaysReturnNotCarry: ; 10632f
 	or a
 	ret
 
-MobileFunc_106462: mobile
-	ret
-; 106464
-
 Function106464:: ; 106464
 	ld de, MobilePhoneTilesGFX
 	ld hl, VTiles2 tile $60

@@ -78,7 +78,7 @@ Script_DontBattleNextOpponent: ; 0x9f483
 	playsound SFX_SAVE
 	waitsfx
 	special FadeOutPalettes
-	special Reset
+	special SoftReset
 Script_DontSaveAndEndTheSession: ; 0x9f4a3
 	writetext Text_CancelYourBattleRoomChallenge
 	yesorno

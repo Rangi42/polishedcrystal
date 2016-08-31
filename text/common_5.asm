@@ -27,37 +27,6 @@ UnknownText_0x1c50bb::
 	text "Darn!"
 	done
 
-_MobileStadiumEntryText::
-	text "Data for use in"
-	line "the Mobile Stadium"
-
-	para "of the N64 #mon"
-	line "Stadium 2 can be"
-	cont "read here."
-
-	para "Read the data?"
-	done
-
-_MobileStadiumSuccessText::
-	text "Data transfer is"
-	line "complete."
-	para "We hope you enjoy"
-	line "Mobile Stadium"
-	para "battles in the N64"
-	line "#mon Stadium 2."
-	para ""
-	done
-
-UnknownText_0x1c5196::
-	text "Delete the saved"
-	line "Log-In Password?"
-	done
-
-UnknownText_0x1c51b9::
-	text "Deleted the Log-In"
-	line "Password."
-	done
-
 UnknownText_0x1c51d7::
 	text "Pick three #mon"
 	line "for battle."

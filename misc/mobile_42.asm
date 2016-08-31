@@ -338,7 +338,6 @@ MobileTradeAnim_JumptableLoop: ; 10824b
 	ld [hWY], a
 	call LoadStandardFont
 	call LoadFontsBattleExtra
-	callba MobileFunc_106462
 	callba Function106464
 	scf
 	ret

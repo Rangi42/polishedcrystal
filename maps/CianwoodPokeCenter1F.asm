@@ -105,18 +105,6 @@ UnknownText_0x9ddf2:
 	line "in Violet."
 	done
 
-UnknownText_0x9de66:
-	text "I've been battling"
-	line "my pal in Violet"
-
-	para "using a Mobile"
-	line "Adapter link."
-
-	para "I'm down 5-7"
-	line "against him. I've"
-	cont "gotta crank it up!"
-	done
-
 UnknownText_0x9ded7:
 	text "I love showing off"
 	line "the #mon that"

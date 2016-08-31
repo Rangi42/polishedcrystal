@@ -396,128 +396,6 @@ UnknownText_0x62222:
 	line "younger!"
 	done
 
-GoldenrodPokeCenter1F_GSBallTriggerLeft:
-	writebyte BATTLETOWERACTION_CHECKMOBILEEVENT
-	special BattleTowerAction
-	if_equal MOBILE_EVENT_OBJECT_GS_BALL, .gsball
-	end
-
-; unused
-.gsball
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .cancel
-	playsound SFX_EXIT_BUILDING
-	moveperson GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST, $0, $7
-	disappear GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	appear GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	playmusic MUSIC_SHOW_ME_AROUND
-	applymovement GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST, MovementData_0x6105a
-	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x622f0
-	waitbutton
-	verbosegiveitem GS_BALL
-	setevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
-	writetext UnknownText_0x62359
-	waitbutton
-	closetext
-	applymovement GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST, MovementData_0x61060
-	special RestartMapMusic
-	disappear GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	playsound SFX_EXIT_BUILDING
-.cancel
-	end
-
-GoldenrodPokeCenter1F_GSBallTriggerRight:
-	writebyte BATTLETOWERACTION_CHECKMOBILEEVENT
-	special BattleTowerAction
-	if_equal MOBILE_EVENT_OBJECT_GS_BALL, .gsball
-	end
-
-; unused
-.gsball
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .cancel
-	playsound SFX_EXIT_BUILDING
-	moveperson GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST, $0, $7
-	disappear GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	appear GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	playmusic MUSIC_SHOW_ME_AROUND
-	applymovement GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST, MovementData_0x61065
-	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x622f0
-	waitbutton
-	verbosegiveitem GS_BALL
-	setevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
-	writetext UnknownText_0x62359
-	waitbutton
-	closetext
-	applymovement GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST, MovementData_0x6106c
-	special RestartMapMusic
-	disappear GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	playsound SFX_EXIT_BUILDING
-.cancel
-	end
-
-; unused
-MovementData_0x6105a:
-	step_up
-	step_right
-	step_right
-	step_right
-	turn_head_down
-	step_end
-
-; unused
-MovementData_0x61060:
-	step_left
-	step_left
-	step_left
-	step_down
-	step_end
-
-; unused
-MovementData_0x61065:
-	step_up
-	step_right
-	step_right
-	step_right
-	step_right
-	turn_head_down
-	step_end
-
-; unused
-MovementData_0x6106c:
-	step_left
-	step_left
-	step_left
-	step_left
-	step_down
-	step_end
-
-; unused
-UnknownText_0x622f0:
-	text "<PLAYER>, isn't it?"
-
-	para "Congratulations!"
-
-	para "As a special deal,"
-	line "a GS Ball has been"
-	cont "sent just for you!"
-
-	para "Please accept it!"
-	done
-
-; unused
-UnknownText_0x62359:
-	text "Please do come"
-	line "again!"
-	done
-
-
 ScientistScript_0x625d1:
 	jumptextfaceplayer UnknownText_0x62674
 
@@ -528,117 +406,31 @@ ScientistScript_0x625d7:
 	jumptextfaceplayer UnknownText_0x62795
 
 Computer0Script:
-	opentext
-	writetext UnknownText_0x627ee
-	waitbutton
-UnknownScript_0x625df:
-	reloadmappart
-	loadmenudata MenuDataHeader_0x62602
-	verticalmenu
-	closewindow
-	if_equal $1, UnknownScript_0x625f0
-	if_equal $2, UnknownScript_0x625f8
-	jump UnknownScript_0x62600
-
-UnknownScript_0x625f0:
-	opentext
-	writetext UnknownText_0x62828
-	waitbutton
-	jump UnknownScript_0x625df
-
-UnknownScript_0x625f8:
-	opentext
-	writetext UnknownText_0x628f4
-	waitbutton
-	jump UnknownScript_0x625df
-
-UnknownScript_0x62600:
-	closetext
-	end
-
-
-MenuDataHeader_0x62602:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 08, 15 ; end coords
-	dw MenuData2_0x6260a
-	db 1 ; default option
-
-MenuData2_0x6260a:
-	db $80 ; flags
-	db 3 ; items
-	db "#Com Club@"
-	db "Mobile Center@"
-	db "Quit@"
-
+	jumptext UnknownText_0x627ee
 
 Computer1Script:
-	opentext
-	writetext UnknownText_0x62989
-	waitbutton
-UnknownScript_0x62629:
-	reloadmappart
-	loadmenudata MenuDataHeader_0x6264c
-	verticalmenu
-	closewindow
-	if_equal $1, UnknownScript_0x6263a
-	if_equal $2, UnknownScript_0x62642
-	jump UnknownScript_0x6264a
-
-UnknownScript_0x6263a:
-	opentext
-	writetext UnknownText_0x629ae
-	waitbutton
-	jump UnknownScript_0x62629
-
-UnknownScript_0x62642:
-	opentext
-	writetext UnknownText_0x62a5a
-	waitbutton
-	jump UnknownScript_0x62629
-
-UnknownScript_0x6264a:
-	closetext
-	end
-
-
-MenuDataHeader_0x6264c:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 08, 15 ; end coords
-	dw MenuData2_0x62654
-	db 1 ; default option
-
-MenuData2_0x62654:
-	db $80 ; flags
-	db 3 ; items
-	db "Instructions@"
-	db "Troubleshoot@"
-	db "Quit@"
-
+	jumptext UnknownText_0x62989
 
 Computer2Script:
 	jumptext UnknownText_0x62b26
 
 UnknownText_0x62674:
 	text "#Com Center and"
-	line "Mobile Center were"
+	line "its Wonder Trade"
 
-	para "built to satisfy"
-	line "demands for trades"
+	para "Hub were built to"
+	line "satisfy demand for"
 
-	para "and battles with"
-	line "trainers far away"
-
-	para "and with total"
-	line "strangers."
+	para "trading with"
+	line "people far away."
 	done
 
 UnknownText_0x626f9:
-	text "When you linked"
-	line "with someone by"
+	text "When you traded"
+	line "with someone"
+	cont "in another region"
 
-	para "mobile phone for"
+	para "wirelessly for"
 	line "the first time,"
 
 	para "weren't you"
@@ -647,7 +439,7 @@ UnknownText_0x626f9:
 	para "When my first try"
 	line "worked, I was so"
 
-	para "impressed that I"
+	para "amazed that I"
 	line "got the shakes!"
 	done
 
@@ -661,91 +453,11 @@ UnknownText_0x62795:
 	done
 
 UnknownText_0x627ee:
-	text "It's a notice"
-	line "about where Mobile"
-
-	para "Adapters are to be"
-	line "used…"
-	done
-
-UnknownText_0x62828:
-	text "There's a #Com"
-	line "Club upstairs in"
-
-	para "any #mon"
-	line "Center."
-
-	para "There, you can"
-	line "battle or trade"
-
-	para "with a friend far"
-	line "away by using a"
-	cont "Mobile Adapter."
-
-	para "To link up, your"
-	line "friend must have"
-
-	para "the same kind of"
-	line "Mobile Adapter as"
-	cont "you."
-	done
-
-UnknownText_0x628f4:
-	text "To use the Trade"
-	line "Corner or read the"
-
-	para "#mon News, you"
-	line "need to phone the"
-	cont "Mobile Center."
-
-	para "You must register"
-	line "at the Mobile"
-
-	para "Center before"
-	line "connecting there."
+	text "TODO"
 	done
 
 UnknownText_0x62989:
-	text "It's a notice"
-	line "about using the"
-	cont "phone…"
-	done
-
-UnknownText_0x629ae:
-	text "Please ensure that"
-	line "your phone and"
-
-	para "Mobile Adapter are"
-	line "properly linked."
-
-	para "Please make sure"
-	line "the wireless phone"
-	cont "signal is strong."
-
-	para "Don't touch or"
-	line "hang up the phone"
-	cont "while linking."
-	done
-
-UnknownText_0x62a5a:
-	text "If the server is"
-	line "busy, it may not"
-
-	para "be possible to log"
-	line "on."
-
-	para "If so, please call"
-	line "back later."
-
-	para "If you are unable"
-	line "to log on or don't"
-
-	para "understand the"
-	line "error messages,"
-
-	para "call a support"
-	line "center or read the"
-	cont "instructions."
+	text "TODO"
 	done
 
 UnknownText_0x62b26:
@@ -790,10 +502,7 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	warp_def $1f, $1, 3, GOLDENROD_POKECOM_CENTER_1F
 
 .XYTriggers:
-	db 2
-	xy_trigger 0, $f, $6, $0, GoldenrodPokeCenter1F_GSBallTriggerLeft, $0, $0
-	xy_trigger 0, $f, $7, $0, GoldenrodPokeCenter1F_GSBallTriggerRight, $0, $0
-
+	db 0
 
 .Signposts:
 	db 19

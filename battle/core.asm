@@ -8764,11 +8764,11 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	db "  ---  <LNBRK>"
 	db "         -    -    -@"
 .Record: ; 3f964
-	db "<PLAYER>'s RECORD@"
+	db "<PLAYER>'s Record@"
 .Result: ; 3f96e
-	db "RESULT WIN LOSE DRAW@"
+	db "Result Win Lose Draw@"
 .Total: ; 3f983
-	db "TOTAL  WIN LOSE DRAW@"
+	db "Total  Win Lose Draw@"
 ; 3f998
 
 

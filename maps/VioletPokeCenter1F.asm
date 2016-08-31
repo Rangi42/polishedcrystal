@@ -159,29 +159,6 @@ UnknownText_0x69712:
 	line "take the Egg?"
 	done
 
-UnknownText_0x6972d:
-	text "I've been thinking"
-	line "it'd be great to"
-
-	para "be able to link up"
-	line "and battle with my"
-
-	para "friends who live"
-	line "far away."
-	done
-
-UnknownText_0x69791:
-	text "I just battled a"
-	line "friend in Cianwood"
-	cont "over a link."
-
-	para "If you connect a"
-	line "Mobile Adapter,"
-
-	para "you can link with"
-	line "a friend far away."
-	done
-
 UnknownText_0x69809:
 	text "A guy named Bill"
 	line "made the #mon"

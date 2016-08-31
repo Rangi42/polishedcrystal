@@ -428,7 +428,7 @@ FinishContinueFunction: ; 5e5d
 	ld a, [wSpawnAfterChampion]
 	cp SPAWN_LEAF
 	jr z, .AfterLeaf
-	jp Reset
+	jp SoftReset
 
 .AfterLeaf:
 	call SpawnAfterLeaf

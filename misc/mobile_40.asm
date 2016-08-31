@@ -38,7 +38,6 @@ Function100022: ; 100022
 	ld a, b
 	ld [wcd24], a
 	callba Function10127e
-	callba MobileFunc_106462
 	callba Function106464 ; load broken gfx
 	callba Function11615a ; init RAM
 	ld hl, VramState
@@ -2105,12 +2104,6 @@ Function1011e8: ; 1011e8
 	ret
 ; 1011f1
 
-Function101220: ; 101220
-	xor a
-	ld [wLinkMode], a
-	ret
-; 101225
-
 Function101225: ; 101225
 	ld d, 1
 	ld e, BANK(Jumptable_101297)
@@ -2356,7 +2349,6 @@ Function1013aa: ; 1013aa
 
 Function1013c0: ; 1013c0
 	callba BlankScreen
-	callba MobileFunc_106462
 	callba Function106464
 	call FinishExitMenu
 	ret

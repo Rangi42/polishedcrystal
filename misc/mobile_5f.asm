@@ -556,7 +556,7 @@ Function17d2ce: ; 17d2ce
 	call Function17d45a
 	pop af
 	ld [rSVBK], a
-	ld de, MUSIC_MOBILE_CENTER
+	ld de, MUSIC_POKECOM_CENTER
 	ld a, e
 	ld [wMapMusic], a
 	ld [MusicFadeIDLo], a
@@ -672,12 +672,6 @@ Function17d370: ; 17d370
 	call CloseSRAM
 	ret
 ; 17d3f6
-
-Function17d3f6: ; 17d3f6
-	call ClearBGPalettes
-	call ClearSprites
-	call ClearScreen
-	callba ReloadMapPart
 
 Function17d405:
 	call DisableLCD

@@ -77,31 +77,6 @@ Function17005a: ; 17005a
 
 INCLUDE "misc/battle_tower_5c.asm"
 
-Clears5_a89a: ; 170bf7
-	ld a, $5
-	call GetSRAMBank
-	ld hl, $a89a
-	xor a
-	ld [hli], a
-	ld [hl], a
-	call CloseSRAM
-	ret
-
-; 170c06
-
-Function170c8b: ; 170c8b
-	ld hl, LastPlayerCounterMove
-	ld b, $5
-.asm_170c90
-	ld a, [hl]
-	xor $ff
-	ld [hli], a
-	dec b
-	jr nz, .asm_170c90
-	ret
-
-; 170c98
-
 Function170cc6: ; 170cc6
 	ld a, [rSVBK]
 	push af
@@ -153,42 +128,7 @@ INCBIN "gfx/unknown/1715a4.2bpp.lz"
 GFX_171848:
 INCBIN "gfx/unknown/171848.2bpp"
 
-Function171b42: ; 171b42 (5c:5b42)
-	ld a, [de]
-	inc de
-	and a
-	ret z
-	sub $20
-	ld [hli], a
-	jr Function171b42
-
 ; 171c6b (5c:5c6b)
-
-Function171c87: ; 171c87 (5c:5c87)
-	call DisableLCD
-	ld hl, GFX_171db1
-	ld de, VTiles2 tile $00
-	ld bc, $6e0
-	call CopyBytes
-	ld hl, LZ_172abd
-	ld de, VTiles0 tile $00
-	call Decompress
-	call EnableLCD
-	ld hl, Tilemap_172491
-	decoord 0, 0
-	ld bc, $168
-	call CopyBytes
-	ld hl, Attrmap_1727ed
-	decoord 0, 0, AttrMap
-	ld bc, $168
-	call CopyBytes
-	hlcoord 3, 2
-	ld de, String_172e31
-	call PlaceString
-	hlcoord 3, 16
-	ld de, String_172e3f
-	call PlaceString
-	ret
 
 Function171ccd: ; 171ccd (5c:5ccd)
 	ld a, [rSVBK]
@@ -208,34 +148,6 @@ Function171ccd: ; 171ccd (5c:5ccd)
 	pop af
 	ld [rSVBK], a
 	ret
-
-Function171cf0: ; 171cf0 (5c:5cf0)
-	xor a
-	hlcoord 4, 15
-rept 2
-	ld [hli], a
-endr
-	ld a, [wcd4b]
-	xor $1
-	ld [wcd4b], a
-	and a
-	jr nz, .asm_171d16
-	ld hl, Tilemap_17251d
-	decoord 0, 7
-	ld bc, $8c
-	call CopyBytes
-	hlcoord 3, 16
-	ld de, String_172e3f
-	jp PlaceString
-
-.asm_171d16
-	ld hl, Tilemap_1725f9
-	decoord 0, 7
-	ld bc, $8c
-	call CopyBytes
-	hlcoord 3, 16
-	ld de, String_172e4e
-	jp PlaceString
 
 Palette_171d71:
 	RGB  0,  0,  0
@@ -270,27 +182,6 @@ Palette_171d71:
 	RGB 21, 21, 20
 	RGB 11, 11, 10
 	RGB  0,  0,  0
-GFX_171db1:
-INCBIN "gfx/unknown/171db1.2bpp"
-Tilemap_172491:
-INCBIN "gfx/unknown/172491.tilemap"
-Tilemap_17251d:
-INCBIN "gfx/unknown/17251d.tilemap"
-Tilemap_1725f9:
-INCBIN "gfx/unknown/1725f9.tilemap"
-Attrmap_1727ed:
-INCBIN "gfx/unknown/1727ed.attrmap"
-LZ_172abd:
-INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
-
-String_172e31: ; 172e31
-	db "パスワード", $1f, "いれてください@"
-String_172e3f: ; 172e3f
-	db "きりかえ やめる  けってい@"
-String_172e4e: ; 172e4e
-	db "きりかえ やめる  "
-; 172e78
-
 
 Function172e78: ; 172e78 (5c:6e78)
 	ld a, $7f

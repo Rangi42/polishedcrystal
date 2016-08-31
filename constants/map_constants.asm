@@ -385,12 +385,10 @@ MAP_NONE   EQU 0
 	mapgroup TRADE_CENTER,                                4,  5 ;  2
 	mapgroup COLOSSEUM,                                   4,  5 ;  3
 	mapgroup TIME_CAPSULE,                                4,  5 ;  4
-	mapgroup MOBILE_TRADE_ROOM_MOBILE,                    4,  5 ;  5
-	mapgroup MOBILE_BATTLE_ROOM,                          4,  5 ;  6
-	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  7
-	mapgroup YELLOW_FOREST,                              25, 29 ;  8
-	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  9
-	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 10
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  5
+	mapgroup YELLOW_FOREST,                              25, 29 ;  6
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  7
+	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  8
 
 	newgroup                                                    ; 21
 

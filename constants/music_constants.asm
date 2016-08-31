@@ -102,7 +102,7 @@
 	const MUSIC_BATTLE_TOWER_THEME           ; 63
 	const MUSIC_SUICUNE_BATTLE               ; 64
 	const MUSIC_BATTLE_TOWER_LOBBY           ; 65
-	const MUSIC_MOBILE_CENTER                ; 66
+	const MUSIC_POKECOM_CENTER               ; 66
 	const MUSIC_MART_HGSS                    ; 67
 	const MUSIC_CERULEAN_CITY_HGSS           ; 68
 	const MUSIC_CINNABAR_ISLAND_HGSS         ; 69

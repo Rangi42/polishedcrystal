@@ -448,7 +448,6 @@ Function1183cb: ; 1183cb
 	ld [hMobileReceive], a
 	ld [hMobile], a
 	ei
-	callba MobileFunc_106462
 	callba Function106464
 	callba Function115d99
 	callba Function11615a
@@ -3714,7 +3713,7 @@ Function119ed8: ; 119ed8 (46:5ed8)
 	dw Function119f45
 	dw Function119f56
 	dw Function119f76
-	dw Function119f98
+	dw Function11a970
 	dw Function11a113
 	dw Function11a129
 	dw Function11a131
@@ -3797,153 +3796,6 @@ Function119f76: ; 119f76
 	ld [wcd44], a
 	jp Function11a5b0
 ; 119f98
-
-Function119f98: ; 119f98
-	call Function11a536
-	ret c
-	call PlayClickSFX
-	ld a, [wcd44]
-	and a
-	jr nz, .asm_119fef
-	call ExitMenu
-	call Function11a63c
-	xor a
-	ld [ScriptVar], a
-	call Function11a00e
-	ld a, [ScriptVar]
-	and a
-	jr z, .asm_119fd4
-	call ExitMenu
-	callba ReloadMapPart
-	callba Function115dc3
-	ld a, [wcd33]
-	ld [wcf66], a
-	ld a, $a
-	ld [wc300], a
-	scf
-	ret
-
-.asm_119fd4
-	hlcoord 4, 2
-	ld de, String_11a692
-	call PlaceString
-	ld a, $1
-	ld [wc30d], a
-	ld a, $1
-	ld [wc314], a
-	callba ReloadMapPart
-	and a
-	ret
-
-.asm_119fef
-	call ExitMenu
-	call ExitMenu
-	callba ReloadMapPart
-	ld a, [wcd45]
-	ld [wcf66], a
-	callba Function115dc3
-	ld a, $a
-	ld [wc300], a
-	scf
-	ret
-; 11a00e
-
-Function11a00e: ; 11a00e
-	ld a, $5
-	call GetSRAMBank
-	ld a, [sMobileLoginPassword]
-	and a
-	jr z, .asm_11a02a
-	ld a, [sMobileLoginPassword + 1]
-	call CloseSRAM
-	and a
-	ret nz
-	ld a, $5
-	call GetSRAMBank
-	xor a
-	ld [sMobileLoginPassword], a
-
-.asm_11a02a
-	call CloseSRAM
-	ld a, [BGMapPalBuffer]
-	and a
-	jr z, .asm_11a039
-	dec a
-	jr z, .asm_11a081
-	jp Function11a0ca
-
-.asm_11a039
-	ld a, $3
-	ld [rSVBK], a
-	ld hl, $c608
-	ld de, w3_d800
-	ld bc, $00f6
-	call CopyBytes
-	ld a, $1
-	ld [rSVBK], a
-	call FadeToMenu
-	callba Function11765d
-	call Function11a9ce
-	ld a, $3
-	ld [rSVBK], a
-	ld hl, w3_d800
-	ld de, $c608
-	ld bc, $00f6
-	call CopyBytes
-	ld a, $1
-	ld [rSVBK], a
-	callba Function115d99
-	ld c, $0
-	callba Function115e18
-	ld a, $1
-	ld [wc305], a
-	ret
-
-.asm_11a081
-	xor a
-	ld [wMenuBorderLeftCoord], a
-	ld [wMenuBorderTopCoord], a
-	ld a, $13
-	ld [wMenuBorderRightCoord], a
-	ld a, $5
-	ld [wMenuBorderBottomCoord], a
-	call PushWindow
-	callba Function11765d
-	callba Function117ab4
-	callba MobileFunc_106462
-	callba Function106464
-	call ExitMenu
-	callba ReloadMapPart
-	callba Function115d99
-	ld c, $0
-	callba Function115e18
-	ld a, $1
-	ld [wc305], a
-	ret
-; 11a0ca
-
-Function11a0ca: ; 11a0ca
-	xor a
-	ld [wMenuBorderLeftCoord], a
-	ld [wMenuBorderTopCoord], a
-	ld a, $13
-	ld [wMenuBorderRightCoord], a
-	ld a, $11
-	ld [wMenuBorderBottomCoord], a
-	call PushWindow
-	callba Function11765d
-	callba Function17d3f6
-	callba MobileFunc_106462
-	callba Function106464
-	call ExitMenu
-	callba ReloadMapPart
-	callba Function115d99
-	ld c, $0
-	callba Function115e18
-	ld a, $1
-	ld [wc305], a
-	ret
-; 11a113
 
 Function11a113: ; 11a113
 	call Function11a63c
@@ -4679,11 +4531,6 @@ String_11a679: ; 11a679
 	next "できて いますか?@"
 ; 11a692
 
-String_11a692: ; 11a692
-	db   "でんわ", $1f, "かけています"
-	next "しばらく おまちください@"
-; 11a6aa
-
 String_11a6aa: ; 11a6aa
 	db   "でんわをかけると つうわりょう"
 	next "せつぞくりょう", $4a, "かかります@"
@@ -4903,7 +4750,6 @@ Function11a9ce: ; 11a9ce
 	call ClearBGPalettes
 	call ReloadTilesetAndPalettes
 	call Call_ExitMenu
-	callba MobileFunc_106462
 	callba Function106464
 	call ret_d90
 	callba FinishExitMenu

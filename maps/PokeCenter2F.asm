@@ -5,15 +5,13 @@ const_value set 2
 
 PokeCenter2F_MapScriptHeader:
 .MapTriggers:
-	db 6
+	db 4
 
 	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
 	maptrigger .Trigger3
-	maptrigger .Trigger4
-	maptrigger .Trigger5
 
 .MapCallbacks:
 	db 0
@@ -31,14 +29,6 @@ PokeCenter2F_MapScriptHeader:
 
 .Trigger3:
 	priorityjump Script_LeftTimeCapsule
-	end
-
-.Trigger4:
-	priorityjump Script_LeftMobileTradeRoom
-	end
-
-.Trigger5:
-	priorityjump Script_LeftMobileBattleRoom
 	end
 
 Script_TradeCenterClosed:
@@ -269,37 +259,11 @@ Script_LeftCableTradeCenter:
 	domaptrigger TRADE_CENTER, $0
 	end
 
-Script_LeftMobileTradeRoom:
-	special Function101220
-	scall Script_WalkOutOfMobileTradeRoom
-	dotrigger $0
-	domaptrigger MOBILE_TRADE_ROOM_MOBILE, $0
-	end
-
-Script_WalkOutOfMobileTradeRoom:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMobileMovementData_ReceptionistWalksUpAndLeft
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerWalksOutOfMobileRoom
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMobileMovementData_ReceptionistWalksRightAndDown
-	end
-
 Script_LeftCableColosseum:
 	special WaitForOtherPlayerToExit
 	scall Script_WalkOutOfLinkBattleRoom
 	dotrigger $0
 	domaptrigger COLOSSEUM, $0
-	end
-
-Script_LeftMobileBattleRoom:
-	special Function101220
-	scall Script_WalkOutOfMobileBattleRoom
-	dotrigger $0
-	domaptrigger MOBILE_BATTLE_ROOM, $0
-	end
-
-Script_WalkOutOfMobileBattleRoom:
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMobileMovementData_ReceptionistWalksUpAndLeft
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerWalksOutOfMobileRoom
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMobileMovementData_ReceptionistWalksRightAndDown
 	end
 
 PokeCenter2F_CheckGender:
@@ -570,24 +534,6 @@ PokeCenter2FMovementData_ReceptionistStepsLeftLooksRight:
 	turn_head_right
 	step_end
 
-PokeCenter2FMobileMovementData_ReceptionistWalksUpAndLeft:
-	slow_step_up
-	slow_step_left
-	turn_head_right
-	step_end
-
-PokeCenter2FMovementData_PlayerWalksOutOfMobileRoom:
-	step_down
-	step_left
-	step_down
-	step_down
-	step_end
-
-PokeCenter2FMobileMovementData_ReceptionistWalksRightAndDown:
-	slow_step_right
-	slow_step_down
-	step_end
-
 PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight:
 	turn_head_down
 	turn_head_left
@@ -796,13 +742,11 @@ PokeCenter2F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 6
+	db 4
 	warp_def $7, $0, -1, POKECENTER_2F
 	warp_def $0, $5, 1, TRADE_CENTER
 	warp_def $0, $9, 1, COLOSSEUM
 	warp_def $2, $d, 1, TIME_CAPSULE
-	warp_def $0, $6, 1, MOBILE_TRADE_ROOM_MOBILE
-	warp_def $0, $a, 1, MOBILE_BATTLE_ROOM
 
 .XYTriggers:
 	db 0

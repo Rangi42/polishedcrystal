@@ -2531,7 +2531,6 @@ wRoute36NationalParkGateTrigger::            ds 1 ; d98f
 wAzaleaTownTrigger::                         ds 1 ; d990
 wGoldenrodGymTrigger::                       ds 1 ; d991
 wGoldenrodMagnetTrainStationTrigger::        ds 1 ; d992
-wGoldenrodPokeComCenter1FTrigger::           ds 1 ; d993
 wOlivineCityTrigger::                        ds 1 ; d994
 wRoute34Trigger::                            ds 1 ; d995
 wRoute34IlexForestGateTrigger::              ds 1 ; d996
@@ -2575,8 +2574,6 @@ wVermilionPortTrigger::                      ds 1 ; d9bb
 wFastShip1FTrigger::                         ds 1 ; d9bc
 wFastShipB1FTrigger::                        ds 1 ; d9bd
 wMountMoonSquareTrigger::                    ds 1 ; d9be
-wMobileTradeRoomMobileTrigger::              ds 1 ; d9bf
-wMobileBattleRoomTrigger::                   ds 1 ; d9c0
 wVermilionCityTrigger::                      ds 1
 wSeagallopFerryVermilionGateTrigger::        ds 1
 wSeagallopFerryNavelGateTrigger::            ds 1
@@ -2590,7 +2587,7 @@ wGoldenrodCityTrigger::                      ds 1
 wMystriStageTrigger::                        ds 1
 wRoute10NorthTrigger::                       ds 1
 
-	ds 37
+	ds 40
 
 
 ;SECTION "Events", WRAMX, BANK [1]

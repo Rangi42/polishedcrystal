@@ -1,4 +1,4 @@
-Reset:: ; 150
+SoftReset:: ; 150
 	di
 	call MapSetup_Sound_Off
 	xor a

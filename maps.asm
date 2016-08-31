@@ -365,9 +365,8 @@ INCLUDE "maps/PokeCenter2F.asm"
 INCLUDE "maps/TradeCenter.asm"
 INCLUDE "maps/Colosseum.asm"
 INCLUDE "maps/TimeCapsule.asm"
-INCLUDE "maps/MobileTradeRoomMobile.asm"
-INCLUDE "maps/MobileBattleRoom.asm"
 INCLUDE "maps/TrainerHouseB1F.asm"
+; TODO: room here for a small map
 
 
 SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]

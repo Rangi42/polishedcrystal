@@ -124,37 +124,18 @@ SpecialsPointers:: ; c029
 	add_special Diploma
 
 	; Crystal
-	add_special Function11ac3e
-	add_special Function11b444
-	add_special Function11b5e8
-	add_special Function11b7e5
-	add_special Function11b879
-	add_special Function11b920
-	add_special Function11b93b
-	add_special Function1700b0
-	add_special Function1700ba
-	add_special Function170114
+	add_special Special_InitBattleTowerChallengeRAM
 	add_special BattleTowerBattle
-	add_special EmptySpecial_17021d
 	add_special Function_LoadOpponentTrainerAndPokemonsWithOTSprite
-	add_special Function11ba38
 	add_special SpecialCheckForBattleTowerRules
-	add_special Special_GiveOddEgg
-	add_special Reset
-	add_special Function101220
-	add_special Function101225
-	add_special Function101231
+	add_special GiveOddEgg
+	add_special SoftReset
 	add_special Special_MoveTutor
 	add_special SpecialOmanyteChamber
 	add_special BattleTowerAction
 	add_special Special_DisplayUnownWords
 	add_special Special_Menu_ChallengeExplanationCancel
-	add_special Function17d2b6
-	add_special Function17d2ce
-	add_special Function17f53d
-	add_special AskMobileOrCable
 	add_special SpecialHoOhChamber
-	add_special Function102142
 	add_special Special_CelebiShrineEvent
 	add_special CheckCaughtCelebi
 	add_special SpecialPokeSeer
@@ -166,14 +147,7 @@ SpecialsPointers:: ; c029
 	add_special SpecialBirdsCheck
 	add_special SpecialMonCheck
 	add_special Special_SetPlayerPalette
-	add_special ret_170bd2
-	add_special Mobile_SelectThreeMons
-	add_special Function1037eb
-	add_special Function10383c
 	add_special RefreshSprites
-	add_special Function1037c2
-	add_special Function103780
-	add_special Function10387b
 	add_special AskRememberPassword
 	add_special LoadMapPalettes
 	add_special Special_InitialSetDSTFlag
