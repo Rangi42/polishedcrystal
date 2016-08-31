@@ -20,7 +20,6 @@ _SlotMachine:
 	call PlaySFX
 	call WaitSFX
 	call ClearBGPalettes
-	callba MobileFn_105fd0
 	ld hl, Options
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC ; $ff40
@@ -1769,7 +1768,6 @@ SlotGetPayout: ; 93124 (24:7124)
 	ld a, [hl]
 	ld [wPayout], a
 	ld d, a
-	callba MobileFn_105fe3
 	ret
 
 .PayoutTable:
@@ -1793,7 +1791,6 @@ SlotPayoutText: ; 93158 (24:7158)
 	jr nz, .MatchedSomething
 	ld hl, .Text_Darn
 	call PrintText
-	callba MobileFn_105fd0
 	ret
 
 .MatchedSomething:
@@ -1817,7 +1814,6 @@ endr
 .return
 	ld hl, .Text_PrintPayout
 	call PrintText
-	callba MobileFn_105f9f
 	ret
 
 ; 93195 (24:7195)

@@ -2857,42 +2857,10 @@ Function8adcc: ; 8adcc
 ; 8addb
 
 Function8b342:: ; 8b342
-; Loads the secondary map header pointer, then runs through a
-; dw with three dummy functions.  Spends a lot of energy
-; doing pretty much nothing.
 	call GetSecondaryMapHeaderPointer
 	ld d, h
 	ld e, l
-
-; Everything between here and "ret" is useless.
-	xor a
-.loop
-	push af
-	ld hl, .dw
-	rst JumpTable
-	pop af
-	inc a
-	cp 3
-	jr nz, .loop
 	ret
-; 8b354
-
-.dw ; 8b354
-	dw .zero
-	dw .one
-	dw .two
-; 8b35a
-
-.zero ; 8b35a
-	mobile
-; 8b35b
-
-.one ; 8b35b
-	mobile
-; 8b35c
-
-.two ; 8b35c
-	mobile
 ; 8b35d
 
 Function8b36c: ; 8b36c (22:736c)

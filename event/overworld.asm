@@ -465,8 +465,6 @@ UsedSurfScript: ; c986
 	waitbutton
 	closetext
 
-	callasm .empty_fn ; empty function
-
 	copybytetovar Buffer2
 	writevarcode VAR_MOVEMENT
 
@@ -476,10 +474,6 @@ UsedSurfScript: ; c986
 	special Special_SurfStartStep ; (slow_step_x, step_end)
 	applymovement PLAYER, MovementBuffer ; PLAYER, MovementBuffer
 	end
-
-.empty_fn ; c9a2
-	callba MobileFn_1060bb ; empty
-	ret
 
 UsedSurfText: ; c9a9
 	text_jump _UsedSurfText
@@ -751,7 +745,6 @@ Script_UsedWaterfall: ; 0xcb20
 	ld a, [PlayerStandingTile]
 	call CheckWaterfallTile
 	ret z
-	callba MobileFn_1060c1
 	ld a, $1
 	ld [ScriptVar], a
 	ret

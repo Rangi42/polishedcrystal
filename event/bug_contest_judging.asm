@@ -1,6 +1,5 @@
 _BugContestJudging: ; 1369d
 	call ContestScore
-	callba MobileFn_105f79
 	call BugContest_JudgeContestants
 	ld a, [wBugContestThirdPlacePersonID]
 	call LoadContestantName

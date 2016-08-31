@@ -3198,8 +3198,6 @@ Script_halloffame: ; 97bd5
 
 	ld hl, GameTimerPause
 	res 0, [hl]
-	callba Mobile_HallOfFame
-	callba Mobile_HallOfFame2
 	callba HallOfFame
 	ld hl, GameTimerPause
 	set 0, [hl]

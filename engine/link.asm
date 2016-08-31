@@ -1963,7 +1963,6 @@ LinkTrade: ; 28b87
 
 .asm_28e63
 	callba Function14a58
-	callba MobileFn_1060af
 	callba BackupMobileEventIndex
 	ld c, 40
 	call DelayFrames

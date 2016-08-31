@@ -3,7 +3,6 @@ SECTION "Misc Crystal", ROMX, BANK[MISC_CRYSTAL]
 MobileAdapterGFX::
 INCBIN "gfx/misc/mobile_adapter.2bpp"
 
-
 Function17a68f:: ; 17a68f (5e:668f)
 	call Function17a6a8
 	call Function17a751

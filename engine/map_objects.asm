@@ -1541,7 +1541,6 @@ StepType05: ; 4e0c
 	ld [hl], a
 	call IncrementObjectStructField28
 StepType04: ; 4e21
-	call MobileFn_4fb2
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
 	ld [hl], STANDING
@@ -1549,7 +1548,6 @@ StepType04: ; 4e21
 ; 4e2b
 
 NPCStep: ; 4e2b
-	call MobileFn_4fb2
 	call AddStepVector
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -1812,27 +1810,6 @@ SkyfallTop: ; 4f83
 	ret
 ; 4fb2
 
-MobileFn_4fb2: mobile
-	ld hl, OBJECT_29
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	srl a
-	srl a
-	and %00000111
-	ld l, a
-	ld h, 0
-	ld de, .y
-	add hl, de
-	ld a, [hl]
-	ld hl, OBJECT_SPRITE_Y_OFFSET
-	add hl, bc
-	ld [hl], a
-	ret
-
-.y ; 4fcd
-	db 0, -1, -2, -3, -4, -3, -2, -1
-; 4fd5
 UpdateJumpPosition: ; 4fd5
 	call GetStepVector
 	ld a, h
@@ -1856,6 +1833,7 @@ UpdateJumpPosition: ; 4fd5
 	db  -4,  -6,  -8, -10, -11, -12, -12, -12
 	db -11, -10,  -9,  -8,  -6,  -4,   0,   0
 ; 5000
+
 Function5000: ; unscripted?
 ; copy [wPlayerNextMovement] to [wPlayerMovement]
 	ld a, [wPlayerNextMovement]

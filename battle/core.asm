@@ -8572,17 +8572,14 @@ DetermineMobileBattleResult: ; 3f77c
 	cp $1
 	jr c, .victory
 	jr z, .loss
-	callba MobileFn_SaveBattleResult_Draw
 	ld de, .Draw
 	jr .store_result
 
 .victory
-	callba MobileFn_SaveBattleResult_Win
 	ld de, .Win
 	jr .store_result
 
 .loss
-	callba MobileFn_SaveBattleResult_Lose
 	ld de, .Lose
 	jr .store_result
 

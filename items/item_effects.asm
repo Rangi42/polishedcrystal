@@ -509,8 +509,6 @@ endr
 	cp BATTLETYPE_TUTORIAL
 	jp z, .FinishTutorial
 
-	callba MobileFn_10607f
-
 	ld hl, Text_GotchaMonWasCaught
 	call PrintText
 

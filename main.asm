@@ -3121,7 +3121,6 @@ endr
 	ld a, [ScriptVar]
 	and a
 	ret z ; found nothing
-	callba MobileFn_1060cd
 	ld a, [wFoundMatchingIDInParty]
 	and a
 	push af

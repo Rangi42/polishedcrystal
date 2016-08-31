@@ -4588,7 +4588,6 @@ Function102423: ; 102423
 	call Function102921
 	ret nc
 	callba Function14a58
-	callba MobileFn_1060af
 	callba BackupMobileEventIndex
 	ld hl, wcd4b
 	set 1, [hl]
@@ -6904,7 +6903,7 @@ MenuData2_103648: ; 103648
 ; 103654
 
 Function103654: ; 103654
-	callba Mobile_AlwaysReturnNotCarry
+	or a
 	bit 7, c
 	jr nz, .asm_103666
 	ld hl, wcd2a

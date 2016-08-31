@@ -62,7 +62,7 @@ HandlePlayerStep: ; d4e5 (3:54e5)
 
 	dw GetMovementPermissions
 	dw BufferScreen
-	dw .mobile
+	dw .fail2
 	dw .fail2
 ; The rest are never used.  Ever.
 	dw .fail1
@@ -74,10 +74,6 @@ HandlePlayerStep: ; d4e5 (3:54e5)
 	dw .fail1
 
 .fail1 ; d508 (3:5508)
-	ret
-
-.mobile ; d509 (3:5509)
-	callba MobileFn_10602e
 	ret
 
 .fail2 ; d510 (3:5510)

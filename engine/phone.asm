@@ -472,7 +472,6 @@ UnknownScript_0x90261: ; 0x90261
 RingTwice_StartCall: ; 9026f
 	call .Ring
 	call .Ring
-	callba MobileFn_1060d3
 	ret
 ; 9027c
 
@@ -501,7 +500,6 @@ PhoneCall:: ; 9029a
 	ld [PhoneCallerHi], a
 	call Phone_FirstOfTwoRings
 	call Phone_FirstOfTwoRings
-	callba MobileFn_1060d3
 	ret
 ; 902b3
 
