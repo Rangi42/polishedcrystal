@@ -102,10 +102,6 @@ UnknownText_0x1c55ca::
 	text "Thank you!"
 	done
 
-UnknownText_0x1c55d6::
-	text "  :"
-	done
-
 UnknownText_0x1c55db::
 	text "Select Continue to"
 	line "set the time."

@@ -237,13 +237,6 @@ SentAllToMomText:
 	text "Sent all to Mom!"
 	prompt
 
-BattleText_0x80a4f: ; 0x80a4f
-	text "<RIVAL>: Huh? I"
-	line "should've chosen"
-	cont "your #mon!"
-	prompt
-; 0x80a75
-
 BattleText_PkmnFainted: ; 0x80a75
 	text_from_ram BattleMonNick
 	text ""
@@ -255,13 +248,6 @@ BattleText_UseNextMon: ; 0x80a83
 	text "Use next #mon?"
 	done
 ; 0x80a93
-
-BattleText_0x80a93: ; 0x80a93
-	text "<RIVAL>: Yes!"
-	line "I guess I chose a"
-	cont "good #mon!"
-	prompt
-; 0x80ab9
 
 LostAgainstText: ; 0x80ab9
 	text "Lost against"
@@ -538,18 +524,6 @@ WrappedByText: ; 0x80e44
 	prompt
 ; 0x80e59
 
-StoringEnergyText: ; 0x80e6e
-	text "<USER>"
-	line "is storing energy!"
-	prompt
-; 0x80e84
-
-UnleashedEnergyText: ; 0x80e84
-	text "<USER>"
-	line "unleashed energy!"
-	prompt
-; 0x80e99
-
 HungOnText: ; 0x80e99
 	text "<TARGET>"
 	line "hung on with"
@@ -719,8 +693,8 @@ NotVeryEffectiveText: ; 0x810c1
 
 TookDownWithItText: ; 0x810da
 	text "<TARGET>"
-	line "took down with it,"
-	cont "<USER>!"
+	line "took <USER>"
+	cont "down with it!"
 	prompt
 ; 0x810f3
 
@@ -771,7 +745,7 @@ SpiteEffectText: ; 0x8117f
 	text " was"
 	cont "reduced by @"
 	deciram wd265, 1, 1
-	text "!"
+	text " PP!"
 	prompt
 ; 0x811a0
 
@@ -952,15 +926,6 @@ SubFadedText: ; 0x813d0
 	prompt
 ; 0x813e6
 
-LearnedMoveText: ; 0x813e6
-	text "<USER>"
-	line "learned"
-	cont "@"
-	text_from_ram StringBuffer1
-	text "!"
-	prompt
-; 0x813f8
-
 WasSeededText: ; 0x813f8
 	text "<TARGET>"
 	line "was seeded!"
@@ -990,8 +955,8 @@ CoinsScatteredText: ; 0x81435
 
 TransformedTypeText: ; 0x81452
 	text "<USER>"
-	line "transformed into"
-	cont "the @"
+	line "became the"
+	cont "@"
 	text_from_ram StringBuffer1
 	text "-type!"
 	prompt
@@ -1066,8 +1031,8 @@ DraggedOutText: ; 0x81544
 
 ParalyzedText: ; 0x81558
 	text "<TARGET>'s"
-	line "paralyzed! Maybe"
-	cont "it can't attack!"
+	line "paralyzed! It"
+	cont "might not attack!"
 	prompt
 ; 0x8157d
 
@@ -1243,15 +1208,6 @@ BellyDrumText: ; 0x817d2
 	prompt
 ; 0x817f6
 
-CopiedStatsText: ; 0x817f6
-	text "<USER>"
-	line "copied the stat"
-
-	para "changes of"
-	line "<TARGET>!"
-	prompt
-; 0x81817
-
 ForesawAttackText: ; 0x81817
 	text "<USER>"
 	line "foresaw an attack!"
@@ -1276,17 +1232,3 @@ IgnoredOrders2Text: ; 0x81850
 	line "ignored orders!"
 	prompt
 ; 0x81863
-
-BattleText_LinkErrorBattleCanceled: ; 0x81863
-	text "Link error…"
-
-	para "The battle has"
-	line "been canceled…"
-	prompt
-; 0x8188e
-
-BattleText_0x8188e: ; 0x8188e
-	text "There is no time"
-	line "left today!"
-	done
-; 0x818ac

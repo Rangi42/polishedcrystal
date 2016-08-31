@@ -10,36 +10,6 @@ Function10804d: ; 10804d
 	mobiletradeanim_showgtsgetmon
 	mobiletradeanim_end
 
-RunMobileTradeAnim_Frontpics: ; 10805b
-	ld hl, wTradeAnimPointer
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld a, [hMapAnims]
-	push af
-	xor a
-	ld [hMapAnims], a
-	ld hl, VramState
-	ld a, [hl]
-	push af
-	res 0, [hl]
-	ld hl, Options
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	call Function1080b7
-.loop
-	call MobileTradeAnim_JumptableLoop
-	jr nc, .loop
-	pop af
-	ld [Options], a
-	pop af
-	ld [VramState], a
-	pop af
-	ld [hMapAnims], a
-	ret
-; 108089
-
 RunMobileTradeAnim_NoFrontpics: ; 108089
 	ld hl, wTradeAnimPointer
 	ld [hl], e
@@ -69,82 +39,6 @@ RunMobileTradeAnim_NoFrontpics: ; 108089
 	ld [hMapAnims], a
 	ret
 ; 1080b7
-
-Function1080b7: ; 1080b7
-	xor a
-	ld [wJumptableIndex], a
-	call ClearBGPalettes
-	call ClearSprites
-	call ClearTileMap
-	call DisableLCD
-	call MobileTradeAnim_ClearVTiles
-	call MobileTradeAnim_ClearBGMap
-	call LoadStandardFont
-	call LoadFontsBattleExtra
-
-	ld a, $1
-	ld [rVBK], a
-	ld hl, LZ_108da7
-	ld de, VTiles2
-	call Decompress
-
-	ld a, $0
-	ld [rVBK], a
-	ld hl, LZ_108d27
-	ld de, VTiles0 tile $20
-	call Decompress
-
-	call EnableLCD
-
-	xor a
-	ld [hSCX], a
-	ld [hSCY], a
-	ld a, $7
-	ld [hWX], a
-	ld a, $90
-	ld [hWY], a
-	callba ClearSpriteAnims
-
-	call DelayFrame
-
-	ld de, TradeBallGFX
-	ld hl, VTiles0
-	lb bc, BANK(TradeBallGFX), $06
-	call Request2bpp
-
-	ld de, TradePoofGFX
-	ld hl, VTiles0 tile $06
-	lb bc, BANK(TradePoofGFX), $0c
-	call Request2bpp
-
-	xor a
-	ld hl, wSpriteAnimDict
-	ld [hli], a
-	ld [hl], $0
-
-	ld a, [wPlayerTrademonSpecies]
-	ld hl, wPlayerTrademonDVs
-	ld de, VTiles0 tile $30
-	call MobileTradeAnim_GetFrontpic
-
-	ld a, [wOTTrademonSpecies]
-	ld hl, wOTTrademonDVs
-	ld de, VTiles2 tile $31
-	call MobileTradeAnim_GetFrontpic
-
-	ld a, [wPlayerTrademonSpecies]
-	ld de, wPlayerTrademonSpeciesName
-	call MobileTradeAnim_InitSpeciesName
-
-	ld a, [wOTTrademonSpecies]
-	ld de, wOTTrademonSpeciesName
-	call MobileTradeAnim_InitSpeciesName
-
-	xor a
-	call Function108b98
-	call Function108af4
-	ret
-; 108157
 
 Function108157: ; 108157
 	xor a

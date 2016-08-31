@@ -15,13 +15,6 @@ MG_Mobile_Layout_FillBox: ; 49336
 	ret
 ; 49346
 
-MG_Mobile_Layout_WipeAttrMap: ; 49346 (12:5346)
-	hlcoord 0, 0, AttrMap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	xor a
-	call ByteFill
-	ret
-
 MG_Mobile_Layout_LoadPals: ; 49351 (12:5351)
 	ld de, UnknBGPals
 	ld hl, Palette_493e1
@@ -115,32 +108,6 @@ Palette_TextBG7: ; 49418
 	RGB 05, 05, 16
 	RGB 00, 00, 00
 ; 49420
-
-Function49480: ; 49480
-	hlcoord 0, 0, AttrMap
-	lb bc, 4, SCREEN_WIDTH
-	ld a, $7
-	call MG_Mobile_Layout_FillBox
-	hlcoord 0, 2, AttrMap
-	ld a, $4
-	ld [hl], a
-	hlcoord 19, 2, AttrMap
-	ld [hl], a
-	ret
-; 49496
-
-Function49496: ; 49496
-	hlcoord 0, 0, AttrMap
-	lb bc, 2, SCREEN_WIDTH
-	ld a, $7
-	call MG_Mobile_Layout_FillBox
-	hlcoord 0, 1, AttrMap
-	ld a, $4
-	ld [hl], a
-	hlcoord 19, 1, AttrMap
-	ld [hl], a
-	ret
-; 494ac
 
 LoadSpecialMapPalette: ; 494ac
 	ld a, [wTileset]

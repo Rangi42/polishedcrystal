@@ -3913,7 +3913,6 @@ INCLUDE "engine/gbc_only.asm"
 INCLUDE "event/poke_seer.asm"
 
 INCLUDE "event/poisonstep.asm"
-INCLUDE "event/sweet_scent.asm"
 INCLUDE "event/squirtbottle.asm"
 INCLUDE "event/card_key.asm"
 INCLUDE "event/basement_key.asm"

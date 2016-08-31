@@ -161,56 +161,6 @@ UnknownText_0x1bc37a::
 	text ", is it?"
 	done
 
-UnknownText_0x1bc384::
-	text "There is nothing"
-	line "connected."
-	done
-
-UnknownText_0x1bc3a1::
-	text "Check cell phone"
-	line "adapter."
-	done
-
-UnknownText_0x1bc3bc::
-	text "Check CDMA"
-	line "adapter."
-	done
-
-UnknownText_0x1bc3d1::
-	text "Check DOCOMO PHS"
-	line "adapter."
-	done
-
-UnknownText_0x1bc3ec::
-	text "Check DDI PHS"
-	line "adapter."
-	done
-
-UnknownText_0x1bc404::
-	text "Check unlimited"
-	line "battle mobile"
-	cont "adapter."
-	done
-
-UnknownText_0x1bc42c::
-	text "The password is:"
-	line ""
-	done
-
-UnknownText_0x1bc43f::
-	text "Is this OK?"
-	done
-
-UnknownText_0x1bc44c::
-	text "Enter the"
-	line "ID no."
-	done
-
-UnknownText_0x1bc45e::
-	text "Enter the"
-	line "amount."
-	done
-
 UnknownText_0x1bc471::
 	text "There's nothing to"
 	line "choose."
