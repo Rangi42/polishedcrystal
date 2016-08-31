@@ -27,29 +27,6 @@ UnknownText_0x1c50bb::
 	text "Darn!"
 	done
 
-UnknownText_0x1c51d7::
-	text "Pick three #mon"
-	line "for battle."
-	prompt
-
-UnknownText_0x1c51f4::
-	text_from_ram wMobileParticipant1Nickname
-	text ","
-	line "@"
-	text_from_ram wMobileParticipant2Nickname
-	text " and"
-	cont "@"
-	text_from_ram wMobileParticipant3Nickname
-	text "."
-
-	para "Use these three?"
-	done
-
-UnknownText_0x1c521c::
-	text "Only three #mon"
-	line "may enter."
-	prompt
-
 UnknownText_0x1c5238::
 	text "The Card Folder"
 	line "stores your and"
@@ -315,11 +292,6 @@ UnknownText_0x1c591a::
 	line "back again!"
 	done
 
-UnknownText_0x1c5937::
-	text "Excuse me!"
-	para ""
-	done
-
 Text_ExcuseMeYoureNotReady::
 	text "Excuse me."
 	line "You're not ready."
@@ -329,18 +301,6 @@ Text_ExcuseMeYoureNotReady::
 UnknownText_0x1c5962::
 	text "Please return when"
 	line "you're ready."
-	done
-
-UnknownText_0x1c5983::
-	text "You need at least"
-	line "three #mon."
-	para ""
-	done
-
-UnknownText_0x1c59a3::
-	text "Sorry, an Egg"
-	line "doesn't qualify."
-	para ""
 	done
 
 Text_OnlyThreePkmnMayBeEntered::

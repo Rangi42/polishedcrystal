@@ -1,38 +1,3 @@
-MobileTradeAnimation_SendGivemonToGTS: ; 108000
-	ld a, $80
-	ld [wcf65], a
-	ld de, .TradeAnimScript
-	jp RunMobileTradeAnim_NoFrontpics
-; 10800b
-
-.TradeAnimScript:
-	mobiletradeanim_showgtsgivemon
-	mobiletradeanim_12
-	mobiletradeanim_10
-	mobiletradeanim_sendmon
-	mobiletradeanim_06
-	mobiletradeanim_0f
-	mobiletradeanim_end
-
-MobileTradeAnimation_RetrieveGivemonFromGTS:
-	ld a, $80
-	jr asm_108018
-
-MobileTradeAnimation_ReceiveGetmonFromGTS: ; 108016
-	ld a, $0
-asm_108018:
-	ld [wcf65], a
-	ld de, .TradeAnimScript
-	jp RunMobileTradeAnim_NoFrontpics
-; 108021
-
-.TradeAnimScript:
-	mobiletradeanim_11
-	mobiletradeanim_07
-	mobiletradeanim_receivemon
-	mobiletradeanim_showgtsgetmon
-	mobiletradeanim_end
-
 Function108026: ; 108026
 	ld a, $0
 	jr asm_10802c

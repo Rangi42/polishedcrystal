@@ -5903,7 +5903,7 @@ INCLUDE "engine/link_trade.asm"
 
 SECTION "bank5C", ROMX, BANK[$5C]
 
-INCLUDE "misc/mobile_5c.asm"
+INCLUDE "misc/battle_tower_5c.asm"
 
 SECTION "bank5D", ROMX, BANK[$5D]
 
