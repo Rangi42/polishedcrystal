@@ -1,25 +1,3 @@
-Function104000:: ; 104000
-	ld hl, .Function
-	jp CallInSafeGFXMode
-
-.Function:
-	decoord 0, 0, AttrMap
-	ld hl, wBackupAttrMap
-	call CutAndPasteAttrMap
-	decoord 0, 0
-	ld hl, wDecompressScratch
-	call CutAndPasteTilemap
-	ld a, $0
-	ld [rVBK], a
-	ld hl, wDecompressScratch
-	call Function10419d
-	ld a, $1
-	ld [rVBK], a
-	ld hl, wBackupAttrMap
-	call Function10419d
-	ret
-; 10402d
-
 Function10402d:: ; 10402d
 	ld hl, .Function
 	jp CallInSafeGFXMode

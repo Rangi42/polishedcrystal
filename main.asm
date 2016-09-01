@@ -6018,7 +6018,7 @@ INCBIN "gfx/unknown/17afa5.2bpp"
 
 SECTION "bank5F", ROMX, BANK[$5F]
 
-INCLUDE "misc/mobile_5f.asm"
+; unused bank!
 
 SECTION "Common Text 1", ROMX, BANK[$6C]
 

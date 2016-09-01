@@ -65,140 +65,15 @@ Function118180: ; 118180
 	ld a, $3
 	ld [rSVBK], a
 
-	ld de, w3_d202
-	ld c, $96
-	callba CheckStringForErrors_IgnoreTerminator
-	jr c, .return_d3
-
-	ld de, w3_d202
-	lb bc, 1, $96
-	callba CheckStringContainsLessThanBNextCharacters
-	jr c, .return_d3
-
 	ld hl, w3_d202
 	ld de, $a8b2
 	ld bc, $0096
 	call CopyBytes
-.reset_banks
 	pop af
 	ld [rSVBK], a
 	call CloseSRAM
 	ret
-
-.return_d3
-	ld a, $d3
-	ld [wc300], a
-	ld [ScriptVar], a
-	jr .reset_banks
 ; 1181da
-
-Function118233: ; 118233
-	call Function1183cb
-	ld a, $1b
-	ld [wcd33], a
-	ld a, $1c
-	ld [wcd34], a
-	ld a, $6
-	ld [wc3f0], a
-	ld a, [rSVBK]
-	push af
-	ld a, $3
-	ld [rSVBK], a
-.asm_11824c
-	call JoyTextDelay
-	call Function118473
-	ld a, [wcf66]
-	cp $1e
-	jr c, .asm_11825f
-	ld a, [wcd34]
-	ld [wcf66], a
-
-.asm_11825f
-	call Function11a8fa
-	callba Function115dd3
-	callba Function11619d
-	call DelayFrame
-	ld a, [wcf66]
-	ld hl, wcd33
-	cp [hl]
-	jr nz, .asm_11824c
-	pop af
-	ld [rSVBK], a
-	call Function118452
-	ret
-; 118284
-
-Function118329: ; 118329
-	call Function1183cb
-	ld a, $15
-	ld [wcd33], a
-	ld a, $16
-	ld [wcd34], a
-	ld a, $6
-	ld [wc3f0], a
-	ld a, [rSVBK]
-	push af
-	ld a, $3
-	ld [rSVBK], a
-.asm_118342
-	call JoyTextDelay
-	call Function118473
-	ld a, [wcf66]
-	cp $18
-	jr c, .asm_118355
-	ld a, [wcd34]
-	ld [wcf66], a
-
-.asm_118355
-	call Function11a8fa
-	callba Function115dd3
-	callba Function11619d
-	call DelayFrame
-	ld a, [wcf66]
-	ld hl, wcd33
-	cp [hl]
-	jr nz, .asm_118342
-	pop af
-	ld [rSVBK], a
-	call Function118452
-	ret
-; 11837a
-
-Function11837a: ; 11837a
-	call Function1183cb
-	ld a, $16
-	ld [wcd33], a
-	ld a, $17
-	ld [wcd34], a
-	ld a, $6
-	ld [wc3f0], a
-	ld a, [rSVBK]
-	push af
-	ld a, $3
-	ld [rSVBK], a
-.asm_118393
-	call JoyTextDelay
-	call Function118473
-	ld a, [wcf66]
-	cp $19
-	jr c, .asm_1183a6
-	ld a, [wcd34]
-	ld [wcf66], a
-
-.asm_1183a6
-	call Function11a8fa
-	callba Function115dd3
-	callba Function11619d
-	call DelayFrame
-	ld a, [wcf66]
-	ld hl, wcd33
-	cp [hl]
-	jr nz, .asm_118393
-	pop af
-	ld [rSVBK], a
-	call Function118452
-	ret
-; 1183cb
 
 Function1183cb: ; 1183cb
 	di

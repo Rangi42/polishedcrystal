@@ -202,42 +202,6 @@ Function8b81:
 	call LoadPalette_White_Col1_Col2_Black
 	ret
 
-Function8bbd:
-	ld a, [TrainerClass]
-	call GetTrainerPalettePointer
-	ld a, e
-	jr asm_8bd7
-
-Function8bc6:
-	ld a, [CurPartySpecies]
-	call GetMonPalettePointer
-	ld a, e
-	bit 7, a
-	jr z, .asm_8bd7
-	and $7f
-rept 4
-	inc hl
-endr
-.asm_8bd7
-
-asm_8bd7
-	push hl
-	ld hl, UnknBGPals
-	ld de, $8
-.asm_8bde
-	and a
-	jr z, .asm_8be5
-	add hl, de
-	dec a
-	jr .asm_8bde
-
-.asm_8be5
-	ld e, l
-	ld d, h
-	pop hl
-	call LoadPalette_White_Col1_Col2_Black
-	ret
-
 Function8bec:
 	ld a, [hCGB]
 	and a
