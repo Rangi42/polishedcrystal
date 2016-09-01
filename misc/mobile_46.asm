@@ -1216,7 +1216,7 @@ Function1198f7:
 ; 119937
 
 Function119937: ; 119937
-	callba Function1707f4
+	callba Special_BattleTower_Action06
 	jp Function119e2e
 ; 119940
 

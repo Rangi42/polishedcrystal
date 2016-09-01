@@ -25,7 +25,7 @@ Script_BattleRoom: ; 0x9f421
 ; beat all 7 opponents in a row
 Script_BattleRoomLoop: ; 0x9f425
 	writebyte BATTLETOWERBATTLEROOM_YOUNGSTER
-	special Function_LoadOpponentTrainerAndPokemonsWithOTSprite
+	special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
 	appear BATTLETOWERBATTLEROOM_YOUNGSTER
 	warpsound
 	waitsfx
@@ -34,7 +34,7 @@ Script_BattleRoomLoop: ; 0x9f425
 	battletowertext 1
 	buttonsound
 	closetext
-	special BattleTowerBattle ; calls predef startbattle
+	special Special_BattleTower_Battle ; calls predef startbattle
 	special FadeOutPalettes
 	reloadmap
 	if_not_equal $0, Script_FailedBattleTowerChallenge
@@ -46,7 +46,7 @@ Script_BattleRoomLoop: ; 0x9f425
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer
 	applymovement PLAYER, MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist
 	opentext
-	writetext Text_YourPkmnWillBeHealedToFullHealth
+	writetext Text_YourPokemonWillBeHealedToFullHealth
 	waitbutton
 	closetext
 	playmusic MUSIC_HEAL
@@ -69,12 +69,10 @@ Script_DontBattleNextOpponent: ; 0x9f483
 	writetext Text_SaveAndEndTheSession
 	yesorno
 	iffalse Script_DontSaveAndEndTheSession
-	writebyte BATTLETOWERACTION_SAVELEVELGROUP ; save level group
-	special BattleTowerAction
-	writebyte BATTLETOWERACTION_SAVEOPTIONS ; choose reward
-	special BattleTowerAction
-	writebyte BATTLETOWERACTION_SAVE_AND_QUIT ; quicksave
-	special BattleTowerAction
+	special Special_BattleTower_SaveLevelGroup
+	special SaveOptions
+	writebyte BATTLETOWER_SAVED_AND_LEFT
+	special Special_BattleTower_SetChallengeState
 	playsound SFX_SAVE
 	waitsfx
 	special FadeOutPalettes
@@ -83,10 +81,9 @@ Script_DontSaveAndEndTheSession: ; 0x9f4a3
 	writetext Text_CancelYourBattleRoomChallenge
 	yesorno
 	iffalse Script_ContinueAndBattleNextOpponent
-	writebyte BATTLETOWERACTION_CHALLENGECANCELED
-	special BattleTowerAction
-	writebyte BATTLETOWERACTION_06
-	special BattleTowerAction
+	writebyte BATTLETOWER_NO_CHALLENGE
+	special Special_BattleTower_SetChallengeState
+	special Special_BattleTower_Action06
 	closetext
 	special FadeOutPalettes
 	warpfacing UP, BATTLE_TOWER_1F, $7, $7
@@ -95,10 +92,10 @@ Script_DontSaveAndEndTheSession: ; 0x9f4a3
 
 Script_FailedBattleTowerChallenge:
 	pause 60
-	special Special_BattleTowerFade
+	special Special_BattleTower_Fade
 	warpfacing UP, BATTLE_TOWER_1F, $7, $7
-	writebyte BATTLETOWERACTION_CHALLENGECANCELED
-	special BattleTowerAction
+	writebyte BATTLETOWER_NO_CHALLENGE
+	special Special_BattleTower_SetChallengeState
 	opentext
 	writetext Text_ThanksForVisiting
 	waitbutton
@@ -107,14 +104,14 @@ Script_FailedBattleTowerChallenge:
 
 Script_BeatenAllTrainers: ; 0x9f4d9
 	pause 60
-	special Special_BattleTowerFade
+	special Special_BattleTower_Fade
 	warpfacing UP, BATTLE_TOWER_1F, $7, $7
 Script_BeatenAllTrainers2:
 	opentext
 	writetext Text_CongratulationsYouveBeatenAllTheTrainers
 	jump Script_GivePlayerHisPrize
 
-Text_YourPkmnWillBeHealedToFullHealth: ; 0x9ee92
+Text_YourPokemonWillBeHealedToFullHealth: ; 0x9ee92
 	text "Your #mon will"
 	line "be healed to full"
 	cont "health."

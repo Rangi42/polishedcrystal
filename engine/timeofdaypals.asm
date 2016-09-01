@@ -133,7 +133,7 @@ FadeOutPalettes:: ; 8c084
 	ret
 ; 8c092
 
-Special_BattleTowerFade: ; 8c092
+Special_BattleTower_Fade: ; 8c092
 	call FillWhiteBGColor
 	ld c, $9
 	call GetTimePalFade

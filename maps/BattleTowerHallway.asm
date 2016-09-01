@@ -23,7 +23,6 @@ BattleTowerHallway_MapScriptHeader:
 	callasm .asm_load_battle_room
 	jump .WalkToChosenBattleRoom
 
-
 .asm_load_battle_room
 	ld a, [rSVBK]
 	push af
@@ -36,7 +35,6 @@ BattleTowerHallway_MapScriptHeader:
 	pop af
 	ld [rSVBK], a
 	ret
-
 
 ; enter different rooms for different levels to battle against
 ; at least it should look like that
@@ -79,6 +77,35 @@ BattleTowerHallway_MapScriptHeader:
 	applymovement PLAYER, MovementData_BattleTowerHallwayPlayerEntersBattleRoom
 	warpcheck
 	end
+
+MovementData_BattleTowerHallwayWalkTo1020Room:
+	step_right
+	step_right
+MovementData_BattleTowerHallwayWalkTo3040Room:
+	step_right
+	step_right
+	step_up
+	step_right
+	turn_head_left
+	step_end
+
+MovementData_BattleTowerHallwayWalkTo90100Room:
+	step_left
+	step_left
+MovementData_BattleTowerHallwayWalkTo7080Room:
+	step_left
+	step_left
+MovementData_BattleTowerHallwayWalkTo5060Room:
+	step_left
+	step_left
+	step_up
+	step_left
+	turn_head_right
+	step_end
+
+MovementData_BattleTowerHallwayPlayerEntersBattleRoom:
+	step_up
+	step_end
 
 Text_PleaseStepThisWay: ; 0x9ec26
 	text "Please step this"

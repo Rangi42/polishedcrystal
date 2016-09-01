@@ -17,15 +17,14 @@ BattleTower1F_MapScriptHeader:
 	db 0
 
 .Trigger0:
-	writebyte BATTLETOWERACTION_CHECKSAVEFILEISYOURS
-	special BattleTowerAction
-	iffalse .SkipEverything
-	writebyte BATTLETOWERACTION_02 ; copybytetovar sBattleTowerChallengeState
-	special BattleTowerAction
-	if_equal $0, .SkipEverything
-	if_equal $2, .priorityjump1
-	if_equal $3, .SkipEverything
-	if_equal $4, .SkipEverything
+	special Special_BattleTower_CheckSaveFileExistsAndIsYours
+	iffalse .Done
+	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
+	if_equal BATTLETOWER_CHALLENGE_IN_PROGESS, .ContinueChallenge
+	if_equal BATTLETOWER_SAVED_AND_LEFT,       .ResumeChallenge
+	jump .Done
+
+.ResumeChallenge
 	opentext
 	writetext Text_WeveBeenWaitingForYou
 	waitbutton
@@ -33,14 +32,15 @@ BattleTower1F_MapScriptHeader:
 	priorityjump Script_ResumeBattleTowerChallenge
 	end
 
-.priorityjump1
+.ContinueChallenge
 	priorityjump BattleTower_LeftWithoutSaving
-	writebyte BATTLETOWERACTION_CHALLENGECANCELED
-	special BattleTowerAction
-	writebyte BATTLETOWERACTION_06
-	special BattleTowerAction
-.SkipEverything:
+	writebyte BATTLETOWER_NO_CHALLENGE
+	special Special_BattleTower_SetChallengeState
+	special Special_BattleTower_Action06
+.Done
 	dotrigger $1
+	end
+
 .Trigger1:
 	end
 
@@ -56,29 +56,25 @@ UnknownScript_0x9e3e0:
 	end
 
 ReceptionistScript_0x9e3e2:
-	writebyte BATTLETOWERACTION_02 ; copybytetovar sBattleTowerChallengeState
-	special BattleTowerAction
+	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
 	if_equal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
 	opentext
 	writetext Text_BattleTowerWelcomesYou
 	buttonsound
-	writebyte BATTLETOWERACTION_00 ; if new save file: bit 1, [s1_be4f]
-	special BattleTowerAction
+	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [s1_be4f]
 	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
 	jump Script_BattleTowerIntroductionYesNo
 
 Script_Menu_ChallengeExplanationCancel: ; 0x9e3fc
 	writetext Text_WantToGoIntoABattleRoom
-	writebyte $1
-	special Special_Menu_ChallengeExplanationCancel
+	special Special_BattleTower_MainMenu
 	if_equal $1, Script_ChoseChallenge
 	if_equal $2, Script_BattleTowerExplanation
 	jump Script_BattleTowerHopeToServeYouAgain
 
 Script_ChoseChallenge: ; 0x9e40f
-	writebyte BATTLETOWERACTION_RESETDATA ; ResetBattleTowerTrainerSRAM
-	special BattleTowerAction
-	special SpecialCheckForBattleTowerRules
+	special Special_BattleTower_ResetTrainersSRAM
+	special Special_BattleTower_CheckForRules
 	if_not_equal $0, Script_WaitButton
 	writetext Text_SaveBeforeEnteringBattleRoom
 	yesorno
@@ -87,23 +83,19 @@ Script_ChoseChallenge: ; 0x9e40f
 	special Special_TryQuickSave
 	iffalse Script_Menu_ChallengeExplanationCancel
 	dotrigger $1
-	writebyte BATTLETOWERACTION_01 ; set 1, [s1_be4f]
-	special BattleTowerAction
-	special Special_InitBattleTowerChallengeRAM
+	special Special_BattleTower_MarkNewSaveFile
+	special Special_BattleTower_InitChallengeRAM
 	if_equal $a, Script_Menu_ChallengeExplanationCancel
-	writebyte BATTLETOWERACTION_11
-	special BattleTowerAction
+	special Special_BattleTower_AcceptChallenge
 	writetext Text_RightThisWayToYourBattleRoom
 	waitbutton
 	closetext
-	writebyte BATTLETOWERACTION_CHOOSEREWARD
-	special BattleTowerAction
+	special Special_BattleTower_RandomlyChooseReward
 	jump Script_WalkToBattleTowerElevator
 
 Script_ResumeBattleTowerChallenge:
 	closetext
-	writebyte BATTLETOWERACTION_LOADLEVELGROUP ; load choice of level group
-	special BattleTowerAction
+	special Special_BattleTower_LoadLevelGroup
 Script_WalkToBattleTowerElevator:
 	musicfadeout MUSIC_NONE, 8
 	domaptrigger BATTLE_TOWER_BATTLE_ROOM, $0
@@ -111,26 +103,24 @@ Script_WalkToBattleTowerElevator:
 	domaptrigger BATTLE_TOWER_HALLWAY, $0
 	follow BATTLETOWER1F_RECEPTIONIST, PLAYER
 	applymovement BATTLETOWER1F_RECEPTIONIST, MovementData_BattleTower1FWalkToElevator
-	writebyte BATTLETOWERACTION_0A
-	special BattleTowerAction
+	special Special_BattleTower_MaxVolume
 	warpsound
 	disappear BATTLETOWER1F_RECEPTIONIST
 	stopfollow
-	applymovement PLAYER, MovementData_BattleTowerHallwayPlayerEntersBattleRoom
+	applymovement PLAYER, MovementData_BattleTowerHallwayPlayerEntersElevator
 	warpcheck
 	end
 
 Script_GivePlayerHisPrize: ; 0x9e47a
-	writebyte BATTLETOWERACTION_1C
-	special BattleTowerAction
-	writebyte BATTLETOWERACTION_GIVEREWARD
-	special BattleTowerAction
-	if_equal POTION, Script_YourPackIsStuffedFull
+	writebyte BATTLETOWER_WON_CHALLENGE
+	special Special_BattleTower_SetChallengeState
+	special Special_BattleTower_GiveReward
+	if_equal NO_ITEM, Script_YourPackIsStuffedFull
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM, 5
 	writetext Text_PlayerGotFive
-	writebyte BATTLETOWERACTION_1D
-	special BattleTowerAction
+	writebyte BATTLETOWER_RECEIVED_REWARD
+	special Special_BattleTower_SetChallengeState
 	closetext
 	end
 
@@ -147,8 +137,7 @@ Script_BattleTowerIntroductionYesNo: ; 0x9e49e
 Script_BattleTowerExplanation: ; 0x9e4a5
 	writetext Text_BattleTowerIntroduction
 Script_BattleTowerSkipExplanation:
-	writebyte BATTLETOWERACTION_01
-	special BattleTowerAction
+	special Special_BattleTower_MarkNewSaveFile
 	jump Script_Menu_ChallengeExplanationCancel
 
 Script_BattleTowerHopeToServeYouAgain:
@@ -162,8 +151,8 @@ Script_WaitButton: ; 0x9e4bb
 	closetext
 	end
 
-Script_APkmnLevelExceeds: ; 0x9e542
-	writetext Text_APkmnLevelExceeds
+Script_APokemonLevelExceeds: ; 0x9e542
+	writetext Text_APokemonLevelExceeds
 	waitbutton
 	jump Script_Menu_ChallengeExplanationCancel
 
@@ -202,33 +191,8 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
 	step_up
-MovementData_BattleTowerHallwayPlayerEntersBattleRoom:
+MovementData_BattleTowerHallwayPlayerEntersElevator:
 	step_up
-	step_end
-
-MovementData_BattleTowerHallwayWalkTo1020Room:
-	step_right
-	step_right
-MovementData_BattleTowerHallwayWalkTo3040Room:
-	step_right
-	step_right
-	step_up
-	step_right
-	turn_head_left
-	step_end
-
-MovementData_BattleTowerHallwayWalkTo90100Room:
-	step_left
-	step_left
-MovementData_BattleTowerHallwayWalkTo7080Room:
-	step_left
-	step_left
-MovementData_BattleTowerHallwayWalkTo5060Room:
-	step_left
-	step_left
-	step_up
-	step_left
-	turn_head_right
 	step_end
 
 MovementData_BattleTowerBattleRoomPlayerWalksIn:
@@ -421,7 +385,7 @@ Text_WeveBeenWaitingForYou:
 	line "please."
 	done
 
-Text_APkmnLevelExceeds: ; 0x9f1e5
+Text_APokemonLevelExceeds: ; 0x9f1e5
 	text "One or more of"
 	line "your #mon's"
 	cont "levels exceeds @"

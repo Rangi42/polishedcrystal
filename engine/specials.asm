@@ -62,7 +62,6 @@ SpecialsPointers:: ; c029
 	add_special Special_CardFlip
 	add_special Special_DummyNonfunctionalGameCornerGame
 	add_special FadeOutPalettes
-	add_special Special_BattleTowerFade
 	add_special Special_FadeBlackQuickly
 	add_special FadeInPalettes
 	add_special Special_FadeInQuickly
@@ -147,14 +146,28 @@ SpecialsPointers:: ; c029
 	add_special Special_InitialClearDSTFlag
 
 ; Battle Tower
-	add_special Special_InitBattleTowerChallengeRAM
-	add_special BattleTowerBattle
-	add_special Function_LoadOpponentTrainerAndPokemonsWithOTSprite
-	add_special SpecialCheckForBattleTowerRules
-	add_special BattleTowerAction
-	add_special Special_Menu_ChallengeExplanationCancel
+	add_special Special_BattleTower_InitChallengeRAM
+	add_special Special_BattleTower_Battle
+	add_special Special_BattleTower_ResetTrainersSRAM
+	add_special Special_BattleTower_GiveReward
+	add_special Special_BattleTower_RandomlyChooseReward
+	add_special Special_BattleTower_CheckNewSaveFile
+	add_special Special_BattleTower_GetChallengeState
+	add_special Special_BattleTower_SetChallengeState
+	add_special Special_BattleTower_MarkNewSaveFile
+	add_special Special_BattleTower_Action06
+	add_special Special_BattleTower_SaveLevelGroup
+	add_special Special_BattleTower_LoadLevelGroup
+	add_special Special_BattleTower_CheckSaveFileExistsAndIsYours
+	add_special Special_BattleTower_MaxVolume
+	add_special Special_BattleTower_AcceptChallenge
+	add_special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
+	add_special Special_BattleTower_CheckForRules
+	add_special Special_BattleTower_MainMenu
+	add_special Special_BattleTower_Fade
 
 ; Polished Crystal
+	add_special SaveOptions
 	add_special WonderTrade
 	add_special RespawnOneOffs
 	add_special GiveShinyDittoEgg
@@ -163,6 +176,7 @@ SpecialsPointers:: ; c029
 	add_special Special_ReiBlessing
 	add_special BillBoxSwitchCheck
 	add_special BillBoxSwitch
+
 	add_special SpecialNone
 ; c224
 

@@ -188,3 +188,16 @@ _InitTime:: ; 140ed
 	ld [de], a
 	ret
 ; 1412a
+
+Function170923: ; 170923
+	ld a, $5
+	call GetSRAMBank
+	xor a
+	ld [$aa48], a
+	ld [$aa47], a
+	ld hl, $aa5d
+	ld bc, $0011
+	call ByteFill
+	call CloseSRAM
+	ret
+; 17093c

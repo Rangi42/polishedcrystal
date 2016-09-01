@@ -5348,6 +5348,7 @@ INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
 INCLUDE "event/dratini.asm"
 INCLUDE "event/battle_tower.asm"
+INCLUDE "event/battle_tower_text.asm"
 INCLUDE "misc/mobile_22.asm"
 
 SECTION "bank23", ROMX, BANK[$23]
@@ -5906,8 +5907,6 @@ INCLUDE "misc/mobile_46.asm"
 
 SECTION "bank47", ROMX, BANK[$47]
 
-INCLUDE "misc/battle_tower_47.asm"
-
 INCLUDE "misc/mobile_47.asm"
 
 SECTION "bank5B", ROMX ; $5B is now PICS_20
@@ -5916,7 +5915,7 @@ INCLUDE "engine/link_trade.asm"
 
 SECTION "bank5C", ROMX, BANK[$5C]
 
-INCLUDE "misc/battle_tower_5c.asm"
+; unused section
 
 SECTION "bank5D", ROMX, BANK[$5D]
 
