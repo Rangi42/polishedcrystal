@@ -168,79 +168,6 @@ Function17d60b: ; 17d60b
 ; 17d6a1
 
 
-Function17d711:
-.crash_loop
-	cp $31
-	jr nc, .crash_loop
-	ld e, a
-	ld d, 0
-	ld hl, Jumptable17d72a
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp [hl]
-
-asm_17d721
-	call Function17e5af
-	ld a, $2
-	ld [wcd77], a
-	ret
-; 17d72a
-
-Jumptable17d72a: ; 17d72a
-	dw Function17d78c
-	dw Function17d78d
-	dw Function17d7b4
-	dw Function17d7c2
-	dw Function17d7d3
-	dw Function17d7e5
-	dw Function17d818
-	dw Function17d833
-	dw Function17d85d
-	dw Function17d902
-	dw Function17d93a
-	dw Function17d98b
-	dw Function17d9e3
-	dw Function17da31
-	dw Function17da9c
-	dw Function17dadc
-	dw Function17db2d
-	dw Function17db56
-	dw Function17db77
-	dw Function17dbe9
-	dw Function17dc1f
-	dw Function17dc9f
-	dw Function17dca9
-	dw Function17dccf
-	dw Function17dd13
-	dw Function17dd30
-	dw Function17dd49
-	dw Function17ddcd
-	dw Function17de32
-	dw Function17de91
-	dw Function17ded9
-	dw Function17e0fd
-	dw Function17e133
-	dw Function17e165
-	dw Function17e1a1
-	dw Function17e254
-	dw Function17e261
-	dw Function17e270
-	dw Function17e27f
-	dw Function17e293
-	dw Function17e2a7
-	dw Function17e367
-	dw Function17e37e
-	dw Function17e395
-	dw Function17e3ac
-	dw Function17e3c3
-	dw Function17e3e0
-	dw Function17e3f0
-	dw Function17e409
-; 17d78c
-
 Function17d78c: ; 17d78c
 	ret
 ; 17d78d
@@ -1012,52 +939,6 @@ Function17dcaf:
 	ld [rSVBK], a
 	ret
 ; 17dccf
-
-Function17dccf: ; 17dccf
-	call Function17e415
-	push hl
-	ld a, [wcd4b]
-	ld l, a
-	ld a, [wcd4c]
-	ld h, a
-	ld a, [wcd2e]
-	ld c, a
-	ld b, $0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld c, a
-	ld a, [hl]
-	ld b, a
-	call Function17e43d
-	call Function17e41e
-.asm_17dced
-	ld a, [wcd78]
-	ld l, a
-	ld a, [wcd79]
-	ld h, a
-	ld a, [hl]
-	cp $ff
-	jr z, .asm_17dd0d
-.crash_loop
-	cp $31
-	jr nc, .crash_loop
-	call Function17d711
-	ld a, [wcd77]
-	bit 7, a
-	jr nz, .asm_17dd0d
-	and a
-	jr z, .asm_17dd11
-	jr .asm_17dced
-
-.asm_17dd0d
-	pop hl
-	jp Function17e41e
-
-.asm_17dd11
-	pop hl
-	ret
-; 17dd13
 
 Function17dd13: ; 17dd13
 	call Function17e415
