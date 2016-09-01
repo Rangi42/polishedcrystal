@@ -1026,18 +1026,6 @@ endr
 	ret
 ; 1522
 
-Function1522:: ; 1522
-	push de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	call PlayCry
-	pop de
-	pop hl
-	pop bc
-	ret
-; 152d
-
 TextSFX:: ; 152d
 	dbw TX_SOUND_0B, SFX_DEX_FANFARE_50_79
 	dbw TX_SOUND_12, SFX_FANFARE

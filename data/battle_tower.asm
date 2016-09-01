@@ -60,28 +60,11 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	call AddNTimes
 	ld bc, NAME_LENGTH
 	call CopyBytes
-
 	call Function_LoadRandomBattleTowerPkmn
 	pop af
 
-	ld hl, BattleTowerTrainerData
-	ld bc, BATTLETOWER_TRAINERDATALENGTH
-	call AddNTimes
-	ld bc, BATTLETOWER_TRAINERDATALENGTH
-.copy_bt_trainer_data_loop
-	ld a, BANK(BattleTowerTrainerData)
-	call GetFarByte
-	ld [de], a
-	inc hl
-	inc de
-	dec bc
-	ld a, b
-	or c
-	jr nz, .copy_bt_trainer_data_loop
-
 	pop af
 	ld [rSVBK], a
-
 	ret
 
 
@@ -278,6 +261,7 @@ BattleTowerTrainers: ; 1f814e
 
 BattleTowerMons: ; 1f8450
 ; 10 groups of 21 mons.
+; TODO: Add missing 7 Pokémon!
 BattleTowerMons1:
 
 	db JOLTEON

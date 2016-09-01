@@ -22,42 +22,6 @@ _InterpretBattleMenu:: ; 24022
 	ret
 ; 2403c
 
-_InterpretMobileMenu:: ; 2403c
-	ld hl, CopyMenuData2
-	ld a, [wMenuData2_2DMenuItemStringsBank]
-	rst FarCall
-
-	call Draw2DMenu
-	call UpdateSprites
-	call ApplyTilemap
-	call Init2DMenuCursorPosition
-	ld hl, w2DMenuFlags1
-	set 7, [hl]
-.loop
-	call DelayFrame
-	callba Function10032e
-	ld a, [wcd2b]
-	and a
-	jr nz, .quit
-	call MobileMenuJoypad
-	ld a, [wMenuJoypadFilter]
-	and c
-	jr z, .loop
-	call Mobile_GetMenuSelection
-	ret
-
-.quit
-	ld a, [w2DMenuNumCols]
-	ld c, a
-	ld a, [w2DMenuNumRows]
-	call SimpleMultiply
-	ld [wMenuCursorBuffer], a
-	and a
-	ret
-; 24085
-
-
-
 Draw2DMenu: ; 24085
 	xor a
 	ld [hBGMapMode], a
@@ -70,7 +34,6 @@ Get2DMenuSelection: ; 2408f
 	call Init2DMenuCursorPosition
 	call StaticMenuJoypad
 	call MenuClickSound
-Mobile_GetMenuSelection: ; 24098
 	ld a, [wMenuData2Flags]
 	bit 1, a
 	jr z, .skip
@@ -270,24 +233,6 @@ _ScrollingMenuJoypad:: ; 241ab
 	ld [hBGMapMode], a
 	ret
 ; 241ba
-
-MobileMenuJoypad: ; 241ba
-	ld hl, w2DMenuFlags2
-	res 7, [hl]
-	ld a, [hBGMapMode]
-	push af
-	call Move2DMenuCursor
-	call Do2DMenuRTCJoypad
-	jr nc, .skip_joypad
-	call _2DMenuInterpretJoypad
-.skip_joypad
-	pop af
-	ld [hBGMapMode], a
-	call GetMenuJoypad
-	ld c, a
-	ret
-; 241d5
-
 
 MenuJoypadLoop: ; 24216
 .loop

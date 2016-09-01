@@ -124,8 +124,3 @@ SOUND_EFFECTS             EQU $3C
 CRYSTAL_SOUND_EFFECTS     EQU $5E
 
 CRIES                     EQU $3C
-
-
-; misc.o
-
-MISC_CRYSTAL              EQU $5E

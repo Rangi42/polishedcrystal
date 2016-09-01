@@ -2116,11 +2116,6 @@ SwitchToAnyMapBank:: ; 2c24
 	ret
 ; 2c29
 
-GetMapBank:: ; 2c29
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
 GetAnyMapBank:: ; 2c31
 	push hl
 	push de

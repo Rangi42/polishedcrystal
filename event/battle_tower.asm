@@ -240,9 +240,9 @@ Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	and a
 	ret z
 
-	ld a, BANK(s1_be4f)
+	ld a, BANK(sBattleTowerNewSaveFile)
 	call GetSRAMBank
-	ld a, [s1_be4f]
+	ld a, [sBattleTowerNewSaveFile]
 	and $2
 	ld [ScriptVar], a
 	call CloseSRAM
@@ -268,11 +268,11 @@ Special_BattleTower_SetChallengeState:
 	ret
 
 Special_BattleTower_MarkNewSaveFile: ; 170788 (5c:4788)
-	ld a, BANK(s1_be4f)
+	ld a, BANK(sBattleTowerNewSaveFile)
 	call GetSRAMBank
-	ld a, [s1_be4f]
+	ld a, [sBattleTowerNewSaveFile]
 	or $2
-	ld [s1_be4f], a
+	ld [sBattleTowerNewSaveFile], a
 	call CloseSRAM
 	ret
 

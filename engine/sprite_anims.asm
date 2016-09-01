@@ -750,11 +750,29 @@ endr
 	ret
 
 .twentyseven ; 8d630 (23:5630)
-	callba Function108bc7
+	ld a, [wcf64]
+	and a
+	ret z
+	ld hl, SPRITEANIMSTRUCT_YCOORD
+	add hl, bc
+	ld a, [hl]
+	cp -1 * 8 - 6
+	jr z, .twentyseven_delete
+	sub 1 * 8
+	ld [hl], a
+	ret
+.twentyseven_delete
+	call DeinitializeSprite
 	ret
 
 .twentyeight ; 8d637 (23:5637)
-	callba Function108be0
+	ld hl, SPRITEANIMSTRUCT_YCOORD
+	add hl, bc
+	ld a, [hl]
+	cp 9 * 8 + 2
+	ret z
+	add 1 * 8
+	ld [hl], a
 	ret
 
 .twentynine ; 8d63e (23:563e)

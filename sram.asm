@@ -200,7 +200,7 @@ sBTChoiceOfLevelGroup:: ds 1
 ; The 7 trainers of the BattleTower are saved here, so nobody appears more than once
 sBTTrainers:: ; sbe48
 	ds 7
-s1_be4f:: ds 1
+sBattleTowerNewSaveFile:: ds 1
 sBattleTowerReward:: ds 1
 ; Pkmn of previous trainer
 sBTPkmnOfTrainers:: ; 0xbe51

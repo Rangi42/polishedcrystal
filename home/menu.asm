@@ -125,13 +125,6 @@ YesNoBox:: ; 1dcf
 	lb bc, SCREEN_WIDTH - 6, 7
 
 PlaceYesNoBox:: ; 1dd2
-	jr _YesNoBox
-
-PlaceGenericTwoOptionBox:: ; 1dd4
-	call LoadMenuDataHeader
-	jr InterpretTwoOptionMenu
-
-_YesNoBox:: ; 1dd9
 ; Return nc (yes) or c (no).
 	push bc
 	ld hl, YesNoMenuDataHeader
@@ -565,11 +558,3 @@ InterpretBattleMenu:: ; 2039
 	ld a, [wMenuCursorBuffer]
 	ret
 ; 2048
-
-InterpretMobileMenu:: ; 2048
-	ld a, [hROMBank]
-	ld [wMenuData2_2DMenuItemStringsBank], a
-	callba _InterpretMobileMenu
-	ld a, [wMenuCursorBuffer]
-	ret
-; 2057

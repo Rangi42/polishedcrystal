@@ -274,12 +274,6 @@ Function862:: ; 862
 ; 871
 
 
-Function871:: ; 871
-	call LoadTileMapToTempTileMap
-	callab PlaceWaitingText
-	jp Function87d
-; 87d
-
 ; One "giant" leap for machinekind
 
 Function87d:: ; 87d
@@ -387,18 +381,3 @@ LinkDataReceived:: ; 908
 	ld [rSC], a
 	ret
 ; 919
-
-Function919:: ; 919
-	ld a, [wLinkMode]
-	and a
-	ret nz
-	ld a, $2
-	ld [rSB], a
-	xor a
-	ld [hSerialReceive], a
-	ld a, $0
-	ld [rSC], a
-	ld a, $80
-	ld [rSC], a
-	ret
-; 92e

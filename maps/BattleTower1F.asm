@@ -61,7 +61,7 @@ ReceptionistScript_0x9e3e2:
 	opentext
 	writetext Text_BattleTowerWelcomesYou
 	buttonsound
-	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [s1_be4f]
+	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
 	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
 	jump Script_BattleTowerIntroductionYesNo
 
@@ -83,7 +83,7 @@ Script_ChoseChallenge: ; 0x9e40f
 	special Special_TryQuickSave
 	iffalse Script_Menu_ChallengeExplanationCancel
 	dotrigger $1
-	special Special_BattleTower_MarkNewSaveFile
+	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerNewSaveFile]
 	special Special_BattleTower_InitChallengeRAM
 	if_equal $a, Script_Menu_ChallengeExplanationCancel
 	special Special_BattleTower_AcceptChallenge
