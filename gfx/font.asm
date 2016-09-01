@@ -48,6 +48,10 @@ TownMapGFX: ; f8ba0
 INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
 
+OverworldPhoneIconGFX: ; f8f24
+INCBIN "gfx/misc/overworld_phone_icon.2bpp"
+; f8f34
+
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.2bpp"
 ; f9214
@@ -88,6 +92,10 @@ _LoadStandardFont:: ; fb449
 ; fb48a
 
 _LoadFontsExtra:: ; fb48a
+	ld de, OverworldPhoneIconGFX
+	ld hl, VTiles2 tile $62
+	lb bc, BANK(OverworldPhoneIconGFX), 1
+	call Get2bpp_2
 	ld de, FontExtra + 3 * LEN_2BPP_TILE
 	ld hl, VTiles2 tile $63
 	lb bc, BANK(FontExtra), $16
