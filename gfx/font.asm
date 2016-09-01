@@ -60,6 +60,10 @@ MapEntryFrameGFX: ; f9344
 INCBIN "gfx/frames/map_entry_sign.2bpp"
 ; f9424
 
+UpArrowGFX: ; f9424
+INCBIN "gfx/misc/font_up_arrow.2bpp"
+; f9434
+
 Footprints: ; f9434
 INCBIN "gfx/misc/footprints.1bpp"
 ; fb434
@@ -91,7 +95,7 @@ _LoadStandardFont:: ; fb449
 	ret
 ; fb48a
 
-_LoadFontsExtra:: ; fb48a
+_LoadFontsExtra1:: ; fb48a
 	ld de, OverworldPhoneIconGFX
 	ld hl, VTiles2 tile $62
 	lb bc, BANK(OverworldPhoneIconGFX), 1
@@ -102,6 +106,15 @@ _LoadFontsExtra:: ; fb48a
 	call Get2bpp_2
 	jr LoadFrame
 ; fb4b0
+
+_LoadFontsExtra2:: ; fb4b0
+	ld de, UpArrowGFX
+	ld hl, VTiles2 tile $61
+	ld b, BANK(UpArrowGFX)
+	ld c, 1
+	call Get2bpp_2
+	ret
+; fb4be
 
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, FontBattleExtra

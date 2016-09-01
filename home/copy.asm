@@ -63,7 +63,8 @@ LoadFontsBattleExtra:: ; e58
 ; e5f
 
 LoadFontsExtra:: ; e5f
-	callba _LoadFontsExtra
+	callba _LoadFontsExtra1
+	callba _LoadFontsExtra2
 	ret
 ; e6c
 
