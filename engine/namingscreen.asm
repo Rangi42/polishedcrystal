@@ -720,12 +720,8 @@ MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
 	ret nc
 
 	ld a, [wNamingScreenLastCharacter]
-
-NamingScreen_LoadNextCharacter: ; 11b23
 	call NamingScreen_GetTextCursorPosition
 	ld [hl], a
-
-NamingScreen_AdvanceCursor_CheckEndOfString: ; 11b27
 	ld hl, wNamingScreenCurrNameLength
 	inc [hl]
 	call NamingScreen_GetTextCursorPosition
@@ -741,50 +737,6 @@ NamingScreen_AdvanceCursor_CheckEndOfString: ; 11b27
 	ret
 
 ; 11b39 (4:5b39)
-
-; XXX
-	ld a, [wNamingScreenCurrNameLength]
-	and a
-	ret z
-	push hl
-	ld hl, wNamingScreenCurrNameLength
-	dec [hl]
-	call NamingScreen_GetTextCursorPosition
-	ld c, [hl]
-	pop hl
-
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, NamingScreen_AdvanceCursor_CheckEndOfString
-	cp c
-	jr z, .done
-	inc hl
-	jr .loop
-
-.done
-	ld a, [hl]
-	jr NamingScreen_LoadNextCharacter
-
-; 11b56
-
-Dakutens: ; Dummied out
-	db "かが", "きぎ", "くぐ", "けげ", "こご"
-	db "さざ", "しじ", "すず", "せぜ", "そぞ"
-	db "ただ", "ちぢ", "つづ", "てで", "とど"
-	db "はば", "ひび", "ふぶ", "へべ", "ほぼ"
-	db "カガ", "キギ", "クグ", "ケゲ", "コゴ"
-	db "サザ", "シジ", "スズ", "セゼ", "ソゾ"
-	db "タダ", "チヂ", "ツヅ", "テデ", "トド"
-	db "ハバ", "ヒビ", "フブ", "へべ", "ホボ"
-	db $ff
-
-Handakutens: ; Dummied out
-	db "はぱ", "ひぴ", "ふぷ", "へぺ", "ほぽ"
-	db "ハパ", "ヒピ", "フプ", "へぺ", "ホポ"
-	db $ff
-
-; 11bbc
 
 NamingScreen_DeleteCharacter: ; 11bbc (4:5bbc)
 	ld hl, wNamingScreenCurrNameLength
@@ -987,10 +939,6 @@ BoxNameInputUpper:
 	db "Lower  Del   End "
 
 ; 11e5d
-
-GFX_11e5d: ; ????
-INCBIN "gfx/unknown/011e5d.2bpp"
-; 11e6d
 
 NamingScreenGFX_MiddleLine:
 INCBIN "gfx/unknown/011e65.2bpp"
@@ -1467,43 +1415,6 @@ MailComposition_TryAddLastCharacter: ; 121ac (4:61ac)
 	jp MailComposition_TryAddCharacter
 
 ; 121b2 (4:61b2)
-
-; XXX
-	ld a, [wNamingScreenCurrNameLength]
-	and a
-	ret z
-	cp $11
-	jr nz, .asm_121c3
-	push hl
-	ld hl, wNamingScreenCurrNameLength
-rept 2
-	dec [hl]
-endr
-	jr .asm_121c8
-
-.asm_121c3
-	push hl
-	ld hl, wNamingScreenCurrNameLength
-	dec [hl]
-
-.asm_121c8
-	call NamingScreen_GetTextCursorPosition
-	ld c, [hl]
-	pop hl
-.asm_121cd
-	ld a, [hli]
-	cp $ff
-	jp z, NamingScreen_AdvanceCursor_CheckEndOfString
-	cp c
-	jr z, .asm_121d9
-	inc hl
-	jr .asm_121cd
-
-.asm_121d9
-	ld a, [hl]
-	jp NamingScreen_LoadNextCharacter
-
-; 121dd
 
 MailEntry_Uppercase: ; 122dd
 	db "A B C D E F G H I J"

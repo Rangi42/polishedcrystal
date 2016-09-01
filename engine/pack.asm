@@ -1611,12 +1611,6 @@ PC_Mart_BallsPocketMenuDataHeader: ; 0x10ac7
 	dba UpdateItemDescription
 ; 10adf
 
-Text_PackNoItems: ; 0x10adf
-	; No items.
-	text_jump UnknownText_0x1c0b9a
-	db "@"
-; 0x10ae4
-
 Text_ThrowAwayHowMany: ; 0x10ae4
 	; Throw away how many?
 	text_jump UnknownText_0x1c0ba5
@@ -1670,13 +1664,6 @@ Text_PackEmptyString: ; 0x10b0c
 	text_jump UnknownText_0x1c0c83
 	db "@"
 ; 0x10b11
-
-TextJump_YouCantUseItInABattle: ; 0x10b11
-	; Doesn't seem to be used anywhere
-	; "You can't use it in a battle."
-	text_jump Text_YouCantUseItInABattle
-	db "@"
-; 0x10b16
 
 PackMenuGFX:
 INCBIN "gfx/misc/pack_menu.2bpp"

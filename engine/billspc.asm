@@ -2257,7 +2257,6 @@ PCString_ReleasedPKMN: db "Released <PK><MN>.@"
 PCString_Bye: db "Bye,@"
 PCString_Stored: db "Stored @"
 PCString_Got: db "Got @"
-PCString_Non: db "Non.@"
 PCString_BoxFull: db "The Box is full.@"
 PCString_PartyFull: db "The party's full!@"
 PCString_NoReleasingEGGS: db "No releasing Eggs!@"
@@ -2518,8 +2517,6 @@ BillsPC_ChangeBoxSubmenu: ; e36f9 (38:76f9)
 	call CopyName2
 	ret
 ; e3778 (38:7778)
-
-	hlcoord 11, 7 ; XXX
 
 .MenuDataHeader: ; 0xe377b
 	db $40 ; flags

@@ -283,10 +283,6 @@ Text_AnEGGCantHoldAnItem::
 	line "an item."
 	prompt
 
-UnknownText_0x1c0b9a::
-	text "No items."
-	done
-
 UnknownText_0x1c0ba5::
 	text "Throw away how"
 	line "many?"
@@ -339,11 +335,6 @@ UnknownText_0x1c0c63::
 UnknownText_0x1c0c83::
 	text ""
 	done
-
-Text_YouCantUseItInABattle::
-	text "You can't use it"
-	line "in a battle."
-	prompt
 
 Text_AreYouABoyOrAreYouAGirl::
 	text "So, are you a boy?"

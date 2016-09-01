@@ -198,7 +198,6 @@ WhirlIslandsName:    db "Whirl¯Islands@"
 MtMortarName:        db "Mt.Mortar@"
 DragonsDenName:      db "Dragon's Den@"
 IcePathName:         db "Ice Path@"
-NotApplicableName:   db "N/A@" ; unused
 PalletTownName:      db "Pallet Town@"
 ViridianCityName:    db "Viridian¯City@"
 PewterCityName:      db "Pewter City@"

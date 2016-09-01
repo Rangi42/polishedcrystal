@@ -1101,15 +1101,6 @@ GetDecorationName_c: ; 26ef5 (9:6ef5)
 	pop de
 	ret
 
-
-SetSpecificDecorationFlag: ; 26f02
-	ld a, c
-	call GetDecorationID
-	ld b, SET_FLAG
-	call DecorationFlagAction
-	ret
-; 26f0c
-
 GetDecorationID: ; 26f0c
 	push hl
 	push de
@@ -1122,22 +1113,6 @@ GetDecorationID: ; 26f0c
 	pop hl
 	ret
 ; 26f19
-
-SetAllDecorationFlags: ; 26f19
-	ld hl, DecorationIDs
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	push hl
-	ld b, SET_FLAG
-	call DecorationFlagAction
-	pop hl
-	jr .loop
-
-.done
-	ret
-; 26f2b
 
 DecorationIDs: ; 26f2b
 	db DECO_FEATHERY_BED ; 2
@@ -1188,7 +1163,6 @@ DecorationIDs: ; 26f2b
 	db DECO_BIG_SNORLAX_DOLL ; 1a
 	db DECO_BIG_ONIX_DOLL ; 1b
 	db DECO_BIG_LAPRAS_DOLL ; 1c
-Trophys:
 	db DECO_GOLD_TROPHY_DOLL ; 33
 	db DECO_SILVER_TROPHY_DOLL ; 34
 	db -1

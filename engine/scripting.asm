@@ -2993,11 +2993,6 @@ Script_warpcheck: ; 97af6
 	ret
 ; 97b01
 
-Script_enableevents: ; unreferenced
-	callba EnableEvents
-	ret
-; 97b08
-
 Script_newloadmap: ; 97b08
 ; script command 0x8a
 ; parameters:
@@ -3044,8 +3039,6 @@ Script_loadbytec2cf: ; 97b27
 	ld [wc2cf], a
 	ret
 ; 97b2e
-
-	ld c, c ; XXX
 
 Script_closetext: ; 97b2f
 ; script command 0x49

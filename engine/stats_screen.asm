@@ -904,11 +904,6 @@ StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
 	ret
 ; 4e32a (13:632a)
 
-Unknown_4e32a: ; 4e32a
-; A blank tile?
-	ds 16
-; 4e33a
-
 EggStatsScreen: ; 4e33a
 	xor a
 	ld [hBGMapMode], a

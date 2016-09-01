@@ -380,15 +380,6 @@ CheckIndoorMap:: ; 22f4
 	ret
 ; 2300
 
-; XXX
-	cp INDOOR
-	ret z
-	cp GATE
-	ret z
-	cp PERM_5
-	ret
-; 2309
-
 LoadMapAttributes:: ; 2309
 	call CopyMapHeaders
 	call SwitchToMapScriptHeaderBank
@@ -2211,9 +2202,6 @@ GetMapPermission:: ; 2c8a
 	pop hl
 	ret
 ; 2c98
-
-	ret ; XXX
-; 2c99
 
 GetAnyMapPermission:: ; 2c99
 	push hl

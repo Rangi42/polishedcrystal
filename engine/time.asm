@@ -260,19 +260,6 @@ UpdateTimeRemaining: ; 11586
 	ret
 ; 11599
 
-GetSecondsSinceIfLessThan60: ; 11599
-	ld a, [wDaysSince]
-	and a
-	jr nz, GetTimeElapsed_ExceedsUnitLimit
-	ld a, [wHoursSince]
-	and a
-	jr nz, GetTimeElapsed_ExceedsUnitLimit
-	ld a, [wMinutesSince]
-	jr nz, GetTimeElapsed_ExceedsUnitLimit
-	ld a, [wSecondsSince]
-	ret
-; 115ae
-
 GetMinutesSinceIfLessThan60: ; 115ae
 	ld a, [wDaysSince]
 	and a
@@ -283,14 +270,6 @@ GetMinutesSinceIfLessThan60: ; 115ae
 	ld a, [wMinutesSince]
 	ret
 ; 115be
-
-GetHoursSinceIfLessThan24: ; 115be
-	ld a, [wDaysSince]
-	and a
-	jr nz, GetTimeElapsed_ExceedsUnitLimit
-	ld a, [wHoursSince]
-	ret
-; 115c8
 
 GetDaysSince: ; 115c8
 	ld a, [wDaysSince]
@@ -386,14 +365,6 @@ CopyDayToHL: ; 11621
 	ld [hl], a
 	ret
 ; 11626
-
-CopyDayHourToHL: ; 11626
-	ld a, [CurDay]
-	ld [hli], a
-	ld a, [hHours]
-	ld [hli], a
-	ret
-; 1162e
 
 CopyDayHourMinToHL: ; 1162e
 	ld a, [CurDay]

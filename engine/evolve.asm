@@ -367,8 +367,6 @@ endr
 	inc hl
 	jp .loop
 
-; XXX
-	pop hl
 .ReturnToMap:
 	pop de
 	pop bc

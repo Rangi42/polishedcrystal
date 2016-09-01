@@ -722,25 +722,6 @@ UpdateReelPositionAndOAM: ; 92b53 (24:6b53)
 
 ; 92bbe (24:6bbe)
 
-Function92bbe: ; 92bbe
-	push hl
-	srl a
-	srl a
-	add Unknown_92bce % $100
-	ld l, a
-	ld a, 0
-	adc Unknown_92bce / $100
-	ld h, a
-	ld a, [hl]
-	pop hl
-	ret
-
-; 92bce
-
-Unknown_92bce: ; 92bce
-	db 0, 1, 2, 3, 4, 5
-; 92bd4
-
 Function92bd4: ; 92bd4 (24:6bd4)
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc

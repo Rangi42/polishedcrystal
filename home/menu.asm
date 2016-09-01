@@ -148,8 +148,6 @@ PlaceYesNoBox:: ; 1dd2
 	add 4
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
-
-InterpretTwoOptionMenu:: ; 1dfe
 	call VerticalMenu
 	push af
 	ld c, $f

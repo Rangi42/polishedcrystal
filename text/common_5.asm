@@ -98,10 +98,6 @@ UnknownText_0x1c55ac::
 	line "that person!"
 	done
 
-UnknownText_0x1c55ca::
-	text "Thank you!"
-	done
-
 UnknownText_0x1c55db::
 	text "Select Continue to"
 	line "set the time."

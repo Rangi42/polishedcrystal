@@ -423,13 +423,6 @@ RestoreDefaultMovement: ; 4769
 	ret
 ; 4780
 
-ClearObjectMovementByteIndex: ; 4780
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld [hl], 0
-	ret
-; 4787
-
 IncrementObjectMovementByteIndex: ; 4787
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
@@ -475,20 +468,6 @@ Object28AnonymousJumptable: ; 47a8
 	rst JumpTable
 	ret
 ; 47b0
-
-GetValueObjectStructField28: ; 47b0
-	ld hl, OBJECT_28
-	add hl, bc
-	ld a, [hl]
-	ret
-; 47b6
-
-SetValueObjectStructField28: ; 47b6
-	ld hl, OBJECT_28
-	add hl, bc
-	ld [hl], a
-	ret
-; 47bc
 
 ObjectMovementReset: ; 47bc
 	ld hl, OBJECT_NEXT_MAP_X
@@ -2610,16 +2589,6 @@ SetFlagsForMovement_1:: ; 585c
 	ret
 ; 586e
 
-Function586e: ; 586e
-	call CheckObjectVisibility
-	ret c
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	set 5, [hl]
-	xor a
-	ret
-; 587a
-
 Function587a: ; 587a
 	ld bc, ObjectStructs
 	xor a
@@ -2687,15 +2656,6 @@ Function58b9:: ; 58b9
 	pop bc
 	ret
 ; 58d8
-
-Function58d8: ; 58d8
-	call CheckObjectVisibility
-	ret c
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	res 5, [hl]
-	ret
-; 58e3
 
 Function58e3: ; 58e3
 	ld hl, OBJECT_MAP_OBJECT_INDEX

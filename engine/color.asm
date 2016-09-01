@@ -84,29 +84,6 @@ CheckContestMon:
 	and a
 	ret
 
-Function8aa4:
-	push de
-	push bc
-	ld hl, PalPacket_9ce6
-	ld de, wSGBPals
-	ld bc, PALPACKET_LENGTH
-	call CopyBytes
-	pop bc
-	pop de
-	ld a, c
-	ld [wSGBPals + 3], a
-	ld a, b
-	ld [wSGBPals + 4], a
-	ld a, e
-	ld [wSGBPals + 5], a
-	ld a, d
-	ld [wSGBPals + 6], a
-	ld hl, wSGBPals
-	call Function9809
-	ld hl, BlkPacket_9a86
-	call Function9809
-	ret
-
 InitPartyMenuPalettes:
 	ld hl, PalPacket_9c56 + 1
 	call CopyFourPalettes
@@ -169,68 +146,6 @@ Function8b67:
 	ld a, $3c
 	call GetPredefPal
 	jp LoadHLPaletteIntoDE
-
-Function8b81:
-	call CheckCGB
-	jr nz, .asm_8bb2
-	ld a, [hSGB]
-	and a
-	ret z
-	ld a, c
-	push af
-	ld hl, PalPacket_9ce6
-	ld de, wSGBPals
-	ld bc, PALPACKET_LENGTH
-	call CopyBytes
-	pop af
-	call GetMonPalettePointer_
-	ld a, [hli]
-	ld [wSGBPals + 3], a
-	ld a, [hli]
-	ld [wSGBPals + 4], a
-	ld a, [hli]
-	ld [wSGBPals + 5], a
-	ld a, [hl]
-	ld [wSGBPals + 6], a
-	ld hl, wSGBPals
-	jp Function9809
-
-.asm_8bb2
-	ld de, UnknOBPals
-	ld a, c
-	call GetMonPalettePointer_
-	call LoadPalette_White_Col1_Col2_Black
-	ret
-
-Function8bec:
-	ld a, [hCGB]
-	and a
-	jr nz, .asm_8bf7
-	ld hl, PlayerLightScreenCount
-	jp Function9809
-
-.asm_8bf7
-	ld a, [EnemyLightScreenCount]
-	ld c, a
-	ld a, [EnemyReflectCount]
-	hlcoord 0, 0, AttrMap
-	ld de, $14
-.asm_8c04
-	and a
-	jr z, .asm_8c0b
-	add hl, de
-	dec a
-	jr .asm_8c04
-
-.asm_8c0b
-	ld b, $0
-	add hl, bc
-	lb bc, 6, 4
-	ld a, [EnemySafeguardCount]
-	and $3
-	call FillBoxCGB
-	call LoadEDTile
-	ret
 
 ApplyMonOrTrainerPals:
 	call CheckCGB
@@ -422,23 +337,6 @@ Palettes_8d05:
 	RGB 00, 00, 00
 
 INCLUDE "predef/cgb.asm"
-
-Function95f0:
-	ld hl, Palette_9608
-	ld de, UnknBGPals
-	ld bc, 8
-	ld a, $5
-	call FarCopyWRAM
-	call ApplyPals
-	call WipeAttrMap
-	call ApplyAttrMap
-	ret
-
-Palette_9608:
-	RGB 31, 31, 31
-	RGB 09, 31, 31
-	RGB 10, 12, 31
-	RGB 00, 03, 19
 
 CopyFourPalettes:
 	ld de, UnknBGPals
@@ -744,28 +642,6 @@ Palettes_979c:
 	RGB 20, 15, 03
 	RGB 00, 00, 00
 
-Function97cc:
-	call CheckCGB
-	ret z
-	ld a, $90
-	ld [rOBPI], a
-	ld a, $1c
-	call GetPredefPal
-	call Function97e5
-	ld a, $21
-	call GetPredefPal
-	call Function97e5
-	ret
-
-Function97e5:
-	ld c, 1 palettes
-.loop
-	ld a, [hli]
-	ld [rOBPD], a
-	dec c
-	jr nz, .loop
-	ret
-
 GetMonPalettePointer:
 	ld l, a
 	ld h, $0
@@ -951,20 +827,6 @@ Function98eb:
 	dw PalPacket_9dc6
 	dw PalPacket_9dd6
 	dw PalPacket_9de6
-
-Function9911:
-	di
-	xor a
-	ld [rJOYP], a
-	ld hl, PalPacket_9d56
-	call PushSGBPals
-	call Function992c
-	call SGBDelayCycles
-	call Function993f
-	ld hl, PalPacket_9d66
-	call PushSGBPals
-	ei
-	ret
 
 Function992c:
 	call .LoadSGBBorderPointers

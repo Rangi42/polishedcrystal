@@ -751,12 +751,6 @@ NamesPointers:: ; 33ab
 	dba TrainerClassNames
 ; 33c0
 
-Function33c0:
-	inc b
-	ld d, d
-	ld c, e
-; 33c3
-
 GetName:: ; 33c3
 ; Return name CurSpecies from name list wNamedObjectTypeBuffer in StringBuffer1.
 
@@ -1472,31 +1466,6 @@ FacingPlayerDistance:: ; 36ad
 	ret
 ; 36f5
 
-CheckTrainerFlag:: ; 36f5
-	push bc
-	ld hl, OBJECT_MAP_OBJECT_INDEX
-	add hl, bc
-	ld a, [hl]
-	call GetMapObject
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call GetMapScriptHeaderBank
-	call GetFarHalfword
-	ld d, h
-	ld e, l
-	push de
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	pop de
-	ld a, c
-	and a
-	pop bc
-	ret
-; 3718
-
 PrintWinLossText:: ; 3718
 	ld a, [wBattleResult]
 	ld hl, wWinTextPointer
@@ -1643,28 +1612,12 @@ PrintLevel:: ; 382d
 	jr Function3842
 ; 383d
 
-Function383d:: ; 383d
-; Print :L and all 3 digits
-	ld [hl], "<LV>"
-	inc hl
-	ld c, 3
-; 3842
-
 Function3842:: ; 3842
 	ld [wd265], a
 	ld de, wd265
 	ld b, PRINTNUM_RIGHTALIGN | 1
 	jp PrintNum
 ; 384d
-
-Function384d:: ; 384d
-	ld hl, wListMoves_MoveIndicesBuffer
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	ret
-; 3856
 
 GetBaseData:: ; 3856
 	push bc
@@ -1848,23 +1801,6 @@ GetPartyLocation:: ; 3927
 	ld bc, PARTYMON_STRUCT_LENGTH
 	jp AddNTimes
 ; 392d
-
-Function392d:: ; 392d
-	push hl
-	ld a, b
-	dec a
-	ld b, 0
-	add hl, bc
-	ld hl, BaseData + 0
-	ld bc, $0020
-	call AddNTimes
-	ld a, BANK(BaseData)
-	call GetFarHalfword
-	ld b, l
-	ld c, h
-	pop hl
-	ret
-; 3945
 
 INCLUDE "home/battle.asm"
 

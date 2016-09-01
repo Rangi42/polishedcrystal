@@ -2096,9 +2096,6 @@ DisplayDexEntry: ; 4424d
 	call FarString
 	ret
 
-String_44331: ; 44331
-	db "#@"
-
 GetDexEntryPointer: ; 44333
 ; return dex entry pointer b:de
 	push hl
@@ -2137,7 +2134,6 @@ GLOBAL PokedexEntries4
 	db BANK(PokedexEntries3)
 	db BANK(PokedexEntries4)
 
-GetDexEntryPagePointer: ; 44355
 	call GetDexEntryPointer ; b:de
 	push hl
 	ld h, d
@@ -4377,17 +4373,6 @@ endr
 	jr nz, .load_loop
 	ret
 
-Function50cd0: ; 50cd0
-.asm_50cd0
-	ld [hl], $32
-	inc hl
-	ld [hl], $3e
-	dec hl
-	add hl, de
-	dec c
-	jr nz, .asm_50cd0
-	ret
-
 PlaceStatusString: ; 50d0a
 	push de
 	inc de
@@ -5069,8 +5054,6 @@ INCLUDE "engine/variables.asm"
 BattleText::
 INCLUDE "text/battle.asm"
 
-INCLUDE "engine/debug.asm"
-
 SECTION "bank21", ROMX, BANK[$21]
 
 INCLUDE "battle/anim_gfx.asm"
@@ -5080,18 +5063,6 @@ INCLUDE "event/halloffame.asm"
 SECTION "bank22", ROMX, BANK[$22]
 
 INCLUDE "event/kurt.asm"
-
-Function88248: ; 88248
-	ld c, CAL
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .okay
-	ld c, KAREN
-
-.okay
-	ld a, c
-	ld [TrainerClass], a
-	ret
 
 MovePlayerPicRight: ; 88258
 	hlcoord 6, 4
@@ -5165,7 +5136,6 @@ ChrisNameMenuHeader: ; 882b5
 	db $91 ; flags
 	db 5 ; items
 	db "New Name@"
-MalePlayerNameArray: ; 882c9
 	db "Chris@"
 	db "Ethan@"
 	db "Vincent@"
@@ -5185,25 +5155,12 @@ KrisNameMenuHeader: ; 882e5
 	db $91 ; flags
 	db 5 ; items
 	db "New Name@"
-FemalePlayerNameArray: ; 882f9
 	db "Kris@"
 	db "Marina@"
 	db "Reina@"
 	db "Sylvie@"
 	db 2 ; displacement
 	db " Name @" ; title
-
-GetPlayerNameArray: ; 88318 This Function is never called
-	ld hl, PlayerName
-	ld de, MalePlayerNameArray
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .done
-	ld de, FemalePlayerNameArray
-
-.done
-	call InitName
-	ret
 
 GetPlayerIcon: ; 8832c
 ; Get the player icon corresponding to gender
@@ -5690,10 +5647,6 @@ SECTION "Pic Animations 2", ROMX, BANK[$35]
 INCLUDE "gfx/pics/frame_pointers.asm"
 INCLUDE "gfx/pics/kanto_frames.asm"
 
-SECTION "bank36", ROMX, BANK[$36]
-
-FontInversed: INCBIN "gfx/misc/font_inversed.1bpp"
-
 SECTION "Pic Animations 3", ROMX, BANK[$36]
 
 INCLUDE "gfx/pics/johto_frames.asm"
@@ -5705,103 +5658,6 @@ SECTION "Tileset Data 6", ROMX, BANK[TILESETS_6]
 INCLUDE "tilesets/data_6.asm"
 
 SECTION "bank38", ROMX, BANK[$38]
-
-Functione0000: ; e0000
-; something to do with Unown printer
-	push de
-	xor a
-	call GetSRAMBank
-	ld hl, sScratch
-	ld bc, 0
-.loop
-	push bc
-	push hl
-	push bc
-	ld de, wd002
-	call .Copy
-	call .Decompress
-	ld hl, Unknown_e008b
-	pop bc
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	ld hl, wd012
-	call .Copy
-	pop hl
-	ld bc, $10
-	add hl, bc
-	pop bc
-	inc c
-	ld a, c
-	cp $31
-	jr c, .loop
-
-	ld hl, OverworldMap
-	ld de, sScratch
-	ld bc, $31 tiles
-	call CopyBytes
-	pop hl
-	ld de, sScratch
-	ld c, $31
-	ld a, [hROMBank]
-	ld b, a
-	call Get2bpp
-	call CloseSRAM
-	ret
-
-.Copy: ; e004e
-	ld c, $10
-.loop_copy
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop_copy
-	ret
-
-.Decompress: ; e0057
-	ld hl, wd012
-	ld e, %10000000
-	ld d, 8
-.loop_decompress
-	push hl
-	ld hl, wd002
-	call .CountSetBit
-	pop hl
-	ld a, b
-	ld [hli], a
-	push hl
-	ld hl, wd003
-	call .CountSetBit
-	pop hl
-	ld a, b
-	ld [hli], a
-	srl e
-	dec d
-	jr nz, .loop_decompress
-	ret
-
-.CountSetBit: ; e0078
-	ld b, 0
-	ld c, 8
-.loop_count
-	ld a, [hli]
-	and e
-	jr z, .clear
-	scf
-	jr .apply
-
-.clear
-	and a
-
-.apply
-	rr b
-	inc hl
-	dec c
-	jr nz, .loop_count
-	ret
 
 overworldmaptile EQUS "dw OverworldMap + $10 *"
 overworldmaprect: MACRO
@@ -5816,7 +5672,6 @@ y = y + 1
 endr
 endm
 
-Unknown_e008b: ; e008b
 	overworldmaprect 7, 7
 
 Unknown_e00ed:
@@ -6064,21 +5919,6 @@ SECTION "Tileset Data 7", ROMX, BANK[TILESETS_7]
 INCLUDE "tilesets/data_7.asm"
 
 SECTION "bank77_2", ROMX, BANK[$77]
-
-Function1dd6a9: ; 1dd6a9
-	ld a, b
-	ld b, c
-	ld c, a
-	push bc
-	push de
-	ld hl, [sp+$2]
-	ld d, h
-	ld e, l
-	pop hl
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	call PrintNum
-	pop bc
-	ret
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c
@@ -6431,7 +6271,6 @@ HandleFrenchGermanMail: ; 1df1e6
 	jr nz, .loop
 	ret
 
-LireLeCourrierAnglais:
 DeutenEnglischenPost: ; 1df203
 ; Cette fonction convertit certains des caractères anglais pour
 ; leur équivalent dans le jeu de caractères français.
@@ -6464,8 +6303,6 @@ DeutenEnglischenPost: ; 1df203
 	ret
 
 HandleSpanishItalianMail: ; 1df220
-LeerCorreosIngleses:
-LeggiPostaInglese:
 ; This function converts certain characters between
 ; the English and Spanish/Italian character sets.
 ; Esta función convierte ciertos caracteres entre
@@ -6514,46 +6351,7 @@ SECTION "bank7C", ROMX, BANK[$7C]
 
 SECTION "bank7D", ROMX, BANK[$7D]
 
-	db $cc, $6b, $1e ; XXX
-
-Function1f4003: ; 1f4003
-	ld a, $6
-	call GetSRAMBank
-	ld hl, Unknown_1f4018
-	ld de, $a000
-	ld bc, $1000
-	call CopyBytes
-	call CloseSRAM
-	ret
-
-Unknown_1f4018:
-INCBIN "unknown/1f4018.bin"
-
-Function1f4dbe: ; 1f4dbe
-	ld a, $6
-	call GetSRAMBank
-	ld hl, Unknown_1f4dd3
-	ld de, $a000
-	ld bc, $1000
-	call CopyBytes
-	call CloseSRAM
-	ret
-
-Unknown_1f4dd3:
-INCBIN "unknown/1f4dd3.bin"
-
-Function1f5d9f: ; 1f5d9f
-	ld a, $6
-	call GetSRAMBank
-	ld hl, Unknown_1f5db4
-	ld de, $a000
-	ld bc, $1000
-	call CopyBytes
-	call CloseSRAM
-	ret
-
-Unknown_1f5db4:
-INCBIN "unknown/1f5db4.bin"
+; unused bank!
 
 SECTION "bank7E", ROMX, BANK[$7E]
 

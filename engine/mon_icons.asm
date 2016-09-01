@@ -298,12 +298,6 @@ INCBIN "gfx/icon/mail.2bpp"
 INCBIN "gfx/icon/item.2bpp"
 ; 8ea17
 
-GetIcon_de: ; 8ea17
-; Load icon graphics into VRAM starting from tile de.
-	ld l, e
-	ld h, d
-	jr GetIcon
-
 GetIcon_a: ; 8ea1b
 ; Load icon graphics into VRAM starting from tile a.
 	ld l, a

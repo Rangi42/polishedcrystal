@@ -2324,8 +2324,6 @@ Pokedex_BlackOutBG: ; 41401 (10:5401)
 	call ByteFill
 	pop af
 	ld [rSVBK], a
-
-Pokedex_ApplyPrintPals: ; 41415
 	ld a, $ff
 	call DmgToCgbBGPals
 	ld a, $ff
@@ -2336,9 +2334,6 @@ Pokedex_ApplyPrintPals: ; 41415
 Pokedex_GetSGBLayout: ; 41423
 	ld b, a
 	call GetSGBLayout
-
-Pokedex_ApplyUsualPals: ; 41427
-; This applies the palettes used for most Pokédex screens.
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld a, $e0

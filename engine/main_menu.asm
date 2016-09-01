@@ -1,7 +1,3 @@
-GFX_49c0c: ; 49c0c
-INCBIN "gfx/unknown/049c0c.2bpp"
-; 49cdc
-
 MainMenu: ; 49cdc
 	xor a
 	ld [wc2d7], a
