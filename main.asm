@@ -1600,6 +1600,10 @@ PlayBattleMusic: ; 2ee6c
 	cp LEAF
 	jp z, .done
 
+	ld de, MUSIC_FRONTIER_BRAIN_BATTLE_RSE
+	cp TOWERTYCOON
+	jp z, .done
+
 	ld de, MUSIC_ROCKET_BATTLE
 	cp GRUNTM
 	jp z, .done
