@@ -9,6 +9,10 @@ BattleTowerText:: ; 11c000
 	ld [rSVBK], a
 	ld hl, BT_OTTrainerClass
 	ld a, [hl]
+
+	cp a, TOWERTYCOON
+	jr z, .tycoon
+
 	dec a
 	ld e, a
 	ld d, 0
@@ -26,6 +30,12 @@ BattleTowerText:: ; 11c000
 
 .okay0
 	ld hl, BTMaleTrainerTexts
+	jr .proceed
+
+.tycoon
+	; always use the number 0
+	xor a
+	ld hl, BTTycoonTexts
 	jr .proceed
 
 .female
@@ -325,6 +335,21 @@ BTFemaleTrainerTexts:
 	dw BTWinF13
 	dw BTWinF14
 	dw BTWinF15
+
+
+BTTycoonTexts:
+	dw .Greetings
+	dw .PlayerLost
+	dw .PlayerWon
+
+.Greetings:
+	dw BTGreetingTycoon
+
+.PlayerLost:
+	dw BTLossTycoon
+
+.PlayerWon:
+	dw BTWinTycoon
 
 
 BTGreetingM1: ; 0x11f42e
@@ -809,3 +834,19 @@ BTLossF15: ; 0x11f67c
 BTWinF15: ; 0x11f681
 	text_jump UnknownText_0x1ecee8
 	db "@"
+
+
+
+
+BTGreetingTycoon:
+	text_jump BattleTowerText_GreetingTycoon
+	db "@"
+
+BTLossTycoon:
+	text_jump BattleTowerText_LossTycoon
+	db "@"
+
+BTWinTycoon:
+	text_jump BattleTowerText_WinTycoon
+	db "@"
+

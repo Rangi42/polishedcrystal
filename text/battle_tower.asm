@@ -742,3 +742,41 @@ UnknownText_0x1ecee8: ; 0x1ecee8
 	line "happen!"
 	done
 ; 0x1ecf02
+
+BattleTowerText_GreetingTycoon:
+	text "So, you've come"
+	line "this far!"
+
+	para "My name's Palmer."
+
+	para "As the Tower"
+	line "Tycoon, I'll have"
+
+	para "to give you my"
+	line "best effort."
+
+	para "That's how the best"
+	line "trainers show"
+
+	para "respect to each"
+	line "other."
+
+	para "By battling all-"
+	line "out as dedicated"
+
+	para "students of"
+	line "#mon!"
+	done
+
+BattleTowerText_LossTycoon:
+	text "Ah, wonderful!"
+	line "Do come again!"
+	done
+
+BattleTowerText_WinTycoon:
+	text "I have no problem"
+	line "losing to a spec-"
+
+	para "tacular trainer"
+	line "like you!"
+	done

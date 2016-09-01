@@ -56,7 +56,13 @@ Script_BattleRoomLoop: ; 0x9f425
 	special FadeInPalettes
 	special RestartMapMusic
 	opentext
+	copybytetovar wNrOfBeatenBattleTowerTrainers
+	if_equal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
 	writetext Text_NextUpOpponentNo
+	jump .ShownText
+.WarnAboutTycoon
+	writetext Text_NextUpTycoon
+.ShownText
 	yesorno
 	iffalse Script_DontBattleNextOpponent
 Script_ContinueAndBattleNextOpponent: ; 0x9f477
@@ -122,6 +128,22 @@ Text_NextUpOpponentNo: ; 0x9eebc
 	line "no.@"
 	text_from_ram StringBuffer3
 	text ". Ready?"
+	done
+
+Text_NextUpTycoon:
+	text "Congratulations"
+	line "on your winning"
+	cont "streak, trainer!"
+
+	para "The Tower Tycoon"
+	line "has sent word that"
+
+	para "he is impressed"
+	line "with your skill."
+
+	para "Are you ready to"
+	line "battle the Tower"
+	cont "Tycoon?"
 	done
 
 Text_SaveAndEndTheSession: ; 0x9ef5e

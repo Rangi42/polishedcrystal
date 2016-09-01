@@ -19,6 +19,10 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	; Set BT_OTTrainer as start address to write the following data to
 	ld de, BT_OTTrainer
 
+	ld a, [wNrOfBeatenBattleTowerTrainers]
+	cp BATTLETOWER_NROFTRAINERS - 1
+	jr z, .load_tycoon
+
 	ld a, [hRandomAdd]
 	ld b, a
 .resample ; loop to find a random trainer
@@ -42,7 +46,13 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	jr z, .resample
 	dec c
 	jr nz, .next_trainer ; c <= 7  initialise all 7 trainers?
+	jp .found_trainer
 
+.load_tycoon:
+	ld a, 70
+	ld b, a
+
+.found_trainer:
 	ld hl, sBTTrainers
 	ld a, [sNrOfBeatenBattleTowerTrainers]
 	ld c, a
@@ -256,6 +266,8 @@ BattleTowerTrainers: ; 1f814e
 	db "Dykstra@@@", SWIMMERF
 	db "Eaton@@@@@", BIKER
 	db "Wong@@@@@@", FIREBREATHER
+BattleTowerTycoon:
+	db "Palmer@@@@", TOWERTYCOON
 ; 1f8450
 
 
