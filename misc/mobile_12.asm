@@ -1305,10 +1305,6 @@ Function48c5a: ; 48c5a (12:4c5a)
 	ld [hl], a
 	ret
 
-Function48cda: ; 48cda (12:4cda)
-	ld h, d
-	ld l, e
-
 Function48cdc: ; 48cdc (12:4cdc)
 	push bc
 	push hl

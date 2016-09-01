@@ -27,54 +27,6 @@ UnknownText_0x1c50bb::
 	text "Darn!"
 	done
 
-UnknownText_0x1c5238::
-	text "The Card Folder"
-	line "stores your and"
-	para "your friends'"
-	line "Cards."
-	para "A Card contains"
-	line "information like"
-	para "the person's name,"
-	line "phone number and"
-	cont "profile."
-	para ""
-	done
-
-UnknownText_0x1c52bc::
-	text "This is your Card."
-	para "Once you've"
-	line "entered your phone"
-	para "number, you can"
-	line "trade Cards with"
-	cont "your friends."
-	para ""
-	done
-
-UnknownText_0x1c531e::
-	text "If you have your"
-	line "friend's Card, you"
-	para "can use it to make"
-	line "a call from a"
-	para "mobile phone on"
-	line "the 2nd floor of a"
-	cont "#mon Center."
-	para ""
-	done
-
-UnknownText_0x1c5394::
-	text "To safely store"
-	line "your collection of"
-	para "Cards, you must"
-	line "set a Passcode for"
-	cont "your Card Folder."
-	para ""
-	done
-
-UnknownText_0x1c554a::
-	text "Finish registering"
-	line "Cards?"
-	done
-
 UnknownText_0x1c5565::
 	text "Huh? Sorry, wrong"
 	line "number!"

@@ -2251,7 +2251,7 @@ RADIO_TOWER_MUSIC EQU 7
 	jr z, .mahoganymart
 	bit RADIO_TOWER_MUSIC, c
 	jr nz, .radiotower
-	callba Function8b342
+	call Function8b342
 	ld e, c
 	ld d, 0
 .done
@@ -2285,6 +2285,13 @@ RADIO_TOWER_MUSIC EQU 7
 	ld de, MUSIC_CHERRYGROVE_CITY
 	jr .done
 ; 2cff
+
+Function8b342: ; 8b342
+	call GetSecondaryMapHeaderPointer
+	ld d, h
+	ld e, l
+	ret
+; 8b35d
 
 GetMapHeaderTimeOfDayNybble:: ; 2cff
 	call GetPhoneServiceTimeOfDayByte

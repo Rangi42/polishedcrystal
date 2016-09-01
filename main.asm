@@ -2294,7 +2294,6 @@ INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
 
 INCLUDE "misc/mobile_12.asm"
-; mobile battle selection
 
 AskRememberPassword: ; 4ae12
 	call .DoMenu
@@ -3785,13 +3784,6 @@ Function4e906: ; 4e906
 	call Request2bpp
 	pop af
 	ld [rSVBK], a
-	ret
-
-Function4e929: ; mobile function
-	ld h, b
-	ld l, c
-	call Function4e930
-	ld c, a
 	ret
 
 Function4e930: ; 4e930
@@ -5306,7 +5298,6 @@ INCLUDE "event/buena.asm"
 INCLUDE "event/dratini.asm"
 INCLUDE "event/battle_tower.asm"
 INCLUDE "event/battle_tower_text.asm"
-INCLUDE "misc/mobile_22.asm"
 
 SECTION "bank23", ROMX, BANK[$23]
 
@@ -5864,12 +5855,6 @@ _UpdateBattleHUDs:
 	call SetHPPal
 	callba FinishBattleAnim
 	ret
-
-MobileAdapterGFX::
-INCBIN "gfx/misc/mobile_adapter.2bpp"
-
-GFX_17afa5::
-INCBIN "gfx/unknown/17afa5.2bpp"
 
 SECTION "bank5F", ROMX, BANK[$5F]
 
