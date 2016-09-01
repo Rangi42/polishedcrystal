@@ -2293,8 +2293,6 @@ INCLUDE "event/celebi.asm"
 INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
 
-INCLUDE "misc/mobile_12.asm"
-
 AskRememberPassword: ; 4ae12
 	call .DoMenu
 	ld a, $0

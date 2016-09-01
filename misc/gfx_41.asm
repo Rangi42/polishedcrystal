@@ -87,29 +87,6 @@ Function104110:: ; 104110
 	ret
 ; 104148
 
-Function104148: ; 104148 (41:4148)
-	ld hl, .Function
-	jp CallInSafeGFXMode
-
-.Function:
-	decoord 0, 0, AttrMap
-	ld hl, wBackupAttrMap
-	call CutAndPasteAttrMap
-	ld c, $ff
-	decoord 0, 0
-	ld hl, wDecompressScratch
-	call CutAndPasteMap
-	ld a, $1
-	ld [rVBK], a
-	ld hl, wBackupAttrMap
-	call Function1041ad
-	ld a, $0
-	ld [rVBK], a
-	ld hl, wDecompressScratch
-	call Function1041ad
-	ret
-; 104177
-
 CallInSafeGFXMode: ; 104177
 	ld a, [hBGMapMode]
 	push af
@@ -141,7 +118,6 @@ CallInSafeGFXMode: ; 104177
 ._hl_ ; 10419c
 	jp [hl]
 ; 10419d
-
 
 Function10419d: ; 10419d (41:419d)
 	call Function10424e
@@ -229,7 +205,6 @@ asm_10420b:
 	ret
 ; 10424e
 
-
 Function10424e: ; 10424e (41:424e)
 	ld a, h
 	ld [rHDMA1], a
@@ -284,7 +259,6 @@ CutAndPasteMap: ; 104265 (41:4265)
 	pop af
 	ld [hMapObjectIndexBuffer], a
 	ret
-
 
 _Get2bpp:: ; 104284
 	; 2bpp when [rLCDC] & $80
