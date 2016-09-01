@@ -29,7 +29,7 @@ CeladonPrizeRoom_tmcounterloop:
 	verticalmenu
 	closewindow
 	if_equal $1, .doubleteam
-	if_equal $2, .darkpulse
+	if_equal $2, .toxic
 	if_equal $3, .hyperbeam
 	jump CeladonPrizeRoom_cancel
 
@@ -46,15 +46,15 @@ CeladonPrizeRoom_tmcounterloop:
 	takecoins 1500
 	jump CeladonPrizeRoom_purchased
 
-.darkpulse
-	checkitem TM_DARK_PULSE
+.toxic
+	checkitem TM_TOXIC
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 3500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	itemtotext TM_DARK_PULSE, $0
+	itemtotext TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
-	giveitem TM_DARK_PULSE
+	giveitem TM_TOXIC
 	iffalse CeladonPrizeRoom_notenoughroom
 	takecoins 3500
 	jump CeladonPrizeRoom_purchased
@@ -125,7 +125,7 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db $80 ; flags
 	db 4 ; items
 	db "TM32    1500@"
-	db "TM57    3500@"
+	db "TM06    3500@"
 	db "TM15    7500@"
 	db "Cancel@"
 

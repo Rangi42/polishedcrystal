@@ -145,10 +145,7 @@ Mart8: ; 16134
 ; 1613b
 
 Mart9: ; 1613b
-	db 9 ; # items
-	db TM_FALSE_SWIPE
-	db TM_PROTECT
-	db TM_SAFEGUARD
+	db 6 ; # items
 	db TM_REFLECT
 	db TM_LIGHT_SCREEN
 	db TM_THUNDER
@@ -356,16 +353,13 @@ Mart24: ; 161c2
 ; 161ce
 
 Mart25: ; 161ce
-	db 9 ; # items
-	db TM_HIDDEN_POWER
-	db TM_SWORDS_DANCE
+	db 6 ; # items
+	db TM_SAFEGUARD
+	db TM_PROTECT
 	db TM_CALM_MIND
 	db TM_BULK_UP
-	db TM_TOXIC
+	db TM_SWORDS_DANCE
 	db TM_REST
-	db TM_SUNNY_DAY
-	db TM_RAIN_DANCE
-	db TM_SANDSTORM
 	db $ff
 ; 161d5
 

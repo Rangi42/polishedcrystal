@@ -72,7 +72,31 @@ ReceptionistScript_0x560ce:
 	end
 
 GoldenrodDeptStore5FTwinScript:
-	jumptextfaceplayer UnknownText_0x56279
+	faceplayer
+	opentext
+	checkflag ENGINE_DAILY_MYSTERY_GIFT
+	iftrue .GotDailyBerry
+	writetext UnknownText_0x56279
+	buttonsound
+	callasm PickRandomMysteryGift
+	copybytetovar CurFruit
+	itemtotext $0, $1
+	giveitem ITEM_FROM_MEM
+	iffalse .NoRoom
+	writetext MysteryGiftGirl_GiveItemText
+	itemnotify
+	setflag ENGINE_DAILY_MYSTERY_GIFT
+.GotDailyBerry
+	writetext MysteryGiftGirl_ComeBackText
+	waitbutton
+	closetext
+	end
+
+.NoRoom:
+	writetext MysteryGiftGirl_NoRoomText
+	waitbutton
+	closetext
+	end
 
 LassScript_0x56130:
 	jumptextfaceplayer UnknownText_0x562ad
@@ -129,6 +153,29 @@ UnknownText_0x56279:
 
 	para "walking made me"
 	line "dizzy."
+
+	para "But, I did find"
+	line "this Berry!"
+	done
+
+MysteryGiftGirl_GiveItemText:
+	text "<PLAYER> received"
+	line "@"
+	text_from_ram StringBuffer4
+	text "!@"
+	sound_item
+	text_waitbutton
+	db "@"
+
+MysteryGiftGirl_ComeBackText:
+	text "I'll give you"
+	line "another Berry"
+	cont "tomorrow."
+	done
+
+MysteryGiftGirl_NoRoomText:
+	text "But you can't"
+	line "carry it…"
 	done
 
 UnknownText_0x562ad:
@@ -185,3 +232,10 @@ GoldenrodDeptStore5F_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x5613a, -1
 	person_event SPRITE_TWIN, 5, 13, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodDeptStore5FTwinScript, -1
 	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
+
+PickRandomMysteryGift:
+	ld a, 10 ; BERRY to MYSTERYBERRY, 0 to 9
+	call RandomRange
+	add BERRY
+	ld [CurFruit], a
+	ret

@@ -215,17 +215,10 @@ Special_BattleTower_GiveReward: ; 1706ee (5c:46ee)
 	ret
 
 Special_BattleTower_RandomlyChooseReward: ; 17073e (5c:473e)
-.loop
-	call Random
+	ld a, 7 ; HP_UP to PP_UP, 0 to 6
+	call RandomRange
 	ld a, [hRandomAdd]
-	and $7
-	cp 6
-	jr c, .okay
-	sub 6
-.okay
 	add HP_UP
-	cp LUCKY_PUNCH
-	jr z, .loop
 	push af
 	ld a, BANK(sBattleTowerReward)
 	call GetSRAMBank

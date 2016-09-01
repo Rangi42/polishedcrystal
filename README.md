@@ -336,6 +336,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Option to run by default.
 * Add: Proper text for Gym Leader rematches.
 * Add: Access the last Unown chamber with a Fairy-type Pokémon, not Ho-Oh.
+* Add: Former Mystery Gift girl in Goldenrod Dept. Store now gives a random Berry every day.
+* Remove: No more support for Mystery Gift, GameBoy Printer, or Mobile Adapter.
 * Fix: Gen VI wild held item chances (50% common, 5% rare, 45% none)
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
@@ -357,4 +359,5 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: X Special → X Spcl.Atk (thanks, Mmmmmm).
 * Fix: Acid lowers Sp.Def, not Defense (thanks, kide).
 * Fix: 50 TMs → 65 TMs.
+* Fix: TMs each have a unique location.
 * Fix: Roaming legendary beast music.

@@ -117,36 +117,6 @@ SGB_ApplyPartyMenuHPPals: ; 8ade SGB layout $fc
 	ld [hl], e
 	ret
 
-Function8b4d:
-	call CheckCGB
-	jr nz, .cgb
-	ld a, [hSGB]
-	and a
-	ret z
-	ld hl, PalPacket_9c26
-	jp Function9809
-
-.cgb
-	ld de, UnknOBPals
-	ld a, $3b
-	call GetPredefPal
-	jp LoadHLPaletteIntoDE
-
-Function8b67:
-	call CheckCGB
-	jr nz, .cgb
-	ld a, [hSGB]
-	and a
-	ret z
-	ld hl, PalPacket_9c36
-	jp Function9809
-
-.cgb
-	ld de, UnknOBPals
-	ld a, $3c
-	call GetPredefPal
-	jp LoadHLPaletteIntoDE
-
 ApplyMonOrTrainerPals:
 	call CheckCGB
 	ret z

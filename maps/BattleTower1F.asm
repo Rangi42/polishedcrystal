@@ -414,11 +414,11 @@ Text_BattleTowerYoungster: ; 0x9f264
 	done
 
 Text_BattleTowerCooltrainerF: ; 0x9f2a4
-	text "There are lots of"
-	line "Battle Rooms, but"
+	text "I got five Carbos"
+	line "when I won!"
 
-	para "I'm going to win"
-	line "them all!"
+	para "That's enough to"
+	line "evolve my Haunter!"
 	done
 
 Text_BattleTowerGranny: ; 0x9f2e3
