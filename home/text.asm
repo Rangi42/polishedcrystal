@@ -232,7 +232,6 @@ dict2: macro
 ._\@:
 endm
 
-	dict "<DAY>", Char15
 	dict "<LINE>", LineChar
 	dict "<NEXT>", NextLineChar
 	dict TX_FAR, TextFar
@@ -270,9 +269,9 @@ endm
 	dict "<PLAY_G>", PlaceGenderedPlayerName
 
 	cp "ﾟ"
-	jr z, .place ; should be .diacritic
+	jr z, .diacritic
 	cp "ﾞ"
-	jr z, .place ; should be .diacritic
+	jr z, .diacritic
 	jr .not_diacritic
 
 .diacritic
@@ -315,15 +314,6 @@ endm
 	call PrintLetterDelay
 	jp NextChar
 ; 0x117b
-
-
-Char15:: ; 117b
-	ld c, l
-	ld b, h
-	callba Function17f036
-	jp PlaceNextChar
-; 1186
-
 
 print_name: macro
 	push de

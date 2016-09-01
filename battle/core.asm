@@ -8586,7 +8586,6 @@ DetermineMobileBattleResult: ; 3f77c
 .store_result
 	hlcoord 6, 8
 	call PlaceString
-	callba BackupMobileEventIndex
 	ld c, 200
 	call DelayFrames
 

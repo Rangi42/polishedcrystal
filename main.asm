@@ -5950,7 +5950,20 @@ INCLUDE "engine/warp_connection.asm"
 
 INCLUDE "battle/used_move_text.asm"
 
-INCLUDE "misc/mobile_41.asm"
+LoadOverworldFont:: ; 106594
+	ld de, .bgfont
+	ld hl, VTiles1
+	lb bc, BANK(.bgfont), $80
+	call Get2bpp
+	ld de, .bgfont + $80 tiles
+	ld hl, VTiles2 tile $7f
+	lb bc, BANK(.bgfont), 1
+	call Get2bpp
+	ret
+; 1065ad
+
+.bgfont
+INCBIN "gfx/misc/font_popup.2bpp"
 
 SECTION "bank42", ROMX, BANK[$42]
 

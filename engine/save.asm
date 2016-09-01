@@ -110,7 +110,6 @@ Function14ad5: ; 14ad5
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	callba BackupPartyMonMail
-	callba BackupMobileEventIndex
 	callba SaveRTC
 	call LoadBox
 	call ClearWRAMStateAfterSave
@@ -287,7 +286,6 @@ SaveGameData_: ; 14c10
 	call SaveBackupChecksum
 	call UpdateStackTop
 	callba BackupPartyMonMail
-	callba BackupMobileEventIndex
 	callba SaveRTC
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
@@ -622,7 +620,6 @@ TryLoadSaveFile: ; 14ea5 (5:4ea5)
 	call LoadPokemonData
 	call LoadBox
 	callba RestorePartyMonMail
-	callba RestoreMobileEventIndex
 	call ValidateBackupSave
 	call SaveBackupOptions
 	call SaveBackupPlayerData
@@ -638,7 +635,6 @@ TryLoadSaveFile: ; 14ea5 (5:4ea5)
 	call LoadBackupPokemonData
 	call LoadBox
 	callba RestorePartyMonMail
-	callba RestoreMobileEventIndex
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData

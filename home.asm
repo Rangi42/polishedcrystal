@@ -378,19 +378,6 @@ PrintNum:: ; 3198
 	ret
 ; 31a4
 
-MobilePrintNum:: ; 31a4
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_MobilePrintNum)
-	rst Bankswitch
-
-	call _MobilePrintNum
-
-	pop af
-	rst Bankswitch
-	ret
-; 31b0
-
 FarPrintText:: ; 31b0
 	ld [hBuffer], a
 	ld a, [hROMBank]
@@ -539,15 +526,6 @@ CGBOnly_LoadEDTile:: ; 3238
 	jr z, WaitBGMap
 
 LoadEDTile:: ; 323d
-	jr .LoadEDTile
-; 323f
-
-; XXX
-	callba Function104000
-	ret
-; 3246
-
-.LoadEDTile: ; 3246
 	ld a, [hBGMapMode]
 	push af
 	xor a

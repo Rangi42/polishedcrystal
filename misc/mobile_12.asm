@@ -1305,43 +1305,6 @@ Function48c5a: ; 48c5a (12:4c5a)
 	ld [hl], a
 	ret
 
-Function48c63: ; 48c63
-	ld a, "@"
-	ld [de], a
-	ld a, c
-	cp $30
-	jr nc, .asm_48c8c
-	and a
-	jr z, .asm_48c8c
-	dec c
-	push de
-	ld h, d
-	ld l, e
-	ld a, "@"
-	ld b, 7
-.asm_48c76
-	ld [hli], a
-	dec b
-	jr nz, .asm_48c76
-	ld hl, Prefectures
-	ld a, c
-	call GetNthString
-.asm_48c81
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	cp "@"
-	jr nz, .asm_48c81
-	and a
-	pop de
-	ret
-
-.asm_48c8c
-	scf
-	ret
-; 48c8e
-
 Function48cda: ; 48cda (12:4cda)
 	ld h, d
 	ld l, e

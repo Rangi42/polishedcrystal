@@ -316,72 +316,6 @@ Function11854d: ; 11854d
 	dw Function118e76
 ; 11857c
 
-Function11878d: ; 11878d (46:478d)
-	ld a, [wc821]
-	bit 1, a
-	jr nz, .asm_1187af
-	bit 2, a
-	jr nz, .asm_1187d1
-	bit 0, a
-	jr nz, .asm_1187aa
-	ld a, [wcd89]
-	and $1
-	jr z, .asm_1187a7
-	ld a, $3
-	ld [rSVBK], a
-.asm_1187a7
-	jp Function119e2e
-.asm_1187aa
-	call Function118821
-	ret c
-	ret
-.asm_1187af
-	ld a, $0
-	call Function3e32
-	ld [wc300], a
-	ld a, l
-	ld [wc301], a
-	ld a, h
-	ld [wc302], a
-	ld a, $a
-	call Function3e32
-	ld a, [wc3f0]
-	ld [$c319], a
-	ld a, [wcd34]
-	ld [wcf66], a
-	ret
-.asm_1187d1
-	ld hl, wcd89
-	bit 0, [hl]
-	jr nz, .asm_118803
-	set 0, [hl]
-	ld a, $6
-	ld [rSVBK], a
-	ld de, w3_d000
-	ld bc, $1000
-	ld a, [hl]
-	sla a
-	jr c, .asm_1187f9
-	sla a
-	jr c, .asm_1187fd
-	sla a
-	jr c, .asm_1187f5
-	ld a, $24
-	jr .asm_1187ff
-.asm_1187f5
-	ld a, $28
-	jr .asm_1187ff
-.asm_1187f9
-	ld a, $2a
-	jr .asm_1187ff
-.asm_1187fd
-	ld a, $2c
-.asm_1187ff
-	call Function3e32
-	ret
-.asm_118803
-	ld a, $d3
-
 Function118805: ; 118805 (46:4805)
 	ld [wc300], a
 	xor a
@@ -394,118 +328,6 @@ Function118805: ; 118805 (46:4805)
 	ld a, [wcd34]
 	ld [wcf66], a
 	ret
-
-Function118821: ; 118821 (46:4821)
-	ld a, [$c319]
-	cp $3
-	jr c, .asm_11884a
-	cp $4
-	jr z, .asm_11884a
-	ld a, [hJoyDown]
-	cp $5
-	jr nz, .asm_11884a
-	ld a, $a
-	call Function3e32
-	ld a, $a
-	ld [wc300], a
-	ld a, [wc3f0]
-	ld [$c319], a
-	ld a, [wcd34]
-	ld [wcf66], a
-	scf
-	ret
-.asm_11884a
-	and a
-	ret
-; 11884c (46:484c)
-
-Function11886e:
-	xor a
-	ld [BGMapPalBuffer], a
-	ld a, $0
-	ld [wcd3c], a
-	call Function119e2e
-	ld a, [wcd33]
-	ld [wcd45], a
-
-Function118880: ; 118880 (46:4880)
-	call Function119ed8
-	ret c
-	xor a
-	ld [wcf64], a
-	ld [wc807], a
-	ld de, wcd81
-	ld hl, $46
-	ld a, $2
-	jp Function119e2b
-; 118896 (46:4896)
-
-Function1188b0: ; 1188b0 (46:48b0)
-	ld de, $c346
-	ld a, $c
-	jp Function119e2b
-
-Function1188b8: ; 1188b8 (46:48b8)
-	ld de, wc3ac
-	ld a, $e
-	jp Function119e2b
-
-Function1188c0: ; 1188c0 (46:48c0)
-	ld de, wc3cd
-	ld a, $10
-	jp Function119e2b
-
-Function1188c8: ; 1188c8 (46:48c8)
-	ld a, $1
-	ld [wcd65], a
-	call Function1188e7
-	ld hl, $c708
-.asm_1188d3
-	ld a, [de]
-	inc de
-	ld [hli], a
-	and a
-	jr nz, .asm_1188d3
-	call Function119eb4
-	call Function119ec2
-	ld hl, $c708
-	ld a, $6
-	jp Function119e2b
-
-Function1188e7: ; 1188e7 (46:48e7)
-	ld de, $c346
-	ld a, $5
-	call GetSRAMBank
-	ld a, [$aa4a]
-	call CloseSRAM
-	and a
-	ret z
-	sla a
-	ld c, a
-.asm_1188fa
-	ld a, [de]
-	inc de
-	and a
-	jr nz, .asm_1188fa
-	dec c
-	jr nz, .asm_1188fa
-	ret
-
-Function118903: ; 118903 (46:4903)
-	ld a, [wc3f0]
-	ld [$c319], a
-	ld c, $1
-	callba Function115e18
-	ld a, $8
-	ld [wcd3c], a
-	call Function119ed8
-	jp Function119e2e
-
-
-Function11891c: ; 11891c
-	call Function118b42
-	jp Function119e2e
-
 
 Function118922: ; 118922
 	ld hl, Text_WhatLevelDoYouWantToChallenge
@@ -679,123 +501,13 @@ Function118982:
 	ld [wcd46], a
 	ret
 
-Function118a7a: ; 118a7a
-	ld hl, BattleDownloadURL
-	ld de, wcc60
-	ld bc, $80
-	call CopyBytes
-	ld de, w3_d000
-	ld bc, $1000
-	push de
-	push bc
-	ld a, $8
-	ld [wcd3c], a
-	call Function119ed8
-	call Function118b24
-	pop bc
-	pop de
-	ld a, $2a
-	jp Function119e2b
-
-Function118b24: ; 118b24 (46:4b24)
-	ld hl, $c346
-	ld a, $8
-	ld [hli], a
-	ld a, $c7
-	ld [hli], a
-	ld a, $60
-	ld [hli], a
-	ld a, $cc
-	ld [hli], a
-	call Function119eb4
-	call Function119ec2
-	ld a, $80
-	ld [wcd89], a
-	ld hl, $c346
-	ret
-; 118b42 (46:4b42)
-
-Function118b42: ; 118b42
-	ld hl, wd002
-	ld a, l
-	ld [wcd51], a
-	ld a, h
-	ld [wcd52], a
-	call Function118b8c
-	ld a, l
-	ld [wcd55], a
-	ld [wcd59], a
-	ld a, h
-	ld [wcd56], a
-	ld [wcd5a], a
-	call Function118b8c
-	ld a, l
-	ld [wcd53], a
-	ld [wcd5d], a
-	ld a, h
-	ld [wcd54], a
-	ld [wcd5e], a
-	call Function118b8c
-	ld a, l
-	ld [wcd57], a
-	ld [wcd5b], a
-	ld a, h
-	ld [wcd58], a
-	ld [wcd5c], a
-	call Function118b8c
-	ld a, l
-	ld [wcd5f], a
-	ld a, h
-	ld [wcd60], a
-	ret
-; 118b8c
-
-Function118b8c: ; 118b8c
-.asm_118b8c
-	call Function118b9a
-	ret nc
-	ld a, [hli]
-	cp $d
-	jr nz, .asm_118b8c
-	dec hl
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ret
-; 118b9a
-
-Function118b9a: ; 118b9a
-	ld a, h
-	cp $e0
-	ret c
-	ld a, $d3
-	call Function118805
-	and a
-	ret
-; 118ba5
-
 
 	charmap " ", $20 ; revert to ascii
-
-BattleDownloadURL: ; 0x118bf7
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/battle/index.txt", 0
-
-Function118e6d: ; 118e6d (46:4e6d)
-	xor a
-	ld [wcd65], a
-	ld a, $a
-	jp Function119e2b
 
 Function118e76: ; 118e76 (46:4e76)
 	ld a, $c
 	ld [wcd3c], a
 	jp Function119e2e
-
-Function118e7e: ; 118e7e (46:4e7e)
-	call Function119ed8
-	ret c
-	ld a, $36
-	jp Function119e2b
 
 Function118e87: ; 118e87 (46:4e87)
 	ret
@@ -1063,66 +775,6 @@ Function1195c4: ; 1195c4 (46:55c4)
 SECTION "bank46_2", ROMX, BANK[$46]
 ; A hack to use ascii above.
 
-Function1198f7:
-	ld a, [$c31a]
-	and a
-	ret nz
-	ld hl, $c608 + 2
-	call Function119940
-	ld hl, w3_d800
-	ld a, $c608 % $100
-	ld [hli], a
-	ld a, $c608 / $100
-	ld [hli], a
-	ld a, $f6
-	ld [hli], a
-	xor a
-	ld [hli], a
-	ld a, $c708 % $100
-	ld [hli], a
-	ld a, $c708 / $100
-	ld [hli], a
-	ld a, [wcd51]
-	ld [hli], a
-	ld a, [wcd52]
-	ld [hli], a
-	call Function119eb4
-	call Function119ec2
-	ld a, $40
-	ld [wcd89], a
-	ld hl, w3_d800
-	ld de, $de00
-	ld bc, $0200
-	ld a, $2c
-	jp Function119e2b
-; 119937
-
-Function119937: ; 119937
-	callba Special_BattleTower_Action06
-	jp Function119e2e
-; 119940
-
-Function119940: ; 119940
-	ld de, wc3cd
-	ld c, $1e
-.asm_119945
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec c
-	jr z, .asm_119953
-	and a
-	jr nz, .asm_119945
-	xor a
-.asm_11994f
-	ld [hli], a
-	dec c
-	jr nz, .asm_11994f
-
-.asm_119953
-	ret
-; 119954
-
 Function119c97: ; 119c97
 	ld hl, Text_UberRestriction
 	call Function11a9c0
@@ -1303,41 +955,11 @@ Function119dd1: ; 119dd1 (46:5dd1)
 	ret
 ; 119e2b (46:5e2b)
 
-Function119e2b: ; 119e2b (46:5e2b)
-	call Function3e32
-
 Function119e2e: ; 119e2e (46:5e2e)
 	ld hl, wcf66
 	inc [hl]
 	ret
 ; 119e33 (46:5e33)
-
-Function119eb4: ; 119eb4 (46:5eb4)
-	xor a
-	ld [wc3cc], a
-	ld de, wc3ac
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	and a
-	jr nz, .loop
-	ret
-
-Function119ec2: ; 119ec2 (46:5ec2)
-	ld a, $5
-	call GetSRAMBank
-	xor a
-	ld [sMobileLoginPassword + LOGIN_PASSWORD_LENGTH], a
-	ld de, sMobileLoginPassword + 1
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	and a
-	jr nz, .loop
-	call CloseSRAM
-	ret
 
 Function119ed8: ; 119ed8 (46:5ed8)
 	ld a, [rSVBK]
