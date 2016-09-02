@@ -43,6 +43,19 @@ HealPartyMon: ; c677
 	dec bc
 	dec bc
 
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jr z, .Revive
+	ld a, [bc]
+	push hl
+	ld h, b
+	ld l, c
+	inc hl
+	or [hl]
+	pop hl
+	jr z, .Done
+
+.Revive:
 	ld a, [hli]
 	ld [bc], a
 	inc bc
@@ -50,6 +63,7 @@ HealPartyMon: ; c677
 	ld [bc], a
 
 	callba RestoreAllPP
+.Done:
 	ret
 
 ComputeHPBarPixels: ; c699

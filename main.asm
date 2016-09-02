@@ -3285,8 +3285,12 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld de, wMonOrItemNameBuffer
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jr nz, .AlwaysNickname
 	call GiveANickname_YesNo
 	jr c, .Party_SkipNickname
+.AlwaysNickname:
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
@@ -3348,9 +3352,13 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jr nz, .AlwaysNicknameBox
 	call GiveANickname_YesNo
 	ld hl, StringBuffer1
 	jr c, .Box_SkipNickname
+.AlwaysNicknameBox:
 	ld a, BOXMON
 	ld [MonType], a
 	ld de, wMonOrItemNameBuffer

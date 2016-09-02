@@ -582,6 +582,10 @@ endr
 	ld [hl], a
 .SkipPartyMonFriendBall:
 
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jr nz, .AlwaysNickname
+
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 
@@ -592,6 +596,7 @@ endr
 	call YesNoBox
 	jp c, .return_from_capture
 
+.AlwaysNickname:
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
@@ -1726,6 +1731,10 @@ StatusHealer_Jumptable: ; f09e (3:709e)
 
 
 RevivalHerb: ; f0a9
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jp nz, IsntTheTimeMessage
+
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, StatusHealer_ExitMenu
@@ -1746,6 +1755,10 @@ RevivalHerb: ; f0a9
 
 Revive:
 MaxRevive: ; f0c8
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jp nz, IsntTheTimeMessage
+
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, StatusHealer_ExitMenu
@@ -2917,6 +2930,10 @@ BasementKey: ; f74c
 
 
 SacredAsh: ; f753
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jp nz, IsntTheTimeMessage
+
 	callba _SacredAsh
 	ld a, [wItemEffectSucceeded]
 	cp $1
