@@ -285,6 +285,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient stat exp in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is sufficient).
 * Add: Replace Synthesis with Hurricane.
 * Add: Meet Falkner in Dark Cave to make him return to the gym, encouraging the player to beat Sprout Tower first.
+* Add: Optional Nuzlocke mode (can't revive fainted Pokémon, catch only the first non-duplicate on a route, always nickname Pokémon)
 * Add: Lyra is your friendly rival.
    * Battle Lyra in Prof. Elm's lab.
    * Lyra defends you after the Pokémon theft (from HG/SS).

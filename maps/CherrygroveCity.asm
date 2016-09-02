@@ -396,7 +396,7 @@ GuideGentSeaText:
 	line "as you can see."
 
 	para "Route 32 is just"
-	line "across this bay."
+	line "across the bay."
 	done
 
 GuideGentGiftText:

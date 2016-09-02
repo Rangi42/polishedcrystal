@@ -208,6 +208,27 @@ TimerBall:
 QuickBall:
 DuskBall:
 ParkBall: ; e8a2
+	; Only check landmark flags in a Nuzlocke run
+	ld a, [Options2]
+	bit NUZLOCKE_MODE, a
+	jr z, .NoNuzlockeCheck
+	; Get current landmark
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	ld c, a
+	ld hl, NuzlockeLandmarkFlags
+	; Use landmark as index into flag array
+	ld b, CHECK_FLAG
+	ld d, $0
+	predef FlagPredef
+	ld a, c
+	and a
+	jp nz, Ball_NuzlockeFailureMessage
+
+.NoNuzlockeCheck
 	ld a, [wBattleMode]
 	dec a
 	jp nz, UseBallInTrainerBattle
@@ -514,7 +535,20 @@ endr
 
 	call ClearSprites
 
+	; Get current landmark
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	; Use landmark as index into flag array
+	ld c, a
+	ld hl, NuzlockeLandmarkFlags
+	ld b, SET_FLAG
+	predef FlagPredef
+
 	callba GiveExperiencePointsAfterCatch
+
 	ld a, [EnemyMonLevel]
 	ld [CurPartyLevel], a
 	pop af
@@ -1733,7 +1767,7 @@ StatusHealer_Jumptable: ; f09e (3:709e)
 RevivalHerb: ; f0a9
 	ld a, [Options2]
 	and 1 << NUZLOCKE_MODE
-	jp nz, IsntTheTimeMessage
+	jp nz, Revive_NuzlockeFailureMessage
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
@@ -1757,7 +1791,7 @@ Revive:
 MaxRevive: ; f0c8
 	ld a, [Options2]
 	and 1 << NUZLOCKE_MODE
-	jp nz, IsntTheTimeMessage
+	jp nz, Revive_NuzlockeFailureMessage
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
@@ -1877,10 +1911,10 @@ BitterBerry: ; f16a
 ; f186
 
 
-MaxPotion:
-HyperPotion:
-SuperPotion:
 Potion:
+SuperPotion:
+HyperPotion:
+MaxPotion:
 FreshWater:
 SodaPop:
 Lemonade:
@@ -2932,7 +2966,7 @@ BasementKey: ; f74c
 SacredAsh: ; f753
 	ld a, [Options2]
 	and 1 << NUZLOCKE_MODE
-	jp nz, IsntTheTimeMessage
+	jp nz, Revive_NuzlockeFailureMessage
 
 	callba _SacredAsh
 	ld a, [wItemEffectSucceeded]
@@ -3092,6 +3126,26 @@ Ball_BoxIsFullMessage: ; f7dc
 	ret
 ; f7e8
 
+Ball_NuzlockeFailureMessage:
+	ld hl, Ball_NuzlockeFailureText
+	call PrintText
+
+	; Item wasn't used.
+	ld a, $2
+	ld [wItemEffectSucceeded], a
+	ret
+; f7e8
+
+Revive_NuzlockeFailureMessage:
+	ld hl, Revive_NuzlockeFailureText
+	call PrintText
+
+	; Item wasn't used.
+	ld a, $2
+	ld [wItemEffectSucceeded], a
+	ret
+; f7e8
+
 CantUseOnEggMessage: ; f7e8
 	ld hl, CantUseOnEggText
 	jr CantUseItemMessage
@@ -3181,6 +3235,16 @@ Ball_BoxIsFullText: ; 0xf838
 	text_jump UnknownText_0x1c5e3a
 	db "@"
 ; 0xf83d
+
+Ball_NuzlockeFailureText:
+	; You already encountered a #MON here.
+	text_jump Text_NuzlockeBallFailure
+	db "@"
+
+Revive_NuzlockeFailureText:
+	; You can't revive #MON in NUZLOCKE mode!
+	text_jump Text_NuzlockeReviveFailure
+	db "@"
 
 UsedItemText: ; 0xf83d
 	; used the@ .

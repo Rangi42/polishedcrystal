@@ -118,3 +118,5 @@ KANTO_LANDMARK EQU const_value
 	const FAST_SHIP         ; 6f
 	const NAVEL_ROCK        ; 70
 	const FARAWAY_ISLAND    ; 71
+
+NUM_LANDMARKS EQU const_value

@@ -2609,8 +2609,6 @@ EventFlags:: ; da72
 	flag_array NUM_EVENTS
 ; db6c
 
-	ds 6
-
 wCurBox:: ; db72
 	ds 1
 
@@ -2680,7 +2678,7 @@ wStartDay:: ds 1
 
 FruitTreeFlags:: flag_array NUM_FRUIT_TREES ; dc27
 
-	ds 2
+NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 wLuckyNumberDayBuffer:: ds 2
 	ds 2
@@ -2701,7 +2699,6 @@ wYanmaMapGroup:: ds 1 ; dc5a
 wYanmaMapNumber:: ds 1
 wdc5c:: ds 3
 wdc5f:: ds 1
-wdc60:: ds 19
 
 StepCount:: ; dc73
 	ds 1

@@ -8404,6 +8404,7 @@ InitEnemyWildmon: ; 3f607
 
 ExitBattle: ; 3f69e
 	call .HandleEndOfBattle
+	call HandleNuzlockeFlags
 	call CleanUpBattleRAM
 	ret
 ; 3f6a5
@@ -8429,6 +8430,38 @@ ExitBattle: ; 3f69e
 	callba GivePokerus
 	ret
 ; 3f6d0
+
+HandleNuzlockeFlags:
+	ld a, [wBattleMode]
+	cp WILD_BATTLE
+	ret nz
+
+	; Don't count duplicate encounters
+	ld a, [EnemyMonSpecies]
+	dec a
+	call CheckCaughtMon
+	ret nz
+
+	; Only flag landmarks for Nuzlocke runs after getting Poké Balls
+	ld de, EVENT_LEARNED_TO_CATCH_POKEMON
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret z
+
+	; Get current landmark
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	; Use landmark as index into flag array
+	ld c, a
+	ld hl, NuzlockeLandmarkFlags
+	ld b, SET_FLAG
+	predef FlagPredef
+	ret
 
 CleanUpBattleRAM: ; 3f6d0
 	call BattleEnd_HandleRoamMons

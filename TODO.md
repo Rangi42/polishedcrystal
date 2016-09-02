@@ -81,7 +81,6 @@
 * Restore [unused memory game](http://iimarck.us/i/memory/)
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
-* Optional Locke mode where fainted Pokémon cannot be revived (Max/Revive, Revival Herb, and Sacred Ash still fix HP and status so they aren't useless)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
 * More Bag pockets (split Items into Items, Medicine, and Berries)
