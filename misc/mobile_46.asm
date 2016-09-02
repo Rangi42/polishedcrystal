@@ -145,7 +145,7 @@ Function11854d: ; 11854d
 	dw Function119cab
 	dw Function119cb8
 	dw Function118e76
-	dw Function118e87
+	dw JustReturn
 	dw Function118e76
 ; 11857c
 
@@ -321,20 +321,10 @@ Function118982:
 	ld [wcd46], a
 	ret
 
-
-	charmap " ", $20 ; revert to ascii
-
 Function118e76: ; 118e76 (46:4e76)
 	ld a, $c
 	ld [wcd3c], a
 	jp Function119e2e
-
-Function118e87: ; 118e87 (46:4e87)
-	ret
-; 118e92 (46:4e92)
-
-SECTION "bank46_2", ROMX, BANK[$46]
-; A hack to use ascii above.
 
 Function119c97: ; 119c97
 	ld hl, Text_UberRestriction
@@ -544,18 +534,18 @@ Function119ed8: ; 119ed8 (46:5ed8)
 	jumptable .Jumptable, wcd3c
 
 .Jumptable:
-	dw Function119f3f
+	dw JustReturn
 	dw JustReturn
 	dw Decrement_wcd44
 	dw Decrement_wcd44
 	dw JustReturn
 	dw JustReturn
 	dw Function11a129
-	dw Function11a131
-	dw Function11a13d
+	dw Decrement_wcd44
+	dw JustReturn
 	dw Function11a14b
 	dw Decrement_wcd44
-	dw Function11a192
+	dw RespondToInput46
 	dw JustReturn
 	dw Decrement_wcd44
 	dw Function11a33a
@@ -563,26 +553,21 @@ Function119ed8: ; 119ed8 (46:5ed8)
 	dw Function11a235
 	dw JustReturn
 	dw Decrement_wcd44
-	dw Function11a38d
+	dw RespondToInput46
 	dw JustReturn
 	dw Decrement_wcd44
 	dw Decrement_wcd44
-	dw Function11a41b
+	dw RespondToInput46
 	dw JustReturn
-	dw Function11a47a
+	dw DecrementFloor_wcd44
 	dw JustReturn
-	dw Function11a49e
+	dw RespondToInput46
 	dw JustReturn
 	dw JustReturn
-	dw Function11a4fe
+	dw RespondToInput46
 	dw JustReturn
-	dw Function11a47a
+	dw DecrementFloor_wcd44
 ; 119f3f
-
-Function119f3f: ; 119f3f
-	call Function11a5b9
-	jp Increment_wcd3c
-; 119f45
 
 Function11a129: ; 11a129
 	ld a, $80
@@ -590,59 +575,12 @@ Function11a129: ; 11a129
 	jp Increment_wcd3c
 ; 11a131
 
-Function11a131: ; 11a131
-	ld hl, wcd44
-	dec [hl]
-	ret nz
-	ld a, [wcd3c]
-	inc a
-	ld [wcd3c], a
-
-Function11a13d:
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	and a
-	ret
-; 11a14b
-
 Function11a14b: ; 11a14b
 	ld hl, wcd85
 	ld a, [hl]
 	and a
 	ret
 ; 11a16d
-
-Function11a192: ; 11a192
-	call Function11a536
-	ret c
-	call PlayClickSFX
-	ld a, [wcd44]
-	and a
-	jr nz, .asm_11a1b6
-	call ExitMenu
-	callba ReloadMapPart
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	and a
-	ret
-
-.asm_11a1b6
-	call ExitMenu
-	callba ReloadMapPart
-	ld a, [wcd45]
-	ld [wcf66], a
-	ld [wcd80], a
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	scf
-	ret
-; 11a1d6
 
 Function11a207: ; 11a207
 	ld hl, MenuDataHeader_YesNo_46
@@ -793,59 +731,7 @@ Decrement_wcd44: ; 11a36b
 	scf
 	ret
 
-Function11a38d: ; 11a38d
-	call Function11a536
-	ret c
-	call PlayClickSFX
-	ld a, [wcd44]
-	and a
-	jr nz, .asm_11a3b1
-	call ExitMenu
-	callba ReloadMapPart
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	and a
-	ret
-
-.asm_11a3b1
-	call ExitMenu
-	callba ReloadMapPart
-	ld a, [wcd45]
-	ld [wcf66], a
-	ld [wcd80], a
-	scf
-	ret
-; 11a3c5
-
-Function11a41b: ; 11a41b
-	call Function11a536
-	ret c
-	call PlayClickSFX
-	ld a, [wcd44]
-	and a
-	jr nz, .asm_11a43f
-	call ExitMenu
-	callba ReloadMapPart
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	and a
-	ret
-
-.asm_11a43f
-	call ExitMenu
-	callba ReloadMapPart
-	ld a, $1c
-	ld [wcf66], a
-	ld [wcd80], a
-	scf
-	ret
-; 11a452
-
-Function11a47a: ; 11a47a
+DecrementFloor_wcd44: ; 11a47a
 	ld a, [wcd44]
 	and a
 	jr z, .asm_11a486
@@ -859,74 +745,20 @@ Function11a47a: ; 11a47a
 	ret
 ; 11a488
 
-Function11a49e: ; 11a49e
-	call Function11a536
-	ret c
-	call PlayClickSFX
-	ld a, [wcd44]
-	and a
-	jr nz, .asm_11a4c7
-	call ExitMenu
-	callba ReloadMapPart
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	ld a, $14
-	ld [wcf66], a
-	and a
-	ret
-
-.asm_11a4c7
-	call ExitMenu
-	callba ReloadMapPart
-	ld a, [wcd46]
-	ld [wcf66], a
-	ld [wcd80], a
-	scf
-	ret
-; 11a4db
-
-Function11a4fe: ; 11a4fe
-	call Function11a536
-	ret c
-	call PlayClickSFX
-	ld a, [wcd44]
-	and a
-	jr nz, .asm_11a522
-	call ExitMenu
-	callba ReloadMapPart
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6d2
-	call PlaceString
-	and a
-	ret
-
-.asm_11a522
-	call ExitMenu
-	callba ReloadMapPart
-	ld a, [wcd45]
-	ld [wcf66], a
-	ld [wcd80], a
-	scf
-	ret
-; 11a536
-
-Function11a536: ; 11a536
+RespondToInput46: ; 11a536
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and $1
-	jr nz, .asm_11a5a7
+	and A_BUTTON
+	jr nz, .press_a
 	ld a, [hl]
-	and $2
-	jr nz, .asm_11a5a2
+	and B_BUTTON
+	jr nz, .press_b
 	ld a, [hl]
-	and $40
-	jr nz, .asm_11a564
+	and D_UP
+	jr nz, .press_up
 	ld a, [hl]
-	and $80
-	jr nz, .asm_11a583
+	and D_DOWN
+	jr nz, .press_down
 .asm_11a54d
 	ld a, [wcd3c]
 	cp $4
@@ -940,7 +772,7 @@ Function11a536: ; 11a536
 	scf
 	ret
 
-.asm_11a564
+.press_up
 	xor a
 	ld [wcd8a], a
 	ld [wcd8b], a
@@ -957,7 +789,7 @@ Function11a536: ; 11a536
 	ld [hl], a
 	jr .asm_11a54d
 
-.asm_11a583
+.press_down
 	xor a
 	ld [wcd8a], a
 	ld [wcd8b], a
@@ -974,11 +806,11 @@ Function11a536: ; 11a536
 	ld [hl], a
 	jr .asm_11a54d
 
-.asm_11a5a2
+.press_b
 	ld a, $1
 	ld [wcd44], a
 
-.asm_11a5a7
+.press_a
 	xor a
 	ld [wcd8a], a
 	ld [wcd8b], a
@@ -993,55 +825,6 @@ Increment_wcd3c: ; 11a5b0
 	scf
 	ret
 ; 11a5b9
-
-Function11a5b9: ; 11a5b9
-	xor a
-	ld [wMenuBorderLeftCoord], a
-	ld [wMenuBorderTopCoord], a
-	ld a, $13
-	ld [wMenuBorderRightCoord], a
-	ld a, $5
-	ld [wMenuBorderBottomCoord], a
-	call PushWindow
-	hlcoord 0, 0, AttrMap
-	ld b, $6
-	ld c, $14
-	hlcoord 0, 0
-	ld b, $4
-	ld c, $12
-	call Function3eea
-	callba ReloadMapPart
-	call UpdateSprites
-	ld c, $0
-	callba Function115e18
-	ld a, $1
-	ld [wc305], a
-	ret
-; 11a5f5
-
-Function11a63c: ; 11a63c
-	hlcoord 4, 1
-	ld de, String_11a7f4
-	call PlaceString
-	hlcoord 4, 2
-	ld de, String_11a7f4
-	call PlaceString
-	hlcoord 4, 3
-	ld de, String_11a7f4
-	call PlaceString
-	hlcoord 4, 4
-	ld de, String_11a7f4
-	call PlaceString
-	ret
-; 11a661
-
-String_11a6d2: ; 11a6d2
-	db   "つうしん ちゅう@"
-; 11a6db
-
-String_11a7f4: ; 11a7f4
-	db   "               @"
-; 11a804
 
 Function11a8fa: ; 11a8fa
 	jumptable .Jumptable, $c31a
@@ -1208,6 +991,7 @@ Text_WhatLevelDoYouWantToChallenge: ; 0x11aba5
 	done
 ; 0x11abcb
 
+; TODO: move to the same file as Odd, Shiny Ditto, and Mystri Egg data
 AddMobileMonToParty: ; 11b98f
 	ld hl, PartyCount
 	ld a, [hl]
