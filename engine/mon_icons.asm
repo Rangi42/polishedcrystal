@@ -1,7 +1,6 @@
 LoadOverworldMonIcon: ; 8e82b
 	ld a, e
 	ld [CurIcon], a
-	call ReadMonMenuIcon
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -164,7 +163,6 @@ InitPartyMenuIcon: ; 8e908 (23:6908)
 	ld d, $0
 	add hl, de
 	ld a, [hl]
-	call ReadMonMenuIcon
 	ld [CurIcon], a
 	call GetMemIconGFX
 	ld a, [hObjectStructIndexBuffer]
@@ -219,7 +217,6 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 
 Function8e961: ; 8e961 (23:6961)
 	ld a, [wd265]
-	call ReadMonMenuIcon
 	ld [CurIcon], a
 	xor a
 	call GetIconGFX
@@ -233,7 +230,6 @@ Function8e961: ; 8e961 (23:6961)
 
 Function8e97d: ; 8e97d (23:697d)
 	ld a, [wd265]
-	call ReadMonMenuIcon
 	ld [CurIcon], a
 	xor a
 	call GetIconGFX
@@ -248,7 +244,6 @@ Function8e97d: ; 8e97d (23:697d)
 
 Trade_LoadMonIconGFX: ; 8e99a (23:699a)
 	ld a, [wd265]
-	call ReadMonMenuIcon
 	ld [CurIcon], a
 	ld a, $62
 	ld [wCurIconTile], a
@@ -259,7 +254,6 @@ GetSpeciesIcon: ; 8e9ac
 ; Load species icon into VRAM at tile a
 	push de
 	ld a, [wd265]
-	call ReadMonMenuIcon
 	ld [CurIcon], a
 	pop de
 	ld a, e
@@ -271,7 +265,6 @@ GetSpeciesIcon: ; 8e9ac
 FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
 	push de
 	ld a, [wd265]
-	call ReadMonMenuIcon
 	ld [CurIcon], a
 	pop de
 	ld a, e
@@ -430,5 +423,3 @@ HoldSwitchmonIcon: ; 8ea8c
 	dec e
 	jr nz, .loop
 	ret
-
-INCLUDE "menu/mon_icons.asm"

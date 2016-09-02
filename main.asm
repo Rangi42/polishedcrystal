@@ -5224,6 +5224,9 @@ INCLUDE "engine/sprites.asm"
 
 INCLUDE "engine/mon_icons.asm"
 
+INCLUDE "gfx/icon_pointers.asm"
+INCLUDE "gfx/icons.asm"
+
 SECTION "bank24", ROMX, BANK[$24]
 
 INCLUDE "engine/phone.asm"
