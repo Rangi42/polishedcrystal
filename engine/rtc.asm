@@ -126,7 +126,6 @@ Function140ae: ; 140ae
 .time_overflow
 	callba ClearDailyTimers
 	callba Function170923
-; mobile
 	ld a, $5
 	call GetSRAMBank
 	ld a, [$aa8c]

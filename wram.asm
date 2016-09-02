@@ -1053,11 +1053,7 @@ wccba:: ds 102
 SECTION "Video", WRAM0
 CreditsPos::
 BGMapBuffer::
-wMobileMonSpeciesPointerBuffer:: dw
-wMobileMonStructurePointerBuffer:: dw
-wMobileMonOTNamePointerBuffer:: dw
-wMobileMonNicknamePointerBuffer:: dw
-wMobileMonMailPointerBuffer:: dw
+	ds 10
 	ds CreditsPos - @
 
 wcd20:: ds 1
@@ -1073,7 +1069,6 @@ wcd26:: ds 1
 wcd27:: ds 1
 wcd28:: ds 1
 wcd29:: ds 1
-wMobileMonSpeciesBuffer::
 wcd2a:: ds 1
 wTempOddEggNickname::
 wcd2b:: ds 1
@@ -1509,7 +1504,6 @@ wNumRadioLinesPrinted::
 wMartItem2BCD::
 	ds 1
 wd006::
-wMobileParticipant1Nickname::
 LuckyNumberDigit5Buffer::
 EndFlypoint:: ; d006
 wOaksPkmnTalkSegmentCounter::
@@ -1529,7 +1523,6 @@ wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
 	ds wRadioText - @
 
-wMobileParticipant2Nickname::
 wd00c:: ds 1
 wd00d:: ds 1
 wMartItem5BCD::
@@ -1538,7 +1531,6 @@ wd00f:: ds 1
 wd010:: ds 1
 wMartItem6BCD::
 wd011:: ds 1
-wMobileParticipant3Nickname::
 wd012:: ds 1
 wd013:: ds 1
 wMartItem7BCD::
@@ -2702,8 +2694,7 @@ wSpecialPhoneCallID:: ds 1
 	ds 3
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
 wUnusedTwoDayTimerOn:: ds 3 ; unused
-	ds 4 ; dc39
-wMobileOrCable_LastSelection:: ds 1
+	ds 5 ; dc39
 wdc41:: ds 1
 wdc42:: ds 8
 wBuenasPassword:: ds 1

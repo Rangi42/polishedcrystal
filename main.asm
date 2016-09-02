@@ -2291,7 +2291,7 @@ CheckCanLearnMoveTutorMove: ; 492b9
 	db 12, 00 ; start coords
 	db 17, 19 ; end coords
 
-INCLUDE "tilesets/custom_palettes.asm"
+INCLUDE "tilesets/palettes.asm"
 
 INCLUDE "event/celebi.asm"
 INCLUDE "engine/main_menu.asm"
@@ -6241,8 +6241,6 @@ SECTION "bank7E", ROMX, BANK[$7E]
 
 INCLUDE "data/battle_tower.asm"
 INCLUDE "data/odd_eggs.asm"
-INCLUDE "engine/shiny_ditto_egg.asm"
-INCLUDE "engine/mystri_egg.asm"
 
 SECTION "bank7F", ROMX, BANK[$7F]
 
