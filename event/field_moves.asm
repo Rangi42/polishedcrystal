@@ -14,7 +14,7 @@ BlindingFlash: ; 8c7e1
 	callba UpdateTimeOfDayPal
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout
-	callba LoadOW_BGPal7
+	callba LoadBlindingFlashPalette
 	callba FadeInPalettes
 	ret
 ; 8c80a

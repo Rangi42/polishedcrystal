@@ -164,11 +164,7 @@ wc2d7:: ds 1
 wPreviousLandmark:: ds 1
 wCurrentLandmark:: ds 1
 wLandmarkSignTimer:: ds 2
-wLinkMode:: ; c2dc
-; 0 not in link battle
-; 1 link battle
-; 4 mobile battle
-	ds 1
+wLinkMode:: ds 1
 
 ScriptVar:: ; c2dd
 	ds 1
@@ -2891,6 +2887,7 @@ wMagikarpRecordHoldersName:: ds NAME_LENGTH
 wPokemonDataEnd::
 wGameDataEnd::
 
+
 SECTION "Pic Animations", WRAMX, BANK [2]
 
 TempTileMap::
@@ -2982,6 +2979,7 @@ w3_dd68:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 	ds $11c
 w3_dfec:: ds $10
 w3_dffc:: ds 4
+
 
 SECTION "GBC Video", WRAMX, BANK [5]
 
@@ -3108,16 +3106,6 @@ wSurfWaveBGEffectEnd::
 	ds -$e
 wBattleAnimEnd::
 
-SECTION "WRAM 5 MOBILE", WRAMX [$d800], BANK [5]
-w5_d800:: ds $200
-w5_da00:: ds $200
-w5_dc00:: ds $d
-w5_dc0d:: ds 4
-w5_dc11:: ds 9
-w5_dc1a:: ds $c
-w5_dc26:: ds $c
-w5_dc32:: ds $c
-w5_dc3e:: ds $c
 
 SECTION "WRAM 6", WRAMX, BANK [6]
 
@@ -3128,9 +3116,11 @@ w6_d800::
 
 INCLUDE "sram.asm"
 
+
 SECTION "WRAM 7", WRAMX, BANK [7]
 wWindowStack:: ds $1000 - 1
 wWindowStackBottom:: ds 1
+
 
 SECTION "Spinners", WRAMX
 wSpinning:: ds 1

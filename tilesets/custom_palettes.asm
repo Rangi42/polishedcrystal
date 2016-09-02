@@ -1,30 +1,13 @@
-MG_Mobile_Layout_FillBox: ; 49336
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-	ret
-; 49346
-
-LoadOW_BGPal7:: ; 49409
-	ld hl, Palette_TextBG7
-	ld de, UnknBGPals + 8 * 7
-	ld bc, 8
+LoadBlindingFlashPalette:: ; 49409
 	ld a, $5
+	ld de, UnknBGPals + 8 * 7
+	ld hl, BlindingFlashPalette
+	ld bc, 1 palettes
 	call FarCopyWRAM
 	ret
 ; 49418
 
-Palette_TextBG7: ; 49418
+BlindingFlashPalette: ; 49418
 	RGB 31, 31, 31
 	RGB 08, 19, 28
 	RGB 05, 05, 16
@@ -44,7 +27,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_RADIO_TOWER
 	jp z, .radio_tower
 	cp TILESET_CELADON_MANSION
-	jp z, .mansion_mobile
+	jp z, .celadon_mansion
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
 	cp TILESET_FARAWAY_ISLAND
@@ -90,8 +73,8 @@ LoadSpecialMapPalette: ; 494ac
 	scf
 	ret
 
-.mansion_mobile
-	call LoadMansionPalette
+.celadon_mansion
+	call LoadCeladonMansionPalette
 	scf
 	ret
 
@@ -284,86 +267,17 @@ RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
 
-LoadMansionPalette: ; 496c5
+LoadCeladonMansionPalette: ; 496c5
 	ld a, $5
 	ld de, UnknBGPals
-	ld hl, MansionPalette1
+	ld hl, CeladonMansionPalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
-	ld a, $5
-	ld de, UnknBGPals + 4 palettes
-	ld hl, MansionPalette2
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ld a, $5
-	ld de, UnknBGPals + 3 palettes
-	ld hl, MansionPalette3
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ld a, $5
-	ld de, UnknBGPals + 6 palettes
-	ld hl, MansionPalette4
-	ld bc, 1 palettes
-	call FarCopyWRAM
 	ret
-; 496fe
+; 4963d
 
-MansionPalette1: ; 4967d
-	RGB 30, 28, 26
-	RGB 19, 19, 19
-	RGB 13, 13, 13
-	RGB 07, 07, 07
-
-	RGB 30, 28, 26
-	RGB 31, 19, 24
-	RGB 30, 10, 06
-	RGB 07, 07, 07
-
-	RGB 18, 24, 09
-	RGB 15, 20, 01
-	RGB 09, 13, 00
-	RGB 07, 07, 07
-
-	RGB 30, 28, 26
-	RGB 15, 16, 31
-	RGB 09, 09, 31
-	RGB 07, 07, 07
-
-	RGB 30, 28, 26
-	RGB 31, 31, 07
-	RGB 31, 16, 01
-	RGB 07, 07, 07
-
-	RGB 26, 24, 17
-	RGB 21, 17, 07
-	RGB 16, 13, 03
-	RGB 07, 07, 07
-
-MansionPalette2: ; 496fe
-	RGB 25, 24, 23
-	RGB 20, 19, 19
-	RGB 14, 16, 31
-	RGB 07, 07, 07
-; 49706
-
-MansionPalette3: ; 496ad
-	RGB 30, 28, 26
-	RGB 17, 19, 31
-	RGB 14, 16, 31
-	RGB 07, 07, 07
-
-	RGB 31, 31, 16
-	RGB 31, 31, 16
-	RGB 14, 09, 00
-	RGB 00, 00, 00
-; 496bd
-
-MansionPalette4: ; 496bd
-	RGB 05, 05, 16
-	RGB 08, 19, 28
-	RGB 00, 00, 00
-	RGB 31, 31, 31
-; 496c5
+CeladonMansionPalette:
+INCLUDE "tilesets/celadon_mansion.pal"
 
 LoadPokeCenterPalette:
 	ld a, $5
@@ -510,42 +424,59 @@ LoadNavelRockTimePalette:
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"
 
-_InitMG_Mobile_LinkTradePalMap: ; 49797
+LinkTrade_Layout_FillBox: ; 49336
+.row
+	push bc
+	push hl
+.col
+	ld [hli], a
+	dec c
+	jr nz, .col
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .row
+	ret
+; 49346
+
+_InitLinkTradePalMap: ; 49797
 	hlcoord 0, 0, AttrMap
 	lb bc, 16, 2
 	ld a, $4
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	ld a, $3
 	ldcoord_a 0, 1, AttrMap
 	ldcoord_a 0, 14, AttrMap
 	hlcoord 2, 0, AttrMap
 	lb bc, 8, 18
 	ld a, $5
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	hlcoord 2, 8, AttrMap
 	lb bc, 8, 18
 	ld a, $6
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	hlcoord 0, 16, AttrMap
 	lb bc, 2, SCREEN_WIDTH
 	ld a, $4
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	ld a, $3
 	lb bc, 6, 1
 	hlcoord 6, 1, AttrMap
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	ld a, $3
 	lb bc, 6, 1
 	hlcoord 17, 1, AttrMap
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	ld a, $3
 	lb bc, 6, 1
 	hlcoord 6, 9, AttrMap
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	ld a, $3
 	lb bc, 6, 1
 	hlcoord 17, 9, AttrMap
-	call MG_Mobile_Layout_FillBox
+	call LinkTrade_Layout_FillBox
 	ld a, $2
 	hlcoord 2, 16, AttrMap
 	ld [hli], a
@@ -562,49 +493,20 @@ endr
 	ret
 ; 49811
 
-Function49811: ; 49811
-	ld hl, Palette_49826
-	ld de, UnknBGPals + $10
-	ld bc, $30
+LoadLinkTradePalette: ; 49811
 	ld a, $5
+	ld de, UnknBGPals + $10
+	ld hl, LinkTradePalette
+	ld bc, 6 palettes
 	call FarCopyWRAM
 	callba ApplyPals
 	ret
 ; 49826
 
-Palette_49826: ; 49826
-	RGB 04, 02, 15
-	RGB 07, 09, 31
-	RGB 31, 00, 00
-	RGB 31, 31, 31
+LinkTradePalette:
+INCLUDE "tilesets/link_trade.pal"
 
-	RGB 04, 02, 15
-	RGB 07, 09, 31
-	RGB 15, 23, 30
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 07, 09, 31
-	RGB 16, 16, 16
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 07, 09, 31
-	RGB 25, 07, 04
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 07, 09, 31
-	RGB 03, 22, 08
-	RGB 31, 31, 31
-
-	RGB 04, 02, 15
-	RGB 07, 09, 31
-	RGB 29, 28, 09
-	RGB 31, 31, 31
-; 49856
-
-InitMG_Mobile_LinkTradePalMap: ; 49856
-	call _InitMG_Mobile_LinkTradePalMap
+InitLinkTradePalMap: ; 49856
+	call _InitLinkTradePalMap
 	ret
 ; 4985a

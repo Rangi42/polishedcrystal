@@ -84,7 +84,7 @@ Function6454:: ; 6454
 	ld a, VBGMap1 / $100
 	call .Function64b9
 	call Function2e20
-	callba LoadOW_BGPal7
+	callba LoadBlindingFlashPalette
 	callba ApplyPals
 	ld a, $1
 	ld [hCGBPalUpdate], a
@@ -2291,7 +2291,7 @@ CheckCanLearnMoveTutorMove: ; 492b9
 	db 12, 00 ; start coords
 	db 17, 19 ; end coords
 
-INCLUDE "predef/crystal.asm"
+INCLUDE "tilesets/custom_palettes.asm"
 
 INCLUDE "event/celebi.asm"
 INCLUDE "engine/main_menu.asm"
