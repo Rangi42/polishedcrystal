@@ -1,56 +1,3 @@
-Function3e32:: ; 3e32
-; Mobile
-	cp $2
-	ld [$c988], a
-	ld a, l
-	ld [$c986], a
-	ld a, h
-	ld [$c987], a
-	jr nz, .asm_3e4f
-
-	ld [$c982], a
-	ld a, l
-	ld [$c981], a
-	ld hl, $c983
-	ld a, c
-	ld [hli], a
-	ld a, b
-	ld [hl], a
-
-.asm_3e4f
-	ld hl, $c822
-	set 6, [hl]
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(Function110030)
-	ld [$c981], a
-	rst Bankswitch
-
-	jp Function110030
-; 3e60
-
-Function3e60:: ; 3e60
-	ld [$c986], a
-	ld a, l
-	ld [$c987], a
-	ld a, h
-	ld [$c988], a
-
-	pop bc
-	ld a, b
-	ld [$c981], a
-	rst Bankswitch
-
-	ld hl, $c822
-	res 6, [hl]
-	ld hl, $c987
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [$c986]
-	ret
-; 3e80
-
 MobileReceive:: ; 3e80
 	ld a, [hROMBank]
 	push af
@@ -66,7 +13,6 @@ MobileReceive:: ; 3e80
 
 	ret
 ; 3e93
-
 
 Timer:: ; 3e93
 	push af

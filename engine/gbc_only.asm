@@ -134,10 +134,10 @@ DrawGBCOnlyGraphic: ; 4eb27
 
 
 GBCOnlyString: ; 4eb38
-	db   "Please report"
-	next "this crash to"
-	next "the developer,"
-	next "Rangi42.@"
+	db   "Please report this"
+	next "crash to the deve-"
+	next "loper, Rangi42, at"
+	next "tinyurl.com/pkpc2.@"
 ; 4eb76
 
 

@@ -1,9 +1,5 @@
 SECTION "bank46", ROMX, BANK[$46]
 
-Function11805e: ; 11805e (46:405e)
-	ret
-; 11805f
-
 Function118121: ; 118121
 	xor a
 	ld [wcd38], a
@@ -20,13 +16,6 @@ Function118121: ; 118121
 	ld [rSVBK], a
 .loop
 	call JoyTextDelay
-	call Function118473
-	ld a, [wcf66]
-	cp $f
-	jr c, .skip
-	ld a, [wcd34]
-	ld [wcf66], a
-.skip
 	call Function11854d
 	call Function11a8fa
 	callba Function115dd3
@@ -137,37 +126,6 @@ Function118452: ; 118452
 	ret
 ; 118473
 
-Function118473: ; 118473
-	ld a, [wcd65]
-	and a
-	ret z
-	ld a, [wcd66]
-	inc a
-	ld [wcd66], a
-	cp 60
-	ret nz
-	xor a
-	ld [wcd66], a
-	ld a, [wcd67]
-	inc a
-	ld [wcd67], a
-	cp 60
-	ret nz
-	ld a, [wcd68]
-	inc a
-	ld [wcd68], a
-	cp 99
-	jr z, .ninety_nine
-	xor a
-	ld [wcd67], a
-	ret
-
-.ninety_nine
-	xor a
-	ld [wcd65], a
-	ret
-; 1184a5
-
 Function11854d: ; 11854d
 	jumptable .Jumptable, wcf66
 ; 11855c
@@ -176,7 +134,7 @@ Function11854d: ; 11854d
 	dw Function118922
 	dw Function118936
 	dw Function118982
-	dw Function11805e
+	dw JustReturn
 	dw Function119ca2
 	dw Function119cab
 	dw Function119cb8
@@ -190,19 +148,6 @@ Function11854d: ; 11854d
 	dw Function118e87
 	dw Function118e76
 ; 11857c
-
-Function118805: ; 118805 (46:4805)
-	ld [wc300], a
-	xor a
-	ld [wc301], a
-	ld [wc302], a
-	ld a, $a
-	call Function3e32
-	ld a, [wc3f0]
-	ld [$c319], a
-	ld a, [wcd34]
-	ld [wcf66], a
-	ret
 
 Function118922: ; 118922
 	ld hl, Text_WhatLevelDoYouWantToChallenge
@@ -388,265 +333,6 @@ Function118e87: ; 118e87 (46:4e87)
 	ret
 ; 118e92 (46:4e92)
 
-Function119471: ; 119471 (46:5471)
-	push af
-	ld a, [hli]
-	ld [$c608], a
-	ld a, [hli]
-	ld [$c608 + 3], a
-	ld a, [hli]
-	ld [$c608 + 1], a
-	ld a, [hli]
-	ld [$c608 + 2], a
-	ld a, [hli]
-	ld [$c608 + 4], a
-	ld a, [hli]
-	ld [$c608 + 5], a ; $c608 + 5
-	push hl
-	ld a, [$c608]
-	cp $ff
-	jr z, .asm_1194a7
-	ld a, [$c608 + 2]
-	cp $ff
-	jr z, .asm_1194a7
-	ld a, [$c608 + 1]
-	cp $ff
-	jr nz, .asm_1194a7
-	call Function119584
-	jr c, .asm_11950c
-	jr .asm_1194f0
-.asm_1194a7
-	ld hl, $c608
-	ld de, $c608 + 3
-	ld c, $3
-.asm_1194af
-	ld a, [de]
-	inc de
-	cp [hl]
-	inc hl
-	jr c, .asm_1194f3
-	jr z, .asm_1194b9
-	jr nc, .asm_1194bc
-.asm_1194b9
-	dec c
-	jr nz, .asm_1194af
-.asm_1194bc
-	ld c, $3
-	ld hl, wcd49
-	ld de, $c608
-.asm_1194c4
-	ld a, [de]
-	inc de
-	cp $ff
-	jr z, .asm_1194d1
-	cp [hl]
-	jr z, .asm_1194d1
-	jr c, .asm_1194d5
-	jr nc, .asm_1194f0
-.asm_1194d1
-	inc hl
-	dec c
-	jr nz, .asm_1194c4
-.asm_1194d5
-	ld c, $3
-	ld hl, wcd49
-	ld de, $c608 + 3
-.asm_1194dd
-	ld a, [de]
-	inc de
-	cp $ff
-	jr z, .asm_1194ea
-	cp [hl]
-	jr c, .asm_1194f0
-	jr z, .asm_1194ea
-	jr nc, .asm_11950c
-.asm_1194ea
-	inc hl
-	dec c
-	jr nz, .asm_1194dd
-	jr .asm_11950c
-.asm_1194f0
-	pop hl
-	jr .asm_119557
-.asm_1194f3
-	ld c, $3
-	ld hl, wcd49
-	ld de, $c608
-.asm_1194fb
-	ld a, [de]
-	inc de
-	cp $ff
-	jr z, .asm_119508
-	cp [hl]
-	jr c, .asm_11950c
-	jr z, .asm_119508
-	jr nc, .asm_1194d5
-.asm_119508
-	inc hl
-	dec c
-	jr nz, .asm_1194fb
-.asm_11950c
-	pop hl
-	ld a, $1
-	ld [wcd50], a
-	ld a, l
-	ld [$c608], a
-	ld a, h
-	ld [$c608 + 1], a
-	ld de, wcd69
-	ld c, $10
-	ld b, $0
-.asm_119521
-	ld a, [de]
-	inc de
-	cp [hl]
-	inc hl
-	jr nz, .asm_119528
-	inc b
-.asm_119528
-	dec c
-	jr nz, .asm_119521
-	ld a, $10
-	cp b
-	jr z, .asm_119536
-rept 4
-	inc hl
-endr
-	jr .asm_11957a
-.asm_119536
-	ld a, [hli]
-	cp $50
-	jr nz, .asm_119552
-	ld a, [hli]
-	cp $33
-	jr nz, .asm_119553
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld b, a
-	ld a, [wcd83]
-	cp c
-	jr nz, .asm_119576
-	ld a, [wcd84]
-	cp b
-	jr nz, .asm_119576
-	jr .asm_11955b
-.asm_119552
-	inc hl
-.asm_119553
-	inc hl
-	inc hl
-	jr .asm_11955b
-.asm_119557
-	ld de, $14
-	add hl, de
-.asm_11955b
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	add hl, de
-	pop af
-	dec a
-	jp nz, Function119471
-	ld a, [wcd50]
-	and a
-	jr z, .asm_119571
-	ld a, $1a
-	ld [wcf66], a
-	ret
-.asm_119571
-	ld a, $d8
-	jp Function118805
-.asm_119576
-	ld a, $10
-	jr .asm_11957c
-.asm_11957a
-	ld a, $f
-.asm_11957c
-	ld [wcf66], a
-	pop af
-	call Function1195c4
-	ret
-
-Function119584: ; 119584 (46:5584)
-	ld a, [$c608]
-	ld b, a
-	ld a, [$c608 + 3]
-	ld c, a
-	cp b
-	jr c, .asm_11959c
-	ld a, [wcd49]
-	cp b
-	jr c, .asm_1195c2
-.asm_119595
-	cp c
-	jr c, .asm_1195a2
-	jr z, .asm_1195a2
-	jr .asm_1195c2
-.asm_11959c
-	ld a, [wcd49]
-	cp b
-	jr c, .asm_119595
-.asm_1195a2
-	ld a, [$c608 + 2]
-	ld b, a
-	ld a, [$c608 + 5] ; $c608 + 5
-	ld c, a
-	cp b
-	jr c, .asm_1195ba
-	ld a, [wcd4b]
-	cp b
-	jr c, .asm_1195c2
-.asm_1195b3
-	cp c
-	jr c, .asm_1195c0
-	jr z, .asm_1195c0
-	jr .asm_1195c2
-.asm_1195ba
-	ld a, [wcd4b]
-	cp b
-	jr c, .asm_1195b3
-.asm_1195c0
-	scf
-	ret
-.asm_1195c2
-	and a
-	ret
-
-Function1195c4: ; 1195c4 (46:55c4)
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld b, a
-	ld de, $a5
-	ld a, b
-	cp d
-	jr c, .asm_1195d9
-	jr z, .asm_1195d3
-	jr nc, .asm_1195f3
-.asm_1195d3
-	ld a, c
-	cp e
-	jr z, .asm_1195d9
-	jr nc, .asm_1195f3
-.asm_1195d9
-	ld de, wcc60
-	call CopyBytes
-	xor a
-	ld [de], a
-	ld a, [$c608]
-	ld l, a
-	ld a, [$c608 + 1]
-	ld h, a
-	ld de, wcd69
-	ld bc, $10
-	call CopyBytes
-	ret
-.asm_1195f3
-	ld a, $d8
-	jp Function118805
-
 SECTION "bank46_2", ROMX, BANK[$46]
 ; A hack to use ascii above.
 
@@ -794,6 +480,10 @@ Function119dd1: ; 119dd1 (46:5dd1)
 	cp MEW
 	jr z, .uber
 	cp LUGIA
+	jr z, .uber
+	cp HO_OH
+	jr z, .uber
+	cp CELEBI
 	jr c, .next
 	cp NUM_POKEMON + 1
 	jr nc, .next
@@ -855,108 +545,49 @@ Function119ed8: ; 119ed8 (46:5ed8)
 
 .Jumptable:
 	dw Function119f3f
-	dw Function119f45
-	dw Function119f56
-	dw Function119f76
-	dw Function11a970
-	dw Function11a113
+	dw JustReturn
+	dw Decrement_wcd44
+	dw Decrement_wcd44
+	dw JustReturn
+	dw JustReturn
 	dw Function11a129
 	dw Function11a131
 	dw Function11a13d
 	dw Function11a14b
-	dw Function11a16d
+	dw Decrement_wcd44
 	dw Function11a192
-	dw Function11a2e6
-	dw Function11a302
+	dw JustReturn
+	dw Decrement_wcd44
 	dw Function11a33a
 	dw Function11a207
 	dw Function11a235
-	dw Function11a357
-	dw Function11a36b
+	dw JustReturn
+	dw Decrement_wcd44
 	dw Function11a38d
-	dw Function11a3c5
-	dw Function11a3d9
-	dw Function11a3f9
+	dw JustReturn
+	dw Decrement_wcd44
+	dw Decrement_wcd44
 	dw Function11a41b
-	dw Function11a452
+	dw JustReturn
 	dw Function11a47a
-	dw Function11a488
+	dw JustReturn
 	dw Function11a49e
-	dw Function11a4db
-	dw Function11a4e8
+	dw JustReturn
+	dw JustReturn
 	dw Function11a4fe
-	dw Function11a466
+	dw JustReturn
 	dw Function11a47a
 ; 119f3f
 
 Function119f3f: ; 119f3f
 	call Function11a5b9
-	jp Function11a5b0
+	jp Increment_wcd3c
 ; 119f45
-
-Function119f45: ; 119f45
-	hlcoord 4, 2
-	ld de, String_11a661
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 119f56
-
-Function119f56: ; 119f56
-	ld a, [wcd44]
-	and a
-	jr z, .asm_119f62
-	dec a
-	ld [wcd44], a
-	scf
-	ret
-
-.asm_119f62
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6aa
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 119f76
-
-Function119f76: ; 119f76
-	ld a, [wcd44]
-	and a
-	jr z, .asm_119f82
-	dec a
-	ld [wcd44], a
-	scf
-	ret
-
-.asm_119f82
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a679
-	call PlaceString
-	call Function11a5f5
-	xor a
-	ld [wcd44], a
-	jp Function11a5b0
-; 119f98
-
-Function11a113: ; 11a113
-	call Function11a63c
-	ld c, $1
-	callba Function115e18
-	hlcoord 4, 2
-	ld de, String_11a6c8
-	call PlaceString
-	and a
-	ret
-; 11a129
 
 Function11a129: ; 11a129
 	ld a, $80
 	ld [wcd44], a
-	jp Function11a5b0
+	jp Increment_wcd3c
 ; 11a131
 
 Function11a131: ; 11a131
@@ -979,43 +610,9 @@ Function11a13d:
 Function11a14b: ; 11a14b
 	ld hl, wcd85
 	ld a, [hl]
-	cp $f3
-	jr nz, .asm_11a155
 	and a
 	ret
-
-.asm_11a155
-	call Function11a1d6
-	ret c
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a6f1
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
 ; 11a16d
-
-Function11a16d: ; 11a16d
-	ld a, [wcd44]
-	and a
-	jr z, .asm_11a179
-	dec a
-	ld [wcd44], a
-	scf
-	ret
-
-.asm_11a179
-	call Function11a63c
-	call Function11a1e6
-	hlcoord 4, 2
-	ld de, $c346
-	call PlaceString
-	call Function11a5f5
-	xor a
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a192
 
 Function11a192: ; 11a192
 	call Function11a536
@@ -1047,61 +644,24 @@ Function11a192: ; 11a192
 	ret
 ; 11a1d6
 
-Function11a1d6: ; 11a1d6
-	ld a, [wcd85]
-	cp $50
-	jr nz, .asm_11a1e4
-	ld a, $d3
-	call Function118805
-	scf
-	ret
-
-.asm_11a1e4
-	and a
-	ret
-; 11a1e6
-
-Function11a1e6: ; 11a1e6
-	ld hl, String_11a706
-	ld de, $c346
-	call Function11a1ff
-	ld hl, wcd85
-	call Function11a1ff
-	ld hl, String_11a70b
-	call Function11a1ff
-	ld a, $50
-	ld [de], a
-	ret
-; 11a1ff
-
-Function11a1ff: ; 11a1ff
-.asm_11a1ff
-	ld a, [hli]
-	cp $50
-	ret z
-	ld [de], a
-	inc de
-	jr .asm_11a1ff
-; 11a207
-
 Function11a207: ; 11a207
-	ld hl, MenuDataHeader_11a2de
+	ld hl, MenuDataHeader_YesNo_46
 	call LoadMenuDataHeader
 	call MenuBox
 	call MenuBoxCoord2Tile
 	call ApplyTilemap
 	hlcoord 16, 8
-	ld de, String_11a2cf
+	ld de, String_Yes_46
 	call PlaceString
 	hlcoord 16, 10
-	ld de, String_11a2d3
+	ld de, String_No_46
 	call PlaceString
 	hlcoord 15, 8
 	ld a, $ed
 	ld [hl], a
 	xor a
 	ld [wcd44], a
-	jp Function11a5b0
+	jp Increment_wcd3c
 ; 11a235
 
 Function11a235: ; 11a235
@@ -1193,60 +753,21 @@ Function11a235: ; 11a235
 	ret
 ; 11a2cf
 
-String_11a2cf: ; 11a2cf
+String_Yes_46: ; 11a2cf
 	db "Yes@"
 ; 11a2d3
 
-String_11a2d3: ; 11a2d3
+String_No_46: ; 11a2d3
 	db "No@"
 ; 11a2d6
 
-MenuDataHeader_11a2de: ; 11a2de
+MenuDataHeader_YesNo_46: ; 11a2de
 	db $40 ; flags
 	db  7, 14 ; start coords
 	db 11, 19 ; end coords
 	dw NULL
 	db 0 ; default option
 ; 11a2e6
-
-Function11a2e6: ; 11a2e6
-	call Function11a63c
-	ld c, $2
-	callba Function115e18
-	hlcoord 4, 2
-	ld de, String_11a71e
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a302
-
-Function11a302: ; 11a302
-	ld a, [wcd44]
-	and a
-	jr z, .asm_11a30e
-	dec a
-	ld [wcd44], a
-	scf
-	ret
-
-.asm_11a30e
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a72a
-	call PlaceString
-	hlcoord 9, 4
-	ld de, wcd68
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	hlcoord 14, 4
-	ld de, wcd67
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a33a
 
 Function11a33a: ; 11a33a
 	ld a, [wcd44]
@@ -1265,35 +786,12 @@ Function11a33a: ; 11a33a
 	ret
 ; 11a357
 
-Function11a357: ; 11a357
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a743
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a36b
-
-Function11a36b: ; 11a36b
+Decrement_wcd44: ; 11a36b
 	ld a, [wcd44]
-	and a
-	jr z, .asm_11a377
 	dec a
 	ld [wcd44], a
 	scf
 	ret
-
-.asm_11a377
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a755
-	call PlaceString
-	call Function11a5f5
-	xor a
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a38d
 
 Function11a38d: ; 11a38d
 	call Function11a536
@@ -1321,55 +819,6 @@ Function11a38d: ; 11a38d
 	ret
 ; 11a3c5
 
-Function11a3c5: ; 11a3c5
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a762
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a3d9
-
-Function11a3d9: ; 11a3d9
-	ld a, [wcd44]
-	and a
-	jr z, .asm_11a3e5
-	dec a
-	ld [wcd44], a
-	scf
-	ret
-
-.asm_11a3e5
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a779
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a3f9
-
-Function11a3f9: ; 11a3f9
-	ld a, [wcd44]
-	and a
-	jr z, .asm_11a405
-	dec a
-	ld [wcd44], a
-	scf
-	ret
-
-.asm_11a405
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a755
-	call PlaceString
-	call Function11a5f5
-	xor a
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a41b
-
 Function11a41b: ; 11a41b
 	call Function11a536
 	ret c
@@ -1396,26 +845,6 @@ Function11a41b: ; 11a41b
 	ret
 ; 11a452
 
-Function11a452: ; 11a452
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a791
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a466
-
-Function11a466: ; 11a466
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a7c1
-	call PlaceString
-	ld a, $80
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a47a
-
 Function11a47a: ; 11a47a
 	ld a, [wcd44]
 	and a
@@ -1429,17 +858,6 @@ Function11a47a: ; 11a47a
 	and a
 	ret
 ; 11a488
-
-Function11a488: ; 11a488
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a7ac
-	call PlaceString
-	call Function11a5f5
-	xor a
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a49e
 
 Function11a49e: ; 11a49e
 	call Function11a536
@@ -1468,25 +886,6 @@ Function11a49e: ; 11a49e
 	scf
 	ret
 ; 11a4db
-
-Function11a4db: ; 11a4db
-	call Function11a63c
-	ld de, String_11a6db
-	hlcoord 4, 2
-	call PlaceString
-	ret
-; 11a4e8
-
-Function11a4e8: ; 11a4e8
-	call Function11a63c
-	hlcoord 4, 2
-	ld de, String_11a7d7
-	call PlaceString
-	call Function11a5f5
-	xor a
-	ld [wcd44], a
-	jp Function11a5b0
-; 11a4fe
 
 Function11a4fe: ; 11a4fe
 	call Function11a536
@@ -1587,7 +986,7 @@ Function11a536: ; 11a536
 	ret
 ; 11a5b0
 
-Function11a5b0: ; 11a5b0
+Increment_wcd3c: ; 11a5b0
 	ld a, [wcd3c]
 	inc a
 	ld [wcd3c], a
@@ -1620,36 +1019,6 @@ Function11a5b9: ; 11a5b9
 	ret
 ; 11a5f5
 
-Function11a5f5: ; 11a5f5
-	ld a, $e
-	ld [wMenuBorderLeftCoord], a
-	ld a, $13
-	ld [wMenuBorderRightCoord], a
-	ld a, $6
-	ld [wMenuBorderTopCoord], a
-	ld a, $a
-	ld [wMenuBorderBottomCoord], a
-	call PushWindow
-	hlcoord 14, 6, AttrMap
-	ld b, $5
-	ld c, $6
-	hlcoord 14, 6
-	ld b, $3
-	ld c, $4
-	call Function3eea
-	hlcoord 16, 7
-	ld de, String_11a2cf
-	call PlaceString
-	hlcoord 16, 9
-	ld de, String_11a2d3
-	call PlaceString
-	hlcoord 15, 7
-	ld a, $ed
-	ld [hl], a
-	callba ReloadMapPart
-	ret
-; 11a63c
-
 Function11a63c: ; 11a63c
 	hlcoord 4, 1
 	ld de, String_11a7f4
@@ -1666,95 +1035,9 @@ Function11a63c: ; 11a63c
 	ret
 ; 11a661
 
-String_11a661: ; 11a661
-	db   "これから モバイルセンターに"
-	next "でんわ", $1f, "かけます@"
-; 11a679
-
-String_11a679: ; 11a679
-	db   "モバイルアダプタ", $25, "じゅんびは"
-	next "できて いますか?@"
-; 11a692
-
-String_11a6aa: ; 11a6aa
-	db   "でんわをかけると つうわりょう"
-	next "せつぞくりょう", $4a, "かかります@"
-; 11a6c8
-
-String_11a6c8: ; 11a6c8
-	db   "せつぞく しました@"
-; 11a6d2
-
 String_11a6d2: ; 11a6d2
 	db   "つうしん ちゅう@"
 ; 11a6db
-
-String_11a6db: ; 11a6db
-	db   "つうしん ちゅう"
-	next "セレクト エーでちゅうし@"
-; 11a6f1
-
-String_11a6f1: ; 11a6f1
-	db   "この サービスには"
-	next "つうわりょう", $25, "ほかに@"
-; 11a706
-
-String_11a706: ; 11a706
-	db   "おかね", $4a, "@"
-; 11a70b
-
-String_11a70b: ; 11a70b
-	db   "えん"
-	next "かかります よろしい ですか?@"
-; 11a71e
-
-String_11a71e: ; 11a71e
-	db   "つうしん しゅうりょう@"
-; 11a72a
-
-String_11a72a: ; 11a72a
-	db   "つないだ じかん"
-	next "  やく   ふん   びょう@"
-; 11a743
-
-String_11a743: ; 11a743
-	db   "もっていない データが"
-	next "あります!@"
-; 11a755
-
-String_11a755: ; 11a755
-	db   "データ", $1f, "よみこみますか?@"
-; 11a762
-
-String_11a762: ; 11a762
-	db   "おなじ データ", $1f, "よみこんだ"
-	next "こと", $4a, "ありますが@"
-; 11a779
-
-String_11a779: ; 11a779
-	db   "そのデータ", $24, "なくなっているか"
-	next "こわれて います@"
-; 11a791
-
-String_11a791: ; 11a791
-	db   "もっている データと"
-	next "おなじデータしか ありません!@"
-; 11a7ac
-
-String_11a7ac: ; 11a7ac
-	db   "データ", $25, "よみこみを"
-	next "ちゅうし しますか?@"
-; 11a7c1
-
-String_11a7c1: ; 11a7c1
-	db   "あたらしい ニュースは"
-	next "ありません でした@"
-; 11a7d7
-
-String_11a7d7: ; 11a7d7
-	db   "あたらしいニュース", $4a, "あります"
-	next "ニュース", $1f, "よみこみますか?@"
-; 11a7f4
 
 String_11a7f4: ; 11a7f4
 	db   "               @"
@@ -1765,7 +1048,7 @@ Function11a8fa: ; 11a8fa
 ; 11a909
 
 .Jumptable: ; 11a909
-	dw Function11a970
+	dw JustReturn
 	dw Function11a90f
 	dw Function11a971
 ; 11a90f
@@ -1828,7 +1111,7 @@ Function11a90f: ; 11a90f
 	ld a, $3
 	ld [rSVBK], a
 
-Function11a970:
+JustReturn:
 	ret
 ; 11a971
 
