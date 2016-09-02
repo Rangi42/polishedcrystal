@@ -5682,20 +5682,7 @@ _LinkBattleSendReceiveAction: ; 100a09
 
 SECTION "bank41", ROMX, BANK[$41]
 
-INCLUDE "misc/gfx_41.asm"
-
-ShockEmote:     INCBIN "gfx/emotes/shock.2bpp"
-QuestionEmote:  INCBIN "gfx/emotes/question.2bpp"
-HappyEmote:     INCBIN "gfx/emotes/happy.2bpp"
-SadEmote:       INCBIN "gfx/emotes/sad.2bpp"
-HeartEmote:     INCBIN "gfx/emotes/heart.2bpp"
-BoltEmote:      INCBIN "gfx/emotes/bolt.2bpp"
-SleepEmote:     INCBIN "gfx/emotes/sleep.2bpp"
-FishEmote:      INCBIN "gfx/emotes/fish.2bpp"
-JumpShadowGFX:  INCBIN "gfx/misc/shadow.2bpp"
-FishingRodGFX2: INCBIN "gfx/misc/fishing2.2bpp"
-BoulderDustGFX: INCBIN "gfx/misc/boulderdust.2bpp"
-FishingRodGFX4: INCBIN "gfx/misc/fishing4.2bpp"
+INCLUDE "engine/misc_gfx.asm"
 
 INCLUDE "engine/warp_connection.asm"
 
@@ -5731,7 +5718,7 @@ INCLUDE "engine/title.asm"
 
 SECTION "bank45", ROMX, BANK[$45]
 
-INCLUDE "misc/mobile_45.asm"
+; unused bank!
 
 SECTION "bank46", ROMX, BANK[$46]
 
@@ -5739,7 +5726,7 @@ INCLUDE "event/battle_tower_levels.asm"
 
 SECTION "bank47", ROMX, BANK[$47]
 
-INCLUDE "misc/mobile_47.asm"
+INCLUDE "engine/mobile_47.asm"
 
 SECTION "bank5B", ROMX ; $5B is now PICS_20
 
