@@ -26,7 +26,6 @@ engine/credits.o \
 data/egg_moves.o \
 data/evos_attacks.o \
 data/pokedex/entries.o \
-misc/libmain.o \
 text/common_text.o \
 gfx/pics.o
 

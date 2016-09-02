@@ -80,7 +80,7 @@ hMoneyTemp         EQU $ffc3
 hFFC6              EQU $ffc6
 hFFC7              EQU $ffc7
 hFFC8              EQU $ffc8
-hMobileReceive     EQU $ffc9
+hFFC9              EQU $ffc9
 hFFCA              EQU $ffca
 hLinkPlayerNumber  EQU $ffcb
 hFFCC              EQU $ffcc
@@ -116,7 +116,7 @@ hCGBPalUpdate      EQU $ffe5
 hCGB               EQU $ffe6
 hSGB               EQU $ffe7
 hDMATransfer       EQU $ffe8
-hMobile            EQU $ffe9
+hFFE9              EQU $ffe9
 hFFEA              EQU $ffea
 hClockResetTrigger EQU $ffeb
 

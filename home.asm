@@ -1862,4 +1862,3 @@ ReinitSpriteAnimFrame:: ; 3b3c
 ; 3b4e
 
 INCLUDE "home/audio.asm"
-INCLUDE "home/mobile.asm"

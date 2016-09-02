@@ -6,10 +6,6 @@ Serial:: ; 6ef
 	push de
 	push hl
 
-	ld a, [hMobileReceive]
-	and a
-	jr nz, .mobile
-
 	ld a, [wc2d4]
 
 	ld a, [hLinkPlayerNumber]
@@ -31,10 +27,6 @@ Serial:: ; 6ef
 	ld a, 1 << rSC_ON
 	ld [rSC], a
 	jr .player2
-
-.mobile
-	call MobileReceive
-	jr .end
 
 .init_player_number
 	ld a, [rSB]
@@ -75,13 +67,16 @@ Serial:: ; 6ef
 	ld a, -2
 	ld [hSerialSend], a
 
-.end
 	pop hl
 	pop de
 	pop bc
 	pop af
 	reti
 ; 75f
+
+Timer:: ; 3e93
+	reti
+; 3ed7
 
 Function75f:: ; 75f
 	ld a, $1

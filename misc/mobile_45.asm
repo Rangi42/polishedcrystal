@@ -1,7 +1,3 @@
-SECTION "bank45", ROMX, BANK[$45]
-
-	charmap " ", $20 ; revert to ascii
-
 Function115d99: ; 115d99
 	ld de, GFX_11601a
 	ld hl, VTiles0 tile $60
@@ -248,35 +244,6 @@ Unknown_116005: ; 116005
 
 GFX_11601a:: ; 11601a
 INCBIN "gfx/unknown/11601a.2bpp"
-
-Function11615a: ; 11615a
-	xor a
-	ld [wc30d], a
-	ld [$c319], a
-	ld [wc310], a
-	ld [wc311], a
-	ld [wc312], a
-	ld [wc313], a
-	ld [wc314], a
-	ld [wc314 + 1], a
-	ld [wc314 + 4], a
-	ld [wc3f6], a
-	ld [wc3f8], a
-	ld [wc3f2], a
-	ld [wc3f4], a
-	ld a, $24
-	ld [wc3f5], a
-	ld a, $7
-	ld [wc3f7], a
-	ld a, $b0
-	ld [wc30e], a
-	ld [wc3f1], a
-	ld a, $48
-	ld [wc30f], a
-	ld [wc3f3], a
-	ret
-
-; 11619d
 
 Function11619d: ; 11619d
 	ld a, [wc30d]

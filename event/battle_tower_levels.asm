@@ -1,5 +1,3 @@
-SECTION "bank46", ROMX, BANK[$46]
-
 Function118121: ; 118121
 	xor a
 	ld [wcd38], a
@@ -93,12 +91,9 @@ Function1183cb: ; 1183cb
 	set 1, [hl]
 	ld a, $f
 	ld [rIE], a
-	ld a, $1
-	ld [hMobileReceive], a
-	ld [hMobile], a
 	ei
-	callba Function115d99
-	callba Function11615a
+	callba Function115d99 ; TODO: remove?
+	callba Function11615a ; TODO: remove?
 	ld a, $5
 	call GetSRAMBank
 	xor a
@@ -107,11 +102,37 @@ Function1183cb: ; 1183cb
 	ret
 ; 118440
 
+Function11615a: ; 11615a
+	xor a
+	ld [wc30d], a
+	ld [$c319], a
+	ld [wc310], a
+	ld [wc311], a
+	ld [wc312], a
+	ld [wc313], a
+	ld [wc314], a
+	ld [wc314 + 1], a
+	ld [wc314 + 4], a
+	ld [wc3f6], a
+	ld [wc3f8], a
+	ld [wc3f2], a
+	ld [wc3f4], a
+	ld a, $24
+	ld [wc3f5], a
+	ld a, $7
+	ld [wc3f7], a
+	ld a, $b0
+	ld [wc30e], a
+	ld [wc3f1], a
+	ld a, $48
+	ld [wc30f], a
+	ld [wc3f3], a
+	ret
+; 11619d
+
 Function118452: ; 118452
 	di
 	xor a
-	ld [hMobileReceive], a
-	ld [hMobile], a
 	ld [hVBlank], a
 	call NormalSpeed
 	xor a
