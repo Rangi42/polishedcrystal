@@ -23,6 +23,8 @@ Script_Whiteout: ; 0x124ce
 	waitbutton
 	special FadeOutPalettes
 	pause 40
+	check_nuzlocke
+	iftrue Script_NuzlockeWhiteout
 	special HealParty
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .bug_contest
@@ -49,6 +51,52 @@ Script_Whiteout: ; 0x124ce
 .WhitedOutToTrainerText:
 	text_jump WhiteoutToTrainerText
 	db "@"
+
+Script_NuzlockeWhiteout:
+	nuzlocke_off
+	special HealParty
+	nuzlocke_on
+	checkflag ENGINE_BUG_CONTEST_TIMER
+	iftrue .bug_contest
+	callasm GetWhiteoutSpawn
+	farscall Script_AbortBugContest
+	special WarpToSpawnPoint
+	newloadmap MAPSETUP_WARP
+	end_all
+
+.bug_contest:
+	checkevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
+	iffalse .no_return
+	special ContestReturnMons
+.no_return:
+	domaptrigger ROUTE_35_NATIONAL_PARK_GATE, $0
+	domaptrigger ROUTE_36_NATIONAL_PARK_GATE, $0
+	setevent EVENT_BUG_CATCHING_CONTESTANT_1A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_2A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_3A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_4A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_5A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_6A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_7A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_8A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_9A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_10A
+	setevent EVENT_BUG_CATCHING_CONTESTANT_1B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_2B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_3B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_4B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_5B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_6B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_7B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_8B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_9B
+	setevent EVENT_BUG_CATCHING_CONTESTANT_10B
+	setflag ENGINE_DAILY_BUG_CONTEST
+	callasm GetWhiteoutSpawn
+	farscall Script_AbortBugContest
+	special WarpToSpawnPoint
+	newloadmap MAPSETUP_WARP
+	end_all
 
 OverworldBGMap: ; 124fa
 	call ClearPalettes

@@ -3285,12 +3285,8 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld de, wMonOrItemNameBuffer
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
-	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
-	jr nz, .AlwaysNickname
 	call GiveANickname_YesNo
 	jr c, .Party_SkipNickname
-.AlwaysNickname:
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
@@ -3352,13 +3348,9 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
-	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
-	jr nz, .AlwaysNicknameBox
 	call GiveANickname_YesNo
 	ld hl, StringBuffer1
 	jr c, .Box_SkipNickname
-.AlwaysNicknameBox:
 	ld a, BOXMON
 	ld [MonType], a
 	ld de, wMonOrItemNameBuffer
@@ -3401,9 +3393,17 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ret
 
 GiveANickname_YesNo: ; 4db3b
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jr nz, .AlwaysNickname
 	ld hl, TextJump_GiveANickname
 	call PrintText
 	jp YesNoBox
+
+.AlwaysNickname:
+	ld a, 1
+	and a
+	ret
 
 TextJump_GiveANickname: ; 0x4db44
 	; Give a nickname to the @  you received?

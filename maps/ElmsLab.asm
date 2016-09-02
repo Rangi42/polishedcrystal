@@ -568,7 +568,17 @@ LyraBattleScript:
 	spriteface PLAYER, DOWN
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement
 	disappear ELMSLAB_LYRA
+	check_nuzlocke
+	iftrue .NuzlockeHeal
 	special HealParty
+	dotrigger $5
+	playmapmusic
+	end
+
+.NuzlockeHeal:
+	nuzlocke_off
+	special HealParty
+	nuzlocke_on
 	dotrigger $5
 	playmapmusic
 	end
