@@ -8415,7 +8415,7 @@ ExitBattle: ; 3f69e
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	call DetermineMobileBattleResult
+	call ShowLinkBattleResult
 	ret
 
 .not_linked
@@ -8510,7 +8510,7 @@ ShowLinkBattleParticipantsAfterEnd: ; 3f759
 	ret
 ; 3f77c
 
-DetermineMobileBattleResult: ; 3f77c
+ShowLinkBattleResult: ; 3f77c
 	callba DetermineLinkBattleResult
 
 	ld a, [wBattleResult]
@@ -8538,7 +8538,7 @@ DetermineMobileBattleResult: ; 3f77c
 	ld a, BANK(sLinkBattleStats)
 	call GetSRAMBank
 
-	call AddLastMobileBattleToLinkRecord
+	call AddLastBattleToLinkRecord
 	call ReadAndPrintLinkBattleRecord
 
 	call CloseSRAM
@@ -8549,11 +8549,11 @@ DetermineMobileBattleResult: ; 3f77c
 ; 3f7f7
 
 .Win:
-	db "YOU WIN@"
+	db "You Win@"
 .Lose:
-	db "YOU LOSE@"
+	db "You Lose@"
 .Draw:
-	db "  DRAW@"
+	db "  Draw@"
 ; 3f80f
 
 
@@ -8822,7 +8822,7 @@ GetRoamMonSpecies: ; 3fa31
 ; 3fa42
 
 
-AddLastMobileBattleToLinkRecord: ; 3fa42
+AddLastBattleToLinkRecord: ; 3fa42
 	ld hl, OTPlayerID
 	ld de, StringBuffer1
 	ld bc, 2
