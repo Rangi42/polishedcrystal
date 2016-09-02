@@ -286,7 +286,7 @@ DoPlayerMovement:: ; 80000
 	jr nc, .ice
 
 	ld a, [Options2]
-	xor 1
+	and 1 << RUNNING_SHOES
 	jr nz, .RunByDefault
 
 	call .RunCheck

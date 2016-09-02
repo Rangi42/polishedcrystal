@@ -1403,17 +1403,11 @@ TextBoxFrame:: ; cfce
 TextBoxFlags::
 	ds 1
 
-GBPrinter:: ; cfd0
-; bit 0-6: brightness
-;   lightest: $00
-;   lighter:  $20
-;   normal:   $40 (default)
-;   darker:   $60
-;   darkest:  $7F
 	ds 1
 
 Options2:: ; cfd1
-; bit 1: menu account off/on
+; bit 0: running shoes off/on
+; bit 1: nuzlocke mode off/on
 	ds 1
 
 	ds 2

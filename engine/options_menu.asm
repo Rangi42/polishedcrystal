@@ -70,9 +70,9 @@ StringOptions: ; e4241
 	db "        :<LNBRK>"
 	db "Running Shoes<LNBRK>"
 	db "        :<LNBRK>"
-	db "Sound<LNBRK>"
+	db "Nuzlocke Mode<LNBRK>"
 	db "        :<LNBRK>"
-	db "Print<LNBRK>"
+	db "Sound<LNBRK>"
 	db "        :<LNBRK>"
 	db "Frame<LNBRK>"
 	db "        :Type<LNBRK>"
@@ -99,8 +99,8 @@ endr
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_RunningShoes
+	dw Options_NuzlockeMode
 	dw Options_Sound
-	dw Options_Print
 	dw Options_Frame
 	dw Options_Cancel
 ; e42f5
@@ -286,26 +286,26 @@ Options_RunningShoes: ; e44c1
 	jr nz, .LeftPressed
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
-	bit MENU_ACCOUNT, [hl]
-	jr nz, .ToggleOn
+	bit RUNNING_SHOES, [hl]
+	jr z, .ToggleOn
 	jr .ToggleOff
 
 .LeftPressed:
-	bit MENU_ACCOUNT, [hl]
-	jr z, .ToggleOff
+	bit RUNNING_SHOES, [hl]
+	jr nz, .ToggleOff
 	jr .ToggleOn
 
 .NonePressed:
-	bit MENU_ACCOUNT, [hl]
-	jr nz, .ToggleOff
+	bit RUNNING_SHOES, [hl]
+	jr z, .ToggleOff
 
 .ToggleOn:
-	res MENU_ACCOUNT, [hl]
+	set RUNNING_SHOES, [hl]
 	ld de, .On
 	jr .Display
 
 .ToggleOff:
-	set MENU_ACCOUNT, [hl]
+	res RUNNING_SHOES, [hl]
 	ld de, .Off
 
 .Display:
@@ -320,6 +320,49 @@ Options_RunningShoes: ; e44c1
 .Off:
 	db "Off@"
 ; e44fa
+
+
+Options_NuzlockeMode: ; e4424
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit NUZLOCKE_MODE, [hl]
+	jr z, .ToggleOn
+	jr .ToggleOff
+
+.LeftPressed:
+	bit NUZLOCKE_MODE, [hl]
+	jr nz, .ToggleOff
+	jr .ToggleOn
+
+.NonePressed:
+	bit NUZLOCKE_MODE, [hl]
+	jr z, .ToggleOff
+
+.ToggleOn:
+	set NUZLOCKE_MODE, [hl]
+	ld de, .On
+	jr .Display
+
+.ToggleOff:
+	res NUZLOCKE_MODE, [hl]
+	ld de, .Off
+
+.Display:
+	hlcoord 11, 11
+	call PlaceString
+	and a
+	ret
+; e44f2
+
+.On:
+	db "On @"
+.Off:
+	db "Off@"
+; e44c1
 
 
 Options_Sound: ; e43dd
@@ -359,7 +402,7 @@ Options_Sound: ; e43dd
 	ld de, .Stereo
 
 .Display:
-	hlcoord 11, 11
+	hlcoord 11, 13
 	call PlaceString
 	and a
 	ret
@@ -370,108 +413,6 @@ Options_Sound: ; e43dd
 .Stereo:
 	db "Stereo@"
 ; e4424
-
-
-Options_Print: ; e4424
-	call GetPrinterSetting
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	ld a, c
-	cp 4
-	jr c, .Increase
-	ld c, -1
-
-.Increase:
-	inc c
-	ld a, e
-	jr .Save
-
-.LeftPressed:
-	ld a, c
-	and a
-	jr nz, .Decrease
-	ld c, 5
-
-.Decrease:
-	dec c
-	ld a, d
-
-.Save:
-	ld b, a
-	ld [GBPrinter], a
-
-.NonePressed:
-	ld b, $0
-	ld hl, .Strings
-rept 2
-	add hl, bc
-endr
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	hlcoord 11, 13
-	call PlaceString
-	and a
-	ret
-; e445a
-
-.Strings:
-	dw .Lightest
-	dw .Lighter
-	dw .Normal
-	dw .Darker
-	dw .Darkest
-
-.Lightest:
-	db "Lightest@"
-.Lighter:
-	db "Lighter @"
-.Normal:
-	db "Normal  @"
-.Darker:
-	db "Darker  @"
-.Darkest:
-	db "Darkest @"
-; e4491
-
-
-GetPrinterSetting: ; e4491
-	ld a, [GBPrinter] ; converts from the stored printer setting to 0,1,2,3,4
-	and a
-	jr z, .IsLightest
-	cp PRINT_LIGHTER
-	jr z, .IsLight
-	cp PRINT_DARKER
-	jr z, .IsDark
-	cp PRINT_DARKEST
-	jr z, .IsDarkest
-	ld c, 2 ; normal if none of the above
-	lb de, PRINT_LIGHTER, PRINT_DARKER ; the 2 values next to this setting
-	ret
-
-.IsLightest:
-	ld c, 0
-	lb de, PRINT_DARKEST, PRINT_LIGHTER ; the 2 values next to this setting
-	ret
-
-.IsLight:
-	ld c, 1
-	lb de, PRINT_LIGHTEST, PRINT_NORMAL ; the 2 values next to this setting
-	ret
-
-.IsDark:
-	ld c, 3
-	lb de, PRINT_NORMAL, PRINT_DARKEST ; the 2 values next to this setting
-	ret
-
-.IsDarkest:
-	ld c, 4
-	lb de, PRINT_DARKER, PRINT_LIGHTEST ; the 2 values next to this setting
-	ret
-; e44c1
 
 
 Options_Frame: ; e44fa

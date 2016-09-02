@@ -652,8 +652,8 @@ DefaultOptions: ; 14f7c
 	db $00 ; wSaveFileExists
 	db $00 ; frame 0
 	db $01 ; TextBoxFlags
-	db $40 ; gb printer: normal brightness
-	db $01 ; menu account off
+	db $00 ; nuzlocke mode off
+	db $00 ; running shoes off
 	db $00 ; ??
 	db $00 ; ??
 ; 14f84
