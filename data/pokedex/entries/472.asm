@@ -1,5 +1,5 @@
 ; GliscorPokedexEntry:
-	db "Fang Scorp@" ; species name
+	db "FangScorpio@" ; species name
 	dw 607, 937 ; height, width
 
 	db   "Its flight is"

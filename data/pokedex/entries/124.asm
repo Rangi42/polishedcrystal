@@ -1,5 +1,5 @@
 ; JynxPokedexEntry: ; 0x1b98c5
-	db "HumanShape@" ; species name
+	db "Human Shape@" ; species name
 	dw 407, 900 ; height, width
 
 	db   "It has several"

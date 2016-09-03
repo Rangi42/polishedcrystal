@@ -1,5 +1,5 @@
 ; UrsaringPokedexEntry: ; 0x1d0a41
-	db "Hibernant@" ; species name
+	db "Hibernator@" ; species name
 	dw 511, 2770 ; height, width
 
 	db   "Although it has a"

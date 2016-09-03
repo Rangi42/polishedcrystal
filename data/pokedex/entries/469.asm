@@ -1,5 +1,5 @@
 ; YanmegaPokedexEntry:
-	db "OgreDarner@" ; species name
+	db "Ogre Darner@" ; species name
 	dw 603, 1135 ; height, width
 
 	db   "Its jaw power is"

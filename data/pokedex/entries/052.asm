@@ -1,5 +1,5 @@
 ; MeowthPokedexEntry: ; 0x182c08
-	db "ScratchCat@" ; species name
+	db "Scratch Cat@" ; species name
 	dw 104, 90 ; height, width
 
 	db   "It loves things"

@@ -1,5 +1,5 @@
 ; SpinarakPokedexEntry: ; 0x1cd012
-	db "StringSpit@" ; species name
+	db "String Spit@" ; species name
 	dw 108, 190 ; height, width
 
 	db   "If prey becomes"
