@@ -14,11 +14,32 @@ FruitTreeScript:: ; 44000
 
 .fruit
 	writetext HeyItsFruitText
+	callasm GetFruitTreeCount
+	if_equal $1, .try_one
+	if_equal $2, .try_two
+	callasm GetCurTreeFruit
+	copybytetovar CurFruit
+	giveitem ITEM_FROM_MEM, 3
+	iffalse .try_two
+	buttonsound
+	writetext ObtainedThreeFruitText
+	jump .continue
+.try_two
+	callasm GetCurTreeFruit
+	copybytetovar CurFruit
+	giveitem ITEM_FROM_MEM, 2
+	iffalse .try_one
+	buttonsound
+	writetext ObtainedTwoFruitText
+	jump .continue
+.try_one
+	callasm GetCurTreeFruit
 	copybytetovar CurFruit
 	giveitem ITEM_FROM_MEM
 	iffalse .packisfull
 	buttonsound
-	writetext ObtainedFruitText
+	writetext ObtainedOneFruitText
+.continue
 	callasm PickedFruitTree
 	specialsound
 	itemnotify
@@ -136,6 +157,13 @@ FruitTreeItems: ; 44097
 	db MIRACLEBERRY ; FRUITTREE_ROUTE_27
 ; 440b5
 
+GetFruitTreeCount:
+	ld a, 3
+	call RandomRange
+	inc a
+	ld [ScriptVar], a
+	ret
+
 FruitBearingTreeText: ; 440b5
 	text_jump _FruitBearingTreeText
 	db "@"
@@ -146,10 +174,18 @@ HeyItsFruitText: ; 440ba
 	db "@"
 ; 440bf
 
-ObtainedFruitText: ; 440bf
-	text_jump _ObtainedFruitText
+ObtainedOneFruitText: ; 440bf
+	text_jump _ObtainedOneFruitText
 	db "@"
 ; 440c4
+
+ObtainedTwoFruitText:
+	text_jump _ObtainedTwoFruitText
+	db "@"
+
+ObtainedThreeFruitText:
+	text_jump _ObtainedThreeFruitText
+	db "@"
 
 FruitPackIsFullText: ; 440c4
 	text_jump _FruitPackIsFullText

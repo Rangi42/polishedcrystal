@@ -10,8 +10,22 @@ _HeyItsFruitText::
 	text "!"
 	done
 
-_ObtainedFruitText::
-	text "Obtained"
+_ObtainedOneFruitText::
+	text "Obtained a"
+	line "@"
+	text_from_ram StringBuffer3
+	text "!"
+	done
+
+_ObtainedTwoFruitText::
+	text "Obtained two"
+	line "@"
+	text_from_ram StringBuffer3
+	text "!"
+	done
+
+_ObtainedThreeFruitText::
+	text "Obtained three"
 	line "@"
 	text_from_ram StringBuffer3
 	text "!"
