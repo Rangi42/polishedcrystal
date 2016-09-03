@@ -45,6 +45,10 @@ LoreleiAfterIntroScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LORELEI
 	opentext
+	writetext LoreleiRewardText
+	buttonsound
+	verbosegiveitem TM_AVALANCHE
+	setevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
 LoreleiAfterScript:
 	writetext LoreleiAfterText
 	waitbutton
@@ -60,6 +64,12 @@ LoreleiNoBattleScript:
 LoreleiRematchScript:
 	checkevent EVENT_BEAT_LORELEI_AGAIN
 	iftrue LoreleiRematchAfterScript
+	checkevent EVENT_INTRODUCED_LORELEI
+	iftrue LoreleiReintroductionScript
+	writetext LoreleiIntroText
+	waitbutton
+	setevent EVENT_INTRODUCED_LORELEI
+LoreleiAfterRematchIntroScript:
 	writetext LoreleiRematchSeenText
 	waitbutton
 	closetext
@@ -70,11 +80,22 @@ LoreleiRematchScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LORELEI_AGAIN
 	opentext
+	checkevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
+	iftrue LoreleiRematchAfterScript
+	writetext LoreleiRewardText
+	buttonsound
+	verbosegiveitem TM_AVALANCHE
+	setevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
 LoreleiRematchAfterScript:
 	writetext LoreleiRematchAfterText
 	waitbutton
 	closetext
 	end
+
+LoreleiReintroductionScript:
+	writetext LoreleiRematchIntroAgainText
+	waitbutton
+	jump LoreleiAfterRematchIntroScript
 
 Text_IcePathB3FIceRock:
 	text "The boulder is"
@@ -103,16 +124,18 @@ LoreleiIntroText:
 
 	para "And what are you"
 	line "doing here?"
-
-	para "You're taking the"
-	line "#mon League"
-	cont "challenge. I see."
-	cont "How ironic."
 	done
 
 LoreleiAfterIntroText:
-	text "Lorelei: Why don't"
-	line "I test your skill?"
+	text "Lorelei: You're"
+	line "taking the #mon"
+
+	para "League challenge."
+	line "I see."
+	cont "How ironic."
+
+	para "Why don't I test"
+	line "your skill?"
 	done
 
 LoreleiNoBattleText:
@@ -134,6 +157,15 @@ LoreleiBeatenText:
 	line "I thought!"
 	done
 
+LoreleiRewardText:
+	text "You know how to"
+	line "handle Ice-type"
+	cont "#mon."
+
+	para "Then you can use"
+	line "this TM."
+	done
+
 LoreleiAfterText:
 	text "Go on ahead. You"
 	line "can challenge the"
@@ -147,11 +179,13 @@ LoreleiAfterText:
 	cont "for a rematch."
 	done
 
-LoreleiRematchSeenText:
+LoreleiRematchIntroAgainText:
 	text "Lorelei: Hello"
 	line "again, <PLAY_G>."
+	done
 
-	para "So you battled"
+LoreleiRematchSeenText:
+	text "So you battled"
 	line "the Elite Four?"
 
 	para "I hope you took"

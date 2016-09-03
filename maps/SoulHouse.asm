@@ -39,6 +39,10 @@ AgathaScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_AGATHA
 	opentext
+	writetext AgathaRewardText
+	buttonsound
+	verbosegiveitem TM_SHADOW_CLAW
+	setevent EVENT_GOT_TM65_SHADOW_CLAW_FROM_AGATHA
 AgathaAfterScript:
 	writetext AgathaAfterText
 	waitbutton
@@ -149,7 +153,7 @@ AgathaBeatenText
 	text "Oh, my!"
 	done
 
-AgathaAfterText:
+AgathaRewardText:
 	text "You're quite"
 	line "something, child."
 
@@ -158,8 +162,13 @@ AgathaAfterText:
 
 	para "connection to"
 	line "your #mon."
-	
-	para "I expect great"
+
+	para "Here, take this"
+	line "TM!"
+	done
+
+AgathaAfterText:
+	text "I expect great"
 	line "things from you,"
 	cont "if you will them."
 	done
