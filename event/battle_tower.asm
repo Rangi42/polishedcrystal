@@ -52,7 +52,7 @@ RunBattleTowerTrainer: ; 17024d
 
 	xor a
 	ld [wLinkMode], a
-	callba HealParty
+	callba HealPartyEvenForNuzlocke
 	call ReadBTTrainerParty
 
 	; Clears 05:a89a
@@ -67,7 +67,7 @@ RunBattleTowerTrainer: ; 17024d
 	predef StartBattle
 
 	callba LoadPokemonData
-	callba HealParty
+	callba HealPartyEvenForNuzlocke
 	ld a, [wBattleResult]
 	ld [ScriptVar], a
 	and a

@@ -176,6 +176,7 @@ SpecialsPointers:: ; c029
 	add_special Special_ReiBlessing
 	add_special BillBoxSwitchCheck
 	add_special BillBoxSwitch
+	add_special HealPartyEvenForNuzlocke
 
 	add_special SpecialNone
 ; c224

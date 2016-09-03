@@ -178,7 +178,7 @@ CherrygroveSilverTriggerNorth:
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	special RunCallback_04
 	dotrigger $0
-	special HealParty
+	special HealPartyEvenForNuzlocke
 	playmapmusic
 	end
 

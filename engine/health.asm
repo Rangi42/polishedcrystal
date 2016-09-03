@@ -1,3 +1,17 @@
+HealPartyEvenForNuzlocke:
+	ld a, [Options2]
+	and 1 << NUZLOCKE_MODE
+	jp z, HealParty
+
+	ld a, [Options2]
+	res NUZLOCKE_MODE, a
+	ld [Options2], a
+	call HealParty
+	ld a, [Options2]
+	set NUZLOCKE_MODE, a
+	ld [Options2], a
+	ret
+
 HealParty: ; c658
 	xor a
 	ld [CurPartyMon], a
