@@ -275,7 +275,7 @@ The game's data files do a fairly good job of listing things you'll want to know
 I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
 
 
-## Changes in 1.2.0
+## Changes in 2.0.0
 
 These changes have been made since the previous 1.1.2 release. If you build the project as-is, it will include all of them.
 
@@ -340,7 +340,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Access the last Unown chamber with a Fairy-type Pokémon, not Ho-Oh.
 * Add: Former Mystery Gift girl in Goldenrod Dept. Store now gives a random Berry every day.
 * Remove: No more support for Mystery Gift, GameBoy Printer, or Mobile Adapter.
-* Fix: Gen VI wild held item chances (50% common, 5% rare, 45% none)
+* Fix: Gen VI wild held item chances (50% common, 5% rare, 45% none), with Amulet Coin increasing them to 60% common, 10% rare, 30% none.
 * Fix: No more daily limit on Wonder Trades.
 * Fix: Tangela, Yanma, and Pilowsine evolve by knowing AncientPower.
 * Fix: Replace Pryce's Seel and Shellder with Piloswine and Sneasel.
