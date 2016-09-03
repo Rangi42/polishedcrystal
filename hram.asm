@@ -33,7 +33,7 @@ hJoyDown           EQU $ffa8
 hJoyLast           EQU $ffa9
 hInMenu            EQU $ffaa
 
-hPrinter           EQU $ffac
+hFFAC              EQU $ffac
 hGraphicStartTile           EQU $ffad
 hMoveMon           EQU $ffae
 hMapObjectIndexBuffer EQU $ffaf
