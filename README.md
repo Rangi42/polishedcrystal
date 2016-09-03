@@ -317,6 +317,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Rhyperior is Steel/Rock.
 * Add: Strength is 90 power.
 * Add: Replace Razor Shell with Icicle Crash.
+* Add: Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm.
 * Add: Improve Buena's prizes.
 * Add: Yanma and Venomoth are available in the Bug-Catching Contest.
 * Add: Murkrow is rare in some Headbutt trees.
@@ -364,3 +365,4 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: 50 TMs → 65 TMs.
 * Fix: TMs each have a unique location.
 * Fix: Roaming legendary beast music.
+* Fix: Can't trade away the GS Ball.

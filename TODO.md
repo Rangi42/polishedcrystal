@@ -30,7 +30,6 @@
 * Hurricane cannot miss in rain
 * Low Kick's power is based on weight
 * Thunder ignores accuracy and evasion in rain
-* Rock-type Pokémon get Sp.Def boosted by 50% in a sandstorm
 * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
 * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-faithful)

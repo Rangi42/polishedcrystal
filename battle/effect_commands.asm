@@ -2863,6 +2863,7 @@ PlayerAttackDamage: ; 352e2
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+	call SandstormSpDefBoost
 	jp .lightscreen
 
 .psystrike
@@ -3117,6 +3118,24 @@ SpeciesItemBoost: ; 353d1
 	ret
 
 ; 353f6
+
+
+SandstormSpDefBoost:
+	ld a, [Weather]
+	cp WEATHER_SANDSTORM
+	ret nz
+	call CheckIfTargetIsRockType
+	ret z
+	push hl
+	ld h, b
+	ld l, c
+	srl h
+	rr l
+	add hl, bc
+	ld b, h
+	ld c, l
+	pop hl
+	ret
 
 
 EnemyAttackDamage: ; 353f6
@@ -5304,6 +5323,22 @@ CheckIfTargetIsIceType:
 	ret z
 	ld a, [de]
 	cp ICE
+	ret
+
+
+CheckIfTargetIsRockType:
+	ld de, EnemyMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp ROCK
+	ret z
+	ld a, [de]
+	cp ROCK
 	ret
 
 

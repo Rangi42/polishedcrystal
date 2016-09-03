@@ -11,6 +11,19 @@ WonderTrade::
 	callba SelectTradeOrDaycareMon
 	ret c
 
+	ld hl, PartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [CurPartyMon]
+	call AddNTimes
+	ld b, [hl]
+	ld a, GS_BALL
+	cp b
+	jr nz, .continue
+	ld hl, .Text_WonderTradeCantTradeGSBall
+	call PrintText
+	ret
+
+.continue
 	ld hl, PartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -63,6 +76,10 @@ WonderTrade::
 
 .Text_WonderTradePrompt:
 	text_jump WonderTradePromptText
+	db "@"
+
+.Text_WonderTradeCantTradeGSBall
+	text_jump WonderTradeCantTradeGSBallText
 	db "@"
 
 .Text_WonderTradeConfirm:

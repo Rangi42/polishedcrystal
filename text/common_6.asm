@@ -8,6 +8,14 @@ WonderTradePromptText::
 	line "you want to trade?"
 	prompt
 
+WonderTradeCantTradeGSBallText::
+	text "Sorry, but your"
+	line "#mon is holding"
+
+	para "a strange item. We"
+	line "can't accept it."
+	prompt
+
 WonderTradeConfirmText::
 	text "Offer to trade"
 	line "@"
