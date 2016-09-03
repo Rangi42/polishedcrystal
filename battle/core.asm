@@ -8436,7 +8436,7 @@ HandleNuzlockeFlags:
 	cp WILD_BATTLE
 	ret nz
 
-	; Don't count duplicate encounters
+	; Dupes clause: don't count duplicate encounters
 	ld a, [EnemyMonSpecies]
 	dec a
 	call CheckCaughtMon

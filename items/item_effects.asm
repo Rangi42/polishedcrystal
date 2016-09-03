@@ -212,6 +212,11 @@ ParkBall: ; e8a2
 	ld a, [Options2]
 	bit NUZLOCKE_MODE, a
 	jr z, .NoNuzlockeCheck
+
+	; Shiny clause: always allow catching shiny Pokémon
+	callba BattleCheckEnemyShininess
+	jr c, .NoNuzlockeCheck
+
 	; Get current landmark
 	ld a, [MapGroup]
 	ld b, a
