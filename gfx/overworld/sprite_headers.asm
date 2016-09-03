@@ -439,8 +439,11 @@ FruitTreeSprite: ; 1495e
 	sprite_header FruitTreeSpriteGFX, 1, STILL_SPRITE, PAL_OW_TREE
 ; 14964
 
-ElectricFenceSprite:
-	sprite_header ElectricFenceSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+ElectricFenceLeftSprite:
+	sprite_header ElectricFenceLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
+
+ElectricFenceRightSprite:
+	sprite_header ElectricFenceRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
 
 FossilSprite:
 	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN

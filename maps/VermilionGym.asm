@@ -5,10 +5,10 @@ const_value set 2
 	const VERMILIONGYM_SUPER_NERD
 	const VERMILIONGYM_COOLTRAINER_F
 	const VERMILIONGYM_GYM_GUY
-	const VERMILIONGYM_FENCE_1_1
-	const VERMILIONGYM_FENCE_1_2
-	const VERMILIONGYM_FENCE_2_1
-	const VERMILIONGYM_FENCE_2_2
+	const VERMILIONGYM_FENCE_1_LEFT
+	const VERMILIONGYM_FENCE_1_RIGHT
+	const VERMILIONGYM_FENCE_2_LEFT
+	const VERMILIONGYM_FENCE_2_RIGHT
 
 VermilionGym_MapScriptHeader:
 .MapTriggers:
@@ -25,8 +25,8 @@ VermilionGymDoorsScript:
 	iftrue .done
 	checkevent EVENT_VERMILION_GYM_SWITCH_1
 	iffalse .resample
-	appear VERMILIONGYM_FENCE_1_1
-	appear VERMILIONGYM_FENCE_1_2
+	appear VERMILIONGYM_FENCE_1_LEFT
+	appear VERMILIONGYM_FENCE_1_RIGHT
 .resample
 	callasm SampleVermilionGymTrashCan
 .done
@@ -153,8 +153,8 @@ VermilionGymTrashCanScript:
 	iftrue .second_switch
 	writetext VermilionGymFoundFirstSwitchText
 	playsound SFX_ENTER_DOOR
-	disappear VERMILIONGYM_FENCE_1_1
-	disappear VERMILIONGYM_FENCE_1_2
+	disappear VERMILIONGYM_FENCE_1_LEFT
+	disappear VERMILIONGYM_FENCE_1_RIGHT
 	waitbutton
 	closetext
 	end
@@ -162,8 +162,8 @@ VermilionGymTrashCanScript:
 .second_switch
 	writetext VermilionGymFoundSecondSwitchText
 	playsound SFX_ENTER_DOOR
-	disappear VERMILIONGYM_FENCE_2_1
-	disappear VERMILIONGYM_FENCE_2_2
+	disappear VERMILIONGYM_FENCE_2_LEFT
+	disappear VERMILIONGYM_FENCE_2_RIGHT
 	waitbutton
 	closetext
 	end
@@ -177,8 +177,8 @@ VermilionGymTrashCanScript:
 	waitbutton
 	closetext
 	callasm SampleVermilionGymTrashCan
-	appear VERMILIONGYM_FENCE_1_1
-	appear VERMILIONGYM_FENCE_1_2
+	appear VERMILIONGYM_FENCE_1_LEFT
+	appear VERMILIONGYM_FENCE_1_RIGHT
 	end
 
 VermilionGymStatue:
@@ -443,10 +443,10 @@ VermilionGym_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerJugglerHorton, -1
 	person_event SPRITE_COOLTRAINER_F, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristfJanet, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, VermilionGymGuyScript, -1
-	person_event SPRITE_ELECTRIC_FENCE, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_ELECTRIC_FENCE, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_ELECTRIC_FENCE, 4, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
-	person_event SPRITE_ELECTRIC_FENCE, 4, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE_LEFT, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE_LEFT, 4, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 4, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
 
 ; Vermilion Gym trash can code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/maps/VermilionGym.asm

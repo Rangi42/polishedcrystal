@@ -510,3 +510,23 @@ InitLinkTradePalMap: ; 49856
 	call _InitLinkTradePalMap
 	ret
 ; 4985a
+
+LoadSpecialMapOBPalette:
+	ld a, [MapGroup]
+	cp GROUP_VERMILION_GYM
+	ret nz
+	ld a, [MapNumber]
+	cp MAP_VERMILION_GYM
+	ret nz
+	ld a, $5
+	ld de, UnknOBPals + 5 palettes
+	ld hl, VermilionGymOBPalette_Silver
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+
+VermilionGymOBPalette_Silver:
+	RGB 31, 31, 31
+	RGB 31, 31, 30
+	RGB 19, 24, 31
+	RGB 05, 10, 27

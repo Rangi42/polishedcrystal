@@ -1679,6 +1679,8 @@ LoadMapPals:
 	ld a, $5 ; BANK(UnknOBPals)
 	call FarCopyWRAM
 
+	callba LoadSpecialMapOBPalette
+
 	ld a, [wPermission]
 	cp TOWN
 	jr z, .outside
@@ -1705,6 +1707,7 @@ endr
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
+
 	ret
 
 .TilesetColorsPointers:
