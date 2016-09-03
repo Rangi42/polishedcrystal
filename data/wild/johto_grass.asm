@@ -543,29 +543,29 @@
 	map ILEX_FOREST
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
-	db 5, CATERPIE
-	db 5, WEEDLE
-	db 7, METAPOD
-	db 7, KAKUNA
-	db 7, PIDGEY
-	db 6, PARAS
-	db 6, PARAS
+	db 7, CATERPIE
+	db 7, WEEDLE
+	db 9, METAPOD
+	db 9, KAKUNA
+	db 9, PIDGEY
+	db 8, PARAS
+	db 8, PARAS
 	; day
-	db 5, CATERPIE
-	db 5, WEEDLE
-	db 7, METAPOD
-	db 7, KAKUNA
-	db 6, PARAS
-	db 5, ODDISH
-	db 7, PIDGEY
-	; nite
-	db 5, ODDISH
-	db 5, VENONAT
+	db 7, CATERPIE
+	db 7, WEEDLE
+	db 9, METAPOD
+	db 9, KAKUNA
+	db 8, PARAS
 	db 7, ODDISH
-	db 7, PSYDUCK
-	db 7, HOOTHOOT
-	db 6, PARAS
-	db 6, PARAS
+	db 9, PIDGEY
+	; nite
+	db 7, ODDISH
+	db 7, VENONAT
+	db 9, ODDISH
+	db 9, PSYDUCK
+	db 9, HOOTHOOT
+	db 8, PARAS
+	db 8, PARAS
 
 	map MOUNT_MORTAR_1F_OUTSIDE
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite

@@ -1228,16 +1228,17 @@ BellsproutEvosAttacks:
 	db EVOLVE_LEVEL, 21, WEEPINBELL
 	db 0 ; no more evolutions
 	db 1, VINE_WHIP
-	db 7, GROWTH
-	db 11, WRAP
-	db 13, SLEEP_POWDER
-	db 15, POISONPOWDER
-	db 17, STUN_SPORE
+	db 5, GROWTH
+	db 7, WRAP
+	db 11, SLEEP_POWDER
+	db 13, POISONPOWDER
+	db 15, STUN_SPORE
+	db 17, RAZOR_LEAF
 	db 23, ACID
 	db 27, ENCORE ; Knock Off → egg move
 	db 29, SWEET_KISS ; Sweet Scent → event move
 	db 35, MORNING_SUN ; Gastro Acid → new move
-	db 39, RAZOR_LEAF
+	db 39, SEED_BOMB ; Razor Leaf → new move
 	db 41, SLAM
 	db 47, SWORDS_DANCE ; Wring Out → egg move
 	db 0 ; no more level-up moves
@@ -1246,16 +1247,17 @@ WeepinbellEvosAttacks:
 	db EVOLVE_ITEM, LEAF_STONE, VICTREEBEL
 	db 0 ; no more evolutions
 	db 1, VINE_WHIP
-	db 7, GROWTH
-	db 11, WRAP
-	db 13, SLEEP_POWDER
-	db 15, POISONPOWDER
-	db 17, STUN_SPORE
+	db 5, GROWTH
+	db 7, WRAP
+	db 11, SLEEP_POWDER
+	db 13, POISONPOWDER
+	db 15, STUN_SPORE
+	db 17, RAZOR_LEAF
 	db 23, ACID
 	db 27, ENCORE ; Knock Off → egg move
 	db 29, SWEET_KISS ; Sweet Scent → event move
 	db 35, MORNING_SUN ; Gastro Acid → new move
-	db 39, RAZOR_LEAF
+	db 39, SEED_BOMB ; Razor Leaf → new move
 	db 41, SLAM
 	db 47, SWORDS_DANCE ; Wring Out → egg move
 	db 0 ; no more level-up moves
@@ -1266,7 +1268,7 @@ VictreebelEvosAttacks:
 	db 1, SLEEP_POWDER
 	db 1, MORNING_SUN ; Sweet Scent → new move
 	db 1, RAZOR_LEAF
-	db 47, SEED_BOMB ; Leaf Blade → tutor move
+	db 47, SWORDS_DANCE ; Leaf Blade → prior move
 	db 0 ; no more level-up moves
 
 TentacoolEvosAttacks:

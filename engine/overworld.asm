@@ -777,6 +777,7 @@ SpriteMons: ; 14495
 	db AMPHAROS
 	db MURKROW
 	db UNOWN
+	db HERACROSS
 	db URSARING
 	db SKARMORY
 	db MILTANK

@@ -1,6 +1,6 @@
 const_value set 2
 	const ROUTE34ILEXFORESTGATE_TEACHER1
-	const ROUTE34ILEXFORESTGATE_PERSIAN
+	const ROUTE34ILEXFORESTGATE_HERACROSS
 	const ROUTE34ILEXFORESTGATE_LASS
 	const ROUTE34ILEXFORESTGATE_TEACHER2
 
@@ -70,10 +70,10 @@ UnknownScript_0x62d84:
 	closetext
 	end
 
-IlexGatePersian:
+IlexGateHeracross:
 	opentext
 	writetext UnknownText_0x62e83
-	cry PERSIAN
+	cry HERACROSS
 	waitbutton
 	closetext
 	end
@@ -119,7 +119,7 @@ UnknownText_0x62e41:
 	done
 
 UnknownText_0x62e83:
-	text "Persian: Purr…"
+	text "Heracross: Cross!"
 	done
 
 UnknownText_0x62e97:
@@ -157,6 +157,6 @@ Route34IlexForestGate_MapEventHeader:
 .PersonEvents:
 	db 4
 	person_event SPRITE_TEACHER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
-	person_event SPRITE_PERSIAN, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IlexGatePersian, -1
+	person_event SPRITE_HERACROSS, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, IlexGateHeracross, -1
 	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x62d94, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
