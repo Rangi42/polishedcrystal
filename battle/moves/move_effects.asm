@@ -157,6 +157,7 @@ DarkPulse:
 Extrasensory:
 Headbutt:
 HyperFang:
+IcicleCrash:
 IronHead:
 LowKick:
 RockSlide:
@@ -429,7 +430,6 @@ DefenseDownHit:
 Acid:
 IronTail:
 RockSmash:
-RazorShell:
 	checkobedience
 	usedmovetext
 	doturn

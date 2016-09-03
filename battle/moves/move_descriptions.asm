@@ -126,7 +126,7 @@
 	dw EarthPowerDescription
 	dw FireBlastDescription
 	dw WaterfallDescription
-	dw RazorShellDescription
+	dw IcicleCrashDescription
 	dw SwiftDescription
 	dw IronHeadDescription
 	dw SpikeCannonDescription
@@ -302,7 +302,6 @@ PlayRoughDescription:
 AcidDescription:
 IronTailDescription:
 RockSmashDescription:
-RazorShellDescription:
 	db   "An attack that may"
 	next "lower Defense.@"
 
@@ -376,6 +375,7 @@ ZenHeadbuttDescription:
 ExtrasensoryDescription:
 DarkPulseDescription:
 AstonishDescription:
+IcicleCrashDescription:
 	db   "An attack that may"
 	next "cause flinching.@"
 

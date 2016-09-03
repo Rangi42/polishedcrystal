@@ -1645,13 +1645,13 @@ ShellderEvosAttacks:
 	db 1, TACKLE
 	db 4, DEFENSE_CURL ; Withdraw → similar move
 	db 8, SUPERSONIC
-	db 13, AURORA_BEAM ; Icicle Spear → Aurora Beam
+	db 13, BUBBLE ; Icicle Spear → new move
 	db 16, PROTECT
 	db 20, LEER
-	db 25, TWINEEDLE ; Ice Shard → egg move
-	db 28, SELFDESTRUCT ; Clamp → RBY TM move
-	db 32, RAZOR_SHELL
-	db 37, AVALANCHE ; Aurora Beam → egg move
+	db 25, BUBBLE_BEAM ; Ice Shard → egg move
+	db 28, RAPID_SPIN ; Clamp → egg move
+	db 32, SELFDESTRUCT ; Razor Shell → RBY TM move
+	db 37, AURORA_BEAM
 	db 40, WHIRLPOOL
 	db 44, EXPLOSION ; Brine → RBY TM move
 	db 49, BARRIER ; Iron Defense → egg move
@@ -1669,7 +1669,7 @@ CloysterEvosAttacks:
 	db 1, AURORA_BEAM
 	db 13, SPIKE_CANNON
 	db 28, SPIKES
-	db 50, AVALANCHE ; Icicle Crash → egg move
+	db 50, ICICLE_CRASH
 	db 0 ; no more level-up moves
 
 GastlyEvosAttacks:
@@ -2298,7 +2298,7 @@ JynxEvosAttacks:
 	db 25, MEAN_LOOK
 	db 28, DRAIN_KISS ; Fake Tears → Drain Kiss
 	db 33, HEAL_BELL ; Wake-Up Slap → HGSS tutor move
-	db 39, AVALANCHE
+	db 39, 
 	db 44, BODY_SLAM
 	db 49, NASTY_PLOT ; Wring Out → egg move
 	db 55, PERISH_SONG
@@ -2583,7 +2583,7 @@ KabutoEvosAttacks:
 	db 34, MEGA_DRAIN
 	db 39, ANCIENTPOWER ; Metal Sound → AncientPower
 	db 45, METAL_SOUND ; AncientPower → Metal Sound
-	db 50, RAZOR_SHELL ; Wring Out → new move
+	db 50, GIGA_DRAIN ; Wring Out → TM move
 	db 55, IRON_HEAD ; new move
 	db 0 ; no more level-up moves
 
@@ -2602,7 +2602,7 @@ KabutopsEvosAttacks:
 	db 40, SLASH
 	db 45, LOW_KICK ; Metal Sound → HGSS tutor move
 	db 54, METAL_SOUND ; AncientPower → Metal Sound
-	db 63, RAZOR_SHELL ; Wring Out → new move
+	db 63, X_SCISSOR ; Wring Out → TM move
 	db 72, NIGHT_SLASH
 	db 0 ; no more level-up moves
 
@@ -3611,10 +3611,10 @@ LeafeonEvosAttacks:
 	db 1, TACKLE
 	db 1, TAIL_WHIP
 	db 5, SAND_ATTACK
-	db 9, RAZOR_LEAF
+	db 9, ABSORB ; Razor Leaf → new move
 	db 13, QUICK_ATTACK
 	db 17, BITE ; Grass Whistle → new move
-	db 20, IRON_TAIL ; Magical Leaf → TM move
+	db 20, RAZOR_LEAF ; Magical Leaf → Razor Leaf
 	db 25, GIGA_DRAIN
 	db 29, SWORDS_DANCE
 	db 33, MORNING_SUN ; Synthesis → similar move
@@ -3631,8 +3631,8 @@ GlaceonEvosAttacks:
 	db 9, ICY_WIND
 	db 13, QUICK_ATTACK
 	db 17, BITE
-	db 20, IRON_TAIL ; Ice Fang → TM move
-	db 25, RECOVER ; Ice Shard → new move
+	db 20, RECOVER ; Ice Fang → new move
+	db 25, ICICLE_CRASH ; Ice Shard → new move
 	db 29, BARRIER
 	db 33, MIRROR_COAT
 	db 37, ICE_BEAM ; Hail → TM move
@@ -3996,7 +3996,7 @@ SneaselEvosAttacks:
 	db 20, AGILITY
 	db 22, METAL_CLAW
 	db 25, SWORDS_DANCE ; Hone Claws → TM move
-	db 28, ICE_PUNCH ; Beat Up → TM move
+	db 28, ICICLE_CRASH ; Beat Up → egg move
 	db 32, SCREECH
 	db 35, SLASH
 	db 40, MOONLIGHT ; Snatch → event move
@@ -4016,7 +4016,7 @@ WeavileEvosAttacks:
 	db 20, NASTY_PLOT
 	db 22, METAL_CLAW
 	db 25, SWORDS_DANCE ; Hone Claws → TM move
-	db 28, ICE_PUNCH ; Fling → TM move
+	db 28, ICICLE_CRASH ; Fling → egg move
 	db 32, SCREECH
 	db 35, NIGHT_SLASH
 	db 40, MOONLIGHT ; Snatch → event move
@@ -4114,7 +4114,7 @@ SwinubEvosAttacks:
 	db 14, ENDURE
 	db 18, MAGNITUDE ; Mud Bomb → new move
 	db 21, ICY_WIND
-	db 24, AVALANCHE ; Ice Shard → egg move
+	db 24, ICICLE_CRASH ; Ice Shard → egg move
 	db 28, TAKE_DOWN
 	db 35, MIST
 	db 37, EARTHQUAKE
@@ -4135,7 +4135,7 @@ PiloswineEvosAttacks:
 	db 14, ENDURE
 	db 18, MAGNITUDE ; Mud Bomb → new move
 	db 21, ICY_WIND
-	db 24, AVALANCHE ; Ice Fang → egg move
+	db 24, ICICLE_CRASH ; Ice Fang → egg move
 	db 28, TAKE_DOWN
 	db 33, FURY_ATTACK
 	db 37, MIST

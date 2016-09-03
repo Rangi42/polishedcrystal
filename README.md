@@ -316,6 +316,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Magmortar is Fire/Fighting.
 * Add: Rhyperior is Steel/Rock.
 * Add: Strength is 90 power.
+* Add: Replace Razor Shell with Icicle Crash.
 * Add: Improve Buena's prizes.
 * Add: Yanma and Venomoth are available in the Bug-Catching Contest.
 * Add: Murkrow is rare in some Headbutt trees.

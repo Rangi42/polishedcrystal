@@ -739,6 +739,7 @@ SneaselEggMoves:
 	db PURSUIT
 	db COUNTER
 	db REFLECT
+	db ICICLE_CRASH
 	db $ff
 
 TeddiursaEggMoves:
@@ -767,6 +768,7 @@ SwinubEggMoves:
 	db BODY_SLAM
 	db ROCK_SLIDE
 	db ANCIENTPOWER
+	db ICICLE_CRASH
 	db $ff
 
 CorsolaEggMoves:

@@ -127,7 +127,7 @@ BattleAnimations::
 	dw BattleAnim_EarthPower
 	dw BattleAnim_FireBlast
 	dw BattleAnim_Waterfall
-	dw BattleAnim_RazorShell
+	dw BattleAnim_IcicleCrash
 	dw BattleAnim_Swift
 	dw BattleAnim_IronHead
 	dw BattleAnim_SpikeCannon
@@ -1558,20 +1558,6 @@ BattleAnim_Slash:
 	anim_wait 32
 	anim_ret
 
-BattleAnim_RazorShell: ; TODO: design new animation for Razor Shell
-BattleAnim_Clamp: ; removed
-	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT
-	anim_obj ANIM_OBJ_35, -15, 0,   7, 0, $a0
-	anim_obj ANIM_OBJ_35, -15, 0,   7, 0, $20
-	anim_wait 16
-	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_01, -14, 0,   6, 0, $18
-	anim_wait 32
-	anim_sound 0, 1, SFX_BITE
-	anim_obj ANIM_OBJ_01,  16, 0,   8, 0, $18
-	anim_wait 16
-	anim_ret
-
 BattleAnim_Bite:
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT
 	anim_obj ANIM_OBJ_36, -15, 0,   7, 0, $98
@@ -2201,6 +2187,7 @@ BattleAnim_HornAttack:
 	anim_ret
 
 BattleAnim_FuryAttack:
+BattleAnim_IcicleCrash: ; TODO: design custom Icicle Crash animation
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
 	anim_obj ANIM_OBJ_5F,   9, 0,   9, 0, $2
 	anim_wait 8
@@ -4830,6 +4817,19 @@ BattleAnim_Present: ; removed
 	anim_call BattleAnim_Present_branch_cbb8f
 	anim_wait 16
 	anim_jumpuntil .loop
+	anim_ret
+
+BattleAnim_Clamp: ; removed
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_HIT
+	anim_obj ANIM_OBJ_35, -15, 0,   7, 0, $a0
+	anim_obj ANIM_OBJ_35, -15, 0,   7, 0, $20
+	anim_wait 16
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_01, -14, 0,   6, 0, $18
+	anim_wait 32
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_01,  16, 0,   8, 0, $18
+	anim_wait 16
 	anim_ret
 
 BattleAnim_CottonSpore: ; removed
