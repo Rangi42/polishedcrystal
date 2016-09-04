@@ -39,7 +39,8 @@ MovementData_0x73629:
 
 UnknownText_0x7362c:
 	text "Cycling Road"
-	line "Uphill Starts Here"
+	line "starts going"
+	cont "uphill here."
 	done
 
 UnknownText_0x7364d:
