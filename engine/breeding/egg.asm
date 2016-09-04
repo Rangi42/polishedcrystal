@@ -327,14 +327,17 @@ HatchEggs: ; 16f70 (5:6f70)
 
 	ld a, [Options2]
 	and 1 << NUZLOCKE_MODE
-	jr nz, .AlwaysNickname
+	jr nz, .alwaysnickname
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox
 	pop de
 	jr c, .nonickname
+	jr .yesnickname
 
-.AlwaysNickname
+.alwaysnickname
+	pop de
+.yesnickname
 	ld a, $1
 	ld [wd26b], a
 	xor a
