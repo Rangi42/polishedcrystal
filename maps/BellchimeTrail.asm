@@ -10,13 +10,29 @@ BellchimeTrail_MapScriptHeader:
 	maptrigger .Trigger1
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_SPRITES, SetupValerieMorningWalkScript
 
 .Trigger0:
 	priorityjump BellchimeTrailStepDownScript
 	end
 
 .Trigger1:
+	end
+
+SetupValerieMorningWalkScript:
+	checkevent EVENT_BEAT_VALERIE
+	iffalse .Appear
+	checkflag ENGINE_VALERIE_MORNING_WALK
+	iffalse .Appear
+	disappear BELLCHIMETRAIL_VALERIE
+	end
+
+.Appear:
+	appear BELLCHIMETRAIL_VALERIE
 	end
 
 BellchimeTrailStepDownScript:
@@ -45,6 +61,8 @@ BellchimeTrailPanUpScript:
 BellchimeTrailValerieScript:
 	faceplayer
 	opentext
+	checkevent EVENT_BEAT_VALERIE
+	iftrue .Rematch
 	checkevent EVENT_LISTENED_TO_VALERIE
 	iftrue .Listened
 	writetext BellchimeTrailValerieIntroText
@@ -69,6 +87,7 @@ BellchimeTrailValerieScript:
 	verbosegiveitem TM_DAZZLINGLEAM
 	setevent EVENT_GOT_TM60_DAZZLINGLEAM_FROM_VALERIE
 	writetext BellchimeTrailValerieFarewellText
+.Depart
 	waitbutton
 	closetext
 	checkcode VAR_FACING
@@ -77,6 +96,7 @@ BellchimeTrailValerieScript:
 .SkipGoAround
 	applymovement BELLCHIMETRAIL_VALERIE, MovementData_ValerieDeparts1
 	disappear BELLCHIMETRAIL_VALERIE
+	setflag ENGINE_VALERIE_MORNING_WALK
 	clearevent EVENT_VALERIE_ECRUTEAK_CITY
 	end
 
@@ -85,6 +105,38 @@ BellchimeTrailValerieScript:
 	waitbutton
 	closetext
 	end
+
+.Rematch:
+	writetext BellchimeTrailValerieRematchText
+	waitbutton
+	closetext
+	winlosstext BellchimeTrailValerieRematchBeatenText, 0
+	setlasttalked BELLCHIMETRAIL_VALERIE
+	checkcode VAR_BADGES
+	if_equal 16, .Battle3
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Battle2
+	loadtrainer VALERIE, 1
+	startbattle
+	reloadmapafterbattle
+	jump .AfterRematch
+
+.Battle2:
+	loadtrainer VALERIE, 2
+	startbattle
+	reloadmapafterbattle
+	jump .AfterRematch
+
+.Battle3:
+	loadtrainer VALERIE, 3
+	startbattle
+	reloadmapafterbattle
+	jump .AfterRematch
+
+.AfterRematch:
+	opentext
+	writetext BellchimeTrailValerieRematchFarewellText
+	jump .Depart
 
 TinTowerSign:
 	jumptext TinTowerSignText
@@ -209,6 +261,51 @@ BellchimeTrailValerieFarewellText:
 	line "forgive me."
 
 	para "That was truly a"
+	line "captivating"
+	cont "battle."
+
+	para "I might just be"
+	line "captivated by you."
+
+	para "Until we meet"
+	line "again, farewell."
+	done
+
+BellchimeTrailValerieRematchText:
+	text "Valerie: Oh, if it"
+	line "isn't my young"
+	cont "trainer…"
+
+	para "It is lovely to"
+	line "meet you again"
+	cont "like this."
+
+	para "Then I suppose you"
+	line "have earned your-"
+
+	para "self the right to"
+	line "a battle."
+
+	para "The elusive Fairy"
+	line "may appear frail"
+
+	para "as the breeze and"
+	line "delicate as a"
+
+	para "bloom, but it is"
+	line "strong."
+	done
+
+BellchimeTrailValerieRematchBeatenText:
+	text "I hope that you"
+	line "will find things"
+
+	para "worth smiling"
+	line "about tomorrow…"
+	done
+
+BellchimeTrailValerieRematchFarewellText:
+	text "That was truly a"
 	line "captivating"
 	cont "battle."
 

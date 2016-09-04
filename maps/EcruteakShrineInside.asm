@@ -43,9 +43,28 @@ EcruteakShrineInsideReiScript:
 	setflag ENGINE_DAILY_SHRINE_VISIT
 	winlosstext EcruteakShrineInsideReiBeatenText, 0
 	setlasttalked ECRUTEAKSHRINEINSIDE_REI
+	checkcode VAR_BADGES
+	if_equal 16, .Battle3
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .Battle2
 	loadtrainer REI, 1
 	startbattle
 	reloadmapafterbattle
+	jump .AfterRematch
+
+.Battle2:
+	loadtrainer REI, 2
+	startbattle
+	reloadmapafterbattle
+	jump .AfterRematch
+
+.Battle3:
+	loadtrainer REI, 3
+	startbattle
+	reloadmapafterbattle
+	jump .AfterRematch
+
+.AfterRematch:
 	opentext
 
 .ReiDone

@@ -12451,6 +12451,98 @@ ValerieGroup:
 	db $ff ; end
 
 ; ================
+
+	; VALERIE
+	db "Valerie@"
+	db 3 ; item + moves
+
+	; party
+
+	db 57, CLEFABLE, LEFTOVERS
+		db MOONBLAST
+		db CALM_MIND
+		db MOONLIGHT
+		db METRONOME
+
+	db 57, MR__MIME, QUICK_CLAW
+		db PSYCHIC_M
+		db DAZZLINGLEAM
+		db LIGHT_SCREEN
+		db REFLECT
+
+	db 56, WIGGLYTUFF, KINGS_ROCK
+		db REST
+		db SLEEP_TALK
+		db HYPER_VOICE
+		db DAZZLINGLEAM
+
+	db 56, AZUMARILL, MUSCLE_BAND
+		db PLAY_ROUGH
+		db WATERFALL
+		db DIZZY_PUNCH
+		db SUBMISSION
+
+	db 58, TOGETIC, EXPERT_BELT
+		db ANCIENTPOWER
+		db SOFTBOILED
+		db DAZZLINGLEAM
+		db AIR_SLASH
+
+	db 60, SYLVEON, PINK_BOW
+		db MOONBLAST
+		db CALM_MIND
+		db DRAIN_KISS
+		db HYPER_VOICE
+
+	db $ff ; end
+
+; ================
+
+	; VALERIE
+	db "Valerie@"
+	db 3 ; item + moves
+
+	; party
+
+	db 73, CLEFABLE, LEFTOVERS
+		db MOONBLAST
+		db CALM_MIND
+		db SOFTBOILED
+		db THUNDER_WAVE
+
+	db 73, MR__MIME, QUICK_CLAW
+		db PSYCHIC_M
+		db DAZZLINGLEAM
+		db LIGHT_SCREEN
+		db REFLECT
+
+	db 72, WIGGLYTUFF, KINGS_ROCK
+		db FIRE_BLAST
+		db HEAL_BELL
+		db HYPER_VOICE
+		db DAZZLINGLEAM
+
+	db 72, AZUMARILL, MUSCLE_BAND
+		db PLAY_ROUGH
+		db WATERFALL
+		db RETURN
+		db SUBMISSION
+
+	db 74, TOGETIC, EXPERT_BELT
+		db ANCIENTPOWER
+		db SOFTBOILED
+		db DAZZLINGLEAM
+		db AIR_SLASH
+
+	db 75, SYLVEON, PINK_BOW
+		db MOONBLAST
+		db CALM_MIND
+		db DRAIN_KISS
+		db HYPER_VOICE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12468,6 +12560,98 @@ ReiGroup:
 	db 18, NOCTOWL, NO_ITEM
 	db 18, KADABRA, NO_ITEM
 	db 21, NINETALES, GOLD_BERRY
+
+	db $ff ; end
+
+; ================
+
+	; REI
+	db "Maiden Rei@"
+	db 3 ; item + moves
+
+	; party
+
+	db 59, FLAREON, MUSCLE_BAND
+		db QUICK_ATTACK
+		db ROCK_SMASH
+		db DOUBLE_EDGE
+		db FLARE_BLITZ
+
+	db 58, HONCHKROW, BLACKGLASSES
+		db DRILL_PECK
+		db WHIRLWIND
+		db PURSUIT
+		db FEINT_ATTACK
+
+	db 57, NOCTOWL, QUICK_CLAW
+		db PSYCHIC_M
+		db AIR_SLASH
+		db HYPNOSIS
+		db DREAM_EATER
+
+	db 57, ALAKAZAM, EXPERT_BELT
+		db PSYCHIC_M
+		db FOCUS_BLAST
+		db SHADOW_BALL
+		db THUNDER_WAVE
+
+	db 58, RAPIDASH, KINGS_ROCK
+		db FIRE_BLAST
+		db MEGAHORN
+		db POISON_JAB
+		db WILL_O_WISP
+
+	db 60, NINETALES, LEFTOVERS
+		db NASTY_PLOT
+		db FLAMETHROWER
+		db DARK_PULSE
+		db SHADOW_BALL
+
+	db $ff ; end
+
+; ================
+
+	; REI
+	db "Maiden Rei@"
+	db 3 ; item + moves
+
+	; party
+
+	db 74, FLAREON, MUSCLE_BAND
+		db QUICK_ATTACK
+		db ROCK_SMASH
+		db DOUBLE_EDGE
+		db FLARE_BLITZ
+
+	db 73, HONCHKROW, BLACKGLASSES
+		db DRILL_PECK
+		db WHIRLWIND
+		db PURSUIT
+		db FEINT_ATTACK
+
+	db 72, NOCTOWL, QUICK_CLAW
+		db PSYCHIC_M
+		db AIR_SLASH
+		db HYPNOSIS
+		db DREAM_EATER
+
+	db 72, ALAKAZAM, EXPERT_BELT
+		db PSYCHIC_M
+		db FOCUS_BLAST
+		db SHADOW_BALL
+		db THUNDER_WAVE
+
+	db 73, RAPIDASH, KINGS_ROCK
+		db FLARE_BLITZ
+		db MEGAHORN
+		db POISON_JAB
+		db WILL_O_WISP
+
+	db 75, NINETALES, LEFTOVERS
+		db NASTY_PLOT
+		db FIRE_BLAST
+		db DARK_PULSE
+		db SHADOW_BALL
 
 	db $ff ; end
 

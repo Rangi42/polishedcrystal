@@ -7,7 +7,23 @@ ValeriesHouse_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_SPRITES, SetupValerieAfterMorningWalkScript
+
+SetupValerieAfterMorningWalkScript:
+	checkevent EVENT_BEAT_VALERIE
+	iffalse .Disappear
+	checkflag ENGINE_VALERIE_MORNING_WALK
+	iffalse .Disappear
+	appear VALERIESHOUSE_VALERIE
+	end
+
+.Disappear:
+	disappear VALERIESHOUSE_VALERIE
+	end
 
 ValeriesHouseValerieScript:
 	jumptextfaceplayer ValeriesHouseValerieText
@@ -34,10 +50,10 @@ ValeriesHouseValerieText:
 
 	para "That desire is my"
 	line "inspiration and"
+	cont "what I try to"
 
-	para "what I try to"
-	line "achieve by"
-	cont "designing."
+	para "achieve by"
+	line "designing."
 
 	para "And yet… the only"
 	line "time I feel truly"

@@ -193,7 +193,7 @@ ENDM
 	engine_flag DailyFlags, 0 ; kurt making balls  ; $50
 	engine_flag DailyFlags, 1 ; ????
 	engine_flag DailyFlags, 2 ; special wilddata?
-	engine_flag DailyFlags, 3 ; time capsule (24h wait)
+	engine_flag DailyFlags, 3 ; valerie's morning walk
 	engine_flag DailyFlags, 4 ; all fruit trees
 	engine_flag DailyFlags, 5 ; wobbuffet given
 	engine_flag DailyFlags, 6 ; goldenrod underground merchant closed

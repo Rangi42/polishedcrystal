@@ -180,8 +180,6 @@ Script_TimeCapsuleClosed:
 LinkReceptionistScript_TimeCapsule:
 	checkevent EVENT_NEVER_MET_BILL
 	iftrue Script_TimeCapsuleClosed
-	checkflag ENGINE_TIME_CAPSULE
-	iftrue Script_TimeCapsuleClosed
 	special Special_SetBitsForTimeCapsuleRequest
 	faceplayer
 	opentext

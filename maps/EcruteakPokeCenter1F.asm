@@ -33,7 +33,6 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement1
 	pause 60
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement2
-	setflag ENGINE_TIME_CAPSULE
 	clearevent EVENT_ECRUTEAK_POKE_CENTER_BILL
 	dotrigger $1
 	end
@@ -148,11 +147,9 @@ EcruteakPokeCenter1FBillIntroText:
 	line "adjustments on my"
 	cont "Time Capsule."
 
-	para "Tomorrow, Time"
-	line "Capsules will be"
-
-	para "running at all"
-	line "#mon Centers."
+	para "Now Time Capsules"
+	line "are running at all"
+	cont "#mon Centers."
 	done
 
 UnknownText_0x54c74:
