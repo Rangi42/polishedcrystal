@@ -427,10 +427,10 @@ Slots_LoadReelState: ; 929f6 (24:69f6)
 
 Slot_CheckCoinCaseFull: ; 92a04 (24:6a04)
 	ld a, d
-	cp 9999 / $100
+	cp 50000 / $100
 	jr c, .not_full
 	ld a, e
-	cp 9999 % $100
+	cp 50000 % $100
 	jr c, .not_full
 	scf
 	ret

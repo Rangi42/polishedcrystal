@@ -1200,14 +1200,14 @@ CardFlip_CheckWinCondition: ; e0637
 
 .IsCoinCaseFull: ; e0833
 	ld a, [Coins]
-	cp 9999 / $100
+	cp 50000 / $100
 	jr c, .less
 	jr z, .check_low
 	jr .more
 
 .check_low
 	ld a, [Coins + 1]
-	cp 9999 % $100
+	cp 50000 % $100
 	jr c, .less
 
 .more

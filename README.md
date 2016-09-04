@@ -366,5 +366,6 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Acid lowers Sp.Def, not Defense (thanks, kide).
 * Fix: 50 TMs → 65 TMs.
 * Fix: TMs each have a unique location.
+* Fix: Game Corner games pay out even if you have 9999+ coins.
 * Fix: Roaming legendary beast music.
 * Fix: Can't trade away the GS Ball.
