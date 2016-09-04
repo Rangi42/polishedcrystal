@@ -233,6 +233,10 @@ UnknownText_0x192291:
 	line "proof that you"
 	cont "defeated me."
 
+	para "Looks good on your"
+	line "Trainer Card,"
+	cont "doesn't it?"
+
 	para "You wear it"
 	line "proudly, hear?"
 

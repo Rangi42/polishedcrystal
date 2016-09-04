@@ -17,6 +17,9 @@ TrainerCard: ; 25105
 	ld a, [hJoyLast]
 	and B_BUTTON
 	jr nz, .quit
+	ld a, [KantoBadges]
+	and a
+	jr z, .johto
 	push bc
 	ld a, [MapGroup]
 	ld b, a
@@ -186,7 +189,15 @@ TrainerCard_Page2_Joypad: ; 25221 (9:5221)
 	ret
 
 .pressed_right_a
+	ld a, [KantoBadges]
+	and a
+	jr z, .quit
 	ld a, $4
+	ld [wJumptableIndex], a
+	ret
+
+.quit
+	ld a, $6
 	ld [wJumptableIndex], a
 	ret
 
