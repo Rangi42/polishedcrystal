@@ -333,7 +333,6 @@ KRIS EQU __enum__
 
 	trainerclass LASS ; 2d
 	const CARRIE
-	const BRIDGET
 	const ALICE
 	const KRISE
 	const CONNIE1
@@ -467,6 +466,10 @@ KRIS EQU __enum__
 	const KOJI
 
 	trainerclass SR_AND_JR ; 39
+	const JOANDCATH1
+	const JOANDCATH2
+	const IVYANDAMY1
+	const IVYANDAMY2
 
 	trainerclass COUPLE ; 3a
 	const BROOKANDELI1

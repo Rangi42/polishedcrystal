@@ -4178,7 +4178,7 @@ TwinsGroup:
 ; ================
 
 	; TWINS
-	db "Jo & Zoe@"
+	db "Lo & Zoe@"
 	db 0 ; normal
 
 	; party
@@ -4190,7 +4190,7 @@ TwinsGroup:
 ; ================
 
 	; TWINS
-	db "Jo & Zoe@"
+	db "Lo & Zoe@"
 	db 0 ; normal
 
 	; party
@@ -6556,19 +6556,6 @@ LassGroup:
 ; ================
 
 	; LASS
-	db "Cathy@"
-	db 0 ; normal
-
-	; party
-	db 15, JIGGLYPUFF
-	db 15, JIGGLYPUFF
-	db 15, JIGGLYPUFF
-
-	db $ff ; end
-
-; ================
-
-	; LASS
 	db "Alice@"
 	db 0 ; normal
 
@@ -8135,6 +8122,53 @@ ElderGroup:
 SrAndJrGroup:
 ; ================================
 ; ================
+
+	; SR_AND_JR
+	db "Jo & Cath@"
+	db 0 ; normal
+
+	; party
+	db 18, TEDDIURSA
+	db 16, JIGGLYPUFF
+
+	db $ff ; end
+
+; ================
+
+	; SR_AND_JR
+	db "Jo & Cath@"
+	db 0 ; normal
+
+	; party
+	db 16, JIGGLYPUFF
+	db 18, TEDDIURSA
+
+	db $ff ; end
+
+; ================
+
+	; SR_AND_JR
+	db "Ivy & Amy@"
+	db 0 ; normal
+
+	; party
+	db 30, FLAAFFY
+	db 28, GLOOM
+
+	db $ff ; end
+
+; ================
+
+	; SR_AND_JR
+	db "Ivy & Amy@"
+	db 0 ; normal
+
+	; party
+	db 28, GLOOM
+	db 30, FLAAFFY
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -9103,6 +9137,18 @@ BurglarGroup:
 PIGroup:
 ; ================================
 ; ================
+
+	; unused
+	; PI
+	db "Looker@"
+	db 0 ; normal
+
+	; party
+	db 40, ARCANINE
+	db 40, POLITOED
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

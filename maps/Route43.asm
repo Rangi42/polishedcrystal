@@ -3,9 +3,11 @@ const_value set 2
 	const ROUTE43_SUPER_NERD2
 	const ROUTE43_SUPER_NERD3
 	const ROUTE43_FISHER
-	const ROUTE43_LASS
+	const ROUTE43_LASS1
 	const ROUTE43_YOUNGSTER
 	const ROUTE43_BREEDER
+	const ROUTE43_LASS2
+	const ROUTE43_LASS3
 	const ROUTE43_FRUIT_TREE
 	const ROUTE43_POKE_BALL
 
@@ -42,6 +44,28 @@ BreederJodyScript:
 	end_if_just_battled
 	opentext
 	writetext BreederJodyAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSrandjrIvyandamy1:
+	trainer EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SR_AND_JR, IVYANDAMY1, SrandjrIvyandamy1SeenText, SrandjrIvyandamy1BeatenText, 0, SrandjrIvyandamy1Script
+
+SrandjrIvyandamy1Script:
+	end_if_just_battled
+	opentext
+	writetext SrandjrIvyandamy1AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSrandjrIvyandamy2:
+	trainer EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SR_AND_JR, IVYANDAMY2, SrandjrIvyandamy2SeenText, SrandjrIvyandamy2BeatenText, 0, SrandjrIvyandamy2Script
+
+SrandjrIvyandamy2Script:
+	end_if_just_battled
+	opentext
+	writetext SrandjrIvyandamy2AfterText
 	waitbutton
 	closetext
 	end
@@ -506,6 +530,41 @@ BreederJodyAfterText:
 	cont "learn."
 	done
 
+SrandjrIvyandamy1SeenText:
+	text "Ivy: I'll show my"
+	line "junior how it's"
+	cont "done!"
+	done
+
+SrandjrIvyandamy1BeatenText:
+	text "Ivy: You embarass-"
+	line "ed me in front of"
+	cont "my junior…"
+	done
+
+SrandjrIvyandamy1AfterText:
+	text "Ivy: I don't want"
+	line "my junior to think"
+	cont "I can't help her."
+	done
+
+SrandjrIvyandamy2SeenText:
+	text "Amy: A trainer!"
+	line "Senior, please"
+	cont "help me win!"
+	done
+
+SrandjrIvyandamy2BeatenText:
+	text "Amy: We couldn't"
+	line "do it…"
+	done
+
+SrandjrIvyandamy2AfterText:
+	text "Amy: I hope my"
+	line "senior noticed"
+	cont "how hard I tried."
+	done
+
 Route43Sign1Text:
 	text "Route 43"
 
@@ -564,13 +623,15 @@ Route43_MapEventHeader:
 	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
 
 .PersonEvents:
-	db 9
+	db 11
 	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
 	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
 	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
 	person_event SPRITE_FISHER, 16, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerFisherMarvin, -1
-	person_event SPRITE_LASS, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany3, -1
+	person_event SPRITE_LASS, 10, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany3, -1
 	person_event SPRITE_YOUNGSTER, 40, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperSpencer, -1
 	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
+	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1
+	person_event SPRITE_LASS, 25, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy2, -1
 	person_event SPRITE_FRUIT_TREE, 26, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19d266, -1
 	person_event SPRITE_POKE_BALL, 32, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route43MaxEther, EVENT_ROUTE_43_MAX_ETHER

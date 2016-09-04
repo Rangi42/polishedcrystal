@@ -54,7 +54,7 @@
 	db "Medium@"         ; MEDIUM
 	db "Kimono Girl@"    ; KIMONO_GIRL
 	db "Elder@"          ; ELDER
-	db "Sr.&Jr.@"        ; SR_AND_JR
+	db "Sr.& Jr.@"       ; SR_AND_JR
 	db "Couple@"         ; COUPLE
 	db "Gentleman@"      ; GENTLEMAN
 	db "Rich Boy@"       ; RICH_BOY

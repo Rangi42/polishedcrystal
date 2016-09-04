@@ -154,9 +154,9 @@ SlotsLoop: ; 927af (24:67af)
 ; 927f8
 
 .PrintCoinsAndPayout: ; 927f8 (24:67f8)
-	hlcoord 5, 1
+	hlcoord 4, 1
 	ld de, Coins
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 4
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	hlcoord 11, 1
 	ld de, wPayout

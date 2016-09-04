@@ -523,16 +523,16 @@ CardFlip_UpdateCoinBalanceDisplay: ; e0489
 ; e049c
 
 CardFlip_PrintCoinBalance: ; e049c
-	hlcoord 9, 15
+	hlcoord 8, 15
 	ld b, 1
-	ld c, 9
+	ld c, 10
 	call TextBox
-	hlcoord 10, 16
+	hlcoord 9, 16
 	ld de, .CoinStr
 	call PlaceString
-	hlcoord 15, 16
+	hlcoord 14, 16
 	ld de, Coins
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 4
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	ret
 ; e04bc
