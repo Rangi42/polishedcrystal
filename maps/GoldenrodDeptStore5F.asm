@@ -168,7 +168,7 @@ MysteryGiftGirl_GiveItemText:
 	db "@"
 
 MysteryGiftGirl_ComeBackText:
-	text "I'll give you"
+	text "You can have"
 	line "another Berry"
 	cont "tomorrow."
 	done

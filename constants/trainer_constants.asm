@@ -209,6 +209,7 @@ KRIS EQU __enum__
 	const RALPH4
 	const RALPH5
 	const TULLY4
+	const PATON
 
 	trainerclass BIRD_KEEPER ; 22
 	const ROD
@@ -256,6 +257,7 @@ KRIS EQU __enum__
 	const EDWIN
 	const DEVIN
 	const SEAMUS
+	const TONY
 
 	trainerclass GRUNTM ; 24
 
@@ -330,6 +332,7 @@ KRIS EQU __enum__
 	const WALDO
 	const MERLE
 	const LUIS
+	const MIGUEL
 
 	trainerclass LASS ; 2d
 	const CARRIE
@@ -559,6 +562,7 @@ KRIS EQU __enum__
 	const LOUIS
 
 	trainerclass PI ; 43
+	const LOOKER
 
 	trainerclass SCIENTIST ; 44
 	const ROSS

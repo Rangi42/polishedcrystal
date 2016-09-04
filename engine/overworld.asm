@@ -1153,13 +1153,13 @@ Group26Sprites:
 	db SPRITE_NEW_BARK_LYRA
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	db SPRITE_POKEFAN_M ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_PIDGEY
 	db SPRITE_POKE_BALL
 	db SPRITE_RATTATA
-	; 13 total sprites
-	db SPRITE_SILVER_TROPHY
+	; 14 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY

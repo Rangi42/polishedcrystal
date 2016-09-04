@@ -7,6 +7,7 @@ const_value set 2
 	const FASTSHIPCABINS_NNW_NNE_NE_GENTLEMAN
 	const FASTSHIPCABINS_NNW_NNE_NE_PHARMACIST
 	const FASTSHIPCABINS_NNW_NNE_NE_RICH_BOY
+	const FASTSHIPCABINS_NNW_NNE_NE_LOOKER
 
 FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 .MapTriggers:
@@ -88,6 +89,17 @@ RichBoyWinstonScript:
 	end_if_just_battled
 	opentext
 	writetext RichBoyWinstonAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerPILooker:
+	trainer EVENT_BEAT_PI_LOOKER, PI, LOOKER, PILookerSeenText, PILookerBeatenText, 0, PILookerScript
+
+PILookerScript:
+	end_if_just_battled
+	opentext
+	writetext PILookerAfterText
 	waitbutton
 	closetext
 	end
@@ -297,6 +309,18 @@ RichBoyWinstonAfterText:
 	line "drab."
 	done
 
+PILookerSeenText:
+	text "TODO"
+	done
+
+PILookerBeatenText:
+	text "TODO"
+	done
+
+PILookerAfterText:
+	text "TODO"
+	done
+
 FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	; filler
 	db 0, 0
@@ -317,7 +341,7 @@ FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	signpost 31, 7, SIGNPOST_READ, FastShipCabins_NNW_NNE_NETrashcan
 
 .PersonEvents:
-	db 8
+	db 9
 	person_event SPRITE_COOLTRAINER_M, 3, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_COOLTRAINER_F, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_SUPER_NERD, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacEthan, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
@@ -326,3 +350,4 @@ FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 30, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerGentlemanEdward, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_PHARMACIST, 30, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerBurglarCorey, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	person_event SPRITE_RICH_BOY, 15, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	person_event SPRITE_PI, 15, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP

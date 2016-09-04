@@ -1,5 +1,6 @@
 const_value set 2
 	const MOUNTMOON_SILVER
+	const MOUNTMOON_SUPER_NERD
 	const MOUNTMOON_POKE_BALL1
 	const MOUNTMOON_POKE_BALL2
 
@@ -73,6 +74,17 @@ MountMoon_MapScriptHeader:
 	dotrigger $1
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
+	end
+
+TrainerSupernerdMiguel:
+	trainer EVENT_BEAT_SUPER_NERD_MIGUEL, SUPER_NERD, MIGUEL, SupernerdMiguelSeenText, SupernerdMiguelBeatenText, 0, SupernerdMiguelScript
+
+SupernerdMiguelScript:
+	end_if_just_battled
+	opentext
+	writetext SupernerdMiguelAfterText
+	waitbutton
+	closetext
 	end
 
 MountMoonDuskStone:
@@ -170,6 +182,25 @@ MountMoonSilverTextLoss:
 	cont "greatest trainer."
 	done
 
+SupernerdMiguelSeenText:
+	text "I found these"
+	line "fossils and re-"
+	cont "vived them!"
+
+	para "Now they're both"
+	line "mine!"
+	done
+
+SupernerdMiguelBeatenText:
+	text "My fossils were"
+	line "crushed!"
+	done
+
+SupernerdMiguelAfterText:
+	text "Maybe if I had"
+	line "an Aerodactyl…"
+	done
+
 MountMoon_MapEventHeader:
 	; filler
 	db 0, 0
@@ -192,7 +223,8 @@ MountMoon_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 3
+	db 4
 	person_event SPRITE_SILVER, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	person_event SPRITE_SUPER_NERD, 11, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMiguel, -1
 	person_event SPRITE_POKE_BALL, 4, 22, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMoonDuskStone, EVENT_MOUNT_MOON_DUSK_STONE
 	person_event SPRITE_POKE_BALL, 13, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMoonShinyStone, EVENT_MOUNT_MOON_SHINY_STONE

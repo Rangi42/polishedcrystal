@@ -64,7 +64,7 @@
 	db "Swimmer@"        ; SWIMMERM
 	db "Swimmer@"        ; SWIMMERF
 	db "Burglar@"        ; BURGLAR
-	db "PI@"             ; PI
+	db "Agent@"          ; PI
 	db "Scientist@"      ; SCIENTIST
 	db "Boarder@"        ; BOARDER
 	db "Skier@"          ; SKIER

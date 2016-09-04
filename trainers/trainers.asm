@@ -4703,6 +4703,18 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Paton@"
+	db 0 ; normal
+
+	; party
+	db 20, REMORAID
+	db 20, MANTINE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5016,7 +5028,7 @@ HikerGroup:
 
 	; party
 	db 24, DIGLETT
-	db 24, GEODUDE
+	db 24, LARVITAR
 	db 28, DUGTRIO
 
 	db $ff ; end
@@ -5091,8 +5103,7 @@ HikerGroup:
 	db 15, GEODUDE
 	db 15, GEODUDE
 	db 15, GEODUDE
-	db 15, GEODUDE
-	db 15, GEODUDE
+	db 17, LARVITAR
 
 	db $ff ; end
 
@@ -5297,6 +5308,19 @@ HikerGroup:
 	db 40, ONIX
 	db 41, GOLEM
 	db 40, ONIX
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Tony@"
+	db 0 ; normal
+
+	; party
+	db 17, DUNSPARCE
+	db 18, OMANYTE
+	db 18, KABUTO
 
 	db $ff ; end
 
@@ -6528,6 +6552,18 @@ SuperNerdGroup:
 	db 48, MAGMAR
 	db 50, WEEZING
 	db 48, MAGMAR
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD
+	db "Miguel@"
+	db 0 ; normal
+
+	; party
+	db 50, OMASTAR
+	db 50, KABUTOPS
 
 	db $ff ; end
 
@@ -9138,14 +9174,14 @@ PIGroup:
 ; ================================
 ; ================
 
-	; unused
 	; PI
 	db "Looker@"
 	db 0 ; normal
 
 	; party
 	db 40, ARCANINE
-	db 40, POLITOED
+	db 40, ELECTABUZZ
+	db 42, POLITOED
 
 	db $ff ; end
 
