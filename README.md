@@ -339,6 +339,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: Replace NES with Wii.
 * Add: Purple overworld sprites (used for Eusine, Koga, Janine, PokéManiacs, Hex Maniacs, Burglars, Executive♂s, and GameCube).
 * Add: Option to run by default.
+* Add: Third Trainer Card page for Kanto badges.
 * Add: Trees randomly give one, two, or three Berries.
 * Add: Proper text for Gym Leader rematches.
 * Add: Access the last Unown chamber with a Fairy-type Pokémon, not Ho-Oh.
