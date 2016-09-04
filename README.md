@@ -360,6 +360,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Bill's sister says his grandpa is still in Cerulean Cape house.
 * Fix: Edit some trainers' levels and rosters.
 * Fix: Various text overflow errors.
+* Fix: Pokédex Area map glitches when you press right (thanks Mmmmmm).
 * Fix: Ellipses print too high during battle (thanks, comet).
 * Fix: Typo "your" for "you" (thanks, jpmac26).
 * Fix: Pink Bow powers up Fairy-type moves (thanks, Pokemaster).
