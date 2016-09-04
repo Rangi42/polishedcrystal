@@ -370,3 +370,4 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Game Corner games pay out even if you have 9999+ coins.
 * Fix: Roaming legendary beast music.
 * Fix: Can't trade away the GS Ball.
+* Fix: Sabrina's round gold badge is called the Soul Badge; Janine's pink heart badge is called the Marsh Badge.

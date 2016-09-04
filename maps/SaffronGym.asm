@@ -203,12 +203,12 @@ UnknownText_0x189df4:
 
 	para "OK, you win. You"
 	line "earned yourself"
-	cont "the Marsh Badge."
+	cont "the Soul Badge."
 	done
 
 UnknownText_0x189e95:
 	text "<PLAYER> received"
-	line "the Marsh Badge."
+	line "the Soul Badge."
 	done
 
 UnknownText_0x189ead:

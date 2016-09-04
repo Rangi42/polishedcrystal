@@ -671,18 +671,18 @@ TrainerCard_KantoBadgesOAM:
 
 	dw KantoBadges
 
-	; Thunderbadge
-	db $68, $18, 0
+	; Boulderbadge
+	db $80, $38, 0
 	db $00, $20, $24, $20 | $80
 	db $00, $20, $24, $20 | $80
 
 	; Cascadebadge
-	db $68, $38, 0
+	db $68, $58, 0
 	db $04, $20, $24, $20 | $80
 	db $04, $20, $24, $20 | $80
 
-	; Marshbadge
-	db $68, $58, 0
+	; Thunderbadge
+	db $68, $18, 0
 	db $08, $20, $24, $20 | $80
 	db $08, $20, $24, $20 | $80
 
@@ -696,8 +696,8 @@ TrainerCard_KantoBadgesOAM:
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
-	; Boulderbadge
-	db $80, $38, 0
+	; Marshbadge
+	db $68, $38, 0
 	db $14, $20, $24, $20 | $80
 	db $14, $20, $24, $20 | $80
 

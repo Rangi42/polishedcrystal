@@ -260,13 +260,13 @@ UnknownText_0x195fa1:
 	line "tough one. You"
 	cont "definitely won…"
 
-	para "Here's the Soul"
+	para "Here's the Marsh"
 	line "Badge. Take it."
 	done
 
 UnknownText_0x195feb:
 	text "<PLAYER> received"
-	line "the Soul Badge."
+	line "the Marsh Badge."
 	done
 
 UnknownText_0x196002:
