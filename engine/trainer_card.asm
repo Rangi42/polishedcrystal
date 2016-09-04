@@ -155,6 +155,12 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	ld d, 6
 	call TrainerCard_InitBorder
 	call WaitBGMap
+
+	ld b, SCGB_TRAINER_CARD
+	call GetSGBLayout
+	call SetPalettes
+	call WaitBGMap
+
 	ld de, LeaderGFX
 	ld hl, VTiles2 tile $29
 	lb bc, BANK(LeaderGFX), $56
@@ -195,6 +201,12 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	ld d, 6
 	call TrainerCard_InitBorder
 	call WaitBGMap
+
+	ld b, SCGB_TRAINER_CARD_2
+	call GetSGBLayout
+	call SetPalettes
+	call WaitBGMap
+
 	ld de, LeaderGFX2
 	ld hl, VTiles2 tile $29
 	lb bc, BANK(LeaderGFX2), $56
@@ -659,7 +671,7 @@ TrainerCard_KantoBadgesOAM:
 
 	dw KantoBadges
 
-	; Boulderbadge
+	; Thunderbadge
 	db $68, $18, 0
 	db $00, $20, $24, $20 | $80
 	db $00, $20, $24, $20 | $80
@@ -669,7 +681,7 @@ TrainerCard_KantoBadgesOAM:
 	db $04, $20, $24, $20 | $80
 	db $04, $20, $24, $20 | $80
 
-	; Thunderbadge
+	; Marshbadge
 	db $68, $58, 0
 	db $08, $20, $24, $20 | $80
 	db $08, $20, $24, $20 | $80
@@ -680,12 +692,12 @@ TrainerCard_KantoBadgesOAM:
 	db $0c, $20, $24, $20 | $80
 
 	; Soulbadge
-	db $80, $38, 0
+	db $80, $18, 0
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
-	; Marshbadge
-	db $80, $18, 0
+	; Boulderbadge
+	db $80, $38, 0
 	db $14, $20, $24, $20 | $80
 	db $14, $20, $24, $20 | $80
 

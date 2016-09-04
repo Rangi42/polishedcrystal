@@ -64,6 +64,7 @@ Predef_LoadSGBLayoutCGB: ; 8d59
 	dw _CGB_FrontpicPals
 	dw _CGB1d
 	dw _CGB1e
+	dw _CGB_TrainerCard2
 ; 8db8
 
 _CGB_BattleGrayscale: ; 8db8
@@ -657,25 +658,25 @@ _CGB_TrainerCard: ; 9289
 	xor a
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $3
+	ld a, KAY
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $4
+	ld a, BUGSY
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $5
+	ld a, WHITNEY
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $6
+	ld a, MORTY
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $7
+	ld a, CHUCK
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $8
+	ld a, JASMINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $2
+	ld a, CAL
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, $24
@@ -753,6 +754,107 @@ _CGB_TrainerCard: ; 9289
 	ld [hCGBPalUpdate], a
 	ret
 ; 9373
+
+_CGB_TrainerCard2:
+	ld de, UnknBGPals
+	xor a
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, KAY ; BLUE
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, BROCK
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, MISTY ; SABRINA
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, LT_SURGE ; ERIKA
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, JANINE
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, BLAINE
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, CAL
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld a, $24
+	call GetPredefPal
+	call LoadHLPaletteIntoDE
+
+	hlcoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld a, [PlayerGender]
+	and a
+	ld a, $1
+	jr z, .got_gender
+	ld a, $0
+.got_gender
+	call ByteFill
+	hlcoord 14, 1, AttrMap
+	lb bc, 7, 5
+	ld a, [PlayerGender]
+	and a
+	ld a, $0
+	jr z, .got_gender2
+	ld a, $1
+.got_gender2
+	call FillBoxCGB
+	hlcoord 18, 1, AttrMap
+	ld [hl], $1
+	hlcoord 2, 11, AttrMap
+	lb bc, 2, 4
+	ld a, $4
+	call FillBoxCGB
+	hlcoord 6, 11, AttrMap
+	lb bc, 2, 4
+	ld a, $3
+	call FillBoxCGB
+	hlcoord 10, 11, AttrMap
+	lb bc, 2, 4
+	ld a, $3
+	call FillBoxCGB
+	hlcoord 14, 11, AttrMap
+	lb bc, 2, 4
+	ld a, $4
+	call FillBoxCGB
+	hlcoord 2, 14, AttrMap
+	lb bc, 2, 4
+	ld a, $5
+	call FillBoxCGB
+	hlcoord 6, 14, AttrMap
+	lb bc, 2, 4
+	ld a, $2
+	call FillBoxCGB
+	hlcoord 10, 14, AttrMap
+	lb bc, 2, 4
+	ld a, $6
+	call FillBoxCGB
+	ld a, [PlayerGender]
+	and a
+	push af
+	jr z, .got_gender3
+	hlcoord 14, 14, AttrMap
+	lb bc, 2, 4
+	ld a, $1
+	call FillBoxCGB
+.got_gender3
+	pop af
+	ld c, $0
+	jr nz, .got_gender4
+	inc c
+.got_gender4
+	ld a, c
+	hlcoord 18, 1, AttrMap
+	ld [hl], a
+	call ApplyAttrMap
+	call ApplyPals
+	ld a, $1
+	ld [hCGBPalUpdate], a
+	ret
 
 _CGB0e: ; 9373
 	ld de, UnknBGPals

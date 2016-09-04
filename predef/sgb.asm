@@ -55,6 +55,7 @@ Predef_LoadSGBLayout: ; 864c
 	dw .SGB_FrontpicPals
 	dw .SGB1d
 	dw .SGB1e
+	dw .SGB_TrainerCard2
 ; 86ad
 
 .SGB_BattleGrayscale: ; 86ad
@@ -431,6 +432,11 @@ endr
 	ld de, BlkPacket_9a86
 	ret
 ; 8921
+
+.SGB_TrainerCard2:
+	ld hl, PalPacket_9cb6
+	ld de, BlkPacket_9a86
+	ret
 
 .SGB18: ; 8921
 	ld hl, PalPacket_9bc6
