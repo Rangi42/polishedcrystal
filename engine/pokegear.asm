@@ -1854,8 +1854,8 @@ _TownMap: ; 9191c
 	ld a, [wd002]
 	cp KANTO_LANDMARK
 	jr nc, .kanto
-	ld d, KANTO_LANDMARK - 1
-	ld e, 1
+	ld d, SILVER_CAVE
+	ld e, NEW_BARK_TOWN
 	call .loop
 	jr .resume
 
