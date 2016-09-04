@@ -56,6 +56,7 @@ ENDM
 	if_equal THURSDAY, .Thursday
 	if_equal FRIDAY, .Friday
 	if_equal SATURDAY, .Saturday
+
 .Sunday
 	checknite
 	iftrue .SundayNight
@@ -66,22 +67,35 @@ ENDM
 .SundayNight
 	rematch REMATCH_RED_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_SABRINA, 4, 6, DOWN
 	return
+
 .Monday
 	checknite
 	iftrue .MondayNight
 .MondayMorningAndDay
 	rematch_left REMATCH_BLUE_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_FALKNER
 	rematch_right REMATCH_BLUE_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_JANINE
-.MondayNight
 	return
+.MondayNight
+	checkevent EVENT_BEAT_WALKER
+	iffalse .NoWalker
+	rematch REMATCH_BLUE_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_WALKER, 4, 8, DOWN
+.NoWalker
+	return
+
 .Tuesday
 	checknite
 	iftrue .TuesdayNight
 .TuesdayMorningAndDay
 	rematch_left REMATCH_BROWN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_PRYCE
 	rematch_right REMATCH_BROWN_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_BLAINE
-.TuesdayNight
 	return
+.TuesdayNight
+	checkevent EVENT_BEAT_LORELEI_AGAIN
+	iffalse .NoLorelei
+	rematch REMATCH_RED_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_LORELEI, 4, 6, DOWN
+.NoLorelei
+	return
+
 .Wednesday
 	checkmorn
 	iftrue .WednesdayMorning
@@ -99,14 +113,17 @@ ENDM
 .WednesdayNight
 	rematch REMATCH_BLUE_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_BLUE, 4, 8, DOWN
 	return
+
 .Thursday
 	checkmorn
 	iftrue .ThursdayMorning
 	checknite
 	iftrue .ThursdayNight
 .ThursdayDay
-	rematch_left REMATCH_GREEN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BUGSY
-	rematch_right REMATCH_BROWN_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_MORTY
+	checkevent EVENT_BEAT_PALMER
+	iffalse .NoPalmer
+	rematch REMATCH_GREEN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_PALMER, 6, 3, DOWN
+.NoPalmer
 	return
 .ThursdayMorning
 	rematch REMATCH_GREEN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BUGSY, 6, 1, DOWN
@@ -114,12 +131,17 @@ ENDM
 .ThursdayNight
 	rematch REMATCH_BROWN_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_MORTY, 4, 2, DOWN
 	return
+
 .Friday
 	checkmorn
 	iftrue .FridayMorning
 	checknite
 	iftrue .FridayNight
 .FridayDay
+	checkevent EVENT_BEAT_YELLOW
+	iffalse .NoYellow
+	rematch REMATCH_RED_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_YELLOW, 6, 6, DOWN
+.NoYellow
 	return
 .FridayMorning
 	rematch REMATCH_BROWN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_SURGE, 7, 6, DOWN
@@ -127,13 +149,24 @@ ENDM
 .FridayNight
 	rematch REMATCH_BLUE_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_CLAIR, 6, 2, RIGHT
 	return
+
 .Saturday
-	checkday
-	iffalse .SaturdayMorningAndNight
+	checkmorn
+	iftrue .SaturdayMorning
+	checknite
+	iftrue .SaturdayNight
 .SaturdayDay
 	rematch_left REMATCH_RED_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_WHITNEY
 	rematch_right REMATCH_BROWN_2, SPRITE_REMATCH_GYM_LEADER_2, SPRITE_CHUCK
-.SaturdayMorningAndNight
+	return
+.SaturdayMorning
+	rematch_left REMATCH_RED_1, SPRITE_REMATCH_GYM_LEADER_1, SPRITE_WHITNEY
+	return
+.SaturdayNight
+	checkevent EVENT_BEAT_AGATHA
+	iffalse .NoAgatha
+	rematch REMATCH_BROWN_3, SPRITE_REMATCH_GYM_LEADER_3, SPRITE_AGATHA, 4, 2, DOWN
+.NoAgatha
 	return
 
 BlackBeltScript_0x189b61:
@@ -149,49 +182,129 @@ MapFightingDojoSignpost0Script:
 MapFightingDojoSignpost1Script:
 	jumptext UnknownText_0x189be0
 
+MapFightingDojoSignpost2Script:
+	opentext
+	writetext FightingDojoScheduleQuestionText
+	yesorno
+	iffalse .done
+.sunday
+	writetext FightingDojoScheduleSundayText
+	waitbutton
+.monday
+	checkevent EVENT_BEAT_WALKER
+	iftrue .monday_walker
+	writetext FightingDojoScheduleMondayText
+	waitbutton
+	jump .tuesday
+.monday_walker
+	writetext FightingDojoScheduleMondayWalkerText
+	waitbutton
+.tuesday
+	checkevent EVENT_BEAT_LORELEI_AGAIN
+	iftrue .tuesday_lorelei
+	writetext FightingDojoScheduleTuesdayText
+	waitbutton
+	jump .wednesday
+.tuesday_lorelei
+	writetext FightingDojoScheduleTuesdayLoreleiText
+	waitbutton
+.wednesday
+	writetext FightingDojoScheduleWednesdayText
+	waitbutton
+.thursday
+	checkevent EVENT_BEAT_PALMER
+	iftrue .thursday_palmer
+	writetext FightingDojoScheduleThursdayText
+	waitbutton
+	jump .friday
+.thursday_palmer
+	writetext FightingDojoScheduleThursdayPalmerText
+	waitbutton
+.friday
+	checkevent EVENT_BEAT_YELLOW
+	iftrue .friday_yellow
+	writetext FightingDojoScheduleFridayText
+	waitbutton
+	jump .saturday
+.friday_yellow
+	writetext FightingDojoScheduleFridayYellowText
+	waitbutton
+.saturday
+	checkevent EVENT_BEAT_AGATHA
+	iftrue .saturday_agatha
+	writetext FightingDojoScheduleSaturdayText
+	waitbutton
+	jump .done
+.saturday_agatha
+	writetext FightingDojoScheduleSaturdayAgathaText
+	waitbutton
+.done
+	closetext
+	end
+
 FightingDojoFocusBand:
 	itemball FOCUS_BAND
 
 RematchRed0Script:
 	checkcode VAR_WEEKDAY
+	if_equal TUESDAY, .Red0TuesdayNight
 	if_equal WEDNESDAY, .Red0Wednesday
+	if_equal FRIDAY, .Red0Friday
 	if_equal SATURDAY, .Red0Saturday
 	checknite
 	iftrue .Red0SundayNight
 	jump RematchJasmineScript
 .Red0SundayNight
 	jump RematchSabrinaScript
+.Red0TuesdayNight
+	jump RematchLoreleiScript
 .Red0Wednesday
 	jump RematchMistyScript
+.Red0Friday
+	jump RematchYellowScript
 .Red0Saturday
 	jump RematchWhitneyScript
 
 RematchGreen1Script:
 	checkcode VAR_WEEKDAY
 	if_equal THURSDAY, .Green1Thursday
+.Green1Sunday
 	jump RematchErikaScript
 .Green1Thursday
+	checkmorn
+	iftrue .Green1ThursdayMorning
+.Green1ThursdayDay
+	jump RematchPalmerScript
+.Green1ThursdayMorning
 	jump RematchBugsyScript
 
 RematchBlue1Script:
 	checkcode VAR_WEEKDAY
 	if_equal FRIDAY, .Blue1Friday
+.Blue1Monday
 	jump RematchFalknerScript
 .Blue1Friday
 	jump RematchClairScript
 
 RematchBlue2Script:
 	checkcode VAR_WEEKDAY
-	if_equal WEDNESDAY, .Blue2Wednesday
-	jump RematchJanineScript
+	if_equal MONDAY, .Blue2Monday
 .Blue2Wednesday
 	jump RematchBlueScript
+.Blue2Monday
+	checknite
+	iftrue .Blue2MondayNight
+.Blue2MondayMorningDay
+	jump RematchJanineScript
+.Blue2MondayNight
+	jump RematchWalkerScript
 
 RematchBrown1Script:
 	checkcode VAR_WEEKDAY
 	if_equal WEDNESDAY, .Brown1Wednesday
 	if_equal FRIDAY, .Brown1Friday
 	if_equal SATURDAY, .Brown1Saturday
+.Brown1Tuesday
 	jump RematchPryceScript
 .Brown1Wednesday
 	jump RematchBrockScript
@@ -203,9 +316,13 @@ RematchBrown1Script:
 RematchBrown2Script:
 	checkcode VAR_WEEKDAY
 	if_equal THURSDAY, .Brown2Thursday
+	if_equal SATURDAY, .Brown2SaturdayNight
+.Brown2Tuesday
 	jump RematchBlaineScript
 .Brown2Thursday
 	jump RematchMortyScript
+.Brown2SaturdayNight
+	jump RematchAgathaScript
 
 UnknownText_0x189b6c:
 	text "Hello!"
@@ -309,6 +426,21 @@ RematchPryceScript:
 
 RematchClairScript:
 	rematch_script Clair, CLAIR, ENGINE_GYM_LEADER_REMATCH_2
+
+RematchPalmerScript:
+	rematch_script Palmer, TOWERTYCOON, ENGINE_GYM_LEADER_REMATCH_3
+
+RematchLoreleiScript:
+	rematch_script Lorelei, LORELEI, ENGINE_GYM_LEADER_REMATCH_3
+
+RematchAgathaScript:
+	rematch_script Agatha, AGATHA, ENGINE_GYM_LEADER_REMATCH_3
+
+RematchWalkerScript:
+	rematch_script Walker, WALKER, ENGINE_GYM_LEADER_REMATCH_3
+
+RematchYellowScript:
+	rematch_script Yellow, YELLOW, ENGINE_GYM_LEADER_REMATCH_3
 
 BrockText_Greeting:
 	text "I like Rock-type"
@@ -461,6 +593,84 @@ ClairText_Greeting:
 	para "Now let's battle!"
 	done
 
+PalmerText_Greeting:
+	text "So, you've come"
+	line "this far!"
+
+	para "As the Tower"
+	line "Tycoon, I'll have"
+
+	para "to give you my"
+	line "best effort."
+
+	para "That's how the best"
+	line "trainers show"
+
+	para "respect to each"
+	line "other."
+
+	para "By battling all-"
+	line "out as dedicated"
+
+	para "students of"
+	line "#mon!"
+	done
+
+LoreleiText_Greeting:
+	text "Hello again,"
+	line "<PLAYER>."
+
+	para "We're on my home"
+	line "ground now."
+
+	para "I won't lose!"
+	done
+
+AgathaText_Greeting:
+	text "Hello, child."
+
+	para "You're still"
+	line "filling a Pokedex"
+
+	para "for that old duff"
+	line "Oak?"
+
+	para "#mon are for"
+	line "battling!"
+
+	para "Show me your"
+	line "real talent"
+	cont "as a trainer!"
+	done
+
+WalkerText_Greeting:
+	text "Hey there,"
+	line "<PLAYER>!"
+
+	para "Seems like I just"
+	line "missed my son"
+
+	para "Falkner here"
+	line "earlier…"
+
+	para "How about if we"
+	line "battle instead?"
+	done
+
+YellowText_Greeting:
+	text "Hi, <PLAYER>!"
+
+	para "Let me see…"
+
+	para "Yes! You still"
+	line "take good care of"
+	cont "your #mon!"
+
+	para "You've gotten"
+	line "stronger, but so"
+	cont "have I!"
+	done
+
 BrockText_WinLoss:
 	text "I've lost again…"
 
@@ -564,6 +774,29 @@ ClairText_WinLoss:
 	line "your all!"
 	done
 
+PalmerText_WinLoss:
+	text "Bravo! I feel"
+	line "inspired in my"
+	cont "heart!"
+	done
+
+LoreleiText_WinLoss:
+	text "How dare you!"
+	done
+
+AgathaText_WinLoss:
+	text "Woo-hoo!"
+	done
+
+WalkerText_WinLoss:
+	text "I was no match"
+	line "for you!"
+	done
+
+YellowText_WinLoss:
+	text "Hahaha!"
+	done
+
 BrockText_Done:
 MistyText_Done:
 SurgeText_Done:
@@ -580,8 +813,78 @@ ChuckText_Done:
 JasmineText_Done:
 PryceText_Done:
 ClairText_Done:
+PalmerText_Done:
+LoreleiText_Done:
+AgathaText_Done:
+WalkerText_Done:
+YellowText_Done:
 	text "I'm done battling"
 	line "for today."
+	done
+
+FightingDojoScheduleQuestionText:
+	text "It's a training"
+	line "schedule! Read it?"
+	done
+
+FightingDojoScheduleSundayText:
+	text "Sunday: Jasmine,"
+	line "Erika, Sabrina"
+	done
+
+FightingDojoScheduleMondayText:
+	text "Monday: Falkner,"
+	line "Janine, ???"
+	done
+
+FightingDojoScheduleMondayWalkerText:
+	text "Monday: Falkner,"
+	line "Janine, Walker"
+	done
+
+FightingDojoScheduleTuesdayText:
+	text "Tuesday: Pryce,"
+	line "Blaine, ???"
+	done
+
+FightingDojoScheduleTuesdayLoreleiText:
+	text "Tuesday: Pryce,"
+	line "Blaine, Lorelei"
+	done
+
+FightingDojoScheduleWednesdayText:
+	text "Wednesday: Brock,"
+	line "Misty, Blue"
+	done
+
+FightingDojoScheduleThursdayText:
+	text "Thursday: Bugsy,"
+	line "???, Morty"
+	done
+
+FightingDojoScheduleThursdayPalmerText:
+	text "Thursday: Bugsy,"
+	line "Palmer, Morty"
+	done
+
+FightingDojoScheduleFridayText:
+	text "Friday: Lt.Surge,"
+	line "???, Clair"
+	done
+
+FightingDojoScheduleFridayYellowText:
+	text "Friday: Lt.Surge,"
+	line "Yellow, Clair"
+	done
+
+FightingDojoScheduleSaturdayText:
+	text "Saturday: Whitney,"
+	line "Chuck, ???"
+	done
+
+FightingDojoScheduleSaturdayAgathaText:
+	text "Saturday: Whitney,"
+	line "Chuck, Agatha"
 	done
 
 FightingDojo_MapEventHeader:
@@ -597,9 +900,10 @@ FightingDojo_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 3
 	signpost 0, 4, SIGNPOST_READ, MapFightingDojoSignpost0Script
 	signpost 0, 5, SIGNPOST_READ, MapFightingDojoSignpost1Script
+	signpost 0, 9, SIGNPOST_READ, MapFightingDojoSignpost2Script
 
 .PersonEvents:
 	db 8

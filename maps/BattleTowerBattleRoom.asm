@@ -110,6 +110,7 @@ Script_FailedBattleTowerChallenge:
 
 Script_BeatenAllTrainers: ; 0x9f4d9
 	pause 60
+	setevent EVENT_BEAT_PALMER
 	special Special_BattleTower_Fade
 	warpfacing UP, BATTLE_TOWER_1F, $7, $7
 Script_BeatenAllTrainers2:

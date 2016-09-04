@@ -27,12 +27,12 @@ TrainerHouseReceptionistScript:
 	iftrue .GetCalName
 	disappear TRAINERHOUSEB1F_CAL
 	appear TRAINERHOUSEB1F_KAY
-	trainertotext KAY, KAY1, $0
+	trainertotext KAY, 1, $0
 	jump .GotName
 .GetCalName
 	disappear TRAINERHOUSEB1F_KAY
 	appear TRAINERHOUSEB1F_CAL
-	trainertotext CAL, CAL1, $0
+	trainertotext CAL, 1, $0
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
 	buttonsound
@@ -52,11 +52,11 @@ TrainerHouseReceptionistScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_KAY
-	loadtrainer KAY, KAY1
+	loadtrainer KAY, 1
 	jump .StartBattle
 .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CAL
-	loadtrainer CAL, CAL1
+	loadtrainer CAL, 1
 .StartBattle
 	startbattle
 	reloadmapafterbattle

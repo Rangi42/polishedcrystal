@@ -64,24 +64,24 @@ CooltrainermHenriScript:
 	closetext
 	end
 
-WalkerScript:
+YellowForestWalkerScript:
 	faceplayer
 	opentext
-	writetext WalkerSeenText
+	writetext YellowForestWalkerSeenText
 	waitbutton
 	closetext
-	winlosstext WalkerBeatenText, 0
+	winlosstext YellowForestWalkerBeatenText, 0
 	setlasttalked YELLOWFOREST_WALKER
 	loadtrainer WALKER, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_WALKER
 	opentext
-	writetext WalkerAfterText
+	writetext YellowForestWalkerAfterText
 	buttonsound
 	verbosegiveitem HM_FLY
 	setevent EVENT_GOT_HM02_FLY
-	writetext WalkerFinalText
+	writetext YellowForestWalkerFinalText
 	waitbutton
 	closetext
 	appear YELLOWFOREST_SKARMORY
@@ -93,7 +93,7 @@ WalkerScript:
 	waitsfx
 	spriteface YELLOWFOREST_WALKER, DOWN
 	opentext
-	writetext WalkerFlyText
+	writetext YellowForestWalkerFlyText
 	waitbutton
 	closetext
 	playsound SFX_FLY
@@ -106,43 +106,43 @@ WalkerScript:
 	special Special_FadeInQuickly
 	end
 
-YellowScript:
+YellowForestYellowScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_YELLOW
-	iffalse YellowBattleScript
+	iffalse YellowForestYellowBattleScript
 	checkevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
 	iffalse YellowBattleAfterBallScript
-	writetext YellowText_Goodbye
+	writetext YellowForestYellowGoodbyeText
 	waitbutton
 	closetext
 	end
 
-YellowBattleScript:
-	writetext YellowText_Greeting
+YellowForestYellowBattleScript:
+	writetext YellowForestYellowGreetingText
 	waitbutton
 	closetext
-	winlosstext YellowText_WinBattle, 0
+	winlosstext YellowForestYellowWinLossText, 0
 	setlasttalked YELLOWFOREST_YELLOW
 	loadtrainer YELLOW, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_YELLOW
 	opentext
-	writetext YellowText_AfterBattle
+	writetext YellowForestYellowAfterText
 	scall YellowTryGiveLightBallScript
 	end
 
 YellowBattleAfterBallScript:
 	faceplayer
 	opentext
-	writetext YellowText_AfterBattle
+	writetext YellowForestYellowAfterText
 YellowTryGiveLightBallScript:
 	buttonsound
 	verbosegiveitem LIGHT_BALL
 	iffalse NoRoomForLightBallScript
 	setevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
-	writetext YellowText_Goodbye
+	writetext YellowForestYellowGoodbyeText
 	waitbutton
 NoRoomForLightBallScript:
 	closetext
@@ -299,7 +299,7 @@ CooltrainermHenriAfterText:
 	line "nesses is key."
 	done
 
-WalkerSeenText:
+YellowForestWalkerSeenText:
 	text "Hello there!"
 	line "The name's Walker."
 
@@ -333,12 +333,12 @@ WalkerSeenText:
 	line "nice if you win!"
 	done
 
-WalkerBeatenText:
+YellowForestWalkerBeatenText:
 	text "My bird #mon…"
 	line "Taken down!"
 	done
 
-WalkerAfterText:
+YellowForestWalkerAfterText:
 	text "Walker: Well, I"
 	line "can see why you"
 
@@ -353,7 +353,7 @@ WalkerAfterText:
 	line "this HM."
 	done
 
-WalkerFinalText:
+YellowForestWalkerFinalText:
 	text "Walker: Bird"
 	line "#mon soar"
 
@@ -376,12 +376,12 @@ WalkerFinalText:
 	para "Goodbye!"
 	done
 
-WalkerFlyText:
+YellowForestWalkerFlyText:
 	text "Skarmory,"
 	line "let's Fly!"
 	done
 
-YellowText_Greeting:
+YellowForestYellowGreetingText:
 	text "Yellow: Hi!"
 	line "I'm Yellow!"
 
@@ -415,12 +415,12 @@ YellowText_Greeting:
 	line "can do!"
 	done
 
-YellowText_WinBattle:
+YellowForestYellowWinLossText:
 	text "Haha! What a"
 	line "battle!"
 	done
 
-YellowText_AfterBattle:
+YellowForestYellowAfterText:
 	text "Yellow: Wow!"
 	line "You really are a"
 
@@ -431,7 +431,7 @@ YellowText_AfterBattle:
 	line "will appreciate!"
 	done
 
-YellowText_Goodbye:
+YellowForestYellowGoodbyeText:
 	text "Yellow: Give that"
 	line "Light Ball to a"
 
@@ -524,9 +524,9 @@ YellowForest_MapEventHeader:
 	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
 	person_event SPRITE_COOLTRAINER_M, 35, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermHenri, -1
 	person_event SPRITE_COOLTRAINER_M, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
-	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, WalkerScript, EVENT_YELLOW_FOREST_WALKER
+	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
 	person_event SPRITE_SKARMORY, 22, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
-	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowScript, -1
+	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
 	person_event SPRITE_POKE_BALL, 16, 25, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestThunderStone, EVENT_YELLOW_FOREST_THUNDERSTONE
 	person_event SPRITE_POKE_BALL, 24, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestMiracleSeed, EVENT_YELLOW_FOREST_MIRACLE_SEED
 	person_event SPRITE_POKE_BALL, 21, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, YellowForestUltraBall, EVENT_YELLOW_FOREST_ULTRA_BALL

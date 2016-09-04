@@ -292,7 +292,7 @@ AcademyParalysisText:
 
 	para "It remains after"
 	line "battle, so use"
-	cont "a ParalyzHeal."
+	cont "a ParalyzeHeal."
 	done
 
 AcademySleepText:

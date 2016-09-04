@@ -744,28 +744,25 @@ UnknownText_0x1ecee8: ; 0x1ecee8
 ; 0x1ecf02
 
 BattleTowerText_GreetingTycoon:
-	text "So, you've come"
-	line "this far!"
+	text "Hi! My name's"
+	line "Palmer."
 
-	para "My name's Palmer."
+	para "You're <PLAYER>"
+	line "from New Bark"
+	cont "Town, right?"
 
-	para "As the Tower"
-	line "Tycoon, I'll have"
+	para "I've heard a lot"
+	line "about you."
 
-	para "to give you my"
-	line "best effort."
+	para "Show me the bond"
+	line "you've built with"
+	cont "your #mon."
 
-	para "That's how the best"
-	line "trainers show"
+	para "Show me what you've"
+	line "learned through"
 
-	para "respect to each"
-	line "other."
-
-	para "By battling all-"
-	line "out as dedicated"
-
-	para "students of"
-	line "#mon!"
+	para "battles with"
+	line "trainers!"
 	done
 
 BattleTowerText_LossTycoon:

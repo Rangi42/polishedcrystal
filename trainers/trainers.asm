@@ -114,17 +114,6 @@ CalGroup:
 	db $ff ; end
 
 ; ================
-
-	; CAL
-	db "Cal@"
-	db 0 ; normal
-
-	; party
-	db 60, BLISSEY
-
-	db $ff ; end
-
-; ================
 ; ================================
 
 
@@ -197,7 +186,7 @@ FalknerGroup:
 		db CONFUSE_RAY
 
 	db 75, PIDGEOT, SHARP_BEAK
-		db DRILL_PECK
+		db HURRICANE
 		db TWISTER
 		db STEEL_WING
 		db WHIRLWIND
@@ -2062,8 +2051,8 @@ BlueGroup:
 
 	db 70, PIDGEOT, LEFTOVERS
 		db QUICK_ATTACK
-		db FLY
-		db WING_ATTACK
+		db HURRICANE
+		db RETURN
 		db AIR_SLASH
 
 	db 66, MACHAMP, BLACK_BELT
@@ -2106,7 +2095,7 @@ BlueGroup:
 
 	db 75, PIDGEOT, SHARP_BEAK
 		db EXTREMESPEED
-		db DRILL_PECK
+		db HURRICANE
 		db STEEL_WING
 		db TWISTER
 
@@ -2175,13 +2164,13 @@ RedGroup:
 		db DOUBLE_EDGE
 
 	db 87, VENUSAUR, EXPERT_BELT
-		db GIGA_DRAIN
+		db SEED_BOMB
 		db SLUDGE_BOMB
 		db MORNING_SUN
 		db SLEEP_POWDER
 
 	db 87, CHARIZARD, MUSCLE_BAND
-		db FIRE_BLAST
+		db FLARE_BLITZ
 		db SWORDS_DANCE
 		db EARTHQUAKE
 		db WING_ATTACK
@@ -11340,15 +11329,45 @@ PokemonProfGroup:
 
 	; POKEMON_PROF
 	db "Oak@"
-	db 0 ; normal
+	db 3 ; item + moves
 
 	; party
-	db 78, TAUROS
-	db 76, DODRIO
-	db 80, VENUSAUR
-	db 80, CHARIZARD
-	db 80, BLASTOISE
-	db 82, KANGASKHAN
+
+	db 78, TAUROS, SILK_SCARF
+		db THRASH
+		db ZEN_HEADBUTT
+		db BULK_UP
+		db SUBSTITUTE
+
+	db 76, DODRIO, SHARP_BEAK
+		db DRILL_PECK
+		db TRI_ATTACK
+		db TRIPLE_KICK
+		db DOUBLE_TEAM
+
+	db 80, VENUSAUR, MIRACLE_SEED
+		db GIGA_DRAIN
+		db SLUDGE_BOMB
+		db GROWTH
+		db SLEEP_POWDER
+
+	db 80, CHARIZARD, CHARCOAL
+		db FLAMETHROWER
+		db CRUNCH
+		db DRAGONBREATH
+		db SLASH
+
+	db 80, BLASTOISE, MYSTIC_WATER
+		db SURF
+		db BODY_SLAM
+		db ICE_BEAM
+		db ZAP_CANNON
+
+	db 82, KANGASKHAN, BLACK_BELT
+		db RETURN
+		db ROCK_SMASH
+		db EARTHQUAKE
+		db OUTRAGE
 
 	db $ff ; end
 
@@ -11626,6 +11645,52 @@ LoreleiGroup:
 
 	; party
 
+	db 73, DEWGONG, LEFTOVERS
+		db SURF
+		db ICE_BEAM
+		db REST
+		db SLEEP_TALK
+
+	db 72, CLOYSTER, MUSCLE_BAND
+		db EXPLOSION
+		db ROLLOUT
+		db ICICLE_CRASH
+		db BARRIER
+
+	db 73, SLOWBRO, EXPERT_BELT
+		db PSYCHIC_M
+		db SURF
+		db ICE_BEAM
+		db CALM_MIND
+
+	db 72, GLACEON, NEVERMELTICE
+		db ICE_BEAM
+		db BARRIER
+		db HYPER_VOICE
+		db MIRROR_COAT
+
+	db 75, JYNX, PINK_BOW
+		db DRAIN_KISS
+		db NASTY_PLOT
+		db ICE_BEAM
+		db PSYCHIC_M
+
+	db 74, LAPRAS, BRIGHTPOWDER
+		db ICE_BEAM
+		db ANCIENTPOWER
+		db CONFUSE_RAY
+		db OUTRAGE
+
+	db $ff ; end
+
+; ================
+
+	; LORELEI
+	db "Lorelei@"
+	db 3 ; item + moves
+
+	; party
+
 	db 58, DEWGONG, LEFTOVERS
 		db AQUA_TAIL
 		db ICE_BEAM
@@ -11717,6 +11782,52 @@ AgathaGroup:
 	db $ff ; end
 
 ; ================
+
+	; AGATHA
+	db "Agatha@"
+	db 3 ; item + moves
+
+	; party
+
+	db 73, GENGAR, SPELL_TAG
+		db SHADOW_BALL
+		db WILL_O_WISP
+		db CURSE
+		db DESTINY_BOND
+
+	db 73, CROBAT, MUSCLE_BAND
+		db AIR_SLASH
+		db CRUNCH
+		db X_SCISSOR
+		db POISON_JAB
+
+	db 72, MISMAGIUS, CHARCOAL
+		db SHADOW_BALL
+		db FLAMETHROWER
+		db DAZZLINGLEAM
+		db POWER_GEM
+
+	db 72, MUK, SILK_SCARF
+		db EXPLOSION
+		db SLUDGE_BOMB
+		db SCREECH
+		db MINIMIZE
+
+	db 74, ARBOK, KINGS_ROCK
+		db SLUDGE_BOMB
+		db GLARE
+		db CRUNCH
+		db BODY_SLAM
+
+	db 75, GENGAR, EXPERT_BELT
+		db SHADOW_BALL
+		db THUNDERBOLT
+		db WILL_O_WISP
+		db DESTINY_BOND
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11769,6 +11880,52 @@ YellowGroup:
 	db $ff ; end
 
 ; ================
+
+	; YELLOW
+	db "Yellow@"
+	db 3 ; item + moves
+
+	; party
+
+	db 72, OMASTAR, EXPERT_BELT
+		db SCALD
+		db ANCIENTPOWER
+		db SPIKES
+		db ICE_BEAM
+
+	db 73, RATICATE, KINGS_ROCK
+		db SWORDS_DANCE
+		db QUICK_ATTACK
+		db SUPER_FANG
+		db CRUNCH
+
+	db 71, BUTTERFREE, BRIGHTPOWDER
+		db PSYCHIC_M
+		db BUG_BUZZ
+		db SLEEP_POWDER
+		db STUN_SPORE
+
+	db 74, DODRIO, SHARP_BEAK
+		db DRILL_PECK
+		db TRI_ATTACK
+		db DOUBLE_TEAM
+		db PURSUIT
+
+	db 73, GOLEM, MUSCLE_BAND
+		db ROLLOUT
+		db DEFENSE_CURL
+		db EARTHQUAKE
+		db STONE_EDGE
+
+	db 75, PIKACHU, LIGHT_BALL
+		db SURF
+		db FLY
+		db THUNDERBOLT
+		db EXTREMESPEED
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11805,6 +11962,52 @@ WalkerGroup:
 		db FURY_ATTACK
 		db DRILL_PECK
 		db SWIFT
+
+	db $ff ; end
+
+; ================
+
+	; WALKER
+	db "Walker@"
+	db 3 ; item + moves
+
+	; party
+
+	db 75, SKARMORY, LEFTOVERS
+		db WHIRLWIND
+		db SPIKES
+		db DRILL_PECK
+		db NIGHT_SLASH
+
+	db 72, NOCTOWL, SHARP_BEAK
+		db AIR_SLASH
+		db PSYCHIC_M
+		db SHADOW_BALL
+		db REFLECT
+
+	db 74, PIDGEOT, BRIGHTPOWDER
+		db TWISTER
+		db EXTREMESPEED
+		db HURRICANE
+		db WHIRLWIND
+
+	db 73, AERODACTYL, MUSCLE_BAND
+		db ROCK_SLIDE
+		db CRUNCH
+		db IRON_HEAD
+		db FLY
+
+	db 73, CHARIZARD, CHARCOAL
+		db SWORDS_DANCE
+		db FIRE_BLAST
+		db ROCK_SLIDE
+		db SLASH
+
+	db 72, XATU, QUICK_CLAW
+		db FUTURE_SIGHT
+		db PAIN_SPLIT
+		db REFLECT
+		db PSYCHIC_M
 
 	db $ff ; end
 
@@ -11975,20 +12178,59 @@ StevenGroup:
 
 	; STEVEN
 	db "Steven@"
-	db 2 ; item
+	db 3 ; item + moves
 
 	; party
+
 	db 61, SKARMORY, QUICK_CLAW
+		db SPIKES
+		db WHIRLWIND
+		db DRILL_PECK
+		db STEEL_WING
+
 	db 60, FORRETRESS, FOCUS_BAND
+		db EARTHQUAKE
+		db ROLLOUT
+		db EXPLOSION
+		db SPIKES
+
 if DEF(FAITHFUL)
 	db 58, SCIZOR, MUSCLE_BAND
+		db SWORDS_DANCE
+		db BULLET_PUNCH
+		db PURSUIT
+		db IRON_HEAD
+
 	db 58, MAGNEZONE, EXPERT_BELT
+		db THUNDERBOLT
+		db FLASH_CANNON
+		db TRI_ATTACK
+		db EXPLOSION
 else
 	db 58, BLASTOISE, EXPERT_BELT
+		db SURF
+		db BLIZZARD
+		db FLASH_CANNON
+		db ZAP_CANNON
+
 	db 58, RHYPERIOR, MUSCLE_BAND
+		db EARTHQUAKE
+		db STONE_EDGE
+		db MEGAHORN
+		db POISON_JAB
 endc
+
 	db 58, AERODACTYL, KINGS_ROCK
+		db ROCK_SLIDE
+		db CRUNCH
+		db WING_ATTACK
+		db IRON_HEAD
+
 	db 62, STEELIX, LEFTOVERS
+		db EARTHQUAKE
+		db STONE_EDGE
+		db IRON_HEAD
+		db SANDSTORM
 
 	db $ff ; end
 
@@ -12002,15 +12244,45 @@ CynthiaGroup:
 
 	; CYNTHIA
 	db "Cynthia@"
-	db 2 ; item
+	db 3 ; item + moves
 
 	; party
-	db 60, TOGEKISS, LEFTOVERS
+
+	db 60, TOGEKISS, EXPERT_BELT
+		db AIR_SLASH
+		db FOCUS_BLAST
+		db SOFTBOILED
+		db NASTY_PLOT
+
 	db 58, LEAFEON, FOCUS_BAND
+		db SWORDS_DANCE
+		db SEED_BOMB
+		db DOUBLE_EDGE
+		db ROAR
+
 	db 58, ELECTIVIRE, MUSCLE_BAND
+		db CROSS_CHOP
+		db THUNDERPUNCH
+		db FIRE_PUNCH
+		db LIGHT_SCREEN
+
 	db 58, YANMEGA, QUICK_CLAW
-	db 62, KINGDRA, EXPERT_BELT
+		db BUG_BUZZ
+		db AIR_SLASH
+		db ANCIENTPOWER
+		db PROTECT
+
+	db 62, KINGDRA, LEFTOVERS
+		db DRAGON_DANCE
+		db OUTRAGE
+		db WATERFALL
+		db ICE_BEAM
+
 	db 61, GLISCOR, KINGS_ROCK
+		db SWORDS_DANCE
+		db NIGHT_SLASH
+		db X_SCISSOR
+		db SCREECH
 
 	db $ff ; end
 
@@ -12031,6 +12303,52 @@ TowerTycoonGroup:
 	db 50, GYARADOS, MUSCLE_BAND
 	db 50, RHYPERIOR, LEFTOVERS
 	db 50, DRAGONITE, EXPERT_BELT
+
+	db $ff ; end
+
+; ================
+
+	; TOWERTYCOON
+	db "Palmer@"
+	db 3 ; item + moves
+
+	; party
+
+	db 74, GYARADOS, MUSCLE_BAND
+		db DRAGON_DANCE
+		db WATERFALL
+		db CRUNCH
+		db OUTRAGE
+
+	db 74, RHYPERIOR, KINGS_ROCK
+		db EARTHQUAKE
+		db ROCK_SLIDE
+		db MEGAHORN
+		db POISON_JAB
+
+	db 75, DRAGONITE, EXPERT_BELT
+		db HYPER_BEAM
+		db DRAGON_PULSE
+		db FIRE_BLAST
+		db BLIZZARD
+
+	db 73, ALAKAZAM, TWISTEDSPOON
+		db PSYCHIC_M
+		db CONFUSE_RAY
+		db TRI_ATTACK
+		db LIGHT_SCREEN
+
+	db 73, SNORLAX, LEFTOVERS
+		db SLEEP_TALK
+		db REST
+		db BODY_SLAM
+		db GUNK_SHOT
+
+	db 72, HERACROSS, BLACK_BELT
+		db MEGAHORN
+		db CROSS_CHOP
+		db SEISMIC_TOSS
+		db NIGHT_SLASH
 
 	db $ff ; end
 

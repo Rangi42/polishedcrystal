@@ -11,11 +11,8 @@ CHRIS EQU __enum__
 
 KRIS EQU __enum__
 	trainerclass KAY ; 1
-	const KAY1
 
 	trainerclass CAL ; 2
-	const CAL1
-	const CAL2
 
 	trainerclass FALKNER ; 3
 

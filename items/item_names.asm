@@ -8,7 +8,7 @@
 	db "Max Potion@"
 	db "Antidote@"
 	db "Burn Heal@"
-	db "ParalyzHeal@"
+	db "ParalyzeHeal@"
 	db "Awakening@"
 	db "Ice Heal@"
 	db "Full Heal@"

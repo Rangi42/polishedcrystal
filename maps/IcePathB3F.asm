@@ -75,7 +75,7 @@ LoreleiAfterRematchIntroScript:
 	closetext
 	winlosstext LoreleiRematchBeatenText, 0
 	setlasttalked ICEPATHB3F_LORELEI
-	loadtrainer LORELEI, 2
+	loadtrainer LORELEI, 3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LORELEI_AGAIN

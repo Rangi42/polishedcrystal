@@ -298,6 +298,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Add: New music for the Goldenrod Game Corner and Lugia's and Ho-Oh's maps
 * Add: Shrine in Ecruteak City from Mateo's [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172).
 * Add: Battle with Valerie on Bellchime Trail after Suicune (reward: TM for DazzlinGleam).
+* Add: Battle 16 Gym Leaders and 5 unlockable trainers in the Fighting Dojo.
 * Add: Special event after you catch all 26 Unown.
 * Add: Buy dolls and plants to decorate your room in Goldenrod Harbor.
 * Add: Replace Cianwood Photo Studio with an event that makes your Pokémon happier.

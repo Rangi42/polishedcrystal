@@ -1194,6 +1194,8 @@
 	const EVENT_BEAT_STEVEN
 ; Cynthia
 	const EVENT_BEAT_CYNTHIA
+; Palmer
+	const EVENT_BEAT_PALMER
 ; Valerie
 	const EVENT_BEAT_VALERIE
 ; Sprite visibility: When these events are cleared, the sprite becomes visible; when set, the sprite is hidden.
