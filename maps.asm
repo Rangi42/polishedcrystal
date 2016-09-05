@@ -177,7 +177,6 @@ INCLUDE "maps/FastShipB1F.asm"
 INCLUDE "maps/OlivinePortPassage.asm"
 INCLUDE "maps/VermilionPortPassage.asm"
 INCLUDE "maps/MountMoonSquare.asm"
-INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/TinTowerRoof.asm"
 INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route42.asm"
@@ -209,6 +208,7 @@ INCLUDE "maps/IcePathB2FBlackthornSide.asm"
 INCLUDE "maps/IcePathB3F.asm"
 INCLUDE "maps/LavenderPokeCenter1F.asm"
 INCLUDE "maps/MrFujisHouse.asm"
+INCLUDE "maps/MountMoonGiftShop.asm"
 
 
 SECTION "Map Scripts 10", ROMX, BANK[MAP_SCRIPTS_10]
