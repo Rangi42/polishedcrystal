@@ -275,7 +275,7 @@ BugsyGroup:
 		db SWORDS_DANCE
 		db NIGHT_SLASH
 		db X_SCISSOR
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db $ff ; end
 
@@ -607,7 +607,7 @@ JasmineGroup:
 
 	db 32, SCIZOR, NO_ITEM
 		db PURSUIT
-		db WING_ATTACK
+		db AERIAL_ACE
 		db METAL_CLAW
 		db SLASH
 
@@ -687,7 +687,7 @@ PryceGroup:
 
 	db 36, PILOSWINE, NO_ITEM
 		db MAGNITUDE
-		db ICY_WIND
+		db ICE_SHARD
 		db ICICLE_CRASH
 		db FURY_ATTACK
 
@@ -700,7 +700,7 @@ PryceGroup:
 	db 37, CLOYSTER, NO_ITEM
 		db DEFENSE_CURL
 		db SUPERSONIC
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db AURORA_BEAM
 
 	db 38, LAPRAS, NO_ITEM
@@ -1053,7 +1053,7 @@ KogaGroup:
 		db SCREECH
 		db TOXIC
 		db CRUNCH
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db $ff ; end
 
@@ -1286,7 +1286,7 @@ ChampionGroup:
 		db HYPER_BEAM
 
 	db 56, AERODACTYL, KINGS_ROCK
-		db WING_ATTACK
+		db AERIAL_ACE
 		db ANCIENTPOWER
 		db ROCK_SLIDE
 		db HYPER_BEAM
@@ -1294,7 +1294,7 @@ ChampionGroup:
 	db 56, CHARIZARD, MUSCLE_BAND
 		db DRAGON_DANCE
 		db FLAME_WHEEL
-		db WING_ATTACK
+		db AERIAL_ACE
 		db SLASH
 
 	db 59, DRAGONITE, EXPERT_BELT
@@ -1332,7 +1332,7 @@ ChampionGroup:
 		db HYPER_BEAM
 
 	db 76, AERODACTYL, KINGS_ROCK
-		db WING_ATTACK
+		db AERIAL_ACE
 		db ANCIENTPOWER
 		db EARTHQUAKE
 		db DRAGON_CLAW
@@ -1396,7 +1396,7 @@ BrockGroup:
 		db GIGA_DRAIN
 
 	db 65, AERODACTYL, NO_ITEM
-		db WING_ATTACK
+		db AERIAL_ACE
 		db SUPERSONIC
 		db ANCIENTPOWER
 		db HYPER_BEAM
@@ -1438,7 +1438,7 @@ BrockGroup:
 	db 73, AERODACTYL, QUICK_CLAW
 		db STONE_EDGE
 		db EARTHQUAKE
-		db WING_ATTACK
+		db AERIAL_ACE
 		db CRUNCH
 
 	db 75, GOLEM, LEFTOVERS
@@ -1761,7 +1761,7 @@ JanineGroup:
 		db SCREECH
 		db SUPERSONIC
 		db CONFUSE_RAY
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db 61, ARIADOS, NO_ITEM
 		db AGILITY
@@ -1806,7 +1806,7 @@ JanineGroup:
 	db 73, CROBAT, KINGS_ROCK
 		db DOUBLE_TEAM
 		db POISON_JAB
-		db WING_ATTACK
+		db AERIAL_ACE
 		db TOXIC
 
 	db 72, ARIADOS, QUICK_CLAW
@@ -2173,7 +2173,7 @@ RedGroup:
 		db FLARE_BLITZ
 		db SWORDS_DANCE
 		db EARTHQUAKE
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db 87, GYARADOS, QUICK_CLAW
 		db DRAGON_DANCE
@@ -2721,7 +2721,7 @@ Rival2Group:
 		db POISON_JAB
 		db SUPER_FANG
 		db CONFUSE_RAY
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db 61, MAGNEZONE, MAGNET
 		db LOCK_ON
@@ -2767,7 +2767,7 @@ Rival2Group:
 		db POISON_JAB
 		db SUPER_FANG
 		db CONFUSE_RAY
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db 61, MAGNEZONE, MAGNET
 		db LOCK_ON
@@ -2813,7 +2813,7 @@ Rival2Group:
 		db POISON_JAB
 		db SUPER_FANG
 		db CONFUSE_RAY
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db 61, MAGNEZONE, MAGNET
 		db LOCK_ON
@@ -4635,7 +4635,7 @@ FisherGroup:
 	db 42, OCTILLERY
 		db PSYBEAM
 		db AURORA_BEAM
-		db BUBBLE_BEAM
+		db OCTAZOOKA
 		db HYPER_BEAM
 
 	db $ff ; end
@@ -6504,7 +6504,7 @@ SuperNerdGroup:
 	db 30, SLOWBRO
 		db CONFUSION
 		db HEADBUTT
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db STRENGTH
 
 	db $ff ; end
@@ -9793,7 +9793,7 @@ DragonTamerGroup:
 	db 38, SEADRA
 		db SMOKESCREEN
 		db TWISTER
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db OUTRAGE
 
 	db 40, DRAGONAIR
@@ -10260,7 +10260,7 @@ CooltrainerMGroup:
 		db SAND_ATTACK
 		db QUICK_ATTACK
 		db WHIRLWIND
-		db WING_ATTACK
+		db AERIAL_ACE
 
 	db 37, ELECTABUZZ
 		db THUNDERPUNCH
@@ -10902,13 +10902,13 @@ AceDuoGroup:
 
 	db 38, SEADRA
 		db SMOKESCREEN
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db OUTRAGE
 		db WATERFALL
 
 	db 38, SEADRA
 		db SMOKESCREEN
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db OUTRAGE
 		db WHIRLPOOL
 
@@ -10924,13 +10924,13 @@ AceDuoGroup:
 
 	db 38, SEADRA
 		db SMOKESCREEN
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db OUTRAGE
 		db WHIRLPOOL
 
 	db 38, SEADRA
 		db SMOKESCREEN
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db OUTRAGE
 		db WATERFALL
 
@@ -11062,7 +11062,7 @@ VeteranFGroup:
 
 	db 39, SCYTHER, EVIOLITE
 		db SLASH
-		db WING_ATTACK
+		db AERIAL_ACE
 		db SWORDS_DANCE
 		db PURSUIT
 
@@ -11121,7 +11121,7 @@ VeteranFGroup:
 	db 37, HERACROSS, KINGS_ROCK
 		db ROCK_SMASH
 		db STRENGTH
-		db COUNTER
+		db AERIAL_ACE
 		db DOUBLE_TEAM
 
 	db 38, PUPITAR, EVIOLITE
@@ -11147,7 +11147,7 @@ ProtonGroup:
 	; party
 
 	db 38, GOLBAT, KINGS_ROCK
-		db WING_ATTACK
+		db AERIAL_ACE
 		db CONFUSE_RAY
 		db SUPER_FANG
 		db POISON_JAB
@@ -11201,7 +11201,7 @@ PetrelGroup:
 
 	db 37, GOLBAT, EVIOLITE
 		db LEECH_LIFE
-		db WING_ATTACK
+		db AERIAL_ACE
 		db CONFUSE_RAY
 		db SUPER_FANG
 
@@ -11235,7 +11235,7 @@ PetrelGroup:
 
 	db 33, GOLBAT, BLACKGLASSES
 		db BITE
-		db WING_ATTACK
+		db AERIAL_ACE
 		db CONFUSE_RAY
 		db SUPER_FANG
 
@@ -11701,7 +11701,7 @@ LoreleiGroup:
 
 	db 39, SLOWBRO, NO_ITEM
 		db PSYCHIC_M
-		db BUBBLE_BEAM
+		db WATER_PULSE
 		db HEADBUTT
 		db DISABLE
 
@@ -11951,7 +11951,7 @@ YellowGroup:
 		db WATER_GUN
 		db BITE
 		db DEFENSE_CURL
-		db ICY_WIND
+		db ICE_SHARD
 
 	db 32, PIKACHU, LIGHT_BALL
 		db SURF
@@ -12022,7 +12022,7 @@ WalkerGroup:
 	; party
 
 	db 28, NOCTOWL, NO_ITEM
-		db WING_ATTACK
+		db AERIAL_ACE
 		db NIGHT_SHADE
 		db REFLECT
 		db CONFUSION
@@ -12305,7 +12305,7 @@ endc
 	db 58, AERODACTYL, KINGS_ROCK
 		db ROCK_SLIDE
 		db CRUNCH
-		db WING_ATTACK
+		db AERIAL_ACE
 		db IRON_HEAD
 
 	db 62, STEELIX, LEFTOVERS
