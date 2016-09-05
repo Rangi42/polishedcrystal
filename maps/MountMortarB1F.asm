@@ -1,8 +1,9 @@
 const_value set 2
+	const MOUNTMORTARB1F_POKEFAN_M
+	const MOUNTMORTARB1F_BLACK_BELT
+	const MOUNTMORTARB1F_BOULDER
 	const MOUNTMORTARB1F_POKE_BALL1
 	const MOUNTMORTARB1F_POKE_BALL2
-	const MOUNTMORTARB1F_BOULDER
-	const MOUNTMORTARB1F_BLACK_BELT
 	const MOUNTMORTARB1F_POKE_BALL3
 	const MOUNTMORTARB1F_POKE_BALL4
 	const MOUNTMORTARB1F_POKE_BALL5
@@ -13,6 +14,45 @@ MountMortarB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+MountMortarB1FHikerScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_DEFENSE_CURL_INTRO
+	iftrue MountMortarB1FTutorMountMortarB1FScript
+	writetext MountMortarB1FHikerText
+	waitbutton
+	setevent EVENT_LISTENED_TO_DEFENSE_CURL_INTRO
+MountMortarB1FTutorMountMortarB1FScript:
+	writetext Text_MountMortarB1FTutorDefenseCurl
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_MountMortarB1FTutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte DEFENSE_CURL
+	writetext Text_MountMortarB1FTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_MountMortarB1FTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	writetext Text_MountMortarB1FTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_MountMortarB1FTutorTaught
+	waitbutton
+	closetext
+	end
 
 BlackBeltScript_0x7e1f6:
 	faceplayer
@@ -74,6 +114,52 @@ MountMortarB1FPPUp:
 MountMortarB1FHiddenMaxRevive:
 	dwb EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
+MountMortarB1FHikerText:
+	text "My Pokemon used"
+	line "Rock Smash on a"
+
+	para "boulder, but it"
+	line "was undamaged."
+
+	para "It turned out to"
+	line "be a Geodude that"
+	cont "used Defense Curl!"
+	done
+
+Text_MountMortarB1FTutorDefenseCurl:
+	text "I can teach your"
+	line "#mon to use"
+
+	para "Defense Curl for"
+	line "one Silver Leaf."
+	done
+
+Text_MountMortarB1FTutorNoSilverLeaf:
+	text "Shucks, you don't"
+	line "have a Silver"
+	cont "Leaf."
+	done
+
+Text_MountMortarB1FTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Defense Curl?"
+	done
+
+Text_MountMortarB1FTutorRefused:
+	text "I'll be right here"
+	line "waiting."
+	done
+
+Text_MountMortarB1FTutorClear:
+	text ""
+	done
+
+Text_MountMortarB1FTutorTaught:
+	text "There! Now your"
+	line "#mon can use"
+	cont "Defense Curl!"
+	done
 
 UnknownText_0x7e24d:
 	text "Hey!"
@@ -152,11 +238,12 @@ MountMortarB1F_MapEventHeader:
 	signpost 6, 4, SIGNPOST_ITEM, MountMortarB1FHiddenMaxRevive
 
 .PersonEvents:
-	db 7
+	db 8
+	person_event SPRITE_POKEFAN_M, 31, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
+	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7e1f6, -1
+	person_event SPRITE_BOULDER, 10, 9, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MountMortarB1FBoulder, -1
 	person_event SPRITE_POKE_BALL, 12, 29, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FHyperPotion, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
 	person_event SPRITE_POKE_BALL, 16, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FCarbos, EVENT_MOUNT_MORTAR_B1F_CARBOS
-	person_event SPRITE_BOULDER, 10, 9, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MountMortarB1FBoulder, -1
-	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7e1f6, -1
 	person_event SPRITE_POKE_BALL, 24, 34, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FProtector, EVENT_MOUNT_MORTAR_B1F_PROTECTOR
 	person_event SPRITE_POKE_BALL, 3, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FMaxEther, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
 	person_event SPRITE_POKE_BALL, 26, 21, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FPPUp, EVENT_MOUNT_MORTAR_B1F_PP_UP
