@@ -37,12 +37,12 @@ INCLUDE "audio/music/vermilioncity.asm"
 INCLUDE "audio/music/ruinsofalphinterior.asm"
 INCLUDE "audio/music/lookpokemaniac.asm"
 INCLUDE "audio/music/trainervictory.asm"
+INCLUDE "audio/music/route1.asm"
+INCLUDE "audio/music/route3.asm"
 
 
 SECTION "Songs 2", ROMX, BANK[SONGS_2]
 
-INCLUDE "audio/music/route1.asm"
-INCLUDE "audio/music/route3.asm"
 INCLUDE "audio/music/route12.asm"
 INCLUDE "audio/music/kantogymbattle.asm"
 INCLUDE "audio/music/kantotrainerbattle.asm"
@@ -73,22 +73,23 @@ INCLUDE "audio/music/lavendertown.asm"
 INCLUDE "audio/music/dancinghall.asm"
 INCLUDE "audio/music/contestresults.asm"
 INCLUDE "audio/music/route30.asm"
+INCLUDE "audio/music/violetcity.asm"
+INCLUDE "audio/music/route29.asm"
 
 
 SECTION "Songs 3", ROMX, BANK[SONGS_3]
 
-INCLUDE "audio/music/violetcity.asm"
-INCLUDE "audio/music/route29.asm"
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/healpokemon.asm"
 INCLUDE "audio/music/evolution.asm"
 INCLUDE "audio/music/rby/lawrence.asm"
+INCLUDE "audio/music/viridiancity.asm"
+INCLUDE "audio/music/celadoncity.asm"
+INCLUDE "audio/music/hgss/cinnabarisland.asm"
 
 
 SECTION "Songs 4", ROMX, BANK[SONGS_4]
 
-INCLUDE "audio/music/viridiancity.asm"
-INCLUDE "audio/music/celadoncity.asm"
 INCLUDE "audio/music/wildpokemonvictory.asm"
 INCLUDE "audio/music/successfulcapture.asm"
 INCLUDE "audio/music/gymleadervictory.asm"
@@ -115,8 +116,7 @@ INCLUDE "audio/music/mom.asm"
 INCLUDE "audio/music/victoryroad.asm"
 INCLUDE "audio/music/pokemonlullaby.asm"
 INCLUDE "audio/music/pokemonmarch.asm"
-INCLUDE "audio/music/goldsilveropening.asm"
-INCLUDE "audio/music/goldsilveropening2.asm"
+INCLUDE "audio/music/crystalopening.asm"
 INCLUDE "audio/music/lookhiker.asm"
 INCLUDE "audio/music/lookrocket.asm"
 INCLUDE "audio/music/rockettheme.asm"
@@ -124,29 +124,41 @@ INCLUDE "audio/music/mainmenu.asm"
 INCLUDE "audio/music/lookkimonogirl.asm"
 INCLUDE "audio/music/pokeflutechannel.asm"
 INCLUDE "audio/music/bugcatchingcontest.asm"
+INCLUDE "audio/music/buenaspassword.asm"
+INCLUDE "audio/music/lookmysticalman.asm"
+INCLUDE "audio/music/pokecomcenter.asm"
 
 
 SECTION "Songs 5", ROMX, BANK[SONGS_5]
 
-INCLUDE "audio/music/buenaspassword.asm"
-INCLUDE "audio/music/lookmysticalman.asm"
-INCLUDE "audio/music/crystalopening.asm"
 INCLUDE "audio/music/battletowertheme.asm"
-INCLUDE "audio/music/suicunebattle.asm"
 INCLUDE "audio/music/battletowerlobby.asm"
-INCLUDE "audio/music/pokecomcenter.asm"
-
-
-
-SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
-
-INCLUDE "audio/music/credits.asm"
+INCLUDE "audio/music/suicunebattle.asm"
 INCLUDE "audio/music/clair.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
+INCLUDE "audio/music/custom/lugiassong.asm"
+INCLUDE "audio/music/hgss/route47.asm"
+INCLUDE "audio/music/hgss/mart.asm"
+INCLUDE "audio/music/hgss/lyraencounter.asm"
+INCLUDE "audio/music/hgss/lyradeparture.asm"
+INCLUDE "audio/music/hgss/ceruleancity.asm"
+INCLUDE "audio/music/hgss/nuggetbridge.asm"
+INCLUDE "audio/music/hgss/summoningdance.asm"
+INCLUDE "audio/music/hgss/spikyearedpichu.asm"
+
+
+SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
+
+INCLUDE "audio/music/credits.asm"
+INCLUDE "audio/music/hgss/hoohbattle.asm"
+INCLUDE "audio/music/hgss/lugiabattle.asm"
+INCLUDE "audio/music/xy/powerplant.asm"
+INCLUDE "audio/music/xy/rivalbattle.asm"
+INCLUDE "audio/music/xy/kantolegendbattle.asm"
 
 
 SECTION "Extra Songs 2", ROMX, BANK[EXTRA_SONGS_2]
@@ -156,13 +168,7 @@ INCLUDE "audio/music/postcredits.asm"
 
 SECTION "Extra Songs 3", ROMX, BANK[EXTRA_SONGS_3]
 
-INCLUDE "audio/music/hgss/route47.asm"
-INCLUDE "audio/music/hgss/mart.asm"
-INCLUDE "audio/music/hgss/lyraencounter.asm"
-INCLUDE "audio/music/hgss/lyradeparture.asm"
-INCLUDE "audio/music/hgss/ceruleancity.asm"
-INCLUDE "audio/music/hgss/cinnabarisland.asm"
-INCLUDE "audio/music/hgss/nuggetbridge.asm"
+INCLUDE "audio/music/titlescreen.asm"
 INCLUDE "audio/music/dppt/route210.asm"
 INCLUDE "audio/music/dppt/mountcoronet.asm"
 INCLUDE "audio/music/dppt/gamecorner.asm"
@@ -170,23 +176,15 @@ INCLUDE "audio/music/rse/route120.asm"
 INCLUDE "audio/music/rse/mountpyre.asm"
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
+INCLUDE "audio/music/bw/route12.asm"
+INCLUDE "audio/music/bw/wcsbattle.asm"
+INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 
 
 SECTION "Extra Songs 4", ROMX
 
-INCLUDE "audio/music/titlescreen.asm"
-INCLUDE "audio/music/hgss/hoohbattle.asm"
-INCLUDE "audio/music/hgss/lugiabattle.asm"
-INCLUDE "audio/music/hgss/summoningdance.asm"
-INCLUDE "audio/music/hgss/spikyearedpichu.asm"
-INCLUDE "audio/music/bw/route12.asm"
-INCLUDE "audio/music/bw/wcsbattle.asm"
-INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 INCLUDE "audio/music/b2w2/championbattle.asm"
-INCLUDE "audio/music/xy/powerplant.asm"
-INCLUDE "audio/music/xy/rivalbattle.asm"
-INCLUDE "audio/music/xy/kantolegendbattle.asm"
-INCLUDE "audio/music/custom/lugiassong.asm"
+
 
 
 SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]
