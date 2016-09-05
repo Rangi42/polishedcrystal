@@ -90,14 +90,11 @@
 	dba Music_ContestResults ; 0xefb3e
 	dba Music_BugCatchingContest ; 0xf7c16
 	dba Music_LakeOfRageRocketRadio ; 0xef5b1
-	dba Music_Printer ; 0xf07fd
 	dba Music_PostCredits ; 0xcfd9e
 
 ; Crystal adds the following songs:
 
 	dba Music_Clair ; 0x1fa8d
-	dba Music_MobileAdapterMenu ; 0x17801f
-	dba Music_MobileAdapter ; 0x1fc87
 	dba Music_BuenasPassword ; 0x178153
 	dba Music_LookMysticalMan ; 0x17843b
 	dba Music_CrystalOpening ; 0x1786e8

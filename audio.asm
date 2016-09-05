@@ -82,7 +82,7 @@ INCLUDE "audio/music/route29.asm"
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/healpokemon.asm"
 INCLUDE "audio/music/evolution.asm"
-INCLUDE "audio/music/printer.asm"
+INCLUDE "audio/music/rby/lawrence.asm"
 
 
 SECTION "Songs 4", ROMX, BANK[SONGS_4]
@@ -128,7 +128,6 @@ INCLUDE "audio/music/bugcatchingcontest.asm"
 
 SECTION "Songs 5", ROMX, BANK[SONGS_5]
 
-INCLUDE "audio/music/mobileadaptermenu.asm"
 INCLUDE "audio/music/buenaspassword.asm"
 INCLUDE "audio/music/lookmysticalman.asm"
 INCLUDE "audio/music/crystalopening.asm"
@@ -143,11 +142,11 @@ SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
 
 INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/music/clair.asm"
-INCLUDE "audio/music/mobileadapter.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rby/surfingpikachu.asm"
 
 
 SECTION "Extra Songs 2", ROMX, BANK[EXTRA_SONGS_2]
@@ -187,8 +186,6 @@ INCLUDE "audio/music/b2w2/championbattle.asm"
 INCLUDE "audio/music/xy/powerplant.asm"
 INCLUDE "audio/music/xy/rivalbattle.asm"
 INCLUDE "audio/music/xy/kantolegendbattle.asm"
-INCLUDE "audio/music/rby/surfingpikachu.asm"
-INCLUDE "audio/music/rby/lawrence.asm"
 INCLUDE "audio/music/custom/lugiassong.asm"
 
 
