@@ -52,6 +52,7 @@ BellchimeTrailPanUpScript:
 	applymovement PLAYER, BellchimeTrailPanUpMovementData
 	disappear PLAYER
 	pause 10
+	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0

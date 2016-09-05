@@ -53,6 +53,7 @@ BattleTowerOutsidePanUpScript1:
 	applymovement PLAYER, BattleTowerOutsidePanUpMovementData
 	disappear PLAYER
 	pause 10
+	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
@@ -66,6 +67,7 @@ BattleTowerOutsidePanUpScript2:
 	applymovement PLAYER, BattleTowerOutsidePanUpMovementData
 	disappear PLAYER
 	pause 10
+	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0

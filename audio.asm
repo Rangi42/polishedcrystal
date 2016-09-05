@@ -172,7 +172,7 @@ INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
 
-SECTION "Extra Songs 4", ROMX;, BANK[EXTRA_SONGS_4]
+SECTION "Extra Songs 4", ROMX
 
 INCLUDE "audio/music/titlescreen.asm"
 INCLUDE "audio/music/hgss/hoohbattle.asm"
