@@ -41,7 +41,6 @@
 * Show stat changes and then absolute values on level up
 * Brief beeping with low HP
 * Healing items activate at 1/3 HP, not 1/2 (edit HandleHPHealingItem)
-* Gold Berry heals 25% HP even in battle (edit ConsumeHeldItem)
 * Select reorders Pokémon in party menu
 * Send gift Pokémon to the PC if the party is full
 * More frequently successful Headbutting

@@ -364,6 +364,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Pokédex Area map glitches when you press right (thanks Mmmmmm).
 * Fix: Ellipses print too high during battle (thanks, comet).
 * Fix: Typo "your" for "you" (thanks, jpmac26).
+* Fix: Gold Berry heals 25% max HP when held.
 * Fix: Pink Bow powers up Fairy-type moves (thanks, Pokemaster).
 * Fix: X Special → X Spcl.Atk (thanks, Mmmmmm).
 * Fix: Acid lowers Sp.Def, not Defense (thanks, kide).

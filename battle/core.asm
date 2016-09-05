@@ -4375,6 +4375,16 @@ HandleHPHealingItem: ; 3dd2f
 	ld [Buffer2], a
 	ld a, [hl]
 	ld [Buffer1], a
+
+	ld a, [hBattleTurn]
+	and a
+	ld a, [EnemyMonItem]
+	jr z, .check_gold_berry
+	ld a, [BattleMonItem]
+.check_gold_berry
+	cp GOLD_BERRY
+	jr z, .handle_gold_berry
+
 	ld a, [de]
 	add c
 	ld [Buffer5], a
@@ -4384,6 +4394,13 @@ HandleHPHealingItem: ; 3dd2f
 	adc $0
 	ld [Buffer6], a
 	ld b, a
+	jr .finish
+
+.handle_gold_berry
+	push hl
+	call GoldBerryQuarterHP
+	pop hl
+.finish
 	ld a, [hld]
 	cp c
 	ld a, [hl]
@@ -4420,6 +4437,31 @@ UseOpponentItem:
 	ld hl, RecoveredUsingText
 	jp StdBattleTextBox
 ; 3ddc8
+
+GoldBerryQuarterHP:
+	ld a, [Buffer2]
+	ld b, a
+	ld a, [Buffer1]
+	ld c, a
+	srl b
+	rr c
+	srl b
+	rr c
+	ld a, b
+	or c
+	jr nz, .continue
+	ld c, 1
+.continue
+	ld a, [de]
+	add c
+	ld [Buffer5], a
+	ld c, a
+	dec de
+	ld a, [de]
+	adc b
+	ld [Buffer6], a
+	ld b, a
+	ret
 
 
 ItemRecoveryAnim: ; 3ddc8
