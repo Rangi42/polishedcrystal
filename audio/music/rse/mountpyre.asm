@@ -3,13 +3,13 @@
 ; http://pastebin.com/3iAgGV4u
 ; https://hax.iimarck.us/topic/6777/
 
-Music_MountPyreRSE: 
+Music_MountPyreRSE:
 	musicheader 4, 1, Music_MountPyreRSE_Ch1
 	musicheader 1, 2, Music_MountPyreRSE_Ch2
 	musicheader 1, 3, Music_MountPyreRSE_Ch3
 	musicheader 1, 4, Music_MountPyreRSE_Ch4
 
-Music_MountPyreRSE_Ch1: 
+Music_MountPyreRSE_Ch1:
 	tempo 212
 	volume $77
 	dutycycle 1
@@ -170,7 +170,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	notetype $c, $a3
 	note __, 14
 	loopchannel 0, Music_MountPyreRSE_Ch2_loop_main
-	
+
 Music_MountPyreRSE_Ch2_branch_1:
 	octave 3
 	intensity $a3
@@ -365,7 +365,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note __, 13
 	note __, 13
 	loopchannel 0, Music_MountPyreRSE_Ch3_loop_main
-	
+
 Music_MountPyreRSE_Ch4:
 	togglenoise $3
 	notetype $c
@@ -401,7 +401,7 @@ Music_MountPyreRSE_Ch4_loop_4:
 	note __, 8
 	note B_, 8
 	loopchannel 0, Music_MountPyreRSE_Ch4_loop_main
-	
+
 Music_MountPyreRSE_Ch4_branch_1:
 	stereopanning $f0
 	note G#, 2
@@ -414,7 +414,7 @@ Music_MountPyreRSE_Ch4_branch_1:
 	note G#, 2
 	note F#, 2
 	endchannel
-	
+
 Music_MountPyreRSE_Ch4_branch_2:
 	stereopanning $f0
 	note G#, 1

@@ -295,6 +295,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
    * Get Amulet Coin from Lyra in Olivine City.
    * Battle Lyra on Route 42 and get HM06.
    * Battle Lyra in New Bark Town before Victory Road.
+* Add: Revise the Silver Wing event.
 * Add: New music for the Goldenrod Game Corner and Lugia's and Ho-Oh's maps
 * Add: Shrine in Ecruteak City from Mateo's [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172).
 * Add: Battle with Valerie on Bellchime Trail after Suicune (reward: TM for DazzlinGleam).

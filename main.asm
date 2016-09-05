@@ -5714,10 +5714,6 @@ LoadOverworldFont:: ; 106594
 .bgfont
 INCBIN "gfx/misc/font_popup.2bpp"
 
-SECTION "bank42", ROMX, BANK[$42]
-
-; unused bank!
-
 SECTION "Intro Logo", ROMX, BANK[$42]
 
 IntroLogoGFX: ; 109407
@@ -5726,10 +5722,6 @@ INCBIN "gfx/intro/logo.2bpp.lz"
 SECTION "bank43", ROMX, BANK[$43]
 
 INCLUDE "engine/title.asm"
-
-SECTION "bank45", ROMX, BANK[$45]
-
-; unused bank!
 
 SECTION "bank46", ROMX, BANK[$46]
 
@@ -5742,10 +5734,6 @@ INCLUDE "engine/mobile_47.asm"
 SECTION "bank5B", ROMX ; $5B is now PICS_20
 
 INCLUDE "engine/link_trade.asm"
-
-SECTION "bank5C", ROMX, BANK[$5C]
-
-; unused bank!
 
 SECTION "bank5D", ROMX, BANK[$5D]
 
@@ -5762,10 +5750,6 @@ _UpdateBattleHUDs:
 	call SetHPPal
 	callba FinishBattleAnim
 	ret
-
-SECTION "bank5F", ROMX, BANK[$5F]
-
-; unused bank!
 
 SECTION "Common Text 1", ROMX, BANK[$6C]
 
@@ -6236,14 +6220,6 @@ INCLUDE "tilesets/data_10.asm"
 SECTION "bank7B", ROMX, BANK[$7B]
 
 INCLUDE "text/battle_tower.asm"
-
-SECTION "bank7C", ROMX, BANK[$7C]
-
-; unused bank!
-
-SECTION "bank7D", ROMX, BANK[$7D]
-
-; unused bank!
 
 SECTION "bank7E", ROMX, BANK[$7E]
 

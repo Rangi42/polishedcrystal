@@ -22,7 +22,7 @@ Route10North_MapScriptHeader:
 	dbw MAPCALLBACK_OBJECTS, .Zapdos
 
 .Trigger0:
-	priorityjump Route10NorthEncounterLawrenceScript
+	priorityjump Route10NorthLawrenceEncounter1Script
 	end
 
 .Trigger1:
@@ -44,12 +44,12 @@ Route10North_MapScriptHeader:
 	appear ROUTE10_ZAPDOS
 	return
 
-Route10NorthEncounterLawrenceScript:
+Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_PlayerStepDown
 	showemote EMOTE_SHOCK, ROUTE10_LAWRENCE, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach
+	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach1
 	spriteface PLAYER, RIGHT
 	playmusic MUSIC_LAWRENCE
 	opentext
@@ -106,7 +106,77 @@ Route10NorthEncounterLawrenceScript:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
+	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
 	dotrigger $1
+	special RestartMapMusic
+	end
+
+Route10NorthLawrenceEncounter2Script:
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_LAWRENCE
+	special RunCallback_04
+	checkcode VAR_FACING
+	if_equal UP, .up
+	if_equal DOWN, .down
+	if_equal LEFT, .left
+.right
+	moveperson ROUTE10_LAWRENCE, 7, 5
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 10, 5
+	appear ROUTE10_LAWRENCE
+	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
+	spriteface PLAYER, LEFT
+	jump .continue
+.up
+	moveperson ROUTE10_LAWRENCE, 8, 5
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 5
+	appear ROUTE10_LAWRENCE
+	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
+	spriteface ROUTE10_LAWRENCE, DOWN
+	jump .continue
+.down
+	moveperson ROUTE10_LAWRENCE, 8, 5
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 5
+	appear ROUTE10_LAWRENCE
+	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
+	spriteface ROUTE10_LAWRENCE, UP
+	jump .continue
+.left
+	moveperson ROUTE10_LAWRENCE, 9, 5
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 5
+	appear ROUTE10_LAWRENCE
+	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
+.continue
+	playmusic MUSIC_LAWRENCE
+	opentext
+	writetext Route10NorthLawrenceSpeechText
+	waitbutton
+	closetext
+	pause 15
+	appear ROUTE10_LAWRENCES_ZAPDOS
+	playsound SFX_BALL_POOF
+	spriteface ROUTE10_LAWRENCE, LEFT
+	waitsfx
+	pause 15
+	cry ZAPDOS
+	waitsfx
+	spriteface ROUTE10_LAWRENCE, DOWN
+	opentext
+	writetext Route10NorthLawrenceFlyText
+	waitbutton
+	closetext
+	playsound SFX_FLY
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear ROUTE10_LAWRENCE
+	disappear ROUTE10_LAWRENCES_ZAPDOS
+	waitsfx
+	pause 15
+	special Special_FadeInQuickly
+	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
+	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
+	clearevent EVENT_LAWRENCE_VICTORY_ROAD
 	special RestartMapMusic
 	end
 
@@ -124,6 +194,14 @@ Route10Zapdos:
 	setevent EVENT_ZAPDOS_GONE
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
+	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	iffalse .end
+	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES
+	iffalse .end
+	special SpecialBirdsCheck
+	iffalse .end
+	jump Route10NorthLawrenceEncounter2Script
+.end
 	end
 
 PowerPlantSign:
@@ -178,6 +256,57 @@ Route10NorthLawrenceFlyText:
 	line "Fly!"
 	done
 
+Route10NorthLawrenceSpeechText:
+	text "Lawrence: Hello"
+	line "again, <PLAYER>."
+
+	para "So you wanted that"
+	line "Zapdos after all."
+
+	para "I was starting"
+	line "to think you"
+
+	para "didn't care about"
+	line "the legends."
+
+	para "…What?! You caught"
+	line "all three birds?"
+	cont "Impossible."
+
+	para "Even I, with my"
+	line "knowledge and"
+
+	para "resources, have"
+	line "not found Moltres…"
+
+	para "Why have you"
+	line "succeeded where I"
+	cont "failed?"
+
+	para "Can you appreciate"
+	line "the majesty of the"
+	cont "winged mirages?"
+
+	para "Have you even"
+	line "heard of the"
+
+	para "guardian of the"
+	line "sea before?"
+
+	para "This is unaccept-"
+	line "able."
+
+	para "Meet me in Victory"
+	line "Road, the last"
+
+	para "known nest of"
+	line "Moltres."
+
+	para "I'll show you that"
+	line "I deserve to own"
+	cont "those Pokemon."
+	done
+
 PowerPlantSignText:
 	text "Kanto Power Plant"
 	done
@@ -186,7 +315,7 @@ Route10NorthMovementData_PlayerStepDown:
 	step_down
 	step_end
 
-Route10NorthMovementData_LawrenceApproach:
+Route10NorthMovementData_LawrenceApproach1:
 	step_left
 	step_left
 	step_end
@@ -196,7 +325,9 @@ Route10NorthMovementData_LawrenceShowZapdos:
 	step_right
 	step_right
 	step_right
+Route10NorthMovementData_LawrenceApproach2UpDown:
 	step_right
+Route10NorthMovementData_LawrenceApproach2LeftRight:
 	step_right
 	step_right
 	step_right

@@ -19,8 +19,6 @@ VictoryRoad_MapScriptHeader:
 	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
-	maptrigger .Trigger2
-	maptrigger .Trigger3
 
 .MapCallbacks:
 	db 0
@@ -29,12 +27,6 @@ VictoryRoad_MapScriptHeader:
 	end
 
 .Trigger1:
-	end
-
-.Trigger2:
-	end
-
-.Trigger3:
 	end
 
 UnknownScript_0x74492:
@@ -112,60 +104,11 @@ UnknownScript_0x7451f:
 	closetext
 	end
 
-LawrenceUpScript:
-	special SpecialBirdsCheck
-	iffalse .End
-	spriteface PLAYER, LEFT
-	showemote EMOTE_SHOCK, PLAYER, 15
+VictoryRoadLawrenceScript:
 	special Special_FadeOutMusic
 	pause 15
-	disappear VICTORYROAD_LAWRENCE
-	appear VICTORYROAD_LAWRENCE
-	applymovement VICTORYROAD_LAWRENCE, LawrenceUpApproachMovementData
-	scall BattleLawrenceScript
-	applymovement VICTORYROAD_LAWRENCE, LawrenceUpPauseMovementData
-	opentext
-	writetext LawrenceGoodbyeText
-	waitbutton
-	closetext
-	applymovement VICTORYROAD_LAWRENCE, LawrenceUpLeaveMovementData
-	playsound SFX_EXIT_BUILDING
-	disappear VICTORYROAD_LAWRENCE
-	dotrigger $2
-	waitsfx
-	;special RestartMapMusic
-	playmusic MUSIC_VICTORY_ROAD
-.End
-	end
-
-LawrenceLeftScript:
-	special SpecialBirdsCheck
-	iffalse .End
-	spriteface PLAYER, UP
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	disappear VICTORYROAD_LAWRENCE
-	appear VICTORYROAD_LAWRENCE
-	applymovement VICTORYROAD_LAWRENCE, LawrenceLeftApproachMovementData
-	scall BattleLawrenceScript
-	applymovement VICTORYROAD_LAWRENCE, LawrenceLeftPauseMovementData
-	opentext
-	writetext LawrenceGoodbyeText
-	waitbutton
-	closetext
-	applymovement VICTORYROAD_LAWRENCE, LawrenceLeftLeaveMovementData
-	playsound SFX_EXIT_BUILDING
-	disappear VICTORYROAD_LAWRENCE
-	dotrigger $2
-	waitsfx
-	;special RestartMapMusic
-	playmusic MUSIC_VICTORY_ROAD
-.End
-	end
-
-BattleLawrenceScript:
 	playmusic MUSIC_LAWRENCE
+	faceplayer
 	opentext
 	writetext LawrenceSeenText
 	waitbutton
@@ -184,55 +127,42 @@ BattleLawrenceScript:
 	writetext LawrenceSilverWingText
 	waitbutton
 	closetext
+	checkcode VAR_FACING
+	if_equal UP, .up
+	if_equal DOWN, .down
+	if_equal LEFT, .left
+.right
+	spriteface VICTORYROAD_LAWRENCE, RIGHT
+	jump .continue
+.up
+	spriteface VICTORYROAD_LAWRENCE, UP
+	jump .continue
+.down
+	spriteface VICTORYROAD_LAWRENCE, DOWN
+	jump .continue
+.left
+	spriteface VICTORYROAD_LAWRENCE, LEFT
+.continue
+	pause 40
+	faceplayer
+	opentext
+	writetext LawrenceGoodbyeText
+	waitbutton
+	closetext
+	spriteface VICTORYROAD_LAWRENCE, UP
+	opentext
+	writetext VictoryRoadLawrenceEscapeRopeText
+	pause 15
+	closetext
+	playsound SFX_WARP_TO
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear VICTORYROAD_LAWRENCE
+	waitsfx
+	special Special_FadeInQuickly
+	setevent EVENT_LAWRENCE_VICTORY_ROAD
+	playmapmusic
 	end
-
-LawrenceUpApproachMovementData:
-	step_down
-	step_down
-	step_down
-	step_down
-	turn_head_right
-	step_right
-	step_end
-
-LawrenceLeftApproachMovementData:
-	step_down
-	step_down
-	step_down
-	step_down
-	step_right
-	turn_head_down
-	step_end
-
-LawrenceUpPauseMovementData:
-	turn_head_left
-	step_sleep_8
-	step_sleep_8
-	step_sleep_8
-	step_sleep_8
-	step_sleep_8
-	step_sleep_8
-	turn_head_right
-	step_end
-
-LawrenceLeftPauseMovementData:
-	turn_head_up
-	step_sleep_8
-	step_sleep_8
-	turn_head_down
-	step_end
-
-LawrenceUpLeaveMovementData:
-	step_down
-	step_right
-	step_down
-	step_end
-
-LawrenceLeftLeaveMovementData:
-	step_right
-	step_down
-	step_down
-	step_end
 
 TrainerVeteranmMatt:
 	trainer EVENT_BEAT_VETERANM_MATT, VETERANM, MATT, VeteranmMattSeenText, VeteranmMattBeatenText, 0, VeteranmMattScript
@@ -424,22 +354,12 @@ UnknownText_0x747aa:
 	done
 
 LawrenceSeenText:
-	text "Lawrence: I don't"
-	line "understand."
+	text "Lawrence: I sought"
+	line "across many"
 
-	para "Where is the"
-	line "legendary bird of"
-	cont "fire?"
-
-	para "I looked all over"
-	line "Mt.Ember, Fire"
-
-	para "Island, now"
-	line "Victory Road…"
-
-	para "But Moltres is"
-	line "nowhere to be"
-	cont "seen."
+	para "regions to catch"
+	line "Articuno, Zapdos,"
+	cont "and Moltres."
 
 	para "Without the"
 	line "complete set, I"
@@ -448,27 +368,8 @@ LawrenceSeenText:
 	line "guardian of the"
 	cont "sea…"
 
-	para "What?!"
-
-	para "You encountered"
-	line "the legendary"
-	cont "birds? Before me?"
-
-	para "Can you appreciate"
-	line "the majesty of"
-	cont "legendary #mon?"
-
-	para "Have you even"
-	line "heard of the"
-
-	para "guardian of the"
-	line "sea before?"
-
-	para "This is unaccept-"
-	line "able."
-
 	para "You're going to"
-	line"help me complete"
+	line "help me complete"
 	cont "my collection!"
 	done
 
@@ -498,7 +399,7 @@ LawrenceAfterText:
 	done
 
 LawrenceSilverWingText:
-	text "That silver wing"
+	text "That Silver Wing"
 	line "feather comes from"
 
 	para "the guardian of"
@@ -532,6 +433,11 @@ LawrenceGoodbyeText:
 	line "collection anew."
 
 	para "Farewell."
+	done
+
+VictoryRoadLawrenceEscapeRopeText:
+	text "Lawrence used an"
+	line "Escape Rope!"
 	done
 
 VeteranmMattSeenText:
@@ -625,11 +531,9 @@ VictoryRoad_MapEventHeader:
 	warp_def $5, $d, 3, ROUTE_23
 
 .XYTriggers:
-	db 4
+	db 2
 	xy_trigger 0, $8, $c, $0, UnknownScript_0x74492, $0, $0
 	xy_trigger 0, $8, $d, $0, UnknownScript_0x744b5, $0, $0
-	xy_trigger 1, $42, $9, $0, LawrenceUpScript, $0, $0
-	xy_trigger 1, $43, $8, $0, LawrenceLeftScript, $0, $0
 
 .Signposts:
 	db 2
@@ -639,7 +543,7 @@ VictoryRoad_MapEventHeader:
 .PersonEvents:
 	db 12
 	person_event SPRITE_SILVER, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
-	person_event SPRITE_LAWRENCE, 62, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	person_event SPRITE_LAWRENCE, 15, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VictoryRoadLawrenceScript, EVENT_LAWRENCE_VICTORY_ROAD
 	person_event SPRITE_VETERAN_M, 52, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmMatt, -1
 	person_event SPRITE_VETERAN_F, 35, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
 	person_event SPRITE_VETERAN_F, 27, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerVeteranfKotori, -1

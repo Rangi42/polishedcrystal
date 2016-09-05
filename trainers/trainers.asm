@@ -679,10 +679,10 @@ PryceGroup:
 
 	; party
 
-	db 37, DEWGONG, NO_ITEM
+	db 37, DEWGONG, MINT_BERRY
 		db WATERFALL
 		db REST
-		db SLEEP_TALK
+		db RAIN_DANCE
 		db AURORA_BEAM
 
 	db 36, PILOSWINE, NO_ITEM
@@ -2061,11 +2061,11 @@ BlueGroup:
 		db STONE_EDGE
 		db THUNDERPUNCH
 
-	db 67, RHYPERIOR, SOFT_SAND
-		db FURY_ATTACK
-		db SANDSTORM
+	db 67, KABUTOPS, HARD_STONE
+		db SLASH
+		db SURF
 		db STONE_EDGE
-		db EARTHQUAKE
+		db GIGA_DRAIN
 
 	db 70, BLASTOISE, MYSTIC_WATER
 		db SURF
@@ -2163,23 +2163,23 @@ RedGroup:
 		db SLEEP_TALK
 		db DOUBLE_EDGE
 
-	db 87, VENUSAUR, EXPERT_BELT
-		db SEED_BOMB
-		db SLUDGE_BOMB
-		db MORNING_SUN
-		db SLEEP_POWDER
+	db 87, OMASTAR, EXPERT_BELT
+		db SURF
+		db ANCIENTPOWER
+		db EARTH_POWER
+		db ICE_BEAM
 
-	db 87, CHARIZARD, MUSCLE_BAND
+	db 88, CHARIZARD, MUSCLE_BAND
 		db FLARE_BLITZ
 		db SWORDS_DANCE
 		db EARTHQUAKE
 		db WING_ATTACK
 
-	db 87, BLASTOISE, MYSTIC_WATER
-		db SURF
-		db BODY_SLAM
-		db BLIZZARD
-		db ROLLOUT
+	db 87, GYARADOS, QUICK_CLAW
+		db DRAGON_DANCE
+		db WATERFALL
+		db EARTHQUAKE
+		db CRUNCH
 
 	db $ff ; end
 
@@ -2221,11 +2221,11 @@ LeafGroup:
 		db CALM_MIND
 		db HYPER_VOICE
 
-	db 98, DRAGONITE, MUSCLE_BAND
-		db DRAGON_DANCE
-		db OUTRAGE
+	db 98, AERODACTYL, MUSCLE_BAND
+		db CRUNCH
+		db DRAGON_CLAW
 		db EARTHQUAKE
-		db BODY_SLAM
+		db ROCK_SLIDE
 
 	db 99, MEW, EXPERT_BELT
 		db NASTY_PLOT
@@ -8396,8 +8396,8 @@ BreederGroup:
 	db 2 ; item
 
 	; party
-	db 14, ELEKID, EVIOLITE
 	db 14, MAGBY, EVIOLITE
+	db 14, ELEKID, EVIOLITE
 
 	db $ff ; end
 
@@ -9331,7 +9331,7 @@ BoarderGroup:
 	; party
 	db 33, SEEL
 	db 35, DEWGONG
-	db 33, SEEL
+	db 33, SNEASEL
 
 	db $ff ; end
 
@@ -9433,7 +9433,7 @@ SkierGroup:
 	db 0 ; normal
 
 	; party
-	db 36, DEWGONG
+	db 36, PILOSWINE
 
 	db $ff ; end
 

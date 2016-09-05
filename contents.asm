@@ -70,6 +70,7 @@ PICS_17                   EQU $58
 PICS_18                   EQU $59
 PICS_19                   EQU $5A
 PICS_20                   EQU $5B
+PICS_21                   EQU $5C
 
 
 ; maps.o
@@ -105,6 +106,9 @@ MAP_SCRIPTS_22            EQU $69
 MAP_SCRIPTS_23            EQU $6A
 MAP_SCRIPTS_24            EQU $6B
 MAP_SCRIPTS_25            EQU $6C
+MAP_SCRIPTS_26            EQU $45
+MAP_SCRIPTS_27            EQU $5F
+MAP_SCRIPTS_28            EQU $7C
 
 
 ; audio.o
@@ -119,6 +123,8 @@ SONGS_5                   EQU $5E
 
 EXTRA_SONGS_1             EQU $7
 EXTRA_SONGS_2             EQU $33
+EXTRA_SONGS_3             EQU $7D
+;EXTRA_SONGS_4             EQU ?
 
 SOUND_EFFECTS             EQU $3C
 CRYSTAL_SOUND_EFFECTS     EQU $5E

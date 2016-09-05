@@ -155,7 +155,7 @@ SECTION "Extra Songs 2", ROMX, BANK[EXTRA_SONGS_2]
 INCLUDE "audio/music/postcredits.asm"
 
 
-SECTION "Extra Songs 3", ROMX
+SECTION "Extra Songs 3", ROMX, BANK[EXTRA_SONGS_3]
 
 INCLUDE "audio/music/hgss/route47.asm"
 INCLUDE "audio/music/hgss/mart.asm"
@@ -173,7 +173,7 @@ INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
 
-SECTION "Extra Songs 4", ROMX
+SECTION "Extra Songs 4", ROMX;, BANK[EXTRA_SONGS_4]
 
 INCLUDE "audio/music/titlescreen.asm"
 INCLUDE "audio/music/hgss/hoohbattle.asm"

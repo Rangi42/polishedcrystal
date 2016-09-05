@@ -3630,10 +3630,10 @@ GlaceonEvosAttacks:
 	db 1, TACKLE
 	db 1, TAIL_WHIP
 	db 5, SAND_ATTACK
-	db 9, ICY_WIND
+	db 9, POWDER_SNOW ; Icy Wind → new move
 	db 13, QUICK_ATTACK
 	db 17, BITE
-	db 20, RECOVER ; Ice Fang → new move
+	db 20, ICY_WIND ; Ice Fang → Icy Wind
 	db 25, ICICLE_CRASH ; Ice Shard → new move
 	db 29, BARRIER
 	db 33, MIRROR_COAT

@@ -563,7 +563,7 @@ INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
 
 
-SECTION "Map Scripts 26", ROMX, BANK[$75]
+SECTION "Map Scripts 26", ROMX, BANK[MAP_SCRIPTS_26]
 
 INCLUDE "maps/YellowForestGate.asm"
 INCLUDE "maps/YellowForest.asm"
@@ -575,12 +575,16 @@ INCLUDE "maps/EmbeddedTower.asm"
 INCLUDE "maps/Route45.asm"
 
 
-SECTION "Map Scripts 27", ROMX
+SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
 
 INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
+
+
+SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
+
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/SeafoamIslandsB4F.asm"

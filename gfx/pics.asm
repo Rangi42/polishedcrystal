@@ -716,7 +716,7 @@ PorygonZFrontpic:    INCBIN "gfx/pics/porygon_z/front.2bpp.lz"
 PorygonZBackpic:     INCBIN "gfx/pics/porygon_z/back.2bpp.lz"
 
 
-SECTION "Pics 20", ROMX
+SECTION "Pics 20", ROMX, BANK[PICS_20]
 
 MediumPic:           INCBIN "gfx/trainers/medium.2bpp.lz"
 FisherPic:           INCBIN "gfx/trainers/fisher.2bpp.lz"
@@ -746,7 +746,7 @@ KabutopsFossilPic:   INCBIN "gfx/trainers/kabutopsfossil.2bpp.lz"
 AerodactylFossilPic: INCBIN "gfx/trainers/aerodactylfossil.2bpp.lz"
 
 
-SECTION "Pics 21", ROMX
+SECTION "Pics 21", ROMX, BANK[PICS_21]
 
 RhyperiorFrontpic:   INCBIN "gfx/pics/rhyperior/front.2bpp.lz"
 RhyperiorBackpic:    INCBIN "gfx/pics/rhyperior/back.2bpp.lz"
