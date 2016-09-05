@@ -46,6 +46,7 @@
 * More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
+* Add genders to Wonder Trade OTs
 
 
 ## Aesthetic updates
@@ -94,3 +95,4 @@
 * Press Start to auto-sort items
 * Longer player and rival names
 * Sometimes wild Pokémon know an egg move
+* Use a proper menu for resurrecting Fossils

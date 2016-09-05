@@ -453,11 +453,19 @@ UnknownText_0x62795:
 	done
 
 UnknownText_0x627ee:
-	text "TODO"
+	text "Network traffic"
+	line "from Wonder Trades"
+
+	para "is streaming by"
+	line "on the screen."
 	done
 
 UnknownText_0x62989:
-	text "TODO"
+	text "There's a screen-"
+	line "saver endlessly"
+
+	para "running through"
+	line "a 3D maze."
 	done
 
 UnknownText_0x62b26:
