@@ -8,14 +8,15 @@
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
 * TMs refresh PP
-* Lance uses X Spcl. Atk (a more general AI bug?)
+* Some trainers use X Spcl. Atk
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Fix delay before last text box when Wonder Trading (is this still there?)
-* Headbutt animation looks weird (wrong tile ID?)
+* Headbutt overworld animation looks weird (wrong tile ID?)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
-* Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313)?
+* Pokémon overuse Baton Pass (still?)
+* Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313) (still?)
 
 
 ## Battle mechanics
@@ -39,7 +40,6 @@
 
 * Catch rate formula from Gen III
 * Show stat changes and then absolute values on level up
-* Brief beeping with low HP
 * Healing items activate at 1/3 HP, not 1/2 (edit HandleHPHealingItem)
 * Select reorders Pokémon in party menu
 * Send gift Pokémon to the PC if the party is full
@@ -53,13 +53,19 @@
 * Animate new Pokémon sprites
 * Design custom animations for new moves
 * Show Pokémon portraits when using field moves
-* Color party/day-care sprites by species
+* Color party and day-care sprites by species
 * Special sprites for Pikachu that know Surf or Fly
 * Yellow Pikachu Surfing music
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
 * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches
-* Merge gray and roof colors on Faraway Island to make room for another green
+* Add boars to Goldenrod Harbor
+* Merge gray and roof colors on Faraway Island to make room for grass-green
+* Edit SPRITE_DRAGON with Dragonite's side view
+* Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
+* Make overworld sprites darker at night?
+* Briefly beep to warn of low HP
+* Custom overworld sprites for Rocket Executives
 
 
 ## New content
@@ -70,6 +76,9 @@
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
+* Battle with Veteran/Hacker Rangi in Celadon Mansion once a day
+* Replace some of {Meditate, Conversion2} with {Hail, Energy Ball, Sucker Punch}?
+* Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 
 
 ## New features
@@ -80,6 +89,7 @@
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
+* Separate radio channels for March and Lullaby, available every day
 * More Bag pockets (split Items into Items, Medicine, and Berries)
 * Press Start to auto-sort items
 * Longer player and rival names
