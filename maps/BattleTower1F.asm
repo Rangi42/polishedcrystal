@@ -1,6 +1,6 @@
 const_value set 2
 	const BATTLETOWER1F_RECEPTIONIST
-	const BATTLETOWER1F_YOUNGSTER
+	const BATTLETOWER1F_DRAGON_TAMER
 	const BATTLETOWER1F_COOLTRAINER_F
 	const BATTLETOWER1F_BUG_CATCHER
 	const BATTLETOWER1F_GRANNY
@@ -167,13 +167,43 @@ BattleTower_LeftWithoutSaving:
 	waitbutton
 	jump Script_BattleTowerHopeToServeYouAgain
 
-YoungsterScript_0x9e55d:
+BattleTowerDragonTamerScript:
 	faceplayer
 	opentext
-	writetext Text_BattleTowerYoungster
+	checkevent EVENT_LISTENED_TO_WATER_PULSE_INTRO
+	iftrue BattleTowerTutorWaterPulseScript
+	writetext BattleTowerDragonTamerText
+	waitbutton
+	setevent EVENT_LISTENED_TO_WATER_PULSE_INTRO
+BattleTowerTutorWaterPulseScript:
+	writetext Text_BattleTowerTutorWaterPulse
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_BattleTowerTutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte WATER_PULSE
+	writetext Text_BattleTowerTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_BattleTowerTutorRefused
 	waitbutton
 	closetext
-	spriteface BATTLETOWER1F_YOUNGSTER, RIGHT
+	end
+
+.NoSilverLeaf
+	writetext Text_BattleTowerTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_BattleTowerTutorTaught
+	waitbutton
+	closetext
 	end
 
 CooltrainerFScript_0x9e568:
@@ -405,13 +435,49 @@ Text_MayNotEnterABattleRoomUnderL70: ; 0x9f217
 	text "."
 	done
 
-Text_BattleTowerYoungster: ; 0x9f264
-	text "Destroyed by the"
-	line "first opponent in"
+BattleTowerDragonTamerText:
+	text "I'm going to beat"
+	line "the Tower Tycoon"
 
-	para "no time at all…"
-	line "I'm no good…"
+	para "with my Seadra's"
+	line "awesome Water"
+	cont "Pulse attack!"
 	done
+
+Text_BattleTowerTutorWaterPulse:
+	text "I'll teach your"
+	line "#mon how to"
+
+	para "use Water Pulse"
+	line "for a Silver Leaf."
+	done
+
+Text_BattleTowerTutorNoSilverLeaf:
+	text "You don't have a"
+	line "Silver Leaf…"
+	done
+
+Text_BattleTowerTutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Water Pulse?"
+	done
+
+Text_BattleTowerTutorRefused:
+	text "Talk to me if you"
+	line "change your mind!"
+	done
+
+Text_BattleTowerTutorClear:
+	text ""
+	done
+
+Text_BattleTowerTutorTaught:
+	text "Now your #mon"
+	line "can use Water"
+	cont "Pulse too!"
+	done
+
 
 Text_BattleTowerCooltrainerF: ; 0x9f2a4
 	text "I got five Carbos"
@@ -466,7 +532,7 @@ BattleTower1F_MapEventHeader:
 .PersonEvents:
 	db 5
 	person_event SPRITE_RECEPTIONIST, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
-	person_event SPRITE_YOUNGSTER, 9, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x9e55d, -1
-	person_event SPRITE_COOLTRAINER_F, 9, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9e568, -1
+	person_event SPRITE_DRAGON_TAMER, 8, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
+	person_event SPRITE_COOLTRAINER_F, 9, 13, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9e568, -1
 	person_event SPRITE_BUG_CATCHER, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9e56b, -1
 	person_event SPRITE_GRANNY, 3, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x9e56e, -1

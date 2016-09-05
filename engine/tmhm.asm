@@ -121,7 +121,7 @@ TMHMMoves: ; 1167a
 	db ROCK_SMASH   ; HM08 (Route 36)
 	db AQUA_TAIL    ; MT01 (Route 4)
 	db COUNTER      ; MT02 (Celadon Dept. Store)
-	db DEFENSE_CURL ; MT03 (TODO)
+	db DEFENSE_CURL ; MT03 (Mt. Mortar)
 	db DOUBLE_EDGE  ; MT04 (Safari Zone)
 	db DREAM_EATER  ; MT05 (Viridian City)
 	db EARTH_POWER  ; MT06 (Cherrygrove Bay)
@@ -134,7 +134,7 @@ TMHMMoves: ; 1167a
 	db SEISMIC_TOSS ; MT13 (Pewter City)
 	db SLEEP_TALK   ; MT14 (Route 31)
 	db THUNDERPUNCH ; MT15 (Goldenrod City)
-	db WATER_PULSE  ; MT16 (TODO)
+	db WATER_PULSE  ; MT16 (Battle Tower)
 	db ZAP_CANNON   ; MT17 (Power Plant)
 	db ZEN_HEADBUTT ; MT18 (Saffron City)
 
