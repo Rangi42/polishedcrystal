@@ -1553,7 +1553,6 @@ endr
 	db TRIPLE_KICK
 	db FLAME_WHEEL
 	db AEROBLAST
-	db POWDER_SNOW
 	db $ff
 ; 38ca4
 
@@ -2530,18 +2529,18 @@ AI_Smart_RainDance: ; 390cb
 ; 390e7
 
 RainDanceMoves: ; 390e7
-	db WATER_GUN
-	db HYDRO_PUMP
-	db SURF
-	db BUBBLE_BEAM
-	db THUNDER
-	db WATERFALL
-	db BUBBLE
-	db CRABHAMMER
-	db OCTAZOOKA
-	db WHIRLPOOL
 	db AQUA_TAIL
+	db BUBBLE_BEAM
+	db CRABHAMMER
+	db HYDRO_PUMP
+	db OCTAZOOKA
 	db SCALD
+	db SURF
+	db THUNDER
+	db WATER_GUN
+	db WATER_PULSE
+	db WATERFALL
+	db WHIRLPOOL
 	db $ff
 ; 390f3
 

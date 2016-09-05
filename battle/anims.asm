@@ -3,7 +3,7 @@ BattleAnimations::
 	dw BattleAnim_Pound
 	dw BattleAnim_KarateChop
 	dw BattleAnim_DoubleSlap
-	dw BattleAnim_CometPunch
+	dw BattleAnim_AerialAce
 	dw BattleAnim_DragonClaw
 	dw BattleAnim_PayDay
 	dw BattleAnim_FirePunch
@@ -144,7 +144,7 @@ BattleAnimations::
 	dw BattleAnim_DrainKiss
 	dw BattleAnim_SkyAttack
 	dw BattleAnim_Transform
-	dw BattleAnim_Bubble
+	dw BattleAnim_WaterPulse
 	dw BattleAnim_DizzyPunch
 	dw BattleAnim_Spore
 	dw BattleAnim_Flash
@@ -180,7 +180,7 @@ BattleAnimations::
 	dw BattleAnim_SeedBomb
 	dw BattleAnim_Reversal
 	dw BattleAnim_Astonish
-	dw BattleAnim_PowderSnow
+	dw BattleAnim_IceShard
 	dw BattleAnim_Protect
 	dw BattleAnim_MachPunch
 	dw BattleAnim_ScaryFace
@@ -746,24 +746,6 @@ BattleAnim_DoubleSlap_branch_c961b:
 	anim_wait 8
 	anim_ret
 
-BattleAnim_CometPunch:
-	anim_1gfx ANIM_GFX_HIT
-	anim_jumpif $1, BattleAnim_CometPunch_branch_c9641
-	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_06, -14, 0,   6, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_01, -14, 0,   6, 0, $0
-	anim_wait 8
-	anim_ret
-
-BattleAnim_CometPunch_branch_c9641:
-	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_06,  15, 0,   8, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_01,  15, 0,   8, 0, $0
-	anim_wait 8
-	anim_ret
-
 BattleAnim_Stomp:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_STOMP
@@ -1031,7 +1013,8 @@ BattleAnim_Blizzard:
 	anim_wait 24
 	anim_ret
 
-BattleAnim_Bubble:
+BattleAnim_WaterPulse:
+; TODO: write an original animation
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_sound 32, 2, SFX_WATER_GUN
 	anim_obj ANIM_OBJ_21,   8, 0,  11, 4, $c1
@@ -3221,7 +3204,8 @@ BattleAnim_Spite: ; removed
 	anim_wait 96
 	anim_ret
 
-BattleAnim_PowderSnow:
+BattleAnim_IceShard:
+; TODO: write an original animation
 	anim_1gfx ANIM_GFX_ICE
 .loop
 	anim_sound 6, 2, SFX_SHINE
@@ -3614,6 +3598,7 @@ BattleAnim_Rollout:
 	anim_ret
 
 BattleAnim_FalseSwipe:
+BattleAnim_AerialAce: ; TODO: design custom animation for Aerial Ace
 	anim_2gfx ANIM_GFX_SHINE, ANIM_GFX_CUT
 	anim_bgeffect ANIM_BG_07, $0, $0, $0
 	anim_sound 0, 1, SFX_CUT
@@ -4897,4 +4882,22 @@ BattleAnim_Synthesis: ; removed
 
 BattleAnim_Synthesis_branch_cb77a:
 	anim_call BattleAnim_Synthesis_branch_cbc80
+	anim_ret
+
+BattleAnim_CometPunch: ; removed
+	anim_1gfx ANIM_GFX_HIT
+	anim_jumpif $1, BattleAnim_CometPunch_branch_c9641
+	anim_sound 0, 1, SFX_COMET_PUNCH
+	anim_obj ANIM_OBJ_06, -14, 0,   6, 0, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_01, -14, 0,   6, 0, $0
+	anim_wait 8
+	anim_ret
+
+BattleAnim_CometPunch_branch_c9641:
+	anim_sound 0, 1, SFX_COMET_PUNCH
+	anim_obj ANIM_OBJ_06,  15, 0,   8, 0, $0
+	anim_wait 6
+	anim_obj ANIM_OBJ_01,  15, 0,   8, 0, $0
+	anim_wait 8
 	anim_ret

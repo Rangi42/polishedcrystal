@@ -248,7 +248,6 @@ BellsproutEggMoves:
 
 TentacoolEggMoves:
 	db AURORA_BEAM
-	db BUBBLE
 	db CONFUSE_RAY
 	db HAZE
 	db MIRROR_COAT

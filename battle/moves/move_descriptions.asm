@@ -2,7 +2,7 @@
 	dw PoundDescription
 	dw KarateChopDescription
 	dw DoubleSlapDescription
-	dw CometPunchDescription
+	dw AerialAceDescription
 	dw DragonClawDescription
 	dw PayDayDescription
 	dw FirePunchDescription
@@ -143,7 +143,7 @@
 	dw DrainKissDescription
 	dw SkyAttackDescription
 	dw TransformDescription
-	dw BubbleDescription
+	dw WaterPulseDescription
 	dw DizzyPunchDescription
 	dw SporeDescription
 	dw FlashDescription
@@ -179,7 +179,7 @@
 	dw SeedBombDescription
 	dw ReversalDescription
 	dw AstonishDescription
-	dw PowderSnowDescription
+	dw IceShardDescription
 	dw ProtectDescription
 	dw MachPunchDescription
 	dw ScaryFaceDescription
@@ -277,6 +277,7 @@ StoneEdgeDescription:
 SwiftDescription:
 FeintAttackDescription:
 DisarmVoiceDescription:
+AerialAceDescription:
 	db   "An attack that"
 	next "never misses.@"
 
@@ -306,7 +307,6 @@ RockSmashDescription:
 	next "lower Defense.@"
 
 BubbleBeamDescription:
-BubbleDescription:
 	db   "An attack that may"
 	next "lower Speed.@"
 
@@ -349,7 +349,6 @@ SparkDescription:
 	db   "An attack that may"
 	next "cause paralysis.@"
 
-PowderSnowDescription:
 IceBeamDescription:
 BlizzardDescription:
 	db   "An attack that may"
@@ -358,6 +357,7 @@ BlizzardDescription:
 PsybeamDescription:
 ConfusionDescription:
 DizzyPunchDescription:
+WaterPulseDescription:
 HurricaneDescription:
 	db   "An attack that may"
 	next "confuse the foe.@"
@@ -518,10 +518,6 @@ DigDescription:
 
 DoubleSlapDescription:
 	db   "Repeatedly slaps"
-	next "2-5 times.@"
-
-CometPunchDescription:
-	db   "Repeatedly punches"
 	next "2-5 times.@"
 
 FuryAttackDescription:
@@ -704,8 +700,15 @@ EarthquakeDescription:
 	next "vs. flying foes.@"
 
 AvalancheDescription:
-	db   "Damage doubles if"
-	next "user is hit first.@"
+; TODO: implement Avalanche effect
+;	db   "Damage doubles if"
+;	next "user is hit first.@"
+	db   "Pelt the foe with"
+	next "ice and rocks.@"
+
+IceShardDescription:
+	db   "Hurls icy shards."
+	next "Always goes first."
 
 ToxicDescription:
 	db   "A Poison move with"

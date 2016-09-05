@@ -243,7 +243,7 @@
 	add_tm SANDSTORM    ; $da
 	add_tm FIRE_BLAST   ; $db
 	add_tm SWIFT        ; $dc
-	add_tm DEFENSE_CURL ; $dd
+	add_tm AERIAL_ACE   ; $dd
 	add_tm STONE_EDGE   ; $de
 	add_tm AVALANCHE    ; $df
 	add_tm WILD_CHARGE  ; $e0
@@ -285,6 +285,7 @@ NUM_HMS = const_value - HM01
 ; to be enumerated after TMs and HMs for learnset compatibility.
 	add_mt AQUA_TAIL
 	add_mt COUNTER
+	add_mt DEFENSE_CURL
 	add_mt DOUBLE_EDGE
 	add_mt DREAM_EATER
 	add_mt EARTH_POWER
@@ -297,6 +298,7 @@ NUM_HMS = const_value - HM01
 	add_mt SEISMIC_TOSS
 	add_mt SLEEP_TALK
 	add_mt THUNDERPUNCH
+	add_mt WATER_PULSE
 	add_mt ZAP_CANNON
 	add_mt ZEN_HEADBUTT
 

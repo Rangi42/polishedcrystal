@@ -4,7 +4,7 @@
 	const POUND        ; $01
 	const KARATE_CHOP  ; $02
 	const DOUBLE_SLAP  ; $03
-	const COMET_PUNCH  ; $04
+	const AERIAL_ACE   ; $04
 	const DRAGON_CLAW  ; $05
 	const PAY_DAY      ; $06
 	const FIRE_PUNCH   ; $07
@@ -145,7 +145,7 @@
 	const DRAIN_KISS   ; $8e
 	const SKY_ATTACK   ; $8f
 	const TRANSFORM    ; $90
-	const BUBBLE       ; $91
+	const WATER_PULSE  ; $91
 	const DIZZY_PUNCH  ; $92
 	const SPORE        ; $93
 	const FLASH        ; $94
@@ -181,7 +181,7 @@
 	const SEED_BOMB    ; $b2
 	const REVERSAL     ; $b3
 	const ASTONISH     ; $b4
-	const POWDER_SNOW  ; $b5
+	const ICE_SHARD    ; $b5
 	const PROTECT      ; $b6
 	const MACH_PUNCH   ; $b7
 	const SCARY_FACE   ; $b8

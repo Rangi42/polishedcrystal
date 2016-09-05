@@ -5788,7 +5788,7 @@ GruntFGroup:
 	db 28, QWILFISH
 		db DEFENSE_CURL
 		db MINIMIZE
-		db BUBBLE
+		db WATER_GUN
 		db ROLLOUT
 
 	db 28, GLOOM
@@ -8551,7 +8551,7 @@ SailorGroup:
 	; party
 
 	db 18, KRABBY
-		db BUBBLE
+		db WATER_GUN
 		db LEER
 		db SCRATCH
 		db HARDEN
@@ -8988,16 +8988,16 @@ SwimmerFGroup:
 	; party
 
 	db 21, HORSEA
-		db BUBBLE
+		db WATER_GUN
 		db SMOKESCREEN
 		db LEER
-		db WATER_GUN
+		db BUBBLE_BEAM
 
 	db 21, HORSEA
 		db DRAGON_RAGE
 		db SMOKESCREEN
 		db LEER
-		db WATER_GUN
+		db BUBBLE_BEAM
 
 	db $ff ; end
 
@@ -9551,7 +9551,7 @@ BlackbeltGroup:
 	; party
 
 	db 27, HITMONCHAN
-		db COMET_PUNCH
+		db AERIAL_ACE
 		db THUNDERPUNCH
 		db ICE_PUNCH
 		db FIRE_PUNCH

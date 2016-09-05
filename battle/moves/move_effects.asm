@@ -1,4 +1,5 @@
 NormalHit:
+AerialAce:
 Aeroblast:
 AquaTail:
 Avalanche:
@@ -17,6 +18,7 @@ HiJumpKick:
 HornAttack:
 HydroPump:
 HyperVoice:
+IceShard:
 KarateChop:
 MachPunch:
 Megahorn:
@@ -288,7 +290,6 @@ FreezeHit:
 IcePunch:
 IceBeam:
 Blizzard:
-PowderSnow:
 	checkobedience
 	usedmovetext
 	doturn
@@ -314,6 +315,7 @@ Confusion:
 DizzyPunch:
 Psybeam:
 Dynamicpunch:
+WaterPulse:
 Hurricane:
 	checkobedience
 	usedmovetext
@@ -453,7 +455,6 @@ RockSmash:
 	endmove
 
 SpeedDownHit:
-Bubble:
 IcyWind:
 BubbleBeam:
 	checkobedience
