@@ -310,15 +310,36 @@ RichBoyWinstonAfterText:
 	done
 
 PILookerSeenText:
-	text "TODO"
+	text "WHAAAT?!"
+
+	para "…How did you know?"
+	line "How did you unmask"
+
+	para "me as a member of"
+	line "the International"
+	cont "Police?!"
 	done
 
 PILookerBeatenText:
-	text "TODO"
+	text "Quite admirable,"
+	line "you are!"
 	done
 
 PILookerAfterText:
-	text "TODO"
+	text "My code name,"
+	line "it is Looker."
+
+	para "It is what they"
+	line "all call me."
+
+	para "I am on the look-"
+	line "out for members"
+	cont "of Team Rocket."
+
+	para "What?! You defeat-"
+	line "ed them?"
+
+	para "Bravo!"
 	done
 
 FastShipCabins_NNW_NNE_NE_MapEventHeader:
