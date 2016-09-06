@@ -55,7 +55,11 @@ endc
 	move TACKLE,       EFFECT_NORMAL_HIT,         50, NORMAL,    100, 35,   0, PHYSICAL
 	move BODY_SLAM,    EFFECT_PARALYZE_HIT,       85, NORMAL,    100, 15,  30, PHYSICAL
 	move WRAP,         EFFECT_TRAP,               15, NORMAL,     90, 20,   0, PHYSICAL
+if DEF(FAITHFUL)
 	move TAKE_DOWN,    EFFECT_RECOIL_HIT,         90, NORMAL,     85, 20,   0, PHYSICAL
+else
+	move TAKE_DOWN,    EFFECT_RECOIL_HIT,         90, NORMAL,    100, 15,   0, PHYSICAL
+endc
 	move THRASH,       EFFECT_RAMPAGE,           120, NORMAL,    100, 10,   0, PHYSICAL
 	move DOUBLE_EDGE,  EFFECT_RECOIL_HIT,        120, NORMAL,    100, 15,   0, PHYSICAL
 	move HAIL,         EFFECT_HAIL,                0, ICE,       100, 10,   0, STATUS
@@ -90,7 +94,11 @@ endc
 	move HYPER_BEAM,   EFFECT_HYPER_BEAM,        150, NORMAL,     90,  5,   0, SPECIAL
 	move PECK,         EFFECT_NORMAL_HIT,         35, FLYING,    100, 35,   0, PHYSICAL
 	move DRILL_PECK,   EFFECT_NORMAL_HIT,         80, FLYING,    100, 20,   0, PHYSICAL
+if DEF(FAITHFUL)
 	move SUBMISSION,   EFFECT_RECOIL_HIT,         80, FIGHTING,   80, 25,   0, PHYSICAL
+else
+	move SUBMISSION,   EFFECT_RECOIL_HIT,         90, FIGHTING,  100, 15,   0, PHYSICAL
+endc
 	move LOW_KICK,     EFFECT_FLINCH_HIT,         50, FIGHTING,  100, 20,  30, PHYSICAL
 	move COUNTER,      EFFECT_COUNTER,             1, FIGHTING,  100, 20,   0, PHYSICAL
 	move SEISMIC_TOSS, EFFECT_LEVEL_DAMAGE,        1, FIGHTING,  100, 20,   0, PHYSICAL
