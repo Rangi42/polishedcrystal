@@ -1031,7 +1031,7 @@ CheckIfHPIsZero: ; 3c713
 ResidualDamage: ; 3c716
 ; Return z if the user fainted before
 ; or as a result of residual damage.
-; For Sandstorm damage, see HandleWeather.
+; For Sandstorm and Hail damage, see HandleWeather.
 
 	call HasUserFainted
 	ret z
@@ -1729,26 +1729,28 @@ HandleWeather: ; 3cb9e
 
 	ld hl, WeatherCount
 	dec [hl]
-	jr z, .ended
+	jp z, .ended
 
 	ld hl, .WeatherMessages
 	call .PrintWeatherMessage
 
 	ld a, [Weather]
+	cp WEATHER_HAIL
+	jp z, .HandleHail
 	cp WEATHER_SANDSTORM
 	ret nz
 
 	ld a, [hLinkPlayerNumber]
 	cp 1
-	jr z, .enemy_first
+	jr z, .enemy_first_sandstorm
 
-.player_first
+.player_first_sandstorm
 	call SetPlayerTurn
 	call .SandstormDamage
 	call SetEnemyTurn
 	jr .SandstormDamage
 
-.enemy_first
+.enemy_first_sandstorm
 	call SetEnemyTurn
 	call .SandstormDamage
 	call SetPlayerTurn
@@ -1762,9 +1764,9 @@ HandleWeather: ; 3cb9e
 	ld hl, BattleMonType1
 	ld a, [hBattleTurn]
 	and a
-	jr z, .ok
+	jr z, .ok_sandstorm
 	ld hl, EnemyMonType1
-.ok
+.ok_sandstorm
 	ld a, [hli]
 	cp ROCK
 	ret z
@@ -1793,6 +1795,54 @@ HandleWeather: ; 3cb9e
 	ld hl, SandstormHitsText
 	jp StdBattleTextBox
 
+.HandleHail
+	ld a, [hLinkPlayerNumber]
+	cp 1
+	jr z, .enemy_first_hail
+
+.player_first_hail
+	call SetPlayerTurn
+	call .HailDamage
+	call SetEnemyTurn
+	jr .HailDamage
+
+.enemy_first_hail
+	call SetEnemyTurn
+	call .HailDamage
+	call SetPlayerTurn
+
+.HailDamage:
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_UNDERGROUND, a
+	ret nz
+
+	ld hl, BattleMonType1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok_hail
+	ld hl, EnemyMonType1
+.ok_hail
+	ld a, [hli]
+	cp ICE
+	ret z
+
+	ld a, [hl]
+	cp ICE
+	ret z
+
+	call SwitchTurnCore
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_IN_SANDSTORM ; TODO: use custom hailstorm animation
+	call Call_PlayBattleAnim
+	call SwitchTurnCore
+	call GetSixteenthMaxHP
+	call SubtractHPFromUser
+
+	ld hl, HailHitsText
+	jp StdBattleTextBox
+
 .ended
 	ld hl, .WeatherEndedMessages
 	call .PrintWeatherMessage
@@ -1817,10 +1867,12 @@ HandleWeather: ; 3cb9e
 	dw BattleText_RainContinuesToFall
 	dw BattleText_TheSunlightIsStrong
 	dw BattleText_TheSandstormRages
+	dw BattleText_TheHailContinuesToFall
 .WeatherEndedMessages:
 	dw BattleText_TheRainStopped
 	dw BattleText_TheSunlightFaded
 	dw BattleText_TheSandstormSubsided
+	dw BattleText_TheHailStopped
 ; 3cc39
 
 SubtractHPFromTarget: ; 3cc39

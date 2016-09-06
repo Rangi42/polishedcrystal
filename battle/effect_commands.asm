@@ -2835,6 +2835,11 @@ PlayerAttackDamage: ; 352e2
 	ld b, a
 	ld c, [hl]
 
+if DEF(FAITHFUL)
+else
+	call HailDefenseBoost
+endc
+
 	ld a, [EnemyScreens]
 	bit SCREENS_REFLECT, a
 	jr z, .physicalcrit
@@ -2863,7 +2868,9 @@ PlayerAttackDamage: ; 352e2
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
+
 	call SandstormSpDefBoost
+
 	jp .lightscreen
 
 .psystrike
@@ -3125,6 +3132,24 @@ SandstormSpDefBoost:
 	cp WEATHER_SANDSTORM
 	ret nz
 	call CheckIfTargetIsRockType
+	ret z
+	push hl
+	ld h, b
+	ld l, c
+	srl h
+	rr l
+	add hl, bc
+	ld b, h
+	ld c, l
+	pop hl
+	ret
+
+
+HailDefenseBoost:
+	ld a, [Weather]
+	cp WEATHER_HAIL
+	ret nz
+	call CheckIfTargetIsIceType
 	ret z
 	push hl
 	ld h, b
@@ -7487,6 +7512,8 @@ INCLUDE "battle/effects/growth.asm"
 
 INCLUDE "battle/effects/dragondance.asm"
 
+INCLUDE "battle/effects/honeclaws.asm"
+
 
 BattleCommand_TrapTarget: ; 36c2d
 ; traptarget
@@ -8778,6 +8805,8 @@ INCLUDE "battle/effects/perish_song.asm"
 
 INCLUDE "battle/effects/sandstorm.asm"
 
+INCLUDE "battle/effects/hail.asm"
+
 INCLUDE "battle/effects/rollout.asm"
 
 
@@ -9327,7 +9356,7 @@ BattleCommand_HealMornOrDay: ; 37b74
 	jr z, .Heal
 
 ; x2 in sun
-; /2 in rain/sandstorm
+; /2 in rain/sandstorm/hail
 	inc c
 	cp WEATHER_SUN
 	jr z, .Heal
@@ -9409,7 +9438,7 @@ BattleCommand_HealNite: ; 37b7c
 	jr z, .Heal
 
 ; x2 in sun
-; /2 in rain/sandstorm
+; /2 in rain/sandstorm/hail
 	inc c
 	cp WEATHER_SUN
 	jr z, .Heal

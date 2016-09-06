@@ -50,6 +50,7 @@
 	dw CalmMind
 	dw Growth
 	dw DragonDance
+	dw HoneClaws
 	dw AttackDown
 	dw DefenseDown
 	dw StringShot
@@ -92,7 +93,6 @@
 	dw Counter
 	dw Encore
 	dw PainSplit
-	dw Conversion2
 	dw LockOn
 	dw Sketch
 	dw SleepTalk
@@ -111,6 +111,7 @@
 	dw Foresight
 	dw PerishSong
 	dw Sandstorm
+	dw Hail
 	dw Endure
 	dw Rollout
 	dw Swagger
@@ -155,6 +156,7 @@
 	dw Present
 	dw Frustration
 	dw PsychUp
+	dw Conversion2
 	dw MirrorMove
 	dw SkullBash
 	dw BeatUp

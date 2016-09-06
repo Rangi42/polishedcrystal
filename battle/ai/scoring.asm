@@ -354,7 +354,6 @@ AI_Smart: ; 386be
 	dbw EFFECT_ENCORE,           AI_Smart_Encore
 	dbw EFFECT_PAIN_SPLIT,       AI_Smart_PainSplit
 	dbw EFFECT_SNORE,            AI_Smart_Snore
-	dbw EFFECT_CONVERSION2,      AI_Smart_Conversion2
 	dbw EFFECT_LOCK_ON,          AI_Smart_LockOn
 	dbw EFFECT_DEFROST_OPPONENT, AI_Smart_DefrostOpponent
 	dbw EFFECT_SLEEP_TALK,       AI_Smart_SleepTalk
@@ -1539,7 +1538,7 @@ endr
 	db GROWTH
 	db POISONPOWDER
 	db STRING_SHOT
-	db MEDITATE
+	db HONE_CLAWS
 	db AGILITY
 	db TELEPORT
 	db SCREECH
@@ -1793,47 +1792,6 @@ AI_Smart_Thief: ; 38d93
 	ld [hl], a
 	ret
 ; 38d98
-
-
-AI_Smart_Conversion2: ; 38d98
-	ld a, [LastPlayerMove]
-	and a
-	jr nz, .asm_38dc9
-
-	push hl
-	dec a
-	ld hl, Moves + MOVE_TYPE
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-
-	ld a, BANK(Moves)
-	call GetFarByte
-	ld [wPlayerMoveStruct + MOVE_TYPE], a
-
-	xor a
-	ld [hBattleTurn], a
-
-	callab BattleCheckTypeMatchup
-
-	ld a, [wd265]
-	cp $a
-	pop hl
-	jr c, .asm_38dc9
-	ret z
-
-	call AI_50_50
-	ret c
-
-	dec [hl]
-	ret
-
-.asm_38dc9
-	call Random
-	cp 25
-	ret c
-	inc [hl]
-	ret
-; 38dd1
 
 
 AI_Smart_Disable: ; 38dd1
@@ -3200,7 +3158,7 @@ AI_Opportunist: ; 39315
 
 .stallmoves
 	db SWORDS_DANCE
-	db TAIL_WHIP
+	db HONE_CLAWS
 	db LEER
 	db GROWL
 	db DISABLE
@@ -3209,7 +3167,6 @@ AI_Opportunist: ; 39315
 	db LEECH_SEED
 	db GROWTH
 	db STRING_SHOT
-	db MEDITATE
 	db AGILITY
 	db RAGE
 	db SCREECH

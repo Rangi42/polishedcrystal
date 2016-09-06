@@ -820,7 +820,7 @@ BattleTowerMons1:
 
 	db TAUROS
 	db KINGS_ROCK
-	db HEADBUTT, SWAGGER, TAIL_WHIP, ICY_WIND
+	db HEADBUTT, SWAGGER, LEER, ICY_WIND
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -2344,7 +2344,7 @@ BattleTowerMons4:
 
 	db PORYGON2
 	db NO_ITEM
-	db CONVERSION2, CONVERSION, PSYBEAM, THIEF
+	db ICE_BEAM, THUNDERBOLT, PSYBEAM, THIEF
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2354,7 +2354,7 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	db $bc, $ef ; DVs
-	db 30, 30, 20, 10 ; PP
+	db 10, 15, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
 	db 40 ; Level

@@ -37,7 +37,7 @@
 	dw TakeDownDescription
 	dw ThrashDescription
 	dw DoubleEdgeDescription
-	dw TailWhipDescription
+	dw HailDescription
 	dw PoisonStingDescription
 	dw TwineedleDescription
 	dw PinMissileDescription
@@ -94,7 +94,7 @@
 	dw ConfusionDescription
 	dw PsychicMDescription
 	dw HypnosisDescription
-	dw MeditateDescription
+	dw HoneClawsDescription
 	dw AgilityDescription
 	dw QuickAttackDescription
 	dw RageDescription
@@ -174,7 +174,7 @@
 	dw HyperVoiceDescription
 	dw CurseDescription
 	dw FlailDescription
-	dw Conversion2Description
+	dw EnergyBallDescription
 	dw AeroblastDescription
 	dw SeedBombDescription
 	dw ReversalDescription
@@ -319,6 +319,7 @@ CrunchDescription:
 ShadowBallDescription:
 BugBuzzDescription:
 EarthPowerDescription:
+EnergyBallDescription:
 FlashCannonDescription:
 FocusBlastDescription:
 	db   "An attack that may"
@@ -396,7 +397,6 @@ GrowlDescription:
 	db   "A move that lowers"
 	next "the foe's Attack.@"
 
-TailWhipDescription:
 LeerDescription:
 	db   "A move that lowers"
 	next "the foe's Defense.@"
@@ -453,10 +453,6 @@ SweetKissDescription:
 	db   "A move that may"
 	next "confuse the foe.@"
 
-MeditateDescription:
-	db   "Raises the user's"
-	next "Attack.@"
-
 HardenDescription:
 DefenseCurlDescription:
 	db   "Raises the user's"
@@ -490,6 +486,22 @@ NastyPlotDescription:
 GrowthDescription:
 	db   "Raises the user's"
 	next "Atk and Spcl.Atk.@"
+
+BulkUpDescription:
+	db   "Raises the user's"
+	next "Atk and Def.@"
+
+CalmMindDescription:
+	db   "Raises the user's"
+	next "Sp.Atk and Sp.Def.@"
+
+DragonDanceDescription:
+	db   "Raises the user's"
+	next "Attack and Speed.@"
+
+HoneClawsDescription:
+	db   "Raises the user's"
+	next "Atk and accuracy.@"
 
 ReflectDescription:
 	db   "Raises Defense"
@@ -762,10 +774,6 @@ FairyWindDescription:
 	db   "Strikes the foe"
 	next "with fairy wind.@"
 
-CalmMindDescription:
-	db   "Raises the user's"
-	next "Sp.Atk and Sp.Def.@"
-
 HiJumpKickDescription:
 	db   "May miss and hurt"
 	next "the user.@"
@@ -790,10 +798,6 @@ SplashDescription:
 	db   "Has no effect"
 	next "whatsoever.@"
 
-DragonDanceDescription:
-	db   "Raises the user's"
-	next "Attack and Speed.@"
-
 ExplosionDescription:
 	db   "Very powerful but"
 	next "makes user faint.@"
@@ -809,10 +813,6 @@ BonemerangDescription:
 RestDescription:
 	db   "Sleep for 2 turns"
 	next "to fully recover.@"
-
-BulkUpDescription:
-	db   "Raises the user's"
-	next "Atk and Def.@"
 
 ConversionDescription:
 	db   "Change user's type"
@@ -862,10 +862,6 @@ FlailDescription:
 ReversalDescription:
 	db   "Stronger if the"
 	next "user's HP is low.@"
-
-Conversion2Description:
-	db   "The user's type is"
-	next "made resistant.@"
 
 SeedBombDescription:
 	db   "Slams a barrage"
@@ -932,6 +928,7 @@ OutrageDescription:
 	next "and confuses user.@"
 
 SandstormDescription:
+HailDescription:
 	db   "Inflicts damage"
 	next "every turn.@"
 

@@ -28,9 +28,10 @@
 * Substitute prevents building Rage
 * Drain Kiss drains 75% HP
 * Avalanche doubles damage if user is hit first
-* Hurricane cannot miss in rain
+* Hurricane cannot miss in rain (ignores accuracy and evasion)
+* Blizzard cannot miss in hail (ignores accuracy and evasion)
+* Thunder ignores accuracy and evasion in rain (not just 100% accuracy)
 * Low Kick's power is based on weight
-* Thunder ignores accuracy and evasion in rain
 * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
 * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-faithful)

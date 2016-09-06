@@ -39,7 +39,7 @@
 	const TAKE_DOWN    ; $24
 	const THRASH       ; $25
 	const DOUBLE_EDGE  ; $26
-	const TAIL_WHIP    ; $27
+	const HAIL         ; $27
 	const POISON_STING ; $28
 	const TWINEEDLE    ; $29
 	const PIN_MISSILE  ; $2a
@@ -96,7 +96,7 @@
 	const CONFUSION    ; $5d
 	const PSYCHIC_M    ; $5e
 	const HYPNOSIS     ; $5f
-	const MEDITATE     ; $60
+	const HONE_CLAWS   ; $60
 	const AGILITY      ; $61
 	const QUICK_ATTACK ; $62
 	const RAGE         ; $63
@@ -176,7 +176,7 @@
 	const HYPER_VOICE  ; $ad
 	const CURSE        ; $ae
 	const FLAIL        ; $af
-	const CONVERSION2  ; $b0
+	const ENERGY_BALL  ; $b0
 	const AEROBLAST    ; $b1
 	const SEED_BOMB    ; $b2
 	const REVERSAL     ; $b3

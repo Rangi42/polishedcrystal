@@ -504,6 +504,7 @@ SpecialDefenseDownHit:
 BugBuzz:
 Crunch:
 EarthPower:
+EnergyBall:
 FlashCannon:
 FocusBlast:
 PsychicM:
@@ -667,7 +668,6 @@ SweetKiss:
 	endmove
 
 AttackUp:
-Meditate:
 	checkobedience
 	usedmovetext
 	doturn
@@ -879,6 +879,13 @@ DragonDance:
 	dragondance
 	endmove
 
+HoneClaws:
+	checkobedience
+	usedmovetext
+	doturn
+	honeclaws
+	endmove
+
 AttackDown:
 Growl:
 	checkobedience
@@ -894,7 +901,6 @@ Growl:
 	endmove
 
 DefenseDown:
-TailWhip:
 Leer:
 	checkobedience
 	usedmovetext
@@ -1431,14 +1437,6 @@ PainSplit:
 	painsplit
 	endmove
 
-Conversion2:
-	checkobedience
-	usedmovetext
-	doturn
-	checkhit
-	conversion2
-	endmove
-
 LockOn:
 	checkobedience
 	usedmovetext
@@ -1640,6 +1638,13 @@ Sandstorm:
 	usedmovetext
 	doturn
 	startsandstorm
+	endmove
+
+Hail:
+	checkobedience
+	usedmovetext
+	doturn
+	starthail
 	endmove
 
 Endure:
@@ -2281,6 +2286,14 @@ PsychUp:
 	usedmovetext
 	doturn
 	psychup
+	endmove
+
+Conversion2:
+	checkobedience
+	usedmovetext
+	doturn
+	checkhit
+	conversion2
 	endmove
 
 MirrorMove:

@@ -58,7 +58,7 @@ endc
 	move TAKE_DOWN,    EFFECT_RECOIL_HIT,         90, NORMAL,     85, 20,   0, PHYSICAL
 	move THRASH,       EFFECT_RAMPAGE,           120, NORMAL,    100, 10,   0, PHYSICAL
 	move DOUBLE_EDGE,  EFFECT_RECOIL_HIT,        120, NORMAL,    100, 15,   0, PHYSICAL
-	move TAIL_WHIP,    EFFECT_DEFENSE_DOWN,        0, NORMAL,    100, 30,   0, STATUS
+	move HAIL,         EFFECT_HAIL,                0, ICE,       100, 10,   0, STATUS
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,    100, 35,  30, PHYSICAL
 	move TWINEEDLE,    EFFECT_TWINEEDLE,          25, BUG,       100, 20,  20, PHYSICAL
 	move PIN_MISSILE,  EFFECT_MULTI_HIT,          25, BUG,        95, 20,   0, PHYSICAL
@@ -122,9 +122,9 @@ endc
 	move DIG,          EFFECT_FLY,                80, GROUND,    100, 10,   0, PHYSICAL
 	move TOXIC,        EFFECT_TOXIC,               0, POISON,     90, 10,   0, STATUS
 	move CONFUSION,    EFFECT_CONFUSE_HIT,        50, PSYCHIC,   100, 25,  10, SPECIAL
-	move PSYCHIC_M,    EFFECT_SP_DEF_DOWN_HIT,    90, PSYCHIC,   100, 10,  10, SPECIAL
+	move PSYCHIC_M,    EFFECT_SP_DEF_DOWN_HIT,    90, PSYCHIC,   100, 15,   0, STATUS
 	move HYPNOSIS,     EFFECT_SLEEP,               0, PSYCHIC,    60, 20,   0, STATUS
-	move MEDITATE,     EFFECT_ATTACK_UP,           0, PSYCHIC,   100, 40,   0, STATUS
+	move HONE_CLAWS,   EFFECT_HONE_CLAWS,          0, DARK,      100, 40,   0, STATUS
 	move AGILITY,      EFFECT_SPEED_UP_2,          0, PSYCHIC,   100, 30,   0, STATUS
 	move QUICK_ATTACK, EFFECT_PRIORITY_HIT,       40, NORMAL,    100, 30,   0, PHYSICAL
 	move RAGE,         EFFECT_RAGE,               20, NORMAL,    100, 20,   0, PHYSICAL
@@ -208,7 +208,7 @@ endc
 	move HYPER_VOICE,  EFFECT_NORMAL_HIT,         90, NORMAL,    100, 10,   0, SPECIAL
 	move CURSE,        EFFECT_CURSE,               0, GHOST,     100, 10,   0, STATUS
 	move FLAIL,        EFFECT_REVERSAL,            1, NORMAL,    100, 15,   0, PHYSICAL
-	move CONVERSION2,  EFFECT_CONVERSION2,         0, NORMAL,    100, 30,   0, STATUS
+	move ENERGY_BALL,  EFFECT_SP_DEF_DOWN_HIT,    90, GRASS,     100, 10,  10, SPECIAL
 	move AEROBLAST,    EFFECT_NORMAL_HIT,        100, FLYING,     95,  5,   0, SPECIAL
 	move SEED_BOMB,    EFFECT_NORMAL_HIT,         80, GRASS,     100, 15,   0, PHYSICAL
 	move REVERSAL,     EFFECT_REVERSAL,            1, FIGHTING,  100, 15,   0, PHYSICAL

@@ -90,6 +90,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Foresight ; 376a0
 	dw BattleCommand_PerishSong ; 376c2
 	dw BattleCommand_StartSandstorm ; 376f8
+	dw BattleCommand_StartHail
 	dw BattleCommand_Endure ; 3766f
 	dw BattleCommand_CheckCurl ; 37718
 	dw BattleCommand_RolloutPower ; 37734
@@ -167,6 +168,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_RaiseSubNoAnim ; 365af
 	dw BattleCommand_LowerSubNoAnim ; 365c3
 	dw BattleCommand_DragonDance ; 355b5
+	dw BattleCommand_HoneClaws
 	dw BattleCommand_ClearMissDamage ; 355d5 - a9
 	dw BattleCommand_MoveDelay ; 37e80
 	dw BattleCommand_HitTarget ; 34f57

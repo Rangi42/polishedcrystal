@@ -486,7 +486,7 @@ ChuckGroup:
 	db 28, MACHOKE, NO_ITEM
 		db KARATE_CHOP
 		db BULLET_PUNCH
-		db MEDITATE
+		db BULK_UP
 		db DYNAMICPUNCH
 
 	db 29, PRIMEAPE, NO_ITEM
@@ -1130,7 +1130,7 @@ BrunoGroup:
 		db MEGAHORN
 
 	db 70, HITMONLEE, FOCUS_BAND
-		db MEDITATE
+		db BULK_UP
 		db RETURN
 		db HI_JUMP_KICK
 		db REVERSAL
@@ -3051,7 +3051,7 @@ YoungsterGroup:
 	; party
 
 	db 25, RATICATE
-		db TAIL_WHIP
+		db LEER
 		db QUICK_ATTACK
 		db HYPER_FANG
 		db SCARY_FACE
@@ -3115,7 +3115,7 @@ YoungsterGroup:
 	; party
 
 	db 30, RATICATE
-		db TAIL_WHIP
+		db LEER
 		db QUICK_ATTACK
 		db HYPER_FANG
 		db PURSUIT
@@ -4039,7 +4039,7 @@ PicnickerGroup:
 	db 32, NIDOQUEEN
 		db EARTHQUAKE
 		db DOUBLE_KICK
-		db TAIL_WHIP
+		db LEER
 		db BODY_SLAM
 
 	db $ff ; end
@@ -6284,7 +6284,7 @@ PokemaniacGroup:
 	db 39, PORYGON
 		db RECOVER
 		db PSYCHIC_M
-		db CONVERSION2
+		db CONVERSION
 		db TRI_ATTACK
 
 	db $ff ; end
@@ -6693,7 +6693,7 @@ LassGroup:
 
 	db 19, PSYDUCK
 		db SCRATCH
-		db TAIL_WHIP
+		db LEER
 		db DISABLE
 		db CONFUSION
 
@@ -6749,7 +6749,7 @@ LassGroup:
 
 	db 21, PSYDUCK
 		db SCRATCH
-		db TAIL_WHIP
+		db LEER
 		db DISABLE
 		db CONFUSION
 
@@ -7448,7 +7448,7 @@ SchoolboyGroup:
 		db SONIC_BOOM
 
 	db 35, QUAGSIRE
-		db TAIL_WHIP
+		db LEER
 		db SLAM
 		db CALM_MIND
 		db EARTHQUAKE
@@ -9251,9 +9251,9 @@ ScientistGroup:
 
 	db 35, PORYGON_Z
 		db CONVERSION
-		db CONVERSION2
 		db RECOVER
 		db TRI_ATTACK
+		db PSYBEAM
 
 	db $ff ; end
 
@@ -9502,7 +9502,7 @@ BlackbeltGroup:
 
 	db 27, HITMONLEE
 		db DOUBLE_KICK
-		db MEDITATE
+		db BULK_UP
 		db LOW_KICK
 		db FOCUS_ENERGY
 
@@ -9589,7 +9589,7 @@ BlackbeltGroup:
 	; party
 
 	db 40, HITMONLEE, BLACK_BELT
-		db MEDITATE
+		db BULK_UP
 		db FOCUS_ENERGY
 		db HI_JUMP_KICK
 		db LOCK_ON
@@ -11068,7 +11068,7 @@ VeteranFGroup:
 
 	db 38, ELECTABUZZ, MAGNET
 		db THUNDERBOLT
-		db MEDITATE
+		db BULK_UP
 		db KARATE_CHOP
 		db LIGHT_SCREEN
 
@@ -11924,7 +11924,7 @@ YellowGroup:
 	; party
 
 	db 28, RATTATA, BERRY
-		db TAIL_WHIP
+		db LEER
 		db QUICK_ATTACK
 		db HYPER_FANG
 		db FOCUS_ENERGY

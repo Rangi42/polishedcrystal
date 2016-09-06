@@ -117,6 +117,7 @@ VulpixEggMoves:
 	db FEINT_ATTACK
 	db EXTRASENSORY
 	db CHARM
+	db ENERGY_BALL
 	db $ff
 
 JigglypuffEggMoves:
@@ -176,7 +177,7 @@ MeowthEggMoves:
 	db CHARM
 	db FLAIL
 	db HYPNOSIS
-	db TAIL_WHIP
+	db LEER
 	db NIGHT_SLASH
 	db $ff
 
@@ -196,7 +197,7 @@ PsyduckEggMoves:
 MankeyEggMoves:
 	db ENCORE
 	db FORESIGHT
-	db MEDITATE
+	db BULK_UP
 	db REVERSAL
 	db ROCK_SLIDE
 	db COUNTER
@@ -222,6 +223,7 @@ PoliwagEggMoves:
 	db SPLASH
 	db BUBBLE_BEAM
 	db LOCK_ON
+	db WATER_PULSE
 	db $ff
 
 AbraEggMoves:
@@ -233,7 +235,7 @@ AbraEggMoves:
 MachopEggMoves:
 	db BULLET_PUNCH
 	db ENCORE
-	db MEDITATE
+	db BULK_UP
 	db LIGHT_SCREEN
 	db MACH_PUNCH
 	db $ff
@@ -303,6 +305,7 @@ SeelEggMoves:
 	db PERISH_SONG
 	db SLAM
 	db ENCORE
+	db WATER_PULSE
 	db $ff
 
 GrimerEggMoves:
@@ -320,6 +323,7 @@ ShellderEggMoves:
 	db SCREECH
 	db TAKE_DOWN
 	db TWINEEDLE
+	db WATER_PULSE
 	db $ff
 
 GastlyEggMoves:
@@ -417,6 +421,7 @@ HorseaEggMoves:
 	db OCTAZOOKA
 	db SPLASH
 	db HAZE
+	db WATER_PULSE
 	db $ff
 
 TogepiEggMoves:
@@ -446,7 +451,7 @@ ScytherEggMoves:
 	db $ff
 
 JynxEggMoves:
-	db MEDITATE
+	db BULK_UP
 	db NASTY_PLOT
 	db $ff
 
@@ -477,6 +482,7 @@ OmanyteEggMoves:
 	db SLAM
 	db SPIKES
 	db SUPERSONIC
+	db WATER_PULSE
 	db $ff
 
 KabutoEggMoves:
@@ -503,6 +509,7 @@ DratiniEggMoves:
 	db HAZE
 	db MIST
 	db SUPERSONIC
+	db WATER_PULSE
 	db $ff
 
 ChikoritaEggMoves:
@@ -535,6 +542,7 @@ TotodileEggMoves:
 	db HYDRO_PUMP
 	db ANCIENTPOWER
 	db ROCK_SLIDE
+	db WATER_PULSE
 	db $ff
 
 SentretEggMoves:
@@ -583,6 +591,7 @@ ChinchouEggMoves:
 	db SCREECH
 	db FLAIL
 	db SUPERSONIC
+	db WATER_PULSE
 	db $ff
 
 PichuEggMoves:
@@ -724,6 +733,7 @@ QwilfishEggMoves:
 	db HAZE
 	db SUPERSONIC
 	db POISON_JAB
+	db WATER_PULSE
 	db $ff
 
 HeracrossEggMoves:
@@ -739,6 +749,7 @@ SneaselEggMoves:
 	db COUNTER
 	db REFLECT
 	db ICICLE_CRASH
+	db ICE_SHARD
 	db $ff
 
 TeddiursaEggMoves:
@@ -778,6 +789,7 @@ CorsolaEggMoves:
 	db ROCK_SLIDE
 	db SAFEGUARD
 	db CALM_MIND
+	db WATER_PULSE
 	db $ff
 
 RemoraidEggMoves:
@@ -788,6 +800,7 @@ RemoraidEggMoves:
 	db SUPERSONIC
 	db AURORA_BEAM
 	db GUNK_SHOT
+	db WATER_PULSE
 	db $ff
 
 MantineEggMoves:
@@ -824,6 +837,7 @@ PhanpyEggMoves:
 	db BODY_SLAM
 	db ANCIENTPOWER
 	db GUNK_SHOT
+	db ICE_SHARD
 	db $ff
 
 TyrogueEggMoves:
@@ -839,7 +853,7 @@ ElekidEggMoves:
 	db BARRIER
 	db CROSS_CHOP
 	db KARATE_CHOP
-	db MEDITATE
+	db BULK_UP
 	db $ff
 
 MagbyEggMoves:
