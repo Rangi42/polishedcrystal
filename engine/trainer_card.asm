@@ -235,14 +235,14 @@ TrainerCard_Page3_Joypad: ; 25279 (9:5279)
 	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_RIGHT | A_BUTTON
-	jr nz, .pressed_right_a
+	and A_BUTTON
+	jr nz, .quit
 	ld a, [hl]
 	and D_LEFT
 	jr nz, .d_left
 	ret
 
-.pressed_right_a
+.quit
 	ld a, $6
 	ld [wJumptableIndex], a
 	ret

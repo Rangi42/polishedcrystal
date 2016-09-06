@@ -2248,7 +2248,7 @@ Rival1Group:
 	db 2 ; item
 
 	; party
-	db 4, SENTRET, NO_ITEM
+	db 5, SENTRET, BERRY
 	db 5, CHIKORITA, BERRY
 
 	db $ff ; end
@@ -2260,7 +2260,7 @@ Rival1Group:
 	db 2 ; item
 
 	; party
-	db 4, SENTRET, NO_ITEM
+	db 5, SENTRET, BERRY
 	db 5, CYNDAQUIL, BERRY
 
 	db $ff ; end
@@ -2272,7 +2272,7 @@ Rival1Group:
 	db 2 ; item
 
 	; party
-	db 4, SENTRET, NO_ITEM
+	db 5, SENTRET, BERRY
 	db 5, TOTODILE, BERRY
 
 	db $ff ; end
