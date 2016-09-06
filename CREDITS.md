@@ -16,7 +16,7 @@
 * Serious Senator for some trainer dialogs
 * tonyism for the in-battle shiny icon code
 * jpmac26 for editing the Pokémon Center signs and fixing a typo
-* bloodless for Veteran♂'s sprite
+* bloodless for Veteran♂'s and Pikachu's sprites
 * Twilir for Lyra's back sprite
 * Danny-E for Lorelei's sprite
 * Nic7C5 for Yellow's sprite
