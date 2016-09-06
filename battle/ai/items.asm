@@ -174,7 +174,7 @@ AI_TryItem: ; 38105
 
 	ld a, [TrainerClass]
 	dec a
-	ld hl, TrainerClassAttributes + 5
+	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
 	ld bc, 7
 	call AddNTimes
 	ld b, h
@@ -765,6 +765,7 @@ EnemyUsedXSpclAtk: ; 38553
 EnemyUsedXSpclDef: ; 38553
 	ld b, SP_DEFENSE
 	ld a, X_SPCL_DEF
+	jr EnemyUsedXItem
 
 EnemyUsedXAccuracy: ; 384f7
 	ld b, ACCURACY
