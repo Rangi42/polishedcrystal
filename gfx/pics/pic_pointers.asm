@@ -47,8 +47,11 @@
 	add_pic EkansBackpic
 	add_pic ArbokFrontpic
 	add_pic ArbokBackpic
-	add_pic PikachuFrontpic
-	add_pic PikachuBackpic
+
+	; Pikachu pics have their own table. See PikachuPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	add_pic RaichuFrontpic
 	add_pic RaichuBackpic
 	add_pic SandshrewFrontpic

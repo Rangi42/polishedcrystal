@@ -46,6 +46,7 @@ CREDITS                   EQU $42
 
 PIC_POINTERS              EQU $48
 UNOWN_PIC_POINTERS        EQU $49
+PIKACHU_PIC_POINTERS      EQU $4A
 TRAINER_PIC_POINTERS      EQU $4A
 
 PICS_FIX                  EQU $36

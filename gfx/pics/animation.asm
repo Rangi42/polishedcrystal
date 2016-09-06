@@ -339,11 +339,11 @@ Functiond01d6: ; d01d6
 	call GetFarWRAMByte
 	ld [wPokeAnimSpecies], a
 	ld a, $1
-	ld hl, UnownLetter
+	ld hl, UnownLetterOrPikachuVariant
 	call GetFarWRAMByte
-	ld [wPokeAnimUnownLetter], a
-	call PokeAnim_GetSpeciesOrUnown
-	ld [wPokeAnimSpeciesOrUnown], a
+	ld [wPokeAnimVariant], a
+	call PokeAnim_GetSpeciesOrVariant
+	ld [wPokeAnimSpeciesOrVariant], a
 	call PokeAnim_GetFrontpicDims
 	ld a, c
 	ld [wPokeAnimFrontpicHeight], a
@@ -484,6 +484,11 @@ Functiond02e4: ; d02e4
 	ld [w2_d17e], a
 	ret
 ; d02ec
+
+PokeAnim_IsPikachu:
+	ld a, [wPokeAnimSpecies]
+	cp PIKACHU
+	ret
 
 PokeAnim_IsUnown: ; d02ec
 	ld a, [wPokeAnimSpecies]
@@ -942,15 +947,20 @@ GetMonAnimPointer: ; d055c
 	call PokeAnim_IsEgg
 	jr z, .egg
 
+	ld c, BANK(PikachuAnimations)
+	ld hl, PikachuAnimationPointers
+	ld de, PikachuAnimationExtraPointers
+	call PokeAnim_IsPikachu
+	jr z, .variant
 	ld c, BANK(UnownAnimations)
 	ld hl, UnownAnimationPointers
 	ld de, UnownAnimationExtraPointers
 	call PokeAnim_IsUnown
-	jr z, .unown
+	jr z, .variant
 	ld c, BANK(PicAnimations)
 	ld hl, AnimationPointers
 	ld de, AnimationExtraPointers
-.unown
+.variant
 
 	ld a, [wPokeAnimExtraFlag]
 	and a
@@ -959,7 +969,7 @@ GetMonAnimPointer: ; d055c
 	ld l, e
 .extras
 
-	ld a, [wPokeAnimSpeciesOrUnown]
+	ld a, [wPokeAnimSpeciesOrVariant]
 	dec a
 	ld e, a
 	ld d, 0
@@ -1014,6 +1024,11 @@ GetMonFramesPointer: ; d05ce
 	call PokeAnim_IsEgg
 	jr z, .egg
 
+	call PokeAnim_IsPikachu
+	ld b, BANK(PikachuFramesPointers)
+	ld c, BANK(PikachusFrames)
+	ld hl, PikachuFramesPointers
+	jr z, .got_frames
 	call PokeAnim_IsUnown
 	ld b, BANK(UnownFramesPointers)
 	ld c, BANK(UnownsFrames)
@@ -1030,7 +1045,7 @@ GetMonFramesPointer: ; d05ce
 	ld a, c
 	ld [wPokeAnimFramesBank], a
 
-	ld a, [wPokeAnimSpeciesOrUnown]
+	ld a, [wPokeAnimSpeciesOrVariant]
 	dec a
 	ld e, a
 	ld d, 0
@@ -1061,16 +1076,20 @@ GetMonBitmaskPointer: ; d061b
 	call PokeAnim_IsEgg
 	jr z, .egg
 
+	call PokeAnim_IsPikachu
+	ld a, BANK(PikachuBitmasksPointers)
+	ld hl, PikachuBitmasksPointers
+	jr z, .variant
 	call PokeAnim_IsUnown
 	ld a, BANK(UnownBitmasksPointers)
 	ld hl, UnownBitmasksPointers
-	jr z, .unown
+	jr z, .variant
 	ld a, BANK(BitmasksPointers)
 	ld hl, BitmasksPointers
-.unown
+.variant
 	ld [wPokeAnimBitmaskBank], a
 
-	ld a, [wPokeAnimSpeciesOrUnown]
+	ld a, [wPokeAnimSpeciesOrVariant]
 	dec a
 	ld e, a
 	ld d, 0
@@ -1097,14 +1116,16 @@ endr
 	ret
 ; d065c
 
-PokeAnim_GetSpeciesOrUnown: ; d065c
+PokeAnim_GetSpeciesOrVariant: ; d065c
+	call PokeAnim_IsPikachu
+	jr z, .variant
 	call PokeAnim_IsUnown
-	jr z, .unown
+	jr z, .variant
 	ld a, [wPokeAnimSpecies]
 	ret
 
-.unown
-	ld a, [wPokeAnimUnownLetter]
+.variant
+	ld a, [wPokeAnimVariant]
 	ret
 ; d0669
 

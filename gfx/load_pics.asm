@@ -1,5 +1,57 @@
-GetUnownLetter: ; 51040
-; Return Unown letter in UnownLetter based on DVs at hl
+GetVariant: ; 51040
+	ld a, [CurPartySpecies]
+	cp UNOWN
+	jr z, .GetUnownVariant
+
+.GetPikachuVariant:
+; Return Unown letter in UnownLetterOrPikachuVariant based on moves
+; hl-4 is ...MonMove1
+; hl-3 is ...MonMove2
+; hl-2 is ...MonMove3
+; hl-1 is ...MonMove4
+; hl is ...MonDVs
+
+	push bc
+	ld bc, TempMonDVs
+	ld a, b
+	cp h
+	jr nz, .nottemp
+	ld a, c
+	cp l
+	jr nz, .nottemp
+	; skip TempMonID through TempMonSpclExp
+rept 16
+	dec hl
+endr
+.nottemp
+	pop bc
+
+rept 4
+	dec hl
+endr
+	ld a, 3 ; Surf
+	ld [UnownLetterOrPikachuVariant], a
+rept 4
+	ld a, [hli]
+	cp SURF
+	ret z
+endr
+rept 4
+	dec hl
+endr
+	ld a, 2 ; Fly
+	ld [UnownLetterOrPikachuVariant], a
+rept 4
+	ld a, [hli]
+	cp FLY
+	ret z
+endr
+	ld a, 1
+	ld [UnownLetterOrPikachuVariant], a
+	ret
+
+.GetUnownVariant:
+; Return Unown letter in UnownLetterOrPikachuVariant based on DVs at hl
 
 ; Take the middle 2 bits of each DV and place them in order:
 ;	atk  def  spd  spc
@@ -45,7 +97,7 @@ GetUnownLetter: ; 51040
 ; Increment to get 1-26
 	ld a, [hQuotient + 2]
 	inc a
-	ld [UnownLetter], a
+	ld [UnownLetterOrPikachuVariant], a
 	ret
 
 GetFrontpic: ; 51077
@@ -103,21 +155,30 @@ _GetFrontpic: ; 510a5
 	ret
 
 GetFrontpicPointer: ; 510d7
-GLOBAL PicPointers, UnownPicPointers
+GLOBAL PicPointers, PikachuPicPointers, UnownPicPointers
 
 	ld a, [CurPartySpecies]
+	cp PIKACHU
+	jr z, .pikachu
 	cp UNOWN
 	jr z, .unown
 	ld a, [CurPartySpecies]
 	ld d, BANK(PicPointers)
+	ld hl, PicPointers
+	jr .ok
+
+.pikachu
+	ld a, [UnownLetterOrPikachuVariant]
+	ld d, BANK(PikachuPicPointers)
+	ld hl, PikachuPicPointers
 	jr .ok
 
 .unown
-	ld a, [UnownLetter]
+	ld a, [UnownLetterOrPikachuVariant]
 	ld d, BANK(UnownPicPointers)
+	ld hl, UnownPicPointers
 
 .ok
-	ld hl, PicPointers ; UnownPicPointers
 	dec a
 	ld bc, 6
 	call AddNTimes
@@ -202,7 +263,7 @@ GetBackpic: ; 5116c
 
 	ld a, [CurPartySpecies]
 	ld b, a
-	ld a, [UnownLetter]
+	ld a, [UnownLetterOrPikachuVariant]
 	ld c, a
 	ld a, [rSVBK]
 	push af
@@ -210,14 +271,20 @@ GetBackpic: ; 5116c
 	ld [rSVBK], a
 	push de
 
-	; These are assumed to be at the same
-	; address in their respective banks.
-	GLOBAL PicPointers,  UnownPicPointers
-	ld hl, PicPointers ; UnownPicPointers
+	GLOBAL PicPointers, PikachuPicPointers, UnownPicPointers
+	ld hl, PicPointers
 	ld a, b
 	ld d, BANK(PicPointers)
+	cp PIKACHU
+	jr nz, .not_pikachu
+	ld hl, PikachuPicPointers
+	ld a, c
+	ld d, BANK(PikachuPicPointers)
+	jr .ok
+.not_pikachu
 	cp UNOWN
 	jr nz, .ok
+	ld hl, UnownPicPointers
 	ld a, c
 	ld d, BANK(UnownPicPointers)
 .ok

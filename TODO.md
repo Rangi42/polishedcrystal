@@ -57,7 +57,6 @@
 * Design custom animations for new moves
 * Show Pokémon portraits when using field moves
 * Color party and day-care sprites by species
-* Special sprites for Pikachu that know Surf or Fly
 * Yellow Pikachu Surfing music
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
 * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night

@@ -2008,7 +2008,7 @@ wForcedSwitch:: ds 1
 TrainerClass:: ; d233
 	ds 1
 
-UnownLetter:: ; d234
+UnownLetterOrPikachuVariant:: ; d234
 	ds 1
 
 wMoveSelectionMenuType:: ds 1
@@ -2879,8 +2879,8 @@ TempTileMap::
 wPokeAnimSceneIndex:: ds 1
 wPokeAnimPointer:: ds 2
 wPokeAnimSpecies:: ds 1
-wPokeAnimUnownLetter:: ds 1
-wPokeAnimSpeciesOrUnown:: ds 1
+wPokeAnimVariant:: ds 1
+wPokeAnimSpeciesOrVariant:: ds 1
 w2_d16e:: ds 1
 wPokeAnimCoord:: ds 2
 wPokeAnimFrontpicHeight:: ds 1

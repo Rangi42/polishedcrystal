@@ -345,7 +345,7 @@ endr
 	jr nz, .skip_unown
 
 	ld hl, TempMonDVs
-	predef GetUnownLetter
+	predef GetVariant
 	callab UpdateUnownDex
 
 .skip_unown
