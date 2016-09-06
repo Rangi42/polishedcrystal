@@ -5,3 +5,5 @@
 	add_pic PikachuFlyBackpic
 	add_pic PikachuSurfFrontpic
 	add_pic PikachuSurfBackpic
+	add_pic PikachuBothFrontpic
+	add_pic PikachuBothBackpic

@@ -8,16 +8,15 @@
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
 * TMs refresh PP
-* Some trainers use X Spcl. Atk
-* Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-* Fix delay before last text box when Wonder Trading (is this still there?)
 * Headbutt overworld animation looks weird (wrong tile ID?)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
-* Toxic (and other moves?) hits through Dig
 * Per-turn status animations might not always work
+* Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Pokémon overuse Baton Pass (still?)
+* Some trainers use X Spcl. Atk (still?)
 * Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313) (still?)
+* Delay before last text box when Wonder Trading (still?)
 
 
 ## Battle mechanics
@@ -57,6 +56,7 @@
 * Design custom animations for new moves
 * Show Pokémon portraits when using field moves
 * Color party and day-care sprites by species
+* Support nicknames for NPC trainers' Pokémon
 * Yellow Pikachu Surfing music
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
 * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
@@ -72,15 +72,16 @@
 
 ## New content
 
+* Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Use Mmmmmm's B/W Route 12 music for a new location
+* Use White Treehollow music somewhere if possible
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
 * Battle with Veteran/Hacker Rangi in Celadon Mansion once a day
-* Replace some of {Meditate, Conversion2} with {Hail, Energy Ball, Sucker Punch}?
-* Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
+* Add some of {Drill Run, Sucker Punch}?
 
 
 ## New features
