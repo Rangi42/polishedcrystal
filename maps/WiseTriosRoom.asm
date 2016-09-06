@@ -256,7 +256,7 @@ UnknownText_0x98a35:
 	para "The Gong Tower,"
 	line "which was said to"
 
-	para "awaken #mon, and"
+	para "waken #mon, and"
 	line "the Bell Tower,"
 
 	para "where #mon were"

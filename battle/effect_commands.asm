@@ -5064,8 +5064,8 @@ BattleCommand_SleepTarget: ; 35e5c
 	jr nz, .fail
 
 	call AnimateCurrentMove
-	ld b, $3
 
+	ld b, $3
 .random_loop
 	call BattleRandom
 	and b

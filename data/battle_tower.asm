@@ -31,7 +31,7 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	add b
 	ld b, a ; b contains the nr of the trainer
 	and (1 << 7) - 1
-	cp 70
+	cp BATTLETOWER_NUM_TRAINERS
 	jr nc, .resample
 	ld b, a
 
@@ -49,7 +49,7 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	jp .found_trainer
 
 .load_tycoon:
-	ld a, 70
+	ld a, BATTLETOWER_NUM_TRAINERS
 	ld b, a
 
 .found_trainer:
@@ -196,76 +196,106 @@ Function_LoadRandomBattleTowerPkmn: ; 1f8081
 ; 1f814e
 
 BattleTowerTrainers: ; 1f814e
-	db "Hanson@@@@", FISHER
-	db "Sawyer@@@@", POKEMANIAC
-	db "Masuda@@@@", GUITARISTM
-	db "Nickel@@@@", SCIENTIST
-	db "Olson@@@@@", POKEFANM
-	db "Zaborowski", LASS
-	db "Wright@@@@", YOUNGSTER
-	db "Alexander@", HIKER
-	db "Kawakami@@", TEACHER
-	db "Bickett@@@", POKEFANM
-	db "Saito@@@@@", KIMONO_GIRL
-	db "Crawford@@", BOARDER
-	db "Diaz@@@@@@", PICNICKER
-	db "Erickson@@", BIKER
-	db "Fairfield@", JUGGLER
-	db "Hunter@@@@", POKEFANF
-	db "Hill@@@@@@", FIREBREATHER
-	db "Javier@@@@", SWIMMERF
-	db "Kaufman@@@", SWIMMERM
-	db "Lancaster@", SKIER
-	db "McMahill@@", CAMPER
-	db "O'Brien@@@", GENTLEMAN
-	db "Frost@@@@@", BEAUTY
-	db "Morse@@@@@", SUPER_NERD
-	db "Yufune@@@@", BLACKBELT_T
-	db "Rajan@@@@@", COOLTRAINERF
-	db "Rodriguez@", OFFICERM
-	db "Santiago@@", PSYCHIC_T
-	db "Stock@@@@@", POKEFANM
-	db "Thurman@@@", SCIENTIST
-	db "Valentino@", BEAUTY
-	db "Wagner@@@@", CAMPER
-	db "Yates@@@@@", BIRD_KEEPER
-	db "Andrews@@@", PICNICKER
-	db "Bahn@@@@@@", POKEMANIAC
-	db "Mori@@@@@@", SCIENTIST
-	db "Buckman@@@", SAGE
-	db "Cobb@@@@@@", SCHOOLBOY
-	db "Hughes@@@@", FISHER
-	db "Arita@@@@@", KIMONO_GIRL
-	db "Easton@@@@", PSYCHIC_T
-	db "Freeman@@@", CAMPER
-	db "Giese@@@@@", LASS
-	db "Hatcher@@@", GENTLEMAN
-	db "Jackson@@@", POKEFANF
-	db "Kahn@@@@@@", POKEMANIAC
-	db "Leong@@@@@", YOUNGSTER
-	db "Marino@@@@", TEACHER
-	db "Newman@@@@", SAILOR
-	db "Nguyen@@@@", BLACKBELT_T
-	db "Ogden@@@@@", SUPER_NERD
-	db "Park@@@@@@", COOLTRAINERF
-	db "Raine@@@@@", SWIMMERM
-	db "Sells@@@@@", BIRD_KEEPER
-	db "Rockwell@@", BOARDER
-	db "Thornton@@", LASS
-	db "Turner@@@@", OFFICERM
-	db "Van Dyke@@", SKIER
-	db "Wayne@@@@@", SCHOOLBOY
-	db "Meyer@@@@@", SWIMMERF
-	db "Johnson@@@", YOUNGSTER
-	db "Adams@@@@@", GUITARISTM
-	db "Smith@@@@@", BUG_CATCHER
-	db "Tajiri@@@@", BUG_CATCHER
-	db "Baker@@@@@", POKEMANIAC
-	db "Collins@@@", SCIENTIST
-	db "Smart@@@@@", SUPER_NERD
-	db "Dykstra@@@", SWIMMERF
-	db "Eaton@@@@@", BIKER
 	db "Wong@@@@@@", FIREBREATHER
+	db "Valentine@", BEAUTY
+	db "Mateo@@@@@", VETERANM
+	db "Rajan@@@@@", PICNICKER
+	db "Swartz@@@@", VETERANM
+	db "Ethel@@@@@", MEDIUM
+	db "Hamilton@@", VETERANF
+	db "Walter@@@@", ELDER
+	db "Hong@@@@@@", TEACHER
+	db "Drake@@@@@", RICH_BOY
+	db "Wilder@@@@", COWGIRL
+	db "Corey@@@@@", OFFICERM
+	db "Mako@@@@@@", BREEDER
+	db "Vi@@@@@@@@", OFFICERF
+	db "Garrett@@@", JUGGLER
+	db "Ebony@@@@@", COOLTRAINERF
+	db "Abdul@@@@@", COOLTRAINERM
+	db "Dorothy@@@", SKIER
+	db "Sawyer@@@@", POKEMANIAC
+	db "Kafuka@@@@", SCHOOLGIRL
+	db "Hatcher@@@", GENTLEMAN
+	db "Salim@@@@@", ROUGHNECK
+	db "Kubrick@@@", HEX_MANIAC
+	db "Kim@@@@@@@", FIREBREATHER
+	db "Syd@@@@@@@", GUITARISTM
+	db "Hill@@@@@@", COOLTRAINERM
+	db "Mori@@@@@@", POKEFANF
+	db "Jorge@@@@@", DRAGON_TAMER
+	db "Santiago@@", PSYCHIC_T
+	db "Charlie@@@", JUGGLER
+	db "Shirley@@@", POKEFANF
+	db "Emily@@@@@", LASS
+	db "Abed@@@@@@", POKEFANM
+	db "Deedee@@@@", GUITARISTF
+	db "Tajiri@@@@", BUG_CATCHER
+	db "Diaz@@@@@@", PICNICKER
+	db "Oakley@@@@", COWGIRL
+	db "Frost@@@@@", COOLTRAINERM
+	db "Newman@@@@", SAILOR
+	db "Adam@@@@@@", YOUNGSTER
+	db "Chelsea@@@", MEDIUM
+	db "Heinlen@@@", CAMPER
+	db "Eleni@@@@@", BATTLE_GIRL
+	db "Lavigne@@@", SCHOOLGIRL
+	db "Mozi@@@@@@", SAGE
+	db "Cobb@@@@@@", SCHOOLBOY
+	db "Dennett@@@", GENTLEMAN
+	db "Newandyke@", OFFICERM
+	db "Blake@@@@@", YOUNGSTER
+	db "Remy@@@@@@", VETERANF
+	db "Carrie@@@@", LASS
+	db "Pov@@@@@@@", BOARDER
+	db "Hitesh@@@@", POKEMANIAC
+	db "Hughes@@@@", FISHER
+	db "James@@@@@", BOARDER
+	db "Newton@@@@", SCIENTIST
+	db "Lenie@@@@@", SWIMMERF
+	db "Suh@@@@@@@", ELDER
+	db "Nadia@@@@@", BREEDER
+	db "Uri@@@@@@@", PSYCHIC_T
+	db "Rebecca@@@", SKIER
+	db "Argo@@@@@@", BIRD_KEEPER
+	db "Holmes@@@@", PI
+	db "Park@@@@@@", COOLTRAINERF
+	db "Axl@@@@@@@", SUPER_NERD
+	db "Daryl@@@@@", SWIMMERM
+	db "Pirsig@@@@", SAGE
+	db "Kuroki@@@@", HEX_MANIAC
+	db "Ricky@@@@@", BIRD_KEEPER
+	db "Murray@@@@", SAILOR
+	db "Morse@@@@@", SUPER_NERD
+	db "Paul@@@@@@", GUITARISTM
+	db "Angelica@@", BEAUTY
+	db "Buckley@@@", RICH_BOY
+	db "McManus@@@", CAMPER
+	db "Darwin@@@@", BUG_CATCHER
+	db "Annie@@@@@", OFFICERF
+	db "Yufune@@@@", BLACKBELT_T
+	db "Wayne@@@@@", SCHOOLBOY
+	db "Bisom@@@@@", TEACHER
+	db "Sidney@@@@", BIKER
+	db "Nerai@@@@@", HIKER
+	db "Tara@@@@@@", SWIMMERF
+	db "Marc@@@@@@", HIKER
+	db "Laura@@@@@", BATTLE_GIRL
+	db "Zeke@@@@@@", DRAGON_TAMER
+	db "Hopper@@@@", VETERANF
+	db "Sagan@@@@@", SCIENTIST
+	db "Armstrong@", BIKER
+	db "Joan@@@@@@", GUITARISTF
+	db "Phelps@@@@", SWIMMERM
+	db "Andre@@@@@", ROUGHNECK
+	db "Toshi@@@@@", BLACKBELT_T
+	db "Raine@@@@@", COOLTRAINERF
+	db "Chiyo@@@@@", KIMONO_GIRL
+	db "Mordecai@@", PI
+	db "Sunni@@@@@", KIMONO_GIRL
+	db "Santiago@@", FISHER
+	db "Collins@@@", POKEFANM
+	db "Dijkstra@@", VETERANM
 BattleTowerTycoon:
 	db "Palmer@@@@", TOWERTYCOON
 ; 1f8450
@@ -273,7 +303,6 @@ BattleTowerTycoon:
 
 BattleTowerMons: ; 1f8450
 ; 10 groups of 21 mons.
-; TODO: Add missing 7 Pokémon!
 BattleTowerMons1:
 
 	db JOLTEON
@@ -355,6 +384,33 @@ BattleTowerMons1:
 	bigdw 25 ; SAtk
 	bigdw 39 ; SDef
 	db "BURAtuKI-@@"
+
+
+	db WOBBUFFET
+	db FOCUS_BAND
+	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
+	dw 0 ; OT ID
+	dt 1000 ; Exp
+	; Stat exp
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	db $7f, $d7 ; DVs
+	db 20, 20, 25, 5 ; PP
+	db 100 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 10 ; Level
+	db 0, 0 ; Status
+	bigdw 66 ; HP
+	bigdw 66 ; Max HP
+	bigdw 18 ; Atk
+	bigdw 25 ; Def
+	bigdw 19 ; Spd
+	bigdw 18 ; SAtk
+	bigdw 23 ; SDef
+	db "SO-NANSU@@@"
 
 
 	db KANGASKHAN
@@ -1904,6 +1960,33 @@ BattleTowerMons3:
 	db "RINGUMA@@@@"
 
 
+	db PIDGEOT
+	db BRIGHTPOWDER
+	db DRILL_PECK, PURSUIT, AIR_SLASH, SWIFT
+	dw 0 ; OT ID
+	dt 27000 ; Exp
+	; Stat exp
+	bigdw 30000
+	bigdw 30000
+	bigdw 30000
+	bigdw 30000
+	bigdw 30000
+	db $67, $77 ; DVs
+	db 20, 20, 15, 20 ; PP
+	db 0 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 30 ; Level
+	db 0, 0 ; Status
+	bigdw 106 ; HP
+	bigdw 106 ; Max HP
+	bigdw 69 ; Atk
+	bigdw 67 ; Def
+	bigdw 82 ; Spd
+	bigdw 64 ; SAtk
+	bigdw 64 ; SDef
+	db "PIJIOTTO@@@"
+
+
 	db PRIMEAPE
 	db MIRACLEBERRY
 	db LOW_KICK, KARATE_CHOP, REVERSAL, FOCUS_ENERGY
@@ -2122,6 +2205,33 @@ BattleTowerMons4:
 	bigdw 117 ; SAtk
 	bigdw 105 ; SDef
 	db "SUTA-MI-@@@"
+
+
+	db WOBBUFFET
+	db GOLD_BERRY
+	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
+	dw 0 ; OT ID
+	dt 64000 ; Exp
+	; Stat exp
+	bigdw 45000
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	db $bf, $e7 ; DVs
+	db 20, 20, 25, 5 ; PP
+	db 100 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 40 ; Level
+	db 0, 0 ; Status
+	bigdw 233 ; HP
+	bigdw 233 ; Max HP
+	bigdw 62 ; Atk
+	bigdw 85 ; Def
+	bigdw 64 ; Spd
+	bigdw 59 ; SAtk
+	bigdw 79 ; SDef
+	db "SO-NANSU@@@"
 
 
 	db GOLEM
@@ -2531,6 +2641,33 @@ BattleTowerMons5:
 	bigdw 157 ; SAtk
 	bigdw 127 ; SDef
 	db "HERUGA-@@@@"
+
+
+	db YANMEGA
+	db LEFTOVERS
+	db ANCIENTPOWER, AIR_SLASH, TOXIC, PROTECT
+	dw 0 ; OT ID
+	dt 125000 ; Exp
+	; Stat exp
+	bigdw 60000
+	bigdw 60000
+	bigdw 60000
+	bigdw 60000
+	bigdw 55000
+	db $fd, $cf ; DVs
+	db 5, 15, 10, 10 ; PP
+	db 0 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 50 ; Level
+	db 0, 0 ; Status
+	bigdw 189 ; HP
+	bigdw 189 ; Max HP
+	bigdw 126 ; Atk
+	bigdw 134 ; Def
+	bigdw 142 ; Spd
+	bigdw 166 ; SAtk
+	bigdw 106 ; SDef
+	db "MEGAYANMA@@"
 
 
 	db SNORLAX
@@ -3183,6 +3320,33 @@ BattleTowerMons6:
 	bigdw 203 ; SAtk
 	bigdw 161 ; SDef
 	db "SANDA-@@@@@"
+
+
+	db WOBBUFFET
+	db GOLD_BERRY
+	db COUNTER, MIRROR_COAT, DESTINY_BOND, SAFEGUARD
+	dw 0 ; OT ID
+	dt 216000 ; Exp
+	; Stat exp
+	bigdw 50000
+	bigdw 50000
+	bigdw 45000
+	bigdw 50000
+	bigdw 45000
+	db $fd, $ed ; DVs
+	db 20, 20, 5, 25 ; PP
+	db 100 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 60 ; Level
+	db 0, 0 ; Status
+	bigdw 346 ; HP
+	bigdw 346 ; Max HP
+	bigdw 95 ; Atk
+	bigdw 122 ; Def
+	bigdw 94 ; Spd
+	bigdw 92 ; SAtk
+	bigdw 122 ; SDef
+	db "SO-NANSU@@@"
 
 
 	db AERODACTYL
@@ -5141,6 +5305,33 @@ BattleTowerMons9:
 	db "EA-MUDO@@@@"
 
 
+	db TOGEKISS
+	db LEFTOVERS
+	db SOFTBOILED, ANCIENTPOWER, AIR_SLASH, FOCUS_BLAST
+	dw 0 ; OT ID
+	dt 729000 ; Exp
+	; Stat exp
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	bigdw 50000
+	db $fe, $fe ; DVs
+	db 10, 5, 15, 5 ; PP
+	db 100 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 90 ; Level
+	db 0, 0 ; Status
+	bigdw 321 ; HP
+	bigdw 321 ; Max HP
+	bigdw 172 ; Atk
+	bigdw 251 ; Def
+	bigdw 226 ; Spd
+	bigdw 296 ; SAtk
+	bigdw 287 ; SDef
+	db "TOGEKISSU@@"
+
+
 	db FLAREON
 	db MINT_BERRY
 	db HYPER_BEAM, FLAMETHROWER, SHADOW_BALL, ROAR
@@ -5523,6 +5714,33 @@ BattleTowerMons10:
 	db "HAGANE-RU@@"
 
 
+	db PIDGEOT
+	db KINGS_ROCK
+	db DRILL_PECK, STEEL_WING, HURRICANE, TWISTER
+	dw 0 ; OT ID
+	dt 1000000 ; Exp
+	; Stat exp
+	bigdw 55000
+	bigdw 50000
+	bigdw 50000
+	bigdw 55000
+	bigdw 50000
+	db $fd, $cf ; DVs
+	db 20, 25, 10, 20 ; PP
+	db 100 ; Happiness
+	db 0, 0, 0 ; Pokerus, Caught data
+	db 100 ; Level
+	db 0, 0 ; Status
+	bigdw 360 ; HP
+	bigdw 360 ; Max HP
+	bigdw 251 ; Atk
+	bigdw 237 ; Def
+	bigdw 289 ; Spd
+	bigdw 231 ; SAtk
+	bigdw 231 ; SDef
+	db "PIJIOTTO@@@"
+
+
 	db MISDREAVUS
 	db FOCUS_BAND
 	db PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
@@ -5791,3 +6009,4 @@ BattleTowerMons10:
 	bigdw 214 ; SAtk
 	bigdw 214 ; SDef
 	db "RANTA-N@@@@"
+
