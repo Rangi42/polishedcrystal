@@ -1,5 +1,6 @@
 const_value set 2
-	const EMBEDDEDTOWER_STEVEN
+	const EMBEDDEDTOWER_STEVEN1
+	const EMBEDDEDTOWER_STEVEN2
 
 EmbeddedTower_MapScriptHeader:
 .MapTriggers:
@@ -8,64 +9,94 @@ EmbeddedTower_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-EmbeddedTowerStevenScript:
+EmbeddedTowerSteven1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_STEVEN
-	iftrue EmbeddedTowerBeatStevenScript
+	iftrue EmbeddedTowerBeatSteven1Script
 	checkevent EVENT_LISTENED_TO_STEVEN_INTRO
 	iftrue .HeardIntro
-	writetext EmbeddedTowerStevenIntroText
+	writetext EmbeddedTowerSteven1IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_STEVEN_INTRO
 .HeardIntro
-	writetext EmbeddedTowerStevenTowerText
+	writetext EmbeddedTowerSteven1TowerText
 	waitbutton
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iffalse .NotYet
-	writetext EmbeddedTowerStevenChallengeText
+	writetext EmbeddedTowerSteven1ChallengeText
 	yesorno
 	iffalse .Refused
-	writetext EmbeddedTowerStevenYesText
+	writetext EmbeddedTowerSteven1YesText
 	waitbutton
 	closetext
-	winlosstext EmbeddedTowerStevenWinText, 0
-	setlasttalked EMBEDDEDTOWER_STEVEN
+	winlosstext EmbeddedTowerSteven1WinText, 0
+	setlasttalked EMBEDDEDTOWER_STEVEN1
 	loadtrainer STEVEN, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_STEVEN
 	opentext
-	jump EmbeddedTowerBeatStevenScript
+	jump EmbeddedTowerBeatSteven1Script
 
 .NotYet:
-	writetext EmbeddedTowerStevenNotNowText
+	writetext EmbeddedTowerSteven1NotNowText
 	waitbutton
 	closetext
 	end
 
 .Refused:
-	writetext EmbeddedTowerStevenNoText
+	writetext EmbeddedTowerSteven1NoText
 	waitbutton
 	closetext
 	end
 
-EmbeddedTowerBeatStevenScript:
+EmbeddedTowerBeatSteven1Script:
 	checkevent EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 	iftrue .GotMuscleBand
-	writetext EmbeddedTowerStevenItemText
+	writetext EmbeddedTowerSteven1ItemText
 	waitbutton
 	verbosegiveitem MUSCLE_BAND
 	iffalse .Done
 	setevent EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 .GotMuscleBand
-	writetext EmbeddedTowerStevenAfterText
+	writetext EmbeddedTowerSteven1AfterText
 	waitbutton
 .Done:
 	closetext
 	end
 
-EmbeddedTowerStevenIntroText:
+EmbeddedTowerSteven2Script:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_STEVEN
+	iftrue .Beat
+	writetext EmbeddedTowerSteven2ChallengeText
+	yesorno
+	iffalse .Refused
+	writetext EmbeddedTowerSteven2YesText
+	waitbutton
+	closetext
+	winlosstext EmbeddedTowerSteven2WinText, 0
+	setlasttalked EMBEDDEDTOWER_STEVEN2
+	loadtrainer STEVEN, 2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_STEVEN
+	opentext
+.Beat:
+	writetext EmbeddedTowerSteven2AfterText
+	waitbutton
+	closetext
+	end
+
+.Refused:
+	writetext EmbeddedTowerSteven2NoText
+	waitbutton
+	closetext
+	end
+
+EmbeddedTowerSteven1IntroText:
 	text "Hello! I'm Steven."
 	line "Rare stones are"
 	cont "my passion."
@@ -83,7 +114,7 @@ EmbeddedTowerStevenIntroText:
 	line "sometime."
 	done
 
-EmbeddedTowerStevenTowerText:
+EmbeddedTowerSteven1TowerText:
 	text "Steven: I'm here in"
 	line "search of stones"
 	cont "for my collection."
@@ -99,7 +130,7 @@ EmbeddedTowerStevenTowerText:
 	cont "and the sky."
 	done
 
-EmbeddedTowerStevenNotNowText:
+EmbeddedTowerSteven1NotNowText:
 	text "Steven: Your"
 	line "Pokemon are look-"
 	cont "ing pretty good."
@@ -111,7 +142,7 @@ EmbeddedTowerStevenNotNowText:
 	line "battle with me."
 	done
 
-EmbeddedTowerStevenChallengeText:
+EmbeddedTowerSteven1ChallengeText:
 	text "Steven: Your"
 	line "Pokemon are look-"
 	cont "ing pretty good."
@@ -121,7 +152,8 @@ EmbeddedTowerStevenChallengeText:
 	cont "have a battle?"
 	done
 
-EmbeddedTowerStevenNoText:
+EmbeddedTowerSteven1NoText:
+EmbeddedTowerSteven2NoText:
 	text "Steven: Hmm."
 	line "If you change"
 
@@ -129,7 +161,8 @@ EmbeddedTowerStevenNoText:
 	line "be right here."
 	done
 
-EmbeddedTowerStevenYesText:
+EmbeddedTowerSteven1YesText:
+EmbeddedTowerSteven2YesText:
 	text "Steven: I want"
 	line "you to hit me"
 
@@ -137,13 +170,14 @@ EmbeddedTowerStevenYesText:
 	line "Now, bring it!"
 	done
 
-EmbeddedTowerStevenWinText:
+EmbeddedTowerSteven1WinText:
+EmbeddedTowerSteven2WinText:
 	text "You are a truly"
 	line "noble #mon"
 	cont "trainer!"
 	done
 
-EmbeddedTowerStevenItemText:
+EmbeddedTowerSteven1ItemText:
 	text "Steven: Congratu-"
 	line "lations!"
 
@@ -173,11 +207,43 @@ EmbeddedTowerStevenItemText:
 	cont "item."
 	done
 
-EmbeddedTowerStevenAfterText:
+EmbeddedTowerSteven1AfterText:
 	text "Steven: May our"
 	line "paths cross again."
 	done
 
+EmbeddedTowerSteven2ChallengeText:
+	text "Steven: We meet"
+	line "again, <PLAYER>!"
+
+	para "I've found some"
+	line "excellent stones"
+	cont "for my collection."
+
+	para "So what have you"
+	line "been doing?"
+
+	para "You battled the"
+	line "Elite Four and won"
+	cont "again? Great job!"
+
+	para "Why don't we have"
+	line "another battle?"
+	done
+
+EmbeddedTowerSteven2AfterText:
+	text "Steven: I knew you"
+	line "would be strong…"
+
+	para "But I don't regret"
+	line "our battle."
+
+	para "Because each time"
+	line "that I battle you,"
+
+	para "I learn more about"
+	line "#mon!"
+	done
 
 EmbeddedTower_MapEventHeader:
 	; filler
@@ -195,5 +261,6 @@ EmbeddedTower_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
-	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerStevenScript, -1
+	db 2
+	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven1Script, EVENT_EMBEDDED_TOWER_STEVEN_1
+	person_event SPRITE_STEVEN, 11, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven2Script, EVENT_EMBEDDED_TOWER_STEVEN_2

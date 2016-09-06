@@ -12317,6 +12317,60 @@ endc
 	db $ff ; end
 
 ; ================
+
+	; STEVEN
+	db "Steven@"
+	db 3 ; item + moves
+
+	; party
+
+	db 74, SKARMORY, QUICK_CLAW
+		db SPIKES
+		db WHIRLWIND
+		db DRILL_PECK
+		db STEEL_WING
+
+	db 73, FORRETRESS, FOCUS_BAND
+		db EARTHQUAKE
+		db ROLLOUT
+		db EXPLOSION
+		db SPIKES
+
+	db 72, MAGNEZONE, EXPERT_BELT
+		db THUNDERBOLT
+		db FLASH_CANNON
+		db TRI_ATTACK
+		db EXPLOSION
+
+if DEF(FAITHFUL)
+	db 72, SCIZOR, MUSCLE_BAND
+		db SWORDS_DANCE
+		db BULLET_PUNCH
+		db PURSUIT
+		db IRON_HEAD
+else
+	db 72, RHYPERIOR, MUSCLE_BAND
+		db EARTHQUAKE
+		db STONE_EDGE
+		db MEGAHORN
+		db IRON_HEAD
+endc
+
+	db 72, AERODACTYL, KINGS_ROCK
+		db ROCK_SLIDE
+		db CRUNCH
+		db AERIAL_ACE
+		db IRON_HEAD
+
+	db 75, STEELIX, LEFTOVERS
+		db EARTHQUAKE
+		db STONE_EDGE
+		db IRON_HEAD
+		db SANDSTORM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12361,6 +12415,52 @@ CynthiaGroup:
 		db ICE_BEAM
 
 	db 61, GLISCOR, KINGS_ROCK
+		db SWORDS_DANCE
+		db NIGHT_SLASH
+		db X_SCISSOR
+		db SCREECH
+
+	db $ff ; end
+
+; ================
+
+	; CYNTHIA
+	db "Cynthia@"
+	db 3 ; item + moves
+
+	; party
+
+	db 73, TOGEKISS, EXPERT_BELT
+		db AIR_SLASH
+		db FOCUS_BLAST
+		db SOFTBOILED
+		db NASTY_PLOT
+
+	db 72, LEAFEON, FOCUS_BAND
+		db SWORDS_DANCE
+		db SEED_BOMB
+		db DOUBLE_EDGE
+		db ROAR
+
+	db 72, ELECTIVIRE, MUSCLE_BAND
+		db CROSS_CHOP
+		db THUNDERPUNCH
+		db FIRE_PUNCH
+		db LIGHT_SCREEN
+
+	db 72, YANMEGA, QUICK_CLAW
+		db BUG_BUZZ
+		db AIR_SLASH
+		db ANCIENTPOWER
+		db PROTECT
+
+	db 75, KINGDRA, LEFTOVERS
+		db DRAGON_DANCE
+		db OUTRAGE
+		db WATERFALL
+		db ICE_BEAM
+
+	db 74, GLISCOR, KINGS_ROCK
 		db SWORDS_DANCE
 		db NIGHT_SLASH
 		db X_SCISSOR

@@ -517,6 +517,40 @@ Diploma: ; c49f
 
 
 RespawnOneOffs:
+	ld de, EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .SkipSteven
+	ld de, EVENT_EMBEDDED_TOWER_STEVEN_1
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld de, EVENT_EMBEDDED_TOWER_STEVEN_2
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_BEAT_STEVEN
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.SkipSteven:
+	ld de, EVENT_GOT_EXPERT_BELT_FROM_CYNTHIA
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr z, .SkipCynthia
+	ld de, EVENT_MYSTRI_STAGE_CYNTHIA
+	ld b, SET_FLAG
+	call EventFlagAction
+	ld de, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
+	ld b, RESET_FLAG
+	call EventFlagAction
+	ld de, EVENT_BEAT_CYNTHIA
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.SkipCynthia:
 	ld a, ARTICUNO
 	dec a
 	call CheckCaughtMon
