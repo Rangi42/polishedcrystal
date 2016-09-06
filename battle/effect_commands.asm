@@ -1666,16 +1666,16 @@ BattleCommand_CheckHit: ; 34d32
 	call .Substitute
 	jp nz, .Miss
 
-	call .LockOn
-	ret nz
-
-	call .PoisonTypeUsingToxic
-	ret z
-
 	call .FlyDigMoves
 	jp nz, .Miss
 
+	call .LockOn
+	ret nz
+
 	call .ThunderRain
+	ret z
+
+	call .PoisonTypeUsingToxic
 	ret z
 
 	; Perfect-accuracy moves
@@ -1832,15 +1832,10 @@ BattleCommand_CheckHit: ; 34d32
 .PoisonTypeUsingToxic:
 ; Return z if we are a Poison-type using Toxic.
 	call CheckIfUserIsPoisonType
-	jr z, .NotAPoisonType
+	ret nz
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp TOXIC
-	ret
-
-.NotAPoisonType:
-	ld a, 1
-	and a
 	ret
 
 

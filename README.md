@@ -371,6 +371,8 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Acid lowers Sp.Def, not Defense (thanks, kide).
 * Fix: Magby learns Flamethrower at level 40, not 30 (thanks, kide).
 * Fix: 50 TMs → 65 TMs.
+* Fix: Lock-On does not bypass Fly/Dig.
+* Fix: Poison types using Toxic will always hit but not through Fly/Dig.
 * Fix: TMs each have a unique location.
 * Fix: Game Corner games pay out even if you have 9999+ coins.
 * Fix: Roaming legendary beast music.
