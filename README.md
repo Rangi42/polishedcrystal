@@ -368,6 +368,7 @@ These changes have been made since the previous 1.1.2 release. If you build the 
 * Fix: Pink Bow powers up Fairy-type moves (thanks, Pokemaster).
 * Fix: X Special → X Spcl.Atk (thanks, Mmmmmm).
 * Fix: Acid lowers Sp.Def, not Defense (thanks, kide).
+* Fix: Magby learns Flamethrower at level 40, not 30 (thanks, kide).
 * Fix: 50 TMs → 65 TMs.
 * Fix: TMs each have a unique location.
 * Fix: Game Corner games pay out even if you have 9999+ coins.

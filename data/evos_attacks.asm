@@ -4475,7 +4475,7 @@ MagbyEvosAttacks:
 	db 29, FIRE_PUNCH
 	db 33, SUBMISSION ; Lava Plume → RBY TM move
 	db 36, SUNNY_DAY
-	db 30, FLAMETHROWER
+	db 40, FLAMETHROWER
 	db 43, FIRE_BLAST
 	db 0 ; no more level-up moves
 
