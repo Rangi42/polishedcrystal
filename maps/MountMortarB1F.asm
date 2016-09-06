@@ -19,11 +19,11 @@ MountMortarB1FHikerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_DEFENSE_CURL_INTRO
-	iftrue MountMortarB1FTutorMountMortarB1FScript
+	iftrue MountMortarB1FTutorDefenseCurlScript
 	writetext MountMortarB1FHikerText
 	waitbutton
 	setevent EVENT_LISTENED_TO_DEFENSE_CURL_INTRO
-MountMortarB1FTutorMountMortarB1FScript:
+MountMortarB1FTutorDefenseCurlScript:
 	writetext Text_MountMortarB1FTutorDefenseCurl
 	waitbutton
 	checkitem SILVER_LEAF

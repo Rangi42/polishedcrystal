@@ -1465,14 +1465,14 @@ Group21Sprites:
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
+	db SPRITE_RICH_BOY
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 7 walking sprites (6 that walk)
+	; 8 walking sprites (7 that walk)
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
-	; 9 total sprites
-	db SPRITE_SILVER_TROPHY
+	; 10 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY

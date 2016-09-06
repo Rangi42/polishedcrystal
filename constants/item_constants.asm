@@ -210,12 +210,12 @@
 	add_tm CALM_MIND    ; $b9
 	add_tm ROAR         ; $ba
 	add_tm TOXIC        ; $bb
-	add_tm ROLLOUT      ; $bc
+	add_tm HAIL         ; $bc
 	add_tm BULK_UP      ; $bd
 	add_tm SWORDS_DANCE ; $be
 	add_tm HIDDEN_POWER ; $bf
 	add_tm SUNNY_DAY    ; $c0
-	add_tm ICY_WIND     ; $c1
+	add_tm HONE_CLAWS   ; $c1
 	add_tm ICE_BEAM     ; $c2
 	add_tm BLIZZARD     ; $c3
 	add_tm HYPER_BEAM   ; $c4
@@ -237,7 +237,7 @@
 	add_tm MUD_SLAP     ; $d4
 	add_tm DOUBLE_TEAM  ; $d5
 	add_tm REFLECT      ; $d6
-	add_tm SWAGGER      ; $d7
+	add_tm FLASH_CANNON ; $d7
 	add_tm FLAMETHROWER ; $d8
 	add_tm SLUDGE_BOMB  ; $d9
 	add_tm SANDSTORM    ; $da
@@ -256,7 +256,7 @@
 	add_tm SUBSTITUTE   ; $e7
 	add_tm BODY_SLAM    ; $e8
 	add_tm FOCUS_BLAST  ; $e9
-	add_tm FLASH_CANNON ; $ea
+	add_tm ENERGY_BALL  ; $ea
 	add_tm FALSE_SWIPE  ; $eb
 	add_tm SCALD        ; $ec
 	add_tm X_SCISSOR    ; $ed
@@ -293,10 +293,13 @@ NUM_HMS = const_value - HM01
 	add_mt HEADBUTT
 	add_mt HYPER_VOICE
 	add_mt ICE_PUNCH
+	add_mt ICY_WIND
 	add_mt IRON_HEAD
+	add_mt ROLLOUT
 	add_mt SEED_BOMB
 	add_mt SEISMIC_TOSS
 	add_mt SLEEP_TALK
+	add_mt SWAGGER
 	add_mt THUNDERPUNCH
 	add_mt WATER_PULSE
 	add_mt ZAP_CANNON

@@ -1,5 +1,6 @@
 const_value set 2
-	const ROUTE46_POKEFAN_M
+	const ROUTE46_POKEFAN_M1
+	const ROUTE46_POKEFAN_M2
 	const ROUTE46_YOUNGSTER
 	const ROUTE46_LASS
 	const ROUTE46_FRUIT_TREE1
@@ -12,6 +13,45 @@ Route46_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+Route46HikerScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_ROLLOUT_INTRO
+	iftrue Route46TutorRoute46Script
+	writetext Route46HikerText
+	waitbutton
+	setevent EVENT_LISTENED_TO_ROLLOUT_INTRO
+Route46TutorRoute46Script:
+	writetext Text_Route46TutorRollout
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_Route46TutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte ROLLOUT
+	writetext Text_Route46TutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_Route46TutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	writetext Text_Route46TutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_Route46TutorTaught
+	waitbutton
+	closetext
+	end
 
 TrainerCamperTed:
 	trainer EVENT_BEAT_CAMPER_TED, CAMPER, TED, CamperTedSeenText, CamperTedBeatenText, 0, CamperTedScript
@@ -170,6 +210,54 @@ FruitTreeScript_0x1a978f:
 FruitTreeScript_0x1a9791:
 	fruittree FRUITTREE_ROUTE_46_2
 
+Route46HikerText:
+	text "A Donphan charged"
+	line "at me and I roll-"
+
+	para "ed all the way"
+	line "down here!"
+
+	para "Still, it taught"
+	line "me a lesson…"
+
+	para "Be careful around"
+	line "angry Pokemon!"
+	done
+
+Text_Route46TutorRollout:
+	text "I'll teach your"
+	line "#mon how to"
+
+	para "use Rollout for"
+	line "a Silver Leaf."
+	done
+
+Text_Route46TutorNoSilverLeaf:
+	text "Ah well, you don't"
+	line "have a Silver"
+	cont "Leaf."
+	done
+
+Text_Route46TutorQuestion:
+	text "Should I teach"
+	line "your #mon"
+	cont "Rollout?"
+	done
+
+Text_Route46TutorRefused:
+	text "Suit yourself."
+	done
+
+Text_Route46TutorClear:
+	text ""
+	done
+
+Text_Route46TutorTaught:
+	text "All done! Your"
+	line "#mon learned"
+	cont "to use Rollout!"
+	done
+
 HikerBaileySeenText:
 	text "Awright! I'll show"
 	line "you the power of"
@@ -268,7 +356,8 @@ Route46_MapEventHeader:
 	signpost 27, 9, SIGNPOST_READ, Route46Sign
 
 .PersonEvents:
-	db 6
+	db 7
+	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
 	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
 	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
 	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1

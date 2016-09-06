@@ -1,4 +1,5 @@
 const_value set 2
+	const CELADONCITY_RICH_BOY
 	const CELADONCITY_FISHER
 	const CELADONCITY_POLIWRATH
 	const CELADONCITY_TEACHER1
@@ -23,6 +24,45 @@ CeladonCity_MapScriptHeader:
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
 	return
+
+CeladonCityScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_SWAGGER_INTRO
+	iftrue CeladonCityTutorSwaggerScript
+	writetext CeladonCityRichBoyText
+	waitbutton
+	setevent EVENT_LISTENED_TO_SWAGGER_INTRO
+CeladonCityTutorSwaggerScript:
+	writetext Text_CeladonCityTutorSwagger
+	waitbutton
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	writetext Text_CeladonCityTutorQuestion
+	yesorno
+	iffalse .TutorRefused
+	writebyte SWAGGER
+	writetext Text_CeladonCityTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_CeladonCityTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	writetext Text_CeladonCityTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_CeladonCityTutorTaught
+	waitbutton
+	closetext
+	end
 
 FisherScript_0x1a9f43:
 	jumptextfaceplayer UnknownText_0x1a9f7d
@@ -82,6 +122,56 @@ CeladonCityPokeCenterSign:
 
 CeladonCityHiddenPpUp:
 	dwb EVENT_CELADON_CITY_HIDDEN_PP_UP, PP_UP
+
+CeladonCityRichBoyText:
+	text "Is my suit not"
+	line "bedazzling?"
+
+	para "It turns heads"
+	line "when I swagger"
+	cont "down the street!"
+
+	para "The people love"
+	line "me!"
+
+	para "I'm in a generous"
+	line "mood today."
+	done
+
+Text_CeladonCityTutorSwagger:
+	text "I shall teach"
+	line "your #mon to"
+
+	para "Swagger like me"
+	line "for merely a"
+	cont "Silver Leaf."
+	done
+
+Text_CeladonCityTutorNoSilverLeaf:
+	text "…You have no"
+	line "Silver Leaf?"
+	cont "What a pity."
+	done
+
+Text_CeladonCityTutorQuestion:
+	text "You wish me to"
+	line "teach your #-"
+	cont "mon Swagger?"
+	done
+
+Text_CeladonCityTutorRefused:
+	text "Then goodbye!"
+	done
+
+Text_CeladonCityTutorClear:
+	text ""
+	done
+
+Text_CeladonCityTutorTaught:
+	text "Behold! Your #-"
+	line "mon has learned"
+	cont "to Swagger!"
+	done
 
 UnknownText_0x1a9f7d:
 	text "This Poliwrath is"
@@ -270,7 +360,8 @@ CeladonCity_MapEventHeader:
 	signpost 21, 37, SIGNPOST_ITEM, CeladonCityHiddenPpUp
 
 .PersonEvents:
-	db 10
+	db 11
+	person_event SPRITE_RICH_BOY, 17, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
 	person_event SPRITE_FISHER, 11, 26, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9f43, -1
 	person_event SPRITE_POLIWRATH, 11, 27, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
 	person_event SPRITE_TEACHER, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f50, -1
@@ -278,6 +369,6 @@ CeladonCity_MapEventHeader:
 	person_event SPRITE_GRAMPS, 31, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9f56, -1
 	person_event SPRITE_YOUNGSTER, 13, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9f59, -1
 	person_event SPRITE_YOUNGSTER, 33, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9f5c, -1
-	person_event SPRITE_TEACHER, 14, 6, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f5f, -1
+	person_event SPRITE_TEACHER, 13, 8, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f5f, -1
 	person_event SPRITE_LASS, 22, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x1a9f62, -1
 	person_event SPRITE_BIG_SNORLAX, 10, 41, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX

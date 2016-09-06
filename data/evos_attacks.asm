@@ -2804,7 +2804,7 @@ ChikoritaEvosAttacks:
 	db 12, MORNING_SUN ; Synthesis → similar move
 	db 17, REFLECT
 	db 20, FAIRY_WIND ; Magical Leaf → new move
-	db 23, SEED_BOMB ; Natural Gift → tutor move
+	db 23, ENERGY_BALL ; Natural Gift → tutor move
 	db 28, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 31, LIGHT_SCREEN
 	db 34, BODY_SLAM
@@ -2826,7 +2826,7 @@ BayleefEvosAttacks:
 	db 12, MORNING_SUN ; Synthesis → similar move
 	db 18, REFLECT
 	db 22, FAIRY_WIND ; Magical Leaf → new move
-	db 26, SEED_BOMB ; Natural Gift → tutor move
+	db 26, ENERGY_BALL ; Natural Gift → tutor move
 	db 32, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 36, LIGHT_SCREEN
 	db 40, BODY_SLAM
@@ -2847,7 +2847,7 @@ MeganiumEvosAttacks:
 	db 12, MORNING_SUN ; Synthesis → similar move
 	db 18, REFLECT
 	db 22, FAIRY_WIND ; Magical Leaf → new move
-	db 26, SEED_BOMB ; Natural Gift → tutor move
+	db 26, ENERGY_BALL ; Natural Gift → tutor move
 	db 32, PETAL_DANCE
 	db 34, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 40, LIGHT_SCREEN
@@ -3613,10 +3613,10 @@ LeafeonEvosAttacks:
 	db 1, TACKLE
 	db 1, LEER ; Tail Whip → similar move
 	db 5, SAND_ATTACK
-	db 9, ABSORB ; Razor Leaf → new move
+	db 9, RAZOR_LEAF
 	db 13, QUICK_ATTACK
 	db 17, BITE ; Grass Whistle → new move
-	db 20, RAZOR_LEAF ; Magical Leaf → Razor Leaf
+	db 20, ENERGY_BALL ; Magical Leaf → TM move
 	db 25, GIGA_DRAIN
 	db 29, SWORDS_DANCE
 	db 33, MORNING_SUN ; Synthesis → similar move
@@ -4701,7 +4701,7 @@ CelebiEvosAttacks:
 	db 1, RECOVER
 	db 1, METRONOME ; Heal Bell → new move
 	db 10, SAFEGUARD
-	db 19, GIGA_DRAIN ; Magical Leaf → TM move
+	db 19, ENERGY_BALL ; Magical Leaf → TM move
 	db 28, ANCIENTPOWER
 	db 37, BATON_PASS
 	db 46, PSYCHIC_M ; Natural Gift → TM move
