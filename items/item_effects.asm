@@ -3135,11 +3135,14 @@ Ball_NuzlockeFailureMessage:
 	ld hl, Ball_NuzlockeFailureText
 	call PrintText
 
+	ld a, [CurItem]
+	cp PARK_BALL
+	ret z
+
 	; Item wasn't used.
 	ld a, $2
 	ld [wItemEffectSucceeded], a
 	ret
-; f7e8
 
 Revive_NuzlockeFailureMessage:
 	ld hl, Revive_NuzlockeFailureText
