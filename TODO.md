@@ -14,6 +14,7 @@
 * Headbutt overworld animation looks weird (wrong tile ID?)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
+* Toxic (and other moves?) hits through Dig
 * Per-turn status animations might not always work
 * Pokémon overuse Baton Pass (still?)
 * Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313) (still?)
