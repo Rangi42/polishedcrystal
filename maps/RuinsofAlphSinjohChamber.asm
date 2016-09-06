@@ -105,7 +105,7 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $9, $3, 12, RUINS_OF_ALPH_OUTSIDE
+	warp_def $9, $5, 12, RUINS_OF_ALPH_OUTSIDE
 	warp_def $9, $4, 12, RUINS_OF_ALPH_OUTSIDE
 
 .XYTriggers:
@@ -113,16 +113,16 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 2, 3, SIGNPOST_READ, RuinsofAlphSinjohChamberSignpost
-	signpost 3, 2, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
+	signpost 2, 5, SIGNPOST_READ, RuinsofAlphSinjohChamberSignpost
 	signpost 3, 4, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
+	signpost 3, 6, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_UNOWN_W, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
-	person_event SPRITE_UNOWN_A, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
-	person_event SPRITE_UNOWN_R, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
-	person_event SPRITE_UNOWN_P, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
+	person_event SPRITE_UNOWN_W, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
+	person_event SPRITE_UNOWN_A, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
+	person_event SPRITE_UNOWN_R, 5, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
+	person_event SPRITE_UNOWN_P, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
 
 PlayUnownSound1:
 	call SFXChannelsOff

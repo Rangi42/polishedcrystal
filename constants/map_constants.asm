@@ -70,7 +70,7 @@ MAP_NONE   EQU 0
 	mapgroup RUINS_OF_ALPH_KABUTO_WORD_ROOM,              7, 10 ; 34
 	mapgroup RUINS_OF_ALPH_OMANYTE_WORD_ROOM,             8, 10 ; 35
 	mapgroup RUINS_OF_ALPH_AERODACTYL_WORD_ROOM,          7, 10 ; 36
-	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  4 ; 37
+	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  5 ; 37
 	mapgroup UNION_CAVE_1F,                              18, 10 ; 38
 	mapgroup UNION_CAVE_B1F,                             18, 10 ; 39
 	mapgroup UNION_CAVE_B2F,                             18, 10 ; 40
