@@ -268,6 +268,7 @@ BattleAnimations::
 	dw BattleAnim_Par
 	dw BattleAnim_InLove
 	dw BattleAnim_InSandstorm
+	dw BattleAnim_InHail
 	dw BattleAnim_InNightmare
 	dw BattleAnim_InWhirlpool
 	dw BattleAnim_Miss
@@ -618,6 +619,7 @@ BattleAnim_InLove:
 	anim_ret
 
 BattleAnim_InSandstorm:
+BattleAnim_InHail: ; TODO: design new animation for in Hail
 	anim_1gfx ANIM_GFX_POWDER
 	anim_obj ANIM_OBJ_A2,  11, 0,   0, 0, $0
 	anim_wait 8
