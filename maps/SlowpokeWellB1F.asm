@@ -226,6 +226,12 @@ TrainerGruntM29SlowpokeProfitText:
 Proton2SeenText:
 	text "What do you want?"
 
+	para "I'm known as the"
+	line "scariest and"
+
+	para "cruelest guy in"
+	line "Team Rocket…"
+
 	para "If you interrupt"
 	line "our work, don't"
 	cont "expect any mercy!"
