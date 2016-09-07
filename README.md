@@ -23,9 +23,11 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
 * [Pokémon Polished Crystal 2.0.0](patches/polishedcrystal-2.0.0.ips)  
-  (Patched ROM `md5: TODO`)
+  (IPS patch file `md5: 25ceb4c59163eec39a37b5449cd28478`)  
+  (Patched GBC ROM `md5: 6ecb7d3e80d894523f45a1155bcf7732`)
 * [Pokémon Polished Crystal (Faithful) 2.0.0](patches/polishedcrystal-faithful-2.0.0.ips)  
-  (Patched ROM `md5: TODO`)
+  (IPS patch file `md5: 1c6b9c74bc8fdbc0f9d8b4d9a852366c`)  
+  (Patched GBC ROM `md5: 353f387a1a7b88a58d35fd2f5059e792`)
 
 
 ## Features
