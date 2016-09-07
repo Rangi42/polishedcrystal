@@ -14,15 +14,15 @@
 
 	map ROUTE_4
 	db 4 percent ; encounter rate
-	db 45, MAGIKARP
-	db 50, POLIWAG
-	db 45, POLIWHIRL
+	db 55, MAGIKARP
+	db 60, POLIWAG
+	db 55, POLIWHIRL
 
 	map ROUTE_6
 	db 2 percent ; encounter rate
-	db 40, PSYDUCK
 	db 45, PSYDUCK
-	db 40, GOLDUCK
+	db 50, PSYDUCK
+	db 45, GOLDUCK
 
 	map ROUTE_9
 	db 4 percent ; encounter rate
@@ -33,56 +33,56 @@
 	map ROUTE_10_NORTH
 	db 4 percent ; encounter rate
 	db 47, MAGIKARP
-	db 42, PSYDUCK
-	db 47, GOLDUCK
+	db 47, PSYDUCK
+	db 52, GOLDUCK
 
 	map ROUTE_12
 	db 6 percent ; encounter rate
-	db 45, TENTACOOL
-	db 50, QUAGSIRE
-	db 50, TENTACRUEL
+	db 48, TENTACOOL
+	db 52, QUAGSIRE
+	db 54, TENTACRUEL
 
 	map ROUTE_13
 	db 6 percent ; encounter rate
-	db 45, TENTACOOL
-	db 50, QUAGSIRE
-	db 50, TENTACRUEL
+	db 49, TENTACOOL
+	db 53, QUAGSIRE
+	db 55, TENTACRUEL
 
 	map ROUTE_19
 	db 6 percent ; encounter rate
-	db 45, TENTACOOL
-	db 50, TENTACOOL
-	db 50, TENTACRUEL
+	db 54, TENTACOOL
+	db 56, TENTACOOL
+	db 58, TENTACRUEL
 
 	map ROUTE_20
 	db 6 percent ; encounter rate
-	db 45, TENTACOOL
-	db 50, TENTACOOL
-	db 50, TENTACRUEL
+	db 54, TENTACOOL
+	db 56, TENTACOOL
+	db 58, TENTACRUEL
 
 	map ROUTE_21
 	db 6 percent ; encounter rate
-	db 45, TENTACOOL
-	db 50, TENTACOOL
-	db 50, TENTACRUEL
+	db 54, TENTACOOL
+	db 56, TENTACOOL
+	db 58, TENTACRUEL
 
 	map ROUTE_22
 	db 2 percent ; encounter rate
-	db 45, MAGIKARP
-	db 45, POLIWAG
-	db 50, POLIWHIRL
+	db 54, MAGIKARP
+	db 56, POLIWAG
+	db 58, POLIWHIRL
 
 	map ROUTE_24
 	db 4 percent ; encounter rate
-	db 42, MAGIKARP
-	db 47, POLIWAG
-	db 42, POLIWHIRL
+	db 48, MAGIKARP
+	db 50, POLIWAG
+	db 52, POLIWHIRL
 
 	map ROUTE_25
 	db 4 percent ; encounter rate
-	db 42, MAGIKARP
-	db 47, POLIWAG
-	db 42, POLIWHIRL
+	db 48, MAGIKARP
+	db 50, POLIWAG
+	db 52, POLIWHIRL
 
 	map ROUTE_26
 	db 6 percent ; encounter rate
@@ -98,92 +98,92 @@
 
 	map ROUTE_28
 	db 2 percent ; encounter rate
-	db 50, POLIWHIRL
-	db 55, POLIWHIRL
-	db 50, POLIWRATH
+	db 60, POLIWHIRL
+	db 65, POLIWHIRL
+	db 65, POLIWRATH
 
 	map PALLET_TOWN
 	db 6 percent ; encounter rate
-	db 45, TENTACOOL
-	db 40, TENTACOOL
-	db 45, TENTACRUEL
+	db 55, TENTACOOL
+	db 50, TENTACOOL
+	db 55, TENTACRUEL
 
 	map VIRIDIAN_CITY
 	db 2 percent ; encounter rate
-	db 45, POLIWAG
-	db 40, POLIWAG
-	db 45, POLIWHIRL
+	db 55, POLIWAG
+	db 50, POLIWAG
+	db 55, POLIWHIRL
 
 	map CERULEAN_CITY
 	db 4 percent ; encounter rate
-	db 45, MAGIKARP
-	db 40, POLIWAG
-	db 45, POLIWHIRL
+	db 55, MAGIKARP
+	db 50, POLIWAG
+	db 55, POLIWHIRL
 
 	map VERMILION_CITY
-	db 6 percent ; encounter rate
-	db 35, TENTACOOL
-	db 30, TENTACOOL
-	db 35, TENTACRUEL
-
-	map CELADON_CITY
-	db 2 percent ; encounter rate
-	db 40, GRIMER
-	db 45, GRIMER
-	db 45, MUK
-
-	map FUCHSIA_CITY
-	db 2 percent ; encounter rate
-	db 40, MAGIKARP
-	db 45, MAGIKARP
-	db 40, MAGIKARP
-
-	map CINNABAR_ISLAND
 	db 6 percent ; encounter rate
 	db 45, TENTACOOL
 	db 40, TENTACOOL
 	db 45, TENTACRUEL
 
+	map CELADON_CITY
+	db 2 percent ; encounter rate
+	db 55, GRIMER
+	db 50, GRIMER
+	db 55, MUK
+
+	map FUCHSIA_CITY
+	db 2 percent ; encounter rate
+	db 55, MAGIKARP
+	db 50, MAGIKARP
+	db 55, MAGIKARP
+
+	map CINNABAR_ISLAND
+	db 6 percent ; encounter rate
+	db 55, TENTACOOL
+	db 50, TENTACOOL
+	db 55, TENTACRUEL
+
 	map CERULEAN_CAVE_1F
 	db 6 percent ; encounter rate
-	db 55, SLOWBRO
-	db 56, GOLDUCK
-	db 57, GYARADOS
+	db 60, SLOWBRO
+	db 63, GOLDUCK
+	db 66, GYARADOS
 
 	map CERULEAN_CAVE_B1F
 	db 6 percent ; encounter rate
-	db 55, SLOWKING
-	db 56, GOLDUCK
-	db 57, GYARADOS
+	db 60, SLOWKING
+	db 63, GOLDUCK
+	db 66, GYARADOS
 
 	map SAFARI_ZONE_HUB
 	db 6 percent ; encounter rate
-	db 45, SLOWBRO
-	db 45, GOLDUCK
+	db 55, SLOWBRO
+	db 55, GOLDUCK
 	db 10, SQUIRTLE
 
 	map SAFARI_ZONE_EAST
 	db 6 percent ; encounter rate
-	db 45, SLOWBRO
-	db 45, GOLDUCK
+	db 55, SLOWBRO
+	db 55, GOLDUCK
 	db 10, SQUIRTLE
 
 	map SAFARI_ZONE_NORTH
 	db 6 percent ; encounter rate
-	db 45, SLOWBRO
-	db 45, GOLDUCK
+	db 55, SLOWBRO
+	db 55, GOLDUCK
 	db 40, DRAGONAIR
 
 	map SEAFOAM_ISLANDS_B4F
 	db 6 percent ; encounter rate
-	db 45, SEEL
-	db 45, HORSEA
-	db 40, SLOWBRO
+	db 55, SEEL
+	db 55, HORSEA
+	db 60, SLOWBRO
 
 	map NAVEL_ROCK_OUTSIDE
 	db 6 percent ; encounter rate
-	db 50, TENTACRUEL
-	db 50, STARMIE
-	db 50, LANTURN
+	db 80, TENTACRUEL
+	db 80, STARMIE
+	db 80, LANTURN
 
 	db -1 ; end

@@ -1029,110 +1029,110 @@
 	map SILVER_CAVE_ROOM_1
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 54, GRAVELER
-	db 54, URSARING
-	db 53, ONIX
-	db 55, MAGMAR
-	db 55, GOLBAT
-	db 15, LARVITAR
-	db 15, LARVITAR
+	db 72, GRAVELER
+	db 72, URSARING
+	db 70, ONIX
+	db 74, MAGMAR
+	db 74, GOLBAT
+	db 75, PUPITAR
+	db 75, PUPITAR
 	; day
-	db 54, GRAVELER
-	db 54, URSARING
-	db 53, ONIX
-	db 55, MAGMAR
-	db 55, GOLBAT
-	db 15, LARVITAR
-	db 15, LARVITAR
+	db 72, GRAVELER
+	db 72, URSARING
+	db 70, ONIX
+	db 74, MAGMAR
+	db 74, GOLBAT
+	db 75, PUPITAR
+	db 75, PUPITAR
 	; nite
-	db 54, GRAVELER
-	db 54, GOLBAT
-	db 53, ONIX
-	db 53, GOLBAT
-	db 55, GOLDUCK
-	db 56, GOLBAT
-	db 56, GOLBAT
+	db 72, GRAVELER
+	db 72, GOLBAT
+	db 70, ONIX
+	db 74, GOLBAT
+	db 74, GOLDUCK
+	db 75, GOLBAT
+	db 75, GOLBAT
 
 	map SILVER_CAVE_ROOM_2
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 58, GOLBAT
-	db 58, MACHOKE
-	db 57, URSARING
-	db 56, PARASECT
-	db 58, PARASECT
-	db 59, STEELIX
-	db 20, LARVITAR
+	db 74, GOLBAT
+	db 74, MACHOKE
+	db 72, URSARING
+	db 76, PARASECT
+	db 76, PARASECT
+	db 77, STEELIX
+	db 77, PUPITAR
 	; day
-	db 58, GOLBAT
-	db 58, MACHOKE
-	db 57, URSARING
-	db 56, PARASECT
-	db 58, PARASECT
-	db 59, STEELIX
-	db 20, LARVITAR
+	db 74, GOLBAT
+	db 74, MACHOKE
+	db 72, URSARING
+	db 76, PARASECT
+	db 76, PARASECT
+	db 77, STEELIX
+	db 77, PUPITAR
 	; nite
-	db 58, GOLBAT
-	db 58, GOLDUCK
-	db 56, GOLBAT
-	db 56, PARASECT
-	db 58, PARASECT
-	db 55, MISDREAVUS
-	db 55, MISDREAVUS
+	db 74, GOLBAT
+	db 74, GOLDUCK
+	db 72, GOLBAT
+	db 76, PARASECT
+	db 76, PARASECT
+	db 77, MISDREAVUS
+	db 77, MISDREAVUS
 
 	map SILVER_CAVE_ROOM_3
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 61, GOLBAT
-	db 58, ONIX
-	db 58, GRAVELER
-	db 60, URSARING
-	db 62, STEELIX
-	db 20, LARVITAR
-	db 20, PUPITAR
+	db 76, CROBAT
+	db 76, ONIX
+	db 74, GOLEM
+	db 78, URSARING
+	db 78, STEELIX
+	db 79, PUPITAR
+	db 80, TYRANITAR
 	; day
-	db 61, GOLBAT
-	db 58, ONIX
-	db 58, GRAVELER
-	db 60, URSARING
-	db 62, STEELIX
-	db 20, LARVITAR
-	db 20, PUPITAR
+	db 76, CROBAT
+	db 76, ONIX
+	db 74, GOLEM
+	db 78, URSARING
+	db 78, STEELIX
+	db 79, PUPITAR
+	db 80, TYRANITAR
 	; nite
-	db 61, GOLBAT
-	db 58, ONIX
-	db 58, GRAVELER
-	db 59, GOLBAT
-	db 62, STEELIX
-	db 55, GOLDUCK
-	db 63, GOLBAT
+	db 76, CROBAT
+	db 76, ONIX
+	db 74, GOLEM
+	db 78, CROBAT
+	db 78, STEELIX
+	db 79, GOLDUCK
+	db 80, TYRANITAR
 
 	map SILVER_CAVE_ITEM_ROOMS
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 58, GOLBAT
-	db 56, GOLBAT
-	db 60, GOLBAT
-	db 56, PARASECT
-	db 58, PARASECT
-	db 60, PARASECT
-	db 62, PARASECT
+	db 72, GOLBAT
+	db 72, GOLBAT
+	db 74, CROBAT
+	db 76, PARASECT
+	db 76, GRAVELER
+	db 77, GRAVELER
+	db 77, PARASECT
 	; day
-	db 58, GOLBAT
-	db 56, GOLBAT
-	db 60, GOLBAT
-	db 56, PARASECT
-	db 58, PARASECT
-	db 60, PARASECT
-	db 62, PARASECT
+	db 72, GOLBAT
+	db 72, GOLBAT
+	db 74, CROBAT
+	db 76, PARASECT
+	db 76, GRAVELER
+	db 77, GRAVELER
+	db 77, PARASECT
 	; nite
-	db 55, MISDREAVUS
-	db 58, GOLBAT
-	db 60, GOLBAT
-	db 56, PARASECT
-	db 58, PARASECT
-	db 60, PARASECT
-	db 62, PARASECT
+	db 75, MISDREAVUS
+	db 72, GOLBAT
+	db 74, CROBAT
+	db 76, PARASECT
+	db 76, GRAVELER
+	db 77, GRAVELER
+	db 77, PARASECT
 
 	map DARK_CAVE_VIOLET_ENTRANCE
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
@@ -1704,29 +1704,29 @@
 	map SILVER_CAVE_OUTSIDE
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 53, TANGELA
-	db 54, PONYTA
-	db 54, ARBOK
-	db 56, RAPIDASH
-	db 55, DODRIO
-	db 55, SKARMORY
-	db 55, URSARING
+	db 69, TANGELA
+	db 70, PONYTA
+	db 71, ARBOK
+	db 74, RAPIDASH
+	db 73, DODRIO
+	db 75, SKARMORY
+	db 75, URSARING
 	; day
-	db 53, TANGELA
-	db 54, PONYTA
-	db 54, ARBOK
-	db 56, RAPIDASH
-	db 55, DODRIO
-	db 55, SKARMORY
-	db 55, URSARING
+	db 69, TANGELA
+	db 70, PONYTA
+	db 71, ARBOK
+	db 74, RAPIDASH
+	db 73, DODRIO
+	db 75, SKARMORY
+	db 75, URSARING
 	; nite
-	db 53, TANGELA
-	db 54, POLIWHIRL
-	db 54, GOLBAT
-	db 56, POLIWHIRL
-	db 56, HOUNDOOM
-	db 55, SNEASEL
-	db 55, SNEASEL
+	db 69, TANGELA
+	db 70, POLIWHIRL
+	db 71, GOLBAT
+	db 74, POLIWHIRL
+	db 73, HOUNDOOM
+	db 75, SNEASEL
+	db 75, SNEASEL
 
 	map YELLOW_FOREST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

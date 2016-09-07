@@ -36,7 +36,7 @@ Lugia:
 	closetext
 	setevent EVENT_FOUGHT_LUGIA
 	writecode VAR_BATTLETYPE, BATTLETYPE_LUGIA
-	loadwildmon LUGIA, 60
+	loadwildmon LUGIA, 75
 	startbattle
 	disappear WHIRLISLANDLUGIACHAMBER_LUGIA
 	reloadmapafterbattle

@@ -80,9 +80,9 @@
 
 	map SILVER_CAVE_ROOM_2
 	db 2 percent ; encounter rate
-	db 35, SEADRA
-	db 35, GOLDUCK
-	db 35, KINGDRA
+	db 75, SEADRA
+	db 75, GOLDUCK
+	db 75, KINGDRA
 
 	map DARK_CAVE_VIOLET_ENTRANCE
 	db 2 percent ; encounter rate
@@ -254,9 +254,9 @@
 
 	map SILVER_CAVE_OUTSIDE
 	db 2 percent ; encounter rate
-	db 35, POLIWHIRL
-	db 40, POLIWHIRL
-	db 35, POLIWAG
+	db 70, POLIWHIRL
+	db 75, POLIWRATH
+	db 70, POLIWHIRL
 
 	map YELLOW_FOREST
 	db 6 percent ; encounter rate

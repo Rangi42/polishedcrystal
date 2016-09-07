@@ -2653,8 +2653,8 @@ ArticunoEvosAttacks:
 	db 15, ICE_SHARD
 	db 22, LOCK_ON ; Mind Reader → similar move
 	db 29, ANCIENTPOWER
-	db 36, ICE_BEAM ; Agility → Ice Beam
-	db 43, AGILITY ; Ice Beam → Agility
+	db 36, AGILITY
+	db 43, ICE_BEAM
 	db 50, AIR_SLASH ; Reflect → new move
 	db 57, HAIL
 	db 64, REFLECT ; Tailwind → Reflect
@@ -2673,8 +2673,8 @@ ZapdosEvosAttacks:
 	db 15, PROTECT ; Detect → similar move
 	db 22, LOCK_ON ; Pluck → new move
 	db 29, ANCIENTPOWER
-	db 36, THUNDERBOLT ; Charge → TM move
-	db 43, AGILITY
+	db 36, AGILITY ; Charge → Agility
+	db 43, THUNDERBOLT ; Agility → TM move
 	db 50, DRILL_PECK ; Discharge → Drill Peck
 	db 57, RAIN_DANCE
 	db 64, LIGHT_SCREEN
@@ -2693,8 +2693,8 @@ MoltresEvosAttacks:
 	db 15, SAFEGUARD ; Agility → Safeguard
 	db 22, ENDURE
 	db 29, ANCIENTPOWER
-	db 36, FLAMETHROWER
-	db 43, AGILITY ; Safeguard → Agility
+	db 36, AGILITY ; Flamethrower → Agility
+	db 43, FLAMETHROWER ; Safeguard → Flamethrower
 	db 50, AIR_SLASH
 	db 57, SUNNY_DAY
 	db 64, WILL_O_WISP ; Heat Wave → event move
@@ -2809,7 +2809,7 @@ ChikoritaEvosAttacks:
 	db 31, LIGHT_SCREEN
 	db 34, BODY_SLAM
 	db 39, SAFEGUARD
-	db 42, HEAL_BELL ; Aromatherapy → similar move
+	db 42, PLAY_ROUGH ; Aromatherapy → new move
 	db 45, SOLAR_BEAM
 	db 48, CALM_MIND ; new move
 	db 51, OUTRAGE ; HGSS tutor move
@@ -2831,7 +2831,7 @@ BayleefEvosAttacks:
 	db 36, LIGHT_SCREEN
 	db 40, BODY_SLAM
 	db 43, SAFEGUARD
-	db 47, HEAL_BELL ; Aromatherapy → similar move
+	db 47, PLAY_ROUGH ; Aromatherapy → new move
 	db 51, SOLAR_BEAM
 	db 54, CALM_MIND ; new move
 	db 58, OUTRAGE ; HGSS tutor move
@@ -2853,7 +2853,7 @@ MeganiumEvosAttacks:
 	db 40, LIGHT_SCREEN
 	db 46, BODY_SLAM
 	db 50, SAFEGUARD
-	db 56, HEAL_BELL ; Aromatherapy → similar move
+	db 56, PLAY_ROUGH ; Aromatherapy → new move
 	db 62, SOLAR_BEAM
 	db 66, CALM_MIND ; new move
 	db 72, OUTRAGE ; HGSS tutor move
@@ -4663,12 +4663,12 @@ LugiaEvosAttacks:
 	db 15, TWISTER ; Dragon Rush → HGSS tutor move
 	db 23, EXTRASENSORY
 	db 29, RAIN_DANCE
-	db 37, SAFEGUARD ; Hydro Pump → Safeguard
-	db 43, AEROBLAST
-	db 50, RECOVER ; Punishment → Recover
+	db 37, HYDRO_PUMP
+	db 43, DRAGON_PULSE ; Aeroblast → TM move
+	db 50, AEROBLAST ; Punishment → Aeroblast
 	db 57, ANCIENTPOWER
-	db 65, HYDRO_PUMP ; Safeguard → Hydro Pump
-	db 71, DRAGON_PULSE ; Recover → Dragon Pulse
+	db 65, SAFEGUARD
+	db 71, RECOVER
 	db 79, FUTURE_SIGHT
 	db 85, REFLECT ; Natural Gift → TM move
 	db 93, CALM_MIND
@@ -4682,12 +4682,12 @@ HoOhEvosAttacks:
 	db 15, TWISTER ; Brave Bird → HGSS tutor move
 	db 23, EXTRASENSORY
 	db 29, SUNNY_DAY
-	db 37, SAFEGUARD ; Fire Blast → Safeguard
-	db 43, SACRED_FIRE
-	db 50, RECOVER ; Punishment → Recover
+	db 37, FIRE_BLAST
+	db 43, SOLAR_BEAM ; Sacred Fire → Solar Beam
+	db 50, SACRED_FIRE ; Punishment → Sacred Fire
 	db 57, ANCIENTPOWER
-	db 65, FIRE_BLAST ; Safeguard → Fire Blast
-	db 71, SOLAR_BEAM ; Recover → Solar Beam
+	db 65, SAFEGUARD
+	db 71, RECOVER
 	db 79, FUTURE_SIGHT
 	db 85, LIGHT_SCREEN ; Natural Gift → TM move
 	db 93, CALM_MIND
