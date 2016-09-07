@@ -58,6 +58,7 @@
 * Color party and day-care sprites by species
 * Support nicknames for NPC trainers' Pokémon
 * Yellow Pikachu Surfing music
+* Splash in puddles
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
 * Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches
