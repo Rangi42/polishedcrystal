@@ -200,6 +200,22 @@ MenuDataHeader_0x8aed5: ; 0x8aed5
 	db 04, 03 ; start coords
 	db 09, 16 ; end coords
 
+MenuDataHeader_0x8aeda: ; 0x8aeda
+	db $40 ; flags
+	db 04, 04 ; start coords
+	db 09, 15 ; end coords
+
+MenuDataHeader_0x8aedf: ; 0x8aedf
+	db $40 ; flags
+	db 04, 04 ; start coords
+	db 09, 15 ; end coords
+
+MenuDataHeader_0x8aee4: ; 0x8aee4
+	db $40 ; flags
+	db 04, 04 ; start coords
+	db 09, 15 ; end coords
+; 8aee9
+
 Function8aee9: ; 8aee9
 .asm_8aee9
 	ld a, [de]
