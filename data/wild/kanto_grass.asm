@@ -489,29 +489,29 @@
 	map ROUTE_11
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 48, SUNFLORA
-	db 43, RATICATE
-	db 45, MAGNETON
-	db 46, PIDGEOTTO
-	db 46, SANDSLASH
-	db 46, SUNFLORA
-	db 46, SUNFLORA
+	db 53, SUNFLORA
+	db 48, RATICATE
+	db 50, MAGNETON
+	db 51, PIDGEOTTO
+	db 51, SANDSLASH
+	db 51, SUNFLORA
+	db 51, SUNFLORA
 	; day
-	db 48, SUNFLORA
-	db 43, RATICATE
-	db 45, MAGNETON
-	db 46, PIDGEOTTO
-	db 46, SANDSLASH
-	db 46, SUNFLORA
-	db 46, SUNFLORA
+	db 53, SUNFLORA
+	db 48, RATICATE
+	db 50, MAGNETON
+	db 51, PIDGEOTTO
+	db 51, SANDSLASH
+	db 51, SUNFLORA
+	db 51, SUNFLORA
 	; nite
-	db 44, DROWZEE
-	db 43, MEOWTH
-	db 45, MAGNEMITE
-	db 46, NOCTOWL
-	db 46, RATICATE
-	db 46, HYPNO
-	db 46, HYPNO
+	db 53, DROWZEE
+	db 48, MEOWTH
+	db 50, MAGNEMITE
+	db 51, NOCTOWL
+	db 51, RATICATE
+	db 51, HYPNO
+	db 51, HYPNO
 
 	map ROUTE_13
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

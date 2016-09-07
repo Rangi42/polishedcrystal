@@ -74,6 +74,7 @@
 ## New content
 
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
+* Elite Four have different rematch dialog
 * Use Mmmmmm's B/W Route 12 music for a new location
 * Use White Treehollow music somewhere if possible
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
