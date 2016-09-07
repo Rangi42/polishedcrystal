@@ -140,8 +140,8 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Moltres is inside Cinnabar Volcano.
 * Raikou and Entei are roaming Johto.
 * Suicune is in the Bell Tower after you get the Clear Bell.
-* Lugia is in the Whirl Islands after you catch all three legendary birds and get the Silver Wing. You'll receive the Silver Wing by triggering a certain event in Victory Road.
-* Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and get the Rainbow Wing. You'll receive the Rainbow Wing in the Bell Tower.
+* Lugia is in the Whirl Islands after you catch all three legendary birds and then get the Silver Wing in Victory Road.
+* Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and then get the Rainbow Wing in Bell Tower.
 * Mewtwo is in Cerulean Cave.
 * Mew and Celebi are a secret!
 
