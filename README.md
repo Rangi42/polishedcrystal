@@ -48,33 +48,38 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 ![title-screen](screenshots/title-screen.png)
 ![running-shoes](screenshots/running-shoes.png)
 ![town-map](screenshots/town-map.png)
-![cherrygrove-city](screenshots/cherrygrove-city.png)
+![lyra](screenshots/lyra.png)
   
+![cherrygrove-city](screenshots/cherrygrove-city.png)
+![nuzlocke-mode](screenshots/nuzlocke-mode.png)
 ![sage-nico](screenshots/sage-nico.png)
 ![oaks-aide](screenshots/oaks-aide.png)
+  
 ![elder-li](screenshots/elder-li.png)
 ![move-tutor](screenshots/move-tutor.png)
-  
 ![moss-rock](screenshots/moss-rock.png)
 ![rich-boy](screenshots/rich-boy.png)
+  
 ![tm58](screenshots/tm58.png)
 ![game-corner-prizes](screenshots/game-corner-prizes.png)
-  
 ![goldenrod-move-tutor](screenshots/goldenrod-move-tutor.png)
 ![eviolite](screenshots/eviolite.png)
-![wonder-trade](screenshots/wonder-trade.png)
-![cowgirl](screenshots/cowgirl.png)
   
+![wonder-trade](screenshots/wonder-trade.png)
+![ecruteak-shrine](screenshots/ecruteak-shrine.png)
+![cowgirl](screenshots/cowgirl.png)
 ![olivine-city](screenshots/olivine-city.png)
+  
 ![remoraid](screenshots/remoraid.png)
 ![shiny-bellossom](screenshots/shiny-bellossom.png)
 ![hex-maniac](screenshots/hex-maniac.png)
-  
 ![team-rocket](screenshots/team-rocket.png)
+  
 ![steelix](screenshots/steelix.png)
 ![custom-map](screenshots/custom-map.png)
 ![ice-rock](screenshots/ice-rock.png)
-  
+![route-45](screenshots/route-45.png)
+
 ![sitrus-berry](screenshots/sitrus-berry.png)
 ![weavile](screenshots/weavile.png)
 ![move-reminder](screenshots/move-reminder.png)
@@ -153,7 +158,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 ## Bugs
 
-The [to-do list](TODO.md) contains a full log of possible changes, including these bugs to fix:
+[TODO.md](TODO.md) contains a full list of possible future changes, including these bugs to fix:
 
 * The Move Reminder doesn't list all the possible moves.
 * Thief permanently steals held items.
