@@ -51,8 +51,8 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 ![lyra](screenshots/lyra.png)
   
 ![cherrygrove-city](screenshots/cherrygrove-city.png)
+![pokemon-center](screenshots/pokemon-center.png)
 ![nuzlocke-mode](screenshots/nuzlocke-mode.png)
-![sage-nico](screenshots/sage-nico.png)
 ![oaks-aide](screenshots/oaks-aide.png)
   
 ![elder-li](screenshots/elder-li.png)

@@ -171,6 +171,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Sing has 75% accuracy (matching Lovely Kiss).
 * Supersonic has 65% accuracy.
 * Submission and Take Down have 90 power and 100% accuracy, like Wild Charge.
+* Hail boosts Defense of Ice-types by 50%.
 * Fly has 100% accuracy.
 * Strength has 90 power.
 * Rock Smash has 75 power.
