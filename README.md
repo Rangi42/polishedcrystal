@@ -186,4 +186,4 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Add: The Zephyr Badge lets you use traded Pokémon up to level 20.
 * Fix: Flash no longer requires the Zephyr Badge, since earning the Zephyr Badge requires using Flash.
 * Fix: The Day-Care gives back fainted Pokémon in Nuzlocke mode.
-* Fix: Swimmer♂s on Route 40+41 have the Spuer Nerd sprite.
+* Fix: Swimmer♂s on Route 40+41 have the Super Nerd sprite.
