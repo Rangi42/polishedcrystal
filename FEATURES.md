@@ -98,7 +98,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Team Rocket has another plan to thwart.
 * Random Wonder Trades in the Goldenrod PokéCom Center, including random held items and original trainers.
 * Catching all 26 Unown is worthwhile…
-* Move Reminder in the same house as the Move Deleter. (Code borrowed from TPP Anniversary Crystal, thanks to its developers graciously making [url=https://github.com/TwitchPlaysPokemon/tppcrystal251pub/]their source code[/url] public.)
+* Move Reminder in the same house as the Move Deleter. (Code borrowed from TPP Anniversary Crystal, thanks to its developers graciously making [their source code](https://github.com/TwitchPlaysPokemon/tppcrystal251pub/) public.)
 * 21 move tutors throughout Johto and Kanto.
 * Falkner is in Dark Cave, encouraging you to beat Sprout Tower first.
 * Photographing your Pokémon at the Cianwood Photo Studio once a day now makes it happier, like haircuts or massages. (No more GameBoy Printer support.)
@@ -164,7 +164,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 
 ## Changes and Buffs
 
-* Many base stat changes, mostly based on [url=https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/]Drayano's Sacred Gold/Storm Silver[/url].
+* Many base stat changes, mostly based on [Drayano's Sacred Gold/Storm Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/).
 * Cut is Steel-type, and has 60 power and 100% accuracy.
 * Hidden Power is ???-type and has 70 power.
 * Metronome is ???-type.
@@ -202,7 +202,7 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Restored original Japanese sprites for Beauty, Fisher, Medium, Sage, and Swimmer♀.
 * Replaced Twins sprite with a devamped one from B/W.
 * New music ported from RBY and devamped from future generations.
-* Unique mini sprites for each Pokémon (thanks to [url=http://www.pokecommunity.com/showthread.php?t=338470]this patch[/url]).
+* Unique mini sprites for each Pokémon (thanks to [this patch](http://www.pokecommunity.com/showthread.php?t=338470)).
 * Revised some shiny palettes (Dragonite is blue like Dragonair, Nidoqueen is pink like Nidoking, Scizor is silver, Espeon is sky blue, Electabuzz is red, etc).
 * Unown isn't the only Pokémon with variant forms…
 
@@ -221,53 +221,3 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS.
 * Fishing works 75% of the time, not 50%.
 * Always show numbers in Pokédex, even in Johto order.
-
-All this and I haven't even mentioned some of my favorite additions. Don't want to spoil everything. (I mean, you can read [url=https://github.com/roukaour/pokecrystal]the source code[/url] if you're that curious.)
-
-
-[h]Screenshots[/h]
-
-[img=imgur.com/h3FdXAC]http://i.imgur.com/h3FdXAC.png[/img]
-
-
-[h]Bugs[/h]
-
-* The Move Reminder doesn't list all the possible moves.
-* Sitrus Berry heals 25% max HP when used, but 30 HP when held.
-* Thief permanently steals held items.
-* TMs can restore PP.
-* Avalanche's power doesn't double.
-
-
-[h]Download Patches[/h]
-
-The most recent version is 1.1.2 as of August 2, 2016.
-
-There are two patches, regular and "faithful". The faithful patch does not change any Pokémon types or base stats, or any move attributes. This will be more familiar, but can have some odd consequences, like a Ghost trainer using a Ninetales that lacks STAB on its Shadow Ball.
-
-Patches should be applied to a Pokémon Crystal (UE) (1.0) ROM. The one I used has the MD5 hash 9f2922b235a5eeb78d65594e82ef5dde if you need to make sure your copy is correct.
-
-Patches:
-
-* [url=https://github.com/roukaour/pokecrystal/blob/master/patches/polishedcrystal-1.1.2.ips]polishedcrystal-1.1.2.ips[/url]
-* [url=https://github.com/roukaour/pokecrystal/blob/master/patches/polishedcrystal-faithful-1.1.2.ips]polishedcrystal-faithful-1.1.2.ips[/url]
-
-
-[h]Credits[/h]
-
-* yenatch, kanzure, Pikalax, iimarckus, and everyone else who's contributed to disassembling Pokémon Crystal.
-* Crystal_ for their in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks.
-* Mateo for their thorough Red++ ROM hack, help on Skeetendo, and some sprites and tiles.
-* Tauwasser, comet, and other members of Skeetendo for helpful advice.
-* PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (namely the Move Relearner and Gen V money loss code).
-* VictoriaLacroix for their Running Shoes routine.
-* Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many Pokémon sprites and icons.
-* FroggestSpirit, Pum, Pigu, Mmmmmm, and huderlem for devamping some great music.
-* jpmac26 for editing the Pokémon Center signs.
-* Twilir, Danny-E, Poketto, Nic7C5, BettyNewbie, and Fo0xerz for various sprites.
-* Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place.
-
-
-[h]Requests[/h]
-
-This is something in-between a beta and a release candidate. You can play the whole game, catch all the Pokémon and beat all the trainers, and I'm pretty sure it won't just crash on you. However, it needs more thorough testing. I'm concerned about balance—do you earn too much money, or too little? Do you get overleveled or underleveled? Is anything notably missing to you that I didn't think to put in? There are also plenty of features I haven't added yet. Moves need custom animations, many mechanics haven't been updated to Gen VI, and eventually I want to make some serious changes like adding Natures or even Abilities. So I'd appreciate people playtesting this first release, paying attention to their experience as they go, letting me know what works and what doesn't. Thanks for your time!

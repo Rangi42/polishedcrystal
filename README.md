@@ -30,7 +30,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 
 ## Features
 
-[Here's a full list of features.](FEATURES.md) Some highlights:
+A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 
 * 253 Pokémon, including some new evolutions.
 * 48 new moves.
@@ -40,6 +40,7 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 * New characters, including Lorelei and Agatha from R/B/Y, Lyra and the Team Rocket Executives from HG/SS, and others.
 * Steadily increasing challenges throughout the game, with new post-game content that climaxes in a level 100 battle.
 * Music and graphics devamped from other versions.
+* Nuzlocke mode in the Option menu, enabling the basic rules of the [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge).
 
 
 ## Screenshots
@@ -100,20 +101,6 @@ There are two patches for Polished Crystal. The "faithful" patch does not change
 ![seafoam-islands](screenshots/seafoam-islands.png)
 
 
-## Bugs
-
-The [to-do list](TODO.md) contains a full log of possible changes, including these bugs to fix:
-
-* The Move Reminder doesn't list all the possible moves.
-* Thief permanently steals held items.
-* TMs can restore PP.
-* NPC trainers overuse Baton Pass.
-* Some NPC trainers incorrectly use X Spcl. Atk.
-* Avalanche's power doesn't double if the user is hit first.
-* Hurricane is not 100% accurate in rain.
-* Blizzard is not 100% accurate in hail.
-
-
 ## FAQ
 
 **Is there a Pokédex document I can refer to?**
@@ -162,6 +149,20 @@ The game's data files do a fairly good job of listing things you'll want to know
 **I don't like non-canon Pokémon types!**
 
 I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
+
+
+## Bugs
+
+The [to-do list](TODO.md) contains a full log of possible changes, including these bugs to fix:
+
+* The Move Reminder doesn't list all the possible moves.
+* Thief permanently steals held items.
+* TMs can restore PP.
+* NPC trainers overuse Baton Pass.
+* Some NPC trainers incorrectly use X Spcl. Atk.
+* Avalanche's power doesn't double if the user is hit first.
+* Hurricane is not 100% accurate in rain.
+* Blizzard is not 100% accurate in hail.
 
 
 ## Changes in 2.0.1
