@@ -48,7 +48,7 @@ UnknownScript_0x1a8833:
 	dotrigger $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SWIMMER_GUY
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
 	special RunCallback_04
 	end
 
