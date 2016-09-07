@@ -1372,7 +1372,7 @@ BrockGroup:
 		db EARTHQUAKE
 
 	db 63, RHYPERIOR, NO_ITEM
-		db SCARY_FACE
+		db AVALANCHE
 		db ROCK_SLIDE
 		db EARTHQUAKE
 		db OUTRAGE
@@ -1418,7 +1418,7 @@ BrockGroup:
 		db SANDSTORM
 
 	db 73, RHYPERIOR, KINGS_ROCK
-		db SCARY_FACE
+		db AVALANCHE
 		db ROCK_SLIDE
 		db EARTHQUAKE
 		db MEGAHORN
@@ -5777,7 +5777,7 @@ GruntFGroup:
 
 	; GRUNTF
 	db "Grunt@"
-	db 0 ; normal
+	db 1 ; moves
 
 	; party
 	db 29, ARBOK
@@ -12301,7 +12301,7 @@ else
 		db EARTHQUAKE
 		db STONE_EDGE
 		db MEGAHORN
-		db POISON_JAB
+		db AVALANCHE
 endc
 
 	db 58, AERODACTYL, KINGS_ROCK
@@ -12508,7 +12508,7 @@ TowerTycoonGroup:
 		db EARTHQUAKE
 		db ROCK_SLIDE
 		db MEGAHORN
-		db POISON_JAB
+		db AVALANCHE
 
 	db 75, DRAGONITE, EXPERT_BELT
 		db HYPER_BEAM
