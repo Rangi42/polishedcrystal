@@ -844,7 +844,7 @@ Functiondd64: ; dd64
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
-	callba HealPartyMon
+	callba HealPartyMonEvenForNuzlocke
 	ld a, [CurPartyLevel]
 	ld d, a
 	callab CalcExpAtLevel

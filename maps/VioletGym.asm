@@ -186,11 +186,11 @@ UnknownText_0x685af:
 
 UnknownText_0x685c8:
 	text "The Zephyr Badge"
-	line "enables #mon"
-	cont "to use Flash,"
+	line "enables you to"
 
-	para "if they have it,"
-	line "any time."
+	para "command #mon,"
+	line "even traded ones,"
+	cont "up to <LV>20."
 
 	para "Here--take this"
 	line "too."

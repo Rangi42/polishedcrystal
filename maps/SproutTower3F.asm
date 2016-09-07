@@ -249,12 +249,6 @@ UnknownText_0x184d13:
 	text "Flash illuminates"
 	line "even the darkest"
 	cont "of all places."
-
-	para "But to use it out"
-	line "of battle, you"
-
-	para "need the Badge"
-	line "from Violet's Gym."
 	done
 
 UnknownText_0x184d88:

@@ -443,21 +443,21 @@ GetBallAnimPal: ; cd249 (33:5249)
 
 ; cd26c (33:526c)
 .balls
-	db MASTER_BALL, 5
-	db ULTRA_BALL,  3
-	db GREAT_BALL,  6
-	db POKE_BALL,   4
-	db HEAVY_BALL,  2
-	db LEVEL_BALL,  7
-	db LURE_BALL,   6
-	db FAST_BALL,   6
-	db FRIEND_BALL, 3
-	db MOON_BALL,   2
-	db LOVE_BALL,   4
-	db REPEAT_BALL, 3
-	db TIMER_BALL,  7
-	db QUICK_BALL,  6
-	db DUSK_BALL,   5
+	db MASTER_BALL, 5 ; green
+	db ULTRA_BALL,  3 ; yellow
+	db GREAT_BALL,  6 ; blue
+	db POKE_BALL,   4 ; red
+	db HEAVY_BALL,  2 ; gray
+	db LEVEL_BALL,  7 ; brown
+	db LURE_BALL,   6 ; blue
+	db FAST_BALL,   6 ; blue
+	db FRIEND_BALL, 3 ; yellow
+	db MOON_BALL,   2 ; gray
+	db LOVE_BALL,   4 ; red
+	db REPEAT_BALL, 3 ; yellow
+	db TIMER_BALL,  7 ; brown
+	db QUICK_BALL,  6 ; blue
+	db DUSK_BALL,   5 ; green
 	db -1,          2
 ; cd284
 BattleAnimFunction_10: ; cd284 (33:5284)
