@@ -120,7 +120,7 @@ The game's data files do a fairly good job of listing things you'll want to know
 * [Level-up learnsets and evolution methods](data/evos_attacks.asm)
 * [Egg moves](data/egg_moves.asm)
 * [Move attributes](battle/moves/moves.asm)
-* [TM+HM+tutor list](engine/tmhm.asm) (scroll to the bottom)
+* [TM+HM+tutor list](engine/tmhm.asm#L48)
 * [Wild Pokémon](data/wild/)
 
 **How do I evolve my Pokémon?**
@@ -159,6 +159,10 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Dusk Stones are in Dark Cave, Quiet Cave, Cerulean Cave, and Mt. Moon. Bill's grandpa also gives you one.
 * Shiny Stones are in National Park, Cherrygrove Bay, and Mt. Moon. Bill's grandpa also gives you one.
 * Bill's grandpa gives you one of each evolution stone in Goldenrod City. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells the basic stones.
+
+**What do blessings and photographs do?**
+
+Daily blessings in Ecruteak City and photographs in Cianwood City make your Pokémon happier, just like haircuts or grooming.
 
 **I don't like non-canon Pokémon types!**
 
