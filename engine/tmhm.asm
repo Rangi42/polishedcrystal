@@ -116,7 +116,7 @@ TMHMMoves: ; 1167a
 	db SURF         ; HM03 (Ecruteak City)
 	db STRENGTH     ; HM04 (Olivine City)
 	db FLASH        ; HM05 (Sprout Tower)
-	db WHIRLPOOL    ; HM06 (Team Rocket Base)
+	db WHIRLPOOL    ; HM06 (Route 42)
 	db WATERFALL    ; HM07 (Ice Path)
 	db ROCK_SMASH   ; HM08 (Route 36)
 	db AQUA_TAIL    ; MT01 (Route 4)
