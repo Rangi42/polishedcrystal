@@ -520,6 +520,7 @@ ChikoritaEggMoves:
 	db COUNTER
 	db SWORDS_DANCE
 	db CHARM
+	db HEAL_BELL
 	db $ff
 
 CyndaquilEggMoves:
