@@ -103,23 +103,25 @@ MoltresText:
 	text "Gyaoo!"
 	done
 
-CinnabarVolcanoB2FLawrenceSpeechText::
+CinnabarVolcanoB2FLawrenceSpeechText:
 	text "Lawrence: Hello"
 	line "again, <PLAYER>."
 
-	para "So you are collec-"
-	line "ting legends too."
+	para "So you are search-"
+	line "ing for Moltres"
+	cont "here too."
 	cont "Did I inspire you?"
 
 	para "…What?! You caught"
-	line "Moltres here?"
+	line "it already?"
 	cont "Impossible."
 
-	para "All my research"
-	line "pointed to Victory"
+	para "I spent years"
+	line "hunting through"
 
-	para "Road, or an island"
-	line "south of Kanto…"
+	para "Victory Road, and"
+	line "the islands south"
+	cont "of Kanto…"
 
 	para "Why have you"
 	line "succeeded where I"
