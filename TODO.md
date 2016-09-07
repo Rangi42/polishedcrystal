@@ -83,7 +83,7 @@
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
-* Battle with Veteran/Hacker Rangi in Celadon Mansion once a day
+* Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day
 * Add some of {Drill Run, Sucker Punch}?
 
 
