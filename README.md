@@ -20,6 +20,8 @@ This is the ROM you should use:
 
 It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
 
+*If you want to do a [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge), check out Nuzlocke mode in the Option menu!*
+
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
 * [Pokémon Polished Crystal 2.0.0](patches/polishedcrystal-2.0.0.ips)  
