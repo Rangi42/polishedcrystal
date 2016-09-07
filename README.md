@@ -147,13 +147,18 @@ The game's data files do a fairly good job of listing things you'll want to know
 
 **Where do I get this item?**
 
+* The Razor Claw is in Quiet Cave, or held by some wild Sneasel.
+* The Razor Fang is in Victory Road, or held by some wild Gligar.
 * The Electirizer is in Rock Tunnel, or held by some wild Electabuzz.
 * The Magmarizer is on Cinnabar Island, or held by some wild Magmar.
 * The Protector is in Mt. Mortar, or held by some wild Rhydon.
-* The Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite.
+* The Up-Grade is given to you in Silph Co. after fixing the Power Plant generator.
+* The Dubious Disc is in Celadon City.
+* The Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite, Magneton, and Steelix.
+* King's Rocks are in Slowpoke Well and the Seafoam Islands, or held by some wild Slowpoke, Slowbro, and Poliwhirl.
 * Dusk Stones are in Dark Cave, Quiet Cave, Cerulean Cave, and Mt. Moon. Bill's grandpa also gives you one.
 * Shiny Stones are in National Park, Cherrygrove Bay, and Mt. Moon. Bill's grandpa also gives you one.
-* Evolution items are often held by the wild Pokémon that need them, like Seadra with Dragon Scale.
+* Bill's grandpa gives you one of each evolution stone in Goldenrod City. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells the basic stones.
 
 **I don't like non-canon Pokémon types!**
 
