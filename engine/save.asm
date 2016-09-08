@@ -416,6 +416,44 @@ SaveData: ; 14d68
 	ret
 ; 14d6c
 
+; unused?
+Function14d6c: ; 14d6c
+	ld a, $4
+	call GetSRAMBank
+	ld a, [$a60b]
+	ld b, $0
+	and a
+	jr z, .ok
+	ld b, $2
+
+.ok
+	ld a, b
+	ld [$a60b], a
+	call CloseSRAM
+	ret
+; 14d83
+
+; unused?
+Function14d83: ; 14d83
+	ld a, $4
+	call GetSRAMBank
+	xor a
+	ld [$a60c], a
+	ld [$a60d], a
+	call CloseSRAM
+	ret
+; 14d93
+
+; unused?
+Function14d93: ; 14d93
+	ld a, $7
+	call GetSRAMBank
+	xor a
+	ld [$a000], a
+	call CloseSRAM
+	ret
+; 14da0
+
 HallOfFame_InitSaveIfNeeded: ; 14da0
 	ld a, [wSavedAtLeastOnce]
 	and a

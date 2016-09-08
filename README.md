@@ -192,6 +192,7 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Flash no longer requires the Zephyr Badge, since earning the Zephyr Badge requires using Flash.
 * Fix: The Rocket Grunt♀ who gives you a password has a glitched unbeatable team.
 * Fix: The Day-Care gives back fainted Pokémon in Nuzlocke mode.
+* Fix: Calling Bill to switch boxes corrupts the PC.
 * Fix: Swimmer♂s on Route 40+41 have the Super Nerd sprite.
 * Fix: Viewing the Ruins of Alph wall patterns crashes the game.
 * Fix: TM learnsets for Electivire, Magmortar, and Rhyperior.
