@@ -34,7 +34,7 @@
 * Low Kick's power is based on weight
 * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
 * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
-* Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-faithful)
+* Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 
 
 ## Other mechanics
@@ -47,22 +47,22 @@
 * More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
-* Add genders to Wonder Trade OTs
+* Add OT genders to Wonder Trade
 
 
 ## Aesthetic updates
 
-* Animate new Pokémon sprites
+* Animate new Pokémon sprites (Sylveon, Pikachu, etc)
 * Design custom animations for new moves
-* Show Pokémon portraits when using field moves
+* Show Pokémon portraits when using field moves (refer to TPPAC)
 * Color party and day-care sprites by species
 * Support nicknames for NPC trainers' Pokémon
 * Yellow Pikachu Surfing music
-* Splash in puddles
-* Big roofs like Pewter Museum on Silph Co. and Pokémon Tower
-* Goldenrod Dept.Store and Celadon Mansion roofs should have dark sky at night
+* Splash in puddles (base on ShakeGrass routine) (or just make PAL_OW_TREE blue on Faraway Island and treat puddles as grass)
+* Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
+* Goldenrod Dept. Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches
-* Add boars to Goldenrod Harbor
+* Add boats to Goldenrod Harbor
 * Merge gray and roof colors on Faraway Island to make room for grass-green
 * Edit SPRITE_DRAGON with Dragonite's side view
 * Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
@@ -82,14 +82,13 @@
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
-* Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day
+* Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day?
 * Add some of {Drill Run, Sucker Punch}?
 
 
 ## New features
 
-* Respawn Sudowoodo the same way as legendaries
-* Fourth stat screen showing Poké Seer's data
+* Fourth stat screen showing Poké Seer's data (refer to TPPAC)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)

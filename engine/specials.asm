@@ -551,6 +551,15 @@ RespawnOneOffs:
 	call EventFlagAction
 
 .SkipCynthia:
+	ld a, SUDOWOODO
+	dec a
+	call CheckCaughtMon
+	jr z, .CaughtSudowoodo
+	ld de, EVENT_ROUTE_36_SUDOWOODO
+	ld b, RESET_FLAG
+	call EventFlagAction
+
+.CaughtSudowoodo:
 	ld a, ARTICUNO
 	dec a
 	call CheckCaughtMon
