@@ -125,7 +125,7 @@
 	db "Earth Power@"
 	db "Fire Blast@"
 	db "Waterfall@"
-	db "Razor Shell@"
+	db "Icicle Crash@"
 	db "Swift@"
 	db "Iron Head@"
 	db "Spike Cannon@"
