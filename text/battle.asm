@@ -283,6 +283,17 @@ BattleText_EnemyIsAboutToUseWillPlayerChangePkmn: ; 0x80aca
 	done
 ; 0x80af8
 
+PluralBattleText_EnemyIsAboutToUseWillPlayerChangePkmn:
+	text "<ENEMY>"
+	line "are about to use"
+	cont "@"
+	text_from_ram EnemyMonNick
+	text "."
+
+	para "Will <PLAYER>"
+	line "change #mon?"
+	done
+
 BattleText_EnemySentOut: ; 0x80af8
 	text "<ENEMY>"
 	line "sent out"

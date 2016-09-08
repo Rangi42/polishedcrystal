@@ -2441,19 +2441,10 @@ WinTrainerBattle: ; 3cfa4
 	callab Battle_GetTrainerName
 
 	ld hl, BattleText_PluralEnemyWereDefeated
-	ld a, [OtherTrainerClass]
-	cp TWINS
-	jr z, .PlaceBattleEndText
-	cp SR_AND_JR
-	jr z, .PlaceBattleEndText
-	cp COUPLE
-	jr z, .PlaceBattleEndText
-	cp ACE_DUO
-	jr z, .PlaceBattleEndText
-	cp JESSIE_JAMES
-	jr z, .PlaceBattleEndText
-
+	call CheckPluralTrainer
+	jr nz, .PlaceBattleEndText
 	ld hl, BattleText_EnemyWasDefeated
+
 .PlaceBattleEndText
 	call StdBattleTextBox
 
@@ -3586,7 +3577,13 @@ OfferSwitch: ; 3d74b
 	ld a, [CurPartyMon]
 	push af
 	callab Battle_GetTrainerName
+
+	ld hl, PluralBattleText_EnemyIsAboutToUseWillPlayerChangePkmn
+	call CheckPluralTrainer
+	jr nz, .PlaceBattleChangeText
 	ld hl, BattleText_EnemyIsAboutToUseWillPlayerChangePkmn
+
+.PlaceBattleChangeText
 	call StdBattleTextBox
 	lb bc, 1, 7
 	call PlaceYesNoBox
@@ -9338,18 +9335,8 @@ BattleStartMessage: ; 3fc8b
 	callba Battle_GetTrainerName
 
 	ld hl, PluralWantToBattleText
-	ld a, [OtherTrainerClass]
-	cp TWINS
-	jr z, .PlaceBattleStartText
-	cp SR_AND_JR
-	jr z, .PlaceBattleStartText
-	cp COUPLE
-	jr z, .PlaceBattleStartText
-	cp ACE_DUO
-	jr z, .PlaceBattleStartText
-	cp JESSIE_JAMES
-	jr z, .PlaceBattleStartText
-
+	call CheckPluralTrainer
+	jr nz, .PlaceBattleStartText
 	ld hl, WantsToBattleText
 	jr .PlaceBattleStartText
 
@@ -9409,6 +9396,27 @@ BattleStartMessage: ; 3fc8b
 	call StdBattleTextBox
 	ret
 ; 3fd26
+
+CheckPluralTrainer:
+	ld a, [OtherTrainerClass]
+	cp TWINS
+	jr z, .plural
+	cp SR_AND_JR
+	jr z, .plural
+	cp COUPLE
+	jr z, .plural
+	cp ACE_DUO
+	jr z, .plural
+	cp JESSIE_JAMES
+	jr z, .plural
+	xor a
+	scf
+	ret
+
+.plural
+	ld a, 1
+	and a
+	ret
 
 
 INCLUDE "battle/unique_moves.asm"
