@@ -73,7 +73,7 @@ UnknownText_0x5b63c:
 	line "would be worried"
 
 	para "if their own #-"
-	cont "mon were hurt."
+	line "mon were hurt."
 
 	para "I'll pray for the"
 	line "#mon here, so"

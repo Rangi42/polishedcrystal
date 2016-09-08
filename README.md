@@ -206,4 +206,5 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Plural trainers say "are about to use", not "is about to use".
 * Fix: Viridian Forest is dark.
 * Fix: S.S. Aqua location on Town Map.
-* Fix: Twins Ann & Anne → Twins Tori & Til
+* Fix: Twins Ann & Anne → Twins Tori & Til.
+* Fix: Lass' text over multiple lines.
