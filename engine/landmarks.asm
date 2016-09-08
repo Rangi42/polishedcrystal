@@ -167,7 +167,7 @@ ENDM
 	landmark  28, 116, Route27Name
 	landmark  20, 116, TohjoFallsName
 	landmark  28,  84, Route28Name
-	landmark  20, 132, FastShipName
+	landmark 108, 140, FastShipName
 	landmark 140, 156, NavelRockName
 	landmark 156, 156, FarawayIslandName
 

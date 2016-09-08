@@ -536,14 +536,38 @@ LoadSpecialMapOBPalette:
 	jr nz, .not_faraway_island
 
 .faraway_island:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 1 palettes
+	ld hl, FarawayIslandOBPalette_Tree
+	call AddNTimes
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
-	ld hl, FarawayIslandOBPalette_Tree
 	ld bc, 1 palettes
 	call FarCopyWRAM
 	ret
 
 .not_faraway_island:
+	ld a, [MapGroup]
+	cp GROUP_FARAWAY_JUNGLE
+	jr nz, .not_faraway_jungle
+	ld a, [MapNumber]
+	cp MAP_FARAWAY_JUNGLE
+	jr nz, .not_faraway_jungle
+
+.faraway_jungle:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 1 palettes
+	ld hl, FarawayJungleOBPalette_Tree
+	call AddNTimes
+	ld a, $5
+	ld de, UnknOBPals + 6 palettes
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+
+.not_faraway_jungle:
 	ret
 
 VermilionGymOBPalette_Silver:
@@ -557,3 +581,29 @@ FarawayIslandOBPalette_Tree:
 	RGB 09, 23, 30
 	RGB 08, 13, 25
 	RGB 07, 07, 13
+
+	RGB 31, 31, 31
+	RGB 09, 23, 30
+	RGB 08, 13, 25
+	RGB 07, 07, 13
+
+	RGB 15, 14, 24
+	RGB 05, 10, 27
+	RGB 05, 06, 22
+	RGB 03, 03, 05
+
+FarawayJungleOBPalette_Tree:
+	RGB 19, 31, 16
+	RGB 13, 24, 12
+	RGB 00, 17, 07
+	RGB 07, 11, 07
+
+	RGB 19, 31, 16
+	RGB 13, 24, 12
+	RGB 00, 17, 07
+	RGB 07, 11, 07
+
+	RGB 11, 14, 14
+	RGB 08, 11, 11
+	RGB 00, 08, 06
+	RGB 03, 05, 03
