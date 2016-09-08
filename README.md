@@ -188,7 +188,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 2.0.0 release. If you build the project as-is, it will include all of them.
 
 * Add: Item balls for TMs are blue (based on Gen VI's yellow).
-* Add: Some Kanto Gym Leaders only use Gen VI evolutions in rematches.
+* Add: Some boss trainers only use Gen VI evolutions in rematches.
 * Add: The Zephyr Badge lets you use traded Pokémon up to level 20.
 * Fix: Flash no longer requires the Zephyr Badge, since earning the Zephyr Badge requires using Flash.
 * Fix: The Rocket Grunt♀ who gives you a password has a glitched unbeatable team.
