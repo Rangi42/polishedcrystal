@@ -14,7 +14,7 @@ BellchimeTrail_MapScriptHeader:
 
 	; callbacks
 
-	dbw MAPCALLBACK_SPRITES, SetupValerieMorningWalkScript
+	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkScript
 
 .Trigger0:
 	priorityjump BellchimeTrailStepDownScript
@@ -29,11 +29,11 @@ SetupValerieMorningWalkScript:
 	checkflag ENGINE_VALERIE_MORNING_WALK
 	iffalse .Appear
 	disappear BELLCHIMETRAIL_VALERIE
-	end
+	return
 
 .Appear:
 	appear BELLCHIMETRAIL_VALERIE
-	end
+	return
 
 BellchimeTrailStepDownScript:
 	checkcode VAR_YCOORD
