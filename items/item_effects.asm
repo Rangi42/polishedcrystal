@@ -622,7 +622,7 @@ endr
 .SkipPartyMonFriendBall:
 
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
@@ -1771,7 +1771,7 @@ StatusHealer_Jumptable: ; f09e (3:709e)
 
 RevivalHerb: ; f0a9
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -1795,7 +1795,7 @@ RevivalHerb: ; f0a9
 Revive:
 MaxRevive: ; f0c8
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -2970,7 +2970,7 @@ BasementKey: ; f74c
 
 SacredAsh: ; f753
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
 	callba _SacredAsh

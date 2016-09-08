@@ -1,6 +1,6 @@
 HealPartyEvenForNuzlocke:
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jp z, HealParty
 
 	ld a, [Options2]
@@ -14,7 +14,7 @@ HealPartyEvenForNuzlocke:
 
 HealPartyMonEvenForNuzlocke:
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jp z, HealPartyMon
 
 	ld a, [Options2]
@@ -72,7 +72,7 @@ HealPartyMon: ; c677
 	dec bc
 
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jr z, .Revive
 	ld a, [bc]
 	push hl

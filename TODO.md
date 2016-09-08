@@ -56,7 +56,6 @@
 * Design custom animations for new moves
 * Show Pokémon portraits when using field moves
 * Color party and day-care sprites by species
-* TM item balls are colored differently
 * Support nicknames for NPC trainers' Pokémon
 * Yellow Pikachu Surfing music
 * Splash in puddles
