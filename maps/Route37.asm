@@ -30,10 +30,10 @@ SunnyCallback:
 	appear ROUTE37_SUNNY
 	return
 
-TrainerTwinsAnnandanne1:
-	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE1, TwinsAnnandanne1SeenText, TwinsAnnandanne1BeatenText, 0, TwinsAnnandanne1Script
+TrainerTwinsToriandtil1:
+	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE1, TwinsToriandtil1SeenText, TwinsToriandtil1BeatenText, 0, TwinsToriandtil1Script
 
-TwinsAnnandanne1Script:
+TwinsToriandtil1Script:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1a8e62
@@ -41,10 +41,10 @@ TwinsAnnandanne1Script:
 	closetext
 	end
 
-TrainerTwinsAnnandanne2:
-	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE2, TwinsAnnandanne2SeenText, TwinsAnnandanne2BeatenText, 0, TwinsAnnandanne2Script
+TrainerTwinsToriandtil2:
+	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE2, TwinsToriandtil2SeenText, TwinsToriandtil2BeatenText, 0, TwinsToriandtil2Script
 
-TwinsAnnandanne2Script:
+TwinsToriandtil2Script:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1a8eec
@@ -144,38 +144,38 @@ Route37HiddenEther:
 	dwb EVENT_ROUTE_37_HIDDEN_ETHER, ETHER
 
 
-TwinsAnnandanne1SeenText:
-	text "Ann: Anne and I"
+TwinsToriandtil1SeenText:
+	text "Til: Tori and I"
 	line "are in this to-"
 	cont "gether!"
 	done
 
-TwinsAnnandanne1BeatenText:
-	text "Ann & Anne: Nnn… A"
+TwinsToriandtil1BeatenText:
+	text "Til & Tori: Nnn… A"
 	line "little too strong."
 	done
 
 UnknownText_0x1a8e62:
-	text "Ann: I can tell"
+	text "Til: I can tell"
 	line "what my sister and"
 
 	para "my #mon are"
 	line "thinking."
 	done
 
-TwinsAnnandanne2SeenText:
-	text "Anne: Ann and I"
+TwinsToriandtil2SeenText:
+	text "Tori: Til and I"
 	line "are in this to-"
 	cont "gether!"
 	done
 
-TwinsAnnandanne2BeatenText:
-	text "Ann & Anne: Nnn… A"
+TwinsToriandtil2BeatenText:
+	text "Til & Tori: Nnn… A"
 	line "little too strong."
 	done
 
 UnknownText_0x1a8eec:
-	text "Anne: We share the"
+	text "Tori: We share the"
 	line "same feelings as"
 	cont "our #mon."
 	done
@@ -319,8 +319,8 @@ Route37_MapEventHeader:
 
 .PersonEvents:
 	db 9
-	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsAnnandanne1, -1
-	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsAnnandanne2, -1
+	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
+	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
 	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
 	person_event SPRITE_FRUIT_TREE, 5, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e09, -1
 	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY

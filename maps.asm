@@ -446,11 +446,13 @@ INCLUDE "maps/Route39.asm"
 SECTION "Map Scripts 21", ROMX, BANK[MAP_SCRIPTS_21]
 
 INCLUDE "maps/EcruteakCity.asm"
+INCLUDE "maps/ValeriesHouse.asm"
+INCLUDE "maps/EcruteakShrineOutside.asm"
+INCLUDE "maps/EcruteakShrineInside.asm"
+INCLUDE "maps/BellchimeTrail.asm"
 INCLUDE "maps/BlackthornCity.asm"
 INCLUDE "maps/Route40.asm"
 INCLUDE "maps/Route41.asm"
-INCLUDE "maps/Route12.asm"
-INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/VioletCity.asm"
 INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/ViridianCity.asm"
@@ -517,6 +519,7 @@ INCLUDE "maps/MrPsychicsHouse.asm"
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
 
+INCLUDE "maps/Route12.asm"
 INCLUDE "maps/Route12Gate.asm"
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
@@ -543,12 +546,9 @@ INCLUDE "maps/PokemonMansionB1F.asm"
 INCLUDE "maps/SafariZoneHubRestHouse.asm"
 INCLUDE "maps/SafariZoneEastRestHouse.asm"
 INCLUDE "maps/SafariZoneNorthRestHouse.asm"
+INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
-INCLUDE "maps/ValeriesHouse.asm"
-INCLUDE "maps/EcruteakShrineOutside.asm"
-INCLUDE "maps/EcruteakShrineInside.asm"
-INCLUDE "maps/BellchimeTrail.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
