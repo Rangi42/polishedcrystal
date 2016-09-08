@@ -1,4 +1,5 @@
 const_value set 2
+	const FASTSHIPCABINS_NNW_NNE_NE_LOOKER
 	const FASTSHIPCABINS_NNW_NNE_NE_COOLTRAINER_M
 	const FASTSHIPCABINS_NNW_NNE_NE_COOLTRAINER_F
 	const FASTSHIPCABINS_NNW_NNE_NE_SUPER_NERD
@@ -6,8 +7,6 @@ const_value set 2
 	const FASTSHIPCABINS_NNW_NNE_NE_SAILOR
 	const FASTSHIPCABINS_NNW_NNE_NE_GENTLEMAN
 	const FASTSHIPCABINS_NNW_NNE_NE_PHARMACIST
-	const FASTSHIPCABINS_NNW_NNE_NE_RICH_BOY
-	const FASTSHIPCABINS_NNW_NNE_NE_LOOKER
 
 FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 .MapTriggers:
@@ -15,6 +14,17 @@ FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerPILooker:
+	trainer EVENT_BEAT_PI_LOOKER, PI, LOOKER, PILookerSeenText, PILookerBeatenText, 0, PILookerScript
+
+PILookerScript:
+	end_if_just_battled
+	opentext
+	writetext PILookerAfterText
+	waitbutton
+	closetext
+	end
 
 TrainerCooltrainermSean:
 	trainer EVENT_BEAT_COOLTRAINERM_SEAN, COOLTRAINERM, SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText, 0, CooltrainermSeanScript
@@ -82,28 +92,6 @@ BurglarCoreyScript:
 	closetext
 	end
 
-TrainerRichBoyWinston:
-	trainer EVENT_BEAT_RICH_BOY_WINSTON, RICH_BOY, WINSTON, RichBoyWinstonSeenText, RichBoyWinstonBeatenText, 0, RichBoyWinstonScript
-
-RichBoyWinstonScript:
-	end_if_just_battled
-	opentext
-	writetext RichBoyWinstonAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerPILooker:
-	trainer EVENT_BEAT_PI_LOOKER, PI, LOOKER, PILookerSeenText, PILookerBeatenText, 0, PILookerScript
-
-PILookerScript:
-	end_if_just_battled
-	opentext
-	writetext PILookerAfterText
-	waitbutton
-	closetext
-	end
-
 SailorScript_0x755f1:
 	playmusic MUSIC_HIKER_ENCOUNTER
 	faceplayer
@@ -156,6 +144,39 @@ MovementData_0x7563c:
 	step_up
 	step_up
 	step_end
+
+PILookerSeenText:
+	text "WHAAAT?!"
+
+	para "…How did you know?"
+	line "How did you unmask"
+
+	para "me as a member of"
+	line "the International"
+	cont "Police?!"
+	done
+
+PILookerBeatenText:
+	text "Quite admirable,"
+	line "you are!"
+	done
+
+PILookerAfterText:
+	text "My code name,"
+	line "it is Looker."
+
+	para "It is what they"
+	line "all call me."
+
+	para "I am on the look-"
+	line "out for members"
+	cont "of Team Rocket."
+
+	para "What?! You defeat-"
+	line "ed them?"
+
+	para "Bravo!"
+	done
 
 CooltrainermSeanSeenText:
 	text "I'm going to Kanto"
@@ -290,58 +311,6 @@ UnknownText_0x75996:
 	line "lost it…"
 	done
 
-RichBoyWinstonSeenText:
-	text "There's no way you"
-	line "could afford a"
-	cont "ticket."
-
-	para "It looks like we've"
-	line "got a stowaway!"
-	done
-
-RichBoyWinstonBeatenText:
-	text "Wow! Who'd you buy"
-	line "your #mon from?"
-	done
-
-RichBoyWinstonAfterText:
-	text "This boat is so"
-	line "drab."
-	done
-
-PILookerSeenText:
-	text "WHAAAT?!"
-
-	para "…How did you know?"
-	line "How did you unmask"
-
-	para "me as a member of"
-	line "the International"
-	cont "Police?!"
-	done
-
-PILookerBeatenText:
-	text "Quite admirable,"
-	line "you are!"
-	done
-
-PILookerAfterText:
-	text "My code name,"
-	line "it is Looker."
-
-	para "It is what they"
-	line "all call me."
-
-	para "I am on the look-"
-	line "out for members"
-	cont "of Team Rocket."
-
-	para "What?! You defeat-"
-	line "ed them?"
-
-	para "Bravo!"
-	done
-
 FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	; filler
 	db 0, 0
@@ -362,7 +331,8 @@ FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	signpost 31, 7, SIGNPOST_READ, FastShipCabins_NNW_NNE_NETrashcan
 
 .PersonEvents:
-	db 9
+	db 8
+	person_event SPRITE_PI, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_COOLTRAINER_M, 3, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_COOLTRAINER_F, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_SUPER_NERD, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacEthan, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
@@ -370,5 +340,3 @@ FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	person_event SPRITE_SAILOR, 26, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x755f1, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
 	person_event SPRITE_GENTLEMAN, 30, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerGentlemanEdward, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_PHARMACIST, 30, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerBurglarCorey, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	person_event SPRITE_RICH_BOY, 15, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_PI, 15, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP

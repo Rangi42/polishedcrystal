@@ -1,6 +1,7 @@
 const_value set 2
 	const FASTSHIPCABINS_SW_SSW_NW_FISHER
 	const FASTSHIPCABINS_SW_SSW_NW_BUG_CATCHER
+	const FASTSHIPCABINS_SW_SSW_NW_RICH_BOY
 	const FASTSHIPCABINS_SW_SSW_NW_BUENA
 	const FASTSHIPCABINS_SW_SSW_NW_ROCKER
 
@@ -29,6 +30,17 @@ Bug_catcherKenScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x75bd5
+	waitbutton
+	closetext
+	end
+
+TrainerRichBoyWinston:
+	trainer EVENT_BEAT_RICH_BOY_WINSTON, RICH_BOY, WINSTON, RichBoyWinstonSeenText, RichBoyWinstonBeatenText, 0, RichBoyWinstonScript
+
+RichBoyWinstonScript:
+	end_if_just_battled
+	opentext
+	writetext RichBoyWinstonAfterText
 	waitbutton
 	closetext
 	end
@@ -139,6 +151,25 @@ UnknownText_0x75bd5:
 	cont "trees of Johto!"
 	done
 
+RichBoyWinstonSeenText:
+	text "There's no way you"
+	line "could afford a"
+	cont "ticket."
+
+	para "It looks like we've"
+	line "got a stowaway!"
+	done
+
+RichBoyWinstonBeatenText:
+	text "Wow! Who'd you buy"
+	line "your #mon from?"
+	done
+
+RichBoyWinstonAfterText:
+	text "This boat is so"
+	line "drab."
+	done
+
 BeautyCassieSeenText:
 	text "I'm trying to"
 	line "forget my woes."
@@ -224,8 +255,9 @@ FastShipCabins_SW_SSW_NW_MapEventHeader:
 	signpost 7, 7, SIGNPOST_READ, FastShipCabinsNorthwestCabinTrashcan
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_FISHER, 15, 1, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_BUG_CATCHER, 15, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	person_event SPRITE_RICH_BOY, 27, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_BUENA, 26, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_ROCKER, 28, 3, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND

@@ -196,3 +196,4 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Viewing the Ruins of Alph wall patterns crashes the game.
 * Fix: TM learnsets for Electivire, Magmortar, and Rhyperior.
 * Fix: Icicle Crash is still called Razor Shell.
+* Fix: Two trainers overlap on the S.S. Aqua.

@@ -9134,13 +9134,13 @@ BurglarGroup:
 
 	; BURGLAR
 	db "Corey@"
-	db 0 ; normal
+	db 2 ; item
 
 	; party
-	db 44, KOFFING
-	db 48, MAGMAR
-	db 44, KOFFING
-	db 46, WEEZING
+	db 44, KOFFING, NO_ITEM
+	db 46, WEEZING, NO_ITEM
+	db 46, MAGMAR, NO_ITEM
+	db 48, PERSIAN, AMULET_COIN
 
 	db $ff ; end
 
