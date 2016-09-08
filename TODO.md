@@ -12,9 +12,9 @@
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
+* Some trainers use X Spcl. Atk (seems to involve their second item slot, e.g. Lance's Full Restore)
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Pokémon overuse Baton Pass (still?)
-* Some trainers use X Spcl. Atk (still?)
 * Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313) (still?)
 * Delay before last text box when Wonder Trading (still?)
 
