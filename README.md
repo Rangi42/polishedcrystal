@@ -200,6 +200,7 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Bellchime Trail freeze.
 * Fix: Swimmer♂s on Route 40+41 have the Super Nerd sprite.
 * Fix: Viewing the Ruins of Alph wall patterns crashes the game.
+* Fix: Incorrect cries for some Pokémon.
 * Fix: TM learnsets for Electivire, Magmortar, and Rhyperior.
 * Fix: Icicle Crash is still called Razor Shell.
 * Fix: Two trainers overlap on the S.S. Aqua.

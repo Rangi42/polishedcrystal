@@ -181,6 +181,7 @@ MareepCryHeader:      cry_header CRY_MAREEP,      $022,  $0d8
 FlaaffyCryHeader:     cry_header CRY_MAREEP,     -$007,  $180
 AmpharosCryHeader:    cry_header CRY_AMPHAROS,   -$07c,  $0e8
 BellossomCryHeader:   cry_header CRY_BELLOSSOM,   $084,  $150
+RhyperiorCryHeader:   cry_header CRY_RHYDON,      $000,  $100
 SudowoodoCryHeader:   cry_header CRY_BELLOSSOM,   $f40,  $180
 PolitoedCryHeader:    cry_header CRY_BELLOSSOM,  -$2a3,  $1c8
 SunkernCryHeader:     cry_header CRY_MARILL,      $12b,  $0b8
