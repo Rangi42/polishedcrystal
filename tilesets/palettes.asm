@@ -514,10 +514,12 @@ InitLinkTradePalMap: ; 49856
 LoadSpecialMapOBPalette:
 	ld a, [MapGroup]
 	cp GROUP_VERMILION_GYM
-	ret nz
+	jr nz, .not_vermilion_gym
 	ld a, [MapNumber]
 	cp MAP_VERMILION_GYM
-	ret nz
+	jr nz, .not_vermilion_gym
+
+.vermilion_gym:
 	ld a, $5
 	ld de, UnknOBPals + 5 palettes
 	ld hl, VermilionGymOBPalette_Silver
@@ -525,8 +527,33 @@ LoadSpecialMapOBPalette:
 	call FarCopyWRAM
 	ret
 
+.not_vermilion_gym:
+	ld a, [MapGroup]
+	cp GROUP_FARAWAY_ISLAND
+	jr nz, .not_faraway_island
+	ld a, [MapNumber]
+	cp MAP_FARAWAY_ISLAND
+	jr nz, .not_faraway_island
+
+.faraway_island:
+	ld a, $5
+	ld de, UnknOBPals + 6 palettes
+	ld hl, FarawayIslandOBPalette_Tree
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+
+.not_faraway_island:
+	ret
+
 VermilionGymOBPalette_Silver:
 	RGB 31, 31, 31
 	RGB 31, 31, 30
 	RGB 19, 24, 31
 	RGB 05, 10, 27
+
+FarawayIslandOBPalette_Tree:
+	RGB 31, 31, 31
+	RGB 09, 23, 30
+	RGB 08, 13, 25
+	RGB 07, 07, 13

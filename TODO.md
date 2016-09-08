@@ -58,7 +58,6 @@
 * Color party and day-care sprites by species
 * Support nicknames for NPC trainers' Pokémon
 * Yellow Pikachu Surfing music
-* Splash in puddles (base on ShakeGrass routine) (or just make PAL_OW_TREE blue on Faraway Island and treat puddles as grass)
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
 * Goldenrod Dept. Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches

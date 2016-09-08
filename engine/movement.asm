@@ -757,7 +757,8 @@ NormalStep: ; 5412
 	ld a, [hl]
 	call CheckSuperTallGrassTile
 	jr z, .shake_grass
-
+	call CheckPuddleTile
+	jr z, .shake_grass
 	call CheckGrassTile
 	jr c, .skip_grass
 

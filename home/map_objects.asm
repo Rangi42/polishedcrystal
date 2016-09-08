@@ -150,6 +150,10 @@ CheckSuperTallGrassTile:: ; 188e
 	ret
 ; 1894
 
+CheckPuddleTile::
+	cp $85
+	ret
+
 CheckCutTreeTile:: ; 1894
 	cp $12
 	ret z
