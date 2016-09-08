@@ -11,7 +11,7 @@ ValeriesHouse_MapScriptHeader:
 
 	; callbacks
 
-	dbw MAPCALLBACK_SPRITES, SetupValerieAfterMorningWalkScript
+	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
 SetupValerieAfterMorningWalkScript:
 	checkevent EVENT_BEAT_VALERIE
@@ -19,11 +19,11 @@ SetupValerieAfterMorningWalkScript:
 	checkflag ENGINE_VALERIE_MORNING_WALK
 	iffalse .Disappear
 	appear VALERIESHOUSE_VALERIE
-	end
+	return
 
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
-	end
+	return
 
 ValeriesHouseValerieScript:
 	jumptextfaceplayer ValeriesHouseValerieText
