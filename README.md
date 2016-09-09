@@ -203,6 +203,7 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Incorrect cries for some Pokémon.
 * Fix: TM learnsets for Electivire, Magmortar, and Rhyperior.
 * Fix: Icicle Crash is still called Razor Shell.
+* Fix: A battle with Lyra is skippable.
 * Fix: Two trainers overlap on the S.S. Aqua.
 * Fix: Plural trainers say "are about to use", not "is about to use".
 * Fix: Viridian Forest is dark.

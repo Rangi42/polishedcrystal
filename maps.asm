@@ -180,14 +180,14 @@ INCLUDE "maps/MountMoonSquare.asm"
 INCLUDE "maps/TinTowerRoof.asm"
 INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route42.asm"
-INCLUDE "maps/KrissHouse1F.asm"
+INCLUDE "maps/ElmsHouse.asm"
+INCLUDE "maps/KrissNeighborsHouse.asm"
 
 
 SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
 
+INCLUDE "maps/KrissHouse1F.asm"
 INCLUDE "maps/KrissHouse2F.asm"
-INCLUDE "maps/KrissNeighborsHouse.asm"
-INCLUDE "maps/ElmsHouse.asm"
 INCLUDE "maps/Route26HealSpeechHouse.asm"
 INCLUDE "maps/Route26DayofWeekSiblingsHouse.asm"
 INCLUDE "maps/Route27SandstormHouse.asm"

@@ -82,6 +82,19 @@ Route42LyraScript4:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach4
+	jump Route42LyraScript
+
+Route42LyraScript5:
+	spriteface PLAYER, UP
+	showemote EMOTE_SHOCK, PLAYER, 15
+	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
+	special RunCallback_04
+	playsound SFX_ENTER_DOOR
+	appear ROUTE42_LYRA
+	waitsfx
+	applymovement PLAYER, MovementData_Route42PlayerStepsBack
+	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach5
+
 Route42LyraScript:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
@@ -362,6 +375,16 @@ MovementData_Route42LyraApproach1:
 	step_right
 	step_end
 
+MovementData_Route42LyraApproach5:
+	step_down
+	step_end
+
+MovementData_Route42PlayerStepsBack:
+	fix_facing
+	step_down
+	remove_fixed_facing
+	step_end
+
 MovementData_Route42LyraLeave:
 	step_left
 	step_left
@@ -589,11 +612,12 @@ Route42_MapEventHeader:
 	warp_def $7, $2e, 3, MOUNT_MORTAR_1F_OUTSIDE
 
 .XYTriggers:
-	db 5
+	db 6
 	xy_trigger 1, $6, $c, $0, Route42LyraScript1, $0, $0
 	xy_trigger 1, $7, $c, $0, Route42LyraScript2, $0, $0
 	xy_trigger 1, $8, $c, $0, Route42LyraScript3, $0, $0
 	xy_trigger 1, $9, $c, $0, Route42LyraScript4, $0, $0
+	xy_trigger 1, $6, $a, $0, Route42LyraScript5, $0, $0
 	xy_trigger 2, $e, $18, $0, Route42SuicuneScript, $0, $0
 
 .Signposts:
