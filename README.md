@@ -131,7 +131,7 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Eevee evolves into Glaceon in the Ice Path, site of the Ice Rock.
 * Eevee evolves into Sylveon with a Shiny Stone.
 * Magneton evolves into Magnezone in Rock Tunnel, site of the Lodestone.
-* Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient stat exp in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is enough).
+* Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient EVs in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is enough).
 
 **Where do I get the legendary Pokémon?**
 
