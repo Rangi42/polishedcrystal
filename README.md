@@ -188,9 +188,9 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 
 * Add: Item balls for TMs are blue (based on Gen VI's yellow).
 * Add: The Zephyr Badge lets you use traded Pokémon up to level 20.
-* Add: Some boss trainers only use Gen VI evolutions in rematches.
 * Add: Respawn Sudowoodo if uncaught after the Elite Four, like legendaries.
 * Add: Splash effect in puddles.
+* Add: Update some boss trainers' teams.
 * Add: Mantine can learn Fly.
 * Add: Crabhammer has 95% accuracy.
 * Add: Unique wild moves are rarer (25%, not 50%).

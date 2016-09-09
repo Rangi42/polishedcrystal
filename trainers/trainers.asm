@@ -1671,11 +1671,19 @@ ErikaGroup:
 		db GIGA_DRAIN
 		db SLEEP_POWDER
 
+if DEF(FAITHFUL)
 	db 61, PARASECT, NO_ITEM
 		db SPORE
 		db SLASH
 		db GROWTH
 		db GIGA_DRAIN
+else
+	db 61, POLITOED, NO_ITEM
+		db GIGA_DRAIN
+		db SCALD
+		db ICE_BEAM
+		db FOCUS_BLAST
+endc
 
 	db 64, VICTREEBEL, NO_ITEM
 		db SUNNY_DAY
