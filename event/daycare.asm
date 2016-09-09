@@ -660,7 +660,12 @@ DayCare_InitBreeding: ; 16a3b
 
 	ld a, [CurPartySpecies]
 	cp NIDORAN_F
+	jr z, .NidoranFamilyMother
+	cp NIDORINA
+	jr z, .NidoranFamilyMother
+	cp NIDOQUEEN
 	jr nz, .GotEggSpecies
+.NidoranFamilyMother:
 	call Random
 	cp 1 + 50 percent
 	ld a, NIDORAN_F
