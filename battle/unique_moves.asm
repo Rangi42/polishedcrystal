@@ -31,8 +31,8 @@ CheckUniqueWildMove:
 	ld a, [hli] ; GrassMove
 	ld b, a
 .ChanceToTeach
-	; 50% chance to teach other moves
-	ld a, 2
+	; 25% chance to teach other moves
+	ld a, 4
 	call RandomRange
 	and a
 	ret nz
