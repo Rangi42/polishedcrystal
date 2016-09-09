@@ -5,6 +5,7 @@
 
 ## Bugs
 
+* Nuzlocke mode sometimes turns on by itself
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
 * TMs refresh PP
@@ -27,7 +28,7 @@
 * Substitute does not block sound-based moves
 * Substitute prevents building Rage
 * Drain Kiss drains 75% HP
-* Avalanche doubles damage if user is hit first
+* Avalanche doubles damage if user is hit first (description claims it does this already)
 * Hurricane cannot miss in rain (ignores accuracy and evasion)
 * Blizzard cannot miss in hail (ignores accuracy and evasion)
 * Thunder ignores accuracy and evasion in rain (not just 100% accuracy)
