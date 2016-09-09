@@ -217,3 +217,5 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Twins Ann & Anne → Twins Tori & Til.
 * Fix: Lass's text spread over multiple lines.
 * Fix: Trainer Card badges in Kanto.
+* Fix: Game Corner still mentions Blizzard, not Ice Beam.
+* Fix: Game Corner games in Goldenrod use Celadon music.

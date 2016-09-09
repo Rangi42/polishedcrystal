@@ -402,7 +402,7 @@ GoldenrodGameCornerCooltrainerFText:
 	done
 
 GoldenrodGameCornerGentlemanText:
-	text "I taught Blizzard"
+	text "I taught Ice Beam"
 	line "to my #mon."
 
 	para "It was hard to get"
