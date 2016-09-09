@@ -216,3 +216,4 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Tile error in Cherrygrove Bay.
 * Fix: Twins Ann & Anne → Twins Tori & Til.
 * Fix: Lass's text spread over multiple lines.
+* Fix: Trainer Card badges in Kanto.

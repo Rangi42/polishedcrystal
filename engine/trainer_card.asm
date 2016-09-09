@@ -17,26 +17,7 @@ TrainerCard: ; 25105
 	ld a, [hJoyLast]
 	and B_BUTTON
 	jr nz, .quit
-	ld a, [KantoBadges]
-	and a
-	jr z, .johto
-	push bc
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	pop bc
-	cp FAST_SHIP
-	jr z, .johto
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	call .RunJumptable1
-	jr .ok
-.kanto
-	call .RunJumptable2
-.ok
+	call .RunJumptable
 	call DelayFrame
 	jr .loop
 
@@ -87,10 +68,10 @@ endr
 	ld [hl], a
 	ret
 
-.RunJumptable1: ; 2518e (9:518e)
-	jumptable .Jumptable1, wJumptableIndex
+.RunJumptable: ; 2518e (9:518e)
+	jumptable .Jumptable, wJumptableIndex
 
-.Jumptable1: ; 2519d (9:519d)
+.Jumptable: ; 2519d (9:519d)
 	dw TrainerCard_Page1_LoadGFX
 	dw TrainerCard_Page1_Joypad
 	dw TrainerCard_Page2_LoadGFX
@@ -98,20 +79,6 @@ endr
 	dw TrainerCard_Page3_LoadGFX
 	dw TrainerCard_Page3_Joypad
 	dw TrainerCard_Quit
-
-.RunJumptable2: ; 2518e (9:518e)
-	jumptable .Jumptable2, wJumptableIndex
-
-.Jumptable2: ; 2519d (9:519d)
-	dw TrainerCard_Page1_LoadGFX
-	dw TrainerCard_Page1_Joypad
-	dw TrainerCard_Page3_LoadGFX
-	dw TrainerCard_Page2_Joypad
-	dw TrainerCard_Page2_LoadGFX
-	dw TrainerCard_Page3_Joypad
-	dw TrainerCard_Quit
-
-
 
 TrainerCard_IncrementJumptable: ; 251ab (9:51ab)
 	ld hl, wJumptableIndex
