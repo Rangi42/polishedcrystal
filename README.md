@@ -186,11 +186,12 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 2.0.0 release. If you build the project as-is, it will include all of them.
 
-* Add: The Zephyr Badge lets you use traded Pokémon up to level 20.
 * Add: Item balls for TMs are blue (based on Gen VI's yellow).
+* Add: The Zephyr Badge lets you use traded Pokémon up to level 20.
 * Add: Some boss trainers only use Gen VI evolutions in rematches.
 * Add: Respawn Sudowoodo if uncaught after the Elite Four, like legendaries.
 * Add: Splash effect in puddles.
+* Add: Mantine can learn Fly.
 * Fix: Flash no longer requires the Zephyr Badge, since earning the Zephyr Badge requires using Flash.
 * Fix: The Rocket Grunt♀ who gives you a password has a glitched unbeatable team.
 * Fix: The Day-Care gives back fainted Pokémon in Nuzlocke mode.
