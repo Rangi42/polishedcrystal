@@ -14,15 +14,20 @@ ValeriesHouse_MapScriptHeader:
 	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
 SetupValerieAfterMorningWalkScript:
+	checkevent EVENT_FOUGHT_SUICUNE
+	iffalse .Disappear
 	checkevent EVENT_BEAT_VALERIE
 	iffalse .Disappear
 	checkflag ENGINE_VALERIE_MORNING_WALK
-	iffalse .Disappear
-	appear VALERIESHOUSE_VALERIE
-	return
-
+	iftrue .Appear
+	checkmorn
+	iffalse .Appear
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
+	return
+
+.Appear
+	appear VALERIESHOUSE_VALERIE
 	return
 
 ValeriesHouseValerieScript:

@@ -138,7 +138,6 @@ SuicuneBattle:
 	domaptrigger CIANWOOD_CITY, $0
 	dotrigger $1
 	clearevent EVENT_SET_WHEN_FOUGHT_HO_OH
-	clearevent EVENT_VALERIE_BELLCHIME_TRAIL
 	reloadmapafterbattle
 	pause 20
 	spriteface PLAYER, DOWN

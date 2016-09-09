@@ -24,15 +24,20 @@ BellchimeTrail_MapScriptHeader:
 	end
 
 SetupValerieMorningWalkScript:
+	checkevent EVENT_FOUGHT_SUICUNE
+	iffalse .Disappear
 	checkevent EVENT_BEAT_VALERIE
 	iffalse .Appear
 	checkflag ENGINE_VALERIE_MORNING_WALK
-	iffalse .Appear
-	disappear BELLCHIMETRAIL_VALERIE
-	return
-
+	iftrue .Disappear
+	checkmorn
+	iffalse .Disappear
 .Appear:
 	appear BELLCHIMETRAIL_VALERIE
+	return
+
+.Disappear:
+	disappear BELLCHIMETRAIL_VALERIE
 	return
 
 BellchimeTrailStepDownScript:
@@ -97,8 +102,8 @@ BellchimeTrailValerieScript:
 .SkipGoAround
 	applymovement BELLCHIMETRAIL_VALERIE, MovementData_ValerieDeparts1
 	disappear BELLCHIMETRAIL_VALERIE
-	setflag ENGINE_VALERIE_MORNING_WALK
 	clearevent EVENT_VALERIE_ECRUTEAK_CITY
+	setflag ENGINE_VALERIE_MORNING_WALK
 	end
 
 .Refused:
@@ -345,4 +350,4 @@ BellchimeTrail_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_BEAT_VALERIE
+	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
