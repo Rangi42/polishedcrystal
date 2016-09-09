@@ -1685,6 +1685,8 @@ LoadMapPals:
 	cp TOWN
 	jr z, .outside
 	cp ROUTE
+	jr z, .outside
+	cp PERM_5
 	ret nz
 .outside
 	ld a, [MapGroup]
