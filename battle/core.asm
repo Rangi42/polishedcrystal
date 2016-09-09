@@ -2856,6 +2856,24 @@ ForcePlayerMonChoice: ; 3d227
 .skip_link
 	xor a
 	ld [wPlayerAction], a
+	ld hl, EnemyMonHP
+	ld a, [hli]
+	or [hl]
+	jr nz, .send_out_pokemon
+
+	call ClearSprites
+	call ClearBGPalettes
+	call _LoadHPBar
+	call ExitMenu
+	call LoadTileMapToTempTileMap
+	call WaitBGMap
+	call GetMemSGBLayout
+	call SetPalettes
+	xor a
+	ld c, a
+	ret
+
+.send_out_pokemon
 	call ClearSprites
 	ld a, [CurBattleMon]
 	ld [LastPlayerMon], a

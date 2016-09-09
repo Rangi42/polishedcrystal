@@ -198,6 +198,7 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: The Rocket Grunt♀ who gives you a password has a glitched unbeatable team.
 * Fix: The Day-Care gives back fainted Pokémon in Nuzlocke mode.
 * Fix: Calling Bill to switch boxes corrupts the PC.
+* Fix: Destiny Bond glitch.
 * Fix: Ecruteak fairy-tale house crash.
 * Fix: Bellchime Trail crash.
 * Fix: Conditions for Bellchime Trail event.
