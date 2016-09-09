@@ -119,7 +119,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 
 * Lyra from HG/SS is your friendly rival. She battles you and gives you some items throughout the game.
 * The four Rocket Executives from HG/SS are introduced.
-* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, Hex Maniac, and Guitarist♀.
+* New trainer classes: Elder, Rich Boy, Schoolgirl, Cowgirl, Battle Girl, Hex Maniac, Guitarist♀, Officer♀, Sr. & Jr., Couple, Breeder, PI, Dragon Tamer, Ace Duo, and Roughneck.
 * Battle Lorelei, Agatha, Bill, Valerie, and some other special characters.
 * Battle Cal in Viridian City's Trainer House if you're a girl, Kay if you're a boy.
 * Rematch the Elite Four at higher levels after earning all 16 badges.
