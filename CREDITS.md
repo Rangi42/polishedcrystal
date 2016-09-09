@@ -10,8 +10,8 @@
 * metalflygon08 for the HGSS Team Rocket, Sylveon, and Rhyperior sprites
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt
 * Mmmmmm for many music covers
+* Pum for many music covers
 * Pigu for many music covers from TPP Anniversary Crystal 251
-* Pum for the Route 47, Yellow Forest, and Lugia chamber music
 * ShantyTown for the Rock Tunnel music
 * Serious Senator for some trainer dialogs
 * tonyism for the in-battle shiny icon code
