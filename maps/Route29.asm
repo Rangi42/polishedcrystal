@@ -46,6 +46,7 @@ Route29_MapScriptHeader:
 Route29Tutorial1:
 	spriteface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
+	special Special_FadeOutMusic
 	applymovement ROUTE29_LYRA, LyraMovementData1a
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -58,6 +59,7 @@ Route29Tutorial1:
 	stopfollow
 	loadwildmon SENTRET, 5
 	catchtutorial BATTLETYPE_TUTORIAL
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	spriteface ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
@@ -75,6 +77,7 @@ Route29Tutorial1:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
+	playmusic MUSIC_ROUTE_29
 	end
 
 Route29Tutorial2:
@@ -94,6 +97,7 @@ Route29Tutorial2:
 	stopfollow
 	loadwildmon SENTRET, 5
 	catchtutorial BATTLETYPE_TUTORIAL
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	spriteface ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
@@ -111,6 +115,7 @@ Route29Tutorial2:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
+	playmusic MUSIC_ROUTE_29
 	end
 
 LyraScript_ReceiveTheBalls:

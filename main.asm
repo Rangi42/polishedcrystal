@@ -1591,6 +1591,10 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION
 	jp z, .done
+	cp STEVEN
+	jp z, .done
+	cp CYNTHIA
+	jp z, .done
 
 	ld de, MUSIC_WCS_BATTLE_BW
 	cp RED
@@ -1602,6 +1606,10 @@ PlayBattleMusic: ; 2ee6c
 
 	ld de, MUSIC_FRONTIER_BRAIN_BATTLE_RSE
 	cp TOWERTYCOON
+	jp z, .done
+
+	ld de, MUSIC_GYM_LEADER_BATTLE_XY
+	cp VALERIE
 	jp z, .done
 
 	ld de, MUSIC_ROCKET_BATTLE
@@ -3684,6 +3692,9 @@ CatchTutorial:: ; 4e554
 	ld de, PlayerName
 	ld bc, NAME_LENGTH
 	call CopyBytes
+
+	ld a, 1
+	ld [wDontPlayMapMusicOnReload], a
 	ret
 
 .LoadDudeData: ; 4e5b7 (13:65b7)

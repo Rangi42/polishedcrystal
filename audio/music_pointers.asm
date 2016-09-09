@@ -124,6 +124,7 @@
 	dba Music_ChampionBattleB2W2
 	dba Music_PowerPlantXY
 	dba Music_RivalBattleXY
+	dba Music_GymLeaderBattleXY
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY

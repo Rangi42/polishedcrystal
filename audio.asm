@@ -184,6 +184,7 @@ INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 SECTION "Extra Songs 4", ROMX
 
 INCLUDE "audio/music/b2w2/championbattle.asm"
+INCLUDE "audio/music/xy/gymbattle.asm"
 
 
 
