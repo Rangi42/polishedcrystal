@@ -22,7 +22,7 @@
 
 ## Battle mechanics
 
-* http://smogon.site/forums/threads/gsc-mechanics.3542417/
+* http://smogon.com/forums/threads/gsc-mechanics.3542417/
 * Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
 * Defrosted Pokémon can attack on that turn (like waking up)
 * Substitute does not block sound-based moves
