@@ -223,6 +223,7 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Color-coded starter Poké Balls.
 * Updated language (Pack → Bag, Enemy → Foe, Cooltrainer → Ace Trainer, Fisher → Fisherman, Elixer → Elixir, Pink Bow → Silk Scarf, new Berry names, etc).
 * Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell).
+* Janine's pink badge is called the Marsh Badge; Sabrina's gold badge is called the Soul Badge.
 * Nidorina and Nidoqueen can breed.
 * Fly to the Rock Tunnel/Power Plant Pokémon Center.
 * Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS.
