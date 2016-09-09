@@ -9,7 +9,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is 2.0.0 as of September 7, 2016.
+The most recent version is 2.0.1 as of September 9, 2016.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
@@ -24,12 +24,12 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
-* [Pokémon Polished Crystal 2.0.0](patches/polishedcrystal-2.0.0.ips)  
-  (IPS patch file `md5: 25ceb4c59163eec39a37b5449cd28478`)  
-  (Patched GBC ROM `md5: 6ecb7d3e80d894523f45a1155bcf7732`)
-* [Pokémon Polished Crystal (Faithful) 2.0.0](patches/polishedcrystal-faithful-2.0.0.ips)  
-  (IPS patch file `md5: 1c6b9c74bc8fdbc0f9d8b4d9a852366c`)  
-  (Patched GBC ROM `md5: 353f387a1a7b88a58d35fd2f5059e792`)
+* [Pokémon Polished Crystal 2.0.1](patches/polishedcrystal-2.0.1.ips)  
+  (IPS patch file `md5: 961c1a1ba360e4153a70d1ab94c7057f`)  
+  (Patched GBC ROM `md5: bc2874247d8dd2f609d877cb8cb2c204`)
+* [Pokémon Polished Crystal (Faithful) 2.0.1](patches/polishedcrystal-faithful-2.0.1.ips)  
+  (IPS patch file `md5: a962f9fa3b9316d49cf1077627037858`)  
+  (Patched GBC ROM `md5: 87285af80c7aa2e3b1912bb0466ed0a9`)
 
 
 ## Features
@@ -182,45 +182,8 @@ I was hesitant to make original changes like this, because the goal is to be an 
 * Avalanche's power doesn't double if the user is hit first.
 
 
-## Changes in 2.0.1
+## Changes in 2.0.2
 
-These changes have been made since the previous 2.0.0 release. If you build the project as-is, it will include all of them.
+These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
 
-* Add: Item balls for TMs are blue (based on Gen VI's yellow).
-* Add: The Zephyr Badge lets you use traded Pokémon up to level 20.
-* Add: Respawn Sudowoodo if uncaught after the Elite Four, like legendaries.
-* Add: Splash effect in puddles.
-* Add: Update some boss trainers' teams.
-* Add: Mantine can learn Fly.
-* Add: Crabhammer has 95% accuracy.
-* Add: Unique wild moves are rarer (25%, not 50%).
-* Add: Move Nuzlocke mode option away from common ones.
-* Add: X/Y Gym Leader music for Valerie.
-* Add: Fairy tale references.
-* Add: Nidorina and Nidoqueen, not just Nidoran♀, can produce either gender of Nidoran eggs.
-* Fix: Flash no longer requires the Zephyr Badge, since earning the Zephyr Badge requires using Flash.
-* Fix: The Rocket Grunt♀ who gives you a password has a glitched unbeatable team.
-* Fix: The Day-Care gives back fainted Pokémon in Nuzlocke mode.
-* Fix: Calling Bill to switch boxes corrupts the PC.
-* Fix: Destiny Bond glitch.
-* Fix: Ecruteak fairy-tale house crash.
-* Fix: Bellchime Trail crash.
-* Fix: Conditions for Bellchime Trail event.
-* Fix: Swimmer♂s on Route 40+41 have the Super Nerd sprite.
-* Fix: Viewing the Ruins of Alph wall patterns crashes the game.
-* Fix: Incorrect cries for some Pokémon.
-* Fix: TM learnsets for Electivire, Magmortar, and Rhyperior.
-* Fix: Icicle Crash is still called Razor Shell.
-* Fix: A battle with Lyra is skippable.
-* Fix: Two trainers overlap on the S.S. Aqua.
-* Fix: Sending a caught Pokémon to the PC asks whether to nickname in Nuzlocke mode.
-* Fix: Plural trainers say "are about to use", not "is about to use".
-* Fix: Viridian Forest is dark.
-* Fix: S.S. Aqua location on Town Map.
-* Fix: Tile error in Cherrygrove Bay.
-* Fix: Twins Ann & Anne → Twins Tori & Til.
-* Fix: Lass's text spread over multiple lines.
-* Fix: Trainer Card badges in Kanto.
-* Fix: Game Corner still mentions Blizzard, not Ice Beam.
-* Fix: Game Corner games in Goldenrod use Celadon music.
-* Fix: Adjust some event timing.
+* None yet!

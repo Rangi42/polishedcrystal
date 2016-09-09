@@ -112,7 +112,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Three of Prof. Oak's aides give you items as you complete the Pokédex.
 * Bill's grandpa gives you one of each evolutionary stone in Goldenrod City. Later they can be bought in Celadon Dept. Store.
 * Eusine shows you the legendary beasts in Celadon City in case you haven't found them roaming.
-* Respawn any fainted legendaries (except for Celebi) after beating the Elite Four. (Suicune roams instead of appearing in Bell Tower.)
+* Respawn any fainted legendaries (except for Celebi) after beating the Elite Four. (Suicune roams instead of appearing in Bell Tower.) (Also respawns Sudowodo.)
 
 
 ## Trainers
@@ -212,6 +212,7 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Unique mini sprites for each Pokémon (thanks to [this patch](http://www.pokecommunity.com/showthread.php?t=338470)).
 * Revised some shiny palettes (Dragonite is blue like Dragonair, Nidoqueen is pink like Nidoking, Scizor is silver, Espeon is sky blue, Electabuzz is red, etc).
 * Unown isn't the only Pokémon with variant forms…
+* Item balls for TMs are blue (inspired by Gen VI's yellow).
 
 
 ## More Tweaks
@@ -224,8 +225,10 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Updated language (Pack → Bag, Enemy → Foe, Cooltrainer → Ace Trainer, Fisher → Fisherman, Elixer → Elixir, Pink Bow → Silk Scarf, new Berry names, etc).
 * Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell).
 * Janine's pink badge is called the Marsh Badge; Sabrina's gold badge is called the Soul Badge.
-* Nidorina and Nidoqueen can breed.
+* Nidorina and Nidoqueen can breed, and will produce eggs of either Nidoran gender.
 * Fly to the Rock Tunnel/Power Plant Pokémon Center.
-* Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS.
+* The Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS.
+* The Zephyr Badge lets you use traded Pokémon up to level 20, like in HG/SS.
+* Flash does not require the Zephyr Badge.
 * Fishing works 75% of the time, not 50%.
 * Always show numbers in Pokédex, even in Johto order.
