@@ -77,10 +77,12 @@ Route34LyraTrigger1:
 Route34LyraTrigger3:
 	applymovement PLAYER, Route34MovementData_AdjustPlayer2
 Route34LyraTrigger2:
+	special Special_FadeOutMusic
 	opentext
 	writetext Route34LyraText_Grandpa
 	waitbutton
 	closetext
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ROUTE34_LYRA
 	spriteface ROUTE34_GRAMPS2, UP
 	pause 10
@@ -91,10 +93,8 @@ Route34LyraTrigger2:
 	waitbutton
 	closetext
 	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
-	special Special_FadeOutMusic
 	pause 15
 	spriteface ROUTE34_LYRA, DOWN
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext Route34LyraGreetingText
 	waitbutton

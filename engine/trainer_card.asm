@@ -108,11 +108,20 @@ TrainerCard_Page1_Joypad: ; 251d7 (9:51d7)
 	call TrainerCard_Page1_PrintGameTime
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_RIGHT | A_BUTTON
-	jr nz, .pressed_right_a
+	and D_RIGHT
+	jr nz, .pressed_right
+	ld a, [hl]
+	and A_BUTTON
+	jr nz, .pressed_a
 	ret
 
-.pressed_right_a
+.pressed_right
+	ld a, [KantoBadges]
+	and a
+	jr nz, .pressed_a
+	ret
+
+.pressed_a
 	ld a, $2
 	ld [wJumptableIndex], a
 	ret

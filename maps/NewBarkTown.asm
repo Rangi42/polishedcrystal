@@ -78,10 +78,9 @@ NewBarkTown_TeacherStopsYouTrigger2:
 
 NewBarkTown_LyraIntroTrigger:
 	appear NEWBARKTOWN_LYRA
+	special Special_FadeOutMusic
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraEnters_NBT
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
-	special Special_FadeOutMusic
-	pause 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraApproaches_NBT
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -288,10 +287,10 @@ Movement_SilverReturnsToTheShadows_NBT:
 Movement_LyraEnters_NBT:
 	step_right
 	step_right
-	step_right
 	step_end
 
 Movement_LyraApproaches_NBT:
+	step_right
 	step_up
 	step_up
 	step_right

@@ -219,3 +219,4 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Trainer Card badges in Kanto.
 * Fix: Game Corner still mentions Blizzard, not Ice Beam.
 * Fix: Game Corner games in Goldenrod use Celadon music.
+* Fix: Adjust some event timing.
