@@ -66,6 +66,8 @@ AI_Basic: ; 38591
 	db EFFECT_TOXIC
 	db EFFECT_POISON
 	db EFFECT_PARALYZE
+	db EFFECT_BURN
+	db EFFECT_FREEZE
 	db $ff
 ; 385e0
 
@@ -366,6 +368,8 @@ AI_Smart: ; 386be
 	dbw EFFECT_MEAN_LOOK,        AI_Smart_MeanLook
 	dbw EFFECT_NIGHTMARE,        AI_Smart_Nightmare
 	dbw EFFECT_FLAME_WHEEL,      AI_Smart_FlameWheel
+	dbw EFFECT_FLARE_BLITZ,      AI_Smart_FlameWheel
+	dbw EFFECT_SACRED_FIRE,      AI_Smart_FlameWheel
 	dbw EFFECT_CURSE,            AI_Smart_Curse
 	dbw EFFECT_PROTECT,          AI_Smart_Protect
 	dbw EFFECT_FORESIGHT,        AI_Smart_Foresight

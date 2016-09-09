@@ -33,6 +33,8 @@
 * Blizzard cannot miss in hail (ignores accuracy and evasion)
 * Thunder ignores accuracy and evasion in rain (not just 100% accuracy)
 * Low Kick's power is based on weight
+* Body Slam does double damage against Minimize
+* Stomp and Body Slam never miss against Minimize
 * Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
 * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
