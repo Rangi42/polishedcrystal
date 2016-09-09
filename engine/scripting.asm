@@ -244,8 +244,6 @@ ScriptCommandTable: ; 96cb1
 	dw Script_count_unown_caught         ; ab
 	dw Script_trainerpic                 ; ac
 	dw Script_check_nuzlocke             ; ad
-	dw Script_nuzlocke_on                ; ae
-	dw Script_nuzlocke_off               ; af
 ; 96e05
 
 StartScript: ; 96e05
@@ -3275,20 +3273,4 @@ Script_check_nuzlocke:
 	ld a, [Options2]
 	bit NUZLOCKE_MODE, a
 	ld [ScriptVar], a
-	ret
-
-Script_nuzlocke_on:
-; script command 0xae
-
-	ld a, [Options2]
-	set NUZLOCKE_MODE, a
-	ld [Options2], a
-	ret
-
-Script_nuzlocke_off:
-; script command 0xaf
-
-	ld a, [Options2]
-	res NUZLOCKE_MODE, a
-	ld [Options2], a
 	ret

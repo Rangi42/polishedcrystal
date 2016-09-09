@@ -3402,7 +3402,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 
 GiveANickname_YesNo: ; 4db3b
 	ld a, [Options2]
-	and 1 << NUZLOCKE_MODE
+	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 	ld hl, TextJump_GiveANickname
 	call PrintText

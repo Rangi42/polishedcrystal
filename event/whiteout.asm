@@ -53,9 +53,7 @@ Script_Whiteout: ; 0x124ce
 	db "@"
 
 Script_NuzlockeWhiteout:
-	nuzlocke_off
-	special HealParty
-	nuzlocke_on
+	special HealPartyEvenForNuzlocke
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .bug_contest
 	callasm GetWhiteoutSpawn

@@ -1085,13 +1085,3 @@ trainerpic: macro
 check_nuzlocke: macro
 	db check_nuzlocke_command
 	endm
-
-	enum nuzlocke_on_command
-nuzlocke_on: macro
-	db nuzlocke_on_command
-	endm
-
-	enum nuzlocke_off_command
-nuzlocke_off: macro
-	db nuzlocke_off_command
-	endm

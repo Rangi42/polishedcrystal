@@ -212,6 +212,7 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Icicle Crash is still called Razor Shell.
 * Fix: A battle with Lyra is skippable.
 * Fix: Two trainers overlap on the S.S. Aqua.
+* Fix: Sending a caught Pokémon to the PC asks whether to nickname in Nuzlocke mode.
 * Fix: Plural trainers say "are about to use", not "is about to use".
 * Fix: Viridian Forest is dark.
 * Fix: S.S. Aqua location on Town Map.

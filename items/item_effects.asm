@@ -686,6 +686,10 @@ endr
 .SkipBoxMonFriendBall:
 	call CloseSRAM
 
+	ld a, [Options2]
+	bit NUZLOCKE_MODE, a
+	jr nz, .AlwaysNicknameBox
+
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
 
@@ -696,6 +700,7 @@ endr
 	call YesNoBox
 	jr c, .SkipBoxMonNickname
 
+.AlwaysNicknameBox:
 	xor a
 	ld [CurPartyMon], a
 	ld a, BOXMON
