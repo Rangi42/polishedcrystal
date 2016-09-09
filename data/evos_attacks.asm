@@ -1818,8 +1818,8 @@ KrabbyEvosAttacks:
 	db 29, PROTECT
 	db 31, X_SCISSOR ; Guillotine → TM move
 	db 35, SLAM
-	db 39, ANCIENTPOWER ; Brine → HGSS tutor move
-	db 41, CRABHAMMER
+	db 39, CRABHAMMER ; Brine → Crabhammer
+	db 41, ANCIENTPOWER ; AncientPower → HGSS tutor move
 	db 45, FLAIL
 	db 0 ; no more level-up moves
 
@@ -1836,8 +1836,8 @@ KinglerEvosAttacks:
 	db 32, PROTECT
 	db 37, X_SCISSOR ; Guillotine → TM move
 	db 44, SLAM
-	db 51, ANCIENTPOWER ; Brine → HGSS tutor move
-	db 56, CRABHAMMER
+	db 51, CRABHAMMER ; Brine → Crabhammer
+	db 56, ANCIENTPOWER ; AncientPower → HGSS tutor move
 	db 63, FLAIL
 	db 0 ; no more level-up moves
 

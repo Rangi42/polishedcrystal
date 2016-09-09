@@ -192,6 +192,7 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Add: Respawn Sudowoodo if uncaught after the Elite Four, like legendaries.
 * Add: Splash effect in puddles.
 * Add: Mantine can learn Fly.
+* Add: Crabhammer has 95% accuracy.
 * Add: Unique wild moves are rarer (25%, not 50%).
 * Fix: Flash no longer requires the Zephyr Badge, since earning the Zephyr Badge requires using Flash.
 * Fix: The Rocket Grunt♀ who gives you a password has a glitched unbeatable team.
@@ -210,5 +211,6 @@ These changes have been made since the previous 2.0.0 release. If you build the 
 * Fix: Plural trainers say "are about to use", not "is about to use".
 * Fix: Viridian Forest is dark.
 * Fix: S.S. Aqua location on Town Map.
+* Fix: Tile error in Cherrygrove Bay.
 * Fix: Twins Ann & Anne → Twins Tori & Til.
-* Fix: Lass' text over multiple lines.
+* Fix: Lass's text spread over multiple lines.

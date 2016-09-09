@@ -164,18 +164,9 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 
 ## Changes and Buffs
 
+### Pokémon
+
 * Many base stat changes, mostly based on [Drayano's Sacred Gold/Storm Silver](https://gbatemp.net/threads/pok%C3%A9mon-sacred-gold-storm-silver.327567/).
-* Cut is Steel-type, and has 60 power and 100% accuracy.
-* Hidden Power is ???-type and has 70 power.
-* Metronome is ???-type.
-* Sing has 75% accuracy (matching Lovely Kiss).
-* Supersonic has 65% accuracy.
-* Submission and Take Down have 90 power and 100% accuracy, like Wild Charge.
-* Hail boosts Defense of Ice-types by 50%.
-* Fly has 100% accuracy.
-* Strength has 90 power.
-* Rock Smash has 75 power.
-* Pain Split is Ghost-type.
 * Blastoise is Water/Steel.
 * Butterfree is Bug/Psychic.
 * Persian is Normal/Dark.
@@ -195,7 +186,22 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Rhyperior is Steel/Rock.
 * Mismagius is Ghost/Fairy.
 
-I know that not everyone likes this kind of change, so I've provided two ROM patches. The "faithful" patch keeps the canon Pokémon stats and move attributes.
+### Moves
+
+* Cut is Steel-type, and has 60 power and 100% accuracy.
+* Fly has 100% accuracy.
+* Strength has 90 power.
+* Rock Smash has 75 power.
+* Hail boosts Defense of Ice-types by 50%.
+* Submission and Take Down have 90 power, 100% accuracy, and 15 PP to match Wild Charge.
+* Crabhammer and Octazooka have 95% accuracy.
+* Sing has 75% accuracy to match Lovely Kiss.
+* Supersonic has 65% accuracy and 20 PP.
+* Hidden Power is ???-type and has 70 power.
+* Metronome is ???-type.
+* Pain Split is Ghost-type.
+
+I know that not everyone likes this kind of change, so I've provided two ROM patches. The "Faithful" patch keeps the canon Pokémon stats and move attributes.
 
 
 ## Graphics and Music
