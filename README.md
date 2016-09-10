@@ -188,6 +188,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 
 * Add: Edit some wild encounters and trainer rosters.
 * Add: Edit Palmer's sprite.
+* Fix: Static Pokémon respawn if they're caught.
 * Fix: Lyra's catching tutorial breaks the map music.
 * Fix: Text overflow in Sandstorm TM house.
 * Fix: Waterfall HM item ball is blue.

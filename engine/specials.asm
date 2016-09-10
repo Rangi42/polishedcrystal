@@ -554,7 +554,7 @@ RespawnOneOffs:
 	ld a, SUDOWOODO
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtSudowoodo
+	jr nz, .CaughtSudowoodo
 	ld de, EVENT_ROUTE_36_SUDOWOODO
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -563,7 +563,7 @@ RespawnOneOffs:
 	ld a, ARTICUNO
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtArticuno
+	jr nz, .CaughtArticuno
 	ld de, EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -572,7 +572,7 @@ RespawnOneOffs:
 	ld a, ZAPDOS
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtZapdos
+	jr nz, .CaughtZapdos
 	ld de, EVENT_ROUTE_10_ZAPDOS
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -584,7 +584,7 @@ RespawnOneOffs:
 	ld a, MOLTRES
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtMoltres
+	jr nz, .CaughtMoltres
 	ld de, EVENT_CINNABAR_VOLCANO_MOLTRES
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -593,7 +593,7 @@ RespawnOneOffs:
 	ld a, MEWTWO
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtMewtwo
+	jr nz, .CaughtMewtwo
 	ld de, EVENT_CERULEAN_CAVE_MEWTWO
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -602,7 +602,7 @@ RespawnOneOffs:
 	ld a, MEW
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtMew
+	jr nz, .CaughtMew
 	ld de, EVENT_FARAWAY_JUNGLE_MEW
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -611,7 +611,7 @@ RespawnOneOffs:
 	ld a, RAIKOU
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtRaikou
+	jr nz, .CaughtRaikou
 	ld hl, wRoamMon1Species
 	ld a, [hl]
 	and a
@@ -631,7 +631,7 @@ RespawnOneOffs:
 	ld a, ENTEI
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtEntei
+	jr nz, .CaughtEntei
 	ld hl, wRoamMon2Species
 	ld a, [hl]
 	and a
@@ -657,7 +657,7 @@ RespawnOneOffs:
 	ld a, SUICUNE
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtSuicune
+	jr nz, .CaughtSuicune
 	ld hl, wRoamMon3Species
 	ld a, [hl]
 	and a
@@ -677,7 +677,7 @@ RespawnOneOffs:
 	ld a, LUGIA
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtLugia
+	jr nz, .CaughtLugia
 	ld de, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 	ld b, RESET_FLAG
 	call EventFlagAction
@@ -689,7 +689,7 @@ RespawnOneOffs:
 	ld a, HO_OH
 	dec a
 	call CheckCaughtMon
-	jr z, .CaughtHoOh
+	jr nz, .CaughtHoOh
 	ld de, EVENT_TIN_TOWER_ROOF_HO_OH
 	ld b, RESET_FLAG
 	call EventFlagAction
