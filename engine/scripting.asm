@@ -1546,6 +1546,8 @@ Script_catchtutorial: ; 97447
 	ld [BattleType], a
 	call BufferScreen
 	callba CatchTutorial
+	ld a, 1
+	ld [wDontPlayMapMusicOnReload], a
 	jp Script_reloadmap
 ; 97459
 

@@ -47,6 +47,7 @@ Route29Tutorial1:
 	spriteface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
+	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData1a
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -77,7 +78,7 @@ Route29Tutorial1:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
-	playmusic MUSIC_ROUTE_29
+	playmapmusic
 	end
 
 Route29Tutorial2:
@@ -115,7 +116,7 @@ Route29Tutorial2:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
-	playmusic MUSIC_ROUTE_29
+	playmapmusic
 	end
 
 LyraScript_ReceiveTheBalls:

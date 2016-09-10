@@ -3692,9 +3692,6 @@ CatchTutorial:: ; 4e554
 	ld de, PlayerName
 	ld bc, NAME_LENGTH
 	call CopyBytes
-
-	ld a, 1
-	ld [wDontPlayMapMusicOnReload], a
 	ret
 
 .LoadDudeData: ; 4e5b7 (13:65b7)
