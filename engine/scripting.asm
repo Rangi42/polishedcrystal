@@ -3271,8 +3271,6 @@ Script_check_nuzlocke:
 ; script command 0xad
 
 	ld a, [Options2]
-	ld [ScriptVar], FALSE
 	bit NUZLOCKE_MODE, a
-	ret z
-	ld [ScriptVar], TRUE
+	ld [ScriptVar], a
 	ret
