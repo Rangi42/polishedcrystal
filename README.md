@@ -186,7 +186,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
 
-* Add: Edit some wild encounters.
+* Add: Edit some wild encounters and trainer rosters.
 * Add: Edit Palmer's sprite.
 * Fix: Lyra's catching tutorial breaks the map music.
 * Fix: Text overflow in Sandstorm TM house.

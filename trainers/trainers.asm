@@ -11455,11 +11455,11 @@ PokemonProfGroup:
 		db ICE_BEAM
 		db ZAP_CANNON
 
-	db 82, KANGASKHAN, BLACK_BELT
-		db RETURN
-		db ROCK_SMASH
+	db 82, NIDOKING, POISON_BARB
 		db EARTHQUAKE
-		db OUTRAGE
+		db RETURN
+		db POISON_JAB
+		db ROCK_SMASH
 
 	db $ff ; end
 
