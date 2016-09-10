@@ -60,26 +60,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_3F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -87,26 +87,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_4F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -114,26 +114,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_5F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -141,26 +141,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_6F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -168,26 +168,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_7F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -195,26 +195,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_8F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -222,26 +222,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map TIN_TOWER_9F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -249,26 +249,26 @@
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
 	db 22, RATTATA
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
 	db 22, GASTLY
-	db 22, RATTATA
-	db 23, RATTATA
-	db 24, RATTATA
-	db 24, RATTATA
+	db 22, RATICATE
+	db 23, RATICATE
+	db 24, RATICATE
+	db 24, RATICATE
 
 	map BURNED_TOWER_1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
@@ -1149,7 +1149,7 @@
 	db 2, ZUBAT
 	db 2, GEODUDE
 	db 4, GEODUDE
-	db 2, ZUBAT
+	db 2, TEDDIURSA
 	db 4, ZUBAT
 	db 4, DUNSPARCE
 	; nite
@@ -1579,16 +1579,16 @@
 	; day
 	db 32, GEODUDE
 	db 32, GRAVELER
-	db 28, GLIGAR
+	db 28, TEDDIURSA
 	db 34, DONPHAN
-	db 28, DONPHAN
+	db 28, PHANPY
 	db 35, SKARMORY
 	db 36, SKARMORY
 	; nite
 	db 32, GEODUDE
 	db 32, GRAVELER
 	db 33, GLIGAR
-	db 33, GRAVELER
+	db 33, GLIGAR
 	db 34, GRAVELER
 	db 35, GRAVELER
 	db 36, GRAVELER
