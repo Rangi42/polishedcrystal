@@ -56,6 +56,7 @@
 ## Aesthetic updates
 
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
+* Custom Rocket Executive sprites
 * Design custom animations for new moves
 * Show Pokémon portraits when using field moves (refer to TPPAC)
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
@@ -75,6 +76,8 @@
 
 ## New content
 
+* More Gold/Sitrus and Miracle/Lum Berry trees in late-game
+* Buy some basic items in Cianwood
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Use Mmmmmm's B/W Route 12 music for a new location
@@ -96,8 +99,9 @@
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
+* Kurt gives Balls right away once per day
 * Separate radio channels for March and Lullaby, available every day
-* More Bag pockets (split Items into Items, Medicine, and Berries)
+* More Bag pockets (split Items into Items, Medicine, and Berries, or Held and Used)
 * Press Start to auto-sort items
 * Longer player and rival names
 * Sometimes wild Pokémon know an egg move

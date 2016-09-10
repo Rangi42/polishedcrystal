@@ -187,3 +187,4 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
 
 * Fix: Text overflow in Sandstorm TM house.
+* Fix: Waterfall HM item ball is blue.
