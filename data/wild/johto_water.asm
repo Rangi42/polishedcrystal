@@ -258,6 +258,12 @@
 	db 75, POLIWRATH
 	db 70, POLIWHIRL
 
+	map CHERRYGROVE_BAY
+	db 6 percent ; encounter rate
+	db 20, TENTACOOL
+	db 15, TENTACOOL
+	db 20, CORSOLA
+
 	map YELLOW_FOREST
 	db 6 percent ; encounter rate
 	db 20, MARILL

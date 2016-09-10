@@ -1671,6 +1671,9 @@ BattleCommand_CheckHit: ; 34d32
 	call .Substitute
 	jp nz, .Miss
 
+	call .PoisonTypeUsingToxic
+	ret z
+
 	call .FlyDigMoves
 	jp nz, .Miss
 
@@ -1678,9 +1681,6 @@ BattleCommand_CheckHit: ; 34d32
 	ret nz
 
 	call .ThunderRain
-	ret z
-
-	call .PoisonTypeUsingToxic
 	ret z
 
 	; Perfect-accuracy moves
@@ -1866,7 +1866,7 @@ BattleCommand_CheckHit: ; 34d32
 	cp THUNDER
 	ret z
 	cp TWISTER
-	ret
+	ret z
 	cp HURRICANE
 	ret
 

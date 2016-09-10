@@ -301,6 +301,7 @@ PlayRoughDescription:
 	next "lower Attack.@"
 
 AcidDescription:
+CrunchDescription:
 IronTailDescription:
 RockSmashDescription:
 	db   "An attack that may"
@@ -315,7 +316,6 @@ MoonblastDescription:
 	next "lower Spcl.Atk.@"
 
 PsychicMDescription:
-CrunchDescription:
 ShadowBallDescription:
 BugBuzzDescription:
 EarthPowerDescription:
@@ -720,7 +720,7 @@ AvalancheDescription:
 
 IceShardDescription:
 	db   "Hurls icy shards."
-	next "Always goes first."
+	next "Always goes first.@"
 
 ToxicDescription:
 	db   "A Poison move with"

@@ -5,6 +5,7 @@
 
 ## Bugs
 
+* Lyra's ROute 29 encounter breaks music
 * Nuzlocke mode sometimes turns on by itself
 * Move Reminder doesn't list all possible moves
 * Thief permanently steals held items
