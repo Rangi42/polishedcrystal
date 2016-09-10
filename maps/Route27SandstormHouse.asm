@@ -45,7 +45,7 @@ SandstormHouseWomanText1:
 	text "Where are you off"
 	line "to with #mon?"
 
-	para "The ####mon"
+	para "The #mon"
 	line "League?"
 
 	para "Are your #mon"
