@@ -3779,7 +3779,7 @@ TypeBoostItems: ; 35703
 	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
 	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
 	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
-	db HELD_SPECIAL_BOOST,  SPECIAL  ; Expert Belt
+	db HELD_SPECIAL_BOOST,  SPECIAL  ; Wise Glasses
 	db $ff
 ; 35726
 

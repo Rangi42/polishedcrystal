@@ -534,7 +534,7 @@ RespawnOneOffs:
 	call EventFlagAction
 
 .SkipSteven:
-	ld de, EVENT_GOT_EXPERT_BELT_FROM_CYNTHIA
+	ld de, EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	ld a, c

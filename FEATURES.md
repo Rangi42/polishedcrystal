@@ -135,7 +135,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Dome Fossil, Helix Fossil, and Old Amber. Revive them in the now-open Pewter Museum of Science.
 * All of the decorations for your room are available in different places.
 * Earn a Silver Trophy when you beat the Elite 4 and a Gold Trophy when you rematch them at higher levels.
-* Other items including Eviolite, Muscle Band, Expert Belt, and X Spcl. Def.
+* Other items including Eviolite, Muscle Band, Wise Glasses, and X Spcl. Def.
 
 
 ## Bug Fixes

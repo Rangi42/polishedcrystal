@@ -177,7 +177,7 @@ ItemDescriptions:
 	dw BerserkGeneDesc
 	dw EvioliteDesc
 	dw MuscleBandDesc
-	dw ExpertBeltDesc
+	dw WiseGlassesDesc
 	dw DragonScaleDesc
 	dw UpGradeDesc
 	dw DubiousDiscDesc
@@ -859,7 +859,7 @@ MuscleBandDesc:
 	db   "Powers up physical"
 	next "moves. (Hold)@"
 
-ExpertBeltDesc:
+WiseGlassesDesc:
 	db   "Powers up special"
 	next "moves. (Hold)@"
 

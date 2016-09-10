@@ -142,7 +142,7 @@
 	db "Berserk Gene@"
 	db "Eviolite@"
 	db "Muscle Band@"
-	db "Expert Belt@"
+	db "Wise Glasses@"
 	db "Dragon Scale@"
 	db "Up-Grade@"
 	db "Dubious Disc@"

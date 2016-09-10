@@ -158,7 +158,7 @@ ItemEffects: ; e73c
 	dw BerserkGene
 	dw Eviolite
 	dw MuscleBand
-	dw ExpertBelt
+	dw WiseGlasses
 	dw DragonScale
 	dw UpGrade
 	dw DubiousDisc
@@ -3060,7 +3060,7 @@ MysticTicket:
 OldSeaMap:
 Eviolite:
 MuscleBand:
-ExpertBelt:
+WiseGlasses:
 DubiousDisc:
 Protector:
 Electirizer:

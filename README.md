@@ -188,3 +188,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 
 * Fix: Text overflow in Sandstorm TM house.
 * Fix: Waterfall HM item ball is blue.
+* Fix: Expert Belt → Wise Glasses.

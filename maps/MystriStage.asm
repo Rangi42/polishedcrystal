@@ -103,13 +103,13 @@ MystriStageCynthiaContinueScript:
 	end
 
 MystriStageBeatCynthiaScript:
-	checkevent EVENT_GOT_EXPERT_BELT_FROM_CYNTHIA
-	iftrue .GotExpertBelt
+	checkevent EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
+	iftrue .GotWiseGlasses
 	writetext MystriStageCynthiaItemText
 	waitbutton
-	verbosegiveitem EXPERT_BELT
+	verbosegiveitem WISE_GLASSES
 	iffalse .Done
-	setevent EVENT_GOT_EXPERT_BELT_FROM_CYNTHIA
+	setevent EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
 	writetext MystriStageCynthiaAfterText
 	waitbutton
 	closetext
@@ -154,7 +154,7 @@ MystriStageBeatCynthiaScript:
 	closetext
 	end
 
-.GotExpertBelt:
+.GotWiseGlasses:
 	writetext MystriStageCynthiaFinalText
 	waitbutton
 	closetext

@@ -161,7 +161,7 @@
 	const BERSERK_GENE  ; $8e
 	const EVIOLITE      ; $8f
 	const MUSCLE_BAND   ; $90
-	const EXPERT_BELT   ; $91
+	const WISE_GLASSES  ; $91
 
 	const DRAGON_SCALE  ; $92
 	const UP_GRADE      ; $93
