@@ -1,7 +1,12 @@
 	db DITTO ; 132
 
+if DEF(FAITHFUL)
 	db  48,  48,  48,  48,  48,  48
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  78,  28,  48, 108,  28,  48
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db NORMAL, NORMAL
 	db 35 ; catch rate
