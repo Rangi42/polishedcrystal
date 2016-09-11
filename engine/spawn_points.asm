@@ -29,8 +29,8 @@ ENDM
 	spawn ROUTE_32,                   11, 74
 	spawn AZALEA_TOWN,                15, 10
 	spawn CIANWOOD_CITY,              23, 44
-	spawn GOLDENROD_CITY,             14, 28
-	spawn OLIVINE_CITY,               13, 22
+	spawn GOLDENROD_CITY,             18, 28
+	spawn OLIVINE_CITY,               13, 18
 	spawn ECRUTEAK_CITY,              23, 28
 	spawn MAHOGANY_TOWN,              15, 14
 	spawn LAKE_OF_RAGE,               21, 29

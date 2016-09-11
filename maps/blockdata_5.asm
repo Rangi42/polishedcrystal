@@ -42,3 +42,7 @@ MystriStage_BlockData:
 
 EmbeddedTower_BlockData:
 	INCBIN "maps/EmbeddedTower.blk"
+
+Route36Coast_BlockData:
+	INCBIN "maps/Route36Coast.blk"
+

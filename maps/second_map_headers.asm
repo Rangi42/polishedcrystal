@@ -19,14 +19,14 @@
 	map_header_2 CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, ROUTE_41, Route41, 0, 0, 27, CIANWOOD_CITY
 
-	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST
-	connection north, ROUTE_35, Route35, 5, 0, 10, GOLDENROD_CITY
-	connection south, ROUTE_34, Route34, 5, 0, 10, GOLDENROD_CITY
-	connection west, GOLDENROD_HARBOR, GoldenrodHarbor, 0, 0, 18, GOLDENROD_CITY
+	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH
+	connection north, ROUTE_35, Route35, 7, 0, 10, GOLDENROD_CITY
+	connection south, ROUTE_34, Route34, 7, 0, 10, GOLDENROD_CITY
 
-	map_header_2 OlivineCity, OLIVINE_CITY, $35, NORTH | WEST
+	map_header_2 OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
 	connection north, ROUTE_39, Route39, 5, 0, 10, OLIVINE_CITY
-	connection west, ROUTE_40, Route40, 9, 0, 12, OLIVINE_CITY
+	connection south, ROUTE_36_COAST, Route36Coast, 0, -7, 27, OLIVINE_CITY
+	connection west, ROUTE_40, Route40, 7, 0, 12, OLIVINE_CITY
 
 	map_header_2 EcruteakCity, ECRUTEAK_CITY, $5, SOUTH | WEST | EAST
 	connection south, ROUTE_37, Route37, 5, 0, 10, ECRUTEAK_CITY
@@ -80,12 +80,16 @@
 	connection west, AZALEA_TOWN, AzaleaTown, 0, 0, 9, ROUTE_33
 
 	map_header_2 Route34, ROUTE_34, $5, NORTH | EAST
-	connection north, GOLDENROD_CITY, GoldenrodCity, -3, 2, 16, ROUTE_34
+	connection north, GOLDENROD_CITY, GoldenrodCity, -3, 4, 16, ROUTE_34
 	connection east, AZALEA_TOWN, AzaleaTown, 18, 0, 9, ROUTE_34
 
 	map_header_2 Route35, ROUTE_35, $5, NORTH | SOUTH
 	connection north, ROUTE_36, Route36, 0, 0, 13, ROUTE_35
-	connection south, GOLDENROD_CITY, GoldenrodCity, -3, 2, 16, ROUTE_35
+	connection south, GOLDENROD_CITY, GoldenrodCity, -3, 4, 16, ROUTE_35
+
+	map_header_2 Route36Coast, ROUTE_36_COAST, $35, NORTH | SOUTH
+	connection north, OLIVINE_CITY, OlivineCity, 0, 7, 27, ROUTE_36_COAST
+	connection south, GOLDENROD_HARBOR, GoldenrodHarbor, 0, -4, 22, ROUTE_36_COAST
 
 	map_header_2 Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
 	connection north, ROUTE_37, Route37, 10, 0, 10, ROUTE_36
@@ -106,7 +110,7 @@
 
 	map_header_2 Route40, ROUTE_40, $35, SOUTH | EAST
 	connection south, ROUTE_41, Route41, -3, 12, 13, ROUTE_40
-	connection east, OLIVINE_CITY, OlivineCity, -3, 6, 12, ROUTE_40
+	connection east, OLIVINE_CITY, OlivineCity, -3, 4, 12, ROUTE_40
 
 	map_header_2 Route41, ROUTE_41, $35, NORTH | WEST
 	connection north, ROUTE_40, Route40, 15, 0, 10, ROUTE_41
@@ -287,8 +291,8 @@
 	connection west, ROUTE_32, Route32, -2, 16, 20, CHERRYGROVE_BAY
 	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10, CHERRYGROVE_BAY
 
-	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, EAST
-	connection east, GOLDENROD_CITY, GoldenrodCity, 0, 0, 18, GOLDENROD_HARBOR
+	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH
+	connection north, ROUTE_36_COAST, Route36Coast, 0, 4, 22, GOLDENROD_HARBOR
 
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
@@ -475,6 +479,7 @@
 	map_header_2 GoldenrodDeptStoreRoof, GOLDENROD_DEPT_STORE_ROOF, $24, 0
 	map_header_2 GoldenrodGameCorner, GOLDENROD_GAME_CORNER, $0, 0
 	map_header_2 GoldenrodPokeComCenter1F, GOLDENROD_POKECOM_CENTER_1F, $0, 0
+	map_header_2 GoldenrodHarborGate, GOLDENROD_HARBOR_GATE, $0, 0
 	map_header_2 IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_header_2 Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
 	map_header_2 DayCare, DAYCARE, $0, 0

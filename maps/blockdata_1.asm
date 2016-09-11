@@ -221,6 +221,7 @@ Route16Gate_BlockData:
 Route7SaffronGate_BlockData:
 Route1718Gate_BlockData:
 Route31VioletGate_BlockData:
+GoldenrodHarborGate_BlockData:
 	INCBIN "maps/EastWestGate.blk"
 
 VermilionCity_BlockData:

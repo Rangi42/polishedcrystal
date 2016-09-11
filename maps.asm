@@ -580,6 +580,7 @@ INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
+INCLUDE "maps/GoldenrodHarborGate.asm"
 
 
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
@@ -587,3 +588,4 @@ SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/SeafoamIslandsB4F.asm"
+INCLUDE "maps/Route36Coast.asm"
