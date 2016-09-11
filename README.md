@@ -186,6 +186,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
 
+* Add: Meowth+Persian can learn False Swipe.
 * Edit: Some wild encounters and trainer rosters.
 * Edit: Remove Cut tree blocking Celadon Gym.
 * Edit: Palmer's sprite.
@@ -201,3 +202,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Ice Shard's description overflows into Toxic's.
 * Fix: Hurricane can hit during Fly.
 * Fix: Toxic used by Poison-types can hit during Fly and Dig.
+* Fix: AI overuse of Future Sight.

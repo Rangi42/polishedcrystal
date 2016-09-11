@@ -2782,6 +2782,9 @@ endr
 AI_Smart_FutureSight: ; 391f3
 ; Greatly encourage this move if the player is
 ; flying or underground, and slower than the enemy.
+; Otherwise discourage.
+
+	inc [hl]
 
 	call AICompareSpeed
 	ret nc
@@ -2790,7 +2793,7 @@ AI_Smart_FutureSight: ; 391f3
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret z
 
-rept 2
+rept 3
 	dec [hl]
 endr
 	ret
