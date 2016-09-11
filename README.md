@@ -186,8 +186,9 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
 
-* Add: Edit some wild encounters and trainer rosters.
-* Add: Edit Palmer's sprite.
+* Edit: Some wild encounters and trainer rosters.
+* Edit: Palmer's sprite.
+* Edit: Brighter purple for sprites.
 * Fix: Static Pokémon respawn if they're caught.
 * Fix: Lyra's catching tutorial breaks the map music.
 * Fix: Text overflow in Sandstorm TM house.
