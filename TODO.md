@@ -76,7 +76,6 @@
 
 ## New content
 
-* More Gold/Sitrus and Miracle/Lum Berry trees in late-game
 * Buy some basic items in Cianwood
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog

@@ -67,7 +67,7 @@ MooMoo:
 	yesorno
 	iffalse .Refused
 	checkitem BERRY
-	iffalse .NoBerriesInBag
+	iffalse .MaybeGoldBerry
 	takeitem BERRY
 	copybytetovar MooMooBerries
 	addvar 1
@@ -76,6 +76,21 @@ MooMoo:
 	if_equal 5, .FiveBerries
 	if_equal 7, .SevenBerries
 	writetext Text_GaveBerry
+	waitbutton
+	closetext
+	end
+
+.MaybeGoldBerry:
+	checkitem GOLD_BERRY
+	iffalse .NoBerriesInBag
+	takeitem GOLD_BERRY
+	copybytetovar MooMooBerries
+	addvar 2
+	copyvartobyte MooMooBerries
+	if_greater_than 6, .SevenGoldBerries
+	if_greater_than 4, .FiveGoldBerries
+	if_greater_than 2, .ThreeGoldBerries
+	writetext Text_GaveGoldBerry
 	waitbutton
 	closetext
 	end
@@ -108,6 +123,34 @@ MooMoo:
 	setevent EVENT_HEALED_MOOMOO
 	end
 
+.ThreeGoldBerries:
+	writetext Text_GaveGoldBerry
+	buttonsound
+	writetext Text_LittleHealthier
+	waitbutton
+	closetext
+	end
+
+.FiveGoldBerries:
+	writetext Text_GaveGoldBerry
+	buttonsound
+	writetext Text_QuiteHealthy
+	waitbutton
+	closetext
+	end
+
+.SevenGoldBerries:
+	playmusic MUSIC_HEAL
+	writetext Text_GaveGoldBerry
+	pause 60
+	buttonsound
+	special RestartMapMusic
+	writetext Text_TotallyHealthy
+	waitbutton
+	closetext
+	setevent EVENT_HEALED_MOOMOO
+	end
+
 .NoBerriesInBag:
 	writetext Text_NoBerries
 	waitbutton
@@ -131,7 +174,7 @@ Text_MoomooIsSick:
 	text "Moomoo is sick…"
 
 	para "She needs lots of"
-	line "Oran Berries."
+	line "healthy Berries."
 	done
 
 Text_WereFeedingMoomoo:
@@ -152,13 +195,20 @@ UnknownText_0x9cd92:
 	done
 
 Text_AskGiveBerry:
-	text "Give an Oran Berry"
-	line "to Miltank?"
+	text "Give an Oran or"
+	line "Sitrus Berry to"
+	cont "Miltank?"
 	done
 
 Text_GaveBerry:
 	text "<PLAYER> gave an"
 	line "Oran Berry to"
+	cont "Miltank."
+	done
+
+Text_GaveGoldBerry:
+	text "<PLAYER> gave a"
+	line "Sitrus Berry to"
 	cont "Miltank."
 	done
 
@@ -179,13 +229,13 @@ Text_TotallyHealthy:
 
 Text_NoBerries:
 	text "<PLAYER> has no"
-	line "Oran Berries…"
+	line "Oran or Sitrus"
+	cont "Berries…"
 	done
 
 Text_RefusedToGiveBerry:
 	text "<PLAYER> wouldn't"
-	line "give an Oran"
-	cont "Berry."
+	line "give a Berry."
 
 	para "Miltank looks sad."
 	done
