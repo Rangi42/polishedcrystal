@@ -1680,7 +1680,7 @@ BattleCommand_CheckHit: ; 34d32
 	call .LockOn
 	ret nz
 
-	call .ThunderRain
+	call .WeatherAccCheck
 	ret z
 
 	; Perfect-accuracy moves
@@ -1880,17 +1880,30 @@ BattleCommand_CheckHit: ; 34d32
 	ret
 
 
-.ThunderRain:
+.WeatherAccCheck:
 ; Return z if the current move always hits in rain, and it is raining.
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_THUNDER
-	ret nz
-
 	ld a, [Weather]
 	cp WEATHER_RAIN
+	jr z, .RainAccCheck
+	cp WEATHER_HAIL
+	jr z, .HailAccCheck
 	ret
 
+.RainAccCheck:
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+
+	cp THUNDER
+	ret z
+	cp HURRICANE
+	ret
+
+.HailAccCheck:
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+
+	cp BLIZZARD
+	ret
 
 .StatModifiers:
 
