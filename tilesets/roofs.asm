@@ -46,6 +46,8 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 25
 	db  0 ; group 26 (Cherrygrove City)
 	db -1 ; group 27
+	db -1 ; group 28
+	db  4 ; group 29 (Goldenrod Harbor)
 ; 1c03c
 
 Roofs: ; 1c03c

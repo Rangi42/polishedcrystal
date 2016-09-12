@@ -77,6 +77,7 @@ ENDM
 	landmark  58, 108, RadioTowerName
 	landmark  52, 108, GoldenrodHarborName
 	landmark  60,  92, Route35Name
+	landmark  52,  92, Route35CoastName
 	landmark  60,  76, NationalParkName
 	landmark  72,  76, Route36Name
 	landmark  76,  68, Route37Name
@@ -281,6 +282,7 @@ YellowForestName:    db "Yellow¯Forest@"
 QuietCaveName:       db "Quiet Cave@"
 CherrygroveBayName:  db "Cherrygrove¯Bay@"
 GoldenrodHarborName: db "Goldenrod¯Harbor@"
+Route35CoastName:    db "Route 35¯Coast@"
 NavelRockName:       db "Navel Rock@"
 FarawayIslandName:   db "Faraway¯Island@"
 SinjohRuinsName:     db "Sinjoh¯Ruins@"

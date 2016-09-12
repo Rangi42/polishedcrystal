@@ -103,24 +103,24 @@ CamperIvanScript:
 	closetext
 	end
 
-TrainerCoupleBrookandeli1:
-	trainer EVENT_BEAT_COUPLE_BROOK_AND_ELI, COUPLE, BROOKANDELI1, CoupleBrookandeli1SeenText, CoupleBrookandeli1BeatenText, 0, CoupleBrookandeli1Script
+TrainerCoupleGailandeli1:
+	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI1, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText, 0, CoupleGailandeli1Script
 
-CoupleBrookandeli1Script:
+CoupleGailandeli1Script:
 	end_if_just_battled
 	opentext
-	writetext CoupleBrookandeli1AfterText
+	writetext CoupleGailandeli1AfterText
 	waitbutton
 	closetext
 	end
 
-TrainerCoupleBrookandeli2:
-	trainer EVENT_BEAT_COUPLE_BROOK_AND_ELI, COUPLE, BROOKANDELI2, CoupleBrookandeli2SeenText, CoupleBrookandeli2BeatenText, 0, CoupleBrookandeli2Script
+TrainerCoupleGailandeli2:
+	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI2, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText, 0, CoupleGailandeli2Script
 
-CoupleBrookandeli2Script:
+CoupleGailandeli2Script:
 	end_if_just_battled
 	opentext
-	writetext CoupleBrookandeli2AfterText
+	writetext CoupleGailandeli2AfterText
 	waitbutton
 	closetext
 	end
@@ -302,36 +302,36 @@ UnknownText_0x19cac4:
 	cont "of wild #mon."
 	done
 
-CoupleBrookandeli1SeenText:
+CoupleGailandeli1SeenText:
 	text "Eli: I'm gonna"
 	line "show my girlfriend"
 	cont "I'm hot stuff!"
 	done
 
-CoupleBrookandeli1BeatenText:
+CoupleGailandeli1BeatenText:
 	text "Eli: I wish you'd"
 	line "have lost for me…"
 	done
 
-CoupleBrookandeli1AfterText:
+CoupleGailandeli1AfterText:
 	text "Eli: I was humili-"
 	line "ated in front of"
 	cont "my girlfriend…"
 	done
 
-CoupleBrookandeli2SeenText:
-	text "Brook: My boy-"
+CoupleGailandeli2SeenText:
+	text "Gail: My boy-"
 	line "friend's weak, so I"
 	cont "can't rely on him."
 	done
 
-CoupleBrookandeli2BeatenText:
-	text "Brook: Oh, my!"
+CoupleGailandeli2BeatenText:
+	text "Gail: Oh, my!"
 	line "You're so strong!"
 	done
 
-CoupleBrookandeli2AfterText:
-	text "Brook: I can count"
+CoupleGailandeli2AfterText:
+	text "Gail: I can count"
 	line "on my #mon more"
 	cont "than my boyfriend."
 	done
@@ -486,8 +486,8 @@ Route35_MapEventHeader:
 .PersonEvents:
 	db 11
 	person_event SPRITE_YOUNGSTER, 19, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
-	person_event SPRITE_YOUNGSTER, 20, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleBrookandeli1, -1
-	person_event SPRITE_LASS, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleBrookandeli2, -1
+	person_event SPRITE_YOUNGSTER, 20, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli1, -1
+	person_event SPRITE_LASS, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli2, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerKim, -1
 	person_event SPRITE_BREEDER, 29, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederTheresa, -1
 	person_event SPRITE_FISHER, 10, 2, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1

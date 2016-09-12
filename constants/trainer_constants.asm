@@ -475,8 +475,8 @@ KRIS EQU __enum__
 	const IVYANDAMY2
 
 	trainerclass COUPLE ; 3a
-	const BROOKANDELI1
-	const BROOKANDELI2
+	const GAILANDELI1
+	const GAILANDELI2
 	const DUFFANDEDA1
 	const DUFFANDEDA2
 

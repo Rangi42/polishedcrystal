@@ -823,6 +823,7 @@ OutdoorSprites: ; 144b8
 	dw Group26Sprites
 	dw Group27Sprites
 	dw Group28Sprites
+	dw Group29Sprites
 
 
 ; OlivineCity connects to Route40
@@ -830,13 +831,16 @@ Group1Sprites:
 ; Route38
 ; Route39
 ; OlivineCity
+; Route35Coast
 Group22Sprites:
 ; Route40
 ; Route41
 ; CianwoodCity
 ; BattleTowerOutside
+Group29Sprites:
+; GoldenrodHarbor
 	db SPRITE_BUENA
-	db SPRITE_COWGIRL
+	db SPRITE_FISHER
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
@@ -847,12 +851,12 @@ Group22Sprites:
 	db SPRITE_ROCKET ; doesn't walk
 	; 10 walking sprites (9 that walk)
 	db SPRITE_STANDING_YOUNGSTER
+	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_FRUIT_TREE
 	db SPRITE_ROCK
 	db SPRITE_SUICUNE
-	; 15 total sprites
-	db SPRITE_SILVER_TROPHY
+	; 16 total sprites
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1174,10 +1178,8 @@ Group26Sprites:
 Group11Sprites:
 ; Route34
 ; GoldenrodCity
-; GoldenrodHarbor
 	db SPRITE_BREEDER
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
 	db SPRITE_LYRA
@@ -1186,12 +1188,13 @@ Group11Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	; 11 walking sprites (9 that walk)
+	; 10 walking sprites (9 that walk)
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
-	db SPRITE_MAGIKARP
 	db SPRITE_POKE_BALL
-	; 15 total sprites
+	; 13 total sprites
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY

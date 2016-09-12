@@ -33,6 +33,8 @@ UnknownScript_0x1a8833:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
+	special RunCallback_04
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
@@ -48,7 +50,7 @@ UnknownScript_0x1a8833:
 	dotrigger $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	special RunCallback_04
 	end
 
@@ -57,6 +59,8 @@ UnknownScript_0x1a886b:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
+	special RunCallback_04
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
@@ -72,7 +76,7 @@ UnknownScript_0x1a886b:
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	dotrigger $1
 	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SWIMMER_GUY
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	special RunCallback_04
 	end
 

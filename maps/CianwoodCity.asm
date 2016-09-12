@@ -59,6 +59,8 @@ UnknownScript_0x1a001e:
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
+	special RunCallback_04
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7
@@ -66,11 +68,13 @@ UnknownScript_0x1a001e:
 	writetext UnknownText_0x1a0433
 	waitbutton
 	closetext
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	winlosstext UnknownText_0x1a05a1, 0
 	setlasttalked CIANWOODCITY_EUSINE
 	loadtrainer MYSTICALMAN, EUSINE
 	startbattle
 	dontrestartmapmusic
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
 	reloadmapafterbattle
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	opentext
@@ -79,6 +83,8 @@ UnknownScript_0x1a001e:
 	closetext
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00ec
 	disappear CIANWOODCITY_EUSINE
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
+	special RunCallback_04
 	pause 20
 	special Special_FadeOutMusic
 	playmapmusic

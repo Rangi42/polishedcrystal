@@ -21,7 +21,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_38,                                    9, 20 ; 12
 	mapgroup ROUTE_39,                                   20, 10 ; 13
 	mapgroup OLIVINE_CITY,                               16, 31 ; 14
-	mapgroup ROUTE_36_COAST,                             13, 24 ; 15
+	mapgroup ROUTE_35_COAST,                             13, 24 ; 15
 
 	newgroup                                                    ;  2
 
@@ -257,11 +257,9 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   4,  8 ; 18
 	mapgroup GOLDENROD_GAME_CORNER,                       7, 10 ; 19
 	mapgroup GOLDENROD_POKECOM_CENTER_1F,                16, 16 ; 20
-	mapgroup GOLDENROD_HARBOR,                           18, 20 ; 21
-	mapgroup GOLDENROD_HARBOR_GATE,                       4,  5 ; 22
-	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 23
-	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 24
-	mapgroup DAYCARE,                                     4,  5 ; 25
+	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 21
+	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 22
+	mapgroup DAYCARE,                                     4,  5 ; 23
 
 	newgroup                                                    ; 12
 
@@ -530,6 +528,11 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_9,                                     9, 30 ;  1
 	mapgroup ROUTE_10_NORTH,                              9, 10 ;  2
+
+	newgroup                                                    ; 29
+
+	mapgroup GOLDENROD_HARBOR,                           18, 20 ;  1
+	mapgroup GOLDENROD_HARBOR_GATE,                       4,  5 ;  2
 
 
 

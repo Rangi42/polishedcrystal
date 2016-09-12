@@ -1,13 +1,13 @@
 const_value set 2
 
-Route36Coast_MapScriptHeader:
+Route35Coast_MapScriptHeader:
 .MapTriggers:
 	db 0
 
 .MapCallbacks:
 	db 0
 
-Route36Coast_MapEventHeader:
+Route35Coast_MapEventHeader:
 	; filler
 	db 0, 0
 
