@@ -493,6 +493,7 @@ endm
 	treemon_map ILEX_FOREST, 6
 	treemon_map VIRIDIAN_FOREST, 6
 	treemon_map YELLOW_FOREST, 6
+	treemon_map ROUTE_35_COAST, 3
 	db -1
 ; b82c5
 

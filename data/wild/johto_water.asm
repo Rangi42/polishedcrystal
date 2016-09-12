@@ -264,6 +264,12 @@
 	db 15, TENTACOOL
 	db 20, CORSOLA
 
+	map ROUTE_35_COAST
+	db 6 percent ; encounter rate
+	db 20, TENTACOOL
+	db 20, TENTACRUEL
+	db 20, CORSOLA
+
 	map YELLOW_FOREST
 	db 6 percent ; encounter rate
 	db 20, MARILL
