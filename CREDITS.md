@@ -15,6 +15,7 @@
 * ShantyTown for the Rock Tunnel music
 * Serious Senator for some trainer dialogs
 * tonyism for the in-battle shiny icon code
+* FredrIQ for the Hurricane+Blizzard weather accuracy check
 * jpmac26 for editing the Pokémon Center signs and fixing a typo
 * bloodless for Veteran♂'s and Pikachu's sprites
 * Twilir for Lyra's back sprite

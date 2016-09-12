@@ -29,9 +29,7 @@
 * Substitute prevents building Rage
 * Drain Kiss drains 75% HP
 * Avalanche doubles damage if user is hit first (description claims it does this already)
-* Hurricane cannot miss in rain (ignores accuracy and evasion)
-* Blizzard cannot miss in hail (ignores accuracy and evasion)
-* Thunder ignores accuracy and evasion in rain (not just 100% accuracy)
+* Thunder, Blizzard, and Hurricane ignore accuracy and evasion in weather (not just 100% accuracy)
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -83,7 +81,7 @@
 * Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
-* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Mt. Quena, after completing the Pokédex?)
+* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer Hall, different trainer each day?)
 * Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day?
 * Add some of {Drill Run, Sucker Punch}?
 

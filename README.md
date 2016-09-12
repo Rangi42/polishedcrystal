@@ -194,6 +194,8 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 
 * Add: Buy basic items in Yellow Forest gate.
 * Add: Correct OT genders for Wonder Trade.
+* Add: Hurricane is 100% accurate in rain.
+* Add: Blizzard is 100% accurate in hail.
 * Add: Meowth+Persian can learn False Swipe.
 * Add: Shellder+Cloyster can learn Waterfall.
 * Add: Moomoo accepts Oran or Sitrus Berries (Sitrus heals +2).
