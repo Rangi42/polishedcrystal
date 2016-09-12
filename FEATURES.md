@@ -77,7 +77,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 ## Nuzlocke Mode
 
 * Available in the Option menu at any time.
-* A fainted Pokémon can't be revived, by items, Pokémon Centers, or events. The only exception is your first rival battle, when you just have your starter.
+* A fainted Pokémon can't be revived, by items, Pokémon Centers, or events. The only exception is your first rival battle, when you just have your starter. (Also when you deposit them into the PC, since current HP is not stored.)
 * You can only catch the first Pokémon you encounter in a new location. "Location" is defined with the Town Map mechanics, so Sprout Tower is separate from Violet City, but multiple floors of Union Cave or multiple sections of the Safari Zone count as one location. And nothing is counted until you receive your first five Poké Balls.
 * Every Pokémon gets a nickname, no asking whether you want to or not. Of course, you can cancel out to give the default name.
 * The dupes clause is in effect. If you've caught a Pidgey and encounter one on a new route, it won't count unless you catch it.

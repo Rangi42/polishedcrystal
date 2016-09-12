@@ -32,7 +32,6 @@ OlivineCityRivalGymScript:
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	pause 10
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
 	special RunCallback_04
 	playsound SFX_ENTER_DOOR
@@ -59,7 +58,6 @@ OlivineCityRivalLighthouseScript:
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	pause 10
 	moveperson OLIVINECITY_OLIVINE_RIVAL, $21, $13
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
 	special RunCallback_04
@@ -225,8 +223,8 @@ OlivineCityRivalLighthouseText:
 	para "Gym Leader is"
 	line "taking care of a"
 
-	para "sick #mon up"
-	line "here."
+	para "sick #mon in"
+	line "the Lighthouse."
 
 	para "Humph! Boo-hoo!"
 	line "Just let sick"
