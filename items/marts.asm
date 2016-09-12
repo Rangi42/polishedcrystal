@@ -33,6 +33,7 @@ Marts: ; 160a9
 	dw Mart31
 	dw Mart32
 	dw Mart33
+	dw Mart34
 MartsEnd
 ; 160ed
 
@@ -457,6 +458,14 @@ Mart33: ; 1620e
 	db REVIVAL_HERB
 	db $ff
 ; 16214
+
+Mart34:
+	db 4
+	db POKE_BALL
+	db REPEL
+	db FRESH_WATER
+	db PARLYZ_HEAL
+	db $ff
 
 DefaultMart: ; 16214
 	db 2 ; # items

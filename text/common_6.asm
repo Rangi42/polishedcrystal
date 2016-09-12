@@ -116,24 +116,6 @@ SilphMartIntroText::
 	cont "released?"
 	done
 
-SilphMartHowManyText::
-	text "How many?"
-	done
-
-SilphMartCostsThisMuchText::
-	deciram wItemQuantityChangeBuffer, 1, 2
-	text " @"
-	text_from_ram StringBuffer2
-	text "(s)"
-	line "will cost ¥@"
-	deciram hMoneyTemp, 3, 6
-	text "."
-	done
-
-SilphMartHereYouGoText::
-	text "Thanks!"
-	done
-
 SilphMartBagFullText::
 	text "You don't have"
 	line "space for it."
@@ -146,6 +128,16 @@ SilphMartInsufficientFundsText::
 
 SilphMartComeAgainText::
 	text "Come by again!"
+	done
+
+AdventurerMartIntroText::
+	text "I picked up some"
+	line "rare items abroad!"
+	done
+
+InformalMartIntroText::
+	text "What's up? Need"
+	line "some supplies?"
 	done
 
 MoveReminderIntroText::

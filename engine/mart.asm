@@ -24,6 +24,8 @@ OpenMartDialog:: ; 15a45
 	dw Pharmacist
 	dw RooftopSale
 	dw SilphMart
+	dw AdventurerMart
+	dw InformalMart
 ; 15a61
 
 MartDialog: ; 15a61
@@ -107,6 +109,26 @@ SilphMart:
 	call MartTextBox
 	call BuyMenu
 	ld hl, Text_SilphMart_ComeAgain
+	call MartTextBox
+	ret
+
+AdventurerMart:
+	call FarReadMart
+	call LoadStandardMenuDataHeader
+	ld hl, Text_AdventurerMart_Intro
+	call MartTextBox
+	call BuyMenu
+	ld hl, Text_AdventurerMart_ComeAgain
+	call MartTextBox
+	ret
+
+InformalMart:
+	call FarReadMart
+	call LoadStandardMenuDataHeader
+	ld hl, Text_InformalMart_Intro
+	call MartTextBox
+	call BuyMenu
+	ld hl, Text_InformalMart_ComeAgain
 	call MartTextBox
 	ret
 
@@ -486,6 +508,8 @@ endr
 	dwb .PharmacyPointers, 0
 	dwb .StandardMartPointers, 2
 	dwb .SilphMartPointers, 0
+	dwb .AdventurerMartPointers, 0
+	dwb .InformalMartPointers, 0
 ; 15cbf
 
 .StandardMartPointers: ; 15cbf
@@ -527,6 +551,22 @@ endr
 	dw Text_SilphMart_InsufficientFunds
 	dw Text_SilphMart_BagFull
 	dw Text_SilphMart_HereYouGo
+	dw BuyMenuLoop
+
+.AdventurerMartPointers:
+	dw Text_AdventurerMart_HowMany
+	dw Text_AdventurerMart_CostsThisMuch
+	dw Text_AdventurerMart_InsufficientFunds
+	dw Text_AdventurerMart_BagFull
+	dw Text_AdventurerMart_HereYouGo
+	dw BuyMenuLoop
+
+.InformalMartPointers:
+	dw Text_InformalMart_HowMany
+	dw Text_InformalMart_CostsThisMuch
+	dw Text_InformalMart_InsufficientFunds
+	dw Text_InformalMart_BagFull
+	dw Text_InformalMart_HereYouGo
 	dw BuyMenuLoop
 
 
@@ -693,12 +733,15 @@ endr
 
 
 Text_Mart_HowMany: ; 0x15e0e
+Text_SilphMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4bfd
 	db "@"
 ; 0x15e13
 
 Text_Mart_CostsThisMuch: ; 0x15e13
+Text_SilphMart_CostsThisMuch:
+Text_AdventurerMart_CostsThisMuch:
 	; @ (S) will be ¥@ .
 	text_jump UnknownText_0x1c4c08
 	db "@"
@@ -796,12 +839,15 @@ Text_BargainShop_CostsThisMuch: ; 0x15e72
 ; 0x15e77
 
 Text_BargainShop_HereYouGo: ; 0x15e77
+Text_SilphMart_HereYouGo:
+Text_AdventurerMart_HereYouGo:
 	; Thanks.
 	text_jump UnknownText_0x1c4dcd
 	db "@"
 ; 0x15e7c
 
 Text_BargainShop_BagFull: ; 0x15e7c
+Text_AdventurerMart_BagFull:
 	; Uh-oh, your PACK is chock-full.
 	text_jump UnknownText_0x1c4dd6
 	db "@"
@@ -814,6 +860,7 @@ Text_BargainShop_SoldOut: ; 0x15e81
 ; 0x15e86
 
 Text_BargainShop_InsufficientFunds: ; 0x15e86
+Text_AdventurerMart_InsufficientFunds:
 	; Uh-oh, you're short on funds.
 	text_jump UnknownText_0x1c4e28
 	db "@"
@@ -832,36 +879,43 @@ Text_Pharmacist_Intro: ; 0x15e90
 ; 0x15e95
 
 Text_Pharmacy_HowMany: ; 0x15e95
+Text_AdventurerMart_HowMany:
+Text_InformalMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4e7e
 	db "@"
 ; 0x15e9a
 
 Text_Pharmacy_CostsThisMuch: ; 0x15e9a
+Text_InformalMart_CostsThisMuch:
 	; @ (S) will cost ¥@ .
 	text_jump UnknownText_0x1c4e89
 	db "@"
 ; 0x15e9f
 
 Text_Pharmacy_HereYouGo: ; 0x15e9f
+Text_InformalMart_HereYouGo:
 	; Thanks much!
 	text_jump UnknownText_0x1c4eab
 	db "@"
 ; 0x15ea4
 
 Text_Pharmacy_BagFull: ; 0x15ea4
+Text_InformalMart_BagFull:
 	; You don't have any more space.
 	text_jump UnknownText_0x1c4eb9
 	db "@"
 ; 0x15ea9
 
 Text_Pharmacy_InsufficientFunds: ; 0x15ea9
+Text_InformalMart_InsufficientFunds:
 	; Huh? That's not enough money.
 	text_jump UnknownText_0x1c4ed8
 	db "@"
 ; 0x15eae
 
 Text_Pharmacist_ComeAgain: ; 0x15eae
+Text_InformalMart_ComeAgain:
 	; All right. See you around.
 	text_jump UnknownText_0x1c4ef6
 	db "@"
@@ -871,28 +925,29 @@ Text_SilphMart_Intro:
 	text_jump SilphMartIntroText
 	db "@"
 
-Text_SilphMart_HowMany:
-	text_jump SilphMartHowManyText
-	db "@"
-
-Text_SilphMart_CostsThisMuch:
-	text_jump SilphMartCostsThisMuchText
-	db "@"
-
-Text_SilphMart_HereYouGo:
-	text_jump SilphMartHereYouGoText
-	db "@"
-
 Text_SilphMart_BagFull:
+	; You don't have space for it.
 	text_jump SilphMartBagFullText
 	db "@"
 
 Text_SilphMart_InsufficientFunds:
+	; That's not enough money…
 	text_jump SilphMartInsufficientFundsText
 	db "@"
 
 Text_SilphMart_ComeAgain:
+Text_AdventurerMart_ComeAgain:
+	; Come by again!
 	text_jump SilphMartComeAgainText
+	db "@"
+
+Text_AdventurerMart_Intro:
+	text_jump AdventurerMartIntroText
+	db "@"
+
+Text_InformalMart_Intro:
+	; What's up? Need some supplies?
+	text_jump InformalMartIntroText
 	db "@"
 
 

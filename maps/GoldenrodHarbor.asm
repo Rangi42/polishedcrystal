@@ -69,9 +69,7 @@ TrainerFisherPatonScript:
 GoldenrodHarborLassScript:
 	faceplayer
 	opentext
-	writetext GoldenrodHarborLassText
-	waitbutton
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_HARBOR
+	pokemart MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR
 	closetext
 	end
 
@@ -321,11 +319,6 @@ FisherPatonAfterText:
 	text "You're working"
 	line "on a #dex?"
 	cont "That's neat!"
-	done
-
-GoldenrodHarborLassText:
-	text "I picked up some"
-	line "rare items abroad!"
 	done
 
 GoldenrodHarborMagikarpText:

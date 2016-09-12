@@ -75,7 +75,6 @@
 
 ## New content
 
-* Buy some basic items in Cianwood
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Use Mmmmmm's B/W Route 12 music for a new location

@@ -422,6 +422,8 @@ ITEMMENU_CLOSE              EQU 6
 	const MARTTYPE_PHARMACY
 	const MARTTYPE_ROOFTOP
 	const MARTTYPE_SILPH_CO
+	const MARTTYPE_ADVENTURER
+	const MARTTYPE_INFORMAL
 
 	const_def
 	const MART_CHERRYGROVE
@@ -458,6 +460,7 @@ ITEMMENU_CLOSE              EQU 6
 	const MART_MT_MOON
 	const MART_INDIGO_PLATEAU
 	const MART_UNDERGROUND
+	const MART_YELLOW_FOREST
 
 ; PartyMenuActionText
 	const_def

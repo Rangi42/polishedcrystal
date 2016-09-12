@@ -192,6 +192,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
 
+* Add: Buy basic items in Yellow Forest gate.
 * Add: Correct OT genders for Wonder Trade.
 * Add: Meowth+Persian can learn False Swipe.
 * Add: Shellder+Cloyster can learn Waterfall.
