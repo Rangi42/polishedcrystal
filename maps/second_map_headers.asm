@@ -89,7 +89,7 @@
 
 	map_header_2 Route35Coast, ROUTE_35_COAST, $35, NORTH | SOUTH
 	connection north, OLIVINE_CITY, OlivineCity, 0, 7, 31, ROUTE_35_COAST
-	connection south, GOLDENROD_HARBOR, GoldenrodHarbor, 0, -4, 24, ROUTE_35_COAST
+	connection south, GOLDENROD_HARBOR, GoldenrodHarbor, 0, 0, 24, ROUTE_35_COAST
 
 	map_header_2 Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
 	connection north, ROUTE_37, Route37, 10, 0, 10, ROUTE_36
@@ -292,7 +292,7 @@
 	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10, CHERRYGROVE_BAY
 
 	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH
-	connection north, ROUTE_35_COAST, Route35Coast, 0, 4, 24, GOLDENROD_HARBOR
+	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24, GOLDENROD_HARBOR
 
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0

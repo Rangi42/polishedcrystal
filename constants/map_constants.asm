@@ -531,7 +531,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 29
 
-	mapgroup GOLDENROD_HARBOR,                           18, 20 ;  1
+	mapgroup GOLDENROD_HARBOR,                           18, 24 ;  1
 	mapgroup GOLDENROD_HARBOR_GATE,                       4,  5 ;  2
 
 
