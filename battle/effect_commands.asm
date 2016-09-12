@@ -1881,7 +1881,7 @@ BattleCommand_CheckHit: ; 34d32
 
 
 .WeatherAccCheck:
-; Return z if the current move always hits in rain, and it is raining.
+; Returns z if the move used always hits in the current weather
 	ld a, [Weather]
 	cp WEATHER_RAIN
 	jr z, .RainAccCheck
