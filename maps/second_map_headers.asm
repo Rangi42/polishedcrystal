@@ -25,7 +25,7 @@
 
 	map_header_2 OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
 	connection north, ROUTE_39, Route39, 5, 0, 10, OLIVINE_CITY
-	connection south, ROUTE_35_COAST, Route35Coast, 0, -7, 31, OLIVINE_CITY
+	connection south, ROUTE_35_COAST, Route35Coast, 0, -7, 30, OLIVINE_CITY
 	connection west, ROUTE_40, Route40, 7, 0, 12, OLIVINE_CITY
 
 	map_header_2 EcruteakCity, ECRUTEAK_CITY, $5, SOUTH | WEST | EAST
@@ -88,7 +88,7 @@
 	connection south, GOLDENROD_CITY, GoldenrodCity, -3, 4, 16, ROUTE_35
 
 	map_header_2 Route35Coast, ROUTE_35_COAST, $35, NORTH | SOUTH
-	connection north, OLIVINE_CITY, OlivineCity, 0, 7, 31, ROUTE_35_COAST
+	connection north, OLIVINE_CITY, OlivineCity, 0, 7, 30, ROUTE_35_COAST
 	connection south, GOLDENROD_HARBOR, GoldenrodHarbor, 0, 0, 24, ROUTE_35_COAST
 
 	map_header_2 Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
