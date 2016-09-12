@@ -28,25 +28,26 @@ OlivineCity_MapScriptHeader:
 	setflag ENGINE_FLYPOINT_OLIVINE
 	return
 
-UnknownScript_0x1a8833:
-	spriteface PLAYER, LEFT
+OlivineCityRivalGymScript:
+	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	pause 15
+	pause 10
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
 	special RunCallback_04
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
-	applymovement OLIVINECITY_OLIVINE_RIVAL, MovementData_0x1a88d2
+	playsound SFX_TACKLE
+	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown
+	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalExitsGym
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
-	writetext UnknownText_0x1a88fa
+	writetext OlivineCityRivalGymText
 	waitbutton
 	closetext
-	applymovement PLAYER, MovementData_0x1a88f4
 	spriteface PLAYER, RIGHT
-	applymovement OLIVINECITY_OLIVINE_RIVAL, MovementData_0x1a88db
+	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesGym
 	dotrigger $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
@@ -54,27 +55,29 @@ UnknownScript_0x1a8833:
 	special RunCallback_04
 	end
 
-UnknownScript_0x1a886b:
-	spriteface PLAYER, LEFT
+OlivineCityRivalLighthouseScript:
+	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	pause 15
+	pause 10
+	moveperson OLIVINECITY_OLIVINE_RIVAL, $21, $13
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
 	special RunCallback_04
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
-	applymovement OLIVINECITY_OLIVINE_RIVAL, MovementData_0x1a88d6
+	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalExitsLighthouse
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
-	writetext UnknownText_0x1a88fa
+	writetext OlivineCityRivalLighthouseText
 	waitbutton
 	closetext
-	applymovement PLAYER, MovementData_0x1a88f7
-	spriteface PLAYER, RIGHT
-	applymovement OLIVINECITY_OLIVINE_RIVAL, MovementData_0x1a88e8
-	disappear OLIVINECITY_OLIVINE_RIVAL
+	playsound SFX_TACKLE
+	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown2
+	spriteface PLAYER, LEFT
+	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesLighthouse
 	dotrigger $1
+	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	special RunCallback_04
@@ -123,59 +126,50 @@ OlivineCityPokeCenterSign:
 OlivineCityMartSign:
 	jumpstd martsign
 
-MovementData_0x1a88d2:
-	step_down
-	step_right
-	step_right
-	step_end
-
-MovementData_0x1a88d6:
-	step_down
-	step_down
-	step_right
-	step_right
-	step_end
-
-MovementData_0x1a88db:
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-MovementData_0x1a88e8:
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-MovementData_0x1a88f4:
-	step_down
+OlivineCityMovementData_ShovePlayerDown:
 	turn_head_up
+	fix_facing
+	step_down
+	remove_fixed_facing
 	step_end
 
-MovementData_0x1a88f7:
-	step_up
-	turn_head_down
+OlivineCityMovementData_RivalExitsLighthouse:
+	step_down
+	step_down
+OlivineCityMovementData_RivalExitsGym:
+	step_down
 	step_end
 
-UnknownText_0x1a88fa:
+OlivineCityMovementData_RivalLeavesGym:
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_end
+
+OlivineCityMovementData_ShovePlayerDown2:
+	turn_head_up
+	fix_facing
+	jump_step_down
+	remove_fixed_facing
+	step_end
+
+OlivineCityMovementData_RivalLeavesLighthouse:
+	step_down
+	step_down
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
+
+OlivineCityRivalGymText:
 	text "…"
 
 	para "You again?"
@@ -209,6 +203,42 @@ UnknownText_0x1a88fa:
 	para "Why don't you go"
 	line "train at the"
 	cont "Lighthouse?"
+
+	para "Who knows. It may"
+	line "make you a bit"
+	cont "less weak!"
+	done
+
+OlivineCityRivalLighthouseText:
+	text "…"
+
+	para "You again?"
+
+	para "There's no need to"
+	line "panic. I don't"
+
+	para "bother with wimps"
+	line "like you."
+
+	para "Speaking of weak-"
+	line "lings, the city's"
+
+	para "Gym Leader is"
+	line "taking care of a"
+
+	para "sick #mon up"
+	line "here."
+
+	para "Humph! Boo-hoo!"
+	line "Just let sick"
+	cont "#mon go!"
+
+	para "A #mon that"
+	line "can't battle is"
+	cont "worthless!"
+
+	para "Why don't you go"
+	line "train inside?"
 
 	para "Who knows. It may"
 	line "make you a bit"
@@ -315,8 +345,8 @@ OlivineCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $8, $d, $0, UnknownScript_0x1a8833, $0, $0
-	xy_trigger 0, $9, $d, $0, UnknownScript_0x1a886b, $0, $0
+	xy_trigger 0, $8, $a, $0, OlivineCityRivalGymScript, $0, $0
+	xy_trigger 0, $17, $21, $0, OlivineCityRivalLighthouseScript, $0, $0
 
 .Signposts:
 	db 7
