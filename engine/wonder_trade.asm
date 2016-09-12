@@ -246,6 +246,15 @@ DoWonderTrade:
 	ld hl, wOTTrademonOTName
 	call CopyTradeName
 
+	ld b, RESET_FLAG
+	ld a, [wOTTrademonID]
+	call GetWonderTradeOTGender
+	and a
+	jr z, .male_ot
+	ld b, SET_FLAG
+.male_ot
+	callba SetGiftPartyMonCaughtData
+
 	; Random DVs
 	call Random
 	ld [Buffer1], a
@@ -331,8 +340,6 @@ GetGSBallPichu:
 	callba GetCaughtGender
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
-
-	xor a
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, PartyMon1Level
@@ -348,7 +355,12 @@ GetGSBallPichu:
 	callab RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
+	ld b, RESET_FLAG
+	ld a, [PlayerGender]
+	and a
+	jr z, .male
 	ld b, SET_FLAG
+.male
 	callba SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
@@ -413,7 +425,6 @@ GetWonderTradeOTName:
 	call AddNTimes
 	ret
 
-; TODO: Associate each OT name with a correct gender (via wOTTrademonCaughtData)
 .WonderTradeOTNameTable:
 	db "Nemo@@@@" ; $00
 	db "Rangi@@@" ; $01
@@ -507,7 +518,7 @@ GetWonderTradeOTName:
 	db "Rudy@@@@" ; $59
 	db "Luana@@@" ; $5a
 	db "Prima@@@" ; $5b
-	db "Drake@@@" ; $5c
+	db "Samson@@" ; $5c
 	db "Falkner@" ; $5d
 	db "Bugsy@@@" ; $5e
 	db "Whitney@" ; $5f
@@ -671,6 +682,273 @@ GetWonderTradeOTName:
 	db "Dirk@@@@" ; $fd
 	db "Talan@@@" ; $fe
 	db "Kersh@@@" ; $ff
+
+GetWonderTradeOTGender:
+; a = [.WonderTradeOTGenderTable + a]
+	ld hl, .WonderTradeOTGenderTable
+	ld b, 0
+	ld c, 1
+	call AddNTimes
+	ld a, [hl]
+	ret
+
+.WonderTradeOTGenderTable:
+	db MALE   ; Nemo
+	db FEMALE ; Rangi
+	db MALE   ; Matthew
+	db MALE   ; Mateo
+	db MALE   ; Drayano
+	db MALE   ; Marckus
+	db MALE   ; Pum
+	db MALE   ; Bryan
+	db MALE   ; Don
+	db MALE   ; Miguel
+	db MALE   ; Satoru
+	db MALE   ; Iwata
+	db MALE   ; Junichi
+	db MALE   ; Masuda
+	db MALE   ; Imakuni
+	db MALE   ; Red
+	db MALE   ; Blue
+	db FEMALE ; Green
+	db FEMALE ; Yellow
+	db FEMALE ; Orange
+	db MALE   ; Gold
+	db MALE   ; Silver
+	db FEMALE ; Crystal
+	db MALE   ; Ruby
+	db FEMALE ; Safire
+	db FEMALE ; Emerald
+	db MALE   ; Diamond
+	db FEMALE ; Pearl
+	db MALE   ; Black
+	db FEMALE ; White
+	db MALE   ; Alpha
+	db FEMALE ; Omega
+	db MALE   ; Sun
+	db FEMALE ; Moon
+	db MALE   ; Ash
+	db MALE   ; Gary
+	db FEMALE ; Leaf
+	db MALE   ; Ethan
+	db FEMALE ; Lyra
+	db FEMALE ; Kris
+	db MALE   ; Brendan
+	db FEMALE ; May
+	db MALE   ; Wally
+	db MALE   ; Lucas
+	db FEMALE ; Dawn
+	db MALE   ; Barry
+	db MALE   ; Hilbert
+	db FEMALE ; Hilda
+	db MALE   ; Cheren
+	db FEMALE ; Bianca
+	db MALE   ; Nate
+	db FEMALE ; Rosa
+	db MALE   ; Hugh
+	db MALE   ; Calem
+	db FEMALE ; Serena
+	db FEMALE ; Shauna
+	db MALE   ; Trevor
+	db MALE   ; Tierno
+	db FEMALE ; Lillie
+	db MALE   ; Hau
+	db MALE   ; Oak
+	db MALE   ; Elm
+	db FEMALE ; Ivy
+	db MALE   ; Birch
+	db MALE   ; Rowan
+	db FEMALE ; Juniper
+	db MALE   ; Sycamor
+	db MALE   ; Kukui
+	db FEMALE ; Willow
+	db MALE   ; Bill
+	db FEMALE ; Lanette
+	db MALE   ; Celio
+	db FEMALE ; Bebe
+	db FEMALE ; Amanita
+	db MALE   ; Cassius
+	db MALE   ; Brock
+	db FEMALE ; Misty
+	db MALE   ; Surge
+	db FEMALE ; Erika
+	db FEMALE ; Janine
+	db FEMALE ; Sabrina
+	db MALE   ; Blaine
+	db MALE   ; Giovani
+	db FEMALE ; Lorelei
+	db MALE   ; Bruno
+	db FEMALE ; Agatha
+	db MALE   ; Lance
+	db FEMALE ; Cissy
+	db MALE   ; Danny
+	db MALE   ; Rudy
+	db FEMALE ; Luana
+	db FEMALE ; Prima
+	db MALE   ; Samson
+	db MALE   ; Falkner
+	db MALE   ; Bugsy
+	db FEMALE ; Whitney
+	db MALE   ; Morty
+	db MALE   ; Chuck
+	db FEMALE ; Jasmine
+	db MALE   ; Pryce
+	db FEMALE ; Clair
+	db MALE   ; Will
+	db MALE   ; Koga
+	db FEMALE ; Karen
+	db FEMALE ; Roxanne
+	db MALE   ; Brawly
+	db MALE   ; Wattson
+	db FEMALE ; Flanery
+	db MALE   ; Norman
+	db FEMALE ; Winona
+	db FEMALE ; Liza
+	db MALE   ; Tate
+	db MALE   ; Wallace
+	db MALE   ; Juan
+	db MALE   ; Sidney
+	db FEMALE ; Phoebe
+	db FEMALE ; Glacia
+	db MALE   ; Drake
+	db MALE   ; Steven
+	db MALE   ; Roark
+	db FEMALE ; Garden
+	db FEMALE ; Maylene
+	db MALE   ; Wake
+	db FEMALE ; Fantina
+	db MALE   ; Byron
+	db FEMALE ; Candice
+	db MALE   ; Volkner
+	db MALE   ; Aaron
+	db FEMALE ; Bertha
+	db MALE   ; Flint
+	db MALE   ; Lucian
+	db FEMALE ; Cynthia
+	db MALE   ; Alder
+	db FEMALE ; Iris
+	db FEMALE ; Diantha
+	db FEMALE ; Lana
+	db FEMALE ; Mallow
+	db MALE   ; Sophcls
+	db MALE   ; Kiawe
+	db MALE   ; Hala
+	db FEMALE ; Nemo
+	db MALE   ; Nemo
+	db FEMALE ; Nemo
+	db FEMALE ; Valerie
+	db FEMALE ; Candela
+	db FEMALE ; Blanche
+	db MALE   ; Spark
+	db MALE   ; Satoshi
+	db MALE   ; Tajiri
+	db MALE   ; Shigeru
+	db MALE   ; Hibiki
+	db FEMALE ; Kotone
+	db MALE   ; Yuuki
+	db FEMALE ; Haruka
+	db MALE   ; Mitsuru
+	db MALE   ; Kouki
+	db FEMALE ; Hikari
+	db MALE   ; Jun
+	db MALE   ; Touya
+	db FEMALE ; Touko
+	db FEMALE ; Bel
+	db MALE   ; Kyouhei
+	db FEMALE ; Mei
+	db FEMALE ; Joy
+	db FEMALE ; Jenny
+	db MALE   ; Looker
+	db FEMALE ; Jessie
+	db MALE   ; James
+	db FEMALE ; Cassidy
+	db MALE   ; Butch
+	db FEMALE ; Bonnie
+	db MALE   ; Clyde
+	db MALE   ; Attila
+	db FEMALE ; Hun
+	db FEMALE ; Domino
+	db MALE   ; Carr
+	db MALE   ; Orm
+	db FEMALE ; Sird
+	db MALE   ; Miror B
+	db MALE   ; Archie
+	db MALE   ; Maxie
+	db MALE   ; Cyrus
+	db MALE   ; N
+	db MALE   ; Ghetsis
+	db MALE   ; Colress
+	db MALE   ; Lysandr
+	db MALE   ; Guzma
+	db FEMALE ; Naoko
+	db FEMALE ; Sayo
+	db FEMALE ; Zuki
+	db FEMALE ; Kuni
+	db FEMALE ; Miki
+	db MALE   ; Kiyo
+	db MALE   ; Curtis
+	db FEMALE ; Yancy
+	db FEMALE ; Zinnia
+	db MALE   ; Aarune
+	db FEMALE ; Lisia
+	db MALE   ; Chaz
+	db FEMALE ; Teala
+	db MALE   ; Richie
+	db FEMALE ; Assunta
+	db MALE   ; Tracey
+	db FEMALE ; Duplica
+	db FEMALE ; Casey
+	db FEMALE ; Giselle
+	db FEMALE ; Melanie
+	db MALE   ; Damian
+	db MALE   ; Rick
+	db FEMALE ; Reiko
+	db MALE   ; Joey
+	db MALE   ; A.J.
+	db FEMALE ; Camila
+	db FEMALE ; Alice
+	db MALE   ; Leo
+	db FEMALE ; Aoooo
+	db MALE   ; Jimmy
+	db FEMALE ; Cly
+	db MALE   ; Revo
+	db MALE   ; Everyle
+	db MALE   ; Zetsu
+	db MALE   ; Kamon
+	db MALE   ; Karuta
+	db FEMALE ; Nozomi
+	db MALE   ; Amos
+	db FEMALE ; Ami
+	db FEMALE ; Minako
+	db FEMALE ; Usagi
+	db FEMALE ; Rei
+	db FEMALE ; Makoto
+	db MALE   ; Mamoru
+	db FEMALE ; Luna
+	db MALE   ; Artemis
+	db FEMALE ; Diana
+	db FEMALE ; Sakura
+	db FEMALE ; Tomoyo
+	db MALE   ; Syaoran
+	db MALE   ; Shinji
+	db FEMALE ; Rei
+	db FEMALE ; Asuka
+	db FEMALE ; Mari
+	db MALE   ; Luke
+	db MALE   ; Lun
+	db MALE   ; Rhue
+	db MALE   ; Traziun
+	db MALE   ; Gaius
+	db FEMALE ; Lyrra
+	db FEMALE ; Kloe
+	db FEMALE ; Cetsa
+	db FEMALE ; Lexus
+	db FEMALE ; Sorya
+	db MALE   ; Strata
+	db MALE   ; Slade
+	db MALE   ; Dirk
+	db MALE   ; Talan
+	db MALE   ; Kersh
 
 
 GetWonderTradeHeldItem:

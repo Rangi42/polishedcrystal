@@ -166,7 +166,6 @@ OlivineCityMovementData_RivalLeavesLighthouse:
 	step_left
 	step_left
 	step_left
-	step_left
 	step_end
 
 OlivineCityRivalGymText:

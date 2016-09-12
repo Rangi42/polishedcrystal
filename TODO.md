@@ -50,7 +50,6 @@
 * More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
-* Add OT genders to Wonder Trade
 
 
 ## Aesthetic updates
