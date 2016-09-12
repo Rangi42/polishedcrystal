@@ -427,7 +427,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 22
 
 	mapgroup ROUTE_40,                                   19, 10 ;  1
-	mapgroup ROUTE_41,                                   27, 25 ;  2
+	mapgroup ROUTE_41,                                   27, 32 ;  2
 	mapgroup CIANWOOD_CITY,                              27, 15 ;  3
 	mapgroup MANIAS_HOUSE,                                4,  4 ;  4
 	mapgroup CIANWOOD_GYM,                                9,  5 ;  5
