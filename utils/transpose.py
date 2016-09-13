@@ -18,12 +18,17 @@ def build_map(mapfile):
 	mapping = {}
 	with open(mapfile, 'r') as f:
 		for line in f:
-			if '->' not in line:
-				continue
-			a, b = line.split('->')
-			a = int(a, 16)
-			b = int(b, 16)
-			mapping[a] = b
+			if '<->' in line:
+				a, b = line.split('<->')
+				a = int(a, 16)
+				b = int(b, 16)
+				mapping[a] = b
+				mapping[b] = a
+			elif '->' in line:
+				a, b = line.split('->')
+				a = int(a, 16)
+				b = int(b, 16)
+				mapping[a] = b
 	return mapping
 
 def transpose_metatiles(metatiles, mapping):
