@@ -73,6 +73,8 @@
 
 ## New content
 
+* Connect Cerulean Cape to Route 9
+* Add trainers and a cave to Route 35 Coast
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Use Mmmmmm's B/W Route 12 music for a new location
@@ -88,6 +90,7 @@
 
 ## New features
 
+* Permanently remove Cut trees, smashable rocks, and whirlpools
 * Fourth stat screen showing Poké Seer's data (refer to TPPAC)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
