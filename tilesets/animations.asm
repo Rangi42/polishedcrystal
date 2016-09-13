@@ -130,6 +130,10 @@ Tileset30Anim:
 	dw VTiles2 tile $25, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw VTiles2 tile $4a, ScrollTileUp
+	dw VTiles2 tile $4b, ScrollTileDown
+	dw VTiles2 tile $5a, ScrollTileLeft
+	dw VTiles2 tile $5b, ScrollTileRight
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $25, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
