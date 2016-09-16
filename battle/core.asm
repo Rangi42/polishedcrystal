@@ -1287,7 +1287,7 @@ HandleWrap: ; 3c874
 	call SwitchTurnCore
 
 .skip_anim
-	call GetSixteenthMaxHP
+	call GetEighthMaxHP
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 	jr .print_text

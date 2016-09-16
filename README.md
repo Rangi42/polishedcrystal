@@ -221,3 +221,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: AI overuse of Future Sight.
 * Fix: Alphabetical Pokédex was missing Magnezone.
 * Fix: Fire Spin and Whirlpool have 35 power, 85% accuracy, and 15 PP.
+* Fix: Trapping moves do 1/8 damage each turn.
