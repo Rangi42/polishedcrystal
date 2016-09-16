@@ -201,7 +201,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Add: Shellder+Cloyster can learn Waterfall.
 * Add: Moomoo accepts Oran or Sitrus Berries (Sitrus heals +2).
 * Add: Buff Fire Spin and Whirlpool to 90% accuracy (non-Faithful).
-* Add: Name Teala and Felicity.
+* Add: Name Cameron, Teala, and Felicity.
 * Edit: Some wild encounters and trainer rosters.
 * Edit: Berry locations.
 * Edit: Remove Cut tree blocking Celadon Gym.

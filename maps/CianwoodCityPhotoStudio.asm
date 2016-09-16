@@ -65,7 +65,10 @@ FishingGuruScript_0x9e0e0:
 	end
 
 PhotoStudioGreetingText:
-	text "You have magnifi-"
+	text "I am Cameron"
+	line "the Photographer."
+
+	para "You have magnifi-"
 	line "cent #mon with"
 	cont "you."
 
