@@ -863,7 +863,7 @@ BattleCommand_CheckObedience: ; 343db
 
 .DoNothing:
 	call BattleRandom
-	and 3
+	and %11
 
 	ld hl, LoafingAroundText
 	and a
@@ -947,7 +947,7 @@ BattleCommand_CheckObedience: ; 343db
 
 .RandomMove:
 	call BattleRandom
-	and 3 ; TODO NUM_MOVES
+	and %11 ; TODO NUM_MOVES
 
 	cp b
 	jr nc, .RandomMove
@@ -4533,7 +4533,7 @@ BattleCommand_SleepTalk: ; 35b33
 .sample_move
 	push hl
 	call BattleRandom
-	and 3 ; TODO factor in NUM_MOVES
+	and %11 ; TODO factor in NUM_MOVES
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -4702,7 +4702,7 @@ BattleCommand_Spite: ; 35c0f
 	push bc
 	call GetMoveName
 	call BattleRandom
-	and 3
+	and %11
 	inc a
 	inc a
 	ld b, a
@@ -5103,10 +5103,9 @@ BattleCommand_SleepTarget: ; 35e5c
 
 	call AnimateCurrentMove
 
-	ld b, $3
 .random_loop
 	call BattleRandom
-	and b
+	and %11
 	jr z, .random_loop
 	inc a
 	ld [de], a
@@ -6408,7 +6407,7 @@ BattleCommand_TriStatusChance: ; 3658f
 .loop
 	call BattleRandom
 	swap a
-	and 3
+	and %11
 	jr z, .loop
 ; jump
 	dec a
@@ -7551,8 +7550,8 @@ BattleCommand_TrapTarget: ; 36c2d
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret nz
 	call BattleRandom
-	and 3
-rept 3
+	and 1
+rept 5
 	inc a
 endr
 	ld [hl], a
@@ -7784,7 +7783,7 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 .got_confuse_count
 	set SUBSTATUS_CONFUSED, [hl]
 	call BattleRandom
-	and 3
+	and %11
 	inc a
 	inc a
 	ld [bc], a
