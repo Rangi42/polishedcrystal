@@ -91,6 +91,7 @@
 ## New features
 
 * Permanently remove Cut trees, smashable rocks, and whirlpools
+* Show move stats when overwriting one
 * Fourth stat screen showing Poké Seer's data (refer to TPPAC)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)

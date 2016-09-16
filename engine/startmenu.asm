@@ -1679,7 +1679,7 @@ MoveScreenAttributes: ; 13163
 ; 1316b
 
 String_MoveSwap: ; 1316b
-	db "Swap place with?@"
+	db "Switch with?@"
 ; 13172
 
 SetUpMoveScreenBG: ; 13172
@@ -1788,7 +1788,7 @@ PlaceMoveData: ; 13256
 
 	ld a, [CurMove]
 	ld b, a
-	hlcoord 2, 12
+	hlcoord 1, 12
 	predef PrintMoveType
 
 	ld a, [CurMove]
