@@ -31,6 +31,7 @@ RocketScript_0x1adbfa:
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear ROUTE24_ROCKET
+	clearevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
 	domaptrigger ROUTE_25, $1
 	pause 25
