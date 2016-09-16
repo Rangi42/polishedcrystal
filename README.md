@@ -217,3 +217,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Hurricane can hit during Fly.
 * Fix: Toxic used by Poison-types can hit during Fly and Dig.
 * Fix: AI overuse of Future Sight.
+* Fix: Alphabetical Pokédex was missing Magnezone.
