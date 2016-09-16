@@ -75,6 +75,7 @@
 
 * Connect Cerulean Cape to Route 9
 * Add trainers and a cave to Route 35 Coast
+* Add five stat trainers (Cheryl, Riley, Buck, Mira, and Marley)
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Use Mmmmmm's B/W Route 12 music for a new location
