@@ -200,6 +200,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Add: Meowth+Persian can learn False Swipe.
 * Add: Shellder+Cloyster can learn Waterfall.
 * Add: Moomoo accepts Oran or Sitrus Berries (Sitrus heals +2).
+* Add: Buff Fire Spin and Whirlpool to 90% accuracy (non-Faithful).
 * Edit: Some wild encounters and trainer rosters.
 * Edit: Berry locations.
 * Edit: Remove Cut tree blocking Celadon Gym.
@@ -219,3 +220,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Toxic used by Poison-types can hit during Fly and Dig.
 * Fix: AI overuse of Future Sight.
 * Fix: Alphabetical Pokédex was missing Magnezone.
+* Fix: Fire Spin and Whirlpool have 35 power, 85% accuracy, and 15 PP.
