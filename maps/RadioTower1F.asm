@@ -3,7 +3,7 @@ const_value set 2
 	const RADIOTOWER1F_LASS
 	const RADIOTOWER1F_YOUNGSTER
 	const RADIOTOWER1F_ROCKET
-	const RADIOTOWER1F_GENTLEMAN
+	const RADIOTOWER1F_FELICITY
 	const RADIOTOWER1F_COOLTRAINER_F
 
 RadioTower1F_MapScriptHeader:
@@ -29,7 +29,7 @@ UnknownScript_0x5cd37:
 	closetext
 	end
 
-GentlemanScript_0x5cd3d:
+ReceptionistScript_0x5cd3d:
 	faceplayer
 	opentext
 	writetext UnknownText_0x5ceba
@@ -44,7 +44,7 @@ GentlemanScript_0x5cd3d:
 	writetext UnknownText_0x5cf3a
 	buttonsound
 	closetext
-	applymovement RADIOTOWER1F_GENTLEMAN, MovementData_0x5ce71
+	applymovement RADIOTOWER1F_FELICITY, MovementData_0x5ce71
 	opentext
 	writetext UnknownText_0x5cf5a
 	buttonsound
@@ -55,7 +55,7 @@ GentlemanScript_0x5cd3d:
 	buttonsound
 	special Special_CheckForLuckyNumberWinners
 	closetext
-	applymovement RADIOTOWER1F_GENTLEMAN, MovementData_0x5ce74
+	applymovement RADIOTOWER1F_FELICITY, MovementData_0x5ce74
 	opentext
 	if_equal 1, .FirstPlace
 	if_equal 2, .SecondPlace
@@ -227,6 +227,10 @@ UnknownText_0x5ceba:
 	text "Hi, are you here"
 	line "for the Lucky Num-"
 	cont "ber Show?"
+
+	para "I'm Felicity,"
+	line "your attendant"
+	cont "today."
 
 	para "Want me to check"
 	line "the ID numbers of"
@@ -496,5 +500,5 @@ RadioTower1F_MapEventHeader:
 	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x5ce51, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_YOUNGSTER, 4, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5ce54, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_GENTLEMAN, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_RECEPTIONIST, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 6, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS

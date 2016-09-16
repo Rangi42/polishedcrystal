@@ -174,6 +174,9 @@ WonderTradeIntroText:
 	line "#Com Center"
 	cont "Wonder Trade Hub."
 
+	para "I'm Teala, your"
+	line "trade attendant."
+
 	para "You can trade"
 	line "#mon with other"
 	cont "people far away."
