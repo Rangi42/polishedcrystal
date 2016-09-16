@@ -1501,8 +1501,8 @@ MoveScreenLoop: ; 12fd5
 	hlcoord 1, 12
 	lb bc, 5, SCREEN_WIDTH - 2
 	call ClearBox
-	hlcoord 1, 12
-	ld de, String_1316b
+	hlcoord 1, 14
+	ld de, String_MoveSwap
 	call PlaceString
 	jp .joy_loop
 .b_button
@@ -1678,8 +1678,8 @@ MoveScreenAttributes: ; 13163
 	db D_UP | D_DOWN | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
 ; 1316b
 
-String_1316b: ; 1316b
-	db "Where?@"
+String_MoveSwap: ; 1316b
+	db "Swap place with?@"
 ; 13172
 
 SetUpMoveScreenBG: ; 13172
@@ -1779,10 +1779,11 @@ PlaceMoveData: ; 13256
 	ld [hBGMapMode], a
 
 	hlcoord 0, 10
-	ld de, String_132ba
+	ld de, String_TopFrame
 	call PlaceString
-	hlcoord 0, 11
-	ld de, String_132c2
+
+	hlcoord 10, 12
+	ld de, String_PwAc
 	call PlaceString
 
 	ld a, [CurMove]
@@ -1797,7 +1798,7 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 11, 12
+	hlcoord 0, 11
 	cp PHYSICAL
 	jr z, .physical
 	cp SPECIAL
@@ -1819,16 +1820,48 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 16, 12
+	hlcoord 11, 12
 	cp 2
 	jr c, .no_power
 	ld [wd265], a
 	ld de, wd265
 	lb bc, 1, 3
 	call PrintNum
-	jr .description
+	jr .place_accuracy
 .no_power
-	ld de, String_132cf
+	ld de, String_na
+	call PlaceString
+
+.place_accuracy
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_ACC
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	; convert internal accuracy representation to a number
+	; between 0-100
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld [hMultiplicand], a
+	ld a, 100
+	ld [hMultiplier], a
+	call Multiply
+	ld a, [hProduct]
+	; don't increase a for 0% moves
+	and a
+	jr z, .no_inc
+	inc a
+.no_inc
+	hlcoord 16, 12
+	cp 2
+	jr c, .no_acc
+	ld [wd265], a
+	ld de, wd265
+	lb bc, 1, 3
+	call PrintNum
+	jr .description
+.no_acc
+	ld de, String_na
 	call PlaceString
 
 .description
@@ -1839,22 +1872,21 @@ PlaceMoveData: ; 13256
 	ret
 ; 132ba
 
-String_132ba: ; 132ba
+String_TopFrame: ; 132ba
 	db "┌─────┐@"
-; 132c2
-String_132c2: ; 132c2
-	db "│Type/└@"
 ; 132ca
-String_132cf: ; 132cf
+String_na: ; 132cf
 	db "---@"
-; 132d3
+
+String_PwAc:
+	db "P   /A   @"
 
 String_Phys:
-	db "Phys/@"
+	db "│Phys/└@"
 String_Spcl:
-	db "Spcl/@"
+	db "│Spcl/└@"
 String_Stat:
-	db "Stat/@"
+	db "│Stat/└@"
 
 Function132d3: ; 132d3
 	call Function132da
