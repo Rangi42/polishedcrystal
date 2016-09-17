@@ -73,9 +73,14 @@
 
 ## New content
 
-* Connect Cerulean Cape to Route 9
+* Connect Cerulean Cape to Route 9 with Cerulean Sea and Dim/Scary Cave
 * Add trainers and a cave to Route 35 Coast
-* Add five stat trainers (Cheryl: Viridian Forest or Azalea Cape/HP Up, Riley: Connecting Cave/Protein, Buck: Diglett's Cave/Iron, Mira: Dim or Scary Cave/Calcium, Marley: Mt. Moon/Carbos)
+* Add five stat trainers
+   * Cheryl: Noisy Forest (south of Route 36); rewards HP Up
+   * Riley: Connecting Cave; rewards Protein
+   * Buck: Diglett's Cave; rewards Iron
+   * Mira: Dim/Scary Cave (north of Power Plant); rewards Calcium
+   * Marley: Mt. Moon; rewards Carbos
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Use Mmmmmm's B/W Route 12 music for a new location
