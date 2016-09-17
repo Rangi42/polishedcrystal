@@ -167,6 +167,12 @@ Silver Leaves are like Shards in future generations: they can be given to Move T
 
 Gold Leaves can be given to the Move Maniac to relearn moves. Wild Bellsprout have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
 
+**Where do I get this TM/HM?**
+
+* HM02 Fly is given to you after a certain battle in Yellow Forest, at the end of Route 47+48, which become accessible after beating Chuck.
+* HM06 Whirlpool is given to you after a battle with Lyra on Route 42, which becomes accessible after beating Jasmine.
+* TM46 Thief is given to you by Lance after completing Team Rocket's Base in Mahogany Town.
+
 **What do blessings and photographs do?**
 
 Daily blessings in Ecruteak City and photographs in Cianwood City make your Pokémon happier, just like haircuts or grooming.

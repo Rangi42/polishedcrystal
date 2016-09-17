@@ -72,9 +72,10 @@
 
 ## New content
 
-* Add Crossing Cave to Route 35 and Route 35 Coast
-* Add Noisy Forest below Route 36
-* Add Dim/Scary Cave and Cerulean Sea between Route 25/Cerulean Cape and Route 10
+* Add Crossing Cave (music: Mt. Pyre Peak?) to Route 35 and Route 35 Coast
+* Add Noisy Forest below Route 36 (music: White Treehollow)
+* Add Magnet Train Track between Goldenrod City, Route 32, and Noisy Forest
+* Add Dim/Scary Cave (music: Rock Tunnel) and Cerulean Sea (music: Route 25) between Route 25/Cerulean Cape and Route 10
 * Expand Diglett's Cave
 * Expand Mt. Moon
 * Add five stat trainers
@@ -86,8 +87,8 @@
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Add Yellow's encounter music for Jessie & James
-* Use RBY's Pokémon Tower music
-* Use Mmmmmm's B/W Route 12, White Treehollow, and Spiky-Eared Pichu music
+* Use RBY's Pokémon Tower music (Crossing Cave bottom)
+* Use Mmmmmm's B/W Route 12 (Magnet Train Track), White Treehollow (Noisy Forest), and Spiky-Eared Pichu (Giovanni event) music
 * Acquire R/S/E and D/P/Pt Champion battle music
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Add wild Pokémon to Navel Rock?
