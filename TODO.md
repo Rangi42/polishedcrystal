@@ -85,8 +85,9 @@
    * Marley: Mt. Moon; rewards Carbos
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
-* Use Mmmmmm's B/W Route 12 music for a new location
-* Use White Treehollow music somewhere if possible
+* Use Yellow's encounter music for Jessie & James
+* Use Mmmmmm's B/W Route 12 and White Treehollow music
+* Acquire R/S/E and D/P/Pt Champion battle music
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
