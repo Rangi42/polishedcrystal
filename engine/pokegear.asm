@@ -1644,7 +1644,7 @@ LoadStation_BuenasPassword: ; 917a5 (24:57a5)
 	call Radio_BackUpFarCallParams
 	ld de, NotBuenasPasswordName
 	ld a, [StatusFlags2]
-	bit 0, a
+	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
 	ret z
 	ld de, BuenasPasswordName
 	ret

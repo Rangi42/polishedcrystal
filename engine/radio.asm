@@ -5,7 +5,7 @@ PlayRadioShow:
 	jr nc, .ok
 ; If Team Rocket is not occupying the radio tower, we don't need to be here.
 	ld a, [StatusFlags2]
-	bit 0, a ; checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
+	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
 	jr z, .ok
 ; If we're in Kanto, we don't need to be here.
 	call IsInJohto

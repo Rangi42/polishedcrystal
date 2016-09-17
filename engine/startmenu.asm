@@ -8,7 +8,7 @@ StartMenu:: ; 125cd
 	callba Function6454
 
 	ld hl, StatusFlags2
-	bit 2, [hl] ; bug catching contest
+	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	ld hl, .MenuDataHeader
 	jr z, .GotMenuData
 	ld hl, .ContestMenuDataHeader
@@ -272,7 +272,7 @@ endr
 	and a
 	jr nz, .no_pack
 	ld hl, StatusFlags2
-	bit 2, [hl] ; bug catching contest
+	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .no_pack
 	ld a, 2 ; pack
 	call .AppendMenuList
@@ -292,7 +292,7 @@ endr
 	and a
 	jr nz, .no_save
 	ld hl, StatusFlags2
-	bit 2, [hl] ; bug catching contest
+	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	ld a, 8 ; quit
 	jr nz, .write
 	ld a, 4 ; save
@@ -331,7 +331,7 @@ endr
 
 .DrawBugContestStatusBox: ; 128d1
 	ld hl, StatusFlags2
-	bit 2, [hl] ; bug catching contest
+	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	ret z
 	callba StartMenu_DrawBugContestStatusBox
 	ret
@@ -339,7 +339,7 @@ endr
 
 .DrawBugContestStatus: ; 128de
 	ld hl, StatusFlags2
-	bit 2, [hl] ; bug catching contest
+	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .contest
 	ret
 .contest

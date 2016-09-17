@@ -1382,7 +1382,7 @@ GivePokerus: ; 2ed44
 ; If we haven't been to Goldenrod City at least once,
 ; prevent the contraction of Pokerus.
 	ld hl, StatusFlags2
-	bit 6, [hl]
+	bit 6, [hl] ; ENGINE_GIVE_POKERUS
 	ret z
 	call Random
 	ld a, [hRandomAdd]

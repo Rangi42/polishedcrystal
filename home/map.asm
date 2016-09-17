@@ -2240,17 +2240,15 @@ GetWorldMapLocation:: ; 0x2caf
 ; 0x2cbd
 
 GetMapHeaderMusic:: ; 2cbd
-RADIO_TOWER_MUSIC EQU 7
-
 	push hl
 	push bc
 	ld de, 6 ; music
 	call GetMapHeaderMember
 	ld a, c
+	cp MUSIC_RADIO_TOWER
+	jr z, .radiotower
 	cp MUSIC_MAHOGANY_MART
 	jr z, .mahoganymart
-	bit RADIO_TOWER_MUSIC, c
-	jr nz, .radiotower
 	call Function8b342
 	ld e, c
 	ld d, 0
@@ -2261,22 +2259,18 @@ RADIO_TOWER_MUSIC EQU 7
 
 .radiotower
 	ld a, [StatusFlags2]
-	bit 0, a
+	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
 	jr z, .clearedradiotower
 	ld de, MUSIC_ROCKET_OVERTURE
 	jr .done
 
 .clearedradiotower
-	; the rest of the byte
-	ld a, c
-	and 1 << RADIO_TOWER_MUSIC - 1
-	ld e, a
-	ld d, 0
+	ld de, MUSIC_GOLDENROD_CITY
 	jr .done
 
 .mahoganymart
 	ld a, [StatusFlags2]
-	bit 7, a
+	bit 7, a ; ENGINE_ROCKETS_IN_MAHOGANY
 	jr z, .clearedmahogany
 	ld de, MUSIC_ROCKET_HIDEOUT
 	jr .done

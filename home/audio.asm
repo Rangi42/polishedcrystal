@@ -456,7 +456,7 @@ SpecialMapMusic:: ; 3d62
 	jr z, .surf
 
 	ld a, [StatusFlags2]
-	bit 2, a
+	bit 2, a ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .contest
 
 .no

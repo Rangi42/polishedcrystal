@@ -131,5 +131,6 @@
 	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 80
 	const MUSIC_LAWRENCE                     ; 81
 	const MUSIC_LUGIAS_SONG_2000             ; 82
-
-MUSIC_MAHOGANY_MART EQU $64 ; leftover from gold
+	; special
+	const MUSIC_RADIO_TOWER                  ; 83
+	const MUSIC_MAHOGANY_MART                ; 84
