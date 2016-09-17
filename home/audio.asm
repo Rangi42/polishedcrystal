@@ -453,7 +453,7 @@ SpecialMapMusic:: ; 3d62
 	cp PLAYER_SURF
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
-	jr z, .surf
+	jr z, .surf_pikachu
 
 	ld a, [StatusFlags2]
 	bit 2, a ; ENGINE_BUG_CONTEST_TIMER
@@ -470,6 +470,11 @@ SpecialMapMusic:: ; 3d62
 
 .surf
 	ld de, MUSIC_SURF
+	scf
+	ret
+
+.surf_pikachu
+	ld de, MUSIC_SURFING_PIKACHU
 	scf
 	ret
 

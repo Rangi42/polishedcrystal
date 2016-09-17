@@ -103,9 +103,9 @@
 
 ; Polished Crystal adds the following songs:
 
+	dba Music_SurfingPikachu
 	dba Music_MartHGSS
 	dba Music_CeruleanCityHGSS
-	dba Music_SurfingPikachu
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
 	dba Music_Route47HGSS

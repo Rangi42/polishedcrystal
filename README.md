@@ -195,6 +195,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Add: Connect Goldenrod Harbor to Route 41 west and Olivine City north.
 * Add: Move stats show accuracy.
 * Add: Buy basic items in Yellow Forest gate.
+* Add: Yellow Surfing Pikachu music.
 * Add: Correct OT genders for Wonder Trade.
 * Add: Hurricane is 100% accurate in rain.
 * Add: Blizzard is 100% accurate in hail.

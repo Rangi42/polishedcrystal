@@ -98,9 +98,9 @@
 	const MUSIC_SUICUNE_BATTLE               ; 5f
 	const MUSIC_BATTLE_TOWER_LOBBY           ; 60
 	const MUSIC_POKECOM_CENTER               ; 61
-	const MUSIC_MART_HGSS                    ; 62
-	const MUSIC_CERULEAN_CITY_HGSS           ; 63
-	const MUSIC_SURFING_PIKACHU              ; 64
+	const MUSIC_SURFING_PIKACHU              ; 62
+	const MUSIC_MART_HGSS                    ; 63
+	const MUSIC_CERULEAN_CITY_HGSS           ; 64
 	const MUSIC_CINNABAR_ISLAND_HGSS         ; 65
 	const MUSIC_NUGGET_BRIDGE_HGSS           ; 66
 	const MUSIC_ROUTE_47_HGSS                ; 67
