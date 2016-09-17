@@ -215,6 +215,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Lyra's catching tutorial breaks the map music.
 * Fix: Text overflow in Sandstorm TM house.
 * Fix: Waterfall HM item ball is blue.
+* Fix: Surfing Pikachu's picture.
 * Fix: Expert Belt → Wise Glasses.
 * Fix: No wild encounters in Cherrygrove Bay.
 * Fix: Slowking evolution check before Slowbro.
@@ -226,3 +227,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Alphabetical Pokédex was missing Magnezone.
 * Fix: Fire Spin and Whirlpool have 35 power, 85% accuracy, and 15 PP.
 * Fix: Trapping moves do 1/8 damage each turn and last 4–5 turns.
+* Fix: Waterfall tile animation.

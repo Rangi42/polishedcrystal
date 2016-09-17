@@ -29,9 +29,6 @@ endr
 rept 4
 	dec hl
 endr
-	ld a, 3 ; Surf
-	ld [UnownLetterOrPikachuVariant], a
-	xor b
 	ld a, [hli]
 	cp SURF
 	jr z, .surf1
@@ -57,7 +54,7 @@ rept 4
 endr
 
 .plain
-	ld a, 1
+	ld a, 1 ; plain
 	ld [UnownLetterOrPikachuVariant], a
 	ret
 
@@ -69,14 +66,16 @@ endr
 	dec hl
 .surf1
 	dec hl
-	ld a, 4 ; Both
+	ld a, 4 ; Fly + Surf
 	ld [UnownLetterOrPikachuVariant], a
 rept 4
 	ld a, [hli]
 	cp FLY
 	ret z
 endr
-	jr .plain
+	ld a, 3 ; Surf
+	ld [UnownLetterOrPikachuVariant], a
+	ret
 
 .GetUnownVariant:
 ; Return Unown letter in UnownLetterOrPikachuVariant based on DVs at hl

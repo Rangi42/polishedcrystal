@@ -187,6 +187,15 @@ Tileset31Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  TileAnimationPalette
 	dw NULL,  StandingTileFrame8
+	dw VTiles2 tile $4b, WriteTileToBuffer
+	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $4b, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 Tileset32Anim:
