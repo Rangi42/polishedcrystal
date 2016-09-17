@@ -212,7 +212,7 @@ _CGB_StatsScreenHPPals: ; 8edb
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, Palette8f52
 	ld de, UnknBGPals + 8 * 3
-	ld bc, 3 palettes
+	ld bc, 4 palettes
 	ld a, $5
 	call FarCopyWRAM
 	call WipeAttrMap
@@ -227,19 +227,24 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld a, $2
 	call ByteFill
 
-	hlcoord 13, 5, AttrMap
+	hlcoord 11, 5, AttrMap
 	lb bc, 2, 2
 	ld a, $3
 	call FillBoxCGB
 
-	hlcoord 15, 5, AttrMap
+	hlcoord 13, 5, AttrMap
 	lb bc, 2, 2
 	ld a, $4
 	call FillBoxCGB
 
-	hlcoord 17, 5, AttrMap
+	hlcoord 15, 5, AttrMap
 	lb bc, 2, 2
 	ld a, $5
+	call FillBoxCGB
+
+	hlcoord 17, 5, AttrMap
+	lb bc, 2, 2
+	ld a, $6
 	call FillBoxCGB
 
 	call ApplyAttrMap
@@ -264,6 +269,11 @@ Palette8f52: ; 8f52
 	RGB 17, 31, 31
 	RGB 17, 31, 31
 	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 30, 24, 16
+	RGB 30, 22, 12
+	RGB 00, 00, 00
 ; 8f6a
 
 StatsScreenPals: ; 8f6a
@@ -272,6 +282,8 @@ StatsScreenPals: ; 8f6a
 	RGB 21, 31, 14
 
 	RGB 17, 31, 31
+
+	RGB 30, 24, 16
 ; 8f70
 
 _CGB_Pokedex: ; 8f70
