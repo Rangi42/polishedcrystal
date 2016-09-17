@@ -230,3 +230,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Trapping moves do 1/8 damage each turn and last 4–5 turns.
 * Fix: Waterfall tile animation.
 * Fix: Whirl Islands Lugia music.
+* Fix: Hidden Power has fixed power now.
