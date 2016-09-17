@@ -7,7 +7,6 @@
 
 * Nuzlocke mode sometimes turns on by itself
 * Move Reminder doesn't list all possible moves
-* Thief permanently steals held items
 * TMs refresh PP
 * Headbutt overworld animation looks weird (wrong tile ID?)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"

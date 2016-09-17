@@ -209,6 +209,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Edit: Palmer's sprite.
 * Edit: Brighter purple for sprites.
 * Edit: Buff Ditto.
+* Fix: Thief permanently steals held items.
 * Fix: Make Route 24 Rocket Grunt mandatory to avoid sequence breaking.
 * Fix: Static Pokémon respawn if they're caught.
 * Fix: Lyra's catching tutorial breaks the map music.
