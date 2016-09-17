@@ -9,7 +9,7 @@ Music_LugiasSong2000:
 
 Music_LugiasSong2000_Ch1:
 	tempo $5A
-	volume $66
+	volume $77
 	dutycycle 2
 	notetype $C, $78
 	octave 3

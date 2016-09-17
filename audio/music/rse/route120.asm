@@ -249,7 +249,7 @@ Music_Route120RSE_Loop1:
 
 Music_Route120RSE_Ch2:
 	tempo $4A
-	volume $55
+	volume $77
 	dutycycle 1
 	notetype $C, $F7
 Music_Route120RSE_Loop2:
