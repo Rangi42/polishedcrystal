@@ -705,11 +705,11 @@ KRIS EQU __enum__
 
 	trainerclass VETERANM ; 52
 	const MATT
-	const RINGO
+	const REMY
 
 	trainerclass VETERANF ; 53
 	const JOANNE
-	const KOTORI
+	const SYLVIE
 
 	trainerclass PROTON ; 54
 	const PROTON1

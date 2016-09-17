@@ -8815,7 +8815,7 @@ SwimmerMGroup:
 ; ================
 
 	; SWIMMERM
-	db "Matthew@"
+	db "Mathew@"
 	db 0 ; normal
 
 	; party
@@ -11001,7 +11001,7 @@ VeteranMGroup:
 ; ================
 
 	; VETERANM
-	db "Ringo@"
+	db "Remy@"
 	db 3 ; item + moves
 
 	; party
@@ -11099,7 +11099,7 @@ VeteranFGroup:
 ; ================
 
 	; VETERANF
-	db "Kotori@"
+	db "Sylvie@"
 	db 3 ; item + moves
 
 	; party

@@ -186,24 +186,24 @@ VeteranfJoanneScript:
 	closetext
 	end
 
-TrainerVeteranfKotori:
-	trainer EVENT_BEAT_VETERANF_KOTORI, VETERANF, KOTORI, VeteranfKotoriSeenText, VeteranfKotoriBeatenText, 0, VeteranfKotoriScript
+TrainerVeteranfSylvie:
+	trainer EVENT_BEAT_VETERANF_SYLVIE, VETERANF, SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText, 0, VeteranfSylvieScript
 
-VeteranfKotoriScript:
+VeteranfSylvieScript:
 	end_if_just_battled
 	opentext
-	writetext VeteranfKotoriAfterText
+	writetext VeteranfSylvieAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerVeteranmRingo:
-	trainer EVENT_BEAT_VETERANM_RINGO, VETERANM, RINGO, VeteranmRingoSeenText, VeteranmRingoBeatenText, 0, VeteranmRingoScript
+TrainerVeteranmRemy:
+	trainer EVENT_BEAT_VETERANM_REMY, VETERANM, REMY, VeteranmRemySeenText, VeteranmRemyBeatenText, 0, VeteranmRemyScript
 
-VeteranmRingoScript:
+VeteranmRemyScript:
 	end_if_just_battled
 	opentext
-	writetext VeteranmRingoAfterText
+	writetext VeteranmRemyAfterText
 	waitbutton
 	closetext
 	end
@@ -471,7 +471,7 @@ VeteranfJoanneAfterText:
 	cont "Victory Road!"
 	done
 
-VeteranfKotoriSeenText:
+VeteranfSylvieSeenText:
 	text "There's supposed"
 	line "to be a Moltres"
 	cont "roosting here."
@@ -480,19 +480,19 @@ VeteranfKotoriSeenText:
 	line "it!"
 	done
 
-VeteranfKotoriBeatenText:
+VeteranfSylvieBeatenText:
 	text "I'd have won if"
 	line "I had a legendary"
 	cont "#mon…"
 	done
 
-VeteranfKotoriAfterText:
+VeteranfSylvieAfterText:
 	text "Did somebody"
 	line "capture Moltres"
 	cont "already?"
 	done
 
-VeteranmRingoSeenText:
+VeteranmRemySeenText:
 	text "If you can get"
 	line "through here, you"
 
@@ -500,12 +500,12 @@ VeteranmRingoSeenText:
 	line "Elite Four!"
 	done
 
-VeteranmRingoBeatenText:
+VeteranmRemyBeatenText:
 	text "No!"
 	line "Inconceivable!"
 	done
 
-VeteranmRingoAfterText:
+VeteranmRemyAfterText:
 	text "I can beat you"
 	line "when it comes to"
 
@@ -546,8 +546,8 @@ VictoryRoad_MapEventHeader:
 	person_event SPRITE_LAWRENCE, 15, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VictoryRoadLawrenceScript, EVENT_LAWRENCE_VICTORY_ROAD
 	person_event SPRITE_VETERAN_M, 52, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmMatt, -1
 	person_event SPRITE_VETERAN_F, 35, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
-	person_event SPRITE_VETERAN_F, 27, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerVeteranfKotori, -1
-	person_event SPRITE_VETERAN_M, 13, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranmRingo, -1
+	person_event SPRITE_VETERAN_F, 27, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerVeteranfSylvie, -1
+	person_event SPRITE_VETERAN_M, 13, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranmRemy, -1
 	person_event SPRITE_POKE_BALL, 28, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_ITEMBALL, 0, VictoryRoadTMEarthquake, EVENT_VICTORY_ROAD_TM_EARTHQUAKE
 	person_event SPRITE_POKE_BALL, 48, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadMaxRevive, EVENT_VICTORY_ROAD_MAX_REVIVE
 	person_event SPRITE_POKE_BALL, 29, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VictoryRoadFullRestore, EVENT_VICTORY_ROAD_FULL_RESTORE

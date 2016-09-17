@@ -5070,8 +5070,8 @@ KrisNameMenuHeader: ; 882e5
 	db "New Name@"
 	db "Kris@"
 	db "Marina@"
+	db "Celeste@"
 	db "Reina@"
-	db "Sylvie@"
 	db 2 ; displacement
 	db " Name @" ; title
 
