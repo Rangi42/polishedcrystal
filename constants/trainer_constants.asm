@@ -473,6 +473,8 @@ KRIS EQU __enum__
 	const JOANDCATH2
 	const IVYANDAMY1
 	const IVYANDAMY2
+	const BEAANDMAY1
+	const BEAANDMAY2
 
 	trainerclass COUPLE ; 3a
 	const GAILANDELI1
@@ -536,6 +538,8 @@ KRIS EQU __enum__
 	const CAMERON
 	const SETH
 	const JAMES
+	const WALTER
+	const LEWIS
 
 	trainerclass SWIMMERF ; 41
 	const ELAINE
@@ -553,6 +557,9 @@ KRIS EQU __enum__
 	const DIANA
 	const BRIANA
 	const JOY
+	const KATIE
+	const JILL
+	const LISA
 
 	trainerclass BURGLAR ; 42
 	const DUNCAN

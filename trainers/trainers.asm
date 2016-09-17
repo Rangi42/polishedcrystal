@@ -8215,6 +8215,30 @@ SrAndJrGroup:
 	db $ff ; end
 
 ; ================
+
+	; SR_AND_JR
+	db "Bea & May@"
+	db 0 ; normal
+
+	; party
+	db 24, IVYSAUR
+	db 20, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SR_AND_JR
+	db "Bea & May@"
+	db 0 ; normal
+
+	; party
+	db 20, BULBASAUR
+	db 24, IVYSAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8913,6 +8937,32 @@ SwimmerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; SWIMMERM
+	db "Walter@"
+	db 0 ; normal
+
+	; party
+	db 18, HORSEA
+	db 18, HORSEA
+	db 21, SEADRA
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Lewis@"
+	db 0 ; normal
+
+	; party
+	db 18, STARYU
+	db 21, STARMIE
+	db 20, HORSEA
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9104,6 +9154,40 @@ SwimmerFGroup:
 
 	; party
 	db 58, CLOYSTER
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF
+	db "Lisa@"
+	db 0 ; normal
+
+	; party
+	db 23, LANTURN
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF
+	db "Jill@"
+	db 0 ; normal
+
+	; party
+	db 23, DEWGONG
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Katie@"
+	db 0 ; normal
+
+	; party
+	db 19, SEEL
+	db 21, DEWGONG
 
 	db $ff ; end
 

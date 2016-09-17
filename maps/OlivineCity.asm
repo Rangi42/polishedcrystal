@@ -3,6 +3,7 @@ const_value set 2
 	const OLIVINECITY_STANDING_YOUNGSTER
 	const OLIVINECITY_SAILOR2
 	const OLIVINECITY_OLIVINE_RIVAL
+	const OLIVINECITY_SWIMMER_GIRL
 
 OlivineCity_MapScriptHeader:
 .MapTriggers:
@@ -102,6 +103,17 @@ UnknownScript_0x1a88b4:
 
 SailorScript_0x1a88ba:
 	jumptextfaceplayer UnknownText_0x1a8b71
+
+TrainerSwimmerfJill:
+	trainer EVENT_BEAT_SWIMMERF_JILL, SWIMMERF, JILL, SwimmerfJillSeenText, SwimmerfJillBeatenText, 0, SwimmerfJillScript
+
+SwimmerfJillScript:
+	end_if_just_battled
+	opentext
+	writetext SwimmerfJillAfterText
+	waitbutton
+	closetext
+	end
 
 OlivineCitySign:
 	jumptext OlivineCitySignText
@@ -286,6 +298,20 @@ UnknownText_0x1a8b71:
 	cont "man down!…"
 	done
 
+SwimmerfJillSeenText:
+	text "Don't I look good"
+	line "in this bikini?"
+	done
+
+SwimmerfJillBeatenText:
+	text "Hmph!"
+	done
+
+SwimmerfJillAfterText:
+	text "I'll forget my"
+	line "loss with a swim."
+	done
+
 OlivineCitySignText:
 	text "Olivine City"
 
@@ -356,8 +382,9 @@ OlivineCity_MapEventHeader:
 	signpost 15, 20, SIGNPOST_READ, OlivineCityMartSign
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_SAILOR, 22, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x1a88a3, -1
 	person_event SPRITE_STANDING_YOUNGSTER, 9, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, StandingYoungsterScript_0x1a88a6, -1
 	person_event SPRITE_SAILOR, 21, 15, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x1a88ba, -1
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
+	person_event SPRITE_SWIMMER_GIRL, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJill, -1

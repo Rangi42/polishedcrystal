@@ -1,9 +1,10 @@
 const_value set 2
-	const ROUTE41_OLIVINE_RIVAL1
-	const ROUTE41_OLIVINE_RIVAL2
-	const ROUTE41_OLIVINE_RIVAL3
-	const ROUTE41_OLIVINE_RIVAL4
-	const ROUTE41_OLIVINE_RIVAL5
+	const ROUTE41_SWIMMER_GUY1
+	const ROUTE41_SWIMMER_GUY2
+	const ROUTE41_SWIMMER_GUY3
+	const ROUTE41_SWIMMER_GUY4
+	const ROUTE41_SWIMMER_GUY5
+	const ROUTE41_SWIMMER_GUY6
 	const ROUTE41_SWIMMER_GIRL1
 	const ROUTE41_SWIMMER_GIRL2
 	const ROUTE41_SWIMMER_GIRL3
@@ -127,6 +128,17 @@ SwimmermMathewScript:
 	closetext
 	end
 
+TrainerSwimmermLewis:
+	trainer EVENT_BEAT_SWIMMERM_LEWIS, SWIMMERM, LEWIS, SwimmermLewisSeenText, SwimmermLewisBeatenText, 0, SwimmermLewisScript
+
+SwimmermLewisScript:
+	end_if_just_battled
+	opentext
+	writetext SwimmermLewisAfterText
+	waitbutton
+	closetext
+	end
+
 Route41HiddenMaxEther:
 	dwb EVENT_ROUTE_41_HIDDEN_MAX_ETHER, MAX_ETHER
 
@@ -233,6 +245,24 @@ UnknownText_0x1a6bed:
 
 	para "It's pitch-black"
 	line "inside!"
+	done
+
+SwimmermLewisSeenText:
+	text "I feel right at"
+	line "home in the sea!"
+	done
+
+SwimmermLewisBeatenText:
+	text "Beaten in my own"
+	line "home?"
+	done
+
+SwimmermLewisAfterText:
+	text "It takes knowledge"
+	line "and experience"
+
+	para "to not get lost"
+	line "in the water."
 	done
 
 SwimmerfKayleeSeenText:
@@ -356,12 +386,13 @@ Route41_MapEventHeader:
 	signpost 35, 9, SIGNPOST_ITEM, Route41HiddenMaxEther
 
 .PersonEvents:
-	db 10
+	db 11
 	person_event SPRITE_SWIMMER_GUY, 6, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermCharlie, -1
 	person_event SPRITE_SWIMMER_GUY, 8, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermGeorge, -1
 	person_event SPRITE_SWIMMER_GUY, 26, 20, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermBerke, -1
 	person_event SPRITE_SWIMMER_GUY, 30, 32, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermKirk, -1
 	person_event SPRITE_SWIMMER_GUY, 46, 19, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermMathew, -1
+	person_event SPRITE_SWIMMER_GUY, 24, 57, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermLewis, -1
 	person_event SPRITE_SWIMMER_GIRL, 4, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKaylee, -1
 	person_event SPRITE_SWIMMER_GIRL, 19, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfSusie, -1
 	person_event SPRITE_SWIMMER_GIRL, 34, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDenise, -1
