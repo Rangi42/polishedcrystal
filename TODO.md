@@ -87,7 +87,7 @@
 * Elite Four have different rematch dialog
 * Add Yellow's encounter music for Jessie & James
 * Use RBY's Pokémon Tower music
-* Use Mmmmmm's B/W Route 12 and White Treehollow music
+* Use Mmmmmm's B/W Route 12, White Treehollow, and Spiky-Eared Pichu music
 * Acquire R/S/E and D/P/Pt Champion battle music
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Add wild Pokémon to Navel Rock?
