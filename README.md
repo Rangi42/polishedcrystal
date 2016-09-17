@@ -220,6 +220,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Expert Belt → Wise Glasses.
 * Fix: No wild encounters in Cherrygrove Bay.
 * Fix: Slowking evolution check before Slowbro.
+* Fix: Leafeon/Glaceon evolution check before Espeon/Umbreon.
 * Fix: Crunch lowers Defense, not Special Defense.
 * Fix: Ice Shard's description overflows into Toxic's.
 * Fix: Hurricane can hit during Fly.

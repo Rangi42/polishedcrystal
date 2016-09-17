@@ -8,6 +8,7 @@
 * Nuzlocke mode sometimes turns on by itself
 * Move Reminder doesn't list all possible moves
 * TMs refresh PP
+* AI tries to use status effects against immune types
 * Headbutt overworld animation looks weird (wrong tile ID?)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
