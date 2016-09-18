@@ -36,10 +36,19 @@
 
 ## Other mechanics
 
+* Use a proper menu for resurrecting Fossils
+* Permanently remove Cut trees, smashable rocks, and whirlpools
+* Kurt gives Balls right away once per day
 * Catch rate formula from Gen III
+* Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
-* Select reorders Pokémon in party menu
 * Send gift Pokémon to the PC if the party is full
+* Separate radio channels for March and Lullaby, available every day
+* More Bag pockets (split Items into Items, Medicine, and Berries, or Held and Used)
+* Press Start to auto-sort items
+* Select reorders Pokémon in party menu
+* Longer player and rival names
+* Sometimes wild Pokémon know an egg move
 * More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
 * Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
@@ -89,24 +98,14 @@
 * Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower or Trainer House (reward: ?)
-* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer Hall, different trainer each day?)
+* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
 * Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day?
-* Add some of {Drill Run, Sucker Punch}?
 
 
 ## New features
 
-* Permanently remove Cut trees, smashable rocks, and whirlpools
-* Show move stats when overwriting one
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
-* Kurt gives Balls right away once per day
-* Separate radio channels for March and Lullaby, available every day
-* More Bag pockets (split Items into Items, Medicine, and Berries, or Held and Used)
-* Press Start to auto-sort items
-* Longer player and rival names
-* Sometimes wild Pokémon know an egg move
-* Use a proper menu for resurrecting Fossils
