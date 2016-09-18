@@ -115,7 +115,7 @@
 	map_header_2 Route41, ROUTE_41, $35, NORTH | WEST | EAST
 	connection north, ROUTE_40, Route40, 15, 0, 10, ROUTE_41
 	connection west, CIANWOOD_CITY, CianwoodCity, 0, 0, 27, ROUTE_41
-	connection east, GOLDENROD_HARBOR, GoldenrodHarbor, 3, 0, 18, ROUTE_41
+	connection east, GOLDENROD_HARBOR, GoldenrodHarbor, 3, 0, 20, ROUTE_41
 
 	map_header_2 Route42, ROUTE_42, $5, WEST | EAST
 	connection west, ECRUTEAK_CITY, EcruteakCity, -3, 6, 12, ROUTE_42
@@ -294,7 +294,7 @@
 
 	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24, GOLDENROD_HARBOR
-	connection west, ROUTE_41, Route41, -3, 0, 18, GOLDENROD_HARBOR
+	connection west, ROUTE_41, Route41, -3, 0, 20, GOLDENROD_HARBOR
 
 	map_header_2 Route23, ROUTE_23, $f, 0
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
