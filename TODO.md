@@ -107,5 +107,7 @@
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
-* Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Use the News Machine for something (Mystery Gift?)
+* Pickup ability for Meowth, Teddiursa, and/or Phanpy
+* Abilities in general
+* Natures
