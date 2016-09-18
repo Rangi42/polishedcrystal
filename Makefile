@@ -1,8 +1,8 @@
 PYTHON := python
 MD5 := md5sum -c --quiet
 
-NAME = polishedcrystal-2.0.1
-FNAME = polishedcrystal-faithful-2.0.1
+NAME = polishedcrystal-2.1.0
+FNAME = polishedcrystal-faithful-2.1.0
 FAITHFUL =
 
 
