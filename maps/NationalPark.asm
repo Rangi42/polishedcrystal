@@ -328,11 +328,8 @@ UnknownText_0x5c1d3:
 	text "Look! Check out my"
 	line "bag!"
 
-	para "I printed out my"
-	line "favorites from my"
-
-	para "#dex and stuck"
-	line "them on my bag."
+	para "I pinned my badges"
+	line "onto it."
 	done
 
 UnknownText_0x5c22e:
@@ -418,14 +415,14 @@ NationalParkPersianText:
 	done
 
 UnknownText_0x5c42a:
-	text "I'm printing out"
-	line "my #dex."
+	text "I'm studying my"
+	line "#dex."
 
-	para "You can also print"
-	line "out stuff like"
+	para "I want to collect"
+	line "a living #-"
 
-	para "Mail and your PC"
-	line "Boxes."
+	para "dex with one of"
+	line "each #mon."
 	done
 
 SchoolboyJack1SeenText:
@@ -545,9 +542,12 @@ UnknownText_0x5c771:
 UnknownText_0x5c7c6:
 	text "Trainer Tips"
 
-	para "Print out Mail by"
-	line "opening it then"
-	cont "pressing Start."
+	para "Pokemon become"
+	line "happier from"
+
+	para "haircuts, bless-"
+	line "ings, photographs,"
+	cont "and other treats."
 	done
 
 NationalPark_MapEventHeader:

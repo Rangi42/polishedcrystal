@@ -216,9 +216,12 @@ UnknownText_0x5cbc8:
 UnknownText_0x5cc1d:
 	text "Trainer Tips"
 
-	para "Print out Mail by"
-	line "opening it then"
-	cont "pressing Start."
+	para "Pokemon become"
+	line "happier from"
+
+	para "haircuts, bless-"
+	line "ings, photographs,"
+	cont "and other treats."
 	done
 
 NationalParkBugContest_MapEventHeader:

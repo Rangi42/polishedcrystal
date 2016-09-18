@@ -244,3 +244,4 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 * Fix: Whirl Islands Lugia music.
 * Fix: Hidden Power has fixed power now.
 * Fix: Consistent music volume for all tracks.
+* Fix: Remove GameBoy Printer references.
