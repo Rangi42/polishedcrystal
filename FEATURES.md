@@ -1,6 +1,6 @@
 # Features
 
-These are *most* of the new features as of 2.0.0. Some would be spoilers.
+These are *most* of the new features as of 2.1.0. Some would be spoilers.
 
 
 ## Pokémon
