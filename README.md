@@ -42,7 +42,8 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 * Many new mechanics, including the Fairy type, Physical/Special split, unlimited TMs, Running Shoes, and continuous Repel.
 * New maps: some restored from R/B/Y, some devamped from HG/SS, and some original.
 * New characters, including Lorelei and Agatha from R/B/Y, Lyra and the Team Rocket Executives from HG/SS, and others.
-* Steadily increasing challenges throughout the game, with new post-game content that climaxes in a level 100 battle.
+* More post-game content, like Gym Leader rematches and an event after the battle with Red.
+* An improved level curve with steadily increasing challenges throughout the game.
 * Music and graphics devamped from other versions.
 * Nuzlocke mode in the Option menu, enabling the basic rules of the [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge).
 
