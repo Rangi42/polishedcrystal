@@ -88,7 +88,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 ## Maps
 
 * Restored locations from R/B/Y and HG/SS: Viridian Forest, Pewter Museum, Celadon Hotel, Silph Co., Pokémon Mansion, Seafoam Islands, Cerulean Cave, Goldenrod PokéCom Center, and Bellchime Trail.
-* Original locations, including Cinnabar Volcano, Cherrygrove Bay, Goldenrod Harbor, a new floor of Rock Tunnel, the Ecruteak Shrine from [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172), custom-designed PokéWalker routes, and others.
+* Original locations, including Cinnabar Volcano, a new floor of Rock Tunnel, Cherrygrove Bay, Goldenrod Harbor, Route 35 Coast, the Ecruteak Shrine from [Pokémon Christmas](http://www.pokemonhackersonline.com/showthread.php?t=14172), custom-designed PokéWalker routes, and others.
 * Decorative features added to cities and routes, often from HG/SS.
 * HG/SS-style Town Map.
 
@@ -103,6 +103,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Falkner is in Dark Cave, encouraging you to beat Sprout Tower first.
 * Photographing your Pokémon at the Cianwood Photo Studio once a day now makes it happier, like haircuts or massages. (No more GameBoy Printer support.)
 * The Mystery Gift girl in Goldenrod Dept. Store gives you a random Berry once a day. (No more Mystery Gift support.)
+* The Poké Seer is replaced by the Stats Judge.
 * Lt. Surge's electric fences are back.
 * Celadon Dept. Store now has a TV Game floor and a Home Decor wing.
 * Revised in-game trades.
@@ -159,6 +160,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Enemy AI doesn't fail an extra 25% of the time with sleep or poison-inducing moves, or 40% of the time with stat drops.
 * No badge boosts to stats or types.
 * Improved some trainers' rosters, movesets, held items, and DVs (particularly Gym Leaders, the Elite Four, and other bosses).
+* AI improvements, such as not trying to paralyze Electric types or burn Fire types.
 * A smoothly increasing level curve, with the final trainer of the game at level 100.
 
 
@@ -192,6 +194,7 @@ These are *most* of the new features as of 2.0.0. Some would be spoilers.
 * Fly has 100% accuracy.
 * Strength has 90 power.
 * Rock Smash has 75 power.
+* Whirlpool and Fire Spin have 90% accuracy.
 * Hail boosts Defense of Ice-types by 50%.
 * Submission and Take Down have 90 power, 100% accuracy, and 15 PP to match Wild Charge.
 * Crabhammer and Octazooka have 95% accuracy.
@@ -212,7 +215,9 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Unique mini sprites for each Pokémon (thanks to [this patch](http://www.pokecommunity.com/showthread.php?t=338470)).
 * Revised some shiny palettes (Dragonite is blue like Dragonair, Nidoqueen is pink like Nidoking, Scizor is silver, Espeon is sky blue, Electabuzz is red, etc).
 * Unown isn't the only Pokémon with variant forms…
+* Color-coded starter Poké Balls.
 * Item balls for TMs are blue (inspired by Gen VI's yellow).
+* Surfing on Pikachu uses the minigame music from Yellow version.
 
 
 ## More Tweaks
@@ -221,14 +226,15 @@ I know that not everyone likes this kind of change, so I've provided two ROM pat
 * Fast text by default.
 * Stereo sound by default.
 * Third Trainer Card page for Kanto badges.
-* Color-coded starter Poké Balls.
-* Updated language (Pack → Bag, Enemy → Foe, Cooltrainer → Ace Trainer, Fisher → Fisherman, Elixer → Elixir, Pink Bow → Silk Scarf, new Berry names, etc).
-* Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell).
-* Janine's pink badge is called the Marsh Badge; Sabrina's gold badge is called the Soul Badge.
-* Nidorina and Nidoqueen can breed, and will produce eggs of either Nidoran gender.
-* Fly to the Rock Tunnel/Power Plant Pokémon Center.
+* Fourth stats page for capture data formerly told by the Poké Seer.
+* Move stats include type, category, power, and accuracy.
 * The Mineral Badge, not Storm Badge, makes Pokémon up to L70 obey, like in HG/SS.
 * The Zephyr Badge lets you use traded Pokémon up to level 20, like in HG/SS.
 * Flash does not require the Zephyr Badge.
+* Updated language (Pack → Bag, Enemy → Foe, Cooltrainer → Ace Trainer, Fisher → Fisherman, Elixer → Elixir, Pink Bow → Silk Scarf, new Berry names, etc).
+* Brass Tower → Gong Tower (かね *kane* can mean 金 "metal" or 鉦, a gong-like bell).
+* Janine's pink badge is called the Marsh Badge; Sabrina's gold badge is called the Soul Badge.
+* Fly to the Rock Tunnel/Power Plant Pokémon Center.
 * Fishing works 75% of the time, not 50%.
+* Nidorina and Nidoqueen can breed, and will produce eggs of either Nidoran gender.
 * Always show numbers in Pokédex, even in Johto order.

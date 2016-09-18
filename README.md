@@ -9,7 +9,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is 2.0.1 as of September 9, 2016.
+The most recent version is 2.1.0 as of September 18, 2016.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
@@ -24,12 +24,12 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
-* [Pokémon Polished Crystal 2.0.1](patches/polishedcrystal-2.0.1.ips)  
-  (IPS patch file `md5: 961c1a1ba360e4153a70d1ab94c7057f`)  
-  (Patched GBC ROM `md5: bc2874247d8dd2f609d877cb8cb2c204`)
-* [Pokémon Polished Crystal (Faithful) 2.0.1](patches/polishedcrystal-faithful-2.0.1.ips)  
-  (IPS patch file `md5: a962f9fa3b9316d49cf1077627037858`)  
-  (Patched GBC ROM `md5: 87285af80c7aa2e3b1912bb0466ed0a9`)
+* [Pokémon Polished Crystal 2.1.0](patches/polishedcrystal-2.1.0.ips)  
+  (IPS patch file `md5: e8f8f08400402ff0d7e0fc268f0714dc`)  
+  (Patched GBC ROM `md5: b985b693a19aeb8233ab5f17af1a6a06`)
+* [Pokémon Polished Crystal (Faithful) 2.1.0](patches/polishedcrystal-faithful-2.1.0.ips)  
+  (IPS patch file `md5: 05de405321664918658e0bd3a1f77365`)  
+  (Patched GBC ROM `md5: 47121a02b0253c20c324f07ecafc1611`)
 
 
 ## Features
@@ -188,60 +188,13 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 * Nuzlocke mode sometimes turns on by itself.
 * The Move Reminder doesn't list all the possible moves.
-* Thief permanently steals held items.
 * TMs can restore PP.
 * Some NPC trainers incorrectly use X Spcl. Atk.
 * Avalanche's power doesn't double if the user is hit first.
 
 
-## Changes in 2.0.2
+## Changes in 2.1.1
 
-These changes have been made since the previous 2.0.1 release. If you build the project as-is, it will include all of them.
+These changes have been made since the previous 2.1.0 release. If you build the project as-is, it will include all of them.
 
-* Add: Connect Goldenrod Harbor to Route 41 west and Olivine City north.
-* Add: Move stats show accuracy.
-* Add: Fourth stats page with caught data.
-* Add: Replace Poké Seer with Stats Judge.
-* Add: AI does not try to paralyze Electric types, or burn Fire types.
-* Add: Buy basic items in Yellow Forest gate.
-* Add: Yellow Surfing Pikachu music.
-* Add: Correct OT genders for Wonder Trade.
-* Add: Hurricane is 100% accurate in rain.
-* Add: Blizzard is 100% accurate in hail.
-* Add: Meowth+Persian can learn False Swipe.
-* Add: Shellder+Cloyster can learn Waterfall.
-* Add: Moomoo accepts Oran or Sitrus Berries (Sitrus heals +2).
-* Add: Buff Fire Spin and Whirlpool to 90% accuracy (non-Faithful).
-* Add: Name Cameron, Teala, and Felicity.
-* Edit: Some wild encounters and trainer rosters.
-* Edit: Berry locations.
-* Edit: Remove Cut tree blocking Celadon Gym.
-* Edit: Palmer's sprite.
-* Edit: Brighter purple for sprites.
-* Edit: Buff Ditto.
-* Fix: Can't Wonder Trade Eggs.
-* Fix: Can't receive same Pokémon in a Wonder Trade.
-* Fix: Thief permanently steals held items.
-* Fix: Make Route 24 Rocket Grunt mandatory to avoid sequence breaking.
-* Fix: Static Pokémon respawn if they're caught.
-* Fix: Lyra's catching tutorial breaks the map music.
-* Fix: Text overflow in Sandstorm TM house.
-* Fix: Waterfall HM item ball is blue.
-* Fix: Surfing Pikachu's picture.
-* Fix: Expert Belt → Wise Glasses.
-* Fix: No wild encounters in Cherrygrove Bay.
-* Fix: Slowking evolution check before Slowbro.
-* Fix: Leafeon/Glaceon evolution check before Espeon/Umbreon.
-* Fix: Crunch lowers Defense, not Special Defense.
-* Fix: Ice Shard's description overflows into Toxic's.
-* Fix: Hurricane can hit during Fly.
-* Fix: Toxic used by Poison-types can hit during Fly and Dig.
-* Fix: AI overuse of Future Sight.
-* Fix: Alphabetical Pokédex was missing Magnezone.
-* Fix: Fire Spin and Whirlpool have 35 power, 85% accuracy, and 15 PP.
-* Fix: Trapping moves do 1/8 damage each turn and last 4–5 turns.
-* Fix: Waterfall tile animation.
-* Fix: Whirl Islands Lugia music.
-* Fix: Hidden Power has fixed power now.
-* Fix: Consistent music volume for all tracks.
-* Fix: Remove GameBoy Printer references.
+* None yet!
