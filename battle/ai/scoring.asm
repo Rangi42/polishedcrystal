@@ -3415,12 +3415,14 @@ AI_Status: ; 39453
 	jr z, .psnimmunity
 	cp EFFECT_POISON
 	jr z, .psnimmunity
-	cp EFFECT_SLEEP
-	jr z, .typeimmunity
 	cp EFFECT_PARALYZE
 	jr z, .parimmunity
 	cp EFFECT_BURN
 	jr z, .brnimmunity
+	cp EFFECT_FREEZE
+	jr z, .frzimmunity
+	cp EFFECT_SLEEP
+	jr z, .typeimmunity
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
@@ -3456,6 +3458,16 @@ AI_Status: ; 39453
 	cp FIRE
 	jr z, .immune
 
+	jr .typeimmunity
+
+.frzimmunity
+	ld a, [BattleMonType1]
+	cp ICE
+	jr z, .immune
+	ld a, [BattleMonType2]
+	cp ICE
+	jr z, .immune
+
 .typeimmunity
 	push hl
 	push bc
@@ -3469,11 +3481,11 @@ AI_Status: ; 39453
 
 	ld a, [wd265]
 	and a
-	jr nz, .checkmove
+	jp nz, .checkmove
 
 .immune
 	call AIDiscourageMove
-	jr .checkmove
+	jp .checkmove
 ; 394a9
 
 

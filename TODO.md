@@ -8,7 +8,6 @@
 * Nuzlocke mode sometimes turns on by itself
 * Move Reminder doesn't list all possible moves
 * TMs refresh PP
-* AI tries to use status effects against immune types
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
@@ -39,7 +38,6 @@
 
 * Catch rate formula from Gen III
 * Show stat changes and then absolute values on level up
-* Healing items activate at 1/3 HP, not 1/2 (edit HandleHPHealingItem)
 * Select reorders Pokémon in party menu
 * Send gift Pokémon to the PC if the party is full
 * More frequently successful Headbutting
