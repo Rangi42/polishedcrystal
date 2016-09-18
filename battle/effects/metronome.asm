@@ -45,15 +45,16 @@ BattleCommand_Metronome: ; 37418
 
 MetronomeExcepts: ; 37454
 	db NO_MOVE
-	db METRONOME
-	db STRUGGLE
-	db SKETCH
 	db COUNTER
+	db DESTINY_BOND
+	db ENDURE
+	db METRONOME
 	db MIRROR_COAT
 	db PROTECT
-	db ENDURE
-	db DESTINY_BOND
+	db SKETCH
 	db SLEEP_TALK
+	db STRUGGLE
 	db THIEF
+	db TRANSFORM
 	db -1
 ; 37462
