@@ -92,7 +92,7 @@ Function1183cb: ; 1183cb
 	ld a, $f
 	ld [rIE], a
 	ei
-	call Function11615a ; TODO: remove?
+	call Function11615a
 	ld a, $5
 	call GetSRAMBank
 	xor a

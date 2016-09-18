@@ -19,7 +19,7 @@ INCBIN "gfx/frames/8.1bpp"
 INCBIN "gfx/frames/9.1bpp"
 ; f89b0
 
-; TODO: Various misc graphics here.
+; Various misc graphics here.
 
 GFX_f89b0: ; f89b0
 INCBIN "gfx/unknown/0f89b0.2bpp"

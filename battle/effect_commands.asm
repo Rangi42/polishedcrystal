@@ -947,7 +947,7 @@ BattleCommand_CheckObedience: ; 343db
 
 .RandomMove:
 	call BattleRandom
-	and %11 ; TODO NUM_MOVES
+	and %11 ; NUM_MOVES - 1
 
 	cp b
 	jr nc, .RandomMove
@@ -4533,7 +4533,7 @@ BattleCommand_SleepTalk: ; 35b33
 .sample_move
 	push hl
 	call BattleRandom
-	and %11 ; TODO factor in NUM_MOVES
+	and %11 ; NUM_MOVES - 1
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -8308,7 +8308,7 @@ BattleCommand_Conversion: ; 3707f
 .done
 .loop3
 	call BattleRandom
-	and 3 ; TODO factor in NUM_MOVES
+	and %11 ; NUM_MOVES - 1
 	ld c, a
 	ld b, 0
 	ld hl, StringBuffer1
