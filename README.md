@@ -200,6 +200,7 @@ These changes have been made since the previous 2.0.1 release. If you build the 
 
 * Add: Connect Goldenrod Harbor to Route 41 west and Olivine City north.
 * Add: Move stats show accuracy.
+* Add: Fourth stats page.
 * Add: AI does not try to paralyze Electric types, or burn Fire types.
 * Add: Buy basic items in Yellow Forest gate.
 * Add: Yellow Surfing Pikachu music.

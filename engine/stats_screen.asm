@@ -734,7 +734,7 @@ endr
 	dw wBufferMonOT
 ; 4e21e
 
-.OrangePage: ; from TPP Anniversary Crystal
+.OrangePage:
 	callba OrangePage_
 	ret
 
@@ -745,6 +745,8 @@ OTString: ; 4e222
 	db "OT/@"
 ; 4e226
 
+; Fourth stats page code by TPP Anniversary Crystal 251
+; Ported by FredrIQ
 OrangePage_:
 	call TN_PrintToD
 	call TN_PrintLocation
@@ -784,7 +786,7 @@ TN_PrintToD
 	db "at night@"
 
 .unknown
-	db "at unkwn time@"
+	db "at some time@"
 
 TN_PrintLocation:
 	ld de, .unknown
@@ -804,10 +806,10 @@ TN_PrintLocation:
 	jp PlaceString
 
 .unknown
-	db "Unknown Location@"
+	db "Unknown location@"
 
 .event
-	db "Event #MON@"
+	db "Event #mon@"
 
 TN_PrintLV:
 	ld a, [TempMonCaughtLevel]
@@ -822,8 +824,8 @@ TN_PrintLV:
 	ld de, .metat
 	call PlaceString
 	ld de, Buffer2
-	ld bc, $0103
-	hlcoord 8, 13
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	hlcoord 9, 13
 	jp PrintNum
 .hatched
 	ld de, .egg
@@ -839,26 +841,26 @@ TN_PrintLV:
 	ret
 
 .metat
-	db "Met at ", $6e, "@"
+	db "Met at <LV>@"
 
 .egg
-	db "Hatched from EGG@"
+	db "Hatched from Egg@"
 
 .str_unknown
 	db "Given in a trade@"
 
 .str_max
-	db "Met at ", $6e, "63@"
+	db "Met at <LV>63+@"
 
 TN_PrintCharacteristics:
 	ld hl, TempMonDVs
-	ld d, 0 			; hp
+	ld d, 0 ; hp
 	ld a, [hl]
 	and $f
-	ld c, a 			; def
+	ld c, a ; def
 	ld a, [hli]
 	swap a
-	and $f 				; atk
+	and $f ; atk
 	cp c
 	ld e, 2
 	ld b, c
@@ -872,10 +874,10 @@ TN_PrintCharacteristics:
 	rl d
 	ld a, [hl]
 	and $f
-	ld c, a 			; spe
+	ld c, a ; spd
 	ld a, [hl]
 	swap a
-	and $f 				; spx
+	and $f ; spc
 	cp c
 	ld l, 5
 	ld h, c
@@ -961,80 +963,80 @@ Characteristics:
 	dw Chara_SPE0, Chara_SPE1, Chara_SPE2, Chara_SPE3, Chara_SPE4
 
 Chara_HP0:
-	db "Loves to eat@"
+	db   "Loves to eat@"
 Chara_HP1:
-	db "Takes plenty of"
+	db   "Takes plenty of"
 	next "siestas@"
 Chara_HP2:
-	db "Nods off a lot@"
+	db   "Nods off a lot@"
 Chara_HP3:
-	db "Scatters things"
+	db   "Scatters things"
 	next "often@"
 Chara_HP4:
-	db "Likes to relax@"
+	db   "Likes to relax@"
 
 Chara_ATK0:
-	db "Proud of its"
+	db   "Proud of its"
 	next "power@"
 Chara_ATK1:
-	db "Likes to thrash"
+	db   "Likes to thrash"
 	next "about@"
 Chara_ATK2:
-	db "A little quick"
+	db   "A little quick"
 	next "tempered@"
 Chara_ATK3:
-	db "Likes to fight@"
+	db   "Likes to fight@"
 Chara_ATK4:
-	db "Quick tempered@"
+	db   "Quick tempered@"
 
 Chara_DEF0:
-	db "Sturdy body@"
+	db   "Sturdy body@"
 Chara_DEF1:
-	db "Capable of taking"
+	db   "Capable of taking"
 	next "hits@"
 Chara_DEF2:
-	db "Highly persistent@"
+	db   "Highly persistent@"
 Chara_DEF3:
-	db "Good endurance@"
+	db   "Good endurance@"
 Chara_DEF4:
-	db "Good perseverance@"
+	db   "Good perseverance@"
 
 Chara_SPA0:
-	db "Highly curious@"
+	db   "Highly curious@"
 Chara_SPA1:
-	db "Mischievous@"
+	db   "Mischievous@"
 Chara_SPA2:
-	db "Thoroughly"
+	db   "Thoroughly"
 	next "cunning@"
 Chara_SPA3:
-	db "Often lost in"
+	db   "Often lost in"
 	next "thought@"
 Chara_SPA4:
-	db "Very finicky@"
+	db   "Very finicky@"
 
 Chara_SPD0:
-	db "Strong willed@"
+	db   "Strong willed@"
 Chara_SPD1:
-	db "Somewhat vain@"
+	db   "Somewhat vain@"
 Chara_SPD2:
-	db "Strongly defiant@"
+	db   "Strongly defiant@"
 Chara_SPD3:
-	db "Hates to lose@"
+	db   "Hates to lose@"
 Chara_SPD4:
-	db "Somewhat stubborn@"
+	db   "Somewhat stubborn@"
 
 Chara_SPE0:
-	db "Likes to run@"
+	db   "Likes to run@"
 Chara_SPE1:
-	db "Alert to sounds@"
+	db   "Alert to sounds@"
 Chara_SPE2:
-	db "Impetuous and"
+	db   "Impetuous and"
 	next "silly@"
 Chara_SPE3:
-	db "Somewhat of a"
+	db   "Somewhat of a"
 	next "clown@"
 Chara_SPE4:
-	db "Quick to flee@"
+	db   "Quick to flee@"
 
 
 StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
