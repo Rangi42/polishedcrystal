@@ -642,7 +642,7 @@ GetWonderTradeOTName:
 	db "Aarune@@" ; $c4
 	db "Lisia@@@" ; $c5
 	db "Chaz@@@@" ; $c6
-	db "Teala@@@" ; $c7
+	db "Kiri@@@@" ; $c7
 	db "Richie@@" ; $c8
 	db "Assunta@" ; $c9
 	db "Tracey@@" ; $ca
@@ -909,7 +909,7 @@ GetWonderTradeOTGender:
 	db MALE   ; Aarune
 	db FEMALE ; Lisia
 	db MALE   ; Chaz
-	db FEMALE ; Teala
+	db FEMALE ; Kiri
 	db MALE   ; Richie
 	db FEMALE ; Assunta
 	db MALE   ; Tracey

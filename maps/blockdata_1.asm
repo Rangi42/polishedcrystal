@@ -136,7 +136,7 @@ ManiasHouse_BlockData:
 CianwoodPharmacy_BlockData:
 CianwoodCityPhotoStudio_BlockData:
 CianwoodLugiaSpeechHouse_BlockData:
-PokeSeersHouse_BlockData:
+StatsJudgesHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 Route2NuggetSpeechHouse_BlockData:
 KrissNeighborsHouse_BlockData:

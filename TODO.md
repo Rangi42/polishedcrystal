@@ -96,10 +96,8 @@
 
 ## New features
 
-* Make Poké Seer act like the [Stats Judge](http://bulbapedia.bulbagarden.net/wiki/Stats_judge)
 * Permanently remove Cut trees, smashable rocks, and whirlpools
 * Show move stats when overwriting one
-* Give Wonder Trade Pokémon more accurate caught data (time and location)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)

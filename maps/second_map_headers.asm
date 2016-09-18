@@ -579,7 +579,7 @@
 	map_header_2 CianwoodPharmacy, CIANWOOD_PHARMACY, $0, 0
 	map_header_2 CianwoodCityPhotoStudio, CIANWOOD_CITY_PHOTO_STUDIO, $0, 0
 	map_header_2 CianwoodLugiaSpeechHouse, CIANWOOD_LUGIA_SPEECH_HOUSE, $0, 0
-	map_header_2 PokeSeersHouse, POKE_SEERS_HOUSE, $0, 0
+	map_header_2 StatsJudgesHouse, STATS_JUDGES_HOUSE, $0, 0
 	map_header_2 BattleTower1F, BATTLE_TOWER_1F, $0, 0
 	map_header_2 BattleTowerBattleRoom, BATTLE_TOWER_BATTLE_ROOM, $0, 0
 	map_header_2 BattleTowerElevator, BATTLE_TOWER_ELEVATOR, $0, 0

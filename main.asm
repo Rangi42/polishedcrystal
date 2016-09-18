@@ -3819,7 +3819,7 @@ CheckBattleScene: ; 4ea44
 
 INCLUDE "engine/gbc_only.asm"
 
-INCLUDE "event/poke_seer.asm"
+INCLUDE "event/stats_judge.asm"
 
 INCLUDE "event/poisonstep.asm"
 INCLUDE "event/squirtbottle.asm"

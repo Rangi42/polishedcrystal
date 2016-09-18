@@ -130,7 +130,7 @@ SpecialsPointers:: ; c029
 	add_special SpecialHoOhChamber
 	add_special Special_CelebiShrineEvent
 	add_special CheckCaughtCelebi
-	add_special SpecialPokeSeer
+	add_special SpecialStatsJudge
 	add_special SpecialBuenasPassword
 	add_special SpecialBuenaPrize
 	add_special SpecialDratini

@@ -135,8 +135,8 @@ CianwoodPhotoStudioSign:
 CianwoodCliffEdgeGateSign:
 	jumptext CianwoodCliffEdgeGateSignText
 
-CianwoodPokeSeerSign:
-	jumptext CianwoodPokeSeerSignText
+CianwoodStatsJudgeSign:
+	jumptext CianwoodStatsJudgeSignText
 
 CianwoodPokeCenterSign:
 	jumpstd pokecentersign
@@ -354,8 +354,8 @@ CianwoodCliffEdgeGateSignText:
 	line "just ahead!"
 	done
 
-CianwoodPokeSeerSignText:
-	text "The # Seer"
+CianwoodStatsJudgeSignText:
+	text "The Stats Judge"
 	line "Ahead"
 	done
 
@@ -371,7 +371,7 @@ CianwoodCity_MapEventHeader:
 	warp_def $2f, $f, 1, CIANWOOD_PHARMACY
 	warp_def $1f, $9, 1, CIANWOOD_CITY_PHOTO_STUDIO
 	warp_def $25, $f, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
-	warp_def $11, $5, 1, POKE_SEERS_HOUSE
+	warp_def $11, $5, 1, STATS_JUDGES_HOUSE
 	warp_def $19, $4, 1, CLIFF_EDGE_GATE
 
 .XYTriggers:
@@ -386,7 +386,7 @@ CianwoodCity_MapEventHeader:
 	signpost 47, 19, SIGNPOST_READ, CianwoodPharmacySign
 	signpost 32, 8, SIGNPOST_READ, CianwoodPhotoStudioSign
 	signpost 26, 6, SIGNPOST_READ, CianwoodCliffEdgeGateSign
-	signpost 22, 8, SIGNPOST_READ, CianwoodPokeSeerSign
+	signpost 22, 8, SIGNPOST_READ, CianwoodStatsJudgeSign
 	signpost 19, 4, SIGNPOST_ITEM, CianwoodCityHiddenRevive
 	signpost 29, 5, SIGNPOST_ITEM, CianwoodCityHiddenMaxEther
 

@@ -435,7 +435,7 @@ MAP_NONE   EQU 0
 	mapgroup CIANWOOD_PHARMACY,                           4,  4 ;  7
 	mapgroup CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  8
 	mapgroup CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
-	mapgroup POKE_SEERS_HOUSE,                            4,  4 ; 10
+	mapgroup STATS_JUDGES_HOUSE,                          4,  4 ; 10
 	mapgroup BATTLE_TOWER_1F,                             5,  8 ; 11
 	mapgroup BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 12
 	mapgroup BATTLE_TOWER_ELEVATOR,                       2,  2 ; 13

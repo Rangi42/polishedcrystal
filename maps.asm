@@ -255,7 +255,7 @@ INCLUDE "maps/CianwoodPokeCenter1F.asm"
 INCLUDE "maps/CianwoodPharmacy.asm"
 INCLUDE "maps/CianwoodCityPhotoStudio.asm"
 INCLUDE "maps/CianwoodLugiaSpeechHouse.asm"
-INCLUDE "maps/PokeSeersHouse.asm"
+INCLUDE "maps/StatsJudgesHouse.asm"
 INCLUDE "maps/BattleTowerElevator.asm"
 
 
