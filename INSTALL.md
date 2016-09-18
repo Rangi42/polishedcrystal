@@ -16,14 +16,20 @@ cd rgbds
 sudo make install
 cd ..
 
-git clone --recursive https://github.com/pret/pokecrystal
+git clone --recursive https://github.com/roukaour/pokecrystal
 cd pokecrystal
 ```
 
-To build **pokecrystal.gbc**:
+To build **polishedcrystal.gbc**:
 
 ```bash
 make
+```
+
+To build **polishedcrystal-faithful.gbc**:
+
+```bash
+make faithful
 ```
 
 
@@ -39,14 +45,20 @@ cd rgbds
 sudo make install
 cd ..
 
-git clone --recursive https://github.com/pret/pokecrystal
+git clone --recursive https://github.com/roukaour/pokecrystal
 cd pokecrystal
 ```
 
-To build **pokecrystal.gbc**:
+To build **polishedcrystal.gbc**:
 
 ```bash
 make
+```
+
+To build **polishedcrystal-faithful.gbc**:
+
+```bash
+make faithful
 ```
 
 
@@ -63,14 +75,20 @@ In the **Cygwin terminal**:
 
 ```bash
 
-git clone --recursive https://github.com/pret/pokecrystal
+git clone --recursive https://github.com/roukaour/pokecrystal
 cd pokecrystal
 ```
 
-To build **pokecrystal.gbc**:
+To build **polishedcrystal.gbc**:
 
 ```bash
 make
+```
+
+To build **polishedcrystal-faithful.gbc**:
+
+```bash
+make faithful
 ```
 
 ## notes
