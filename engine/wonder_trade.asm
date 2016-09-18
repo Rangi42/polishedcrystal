@@ -11,6 +11,14 @@ WonderTrade::
 	callba SelectTradeOrDaycareMon
 	ret c
 
+	ld a, [CurPartySpecies]
+	cp EGG
+	jr nz, .check_gs_ball
+	ld hl, .Text_WonderTradeCantTradeEgg
+	call PrintText
+	ret
+
+.check_gs_ball
 	ld hl, PartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [CurPartyMon]
@@ -78,6 +86,10 @@ WonderTrade::
 	text_jump WonderTradePromptText
 	db "@"
 
+.Text_WonderTradeCantTradeEgg:
+	text_jump WonderTradeCantTradeEggText
+	db "@"
+
 .Text_WonderTradeCantTradeGSBall
 	text_jump WonderTradeCantTradeGSBallText
 	db "@"
@@ -142,6 +154,11 @@ DoWonderTrade:
 	call CheckValidLevel
 	and a
 	jr nz, .random_trademon
+	ld a, [wPlayerTrademonSpecies]
+	ld b, a
+	ld a, [wOTTrademonSpecies]
+	cp b
+	jr z, .random_trademon
 
 	ld a, [wPlayerTrademonSpecies]
 	ld de, wPlayerTrademonSpeciesName

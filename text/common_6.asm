@@ -8,6 +8,20 @@ WonderTradePromptText::
 	line "you want to trade?"
 	prompt
 
+WonderTradeCantTradeEggText::
+	text "Sorry. We can't"
+	line "accept an Egg."
+	prompt
+
+; unused
+UnknownText_0x613c8::
+	text "Sorry, but your"
+	line "#mon appears to"
+
+	para "be abnormal. We"
+	line "can't accept it."
+	prompt
+
 WonderTradeCantTradeGSBallText::
 	text "Sorry, but your"
 	line "#mon is holding"
@@ -21,21 +35,6 @@ WonderTradeConfirmText::
 	line "@"
 	text_from_ram StringBuffer1
 	text "? "
-	done
-
-; unused
-UnknownText_0x613a9:
-	text "Sorry. We can't"
-	line "accept an Egg."
-	done
-
-; unused
-UnknownText_0x613c8::
-	text "Sorry, but your"
-	line "#mon appears to"
-
-	para "be abnormal. We"
-	line "can't accept it."
 	done
 
 WonderTradeSetupText::
