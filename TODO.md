@@ -9,15 +9,12 @@
 * Move Reminder doesn't list all possible moves
 * TMs refresh PP
 * AI tries to use status effects against immune types
-* Headbutt overworld animation looks weird (wrong tile ID?)
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
 * Some trainers use X Spcl. Atk (seems to involve their second item slot, e.g. Lance's Full Restore)
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-* Pokémon overuse Baton Pass (still?)
-* Sleep lasts [2–4 turns](https://github.com/roukaour/pokecrystal/commit/252817539482c1fc3fe8dd24c484a74234a0b89a#commitcomment-18349313) (still?)
-* Delay before last text box when Wonder Trading (still?)
+* Headbutt overworld animation looks weird (wrong tile ID?)
 
 
 ## Battle mechanics
@@ -93,7 +90,7 @@
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
-* Battle Caitlin and Darach somewhere, possibly around the Battle Tower (reward: ?)
+* Battle Caitlin and Darach somewhere, possibly around the Battle Tower or Trainer House (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer Hall, different trainer each day?)
 * Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day?
 * Add some of {Drill Run, Sucker Punch}?

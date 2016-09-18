@@ -190,7 +190,6 @@ I was hesitant to make original changes like this, because the goal is to be an 
 * The Move Reminder doesn't list all the possible moves.
 * Thief permanently steals held items.
 * TMs can restore PP.
-* NPC trainers overuse Baton Pass.
 * Some NPC trainers incorrectly use X Spcl. Atk.
 * Avalanche's power doesn't double if the user is hit first.
 
