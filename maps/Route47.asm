@@ -146,6 +146,9 @@ GruntM26Script:
 Route47RocketGirlScript:
 	jumptextfaceplayer Route47RocketGirlText
 
+Route47SealedCaveSign:
+	jumptext Route47SealedCaveSignText
+
 Route47QuietCaveSign:
 	jumptext Route47QuietCaveSignText
 
@@ -351,6 +354,12 @@ Route47RocketGirlText:
 	cont "you brat?"
 	done
 
+Route47SealedCaveSignText:
+	text "There's a door-"
+	line "shaped groove in"
+	cont "the rock."
+	done
+
 Route47QuietCaveSignText:
 	text "West to"
 	line "Quiet Cave"
@@ -373,7 +382,8 @@ Route47_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 4
+	signpost 23, 8, SIGNPOST_READ, Route47SealedCaveSign
 	signpost 32, 36, SIGNPOST_READ, Route47QuietCaveSign
 	signpost 33, 34, SIGNPOST_ITEM, Route47HiddenPearl
 	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust

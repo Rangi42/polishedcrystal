@@ -12,6 +12,7 @@ Music_LugiasSong2000_Ch1:
 	volume $77
 	dutycycle 2
 	notetype $C, $78
+Music_LugiasSong2000_Loop1:
 	octave 3
 	note E_, 12
 	note G_, 12
@@ -238,9 +239,10 @@ Music_LugiasSong2000_Ch1:
 	note E_, 16
 	note E_, 16
 	note E_, 6
-	endchannel
+	loopchannel 0, Music_LugiasSong2000_Loop1
 
 Music_LugiasSong2000_Ch2:
+Music_LugiasSong2000_Loop2:
 	dutycycle 2
 	notetype $C, $38
 	note __, 16
@@ -422,9 +424,10 @@ Music_LugiasSong2000_Ch2:
 	note D_, 6
 	note E_, 16
 	note E_, 14
-	endchannel
+	loopchannel 0, Music_LugiasSong2000_Loop2
 
 Music_LugiasSong2000_Ch3:
+Music_LugiasSong2000_Loop3:
 	notetype $C, $15
 	intensity $22
 	note __, 16
@@ -764,4 +767,4 @@ Music_LugiasSong2000_Ch3:
 	octave 2
 	note B_, 6
 	note E_, 12
-	endchannel
+	loopchannel 0, Music_LugiasSong2000_Loop3

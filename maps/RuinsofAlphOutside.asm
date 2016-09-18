@@ -168,6 +168,9 @@ MapRuinsofAlphOutsideSignpost1Script:
 MapRuinsofAlphOutsideSignpost2Script:
 	jumptext UnknownText_0x58362
 
+MapRuinsofAlphOutsideSignpost3Script:
+	jumptext MapRuinsofAlphOutsideSignpost3Text
+
 MovementData_0x580ba:
 	step_right
 	step_right
@@ -308,6 +311,12 @@ UnknownText_0x58362:
 	line "The Ruins of Alph"
 	done
 
+MapRuinsofAlphOutsideSignpost3Text:
+	text "There's a door-"
+	line "shaped groove in"
+	cont "the rock."
+	done
+
 UnknownText_0x583a4:
 	text "While exploring"
 	line "the ruins, we"
@@ -401,10 +410,11 @@ RuinsofAlphOutside_MapEventHeader:
 	xy_trigger 1, $15, $c, $0, UnknownScript_0x5803a, $0, $0
 
 .Signposts:
-	db 3
+	db 4
 	signpost 14, 18, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost0Script
 	signpost 22, 14, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost1Script
 	signpost 18, 20, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
+	signpost 9, 10, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost3Script
 
 .PersonEvents:
 	db 6
