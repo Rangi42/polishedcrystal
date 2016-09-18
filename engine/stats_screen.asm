@@ -836,8 +836,6 @@ TN_PrintLV:
 .max
 	ld de, .str_max
 	call PlaceString
-	hlcoord 11, 13
-	ld [hl], $35
 	ret
 
 .metat
@@ -850,7 +848,7 @@ TN_PrintLV:
 	db "Given in a trade@"
 
 .str_max
-	db "Met at <LV>63+@"
+	db "Met at <LV>63 or more@"
 
 TN_PrintCharacteristics:
 	ld hl, TempMonDVs

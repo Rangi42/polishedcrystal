@@ -3430,6 +3430,11 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 	rrca
 	ld b, a
 	ld a, [CurPartyLevel]
+	; Caught levels are stored in 6 bits, so 64+ wraps around to 0+
+	cp 64
+	jr c, .level_cap
+	ld a, 63
+.level_cap
 	or b
 	ld [hli], a
 	ld a, [MapGroup]
