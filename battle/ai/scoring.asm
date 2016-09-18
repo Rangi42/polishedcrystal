@@ -3412,13 +3412,15 @@ AI_Status: ; 39453
 
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_TOXIC
-	jr z, .poisonimmunity
+	jr z, .psnimmunity
 	cp EFFECT_POISON
-	jr z, .poisonimmunity
+	jr z, .psnimmunity
 	cp EFFECT_SLEEP
 	jr z, .typeimmunity
 	cp EFFECT_PARALYZE
-	jr z, .typeimmunity
+	jr z, .parimmunity
+	cp EFFECT_BURN
+	jr z, .brnimmunity
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
@@ -3426,12 +3428,32 @@ AI_Status: ; 39453
 
 	jr .typeimmunity
 
-.poisonimmunity
+.psnimmunity
 	ld a, [BattleMonType1]
 	cp POISON
 	jr z, .immune
 	ld a, [BattleMonType2]
 	cp POISON
+	jr z, .immune
+
+	jr .typeimmunity
+
+.parimmunity
+	ld a, [BattleMonType1]
+	cp ELECTRIC
+	jr z, .immune
+	ld a, [BattleMonType2]
+	cp ELECTRIC
+	jr z, .immune
+
+	jr .typeimmunity
+
+.brnimmunity
+	ld a, [BattleMonType1]
+	cp FIRE
+	jr z, .immune
+	ld a, [BattleMonType2]
+	cp FIRE
 	jr z, .immune
 
 .typeimmunity
