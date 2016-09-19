@@ -701,7 +701,7 @@ endr
 	ld de, OTString
 	hlcoord 0, 12
 	call PlaceString
-	ld de, NatString
+	ld de, NatureString
 	hlcoord 0, 15
 	call PlaceString
 	hlcoord 2, 10
@@ -719,23 +719,8 @@ endr
 	callba CheckNature
 	ld l, b
 	ld h, 0
-	ld bc, Natures
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	decoord 2, 16
-	push de
-.natloop
-	ld a, [hli]
-	cp "@"
-	jr z, .natdone
-	ld [de], a
-	inc de
-	jr .natloop
-.natdone
-	pop de
+	predef PrintNature
 	ld a, [TempMonCaughtGender]
 	and a
 	jr z, .done
@@ -770,70 +755,8 @@ OTString: ; 4e222
 	db "OT/@"
 ; 4e226
 
-NatString:
+NatureString:
 	db "Nature/@"
-
-Natures:
-	dw NatHardy, NatLonely, NatBrave, NatAdamant, NatNaughty
-	dw NatBold, NatDocile, NatRelaxed, NatImpish, NatLax
-	dw NatTimid, NatHasty, NatSerious, NatJolly, NatNaive
-	dw NatModest, NatMild, NatQuiet, NatBashful, NatRash
-	dw NatCalm, NatGentle, NatSassy, NatCareful, NatQuirky
-
-NatHardy:
-	db "Hardy@"
-NatLonely:
-	db "Lonely@"
-NatBrave:
-	db "Brave@"
-NatAdamant:
-	db "Adamant@"
-NatNaughty:
-	db "Naughty@"
-
-NatBold:
-	db "Bold@"
-NatDocile:
-	db "Docile@"
-NatRelaxed:
-	db "Relaxed@"
-NatImpish:
-	db "Impish@"
-NatLax:
-	db "Lax@"
-
-NatTimid:
-	db "Timid@"
-NatHasty:
-	db "Hasty@"
-NatSerious:
-	db "Serious@"
-NatJolly:
-	db "Jolly@"
-NatNaive:
-	db "Naive@"
-
-NatModest:
-	db "Modest@"
-NatMild:
-	db "Mild@"
-NatQuiet:
-	db "Quiet@"
-NatBashful:
-	db "Bashful@"
-NatRash:
-	db "Rash@"
-
-NatCalm:
-	db "Calm@"
-NatGentle:
-	db "Gentle@"
-NatSassy:
-	db "Sassy@"
-NatCareful:
-	db "Careful@"
-NatQuirky:
-	db "Quirky@"
 
 
 ; Fourth stats page code by TPP Anniversary Crystal 251

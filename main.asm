@@ -3966,6 +3966,8 @@ GetPkmnSpecies: ; 508d5
 
 INCLUDE "text/types.asm"
 
+INCLUDE "text/natures.asm"
+
 DrawPlayerHP: ; 50b0a
 	ld a, $1
 	jr DrawHP
