@@ -63,8 +63,8 @@ EcruteakPokeCenter1FBillScript:
 	writetext UnknownText_0x54dc1
 	waitbutton
 	closetext
-	spriteface PLAYER, DOWN
 	checkcode VAR_FACING
+	spriteface PLAYER, DOWN
 	if_not_equal UP, .noleftstep
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement3
 .noleftstep
