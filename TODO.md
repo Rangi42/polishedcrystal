@@ -111,4 +111,3 @@
 * Use the News Machine for something (Mystery Gift?)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Abilities in general
-* Natures

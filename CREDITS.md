@@ -5,7 +5,7 @@
 * Mateo for their thorough Red++ ROM hack, help on Skeetendo, and some sprites and tiles
 * Tauwasser, comet, and other members of Skeetendo for help and advice
 * PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, Substitute sprite, and caught data stats page code)
-* FredrIQ for multiple feature code contributions (specifically: better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen)
+* FredrIQ for multiple feature code contributions (specifically: Natures affecting stats, better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen)
 * VictoriaLacroix for their Running Shoes routine
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many sprites and icons
 * metalflygon08 for the HGSS Team Rocket, Sylveon, and Rhyperior sprites

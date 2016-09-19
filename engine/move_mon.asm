@@ -1618,7 +1618,7 @@ endr
 CheckNature::
 ; 'b' contains the target DV to check
 	ld a, b
-	; special cases: 15/15 and 7/15 are neutral, 14/15 is impish
+	; special cases: 15/15 and 7/15 are neutral, 14/15 is Impish
 	cp $ff
 	jr z, .neutralmale
 	cp $7f
@@ -1626,27 +1626,25 @@ CheckNature::
 	cp $ef
 	jr z, .setimpish
 .modloop
-	sub 25
+	sub NUM_NATURES
 	jr nc, .modloop
-	add 25
+	add NUM_NATURES
 	jr .finish
 .neutralmale
-	; serious
-	ld a, 12
+	ld a, SERIOUS
 	jr .finish
 .neutralfemale
-	; quirky
-	ld a, 24
+	ld a, QUIRKY
 	jr .finish
 .setimpish
-	; impish
-	ld a, 8
+	ld a, IMPISH
 .finish
 	ld b, a
 	ret
 
 CheckNatureChange::
-; 'c' is 1-6 according to stat
+; hl points to Atk/Def DV
+; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
 ; returns (sets a to) 9 if c is lowered, 11 if increased, 10 if neutral
 ; (to be used in calculations in CalcPkmnStatC)
 	push de
@@ -1658,19 +1656,19 @@ CheckNatureChange::
 	call CheckNature
 	ld a, b
 	; these increase and lower the same stat, but +10% -10% isn't the same
-	; (the result is 99%), so we need to avoid messing with it alltogether.
+	; (the result is 99%), so we need to avoid messing with it altogether.
 	; TODO: macros
-	cp 0 ; NAT_HARDY
+	cp HARDY
 	jr z, .neutral
-	cp 6 ; NAT_DOCILE
+	cp DOCILE
 	jr z, .neutral
-	cp 12 ; NAT_SERIOUS
+	cp SERIOUS
 	jr z, .neutral
-	cp 18 ; NAT_BASHFUL
+	cp BASHFUL
 	jr z, .neutral
-	cp 24 ; NAT_QUIRKY
+	cp QUIRKY
 	jr z, .neutral
-	ld d, 1 ; HP is 1, so starting at 1 means it ends up 2-6
+	ld d, STAT_HP
 .loop
 	inc d
 	sub 5
