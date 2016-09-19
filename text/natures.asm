@@ -1,23 +1,23 @@
 PrintNature:
-	ld bc, Natures
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	push de
-.loop
-	ld a, [hli]
-	cp "@"
-	jr z, .done
-	ld [de], a
-	inc de
-	jr .loop
-.done
-	pop de
-	ret
+; Print nature b at hl.
 
-Natures:
+	ld a, b
+
+	push hl
+	add a
+	ld hl, NatureNames
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
+	pop hl
+
+	jp PlaceString
+
+
+NatureNames:
 	dw Hardy, Lonely, Brave, Adamant, Naughty
 	dw Bold, Docile, Relaxed, Impish, Lax
 	dw Timid, Hasty, Serious, Jolly, Naive

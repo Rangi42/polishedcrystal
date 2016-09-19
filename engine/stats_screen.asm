@@ -717,9 +717,7 @@ endr
 	ld a, [TempMonDVs]
 	ld b, a
 	callba CheckNature
-	ld l, b
-	ld h, 0
-	decoord 2, 16
+	hlcoord 2, 16
 	predef PrintNature
 	ld a, [TempMonCaughtGender]
 	and a
