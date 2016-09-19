@@ -680,6 +680,7 @@ endr
 
 .BluePage: ; 4e1ae (13:61ae)
 	call .PlaceOTInfo
+	call .PlaceNatureInfo
 	hlcoord 10, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
@@ -701,9 +702,6 @@ endr
 	ld de, OTString
 	hlcoord 0, 12
 	call PlaceString
-	ld de, NatureString
-	hlcoord 0, 15
-	call PlaceString
 	hlcoord 2, 10
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, TempMonID
@@ -714,11 +712,6 @@ endr
 	callba CheckNickErrors
 	hlcoord 2, 13
 	call PlaceString
-	ld a, [TempMonDVs]
-	ld b, a
-	callba CheckNature
-	hlcoord 2, 16
-	predef PrintNature
 	ld a, [TempMonCaughtGender]
 	and a
 	jr z, .done
@@ -741,6 +734,17 @@ endr
 	dw sBoxMonOT
 	dw wBufferMonOT
 ; 4e21e
+
+.PlaceNatureInfo:
+	ld de, NatureString
+	hlcoord 0, 15
+	call PlaceString
+	ld a, [TempMonDVs]
+	ld b, a
+	callba CheckNature
+	hlcoord 2, 16
+	predef PrintNature
+	ret
 
 .OrangePage:
 	callba OrangePage_
