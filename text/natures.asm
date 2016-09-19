@@ -77,28 +77,28 @@ NatureIndicators:
 	dw ModestInd, MildInd, QuietInd, BashfulInd, RashInd
 	dw CalmInd, GentleInd, SassyInd, CarefulInd, QuirkyInd
 
+SassyInd:   db $4e ; fallthrough
+RashInd:    db $4e ; fallthrough
+ImpishInd:  db $4e ; fallthrough
+LonelyInd:  db "↑", $4e, "↓@"
+NaiveInd:   db $4e ; fallthrough
+CarefulInd: db $4e ; fallthrough
+MildInd:    db $4e ; fallthrough
+BoldInd:    db "↓", $4e, "↑@"
+QuietInd:   db $4e ; fallthrough
+LaxInd:     db $4e ; fallthrough
+AdamantInd: db "↑", $4e, $4e, "↓@"
+JollyInd:   db $4e ; fallthrough
+GentleInd:  db $4e ; fallthrough
+ModestInd:  db "↓", $4e, $4e, "↑@"
+RelaxedInd: db $4e ; fallthrough
+NaughtyInd: db "↑", $4e, $4e, $4e, "↓@"
+HastyInd:   db $4e ; fallthrough
+CalmInd:    db "↓", $4e, $4e, $4e, "↑@"
+BraveInd:   db "↑", $4e, $4e, $4e, $4e, "↓@"
+TimidInd:   db "↓", $4e, $4e, $4e, $4e, "↑" ; fallthrough
 HardyInd:
 DocileInd:
 SeriousInd:
 BashfulInd:
 QuirkyInd:  db "@"
-LonelyInd:  db "↑", $4e, "↓@"
-BraveInd:   db "↑", $4e, $4e, $4e, $4e, "↓@"
-AdamantInd: db "↑", $4e, $4e, "↓@"
-NaughtyInd: db "↑", $4e, $4e, $4e, "↓@"
-BoldInd:    db "↓", $4e, "↑@"
-RelaxedInd: db $4e, "↑", $4e, $4e, $4e, "↓@"
-ImpishInd:  db $4e, "↑", $4e, "↓@"
-LaxInd:     db $4e, "↑", $4e, $4e, "↓@"
-TimidInd:   db "↓", $4e, $4e, $4e, $4e, "↑@"
-HastyInd:   db $4e, "↓", $4e, $4e, $4e, "↑@"
-JollyInd:   db $4e, $4e, "↓", $4e, $4e, "↑@"
-NaiveInd:   db $4e, $4e, $4e, "↓", $4e, "↑@"
-ModestInd:  db "↓", $4e, $4e, "↑@"
-MildInd:    db $4e, "↓", $4e, "↑@"
-QuietInd:   db $4e, $4e, "↑", $4e, $4e, "↓@"
-RashInd:    db $4e, $4e, "↑", $4e, "↓@"
-CalmInd:    db "↓", $4e, $4e, $4e, "↑@"
-GentleInd:  db $4e, "↓", $4e, $4e, "↑@"
-SassyInd:   db $4e, $4e, $4e, "↑", $4e, "↓@"
-CarefulInd: db $4e, $4e, "↓", $4e, "↑@"
