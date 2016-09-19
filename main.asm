@@ -4065,7 +4065,7 @@ PrintTempMonStats: ; 50b7b
 	push hl
 	ld a, [TempMonDVs]
 	ld b, a
-	callba CheckNature
+	callba GetNature
 	pop hl
 rept 8
 	inc hl

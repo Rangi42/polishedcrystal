@@ -741,7 +741,7 @@ endr
 	call PlaceString
 	ld a, [TempMonDVs]
 	ld b, a
-	callba CheckNature
+	callba GetNature
 	hlcoord 2, 16
 	predef PrintNature
 	ret

@@ -1591,7 +1591,7 @@ endr
 	xor a
 	ld [hMultiplicand + 0], a
 	ld a, [hl]
-	call CheckNatureChange
+	call GetNatureStatMultiplier
 	ld [hMultiplier], a
 	call Multiply
 	ld a, [hProduct + 1]
@@ -1615,7 +1615,7 @@ endr
 	ret
 ; e277
 
-CheckNature::
+GetNature::
 ; 'b' contains the target DV to check
 	ld a, b
 	; special cases: 15/15 and 7/15 are neutral, 14/15 is Impish
@@ -1642,7 +1642,7 @@ CheckNature::
 	ld b, a
 	ret
 
-CheckNatureChange::
+GetNatureStatMultiplier::
 ; hl points to Atk/Def DV
 ; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
 ; returns (sets a to) 9 if c is lowered, 11 if increased, 10 if neutral
@@ -1652,8 +1652,9 @@ CheckNatureChange::
 	ld a, c
 	cp STAT_HP
 	jr z, .neutral
+	ld a, d
 	ld b, a
-	call CheckNature
+	call GetNature
 	ld a, b
 	; these increase and lower the same stat, but +10% -10% isn't the same
 	; (the result is 99%), so we need to avoid messing with it altogether.
