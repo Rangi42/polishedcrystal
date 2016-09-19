@@ -4059,6 +4059,21 @@ PrintTempMonStats: ; 50b7b
 	call PlaceString
 	pop hl
 	pop bc
+
+	push bc
+	push hl
+	push hl
+	ld a, [TempMonDVs]
+	ld b, a
+	callba CheckNature
+	pop hl
+rept 8
+	inc hl
+endr
+	predef PrintNatureIndicators
+	pop hl
+	pop bc
+
 	add hl, bc
 	ld bc, SCREEN_WIDTH
 	add hl, bc
@@ -4953,10 +4968,6 @@ INCLUDE "data/base_stats.asm"
 
 PokemonNames::
 INCLUDE "data/pokemon_names.asm"
-
-UnknownEggPic:: ; 53d9c
-; Another egg pic. This is shifted up a few pixels.
-INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 
 SECTION "bank19", ROMX, BANK[$19]
 

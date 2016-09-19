@@ -1676,6 +1676,10 @@ GetBaseData:: ; 3856
 	ret
 ; 389c
 
+UnknownEggPic:: ; 53d9c
+; Another egg pic. This is shifted up a few pixels.
+INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
+
 GetCurNick:: ; 389c
 	ld a, [CurPartyMon]
 	ld hl, PartyMonNicknames
