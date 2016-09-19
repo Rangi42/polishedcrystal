@@ -730,14 +730,15 @@ BreederJulieBeatenText:
 	done
 
 BreederJulieAfterText:
-	text "Have you been to"
-	line "Goldenrod City?"
+	text "One of my #mon"
+	line "has an Adamant"
 
-	para "Weren't you amazed"
-	line "by how they've"
+	para "nature. Another"
+	line "has a Lax nature."
 
-	para "changed the"
-	line "#mon Center?"
+	para "It seems to make"
+	line "a difference in"
+	cont "battle."
 	done
 
 RichBoyIrvingSeenText:

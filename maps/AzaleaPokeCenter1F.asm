@@ -24,7 +24,7 @@ GentlemanScript_0x18db2b:
 	jumptextfaceplayer UnknownText_0x18db34
 
 FishingGuruScript_0x18db2e:
-	jumptextfaceplayer UnknownText_0x18dbee
+	jumptextfaceplayer UnknownText_0x18db88
 
 PokefanFScript_0x18db31:
 	jumptextfaceplayer UnknownText_0x18dc19
@@ -48,12 +48,6 @@ UnknownText_0x18db88:
 	line "#mon in a PC."
 
 	para "Bill's PC can"
-	line "store up to 20"
-	cont "#mon per Box."
-	done
-
-UnknownText_0x18dbee:
-	text "Bill's PC can"
 	line "store up to 20"
 	cont "#mon per Box."
 	done
