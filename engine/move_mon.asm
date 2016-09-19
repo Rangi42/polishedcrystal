@@ -1495,6 +1495,7 @@ endr
 .Speed:
 	inc hl
 	ld a, [hl]
+	dec hl
 	swap a
 	and $f
 	jr .GotDV
@@ -1502,6 +1503,7 @@ endr
 .Special:
 	inc hl
 	ld a, [hl]
+	dec hl
 	and $f
 
 .GotDV:
@@ -1585,11 +1587,112 @@ endr
 	ld [hMultiplicand + 2], a
 
 .stat_value_okay
+	; do natures here
+	xor a
+	ld [hMultiplicand + 0], a
+	ld a, [hl]
+	call CheckNatureChange
+	ld [hMultiplier], a
+	call Multiply
+	ld a, [hProduct + 1]
+	ld [hDividend + 0], a
+	ld a, [hProduct + 2]
+	ld [hDividend + 1], a
+	ld a, [hProduct + 3]
+	ld [hDividend + 2], a
+	ld a, 10
+	ld [hDivisor], a
+	ld a, 3
+	ld b, a
+	call Divide
+	ld a, [hQuotient + 1]
+	ld [hMultiplicand + 1], a
+	ld a, [hQuotient + 2]
+	ld [hMultiplicand + 2], a
 	pop bc
 	pop de
 	pop hl
 	ret
 ; e277
+
+CheckNature::
+; 'b' contains the target DV to check
+	ld a, b
+	; special cases: 15/15 and 7/15 are neutral, 14/15 is impish
+	cp $ff
+	jr z, .neutralmale
+	cp $7f
+	jr z, .neutralfemale
+	cp $ef
+	jr z, .setimpish
+.modloop
+	sub 25
+	jr nc, .modloop
+	add 25
+	jr .finish
+.neutralmale
+	; serious
+	ld a, 12
+	jr .finish
+.neutralfemale
+	; quirky
+	ld a, 24
+	jr .finish
+.setimpish
+	; impish
+	ld a, 8
+.finish
+	ld b, a
+	ret
+
+CheckNatureChange::
+; 'c' is 1-6 according to stat
+; returns (sets a to) 9 if c is lowered, 11 if increased, 10 if neutral
+; (to be used in calculations in CalcPkmnStatC)
+	push de
+	ld d, a
+	ld a, c
+	cp STAT_HP
+	jr z, .neutral
+	ld b, a
+	call CheckNature
+	ld a, b
+	; these increase and lower the same stat, but +10% -10% isn't the same
+	; (the result is 99%), so we need to avoid messing with it alltogether.
+	; TODO: macros
+	cp 0 ; NAT_HARDY
+	jr z, .neutral
+	cp 6 ; NAT_DOCILE
+	jr z, .neutral
+	cp 12 ; NAT_SERIOUS
+	jr z, .neutral
+	cp 18 ; NAT_BASHFUL
+	jr z, .neutral
+	cp 24 ; NAT_QUIRKY
+	jr z, .neutral
+	ld d, 1 ; HP is 1, so starting at 1 means it ends up 2-6
+.loop
+	inc d
+	sub 5
+	jr nc, .loop
+	add 7 ; Atk-SpD is 2-6, not 0-4
+	cp c
+	jr z, .penalty
+	ld a, d
+	cp c
+	jr z, .bonus
+.neutral
+	ld a, 10
+	pop de
+	ret
+.bonus
+	ld a, 11
+	pop de
+	ret
+.penalty
+	ld a, 9
+	pop de
+	ret
 
 GivePoke:: ; e277
 	push de
