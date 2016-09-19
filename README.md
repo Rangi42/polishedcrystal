@@ -203,3 +203,4 @@ These changes have been made since the previous 2.1.0 release. If you build the 
 * Fix: Lugia's room music loops.
 * Fix: Metronome cannot become Transform.
 * Fix: Bill can walk through you.
+* Fix: Trainer Card controls.

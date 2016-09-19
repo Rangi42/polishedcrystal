@@ -108,20 +108,11 @@ TrainerCard_Page1_Joypad: ; 251d7 (9:51d7)
 	call TrainerCard_Page1_PrintGameTime
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_RIGHT
-	jr nz, .pressed_right
-	ld a, [hl]
-	and A_BUTTON
-	jr nz, .pressed_a
+	and D_RIGHT | A_BUTTON
+	jr nz, .pressed_right_a
 	ret
 
-.pressed_right
-	ld a, [KantoBadges]
-	and a
-	jr nz, .pressed_a
-	ret
-
-.pressed_a
+.pressed_right_a
 	ld a, $2
 	ld [wJumptableIndex], a
 	ret
@@ -157,14 +148,25 @@ TrainerCard_Page2_Joypad: ; 25221 (9:5221)
 	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
-	and D_RIGHT | A_BUTTON
-	jr nz, .pressed_right_a
+	and D_RIGHT
+	jr nz, .pressed_right
+	ld a, [hl]
+	and A_BUTTON
+	jr nz, .pressed_a
 	ld a, [hl]
 	and D_LEFT
 	jr nz, .d_left
 	ret
 
-.pressed_right_a
+.pressed_right
+	ld a, [KantoBadges]
+	and a
+	ret z
+	ld a, $4
+	ld [wJumptableIndex], a
+	ret
+
+.pressed_a
 	ld a, [KantoBadges]
 	and a
 	jr z, .quit
