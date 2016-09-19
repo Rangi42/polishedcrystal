@@ -56,6 +56,7 @@
 
 ## Aesthetic updates
 
+* Indicate which stats are raised and lowered by a nature
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
 * Custom Rocket Executive sprites
 * Design custom animations for new moves
