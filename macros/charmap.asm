@@ -125,6 +125,8 @@
 	charmap "ö",        $c4
 	charmap "ü",        $c5
 	charmap "<SHINYB>", $c6
+	charmap "<PLUS>",   $c7
+	charmap "<MINUS>",  $ee
 
 	charmap "'d",       $d0
 	charmap "'l",       $d1
