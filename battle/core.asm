@@ -7577,8 +7577,8 @@ GiveExperiencePoints: ; 3ee3b
 	ld b, $a
 	ld c, $9
 	call TextBox
-	hlcoord 11, 1
-	ld bc, 4
+	hlcoord 10, 1
+	ld bc, 6
 	predef PrintTempMonStats
 	ld c, $1e
 	call DelayFrames
