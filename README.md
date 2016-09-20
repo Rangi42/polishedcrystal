@@ -194,7 +194,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 * Avalanche's power doesn't double if the user is hit first.
 
 
-## Changes in 2.1.1
+## Changes in 2.2.0
 
 These changes have been made since the previous 2.1.0 release. If you build the project as-is, it will include all of them.
 
@@ -204,3 +204,4 @@ These changes have been made since the previous 2.1.0 release. If you build the 
 * Fix: Metronome cannot become Transform.
 * Fix: Bill can walk through you.
 * Fix: Trainer Card controls.
+* Fix: Acid and Crunch descriptions.
