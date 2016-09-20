@@ -2745,8 +2745,14 @@ DragonairEvosAttacks:
 
 DragoniteEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, HURRICANE
+	db 1, FIRE_PUNCH
+	db 1, THUNDERPUNCH
+	db 1, RECOVER
 	db 1, WRAP
 	db 1, LEER
+	db 1, THUNDER_WAVE
+	db 1, TWISTER
 	db 5, THUNDER_WAVE
 	db 11, TWISTER
 	db 15, DRAGON_RAGE
@@ -2757,9 +2763,10 @@ DragoniteEvosAttacks:
 	db 47, BARRIER ; Dragon Rush → event move
 	db 53, SAFEGUARD
 	db 55, WING_ATTACK
-	db 63, DRAGON_DANCE
-	db 73, OUTRAGE
-	db 82, HYPER_BEAM
+	db 61, DRAGON_DANCE
+	db 67, OUTRAGE
+	db 75, HYPER_BEAM
+	db 81, HURRICANE
 	db 0 ; no more level-up moves
 
 MewtwoEvosAttacks:

@@ -196,11 +196,13 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 ## Changes in 2.2.0
 
-These changes have been made since the previous 2.1.0 release. If you build the project as-is, it will include all of them.
+These changes have been made since the current 2.1.0 release. If you build the project as-is, it will include all of them.
 
 * Add: Natures (thanks to FredrIQ) (based on Atk/Def DV, not personality value).
 * Add: Descriptive text for certain rock features.
+* Add: Edit some trainers' rosters, including better natures.
 * Fix: Lugia's room music loops.
+* Fix: Dragonite can learn Hurricane.
 * Fix: Metronome cannot become Transform.
 * Fix: Bill can walk through you.
 * Fix: Trainer Card controls.
