@@ -197,4 +197,4 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
-* None yet!
+* Add: Always keep the option to Teleport away from Indigo Plateau
