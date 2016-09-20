@@ -9,7 +9,7 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is 2.1.0 as of September 18, 2016.
+The most recent version is 2.2.0 as of September 20, 2016.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
@@ -24,12 +24,12 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
 
-* [Pokémon Polished Crystal 2.1.0](patches/polishedcrystal-2.1.0.ips)  
-  (IPS patch file `md5: e8f8f08400402ff0d7e0fc268f0714dc`)  
-  (Patched GBC ROM `md5: b985b693a19aeb8233ab5f17af1a6a06`)
-* [Pokémon Polished Crystal (Faithful) 2.1.0](patches/polishedcrystal-faithful-2.1.0.ips)  
-  (IPS patch file `md5: 05de405321664918658e0bd3a1f77365`)  
-  (Patched GBC ROM `md5: 47121a02b0253c20c324f07ecafc1611`)
+* [Pokémon Polished Crystal 2.2.0](patches/polishedcrystal-2.2.0.ips)  
+  (IPS patch file `md5: 043769cc7e1a0ccfad635ff72b0ab8d0`)  
+  (Patched GBC ROM `md5: 9d3a3026bc3730cdf5d813b0bfe49697`)
+* [Pokémon Polished Crystal (Faithful) 2.2.0](patches/polishedcrystal-faithful-2.2.0.ips)  
+  (IPS patch file `md5: 5cbd4bef0e03936291f40b14c75b47d3`)  
+  (Patched GBC ROM `md5: cb5921d6646d2adfd302d8957e5e39af`)
 
 
 ## Features
@@ -39,7 +39,7 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 * 253 Pokémon, including some new evolutions.
 * 48 new moves.
 * 65 TMs and 21 move tutors.
-* Many new mechanics, including the Fairy type, Physical/Special split, unlimited TMs, Running Shoes, and continuous Repel.
+* Many new mechanics, including the Fairy type, Physical/Special split, Natures, unlimited TMs, Running Shoes, and continuous Repel.
 * New maps: some restored from R/B/Y, some devamped from HG/SS, and some original.
 * New characters, including Lorelei and Agatha from R/B/Y, Lyra and the Team Rocket Executives from HG/SS, and others.
 * More post-game content, like Gym Leader rematches and an event after the battle with Red.
@@ -76,14 +76,14 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 ![olivine-city](screenshots/olivine-city.png)
   
 ![remoraid](screenshots/remoraid.png)
-![shiny-bellossom](screenshots/shiny-bellossom.png)
-![hex-maniac](screenshots/hex-maniac.png)
 ![team-rocket](screenshots/team-rocket.png)
-  
 ![steelix](screenshots/steelix.png)
 ![custom-map](screenshots/custom-map.png)
+  
 ![ice-rock](screenshots/ice-rock.png)
+![hex-maniac](screenshots/hex-maniac.png)
 ![route-45](screenshots/route-45.png)
+![stats](screenshots/stats.png)
 
 ![sitrus-berry](screenshots/sitrus-berry.png)
 ![weavile](screenshots/weavile.png)
@@ -194,21 +194,8 @@ I was hesitant to make original changes like this, because the goal is to be an 
 * Avalanche's power doesn't double if the user is hit first.
 
 
-## Changes in 2.2.0
+## Changes in 2.2.1
 
-These changes have been made since the current 2.1.0 release. If you build the project as-is, it will include all of them.
+These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
-* Add: Natures (thanks to FredrIQ) (based on Atk/Def DV, not personality value).
-* Add: Descriptive text for certain rock features.
-* Add: Edit some trainers' rosters, including better natures.
-* Add: Vulpix can learn Moonlight.
-* Add: Staryu+Starmie can learn Calm Mind.
-* Add: Wobbuffet can learn Recover.
-* Add: Entei can learn Earthquake.
-* Add: Lugia can learn Hurricane.
-* Fix: Lugia's room music loops.
-* Fix: Dragonite can learn Hurricane.
-* Fix: Metronome cannot become Transform.
-* Fix: Bill can walk through you.
-* Fix: Trainer Card controls.
-* Fix: Acid and Crunch descriptions.
+* None yet!

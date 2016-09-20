@@ -1,6 +1,6 @@
 # Features
 
-These are *most* of the new features as of 2.1.0. Some would be spoilers.
+These are *most* of the new features as of 2.2.0. Some would be spoilers.
 
 
 ## Pokémon
@@ -26,6 +26,7 @@ These are *most* of the new features as of 2.1.0. Some would be spoilers.
 * The Fairy type, with the Pink Bow as its type-enhancing item.
 * Type chart, base stats, and move attributes all updated to Gen VI.
 * Physical/Special/Status split.
+* Natures (determined from DVs since personality values don't exist in Gen II) thanks to FredrIQ.
 * Gain experience from catching Pokémon.
 * Play low-pitched cries when a player or foe Pokémon faints.
 * Money loss formula from Gen V.
