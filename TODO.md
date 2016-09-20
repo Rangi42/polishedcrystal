@@ -1,3 +1,6 @@
+This is *not* actually a list of concrete plans. Many items are just ideas I thought could be neat, but might never make it into the game. I consider Polished Crystal to be basically finished, apart from bugfixes and a few more modernized battle mechanics. There will probably be more features added in future, but the ones that already exist comprise a complete game.
+
+
 ## Use or remove
 
 * Use EMOTE_QUESTION, EMOTE_HAPPY, EMOTE_SAD, and EMOTE_SLEEP somewhere
