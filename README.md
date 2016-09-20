@@ -188,7 +188,6 @@ I was hesitant to make original changes like this, because the goal is to be an 
 [TODO.md](TODO.md) contains a full list of possible future changes, including these bugs to fix:
 
 * Nuzlocke mode sometimes turns on by itself.
-* The Move Reminder doesn't list all the possible moves.
 * TMs can restore PP.
 * Some NPC trainers incorrectly use X Spcl. Atk.
 * Avalanche's power doesn't double if the user is hit first.
