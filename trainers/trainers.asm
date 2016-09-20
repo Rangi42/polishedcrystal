@@ -2230,8 +2230,8 @@ LeafGroup:
 		db HYPER_VOICE
 
 	db 98, AERODACTYL, MUSCLE_BAND
+		db HONE_CLAWS
 		db CRUNCH
-		db DRAGON_CLAW
 		db EARTHQUAKE
 		db ROCK_SLIDE
 
@@ -12284,8 +12284,8 @@ LawrenceGroup:
 	db 68, DRAGONITE, LEFTOVERS
 		db DRAGON_DANCE
 		db OUTRAGE
-		db HYPER_BEAM
 		db AQUA_TAIL
+		db EARTHQUAKE
 
 	db 67, TYRANITAR, KINGS_ROCK
 		db EARTHQUAKE
@@ -12589,12 +12589,12 @@ TowerTycoonGroup:
 	; unused
 	; TOWERTYCOON
 	db "Palmer@"
-	db 2 ; item
+	db 0 ; normal
 
 	; party
-	db 50, GYARADOS, MUSCLE_BAND
-	db 50, RHYPERIOR, LEFTOVERS
-	db 50, DRAGONITE, WISE_GLASSES
+	db 50, GYARADOS
+	db 50, RHYPERIOR
+	db 50, DRAGONITE
 
 	db $ff ; end
 
@@ -12619,7 +12619,7 @@ TowerTycoonGroup:
 		db AVALANCHE
 
 	db 75, DRAGONITE, WISE_GLASSES
-		db HYPER_BEAM
+		db HURRICANE
 		db DRAGON_PULSE
 		db FIRE_BLAST
 		db BLIZZARD

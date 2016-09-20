@@ -667,6 +667,7 @@ VulpixEvosAttacks:
 	db 44, SHADOW_BALL ; Grudge → TM move
 	db 47, DISABLE ; Captivate → egg move
 	db 50, FLARE_BLITZ ; Inferno → egg move
+	db 53, MOONLIGHT ; new move
 	db 0 ; no more level-up moves
 
 NinetalesEvosAttacks:
@@ -3351,7 +3352,7 @@ MareepEvosAttacks:
 	db 29, POWER_GEM
 	db 32, THUNDERBOLT ; Discharge → TM move
 	db 36, SAFEGUARD ; Cotton Guard → egg move
-	db 39, BODY_SLAM ; Signal Beam → egg move
+	db 39, FLASH_CANNON ; Signal Beam → TM move
 	db 43, LIGHT_SCREEN
 	db 46, THUNDER
 	db 0 ; no more level-up moves
@@ -3371,7 +3372,7 @@ FlaaffyEvosAttacks:
 	db 34, POWER_GEM
 	db 38, THUNDERBOLT ; Discharge → TM move
 	db 43, SAFEGUARD ; Cotton Guard → egg move
-	db 47, BODY_SLAM ; Signal Beam → egg move
+	db 47, FLASH_CANNON ; Signal Beam → TM move
 	db 52, LIGHT_SCREEN
 	db 56, THUNDER
 	db 0 ; no more level-up moves
@@ -3392,7 +3393,7 @@ AmpharosEvosAttacks:
 	db 35, POWER_GEM
 	db 40, THUNDERBOLT ; Discharge → TM move
 	db 46, SAFEGUARD ; Cotton Guard → egg move
-	db 51, BODY_SLAM ; Signal Beam → egg move
+	db 51, FLASH_CANNON ; Signal Beam → TM move
 	db 57, LIGHT_SCREEN
 	db 62, THUNDER
 	db 65, DRAGON_PULSE
@@ -3658,7 +3659,7 @@ MurkrowEvosAttacks:
 	db 11, HAZE
 	db 15, WING_ATTACK
 	db 21, NIGHT_SHADE
-	db 25, CONFUSE_RAY ; Assurance → egg move
+	db 25, THIEF ; Assurance → TM move
 	db 31, NIGHTMARE ; Taunt → GSC TM move
 	db 35, FEINT_ATTACK
 	db 41, MEAN_LOOK
@@ -3744,6 +3745,10 @@ UnownEvosAttacks:
 
 WobbuffetEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, SPLASH
+	db 1, CHARM
+	db 1, ENCORE
+	db 1, RECOVER
 	db 1, COUNTER
 	db 1, MIRROR_COAT
 	db 1, SAFEGUARD
@@ -4666,38 +4671,38 @@ TyranitarEvosAttacks:
 LugiaEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WHIRLWIND
-	db 1, GUST
+	db 8, GUST
 	db 15, TWISTER ; Dragon Rush → HGSS tutor move
-	db 23, EXTRASENSORY
+	db 22, EXTRASENSORY
 	db 29, RAIN_DANCE
-	db 37, HYDRO_PUMP
+	db 36, HYDRO_PUMP
 	db 43, DRAGON_PULSE ; Aeroblast → TM move
 	db 50, AEROBLAST ; Punishment → Aeroblast
 	db 57, ANCIENTPOWER
-	db 65, SAFEGUARD
+	db 64, SAFEGUARD
 	db 71, RECOVER
-	db 79, FUTURE_SIGHT
+	db 78, FUTURE_SIGHT
 	db 85, REFLECT ; Natural Gift → TM move
-	db 93, CALM_MIND
-	db 99, SKY_ATTACK
+	db 92, CALM_MIND
+	db 99, HURRICANE ; Sky Attack → new move
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WHIRLWIND
-	db 1, GUST
+	db 8, GUST
 	db 15, TWISTER ; Brave Bird → HGSS tutor move
-	db 23, EXTRASENSORY
+	db 22, EXTRASENSORY
 	db 29, SUNNY_DAY
-	db 37, FIRE_BLAST
+	db 36, FIRE_BLAST
 	db 43, SOLAR_BEAM ; Sacred Fire → Solar Beam
 	db 50, SACRED_FIRE ; Punishment → Sacred Fire
 	db 57, ANCIENTPOWER
-	db 65, SAFEGUARD
+	db 64, SAFEGUARD
 	db 71, RECOVER
-	db 79, FUTURE_SIGHT
+	db 78, FUTURE_SIGHT
 	db 85, LIGHT_SCREEN ; Natural Gift → TM move
-	db 93, CALM_MIND
+	db 92, CALM_MIND
 	db 99, SKY_ATTACK
 	db 0 ; no more level-up moves
 

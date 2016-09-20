@@ -201,6 +201,11 @@ These changes have been made since the current 2.1.0 release. If you build the p
 * Add: Natures (thanks to FredrIQ) (based on Atk/Def DV, not personality value).
 * Add: Descriptive text for certain rock features.
 * Add: Edit some trainers' rosters, including better natures.
+* Add: Vulpix can learn Moonlight.
+* Add: Staryu+Starmie can learn Calm Mind.
+* Add: Wobbuffet can learn Recover.
+* Add: Entei can learn Earthquake.
+* Add: Lugia can learn Hurricane.
 * Fix: Lugia's room music loops.
 * Fix: Dragonite can learn Hurricane.
 * Fix: Metronome cannot become Transform.
