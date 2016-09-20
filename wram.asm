@@ -1434,17 +1434,8 @@ wd001:: ds 1
 wTempMail:: mailmsg wTempMail
 	ds wTempMail - @
 
-wSeerAction:: ds 1
-wSeerNickname:: ds PKMN_NAME_LENGTH
-wSeerCaughtLocation:: ds 17
-wSeerTimeOfDay:: ds NAME_LENGTH
-wSeerOTName:: ds NAME_LENGTH
-wSeerOTNameGrammar:: ds 1
-wSeerCaughtLevelString:: ds 4
-wSeerCaughtLevel:: ds 1
-wSeerCaughtData:: ds 1
-wSeerCaughtGender:: ds 1
-	ds wSeerAction - @
+wUnusedSeerData:: ds 59
+	ds wUnusedSeerData - @
 
 wBufferMonNick:: ds PKMN_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
