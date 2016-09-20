@@ -300,7 +300,6 @@ PlayRoughDescription:
 	db   "An attack that may"
 	next "lower Attack.@"
 
-AcidDescription:
 CrunchDescription:
 IronTailDescription:
 RockSmashDescription:
@@ -315,6 +314,7 @@ MoonblastDescription:
 	db   "An attack that may"
 	next "lower Spcl.Atk.@"
 
+AcidDescription:
 PsychicMDescription:
 ShadowBallDescription:
 BugBuzzDescription:

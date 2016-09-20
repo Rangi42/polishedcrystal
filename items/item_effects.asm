@@ -1584,8 +1584,8 @@ RareCandy: ; ef14
 	ld c, 9
 	call TextBox
 
-	hlcoord 11, 1
-	ld bc, $0004
+	hlcoord 10, 1
+	ld bc, 6
 	predef PrintTempMonStats
 
 	call WaitPressAorB_BlinkCursor

@@ -429,7 +429,7 @@ AuroraBeam:
 	endmove
 
 DefenseDownHit:
-Acid:
+Crunch:
 IronTail:
 RockSmash:
 	checkobedience
@@ -501,8 +501,8 @@ SpecialAttackDownHit:
 	endmove
 
 SpecialDefenseDownHit:
+Acid:
 BugBuzz:
-Crunch:
 EarthPower:
 EnergyBall:
 FlashCannon:
