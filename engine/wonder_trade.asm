@@ -581,93 +581,93 @@ GetWonderTradeOTName:
 	db "Sophcls@" ; $87
 	db "Kiawe@@@" ; $88
 	db "Hala@@@@" ; $89
-	db "Nemo@@@@" ; $8a ; TODO: add remaining Alola Captains/Kahunas
-	db "Nemo@@@@" ; $8b
-	db "Nemo@@@@" ; $8c
-	db "Valerie@" ; $8d
-	db "Candela@" ; $8e
-	db "Blanche@" ; $8f
-	db "Spark@@@" ; $90
-	db "Satoshi@" ; $91
-	db "Tajiri@@" ; $92
-	db "Shigeru@" ; $93
-	db "Hibiki@@" ; $94
-	db "Kotone@@" ; $95
-	db "Yuuki@@@" ; $96
-	db "Haruka@@" ; $97
-	db "Mitsuru@" ; $98
-	db "Kouki@@@" ; $99
-	db "Hikari@@" ; $9a
-	db "Jun@@@@@" ; $9b
-	db "Touya@@@" ; $9c
-	db "Touko@@@" ; $9d
-	db "Bel@@@@@" ; $9e
-	db "Kyouhei@" ; $9f
-	db "Mei@@@@@" ; $a0
-	db "Joy@@@@@" ; $a1
-	db "Jenny@@@" ; $a2
-	db "Looker@@" ; $a3
-	db "Jessie@@" ; $a4
-	db "James@@@" ; $a5
-	db "Cassidy@" ; $a6
-	db "Butch@@@" ; $a7
-	db "Bonnie@@" ; $a8
-	db "Clyde@@@" ; $a9
-	db "Attila@@" ; $aa
-	db "Hun@@@@@" ; $ab
-	db "Domino@@" ; $ac
-	db "Carr@@@@" ; $ad
-	db "Orm@@@@@" ; $ae
-	db "Sird@@@@" ; $af
-	db "Miror B@" ; $b0
-	db "Archie@@" ; $b1
-	db "Maxie@@@" ; $b2
-	db "Cyrus@@@" ; $b3
-	db "N@@@@@@@" ; $b4
-	db "Ghetsis@" ; $b5
-	db "Colress@" ; $b6
-	db "Lysandr@" ; $b7
-	db "Guzma@@@" ; $b8
-	db "Lusamin@" ; $b9
-	db "Wicke@@@" ; $ba
-	db "Naoko@@@" ; $bb
-	db "Sayo@@@@" ; $bc
-	db "Zuki@@@@" ; $bd
-	db "Kuni@@@@" ; $be
-	db "Miki@@@@" ; $bf
-	db "Kiyo@@@@" ; $c0
-	db "Curtis@@" ; $c1
-	db "Yancy@@@" ; $c2
-	db "Zinnia@@" ; $c3
-	db "Aarune@@" ; $c4
-	db "Lisia@@@" ; $c5
-	db "Chaz@@@@" ; $c6
-	db "Kiri@@@@" ; $c7
-	db "Richie@@" ; $c8
-	db "Assunta@" ; $c9
-	db "Tracey@@" ; $ca
-	db "Duplica@" ; $cb
-	db "Casey@@@" ; $cc
-	db "Giselle@" ; $cd
-	db "Melanie@" ; $ce
-	db "Damian@@" ; $cf
-	db "Rick@@@@" ; $d0
-	db "Reiko@@@" ; $d1
-	db "Joey@@@@" ; $d2
-	db "A.J.@@@@" ; $d3
-	db "Camila@@" ; $d4
-	db "Alice@@@" ; $d5
-	db "Leo@@@@@" ; $d6
-	db "Aoooo@@@" ; $d7
-	db "Jimmy@@@" ; $d8
-	db "Cly@@@@@" ; $d9
-	db "Revo@@@@" ; $da
-	db "Everyle@" ; $db
-	db "Zetsu@@@" ; $dc
-	db "Kamon@@@" ; $dd
-	db "Karuta@@" ; $de
-	db "Nozomi@@" ; $df
-	db "Amos@@@@" ; $e0
+	db "Valerie@" ; $8a
+	db "Candela@" ; $8b
+	db "Blanche@" ; $8c
+	db "Spark@@@" ; $8d
+	db "Satoshi@" ; $8e
+	db "Tajiri@@" ; $8f
+	db "Shigeru@" ; $90
+	db "Hibiki@@" ; $91
+	db "Kotone@@" ; $92
+	db "Yuuki@@@" ; $93
+	db "Haruka@@" ; $94
+	db "Mitsuru@" ; $95
+	db "Kouki@@@" ; $96
+	db "Hikari@@" ; $97
+	db "Jun@@@@@" ; $98
+	db "Touya@@@" ; $99
+	db "Touko@@@" ; $9a
+	db "Bel@@@@@" ; $9b
+	db "Kyouhei@" ; $9c
+	db "Mei@@@@@" ; $9d
+	db "Joy@@@@@" ; $9e
+	db "Jenny@@@" ; $9f
+	db "Looker@@" ; $a0
+	db "Jessie@@" ; $a1
+	db "James@@@" ; $a2
+	db "Cassidy@" ; $a3
+	db "Butch@@@" ; $a4
+	db "Bonnie@@" ; $a5
+	db "Clyde@@@" ; $a6
+	db "Attila@@" ; $a7
+	db "Hun@@@@@" ; $a8
+	db "Domino@@" ; $a9
+	db "Miror B@" ; $aa
+	db "Archie@@" ; $ab
+	db "Maxie@@@" ; $ac
+	db "Cyrus@@@" ; $ad
+	db "N@@@@@@@" ; $ae
+	db "Ghetsis@" ; $af
+	db "Colress@" ; $b0
+	db "Lysandr@" ; $b1
+	db "Guzma@@@" ; $b2
+	db "Lusamin@" ; $b3
+	db "Wicke@@@" ; $b4
+	db "Naoko@@@" ; $b5
+	db "Sayo@@@@" ; $b6
+	db "Zuki@@@@" ; $b7
+	db "Kuni@@@@" ; $b8
+	db "Miki@@@@" ; $b9
+	db "Kiyo@@@@" ; $ba
+	db "Curtis@@" ; $bb
+	db "Yancy@@@" ; $bc
+	db "Zinnia@@" ; $bd
+	db "Aarune@@" ; $be
+	db "Lisia@@@" ; $bf
+	db "Chaz@@@@" ; $c0
+	db "Kiri@@@@" ; $c1
+	db "Richie@@" ; $c2
+	db "Assunta@" ; $c3
+	db "Tracey@@" ; $c4
+	db "Duplica@" ; $c5
+	db "Casey@@@" ; $c6
+	db "Giselle@" ; $c7
+	db "Melanie@" ; $c8
+	db "Damian@@" ; $c9
+	db "Alain@@@" ; $ca
+	db "Reiko@@@" ; $cb
+	db "Joey@@@@" ; $cc
+	db "A.J.@@@@" ; $cd
+	db "Camila@@" ; $ce
+	db "Alice@@@" ; $cf
+	db "Leo@@@@@" ; $d0
+	db "Aoooo@@@" ; $d1
+	db "Jimmy@@@" ; $d2
+	db "Cly@@@@@" ; $d3
+	db "Revo@@@@" ; $d4
+	db "Everyle@" ; $d5
+	db "Zetsu@@@" ; $d6
+	db "Kamon@@@" ; $d7
+	db "Karuta@@" ; $d8
+	db "Nozomi@@" ; $d9
+	db "Amos@@@@" ; $da
+	db "Kaito@@@" ; $db
+	db "Miku@@@@" ; $dc
+	db "Rin@@@@@" ; $dd
+	db "Len@@@@@" ; $de
+	db "Luka@@@@" ; $df
+	db "Teto@@@@" ; $e0
 	db "Ami@@@@@" ; $e1
 	db "Minako@@" ; $e2
 	db "Usagi@@@" ; $e3
@@ -848,9 +848,6 @@ GetWonderTradeOTGender:
 	db MALE   ; Sophcls
 	db MALE   ; Kiawe
 	db MALE   ; Hala
-	db FEMALE ; Nemo
-	db MALE   ; Nemo
-	db FEMALE ; Nemo
 	db FEMALE ; Valerie
 	db FEMALE ; Candela
 	db FEMALE ; Blanche
@@ -883,9 +880,6 @@ GetWonderTradeOTGender:
 	db MALE   ; Attila
 	db FEMALE ; Hun
 	db FEMALE ; Domino
-	db MALE   ; Carr
-	db MALE   ; Orm
-	db FEMALE ; Sird
 	db MALE   ; Miror B
 	db MALE   ; Archie
 	db MALE   ; Maxie
@@ -918,7 +912,7 @@ GetWonderTradeOTGender:
 	db FEMALE ; Giselle
 	db FEMALE ; Melanie
 	db MALE   ; Damian
-	db MALE   ; Rick
+	db MALE   ; Alain
 	db FEMALE ; Reiko
 	db MALE   ; Joey
 	db MALE   ; A.J.
@@ -935,6 +929,12 @@ GetWonderTradeOTGender:
 	db MALE   ; Karuta
 	db FEMALE ; Nozomi
 	db MALE   ; Amos
+	db MALE   ; Kaito
+	db FEMALE ; Miku
+	db FEMALE ; Rin
+	db MALE   ; Len
+	db FEMALE ; Luka
+	db FEMALE ; Teto
 	db FEMALE ; Ami
 	db FEMALE ; Minako
 	db FEMALE ; Usagi

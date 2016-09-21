@@ -199,3 +199,4 @@ These changes have been made since the current 2.2.0 release. If you build the p
 
 * Add: Always keep the option to Teleport away from Indigo Plateau
 * Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral)
+* Edit: Update random Wonder Trade OT names.
