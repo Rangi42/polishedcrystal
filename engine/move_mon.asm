@@ -1618,26 +1618,34 @@ endr
 GetNature::
 ; 'b' contains the target DV to check
 	ld a, b
-	; special cases: 15/15 and 7/15 are neutral, 14/15 is Impish
+; 15/15 (default boss trainer nature) is Serious (neutral), not Bold (+Def -Atk)
 	cp $ff
-	jr z, .neutralmale
+	jr z, .serious
+; 7/15 (default female boss trainer nature) is Quirky (neutral), not Brave (+Atk -Spe)
 	cp $7f
-	jr z, .neutralfemale
+	jr z, .quirky
+; 14/15 is Impish (+Def -SpA), not Naive (+Spe -SpD)
 	cp $ef
-	jr z, .setimpish
+	jr z, .impish
+; 15/10 is Naive (+Spe -SpD), not Hardy (neutral)
+	cp $fa
+	jr z, .hardy
 .modloop
 	sub NUM_NATURES
 	jr nc, .modloop
 	add NUM_NATURES
 	jr .finish
-.neutralmale
+.serious
 	ld a, SERIOUS
 	jr .finish
-.neutralfemale
+.quirky
 	ld a, QUIRKY
 	jr .finish
-.setimpish
+.impish
 	ld a, IMPISH
+	jr .finish
+.hardy
+	ld a, HARDY
 .finish
 	ld b, a
 	ret
