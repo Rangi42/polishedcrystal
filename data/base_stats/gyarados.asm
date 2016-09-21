@@ -13,7 +13,10 @@
 	db 5 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db INTIMIDATE ; ability 1
+	db MOLD_BREAKER ; ability 2
+	db MOXIE ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn FISH, REPTILE ; egg groups
 

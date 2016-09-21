@@ -13,7 +13,10 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db VOLT_ABSORB ; ability 1
+	db VOLT_ABSORB ; ability 2
+	db QUICK_FEET ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

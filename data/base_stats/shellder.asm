@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db SHELL_ARMOR ; ability 1
+	db SKILL_LINK ; ability 2
+	db OVERCOAT ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 

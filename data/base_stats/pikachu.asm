@@ -22,7 +22,10 @@ endc
 	db 10 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db STATIC ; ability 1
+	db STATIC ; ability 2
+	db LIGHTNING_ROD ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FAERY ; egg groups
 

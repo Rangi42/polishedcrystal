@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db THICK_FAT ; ability 1
+	db HUGE_POWER ; ability 2
+	db SAP_SIPPER ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn AMPHIBIAN, FAERY ; egg groups
 

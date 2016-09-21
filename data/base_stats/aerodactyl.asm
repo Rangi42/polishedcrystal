@@ -13,7 +13,10 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db ROCK_HEAD ; ability 1
+	db PRESSURE ; ability 2
+	db UNNERVE ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

@@ -13,7 +13,10 @@
 	db 40 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db GUTS ; ability 1
+	db GUTS ; ability 2
+	db SAND_VEIL ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

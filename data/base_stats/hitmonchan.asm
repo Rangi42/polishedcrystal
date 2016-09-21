@@ -13,7 +13,10 @@
 	db 25 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db KEEN_EYE ; ability 1
+	db IRON_FIST ; ability 2
+	db INNER_FOCUS ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

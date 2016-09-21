@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db MAGMA_ARMOR ; ability 1
+	db FLAME_BODY ; ability 2
+	db WEAK_ARMOR ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 

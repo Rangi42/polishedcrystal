@@ -13,7 +13,10 @@
 	db 40 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db WATER_ABSORB ; ability 1
+	db SHELL_ARMOR ; ability 2
+	db HYDRATION ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 

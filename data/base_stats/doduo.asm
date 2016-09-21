@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db RUN_AWAY ; ability 1
+	db EARLY_BIRD ; ability 2
+	db TANGLED_FEET ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
