@@ -113,3 +113,5 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Use the News Machine for something (Mystery Gift?)
 * Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Abilities in general
+* First Pokémon walks behind you
+* Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
