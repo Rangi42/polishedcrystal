@@ -4976,6 +4976,8 @@ INCLUDE "text/phone/lyra.asm"
 
 SECTION "bank20", ROMX, BANK[$20]
 
+INCLUDE "text/abilities.asm"
+
 INCLUDE "engine/player_movement.asm"
 
 INCLUDE "engine/engine_flags.asm"

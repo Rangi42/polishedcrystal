@@ -681,6 +681,7 @@ endr
 .BluePage: ; 4e1ae (13:61ae)
 	call .PlaceOTInfo
 	call .PlaceNatureInfo
+	call TN_PrintCharacteristics
 	hlcoord 10, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
@@ -696,13 +697,13 @@ endr
 	ret
 
 .PlaceOTInfo: ; 4e1cc (13:61cc)
-	ld de, IDNoString
-	hlcoord 0, 9
-	call PlaceString
 	ld de, OTString
-	hlcoord 0, 12
+	hlcoord 0, 8
 	call PlaceString
+	ld de, IDNoString
 	hlcoord 2, 10
+	call PlaceString
+	hlcoord 5, 10
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, TempMonID
 	call PrintNum
@@ -710,7 +711,7 @@ endr
 	call GetNicknamePointer
 	call CopyNickname
 	callba CheckNickErrors
-	hlcoord 2, 13
+	hlcoord 2, 9
 	call PlaceString
 	ld a, [TempMonCaughtGender]
 	and a
@@ -722,7 +723,7 @@ endr
 	jr z, .got_gender
 	ld a, "♀"
 .got_gender
-	hlcoord 9, 13
+	hlcoord 9, 9
 	ld [hl], a
 .done
 	ret
@@ -737,12 +738,12 @@ endr
 
 .PlaceNatureInfo:
 	ld de, NatureString
-	hlcoord 0, 15
+	hlcoord 0, 12
 	call PlaceString
 	ld a, [TempMonDVs]
 	ld b, a
 	callba GetNature
-	hlcoord 2, 16
+	hlcoord 2, 13
 	predef PrintNature
 	ret
 
@@ -767,11 +768,33 @@ OrangePage_:
 	call TN_PrintToD
 	call TN_PrintLocation
 	call TN_PrintLV
-	jp TN_PrintCharacteristics
+	hlcoord 0, 11
+	ld de, .horizontal_divider
+	call PlaceString
+	hlcoord 1, 12
+	ld de, .ability
+	call PlaceString
+	ld a, [TempMonDVs + 1] ; uses Spe+Spc DV
+	ld b, a
+	ld a, [TempMonSpecies]
+	ld c, a
+	callba GetAbility
+	hlcoord 3, 13
+	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
+	push bc
+	predef PrintAbility
+	pop bc
+	predef PrintAbilityDescription
+	ret
+
+.horizontal_divider
+	db "____________________@"
+.ability
+	db "Ability/@"
 
 TN_PrintToD
 	ld de, .caughtat
-	hlcoord 1, 9
+	hlcoord 1, 8
 	call PlaceString
 	ld a, [TempMonCaughtTime]
 	and $c0
@@ -786,23 +809,23 @@ TN_PrintToD
 	jr z, .print
 	ld de, .nite
 .print
-	hlcoord 5, 9
+	hlcoord 3, 9
 	jp PlaceString
 
 .caughtat
-	db "Met@"
+	db "Met/@"
 
 .morn
-	db "in the morning@"
+	db "Morn@"
 
 .day
-	db "during the day@"
+	db "Day@"
 
 .nite
-	db "at night@"
+	db "Nite@"
 
 .unknown
-	db "at some time@"
+	db "Unkn@"
 
 TN_PrintLocation:
 	ld de, .unknown
@@ -818,7 +841,7 @@ TN_PrintLocation:
 	callba GetLandmarkName
 	ld de, StringBuffer1
 .print
-	hlcoord 1, 11
+	hlcoord 3, 10
 	jp PlaceString
 
 .unknown
@@ -830,7 +853,7 @@ TN_PrintLocation:
 TN_PrintLV:
 	ld a, [TempMonCaughtLevel]
 	and $3f
-	hlcoord 1, 13
+	hlcoord 8, 9
 	jr z, .unknown
 	cp 1
 	jr z, .hatched
@@ -841,7 +864,7 @@ TN_PrintLV:
 	call PlaceString
 	ld de, Buffer2
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
-	hlcoord 9, 13
+	hlcoord 13, 9
 	jp PrintNum
 .hatched
 	ld de, .egg
@@ -855,16 +878,19 @@ TN_PrintLV:
 	ret
 
 .metat
-	db "Met at <LV>@"
+	db "at <LV>   in@"
 
 .egg
-	db "Hatched from Egg@"
+	db "from Egg in@"
 
 .str_unknown
-	db "Given in a trade@"
+	db "by trade in@"
 
 .str_max
-	db "Met at <LV>63 or more@"
+	db "at <LV>63+ in@"
+
+.in
+	db "in@"
 
 TN_PrintCharacteristics:
 	ld hl, TempMonDVs
@@ -940,7 +966,7 @@ TN_PrintCharacteristics:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	decoord 1, 15
+	decoord 0, 15
 	push de
 .loop
 	ld a, [hli]
@@ -977,80 +1003,106 @@ Characteristics:
 	dw Chara_SPE0, Chara_SPE1, Chara_SPE2, Chara_SPE3, Chara_SPE4
 
 Chara_HP0:
-	db   "Loves to eat@"
+	db   "Loves to"
+	next "eat@"
 Chara_HP1:
-	db   "Takes plenty of"
+	db   "Takes"
+	next "plenty of"
 	next "siestas@"
 Chara_HP2:
-	db   "Nods off a lot@"
+	db   "Nods off"
+	next "a lot@"
 Chara_HP3:
-	db   "Scatters things"
+	db   "Scatters"
+	next "things"
 	next "often@"
 Chara_HP4:
-	db   "Likes to relax@"
+	db   "Likes to"
+	next "relax@"
 
 Chara_ATK0:
-	db   "Proud of its"
-	next "power@"
+	db   "Proud of"
+	next "its power@"
 Chara_ATK1:
-	db   "Likes to thrash"
+	db   "Likes to"
+	next "thrash"
 	next "about@"
 Chara_ATK2:
-	db   "A little quick"
+	db   "A little"
+	next "quick"
 	next "tempered@"
 Chara_ATK3:
-	db   "Likes to fight@"
+	db   "Likes to"
+	next "fight@"
 Chara_ATK4:
-	db   "Quick tempered@"
+	db   "Quick"
+	next "tempered@"
 
 Chara_DEF0:
-	db   "Sturdy body@"
+	db   "Sturdy"
+	next "body@"
 Chara_DEF1:
-	db   "Capable of taking"
+	db   "Capable of"
+	next "taking"
 	next "hits@"
 Chara_DEF2:
-	db   "Highly persistent@"
+	db   "Highly"
+	next "persistent@"
 Chara_DEF3:
-	db   "Good endurance@"
+	db   "Good"
+	next "endurance@"
 Chara_DEF4:
-	db   "Good perseverance@"
+	db   "Good"
+	next "perse-"
+	next "verance@"
 
 Chara_SPA0:
-	db   "Highly curious@"
+	db   "Highly"
+	next "curious@"
 Chara_SPA1:
-	db   "Mischievous@"
+	db   "Mis-"
+	next "chievous@"
 Chara_SPA2:
 	db   "Thoroughly"
 	next "cunning@"
 Chara_SPA3:
-	db   "Often lost in"
-	next "thought@"
+	db   "Often lost"
+	next "in thought@"
 Chara_SPA4:
-	db   "Very finicky@"
+	db   "Very"
+	next "finicky@"
 
 Chara_SPD0:
-	db   "Strong willed@"
+	db   "Strong"
+	next "willed@"
 Chara_SPD1:
-	db   "Somewhat vain@"
+	db   "Somewhat"
+	next "vain@"
 Chara_SPD2:
-	db   "Strongly defiant@"
+	db   "Strongly"
+	next "defiant@"
 Chara_SPD3:
-	db   "Hates to lose@"
+	db   "Hates to"
+	next "lose@"
 Chara_SPD4:
-	db   "Somewhat stubborn@"
+	db   "Somewhat"
+	next "stubborn@"
 
 Chara_SPE0:
-	db   "Likes to run@"
+	db   "Likes to"
+	next "run@"
 Chara_SPE1:
-	db   "Alert to sounds@"
+	db   "Alert to"
+	next "sounds@"
 Chara_SPE2:
-	db   "Impetuous and"
-	next "silly@"
+	db   "Impetuous"
+	next "and silly@"
 Chara_SPE3:
-	db   "Somewhat of a"
-	next "clown@"
+	db   "Somewhat"
+	next "of a clown@"
 Chara_SPE4:
-	db   "Quick to flee@"
+	db   "Quick to"
+	next "flee@"
 
 
 StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)

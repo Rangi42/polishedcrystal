@@ -2041,8 +2041,14 @@ BaseUnknown2:: ; d246
 	ds 1
 BasePicSize:: ; d247
 	ds 1
-BasePadding:: ; d248
-	ds 4
+BaseAbility1:: ; d248
+	ds 1
+BaseAbility2:: ; d249
+	ds 1
+BaseHiddenAbility:: ; d24a
+	ds 1
+BasePadding:: ; d24b
+	ds 1
 BaseGrowthRate:: ; d24c
 	ds 1
 BaseEggGroups:: ; d24d

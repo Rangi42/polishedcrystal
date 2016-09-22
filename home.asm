@@ -1653,7 +1653,7 @@ GetBaseData:: ; 3856
 	ld [hl], b
 
 ; ????
-	ld hl, BasePadding
+	ld hl, BaseAbility1 ; changed just in case
 	ld [hl], e
 	inc hl
 	ld [hl], d
