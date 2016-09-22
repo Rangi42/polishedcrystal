@@ -8,6 +8,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Bugs
 
+* Make Surge's fences purple, not gray, since speech bubbles use that too
 * Nuzlocke mode sometimes turns on by itself
 * TMs refresh PP
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
