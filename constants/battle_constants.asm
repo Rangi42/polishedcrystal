@@ -68,12 +68,14 @@ ATKDEFDV_HP_DARK     EQU $FF ; Serious (neutral)
 ; nature dvs
 ATKDEVDV_ADAMANT EQU $FD ; +Atk -SpA, HP Ice
 ATKDEVDV_MODEST  EQU $0F ; +SpA -Atk, HP Ground
-ATKDEVDV_TIMID   EQU $6E ; +Spe -Atk, HP Grass
-ATKDEVDV_JOLLY   EQU $EE ; +Spe -SpA, HP Grass
 ATKDEVDV_BOLD    EQU $1E ; +Def -Atk, HP Ghost
 ATKDEVDV_IMPISH  EQU $EF ; +Def -SpA, HP Electric
 ATKDEVDV_CALM    EQU $5F ; +SpD -Atk, HP Steel
 ATKDEVDV_CAREFUL EQU $DF ; +SpD -SpA, HP Steel
+ATKDEVDV_TIMID   EQU $6E ; +Spe -Atk, HP Grass
+ATKDEVDV_HASTY   EQU $EC ; +Spe -Def, HP Fire
+ATKDEVDV_JOLLY   EQU $EE ; +Spe -SpA, HP Grass
+ATKDEVDV_NAIVE   EQU $FA ; +Spe -SpD, HP Dragon
 ATKDEVDV_SERIOUS EQU $FF ; neutral, HP Dark
 
 ; hidden power + nature dvs
