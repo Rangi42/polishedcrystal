@@ -202,5 +202,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Edit: TM prices from OR/AS.
 * Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
 * Edit: Update random Wonder Trade OT names.
+* Edit: Rock Smash has 60 power (non-Faithful).
+* Edit: Strength is Fighting-type (non-Faithful).
 * Fix: Zap Cannon has 120 power.
 * Fix: Game console names in room.
