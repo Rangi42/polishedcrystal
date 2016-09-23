@@ -74,7 +74,7 @@ BattleCommand_RolloutPower: ; 37734
 	set SUBSTATUS_ROLLOUT, [hl]
 
 .done_with_substatus_flag
-	ld a, BATTLE_VARS_SUBSTATUS2
+	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_CURLED, a
 	jr z, .not_curled

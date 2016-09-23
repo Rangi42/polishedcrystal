@@ -461,7 +461,7 @@ endr
 	ld a, [hl]
 	push af
 	push hl
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	ld a, [hl]
 	push af
 	set SUBSTATUS_TRANSFORMED, [hl]
@@ -498,7 +498,7 @@ endr
 	callba LoadEnemyMon
 
 	pop af
-	ld [EnemySubStatus5], a
+	ld [EnemySubStatus2], a
 
 	pop hl
 	pop af
@@ -512,7 +512,7 @@ endr
 	pop af
 	ld [hl], a
 
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jr nz, .Transformed
 	ld hl, wWildMonMoves
@@ -1706,7 +1706,7 @@ HealStatus: ; f030 (3:7030)
 	ret nc
 	xor a
 	ld [BattleMonStatus], a
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 	res SUBSTATUS_TOXIC, [hl]
 	ld hl, PlayerSubStatus1
 	res SUBSTATUS_NIGHTMARE, [hl]
@@ -2784,7 +2784,7 @@ BattleRestorePP: ; f652
 	ld a, [CurBattleMon]
 	cp b
 	jr nz, .not_in_battle
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .not_in_battle
 	call .UpdateBattleMonPP

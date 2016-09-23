@@ -4,7 +4,7 @@ BattleCommand_Transform: ; 371cd
 
 	call ClearLastMove
 
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, BattleEffect_ButItFailed
@@ -32,7 +32,7 @@ BattleCommand_Transform: ; 371cd
 	ld a, SUBSTITUTE
 	call LoadAnim
 .mimic_substitute
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	set SUBSTATUS_TRANSFORMED, [hl]
 	call ResetActorDisable

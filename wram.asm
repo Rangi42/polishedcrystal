@@ -438,16 +438,16 @@ PlayerSubStatus1:: ; c668
 ; 1 curse
 ; 0 nightmare
 	ds 1
-PlayerSubStatus2:: ; c669
+PlayerSubStatus2:: ; c66c
 ; bit
-; 7
-; 6
-; 5
-; 4
-; 3
+; 7 cant run
+; 6 destiny bond
+; 5 lock-on
+; 4 encore
+; 3 transformed
 ; 2
 ; 1
-; 0 curled
+; 0 toxic
 	ds 1
 PlayerSubStatus3:: ; c66a
 ; bit
@@ -469,18 +469,7 @@ PlayerSubStatus4:: ; c66b
 ; 3
 ; 2 focus energy
 ; 1 mist
-; 0 bide: unleashed energy
-	ds 1
-PlayerSubStatus5:: ; c66c
-; bit
-; 7 cant run
-; 6 destiny bond
-; 5 lock-on
-; 4 encore
-; 3 transformed
-; 2
-; 1
-; 0 toxic
+; 0 curled
 	ds 1
 
 EnemySubStatus1:: ; c66d
@@ -495,10 +484,9 @@ EnemySubStatus3:: ; c66f
 EnemySubStatus4:: ; c670
 ; see PlayerSubStatus4
 	ds 1
-EnemySubStatus5:: ; c671
-; see PlayerSubStatus5
-	ds 1
 
+PlayerAbility::
+	ds 1
 PlayerRolloutCount:: ; c672
 	ds 1
 PlayerConfuseCount:: ; c673
@@ -516,6 +504,8 @@ PlayerFuryCutterCount:: ; c678
 PlayerProtectCount:: ; c679
 	ds 1
 
+EnemyAbility::
+	ds 1
 EnemyRolloutCount:: ; c67a
 	ds 1
 EnemyConfuseCount:: ; c67b

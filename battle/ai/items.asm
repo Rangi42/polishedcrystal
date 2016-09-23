@@ -12,7 +12,7 @@ AI_SwitchOrTryItem: ; 38000
 	callba CheckEnemyLockedIn
 	ret nz
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, DontSwitch
 
@@ -151,7 +151,7 @@ SwitchSometimes: ; 380c1
 
 
 CheckSubstatusCantRun: ; 380ff
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	ret
 ; 38105
@@ -320,7 +320,7 @@ AI_Items: ; 39196
 	jp .DontUse
 
 .StatusCheckContext:
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr z, .FailToxicCheck
 	ld a, [EnemyToxicCount]
@@ -718,7 +718,7 @@ AI_HealStatus: ; 384e0
 	xor a
 	ld [hl], a
 	ld [EnemyMonStatus], a
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	res SUBSTATUS_TOXIC, [hl]
 	ret
 ; 384f7

@@ -94,6 +94,7 @@ DoBattle: ; 3c000
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
+	call InitAbilityVar
 	call SpikesDamage
 	ld a, [wLinkMode]
 	and a
@@ -108,6 +109,7 @@ DoBattle: ; 3c000
 	call BreakAttraction
 	call EnemySwitch
 	call SetEnemyTurn
+	call InitAbilityVar
 	call SpikesDamage
 
 .not_linked_2
@@ -444,6 +446,7 @@ DetermineMoveOrder: ; 3c314
 .switch
 	callab AI_Switch
 	call SetEnemyTurn
+	call InitAbilityVar
 	call SpikesDamage
 	jp .enemy_first
 
@@ -583,7 +586,7 @@ CheckPlayerLockedIn: ; 3c410
 ParsePlayerAction: ; 3c434
 	call CheckPlayerLockedIn
 	jp c, .locked_in
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	jr z, .not_encored
 	ld a, [LastPlayerMove]
@@ -686,7 +689,7 @@ HandleEncore: ; 3c4df
 .player_1
 	call .do_enemy
 .do_player
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	ret z
 	ld a, [PlayerEncoreCount]
@@ -703,14 +706,14 @@ HandleEncore: ; 3c4df
 	ret nz
 
 .end_player_encore
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 	res SUBSTATUS_ENCORED, [hl]
 	call SetEnemyTurn
 	ld hl, BattleText_TargetsEncoreEnded
 	jp StdBattleTextBox
 
 .do_enemy
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	ret z
 	ld a, [EnemyEncoreCount]
@@ -727,7 +730,7 @@ HandleEncore: ; 3c4df
 	ret nz
 
 .end_enemy_encore
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	res SUBSTATUS_ENCORED, [hl]
 	call SetPlayerTurn
 	ld hl, BattleText_TargetsEncoreEnded
@@ -740,7 +743,7 @@ TryEnemyFlee: ; 3c543
 	dec a
 	jr nz, .Stay
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .Stay
 
@@ -998,14 +1001,14 @@ EndOpponentProtectEndureDestinyBond: ; 3c6ed
 	call GetBattleVarAddr
 	res SUBSTATUS_PROTECT, [hl]
 	res SUBSTATUS_ENDURE, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	ret
 ; 3c6fe
 
 EndUserDestinyBond: ; 3c6fe
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	ret
@@ -1064,7 +1067,7 @@ ResidualDamage: ; 3c716
 	ld de, EnemyToxicCount
 .check_toxic
 
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
 	bit SUBSTATUS_TOXIC, a
 	jr z, .did_toxic
@@ -1458,9 +1461,9 @@ HandleMysteryberry: ; 3c93c
 	jr nz, .skip_checks
 	ld a, [hBattleTurn]
 	and a
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	jr z, .check_transform
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 .check_transform
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .skip_checks
@@ -2420,6 +2423,7 @@ EnemyPartyMonEntrance: ; 3cf78
 .done_switch
 	call ResetBattleParticipants
 	call SetEnemyTurn
+	call InitAbilityVar
 	call SpikesDamage
 	xor a
 	ld [wEnemyMoveStruct + MOVE_ANIM], a
@@ -2895,6 +2899,7 @@ ForcePlayerMonChoice: ; 3d227
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
+	call InitAbilityVar
 	call SpikesDamage
 	ld a, $1
 	and a
@@ -2917,6 +2922,7 @@ PlayerPartyMonEntrance: ; 3d2b3
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
+	call InitAbilityVar
 	jp SpikesDamage
 ; 3d2e0
 
@@ -3725,7 +3731,7 @@ endr
 	ld [wPlayerWrapCount], a
 	ld [wEnemyWrapCount], a
 	ld [EnemyTurnsTaken], a
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
 ; 3d867
@@ -3822,7 +3828,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 	dec a
 	jp nz, .cant_run_from_trainer
 
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jp nz, .cant_escape
 
@@ -4028,7 +4034,7 @@ BattleCheckShininess: ; 3da7c
 
 GetPartyMonDVs: ; 3da85
 	ld hl, BattleMonDVs
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	ret z
 	ld hl, PartyMon1DVs
@@ -4038,7 +4044,7 @@ GetPartyMonDVs: ; 3da85
 
 GetEnemyMonDVs: ; 3da97
 	ld hl, EnemyMonDVs
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	ret z
 	ld hl, wEnemyBackupDVs
@@ -4217,7 +4223,7 @@ endr
 	ld [wEnemyWrapCount], a
 	ld [wPlayerWrapCount], a
 	ld [PlayerTurnsTaken], a
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
 	ret
 ; 3dc18
@@ -4229,6 +4235,67 @@ BreakAttraction: ; 3dc18
 	res SUBSTATUS_IN_LOVE, [hl]
 	ret
 ; 3dc23
+
+InitAbilityVar:
+	; resets the Ability value
+	ld a, [hBattleTurn]
+	and a
+	jr z, .isplayer
+	ld a, [EnemyMonDVs + 1]
+	ld b, a
+	ld a, [EnemyMonSpecies]
+	ld c, a
+	jr .got_abilitydv
+.isplayer
+	ld a, [BattleMonSpecies]
+	ld c, a
+	ld a, [BattleMonDVs + 1]
+	ld b, a
+.got_abilitydv
+	callba GetAbility
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .isenemy
+	ld a, b
+	ld [PlayerAbility], a
+	ret
+.isenemy
+	ld a, b
+	ld [EnemyAbility], a
+	ret
+
+RunBothActivationAbilities:
+; runs both pokémon's activation abilities (Intimidate, etc.).
+; The faster Pokémon activates abilities first. This mostly
+; just matter for weather abilities.
+	ld a, b
+	ret
+
+RunActivationAbilities:
+; Trace will, on failure, copy a later switched in Pokémon's
+; Ability. To handle this correctly without redundancy except
+; on double switch-ins or similar, we need to do some extra
+; handling around it.
+	callba RunActivationAbilitiesInner
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp TRACE
+	ret z ; trace failed, so don't check opponent trace
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp TRACE
+	ret nz
+	; invert whose turn it is to properly handle abilities.
+	ld a, [hBattleTurn]
+	xor 1
+	and 1
+	ld [hBattleTurn], a
+	callba RunActivationAbilitiesInner
+	ld a, [hBattleTurn]
+	xor 1
+	and 1
+	ld [hBattleTurn], a
+	ret
 
 SpikesDamage: ; 3dc23
 	ld hl, PlayerScreens
@@ -4571,7 +4638,7 @@ UseHeldStatusHealingItem: ; 3dde9
 	push bc
 	call UpdateOpponentInParty
 	pop bc
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	and [hl]
 	res SUBSTATUS_TOXIC, [hl]
@@ -4964,7 +5031,7 @@ DrawEnemyHUD: ; 3e043
 
 	ld hl, EnemyMonDVs
 	ld de, TempMonDVs
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .ok
 	ld hl, wEnemyBackupDVs
@@ -5362,7 +5429,7 @@ TryPlayerSwitch: ; 3e358
 	ld a, [wPlayerWrapCount]
 	and a
 	jr nz, .trapped
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr z, .try_switch
 
@@ -5440,6 +5507,7 @@ PlayerSwitch: ; 3e3ad
 EnemyMonEntrance: ; 3e3ff
 	callab AI_Switch
 	call SetEnemyTurn
+	call InitAbilityVar
 	jp SpikesDamage
 ; 3e40b
 
@@ -5474,6 +5542,7 @@ BattleMonEntrance: ; 3e40b
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
+	call InitAbilityVar
 	call SpikesDamage
 	ld a, $2
 	ld [wMenuCursorY], a
@@ -5499,6 +5568,7 @@ PassedBattleMonEntrance: ; 3e459
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
+	call InitAbilityVar
 	jp SpikesDamage
 ; 3e489
 
@@ -5796,7 +5866,7 @@ MoveSelectionScreen: ; 3e4bc
 
 .swap_moves_in_party_struct
 ; Fixes the COOLTRAINER glitch
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .transformed
 	ld hl, PartyMon1Moves
@@ -6028,7 +6098,7 @@ ParseEnemyAction: ; 3e7c1
 	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_BIDE
 	jp nz, .skip_load
 
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	ld a, [LastEnemyMove]
 	jp nz, .finish
@@ -6039,7 +6109,7 @@ ParseEnemyAction: ; 3e7c1
 	jp .finish
 
 .not_linked
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	jr z, .skip_encore
 	ld a, [LastEnemyMove]
@@ -6307,7 +6377,7 @@ LoadEnemyMon: ; 3e8eb
 	and a
 	jr z, .InitDVs
 
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .InitDVs
 
@@ -6505,7 +6575,7 @@ LoadEnemyMon: ; 3e8eb
 	and a
 	jr z, .TreeMon
 
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jp nz, .Moves
 
@@ -7535,7 +7605,7 @@ GiveExperiencePoints: ; 3ee3b
 	add hl, bc
 	ld a, [hl]
 	ld [BattleMonLevel], a
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .transformed
 	ld hl, MON_ATK

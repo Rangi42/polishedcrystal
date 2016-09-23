@@ -4978,6 +4978,8 @@ SECTION "bank20", ROMX, BANK[$20]
 
 INCLUDE "text/abilities.asm"
 
+INCLUDE "battle/effects/abilities.asm"
+
 INCLUDE "engine/player_movement.asm"
 
 INCLUDE "engine/engine_flags.asm"
