@@ -189,10 +189,10 @@ endr
 	ret
 
 .battlevarpairs
-	dw .substatus1, .substatus2, .substatus3, .substatus4,
-	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp,
-	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect,
-	dw .power, .type, .category, .curmove, .lastcounter, .lastcounteropp,
+	dw .substatus1, .substatus2, .substatus3, .substatus4
+	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
+	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
+	dw .power, .type, .category, .curmove, .lastcounter, .lastcounteropp
 	dw .lastmove, .lastmoveopp
 
 ;                       player                     enemy
