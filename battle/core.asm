@@ -41,6 +41,8 @@ DoBattle: ; 3c000
 	call ResetEnemyStatLevels
 	call BreakAttraction
 	call EnemySwitch
+	call SetEnemyTurn
+	call InitAbilityVar
 
 .wild
 	ld c, 40
@@ -111,8 +113,10 @@ DoBattle: ; 3c000
 	call SetEnemyTurn
 	call InitAbilityVar
 	call SpikesDamage
+	call RunBothActivationAbilities
 
 .not_linked_2
+	call RunBothActivationAbilities
 	jp BattleTurn
 
 .tutorial_debug
@@ -4268,7 +4272,15 @@ RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
-	ld a, b
+	; TODO: factor in speed
+	ld a, [hBattleTurn]
+	push af
+	call SetPlayerTurn
+	call RunActivationAbilities
+	call SetEnemyTurn
+	call RunActivationAbilities
+	pop af
+	ld [hBattleTurn], a
 	ret
 
 RunActivationAbilities:
@@ -4276,7 +4288,7 @@ RunActivationAbilities:
 ; Ability. To handle this correctly without redundancy except
 ; on double switch-ins or similar, we need to do some extra
 ; handling around it.
-	callba RunActivationAbilitiesInner
+	callab RunActivationAbilitiesInner
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp TRACE
@@ -4290,7 +4302,7 @@ RunActivationAbilities:
 	xor 1
 	and 1
 	ld [hBattleTurn], a
-	callba RunActivationAbilitiesInner
+	callab RunActivationAbilitiesInner
 	ld a, [hBattleTurn]
 	xor 1
 	and 1

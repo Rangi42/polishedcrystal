@@ -114,8 +114,8 @@ WeatherAbility:
 	ld [Weather], a
 	; handle swift swim, etc.
 	push bc
-	call CalcPlayerStats
-	call CalcEnemyStats
+	callab CalcPlayerStats
+	callab CalcEnemyStats
 	pop bc
 	ld a, b
 	cp WEATHER_RAIN
@@ -131,17 +131,17 @@ WeatherAbility:
 	jp StdBattleTextBox
 .handlerain
 	ld de, RAIN_DANCE
-	call Call_PlayBattleAnim
+	callab Call_PlayBattleAnim
 	ld hl, DownpourText
 	jp StdBattleTextBox
 .handlesun
 	ld de, SUNNY_DAY
-	call Call_PlayBattleAnim
+	callab Call_PlayBattleAnim
 	ld hl, SunGotBrightText
 	jp StdBattleTextBox
 .handlesandstorm
 	ld de, SANDSTORM
-	call Call_PlayBattleAnim
+	callab Call_PlayBattleAnim
 	ld hl, SandstormBrewedText
 	jp StdBattleTextBox
 
@@ -181,8 +181,8 @@ HealStatusAbility:
 IntimidateAbility:
 	ld a, 0
 	call ShowAbilityActivation
-	call ResetMiss
-	call BattleCommand_AttackDown
+	callab ResetMiss
+	callab BattleCommand_AttackDown
 	ret
 
 DownloadAbility:
