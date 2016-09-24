@@ -61,8 +61,6 @@ RunStatusHealAbilities:
 	; Needed because this is called elsewhere.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	ld b, a
-	push bc
 	cp LIMBER
 	jp z, LimberAbility
 	cp IMMUNITY
