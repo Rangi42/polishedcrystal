@@ -187,6 +187,8 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
+	ld hl, BecameHealthyText
+	call StdBattleTextBox
 	ld a, [hBattleTurn]
 	and a
 	jr z, .is_player
