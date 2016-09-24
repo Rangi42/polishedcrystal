@@ -701,7 +701,7 @@ endr
 	hlcoord 0, 8
 	call PlaceString
 	ld de, IDNoString
-	hlcoord 2, 10
+	hlcoord 0, 10
 	call PlaceString
 	hlcoord 5, 10
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
@@ -751,12 +751,12 @@ endr
 	callba OrangePage_
 	ret
 
-IDNoString: ; 4e21e
-	db "<ID>№.@"
-
 OTString: ; 4e222
 	db "OT/@"
 ; 4e226
+
+IDNoString: ; 4e21e
+	db "<ID>№.@"
 
 NatureString:
 	db "Nature/@"
