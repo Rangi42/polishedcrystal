@@ -9,11 +9,15 @@ BattleCommand_Transform: ; 371cd
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, BattleEffect_ButItFailed
 
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INFILTRATOR
+	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_SUBSTITUTE, [hl]
 	jp nz, BattleEffect_ButItFailed
-
+.bypass_sub
 	call CheckHiddenOpponent
 	jp nz, BattleEffect_ButItFailed
 

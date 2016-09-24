@@ -2388,11 +2388,15 @@ BattleCommand_CheckFaint: ; 3505e
 	jp StdBattleTextBox
 
 .check_sub
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INFILTRATOR
+	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret nz
-
+.bypass_sub
 	ld de, PlayerDamageTaken + 1
 	ld a, [hBattleTurn]
 	and a
@@ -7576,10 +7580,15 @@ BattleCommand_TrapTarget: ; 36c2d
 	ld a, [hl]
 	and a
 	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INFILTRATOR
+	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret nz
+.bypass_sub
 	call BattleRandom
 	and 1
 rept 5
@@ -8676,6 +8685,10 @@ PrintParalyze: ; 37372
 
 
 CheckSubstituteOpp: ; 37378
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INFILTRATOR
+	ret z
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
