@@ -1188,11 +1188,25 @@ BattleCommand_Critical: ; 34631
 
 	ld a, [hBattleTurn]
 	and a
-	ld hl, EnemyMonItem
-	ld a, [EnemyMonSpecies]
-	jr nz, .Item
+	jr nz, .EnemyTurn
+
+	ld a, [EnemyAbility]
+	cp BATTLE_ARMOR
+	ret z
+	cp SHELL_ARMOR
+	ret z
 	ld hl, BattleMonItem
 	ld a, [BattleMonSpecies]
+	jr .Item
+
+.EnemyTurn:
+	ld a, [PlayerAbility]
+	cp BATTLE_ARMOR
+	ret z
+	cp SHELL_ARMOR
+	ret z
+	ld hl, EnemyMonItem
+	ld a, [EnemyMonSpecies]
 
 .Item:
 	ld c, 0
@@ -1215,7 +1229,7 @@ BattleCommand_Critical: ; 34631
 	jr nz, .FocusEnergy
 
 ; +2 critical level
-	ld c, 2
+	ld c, 4 ; TODO: 2
 	jr .Tally
 
 .FocusEnergy:
