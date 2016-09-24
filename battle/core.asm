@@ -6348,30 +6348,46 @@ LoadEnemyMon: ; 3e8eb
 
 ; Failing that, it's all up to chance
 
-; If the party lead holds an Amulet Coin, chances are increased
-	ld hl, PartyMon1Item
-	ld a, [hl]
-	cp AMULET_COIN
-	jr nz, .noamuletcoin
+	push bc
+	ld a, [PartyMon1DVs + 1]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	pop bc
 
+if DEF(FAITHFUL)
+	cp COMPOUND_EYES
+	jr nz, .no_compound_eyes_or_amulet_coin
+else
+	cp COMPOUND_EYES
+	jr z, .compound_eyes
+; If the party lead holds an Amulet Coin, chances are increased
+	ld a, [PartyMon1Item]
+	cp AMULET_COIN
+	jr nz, .no_compound_eyes_or_amulet_coin
+endc
+
+.compound_eyes:
 ; 60% chance of getting Item1 with an Amulet Coin
 	call BattleRandom
 	cp a, 60 percent
 	ld a, [BaseItems]
 	jr c, .UpdateItem
 
-; 10% chance of getting Item2 (25% of (100% - 60%) = 10%) with an Amulet Coin
+; 20% chance of getting Item2 (50% of (100% - 60%) = 20%) with an Amulet Coin
 	call BattleRandom
-	cp a, 25 percent
+	cp a, 50 percent
 	ld a, [BaseItems+1]
 	jr c, .UpdateItem
 
-; 30% chance of not getting an item (100% - 60% - 10% = 30%)
+; 20% chance of not getting an item (100% - 60% - 20% = 20%)
 	ld a, NO_ITEM
 	jr .UpdateItem
 
-; Default chances without an Amulet Coin
-.noamuletcoin
+; Default chances without Compound Eyes or Amulet Coin
+.no_compound_eyes_or_amulet_coin:
 
 ; 50% chance of getting Item1
 	call BattleRandom
