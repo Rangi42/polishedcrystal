@@ -135,6 +135,23 @@ UpdateBattleHuds:: ; 39d4
 	ret
 ; 39e1
 
+MBGetEnemyAbility:: ; 39e1
+; Returns an enemy's ability unless Mold Breaker
+; will suppress it.
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	push bc
+	ld a, BATTLE_VARS_ABILITY
+	pop bc
+	and a
+	cp MOLD_BREAKER
+	jr z, .cont_check
+	ld a, b
+	ret
+.cont_check
+	ld a, NO_ABILITY
+	ret
 
 GetBattleVar:: ; 39e1
 ; Preserves hl.

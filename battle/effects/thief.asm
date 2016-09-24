@@ -23,13 +23,9 @@ BattleCommand_Thief: ; 37492
 
 ; Sticky Hold prevents item theft.
 
-	ld a, [EnemyAbility]
+	call MBGetEnemyAbility
 	cp STICKY_HOLD
-	jr nz, .ability_ok
-	; (except if the user has Mold Breaker)
-	ld a, [PlayerAbility]
-	cp MOLD_BREAKER
-	ret nz
+	ret z
 
 ; Can't steal mail.
 

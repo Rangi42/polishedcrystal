@@ -198,7 +198,7 @@ ImposterAbility:
 	call ShowAbilityActivation
 	ret
 
-ShowAbilityActivation:
+ShowAbilityActivation::
 ; I always liked BW2's ability sliding, but
 ; while replicating something similar would
 ; be cool, it would probably be major work
