@@ -146,20 +146,20 @@ WeatherAbility:
 	jp StdBattleTextBox
 
 ImmunityAbility:
-	ld a, PSN
+	ld a, 1 << PSN
 	jr HealStatusAbility
 WaterVeilAbility:
-	ld a, BRN
+	ld a, 1 << BRN
 	jr HealStatusAbility
 MagmaArmorAbility:
-	ld a, FRZ
+	ld a, 1 << FRZ
 	jr HealStatusAbility
 LimberAbility:
-	ld a, PAR
+	ld a, 1 << PAR
 	jr HealStatusAbility
 InsomniaAbility:
 VitalSpiritAbility:
-	ld a, SLP
+	ld a, 1 << SLP
 	jr HealStatusAbility
 HealStatusAbility:
 	ld b, a
