@@ -14,6 +14,12 @@ BattleCommand_Thief: ; 37492
 	and a
 	ret nz
 
+; Sticky Hold prevents item theft.
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp STICKY_HOLD
+	ret z
+
 ; The enemy needs to have an item to steal.
 
 	call .enemyitem
@@ -21,15 +27,8 @@ BattleCommand_Thief: ; 37492
 	and a
 	ret z
 
-; Sticky Hold prevents item theft.
-
-	call GetEnemyAbilityAfterMoldBreaker
-	cp STICKY_HOLD
-	ret z
-
 ; Can't steal mail.
 
-.ability_ok
 	ld [wd265], a
 	ld d, a
 	callba ItemIsMail
