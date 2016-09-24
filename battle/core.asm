@@ -43,6 +43,15 @@ DoBattle: ; 3c000
 	call EnemySwitch
 
 .wild
+	; Wild mons bypass NewEnemyMonStatus, so set
+	; their ability here too.
+	ld a, [EnemyMonDVs + 1]
+	ld b, a
+	ld a, [EnemyMonSpecies]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	ld [EnemyAbility], a
 	ld c, 40
 	call DelayFrames
 
