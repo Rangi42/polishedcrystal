@@ -1,29 +1,3 @@
-GetAbility:
-; b is Spe+Spc DV, c is species
-; returns ability in b
-	ld a, c
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, b
-	swap a
-	xor b
-	and $f
-	jr z, .hidden_abil
-	and 1
-	jr nz, .second_abil
-	ld a, [BaseAbility1]
-	ld b, a
-	ret
-.second_abil
-	ld a, [BaseAbility2]
-	ld b, a
-	ret
-.hidden_abil
-	ld a, [BaseHiddenAbility]
-	ld b, a
-	ret
-
-
 PrintAbility:
 ; Print ability b at hl.
 	ld a, b
