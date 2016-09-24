@@ -5146,7 +5146,10 @@ BattleCommand_SleepTarget: ; 35e5c
 	call StdBattleTextBox
 
 	callba UseHeldStatusHealingItem
-
+	ret nz
+	callba RunEnemyStatusHealAbilities
+	ld a, BATTLE_VARS_STATUS_OPP
+	cp 1 << SLP
 	jp z, OpponentCantMove
 	ret
 
@@ -5194,6 +5197,8 @@ BattleCommand_PoisonTarget: ; 35eee
 	call StdBattleTextBox
 
 	callba UseHeldStatusHealingItem
+	ret nz
+	callba RunEnemyStatusHealAbilities
 	ret
 
 ; 35f2c
@@ -5275,6 +5280,8 @@ BattleCommand_Poison: ; 35f2c
 
 .finished
 	callba UseHeldStatusHealingItem
+	ret nz
+	callba RunEnemyStatusHealAbilities
 	ret
 
 .failed
@@ -5312,116 +5319,46 @@ BattleCommand_Poison: ; 35f2c
 
 
 CheckIfTargetIsPoisonType: ; 35fe1
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp POISON
-	ret z
-	ld a, [de]
-	cp POISON
-	ret
-
-; 35ff5
-
-
+	ld a, POISON
+	jr CheckIfTargetIsSomeType
 CheckIfTargetIsElectricType:
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp ELECTRIC
-	ret z
-	ld a, [de]
-	cp ELECTRIC
-	ret
-
-
+	ld a, ELECTRIC
+	jr CheckIfTargetIsSomeType
 CheckIfTargetIsSteelType:
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp STEEL
-	ret z
-	ld a, [de]
-	cp STEEL
-	ret
-
-
+	ld a, STEEL
+	jr CheckIfTargetIsSomeType
 CheckIfTargetIsFireType:
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp FIRE
-	ret z
-	ld a, [de]
-	cp FIRE
-	ret
-
-
+	ld a, FIRE
+	jr CheckIfTargetIsSomeType
 CheckIfTargetIsIceType:
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp ICE
-	ret z
-	ld a, [de]
-	cp ICE
-	ret
-
-
+	ld a, ICE
+	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType:
-	ld de, EnemyMonType1
+	ld a, ROCK
+CheckIfTargetIsSomeType:
+	ld b, a
 	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp ROCK
-	ret z
-	ld a, [de]
-	cp ROCK
-	ret
-
-
+	jr CheckIfSomeoneIsSomeType
 CheckIfUserIsPoisonType:
-	ld de, BattleMonType1
+	ld a, POISON
+CheckIfUserIsSomeType:
+	ld b, a
 	ld a, [hBattleTurn]
+	xor 1
+CheckIfSomeoneIsSomeType
+	ld c, a
+	ld de, EnemyMonType1
+	ld a, c
 	and a
 	jr z, .ok
-	ld de, EnemyMonType1
+	ld de, BattleMonType1
 .ok
 	ld a, [de]
 	inc de
-	cp POISON
+	cp b
 	ret z
 	ld a, [de]
-	cp POISON
+	cp b
 	ret
 
 
@@ -5574,6 +5511,8 @@ BattleCommand_BurnTarget: ; 3608c
 	call StdBattleTextBox
 
 	callba UseHeldStatusHealingItem
+	ret nz
+	callba RunEnemyStatusHealAbilities
 	ret
 
 ; 360dd
@@ -5648,7 +5587,9 @@ BattleCommand_FreezeTarget: ; 36102
 
 	callba UseHeldStatusHealingItem
 	ret nz
-
+	callba RunEnemyStatusHealAbilities
+	ret
+.no_magma_armor
 	call OpponentCantMove
 	call EndRechargeOpp
 	ld hl, wEnemyJustGotFrozen
@@ -5698,8 +5639,10 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
 	call PrintParalyze
-	ld hl, UseHeldStatusHealingItem
-	jp CallBattleCore
+	callba UseHeldStatusHealingItem
+	ret nz
+	callba RunEnemyStatusHealAbilities
+	ret
 
 ; 361ac
 
@@ -6530,8 +6473,10 @@ BattleCommand_Burn:
 	call UpdateBattleHuds
 	ld hl, WasBurnedText
 	call StdBattleTextBox
-	ld hl, UseHeldStatusHealingItem
-	jp CallBattleCore
+	callba UseHeldStatusHealingItem
+	ret nz
+	callba RunEnemyStatusHealAbilities
+	ret
 
 .burned
 	call AnimateFailedMove
@@ -7914,6 +7859,19 @@ BattleCommand_Paralyze: ; 36dc7
 	call BattleRandom
 	cp 1 + 25 percent
 	jr c, .failed
+	jr .dont_sample_failure
+
+.paralyzed
+	call AnimateFailedMove
+	ld hl, AlreadyParalyzedText
+	jp StdBattleTextBox
+
+.failed
+	jp PrintDidntAffect2
+
+.didnt_affect
+	call AnimateFailedMove
+	jp PrintDoesntAffect
 
 .dont_sample_failure
 	ld a, BATTLE_VARS_STATUS_OPP
@@ -7938,20 +7896,10 @@ BattleCommand_Paralyze: ; 36dc7
 	call CallBattleCore
 	call UpdateBattleHuds
 	call PrintParalyze
-	ld hl, UseHeldStatusHealingItem
-	jp CallBattleCore
-
-.paralyzed
-	call AnimateFailedMove
-	ld hl, AlreadyParalyzedText
-	jp StdBattleTextBox
-
-.failed
-	jp PrintDidntAffect2
-
-.didnt_affect
-	call AnimateFailedMove
-	jp PrintDoesntAffect
+	callba UseHeldStatusHealingItem
+	ret nz
+	callba RunEnemyStatusHealAbilities
+	ret
 
 ; 36e5b
 

@@ -4643,6 +4643,7 @@ ItemRecoveryAnim: ; 3ddc8
 	ret
 ; 3dde9
 
+
 UseHeldStatusHealingItem: ; 3dde9
 	callab GetOpponentItem
 	ld hl, .Statuses

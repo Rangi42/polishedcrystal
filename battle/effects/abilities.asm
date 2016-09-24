@@ -14,20 +14,8 @@ RunActivationAbilitiesInner:
 .continue
 	cp DRIZZLE
 	jp z, DrizzleAbility
-	cp LIMBER ; if acquired
-	jp z, LimberAbility
-	cp CLOUD_NINE
-	jp z, CloudNineAbility
-	cp INSOMNIA ; if acquired
-	jp z, InsomniaAbility
-	cp IMMUNITY ; if acquired
-	jp z, ImmunityAbility
-	cp INTIMIDATE
-	jp z, IntimidateAbility
-	cp MAGMA_ARMOR ; if acquired
-	jp z, MagmaArmorAbility
-	cp WATER_VEIL ; if acquired
-	jp z, WaterVeilAbility
+	call RunStatusHealAbilities
+	ret z
 	cp SAND_STREAM
 	jp z, SandStreamAbility
 	cp PRESSURE ; just prints a message
@@ -59,6 +47,34 @@ RunActivationAbilitiesInner:
 .skip_unnerve
 	cp IMPOSTER
 	jp z, ImposterAbility
+	ret
+
+RunEnemyStatusHealAbilities:
+	callba SwitchTurnCore
+	call RunStatusHealAbilities
+	callba SwitchTurnCore
+	ret
+
+RunStatusHealAbilities:
+; Procs abilities that protect against statuses.
+; Returns z if an ability matched.
+	; Needed because this is called elsewhere.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+	push bc
+	cp LIMBER
+	jp z, LimberAbility
+	cp IMMUNITY
+	jp z, ImmunityAbility
+	cp MAGMA_ARMOR
+	jp z, MagmaArmorAbility
+	cp WATER_VEIL
+	jp z, WaterVeilAbility
+	cp INSOMNIA
+	jp z, InsomniaAbility
+	cp VITAL_SPIRIT
+	jp z, VitalSpiritAbility
 	ret
 
 TraceAbility:
@@ -177,9 +193,12 @@ HealStatusAbility:
 	and a
 	jr z, .is_player
 	callab CalcEnemyStats
+	; set zero flag
+	xor a
 	ret
 .is_player
 	callab CalcPlayerStats
+	xor a
 	ret
 
 IntimidateAbility:
