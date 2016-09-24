@@ -128,6 +128,7 @@ NUM_NATURES EQU const_value
 
 ; ability constants
 	const_def
+	const NO_ABILITY
 	const STENCH
 	const DRIZZLE
 	const SPEED_BOOST
@@ -230,7 +231,6 @@ NUM_NATURES EQU const_value
 	const RECKLESS
 	const PICKPOCKET
 	const SHEER_FORCE
-	const CONTRARY
 	const UNNERVE
 	const DEFIANT
 	const WEAK_ARMOR
@@ -335,7 +335,7 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	enum SUBSTATUS_FLINCHED
 	enum SUBSTATUS_IN_LOOP
 	enum SUBSTATUS_RAMPAGE
-	enum SUBSTATUS_BIDE
+	enum SUBSTATUS_BIDE ; unused
 
 	enum_start 7, -1
 	enum SUBSTATUS_LEECH_SEED

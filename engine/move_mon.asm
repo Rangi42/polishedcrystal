@@ -1666,7 +1666,6 @@ GetNatureStatMultiplier::
 	ld a, b
 	; these increase and lower the same stat, but +10% -10% isn't the same
 	; (the result is 99%), so we need to avoid messing with it altogether.
-	; TODO: macros
 	cp HARDY
 	jr z, .neutral
 	cp DOCILE
