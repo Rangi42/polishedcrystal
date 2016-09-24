@@ -88,9 +88,7 @@ TraceAbility:
 	call StdBattleTextBox
 	ret
 
-; No permaweather, but if this is desired,
-; one could just change 5 to 255 (which is
-; permanent in practice).
+; "permanent" weather actually lasts 255 turns
 DrizzleAbility:
 	ld a, WEATHER_RAIN
 	jr WeatherAbility
@@ -110,7 +108,7 @@ WeatherAbility:
 	ret z ; don't re-activate it
 	ld a, 0
 	call ShowAbilityActivation
-	ld a, 5
+	ld a, 255
 	ld [WeatherCount], a
 	ld a, b
 	ld [Weather], a
