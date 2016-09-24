@@ -1682,7 +1682,8 @@ INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 
 
 GetNature::
-; 'b' contains the target DV to check
+; 'b' contains the target DV to check (Atk/Def)
+; returns nature in b
 	ld a, b
 ; 15/15 (default boss trainer nature) is Serious (neutral), not Bold (+Def -Atk)
 	cp $ff
@@ -1717,18 +1718,22 @@ GetNature::
 	ret
 
 GetAbility::
-; b is Spe+Spc DV, c is species
+; 'b' contains the target DV to check (Spe/Spc)
+; 'c' contains the target species
 ; returns ability in b
 	ld a, c
 	ld [CurSpecies], a
 	call GetBaseData
+; Spe = Spc -> hidden ability (1/16)
 	ld a, b
 	swap a
 	xor b
 	and $f
 	jr z, .hidden_abil
+; Spe ^ Spc is even -> ability 2 (7/16)
 	and 1
-	jr nz, .second_abil
+	jr z, .second_abil
+; Spe ^ Spc is odd -> ability 1 (8/16)
 	ld a, [BaseAbility1]
 	ld b, a
 	ret
