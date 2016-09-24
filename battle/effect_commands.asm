@@ -992,7 +992,7 @@ BattleCommand_CheckObedience: ; 343db
 	ld [LastEnemyCounterMove], a
 
 	; Break Encore too.
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 	res SUBSTATUS_ENCORED, [hl]
 	xor a
 	ld [PlayerEncoreCount], a
@@ -1089,7 +1089,7 @@ BattleCommand_DoTurn: ; 34555
 	and a
 	jp nz, EndMoveEffect
 
-	; SubStatus5
+	; SubStatus2
 	inc de
 	inc de
 
@@ -1809,7 +1809,7 @@ BattleCommand_CheckHit: ; 34d32
 .LockOn:
 ; Return nz if we are locked-on and aren't trying to use Earthquake
 ; or Magnitude on a monster that is flying.
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_LOCK_ON, [hl]
 	res SUBSTATUS_LOCK_ON, [hl]
@@ -2571,7 +2571,7 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	or [hl]
 	ret nz
 
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVar
 	bit SUBSTATUS_DESTINY_BOND, a
 	jr z, .no_dbond
@@ -4062,7 +4062,7 @@ BattleCommand_Encore: ; 35864
 	ld a, [AttackMissed]
 	and a
 	jp nz, .failed
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_ENCORED, [hl]
 	jp nz, .failed
@@ -4338,7 +4338,7 @@ BattleCommand_LockOn: ; 35a53
 	and a
 	jr nz, .fail
 
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	set SUBSTATUS_LOCK_ON, [hl]
 	call AnimateCurrentMove
@@ -4369,7 +4369,7 @@ BattleCommand_Sketch: ; 35a74
 	call CheckSubstituteOpp
 	jp nz, .fail
 ; If the opponent is transformed, fail.
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, .fail
@@ -4653,7 +4653,7 @@ BattleCommand_SleepTalk: ; 35b33
 BattleCommand_DestinyBond: ; 35bff
 ; destinybond
 
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	set SUBSTATUS_DESTINY_BOND, [hl]
 	call AnimateCurrentMove
@@ -4723,7 +4723,7 @@ BattleCommand_Spite: ; 35c0f
 	pop bc
 	add hl, bc
 	ld e, a
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVar
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .transformed
@@ -5216,7 +5216,7 @@ BattleCommand_Poison: ; 35f2c
 	and a
 	jr nz, .mimic_random
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .mimic_random
 
@@ -5265,7 +5265,7 @@ BattleCommand_Poison: ; 35f2c
 
 
 .check_toxic ; 35fc9
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	ld a, [hBattleTurn]
 	and a
@@ -6424,7 +6424,7 @@ BattleCommand_TriStatusChance: ; 3658f
 
 BattleCommand_Curl: ; 365a7
 ; curl
-	ld a, BATTLE_VARS_SUBSTATUS2
+	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	set SUBSTATUS_CURLED, [hl]
 	ret
@@ -6468,7 +6468,7 @@ BattleCommand_Burn:
 	and a
 	jr nz, .dont_sample_failure
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .dont_sample_failure
 
@@ -6768,7 +6768,7 @@ BattleCommand_Teleport: ; 36778
 	cp BATTLETYPE_KANTO_LEGEND
 	jr z, .failed
 
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVar
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .failed
@@ -6957,6 +6957,9 @@ BattleCommand_ForceSwitch: ; 3680f
 	call StdBattleTextBox
 
 	ld hl, SpikesDamage
+	call CallBattleCore
+
+	ld hl, RunActivationAbilities
 	jp CallBattleCore
 
 .switch_fail
@@ -6991,7 +6994,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	jr nc, .wild_succeed_playeristarget
 
 .player_miss
-	jr .fail
+	jp .fail
 
 .wild_succeed_playeristarget
 	call UpdateBattleMonInParty
@@ -7054,6 +7057,9 @@ BattleCommand_ForceSwitch: ; 3680f
 	call StdBattleTextBox
 
 	ld hl, SpikesDamage
+	call CallBattleCore
+
+	ld hl, RunActivationAbilities
 	jp CallBattleCore
 
 .fail
@@ -7526,7 +7532,6 @@ INCLUDE "battle/effects/dragondance.asm"
 
 INCLUDE "battle/effects/honeclaws.asm"
 
-
 BattleCommand_TrapTarget: ; 36c2d
 ; traptarget
 
@@ -7867,7 +7872,7 @@ BattleCommand_Paralyze: ; 36dc7
 	and a
 	jr nz, .dont_sample_failure
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .dont_sample_failure
 
@@ -8406,7 +8411,7 @@ BattleCommand_Heal: ; 3713e
 	push de
 	push af
 	call BattleCommand_MoveDelay
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_TOXIC, [hl]
 	ld a, BATTLE_VARS_STATUS
@@ -8672,7 +8677,7 @@ BattleCommand_SelfDestruct: ; 37380
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	res SUBSTATUS_LEECH_SEED, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	call _CheckBattleScene
@@ -8747,7 +8752,7 @@ BattleCommand_ArenaTrap: ; 37517
 
 ; Don't trap if the opponent is already trapped.
 
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_CANT_RUN, [hl]
 	jr nz, .failed
@@ -9101,6 +9106,9 @@ BattleCommand_BatonPass: ; 379c9
 	ld hl, SpikesDamage
 	call CallBattleCore
 
+	ld hl, RunActivationAbilities
+	call CallBattleCore
+
 	jr ResetBatonPassStatus
 
 ; 37a67
@@ -9183,9 +9191,9 @@ ResetBatonPassStatus: ; 37ab1
 	res SUBSTATUS_IN_LOVE, [hl]
 	ld hl, EnemySubStatus1
 	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, PlayerSubStatus5
+	ld hl, PlayerSubStatus2
 
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_TRANSFORMED, [hl]
 	res SUBSTATUS_ENCORED, [hl]

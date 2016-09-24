@@ -13,7 +13,10 @@
 	db 10 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db HUSTLE ; ability 1
+	db SERENE_GRACE ; ability 2
+	db SUPER_LUCK ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

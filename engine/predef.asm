@@ -105,5 +105,7 @@ PredefPointers:: ; 856b
 	add_predef HOF_AnimateFrontpic
 	add_predef PrintNature
 	add_predef PrintNatureIndicators
+	add_predef PrintAbility
+	add_predef PrintAbilityDescription
 	dbw $ff, Function2d43 ; ????
 ; 864c

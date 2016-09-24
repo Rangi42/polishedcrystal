@@ -205,6 +205,13 @@ BattleText_TheHailStopped:
 	text "The hail stopped."
 	prompt
 
+; general weather cancellation used for
+; cloud nine
+BattleText_TheWeatherSubsided:
+	text "The weather"
+	line "subsided."
+	prompt
+
 BattleText_EnemyPkmnFainted: ; 0x809a8
 	text "Foe @"
 	text_from_ram EnemyMonNick
@@ -1264,3 +1271,50 @@ IgnoredOrders2Text: ; 0x81850
 	line "ignored orders!"
 	prompt
 ; 0x81863
+
+BecameHealthyText:
+	text "<USER>"
+	line "became healthy!"
+	prompt
+
+TraceActivationText:
+	text "<USER>"
+	line "traced"
+	cont "<OPABIL>!"
+	prompt
+
+TraceFailureText:
+	text "<USER>"
+	line "failed to trace"
+	cont "<TARGET>!"
+	prompt
+
+NotifyPressure:
+	text "<USER> is"
+	line "exerting its"
+	cont "Pressure!"
+	prompt
+
+NotifyMoldBreaker:
+	text "<USER>'s"
+	line "Mold Breaker"
+	cont "breaks the mold!"
+	prompt
+
+NotifyUnnerve:
+	text "<TARGET> is"
+	line "too afraid to eat"
+	cont "Berries!"
+	prompt
+
+AbilityActivationText:
+	text "<USER>'s"
+	line "<ABIL>"
+	cont "activated!"
+	prompt
+
+EnemyAbilityActivationText:
+	text "<TARGET>'s"
+	line "<ABIL>"
+	cont "activated!"
+	prompt

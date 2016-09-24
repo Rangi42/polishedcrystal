@@ -13,7 +13,10 @@
 	db 40 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db NATURAL_CURE ; ability 1
+	db SERENE_GRACE ; ability 2
+	db NATURAL_CURE ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn FAERY, FAERY ; egg groups
 

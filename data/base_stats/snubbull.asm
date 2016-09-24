@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db INTIMIDATE ; ability 1
+	db RUN_AWAY ; ability 2
+	db RATTLED ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn FIELD, FAERY ; egg groups
 

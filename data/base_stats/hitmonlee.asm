@@ -13,7 +13,10 @@
 	db 25 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db LIMBER ; ability 1
+	db RECKLESS ; ability 2
+	db UNBURDEN ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

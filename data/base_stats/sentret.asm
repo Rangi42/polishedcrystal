@@ -13,7 +13,10 @@
 	db 15 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db RUN_AWAY ; ability 1
+	db KEEN_EYE ; ability 2
+	db FRISK ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

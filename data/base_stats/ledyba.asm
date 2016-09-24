@@ -18,7 +18,10 @@ endc
 	db 15 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db SWARM ; ability 1
+	db EARLY_BIRD ; ability 2
+	db RATTLED ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

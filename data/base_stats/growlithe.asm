@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db INTIMIDATE ; ability 1
+	db FLASH_FIRE ; ability 2
+	db JUSTIFIED ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db CLEAR_BODY ; ability 1
+	db LIQUID_OOZE ; ability 2
+	db RAIN_DISH ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 

@@ -13,7 +13,10 @@
 	db 35 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db LEAF_GUARD ; ability 1
+	db LEAF_GUARD ; ability 2
+	db CLOROPHYLL ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

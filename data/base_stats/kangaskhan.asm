@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db EARLY_BIRD ; ability 1
+	db SCRAPPY ; ability 2
+	db INNER_FOCUS ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

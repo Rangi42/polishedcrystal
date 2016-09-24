@@ -13,7 +13,10 @@
 	db 25 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db GUTS ; ability 1
+	db STEADFAST ; ability 2
+	db VITAL_SPIRIT ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

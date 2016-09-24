@@ -13,7 +13,10 @@
 	db 40 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db SHED_SKIN ; ability 1
+	db SHED_SKIN ; ability 2
+	db MARVEL_SCALE ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 

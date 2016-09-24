@@ -18,7 +18,10 @@ endc
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db DAMP ; ability 1
+	db WATER_ABSORB ; ability 2
+	db UNAWARE ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
 

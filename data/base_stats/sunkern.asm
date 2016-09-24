@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db CLOROPHYLL ; ability 1
+	db SOLAR_POWER ; ability 2
+	db EARLY_BIRD ; hidden ability
+	db 0 ; padding
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 

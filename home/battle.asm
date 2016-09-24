@@ -189,10 +189,11 @@ endr
 	ret
 
 .battlevarpairs
-	dw .substatus1, .substatus2, .substatus3, .substatus4, .substatus5
-	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp, .substatus5opp
-	dw .status, .statusopp, .animation, .effect, .power, .type, .category
-	dw .curmove, .lastcounter, .lastcounteropp, .lastmove, .lastmoveopp
+	dw .substatus1, .substatus2, .substatus3, .substatus4
+	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
+	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
+	dw .power, .type, .category, .curmove, .lastcounter, .lastcounteropp
+	dw .lastmove, .lastmoveopp
 
 ;                       player                     enemy
 .substatus1     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
@@ -203,8 +204,8 @@ endr
 .substatus3opp  db ENEMY_SUBSTATUS_3,     PLAYER_SUBSTATUS_3
 .substatus4     db PLAYER_SUBSTATUS_4,    ENEMY_SUBSTATUS_4
 .substatus4opp  db ENEMY_SUBSTATUS_4,     PLAYER_SUBSTATUS_4
-.substatus5     db PLAYER_SUBSTATUS_5,    ENEMY_SUBSTATUS_5
-.substatus5opp  db ENEMY_SUBSTATUS_5,     PLAYER_SUBSTATUS_5
+.ability        db PLAYER_ABILITY,        ENEMY_ABILITY
+.abilityopp     db ENEMY_ABILITY,         PLAYER_ABILITY
 .status         db PLAYER_STATUS,         ENEMY_STATUS
 .statusopp      db ENEMY_STATUS,          PLAYER_STATUS
 .animation      db PLAYER_MOVE_ANIMATION, ENEMY_MOVE_ANIMATION
@@ -223,7 +224,7 @@ endr
 	dw PlayerSubStatus2,             EnemySubStatus2
 	dw PlayerSubStatus3,             EnemySubStatus3
 	dw PlayerSubStatus4,             EnemySubStatus4
-	dw PlayerSubStatus5,             EnemySubStatus5
+	dw PlayerAbility,                EnemyAbility
 	dw BattleMonStatus,              EnemyMonStatus
 	dw wPlayerMoveStructAnimation,   wEnemyMoveStructAnimation
 	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect

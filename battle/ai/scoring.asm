@@ -465,7 +465,7 @@ AI_Smart_LeechHit: ; 387f7
 
 
 AI_Smart_LockOn: ; 3881d
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .asm_38882
 
@@ -636,7 +636,7 @@ AI_Smart_EvasionUp: ; 388d4
 	jr nc, .asm_388f2
 
 ; ...greatly encourage this move if player is badly poisoned.
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_388ef
 
@@ -687,7 +687,7 @@ endr
 ; 100% chance to end up here if enemy's HP is below 25%.
 ; In other words, we only end up here if the move has not been encouraged or dismissed.
 .asm_38911
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38938
 
@@ -819,7 +819,7 @@ AI_Smart_AccuracyDown: ; 38985
 	jr nc, .asm_389a0
 
 ; ...greatly encourage this move if player is badly poisoned.
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_3899d
 
@@ -866,7 +866,7 @@ endr
 
 ; We only end up here if the move has not been already encouraged.
 .asm_389bf
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_389e6
 
@@ -1068,7 +1068,7 @@ AI_Smart_Bind: ; 38a71
 
 ; 50% chance to greatly encourage this move if player is either
 ; badly poisoned, in love, identified, stuck in Rollout, or has a Nightmare.
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38a91
 
@@ -1841,7 +1841,7 @@ AI_Smart_MeanLook: ; 38dfb
 	jp z, AIDiscourageMove
 
 ; 80% chance to greatly encourage this move if the enemy is badly poisoned (weird).
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38e26
 
@@ -2017,7 +2017,7 @@ AI_Smart_Protect: ; 38ed2
 	and a
 	jr nz, .asm_38f13
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .asm_38f14
 
@@ -2029,7 +2029,7 @@ AI_Smart_Protect: ; 38ed2
 	bit SUBSTATUS_CHARGED, a
 	jr nz, .asm_38f0d
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38f0d
 	ld a, [PlayerSubStatus4]
@@ -2104,7 +2104,7 @@ AI_Smart_PerishSong: ; 38f4a
 	pop hl
 	jr c, .no
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .yes
 
@@ -2205,7 +2205,7 @@ endr
 	ret
 
 .asm_38fcb
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	ret z
 
