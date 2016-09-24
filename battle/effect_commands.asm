@@ -2853,6 +2853,9 @@ else
 	call HailDefenseBoost
 endc
 
+	ld a, [EnemyAbility]
+	cp INFILTRATOR
+	jr z, .physicalcrit
 	ld a, [EnemyScreens]
 	bit SCREENS_REFLECT, a
 	jr z, .physicalcrit
@@ -2893,6 +2896,9 @@ endc
 	ld c, [hl]
 
 .lightscreen
+	ld a, [EnemyAbility]
+	cp INFILTRATOR
+	jr z, .specialcrit
 	ld a, [EnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .specialcrit
@@ -3198,6 +3204,9 @@ EnemyAttackDamage: ; 353f6
 	ld b, a
 	ld c, [hl]
 
+	ld a, [PlayerAbility]
+	cp INFILTRATOR
+	jr z, .physicalcrit
 	ld a, [PlayerScreens]
 	bit SCREENS_REFLECT, a
 	jr z, .physicalcrit
@@ -3222,6 +3231,9 @@ EnemyAttackDamage: ; 353f6
 	ld b, a
 	ld c, [hl]
 
+	ld a, [PlayerAbility]
+	cp INFILTRATOR
+	jr z, .physicalcrit
 	ld a, [PlayerScreens]
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .specialcrit
@@ -8960,13 +8972,22 @@ BattleCommand_Safeguard: ; 37939
 SafeCheckSafeguard: ; 37962
 	push hl
 	ld hl, EnemyScreens
+	ld a, [EnemyAbility]
+	ld b, a
 	ld a, [hBattleTurn]
 	and a
 	jr z, .got_turn
 	ld hl, PlayerScreens
+	ld a, [PlayerAbility]
+	ld b, a
 
 .got_turn
 	bit SCREENS_SAFEGUARD, [hl]
+	jr z, .done
+	ld a, b
+	cp INFILTRATOR
+
+.done
 	pop hl
 	ret
 
@@ -8976,12 +8997,19 @@ SafeCheckSafeguard: ; 37962
 BattleCommand_CheckSafeguard: ; 37972
 ; checksafeguard
 	ld hl, EnemyScreens
+	ld a, [EnemyAbility]
+	ld b, a
 	ld a, [hBattleTurn]
 	and a
 	jr z, .got_turn
 	ld hl, PlayerScreens
+	ld a, [PlayerAbility]
+	ld b, a
 .got_turn
 	bit SCREENS_SAFEGUARD, [hl]
+	ret z
+	ld a, b
+	cp INFILTRATOR
 	ret z
 	ld a, 1
 	ld [AttackMissed], a
