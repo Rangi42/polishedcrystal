@@ -54,7 +54,8 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Sometimes wild Pokémon know an egg move
 * More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
-* Give female trainers better DVs, and use the new unique DVs feature to make certain Pokémon female
+* Add a trainer type that specifies IVs along with level, item, and moves
+* Get better Wonder Trade items at higher levels
 
 
 ## Aesthetic updates
