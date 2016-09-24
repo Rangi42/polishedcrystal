@@ -1051,13 +1051,37 @@ ResidualDamage: ; 3c716
 	call GetBattleVar
 	and 1 << PSN | 1 << BRN
 	jr z, .did_psn_brn
-
-	ld hl, HurtByPoisonText
-	ld de, ANIM_PSN
-	and 1 << BRN
-	jr z, .got_anim
 	ld hl, HurtByBurnText
 	ld de, ANIM_BRN
+	and 1 << PSN
+	jr z, .got_anim
+	ld hl, HurtByPoisonText
+	ld de, ANIM_PSN
+	push hl
+	push de
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	pop de
+	pop hl
+	and a
+	cp POISON_HEAL
+	jr nz, .got_anim
+	; check if we are at full HP
+	call CheckFullHP
+	jr z, .did_psn_brn
+	ld hl, PoisonHealText
+	ld de, ANIM_PSN
+	push de
+	call StdBattleTextBox
+	pop de
+	xor a
+	ld [wNumHits], a
+	call Call_PlayBattleAnim_OnlyIfVisible
+	call GetEighthMaxHP
+	call SwitchTurnCore
+	call RestoreHP
+	call SwitchTurnCore
+	jr .did_psn_brn
 .got_anim
 
 	push de
@@ -1175,6 +1199,26 @@ ResidualDamage: ; 3c716
 	xor a
 	ret
 ; 3c801
+
+CheckFullHP:
+; check if the user has full HP
+; z: yes, nz: no
+	ld hl, BattleMonHP
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_hp
+	ld hl, EnemyMonHP
+.got_hp
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	cp b
+	ret nz
+	ld a, [hl]
+	cp c
+	ret
 
 HandlePerishSong: ; 3c801
 	ld a, [hLinkPlayerNumber]
@@ -1340,26 +1384,8 @@ HandleLeftovers: ; 3c8eb
 	cp HELD_LEFTOVERS
 	ret nz
 
-	ld hl, BattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld hl, EnemyMonHP
-
-.got_hp
-; Don't restore if we're already at max HP
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	cp b
-	jr nz, .restore
-	ld a, [hl]
-	cp c
+	call CheckFullHP
 	ret z
-
-.restore
 	call GetSixteenthMaxHP
 	call SwitchTurnCore
 	call RestoreHP
