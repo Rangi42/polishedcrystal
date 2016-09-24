@@ -63,8 +63,7 @@ RunActivationAbilitiesInner:
 
 TraceAbility:
 	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVarAddr
-	ld a, [hl]
+	call GetBattleVar
 	cp TRACE
 	jr z, .trace_failure
 	cp IMPOSTER
@@ -78,8 +77,11 @@ TraceAbility:
 	call StdBattleTextBox
 	; handle swift swim, etc.
 	ld a, [hBattleTurn]
-	call z, CalcPlayerStats
-	call CalcEnemyStats
+	jr z, .is_player
+	callab CalcEnemyStats
+	ret
+.is_player
+	callab CalcPlayerStats
 	ret
 .trace_failure
 	ld hl, TraceFailureText
@@ -175,8 +177,12 @@ HealStatusAbility:
 	ld [hl], a
 	ld a, [hBattleTurn]
 	and a
-	jp z, CalcPlayerStats
-	jp CalcEnemyStats
+	jr z, .is_player
+	callab CalcEnemyStats
+	ret
+.is_player
+	callab CalcPlayerStats
+	ret
 
 IntimidateAbility:
 	ld a, 0
