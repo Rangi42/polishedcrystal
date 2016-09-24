@@ -25,10 +25,15 @@ BattleCommand_Thief: ; 37492
 
 	ld a, [EnemyAbility]
 	cp STICKY_HOLD
-	ret z
+	jr nz, .ability_ok
+	; (except if the user has Mold Breaker)
+	ld a, [PlayerAbility]
+	cp MOLD_BREAKER
+	ret nz
 
 ; Can't steal mail.
 
+.ability_ok
 	ld [wd265], a
 	ld d, a
 	callba ItemIsMail
