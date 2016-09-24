@@ -1615,41 +1615,6 @@ endr
 	ret
 ; e277
 
-GetNature::
-; 'b' contains the target DV to check
-	ld a, b
-; 15/15 (default boss trainer nature) is Serious (neutral), not Bold (+Def -Atk)
-	cp $ff
-	jr z, .serious
-; 7/15 (default female boss trainer nature) is Quirky (neutral), not Brave (+Atk -Spe)
-	cp $7f
-	jr z, .quirky
-; 14/15 is Impish (+Def -SpA), not Naive (+Spe -SpD)
-	cp $ef
-	jr z, .impish
-; 15/10 is Naive (+Spe -SpD), not Hardy (neutral)
-	cp $fa
-	jr z, .hardy
-.modloop
-	sub NUM_NATURES
-	jr nc, .modloop
-	add NUM_NATURES
-	jr .finish
-.serious
-	ld a, SERIOUS
-	jr .finish
-.quirky
-	ld a, QUIRKY
-	jr .finish
-.impish
-	ld a, IMPISH
-	jr .finish
-.hardy
-	ld a, HARDY
-.finish
-	ld b, a
-	ret
-
 GetNatureStatMultiplier::
 ; hl points to Atk/Def DV
 ; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
@@ -1666,7 +1631,6 @@ GetNatureStatMultiplier::
 	ld a, b
 	; these increase and lower the same stat, but +10% -10% isn't the same
 	; (the result is 99%), so we need to avoid messing with it altogether.
-	; TODO: macros
 	cp HARDY
 	jr z, .neutral
 	cp DOCILE

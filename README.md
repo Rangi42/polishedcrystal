@@ -1,3 +1,5 @@
+***This is the 'abilities' branch.***
+
 # Pokémon Polished Crystal
 
 This is a custom Pokémon game based on [the Pokémon Crystal disassembly](https://github.com/pret/pokecrystal).

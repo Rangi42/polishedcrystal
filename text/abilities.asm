@@ -1,28 +1,3 @@
-GetAbility:
-; b is Spe+Spc DV, c is species
-; returns ability in b
-	ld a, c
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, b
-	swap a
-	xor b
-	and $f
-	jr z, .hidden_abil
-	and 1
-	jr nz, .second_abil
-	ld a, [BaseAbility1]
-	ld b, a
-	ret
-.second_abil
-	ld a, [BaseAbility2]
-	ld b, a
-	ret
-.hidden_abil
-	ld a, [BaseHiddenAbility]
-	ld b, a
-	ret
-
 PrintAbility:
 ; Print ability b at hl.
 	ld a, b
@@ -40,31 +15,136 @@ PrintAbility:
 
 	jp PlaceString
 
-
 AbilityNames:
-	dw Stench, Drizzle, SpeedBoost, BattleArmor, Sturdy, Damp
-	dw Limber, SandVeil, Static, VoltAbsorb, WaterAbsorb, Oblivious
-	dw CloudNine, CompoundEyes, Insomnia, Immunity, FlashFire, ShieldDust
-	dw OwnTempo, SuctionCups, Intimidate, ShadowTag, Levitate, EffectSpore
-	dw Synchronize, ClearBody, NaturalCure, LightningRod, SereneGrace, SwiftSwim
-	dw Clorophyll, Illuminate, Trace, HugePower, PoisonPoint, InnerFocus
-	dw MagmaArmor, WaterVeil, MagnetPull, Soundproof, RainDish, SandStream
-	dw Pressure, ThickFat, EarlyBird, FlameBody, RunAway, KeenEye
-	dw HyperCutter, Pickup, Hustle, CuteCharm, StickyHold, ShedSkin
-	dw Guts, MarvelScale, LiquidOoze, Overgrow, Blaze, Torrent
-	dw Swarm, RockHead, Drought, ArenaTrap, VitalSpirit, ShellArmor
-	dw TangledFeet, MotorDrive, Rivalry, Steadfast, SnowCloak, AngerPoint
-	dw Unburden, DrySkin, Download, IronFist, PoisonHeal, Adaptability
-	dw SkillLink, Hydration, SolarPower, QuickFeet, Sniper, MagicGuard
-	dw NoGuard, Technician, LeafGuard, MoldBreaker, SuperLuck, Aftermath
-	dw Anticipation, Forewarn, Unaware, TintedLens, Filter, Scrappy
-	dw IceBody, SolidRock, Frisk, Reckless, Pickpocket, SheerForce
-	dw Contrary, Unnerve, Defiant, WeakArmor, Multiscale, Harvest
-	dw Moody, Overcoat, PoisonTouch, Regenerator, BigPecks, SandRush
-	dw WonderSkin, Analytic, Imposter, Infiltrator, Moxie, Justified
-	dw Rattled, MagicBounce, SapSipper, Prankster, SandForce, Competitive
+	dw NoAbility
+	dw Stench
+	dw Drizzle
+	dw SpeedBoost
+	dw BattleArmor
+	dw Sturdy
+	dw Damp
+	dw Limber
+	dw SandVeil
+	dw Static
+	dw VoltAbsorb
+	dw WaterAbsorb
+	dw Oblivious
+	dw CloudNine
+	dw CompoundEyes
+	dw Insomnia
+	dw Immunity
+	dw FlashFire
+	dw ShieldDust
+	dw OwnTempo
+	dw SuctionCups
+	dw Intimidate
+	dw ShadowTag
+	dw Levitate
+	dw EffectSpore
+	dw Synchronize
+	dw ClearBody
+	dw NaturalCure
+	dw LightningRod
+	dw SereneGrace
+	dw SwiftSwim
+	dw Chlorophyll
+	dw Illuminate
+	dw Trace
+	dw HugePower
+	dw PoisonPoint
+	dw InnerFocus
+	dw MagmaArmor
+	dw WaterVeil
+	dw MagnetPull
+	dw Soundproof
+	dw RainDish
+	dw SandStream
+	dw Pressure
+	dw ThickFat
+	dw EarlyBird
+	dw FlameBody
+	dw RunAway
+	dw KeenEye
+	dw HyperCutter
+	dw Pickup
+	dw Hustle
+	dw CuteCharm
+	dw StickyHold
+	dw ShedSkin
+	dw Guts
+	dw MarvelScale
+	dw LiquidOoze
+	dw Overgrow
+	dw Blaze
+	dw Torrent
+	dw Swarm
+	dw RockHead
+	dw Drought
+	dw ArenaTrap
+	dw VitalSpirit
+	dw ShellArmor
+	dw TangledFeet
+	dw MotorDrive
+	dw Rivalry
+	dw Steadfast
+	dw SnowCloak
+	dw AngerPoint
+	dw Unburden
+	dw DrySkin
+	dw Download
+	dw IronFist
+	dw PoisonHeal
+	dw Adaptability
+	dw SkillLink
+	dw Hydration
+	dw SolarPower
+	dw QuickFeet
+	dw Sniper
+	dw MagicGuard
+	dw NoGuard
+	dw Technician
+	dw LeafGuard
+	dw MoldBreaker
+	dw SuperLuck
+	dw Aftermath
+	dw Anticipation
+	dw Forewarn
+	dw Unaware
+	dw TintedLens
+	dw Filter
+	dw Scrappy
+	dw IceBody
+	dw SolidRock
+	dw Frisk
+	dw Reckless
+	dw Pickpocket
+	dw SheerForce
+	dw Unnerve
+	dw Defiant
+	dw WeakArmor
+	dw Multiscale
+	dw Harvest
+	dw Moody
+	dw Overcoat
+	dw PoisonTouch
+	dw Regenerator
+	dw BigPecks
+	dw SandRush
+	dw WonderSkin
+	dw Analytic
+	dw Imposter
+	dw Infiltrator
+	dw Moxie
+	dw Justified
+	dw Rattled
+	dw MagicBounce
+	dw SapSipper
+	dw Prankster
+	dw SandForce
+	dw Competitive
 	dw Pixilate
 
+NoAbility:     db "---"
 Stench:        db "Stench@"
 Drizzle:       db "Drizzle@"
 SpeedBoost:    db "Speed Boost@"
@@ -95,7 +175,7 @@ NaturalCure:   db "Natural Cure@"
 LightningRod:  db "Lightning Rod@"
 SereneGrace:   db "Serene Grace@"
 SwiftSwim:     db "Swift Swim@"
-Clorophyll:    db "Clorophyll@"
+Chlorophyll:   db "Chlorophyll@"
 Illuminate:    db "Illuminate@"
 Trace:         db "Trace@"
 HugePower:     db "Huge Power@"
@@ -167,7 +247,6 @@ Frisk:         db "Frisk@"
 Reckless:      db "Reckless@"
 Pickpocket:    db "Pickpocket@"
 SheerForce:    db "Sheer Force@"
-Contrary:      db "Contrary@"
 Unnerve:       db "Unnerve@"
 Defiant:       db "Defiant@"
 WeakArmor:     db "Weak Armor@"
@@ -192,6 +271,7 @@ Prankster:     db "Prankster@"
 SandForce:     db "Sand Force@"
 Competitive:   db "Competitive@"
 Pixilate:      db "Pixilate@"
+
 
 PrintAbilityDescription:
 ; Print ability description for b
@@ -231,544 +311,629 @@ PrintAbilityDescription:
 	pop de
 	ret
 
-AbilityDescriptions: ; TODO: is there a saner way to do this
-	dw StenchDescription, DrizzleDescription, SpeedBoostDescription
-	dw BattleArmorDescription, SturdyDescription, DampDescription
-	dw LimberDescription, SandVeilDescription, StaticDescription
-	dw VoltAbsorbDescription, WaterAbsorbDescription, ObliviousDescription
-	dw CloudNineDescription, CompoundEyesDescription, InsomniaDescription
-	dw ImmunityDescription, FlashFireDescription, ShieldDustDescription
-	dw OwnTempoDescription, SuctionCupsDescription, IntimidateDescription
-	dw ShadowTagDescription, LevitateDescription, EffectSporeDescription
-	dw SynchronizeDescription, ClearBodyDescription, NaturalCureDescription
-	dw LightningRodDescription, SereneGraceDescription, SwiftSwimDescription
-	dw ClorophyllDescription, IlluminateDescription, TraceDescription
-	dw HugePowerDescription, PoisonPointDescription, InnerFocusDescription
-	dw MagmaArmorDescription, WaterVeilDescription, MagnetPullDescription
-	dw SoundproofDescription, RainDishDescription, SandStreamDescription
-	dw PressureDescription, ThickFatDescription, EarlyBirdDescription
-	dw FlameBodyDescription, RunAwayDescription, KeenEyeDescription
-	dw HyperCutterDescription, PickupDescription, HustleDescription
-	dw CuteCharmDescription, StickyHoldDescription, ShedSkinDescription
-	dw GutsDescription, MarvelScaleDescription, LiquidOozeDescription
-	dw OvergrowDescription, BlazeDescription, TorrentDescription
-	dw SwarmDescription, RockHeadDescription, DroughtDescription
-	dw ArenaTrapDescription, VitalSpiritDescription, ShellArmorDescription
-	dw TangledFeetDescription, MotorDriveDescription, RivalryDescription
-	dw SteadfastDescription, SnowCloakDescription, AngerPointDescription
-	dw UnburdenDescription, DrySkinDescription, DownloadDescription
-	dw IronFistDescription, PoisonHealDescription, AdaptabilityDescription
-	dw SkillLinkDescription, HydrationDescription, SolarPowerDescription
-	dw QuickFeetDescription, SniperDescription, MagicGuardDescription
-	dw NoGuardDescription, TechnicianDescription, LeafGuardDescription
-	dw MoldBreakerDescription, SuperLuckDescription, AftermathDescription
-	dw AnticipationDescription, ForewarnDescription, UnawareDescription
-	dw TintedLensDescription, FilterDescription, ScrappyDescription
-	dw IceBodyDescription, SolidRockDescription, FriskDescription
-	dw RecklessDescription, PickpocketDescription, SheerForceDescription
-	dw ContraryDescription, UnnerveDescription, DefiantDescription
-	dw WeakArmorDescription, MultiscaleDescription, HarvestDescription
-	dw MoodyDescription, OvercoatDescription, PoisonTouchDescription
-	dw RegeneratorDescription, BigPecksDescription, SandRushDescription
-	dw WonderSkinDescription, AnalyticDescription, ImposterDescription
-	dw InfiltratorDescription, MoxieDescription, JustifiedDescription
-	dw RattledDescription, MagicBounceDescription, SapSipperDescription
-	dw PranksterDescription, SandForceDescription, CompetitiveDescription
+AbilityDescriptions:
+	dw NoAbilityDescription
+	dw StenchDescription
+	dw DrizzleDescription
+	dw SpeedBoostDescription
+	dw BattleArmorDescription
+	dw SturdyDescription
+	dw DampDescription
+	dw LimberDescription
+	dw SandVeilDescription
+	dw StaticDescription
+	dw VoltAbsorbDescription
+	dw WaterAbsorbDescription
+	dw ObliviousDescription
+	dw CloudNineDescription
+	dw CompoundEyesDescription
+	dw InsomniaDescription
+	dw ImmunityDescription
+	dw FlashFireDescription
+	dw ShieldDustDescription
+	dw OwnTempoDescription
+	dw SuctionCupsDescription
+	dw IntimidateDescription
+	dw ShadowTagDescription
+	dw LevitateDescription
+	dw EffectSporeDescription
+	dw SynchronizeDescription
+	dw ClearBodyDescription
+	dw NaturalCureDescription
+	dw LightningRodDescription
+	dw SereneGraceDescription
+	dw SwiftSwimDescription
+	dw ChlorophyllDescription
+	dw IlluminateDescription
+	dw TraceDescription
+	dw HugePowerDescription
+	dw PoisonPointDescription
+	dw InnerFocusDescription
+	dw MagmaArmorDescription
+	dw WaterVeilDescription
+	dw MagnetPullDescription
+	dw SoundproofDescription
+	dw RainDishDescription
+	dw SandStreamDescription
+	dw PressureDescription
+	dw ThickFatDescription
+	dw EarlyBirdDescription
+	dw FlameBodyDescription
+	dw RunAwayDescription
+	dw KeenEyeDescription
+	dw HyperCutterDescription
+	dw PickupDescription
+	dw HustleDescription
+	dw CuteCharmDescription
+	dw StickyHoldDescription
+	dw ShedSkinDescription
+	dw GutsDescription
+	dw MarvelScaleDescription
+	dw LiquidOozeDescription
+	dw OvergrowDescription
+	dw BlazeDescription
+	dw TorrentDescription
+	dw SwarmDescription
+	dw RockHeadDescription
+	dw DroughtDescription
+	dw ArenaTrapDescription
+	dw VitalSpiritDescription
+	dw ShellArmorDescription
+	dw TangledFeetDescription
+	dw MotorDriveDescription
+	dw RivalryDescription
+	dw SteadfastDescription
+	dw SnowCloakDescription
+	dw AngerPointDescription
+	dw UnburdenDescription
+	dw DrySkinDescription
+	dw DownloadDescription
+	dw IronFistDescription
+	dw PoisonHealDescription
+	dw AdaptabilityDescription
+	dw SkillLinkDescription
+	dw HydrationDescription
+	dw SolarPowerDescription
+	dw QuickFeetDescription
+	dw SniperDescription
+	dw MagicGuardDescription
+	dw NoGuardDescription
+	dw TechnicianDescription
+	dw LeafGuardDescription
+	dw MoldBreakerDescription
+	dw SuperLuckDescription
+	dw AftermathDescription
+	dw AnticipationDescription
+	dw ForewarnDescription
+	dw UnawareDescription
+	dw TintedLensDescription
+	dw FilterDescription
+	dw ScrappyDescription
+	dw IceBodyDescription
+	dw SolidRockDescription
+	dw FriskDescription
+	dw RecklessDescription
+	dw PickpocketDescription
+	dw SheerForceDescription
+	dw UnnerveDescription
+	dw DefiantDescription
+	dw WeakArmorDescription
+	dw MultiscaleDescription
+	dw HarvestDescription
+	dw MoodyDescription
+	dw OvercoatDescription
+	dw PoisonTouchDescription
+	dw RegeneratorDescription
+	dw BigPecksDescription
+	dw SandRushDescription
+	dw WonderSkinDescription
+	dw AnalyticDescription
+	dw ImposterDescription
+	dw InfiltratorDescription
+	dw MoxieDescription
+	dw JustifiedDescription
+	dw RattledDescription
+	dw MagicBounceDescription
+	dw SapSipperDescription
+	dw PranksterDescription
+	dw SandForceDescription
+	dw CompetitiveDescription
 	dw PixilateDescription
 
+NoAbilityDescription:
+	db   "@"
+
 StenchDescription:
-	db "May cause the foe"
+	db   "May cause the foe"
 	next "to flinch.@"
 
 DrizzleDescription:
-	db "Summons rain when"
+	db   "Summons rain when"
 	next "switched in.@"
 
 SpeedBoostDescription:
-	db "Boosts Speed on"
-	next "each turn's end.@"
+	db   "Its Speed stat is"
+	next "gradually boosted.@"
 
 BattleArmorDescription:
 ShellArmorDescription:
-	db "Protects from"
+	db   "Protects from"
 	next "critical hits.@"
 
 SturdyDescription:
-	db "Prevents knock-out"
-	next "from full health.@"
+	db   "Cannot be knocked"
+	next "out with one hit.@"
 
 DampDescription:
-	db "Prevents usage of"
-	next "self-destruction.@"
+	db   "Prevents self-"
+	next "destructing moves.@"
 
 LimberDescription:
-	db "Protects against"
+	db   "Protects from"
 	next "paralysis.@"
 
 SandVeilDescription:
-	db "Boosts evasion"
-	next "during sandstorms.@"
+	db   "Boosts evasion in"
+	next "a sandstorm.@"
 
 StaticDescription:
-	db "May paralyse foes"
-	next "on contact.@"
+	db   "Contact may cause"
+	next "paralysis.@"
 
 VoltAbsorbDescription:
-	db "Recovers HP from"
-	next "electric moves.@"
+	db   "Restores HP if hit"
+	next "by Electric moves.@"
 
 WaterAbsorbDescription:
-	db "Recovers HP if hit"
-	next "by water moves.@"
+	db   "Restores HP if hit"
+	next "by Water moves.@"
 
 ObliviousDescription:
-	db "Ignores taunts"
-	next "and infatuation.@"
+	db   "Prevents it from"
+	next "being infatuated.@"
 
 CloudNineDescription:
-	db "Negates weather on"
-	next "being switched in.@"
+	db   "Eliminates effects"
+	next "of weather. @"
 
 CompoundEyesDescription:
-	db "Boosts accuracy of"
-	next "moves.@"
+	db   "Boosts the #-"
+	next "mon's accuracy.@"
 
 InsomniaDescription:
 VitalSpiritDescription:
-	db "Prevents sleep.@"
+	db   "Prevents it from"
+	next "falling asleep.@"
 
 ImmunityDescription:
-	db "Prevents"
-	next "poisoning.@"
+	db   "Prevents it from"
+	next "getting poisoned.@"
 
 FlashFireDescription:
-	db "Ups Fire power if"
-	next "hit by fire.@"
+	db   "Powers Fire moves"
+	next "if hit by one.@"
 
 ShieldDustDescription:
-	db "Blocks additional"
+	db   "Blocks additional"
 	next "attack effects.@"
 
 OwnTempoDescription:
-	db "Prevents"
-	next "confusion.@"
+	db   "Prevents it from"
+	next "becoming confused.@"
 
 SuctionCupsDescription:
-	db "Negates forced"
+	db   "Negates forced"
 	next "switch-outs.@"
 
 IntimidateDescription:
-	db "Lowers a foe's"
-	next "attack stat.@"
+	db   "Lowers the foe's"
+	next "Attack stat.@"
 
 ShadowTagDescription:
-	db "Prevents non-Ghost"
-	next "foes escaping.@"
+	db   "Prevents the foe"
+	next "from escaping.@"
 
 LevitateDescription:
-	db "Gives immunity to"
+	db   "Gives immunity to"
 	next "Ground-type moves.@"
 
 EffectSporeDescription:
-	db "Contact may cause"
-	next "status ailments.@"
+	db   "Contact may cause"
+	next "Par, Psn, or Slp.@"
 
 SynchronizeDescription:
-	db "Passes on status"
-	next "ailments to foes.@"
+	db   "Passes Psn, Par,"
+	next "or Brn to foes.@"
 
 ClearBodyDescription:
-	db "Prevents foes from"
+	db   "Prevents foes from"
 	next "lowering stats.@"
 
 NaturalCureDescription:
-	db "Switch-outs heal"
-	next "status ailments.@"
+	db   "Switch-outs heal"
+	next "status problems.@"
 
 LightningRodDescription:
-	db "Electric moves"
-	next "raises Spcl.Atk.@"
+	db   "Electric moves"
+	next "boost Spcl.Atk.@"
 
 SereneGraceDescription:
-	db "Doubles rate of"
+	db   "Boosts the rate of"
 	next "added effects.@"
 
 SwiftSwimDescription:
-	db "Doubles speed"
-	next "during rain.@"
+	db   "Boosts its Speed"
+	next "in rain.@"
 
-ClorophyllDescription:
-	db "Doubles speed"
-	next "during sunshine.@"
+ChlorophyllDescription:
+	db   "Boosts its Speed"
+	next "in sunshine.@"
 
 IlluminateDescription:
-	db "Doubles the rate"
-	next "of wild Pokémon.@"
+	db   "Raises the rate"
+	next "of wild #mon.@"
 
 TraceDescription:
-	db "Copies the foe's"
-	next "special ability.@"
+	db   "Copies the foe's"
+	next "Ability.@"
 
 HugePowerDescription:
-	db "Doubles the Attack"
+	db   "Boosts its Attack"
 	next "stat.@"
 
 PoisonPointDescription:
-	db "May poison the foe"
-	next "on contact.@"
+	db   "Contact may poison"
+	next "the foe.@"
 
 InnerFocusDescription:
-	db "Prevents flinches.@"
+	db   "Protects it from"
+	next "flinching.@"
 
 MagmaArmorDescription:
-	db "Prevents freezes"
-	next "and hastens Eggs.@"
+	db   "Prevents it from"
+	next "becoming frozen.@"
 
 WaterVeilDescription:
-	db "Increases evasion"
-	next "during rain.@"
+	db   "Prevents it from"
+	next "getting a burn.@"
 
 MagnetPullDescription:
-	db "Prevents escape by"
+	db   "Prevents escape by"
 	next "Steel-type foes.@"
 
 SoundproofDescription:
-	db "Grants immunity to"
-	next "sound moves.@"
+	db   "Gives immunity to"
+	next "sound-based moves.@"
 
 RainDishDescription:
-	db "Gradually recovers"
-	next "health in rain.@"
+	db   "Gradually regains"
+	next "HP in rain.@"
 
 SandStreamDescription:
-	db "Summons sandstorm"
+	db   "Summons sandstorm"
 	next "when switched in.@"
 
 PressureDescription:
-	db "Doubles the foe's"
+	db   "Raises the foe's"
 	next "PP usage.@"
 
 ThickFatDescription:
-	db "Halves damage from"
-	next "fire and ice.@"
+	db   "Ups resistance to"
+	next "Fire and Ice.@"
 
 EarlyBirdDescription:
-	db "Causes rapid wake-"
-	next "up from sleep.@"
+	db   "Awakens quickly"
+	next "from sleep.@"
 
 FlameBodyDescription:
-	db "Hits burn foes,"
-	next "also hastens Eggs.@"
+	db   "Contact may burn"
+	next "the foe.@"
 
 RunAwayDescription:
-	db "Gurantees running"
-	next "away successfully.@"
+	db   "Sure getaway from"
+	next "wild #mon.@"
 
 KeenEyeDescription:
-	db "Prevents foes from"
+	db   "Prevents foes from"
 	next "lowering accuracy.@"
 
 HyperCutterDescription:
-	db "Prevents foes from"
+	db   "Prevents foes from"
 	next "lowering Attack.@"
 
 PickupDescription:
-	db "May pickup items"
-	next "after battles.@"
+	db   "The #mon may"
+	next "pick up items.@"
 
 HustleDescription:
-	db "Boosts Attack, but"
+	db   "Boosts Attack, but"
 	next "lowers accuracy.@"
 
 CuteCharmDescription:
-	db "Contact may cause"
+	db   "Contact may cause"
 	next "infatuation.@"
 
 StickyHoldDescription:
-	db "Prevents item"
-	next "theft.@"
+	db   "Protects it from"
+	next "item theft.@"
 
 ShedSkinDescription:
-	db "Occasionally heals"
-	next "status ailments.@"
+	db   "May heal its own"
+	next "status problems.@"
 
 GutsDescription:
-	db "Boosts Attack on"
-	next "status conditions.@"
+	db   "Boosts Attack on"
+	next "status problems.@"
 
 MarvelScaleDescription:
-	db "Boosts Defense on"
-	next "status conditions.@"
+	db   "Boosts Defense on"
+	next "status problems.@"
 
 LiquidOozeDescription:
-	db "Injures foes using"
+	db   "Damages foes using"
 	next "draining moves.@"
 
 OvergrowDescription:
-	db "Boosts Grass moves"
+	db   "Boosts Grass moves"
 	next "in a pinch.@"
 
 BlazeDescription:
-	db "Boosts Fire moves"
+	db   "Boosts Fire moves"
 	next "in a pinch.@"
 
 TorrentDescription:
-	db "Boosts Water moves"
+	db   "Boosts Water moves"
 	next "in a pinch.@"
 
 SwarmDescription:
-	db "Boosts Bug moves"
+	db   "Boosts Bug moves"
 	next "in a pinch.@"
 
 RockHeadDescription:
-	db "Prevents recoil"
-	next "except Struggle.@"
+	db   "Protects it from"
+	next "recoil damage.@"
 
 DroughtDescription:
-	db "Summons harsh"
-	next "sunlight.@"
+	db   "Summons sunlight"
+	next "when switched in.@"
 
 ArenaTrapDescription:
-	db "Prevents grounded"
-	next "foes from escape.@"
+	db   "Prevents the foe"
+	next "from fleeing.@"
 
 TangledFeetDescription:
-	db "Boosts evasiveness"
-	next "on confusion.@"
+	db   "Boosts evasion if"
+	next "it is confused.@"
 
 MotorDriveDescription:
-	db "Electric moves"
-	next "raises Speed.@"
+	db   "Electric moves"
+	next "boost Speed.@"
 
 RivalryDescription:
-	db "Raises Attack if"
-	next "foes gender match.@"
+	db   "Boosts damage to"
+	next "same-gender foes.@"
 
 SteadfastDescription:
-	db "Raises Speed when"
-	next "flinching.@"
+	db   "Boosts Speed when"
+	next "it flinches.@"
 
 SnowCloakDescription:
-	db "Raises evasion in"
+	db   "Boosts evasion in"
 	next "hailstorms.@"
 
 AngerPointDescription:
-	db "Maxes Attack after"
+	db   "Maxes Attack after"
 	next "a critical hit.@"
 
 UnburdenDescription:
-	db "Doubles Speed when"
-	next "losing held items.@"
+	db   "Boosts Speed when"
+	next "held item is lost.@"
 
 DrySkinDescription:
-	db "Water heals, heat"
-	next "damages.@"
+	db   "Reduces HP in sun."
+	next "Water restores HP.@"
 
 DownloadDescription:
-	db "Ups power based on"
-	next "foes' abilities.@"
+	db   "Adjusts stats based"
+	next "on foe's defenses.@"
 
 IronFistDescription:
-	db "Boosts power of"
-	next "punch-based moves.@"
+	db   "Boosts power of"
+	next "punching moves.@"
 
 PoisonHealDescription:
-	db "Recovers health"
-	next "when poisoned.@"
+	db   "Restores HP if"
+	next "it is poisoned.@"
 
 AdaptabilityDescription:
-	db "Powers up same-"
-	next "type moves more.@"
+	db   "Powers up same-"
+	next "type moves.@"
 
 SkillLinkDescription:
-	db "Multi-hit moves"
-	next "strike 5 times.@"
+	db   "Increases multi-"
+	next "strike move hits.@"
 
 HydrationDescription:
-	db "Heals status"
-	next "ailments on rain.@"
+	db   "Heals status"
+	next "problems in rain.@"
 
 SolarPowerDescription:
-	db "Trades HP in sun"
-	next "for Spcl.Atk.@"
+	db   "Boosts Sp.Atk but"
+	next "lowers HP in sun.@"
 
 QuickFeetDescription:
-	db "Boosts Speed on"
-	next "status conditions.@"
+	db   "Boosts Speed with"
+	next "status problems.@"
 
 SniperDescription:
-	db "Increases damage"
-	next "of critical hits.@"
+	db   "Powers up critical"
+	next "hits.@"
 
 MagicGuardDescription:
-	db "Prevents most"
-	next "indirect damage.@"
+	db   "Only takes damage"
+	next "from attacks.@"
 
 NoGuardDescription:
-	db "Gurantees own and"
-	next "foe moves to hit.@"
+	db   "Insures attacks by"
+	next "or against it hit.@"
 
 TechnicianDescription:
-	db "Powers up weaker"
-	next "moves.@"
+	db   "Powers up its"
+	next "weaker moves.@"
 
 LeafGuardDescription:
-	db "Prevents status"
-	next "conditions in sun.@"
+	db   "Prevents status"
+	next "problems in sun.@"
 
 MoldBreakerDescription:
-	db "Bypasses defensive"
-	next "abilities.@"
+	db   "Moves disregard"
+	next "the foe's ability.@"
 
 SuperLuckDescription:
-	db "Increases the rate"
+	db   "Boosts the rate"
 	next "of critical hits.@"
 
 AftermathDescription:
-	db "Damages the foe on"
+	db   "Damages the foe on"
 	next "fainting.@"
 
 AnticipationDescription:
-	db "Alerts the user to"
+	db   "Senses the foe's"
 	next "dangerous moves.@"
 
 ForewarnDescription:
-	db "Senses foes' most"
-	next "powerful move.@"
+	db   "Determines the"
+	next "foe's moves.@"
 
 UnawareDescription:
-	db "Ignores changes to"
-	next "stats.@"
+	db   "Ignores the foe's"
+	next "stat changes.@"
 
 TintedLensDescription:
-	db "Doubles not very"
+	db   "Powers up not very"
 	next "effective moves.@"
 
 FilterDescription:
 SolidRockDescription:
-	db "Halves foes' super"
+	db   "Powers down super-"
 	next "effective moves.@"
 
 ScrappyDescription:
-	db "Allows any move to"
-	next "hit Ghosts-types.@"
+	db   "Enables moves to"
+	next "hit Ghost-types.@"
 
 IceBodyDescription:
-	db "Gradually recovers"
-	next "health in hail.@"
+	db   "Gradually regains"
+	next "HP in hail.@"
 
 FriskDescription:
-	db "Senses foes' held"
-	next "item.@"
+	db   "Checks the foe's"
+	next "held item.@"
 
 RecklessDescription:
-	db "Powers up moves"
-	next "that have recoil.@"
+	db   "Powers up moves"
+	next "that recoil.@"
 
 PickpocketDescription:
-	db "Steals foes' item"
-	next "when attacked.@"
+	db   "Steals foe's item"
+	next "when contacted.@"
 
 SheerForceDescription:
-	db "Trades additional"
-	next "effects for power.@"
-
-ContraryDescription:
-	db "Inverts changes to"
-	next "stats.@"
+	db   "Removes effects to"
+	next "increase damage.@"
 
 UnnerveDescription:
-	db "Prevents foes from"
-	next "consuming Berries.@"
+	db   "Prevents foes from"
+	next "eating Berries.@"
 
 DefiantDescription:
-	db "On stat reduction,"
-	next "raise Attack.@"
+	db   "Boosts Attack when"
+	next "stats are lowered.@"
 
 WeakArmorDescription:
-	db "Physical moves add"
-	next "Speed for defense.@"
+	db   "Physical attacks"
+	next "trade Def for Spd.@"
 
 MultiscaleDescription:
-	db "Reduces damage"
+	db   "Reduces damage"
 	next "when HP is full.@"
 
 HarvestDescription:
-	db "Recreates used up"
-	next "Berries over time.@"
+	db   "May recreate a"
+	next "Berry after use.@"
 
 MoodyDescription:
-	db "Raises a stat and"
+	db   "Raises a stat and"
 	next "lowers another.@"
 
 OvercoatDescription:
-	db "Protects from"
+	db   "Protects it from"
 	next "weather damage.@"
 
 PoisonTouchDescription:
-	db "May poison foes on"
-	next "attacking.@"
+	db   "May poison the foe"
+	next "on contact.@"
 
 RegeneratorDescription:
-	db "Recovers health on"
-	next "switching out.@"
+	db   "Restores HP when"
+	next "withdrawn.@"
 
 BigPecksDescription:
-	db "Prevents foes from"
-	next "reducing Defense.@"
+	db   "Prevents foes from"
+	next "lowering Defense.@"
 
 SandRushDescription:
-	db "Boosts Speed in"
-	next "sandstorms.@"
+	db   "Boosts Speed in"
+	next "a sandstorm.@"
 
 WonderSkinDescription:
-	db "Makes status moves"
-	next "hit half as often.@"
+	db   "Makes status moves"
+	next "miss more often.@"
 
 AnalyticDescription:
-	db "Power is boosted"
+	db   "Boosts move power"
 	next "when moving last.@"
 
 ImposterDescription:
-	db "Transforms into"
-	next "foes instantly.@"
+	db   "Transforms itself"
+	next "into the foe.@"
 
 InfiltratorDescription:
-	db "Moves bypass enemy"
-	next "decoys or shields.@"
+	db   "Attacks bypass the"
+	next "foe's barriers.@"
 
 MoxieDescription:
-	db "Raises Attack when"
+	db   "Boosts Attack when"
 	next "knocking out foes.@"
 
 JustifiedDescription:
-	db "Raises Attack when"
+	db   "Boosts Attack when"
 	next "hit by Dark moves.@"
 
 RattledDescription:
-	db "Bug, Ghost or Dark"
-	next "moves boost Speed.@"
+	db   "Some scary move"
+	next "types boost Speed.@"
 
 MagicBounceDescription:
-	db "Reflects offensive"
-	next "Status moves.@"
+	db   "Reflects status-"
+	next "changing moves.@"
 
 SapSipperDescription:
-	db "Recovers HP if hit"
-	next "by Grass moves.@"
+	db   "Boosts Attack when"
+	next "hit by Grass.@"
 
 PranksterDescription:
-	db "Increases priority"
-	next "of status moves.@"
+	db   "Gives priority to"
+	next "a status move.@"
 
 SandForceDescription:
-	db "Ups Ground, Rock"
-	next "and Steel in sand.@"
+	db   "Powers some moves"
+	next "in a sandstorm.@"
 
 CompetitiveDescription:
-	db "On stat reduction,"
-	next "raise Spcl.Atk.@"
+	db   "Boosts Spcl.Atk on"
+	next "stat reduction.@"
 
 PixilateDescription:
-	db "Changes Normal to"
-	next "Fairy and powerup.@"
+	db   "Normal-type moves"
+	next "become Fairy-type.@"
