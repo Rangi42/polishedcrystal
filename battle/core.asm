@@ -41,8 +41,6 @@ DoBattle: ; 3c000
 	call ResetEnemyStatLevels
 	call BreakAttraction
 	call EnemySwitch
-	call SetEnemyTurn
-	call InitAbilityVar
 
 .wild
 	ld c, 40
@@ -96,7 +94,6 @@ DoBattle: ; 3c000
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	call InitAbilityVar
 	call SpikesDamage
 	ld a, [wLinkMode]
 	and a
@@ -111,7 +108,6 @@ DoBattle: ; 3c000
 	call BreakAttraction
 	call EnemySwitch
 	call SetEnemyTurn
-	call InitAbilityVar
 	call SpikesDamage
 	call RunBothActivationAbilities
 
@@ -450,7 +446,6 @@ DetermineMoveOrder: ; 3c314
 .switch
 	callab AI_Switch
 	call SetEnemyTurn
-	call InitAbilityVar
 	call SpikesDamage
 	jp .enemy_first
 
@@ -2427,7 +2422,6 @@ EnemyPartyMonEntrance: ; 3cf78
 .done_switch
 	call ResetBattleParticipants
 	call SetEnemyTurn
-	call InitAbilityVar
 	call SpikesDamage
 	xor a
 	ld [wEnemyMoveStruct + MOVE_ANIM], a
@@ -2903,7 +2897,6 @@ ForcePlayerMonChoice: ; 3d227
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	call InitAbilityVar
 	call SpikesDamage
 	ld a, $1
 	and a
@@ -2926,7 +2919,6 @@ PlayerPartyMonEntrance: ; 3d2b3
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	call InitAbilityVar
 	jp SpikesDamage
 ; 3d2e0
 
@@ -3722,7 +3714,7 @@ NewEnemyMonStatus: ; 3d834
 	ld [LastPlayerCounterMove], a
 	ld [LastEnemyMove], a
 	ld hl, EnemySubStatus1
-rept 4
+rept 3
 	ld [hli], a
 endr
 	ld [hl], a
@@ -3737,6 +3729,13 @@ endr
 	ld [EnemyTurnsTaken], a
 	ld hl, PlayerSubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
+	ld a, [EnemyMonDVs + 1]
+	ld b, a
+	ld a, [EnemyMonSpecies]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	ld [EnemyAbility], a
 	ret
 ; 3d867
 
@@ -4209,7 +4208,7 @@ NewBattleMonStatus: ; 3dbde
 	ld [LastPlayerCounterMove], a
 	ld [LastPlayerMove], a
 	ld hl, PlayerSubStatus1
-rept 4
+rept 3
 	ld [hli], a
 endr
 	ld [hl], a
@@ -4229,6 +4228,14 @@ endr
 	ld [PlayerTurnsTaken], a
 	ld hl, EnemySubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
+	ld a, [BattleMonDVs + 1]
+	ld b, a
+	ld a, [BattleMonSpecies]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	ld [PlayerAbility], a
+	xor a
 	ret
 ; 3dc18
 
@@ -4239,34 +4246,6 @@ BreakAttraction: ; 3dc18
 	res SUBSTATUS_IN_LOVE, [hl]
 	ret
 ; 3dc23
-
-InitAbilityVar:
-	; resets the Ability value
-	ld a, [hBattleTurn]
-	and a
-	jr z, .isplayer
-	ld a, [EnemyMonDVs + 1]
-	ld b, a
-	ld a, [EnemyMonSpecies]
-	ld c, a
-	jr .got_abilitydv
-.isplayer
-	ld a, [BattleMonSpecies]
-	ld c, a
-	ld a, [BattleMonDVs + 1]
-	ld b, a
-.got_abilitydv
-	callba GetAbility
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .isenemy
-	ld a, b
-	ld [PlayerAbility], a
-	ret
-.isenemy
-	ld a, b
-	ld [EnemyAbility], a
-	ret
 
 RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
@@ -5519,7 +5498,6 @@ PlayerSwitch: ; 3e3ad
 EnemyMonEntrance: ; 3e3ff
 	callab AI_Switch
 	call SetEnemyTurn
-	call InitAbilityVar
 	jp SpikesDamage
 ; 3e40b
 
@@ -5554,7 +5532,6 @@ BattleMonEntrance: ; 3e40b
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	call InitAbilityVar
 	call SpikesDamage
 	ld a, $2
 	ld [wMenuCursorY], a
@@ -5580,7 +5557,6 @@ PassedBattleMonEntrance: ; 3e459
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	call InitAbilityVar
 	jp SpikesDamage
 ; 3e489
 

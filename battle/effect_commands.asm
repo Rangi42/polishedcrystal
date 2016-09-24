@@ -6956,9 +6956,6 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld hl, DraggedOutText
 	call StdBattleTextBox
 
-	ld hl, InitAbilityVar
-	call CallBattleCore
-
 	ld hl, SpikesDamage
 	call CallBattleCore
 
@@ -7058,9 +7055,6 @@ BattleCommand_ForceSwitch: ; 3680f
 
 	ld hl, DraggedOutText
 	call StdBattleTextBox
-
-	ld hl, InitAbilityVar
-	call CallBattleCore
 
 	ld hl, SpikesDamage
 	call CallBattleCore
@@ -9107,9 +9101,6 @@ BattleCommand_BatonPass: ; 379c9
 	ld a, 1
 	ld [wTypeMatchup], a
 	ld hl, ApplyStatLevelMultiplierOnAllStats
-	call CallBattleCore
-
-	ld hl, InitAbilityVar
 	call CallBattleCore
 
 	ld hl, SpikesDamage
