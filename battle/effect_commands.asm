@@ -1186,25 +1186,20 @@ BattleCommand_Critical: ; 34631
 	and a
 	ret z
 
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .EnemyTurn
-
-	ld a, [EnemyAbility]
+	call GetOpponentAbilityAfterMoldBreaker
 	cp BATTLE_ARMOR
 	ret z
 	cp SHELL_ARMOR
 	ret z
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .EnemyTurn
+
 	ld hl, BattleMonItem
 	ld a, [BattleMonSpecies]
 	jr .Item
 
 .EnemyTurn:
-	ld a, [PlayerAbility]
-	cp BATTLE_ARMOR
-	ret z
-	cp SHELL_ARMOR
-	ret z
 	ld hl, EnemyMonItem
 	ld a, [EnemyMonSpecies]
 
