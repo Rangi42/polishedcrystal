@@ -1307,6 +1307,12 @@ NotifyUnnerve:
 	cont "Berries!"
 	prompt
 
+PoisonHealText:
+	text "<USER>'s"
+	line "Poison Heal"
+	cont "restored health!"
+	prompt
+
 AbilityActivationText:
 	text "<USER>'s"
 	line "<ABIL>"
