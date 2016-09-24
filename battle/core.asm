@@ -1057,7 +1057,13 @@ ResidualDamage: ; 3c716
 	jr z, .got_anim
 	ld hl, HurtByPoisonText
 	ld de, ANIM_PSN
+	push hl
+	push de
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	pop de
+	pop hl
+	and a
 	cp POISON_HEAL
 	jr nz, .got_anim
 	; check if we are at full HP
