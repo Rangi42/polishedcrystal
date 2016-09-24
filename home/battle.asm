@@ -135,14 +135,15 @@ UpdateBattleHuds:: ; 39d4
 	ret
 ; 39e1
 
-GetEnemyAbilityAfterMoldBreaker:: ; 39e1
-; Returns an enemy's ability unless Mold Breaker
+GetOpponentAbilityAfterMoldBreaker:: ; 39e1
+; Returns an opponent's ability unless Mold Breaker
 ; will suppress it.
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	ld b, a
 	push bc
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	pop bc
 	and a
 	cp MOLD_BREAKER
@@ -150,8 +151,63 @@ GetEnemyAbilityAfterMoldBreaker:: ; 39e1
 	ld a, b
 	ret
 .cont_check
+	ld a, b
+	ld de, 1
+	push hl
+	push bc
+	ld hl, MoldBreakerSuppressedAbilities
+	call IsInArray
+	pop bc
+	pop hl
+	jr c, .suppressed
+	ld a, b
+	ret
+.suppressed:
 	ld a, NO_ABILITY
 	ret
+
+MoldBreakerSuppressedAbilities:
+	db BATTLE_ARMOR
+	db BIG_PECKS
+	db DAMP
+	db DRY_SKIN
+	db FILTER
+	db FLASH_FIRE
+	db HYPER_CUTTER
+	db IMMUNITY
+	db INNER_FOCUS
+	db INSOMNIA
+	db KEEN_EYE
+	db LEAF_GUARD
+	db LEVITATE
+	db LIGHTNING_ROD
+	db LIMBER
+	db MAGIC_BOUNCE
+	db MAGMA_ARMOR
+	db MARVEL_SCALE
+	db MOTOR_DRIVE
+	db MULTISCALE
+	db OBLIVIOUS
+	db OVERCOAT
+	db OWN_TEMPO
+	db SAND_VEIL
+	db SAP_SIPPER
+	db SHELL_ARMOR
+	db SHIELD_DUST
+	db SNOW_CLOAK
+	db SOLID_ROCK
+	db SOUNDPROOF
+	db STICKY_HOLD
+	db STURDY
+	db SUCTION_CUPS
+	db THICK_FAT
+	db UNAWARE
+	db VITAL_SPIRIT
+	db VOLT_ABSORB
+	db WATER_ABSORB
+	db WATER_VEIL
+	db WONDER_SKIN
+	db -1
 
 GetBattleVar:: ; 39e1
 ; Preserves hl.
