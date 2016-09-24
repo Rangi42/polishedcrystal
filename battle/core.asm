@@ -1062,7 +1062,7 @@ ResidualDamage: ; 3c716
 	jr nz, .got_anim
 	; check if we are at full HP
 	call CheckFullHP
-	jr nz, .did_psn_brn
+	jr z, .did_psn_brn
 	ld hl, PoisonHealText
 	ld de, ANIM_PSN
 	push de
