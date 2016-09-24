@@ -106,7 +106,7 @@ WeatherAbility:
 	ld a, [Weather]
 	cp b
 	ret z ; don't re-activate it
-	ld a, 0
+	xor a
 	call ShowAbilityActivation
 	ld a, 5
 	ld [WeatherCount], a
@@ -125,7 +125,7 @@ WeatherAbility:
 	cp WEATHER_SANDSTORM
 	jr z, .handlesandstorm
 	; we're dealing with cloud nine
-	ld a, 0
+	xor a
 	ld [WeatherCount], a
 	ld hl, BattleText_TheWeatherSubsided
 	jp StdBattleTextBox
@@ -167,7 +167,7 @@ HealStatusAbility:
 	call GetBattleVar
 	and b
 	ret z ; not afflicted/wrong status
-	ld a, 0
+	xor a
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
@@ -183,7 +183,7 @@ HealStatusAbility:
 	ret
 
 IntimidateAbility:
-	ld a, 0
+	xor a
 	call ShowAbilityActivation
 	callab ResetMiss
 	callab BattleCommand_AttackDown
@@ -194,16 +194,12 @@ AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
 ImposterAbility:
-	ld a, 0
+	xor a
 	call ShowAbilityActivation
 	ret
 
 ShowAbilityActivation::
-; I always liked BW2's ability sliding, but
-; while replicating something similar would
-; be cool, it would probably be major work
-; for little gain. Preserves bc.
-; a=0: turn user's ability, a=1: opponent's
+; a=0: show player's ability, a=1: opponent's
 	push bc
 	and a
 	jr nz, .enemy_activation
@@ -211,6 +207,7 @@ ShowAbilityActivation::
 	call StdBattleTextBox
 	pop bc
 	ret
+
 .enemy_activation
 	ld hl, EnemyAbilityActivationText
 	call StdBattleTextBox

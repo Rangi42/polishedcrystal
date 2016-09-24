@@ -135,7 +135,7 @@ UpdateBattleHuds:: ; 39d4
 	ret
 ; 39e1
 
-MBGetEnemyAbility:: ; 39e1
+GetEnemyAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an enemy's ability unless Mold Breaker
 ; will suppress it.
 	ld a, BATTLE_VARS_ABILITY_OPP

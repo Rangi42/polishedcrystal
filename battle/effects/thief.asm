@@ -23,7 +23,7 @@ BattleCommand_Thief: ; 37492
 
 ; Sticky Hold prevents item theft.
 
-	call MBGetEnemyAbility
+	call GetEnemyAbilityAfterMoldBreaker
 	cp STICKY_HOLD
 	ret z
 
