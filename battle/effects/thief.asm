@@ -21,6 +21,12 @@ BattleCommand_Thief: ; 37492
 	and a
 	ret z
 
+; Sticky Hold prevents item theft.
+
+	ld a, [EnemyAbility]
+	cp STICKY_HOLD
+	ret z
+
 ; Can't steal mail.
 
 	ld [wd265], a
