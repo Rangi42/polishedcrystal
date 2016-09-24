@@ -88,7 +88,7 @@ TraceAbility:
 	call StdBattleTextBox
 	ret
 
-; "permanent" weather actually lasts 255 turns
+; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
 	ld a, WEATHER_RAIN
 	jr WeatherAbility
@@ -108,7 +108,7 @@ WeatherAbility:
 	ret z ; don't re-activate it
 	ld a, 0
 	call ShowAbilityActivation
-	ld a, 255
+	ld a, 5
 	ld [WeatherCount], a
 	ld a, b
 	ld [Weather], a
@@ -198,7 +198,7 @@ ImposterAbility:
 	call ShowAbilityActivation
 	ret
 
-ShowAbilityActivation:
+ShowAbilityActivation::
 ; I always liked BW2's ability sliding, but
 ; while replicating something similar would
 ; be cool, it would probably be major work
