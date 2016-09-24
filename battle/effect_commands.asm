@@ -1259,7 +1259,7 @@ BattleCommand_Critical: ; 34631
 	push bc
 	call GetUserItem
 	ld a, b
-	cp HELD_CRITICAL_UP ; Increased critical chance. Only Scope Lens has this.
+	cp HELD_CRITICAL_UP ; Increased critical chance (Scope Lens and Razor Claw)
 	pop bc
 	jr nz, .Tally
 
@@ -3636,6 +3636,10 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 50
 	ld b, $4
 	call Divide
+
+; Ability boosts
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 
 ; Item boosts
 	call GetUserItem

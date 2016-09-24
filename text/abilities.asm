@@ -510,7 +510,7 @@ ImmunityDescription:
 	next "getting poisoned.@"
 
 FlashFireDescription:
-	db   "Powers Fire moves"
+	db   "Boosts Fire moves"
 	next "if hit by one.@"
 
 ShieldDustDescription:
@@ -815,8 +815,8 @@ TintedLensDescription:
 
 FilterDescription:
 SolidRockDescription:
-	db   "Powers down super-"
-	next "effective moves.@"
+	db   "Reduces super-"
+	next "effective damage.@"
 
 ScrappyDescription:
 	db   "Enables moves to"
@@ -927,7 +927,7 @@ PranksterDescription:
 	next "a status move.@"
 
 SandForceDescription:
-	db   "Powers some moves"
+	db   "Boosts some moves"
 	next "in a sandstorm.@"
 
 CompetitiveDescription:

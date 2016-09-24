@@ -18,7 +18,7 @@ OK	BATTLE_ARMOR
 -	WATER_ABSORB
 -	OBLIVIOUS
 OK	CLOUD_NINE
--	COMPOUND_EYES
+!	COMPOUND_EYES (held item chance increased)
 !	INSOMNIA (activation done)
 !	IMMUNITY (activation done)
 -	FLASH_FIRE
