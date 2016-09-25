@@ -277,11 +277,18 @@ DownloadAbility:
 	callba BattleCommand_StatUpMessage
 	ret
 
+ImposterAbility:
+	call ShowAbilityActivation
+	callba DisableAnimations
+	callba ResetMiss
+	callba BattleCommand_Transform
+	ld de, TRANSFORM
+	callab Call_PlayBattleAnim
+	ret
+
 AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
-ImposterAbility:
-	call ShowAbilityActivation
 	ret
 
 ShowAbilityActivation::

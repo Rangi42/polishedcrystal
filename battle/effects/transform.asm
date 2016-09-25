@@ -1,4 +1,3 @@
-
 BattleCommand_Transform: ; 371cd
 ; transform
 
