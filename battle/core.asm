@@ -6877,6 +6877,7 @@ CheckSleepingTreeMon: ; 3eb38
 	ld a, [TempEnemyMonSpecies]
 	ld c, a
 	callba GetAbility
+	ld a, b
 	cp INSOMNIA
 	jr z, .NotSleeping
 	cp VITAL_SPIRIT
