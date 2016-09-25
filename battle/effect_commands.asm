@@ -4735,6 +4735,15 @@ BattleCommand_SleepTarget: ; 35e5c
 	and a
 	jp nz, PrintDidntAffect2
 
+	call GetOpponentAbilityAfterMoldBreaker
+	cp INSOMNIA
+	jr z, .ability_protected
+	cp VITAL_SPIRIT
+	jr nz, .no_ability
+.ability_protected
+	callba ShowEnemyAbilityActivation
+	jp PrintDidntAffect2
+.no_ability
 	ld a, [de]
 	and a
 	jr nz, .fail
@@ -4793,6 +4802,9 @@ BattleCommand_PoisonTarget: ; 35eee
 	ld a, b
 	cp HELD_PREVENT_POISON
 	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp IMMUNITY
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -4823,7 +4835,14 @@ BattleCommand_Poison: ; 35f2c
 	ld a, [TypeModifier]
 	and $7f
 	jp z, .failed
+	call GetOpponentAbilityAfterMoldBreaker
+	cp IMMUNITY
+	jr nz, .no_ability
+	callba ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
+	jp .failed
 
+.no_ability
 	call CheckIfTargetIsPoisonType
 	jp z, .failed
 
@@ -5114,6 +5133,9 @@ BattleCommand_BurnTarget: ; 3608c
 	ld a, b
 	cp HELD_PREVENT_BURN
 	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp WATER_VEIL
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -5192,6 +5214,9 @@ BattleCommand_FreezeTarget: ; 36102
 	ld a, b
 	cp HELD_PREVENT_FREEZE
 	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp MAGMA_ARMOR
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -5246,6 +5271,9 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call GetOpponentItem
 	ld a, b
 	cp HELD_PREVENT_PARALYZE
+	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LIMBER
 	ret z
 	ld a, [EffectFailed]
 	and a
@@ -6039,6 +6067,12 @@ BattleCommand_Burn:
 	ld a, [TypeModifier]
 	and $7f
 	jp z, .didnt_affect
+	call GetOpponentAbilityAfterMoldBreaker
+	cp WATER_VEIL
+	jr nz, .no_ability
+	callba ShowEnemyAbilityActivation
+	jp .didnt_affect
+.no_ability
 	call CheckIfTargetIsFireType
 	jp z, .didnt_affect
 	call GetOpponentItem
@@ -7446,6 +7480,12 @@ BattleCommand_Paralyze: ; 36dc7
 	ld a, [TypeModifier]
 	and $7f
 	jp z, .didnt_affect
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LIMBER
+	jr nz, .no_ability
+	callba ShowEnemyAbilityActivation
+	jr .didnt_affect
+.no_ability
 	call CheckIfTargetIsElectricType
 	jr z, .didnt_affect
 	call GetOpponentItem
