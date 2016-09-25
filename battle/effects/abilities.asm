@@ -14,20 +14,6 @@ RunActivationAbilitiesInner:
 .continue
 	cp DRIZZLE
 	jp z, DrizzleAbility
-	cp LIMBER ; if acquired
-	jp z, LimberAbility
-	cp CLOUD_NINE
-	jp z, CloudNineAbility
-	cp INSOMNIA ; if acquired
-	jp z, InsomniaAbility
-	cp IMMUNITY ; if acquired
-	jp z, ImmunityAbility
-	cp INTIMIDATE
-	jp z, IntimidateAbility
-	cp MAGMA_ARMOR ; if acquired
-	jp z, MagmaArmorAbility
-	cp WATER_VEIL ; if acquired
-	jp z, WaterVeilAbility
 	cp SAND_STREAM
 	jp z, SandStreamAbility
 	cp PRESSURE ; just prints a message
@@ -59,6 +45,31 @@ RunActivationAbilitiesInner:
 .skip_unnerve
 	cp IMPOSTER
 	jp z, ImposterAbility
+	jp RunStatusHealAbilities
+
+RunEnemyStatusHealAbilities:
+	callba SwitchTurnCore
+	call RunStatusHealAbilities
+	callba SwitchTurnCore
+	ret
+
+RunStatusHealAbilities:
+; Procs abilities that protect against statuses.
+	; Needed because this is called elsewhere.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp LIMBER
+	jp z, LimberAbility
+	cp IMMUNITY
+	jp z, ImmunityAbility
+	cp MAGMA_ARMOR
+	jp z, MagmaArmorAbility
+	cp WATER_VEIL
+	jp z, WaterVeilAbility
+	cp INSOMNIA
+	jp z, InsomniaAbility
+	cp VITAL_SPIRIT
+	jp z, VitalSpiritAbility
 	ret
 
 TraceAbility:
@@ -106,7 +117,6 @@ WeatherAbility:
 	ld a, [Weather]
 	cp b
 	ret z ; don't re-activate it
-	xor a
 	call ShowAbilityActivation
 	ld a, 5
 	ld [WeatherCount], a
@@ -167,12 +177,13 @@ HealStatusAbility:
 	call GetBattleVar
 	and b
 	ret z ; not afflicted/wrong status
-	xor a
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
+	ld hl, BecameHealthyText
+	call StdBattleTextBox
 	ld a, [hBattleTurn]
 	and a
 	jr z, .is_player
@@ -182,8 +193,39 @@ HealStatusAbility:
 	callab CalcPlayerStats
 	ret
 
+RunEnemySynchronizeAbility:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SYNCHRONIZE
+	call z, SynchronizeAbility
+	callba BattleCommand_SwitchTurn
+	ret
+
+SynchronizeAbility:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and ALL_STATUS
+	ret z ; not statused
+	call ShowAbilityActivation
+	callba ResetMiss
+	callba DisableAnimations
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	cp 1 << PSN
+	jr z, .is_psn
+	cp 1 << BRN
+	jr z, .is_brn
+	callba BattleCommand_Paralyze
+	ret
+.is_psn
+	callba BattleCommand_Poison
+	ret
+.is_brn
+	callba BattleCommand_Burn
+	ret
+
 IntimidateAbility:
-	xor a
 	call ShowAbilityActivation
 	callab ResetMiss
 	callab BattleCommand_AttackDown
@@ -194,11 +236,15 @@ AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
 ImposterAbility:
-	xor a
 	call ShowAbilityActivation
 	ret
 
 ShowAbilityActivation::
+	xor a
+	jr ShowAbilityActivationInner
+ShowEnemyAbilityActivation::
+	ld a, 1
+ShowAbilityActivationInner:
 ; a=0: show player's ability, a=1: opponent's
 	push bc
 	and a

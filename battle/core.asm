@@ -3866,14 +3866,13 @@ TryToRunAwayFromBattle: ; 3d8b3
 	dec a
 	jp nz, .cant_run_from_trainer
 
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	jp nz, .cant_escape
-
-	ld a, [wPlayerWrapCount]
-	and a
-	jp nz, .cant_escape
-
+	ld a, [PlayerAbility]
+	cp RUN_AWAY
+	jr nz, .no_flee_ability
+	call SetPlayerTurn
+	callba ShowAbilityActivation
+	jp .can_escape
+.no_flee_ability
 	push hl
 	push de
 	ld a, [BattleMonItem]
@@ -3893,6 +3892,17 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jp .can_escape
 
 .no_flee_item
+	ld a, [EnemySubStatus2]
+	bit SUBSTATUS_CANT_RUN, a
+	jp nz, .cant_escape
+
+	ld a, [wPlayerWrapCount]
+	and a
+	jp nz, .cant_escape
+
+	call SetPlayerTurn
+	call CheckIfTrappedByAbility_Core
+	jp z, .skip_inescapable_text
 	ld a, [wNumFleeAttempts]
 	inc a
 	ld [wNumFleeAttempts], a
@@ -3968,7 +3978,9 @@ TryToRunAwayFromBattle: ; 3d8b3
 
 .print_inescapable_text
 	call StdBattleTextBox
-	ld a, $1
+.skip_inescapable_text
+	; for abilities preventing escape to avoid redundancy
+	ld a, 1
 	ld [wFailedToFlee], a
 	call LoadTileMapToTempTileMap
 	and a
@@ -4015,6 +4027,11 @@ TryToRunAwayFromBattle: ; 3d8b3
 	ret
 ; 3da0d
 
+CheckIfTrappedByAbility_Core:
+	callba _CheckIfTrappedByAbility
+	ld a, b
+	and a
+	ret
 
 InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
@@ -4642,6 +4659,7 @@ ItemRecoveryAnim: ; 3ddc8
 	pop hl
 	ret
 ; 3dde9
+
 
 UseHeldStatusHealingItem: ; 3dde9
 	callab GetOpponentItem
@@ -6475,6 +6493,30 @@ endc
 
 ; If it hasn't, we need to initialize the DVs
 ; (HP is initialized at the end of the battle)
+	push bc
+	ld a, [PartyMon1DVs + 1]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	pop bc
+	cp SYNCHRONIZE
+	jr nz, .no_synchronize
+; Synchronize sets the nature 100% of the time. This is done by copying the DV.
+; You could randomize the DVs and ensure the correct nature, but this complicates
+; the code, and doing it this way is arguably a feature (less need of SR for good
+; DVs).
+	call GetRoamMonDVs
+	inc hl
+	call BattleRandom
+	ld [hld], a
+	ld c, a
+	ld a, [PartyMon1DVs]
+	ld [hl], a
+	ld b, a
+	jr .UpdateDVs
+.no_synchronize
 	call GetRoamMonDVs
 	inc hl
 	call BattleRandom
@@ -6503,11 +6545,27 @@ endc
 ; Generate new random DVs
 	call BattleRandom
 	ld b, a
+	; Save this in case the Unown letter generated from Synchronize is locked
+	ld d, a
+	push de
 	call BattleRandom
 	ld c, a
+	push bc
+	ld a, [PartyMon1DVs + 1]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	pop bc
+	cp SYNCHRONIZE
+	jr nz, .UpdateDVs
+	ld a, [PartyMon1DVs]
+	ld b, a
 
 .UpdateDVs:
 ; Input DVs in register bc
+	pop de
 	ld hl, EnemyMonDVs
 	ld a, b
 	ld [hli], a
@@ -6533,9 +6591,17 @@ endc
 	predef GetVariant
 ; Can't use any letters that haven't been unlocked
 ; If combined with forced shiny battletype, causes an infinite loop
+	push de
 	call CheckUnownLetter
-	jr c, .GenerateDVs ; try again
-
+	pop de
+	jr nc, .Happiness
+	; If Synchronize adjusted the nature, revert it to the random value and see
+	; if that's valid
+	ld a, d
+	ld hl, EnemyMonDVs
+	ld [hl], a
+	call CheckUnownLetter
+	jr c, .GenerateDVs ; re-roll
 
 .Magikarp:
 ; Skimming this part recommended
@@ -6570,7 +6636,7 @@ endc
 ; Try again if > 1598
 	ld a, [MagikarpLength + 1]
 	cp a, $40
-	jr nc, .GenerateDVs
+	jp nc, .GenerateDVs
 
 .CheckMagikarpArea:
 	ld a, [MapGroup]
@@ -6586,7 +6652,7 @@ endc
 ; Floor at length 1024
 	ld a, [MagikarpLength]
 	cp a, 1024 >> 8
-	jr c, .GenerateDVs ; try again
+	jp c, .GenerateDVs ; try again
 
 
 ; Finally done with DVs
@@ -6804,6 +6870,18 @@ CheckSleepingTreeMon: ; 3eb38
 	ld a, [BattleType]
 	cp a, BATTLETYPE_TREE
 	jr nz, .NotSleeping
+
+; Nor if the Pokémon has Insomnia/Vital Spirit
+	ld a, [EnemyMonDVs + 1] ; is properly updated at this point, so OK to check
+	ld b, a
+	ld a, [TempEnemyMonSpecies]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	cp INSOMNIA
+	jr z, .NotSleeping
+	cp VITAL_SPIRIT
+	jr z, .NotSleeping
 
 ; Get list for the time of day
 	ld hl, .Morn
