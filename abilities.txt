@@ -26,7 +26,7 @@ OK	CLOUD_NINE
 -	OWN_TEMPO
 -	SUCTION_CUPS
 ?	INTIMIDATE (likely not working)
--	SHADOW_TAG
+!	SHADOW_TAG (Routines done, not fully used yet)
 -	LEVITATE
 -	EFFECT_SPORE
 -	SYNCHRONIZE
@@ -43,7 +43,7 @@ OK	TRACE
 -	INNER_FOCUS
 !	MAGMA_ARMOR (activation done)
 !	WATER_VEIL (activation done)
--	MAGNET_PULL
+!	MAGNET_PULL (Routines done, not fully used yet)
 -	SOUNDPROOF
 -	RAIN_DISH
 OK	SAND_STREAM
@@ -68,7 +68,7 @@ OK	STICKY_HOLD
 -	SWARM
 -	ROCK_HEAD
 OK	DROUGHT
--	ARENA_TRAP
+!	ARENA_TRAP (Routines done, not fully used yet)
 !	VITAL_SPIRIT (activation done)
 OK	SHELL_ARMOR
 -	TANGLED_FEET
@@ -92,7 +92,7 @@ OK	SHELL_ARMOR
 -	NO_GUARD
 -	TECHNICIAN
 -	LEAF_GUARD
--	MOLD_BREAKER
+OK	MOLD_BREAKER (use GetEnemyAbilityAfterMoldBreaker)
 -	SUPER_LUCK
 -	AFTERMATH
 -	ANTICIPATION
