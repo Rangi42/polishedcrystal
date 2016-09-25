@@ -198,6 +198,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
 * Add: The Teleport Abra is always in Indigo Plateau.
+* Add: Politoed can learn Energy Ball.
 * Edit: Give in-game trades good natures.
 * Edit: TM prices from OR/AS.
 * Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
