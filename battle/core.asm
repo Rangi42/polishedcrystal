@@ -6871,6 +6871,17 @@ CheckSleepingTreeMon: ; 3eb38
 	cp a, BATTLETYPE_TREE
 	jr nz, .NotSleeping
 
+; Nor if the Pokémon has Insomnia/Vital Spirit
+	ld a, [EnemyMonDVs + 1] ; is properly updated at this point, so OK to check
+	ld b, a
+	ld a, [TempEnemyMonSpecies]
+	ld c, a
+	callba GetAbility
+	cp INSOMNIA
+	jr z, .NotSleeping
+	cp VITAL_SPIRIT
+	jr z, .NotSleeping
+
 ; Get list for the time of day
 	ld hl, .Morn
 	ld a, [TimeOfDay]
