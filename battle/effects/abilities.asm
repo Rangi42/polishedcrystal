@@ -230,12 +230,53 @@ SynchronizeAbility:
 
 IntimidateAbility:
 	call ShowAbilityActivation
+	callba DisableAnimations
 	callba ResetMiss
 	callba BattleCommand_AttackDown
 	callba BattleCommand_StatDownMessage
 	ret
 
 DownloadAbility:
+; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
+	call ShowAbilityActivation
+	callba DisableAnimations
+	ld hl, EnemyMonDefense
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld hl, BattleMonDefense
+.ok
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	ld c, a
+	ld hl, EnemyMonSpclDef + 1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok2
+	ld hl, BattleMonSpclDef + 1
+.ok2
+	ld a, [hld]
+	ld e, a
+	ld a, [hl]
+	cp b
+	jr c, .inc_spatk
+	jr nz, .inc_atk
+	; The high defense bits are equal, so compare the lower bits
+	ld a, c
+	cp e
+	jr c, .inc_atk
+.inc_spatk
+	callba ResetMiss
+	callba BattleCommand_SpecialAttackUp
+	callba BattleCommand_StatUpMessage
+	ret
+.inc_atk
+	callba ResetMiss
+	callba BattleCommand_AttackUp
+	callba BattleCommand_StatUpMessage
+	ret
+
 AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
