@@ -193,6 +193,41 @@ HealStatusAbility:
 	callab CalcPlayerStats
 	ret
 
+RunEnemySynchronizeAbility:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SYNCHRONIZE
+	call z, SynchronizeAbility
+	callba BattleCommand_SwitchTurn
+	ret
+
+SynchronizeAbility:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and ALL_STATUS
+	ret z ; not statused
+	call ShowAbilityActivation
+	callba ResetMiss
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	cp 1 << PSN
+	jr z, .is_psn
+	cp 1 << BRN
+	jr z, .is_brn
+	cp 1 << PAR
+	jr z, .is_par
+	ret ; shouldn't happen
+.is_psn
+	callba BattleCommand_Poison
+	ret
+.is_brn
+	callba BattleCommand_Burn
+	ret
+.is_par
+	callba BattleCommand_Paralyze
+	ret
+
 IntimidateAbility:
 	call ShowAbilityActivation
 	callab ResetMiss

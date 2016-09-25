@@ -4807,6 +4807,7 @@ BattleCommand_PoisonTarget: ; 35eee
 	ld hl, WasPoisonedText
 	call StdBattleTextBox
 
+	callba RunEnemySynchronizeAbility
 	callba UseHeldStatusHealingItem
 	ret nz
 	callba RunEnemyStatusHealAbilities
@@ -4890,6 +4891,7 @@ BattleCommand_Poison: ; 35f2c
 	call StdBattleTextBox
 
 .finished
+	callba RunEnemySynchronizeAbility
 	callba UseHeldStatusHealingItem
 	ret nz
 	callba RunEnemyStatusHealAbilities
@@ -5130,6 +5132,7 @@ BattleCommand_BurnTarget: ; 3608c
 	ld hl, WasBurnedText
 	call StdBattleTextBox
 
+	callba RunEnemySynchronizeAbility
 	callba UseHeldStatusHealingItem
 	ret nz
 	callba RunEnemyStatusHealAbilities
@@ -5259,6 +5262,7 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
 	call PrintParalyze
+	callba RunEnemySynchronizeAbility
 	callba UseHeldStatusHealingItem
 	ret nz
 	callba RunEnemyStatusHealAbilities
@@ -6093,6 +6097,7 @@ BattleCommand_Burn:
 	call UpdateBattleHuds
 	ld hl, WasBurnedText
 	call StdBattleTextBox
+	callba RunEnemySynchronizeAbility
 	callba UseHeldStatusHealingItem
 	ret nz
 	callba RunEnemyStatusHealAbilities
@@ -7511,6 +7516,7 @@ BattleCommand_Paralyze: ; 36dc7
 	call CallBattleCore
 	call UpdateBattleHuds
 	call PrintParalyze
+	callba RunEnemySynchronizeAbility
 	callba UseHeldStatusHealingItem
 	ret nz
 	callba RunEnemyStatusHealAbilities
