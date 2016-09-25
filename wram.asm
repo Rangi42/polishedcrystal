@@ -723,7 +723,7 @@ wPlayerFutureSightDamage:: ds 2 ; c727
 wEnemyFutureSightDamage:: ds 2 ; c729
 wPlayerRageCounter:: ds 1 ; c72b
 wEnemyRageCounter:: ds 1 ; c72c
-wBeatUpHitAtLeastOnce:: ds 1 ; c72d
+DisableAnimations:: ds 1 ; used to temporarily disable animations for abilities
 wPlayerTrappingMove:: ds 1 ; c72e
 wEnemyTrappingMove:: ds 1 ; c72f
 wPlayerWrapCount:: ds 1 ; c730

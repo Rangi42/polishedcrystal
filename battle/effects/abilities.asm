@@ -209,23 +209,20 @@ SynchronizeAbility:
 	ret z ; not statused
 	call ShowAbilityActivation
 	callba ResetMiss
+	callba DisableAnimations
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	cp 1 << PSN
 	jr z, .is_psn
 	cp 1 << BRN
 	jr z, .is_brn
-	cp 1 << PAR
-	jr z, .is_par
-	ret ; shouldn't happen
+	callba BattleCommand_Paralyze
+	ret
 .is_psn
 	callba BattleCommand_Poison
 	ret
 .is_brn
 	callba BattleCommand_Burn
-	ret
-.is_par
-	callba BattleCommand_Paralyze
 	ret
 
 IntimidateAbility:
