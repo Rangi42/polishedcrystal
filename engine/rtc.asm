@@ -38,10 +38,10 @@ endr
 
 TimesOfDay: ; 14044
 ; hours for the time of day
-; 04-09 morn | 10-17 day | 18-03 nite
-	db 04, NITE
-	db 10, MORN
-	db 18, DAY
+; 0400-0959 morn | 1000-1959 day | 2000-0359 nite
+	db MORN_HOUR, NITE
+	db DAY_HOUR, MORN
+	db NITE_HOUR, DAY
 	db 24, NITE
 	db -1, MORN
 ; 1404e

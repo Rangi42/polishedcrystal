@@ -334,11 +334,11 @@ OakText_ResponseToSetTime: ; 0x908b8
 	ld b, h
 	ld c, l
 	ld a, [wInitHourBuffer]
-	cp 4
+	cp MORN_HOUR
 	jr c, .NITE
-	cp 11
+	cp DAY_HOUR
 	jr c, .MORN
-	cp 18
+	cp NITE_HOUR
 	jr c, .DAY
 .NITE:
 	ld hl, .sodark
@@ -623,11 +623,11 @@ PrintHour: ; 90b3e (24:4b3e)
 
 GetTimeOfDayString: ; 90b58 (24:4b58)
 	ld a, c
-	cp 4
+	cp MORN_HOUR
 	jr c, .nite
-	cp 10
+	cp DAY_HOUR
 	jr c, .morn
-	cp 18
+	cp NITE_HOUR
 	jr c, .day
 .nite
 	ld de, .NITE
