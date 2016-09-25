@@ -11,7 +11,7 @@ OK	DRIZZLE
 OK	BATTLE_ARMOR
 -	STURDY
 -	DAMP
-!	LIMBER (activation done)
+OK	LIMBER
 -	SAND_VEIL
 -	STATIC
 -	VOLT_ABSORB
@@ -19,8 +19,8 @@ OK	BATTLE_ARMOR
 -	OBLIVIOUS
 OK	CLOUD_NINE
 !	COMPOUND_EYES (held item chance increased)
-!	INSOMNIA (activation done)
-!	IMMUNITY (activation done)
+OK	INSOMNIA
+!	IMMUNITY (needs overworld fix)
 -	FLASH_FIRE
 -	SHIELD_DUST
 -	OWN_TEMPO
@@ -41,8 +41,8 @@ OK	TRACE
 -	HUGE_POWER
 -	POISON_POINT
 -	INNER_FOCUS
-!	MAGMA_ARMOR (activation done)
-!	WATER_VEIL (activation done)
+OK	MAGMA_ARMOR
+OK	WATER_VEIL
 !	MAGNET_PULL (Routines done, not fully used yet)
 -	SOUNDPROOF
 -	RAIN_DISH
@@ -69,7 +69,7 @@ OK	STICKY_HOLD
 -	ROCK_HEAD
 OK	DROUGHT
 !	ARENA_TRAP (Routines done, not fully used yet)
-!	VITAL_SPIRIT (activation done)
+OK	VITAL_SPIRIT
 OK	SHELL_ARMOR
 -	TANGLED_FEET
 -	MOTOR_DRIVE
