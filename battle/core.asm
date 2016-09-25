@@ -6493,6 +6493,30 @@ endc
 
 ; If it hasn't, we need to initialize the DVs
 ; (HP is initialized at the end of the battle)
+	push bc
+	ld a, [PartyMon1DVs + 1]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	pop bc
+	cp SYNCHRONIZE
+	jr nz, .no_synchronize
+; Synchronize sets the nature 100% of the time. This is done by copying the DV.
+; You could randomize the DVs and ensure the correct nature, but this complicates
+; the code, and doing it this way is arguably a feature (less need of SR for good
+; DVs).
+	call GetRoamMonDVs
+	inc hl
+	call BattleRandom
+	ld [hld], a
+	ld c, a
+	ld a, [PartyMon1DVs]
+	ld [hl], a
+	ld b, a
+	jr .UpdateDVs
+.no_synchronize
 	call GetRoamMonDVs
 	inc hl
 	call BattleRandom
@@ -6523,6 +6547,18 @@ endc
 	ld b, a
 	call BattleRandom
 	ld c, a
+	push bc
+	ld a, [PartyMon1DVs + 1]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	callba GetAbility
+	ld a, b
+	pop bc
+	cp SYNCHRONIZE
+	jr nz, .UpdateDVs
+	ld a, [PartyMon1DVs]
+	ld b, a
 
 .UpdateDVs:
 ; Input DVs in register bc
@@ -6604,7 +6640,7 @@ endc
 ; Floor at length 1024
 	ld a, [MagikarpLength]
 	cp a, 1024 >> 8
-	jr c, .GenerateDVs ; try again
+	jp c, .GenerateDVs ; try again
 
 
 ; Finally done with DVs
