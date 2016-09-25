@@ -148,6 +148,8 @@ The game's data files do a fairly good job of listing things you'll want to know
 
 **Where do I get this item?**
 
+* The Helix Fossil and Dome Fossil are in Quiet Cave.
+* The Old Amber is in Pewter City.
 * The Razor Claw is in Quiet Cave, or held by some wild Sneasel.
 * The Razor Fang is in Victory Road, or held by some wild Gligar.
 * The Electirizer is in Rock Tunnel, or held by some wild Electabuzz.
