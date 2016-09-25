@@ -14,8 +14,6 @@ RunActivationAbilitiesInner:
 .continue
 	cp DRIZZLE
 	jp z, DrizzleAbility
-	call RunStatusHealAbilities
-	ret z
 	cp SAND_STREAM
 	jp z, SandStreamAbility
 	cp PRESSURE ; just prints a message
@@ -47,7 +45,7 @@ RunActivationAbilitiesInner:
 .skip_unnerve
 	cp IMPOSTER
 	jp z, ImposterAbility
-	ret
+	jp RunStatusHealAbilities
 
 RunEnemyStatusHealAbilities:
 	callba SwitchTurnCore
@@ -57,7 +55,6 @@ RunEnemyStatusHealAbilities:
 
 RunStatusHealAbilities:
 ; Procs abilities that protect against statuses.
-; Returns z if an ability matched.
 	; Needed because this is called elsewhere.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -120,7 +117,6 @@ WeatherAbility:
 	ld a, [Weather]
 	cp b
 	ret z ; don't re-activate it
-	xor a
 	call ShowAbilityActivation
 	ld a, 5
 	ld [WeatherCount], a
@@ -181,7 +177,6 @@ HealStatusAbility:
 	call GetBattleVar
 	and b
 	ret z ; not afflicted/wrong status
-	xor a
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
@@ -193,16 +188,12 @@ HealStatusAbility:
 	and a
 	jr z, .is_player
 	callab CalcEnemyStats
-	; set zero flag
-	xor a
 	ret
 .is_player
 	callab CalcPlayerStats
-	xor a
 	ret
 
 IntimidateAbility:
-	xor a
 	call ShowAbilityActivation
 	callab ResetMiss
 	callab BattleCommand_AttackDown
@@ -213,11 +204,15 @@ AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
 ImposterAbility:
-	xor a
 	call ShowAbilityActivation
 	ret
 
 ShowAbilityActivation::
+	xor a
+	jr ShowAbilityActivationInner
+ShowEnemyAbilityActivation::
+	ld a, 1
+ShowAbilityActivationInner:
 ; a=0: show player's ability, a=1: opponent's
 	push bc
 	and a

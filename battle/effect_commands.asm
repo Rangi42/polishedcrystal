@@ -4950,8 +4950,17 @@ CheckIfTargetIsSomeType:
 	ld b, a
 	ld a, [hBattleTurn]
 	jr CheckIfSomeoneIsSomeType
+CheckIfUserIsFlyingType:
+	ld a, FLYING
+	jr CheckIfUserIsSomeType
 CheckIfUserIsPoisonType:
 	ld a, POISON
+	jr CheckIfUserIsSomeType
+CheckIfUserIsGhostType:
+	ld a, GHOST
+	jr CheckIfUserIsSomeType
+CheckIfUserIsSteelType:
+	ld a, STEEL
 CheckIfUserIsSomeType:
 	ld b, a
 	ld a, [hBattleTurn]
@@ -6356,6 +6365,8 @@ BattleCommand_Teleport: ; 36778
 	call GetBattleVar
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .failed
+	call CheckIfTrappedByAbility
+	jr z, .failed
 ; Only need to check these next things if it's your turn
 	ld a, [hBattleTurn]
 	and a
@@ -6411,6 +6422,66 @@ BattleCommand_Teleport: ; 36778
 
 ; 36804
 
+
+CheckIfTrappedByAbility:
+	call _CheckIfTrappedByAbility
+	ld a, b
+	and a
+	ret
+_CheckIfTrappedByAbility:
+	; Wrapper around ability checks to ensure that no double-traps
+	; happen.
+	call CheckIfTrappedByAbilityInner
+	ld a, b
+	and a
+	ret nz ; we aren't trapped
+	call BattleCommand_SwitchTurn
+	call CheckIfTrappedByAbilityInner
+	call BattleCommand_SwitchTurn
+	ld a, b
+	and a
+	jp z, .is_double_trap
+	ld b, 0
+	ret
+.is_double_trap
+	ld b, 1
+	ret
+
+CheckIfTrappedByAbilityInner:
+	; Returns b=0 if trapped, b=1 otherwise
+	ld b, 1
+	; Ghost types are immune to all trapping abilities
+	call CheckIfUserIsGhostType
+	ret z
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp MAGNET_PULL
+	jr z, .has_magnet_pull
+	cp ARENA_TRAP
+	jr z, .has_arena_trap
+	cp SHADOW_TAG
+	jr z, .is_trapped
+	ret
+.has_magnet_pull
+	; Only works on Steel types
+	call CheckIfUserIsSteelType
+	ret nz
+	; Except if they also have Magnet Pull
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp MAGNET_PULL
+	ret z
+	jr .is_trapped
+.has_arena_trap
+	; Doesn't work on flying types or levitate users
+	call CheckIfUserIsFlyingType
+	ret z
+	ld a, BATTLE_VARS_ABILITY
+	cp LEVITATE
+	ret z
+.is_trapped
+	ld b, 0
+	ret
 
 SetBattleDraw: ; 36804
 	ld a, [wBattleResult]

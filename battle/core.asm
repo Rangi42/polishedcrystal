@@ -3866,14 +3866,13 @@ TryToRunAwayFromBattle: ; 3d8b3
 	dec a
 	jp nz, .cant_run_from_trainer
 
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	jp nz, .cant_escape
-
-	ld a, [wPlayerWrapCount]
-	and a
-	jp nz, .cant_escape
-
+	ld a, [PlayerAbility]
+	cp RUN_AWAY
+	jr nz, .no_flee_ability
+	call SetPlayerTurn
+	callba ShowAbilityActivation
+	jp .can_escape
+.no_flee_ability
 	push hl
 	push de
 	ld a, [BattleMonItem]
@@ -3893,6 +3892,17 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jp .can_escape
 
 .no_flee_item
+	ld a, [EnemySubStatus2]
+	bit SUBSTATUS_CANT_RUN, a
+	jp nz, .cant_escape
+
+	ld a, [wPlayerWrapCount]
+	and a
+	jp nz, .cant_escape
+
+	call SetPlayerTurn
+	call CheckIfTrappedByAbility_Core
+	jp z, .skip_inescapable_text
 	ld a, [wNumFleeAttempts]
 	inc a
 	ld [wNumFleeAttempts], a
@@ -3968,7 +3978,9 @@ TryToRunAwayFromBattle: ; 3d8b3
 
 .print_inescapable_text
 	call StdBattleTextBox
-	ld a, $1
+.skip_inescapable_text
+	; for abilities preventing escape to avoid redundancy
+	ld a, 1
 	ld [wFailedToFlee], a
 	call LoadTileMapToTempTileMap
 	and a
@@ -4015,6 +4027,11 @@ TryToRunAwayFromBattle: ; 3d8b3
 	ret
 ; 3da0d
 
+CheckIfTrappedByAbility_Core:
+	callba _CheckIfTrappedByAbility
+	ld a, b
+	and a
+	ret
 
 InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
