@@ -6545,6 +6545,9 @@ endc
 ; Generate new random DVs
 	call BattleRandom
 	ld b, a
+	; Save this in case the Unown letter generated from Synchronize is locked
+	ld d, a
+	push de
 	call BattleRandom
 	ld c, a
 	push bc
@@ -6562,6 +6565,7 @@ endc
 
 .UpdateDVs:
 ; Input DVs in register bc
+	pop de
 	ld hl, EnemyMonDVs
 	ld a, b
 	ld [hli], a
@@ -6587,9 +6591,17 @@ endc
 	predef GetVariant
 ; Can't use any letters that haven't been unlocked
 ; If combined with forced shiny battletype, causes an infinite loop
+	push de
 	call CheckUnownLetter
-	jr c, .GenerateDVs ; try again
-
+	pop de
+	jr nc, .Happiness
+	; If Synchronize adjusted the nature, revert it to the random value and see
+	; if that's valid
+	ld a, d
+	ld hl, EnemyMonDVs
+	ld [hl], a
+	call CheckUnownLetter
+	jr c, .GenerateDVs ; re-roll
 
 .Magikarp:
 ; Skimming this part recommended
@@ -6624,7 +6636,7 @@ endc
 ; Try again if > 1598
 	ld a, [MagikarpLength + 1]
 	cp a, $40
-	jr nc, .GenerateDVs
+	jp nc, .GenerateDVs
 
 .CheckMagikarpArea:
 	ld a, [MapGroup]
