@@ -3,6 +3,10 @@
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
 
+TODO: Investigate overworld effects. Currently, only Immunity and Poison Heal have
+appropriately changed overworld effects. Figure out which abilities have those,
+and fix it.
+
 ---
 
 -	STENCH
@@ -25,7 +29,7 @@ OK	IMMUNITY
 -	SHIELD_DUST
 -	OWN_TEMPO
 -	SUCTION_CUPS
-?	INTIMIDATE (likely not working)
+OK	INTIMIDATE
 !	SHADOW_TAG (Routines done, not fully used yet)
 -	LEVITATE
 -	EFFECT_SPORE

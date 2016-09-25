@@ -12,19 +12,24 @@ RunActivationAbilitiesInner:
 	jr nz, .continue
 	ret ; the trace failed, so don't continue
 .continue
+	; Do Imposter second to allow Transformed abilities to activate
+	cp IMPOSTER
+	jp z, ImposterAbility
 	cp DRIZZLE
 	jp z, DrizzleAbility
+	cp DROUGHT
+	jp z, DroughtAbility
 	cp SAND_STREAM
 	jp z, SandStreamAbility
+	cp CLOUD_NINE
+	jp z, CloudNineAbility
+	cp INTIMIDATE
+	jp z, IntimidateAbility
 	cp PRESSURE ; just prints a message
 	jr nz, .skip_pressure
 	ld hl, NotifyPressure
 	call StdBattleTextBox
 .skip_pressure
-	cp SAND_STREAM
-	jp z, SandStreamAbility
-	cp DROUGHT
-	jp z, DroughtAbility
 	cp DOWNLOAD
 	jp z, DownloadAbility
 	cp MOLD_BREAKER ; just prints a message
@@ -43,8 +48,6 @@ RunActivationAbilitiesInner:
 	ld hl, NotifyUnnerve
 	call StdBattleTextBox
 .skip_unnerve
-	cp IMPOSTER
-	jp z, ImposterAbility
 	jp RunStatusHealAbilities
 
 RunEnemyStatusHealAbilities:
@@ -227,8 +230,9 @@ SynchronizeAbility:
 
 IntimidateAbility:
 	call ShowAbilityActivation
-	callab ResetMiss
-	callab BattleCommand_AttackDown
+	callba ResetMiss
+	callba BattleCommand_AttackDown
+	callba BattleCommand_StatDownMessage
 	ret
 
 DownloadAbility:
