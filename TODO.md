@@ -118,3 +118,4 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Abilities in general
 * First Pokémon walks behind you
 * Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
+* Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
