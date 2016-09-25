@@ -1683,6 +1683,9 @@ BattleCommand_CheckHit: ; 34d32
 	call .PoisonTypeUsingToxic
 	ret z
 
+	call .NoGuardCheck
+	ret z
+
 	call .FlyDigMoves
 	jp nz, .Miss
 
@@ -1912,6 +1915,14 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 
 	cp BLIZZARD
+	ret
+
+.NoGuardCheck:
+	ld a, [PlayerAbility]
+	cp NO_GUARD
+	ret z
+	ld a, [EnemyAbility]
+	cp NO_GUARD
 	ret
 
 .StatModifiers:
