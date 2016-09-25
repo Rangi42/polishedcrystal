@@ -6344,10 +6344,6 @@ BattleCommand_Teleport: ; 36778
 	cp BATTLETYPE_KANTO_LEGEND
 	jr z, .failed
 
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVar
-	bit SUBSTATUS_CANT_RUN, a
-	jr nz, .failed
 ; Can't teleport from a trainer battle
 	ld a, [wBattleMode]
 	dec a
@@ -6356,6 +6352,10 @@ BattleCommand_Teleport: ; 36778
 	call GetBattleVar
 	cp RUN_AWAY
 	jr z, .run_away
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVar
+	bit SUBSTATUS_CANT_RUN, a
+	jr nz, .failed
 ; Only need to check these next things if it's your turn
 	ld a, [hBattleTurn]
 	and a
