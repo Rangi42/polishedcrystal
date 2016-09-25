@@ -6348,28 +6348,40 @@ BattleCommand_Teleport: ; 36778
 	call GetBattleVar
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .failed
-; Only need to check these next things if it's your turn
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy_turn
 ; Can't teleport from a trainer battle
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .failed
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp RUN_AWAY
+	jr z, .run_away
+; Only need to check these next things if it's your turn
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy_turn
 ; If your level is greater than the opponent's, you run without fail.
 	ld a, [CurPartyLevel]
 	ld b, a
 	ld a, [BattleMonLevel]
 	cp b
 	jr nc, .run_away
+	jr .got_vars
+.enemy_turn
+	ld a, [BattleMonLevel]
+	ld b, a
+	ld a, [CurPartyLevel]
+	cp b
+	jr nc, .run_away
+.got_vars
 ; Generate a number between 0 and (YourLevel + TheirLevel).
 	add b
 	ld c, a
 	inc c
-.loop_player
+.loop
 	call BattleRandom
 	cp c
-	jr nc, .loop_player
+	jr nc, .loop
 ; If that number is greater than 4 times your level, run away.
 	srl b
 	srl b
@@ -6380,26 +6392,6 @@ BattleCommand_Teleport: ; 36778
 	call AnimateFailedMove
 	jp PrintButItFailed
 
-.enemy_turn
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .failed
-	ld a, [BattleMonLevel]
-	ld b, a
-	ld a, [CurPartyLevel]
-	cp b
-	jr nc, .run_away
-	add b
-	ld c, a
-	inc c
-.loop_enemy
-	call BattleRandom
-	cp c
-	jr nc, .loop_enemy
-	srl b
-	srl b
-	cp b
-	jr nc, .run_away
 .run_away
 	call UpdateBattleMonInParty
 	xor a
