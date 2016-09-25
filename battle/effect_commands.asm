@@ -1784,10 +1784,6 @@ BattleCommand_CheckHit: ; 34d32
 	ld c, 40
 	call DelayFrames
 
-; 'protecting itself!'
-	ld hl, ProtectingItselfText
-	call StdBattleTextBox
-
 	ld c, 40
 	call DelayFrames
 
@@ -2494,8 +2490,7 @@ FailText_CheckOpponentProtect: ; 35157
 	call GetBattleVar
 	bit SUBSTATUS_PROTECT, a
 	jr z, .not_protected
-	ld h, d
-	ld l, e
+	ld hl, ProtectingItselfText
 .not_protected
 	jp StdBattleTextBox
 
@@ -3298,8 +3293,6 @@ EnemyAttackDamage: ; 353f6
 ; 35461
 
 ; Unused, but kept for now to avoid random bugs
-BattleCommand_Mimic:
-	jp FailMimic
 BattleCommand_StoreEnergy:
 BattleCommand_UnleashEnergy:
 	jp EndMoveEffect
@@ -3313,6 +3306,7 @@ BattleCommand_Conversion2:
 BattleCommand_Snore:
 BattleCommand_OHKO:
 BattleCommand_MirrorMove:
+BattleCommand_Mimic:
 	ret
 
 
@@ -8263,14 +8257,6 @@ FailSpikes:
 	call AnimateFailedMove
 	; fallthrough
 ; 37357
-
-FailMimic: ; 37357
-	ld hl, ButItFailedText ; 'but it failed!'
-	ld de, ItFailedText    ; 'it failed!'
-	jp FailText_CheckOpponentProtect
-
-; 37360
-
 
 PrintDidntAffect: ; 37360
 ; 'it didn't affect'
