@@ -5757,7 +5757,11 @@ BattleCommand_StatDownMessage: ; 363e9
 	inc b
 	call GetStatName
 	ld hl, .stat
-	jp BattleTextBox
+	call BattleTextBox
+	; Competitive/Defiant activates here to give proper messages. A bit awkward,
+	; but the alternative is to rewrite the stat-down logic.
+	callba RunEnemyStatIncreaseAbilities
+	ret
 
 .stat
 	text_jump UnknownText_0x1c0ceb

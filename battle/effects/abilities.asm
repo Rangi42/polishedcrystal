@@ -196,38 +196,6 @@ HealStatusAbility:
 	callab CalcPlayerStats
 	ret
 
-RunEnemySynchronizeAbility:
-	callba BattleCommand_SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp SYNCHRONIZE
-	call z, SynchronizeAbility
-	callba BattleCommand_SwitchTurn
-	ret
-
-SynchronizeAbility:
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	and ALL_STATUS
-	ret z ; not statused
-	call ShowAbilityActivation
-	callba ResetMiss
-	callba DisableAnimations
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	cp 1 << PSN
-	jr z, .is_psn
-	cp 1 << BRN
-	jr z, .is_brn
-	callba BattleCommand_Paralyze
-	ret
-.is_psn
-	callba BattleCommand_Poison
-	ret
-.is_brn
-	callba BattleCommand_Burn
-	ret
-
 IntimidateAbility:
 	call ShowAbilityActivation
 	callba DisableAnimations
@@ -289,6 +257,70 @@ ImposterAbility:
 AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
+	ret
+
+RunEnemySynchronizeAbility:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SYNCHRONIZE
+	call z, SynchronizeAbility
+	callba BattleCommand_SwitchTurn
+	ret
+
+SynchronizeAbility:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and ALL_STATUS
+	ret z ; not statused
+	call ShowAbilityActivation
+	callba ResetMiss
+	callba DisableAnimations
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	cp 1 << PSN
+	jr z, .is_psn
+	cp 1 << BRN
+	jr z, .is_brn
+	callba BattleCommand_Paralyze
+	ret
+.is_psn
+	callba BattleCommand_Poison
+	ret
+.is_brn
+	callba BattleCommand_Burn
+	ret
+
+RunEnemyStatIncreaseAbilities:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DEFIANT
+	call z, DefiantAbility
+	cp COMPETITIVE
+	call z, CompetitiveAbility
+	callba BattleCommand_SwitchTurn
+	ret
+
+DefiantAbility:
+	ld a, ATTACK
+	jr StatIncreaseAbility
+CompetitiveAbility:
+	ld a, SP_ATTACK
+StatIncreaseAbility:
+	ld b, a
+	call ShowAbilityActivation
+	callba DisableAnimations
+	callba ResetMiss
+	ld a, b
+	cp ATTACK
+	jr nz, .sp_atk
+	callba BattleCommand_AttackUp2
+	callba BattleCommand_StatUpMessage
+	ret
+.sp_atk
+	callba BattleCommand_SpecialAttackUp2
+	callba BattleCommand_StatUpMessage
 	ret
 
 ShowAbilityActivation::
