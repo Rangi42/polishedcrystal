@@ -1,4 +1,5 @@
 -	: No progress
+.	: In progress
 ?	: Partially implemented
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
@@ -11,7 +12,7 @@ and fix it.
 
 -	STENCH
 OK	DRIZZLE
--	SPEED_BOOST
+.	SPEED_BOOST
 OK	BATTLE_ARMOR
 -	STURDY
 -	DAMP
@@ -26,12 +27,12 @@ OK	CLOUD_NINE
 OK	INSOMNIA
 OK	IMMUNITY
 -	FLASH_FIRE
--	SHIELD_DUST
+.	SHIELD_DUST
 OK	OWN_TEMPO
--	SUCTION_CUPS
+.	SUCTION_CUPS
 OK	INTIMIDATE
 !	SHADOW_TAG (Routines done, not fully used yet)
--	LEVITATE
+.	LEVITATE
 -	EFFECT_SPORE
 OK	SYNCHRONIZE
 -	CLEAR_BODY
@@ -44,14 +45,14 @@ OK	SYNCHRONIZE
 OK	TRACE
 -	HUGE_POWER
 -	POISON_POINT
--	INNER_FOCUS
+.	INNER_FOCUS
 OK	MAGMA_ARMOR
 OK	WATER_VEIL
 !	MAGNET_PULL (Routines done, not fully used yet)
 -	SOUNDPROOF
 -	RAIN_DISH
 OK	SAND_STREAM
--	PRESSURE
+.	PRESSURE
 -	THICK_FAT
 -	EARLY_BIRD
 -	FLAME_BODY
@@ -101,7 +102,7 @@ OK	MOLD_BREAKER (use GetEnemyAbilityAfterMoldBreaker)
 -	AFTERMATH
 -	ANTICIPATION
 -	FOREWARN
--	UNAWARE
+.	UNAWARE
 -	TINTED_LENS
 -	FILTER
 -	SCRAPPY
