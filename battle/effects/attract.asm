@@ -11,13 +11,22 @@ BattleCommand_Attract: ; 377ce
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_LOVE, [hl]
 	jr nz, .failed
+	call GetOpponentAbilityAfterMoldBreaker
+	cp OBLIVIOUS
+	jr nz, .no_ability_protection
+	callba ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
+	jp StdBattleTextBox
 
+.no_ability_protection
 	set SUBSTATUS_IN_LOVE, [hl]
 	call AnimateCurrentMove
 
 ; 'fell in love!'
 	ld hl, FellInLoveText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	callba RunEnemyStatusHealAbilities
+	ret
 
 .failed
 	jp FailAttract

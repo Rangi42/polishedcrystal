@@ -3,6 +3,10 @@
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
 
+TODO: Investigate overworld effects. Currently, only Immunity and Poison Heal have
+appropriately changed overworld effects. Figure out which abilities have those,
+and fix it.
+
 ---
 
 -	STENCH
@@ -16,16 +20,16 @@ OK	LIMBER
 -	STATIC
 -	VOLT_ABSORB
 -	WATER_ABSORB
--	OBLIVIOUS
+OK	OBLIVIOUS
 OK	CLOUD_NINE
 !	COMPOUND_EYES (held item chance increased)
 OK	INSOMNIA
 OK	IMMUNITY
 -	FLASH_FIRE
 -	SHIELD_DUST
--	OWN_TEMPO
+OK	OWN_TEMPO
 -	SUCTION_CUPS
-?	INTIMIDATE (likely not working)
+OK	INTIMIDATE
 !	SHADOW_TAG (Routines done, not fully used yet)
 -	LEVITATE
 -	EFFECT_SPORE
@@ -79,7 +83,7 @@ OK	SHELL_ARMOR
 -	ANGER_POINT
 -	UNBURDEN
 -	DRY_SKIN
--	DOWNLOAD
+OK	DOWNLOAD
 -	IRON_FIST
 OK	POISON_HEAL
 -	ADAPTABILITY
@@ -108,7 +112,7 @@ OK	MOLD_BREAKER (use GetEnemyAbilityAfterMoldBreaker)
 -	PICKPOCKET
 -	SHEER_FORCE
 -	UNNERVE
--	DEFIANT
+OK	DEFIANT
 -	WEAK_ARMOR
 -	MULTISCALE
 -	HARVEST
@@ -120,7 +124,7 @@ OK	MOLD_BREAKER (use GetEnemyAbilityAfterMoldBreaker)
 -	SAND_RUSH
 -	WONDER_SKIN
 -	ANALYTIC
--	IMPOSTER
+OK	IMPOSTER
 OK	INFILTRATOR
 -	MOXIE
 -	JUSTIFIED
@@ -129,5 +133,5 @@ OK	INFILTRATOR
 -	SAP_SIPPER
 -	PRANKSTER
 -	SAND_FORCE
--	COMPETITIVE
+OK	COMPETITIVE
 -	PIXILATE

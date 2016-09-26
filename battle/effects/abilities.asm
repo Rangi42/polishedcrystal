@@ -12,19 +12,24 @@ RunActivationAbilitiesInner:
 	jr nz, .continue
 	ret ; the trace failed, so don't continue
 .continue
+	; Do Imposter second to allow Transformed abilities to activate
+	cp IMPOSTER
+	jp z, ImposterAbility
 	cp DRIZZLE
 	jp z, DrizzleAbility
+	cp DROUGHT
+	jp z, DroughtAbility
 	cp SAND_STREAM
 	jp z, SandStreamAbility
+	cp CLOUD_NINE
+	jp z, CloudNineAbility
+	cp INTIMIDATE
+	jp z, IntimidateAbility
 	cp PRESSURE ; just prints a message
 	jr nz, .skip_pressure
 	ld hl, NotifyPressure
 	call StdBattleTextBox
 .skip_pressure
-	cp SAND_STREAM
-	jp z, SandStreamAbility
-	cp DROUGHT
-	jp z, DroughtAbility
 	cp DOWNLOAD
 	jp z, DownloadAbility
 	cp MOLD_BREAKER ; just prints a message
@@ -43,8 +48,6 @@ RunActivationAbilitiesInner:
 	ld hl, NotifyUnnerve
 	call StdBattleTextBox
 .skip_unnerve
-	cp IMPOSTER
-	jp z, ImposterAbility
 	jp RunStatusHealAbilities
 
 RunEnemyStatusHealAbilities:
@@ -70,7 +73,73 @@ RunStatusHealAbilities:
 	jp z, InsomniaAbility
 	cp VITAL_SPIRIT
 	jp z, VitalSpiritAbility
+	cp OWN_TEMPO
+	jp z, OwnTempoAbility
+	cp OBLIVIOUS
+	jp z, ObliviousAbility
 	ret
+
+ImmunityAbility:
+	ld a, 1 << PSN
+	jr HealStatusAbility
+WaterVeilAbility:
+	ld a, 1 << BRN
+	jr HealStatusAbility
+MagmaArmorAbility:
+	ld a, 1 << FRZ
+	jr HealStatusAbility
+LimberAbility:
+	ld a, 1 << PAR
+	jr HealStatusAbility
+InsomniaAbility:
+VitalSpiritAbility:
+	ld a, 1 << SLP
+	jr HealStatusAbility
+HealStatusAbility:
+	ld b, a
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and b
+	ret z ; not afflicted/wrong status
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
+	ld hl, BecameHealthyText
+	call StdBattleTextBox
+	ld a, [hBattleTurn]
+	and a
+	jr z, .is_player
+	callab CalcEnemyStats
+	ret
+.is_player
+	callab CalcPlayerStats
+	ret
+
+OwnTempoAbility:
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and SUBSTATUS_CONFUSED
+	ret z ; not confused
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	res SUBSTATUS_CONFUSED, [hl]
+	ld hl, ConfusedNoMoreText
+	jp StdBattleTextBox
+
+ObliviousAbility:
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
+	and SUBSTATUS_IN_LOVE
+	ret z ; not infatuated
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_LOVE, [hl]
+	ld hl, ConfusedNoMoreText
+	jp StdBattleTextBox
 
 TraceAbility:
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -155,42 +224,76 @@ WeatherAbility:
 	ld hl, SandstormBrewedText
 	jp StdBattleTextBox
 
-ImmunityAbility:
-	ld a, 1 << PSN
-	jr HealStatusAbility
-WaterVeilAbility:
-	ld a, 1 << BRN
-	jr HealStatusAbility
-MagmaArmorAbility:
-	ld a, 1 << FRZ
-	jr HealStatusAbility
-LimberAbility:
-	ld a, 1 << PAR
-	jr HealStatusAbility
-InsomniaAbility:
-VitalSpiritAbility:
-	ld a, 1 << SLP
-	jr HealStatusAbility
-HealStatusAbility:
-	ld b, a
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	and b
-	ret z ; not afflicted/wrong status
+IntimidateAbility:
 	call ShowAbilityActivation
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVarAddr
-	xor a
-	ld [hl], a
-	ld hl, BecameHealthyText
-	call StdBattleTextBox
+	callba DisableAnimations
+	callba ResetMiss
+	callba BattleCommand_AttackDown
+	callba BattleCommand_StatDownMessage
+	ret
+
+DownloadAbility:
+; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
+	call ShowAbilityActivation
+	callba DisableAnimations
+	ld hl, EnemyMonDefense
 	ld a, [hBattleTurn]
 	and a
-	jr z, .is_player
-	callab CalcEnemyStats
+	jr z, .ok
+	ld hl, BattleMonDefense
+.ok
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	ld c, a
+	ld hl, EnemyMonSpclDef + 1
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok2
+	ld hl, BattleMonSpclDef + 1
+.ok2
+	ld a, [hld]
+	ld e, a
+	ld a, [hl]
+	cp b
+	jr c, .inc_spatk
+	jr nz, .inc_atk
+	; The high defense bits are equal, so compare the lower bits
+	ld a, c
+	cp e
+	jr c, .inc_atk
+.inc_spatk
+	callba ResetMiss
+	callba BattleCommand_SpecialAttackUp
+	callba BattleCommand_StatUpMessage
 	ret
-.is_player
-	callab CalcPlayerStats
+.inc_atk
+	callba ResetMiss
+	callba BattleCommand_AttackUp
+	callba BattleCommand_StatUpMessage
+	ret
+
+ImposterAbility:
+	call ShowAbilityActivation
+	callba DisableAnimations
+	callba ResetMiss
+	callba BattleCommand_Transform
+	ld de, TRANSFORM
+	callab Call_PlayBattleAnim
+	ret
+
+AnticipationAbility:
+ForewarnAbility:
+FriskAbility:
+	ret
+
+RunEnemyOwnTempoAbility:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OWN_TEMPO
+	call z, SynchronizeAbility
+	callba BattleCommand_SwitchTurn
 	ret
 
 RunEnemySynchronizeAbility:
@@ -225,18 +328,36 @@ SynchronizeAbility:
 	callba BattleCommand_Burn
 	ret
 
-IntimidateAbility:
-	call ShowAbilityActivation
-	callab ResetMiss
-	callab BattleCommand_AttackDown
+RunEnemyStatIncreaseAbilities:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DEFIANT
+	call z, DefiantAbility
+	cp COMPETITIVE
+	call z, CompetitiveAbility
+	callba BattleCommand_SwitchTurn
 	ret
 
-DownloadAbility:
-AnticipationAbility:
-ForewarnAbility:
-FriskAbility:
-ImposterAbility:
+DefiantAbility:
+	ld a, ATTACK
+	jr StatIncreaseAbility
+CompetitiveAbility:
+	ld a, SP_ATTACK
+StatIncreaseAbility:
+	ld b, a
 	call ShowAbilityActivation
+	callba DisableAnimations
+	callba ResetMiss
+	ld a, b
+	cp ATTACK
+	jr nz, .sp_atk
+	callba BattleCommand_AttackUp2
+	callba BattleCommand_StatUpMessage
+	ret
+.sp_atk
+	callba BattleCommand_SpecialAttackUp2
+	callba BattleCommand_StatUpMessage
 	ret
 
 ShowAbilityActivation::
