@@ -73,7 +73,73 @@ RunStatusHealAbilities:
 	jp z, InsomniaAbility
 	cp VITAL_SPIRIT
 	jp z, VitalSpiritAbility
+	cp OWN_TEMPO
+	jp z, OwnTempoAbility
+	cp OBLIVIOUS
+	jp z, ObliviousAbility
 	ret
+
+ImmunityAbility:
+	ld a, 1 << PSN
+	jr HealStatusAbility
+WaterVeilAbility:
+	ld a, 1 << BRN
+	jr HealStatusAbility
+MagmaArmorAbility:
+	ld a, 1 << FRZ
+	jr HealStatusAbility
+LimberAbility:
+	ld a, 1 << PAR
+	jr HealStatusAbility
+InsomniaAbility:
+VitalSpiritAbility:
+	ld a, 1 << SLP
+	jr HealStatusAbility
+HealStatusAbility:
+	ld b, a
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and b
+	ret z ; not afflicted/wrong status
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
+	ld hl, BecameHealthyText
+	call StdBattleTextBox
+	ld a, [hBattleTurn]
+	and a
+	jr z, .is_player
+	callab CalcEnemyStats
+	ret
+.is_player
+	callab CalcPlayerStats
+	ret
+
+OwnTempoAbility:
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and SUBSTATUS_CONFUSED
+	ret z ; not confused
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	res SUBSTATUS_CONFUSED, [hl]
+	ld hl, ConfusedNoMoreText
+	jp StdBattleTextBox
+
+ObliviousAbility:
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
+	and SUBSTATUS_IN_LOVE
+	ret z ; not infatuated
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_LOVE, [hl]
+	ld hl, ConfusedNoMoreText
+	jp StdBattleTextBox
 
 TraceAbility:
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -158,44 +224,6 @@ WeatherAbility:
 	ld hl, SandstormBrewedText
 	jp StdBattleTextBox
 
-ImmunityAbility:
-	ld a, 1 << PSN
-	jr HealStatusAbility
-WaterVeilAbility:
-	ld a, 1 << BRN
-	jr HealStatusAbility
-MagmaArmorAbility:
-	ld a, 1 << FRZ
-	jr HealStatusAbility
-LimberAbility:
-	ld a, 1 << PAR
-	jr HealStatusAbility
-InsomniaAbility:
-VitalSpiritAbility:
-	ld a, 1 << SLP
-	jr HealStatusAbility
-HealStatusAbility:
-	ld b, a
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	and b
-	ret z ; not afflicted/wrong status
-	call ShowAbilityActivation
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVarAddr
-	xor a
-	ld [hl], a
-	ld hl, BecameHealthyText
-	call StdBattleTextBox
-	ld a, [hBattleTurn]
-	and a
-	jr z, .is_player
-	callab CalcEnemyStats
-	ret
-.is_player
-	callab CalcPlayerStats
-	ret
-
 IntimidateAbility:
 	call ShowAbilityActivation
 	callba DisableAnimations
@@ -257,6 +285,15 @@ ImposterAbility:
 AnticipationAbility:
 ForewarnAbility:
 FriskAbility:
+	ret
+
+RunEnemyOwnTempoAbility:
+	callba BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OWN_TEMPO
+	call z, SynchronizeAbility
+	callba BattleCommand_SwitchTurn
 	ret
 
 RunEnemySynchronizeAbility:

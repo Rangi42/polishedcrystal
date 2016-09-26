@@ -7378,6 +7378,9 @@ BattleCommand_ConfuseTarget: ; 36d1d
 	ld a, b
 	cp HELD_PREVENT_CONFUSE
 	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp OWN_TEMPO
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -7407,6 +7410,14 @@ BattleCommand_Confuse: ; 36d3b
 	jp StdBattleTextBox
 
 .no_item_protection
+	call GetOpponentAbilityAfterMoldBreaker
+	cp OWN_TEMPO
+	jr nz, .no_ability_protection
+	callba ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
+	jp StdBattleTextBox
+
+.no_ability_protection
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_CONFUSED, [hl]
@@ -7458,6 +7469,8 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	cp HELD_HEAL_STATUS
 	jr z, .heal_confusion
 	cp HELD_HEAL_CONFUSION
+	jr z, .heal_confusion
+	callba RunEnemyStatusHealAbilities
 	ret nz
 .heal_confusion
 	ld hl, UseConfusionHealingItem

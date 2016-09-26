@@ -587,6 +587,13 @@ InfatuationText: ; 0x80eda
 	prompt
 ; 0x80f02
 
+SnappedOutOfInfatuationText: ; 0x80eda
+	text "<USER>"
+	line "snapped out of"
+	cont "infatuation!"
+	prompt
+; 0x80f02
+
 DisabledMoveText: ; 0x80f02
 	text "<USER>'s"
 	line "@"
