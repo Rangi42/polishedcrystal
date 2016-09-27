@@ -328,6 +328,45 @@ SynchronizeAbility:
 	callba BattleCommand_Burn
 	ret
 
+RunContactAbilities:
+; turn perspective is from the attacker
+; 30% of the time, activate Poison Touch
+	call BattleRandom
+	cp 77 ; 30%-ish
+	jr nc, .skip_user_ability
+	ld a, BATTLE_VARS_ABILITY
+	cp POISON_TOUCH
+	call z, PoisonTouchAbility
+.skip_user_ability
+	call GetOpponentAbilityAfterMoldBreaker
+	cp PICKPOCKET
+	jp z, PickPocketAbility
+; other abilities only trigger 30% of the time
+	call BattleRandom
+	cp 77
+	ret nc
+	call GetOpponentAbilityAfterMoldBreaker
+	cp CUTE_CHARM
+	jp z, CuteCharmAbility
+	cp EFFECT_SPORE
+	jp z, EffectSporeAbility
+	cp FLAME_BODY
+	jp z, FlameBodyAbility
+	cp POISON_POINT
+	jp z, PoisonPointAbility
+	cp STATIC
+	jp z, StaticAbility
+	ret
+
+PoisonTouchAbility:
+PickPocketAbility:
+CuteCharmAbility:
+EffectSporeAbility:
+FlameBodyAbility:
+PoisonPointAbility:
+StaticAbility:
+	ret
+
 RunEnemyStatIncreaseAbilities:
 	callba BattleCommand_SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
