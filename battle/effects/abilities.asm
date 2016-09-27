@@ -51,9 +51,9 @@ RunActivationAbilitiesInner:
 	jp RunStatusHealAbilities
 
 RunEnemyStatusHealAbilities:
-	callba SwitchTurnCore
+	callba BattleCommand_SwitchTurn
 	call RunStatusHealAbilities
-	callba SwitchTurnCore
+	callba BattleCommand_SwitchTurn
 	ret
 
 RunStatusHealAbilities:
@@ -332,7 +332,7 @@ RunContactAbilities:
 ; turn perspective is from the attacker
 ; 30% of the time, activate Poison Touch
 	call BattleRandom
-	cp 77 ; 30%-ish
+	cp 78 ; 30%-ish
 	jr nc, .skip_user_ability
 	ld a, BATTLE_VARS_ABILITY
 	cp POISON_TOUCH
@@ -340,31 +340,136 @@ RunContactAbilities:
 .skip_user_ability
 	call GetOpponentAbilityAfterMoldBreaker
 	cp PICKPOCKET
-	jp z, PickPocketAbility
+	jr nz, .not_pickpocket
+	callba BattleCommand_SwitchTurn
+	call PickPocketAbility
+	callba BattleCommand_SwitchTurn
+	ret
+.not_pickpocket
 ; other abilities only trigger 30% of the time
+;
+; Abilities always run from the ability user's perspective. This is
+; consistent. Thus, a switchturn happens here. Feel free to rework
+; the logic if you feel that this reduces readability.
 	call BattleRandom
-	cp 77
+	cp 78
 	ret nc
 	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	callba BattleCommand_SwitchTurn
+	ld a, b
 	cp CUTE_CHARM
-	jp z, CuteCharmAbility
+	jr nz, .not_cute_charm
+	call CuteCharmAbility
+	jr .done
+.not_cute_charm
 	cp EFFECT_SPORE
-	jp z, EffectSporeAbility
+	call EffectSporeAbility
+	jr .done
+.not_effect_spore
 	cp FLAME_BODY
-	jp z, FlameBodyAbility
+	call FlameBodyAbility
+	jr .done
+.not_flame_body
 	cp POISON_POINT
-	jp z, PoisonPointAbility
+	call PoisonPointAbility
+	jr .done
+.not_poison_point
 	cp STATIC
-	jp z, StaticAbility
+	call StaticAbility
+.done
+	callba BattleCommand_SwitchTurn
 	ret
 
-PoisonTouchAbility:
 PickPocketAbility:
 CuteCharmAbility:
+	ret
 EffectSporeAbility:
+	call CheckIfTargetIsGrassType
+	ret z
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp OVERCOAT
+	ret z
+	call BattleRandom
+	cp $56
+	jr c, PoisonPointAbility
+	cp $ab
+	jr c, StaticAbility
+	; there are 2 sleep resistance abilities, so check one here
+	ld a, BATTLE_VARS_ABILITY_OPP
+	cp VITAL_SPIRIT
+	ret z
+	ld b, INSOMNIA
+	ld c, HELD_PREVENT_SLEEP
+	ld d, SLP
+	jr AfflictStatusAbility
 FlameBodyAbility:
+	call CheckIfTargetIsFireType
+	ret z
+	ld b, WATER_VEIL
+	ld c, HELD_PREVENT_BURN
+	ld d, BRN
+	jr AfflictStatusAbility
+PoisonTouchAbility:
+	; Poison Touch is the same as an opposing Poison Point, and since
+	; abilities always run from the ability user's POV...
 PoisonPointAbility:
+	call CheckIfTargetIsPoisonType
+	ret z
+	call CheckIfTargetIsSteelType
+	ret z
+	ld b, IMMUNITY
+	ld c, HELD_PREVENT_POISON
+	ld d, PSN
+	jr AfflictStatusAbility
 StaticAbility:
+	call CheckIfTargetIsElectricType
+	ret z
+	ld b, LIMBER
+	ld c, HELD_PREVENT_PARALYZE
+	ld d, PAR
+AfflictStatusAbility
+; While BattleCommand_Whatever already does all these checks,
+; duplicating them here is minor logic, and it avoids spamming
+; needless ability activations that ends up not actually doing
+; anything.
+	ld a, BATTLE_VARS_ABILITY_OPP
+	push de
+	call GetBattleVar
+	pop de
+	cp b
+	ret z
+	push de
+	call GetOpponentItem
+	pop de
+	ld a, b
+	cp c
+	ret z
+	ld b, d
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret nz
+	call ShowAbilityActivation
+	callba DisableAnimations
+	ld a, b
+	cp SLP
+	jr z, .slp
+	cp BRN
+	jr z, .brn
+	cp PSN
+	jr z, .psn
+	callba BattleCommand_Paralyze
+	ret
+.slp
+	callba BattleCommand_SleepTarget
+	ret
+.brn
+	callba BattleCommand_Burn
+	ret
+.psn
+	callba BattleCommand_Poison
 	ret
 
 RunEnemyStatIncreaseAbilities:

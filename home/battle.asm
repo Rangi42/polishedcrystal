@@ -325,7 +325,10 @@ SoundMoves:
 	db SUPERSONIC
 	db -1
 
-CheckIfTargetIsPoisonType:: ; 35fe1
+CheckIfTargetIsGrassType::
+	ld a, GRASS
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsPoisonType::
 	ld a, POISON
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsElectricType::
