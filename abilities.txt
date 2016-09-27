@@ -10,7 +10,7 @@ and fix it.
 
 ---
 
--	STENCH
+OK	STENCH
 OK	DRIZZLE
 .	SPEED_BOOST
 OK	BATTLE_ARMOR

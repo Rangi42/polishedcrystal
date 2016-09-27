@@ -6956,7 +6956,7 @@ BattleCommand_PostHitEffects: ; 36ac9
 .no_contact_move
 	call GetUserItem
 	ld a, b
-	cp HELD_FLINCH_UP ; Only King's Rock has this effect
+	cp HELD_FLINCH_UP ; King's Rock/Razor Fang
 	ret nz
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -6966,7 +6966,14 @@ BattleCommand_PostHitEffects: ; 36ac9
 	call GetUserItem
 	call BattleRandom
 	cp c
+	jr z, .ok
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp STENCH
+	cp 26
 	ret nc
+	call ShowAbilityActivation
+.ok
 	call EndRechargeOpp
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVarAddr
