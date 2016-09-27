@@ -522,7 +522,7 @@ CheckOpponentStatLowerAbilities:
 	and DEFENSE
 	ret z
 .triggered_ability
-	callba ShowEnemyAbilityActivation
+	call ShowEnemyAbilityActivation
 	ld a, 1
 	ld [FailedMessage], a
 	ret

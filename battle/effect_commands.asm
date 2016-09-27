@@ -5551,7 +5551,7 @@ BattleCommand_StatDown: ; 362e3
 	ld [LoweredStat], a
 
 	callba CheckOpponentStatLowerAbilities
-	ld [FailedMessage], a
+	ld a, [FailedMessage]
 	and a
 	jp nz, .Failed
 	call CheckMist
