@@ -1571,9 +1571,15 @@ Script_reloadmapafterbattle: ; 97459
 	bit 0, d
 	jr z, .was_wild
 	callba MomTriesToBuySomething
+	callba RunOverworldPickupAbility
 	jr .done
 
 .was_wild
+	ld a, [wBattleResult]
+	bit 1, a ; set on fleeing
+	jr nz, .skip_pickup
+	callba RunOverworldPickupAbility
+.skip_pickup
 	ld a, [wBattleResult]
 	bit 7, a
 	jr z, .done

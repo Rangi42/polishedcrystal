@@ -332,7 +332,7 @@ RunContactAbilities:
 ; turn perspective is from the attacker
 ; 30% of the time, activate Poison Touch
 	call BattleRandom
-	cp 78 ; 30%-ish
+	cp 1 + 30 percent
 	jr nc, .skip_user_ability
 	ld a, BATTLE_VARS_ABILITY
 	cp POISON_TOUCH
@@ -352,7 +352,7 @@ RunContactAbilities:
 ; consistent. Thus, a switchturn happens here. Feel free to rework
 ; the logic if you feel that this reduces readability.
 	call BattleRandom
-	cp 78
+	cp 1 + 30 percent
 	ret nc
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
@@ -385,9 +385,9 @@ EffectSporeAbility:
 	cp OVERCOAT
 	ret z
 	call BattleRandom
-	cp $56
+	cp 1 + 33 percent
 	jr c, PoisonPointAbility
-	cp $ab
+	cp 1 + 66 percent
 	jr c, StaticAbility
 	; there are 2 sleep resistance abilities, so check one here
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -547,3 +547,123 @@ ShowAbilityActivationInner:
 	call StdBattleTextBox
 	pop bc
 	ret
+
+RunOverworldPickupAbility::
+; iterates the party and checks for potentially picking up items.
+	ld a, [PartyMons]
+	and a
+	ret z ; no Pokémon in party?
+.loop
+	dec a
+	ret c
+	call Random
+	cp 1 + 10 percent
+	jr nc, .loop
+	ld [CurPartyMon], a
+	ld a, MON_ITEM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and a
+	jr nz, .loop ; already has an item
+	ld a, MON_DVS + 1
+	call GetPartyParamLocation
+	ld b, [hl]
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld c, [hl]
+	callba GetAbility
+	ld a, b
+	cp PICKUP
+	call z, .Pickup
+	jr .loop
+.Pickup:
+	ld b, 0
+	ld c, 0
+; Pickup selects from a table, giving better rewards scaling with level and randomness
+	call Random
+	cp 1 + 2 percent
+	jr c, .RarePickup
+	cp 1 + 6 percent
+	call c, .IncBC
+	cp 1 + 10 percent
+	call c, .IncBC
+	cp 1 + 20 percent
+	call c, .IncBC
+	cp 1 + 30 percent
+	call c, .IncBC
+	cp 1 + 40 percent
+	call c, .IncBC
+	cp 1 + 50 percent
+	call c, .IncBC
+	cp 1 + 60 percent
+	call c, .IncBC
+	cp 1 + 70 percent
+	call c, .IncBC
+	ld hl, BasePickupTable
+	jr .DoneRandomizing
+.IncBC:
+; This just exists to avoid a million labels
+	inc bc
+	ret
+.DoneRandomizing:
+; Increase bc based on level
+	push hl
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, [hl]
+	dec a ; 1-10, 11-20, ..., not 0-9, 10-19, ...
+.level_loop
+	sub 10
+	jr c, .level_loop_done
+	inc bc
+	jr .level_loop
+.level_loop_done
+	pop hl
+	add hl, bc
+	ld a, [hl]
+	ld b, a
+	ld a, MON_ITEM
+	call GetPartyParamLocation
+	ld a, b
+	ld [hl], a
+	ret
+.RarePickup:
+; 2% of Pickup results use a different table with generally better items.
+	call Random
+	cp 1 + 50 percent
+	call c, .IncBC
+	ld hl, RarePickupTable
+	jr .DoneRandomizing
+
+BasePickupTable:
+	db POTION
+	db ANTIDOTE
+	db SUPER_POTION
+	db GREAT_BALL
+	db REPEL
+	db ESCAPE_ROPE
+	db FULL_HEAL
+	db HYPER_POTION
+	db ULTRA_BALL
+	db REVIVE
+	db RARE_CANDY
+	db SILVER_LEAF
+	db GOLD_LEAF
+	db FULL_RESTORE
+	db MAX_REVIVE
+	db PP_UP
+	db MAX_ELIXER
+	db EXP_SHARE
+
+RarePickupTable:
+	db HYPER_POTION
+	db NUGGET
+	db KINGS_ROCK
+	db FULL_RESTORE
+	db ETHER
+	db LUCKY_EGG
+	db MAX_ETHER
+	db LUCKY_EGG
+	db ELIXER
+	db LUCKY_EGG
+	db LEFTOVERS

@@ -4,7 +4,7 @@
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
 
-TODO: Investigate overworld effects. Currently, only Immunity and Poison Heal have
+TODO: Investigate overworld effects. Currently, only Pickup, Immunity and Poison Heal have
 appropriately changed overworld effects. Figure out which abilities have those,
 and fix it.
 
@@ -59,7 +59,7 @@ OK	FLAME_BODY
 OK	RUN_AWAY
 OK	KEEN_EYE
 OK	HYPER_CUTTER
--	PICKUP
+!	PICKUP (Overworld effect done)
 -	HUSTLE
 -	CUTE_CHARM
 OK	STICKY_HOLD
