@@ -357,28 +357,21 @@ RunContactAbilities:
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 	callba BattleCommand_SwitchTurn
+	call .do_enemy_abilities
+	callba BattleCommand_SwitchTurn
+	ret
+.do_enemy_abilities
 	ld a, b
 	cp CUTE_CHARM
-	jr nz, .not_cute_charm
-	call CuteCharmAbility
-	jr .done
-.not_cute_charm
+	jp z, CuteCharmAbility
 	cp EFFECT_SPORE
-	call EffectSporeAbility
-	jr .done
-.not_effect_spore
+	jp z, EffectSporeAbility
 	cp FLAME_BODY
-	call FlameBodyAbility
-	jr .done
-.not_flame_body
+	jp z, FlameBodyAbility
 	cp POISON_POINT
-	call PoisonPointAbility
-	jr .done
-.not_poison_point
+	jp z, PoisonPointAbility
 	cp STATIC
-	call StaticAbility
-.done
-	callba BattleCommand_SwitchTurn
+	jp z, StaticAbility
 	ret
 
 PickPocketAbility:
