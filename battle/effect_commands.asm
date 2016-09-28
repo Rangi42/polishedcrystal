@@ -1410,13 +1410,12 @@ BattleCommand_Stab: ; 346d2
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr z, .is_identified
+	jr z, .TypesLoop
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SCRAPPY
-	jr nz, .end
-.is_identified
-	jr .TypesLoop
+	jp z, .TypesLoop
+	jr .end
 
 .SkipForesightCheck:
 	cp b
@@ -1540,13 +1539,12 @@ CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr z, .is_identified
+	jr z, .TypesLoop
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SCRAPPY
-	jp nz, .End
-.is_identified
-	jr .TypesLoop
+	jp z, .TypesLoop
+	jr .End
 
 .Next:
 	cp d
