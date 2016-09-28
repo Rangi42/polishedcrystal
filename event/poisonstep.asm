@@ -75,11 +75,11 @@ DoPoisonStep:: ; 505da
 	ret z
 
 ; check for immunity or poison heal
-	ld a, MON_DVS
-	inc a
+	ld a, MON_DVS + 1
 	call GetPartyParamLocation
 	ld b, [hl]
 	ld a, MON_SPECIES
+	call GetPartyParamLocation
 	ld c, [hl]
 	callba GetAbility
 	ld a, b

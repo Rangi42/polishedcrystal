@@ -4,13 +4,13 @@
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
 
-TODO: Investigate overworld effects. Currently, only Immunity and Poison Heal have
+TODO: Investigate overworld effects. Currently, only Pickup, Immunity and Poison Heal have
 appropriately changed overworld effects. Figure out which abilities have those,
 and fix it.
 
 ---
 
--	STENCH
+OK	STENCH
 OK	DRIZZLE
 .	SPEED_BOOST
 OK	BATTLE_ARMOR
@@ -18,7 +18,7 @@ OK	BATTLE_ARMOR
 -	DAMP
 OK	LIMBER
 -	SAND_VEIL
--	STATIC
+OK	STATIC
 -	VOLT_ABSORB
 -	WATER_ABSORB
 OK	OBLIVIOUS
@@ -33,9 +33,9 @@ OK	OWN_TEMPO
 OK	INTIMIDATE
 !	SHADOW_TAG (Routines done, not fully used yet)
 .	LEVITATE
--	EFFECT_SPORE
+OK	EFFECT_SPORE
 OK	SYNCHRONIZE
--	CLEAR_BODY
+OK	CLEAR_BODY
 -	NATURAL_CURE
 -	LIGHTNING_ROD
 -	SERENE_GRACE
@@ -44,7 +44,7 @@ OK	SYNCHRONIZE
 -	ILLUMINATE
 OK	TRACE
 -	HUGE_POWER
--	POISON_POINT
+OK	POISON_POINT
 .	INNER_FOCUS
 OK	MAGMA_ARMOR
 OK	WATER_VEIL
@@ -55,11 +55,11 @@ OK	SAND_STREAM
 .	PRESSURE
 -	THICK_FAT
 -	EARLY_BIRD
--	FLAME_BODY
+OK	FLAME_BODY
 OK	RUN_AWAY
--	KEEN_EYE
--	HYPER_CUTTER
--	PICKUP
+OK	KEEN_EYE
+OK	HYPER_CUTTER
+!	PICKUP (Overworld effect done)
 -	HUSTLE
 -	CUTE_CHARM
 OK	STICKY_HOLD
@@ -105,7 +105,7 @@ OK	MOLD_BREAKER (use GetEnemyAbilityAfterMoldBreaker)
 .	UNAWARE
 -	TINTED_LENS
 -	FILTER
--	SCRAPPY
+OK	SCRAPPY
 -	ICE_BODY
 -	SOLID_ROCK
 -	FRISK
@@ -119,9 +119,9 @@ OK	DEFIANT
 -	HARVEST
 -	MOODY
 -	OVERCOAT
--	POISON_TOUCH
+OK	POISON_TOUCH
 -	REGENERATOR
--	BIG_PECKS
+OK	BIG_PECKS
 -	SAND_RUSH
 -	WONDER_SKIN
 -	ANALYTIC

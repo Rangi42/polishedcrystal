@@ -209,6 +209,177 @@ MoldBreakerSuppressedAbilities:
 	db WONDER_SKIN
 	db -1
 
+ContactMoves::
+	db AERIAL_ACE
+	db AQUA_TAIL
+	db ASTONISH
+	db BITE
+	db BODY_SLAM
+	db BULLET_PUNCH
+	db COUNTER
+	db CRABHAMMER
+	db CROSS_CHOP
+	db CRUNCH
+	db CUT
+	db DIG
+	db DIZZY_PUNCH
+	db DOUBLE_KICK
+	db DOUBLE_EDGE
+	db DRAGON_CLAW
+	db DRAIN_KISS
+	db DRILL_PECK
+	db DYNAMICPUNCH
+	db EXTREMESPEED
+	db FALSE_SWIPE
+	db FEINT_ATTACK
+	db FIRE_PUNCH
+	db FLAIL
+	db FLAME_WHEEL
+	db FLARE_BLITZ
+	db FLY
+	db FURY_ATTACK
+	db FURY_CUTTER
+	db FURY_SWIPES
+	db HEADBUTT
+	db HI_JUMP_KICK
+	db HORN_ATTACK
+	db HYPER_FANG
+	db ICE_PUNCH
+	db IRON_HEAD
+	db IRON_TAIL
+	db KARATE_CHOP
+	db LEECH_LIFE
+	db LICK
+	db LOW_KICK
+	db MACH_PUNCH
+	db MEGAHORN
+	db METAL_CLAW
+	db NIGHT_SLASH
+	db OUTRAGE
+	db PECK
+	db PETAL_DANCE
+	db PLAY_ROUGH
+	db POISON_JAB
+	db POUND
+	db PURSUIT
+	db QUICK_ATTACK
+	db RAGE
+	db RAPID_SPIN
+	db RETURN
+	db REVERSAL
+	db ROCK_SMASH
+	db ROLLOUT
+	db SCRATCH
+	db SEISMIC_TOSS
+	db SHADOW_CLAW
+	db SLAM
+	db SLASH
+	db SPARK
+	db STEEL_WING
+	db STOMP
+	db STRENGTH
+	db SUBMISSION
+	db SUPER_FANG
+	db TACKLE
+	db TAKE_DOWN
+	db THIEF
+	db THRASH
+	db THUNDERPUNCH
+	db TRIPLE_KICK
+	db VINE_WHIP
+	db VITAL_THROW
+	db WATERFALL
+	db WILD_CHARGE
+	db WING_ATTACK
+	db WRAP
+	db X_SCISSOR
+	db ZEN_HEADBUTT
+	db -1
+
+PowderMoves:
+	db POISONPOWDER
+	db SLEEP_POWDER
+	db SPORE
+	db STUN_SPORE
+	db -1
+
+PunchingMoves:
+	db BULLET_PUNCH
+	db DIZZY_PUNCH
+	db DYNAMICPUNCH
+	db FIRE_PUNCH
+	db MACH_PUNCH
+	db THUNDERPUNCH
+	db -1
+
+SoundMoves:
+	db BUG_BUZZ
+	db DISARM_VOICE
+	db GROWL
+	db HYPER_VOICE
+	db METAL_SOUND
+	db PERISH_SONG
+	db ROAR
+	db SCREECH
+	db SING
+	db SUPERSONIC
+	db -1
+
+CheckIfTargetIsGrassType::
+	ld a, GRASS
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsPoisonType::
+	ld a, POISON
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsElectricType::
+	ld a, ELECTRIC
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsSteelType::
+	ld a, STEEL
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsFireType::
+	ld a, FIRE
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsIceType::
+	ld a, ICE
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsRockType::
+	ld a, ROCK
+CheckIfTargetIsSomeType::
+	ld b, a
+	ld a, [hBattleTurn]
+	jr CheckIfSomeoneIsSomeType
+CheckIfUserIsFlyingType::
+	ld a, FLYING
+	jr CheckIfUserIsSomeType
+CheckIfUserIsPoisonType::
+	ld a, POISON
+	jr CheckIfUserIsSomeType
+CheckIfUserIsGhostType::
+	ld a, GHOST
+	jr CheckIfUserIsSomeType
+CheckIfUserIsSteelType::
+	ld a, STEEL
+CheckIfUserIsSomeType::
+	ld b, a
+	ld a, [hBattleTurn]
+	xor 1
+CheckIfSomeoneIsSomeType
+	ld c, a
+	ld de, EnemyMonType1
+	ld a, c
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp b
+	ret z
+	ld a, [de]
+	cp b
+	ret
+
 GetBattleVar:: ; 39e1
 ; Preserves hl.
 	push hl

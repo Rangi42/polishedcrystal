@@ -1410,9 +1410,12 @@ BattleCommand_Stab: ; 346d2
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr nz, .end
-
-	jr .TypesLoop
+	jr z, .TypesLoop
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SCRAPPY
+	jp z, .TypesLoop
+	jr .end
 
 .SkipForesightCheck:
 	cp b
@@ -1536,8 +1539,12 @@ CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr nz, .End
-	jr .TypesLoop
+	jr z, .TypesLoop
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SCRAPPY
+	jp z, .TypesLoop
+	jr .End
 
 .Next:
 	cp d
@@ -4955,59 +4962,6 @@ BattleCommand_Poison: ; 35f2c
 ; 35fe1
 
 
-CheckIfTargetIsPoisonType: ; 35fe1
-	ld a, POISON
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsElectricType:
-	ld a, ELECTRIC
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsSteelType:
-	ld a, STEEL
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsFireType:
-	ld a, FIRE
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsIceType:
-	ld a, ICE
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsRockType:
-	ld a, ROCK
-CheckIfTargetIsSomeType:
-	ld b, a
-	ld a, [hBattleTurn]
-	jr CheckIfSomeoneIsSomeType
-CheckIfUserIsFlyingType:
-	ld a, FLYING
-	jr CheckIfUserIsSomeType
-CheckIfUserIsPoisonType:
-	ld a, POISON
-	jr CheckIfUserIsSomeType
-CheckIfUserIsGhostType:
-	ld a, GHOST
-	jr CheckIfUserIsSomeType
-CheckIfUserIsSteelType:
-	ld a, STEEL
-CheckIfUserIsSomeType:
-	ld b, a
-	ld a, [hBattleTurn]
-	xor 1
-CheckIfSomeoneIsSomeType
-	ld c, a
-	ld de, EnemyMonType1
-	ld a, c
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-	ld a, [de]
-	inc de
-	cp b
-	ret z
-	ld a, [de]
-	cp b
-	ret
-
-
 PoisonOpponent: ; 35ff5
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
@@ -5594,6 +5548,10 @@ BattleCommand_StatDown: ; 362e3
 
 	ld [LoweredStat], a
 
+	callba CheckOpponentStatLowerAbilities
+	ld a, [FailedMessage]
+	and a
+	jp nz, .Failed
 	call CheckMist
 	jp nz, .Mist
 
@@ -6987,20 +6945,27 @@ CheckOpponentWentFirst: ; 36abf
 ; 36ac9
 
 
-BattleCommand_KingsRock: ; 36ac9
-; kingsrock
+BattleCommand_PostHitEffects: ; 36ac9
+; previously just king's rock
 
 	ld a, [AttackMissed]
 	and a
 	ret nz
 
-	call GetUserItem
-	ld a, b
-	cp HELD_FLINCH_UP ; Only King's Rock has this effect
-	ret nz
-
 	call CheckSubstituteOpp
 	ret nz
+
+	ld a, BATTLE_VARS_MOVE
+	ld hl, ContactMoves
+	call IsInArray
+	jr c, .no_contact_move
+	callba RunContactAbilities
+.no_contact_move
+	call GetUserItem
+	ld a, b
+	cp HELD_FLINCH_UP ; King's Rock/Razor Fang
+	ret nz
+
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVarAddr
 	ld d, h
@@ -7008,7 +6973,14 @@ BattleCommand_KingsRock: ; 36ac9
 	call GetUserItem
 	call BattleRandom
 	cp c
+	jr z, .ok
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp STENCH
+	cp 26
 	ret nc
+	call ShowAbilityActivation
+.ok
 	call EndRechargeOpp
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVarAddr

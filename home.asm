@@ -1721,6 +1721,10 @@ GetAbility::
 ; 'b' contains the target DV to check (Spe/Spc)
 ; 'c' contains the target species
 ; returns ability in b
+; preserves curspecies and base data
+	push de
+	ld a, [CurSpecies]
+	ld d, a
 	ld a, c
 	ld [CurSpecies], a
 	call GetBaseData
@@ -1736,14 +1740,19 @@ GetAbility::
 ; Spe ^ Spc is odd -> ability 1 (8/16)
 	ld a, [BaseAbility1]
 	ld b, a
-	ret
+	jr .restore_species
 .second_abil
 	ld a, [BaseAbility2]
 	ld b, a
-	ret
+	jr .restore_species
 .hidden_abil
 	ld a, [BaseHiddenAbility]
 	ld b, a
+.restore_species
+	ld a, d
+	ld [CurSpecies], a
+	call GetBaseData
+	pop de
 	ret
 
 
