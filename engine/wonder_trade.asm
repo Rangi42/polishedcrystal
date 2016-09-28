@@ -681,9 +681,9 @@ GetWonderTradeOTName:
 	db "Tomoyo@@" ; $eb
 	db "Syaoran@" ; $ec
 	db "Shinji@@" ; $ed
-	db "Rei@@@@@" ; $ee
-	db "Asuka@@@" ; $ef
-	db "Mari@@@@" ; $f0
+	db "Asuka@@@" ; $ee
+	db "Mari@@@@" ; $ef
+	db "Yui@@@@@" ; $f0
 	db "Luke@@@@" ; $f1
 	db "Lun@@@@@" ; $f2
 	db "Rhue@@@@" ; $f3
@@ -948,9 +948,9 @@ GetWonderTradeOTGender:
 	db FEMALE ; Tomoyo
 	db MALE   ; Syaoran
 	db MALE   ; Shinji
-	db FEMALE ; Rei
 	db FEMALE ; Asuka
 	db FEMALE ; Mari
+	db FEMALE ; Yui
 	db MALE   ; Luke
 	db MALE   ; Lun
 	db MALE   ; Rhue
