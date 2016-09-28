@@ -556,6 +556,8 @@ RunOverworldPickupAbility::
 .loop
 	dec a
 	ret c
+	cp $ff
+	ret z
 
 	ld [CurPartyMon], a
 
@@ -564,7 +566,7 @@ RunOverworldPickupAbility::
 	ld a, [hl]
 	and a
 	ld a, [CurPartyMon]
-	jr nz, .loop ; already has an item
+	jr nz, .loop
 
 	push bc
 	ld a, MON_DVS + 1
@@ -581,7 +583,7 @@ RunOverworldPickupAbility::
 	jr nz, .loop
 
 	call Random
-	cp 1 + 10 percent
+	cp 1 + (10 percent)
 	ld a, [CurPartyMon]
 	jr c, .loop
 
@@ -594,23 +596,23 @@ RunOverworldPickupAbility::
 	ld c, 0
 ; Pickup selects from a table, giving better rewards scaling with level and randomness
 	call Random
-	cp 1 + 2 percent
+	cp 1 + (2 percent)
 	jr c, .RarePickup
-	cp 1 + 6 percent
+	cp 1 + (6 percent)
 	call c, .IncBC
-	cp 1 + 10 percent
+	cp 1 + (10 percent)
 	call c, .IncBC
-	cp 1 + 20 percent
+	cp 1 + (20 percent)
 	call c, .IncBC
-	cp 1 + 30 percent
+	cp 1 + (30 percent)
 	call c, .IncBC
-	cp 1 + 40 percent
+	cp 1 + (40 percent)
 	call c, .IncBC
-	cp 1 + 50 percent
+	cp 1 + (50 percent)
 	call c, .IncBC
-	cp 1 + 60 percent
+	cp 1 + (60 percent)
 	call c, .IncBC
-	cp 1 + 70 percent
+	cp 1 + (70 percent)
 	call c, .IncBC
 	ld hl, BasePickupTable
 .DoneRandomizing:
