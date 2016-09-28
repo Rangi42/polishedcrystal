@@ -1373,6 +1373,13 @@ BattleCommand_Stab: ; 346d2
 	jr .SkipStab
 
 .stab
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp ADAPTABILITY
+	jr nz, .no_adaptability
+	call DoubleDamage
+	jr .stab_done
+.no_adaptability
 	ld hl, CurDamage + 1
 	ld a, [hld]
 	ld h, [hl]
@@ -1384,6 +1391,7 @@ BattleCommand_Stab: ; 346d2
 	rr c
 	add hl, bc
 
+.stab_done
 	ld a, h
 	ld [CurDamage], a
 	ld a, l
