@@ -33,7 +33,7 @@ Function50753: ; 50753
 	cp MAP_ROUTE_36
 	jr nz, .asm_50774
 
-	callba GetFacingObject
+	farcall GetFacingObject
 	jr c, .asm_50774
 
 	ld a, d

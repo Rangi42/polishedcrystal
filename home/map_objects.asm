@@ -6,7 +6,7 @@ GetSpritePalette:: ; 17ff
 	push bc
 	ld c, a
 
-	callba _GetSpritePalette
+	farcall _GetSpritePalette
 
 	ld a, c
 	pop bc
@@ -348,7 +348,7 @@ _CopyObjectStruct:: ; 1956
 	call UnmaskObject
 	ld a, [hMapObjectIndexBuffer]
 	call GetMapObject
-	callba CopyObjectStruct
+	farcall CopyObjectStruct
 	ret
 ; 1967
 
@@ -365,7 +365,7 @@ ApplyDeletionToMapObject:: ; 1967
 	call .CheckStopFollow
 	pop af
 	call GetObjectStruct
-	callba DeleteMapObject
+	farcall DeleteMapObject
 	ret
 
 .CheckStopFollow:
@@ -376,7 +376,7 @@ ApplyDeletionToMapObject:: ; 1967
 	cp [hl]
 	ret nz
 .ok
-	callba StopFollow
+	farcall StopFollow
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
@@ -599,8 +599,8 @@ UpdateSprites:: ; 1ad2
 	bit 0, a
 	ret z
 
-	callba Function55e0
-	callba _UpdateSprites
+	farcall Function55e0
+	farcall _UpdateSprites
 	ret
 ; 1ae5
 

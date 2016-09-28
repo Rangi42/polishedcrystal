@@ -8,7 +8,7 @@ WonderTrade::
 	call PrintText
 
 	ld b, 6
-	callba SelectTradeOrDaycareMon
+	farcall SelectTradeOrDaycareMon
 	ret c
 
 	ld a, [CurPartySpecies]
@@ -197,7 +197,7 @@ DoWonderTrade:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	callba GetCaughtGender
+	farcall GetCaughtGender
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
@@ -214,11 +214,11 @@ DoWonderTrade:
 	xor a
 	ld [MonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	callab RemoveMonFromPartyOrBox
+	farcall RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
 	;ld b, SET_FLAG
-	;callba SetGiftPartyMonCaughtData
+	;farcall SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonNickname
@@ -270,7 +270,7 @@ DoWonderTrade:
 	jr z, .male_ot
 	ld b, SET_FLAG
 .male_ot
-	callba SetGiftPartyMonCaughtData
+	farcall SetGiftPartyMonCaughtData
 
 	; Random DVs
 	call Random
@@ -303,7 +303,7 @@ DoWonderTrade:
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
-	callba ComputeNPCTrademonStats
+	farcall ComputeNPCTrademonStats
 	pop af
 	ld [CurPartyMon], a
 	pop hl
@@ -354,7 +354,7 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	callba GetCaughtGender
+	farcall GetCaughtGender
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
@@ -369,7 +369,7 @@ GetGSBallPichu:
 	xor a
 	ld [MonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	callab RemoveMonFromPartyOrBox
+	farcall RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
 	ld b, RESET_FLAG
@@ -378,7 +378,7 @@ GetGSBallPichu:
 	jr z, .male
 	ld b, SET_FLAG
 .male
-	callba SetGiftPartyMonCaughtData
+	farcall SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonNickname

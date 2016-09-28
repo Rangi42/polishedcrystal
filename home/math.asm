@@ -45,7 +45,7 @@ Multiply:: ; 3119
 	push hl
 	push bc
 
-	callab _Multiply
+	farcall _Multiply
 
 	pop bc
 	pop hl

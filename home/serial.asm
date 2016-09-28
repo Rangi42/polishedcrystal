@@ -263,7 +263,7 @@ Function83b:: ; 83b
 
 Function862:: ; 862
 	call LoadTileMapToTempTileMap
-	callab PlaceWaitingText
+	farcall PlaceWaitingText
 	call Function87d
 	jp Call_LoadTempTileMapToTileMap
 ; 871

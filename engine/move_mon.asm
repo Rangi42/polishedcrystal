@@ -136,7 +136,7 @@ endr
 	push de
 	ld a, [CurPartyLevel]
 	ld d, a
-	callab CalcExpAtLevel
+	farcall CalcExpAtLevel
 	pop de
 	ld a, [hProduct + 1]
 	ld [de], a
@@ -160,7 +160,7 @@ endr
 	and $f
 	jr z, .generateDVs
 	push hl
-	callba GetTrainerDVs
+	farcall GetTrainerDVs
 	pop hl
 	jr .initializetrainermonstats
 
@@ -312,7 +312,7 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	predef GetVariant
-	callab UpdateUnownDex
+	farcall UpdateUnownDex
 
 .done
 	scf ; When this function returns, the carry flag indicates success vs failure.
@@ -423,7 +423,7 @@ AddTempmonToParty: ; da96
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	predef GetVariant
-	callab UpdateUnownDex
+	farcall UpdateUnownDex
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .done
@@ -598,7 +598,7 @@ SentGetPkmnIntoFromBox: ; db3f
 	add $2
 	ld [MonType], a
 	predef CopyPkmnToTempMon
-	callab CalcLevel
+	farcall CalcLevel
 	ld a, d
 	ld [CurPartyLevel], a
 	pop hl
@@ -708,7 +708,7 @@ Functiondcb6: ; dcb6
 	push bc
 	push hl
 	push de
-	callba GetMaxPPOfMove
+	farcall GetMaxPPOfMove
 	pop de
 	pop hl
 	ld a, [wd265]
@@ -844,10 +844,10 @@ Functiondd64: ; dd64
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
-	callba HealPartyMonEvenForNuzlocke
+	farcall HealPartyMonEvenForNuzlocke
 	ld a, [CurPartyLevel]
 	ld d, a
-	callab CalcExpAtLevel
+	farcall CalcExpAtLevel
 	pop bc
 	ld hl, $8
 	add hl, bc
@@ -961,7 +961,7 @@ SentPkmnIntoBox: ; de6e
 	push de
 	ld a, [CurPartyLevel]
 	ld d, a
-	callab CalcExpAtLevel
+	farcall CalcExpAtLevel
 	pop de
 	ld a, [hProduct + 1]
 	ld [de], a
@@ -1011,7 +1011,7 @@ SentPkmnIntoBox: ; de6e
 	jr nz, .not_unown
 	ld hl, sBoxMon1DVs
 	predef GetVariant
-	callab UpdateUnownDex
+	farcall UpdateUnownDex
 
 .not_unown
 	ld hl, sBoxMon1Moves
@@ -1089,8 +1089,8 @@ ShiftBoxMon: ; df47
 GiveEgg:: ; df8c
 	ld a, [CurPartySpecies]
 	push af
-	callab GetPreEvolution
-	callab GetPreEvolution
+	farcall GetPreEvolution
+	farcall GetPreEvolution
 	ld a, [CurPartySpecies]
 	dec a
 
@@ -1433,7 +1433,7 @@ CalcPkmnStatC: ; e17b
 	ld a, [hld]
 	ld e, a
 	ld d, [hl]
-	callba GetSquareRoot
+	farcall GetSquareRoot
 	pop de
 
 .no_stat_exp
@@ -1699,7 +1699,7 @@ GivePoke:: ; e277
 .failed
 	ld a, [CurPartySpecies]
 	ld [TempEnemyMonSpecies], a
-	callab LoadEnemyMon
+	farcall LoadEnemyMon
 	call SentPkmnIntoBox
 	jp nc, .FailedToGiveMon
 	ld a, BOXMON
@@ -1780,7 +1780,7 @@ GivePoke:: ; e277
 	ld [hli], a
 	ld [hl], 01001 % $100
 	pop bc
-	callba SetGiftPartyMonCaughtData
+	farcall SetGiftPartyMonCaughtData
 	jr .skip_nickname
 
 .send_to_box
@@ -1804,7 +1804,7 @@ GivePoke:: ; e277
 	call Random
 	ld [hl], a
 	call CloseSRAM
-	callba SetGiftBoxMonCaughtData
+	farcall SetGiftBoxMonCaughtData
 	jr .skip_nickname
 
 .wildmon
@@ -1815,13 +1815,13 @@ GivePoke:: ; e277
 	ld a, b
 	and a
 	jr z, .party
-	callba SetBoxMonCaughtData
+	farcall SetBoxMonCaughtData
 	jr .set_caught_data
 
 .party
-	callba SetCaughtData
+	farcall SetCaughtData
 .set_caught_data
-	callba GiveANickname_YesNo
+	farcall GiveANickname_YesNo
 	pop de
 	jr c, .skip_nickname
 	call InitNickname
@@ -1865,7 +1865,7 @@ InitNickname: ; e3de
 	pop de
 	push de
 	ld b, $0
-	callba NamingScreen
+	farcall NamingScreen
 	pop hl
 	ld de, StringBuffer1
 	call InitName

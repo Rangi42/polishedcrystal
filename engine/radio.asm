@@ -261,7 +261,7 @@ endr
 	pop bc
 	call GetWorldMapLocation
 	ld e, a
-	callba GetLandmarkName
+	farcall GetLandmarkName
 	ld hl, OPT_OakText1
 	call CopyRadioTextToRAM
 	ld a, OAKS_POKEMON_TALK_5
@@ -575,7 +575,7 @@ OaksPkmnTalk9:
 	db "@"
 
 OaksPkmnTalk10:
-	callba RadioMusicRestartPokemonChannel
+	farcall RadioMusicRestartPokemonChannel
 	ld hl, OPT_RestartText
 	call PrintText
 	call WaitBGMap
@@ -636,7 +636,7 @@ OaksPkmnTalk14:
 	dec [hl]
 	ret nz
 	ld de, $1d
-	callab RadioMusicRestartDE
+	farcall RadioMusicRestartDE
 	ld hl, .terminator
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_4
@@ -906,7 +906,7 @@ StartPokemonMusicChannel:
 	jr z, .SunTueThurSun
 	ld de, MUSIC_POKEMON_LULLABY
 .SunTueThurSun:
-	callab RadioMusicRestartDE
+	farcall RadioMusicRestartDE
 	ret
 
 BenIntroText1:
@@ -961,9 +961,9 @@ BenFernText3B:
 
 LuckyNumberShow1:
 	call StartRadioStation
-	callab Special_CheckLuckyNumberShowFlag
+	farcall Special_CheckLuckyNumberShowFlag
 	jr nc, .dontreset
-	callab Special_ResetLuckyNumberShowFlag
+	farcall Special_ResetLuckyNumberShowFlag
 .dontreset
 	ld hl, LC_Text1
 	ld a, LUCKY_NUMBER_SHOW_2
@@ -1176,12 +1176,12 @@ PeoplePlaces4: ; People
 	pop bc
 	jr c, PeoplePlaces4
 	push bc
-	callab GetTrainerClassName
+	farcall GetTrainerClassName
 	ld de, StringBuffer1
 	call CopyName1
 	pop bc
 	ld b, 1
-	callab GetTrainerName
+	farcall GetTrainerName
 	ld hl, PnP_Text4
 	ld a, PLACES_AND_PEOPLE_5
 	jp NextRadioLine
@@ -1331,7 +1331,7 @@ PeoplePlaces6: ; Places
 	ld c, [hl]
 	call GetWorldMapLocation
 	ld e, a
-	callba GetLandmarkName
+	farcall GetLandmarkName
 	ld hl, PnP_Text5
 	ld a, PLACES_AND_PEOPLE_7
 	jp NextRadioLine
@@ -1790,8 +1790,8 @@ BuenasPassword19:
 BuenasPassword20:
 	ld a, [hBGMapMode]
 	push af
-	callba NoRadioMusic
-	callba NoRadioName
+	farcall NoRadioMusic
+	farcall NoRadioName
 	pop af
 	ld [hBGMapMode], a
 	ld hl, WeeklyFlags
@@ -1937,7 +1937,7 @@ StartRadioStation:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	callab RadioMusicRestartDE
+	farcall RadioMusicRestartDE
 	ret
 
 RadioChannelSongs:

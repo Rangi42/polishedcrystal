@@ -103,8 +103,8 @@ _LinkTextbox: ; 16d61d
 InitTradeSpeciesList: ; 16d673
 	call _LoadTradeScreenBorder
 	call Function16d6ae
-	callba InitLinkTradePalMap
-	callba PlaceTradePartnerNamesAndParty
+	farcall InitLinkTradePalMap
+	farcall PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .CANCEL
 	call PlaceString
@@ -130,7 +130,7 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX: ; 16d69a
 ; 16d6a7
 
 Function16d6a7: ; 16d6a7
-	callba LoadLinkTradePalette
+	farcall LoadLinkTradePalette
 	ret
 ; 16d6ae
 
@@ -155,7 +155,7 @@ LinkTextbox: ; 16d6ca
 Function16d6ce: ; 16d6ce
 	call LoadStandardMenuDataHeader
 	call Function16d6e1
-	callba Function87d
+	farcall Function87d
 	call Call_ExitMenu
 	call WaitBGMap2
 	ret
@@ -217,7 +217,7 @@ LinkTradeMenu: ; 16d70c
 	call .UpdateBGMapAndOAM
 	call .loop2
 	jr nc, .done
-	callba _2DMenuInterpretJoypad
+	farcall _2DMenuInterpretJoypad
 	jr c, .done
 	ld a, [w2DMenuFlags1]
 	bit 7, a
@@ -336,7 +336,7 @@ LinkTradeMenu: ; 16d70c
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	jr z, .skip_anims
-	callba PlaySpriteAnimationsAndDelayFrame
+	farcall PlaySpriteAnimationsAndDelayFrame
 .skip_anims
 	call JoyTextDelay
 	call .GetJoypad

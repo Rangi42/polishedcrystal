@@ -164,7 +164,7 @@ LoseMoney: ; 12513
 	ld bc, hMoneyTemp
 	push bc
 	push de
-	callba CompareMoney
+	farcall CompareMoney
 	jr nc, .nonzero
 	ld hl, Money
 	ld de, hMoneyTemp
@@ -172,7 +172,7 @@ LoseMoney: ; 12513
 .nonzero
 	pop de
 	pop bc
-	callba TakeMoney
+	farcall TakeMoney
 	ld a, 1
 .load
 	ld [ScriptVar], a
@@ -216,7 +216,7 @@ GetWhiteoutSpawn: ; 12527
 	ld d, a
 	ld a, [wLastSpawnMapNumber]
 	ld e, a
-	callba IsSpawnPoint
+	farcall IsSpawnPoint
 	ld a, c
 	jr c, .yes
 	xor a ; SPAWN_HOME

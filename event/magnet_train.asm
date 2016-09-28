@@ -45,7 +45,7 @@ Special_MagnetTrain: ; 8cc04
 	jr z, .initialize
 	bit 7, a
 	jr nz, .done
-	callab PlaySpriteAnimations
+	farcall PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
 	call Function3b0c
@@ -118,7 +118,7 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	call ClearBGPalettes
 	call ClearSprites
 	call DisableLCD
-	callab ClearSpriteAnims
+	farcall ClearSpriteAnims
 	call SetMagnetTrainPals
 	call DrawMagnetTrain
 	ld a, $90
@@ -132,7 +132,7 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	push af
 	ld a, $1
 	ld [rSVBK], a
-	callba GetPlayerIcon
+	farcall GetPlayerIcon
 	pop af
 	ld [rSVBK], a
 	ld hl, VTiles0
@@ -428,7 +428,7 @@ endr
 ; 8ceae
 
 MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
-	callba PlaySpriteAnimations
+	farcall PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
 	call Function3b0c

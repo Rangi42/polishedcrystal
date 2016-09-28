@@ -4,7 +4,7 @@ Special_BattleTower_InitChallengeRAM: ; 1700b0
 	ld [wNrOfBeatenBattleTowerTrainers], a
 	ld [wcf65], a
 	ld [wcf66], a
-	callba Function118121
+	farcall Function118121
 	ret
 ; 1700ba
 
@@ -52,7 +52,7 @@ RunBattleTowerTrainer: ; 17024d
 
 	xor a
 	ld [wLinkMode], a
-	callba HealPartyEvenForNuzlocke
+	farcall HealPartyEvenForNuzlocke
 	call ReadBTTrainerParty
 
 	; Clears 05:a89a
@@ -66,8 +66,8 @@ RunBattleTowerTrainer: ; 17024d
 
 	predef StartBattle
 
-	callba LoadPokemonData
-	callba HealPartyEvenForNuzlocke
+	farcall LoadPokemonData
+	farcall HealPartyEvenForNuzlocke
 	ld a, [wBattleResult]
 	ld [ScriptVar], a
 	and a
@@ -311,7 +311,7 @@ Special_BattleTower_CheckSaveFileExistsAndIsYours: ; 17089a
 	ld a, [wSaveFileExists]
 	and a
 	jr z, .nope
-	callba CompareLoadedAndSavedPlayerID
+	farcall CompareLoadedAndSavedPlayerID
 	jr z, .yes
 	xor a
 	jr .nope
@@ -337,7 +337,7 @@ Special_BattleTower_AcceptChallenge: ; 170a9c (5c:4a9c)
 	ret
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
-	callba Function_LoadOpponentTrainerAndPokemons
+	farcall Function_LoadOpponentTrainerAndPokemons
 	ld a, [rSVBK]
 	push af
 	ld a, $3
@@ -377,7 +377,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	ld [hUsedSpriteIndex], a
 	ld a, [hl]
 	ld [hUsedSpriteTile], a
-	callba GetUsedSprite
+	farcall GetUsedSprite
 	ret
 ; 170b90
 
@@ -486,7 +486,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_SABRINA       ; REI
 
 Special_BattleTower_CheckForRules: ; 170bd3
-	callba CheckForBattleTowerRules
+	farcall CheckForBattleTowerRules
 	jr c, .yes
 	xor a
 	jr .done

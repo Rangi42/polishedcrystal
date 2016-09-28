@@ -214,7 +214,7 @@ ParkBall: ; e8a2
 	jr z, .NoNuzlockeCheck
 
 	; Shiny clause: always allow catching shiny Pokémon
-	callba BattleCheckEnemyShininess
+	farcall BattleCheckEnemyShininess
 	jr c, .NoNuzlockeCheck
 
 	; Get current landmark
@@ -382,7 +382,7 @@ endr
 
 	ld a, [BattleMonItem]
 	ld b, a
-	callba GetItemHeldEffect
+	farcall GetItemHeldEffect
 	ld a, b
 	cp HELD_CATCH_CHANCE
 
@@ -495,7 +495,7 @@ endr
 	ld [CurPartySpecies], a
 	ld a, [EnemyMonLevel]
 	ld [CurPartyLevel], a
-	callba LoadEnemyMon
+	farcall LoadEnemyMon
 
 	pop af
 	ld [EnemySubStatus2], a
@@ -552,7 +552,7 @@ endr
 	ld b, SET_FLAG
 	predef FlagPredef
 
-	callba GiveExperiencePointsAfterCatch
+	farcall GiveExperiencePointsAfterCatch
 
 	ld a, [EnemyMonLevel]
 	ld [CurPartyLevel], a
@@ -605,7 +605,7 @@ endr
 
 	predef TryAddMonToParty
 
-	callba SetCaughtData
+	farcall SetCaughtData
 
 	ld a, [CurItem]
 	cp FRIEND_BALL
@@ -649,7 +649,7 @@ endr
 	xor a ; PARTYMON
 	ld [MonType], a
 	ld b, 0
-	callba NamingScreen
+	farcall NamingScreen
 
 	call RotateThreePalettesRight
 
@@ -666,7 +666,7 @@ endr
 
 	predef SentPkmnIntoBox
 
-	callba SetBoxMonCaughtData
+	farcall SetBoxMonCaughtData
 
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
@@ -707,7 +707,7 @@ endr
 	ld [MonType], a
 	ld de, wMonOrItemNameBuffer
 	ld b, $0
-	callba NamingScreen
+	farcall NamingScreen
 
 	ld a, BANK(sBoxMonNicknames)
 	call GetSRAMBank
@@ -742,7 +742,7 @@ endr
 	jr .return_from_capture
 
 .catch_bug_contest_mon
-	callba BugContest_SetCaughtContestMon
+	farcall BugContest_SetCaughtContestMon
 	jr .return_from_capture
 
 .FinishTutorial:
@@ -1030,7 +1030,7 @@ LoveBallMultiplier:
 	ld [MonType], a
 	ld a, [CurBattleMon]
 	ld [CurPartyMon], a
-	callba GetGender
+	farcall GetGender
 	jr c, .done1 ; no effect on genderless
 
 	ld d, 0 ; male
@@ -1044,7 +1044,7 @@ LoveBallMultiplier:
 	ld [CurPartySpecies], a
 	ld a, WILDMON
 	ld [MonType], a
-	callba GetGender
+	farcall GetGender
 	jr c, .done2 ; no effect on genderless
 
 	ld d, 0 ; male
@@ -1320,17 +1320,17 @@ Text_AskNicknameNewlyCaughtMon: ; 0xedf5
 ; 0xedfa
 
 ReturnToBattle_UseBall: ; edfa (3:6dfa)
-	callba _ReturnToBattle_UseBall
+	farcall _ReturnToBattle_UseBall
 	ret
 
 TownMap: ; ee01
-	callba PokegearMap
+	farcall PokegearMap
 	ret
 ; ee08
 
 
 Bicycle: ; ee08
-	callba BikeFunction
+	farcall BikeFunction
 	ret
 ; ee0f
 
@@ -1357,7 +1357,7 @@ ShinyStone:
 
 	ld a, $1
 	ld [wForceEvolution], a
-	callba EvolvePokemon
+	farcall EvolvePokemon
 
 	ld a, [wMonTriedToEvolve]
 	and a
@@ -1418,7 +1418,7 @@ Calcium: ; ee3d
 	call PrintText
 
 	ld c, HAPPINESS_USEDITEM
-	callba ChangeHappiness
+	farcall ChangeHappiness
 
 	jp UseDisposableItem
 
@@ -1532,7 +1532,7 @@ RareCandy: ; ef14
 	ld [CurPartyLevel], a
 	push de
 	ld d, a
-	callba CalcExpAtLevel
+	farcall CalcExpAtLevel
 
 	pop de
 	ld a, MON_EXP
@@ -1570,7 +1570,7 @@ RareCandy: ; ef14
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	callba LevelUpHappinessMod
+	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
 	call ItemActionText
@@ -1598,7 +1598,7 @@ RareCandy: ; ef14
 
 	xor a
 	ld [wForceEvolution], a
-	callba EvolvePokemon
+	farcall EvolvePokemon
 
 	jp UseDisposableItem
 ; efad
@@ -1615,7 +1615,7 @@ HealPowder: ; efad
 	cp $0
 	jr nz, .asm_efc9
 	ld c, HAPPINESS_BITTERPOWDER
-	callba ChangeHappiness
+	farcall ChangeHappiness
 
 	call LooksBitterMessage
 
@@ -1718,7 +1718,7 @@ HealStatus: ; f030 (3:7030)
 	res SUBSTATUS_CONFUSED, [hl]
 .not_full_heal
 	push bc
-	callba CalcPlayerStats
+	farcall CalcPlayerStats
 	pop bc
 	ret
 
@@ -1788,7 +1788,7 @@ RevivalHerb: ; f0a9
 	jr nz, .asm_f0c5
 
 	ld c, HAPPINESS_REVIVALHERB
-	callba ChangeHappiness
+	farcall ChangeHappiness
 	call LooksBitterMessage
 	ld a, 0
 
@@ -1953,7 +1953,7 @@ EnergyPowderEnergyRootCommon: ; f192
 	cp 0
 	jr nz, .skip_happiness
 
-	callba ChangeHappiness
+	farcall ChangeHappiness
 	call LooksBitterMessage
 	ld a, 0
 
@@ -2032,15 +2032,15 @@ UseItem_SelectMon: ; f1f9 (3:71f9)
 	ret
 
 ChoosePkmnToUseItemOn: ; f21c (3:721c)
-	callba LoadPartyMenuGFX
-	callba InitPartyMenuWithCancel
-	callba InitPartyMenuGFX
-	callba WritePartyMenuTilemap
-	callba PrintPartyMenuText
+	farcall LoadPartyMenuGFX
+	farcall InitPartyMenuWithCancel
+	farcall InitPartyMenuGFX
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
 	call WaitBGMap
 	call SetPalettes
 	call DelayFrame
-	callba PartyMenuSelect
+	farcall PartyMenuSelect
 	ret
 
 ItemActionText: ; f24a (3:724a)
@@ -2052,8 +2052,8 @@ ItemActionText: ; f24a (3:724a)
 	push hl
 	push de
 	push bc
-	callba WritePartyMenuTilemap
-	callba PrintPartyMenuActionText
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuActionText
 	call WaitBGMap
 	call SetPalettes
 	call DelayFrame
@@ -2408,7 +2408,7 @@ Softboiled_MilkDrinkFunction: ; f3df (3:73df)
 EscapeRope: ; f44f
 	xor a
 	ld [wItemEffectSucceeded], a
-	callba EscapeRopeFunction
+	farcall EscapeRopeFunction
 
 	ld a, [wItemEffectSucceeded]
 	cp 1
@@ -2516,16 +2516,16 @@ endr
 	ld [hBattleTurn], a
 	ld [AttackMissed], a
 	ld [EffectFailed], a
-	callba CheckIfStatCanBeRaised
+	farcall CheckIfStatCanBeRaised
 	call WaitSFX
 
-	callba BattleCommand_StatUpMessage
-	callba BattleCommand_StatUpFailText
+	farcall BattleCommand_StatUpMessage
+	farcall BattleCommand_StatUpFailText
 
 	ld a, [CurBattleMon]
 	ld [CurPartyMon], a
 	ld c, HAPPINESS_USEDXITEM
-	callba ChangeHappiness
+	farcall ChangeHappiness
 	ret
 ; f504
 
@@ -2673,13 +2673,13 @@ SuperRod: ; f5ad
 ; f5b1
 
 Function_0xf5b1: ; f5b1
-	callba FishFunction
+	farcall FishFunction
 	ret
 ; f5b8
 
 
 Itemfinder: ; f5b8
-	callba ItemFinder
+	farcall ItemFinder
 	ret
 ; f5bf
 
@@ -2721,7 +2721,7 @@ MysteryBerry: ; f5bf
 	ld [CurMoveNum], a
 	ld a, $2
 	ld [wMoveSelectionMenuType], a
-	callba MoveSelectionScreen
+	farcall MoveSelectionScreen
 	pop bc
 
 	ld a, b
@@ -2956,19 +2956,19 @@ UnknownText_0xf739: ; 0xf739
 
 
 SquirtBottle: ; f73e
-	callba _Squirtbottle
+	farcall _Squirtbottle
 	ret
 ; f745
 
 
 CardKey: ; f745
-	callba _CardKey
+	farcall _CardKey
 	ret
 ; f74c
 
 
 BasementKey: ; f74c
-	callba _BasementKey
+	farcall _BasementKey
 	ret
 ; f753
 
@@ -2978,7 +2978,7 @@ SacredAsh: ; f753
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
-	callba _SacredAsh
+	farcall _SacredAsh
 	ld a, [wItemEffectSucceeded]
 	cp $1
 	ret nz

@@ -330,7 +330,7 @@ PlaySlowCry: ; fb841
 	ld [CryLength], a
 	ld a, h
 	ld [CryLength + 1], a
-	callba _PlayCryHeader
+	farcall _PlayCryHeader
 	call WaitSFX
 
 .done
@@ -354,11 +354,11 @@ NewPokedexEntry: ; fb877
 	ld [hSCX], a
 	xor a
 	ld [wPokedexStatus], a
-	callba _NewPokedexEntry
+	farcall _NewPokedexEntry
 	call WaitPressAorB_BlinkCursor
 	ld a, $1
 	ld [wPokedexStatus], a
-	callba DisplayDexEntry
+	farcall DisplayDexEntry
 	call WaitPressAorB_BlinkCursor
 	pop af
 	ld [wPokedexStatus], a
@@ -377,9 +377,9 @@ NewPokedexEntry: ; fb877
 	call ClearTileMap
 	call LoadFontsExtra
 	call LoadStandardFont
-	callba Pokedex_PlaceFrontpicTopLeftCorner
+	farcall Pokedex_PlaceFrontpicTopLeftCorner
 	call WaitBGMap2
-	callba GetEnemyMonDVs
+	farcall GetEnemyMonDVs
 	ld a, [hli]
 	ld [TempMonDVs], a
 	ld a, [hl]

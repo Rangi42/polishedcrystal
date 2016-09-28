@@ -499,7 +499,7 @@ LoadLinkTradePalette: ; 49811
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
 	call FarCopyWRAM
-	callba ApplyPals
+	farcall ApplyPals
 	ret
 ; 49826
 

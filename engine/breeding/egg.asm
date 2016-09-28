@@ -231,7 +231,7 @@ HatchEggs: ; 16f70 (5:6f70)
 
 	push de
 
-	callba SetEggMonCaughtData
+	farcall SetEggMonCaughtData
 	ld a, [CurPartyMon]
 	ld hl, PartyMons ; wdcdf (aliases: PartyMon1, PartyMon1Species)
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -344,7 +344,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld [MonType], a
 	push de
 	ld b, $0
-	callba NamingScreen
+	farcall NamingScreen
 	pop hl
 	ld de, StringBuffer1
 	call InitName
@@ -696,7 +696,7 @@ EggHatch_DoAnimFrame: ; 1727f (5:727f)
 	push hl
 	push de
 	push bc
-	callab PlaySpriteAnimations
+	farcall PlaySpriteAnimations
 	call DelayFrame
 	pop bc
 	pop de
@@ -710,14 +710,14 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	push af
 	ld de, MUSIC_NONE
 	call PlayMusic
-	callba BlankScreen
+	farcall BlankScreen
 	call DisableLCD
 	ld hl, EggHatchGFX
 	ld de, VTiles0 tile $00
 	ld bc, $20
 	ld a, BANK(EggHatchGFX)
 	call FarCopyBytes
-	callba ClearSpriteAnims
+	farcall ClearSpriteAnims
 	ld de, VTiles2 tile $00
 	ld a, [wJumptableIndex]
 	call GetHatchlingFrontpic
@@ -826,7 +826,7 @@ INCBIN "gfx/unknown/017393.2bpp"
 ; 173b3
 
 Hatch_InitShellFragments: ; 173b3 (5:73b3)
-	callba ClearSpriteAnims
+	farcall ClearSpriteAnims
 	ld hl, .SpriteData
 .loop
 	ld a, [hli]

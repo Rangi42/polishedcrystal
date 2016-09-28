@@ -37,7 +37,7 @@ endr
 ; Get the rest of the damage formula variables
 ; based on the new type.
 	push af
-	callba BattleCommand_DamageStats ; damagestats
+	farcall BattleCommand_DamageStats ; damagestats
 	pop af
 	ret
 ; fbd54

@@ -10,7 +10,7 @@ _DummyGame: ; e1e5b (38:5e5b)
 	call DisableLCD
 	ld b, SCGB_08
 	call GetSGBLayout
-	callab ClearSpriteAnims
+	farcall ClearSpriteAnims
 	ld hl, LZ_e2221
 	ld de, VTiles2 tile $00
 	call Decompress
@@ -47,7 +47,7 @@ _DummyGame: ; e1e5b (38:5e5b)
 	bit 7, a
 	jr nz, .quit
 	call .ExecuteJumptable
-	callab PlaySpriteAnimations
+	farcall PlaySpriteAnimations
 	call DelayFrame
 	and a
 	ret

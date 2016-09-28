@@ -14,14 +14,14 @@ LinkCommunications: ; 28000
 	call UpdateSprites
 	call LoadStandardFont
 	call LoadFontsBattleExtra
-	callba LinkComms_LoadPleaseWaitTextboxBorderGFX
+	farcall LinkComms_LoadPleaseWaitTextboxBorderGFX
 	call WaitBGMap2
 	hlcoord 3, 8
 	ld b, 2
 	ld c, 12
 	ld d, h
 	ld e, l
-	callba LinkTextbox2
+	farcall LinkTextbox2
 	hlcoord 4, 10
 	ld de, String_PleaseWait
 	call PlaceString
@@ -150,7 +150,7 @@ TimeCapsule: ; 2805d
 	ld [wd265], a
 	push hl
 	push de
-	callab ConvertMon_1to2
+	farcall ConvertMon_1to2
 	pop de
 	pop hl
 	ld a, [wd265]
@@ -362,19 +362,19 @@ Gen2ToGen2LinkComms: ; 28177
 .fix_mail_loop
 	push bc
 	push de
-	callba IsMailEuropean
+	farcall IsMailEuropean
 	ld a, c
 	or a
 	jr z, .next
 	sub $3
 	jr nc, .skip
-	callba DeutenEnglischenPost
+	farcall DeutenEnglischenPost
 	jr .next
 
 .skip
 	cp $2
 	jr nc, .next
-	callba HandleSpanishItalianMail
+	farcall HandleSpanishItalianMail
 
 .next
 	pop de
@@ -419,7 +419,7 @@ Gen2ToGen2LinkComms: ; 28177
 	ld a, CAL
 	ld [OtherTrainerClass], a
 	call ClearScreen
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	ld hl, Options
 	ld a, [hl]
 	push af
@@ -459,7 +459,7 @@ Gen2ToGen2LinkComms: ; 28177
 	ld [wc2d7], a
 	pop af
 	ld [Options], a
-	callba LoadPokemonData
+	farcall LoadPokemonData
 	jp Function28b22
 
 .ready_to_trade
@@ -487,7 +487,7 @@ LinkTimeout: ; 283b2
 	push de
 	ld d, h
 	ld e, l
-	callba LinkTextbox2
+	farcall LinkTextbox2
 	pop de
 	pop hl
 	bccoord 1, 14
@@ -654,7 +654,7 @@ Link_PrepPartyData_Gen1: ; 28499
 	ld [wd265], a
 	push hl
 	push de
-	callab ConvertMon_2to1
+	farcall ConvertMon_2to1
 	pop de
 	pop hl
 	ld a, [wd265]
@@ -694,7 +694,7 @@ Link_PrepPartyData_Gen1: ; 28499
 	push bc
 	ld a, [hl]
 	ld [wd265], a
-	callab ConvertMon_2to1
+	farcall ConvertMon_2to1
 	pop bc
 	pop de
 	ld a, [wd265]
@@ -878,20 +878,20 @@ Link_PrepPartyData_Gen2: ; 28595
 	push hl
 	push de
 	push hl
-	callba IsMailEuropean
+	farcall IsMailEuropean
 	pop de
 	ld a, c
 	or a
 	jr z, .next
 	sub $3
 	jr nc, .italian_spanish
-	callba HandleFrenchGermanMail
+	farcall HandleFrenchGermanMail
 	jr .next
 
 .italian_spanish
 	cp $2
 	jr nc, .next
-	callba HandleSpanishItalianMail
+	farcall HandleSpanishItalianMail
 
 .next
 	pop de
@@ -989,7 +989,7 @@ Function2868a: ; 2868a
 	push bc
 	push de
 	ld [wd265], a
-	callab ConvertMon_1to2
+	farcall ConvertMon_1to2
 	pop de
 	pop bc
 	ld a, [wd265]
@@ -1219,7 +1219,7 @@ Link_FindFirstNonControlCharacter_AllowZero: ; 287d8
 InitTradeMenuDisplay: ; 287e3
 	call ClearScreen
 	call LoadTradeScreenBorder
-	callba InitTradeSpeciesList
+	farcall InitTradeSpeciesList
 	xor a
 	ld hl, wOtherPlayerLinkMode
 rept 3
@@ -1256,7 +1256,7 @@ LinkTrade_OTPartyMenu: ; 28803
 	ld [w2DMenuFlags2], a
 
 LinkTradeOTPartymonMenuLoop: ; 28835
-	callba LinkTradeMenu
+	farcall LinkTradeMenu
 	ld a, d
 	and a
 	jp z, LinkTradePartiesMenuMasterLoop
@@ -1264,9 +1264,9 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 	jr z, .not_a_button
 	ld a, $1
 	ld [wd263], a
-	callab Function50db9
+	farcall Function50db9
 	ld hl, OTPartyMon1Species
-	callba LinkMonStatsScreen
+	farcall LinkMonStatsScreen
 	jp LinkTradePartiesMenuMasterLoop
 
 .not_a_button
@@ -1298,7 +1298,7 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 ; 2888b
 
 LinkTrade_PlayerPartyMenu: ; 2888b
-	callba InitLinkTradePalMap
+	farcall InitLinkTradePalMap
 	xor a
 	ld [MonType], a
 	ld a, A_BUTTON | D_UP | D_DOWN
@@ -1322,7 +1322,7 @@ LinkTrade_PlayerPartyMenu: ; 2888b
 	call WaitBGMap2
 
 LinkTradePartymonMenuLoop: ; 288c5
-	callba LinkTradeMenu
+	farcall LinkTradeMenu
 	ld a, d
 	and a
 	jr nz, .check_joypad
@@ -1390,7 +1390,7 @@ Function28926: ; 28926
 	hlcoord 2, 16
 	ld de, .String_Stats_Trade
 	call PlaceString
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 
 .joy_loop
 	ld a, " "
@@ -1457,8 +1457,8 @@ Function28926: ; 28926
 	ld [wMenuCursorY], a
 	ld a, $4
 	ld [wd263], a
-	callab Function50db9
-	callba LinkMonStatsScreen
+	farcall Function50db9
+	farcall LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
@@ -1477,7 +1477,7 @@ Function28926: ; 28926
 	dec a
 	ld [wd002], a
 	ld [wPlayerLinkAction], a
-	callba Function16d6ce
+	farcall Function16d6ce
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jp z, InitTradeMenuDisplay
@@ -1485,9 +1485,9 @@ Function28926: ; 28926
 	call Function28b68
 	ld c, 100
 	call DelayFrames
-	callba ValidateOTTrademon
+	farcall ValidateOTTrademon
 	jr c, .abnormal
-	callba Functionfb5dd
+	farcall Functionfb5dd
 	jp nc, LinkTrade
 	xor a
 	ld [wcf57], a
@@ -1496,7 +1496,7 @@ Function28926: ; 28926
 	ld b, 4
 	ld c, 18
 	call Predef_LinkTextbox
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	ld hl, .Text_CantTradeLastMon
 	bccoord 1, 14
 	call PlaceWholeStringInBoxAtOnce
@@ -1518,7 +1518,7 @@ Function28926: ; 28926
 	ld b, 4
 	ld c, 18
 	call Predef_LinkTextbox
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	ld hl, .Text_Abnormal
 	bccoord 1, 14
 	call PlaceWholeStringInBoxAtOnce
@@ -1533,7 +1533,7 @@ Function28926: ; 28926
 	call PlaceString
 	ld a, $1
 	ld [wPlayerLinkAction], a
-	callba Function16d6ce
+	farcall Function16d6ce
 	ld c, 100
 	call DelayFrames
 	jp InitTradeMenuDisplay
@@ -1599,7 +1599,7 @@ Function28ade: ; 28ade
 	ldcoord_a 9, 17
 	ld a, $f
 	ld [wPlayerLinkAction], a
-	callba Function16d6ce
+	farcall Function16d6ce
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jr nz, .loop1
@@ -1655,7 +1655,7 @@ LinkTrade: ; 28b87
 	ld b, $4
 	ld c, $12
 	call Predef_LinkTextbox
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	ld a, [wd002]
 	ld hl, PartySpecies
 	ld c, a
@@ -1705,7 +1705,7 @@ LinkTrade: ; 28b87
 	ld a, 1
 	ld [wMenuCursorY], a
 	ld [wMenuCursorX], a
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	call ScrollingMenuJoypad
 	push af
 	call Call_ExitMenu
@@ -1727,13 +1727,13 @@ LinkTrade: ; 28b87
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
 	call PlaceString
-	callba Function16d6ce
+	farcall Function16d6ce
 	jp Function28ea3
 
 .asm_28c54
 	ld a, $2
 	ld [wPlayerLinkAction], a
-	callba Function16d6ce
+	farcall Function16d6ce
 	ld a, [wOtherPlayerLinkMode]
 	dec a
 	jr nz, .asm_28c7b
@@ -1822,7 +1822,7 @@ LinkTrade: ; 28b87
 	call GetPartyLocation
 	ld b, h
 	ld c, l
-	callba GetCaughtGender
+	farcall GetCaughtGender
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 	ld hl, OTPlayerName
@@ -1861,7 +1861,7 @@ LinkTrade: ; 28b87
 	call GetPartyLocation
 	ld b, h
 	ld c, l
-	callba GetCaughtGender
+	farcall GetCaughtGender
 	ld a, c
 	ld [wOTTrademonCaughtData], a
 	ld a, [wd002]
@@ -1874,7 +1874,7 @@ LinkTrade: ; 28b87
 	ld [wd002], a
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	callab RemoveMonFromPartyOrBox
+	farcall RemoveMonFromPartyOrBox
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
@@ -1923,11 +1923,11 @@ LinkTrade: ; 28b87
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
-	callab EvolvePokemon
+	farcall EvolvePokemon
 	call ClearScreen
 	call LoadTradeScreenBorder
 	call Function28eff
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	ld b, $1
 	pop af
 	ld c, a
@@ -1962,7 +1962,7 @@ LinkTrade: ; 28b87
 	jr nz, .asm_28e49
 
 .asm_28e63
-	callba Function14a58
+	farcall Function14a58
 	ld c, 40
 	call DelayFrames
 	hlcoord 0, 12
@@ -1972,7 +1972,7 @@ LinkTrade: ; 28b87
 	hlcoord 1, 14
 	ld de, String28ebd
 	call PlaceString
-	callba Link_WaitBGMap
+	farcall Link_WaitBGMap
 	ld c, 50
 	call DelayFrames
 	ld a, [wLinkMode]
@@ -2008,17 +2008,17 @@ String_TooBadTheTradeWasCanceled: ; 28ece
 Predef_LinkTextbox: ; 28eef
 	ld d, h
 	ld e, l
-	callba LinkTextbox
+	farcall LinkTextbox
 	ret
 ; 28ef8
 
 LoadTradeScreenBorder: ; 28ef8
-	callba _LoadTradeScreenBorder
+	farcall _LoadTradeScreenBorder
 	ret
 ; 28eff
 
 Function28eff: ; 28eff
-	callba Function16d6a7
+	farcall Function16d6a7
 	call SetPalettes
 	ret
 ; 28f09
@@ -2053,7 +2053,7 @@ Special_CheckTimeCapsuleCompatibility: ; 29bfb
 	push hl
 	push bc
 	ld d, [hl]
-	callba ItemIsMail
+	farcall ItemIsMail
 	pop bc
 	pop hl
 	jr c, .mon_has_mail
@@ -2422,7 +2422,7 @@ Function29e53: ; 29e53
 Special_TryQuickSave: ; 29e66
 	ld a, [wd265]
 	push af
-	callba Link_SaveGame
+	farcall Link_SaveGame
 	ld a, $1
 	jr nc, .asm_29e75
 	xor a
@@ -2467,7 +2467,7 @@ Special_TimeCapsule: ; 29eaf
 	ld a, LINK_TIMECAPSULE
 	ld [wLinkMode], a
 	call DisableSpriteUpdates
-	callab LinkCommunications
+	farcall LinkCommunications
 	call EnableSpriteUpdates
 	xor a
 	ld [hVBlank], a
@@ -2478,7 +2478,7 @@ Special_TradeCenter: ; 29ec4
 	ld a, LINK_TRADECENTER
 	ld [wLinkMode], a
 	call DisableSpriteUpdates
-	callab LinkCommunications
+	farcall LinkCommunications
 	call EnableSpriteUpdates
 	xor a
 	ld [hVBlank], a
@@ -2489,7 +2489,7 @@ Special_Colosseum: ; 29ed9
 	ld a, LINK_COLOSSEUM
 	ld [wLinkMode], a
 	call DisableSpriteUpdates
-	callab LinkCommunications
+	farcall LinkCommunications
 	call EnableSpriteUpdates
 	xor a
 	ld [hVBlank], a

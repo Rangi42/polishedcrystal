@@ -23,7 +23,7 @@ MoveReminder:
 	call JoyWaitAorB
 
 	ld b, $6
-	callba SelectMonFromParty
+	farcall SelectMonFromParty
 	jr c, .cancel
 
 	ld a, [CurPartySpecies]
@@ -224,7 +224,7 @@ ChooseMoveToLearn:
 	; Number of items stored in wd002
 	; List of items stored in wd002 + 1
 	call FadeToMenu
-	callba BlankScreen
+	farcall BlankScreen
 	call UpdateSprites
 	ld hl, .MenuDataHeader
 	call CopyMenuDataHeader

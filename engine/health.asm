@@ -90,7 +90,7 @@ HealPartyMon: ; c677
 	ld a, [hl]
 	ld [bc], a
 
-	callba RestoreAllPP
+	farcall RestoreAllPP
 .Done:
 	ret
 

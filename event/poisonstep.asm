@@ -81,7 +81,7 @@ DoPoisonStep:: ; 505da
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-	callba GetAbility
+	farcall GetAbility
 	ld a, b
 	cp IMMUNITY
 	jr z, .heal_poison
@@ -150,8 +150,8 @@ DoPoisonStep:: ; 505da
 	and %10
 	jr z, .mon_not_fainted
 	ld c, HAPPINESS_POISONFAINT
-	callba ChangeHappiness
-	callba GetPartyNick
+	farcall ChangeHappiness
+	farcall GetPartyNick
 	ld hl, .PoisonRecoveryText
 	call PrintText
 

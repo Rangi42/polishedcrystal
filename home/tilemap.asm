@@ -1,16 +1,16 @@
 PushWindow:: ; 1c00
-	callab _PushWindow
+	farcall _PushWindow
 	ret
 ; 1c07
 
 ExitMenu:: ; 0x1c07
 	push af
-	callab _ExitMenu
+	farcall _ExitMenu
 	pop af
 	ret
 
 InitVerticalMenuCursor:: ; 0x1c10
-	callab _InitVerticalMenuCursor
+	farcall _InitVerticalMenuCursor
 	ret
 
 CloseWindow:: ; 0x1c17

@@ -14,7 +14,7 @@ BattleCommand_Attract: ; 377ce
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OBLIVIOUS
 	jr nz, .no_ability_protection
-	callba ShowEnemyAbilityActivation
+	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
 	jp StdBattleTextBox
 
@@ -25,7 +25,7 @@ BattleCommand_Attract: ; 377ce
 ; 'fell in love!'
 	ld hl, FellInLoveText
 	call StdBattleTextBox
-	callba RunEnemyStatusHealAbilities
+	farcall RunEnemyStatusHealAbilities
 	ret
 
 .failed
@@ -44,7 +44,7 @@ CheckOppositeGender: ; 377f5
 	xor a
 	ld [MonType], a
 
-	callba GetGender
+	farcall GetGender
 	jr c, .genderless_samegender
 
 	ld b, 1
@@ -67,7 +67,7 @@ CheckOppositeGender: ; 377f5
 	ld [TempMonDVs + 1], a
 	ld a, 3
 	ld [MonType], a
-	callba GetGender
+	farcall GetGender
 	pop bc
 	jr c, .genderless_samegender
 

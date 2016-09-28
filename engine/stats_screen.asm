@@ -16,7 +16,7 @@ StatsScreenInit: ; 4dc8a
 	call ClearBGPalettes
 	call ClearTileMap
 	call UpdateSprites
-	callba Functionfb53e
+	farcall Functionfb53e
 	pop hl
 	call _hl_
 	call ClearBGPalettes
@@ -76,14 +76,14 @@ StatsScreen_WaitAnim: ; 4dd3a (13:5d3a)
 	ret
 
 .try_anim
-	callba SetUpPokeAnim
+	farcall SetUpPokeAnim
 	jr nc, .finish
 	ld hl, wcf64
 	res 6, [hl]
 .finish
 	ld hl, wcf64
 	res 5, [hl]
-	callba Function10402d
+	farcall Function10402d
 	ret
 
 StatsScreen_SetJumptableIndex: ; 4dd62 (13:5d62)
@@ -103,7 +103,7 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	res 6, [hl]
 	call ClearBGPalettes
 	call ClearTileMap
-	callba Function10402d
+	farcall Function10402d
 	call StatsScreen_CopyToTempMon
 	ld a, [CurPartySpecies]
 	cp EGG
@@ -189,14 +189,14 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 	jr .done
 
 .breedmon
-	callba CopyPkmnToTempMon
+	farcall CopyPkmnToTempMon
 	ld a, [CurPartySpecies]
 	cp EGG
 	jr z, .done
 	ld a, [MonType]
 	cp BOXMON
 	jr c, .done
-	callba CalcTempmonStats
+	farcall CalcTempmonStats
 .done
 	and a
 	ret
@@ -209,7 +209,7 @@ StatsScreen_GetJoypad: ; 4de2c (13:5e2c)
 	push hl
 	push de
 	push bc
-	callba StatsScreenDPad
+	farcall StatsScreenDPad
 	pop bc
 	pop de
 	pop hl
@@ -376,7 +376,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
-	callba ComputeHPBarPixels
+	farcall ComputeHPBarPixels
 	ld hl, wcda1
 	call SetHPPal
 	ld b, SCGB_STATS_SCREEN_HP_PALS
@@ -386,7 +386,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 
 .PlaceGenderChar: ; 4df66 (13:5f66)
 	push hl
-	callba GetGender
+	farcall GetGender
 	pop hl
 	ret c
 	ld a, "♂"
@@ -423,7 +423,7 @@ StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
 
 StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	ld bc, TempMonDVs
-	callba CheckShininess
+	farcall CheckShininess
 	ret nc
 	hlcoord 19, 0
 	ld [hl], "<SHINY>"
@@ -462,7 +462,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld a, [wcf64]
 	and $3
 	ld c, a
-	callba LoadStatsScreenPals
+	farcall LoadStatsScreenPals
 	call DelayFrame
 	ld hl, wcf64
 	set 5, [hl]
@@ -580,7 +580,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	jr z, .AlreadyAtMaxLevel
 	inc a
 	ld d, a
-	callba CalcExpAtLevel
+	farcall CalcExpAtLevel
 rept 2
 	ld hl, TempMonExp + 2
 endr
@@ -710,7 +710,7 @@ endr
 	ld hl, .OTNamePointers
 	call GetNicknamePointer
 	call CopyNickname
-	callba CheckNickErrors
+	farcall CheckNickErrors
 	hlcoord 2, 9
 	call PlaceString
 	ld a, [TempMonCaughtGender]
@@ -742,13 +742,13 @@ endr
 	call PlaceString
 	ld a, [TempMonDVs]
 	ld b, a
-	callba GetNature
+	farcall GetNature
 	hlcoord 2, 13
 	predef PrintNature
 	ret
 
 .OrangePage:
-	callba OrangePage_
+	farcall OrangePage_
 	ret
 
 OTString: ; 4e222
@@ -778,7 +778,7 @@ OrangePage_:
 	ld b, a
 	ld a, [TempMonSpecies]
 	ld c, a
-	callba GetAbility
+	farcall GetAbility
 	hlcoord 3, 13
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
@@ -838,7 +838,7 @@ TN_PrintLocation:
 	cp $7f
 	jr z, .print
 	ld e, a
-	callba GetLandmarkName
+	farcall GetLandmarkName
 	ld de, StringBuffer1
 .print
 	hlcoord 3, 10
@@ -1309,7 +1309,7 @@ EggStatsScreen: ; 4e33a
 	call DelayFrame
 	hlcoord 0, 0
 	call PrepMonFrontpic
-	callba Function10402d
+	farcall Function10402d
 	call StatsScreen_AnimateEgg
 
 	ld a, [TempMonHappiness]

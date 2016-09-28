@@ -51,9 +51,9 @@ RunActivationAbilitiesInner:
 	jp RunStatusHealAbilities
 
 RunEnemyStatusHealAbilities:
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	call RunStatusHealAbilities
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ret
 
 RunStatusHealAbilities:
@@ -111,10 +111,10 @@ HealStatusAbility:
 	ld a, [hBattleTurn]
 	and a
 	jr z, .is_player
-	callab CalcEnemyStats
+	farcall CalcEnemyStats
 	ret
 .is_player
-	callab CalcPlayerStats
+	farcall CalcPlayerStats
 	ret
 
 OwnTempoAbility:
@@ -158,10 +158,10 @@ TraceAbility:
 	; handle swift swim, etc.
 	ld a, [hBattleTurn]
 	jr z, .is_player
-	callab CalcEnemyStats
+	farcall CalcEnemyStats
 	ret
 .is_player
-	callab CalcPlayerStats
+	farcall CalcPlayerStats
 	ret
 .trace_failure
 	ld hl, TraceFailureText
@@ -193,8 +193,8 @@ WeatherAbility:
 	ld [Weather], a
 	; handle swift swim, etc.
 	push bc
-	callab CalcPlayerStats
-	callab CalcEnemyStats
+	farcall CalcPlayerStats
+	farcall CalcEnemyStats
 	pop bc
 	ld a, b
 	cp WEATHER_RAIN
@@ -210,32 +210,32 @@ WeatherAbility:
 	jp StdBattleTextBox
 .handlerain
 	ld de, RAIN_DANCE
-	callab Call_PlayBattleAnim
+	farcall Call_PlayBattleAnim
 	ld hl, DownpourText
 	jp StdBattleTextBox
 .handlesun
 	ld de, SUNNY_DAY
-	callab Call_PlayBattleAnim
+	farcall Call_PlayBattleAnim
 	ld hl, SunGotBrightText
 	jp StdBattleTextBox
 .handlesandstorm
 	ld de, SANDSTORM
-	callab Call_PlayBattleAnim
+	farcall Call_PlayBattleAnim
 	ld hl, SandstormBrewedText
 	jp StdBattleTextBox
 
 IntimidateAbility:
 	call ShowAbilityActivation
-	callba DisableAnimations
-	callba ResetMiss
-	callba BattleCommand_AttackDown
-	callba BattleCommand_StatDownMessage
+	farcall DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_AttackDown
+	farcall BattleCommand_StatDownMessage
 	ret
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
 	call ShowAbilityActivation
-	callba DisableAnimations
+	farcall DisableAnimations
 	ld hl, EnemyMonDefense
 	ld a, [hBattleTurn]
 	and a
@@ -263,23 +263,23 @@ DownloadAbility:
 	cp e
 	jr c, .inc_atk
 .inc_spatk
-	callba ResetMiss
-	callba BattleCommand_SpecialAttackUp
-	callba BattleCommand_StatUpMessage
+	farcall ResetMiss
+	farcall BattleCommand_SpecialAttackUp
+	farcall BattleCommand_StatUpMessage
 	ret
 .inc_atk
-	callba ResetMiss
-	callba BattleCommand_AttackUp
-	callba BattleCommand_StatUpMessage
+	farcall ResetMiss
+	farcall BattleCommand_AttackUp
+	farcall BattleCommand_StatUpMessage
 	ret
 
 ImposterAbility:
 	call ShowAbilityActivation
-	callba DisableAnimations
-	callba ResetMiss
-	callba BattleCommand_Transform
+	farcall DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_Transform
 	ld de, TRANSFORM
-	callab Call_PlayBattleAnim
+	farcall Call_PlayBattleAnim
 	ret
 
 AnticipationAbility:
@@ -288,21 +288,21 @@ FriskAbility:
 	ret
 
 RunEnemyOwnTempoAbility:
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp OWN_TEMPO
 	call z, SynchronizeAbility
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ret
 
 RunEnemySynchronizeAbility:
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ret
 
 SynchronizeAbility:
@@ -311,21 +311,21 @@ SynchronizeAbility:
 	and ALL_STATUS
 	ret z ; not statused
 	call ShowAbilityActivation
-	callba ResetMiss
-	callba DisableAnimations
+	farcall ResetMiss
+	farcall DisableAnimations
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	cp 1 << PSN
 	jr z, .is_psn
 	cp 1 << BRN
 	jr z, .is_brn
-	callba BattleCommand_Paralyze
+	farcall BattleCommand_Paralyze
 	ret
 .is_psn
-	callba BattleCommand_Poison
+	farcall BattleCommand_Poison
 	ret
 .is_brn
-	callba BattleCommand_Burn
+	farcall BattleCommand_Burn
 	ret
 
 RunContactAbilities:
@@ -341,9 +341,9 @@ RunContactAbilities:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp PICKPOCKET
 	jr nz, .not_pickpocket
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	call PickPocketAbility
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ret
 .not_pickpocket
 ; other abilities only trigger 30% of the time
@@ -356,9 +356,9 @@ RunContactAbilities:
 	ret nc
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	call .do_enemy_abilities
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ret
 .do_enemy_abilities
 	ld a, b
@@ -445,7 +445,7 @@ AfflictStatusAbility
 	and a
 	ret nz
 	call ShowAbilityActivation
-	callba DisableAnimations
+	farcall DisableAnimations
 	ld a, b
 	cp SLP
 	jr z, .slp
@@ -453,27 +453,27 @@ AfflictStatusAbility
 	jr z, .brn
 	cp PSN
 	jr z, .psn
-	callba BattleCommand_Paralyze
+	farcall BattleCommand_Paralyze
 	ret
 .slp
-	callba BattleCommand_SleepTarget
+	farcall BattleCommand_SleepTarget
 	ret
 .brn
-	callba BattleCommand_Burn
+	farcall BattleCommand_Burn
 	ret
 .psn
-	callba BattleCommand_Poison
+	farcall BattleCommand_Poison
 	ret
 
 RunEnemyStatIncreaseAbilities:
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp DEFIANT
 	call z, DefiantAbility
 	cp COMPETITIVE
 	call z, CompetitiveAbility
-	callba BattleCommand_SwitchTurn
+	farcall BattleCommand_SwitchTurn
 	ret
 
 DefiantAbility:
@@ -484,17 +484,17 @@ CompetitiveAbility:
 StatIncreaseAbility:
 	ld b, a
 	call ShowAbilityActivation
-	callba DisableAnimations
-	callba ResetMiss
+	farcall DisableAnimations
+	farcall ResetMiss
 	ld a, b
 	cp ATTACK
 	jr nz, .sp_atk
-	callba BattleCommand_AttackUp2
-	callba BattleCommand_StatUpMessage
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_StatUpMessage
 	ret
 .sp_atk
-	callba BattleCommand_SpecialAttackUp2
-	callba BattleCommand_StatUpMessage
+	farcall BattleCommand_SpecialAttackUp2
+	farcall BattleCommand_StatUpMessage
 	ret
 
 CheckOpponentStatLowerAbilities:
@@ -575,7 +575,7 @@ RunOverworldPickupAbility::
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-	callab GetAbility
+	farcall GetAbility
 	ld a, b
 	pop bc
 	cp PICKUP

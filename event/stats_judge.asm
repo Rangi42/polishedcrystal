@@ -12,7 +12,7 @@ SpecialStatsJudge: ; 4f0bc
 	call JoyWaitAorB
 
 	ld b, $6
-	callba SelectMonFromParty
+	farcall SelectMonFromParty
 	jr c, .cancel
 
 	ld a, [CurPartySpecies]
