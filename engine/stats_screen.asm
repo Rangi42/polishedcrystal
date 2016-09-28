@@ -864,7 +864,7 @@ TN_PrintLV:
 	call PlaceString
 	ld de, Buffer2
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
-	hlcoord 13, 9
+	hlcoord 12, 9
 	jp PrintNum
 .hatched
 	ld de, .egg
@@ -887,7 +887,7 @@ TN_PrintLV:
 	db "by trade in@"
 
 .str_max
-	db "at <LV>63+ in@"
+	db "at <LV>63↑ in@"
 
 .in
 	db "in@"

@@ -556,26 +556,39 @@ RunOverworldPickupAbility::
 .loop
 	dec a
 	ret c
-	call Random
-	cp 1 + 10 percent
-	jr nc, .loop
+
 	ld [CurPartyMon], a
+
 	ld a, MON_ITEM
 	call GetPartyParamLocation
 	ld a, [hl]
 	and a
+	ld a, [CurPartyMon]
 	jr nz, .loop ; already has an item
+
+	push bc
 	ld a, MON_DVS + 1
 	call GetPartyParamLocation
 	ld b, [hl]
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-	callba GetAbility
+	callab GetAbility
 	ld a, b
+	pop bc
 	cp PICKUP
-	call z, .Pickup
+	ld a, [CurPartyMon]
+	jr nz, .loop
+
+	call Random
+	cp 1 + 10 percent
+	ld a, [CurPartyMon]
+	jr c, .loop
+
+	call .Pickup
+	ld a, [CurPartyMon]
 	jr .loop
+
 .Pickup:
 	ld b, 0
 	ld c, 0
@@ -600,11 +613,6 @@ RunOverworldPickupAbility::
 	cp 1 + 70 percent
 	call c, .IncBC
 	ld hl, BasePickupTable
-	jr .DoneRandomizing
-.IncBC:
-; This just exists to avoid a million labels
-	inc bc
-	ret
 .DoneRandomizing:
 ; Increase bc based on level
 	push hl
@@ -627,6 +635,7 @@ RunOverworldPickupAbility::
 	ld a, b
 	ld [hl], a
 	ret
+
 .RarePickup:
 ; 2% of Pickup results use a different table with generally better items.
 	call Random
@@ -634,6 +643,11 @@ RunOverworldPickupAbility::
 	call c, .IncBC
 	ld hl, RarePickupTable
 	jr .DoneRandomizing
+
+.IncBC:
+; This just exists to avoid a million labels
+	inc bc
+	ret
 
 BasePickupTable:
 	db POTION

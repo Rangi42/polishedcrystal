@@ -497,7 +497,7 @@ CloudNineDescription:
 	next "of weather. @"
 
 CompoundEyesDescription:
-	db   "Boosts the #-"
+	db   "Boosts the Poké-"
 	next "mon's accuracy.@"
 
 InsomniaDescription:
@@ -571,7 +571,7 @@ ChlorophyllDescription:
 
 IlluminateDescription:
 	db   "Raises the rate"
-	next "of wild #mon.@"
+	next "of wild Pokémon.@"
 
 TraceDescription:
 	db   "Copies the foe's"
@@ -631,7 +631,7 @@ FlameBodyDescription:
 
 RunAwayDescription:
 	db   "Sure getaway from"
-	next "wild #mon.@"
+	next "wild Pokémon.@"
 
 KeenEyeDescription:
 	db   "Prevents foes from"
@@ -642,7 +642,7 @@ HyperCutterDescription:
 	next "lowering Attack.@"
 
 PickupDescription:
-	db   "The #mon may"
+	db   "The Pokémon may"
 	next "pick up items.@"
 
 HustleDescription:
