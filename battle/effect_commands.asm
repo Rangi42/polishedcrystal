@@ -3242,6 +3242,20 @@ BattleCommand_DamageCalc: ; 35612
 	inc [hl]
 	inc [hl]
 
+; Ability boosts are generally factored in during stab calculations
+; but Technician is move power-dependent and needs to be done here.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp TECHNICIAN
+	jr nz, .skip_technician
+	ld a, d
+	cp 61 ; Technician applies for moves with 60BP or less.
+	jr c, .skip_technician
+	srl a
+	add d
+	ld d, a
+
+.skip_technician
 ; * bp
 	inc hl
 	ld [hl], d
@@ -3260,10 +3274,6 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 50
 	ld b, $4
 	call Divide
-
-; Ability boosts
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
 
 ; Item boosts
 	call GetUserItem
