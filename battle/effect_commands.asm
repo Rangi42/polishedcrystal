@@ -3329,6 +3329,23 @@ BattleCommand_DamageCalc: ; 35612
 	call Divide
 
 .abilities_done
+; Critical hits
+	ld a, [CriticalHit]
+	and a
+	jr z, .no_crit
+
+	ld [hl], 6
+	call Multiply
+	ld [hl], 4
+	ld a, BATTLE_VARS_ABILITY
+	cp SNIPER
+	jr nz, .no_sniper
+	ld [hl], 3
+.no_sniper
+	ld b, $4
+	call Divide
+
+.no_crit
 ; Item boosts
 	call GetUserItem
 
@@ -3381,52 +3398,47 @@ BattleCommand_DamageCalc: ; 35612
 	ld b, 4
 	call Divide
 .DoneItem:
-
-; Critical hits
-	call .CriticalMultiplier
-
+; If we exceed $ffff at this point, skip to capping to 997 as the
+; final damage.
+	ld a, [hQuotient]
+	and a
+	jr nz, .Cap
 
 ; Update CurDamage (capped at 997).
 	ld hl, CurDamage
 	ld b, [hl]
-	ld a, [hProduct + 3]
+	ld a, [hQuotient + 2]
 	add b
-	ld [hProduct + 3], a
+	ld [hQuotient + 2], a
 	jr nc, .dont_cap_1
 
-	ld a, [hProduct + 2]
+	ld a, [hQuotient + 1]
 	inc a
-	ld [hProduct + 2], a
+	ld [hQuotient + 1], a
 	and a
 	jr z, .Cap
 
 .dont_cap_1
-	ld a, [hProduct]
-	ld b, a
-	ld a, [hProduct + 1]
-	or a
-	jr nz, .Cap
-
-	ld a, [hProduct + 2]
+	ld a, [hQuotient + 1]
 	cp 998 / $100
 	jr c, .dont_cap_2
 
 	cp 998 / $100 + 1
 	jr nc, .Cap
 
-	ld a, [hProduct + 3]
+	ld a, [hQuotient + 2]
 	cp 998 % $100
 	jr nc, .Cap
 
 .dont_cap_2
 	inc hl
 
-	ld a, [hProduct + 3]
+	ld a, [hQuotient + 2]
 	ld b, [hl]
 	add b
 	ld [hld], a
 
-	ld a, [hProduct + 2]
+	ld a, [hQuotient + 1]
 	ld b, [hl]
 	adc b
 	ld [hl], a
@@ -3464,35 +3476,6 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, 1
 	and a
 	ret
-
-
-.CriticalMultiplier:
-	ld a, [CriticalHit]
-	and a
-	ret z
-
-; x1.5
-	ld a, [hQuotient + 2]
-	srl a
-	add a
-	add a
-	ld [hProduct + 3], a
-
-	ld a, [hQuotient + 1]
-	rl a
-	ld [hProduct + 2], a
-
-; Cap at $ffff.
-	ret nc
-
-	ld a, $ff
-	ld [hProduct + 2], a
-	ld [hProduct + 3], a
-
-	ret
-
-; 35703
-
 
 TypeBoostItems: ; 35703
 	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
