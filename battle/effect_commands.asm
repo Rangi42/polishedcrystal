@@ -6689,6 +6689,13 @@ BattleCommand_EndLoop: ; 369b6
 	jp EndMoveEffect
 
 .not_triple_kick
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SKILL_LINK
+	jr nz, .no_skill_link
+	ld a, 3 ; ends up being 5 hits
+	jr .got_number_hits
+.no_skill_link
 	call BattleRandom
 	and $3
 	cp 2

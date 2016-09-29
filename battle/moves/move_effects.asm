@@ -120,9 +120,9 @@ SpikeCannon:
 	supereffectivelooptext
 	checkdestinybond
 	buildopponentrage
+	kingsrock
 	endloop
 	raisesub
-	kingsrock
 	endmove
 
 RecoilHit:
@@ -1324,9 +1324,9 @@ Twineedle:
 	checkdestinybond
 	buildopponentrage
 	poisontarget
+	kingsrock
 	endloop
 	raisesub
-	kingsrock
 	endmove
 
 Substitute:
@@ -1534,9 +1534,9 @@ TripleKick:
 	checkdestinybond
 	buildopponentrage
 	kickcounter
+	kingsrock
 	endloop
 	raisesub
-	kingsrock
 	endmove
 
 Thief:
