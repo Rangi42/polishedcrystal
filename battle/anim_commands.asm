@@ -169,7 +169,7 @@ BattleAnimRestoreHuds: ; cc1bb
 
 	ld hl, UpdateBattleHuds
 	ld a, BANK(UpdatePlayerHUD)
-	rst FarCall ; Why the heck is this a callab?
+	rst FarCall ; Why the heck is this a farcall?
 
 	pop af
 	ld [rSVBK], a

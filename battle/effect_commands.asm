@@ -141,14 +141,8 @@ BattleCommand_CheckTurn: ; 34084
 	ld a, 10 ; 1.0
 	ld [TypeModifier], a
 
-	ld a, [hBattleTurn]
-	and a
-	jp nz, CheckEnemyTurn
-
-
-CheckPlayerTurn:
-
-	ld hl, PlayerSubStatus4
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVarAddr
 	bit SUBSTATUS_RECHARGE, [hl]
 	jr z, .no_recharge
 
@@ -161,14 +155,15 @@ CheckPlayerTurn:
 .no_recharge
 
 
-	ld hl, BattleMonStatus
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
 	ld a, [hl]
 	and SLP
 	jr z, .not_asleep
 
 	dec a
-	ld [BattleMonStatus], a
-	and SLP
+	ld [hl], a
+	and a ; check if the sleep timer ran out
 	jr z, .woke_up
 
 	xor a
@@ -181,12 +176,21 @@ CheckPlayerTurn:
 	ld hl, WokeUpText
 	call StdBattleTextBox
 	call CantMove
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy1
 	call UpdateBattleMonInParty
 	ld hl, UpdatePlayerHUD
+	jr .ok1
+.enemy1
+	call UpdateEnemyMonInParty
+	ld hl, UpdateEnemyHUD
+.ok1
 	call CallBattleCore
 	ld a, $1
 	ld [hBGMapMode], a
-	ld hl, PlayerSubStatus1
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
 	res SUBSTATUS_NIGHTMARE, [hl]
 	jr .not_asleep
 
@@ -195,7 +199,8 @@ CheckPlayerTurn:
 	call StdBattleTextBox
 
 	; Sleep Talk bypasses sleep.
-	ld a, [CurPlayerMove]
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	cp SLEEP_TALK
 	jr z, .not_asleep
 
@@ -203,14 +208,14 @@ CheckPlayerTurn:
 	jp EndTurn
 
 .not_asleep
-
-
-	ld hl, BattleMonStatus
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
 	bit FRZ, [hl]
 	jr z, .not_frozen
 
 	; Flame Wheel, Sacred Fire, Scald, and Flare Blitz thaw the user.
-	ld a, [CurPlayerMove]
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	cp FLAME_WHEEL
 	jr z, .not_frozen
 	cp SACRED_FIRE
@@ -231,9 +236,8 @@ CheckPlayerTurn:
 	jp EndTurn
 
 .not_frozen
-
-
-	ld hl, PlayerSubStatus3
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
 	bit SUBSTATUS_FLINCHED, [hl]
 	jr z, .not_flinched
 
@@ -245,9 +249,14 @@ CheckPlayerTurn:
 	jp EndTurn
 
 .not_flinched
-
-
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy2
 	ld hl, PlayerDisableCount
+	jr .ok2
+.enemy2
+	ld hl, EnemyDisableCount
+.ok2
 	ld a, [hl]
 	and a
 	jr z, .not_disabled
@@ -258,21 +267,35 @@ CheckPlayerTurn:
 	jr nz, .not_disabled
 
 	ld [hl], a
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy3
 	ld [DisabledMove], a
+	jr .ok3
+.enemy3
+	ld [EnemyDisabledMove], a
+.ok3
 	ld hl, DisabledNoMoreText
 	call StdBattleTextBox
 
 .not_disabled
-
-
-	ld a, [PlayerSubStatus3]
-	add a
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	add a ; bit SUBSTATUS_CONFUSED
 	jr nc, .not_confused
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy4
 	ld hl, PlayerConfuseCount
+	jr .ok4
+.enemy4
+	ld hl, EnemyConfuseCount
+.ok4
 	dec [hl]
 	jr nz, .confused
 
-	ld hl, PlayerSubStatus3
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 	ld hl, ConfusedNoMoreText
 	call StdBattleTextBox
@@ -288,11 +311,12 @@ CheckPlayerTurn:
 
 	; 50% chance of hitting itself
 	call BattleRandom
-	cp $80
+	cp 1 + (50 percent)
 	jr nc, .not_confused
 
 	; clear confusion-dependent substatus
-	ld hl, PlayerSubStatus3
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
 	ld a, [hl]
 	and 1 << SUBSTATUS_CONFUSED
 	ld [hl], a
@@ -302,9 +326,8 @@ CheckPlayerTurn:
 	jp EndTurn
 
 .not_confused
-
-
-	ld a, [PlayerSubStatus1]
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
 	add a ; bit SUBSTATUS_ATTRACT
 	jr nc, .not_infatuated
 
@@ -317,7 +340,7 @@ CheckPlayerTurn:
 
 	; 50% chance of infatuation
 	call BattleRandom
-	cp $80
+	cp 1 + (50 percent)
 	jr c, .not_infatuated
 
 	ld hl, InfatuationText
@@ -328,13 +351,19 @@ CheckPlayerTurn:
 .not_infatuated
 
 
-	; We can't disable a move that doesn't exist.
-	ld a, [DisabledMove]
+	; Are we using a disabled move?
+	ld a, [hBattleTurn]
 	and a
-	jr z, .no_disabled_move
-
-	; Are we using the disabled move?
+	jr nz, .enemy5
+	ld a, [DisabledMove]
 	ld hl, CurPlayerMove
+	jr .ok5
+.enemy5
+	ld a, [EnemyDisabledMove]
+	ld hl, CurEnemyMove
+.ok5
+	and a
+	jr z, .no_disabled_move ; can't disable a move that doesn't exist
 	cp [hl]
 	jr nz, .no_disabled_move
 
@@ -343,15 +372,14 @@ CheckPlayerTurn:
 	jp EndTurn
 
 .no_disabled_move
-
-
-	ld hl, BattleMonStatus
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
 	bit PAR, [hl]
 	ret z
 
 	; 25% chance to be fully paralyzed
 	call BattleRandom
-	cp $3f
+	cp 1 + (25 percent)
 	ret nc
 
 	ld hl, FullyParalyzedText
@@ -361,9 +389,13 @@ CheckPlayerTurn:
 	ld de, ANIM_PAR
 	call FarPlayBattleAnimation
 	call CantMove
-	jp EndTurn
+	; fallthrough
 
-; 341f0
+
+EndTurn:
+	ld a, $1
+	ld [wTurnEnded], a
+	jp ResetDamage
 
 
 CantMove: ; 341f0
@@ -402,245 +434,6 @@ OpponentCantMove: ; 34216
 	jp BattleCommand_SwitchTurn
 
 ; 3421f
-
-
-
-CheckEnemyTurn: ; 3421f
-
-	ld hl, EnemySubStatus4
-	bit SUBSTATUS_RECHARGE, [hl]
-	jr z, .no_recharge
-
-	res SUBSTATUS_RECHARGE, [hl]
-	ld hl, MustRechargeText
-	call StdBattleTextBox
-	call CantMove
-	jp EndTurn
-
-.no_recharge
-
-
-	ld hl, EnemyMonStatus
-	ld a, [hl]
-	and SLP
-	jr z, .not_asleep
-
-	dec a
-	ld [EnemyMonStatus], a
-	and a
-	jr z, .woke_up
-
-	ld hl, FastAsleepText
-	call StdBattleTextBox
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_SLP
-	call FarPlayBattleAnimation
-	jr .fast_asleep
-
-.woke_up
-	ld hl, WokeUpText
-	call StdBattleTextBox
-	call CantMove
-	call UpdateEnemyMonInParty
-	ld hl, UpdateEnemyHUD
-	call CallBattleCore
-	ld a, $1
-	ld [hBGMapMode], a
-	ld hl, EnemySubStatus1
-	res SUBSTATUS_NIGHTMARE, [hl]
-	jr .not_asleep
-
-.fast_asleep
-	; Sleep Talk bypasses sleep.
-	ld a, [CurEnemyMove]
-	cp SLEEP_TALK
-	jr z, .not_asleep
-	call CantMove
-	jp EndTurn
-
-.not_asleep
-
-
-	ld hl, EnemyMonStatus
-	bit FRZ, [hl]
-	jr z, .not_frozen
-	; Flame Wheel, Sacred Fire, Scald, and Flare Blitz thaw the user.
-	ld a, [CurEnemyMove]
-	cp FLAME_WHEEL
-	jr z, .not_frozen
-	cp SACRED_FIRE
-	jr z, .not_frozen
-	cp SCALD
-	jr z, .not_frozen
-	cp FLARE_BLITZ
-	jr z, .not_frozen
-
-	ld hl, FrozenSolidText
-	call StdBattleTextBox
-	call CantMove
-	jp EndTurn
-
-.not_frozen
-
-
-	ld hl, EnemySubStatus3
-	bit SUBSTATUS_FLINCHED, [hl]
-	jr z, .not_flinched
-
-	res SUBSTATUS_FLINCHED, [hl]
-	ld hl, FlinchedText
-	call StdBattleTextBox
-
-	call CantMove
-	jp EndTurn
-
-.not_flinched
-
-
-	ld hl, EnemyDisableCount
-	ld a, [hl]
-	and a
-	jr z, .not_disabled
-
-	dec a
-	ld [hl], a
-	and $f
-	jr nz, .not_disabled
-
-	ld [hl], a
-	ld [EnemyDisabledMove], a
-
-	ld hl, DisabledNoMoreText
-	call StdBattleTextBox
-
-.not_disabled
-
-
-	ld a, [EnemySubStatus3]
-	add a ; bit SUBSTATUS_CONFUSED
-	jr nc, .not_confused
-
-	ld hl, EnemyConfuseCount
-	dec [hl]
-	jr nz, .confused
-
-	ld hl, EnemySubStatus3
-	res SUBSTATUS_CONFUSED, [hl]
-	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
-	jr .not_confused
-
-
-.confused
-	ld hl, IsConfusedText
-	call StdBattleTextBox
-
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_CONFUSED
-	call FarPlayBattleAnimation
-
-	; 50% chance of hitting itself
-	call BattleRandom
-	cp 1 + 50 percent
-	jr nc, .not_confused
-
-	; clear confusion-dependent substatus
-	ld hl, EnemySubStatus3
-	ld a, [hl]
-	and 1 << SUBSTATUS_CONFUSED
-	ld [hl], a
-
-	ld hl, HurtItselfText
-	call StdBattleTextBox
-	call HitSelfInConfusion
-	call BattleCommand_DamageCalc
-	call BattleCommand_LowerSub
-	xor a
-	ld [wNumHits], a
-
-	; Flicker the monster pic unless flying or underground.
-	ld de, ANIM_HIT_CONFUSION
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	call z, PlayFXAnimID
-
-	ld c, $1
-	call EnemyHurtItself
-	call BattleCommand_RaiseSub
-	call CantMove
-	jp EndTurn
-
-.not_confused
-
-
-	ld a, [EnemySubStatus1]
-	add a ; bit SUBSTATUS_ATTRACT
-	jr nc, .not_infatuated
-
-	ld hl, InLoveWithText
-	call StdBattleTextBox
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_IN_LOVE
-	call FarPlayBattleAnimation
-
-	; 50% chance of infatuation
-	call BattleRandom
-	cp 1 + 50 percent
-	jr c, .not_infatuated
-
-	ld hl, InfatuationText
-	call StdBattleTextBox
-	call CantMove
-	jp EndTurn
-
-.not_infatuated
-
-
-	; We can't disable a move that doesn't exist.
-	ld a, [EnemyDisabledMove]
-	and a
-	jr z, .no_disabled_move
-
-	; Are we using the disabled move?
-	ld hl, CurEnemyMove
-	cp [hl]
-	jr nz, .no_disabled_move
-
-	call MoveDisabled
-
-	call CantMove
-	jp EndTurn
-
-.no_disabled_move
-
-
-	ld hl, EnemyMonStatus
-	bit PAR, [hl]
-	ret z
-
-	; 25% chance to be fully paralyzed
-	call BattleRandom
-	cp $3f
-	ret nc
-
-	ld hl, FullyParalyzedText
-	call StdBattleTextBox
-	call CantMove
-
-	; fallthrough
-; 34385
-
-
-EndTurn: ; 34385
-	ld a, $1
-	ld [wTurnEnded], a
-	jp ResetDamage
-
-; 3438d
 
 
 MoveDisabled: ; 3438d
@@ -683,12 +476,19 @@ HitConfusion: ; 343a5
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	call z, PlayFXAnimID
 
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy
 	ld hl, UpdatePlayerHUD
 	call CallBattleCore
 	ld a, $1
 	ld [hBGMapMode], a
 	ld c, $1
 	call PlayerHurtItself
+	jp BattleCommand_RaiseSub
+.enemy
+	ld c, $1
+	call EnemyHurtItself
 	jp BattleCommand_RaiseSub
 
 ; 343db
@@ -1373,6 +1173,13 @@ BattleCommand_Stab: ; 346d2
 	jr .SkipStab
 
 .stab
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp ADAPTABILITY
+	jr nz, .no_adaptability
+	call DoubleDamage
+	jr .stab_done
+.no_adaptability
 	ld hl, CurDamage + 1
 	ld a, [hld]
 	ld h, [hl]
@@ -1384,6 +1191,7 @@ BattleCommand_Stab: ; 346d2
 	rr c
 	add hl, bc
 
+.stab_done
 	ld a, h
 	ld [CurDamage], a
 	ld a, l
@@ -3434,6 +3242,20 @@ BattleCommand_DamageCalc: ; 35612
 	inc [hl]
 	inc [hl]
 
+; Technician needs to be checked before other abilities because of
+; being move power-dependant.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp TECHNICIAN
+	jr nz, .skip_technician
+	ld a, d
+	cp 61 ; Technician applies for moves with 60BP or less.
+	jr c, .skip_technician
+	srl a
+	add d
+	ld d, a
+
+.skip_technician
 ; * bp
 	inc hl
 	ld [hl], d
@@ -3453,10 +3275,77 @@ BattleCommand_DamageCalc: ; 35612
 	ld b, $4
 	call Divide
 
-; Ability boosts
+; Ability boosts. Some are done elsewhere depending on needs.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
+	cp HUGE_POWER
+	jr z, .ability_double
+	cp HUSTLE
+	jr z, .ability_semidouble
+	cp GUTS
+	jr nz, .ability_penalties
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and a
+	jr z, .ability_penalties
+.ability_semidouble
+	ld [hl], 3
+	call Multiply
+	ld [hl], 2
+	ld b, $4
+	call Divide
+	jr .ability_penalties
+.ability_double
+	ld [hl], 2
+	call Multiply
 
+.ability_penalties
+	call GetOpponentAbilityAfterMoldBreaker
+	cp MULTISCALE
+	jr nz, .skip_multiscale
+	push hl
+	call BattleCommand_SwitchTurn
+	ld hl, CheckFullHP_b
+	call CallBattleCore
+	call BattleCommand_SwitchTurn
+	pop hl
+	ld a, b
+	and a
+	jr nz, .skip_multiscale
+	ld [hl], 2
+	ld b, $4
+	call Divide
+.skip_multiscale
+	cp MARVEL_SCALE
+	jr nz, .abilities_done
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	jr z, .abilities_done
+	ld [hl], 2
+	call Multiply
+	ld [hl], 3
+	ld b, $4
+	call Divide
+
+.abilities_done
+; Critical hits
+	ld a, [CriticalHit]
+	and a
+	jr z, .no_crit
+
+	ld [hl], 6
+	call Multiply
+	ld [hl], 4
+	ld a, BATTLE_VARS_ABILITY
+	cp SNIPER
+	jr nz, .no_sniper
+	ld [hl], 3
+.no_sniper
+	ld b, $4
+	call Divide
+
+.no_crit
 ; Item boosts
 	call GetUserItem
 
@@ -3509,52 +3398,47 @@ BattleCommand_DamageCalc: ; 35612
 	ld b, 4
 	call Divide
 .DoneItem:
-
-; Critical hits
-	call .CriticalMultiplier
-
+; If we exceed $ffff at this point, skip to capping to 997 as the
+; final damage.
+	ld a, [hQuotient]
+	and a
+	jr nz, .Cap
 
 ; Update CurDamage (capped at 997).
 	ld hl, CurDamage
 	ld b, [hl]
-	ld a, [hProduct + 3]
+	ld a, [hQuotient + 2]
 	add b
-	ld [hProduct + 3], a
+	ld [hQuotient + 2], a
 	jr nc, .dont_cap_1
 
-	ld a, [hProduct + 2]
+	ld a, [hQuotient + 1]
 	inc a
-	ld [hProduct + 2], a
+	ld [hQuotient + 1], a
 	and a
 	jr z, .Cap
 
 .dont_cap_1
-	ld a, [hProduct]
-	ld b, a
-	ld a, [hProduct + 1]
-	or a
-	jr nz, .Cap
-
-	ld a, [hProduct + 2]
+	ld a, [hQuotient + 1]
 	cp 998 / $100
 	jr c, .dont_cap_2
 
 	cp 998 / $100 + 1
 	jr nc, .Cap
 
-	ld a, [hProduct + 3]
+	ld a, [hQuotient + 2]
 	cp 998 % $100
 	jr nc, .Cap
 
 .dont_cap_2
 	inc hl
 
-	ld a, [hProduct + 3]
+	ld a, [hQuotient + 2]
 	ld b, [hl]
 	add b
 	ld [hld], a
 
-	ld a, [hProduct + 2]
+	ld a, [hQuotient + 1]
 	ld b, [hl]
 	adc b
 	ld [hl], a
@@ -3592,35 +3476,6 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, 1
 	and a
 	ret
-
-
-.CriticalMultiplier:
-	ld a, [CriticalHit]
-	and a
-	ret z
-
-; x1.5
-	ld a, [hQuotient + 2]
-	srl a
-	add a
-	add a
-	ld [hProduct + 3], a
-
-	ld a, [hQuotient + 1]
-	rl a
-	ld [hProduct + 2], a
-
-; Cap at $ffff.
-	ret nc
-
-	ld a, $ff
-	ld [hProduct + 2], a
-	ld [hProduct + 3], a
-
-	ret
-
-; 35703
-
 
 TypeBoostItems: ; 35703
 	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
@@ -6834,6 +6689,13 @@ BattleCommand_EndLoop: ; 369b6
 	jp EndMoveEffect
 
 .not_triple_kick
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SKILL_LINK
+	jr nz, .no_skill_link
+	ld a, 3 ; ends up being 5 hits
+	jr .got_number_hits
+.no_skill_link
 	call BattleRandom
 	and $3
 	cp 2
@@ -7251,8 +7113,20 @@ BattleCommand_Recoil: ; 36cb2
 	ld hl, EnemyMonMaxHP
 	ld a, [LastEnemyMove]
 .got_hp
+	ld b, a
 	cp STRUGGLE
 	jp z, .StruggleRecoil
+
+	; For all other moves, potentially disable
+	; recoil based on ability
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp ROCK_HEAD
+	ret z
+	cp MAGIC_GUARD
+	ret z
+
+	ld a, b
 	cp DOUBLE_EDGE
 	jr z, .OneThirdRecoil
 	cp FLARE_BLITZ
