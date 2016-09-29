@@ -335,6 +335,7 @@ RunContactAbilities:
 	cp 1 + 30 percent
 	jr nc, .skip_user_ability
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp POISON_TOUCH
 	call z, PoisonTouchAbility
 .skip_user_ability
@@ -434,7 +435,7 @@ AfflictStatusAbility
 	cp b
 	ret z
 	push de
-	call GetOpponentItem
+	farcall GetOpponentItem
 	pop de
 	ld a, b
 	cp c

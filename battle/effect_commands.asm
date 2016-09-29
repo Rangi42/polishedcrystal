@@ -2479,16 +2479,19 @@ BattleCommand_CheckDestinyBond: ; 351c0
 ; 35250
 
 
-BattleCommand_BuildOpponentRage: ; 35250
-; buildopponentrage
-
-	jp .start
-
-.start
+BattleCommand_PostHitEffects: ; 35250
+; previously buildopponentrage
 	ld a, [AttackMissed]
 	and a
 	ret nz
 
+	ld a, BATTLE_VARS_MOVE
+	ld hl, ContactMoves
+	call IsInArray
+	jr c, .start_rage
+	farcall RunContactAbilities
+
+.start_rage
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_RAGE, a
@@ -6807,9 +6810,7 @@ CheckOpponentWentFirst: ; 36abf
 ; 36ac9
 
 
-BattleCommand_PostHitEffects: ; 36ac9
-; previously just king's rock
-
+BattleCommand_KingsRock: ; 36ac9
 	ld a, [AttackMissed]
 	and a
 	ret nz
@@ -6817,12 +6818,6 @@ BattleCommand_PostHitEffects: ; 36ac9
 	call CheckSubstituteOpp
 	ret nz
 
-	ld a, BATTLE_VARS_MOVE
-	ld hl, ContactMoves
-	call IsInArray
-	jr c, .no_contact_move
-	farcall RunContactAbilities
-.no_contact_move
 	call GetUserItem
 	ld a, b
 	cp HELD_FLINCH_UP ; King's Rock/Razor Fang
@@ -9376,6 +9371,7 @@ AnimateCurrentMove: ; 37e01
 	jr z, .animation_ok
 	ld a, 0
 	ld [DisableAnimations], a
+	ret
 .animation_ok
 	push hl
 	push de
@@ -9498,6 +9494,7 @@ AnimateFailedMove: ; 37e77
 	jr z, .animation_ok
 	ld a, 0
 	ld [DisableAnimations], a
+	ret
 .animation_ok
 	call BattleCommand_LowerSub
 	call BattleCommand_MoveDelay
