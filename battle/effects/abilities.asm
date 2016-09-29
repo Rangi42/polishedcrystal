@@ -528,24 +528,23 @@ CheckOpponentStatLowerAbilities:
 	ld [FailedMessage], a
 	ret
 
-ShowAbilityActivation::
-	xor a
-	jr ShowAbilityActivationInner
 ShowEnemyAbilityActivation::
-	ld a, 1
-ShowAbilityActivationInner:
-; a=0: show player's ability, a=1: opponent's
-	push bc
-	and a
-	jr nz, .enemy_activation
-	ld hl, AbilityActivationText
-	call StdBattleTextBox
-	pop bc
+	farcall BattleCommand_SwitchTurn
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
 	ret
-
-.enemy_activation
-	ld hl, EnemyAbilityActivationText
+ShowAbilityActivation::
+	push bc
+	push de
+	push hl
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_UsersStringBuffer1Activated
 	call StdBattleTextBox
+	pop hl
+	pop de
 	pop bc
 	ret
 

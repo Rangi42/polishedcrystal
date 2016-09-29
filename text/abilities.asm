@@ -15,6 +15,26 @@ PrintAbility:
 
 	jp PlaceString
 
+BufferAbility:
+; Buffer description for b into StringBuffer1
+	ld l, b
+	ld h, 0
+	ld bc, AbilityNames
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, StringBuffer1
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp "@"
+	ret z
+	jr .loop
+
+
 AbilityNames:
 	dw NoAbility
 	dw Stench
@@ -441,7 +461,8 @@ AbilityDescriptions:
 	dw PixilateDescription
 
 NoAbilityDescription:
-	db   "@"
+	db   "No special"
+	next "ability.@"
 
 StenchDescription:
 	db   "May cause the foe"
