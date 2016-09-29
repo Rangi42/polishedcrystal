@@ -461,6 +461,7 @@ DetermineMoveOrder: ; 3c314
 .use_move
 	ld a, [wPlayerAction]
 	and a
+
 	jp nz, .player_first
 	call CompareMovePriority
 	jr z, .equal_priority
@@ -839,21 +840,20 @@ AlwaysFleeMons: ; 3c5b1
 CompareMovePriority: ; 3c5b4
 ; Compare the priority of the player and enemy's moves.
 ; Return carry if the player goes first, or z if they match.
-
-	ld a, [CurPlayerMove]
+	call SetPlayerTurn
 	call GetMovePriority
 	ld b, a
-	push bc
-	ld a, [CurEnemyMove]
+	call SetEnemyTurn
 	call GetMovePriority
-	pop bc
 	cp b
 	ret
 ; 3c5c5
 
 GetMovePriority: ; 3c5c5
-; Return the priority (0-9) of move a. If b is Prankster, add 1
-; for status moves.
+; Return the priority (0-9) of move being used.
+	push bc
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	ld b, a
 	ld hl, MoveEffectPriorities
 .loop
@@ -865,10 +865,23 @@ GetMovePriority: ; 3c5c5
 	jr nz, .loop
 
 	ld a, 5
-	ret
-
+	jr .check_prankster
 .done
 	ld a, [hl]
+.check_prankster
+	ld b, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp PRANKSTER
+	jr nz, .no_priority
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	jr nz, .no_priority
+	inc b
+.no_priority
+	ld a, b
+	pop bc
 	ret
 
 
