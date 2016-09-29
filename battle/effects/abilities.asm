@@ -392,6 +392,7 @@ EffectSporeAbility:
 	jr c, StaticAbility
 	; there are 2 sleep resistance abilities, so check one here
 	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
 	cp VITAL_SPIRIT
 	ret z
 	ld b, INSOMNIA

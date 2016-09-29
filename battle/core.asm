@@ -852,16 +852,9 @@ CompareMovePriority: ; 3c5b4
 ; 3c5c5
 
 GetMovePriority: ; 3c5c5
-; Return the priority (0-3) of move a.
-
+; Return the priority (0-9) of move a. If b is Prankster, add 1
+; for status moves.
 	ld b, a
-
-	; Vital Throw goes last.
-	cp VITAL_THROW
-	ld a, 0
-	ret z
-
-	call GetMoveEffect
 	ld hl, MoveEffectPriorities
 .loop
 	ld a, [hli]
@@ -871,22 +864,28 @@ GetMovePriority: ; 3c5c5
 	cp -1
 	jr nz, .loop
 
-	ld a, 1
+	ld a, 5
 	ret
 
 .done
 	ld a, [hl]
 	ret
-; 3c5df
+
 
 MoveEffectPriorities: ; 3c5df
-	db EFFECT_PROTECT,      3
-	db EFFECT_ENDURE,       3
-	db EFFECT_PRIORITY_HIT, 2
-	db EFFECT_AVALANCHE,    0
-	db EFFECT_WHIRLWIND,    0
-	db EFFECT_COUNTER,      0
-	db EFFECT_MIRROR_COAT,  0
+	db PROTECT,      9
+	db ENDURE,       8
+	db EXTREMESPEED, 7
+	db BULLET_PUNCH, 6
+	db ICE_SHARD,    6
+	db MACH_PUNCH,   6
+	db QUICK_ATTACK, 6
+	db VITAL_THROW,  4
+	db AVALANCHE,    2
+	db COUNTER,      1
+	db MIRROR_COAT,  1
+	db ROAR,         0
+	db WHIRLWIND,    0
 	db -1
 ; 3c5ec
 
