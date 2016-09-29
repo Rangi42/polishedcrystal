@@ -7113,8 +7113,20 @@ BattleCommand_Recoil: ; 36cb2
 	ld hl, EnemyMonMaxHP
 	ld a, [LastEnemyMove]
 .got_hp
+	ld b, a
 	cp STRUGGLE
 	jp z, .StruggleRecoil
+
+	; For all other moves, potentially disable
+	; recoil based on ability
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp ROCK_HEAD
+	ret z
+	cp MAGIC_GUARD
+	ret z
+
+	ld a, b
 	cp DOUBLE_EDGE
 	jr z, .OneThirdRecoil
 	cp FLARE_BLITZ
