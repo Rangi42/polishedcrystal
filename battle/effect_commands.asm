@@ -3242,8 +3242,8 @@ BattleCommand_DamageCalc: ; 35612
 	inc [hl]
 	inc [hl]
 
-; Ability boosts are generally factored in during stab calculations
-; but Technician is move power-dependent and needs to be done here.
+; Technician needs to be checked before other abilities because of
+; being move power-dependant.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp TECHNICIAN
@@ -3275,6 +3275,60 @@ BattleCommand_DamageCalc: ; 35612
 	ld b, $4
 	call Divide
 
+; Ability boosts. Some are done elsewhere depending on needs.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp HUGE_POWER
+	jr z, .ability_double
+	cp HUSTLE
+	jr z, .ability_semidouble
+	cp GUTS
+	jr nz, .ability_penalties
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and a
+	jr z, .ability_penalties
+.ability_semidouble
+	ld [hl], 3
+	call Multiply
+	ld [hl], 2
+	ld b, $4
+	call Divide
+	jr .ability_penalties
+.ability_double
+	ld [hl], 2
+	call Multiply
+
+.ability_penalties
+	call GetOpponentAbilityAfterMoldBreaker
+	cp MULTISCALE
+	jr nz, .skip_multiscale
+	push hl
+	call BattleCommand_SwitchTurn
+	ld hl, CheckFullHP_b
+	call CallBattleCore
+	call BattleCommand_SwitchTurn
+	pop hl
+	ld a, b
+	and a
+	jr nz, .skip_multiscale
+	ld [hl], 2
+	ld b, $4
+	call Divide
+.skip_multiscale
+	cp MARVEL_SCALE
+	jr nz, .abilities_done
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	jr z, .abilities_done
+	ld [hl], 2
+	call Multiply
+	ld [hl], 3
+	ld b, $4
+	call Divide
+
+.abilities_done
 ; Item boosts
 	call GetUserItem
 
