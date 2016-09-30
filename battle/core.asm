@@ -268,7 +268,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 .NoMoreFaintingConditions:
 	call HandleLeftovers
 	call HandleMysteryberry
-	call HanleDefrost
+	call HandleDefrost
 	call HandleSafeguard
 	call HandleScreens
 	call HandleStatBoostingHeldItems
@@ -461,6 +461,7 @@ DetermineMoveOrder: ; 3c314
 .use_move
 	ld a, [wPlayerAction]
 	and a
+
 	jp nz, .player_first
 	call CompareMovePriority
 	jr z, .equal_priority
@@ -751,6 +752,10 @@ TryEnemyFlee: ; 3c543
 	dec a
 	jr nz, .Stay
 
+	ld a, [EnemyAbility]
+	cp RUN_AWAY
+	jr z, .skip_traps
+
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .Stay
@@ -759,6 +764,7 @@ TryEnemyFlee: ; 3c543
 	and a
 	jr nz, .Stay
 
+.skip_traps
 	ld a, [EnemyMonStatus]
 	and 1 << FRZ | SLP
 	jr nz, .Stay
@@ -839,29 +845,21 @@ AlwaysFleeMons: ; 3c5b1
 CompareMovePriority: ; 3c5b4
 ; Compare the priority of the player and enemy's moves.
 ; Return carry if the player goes first, or z if they match.
-
-	ld a, [CurPlayerMove]
+	call SetPlayerTurn
 	call GetMovePriority
 	ld b, a
-	push bc
-	ld a, [CurEnemyMove]
+	call SetEnemyTurn
 	call GetMovePriority
-	pop bc
 	cp b
 	ret
 ; 3c5c5
 
 GetMovePriority: ; 3c5c5
-; Return the priority (0-3) of move a.
-
+; Return the priority (0-9) of move being used.
+	push bc
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	ld b, a
-
-	; Vital Throw goes last.
-	cp VITAL_THROW
-	ld a, 0
-	ret z
-
-	call GetMoveEffect
 	ld hl, MoveEffectPriorities
 .loop
 	ld a, [hli]
@@ -871,22 +869,41 @@ GetMovePriority: ; 3c5c5
 	cp -1
 	jr nz, .loop
 
-	ld a, 1
-	ret
-
+	ld a, 5
+	jr .check_prankster
 .done
 	ld a, [hl]
+.check_prankster
+	ld b, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp PRANKSTER
+	jr nz, .no_priority
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	jr nz, .no_priority
+	inc b
+.no_priority
+	ld a, b
+	pop bc
 	ret
-; 3c5df
+
 
 MoveEffectPriorities: ; 3c5df
-	db EFFECT_PROTECT,      3
-	db EFFECT_ENDURE,       3
-	db EFFECT_PRIORITY_HIT, 2
-	db EFFECT_AVALANCHE,    0
-	db EFFECT_WHIRLWIND,    0
-	db EFFECT_COUNTER,      0
-	db EFFECT_MIRROR_COAT,  0
+	db PROTECT,      9
+	db ENDURE,       8
+	db EXTREMESPEED, 7
+	db BULLET_PUNCH, 6
+	db ICE_SHARD,    6
+	db MACH_PUNCH,   6
+	db QUICK_ATTACK, 6
+	db VITAL_THROW,  4
+	db AVALANCHE,    2
+	db COUNTER,      1
+	db MIRROR_COAT,  1
+	db ROAR,         0
+	db WHIRLWIND,    0
 	db -1
 ; 3c5ec
 
@@ -1602,7 +1619,7 @@ HandleFutureSight: ; 3ca26
 	jp UpdateEnemyMonInParty
 ; 3ca8f
 
-HanleDefrost: ; 3ca8f
+HandleDefrost: ; 3ca8f
 	ld a, [hLinkPlayerNumber]
 	cp $1
 	jr z, .enemy_first

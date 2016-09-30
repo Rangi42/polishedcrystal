@@ -18,7 +18,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_CriticalText ; 35175
 	dw BattleCommand_SuperEffectiveText ; 351ad
 	dw BattleCommand_CheckDestinyBond ; 351c0
-	dw BattleCommand_BuildOpponentRage ; 35250
+	dw BattleCommand_PostHitEffects ; 35250
 	dw BattleCommand_PoisonTarget ; 35eee
 	dw BattleCommand_SleepTarget ; 35e5c
 	dw BattleCommand_DrainTarget ; 35fff
@@ -77,7 +77,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Spite ; 35c0f
 	dw BattleCommand_FalseSwipe ; 35c94
 	dw BattleCommand_HealBell ; 35cc9
-	dw BattleCommand_PostHitEffects ; 36ac9
+	dw BattleCommand_KingsRock ; 36ac9
 	dw BattleCommand_TripleKick ; 346b2
 	dw BattleCommand_KickCounter ; 346cd
 	dw BattleCommand_Thief ; 37492

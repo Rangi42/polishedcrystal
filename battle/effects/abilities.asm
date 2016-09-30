@@ -335,6 +335,7 @@ RunContactAbilities:
 	cp 1 + 30 percent
 	jr nc, .skip_user_ability
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp POISON_TOUCH
 	call z, PoisonTouchAbility
 .skip_user_ability
@@ -391,6 +392,7 @@ EffectSporeAbility:
 	jr c, StaticAbility
 	; there are 2 sleep resistance abilities, so check one here
 	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
 	cp VITAL_SPIRIT
 	ret z
 	ld b, INSOMNIA
@@ -434,7 +436,7 @@ AfflictStatusAbility
 	cp b
 	ret z
 	push de
-	call GetOpponentItem
+	farcall GetOpponentItem
 	pop de
 	ld a, b
 	cp c
@@ -527,24 +529,23 @@ CheckOpponentStatLowerAbilities:
 	ld [FailedMessage], a
 	ret
 
-ShowAbilityActivation::
-	xor a
-	jr ShowAbilityActivationInner
 ShowEnemyAbilityActivation::
-	ld a, 1
-ShowAbilityActivationInner:
-; a=0: show player's ability, a=1: opponent's
-	push bc
-	and a
-	jr nz, .enemy_activation
-	ld hl, AbilityActivationText
-	call StdBattleTextBox
-	pop bc
+	farcall BattleCommand_SwitchTurn
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
 	ret
-
-.enemy_activation
-	ld hl, EnemyAbilityActivationText
+ShowAbilityActivation::
+	push bc
+	push de
+	push hl
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_UsersStringBuffer1Activated
 	call StdBattleTextBox
+	pop hl
+	pop de
 	pop bc
 	ret
 

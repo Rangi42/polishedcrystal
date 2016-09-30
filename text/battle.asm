@@ -1319,15 +1319,3 @@ PoisonHealText:
 	line "Poison Heal"
 	cont "restored health!"
 	prompt
-
-AbilityActivationText:
-	text "<USER>'s"
-	line "<ABIL>"
-	cont "activated!"
-	prompt
-
-EnemyAbilityActivationText:
-	text "<TARGET>'s"
-	line "<ABIL>"
-	cont "activated!"
-	prompt
