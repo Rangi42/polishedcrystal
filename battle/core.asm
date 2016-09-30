@@ -752,6 +752,10 @@ TryEnemyFlee: ; 3c543
 	dec a
 	jr nz, .Stay
 
+	ld a, [EnemyAbility]
+	cp RUN_AWAY
+	jr z, .skip_traps
+
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .Stay
@@ -760,6 +764,7 @@ TryEnemyFlee: ; 3c543
 	and a
 	jr nz, .Stay
 
+.skip_traps
 	ld a, [EnemyMonStatus]
 	and 1 << FRZ | SLP
 	jr nz, .Stay
