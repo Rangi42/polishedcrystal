@@ -268,7 +268,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 .NoMoreFaintingConditions:
 	call HandleLeftovers
 	call HandleMysteryberry
-	call HanleDefrost
+	call HandleDefrost
 	call HandleSafeguard
 	call HandleScreens
 	call HandleStatBoostingHeldItems
@@ -1619,7 +1619,7 @@ HandleFutureSight: ; 3ca26
 	jp UpdateEnemyMonInParty
 ; 3ca8f
 
-HanleDefrost: ; 3ca8f
+HandleDefrost: ; 3ca8f
 	ld a, [hLinkPlayerNumber]
 	cp $1
 	jr z, .enemy_first
