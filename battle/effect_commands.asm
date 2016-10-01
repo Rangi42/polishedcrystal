@@ -5406,10 +5406,33 @@ BattleCommand_StatDown: ; 362e3
 
 	ld [LoweredStat], a
 
-	farcall CheckOpponentStatLowerAbilities
-	ld a, [FailedMessage]
-	and a
-	jp nz, .Failed
+; check abilities
+	and $f
+	ld c, a
+	call GetOpponentAbilityAfterMoldBreaker
+	cp CLEAR_BODY
+	jp z, .Failed
+	cp HYPER_CUTTER
+	jr z, .atk
+	cp BIG_PECKS
+	jr z, .def
+	cp KEEN_EYE
+	jr z, .acc
+	jr .no_relevant_ability
+.atk
+	ld a, c
+	cp ATTACK
+	jr z, .Failed
+.def
+	ld a, c
+	cp DEFENSE
+	jr z, .Failed
+.acc
+	ld a, c
+	cp ACCURACY
+	jr z, .Failed
+
+.no_relevant_ability
 	call CheckMist
 	jp nz, .Mist
 

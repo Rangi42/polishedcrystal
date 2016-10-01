@@ -499,36 +499,6 @@ StatIncreaseAbility:
 	farcall BattleCommand_StatUpMessage
 	jp EnableAnimations
 
-CheckOpponentStatLowerAbilities:
-; sets FailedMessage if an ability prevented a stat from lowering
-	call GetOpponentAbilityAfterMoldBreaker
-	cp CLEAR_BODY
-	jr z, .triggered_ability
-	cp HYPER_CUTTER
-	jr nz, .skip_hyper_cutter
-	ld a, [LoweredStat]
-	cp ATTACK
-	ret z
-	jr .triggered_ability
-.skip_hyper_cutter
-	cp KEEN_EYE
-	jr nz, .skip_keen_eye
-	ld a, [LoweredStat]
-	cp ACCURACY
-	ret z
-	jr .triggered_ability
-.skip_keen_eye
-	cp BIG_PECKS
-	ret nz
-	ld a, [LoweredStat]
-	cp DEFENSE
-	ret z
-.triggered_ability
-	call ShowEnemyAbilityActivation
-	ld a, 1
-	ld [FailedMessage], a
-	ret
-
 DisableAnimations:
 	ld a, 1
 	ld [DisableAnimations], a
