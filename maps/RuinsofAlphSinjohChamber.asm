@@ -113,7 +113,7 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 2, 5, SIGNPOST_READ, RuinsofAlphSinjohChamberSignpost
+	signpost 2, 5, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
 	signpost 3, 4, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
 	signpost 3, 6, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
 

@@ -42,6 +42,7 @@ YellowForestGateChanseyScript:
 	end
 
 YellowForestGateClerkScript:
+	faceplayer
 	opentext
 	pokemart MARTTYPE_INFORMAL, MART_YELLOW_FOREST
 	closetext
