@@ -226,16 +226,16 @@ WeatherAbility:
 
 IntimidateAbility:
 	call ShowAbilityActivation
-	farcall DisableAnimations
+	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_AttackDown
 	farcall BattleCommand_StatDownMessage
-	ret
+	jp EnableAnimations
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
 	call ShowAbilityActivation
-	farcall DisableAnimations
+	call DisableAnimations
 	ld hl, EnemyMonDefense
 	ld a, [hBattleTurn]
 	and a
@@ -266,21 +266,21 @@ DownloadAbility:
 	farcall ResetMiss
 	farcall BattleCommand_SpecialAttackUp
 	farcall BattleCommand_StatUpMessage
-	ret
+	jp EnableAnimations
 .inc_atk
 	farcall ResetMiss
 	farcall BattleCommand_AttackUp
 	farcall BattleCommand_StatUpMessage
-	ret
+	jp EnableAnimations
 
 ImposterAbility:
 	call ShowAbilityActivation
-	farcall DisableAnimations
+	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_Transform
 	ld de, TRANSFORM
 	farcall Call_PlayBattleAnim
-	ret
+	jp EnableAnimations
 
 AnticipationAbility:
 ForewarnAbility:
@@ -312,7 +312,7 @@ SynchronizeAbility:
 	ret z ; not statused
 	call ShowAbilityActivation
 	farcall ResetMiss
-	farcall DisableAnimations
+	call DisableAnimations
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	cp 1 << PSN
@@ -320,13 +320,13 @@ SynchronizeAbility:
 	cp 1 << BRN
 	jr z, .is_brn
 	farcall BattleCommand_Paralyze
-	ret
+	jp EnableAnimations
 .is_psn
 	farcall BattleCommand_Poison
-	ret
+	jp EnableAnimations
 .is_brn
 	farcall BattleCommand_Burn
-	ret
+	jp EnableAnimations
 
 RunContactAbilities:
 ; turn perspective is from the attacker
@@ -447,7 +447,7 @@ AfflictStatusAbility
 	and a
 	ret nz
 	call ShowAbilityActivation
-	farcall DisableAnimations
+	call DisableAnimations
 	ld a, b
 	cp SLP
 	jr z, .slp
@@ -456,16 +456,16 @@ AfflictStatusAbility
 	cp PSN
 	jr z, .psn
 	farcall BattleCommand_Paralyze
-	ret
+	jp EnableAnimations
 .slp
 	farcall BattleCommand_SleepTarget
-	ret
+	jp EnableAnimations
 .brn
 	farcall BattleCommand_Burn
-	ret
+	jp EnableAnimations
 .psn
 	farcall BattleCommand_Poison
-	ret
+	jp EnableAnimations
 
 RunEnemyStatIncreaseAbilities:
 	farcall BattleCommand_SwitchTurn
@@ -486,18 +486,18 @@ CompetitiveAbility:
 StatIncreaseAbility:
 	ld b, a
 	call ShowAbilityActivation
-	farcall DisableAnimations
+	call DisableAnimations
 	farcall ResetMiss
 	ld a, b
 	cp ATTACK
 	jr nz, .sp_atk
 	farcall BattleCommand_AttackUp2
 	farcall BattleCommand_StatUpMessage
-	ret
+	jp EnableAnimations
 .sp_atk
 	farcall BattleCommand_SpecialAttackUp2
 	farcall BattleCommand_StatUpMessage
-	ret
+	jp EnableAnimations
 
 CheckOpponentStatLowerAbilities:
 ; sets FailedMessage if an ability prevented a stat from lowering
@@ -507,26 +507,35 @@ CheckOpponentStatLowerAbilities:
 	cp HYPER_CUTTER
 	jr nz, .skip_hyper_cutter
 	ld a, [LoweredStat]
-	and ATTACK
+	cp ATTACK
 	ret z
 	jr .triggered_ability
 .skip_hyper_cutter
 	cp KEEN_EYE
 	jr nz, .skip_keen_eye
 	ld a, [LoweredStat]
-	and ACCURACY
+	cp ACCURACY
 	ret z
 	jr .triggered_ability
 .skip_keen_eye
 	cp BIG_PECKS
 	ret nz
 	ld a, [LoweredStat]
-	and DEFENSE
+	cp DEFENSE
 	ret z
 .triggered_ability
 	call ShowEnemyAbilityActivation
 	ld a, 1
 	ld [FailedMessage], a
+	ret
+
+DisableAnimations:
+	ld a, 1
+	ld [DisableAnimations], a
+	ret
+EnableAnimations:
+	ld a, 0
+	ld [DisableAnimations], a
 	ret
 
 ShowEnemyAbilityActivation::
