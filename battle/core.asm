@@ -608,9 +608,6 @@ ParsePlayerAction: ; 3c434
 	jr z, .reset_rage
 	and a
 	jr nz, .reset_bide
-	ld a, [PlayerSubStatus3]
-	and 1 << SUBSTATUS_BIDE
-	jr nz, .locked_in
 	xor a
 	ld [wMoveSelectionMenuType], a
 	inc a ; POUND
@@ -661,9 +658,8 @@ ParsePlayerAction: ; 3c434
 	jr .continue_protect
 
 .reset_bide
-	ld hl, PlayerSubStatus3
-	res SUBSTATUS_BIDE, [hl]
-
+	; unsure when this is called, but what this used to do was removed to free up
+	; SUBSTATUS_BIDE (it fellthrough to locked_in afterwards)
 .locked_in
 	xor a
 	ld [PlayerFuryCutterCount], a
@@ -6164,7 +6160,7 @@ ParseEnemyAction: ; 3e7c1
 	bit SUBSTATUS_ROLLOUT, a
 	jp nz, .skip_load
 	ld a, [EnemySubStatus3]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_BIDE
+	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
 	jp nz, .skip_load
 
 	ld hl, EnemySubStatus2
@@ -6305,7 +6301,7 @@ CheckEnemyLockedIn: ; 3e8d1
 
 	ld hl, EnemySubStatus3
 	ld a, [hl]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_BIDE
+	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
 	ret nz
 
 	ld hl, EnemySubStatus1

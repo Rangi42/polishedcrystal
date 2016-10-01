@@ -1319,3 +1319,9 @@ PoisonHealText:
 	line "Poison Heal"
 	cont "restored health!"
 	prompt
+
+FirePoweredUpText:
+	text "<USER>'s"
+	line "Fire-type moves"
+	cont "was powered up!"
+	prompt

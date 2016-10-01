@@ -478,26 +478,118 @@ RunEnemyStatIncreaseAbilities:
 	farcall BattleCommand_SwitchTurn
 	ret
 
-DefiantAbility:
-	ld a, ATTACK
-	jr StatIncreaseAbility
 CompetitiveAbility:
 	ld a, SP_ATTACK
+	ld b, 1
+	jr StatIncreaseAbility
+DefiantAbility:
+	ld a, ATTACK
+	ld b, 1
+	jr StatIncreaseAbility
+LightningRodAbility:
+	ld a, SP_ATTACK
+	ld b, 0
+	jr StatIncreaseAbility
+MotorDriveAbility:
+	ld a, SPEED
+	ld b, 0
+	jr StatIncreaseAbility
+SapSipperAbility:
+	ld a, ATTACK
+	ld b, 0
 StatIncreaseAbility:
-	ld b, a
+	ld c, a
 	call ShowAbilityActivation
 	call DisableAnimations
 	farcall ResetMiss
-	ld a, b
+	ld a, c
 	cp ATTACK
-	jr nz, .sp_atk
+	jr z, .atk
+	cp SP_ATTACK
+	jr z, .sp_atk
+	farcall BattleCommand_SpeedUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.atk
+	ld a, b
+	cp 1
+	jr z, .atk2
+	farcall BattleCommand_AttackUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.atk2
 	farcall BattleCommand_AttackUp2
 	farcall BattleCommand_StatUpMessage
 	jp EnableAnimations
 .sp_atk
+	ld a, b
+	cp 1
+	jr z, .sp_atk2
+	farcall BattleCommand_SpecialAttackUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.sp_atk2
 	farcall BattleCommand_SpecialAttackUp2
 	farcall BattleCommand_StatUpMessage
 	jp EnableAnimations
+
+RunEnemyNullificationAbilities:
+; At this point, we are already certain that the ability will activate, so no additional
+; checks are required.
+	farcall BattleCommand_SwitchTurn
+	call .do_enemy_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+.do_enemy_abilities
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DRY_SKIN
+	jp z, DrySkinAbility
+	cp FLASH_FIRE
+	jp z, FlashFireAbility
+	cp LIGHTNING_ROD
+	jp z, LightningRodAbility
+	cp MOTOR_DRIVE
+	jp z, MotorDriveAbility
+	cp SAP_SIPPER
+	jp z, SapSipperAbility
+	cp VOLT_ABSORB
+	jp z, VoltAbsorbAbility
+	cp WATER_ABSORB
+	jp z, WaterAbsorbAbility
+	ret
+
+FlashFireAbility:
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	ld a, [hl]
+	and 1<<SUBSTATUS_FLASH_FIRE
+	jr nz, .already_fired_up
+	set SUBSTATUS_FLASH_FIRE, [hl]
+	ld hl, FirePoweredUpText
+	jp StdBattleTextBox
+.already_fired_up
+	ld hl, DoesntAffectText
+	jp StdBattleTextBox
+
+
+DrySkinAbility:
+VoltAbsorbAbility:
+WaterAbsorbAbility:
+	call ShowAbilityActivation
+	farcall CheckFullHP_b
+	ld b, a
+	and a
+	jr z, .full_hp
+	farcall GetQuarterMaxHP
+	farcall BattleCommand_SwitchTurn
+	farcall RestoreHP
+	farcall BattleCommand_SwitchTurn
+	ret
+.full_hp
+	ld hl, HPIsFullText
+	jp StdBattleTextBox
 
 DisableAnimations:
 	ld a, 1
