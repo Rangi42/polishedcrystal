@@ -7100,6 +7100,11 @@ ApplyStatusEffectOnStats: ; 3ec31
 ; 3ec39
 
 ApplyPrzEffectOnSpeed: ; 3ec39
+	; _OPP because turn checks are reversed for whatever reason
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp QUICK_FEET
+	ret z
 	ld a, [hBattleTurn]
 	and a
 	jr z, .enemy
@@ -7146,6 +7151,10 @@ ApplyPrzEffectOnSpeed: ; 3ec39
 ; 3ec76
 
 ApplyBrnEffectOnAttack: ; 3ec76
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp GUTS
+	ret z
 	ld a, [hBattleTurn]
 	and a
 	jr z, .enemy

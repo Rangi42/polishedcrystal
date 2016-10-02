@@ -91,7 +91,7 @@ OK	ADAPTABILITY
 OK	SKILL_LINK
 -	HYDRATION
 -	SOLAR_POWER
--	QUICK_FEET
+!	QUICK_FEET (paralysis' speed penalty bypass implemented)
 OK	SNIPER
 -	MAGIC_GUARD
 OK	NO_GUARD
