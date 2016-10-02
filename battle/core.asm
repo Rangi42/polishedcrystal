@@ -463,6 +463,7 @@ DetermineMoveOrder: ; 3c314
 	farcall AI_Switch
 	call SetEnemyTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	jp .enemy_first
 
 .use_move
@@ -2480,6 +2481,7 @@ EnemyPartyMonEntrance: ; 3cf78
 	call ResetBattleParticipants
 	call SetEnemyTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	xor a
 	ld [wEnemyMoveStruct + MOVE_ANIM], a
 	ld [wPlayerAction], a
@@ -2955,6 +2957,7 @@ ForcePlayerMonChoice: ; 3d227
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	ld a, $1
 	and a
 	ld c, a
@@ -2976,7 +2979,8 @@ PlayerPartyMonEntrance: ; 3d2b3
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	jp SpikesDamage
+	call SpikesDamage
+	jp RunActivationAbilities
 ; 3d2e0
 
 SetUpBattlePartyMenu_NoLoop: ; 3d2f7
@@ -5573,7 +5577,8 @@ PlayerSwitch: ; 3e3ad
 EnemyMonEntrance: ; 3e3ff
 	farcall AI_Switch
 	call SetEnemyTurn
-	jp SpikesDamage
+	call SpikesDamage
+	jp RunActivationAbilities
 ; 3e40b
 
 BattleMonEntrance: ; 3e40b
@@ -5608,6 +5613,7 @@ BattleMonEntrance: ; 3e40b
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	ld a, $2
 	ld [wMenuCursorY], a
 	ret
@@ -5632,7 +5638,8 @@ PassedBattleMonEntrance: ; 3e459
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	jp SpikesDamage
+	call SpikesDamage
+	jp RunActivationAbilities
 ; 3e489
 
 
