@@ -5684,7 +5684,7 @@ GruntMGroup:
 	db 0 ; normal
 
 	; party
-	db 19, RATICATE
+	db 33, RATICATE
 
 	db $ff ; end
 
