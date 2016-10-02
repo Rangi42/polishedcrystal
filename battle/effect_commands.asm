@@ -5406,10 +5406,33 @@ BattleCommand_StatDown: ; 362e3
 
 	ld [LoweredStat], a
 
-	farcall CheckOpponentStatLowerAbilities
-	ld a, [FailedMessage]
-	and a
-	jp nz, .Failed
+; check abilities
+	and $f
+	ld c, a
+	call GetOpponentAbilityAfterMoldBreaker
+	cp CLEAR_BODY
+	jp z, .Failed
+	cp HYPER_CUTTER
+	jr z, .atk
+	cp BIG_PECKS
+	jr z, .def
+	cp KEEN_EYE
+	jr z, .acc
+	jr .no_relevant_ability
+.atk
+	ld a, c
+	cp ATTACK
+	jr z, .Failed
+.def
+	ld a, c
+	cp DEFENSE
+	jr z, .Failed
+.acc
+	ld a, c
+	cp ACCURACY
+	jr z, .Failed
+
+.no_relevant_ability
 	call CheckMist
 	jp nz, .Mist
 
@@ -9368,11 +9391,7 @@ AnimateCurrentMoveEitherSide: ; 37de9
 AnimateCurrentMove: ; 37e01
 	ld a, [DisableAnimations]
 	and a
-	jr z, .animation_ok
-	ld a, 0
-	ld [DisableAnimations], a
-	ret
-.animation_ok
+	ret nz
 	push hl
 	push de
 	push bc
@@ -9483,19 +9502,10 @@ CallBattleCore: ; 37e73
 ; 37e77
 
 
-DisableAnimations:
-	ld a, 1
-	ld [DisableAnimations], a
-	ret
-
 AnimateFailedMove: ; 37e77
 	ld a, [DisableAnimations]
 	and a
-	jr z, .animation_ok
-	ld a, 0
-	ld [DisableAnimations], a
-	ret
-.animation_ok
+	ret nz
 	call BattleCommand_LowerSub
 	call BattleCommand_MoveDelay
 	jp BattleCommand_RaiseSub
