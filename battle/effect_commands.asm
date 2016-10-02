@@ -5873,8 +5873,8 @@ ResetMiss: ; 3652d
 
 ; 36532
 
-
-LowerStat: ; 36532
+LowerStat:: ; 36532
+	ld a, b
 	ld [LoweredStat], a
 
 	ld hl, PlayerStatLevels

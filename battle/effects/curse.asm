@@ -42,7 +42,7 @@ BattleCommand_Curse: ; 37588
 	ld a, $1
 	ld [wKickCounter], a
 	call AnimateCurrentMove
-	ld a, SPEED
+	ld b, SPEED
 	call LowerStat
 	call BattleCommand_SwitchTurn
 	call BattleCommand_StatDownMessage

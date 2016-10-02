@@ -591,6 +591,199 @@ WaterAbsorbAbility:
 	ld hl, HPIsFullText
 	jp StdBattleTextBox
 
+HandleAbilities:
+; This needs to be handled in a consistent order despite not involving faintings, because
+; some abilities (like Moody) depends on randomness
+	ld a, [hLinkPlayerNumber]
+	cp 1
+	jr z, .enemy_first
+	call SetPlayerTurn
+	call .do_it
+	call SetEnemyTurn
+	jp .do_it
+
+.enemy_first
+	call SetEnemyTurn
+	call .do_it
+	call SetPlayerTurn
+
+.do_it
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp HARVEST
+	jr nz, .not_harvest
+	; TODO: save used up items
+	ret
+.not_harvest
+	cp MOODY
+	jp nz, .not_moody
+
+; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
+; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
+; stats be +6, Moody will not raise any stat, and vice versa.
+
+	call ShowAbilityActivation ; Safe -- Moody is certain to work for at least one part.
+	call DisableAnimations
+
+	; First, check how many stats aren't maxed out
+	ld hl, PlayerStatLevels
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_stat_levels
+	ld hl, EnemyStatLevels
+.got_stat_levels
+	push hl ; save this for later
+	ld b, 0 ; amount of nonmaxed stats
+	ld c, 0 ; loop counter
+.loop1
+	ld a, [hli]
+	cp 13
+	jr nc, .maxed
+	inc b
+.maxed
+	inc c
+	ld a, c
+	cp 7
+	jr c, .loop1
+
+	; If all stats are maxed (b=0), skip increasing stats
+	ld a, b
+	and a
+	jr z, .all_stats_maxed
+
+	; So at least 1 stat can be increased. Generate a random number between 0-N
+	; where N is amount of nonmaxed stats - 1
+.loop2
+	call BattleRandom
+	and $7
+	cp b
+	jr nc, .loop2
+
+	; reset hl
+	pop hl
+	push hl
+
+	; Select the appropriate stat to increase
+	ld b, 0
+	ld c, a
+.loop3
+	ld a, [hli]
+	inc b
+	cp 13
+	jr nc, .loop3
+	ld a, c
+	and a
+	jr z, .got_stat1
+	dec c
+	jr .loop3
+.got_stat1
+	dec b
+	ld d, b ; Store which stat was raised to avoid lowering the same stat
+	push de
+	ld a, b
+	or $10 ; sharply raise it
+	ld b, a
+	push bc
+	farcall ResetMiss
+	farcall BattleCommand_StatUp
+	farcall BattleCommand_StatUpMessage
+	pop bc
+	pop de
+	jr .moody_statdown
+.all_stats_maxed
+	ld d, 7 ; Certain to not match any stat, since nothing was raised
+.moody_statdown
+	; reset hl
+	pop hl
+	push hl
+
+	; Same logic as for raising stat, except now also skip whatever stat d is, if any
+	ld b, 0
+	ld c, 0
+.loop4
+	ld a, [hli]
+	cp 13
+	jr nc, .minimized
+	ld c, a
+	cp d
+	jr z, .minimized
+	inc b
+.minimized
+	inc c
+	ld a, c
+	cp 7
+	jr c, .loop4
+	ld a, b
+	and a
+	jr z, .all_stats_minimized ; slight misnormer: all but the one that was raised before
+.loop5
+	push de
+	call BattleRandom
+	pop de
+	and $7
+	cp b
+	jr nc, .loop5
+	pop hl
+	push hl
+	ld b, 0
+	ld c, a
+	inc d ; offset d properly since b is increased before being compared against
+.loop6
+	ld a, [hli]
+	inc b
+	cp 13
+	jr nc, .loop6
+	ld a, d
+	cp b
+	jr z, .loop6
+	ld a, c
+	and a
+	jr z, .got_stat2
+	dec c
+	jr .loop6
+.got_stat2
+	dec b
+	farcall ResetMiss
+	farcall LowerStat
+	farcall BattleCommand_SwitchTurn
+	farcall BattleCommand_StatDownMessage
+	farcall BattleCommand_SwitchTurn
+.all_stats_minimized
+	pop hl
+	jp EnableAnimations
+	ret
+.not_moody
+	cp PICKUP
+	jr nz, .not_pickup
+	; TODO: save used up items
+	ret
+.not_pickup
+	cp SHED_SKIN
+	jr nz, .not_shed_skin
+	ret
+.not_shed_skin
+	cp SPEED_BOOST
+	ret nz
+
+	; we don't want to spam ability activation messages if our speed is maxed, so check that
+
+	ld hl, PlayerSpdLevel
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_speed
+	ld hl, EnemySpdLevel
+.got_speed
+	ld a, [hl]
+	cp 13
+	ret nc
+	call ShowAbilityActivation
+	call DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_SpeedUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+
+
 DisableAnimations:
 	ld a, 1
 	ld [AnimationsDisabled], a

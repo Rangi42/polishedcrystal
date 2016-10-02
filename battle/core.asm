@@ -279,6 +279,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleStatBoostingHeldItems
 	call HandleHealingItems
+	call HandleAbilities
 	call UpdateBattleMonInParty
 	call LoadTileMapToTempTileMap
 	jp HandleEncore
