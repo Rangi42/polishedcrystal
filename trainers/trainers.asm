@@ -6367,8 +6367,8 @@ PokemaniacGroup:
 	db 0 ; normal
 
 	; party
-	db 43, GLOOM
-	db 43, WEEPINBELL
+	db 53, GLOOM
+	db 53, WEEPINBELL
 
 	db $ff ; end
 
@@ -7630,9 +7630,9 @@ PsychicGroup:
 	db 0 ; normal
 
 	; party
-	db 39, EXEGGCUTE
-	db 39, EXEGGCUTE
-	db 39, EXEGGUTOR
+	db 53, EXEGGCUTE
+	db 53, EXEGGCUTE
+	db 55, EXEGGUTOR
 
 	db $ff ; end
 
