@@ -1496,7 +1496,7 @@ BattleCommand_CheckHit: ; 34d32
 	jp nz, .Miss
 
 	call .CheckNullificationAbilities
-	jp nz, .Miss
+	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
 	ret z
@@ -1649,23 +1649,22 @@ BattleCommand_CheckHit: ; 34d32
 .found_ability
 ; Type immunities override these abilities, but abilities override everything if they do
 ; proc, so checking early is required. So check type matchups here.
-	call BattleCheckTypeMatchup
-	ld a, [wTypeMatchup]
-	and a
-	ret z
-
 	ld a, [hl]
 	ld b, a
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
-	jr z, .ability_has_effect
-	xor a
+	jr nz, .ability_fail
+
+	call BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	and a
+	ret z
+	ld a, 3
 	ret
 
-.ability_has_effect
-	ld a, 3 ; will determine AttackMissed value
-	and a
+.ability_fail
+	xor a
 	ret
 
 
@@ -3398,7 +3397,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
-	jr nz, .no_flash_fire
+	jr z, .no_flash_fire
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
@@ -3406,6 +3405,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 3
 	call Multiply
 	ld [hl], 2
+	ld b, $4
 	call Divide
 
 .no_flash_fire

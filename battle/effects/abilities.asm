@@ -579,7 +579,7 @@ VoltAbsorbAbility:
 WaterAbsorbAbility:
 	call ShowAbilityActivation
 	farcall CheckFullHP_b
-	ld b, a
+	ld a, b
 	and a
 	jr z, .full_hp
 	farcall GetQuarterMaxHP
