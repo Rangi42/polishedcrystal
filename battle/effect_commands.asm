@@ -1597,13 +1597,6 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 	bit SUBSTATUS_PROTECT, a
 	ret z
-
-	ld c, 40
-	call DelayFrames
-
-	ld c, 40
-	call DelayFrames
-
 	ld a, 2
 	and a
 	ret
