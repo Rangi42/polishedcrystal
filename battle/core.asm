@@ -279,7 +279,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleStatBoostingHeldItems
 	call HandleHealingItems
-	call HandleAbilities
+	farcall HandleAbilities
 	call UpdateBattleMonInParty
 	call LoadTileMapToTempTileMap
 	jp HandleEncore
@@ -944,6 +944,7 @@ Battle_EnemyFirst: ; 3c5fe
 
 .switch_item
 	call SetEnemyTurn
+	call HasUserFainted
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
@@ -955,6 +956,7 @@ Battle_EnemyFirst: ; 3c5fe
 	call HasPlayerFainted
 	jp z, HandlePlayerMonFaint
 	call SetPlayerTurn
+	call HasUserFainted
 	jp z, HandlePlayerMonFaint
 	call RefreshBattleHuds
 	xor a
@@ -979,6 +981,7 @@ Battle_PlayerFirst: ; 3c664
 	jp z, HandlePlayerMonFaint
 	push bc
 	call SetPlayerTurn
+	call HasUserFainted
 	pop bc
 	jp z, HandlePlayerMonFaint
 	push bc
@@ -999,6 +1002,7 @@ Battle_PlayerFirst: ; 3c664
 
 .switched_or_used_item
 	call SetEnemyTurn
+	call HasUserFainted
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	xor a
