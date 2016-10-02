@@ -235,6 +235,9 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jr z, .CheckEnemyFirst
 	call CheckFaint_PlayerThenEnemy
 	ret c
+	call HandleResidualDamage
+	call CheckFaint_PlayerThenEnemy
+	ret c
 	call HandleFutureSight
 	call CheckFaint_PlayerThenEnemy
 	ret c
@@ -250,6 +253,9 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jr .NoMoreFaintingConditions
 
 .CheckEnemyFirst:
+	call CheckFaint_EnemyThenPlayer
+	ret c
+	call HandleResidualDamage
 	call CheckFaint_EnemyThenPlayer
 	ret c
 	call HandleFutureSight
@@ -937,7 +943,6 @@ Battle_EnemyFirst: ; 3c5fe
 
 .switch_item
 	call SetEnemyTurn
-	call ResidualDamage
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
@@ -949,7 +954,6 @@ Battle_EnemyFirst: ; 3c5fe
 	call HasPlayerFainted
 	jp z, HandlePlayerMonFaint
 	call SetPlayerTurn
-	call ResidualDamage
 	jp z, HandlePlayerMonFaint
 	call RefreshBattleHuds
 	xor a
@@ -974,7 +978,6 @@ Battle_PlayerFirst: ; 3c664
 	jp z, HandlePlayerMonFaint
 	push bc
 	call SetPlayerTurn
-	call ResidualDamage
 	pop bc
 	jp z, HandlePlayerMonFaint
 	push bc
@@ -995,7 +998,6 @@ Battle_PlayerFirst: ; 3c664
 
 .switched_or_used_item
 	call SetEnemyTurn
-	call ResidualDamage
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	xor a
@@ -1052,11 +1054,21 @@ CheckIfHPIsZero: ; 3c713
 	ret
 ; 3c716
 
-ResidualDamage: ; 3c716
-; Return z if the user fainted before
-; or as a result of residual damage.
-; For Sandstorm and Hail damage, see HandleWeather.
+HandleResidualDamage:
+	ld a, [hLinkPlayerNumber]
+	cp $1
+	jr z, .enemy_first
+	call SetPlayerTurn
+	call .do_it
+	call SetEnemyTurn
+	jp .do_it
 
+.enemy_first
+	call SetEnemyTurn
+	call .do_it
+	call SetPlayerTurn
+
+.do_it
 	call HasUserFainted
 	ret z
 
@@ -1133,7 +1145,7 @@ ResidualDamage: ; 3c716
 .did_psn_brn
 
 	call HasUserFainted
-	jp z, .fainted
+	ret z
 
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
@@ -1160,7 +1172,7 @@ ResidualDamage: ; 3c716
 .not_seeded
 
 	call HasUserFainted
-	jr z, .fainted
+	ret z
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
@@ -1177,12 +1189,12 @@ ResidualDamage: ; 3c716
 .not_nightmare
 
 	call HasUserFainted
-	jr z, .fainted
+	ret z
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	bit SUBSTATUS_CURSE, [hl]
-	jr z, .not_cursed
+	ret z
 
 	xor a
 	ld [wNumHits], a
@@ -1191,26 +1203,7 @@ ResidualDamage: ; 3c716
 	call GetQuarterMaxHP
 	call SubtractHPFromUser
 	ld hl, HurtByCurseText
-	call StdBattleTextBox
-
-.not_cursed
-	ld hl, BattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .check_fainted
-	ld hl, EnemyMonHP
-
-.check_fainted
-	ld a, [hli]
-	or [hl]
-	ret nz
-
-.fainted
-	call RefreshBattleHuds
-	ld c, 20
-	call DelayFrames
-	xor a
-	ret
+	jp StdBattleTextBox
 ; 3c801
 
 CheckFullHP_b:
