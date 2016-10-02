@@ -9466,7 +9466,7 @@ AnimateCurrentMoveEitherSide: ; 37de9
 
 
 AnimateCurrentMove: ; 37e01
-	ld a, [DisableAnimations]
+	ld a, [AnimationsDisabled]
 	and a
 	ret nz
 	push hl
@@ -9580,7 +9580,7 @@ CallBattleCore: ; 37e73
 
 
 AnimateFailedMove: ; 37e77
-	ld a, [DisableAnimations]
+	ld a, [AnimationsDisabled]
 	and a
 	ret nz
 	call BattleCommand_LowerSub

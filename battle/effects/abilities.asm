@@ -593,11 +593,11 @@ WaterAbsorbAbility:
 
 DisableAnimations:
 	ld a, 1
-	ld [DisableAnimations], a
+	ld [AnimationsDisabled], a
 	ret
 EnableAnimations:
 	ld a, 0
-	ld [DisableAnimations], a
+	ld [AnimationsDisabled], a
 	ret
 
 ShowEnemyAbilityActivation::
