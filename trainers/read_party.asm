@@ -289,8 +289,20 @@ TrainerType4: ; 3989d
 	jr nz, .copy_pp
 .copied_pp
 
+	; max happiness for Return
+	push hl
+	push bc
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1Happiness
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld [hl], 255
+	pop bc
 	pop hl
-	jr .loop
+
+	pop hl
+	jp .loop
 ; 3991b
 
 ComputeTrainerReward: ; 3991b (e:591b)
@@ -356,12 +368,3 @@ CopyTrainerName: ; 39984
 	pop de
 	ret
 ; 39990
-
-Function39990: ; 39990
-; This function is useless.
-	ld de, StringBuffer1
-	push de
-	ld bc, NAME_LENGTH
-	pop de
-	ret
-; 39999

@@ -208,6 +208,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Update random Wonder Trade OT names.
 * Add: Rock Smash has 60 power (non-Faithful).
 * Add: Strength is Fighting-type (non-Faithful).
+* Add: Trainers have max happiness for Return.
 * Fix: Zap Cannon has 120 power.
 * Fix: Game console names in room.
 * Fix: Yellow Forest gate clerk does not face you.
