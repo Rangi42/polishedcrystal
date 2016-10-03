@@ -1303,9 +1303,8 @@ NotifyPressure:
 	prompt
 
 NotifyMoldBreaker:
-	text "<USER>'s"
-	line "Mold Breaker"
-	cont "breaks the mold!"
+	text "<USER>"
+	line "breaks the mold!"
 	prompt
 
 NotifyUnnerve:
@@ -1323,5 +1322,5 @@ PoisonHealText:
 FirePoweredUpText:
 	text "<USER>'s"
 	line "Fire-type moves"
-	cont "was powered up!"
+	cont "were powered up!"
 	prompt
