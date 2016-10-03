@@ -214,3 +214,4 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Read hidden Ruins of Alph tablet from one direction.
 * Fix: Ice Rock tile collision data.
 * Fix: Adjust some trainer levels.
+* Fix: Move a trainer in Viridian Gym to prevent getting stuck on spinners.
