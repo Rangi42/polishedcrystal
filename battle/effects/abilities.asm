@@ -592,8 +592,9 @@ WaterAbsorbAbility:
 	jp StdBattleTextBox
 
 HandleAbilities:
+; Abilities handled at the end of the turn.
 ; This needs to be handled in a consistent order despite not involving faintings, because
-; some abilities (like Moody) depends on randomness
+; some abilities (like Moody) depends on randomness.
 	ld a, [hLinkPlayerNumber]
 	cp 1
 	jr z, .enemy_first

@@ -4918,86 +4918,49 @@ BattleCommand_EatDream: ; 36008
 
 
 SapHealth: ; 36011
+	; Don't do anything if HP is full
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	ret z
+
+	; get damage
 	ld hl, CurDamage
 	ld a, [hli]
-	srl a
-	ld [hDividend], a
 	ld b, a
-	ld a, [hl]
-	rr a
-	ld [hDividend + 1], a
-	or b
-	jr nz, .ok1
-	ld a, $1
-	ld [hDividend + 1], a
-.ok1
-	ld hl, BattleMonHP
-	ld de, BattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .battlemonhp
-	ld hl, EnemyMonHP
-	ld de, EnemyMonMaxHP
-.battlemonhp
-	ld bc, Buffer4
-	ld a, [hli]
-	ld [bc], a
-	ld a, [hl]
-	dec bc
-	ld [bc], a
-	ld a, [de]
-	dec bc
-	ld [bc], a
-	inc de
-	ld a, [de]
-	dec bc
-	ld [bc], a
-	ld a, [hDividend + 1]
-	ld b, [hl]
-	add b
-	ld [hld], a
-	ld [Buffer5], a
-	ld a, [hDividend]
-	ld b, [hl]
-	adc b
-	ld [hli], a
-	ld [Buffer6], a
-	jr c, .okay2
-	ld a, [hld]
-	ld b, a
-	ld a, [de]
-	dec de
-	sub b
-	ld a, [hli]
-	ld b, a
-	ld a, [de]
-	inc de
-	sbc b
-	jr nc, .okay3
-.okay2
-	ld a, [de]
-	ld [hld], a
-	ld [Buffer5], a
-	dec de
-	ld a, [de]
-	ld [hli], a
-	ld [Buffer6], a
-	inc de
-.okay3
-	ld a, [hBattleTurn]
-	and a
-	hlcoord 10, 9
-	ld a, $1
-	jr z, .hp_bar
-	hlcoord 2, 2
-	xor a
-.hp_bar
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
-	call RefreshBattleHuds
-	jp UpdateBattleMonInParty
+	ld c, [hl]
 
-; 3608c
+	; halve result
+	srl b
+	rr c
+
+	; for Drain Kiss, we want 75% drain instead of 50%
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp DRAIN_KISS
+	jr nz, .skip_drain_kiss
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
+
+.skip_drain_kiss
+	; ensure minimum 1HP drained
+	ld a, b
+	and a
+	jr nz, .skip_increase
+	ld a, c
+	and a
+	jr nz, .skip_increase
+	ld c, 1
+.skip_increase
+	call BattleCommand_SwitchTurn
+	farcall RestoreHP
+	call BattleCommand_SwitchTurn
+	ret
 
 
 BattleCommand_BurnTarget: ; 3608c
