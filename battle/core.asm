@@ -1172,7 +1172,18 @@ HandleResidualDamage:
 	call SubtractHPFromUser
 	ld a, $1
 	ld [hBGMapMode], a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp LIQUID_OOZE
+	jr z, .hurt
 	call RestoreHP
+	jr .sap_text
+.hurt
+	farcall ShowAbilityActivation
+	call SwitchTurnCore
+	call SubtractHPFromUser
+	call SwitchTurnCore
+.sap_text
 	ld hl, LeechSeedSapsText
 	call StdBattleTextBox
 .not_seeded

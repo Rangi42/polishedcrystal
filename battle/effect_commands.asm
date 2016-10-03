@@ -4957,9 +4957,19 @@ SapHealth: ; 36011
 	jr nz, .skip_increase
 	ld c, 1
 .skip_increase
+	; check for Liquid Ooze
+	push bc
+	call GetOpponentAbilityAfterMoldBreaker
+	pop bc
+	cp LIQUID_OOZE
+	jr z, .damage
 	call BattleCommand_SwitchTurn
 	farcall RestoreHP
 	call BattleCommand_SwitchTurn
+	ret
+.damage
+	farcall ShowEnemyAbilityActivation
+	farcall SubtractHPFromUser
 	ret
 
 
