@@ -219,7 +219,7 @@ BugsyGroup:
 		db HARDEN
 		db FURY_ATTACK
 
-	db 12, YANMA, NO_ITEM
+	db 13, YANMA, NO_ITEM
 		db TACKLE
 		db FORESIGHT
 		db QUICK_ATTACK
