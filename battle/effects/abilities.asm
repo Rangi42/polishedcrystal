@@ -632,17 +632,28 @@ HandleAbilities:
 	jr z, .got_stat_levels
 	ld hl, EnemyStatLevels
 .got_stat_levels
-	push hl ; save this for later
-	ld b, 0 ; amount of nonmaxed stats
-	ld c, 0 ; loop counter
+	ld b, 0 ; bitfield of nonmaxed stats
+	ld c, 0 ; bitfield of nonminimized stats
+	ld d, 1 ; bit to OR into b/c
+	ld e, 0 ; loop counter
 .loop1
 	ld a, [hli]
 	cp 13
-	jr nc, .maxed
-	inc b
+	jr z, .maxed
+	ld a, b
+	or d
+	ld b, a
+	ld a, [hl]
+	cp 1
+	jr z, .minimized
 .maxed
-	inc c
 	ld a, c
+	or d
+	ld c, a
+.minimized
+	inc e
+	sla d
+	ld a, e
 	cp 7
 	jr c, .loop1
 
@@ -651,107 +662,67 @@ HandleAbilities:
 	and a
 	jr z, .all_stats_maxed
 
-	; So at least 1 stat can be increased. Generate a random number between 0-N
-	; where N is amount of nonmaxed stats - 1
+	; Randomize values until we get one matching a nonmaxed stat
 .loop2
 	call BattleRandom
 	and $7
-	cp b
-	jr nc, .loop2
-
-	; reset hl
-	pop hl
-	push hl
-
-	; Select the appropriate stat to increase
-	ld b, 0
-	ld c, a
+	cp 7
+	jr z, .loop2 ; there are only 7 stats (0-6)
+	ld d, 1
+	ld e, 0 ; counter
 .loop3
-	ld a, [hli]
-	inc b
-	cp 13
-	jr nc, .loop3
-	ld a, c
-	and a
-	jr z, .got_stat1
-	dec c
+	cp e
+	jr z, .loop3_done
+	sla d
+	inc e
 	jr .loop3
-.got_stat1
-	dec b
-	ld d, b ; Store which stat was raised to avoid lowering the same stat
-	push de
+.loop3_done
 	ld a, b
-	or $10 ; sharply raise it
-	ld b, a
+	and d
+	jr z, .loop2
+
+	; We got the stat to raise. Set the e:th bit (using d) in c to 0
+	; to avoid lowering the stat as well.
+	ld a, d
+	cpl
+	and c
+	ld c, a
 	push bc
 	farcall ResetMiss
 	farcall BattleCommand_StatUp
 	farcall BattleCommand_StatUpMessage
 	pop bc
-	pop de
-	jr .moody_statdown
-.all_stats_maxed
-	ld d, 7 ; Certain to not match any stat, since nothing was raised
-.moody_statdown
-	; reset hl
-	pop hl
-	push hl
 
-	; Same logic as for raising stat, except now also skip whatever stat d is, if any
-	ld b, 0
-	ld c, 0
+.all_stats_maxed
+	ld a, c
+	and a
+	jp z, EnableAnimations ; no stat to lower
+
 .loop4
-	ld a, [hli]
-	cp 13
-	jr nc, .minimized
-	ld c, a
-	cp d
-	jr z, .minimized
-	inc b
-.minimized
-	inc c
-	ld a, c
-	cp 7
-	jr c, .loop4
-	ld a, b
-	and a
-	jr z, .all_stats_minimized ; slight misnormer: all but the one that was raised before
-.loop5
-	push de
 	call BattleRandom
-	pop de
 	and $7
-	cp b
-	jr nc, .loop5
-	pop hl
-	push hl
-	ld b, 0
-	ld c, a
-	inc d ; offset d properly since b is increased before being compared against
-.loop6
-	ld a, [hli]
-	inc b
-	cp 13
-	jr nc, .loop6
-	ld a, d
-	cp b
-	jr z, .loop6
+	cp 7
+	jr z, .loop4
+	ld d, 1
+	ld e, 0 ; counter
+.loop5
+	cp e
+	jr z, .loop5_done
+	sla d
+	inc e
+	jr .loop5
+.loop5_done
 	ld a, c
-	and a
-	jr z, .got_stat2
-	dec c
-	jr .loop6
-.got_stat2
-	dec b
+	and d
+	jr z, .loop4
+
+	ld b, e
 	farcall ResetMiss
 	farcall LowerStat
 	farcall BattleCommand_SwitchTurn
 	farcall BattleCommand_StatDownMessage
 	farcall BattleCommand_SwitchTurn
-.all_stats_minimized
-	pop hl
 	jp EnableAnimations
-	ret
 .not_moody
 	cp PICKUP
 	jr nz, .not_pickup

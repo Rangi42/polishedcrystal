@@ -9685,5 +9685,3 @@ _CheckBattleScene: ; 37ed5
 	pop de
 	pop hl
 	ret
-
-; 37ee2
