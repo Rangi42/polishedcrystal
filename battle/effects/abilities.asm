@@ -637,7 +637,7 @@ HandleAbilities:
 	ld d, 1 ; bit to OR into b/c
 	ld e, 0 ; loop counter
 .loop1
-	ld a, [hli]
+	ld a, [hl]
 	cp 13
 	jr z, .maxed
 	ld a, b
@@ -651,6 +651,7 @@ HandleAbilities:
 	or d
 	ld c, a
 .minimized
+	inc hl
 	inc e
 	sla d
 	ld a, e
@@ -687,6 +688,9 @@ HandleAbilities:
 	cpl
 	and c
 	ld c, a
+	ld a, e
+	or $10 ; raise it sharply
+	ld b, a
 	push bc
 	farcall ResetMiss
 	farcall BattleCommand_StatUp
