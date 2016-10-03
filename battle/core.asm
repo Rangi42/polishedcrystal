@@ -235,6 +235,9 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jr z, .CheckEnemyFirst
 	call CheckFaint_PlayerThenEnemy
 	ret c
+	call HandleResidualDamage
+	call CheckFaint_PlayerThenEnemy
+	ret c
 	call HandleFutureSight
 	call CheckFaint_PlayerThenEnemy
 	ret c
@@ -250,6 +253,9 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jr .NoMoreFaintingConditions
 
 .CheckEnemyFirst:
+	call CheckFaint_EnemyThenPlayer
+	ret c
+	call HandleResidualDamage
 	call CheckFaint_EnemyThenPlayer
 	ret c
 	call HandleFutureSight
@@ -273,6 +279,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleStatBoostingHeldItems
 	call HandleHealingItems
+	farcall HandleAbilities
 	call UpdateBattleMonInParty
 	call LoadTileMapToTempTileMap
 	jp HandleEncore
@@ -456,6 +463,7 @@ DetermineMoveOrder: ; 3c314
 	farcall AI_Switch
 	call SetEnemyTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	jp .enemy_first
 
 .use_move
@@ -608,9 +616,6 @@ ParsePlayerAction: ; 3c434
 	jr z, .reset_rage
 	and a
 	jr nz, .reset_bide
-	ld a, [PlayerSubStatus3]
-	and 1 << SUBSTATUS_BIDE
-	jr nz, .locked_in
 	xor a
 	ld [wMoveSelectionMenuType], a
 	inc a ; POUND
@@ -661,9 +666,8 @@ ParsePlayerAction: ; 3c434
 	jr .continue_protect
 
 .reset_bide
-	ld hl, PlayerSubStatus3
-	res SUBSTATUS_BIDE, [hl]
-
+	; unsure when this is called, but what this used to do was removed to free up
+	; SUBSTATUS_BIDE (it fellthrough to locked_in afterwards)
 .locked_in
 	xor a
 	ld [PlayerFuryCutterCount], a
@@ -941,7 +945,7 @@ Battle_EnemyFirst: ; 3c5fe
 
 .switch_item
 	call SetEnemyTurn
-	call ResidualDamage
+	call HasUserFainted
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
@@ -953,7 +957,7 @@ Battle_EnemyFirst: ; 3c5fe
 	call HasPlayerFainted
 	jp z, HandlePlayerMonFaint
 	call SetPlayerTurn
-	call ResidualDamage
+	call HasUserFainted
 	jp z, HandlePlayerMonFaint
 	call RefreshBattleHuds
 	xor a
@@ -978,7 +982,7 @@ Battle_PlayerFirst: ; 3c664
 	jp z, HandlePlayerMonFaint
 	push bc
 	call SetPlayerTurn
-	call ResidualDamage
+	call HasUserFainted
 	pop bc
 	jp z, HandlePlayerMonFaint
 	push bc
@@ -999,7 +1003,7 @@ Battle_PlayerFirst: ; 3c664
 
 .switched_or_used_item
 	call SetEnemyTurn
-	call ResidualDamage
+	call HasUserFainted
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	xor a
@@ -1056,11 +1060,21 @@ CheckIfHPIsZero: ; 3c713
 	ret
 ; 3c716
 
-ResidualDamage: ; 3c716
-; Return z if the user fainted before
-; or as a result of residual damage.
-; For Sandstorm and Hail damage, see HandleWeather.
+HandleResidualDamage:
+	ld a, [hLinkPlayerNumber]
+	cp $1
+	jr z, .enemy_first
+	call SetPlayerTurn
+	call .do_it
+	call SetEnemyTurn
+	jp .do_it
 
+.enemy_first
+	call SetEnemyTurn
+	call .do_it
+	call SetPlayerTurn
+
+.do_it
 	call HasUserFainted
 	ret z
 
@@ -1137,7 +1151,7 @@ ResidualDamage: ; 3c716
 .did_psn_brn
 
 	call HasUserFainted
-	jp z, .fainted
+	ret z
 
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
@@ -1164,7 +1178,7 @@ ResidualDamage: ; 3c716
 .not_seeded
 
 	call HasUserFainted
-	jr z, .fainted
+	ret z
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
@@ -1181,12 +1195,12 @@ ResidualDamage: ; 3c716
 .not_nightmare
 
 	call HasUserFainted
-	jr z, .fainted
+	ret z
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	bit SUBSTATUS_CURSE, [hl]
-	jr z, .not_cursed
+	ret z
 
 	xor a
 	ld [wNumHits], a
@@ -1195,26 +1209,7 @@ ResidualDamage: ; 3c716
 	call GetQuarterMaxHP
 	call SubtractHPFromUser
 	ld hl, HurtByCurseText
-	call StdBattleTextBox
-
-.not_cursed
-	ld hl, BattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .check_fainted
-	ld hl, EnemyMonHP
-
-.check_fainted
-	ld a, [hli]
-	or [hl]
-	ret nz
-
-.fainted
-	call RefreshBattleHuds
-	ld c, 20
-	call DelayFrames
-	xor a
-	ret
+	jp StdBattleTextBox
 ; 3c801
 
 CheckFullHP_b:
@@ -2486,6 +2481,7 @@ EnemyPartyMonEntrance: ; 3cf78
 	call ResetBattleParticipants
 	call SetEnemyTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	xor a
 	ld [wEnemyMoveStruct + MOVE_ANIM], a
 	ld [wPlayerAction], a
@@ -2961,6 +2957,7 @@ ForcePlayerMonChoice: ; 3d227
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	ld a, $1
 	and a
 	ld c, a
@@ -2982,7 +2979,8 @@ PlayerPartyMonEntrance: ; 3d2b3
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	jp SpikesDamage
+	call SpikesDamage
+	jp RunActivationAbilities
 ; 3d2e0
 
 SetUpBattlePartyMenu_NoLoop: ; 3d2f7
@@ -5579,7 +5577,8 @@ PlayerSwitch: ; 3e3ad
 EnemyMonEntrance: ; 3e3ff
 	farcall AI_Switch
 	call SetEnemyTurn
-	jp SpikesDamage
+	call SpikesDamage
+	jp RunActivationAbilities
 ; 3e40b
 
 BattleMonEntrance: ; 3e40b
@@ -5614,6 +5613,7 @@ BattleMonEntrance: ; 3e40b
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
 	call SpikesDamage
+	call RunActivationAbilities
 	ld a, $2
 	ld [wMenuCursorY], a
 	ret
@@ -5638,7 +5638,8 @@ PassedBattleMonEntrance: ; 3e459
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	jp SpikesDamage
+	call SpikesDamage
+	jp RunActivationAbilities
 ; 3e489
 
 
@@ -6164,7 +6165,7 @@ ParseEnemyAction: ; 3e7c1
 	bit SUBSTATUS_ROLLOUT, a
 	jp nz, .skip_load
 	ld a, [EnemySubStatus3]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_BIDE
+	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
 	jp nz, .skip_load
 
 	ld hl, EnemySubStatus2
@@ -6305,7 +6306,7 @@ CheckEnemyLockedIn: ; 3e8d1
 
 	ld hl, EnemySubStatus3
 	ld a, [hl]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_BIDE
+	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
 	ret nz
 
 	ld hl, EnemySubStatus1
@@ -7110,6 +7111,11 @@ ApplyStatusEffectOnStats: ; 3ec31
 ; 3ec39
 
 ApplyPrzEffectOnSpeed: ; 3ec39
+	; _OPP because turn checks are reversed for whatever reason
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp QUICK_FEET
+	ret z
 	ld a, [hBattleTurn]
 	and a
 	jr z, .enemy
@@ -7156,6 +7162,10 @@ ApplyPrzEffectOnSpeed: ; 3ec39
 ; 3ec76
 
 ApplyBrnEffectOnAttack: ; 3ec76
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp GUTS
+	ret z
 	ld a, [hBattleTurn]
 	and a
 	jr z, .enemy

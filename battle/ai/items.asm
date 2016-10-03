@@ -227,9 +227,6 @@ endr
 	inc a
 	ld [wEnemyGoesFirst], a
 
-	ld hl, EnemySubStatus3
-	res SUBSTATUS_BIDE, [hl]
-
 	xor a
 	ld [EnemyFuryCutterCount], a
 	ld [EnemyProtectCount], a

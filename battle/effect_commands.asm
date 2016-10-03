@@ -406,7 +406,7 @@ CantMove: ; 341f0
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	ld a, [hl]
-	and $ff ^ (1<<SUBSTATUS_BIDE + 1<<SUBSTATUS_RAMPAGE + 1<<SUBSTATUS_CHARGED)
+	and $ff ^ (1<<SUBSTATUS_RAMPAGE + 1<<SUBSTATUS_CHARGED)
 	ld [hl], a
 
 	call ResetFuryCutterCount
@@ -881,7 +881,7 @@ BattleCommand_DoTurn: ; 34555
 	ret z
 
 	ld a, [de]
-	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_BIDE
+	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE
 	ret nz
 
 	call .consume_pp
@@ -1490,10 +1490,13 @@ BattleCommand_CheckHit: ; 34d32
 	jp z, .Miss
 
 	call .Protect
-	jp nz, .Miss
+	jp nz, .Miss_skipset
 
 	call .Substitute
 	jp nz, .Miss
+
+	call .CheckNullificationAbilities
+	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
 	ret z
@@ -1563,15 +1566,14 @@ BattleCommand_CheckHit: ; 34d32
 
 .Miss:
 ; Keep the damage value intact if we're using (Hi) Jump Kick.
+	ld a, 1
+.Miss_skipset:
+; Used to set a special value to AttackMissed for message customization
+	ld [AttackMissed], a
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_JUMP_KICK
-	jr z, .Missed
-	call ResetDamage
-
-.Missed:
-	ld a, 1
-	ld [AttackMissed], a
+	call nz, ResetDamage
 	ret
 
 
@@ -1595,14 +1597,7 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 	bit SUBSTATUS_PROTECT, a
 	ret z
-
-	ld c, 40
-	call DelayFrames
-
-	ld c, 40
-	call DelayFrames
-
-	ld a, 1
+	ld a, 2
 	and a
 	ret
 
@@ -1627,6 +1622,54 @@ BattleCommand_CheckHit: ; 34d32
 	ld a, 1
 	and a
 	ret
+
+
+.CheckNullificationAbilities:
+; Return nz if an opponent's ability either powers it up outright by the attack, or
+; renders it useless.
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	ld hl, .NullificationAbilityTypes
+.loop
+	ld a, [hli]
+	cp b
+	jr z, .found_ability
+	inc hl
+	cp -1
+	jr nz, .loop
+	ret
+
+.found_ability
+; Type immunities override these abilities, but abilities override everything if they do
+; proc, so checking early is required. So check type matchups here.
+	ld a, [hl]
+	ld b, a
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	jr nz, .ability_fail
+
+	call BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	and a
+	ret z
+	ld a, 3
+	ret
+
+.ability_fail
+	xor a
+	ret
+
+
+.NullificationAbilityTypes:
+	db VOLT_ABSORB,   ELECTRIC
+	db LIGHTNING_ROD, ELECTRIC
+	db MOTOR_DRIVE,   ELECTRIC
+	db DRY_SKIN,      WATER
+	db WATER_ABSORB,  WATER
+	db FLASH_FIRE,    FIRE
+	db SAP_SIPPER,    GRASS
+	db -1
 
 
 .LockOn:
@@ -2244,7 +2287,6 @@ BattleCommand_CheckFaint: ; 3505e
 
 GetFailureResultText: ; 350e4
 	ld hl, DoesntAffectText
-	ld de, DoesntAffectText
 	ld a, [TypeModifier]
 	and $7f
 	jr z, .got_text
@@ -2252,10 +2294,8 @@ GetFailureResultText: ; 350e4
 	call GetBattleVar
 	cp EFFECT_FUTURE_SIGHT
 	ld hl, ButItFailedText
-	ld de, ItFailedText
 	jr z, .got_text
 	ld hl, AttackMissedText
-	ld de, AttackMissed2Text
 	ld a, [CriticalHit]
 	cp $ff
 	jr nz, .got_text
@@ -2301,13 +2341,27 @@ GetFailureResultText: ; 350e4
 	jp PlayerHurtItself
 
 FailText_CheckOpponentProtect: ; 35157
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
-	call GetBattleVar
-	bit SUBSTATUS_PROTECT, a
-	jr z, .not_protected
+; Print an appropriate failure message, usually AttackMissed.
+; An AttackMissed value of something other than 1 can override
+; the message, used for Protect and some abilities.
+; Important: To ensure proper message order, AttackMissed=3
+; has side effects -- it triggers the ability.
+; TODO: perhaps an enum?
+	ld a, [AttackMissed]
+	cp 1
+	jr z, .printmsg
+	cp 2
+	jr z, .protected
+	cp 3
+	jr z, .ability_immune
+	jr .printmsg ; just in case
+.protected
 	ld hl, ProtectingItselfText
-.not_protected
+.printmsg
 	jp StdBattleTextBox
+.ability_immune
+	farcall RunEnemyNullificationAbilities
+	ret
 
 ; 35165
 
@@ -3332,6 +3386,22 @@ BattleCommand_DamageCalc: ; 35612
 	call Divide
 
 .abilities_done
+; Flash Fire
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_FLASH_FIRE, a
+	jr z, .no_flash_fire
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr nz, .no_flash_fire
+	ld [hl], 3
+	call Multiply
+	ld [hl], 2
+	ld b, $4
+	call Divide
+
+.no_flash_fire
 ; Critical hits
 	ld a, [CriticalHit]
 	and a
@@ -5796,8 +5866,8 @@ ResetMiss: ; 3652d
 
 ; 36532
 
-
-LowerStat: ; 36532
+LowerStat:: ; 36532
+	ld a, b
 	ld [LoweredStat], a
 
 	ld hl, PlayerStatLevels
@@ -9389,7 +9459,7 @@ AnimateCurrentMoveEitherSide: ; 37de9
 
 
 AnimateCurrentMove: ; 37e01
-	ld a, [DisableAnimations]
+	ld a, [AnimationsDisabled]
 	and a
 	ret nz
 	push hl
@@ -9503,7 +9573,7 @@ CallBattleCore: ; 37e73
 
 
 AnimateFailedMove: ; 37e77
-	ld a, [DisableAnimations]
+	ld a, [AnimationsDisabled]
 	and a
 	ret nz
 	call BattleCommand_LowerSub
@@ -9615,5 +9685,3 @@ _CheckBattleScene: ; 37ed5
 	pop de
 	pop hl
 	ret
-
-; 37ee2

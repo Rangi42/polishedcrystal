@@ -345,6 +345,9 @@ CheckIfTargetIsIceType::
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType::
 	ld a, ROCK
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsGroundType::
+	ld a, GROUND
 CheckIfTargetIsSomeType::
 	ld b, a
 	ld a, [hBattleTurn]

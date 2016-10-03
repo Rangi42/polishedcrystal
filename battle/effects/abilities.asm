@@ -478,34 +478,294 @@ RunEnemyStatIncreaseAbilities:
 	farcall BattleCommand_SwitchTurn
 	ret
 
-DefiantAbility:
-	ld a, ATTACK
-	jr StatIncreaseAbility
 CompetitiveAbility:
 	ld a, SP_ATTACK
+	ld b, 1
+	jr StatIncreaseAbility
+DefiantAbility:
+	ld a, ATTACK
+	ld b, 1
+	jr StatIncreaseAbility
+LightningRodAbility:
+	ld a, SP_ATTACK
+	ld b, 0
+	jr StatIncreaseAbility
+MotorDriveAbility:
+	ld a, SPEED
+	ld b, 0
+	jr StatIncreaseAbility
+SapSipperAbility:
+	ld a, ATTACK
+	ld b, 0
 StatIncreaseAbility:
-	ld b, a
+	ld c, a
 	call ShowAbilityActivation
 	call DisableAnimations
 	farcall ResetMiss
-	ld a, b
+	ld a, c
 	cp ATTACK
-	jr nz, .sp_atk
+	jr z, .atk
+	cp SP_ATTACK
+	jr z, .sp_atk
+	farcall BattleCommand_SpeedUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.atk
+	ld a, b
+	cp 1
+	jr z, .atk2
+	farcall BattleCommand_AttackUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.atk2
 	farcall BattleCommand_AttackUp2
 	farcall BattleCommand_StatUpMessage
 	jp EnableAnimations
 .sp_atk
+	ld a, b
+	cp 1
+	jr z, .sp_atk2
+	farcall BattleCommand_SpecialAttackUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.sp_atk2
 	farcall BattleCommand_SpecialAttackUp2
 	farcall BattleCommand_StatUpMessage
 	jp EnableAnimations
 
+RunEnemyNullificationAbilities:
+; At this point, we are already certain that the ability will activate, so no additional
+; checks are required.
+	farcall BattleCommand_SwitchTurn
+	call .do_enemy_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+.do_enemy_abilities
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DRY_SKIN
+	jp z, DrySkinAbility
+	cp FLASH_FIRE
+	jp z, FlashFireAbility
+	cp LIGHTNING_ROD
+	jp z, LightningRodAbility
+	cp MOTOR_DRIVE
+	jp z, MotorDriveAbility
+	cp SAP_SIPPER
+	jp z, SapSipperAbility
+	cp VOLT_ABSORB
+	jp z, VoltAbsorbAbility
+	cp WATER_ABSORB
+	jp z, WaterAbsorbAbility
+	ret
+
+FlashFireAbility:
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	ld a, [hl]
+	and 1<<SUBSTATUS_FLASH_FIRE
+	jr nz, .already_fired_up
+	set SUBSTATUS_FLASH_FIRE, [hl]
+	ld hl, FirePoweredUpText
+	jp StdBattleTextBox
+.already_fired_up
+	ld hl, DoesntAffectText
+	jp StdBattleTextBox
+
+
+DrySkinAbility:
+VoltAbsorbAbility:
+WaterAbsorbAbility:
+	call ShowAbilityActivation
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	jr z, .full_hp
+	farcall GetQuarterMaxHP
+	farcall BattleCommand_SwitchTurn
+	farcall RestoreHP
+	farcall BattleCommand_SwitchTurn
+	ret
+.full_hp
+	ld hl, HPIsFullText
+	jp StdBattleTextBox
+
+HandleAbilities:
+; This needs to be handled in a consistent order despite not involving faintings, because
+; some abilities (like Moody) depends on randomness
+	ld a, [hLinkPlayerNumber]
+	cp 1
+	jr z, .enemy_first
+	call SetPlayerTurn
+	call .do_it
+	call SetEnemyTurn
+	jp .do_it
+
+.enemy_first
+	call SetEnemyTurn
+	call .do_it
+	call SetPlayerTurn
+
+.do_it
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp HARVEST
+	jr nz, .not_harvest
+	; TODO: save used up items
+	ret
+.not_harvest
+	cp MOODY
+	jp nz, .not_moody
+
+; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
+; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
+; stats be +6, Moody will not raise any stat, and vice versa.
+
+	call ShowAbilityActivation ; Safe -- Moody is certain to work for at least one part.
+	call DisableAnimations
+
+	; First, check how many stats aren't maxed out
+	ld hl, PlayerStatLevels
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_stat_levels
+	ld hl, EnemyStatLevels
+.got_stat_levels
+	ld b, 0 ; bitfield of nonmaxed stats
+	ld c, 0 ; bitfield of nonminimized stats
+	ld d, 1 ; bit to OR into b/c
+	ld e, 0 ; loop counter
+.loop1
+	ld a, [hl]
+	cp 13
+	jr z, .maxed
+	ld a, b
+	or d
+	ld b, a
+	ld a, [hl]
+	cp 1
+	jr z, .minimized
+.maxed
+	ld a, c
+	or d
+	ld c, a
+.minimized
+	inc hl
+	inc e
+	sla d
+	ld a, e
+	cp 7
+	jr c, .loop1
+
+	; If all stats are maxed (b=0), skip increasing stats
+	ld a, b
+	and a
+	jr z, .all_stats_maxed
+
+	; Randomize values until we get one matching a nonmaxed stat
+.loop2
+	call BattleRandom
+	and $7
+	cp 7
+	jr z, .loop2 ; there are only 7 stats (0-6)
+	ld d, 1
+	ld e, 0 ; counter
+.loop3
+	cp e
+	jr z, .loop3_done
+	sla d
+	inc e
+	jr .loop3
+.loop3_done
+	ld a, b
+	and d
+	jr z, .loop2
+
+	; We got the stat to raise. Set the e:th bit (using d) in c to 0
+	; to avoid lowering the stat as well.
+	ld a, d
+	cpl
+	and c
+	ld c, a
+	ld a, e
+	or $10 ; raise it sharply
+	ld b, a
+	push bc
+	farcall ResetMiss
+	farcall BattleCommand_StatUp
+	farcall BattleCommand_StatUpMessage
+	pop bc
+
+.all_stats_maxed
+	ld a, c
+	and a
+	jp z, EnableAnimations ; no stat to lower
+
+.loop4
+	call BattleRandom
+	and $7
+	cp 7
+	jr z, .loop4
+	ld d, 1
+	ld e, 0 ; counter
+.loop5
+	cp e
+	jr z, .loop5_done
+	sla d
+	inc e
+	jr .loop5
+.loop5_done
+	ld a, c
+	and d
+	jr z, .loop4
+
+	ld b, e
+	farcall ResetMiss
+	farcall LowerStat
+	farcall BattleCommand_SwitchTurn
+	farcall BattleCommand_StatDownMessage
+	farcall BattleCommand_SwitchTurn
+	jp EnableAnimations
+.not_moody
+	cp PICKUP
+	jr nz, .not_pickup
+	; TODO: save used up items
+	ret
+.not_pickup
+	cp SHED_SKIN
+	jr nz, .not_shed_skin
+	ret
+.not_shed_skin
+	cp SPEED_BOOST
+	ret nz
+
+	; we don't want to spam ability activation messages if our speed is maxed, so check that
+
+	ld hl, PlayerSpdLevel
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_speed
+	ld hl, EnemySpdLevel
+.got_speed
+	ld a, [hl]
+	cp 13
+	ret nc
+	call ShowAbilityActivation
+	call DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_SpeedUp
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+
+
 DisableAnimations:
 	ld a, 1
-	ld [DisableAnimations], a
+	ld [AnimationsDisabled], a
 	ret
 EnableAnimations:
 	ld a, 0
-	ld [DisableAnimations], a
+	ld [AnimationsDisabled], a
 	ret
 
 ShowEnemyAbilityActivation::
