@@ -141,10 +141,8 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	ld b, a
-	push bc
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	pop bc
 	and a
 	cp MOLD_BREAKER
 	jr z, .cont_check
@@ -296,7 +294,7 @@ ContactMoves::
 	db ZEN_HEADBUTT
 	db -1
 
-PowderMoves:
+PowderMoves::
 	db POISONPOWDER
 	db SLEEP_POWDER
 	db SPORE

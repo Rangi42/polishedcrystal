@@ -1831,6 +1831,12 @@ HandleWeather: ; 3cb9e
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OVERCOAT
+	ret nz
+	cp MAGIC_GUARD
+	ret nz
 
 	ld hl, BattleMonType1
 	ld a, [hBattleTurn]
@@ -1886,6 +1892,12 @@ HandleWeather: ; 3cb9e
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
+	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OVERCOAT
+	ret nz
+	cp MAGIC_GUARD
 	ret nz
 
 	ld hl, BattleMonType1

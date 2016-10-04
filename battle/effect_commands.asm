@@ -1352,6 +1352,20 @@ CheckTypeMatchup: ; 347d3
 	push hl
 	push de
 	push bc
+; Handle special immunities
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PowderMoves
+	call IsInArray
+	jr nc, .skip_powder
+	call CheckIfTargetIsGrassType
+	jr z, .Immune
+	call GetOpponentAbilityAfterMoldBreaker
+	cp OVERCOAT
+	jr z, .Immune
+.skip_powder
+	pop hl
+	push hl
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
@@ -1413,6 +1427,9 @@ CheckTypeMatchup: ; 347d3
 	ld [wTypeMatchup], a
 	jr .TypesLoop
 
+.Immune:
+	ld a, 0
+	ld [wTypeMatchup], a
 .End:
 	pop bc
 	pop de
