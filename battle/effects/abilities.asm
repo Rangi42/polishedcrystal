@@ -739,9 +739,12 @@ HandleAbilities:
 	ret
 .not_shed_skin
 	cp SPEED_BOOST
-	ret nz
+	jp z, SpeedBoostAbility
+	ret
 
-	; we don't want to spam ability activation messages if our speed is maxed, so check that
+SteadfastAbility:
+SpeedBoostAbility:
+	; avoid message if stat is maxed
 
 	ld hl, PlayerSpdLevel
 	ld a, [hBattleTurn]
@@ -751,7 +754,7 @@ HandleAbilities:
 .got_speed
 	ld a, [hl]
 	cp 13
-	ret nc
+	ret z
 	call ShowAbilityActivation
 	call DisableAnimations
 	farcall ResetMiss

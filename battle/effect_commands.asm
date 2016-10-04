@@ -255,9 +255,19 @@ BattleCommand_CheckTurn: ; 34084
 	jr z, .not_flinched
 
 	res SUBSTATUS_FLINCHED, [hl]
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INNER_FOCUS
+	jr z, .not_flinched
+	push af
 	ld hl, FlinchedText
 	call StdBattleTextBox
+	pop af
+	cp STEADFAST
+	jr nz, .skip_steadfast
+	farcall SteadfastAbility
 
+.skip_steadfast
 	call CantMove
 	jp EndTurn
 
@@ -3352,13 +3362,34 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .ability_double
 	cp HUSTLE
 	jr z, .ability_semidouble
+	cp RECKLESS
+	jr z, .reckless
 	cp GUTS
 	jr nz, .ability_penalties
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and a
+	jr nz, .ability_semidouble
+	jr .ability_penalties
+.reckless
+	; skip Struggle
+	ld a, BATTLE_VARS_MOVE
+	cp STRUGGLE
 	jr z, .ability_penalties
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_RECOIL_HIT
+	jr z, .continue
+	cp EFFECT_JUMP_KICK
+	jr nz, .ability_penalties
+.continue
+	; x1.2
+	ld [hl], 6
+	call Multiply
+	ld [hl], 5
+	call Divide
 .ability_semidouble
+	; x1.5
 	ld [hl], 3
 	call Multiply
 	ld [hl], 2
@@ -3366,6 +3397,7 @@ BattleCommand_DamageCalc: ; 35612
 	call Divide
 	jr .ability_penalties
 .ability_double
+	; x2
 	ld [hl], 2
 	call Multiply
 
