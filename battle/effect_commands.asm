@@ -3427,17 +3427,29 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .ability_double
 	cp HUSTLE
 	jr z, .ability_semidouble
-	cp RECKLESS
-	jr z, .reckless
 	cp SHEER_FORCE
 	jr z, .sheer_force
+	cp ANALYTIC
+	jr z, .analytic
+	cp RECKLESS
+	jr z, .reckless
 	cp GUTS
 	jr nz, .ability_penalties
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and a
-	jr nz, .ability_semidouble
-	jr .ability_penalties
+	jr z, .ability_penalties
+	jr .ability_semidouble
+.sheer_force
+	; Only nonzero for sheer force users when using a move with an additional effect
+	ld a, [EffectFailed]
+	and a
+	jr z, .ability_penalties
+	jr .ability_x1_3
+.analytic
+	call CheckOpponentWentFirst
+	jr z, .ability_penalties
+	jr .ability_x1_3
 .reckless
 	; skip Struggle
 	ld a, BATTLE_VARS_MOVE
@@ -3449,17 +3461,6 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .ability_x1_2
 	cp EFFECT_JUMP_KICK
 	jr nz, .ability_penalties
-	jr .ability_x1_2
-.sheer_force
-	; Only nonzero for sheer force users when using a move with an additional effect
-	ld a, [EffectFailed]
-	and a
-	jr z, .ability_penalties
-	ld [hl], 13
-	call Multiply
-	ld [hl], 10
-	ld b, $4
-	call Divide
 .ability_x1_2
 	; x1.2
 	ld [hl], 6
@@ -3467,6 +3468,14 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 5
 	ld b, $4
 	call Divide
+	jr .ability_penalties
+.ability_x1_3
+	ld [hl], 13
+	call Multiply
+	ld [hl], 10
+	ld b, $4
+	call Divide
+	jr .ability_penalties
 .ability_semidouble
 	; x1.5
 	ld [hl], 3
