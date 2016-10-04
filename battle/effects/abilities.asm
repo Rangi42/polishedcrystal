@@ -284,8 +284,17 @@ ImposterAbility:
 
 AnticipationAbility:
 ForewarnAbility:
-FriskAbility:
 	ret
+
+FriskAbility:
+	farcall GetOpponentItem
+	ld a, [hl]
+	and a
+	ret z ; no item
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, FriskedItemText
+	jp StdBattleTextBox
 
 RunEnemyOwnTempoAbility:
 	farcall BattleCommand_SwitchTurn
