@@ -1037,7 +1037,7 @@ BattleCommand_Critical: ; 34631
 
 ; +2 critical level
 	ld c, 2
-	jr .Tally
+	jr .FocusEnergy
 
 .Farfetchd:
 	cp FARFETCH_D
@@ -1047,8 +1047,8 @@ BattleCommand_Critical: ; 34631
 	jr nz, .FocusEnergy
 
 ; +2 critical level
-	ld c, 4 ; TODO: 2
-	jr .Tally
+	ld c, 2
+	jr .FocusEnergy
 
 .FocusEnergy:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -1056,7 +1056,8 @@ BattleCommand_Critical: ; 34631
 	bit SUBSTATUS_FOCUS_ENERGY, a
 	jr z, .CheckCritical
 
-; +1 critical level
+; +2 critical level (TODO: this also affects Dire Hit)
+	inc c
 	inc c
 
 .CheckCritical:
@@ -1069,8 +1070,7 @@ BattleCommand_Critical: ; 34631
 	pop bc
 	jr nc, .ScopeLens
 
-; +2 critical level
-	inc c
+; +1 critical level
 	inc c
 
 .ScopeLens:
@@ -1079,18 +1079,32 @@ BattleCommand_Critical: ; 34631
 	ld a, b
 	cp HELD_CRITICAL_UP ; Increased critical chance (Scope Lens and Razor Claw)
 	pop bc
+	jr nz, .Ability
+
+; +1 critical level
+	inc c
+
+.Ability:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SUPER_LUCK
 	jr nz, .Tally
 
 ; +1 critical level
 	inc c
 
 .Tally:
+	; Check for c > 2 which always crits
+	ld a, c
+	cp 3
+	jr nc, .guranteed_crit
 	ld hl, .Chances
 	ld b, 0
 	add hl, bc
 	call BattleRandom
 	cp [hl]
 	ret nc
+.guranteed_crit
 	ld a, 1
 	ld [CriticalHit], a
 	ret
@@ -1098,9 +1112,9 @@ BattleCommand_Critical: ; 34631
 .Criticals:
 	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, SHADOW_CLAW, STONE_EDGE, $ff
 .Chances:
-	; 6.25% 12.1% 24.6% 49.6% 99.6% 99.6% 99.6%
-	db $11,  $20,  $40,  $80,  $ff,  $ff,  $ff
-	;   0     1     2     3     4     5     6
+	; 6.25% 12.5%  50%   100%
+	db $10,  $20,  $80,  $ff
+	;   0     1     2     3+
 ; 346b2
 
 
