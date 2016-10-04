@@ -166,6 +166,19 @@ BattleCommand_CheckTurn: ; 34084
 	and a ; check if the sleep timer ran out
 	jr z, .woke_up
 
+	; Early Bird decreases the sleep timer twice as fast (including Rest).
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp EARLY_BIRD
+	jr nz, .no_early_bird
+	; duplicated, but too few lines to make merging it worth it
+	ld a, [hl]
+	dec a
+	ld [hl], a
+	and a ; check if the sleep timer ran out
+	jr z, .woke_up
+
+.no_early_bird
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_SLP
