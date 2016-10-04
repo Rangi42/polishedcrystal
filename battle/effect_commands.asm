@@ -2627,11 +2627,7 @@ BattleCommand_PostHitEffects: ; 35250
 	and a
 	ret nz
 
-	ld a, BATTLE_VARS_MOVE
-	ld hl, ContactMoves
-	call IsInArray
-	jr c, .start_rage
-	farcall RunContactAbilities
+	farcall RunHitAbilities
 
 .start_rage
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP

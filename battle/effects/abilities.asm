@@ -345,6 +345,41 @@ SynchronizeAbility:
 	farcall BattleCommand_Burn
 	jp EnableAnimations
 
+RunHitAbilities:
+; abilities that run on hitting the enemy with an offensive attack
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, ContactMoves
+	call IsInArray
+	jr c, .skip_contact_abilities
+	call RunContactAbilities
+.skip_contact_abilities
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp DARK
+	jr z, .justified
+	cp BUG
+	jr z, .rattled
+	cp GHOST
+	jr z, .rattled
+	ret
+.justified
+	call GetOpponentAbilityAfterMoldBreaker
+	cp JUSTIFIED
+	jr nz, .rattled
+	farcall BattleCommand_SwitchTurn
+	call JustifiedAbility
+	farcall BattleCommand_SwitchTurn
+	ret
+.rattled
+	call GetOpponentAbilityAfterMoldBreaker
+	cp RATTLED
+	ret nz
+	farcall BattleCommand_SwitchTurn
+	call RattledAbility
+	farcall BattleCommand_SwitchTurn
+	ret
+
 RunContactAbilities:
 ; turn perspective is from the attacker
 ; 30% of the time, activate Poison Touch
