@@ -1353,16 +1353,18 @@ CheckTypeMatchup: ; 347d3
 	push de
 	push bc
 ; Handle special immunities
+	call CheckNullificationAbilities
+	jp nz, .AbilImmune
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, PowderMoves
 	call IsInArray
 	jr nc, .skip_powder
 	call CheckIfTargetIsGrassType
-	jr z, .Immune
+	jp z, .Immune
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OVERCOAT
-	jr z, .Immune
+	jr z, .AbilImmune
 .skip_powder
 	pop hl
 	push hl
@@ -1372,6 +1374,13 @@ CheckTypeMatchup: ; 347d3
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LEVITATE
+	jr nz, .skip_levitate
+	ld a, d
+	cp GROUND
+	jr z, .AbilImmune
+.skip_levitate
 	ld a, 10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, TypeMatchup
@@ -1427,6 +1436,10 @@ CheckTypeMatchup: ; 347d3
 	ld [wTypeMatchup], a
 	jr .TypesLoop
 
+.AbilImmune:
+	; makes sure to print "User's ability activated!" to clarify why a target was immune
+	ld a, 3
+	ld [AttackMissed], a
 .Immune:
 	ld a, 0
 	ld [wTypeMatchup], a
@@ -1535,7 +1548,7 @@ BattleCommand_CheckHit: ; 34d32
 	call .Substitute
 	jp nz, .Miss
 
-	call .CheckNullificationAbilities
+	call CheckNullificationAbilities
 	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
@@ -1662,54 +1675,6 @@ BattleCommand_CheckHit: ; 34d32
 	ld a, 1
 	and a
 	ret
-
-
-.CheckNullificationAbilities:
-; Return nz if an opponent's ability either powers it up outright by the attack, or
-; renders it useless.
-	call GetOpponentAbilityAfterMoldBreaker
-	ld b, a
-	ld hl, .NullificationAbilityTypes
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .found_ability
-	inc hl
-	cp -1
-	jr nz, .loop
-	ret
-
-.found_ability
-; Type immunities override these abilities, but abilities override everything if they do
-; proc, so checking early is required. So check type matchups here.
-	ld a, [hl]
-	ld b, a
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp b
-	jr nz, .ability_fail
-
-	call BattleCheckTypeMatchup
-	ld a, [wTypeMatchup]
-	and a
-	ret z
-	ld a, 3
-	ret
-
-.ability_fail
-	xor a
-	ret
-
-
-.NullificationAbilityTypes:
-	db VOLT_ABSORB,   ELECTRIC
-	db LIGHTNING_ROD, ELECTRIC
-	db MOTOR_DRIVE,   ELECTRIC
-	db DRY_SKIN,      WATER
-	db WATER_ABSORB,  WATER
-	db FLASH_FIRE,    FIRE
-	db SAP_SIPPER,    GRASS
-	db -1
 
 
 .LockOn:
@@ -1957,6 +1922,54 @@ BattleCommand_EffectChance: ; 34ecc
 	ret
 
 ; 34eee
+
+
+CheckNullificationAbilities:
+; Return nz if an opponent's ability either powers it up outright by the attack, or
+; renders it useless. Called from CheckHit and CheckTypeMatchup (the latter for the AI's
+; benefit).
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	ld hl, .NullificationAbilityTypes
+.loop
+	ld a, [hli]
+	cp b
+	jr z, .found_ability
+	inc hl
+	cp -1
+	jr nz, .loop
+	ret
+
+.found_ability
+; Type immunities override these abilities, but abilities override everything if they do
+; proc, so checking early is required. So check type matchups here.
+	ld a, [hl]
+	ld b, a
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	jr nz, .ability_fail
+
+	call BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	and a
+	ret z
+	ld a, 3
+	ret
+
+.ability_fail
+	xor a
+	ret
+
+.NullificationAbilityTypes:
+	db VOLT_ABSORB,   ELECTRIC
+	db LIGHTNING_ROD, ELECTRIC
+	db MOTOR_DRIVE,   ELECTRIC
+	db DRY_SKIN,      WATER
+	db WATER_ABSORB,  WATER
+	db FLASH_FIRE,    FIRE
+	db SAP_SIPPER,    GRASS
+	db -1
 
 
 BattleCommand_LowerSub: ; 34eee

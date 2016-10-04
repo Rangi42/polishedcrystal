@@ -138,6 +138,8 @@ UpdateBattleHuds:: ; 39d4
 GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it.
+	push de
+	push bc
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	ld b, a
@@ -147,7 +149,7 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	cp MOLD_BREAKER
 	jr z, .cont_check
 	ld a, b
-	ret
+	jr .end
 .cont_check
 	ld a, b
 	ld de, 1
@@ -159,9 +161,12 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	pop hl
 	jr c, .suppressed
 	ld a, b
-	ret
+	jr .end
 .suppressed:
 	ld a, NO_ABILITY
+.end
+	pop bc
+	pop de
 	ret
 
 MoldBreakerSuppressedAbilities:

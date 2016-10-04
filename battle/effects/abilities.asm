@@ -566,6 +566,12 @@ RunEnemyNullificationAbilities:
 	jp z, VoltAbsorbAbility
 	cp WATER_ABSORB
 	jp z, WaterAbsorbAbility
+	; For other abilities, don't do anything except print a message (for example Levitate)
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
+	ld hl, DoesntAffectText
+	call StdBattleTextBox
+	farcall BattleCommand_SwitchTurn
 	ret
 
 FlashFireAbility:
