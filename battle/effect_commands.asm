@@ -3528,7 +3528,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp SOLID_ROCK
 	jr z, .solid_rock
 	cp FILTER
-	jr nz, .abilities_done
+	jr nz, .skip_solid_rock
 .solid_rock
 ; Check super effective status
 	ld a, [TypeModifier]
@@ -3539,6 +3539,20 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 3
 	call Multiply
 	ld [hl], 4
+	ld b, $4
+	call Divide
+	jr .abilities_done
+.skip_solid_rock
+	cp THICK_FAT
+	jr nz, .abilities_done
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr z, .thick_fat_ok
+	cp ICE
+	jr nz, .abilities_done
+.thick_fat_ok
+	ld [hl], 2
 	ld b, $4
 	call Divide
 .abilities_done
