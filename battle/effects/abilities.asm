@@ -484,72 +484,6 @@ AfflictStatusAbility
 	farcall BattleCommand_Poison
 	jp EnableAnimations
 
-RunEnemyStatIncreaseAbilities:
-	farcall BattleCommand_SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DEFIANT
-	call z, DefiantAbility
-	cp COMPETITIVE
-	call z, CompetitiveAbility
-	farcall BattleCommand_SwitchTurn
-	ret
-
-CompetitiveAbility:
-	ld a, SP_ATTACK
-	ld b, 1
-	jr StatIncreaseAbility
-DefiantAbility:
-	ld a, ATTACK
-	ld b, 1
-	jr StatIncreaseAbility
-LightningRodAbility:
-	ld a, SP_ATTACK
-	ld b, 0
-	jr StatIncreaseAbility
-MotorDriveAbility:
-	ld a, SPEED
-	ld b, 0
-	jr StatIncreaseAbility
-SapSipperAbility:
-	ld a, ATTACK
-	ld b, 0
-StatIncreaseAbility:
-	ld c, a
-	call ShowAbilityActivation
-	call DisableAnimations
-	farcall ResetMiss
-	ld a, c
-	cp ATTACK
-	jr z, .atk
-	cp SP_ATTACK
-	jr z, .sp_atk
-	farcall BattleCommand_SpeedUp
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.atk
-	ld a, b
-	cp 1
-	jr z, .atk2
-	farcall BattleCommand_AttackUp
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.atk2
-	farcall BattleCommand_AttackUp2
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.sp_atk
-	ld a, b
-	cp 1
-	jr z, .sp_atk2
-	farcall BattleCommand_SpecialAttackUp
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.sp_atk2
-	farcall BattleCommand_SpecialAttackUp2
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
@@ -582,6 +516,60 @@ RunEnemyNullificationAbilities:
 	farcall BattleCommand_SwitchTurn
 	ret
 
+RunEnemyStatIncreaseAbilities:
+	farcall BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DEFIANT
+	call z, DefiantAbility
+	cp COMPETITIVE
+	call z, CompetitiveAbility
+	farcall BattleCommand_SwitchTurn
+	ret
+
+CompetitiveAbility:
+	ld b, $10 | SP_ATTACK
+	jr StatUpAbility
+DefiantAbility:
+	ld b, $10 | ATTACK
+	jr StatUpAbility
+JustifiedAbility:
+SapSipperAbility:
+	ld b, ATTACK
+	jr StatUpAbility
+LightningRodAbility:
+	ld b, SP_ATTACK
+	jr StatUpAbility
+MotorDriveAbility:
+RattledAbility:
+SteadfastAbility:
+SpeedBoostAbility:
+	ld b, SPEED
+StatUpAbility:
+	call DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_StatUp
+	ld a, [FailedMessage]
+	and a
+	jr nz, .cant_raise
+	call ShowAbilityActivation
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.cant_raise
+; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
+	ld a, BATTLE_VARS_ABILITY
+	cp LIGHTNING_ROD
+	jr z, .print_immunity
+	cp MOTOR_DRIVE
+	jr z, .print_immunity
+	cp SAP_SIPPER
+	jp nz, EnableAnimations
+.print_immunity
+	call ShowAbilityActivation
+	ld hl, DoesntAffectText
+	call StdBattleTextBox
+	jp EnableAnimations
+
 FlashFireAbility:
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -595,7 +583,6 @@ FlashFireAbility:
 .already_fired_up
 	ld hl, DoesntAffectText
 	jp StdBattleTextBox
-
 
 DrySkinAbility:
 VoltAbsorbAbility:
@@ -769,19 +756,6 @@ ShedSkinAbility:
 	ret c
 	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
 	jp HealStatusAbility
-
-SteadfastAbility:
-SpeedBoostAbility:
-	call DisableAnimations
-	farcall ResetMiss
-	farcall BattleCommand_SpeedUp
-	ld a, [FailedMessage]
-	and a
-	jp nz, EnableAnimations
-	call ShowAbilityActivation
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-
 
 AngerPointAbility:
 	call DisableAnimations
