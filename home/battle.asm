@@ -306,7 +306,7 @@ PowderMoves::
 	db STUN_SPORE
 	db -1
 
-PunchingMoves:
+PunchingMoves::
 	db BULLET_PUNCH
 	db DIZZY_PUNCH
 	db DYNAMICPUNCH
@@ -315,7 +315,7 @@ PunchingMoves:
 	db THUNDERPUNCH
 	db -1
 
-SoundMoves:
+SoundMoves::
 	db BUG_BUZZ
 	db DISARM_VOICE
 	db GROWL

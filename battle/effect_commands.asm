@@ -1378,8 +1378,17 @@ CheckTypeMatchup: ; 347d3
 	jp z, .Immune
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OVERCOAT
-	jr z, .AbilImmune
+	jp z, .AbilImmune
 .skip_powder
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInArray
+	jr nc, .skip_sound
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SOUNDPROOF
+	jr z, .AbilImmune
+.skip_sound
 	pop hl
 	push hl
 	ld a, BATTLE_VARS_MOVE_TYPE
