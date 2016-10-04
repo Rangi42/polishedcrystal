@@ -6649,7 +6649,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld hl, DraggedOutText
 	call StdBattleTextBox
 
-	ld hl, SpikesDamage
+	ld hl, SpikesDamage_CheckMoldBreaker
 	call CallBattleCore
 
 	ld hl, RunActivationAbilities
@@ -6749,7 +6749,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld hl, DraggedOutText
 	call StdBattleTextBox
 
-	ld hl, SpikesDamage
+	ld hl, SpikesDamage_CheckMoldBreaker
 	call CallBattleCore
 
 	ld hl, RunActivationAbilities
