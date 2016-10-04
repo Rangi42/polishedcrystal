@@ -93,7 +93,7 @@ LimberAbility:
 	jr HealStatusAbility
 InsomniaAbility:
 VitalSpiritAbility:
-	ld a, 1 << SLP
+	ld a, SLP
 	jr HealStatusAbility
 HealStatusAbility:
 	ld b, a
@@ -106,6 +106,14 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	and [hl]
+	res SUBSTATUS_TOXIC, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	and [hl]
+	res SUBSTATUS_NIGHTMARE, [hl]
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
@@ -284,8 +292,17 @@ ImposterAbility:
 
 AnticipationAbility:
 ForewarnAbility:
-FriskAbility:
 	ret
+
+FriskAbility:
+	farcall GetOpponentItem
+	ld a, [hl]
+	and a
+	ret z ; no item
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, FriskedItemText
+	jp StdBattleTextBox
 
 RunEnemyOwnTempoAbility:
 	farcall BattleCommand_SwitchTurn
@@ -327,6 +344,41 @@ SynchronizeAbility:
 .is_brn
 	farcall BattleCommand_Burn
 	jp EnableAnimations
+
+RunHitAbilities:
+; abilities that run on hitting the enemy with an offensive attack
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, ContactMoves
+	call IsInArray
+	jr c, .skip_contact_abilities
+	call RunContactAbilities
+.skip_contact_abilities
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp DARK
+	jr z, .justified
+	cp BUG
+	jr z, .rattled
+	cp GHOST
+	jr z, .rattled
+	ret
+.justified
+	call GetOpponentAbilityAfterMoldBreaker
+	cp JUSTIFIED
+	jr nz, .rattled
+	farcall BattleCommand_SwitchTurn
+	call JustifiedAbility
+	farcall BattleCommand_SwitchTurn
+	ret
+.rattled
+	call GetOpponentAbilityAfterMoldBreaker
+	cp RATTLED
+	ret nz
+	farcall BattleCommand_SwitchTurn
+	call RattledAbility
+	farcall BattleCommand_SwitchTurn
+	ret
 
 RunContactAbilities:
 ; turn perspective is from the attacker
@@ -467,72 +519,6 @@ AfflictStatusAbility
 	farcall BattleCommand_Poison
 	jp EnableAnimations
 
-RunEnemyStatIncreaseAbilities:
-	farcall BattleCommand_SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DEFIANT
-	call z, DefiantAbility
-	cp COMPETITIVE
-	call z, CompetitiveAbility
-	farcall BattleCommand_SwitchTurn
-	ret
-
-CompetitiveAbility:
-	ld a, SP_ATTACK
-	ld b, 1
-	jr StatIncreaseAbility
-DefiantAbility:
-	ld a, ATTACK
-	ld b, 1
-	jr StatIncreaseAbility
-LightningRodAbility:
-	ld a, SP_ATTACK
-	ld b, 0
-	jr StatIncreaseAbility
-MotorDriveAbility:
-	ld a, SPEED
-	ld b, 0
-	jr StatIncreaseAbility
-SapSipperAbility:
-	ld a, ATTACK
-	ld b, 0
-StatIncreaseAbility:
-	ld c, a
-	call ShowAbilityActivation
-	call DisableAnimations
-	farcall ResetMiss
-	ld a, c
-	cp ATTACK
-	jr z, .atk
-	cp SP_ATTACK
-	jr z, .sp_atk
-	farcall BattleCommand_SpeedUp
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.atk
-	ld a, b
-	cp 1
-	jr z, .atk2
-	farcall BattleCommand_AttackUp
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.atk2
-	farcall BattleCommand_AttackUp2
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.sp_atk
-	ld a, b
-	cp 1
-	jr z, .sp_atk2
-	farcall BattleCommand_SpecialAttackUp
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-.sp_atk2
-	farcall BattleCommand_SpecialAttackUp2
-	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
-
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
@@ -557,7 +543,67 @@ RunEnemyNullificationAbilities:
 	jp z, VoltAbsorbAbility
 	cp WATER_ABSORB
 	jp z, WaterAbsorbAbility
+	; For other abilities, don't do anything except print a message (for example Levitate)
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
+	ld hl, DoesntAffectText
+	call StdBattleTextBox
+	farcall BattleCommand_SwitchTurn
 	ret
+
+RunEnemyStatIncreaseAbilities:
+	farcall BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DEFIANT
+	call z, DefiantAbility
+	cp COMPETITIVE
+	call z, CompetitiveAbility
+	farcall BattleCommand_SwitchTurn
+	ret
+
+CompetitiveAbility:
+	ld b, $10 | SP_ATTACK
+	jr StatUpAbility
+DefiantAbility:
+	ld b, $10 | ATTACK
+	jr StatUpAbility
+JustifiedAbility:
+SapSipperAbility:
+	ld b, ATTACK
+	jr StatUpAbility
+LightningRodAbility:
+	ld b, SP_ATTACK
+	jr StatUpAbility
+MotorDriveAbility:
+RattledAbility:
+SteadfastAbility:
+SpeedBoostAbility:
+	ld b, SPEED
+StatUpAbility:
+	call DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_StatUp
+	ld a, [FailedMessage]
+	and a
+	jr nz, .cant_raise
+	call ShowAbilityActivation
+	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+.cant_raise
+; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
+	ld a, BATTLE_VARS_ABILITY
+	cp LIGHTNING_ROD
+	jr z, .print_immunity
+	cp MOTOR_DRIVE
+	jr z, .print_immunity
+	cp SAP_SIPPER
+	jp nz, EnableAnimations
+.print_immunity
+	call ShowAbilityActivation
+	ld hl, DoesntAffectText
+	call StdBattleTextBox
+	jp EnableAnimations
 
 FlashFireAbility:
 	call ShowAbilityActivation
@@ -572,7 +618,6 @@ FlashFireAbility:
 .already_fired_up
 	ld hl, DoesntAffectText
 	jp StdBattleTextBox
-
 
 DrySkinAbility:
 VoltAbsorbAbility:
@@ -592,8 +637,9 @@ WaterAbsorbAbility:
 	jp StdBattleTextBox
 
 HandleAbilities:
+; Abilities handled at the end of the turn.
 ; This needs to be handled in a consistent order despite not involving faintings, because
-; some abilities (like Moody) depends on randomness
+; some abilities (like Moody) depends on randomness.
 	ld a, [hLinkPlayerNumber]
 	cp 1
 	jr z, .enemy_first
@@ -611,13 +657,23 @@ HandleAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp HARVEST
-	jr nz, .not_harvest
-	; TODO: save used up items
-	ret
-.not_harvest
+	jp z, HarvestAbility
 	cp MOODY
-	jp nz, .not_moody
+	jp z, MoodyAbility
+	cp PICKUP
+	jp z, PickupAbility
+	cp SHED_SKIN
+	jp z, ShedSkinAbility
+	cp SPEED_BOOST
+	jp z, SpeedBoostAbility
+	ret
 
+HarvestAbility:
+PickupAbility:
+; TODO: save used up items
+	ret
+
+MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
 ; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
 ; stats be +6, Moody will not raise any stat, and vice versa.
@@ -727,35 +783,30 @@ HandleAbilities:
 	farcall BattleCommand_StatDownMessage
 	farcall BattleCommand_SwitchTurn
 	jp EnableAnimations
-.not_moody
-	cp PICKUP
-	jr nz, .not_pickup
-	; TODO: save used up items
-	ret
-.not_pickup
-	cp SHED_SKIN
-	jr nz, .not_shed_skin
-	ret
-.not_shed_skin
-	cp SPEED_BOOST
-	ret nz
 
-	; we don't want to spam ability activation messages if our speed is maxed, so check that
+ShedSkinAbility:
+; Cure a non-volatile status 30% of the time
+	call BattleRandom
+	cp 1 + (30 percent)
+	ret c
+	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
+	jp HealStatusAbility
 
-	ld hl, PlayerSpdLevel
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_speed
-	ld hl, EnemySpdLevel
-.got_speed
-	ld a, [hl]
-	cp 13
-	ret nc
-	call ShowAbilityActivation
+AngerPointAbility:
 	call DisableAnimations
 	farcall ResetMiss
-	farcall BattleCommand_SpeedUp
-	farcall BattleCommand_StatUpMessage
+	farcall BattleCommand_AttackUp2
+	ld a, [FailedMessage]
+	and a
+	jp nz, EnableAnimations
+	call ShowAbilityActivation
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	ld hl, AngerPointMaximizedAttackText
+	call StdBattleTextBox
 	jp EnableAnimations
 
 

@@ -1313,6 +1313,16 @@ NotifyUnnerve:
 	cont "Berries!"
 	prompt
 
+FriskedItemText:
+	text "<USER>"
+	line "frisked"
+	cont "<TARGET>"
+	cont "and found its"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
 PoisonHealText:
 	text "<USER>'s"
 	line "Poison Heal"
@@ -1323,4 +1333,10 @@ FirePoweredUpText:
 	text "<USER>'s"
 	line "Fire-type moves"
 	cont "were powered up!"
+	prompt
+
+AngerPointMaximizedAttackText:
+	text "<USER>"
+	line "maximized Attack"
+	cont "with Anger Point!"
 	prompt

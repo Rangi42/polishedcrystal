@@ -138,18 +138,18 @@ UpdateBattleHuds:: ; 39d4
 GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it.
+	push de
+	push bc
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	ld b, a
-	push bc
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	pop bc
 	and a
 	cp MOLD_BREAKER
 	jr z, .cont_check
 	ld a, b
-	ret
+	jr .end
 .cont_check
 	ld a, b
 	ld de, 1
@@ -161,9 +161,12 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	pop hl
 	jr c, .suppressed
 	ld a, b
-	ret
+	jr .end
 .suppressed:
 	ld a, NO_ABILITY
+.end
+	pop bc
+	pop de
 	ret
 
 MoldBreakerSuppressedAbilities:
@@ -296,14 +299,14 @@ ContactMoves::
 	db ZEN_HEADBUTT
 	db -1
 
-PowderMoves:
+PowderMoves::
 	db POISONPOWDER
 	db SLEEP_POWDER
 	db SPORE
 	db STUN_SPORE
 	db -1
 
-PunchingMoves:
+PunchingMoves::
 	db BULLET_PUNCH
 	db DIZZY_PUNCH
 	db DYNAMICPUNCH
@@ -312,7 +315,7 @@ PunchingMoves:
 	db THUNDERPUNCH
 	db -1
 
-SoundMoves:
+SoundMoves::
 	db BUG_BUZZ
 	db DISARM_VOICE
 	db GROWL

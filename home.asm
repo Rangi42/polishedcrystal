@@ -227,7 +227,6 @@ CopyName2:: ; 30d9
 IsInArray:: ; 30e1
 ; Find value a for every de bytes in array hl.
 ; Return index in b and carry if found.
-
 	ld b, 0
 	ld c, a
 .loop

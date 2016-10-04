@@ -1172,7 +1172,18 @@ HandleResidualDamage:
 	call SubtractHPFromUser
 	ld a, $1
 	ld [hBGMapMode], a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp LIQUID_OOZE
+	jr z, .hurt
 	call RestoreHP
+	jr .sap_text
+.hurt
+	farcall ShowAbilityActivation
+	call SwitchTurnCore
+	call SubtractHPFromUser
+	call SwitchTurnCore
+.sap_text
 	ld hl, LeechSeedSapsText
 	call StdBattleTextBox
 .not_seeded
@@ -1820,6 +1831,12 @@ HandleWeather: ; 3cb9e
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OVERCOAT
+	ret nz
+	cp MAGIC_GUARD
+	ret nz
 
 	ld hl, BattleMonType1
 	ld a, [hBattleTurn]
@@ -1875,6 +1892,12 @@ HandleWeather: ; 3cb9e
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
+	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OVERCOAT
+	ret nz
+	cp MAGIC_GUARD
 	ret nz
 
 	ld hl, BattleMonType1
@@ -4366,7 +4389,21 @@ RunActivationAbilities:
 	ld [hBattleTurn], a
 	ret
 
+SpikesDamage_CheckMoldBreaker:
+; Called when a Pokémon with Mold Breaker uses Roar/Whirlwind.
+; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
+; but can't be checked unconditionally since other kind of switches ignore MB as usual.
+	ld a, BATTLE_VARS_ABILITY_OPP
+	cp MOLD_BREAKER
+	jr z, SpikesDamage_SkipLevitate
 SpikesDamage: ; 3dc23
+	ld a, BATTLE_VARS_ABILITY
+	cp LEVITATE
+	ret z
+SpikesDamage_SkipLevitate:
+	ld a, BATTLE_VARS_ABILITY
+	cp MAGIC_GUARD
+	ret z
 	ld hl, PlayerScreens
 	ld de, BattleMonType
 	ld bc, UpdatePlayerHUD
@@ -4382,12 +4419,7 @@ SpikesDamage: ; 3dc23
 	ret z
 
 	; Flying-types aren't affected by Spikes.
-	ld a, [de]
-	cp FLYING
-	ret z
-	inc de
-	ld a, [de]
-	cp FLYING
+	call CheckIfUserIsFlyingType
 	ret z
 
 	push bc

@@ -166,6 +166,19 @@ BattleCommand_CheckTurn: ; 34084
 	and a ; check if the sleep timer ran out
 	jr z, .woke_up
 
+	; Early Bird decreases the sleep timer twice as fast (including Rest).
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp EARLY_BIRD
+	jr nz, .no_early_bird
+	; duplicated, but too few lines to make merging it worth it
+	ld a, [hl]
+	dec a
+	ld [hl], a
+	and a ; check if the sleep timer ran out
+	jr z, .woke_up
+
+.no_early_bird
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_SLP
@@ -242,9 +255,19 @@ BattleCommand_CheckTurn: ; 34084
 	jr z, .not_flinched
 
 	res SUBSTATUS_FLINCHED, [hl]
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INNER_FOCUS
+	jr z, .not_flinched
+	push af
 	ld hl, FlinchedText
 	call StdBattleTextBox
+	pop af
+	cp STEADFAST
+	jr nz, .skip_steadfast
+	farcall SteadfastAbility
 
+.skip_steadfast
 	call CantMove
 	jp EndTurn
 
@@ -1014,7 +1037,7 @@ BattleCommand_Critical: ; 34631
 
 ; +2 critical level
 	ld c, 2
-	jr .Tally
+	jr .FocusEnergy
 
 .Farfetchd:
 	cp FARFETCH_D
@@ -1024,8 +1047,8 @@ BattleCommand_Critical: ; 34631
 	jr nz, .FocusEnergy
 
 ; +2 critical level
-	ld c, 4 ; TODO: 2
-	jr .Tally
+	ld c, 2
+	jr .FocusEnergy
 
 .FocusEnergy:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -1033,7 +1056,8 @@ BattleCommand_Critical: ; 34631
 	bit SUBSTATUS_FOCUS_ENERGY, a
 	jr z, .CheckCritical
 
-; +1 critical level
+; +2 critical level (TODO: this also affects Dire Hit)
+	inc c
 	inc c
 
 .CheckCritical:
@@ -1046,8 +1070,7 @@ BattleCommand_Critical: ; 34631
 	pop bc
 	jr nc, .ScopeLens
 
-; +2 critical level
-	inc c
+; +1 critical level
 	inc c
 
 .ScopeLens:
@@ -1056,18 +1079,32 @@ BattleCommand_Critical: ; 34631
 	ld a, b
 	cp HELD_CRITICAL_UP ; Increased critical chance (Scope Lens and Razor Claw)
 	pop bc
+	jr nz, .Ability
+
+; +1 critical level
+	inc c
+
+.Ability:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SUPER_LUCK
 	jr nz, .Tally
 
 ; +1 critical level
 	inc c
 
 .Tally:
+	; Check for c > 2 which always crits
+	ld a, c
+	cp 3
+	jr nc, .guranteed_crit
 	ld hl, .Chances
 	ld b, 0
 	add hl, bc
 	call BattleRandom
 	cp [hl]
 	ret nc
+.guranteed_crit
 	ld a, 1
 	ld [CriticalHit], a
 	ret
@@ -1075,9 +1112,9 @@ BattleCommand_Critical: ; 34631
 .Criticals:
 	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, SHADOW_CLAW, STONE_EDGE, $ff
 .Chances:
-	; 6.25% 12.1% 24.6% 49.6% 99.6% 99.6% 99.6%
-	db $11,  $20,  $40,  $80,  $ff,  $ff,  $ff
-	;   0     1     2     3     4     5     6
+	; 6.25% 12.5%  50%   100%
+	db $10,  $20,  $80,  $ff
+	;   0     1     2     3+
 ; 346b2
 
 
@@ -1329,12 +1366,44 @@ CheckTypeMatchup: ; 347d3
 	push hl
 	push de
 	push bc
+; Handle special immunities
+	call CheckNullificationAbilities
+	jp nz, .AbilImmune
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PowderMoves
+	call IsInArray
+	jr nc, .skip_powder
+	call CheckIfTargetIsGrassType
+	jp z, .Immune
+	call GetOpponentAbilityAfterMoldBreaker
+	cp OVERCOAT
+	jp z, .AbilImmune
+.skip_powder
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, SoundMoves
+	call IsInArray
+	jr nc, .skip_sound
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SOUNDPROOF
+	jr z, .AbilImmune
+.skip_sound
+	pop hl
+	push hl
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LEVITATE
+	jr nz, .skip_levitate
+	ld a, d
+	cp GROUND
+	jr z, .AbilImmune
+.skip_levitate
 	ld a, 10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, TypeMatchup
@@ -1390,6 +1459,13 @@ CheckTypeMatchup: ; 347d3
 	ld [wTypeMatchup], a
 	jr .TypesLoop
 
+.AbilImmune:
+	; makes sure to print "User's ability activated!" to clarify why a target was immune
+	ld a, 3
+	ld [AttackMissed], a
+.Immune:
+	ld a, 0
+	ld [wTypeMatchup], a
 .End:
 	pop bc
 	pop de
@@ -1495,7 +1571,7 @@ BattleCommand_CheckHit: ; 34d32
 	call .Substitute
 	jp nz, .Miss
 
-	call .CheckNullificationAbilities
+	call CheckNullificationAbilities
 	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
@@ -1622,54 +1698,6 @@ BattleCommand_CheckHit: ; 34d32
 	ld a, 1
 	and a
 	ret
-
-
-.CheckNullificationAbilities:
-; Return nz if an opponent's ability either powers it up outright by the attack, or
-; renders it useless.
-	call GetOpponentAbilityAfterMoldBreaker
-	ld b, a
-	ld hl, .NullificationAbilityTypes
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .found_ability
-	inc hl
-	cp -1
-	jr nz, .loop
-	ret
-
-.found_ability
-; Type immunities override these abilities, but abilities override everything if they do
-; proc, so checking early is required. So check type matchups here.
-	ld a, [hl]
-	ld b, a
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp b
-	jr nz, .ability_fail
-
-	call BattleCheckTypeMatchup
-	ld a, [wTypeMatchup]
-	and a
-	ret z
-	ld a, 3
-	ret
-
-.ability_fail
-	xor a
-	ret
-
-
-.NullificationAbilityTypes:
-	db VOLT_ABSORB,   ELECTRIC
-	db LIGHTNING_ROD, ELECTRIC
-	db MOTOR_DRIVE,   ELECTRIC
-	db DRY_SKIN,      WATER
-	db WATER_ABSORB,  WATER
-	db FLASH_FIRE,    FIRE
-	db SAP_SIPPER,    GRASS
-	db -1
 
 
 .LockOn:
@@ -1891,11 +1919,15 @@ BattleCommand_CheckHit: ; 34d32
 
 BattleCommand_EffectChance: ; 34ecc
 ; effectchance
-
+	push bc
 	xor a
 	ld [EffectFailed], a
 	call CheckSubstituteOpp
 	jr nz, .failed
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SHIELD_DUST
+	jr z, .failed
 
 	push hl
 	ld hl, wPlayerMoveStruct + MOVE_CHANCE
@@ -1905,18 +1937,79 @@ BattleCommand_EffectChance: ; 34ecc
 	ld hl, wEnemyMoveStruct + MOVE_CHANCE
 .got_move_chance
 
+	ld a, [hl]
+	ld b, a
+	ld a, BATTLE_VARS_ABILITY
+	cp SHEER_FORCE
+	jr z, .failed
+	cp SERENE_GRACE
+	jr nz, .skip_serene_grace
+	sla b
+	jr c, .end ; Carry means the effect byte overflowed, so gurantee it
+
+.skip_serene_grace
 	call BattleRandom
-	cp [hl]
+	cp b
 	pop hl
-	ret c
+	jr c, .end
 
 .failed
 	ld a, 1
 	ld [EffectFailed], a
 	and a
+.end
+	pop bc
 	ret
 
 ; 34eee
+
+
+CheckNullificationAbilities:
+; Return nz if an opponent's ability either powers it up outright by the attack, or
+; renders it useless. Called from CheckHit and CheckTypeMatchup (the latter for the AI's
+; benefit).
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	ld hl, .NullificationAbilityTypes
+.loop
+	ld a, [hli]
+	cp b
+	jr z, .found_ability
+	inc hl
+	cp -1
+	jr nz, .loop
+	ret
+
+.found_ability
+; Type immunities override these abilities, but abilities override everything if they do
+; proc, so checking early is required. So check type matchups here.
+	ld a, [hl]
+	ld b, a
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	jr nz, .ability_fail
+
+	call BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	and a
+	ret z
+	ld a, 3
+	ret
+
+.ability_fail
+	xor a
+	ret
+
+.NullificationAbilityTypes:
+	db VOLT_ABSORB,   ELECTRIC
+	db LIGHTNING_ROD, ELECTRIC
+	db MOTOR_DRIVE,   ELECTRIC
+	db DRY_SKIN,      WATER
+	db WATER_ABSORB,  WATER
+	db FLASH_FIRE,    FIRE
+	db SAP_SIPPER,    GRASS
+	db -1
 
 
 BattleCommand_LowerSub: ; 34eee
@@ -2368,35 +2461,30 @@ FailText_CheckOpponentProtect: ; 35157
 
 BattleCommand_CriticalText: ; 35175
 ; criticaltext
-; Prints the message for critical hits or one-hit KOs.
+; Prints the message for critical hits.
 
 ; If there is no message to be printed, wait 20 frames.
 	ld a, [CriticalHit]
 	and a
 	jr z, .wait
 
-	dec a
-	add a
-	ld hl, .texts
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, CriticalHitText
 	call StdBattleTextBox
 
 	xor a
 	ld [CriticalHit], a
 
+	; Activate Anger Point here to get proper message order
+	call GetOpponentAbilityAfterMoldBreaker
+	cp ANGER_POINT
+	jr nz, .wait
+	call BattleCommand_SwitchTurn
+	farcall AngerPointAbility
+	call BattleCommand_SwitchTurn
+
 .wait
 	ld c, 20
 	jp DelayFrames
-
-.texts
-	dw CriticalHitText
-	dw OneHitKOText
-; 35197
 
 
 BattleCommand_StartLoop: ; 35197
@@ -2539,11 +2627,7 @@ BattleCommand_PostHitEffects: ; 35250
 	and a
 	ret nz
 
-	ld a, BATTLE_VARS_MOVE
-	ld hl, ContactMoves
-	call IsInArray
-	jr c, .start_rage
-	farcall RunContactAbilities
+	farcall RunHitAbilities
 
 .start_rage
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
@@ -3339,13 +3423,65 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .ability_double
 	cp HUSTLE
 	jr z, .ability_semidouble
+	cp SHEER_FORCE
+	jr z, .sheer_force
+	cp ANALYTIC
+	jr z, .analytic
+	cp TINTED_LENS
+	jr z, .tinted_lens
+	cp RECKLESS
+	jr z, .reckless
 	cp GUTS
 	jr nz, .ability_penalties
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and a
 	jr z, .ability_penalties
+	jr .ability_semidouble
+.sheer_force
+	; Only nonzero for sheer force users when using a move with an additional effect
+	ld a, [EffectFailed]
+	and a
+	jr z, .ability_penalties
+	jr .ability_x1_3
+.analytic
+	call CheckOpponentWentFirst
+	jr z, .ability_penalties
+	jr .ability_x1_3
+.tinted_lens
+	ld a, [TypeModifier]
+	and $7f
+	cp 10 ; x1
+	jr nc, .ability_penalties
+	jr .ability_double
+.reckless
+	; skip Struggle
+	ld a, BATTLE_VARS_MOVE
+	cp STRUGGLE
+	jr z, .ability_penalties
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_RECOIL_HIT
+	jr z, .ability_x1_2
+	cp EFFECT_JUMP_KICK
+	jr nz, .ability_penalties
+.ability_x1_2
+	; x1.2
+	ld [hl], 6
+	call Multiply
+	ld [hl], 5
+	ld b, $4
+	call Divide
+	jr .ability_penalties
+.ability_x1_3
+	ld [hl], 13
+	call Multiply
+	ld [hl], 10
+	ld b, $4
+	call Divide
+	jr .ability_penalties
 .ability_semidouble
+	; x1.5
 	ld [hl], 3
 	call Multiply
 	ld [hl], 2
@@ -3353,6 +3489,7 @@ BattleCommand_DamageCalc: ; 35612
 	call Divide
 	jr .ability_penalties
 .ability_double
+	; x2
 	ld [hl], 2
 	call Multiply
 
@@ -3368,13 +3505,14 @@ BattleCommand_DamageCalc: ; 35612
 	pop hl
 	ld a, b
 	and a
-	jr nz, .skip_multiscale
+	jr nz, .abilities_done
 	ld [hl], 2
 	ld b, $4
 	call Divide
+	jr .abilities_done
 .skip_multiscale
 	cp MARVEL_SCALE
-	jr nz, .abilities_done
+	jr nz, .skip_marvelscale
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and a
@@ -3384,7 +3522,39 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 3
 	ld b, $4
 	call Divide
-
+	jr .abilities_done
+.skip_marvelscale
+; These do the same thing
+	cp SOLID_ROCK
+	jr z, .solid_rock
+	cp FILTER
+	jr nz, .skip_solid_rock
+.solid_rock
+; Check super effective status
+	ld a, [TypeModifier]
+	and $7f
+	cp 10 ; x1
+	jr z, .abilities_done
+	jr c, .abilities_done
+	ld [hl], 3
+	call Multiply
+	ld [hl], 4
+	ld b, $4
+	call Divide
+	jr .abilities_done
+.skip_solid_rock
+	cp THICK_FAT
+	jr nz, .abilities_done
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr z, .thick_fat_ok
+	cp ICE
+	jr nz, .abilities_done
+.thick_fat_ok
+	ld [hl], 2
+	ld b, $4
+	call Divide
 .abilities_done
 ; Flash Fire
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -4918,86 +5088,59 @@ BattleCommand_EatDream: ; 36008
 
 
 SapHealth: ; 36011
+	; Don't do anything if HP is full
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	ret z
+
+	; get damage
 	ld hl, CurDamage
 	ld a, [hli]
-	srl a
-	ld [hDividend], a
 	ld b, a
-	ld a, [hl]
-	rr a
-	ld [hDividend + 1], a
-	or b
-	jr nz, .ok1
-	ld a, $1
-	ld [hDividend + 1], a
-.ok1
-	ld hl, BattleMonHP
-	ld de, BattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .battlemonhp
-	ld hl, EnemyMonHP
-	ld de, EnemyMonMaxHP
-.battlemonhp
-	ld bc, Buffer4
-	ld a, [hli]
-	ld [bc], a
-	ld a, [hl]
-	dec bc
-	ld [bc], a
-	ld a, [de]
-	dec bc
-	ld [bc], a
-	inc de
-	ld a, [de]
-	dec bc
-	ld [bc], a
-	ld a, [hDividend + 1]
-	ld b, [hl]
-	add b
-	ld [hld], a
-	ld [Buffer5], a
-	ld a, [hDividend]
-	ld b, [hl]
-	adc b
-	ld [hli], a
-	ld [Buffer6], a
-	jr c, .okay2
-	ld a, [hld]
-	ld b, a
-	ld a, [de]
-	dec de
-	sub b
-	ld a, [hli]
-	ld b, a
-	ld a, [de]
-	inc de
-	sbc b
-	jr nc, .okay3
-.okay2
-	ld a, [de]
-	ld [hld], a
-	ld [Buffer5], a
-	dec de
-	ld a, [de]
-	ld [hli], a
-	ld [Buffer6], a
-	inc de
-.okay3
-	ld a, [hBattleTurn]
-	and a
-	hlcoord 10, 9
-	ld a, $1
-	jr z, .hp_bar
-	hlcoord 2, 2
-	xor a
-.hp_bar
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
-	call RefreshBattleHuds
-	jp UpdateBattleMonInParty
+	ld c, [hl]
 
-; 3608c
+	; halve result
+	srl b
+	rr c
+
+	; for Drain Kiss, we want 75% drain instead of 50%
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp DRAIN_KISS
+	jr nz, .skip_drain_kiss
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
+
+.skip_drain_kiss
+	; ensure minimum 1HP drained
+	ld a, b
+	and a
+	jr nz, .skip_increase
+	ld a, c
+	and a
+	jr nz, .skip_increase
+	ld c, 1
+.skip_increase
+	; check for Liquid Ooze
+	push bc
+	call GetOpponentAbilityAfterMoldBreaker
+	pop bc
+	cp LIQUID_OOZE
+	jr z, .damage
+	call BattleCommand_SwitchTurn
+	farcall RestoreHP
+	call BattleCommand_SwitchTurn
+	ret
+.damage
+	farcall ShowEnemyAbilityActivation
+	farcall SubtractHPFromUser
+	ret
 
 
 BattleCommand_BurnTarget: ; 3608c
@@ -6552,7 +6695,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld hl, DraggedOutText
 	call StdBattleTextBox
 
-	ld hl, SpikesDamage
+	ld hl, SpikesDamage_CheckMoldBreaker
 	call CallBattleCore
 
 	ld hl, RunActivationAbilities
@@ -6652,7 +6795,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld hl, DraggedOutText
 	call StdBattleTextBox
 
-	ld hl, SpikesDamage
+	ld hl, SpikesDamage_CheckMoldBreaker
 	call CallBattleCore
 
 	ld hl, RunActivationAbilities
