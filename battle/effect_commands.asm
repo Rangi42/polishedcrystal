@@ -3427,6 +3427,8 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .sheer_force
 	cp ANALYTIC
 	jr z, .analytic
+	cp TINTED_LENS
+	jr z, .tinted_lens
 	cp RECKLESS
 	jr z, .reckless
 	cp GUTS
@@ -3446,6 +3448,12 @@ BattleCommand_DamageCalc: ; 35612
 	call CheckOpponentWentFirst
 	jr z, .ability_penalties
 	jr .ability_x1_3
+.tinted_lens
+	ld a, [TypeModifier]
+	and $7f
+	cp 10 ; x1
+	jr nc, .ability_penalties
+	jr .ability_double
 .reckless
 	; skip Struggle
 	ld a, BATTLE_VARS_MOVE
@@ -3497,13 +3505,14 @@ BattleCommand_DamageCalc: ; 35612
 	pop hl
 	ld a, b
 	and a
-	jr nz, .skip_multiscale
+	jr nz, .abilities_done
 	ld [hl], 2
 	ld b, $4
 	call Divide
+	jr .abilities_done
 .skip_multiscale
 	cp MARVEL_SCALE
-	jr nz, .abilities_done
+	jr nz, .skip_marvelscale
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and a
@@ -3513,7 +3522,25 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 3
 	ld b, $4
 	call Divide
-
+	jr .abilities_done
+.skip_marvelscale
+; These do the same thing
+	cp SOLID_ROCK
+	jr z, .solid_rock
+	cp FILTER
+	jr nz, .abilities_done
+.solid_rock
+; Check super effective status
+	ld a, [TypeModifier]
+	and $7f
+	cp 10 ; x1
+	jr z, .abilities_done
+	jr c, .abilities_done
+	ld [hl], 3
+	call Multiply
+	ld [hl], 4
+	ld b, $4
+	call Divide
 .abilities_done
 ; Flash Fire
 	ld a, BATTLE_VARS_SUBSTATUS3
