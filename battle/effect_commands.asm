@@ -1896,11 +1896,15 @@ BattleCommand_CheckHit: ; 34d32
 
 BattleCommand_EffectChance: ; 34ecc
 ; effectchance
-
+	push bc
 	xor a
 	ld [EffectFailed], a
 	call CheckSubstituteOpp
 	jr nz, .failed
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SHIELD_DUST
+	jr z, .failed
 
 	push hl
 	ld hl, wPlayerMoveStruct + MOVE_CHANCE
@@ -1910,15 +1914,28 @@ BattleCommand_EffectChance: ; 34ecc
 	ld hl, wEnemyMoveStruct + MOVE_CHANCE
 .got_move_chance
 
+	ld a, [hl]
+	ld b, a
+	ld a, BATTLE_VARS_ABILITY
+	cp SHEER_FORCE
+	jr z, .failed
+	cp SERENE_GRACE
+	jr nz, .skip_serene_grace
+	sla b
+	jr c, .end ; Carry means the effect byte overflowed, so gurantee it
+
+.skip_serene_grace
 	call BattleRandom
-	cp [hl]
+	cp b
 	pop hl
-	ret c
+	jr c, .end
 
 .failed
 	ld a, 1
 	ld [EffectFailed], a
 	and a
+.end
+	pop bc
 	ret
 
 ; 34eee
@@ -3394,6 +3411,8 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .ability_semidouble
 	cp RECKLESS
 	jr z, .reckless
+	cp SHEER_FORCE
+	jr z, .sheer_force
 	cp GUTS
 	jr nz, .ability_penalties
 	ld a, BATTLE_VARS_STATUS
@@ -3409,14 +3428,26 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_RECOIL_HIT
-	jr z, .continue
+	jr z, .ability_x1_2
 	cp EFFECT_JUMP_KICK
 	jr nz, .ability_penalties
-.continue
+	jr .ability_x1_2
+.sheer_force
+	; Only nonzero for sheer force users when using a move with an additional effect
+	ld a, [EffectFailed]
+	and a
+	jr z, .ability_penalties
+	ld [hl], 13
+	call Multiply
+	ld [hl], 10
+	ld b, $4
+	call Divide
+.ability_x1_2
 	; x1.2
 	ld [hl], 6
 	call Multiply
 	ld [hl], 5
+	ld b, $4
 	call Divide
 .ability_semidouble
 	; x1.5
