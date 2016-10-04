@@ -1334,3 +1334,9 @@ FirePoweredUpText:
 	line "Fire-type moves"
 	cont "were powered up!"
 	prompt
+
+AngerPointMaximizedAttackText:
+	text "<USER>"
+	line "maximized Attack"
+	cont "with Anger Point!"
+	prompt

@@ -2452,35 +2452,30 @@ FailText_CheckOpponentProtect: ; 35157
 
 BattleCommand_CriticalText: ; 35175
 ; criticaltext
-; Prints the message for critical hits or one-hit KOs.
+; Prints the message for critical hits.
 
 ; If there is no message to be printed, wait 20 frames.
 	ld a, [CriticalHit]
 	and a
 	jr z, .wait
 
-	dec a
-	add a
-	ld hl, .texts
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, CriticalHitText
 	call StdBattleTextBox
 
 	xor a
 	ld [CriticalHit], a
 
+	; Activate Anger Point here to get proper message order
+	call GetOpponentAbilityAfterMoldBreaker
+	cp ANGER_POINT
+	jr nz, .wait
+	call BattleCommand_SwitchTurn
+	farcall AngerPointAbility
+	call BattleCommand_SwitchTurn
+
 .wait
 	ld c, 20
 	jp DelayFrames
-
-.texts
-	dw CriticalHitText
-	dw OneHitKOText
-; 35197
 
 
 BattleCommand_StartLoop: ; 35197

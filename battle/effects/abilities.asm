@@ -759,22 +759,32 @@ HandleAbilities:
 
 SteadfastAbility:
 SpeedBoostAbility:
-	; avoid message if stat is maxed
-
-	ld hl, PlayerSpdLevel
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_speed
-	ld hl, EnemySpdLevel
-.got_speed
-	ld a, [hl]
-	cp 13
-	ret z
-	call ShowAbilityActivation
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_SpeedUp
+	ld a, [FailedMessage]
+	and a
+	jp nz, EnableAnimations
+	call ShowAbilityActivation
 	farcall BattleCommand_StatUpMessage
+	jp EnableAnimations
+
+
+AngerPointAbility:
+	call DisableAnimations
+	farcall ResetMiss
+	farcall BattleCommand_AttackUp2
+	ld a, [FailedMessage]
+	and a
+	jp nz, EnableAnimations
+	call ShowAbilityActivation
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_AttackUp2
+	ld hl, AngerPointMaximizedAttackText
+	call StdBattleTextBox
 	jp EnableAnimations
 
 
