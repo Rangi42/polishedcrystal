@@ -93,7 +93,7 @@ LimberAbility:
 	jr HealStatusAbility
 InsomniaAbility:
 VitalSpiritAbility:
-	ld a, 1 << SLP
+	ld a, SLP
 	jr HealStatusAbility
 HealStatusAbility:
 	ld b, a
@@ -106,6 +106,14 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	and [hl]
+	res SUBSTATUS_TOXIC, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	and [hl]
+	res SUBSTATUS_NIGHTMARE, [hl]
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
@@ -627,13 +635,23 @@ HandleAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp HARVEST
-	jr nz, .not_harvest
-	; TODO: save used up items
-	ret
-.not_harvest
+	jp z, HarvestAbility
 	cp MOODY
-	jp nz, .not_moody
+	jp z, MoodyAbility
+	cp PICKUP
+	jp z, PickupAbility
+	cp SHED_SKIN
+	jp z, ShedSkinAbility
+	cp SPEED_BOOST
+	jp z, SpeedBoostAbility
+	ret
 
+HarvestAbility:
+PickupAbility:
+; TODO: save used up items
+	ret
+
+MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
 ; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
 ; stats be +6, Moody will not raise any stat, and vice versa.
@@ -743,19 +761,14 @@ HandleAbilities:
 	farcall BattleCommand_StatDownMessage
 	farcall BattleCommand_SwitchTurn
 	jp EnableAnimations
-.not_moody
-	cp PICKUP
-	jr nz, .not_pickup
-	; TODO: save used up items
-	ret
-.not_pickup
-	cp SHED_SKIN
-	jr nz, .not_shed_skin
-	ret
-.not_shed_skin
-	cp SPEED_BOOST
-	jp z, SpeedBoostAbility
-	ret
+
+ShedSkinAbility:
+; Cure a non-volatile status 30% of the time
+	call BattleRandom
+	cp 1 + (30 percent)
+	ret c
+	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
+	jp HealStatusAbility
 
 SteadfastAbility:
 SpeedBoostAbility:
