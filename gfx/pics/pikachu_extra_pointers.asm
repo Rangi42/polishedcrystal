@@ -2,4 +2,5 @@ PikachuAnimationExtraPointers:
 	dw PikachuPlainAnimationExtra
 	dw PikachuFlyAnimationExtra
 	dw PikachuSurfAnimationExtra
-	dw PikachuBothAnimationExtra
+	dw PikachuPikaAnimationExtra
+	dw PikachuChuchuAnimationExtra
