@@ -28,7 +28,11 @@ endc
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db COMPOUND_EYES ; ability 1
+if DEF(FAITHFUL)
 	db COMPOUND_EYES ; ability 2
+else
+	db LEVITATE ; ability 2
+endc
 	db TINTED_LENS ; hidden ability
 	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
