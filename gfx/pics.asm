@@ -747,6 +747,7 @@ GiovanniPic:          INCBIN "gfx/trainers/giovanni.2bpp.lz"
 OmastarFossilPic:     INCBIN "gfx/trainers/omastarfossil.2bpp.lz"
 KabutopsFossilPic:    INCBIN "gfx/trainers/kabutopsfossil.2bpp.lz"
 AerodactylFossilPic:  INCBIN "gfx/trainers/aerodactylfossil.2bpp.lz"
+MeteoritePic:         INCBIN "gfx/trainers/meteorite.2bpp.lz"
 
 
 SECTION "Pics 21", ROMX, BANK[PICS_21]

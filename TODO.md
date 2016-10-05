@@ -22,17 +22,13 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 ## Battle mechanics
 
 * http://smogon.com/forums/threads/gsc-mechanics.3542417/
-* Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn)
 * Defrosted Pokémon can attack on that turn (like waking up)
-* Substitute does not block sound-based moves
 * Substitute prevents building Rage
-* Drain Kiss drains 75% HP
 * Avalanche doubles damage if user is hit first (description claims it does this already)
 * Thunder, Blizzard, and Hurricane ignore accuracy and evasion in weather (not just 100% accuracy)
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
-* Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore
 * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 
@@ -65,7 +61,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Show Pokémon portraits when using field moves (refer to TPPAC)
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
 * Support nicknames for NPC trainers' Pokémon
-* Add a portrait for the meteorite in the museum
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
 * Goldenrod Dept. Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches

@@ -630,4 +630,10 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Meteorite
+	db 0, 0 ; items
+	db 1 ; base reward
+	dw AI_BASIC
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; 39771

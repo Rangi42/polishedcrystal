@@ -784,6 +784,8 @@ KRIS EQU __enum__
 
 	trainerclass AERODACTYL_FOSSIL ; 69
 
+	trainerclass METEORITE ; 6a
+
 NUM_TRAINER_CLASSES EQU __enum__
 
 	const_def

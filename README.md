@@ -200,6 +200,11 @@ I was hesitant to make original changes like this, because the goal is to be an 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
 * Add: Always keep the option to Teleport away from Indigo Plateau.
+* Add: Portrait for the meteorite in Pewter Museum.
+* Add: Drain Kiss drains 75% HP.
+* Add: Substitute blocks sound-based moves.
+* Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
+* Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.
 * Edit: TM prices from OR/AS.
 * Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
 * Edit: Update random Wonder Trade OT names.

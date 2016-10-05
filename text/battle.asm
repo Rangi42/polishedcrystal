@@ -1315,10 +1315,10 @@ NotifyUnnerve:
 
 FriskedItemText:
 	text "<USER>"
-	line "frisked"
-	cont "<TARGET>"
-	cont "and found its"
-	cont "@"
+	line "frisked its foe"
+
+	para "and found a"
+	line "@"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt

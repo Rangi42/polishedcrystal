@@ -132,6 +132,7 @@ TrainerClassDVs: ; 270d6
 	db $00, $00 ; omastar fossil
 	db $00, $00 ; kabutops fossil
 	db $00, $00 ; aerodactyl fossil
+	db $00, $00 ; meteorite
 ; 2715c
 
 INCLUDE "trainers/unique_dvs.asm"
