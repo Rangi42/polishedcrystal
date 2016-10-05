@@ -1634,11 +1634,11 @@ GetBaseData:: ; 3856
 
 ; Get BaseData
 	dec a
-	ld bc, BaseData1 - BaseData0
+	ld bc, BASEMON_STRUCT_LENGTH
 	ld hl, BaseData
 	call AddNTimes
 	ld de, CurBaseData
-	ld bc, BaseData1 - BaseData0
+	ld bc, BASEMON_STRUCT_LENGTH
 	call CopyBytes
 	jr .end
 

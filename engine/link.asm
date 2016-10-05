@@ -733,8 +733,8 @@ Link_PrepPartyData_Gen1: ; 28499
 .skip_steel
 	push bc
 	dec a
-	ld hl, BaseData + 7 ; type
-	ld bc, BaseData1 - BaseData0
+	ld hl, BASEMON_TYPES
+	ld bc, BASEMON_STRUCT_LENGTH
 	call AddNTimes
 	ld bc, 2
 	ld a, BANK(BaseData)
