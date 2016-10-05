@@ -1366,6 +1366,7 @@ CheckTypeMatchup: ; 347d3
 	push hl
 	push de
 	push bc
+	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle special immunities
 	call CheckNullificationAbilities
 	jp nz, .AbilImmune
@@ -1920,6 +1921,7 @@ BattleCommand_CheckHit: ; 34d32
 BattleCommand_EffectChance: ; 34ecc
 ; effectchance
 	push bc
+	push hl
 	xor a
 	ld [EffectFailed], a
 	call CheckSubstituteOpp
@@ -1929,7 +1931,6 @@ BattleCommand_EffectChance: ; 34ecc
 	cp SHIELD_DUST
 	jr z, .failed
 
-	push hl
 	ld hl, wPlayerMoveStruct + MOVE_CHANCE
 	ld a, [hBattleTurn]
 	and a
@@ -1950,7 +1951,6 @@ BattleCommand_EffectChance: ; 34ecc
 .skip_serene_grace
 	call BattleRandom
 	cp b
-	pop hl
 	jr c, .end
 
 .failed
@@ -1958,6 +1958,7 @@ BattleCommand_EffectChance: ; 34ecc
 	ld [EffectFailed], a
 	and a
 .end
+	pop hl
 	pop bc
 	ret
 

@@ -6157,7 +6157,7 @@ CheckPlayerHasUsableMoves: ; 3e786
 	jr .loop
 
 .done
-	and a
+	and $3f
 	ret nz
 
 .force_struggle
