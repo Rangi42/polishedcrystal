@@ -6573,6 +6573,7 @@ SuperNerdGroup:
 	; party
 	db 62, OMASTAR
 	db 62, KABUTOPS
+	db 64, UMBREON
 
 	db $ff ; end
 
