@@ -1366,6 +1366,7 @@ CheckTypeMatchup: ; 347d3
 	push hl
 	push de
 	push bc
+	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle special immunities
 	call CheckNullificationAbilities
 	jp nz, .AbilImmune
