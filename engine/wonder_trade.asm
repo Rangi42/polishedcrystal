@@ -304,6 +304,7 @@ DoWonderTrade:
 	dec a
 	ld [CurPartyMon], a
 	farcall ComputeNPCTrademonStats
+	farcall GivePokerusToWonderTradeMon
 	pop af
 	ld [CurPartyMon], a
 	pop hl

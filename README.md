@@ -217,6 +217,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Rock Smash has 60 power (non-Faithful).
 * Add: Strength is Fighting-type (non-Faithful).
 * Add: Trainers have max happiness for Return.
+* Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
 * Edit: Fix some sprites.
 * Edit: TM prices from OR/AS.
 * Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).

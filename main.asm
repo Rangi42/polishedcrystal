@@ -1374,7 +1374,7 @@ GivePokerus: ; 2ed44
 .loopMons
 	ld a, [hl]
 	and $f
-	jr nz, .TrySpreadPokerus
+	jr nz, TrySpreadPokerus
 	add hl, de
 	dec b
 	jr nz, .loopMons
@@ -1398,6 +1398,7 @@ GivePokerus: ; 2ed44
 	and $7
 	cp b
 	jr nc, .randomMonSelectLoop
+ContinueGivingPokerus:
 	ld hl, PartyMon1PokerusStatus
 	call GetPartyLocation  ; get pokerus byte of random mon
 	ld a, [hl]
@@ -1422,7 +1423,19 @@ GivePokerus: ; 2ed44
 	ld [hl], a
 	ret
 
-.TrySpreadPokerus:
+GivePokerusToWonderTradeMon:
+	call Random
+	ld a, [hRandomAdd]
+	and a
+	ret nz
+	ld a, [hRandomSub]
+	cp $20
+	ret nc                 ; 32/65536 = 1/2048 chance
+	ld a, [CurPartyMon]
+	ld b, a
+	jp ContinueGivingPokerus
+
+TrySpreadPokerus:
 	call Random
 	cp 1 + 33 percent
 	ret nc              ; 1/3 chance
