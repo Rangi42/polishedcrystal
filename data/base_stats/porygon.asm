@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db TRACE ; ability 1
+	db DOWNLOAD ; ability 2
+	db ANALYTIC ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 

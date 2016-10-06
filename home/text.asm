@@ -386,7 +386,7 @@ PlaceEnemysName:: ; 121b
 	ld de, String12a2
 	call PlaceString
 	push bc
-	callab Battle_GetTrainerName
+	farcall Battle_GetTrainerName
 	pop hl
 	ld de, StringBuffer1
 	jr PlaceCommandCharacter

@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db VITAL_SPIRIT ; ability 1
+	db ANGER_POINT ; ability 2
+	db DEFIANT ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -13,7 +13,10 @@
 	db 25 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db SWARM ; ability 1
+	db GUTS ; ability 2
+	db MOXIE ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups
 

@@ -15,7 +15,7 @@ SpecialGiveWobbuffet: ; 7305
 
 ; Caught data.
 	ld b, 0
-	callba SetGiftPartyMonCaughtData
+	farcall SetGiftPartyMonCaughtData
 
 ; Holding a Berry.
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -70,7 +70,7 @@ SpecialWobbuffetNick:
 	db "Buffy@"
 
 SpecialReturnWobbuffet: ; 737e
-	callba SelectMonFromParty
+	farcall SelectMonFromParty
 	jr c, .refused
 
 	ld a, [CurPartySpecies]
@@ -106,7 +106,7 @@ SpecialReturnWobbuffet: ; 737e
 	jr .CheckOT
 
 .done
-	callba CheckCurPartyMonFainted
+	farcall CheckCurPartyMonFainted
 	jr c, .fainted
 	ld a, [CurPartyMon]
 	ld hl, PartyMon1Happiness
@@ -118,7 +118,7 @@ SpecialReturnWobbuffet: ; 737e
 	jr nc, .HappyToStayWithYou
 	xor a ; take from pc
 	ld [wPokemonWithdrawDepositParameter], a
-	callab RemoveMonFromPartyOrBox
+	farcall RemoveMonFromPartyOrBox
 	ld a, $2
 .HappyToStayWithYou:
 	ld [ScriptVar], a
@@ -140,7 +140,7 @@ SpecialReturnWobbuffet: ; 737e
 	ret
 
 Special_BillsGrandfather: ; 73f7
-	callba SelectMonFromParty
+	farcall SelectMonFromParty
 	jr c, .cancel
 	ld a, [CurPartySpecies]
 	ld [ScriptVar], a
@@ -174,7 +174,7 @@ Special_ReiBlessing:
 
 MassageOrHaircut: ; 7420
 	push hl
-	callba SelectMonFromParty
+	farcall SelectMonFromParty
 	pop hl
 	jr c, .nope
 	ld a, [CurPartySpecies]

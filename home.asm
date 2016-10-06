@@ -227,7 +227,6 @@ CopyName2:: ; 30d9
 IsInArray:: ; 30e1
 ; Find value a for every de bytes in array hl.
 ; Return index in b and carry if found.
-
 	ld b, 0
 	ld c, a
 .loop
@@ -947,7 +946,7 @@ GetTMHMName:: ; 3487
 	push de
 	ld a, [wd265]
 	ld c, a
-	callab GetTMHMNumber
+	farcall GetTMHMNumber
 	pop de
 
 ; HM numbers start from 51, not 1
@@ -1139,7 +1138,7 @@ HandleStoneQueue:: ; 3567
 	call .IsObjectInStoneTable
 	jr nc, .nope
 	call CallMapScript
-	callba EnableScriptMode
+	farcall EnableScriptMode
 	scf
 	ret
 
@@ -1635,11 +1634,11 @@ GetBaseData:: ; 3856
 
 ; Get BaseData
 	dec a
-	ld bc, BaseData1 - BaseData0
+	ld bc, BASEMON_STRUCT_LENGTH
 	ld hl, BaseData
 	call AddNTimes
 	ld de, CurBaseData
-	ld bc, BaseData1 - BaseData0
+	ld bc, BASEMON_STRUCT_LENGTH
 	call CopyBytes
 	jr .end
 
@@ -1653,7 +1652,7 @@ GetBaseData:: ; 3856
 	ld [hl], b
 
 ; ????
-	ld hl, BasePadding
+	ld hl, BaseAbility1 ; changed just in case
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -1680,6 +1679,82 @@ UnknownEggPic:: ; 53d9c
 ; Another egg pic. This is shifted up a few pixels.
 INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 
+
+GetNature::
+; 'b' contains the target DV to check (Atk/Def)
+; returns nature in b
+	ld a, b
+; 15/15 (default boss trainer nature) is Serious (neutral), not Bold (+Def -Atk)
+	cp $ff
+	jr z, .serious
+; 7/15 (default female boss trainer nature) is Quirky (neutral), not Brave (+Atk -Spe)
+	cp $7f
+	jr z, .quirky
+; 14/15 is Impish (+Def -SpA), not Naive (+Spe -SpD)
+	cp $ef
+	jr z, .impish
+; 15/10 is Naive (+Spe -SpD), not Hardy (neutral)
+	cp $fa
+	jr z, .hardy
+.modloop
+	sub NUM_NATURES
+	jr nc, .modloop
+	add NUM_NATURES
+	jr .finish
+.serious
+	ld a, SERIOUS
+	jr .finish
+.quirky
+	ld a, QUIRKY
+	jr .finish
+.impish
+	ld a, IMPISH
+	jr .finish
+.hardy
+	ld a, HARDY
+.finish
+	ld b, a
+	ret
+
+GetAbility::
+; 'b' contains the target DV to check (Spe/Spc)
+; 'c' contains the target species
+; returns ability in b
+; preserves curspecies and base data
+	push de
+	ld a, [CurSpecies]
+	ld d, a
+	ld a, c
+	ld [CurSpecies], a
+	call GetBaseData
+; Spe = Spc -> hidden ability (1/16)
+	ld a, b
+	swap a
+	xor b
+	and $f
+	jr z, .hidden_abil
+; Spe ^ Spc is even -> ability 2 (7/16)
+	and 1
+	jr z, .second_abil
+; Spe ^ Spc is odd -> ability 1 (8/16)
+	ld a, [BaseAbility1]
+	ld b, a
+	jr .restore_species
+.second_abil
+	ld a, [BaseAbility2]
+	ld b, a
+	jr .restore_species
+.hidden_abil
+	ld a, [BaseHiddenAbility]
+	ld b, a
+.restore_species
+	ld a, d
+	ld [CurSpecies], a
+	call GetBaseData
+	pop de
+	ret
+
+
 GetCurNick:: ; 389c
 	ld a, [CurPartyMon]
 	ld hl, PartyMonNicknames
@@ -1698,7 +1773,7 @@ GetNick:: ; 38a2
 	call CopyBytes
 	pop de
 
-	callab CheckNickErrors
+	farcall CheckNickErrors
 
 	pop bc
 	pop hl

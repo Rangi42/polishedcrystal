@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db HUSTLE ; ability 1
+	db SNIPER ; ability 2
+	db MOODY ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FISH ; egg groups
 

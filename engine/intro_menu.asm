@@ -6,7 +6,7 @@ _MainMenu: ; 5ae8
 	ld a, e
 	ld [wMapMusic], a
 	call PlayMusic
-	callba MainMenu
+	farcall MainMenu
 	jp StartTitleScreen
 ; 5b04
 
@@ -51,7 +51,7 @@ NewGame_ClearTileMapEtc: ; 5b44
 ; 5b54
 
 OptionsMenu: ; 5b64
-	callba _OptionsMenu
+	farcall _OptionsMenu
 	ret
 ; 5b6b
 
@@ -189,9 +189,9 @@ ENDC
 
 	call InitializeNPCNames
 
-	callba InitDecorations
+	farcall InitDecorations
 
-	callba DeletePartyMonMail
+	farcall DeletePartyMonMail
 
 	call ResetGameTime
 	ret
@@ -283,8 +283,8 @@ InitializeNPCNames: ; 5ce9
 
 InitializeWorld: ; 5d23
 	call ShrinkPlayer
-	callba SpawnPlayer
-	callba _InitializeStartDay
+	farcall SpawnPlayer
+	farcall _InitializeStartDay
 	ret
 ; 5d33
 
@@ -316,9 +316,9 @@ LoadOrRegenerateLuckyIDNumber: ; 5d33
 ; 5d65
 
 Continue: ; 5d65
-	callba TryLoadSaveFile
+	farcall TryLoadSaveFile
 	jr c, .FailToLoad
-	callba _LoadData
+	farcall _LoadData
 	call LoadStandardMenuDataHeader
 	call DisplaySaveInfoOnContinue
 	ld a, $1
@@ -348,8 +348,8 @@ Continue: ; 5d65
 	call ClearTileMap
 	ld c, 20
 	call DelayFrames
-	callba JumpRoamMons
-	callba Function140ae ; time-related
+	farcall JumpRoamMons
+	farcall Function140ae ; time-related
 	ld a, [wSpawnAfterChampion]
 	cp SPAWN_LANCE
 	jr z, .SpawnAfterE4
@@ -400,7 +400,7 @@ Continue_CheckRTC_RestartClock: ; 5e48
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
 	jr z, .pass
-	callba RestartClock
+	farcall RestartClock
 	ld a, c
 	and a
 	jr z, .pass
@@ -422,7 +422,7 @@ FinishContinueFunction: ; 5e5d
 	res 7, [hl]
 	ld hl, wEnteredMapFromContinue
 	set 1, [hl]
-	callba OverworldLoop
+	farcall OverworldLoop
 	ld a, [wSpawnAfterChampion]
 	cp SPAWN_LEAF
 	jr z, .AfterLeaf
@@ -605,7 +605,7 @@ Continue_DisplayGameTime: ; 5f84
 
 
 OakSpeech: ; 0x5f99
-	callba InitClock
+	farcall InitClock
 	call RotateFourPalettesLeft
 	call ClearTileMap
 
@@ -667,11 +667,11 @@ OakSpeech: ; 0x5f99
 	call RotateThreePalettesRight
 	call ClearTileMap
 
-	callba InitGender
+	farcall InitGender
 
 	xor a
 	ld [CurPartySpecies], a
-	callba DrawIntroPlayerPic
+	farcall DrawIntroPlayerPic
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
@@ -718,20 +718,20 @@ OakText7: ; 0x606f
 	db "@"
 
 NamePlayer: ; 0x6074
-	callba MovePlayerPicRight
-	callba ShowPlayerNamingChoices
+	farcall MovePlayerPicRight
+	farcall ShowPlayerNamingChoices
 	ld a, [wMenuCursorY]
 	dec a
 	jr z, .NewName
 	call StorePlayerName
-	callba ApplyMonOrTrainerPals
-	callba MovePlayerPicLeft
+	farcall ApplyMonOrTrainerPals
+	farcall MovePlayerPicLeft
 	ret
 
 .NewName:
 	ld b, 1
 	ld de, PlayerName
-	callba NamingScreen
+	farcall NamingScreen
 
 	call RotateThreePalettesRight
 	call ClearTileMap
@@ -741,7 +741,7 @@ NamePlayer: ; 0x6074
 
 	xor a
 	ld [CurPartySpecies], a
-	callba DrawIntroPlayerPic
+	farcall DrawIntroPlayerPic
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
@@ -869,7 +869,7 @@ Intro_WipeInFrontpic: ; 6182
 
 Intro_PrepTrainerPic: ; 619c
 	ld de, VTiles2
-	callba GetTrainerPic
+	farcall GetTrainerPic
 	xor a
 	ld [hGraphicStartTile], a
 	hlcoord 6, 4
@@ -892,7 +892,7 @@ ShrinkFrame: ; 61b4
 
 Intro_PlacePlayerSprite: ; 61cd
 
-	callba GetPlayerIcon
+	farcall GetPlayerIcon
 	ld c, $c
 	ld hl, VTiles0
 	call Request2bpp
@@ -938,9 +938,9 @@ Intro_PlacePlayerSprite: ; 61cd
 
 
 CrystalIntroSequence: ; 620b
-	callab Copyright_GFPresents
+	farcall Copyright_GFPresents
 	jr c, StartTitleScreen
-	callba CrystalIntro
+	farcall CrystalIntro
 
 StartTitleScreen: ; 6219
 	ld a, [rSVBK]
@@ -1001,7 +1001,7 @@ StartTitleScreen: ; 6219
 
 
 .TitleScreen: ; 6274
-	callba _TitleScreen
+	farcall _TitleScreen
 	ret
 ; 627b
 
@@ -1010,7 +1010,7 @@ RunTitleScreen: ; 627b
 	bit 7, a
 	jr nz, .done_title
 	call TitleScreenScene
-	callba SuicuneFrameIterator
+	farcall SuicuneFrameIterator
 	call DelayFrame
 	and a
 	ret
@@ -1070,7 +1070,7 @@ TitleScreenEntrance: ; 62bc
 	dec b
 	jr nz, .loop
 
-	callba AnimateTitleCrystal
+	farcall AnimateTitleCrystal
 	ret
 
 .done
@@ -1205,12 +1205,12 @@ TitleScreenEnd: ; 6375
 ; 6389
 
 DeleteSaveData: ; 6389
-	callba _DeleteSaveData
+	farcall _DeleteSaveData
 	jp Init
 ; 6392
 
 ResetClock: ; 6392
-	callba _ResetClock
+	farcall _ResetClock
 	jp Init
 ; 639b
 
@@ -1243,7 +1243,7 @@ CopyrightString: ; 63fd
 ; 642e
 
 GameInit:: ; 642e
-	callba TryLoadSaveData
+	farcall TryLoadSaveData
 	call ClearWindowData
 	call ClearBGPalettes
 	call ClearTileMap

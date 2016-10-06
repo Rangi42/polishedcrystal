@@ -39,7 +39,7 @@ Trainerpic::
 	ld [hBGMapMode], a
 	ld a, [TrainerClass]
 	ld de, VTiles1
-	callba GetTrainerPic
+	farcall GetTrainerPic
 	ld a, [wMenuBorderTopCoord]
 	inc a
 	ld b, a

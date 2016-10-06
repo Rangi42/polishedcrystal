@@ -112,7 +112,7 @@ UnknownText_0x9c1b9:
 	cont "the Steel-type."
 
 	para "…Do you know about"
-	line "the steel-type?"
+	line "the Steel-type?"
 
 	para "They are very"
 	line "hard, cold, sharp,"

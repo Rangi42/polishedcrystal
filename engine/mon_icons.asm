@@ -65,7 +65,7 @@ LoadMenuMonIcon: ; 8e83f
 	push hl
 	push bc
 	ld d, a
-	callab ItemIsMail
+	farcall ItemIsMail
 	pop bc
 	pop hl
 	jr c, .not_mail
@@ -139,7 +139,7 @@ Function8e8d5: ; 8e8d5 (23:68d5)
 	push hl
 	push bc
 	ld d, a
-	callab ItemIsMail
+	farcall ItemIsMail
 	pop bc
 	pop hl
 	jr c, .mail
@@ -201,7 +201,7 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	ret
 
 .getspeed ; 8e94c (23:694c)
-	callba PlacePartymonHPBar
+	farcall PlacePartymonHPBar
 	call GetHPPal
 	ld e, d
 	ld d, 0

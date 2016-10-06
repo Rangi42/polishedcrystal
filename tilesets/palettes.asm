@@ -499,7 +499,7 @@ LoadLinkTradePalette: ; 49811
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
 	call FarCopyWRAM
-	callba ApplyPals
+	farcall ApplyPals
 	ret
 ; 49826
 
@@ -521,8 +521,8 @@ LoadSpecialMapOBPalette:
 
 .vermilion_gym:
 	ld a, $5
-	ld de, UnknOBPals + 5 palettes
-	ld hl, VermilionGymOBPalette_Silver
+	ld de, UnknOBPals + 6 palettes
+	ld hl, VermilionGymOBPalette_Tree
 	ld bc, 1 palettes
 	call FarCopyWRAM
 	ret
@@ -570,7 +570,7 @@ LoadSpecialMapOBPalette:
 .not_faraway_jungle:
 	ret
 
-VermilionGymOBPalette_Silver:
+VermilionGymOBPalette_Tree:
 	RGB 31, 31, 31
 	RGB 31, 31, 30
 	RGB 19, 24, 31

@@ -130,11 +130,261 @@ RefreshBattleHuds:: ; 39c9
 ; 39d4
 
 UpdateBattleHuds:: ; 39d4
-	callba UpdatePlayerHUD
-	callba UpdateEnemyHUD
+	farcall UpdatePlayerHUD
+	farcall UpdateEnemyHUD
 	ret
 ; 39e1
 
+GetOpponentAbilityAfterMoldBreaker:: ; 39e1
+; Returns an opponent's ability unless Mold Breaker
+; will suppress it.
+	push de
+	push bc
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	and a
+	cp MOLD_BREAKER
+	jr z, .cont_check
+	ld a, b
+	jr .end
+.cont_check
+	ld a, b
+	ld de, 1
+	push hl
+	push bc
+	ld hl, MoldBreakerSuppressedAbilities
+	call IsInArray
+	pop bc
+	pop hl
+	jr c, .suppressed
+	ld a, b
+	jr .end
+.suppressed:
+	ld a, NO_ABILITY
+.end
+	pop bc
+	pop de
+	ret
+
+MoldBreakerSuppressedAbilities:
+	db BATTLE_ARMOR
+	db BIG_PECKS
+	db DAMP
+	db DRY_SKIN
+	db FILTER
+	db FLASH_FIRE
+	db HYPER_CUTTER
+	db IMMUNITY
+	db INNER_FOCUS
+	db INSOMNIA
+	db KEEN_EYE
+	db LEAF_GUARD
+	db LEVITATE
+	db LIGHTNING_ROD
+	db LIMBER
+	db MAGIC_BOUNCE
+	db MAGMA_ARMOR
+	db MARVEL_SCALE
+	db MOTOR_DRIVE
+	db MULTISCALE
+	db OBLIVIOUS
+	db OVERCOAT
+	db OWN_TEMPO
+	db SAND_VEIL
+	db SAP_SIPPER
+	db SHELL_ARMOR
+	db SHIELD_DUST
+	db SNOW_CLOAK
+	db SOLID_ROCK
+	db SOUNDPROOF
+	db STICKY_HOLD
+	db STURDY
+	db SUCTION_CUPS
+	db THICK_FAT
+	db UNAWARE
+	db VITAL_SPIRIT
+	db VOLT_ABSORB
+	db WATER_ABSORB
+	db WATER_VEIL
+	db WONDER_SKIN
+	db -1
+
+ContactMoves::
+	db AERIAL_ACE
+	db AQUA_TAIL
+	db ASTONISH
+	db BITE
+	db BODY_SLAM
+	db BULLET_PUNCH
+	db COUNTER
+	db CRABHAMMER
+	db CROSS_CHOP
+	db CRUNCH
+	db CUT
+	db DIG
+	db DIZZY_PUNCH
+	db DOUBLE_KICK
+	db DOUBLE_EDGE
+	db DRAGON_CLAW
+	db DRAIN_KISS
+	db DRILL_PECK
+	db DYNAMICPUNCH
+	db EXTREMESPEED
+	db FALSE_SWIPE
+	db FEINT_ATTACK
+	db FIRE_PUNCH
+	db FLAIL
+	db FLAME_WHEEL
+	db FLARE_BLITZ
+	db FLY
+	db FURY_ATTACK
+	db FURY_CUTTER
+	db FURY_SWIPES
+	db HEADBUTT
+	db HI_JUMP_KICK
+	db HORN_ATTACK
+	db HYPER_FANG
+	db ICE_PUNCH
+	db IRON_HEAD
+	db IRON_TAIL
+	db KARATE_CHOP
+	db LEECH_LIFE
+	db LICK
+	db LOW_KICK
+	db MACH_PUNCH
+	db MEGAHORN
+	db METAL_CLAW
+	db NIGHT_SLASH
+	db OUTRAGE
+	db PECK
+	db PETAL_DANCE
+	db PLAY_ROUGH
+	db POISON_JAB
+	db POUND
+	db PURSUIT
+	db QUICK_ATTACK
+	db RAGE
+	db RAPID_SPIN
+	db RETURN
+	db REVERSAL
+	db ROCK_SMASH
+	db ROLLOUT
+	db SCRATCH
+	db SEISMIC_TOSS
+	db SHADOW_CLAW
+	db SLAM
+	db SLASH
+	db SPARK
+	db STEEL_WING
+	db STOMP
+	db STRENGTH
+	db SUBMISSION
+	db SUPER_FANG
+	db TACKLE
+	db TAKE_DOWN
+	db THIEF
+	db THRASH
+	db THUNDERPUNCH
+	db TRIPLE_KICK
+	db VINE_WHIP
+	db VITAL_THROW
+	db WATERFALL
+	db WILD_CHARGE
+	db WING_ATTACK
+	db WRAP
+	db X_SCISSOR
+	db ZEN_HEADBUTT
+	db -1
+
+PowderMoves::
+	db POISONPOWDER
+	db SLEEP_POWDER
+	db SPORE
+	db STUN_SPORE
+	db -1
+
+PunchingMoves::
+	db BULLET_PUNCH
+	db DIZZY_PUNCH
+	db DYNAMICPUNCH
+	db FIRE_PUNCH
+	db MACH_PUNCH
+	db THUNDERPUNCH
+	db -1
+
+SoundMoves::
+	db BUG_BUZZ
+	db DISARM_VOICE
+	db GROWL
+	db HYPER_VOICE
+	db METAL_SOUND
+	db PERISH_SONG
+	db ROAR
+	db SCREECH
+	db SING
+	db SUPERSONIC
+	db -1
+
+CheckIfTargetIsGrassType::
+	ld a, GRASS
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsPoisonType::
+	ld a, POISON
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsElectricType::
+	ld a, ELECTRIC
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsSteelType::
+	ld a, STEEL
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsFireType::
+	ld a, FIRE
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsIceType::
+	ld a, ICE
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsRockType::
+	ld a, ROCK
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsGroundType::
+	ld a, GROUND
+CheckIfTargetIsSomeType::
+	ld b, a
+	ld a, [hBattleTurn]
+	jr CheckIfSomeoneIsSomeType
+CheckIfUserIsFlyingType::
+	ld a, FLYING
+	jr CheckIfUserIsSomeType
+CheckIfUserIsPoisonType::
+	ld a, POISON
+	jr CheckIfUserIsSomeType
+CheckIfUserIsGhostType::
+	ld a, GHOST
+	jr CheckIfUserIsSomeType
+CheckIfUserIsSteelType::
+	ld a, STEEL
+CheckIfUserIsSomeType::
+	ld b, a
+	ld a, [hBattleTurn]
+	xor 1
+CheckIfSomeoneIsSomeType
+	ld c, a
+	ld de, EnemyMonType1
+	ld a, c
+	and a
+	jr z, .ok
+	ld de, BattleMonType1
+.ok
+	ld a, [de]
+	inc de
+	cp b
+	ret z
+	ld a, [de]
+	cp b
+	ret
 
 GetBattleVar:: ; 39e1
 ; Preserves hl.
@@ -189,10 +439,11 @@ endr
 	ret
 
 .battlevarpairs
-	dw .substatus1, .substatus2, .substatus3, .substatus4, .substatus5
-	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp, .substatus5opp
-	dw .status, .statusopp, .animation, .effect, .power, .type, .category
-	dw .curmove, .lastcounter, .lastcounteropp, .lastmove, .lastmoveopp
+	dw .substatus1, .substatus2, .substatus3, .substatus4
+	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
+	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
+	dw .power, .type, .category, .curmove, .lastcounter, .lastcounteropp
+	dw .lastmove, .lastmoveopp
 
 ;                       player                     enemy
 .substatus1     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
@@ -203,8 +454,8 @@ endr
 .substatus3opp  db ENEMY_SUBSTATUS_3,     PLAYER_SUBSTATUS_3
 .substatus4     db PLAYER_SUBSTATUS_4,    ENEMY_SUBSTATUS_4
 .substatus4opp  db ENEMY_SUBSTATUS_4,     PLAYER_SUBSTATUS_4
-.substatus5     db PLAYER_SUBSTATUS_5,    ENEMY_SUBSTATUS_5
-.substatus5opp  db ENEMY_SUBSTATUS_5,     PLAYER_SUBSTATUS_5
+.ability        db PLAYER_ABILITY,        ENEMY_ABILITY
+.abilityopp     db ENEMY_ABILITY,         PLAYER_ABILITY
 .status         db PLAYER_STATUS,         ENEMY_STATUS
 .statusopp      db ENEMY_STATUS,          PLAYER_STATUS
 .animation      db PLAYER_MOVE_ANIMATION, ENEMY_MOVE_ANIMATION
@@ -223,7 +474,7 @@ endr
 	dw PlayerSubStatus2,             EnemySubStatus2
 	dw PlayerSubStatus3,             EnemySubStatus3
 	dw PlayerSubStatus4,             EnemySubStatus4
-	dw PlayerSubStatus5,             EnemySubStatus5
+	dw PlayerAbility,                EnemyAbility
 	dw BattleMonStatus,              EnemyMonStatus
 	dw wPlayerMoveStructAnimation,   wEnemyMoveStructAnimation
 	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect

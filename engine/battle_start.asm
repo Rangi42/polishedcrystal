@@ -54,7 +54,7 @@ Predef_StartBattle: ; 8c20f
 
 .InitGFX: ; 8c26d
 	ld a, [wLinkMode]
-	callba Function6454
+	farcall Function6454
 	call UpdateSprites
 	call DelayFrame
 	call .LoadPokeballTiles
@@ -288,7 +288,7 @@ StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
 ; 8c3e8
 
 StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
-	callba Function5602
+	farcall Function5602
 	ld a, $5 ; BANK(LYOverrides)
 	ld [rSVBK], a
 
@@ -346,7 +346,7 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	ret
 
 StartTrainerBattle_SetUpForSpinOutro: ; 8c43d (23:443d)
-	callba Function5602
+	farcall Function5602
 	ld a, $5 ; BANK(LYOverrides)
 	ld [rSVBK], a
 	call StartTrainerBattle_NextScene
@@ -489,7 +489,7 @@ endr
 ; 8c578
 
 StartTrainerBattle_SetUpForRandomScatterOutro: ; 8c578 (23:4578)
-	callba Function5602
+	farcall Function5602
 	ld a, $5 ; BANK(LYOverrides)
 	ld [rSVBK], a
 	call StartTrainerBattle_NextScene
@@ -795,7 +795,7 @@ zoombox: macro
 endm
 
 StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
-	callba Function5602
+	farcall Function5602
 	ld de, .boxes
 
 .loop

@@ -106,3 +106,4 @@ TrainerGroups: ; 0x39999
 	dw OmastarFossilGroup
 	dw KabutopsFossilGroup
 	dw AerodactylFossilGroup
+	dw MeteoriteGroup

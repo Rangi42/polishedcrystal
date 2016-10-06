@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db THICK_FAT ; ability 1
+	db SCRAPPY ; ability 2
+	db SAP_SIPPER ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

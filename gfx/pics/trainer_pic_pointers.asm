@@ -104,3 +104,4 @@
 	add_pic OmastarFossilPic
 	add_pic KabutopsFossilPic
 	add_pic AerodactylFossilPic
+	add_pic MeteoritePic

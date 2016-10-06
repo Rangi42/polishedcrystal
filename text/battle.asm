@@ -205,6 +205,13 @@ BattleText_TheHailStopped:
 	text "The hail stopped."
 	prompt
 
+; general weather cancellation used for
+; cloud nine
+BattleText_TheWeatherSubsided:
+	text "The weather"
+	line "subsided."
+	prompt
+
 BattleText_EnemyPkmnFainted: ; 0x809a8
 	text "Foe @"
 	text_from_ram EnemyMonNick
@@ -577,6 +584,13 @@ InfatuationText: ; 0x80eda
 	text "<USER>'s"
 	line "infatuation kept"
 	cont "it from attacking!"
+	prompt
+; 0x80f02
+
+GotOverItsInfatuationText: ; 0x80eda
+	text "<USER>"
+	line "got over its"
+	cont "infatuation!"
 	prompt
 ; 0x80f02
 
@@ -1264,3 +1278,65 @@ IgnoredOrders2Text: ; 0x81850
 	line "ignored orders!"
 	prompt
 ; 0x81863
+
+BecameHealthyText:
+	text "<USER>"
+	line "became healthy!"
+	prompt
+
+TraceActivationText:
+	text "<USER>"
+	line "traced"
+	cont "<OPABIL>!"
+	prompt
+
+TraceFailureText:
+	text "<USER>"
+	line "failed to trace"
+	cont "<TARGET>!"
+	prompt
+
+NotifyPressure:
+	text "<USER> is"
+	line "exerting its"
+	cont "Pressure!"
+	prompt
+
+NotifyMoldBreaker:
+	text "<USER>"
+	line "breaks the mold!"
+	prompt
+
+NotifyUnnerve:
+	text "<TARGET> is"
+	line "too afraid to eat"
+	cont "Berries!"
+	prompt
+
+FriskedItemText:
+	text "<USER>"
+	line "frisked its foe"
+
+	para "and found a"
+	line "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
+PoisonHealText:
+	text "<USER>'s"
+	line "Poison Heal"
+	cont "restored health!"
+	prompt
+
+FirePoweredUpText:
+	text "<USER>'s"
+	line "Fire-type moves"
+	cont "were powered up!"
+	prompt
+
+AngerPointMaximizedAttackText:
+	text "<USER>"
+	line "maximized Attack"
+	cont "with Anger Point!"
+	prompt

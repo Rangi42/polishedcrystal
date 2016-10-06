@@ -161,13 +161,13 @@ endr
 ; 1bc9
 
 StaticMenuJoypad:: ; 1bc9
-	callab _StaticMenuJoypad
+	farcall _StaticMenuJoypad
 	call GetMenuJoypad
 	ret
 ; 1bd3
 
 ScrollingMenuJoypad:: ; 1bd3
-	callab _ScrollingMenuJoypad
+	farcall _ScrollingMenuJoypad
 	call GetMenuJoypad
 	ret
 ; 1bdd

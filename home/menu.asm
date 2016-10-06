@@ -544,7 +544,7 @@ Place2DMenuItemName:: ; 201c
 _2DMenu:: ; 202a
 	ld a, [hROMBank]
 	ld [wMenuData2_2DMenuItemStringsBank], a
-	callba _2DMenu_
+	farcall _2DMenu_
 	ld a, [wMenuCursorBuffer]
 	ret
 ; 2039
@@ -552,7 +552,7 @@ _2DMenu:: ; 202a
 InterpretBattleMenu:: ; 2039
 	ld a, [hROMBank]
 	ld [wMenuData2_2DMenuItemStringsBank], a
-	callba _InterpretBattleMenu
+	farcall _InterpretBattleMenu
 	ld a, [wMenuCursorBuffer]
 	ret
 ; 2048

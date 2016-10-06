@@ -4,7 +4,7 @@ if DEF(FAITHFUL)
 	db 100,  50,  80,  50,  60,  80
 	;   hp  atk  def  spd  sat  sdf
 else
-	db 100, 100,  80,  50,  90,  80
+	db 100,  50,  80,  50,  90,  80
 	;   hp  atk  def  spd  sat  sdf
 endc
 
@@ -22,7 +22,10 @@ endc
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db THICK_FAT ; ability 1
+	db HUGE_POWER ; ability 2
+	db SAP_SIPPER ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn AMPHIBIAN, FAERY ; egg groups
 

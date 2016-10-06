@@ -284,7 +284,7 @@ Menu_WasButtonPressed: ; 24259
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	jr z, .skip_to_joypad
-	callab PlaySpriteAnimationsAndDelayFrame
+	farcall PlaySpriteAnimationsAndDelayFrame
 
 .skip_to_joypad
 	call JoyTextDelay

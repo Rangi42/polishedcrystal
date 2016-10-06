@@ -9,10 +9,10 @@ AI_SwitchOrTryItem: ; 38000
 	and a
 	ret nz
 
-	callba CheckEnemyLockedIn
+	farcall CheckEnemyLockedIn
 	ret nz
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, DontSwitch
 
@@ -44,7 +44,7 @@ DontSwitch: ; 38041
 ; 38045
 
 SwitchOften: ; 38045
-	callab CheckAbleToSwitch
+	farcall CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -80,7 +80,7 @@ SwitchOften: ; 38045
 ; 38083
 
 SwitchRarely: ; 38083
-	callab CheckAbleToSwitch
+	farcall CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -115,7 +115,7 @@ SwitchRarely: ; 38083
 ; 380c1
 
 SwitchSometimes: ; 380c1
-	callab CheckAbleToSwitch
+	farcall CheckAbleToSwitch
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -151,7 +151,7 @@ SwitchSometimes: ; 380c1
 
 
 CheckSubstatusCantRun: ; 380ff
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	ret
 ; 38105
@@ -226,9 +226,6 @@ endr
 	ld [de], a
 	inc a
 	ld [wEnemyGoesFirst], a
-
-	ld hl, EnemySubStatus3
-	res SUBSTATUS_BIDE, [hl]
 
 	xor a
 	ld [EnemyFuryCutterCount], a
@@ -320,7 +317,7 @@ AI_Items: ; 39196
 	jp .DontUse
 
 .StatusCheckContext:
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr z, .FailToxicCheck
 	ld a, [EnemyToxicCount]
@@ -360,12 +357,12 @@ AI_Items: ; 39196
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jr nz, .CheckHalfOrQuarterHP
-	callab AICheckEnemyHalfHP
+	farcall AICheckEnemyHalfHP
 	jp c, .DontUse
 	ld a, [bc]
 	bit UNKNOWN_USE_F, a
 	jp nz, .CheckQuarterHP
-	callab AICheckEnemyQuarterHP
+	farcall AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp 1 + 50 percent
@@ -373,7 +370,7 @@ AI_Items: ; 39196
 	jp .DontUse
 
 .CheckQuarterHP: ; 38254 (e:4254)
-	callab AICheckEnemyQuarterHP
+	farcall AICheckEnemyQuarterHP
 	jp c, .DontUse
 	call Random
 	cp -1 + 20 percent
@@ -381,9 +378,9 @@ AI_Items: ; 39196
 	jr .UseHealItem
 
 .CheckHalfOrQuarterHP: ; 38267 (e:4267)
-	callab AICheckEnemyHalfHP
+	farcall AICheckEnemyHalfHP
 	jp c, .DontUse
-	callab AICheckEnemyQuarterHP
+	farcall AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp -1 + 20 percent
@@ -509,7 +506,7 @@ AI_Items: ; 39196
 
 AIUpdateHUD: ; 38387
 	call UpdateEnemyMonInParty
-	callba UpdateEnemyHUD
+	farcall UpdateEnemyHUD
 	ld a, $1
 	ld [hBGMapMode], a
 	ld hl, wEnemyItemState
@@ -669,7 +666,7 @@ AI_Switch: ; 3846c
 	res SUBSTATUS_RAGE, [hl]
 	xor a
 	ld [hBattleTurn], a
-	callab PursuitSwitch
+	farcall PursuitSwitch
 
 	push af
 	ld a, [CurOTMon]
@@ -690,12 +687,12 @@ AI_Switch: ; 3846c
 .skiptext
 	ld a, 1
 	ld [wAISwitch], a
-	callab NewEnemyMonStatus
-	callab ResetEnemyStatLevels
+	farcall NewEnemyMonStatus
+	farcall ResetEnemyStatLevels
 	ld hl, PlayerSubStatus1
 	res SUBSTATUS_IN_LOVE, [hl]
-	callba EnemySwitch
-	callba ResetBattleParticipants
+	farcall EnemySwitch
+	farcall ResetBattleParticipants
 	xor a
 	ld [wAISwitch], a
 	ld a, [wLinkMode]
@@ -718,7 +715,7 @@ AI_HealStatus: ; 384e0
 	xor a
 	ld [hl], a
 	ld [EnemyMonStatus], a
-	ld hl, EnemySubStatus5
+	ld hl, EnemySubStatus2
 	res SUBSTATUS_TOXIC, [hl]
 	ret
 ; 384f7
@@ -781,7 +778,7 @@ EnemyUsedXItem:
 	push bc
 	call PrintText_UsedItemOn
 	pop bc
-	callba CheckIfStatCanBeRaised
+	farcall CheckIfStatCanBeRaised
 	jp AIUpdateHUD
 ; 38568
 

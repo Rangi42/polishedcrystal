@@ -77,7 +77,7 @@ UnknownText_0x18c042:
 	line "Pewter Gym?"
 
 	para "The Leader uses"
-	line "rock-type #mon."
+	line "Rock-type #mon."
 	done
 
 UnknownText_0x18c080:

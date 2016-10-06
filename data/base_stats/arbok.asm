@@ -22,7 +22,10 @@ endc
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db INTIMIDATE ; ability 1
+	db SHED_SKIN ; ability 2
+	db UNNERVE ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, REPTILE ; egg groups
 

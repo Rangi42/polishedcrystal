@@ -69,7 +69,7 @@ AI_Redundant: ; 2c41a
 	ret
 
 .Transform: ; 2c4a5
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	ret
 
@@ -94,7 +94,7 @@ AI_Redundant: ; 2c41a
 	ret
 
 .Encore: ; 2c4c2
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_ENCORED, a
 	ret
 
@@ -106,7 +106,7 @@ AI_Redundant: ; 2c41a
 	jr .NotRedundant
 
 .MeanLook: ; 2c4d1
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	ret
 
@@ -140,7 +140,7 @@ AI_Redundant: ; 2c41a
 	jr .NotRedundant
 
 .Attract: ; 2c4fe
-	callba CheckOppositeGender
+	farcall CheckOppositeGender
 	jr c, .Redundant
 	ld a, [PlayerSubStatus1]
 	bit SUBSTATUS_IN_LOVE, a
@@ -182,7 +182,7 @@ AI_Redundant: ; 2c41a
 .Heal:
 .MorningSun:
 .Moonlight: ; 2c539
-	callba AICheckEnemyMaxHP
+	farcall AICheckEnemyMaxHP
 	jr nc, .NotRedundant
 
 .Teleport:

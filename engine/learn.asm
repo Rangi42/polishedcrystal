@@ -85,7 +85,7 @@ LearnMove: ; 6508
 	cp b
 	jp nz, .learned
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jp nz, .learned
 

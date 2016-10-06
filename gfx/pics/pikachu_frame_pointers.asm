@@ -2,4 +2,5 @@ PikachuFramesPointers:
 	dw PikachuPlainFrames
 	dw PikachuFlyFrames
 	dw PikachuSurfFrames
-	dw PikachuBothFrames
+	dw PikachuPikaFrames
+	dw PikachuChuchuFrames

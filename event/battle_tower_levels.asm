@@ -684,7 +684,7 @@ Function11a235: ; 11a235
 	and a
 	jr nz, .asm_11a2c4
 	call ExitMenu
-	callba ReloadMapPart
+	farcall ReloadMapPart
 	ld a, [wcd46]
 	cp $0
 	jr z, .asm_11a2b4
@@ -706,7 +706,7 @@ Function11a235: ; 11a235
 
 .asm_11a2c4
 	call ExitMenu
-	callba ReloadMapPart
+	farcall ReloadMapPart
 	and a
 	ret
 ; 11a2cf
@@ -738,7 +738,7 @@ Function11a33a: ; 11a33a
 
 .asm_11a346
 	call ExitMenu
-	callba ReloadMapPart
+	farcall ReloadMapPart
 	call Function115dc3
 	and a
 	ret
@@ -786,7 +786,7 @@ RespondToInput46: ; 11a536
 	call Function11a9f0
 	jr nz, .asm_11a562
 	call ExitMenu
-	callba ReloadMapPart
+	farcall ReloadMapPart
 
 .asm_11a562
 	scf

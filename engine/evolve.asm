@@ -260,7 +260,7 @@ endr
 	ld [hBGMapMode], a
 	call ClearSprites
 
-	callba EvolutionAnimation
+	farcall EvolutionAnimation
 
 	push af
 	call ClearSprites
@@ -346,7 +346,7 @@ endr
 
 	ld hl, TempMonDVs
 	predef GetVariant
-	callab UpdateUnownDex
+	farcall UpdateUnownDex
 
 .skip_unown
 	pop de

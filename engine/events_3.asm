@@ -38,7 +38,7 @@ ReturnFromMapSetupScript:: ; b8000
 	ld [wLandmarkSignTimer], a
 	call LoadMapNameSignGFX
 	call InitMapNameFrame
-	callba Function104303
+	farcall Function104303
 	ret
 
 .dont_do_map_sign
@@ -106,7 +106,7 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	jr nz, .skip2
 	call InitMapNameFrame
 	call PlaceMapNameCenterAlign
-	callba Function104303
+	farcall Function104303
 .skip2
 	ld a, $80
 	ld a, $70
@@ -144,7 +144,7 @@ InitMapNameFrame: ; b80d3
 PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	ld a, [wCurrentLandmark]
 	ld e, a
-	callba GetLandmarkName
+	farcall GetLandmarkName
 	call .GetNameLength
 	ld a, SCREEN_WIDTH
 	sub c

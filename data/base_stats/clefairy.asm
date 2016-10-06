@@ -13,7 +13,10 @@
 	db 10 ; step cycles to hatch
 	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db CUTE_CHARM ; ability 1
+	db MAGIC_GUARD ; ability 2
+	db CUTE_CHARM ; hidden ability
+	db 0 ; padding
 	db FAST ; growth rate
 	dn FAERY, FAERY ; egg groups
 

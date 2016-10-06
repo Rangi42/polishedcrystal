@@ -13,7 +13,10 @@
 	db 20 ; step cycles to hatch
 	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db HYPER_CUTTER ; ability 1
+	db SAND_VEIL ; ability 2
+	db IMMUNITY ; hidden ability
+	db 0 ; padding
 	db MEDIUM_SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups
 

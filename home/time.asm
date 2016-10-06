@@ -15,7 +15,7 @@ UpdateTime:: ; 5a7
 	call GetClock
 	call FixDays
 	call FixTime
-	callba GetTimeOfDay
+	farcall GetTimeOfDay
 	ret
 ; 5b7
 
@@ -192,7 +192,7 @@ SetDayOfWeek:: ; 663
 	jr InitTime ; useless
 
 InitTime:: ; 677
-	callba _InitTime
+	farcall _InitTime
 	ret
 ; 67e
 

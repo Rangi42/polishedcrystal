@@ -13,7 +13,10 @@
 	db 80 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db PRESSURE ; ability 1
+	db PRESSURE ; ability 2
+	db SNOW_CLOAK ; hidden ability
+	db 0 ; padding
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

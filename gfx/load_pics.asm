@@ -1,7 +1,7 @@
 GetVariant: ; 51040
 	ld a, [CurPartySpecies]
 	cp UNOWN
-	jr z, .GetUnownVariant
+	jp z, .GetUnownVariant
 
 .GetPikachuVariant:
 ; Return Unown letter in UnownLetterOrPikachuVariant based on moves
@@ -12,6 +12,24 @@ GetVariant: ; 51040
 ; hl is ...MonDVs
 
 	push bc
+	ld bc, EnemyMonDVs
+	ld a, b
+	cp h
+	jr nz, .notenemy
+	ld a, c
+	cp l
+	jr nz, .notenemy
+	ld a, [wBattleMode]
+	cp 2
+	jr nz, .notenemy
+
+	ld a, [OtherTrainerClass]
+	cp RED
+	jr z, .red_pika
+	cp YELLOW
+	jr z, .yellow_chuchu
+
+.notenemy
 	ld bc, TempMonDVs
 	ld a, b
 	cp h
@@ -29,18 +47,13 @@ endr
 rept 4
 	dec hl
 endr
+	ld a, 3 ; Surf
+	ld [UnownLetterOrPikachuVariant], a
+rept 4
 	ld a, [hli]
-	cp SURF
-	jr z, .surf1
-	ld a, [hli]
-	cp SURF
-	jr z, .surf2
-	ld a, [hli]
-	cp SURF
-	jr z, .surf3
-	ld a, [hli]
-	cp SURF
-	jr z, .surf4
+	cp FLY
+	ret z
+endr
 
 rept 4
 	dec hl
@@ -58,22 +71,15 @@ endr
 	ld [UnownLetterOrPikachuVariant], a
 	ret
 
-.surf4
-	dec hl
-.surf3
-	dec hl
-.surf2
-	dec hl
-.surf1
-	dec hl
-	ld a, 4 ; Fly + Surf
+.red_pika
+	pop bc
+	ld a, 4 ; Pika
 	ld [UnownLetterOrPikachuVariant], a
-rept 4
-	ld a, [hli]
-	cp FLY
-	ret z
-endr
-	ld a, 3 ; Surf
+	ret
+
+.yellow_chuchu
+	pop bc
+	ld a, 5 ; Chuchu
 	ld [UnownLetterOrPikachuVariant], a
 	ret
 

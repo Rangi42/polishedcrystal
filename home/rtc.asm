@@ -14,11 +14,11 @@ RTC:: ; 46f
 	ret z
 
 TimeOfDayPals:: ; 47e
-	callab _TimeOfDayPals
+	farcall _TimeOfDayPals
 	ret
 ; 485
 
 UpdateTimePals:: ; 485
-	callab _UpdateTimePals
+	farcall _UpdateTimePals
 	ret
 ; 48c

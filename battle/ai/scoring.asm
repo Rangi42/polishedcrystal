@@ -27,7 +27,7 @@ AI_Basic: ; 38591
 	push hl
 	push de
 	push bc
-	callba AI_Redundant
+	farcall AI_Redundant
 	pop bc
 	pop de
 	pop hl
@@ -178,7 +178,7 @@ AI_Types: ; 38635
 	push de
 	ld a, 1
 	ld [hBattleTurn], a
-	callab BattleCheckTypeMatchup
+	farcall BattleCheckTypeMatchup
 	pop de
 	pop bc
 	pop hl
@@ -432,7 +432,7 @@ AI_Smart_LeechHit: ; 387f7
 	push hl
 	ld a, 1
 	ld [hBattleTurn], a
-	callab BattleCheckTypeMatchup
+	farcall BattleCheckTypeMatchup
 	pop hl
 
 ; 60% chance to discourage this move if not very effective.
@@ -465,7 +465,7 @@ AI_Smart_LeechHit: ; 387f7
 
 
 AI_Smart_LockOn: ; 3881d
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .asm_38882
 
@@ -513,7 +513,7 @@ AI_Smart_LockOn: ; 3881d
 
 	push hl
 	push bc
-	callba BattleCheckTypeMatchup
+	farcall BattleCheckTypeMatchup
 	ld a, [wd265]
 	cp $a
 	pop bc
@@ -577,7 +577,7 @@ AI_Smart_Explosion: ; 388a6
 
 ; Unless this is the enemy's last Pokemon...
 	push hl
-	callba FindAliveEnemyMons
+	farcall FindAliveEnemyMons
 	pop hl
 	jr nc, .asm_388b7
 
@@ -636,7 +636,7 @@ AI_Smart_EvasionUp: ; 388d4
 	jr nc, .asm_388f2
 
 ; ...greatly encourage this move if player is badly poisoned.
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_388ef
 
@@ -687,7 +687,7 @@ endr
 ; 100% chance to end up here if enemy's HP is below 25%.
 ; In other words, we only end up here if the move has not been encouraged or dismissed.
 .asm_38911
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38938
 
@@ -819,7 +819,7 @@ AI_Smart_AccuracyDown: ; 38985
 	jr nc, .asm_389a0
 
 ; ...greatly encourage this move if player is badly poisoned.
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_3899d
 
@@ -866,7 +866,7 @@ endr
 
 ; We only end up here if the move has not been already encouraged.
 .asm_389bf
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_389e6
 
@@ -982,7 +982,7 @@ AI_Smart_Whirlwind: ; 38a2a
 ; Consider player's type(s) if its moves are unknown.
 
 	push hl
-	callab CheckPlayerMoveTypeMatchups
+	farcall CheckPlayerMoveTypeMatchups
 	ld a, [wEnemyAISwitchScore]
 	cp 10 ; neutral
 	pop hl
@@ -1068,7 +1068,7 @@ AI_Smart_Bind: ; 38a71
 
 ; 50% chance to greatly encourage this move if player is either
 ; badly poisoned, in love, identified, stuck in Rollout, or has a Nightmare.
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38a91
 
@@ -1376,7 +1376,7 @@ AI_Smart_Mimic: ; 38ba8
 
 	ld a, $1
 	ld [hBattleTurn], a
-	callab BattleCheckTypeMatchup
+	farcall BattleCheckTypeMatchup
 
 	ld a, [wd265]
 	cp $a
@@ -1768,9 +1768,9 @@ AI_Smart_PriorityHit: ; 38d5a
 	ld a, $1
 	ld [hBattleTurn], a
 	push hl
-	callab EnemyAttackDamage
-	callab BattleCommand_DamageCalc
-	callab BattleCommand_Stab
+	farcall EnemyAttackDamage
+	farcall BattleCommand_DamageCalc
+	farcall BattleCommand_Stab
 	pop hl
 	ld a, [CurDamage + 1]
 	ld c, a
@@ -1841,7 +1841,7 @@ AI_Smart_MeanLook: ; 38dfb
 	jp z, AIDiscourageMove
 
 ; 80% chance to greatly encourage this move if the enemy is badly poisoned (weird).
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38e26
 
@@ -1853,7 +1853,7 @@ AI_Smart_MeanLook: ; 38dfb
 
 ; Otherwise, discourage this move unless the player only has not very effective moves against the enemy.
 	push hl
-	callab CheckPlayerMoveTypeMatchups
+	farcall CheckPlayerMoveTypeMatchups
 	ld a, [wEnemyAISwitchScore]
 	cp $b ; not very effective
 	pop hl
@@ -1968,7 +1968,7 @@ endr
 	jp nz, AIDiscourageMove
 
 	push hl
-	callba FindAliveEnemyMons
+	farcall FindAliveEnemyMons
 	pop hl
 	jr nc, .asm_38eb0
 
@@ -2017,7 +2017,7 @@ AI_Smart_Protect: ; 38ed2
 	and a
 	jr nz, .asm_38f13
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .asm_38f14
 
@@ -2029,7 +2029,7 @@ AI_Smart_Protect: ; 38ed2
 	bit SUBSTATUS_CHARGED, a
 	jr nz, .asm_38f0d
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38f0d
 	ld a, [PlayerSubStatus4]
@@ -2100,16 +2100,16 @@ endr
 
 AI_Smart_PerishSong: ; 38f4a
 	push hl
-	callab FindAliveEnemyMons
+	farcall FindAliveEnemyMons
 	pop hl
 	jr c, .no
 
-	ld a, [PlayerSubStatus5]
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .yes
 
 	push hl
-	callab CheckPlayerMoveTypeMatchups
+	farcall CheckPlayerMoveTypeMatchups
 	ld a, [wEnemyAISwitchScore]
 	cp 10 ; 1.0
 	pop hl
@@ -2205,7 +2205,7 @@ endr
 	ret
 
 .asm_38fcb
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	ret z
 
@@ -2371,7 +2371,7 @@ AI_Smart_BatonPass: ; 39062
 ; Consider player's type(s) if its moves are unknown.
 
 	push hl
-	callab CheckPlayerMoveTypeMatchups
+	farcall CheckPlayerMoveTypeMatchups
 	ld a, [wEnemyAISwitchScore]
 	cp 10 ; neutral
 	pop hl
@@ -2435,8 +2435,8 @@ AI_Smart_HiddenPower: ; 3909e
 	ld [hBattleTurn], a
 
 ; Calculate Hidden Power's type and base power based on enemy's DVs.
-	callab HiddenPowerDamage
-	callab BattleCheckTypeMatchup
+	farcall HiddenPowerDamage
+	farcall BattleCheckTypeMatchup
 	pop hl
 
 ; Discourage Hidden Power if not very effective.
@@ -3319,13 +3319,13 @@ AIDamageCalc: ; 393e7
 	ld hl, .ConstantDamageEffects
 	call IsInArray
 	jr nc, .asm_39400
-	callab BattleCommand_ConstantDamage
+	farcall BattleCommand_ConstantDamage
 	ret
 
 .asm_39400
-	callab EnemyAttackDamage
-	callab BattleCommand_DamageCalc
-	callab BattleCommand_Stab
+	farcall EnemyAttackDamage
+	farcall BattleCommand_DamageCalc
+	farcall BattleCommand_Stab
 	ret
 
 .ConstantDamageEffects:
@@ -3474,7 +3474,7 @@ AI_Status: ; 39453
 	push de
 	ld a, 1
 	ld [hBattleTurn], a
-	callab BattleCheckTypeMatchup
+	farcall BattleCheckTypeMatchup
 	pop de
 	pop bc
 	pop hl

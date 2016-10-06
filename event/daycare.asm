@@ -30,7 +30,7 @@ Special_DayCareMan: ; 166d6
 	jr c, .cancel
 	call DayCareAskDepositPokemon
 	jr c, .print_text
-	callba DepositMonWithDaycareMan
+	farcall DepositMonWithDaycareMan
 	ld hl, wDaycareMan
 	set 0, [hl]
 	call DayCare_DepositPokemonText
@@ -38,12 +38,12 @@ Special_DayCareMan: ; 166d6
 	ret
 
 .AskWithdrawMon:
-	callba GetBreedMon1LevelGrowth
+	farcall GetBreedMon1LevelGrowth
 	ld hl, wBreedMon1Nick
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
-	callba RetrievePokemonFromDaycareMan
+	farcall RetrievePokemonFromDaycareMan
 	call DayCare_TakeMoney_PlayCry
 	ld hl, wDaycareMan
 	res 0, [hl]
@@ -69,7 +69,7 @@ Special_DayCareLady: ; 1672a
 	jr c, .cancel
 	call DayCareAskDepositPokemon
 	jr c, .print_text
-	callba DepositMonWithDaycareLady
+	farcall DepositMonWithDaycareLady
 	ld hl, wDaycareLady
 	set 0, [hl]
 	call DayCare_DepositPokemonText
@@ -77,12 +77,12 @@ Special_DayCareLady: ; 1672a
 	ret
 
 .AskWithdrawMon:
-	callba GetBreedMon2LevelGrowth
+	farcall GetBreedMon2LevelGrowth
 	ld hl, wBreedMon2Nick
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
-	callba RetrievePokemonFromDaycareLady
+	farcall RetrievePokemonFromDaycareLady
 	call DayCare_TakeMoney_PlayCry
 	ld hl, wDaycareLady
 	res 0, [hl]
@@ -124,19 +124,19 @@ DayCareAskDepositPokemon: ; 16798
 	ld a, DAYCARETEXT_WHICH_ONE
 	call PrintDayCareText
 	ld b, 6
-	callba SelectTradeOrDaycareMon
+	farcall SelectTradeOrDaycareMon
 	jr c, .Declined
 	ld a, [CurPartySpecies]
 	cp EGG
 	jr z, .Egg
-	callba CheckCurPartyMonFainted
+	farcall CheckCurPartyMonFainted
 	jr c, .OutOfUsableMons
 	ld hl, PartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [CurPartyMon]
 	call AddNTimes
 	ld d, [hl]
-	callba ItemIsMail
+	farcall ItemIsMail
 	jr c, .HoldingMail
 	ld hl, PartyMonNicknames
 	ld a, [CurPartyMon]
@@ -209,7 +209,7 @@ DayCare_AskWithdrawBreedMon: ; 16807
 .check_money
 	ld de, Money
 	ld bc, StringBuffer2 + 2
-	callba CompareMoney
+	farcall CompareMoney
 	jr c, .not_enough_money
 	ld a, [PartyCount]
 	cp PARTY_LENGTH
@@ -236,7 +236,7 @@ DayCare_AskWithdrawBreedMon: ; 16807
 DayCare_TakeMoney_PlayCry: ; 16850
 	ld bc, StringBuffer2 + 2
 	ld de, Money
-	callba TakeMoney
+	farcall TakeMoney
 	ld a, DAYCARETEXT_WITHDRAW
 	call PrintDayCareText
 	ld a, [CurPartySpecies]
@@ -596,7 +596,7 @@ DayCare_InitBreeding: ; 16a3b
 	ld a, [wDaycareMan]
 	bit 0, a
 	ret z
-	callab CheckBreedmonCompatibility
+	farcall CheckBreedmonCompatibility
 	ld a, [wd265]
 	and a
 	ret z
@@ -639,7 +639,7 @@ DayCare_InitBreeding: ; 16a3b
 	cp DITTO
 	ld a, $0
 	jr z, .LoadWhichBreedmonIsTheMother
-	callba GetGender
+	farcall GetGender
 	ld a, $0
 	jr z, .LoadWhichBreedmonIsTheMother
 	inc a
@@ -653,8 +653,8 @@ DayCare_InitBreeding: ; 16a3b
 
 .GotMother:
 	ld [CurPartySpecies], a
-	callab GetPreEvolution
-	callab GetPreEvolution
+	farcall GetPreEvolution
+	farcall GetPreEvolution
 	ld a, EGG_LEVEL
 	ld [CurPartyLevel], a
 
@@ -690,7 +690,7 @@ DayCare_InitBreeding: ; 16a3b
 	xor a
 	ld [Buffer1], a
 	predef FillMoves
-	callba InitEggMoves
+	farcall InitEggMoves
 	ld hl, wEggMonID
 	ld a, [PlayerID]
 	ld [hli], a
@@ -698,7 +698,7 @@ DayCare_InitBreeding: ; 16a3b
 	ld [hl], a
 	ld a, [CurPartyLevel]
 	ld d, a
-	callab CalcExpAtLevel
+	farcall CalcExpAtLevel
 	ld hl, wEggMonExp
 	ld a, [hMultiplicand]
 	ld [hli], a
@@ -731,7 +731,7 @@ DayCare_InitBreeding: ; 16a3b
 	ld a, BREEDMON
 	ld [MonType], a
 	push hl
-	callba GetGender
+	farcall GetGender
 	pop hl
 	ld de, wBreedMon1DVs
 	ld bc, wBreedMon2DVs

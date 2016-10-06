@@ -11,13 +11,22 @@ BattleCommand_Attract: ; 377ce
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_LOVE, [hl]
 	jr nz, .failed
+	call GetOpponentAbilityAfterMoldBreaker
+	cp OBLIVIOUS
+	jr nz, .no_ability_protection
+	farcall ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
+	jp StdBattleTextBox
 
+.no_ability_protection
 	set SUBSTATUS_IN_LOVE, [hl]
 	call AnimateCurrentMove
 
 ; 'fell in love!'
 	ld hl, FellInLoveText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	farcall RunEnemyStatusHealAbilities
+	ret
 
 .failed
 	jp FailAttract
@@ -35,7 +44,7 @@ CheckOppositeGender: ; 377f5
 	xor a
 	ld [MonType], a
 
-	callba GetGender
+	farcall GetGender
 	jr c, .genderless_samegender
 
 	ld b, 1
@@ -47,7 +56,7 @@ CheckOppositeGender: ; 377f5
 	ld a, [TempEnemyMonSpecies]
 	ld [CurPartySpecies], a
 	ld hl, EnemyMonDVs
-	ld a, [EnemySubStatus5]
+	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .not_transformed
 	ld hl, wEnemyBackupDVs
@@ -58,7 +67,7 @@ CheckOppositeGender: ; 377f5
 	ld [TempMonDVs + 1], a
 	ld a, 3
 	ld [MonType], a
-	callba GetGender
+	farcall GetGender
 	pop bc
 	jr c, .genderless_samegender
 

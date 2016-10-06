@@ -27,7 +27,14 @@ endc
 	db 15 ; step cycles to hatch
 	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
-	db 0, 0, 0, 0 ; padding
+	db COMPOUND_EYES ; ability 1
+if DEF(FAITHFUL)
+	db COMPOUND_EYES ; ability 2
+else
+	db LEVITATE ; ability 2
+endc
+	db TINTED_LENS ; hidden ability
+	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

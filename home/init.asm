@@ -139,14 +139,14 @@ Init:: ; 17d
 	ld a, -1
 	ld [hLinkPlayerNumber], a
 
-	callba Function9890
+	farcall Function9890
 
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
 	xor a ; VBGMap1 % $100
 	ld [hBGMapAddress], a
 
-	callba StartClock
+	farcall StartClock
 
 	xor a
 	ld [MBC3LatchClock], a

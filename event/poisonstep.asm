@@ -74,6 +74,20 @@ DoPoisonStep:: ; 505da
 	or c
 	ret z
 
+; check for immunity or poison heal
+	ld a, MON_DVS + 1
+	call GetPartyParamLocation
+	ld b, [hl]
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld c, [hl]
+	farcall GetAbility
+	ld a, b
+	cp IMMUNITY
+	jr z, .heal_poison
+	cp POISON_HEAL
+	ret z ; keep poison, but don't deal damage for it
+
 ; check if 1 HP
 	ld a, b
 	or a
@@ -83,6 +97,7 @@ DoPoisonStep:: ; 505da
 	jr nz, .DoPoisonDamage
 
 ; if 1 HP, heal poison
+.heal_poison
 	ld a, MON_STATUS
 	call GetPartyParamLocation
 	ld [hl], 0
@@ -135,8 +150,8 @@ DoPoisonStep:: ; 505da
 	and %10
 	jr z, .mon_not_fainted
 	ld c, HAPPINESS_POISONFAINT
-	callba ChangeHappiness
-	callba GetPartyNick
+	farcall ChangeHappiness
+	farcall GetPartyNick
 	ld hl, .PoisonRecoveryText
 	call PrintText
 

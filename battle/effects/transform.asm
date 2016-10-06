@@ -1,19 +1,22 @@
-
 BattleCommand_Transform: ; 371cd
 ; transform
 
 	call ClearLastMove
 
-	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, BattleEffect_ButItFailed
 
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INFILTRATOR
+	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_SUBSTITUTE, [hl]
 	jp nz, BattleEffect_ButItFailed
-
+.bypass_sub
 	call CheckHiddenOpponent
 	jp nz, BattleEffect_ButItFailed
 
@@ -32,7 +35,7 @@ BattleCommand_Transform: ; 371cd
 	ld a, SUBSTITUTE
 	call LoadAnim
 .mimic_substitute
-	ld a, BATTLE_VARS_SUBSTATUS5
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	set SUBSTATUS_TRANSFORMED, [hl]
 	call ResetActorDisable
