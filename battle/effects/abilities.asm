@@ -354,6 +354,10 @@ RunHitAbilities:
 	jr c, .skip_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp PHYSICAL
+	call z, .weakarmor
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp DARK
@@ -377,6 +381,14 @@ RunHitAbilities:
 	ret nz
 	farcall BattleCommand_SwitchTurn
 	call RattledAbility
+	farcall BattleCommand_SwitchTurn
+	ret
+.weakarmor
+	call GetOpponentAbilityAfterMoldBreaker
+	cp WEAK_ARMOR
+	ret nz
+	farcall BattleCommand_SwitchTurn
+	call WeakArmorAbility
 	farcall BattleCommand_SwitchTurn
 	ret
 
@@ -604,6 +616,36 @@ StatUpAbility:
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
 	jp EnableAnimations
+
+WeakArmorAbility:
+	ld b, DEFENSE
+	call DisableAnimations
+	farcall ResetMiss
+	farcall LowerStat
+	ld a, [FailedMessage]
+	and a
+	jr nz, .failed_defensedown
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
+	farcall BattleCommand_StatDownMessage
+	farcall BattleCommand_SwitchTurn
+	farcall ResetMiss
+	farcall BattleCommand_SpeedUp
+	ld a, [FailedMessage]
+	and a
+	jp nz, EnableAnimations
+.speedupmessage
+	farcall BattleCommand_StatUpMessage
+	ret
+.failed_defensedown
+; If we can still raise Speed, do that and show ability activation anyway
+	farcall ResetMiss
+	farcall BattleCommand_SpeedUp
+	ld a, [FailedMessage]
+	and a
+	jp nz, EnableAnimations
+	call ShowAbilityActivation
+	jr .speedupmessage
 
 FlashFireAbility:
 	call ShowAbilityActivation
