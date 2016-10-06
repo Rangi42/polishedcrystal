@@ -25,13 +25,29 @@ UnknownScript_0x9cec5:
 	iftrue UnknownScript_0x9cf08
 	writetext UnknownText_0x9cfe1
 	special PlaceMoneyTopRight
-	yesorno
-	iffalse UnknownScript_0x9cf02
+	loadmenudata .MenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .Buy1
+	if_equal $2, .Buy12
+	jump .Cancel
+
+.Buy1:
 	checkmoney $0, 500
-	if_equal $2, UnknownScript_0x9cef6
+	if_equal $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK
-	iffalse UnknownScript_0x9cefc
+	iffalse .BagFull
 	takemoney $0, 500
+	jump .Done
+
+.Buy12:
+	checkmoney $0, 6000
+	if_equal $2, .NotEnoughMoney
+	giveitem MOOMOO_MILK, 12
+	iffalse .BagFull
+	takemoney $0, 6000
+
+.Done:
 	special PlaceMoneyTopRight
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -41,23 +57,37 @@ UnknownScript_0x9cec5:
 	closetext
 	end
 
-UnknownScript_0x9cef6:
+.Cancel:
+	writetext UnknownText_0x9d0b7
+	waitbutton
+	closetext
+	end
+
+.NotEnoughMoney:
 	writetext UnknownText_0x9d07c
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x9cefc:
+.BagFull:
 	writetext UnknownText_0x9d09d
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x9cf02:
-	writetext UnknownText_0x9d0b7
-	waitbutton
-	closetext
-	end
+.MenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 13 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db " 1 :  ¥500@"
+	db "12 : ¥6000@"
+	db "Cancel@"
 
 UnknownScript_0x9cf08:
 	writetext UnknownText_0x9d0dc

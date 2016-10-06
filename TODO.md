@@ -106,7 +106,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## New features
 
-* Buy 12 Moomoo Milk at once
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
