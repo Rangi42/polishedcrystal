@@ -7542,7 +7542,7 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	ld hl, BecameConfusedText
 	call StdBattleTextBox
 
-	call GetOpponentItem
+	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_STATUS
 	jr z, .heal_confusion
@@ -9548,16 +9548,50 @@ GetUserItem: ; 37db2
 
 GetOpponentItem: ; 37dc1
 ; Return the effect of the opponent's item in bc, and its id at hl.
-	ld hl, EnemyMonItem
-	ld a, [hBattleTurn]
-	and a
-	jr z, .go
-	ld hl, BattleMonItem
-.go
-	ld b, [hl]
-	jp GetItemHeldEffect
+	call BattleCommand_SwitchTurn
+	call GetUserItem
+	jp BattleCommand_SwitchTurn
 
-; 37dd0
+GetUserItemAfterUnnerve:
+; Returns the effect of the user's item in bc, and its id at hl,
+; unless it's a Berry and Unnerve is in effect.
+	call GetUserItem
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp UNNERVE
+	ret nz
+	ld a, [hl]
+	push de
+	push hl
+	ld de, 1
+	ld hl, UnnerveItemsBlocked
+	call IsInArray
+	pop hl
+	pop de
+	ret nc
+	ld hl, NoItem
+	ld b, HELD_NONE
+	ret
+
+GetOpponentItemAfterUnnerve:
+	call BattleCommand_SwitchTurn
+	call GetUserItemAfterUnnerve
+	jp BattleCommand_SwitchTurn
+
+UnnerveItemsBlocked:
+	db BERRY
+	db GOLD_BERRY
+	db PSNCUREBERRY
+	db ICE_BERRY
+	db PRZCUREBERRY
+	db MINT_BERRY
+	db BURNT_BERRY
+	db BITTER_BERRY
+	db MIRACLEBERRY
+	db MYSTERYBERRY
+	db -1
+NoItem:
+	db NO_ITEM
 
 
 GetItemHeldEffect: ; 37dd0

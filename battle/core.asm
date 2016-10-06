@@ -1442,7 +1442,7 @@ HandleMysteryberry: ; 3c93c
 	call SetPlayerTurn
 
 .do_it
-	farcall GetUserItem
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_RESTORE_PP
 	jr nz, .quit
@@ -1539,7 +1539,7 @@ HandleMysteryberry: ; 3c93c
 	add b
 	ld [de], a
 .skip_checks
-	farcall GetUserItem
+	farcall GetUserItemAfterUnnerve
 	ld a, [hl]
 	ld [wd265], a
 	xor a
@@ -4563,7 +4563,7 @@ HandleHealingItems: ; 3dcf9
 ; 3dd2f
 
 HandleHPHealingItem: ; 3dd2f
-	farcall GetOpponentItem
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp $1
 	ret nz
@@ -4664,7 +4664,7 @@ HandleHPHealingItem: ; 3dd2f
 	predef AnimateHPBar
 UseOpponentItem:
 	call RefreshBattleHuds
-	farcall GetOpponentItem
+	farcall GetOpponentItemAfterUnnerve
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
@@ -4720,7 +4720,7 @@ ItemRecoveryAnim: ; 3ddc8
 
 
 UseHeldStatusHealingItem: ; 3dde9
-	farcall GetOpponentItem
+	farcall GetOpponentItemAfterUnnerve
 	ld hl, .Statuses
 .loop
 	ld a, [hli]
@@ -4790,7 +4790,7 @@ UseConfusionHealingItem: ; 3de51
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z
-	farcall GetOpponentItem
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_CONFUSION
 	jr z, .heal_status
