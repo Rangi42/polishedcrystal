@@ -67,7 +67,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Goldenrod Dept. Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
-* Merge gray and roof colors on Faraway Island to make room for grass-green
 * Edit SPRITE_DRAGON with Dragonite's side view
 * Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
 * Make overworld sprites darker at night?

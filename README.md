@@ -220,10 +220,10 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
 * Add: Buy 12 Moomoo Milk at once.
 * Add: Use Yellow's encounter music for Jessie & James.
-* Edit: Fix some sprites.
-* Edit: TM prices from OR/AS.
-* Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
-* Edit: Update random Wonder Trade OT names.
+* Add: Grass-green for Faraway Island.
+* Add: TM prices from OR/AS.
+* Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
+* Add: Update random Wonder Trade OT names.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Game console names in room.
@@ -232,3 +232,4 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Ice Rock tile collision data.
 * Fix: Adjust some trainer levels.
 * Fix: Move a trainer in Viridian Gym to prevent getting stuck on spinners.
+* Fix: Fix some sprites.
