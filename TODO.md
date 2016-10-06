@@ -91,7 +91,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
    * Marley: Mt. Moon; rewards Carbos
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
-* Add Yellow's encounter music for Jessie & James
 * Use RBY's Pokémon Tower music (Crossing Cave bottom)
 * Use Mmmmmm's B/W Route 12 (Magnet Train Track), White Treehollow (Noisy Forest), and Spiky-Eared Pichu (Giovanni event) music
 * Acquire R/S/E and D/P/Pt Champion battle music

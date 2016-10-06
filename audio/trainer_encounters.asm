@@ -60,7 +60,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; hiker
 	db MUSIC_ROCKET_ENCOUNTER		; gruntm
 	db MUSIC_ROCKET_ENCOUNTER		; gruntf
-	db MUSIC_ROCKET_ENCOUNTER		; jessie&james
+	db MUSIC_JESSIE_JAMES_ENCOUNTER	; jessie&james
 	db MUSIC_HIKER_ENCOUNTER		; pokefanm
 	db MUSIC_BEAUTY_ENCOUNTER		; pokefanf
 	db MUSIC_HIKER_ENCOUNTER		; officerm
@@ -112,11 +112,12 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_ROCKET_ENCOUNTER		; ariana
 	db MUSIC_HIKER_ENCOUNTER		; pokemon_prof
 	db MUSIC_HIKER_ENCOUNTER		; mysticalman
+	db MUSIC_LYRA_ENCOUNTER_HGSS	; lyra
 	db MUSIC_HIKER_ENCOUNTER		; lorelei
 	db MUSIC_SAGE_ENCOUNTER			; agatha
 	db MUSIC_LASS_ENCOUNTER			; yellow
 	db MUSIC_HIKER_ENCOUNTER		; walker
-	db MUSIC_POKEMANIAC_ENCOUNTER	; bill
+	db MUSIC_POKEMANIAC_ENCOUNTER	; bill_t
 	db MUSIC_HIKER_ENCOUNTER		; lawrence
 	db MUSIC_ROCKET_ENCOUNTER		; giovanni
 	db MUSIC_HIKER_ENCOUNTER		; steven

@@ -27,7 +27,7 @@ Route48JessieJamesScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	playmusic MUSIC_ROCKET_ENCOUNTER
+	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
 	applymovement ROUTE48_JAMES, JamesEnterMovementData
 	opentext

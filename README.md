@@ -219,6 +219,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Trainers have max happiness for Return.
 * Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
 * Add: Buy 12 Moomoo Milk at once.
+* Add: Use Yellow's encounter music for Jessie & James.
 * Edit: Fix some sprites.
 * Edit: TM prices from OR/AS.
 * Edit: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
