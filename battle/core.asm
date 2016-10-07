@@ -1804,127 +1804,22 @@ HandleWeather: ; 3cb9e
 
 	ld hl, .WeatherMessages
 	call .PrintWeatherMessage
-
-	ld a, [Weather]
-	cp WEATHER_HAIL
-	jp z, .HandleHail
-	cp WEATHER_SANDSTORM
-	ret nz
+	call SetPlayerTurn
+	call .ShowWeatherAnimation
 
 	ld a, [hLinkPlayerNumber]
 	cp 1
-	jr z, .enemy_first_sandstorm
-
-.player_first_sandstorm
+	jr z, .enemy_first
 	call SetPlayerTurn
-	call .SandstormDamage
+	call HandleWeatherEffects
 	call SetEnemyTurn
-	jr .SandstormDamage
+	jp HandleWeatherEffects
 
-.enemy_first_sandstorm
+.enemy_first
 	call SetEnemyTurn
-	call .SandstormDamage
+	call HandleWeatherEffects
 	call SetPlayerTurn
-
-.SandstormDamage:
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
-	ret nz
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp OVERCOAT
-	ret nz
-	cp MAGIC_GUARD
-	ret nz
-
-	ld hl, BattleMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok_sandstorm
-	ld hl, EnemyMonType1
-.ok_sandstorm
-	ld a, [hli]
-	cp ROCK
-	ret z
-	cp GROUND
-	ret z
-	cp STEEL
-	ret z
-
-	ld a, [hl]
-	cp ROCK
-	ret z
-	cp GROUND
-	ret z
-	cp STEEL
-	ret z
-
-	call SwitchTurnCore
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_IN_SANDSTORM
-	call Call_PlayBattleAnim
-	call SwitchTurnCore
-	call GetSixteenthMaxHP
-	call SubtractHPFromUser
-
-	ld hl, SandstormHitsText
-	jp StdBattleTextBox
-
-.HandleHail
-	ld a, [hLinkPlayerNumber]
-	cp 1
-	jr z, .enemy_first_hail
-
-.player_first_hail
-	call SetPlayerTurn
-	call .HailDamage
-	call SetEnemyTurn
-	jr .HailDamage
-
-.enemy_first_hail
-	call SetEnemyTurn
-	call .HailDamage
-	call SetPlayerTurn
-
-.HailDamage:
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
-	ret nz
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp OVERCOAT
-	ret nz
-	cp MAGIC_GUARD
-	ret nz
-
-	ld hl, BattleMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok_hail
-	ld hl, EnemyMonType1
-.ok_hail
-	ld a, [hli]
-	cp ICE
-	ret z
-
-	ld a, [hl]
-	cp ICE
-	ret z
-
-	call SwitchTurnCore
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_IN_HAIL
-	call Call_PlayBattleAnim
-	call SwitchTurnCore
-	call GetSixteenthMaxHP
-	call SubtractHPFromUser
-
-	ld hl, HailHitsText
-	jp StdBattleTextBox
+	jp HandleWeatherEffects
 
 .ended
 	ld hl, .WeatherEndedMessages
@@ -1944,7 +1839,17 @@ HandleWeather: ; 3cb9e
 	ld h, [hl]
 	ld l, a
 	jp StdBattleTextBox
-; 3cc2d
+
+.ShowWeatherAnimation:
+	ld hl, .WeatherAnimations
+	ld a, [Weather]
+	dec a
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld d, 0
+	ld e, [hl]
+	jp Call_PlayBattleAnim
 
 .WeatherMessages:
 	dw BattleText_RainContinuesToFall
@@ -1956,7 +1861,78 @@ HandleWeather: ; 3cb9e
 	dw BattleText_TheSunlightFaded
 	dw BattleText_TheSandstormSubsided
 	dw BattleText_TheHailStopped
+.WeatherAnimations:
+	db RAIN_DANCE
+	db SUNNY_DAY
+	db SANDSTORM
+	db HAIL
 ; 3cc39
+
+HandleWeatherEffects:
+; sandstorm/hail damage, abilities like rain dish, etc.
+	ld a, [Weather]
+	cp WEATHER_HAIL
+	call z, .HandleHail
+	ld a, [Weather] ; HandleHail messes with a
+	cp WEATHER_SANDSTORM
+	call z, .HandleSandstorm
+	farcall RunWeatherAbilities
+	ret
+
+.HandleSandstorm
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_UNDERGROUND, a
+	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp MAGIC_GUARD
+	ret z
+	cp OVERCOAT
+	ret z
+	cp SAND_FORCE
+	ret z
+	cp SAND_RUSH
+	ret z
+	cp SAND_VEIL
+	ret z
+
+	call CheckIfUserIsGroundType
+	ret z
+	call CheckIfUserIsRockType
+	ret z
+	call CheckIfUserIsSteelType
+	ret z
+
+	ld hl, SandstormHitsText
+	call StdBattleTextBox
+
+	call GetSixteenthMaxHP
+	jp SubtractHPFromUser
+
+.HandleHail
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_UNDERGROUND, a
+	ret nz
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp MAGIC_GUARD
+	ret z
+	cp OVERCOAT
+	ret z
+	cp SNOW_CLOAK
+	ret z
+	cp ICE_BODY
+	ret z
+
+	call CheckIfUserIsIceType
+	ret z
+	ld hl, HailHitsText
+	jp StdBattleTextBox
+
+	call GetSixteenthMaxHP
+	jp SubtractHPFromUser
 
 SubtractHPFromTarget: ; 3cc39
 	call SubtractHP
