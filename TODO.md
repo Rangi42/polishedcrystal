@@ -43,7 +43,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Show stat changes and then absolute values on level up
 * Send gift Pokémon to the PC if the party is full
 * Separate radio channels for March and Lullaby, available every day
-* More Bag pockets (split Items into Items, Medicine, and Berries, or Held and Used)
 * Press Start to auto-sort items
 * Select reorders Pokémon in party menu
 * Longer player and rival names

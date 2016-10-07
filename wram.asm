@@ -530,8 +530,7 @@ EnemyDamageTaken:: ; c684
 
 wBattleReward:: ds 3 ; c686
 wBattleAnimParam::
-wKickCounter::
-wPresentPower:: ds 1 ; c689
+wKickCounter:: ds 1 ; c689
 BattleScriptBuffer:: ; c68a
 	ds 40
 
@@ -888,7 +887,7 @@ wPokedexDataEnd::
 
 wMiscEnd::
 
-wc7e8:: ds 19
+wc7e8:: ds 15
 
 SECTION "Overworld Map", WRAM0 [$c800]
 
@@ -1631,16 +1630,20 @@ wLastPocket:: ds 1
 wPCItemsCursor:: ds 1
 wPartyMenuCursor:: ds 1
 wItemsPocketCursor:: ds 1
-wKeyItemsPocketCursor:: ds 1
+wMedicinePocketCursor:: ds 1
 wBallsPocketCursor:: ds 1
 wTMHMPocketCursor:: ds 1
+wBerriesPocketCursor:: ds 1
+wKeyItemsPocketCursor:: ds 1
 
 wPCItemsScrollPosition:: ds 1
 wPartyMenuScrollPosition:: ds 1 ; unused
 wItemsPocketScrollPosition:: ds 1
-wKeyItemsPocketScrollPosition:: ds 1
+wMedicinePocketScrollPosition:: ds 1
 wBallsPocketScrollPosition:: ds 1
 wTMHMPocketScrollPosition:: ds 1
+wBerriesPocketScrollPosition:: ds 1
+wKeyItemsPocketScrollPosition:: ds 1
 
 wMoveSwapBuffer::
 wSwitchMon::
@@ -2418,17 +2421,29 @@ Items:: ; d893
 	ds MAX_ITEMS * 2 + 1
 ItemsEnd::
 
-NumKeyItems:: ; d8bc
+NumMedicine::
 	ds 1
-KeyItems:: ; d8bd
-	ds MAX_KEY_ITEMS + 1
-KeyItemsEnd::
+Medicine:: ; d893
+	ds MAX_MEDICINE * 2 + 1
+MedicineEnd::
 
 NumBalls:: ; d8d7
 	ds 1
 Balls:: ; d8d8
 	ds MAX_BALLS * 2 + 1
 BallsEnd::
+
+NumBerries::
+	ds 1
+Berries:: ; d893
+	ds MAX_BERRIES * 2 + 1
+BerriesEnd::
+
+NumKeyItems:: ; d8bc
+	ds 1
+KeyItems:: ; d8bd
+	ds MAX_KEY_ITEMS + 1
+KeyItemsEnd::
 
 PCItems:: ; d8f1
 	ds MAX_PC_ITEMS * 2 + 1
@@ -2462,7 +2477,7 @@ UndergroundSwitchPositions:: ; d963
 FarfetchdPosition:: ; d964
 	ds 1 ; which position the ilex farfetch'd is in
 
-	ds 13
+	ds 1
 
 
 ;SECTION "Map Triggers", WRAMX, BANK [1]
