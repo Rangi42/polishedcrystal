@@ -112,3 +112,30 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * First Pokémon walks behind you
 * Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
+
+
+### New items
+
+* Soothe Bell (National Park)
+* Quick Powder (wild Ditto)
+* Macho Brace (Goldenrod City)
+* Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower)
+* Choice {Band, Scarf, Specs} (Battle Tower)
+* {Damp, Heat, Icy, Smooth} Rock (Icy Mountain Road)
+* Light Clay (Route 9)
+* Binding Band
+* Grip Claw (Seafoam Islands)
+* {Mental, Power, White} Herb (Battle Tower)
+* Big Root (Yellow Forest)
+* Shell Bell (Route 32)
+* Assault Vest
+* Expert Belt (Mt. Silver)
+* Life Orb (Ruins of Alph)
+* Weak Policy
+* {Wide, Zoom} Lens (Goldenrod Game Corner)
+* Focus Sash
+* Air Balloon
+* Destiny Knot (Route 27)
+* Rocky Helmet
+* Safe Goggles
+* Shed Shell (Bug-Catching Contest)
