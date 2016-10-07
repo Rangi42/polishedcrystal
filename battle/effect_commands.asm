@@ -3423,7 +3423,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp HUGE_POWER
 	jp z, .ability_double
 	cp HUSTLE
-	jr z, .ability_semidouble
+	jp z, .ability_semidouble
 	cp SHEER_FORCE
 	jr z, .sheer_force
 	cp ANALYTIC
@@ -3432,14 +3432,16 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .tinted_lens
 	cp SOLAR_POWER
 	jr z, .solar_power
+	cp SAND_FORCE
+	jr z, .sand_force
 	cp RECKLESS
 	jr z, .reckless
 	cp GUTS
-	jr nz, .ability_penalties
+	jp nz, .ability_penalties
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and a
-	jr z, .ability_penalties
+	jp z, .ability_penalties
 	jr .ability_semidouble
 .sheer_force
 	; Only nonzero for sheer force users when using a move with an additional effect
@@ -3462,9 +3464,23 @@ BattleCommand_DamageCalc: ; 35612
 	cp WEATHER_SUN
 	jr nz, .ability_penalties
 	jr .ability_semidouble
+.sand_force
+	ld a, [Weather]
+	cp WEATHER_SANDSTORM
+	jr nz, .ability_penalties
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp GROUND
+	jr z, .ability_x1_3
+	cp ROCK
+	jr z, .ability_x1_3
+	cp STEEL
+	jr z, .ability_x1_3
+	jr .ability_penalties
 .reckless
 	; skip Struggle
 	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	cp STRUGGLE
 	jr z, .ability_penalties
 	ld a, BATTLE_VARS_MOVE_EFFECT
