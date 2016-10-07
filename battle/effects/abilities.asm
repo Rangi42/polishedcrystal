@@ -678,6 +678,74 @@ WaterAbsorbAbility:
 	ld hl, HPIsFullText
 	jp StdBattleTextBox
 
+RunWeatherAbilities:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+	ld a, [Weather]
+	cp WEATHER_HAIL
+	jr z, .hail
+	cp WEATHER_SANDSTORM
+	jr z, .sandstorm
+	cp WEATHER_RAIN
+	jr z, .rain
+	cp WEATHER_SUN
+	jr z, .sun
+	ret
+.hail
+	ld a, b
+	cp ICE_BODY
+	jp z, IceBodyAbility
+	ret
+.sandstorm
+	ret ; No active abilities for sandstorm
+.rain
+	ld a, b
+	cp DRY_SKIN
+	jp z, DrySkinRainAbility
+	cp HYDRATION
+	jp z, HydrationAbility
+	cp RAIN_DISH
+	jp z, RainDishAbility
+	ret
+.sun
+	ld a, b
+	cp DRY_SKIN
+	jp z, DrySkinSunAbility
+	cp SOLAR_POWER
+	jp z, SolarPowerAbility
+	ret
+
+IceBodyAbility:
+DrySkinRainAbility: ; restores 1/8 max HP rather than 1/16
+RainDishAbility:
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	ret z
+	call ShowAbilityActivation
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DRY_SKIN
+	jr z, .eighth_max_hp
+	farcall GetSixteenthMaxHP
+.got_hp
+	farcall BattleCommand_SwitchTurn
+	farcall RestoreHP
+	farcall BattleCommand_SwitchTurn
+	ret
+
+.eighth_max_hp
+	farcall GetEighthMaxHP
+	jr .got_hp
+
+DrySkinSunAbility:
+SolarPowerAbility:
+	call ShowAbilityActivation
+	farcall GetEighthMaxHP
+	farcall SubtractHPFromUser
+	ret
+
 HandleAbilities:
 ; Abilities handled at the end of the turn.
 ; This needs to be handled in a consistent order despite not involving faintings, because
@@ -830,7 +898,9 @@ ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
 	call BattleRandom
 	cp 1 + (30 percent)
-	ret c
+	ret nc
+	; fallthrough
+HydrationAbility:
 	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
 	jp HealStatusAbility
 

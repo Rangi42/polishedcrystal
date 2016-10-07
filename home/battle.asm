@@ -328,6 +328,7 @@ SoundMoves::
 	db SUPERSONIC
 	db -1
 
+; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
 	jr CheckIfTargetIsSomeType
@@ -364,8 +365,17 @@ CheckIfUserIsPoisonType::
 CheckIfUserIsGhostType::
 	ld a, GHOST
 	jr CheckIfUserIsSomeType
+CheckIfUserIsGroundType::
+	ld a, GROUND
+	jr CheckIfUserIsSomeType
+CheckIfUserIsRockType::
+	ld a, ROCK
+	jr CheckIfUserIsSomeType
 CheckIfUserIsSteelType::
 	ld a, STEEL
+	jr CheckIfUserIsSomeType
+CheckIfUserIsIceType::
+	ld a, ICE
 CheckIfUserIsSomeType::
 	ld b, a
 	ld a, [hBattleTurn]

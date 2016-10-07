@@ -3421,7 +3421,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp HUGE_POWER
-	jr z, .ability_double
+	jp z, .ability_double
 	cp HUSTLE
 	jr z, .ability_semidouble
 	cp SHEER_FORCE
@@ -3430,6 +3430,8 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .analytic
 	cp TINTED_LENS
 	jr z, .tinted_lens
+	cp SOLAR_POWER
+	jr z, .solar_power
 	cp RECKLESS
 	jr z, .reckless
 	cp GUTS
@@ -3455,6 +3457,11 @@ BattleCommand_DamageCalc: ; 35612
 	cp 10 ; x1
 	jr nc, .ability_penalties
 	jr .ability_double
+.solar_power
+	ld a, [Weather]
+	cp WEATHER_SUN
+	jr nz, .ability_penalties
+	jr .ability_semidouble
 .reckless
 	; skip Struggle
 	ld a, BATTLE_VARS_MOVE
@@ -3545,7 +3552,7 @@ BattleCommand_DamageCalc: ; 35612
 	jr .abilities_done
 .skip_solid_rock
 	cp THICK_FAT
-	jr nz, .abilities_done
+	jr nz, .skip_thick_fat
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
@@ -3554,6 +3561,19 @@ BattleCommand_DamageCalc: ; 35612
 	jr nz, .abilities_done
 .thick_fat_ok
 	ld [hl], 2
+	ld b, $4
+	call Divide
+	jr .abilities_done
+.skip_thick_fat
+	cp DRY_SKIN
+	jr nz, .abilities_done
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr nz, .abilities_done
+	ld [hl], 5
+	call Multiply
+	ld [hl], 4
 	ld b, $4
 	call Divide
 .abilities_done
