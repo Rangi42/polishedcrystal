@@ -116,6 +116,14 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ### New items
 
+* Zinc
+* {Pomeg, Kelpsy, Qualot, Hondew, Grepa, Tamato} Berry
+* Big Nugget (and other valuable items)
+* Mulch (use on a picked Berry tree to regrow it)
+* Honey (for Honey Trees)
+* Premier Ball
+* Cherish Ball
+* Ability Capsule
 * Soothe Bell (National Park)
 * Quick Powder (wild Ditto)
 * Macho Brace (Goldenrod City)
@@ -136,6 +144,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Focus Sash
 * Air Balloon
 * Destiny Knot (Route 27)
+* Metronome
 * Rocky Helmet
 * Safe Goggles
 * Shed Shell (Bug-Catching Contest)
