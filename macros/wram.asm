@@ -20,10 +20,10 @@ box_struct: MACRO
 ; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
 ; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
 ; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
-\1Filler::         ds 4
 \1DVs::
 \1AtkDefDV::       db
 \1SpdSpcDV::       db
+\1Filler::         ds 4
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
 \1PokerusStatus::  db

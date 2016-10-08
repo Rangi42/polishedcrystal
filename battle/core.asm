@@ -45,13 +45,7 @@ DoBattle: ; 3c000
 .wild
 	; Wild mons bypass NewEnemyMonStatus, so set
 	; their ability here too.
-	ld a, [EnemyMonDVs + 1]
-	ld b, a
-	ld a, [EnemyMonSpecies]
-	ld c, a
-	farcall GetAbility
-	ld a, b
-	ld [EnemyAbility], a
+	call ResetEnemyAbility
 	ld c, 40
 	call DelayFrames
 
@@ -3620,7 +3614,7 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	ld [wEnemyHPAtTimeOfPlayerSwitch], a
 	ld a, [hl]
 	ld [wEnemyHPAtTimeOfPlayerSwitch + 1], a
-	ret
+	jp ResetEnemyAbility
 ; 3d714
 
 CheckWhetherToAskSwitch: ; 3d714
@@ -3789,6 +3783,21 @@ endr
 	ld [EnemyTurnsTaken], a
 	ld hl, PlayerSubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
+	jp ResetEnemyAbility
+; 3d867
+
+ResetPlayerAbility:
+	ld a, [BattleMonDVs + 1]
+	ld b, a
+	ld a, [BattleMonSpecies]
+	ld c, a
+	farcall GetAbility
+	ld a, b
+	ld [PlayerAbility], a
+	xor a
+	ret
+
+ResetEnemyAbility:
 	ld a, [EnemyMonDVs + 1]
 	ld b, a
 	ld a, [EnemyMonSpecies]
@@ -3796,8 +3805,8 @@ endr
 	farcall GetAbility
 	ld a, b
 	ld [EnemyAbility], a
+	xor a
 	ret
-; 3d867
 
 ResetEnemyStatLevels: ; 3d867
 	ld a, BASE_STAT_LEVEL
@@ -4095,7 +4104,7 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
 	call CopyBytes
 	call ApplyStatusEffectOnPlayerStats
-	ret
+	jp ResetPlayerAbility
 ; 3da74
 
 BattleCheckPlayerShininess: ; 3da74
@@ -4198,7 +4207,7 @@ endr
 	jr nz, .loop
 	ld a, [CurPartyMon]
 	ld [CurOTMon], a
-	ret
+	jp ResetEnemyAbility
 ; 3db32
 
 
@@ -4305,15 +4314,7 @@ endr
 	ld [PlayerTurnsTaken], a
 	ld hl, EnemySubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
-	ld a, [BattleMonDVs + 1]
-	ld b, a
-	ld a, [BattleMonSpecies]
-	ld c, a
-	farcall GetAbility
-	ld a, b
-	ld [PlayerAbility], a
-	xor a
-	ret
+	jp ResetPlayerAbility
 ; 3dc18
 
 BreakAttraction: ; 3dc18

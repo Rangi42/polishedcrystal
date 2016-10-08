@@ -3418,6 +3418,7 @@ BattleCommand_DamageCalc: ; 35612
 	call Divide
 
 ; Ability boosts. Some are done elsewhere depending on needs.
+; TODO: Make this easier to follow (move to a seperate routine perhaps)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp HUGE_POWER
