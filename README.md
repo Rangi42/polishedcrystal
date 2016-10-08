@@ -230,7 +230,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Yellow Forest gate clerk does not face you.
 * Fix: Read hidden Ruins of Alph tablet from one direction.
 * Fix: Ice Rock tile collision data.
-* Fix: Adjust some trainer levels.
+* Fix: Adjust some trainer levels and rosters.
 * Fix: Move a trainer in Viridian Gym to prevent getting stuck on spinners.
 * Fix: Fix some sprites.
 * Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.

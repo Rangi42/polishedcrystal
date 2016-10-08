@@ -731,8 +731,8 @@ KRIS EQU __enum__
 	const ARCHER2
 
 	trainerclass ARIANA ; 57
-	const ARIANA2
 	const ARIANA1
+	const ARIANA2
 
 	trainerclass POKEMON_PROF ; 58
 	const OAK
