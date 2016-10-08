@@ -203,7 +203,7 @@ ENDM
 ReplaceTimeOfDayPals: ; 8c0e5
 	ld hl, .BrightnessLevels
 	ld a, [wMapTimeOfDay]
-	cp $4 ; Dark cave, needs Flash
+	cp PALETTE_DARK ; needs Flash
 	jr z, .DarkCave
 	and $7
 	add l
@@ -230,11 +230,11 @@ ReplaceTimeOfDayPals: ; 8c0e5
 ; 8c10f (23:410f)
 
 .BrightnessLevels: ; 8c10f
-	brightlevel 3, 2, 1, 0
-	brightlevel 1, 1, 1, 1
-	brightlevel 2, 2, 2, 2
-	brightlevel 0, 0, 0, 0
-	brightlevel 3, 3, 3, 3
+	brightlevel 3, 2, 1, 0 ; PALETTE_AUTO
+	brightlevel 1, 1, 1, 1 ; PALETTE_DAY
+	brightlevel 2, 2, 2, 2 ; PALETTE_NITE
+	brightlevel 0, 0, 0, 0 ; PALETTE_MORN
+	brightlevel 3, 3, 3, 3 ; PALETTE_DARK
 	brightlevel 3, 2, 1, 0
 	brightlevel 3, 2, 1, 0
 	brightlevel 3, 2, 1, 0

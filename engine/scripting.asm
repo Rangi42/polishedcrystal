@@ -667,7 +667,7 @@ GetPocketName: ; 96ffe
 	ld a, [wItemAttributeParamBuffer]
 	dec a
 	ld hl, .Pockets
-	and 3
+	and $7
 	add a
 	ld e, a
 	ld d, 0
@@ -681,18 +681,24 @@ GetPocketName: ; 96ffe
 
 .Pockets:
 	dw .Item
-	dw .Key
+	dw .Medicine
 	dw .Ball
 	dw .TM
+	dw .Berry
+	dw .Key
 
 .Item:
 	db "Item Pocket@"
-.Key:
-	db "Key Pocket@"
+.Medicine:
+	db "Med. Pocket@"
 .Ball:
 	db "Ball Pocket@"
 .TM:
 	db "TM Pocket@"
+.Berry:
+	db "Berry Pocket@"
+.Key:
+	db "Key Pocket@"
 ; 97051
 
 CurItemName: ; 97051

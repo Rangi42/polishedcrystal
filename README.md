@@ -201,6 +201,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
+* Add: Medicine and Berry pockets in the Bag.
 * Add: Always keep the option to Teleport away from Indigo Plateau.
 * Add: Portrait for the meteorite in Pewter Museum.
 * Add: Special sprite for Red's Pikachu.

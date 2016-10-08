@@ -1,6 +1,4 @@
 _ReceiveItem:: ; d1d5
-	call DoesHLEqualNumItems
-	jp nz, PutItemInPocket
 	push hl
 	call CheckItemPocket
 	pop de
@@ -12,23 +10,31 @@ _ReceiveItem:: ; d1d5
 
 .Pockets: ; d1e9
 	dw .Item
-	dw .KeyItem
+	dw .Medicine
 	dw .Ball
 	dw .TMHM
+	dw .Berry
+	dw .KeyItem
 
 .Item: ; d1f1
-	ld h, d
-	ld l, e
+	ld hl, NumItems
 	jp PutItemInPocket
 
-.KeyItem: ; d1f6
-	ld h, d
-	ld l, e
-	jp ReceiveKeyItem
+.Medicine:
+	ld hl, NumMedicine
+	jp PutItemInPocket
 
 .Ball: ; d1fb
 	ld hl, NumBalls
 	jp PutItemInPocket
+
+.Berry:
+	ld hl, NumBerries
+	jp PutItemInPocket
+
+.KeyItem: ; d1f6
+	ld hl, NumKeyItems
+	jp ReceiveKeyItem
 
 .TMHM: ; d201
 	ld h, d
@@ -52,9 +58,15 @@ _TossItem:: ; d20d
 
 .Pockets:
 	dw .Item
-	dw .KeyItem
+	dw .Medicine
 	dw .Ball
 	dw .TMHM
+	dw .Berry
+	dw .KeyItem
+
+.Medicine:
+	ld hl, NumMedicine
+	jp RemoveItemFromPocket
 
 .Ball: ; d228
 	ld hl, NumBalls
@@ -68,6 +80,10 @@ _TossItem:: ; d20d
 	call GetTMHMNumber
 	jp TossTMHM
 
+.Berry:
+	ld hl, NumBerries
+	jp RemoveItemFromPocket
+
 .KeyItem: ; d23a
 	ld h, d
 	ld l, e
@@ -76,7 +92,6 @@ _TossItem:: ; d20d
 .Item: ; d23f
 	ld h, d
 	ld l, e
-
 .remove
 	jp RemoveItemFromPocket
 
@@ -94,9 +109,15 @@ _CheckItem:: ; d244
 
 .Pockets:
 	dw .Item
-	dw .KeyItem
+	dw .Medicine
 	dw .Ball
 	dw .TMHM
+	dw .Berry
+	dw .KeyItem
+
+.Medicine:
+	ld hl, NumMedicine
+	jp CheckTheItem
 
 .Ball: ; d25f
 	ld hl, NumBalls
@@ -110,6 +131,10 @@ _CheckItem:: ; d244
 	call GetTMHMNumber
 	jp CheckTMHM
 
+.Berry:
+	ld hl, NumBerries
+	jp CheckTheItem
+
 .KeyItem: ; d271
 	ld h, d
 	ld l, e
@@ -118,7 +143,6 @@ _CheckItem:: ; d244
 .Item: ; d276
 	ld h, d
 	ld l, e
-
 .nope
 	jp CheckTheItem
 
@@ -134,22 +158,40 @@ GetPocketCapacity: ; d283
 	ld c, MAX_ITEMS
 	ld a, e
 	cp NumItems % $100
-	jr nz, .not_bag
+	jr nz, .not_items
 	ld a, d
 	cp NumItems / $100
 	ret z
 
-.not_bag
-	ld c, MAX_PC_ITEMS
+.not_items:
+	ld c, MAX_MEDICINE
 	ld a, e
-	cp PCItems % $100
-	jr nz, .not_pc
+	cp NumMedicine % $100
+	jr nz, .not_medicine
 	ld a, d
-	cp PCItems / $100
+	cp NumMedicine / $100
 	ret z
 
-.not_pc
+.not_medicine:
 	ld c, MAX_BALLS
+	ld a, e
+	cp NumBalls % $100
+	jr nz, .not_balls
+	ld a, d
+	cp NumBalls / $100
+	ret z
+
+.not_balls:
+	ld c, MAX_BERRIES
+	ld a, e
+	cp NumBerries % $100
+	jr nz, .not_berries
+	ld a, d
+	cp NumBerries / $100
+	ret z
+
+.not_berries:
+	ld c, MAX_PC_ITEMS
 	ret
 
 PutItemInPocket: ; d29c

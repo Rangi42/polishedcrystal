@@ -511,10 +511,16 @@ HasNoItems: ; 129d5
 	ld a, [NumItems]
 	and a
 	ret nz
-	ld a, [NumKeyItems]
+	ld a, [NumMedicine]
 	and a
 	ret nz
 	ld a, [NumBalls]
+	and a
+	ret nz
+	ld a, [NumBerries]
+	and a
+	ret nz
+	ld a, [NumKeyItems]
 	and a
 	ret nz
 	ld hl, TMsHMs

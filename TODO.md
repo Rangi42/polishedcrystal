@@ -43,7 +43,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Show stat changes and then absolute values on level up
 * Send gift Pokémon to the PC if the party is full
 * Separate radio channels for March and Lullaby, available every day
-* More Bag pockets (split Items into Items, Medicine, and Berries, or Held and Used)
 * Press Start to auto-sort items
 * Select reorders Pokémon in party menu
 * Longer player and rival names
@@ -76,6 +75,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## New content
 
+* Victor and Puka the Surfing Pikachu ("Hey, you can do it, too")
 * Add Crossing Cave (music: Mt. Pyre Peak?) to Route 35 and Route 35 Coast
 * Add Noisy Forest below Route 36 (music: White Treehollow)
 * Add Magnet Train Track between Goldenrod City, Route 32, and Noisy Forest
@@ -113,3 +113,39 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * First Pokémon walks behind you
 * Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
+
+
+### New items
+
+* Zinc
+* {Pomeg, Kelpsy, Qualot, Hondew, Grepa, Tamato} Berry
+* Big Nugget (and other valuable items)
+* Mulch (use on a picked Berry tree to regrow it)
+* Honey (for Honey Trees)
+* Premier Ball
+* Cherish Ball
+* Ability Capsule
+* Soothe Bell (National Park)
+* Quick Powder (wild Ditto)
+* Macho Brace (Goldenrod City)
+* Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower)
+* Choice {Band, Scarf, Specs} (Battle Tower)
+* {Damp, Heat, Icy, Smooth} Rock (Icy Mountain Road)
+* Light Clay (Route 9)
+* Binding Band
+* Grip Claw (Seafoam Islands)
+* {Mental, Power, White} Herb (Battle Tower)
+* Big Root (Yellow Forest)
+* Shell Bell (Route 32)
+* Assault Vest
+* Expert Belt (Mt. Silver)
+* Life Orb (Ruins of Alph)
+* Weak Policy
+* {Wide, Zoom} Lens (Goldenrod Game Corner)
+* Focus Sash
+* Air Balloon
+* Destiny Knot (Route 27)
+* Metronome
+* Rocky Helmet
+* Safe Goggles
+* Shed Shell (Bug-Catching Contest)

@@ -2,7 +2,7 @@
 
 Clearwc7e8:: ; 210f
 	ld hl, wc7e8
-	ld bc, 19
+	ld bc, 15
 	ld a, $0
 	call ByteFill
 	ret

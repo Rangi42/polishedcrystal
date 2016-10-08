@@ -133,10 +133,16 @@ _ResetWRAM: ; 5bae
 	ld hl, NumItems
 	call InitList
 
-	ld hl, NumKeyItems
+	ld hl, NumMedicine
 	call InitList
 
 	ld hl, NumBalls
+	call InitList
+
+	ld hl, NumBerries
+	call InitList
+
+	ld hl, NumKeyItems
 	call InitList
 
 	ld hl, PCItems
