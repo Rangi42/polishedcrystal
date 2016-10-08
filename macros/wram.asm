@@ -106,6 +106,10 @@ battle_struct: MACRO
 \1Type::
 \1Type1::     db
 \1Type2::     db
+; TODO: use Filler space
+; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
+; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
+\1Filler::    ds 3
 \1StructEnd::
 ENDM
 
