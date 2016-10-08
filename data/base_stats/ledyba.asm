@@ -14,16 +14,17 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 15 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db SWARM ; ability 1
 	db EARLY_BIRD ; ability 2
 	db RATTLED ; hidden ability
-	db 0 ; padding
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   0,   1
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm DYNAMICPUNCH, CURSE, TOXIC, SWORDS_DANCE, HIDDEN_POWER, SUNNY_DAY, LIGHT_SCREEN, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DIG, DOUBLE_TEAM, REFLECT, SWIFT, AERIAL_ACE, REST, ATTRACT, THIEF, SUBSTITUTE, ENDURE, FLASH, DOUBLE_EDGE, HEADBUTT, ICE_PUNCH, ROLLOUT, SLEEP_TALK, SWAGGER, THUNDERPUNCH

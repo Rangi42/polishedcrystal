@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 15 ; step cycles to hatch
-	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db SHIELD_DUST ; ability 1
 	db SHIELD_DUST ; ability 2
 	db RUN_AWAY ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   1,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm

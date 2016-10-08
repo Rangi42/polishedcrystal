@@ -18,16 +18,17 @@ endc
 	db NO_ITEM ; item 1
 	db KINGS_ROCK ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db WATER_ABSORB ; ability 1
 	db DAMP ; ability 2
 	db DRIZZLE ; hidden ability
-	db 0 ; padding
 	db MEDIUM_SLOW ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   0,   3
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm DYNAMICPUNCH, CURSE, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, EARTHQUAKE, RETURN, DIG, PSYCHIC, MUD_SLAP, DOUBLE_TEAM, REST, ATTRACT, THIEF, SUBSTITUTE, BODY_SLAM, FOCUS_BLAST, ENERGY_BALL, SCALD, ENDURE, SURF, STRENGTH, WHIRLPOOL, WATERFALL, ROCK_SMASH, COUNTER, DEFENSE_CURL, DOUBLE_EDGE, HEADBUTT, HYPER_VOICE, ICE_PUNCH, ICY_WIND, SEISMIC_TOSS, SLEEP_TALK, SWAGGER, WATER_PULSE

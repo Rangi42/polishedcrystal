@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db PINK_BOW ; item 2
 	db 31 ; gender
-	db 100 ; unknown
 	db 35 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db CUTE_CHARM ; ability 1
 	db CUTE_CHARM ; ability 2
 	db PIXILATE ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   0,   2
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CALM_MIND, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, LIGHT_SCREEN, PROTECT, RAIN_DANCE, SAFEGUARD, IRON_TAIL, RETURN, DIG, SHADOW_BALL, DOUBLE_TEAM, REFLECT, SWIFT, REST, ATTRACT, SUBSTITUTE, DAZZLINGLEAM, CUT, FLASH, DOUBLE_EDGE, HYPER_VOICE, SLEEP_TALK, SWAGGER

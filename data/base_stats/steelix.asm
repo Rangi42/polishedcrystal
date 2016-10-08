@@ -14,16 +14,17 @@ endc
 	db NO_ITEM ; item 1
 	db METAL_COAT ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 25 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db ROCK_HEAD ; ability 1
 	db SAND_FORCE ; ability 2
 	db SHEER_FORCE ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   2,   0,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, ROAR, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, DRAGONBREATH, IRON_TAIL, EARTHQUAKE, RETURN, DIG, MUD_SLAP, DOUBLE_TEAM, FLASH_CANNON, SANDSTORM, STONE_EDGE, REST, ATTRACT, ROCK_SLIDE, SUBSTITUTE, BODY_SLAM, DARK_PULSE, ENDURE, DRAGON_PULSE, EXPLOSION, CUT, STRENGTH, ROCK_SMASH, AQUA_TAIL, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, HEADBUTT, IRON_HEAD, ROLLOUT, SLEEP_TALK, SWAGGER

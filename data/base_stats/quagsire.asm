@@ -14,16 +14,17 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db DAMP ; ability 1
 	db WATER_ABSORB ; ability 2
 	db UNAWARE ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
+
+	; ev_yield
+	ev_yield   2,   0,   0,   0,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm DYNAMICPUNCH, CURSE, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, SAFEGUARD, IRON_TAIL, EARTHQUAKE, RETURN, DIG, MUD_SLAP, DOUBLE_TEAM, SLUDGE_BOMB, SANDSTORM, STONE_EDGE, REST, ATTRACT, THIEF, ROCK_SLIDE, SUBSTITUTE, BODY_SLAM, FOCUS_BLAST, SCALD, ENDURE, SURF, STRENGTH, FLASH, WHIRLPOOL, WATERFALL, ROCK_SMASH, AQUA_TAIL, COUNTER, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, HEADBUTT, ICE_PUNCH, ICY_WIND, ROLLOUT, SEISMIC_TOSS, SLEEP_TALK, SWAGGER, WATER_PULSE

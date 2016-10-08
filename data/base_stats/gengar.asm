@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db SPELL_TAG ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db LEVITATE ; ability 1
 	db LEVITATE ; ability 2
 	db SHADOW_TAG ; hidden ability
-	db 0 ; padding
 	db MEDIUM_SLOW ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   3,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm DYNAMICPUNCH, CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, THUNDERBOLT, THUNDER, RETURN, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, SLUDGE_BOMB, REST, ATTRACT, THIEF, SUBSTITUTE, BODY_SLAM, FOCUS_BLAST, ENERGY_BALL, DARK_PULSE, ENDURE, DAZZLINGLEAM, WILL_O_WISP, POISON_JAB, EXPLOSION, SHADOW_CLAW, STRENGTH, ROCK_SMASH, COUNTER, DOUBLE_EDGE, DREAM_EATER, FIRE_PUNCH, HEADBUTT, ICE_PUNCH, ICY_WIND, SEISMIC_TOSS, SLEEP_TALK, SWAGGER, THUNDERPUNCH, ZAP_CANNON

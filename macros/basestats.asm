@@ -4,6 +4,11 @@ if !def(\1)
 endc
 endm
 
+ev_yield: MACRO
+	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
+	db (\5 << 6) | (\6 << 4)
+ENDM
+
 const_value = 0
 
 add_tm: MACRO

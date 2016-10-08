@@ -2026,11 +2026,7 @@ BaseItems:: ; d241
 	ds 2
 BaseGender:: ; d243
 	ds 1
-BaseUnknown1:: ; d244
-	ds 1
 BaseEggSteps:: ; d245
-	ds 1
-BaseUnknown2:: ; d246
 	ds 1
 BasePicSize:: ; d247
 	ds 1
@@ -2040,11 +2036,13 @@ BaseAbility2:: ; d249
 	ds 1
 BaseHiddenAbility:: ; d24a
 	ds 1
-BasePadding:: ; d24b
-	ds 1
 BaseGrowthRate:: ; d24c
 	ds 1
 BaseEggGroups:: ; d24d
+	ds 1
+BaseEVYield1:: ; d244
+	ds 1
+BaseEVYield2:: ; d246
 	ds 1
 BaseTMHM:: ; d24e
 	ds 12

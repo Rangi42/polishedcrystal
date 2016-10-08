@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db TWISTEDSPOON ; item 2
 	db 63 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1
 	db INNER_FOCUS ; ability 2
 	db MAGIC_GUARD ; hidden ability
-	db 0 ; padding
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   2,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm DYNAMICPUNCH, CURSE, CALM_MIND, TOXIC, HIDDEN_POWER, SUNNY_DAY, LIGHT_SCREEN, PROTECT, RAIN_DANCE, SAFEGUARD, IRON_TAIL, RETURN, DIG, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, REFLECT, REST, ATTRACT, THIEF, SUBSTITUTE, BODY_SLAM, ENERGY_BALL, ENDURE, DAZZLINGLEAM, THUNDER_WAVE, FLASH, COUNTER, DOUBLE_EDGE, DREAM_EATER, FIRE_PUNCH, HEADBUTT, ICE_PUNCH, SEISMIC_TOSS, SLEEP_TALK, SWAGGER, THUNDERPUNCH, ZAP_CANNON, ZEN_HEADBUTT

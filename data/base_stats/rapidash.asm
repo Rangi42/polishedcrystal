@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db GOLD_BERRY ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db RUN_AWAY ; ability 1
 	db FLASH_FIRE ; ability 2
 	db FLAME_BODY ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   2,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, SOLAR_BEAM, IRON_TAIL, RETURN, DOUBLE_TEAM, FLAMETHROWER, FIRE_BLAST, SWIFT, WILD_CHARGE, REST, ATTRACT, SUBSTITUTE, BODY_SLAM, ENDURE, WILL_O_WISP, POISON_JAB, STRENGTH, DOUBLE_EDGE, HEADBUTT, SLEEP_TALK, SWAGGER

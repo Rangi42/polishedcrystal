@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 255 ; gender
-	db 100 ; unknown
 	db 40 ; step cycles to hatch
-	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db LEVITATE ; ability 1
 	db LEVITATE ; ability 2
 	db LEVITATE ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
+
+	; ev_yield
+	ev_yield   0,   1,   0,   0,   1,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm HIDDEN_POWER

@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db CLEAR_BODY ; ability 1
 	db LIQUID_OOZE ; ability 2
 	db RAIN_DISH ; hidden ability
-	db 0 ; padding
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   0,   2
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, TOXIC, HAIL, SWORDS_DANCE, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, SAFEGUARD, RETURN, DOUBLE_TEAM, SLUDGE_BOMB, REST, ATTRACT, THIEF, SUBSTITUTE, SCALD, ENDURE, DAZZLINGLEAM, POISON_JAB, CUT, SURF, WHIRLPOOL, WATERFALL, DOUBLE_EDGE, ICY_WIND, SLEEP_TALK, SWAGGER, WATER_PULSE

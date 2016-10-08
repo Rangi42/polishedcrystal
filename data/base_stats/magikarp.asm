@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 5 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db SWIFT_SWIM ; ability 1
 	db SWIFT_SWIM ; ability 2
 	db RATTLED ; hidden ability
-	db 0 ; padding
 	db SLOW ; growth rate
 	dn FISH, REPTILE ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   1,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm
