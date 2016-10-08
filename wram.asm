@@ -2713,7 +2713,7 @@ wSafariBallsRemaining:: ds 1 ; dc79
 wSafariTimeRemaining:: ds 2 ; dc7a
 wPhoneList:: ds CONTACT_LIST_SIZE ; dc7c
 ; dc86
-	ds 23
+	ds 13
 wLuckyNumberShowFlag:: ds 2 ; dc9d
 wLuckyIDNumber:: ds 2 ; dc9f
 wRepelEffect:: ds 1 ; If a Repel is in use, it contains the nr of steps it's still active

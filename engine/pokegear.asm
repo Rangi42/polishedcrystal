@@ -1002,7 +1002,7 @@ PokegearPhone_GetDPad: ; 9126d (24:526d)
 .scroll_page_down
 	ld hl, wPokegearPhoneScrollPosition
 	ld a, [hl]
-	cp $6
+	cp CONTACT_LIST_SIZE - 4
 	ret nc
 	inc [hl]
 	jr .done_joypad_update_page
