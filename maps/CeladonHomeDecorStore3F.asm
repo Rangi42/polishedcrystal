@@ -96,7 +96,7 @@ CeladonHomeDecorStore3FClerk1Script:
 CeladonHomeDecorStore3FClerk2Script:
 	faceplayer
 	opentext
-	checkevent EVENT_DECO_CARPET_4
+	checkevent EVENT_DECO_CARPET_3
 	iftrue .Sold
 	special PlaceMoneyTopRight
 	writetext CeladonHomeDecorStore3FClerk2SaleText
@@ -105,7 +105,7 @@ CeladonHomeDecorStore3FClerk2Script:
 	checkmoney $0, 35000
 	if_equal $2, .NotEnoughMoney
 	takemoney $0, 35000
-	setevent EVENT_DECO_CARPET_4
+	setevent EVENT_DECO_CARPET_3
 	writetext BoughtYellowCarpetText
 	playsound SFX_TRANSACTION
 	waitbutton
