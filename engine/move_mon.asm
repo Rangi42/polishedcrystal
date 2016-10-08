@@ -266,15 +266,15 @@ endr
 	ld [de], a
 	inc de
 	ld hl, EnemyMonStatus
-    ; Copy EnemyMonStatus
+	; Copy EnemyMonStatus
 	ld a, [hli]
 	ld [de], a
 	inc de
-    ; Copy EnemyMonUnused
+	; Copy EnemyMonUnused
 	ld a, [hli]
 	ld [de], a
 	inc de
-    ; Copy EnemyMonHP
+	; Copy EnemyMonHP
 	ld a, [hli]
 	ld [de], a
 	inc de
