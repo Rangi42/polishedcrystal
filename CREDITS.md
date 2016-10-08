@@ -11,7 +11,7 @@
 * metalflygon08 for the HGSS Team Rocket, Sylveon, and Rhyperior sprites.
 * FroggestSpirit for ported and demixed music from RBY, HGSS, and DPPt.
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.
-* Pigu for battle music covers used in TPP Anniversary Crystal 251.
+* Pigu for battle music (used in TPP Anniversary Crystal 251).
 * Pum for the Yellow Forest, Valerie battle, and Lugia theme music.
 * ShantyTown for the Rock Tunnel music.
 * Serious Senator for some trainer dialog.

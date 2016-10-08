@@ -94,6 +94,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Use RBY's Pokémon Tower music (Crossing Cave bottom)
 * Use Mmmmmm's B/W Route 12 (Magnet Train Track), White Treehollow (Noisy Forest), and Spiky-Eared Pichu (Giovanni event) music
 * Acquire R/S/E and D/P/Pt Champion battle music
+* Use Safari Zone Gate music for Yellow Forest
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
