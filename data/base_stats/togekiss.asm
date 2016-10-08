@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 31 ; gender
-	db 100 ; unknown
 	db 10 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db HUSTLE ; ability 1
 	db SERENE_GRACE ; ability 2
 	db SUPER_LUCK ; hidden ability
-	db 0 ; padding
 	db FAST ; growth rate
 	dn AVIAN, FAERY ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   2,   1
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, LIGHT_SCREEN, PROTECT, RAIN_DANCE, SAFEGUARD, SOLAR_BEAM, RETURN, PSYCHIC, SHADOW_BALL, MUD_SLAP, DOUBLE_TEAM, REFLECT, FLAMETHROWER, FIRE_BLAST, SWIFT, AERIAL_ACE, REST, ATTRACT, STEEL_WING, SUBSTITUTE, FOCUS_BLAST, ENDURE, DAZZLINGLEAM, THUNDER_WAVE, FLY, FLASH, ROCK_SMASH, DREAM_EATER, HEADBUTT, HYPER_VOICE, ROLLOUT, SLEEP_TALK, SWAGGER, WATER_PULSE, ZEN_HEADBUTT

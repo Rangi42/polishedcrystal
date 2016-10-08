@@ -18,16 +18,17 @@ endc
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db POISON_POINT ; ability 1
 	db SWIFT_SWIM ; ability 2
 	db INTIMIDATE ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FISH, FISH ; egg groups
+
+	; ev_yield
+	ev_yield   0,   1,   0,   0,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, TOXIC, HAIL, SWORDS_DANCE, HIDDEN_POWER, ICE_BEAM, BLIZZARD, PROTECT, RAIN_DANCE, RETURN, SHADOW_BALL, DOUBLE_TEAM, SLUDGE_BOMB, SWIFT, REST, ATTRACT, SUBSTITUTE, SCALD, ENDURE, POISON_JAB, THUNDER_WAVE, EXPLOSION, SURF, WHIRLPOOL, WATERFALL, AQUA_TAIL, DEFENSE_CURL, DOUBLE_EDGE, HEADBUTT, ICY_WIND, ROLLOUT, SLEEP_TALK, SWAGGER, WATER_PULSE

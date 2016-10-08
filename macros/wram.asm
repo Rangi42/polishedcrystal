@@ -9,13 +9,21 @@ box_struct: MACRO
 \1Moves::          ds NUM_MOVES
 \1ID::             dw
 \1Exp::            ds 3
-\1StatExp::
-\1HPExp::          dw
-\1AtkExp::         dw
-\1DefExp::         dw
-\1SpdExp::         dw
-\1SpcExp::         dw
-\1DVs::            ds 2
+\1EVs::
+\1HPEV::           db
+\1AtkEV::          db
+\1DefEV::          db
+\1SpdEV::          db
+\1SatEV::          db
+\1SdfEV::          db
+; TODO: use Filler space
+; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
+; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
+; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
+\1Filler::         ds 4
+\1DVs::
+\1AtkDefDV::       db
+\1SpdSpcDV::       db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
 \1PokerusStatus::  db
@@ -98,6 +106,10 @@ battle_struct: MACRO
 \1Type::
 \1Type1::     db
 \1Type2::     db
+; TODO: use Filler space
+; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
+; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
+\1Filler::    ds 3
 \1StructEnd::
 ENDM
 

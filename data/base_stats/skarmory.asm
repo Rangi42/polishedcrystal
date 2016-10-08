@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db SHARP_BEAK ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 25 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db KEEN_EYE ; ability 1
 	db STURDY ; ability 2
 	db WEAK_ARMOR ; hidden ability
-	db 0 ; padding
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   2,   0,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, ROAR, TOXIC, SWORDS_DANCE, HIDDEN_POWER, SUNNY_DAY, PROTECT, RETURN, MUD_SLAP, DOUBLE_TEAM, FLASH_CANNON, SANDSTORM, SWIFT, AERIAL_ACE, REST, ATTRACT, THIEF, STEEL_WING, ROCK_SLIDE, FURY_CUTTER, SUBSTITUTE, X_SCISSOR, DARK_PULSE, ENDURE, CUT, FLY, FLASH, ROCK_SMASH, COUNTER, DOUBLE_EDGE, ICY_WIND, IRON_HEAD, SLEEP_TALK, SWAGGER

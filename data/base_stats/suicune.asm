@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 255 ; gender
-	db 100 ; unknown
 	db 80 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1
 	db PRESSURE ; ability 2
 	db WATER_ABSORB ; hidden ability
-	db 0 ; padding
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   1,   0,   0,   2
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, CALM_MIND, ROAR, TOXIC, HAIL, HIDDEN_POWER, SUNNY_DAY, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, IRON_TAIL, RETURN, DIG, SHADOW_BALL, MUD_SLAP, DOUBLE_TEAM, REFLECT, SANDSTORM, SWIFT, AVALANCHE, REST, SUBSTITUTE, BODY_SLAM, SCALD, ENDURE, CUT, SURF, WHIRLPOOL, WATERFALL, ROCK_SMASH, DOUBLE_EDGE, HEADBUTT, ICY_WIND, IRON_HEAD, SLEEP_TALK, SWAGGER, WATER_PULSE

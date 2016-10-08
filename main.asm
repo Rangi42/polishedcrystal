@@ -583,36 +583,36 @@ ApplyPokerusTick: ; 13988
 
 INCLUDE "event/bug_contest_2.asm"
 
-GetSquareRoot: ; 13b87
-; Return the square root of de in b.
-
-; Rather than calculating the result, we take the index of the
-; first value in a table of squares that isn't lower than de.
-
-	ld hl, Squares
-	ld b, 0
-.loop
-; Make sure we don't go past the end of the table.
-	inc b
-	ld a, b
-	cp $ff
-	ret z
-
-; Iterate over the table until b**2 >= de.
-	ld a, [hli]
-	sub e
-	ld a, [hli]
-	sbc d
-
-	jr c, .loop
-	ret
-
-Squares: ; 13b98
-root	set 1
-	rept $ff
-	dw root*root
-root	set root+1
-	endr
+;GetSquareRoot: ; 13b87
+;; Return the square root of de in b.
+;
+;; Rather than calculating the result, we take the index of the
+;; first value in a table of squares that isn't lower than de.
+;
+;	ld hl, Squares
+;	ld b, 0
+;.loop
+;; Make sure we don't go past the end of the table.
+;	inc b
+;	ld a, b
+;	cp $ff
+;	ret z
+;
+;; Iterate over the table until b**2 >= de.
+;	ld a, [hli]
+;	sub e
+;	ld a, [hli]
+;	sbc d
+;
+;	jr c, .loop
+;	ret
+;
+;Squares: ; 13b98
+;root	set 1
+;	rept $ff
+;	dw root*root
+;root	set root+1
+;	endr
 
 SECTION "bank5", ROMX, BANK[$5]
 
@@ -3882,7 +3882,7 @@ _TempMonStatsCalculation: ; 50893
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	push bc
 	ld b, $1

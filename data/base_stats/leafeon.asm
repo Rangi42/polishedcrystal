@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 31 ; gender
-	db 100 ; unknown
 	db 35 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db LEAF_GUARD ; ability 1
 	db LEAF_GUARD ; ability 2
 	db CLOROPHYLL ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   2,   0,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm ROAR, TOXIC, SWORDS_DANCE, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, SOLAR_BEAM, IRON_TAIL, RETURN, DIG, SHADOW_BALL, MUD_SLAP, DOUBLE_TEAM, SWIFT, AERIAL_ACE, REST, ATTRACT, FURY_CUTTER, SUBSTITUTE, ENERGY_BALL, X_SCISSOR, ENDURE, STRENGTH, FLASH, ROCK_SMASH, HEADBUTT, HYPER_VOICE, SEED_BOMB, SLEEP_TALK, SWAGGER

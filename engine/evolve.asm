@@ -85,8 +85,8 @@ endr
 	jp z, .location
 	cp EVOLVE_MOVE
 	jp z, .move
-	cp EVOLVE_STAT_EXP
-	jp z, .stat_exp
+	cp EVOLVE_EVS
+	jp z, .evs
 	cp EVOLVE_LEVEL
 	jp z, .level
 	cp EVOLVE_HAPPINESS
@@ -206,7 +206,7 @@ endr
 	pop hl
 	jp .proceed
 
-.stat_exp
+.evs
 	ld a, [hli]
 	push hl
 	push bc
@@ -217,7 +217,7 @@ endr
 	ld a, [hl]
 	pop bc
 	pop hl
-	cp STAT_EXP_TO_EVOLVE
+	cp EVS_TO_EVOLVE
 	jp c, .dont_evolve_3
 	jp .proceed
 

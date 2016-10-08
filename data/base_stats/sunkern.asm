@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db CLOROPHYLL ; ability 1
 	db SOLAR_POWER ; ability 2
 	db EARLY_BIRD ; hidden ability
-	db 0 ; padding
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   1,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, TOXIC, SWORDS_DANCE, HIDDEN_POWER, SUNNY_DAY, LIGHT_SCREEN, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DOUBLE_TEAM, SLUDGE_BOMB, REST, ATTRACT, SUBSTITUTE, ENERGY_BALL, ENDURE, CUT, FLASH, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ROLLOUT, SEED_BOMB, SLEEP_TALK, SWAGGER

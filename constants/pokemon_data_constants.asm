@@ -292,7 +292,7 @@ const_value SET 1
 	const EVOLVE_STAT
 	const EVOLVE_LOCATION
 	const EVOLVE_MOVE
-	const EVOLVE_STAT_EXP
+	const EVOLVE_EVS
 
 
 BASE_HAPPINESS        EQU 70
@@ -305,7 +305,7 @@ const_value SET 1
 	const TR_MORNDAY
 	const TR_NITE
 
-STAT_EXP_TO_EVOLVE EQU 50
+EVS_TO_EVOLVE EQU 50
 
 ; stat evolution triggers
 const_value SET 1

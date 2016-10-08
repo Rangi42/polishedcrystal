@@ -14,16 +14,17 @@ endc
 	db NO_ITEM ; item 1
 	db SILVERPOWDER ; item 2
 	db 127 ; gender
-	db 100 ; unknown
 	db 20 ; step cycles to hatch
-	db 5 ; unknown
 	dn 7, 7 ; frontpic dimensions
 	db SHIELD_DUST ; ability 1
 	db TINTED_LENS ; ability 2
 	db WONDER_SKIN ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   1,   1,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, GIGA_DRAIN, SOLAR_BEAM, RETURN, PSYCHIC, DOUBLE_TEAM, SLUDGE_BOMB, SWIFT, AERIAL_ACE, REST, ATTRACT, THIEF, SUBSTITUTE, ENERGY_BALL, ENDURE, FLASH, DOUBLE_EDGE, SLEEP_TALK, SWAGGER, ZEN_HEADBUTT

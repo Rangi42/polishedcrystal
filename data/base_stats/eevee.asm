@@ -9,16 +9,17 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db 31 ; gender
-	db 100 ; unknown
 	db 35 ; step cycles to hatch
-	db 5 ; unknown
 	dn 5, 5 ; frontpic dimensions
 	db RUN_AWAY ; ability 1
 	db ADAPTABILITY ; ability 2
 	db ANTICIPATION ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   0,   0,   1
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, PROTECT, RAIN_DANCE, IRON_TAIL, RETURN, DIG, SHADOW_BALL, MUD_SLAP, DOUBLE_TEAM, SWIFT, REST, ATTRACT, THIEF, SUBSTITUTE, BODY_SLAM, ENDURE, DOUBLE_EDGE, HEADBUTT, HYPER_VOICE, SLEEP_TALK, SWAGGER

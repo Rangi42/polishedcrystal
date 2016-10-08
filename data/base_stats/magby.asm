@@ -14,16 +14,17 @@ endc
 	db BURNT_BERRY ; item 1
 	db MAGMARIZER ; item 2
 	db 63 ; gender
-	db 100 ; unknown
 	db 25 ; step cycles to hatch
-	db 5 ; unknown
 	dn 6, 6 ; frontpic dimensions
 	db FLAME_BODY ; ability 1
 	db FLAME_BODY ; ability 2
 	db VITAL_SPIRIT ; hidden ability
-	db 0 ; padding
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
+
+	; ev_yield
+	ev_yield   0,   0,   0,   1,   0,   0
+	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
 	tmhm DYNAMICPUNCH, CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, PROTECT, IRON_TAIL, RETURN, PSYCHIC, MUD_SLAP, DOUBLE_TEAM, FLAMETHROWER, FIRE_BLAST, REST, ATTRACT, THIEF, SUBSTITUTE, BODY_SLAM, ENDURE, WILL_O_WISP, ROCK_SMASH, COUNTER, DOUBLE_EDGE, FIRE_PUNCH, HEADBUTT, SEISMIC_TOSS, SLEEP_TALK, SWAGGER, THUNDERPUNCH
