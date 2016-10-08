@@ -1539,7 +1539,7 @@ HandleMysteryberry: ; 3c93c
 	add b
 	ld [de], a
 .skip_checks
-	farcall GetUserItemAfterUnnerve
+	farcall GetUserItem
 	ld a, [hl]
 	ld [wd265], a
 	xor a
