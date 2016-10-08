@@ -2807,6 +2807,7 @@ PlayerAttackDamage: ; 352e2
 
 	call ResetDamage
 
+; No damage dealt with 0 power.
 	ld hl, wPlayerMoveStructPower
 	ld a, [hl]
 	and a
@@ -2914,6 +2915,121 @@ endc
 	ret
 
 ; 3534d
+
+
+EnemyAttackDamage: ; 353f6
+; Return move power d, enemy level e, player defense c and enemy attack b.
+
+	call ResetDamage
+
+; No damage dealt with 0 power.
+	ld hl, wEnemyMoveStructPower
+	ld a, [hl]
+	and a
+	ld d, a
+	ret z
+
+	ld hl, wEnemyMoveStructCategory
+	ld a, [hl]
+	cp SPECIAL
+	jr nc, .special
+
+.physical
+	ld hl, BattleMonDefense
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+
+if DEF(FAITHFUL)
+else
+	call HailDefenseBoost
+endc
+
+	ld a, [PlayerAbility]
+	cp INFILTRATOR
+	jr z, .physicalcrit
+	ld a, [PlayerScreens]
+	bit SCREENS_REFLECT, a
+	jr z, .physicalcrit
+	sla c
+	rl b
+
+.physicalcrit
+	ld hl, EnemyMonAttack
+	call GetDamageStatsCritical
+	jr c, .thickcluborlightball
+
+	ld hl, PlayerStats + 2
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+	ld hl, EnemyStats
+	jr .thickcluborlightball
+
+.special
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	jr z, .psystrike
+
+	ld hl, BattleMonSpclDef
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+
+	call SandstormSpDefBoost
+
+	jp .lightscreen
+
+.psystrike
+	ld hl, BattleMonDefense
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+
+.lightscreen
+	ld a, [PlayerAbility]
+	cp INFILTRATOR
+	jr z, .specialcrit
+	ld a, [PlayerScreens]
+	bit SCREENS_LIGHT_SCREEN, a
+	jr z, .specialcrit
+	sla c
+	rl b
+
+.specialcrit
+	ld hl, EnemyMonSpclAtk
+	call GetDamageStatsCritical
+	jr c, .lightball
+
+	ld hl, PlayerStats + SP_DEFENSE * 2
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+	ld hl, EnemyStats + SP_ATTACK * 2
+
+.lightball
+; Note: Returns enemy special attack at hl in hl.
+	call LightBallBoost
+	jr .done
+
+.thickcluborlightball
+; Note: Returns enemy attack at hl in hl.
+	call ThickClubOrLightBallBoost
+
+.done
+	call TruncateHL_BC
+
+	ld a, [EnemyMonLevel]
+	ld e, a
+	call DittoMetalPowder
+	call UnevolvedEviolite
+
+	ld a, 1
+	and a
+	ret
+
+; 35461
 
 
 TruncateHL_BC: ; 3534d
@@ -3092,7 +3208,6 @@ SpeciesItemBoost: ; 353d1
 	push hl
 	ld a, MON_SPECIES
 	call BattlePartyAttr
-
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3131,8 +3246,8 @@ SandstormSpDefBoost:
 	push hl
 	ld h, b
 	ld l, c
-	srl h
-	rr l
+	sla l
+	rl h
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -3149,105 +3264,14 @@ HailDefenseBoost:
 	push hl
 	ld h, b
 	ld l, c
-	srl h
-	rr l
+	sla l
+	rl h
 	add hl, bc
 	ld b, h
 	ld c, l
 	pop hl
 	ret
 
-
-EnemyAttackDamage: ; 353f6
-
-	call ResetDamage
-
-; No damage dealt with 0 power.
-	ld hl, wEnemyMoveStructPower
-	ld a, [hl]
-	ld d, a
-	and a
-	ret z
-
-	ld hl, wEnemyMoveStructCategory
-	ld a, [hl]
-	cp SPECIAL
-	jr nc, .Special
-
-.physical
-	ld hl, BattleMonDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
-	ld a, [PlayerAbility]
-	cp INFILTRATOR
-	jr z, .physicalcrit
-	ld a, [PlayerScreens]
-	bit SCREENS_REFLECT, a
-	jr z, .physicalcrit
-	sla c
-	rl b
-
-.physicalcrit
-	ld hl, EnemyMonAttack
-	call GetDamageStatsCritical
-	jr c, .thickcluborlightball
-
-	ld hl, PlayerStats + 2
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, EnemyStats
-	jr .thickcluborlightball
-
-.Special:
-	ld hl, BattleMonSpclDef
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
-	ld a, [PlayerAbility]
-	cp INFILTRATOR
-	jr z, .physicalcrit
-	ld a, [PlayerScreens]
-	bit SCREENS_LIGHT_SCREEN, a
-	jr z, .specialcrit
-	sla c
-	rl b
-
-.specialcrit
-	ld hl, EnemyMonSpclAtk
-	call GetDamageStatsCritical
-	jr c, .lightball
-	ld hl, PlayerStats + 8
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, EnemyStats + 6
-
-.lightball
-; Note: Returns player special attack at hl in hl.
-	call LightBallBoost
-	jr .done
-
-.thickcluborlightball
-; Note: Returns player attack at hl in hl.
-	call ThickClubOrLightBallBoost
-
-.done
-	call TruncateHL_BC
-
-	ld a, [EnemyMonLevel]
-	ld e, a
-	call DittoMetalPowder
-	call UnevolvedEviolite
-
-	ld a, 1
-	and a
-	ret
-
-; 35461
 
 ; Unused, but kept for now to avoid random bugs
 BattleCommand_StoreEnergy:

@@ -233,3 +233,5 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Adjust some trainer levels.
 * Fix: Move a trainer in Viridian Gym to prevent getting stuck on spinners.
 * Fix: Fix some sprites.
+* Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.
+* Fix: Enemy Psystrike uses player's Defense.
