@@ -173,12 +173,10 @@ OddEgg1:
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
 	dw 02048 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
@@ -200,12 +198,10 @@ OddEgg2:
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
 	dw 00256 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db $5b, SPDSPCDV_SHINY ; DVs
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
@@ -226,12 +222,10 @@ OddEgg2:
 	db HAZE, LEER, DIZZY_PUNCH, 0
 	dw 02560 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
@@ -252,12 +246,10 @@ OddEgg2:
 	db HAZE, LEER, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db $3b, SPDSPCDV_SHINY ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
@@ -278,12 +270,10 @@ OddEgg2:
 	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
 	dw 03072 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
@@ -304,12 +294,10 @@ OddEgg2:
 	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db $3b, SPDSPCDV_SHINY ; DVs
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
@@ -330,12 +318,10 @@ OddEgg2:
 	db TACKLE, RAGE, FORESIGHT, DIZZY_PUNCH
 	dw 02560 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
@@ -356,12 +342,10 @@ OddEgg2:
 	db TACKLE, RAGE, FORESIGHT, DIZZY_PUNCH
 	dw 00256 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db $7b, SPDSPCDV_SHINY ; DVs
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
@@ -382,12 +366,10 @@ OddEgg2:
 	db SWEET_KISS, METRONOME, TACKLE, DIZZY_PUNCH
 	dw 04096 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
@@ -408,12 +390,10 @@ OddEgg2:
 	db SWEET_KISS, METRONOME, TACKLE, DIZZY_PUNCH
 	dw 00768 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db $1b, SPDSPCDV_SHINY ; DVs
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
@@ -436,12 +416,10 @@ ShinyDittoEgg:
 	db TRANSFORM, 0, 0, 0
 	dw 08192 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 10, 0, 0, 0 ; PP
 	db 20 ; Happiness
@@ -464,12 +442,10 @@ MystriEgg:
 	db GROWL, CHARM, MOONBLAST, AEROBLAST
 	dw 08192 ; OT ID
 	dt 0 ; Exp
-	; Stat exp
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
-	bigdw 0
+	; EVs
+	db 0, 0, 0, 0, 0, 0
+	; TODO: Personality
+	db 0, 0, 0, 0
 	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
 	db 40, 20, 15, 5 ; PP
 	db 20 ; Happiness

@@ -1387,23 +1387,24 @@ Calcium: ; ee3d
 
 	call RareCandy_StatBooster_GetParameters
 
-	call GetStatExpRelativePointer
+	call GetEVRelativePointer
 
-	ld a, MON_STAT_EXP
+	ld a, MON_EVS
 	call GetPartyParamLocation
 
 	add hl, bc
 	ld a, [hl]
-	cp 100
+	cp 242
 	jr nc, NoEffectMessage
 
 	add 10
 	ld [hl], a
 	call UpdateStatsAfterItem
 
-	call GetStatExpRelativePointer
+	call GetEVRelativePointer
 
 	ld hl, StatStrings
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
@@ -1435,7 +1436,7 @@ UpdateStatsAfterItem: ; ee8c
 	call GetPartyParamLocation
 	ld d, h
 	ld e, l
-	ld a, MON_STAT_EXP - 1
+	ld a, MON_EVS - 1
 	call GetPartyParamLocation
 	ld b, $1
 	predef_jump CalcPkmnStats
@@ -1460,17 +1461,19 @@ StatStrings: ; eeab
 	dw .attack
 	dw .defense
 	dw .speed
-	dw .special
+	dw .spcl_atk
+	dw .spcl_def
 
-.health  db "Health@"
-.attack  db "Attack@"
-.defense db "Defense@"
-.speed   db "Speed@"
-.special db "Special@"
+.health   db "Health@"
+.attack   db "Attack@"
+.defense  db "Defense@"
+.speed    db "Speed@"
+.spcl_atk db "Spcl.Atk@"
+.spcl_def db "Spcl.Def@"
 ; eed9
 
 
-GetStatExpRelativePointer: ; eed9
+GetEVRelativePointer: ; eed9
 	ld a, [CurItem]
 	ld hl, Table_eeeb
 .next
@@ -1488,11 +1491,12 @@ GetStatExpRelativePointer: ; eed9
 ; eeeb
 
 Table_eeeb: ; eeeb
-	db HP_UP,    MON_HP_EXP - MON_STAT_EXP
-	db PROTEIN, MON_ATK_EXP - MON_STAT_EXP
-	db IRON,    MON_DEF_EXP - MON_STAT_EXP
-	db CARBOS,  MON_SPD_EXP - MON_STAT_EXP
-	db CALCIUM, MON_SPC_EXP - MON_STAT_EXP
+	db HP_UP,    MON_HP_EV - MON_EVS
+	db PROTEIN, MON_ATK_EV - MON_EVS
+	db IRON,    MON_DEF_EV - MON_EVS
+	db CARBOS,  MON_SPD_EV - MON_EVS
+	db CALCIUM, MON_SAT_EV - MON_EVS
+;	db ZINC,    MON_SDF_EV - MON_EVS
 ; eef5
 
 

@@ -7521,8 +7521,8 @@ GiveExperiencePoints: ; 3ee3b
 	pop bc
 	jp z, .skip_stats
 
-; give stat exp
-	ld hl, MON_STAT_EXP + 1
+; TODO: give EVs
+	ld hl, MON_EVS + 1
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -7635,7 +7635,7 @@ GiveExperiencePoints: ; 3ee3b
 	push bc
 	call LoadTileMapToTempTileMap
 	pop bc
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	ld d, [hl]
 	ld a, [hQuotient + 2]
@@ -7667,7 +7667,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld d, MAX_LEVEL
 	farcall CalcExpAtLevel
 	pop bc
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	push bc
 	ld a, [hQuotient]
@@ -7726,7 +7726,7 @@ GiveExperiencePoints: ; 3ee3b
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	push bc
 	ld b, TRUE

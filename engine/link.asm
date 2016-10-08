@@ -778,7 +778,7 @@ Link_PrepPartyData_Gen1: ; 28499
 	ld [BaseSpecialAttack], a
 	pop bc
 
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	ld c, STAT_SATK
 	ld b, TRUE
@@ -1064,7 +1064,7 @@ Function2868a: ; 2868a
 	push bc
 	ld d, h
 	ld e, l
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	ld c, STAT_SATK
 	ld b, TRUE
@@ -1077,7 +1077,7 @@ Function2868a: ; 2868a
 	ld [hli], a
 	push hl
 	push bc
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 	ld c, STAT_SDEF
 	ld b, TRUE

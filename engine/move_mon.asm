@@ -294,9 +294,9 @@ endr
 
 .generatestats
 	pop hl
-	ld bc, MON_STAT_EXP - 1
+	ld bc, MON_EVS - 1
 	add hl, bc
-	ld b, $0 ; if b = 1, then stat calculation takes stat exp into account.
+	ld b, $0 ; if b = 1, then stat calculation takes EVs into account.
 	call CalcPkmnStats
 
 .next3
@@ -612,7 +612,7 @@ SentGetPkmnIntoFromBox: ; db3f
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, MON_STAT_EXP - 1
+	ld hl, MON_EVS - 1
 	add hl, bc
 
 	push bc
@@ -1357,7 +1357,7 @@ ComputeNPCTrademonStats: ; e134
 	ld d, h
 	ld e, l
 	push de
-	ld a, MON_STAT_EXP - 1
+	ld a, MON_EVS - 1
 	call GetPartyParamLocation
 	ld b, $1
 	call CalcPkmnStats
@@ -1374,9 +1374,9 @@ ComputeNPCTrademonStats: ; e134
 
 CalcPkmnStats: ; e167
 ; Calculates all 6 Stats of a Pkmn
-; b: Take into account stat EXP if TRUE
+; b: Take into account EVs if TRUE
 ; 'c' counts from 1-6 and points with 'BaseStats' to the base value
-; hl is the path to the Stat EXP
+; hl is the path to the EVs
 ; results in $ffb5 and $ffb6 are saved in [de]
 
 	ld c, $0
@@ -1417,30 +1417,16 @@ CalcPkmnStatC: ; e17b
 	ld e, a
 	pop hl
 	push hl
-	ld a, c
-	cp STAT_SDEF
-	jr nz, .not_spdef
-	dec hl
-	dec hl
-
-.not_spdef
-	sla c
 	ld a, d
 	and a
 	jr z, .no_stat_exp
 	add hl, bc
-	push de
-	ld a, [hld]
-	ld e, a
-	ld d, [hl]
-	farcall GetSquareRoot
-	pop de
-
+	ld a, [hl]
+	ld b, a
 .no_stat_exp
-	srl c
 	pop hl
 	push bc
-	ld bc, MON_DVS - MON_HP_EXP + 1
+	ld bc, MON_DVS - MON_HP_EV + 1
 	add hl, bc
 	pop bc
 	ld a, c
