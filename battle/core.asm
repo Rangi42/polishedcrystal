@@ -4078,7 +4078,7 @@ InitBattleMon: ; 3da0d
 	ld de, BattleMonDVs
 	ld bc, MON_PKRUS - MON_DVS
 	call CopyBytes
-rept 3
+rept 4
 	inc hl
 endr
 	ld de, BattleMonLevel

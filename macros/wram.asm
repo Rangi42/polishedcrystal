@@ -16,14 +16,20 @@ box_struct: MACRO
 \1SpdEV::          db
 \1SatEV::          db
 \1SdfEV::          db
-; TODO: use Filler space
-; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
-; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
-; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
 \1DVs::
 \1AtkDefDV::       db
 \1SpdSpcDV::       db
-\1Filler::         ds 4
+; TODO: use these bytes
+; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
+; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
+\1ThirdDV::        db
+\1Personality::
+\1Nature::
+\1Ability::
+\1Gender::         db
+\1Shiny::
+\1Fainted::
+\1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
 \1PokerusStatus::  db
@@ -32,6 +38,9 @@ box_struct: MACRO
 \1CaughtLevel::    db
 \1CaughtGender::
 \1CaughtLocation:: db
+; TODO: use these bytes
+; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
+\1MoreCaughtData:: db
 \1Level::          db
 \1End::
 ENDM
@@ -90,6 +99,17 @@ battle_struct: MACRO
 \1Moves::     ds NUM_MOVES
 \1MovesEnd::
 \1DVs::       ds 2
+; TODO: use these bytes
+; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
+; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
+\1ThirdDV::   db
+\1Personality::
+\1Nature::
+\1Ability::
+\1Gender::    db
+\1Shiny::
+\1Fainted::
+\1Form::      db
 \1PP::        ds NUM_MOVES
 \1Happiness:: db
 \1Level::     db
@@ -106,10 +126,6 @@ battle_struct: MACRO
 \1Type::
 \1Type1::     db
 \1Type2::     db
-; TODO: use Filler space
-; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
-; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
-\1Filler::    ds 3
 \1StructEnd::
 ENDM
 
