@@ -2788,7 +2788,7 @@ PartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH ; de41
 PartyMonNicknamesEnd::
 
 
-	ds 16
+	ds 13
 
 
 PokedexCaught:: ; de99
@@ -2853,7 +2853,7 @@ roam_struct: MACRO
 \1MapGroup::    db
 \1MapNumber::   db
 \1HP::          ds 1
-\1DVs::         ds 2
+\1DVs::         ds 3
 \1Personality:: ds 2
 ENDM
 
