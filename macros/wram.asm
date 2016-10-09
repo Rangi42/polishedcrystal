@@ -40,7 +40,8 @@ box_struct: MACRO
 \1CaughtLocation:: db
 ; TODO: use these bytes
 ; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
-\1MoreCaughtData:: db
+\1MoreCaughtData::
+\1CaughtBall::     db
 \1Level::          db
 \1End::
 ENDM
