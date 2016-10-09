@@ -621,6 +621,8 @@ wPayDayMoney:: ds 3 ; c6ec
 wSafariMonAngerCount:: ds 1
 wSafariMonEating:: ds 2
 wEnemyBackupDVs:: ; used when enemy is transformed
+	ds 3
+wEnemyBackupPersonality:: ; TODO: used when enemy is transformed
 	ds 2
 AlreadyDisobeyed:: ; c6f4
 	ds 1
@@ -2786,7 +2788,7 @@ PartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH ; de41
 PartyMonNicknamesEnd::
 
 
-	ds 22
+	ds 16
 
 
 PokedexCaught:: ; de99
@@ -2846,12 +2848,13 @@ wDunsparceMapNumber:: ds 1
 wFishingSwarmFlag:: ds 1
 
 roam_struct: MACRO
-\1Species::   db
-\1Level::     db
-\1MapGroup::  db
-\1MapNumber:: db
-\1HP::        ds 1
-\1DVs::       ds 2
+\1Species::     db
+\1Level::       db
+\1MapGroup::    db
+\1MapNumber::   db
+\1HP::          ds 1
+\1DVs::         ds 2
+\1Personality:: ds 2
 ENDM
 
 wRoamMon1:: roam_struct wRoamMon1 ; dfcf
