@@ -120,7 +120,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 ### New items
 
 * Zinc
-* {Pomeg, Kelpsy, Qualot, Hondew, Grepa, Tamato} Berry
+* {Pomeg, Kelpsy, Qualot, Hondew, Grepa, Tamato} Berry (if EVs are limited)
 * Big Nugget (and other valuable items)
 * Mulch (use on a picked Berry tree to regrow it)
 * Honey (for Honey Trees)
@@ -130,7 +130,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Soothe Bell (National Park)
 * Quick Powder (wild Ditto)
 * Macho Brace (Goldenrod City)
-* Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower)
+* Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower) (if EVs are limited)
 * Choice {Band, Scarf, Specs} (Battle Tower)
 * {Damp, Heat, Icy, Smooth} Rock (Icy Mountain Road)
 * Light Clay (Route 9)
@@ -151,3 +151,5 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Rocky Helmet
 * Safe Goggles
 * Shed Shell (Bug-Catching Contest)
+* {Poison, Paralyze, Burn, Sleep, Freeze, Confuse, Attract, Flinch} Guard
+* {Attack, Defense, Speed, Spcl.Atk, Spcl.Def} Up (if EVs are not limited)
