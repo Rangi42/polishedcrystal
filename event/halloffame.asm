@@ -187,7 +187,7 @@ GetHallOfFameParty: ; 8653f
 	ld [de], a
 	inc de
 
-	ld hl, MON_DVS
+	ld hl, MON_PERSONALITY
 	add hl, bc
 	ld a, [hli]
 	ld [de], a
@@ -239,9 +239,9 @@ rept 2
 	inc hl
 endr
 	ld a, [hli]
-	ld [TempMonDVs], a
+	ld [TempMonPersonality], a
 	ld a, [hli]
-	ld [TempMonDVs + 1], a
+	ld [TempMonPersonality + 1], a
 	ld hl, TempMonForm
 	predef GetVariant
 	hlcoord 0, 0
@@ -454,9 +454,9 @@ DisplayHOFMon: ; 86748
 	ld a, [hli]
 	ld [TempMonID + 1], a
 	ld a, [hli]
-	ld [TempMonDVs], a
+	ld [TempMonPersonality], a
 	ld a, [hli]
-	ld [TempMonDVs + 1], a
+	ld [TempMonPersonality + 1], a
 	ld a, [hli]
 	ld [TempMonLevel], a
 	ld de, StringBuffer2

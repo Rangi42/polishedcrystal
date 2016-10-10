@@ -25,114 +25,114 @@ endr
 ; 270d6
 
 TrainerClassDVs: ; 270d6
-	;  Atk  Spd
-	;  Def  Spc
-	db $FF, $FF ; kay
-	db $FF, $FF ; cal
-	db $CC, $CC ; falkner
-	db $CC, $CC ; bugsy
-	db $7D, $DD ; whitney
-	db $DD, $DD ; morty
-	db $EE, $EE ; chuck
-	db $7E, $EE ; jasmine
-	db $FF, $FF ; pryce
-	db $7F, $FF ; clair
-	db $FF, $FF ; will
-	db $FF, $FF ; koga
-	db $FF, $FF ; bruno
-	db $7F, $FF ; karen
-	db $FF, $FF ; champion
-	db $FF, $FF ; brock
-	db $7F, $FF ; misty
-	db $FF, $FF ; lt surge
-	db $7F, $FF ; erika
-	db $7F, $FF ; janine
-	db $7F, $FF ; sabrina
-	db $FF, $FF ; blaine
-	db $FF, $FF ; blue
-	db $FF, $FF ; red
-	db $FF, $FF ; leaf
-	db $FF, $FF ; rival1
-	db $FF, $FF ; rival2
-	db $87, $77 ; youngster
-	db $88, $F8 ; bug catcher
-	db $99, $99 ; camper
-	db $59, $99 ; picnicker
-	db $59, $99 ; twins
-	db $99, $99 ; fisher
-	db $99, $F9 ; bird keeper
-	db $AF, $7A ; hiker
-	db $DA, $AA ; gruntm
-	db $7A, $AA ; gruntf
-	db $AA, $AA ; jessie&james
-	db $AA, $AA ; pokefanm
-	db $5A, $AA ; pokefanf
-	db $DB, $DB ; officerm
-	db $7B, $DB ; officerf
-	db $FB, $BF ; pokemaniac
-	db $FB, $BB ; super nerd
-	db $5B, $BB ; lass
-	db $5C, $CC ; beauty
-	db $CA, $CF ; firebreather
-	db $AC, $FC ; juggler
-	db $CC, $CC ; schoolboy
-	db $7C, $CC ; schoolgirl
-	db $BB, $CF ; psychic
-	db $7B, $CF ; hex maniac
-	db $CC, $CC ; sage
-	db $7C, $CC ; medium
-	db $6E, $EE ; kimono girl
-	db $DD, $DD ; elder
-	db $5C, $CC ; lass
-	db $7C, $CC ; couple
-	db $CC, $CC ; gentleman
-	db $CC, $CC ; rich boy
-	db $5C, $CC ; breeder
-	db $7C, $CC ; cowgirl
-	db $CC, $CC ; sailor
-	db $CC, $CC ; swimmerm
-	db $7C, $CC ; swimmerf
-	db $FA, $CA ; burglar
-	db $FA, $CA ; pi
-	db $CC, $CF ; scientist
-	db $DD, $DD ; boarder
-	db $7D, $DD ; skier
-	db $FD, $DD ; blackbelt
-	db $7D, $DD ; battle girl
-	db $FD, $FD ; dragon tamer
-	db $DD, $DD ; teacher
-	db $DD, $DD ; guitaristm
-	db $7D, $DD ; guitaristf
-	db $DD, $DD ; biker
-	db $DD, $DD ; roughneck
-	db $EE, $EE ; cooltrainerm
-	db $7E, $EE ; cooltrainerf
-	db $EE, $EE ; ace duo
-	db $FF, $FF ; veteranm
-	db $7F, $FF ; veteranf
-	db $CF, $FF ; proton
-	db $CF, $FF ; petrel
-	db $DF, $FF ; archer
-	db $7F, $FF ; ariana
-	db $FF, $FF ; pokemon prof
-	db $FF, $FF ; mysticalman
-	db $7C, $CC ; lyra
-	db $7F, $FF ; lorelei
-	db $7F, $FF ; agatha
-	db $7E, $EE ; yellow
-	db $EE, $EE ; walker
-	db $FF, $FF ; bill
-	db $FF, $FF ; lawrence
-	db $FF, $FF ; giovanni
-	db $FF, $FF ; steven
-	db $FF, $FF ; cynthia
-	db $FF, $FF ; towertycoon
-	db $7F, $FF ; valerie
-	db $6E, $EE ; rei
-	db $00, $00 ; omastar fossil
-	db $00, $00 ; kabutops fossil
-	db $00, $00 ; aerodactyl fossil
-	db $00, $00 ; meteorite
+	;   HP  Def  SAt
+	;  Atk  Spd  SDf
+	db $FF, $FF, $FF ; kay
+	db $FF, $FF, $FF ; cal
+	db $CC, $CC, $CC ; falkner
+	db $CC, $CC, $CC ; bugsy
+	db $DD, $DD, $DD ; whitney
+	db $DD, $DD, $DD ; morty
+	db $EE, $EE, $EE ; chuck
+	db $EE, $EE, $EE ; jasmine
+	db $FF, $FF, $FF ; pryce
+	db $FF, $FF, $FF ; clair
+	db $FF, $FF, $FF ; will
+	db $FF, $FF, $FF ; koga
+	db $FF, $FF, $FF ; bruno
+	db $FF, $FF, $FF ; karen
+	db $FF, $FF, $FF ; champion
+	db $FF, $FF, $FF ; brock
+	db $FF, $FF, $FF ; misty
+	db $FF, $FF, $FF ; lt surge
+	db $FF, $FF, $FF ; erika
+	db $FF, $FF, $FF ; janine
+	db $FF, $FF, $FF ; sabrina
+	db $FF, $FF, $FF ; blaine
+	db $FF, $FF, $FF ; blue
+	db $FF, $FF, $FF ; red
+	db $FF, $FF, $FF ; leaf
+	db $FF, $FF, $FF ; rival1
+	db $FF, $FF, $FF ; rival2
+	db $66, $66, $66 ; youngster
+	db $66, $66, $66 ; bug catcher
+	db $77, $77, $77 ; camper
+	db $77, $77, $77 ; picnicker
+	db $88, $88, $88 ; twins
+	db $88, $88, $88 ; fisher
+	db $88, $88, $88 ; bird keeper
+	db $99, $99, $99 ; hiker
+	db $AA, $AA, $AA ; gruntm
+	db $AA, $AA, $AA ; gruntf
+	db $BB, $B8, $BB ; jessie&james
+	db $AA, $AA, $AA ; pokefanm
+	db $AA, $AA, $AA ; pokefanf
+	db $DD, $BB, $DB ; officerm
+	db $7B, $DB, $FF ; officerf
+	db $BB, $BB, $BB ; pokemaniac
+	db $BB, $BB, $BB ; super nerd
+	db $BB, $BB, $BB ; lass
+	db $CC, $CC, $CC ; beauty
+	db $CC, $CC, $CC ; firebreather
+	db $CC, $CC, $CC ; juggler
+	db $CC, $CC, $CC ; schoolboy
+	db $CC, $CC, $CC ; schoolgirl
+	db $AA, $CC, $EE ; psychic
+	db $AA, $CC, $EE ; hex maniac
+	db $CC, $CC, $CC ; sage
+	db $CC, $CC, $CC ; medium
+	db $DD, $DD, $DD ; kimono girl
+	db $DD, $DD, $DD ; elder
+	db $CC, $CC, $CC ; sr&jr
+	db $CC, $CC, $CC ; couple
+	db $CC, $CC, $CC ; gentleman
+	db $CC, $CC, $CC ; rich boy
+	db $DD, $DD, $DD ; breeder
+	db $CC, $CC, $CC ; cowgirl
+	db $CC, $CC, $CC ; sailor
+	db $CC, $CC, $CC ; swimmerm
+	db $CC, $CC, $CC ; swimmerf
+	db $DD, $DD, $DD ; burglar
+	db $DD, $DD, $DD ; pi
+	db $DD, $DD, $DD ; scientist
+	db $DD, $DD, $DD ; boarder
+	db $DD, $DD, $DD ; skier
+	db $FF, $DD, $DD ; blackbelt
+	db $FF, $DD, $DD ; battle girl
+	db $DF, $DF, $DD ; dragon tamer
+	db $DD, $DD, $DD ; teacher
+	db $DD, $DD, $DD ; guitaristm
+	db $DD, $DD, $DD ; guitaristf
+	db $DD, $DD, $DD ; biker
+	db $DD, $DD, $DD ; roughneck
+	db $EE, $EE, $EE ; cooltrainerm
+	db $EE, $EE, $EE ; cooltrainerf
+	db $EE, $EE, $EE ; ace duo
+	db $FF, $FF, $FF ; veteranm
+	db $FF, $FF, $FF ; veteranf
+	db $CC, $CC, $CC ; proton
+	db $DD, $DD, $DD ; petrel
+	db $FF, $FF, $FF ; archer
+	db $EE, $EE, $EE ; ariana
+	db $FF, $FF, $FF ; pokemon prof
+	db $FF, $FF, $FF ; mysticalman
+	db $BB, $BB, $BB ; lyra
+	db $FF, $FF, $FF ; lorelei
+	db $FF, $FF, $FF ; agatha
+	db $EE, $EE, $EE ; yellow
+	db $EE, $EE, $EE ; walker
+	db $FF, $FF, $FF ; bill
+	db $FF, $FF, $FF ; lawrence
+	db $FF, $FF, $FF ; giovanni
+	db $FF, $FF, $FF ; steven
+	db $FF, $FF, $FF ; cynthia
+	db $FF, $FF, $FF ; towertycoon
+	db $FF, $FF, $FF ; valerie
+	db $EE, $EE, $EE ; rei
+	db $00, $00, $00 ; omastar fossil
+	db $00, $00, $00 ; kabutops fossil
+	db $00, $00, $00 ; aerodactyl fossil
+	db $00, $00, $00 ; meteorite
 ; 2715c
 
 INCLUDE "trainers/unique_dvs.asm"

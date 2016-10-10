@@ -488,6 +488,13 @@ endr
 	ld a, [EnemyMonDVs]
 	ld [hli], a
 	ld a, [EnemyMonDVs + 1]
+	ld [hli], a
+	ld a, [EnemyMonDVs + 2]
+	ld [hl], a
+	ld hl, wEnemyBackupPersonality
+	ld a, [EnemyMonPersonality]
+	ld [hli], a
+	ld a, [EnemyMonPersonality + 1]
 	ld [hl], a
 
 .load_data

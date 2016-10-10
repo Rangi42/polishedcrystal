@@ -189,7 +189,7 @@ endr
 	ld a, [hl]
 	ld [wSGBPals + 6], a
 	ld a, [CurPartySpecies]
-	ld bc, TempMonDVs
+	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	ld a, [hli]
 	ld [wSGBPals + 9], a
@@ -252,7 +252,7 @@ endr
 	inc hl
 	ld [hl], $19
 	ld a, [CurPartySpecies]
-	ld bc, TempMonDVs
+	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	ld a, [hli]
 	ld [wSGBPals + 9], a
@@ -403,7 +403,7 @@ endr
 	jr .done
 
 .partymon
-	ld hl, PartyMon1DVs
+	ld hl, PartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [CurPartyMon]
 	call AddNTimes
@@ -519,7 +519,7 @@ endr
 	ld bc, $10
 	call CopyBytes
 	ld a, [CurPartySpecies]
-	ld bc, TempMonDVs
+	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	ld a, [hli]
 	ld [wSGBPals + 3], a
@@ -546,7 +546,7 @@ endr
 	ld bc, $10
 	call CopyBytes
 	ld a, [CurPartySpecies]
-	ld bc, TempMonDVs
+	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	ld a, [hli]
 	ld [wSGBPals + 3], a

@@ -68,10 +68,23 @@ BattleCommand_Transform: ; 371cd
 	inc de
 	ld a, [de]
 	ld [wEnemyBackupDVs + 2], a
+	inc de
+	ld a, [de]
+	ld [wEnemyPersonality], a
+	inc de
+	ld a, [de]
+	ld [wEnemyPersonality + 1], a
+	dec de
 	dec de
 	dec de
 .mimic_enemy_backup
-; copy DVs
+; copy DVs and personality
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
 	ld a, [hli]
 	ld [de], a
 	inc de

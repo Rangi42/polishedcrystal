@@ -623,7 +623,14 @@ wSafariMonEating:: ds 2
 wEnemyBackupDVs:: ; used when enemy is transformed
 	ds 3
 wEnemyBackupPersonality:: ; TODO: used when enemy is transformed
-	ds 2
+wEnemyBackupShiny::
+wEnemyBackupAbility::
+wEnemyBackupNature::
+	ds 1
+wEnemyBackupGender::
+wEnemyBackupFainted::
+wEnemyBackupForm::
+	ds 1
 AlreadyDisobeyed:: ; c6f4
 	ds 1
 

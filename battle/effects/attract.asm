@@ -55,18 +55,14 @@ CheckOppositeGender: ; 377f5
 	push bc
 	ld a, [TempEnemyMonSpecies]
 	ld [CurPartySpecies], a
-	ld hl, EnemyMonDVs
+	ld hl, EnemyMonGender
 	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .not_transformed
-	ld hl, wEnemyBackupDVs
+	ld hl, wEnemyBackupGender
 .not_transformed
-	ld a, [hli]
-	ld [TempMonDVs], a
-	ld a, [hli]
-	ld [TempMonDVs + 1], a
 	ld a, [hl]
-	ld [TempMonDVs + 2], a
+	ld [TempMonGender], a
 	ld a, 3
 	ld [MonType], a
 	farcall GetGender
