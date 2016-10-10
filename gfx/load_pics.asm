@@ -5,14 +5,14 @@ GetVariant: ; 51040
 
 .GetPikachuVariant:
 ; Return Unown letter in UnownLetterOrPikachuVariant based on moves
-; hl-4 is ...MonMove1
-; hl-3 is ...MonMove2
-; hl-2 is ...MonMove3
-; hl-1 is ...MonMove4
-; hl is ...MonDVs
+; hl-8 is ...MonMove1
+; hl-7 is ...MonMove2
+; hl-6 is ...MonMove3
+; hl-5 is ...MonMove4
+; hl is ...MonForm
 
 	push bc
-	ld bc, EnemyMonDVs
+	ld bc, EnemyMonForm
 	ld a, b
 	cp h
 	jr nz, .notenemy
@@ -30,21 +30,21 @@ GetVariant: ; 51040
 	jr z, .yellow_chuchu
 
 .notenemy
-	ld bc, TempMonDVs
+	ld bc, TempMonForm
 	ld a, b
 	cp h
 	jr nz, .nottemp
 	ld a, c
 	cp l
 	jr nz, .nottemp
-	; skip TempMonID through TempMonSpclExp
-rept 16
+	; skip TempMonID through TempMonSdfEV
+rept 11
 	dec hl
 endr
 .nottemp
 	pop bc
 
-rept 4
+rept 8
 	dec hl
 endr
 	ld a, 3 ; Surf
@@ -84,52 +84,11 @@ endr
 	ret
 
 .GetUnownVariant:
-; Return Unown letter in UnownLetterOrPikachuVariant based on DVs at hl
+; Return Unown letter in UnownLetterOrPikachuVariant based on Form at hl
 
-; Take the middle 2 bits of each DV and place them in order:
-;	atk  def  spd  spc
-;	.ww..xx.  .yy..zz.
-
-	; atk
+	; assume Form is 1 to 26
 	ld a, [hl]
-	and %01100000
-	sla a
-	ld b, a
-	; def
-	ld a, [hli]
-	and %00000110
-	swap a
-	srl a
-	or b
-	ld b, a
-
-	; spd
-	ld a, [hl]
-	and %01100000
-	swap a
-	sla a
-	or b
-	ld b, a
-	; spc
-	ld a, [hl]
-	and %00000110
-	srl a
-	or b
-
-; Divide by 10 to get 0-25
-	ld [hDividend + 3], a
-	xor a
-	ld [hDividend], a
-	ld [hDividend + 1], a
-	ld [hDividend + 2], a
-	ld a, 10
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-
-; Increment to get 1-26
-	ld a, [hQuotient + 2]
-	inc a
+	and FORM_MASK
 	ld [UnownLetterOrPikachuVariant], a
 	ret
 

@@ -17,17 +17,16 @@ box_struct: MACRO
 \1SatEV::          db
 \1SdfEV::          db
 \1DVs::
-\1AtkDefDV::       db
-\1SpdSpcDV::       db
+\1HPAtkDV::        db
+\1DefSpdDV::       db
+\1SatSdfDV::       db
 ; TODO: use these bytes
-; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
-; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
-\1ThirdDV::        db
+; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:2|Fainted:1|Form:5)
 \1Personality::
-\1Nature::
-\1Ability::
-\1Gender::         db
 \1Shiny::
+\1Ability::
+\1Nature::         db
+\1Gender::
 \1Fainted::
 \1Form::           db
 \1PP::             ds NUM_MOVES
@@ -62,71 +61,72 @@ party_struct: MACRO
 ENDM
 
 red_box_struct: MACRO
-\1Species::    db
-\1HP::         dw
-\1BoxLevel::   db
-\1Status::     db
+\1Species::        db
+\1HP::             dw
+\1BoxLevel::       db
+\1Status::         db
 \1Type::
-\1Type1::      db
-\1Type2::      db
-\1CatchRate::  db
-\1Moves::      ds NUM_MOVES
-\1OTID::       dw
-\1Exp::        ds 3
-\1HPExp::      dw
-\1AttackExp::  dw
-\1DefenseExp:: dw
-\1SpeedExp::   dw
-\1SpecialExp:: dw
-\1DVs::        ds 2
-\1PP::         ds NUM_MOVES
+\1Type1::          db
+\1Type2::          db
+\1CatchRate::      db
+\1Moves::          ds NUM_MOVES
+\1OTID::           dw
+\1Exp::            ds 3
+\1HPExp::          dw
+\1AttackExp::      dw
+\1DefenseExp::     dw
+\1SpeedExp::       dw
+\1SpecialExp::     dw
+\1DVs::            ds 2
+\1PP::             ds NUM_MOVES
 ENDM
 
 red_party_struct: MACRO
 	red_box_struct \1
-\1Level::      db
+\1Level::          db
 \1Stats::
-\1MaxHP::      dw
-\1Attack::     dw
-\1Defense::    dw
-\1Speed::      dw
-\1Special::    dw
+\1MaxHP::          dw
+\1Attack::         dw
+\1Defense::        dw
+\1Speed::          dw
+\1Special::        dw
 ENDM
 
 
 battle_struct: MACRO
-\1Species::   db
-\1Item::      db
-\1Moves::     ds NUM_MOVES
+\1Species::        db
+\1Item::           db
+\1Moves::          ds NUM_MOVES
 \1MovesEnd::
-\1DVs::       ds 2
+\1DVs::
+\1HPAtkDV::        db
+\1DefSpdDV::       db
+\1SatSdfDV::       db
 ; TODO: use these bytes
-; 1 for more DVs (HPAtkDV, DefSpdDV, SatSdfDV)
-; 2 for Personality (Nature:5|Ability:2|Gender:1, Shiny:1|Fainted:1|Form:6)
-\1ThirdDV::   db
+; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:2|Fainted:1|Form:5)
 \1Personality::
-\1Nature::
-\1Ability::
-\1Gender::    db
 \1Shiny::
+\1Ability::
+\1Nature::         db
+\1Gender::
 \1Fainted::
-\1Form::      db
-\1PP::        ds NUM_MOVES
-\1Happiness:: db
-\1Level::     db
-\1Status::    ds 2
-\1HP::        dw
-\1MaxHP::     dw
+\1Form::           db
+\1PP::             ds NUM_MOVES
+\1Happiness::      db
+\1Level::          db
+\1Status::         ds 2
+\1HP::             dw
+\1MaxHP::          dw
 \1Stats:: ; big endian
-\1Attack::    dw
-\1Defense::   dw
-\1Speed::     dw
-\1SpclAtk::   dw
-\1SpclDef::   dw
+\1Attack::         dw
+\1Defense::        dw
+\1Speed::          dw
+\1SpclAtk::        dw
+\1SpclDef::        dw
 \1StatsEnd::
 \1Type::
-\1Type1::     db
-\1Type2::     db
+\1Type1::          db
+\1Type2::          db
 \1StructEnd::
 ENDM
 
@@ -222,6 +222,7 @@ endm
 hof_mon: MACRO
 \1Species:: ds 1
 \1ID:: ds 2
+; TODO: store Personality, since that's what controls shiny/gender/etc
 \1DVs:: ds 2
 \1Level:: ds 1
 \1Nickname:: ds PKMN_NAME_LENGTH +- 1
@@ -246,7 +247,7 @@ trademon: MACRO
 \1Nickname:: ds PKMN_NAME_LENGTH ; wc6dc | wc70e
 \1SenderName:: ds NAME_LENGTH ; wc6e7 | wc719
 \1OTName:: ds NAME_LENGTH ; wc6f2 | wc724
-\1DVs:: ds 2 ; wc6fd | wc72f
+\1DVs:: ds 3 ; wc6fd | wc72f
 \1ID:: ds 2 ; wc6ff | wc731
 \1CaughtData:: ds 1 ; wc701 | wc733
 \1End::

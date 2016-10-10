@@ -1080,7 +1080,7 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	ld a, [wd265]
 	ld [CurPartySpecies], a
 	ld [CurSpecies], a
-	ld hl, TempMonDVs
+	ld hl, TempMonForm
 	predef GetVariant
 	call GetBaseData
 	ld de, VTiles2 tile $00
@@ -1694,7 +1694,7 @@ StatsScreenDPad: ; e2f95 (38:6f95)
 	ld a, [wd265]
 	ld [CurPartySpecies], a
 	ld [CurSpecies], a
-	ld hl, TempMonDVs
+	ld hl, TempMonForm
 	predef GetVariant
 	call GetBaseData
 	call BillsPC_CopyMon

@@ -1,15 +1,15 @@
 
 ; Trade struct
-TRADE_DIALOG  EQU 0
-TRADE_GIVEMON EQU 1
-TRADE_GETMON  EQU 2
-TRADE_NICK    EQU 3
-TRADE_DVS     EQU 14
-TRADE_ITEM    EQU 16
-TRADE_OT_ID   EQU 17
-TRADE_OT_NAME EQU 19
-TRADE_GENDER  EQU 30
-TRADE_PADDING EQU 31
+TRADE_DIALOG      EQU 0
+TRADE_GIVEMON     EQU 1
+TRADE_GETMON      EQU 2
+TRADE_NICK        EQU 3
+TRADE_DVS         EQU 14
+TRADE_PERSONALITY EQU 17
+TRADE_ITEM        EQU 19
+TRADE_OT_ID       EQU 21
+TRADE_OT_NAME     EQU 22
+TRADE_GENDER      EQU 33
 
 ; Trade dialogs
 TRADE_INTRO    EQU 0
@@ -180,6 +180,12 @@ DoNPCTrade: ; fcc63
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonDVs
+	call Trade_CopyThreeBytes
+
+	ld hl, PartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
 	ld hl, PartyMon1Species
@@ -253,12 +259,23 @@ DoNPCTrade: ; fcc63
 	ld e, TRADE_DVS
 	call GetTradeAttribute
 	ld de, wOTTrademonDVs
-	call Trade_CopyTwoBytes
+	call Trade_CopyThreeBytes
 
 	ld hl, PartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonDVs
+	call Trade_CopyThreeBytes
+
+	ld e, TRADE_PERSONALITY
+	call GetTradeAttribute
+	ld de, wOTTrademonPersonality
+	call Trade_CopyTwoBytes
+
+	ld hl, PartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonPersonality
 	call Trade_CopyTwoBytes
 
 	ld e, TRADE_OT_ID
@@ -367,6 +384,17 @@ Trade_CopyTwoBytesReverseEndian: ; fce15
 	ret
 ; fce1b
 
+Trade_CopyThreeBytes:
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	ret
+
 GetTradeMonNames: ; fce1b
 	ld e, TRADE_GETMON
 	call GetTradeAttribute
@@ -413,28 +441,33 @@ GetTradeMonNames: ; fce1b
 NPCTrades: ; fce58
 npctrade: MACRO
 	db \1, \2, \3, \4 ; dialog set, requested mon, offered mon, nickname
-	db \5, \6 ; dvs
+	db \5, \6, \7 ; dvs
+	db \8, \9 ; personality
 	shift
-	db \6 ; item
-	dw \7 ; OT ID
-	db \8, \9, 0 ; OT name, gender requested
+	db \9 ; item
+	shift
+	dw \9 ; OT ID
+	shift
+	db \9 ; OT name
+	shift
+	db \9, 0 ; gender requested
 ENDM
 
 
-	; Goldenrod City
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", ATKDEVDV_JOLLY, $FB, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
-	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", ATKDEVDV_HASTY, $FB, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
-	; Olivine City
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", ATKDEVDV_ADAMANT, $CC, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
-	; Blackthorn City
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", ATKDEVDV_TIMID, $FF, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
-	; Pewter City
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", ATKDEVDV_ADAMANT, $CC, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
-	; Route 14
-	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", ATKDEVDV_CALM, $FF, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
-	; Goldenrod Harbor
-	npctrade 0, GYARADOS,   CHINCHOU,   "Lenie@@@@@@", ATKDEVDV_CALM, $FF, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
+	; Goldenrod City (TODO: male)
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY, $00, GOLD_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
+	; Violet City (TODO: male)
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY, $00, BITTER_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
+	; Olivine City (TODO: male)
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, $00, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
+	; Blackthorn City (TODO: female)
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID, $00, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
+	; Pewter City (TODO: male)
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, $00, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
+	; Route 14 (TODO: female)
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM, $00, GOLD_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	; Goldenrod Harbor (TODO: female)
+	npctrade 0, GYARADOS,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM, $00, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
 ; fcf38
 
 

@@ -2,47 +2,16 @@ PALPACKET_LENGTH EQU $10
 INCLUDE "predef/sgb.asm"
 
 CheckShininess:
-; Check if a mon is shiny by DVs at bc.
+; Check if a mon is shiny by personality at bc.
 ; Return carry if shiny.
-; 1 in 1024 wild Pokémon is shiny.
 
 	ld l, c
 	ld h, b
 
-; Attack must be odd (1, 3, 5, 7, 9, 11, 13, or 15) (1 in 2)
 	ld a, [hl]
-	and 1 << 4
+	and SHINY_MASK
 	jr z, .NotShiny
 
-; Defense must be 2, 3, 7, or 11 (1 in 4)
-	ld a, [hli]
-	and $f
-	cp 2
-	jr z, .MaybeShiny1
-	cp 3
-	jr z, .MaybeShiny1
-	cp 7
-	jr z, .MaybeShiny1
-	cp 11
-	jr nz, .NotShiny
-
-; Speed must be 5 or 13 (1 in 8)
-.MaybeShiny1
-	ld a, [hl]
-	and $f << 4
-	cp 5 << 4
-	jr z, .MaybeShiny2
-	cp 13 << 4
-	jr nz, .NotShiny
-
-; Special must be 15 (1 in 16)
-.MaybeShiny2
-	ld a, [hl]
-	and $f
-	cp 15
-	jr nz, .NotShiny
-
-.Shiny:
 	scf
 	ret
 
@@ -54,23 +23,34 @@ CheckContestMon:
 ; Check a mon's DVs at hl in the bug catching contest.
 ; Return carry if its DVs are good enough to place in the contest.
 
-; Attack
+; HP
 	ld a, [hl]
 	cp 10 << 4
 	jr c, .Bad
 
-; Defense
+; Attack
 	ld a, [hli]
 	and $f
 	cp 10
 	jr c, .Bad
 
-; Speed
+; Defense
 	ld a, [hl]
 	cp 10 << 4
 	jr c, .Bad
 
-; Special
+; Speed
+	ld a, [hli]
+	and $f
+	cp 10
+	jr c, .Bad
+
+; Special Attack
+	ld a, [hl]
+	cp 10 << 4
+	jr c, .Bad
+
+; Special Defense
 	ld a, [hl]
 	and $f
 	cp 10
@@ -521,7 +501,7 @@ InitPartyMenuOBPals:
 
 GetBattlemonBackpicPalettePointer:
 	push de
-	farcall GetPartyMonDVs
+	farcall GetPartyMonPersonality
 	ld c, l
 	ld b, h
 	ld a, [TempBattleMonSpecies]
@@ -531,7 +511,7 @@ GetBattlemonBackpicPalettePointer:
 
 GetEnemyFrontpicPalettePointer:
 	push de
-	farcall GetEnemyMonDVs
+	farcall GetEnemyMonPersonality
 	ld c, l
 	ld b, h
 	ld a, [TempEnemyMonSpecies]

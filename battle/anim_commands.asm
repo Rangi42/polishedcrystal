@@ -908,7 +908,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 
 	ld a, [TempBattleMonSpecies] ; TempBattleMonSpecies
 	ld [CurPartySpecies], a ; CurPartySpecies
-	ld hl, BattleMonDVs ; BattleMonDVs
+	ld hl, BattleMonForm
 	predef GetVariant
 	ld de, VTiles0 tile $00
 	predef GetFrontpic
@@ -917,7 +917,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 .player
 	ld a, [TempEnemyMonSpecies] ; TempEnemyMonSpecies
 	ld [CurPartySpecies], a ; CurPartySpecies
-	ld hl, EnemyMonDVs ; EnemyMonDVs
+	ld hl, EnemyMonForm
 	predef GetVariant
 	ld de, VTiles0 tile $00
 	predef GetBackpic
@@ -1183,14 +1183,14 @@ BattleAnimCmd_BeatUp: ; cc776 (33:4776)
 	and a
 	jr z, .player
 
-	ld hl, BattleMonDVs
+	ld hl, BattleMonForm
 	predef GetVariant
 	ld de, VTiles2 tile $00
 	predef GetFrontpic
 	jr .done
 
 .player
-	ld hl, EnemyMonDVs
+	ld hl, EnemyMonForm
 	predef GetVariant
 	ld de, VTiles2 tile $31
 	predef GetBackpic

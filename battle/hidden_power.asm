@@ -8,18 +8,18 @@ HiddenPowerDamage: ; fbced
 	ld hl, EnemyMonDVs
 .got_dvs
 
-	; Def & 3
-	ld a, [hl]
+	; (Atk & 3) << 2
+	ld a, [hli]
 	and 3
-	ld b, a
-
-	; + (Atk & 3) << 2
-	ld a, [hl]
-	and 3 << 4
-	swap a
 rept 2
 	add a
 endr
+	ld b, a
+
+	; + Def & 3
+	ld a, [hl]
+	and 3 << 4
+	swap a
 	or b
 
 ; Skip Normal

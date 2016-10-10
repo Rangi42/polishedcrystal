@@ -65,6 +65,10 @@ BattleCommand_Transform: ; 371cd
 	inc de
 	ld a, [de]
 	ld [wEnemyBackupDVs + 1], a
+	inc de
+	ld a, [de]
+	ld [wEnemyBackupDVs + 2], a
+	dec de
 	dec de
 .mimic_enemy_backup
 ; copy DVs
@@ -74,8 +78,11 @@ BattleCommand_Transform: ; 371cd
 	ld a, [hli]
 	ld [de], a
 	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
 ; move pointer to stats
-	ld bc, BattleMonStats - BattleMonPP
+	ld bc, BattleMonStats - BattleMonPersonality
 	add hl, bc
 	push hl
 	ld h, d

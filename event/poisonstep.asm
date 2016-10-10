@@ -75,7 +75,7 @@ DoPoisonStep:: ; 505da
 	ret z
 
 ; check for immunity or poison heal
-	ld a, MON_DVS + 1
+	ld a, MON_ABILITY
 	call GetPartyParamLocation
 	ld b, [hl]
 	ld a, MON_SPECIES

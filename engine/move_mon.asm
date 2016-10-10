@@ -306,7 +306,7 @@ endr
 	ld a, [CurPartySpecies]
 	cp UNOWN
 	jr nz, .done
-	ld hl, PartyMon1DVs
+	ld hl, PartyMon1Form
 	ld a, [PartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -417,7 +417,7 @@ AddTempmonToParty: ; da96
 	ld a, [CurPartySpecies]
 	cp UNOWN
 	jr nz, .done
-	ld hl, PartyMon1DVs
+	ld hl, PartyMon1Form
 	ld a, [PartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -1009,7 +1009,7 @@ SentPkmnIntoBox: ; de6e
 	ld a, [CurPartySpecies]
 	cp UNOWN
 	jr nz, .not_unown
-	ld hl, sBoxMon1DVs
+	ld hl, sBoxMon1Form
 	predef GetVariant
 	farcall UpdateUnownDex
 
@@ -1419,15 +1419,15 @@ CalcPkmnStatC: ; e17b
 	push hl
 	ld a, d
 	and a
-	jr z, .no_stat_exp
+	jr z, .no_evs
 	add hl, bc
 	ld a, [hl]
 	ld b, a
-.no_stat_exp
+.no_evs
 	pop hl
 	push bc
-	ld bc, MON_DVS - MON_HP_EV + 1
-	add hl, bc
+	ld bc, MON_DVS - MON_EVS + 1
+	add hl, bc ; hl points to DVs
 	pop bc
 	ld a, c
 	cp STAT_ATK
@@ -1437,48 +1437,21 @@ CalcPkmnStatC: ; e17b
 	cp STAT_SPD
 	jr z, .Speed
 	cp STAT_SATK
-	jr z, .Special
+	jr z, .SpclAtk
 	cp STAT_SDEF
-	jr z, .Special
-; DV_HP = (DV_ATK & 1) << 3 + (DV_DEF & 1) << 2 + (DV_SPD & 1) << 1 + (DV_SPC & 1)
-	push bc
+	jr z, .SpclDef
+.HP
 	ld a, [hl]
 	swap a
-	and $1
-rept 3
-	add a
-endr
-	ld b, a
-	ld a, [hli]
-	and $1
-	add a
-	add a
-	add b
-	ld b, a
-	ld a, [hl]
-	swap a
-	and $1
-	add a
-	add b
-	ld b, a
-	ld a, [hl]
-	and $1
-	add b
-	pop bc
+	and $f
 	jr .GotDV
 
 .Attack:
 	ld a, [hl]
-	swap a
 	and $f
 	jr .GotDV
 
 .Defense:
-	ld a, [hl]
-	and $f
-	jr .GotDV
-
-.Speed:
 	inc hl
 	ld a, [hl]
 	dec hl
@@ -1486,9 +1459,28 @@ endr
 	and $f
 	jr .GotDV
 
-.Special:
+.Speed:
 	inc hl
 	ld a, [hl]
+	dec hl
+	and $f
+	jr .GotDV
+
+.SpclAtk:
+	inc hl
+	inc hl
+	ld a, [hl]
+	dec hl
+	dec hl
+	swap a
+	and $f
+	jr .GotDV
+
+.SpclDef:
+	inc hl
+	inc hl
+	ld a, [hl]
+	dec hl
 	dec hl
 	and $f
 
@@ -1577,7 +1569,10 @@ endr
 	xor a
 	ld [hMultiplicand + 0], a
 	ld a, [hl]
+	push hl
+	ld hl, ???Nature ; TODO
 	call GetNatureStatMultiplier
+	pop hl
 	ld [hMultiplier], a
 	call Multiply
 	ld a, [hProduct + 1]
@@ -1602,7 +1597,7 @@ endr
 ; e277
 
 GetNatureStatMultiplier::
-; hl points to Atk/Def DV
+; hl points to Nature
 ; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
 ; returns (sets a to) 9 if c is lowered, 11 if increased, 10 if neutral
 ; (to be used in calculations in CalcPkmnStatC)

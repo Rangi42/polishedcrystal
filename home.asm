@@ -1681,43 +1681,16 @@ INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 
 
 GetNature::
-; 'b' contains the target DV to check (Atk/Def)
+; 'b' contains the target Nature to check
 ; returns nature in b
 	ld a, b
-; 15/15 (default boss trainer nature) is Serious (neutral), not Bold (+Def -Atk)
-	cp $ff
-	jr z, .serious
-; 7/15 (default female boss trainer nature) is Quirky (neutral), not Brave (+Atk -Spe)
-	cp $7f
-	jr z, .quirky
-; 14/15 is Impish (+Def -SpA), not Naive (+Spe -SpD)
-	cp $ef
-	jr z, .impish
-; 15/10 is Naive (+Spe -SpD), not Hardy (neutral)
-	cp $fa
-	jr z, .hardy
-.modloop
-	sub NUM_NATURES
-	jr nc, .modloop
-	add NUM_NATURES
-	jr .finish
-.serious
-	ld a, SERIOUS
-	jr .finish
-.quirky
-	ld a, QUIRKY
-	jr .finish
-.impish
-	ld a, IMPISH
-	jr .finish
-.hardy
-	ld a, HARDY
-.finish
+	and NATURE_MASK
+	; assume nature is 0-24
 	ld b, a
 	ret
 
 GetAbility::
-; 'b' contains the target DV to check (Spe/Spc)
+; 'b' contains the target ability to check
 ; 'c' contains the target species
 ; returns ability in b
 ; preserves curspecies and base data
@@ -1727,27 +1700,22 @@ GetAbility::
 	ld a, c
 	ld [CurSpecies], a
 	call GetBaseData
-; Spe = Spc -> hidden ability (1/16)
 	ld a, b
-	swap a
-	xor b
-	and $f
-	jr z, .hidden_abil
-; Spe ^ Spc is even -> ability 2 (7/16)
-	and 1
-	jr z, .second_abil
-; Spe ^ Spc is odd -> ability 1 (8/16)
+	and ABILITY_MASK
+	cp HIDDEN_ABILITY
+	jr z, .hidden_ability
+	cp ABILITY_2
+	jr z, .ability_2
+.ability_1
 	ld a, [BaseAbility1]
-	ld b, a
 	jr .restore_species
-.second_abil
+.ability_2
 	ld a, [BaseAbility2]
-	ld b, a
 	jr .restore_species
-.hidden_abil
+.hidden_ability
 	ld a, [BaseHiddenAbility]
-	ld b, a
 .restore_species
+	ld b, a
 	ld a, d
 	ld [CurSpecies], a
 	call GetBaseData

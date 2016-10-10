@@ -344,7 +344,7 @@ endr
 	cp UNOWN
 	jr nz, .skip_unown
 
-	ld hl, TempMonDVs
+	ld hl, TempMonForm
 	predef GetVariant
 	farcall UpdateUnownDex
 

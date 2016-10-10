@@ -2955,7 +2955,7 @@ FlagPredef: ; 4d7c1
 
 GetTrademonFrontpic: ; 4d7fd
 	ld a, [wOTTrademonSpecies]
-	ld hl, wOTTrademonDVs
+	ld hl, wOTTrademonForm
 	ld de, VTiles2
 	push de
 	push af
@@ -4060,7 +4060,7 @@ PrintTempMonStats: ; 50b7b
 	push bc
 	push hl
 	push hl
-	ld a, [TempMonDVs]
+	ld a, [TempMonNature]
 	ld b, a
 	farcall GetNature
 	pop hl

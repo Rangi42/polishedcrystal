@@ -655,7 +655,7 @@ GetEggFrontpic: ; 17224 (5:7224)
 	ld [CurPartySpecies], a
 	ld [CurSpecies], a
 	call GetBaseData
-	ld hl, BattleMonDVs
+	ld hl, BattleMonForm
 	predef GetVariant
 	pop de
 	predef_jump GetFrontpic
@@ -665,7 +665,7 @@ GetHatchlingFrontpic: ; 1723c (5:723c)
 	ld [CurPartySpecies], a
 	ld [CurSpecies], a
 	call GetBaseData
-	ld hl, BattleMonDVs
+	ld hl, BattleMonForm
 	predef GetVariant
 	pop de
 	predef_jump FrontpicPredef

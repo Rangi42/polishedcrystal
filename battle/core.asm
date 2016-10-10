@@ -3603,7 +3603,7 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld hl, EnemyMonDVs
+	ld hl, EnemyMonForm
 	predef GetVariant
 	ld a, [UnownLetterOrPikachuVariant]
 	ld [wFirstUnownSeen], a
@@ -4108,11 +4108,11 @@ endr
 ; 3da74
 
 BattleCheckPlayerShininess: ; 3da74
-	call GetPartyMonDVs
+	call GetPartyMonPersonality
 	jr BattleCheckShininess
 
 BattleCheckEnemyShininess: ; 3da79
-	call GetEnemyMonDVs
+	call GetEnemyMonPersonality
 
 BattleCheckShininess: ; 3da7c
 	ld b, h
@@ -4233,7 +4233,7 @@ SwitchPlayerMon: ; 3db32
 
 
 SendOutPlayerMon: ; 3db5f
-	ld hl, BattleMonDVs
+	ld hl, BattleMonForm
 	predef GetVariant
 	hlcoord 1, 5
 	ld b, 7
@@ -5035,7 +5035,7 @@ PrintPlayerHUD: ; 3dfbf
 	pop hl
 	dec hl
 
-	ld bc, BattleMonDVs
+	ld bc, BattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
 	ld a, "<SHINYB>"
@@ -5121,7 +5121,7 @@ DrawEnemyHUD: ; 3e043
 	ld a, [hl]
 	ld [de], a
 
-	ld bc, EnemyMonDVs
+	ld bc, EnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
 	ld a, "<SHINYB>"
@@ -6625,7 +6625,7 @@ endc
 	jr nz, .Magikarp
 
 ; Get letter based on DVs
-	ld hl, EnemyMonDVs
+	ld hl, EnemyMonForm
 	predef GetVariant
 ; Can't use any letters that haven't been unlocked
 ; If combined with forced shiny battletype, causes an infinite loop
@@ -8494,7 +8494,7 @@ DropPlayerSub: ; 3f447
 	push af
 	ld a, [BattleMonSpecies]
 	ld [CurPartySpecies], a
-	ld hl, BattleMonDVs
+	ld hl, BattleMonForm
 	predef GetVariant
 	ld de, VTiles2 tile $31
 	predef GetBackpic
@@ -8533,7 +8533,7 @@ DropEnemySub: ; 3f486
 	ld [CurSpecies], a
 	ld [CurPartySpecies], a
 	call GetBaseData
-	ld hl, EnemyMonDVs
+	ld hl, EnemyMonForm
 	predef GetVariant
 	ld de, VTiles2
 	predef FrontpicPredef
@@ -8723,7 +8723,7 @@ InitEnemyWildmon: ; 3f607
 	ld de, wWildMonPP
 	ld bc, NUM_MOVES
 	call CopyBytes
-	ld hl, EnemyMonDVs
+	ld hl, EnemyMonForm
 	predef GetVariant
 	ld a, [CurPartySpecies]
 	cp UNOWN

@@ -277,10 +277,10 @@ MON_SAT_EV               EQUS "(PartyMon1SatEV - PartyMon1)"
 MON_SDF_EV               EQUS "(PartyMon1SdfEV - PartyMon1)"
 MON_DVS                  EQUS "(PartyMon1DVs - PartyMon1)"
 MON_PERSONALITY          EQUS "(PartyMon1Personality - PartyMon1)"
-MON_NATURE               EQUS "(PartyMon1Nature - PartyMon1)"
-MON_ABILITY              EQUS "(PartyMon1Ability - PartyMon1)"
-MON_GENDER               EQUS "(PartyMon1Gender - PartyMon1)"
 MON_SHINY                EQUS "(PartyMon1Shiny - PartyMon1)"
+MON_ABILITY              EQUS "(PartyMon1Ability - PartyMon1)"
+MON_NATURE               EQUS "(PartyMon1Nature - PartyMon1)"
+MON_GENDER               EQUS "(PartyMon1Gender - PartyMon1)"
 MON_FAINTED              EQUS "(PartyMon1Fainted - PartyMon1)"
 MON_FORM                 EQUS "(PartyMon1Form - PartyMon1)"
 MON_PP                   EQUS "(PartyMon1PP - PartyMon1)"
@@ -304,6 +304,14 @@ MON_SDF                  EQUS "(PartyMon1SpclDef - PartyMon1)"
 BOXMON_STRUCT_LENGTH     EQUS "(PartyMon1End - PartyMon1)"
 PARTYMON_STRUCT_LENGTH   EQUS "(PartyMon1StatsEnd - PartyMon1)"
 REDMON_STRUCT_LENGTH EQU 44
+
+; apply to MON_FORM
+SHINY_MASK   EQU %10000000
+ABILITY_MASK EQU %01100000
+NATURE_MASK  EQU %00011111
+GENDER_MASK  EQU %11000000
+FAINTED_MASK EQU %00100000
+FORM_MASK    EQU %00011111
 
 const_value SET 1
 	const MONMENU_CUT        ; 1

@@ -646,6 +646,7 @@ OakSpeech: ; 0x5f99
 	xor a
 	ld [TempMonDVs], a
 	ld [TempMonDVs + 1], a
+	ld [TempMonDVs + 2], a
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout

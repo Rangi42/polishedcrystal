@@ -407,38 +407,68 @@ ContestScore: ; 13900
 	ld a, [wContestMonSpclDef + 1]
 	call .AddContestStat
 
-	; DVs
-	ld a, [wContestMonDVs + 0]
-	ld b, a
-	and 2
-rept 2
-	add a
-endr
-	ld c, a
+	; DVs (6 points per DV that's at least 8)
+	ld b, 0
+	ld c, 6
 
-	swap b
+	ld a, [wContestMonDVs + 0]
+	and $f
+	cp $8
+	jr c, .low_attack
 	ld a, b
-	and 2
-	add a
 	add c
-	ld d, a
+	ld b, a
+.low_attack
+
+	ld a, [wContestMonDVs + 0]
+	swap a
+	and $f
+	cp $8
+	jr c, .low_hp
+	ld a, b
+	add c
+	ld b, a
+.low_hp
 
 	ld a, [wContestMonDVs + 1]
-	ld b, a
-	and 2
-	ld c, a
-
-	swap b
+	and $f
+	cp $8
+	jr c, .low_speed
 	ld a, b
-	and 2
-	srl a
-rept 2
 	add c
-endr
-rept 2
-	add d
-endr
+	ld b, a
+.low_speed
 
+	ld a, [wContestMonDVs + 1]
+	swap a
+	and $f
+	cp $8
+	jr c, .low_defense
+	ld a, b
+	add c
+	ld b, a
+.low_defense
+
+	ld a, [wContestMonDVs + 2]
+	and $f
+	cp $8
+	jr c, .low_spcl_def
+	ld a, b
+	add c
+	ld b, a
+.low_spcl_def
+
+	ld a, [wContestMonDVs + 2]
+	swap a
+	and $f
+	cp $8
+	jr c, .low_spcl_atk
+	ld a, b
+	add c
+	ld b, a
+.low_spcl_atk
+
+	ld a, b
 	call .AddContestStat
 
 	; Remaining HP / 8

@@ -1815,10 +1815,12 @@ LinkTrade: ; 28b87
 	call GetPartyLocation
 	ld a, [hli]
 	ld [wPlayerTrademonDVs], a
-	ld a, [hl]
+	ld a, [hli]
 	ld [wPlayerTrademonDVs + 1], a
-	ld a, [wd002]
+	ld a, [hl]
+	ld [wPlayerTrademonDVs + 2], a
 	ld hl, PartyMon1Species
+	ld a, [wd002]
 	call GetPartyLocation
 	ld b, h
 	ld c, l
@@ -1854,10 +1856,12 @@ LinkTrade: ; 28b87
 	call GetPartyLocation
 	ld a, [hli]
 	ld [wOTTrademonDVs], a
-	ld a, [hl]
+	ld a, [hli]
 	ld [wOTTrademonDVs + 1], a
-	ld a, [wd003]
+	ld a, [hl]
+	ld [wOTTrademonDVs + 2], a
 	ld hl, OTPartyMon1Species
+	ld a, [wd003]
 	call GetPartyLocation
 	ld b, h
 	ld c, l

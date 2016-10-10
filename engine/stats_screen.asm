@@ -422,7 +422,7 @@ StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
 	ret
 
 StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
-	ld bc, TempMonDVs
+	ld bc, TempMonShiny
 	farcall CheckShininess
 	ret nc
 	hlcoord 19, 0
@@ -740,7 +740,7 @@ endr
 	ld de, NatureString
 	hlcoord 0, 12
 	call PlaceString
-	ld a, [TempMonDVs]
+	ld a, [TempMonNature]
 	ld b, a
 	farcall GetNature
 	hlcoord 2, 13
@@ -774,7 +774,7 @@ OrangePage_:
 	hlcoord 1, 12
 	ld de, .ability
 	call PlaceString
-	ld a, [TempMonDVs + 1] ; uses Spe+Spc DV
+	ld a, [TempMonAbility]
 	ld b, a
 	ld a, [TempMonSpecies]
 	ld c, a
@@ -1106,7 +1106,7 @@ Chara_SPE4:
 
 
 StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
-	ld hl, TempMonDVs
+	ld hl, TempMonForm
 	predef GetVariant
 	call StatsScreen_GetAnimationParam
 	jr c, .egg

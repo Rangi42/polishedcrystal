@@ -242,7 +242,7 @@ endr
 	ld [TempMonDVs], a
 	ld a, [hli]
 	ld [TempMonDVs + 1], a
-	ld hl, TempMonDVs
+	ld hl, TempMonForm
 	predef GetVariant
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -477,7 +477,7 @@ DisplayHOFMon: ; 86748
 	ld a, [TempMonSpecies]
 	ld [CurPartySpecies], a
 	ld [wd265], a
-	ld hl, TempMonDVs
+	ld hl, TempMonForm
 	predef GetVariant
 	xor a
 	ld [wBoxAlignment], a
