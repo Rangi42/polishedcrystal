@@ -20,7 +20,7 @@ BattleTowerText:: ; 11c000
 	add hl, de
 	ld a, [hl]
 	and a
-	jr nz, .female
+	jr z, .female
 	; generate a random number between 0 and 24
 	ld a, [hRandomAdd]
 	and $1f

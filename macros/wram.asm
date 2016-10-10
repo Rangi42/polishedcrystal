@@ -21,7 +21,7 @@ box_struct: MACRO
 \1DefSpdDV::       db
 \1SatSdfDV::       db
 ; TODO: use these bytes
-; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:2|Fainted:1|Form:5)
+; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:1|Fainted:1|Form:6)
 \1Personality::
 \1Shiny::
 \1Ability::
@@ -103,7 +103,7 @@ battle_struct: MACRO
 \1DefSpdDV::       db
 \1SatSdfDV::       db
 ; TODO: use these bytes
-; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:2|Fainted:1|Form:5)
+; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:1|Fainted:1|Form:6)
 \1Personality::
 \1Shiny::
 \1Ability::

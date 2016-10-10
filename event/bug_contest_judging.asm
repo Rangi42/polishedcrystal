@@ -381,7 +381,7 @@ ContestScore: ; 13900
 
 	ld a, [wContestMonSpecies] ; Species
 	and a
-	jr z, .done
+	jp z, .done
 
 	; Tally the following:
 

@@ -190,6 +190,12 @@ DoWonderTrade:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonDVs
+	call Trade_CopyThreeBytes
+
+	ld hl, PartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
 	ld hl, PartyMon1Species
@@ -277,14 +283,60 @@ DoWonderTrade:
 	ld [Buffer1], a
 	call Random
 	ld [Buffer1 + 1], a
+	call Random
+	ld [Buffer1 + 2], a
 	ld hl, Buffer1
 	ld de, wOTTrademonDVs
-	call Trade_CopyTwoBytes
+	call Trade_CopyThreeBytes
 
 	ld hl, PartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonDVs
+	call Trade_CopyThreeBytes
+
+	; Random nature
+	ld a, NUM_NATURES
+	call RandomRange
+	ld b, a
+	; Random ability
+	ld a, 3
+	call RandomRange
+rept 5
+	sla a
+endr
+	add b
+	ld b, a
+	; Random shininess (1 in 1,024)
+	call Random
+	and a
+	jr nz, .not_shiny
+	call Random
+	cp $40
+	jr nc, .not_shiny
+	ld a, b
+	or SHINY_MASK
+	ld b, a
+.not_shiny
+	ld a, b
+	ld [Buffer1], a
+	; Random gender (50-50)
+	call Random
+	and $80 ; $00 is FEMALE, $80 is MALE; ignored if genderless
+	ld b, a
+	; Random form (ignored unless Unown)
+	call Random
+	and FORM_MASK
+	add b
+	ld [Buffer1 + 1], a
+	ld hl, Buffer1
+	ld de, wOTTrademonPersonality
+	call Trade_CopyTwoBytes
+
+	ld hl, PartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonPersonality
 	call Trade_CopyTwoBytes
 
 	ld hl, PartyMon1Item
@@ -348,6 +400,12 @@ GetGSBallPichu:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonDVs
+	call Trade_CopyThreeBytes
+
+	ld hl, PartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
 	ld hl, PartyMon1Species
@@ -376,9 +434,9 @@ GetGSBallPichu:
 	ld b, RESET_FLAG
 	ld a, [PlayerGender]
 	and a
-	jr z, .male
+	jr z, .male_ot_pikachu
 	ld b, SET_FLAG
-.male
+.male_ot_pikachu
 	farcall SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
@@ -416,15 +474,34 @@ GetGSBallPichu:
 	ld hl, wOTTrademonOTName
 	call CopyTradeName
 
-	ld a, ATKDEFDV_SHINY
+	ld a, $FF
 	ld [wOTTrademonDVs], a
-	ld a, SPDSPCDV_SHINY
+	ld a, $FF
 	ld [wOTTrademonDVs + 1], a
+	ld a, $FF
+	ld [wOTTrademonDVs + 2], a
 
 	ld hl, PartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonDVs
+	call Trade_CopyThreeBytes
+
+	ld a, SHINY_MASK | HIDDEN_ABILITY | QUIRKY
+	ld [wOTTrademonPersonality], a
+	ld b, MALE
+	ld a, [PlayerGender]
+	and a
+	jr z, .male_pikachu
+	ld b, FEMALE
+.male_pikachu
+	ld a, b
+	ld [wOTTrademonPersonality + 1], a
+
+	ld hl, PartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, wOTTrademonPersonality
 	call Trade_CopyTwoBytes
 
 	ld hl, PartyMon1Item

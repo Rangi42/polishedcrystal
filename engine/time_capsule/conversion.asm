@@ -379,11 +379,9 @@ NewPokedexEntry: ; fb877
 	call LoadStandardFont
 	farcall Pokedex_PlaceFrontpicTopLeftCorner
 	call WaitBGMap2
-	farcall GetEnemyMonDVs
-	ld a, [hli]
-	ld [TempMonDVs], a
-	ld a, [hl]
-	ld [TempMonDVs + 1], a
+	xor a
+	ld [TempMonPersonality], a
+	ld [TempMonPersonality + 1], a
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
 	call SetPalettes

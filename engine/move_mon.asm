@@ -1570,8 +1570,11 @@ CalcPkmnStatC: ; e17b
 	ld [hMultiplicand + 0], a
 	ld a, [hl]
 	push hl
-	ld hl, ???Nature ; TODO
+	push bc
+	ld bc, MON_NATURE - MON_DVS
+	add hl, bc ; hl points to Nature
 	call GetNatureStatMultiplier
+	pop bc
 	pop hl
 	ld [hMultiplier], a
 	call Multiply
