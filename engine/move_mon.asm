@@ -258,28 +258,25 @@ endr
 rept 4
 	inc de
 endr
-	ld a, 70
+	ld a, BASE_HAPPINESS
 	ld [de], a
 	inc de
 	xor a
+rept 3
 	ld [de], a
 	inc de
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
+endr
 	ld a, [CurPartyLevel]
 	ld [de], a
 	inc de
 	xor a
+rept 2
 	ld [de], a
 	inc de
-	ld [de], a
-	inc de
-	ld bc, 10
+endr
+	ld bc, 2 * 6 ; MaxHP + 5 Stats
 	add hl, bc
-	ld a, $1
-	ld c, a
+	ld c, $1 ; HP
 	ld b, FALSE
 	call CalcPkmnStatC
 	ld a, [hProduct + 2]
@@ -322,12 +319,10 @@ endr
 	ld [de], a
 	inc de
 	xor a
+rept 3
 	ld [de], a
 	inc de
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
+endr
 	ld a, [CurPartyLevel]
 	ld [de], a
 	inc de

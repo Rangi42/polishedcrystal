@@ -93,6 +93,12 @@ _Divide:: ; 673e
 	ld [hMathBuffer + 3], a
 	ld [hMathBuffer + 4], a
 
+	; DEBUG: guard against division by zero
+	; TODO: remove in final version
+	ld a, [hDivisor]
+	and a
+	ret z
+
 	ld a, 9
 	ld e, a
 
