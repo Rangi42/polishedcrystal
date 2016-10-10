@@ -7537,60 +7537,8 @@ GiveExperiencePoints: ; 3ee3b
 	pop bc
 	jp z, .skip_stats
 
-; TODO: give EVs
-	ld hl, MON_EVS + 1
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, EnemyMonBaseStats - 1
-	push bc
-	ld c, $5
-.loop1
-	inc hl
-	ld a, [de]
-	add [hl]
-	ld [de], a
-	jr nc, .okay1
-	dec de
-	ld a, [de]
-	inc a
-	jr z, .next
-	ld [de], a
-	inc de
+	call GiveBattleEVs
 
-.okay1
-	push hl
-	push bc
-	ld a, MON_PKRUS
-	call GetPartyParamLocation
-	ld a, [hl]
-	and a
-	pop bc
-	pop hl
-	jr z, .skip
-	ld a, [de]
-	add [hl]
-	ld [de], a
-	jr nc, .skip
-	dec de
-	ld a, [de]
-	inc a
-	jr z, .next
-	ld [de], a
-	inc de
-	jr .skip
-
-.next
-	ld a, $ff
-	ld [de], a
-	inc de
-	ld [de], a
-
-.skip
-	inc de
-	inc de
-	dec c
-	jr nz, .loop1
 	xor a
 	ld [hMultiplicand + 0], a
 	ld [hMultiplicand + 1], a
@@ -7915,6 +7863,102 @@ GiveExperiencePoints: ; 3ee3b
 	jr nz, .count_loop2
 	ret
 ; 3f106
+
+GiveBattleEVs:
+; bc contains the addr to PartyNMon for which mon to
+; increase EVs of. We ensure to not raise EV above
+; 510 (if EV_CAP is defined), but don't bother with
+; individual stats, rather we just reset all EVs
+; above 252 to 252 when done (3 is max boost)
+	; calculate current EVs
+	push de
+	ld d, 0
+	ld e, 0
+	ld hl, MON_EVS
+	add hl, bc
+	push bc
+	ld b, 6
+.loop
+	ld a, [hli]
+	add e
+	jr nc, .no_overflow
+	inc d
+.no_overflow
+	dec b
+	jr nz, .loop
+
+if def(EV_CAP)
+else
+	; with no cap, zero out EV total since it isn't
+	; going to become a factor
+	ld d, 0
+	ld e, 0
+endc
+	; check for overflow
+	pop bc
+	ld a, d
+	and a
+	jr z, .not_capped ; EV is <=255 which is ok
+	ld a, e
+	cp 254
+	jr nc, .done ; EV cap reached
+	jr .increase_evs
+.not_capped
+	; Since d was 0 (EV<=255), set e to 0. This way,
+	; we can check e later to see if we need to
+	; limit the EV boost (if current EV is 508-509)
+	; by e being 252-253.
+	ld e, 0
+.increase_evs
+	; make e show amount of possible EV gains left
+	ld a, 254
+	sub e
+	ld e, a
+	ld hl, MON_EVS
+	add hl, bc
+	push bc
+	ld a, [EnemyMonSpecies]
+	ld [CurSpecies], a
+	call GetBaseData
+	; EV yield format:
+	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spd
+	; Byte 2: aabb0000 a: Sat, b: Sdf, 0: unused
+	ld a, [BaseEVYield1]
+	ld b, a
+	ld d, 6 ; iterator
+.loop2
+	rlc b
+	rlc b
+	ld a, b
+	and $3
+.inner
+	; Decrease a and e and increase EV until either
+	; a or e is 0 (e=0 means we reached 510EVs)
+	and a
+	jr z, .skip_inner
+	inc [hl]
+	dec a
+	dec e
+	jr z, .done ; we just reached the EV cap
+	jr .inner
+.skip_inner
+	inc hl
+	dec d
+	jr z, .done
+	ld a, d
+	cp 2
+	jr nz, .loop2
+	; For Sat and Sdf, we want to use byte 2
+	ld a, [BaseEVYield2]
+	ld b, a
+.loop2_done
+	ld a, d
+	and a
+	jr nz, .loop2
+.done
+	pop bc
+	pop de
+	ret
 
 BoostExp: ; 3f106
 ; Multiply experience by 1.5x
