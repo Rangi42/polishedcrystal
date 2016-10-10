@@ -779,7 +779,7 @@ HydrationDescription:
 	next "problems in rain.@"
 
 SolarPowerDescription:
-	db   "Boosts Sp.Atk but"
+	db   "Ups Spcl.Atk but"
 	next "lowers HP in sun.@"
 
 QuickFeetDescription:

@@ -1487,7 +1487,7 @@ CalcPkmnStatC: ; e17b
 .no_evs
 	pop hl
 	push bc
-	ld bc, MON_DVS - MON_EVS + 1
+	ld bc, MON_DVS - (MON_EVS - 1)
 	add hl, bc ; hl points to DVs
 	pop bc
 	ld a, c
@@ -1629,11 +1629,11 @@ CalcPkmnStatC: ; e17b
 	; do natures here
 	xor a
 	ld [hMultiplicand + 0], a
-	ld a, [hl]
 	push hl
 	push bc
 	ld bc, MON_NATURE - MON_DVS
 	add hl, bc ; hl points to Nature
+	ld a, [hl]
 	call GetNatureStatMultiplier
 	pop bc
 	pop hl
