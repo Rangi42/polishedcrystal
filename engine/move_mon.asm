@@ -164,7 +164,7 @@ endr
 	pop hl
 	jr .initializetrainermonstats
 
-; TODO: When is this used? Should it account for gender ratios, unlocked Unown forms, Shiny Charm, etc?
+; TODO: account for gender ratios (but not SYnchronize, Shiny Charm, unlocked Unown forms, etc)
 .generateDVsAndPersonality
 	ld a, [CurPartySpecies]
 	ld [wd265], a
