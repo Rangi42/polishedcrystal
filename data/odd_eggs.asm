@@ -173,11 +173,9 @@ OddEgg1:
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
 	dw 02048 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -198,11 +196,9 @@ OddEgg2:
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
 	dw 00256 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db $5b, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -222,11 +218,9 @@ OddEgg2:
 	db HAZE, LEER, DIZZY_PUNCH, 0
 	dw 02560 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -246,11 +240,9 @@ OddEgg2:
 	db HAZE, LEER, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db $3b, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -270,11 +262,9 @@ OddEgg2:
 	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
 	dw 03072 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -294,11 +284,9 @@ OddEgg2:
 	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db $3b, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -318,11 +306,9 @@ OddEgg2:
 	db TACKLE, RAGE, FORESIGHT, DIZZY_PUNCH
 	dw 02560 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -342,11 +328,9 @@ OddEgg2:
 	db TACKLE, RAGE, FORESIGHT, DIZZY_PUNCH
 	dw 00256 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db $7b, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -366,11 +350,9 @@ OddEgg2:
 	db SWEET_KISS, METRONOME, TACKLE, DIZZY_PUNCH
 	dw 04096 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -390,11 +372,9 @@ OddEgg2:
 	db SWEET_KISS, METRONOME, TACKLE, DIZZY_PUNCH
 	dw 00768 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db $1b, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $BB, $BB, $BB ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -416,11 +396,9 @@ ShinyDittoEgg:
 	db TRANSFORM, 0, 0, 0
 	dw 08192 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $FF, $FF, $FF ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, 0 ; Personality
 	db 10, 0, 0, 0 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -442,11 +420,9 @@ MystriEgg:
 	db GROWL, CHARM, MOONBLAST, AEROBLAST
 	dw 08192 ; OT ID
 	dt 0 ; Exp
-	; EVs
-	db 0, 0, 0, 0, 0, 0
-	; TODO: Personality
-	db 0, 0, 0, 0
-	db ATKDEFDV_SHINY, SPDSPCDV_SHINY ; DVs
+	db 0, 0, 0, 0, 0, 0 ; EVs
+	db $FF, $FF, $FF ; DVs
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 40, 20, 15, 5 ; PP
 	db 20 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data

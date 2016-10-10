@@ -316,7 +316,8 @@ BattleTowerMons1:
 	bigdw 40000
 	bigdw 35000
 	bigdw 40000
-	db $dd, $bd ; DVs
+	db $bd, $db, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -343,7 +344,8 @@ BattleTowerMons1:
 	bigdw 35000
 	bigdw 40000
 	bigdw 40000
-	db $ed, $fb ; DVs
+	db $fe, $df, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -370,7 +372,8 @@ BattleTowerMons1:
 	bigdw 45000
 	bigdw 50000
 	bigdw 40000
-	db $db, $ef ; DVs
+	db $ed, $be, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -397,7 +400,8 @@ BattleTowerMons1:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $7f, $d7 ; DVs
+	db $d7, $fd, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 25, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -424,7 +428,8 @@ BattleTowerMons1:
 	bigdw 40000
 	bigdw 30000
 	bigdw 30000
-	db $ef, $cf ; DVs
+	db $ce, $fc, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -451,7 +456,8 @@ BattleTowerMons1:
 	bigdw 33300
 	bigdw 30000
 	bigdw 30000
-	db $fe, $fd ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -478,7 +484,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 35000
-	db $bb, $df ; DVs
+	db $db, $bd, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -505,7 +512,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $db, $fb ; DVs
+	db $fd, $bf, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 25 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -532,7 +540,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $fd, $eb ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -559,7 +568,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $fb, $bf ; DVs
+	db $bf, $bb, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -586,7 +596,8 @@ BattleTowerMons1:
 	bigdw 40000
 	bigdw 30000
 	bigdw 30000
-	db $fb, $de ; DVs
+	db $df, $bd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -613,7 +624,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $ef, $df ; DVs
+	db $de, $fd, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -640,7 +652,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 33000
 	bigdw 30000
-	db $fd, $fe ; DVs
+	db $ff, $df, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 20, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -667,7 +680,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $ed, $fd ; DVs
+	db $fe, $df, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 30 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -694,7 +708,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $df, $ce ; DVs
+	db $cd, $fc, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -721,7 +736,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $ef, $f7 ; DVs
+	db $fe, $ff, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -748,7 +764,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 25 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -775,7 +792,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $f7, $f7 ; DVs
+	db $ff, $7f, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -802,7 +820,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $ff, $ff ; DVs
+	db $ff, $ff, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 0, 0, 0 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -829,7 +848,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $65, $57 ; DVs
+	db $56, $55, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 30, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -856,7 +876,8 @@ BattleTowerMons1:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $73, $67 ; DVs
+	db $67, $36, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -887,7 +908,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $cf, $bc ; DVs
+	db $bc, $fb, $cc ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -914,7 +936,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $db, $db ; DVs
+	db $dd, $bd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -941,7 +964,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fa, $fd ; DVs
+	db $ff, $af, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -968,7 +992,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 30000
 	bigdw 50000
-	db $ff, $ff ; DVs
+	db $ff, $ff, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -995,7 +1020,8 @@ BattleTowerMons2:
 	bigdw 30000
 	bigdw 50000
 	bigdw 40000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1022,7 +1048,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $db, $fb ; DVs
+	db $fd, $bf, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1049,7 +1076,8 @@ BattleTowerMons2:
 	bigdw 45000
 	bigdw 30000
 	bigdw 45000
-	db $df, $de ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1076,7 +1104,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 45000
 	bigdw 45000
-	db $fd, $eb ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1103,7 +1132,8 @@ BattleTowerMons2:
 	bigdw 40000
 	bigdw 50000
 	bigdw 45000
-	db $fb, $bb ; DVs
+	db $bf, $bb, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1130,7 +1160,8 @@ BattleTowerMons2:
 	bigdw 30000
 	bigdw 30000
 	bigdw 50000
-	db $bd, $fe ; DVs
+	db $fb, $df, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 25, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1157,7 +1188,8 @@ BattleTowerMons2:
 	bigdw 40000
 	bigdw 55000
 	bigdw 30000
-	db $fe, $d7 ; DVs
+	db $df, $ed, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1184,7 +1216,8 @@ BattleTowerMons2:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $fc, $fe ; DVs
+	db $ff, $cf, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1211,7 +1244,8 @@ BattleTowerMons2:
 	bigdw 40000
 	bigdw 45000
 	bigdw 50000
-	db $fd, $fe ; DVs
+	db $ff, $df, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 20, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1238,7 +1272,8 @@ BattleTowerMons2:
 	bigdw 35000
 	bigdw 50000
 	bigdw 30000
-	db $fb, $fd ; DVs
+	db $ff, $bf, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1265,7 +1300,8 @@ BattleTowerMons2:
 	bigdw 50000
 	bigdw 30000
 	bigdw 30000
-	db $fb, $ef ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1292,7 +1328,8 @@ BattleTowerMons2:
 	bigdw 40000
 	bigdw 40000
 	bigdw 40000
-	db $ed, $f7 ; DVs
+	db $fe, $df, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1319,7 +1356,8 @@ BattleTowerMons2:
 	bigdw 40000
 	bigdw 40000
 	bigdw 40000
-	db $df, $fe ; DVs
+	db $fd, $ff, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1346,7 +1384,8 @@ BattleTowerMons2:
 	bigdw 40000
 	bigdw 40000
 	bigdw 40000
-	db $c7, $fe ; DVs
+	db $fc, $7f, $cc ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1373,7 +1412,8 @@ BattleTowerMons2:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $c7, $77 ; DVs
+	db $7c, $77, $cc ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1400,7 +1440,8 @@ BattleTowerMons2:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $56, $46 ; DVs
+	db $45, $64, $55 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1427,7 +1468,8 @@ BattleTowerMons2:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $55, $47 ; DVs
+	db $45, $54, $55 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 5 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1458,7 +1500,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 50000
 	bigdw 55000
-	db $db, $ed ; DVs
+	db $ed, $be, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1485,7 +1528,8 @@ BattleTowerMons3:
 	bigdw 55000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $fb ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 25 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1512,7 +1556,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ff, $ff ; DVs
+	db $ff, $ff, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1539,7 +1584,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 30000
 	bigdw 50000
-	db $fb, $ee ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1566,7 +1612,8 @@ BattleTowerMons3:
 	bigdw 30000
 	bigdw 50000
 	bigdw 50000
-	db $ef, $ff ; DVs
+	db $fe, $ff, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1593,7 +1640,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $df, $db ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1620,7 +1668,8 @@ BattleTowerMons3:
 	bigdw 45000
 	bigdw 30000
 	bigdw 45000
-	db $fb, $ed ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1647,7 +1696,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 45000
 	bigdw 45000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1674,7 +1724,8 @@ BattleTowerMons3:
 	bigdw 40000
 	bigdw 50000
 	bigdw 45000
-	db $fd, $be ; DVs
+	db $bf, $db, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1701,7 +1752,8 @@ BattleTowerMons3:
 	bigdw 30000
 	bigdw 30000
 	bigdw 50000
-	db $ef, $dc ; DVs
+	db $de, $fd, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 35 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1728,7 +1780,8 @@ BattleTowerMons3:
 	bigdw 40000
 	bigdw 55000
 	bigdw 30000
-	db $df, $db ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1755,7 +1808,8 @@ BattleTowerMons3:
 	bigdw 45000
 	bigdw 50000
 	bigdw 30000
-	db $dd, $eb ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
 	db 255 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1782,7 +1836,8 @@ BattleTowerMons3:
 	bigdw 40000
 	bigdw 45000
 	bigdw 50000
-	db $bd, $ef ; DVs
+	db $eb, $de, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1809,7 +1864,8 @@ BattleTowerMons3:
 	bigdw 35000
 	bigdw 50000
 	bigdw 30000
-	db $fd, $eb ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 25, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1836,7 +1892,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 30000
 	bigdw 30000
-	db $dd, $eb ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1863,7 +1920,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ef, $f7 ; DVs
+	db $fe, $ff, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 20, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1890,7 +1948,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 47000
 	bigdw 45000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1917,7 +1976,8 @@ BattleTowerMons3:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $f7, $f7 ; DVs
+	db $ff, $7f, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 30, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1944,7 +2004,8 @@ BattleTowerMons3:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $77, $45 ; DVs
+	db $47, $74, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 30 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1971,7 +2032,8 @@ BattleTowerMons3:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $67, $77 ; DVs
+	db $76, $77, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 15, 20 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -1998,7 +2060,8 @@ BattleTowerMons3:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $77, $67 ; DVs
+	db $67, $76, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 25, 15, 30 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2029,7 +2092,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $fe ; DVs
+	db $ff, $df, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 5, 10, 15 ; PP
 	db 255 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2056,7 +2120,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2083,7 +2148,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ed, $dd ; DVs
+	db $de, $dd, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2110,7 +2176,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $eb ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2137,7 +2204,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ef, $db ; DVs
+	db $de, $fd, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2164,7 +2232,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $ef ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2191,7 +2260,8 @@ BattleTowerMons4:
 	bigdw 45000
 	bigdw 50000
 	bigdw 45000
-	db $fd, $be ; DVs
+	db $bf, $db, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2218,7 +2288,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $bf, $e7 ; DVs
+	db $eb, $fe, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 25, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2245,7 +2316,8 @@ BattleTowerMons4:
 	bigdw 40000
 	bigdw 50000
 	bigdw 45000
-	db $dd, $ed ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2272,7 +2344,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 40000
 	bigdw 50000
-	db $bd, $fe ; DVs
+	db $fb, $df, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 25, 20, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2299,7 +2372,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $bb ; DVs
+	db $bf, $eb, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2326,7 +2400,8 @@ BattleTowerMons4:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $bf, $cf ; DVs
+	db $cb, $fc, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2353,7 +2428,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $bc, $ef ; DVs
+	db $eb, $ce, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2380,7 +2456,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $bb ; DVs
+	db $bf, $eb, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 30, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2407,7 +2484,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fa, $7f ; DVs
+	db $7f, $a7, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 40, 10, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2434,7 +2512,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ef, $f7 ; DVs
+	db $fe, $ff, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 25, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2461,7 +2540,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2488,7 +2568,8 @@ BattleTowerMons4:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $f7, $e7 ; DVs
+	db $ef, $7e, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 10, 25 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2515,7 +2596,8 @@ BattleTowerMons4:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $77, $7a ; DVs
+	db $77, $77, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 15, 15, 20 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2542,7 +2624,8 @@ BattleTowerMons4:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $75, $6b ; DVs
+	db $67, $56, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 40, 10, 20, 30 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2569,7 +2652,8 @@ BattleTowerMons4:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $65, $77 ; DVs
+	db $76, $57, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 15, 20, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2600,7 +2684,8 @@ BattleTowerMons5:
 	bigdw 60000
 	bigdw 50000
 	bigdw 55000
-	db $dd, $ff ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 20 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2627,7 +2712,8 @@ BattleTowerMons5:
 	bigdw 60000
 	bigdw 60000
 	bigdw 60000
-	db $dd, $fc ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2654,7 +2740,8 @@ BattleTowerMons5:
 	bigdw 60000
 	bigdw 60000
 	bigdw 55000
-	db $fd, $cf ; DVs
+	db $cf, $dc, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2681,7 +2768,8 @@ BattleTowerMons5:
 	bigdw 55000
 	bigdw 60000
 	bigdw 55000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2708,7 +2796,8 @@ BattleTowerMons5:
 	bigdw 60000
 	bigdw 55000
 	bigdw 60000
-	db $dd, $dd ; DVs
+	db $dd, $dd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 5 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2735,7 +2824,8 @@ BattleTowerMons5:
 	bigdw 57000
 	bigdw 55000
 	bigdw 55000
-	db $ed, $ff ; DVs
+	db $fe, $df, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2762,7 +2852,8 @@ BattleTowerMons5:
 	bigdw 40000
 	bigdw 50000
 	bigdw 45000
-	db $df, $ed ; DVs
+	db $ed, $fe, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 30, 35 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2789,7 +2880,8 @@ BattleTowerMons5:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $df, $de ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 20 ; PP
 	db 15 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2816,7 +2908,8 @@ BattleTowerMons5:
 	bigdw 50000
 	bigdw 40000
 	bigdw 44000
-	db $ff, $ec ; DVs
+	db $ef, $fe, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 15 ; PP
 	db 13 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2843,7 +2936,8 @@ BattleTowerMons5:
 	bigdw 40000
 	bigdw 45000
 	bigdw 40000
-	db $ff, $ff ; DVs
+	db $ff, $ff, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2870,7 +2964,8 @@ BattleTowerMons5:
 	bigdw 50000
 	bigdw 45000
 	bigdw 50000
-	db $f7, $fe ; DVs
+	db $ff, $7f, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2897,7 +2992,8 @@ BattleTowerMons5:
 	bigdw 54000
 	bigdw 40000
 	bigdw 50000
-	db $7d, $fe ; DVs
+	db $f7, $df, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 20, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2924,7 +3020,8 @@ BattleTowerMons5:
 	bigdw 50000
 	bigdw 45000
 	bigdw 45000
-	db $fd, $dd ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2951,7 +3048,8 @@ BattleTowerMons5:
 	bigdw 50000
 	bigdw 40000
 	bigdw 50000
-	db $ef, $ff ; DVs
+	db $fe, $ff, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -2978,7 +3076,8 @@ BattleTowerMons5:
 	bigdw 45000
 	bigdw 40000
 	bigdw 50000
-	db $fd, $de ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 20, 5 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3005,7 +3104,8 @@ BattleTowerMons5:
 	bigdw 50000
 	bigdw 50000
 	bigdw 40000
-	db $d7, $ed ; DVs
+	db $ed, $7e, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 25, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3032,7 +3132,8 @@ BattleTowerMons5:
 	bigdw 55000
 	bigdw 45000
 	bigdw 40000
-	db $cf, $dd ; DVs
+	db $dc, $fd, $cc ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 5, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3059,7 +3160,8 @@ BattleTowerMons5:
 	bigdw 50000
 	bigdw 40000
 	bigdw 45000
-	db $dd, $dd ; DVs
+	db $dd, $dd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3086,7 +3188,8 @@ BattleTowerMons5:
 	bigdw 40000
 	bigdw 40000
 	bigdw 40000
-	db $45, $56 ; DVs
+	db $54, $55, $44 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3113,7 +3216,8 @@ BattleTowerMons5:
 	bigdw 40000
 	bigdw 40000
 	bigdw 40000
-	db $75, $65 ; DVs
+	db $67, $56, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3140,7 +3244,8 @@ BattleTowerMons5:
 	bigdw 40000
 	bigdw 40000
 	bigdw 40000
-	db $45, $56 ; DVs
+	db $54, $55, $44 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 20, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3171,7 +3276,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 60000
 	bigdw 60000
-	db $dd, $fe ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3198,7 +3304,8 @@ BattleTowerMons6:
 	bigdw 55000
 	bigdw 60000
 	bigdw 55000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3225,7 +3332,8 @@ BattleTowerMons6:
 	bigdw 55000
 	bigdw 60000
 	bigdw 55000
-	db $fb, $ef ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3252,7 +3360,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 55000
-	db $dd, $de ; DVs
+	db $dd, $dd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3279,7 +3388,8 @@ BattleTowerMons6:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3306,7 +3416,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $fd ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3333,7 +3444,8 @@ BattleTowerMons6:
 	bigdw 45000
 	bigdw 50000
 	bigdw 45000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 5, 25 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3360,7 +3472,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 45000
 	bigdw 45000
-	db $fd, $dd ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 25 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3387,7 +3500,8 @@ BattleTowerMons6:
 	bigdw 40000
 	bigdw 50000
 	bigdw 45000
-	db $dd, $fd ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3414,7 +3528,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3441,7 +3556,8 @@ BattleTowerMons6:
 	bigdw 40000
 	bigdw 55000
 	bigdw 50000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3468,7 +3584,8 @@ BattleTowerMons6:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $fb, $eb ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3495,7 +3612,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 45000
 	bigdw 50000
-	db $fb, $cd ; DVs
+	db $cf, $bc, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3522,7 +3640,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fa, $fc ; DVs
+	db $ff, $af, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3549,7 +3668,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $df, $ed ; DVs
+	db $ed, $fe, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3576,7 +3696,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ff, $eb ; DVs
+	db $ef, $fe, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3603,7 +3724,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 40, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3630,7 +3752,8 @@ BattleTowerMons6:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fb, $fa ; DVs
+	db $ff, $bf, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3657,7 +3780,8 @@ BattleTowerMons6:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $b7, $67 ; DVs
+	db $6b, $76, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3684,7 +3808,8 @@ BattleTowerMons6:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $66, $5f ; DVs
+	db $56, $65, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3711,7 +3836,8 @@ BattleTowerMons6:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $76, $57 ; DVs
+	db $57, $65, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 20 ; PP
 	db 255 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3742,7 +3868,8 @@ BattleTowerMons7:
 	bigdw 55000
 	bigdw 50000
 	bigdw 60000
-	db $fb, $ef ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3769,7 +3896,8 @@ BattleTowerMons7:
 	bigdw 60000
 	bigdw 60000
 	bigdw 50000
-	db $bf, $ef ; DVs
+	db $eb, $fe, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3796,7 +3924,8 @@ BattleTowerMons7:
 	bigdw 55000
 	bigdw 50000
 	bigdw 58000
-	db $dd, $dd ; DVs
+	db $dd, $dd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 5, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3823,7 +3952,8 @@ BattleTowerMons7:
 	bigdw 55000
 	bigdw 58000
 	bigdw 50000
-	db $df, $ed ; DVs
+	db $ed, $fe, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3850,7 +3980,8 @@ BattleTowerMons7:
 	bigdw 60000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $dd ; DVs
+	db $dd, $dd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3877,7 +4008,8 @@ BattleTowerMons7:
 	bigdw 55000
 	bigdw 60000
 	bigdw 55000
-	db $dd, $cd ; DVs
+	db $cd, $dc, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 20, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3904,7 +4036,8 @@ BattleTowerMons7:
 	bigdw 45000
 	bigdw 50000
 	bigdw 45000
-	db $db, $df ; DVs
+	db $dd, $bd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3931,7 +4064,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 45000
 	bigdw 45000
-	db $db, $df ; DVs
+	db $dd, $bd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 20, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3958,7 +4092,8 @@ BattleTowerMons7:
 	bigdw 40000
 	bigdw 50000
 	bigdw 45000
-	db $dd, $ed ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -3985,7 +4120,8 @@ BattleTowerMons7:
 	bigdw 45000
 	bigdw 45000
 	bigdw 50000
-	db $fd, $eb ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4012,7 +4148,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $db, $ef ; DVs
+	db $ed, $be, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4039,7 +4176,8 @@ BattleTowerMons7:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $de, $dd ; DVs
+	db $dd, $ed, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4066,7 +4204,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 45000
 	bigdw 50000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 5, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4093,7 +4232,8 @@ BattleTowerMons7:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $bd, $fb ; DVs
+	db $fb, $df, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4120,7 +4260,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $bd, $ef ; DVs
+	db $eb, $de, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4147,7 +4288,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fd ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 40, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4174,7 +4316,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4201,7 +4344,8 @@ BattleTowerMons7:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $f7, $f7 ; DVs
+	db $ff, $7f, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4228,7 +4372,8 @@ BattleTowerMons7:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $76, $44 ; DVs
+	db $47, $64, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 5 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4255,7 +4400,8 @@ BattleTowerMons7:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $56, $44 ; DVs
+	db $45, $64, $55 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 5, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4282,7 +4428,8 @@ BattleTowerMons7:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $76, $64 ; DVs
+	db $67, $66, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 5, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4313,7 +4460,8 @@ BattleTowerMons8:
 	bigdw 60000
 	bigdw 55000
 	bigdw 55000
-	db $fd, $eb ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4340,7 +4488,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 55500
 	bigdw 60000
-	db $db, $ed ; DVs
+	db $ed, $be, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4367,7 +4516,8 @@ BattleTowerMons8:
 	bigdw 55000
 	bigdw 55000
 	bigdw 55000
-	db $fd, $db ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4394,7 +4544,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 30000
 	bigdw 50000
-	db $fd, $de ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4421,7 +4572,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $df, $db ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4448,7 +4600,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $df, $db ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4475,7 +4628,8 @@ BattleTowerMons8:
 	bigdw 45000
 	bigdw 55000
 	bigdw 50000
-	db $de, $dd ; DVs
+	db $dd, $ed, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4502,7 +4656,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 45000
 	bigdw 50000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4529,7 +4684,8 @@ BattleTowerMons8:
 	bigdw 40000
 	bigdw 55000
 	bigdw 50000
-	db $fb, $ed ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4556,7 +4712,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 50000
 	bigdw 45000
-	db $dd, $dd ; DVs
+	db $dd, $dd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4583,7 +4740,8 @@ BattleTowerMons8:
 	bigdw 40000
 	bigdw 55000
 	bigdw 50000
-	db $df, $ed ; DVs
+	db $ed, $fe, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4610,7 +4768,8 @@ BattleTowerMons8:
 	bigdw 45000
 	bigdw 50000
 	bigdw 50000
-	db $df, $df ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4637,7 +4796,8 @@ BattleTowerMons8:
 	bigdw 40000
 	bigdw 45000
 	bigdw 50000
-	db $df, $dc ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 5, 35 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4664,7 +4824,8 @@ BattleTowerMons8:
 	bigdw 35000
 	bigdw 50000
 	bigdw 50000
-	db $dd, $ef ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4691,7 +4852,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 40000
 	bigdw 50000
-	db $dd, $fe ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 25, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4718,7 +4880,8 @@ BattleTowerMons8:
 	bigdw 50000
 	bigdw 40000
 	bigdw 50000
-	db $ff, $ed ; DVs
+	db $ef, $fe, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4745,7 +4908,8 @@ BattleTowerMons8:
 	bigdw 40000
 	bigdw 40000
 	bigdw 50000
-	db $ff, $ef ; DVs
+	db $ef, $fe, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4772,7 +4936,8 @@ BattleTowerMons8:
 	bigdw 40000
 	bigdw 50000
 	bigdw 40000
-	db $fd, $dd ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4799,7 +4964,8 @@ BattleTowerMons8:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $65, $65 ; DVs
+	db $66, $56, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4826,7 +4992,8 @@ BattleTowerMons8:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $74, $64 ; DVs
+	db $67, $46, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 25, 15, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4853,7 +5020,8 @@ BattleTowerMons8:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $76, $57 ; DVs
+	db $57, $65, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4884,7 +5052,8 @@ BattleTowerMons9:
 	bigdw 55000
 	bigdw 60000
 	bigdw 55000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4911,7 +5080,8 @@ BattleTowerMons9:
 	bigdw 56000
 	bigdw 60000
 	bigdw 60000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4938,7 +5108,8 @@ BattleTowerMons9:
 	bigdw 60000
 	bigdw 55000
 	bigdw 60000
-	db $df, $dd ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4965,7 +5136,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $db, $df ; DVs
+	db $dd, $bd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -4992,7 +5164,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $cf ; DVs
+	db $cf, $dc, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 35, 30, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5019,7 +5192,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5046,7 +5220,8 @@ BattleTowerMons9:
 	bigdw 55000
 	bigdw 50000
 	bigdw 45000
-	db $df, $de ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5073,7 +5248,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 45000
 	bigdw 50000
-	db $df, $de ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5100,7 +5276,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 55000
-	db $bd, $ef ; DVs
+	db $eb, $de, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5127,7 +5304,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $fe ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5154,7 +5332,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $ed ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5181,7 +5360,8 @@ BattleTowerMons9:
 	bigdw 55000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fd ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5208,7 +5388,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 45000
 	bigdw 55000
-	db $df, $de ; DVs
+	db $dd, $fd, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5235,7 +5416,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $bd, $fe ; DVs
+	db $fb, $df, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5262,7 +5444,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $db, $fe ; DVs
+	db $fd, $bf, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5289,7 +5472,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $ef, $f7 ; DVs
+	db $fe, $ff, $ee ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 25, 10, 20 ; PP
 	db 255 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5316,7 +5500,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5343,7 +5528,8 @@ BattleTowerMons9:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $f7, $f7 ; DVs
+	db $ff, $7f, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5370,7 +5556,8 @@ BattleTowerMons9:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $47, $57 ; DVs
+	db $54, $75, $44 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5397,7 +5584,8 @@ BattleTowerMons9:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $65, $76 ; DVs
+	db $76, $57, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5424,7 +5612,8 @@ BattleTowerMons9:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $54, $44 ; DVs
+	db $45, $44, $55 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 5 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5455,7 +5644,8 @@ BattleTowerMons10:
 	bigdw 60000
 	bigdw 60000
 	bigdw 60000
-	db $fd, $ed ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5482,7 +5672,8 @@ BattleTowerMons10:
 	bigdw 60000
 	bigdw 60000
 	bigdw 60000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5509,7 +5700,8 @@ BattleTowerMons10:
 	bigdw 60000
 	bigdw 60000
 	bigdw 60000
-	db $df, $fe ; DVs
+	db $fd, $ff, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 10, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5536,7 +5728,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 30000
 	bigdw 50000
-	db $fd, $fe ; DVs
+	db $ff, $df, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5563,7 +5756,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5590,7 +5784,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $dd, $ef ; DVs
+	db $ed, $de, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5617,7 +5812,8 @@ BattleTowerMons10:
 	bigdw 55000
 	bigdw 55000
 	bigdw 55000
-	db $fe, $df ; DVs
+	db $df, $ed, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5644,7 +5840,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 45000
 	bigdw 45000
-	db $fb, $ef ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5671,7 +5868,8 @@ BattleTowerMons10:
 	bigdw 55000
 	bigdw 50000
 	bigdw 45000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5698,7 +5896,8 @@ BattleTowerMons10:
 	bigdw 55000
 	bigdw 60000
 	bigdw 50000
-	db $fd, $de ; DVs
+	db $df, $dd, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 15, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5725,7 +5924,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 55000
 	bigdw 50000
-	db $fd, $cf ; DVs
+	db $cf, $dc, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 25, 10, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5752,7 +5952,8 @@ BattleTowerMons10:
 	bigdw 55000
 	bigdw 50000
 	bigdw 55000
-	db $bd, $ef ; DVs
+	db $eb, $de, $bb ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 20, 15 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5779,7 +5980,8 @@ BattleTowerMons10:
 	bigdw 48000
 	bigdw 45000
 	bigdw 50000
-	db $fd, $ef ; DVs
+	db $ef, $de, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 5, 15, 20 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5806,7 +6008,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 50000
 	bigdw 45000
-	db $fb, $fe ; DVs
+	db $ff, $bf, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 5, 20, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5833,7 +6036,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 30000
 	bigdw 30000
-	db $dd, $fe ; DVs
+	db $fd, $df, $dd ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5860,7 +6064,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $f7 ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5887,7 +6092,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fe, $fe ; DVs
+	db $ff, $ef, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 5, 5 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5914,7 +6120,8 @@ BattleTowerMons10:
 	bigdw 50000
 	bigdw 50000
 	bigdw 50000
-	db $fb, $e7 ; DVs
+	db $ef, $be, $ff ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
 	db 100 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5941,7 +6148,8 @@ BattleTowerMons10:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $74, $46 ; DVs
+	db $47, $44, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 5 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5968,7 +6176,8 @@ BattleTowerMons10:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $67, $76 ; DVs
+	db $76, $77, $66 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 15 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
@@ -5995,7 +6204,8 @@ BattleTowerMons10:
 	bigdw 30000
 	bigdw 30000
 	bigdw 30000
-	db $76, $57 ; DVs
+	db $57, $65, $77 ; DVs
+	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
 	db 0 ; Happiness
 	db 0, 0, 0 ; Pokerus, Caught data
