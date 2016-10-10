@@ -158,13 +158,14 @@ endr
 	push hl
 	ld a, [MonType]
 	and $f
-	jr z, .generateDVs
+	jr z, .generateDVsAndPersonality
 	push hl
-	farcall GetTrainerDVs
+	farcall GetTrainerDVsAndPersonality
 	pop hl
 	jr .initializetrainermonstats
 
-.generateDVs
+; TODO: When is this used? Should it account for gender ratios, unlocked Unown forms, Shiny Charm, etc?
+.generateDVsAndPersonality
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	dec a
@@ -178,19 +179,75 @@ endr
 	push hl
 	ld a, [wBattleMode]
 	and a
-	jr nz, .copywildmonstats
+	jp nz, .copywildmonstats
+	; Random DVs
 	call Random
+	ld [RandomDVAndPersonalityBuffer], a
+	call Random
+	ld [RandomDVAndPersonalityBuffer + 1], a
+	call Random
+	ld [RandomDVAndPersonalityBuffer + 2], a
+	; Random nature
+	ld a, NUM_NATURES
+	call RandomRange
 	ld b, a
+	; Random ability
 	call Random
-	ld c, a
+	cp 1 + 5 percent
+	jr c, .hidden_ability
+	and $1
+	jr z, .ability_2
+.ability_1
+	ld a, ABILITY_1
+	jp .got_ability
+.ability_2
+	ld a, ABILITY_2
+	jp .got_ability
+.hidden_ability
+	ld a, HIDDEN_ABILITY
+.got_ability
+	add b
+	ld b, a
+	; Random shininess (1 in 4,096)
+	call Random
+	and a
+	jr nz, .not_shiny
+	call Random
+	cp $10
+	jr nc, .not_shiny
+.shiny
+	ld a, SHINY_MASK
+	jr .got_shininess
+.not_shiny
+	xor a
+.got_shininess
+	add b
+	ld [RandomDVAndPersonalityBuffer + 3], a
+	; Random gender
+	call Random
+	and $1
+	jr z, .female
+.male
+	ld a, MALE
+	jr .got_gender
+.female
+	ld a, FEMALE
+.got_gender
+	ld b, a
+	; Random form
+	call Random
+	and FORM_MASK
+	add b
+	ld [RandomDVAndPersonalityBuffer + 4], a
+	ld bc, RandomDVAndPersonalityBuffer
 
 .initializetrainermonstats
-	ld a, b
+rept 5
+	ld a, [bc]
 	ld [de], a
+	inc bc
 	inc de
-	ld a, c
-	ld [de], a
-	inc de
+endr
 	push hl
 	push de
 	inc hl
@@ -238,6 +295,15 @@ endr
 	ld [de], a
 	inc de
 	ld a, [EnemyMonDVs + 1]
+	ld [de], a
+	inc de
+	ld a, [EnemyMonDVs + 2]
+	ld [de], a
+	inc de
+	ld a, [EnemyMonDVs + 3] ; EnemyMonPersonality
+	ld [de], a
+	inc de
+	ld a, [EnemyMonDVs + 4] ; EnemyMonPersonality + 1
 	ld [de], a
 	inc de
 
@@ -973,9 +1039,9 @@ SentPkmnIntoBox: ; de6e
 	ld [de], a
 	inc de
 
-    ; Set all 5 Experience Values to 0
+    ; Set all 6 EVs to 0
 	xor a
-	ld b, 2 * 5
+	ld b, 6
 .loop2
 	ld [de], a
 	inc de
@@ -983,7 +1049,7 @@ SentPkmnIntoBox: ; de6e
 	jr nz, .loop2
 
 	ld hl, EnemyMonDVs
-	ld b, 2 + NUM_MOVES ; DVs and PP ; EnemyMonHappiness - EnemyMonDVs
+	ld b, 3 + 2 + NUM_MOVES ; DVs, Personality, and PP ; EnemyMonHappiness - EnemyMonDVs
 .loop3
 	ld a, [hli]
 	ld [de], a

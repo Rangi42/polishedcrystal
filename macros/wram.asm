@@ -247,7 +247,17 @@ trademon: MACRO
 \1Nickname:: ds PKMN_NAME_LENGTH ; wc6dc | wc70e
 \1SenderName:: ds NAME_LENGTH ; wc6e7 | wc719
 \1OTName:: ds NAME_LENGTH ; wc6f2 | wc724
-\1DVs:: ds 3 ; wc6fd | wc72f
+\1DVs:: ; wc6fd | wc72f
+\1HPAtkDV:: ds 1
+\1DefSpdDV:: ds 1
+\1SatSdfDV:: ds 1
+\1Personality::
+\1Shiny::
+\1Ability::
+\1Nature:: ds 1
+\1Gender::
+\1Fainted::
+\1Form:: ds 1
 \1ID:: ds 2 ; wc6ff | wc731
 \1CaughtData:: ds 1 ; wc701 | wc733
 \1End::

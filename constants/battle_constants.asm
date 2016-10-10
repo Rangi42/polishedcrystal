@@ -42,23 +42,25 @@ NUM_STATS EQU const_value
 STAT_MIN_NORMAL EQU 5
 STAT_MIN_HP EQU 10
 
+PERFECT_DVS EQUS "$FF, $FF, $FF"
+
 ; hidden power dvs
-ATKDEFDV_HP_FIGHTING EQU $CC ; Naughty (+Atk -SpD)
-ATKDEFDV_HP_FLYING   EQU $CD ; Bold (+Def -Atk)
-ATKDEFDV_HP_POISON   EQU $CE ; Docile (neutral)
-ATKDEFDV_HP_GROUND   EQU $CF ; Relaxed (+Def -Spe)
-ATKDEFDV_HP_ROCK     EQU $DC ; Calm (+SpD -Atk)
-ATKDEFDV_HP_BUG      EQU $DD ; Gentle (+SpD -Def)
-ATKDEFDV_HP_GHOST    EQU $DE ; Sassy (+SpD -Spe)
-ATKDEFDV_HP_STEEL    EQU $DF ; Careful (+SpD -SpA)
-ATKDEFDV_HP_FIRE     EQU $EC ; Hasty (+Spe -Def)
-ATKDEFDV_HP_WATER    EQU $ED ; Serious (neutral)
-ATKDEFDV_HP_GRASS    EQU $EE ; Jolly (+Spe -SpA)
-ATKDEFDV_HP_ELECTRIC EQU $EF ; Impish (+Def -SpA)
-ATKDEFDV_HP_PSYCHIC  EQU $FC ; Brave (+Atk -Spe)
-ATKDEFDV_HP_ICE      EQU $FD ; Adamant (+Atk -SpA)
-ATKDEFDV_HP_DRAGON   EQU $FE ; Naughty (+Atk -SpD)
-ATKDEFDV_HP_DARK     EQU $FF ; Serious (neutral)
+DVS_HP_FIGHTING EQUS "$FC, $CF, $FF"
+DVS_HP_FLYING   EQUS "$FC, $DF, $FF"
+DVS_HP_POISON   EQUS "$FC, $EF, $FF"
+DVS_HP_GROUND   EQUS "$FC, $FF, $FF"
+DVS_HP_ROCK     EQUS "$FD, $CF, $FF"
+DVS_HP_BUG      EQUS "$FD, $DF, $FF"
+DVS_HP_GHOST    EQUS "$FD, $EF, $FF"
+DVS_HP_STEEL    EQUS "$FD, $FF, $FF"
+DVS_HP_FIRE     EQUS "$FE, $CF, $FF"
+DVS_HP_WATER    EQUS "$FE, $DF, $FF"
+DVS_HP_GRASS    EQUS "$FE, $EF, $FF"
+DVS_HP_ELECTRIC EQUS "$FE, $FF, $FF"
+DVS_HP_PSYCHIC  EQUS "$FF, $CF, $FF"
+DVS_HP_ICE      EQUS "$FF, $DF, $FF"
+DVS_HP_DRAGON   EQUS "$FF, $EF, $FF"
+DVS_HP_DARK     EQUS "$FF, $FF, $FF"
 
 ; nature constants
 	const_def

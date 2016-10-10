@@ -1143,7 +1143,7 @@ endr
 	and a
 	jr z, .party
 	cp NUM_BOXES + 1
-	jr z, .sBox
+	jp z, .sBox
 	ld b, a
 	call GetBoxPointer
 	ld a, b
@@ -1175,6 +1175,16 @@ endr
 	ld a, [hli]
 	ld [de], a
 	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	; Personality comes right after DVs
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
 	ld a, [hl]
 	ld [de], a
 	call CloseSRAM
@@ -1198,6 +1208,16 @@ endr
 	ld a, e
 	call AddNTimes
 	ld de, TempMonDVs
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	; Personality comes right after DVs
+	inc de
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1227,6 +1247,16 @@ endr
 	ld a, e
 	call AddNTimes
 	ld de, TempMonDVs
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	; Personality comes right after DVs
+	inc de
 	ld a, [hli]
 	ld [de], a
 	inc de

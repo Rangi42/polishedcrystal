@@ -70,10 +70,11 @@ BattleCommand_Transform: ; 371cd
 	ld [wEnemyBackupDVs + 2], a
 	inc de
 	ld a, [de]
-	ld [wEnemyPersonality], a
+	ld [wEnemyBackupPersonality], a
 	inc de
 	ld a, [de]
-	ld [wEnemyPersonality + 1], a
+	ld [wEnemyBackupPersonality + 1], a
+	dec de
 	dec de
 	dec de
 	dec de

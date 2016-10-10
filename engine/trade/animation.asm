@@ -780,10 +780,10 @@ TradeAnim_ShowGivemonData: ; 2942e
 	call Function2951f
 	ld a, [wPlayerTrademonSpecies]
 	ld [CurPartySpecies], a
-	ld a, [wPlayerTrademonDVs]
-	ld [TempMonDVs], a
-	ld a, [wPlayerTrademonDVs + 1]
-	ld [TempMonDVs + 1], a
+	ld a, [wPlayerTrademonPersonality]
+	ld [TempMonPersonality], a
+	ld a, [wPlayerTrademonPersonality + 1]
+	ld [TempMonPersonality + 1], a
 	ld b, SCGB_1A
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
@@ -806,9 +806,9 @@ TradeAnim_ShowGetmonData: ; 29461
 	call Function29549
 	ld a, [wOTTrademonSpecies]
 	ld [CurPartySpecies], a
-	ld a, [wOTTrademonDVs]
+	ld a, [wOTTrademonPersonality]
 	ld [TempMonDVs], a
-	ld a, [wOTTrademonDVs + 1]
+	ld a, [wOTTrademonPersonality + 1]
 	ld [TempMonDVs + 1], a
 	ld b, SCGB_1A
 	call GetSGBLayout

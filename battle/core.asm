@@ -3787,7 +3787,7 @@ endr
 ; 3d867
 
 ResetPlayerAbility:
-	ld a, [BattleMonDVs + 1]
+	ld a, [BattleMonAbility]
 	ld b, a
 	ld a, [BattleMonSpecies]
 	ld c, a
@@ -3798,7 +3798,7 @@ ResetPlayerAbility:
 	ret
 
 ResetEnemyAbility:
-	ld a, [EnemyMonDVs + 1]
+	ld a, [EnemyMonAbility]
 	ld b, a
 	ld a, [EnemyMonSpecies]
 	ld c, a
@@ -4078,9 +4078,8 @@ InitBattleMon: ; 3da0d
 	ld de, BattleMonDVs
 	ld bc, MON_PKRUS - MON_DVS
 	call CopyBytes
-rept 4
-	inc hl
-endr
+	ld bc, MON_LEVEL - MON_PKRUS
+	add hl, bc
 	ld de, BattleMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	call CopyBytes
@@ -4145,6 +4144,28 @@ GetEnemyMonDVs: ; 3da97
 	jp GetPartyLocation
 ; 3dab1
 
+GetPartyMonPersonality:
+	ld hl, BattleMonPersonality
+	ld a, [PlayerSubStatus2]
+	bit SUBSTATUS_TRANSFORMED, a
+	ret z
+	ld hl, PartyMon1Personality
+	ld a, [CurBattleMon]
+	jp GetPartyLocation
+
+GetEnemyMonPersonality:
+	ld hl, EnemyMonPersonality
+	ld a, [EnemySubStatus2]
+	bit SUBSTATUS_TRANSFORMED, a
+	ret z
+	ld hl, wEnemyBackupPersonality
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld hl, OTPartyMon1Personality
+	ld a, [CurOTMon]
+	jp GetPartyLocation
+
 ResetPlayerStatLevels: ; 3dab1
 	ld a, BASE_STAT_LEVEL
 	ld b, NUM_LEVEL_STATS
@@ -4169,9 +4190,8 @@ InitEnemyMon: ; 3dabd
 	ld de, EnemyMonDVs
 	ld bc, MON_PKRUS - MON_DVS
 	call CopyBytes
-rept 3
-	inc hl
-endr
+	ld bc, MON_LEVEL - MON_PKRUS
+	add hl, bc
 	ld de, EnemyMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	call CopyBytes
@@ -5015,9 +5035,11 @@ PrintPlayerHUD: ; 3dfbf
 	ld hl, PartyMon1DVs
 	call GetPartyLocation
 	ld de, TempMonDVs
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 	ld hl, BattleMonLevel
@@ -5115,9 +5137,11 @@ DrawEnemyHUD: ; 3e043
 	jr z, .ok
 	ld hl, wEnemyBackupDVs
 .ok
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 
@@ -6405,7 +6429,7 @@ LoadEnemyMon: ; 3e8eb
 ; Failing that, it's all up to chance
 
 	push bc
-	ld a, [PartyMon1DVs + 1]
+	ld a, [PartyMon1Ability]
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
@@ -6465,9 +6489,9 @@ endc
 	ld [EnemyMonItem], a
 
 
-; Initialize DVs
+; Initialize DVs and personality
 
-; If we're in a trainer battle, DVs are predetermined
+; If we're in a trainer battle, DVs and personality are predetermined
 	ld a, [wBattleMode]
 	and a
 	jr z, .InitDVs
@@ -6479,9 +6503,11 @@ endc
 ; Unknown
 	ld hl, wEnemyBackupDVs
 	ld de, EnemyMonDVs
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 	jp .Happiness
@@ -6492,8 +6518,8 @@ endc
 ; Trainer DVs
 
 ; All trainers have preset DVs, determined by class
-; See GetTrainerDVs for more on that
-	farcall GetTrainerDVs
+; See GetTrainerDVsAndPersonality for more on that
+	farcall GetTrainerDVsAndPersonality
 ; These are the DVs we'll use if we're actually in a trainer battle
 	ld a, [wBattleMode]
 	dec a
@@ -6507,32 +6533,82 @@ endc
 ; They have their own structs, which are shorter than normal
 	ld a, [BattleType]
 	cp a, BATTLETYPE_ROAMING
-	jr nz, .NotRoaming
+	jr nz, .GenerateDVs
 
+; Grab DVs and personality
+	call GetRoamMonDVsAndPersonality
+	ld b, h
+	ld c, l
 ; Grab HP
 	call GetRoamMonHP
 	ld a, [hl]
 ; Check if the HP has been initialized
 	and a
-; We'll do something with the result in a minute
-	push af
-
-; Grab DVs
-	call GetRoamMonDVs
-	inc hl
-	ld a, [hld]
-	ld c, a
-	ld b, [hl]
-
-; Get back the result of our check
-	pop af
 ; If the RoamMon struct has already been initialized, we're done
 	jr nz, .UpdateDVs
 
 ; If it hasn't, we need to initialize the DVs
 ; (HP is initialized at the end of the battle)
+	; DVs
+	call BattleRandom
+	ld [hli], a
+	call BattleRandom
+	ld [hli], a
+	call BattleRandom
+	ld [hli], a
+	; TODO: random shininess, ability, and nature
+	xor a
+	ld [hli], a
+	ld [hl], a
+; We're done with DVs
+	jr .UpdateDVs
+
+.GenerateDVs:
+; Generate new random DVs
+	call BattleRandom
+	ld [RandomDVAndPersonalityBuffer], a
+	call BattleRandom
+	ld [RandomDVAndPersonalityBuffer + 1], a
+	call BattleRandom
+	ld [RandomDVAndPersonalityBuffer + 2], a
+
+.GeneratePersonality:
+	; TODO: random shininess, ability, and nature
+	xor a
+	ld [RandomDVAndPersonalityBuffer + 3], a
+	ld [RandomDVAndPersonalityBuffer + 4], a
+
+	ld bc, RandomDVAndPersonalityBuffer
+
+.UpdateDVs:
+; Input DVs in register bc
+	ld hl, EnemyMonDVs
+rept 4
+	ld a, [bc]
+	ld [hli], a
+	inc bc
+endr
+	ld a, [bc]
+	ld [hl], a
+
+
+; We've still got more to do if we're dealing with a wild monster
+	ld a, [wBattleMode]
+	dec a
+	jp nz, .Happiness
+
+	ld a, [BattleType]
+	cp a, BATTLETYPE_SHINY
+	jr nz, .not_forced_shiny
+	ld a, [EnemyMonShiny]
+	or SHINY_MASK
+	ld [EnemyMonShiny], a
+.not_forced_shiny
+
+; TODO: Shiny Charm (if not shiny, try again with better odds such that the total chance is 3/4096)
+
 	push bc
-	ld a, [PartyMon1DVs + 1]
+	ld a, [PartyMon1Ability]
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
@@ -6541,80 +6617,14 @@ endc
 	pop bc
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
-; Synchronize sets the nature 100% of the time. This is done by copying the DV.
-; You could randomize the DVs and ensure the correct nature, but this complicates
-; the code, and doing it this way is arguably a feature (less need of SR for good
-; DVs).
-	call GetRoamMonDVs
-	inc hl
-	call BattleRandom
-	ld [hld], a
-	ld c, a
-	ld a, [PartyMon1DVs]
-	ld [hl], a
+	ld a, [PartyMon1Nature]
+	and NATURE_MASK
 	ld b, a
-	jr .UpdateDVs
+	ld a, [EnemyMonNature]
+	and NOT_NATURE_MASK
+	add b
+	ld [EnemyMonNature], a
 .no_synchronize
-	call GetRoamMonDVs
-	inc hl
-	call BattleRandom
-	ld [hld], a
-	ld c, a
-	call BattleRandom
-	ld [hl], a
-	ld b, a
-; We're done with DVs
-	jr .UpdateDVs
-
-
-.NotRoaming:
-; Register a contains BattleType
-
-; Forced shiny battle type
-; Used by Red Gyarados at Lake of Rage
-	cp a, BATTLETYPE_SHINY
-	jr nz, .GenerateDVs
-
-	ld b, ATKDEFDV_SHINY ; $fb
-	ld c, SPDSPCDV_SHINY ; $df
-	jr .UpdateDVs
-
-.GenerateDVs:
-; Generate new random DVs
-	call BattleRandom
-	ld b, a
-	; Save this in case the Unown letter generated from Synchronize is locked
-	ld d, a
-	push de
-	call BattleRandom
-	ld c, a
-	push bc
-	ld a, [PartyMon1DVs + 1]
-	ld b, a
-	ld a, [PartyMon1Species]
-	ld c, a
-	farcall GetAbility
-	ld a, b
-	pop bc
-	cp SYNCHRONIZE
-	jr nz, .UpdateDVs
-	ld a, [PartyMon1DVs]
-	ld b, a
-
-.UpdateDVs:
-; Input DVs in register bc
-	pop de
-	ld hl, EnemyMonDVs
-	ld a, b
-	ld [hli], a
-	ld [hl], c
-
-
-; We've still got more to do if we're dealing with a wild monster
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .Happiness
-
 
 ; Species-specfic:
 
@@ -6624,7 +6634,8 @@ endc
 	cp a, UNOWN
 	jr nz, .Magikarp
 
-; Get letter based on DVs
+.RegenerateUnownLetter
+; Get letter based on form
 	ld hl, EnemyMonForm
 	predef GetVariant
 ; Can't use any letters that haven't been unlocked
@@ -6633,13 +6644,17 @@ endc
 	call CheckUnownLetter
 	pop de
 	jr nc, .Happiness
-	; If Synchronize adjusted the nature, revert it to the random value and see
-	; if that's valid
-	ld a, d
-	ld hl, EnemyMonDVs
-	ld [hl], a
+	ld a, 26
+	call RandomRange
+	ld b, a
+	ld a, [EnemyMonForm]
+	and NOT_FORM_MASK
+	add b
+	ld [EnemyMonForm], a
+	ld hl, EnemyMonForm
+	predef GetVariant
 	call CheckUnownLetter
-	jr c, .GenerateDVs ; re-roll
+	jr c, .RegenerateUnownLetter ; re-roll
 
 .Magikarp:
 ; Skimming this part recommended
@@ -6665,7 +6680,7 @@ endc
 ; Try again if > 1614
 	ld a, [MagikarpLength + 1]
 	cp a, $50
-	jr nc, .GenerateDVs
+	jp nc, .GenerateDVs
 
 ; 20% chance of skipping this check
 	call Random
@@ -6910,7 +6925,7 @@ CheckSleepingTreeMon: ; 3eb38
 	jr nz, .NotSleeping
 
 ; Nor if the Pokémon has Insomnia/Vital Spirit
-	ld a, [EnemyMonDVs + 1] ; is properly updated at this point, so OK to check
+	ld a, [EnemyMonAbility] ; is properly updated at this point, so OK to check
 	ld b, a
 	ld a, [TempEnemyMonSpecies]
 	ld c, a
@@ -9169,7 +9184,7 @@ GetRoamMonHP: ; 3fa01
 	ret
 ; 3fa19
 
-GetRoamMonDVs: ; 3fa19
+GetRoamMonDVsAndPersonality: ; 3fa19
 ; output: hl = wRoamMonDVs
 	ld a, [TempEnemyMonSpecies]
 	ld b, a

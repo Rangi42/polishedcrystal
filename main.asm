@@ -1715,9 +1715,19 @@ endr
 
 	ld hl, BattleMonDVs
 	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	ld hl, BattleMonPersonality
+	ld [hli], a
 	ld [hl], a
 
 	ld hl, EnemyMonDVs
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	ld hl, EnemyMonPersonality
 	ld [hli], a
 	ld [hl], a
 
@@ -1887,6 +1897,8 @@ INCLUDE "trainers/trainers.asm"
 SECTION "Battle Core", ROMX, BANK[$F]
 
 INCLUDE "battle/core.asm"
+
+SECTION "Effect Command Pointers", ROMX
 
 INCLUDE "battle/effect_command_pointers.asm"
 
@@ -2975,10 +2987,10 @@ AnimateTrademonFrontpic: ; 4d81e
 	farcall Function29549
 	ld a, [wOTTrademonSpecies]
 	ld [CurPartySpecies], a
-	ld a, [wOTTrademonDVs]
-	ld [TempMonDVs], a
-	ld a, [wOTTrademonDVs + 1]
-	ld [TempMonDVs + 1], a
+	ld a, [wOTTrademonPersonality]
+	ld [TempMonPersonality], a
+	ld a, [wOTTrademonPersonality + 1]
+	ld [TempMonPersonality + 1], a
 	ld b, SCGB_1A
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
@@ -4117,31 +4129,31 @@ GetGender: ; 50bdd
 ; Figure out what type of monster struct we're looking at.
 
 ; 0: PartyMon
-	ld hl, PartyMon1DVs
+	ld hl, PartyMon1Gender
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [MonType]
 	and a
 	jr z, .PartyMon
 
 ; 1: OTPartyMon
-	ld hl, OTPartyMon1DVs
+	ld hl, OTPartyMon1Gender
 	dec a
 	jr z, .PartyMon
 
 ; 2: sBoxMon
-	ld hl, sBoxMon1DVs
+	ld hl, sBoxMon1Gender
 	ld bc, BOXMON_STRUCT_LENGTH
 	dec a
 	jr z, .sBoxMon
 
 ; 3: Unknown
-	ld hl, TempMonDVs
+	ld hl, TempMonGender
 	dec a
-	jr z, .DVs
+	jr z, .Gender
 
 ; else: WildMon
-	ld hl, EnemyMonDVs
-	jr .DVs
+	ld hl, EnemyMonGender
+	jr .Gender
 
 ; Get our place in the party/box.
 
@@ -4150,7 +4162,7 @@ GetGender: ; 50bdd
 	ld a, [CurPartyMon]
 	call AddNTimes
 
-.DVs:
+.Gender:
 
 ; sBoxMon data is read directly from SRAM.
 	ld a, [MonType]
@@ -4158,17 +4170,9 @@ GetGender: ; 50bdd
 	ld a, 1
 	call z, GetSRAMBank
 
-; Attack DV
-	ld a, [hli]
-	and $f0
-	ld b, a
-; Speed DV
+; Gender
 	ld a, [hl]
-	and $f0
-	swap a
-
-; Put our DVs together.
-	or b
+	and GENDER_MASK
 	ld b, a
 
 ; Close SRAM if we were dealing with a sBoxMon.
@@ -4193,15 +4197,9 @@ GetGender: ; 50bdd
 	cp $ff
 	jr z, .Genderless
 
-	and a
+	ld a, b
+	cp MALE
 	jr z, .Male
-
-	cp $fe
-	jr z, .Female
-
-; Values below the ratio are male, and vice versa.
-	cp b
-	jr c, .Male
 
 .Female:
 	xor a

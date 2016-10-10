@@ -152,4 +152,4 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Safe Goggles
 * Shed Shell (Bug-Catching Contest)
 * {Poison, Paralyze, Burn, Sleep, Freeze, Confuse, Attract, Flinch} Guard
-* {Attack, Defense, Speed, Spcl.Atk, Spcl.Def} Up (if EVs are not limited)
+* Barrier Suit, Screen Suit, Bunny Hood (like Muscle Band and Wise Glasses)
