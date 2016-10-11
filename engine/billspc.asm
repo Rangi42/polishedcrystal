@@ -1172,19 +1172,12 @@ endr
 	ld a, e
 	call AddNTimes
 	ld de, TempMonDVs
+	; Copy DVs and personality right after them
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	; Personality comes right after DVs
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 	call CloseSRAM
@@ -1208,19 +1201,12 @@ endr
 	ld a, e
 	call AddNTimes
 	ld de, TempMonDVs
+	; Copy DVs and personality right after them
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	; Personality comes right after DVs
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 	ret
@@ -1247,22 +1233,14 @@ endr
 	ld a, e
 	call AddNTimes
 	ld de, TempMonDVs
+	; Copy DVs and personality right after them
+rept 4
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	; Personality comes right after DVs
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+endr
 	ld a, [hl]
 	ld [de], a
-
 	call CloseSRAM
 	ret
 
