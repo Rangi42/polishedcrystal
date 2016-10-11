@@ -258,7 +258,7 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 4 ; PokerusStatus and CaughtData
+rept 4 ; PokerusStatus + CaughtData
 	ld [de], a
 	inc de
 endr
@@ -315,7 +315,7 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 3
+rept 4 ; PokerusStatus + CaughtData
 	ld [de], a
 	inc de
 endr
