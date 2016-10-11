@@ -157,9 +157,7 @@ endr
 	ld a, [MonType]
 	and $f
 	jr z, .generateDVsAndPersonality
-	push hl
 	farcall GetTrainerDVsAndPersonality
-	pop hl
 	jr .initializetrainermonstats
 
 ; TODO: account for gender ratios (but not SYnchronize, Shiny Charm, unlocked Unown forms, etc)
@@ -240,7 +238,7 @@ endr
 	ld bc, RandomDVAndPersonalityBuffer
 
 .initializetrainermonstats
-rept 5
+rept 5 ; DVs + Personality
 	ld a, [bc]
 	ld [de], a
 	inc bc
