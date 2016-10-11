@@ -910,55 +910,55 @@ ElmText_Intro:
 	text "Elm: <PLAY_G>!"
 	line "There you are!"
 
-;	para "Hello to you too,"
-;	line "Lyra. Looking out"
-;	cont "for your friend?"
-;
-;	para "Lyra: Hello,"
-;	line "Professor!"
-;
-;	para "I just ran into"
-;	line "<PLAY_G> here."
-;
-;	para "Elm: <PLAY_G>,"
-;	line "I needed to ask"
-;	cont "you a favor."
-;
-;	para "I'm conducting new"
-;	line "#mon research"
-;
-;	para "right now. I was"
-;	line "wondering if you"
-;	cont "could help me."
-;
-;	para "You see…"
-;
-;	para "I'm writing a"
-;	line "paper that I want"
-;
-;	para "to present at a"
-;	line "conference."
-;
-;	para "But there are some"
-;	line "things I don't"
-;
-;	para "quite understand"
-;	line "yet."
-;
-;	para "So!"
-;
-;	para "I'd like you to"
-;	line "raise a #mon"
-;
-;	para "that I recently"
-;	line "caught."
+	para "Hello to you too,"
+	line "Lyra. Looking out"
+	cont "for your friend?"
+
+	para "Lyra: Hello,"
+	line "Professor!"
+
+	para "I just ran into"
+	line "<PLAY_G> here."
+
+	para "Elm: <PLAY_G>,"
+	line "I needed to ask"
+	cont "you a favor."
+
+	para "I'm conducting new"
+	line "#mon research"
+
+	para "right now. I was"
+	line "wondering if you"
+	cont "could help me."
+
+	para "You see…"
+
+	para "I'm writing a"
+	line "paper that I want"
+
+	para "to present at a"
+	line "conference."
+
+	para "But there are some"
+	line "things I don't"
+
+	para "quite understand"
+	line "yet."
+
+	para "So!"
+
+	para "I'd like you to"
+	line "raise a #mon"
+
+	para "that I recently"
+	line "caught."
 	done
 
 ElmText_Accepted:
 	text "Thanks, <PLAY_G>!"
 
-;	para "You're a great"
-;	line "help!"
+	para "You're a great"
+	line "help!"
 	done
 
 ElmText_Refused:
@@ -970,79 +970,79 @@ ElmText_ResearchAmbitions:
 	text "When I announce my"
 	line "findings, I'm sure"
 
-;	para "we'll delve a bit"
-;	line "deeper into the"
-;
-;	para "many mysteries of"
-;	line "#mon."
-;
-;	para "You can count on"
-;	line "it!"
-;
-;	para "Lyra: Neat! Can I"
-;	line "raise a #mon"
-;	cont "too?"
-;
-;	para "Elm: Sure, Lyra."
-;	line "I know you're"
-;	cont "responsible."
+	para "we'll delve a bit"
+	line "deeper into the"
+
+	para "many mysteries of"
+	line "#mon."
+
+	para "You can count on"
+	line "it!"
+
+	para "Lyra: Neat! Can I"
+	line "raise a #mon"
+	cont "too?"
+
+	para "Elm: Sure, Lyra."
+	line "I know you're"
+	cont "responsible."
 	done
 
 ElmText_GotAnEmail:
 	text "Oh, hey! I got an"
 	line "e-mail!"
 
-;	para $56, $56, $56
-;	line "Hm… Uh-huh…"
-;
-;	para "Okay…"
+	para $56, $56, $56
+	line "Hm… Uh-huh…"
+
+	para "Okay…"
 	done
 
 ElmText_MissionFromMrPokemon:
 	text "Hey, listen."
 
-;	para "I have an acquain-"
-;	line "tance called Mr."
-;	cont "#mon."
-;
-;	para "He keeps finding"
-;	line "weird things and"
-;
-;	para "raving about his"
-;	line "discoveries."
-;
-;	para "Anyway, I just got"
-;	line "an e-mail from him"
-;
-;	para "saying that this"
-;	line "time it's real."
-;
-;	para "It is intriguing,"
-;	line "but we're busy"
-;
-;	para "with our #mon"
-;	line "research…"
-;
-;	para "Wait!"
-;
-;	para "I know!"
-;
-;	para "<PLAY_G>, can you"
-;	line "go in our place?"
+	para "I have an acquain-"
+	line "tance called Mr."
+	cont "#mon."
+
+	para "He keeps finding"
+	line "weird things and"
+
+	para "raving about his"
+	line "discoveries."
+
+	para "Anyway, I just got"
+	line "an e-mail from him"
+
+	para "saying that this"
+	line "time it's real."
+
+	para "It is intriguing,"
+	line "but we're busy"
+
+	para "with our #mon"
+	line "research…"
+
+	para "Wait!"
+
+	para "I know!"
+
+	para "<PLAY_G>, can you"
+	line "go in our place?"
 	done
 
 ElmText_ChooseAPokemon:
 	text "I want you to"
 	line "raise one of the"
 
-;	para "#mon contained"
-;	line "in these Balls."
-;
-;	para "You'll be that"
-;	line "#mon's first"
-;	cont "partner, <PLAY_G>!"
-;
-;	para "Go on. Pick one!"
+	para "#mon contained"
+	line "in these Balls."
+
+	para "You'll be that"
+	line "#mon's first"
+	cont "partner, <PLAY_G>!"
+
+	para "Go on. Pick one!"
 	done
 
 ElmText_LetYourMonBattleIt:
@@ -1099,31 +1099,31 @@ ElmDirectionsText1:
 	text "Mr.#mon lives a"
 	line "little bit beyond"
 
-;	para "Cherrygrove, the"
-;	line "next city over."
-;
-;	para "It's almost a"
-;	line "direct route"
-;
-;	para "there, so you"
-;	line "can't miss it."
-;
-;	para "But just in case,"
-;	line "here's my phone"
-;
-;	para "number. Call me if"
-;	line "anything comes up!"
+	para "Cherrygrove, the"
+	line "next city over."
+
+	para "It's almost a"
+	line "direct route"
+
+	para "there, so you"
+	line "can't miss it."
+
+	para "But just in case,"
+	line "here's my phone"
+
+	para "number. Call me if"
+	line "anything comes up!"
 	done
 
 ElmDirectionsText2:
 	text "If your #mon is"
 	line "hurt, you should"
 
-;	para "heal it with this"
-;	line "machine."
-;
-;	para "Feel free to use"
-;	line "it anytime."
+	para "heal it with this"
+	line "machine."
+
+	para "Feel free to use"
+	line "it anytime."
 	done
 
 ElmDirectionsText3:
@@ -1192,47 +1192,47 @@ ElmAfterTheftText4:
 ElmAfterTheftText5:
 	text "Elm: What?!"
 
-;	para "Prof.Oak gave you"
-;	line "a #dex?"
-;
-;	para "<PLAY_G>, is that"
-;	line "true? Th-that's"
-;	cont "incredible!"
-;
-;	para "He is superb at"
-;	line "seeing the poten-"
-;	cont "tial of people as"
-;	cont "trainers."
-;
-;	para "Wow, <PLAY_G>. You"
-;	line "may have what it"
-;
-;	para "takes to become"
-;	line "the Champion."
-;
-;	para "You seem to be"
-;	line "getting on great"
-;	cont "with #mon too."
-;
-;	para "You should take"
-;	line "the #mon Gym"
-;	cont "challenge."
-;
-;	para "The closest Gym"
-;	line "would be the one"
-;	cont "in Violet City."
+	para "Prof.Oak gave you"
+	line "a #dex?"
+
+	para "<PLAY_G>, is that"
+	line "true? Th-that's"
+	cont "incredible!"
+
+	para "He is superb at"
+	line "seeing the poten-"
+	cont "tial of people as"
+	cont "trainers."
+
+	para "Wow, <PLAY_G>. You"
+	line "may have what it"
+
+	para "takes to become"
+	line "the Champion."
+
+	para "You seem to be"
+	line "getting on great"
+	cont "with #mon too."
+
+	para "You should take"
+	line "the #mon Gym"
+	cont "challenge."
+
+	para "The closest Gym"
+	line "would be the one"
+	cont "in Violet City."
 	done
 
 ElmAfterTheftText6:
 	text "…<PLAY_G>. The"
 	line "road to the"
 
-;	para "championship will"
-;	line "be a long one."
-;
-;	para "Before you leave,"
-;	line "make sure that you"
-;	cont "talk to your mom."
+	para "championship will"
+	line "be a long one."
+
+	para "Before you leave,"
+	line "make sure that you"
+	cont "talk to your mom."
 	done
 
 ElmStudyingEggText:
