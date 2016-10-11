@@ -254,7 +254,12 @@ endr
 rept NUM_MOVES
 	inc de
 endr
+	ld a, [MonType]
+	and $f
 	ld a, BASE_HAPPINESS
+	jr z, .set_happiness
+	ld a, $ff
+.set_happiness
 	ld [de], a
 	inc de
 	xor a
