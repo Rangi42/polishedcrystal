@@ -31,14 +31,11 @@ box_struct: MACRO
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
-\1CaughtTime::
-\1CaughtLevel::    db
 \1CaughtGender::
-\1CaughtLocation:: db
-; TODO: use these bytes
-; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
-\1MoreCaughtData::
+\1CaughtTime::
 \1CaughtBall::     db
+\1CaughtLevel::    db
+\1CaughtLocation:: db
 \1Level::          db
 \1End::
 ENDM

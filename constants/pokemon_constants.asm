@@ -287,11 +287,11 @@ MON_PP                   EQUS "(PartyMon1PP - PartyMon1)"
 MON_HAPPINESS            EQUS "(PartyMon1Happiness - PartyMon1)"
 MON_PKRUS                EQUS "(PartyMon1PokerusStatus - PartyMon1)"
 MON_CAUGHTDATA           EQUS "(PartyMon1CaughtData - PartyMon1)"
-MON_CAUGHTLEVEL          EQUS "(PartyMon1CaughtLevel - PartyMon1)"
-MON_CAUGHTTIME           EQUS "(PartyMon1CaughtTime - PartyMon1)"
 MON_CAUGHTGENDER         EQUS "(PartyMon1CaughtGender - PartyMon1)"
-MON_CAUGHTLOCATION       EQUS "(PartyMon1CaughtLocation - PartyMon1)"
+MON_CAUGHTTIME           EQUS "(PartyMon1CaughtTime - PartyMon1)"
 MON_CAUGHTBALL           EQUS "(PartyMon1CaughtBall - PartyMon1)"
+MON_CAUGHTLEVEL          EQUS "(PartyMon1CaughtLevel - PartyMon1)"
+MON_CAUGHTLOCATION       EQUS "(PartyMon1CaughtLocation - PartyMon1)"
 MON_LEVEL                EQUS "(PartyMon1Level - PartyMon1)"
 MON_STATUS               EQUS "(PartyMon1Status - PartyMon1)"
 MON_HP                   EQUS "(PartyMon1HP - PartyMon1)"
@@ -314,6 +314,11 @@ GENDER_MASK      EQU %10000000
 FAINTED_MASK     EQU %01000000
 FORM_MASK        EQU %00111111
 NOT_FORM_MASK    EQU %11000000
+
+; apply to MON_CAUGHTDATA
+CAUGHTGENDER_MASK EQU %10000000
+CAUGHTTIME_MASK   EQU %01100000
+CAUGHTBALL_MASK   EQU %00011111
 
 MALE   EQU %00000000
 FEMALE EQU %10000000
