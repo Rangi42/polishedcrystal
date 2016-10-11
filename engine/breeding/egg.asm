@@ -287,7 +287,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	push hl
 	ld bc, MON_EVS - 1
 	add hl, bc
-	ld b, $0
+	ld b, FALSE
 	predef CalcPkmnStats
 	pop bc
 	ld hl, MON_MAXHP

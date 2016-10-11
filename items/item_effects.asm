@@ -1445,7 +1445,7 @@ UpdateStatsAfterItem: ; ee8c
 	ld e, l
 	ld a, MON_EVS - 1
 	call GetPartyParamLocation
-	ld b, $1
+	ld b, TRUE
 	predef_jump CalcPkmnStats
 ; ee9f
 

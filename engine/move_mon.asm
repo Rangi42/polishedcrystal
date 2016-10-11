@@ -272,7 +272,7 @@ rept 2 ; Status
 endr
 	ld bc, 2 * 6 ; MaxHP + 5 Stats
 	add hl, bc
-	ld c, $1 ; HP
+	ld c, STAT_HP
 	ld b, FALSE
 	call CalcPkmnStatC
 	ld a, [hProduct + 2]
@@ -353,7 +353,7 @@ endr
 	pop hl
 	ld bc, MON_EVS - 1
 	add hl, bc
-	ld b, $0 ; if b = 1, then stat calculation takes EVs into account.
+	ld b, FALSE
 	call CalcPkmnStats
 
 .next3
@@ -673,7 +673,7 @@ SentGetPkmnIntoFromBox: ; db3f
 	add hl, bc
 
 	push bc
-	ld b, $1
+	ld b, TRUE
 	call CalcPkmnStats
 	pop bc
 
@@ -883,10 +883,10 @@ Functiondd64: ; dd64
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, $a
+	ld hl, $a ; 10 bytes = 5 stats * 2?
 	add hl, bc
 	push bc
-	ld b, $1
+	ld b, TRUE
 	call CalcPkmnStats
 	ld hl, PartyMon1Moves
 	ld a, [PartyCount]
@@ -906,7 +906,7 @@ Functiondd64: ; dd64
 	ld d, a
 	farcall CalcExpAtLevel
 	pop bc
-	ld hl, $8
+	ld hl, $8 ; Experience
 	add hl, bc
 	ld a, [hMultiplicand]
 	ld [hli], a
@@ -1416,7 +1416,7 @@ ComputeNPCTrademonStats: ; e134
 	push de
 	ld a, MON_EVS - 1
 	call GetPartyParamLocation
-	ld b, $1
+	ld b, TRUE
 	call CalcPkmnStats
 	pop de
 	ld a, MON_HP
