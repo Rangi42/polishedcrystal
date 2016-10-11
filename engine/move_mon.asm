@@ -148,7 +148,7 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 6 ; MON_DVS - MON_EVS
+rept 6 ; EVs
 	ld [de], a
 	inc de
 endr
@@ -253,14 +253,14 @@ endr
 	call FillPP
 	pop de
 	pop hl
-rept 4
+rept NUM_MOVES
 	inc de
 endr
 	ld a, BASE_HAPPINESS
 	ld [de], a
 	inc de
 	xor a
-rept 3
+rept 4 ; PokerusStatus and CaughtData
 	ld [de], a
 	inc de
 endr
@@ -268,7 +268,7 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 2
+rept 2 ; Status
 	ld [de], a
 	inc de
 endr
