@@ -5,10 +5,7 @@ CheckShininess:
 ; Check if a mon is shiny by personality at bc.
 ; Return carry if shiny.
 
-	ld l, c
-	ld h, b
-
-	ld a, [hl]
+	ld a, [bc]
 	and SHINY_MASK
 	jr z, .NotShiny
 
