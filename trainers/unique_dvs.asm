@@ -1,6 +1,7 @@
-CheckUniqueDVTrainerPokemon:
+CheckUniqueDVOrPersonalityTrainerPokemon:
 ; return z if dvs are unique
-	ld hl, UniqueDVTrainerPokemon
+
+	ld hl, UniqueDVOrPersonalityTrainerPokemon
 .loop
 	ld a, [hli] ; TrainerClass
 	cp -1
@@ -25,13 +26,14 @@ CheckUniqueDVTrainerPokemon:
 	cp b
 	jr nz, .inc5andloop
 .unique
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
+
+	ld b, h
+	ld c, l
+
 	xor a
 	and a
 	ret
+
 .inc8andloop
 	inc hl
 .inc7andloop
@@ -43,12 +45,13 @@ rept 5
 	inc hl
 endr
 	jp .loop
+
 .notunique
 	ld a, 1
 	and a
 	ret
 
-UniqueDVTrainerPokemon:
+UniqueDVOrPersonalityTrainerPokemon:
 	; TrainerClass, TrainerID, PartySpecies, Level, HPAtkDV, DefSpdDV, SAtSDfDV, Personality1, Personality2
 
 	; Shiny
