@@ -7538,59 +7538,59 @@ GiveExperiencePoints: ; 3ee3b
 	jp z, .skip_stats
 
 ; TODO: give EVs
-	ld hl, MON_EVS + 1
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, EnemyMonBaseStats - 1
 	push bc
-	ld c, $5
-.loop1
-	inc hl
-	ld a, [de]
-	add [hl]
-	ld [de], a
-	jr nc, .okay1
-	dec de
-	ld a, [de]
-	inc a
-	jr z, .next
-	ld [de], a
-	inc de
-
-.okay1
-	push hl
-	push bc
-	ld a, MON_PKRUS
-	call GetPartyParamLocation
-	ld a, [hl]
-	and a
-	pop bc
-	pop hl
-	jr z, .skip
-	ld a, [de]
-	add [hl]
-	ld [de], a
-	jr nc, .skip
-	dec de
-	ld a, [de]
-	inc a
-	jr z, .next
-	ld [de], a
-	inc de
-	jr .skip
-
-.next
-	ld a, $ff
-	ld [de], a
-	inc de
-	ld [de], a
-
-.skip
-	inc de
-	inc de
-	dec c
-	jr nz, .loop1
+;	ld hl, MON_EVS + 1
+;	add hl, bc
+;	ld d, h
+;	ld e, l
+;	ld hl, EnemyMonBaseStats - 1
+;	ld c, $5
+;.loop1
+;	inc hl
+;	ld a, [de]
+;	add [hl]
+;	ld [de], a
+;	jr nc, .okay1
+;	dec de
+;	ld a, [de]
+;	inc a
+;	jr z, .next
+;	ld [de], a
+;	inc de
+;
+;.okay1
+;	push hl
+;	push bc
+;	ld a, MON_PKRUS
+;	call GetPartyParamLocation
+;	ld a, [hl]
+;	and a
+;	pop bc
+;	pop hl
+;	jr z, .skip
+;	ld a, [de]
+;	add [hl]
+;	ld [de], a
+;	jr nc, .skip
+;	dec de
+;	ld a, [de]
+;	inc a
+;	jr z, .next
+;	ld [de], a
+;	inc de
+;	jr .skip
+;
+;.next
+;	ld a, $ff
+;	ld [de], a
+;	inc de
+;	ld [de], a
+;
+;.skip
+;	inc de
+;	inc de
+;	dec c
+;	jr nz, .loop1
 	xor a
 	ld [hMultiplicand + 0], a
 	ld [hMultiplicand + 1], a
@@ -7651,7 +7651,7 @@ GiveExperiencePoints: ; 3ee3b
 	push bc
 	call LoadTileMapToTempTileMap
 	pop bc
-	ld hl, MON_EVS - 1
+	ld hl, MON_EXP + 2
 	add hl, bc
 	ld d, [hl]
 	ld a, [hQuotient + 2]
@@ -7683,7 +7683,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld d, MAX_LEVEL
 	farcall CalcExpAtLevel
 	pop bc
-	ld hl, MON_EVS - 1
+	ld hl, MON_EXP + 2
 	add hl, bc
 	push bc
 	ld a, [hQuotient]
