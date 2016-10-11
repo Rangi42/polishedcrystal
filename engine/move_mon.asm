@@ -48,7 +48,7 @@ TryAddMonToParty: ; d88c
 	ld bc, NAME_LENGTH
 	call CopyBytes
 	ld a, [MonType]
-	and a
+	and $f
 	jr nz, .skipnickname
 	ld a, [CurPartySpecies]
 	ld [wd265], a
@@ -101,30 +101,30 @@ GeneratePartyMonStats: ; d906
 	and a
 	jr z, .randomlygeneratemoves
 	ld a, [MonType]
-	and a
+	and $f
 	jr nz, .randomlygeneratemoves
 	ld de, EnemyMonMoves
-	rept NUM_MOVES + -1
+rept NUM_MOVES + -1
 	ld a, [de]
 	inc de
 	ld [hli], a
-	endr
+endr
 	ld a, [de]
 	ld [hl], a
 	jr .next
 
 .randomlygeneratemoves
 	xor a
-	rept NUM_MOVES + -1
+rept NUM_MOVES + -1
 	ld [hli], a
-	endr
+endr
 	ld [hl], a
 	ld [Buffer1], a
 	predef FillMoves
 
 .next
 	pop de
-rept 4
+rept NUM_MOVES
 	inc de
 endr
 	ld a, [PlayerID]
@@ -148,12 +148,10 @@ endr
 	ld [de], a
 	inc de
 	xor a
-	ld b, $a
-.loop
+rept 6 ; six EVs
 	ld [de], a
 	inc de
-	dec b
-	jr nz, .loop
+endr
 	pop hl
 	push hl
 	ld a, [MonType]
