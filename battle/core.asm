@@ -4071,18 +4071,18 @@ InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld de, BattleMonSpecies
-	ld bc, MON_ID
-	call CopyBytes
+	ld bc, MON_ID - MON_SPECIES
+	call CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
-	add hl, bc
+	add hl, bc ; skip ID, Exp, EVs
 	ld de, BattleMonDVs
 	ld bc, MON_PKRUS - MON_DVS
-	call CopyBytes
+	call CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
-	add hl, bc
+	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, BattleMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	call CopyBytes
+	call CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	ld a, [BattleMonSpecies]
 	ld [TempBattleMonSpecies], a
 	ld [CurPartySpecies], a
@@ -4183,18 +4183,18 @@ InitEnemyMon: ; 3dabd
 	ld hl, OTPartyMon1Species
 	call GetPartyLocation
 	ld de, EnemyMonSpecies
-	ld bc, MON_ID
-	call CopyBytes
+	ld bc, MON_ID - MON_SPECIES
+	call CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
-	add hl, bc
+	add hl, bc ; skip ID, Exp, EVs
 	ld de, EnemyMonDVs
 	ld bc, MON_PKRUS - MON_DVS
-	call CopyBytes
+	call CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
-	add hl, bc
+	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, EnemyMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	call CopyBytes
+	call CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	ld a, [EnemyMonSpecies]
 	ld [CurSpecies], a
 	call GetBaseData
