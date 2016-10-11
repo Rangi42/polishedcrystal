@@ -148,7 +148,7 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 6 ; six EVs
+rept 6 ; MON_DVS - MON_EVS
 	ld [de], a
 	inc de
 endr
