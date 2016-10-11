@@ -8678,14 +8678,6 @@ InitEnemyTrainer: ; 3f594
 	ld [TempEnemyMonSpecies], a
 	farcall GetTrainerAttributes
 	farcall ReadTrainerParty
-
-	ld a, [TrainerClass]
-	cp RIVAL1
-	jr nz, .ok
-	xor a
-	ld [OTPartyMon1Item], a
-.ok
-
 	ld de, VTiles2
 	farcall GetTrainerPic
 	xor a
