@@ -75,14 +75,19 @@ DoPoisonStep:: ; 505da
 	ret z
 
 ; check for immunity or poison heal
+	push hl
+	push bc
 	ld a, MON_ABILITY
 	call GetPartyParamLocation
 	ld b, [hl]
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-	farcall GetAbility
+; TODO: fix GetAbility crashing
+;	farcall GetAbility
 	ld a, b
+	pop bc
+	pop hl
 	cp IMMUNITY
 	jr z, .heal_poison
 	cp POISON_HEAL
