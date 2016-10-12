@@ -1614,7 +1614,7 @@ GrimerEvosAttacks:
 	db 15, SLUDGE
 	db 18, HAZE ; Mud Bomb → egg move
 	db 21, MINIMIZE
-	db 26, SELFDESTRUCT ; Fling → RBY TM move
+	db 26, FEINT_ATTACK ; Fling → new move
 	db 29, SLUDGE_BOMB
 	db 32, SCARY_FACE ; Sludge Wave → egg move
 	db 37, SCREECH
@@ -1633,7 +1633,7 @@ MukEvosAttacks:
 	db 15, SLUDGE
 	db 18, HAZE ; Mud Bomb → egg move
 	db 21, MINIMIZE
-	db 26, SELFDESTRUCT ; Fling → RBY TM move
+	db 26, FEINT_ATTACK ; Fling → new move
 	db 29, SLUDGE_BOMB
 	db 32, SCARY_FACE ; Sludge Wave → egg move
 	db 37, SCREECH

@@ -11,7 +11,7 @@ endc
 if DEF(FAITHFUL)
 	db NORMAL, NORMAL
 else
-	db NORMAL, DARK
+	db DARK, DARK
 endc
 	db 90 ; catch rate
 	db 148 ; base exp
