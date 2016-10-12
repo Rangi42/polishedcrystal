@@ -2,7 +2,7 @@ GetTrainerDVsAndPersonality: ; 270c4
 ; Return the DVs and Personality of OtherTrainerClass in bc
 	push hl
 
-	call CheckUniqueDVTrainerPokemon
+	call CheckUniqueDVOrPersonalityTrainerPokemon
 	jr z, .done
 
 	ld a, [OtherTrainerClass]
@@ -11,7 +11,7 @@ GetTrainerDVsAndPersonality: ; 270c4
 	ld b, 0
 
 	ld hl, TrainerClassDVsAndPersonality
-rept 2
+rept 5
 	add hl, bc
 endr
 

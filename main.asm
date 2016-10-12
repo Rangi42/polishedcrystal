@@ -3430,22 +3430,33 @@ TextJump_GiveANickname: ; 0x4db44
 SetCaughtData: ; 4db49
 	ld a, [PartyCount]
 	dec a
-	ld hl, PartyMon1CaughtLevel
+	ld hl, PartyMon1CaughtData
 	call GetPartyLocation
 SetBoxmonOrEggmonCaughtData: ; 4db53
+	; CaughtGender
+	ld a, [PlayerGender]
+	and a
+	jr z, .male
+	ld a, FEMALE
+	jr .ok
+.male
+	ld a, MALE
+.ok
+	ld b, a
+	; CaughtTime
 	ld a, [TimeOfDay]
 	inc a
 	rrca
 	rrca
-	ld b, a
-	ld a, [CurPartyLevel]
-	; Caught levels are stored in 6 bits, so 64+ wraps around to 0+
-	cp 64
-	jr c, .level_cap
-	ld a, 63
-.level_cap
+	rrca
 	or b
+	ld b, a
+	; TODO: CaughtBall
 	ld [hli], a
+	; CaughtLevel
+	ld a, [CurPartyLevel]
+	ld [hli], a
+	; CaughtLocation
 	ld a, [MapGroup]
 	ld b, a
 	ld a, [MapNumber]
@@ -3463,26 +3474,22 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 
 .NotPokeCenter2F:
 	call GetWorldMapLocation
-	ld b, a
-	ld a, [PlayerGender]
-	rrca
-	or b
 	ld [hl], a
 	ret
 
 SetBoxMonCaughtData: ; 4db83
-	ld a, BANK(sBoxMon1CaughtLevel)
+	ld a, BANK(sBoxMon1CaughtData)
 	call GetSRAMBank
-	ld hl, sBoxMon1CaughtLevel
+	ld hl, sBoxMon1CaughtData
 	call SetBoxmonOrEggmonCaughtData
 	call CloseSRAM
 	ret
 
 SetGiftBoxMonCaughtData: ; 4db92
 	push bc
-	ld a, BANK(sBoxMon1CaughtLevel)
+	ld a, BANK(sBoxMon1CaughtData)
 	call GetSRAMBank
-	ld hl, sBoxMon1CaughtLevel
+	ld hl, sBoxMon1CaughtData
 	pop bc
 	call SetGiftMonCaughtData
 	call CloseSRAM
@@ -3491,22 +3498,39 @@ SetGiftBoxMonCaughtData: ; 4db92
 SetGiftPartyMonCaughtData: ; 4dba3
 	ld a, [PartyCount]
 	dec a
-	ld hl, PartyMon1CaughtLevel
+	ld hl, PartyMon1CaughtData
 	push bc
 	call GetPartyLocation
 	pop bc
 SetGiftMonCaughtData: ; 4dbaf
+	; CaughtGender
+	; b contains it, shifted
+	rrc b
+	; CaughtTime
+	ld a, [TimeOfDay]
+	inc a
+	rrca
+	rrca
+	rrca
+	or b
+	ld b, a
+	; CaughtBall
+	; Poké Ball
+	xor a
+	or b
+	ld [hli], a
+	; CaughtLevel
+	; Met in a trade
 	xor a
 	ld [hli], a
-	ld a, $7e
-	rrc b
-	or b
+	; CaughtLocation
+	; Unknown location
 	ld [hl], a
 	ret
 
 SetEggMonCaughtData: ; 4dbb8 (13:5bb8)
 	ld a, [CurPartyMon]
-	ld hl, PartyMon1CaughtLevel
+	ld hl, PartyMon1CaughtData
 	call GetPartyLocation
 	ld a, [CurPartyLevel]
 	push af
@@ -3897,7 +3921,7 @@ _TempMonStatsCalculation: ; 50893
 	ld hl, MON_EVS - 1
 	add hl, bc
 	push bc
-	ld b, $1
+	ld b, TRUE
 	predef CalcPkmnStats
 	pop bc
 	ld hl, MON_HP
@@ -4123,8 +4147,8 @@ GetGender: ; 50bdd
 ; a = 0: f = nc|z;  female
 ;        f = c:  genderless
 
-; This is determined by comparing the Attack and Speed DVs
-; with the species' gender ratio.
+; This is determined by checking the Personality gender value,
+; which was already determined by the species' gender ratio.
 
 ; Figure out what type of monster struct we're looking at.
 
@@ -4192,8 +4216,7 @@ GetGender: ; 50bdd
 	ld a, BANK(BaseData)
 	call GetFarByte
 
-; The higher the ratio, the more likely the monster is to be female.
-
+; A ratio of $ff is genderless
 	cp $ff
 	jr z, .Genderless
 

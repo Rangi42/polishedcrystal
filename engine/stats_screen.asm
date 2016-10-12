@@ -714,18 +714,15 @@ endr
 	hlcoord 2, 9
 	call PlaceString
 	ld a, [TempMonCaughtGender]
-	and a
-	jr z, .done
-	cp $7f
-	jr z, .done
-	and $80
-	ld a, "♂"
-	jr z, .got_gender
+	and FEMALE
+	jr z, .male
 	ld a, "♀"
+	jr .got_gender
+.male
+	ld a, "♂"
 .got_gender
 	hlcoord 9, 9
 	ld [hl], a
-.done
 	ret
 ; 4e216 (13:6216)
 
@@ -797,9 +794,10 @@ TN_PrintToD
 	hlcoord 1, 8
 	call PlaceString
 	ld a, [TempMonCaughtTime]
-	and $c0
+	and CAUGHTTIME_MASK
 	ld de, .unknown
 	jr z, .print
+	rlca
 	rlca
 	rlca
 	cp 2
@@ -825,17 +823,14 @@ TN_PrintToD
 	db "Nite@"
 
 .unknown
-	db "Unkn@"
+	db "???@"
 
 TN_PrintLocation:
-	ld de, .unknown
 	ld a, [TempMonCaughtLocation]
-	and $7f
-	jr z, .print
-	cp $7e
-	jr z, .print
+	and a
+	ret z
 	ld de, .event
-	cp $7f
+	cp $ff
 	jr z, .print
 	ld e, a
 	farcall GetLandmarkName
@@ -844,53 +839,38 @@ TN_PrintLocation:
 	hlcoord 3, 10
 	jp PlaceString
 
-.unknown
-	db "Unknown location@"
-
 .event
 	db "Event #mon@"
 
 TN_PrintLV:
 	ld a, [TempMonCaughtLevel]
-	and $3f
 	hlcoord 8, 9
+	and a
 	jr z, .unknown
 	cp 1
 	jr z, .hatched
-	cp 63
-	jr z, .max
 	ld [Buffer2], a
-	ld de, .metat
+	ld de, .str_atlv
 	call PlaceString
 	ld de, Buffer2
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	hlcoord 12, 9
 	jp PrintNum
 .hatched
-	ld de, .egg
+	ld de, .str_hatched
 	jp PlaceString
 .unknown
 	ld de, .str_unknown
 	jp PlaceString
-.max
-	ld de, .str_max
-	call PlaceString
-	ret
 
-.metat
-	db "at <LV>   in@"
+.str_atlv
+	db "at <LV>@"
 
-.egg
-	db "from Egg in@"
+.str_hatched
+	db "from Egg@"
 
 .str_unknown
-	db "by trade in@"
-
-.str_max
-	db "at <LV>63↑ in@"
-
-.in
-	db "in@"
+	db "by trade@"
 
 TN_PrintCharacteristics:
 	ld hl, TempMonDVs

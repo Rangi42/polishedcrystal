@@ -20,8 +20,6 @@ box_struct: MACRO
 \1HPAtkDV::        db
 \1DefSpdDV::       db
 \1SatSdfDV::       db
-; TODO: use these bytes
-; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:1|Fainted:1|Form:6)
 \1Personality::
 \1Shiny::
 \1Ability::
@@ -33,14 +31,11 @@ box_struct: MACRO
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
-\1CaughtTime::
-\1CaughtLevel::    db
 \1CaughtGender::
-\1CaughtLocation:: db
-; TODO: use these bytes
-; 1 for more CaughtData (CaughtTime:2|CaughtGender:1|CaughtBall:5, CaughtLevel, CaughtLocation)
-\1MoreCaughtData::
+\1CaughtTime::
 \1CaughtBall::     db
+\1CaughtLevel::    db
+\1CaughtLocation:: db
 \1Level::          db
 \1End::
 ENDM
@@ -102,8 +97,6 @@ battle_struct: MACRO
 \1HPAtkDV::        db
 \1DefSpdDV::       db
 \1SatSdfDV::       db
-; TODO: use these bytes
-; 2 for Personality (Shiny:1|Ability:2|Nature:5, Gender:1|Fainted:1|Form:6)
 \1Personality::
 \1Shiny::
 \1Ability::
@@ -114,7 +107,8 @@ battle_struct: MACRO
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
 \1Level::          db
-\1Status::         ds 2
+\1Status::         db
+\1Unused::         db
 \1HP::             dw
 \1MaxHP::          dw
 \1Stats:: ; big endian
@@ -222,8 +216,7 @@ endm
 hof_mon: MACRO
 \1Species:: ds 1
 \1ID:: ds 2
-; TODO: store Personality, since that's what controls shiny/gender/etc
-\1DVs:: ds 2
+\1Personality:: ds 2
 \1Level:: ds 1
 \1Nickname:: ds PKMN_NAME_LENGTH +- 1
 \1End::

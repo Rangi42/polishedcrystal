@@ -4071,18 +4071,18 @@ InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld de, BattleMonSpecies
-	ld bc, MON_ID
-	call CopyBytes
+	ld bc, MON_ID - MON_SPECIES
+	call CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
-	add hl, bc
+	add hl, bc ; skip ID, Exp, EVs
 	ld de, BattleMonDVs
 	ld bc, MON_PKRUS - MON_DVS
-	call CopyBytes
+	call CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
-	add hl, bc
+	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, BattleMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	call CopyBytes
+	call CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	ld a, [BattleMonSpecies]
 	ld [TempBattleMonSpecies], a
 	ld [CurPartySpecies], a
@@ -4183,18 +4183,18 @@ InitEnemyMon: ; 3dabd
 	ld hl, OTPartyMon1Species
 	call GetPartyLocation
 	ld de, EnemyMonSpecies
-	ld bc, MON_ID
-	call CopyBytes
+	ld bc, MON_ID - MON_SPECIES
+	call CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
-	add hl, bc
+	add hl, bc ; skip ID, Exp, EVs
 	ld de, EnemyMonDVs
 	ld bc, MON_PKRUS - MON_DVS
-	call CopyBytes
+	call CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
-	add hl, bc
+	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, EnemyMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	call CopyBytes
+	call CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	ld a, [EnemyMonSpecies]
 	ld [CurSpecies], a
 	call GetBaseData
@@ -7539,6 +7539,7 @@ GiveExperiencePoints: ; 3ee3b
 
 	call GiveBattleEVs
 
+	push bc
 	xor a
 	ld [hMultiplicand + 0], a
 	ld [hMultiplicand + 1], a
@@ -7599,7 +7600,7 @@ GiveExperiencePoints: ; 3ee3b
 	push bc
 	call LoadTileMapToTempTileMap
 	pop bc
-	ld hl, MON_EVS - 1
+	ld hl, MON_EXP + 2
 	add hl, bc
 	ld d, [hl]
 	ld a, [hQuotient + 2]
@@ -7631,7 +7632,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld d, MAX_LEVEL
 	farcall CalcExpAtLevel
 	pop bc
-	ld hl, MON_EVS - 1
+	ld hl, MON_EXP + 2
 	add hl, bc
 	push bc
 	ld a, [hQuotient]
@@ -8722,14 +8723,6 @@ InitEnemyTrainer: ; 3f594
 	ld [TempEnemyMonSpecies], a
 	farcall GetTrainerAttributes
 	farcall ReadTrainerParty
-
-	ld a, [TrainerClass]
-	cp RIVAL1
-	jr nz, .ok
-	xor a
-	ld [OTPartyMon1Item], a
-.ok
-
 	ld de, VTiles2
 	farcall GetTrainerPic
 	xor a

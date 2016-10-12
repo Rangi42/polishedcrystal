@@ -296,9 +296,9 @@ endr
 	call UpdateSpeciesNameIfNotNicknamed
 	call GetBaseData
 
-	ld hl, TempMonExp + 2
+	ld hl, TempMonEVs - 1
 	ld de, TempMonMaxHP
-	ld b, $1
+	ld b, TRUE
 	predef CalcPkmnStats
 
 	ld a, [CurPartyMon]

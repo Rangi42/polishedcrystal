@@ -48,7 +48,7 @@ TryAddMonToParty: ; d88c
 	ld bc, NAME_LENGTH
 	call CopyBytes
 	ld a, [MonType]
-	and a
+	and $f
 	jr nz, .skipnickname
 	ld a, [CurPartySpecies]
 	ld [wd265], a
@@ -101,30 +101,30 @@ GeneratePartyMonStats: ; d906
 	and a
 	jr z, .randomlygeneratemoves
 	ld a, [MonType]
-	and a
+	and $f
 	jr nz, .randomlygeneratemoves
 	ld de, EnemyMonMoves
-	rept NUM_MOVES + -1
+rept NUM_MOVES + -1
 	ld a, [de]
 	inc de
 	ld [hli], a
-	endr
+endr
 	ld a, [de]
 	ld [hl], a
 	jr .next
 
 .randomlygeneratemoves
 	xor a
-	rept NUM_MOVES + -1
+rept NUM_MOVES + -1
 	ld [hli], a
-	endr
+endr
 	ld [hl], a
 	ld [Buffer1], a
 	predef FillMoves
 
 .next
 	pop de
-rept 4
+rept NUM_MOVES
 	inc de
 endr
 	ld a, [PlayerID]
@@ -148,20 +148,16 @@ endr
 	ld [de], a
 	inc de
 	xor a
-	ld b, $a
-.loop
+rept 6 ; EVs
 	ld [de], a
 	inc de
-	dec b
-	jr nz, .loop
+endr
 	pop hl
 	push hl
 	ld a, [MonType]
 	and $f
 	jr z, .generateDVsAndPersonality
-	push hl
 	farcall GetTrainerDVsAndPersonality
-	pop hl
 	jr .initializetrainermonstats
 
 ; TODO: account for gender ratios (but not SYnchronize, Shiny Charm, unlocked Unown forms, etc)
@@ -242,7 +238,7 @@ endr
 	ld bc, RandomDVAndPersonalityBuffer
 
 .initializetrainermonstats
-rept 5
+rept 5 ; DVs + Personality
 	ld a, [bc]
 	ld [de], a
 	inc bc
@@ -255,14 +251,19 @@ endr
 	call FillPP
 	pop de
 	pop hl
-rept 4
+rept NUM_MOVES
 	inc de
 endr
+	ld a, [MonType]
+	and $f
 	ld a, BASE_HAPPINESS
+	jr z, .set_happiness
+	ld a, $ff
+.set_happiness
 	ld [de], a
 	inc de
 	xor a
-rept 3
+rept 4 ; PokerusStatus + CaughtData
 	ld [de], a
 	inc de
 endr
@@ -270,13 +271,13 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 2
+rept 2 ; Status
 	ld [de], a
 	inc de
 endr
 	ld bc, 2 * 6 ; MaxHP + 5 Stats
 	add hl, bc
-	ld c, $1 ; HP
+	ld c, STAT_HP
 	ld b, FALSE
 	call CalcPkmnStatC
 	ld a, [hProduct + 2]
@@ -319,7 +320,7 @@ endr
 	ld [de], a
 	inc de
 	xor a
-rept 3
+rept 4 ; PokerusStatus + CaughtData
 	ld [de], a
 	inc de
 endr
@@ -357,7 +358,7 @@ endr
 	pop hl
 	ld bc, MON_EVS - 1
 	add hl, bc
-	ld b, $0 ; if b = 1, then stat calculation takes EVs into account.
+	ld b, FALSE
 	call CalcPkmnStats
 
 .next3
@@ -677,7 +678,7 @@ SentGetPkmnIntoFromBox: ; db3f
 	add hl, bc
 
 	push bc
-	ld b, $1
+	ld b, TRUE
 	call CalcPkmnStats
 	pop bc
 
@@ -887,10 +888,10 @@ Functiondd64: ; dd64
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, $a
+	ld hl, $a ; 10 bytes = 5 stats * 2?
 	add hl, bc
 	push bc
-	ld b, $1
+	ld b, TRUE
 	call CalcPkmnStats
 	ld hl, PartyMon1Moves
 	ld a, [PartyCount]
@@ -910,7 +911,7 @@ Functiondd64: ; dd64
 	ld d, a
 	farcall CalcExpAtLevel
 	pop bc
-	ld hl, $8
+	ld hl, $8 ; Experience
 	add hl, bc
 	ld a, [hMultiplicand]
 	ld [hli], a
@@ -1420,7 +1421,7 @@ ComputeNPCTrademonStats: ; e134
 	push de
 	ld a, MON_EVS - 1
 	call GetPartyParamLocation
-	ld b, $1
+	ld b, TRUE
 	call CalcPkmnStats
 	pop de
 	ld a, MON_HP
@@ -1487,7 +1488,7 @@ CalcPkmnStatC: ; e17b
 .no_evs
 	pop hl
 	push bc
-	ld bc, MON_DVS - MON_EVS + 1
+	ld bc, MON_DVS - (MON_EVS - 1)
 	add hl, bc ; hl points to DVs
 	pop bc
 	ld a, c
@@ -1629,11 +1630,11 @@ CalcPkmnStatC: ; e17b
 	; do natures here
 	xor a
 	ld [hMultiplicand + 0], a
-	ld a, [hl]
 	push hl
 	push bc
 	ld bc, MON_NATURE - MON_DVS
 	add hl, bc ; hl points to Nature
+	ld a, [hl]
 	call GetNatureStatMultiplier
 	pop bc
 	pop hl
