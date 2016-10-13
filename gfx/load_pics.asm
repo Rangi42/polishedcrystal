@@ -86,12 +86,10 @@ endr
 	ret
 
 .GetUnownVariant:
-; Return Unown letter in MonVariant based on Form at hl
+; Return Unown letter in MonVariant based on Form at hl (1-26)
 .GetArbokVariant:
-; Return Arbok form in MonVariant based on Form at hl
+; Return Arbok form in MonVariant based on Form at hl (1-2)
 
-	; assume Unown Form is 1 to 26
-	; assume Arbok Form is 1 or 2
 	ld a, [hl]
 	and FORM_MASK
 	ld [MonVariant], a
