@@ -1,6 +1,0 @@
-PikachuAnimationExtraPointers:
-	dw PikachuPlainAnimationExtra
-	dw PikachuFlyAnimationExtra
-	dw PikachuSurfAnimationExtra
-	dw PikachuPikaAnimationExtra
-	dw PikachuChuchuAnimationExtra

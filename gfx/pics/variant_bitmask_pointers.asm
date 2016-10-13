@@ -25,3 +25,14 @@ UnownBitmasksPointers:
 	dw UnownXBitmasks
 	dw UnownYBitmasks
 	dw UnownZBitmasks
+
+PikachuBitmasksPointers:
+	dw PikachuPlainBitmasks
+	dw PikachuFlyBitmasks
+	dw PikachuSurfBitmasks
+	dw PikachuPikaBitmasks
+	dw PikachuChuchuBitmasks
+
+ArbokBitmasksPointers:
+	dw ArbokJohtoBitmasks
+	dw ArbokKantoBitmasks

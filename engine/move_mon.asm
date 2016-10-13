@@ -158,7 +158,7 @@ endr
 	and $f
 	jr z, .generateDVsAndPersonality
 	farcall GetTrainerDVsAndPersonality
-	jr .initializetrainermonstats
+	jp .initializetrainermonstats
 
 ; TODO: account for gender ratios (but not SYnchronize, Shiny Charm, unlocked Unown forms, etc)
 .generateDVsAndPersonality
@@ -230,8 +230,31 @@ endr
 	ld a, FEMALE
 .got_gender
 	ld b, a
-	; Random form
-	call Random
+	; Form
+	ld a, [CurPartySpecies]
+	cp EKANS
+	jr z, .arbok_form
+	cp ARBOK
+	jr z, .arbok_form
+	xor a
+	jr .got_form
+
+.arbok_form
+	push bc
+	push de
+	farcall RegionCheck
+	ld a, e
+	pop de
+	pop bc
+	and a
+	jr nz, .kanto_arbok
+.johto_arbok
+	ld a, 1
+	jr .got_form
+.kanto_arbok
+	ld a, 2
+
+.got_form
 	and FORM_MASK
 	add b
 	ld [RandomDVAndPersonalityBuffer + 4], a

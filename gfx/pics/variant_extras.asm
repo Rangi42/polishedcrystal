@@ -24,3 +24,13 @@ UnownWAnimationExtra: INCLUDE "gfx/pics/unown_w/anim1.asm"
 UnownXAnimationExtra: INCLUDE "gfx/pics/unown_x/anim1.asm"
 UnownYAnimationExtra: INCLUDE "gfx/pics/unown_y/anim1.asm"
 UnownZAnimationExtra: INCLUDE "gfx/pics/unown_z/anim1.asm"
+
+
+PikachuPlainAnimationExtra:  INCLUDE "gfx/pics/pikachu_plain/anim1.asm"
+PikachuFlyAnimationExtra:    INCLUDE "gfx/pics/pikachu_fly/anim1.asm"
+PikachuSurfAnimationExtra:   INCLUDE "gfx/pics/pikachu_surf/anim1.asm"
+PikachuPikaAnimationExtra:   INCLUDE "gfx/pics/pikachu_pika/anim1.asm"
+PikachuChuchuAnimationExtra: INCLUDE "gfx/pics/pikachu_chuchu/anim1.asm"
+
+ArbokJohtoAnimationExtra: INCLUDE "gfx/pics/arbok_johto/anim1.asm"
+ArbokKantoAnimationExtra: INCLUDE "gfx/pics/arbok_kanto/anim1.asm"

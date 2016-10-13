@@ -5585,25 +5585,17 @@ INCLUDE "gfx/pics/anims.asm"
 INCLUDE "gfx/pics/extra_pointers.asm"
 INCLUDE "gfx/pics/extras.asm"
 
-; Pikachu has its own animation data despite having an entry in the main tables
-INCLUDE "gfx/pics/pikachu_anim_pointers.asm"
-INCLUDE "gfx/pics/pikachu_anims.asm"
-INCLUDE "gfx/pics/pikachu_extra_pointers.asm"
-INCLUDE "gfx/pics/pikachu_extras.asm"
-
-; Unown has its own animation data despite having an entry in the main tables
-INCLUDE "gfx/pics/unown_anim_pointers.asm"
-INCLUDE "gfx/pics/unown_anims.asm"
-INCLUDE "gfx/pics/unown_extra_pointers.asm"
-INCLUDE "gfx/pics/unown_extras.asm"
+; Variants have their own animation data despite having entries in the main tables
+INCLUDE "gfx/pics/variant_anim_pointers.asm"
+INCLUDE "gfx/pics/variant_anims.asm"
+INCLUDE "gfx/pics/variant_extra_pointers.asm"
+INCLUDE "gfx/pics/variant_extras.asm"
 
 ; Bitmasks
 INCLUDE "gfx/pics/bitmask_pointers.asm"
 INCLUDE "gfx/pics/bitmasks.asm"
-INCLUDE "gfx/pics/pikachu_bitmask_pointers.asm"
-INCLUDE "gfx/pics/pikachu_bitmasks.asm"
-INCLUDE "gfx/pics/unown_bitmask_pointers.asm"
-INCLUDE "gfx/pics/unown_bitmasks.asm"
+INCLUDE "gfx/pics/variant_bitmask_pointers.asm"
+INCLUDE "gfx/pics/variant_bitmasks.asm"
 
 SECTION "Pic Animations 2", ROMX, BANK[$35]
 
@@ -5613,10 +5605,8 @@ INCLUDE "gfx/pics/kanto_frames.asm"
 SECTION "Pic Animations 3", ROMX, BANK[$36]
 
 INCLUDE "gfx/pics/johto_frames.asm"
-INCLUDE "gfx/pics/pikachu_frame_pointers.asm"
-INCLUDE "gfx/pics/pikachu_frames.asm"
-INCLUDE "gfx/pics/unown_frame_pointers.asm"
-INCLUDE "gfx/pics/unown_frames.asm"
+INCLUDE "gfx/pics/variant_frame_pointers.asm"
+INCLUDE "gfx/pics/variant_frames.asm"
 
 SECTION "Tileset Data 6", ROMX, BANK[TILESETS_6]
 

@@ -25,3 +25,14 @@ UnownAnimationPointers:
 	dw UnownXAnimation
 	dw UnownYAnimation
 	dw UnownZAnimation
+
+PikachuAnimationPointers:
+	dw PikachuPlainAnimation
+	dw PikachuFlyAnimation
+	dw PikachuSurfAnimation
+	dw PikachuPikaAnimation
+	dw PikachuChuchuAnimation
+
+ArbokAnimationPointers:
+	dw ArbokJohtoAnimation
+	dw ArbokKantoAnimation

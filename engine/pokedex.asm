@@ -2362,11 +2362,14 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	
 	call Pokedex_GetSelectedMon
 	cp PIKACHU
-	jr nz, .continue
+	jr z, .use_variant_1
+	cp ARBOK
+	jr z, .use_variant_1
+	jr .continue
+.use_variant_1
 	ld a, 1
 	ld [UnownLetterOrPikachuVariant], a
 .continue
-	
 	ld a, [wd265]
 	ld [CurPartySpecies], a
 	call GetBaseData

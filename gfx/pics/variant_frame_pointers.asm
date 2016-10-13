@@ -25,3 +25,14 @@ UnownFramesPointers:
 	dw UnownXFrames
 	dw UnownYFrames
 	dw UnownZFrames
+
+PikachuFramesPointers:
+	dw PikachuPlainFrames
+	dw PikachuFlyFrames
+	dw PikachuSurfFrames
+	dw PikachuPikaFrames
+	dw PikachuChuchuFrames
+
+ArbokFramesPointers:
+	dw ArbokJohtoFrames
+	dw ArbokKantoFrames
