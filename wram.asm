@@ -2002,7 +2002,7 @@ wForcedSwitch:: ds 1
 TrainerClass:: ; d233
 	ds 1
 
-UnownLetterOrPikachuVariant:: ; d234
+MonVariant:: ; d234
 	ds 1
 
 wMoveSelectionMenuType:: ds 1

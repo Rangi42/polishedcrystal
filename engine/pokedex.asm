@@ -2358,7 +2358,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	call Pokedex_CheckSeen
 	jr z, .QuestionMark
 	ld a, [wFirstUnownSeen]
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	
 	call Pokedex_GetSelectedMon
 	cp PIKACHU
@@ -2368,7 +2368,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	jr .continue
 .use_variant_1
 	ld a, 1
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 .continue
 	ld a, [wd265]
 	ld [CurPartySpecies], a
@@ -2514,7 +2514,7 @@ Pokedex_LoadUnownFont: ; 41a2c
 	ret
 
 Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	push af
 	ld a, [wDexCurrentUnownIndex]
 	ld e, a
@@ -2522,14 +2522,14 @@ Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
 	ld hl, UnownDex
 	add hl, de
 	ld a, [hl]
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ld a, UNOWN
 	ld [CurPartySpecies], a
 	call GetBaseData
 	ld de, VTiles2 tile $00
 	predef GetFrontpic
 	pop af
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 _NewPokedexEntry: ; 41a7f

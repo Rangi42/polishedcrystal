@@ -489,7 +489,7 @@ AddTempmonToParty: ; da96
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .done
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
 .done
 

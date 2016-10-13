@@ -3605,7 +3605,7 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	jr nz, .skip_unown
 	ld hl, EnemyMonForm
 	predef GetVariant
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
 .skip_unown
 
@@ -7033,7 +7033,7 @@ CheckUnownLetter: ; 3eb75
 	ld l, a
 
 	push de
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld de, 1
 	push bc
 	call IsInArray
@@ -8763,7 +8763,7 @@ InitEnemyWildmon: ; 3f607
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
 .skip_unown
 	ld de, VTiles2

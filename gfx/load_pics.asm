@@ -6,7 +6,7 @@ GetVariant: ; 51040
 	jp z, .GetArbokVariant
 
 .GetPikachuVariant:
-; Return Unown letter in UnownLetterOrPikachuVariant based on moves
+; Return Unown letter in MonVariant based on moves
 ; hl-8 is ...MonMove1
 ; hl-7 is ...MonMove2
 ; hl-6 is ...MonMove3
@@ -50,7 +50,7 @@ rept 8
 	dec hl
 endr
 	ld a, 3 ; Surf
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 rept 4
 	ld a, [hli]
 	cp SURF
@@ -61,7 +61,7 @@ rept 4
 	dec hl
 endr
 	ld a, 2 ; Fly
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 rept 4
 	ld a, [hli]
 	cp FLY
@@ -70,31 +70,31 @@ endr
 
 .plain
 	ld a, 1 ; plain
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 .red_pika
 	pop bc
 	ld a, 4 ; Pika
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 .yellow_chuchu
 	pop bc
 	ld a, 5 ; Chuchu
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 .GetUnownVariant:
-; Return Unown letter in UnownLetterOrPikachuVariant based on Form at hl
+; Return Unown letter in MonVariant based on Form at hl
 .GetArbokVariant:
-; Return Arbok form in UnownLetterOrPikachuVariant based on Form at hl
+; Return Arbok form in MonVariant based on Form at hl
 
 	; assume Unown Form is 1 to 26
 	; assume Arbok Form is 1 or 2
 	ld a, [hl]
 	and FORM_MASK
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 GetFrontpic: ; 51077
@@ -167,19 +167,19 @@ GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
 	jr .ok
 
 .pikachu
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld d, BANK(PikachuPicPointers)
 	ld hl, PikachuPicPointers
 	jr .ok
 
 .arbok
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld d, BANK(ArbokPicPointers)
 	ld hl, ArbokPicPointers
 	jr .ok
 
 .unown
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld d, BANK(UnownPicPointers)
 	ld hl, UnownPicPointers
 
@@ -268,7 +268,7 @@ GetBackpic: ; 5116c
 
 	ld a, [CurPartySpecies]
 	ld b, a
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld c, a
 	ld a, [rSVBK]
 	push af

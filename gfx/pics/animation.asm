@@ -339,7 +339,7 @@ Functiond01d6: ; d01d6
 	call GetFarWRAMByte
 	ld [wPokeAnimSpecies], a
 	ld a, $1
-	ld hl, UnownLetterOrPikachuVariant
+	ld hl, MonVariant
 	call GetFarWRAMByte
 	ld [wPokeAnimVariant], a
 	call PokeAnim_GetSpeciesOrVariant
