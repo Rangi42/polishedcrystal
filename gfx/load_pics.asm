@@ -152,7 +152,7 @@ _GetFrontpic: ; 510a5
 	ret
 
 GetFrontpicPointer: ; 510d7
-GLOBAL PicPointers, PikachuPicPointers, UnownPicPointers, ArbokPicPointers
+GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
 
 	ld a, [CurPartySpecies]
 	cp PIKACHU

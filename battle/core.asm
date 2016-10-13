@@ -6576,6 +6576,31 @@ endr
 	; TODO: random shininess, ability, and nature
 	xor a
 	ld [RandomDVAndPersonalityBuffer + 3], a
+
+; Arbok form
+	ld a, [CurPartySpecies]
+	cp EKANS
+	jr z, .arbok_form
+	cp ARBOK
+	jr z, .arbok_form
+	xor a
+	jr .got_form
+.arbok_form
+	push bc
+	push de
+	farcall RegionCheck
+	ld a, e
+	pop de
+	pop bc
+	and a
+	jr nz, .kanto_arbok
+.johto_arbok
+	ld a, 1
+	jr .got_form
+.kanto_arbok
+	ld a, 2
+.got_form
+	and FORM_MASK
 	ld [RandomDVAndPersonalityBuffer + 4], a
 
 	ld bc, RandomDVAndPersonalityBuffer
