@@ -12,7 +12,7 @@ endc
 	db 60 ; catch rate
 	db 149 ; base exp
 	db NO_ITEM ; item 1
-	db BITTER_BERRY ; item 2
+	db PERSIM_BERRY ; item 2
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

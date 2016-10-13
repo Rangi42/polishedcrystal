@@ -317,8 +317,8 @@ BugContestResultsScript:
 	clearevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
 	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	clearevent EVENT_CONTEST_OFFICER_HAS_GOLD_BERRY
-	clearevent EVENT_CONTEST_OFFICER_HAS_BERRY
+	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
+	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
 	opentext
 	farwritetext ContestResults_ReadyToJudgeText
 	waitbutton
@@ -330,8 +330,8 @@ BugContestResultsScript:
 	farwritetext ContestResults_ConsolationPrizeText
 	buttonsound
 	waitsfx
-	verbosegiveitem BERRY
-	iffalse BugContestResults_NoRoomForBerry
+	verbosegiveitem ORAN_BERRY
+	iffalse BugContestResults_NoRoomForOranBerry
 
 BugContestResults_DidNotWin
 	farwritetext ContestResults_DidNotWinText
@@ -404,11 +404,11 @@ BugContestResults_SecondPlace ; 0xbc332
 ; 0xbc343
 
 BugContestResults_ThirdPlace ; 0xbc343
-	itemtotext GOLD_BERRY, $1
+	itemtotext SITRUS_BERRY, $1
 	farwritetext ContestResults_PlayerWonAPrizeText
 	waitbutton
-	verbosegiveitem GOLD_BERRY
-	iffalse BugContestResults_NoRoomForGoldBerry
+	verbosegiveitem SITRUS_BERRY
+	iffalse BugContestResults_NoRoomForSitrusBerry
 	jump BugContestResults_ReturnAfterWinnersPrize
 ; 0xbc354
 
@@ -426,17 +426,17 @@ BugContestResults_NoRoomForEverstone ; 0xbc35f
 	jump BugContestResults_ReturnAfterWinnersPrize
 ; 0xbc36a
 
-BugContestResults_NoRoomForGoldBerry ; 0xbc36a
+BugContestResults_NoRoomForSitrusBerry ; 0xbc36a
 	farwritetext BugContestPrizeNoRoomText
 	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_GOLD_BERRY
+	setevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
 	jump BugContestResults_ReturnAfterWinnersPrize
 ; 0xbc375
 
-BugContestResults_NoRoomForBerry ; 0xbc375
+BugContestResults_NoRoomForOranBerry ; 0xbc375
 	farwritetext BugContestPrizeNoRoomText
 	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_BERRY
+	setevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
 	jump BugContestResults_DidNotWin
 ; 0xbc380
 

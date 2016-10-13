@@ -15,8 +15,8 @@ else
 endc
 	db 30 ; catch rate
 	db 199 ; base exp
-	db GOLD_BERRY ; item 1
-	db GOLD_BERRY ; item 2
+	db SITRUS_BERRY ; item 1
+	db SITRUS_BERRY ; item 2
 	db 63 ; gender
 	db 25 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

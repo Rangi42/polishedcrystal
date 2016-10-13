@@ -23,7 +23,7 @@ KayGroup:
 
 	; party
 
-	db 60, MEGANIUM, GOLD_BERRY
+	db 60, MEGANIUM, SITRUS_BERRY
 		db GIGA_DRAIN
 		db PROTECT
 		db LEECH_SEED
@@ -35,13 +35,13 @@ KayGroup:
 		db FLAMETHROWER
 		db SUBSTITUTE
 
-	db 60, FERALIGATR, MIRACLEBERRY
+	db 60, FERALIGATR, LUM_BERRY
 		db SURF
 		db CRUNCH
 		db ICE_PUNCH
 		db ROCK_SLIDE
 
-	db 60, STEELIX, MINT_BERRY
+	db 60, STEELIX, CHESTO_BERRY
 		db IRON_TAIL
 		db ROCK_SLIDE
 		db EARTHQUAKE
@@ -81,19 +81,19 @@ CalGroup:
 		db FLAMETHROWER
 		db SUBSTITUTE
 
-	db 60, MEGANIUM, GOLD_BERRY
+	db 60, MEGANIUM, SITRUS_BERRY
 		db GIGA_DRAIN
 		db PROTECT
 		db LEECH_SEED
 		db TOXIC
 
-	db 60, FERALIGATR, MIRACLEBERRY
+	db 60, FERALIGATR, LUM_BERRY
 		db SURF
 		db CRUNCH
 		db ICE_PUNCH
 		db ROCK_SLIDE
 
-	db 60, STEELIX, MINT_BERRY
+	db 60, STEELIX, CHESTO_BERRY
 		db IRON_TAIL
 		db ROCK_SLIDE
 		db EARTHQUAKE
@@ -139,7 +139,7 @@ FalknerGroup:
 		db HYPNOSIS
 		db MUD_SLAP
 
-	db 13, PIDGEOTTO, MINT_BERRY
+	db 13, PIDGEOTTO, CHESTO_BERRY
 		db QUICK_ATTACK
 		db SAND_ATTACK
 		db GUST
@@ -225,7 +225,7 @@ BugsyGroup:
 		db QUICK_ATTACK
 		db DOUBLE_TEAM
 
-	db 17, SCYTHER, BERRY
+	db 17, SCYTHER, ORAN_BERRY
 		db QUICK_ATTACK
 		db LEER
 		db PURSUIT
@@ -317,7 +317,7 @@ WhitneyGroup:
 		db ATTRACT
 		db ROLLOUT
 
-	db 20, MILTANK, MIRACLEBERRY
+	db 20, MILTANK, LUM_BERRY
 		db DEFENSE_CURL
 		db STOMP
 		db MILK_DRINK
@@ -409,7 +409,7 @@ MortyGroup:
 		db NASTY_PLOT
 		db SHADOW_BALL
 
-	db 25, GENGAR, GOLD_BERRY
+	db 25, GENGAR, SITRUS_BERRY
 		db HYPNOSIS
 		db MEAN_LOOK
 		db SHADOW_CLAW
@@ -513,7 +513,7 @@ ChuckGroup:
 		db TRIPLE_KICK
 		db RAPID_SPIN
 
-	db 30, POLIWRATH, GOLD_BERRY
+	db 30, POLIWRATH, SITRUS_BERRY
 		db LOCK_ON
 		db HYPNOSIS
 		db WATERFALL
@@ -611,7 +611,7 @@ JasmineGroup:
 		db METAL_CLAW
 		db SLASH
 
-	db 35, STEELIX, GOLD_BERRY
+	db 35, STEELIX, SITRUS_BERRY
 		db BODY_SLAM
 		db SCREECH
 		db ROCK_SLIDE
@@ -679,7 +679,7 @@ PryceGroup:
 
 	; party
 
-	db 37, DEWGONG, MINT_BERRY
+	db 37, DEWGONG, CHESTO_BERRY
 		db WATERFALL
 		db REST
 		db RAIN_DANCE
@@ -709,7 +709,7 @@ PryceGroup:
 		db ANCIENTPOWER
 		db ICE_BEAM
 
-	db 40, MAMOSWINE, GOLD_BERRY
+	db 40, MAMOSWINE, SITRUS_BERRY
 		db MAGNITUDE
 		db ANCIENTPOWER
 		db AVALANCHE
@@ -807,7 +807,7 @@ ClairGroup:
 		db ICE_BEAM
 		db DRAGONBREATH
 
-	db 45, KINGDRA, GOLD_BERRY
+	db 45, KINGDRA, SITRUS_BERRY
 		db SMOKESCREEN
 		db HYPER_BEAM
 		db DRAGON_PULSE
@@ -829,7 +829,7 @@ ClairGroup:
 		db THUNDER_WAVE
 		db SAFEGUARD
 
-	db 72, GYARADOS, MIRACLEBERRY
+	db 72, GYARADOS, LUM_BERRY
 		db DRAGON_DANCE
 		db WATERFALL
 		db FLY
@@ -853,7 +853,7 @@ ClairGroup:
 		db OUTRAGE
 		db AQUA_TAIL
 
-	db 75, KINGDRA, MINT_BERRY
+	db 75, KINGDRA, CHESTO_BERRY
 		db DRAGON_DANCE
 		db WATERFALL
 		db OUTRAGE
@@ -893,13 +893,13 @@ WillGroup:
 		db SEED_BOMB
 		db PSYCHIC_M
 
-	db 49, ALAKAZAM, MIRACLEBERRY
+	db 49, ALAKAZAM, LUM_BERRY
 		db CALM_MIND
 		db RECOVER
 		db LIGHT_SCREEN
 		db PSYCHIC_M
 
-	db 48, SLOWBRO, GOLD_BERRY
+	db 48, SLOWBRO, SITRUS_BERRY
 		db SURF
 		db CALM_MIND
 		db BODY_SLAM
@@ -939,7 +939,7 @@ WillGroup:
 		db SLEEP_POWDER
 		db PSYCHIC_M
 
-	db 69, ALAKAZAM, MIRACLEBERRY
+	db 69, ALAKAZAM, LUM_BERRY
 		db HIDDEN_POWER ; Fighting
 		db RECOVER
 		db SHADOW_BALL
@@ -973,7 +973,7 @@ KogaGroup:
 
 	; party
 
-	db 49, ARIADOS, GOLD_BERRY
+	db 49, ARIADOS, SITRUS_BERRY
 		db DOUBLE_TEAM
 		db GLARE
 		db BATON_PASS
@@ -1493,7 +1493,7 @@ MistyGroup:
 		db ICE_BEAM
 		db CONFUSE_RAY
 
-	db 64, STARMIE, GOLD_BERRY
+	db 64, STARMIE, SITRUS_BERRY
 		db SCALD
 		db CONFUSE_RAY
 		db RECOVER
@@ -1591,7 +1591,7 @@ LtSurgeGroup:
 		db AGILITY
 		db THUNDER
 
-	db 60, RAICHU, GOLD_BERRY
+	db 60, RAICHU, SITRUS_BERRY
 		db THUNDER_WAVE
 		db QUICK_ATTACK
 		db WILD_CHARGE
@@ -1697,7 +1697,7 @@ endc
 		db PETAL_DANCE
 		db SOLAR_BEAM
 
-	db 65, BELLOSSOM, GOLD_BERRY
+	db 65, BELLOSSOM, SITRUS_BERRY
 		db SUNNY_DAY
 		db MORNING_SUN
 		db PETAL_DANCE
@@ -1795,7 +1795,7 @@ JanineGroup:
 		db FIRE_BLAST
 		db EXPLOSION
 
-	db 66, VENOMOTH, GOLD_BERRY
+	db 66, VENOMOTH, SITRUS_BERRY
 		db SLUDGE_BOMB
 		db DOUBLE_TEAM
 		db GUST
@@ -1893,7 +1893,7 @@ SabrinaGroup:
 		db SAFEGUARD
 		db DESTINY_BOND
 
-	db 62, ALAKAZAM, GOLD_BERRY
+	db 62, ALAKAZAM, SITRUS_BERRY
 		db RECOVER
 		db FUTURE_SIGHT
 		db PSYCHIC_M
@@ -1991,7 +1991,7 @@ BlaineGroup:
 		db QUICK_ATTACK
 		db FIRE_BLAST
 
-	db 69, RAPIDASH, GOLD_BERRY
+	db 69, RAPIDASH, SITRUS_BERRY
 		db QUICK_ATTACK
 		db FIRE_SPIN
 		db FURY_ATTACK
@@ -2256,8 +2256,8 @@ Rival1Group:
 	db 2 ; item
 
 	; party
-	db 5, SENTRET, BERRY
-	db 5, CHIKORITA, BERRY
+	db 5, SENTRET, ORAN_BERRY
+	db 5, CHIKORITA, ORAN_BERRY
 
 	db $ff ; end
 
@@ -2268,8 +2268,8 @@ Rival1Group:
 	db 2 ; item
 
 	; party
-	db 5, SENTRET, BERRY
-	db 5, CYNDAQUIL, BERRY
+	db 5, SENTRET, ORAN_BERRY
+	db 5, CYNDAQUIL, ORAN_BERRY
 
 	db $ff ; end
 
@@ -2280,22 +2280,8 @@ Rival1Group:
 	db 2 ; item
 
 	; party
-	db 5, SENTRET, BERRY
-	db 5, TOTODILE, BERRY
-
-	db $ff ; end
-
-; ================
-
-	; RIVAL1
-	db "?@"
-	db 2 ; item
-
-	; party
-	db 14, GASTLY, NO_ITEM
-	db 16, ZUBAT, NO_ITEM
-	db 15, GEODUDE, NO_ITEM
-	db 18, BAYLEEF, BERRY
+	db 5, SENTRET, ORAN_BERRY
+	db 5, TOTODILE, ORAN_BERRY
 
 	db $ff ; end
 
@@ -2309,7 +2295,7 @@ Rival1Group:
 	db 14, GASTLY, NO_ITEM
 	db 16, ZUBAT, NO_ITEM
 	db 15, GEODUDE, NO_ITEM
-	db 18, QUILAVA, BERRY
+	db 18, BAYLEEF, ORAN_BERRY
 
 	db $ff ; end
 
@@ -2323,7 +2309,21 @@ Rival1Group:
 	db 14, GASTLY, NO_ITEM
 	db 16, ZUBAT, NO_ITEM
 	db 15, GEODUDE, NO_ITEM
-	db 18, CROCONAW, BERRY
+	db 18, QUILAVA, ORAN_BERRY
+
+	db $ff ; end
+
+; ================
+
+	; RIVAL1
+	db "?@"
+	db 2 ; item
+
+	; party
+	db 14, GASTLY, NO_ITEM
+	db 16, ZUBAT, NO_ITEM
+	db 15, GEODUDE, NO_ITEM
+	db 18, CROCONAW, ORAN_BERRY
 
 	db $ff ; end
 
@@ -2359,7 +2359,7 @@ Rival1Group:
 		db BITE
 		db CONFUSE_RAY
 
-	db 22, BAYLEEF, BERRY
+	db 22, BAYLEEF, ORAN_BERRY
 		db REFLECT
 		db RAZOR_LEAF
 		db POISONPOWDER
@@ -2399,7 +2399,7 @@ Rival1Group:
 		db BITE
 		db CONFUSE_RAY
 
-	db 22, QUILAVA, BERRY
+	db 22, QUILAVA, ORAN_BERRY
 		db LEER
 		db SMOKESCREEN
 		db EMBER
@@ -2439,7 +2439,7 @@ Rival1Group:
 		db BITE
 		db CONFUSE_RAY
 
-	db 22, CROCONAW, BERRY
+	db 22, CROCONAW, ORAN_BERRY
 		db LEER
 		db RAGE
 		db WATER_GUN
@@ -2479,7 +2479,7 @@ Rival1Group:
 		db HONE_CLAWS
 		db FEINT_ATTACK
 
-	db 41, MEGANIUM, GOLD_BERRY
+	db 41, MEGANIUM, SITRUS_BERRY
 		db REFLECT
 		db LIGHT_SCREEN
 		db PETAL_DANCE
@@ -2519,7 +2519,7 @@ Rival1Group:
 		db HONE_CLAWS
 		db FEINT_ATTACK
 
-	db 41, TYPHLOSION, GOLD_BERRY
+	db 41, TYPHLOSION, SITRUS_BERRY
 		db SMOKESCREEN
 		db FLAME_WHEEL
 		db DIG
@@ -2559,7 +2559,7 @@ Rival1Group:
 		db HONE_CLAWS
 		db FEINT_ATTACK
 
-	db 41, FERALIGATR, GOLD_BERRY
+	db 41, FERALIGATR, SITRUS_BERRY
 		db SLASH
 		db SURF
 		db CRUNCH
@@ -2605,7 +2605,7 @@ Rival1Group:
 		db RECOVER
 		db CONFUSE_RAY
 
-	db 48, MEGANIUM, GOLD_BERRY
+	db 48, MEGANIUM, SITRUS_BERRY
 		db REFLECT
 		db LIGHT_SCREEN
 		db ENERGY_BALL
@@ -2651,7 +2651,7 @@ Rival1Group:
 		db RECOVER
 		db CONFUSE_RAY
 
-	db 48, TYPHLOSION, GOLD_BERRY
+	db 48, TYPHLOSION, SITRUS_BERRY
 		db SMOKESCREEN
 		db QUICK_ATTACK
 		db DIG
@@ -2697,7 +2697,7 @@ Rival1Group:
 		db RECOVER
 		db CONFUSE_RAY
 
-	db 48, FERALIGATR, GOLD_BERRY
+	db 48, FERALIGATR, SITRUS_BERRY
 		db CRUNCH
 		db SURF
 		db SLASH
@@ -5855,7 +5855,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 16, RAICHU, BERRY
+	db 16, RAICHU, ORAN_BERRY
 
 	db $ff ; end
 
@@ -5866,7 +5866,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 18, PIKACHU, BERRY
+	db 18, PIKACHU, ORAN_BERRY
 
 	db $ff ; end
 
@@ -5877,7 +5877,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 56, QUAGSIRE, GOLD_BERRY
+	db 56, QUAGSIRE, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5888,12 +5888,12 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 54, PIKACHU, GOLD_BERRY
-	db 54, PIKACHU, GOLD_BERRY
-	db 54, PIKACHU, GOLD_BERRY
-	db 54, PIKACHU, GOLD_BERRY
-	db 54, PIKACHU, GOLD_BERRY
-	db 54, PIKACHU, GOLD_BERRY
+	db 54, PIKACHU, SITRUS_BERRY
+	db 54, PIKACHU, SITRUS_BERRY
+	db 54, PIKACHU, SITRUS_BERRY
+	db 54, PIKACHU, SITRUS_BERRY
+	db 54, PIKACHU, SITRUS_BERRY
+	db 54, PIKACHU, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5904,9 +5904,9 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 59, BULBASAUR, GOLD_BERRY
-	db 59, CHARMANDER, GOLD_BERRY
-	db 59, SQUIRTLE, GOLD_BERRY
+	db 59, BULBASAUR, SITRUS_BERRY
+	db 59, CHARMANDER, SITRUS_BERRY
+	db 59, SQUIRTLE, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5917,7 +5917,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 57, PSYDUCK, GOLD_BERRY
+	db 57, PSYDUCK, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5928,7 +5928,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 13, SNUBBULL, BERRY
+	db 13, SNUBBULL, ORAN_BERRY
 	db 13, MAREEP, NO_ITEM
 
 	db $ff ; end
@@ -5940,9 +5940,9 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 44, MEOWTH, GOLD_BERRY
-	db 45, PERSIAN, GOLD_BERRY
-	db 44, MEOWTH, GOLD_BERRY
+	db 44, MEOWTH, SITRUS_BERRY
+	db 45, PERSIAN, SITRUS_BERRY
+	db 44, MEOWTH, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5953,7 +5953,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 49, GLACEON, GOLD_BERRY
+	db 49, GLACEON, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5964,7 +5964,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 19, PIKACHU, BERRY
+	db 19, PIKACHU, ORAN_BERRY
 
 	db $ff ; end
 
@@ -5975,7 +5975,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 36, PIKACHU, GOLD_BERRY
+	db 36, PIKACHU, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -5999,7 +5999,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 53, PHANPY, GOLD_BERRY
+	db 53, PHANPY, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -6010,7 +6010,7 @@ PokefanMGroup:
 	db 2 ; item
 
 	; party
-	db 53, TEDDIURSA, GOLD_BERRY
+	db 53, TEDDIURSA, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -6027,7 +6027,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 16, SNUBBULL, BERRY
+	db 16, SNUBBULL, ORAN_BERRY
 
 	db $ff ; end
 
@@ -6038,7 +6038,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 20, PIKACHU, BERRY
+	db 20, PIKACHU, ORAN_BERRY
 
 	db $ff ; end
 
@@ -6049,7 +6049,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 18, SNUBBULL, BERRY
+	db 18, SNUBBULL, ORAN_BERRY
 
 	db $ff ; end
 
@@ -6060,7 +6060,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 30, GRANBULL, GOLD_BERRY
+	db 30, GRANBULL, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -6071,11 +6071,11 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 44, SENTRET, BERRY
-	db 44, SENTRET, BERRY
-	db 44, SENTRET, BERRY
-	db 46, FURRET, GOLD_BERRY
-	db 44, SENTRET, BERRY
+	db 44, SENTRET, ORAN_BERRY
+	db 44, SENTRET, ORAN_BERRY
+	db 44, SENTRET, ORAN_BERRY
+	db 46, FURRET, SITRUS_BERRY
+	db 44, SENTRET, ORAN_BERRY
 
 	db $ff ; end
 
@@ -6086,7 +6086,7 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 16, MEOWTH, BERRY
+	db 16, MEOWTH, ORAN_BERRY
 
 	db $ff ; end
 
@@ -6097,8 +6097,8 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 57, PERSIAN, GOLD_BERRY
-	db 55, WIGGLYTUFF, GOLD_BERRY
+	db 57, PERSIAN, SITRUS_BERRY
+	db 55, WIGGLYTUFF, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -6109,8 +6109,8 @@ PokefanFGroup:
 	db 2 ; item
 
 	; party
-	db 57, GRANBULL, GOLD_BERRY
-	db 55, CLEFABLE, GOLD_BERRY
+	db 57, GRANBULL, SITRUS_BERRY
+	db 55, CLEFABLE, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -6655,7 +6655,7 @@ LassGroup:
 	db 2 ; item
 
 	; party
-	db 52, GLOOM, GOLD_BERRY
+	db 52, GLOOM, SITRUS_BERRY
 	db 54, PIDGEOTTO, NO_ITEM
 	db 54, BELLOSSOM, NO_ITEM
 
@@ -7201,7 +7201,7 @@ SchoolboyGroup:
 	; party
 	db 18, BELLSPROUT, GOLD_LEAF
 	db 16, SPINARAK, NO_ITEM
-	db 17, RATTATA, BERRY
+	db 17, RATTATA, ORAN_BERRY
 
 	db $ff ; end
 
@@ -7237,7 +7237,7 @@ SchoolboyGroup:
 	db 2 ; item
 
 	; party
-	db 55, ODDISH, GOLD_BERRY
+	db 55, ODDISH, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -7248,7 +7248,7 @@ SchoolboyGroup:
 	db 2 ; item
 
 	; party
-	db 54, TANGROWTH, GOLD_BERRY
+	db 54, TANGROWTH, SITRUS_BERRY
 	db 54, VAPOREON, NO_ITEM
 
 	db $ff ; end
@@ -7539,7 +7539,7 @@ SchoolgirlGroup:
 	; party
 	db 18, ODDISH, SILVER_LEAF
 	db 16, LEDYBA, NO_ITEM
-	db 17, SENTRET, BERRY
+	db 17, SENTRET, ORAN_BERRY
 
 	db $ff ; end
 
@@ -8055,7 +8055,7 @@ KimonoGirlGroup:
 	db 2 ; item
 
 	; party
-	db 20, FLAREON, MIRACLEBERRY
+	db 20, FLAREON, LUM_BERRY
 
 	db $ff ; end
 
@@ -8066,7 +8066,7 @@ KimonoGirlGroup:
 	db 2 ; item
 
 	; party
-	db 20, ESPEON, MIRACLEBERRY
+	db 20, ESPEON, LUM_BERRY
 
 	db $ff ; end
 
@@ -8077,7 +8077,7 @@ KimonoGirlGroup:
 	db 2 ; item
 
 	; party
-	db 20, UMBREON, MIRACLEBERRY
+	db 20, UMBREON, LUM_BERRY
 
 	db $ff ; end
 
@@ -8088,7 +8088,7 @@ KimonoGirlGroup:
 	db 2 ; item
 
 	; party
-	db 20, VAPOREON, MIRACLEBERRY
+	db 20, VAPOREON, LUM_BERRY
 
 	db $ff ; end
 
@@ -8099,7 +8099,7 @@ KimonoGirlGroup:
 	db 2 ; item
 
 	; party
-	db 20, JOLTEON, MIRACLEBERRY
+	db 20, JOLTEON, LUM_BERRY
 
 	db $ff ; end
 
@@ -11637,7 +11637,7 @@ LyraGroup:
 	db 15, PIDGEY, NO_ITEM
 	db 17, MARILL, NO_ITEM
 	db 16, SENTRET, NO_ITEM
-	db 18, BAYLEEF, BERRY
+	db 18, BAYLEEF, ORAN_BERRY
 
 	db $ff ; end
 
@@ -11651,7 +11651,7 @@ LyraGroup:
 	db 15, PIDGEY, NO_ITEM
 	db 17, SUNKERN, NO_ITEM
 	db 16, SENTRET, NO_ITEM
-	db 18, QUILAVA, BERRY
+	db 18, QUILAVA, ORAN_BERRY
 
 	db $ff ; end
 
@@ -11665,7 +11665,7 @@ LyraGroup:
 	db 15, PIDGEY, NO_ITEM
 	db 17, GROWLITHE, NO_ITEM
 	db 16, SENTRET, NO_ITEM
-	db 18, CROCONAW, BERRY
+	db 18, CROCONAW, ORAN_BERRY
 
 	db $ff ; end
 
@@ -11680,7 +11680,7 @@ LyraGroup:
 	db 32, GROWLITHE, NO_ITEM
 	db 32, AZUMARILL, NO_ITEM
 	db 31, FURRET, NO_ITEM
-	db 35, BAYLEEF, BERRY
+	db 35, BAYLEEF, ORAN_BERRY
 
 	db $ff ; end
 
@@ -11695,7 +11695,7 @@ LyraGroup:
 	db 32, SUNFLORA, NO_ITEM
 	db 32, AZUMARILL, NO_ITEM
 	db 31, FURRET, NO_ITEM
-	db 35, QUILAVA, BERRY
+	db 35, QUILAVA, ORAN_BERRY
 
 	db $ff ; end
 
@@ -11710,7 +11710,7 @@ LyraGroup:
 	db 32, SUNFLORA, NO_ITEM
 	db 32, GROWLITHE, NO_ITEM
 	db 31, FURRET, NO_ITEM
-	db 35, CROCONAW, BERRY
+	db 35, CROCONAW, ORAN_BERRY
 
 	db $ff ; end
 
@@ -11726,7 +11726,7 @@ LyraGroup:
 	db 44, AZUMARILL, NO_ITEM
 	db 43, FURRET, NO_ITEM
 	db 45, GIRAFARIG, NO_ITEM
-	db 46, MEGANIUM, GOLD_BERRY
+	db 46, MEGANIUM, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -11742,7 +11742,7 @@ LyraGroup:
 	db 44, AZUMARILL, NO_ITEM
 	db 43, FURRET, NO_ITEM
 	db 45, GIRAFARIG, NO_ITEM
-	db 46, TYPHLOSION, GOLD_BERRY
+	db 46, TYPHLOSION, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -11758,7 +11758,7 @@ LyraGroup:
 	db 44, ARCANINE, NO_ITEM
 	db 43, FURRET, NO_ITEM
 	db 45, GIRAFARIG, NO_ITEM
-	db 46, FERALIGATR, GOLD_BERRY
+	db 46, FERALIGATR, SITRUS_BERRY
 
 	db $ff ; end
 
@@ -11800,7 +11800,7 @@ LoreleiGroup:
 		db HEADBUTT
 		db DISABLE
 
-	db 42, JYNX, GOLD_BERRY
+	db 42, JYNX, SITRUS_BERRY
 		db DRAIN_KISS
 		db SING
 		db NIGHTMARE
@@ -12034,31 +12034,31 @@ YellowGroup:
 
 	; party
 
-	db 28, RATTATA, BERRY
+	db 28, RATTATA, ORAN_BERRY
 		db LEER
 		db QUICK_ATTACK
 		db HYPER_FANG
 		db FOCUS_ENERGY
 
-	db 26, BUTTERFREE, BERRY
+	db 26, BUTTERFREE, ORAN_BERRY
 		db CONFUSION
 		db SLEEP_POWDER
 		db POISONPOWDER
 		db STUN_SPORE
 
-	db 29, DODUO, BERRY
+	db 29, DODUO, ORAN_BERRY
 		db PECK
 		db TRI_ATTACK
 		db RETURN
 		db MUD_SLAP
 
-	db 28, GRAVELER, BERRY
+	db 28, GRAVELER, ORAN_BERRY
 		db ROLLOUT
 		db DEFENSE_CURL
 		db MAGNITUDE
 		db ROCK_THROW
 
-	db 27, OMANYTE, BERRY
+	db 27, OMANYTE, ORAN_BERRY
 		db WATER_GUN
 		db BITE
 		db DEFENSE_CURL
@@ -12150,7 +12150,7 @@ WalkerGroup:
 		db BITE
 		db ANCIENTPOWER
 
-	db 31, SKARMORY, GOLD_BERRY
+	db 31, SKARMORY, SITRUS_BERRY
 		db METAL_CLAW
 		db FURY_ATTACK
 		db DRILL_PECK
@@ -12689,7 +12689,7 @@ ValerieGroup:
 		db FAIRY_WIND
 		db ENCORE
 
-	db 38, SYLVEON, GOLD_BERRY
+	db 38, SYLVEON, SITRUS_BERRY
 		db MOONBLAST
 		db CALM_MIND
 		db DRAIN_KISS
@@ -12806,7 +12806,7 @@ ReiGroup:
 	db 19, MURKROW, NO_ITEM
 	db 18, NOCTOWL, NO_ITEM
 	db 18, KADABRA, NO_ITEM
-	db 21, NINETALES, GOLD_BERRY
+	db 21, NINETALES, SITRUS_BERRY
 
 	db $ff ; end
 

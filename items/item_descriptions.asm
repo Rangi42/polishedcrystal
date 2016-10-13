@@ -117,16 +117,16 @@ ItemDescriptions:
 	dw BlueCardDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
-	dw BerryDesc
-	dw GoldBerryDesc
-	dw PsnCureBerryDesc
-	dw IceBerryDesc
-	dw PrzCureBerryDesc
-	dw MintBerryDesc
-	dw BurntBerryDesc
-	dw BitterBerryDesc
-	dw MiracleBerryDesc
-	dw MysteryBerryDesc
+	dw OranBerryDesc
+	dw SitrusBerryDesc
+	dw PechaBerryDesc
+	dw RawstBerryDesc
+	dw CheriBerryDesc
+	dw ChestoBerryDesc
+	dw AspearBerryDesc
+	dw PersimBerryDesc
+	dw LumBerryDesc
+	dw LeppaBerryDesc
 	dw RedApricornDesc
 	dw BluApricornDesc
 	dw YlwApricornDesc
@@ -624,43 +624,43 @@ OldSeaMapDesc:
 	db   "A faded sea chart"
 	next "of a small island.@"
 
-BerryDesc:
+OranBerryDesc:
 	db   "A self-restore"
 	next "item. (10HP, Hold)@"
 
-GoldBerryDesc:
+SitrusBerryDesc:
 	db   "Self-restore item."
 	next "(1/4 max HP, Hold)@"
 
-PsnCureBerryDesc:
+PechaBerryDesc:
 	db   "A self-cure for"
 	next "poison. (Hold)@"
 
-IceBerryDesc:
+RawstBerryDesc:
 	db   "A self-heal for a"
 	next "burn. (Hold)@"
 
-PrzCureBerryDesc:
+CheriBerryDesc:
 	db   "A self-cure for"
 	next "paralysis. (Hold)@"
 
-MintBerryDesc:
+ChestoBerryDesc:
 	db   "A self-awakening"
 	next "for sleep. (Hold)@"
 
-BurntBerryDesc:
+AspearBerryDesc:
 	db   "A self-cure for"
 	next "freezing. (Hold)@"
 
-BitterBerryDesc:
+PersimBerryDesc:
 	db   "A self-cure for"
 	next "confusion. (Hold)@"
 
-MiracleBerryDesc:
+LumBerryDesc:
 	db   "Cures all status"
 	next "problems. (Hold)@"
 
-MysteryBerryDesc:
+LeppaBerryDesc:
 	db   "A self-restore"
 	next "for PP. (Hold)@"
 

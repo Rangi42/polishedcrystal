@@ -6,7 +6,7 @@
 	db ICE, GROUND
 	db 50 ; catch rate
 	db 207 ; base exp
-	db ICE_BERRY ; item 1
+	db RAWST_BERRY ; item 1
 	db NEVERMELTICE ; item 2
 	db 127 ; gender
 	db 20 ; step cycles to hatch

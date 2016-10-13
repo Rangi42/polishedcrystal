@@ -6,8 +6,8 @@
 	db NORMAL, NORMAL
 	db 120 ; catch rate
 	db 124 ; base exp
-	db BERRY ; item 1
-	db GOLD_BERRY ; item 2
+	db ORAN_BERRY ; item 1
+	db SITRUS_BERRY ; item 2
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions

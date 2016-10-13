@@ -1112,9 +1112,9 @@ GetWonderTradeHeldItem:
 
 .HeldItemsTable:
 	db NO_ITEM      ; 1/2
-	db BERRY        ; 1/4
-	db GOLD_BERRY   ; 1/8
-	db MYSTERYBERRY ; 1/16
+	db ORAN_BERRY        ; 1/4
+	db SITRUS_BERRY   ; 1/8
+	db LEPPA_BERRY ; 1/16
 	db QUICK_CLAW   ; 1/32
 	db SCOPE_LENS   ; 1/64
 	db KINGS_ROCK   ; 1/128

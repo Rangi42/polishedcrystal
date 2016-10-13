@@ -267,7 +267,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 
 .NoMoreFaintingConditions:
 	call HandleLeftovers
-	call HandleMysteryberry
+	call HandleLeppaBerry
 	call HandleDefrost
 	call HandleSafeguard
 	call HandleScreens
@@ -1421,7 +1421,7 @@ HandleLeftovers: ; 3c8eb
 	jp StdBattleTextBox
 ; 3c93c
 
-HandleMysteryberry: ; 3c93c
+HandleLeppaBerry: ; 3c93c
 	ld a, [hLinkPlayerNumber]
 	cp $1
 	jr z, .DoEnemyFirst
@@ -4611,11 +4611,11 @@ HandleHPHealingItem: ; 3dd2f
 	ld a, [hBattleTurn]
 	and a
 	ld a, [EnemyMonItem]
-	jr z, .check_gold_berry
+	jr z, .check_sitrus_berry
 	ld a, [BattleMonItem]
-.check_gold_berry
-	cp GOLD_BERRY
-	jr z, .handle_gold_berry
+.check_sitrus_berry
+	cp SITRUS_BERRY
+	jr z, .handle_sitrus_berry
 
 	ld a, [de]
 	add c
@@ -4628,9 +4628,9 @@ HandleHPHealingItem: ; 3dd2f
 	ld b, a
 	jr .finish
 
-.handle_gold_berry
+.handle_sitrus_berry
 	push hl
-	call GoldBerryQuarterHP
+	call SitrusBerryQuarterHP
 	pop hl
 .finish
 	ld a, [hld]
@@ -4670,7 +4670,7 @@ UseOpponentItem:
 	jp StdBattleTextBox
 ; 3ddc8
 
-GoldBerryQuarterHP:
+SitrusBerryQuarterHP:
 	ld a, [Buffer2]
 	ld b, a
 	ld a, [Buffer1]

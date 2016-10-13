@@ -97,16 +97,16 @@
 	const MYSTICTICKET  ; $53
 	const OLD_SEA_MAP   ; $54
 
-	const BERRY         ; $55
-	const GOLD_BERRY    ; $56
-	const PSNCUREBERRY  ; $57
-	const ICE_BERRY     ; $58
-	const PRZCUREBERRY  ; $59
-	const MINT_BERRY    ; $5a
-	const BURNT_BERRY   ; $5b
-	const BITTER_BERRY  ; $5c
-	const MIRACLEBERRY  ; $5d
-	const MYSTERYBERRY  ; $5e
+	const ORAN_BERRY    ; $55
+	const SITRUS_BERRY  ; $56
+	const PECHA_BERRY   ; $57
+	const RAWST_BERRY   ; $58
+	const CHERI_BERRY   ; $59
+	const CHESTO_BERRY  ; $5a
+	const ASPEAR_BERRY  ; $5b
+	const PERSIM_BERRY  ; $5c
+	const LUM_BERRY     ; $5d
+	const LEPPA_BERRY   ; $5e
 
 	const RED_APRICORN  ; $5f
 	const BLU_APRICORN  ; $60

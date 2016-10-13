@@ -7,7 +7,7 @@
 	db 120 ; catch rate
 	db 124 ; base exp
 	db NO_ITEM ; item 1
-	db BERRY ; item 2
+	db ORAN_BERRY ; item 2
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions

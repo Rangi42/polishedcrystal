@@ -10,8 +10,8 @@ else
 endc
 	db 75 ; catch rate
 	db 178 ; base exp
-	db BURNT_BERRY ; item 1
-	db BURNT_BERRY ; item 2
+	db ASPEAR_BERRY ; item 1
+	db ASPEAR_BERRY ; item 2
 	db 191 ; gender
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
