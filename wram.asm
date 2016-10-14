@@ -2104,15 +2104,15 @@ OTPartyEnd::     ds 1
 
 wDudeBag:: ; d288
 wDudeNumItems:: ds 1
-wDudeItems:: ds 2 * 4
+wDudeItems: ds 2 * 2
 wDudeItemsEnd:: ds 1
 
-wDudeNumKeyItems:: ds 1 ; d292
-wDudeKeyItems:: ds 18
-wDudeKeyItemsEnd:: ds 1
+wDudeNumMedicine:: ds 1
+wDudeMedicine:: ds 2 * 2
+wDudeMedicineEnd:: ds 1
 
 wDudeNumBalls:: ds 1 ; d2a6
-wDudeBalls:: ds 2 * 4 ; d2a7
+wDudeBalls:: ds 2 * 2 ; d2a7
 wDudeBallsEnd:: ds 1 ; d2af
 wDudeBagEnd::
 	ds wDudeBag - @

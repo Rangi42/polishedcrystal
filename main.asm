@@ -3736,21 +3736,26 @@ CatchTutorial:: ; 4e554
 	ld hl, wDudeNumItems
 	ld [hl], 1
 	inc hl
+	ld [hl], REPEL
+	inc hl
+	ld [hl], 1
+	inc hl
+	ld [hl], -1
+	ld hl, wDudeNumMedicine
+	ld [hl], 1
+	inc hl
 	ld [hl], POTION
 	inc hl
 	ld [hl], 1
 	inc hl
 	ld [hl], -1
-	ld hl, wDudeNumKeyItems
-	ld [hl], 0
-	inc hl
-	ld [hl], -1
 	ld hl, wDudeNumBalls
-	ld a, 1
-	ld [hli], a
-	ld a, POKE_BALL
-	ld [hli], a
-	ld [hli], a
+	ld [hl], 1
+	inc hl
+	ld [hl], POKE_BALL
+	inc hl
+	ld [hl], 10
+	inc hl
 	ld [hl], -1
 	ret
 
@@ -6061,8 +6066,8 @@ _DudeAutoInput_A:: ; 1de28a
 	ld hl, DudeAutoInput_A
 	jr _DudeAutoInput
 
-_DudeAutoInput_RightA: ; 1de28f
-	ld hl, DudeAutoInput_RightA
+_DudeAutoInput_RightRightA: ; 1de28f
+	ld hl, DudeAutoInput_RightRightA
 	jr _DudeAutoInput
 
 _DudeAutoInput_DownA: ; 1de294
@@ -6081,7 +6086,9 @@ DudeAutoInput_A: ; 1de29f
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
 
-DudeAutoInput_RightA: ; 1de2a5
+DudeAutoInput_RightRightA: ; 1de2a5
+	db NO_INPUT, $08
+	db D_RIGHT,  $00
 	db NO_INPUT, $08
 	db D_RIGHT,  $00
 	db NO_INPUT, $08
