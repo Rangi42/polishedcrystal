@@ -834,7 +834,7 @@ wCardFlipEnd::
 
 ; Dummy Game
 ; c6d0
-RandomDVAndPersonalityBuffer::
+DVAndPersonalityBuffer::
 wDummyGame::
 wDummyGameCards:: ds 9 * 5
 wDummyGameCardsEnd::

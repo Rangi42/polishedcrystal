@@ -6525,7 +6525,6 @@ endr
 	dec a
 	jr nz, .UpdateDVs
 
-
 ; Wild DVs
 ; Here's where the fun starts
 
@@ -6566,16 +6565,16 @@ endr
 .GenerateDVs:
 ; Generate new random DVs
 	call BattleRandom
-	ld [RandomDVAndPersonalityBuffer], a
+	ld [DVAndPersonalityBuffer], a
 	call BattleRandom
-	ld [RandomDVAndPersonalityBuffer + 1], a
+	ld [DVAndPersonalityBuffer + 1], a
 	call BattleRandom
-	ld [RandomDVAndPersonalityBuffer + 2], a
+	ld [DVAndPersonalityBuffer + 2], a
 
 .GeneratePersonality:
 	; TODO: random shininess, ability, and nature
 	xor a
-	ld [RandomDVAndPersonalityBuffer + 3], a
+	ld [DVAndPersonalityBuffer + 3], a
 
 ; Arbok form
 	ld a, [CurPartySpecies]
@@ -6601,12 +6600,10 @@ endr
 	ld a, 2
 .got_form
 	and FORM_MASK
-	ld [RandomDVAndPersonalityBuffer + 4], a
-
-	ld bc, RandomDVAndPersonalityBuffer
+	ld [DVAndPersonalityBuffer + 4], a
 
 .UpdateDVs:
-; Input DVs in register bc
+	ld bc, DVAndPersonalityBuffer
 	ld hl, EnemyMonDVs
 rept 4
 	ld a, [bc]

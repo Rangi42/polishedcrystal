@@ -15,10 +15,18 @@ rept 5
 	add hl, bc
 endr
 
-	ld b, h
-	ld c, l
-
 .done
+	ld a, [hli]
+	ld [DVAndPersonalityBuffer], a
+	ld a, [hli]
+	ld [DVAndPersonalityBuffer + 1], a
+	ld a, [hli]
+	ld [DVAndPersonalityBuffer + 2], a
+	ld a, [hli]
+	ld [DVAndPersonalityBuffer + 3], a
+	ld a, [hli]
+	ld [DVAndPersonalityBuffer + 4], a
+
 	pop hl
 	ret
 ; 270d6

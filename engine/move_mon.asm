@@ -178,11 +178,11 @@ endr
 	jp nz, .copywildmonstats
 	; Random DVs
 	call Random
-	ld [RandomDVAndPersonalityBuffer], a
+	ld [DVAndPersonalityBuffer], a
 	call Random
-	ld [RandomDVAndPersonalityBuffer + 1], a
+	ld [DVAndPersonalityBuffer + 1], a
 	call Random
-	ld [RandomDVAndPersonalityBuffer + 2], a
+	ld [DVAndPersonalityBuffer + 2], a
 	; Random nature
 	ld a, NUM_NATURES
 	call RandomRange
@@ -218,7 +218,7 @@ endr
 	xor a
 .got_shininess
 	add b
-	ld [RandomDVAndPersonalityBuffer + 3], a
+	ld [DVAndPersonalityBuffer + 3], a
 	; Random gender
 	call Random
 	and $1
@@ -234,10 +234,10 @@ endr
 	xor a
 	and FORM_MASK
 	add b
-	ld [RandomDVAndPersonalityBuffer + 4], a
-	ld bc, RandomDVAndPersonalityBuffer
+	ld [DVAndPersonalityBuffer + 4], a
 
 .initializetrainermonstats
+	ld bc, DVAndPersonalityBuffer
 rept 5 ; DVs + Personality
 	ld a, [bc]
 	ld [de], a
