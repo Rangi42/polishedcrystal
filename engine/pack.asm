@@ -1419,11 +1419,10 @@ DrawPackGFX: ; 1089d
 	ld d, $0
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .male_dude
+	jr z, .female
 	ld a, [PlayerGender]
 	bit 0, a
 	jr nz, .female
-.male_dude
 	ld hl, PackGFXPointers
 rept 2
 	add hl, de

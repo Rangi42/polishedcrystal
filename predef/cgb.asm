@@ -921,16 +921,17 @@ _CGB_PackPals: ; 93d3
 ; pack pals
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .tutorial_male
+	jr z, .tutorial_female
 
 	ld a, [PlayerGender]
 	bit 0, a
-	jr z, .tutorial_male
+	jr z, .male
 
+.tutorial_female
 	ld hl, .KrisPackPals
 	jr .got_gender
 
-.tutorial_male
+.male
 	ld hl, .ChrisPackPals
 
 .got_gender
