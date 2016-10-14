@@ -9640,16 +9640,16 @@ GetOpponentItemAfterUnnerve:
 	jp BattleCommand_SwitchTurn
 
 UnnerveItemsBlocked:
-	db BERRY
-	db GOLD_BERRY
-	db PSNCUREBERRY
-	db ICE_BERRY
-	db PRZCUREBERRY
-	db MINT_BERRY
-	db BURNT_BERRY
-	db BITTER_BERRY
-	db MIRACLEBERRY
-	db MYSTERYBERRY
+	db ORAN_BERRY
+	db SITRUS_BERRY
+	db PECHA_BERRY
+	db RAWST_BERRY
+	db CHERI_BERRY
+	db CHESTO_BERRY
+	db ASPEAR_BERRY
+	db PERSIM_BERRY
+	db LUM_BERRY
+	db LEPPA_BERRY
 	db -1
 NoItem:
 	db NO_ITEM

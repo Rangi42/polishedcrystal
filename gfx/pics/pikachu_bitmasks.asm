@@ -1,5 +1,0 @@
-PikachuPlainBitmasks:  INCLUDE "gfx/pics/pikachu_plain/bitmask.asm"
-PikachuFlyBitmasks:    INCLUDE "gfx/pics/pikachu_fly/bitmask.asm"
-PikachuSurfBitmasks:   INCLUDE "gfx/pics/pikachu_surf/bitmask.asm"
-PikachuPikaBitmasks:   INCLUDE "gfx/pics/pikachu_pika/bitmask.asm"
-PikachuChuchuBitmasks: INCLUDE "gfx/pics/pikachu_chuchu/bitmask.asm"

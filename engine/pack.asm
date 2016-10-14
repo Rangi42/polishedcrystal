@@ -1255,7 +1255,7 @@ TutorialPack: ; 107bb
 	ld a, [InputType]
 	or a
 	jr z, .loop
-	farcall _DudeAutoInput_RightA
+	farcall _DudeAutoInput_RightRightA
 .loop
 	call .RunJumptable
 	call DepositSellTutorial_InterpretJoypad
@@ -1276,12 +1276,11 @@ TutorialPack: ; 107bb
 .dw ; 107e1 (4:47e1)
 
 	dw .Items
+	dw .Medicine
 	dw .Balls
-	dw .KeyItems
-	dw .TMHM
 
 .Items: ; 107e9 (4:47e9)
-	xor a
+	ld a, ITEM - 1
 	ld hl, .ItemsMenuDataHeader
 	jr .DisplayPocket
 
@@ -1304,41 +1303,32 @@ TutorialPack: ; 107bb
 	dba UpdateItemDescription
 ; 10807
 
-.KeyItems: ; 10807 (4:4807)
-	ld a, 2
-	ld hl, .KeyItemsMenuDataHeader
+.Medicine: ; 10807 (4:4807)
+	ld a, MEDICINE - 1
+	ld hl, .MedicineMenuDataHeader
 	jr .DisplayPocket
 
 ; 1080e (4:480e)
-.KeyItemsMenuDataHeader: ; 0x1080e
+.MedicineMenuDataHeader: ; 0x1080e
 	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
-	dw .KeyItemsMenuData2
+	dw .MedicineMenuData2
 	db 1 ; default option
 ; 0x10816
 
-.KeyItemsMenuData2: ; 0x10816
+.MedicineMenuData2: ; 0x10816
 	db $ae ; flags
 	db 5, 8 ; rows, columns
-	db 1 ; horizontal spacing
-	dbw 0, wDudeNumKeyItems
+	db 2 ; horizontal spacing
+	dbw 0, wDudeNumMedicine
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription
 ; 10826
 
-.TMHM: ; 10826 (4:4826)
-	ld a, 3
-	call InitPocket
-	call WaitBGMap_DrawPackGFX
-	farcall TMHMPocket
-	ld a, [CurItem]
-	ld [CurItem], a
-	ret
-
 .Balls: ; 1083b (4:483b)
-	ld a, 1
+	ld a, BALL - 1
 	ld hl, .BallsMenuDataHeader
 	jr .DisplayPocket
 
@@ -1419,11 +1409,10 @@ DrawPackGFX: ; 1089d
 	ld d, $0
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .male_dude
+	jr z, .female
 	ld a, [PlayerGender]
 	bit 0, a
 	jr nz, .female
-.male_dude
 	ld hl, PackGFXPointers
 rept 2
 	add hl, de

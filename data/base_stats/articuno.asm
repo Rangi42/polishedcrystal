@@ -6,8 +6,8 @@
 	db ICE, FLYING
 	db 3 ; catch rate
 	db 215 ; base exp
-	db MIRACLEBERRY ; item 1
-	db MIRACLEBERRY ; item 2
+	db LUM_BERRY ; item 1
+	db LUM_BERRY ; item 2
 	db 255 ; gender
 	db 80 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

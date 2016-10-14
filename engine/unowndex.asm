@@ -1,5 +1,5 @@
 UpdateUnownDex: ; fba18
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld c, a
 	ld b, 26
 	ld hl, UnownDex

@@ -16,7 +16,7 @@ else
 	db 92 ; base exp
 endc
 	db NO_ITEM ; item 1
-	db BERRY ; item 2
+	db ORAN_BERRY ; item 2
 	db 127 ; gender
 	db 10 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

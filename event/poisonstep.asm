@@ -83,8 +83,7 @@ DoPoisonStep:: ; 505da
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-; TODO: fix GetAbility crashing
-;	farcall GetAbility
+	call GetAbility
 	ld a, b
 	pop bc
 	pop hl

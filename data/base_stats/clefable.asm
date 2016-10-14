@@ -6,7 +6,7 @@
 	db FAIRY, FAIRY
 	db 25 ; catch rate
 	db 129 ; base exp
-	db MYSTERYBERRY ; item 1
+	db LEPPA_BERRY ; item 1
 	db MOON_STONE ; item 2
 	db 191 ; gender
 	db 10 ; step cycles to hatch

@@ -1137,23 +1137,23 @@ TimeCapsule_ReplaceTeruSama: ; 28771
 	db 27, PROTEIN ; Dragonair in Yellow
 	db 30, LUCKY_PUNCH ; Chansey
 	db 35, METAL_POWDER ; Ditto
-	db 45, BITTER_BERRY
-	db 50, GOLD_BERRY
+	db 45, PERSIM_BERRY
+	db 50, SITRUS_BERRY
 	db 60, SILVER_LEAF
 	db 75, GOLD_LEAF
-	db 90, BERRY
+	db 90, ORAN_BERRY
 	db 96, TWISTEDSPOON ; Kadabra in Yellow
 	db 100, TWISTEDSPOON ; Kadabra in Red/Blue
-	db 120, BERRY
-	db 150, MYSTERYBERRY
+	db 120, ORAN_BERRY
+	db 150, LEPPA_BERRY
 	db 163, LIGHT_BALL ; Pikachu in Yellow
 	db 170, PINK_BOW ; Jigglypuff
 	db 180, BLACK_BELT ; Machop
-	db 190, BERRY
+	db 190, ORAN_BERRY
 	db 200, TWISTEDSPOON ; Abra
 	db 225, MYSTIC_WATER ; Krabby, Horsea, Goldeen, Staryu
 	db 235, POISON_BARB ; NidoranF and NidoranM
-	db -1, BERRY
+	db -1, ORAN_BERRY
 	db  0
 ; 2879e
 

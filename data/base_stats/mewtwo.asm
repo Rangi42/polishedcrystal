@@ -6,8 +6,8 @@
 	db PSYCHIC, PSYCHIC
 	db 3 ; catch rate
 	db 220 ; base exp
-	db MYSTERYBERRY ; item 1
-	db MYSTERYBERRY ; item 2
+	db LEPPA_BERRY ; item 1
+	db LEPPA_BERRY ; item 2
 	db 255 ; gender
 	db 120 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

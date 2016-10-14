@@ -11,7 +11,7 @@ endc
 	db WATER, ICE
 	db 75 ; catch rate
 	db 176 ; base exp
-	db ICE_BERRY ; item 1
+	db RAWST_BERRY ; item 1
 	db NEVERMELTICE ; item 2
 	db 127 ; gender
 	db 20 ; step cycles to hatch

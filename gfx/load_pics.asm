@@ -2,9 +2,11 @@ GetVariant: ; 51040
 	ld a, [CurPartySpecies]
 	cp UNOWN
 	jp z, .GetUnownVariant
+	cp ARBOK
+	jp z, .GetArbokVariant
 
 .GetPikachuVariant:
-; Return Unown letter in UnownLetterOrPikachuVariant based on moves
+; Return Unown letter in MonVariant based on moves
 ; hl-8 is ...MonMove1
 ; hl-7 is ...MonMove2
 ; hl-6 is ...MonMove3
@@ -48,10 +50,10 @@ rept 8
 	dec hl
 endr
 	ld a, 3 ; Surf
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 rept 4
 	ld a, [hli]
-	cp FLY
+	cp SURF
 	ret z
 endr
 
@@ -59,7 +61,7 @@ rept 4
 	dec hl
 endr
 	ld a, 2 ; Fly
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 rept 4
 	ld a, [hli]
 	cp FLY
@@ -68,28 +70,29 @@ endr
 
 .plain
 	ld a, 1 ; plain
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 .red_pika
 	pop bc
 	ld a, 4 ; Pika
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 .yellow_chuchu
 	pop bc
 	ld a, 5 ; Chuchu
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 .GetUnownVariant:
-; Return Unown letter in UnownLetterOrPikachuVariant based on Form at hl
+; Return Unown letter in MonVariant based on Form at hl (1-26)
+.GetArbokVariant:
+; Return Arbok form in MonVariant based on Form at hl (1-2)
 
-	; assume Form is 1 to 26
 	ld a, [hl]
 	and FORM_MASK
-	ld [UnownLetterOrPikachuVariant], a
+	ld [MonVariant], a
 	ret
 
 GetFrontpic: ; 51077
@@ -147,11 +150,13 @@ _GetFrontpic: ; 510a5
 	ret
 
 GetFrontpicPointer: ; 510d7
-GLOBAL PicPointers, PikachuPicPointers, UnownPicPointers
+GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
 
 	ld a, [CurPartySpecies]
 	cp PIKACHU
 	jr z, .pikachu
+	cp ARBOK
+	jr z, .arbok
 	cp UNOWN
 	jr z, .unown
 	ld a, [CurPartySpecies]
@@ -160,13 +165,19 @@ GLOBAL PicPointers, PikachuPicPointers, UnownPicPointers
 	jr .ok
 
 .pikachu
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld d, BANK(PikachuPicPointers)
 	ld hl, PikachuPicPointers
 	jr .ok
 
+.arbok
+	ld a, [MonVariant]
+	ld d, BANK(ArbokPicPointers)
+	ld hl, ArbokPicPointers
+	jr .ok
+
 .unown
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld d, BANK(UnownPicPointers)
 	ld hl, UnownPicPointers
 
@@ -255,7 +266,7 @@ GetBackpic: ; 5116c
 
 	ld a, [CurPartySpecies]
 	ld b, a
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld c, a
 	ld a, [rSVBK]
 	push af
@@ -263,7 +274,7 @@ GetBackpic: ; 5116c
 	ld [rSVBK], a
 	push de
 
-	GLOBAL PicPointers, PikachuPicPointers, UnownPicPointers
+	GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
 	ld hl, PicPointers
 	ld a, b
 	ld d, BANK(PicPointers)
@@ -274,6 +285,13 @@ GetBackpic: ; 5116c
 	ld d, BANK(PikachuPicPointers)
 	jr .ok
 .not_pikachu
+	cp ARBOK
+	jr nz, .not_arbok
+	ld hl, ArbokPicPointers
+	ld a, c
+	ld d, BANK(ArbokPicPointers)
+	jr .ok
+.not_arbok
 	cp UNOWN
 	jr nz, .ok
 	ld hl, UnownPicPointers

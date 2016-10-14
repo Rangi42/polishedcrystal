@@ -25,3 +25,14 @@ UnownWFrames: INCLUDE "gfx/pics/unown_w/frames.asm"
 UnownXFrames: INCLUDE "gfx/pics/unown_x/frames.asm"
 UnownYFrames: INCLUDE "gfx/pics/unown_y/frames.asm"
 UnownZFrames: INCLUDE "gfx/pics/unown_z/frames.asm"
+
+PikachusFrames:
+PikachuPlainFrames:  INCLUDE "gfx/pics/pikachu_plain/frames.asm"
+PikachuFlyFrames:    INCLUDE "gfx/pics/pikachu_fly/frames.asm"
+PikachuSurfFrames:   INCLUDE "gfx/pics/pikachu_surf/frames.asm"
+PikachuPikaFrames:   INCLUDE "gfx/pics/pikachu_pika/frames.asm"
+PikachuChuchuFrames: INCLUDE "gfx/pics/pikachu_chuchu/frames.asm"
+
+ArboksFrames:
+ArbokJohtoFrames: INCLUDE "gfx/pics/arbok_johto/frames.asm"
+ArbokKantoFrames: INCLUDE "gfx/pics/arbok_kanto/frames.asm"

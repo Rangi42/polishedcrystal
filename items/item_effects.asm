@@ -98,16 +98,16 @@ ItemEffects: ; e73c
 	dw BlueCard
 	dw MysticTicket
 	dw OldSeaMap
-	dw Berry
-	dw GoldBerry
-	dw PsnCureBerry
-	dw IceBerry
-	dw PrzCureBerry
-	dw MintBerry
-	dw BurntBerry
-	dw BitterBerry
-	dw MiracleBerry
-	dw MysteryBerry
+	dw OranBerry
+	dw SitrusBerry
+	dw PechaBerry
+	dw RawstBerry
+	dw CheriBerry
+	dw ChestoBerry
+	dw AspearBerry
+	dw PersimBerry
+	dw LumBerry
+	dw LeppaBerry
 	dw RedApricorn
 	dw BluApricorn
 	dw YlwApricorn
@@ -1643,12 +1643,12 @@ IceHeal:
 Awakening:
 ParlyzHeal:
 FullHeal:
-PsnCureBerry:
-PrzCureBerry:
-BurntBerry:
-IceBerry:
-MintBerry:
-MiracleBerry: ; efcc
+PechaBerry:
+CheriBerry:
+AspearBerry:
+RawstBerry:
+ChestoBerry:
+LumBerry: ; efcc
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, StatusHealer_ExitMenu
@@ -1765,12 +1765,12 @@ GetItemHealingAction: ; f058 (3:7058)
 	db FULL_HEAL,    PARTYMENUTEXT_HEAL_ALL, %11111111
 	db FULL_RESTORE, PARTYMENUTEXT_HEAL_ALL, %11111111
 	db HEAL_POWDER,  PARTYMENUTEXT_HEAL_ALL, %11111111
-	db PSNCUREBERRY, PARTYMENUTEXT_HEAL_PSN, 1 << PSN
-	db PRZCUREBERRY, PARTYMENUTEXT_HEAL_PAR, 1 << PAR
-	db BURNT_BERRY,  PARTYMENUTEXT_HEAL_FRZ, 1 << FRZ
-	db ICE_BERRY,    PARTYMENUTEXT_HEAL_BRN, 1 << BRN
-	db MINT_BERRY,   PARTYMENUTEXT_HEAL_SLP, SLP
-	db MIRACLEBERRY, PARTYMENUTEXT_HEAL_ALL, %11111111
+	db PECHA_BERRY,  PARTYMENUTEXT_HEAL_PSN, 1 << PSN
+	db CHERI_BERRY,  PARTYMENUTEXT_HEAL_PAR, 1 << PAR
+	db ASPEAR_BERRY, PARTYMENUTEXT_HEAL_FRZ, 1 << FRZ
+	db RAWST_BERRY,  PARTYMENUTEXT_HEAL_BRN, 1 << BRN
+	db CHESTO_BERRY, PARTYMENUTEXT_HEAL_SLP, SLP
+	db LUM_BERRY,    PARTYMENUTEXT_HEAL_ALL, %11111111
 	db -1, 0, 0
 ; f09e
 
@@ -1911,7 +1911,7 @@ FullRestore: ; f128
 ; f16a
 
 
-BitterBerry: ; f16a
+PersimBerry: ; f16a
 	ld hl, PlayerSubStatus3
 	bit SUBSTATUS_CONFUSED, [hl]
 	ld a, 1
@@ -1941,8 +1941,8 @@ SodaPop:
 Lemonade:
 MoomooMilk:
 RageCandyBar:
-Berry:
-GoldBerry: ; f186
+OranBerry:
+SitrusBerry: ; f186
 	call ItemRestoreHP
 	jp StatusHealer_Jumptable
 ; f18c
@@ -2284,8 +2284,8 @@ GetOneFifthMaxHP: ; f378 (3:7378)
 
 GetHealingItemAmount: ; f395 (3:7395)
 	ld a, [CurItem]
-	cp GOLD_BERRY
-	jr z, .gold_berry
+	cp SITRUS_BERRY
+	jr z, .sitrus_berry
 	push hl
 	ld hl, .Healing
 	ld d, a
@@ -2310,7 +2310,7 @@ endr
 	ret
 ; f3af (3:73af)
 
-.gold_berry
+.sitrus_berry
 	ld a, MON_MAXHP
 	call GetPartyParamLocation
 	ld a, [hli]
@@ -2337,7 +2337,7 @@ endr
 	dbw MAX_POTION,   999
 	dbw FULL_RESTORE, 999
 	dbw MOOMOO_MILK,  100
-	dbw BERRY,         10
+	dbw ORAN_BERRY,    10
 	dbw ENERGYPOWDER,  50
 	dbw ENERGY_ROOT,  200
 	dbw RAGECANDYBAR,  20
@@ -2700,7 +2700,7 @@ PPUp:
 Ether:
 MaxEther:
 Elixir:
-MysteryBerry: ; f5bf
+LeppaBerry: ; f5bf
 	ld a, [CurItem]
 	ld [wd002], a
 
@@ -2910,7 +2910,7 @@ RestorePP: ; f6e8
 	jr z, .restore_all
 
 	ld c, 10
-	cp MYSTERYBERRY
+	cp LEPPA_BERRY
 	jr z, .restore_some
 
 	ld c, 10

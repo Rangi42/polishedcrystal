@@ -267,7 +267,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 
 .NoMoreFaintingConditions:
 	call HandleLeftovers
-	call HandleMysteryberry
+	call HandleLeppaBerry
 	call HandleDefrost
 	call HandleSafeguard
 	call HandleScreens
@@ -1421,7 +1421,7 @@ HandleLeftovers: ; 3c8eb
 	jp StdBattleTextBox
 ; 3c93c
 
-HandleMysteryberry: ; 3c93c
+HandleLeppaBerry: ; 3c93c
 	ld a, [hLinkPlayerNumber]
 	cp $1
 	jr z, .DoEnemyFirst
@@ -3605,7 +3605,7 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	jr nz, .skip_unown
 	ld hl, EnemyMonForm
 	predef GetVariant
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
 .skip_unown
 
@@ -4611,11 +4611,11 @@ HandleHPHealingItem: ; 3dd2f
 	ld a, [hBattleTurn]
 	and a
 	ld a, [EnemyMonItem]
-	jr z, .check_gold_berry
+	jr z, .check_sitrus_berry
 	ld a, [BattleMonItem]
-.check_gold_berry
-	cp GOLD_BERRY
-	jr z, .handle_gold_berry
+.check_sitrus_berry
+	cp SITRUS_BERRY
+	jr z, .handle_sitrus_berry
 
 	ld a, [de]
 	add c
@@ -4628,9 +4628,9 @@ HandleHPHealingItem: ; 3dd2f
 	ld b, a
 	jr .finish
 
-.handle_gold_berry
+.handle_sitrus_berry
 	push hl
-	call GoldBerryQuarterHP
+	call SitrusBerryQuarterHP
 	pop hl
 .finish
 	ld a, [hld]
@@ -4670,7 +4670,7 @@ UseOpponentItem:
 	jp StdBattleTextBox
 ; 3ddc8
 
-GoldBerryQuarterHP:
+SitrusBerryQuarterHP:
 	ld a, [Buffer2]
 	ld b, a
 	ld a, [Buffer1]
@@ -6525,7 +6525,6 @@ endr
 	dec a
 	jr nz, .UpdateDVs
 
-
 ; Wild DVs
 ; Here's where the fun starts
 
@@ -6566,22 +6565,45 @@ endr
 .GenerateDVs:
 ; Generate new random DVs
 	call BattleRandom
-	ld [RandomDVAndPersonalityBuffer], a
+	ld [DVAndPersonalityBuffer], a
 	call BattleRandom
-	ld [RandomDVAndPersonalityBuffer + 1], a
+	ld [DVAndPersonalityBuffer + 1], a
 	call BattleRandom
-	ld [RandomDVAndPersonalityBuffer + 2], a
+	ld [DVAndPersonalityBuffer + 2], a
 
 .GeneratePersonality:
 	; TODO: random shininess, ability, and nature
 	xor a
-	ld [RandomDVAndPersonalityBuffer + 3], a
-	ld [RandomDVAndPersonalityBuffer + 4], a
+	ld [DVAndPersonalityBuffer + 3], a
 
-	ld bc, RandomDVAndPersonalityBuffer
+; Arbok form
+	ld a, [CurPartySpecies]
+	cp EKANS
+	jr z, .arbok_form
+	cp ARBOK
+	jr z, .arbok_form
+	xor a
+	jr .got_form
+.arbok_form
+	push bc
+	push de
+	farcall RegionCheck
+	ld a, e
+	pop de
+	pop bc
+	and a
+	jr nz, .kanto_arbok
+.johto_arbok
+	ld a, 1
+	jr .got_form
+.kanto_arbok
+	ld a, 2
+.got_form
+	and FORM_MASK
+	ld [DVAndPersonalityBuffer + 4], a
 
 .UpdateDVs:
-; Input DVs in register bc
+	ld bc, DVAndPersonalityBuffer
 	ld hl, EnemyMonDVs
 rept 4
 	ld a, [bc]
@@ -6720,7 +6742,7 @@ endr
 ; Fill stats
 	ld de, EnemyMonMaxHP
 	ld b, FALSE
-	ld hl, LinkBattleRNs + 7 ; ?
+	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS - 1)) ; LinkBattleRNs + 7 (?)
 	predef CalcPkmnStats
 
 ; If we're in a trainer battle,
@@ -7008,7 +7030,7 @@ CheckUnownLetter: ; 3eb75
 	ld l, a
 
 	push de
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld de, 1
 	push bc
 	call IsInArray
@@ -8783,7 +8805,7 @@ InitEnemyWildmon: ; 3f607
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld a, [UnownLetterOrPikachuVariant]
+	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
 .skip_unown
 	ld de, VTiles2

@@ -3,7 +3,11 @@
 	db  80,  80,  50,  25,  40,  50
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
 	db POISON, POISON
+else
+	db POISON, DARK
+endc
 	db 190 ; catch rate
 	db 90 ; base exp
 	db NO_ITEM ; item 1

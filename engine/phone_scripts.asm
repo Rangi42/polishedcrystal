@@ -794,10 +794,10 @@ UnknownScript_0xbd491:
 UnknownScript_0xbd495:
 	setflag ENGINE_WADE_HAS_ITEM
 	landmarktotext ROUTE_31, $2
-	clearevent EVENT_WADE_HAS_BERRY
-	clearevent EVENT_WADE_HAS_PSNCUREBERRY
-	clearevent EVENT_WADE_HAS_PRZCUREBERRY
-	clearevent EVENT_WADE_HAS_BITTER_BERRY
+	clearevent EVENT_WADE_HAS_ORAN_BERRY
+	clearevent EVENT_WADE_HAS_PECHA_BERRY
+	clearevent EVENT_WADE_HAS_CHERI_BERRY
+	clearevent EVENT_WADE_HAS_PERSIM_BERRY
 	random $4
 	if_equal $0, UnknownScript_0xbd4b9
 	if_equal $1, UnknownScript_0xbd4bf
@@ -805,19 +805,19 @@ UnknownScript_0xbd495:
 	if_equal $3, UnknownScript_0xbd4cb
 
 UnknownScript_0xbd4b9:
-	setevent EVENT_WADE_HAS_BERRY
+	setevent EVENT_WADE_HAS_ORAN_BERRY
 	jump UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4bf:
-	setevent EVENT_WADE_HAS_PSNCUREBERRY
+	setevent EVENT_WADE_HAS_PECHA_BERRY
 	jump UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4c5:
-	setevent EVENT_WADE_HAS_PRZCUREBERRY
+	setevent EVENT_WADE_HAS_CHERI_BERRY
 	jump UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4cb:
-	setevent EVENT_WADE_HAS_BITTER_BERRY
+	setevent EVENT_WADE_HAS_PERSIM_BERRY
 
 UnknownScript_0xbd4ce:
 	farjump UnknownScript_0xa05e6

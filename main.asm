@@ -3736,21 +3736,26 @@ CatchTutorial:: ; 4e554
 	ld hl, wDudeNumItems
 	ld [hl], 1
 	inc hl
+	ld [hl], REPEL
+	inc hl
+	ld [hl], 1
+	inc hl
+	ld [hl], -1
+	ld hl, wDudeNumMedicine
+	ld [hl], 1
+	inc hl
 	ld [hl], POTION
 	inc hl
 	ld [hl], 1
 	inc hl
 	ld [hl], -1
-	ld hl, wDudeNumKeyItems
-	ld [hl], 0
-	inc hl
-	ld [hl], -1
 	ld hl, wDudeNumBalls
-	ld a, 1
-	ld [hli], a
-	ld a, POKE_BALL
-	ld [hli], a
-	ld [hli], a
+	ld [hl], 1
+	inc hl
+	ld [hl], POKE_BALL
+	inc hl
+	ld [hl], 10
+	inc hl
 	ld [hl], -1
 	ret
 
@@ -5585,25 +5590,17 @@ INCLUDE "gfx/pics/anims.asm"
 INCLUDE "gfx/pics/extra_pointers.asm"
 INCLUDE "gfx/pics/extras.asm"
 
-; Pikachu has its own animation data despite having an entry in the main tables
-INCLUDE "gfx/pics/pikachu_anim_pointers.asm"
-INCLUDE "gfx/pics/pikachu_anims.asm"
-INCLUDE "gfx/pics/pikachu_extra_pointers.asm"
-INCLUDE "gfx/pics/pikachu_extras.asm"
-
-; Unown has its own animation data despite having an entry in the main tables
-INCLUDE "gfx/pics/unown_anim_pointers.asm"
-INCLUDE "gfx/pics/unown_anims.asm"
-INCLUDE "gfx/pics/unown_extra_pointers.asm"
-INCLUDE "gfx/pics/unown_extras.asm"
+; Variants have their own animation data despite having entries in the main tables
+INCLUDE "gfx/pics/variant_anim_pointers.asm"
+INCLUDE "gfx/pics/variant_anims.asm"
+INCLUDE "gfx/pics/variant_extra_pointers.asm"
+INCLUDE "gfx/pics/variant_extras.asm"
 
 ; Bitmasks
 INCLUDE "gfx/pics/bitmask_pointers.asm"
 INCLUDE "gfx/pics/bitmasks.asm"
-INCLUDE "gfx/pics/pikachu_bitmask_pointers.asm"
-INCLUDE "gfx/pics/pikachu_bitmasks.asm"
-INCLUDE "gfx/pics/unown_bitmask_pointers.asm"
-INCLUDE "gfx/pics/unown_bitmasks.asm"
+INCLUDE "gfx/pics/variant_bitmask_pointers.asm"
+INCLUDE "gfx/pics/variant_bitmasks.asm"
 
 SECTION "Pic Animations 2", ROMX, BANK[$35]
 
@@ -5613,10 +5610,8 @@ INCLUDE "gfx/pics/kanto_frames.asm"
 SECTION "Pic Animations 3", ROMX, BANK[$36]
 
 INCLUDE "gfx/pics/johto_frames.asm"
-INCLUDE "gfx/pics/pikachu_frame_pointers.asm"
-INCLUDE "gfx/pics/pikachu_frames.asm"
-INCLUDE "gfx/pics/unown_frame_pointers.asm"
-INCLUDE "gfx/pics/unown_frames.asm"
+INCLUDE "gfx/pics/variant_frame_pointers.asm"
+INCLUDE "gfx/pics/variant_frames.asm"
 
 SECTION "Tileset Data 6", ROMX, BANK[TILESETS_6]
 
@@ -6071,8 +6066,8 @@ _DudeAutoInput_A:: ; 1de28a
 	ld hl, DudeAutoInput_A
 	jr _DudeAutoInput
 
-_DudeAutoInput_RightA: ; 1de28f
-	ld hl, DudeAutoInput_RightA
+_DudeAutoInput_RightRightA: ; 1de28f
+	ld hl, DudeAutoInput_RightRightA
 	jr _DudeAutoInput
 
 _DudeAutoInput_DownA: ; 1de294
@@ -6091,7 +6086,9 @@ DudeAutoInput_A: ; 1de29f
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
 
-DudeAutoInput_RightA: ; 1de2a5
+DudeAutoInput_RightRightA: ; 1de2a5
+	db NO_INPUT, $08
+	db D_RIGHT,  $00
 	db NO_INPUT, $08
 	db D_RIGHT,  $00
 	db NO_INPUT, $08

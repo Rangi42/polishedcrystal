@@ -240,19 +240,19 @@ Route36OfficerScriptContest:
 
 Route36Officer_ContestHasConcluded:
 	checkevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	iftrue .Sunstone
+	iftrue .SunStone
 	checkevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
 	iftrue .Everstone
-	checkevent EVENT_CONTEST_OFFICER_HAS_GOLD_BERRY
-	iftrue .GoldBerry
-	checkevent EVENT_CONTEST_OFFICER_HAS_BERRY
-	iftrue .Berry
+	checkevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
+	iftrue .SitrusBerry
+	checkevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
+	iftrue .OranBerry
 	writetext UnknownText_0x6b32b
 	waitbutton
 	closetext
 	end
 
-.Sunstone:
+.SunStone:
 	writetext UnknownText_0x6b97f
 	buttonsound
 	verbosegiveitem SUN_STONE
@@ -270,21 +270,21 @@ Route36Officer_ContestHasConcluded:
 	closetext
 	end
 
-.GoldBerry:
+.SitrusBerry:
 	writetext UnknownText_0x6b97f
 	buttonsound
-	verbosegiveitem GOLD_BERRY
+	verbosegiveitem SITRUS_BERRY
 	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_GOLD_BERRY
+	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
 	closetext
 	end
 
-.Berry:
+.OranBerry:
 	writetext UnknownText_0x6b97f
 	buttonsound
-	verbosegiveitem BERRY
+	verbosegiveitem ORAN_BERRY
 	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_BERRY
+	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
 	closetext
 	end
 

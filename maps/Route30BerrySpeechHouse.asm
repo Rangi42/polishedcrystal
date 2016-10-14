@@ -11,13 +11,13 @@ Route30BerrySpeechHouse_MapScriptHeader:
 PokefanMScript_0x196d64:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_BERRY_FROM_ROUTE_30_HOUSE
+	checkevent EVENT_GOT_ORAN_BERRY_FROM_ROUTE_30_HOUSE
 	iftrue UnknownScript_0x196d79
 	writetext UnknownText_0x196d82
 	buttonsound
-	verbosegiveitem BERRY
+	verbosegiveitem ORAN_BERRY
 	iffalse UnknownScript_0x196d7d
-	setevent EVENT_GOT_BERRY_FROM_ROUTE_30_HOUSE
+	setevent EVENT_GOT_ORAN_BERRY_FROM_ROUTE_30_HOUSE
 UnknownScript_0x196d79:
 	writetext UnknownText_0x196dec
 	waitbutton

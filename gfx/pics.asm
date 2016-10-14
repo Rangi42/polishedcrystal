@@ -6,8 +6,11 @@ INCLUDE "includes.asm"
 SECTION "Pic Pointers", ROMX[$4000], BANK[PIC_POINTERS]
 PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
 
-SECTION "Pikachu Pic Pointers", ROMX[$4000];, BANK[PIKACHU_PIC_POINTERS]
+SECTION "Pikachu Pic Pointers", ROMX[$4000]
 PikachuPicPointers:: INCLUDE "gfx/pics/pikachu_pic_pointers.asm"
+
+SECTION "Arbok Pic Pointers", ROMX[$4000]
+ArbokPicPointers:: INCLUDE "gfx/pics/arbok_pic_pointers.asm"
 
 SECTION "Unown Pic Pointers", ROMX[$4000], BANK[UNOWN_PIC_POINTERS]
 UnownPicPointers:: INCLUDE "gfx/pics/unown_pic_pointers.asm"
@@ -49,7 +52,7 @@ ArcanineFrontpic:      INCBIN "gfx/pics/arcanine/front.2bpp.lz"
 TyranitarFrontpic:     INCBIN "gfx/pics/tyranitar/front.2bpp.lz"
 MoltresFrontpic:       INCBIN "gfx/pics/moltres/front.2bpp.lz"
 ZapdosFrontpic:        INCBIN "gfx/pics/zapdos/front.2bpp.lz"
-ArbokFrontpic:         INCBIN "gfx/pics/arbok/front.2bpp.lz"
+ArbokJohtoFrontpic:    INCBIN "gfx/pics/arbok_johto/front.2bpp.lz"
 MewtwoFrontpic:        INCBIN "gfx/pics/mewtwo/front.2bpp.lz"
 CharizardFrontpic:     INCBIN "gfx/pics/charizard/front.2bpp.lz"
 QuilavaFrontpic:       INCBIN "gfx/pics/quilava/front.2bpp.lz"
@@ -216,7 +219,7 @@ SECTION "Pics 9", ROMX, BANK[PICS_9]
 
 EkansFrontpic:         INCBIN "gfx/pics/ekans/front.2bpp.lz"
 SudowoodoFrontpic:     INCBIN "gfx/pics/sudowoodo/front.2bpp.lz"
-PikachuFrontpic:       INCBIN "gfx/pics/pikachu/front.2bpp.lz"
+PikachuPlainFrontpic:  INCBIN "gfx/pics/pikachu_plain/front.2bpp.lz"
 SeadraFrontpic:        INCBIN "gfx/pics/seadra/front.2bpp.lz"
 MagbyFrontpic:         INCBIN "gfx/pics/magby/front.2bpp.lz"
 WeepinbellFrontpic:    INCBIN "gfx/pics/weepinbell/front.2bpp.lz"
@@ -443,7 +446,7 @@ VulpixBackpic:         INCBIN "gfx/pics/vulpix/back.2bpp.lz"
 EkansBackpic:          INCBIN "gfx/pics/ekans/back.2bpp.lz"
 BurglarPic:            INCBIN "gfx/trainers/burglar.2bpp.lz"
 PsyduckBackpic:        INCBIN "gfx/pics/psyduck/back.2bpp.lz"
-PikachuBackpic:        INCBIN "gfx/pics/pikachu/back.2bpp.lz"
+PikachuPlainBackpic:   INCBIN "gfx/pics/pikachu_plain/back.2bpp.lz"
 KabutoFrontpic:        INCBIN "gfx/pics/kabuto/front.2bpp.lz"
 MareepBackpic:         INCBIN "gfx/pics/mareep/back.2bpp.lz"
 RemoraidBackpic:       INCBIN "gfx/pics/remoraid/back.2bpp.lz"
@@ -584,7 +587,7 @@ LugiaBackpic:          INCBIN "gfx/pics/lugia/back.2bpp.lz"
 PrycePic:              INCBIN "gfx/trainers/pryce.2bpp.lz"
 BrockPic:              INCBIN "gfx/trainers/brock.2bpp.lz"
 UnownGFrontpic:        INCBIN "gfx/pics/unown_g/front.2bpp.lz"
-ArbokBackpic:          INCBIN "gfx/pics/arbok/back.2bpp.lz"
+ArbokJohtoBackpic:     INCBIN "gfx/pics/arbok_johto/back.2bpp.lz"
 PolitoedBackpic:       INCBIN "gfx/pics/politoed/back.2bpp.lz"
 DragoniteBackpic:      INCBIN "gfx/pics/dragonite/back.2bpp.lz"
 HitmonleeBackpic:      INCBIN "gfx/pics/hitmonlee/back.2bpp.lz"
@@ -785,8 +788,6 @@ SECTION "Pics 22", ROMX
 
 ValeriePic:            INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:             INCBIN "gfx/trainers/walker.2bpp.lz"
-PikachuPlainFrontpic:  INCBIN "gfx/pics/pikachu_plain/front.2bpp.lz"
-PikachuPlainBackpic:   INCBIN "gfx/pics/pikachu_plain/back.2bpp.lz"
 PikachuFlyFrontpic:    INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:     INCBIN "gfx/pics/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:   INCBIN "gfx/pics/pikachu_surf/front.2bpp.lz"
@@ -795,3 +796,5 @@ PikachuPikaFrontpic:   INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
 PikachuPikaBackpic:    INCBIN "gfx/pics/pikachu_pika/back.2bpp.lz"
 PikachuChuchuFrontpic: INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
 PikachuChuchuBackpic:  INCBIN "gfx/pics/pikachu_chuchu/back.2bpp.lz"
+ArbokKantoFrontpic:    INCBIN "gfx/pics/arbok_kanto/front.2bpp.lz"
+ArbokKantoBackpic:     INCBIN "gfx/pics/arbok_kanto/back.2bpp.lz"

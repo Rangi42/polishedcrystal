@@ -204,6 +204,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Always keep the option to Teleport away from Indigo Plateau.
 * Add: Portrait for the meteorite in Pewter Museum.
 * Add: Special sprite for Red's Pikachu.
+* Add: Johto and Kanto forms for Arbok.
 * Add: Drain Kiss drains 75% HP.
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
@@ -237,3 +238,5 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.
 * Fix: Enemy Psystrike uses player's Defense.
 * Fix: Yellow Carpet is buyable.
+* Fix: Tangrowth can learn Curse.
+* Fix: Lyra's Bag is the female version.

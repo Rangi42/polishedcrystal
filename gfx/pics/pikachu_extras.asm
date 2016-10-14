@@ -1,5 +1,0 @@
-PikachuPlainAnimationExtra:  INCLUDE "gfx/pics/pikachu_plain/anim1.asm"
-PikachuFlyAnimationExtra:    INCLUDE "gfx/pics/pikachu_fly/anim1.asm"
-PikachuSurfAnimationExtra:   INCLUDE "gfx/pics/pikachu_surf/anim1.asm"
-PikachuPikaAnimationExtra:   INCLUDE "gfx/pics/pikachu_pika/anim1.asm"
-PikachuChuchuAnimationExtra: INCLUDE "gfx/pics/pikachu_chuchu/anim1.asm"

@@ -6,8 +6,8 @@
 	db PSYCHIC, PSYCHIC
 	db 45 ; catch rate
 	db 64 ; base exp
-	db MIRACLEBERRY ; item 1
-	db MIRACLEBERRY ; item 2
+	db LUM_BERRY ; item 1
+	db LUM_BERRY ; item 2
 	db 255 ; gender
 	db 120 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions

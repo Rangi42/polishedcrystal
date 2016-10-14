@@ -3,7 +3,11 @@
 	db  40,  45,  35,  90,  40,  40
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
 	db NORMAL, NORMAL
+else
+	db DARK, DARK
+endc
 	db 255 ; catch rate
 	db 69 ; base exp
 	db NO_ITEM ; item 1

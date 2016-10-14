@@ -11,7 +11,7 @@ endc
 	db ELECTRIC, ELECTRIC
 	db 45 ; catch rate
 	db 106 ; base exp
-	db GOLD_BERRY ; item 1
+	db SITRUS_BERRY ; item 1
 	db ELECTIRIZER ; item 2
 	db 63 ; gender
 	db 25 ; step cycles to hatch

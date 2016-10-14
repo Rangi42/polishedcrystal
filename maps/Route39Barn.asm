@@ -66,54 +66,54 @@ MooMoo:
 	writetext Text_AskGiveBerry
 	yesorno
 	iffalse .Refused
-	checkitem BERRY
-	iffalse .MaybeGoldBerry
-	takeitem BERRY
+	checkitem ORAN_BERRY
+	iffalse .MaybeSitrusBerry
+	takeitem ORAN_BERRY
 	copybytetovar MooMooBerries
 	addvar 1
 	copyvartobyte MooMooBerries
-	if_equal 3, .ThreeBerries
-	if_equal 5, .FiveBerries
-	if_equal 7, .SevenBerries
-	writetext Text_GaveBerry
+	if_equal 3, .ThreeOranBerries
+	if_equal 5, .FiveOranBerries
+	if_equal 7, .SevenOranBerries
+	writetext Text_GaveOranBerry
 	waitbutton
 	closetext
 	end
 
-.MaybeGoldBerry:
-	checkitem GOLD_BERRY
+.MaybeSitrusBerry:
+	checkitem SITRUS_BERRY
 	iffalse .NoBerriesInBag
-	takeitem GOLD_BERRY
+	takeitem SITRUS_BERRY
 	copybytetovar MooMooBerries
 	addvar 2
 	copyvartobyte MooMooBerries
-	if_greater_than 6, .SevenGoldBerries
-	if_greater_than 4, .FiveGoldBerries
-	if_greater_than 2, .ThreeGoldBerries
-	writetext Text_GaveGoldBerry
+	if_greater_than 6, .SevenSitrusBerries
+	if_greater_than 4, .FiveSitrusBerries
+	if_greater_than 2, .ThreeSitrusBerries
+	writetext Text_GaveSitrusBerry
 	waitbutton
 	closetext
 	end
 
-.ThreeBerries:
-	writetext Text_GaveBerry
+.ThreeOranBerries:
+	writetext Text_GaveOranBerry
 	buttonsound
 	writetext Text_LittleHealthier
 	waitbutton
 	closetext
 	end
 
-.FiveBerries:
-	writetext Text_GaveBerry
+.FiveOranBerries:
+	writetext Text_GaveOranBerry
 	buttonsound
 	writetext Text_QuiteHealthy
 	waitbutton
 	closetext
 	end
 
-.SevenBerries:
+.SevenOranBerries:
 	playmusic MUSIC_HEAL
-	writetext Text_GaveBerry
+	writetext Text_GaveOranBerry
 	pause 60
 	buttonsound
 	special RestartMapMusic
@@ -123,25 +123,25 @@ MooMoo:
 	setevent EVENT_HEALED_MOOMOO
 	end
 
-.ThreeGoldBerries:
-	writetext Text_GaveGoldBerry
+.ThreeSitrusBerries:
+	writetext Text_GaveSitrusBerry
 	buttonsound
 	writetext Text_LittleHealthier
 	waitbutton
 	closetext
 	end
 
-.FiveGoldBerries:
-	writetext Text_GaveGoldBerry
+.FiveSitrusBerries:
+	writetext Text_GaveSitrusBerry
 	buttonsound
 	writetext Text_QuiteHealthy
 	waitbutton
 	closetext
 	end
 
-.SevenGoldBerries:
+.SevenSitrusBerries:
 	playmusic MUSIC_HEAL
-	writetext Text_GaveGoldBerry
+	writetext Text_GaveSitrusBerry
 	pause 60
 	buttonsound
 	special RestartMapMusic
@@ -200,13 +200,13 @@ Text_AskGiveBerry:
 	cont "Miltank?"
 	done
 
-Text_GaveBerry:
+Text_GaveOranBerry:
 	text "<PLAYER> gave an"
 	line "Oran Berry to"
 	cont "Miltank."
 	done
 
-Text_GaveGoldBerry:
+Text_GaveSitrusBerry:
 	text "<PLAYER> gave a"
 	line "Sitrus Berry to"
 	cont "Miltank."

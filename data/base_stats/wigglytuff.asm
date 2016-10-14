@@ -15,8 +15,8 @@ if DEF(FAITHFUL)
 else
 	db 129 ; base exp
 endc
-	db BERRY ; item 1
-	db BERRY ; item 2
+	db ORAN_BERRY ; item 1
+	db ORAN_BERRY ; item 2
 	db 191 ; gender
 	db 10 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions

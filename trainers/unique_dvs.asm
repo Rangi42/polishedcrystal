@@ -27,9 +27,6 @@ CheckUniqueDVOrPersonalityTrainerPokemon:
 	jr nz, .inc5andloop
 .unique
 
-	ld b, h
-	ld c, l
-
 	xor a
 	and a
 	ret
