@@ -275,7 +275,9 @@ rept 2 ; Status
 	ld [de], a
 	inc de
 endr
-	ld bc, 2 * 6 ; MaxHP + 5 Stats
+	pop hl
+	push hl
+	ld bc, MON_EVS - 1
 	add hl, bc
 	ld c, STAT_HP
 	ld b, FALSE
