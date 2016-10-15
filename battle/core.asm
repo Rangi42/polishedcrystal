@@ -7559,60 +7559,9 @@ GiveExperiencePoints: ; 3ee3b
 	pop bc
 	jp z, .skip_stats
 
-; TODO: give EVs
+	call GiveBattleEVs
+
 	push bc
-;	ld hl, MON_EVS + 1
-;	add hl, bc
-;	ld d, h
-;	ld e, l
-;	ld hl, EnemyMonBaseStats - 1
-;	ld c, $5
-;.loop1
-;	inc hl
-;	ld a, [de]
-;	add [hl]
-;	ld [de], a
-;	jr nc, .okay1
-;	dec de
-;	ld a, [de]
-;	inc a
-;	jr z, .next
-;	ld [de], a
-;	inc de
-;
-;.okay1
-;	push hl
-;	push bc
-;	ld a, MON_PKRUS
-;	call GetPartyParamLocation
-;	ld a, [hl]
-;	and a
-;	pop bc
-;	pop hl
-;	jr z, .skip
-;	ld a, [de]
-;	add [hl]
-;	ld [de], a
-;	jr nc, .skip
-;	dec de
-;	ld a, [de]
-;	inc a
-;	jr z, .next
-;	ld [de], a
-;	inc de
-;	jr .skip
-;
-;.next
-;	ld a, $ff
-;	ld [de], a
-;	inc de
-;	ld [de], a
-;
-;.skip
-;	inc de
-;	inc de
-;	dec c
-;	jr nz, .loop1
 	xor a
 	ld [hMultiplicand + 0], a
 	ld [hMultiplicand + 1], a
@@ -7937,6 +7886,126 @@ GiveExperiencePoints: ; 3ee3b
 	jr nz, .count_loop2
 	ret
 ; 3f106
+
+GiveBattleEVs:
+; prepare registers for EV gain loop.
+; b: contains EV yield data
+; c: loop iterator
+; d: bit 0 is set on pokérus, bit 1 on macho brace
+; e: set to abcdef00, where a: HP EV boosted, etc, for
+; power items
+	push de
+	ld d, 0
+	ld e, 0
+	; check pokérus
+	ld hl, MON_PKRUS
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr z, .check_item
+	set 0, d
+.check_item
+	; check held item
+	push bc
+	ld hl, BattleMonItem
+	call GetItemHeldEffect
+	ld a, b
+	cp HELD_EV_DOUBLE
+	call z, .item_double
+	cp HELD_EV_HP_UP
+	call z, .item_hpup
+	cp HELD_EV_ATK_UP
+	call z, .item_atkup
+	cp HELD_EV_DEF_UP
+	call z, .item_defup
+	cp HELD_EV_SPD_UP
+	call z, .item_spdup
+	cp HELD_EV_SAT_UP
+	call z, .item_satup
+	cp HELD_EV_SDF_UP
+	call z, .item_sdfup
+	pop bc
+	ld hl, MON_EVS
+	add hl, bc
+	push bc
+	ld a, [EnemyMonSpecies]
+	ld [CurSpecies], a
+	call GetBaseData
+	; EV yield format:
+	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spd
+	; Byte 2: aabb0000 a: Sat, b: Sdf, 0: unused
+	ld a, [BaseEVYield1]
+	ld b, a
+	ld c, 6 ; iterator
+.loop
+	rlc b
+	rlc b
+	rlc e
+	ld a, b
+	and $3
+	; Check power item. Since e is formatted as
+	; abcdef00 (a=hp b=atk c=def etc), and we do rlc e on
+	; each iteration, bit 0 will be 1 if we have the
+	; power item for the current stat.
+	bit 0, e
+	jr z, .no_power_item
+	add 4
+.no_power_item
+	; check EV doubling with pokerus or macho brace
+	bit 0, d
+	jr z, .no_pokerus
+	add a
+.no_pokerus
+	bit 1, d
+	jr z, .add
+	add a
+.add
+	add [hl]
+	jr c, .ev_overflow
+
+	; Check if our EV is >252 in the stat, and if so,
+	; revert it to 252.
+	cp 253
+	jr c, .add_done
+.ev_overflow
+	ld a, 252
+.add_done
+	ld [hl], a
+	inc hl
+	dec c
+	jr z, .done
+	; For Sat and Sdf, we want to use byte 2
+	ld a, c
+	cp 2
+	jr nz, .loop
+	ld a, [BaseEVYield2]
+	ld b, a
+	jr .loop
+.done
+	pop bc
+	pop de
+	ret
+.item_double
+	set 1, d
+	ret
+.item_hpup
+	set 7, e
+	ret
+.item_atkup
+	set 6, e
+	ret
+.item_defup
+	set 5, e
+	ret
+.item_spdup
+	set 4, e
+	ret
+.item_satup
+	set 3, e
+	ret
+.item_sdfup
+	set 2, e
+	ret
 
 BoostExp: ; 3f106
 ; Multiply experience by 1.5x
