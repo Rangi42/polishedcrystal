@@ -7888,55 +7888,43 @@ GiveExperiencePoints: ; 3ee3b
 ; 3f106
 
 GiveBattleEVs:
-; bc contains the addr to PartyNMon for which mon to
-; increase EVs of. We ensure to not raise EV above
-; 510 (if EV_CAP is defined), but don't bother with
-; individual stats, rather we just reset all EVs
-; above 252 to 252 when done (3 is max boost)
-	; calculate current EVs
+; prepare registers for EV gain loop.
+; b: contains EV yield data
+; c: loop iterator
+; d: bit 0 is set on pokérus, bit 1 on macho brace
+; e: set to abcdef00, where a: HP EV boosted, etc, for
+; power items
 	push de
 	ld d, 0
 	ld e, 0
-	ld hl, MON_EVS
+	; check pokérus
+	ld hl, MON_PKRUS
 	add hl, bc
-	push bc
-	ld b, 6
-.loop
-	ld a, [hli]
-	add e
-	jr nc, .no_overflow
-	inc d
-.no_overflow
-	dec b
-	jr nz, .loop
-
-if def(EV_CAP)
-else
-	; with no cap, zero out EV total since it isn't
-	; going to become a factor
-	ld d, 0
-	ld e, 0
-endc
-	; check for overflow
-	pop bc
-	ld a, d
+	ld a, [hl]
 	and a
-	jr z, .not_capped ; EV is <=255 which is ok
-	ld a, e
-	cp 254
-	jr nc, .done ; EV cap reached
-	jr .increase_evs
-.not_capped
-	; Since d was 0 (EV<=255), set e to 0. This way,
-	; we can check e later to see if we need to
-	; limit the EV boost (if current EV is 508-509)
-	; by e being 252-253.
-	ld e, 0
-.increase_evs
-	; make e show amount of possible EV gains left
-	ld a, 254
-	sub e
-	ld e, a
+	jr z, .check_item
+	set 0, d
+.check_item
+	; check held item
+	push bc
+	ld hl, BattleMonItem
+	call GetItemHeldEffect
+	ld a, b
+	cp HELD_EV_DOUBLE
+	call z, .item_double
+	cp HELD_EV_HP_UP
+	call z, .item_hpup
+	cp HELD_EV_ATK_UP
+	call z, .item_atkup
+	cp HELD_EV_DEF_UP
+	call z, .item_defup
+	cp HELD_EV_SPD_UP
+	call z, .item_spdup
+	cp HELD_EV_SAT_UP
+	call z, .item_satup
+	cp HELD_EV_SDF_UP
+	call z, .item_sdfup
+	pop bc
 	ld hl, MON_EVS
 	add hl, bc
 	push bc
@@ -7948,39 +7936,75 @@ endc
 	; Byte 2: aabb0000 a: Sat, b: Sdf, 0: unused
 	ld a, [BaseEVYield1]
 	ld b, a
-	ld d, 6 ; iterator
-.loop2
+	ld c, 6 ; iterator
+.loop
 	rlc b
 	rlc b
+	rlc e
 	ld a, b
 	and $3
-.inner
-	; Decrease a and e and increase EV until either
-	; a or e is 0 (e=0 means we reached 510EVs)
-	and a
-	jr z, .skip_inner
-	inc [hl]
-	dec a
-	dec e
-	jr z, .done ; we just reached the EV cap
-	jr .inner
-.skip_inner
+	; Check power item. Since e is formatted as
+	; abcdef00 (a=hp b=atk c=def etc), and we do rlc e on
+	; each iteration, bit 0 will be 1 if we have the
+	; power item for the current stat.
+	bit 0, e
+	jr z, .no_power_item
+	add 4
+.no_power_item
+	; check EV doubling with pokerus or macho brace
+	bit 0, d
+	jr z, .no_pokerus
+	add a
+.no_pokerus
+	bit 1, d
+	jr z, .add
+	add a
+.add
+	add [hl]
+	jr c, .ev_overflow
+
+	; Check if our EV is >252 in the stat, and if so,
+	; revert it to 252.
+	cp 253
+	jr c, .add_done
+.ev_overflow
+	ld a, 252
+.add_done
+	ld [hl], a
 	inc hl
-	dec d
+	dec c
 	jr z, .done
-	ld a, d
-	cp 2
-	jr nz, .loop2
 	; For Sat and Sdf, we want to use byte 2
+	ld a, c
+	cp 2
+	jr nz, .loop
 	ld a, [BaseEVYield2]
 	ld b, a
-.loop2_done
-	ld a, d
-	and a
-	jr nz, .loop2
+	jr .loop
 .done
 	pop bc
 	pop de
+	ret
+.item_double
+	set 1, d
+	ret
+.item_hpup
+	set 7, e
+	ret
+.item_atkup
+	set 6, e
+	ret
+.item_defup
+	set 5, e
+	ret
+.item_spdup
+	set 4, e
+	ret
+.item_satup
+	set 3, e
+	ret
+.item_sdfup
+	set 2, e
 	ret
 
 BoostExp: ; 3f106

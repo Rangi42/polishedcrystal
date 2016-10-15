@@ -402,6 +402,15 @@ const_value SET 70
 	const HELD_78
 	const HELD_FOCUS_BAND
 
+const_value SET 80
+	const HELD_EV_DOUBLE
+	const HELD_EV_HP_UP
+	const HELD_EV_ATK_UP
+	const HELD_EV_DEF_UP
+	const HELD_EV_SPD_UP
+	const HELD_EV_SAT_UP
+	const HELD_EV_SDF_UP
+
 	const_def
 	const ITEMATTR_PRICE
 	const ITEMATTR_PRICE_HI
