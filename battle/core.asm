@@ -7970,8 +7970,7 @@ GiveBattleEVs:
 .ev_overflow
 	ld a, 252
 .add_done
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	dec c
 	jr z, .done
 	; For Sat and Sdf, we want to use byte 2
