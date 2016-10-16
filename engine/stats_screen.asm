@@ -873,71 +873,70 @@ TN_PrintLV:
 	db "by trade@"
 
 TN_PrintCharacteristics:
+	; b = value of best DV, c = index of best DV
 	ld hl, TempMonDVs
-	ld d, 0 ; hp
+	; Atk
+	ld c, 1
 	ld a, [hl]
 	and $f
-	ld c, a ; def
+	ld b, a
+	; HP
 	ld a, [hli]
 	swap a
-	and $f ; atk
-	cp c
-	ld e, 2
-	ld b, c
-	jr c, .atk
-	ld e, 1
+	and $f
+	cp b
+	jr nc, .atk_beats_hp
+	ld c, 0
 	ld b, a
-.atk
-	srl a
-	rl d
-	srl c
-	rl d
+.atk_beats_hp
+	; Spd
 	ld a, [hl]
 	and $f
-	ld c, a ; spd
+	cp b
+	jr nc, .last_beats_spd
+	ld c, 5
+	ld b, a
+.last_beats_spd
+	; Def
+	ld a, [hli]
+	swap a
+	and $f
+	cp b
+	jr nc, .last_beats_def
+	ld c, 2
+	ld b, a
+.last_beats_def
+	; SAt
+	ld a, [hl]
+	and $f
+	cp b
+	jr nc, .last_beats_sat
+	ld c, 3
+	ld b, a
+.last_beats_sat
+	; SDf
 	ld a, [hl]
 	swap a
-	and $f ; spc
-	cp c
-	ld l, 5
-	ld h, c
-	jr c, .spx
-	ld l, 3
-	ld h, a
-.spx
-	srl a
-	rl d
-	srl c
-	rl d
-	ld a, b
-	cp h
-	jr nc, .skip
-	ld e, l
-	ld b, h
-.skip
-	ld a, b
-	cp d
-	jr nc, .skiphp
-	ld e, 0
-	ld b, d
-.skiphp
-	ld a, 3
-	cp e
-	jr nz, .skipspx
-	; since DVs don't have SpA/SpD split so we have to
-	; determine it by OT ID
-	ld a, [TempMonID + 1]
-	bit 0, a
-	jr z, .skipspx
-	inc e
-.skipspx
-	ld a, b
-	ld c, 5
-	call SimpleDivide
+	and $f
+	cp b
+	jr nc, .last_beats_sdf
+	ld c, 4
 	ld b, a
-	ld a, e
+.last_beats_sdf
+
+	; a = 5 * c + b % 5
+	ld a, b
+.mod_5
+	cp 5
+	jr c, .modded_5
+	sub 5
+	jr .mod_5
+.modded_5
+	ld b, a
+	ld a, 5
 	call SimpleMultiply
 	add b
+
 	ld l, a
 	ld h, 0
 	ld bc, Characteristics
