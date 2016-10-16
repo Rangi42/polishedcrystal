@@ -367,8 +367,8 @@ Mart25: ; 161ce
 ;	db TM_SWORDS_DANCE ; 20000
 ;	db TM_SUNNY_DAY ; 30000
 ;	db TM_RAIN_DANCE ; 30000
-;	db TM_SANDSTORM ; 30000
-;	db TM_HAIL ; 30000
+;	db TM_SANDSTORM ; 30000 (change old woman to give rest)
+;	db TM_HAIL ; 30000 (change pryce to give icy wind)
 	db $ff
 ; 161d5
 
