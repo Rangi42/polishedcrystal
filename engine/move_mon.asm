@@ -176,7 +176,7 @@ endr
 	and a
 	jp nz, .copywildmonstats
 	; Random DVs
-	zcall Random
+	call Random
 	ld [DVAndPersonalityBuffer], a
 	call Random
 	ld [DVAndPersonalityBuffer + 1], a
