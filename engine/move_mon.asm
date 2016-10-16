@@ -1602,6 +1602,7 @@ CalcPkmnStatC: ; e17b
 	ld bc, MON_NATURE - MON_DVS
 	add hl, bc ; hl points to Nature
 	ld a, [hl]
+	and NATURE_MASK
 	call GetNatureStatMultiplier
 	pop bc
 	pop hl
@@ -1629,7 +1630,7 @@ CalcPkmnStatC: ; e17b
 ; e277
 
 GetNatureStatMultiplier::
-; hl points to Nature
+; a points to Nature
 ; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
 ; returns (sets a to) 9 if c is lowered, 11 if increased, 10 if neutral
 ; (to be used in calculations in CalcPkmnStatC)
