@@ -127,7 +127,7 @@ Route42LyraScript:
 	opentext
 	writetext Route42LyraPresentText
 	buttonsound
-	verbosegiveitem HM_WHIRLPOOL
+	verbosegivetmhm HM_WHIRLPOOL
 	setevent EVENT_GOT_HM06_WHIRLPOOL
 	writetext Route42LyraWhirlpoolText
 	waitbutton

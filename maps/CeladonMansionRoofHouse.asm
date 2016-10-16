@@ -25,13 +25,11 @@ PharmacistScript_0x71afd:
 UnknownScript_0x71b14:
 	writetext UnknownText_0x71ba3
 	buttonsound
-	verbosegiveitem TM_CURSE
-	iffalse UnknownScript_0x71b25
+	verbosegivetmhm TM_CURSE
 	setevent EVENT_GOT_TM03_CURSE
 UnknownScript_0x71b21:
 	writetext UnknownText_0x71db3
 	waitbutton
-UnknownScript_0x71b25:
 	closetext
 	end
 

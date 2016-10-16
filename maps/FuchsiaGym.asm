@@ -50,8 +50,7 @@ UnknownScript_0x195e02:
 	iftrue UnknownScript_0x195e15
 	writetext UnknownText_0x196002
 	buttonsound
-	verbosegiveitem TM_POISON_JAB
-	iffalse JanineCannotGiveTMScript
+	verbosegivetmhm TM_POISON_JAB
 	setevent EVENT_GOT_TM62_POISON_JAB
 	writetext JanineOutroText
 	waitbutton
@@ -61,7 +60,6 @@ UnknownScript_0x195e02:
 UnknownScript_0x195e15:
 	writetext UnknownText_0x196074
 	waitbutton
-JanineCannotGiveTMScript:
 	closetext
 	end
 

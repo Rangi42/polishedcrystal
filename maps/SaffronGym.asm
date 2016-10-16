@@ -46,8 +46,7 @@ SabrinaScript_0x189c2e:
 	iftrue SabrinaAfterTMScript
 	writetext UnknownText_0x189ead
 	buttonsound
-	verbosegiveitem TM_PSYCHIC
-	iffalse SabrinaCannotGiveTMScript
+	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
 	writetext SabrinaOutroText
 	waitbutton
@@ -57,7 +56,6 @@ SabrinaScript_0x189c2e:
 SabrinaAfterTMScript:
 	writetext UnknownText_0x189f6c
 	waitbutton
-SabrinaCannotGiveTMScript:
 	closetext
 	end
 

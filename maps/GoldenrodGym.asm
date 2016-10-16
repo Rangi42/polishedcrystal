@@ -69,8 +69,7 @@ WhitneyScript_0x5400c:
 UnknownScript_0x54064:
 	writetext UnknownText_0x5428b
 	buttonsound
-	verbosegiveitem TM_ATTRACT
-	iffalse UnknownScript_0x5407b
+	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
 	writetext UnknownText_0x54302
 	waitbutton
@@ -80,7 +79,6 @@ UnknownScript_0x54064:
 UnknownScript_0x54077:
 	writetext UnknownText_0x54360
 	waitbutton
-UnknownScript_0x5407b:
 	closetext
 	end
 

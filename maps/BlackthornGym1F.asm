@@ -70,24 +70,10 @@ BlackthornGymClairScript:
 	iftrue .GotTM21
 	writetext BlackthornGymClairText_YouKeptMeWaiting
 	buttonsound
-	giveitem TM_DRAGONBREATH
-	iffalse .BagFull
-	itemtotext TM_DRAGONBREATH, $0
-	writetext BlackthornGymText_ReceivedTM21
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
+	verbosegivetmhm TM_DRAGONBREATH
 	setevent EVENT_GOT_TM21_DRAGONBREATH
 	writetext BlackthornGymClairText_DescribeTM21
 	buttonsound
-	jump .GotTM21
-
-.BagFull:
-	writetext BlackthornGymClairText_BagFull
-	waitbutton
-	closetext
-	end
-
 .GotTM21:
 	writetext BlackthornGymClairText_League
 	waitbutton
@@ -231,11 +217,6 @@ BlackthornGymClairText_YouKeptMeWaiting:
 	line "waiting!"
 
 	para "Here! Take this!"
-	done
-
-BlackthornGymText_ReceivedTM21:
-	text "<PLAYER> received"
-	line "TM21."
 	done
 
 BlackthornGymClairText_DescribeTM21:

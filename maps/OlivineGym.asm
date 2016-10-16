@@ -36,8 +36,7 @@ JasmineScript_0x9c12f:
 	iftrue UnknownScript_0x9c172
 	writetext UnknownText_0x9c354
 	buttonsound
-	verbosegiveitem TM_IRON_TAIL
-	iffalse UnknownScript_0x9c176
+	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
 	writetext UnknownText_0x9c3a5
 	waitbutton
@@ -47,7 +46,6 @@ JasmineScript_0x9c12f:
 UnknownScript_0x9c172:
 	writetext UnknownText_0x9c3d1
 	waitbutton
-UnknownScript_0x9c176:
 	closetext
 	end
 

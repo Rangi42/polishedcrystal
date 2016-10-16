@@ -12,7 +12,7 @@ _ReceiveItem:: ; d1d5
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM
+	dw .TMHM ; impossible
 	dw .Berry
 	dw .KeyItem
 
@@ -37,12 +37,7 @@ _ReceiveItem:: ; d1d5
 	jp ReceiveKeyItem
 
 .TMHM: ; d201
-	ld h, d
-	ld l, e
-	ld a, [CurItem]
-	ld c, a
-	call GetTMHMNumber
-	jp ReceiveTMHM
+	ret
 
 _TossItem:: ; d20d
 	call DoesHLEqualNumItems
@@ -60,7 +55,7 @@ _TossItem:: ; d20d
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM
+	dw .TMHM ; impossible
 	dw .Berry
 	dw .KeyItem
 
@@ -73,12 +68,7 @@ _TossItem:: ; d20d
 	jp RemoveItemFromPocket
 
 .TMHM: ; d22e
-	ld h, d
-	ld l, e
-	ld a, [CurItem]
-	ld c, a
-	call GetTMHMNumber
-	jp TossTMHM
+	ret
 
 .Berry:
 	ld hl, NumBerries
@@ -111,7 +101,7 @@ _CheckItem:: ; d244
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM
+	dw .TMHM ; impossible
 	dw .Berry
 	dw .KeyItem
 
@@ -124,12 +114,7 @@ _CheckItem:: ; d244
 	jp CheckTheItem
 
 .TMHM: ; d265
-	ld h, d
-	ld l, e
-	ld a, [CurItem]
-	ld c, a
-	call GetTMHMNumber
-	jp CheckTMHM
+	ret
 
 .Berry:
 	ld hl, NumBerries
@@ -438,77 +423,6 @@ CheckKeyItems: ; d3b1
 
 .done
 	scf
-	ret
-
-ReceiveTMHM: ; d3c4
-	dec c
-	ld b, 0
-	ld hl, TMsHMs
-	add hl, bc
-	ld a, [wItemQuantityChangeBuffer]
-	add [hl]
-	cp 100
-	jr nc, .toomany
-	ld [hl], a
-	scf
-	ret
-
-.toomany
-	and a
-	ret
-
-TossTMHM: ; d3d8
-	dec c
-	ld b, 0
-	ld hl, TMsHMs
-	add hl, bc
-	ld a, [wItemQuantityChangeBuffer]
-	ld b, a
-	ld a, [hl]
-	sub b
-	jr c, .nope
-	ld [hl], a
-	ld [wItemQuantityBuffer], a
-	jr nz, .yup
-	ld a, [wTMHMPocketScrollPosition]
-	and a
-	jr z, .yup
-	dec a
-	ld [wTMHMPocketScrollPosition], a
-
-.yup
-	scf
-	ret
-
-.nope
-	and a
-	ret
-
-CheckTMHM: ; d3fb
-	dec c
-	ld b, $0
-	ld hl, TMsHMs
-	add hl, bc
-	ld a, [hl]
-	and a
-	ret z
-	scf
-	ret
-
-GetTMHMNumber:: ; d407
-; Return the number of a TM/HM by item id c.
-	ld a, c
-	sub TM01
-	inc a
-	ld c, a
-	ret
-
-GetNumberedTMHM: ; d417
-; Return the item id of a TM/HM by number c.
-	ld a, c
-	add TM01
-	dec a
-	ld c, a
 	ret
 
 _CheckTossableItem:: ; d427

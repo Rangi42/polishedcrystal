@@ -119,8 +119,7 @@ BlaineScript_0x1ab4fb:
 	iftrue BlaineAfterTMScript
 	writetext UnknownText_0x1ab69d
 	buttonsound
-	verbosegiveitem TM_WILL_O_WISP
-	iffalse BlaineCannotGiveTMScript
+	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
 	writetext BlaineOutroText
 	waitbutton
@@ -130,7 +129,6 @@ BlaineScript_0x1ab4fb:
 BlaineAfterTMScript:
 	writetext UnknownText_0x1ab71c
 	waitbutton
-BlaineCannotGiveTMScript:
 	closetext
 	end
 

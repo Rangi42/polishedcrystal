@@ -39,7 +39,7 @@ ReceptionistScript_0x560ce:
 	opentext
 	checkcode VAR_WEEKDAY
 	if_not_equal SUNDAY, .EventIsOver
-	checkitem TM_RETURN
+	checktmhm TM_RETURN
 	iftrue .EventIsOver
 	checkflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
 	iftrue .EventIsOver
@@ -52,8 +52,7 @@ ReceptionistScript_0x560ce:
 .VeryHappy:
 	writetext UnknownText_0x5615a
 	buttonsound
-	verbosegiveitem TM_RETURN
-	iffalse .Done
+	verbosegivetmhm TM_RETURN
 	setflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
 	closetext
 	end
@@ -67,7 +66,6 @@ ReceptionistScript_0x560ce:
 .EventIsOver:
 	writetext UnknownText_0x56202
 	waitbutton
-.Done:
 	closetext
 	end
 

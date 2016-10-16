@@ -34,41 +34,38 @@ CeladonPrizeRoom_tmcounterloop:
 	jump CeladonPrizeRoom_cancel
 
 .doubleteam
-	checkitem TM_DOUBLE_TEAM
+	checktmhm TM_DOUBLE_TEAM
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 1500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	itemtotext TM_DOUBLE_TEAM, $0
+	tmhmtotext TM_DOUBLE_TEAM, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
-	giveitem TM_DOUBLE_TEAM
-	iffalse CeladonPrizeRoom_notenoughroom
+	givetmhm TM_DOUBLE_TEAM
 	takecoins 1500
 	jump CeladonPrizeRoom_purchased
 
 .toxic
-	checkitem TM_TOXIC
+	checktmhm TM_TOXIC
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 3500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	itemtotext TM_TOXIC, $0
+	tmhmtotext TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
-	giveitem TM_TOXIC
-	iffalse CeladonPrizeRoom_notenoughroom
+	givetmhm TM_TOXIC
 	takecoins 3500
 	jump CeladonPrizeRoom_purchased
 
 .hyperbeam
-	checkitem TM_HYPER_BEAM
+	checktmhm TM_HYPER_BEAM
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 7500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	itemtotext TM_HYPER_BEAM, $0
+	tmhmtotext TM_HYPER_BEAM, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
-	giveitem TM_HYPER_BEAM
-	iffalse CeladonPrizeRoom_notenoughroom
+	givetmhm TM_HYPER_BEAM
 	takecoins 7500
 	jump CeladonPrizeRoom_purchased
 

@@ -118,8 +118,7 @@ OfficerScript_0x19ac85:
 	iftrue UnknownScript_0x19ac9c
 	writetext UnknownText_0x19ad9b
 	buttonsound
-	verbosegiveitem TM_SLUDGE_BOMB
-	iffalse UnknownScript_0x19aca0
+	verbosegivetmhm TM_SLUDGE_BOMB
 	setevent EVENT_GOT_TM36_SLUDGE_BOMB
 	closetext
 	end
@@ -127,7 +126,6 @@ OfficerScript_0x19ac85:
 UnknownScript_0x19ac9c:
 	writetext UnknownText_0x19ae2d
 	waitbutton
-UnknownScript_0x19aca0:
 	closetext
 	end
 

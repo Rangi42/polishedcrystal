@@ -42,8 +42,7 @@ BlueScript_0x9aa26:
 	iftrue BlueEpilogueScript
 	writetext LeaderBlueAfterText
 	buttonsound
-	verbosegiveitem TM_STONE_EDGE
-	iffalse BlueCannotGiveTMScript
+	verbosegivetmhm TM_STONE_EDGE
 	setevent EVENT_GOT_TM41_STONE_EDGE
 	writetext BlueOutroText
 	waitbutton
@@ -53,7 +52,6 @@ BlueScript_0x9aa26:
 BlueEpilogueScript:
 	writetext LeaderBlueEpilogueText
 	waitbutton
-BlueCannotGiveTMScript:
 	closetext
 	end
 

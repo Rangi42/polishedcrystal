@@ -36,8 +36,7 @@ BrockScript_0x1a2864:
 	iftrue BrockAfterTMScript
 	writetext UnknownText_0x1a2a57
 	buttonsound
-	verbosegiveitem TM_ROCK_SLIDE
-	iffalse BrockCannotGiveTMScript
+	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
 	writetext BrockOutroText
 	waitbutton
@@ -47,7 +46,6 @@ BrockScript_0x1a2864:
 BrockAfterTMScript:
 	writetext UnknownText_0x1a2ada
 	waitbutton
-BrockCannotGiveTMScript:
 	closetext
 	end
 

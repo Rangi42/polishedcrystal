@@ -1085,3 +1085,33 @@ trainerpic: macro
 check_nuzlocke: macro
 	db check_nuzlocke_command
 	endm
+
+	enum givetmhm_command
+givetmhm: macro
+	db givetmhm_command
+	db \1 ; tmhm
+	endm
+
+	enum checktmhm_command
+checktmhm: macro
+	db checktmhm_command
+	db \1 ; tmhm
+	endm
+
+	enum verbosegivetmhm_command
+verbosegivetmhm: macro
+	db verbosegivetmhm_command
+	db \1 ; tmhm
+	endm
+
+	enum tmhmnotify_command
+tmhmnotify: macro
+	db tmhmnotify_command
+	endm
+
+	enum tmhmtotext_command
+tmhmtotext: macro
+	db tmhmtotext_command
+	db \1 ; tmhm
+	db \2 ; memory
+	endm

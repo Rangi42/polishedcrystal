@@ -18,7 +18,7 @@ SailorScript_0x9c8c1:
 	iftrue UnknownScript_0x9c8d3
 	writetext UnknownText_0x9c8df
 	buttonsound
-	verbosegiveitem HM_STRENGTH
+	verbosegivetmhm HM_STRENGTH
 	setevent EVENT_GOT_HM04_STRENGTH
 UnknownScript_0x9c8d3:
 	writetext UnknownText_0x9c965

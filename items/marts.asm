@@ -146,13 +146,17 @@ Mart8: ; 16134
 ; 1613b
 
 Mart9: ; 1613b
-	db 6 ; # items
-	db TM_REFLECT
-	db TM_LIGHT_SCREEN
-	db TM_THUNDER
-	db TM_FIRE_BLAST
-	db TM_BLIZZARD
-	db TM_SOLAR_BEAM
+	db 1 ; # items
+	db POTION
+;	db 8 ; # items
+;	db TM_PROTECT ; 10000
+;	db TM_REFLECT ; 10000
+;	db TM_LIGHT_SCREEN ; 10000
+;	db TM_SOLAR_BEAM ; 25000
+;	db TM_THUNDER ; 30000
+;	db TM_FIRE_BLAST ; 30000
+;	db TM_BLIZZARD ; 30000
+;	db TM_HYPER_BEAM ; 50000
 	db $ff
 ; 16140
 
@@ -354,13 +358,17 @@ Mart24: ; 161c2
 ; 161ce
 
 Mart25: ; 161ce
-	db 6 ; # items
-	db TM_SAFEGUARD
-	db TM_PROTECT
-	db TM_CALM_MIND
-	db TM_BULK_UP
-	db TM_SWORDS_DANCE
-	db TM_REST
+	db 1 ; # items
+	db POTION
+;	db 8 ; # items
+;	db TM_SAFEGUARD ; 10000
+;	db TM_CALM_MIND ; 20000
+;	db TM_BULK_UP ; 20000
+;	db TM_SWORDS_DANCE ; 20000
+;	db TM_SUNNY_DAY ; 30000
+;	db TM_RAIN_DANCE ; 30000
+;	db TM_SANDSTORM ; 30000
+;	db TM_HAIL ; 30000
 	db $ff
 ; 161d5
 

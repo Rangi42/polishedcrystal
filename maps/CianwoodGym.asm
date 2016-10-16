@@ -61,8 +61,7 @@ ChuckScript_0x9d60f:
 	setevent EVENT_BEAT_BLACKBELT_LUNG
 	writetext ChuckExplainBadgeText
 	buttonsound
-	verbosegiveitem TM_DYNAMICPUNCH
-	iffalse .BagFull
+	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
 	writetext ChuckExplainTMText
 	waitbutton
@@ -72,7 +71,6 @@ ChuckScript_0x9d60f:
 .AlreadyGotTM:
 	writetext ChuckAfterText
 	waitbutton
-.BagFull:
 	closetext
 	end
 

@@ -88,8 +88,7 @@ MistyScript_0x188432:
 	iftrue MistyAfterTMScript
 	writetext MistyGiveTMText
 	buttonsound
-	verbosegiveitem TM_SCALD
-	iffalse MistyCannotGiveTMScript
+	verbosegivetmhm TM_SCALD
 	setevent EVENT_GOT_TM55_SCALD
 	writetext MistyOutroText
 	waitbutton
@@ -99,7 +98,6 @@ MistyScript_0x188432:
 MistyAfterTMScript:
 	writetext UnknownText_0x188782
 	waitbutton
-MistyCannotGiveTMScript:
 	closetext
 	end
 

@@ -898,18 +898,10 @@ GetItemName:: ; 3468
 	push hl
 	push bc
 	ld a, [wd265]
-
-	cp TM01
-	jr nc, .TM
-
 	ld [CurSpecies], a
 	ld a, ITEM_NAME
 	ld [wNamedObjectTypeBuffer], a
 	call GetName
-	jr .Copied
-.TM:
-	call GetTMHMName
-.Copied:
 	ld de, StringBuffer1
 	pop bc
 	pop hl
@@ -943,11 +935,8 @@ GetTMHMName:: ; 3487
 	call CopyBytes
 
 ; TM/HM number
-	push de
 	ld a, [wd265]
 	ld c, a
-	farcall GetTMHMNumber
-	pop de
 
 ; HM numbers start from 51, not 1
 	pop af

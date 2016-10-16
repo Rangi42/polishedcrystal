@@ -100,10 +100,8 @@ GentlemanScript_0x75f1f:
 UnknownScript_0x75f37:
 	writetext UnknownText_0x7619b
 	buttonsound
-	verbosegiveitem TM_BODY_SLAM
-	iffalse UnknownScript_0x75f44
+	verbosegivetmhm TM_BODY_SLAM
 	setevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
-UnknownScript_0x75f44:
 	closetext
 	waitsfx
 	playsound SFX_ELEVATOR_END
@@ -119,7 +117,7 @@ UnknownScript_0x75f44:
 UnknownScript_0x75f58:
 	writetext UnknownText_0x7619b
 	buttonsound
-	verbosegiveitem TM_BODY_SLAM
+	verbosegivetmhm TM_BODY_SLAM
 	iffalse UnknownScript_0x75f65
 	setevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
 UnknownScript_0x75f65:

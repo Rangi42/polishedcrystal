@@ -47,7 +47,7 @@ LoreleiAfterIntroScript:
 	opentext
 	writetext LoreleiRewardText
 	buttonsound
-	verbosegiveitem TM_AVALANCHE
+	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
 LoreleiAfterScript:
 	writetext LoreleiAfterText
@@ -84,7 +84,7 @@ LoreleiAfterRematchIntroScript:
 	iftrue LoreleiRematchAfterScript
 	writetext LoreleiRewardText
 	buttonsound
-	verbosegiveitem TM_AVALANCHE
+	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
 LoreleiRematchAfterScript:
 	writetext LoreleiRematchAfterText

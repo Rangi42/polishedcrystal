@@ -291,7 +291,7 @@ UnknownScript_0x6d184:
 	opentext
 	writetext UnknownText_0x6d809
 	buttonsound
-	verbosegiveitem TM_THIEF
+	verbosegivetmhm TM_THIEF
 	setevent EVENT_GOT_TM46_THIEF_FROM_LANCE
 	writetext UnknownText_0x6d8f8
 	waitbutton

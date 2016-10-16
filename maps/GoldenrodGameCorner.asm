@@ -50,41 +50,38 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .flamethrower:
-	checkitem TM_FLAMETHROWER
+	checktmhm TM_FLAMETHROWER
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 4000
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_FLAMETHROWER, $0
+	tmhmtotext TM_FLAMETHROWER, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_FLAMETHROWER
-	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
+	givetmhm TM_FLAMETHROWER
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
 .ice_beam:
-	checkitem TM_ICE_BEAM
+	checktmhm TM_ICE_BEAM
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 4000
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_ICE_BEAM, $0
+	tmhmtotext TM_ICE_BEAM, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_ICE_BEAM
-	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
+	givetmhm TM_ICE_BEAM
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
 .thunderbolt:
-	checkitem TM_THUNDERBOLT
+	checktmhm TM_THUNDERBOLT
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 4000
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	itemtotext TM_THUNDERBOLT, $0
+	tmhmtotext TM_THUNDERBOLT, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	giveitem TM_THUNDERBOLT
-	iffalse GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
+	givetmhm TM_THUNDERBOLT
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 

@@ -22,13 +22,11 @@ SandstormHouseWoman:
 .Loyal:
 	writetext SandstormHouseWomanLoyalText
 	buttonsound
-	verbosegiveitem TM_SANDSTORM
-	iffalse .Done
+	verbosegivetmhm TM_SANDSTORM
 	setevent EVENT_GOT_TM37_SANDSTORM
 .AlreadyGotItem:
 	writetext SandstormHouseSandstormDescription
 	waitbutton
-.Done:
 	closetext
 	end
 

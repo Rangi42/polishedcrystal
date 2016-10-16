@@ -62,26 +62,13 @@ DragonsDenB1F_ClairTrigger:
 	opentext
 	writetext ClairText_GiveDragonbreathDragonDen
 	buttonsound
-	giveitem TM_DRAGONBREATH
-	iffalse .BagFull
-	itemtotext TM_DRAGONBREATH, $0
-	writetext NotifyReceiveDragonbreath
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
+	verbosegivetmhm TM_DRAGONBREATH
 	setevent EVENT_GOT_TM21_DRAGONBREATH
 	writetext ClairText_DescribeDragonbreathDragonDen
 	buttonsound
 	writetext ClairText_WhatsTheMatterDragonDen
 	waitbutton
 	closetext
-	jump .FinishClair
-
-.BagFull:
-	writetext ClairText_NoRoom
-	waitbutton
-	closetext
-.FinishClair:
 	applymovement DRAGONSDENB1F_CLAIR, MovementDragonsDen_ClairWalksAway
 	special Special_FadeOutMusic
 	pause 30
@@ -223,11 +210,6 @@ ClairText_GiveDragonbreathDragonDen:
 
 	para "Here, take this as"
 	line "my apology."
-	done
-
-NotifyReceiveDragonbreath:
-	text "<PLAYER> received"
-	line "TM21."
 	done
 
 ClairText_DescribeDragonbreathDragonDen:

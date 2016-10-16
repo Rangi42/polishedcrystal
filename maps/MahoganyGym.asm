@@ -44,8 +44,7 @@ PryceScript_0x199a9e:
 	setevent EVENT_BEAT_BOARDER_DOUGLAS
 	writetext UnknownText_0x199d55
 	buttonsound
-	verbosegiveitem TM_HAIL
-	iffalse UnknownScript_0x199af4
+	verbosegivetmhm TM_HAIL
 	setevent EVENT_GOT_TM07_HAIL
 	writetext UnknownText_0x199def
 	waitbutton
@@ -55,7 +54,6 @@ PryceScript_0x199a9e:
 UnknownScript_0x199af0:
 	writetext UnknownText_0x199e59
 	waitbutton
-UnknownScript_0x199af4:
 	closetext
 	end
 

@@ -107,7 +107,7 @@ UnknownScript_0x994ff:
 UnknownScript_0x99505:
 	writetext UnknownText_0x9991a
 	buttonsound
-	verbosegiveitem HM_SURF
+	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
 	writetext UnknownText_0x9999b
 	waitbutton

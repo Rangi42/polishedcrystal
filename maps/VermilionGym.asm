@@ -59,8 +59,7 @@ SurgeScript_0x1920a5:
 	iftrue SurgeAfterTMScript
 	writetext UnknownText_0x192291
 	buttonsound
-	verbosegiveitem TM_WILD_CHARGE
-	iffalse SurgeCannotGiveTMScript
+	verbosegivetmhm TM_WILD_CHARGE
 	setevent EVENT_GOT_TM43_WILD_CHARGE
 	writetext SurgeOutroText
 	waitbutton
@@ -70,7 +69,6 @@ SurgeScript_0x1920a5:
 SurgeAfterTMScript:
 	writetext UnknownText_0x192303
 	waitbutton
-SurgeCannotGiveTMScript:
 	closetext
 	end
 

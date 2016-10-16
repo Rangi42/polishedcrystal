@@ -1702,6 +1702,7 @@ wd103:: ds 1
 wd104:: ds 1
 wd105:: ds 1
 
+CurTMHM::
 CurItem:: ds 1 ; d106
 CurItemQuantity:: ; d107
 wMartItemID::
@@ -2420,7 +2421,7 @@ KantoBadges:: ; d858
 
 
 TMsHMs:: ; d859
-	ds NUM_TMS + NUM_HMS
+	flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
 
 NumItems:: ; d892

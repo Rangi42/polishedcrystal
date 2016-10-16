@@ -57,8 +57,7 @@ MortyScript_0x99d58:
 	setevent EVENT_BEAT_MEDIUM_GRACE
 	writetext UnknownText_0x9a059
 	buttonsound
-	verbosegiveitem TM_SHADOW_BALL
-	iffalse UnknownScript_0x99db5
+	verbosegivetmhm TM_SHADOW_BALL
 	setevent EVENT_GOT_TM30_SHADOW_BALL
 	writetext UnknownText_0x9a0ec
 	waitbutton
@@ -68,7 +67,6 @@ MortyScript_0x99d58:
 UnknownScript_0x99db1:
 	writetext UnknownText_0x9a145
 	waitbutton
-UnknownScript_0x99db5:
 	closetext
 	end
 

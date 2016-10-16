@@ -15,8 +15,7 @@ HiddenPowerGuy:
 	iftrue .AlreadyGotItem
 	writetext HiddenPowerGuyText1
 	buttonsound
-	verbosegiveitem TM_HIDDEN_POWER
-	iffalse .Done
+	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
 	writetext HiddenPowerGuyText2
 	waitbutton
@@ -25,7 +24,6 @@ HiddenPowerGuy:
 .AlreadyGotItem:
 	writetext HiddenPowerGuyText3
 	waitbutton
-.Done:
 	closetext
 	end
 

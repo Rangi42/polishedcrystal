@@ -7,38 +7,10 @@ TMHMPocket: ; 2c76f (b:476f)
 	ret nc
 	call PlaceHollowCursor
 	call WaitBGMap
-	ld a, [CurItem]
-	dec a
+	ld a, [CurTMHM]
 	ld [CurItemQuantity], a
-	ld hl, TMsHMs
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
 	ld [wItemQuantityBuffer], a
-	call .ConvertItemToTMHMNumber
 	scf
-	ret
-
-.ConvertItemToTMHMNumber: ; 2c798 (b:4798)
-	ld a, [CurItem]
-	ld c, a
-	farcall GetNumberedTMHM
-	ld a, c
-	ld [CurItem], a
-	ret
-
-ConvertCurItemIntoCurTMHM: ; 2c7a7 (b:47a7)
-	ld a, [CurItem]
-	ld c, a
-	farcall GetTMHMNumber
-	ld a, c
-	ld [wCurTMHM], a
-	ret
-
-GetTMHMItemMove: ; 2c7b6 (b:47b6)
-	call ConvertCurItemIntoCurTMHM
-	predef GetTMHMMove
 	ret
 
 AskTeachTMHM: ; 2c7bf (b:47bf)
@@ -46,16 +18,16 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
-	ld a, [CurItem]
+	ld a, [CurTMHM]
 	cp TM01
 	jr c, .NotTMHM
-	call GetTMHMItemMove
+	predef GetTMHMMove
 	ld a, [wCurTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
-	ld a, [CurItem]
+	ld a, [CurTMHM]
 	cp HM01
 	jr c, .TM
 	ld hl, Text_BootedHM ; Booted up an HM
@@ -152,7 +124,6 @@ TeachTMHM: ; 2c867
 
 	ld c, HAPPINESS_LEARNMOVE
 	farcall ChangeHappiness
-	;call ConsumeTM
 	jr .learned_move
 
 .nope
@@ -249,7 +220,7 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	ld b, 4
 	ld c, SCREEN_WIDTH - 2
 	call TextBox
-	ld a, [CurItem]
+	ld a, [CurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, TMHM_JoypadLoop
 	ld [wd265], a
@@ -288,7 +259,7 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	jr nz, .loop
 	ld a, c
 .okay
-	ld [CurItem], a
+	ld [CurTMHM], a
 	cp -1
 	ret
 
@@ -392,24 +363,6 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	call PlaceString
 	pop hl
 	pop bc
-;	ld a, c
-;	push bc
-;	cp NUM_TMS + 1
-;	jr nc, .hm2
-;	ld bc, SCREEN_WIDTH + 9
-;	add hl, bc
-;	ld [hl], "×"
-;	inc hl
-;	ld a, "0" ; why are we doing this?
-;	pop bc
-;	push bc
-;	ld a, b
-;	ld [wd265], a
-;	ld de, wd265
-;	lb bc, 1, 2
-;	call PrintNum
-;.hm2
-;	pop bc
 	pop de
 	pop hl
 	dec d
@@ -453,8 +406,19 @@ TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
 	inc b
 	ld c, 0
 .loop
+
+	push bc
+	push de
+	ld a, c
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	call FlagAction
+	ld a, c
+	pop de
+	pop bc
+
 	inc c
-	ld a, [hli]
 	and a
 	jr z, .loop
 	dec b
@@ -479,33 +443,24 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 	ret
 ; 2cadf (b:4adf)
 
-ConsumeTM: ; 2cb0c (b:4b0c)
-	call ConvertCurItemIntoCurTMHM
-	ld a, [wd265]
-	dec a
-	ld hl, TMsHMs
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
-	and a
-	ret z
-	dec a
-	ld [hl], a
-	ret nz
-	ld a, [wTMHMPocketScrollPosition]
-	and a
-	ret z
-	dec a
-	ld [wTMHMPocketScrollPosition], a
-	ret
-
 CountTMsHMs: ; 2cb2a (b:4b2a)
 	ld b, 0
 	ld c, NUM_TMS + NUM_HMS
 	ld hl, TMsHMs
 .loop
-	ld a, [hli]
+
+	push bc
+	push de
+	ld a, c
+	dec a
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	call FlagAction
+	ld a, c
+	pop de
+	pop bc
+
 	and a
 	jr z, .skip
 	inc b

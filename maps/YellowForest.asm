@@ -79,7 +79,7 @@ YellowForestWalkerScript:
 	opentext
 	writetext YellowForestWalkerAfterText
 	buttonsound
-	verbosegiveitem HM_FLY
+	verbosegivetmhm HM_FLY
 	setevent EVENT_GOT_HM02_FLY
 	writetext YellowForestWalkerFinalText
 	waitbutton

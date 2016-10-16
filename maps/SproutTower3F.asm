@@ -80,7 +80,7 @@ SageLiScript:
 	opentext
 	writetext UnknownText_0x184cc2
 	buttonsound
-	verbosegiveitem HM_FLASH
+	verbosegivetmhm HM_FLASH
 	setevent EVENT_GOT_HM05_FLASH
 	setevent EVENT_BEAT_ELDER_LI
 	writetext UnknownText_0x184d13

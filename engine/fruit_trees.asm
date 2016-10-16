@@ -71,7 +71,7 @@ TryResetFruitTrees: ; 4404c
 ; 44055
 
 CheckFruitTree: ; 44055
-	ld b, 2
+	ld b, CHECK_FLAG
 	call GetFruitTreeFlag
 	ld a, c
 	ld [ScriptVar], a
@@ -79,7 +79,7 @@ CheckFruitTree: ; 44055
 ; 4405f
 
 PickedFruitTree: ; 4405f
-	ld b, 1
+	ld b, SET_FLAG
 	jp GetFruitTreeFlag
 ; 4406a
 

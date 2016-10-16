@@ -54,13 +54,11 @@ TeacherScript_0x62d63:
 	iftrue UnknownScript_0x62d7e
 	writetext UnknownText_0x62d9d
 	buttonsound
-	verbosegiveitem TM_FALSE_SWIPE
-	iffalse UnknownScript_0x62d82
+	verbosegivetmhm TM_FALSE_SWIPE
 	setevent EVENT_GOT_TM54_FALSE_SWIPE
 UnknownScript_0x62d7e:
 	writetext UnknownText_0x62df6
 	waitbutton
-UnknownScript_0x62d82:
 	closetext
 	end
 

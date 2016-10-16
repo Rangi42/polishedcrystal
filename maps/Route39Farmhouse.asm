@@ -110,13 +110,11 @@ PokefanFScript_0x9cf0e:
 UnknownScript_0x9cf22:
 	writetext UnknownText_0x9d156
 	buttonsound
-	verbosegiveitem TM_SUBSTITUTE
-	iffalse UnknownScript_0x9cf33
+	verbosegivetmhm TM_SUBSTITUTE
 	setevent EVENT_GOT_TM50_SUBSTITUTE_FROM_MOOMOO_FARM
 UnknownScript_0x9cf2f:
 	writetext UnknownText_0x9d1c7
 	waitbutton
-UnknownScript_0x9cf33:
 	closetext
 	end
 

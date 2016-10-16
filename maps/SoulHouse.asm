@@ -41,7 +41,7 @@ AgathaScript:
 	opentext
 	writetext AgathaRewardText
 	buttonsound
-	verbosegiveitem TM_SHADOW_CLAW
+	verbosegivetmhm TM_SHADOW_CLAW
 	setevent EVENT_GOT_TM65_SHADOW_CLAW_FROM_AGATHA
 AgathaAfterScript:
 	writetext AgathaAfterText

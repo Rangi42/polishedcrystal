@@ -44,8 +44,7 @@ BugsyScript:
 	setevent EVENT_BEAT_BUG_CATCHER_JOSH
 	writetext BugsyText_HiveBadgeSpeech
 	buttonsound
-	verbosegiveitem TM_FURY_CUTTER
-	iffalse .NoRoomForFuryCutter
+	verbosegivetmhm TM_FURY_CUTTER
 	setevent EVENT_GOT_TM49_FURY_CUTTER
 	writetext BugsyText_FuryCutterSpeech
 	waitbutton
@@ -55,7 +54,6 @@ BugsyScript:
 .GotFuryCutter:
 	writetext BugsyText_BugMonsAreDeep
 	waitbutton
-.NoRoomForFuryCutter:
 	closetext
 	end
 

@@ -40,8 +40,7 @@ ErikaScript_0x72a6a:
 	iftrue UnknownScript_0x72aae
 	writetext UnknownText_0x72cb0
 	buttonsound
-	verbosegiveitem TM_GIGA_DRAIN
-	iffalse ErikaCannotGiveTMScript
+	verbosegivetmhm TM_GIGA_DRAIN
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
 	writetext ErikaOutroText
 	waitbutton
@@ -51,7 +50,6 @@ ErikaScript_0x72a6a:
 UnknownScript_0x72aae:
 	writetext UnknownText_0x72d8f
 	waitbutton
-ErikaCannotGiveTMScript:
 	closetext
 	end
 
