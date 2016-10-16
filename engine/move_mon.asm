@@ -1943,6 +1943,7 @@ GetRandomGender:
 	ld b, a
 
 ; We need the gender ratio to do anything with this.
+	push hl
 	push bc
 	ld a, [CurPartySpecies]
 	dec a
@@ -1950,6 +1951,7 @@ GetRandomGender:
 	ld bc, BASEMON_STRUCT_LENGTH
 	call AddNTimes
 	pop bc
+	pop hl
 
 	ld a, BANK(BaseData)
 	call GetFarByte
