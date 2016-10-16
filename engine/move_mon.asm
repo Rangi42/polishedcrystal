@@ -176,7 +176,7 @@ endr
 	and a
 	jp nz, .copywildmonstats
 	; Random DVs
-	call Random
+	zcall Random
 	ld [DVAndPersonalityBuffer], a
 	call Random
 	ld [DVAndPersonalityBuffer + 1], a
@@ -1603,6 +1603,8 @@ CalcPkmnStatC: ; e17b
 	add hl, bc ; hl points to Nature
 	ld a, [hl]
 	and NATURE_MASK
+	pop bc
+	push bc
 	call GetNatureStatMultiplier
 	pop bc
 	pop hl
