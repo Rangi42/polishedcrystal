@@ -7,9 +7,11 @@ TMHMPocket: ; 2c76f (b:476f)
 	ret nc
 	call PlaceHollowCursor
 	call WaitBGMap
+
 	ld a, [CurTMHM]
 	ld [CurItemQuantity], a
 	ld [wItemQuantityBuffer], a
+
 	scf
 	ret
 
@@ -299,15 +301,16 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 ; 2cadf (b:4adf)
 
 CountTMsHMs: ; 2cb2a (b:4b2a)
+	push de
 	ld b, 0
 	ld c, NUM_TMS + NUM_HMS
+	ld d, 0
 	ld hl, TMsHMs
 .loop
 
 	push bc
 	push de
-	ld a, c
-	dec a
+	ld a, d
 	ld e, a
 	ld d, 0
 	ld b, CHECK_FLAG
@@ -315,6 +318,7 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	ld a, c
 	pop de
 	pop bc
+	inc d
 
 	and a
 	jr z, .skip
@@ -324,6 +328,7 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	jr nz, .loop
 	ld a, b
 	ld [wd265], a
+	pop de
 	ret
 
 PrintMoveDesc: ; 2cb3e
@@ -349,6 +354,7 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	push af
 	res NO_TEXT_SCROLL, [hl]
 	ld a, [CurTMHM]
+	ld [wCurTMHM], a
 	predef GetTMHMMove
 	ld a, [wCurTMHM]
 	ld [wPutativeTMHMMove], a
@@ -460,6 +466,7 @@ TeachTMHM: ; 2c867
 .learned_move
 	scf
 	ret
+; 2c8bf (b:48bf)
 
 Text_BootedTM: ; 0x2c8bf
 	; Booted up a TM.
