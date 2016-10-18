@@ -19,8 +19,6 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	push af
 	res NO_TEXT_SCROLL, [hl]
 	ld a, [CurTMHM]
-	cp TM01
-	jr c, .NotTMHM
 	predef GetTMHMMove
 	ld a, [wCurTMHM]
 	ld [wPutativeTMHMMove], a
@@ -36,7 +34,6 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	ld hl, Text_ItContained
 	call PrintText
 	call YesNoBox
-.NotTMHM:
 	pop bc
 	ld a, b
 	ld [Options], a
@@ -118,7 +115,7 @@ TeachTMHM: ; 2c867
 	and a
 	jr z, .nope
 
-	ld a, [CurItem]
+	ld a, [CurTMHM]
 	call IsHM
 	ret c
 
