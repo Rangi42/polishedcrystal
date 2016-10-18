@@ -13,148 +13,6 @@ TMHMPocket: ; 2c76f (b:476f)
 	scf
 	ret
 
-AskTeachTMHM: ; 2c7bf (b:47bf)
-	ld hl, Options
-	ld a, [hl]
-	push af
-	res NO_TEXT_SCROLL, [hl]
-	ld a, [CurTMHM]
-	predef GetTMHMMove
-	ld a, [wCurTMHM]
-	ld [wPutativeTMHMMove], a
-	call GetMoveName
-	call CopyName1
-	ld hl, Text_BootedTM ; Booted up a TM
-	ld a, [CurTMHM]
-	cp HM01
-	jr c, .TM
-	ld hl, Text_BootedHM ; Booted up an HM
-.TM:
-	call PrintText
-	ld hl, Text_ItContained
-	call PrintText
-	call YesNoBox
-	pop bc
-	ld a, b
-	ld [Options], a
-	ret
-
-ChooseMonToLearnTMHM: ; 2c7fb
-	ld hl, StringBuffer2
-	ld de, wTMHMMoveNameBackup
-	ld bc, 12
-	call CopyBytes
-	call ClearBGPalettes
-ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
-	farcall LoadPartyMenuGFX
-	farcall InitPartyMenuWithCancel
-	farcall InitPartyMenuGFX
-	ld a, $3 ; TeachWhichPKMNString
-	ld [PartyMenuActionText], a
-.loopback
-	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
-	call WaitBGMap
-	call SetPalettes
-	call DelayFrame
-	farcall PartyMenuSelect
-	push af
-	ld a, [CurPartySpecies]
-	cp EGG
-	pop bc ; now contains the former contents of af
-	jr z, .egg
-	push bc
-	ld hl, wTMHMMoveNameBackup
-	ld de, StringBuffer2
-	ld bc, 12
-	call CopyBytes
-	pop af ; now contains the original contents of af
-	ret
-
-.egg
-	push hl
-	push de
-	push bc
-	push af
-	ld de, SFX_WRONG
-	call PlaySFX
-	call WaitSFX
-	pop af
-	pop bc
-	pop de
-	pop hl
-	jr .loopback
-; 2c867
-
-TeachTMHM: ; 2c867
-	predef CanLearnTMHMMove
-
-	push bc
-	ld a, [CurPartyMon]
-	ld hl, PartyMonNicknames
-	call GetNick
-	pop bc
-
-	ld a, c
-	and a
-	jr nz, .compatible
-	push de
-	ld de, SFX_WRONG
-	call PlaySFX
-	pop de
-	ld hl, Text_TMHMNotCompatible
-	call PrintText
-	jr .nope
-
-.compatible
-	farcall KnowsMove
-	jr c, .nope
-
-	predef LearnMove
-	ld a, b
-	and a
-	jr z, .nope
-
-	ld a, [CurTMHM]
-	call IsHM
-	ret c
-
-	ld c, HAPPINESS_LEARNMOVE
-	farcall ChangeHappiness
-	jr .learned_move
-
-.nope
-	and a
-	ret
-
-.learned_move
-	scf
-	ret
-
-Text_BootedTM: ; 0x2c8bf
-	; Booted up a TM.
-	text_jump UnknownText_0x1c0373
-	db "@"
-; 0x2c8c4
-
-Text_BootedHM: ; 0x2c8c4
-	; Booted up an HM.
-	text_jump UnknownText_0x1c0384
-	db "@"
-; 0x2c8c9
-
-Text_ItContained: ; 0x2c8c9
-	; It contained @ . Teach @ to a #MON?
-	text_jump UnknownText_0x1c0396
-	db "@"
-; 0x2c8ce
-
-Text_TMHMNotCompatible: ; 0x2c8ce
-	; is not compatible with @ . It can't learn @ .
-	text_jump UnknownText_0x1c03c2
-	db "@"
-; 0x2c8d3
-
 TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 	xor a
 	ld [hBGMapMode], a
@@ -484,3 +342,145 @@ endr
 	pop hl
 	jp PlaceString
 ; 2cb52
+
+AskTeachTMHM: ; 2c7bf (b:47bf)
+	ld hl, Options
+	ld a, [hl]
+	push af
+	res NO_TEXT_SCROLL, [hl]
+	ld a, [CurTMHM]
+	predef GetTMHMMove
+	ld a, [wCurTMHM]
+	ld [wPutativeTMHMMove], a
+	call GetMoveName
+	call CopyName1
+	ld hl, Text_BootedTM ; Booted up a TM
+	ld a, [CurTMHM]
+	cp HM01
+	jr c, .TM
+	ld hl, Text_BootedHM ; Booted up an HM
+.TM:
+	call PrintText
+	ld hl, Text_ItContained
+	call PrintText
+	call YesNoBox
+	pop bc
+	ld a, b
+	ld [Options], a
+	ret
+
+ChooseMonToLearnTMHM: ; 2c7fb
+	ld hl, StringBuffer2
+	ld de, wTMHMMoveNameBackup
+	ld bc, 12
+	call CopyBytes
+	call ClearBGPalettes
+ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
+	farcall LoadPartyMenuGFX
+	farcall InitPartyMenuWithCancel
+	farcall InitPartyMenuGFX
+	ld a, $3 ; TeachWhichPKMNString
+	ld [PartyMenuActionText], a
+.loopback
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
+	call WaitBGMap
+	call SetPalettes
+	call DelayFrame
+	farcall PartyMenuSelect
+	push af
+	ld a, [CurPartySpecies]
+	cp EGG
+	pop bc ; now contains the former contents of af
+	jr z, .egg
+	push bc
+	ld hl, wTMHMMoveNameBackup
+	ld de, StringBuffer2
+	ld bc, 12
+	call CopyBytes
+	pop af ; now contains the original contents of af
+	ret
+
+.egg
+	push hl
+	push de
+	push bc
+	push af
+	ld de, SFX_WRONG
+	call PlaySFX
+	call WaitSFX
+	pop af
+	pop bc
+	pop de
+	pop hl
+	jr .loopback
+; 2c867
+
+TeachTMHM: ; 2c867
+	predef CanLearnTMHMMove
+
+	push bc
+	ld a, [CurPartyMon]
+	ld hl, PartyMonNicknames
+	call GetNick
+	pop bc
+
+	ld a, c
+	and a
+	jr nz, .compatible
+	push de
+	ld de, SFX_WRONG
+	call PlaySFX
+	pop de
+	ld hl, Text_TMHMNotCompatible
+	call PrintText
+	jr .nope
+
+.compatible
+	farcall KnowsMove
+	jr c, .nope
+
+	predef LearnMove
+	ld a, b
+	and a
+	jr z, .nope
+
+	ld a, [CurTMHM]
+	call IsHM
+	ret c
+
+	ld c, HAPPINESS_LEARNMOVE
+	farcall ChangeHappiness
+	jr .learned_move
+
+.nope
+	and a
+	ret
+
+.learned_move
+	scf
+	ret
+
+Text_BootedTM: ; 0x2c8bf
+	; Booted up a TM.
+	text_jump UnknownText_0x1c0373
+	db "@"
+; 0x2c8c4
+
+Text_BootedHM: ; 0x2c8c4
+	; Booted up an HM.
+	text_jump UnknownText_0x1c0384
+	db "@"
+; 0x2c8c9
+
+Text_ItContained: ; 0x2c8c9
+	; It contained @ . Teach @ to a #MON?
+	text_jump UnknownText_0x1c0396
+	db "@"
+; 0x2c8ce
+
+Text_TMHMNotCompatible: ; 0x2c8ce
+	; is not compatible with @ . It can't learn @ .
+	text_jump UnknownText_0x1c03c2
+	db "@"
+; 0x2c8d3
