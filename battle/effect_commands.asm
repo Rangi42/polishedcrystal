@@ -2411,10 +2411,10 @@ GetFailureResultText: ; 350e4
 	ld hl, CurDamage
 	ld a, [hli]
 	ld b, [hl]
-	rept 3
+rept 3
 	srl a
 	rr b
-	endr
+endr
 	ld [hl], b
 	dec hl
 	ld [hli], a
@@ -5390,6 +5390,49 @@ BattleCommand_ParalyzeTarget: ; 36165
 
 ; 361ac
 
+BattleCommand_BulkUp:
+	ld b, ATTACK
+	ld c, DEFENSE
+	jp BattleCommand_DoubleUp
+BattleCommand_CalmMind:
+	ld b, SP_ATTACK
+	ld c, SP_DEFENSE
+	jp BattleCommand_DoubleUp
+BattleCommand_Growth:
+	ld b, ATTACK
+	ld c, SP_ATTACK
+	ld a, [Weather]
+	cp WEATHER_SUN
+	jp nz, BattleCommand_DoubleUp
+	ld b, $10 | ATTACK
+	ld c, $10 | SP_ATTACK
+	jp BattleCommand_DoubleUp
+BattleCommand_DragonDance:
+	ld b, ATTACK
+	ld c, SPEED
+	jp BattleCommand_DoubleUp
+BattleCommand_HoneClaws:
+	ld b, ATTACK
+	ld c, ACCURACY
+BattleCommand_DoubleUp:
+; stats to raise are in bc
+	push bc ; StatUp clobbers c (via CheckIfStatCanBeRaised), which we want to retain
+	call ResetMiss
+	call BattleCommand_StatUp
+	ld a, [FailedMessage]
+	ld d, a ; note for 2nd stat
+	and a
+	call z, BattleCommand_StatUpMessage
+	pop bc
+	ld b, c
+	call ResetMiss
+	call BattleCommand_StatUp
+	ld a, [FailedMessage]
+	and a
+	jp z, BattleCommand_StatUpMessage
+	and d ; if this result in a being nonzero, we want to give a failure message
+	ret z
+	jp BattleCommand_StatUpMessage
 
 BattleCommand_AttackUp: ; 361ac
 ; attackup
@@ -7285,17 +7328,6 @@ BattleCommand_Charge: ; 36b4d
 	text_jump UnknownText_0x1c0d6c
 	db "@"
 ; 36c2c
-
-
-INCLUDE "battle/effects/bulkup.asm"
-
-INCLUDE "battle/effects/calmmind.asm"
-
-INCLUDE "battle/effects/growth.asm"
-
-INCLUDE "battle/effects/dragondance.asm"
-
-INCLUDE "battle/effects/honeclaws.asm"
 
 BattleCommand_TrapTarget: ; 36c2d
 ; traptarget
