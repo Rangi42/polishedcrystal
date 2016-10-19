@@ -1401,16 +1401,10 @@ Calcium: ; ee3d
 
 	add hl, bc
 	ld a, [hl]
-	cp 252
+	cp 243
 	jr nc, NoEffectMessage
 
 	add 10
-	jr c, .ev_overflow
-	cp 253
-	jr c, .ev_ok
-.ev_overflow
-	ld a, 252
-.ev_ok
 	ld [hl], a
 	call UpdateStatsAfterItem
 
