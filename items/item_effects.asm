@@ -1401,7 +1401,7 @@ Calcium: ; ee3d
 
 	add hl, bc
 	ld a, [hl]
-	cp 242
+	cp 243
 	jr nc, NoEffectMessage
 
 	add 10
@@ -1482,7 +1482,7 @@ StatStrings: ; eeab
 
 GetEVRelativePointer: ; eed9
 	ld a, [CurItem]
-	ld hl, Table_eeeb
+	ld hl, Table_EVByVitamin
 .next
 	cp [hl]
 	inc hl
@@ -1497,7 +1497,7 @@ GetEVRelativePointer: ; eed9
 	ret
 ; eeeb
 
-Table_eeeb: ; eeeb
+Table_EVByVitamin: ; eeeb
 	db HP_UP,    MON_HP_EV - MON_EVS
 	db PROTEIN, MON_ATK_EV - MON_EVS
 	db IRON,    MON_DEF_EV - MON_EVS
