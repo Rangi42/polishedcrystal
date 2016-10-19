@@ -35,21 +35,15 @@ ItemEffects: ; e73c
 	dw MaxEther
 	dw Elixir
 	dw MaxElixir
-	dw XAttack
-	dw XDefend
-	dw XSpeed
-	dw XSpclAtk
-	dw XSpclDef
-	dw DireHit
-	dw GuardSpec
-	dw XAccuracy
 	dw HPUp
 	dw Protein
 	dw Iron
 	dw Carbos
 	dw Calcium
+	dw Zinc
 	dw RareCandy
 	dw PPUp
+	dw PPMax
 	dw FreshWater
 	dw SodaPop
 	dw Lemonade
@@ -60,11 +54,20 @@ ItemEffects: ; e73c
 	dw EnergyRoot
 	dw HealPowder
 	dw RevivalHerb
+	dw XAttack
+	dw XDefend
+	dw XSpeed
+	dw XSpclAtk
+	dw XSpclDef
+	dw DireHit
+	dw GuardSpec
+	dw XAccuracy
 	dw Repel
 	dw SuperRepel
 	dw MaxRepel
 	dw EscapeRope
 	dw PokeDoll
+	dw AbilityCap
 	dw LeafStone
 	dw FireStone
 	dw WaterStone
@@ -108,6 +111,12 @@ ItemEffects: ; e73c
 	dw PersimBerry
 	dw LumBerry
 	dw LeppaBerry
+	dw PomegBerry
+	dw KelpsyBerry
+	dw QualotBerry
+	dw HondewBerry
+	dw GrepaBerry
+	dw TamatoBerry
 	dw RedApricorn
 	dw BluApricorn
 	dw YlwApricorn
@@ -150,15 +159,60 @@ ItemEffects: ; e73c
 	dw AmuletCoin
 	dw CleanseTag
 	dw SmokeBall
+	dw BerserkGene
 	dw LightBall
 	dw Stick
 	dw ThickClub
 	dw LuckyPunch
 	dw MetalPowder
-	dw BerserkGene
+	dw QuickPowder
+	dw AirBalloon
+	dw AssaultVest
+	dw BigRoot
+	dw BindingBand
+	dw DestinyKnot
 	dw Eviolite
+	dw ExpertBelt
+	dw FocusSash
+	dw GripClaw
+	dw LifeOrb
+	dw LightClay
+	dw MetronomeI
 	dw MuscleBand
+	dw RockyHelmet
+	dw SafeGoggles
+	dw ShedShell
+	dw ShellBell
+	dw SootheBell
+	dw WeakPolicy
+	dw WideLens
 	dw WiseGlasses
+	dw ZoomLens
+	dw PsnGuard
+	dw ParGuard
+	dw BrnGuard
+	dw SlpGuard
+	dw FrzGuard
+	dw ConfuseGuard
+	dw AttractGuard
+	dw FlinchGuard
+	dw MentalHerb
+	dw PowerHerb
+	dw WhiteHerb
+	dw DampRock
+	dw HeatRock
+	dw SmoothRock
+	dw IcyRock
+	dw ChoiceBand
+	dw ChoiceScarf
+	dw ChoiceSpecs
+	dw MachoBrace
+	dw PowerWeight
+	dw PowerBracer
+	dw PowerBelt
+	dw PowerLens
+	dw PowerBand
+	dw PowerAnklet
 	dw DragonScale
 	dw UpGrade
 	dw DubiousDisc
@@ -168,34 +222,58 @@ ItemEffects: ; e73c
 	dw RazorFang
 	dw RazorClaw
 	dw Nugget
+	dw BigNugget
 	dw TinyMushroom
 	dw BigMushroom
+	dw BalmMushroom
 	dw Pearl
 	dw BigPearl
+	dw PearlString
 	dw Stardust
 	dw StarPiece
+	dw BrickPiece
+	dw RareBone
 	dw SilverLeaf
 	dw GoldLeaf
 	dw SlowpokeTail
+	dw BottleCap
 	dw ParkBall
 	dw RepeatBall
 	dw TimerBall
 	dw QuickBall
 	dw DuskBall
+	dw PremierBall
+	dw CherishBall
 	dw HelixFossil
 	dw DomeFossil
 	dw OldAmber
+	dw Mulch
+	dw SweetHoney
 	dw FlowerMail
-	dw TownMap
-	dw PokeFlute
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw FlowerMail
+	dw TeruSama
+	dw TeruSama
+	dw TeruSama
+	dw TeruSama
+	dw TeruSama
+	dw TeruSama
+	dw TeruSama
 	dw TeruSama
 ; e8a2
 
 
-MasterBall:
-UltraBall:
-GreatBall:
 PokeBall:
+GreatBall:
+UltraBall:
+MasterBall:
 HeavyBall:
 LevelBall:
 LureBall:
@@ -207,6 +285,8 @@ RepeatBall:
 TimerBall:
 QuickBall:
 DuskBall:
+PremierBall:
+CherishBall:
 ParkBall: ; e8a2
 	; Only check landmark flags in a Nuzlocke run
 	ld a, [Options2]
@@ -1330,9 +1410,9 @@ ReturnToBattle_UseBall: ; edfa (3:6dfa)
 	farcall _ReturnToBattle_UseBall
 	ret
 
-TownMap: ; ee01
-	farcall PokegearMap
-	ret
+;TownMap: ; ee01
+;	farcall PokegearMap
+;	ret
 ; ee08
 
 
@@ -1386,7 +1466,8 @@ HPUp:
 Protein:
 Iron:
 Carbos:
-Calcium: ; ee3d
+Calcium:
+Zinc: ; ee3d
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 
@@ -1503,7 +1584,7 @@ Table_EVByVitamin: ; eeeb
 	db IRON,    MON_DEF_EV - MON_EVS
 	db CARBOS,  MON_SPD_EV - MON_EVS
 	db CALCIUM, MON_SAT_EV - MON_EVS
-;	db ZINC,    MON_SDF_EV - MON_EVS
+	db ZINC,    MON_SDF_EV - MON_EVS
 ; eef5
 
 
@@ -2550,102 +2631,102 @@ endr
 ; f50c
 
 
-PokeFlute: ; f50c
-	ld a, [wBattleMode]
-	and a
-	jr nz, .dummy
-.dummy
-
-	xor a
-	ld [wd002], a
-
-	ld b, $ff ^ SLP
-
-	ld hl, PartyMon1Status
-	call .CureSleep
-
-	ld a, [wBattleMode]
-	cp WILD_BATTLE
-	jr z, .skip_otrainer
-	ld hl, OTPartyMon1Status
-	call .CureSleep
-.skip_otrainer
-
-	ld hl, BattleMonStatus
-	ld a, [hl]
-	and b
-	ld [hl], a
-	ld hl, EnemyMonStatus
-	ld a, [hl]
-	and b
-	ld [hl], a
-
-	ld a, [wd002]
-	and a
-	ld hl, .CatchyTune
-	jp z, PrintText
-	ld hl, .PlayedTheFlute
-	call PrintText
-
-	ld a, [Danger]
-	and $80
-	jr nz, .dummy2
-.dummy2
-	ld hl, .AllSleepingMonWokeUp
-	jp PrintText
-
-
-.CureSleep:
-	ld de, PARTYMON_STRUCT_LENGTH
-	ld c, PARTY_LENGTH
-
-.loop
-	ld a, [hl]
-	push af
-	and SLP
-	jr z, .not_asleep
-	ld a, 1
-	ld [wd002], a
-.not_asleep
-	pop af
-	and b
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
-; f56c
-
-
-.CatchyTune: ; 0xf56c
-	; Played the # FLUTE. Now, that's a catchy tune!
-	text_jump UnknownText_0x1c5bf9
-	db "@"
-; 0xf571
-
-.AllSleepingMonWokeUp: ; 0xf571
-	; All sleeping #MON woke up.
-	text_jump UnknownText_0x1c5c28
-	db "@"
-; 0xf576
-
-.PlayedTheFlute: ; 0xf576
-	; played the # FLUTE.@ @
-	text_jump UnknownText_0x1c5c44
-	start_asm
-	ld a, [wBattleMode]
-	and a
-	jr nz, .battle
-
-	push de
-	ld de, SFX_POKEFLUTE
-	call WaitPlaySFX
-	call WaitSFX
-	pop de
-
-.battle
-	jp PokeFluteTerminatorCharacter
-; f58f
+;PokeFlute: ; f50c
+;	ld a, [wBattleMode]
+;	and a
+;	jr nz, .dummy
+;.dummy
+;
+;	xor a
+;	ld [wd002], a
+;
+;	ld b, $ff ^ SLP
+;
+;	ld hl, PartyMon1Status
+;	call .CureSleep
+;
+;	ld a, [wBattleMode]
+;	cp WILD_BATTLE
+;	jr z, .skip_otrainer
+;	ld hl, OTPartyMon1Status
+;	call .CureSleep
+;.skip_otrainer
+;
+;	ld hl, BattleMonStatus
+;	ld a, [hl]
+;	and b
+;	ld [hl], a
+;	ld hl, EnemyMonStatus
+;	ld a, [hl]
+;	and b
+;	ld [hl], a
+;
+;	ld a, [wd002]
+;	and a
+;	ld hl, .CatchyTune
+;	jp z, PrintText
+;	ld hl, .PlayedTheFlute
+;	call PrintText
+;
+;	ld a, [Danger]
+;	and $80
+;	jr nz, .dummy2
+;.dummy2
+;	ld hl, .AllSleepingMonWokeUp
+;	jp PrintText
+;
+;
+;.CureSleep:
+;	ld de, PARTYMON_STRUCT_LENGTH
+;	ld c, PARTY_LENGTH
+;
+;.loop
+;	ld a, [hl]
+;	push af
+;	and SLP
+;	jr z, .not_asleep
+;	ld a, 1
+;	ld [wd002], a
+;.not_asleep
+;	pop af
+;	and b
+;	ld [hl], a
+;	add hl, de
+;	dec c
+;	jr nz, .loop
+;	ret
+;; f56c
+;
+;
+;.CatchyTune: ; 0xf56c
+;	; Played the # FLUTE. Now, that's a catchy tune!
+;	text_jump UnknownText_0x1c5bf9
+;	db "@"
+;; 0xf571
+;
+;.AllSleepingMonWokeUp: ; 0xf571
+;	; All sleeping #MON woke up.
+;	text_jump UnknownText_0x1c5c28
+;	db "@"
+;; 0xf576
+;
+;.PlayedTheFlute: ; 0xf576
+;	; played the # FLUTE.@ @
+;	text_jump UnknownText_0x1c5c44
+;	start_asm
+;	ld a, [wBattleMode]
+;	and a
+;	jr nz, .battle
+;
+;	push de
+;	ld de, SFX_POKEFLUTE
+;	call WaitPlaySFX
+;	call WaitSFX
+;	pop de
+;
+;.battle
+;	jp PokeFluteTerminatorCharacter
+;; f58f
 
 
 BlueCard: ; f58f
@@ -3037,8 +3118,14 @@ Stick:
 SmokeBall:
 NeverMeltIce:
 Magnet:
+BigNugget:
+BalmMushroom:
+PearlString:
+BrickPiece:
+RareBone:
 Pearl:
 BigPearl:
+BottleCap:
 Everstone:
 SpellTag:
 GSBall:
@@ -3069,15 +3156,62 @@ RainbowWing:
 OldAmber:
 MysticTicket:
 OldSeaMap:
+QuickPowder:
+AirBalloon:
+AssaultVest:
+BigRoot:
+BindingBand:
+DestinyKnot:
 Eviolite:
+ExpertBelt:
+FocusSash:
+GripClaw:
+LifeOrb:
+LightClay:
+MetronomeI:
 MuscleBand:
+RockyHelmet:
+SafeGoggles:
+ShedShell:
+ShellBell:
+SootheBell:
+WeakPolicy:
+WideLens:
 WiseGlasses:
+ZoomLens:
+PsnGuard:
+ParGuard:
+BrnGuard:
+SlpGuard:
+FrzGuard:
+ConfuseGuard:
+AttractGuard:
+FlinchGuard:
+MentalHerb:
+PowerHerb:
+WhiteHerb:
+DampRock:
+HeatRock:
+SmoothRock:
+IcyRock:
+ChoiceBand:
+ChoiceScarf:
+ChoiceSpecs:
+MachoBrace:
+PowerWeight:
+PowerBracer:
+PowerBelt:
+PowerLens:
+PowerBand:
+PowerAnklet:
 DubiousDisc:
 Protector:
 Electirizer:
 Magmarizer:
 RazorFang:
 RazorClaw:
+Mulch:
+SweetHoney:
 TeruSama: ; f77d
 	jp IsntTheTimeMessage
 ; f780
@@ -3504,5 +3638,16 @@ GetMthMoveOfCurrentMon: ; f969
 	add hl, bc
 	ret
 ; f971
+
+; TODO
+PPMax:
+AbilityCap:
+PomegBerry:
+KelpsyBerry:
+QualotBerry:
+HondewBerry:
+GrepaBerry:
+TamatoBerry:
+	jp IsntTheTimeMessage
 
 INCLUDE "items/pokeball_wobble.asm"

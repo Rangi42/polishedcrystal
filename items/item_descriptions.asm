@@ -40,21 +40,15 @@ ItemDescriptions:
 	dw MaxEtherDesc
 	dw ElixirDesc
 	dw MaxElixirDesc
-	dw XAttackDesc
-	dw XDefendDesc
-	dw XSpeedDesc
-	dw XSpclAtkDesc
-	dw XSpclDefDesc
-	dw DireHitDesc
-	dw GuardSpecDesc
-	dw XAccuracyDesc
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
 	dw CarbosDesc
 	dw CalciumDesc
+	dw ZincDesc
 	dw RareCandyDesc
 	dw PPUpDesc
+	dw PPMaxDesc
 	dw FreshWaterDesc
 	dw SodaPopDesc
 	dw LemonadeDesc
@@ -65,11 +59,20 @@ ItemDescriptions:
 	dw EnergyRootDesc
 	dw HealPowderDesc
 	dw RevivalHerbDesc
+	dw XAttackDesc
+	dw XDefendDesc
+	dw XSpeedDesc
+	dw XSpclAtkDesc
+	dw XSpclDefDesc
+	dw DireHitDesc
+	dw GuardSpecDesc
+	dw XAccuracyDesc
 	dw RepelDesc
 	dw SuperRepelDesc
 	dw MaxRepelDesc
 	dw EscapeRopeDesc
 	dw PokeDollDesc
+	dw AbilityCapDesc
 	dw LeafStoneDesc
 	dw FireStoneDesc
 	dw WaterStoneDesc
@@ -113,6 +116,12 @@ ItemDescriptions:
 	dw PersimBerryDesc
 	dw LumBerryDesc
 	dw LeppaBerryDesc
+	dw PomegBerryDesc
+	dw KelpsyBerryDesc
+	dw QualotBerryDesc
+	dw HondewBerryDesc
+	dw GrepaBerryDesc
+	dw TamatoBerryDesc
 	dw RedApricornDesc
 	dw BluApricornDesc
 	dw YlwApricornDesc
@@ -155,15 +164,60 @@ ItemDescriptions:
 	dw AmuletCoinDesc
 	dw CleanseTagDesc
 	dw SmokeBallDesc
+	dw BerserkGeneDesc
 	dw LightBallDesc
 	dw StickDesc
 	dw ThickClubDesc
 	dw LuckyPunchDesc
 	dw MetalPowderDesc
-	dw BerserkGeneDesc
+	dw QuickPowderDesc
+	dw AirBalloonDesc
+	dw AssaultVestDesc
+	dw BigRootDesc
+	dw BindingBandDesc
+	dw DestinyKnotDesc
 	dw EvioliteDesc
+	dw ExpertBeltDesc
+	dw FocusSashDesc
+	dw GripClawDesc
+	dw LifeOrbDesc
+	dw LightClayDesc
+	dw MetronomeIDesc
 	dw MuscleBandDesc
+	dw RockyHelmetDesc
+	dw SafeGogglesDesc
+	dw ShedShellDesc
+	dw ShellBellDesc
+	dw SootheBellDesc
+	dw WeakPolicyDesc
+	dw WideLensDesc
 	dw WiseGlassesDesc
+	dw ZoomLensDesc
+	dw PsnGuardDesc
+	dw ParGuardDesc
+	dw BrnGuardDesc
+	dw SlpGuardDesc
+	dw FrzGuardDesc
+	dw ConfuseGuardDesc
+	dw AttractGuardDesc
+	dw FlinchGuardDesc
+	dw MentalHerbDesc
+	dw PowerHerbDesc
+	dw WhiteHerbDesc
+	dw DampRockDesc
+	dw HeatRockDesc
+	dw SmoothRockDesc
+	dw IcyRockDesc
+	dw ChoiceBandDesc
+	dw ChoiceScarfDesc
+	dw ChoiceSpecsDesc
+	dw MachoBraceDesc
+	dw PowerWeightDesc
+	dw PowerBracerDesc
+	dw PowerBeltDesc
+	dw PowerLensDesc
+	dw PowerBandDesc
+	dw PowerAnkletDesc
 	dw DragonScaleDesc
 	dw UpGradeDesc
 	dw DubiousDiscDesc
@@ -173,23 +227,33 @@ ItemDescriptions:
 	dw RazorFangDesc
 	dw RazorClawDesc
 	dw NuggetDesc
+	dw BigNuggetDesc
 	dw TinyMushroomDesc
 	dw BigMushroomDesc
+	dw BalmMushroomDesc
 	dw PearlDesc
 	dw BigPearlDesc
+	dw PearlStringDesc
 	dw StardustDesc
 	dw StarPieceDesc
+	dw BrickPieceDesc
+	dw RareBoneDesc
 	dw SilverLeafDesc
 	dw GoldLeafDesc
 	dw SlowpokeTailDesc
+	dw BottleCapDesc
 	dw ParkBallDesc
 	dw RepeatBallDesc
 	dw TimerBallDesc
 	dw QuickBallDesc
 	dw DuskBallDesc
+	dw PremierBallDesc
+	dw CherishBallDesc
 	dw HelixFossilDesc
 	dw DomeFossilDesc
 	dw OldAmberDesc
+	dw MulchDesc
+	dw SweetHoneyDesc
 	dw FlowerMailDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
@@ -200,72 +264,6 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -359,38 +357,6 @@ MaxElixirDesc:
 	db   "Fully restores the"
 	next "PP of one #mon.@"
 
-XAttackDesc:
-	db   "Raises Attack."
-	next "(1 battle)@"
-
-XDefendDesc:
-	db   "Raises Defense."
-	next "(1 battle)@"
-
-XSpeedDesc:
-	db   "Raises Speed."
-	next "(1 battle)@"
-
-XSpclAtkDesc:
-	db   "Raises Spcl. Atk."
-	next "(1 battle)@"
-
-XSpclDefDesc:
-	db   "Raises Spcl. Def."
-	next "(1 battle)@"
-
-DireHitDesc:
-	db   "Ups critical hit"
-	next "ratio. (1 battle)@"
-
-GuardSpecDesc:
-	db   "Prevents stat"
-	next "drops. (1 battle)@"
-
-XAccuracyDesc:
-	db   "Raises accuracy."
-	next "(1 battle)@"
-
 HPUpDesc:
 	db   "Raises the HP of"
 	next "one #mon.@"
@@ -408,7 +374,11 @@ CarbosDesc:
 	next "one #mon.@"
 
 CalciumDesc:
-	db   "Ups Special stats"
+	db   "Raises Spcl.Atk"
+	next "of one #mon.@"
+
+ZincDesc:
+	db   "Raises Spcl.Def"
 	next "of one #mon.@"
 
 RareCandyDesc:
@@ -417,6 +387,10 @@ RareCandyDesc:
 
 PPUpDesc:
 	db   "Raises max PP of"
+	next "a selected move.@"
+
+PPMaxDesc:
+	db   "Maximizes PP of"
 	next "a selected move.@"
 
 FreshWaterDesc:
@@ -459,6 +433,38 @@ RevivalHerbDesc:
 	db   "Revives fainted"
 	next "#mon. Bitter.@"
 
+XAttackDesc:
+	db   "Raises Attack."
+	next "(1 battle)@"
+
+XDefendDesc:
+	db   "Raises Defense."
+	next "(1 battle)@"
+
+XSpeedDesc:
+	db   "Raises Speed."
+	next "(1 battle)@"
+
+XSpclAtkDesc:
+	db   "Raises Spcl. Atk."
+	next "(1 battle)@"
+
+XSpclDefDesc:
+	db   "Raises Spcl. Def."
+	next "(1 battle)@"
+
+DireHitDesc:
+	db   "Ups critical hit"
+	next "ratio. (1 battle)@"
+
+GuardSpecDesc:
+	db   "Prevents stat"
+	next "drops. (1 battle)@"
+
+XAccuracyDesc:
+	db   "Raises accuracy."
+	next "(1 battle)@"
+
 RepelDesc:
 	db   "Repels weak #-"
 	next "mon for 100 steps.@"
@@ -478,6 +484,10 @@ EscapeRopeDesc:
 PokeDollDesc:
 	db   "Use to escape from"
 	next "a wild #mon.@"
+
+AbilityCapDesc:
+	db   "Switches a #-"
+	next "mon's ability.@"
 
 LeafStoneDesc:
 	db   "Evolves certain"
@@ -650,6 +660,30 @@ LeppaBerryDesc:
 	db   "A self-restore"
 	next "for PP. (Hold)@"
 
+PomegBerryDesc:
+	db   "Lowers the HP of"
+	next "one #mon.@"
+
+KelpsyBerryDesc:
+	db   "Lowers Attack of"
+	next "one #mon.@"
+
+QualotBerryDesc:
+	db   "Lowers Defense of"
+	next "one #mon.@"
+
+HondewBerryDesc:
+	db   "Lowers Spcl.Atk"
+	next "of one #mon.@"
+
+GrepaBerryDesc:
+	db   "Lowers Spcl.Def"
+	next "of one #mon.@"
+
+TamatoBerryDesc:
+	db   "Lowers Speed of"
+	next "one #mon.@"
+
 RedApricornDesc:
 	db   "A red Apricorn.@"
 
@@ -813,6 +847,10 @@ SmokeBallDesc:
 	db   "Escape from wild"
 	next "#mon. (Hold)@"
 
+BerserkGeneDesc:
+	db   "Boosts Attack but"
+	next "causes confusion.@"
+
 LightBallDesc:
 	db   "An odd, electrical"
 	next "orb. (Hold)@"
@@ -833,9 +871,57 @@ MetalPowderDesc:
 	db   "Raises Defense of"
 	next "Ditto. (Hold)@"
 
-BerserkGeneDesc:
-	db   "Boosts Attack but"
-	next "causes confusion.@"
+QuickPowderDesc:
+	db   "Raises Speed of"
+	next "Ditto. (Hold)@"
+
+AirBalloonDesc:
+AssaultVestDesc:
+BigRootDesc:
+BindingBandDesc:
+DestinyKnotDesc:
+ExpertBeltDesc:
+FocusSashDesc:
+GripClawDesc:
+LifeOrbDesc:
+LightClayDesc:
+MetronomeIDesc:
+RockyHelmetDesc:
+SafeGogglesDesc:
+ShedShellDesc:
+ShellBellDesc:
+SootheBellDesc:
+WeakPolicyDesc:
+WideLensDesc:
+ZoomLensDesc:
+PsnGuardDesc:
+ParGuardDesc:
+BrnGuardDesc:
+SlpGuardDesc:
+FrzGuardDesc:
+ConfuseGuardDesc:
+AttractGuardDesc:
+FlinchGuardDesc:
+MentalHerbDesc:
+PowerHerbDesc:
+WhiteHerbDesc:
+DampRockDesc:
+HeatRockDesc:
+SmoothRockDesc:
+IcyRockDesc:
+ChoiceBandDesc:
+ChoiceScarfDesc:
+ChoiceSpecsDesc:
+MachoBraceDesc:
+PowerWeightDesc:
+PowerBracerDesc:
+PowerBeltDesc:
+PowerLensDesc:
+PowerBandDesc:
+PowerAnkletDesc:
+MulchDesc:
+SweetHoneyDesc:
+	db   "TODO@"
 
 EvioliteDesc:
 	db   "Ups Def and Spcl."
@@ -885,6 +971,10 @@ NuggetDesc:
 	db   "Made of pure gold."
 	next "Sell high.@"
 
+BigNuggetDesc:
+	db   "Made of pure gold."
+	next "Sell very high.@"
+
 TinyMushroomDesc:
 	db   "An ordinary mush-"
 	next "room. Sell low.@"
@@ -892,6 +982,10 @@ TinyMushroomDesc:
 BigMushroomDesc:
 	db   "A rare mushroom."
 	next "Sell high.@"
+
+BalmMushroomDesc:
+	db   "A rare mushroom."
+	next "Sell very high.@"
 
 PearlDesc:
 	db   "A beautiful pearl."
@@ -901,6 +995,10 @@ BigPearlDesc:
 	db   "A big, beautiful"
 	next "pearl. Sell high.@"
 
+PearlStringDesc:
+	db   "Big, shiny pearls."
+	next "Sell very high.@"
+
 StardustDesc:
 	db   "Pretty, red sand."
 	next "Sell high.@"
@@ -908,6 +1006,14 @@ StardustDesc:
 StarPieceDesc:
 	db   "A hunk of red gem."
 	next "Sell very high.@"
+
+BrickPieceDesc:
+	db   "A rare chunk of"
+	next "tile.@"
+
+RareBoneDesc:
+	db   "A rare bone for"
+	next "archaeologists.@"
 
 SilverLeafDesc:
 	db   "A strange, silver-"
@@ -920,6 +1026,10 @@ GoldLeafDesc:
 SlowpokeTailDesc:
 	db   "Very tasty. Sell"
 	next "high.@"
+
+BottleCapDesc:
+	db   "A shiny, rare"
+	next "bottle cap.@"
 
 ParkBallDesc:
 	db   "The Bug-Catching"
@@ -940,6 +1050,14 @@ QuickBallDesc:
 DuskBallDesc:
 	db   "A Ball for night-"
 	next "time or caves.@"
+
+PremierBallDesc:
+	db   "A rare commemor-"
+	next "ative Ball.@"
+
+CherishBallDesc:
+	db   "A quite rare com-"
+	next "memorative Ball.@"
 
 HelixFossilDesc:
 	db   "A fossilized"

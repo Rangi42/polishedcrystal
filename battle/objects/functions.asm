@@ -443,22 +443,25 @@ GetBallAnimPal: ; cd249 (33:5249)
 
 ; cd26c (33:526c)
 .balls
-	db MASTER_BALL, 5 ; green
-	db ULTRA_BALL,  3 ; yellow
-	db GREAT_BALL,  6 ; blue
-	db POKE_BALL,   4 ; red
-	db HEAVY_BALL,  2 ; gray
-	db LEVEL_BALL,  7 ; brown
-	db LURE_BALL,   6 ; blue
-	db FAST_BALL,   6 ; blue
-	db FRIEND_BALL, 3 ; yellow
-	db MOON_BALL,   2 ; gray
-	db LOVE_BALL,   4 ; red
-	db REPEAT_BALL, 3 ; yellow
-	db TIMER_BALL,  7 ; brown
-	db QUICK_BALL,  6 ; blue
-	db DUSK_BALL,   5 ; green
-	db -1,          2
+	db POKE_BALL,    4 ; red
+	db GREAT_BALL,   6 ; blue
+	db ULTRA_BALL,   3 ; yellow
+	db MASTER_BALL,  5 ; green
+	db HEAVY_BALL,   2 ; gray
+	db LEVEL_BALL,   7 ; brown
+	db LURE_BALL,    6 ; blue
+	db FAST_BALL,    6 ; blue
+	db FRIEND_BALL,  3 ; yellow
+	db MOON_BALL,    2 ; gray
+	db LOVE_BALL,    4 ; red
+	db REPEAT_BALL,  3 ; yellow
+	db TIMER_BALL,   7 ; brown
+	db QUICK_BALL,   6 ; blue
+	db DUSK_BALL,    5 ; green
+	db PREMIER_BALL, 2 ; gray
+	db CHERISH_BALL, 4 ; red
+	db PARK_BALL,    3 ; yellow
+	db -1,           2
 ; cd284
 BattleAnimFunction_10: ; cd284 (33:5284)
 	call BattleAnim_AnonJumptable
