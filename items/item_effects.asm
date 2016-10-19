@@ -2778,6 +2778,7 @@ Itemfinder: ; f5b8
 
 MaxElixir:
 PPUp:
+PPMax:
 Ether:
 MaxEther:
 Elixir:
@@ -2801,6 +2802,8 @@ LeppaBerry: ; f5bf
 	ld hl, TextJump_RaiseThePPOfWhichMove
 	ld a, [wd002]
 	cp PP_UP
+	jr z, .ppup
+	cp PP_MAX
 	jr z, .ppup
 	ld hl, TextJump_RestoreThePPOfWhichMove
 
@@ -2832,8 +2835,11 @@ LeppaBerry: ; f5bf
 
 	ld a, [wd002]
 	cp PP_UP
+	jr z, .ppup2
+	cp PP_MAX
 	jp nz, Not_PP_Up
 
+.ppup2
 	ld a, [hl]
 	cp SKETCH
 	jr z, .CantUsePPUpOnSketch
@@ -2851,8 +2857,16 @@ LeppaBerry: ; f5bf
 	jr .loop2
 
 .do_ppup
+	ld a, [wd002]
+	cp PP_MAX
+	jr nz, .not_pp_max
+	ld a, [hl]
+	or 3 << 6 ; maximize PP Up count
+	jr .raised_pp
+.not_pp_max
 	ld a, [hl]
 	add 1 << 6 ; increase PP Up count by 1
+.raised_pp
 	ld [hl], a
 	ld a, $1
 	ld [wd265], a
@@ -2860,6 +2874,11 @@ LeppaBerry: ; f5bf
 	call Play_SFX_FULL_HEAL
 
 	ld hl, TextJump_PPsIncreased
+	ld a, [wd002]
+	cp PP_UP
+	jr z, .ppup3
+	ld hl, TextJump_PPsMaximized
+.ppup3
 	call PrintText
 
 FinishPPRestore: ; f64c
@@ -3039,6 +3058,11 @@ TextJump_PPsIncreased: ; 0xf734
 	text_jump Text_PPsIncreased
 	db "@"
 ; 0xf739
+
+TextJump_PPsMaximized:
+	; 's PP maximized.
+	text_jump Text_PPsMaximized
+	db "@"
 
 UnknownText_0xf739: ; 0xf739
 	; PP was restored.
@@ -3640,7 +3664,6 @@ GetMthMoveOfCurrentMon: ; f969
 ; f971
 
 ; TODO
-PPMax:
 AbilityCap:
 PomegBerry:
 KelpsyBerry:

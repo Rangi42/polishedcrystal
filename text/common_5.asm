@@ -417,6 +417,12 @@ Text_PPsIncreased::
 	line "increased."
 	prompt
 
+Text_PPsMaximized::
+	text_from_ram StringBuffer2
+	text "'s PP"
+	line "maximized."
+	prompt
+
 UnknownText_0x1c5cf1::
 	text "PP was restored."
 	prompt
