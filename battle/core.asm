@@ -6573,7 +6573,21 @@ endr
 
 .GeneratePersonality:
 	; TODO: random shininess, ability, and nature
+	; shininess: 1/4096 (3/4096 with shiny charm, 0 if NumBalls == 0)
+	; ability: 5% hidden, 47.5% first, 47.5% second
+	; nature: even chance of any
 	xor a
+
+	; Never meet shiny Pokémon without Poké Balls
+	ld a, [MonType]
+	and $f
+	jr nz, .can_be_shiny
+	ld a, [wBattleMode]
+	and a
+	jr z, .can_be_shiny
+	ld a, [NumBalls]
+	jr z, .not_shiny
+
 	ld [DVAndPersonalityBuffer + 3], a
 
 ; Arbok form
