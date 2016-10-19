@@ -100,13 +100,24 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	call TMHM_GetCurrentPocketPosition
 	ld a, [wMenuCursorY]
 	ld b, a
-	; TODO: fix this loop (it assumes that TMHM_GetCurrentPocketPosition left hl at the last owned TM)
 .loop
 	inc c
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .okay
-	ld a, [hli]
+
+	push bc
+	push de
+	dec a
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	ld a, c
+	pop de
+	pop bc
+
 	and a
 	jr z, .loop
 	dec b
@@ -144,13 +155,24 @@ TMHM_ScrollPocket: ; 2c9b1 (b:49b1)
 .skip
 	call TMHM_GetCurrentPocketPosition
 	ld b, 5
-	; TODO: fix this loop (it assumes that TMHM_GetCurrentPocketPosition left hl at the last owned TM)
 .loop
 	inc c
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jp nc, TMHM_JoypadLoop
-	ld a, [hli]
+
+	push bc
+	push de
+	dec a
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	ld a, c
+	pop de
+	pop bc
+
 	and a
 	jr z, .loop
 	dec b
@@ -171,13 +193,24 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	call ClearBox
 	call TMHM_GetCurrentPocketPosition
 	ld d, $5
-	; TODO: fix this loop (it assumes that TMHM_GetCurrentPocketPosition left hl at the last owned TM)
 .loop2
 	inc c
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .NotTMHM
-	ld a, [hli]
+
+	push bc
+	push de
+	dec a
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	ld a, c
+	pop de
+	pop bc
+
 	and a
 	jr z, .loop2
 	ld b, a
