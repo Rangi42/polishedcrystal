@@ -7,25 +7,7 @@ TMHMPocket: ; 2c76f (b:476f)
 	ret nc
 	call PlaceHollowCursor
 	call WaitBGMap
-
-	; old method
 	ld a, [CurTMHM]
-	dec a
-	ld [CurItemQuantity], a
-	ld hl, DummyTMsHMs
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	ld [wItemQuantityBuffer], a
-	ld a, [CurTMHM]
-	ld c, a
-
-	; new method
-;	ld a, [CurTMHM]
-;	ld [CurItemQuantity], a
-;	ld [wItemQuantityBuffer], a
-
 	scf
 	ret
 
@@ -118,6 +100,7 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	call TMHM_GetCurrentPocketPosition
 	ld a, [wMenuCursorY]
 	ld b, a
+	; TODO: fix this loop (it assumes that TMHM_GetCurrentPocketPosition left hl at the last owned TM)
 .loop
 	inc c
 	ld a, c
@@ -161,6 +144,7 @@ TMHM_ScrollPocket: ; 2c9b1 (b:49b1)
 .skip
 	call TMHM_GetCurrentPocketPosition
 	ld b, 5
+	; TODO: fix this loop (it assumes that TMHM_GetCurrentPocketPosition left hl at the last owned TM)
 .loop
 	inc c
 	ld a, c
@@ -187,6 +171,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	call ClearBox
 	call TMHM_GetCurrentPocketPosition
 	ld d, $5
+	; TODO: fix this loop (it assumes that TMHM_GetCurrentPocketPosition left hl at the last owned TM)
 .loop2
 	inc c
 	ld a, c
@@ -271,35 +256,29 @@ TMHM_String_Cancel: ; 2caae
 ; 2cab5
 
 TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
-	ld hl, DummyTMsHMs
 	ld a, [wTMHMPocketScrollPosition]
 	ld b, a
 	inc b
-	ld c, 0
+	ld c, -1
 .loop
 
-	; old method
 	inc c
-	ld a, [hli]
-
-	; new method
-;	push bc
-;	push de
-;	ld a, c
-;	ld e, a
-;	ld d, 0
-;	ld b, CHECK_FLAG
-;	call FlagAction
-;	ld a, c
-;	pop de
-;	pop bc
-;	inc c
-
+	push bc
+	push de
+	ld a, c
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	ld a, c
 	and a
+	pop de
+	pop bc
+
 	jr z, .loop
 	dec b
 	jr nz, .loop
-	dec hl
 	dec c
 	ret
 
@@ -320,50 +299,66 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 ; 2cadf (b:4adf)
 
 CountTMsHMs: ; 2cb2a (b:4b2a)
-	; old method
+	ld hl, TMsHMs
 	ld b, 0
-	ld c, NUM_TMS + NUM_HMS
-	ld hl, DummyTMsHMs
+	ld c, ((NUM_TMS + NUM_HMS) + 7) / 8
 .loop
 	ld a, [hli]
-	and a
-	jr z, .skip
-	inc b
-.skip
+	call CountSetBitsInByte
+	add b
+	ld b, a
 	dec c
 	jr nz, .loop
 	ld a, b
 	ld [wd265], a
+	pop de
 	ret
 
-	; new method
-;	push de
-;	ld b, 0
-;	ld c, NUM_TMS + NUM_HMS
-;	ld d, 0
-;	ld hl, TMsHMs
-;.loop
-;	push bc
-;	push de
-;	ld a, d
-;	ld e, a
-;	ld d, 0
-;	ld b, CHECK_FLAG
-;	call FlagAction
-;	ld a, c
-;	pop de
-;	pop bc
-;	inc d
-;	and a
-;	jr z, .skip
-;	inc b
-;.skip
-;	dec c
-;	jr nz, .loop
-;	ld a, b
-;	ld [wd265], a
-;	pop de
-;	ret
+CountSetBitsInByte:
+	push hl
+	push bc
+	ld hl, .SetBitsInByte
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop bc
+	pop hl
+	ret
+
+.SetBitsInByte:
+	db 0, 1, 1, 2, 1, 2, 2, 3
+	db 1, 2, 2, 3, 2, 3, 3, 4
+	db 1, 2, 2, 3, 2, 3, 3, 4
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 1, 2, 2, 3, 2, 3, 3, 4
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 1, 2, 2, 3, 2, 3, 3, 4
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 4, 5, 5, 6, 5, 6, 6, 7
+	db 1, 2, 2, 3, 2, 3, 3, 4
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 4, 5, 5, 6, 5, 6, 6, 7
+	db 2, 3, 3, 4, 3, 4, 4, 5
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 4, 5, 5, 6, 5, 6, 6, 7
+	db 3, 4, 4, 5, 4, 5, 5, 6
+	db 4, 5, 5, 6, 5, 6, 6, 7
+	db 4, 5, 5, 6, 5, 6, 6, 7
+	db 5, 6, 6, 7, 6, 7, 7, 8
 
 PrintMoveDesc: ; 2cb3e
 	push hl
@@ -525,21 +520,3 @@ Text_TMHMNotCompatible: ; 0x2c8ce
 	text_jump UnknownText_0x1c03c2
 	db "@"
 ; 0x2c8d3
-
-DummyTMsHMs:
-
-	; old method
-	db 1, 2, 3, 0, 0, 0, 0, 0, 0, 0
-	db 1, 1, 1, 0, 0, 0, 0, 0, 0, 0
-	db 1, 1, 1, 0, 0, 0, 0, 0, 0, 0
-	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-	db 0, 0, 0, 0, 0
-	db 2, 2, 0, 0, 0, 0, 0, 2
-
-	; new method
-;	db %11100000, %00111000, %00001110,
-;	db %00000000, %00000000, %00000000,
-;	db %00000000, %00000000, %00000000,
-;	db %00000000,

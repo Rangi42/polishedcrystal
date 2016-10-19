@@ -155,18 +155,8 @@ Pack: ; 10000
 	ld c, $9 ; Berries
 	call Pack_InterpretJoypad
 	ret c
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .use_quit
-	ld hl, .MenuDataHeader2
-	ld de, .Jumptable2
-	jr .load_jump
-
-.use_quit
 	ld hl, .MenuDataHeader1
 	ld de, .Jumptable1
-.load_jump
 	push de
 	call LoadMenuDataHeader
 	call VerticalMenu
@@ -200,28 +190,6 @@ Pack: ; 10000
 	dw QuitItemSubmenu
 
 ; 1013b
-
-.MenuDataHeader2: ; 0x1013b
-	db $40 ; flags
-	db 05, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2_2
-	db 1 ; default option
-; 0x10143
-
-.MenuData2_2: ; 0x10143
-	db $c0 ; flags
-	db 3 ; items
-	db "Use@"
-	db "Give@"
-	db "Quit@"
-; 0x10153
-
-.Jumptable2: ; 10153
-	dw .UseItem
-	dw GiveItem
-	dw QuitItemSubmenu
-; 10159
 
 .UseItem: ; 10159
 	farcall AskTeachTMHM

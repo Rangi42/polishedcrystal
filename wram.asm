@@ -2458,7 +2458,7 @@ PCItems:: ; d8f1
 	ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
 
-	ds 1
+LastSeenTMHM:: ds 1
 
 wPokegearFlags:: ds 1
 ; bit 0: map
