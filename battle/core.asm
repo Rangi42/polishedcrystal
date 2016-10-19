@@ -6577,17 +6577,6 @@ endr
 	; ability: 5% hidden, 47.5% first, 47.5% second
 	; nature: even chance of any
 	xor a
-
-	; Never meet shiny Pokémon without Poké Balls
-	ld a, [MonType]
-	and $f
-	jr nz, .can_be_shiny
-	ld a, [wBattleMode]
-	and a
-	jr z, .can_be_shiny
-	ld a, [NumBalls]
-	jr z, .not_shiny
-
 	ld [DVAndPersonalityBuffer + 3], a
 
 ; Arbok form

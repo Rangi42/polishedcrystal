@@ -8,9 +8,23 @@ TMHMPocket: ; 2c76f (b:476f)
 	call PlaceHollowCursor
 	call WaitBGMap
 
+	; old method
 	ld a, [CurTMHM]
+	dec a
 	ld [CurItemQuantity], a
+	ld hl, DummyTMsHMs
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
 	ld [wItemQuantityBuffer], a
+	ld a, [CurTMHM]
+	ld c, a
+
+	; new method
+;	ld a, [CurTMHM]
+;	ld [CurItemQuantity], a
+;	ld [wItemQuantityBuffer], a
 
 	scf
 	ret
@@ -257,25 +271,30 @@ TMHM_String_Cancel: ; 2caae
 ; 2cab5
 
 TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
-	ld hl, TMsHMs
+	ld hl, DummyTMsHMs
 	ld a, [wTMHMPocketScrollPosition]
 	ld b, a
 	inc b
 	ld c, 0
 .loop
 
-	push bc
-	push de
-	ld a, c
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	call FlagAction
-	ld a, c
-	pop de
-	pop bc
-
+	; old method
 	inc c
+	ld a, [hli]
+
+	; new method
+;	push bc
+;	push de
+;	ld a, c
+;	ld e, a
+;	ld d, 0
+;	ld b, CHECK_FLAG
+;	call FlagAction
+;	ld a, c
+;	pop de
+;	pop bc
+;	inc c
+
 	and a
 	jr z, .loop
 	dec b
@@ -301,25 +320,12 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 ; 2cadf (b:4adf)
 
 CountTMsHMs: ; 2cb2a (b:4b2a)
-	push de
+	; old method
 	ld b, 0
 	ld c, NUM_TMS + NUM_HMS
-	ld d, 0
-	ld hl, TMsHMs
+	ld hl, DummyTMsHMs
 .loop
-
-	push bc
-	push de
-	ld a, d
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	call FlagAction
-	ld a, c
-	pop de
-	pop bc
-	inc d
-
+	ld a, [hli]
 	and a
 	jr z, .skip
 	inc b
@@ -328,8 +334,36 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	jr nz, .loop
 	ld a, b
 	ld [wd265], a
-	pop de
 	ret
+
+	; new method
+;	push de
+;	ld b, 0
+;	ld c, NUM_TMS + NUM_HMS
+;	ld d, 0
+;	ld hl, TMsHMs
+;.loop
+;	push bc
+;	push de
+;	ld a, d
+;	ld e, a
+;	ld d, 0
+;	ld b, CHECK_FLAG
+;	call FlagAction
+;	ld a, c
+;	pop de
+;	pop bc
+;	inc d
+;	and a
+;	jr z, .skip
+;	inc b
+;.skip
+;	dec c
+;	jr nz, .loop
+;	ld a, b
+;	ld [wd265], a
+;	pop de
+;	ret
 
 PrintMoveDesc: ; 2cb3e
 	push hl
@@ -491,3 +525,21 @@ Text_TMHMNotCompatible: ; 0x2c8ce
 	text_jump UnknownText_0x1c03c2
 	db "@"
 ; 0x2c8d3
+
+DummyTMsHMs:
+
+	; old method
+	db 1, 2, 3, 0, 0, 0, 0, 0, 0, 0
+	db 1, 1, 1, 0, 0, 0, 0, 0, 0, 0
+	db 1, 1, 1, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0
+	db 2, 2, 0, 0, 0, 0, 0, 2
+
+	; new method
+;	db %11100000, %00111000, %00001110,
+;	db %00000000, %00000000, %00000000,
+;	db %00000000, %00000000, %00000000,
+;	db %00000000,

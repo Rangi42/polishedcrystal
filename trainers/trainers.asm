@@ -11763,6 +11763,54 @@ LyraGroup:
 	db $ff ; end
 
 ; ================
+
+	; LYRA
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 72, PIDGEOT, NO_ITEM
+	db 74, ARCANINE, NO_ITEM
+	db 74, AZUMARILL, NO_ITEM
+	db 73, FURRET, NO_ITEM
+	db 75, GIRAFARIG, NO_ITEM
+	db 76, MEGANIUM, SITRUS_BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 72, PIDGEOT, NO_ITEM
+	db 74, SUNFLORA, NO_ITEM
+	db 74, AZUMARILL, NO_ITEM
+	db 73, FURRET, NO_ITEM
+	db 75, GIRAFARIG, NO_ITEM
+	db 76, TYPHLOSION, SITRUS_BERRY
+
+	db $ff ; end
+
+; ================
+
+	; LYRA
+	db "Lyra@"
+	db 2 ; item
+
+	; party
+	db 72, PIDGEOT, NO_ITEM
+	db 74, SUNFLORA, NO_ITEM
+	db 74, ARCANINE, NO_ITEM
+	db 73, FURRET, NO_ITEM
+	db 75, GIRAFARIG, NO_ITEM
+	db 76, FERALIGATR, SITRUS_BERRY
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

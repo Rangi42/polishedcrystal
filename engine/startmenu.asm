@@ -523,18 +523,7 @@ HasNoItems: ; 129d5
 	ld a, [NumKeyItems]
 	and a
 	ret nz
-	ld hl, TMsHMs
-	ld b, NUM_TMS + NUM_HMS
-.loop
-	ld a, [hli]
-	and a
-	jr nz, .done
-	dec b
-	jr nz, .loop
 	scf
-	ret
-.done
-	and a
 	ret
 
 TossItemFromPC: ; 129f4
