@@ -105,20 +105,7 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .okay
-
-	push bc
-	push de
-	dec a
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	ld hl, TMsHMs
-	call FlagAction
-	ld a, c
-	pop de
-	pop bc
-
-	and a
+	call CheckTMHM
 	jr z, .loop
 	dec b
 	jr nz, .loop
@@ -160,20 +147,7 @@ TMHM_ScrollPocket: ; 2c9b1 (b:49b1)
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jp nc, TMHM_JoypadLoop
-
-	push bc
-	push de
-	dec a
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	ld hl, TMsHMs
-	call FlagAction
-	ld a, c
-	pop de
-	pop bc
-
-	and a
+	call CheckTMHM
 	jr z, .loop
 	dec b
 	jr nz, .loop
@@ -198,20 +172,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .NotTMHM
-
-	push bc
-	push de
-	dec a
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	ld hl, TMsHMs
-	call FlagAction
-	ld a, c
-	pop de
-	pop bc
-
-	and a
+	call CheckTMHM
 	jr z, .loop2
 	ld b, a
 	ld a, c
@@ -294,21 +255,9 @@ TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
 	inc b
 	ld c, -1
 .loop
-
 	inc c
-	push bc
-	push de
 	ld a, c
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	ld hl, TMsHMs
-	call FlagAction
-	ld a, c
-	and a
-	pop de
-	pop bc
-
+	call CheckTMHM
 	jr z, .loop
 	dec b
 	jr nz, .loop
@@ -392,6 +341,21 @@ CountSetBitsInByte:
 	db 4, 5, 5, 6, 5, 6, 6, 7
 	db 4, 5, 5, 6, 5, 6, 6, 7
 	db 5, 6, 6, 7, 6, 7, 7, 8
+
+CheckTMHM:
+	push bc
+	push de
+	dec a
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	ld a, c
+	pop de
+	pop bc
+	and a
+	ret
 
 PrintMoveDesc: ; 2cb3e
 	push hl
