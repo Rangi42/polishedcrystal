@@ -206,6 +206,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Special sprite for Red's Pikachu.
 * Add: Johto and Kanto forms for Arbok.
 * Add: Drain Kiss drains 75% HP.
+* Add: Update item attributes to Gen VII (healing items and X items).
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
 * Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.
