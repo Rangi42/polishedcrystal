@@ -295,11 +295,11 @@ PotionDesc:
 
 SuperPotionDesc:
 	db   "Restores #mon"
-	next "HP by 50.@"
+	next "HP by 60.@"
 
 HyperPotionDesc:
 	db   "Restores #mon"
-	next "HP by 200.@"
+	next "HP by 120.@"
 
 MaxPotionDesc:
 	db   "Fully restores"
@@ -395,15 +395,15 @@ PPMaxDesc:
 
 FreshWaterDesc:
 	db   "Restores #mon"
-	next "HP by 50.@"
+	next "HP by 30.@"
 
 SodaPopDesc:
 	db   "Restores #mon"
-	next "HP by 60.@"
+	next "HP by 50.@"
 
 LemonadeDesc:
 	db   "Restores #mon"
-	next "HP by 80.@"
+	next "HP by 70.@"
 
 MoomooMilkDesc:
 	db   "Restores #mon"
