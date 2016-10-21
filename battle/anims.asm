@@ -130,7 +130,7 @@ BattleAnimations::
 	dw BattleAnim_IcicleCrash
 	dw BattleAnim_Swift
 	dw BattleAnim_IronHead
-	dw BattleAnim_SpikeCannon
+	dw BattleAnim_IcicleSpear
 	dw BattleAnim_FairyWind
 	dw BattleAnim_CalmMind
 	dw BattleAnim_MetalSound
@@ -2232,7 +2232,8 @@ BattleAnim_PinMissile:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_SpikeCannon:
+BattleAnim_IcicleSpear: ; TODO: design custom Icicle Spear animation
+BattleAnim_SpikeCannon: ; removed
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
 .loop
 	anim_obj ANIM_OBJ_60,   8, 0,  11, 4, $18

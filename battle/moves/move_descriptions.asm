@@ -129,7 +129,7 @@
 	dw IcicleCrashDescription
 	dw SwiftDescription
 	dw IronHeadDescription
-	dw SpikeCannonDescription
+	dw IcicleSpearDescription
 	dw FairyWindDescription
 	dw CalmMindDescription
 	dw MetalSoundDescription
@@ -766,8 +766,8 @@ EggBombDescription:
 	db   "Eggs are hurled at"
 	next "the foe.@"
 
-SpikeCannonDescription:
-	db   "Fires spikes to"
+IcicleSpearDescription:
+	db   "Fires icicles to"
 	next "hit 2-5 times.@"
 
 FairyWindDescription:

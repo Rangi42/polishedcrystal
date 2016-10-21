@@ -99,7 +99,7 @@ DoubleSlap:
 FuryAttack:
 FurySwipes:
 PinMissile:
-SpikeCannon:
+IcicleSpear:
 	checkobedience
 	usedmovetext
 	doturn

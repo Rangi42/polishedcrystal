@@ -215,6 +215,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * X items sharply raise stats and cost twice as much
    * Thunder Wave has 90% accuracy
    * Paralysis halves (not quarters) Speed
+* Add: Replace Spike Cannon with Icicle Spear.
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
 * Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.

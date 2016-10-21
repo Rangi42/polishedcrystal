@@ -128,7 +128,7 @@
 	db "Icicle Crash@"
 	db "Swift@"
 	db "Iron Head@"
-	db "Spike Cannon@"
+	db "Icicle Spear@"
 	db "Fairy Wind@"
 	db "Calm Mind@"
 	db "Metal Sound@"

@@ -1594,7 +1594,7 @@ DewgongEvosAttacks:
 	db 27, AURORA_BEAM
 	db 31, BUBBLE_BEAM ; Aqua Jet → RBY TM move
 	db 33, WATERFALL ; Brine → HM move
-	db 34, HORN_ATTACK ; Sheer Cold → new move
+	db 34, ICICLE_SPEAR ; Sheer Cold → egg move
 	db 39, TAKE_DOWN
 	db 45, FLAIL ; Dive → event move
 	db 49, AQUA_TAIL
@@ -1648,7 +1648,7 @@ ShellderEvosAttacks:
 	db 1, TACKLE
 	db 4, DEFENSE_CURL ; Withdraw → similar move
 	db 8, SUPERSONIC
-	db 13, WATER_GUN ; Icicle Spear → new move
+	db 13, ICICLE_SPEAR
 	db 16, PROTECT
 	db 20, LEER
 	db 25, ICE_SHARD
@@ -1665,12 +1665,13 @@ ShellderEvosAttacks:
 CloysterEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HYDRO_PUMP
+	db 1, FURY_ATTACK ; new move
 	db 1, TRI_ATTACK ; Shell Smash → RBY TM move
 	db 1, DEFENSE_CURL ; Withdraw → similar move
 	db 1, SUPERSONIC
 	db 1, PROTECT
 	db 1, AURORA_BEAM
-	db 13, SPIKE_CANNON
+	db 13, ICICLE_SPEAR ; Spike Cannon → Icicle Spear
 	db 28, SPIKES
 	db 50, ICICLE_CRASH
 	db 0 ; no more level-up moves
@@ -2565,7 +2566,7 @@ OmastarEvosAttacks:
 	db 28, BUBBLE_BEAM ; Brine → egg move
 	db 34, PROTECT
 	db 37, ANCIENTPOWER
-	db 40, SPIKE_CANNON
+	db 40, ICICLE_SPEAR ; Spike Cannon → new move
 	db 48, SPIKES ; Tickle → new move
 	db 56, EARTH_POWER ; Rock Blast → tutor move
 	db 67, POWER_GEM ; Shell Smash → new move
@@ -4189,7 +4190,7 @@ CorsolaEvosAttacks:
 	db 10, BUBBLE_BEAM
 	db 13, SAFEGUARD ; Refresh → egg move
 	db 17, ANCIENTPOWER
-	db 20, SPIKE_CANNON
+	db 20, ICICLE_SPEAR ; Spike Cannon → new move
 	db 23, CONFUSE_RAY ; Lucky Chant → egg move
 	db 27, SURF ; Brine → HM move
 	db 29, BARRIER ; Iron Defense → similar move

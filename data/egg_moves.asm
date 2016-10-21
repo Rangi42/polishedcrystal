@@ -306,6 +306,7 @@ SeelEggMoves:
 	db SLAM
 	db ENCORE
 	db WATER_PULSE
+	db ICICLE_SPEAR
 	db $ff
 
 GrimerEggMoves:
@@ -324,6 +325,7 @@ ShellderEggMoves:
 	db TAKE_DOWN
 	db TWINEEDLE
 	db WATER_PULSE
+	db ICICLE_SPEAR
 	db $ff
 
 GastlyEggMoves:
@@ -780,6 +782,7 @@ SwinubEggMoves:
 	db ROCK_SLIDE
 	db ANCIENTPOWER
 	db ICICLE_CRASH
+	db ICICLE_SPEAR
 	db $ff
 
 CorsolaEggMoves:
@@ -791,6 +794,7 @@ CorsolaEggMoves:
 	db SAFEGUARD
 	db CALM_MIND
 	db WATER_PULSE
+	db ICICLE_SPEAR
 	db $ff
 
 RemoraidEggMoves:

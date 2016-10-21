@@ -131,7 +131,7 @@
 	const ICICLE_CRASH ; $80
 	const SWIFT        ; $81
 	const IRON_HEAD    ; $82
-	const SPIKE_CANNON ; $83
+	const ICICLE_SPEAR ; $83
 	const FAIRY_WIND   ; $84
 	const CALM_MIND    ; $85
 	const METAL_SOUND  ; $86
