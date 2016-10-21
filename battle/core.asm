@@ -7177,8 +7177,6 @@ ApplyPrzEffectOnSpeed: ; 3ec39
 	ld a, [hl]
 	srl a
 	rr b
-	srl a
-	rr b
 	ld [hli], a
 	or b
 	jr nz, .player_ok
@@ -7196,8 +7194,6 @@ ApplyPrzEffectOnSpeed: ; 3ec39
 	ld a, [hld]
 	ld b, a
 	ld a, [hl]
-	srl a
-	rr b
 	srl a
 	rr b
 	ld [hli], a

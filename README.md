@@ -206,7 +206,15 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Special sprite for Red's Pikachu.
 * Add: Johto and Kanto forms for Arbok.
 * Add: Drain Kiss drains 75% HP.
-* Add: Update item attributes to Gen VII (healing items and X items).
+* Add: Update Pokémon, move, and item attributes to Gen VII:
+   * Super Potion heals 60 HP
+   * Hyper Potion heals 120 HP and costs ¥1500
+   * Fresh Water heals 30 HP
+   * Soda Pop heals 50 HP
+   * Lemonade heals 70 HP and costs ¥400
+   * X items sharply raise stats and cost twice as much
+   * Thunder Wave has 90% accuracy
+   * Paralysis halves (not quarters) Speed
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
 * Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.
