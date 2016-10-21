@@ -7907,7 +7907,7 @@ GiveBattleEVs:
 	; check held item
 	push bc
 	ld hl, BattleMonItem
-	call GetItemHeldEffect
+	farcall GetItemHeldEffect
 	ld a, b
 	cp HELD_EV_DOUBLE
 	call z, .item_double
