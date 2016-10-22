@@ -280,57 +280,80 @@ ChooseMoveToLearn:
 	ret z
 	push de
 	dec a
-	ld bc, MOVE_LENGTH
-	ld hl, Moves + MOVE_TYPE
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
-	ld [wd265], a
-	; c = a * 7
-	ld c, a
-	add a
-	add a
-	add a
-	sub c
-	ld c, a
-	ld b, 0
-	ld hl, .Types
-	add hl, bc
-	ld d, h
-	ld e, l
 
-	ld hl, StringBuffer1
-	ld bc, 7
-	call PlaceString
-	ld hl, StringBuffer1 + 6
-	ld [hl], "/"
-
-	ld a, [MenuSelection]
-	dec a
 	ld bc, MOVE_LENGTH
 	ld hl, Moves + MOVE_CATEGORY
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
+	; bc = a * 4
 	ld c, a
 	add a
 	add a
-	add c
 	ld b, 0
 	ld c, a
 	ld hl, .Classes
 	add hl, bc
 	ld d, h
 	ld e, l
-
-	ld hl, StringBuffer1 + 7
-	ld bc, 7
+	ld hl, StringBuffer1
+	ld bc, 3
 	call PlaceString
-	ld hl, StringBuffer1 + 11
+	ld hl, StringBuffer1 + 3
 	ld [hl], "/"
 
 	ld a, [MenuSelection]
 	dec a
+
+	ld bc, MOVE_LENGTH
+	ld hl, Moves + MOVE_TYPE
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld [wd265], a
+	; bc = a * 4
+	ld c, a
+	add a
+	add a
+	ld b, 0
+	ld c, a
+	ld hl, .Types
+	add hl, bc
+	ld d, h
+	ld e, l
+	ld hl, StringBuffer1 + 4
+	ld bc, 3
+	call PlaceString
+	ld hl, StringBuffer1 + 4 + 3
+	ld [hl], "/"
+
+	ld a, [MenuSelection]
+	dec a
+
+	ld bc, MOVE_LENGTH
+	ld hl, Moves + MOVE_POWER
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld hl, StringBuffer1 + 8
+	and a
+	jr z, .no_power
+	ld [EngineBuffer1], a
+	ld de, EngineBuffer1
+	lb bc, 1, 3
+	call PrintNum
+	jr .got_power
+.no_power
+	ld de, .ThreeDashes
+	ld bc, 3
+	call PlaceString
+.got_power
+	ld hl, StringBuffer1 + 8 + 3
+	ld [hl], "/"
+
+	ld a, [MenuSelection]
+	dec a
+
 	ld bc, MOVE_LENGTH
 	ld hl, Moves + MOVE_PP
 	call AddNTimes
@@ -341,7 +364,7 @@ ChooseMoveToLearn:
 	ld de, EngineBuffer1
 	lb bc, 1, 2
 	call PrintNum
-	ld hl, StringBuffer1 + 14
+	ld hl, StringBuffer1 + 12 + 2
 	ld [hl], "@"
 
 	ld hl, SCREEN_WIDTH - 6
@@ -354,30 +377,33 @@ ChooseMoveToLearn:
 	ret
 
 .Types
-	db "Normal@"
-	db " Fight@"
-	db "Flying@"
-	db "Poison@"
-	db "Ground@"
-	db "  Rock@"
-	db "   Bug@"
-	db " Ghost@"
-	db " Steel@"
-	db "  Fire@"
-	db " Water@"
-	db " Grass@"
-	db "Electr@"
-	db "Psychc@"
-	db "   Ice@"
-	db "Dragon@"
-	db "  Dark@"
-	db " Fairy@"
-	db "   ???@"
+	db "Nrm@"
+	db "Fgt@"
+	db "Fly@"
+	db "Psn@"
+	db "Grn@"
+	db "Roc@"
+	db "Bug@"
+	db "Gho@"
+	db "Stl@"
+	db "Fir@"
+	db "Wtr@"
+	db "Grs@"
+	db "Ele@"
+	db "Psy@"
+	db "Ice@"
+	db "Drg@"
+	db "Drk@"
+	db "Fai@"
+	db "???@"
 
 .Classes
-	db "Phys@"
-	db "Spcl@"
-	db "Stat@"
+	db "Phy@"
+	db "Spc@"
+	db "Sta@"
+
+.ThreeDashes
+	db "---@"
 
 .PrintMoveDesc
 	push de
