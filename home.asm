@@ -975,6 +975,7 @@ GetTMHMName:: ; 3487
 	pop bc
 	pop de
 	pop hl
+	ld de, StringBuffer1
 	ret
 
 .TMText:
