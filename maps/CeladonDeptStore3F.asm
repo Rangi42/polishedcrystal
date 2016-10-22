@@ -19,7 +19,7 @@ CeladonDeptStore3F_MapScriptHeader:
 ClerkScript_0x70d29:
 	faceplayer
 	opentext
-	pokemart MARTTYPE_STANDARD, MART_CELADON_3F
+	pokemart MARTTYPE_TMHM, MART_CELADON_3F_TMHM
 	closetext
 	end
 

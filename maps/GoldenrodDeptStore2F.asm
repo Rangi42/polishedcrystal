@@ -24,12 +24,12 @@ ClerkScript_0x55b65:
 	opentext
 	checkevent EVENT_GOT_EEVEE
 	iftrue .eevee
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_1
+	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2
 	closetext
 	end
 
 .eevee
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_2
+	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_EEVEE
 	closetext
 	end
 
