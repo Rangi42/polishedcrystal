@@ -600,8 +600,6 @@ DayCare_InitBreeding: ; 16a3b
 	ld a, [wd265]
 	and a
 	ret z
-	inc a
-	ret z
 	ld hl, wDaycareMan
 	set 5, [hl]
 .loop

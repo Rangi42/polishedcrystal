@@ -213,24 +213,23 @@ DaycareStep:: ; 7282
 	dec [hl]
 	ret nz
 
-	call Random
-	ld [hl], a
 	farcall CheckBreedmonCompatibility
 	ld a, [wd265]
-	cp 230
-	ld b, -1 + 32 percent
-	jr nc, .okay
-	ld a, [wd265]
-	cp 170
-	ld b, 16 percent
-	jr nc, .okay
-	ld a, [wd265]
-	cp 110
-	ld b, 12 percent
-	jr nc, .okay
-	ld b, 4 percent
+	; Egg initialization shouldn't happen if incompatible, but just in case
+	and a
+	ret z
+	; TODO: check Oval Charm
+	cp 3 ; very compatible
+	ld b, 1 + 70 percent
+	jr z, .got_odds
+	cp 2 ; compatible
+	ld b, 1 + 50 percent
+	jr z, .got_odds
+	cp 1 ; slightly compatible
+	ld b, 1 + 20 percent
+	jr z, .got_odds
 
-.okay
+.got_odds
 	call Random
 	cp b
 	ret nc

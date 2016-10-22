@@ -4194,7 +4194,7 @@ GetGender: ; 50bdd
 	dec a
 	jr z, .sBoxMon
 
-; 3: Unknown
+; 3: Other (used for breeding, possibly elsewhere)
 	ld hl, TempMonGender
 	dec a
 	jr z, .Gender
