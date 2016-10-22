@@ -1,4 +1,6 @@
 _ReceiveItem:: ; d1d5
+	call DoesHLEqualNumItems
+	jp nz, PutItemInPocket
 	push hl
 	call CheckItemPocket
 	pop de

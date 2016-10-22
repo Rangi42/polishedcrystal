@@ -17,6 +17,20 @@ endr
 	jp PlaceString
 ; 0x1c8987
 
+PrintTMHMDescription:
+; Print the description for TM/HM [CurSpecies] at de.
+
+	push de
+	ld a, [CurSpecies]
+	ld [CurTMHM], a
+	ld [wCurTMHM], a
+	predef GetTMHMMove
+	pop hl
+	ld a, [wd265]
+	ld [CurSpecies], a
+	predef PrintMoveDesc
+	ret
+
 
 ItemDescriptions:
 	dw PokeBallDesc

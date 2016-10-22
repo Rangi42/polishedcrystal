@@ -677,6 +677,20 @@ UpdateItemDescription: ; 0x244c3
 	farcall PrintItemDescription
 	ret
 
+UpdateTMHMDescription:
+	ld a, [MenuSelection]
+	ld [CurSpecies], a
+	hlcoord 0, 12
+	ld b, 4
+	ld c, SCREEN_WIDTH - 2
+	call TextBox
+	ld a, [MenuSelection]
+	cp -1
+	ret z
+	decoord 1, 14
+	farcall PrintTMHMDescription
+	ret
+
 INCLUDE "engine/pokepic.asm"
 
 LoadObjectMasks: ; 2454f
@@ -758,6 +772,15 @@ PlaceMenuItemName: ; 0x24ab4
 	ld a, [MenuSelection]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
+	pop hl
+	call PlaceString
+	ret
+
+PlaceMenuTMHMName:
+	push de
+	ld a, [MenuSelection]
+	ld [wNamedObjectIndexBuffer], a
+	call GetTMHMName
 	pop hl
 	call PlaceString
 	ret
