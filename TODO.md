@@ -8,7 +8,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Bugs
 
-* Lyra's catching tutorial has an invalid Bag
 * Pokémon caught during the Bug-Catching Contest are recorded as caught in Goldenrod Harbor
 * Nuzlocke mode sometimes turns on by itself
 * TMs refresh PP

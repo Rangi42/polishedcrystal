@@ -227,7 +227,7 @@ CheckNickErrors:: ; 669f
 	db "<START>",  $04       + 1
 	db $14,        $18       + 1
 	db $1d,        "%"       + 1
-	db $35,        "<GREEN>" + 1
+	db $35,        $39       + 1
 	db "<ENEMY>",  "<ENEMY>" + 1
 	db $49,        "<TM>"    + 1
 	db "<ROCKET>", "┘"       + 1
@@ -240,10 +240,6 @@ INCLUDE "items/item_attributes.asm"
 INCLUDE "engine/npc_movement.asm"
 INCLUDE "event/happiness_egg.asm"
 INCLUDE "event/special.asm"
-
-Predef1: ; 747a
-; not used
-	ret
 
 SECTION "bank2", ROMX, BANK[$2]
 
@@ -3722,7 +3718,7 @@ CatchTutorial:: ; 4e554
 .DudeTutorial: ; 4e56a (13:656a)
 ; Back up your name to your Mom's name.
 	ld hl, PlayerName
-	ld de, MomsName
+	ld de, ExtraName
 	ld bc, NAME_LENGTH
 	call CopyBytes
 ; Copy Dude's name to your name
@@ -3749,7 +3745,7 @@ CatchTutorial:: ; 4e554
 	pop af
 
 	ld [Options], a
-	ld hl, MomsName
+	ld hl, ExtraName
 	ld de, PlayerName
 	ld bc, NAME_LENGTH
 	call CopyBytes
@@ -5290,10 +5286,6 @@ INCLUDE "event/battle_tower_text.asm"
 
 SECTION "bank23", ROMX, BANK[$23]
 
-Predef35: ; 8c000
-Predef36:
-	ret
-
 INCLUDE "engine/timeofdaypals.asm"
 INCLUDE "engine/battle_start.asm"
 
@@ -5575,11 +5567,6 @@ DisplayAlreadyCaughtText: ; cc0c7
 	; You already caught a @ .
 	text_jump UnknownText_0x1c10dd
 	db "@"
-
-Predef2F:
-Predef38:
-Predef39: ; cc0d5
-	ret
 
 INCLUDE "battle/anim_commands.asm"
 

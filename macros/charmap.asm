@@ -5,11 +5,8 @@
 	charmap "<LNBRK>",  $22
 	charmap "<POKE>",   $24
 	charmap "%",        $25
-	charmap "<RED>",    $38
-	charmap "<GREEN>",  $39
 	charmap "<ENEMY>",  $3f
 	charmap "<SHINY>",  $3f
-	charmap "<MOM>",    $49
 	charmap "<PKMN>",   $4a
 	charmap "<NEXT>",   $4e
 	charmap "<LINE>",   $4f

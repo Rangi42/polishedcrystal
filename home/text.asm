@@ -231,18 +231,18 @@ endm
 	dict "<NEXT>", NextLineChar
 	dict TX_FAR, TextFar
 	dict $00, NullChar
-	dict $14, PrintPlayerName ; formerly PLAY_G
+	dict $14, PrintPlayerName ; formerly <PLAY_G>
 	dict $4c, Char4C
 	dict $4b, Char4B
 	dict "<PARA>", Paragraph
-	dict "<MOM>", PrintMomsName
+	dict $49, PrintPlayerName ; formerly <MOM>
 	dict "<PLAYER>", PrintPlayerName
 	dict "<RIVAL>", PrintRivalName
 	dict $35, Char35
 	dict $36, Char36
 	dict $37, Char37
-	dict "<RED>", PrintRedsName
-	dict "<GREEN>", PrintGreensName
+	dict $38, PrintPlayerName ; formerly <RED>
+	dict $39, PrintRivalName ; formerly <GREEN>
 	dict "#", PlacePOKe
 	dict "<PC>", PCChar
 	dict "<ROCKET>", RocketChar
@@ -316,11 +316,8 @@ print_name: macro
 	jp PlaceCommandCharacter
 endm
 
-PrintMomsName:   print_name MomsName   ; 1186
 PrintPlayerName: print_name PlayerName ; 118d
 PrintRivalName:  print_name RivalName  ; 1194
-PrintRedsName:   print_name RedsName   ; 119b
-PrintGreensName: print_name GreensName ; 11a2
 
 TrainerChar:  print_name TrainerCharText ; 11a9
 TMChar:       print_name TMCharText      ; 11b0

@@ -271,16 +271,8 @@ InitializeNPCNames: ; 5ce9
 	ld de, RivalName
 	call .Copy
 
-	ld hl, .Mom
-	ld de, MomsName
-	call .Copy
-
-	ld hl, .Red
-	ld de, RedsName
-	call .Copy
-
-	ld hl, .Green
-	ld de, GreensName
+	ld hl, .Extra
+	ld de, ExtraName
 
 .Copy:
 	ld bc, NAME_LENGTH
@@ -288,9 +280,7 @@ InitializeNPCNames: ; 5ce9
 	ret
 
 .Rival:  db "???@"
-.Red:    db "Red@"
-.Green:  db "Green@"
-.Mom:    db "Mom@"
+.Extra:  db "???@"
 ; 5d23
 
 InitializeWorld: ; 5d23

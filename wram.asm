@@ -2222,10 +2222,8 @@ PlayerID:: ; d47b
 	ds 2
 
 PlayerName:: ds NAME_LENGTH ; d47d
-MomsName::   ds NAME_LENGTH ; d488
 RivalName::  ds NAME_LENGTH ; d493
-RedsName::   ds NAME_LENGTH ; d49e
-GreensName:: ds NAME_LENGTH ; d4a9
+ExtraName::  ds NAME_LENGTH ; d488
 
 wSavedAtLeastOnce:: ds 1
 wSpawnAfterChampion:: ds 1

@@ -493,7 +493,7 @@ TrainerCard_Page1_PrintGameTime: ; 25415 (9:5415)
 	ret nz
 	hlcoord 15, 12
 	ld a, [hl]
-	xor %01010001 ; $7F <--> $2E
+	xor %01010001 ; $7F " " <--> $2E ":"
 	ld [hl], a
 	ret
 

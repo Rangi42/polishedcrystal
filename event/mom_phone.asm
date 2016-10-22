@@ -270,7 +270,3 @@ _MomText_ItsInRoom: ; 0xfd1ca
 	text_jump UnknownText_0x1bc6c7
 	db "@"
 ; 0xfd1cf
-
-Predef3A: ; fd1d0
-	ret
-; fd1d1
