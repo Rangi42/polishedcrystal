@@ -293,7 +293,6 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	jr nz, .loop
 	ld a, b
 	ld [wd265], a
-	pop de
 	ret
 
 CountSetBitsInByte:
