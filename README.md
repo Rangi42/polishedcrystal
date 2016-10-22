@@ -238,6 +238,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Use original Jynx sprite.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
+* Fix: Munchlax, Magnezone, and Tangrowth have their relatives' cries.
 * Fix: Game console names in room.
 * Fix: Yellow Forest gate clerk does not face you.
 * Fix: Read hidden Ruins of Alph tablet from one direction.

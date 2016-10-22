@@ -172,9 +172,9 @@ CrobatCryHeader:      cry_header CRY_SQUIRTLE,   -$010,  $140
 ChinchouCryHeader:    cry_header CRY_CYNDAQUIL,   $3c9,  $140
 LanturnCryHeader:     cry_header CRY_CYNDAQUIL,   $2d0,  $110
 PichuCryHeader:       cry_header CRY_PICHU,       $000,  $140
-MunchlaxCryHeader:    cry_header CRY_PARAS,       $0ee,  $17f
-MagnezoneCryHeader:   cry_header CRY_PARAS,       $0ee,  $17f
-TangrowthCryHeader:   cry_header CRY_PARAS,       $0ee,  $17f
+MunchlaxCryHeader:    cry_header CRY_GRIMER,      $055,  $081
+MagnezoneCryHeader:   cry_header CRY_METAPOD,     $020,  $140
+TangrowthCryHeader:   cry_header CRY_GOLEM,       $000,  $100
 NatuCryHeader:        cry_header CRY_NATU,       -$067,  $100
 XatuCryHeader:        cry_header CRY_NATU,       -$0a7,  $168
 MareepCryHeader:      cry_header CRY_MAREEP,      $022,  $0d8
