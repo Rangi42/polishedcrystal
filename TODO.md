@@ -56,6 +56,8 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Aesthetic updates
 
+* Use the RBY Champion theme for the final battle with Silver
+* Use one of the Elite Four battle themes
 * Add separate animation graphics for more Poké Ball designs
 * Add a Quiet Cave icon on the Town Map
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
