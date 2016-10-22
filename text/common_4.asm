@@ -194,7 +194,7 @@ UnknownText_0x1c4c08::
 	text_from_ram StringBuffer2
 	text "(s)"
 	line "will be ¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text "."
 	done
 
@@ -223,7 +223,7 @@ UnknownText_0x1c4cae::
 	text_from_ram StringBuffer2
 	text "(s)"
 	line "will be ¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text "."
 	done
 
@@ -262,7 +262,7 @@ UnknownText_0x1c4db0::
 	text_from_ram StringBuffer2
 	text " costs"
 	line "¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text ". Want it?"
 	done
 
@@ -306,7 +306,7 @@ UnknownText_0x1c4e89::
 	text_from_ram StringBuffer2
 	text "(s)"
 	line "will cost ¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text "."
 	done
 
@@ -336,7 +336,7 @@ UnknownText_0x1c4f33::
 UnknownText_0x1c4f3e::
 	text "I can pay you"
 	line "¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text "."
 
 	para "Is that OK?"
@@ -378,7 +378,7 @@ UnknownText_0x1c500d::
 
 UnknownText_0x1c502e::
 	text "Got ¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text " for"
 	line "@"
 	text_from_ram StringBuffer2

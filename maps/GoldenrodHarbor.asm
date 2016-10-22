@@ -81,7 +81,7 @@ SwimmerfKatieScript:
 GoldenrodHarborLassScript:
 	faceplayer
 	opentext
-	pokemart MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR
+	pokemart MARTTYPE_ADVENTURER, 0
 	closetext
 	end
 

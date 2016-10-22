@@ -113,7 +113,10 @@ SilphMart:
 	ret
 
 AdventurerMart:
-	call FarReadMart
+	ld b, BANK(AdventurerData)
+	ld de, AdventurerData
+	call LoadMartPointer
+	call ReadMart
 	call LoadStandardMenuDataHeader
 	ld hl, Text_AdventurerMart_Intro
 	call MartTextBox
@@ -149,6 +152,18 @@ RooftopSaleData2: ; 15aff
 	dbw PROTEIN,      7800
 	db -1
 ; 15b10
+
+AdventurerData:
+	db 8
+	dbw GREAT_BALL,    600
+	dbw FRESH_WATER,   200
+	dbw ETHER,        1200
+	dbw ELIXER,       2000
+	dbw RARE_CANDY,  12000
+	dbw BRIGHTPOWDER, 1800
+	dbw SCOPE_LENS,   2400
+	dbw SURF_MAIL,      50
+	db -1
 
 LoadMartPointer: ; 15b10
 	ld a, b
@@ -438,8 +453,6 @@ endr
 
 MartAskPurchaseQuantity: ; 15c91
 	ld a, [CurItem]
-	cp TM01
-	jr nc, .PurchaseQuantityOfTM
 	call GetMartDialogGroup ; gets a pointer from GetMartDialogGroup.MartTextFunctionPointers
 rept 2
 	inc hl
@@ -451,44 +464,6 @@ endr
 	jp z, BargainShopAskPurchaseQuantity
 	jp RooftopSaleAskPurchaseQuantity
 ; 15ca3
-
-.PurchaseQuantityOfTM
-	push de
-	ld hl, NumItems
-	call CheckItem
-	pop de
-	jp c, .AlreadyHaveTM
-	farcall GetItemPrice
-	ld a, d
-	ld [Buffer1], a
-	ld a, e
-	ld [Buffer2], a
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	ld a, 99
-	ld [wItemQuantityBuffer], a
-	farcall BuySell_MultiplyPrice
-	push hl
-	ld hl, hMoneyTemp
-	ld a, [hProduct + 1]
-	ld [hli], a
-	ld a, [hProduct + 2]
-	ld [hli], a
-	ld a, [hProduct + 3]
-	ld [hl], a
-	pop hl
-	ret
-
-.AlreadyHaveTM
-	ld hl, .AlreadyHaveTMText
-	call PrintText
-	call JoyWaitAorB
-	scf
-	ret
-
-.AlreadyHaveTMText
-	text_jump AlreadyHaveTMText
-	db "@"
 
 GetMartDialogGroup: ; 15ca3
 	ld a, [EngineBuffer1]
@@ -508,7 +483,7 @@ endr
 	dwb .PharmacyPointers, 0
 	dwb .StandardMartPointers, 2
 	dwb .SilphMartPointers, 0
-	dwb .AdventurerMartPointers, 0
+	dwb .AdventurerMartPointers, 2
 	dwb .InformalMartPointers, 0
 ; 15cbf
 

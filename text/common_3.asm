@@ -220,7 +220,7 @@ WhiteoutToWildText::
 	para "<PLAYER> panicked"
 	line "and dropped"
 	cont "¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text "…"
 
 	para "<......><......><......>"
@@ -236,7 +236,7 @@ WhiteoutToTrainerText::
 
 	para "<PLAYER> paid"
 	line "¥@"
-	deciram hMoneyTemp, 3, 6
+	deciram hMoneyTemp, 3, 7
 	text " to the"
 	cont "winner…"
 

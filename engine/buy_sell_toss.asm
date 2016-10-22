@@ -138,6 +138,7 @@ BuySellToss_UpdateQuantityDisplay: ; 25072
 	ld de, wItemQuantityChangeBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
+	dec hl
 	ld a, [wMenuData2Pointer]
 	ld e, a
 	ld a, [wMenuData2Pointer + 1]
@@ -207,7 +208,7 @@ BuySell_DisplaySubtotal: ; 250d1
 	pop hl
 	inc hl
 	ld de, hMoneyTemp
-	lb bc, PRINTNUM_MONEY | 3, 6
+	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	call WaitBGMap
 	ret
