@@ -22,7 +22,7 @@ ElmsHouseBookshelf:
 	jumpstd difficultbookshelf
 
 ElmsWifeText:
-	text "Hi, <PLAY_G>! My"
+	text "Hi, <PLAYER>! My"
 	line "husband's always"
 
 	para "so busy--I hope"

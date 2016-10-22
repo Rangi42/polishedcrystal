@@ -223,7 +223,7 @@ LanceBattleIntroText:
 	text "Lance: I've been"
 	line "waiting for you."
 
-	para "<PLAY_G>!"
+	para "<PLAYER>!"
 
 	para "I knew that you,"
 	line "with your skills,"
@@ -273,7 +273,7 @@ LanceBattleAfterText:
 
 	para "You have become"
 	line "truly powerful,"
-	cont "<PLAY_G>."
+	cont "<PLAYER>."
 
 	para "Your #mon have"
 	line "responded to your"
@@ -298,7 +298,7 @@ UnknownText_0x1811dd:
 
 UnknownText_0x18121b:
 	text "Prof.Oak: Ah,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 
 	para "It's been a long"
 	line "while."
@@ -326,7 +326,7 @@ UnknownText_0x18121b:
 	line "severed."
 
 	para "Congratulations,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 	done
 
 UnknownText_0x18134b:
@@ -340,7 +340,7 @@ UnknownText_0x18137b:
 	line "getting to be a"
 	cont "bit too noisy…"
 
-	para "<PLAY_G>, could you"
+	para "<PLAYER>, could you"
 	line "come with me?"
 	done
 

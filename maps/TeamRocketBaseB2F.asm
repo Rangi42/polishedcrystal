@@ -669,7 +669,7 @@ UnknownText_0x6d5d8:
 	done
 
 UnknownText_0x6d64e:
-	text "Sorry, <PLAY_G>."
+	text "Sorry, <PLAYER>."
 	line "I saw how well you"
 
 	para "were doing, so I"
@@ -708,7 +708,7 @@ UnknownText_0x6d6cf:
 	para "makes me feel"
 	line "guilty."
 
-	para "<PLAY_G>, let's"
+	para "<PLAYER>, let's"
 	line "split the job."
 	done
 
@@ -748,7 +748,7 @@ UnknownText_0x6d8f8:
 	done
 
 UnknownText_0x6d994:
-	text "<PLAY_G>…"
+	text "<PLAYER>…"
 
 	para "The journey to be-"
 	line "coming the #mon"
@@ -790,7 +790,7 @@ LanceHealsText1:
 	done
 
 LanceHealsText2:
-	text "Lance: <PLAY_G>,"
+	text "Lance: <PLAYER>,"
 	line "let's give it our"
 	cont "best for #mon."
 	done

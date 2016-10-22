@@ -139,7 +139,7 @@ UnknownText_0x1a2a3d:
 	done
 
 UnknownText_0x1a2a57:
-	text "Brock: <PLAY_G>,"
+	text "Brock: <PLAYER>,"
 	line "thanks. I enjoyed"
 
 	para "battling you, even"

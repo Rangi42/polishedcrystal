@@ -132,7 +132,7 @@ UnknownText_0x7effb:
 
 UnknownText_0x7f0a1:
 	text "Ah! So you're the"
-	line "<PLAY_G> who solved"
+	line "<PLAYER> who solved"
 
 	para "the Power Plant's"
 	line "problem?"

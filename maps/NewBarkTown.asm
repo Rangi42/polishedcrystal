@@ -331,7 +331,7 @@ Text_GearIsImpressive:
 	done
 
 Text_WaitPlayer:
-	text "Wait, <PLAY_G>!"
+	text "Wait, <PLAYER>!"
 	done
 
 Text_WhatDoYouThinkYoureDoing:
@@ -358,7 +358,7 @@ Text_YourMonIsAdorable:
 	done
 
 Text_TellMomIfLeaving:
-	text "Hi, <PLAY_G>!"
+	text "Hi, <PLAYER>!"
 	line "Leaving again?"
 
 	para "You should tell"

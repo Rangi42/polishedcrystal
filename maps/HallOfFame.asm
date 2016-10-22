@@ -153,7 +153,7 @@ HallOfFame_LanceMoreText:
 	para "all the makings"
 	line "of greatness!"
 
-	para "<PLAY_G>, allow me"
+	para "<PLAYER>, allow me"
 	line "to register you"
 
 	para "and your partners"

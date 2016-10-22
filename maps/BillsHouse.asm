@@ -60,7 +60,7 @@ PokemaniacBillSeenText:
 	cont "legendary beasts?"
 
 	para "That's so cool,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 
 	para "Do you think they"
 	line "were once related"

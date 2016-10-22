@@ -203,7 +203,7 @@ UnknownText_0x6c52a:
 
 UnknownText_0x6c549:
 	text "What took you,"
-	line "<PLAY_G>?"
+	line "<PLAYER>?"
 
 	para "Just as I thought,"
 	line "that strange radio"
@@ -218,7 +218,7 @@ UnknownText_0x6c59e:
 	done
 
 UnknownText_0x6c5ba:
-	text "Lance: <PLAY_G>, we"
+	text "Lance: <PLAYER>, we"
 	line "should split up to"
 
 	para "check this place."

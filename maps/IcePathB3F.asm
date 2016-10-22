@@ -181,7 +181,7 @@ LoreleiAfterText:
 
 LoreleiRematchIntroAgainText:
 	text "Lorelei: Hello"
-	line "again, <PLAY_G>."
+	line "again, <PLAYER>."
 	done
 
 LoreleiRematchSeenText:
@@ -191,7 +191,7 @@ LoreleiRematchSeenText:
 	para "I hope you took"
 	line "Karen down a peg."
 
-	para "<......><......> You're the"
+	para "<......><......>You're the"
 	line "new Champion."
 	cont "I'm impressed."
 

@@ -188,7 +188,7 @@ OaksLabPC:
 	jumptext OaksLabPCText
 
 OakWelcomeKantoText:
-	text "Oak: Ah, <PLAY_G>!"
+	text "Oak: Ah, <PLAYER>!"
 	line "It's good of you"
 
 	para "to come all this"
@@ -216,7 +216,7 @@ OakLabGoodbyeText:
 
 OakChallengeText:
 	text "Oak: Incredible,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 
 	para "You won against"
 	line "the Elite Four"
@@ -264,7 +264,7 @@ OakWinText:
 
 OakOpenMtSilverText:
 	text "Oak: Spectacular,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 
 	para "I'll make arrange-"
 	line "ments so that you"
@@ -276,7 +276,7 @@ OakOpenMtSilverText:
 	line "we can make an"
 
 	para "exception in your"
-	line "case, <PLAY_G>."
+	line "case, <PLAYER>."
 
 	para "Go up to Indigo"
 	line "Plateau. You can"
@@ -327,7 +327,7 @@ OakNoEliteFourRematchText:
 	line "best #mon."
 
 	para "Keep trying hard,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 	done
 
 OakYesKantoBadgesText:
@@ -349,7 +349,7 @@ OakYesKantoBadgesText:
 	line "their best."
 
 	para "Keep trying hard,"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 	done
 
 OaksAssistant1Text:
@@ -412,7 +412,7 @@ OaksLabPCText:
 	line "away."
 
 	para "I heard rumors"
-	line "that <PLAY_G> is"
+	line "that <PLAYER> is"
 
 	para "getting quite a"
 	line "reputation."

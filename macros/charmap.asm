@@ -1,6 +1,5 @@
 ; Control characters
 	charmap "<START>",  $00
-	charmap "<PLAY_G>", $14 ; <PLAYER> + gender
 	charmap "<DAY>",    $15
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22

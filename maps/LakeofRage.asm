@@ -274,7 +274,7 @@ UnknownText_0x701b4:
 
 	para "I saw the way you"
 	line "battled earlier,"
-	cont "<PLAY_G>."
+	cont "<PLAYER>."
 
 	para "I can tell that"
 	line "you're a trainer"
@@ -303,7 +303,7 @@ UnknownText_0x702c6:
 	line "the cause."
 
 	para "I'll be waiting"
-	line "for you, <PLAY_G>."
+	line "for you, <PLAYER>."
 	done
 
 UnknownText_0x70371:

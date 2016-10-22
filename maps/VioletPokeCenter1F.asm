@@ -106,7 +106,7 @@ MovementData_AideFinishesLeavingPokecenter:
 	step_end
 
 UnknownText_0x69555:
-	text "<PLAY_G>, long"
+	text "<PLAYER>, long"
 	line "time, no see."
 
 	para "Prof.Elm asked me"
@@ -130,7 +130,7 @@ UnknownText_0x695c5:
 	line "with other active"
 	cont "#mon to hatch."
 
-	para "<PLAY_G>, you're"
+	para "<PLAYER>, you're"
 	line "the only person"
 	cont "we can rely on."
 
@@ -155,7 +155,7 @@ UnknownText_0x696f2:
 	done
 
 UnknownText_0x69712:
-	text "<PLAY_G>, will you"
+	text "<PLAYER>, will you"
 	line "take the Egg?"
 	done
 

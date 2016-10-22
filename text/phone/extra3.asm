@@ -1,5 +1,5 @@
 UnknownText_0x174000: ; 0x174000
-	text "Hi, <PLAY_G>!"
+	text "Hi, <PLAYER>!"
 	line "Our Bicycle sales"
 
 	para "have gone through"
@@ -216,7 +216,7 @@ UnknownText_0x1745c2: ; 0x1745c2
 ; 0x174638
 
 UnknownText_0x174638: ; 0x174638
-	text "Hey, <PLAY_G>!"
+	text "Hey, <PLAYER>!"
 
 	para "Do you remember"
 	line "your promise?"
@@ -452,7 +452,7 @@ UnknownText_0x174c29: ; 0x174c29
 ; 0x174c49
 
 UnknownText_0x174c49: ; 0x174c49
-	text "<PLAY_G>, why"
+	text "<PLAYER>, why"
 	line "aren't you here?"
 
 	para "I'll take you down"
@@ -553,7 +553,7 @@ UnknownText_0x174ec5: ; 0x174ec5
 ; 0x174ee2
 
 UnknownText_0x174ee2: ; 0x174ee2
-	text "Um… <PLAY_G>?"
+	text "Um… <PLAYER>?"
 	line "What's wrong?"
 
 	para "Did you forget our"
@@ -671,7 +671,7 @@ UnknownText_0x17519b: ; 0x17519b
 ; 0x17520a
 
 UnknownText_0x17520a: ; 0x17520a
-	text "<PLAY_G>, could you"
+	text "<PLAYER>, could you"
 	line "hurry over?"
 
 	para "Farfetch'd is"
@@ -973,7 +973,7 @@ UnknownText_0x1759f7: ; 0x1759f7
 	line "today."
 
 	para "Are you going,"
-	line "<PLAY_G>?"
+	line "<PLAYER>?"
 
 	para "I'm trying to make"
 	line "up my mind."
@@ -1130,7 +1130,7 @@ UnknownText_0x175dd9: ; 0x175dd9
 	para "Heh, they're some"
 	line "kind of feisty!"
 
-	para "<PLAY_G>, you have"
+	para "<PLAYER>, you have"
 	line "to see this rare"
 
 	para "sight! Get ready"
@@ -1883,7 +1883,7 @@ UnknownText_0x177465: ; 0x177465
 ; 0x1774c1
 
 UnknownText_0x1774c1: ; 0x1774c1
-	text "Oh, <PLAY_G>!"
+	text "Oh, <PLAYER>!"
 	line "How soon can I"
 
 	para "expect to see you"

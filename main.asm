@@ -225,7 +225,7 @@ CheckNickErrors:: ; 669f
 ; format:
 	;      ≥           <
 	db "<START>",  $04       + 1
-	db "<PLAY_G>", $18       + 1
+	db $14,        $18       + 1
 	db $1d,        "%"       + 1
 	db $35,        "<GREEN>" + 1
 	db "<ENEMY>",  "<ENEMY>" + 1

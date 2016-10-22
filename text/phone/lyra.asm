@@ -55,7 +55,7 @@ LyraPhoneYellowForestText:
 	line "Rocket before,"
 
 	para "haven't you,"
-	line "<PLAY_G>?"
+	line "<PLAYER>?"
 
 	para "That's so brave"
 	line "of you!"

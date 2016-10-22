@@ -339,7 +339,7 @@ LanceGetPasswordText:
 	line "very graciously"
 	cont "told me so."
 
-	para "<PLAY_G>, let's go"
+	para "<PLAYER>, let's go"
 	line "get the passwords."
 	done
 

@@ -12,7 +12,7 @@ ScientistScript_0x9b952:
 	jumptextfaceplayer UnknownText_0x9b955
 
 UnknownText_0x9b955:
-	text "Are you <PLAY_G>?"
+	text "Are you <PLAYER>?"
 
 	para "I work as Prof."
 	line "Oak's Aide."

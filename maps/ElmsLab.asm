@@ -907,7 +907,7 @@ AfterChikoritaMovement:
 	step_end
 
 ElmText_Intro:
-	text "Elm: <PLAY_G>!"
+	text "Elm: <PLAYER>!"
 	line "There you are!"
 
 	para "Hello to you too,"
@@ -918,9 +918,9 @@ ElmText_Intro:
 	line "Professor!"
 
 	para "I just ran into"
-	line "<PLAY_G> here."
+	line "<PLAYER> here."
 
-	para "Elm: <PLAY_G>,"
+	para "Elm: <PLAYER>,"
 	line "I needed to ask"
 	cont "you a favor."
 
@@ -955,7 +955,7 @@ ElmText_Intro:
 	done
 
 ElmText_Accepted:
-	text "Thanks, <PLAY_G>!"
+	text "Thanks, <PLAYER>!"
 
 	para "You're a great"
 	line "help!"
@@ -1027,7 +1027,7 @@ ElmText_MissionFromMrPokemon:
 
 	para "I know!"
 
-	para "<PLAY_G>, can you"
+	para "<PLAYER>, can you"
 	line "go in our place?"
 	done
 
@@ -1040,7 +1040,7 @@ ElmText_ChooseAPokemon:
 
 	para "You'll be that"
 	line "#mon's first"
-	cont "partner, <PLAY_G>!"
+	cont "partner, <PLAYER>!"
 
 	para "Go on. Pick one!"
 	done
@@ -1127,7 +1127,7 @@ ElmDirectionsText2:
 	done
 
 ElmDirectionsText3:
-	text "<PLAY_G>, I'm"
+	text "<PLAYER>, I'm"
 	line "counting on you!"
 	done
 
@@ -1163,7 +1163,7 @@ ElmsLabHealingMachineText2:
 	done
 
 ElmAfterTheftText1:
-	text "Elm: <PLAY_G>, this"
+	text "Elm: <PLAYER>, this"
 	line "is terrible…"
 
 	para "Oh, yes, what was"
@@ -1195,7 +1195,7 @@ ElmAfterTheftText5:
 	para "Prof.Oak gave you"
 	line "a #dex?"
 
-	para "<PLAY_G>, is that"
+	para "<PLAYER>, is that"
 	line "true? Th-that's"
 	cont "incredible!"
 
@@ -1204,7 +1204,7 @@ ElmAfterTheftText5:
 	cont "tial of people as"
 	cont "trainers."
 
-	para "Wow, <PLAY_G>. You"
+	para "Wow, <PLAYER>. You"
 	line "may have what it"
 
 	para "takes to become"
@@ -1224,7 +1224,7 @@ ElmAfterTheftText5:
 	done
 
 ElmAfterTheftText6:
-	text "…<PLAY_G>. The"
+	text "…<PLAYER>. The"
 	line "road to the"
 
 	para "championship will"
@@ -1244,7 +1244,7 @@ ElmStudyingEggText:
 	done
 
 ElmAideHasEggText:
-	text "Elm: <PLAY_G>?"
+	text "Elm: <PLAYER>?"
 	line "Didn't you meet my"
 	cont "assistant?"
 
@@ -1265,7 +1265,7 @@ ElmWaitingEggHatchText:
 	done
 
 UnknownText_0x79a40:
-	text "<PLAY_G>? I thought"
+	text "<PLAYER>? I thought"
 	line "the Egg hatched."
 
 	para "Where is the"
@@ -1273,7 +1273,7 @@ UnknownText_0x79a40:
 	done
 
 ShowElmTogepiText1:
-	text "Elm: <PLAY_G>, you"
+	text "Elm: <PLAYER>, you"
 	line "look great!"
 	done
 
@@ -1296,7 +1296,7 @@ ShowElmTogepiText3:
 	done
 
 ElmGiveEverstoneText1:
-	text "Thanks, <PLAY_G>!"
+	text "Thanks, <PLAYER>!"
 	line "You're helping"
 
 	para "unravel #mon"
@@ -1327,7 +1327,7 @@ ElmGiveEverstoneText2:
 	done
 
 ElmText_CallYou:
-	text "Elm: <PLAY_G>, I'll"
+	text "Elm: <PLAYER>, I'll"
 	line "call you if any-"
 	cont "thing comes up."
 	done
@@ -1347,7 +1347,7 @@ AideText_AfterTheft:
 	done
 
 ElmGiveMasterBallText1:
-	text "Elm: Hi, <PLAY_G>!"
+	text "Elm: Hi, <PLAYER>!"
 	line "Thanks to you, my"
 
 	para "research is going"
@@ -1376,11 +1376,11 @@ ElmGiveMasterBallText2:
 	line "make much better"
 
 	para "use of it than I"
-	line "can, <PLAY_G>!"
+	line "can, <PLAYER>!"
 	done
 
 ElmGiveTicketText1:
-	text "Elm: <PLAY_G>!"
+	text "Elm: <PLAYER>!"
 	line "There you are!"
 
 	para "I called because I"
@@ -1411,7 +1411,7 @@ ElmGiveTicketText2:
 	line "from Olivine City."
 
 	para "But you knew that"
-	line "already, <PLAY_G>."
+	line "already, <PLAYER>."
 
 	para "After all, you've"
 	line "traveled all over"
@@ -1428,7 +1428,7 @@ ElmsLabSignpostText_Egg:
 	done
 
 AideText_GiveYouPotions:
-	text "<PLAY_G>, I want"
+	text "<PLAYER>, I want"
 	line "you to have this"
 	cont "for your errand."
 	done

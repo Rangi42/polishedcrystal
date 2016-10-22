@@ -519,9 +519,9 @@ UnknownText_0x5de84:
 	para "What was your name"
 	line "again?"
 
-	para "…<PLAY_G>, OK!"
+	para "…<PLAYER>, OK!"
 
-	para "Come on, <PLAY_G>."
+	para "Come on, <PLAYER>."
 	line "Join the show."
 	done
 
@@ -533,7 +533,7 @@ UnknownText_0x5dedd:
 	line "shout out today's"
 
 	para "password for"
-	line "<PLAY_G>!"
+	line "<PLAYER>!"
 	done
 
 UnknownText_0x5df29:
@@ -577,7 +577,7 @@ UnknownText_0x5e054:
 	text "Buena: Yup! Our"
 	line "contestant was"
 
-	para "<PLAY_G>."
+	para "<PLAYER>."
 	line "Thanks for coming!"
 
 	para "I hope all you"
@@ -635,7 +635,7 @@ UnknownText_0x5e1ee:
 	cont "30 points, but…"
 
 	para "You came by so"
-	line "often, <PLAY_G>."
+	line "often, <PLAYER>."
 
 	para "I'll make you a"
 	line "special deal!"
@@ -645,7 +645,7 @@ UnknownText_0x5e1ee:
 	done
 
 UnknownText_0x5e2bf:
-	text "Buena: <PLAY_G>,"
+	text "Buena: <PLAYER>,"
 	line "do you want to"
 
 	para "register my phone"
@@ -669,7 +669,7 @@ UnknownText_0x5e33c:
 	done
 
 UnknownText_0x5e35e:
-	text "Buena: <PLAY_G>,"
+	text "Buena: <PLAYER>,"
 	line "your phone list"
 
 	para "has no room left"

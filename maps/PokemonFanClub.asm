@@ -182,7 +182,7 @@ UnknownText_0x191a72:
 	done
 
 UnknownText_0x191ae0:
-	text "Hello, <PLAY_G>!"
+	text "Hello, <PLAYER>!"
 
 	para "Did you come see"
 	line "me about my #-"

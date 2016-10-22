@@ -161,11 +161,6 @@ SpeechTextBox:: ; 103e
 	jp TextBox
 ; 1048
 
-TestText:: ; 1048
-	text "ゲームフりーク!"
-	done
-; 1052
-
 RadioTerminator:: ; 1052
 	ld hl, .stop
 	ret
@@ -236,6 +231,7 @@ endm
 	dict "<NEXT>", NextLineChar
 	dict TX_FAR, TextFar
 	dict $00, NullChar
+	dict $14, PrintPlayerName ; formerly PLAY_G
 	dict $4c, Char4C
 	dict $4b, Char4B
 	dict "<PARA>", Paragraph
@@ -266,7 +262,6 @@ endm
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>", PlaceMoveUsersName
 	dict "<ENEMY>", PlaceEnemysName
-	dict "<PLAY_G>", PlaceGenderedPlayerName
 
 	cp "ﾟ"
 	jr z, .diacritic
@@ -400,20 +395,6 @@ PlaceEnemysName:: ; 121b
 	jr PlaceCommandCharacter
 
 
-PlaceGenderedPlayerName:: ; 1252
-	push de
-	ld de, PlayerName
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld a, [PlayerGender]
-	bit 0, a
-	ld de, String_kun
-	jr z, PlaceCommandCharacter
-	ld de, String_chan
-	jr PlaceCommandCharacter
-
-
 PlaceCommandCharacter:: ; 126a
 	call PlaceString
 	ld h, b
@@ -436,8 +417,6 @@ String12a2:: db " @" ; 12a2
 Char35Text::
 Char36Text::
 Char37Text:: db "@" ; 12a4
-String_kun:: db "@" ; 12a5
-String_chan:: db "@" ; 12a6
 ; 12a7
 
 NextLineChar:: ; 12a7

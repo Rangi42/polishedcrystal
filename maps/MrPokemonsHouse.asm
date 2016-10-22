@@ -185,7 +185,7 @@ MrPokemonsHouse_OakExits:
 
 MrPokemonIntroText1:
 	text "Hello, hello! You"
-	line "must be <PLAY_G>."
+	line "must be <PLAYER>."
 
 	para "Prof.Elm said that"
 	line "you would visit."
@@ -254,7 +254,7 @@ MrPokemonText_AlwaysNewDiscoveries:
 
 MrPokemonsHouse_OakText1:
 	text "Oak: Aha! So"
-	line "you're <PLAY_G>!"
+	line "you're <PLAYER>!"
 
 	para "I'm Oak! A #mon"
 	line "researcher."
@@ -335,7 +335,7 @@ MrPokemonsHouse_OakText2:
 	line "Goldenrod for my"
 	cont "usual radio show."
 
-	para "<PLAY_G>, I'm"
+	para "<PLAYER>, I'm"
 	line "counting on you!"
 	done
 
@@ -347,7 +347,7 @@ MrPokemonText_GimmeTheScale:
 	para "That's rare! "
 	line "I, I want it…"
 
-	para "<PLAY_G>, would you"
+	para "<PLAYER>, would you"
 	line "care to trade it?"
 
 	para "I can offer this"
