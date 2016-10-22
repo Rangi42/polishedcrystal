@@ -1433,9 +1433,6 @@ wd001:: ds 1
 wTempMail:: mailmsg wTempMail
 	ds wTempMail - @
 
-wUnusedSeerData:: ds 59
-	ds wUnusedSeerData - @
-
 wBufferMonNick:: ds PKMN_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
 wBufferMon:: party_struct wBufferMon
@@ -2362,7 +2359,7 @@ MapObjectsEnd::
 wObjectMasks:: ds NUM_OBJECTS ; d81e
 
 VariableSprites:: ; d82e
-	ds $10
+	ds $20
 
 wEnteredMapFromContinue:: ds 1 ; d83e
 	ds 2
@@ -2373,8 +2370,6 @@ TimeOfDayPal:: ; d841
 wTimeOfDayPalFlags:: ds 1
 wTimeOfDayPalset:: ds 1
 CurTimeOfDay:: ; d848
-	ds 1
-
 	ds 1
 
 wSecretID:: ds 2
@@ -2456,8 +2451,6 @@ PCItems:: ; d8f1
 	ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
 
-	ds 1
-
 wPokegearFlags:: ds 1
 ; bit 0: map
 ; bit 1: radio
@@ -2483,8 +2476,6 @@ UndergroundSwitchPositions:: ; d963
 	ds 1 ; which positions the switches are in
 FarfetchdPosition:: ; d964
 	ds 1 ; which position the ilex farfetch'd is in
-
-	ds 1
 
 
 ;SECTION "Map Triggers", WRAMX, BANK [1]
@@ -2578,7 +2569,7 @@ wGoldenrodCityTrigger::                      ds 1
 wMystriStageTrigger::                        ds 1
 wRoute10NorthTrigger::                       ds 1
 
-	ds 40
+	ds 20 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]
@@ -2612,7 +2603,7 @@ wKenjiFightCount::   ds 1 ; unused
 wParryFightCount::   ds 1
 wErinFightCount::    ds 1
 ; da0e
-	ds 100
+	ds 100 ; extra space set aside?
 
 EventFlags:: ; da72
 	flag_array NUM_EVENTS
@@ -2620,8 +2611,6 @@ EventFlags:: ; da72
 
 wCurBox:: ; db72
 	ds 1
-
-	ds 2
 
 ; 8 chars + $50
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES ; db75
@@ -2679,23 +2668,22 @@ MomItemTriggerBalance:: ds 3 ; dc19
 wDailyResetTimer:: ds 2
 DailyFlags:: ds 1
 DailyFlags2:: ds 1
+	ds 2 ; extra space set aside
 WeeklyFlags:: ds 1
+	ds 1 ; extra space set aside
 SwarmFlags:: ds 1
-	ds 2
 wStartDay:: ds 1
-	ds 3
 
 FruitTreeFlags:: flag_array NUM_FRUIT_TREES ; dc27
+	ds 2 ; extra space set aside
 
 NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
+	ds 2 ; extra space set aside
 
 wLuckyNumberDayBuffer:: ds 2
-	ds 2
 wSpecialPhoneCallID:: ds 1
-	ds 3
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
 wUnusedTwoDayTimerOn:: ds 3 ; unused
-	ds 5 ; dc39
 wdc41:: ds 1
 wdc42:: ds 8
 wBuenasPassword:: ds 1
@@ -2714,15 +2702,15 @@ StepCount:: ; dc73
 PoisonStepCount:: ; dc74
 	ds 1
 
-	ds 1
+wPhoneList:: ds CONTACT_LIST_SIZE ; dc7c
+	ds 20 ; extra space set aside
+
 wHappinessStepCount:: ds 1
-	ds 1
+
 wParkBallsRemaining::
 wSafariBallsRemaining:: ds 1 ; dc79
 wSafariTimeRemaining:: ds 2 ; dc7a
-wPhoneList:: ds CONTACT_LIST_SIZE ; dc7c
-; dc86
-	ds 13
+
 wLuckyNumberShowFlag:: ds 2 ; dc9d
 wLuckyIDNumber:: ds 2 ; dc9f
 wRepelEffect:: ds 1 ; If a Repel is in use, it contains the nr of steps it's still active

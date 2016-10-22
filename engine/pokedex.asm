@@ -1099,9 +1099,11 @@ String_SEEN: ; 407e1
 String_OWN: ; 407e6
 	db "Own", $ff
 String_SELECT_OPTION: ; 407ea
-	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
+;	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
+	db $3b, $41, $42, $43, $44, $45, $46, $47
 String_START_SEARCH: ; 407f2
-	db $3c, $3b, $41, $42, $43, $4b, $4c, $4d, $4e, $3c, $ff ; START > SEARCH
+;	db $3c, $3b, $41, $42, $43, $4b, $4c, $4d, $4e, $3c, $ff ; START > SEARCH
+	db $48, $3b, $49, $4a, $4b, $4c, $4d, $4e, $5d, $5e, $ff
 
 Pokedex_DrawDexEntryScreenBG: ; 407fd
 	call Pokedex_FillBackgroundColor2
@@ -1136,7 +1138,7 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	ret
 
 .Height: ; 40852
-	db "Ht  ?", $5e, "??", $5f, $ff ; HT  ?'??"
+	db "Ht  ?", $5f, "??", $60, $ff ; HT  ?'??"
 .Weight: ; 4085c
 	db "Wt   ???lb", $ff ; WT   ???lb
 .MenuItems: ; 40867
