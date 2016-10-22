@@ -36,6 +36,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Other mechanics
 
+* Show quantity in Bag in marts
 * Use a proper menu for resurrecting Fossils
 * Permanently remove Cut trees, smashable rocks, and whirlpools
 * Kurt gives Balls right away once per day
@@ -56,6 +57,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Aesthetic updates
 
+* Add separate animation graphics for more Poké Ball designs
 * Add a Quiet Cave icon on the Town Map
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
