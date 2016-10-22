@@ -2035,7 +2035,7 @@ DisplayDexEntry: ; 4424d
 	hlcoord 2, 8
 	ld a, $5c ; No
 	ld [hli], a
-	ld a, $5d ; .
+	ld a, $e8 ; .
 	ld [hli], a
 	ld de, wd265
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
