@@ -472,11 +472,6 @@ UnknownText_0x1c0e24::
 	cont "the Day-Care Man."
 	done
 
-UnknownText_0x1c0e54::
-	text "It's brimming with"
-	line "energy."
-	prompt
-
 UnknownText_0x1c0e6f::
 	text "It has no interest"
 	line "in @"

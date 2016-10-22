@@ -1,68 +1,42 @@
 CheckBreedmonCompatibility: ; 16e1d
+	; Returns:
+	; 0 - incompatible
+	; 1 - slightly compatible
+	; 2 - moderately compatible
+	; 3 - highly compatible
 	call .CheckBreedingGroupCompatibility
 	ld c, $0
 	jp nc, .done
 	ld a, [wBreedMon1Species]
 	ld [CurPartySpecies], a
-	ld a, [wBreedMon1DVs]
-	ld [TempMonDVs], a
-	ld a, [wBreedMon1DVs + 1]
-	ld [TempMonDVs + 1], a
-	ld a, BREEDMON
-	ld [MonType], a
-	predef GetGender
-	jr c, .genderless
-	ld b, $1
-	jr nz, .breedmon2
-	inc b
-
-.breedmon2
-	push bc
+	ld a, [wBreedMon1Gender]
+	ld [TempMonGender], a
+	call .SetGenderData
+	ld b, a
 	ld a, [wBreedMon2Species]
 	ld [CurPartySpecies], a
-	ld a, [wBreedMon2DVs]
-	ld [TempMonDVs], a
-	ld a, [wBreedMon2DVs + 1]
-	ld [TempMonDVs + 1], a
-	ld a, $3
-	ld [MonType], a
-	predef GetGender
-	pop bc
-	jr c, .genderless
-	ld a, $1
-	jr nz, .compare_gender
-	inc a
-
-.compare_gender
+	ld a, [wBreedMon2Gender]
+	ld [TempMonGender], a
+	call .SetGenderData
 	cp b
-	jr nz, .compute
-
-.genderless
 	ld c, $0
-	ld a, [wBreedMon1Species]
-	cp DITTO
-	jr z, .ditto1
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr nz, .done
-	jr .compute
+	jr z, .done ; both are same gender, both are dittos or both are genderless
+	; Check for Ditto
+	or b
+	cp 8
+	jr nc, .breed_ok
+	; Check for genderless
+	cp 4
+	jr nc, .done ; Any mon being genderless is incompatible with non-Ditto
 
-.ditto1
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr z, .done
-
-.compute
-	call .CheckDVs
-	ld c, 255
-	jp z, .done
+.breed_ok
 	ld a, [wBreedMon2Species]
 	ld b, a
 	ld a, [wBreedMon1Species]
 	cp b
-	ld c, 254
+	ld c, 3
 	jr z, .compare_ids
-	ld c, 128
+	ld c, 2
 .compare_ids
 	; Speed up
 	ld a, [wBreedMon1ID]
@@ -75,9 +49,7 @@ CheckBreedmonCompatibility: ; 16e1d
 	ld a, [wBreedMon2ID + 1]
 	cp b
 	jr nz, .done
-	ld a, c
-	sub 77
-	ld c, a
+	dec c
 
 .done
 	ld a, c
@@ -85,25 +57,6 @@ CheckBreedmonCompatibility: ; 16e1d
 	ret
 ; 16ebc
 
-
-.CheckDVs: ; 16ebc (5:6ebc)
-; If Defense DVs match and the lower 3 bits of the Special DVs match,
-; maximize the chances of spawning an egg regardless of species.
-	ld a, [wBreedMon1DVs]
-	and %1111
-	ld b, a
-	ld a, [wBreedMon2DVs]
-	and %1111
-	cp b
-	ret nz
-	ld a, [wBreedMon1DVs + 1]
-	and %111
-	ld b, a
-	ld a, [wBreedMon2DVs + 1]
-	and %111
-	cp b
-	ret
-; 16ed6
 
 .CheckBreedingGroupCompatibility: ; 16ed6
 ; If either mon is in the No Eggs group,
@@ -173,6 +126,27 @@ CheckBreedmonCompatibility: ; 16e1d
 .Compatible:
 	scf
 	ret
+
+.SetGenderData:
+	; set a to 1 (male), 2 (female), 4 (genderless) or 8 (ditto)
+	ld a, [CurPartySpecies]
+	cp DITTO
+	; ditto
+	ld a, 8
+	ret z
+	push bc
+	predef GetGender
+	pop bc
+	; genderless
+	ld a, 4
+	ret c
+	; female
+	ld a, 2
+	ret z
+	; male
+	ld a, 1
+	ret
+
 ; 16f3e
 
 DoEggStep:: ; 16f3e
@@ -942,16 +916,13 @@ DayCareMonCompatibilityText: ; 1746c
 	call CheckBreedmonCompatibility
 	pop bc
 	ld a, [wd265]
-	ld hl, .AllAlone
-	cp -1
-	jr z, .done
 	ld hl, .Incompatible
 	and a
 	jr z, .done
 	ld hl, .HighCompatibility
-	cp 230
+	cp 3
 	jr nc, .done
-	cp 70
+	cp 2
 	ld hl, .ModerateCompatibility
 	jr nc, .done
 	ld hl, .SlightCompatibility
@@ -959,12 +930,6 @@ DayCareMonCompatibilityText: ; 1746c
 .done
 	ret
 ; 1749c
-
-.AllAlone: ; 0x1749c
-	; It's brimming with energy.
-	text_jump UnknownText_0x1c0e54
-	db "@"
-; 0x174a1
 
 .Incompatible: ; 0x174a1
 	; It has no interest in @ .
