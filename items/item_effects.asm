@@ -101,6 +101,8 @@ ItemEffects: ; e73c
 	dw BlueCard
 	dw MysticTicket
 	dw OldSeaMap
+	dw ShinyCharm
+	dw OvalCharm
 	dw OranBerry
 	dw SitrusBerry
 	dw PechaBerry
@@ -3180,6 +3182,8 @@ RainbowWing:
 OldAmber:
 MysticTicket:
 OldSeaMap:
+ShinyCharm:
+OvalCharm:
 QuickPowder:
 AirBalloon:
 AssaultVest:

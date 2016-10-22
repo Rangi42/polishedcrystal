@@ -120,6 +120,8 @@ ItemDescriptions:
 	dw BlueCardDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
+	dw ShinyCharmDesc
+	dw OvalCharmDesc
 	dw OranBerryDesc
 	dw SitrusBerryDesc
 	dw PechaBerryDesc
@@ -633,6 +635,14 @@ MysticTicketDesc:
 OldSeaMapDesc:
 	db   "A faded sea chart"
 	next "of a small island.@"
+
+ShinyCharmDesc:
+	db   "A charm for find-"
+	next "ing shiny #mon.@"
+
+OvalCharmDesc:
+	db   "A charm for find-"
+	next "ing Eggs.@"
 
 OranBerryDesc:
 	db   "A self-restore"

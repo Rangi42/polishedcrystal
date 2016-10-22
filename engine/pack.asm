@@ -1196,7 +1196,10 @@ DepositSellTutorial_InterpretJoypad: ; 1076f
 .d_left
 	ld a, [wJumptableIndex]
 	dec a
-	and $7
+	cp -1
+	jr nz, .left_ok
+	ld a, 5
+.left_ok
 	ld [wJumptableIndex], a
 	push de
 	ld de, SFX_SWITCH_POCKETS
@@ -1208,7 +1211,10 @@ DepositSellTutorial_InterpretJoypad: ; 1076f
 .d_right
 	ld a, [wJumptableIndex]
 	inc a
-	and $7
+	cp 6
+	jr nz, .right_ok
+	ld a, 0
+.right_ok
 	ld [wJumptableIndex], a
 	push de
 	ld de, SFX_SWITCH_POCKETS

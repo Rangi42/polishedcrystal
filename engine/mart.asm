@@ -944,6 +944,9 @@ SellMenu: ; 15eb3
 ; 15ed3
 
 .TryToSellItem: ; 15ee0
+	ld a, [wCurrPocket]
+	cp TM_HM - 1
+	jr z, .cant_sell_tmhm
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
@@ -971,6 +974,7 @@ SellMenu: ; 15eb3
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr z, .okay_to_sell
+.cant_sell_tmhm
 	ld hl, TextMart_CantBuyFromYou
 	call PrintText
 	and a
