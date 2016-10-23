@@ -178,6 +178,8 @@ endr
 	ld [Coins], a
 	ld [Coins + 1], a
 
+	ld [BattlePoints], a
+
 START_MONEY EQU 3000
 
 IF START_MONEY / $10000

@@ -282,64 +282,9 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 
 CountTMsHMs: ; 2cb2a (b:4b2a)
 	ld hl, TMsHMs
-	ld b, 0
-	ld c, ((NUM_TMS + NUM_HMS) + 7) / 8
-.loop
-	ld a, [hli]
-	call CountSetBitsInByte
-	add b
-	ld b, a
-	dec c
-	jr nz, .loop
-	ld a, b
-	ld [wd265], a
+	ld b, ((NUM_TMS + NUM_HMS) + 7) / 8
+	call CountSetBits
 	ret
-
-CountSetBitsInByte:
-	push hl
-	push bc
-	ld hl, .SetBitsInByte
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
-	pop bc
-	pop hl
-	ret
-
-.SetBitsInByte:
-	db 0, 1, 1, 2, 1, 2, 2, 3
-	db 1, 2, 2, 3, 2, 3, 3, 4
-	db 1, 2, 2, 3, 2, 3, 3, 4
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 1, 2, 2, 3, 2, 3, 3, 4
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 1, 2, 2, 3, 2, 3, 3, 4
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 4, 5, 5, 6, 5, 6, 6, 7
-	db 1, 2, 2, 3, 2, 3, 3, 4
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 4, 5, 5, 6, 5, 6, 6, 7
-	db 2, 3, 3, 4, 3, 4, 4, 5
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 4, 5, 5, 6, 5, 6, 6, 7
-	db 3, 4, 4, 5, 4, 5, 5, 6
-	db 4, 5, 5, 6, 5, 6, 6, 7
-	db 4, 5, 5, 6, 5, 6, 6, 7
-	db 5, 6, 6, 7, 6, 7, 7, 8
 
 CheckTMHM:
 	push bc

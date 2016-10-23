@@ -234,31 +234,52 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 	hlcoord 0, 0
 	ld d, 5
 	call TrainerCard_InitBorder
+
 	hlcoord 2, 2
 	ld de, .Name_Money
 	call PlaceString
+
 	hlcoord 2, 4
 	ld de, .ID_No
 	call TrainerCardSetup_PlaceTilemapString
+
 	hlcoord 7, 2
 	ld de, PlayerName
 	call PlaceString
+
 	hlcoord 5, 4
 	ld de, PlayerID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	hlcoord 6, 6
-	ld de, Money
-	lb bc, PRINTNUM_MONEY | 3, 7
-	call PrintNum
+
 	hlcoord 1, 3
 	ld de, .HorizontalDivider
 	call TrainerCardSetup_PlaceTilemapString
+
 	hlcoord 14, 1
 	lb bc, 5, 7
 	xor a
 	ld [hGraphicStartTile], a
 	predef PlaceGraphic
+
+	ld a, [Money]
+	cp $f
+	jr c, .not_seven_digits
+	ld a, [Money + 1]
+	cp $42
+	jr c, .not_seven_digits
+	ld a, [Money + 2]
+	cp $40
+	jr c, .not_seven_digits
+	hlcoord 7, 6
+	jr .print_money
+.not_seven_digits
+	hlcoord 6, 6
+.print_money
+	ld de, Money
+	lb bc, PRINTNUM_MONEY | 3, 7
+	call PrintNum
+
 	ret
 
 ; 252ec (9:52ec)
@@ -266,7 +287,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 .Name_Money: ; 252ec
 	db   "Name/"
 	next ""
-	next "Cash@"
+	next "Money@"
 
 .ID_No: ; 252f9
 	db $27, $28, $ff ; ID NO
@@ -277,11 +298,13 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 
 TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	hlcoord 2, 10
-	ld de, .Dex_PlayTime
+	ld de, .Dex_PlayTime_BP
 	call PlaceString
-	hlcoord 10, 15
+
+	hlcoord 12, 16
 	ld de, .Badges
 	call PlaceString
+
 	ld hl, PokedexCaught
 	ld b, EndPokedexCaught - PokedexCaught
 	call CountSetBits
@@ -289,24 +312,40 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	hlcoord 15, 10
 	lb bc, 1, 3
 	call PrintNum
+
+	ld de, BattlePoints
+	hlcoord 15, 14
+	lb bc, 1, 3
+	call PrintNum
+
 	call TrainerCard_Page1_PrintGameTime
+
 	hlcoord 2, 8
 	ld de, .StatusTilemap
 	call TrainerCardSetup_PlaceTilemapString
+
 	ld a, [StatusFlags] ; pokedex
 	bit 0, a
-	ret nz
+	jr nz, .have_pokedex
 	hlcoord 1, 9
+	lb bc, 2, 17
+	call ClearBox
+.have_pokedex
+	ld a, [BattlePoints]
+	and a
+	ret nz
+	hlcoord 1, 13
 	lb bc, 2, 17
 	call ClearBox
 	ret
 
-.Dex_PlayTime:
+.Dex_PlayTime_BP:
 	db   "#dex"
-	next "Play Time@@"
+	next "Play Time"
+	next "Battle Pts@@"
 
 .Badges:
-	db "  Badges@"
+	db "Badges→@"
 
 .StatusTilemap: ; 25366
 	db $29, $2a, $2b, $2c, $2d, $ff

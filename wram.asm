@@ -2697,6 +2697,8 @@ wYanmaMapNumber:: ds 1
 wdc5c:: ds 3
 wdc5f:: ds 1
 
+BattlePoints:: ds 1
+
 StepCount:: ; dc73
 	ds 1
 PoisonStepCount:: ; dc74
@@ -2738,7 +2740,7 @@ BackupMapGroup:: ; dcae
 BackupMapNumber:: ; dcaf
 	ds 1
 
-	ds 3
+	ds 2
 
 wLastSpawnMapGroup:: ds 1
 wLastSpawnMapNumber:: ds 1

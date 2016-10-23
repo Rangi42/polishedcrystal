@@ -64,6 +64,7 @@ endr
 	dwb wCurrentCaller,                 RETVAR_ADDR_DE
 	dwb wBlueCardBalance,               RETVAR_ADDR_DE
 	dwb wBuenasPassword,                RETVAR_ADDR_DE
+	dwb BattlePoints,                   RETVAR_ADDR_DE
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
 	dwb NULL,                           RETVAR_STRBUF2
 ; 806c5
