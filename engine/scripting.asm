@@ -3329,16 +3329,6 @@ Script_givetmhm:
 	ld [ScriptVar], a
 	ret
 
-ReceiveTMHM: ; d3c4
-	ld a, [CurTMHM]
-	ld e, a
-	ld d, 0
-	ld b, SET_FLAG
-	ld hl, TMsHMs
-	call FlagAction
-	scf
-	ret
-
 Script_checktmhm:
 ; script command 0xaf
 ; parameters:
@@ -3352,17 +3342,6 @@ Script_checktmhm:
 	ret nc
 	ld a, TRUE
 	ld [ScriptVar], a
-	ret
-
-CheckTMHM: ; d3fb
-	ld a, [CurTMHM]
-	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
-	ld hl, TMsHMs
-	call FlagAction
-	ret z
-	scf
 	ret
 
 Script_verbosegivetmhm:

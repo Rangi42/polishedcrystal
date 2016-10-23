@@ -54,6 +54,16 @@ ReceiveItem:: ; 2f66
 	ret
 ; 2f79
 
+ReceiveTMHM:: ; d3c4
+	ld a, [CurTMHM]
+	ld e, a
+	ld d, 0
+	ld b, SET_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	scf
+	ret
+
 CheckItem:: ; 2f79
 	push hl
 	push de
@@ -73,3 +83,14 @@ CheckItem:: ; 2f79
 	pop hl
 	ret
 ; 2f8c
+
+CheckTMHM:: ; d3fb
+	ld a, [CurTMHM]
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, TMsHMs
+	call FlagAction
+	ret z
+	scf
+	ret

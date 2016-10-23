@@ -140,11 +140,12 @@ Goldenrod3FMart: ; 1612b
 ; 16134
 
 Goldenrod4FMart: ; 16134
-	db 5 ; # items
+	db 6 ; # items
 	db PROTEIN
 	db IRON
 	db CARBOS
 	db CALCIUM
+	db ZINC
 	db HP_UP
 	db $ff
 ; 1613b
@@ -402,12 +403,13 @@ Celadon4FMart: ; 161d5
 ; 161da
 
 Celadon5FMart1: ; 161da
-	db 5 ; # items
-	db HP_UP
+	db 6 ; # items
 	db PROTEIN
 	db IRON
 	db CARBOS
 	db CALCIUM
+	db ZINC
+	db HP_UP
 	db $ff
 ; 161e1
 
@@ -457,10 +459,3 @@ FuchsiaMart: ; 161ea
 	db FLOWER_MAIL
 	db $ff
 ; 161f3
-
-DefaultMart: ; 16214
-	db 2 ; # items
-	db POKE_BALL
-	db POTION
-	db $ff
-; 16218
