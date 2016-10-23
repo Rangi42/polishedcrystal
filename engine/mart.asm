@@ -26,7 +26,7 @@ OpenMartDialog:: ; 15a45
 	dw SilphMart
 	dw AdventurerMart
 	dw InformalMart
-	dw TMHMMart
+	dw TMMart
 ; 15a61
 
 MartDialog: ; 15a61
@@ -136,12 +136,12 @@ InformalMart:
 	call MartTextBox
 	ret
 
-TMHMMart:
-	call FarReadTMHMMart
+TMMart:
+	call FarReadTMMart
 	call LoadStandardMenuDataHeader
 	ld hl, Text_Mart_HowMayIHelpYou
 	call MartTextBox
-	call BuyTMHMMenu
+	call BuyTMMenu
 	ld hl, Text_Mart_ComeAgain
 	call MartTextBox
 	ret
@@ -316,7 +316,7 @@ FarReadMart: ; 15bbb
 	ret
 ; 15be5
 
-FarReadTMHMMart:
+FarReadTMMart:
 ; Load the mart pointer.  Mart data is local (no need for bank).
 	ld hl, MartPointer
 	ld a, [hli]
@@ -483,7 +483,7 @@ BuyMenu: ; 15c62
 	ret
 ; 15c7d
 
-BuyTMHMMenu:
+BuyTMMenu:
 	call FadeToMenu
 	farcall BlankScreen
 	xor a
@@ -491,7 +491,7 @@ BuyTMHMMenu:
 	ld a, 1
 	ld [wd045], a
 .loop
-	call BuyTMHMMenuLoop ; menu loop
+	call BuyTMMenuLoop ; menu loop
 	jr nc, .loop
 	call CloseSubmenu
 	ret
@@ -552,7 +552,7 @@ endr
 	dwb .SilphMartPointers, 0
 	dwb .AdventurerMartPointers, 2
 	dwb .InformalMartPointers, 0
-	dwb .TMHMMartPointers, 0
+	dwb .TMMartPointers, 0
 ; 15cbf
 
 .StandardMartPointers: ; 15cbf
@@ -612,13 +612,13 @@ endr
 	dw Text_InformalMart_HereYouGo
 	dw BuyMenuLoop
 
-.TMHMMartPointers:
+.TMMartPointers:
 	dw Text_Mart_HowMany
 	dw Text_Mart_CostsThisMuch
 	dw Text_Mart_InsufficientFunds
 	dw Text_Mart_BagFull
 	dw Text_Mart_HereYouGo
-	dw BuyTMHMMenuLoop
+	dw BuyTMMenuLoop
 
 
 BuyMenuLoop: ; 15cef
@@ -689,10 +689,10 @@ BuyMenuLoop: ; 15cef
 	ret
 ; 15d83
 
-BuyTMHMMenuLoop:
+BuyTMMenuLoop:
 	farcall PlaceMoneyTopRight
 	call UpdateSprites
-	ld hl, TMHMMenuDataHeader_Buy
+	ld hl, TMMenuDataHeader_Buy
 	call CopyMenuDataHeader
 	ld a, [wd045]
 	ld [wMenuCursorBuffer], a
@@ -708,9 +708,9 @@ BuyTMHMMenuLoop:
 	cp B_BUTTON
 	jr z, .set_carry
 	cp A_BUTTON
-	call TMHMMartAskPurchaseQuantity
+	call TMMartAskPurchaseQuantity
 	jr c, .cancel
-	call TMHMMartConfirmPurchase
+	call TMMartConfirmPurchase
 	jr c, .cancel
 	ld de, Money
 	ld bc, hMoneyTemp
@@ -759,7 +759,7 @@ MartConfirmPurchase: ; 15d97
 	ret
 ; 15da5
 
-TMHMMartConfirmPurchase:
+TMMartConfirmPurchase:
 	ld a, [CurTMHM]
 	ld [wd265], a
 	call GetTMHMName
@@ -840,7 +840,11 @@ endr
 	ret
 ; 15e0e
 
-TMHMMartAskPurchaseQuantity:
+TMMartAskPurchaseQuantity:
+	ld a, [CurTMHM]
+	call CheckTMHM
+	jr c, .AlreadyHaveTM
+
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 	ld a, [wMartItemID]
@@ -863,6 +867,17 @@ endr
 	ld [hMoneyTemp], a
 	and a
 	ret
+
+.AlreadyHaveTM
+	ld hl, .AlreadyHaveTMText
+	call PrintText
+	call JoyWaitAorB
+	scf
+	ret
+
+.AlreadyHaveTMText
+	text_jump AlreadyHaveTMText
+	db "@"
 
 
 Text_Mart_HowMany: ; 0x15e0e
@@ -917,7 +932,7 @@ endr
 	ret
 ; 15e4a (5:5e4a)
 
-TMHMMenuDataHeader_Buy:
+TMMenuDataHeader_Buy:
 	db $40 ; flags
 	db 03, 01 ; start coords
 	db 11, 19 ; end coords
@@ -1140,7 +1155,7 @@ SellMenu: ; 15eb3
 .TryToSellItem: ; 15ee0
 	ld a, [wCurrPocket]
 	cp TM_HM - 1
-	jr z, .cant_sell_tmhm
+	jr z, .cant_sell_tm
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
@@ -1168,7 +1183,7 @@ SellMenu: ; 15eb3
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr z, .okay_to_sell
-.cant_sell_tmhm
+.cant_sell_tm
 	ld hl, TextMart_CantBuyFromYou
 	call PrintText
 	and a

@@ -8,7 +8,7 @@ Marts: ; 160a9
 	dw Goldenrod2FMart2Eevee
 	dw Goldenrod3FMart
 	dw Goldenrod4FMart
-	dw Goldenrod5FTMHMMart
+	dw Goldenrod5FTMMart
 	dw UndergroundMart
 	dw EcruteakMart
 	dw OlivineMart
@@ -26,7 +26,7 @@ Marts: ; 160a9
 	dw VermilionMart
 	dw Celadon2FMart1
 	dw Celadon2FMart2
-	dw Celadon3FTMHMMart
+	dw Celadon3FTMMart
 	dw Celadon4FMart
 	dw Celadon5FMart1
 	dw Celadon5FMart2
@@ -150,7 +150,7 @@ Goldenrod4FMart: ; 16134
 	db $ff
 ; 1613b
 
-Goldenrod5FTMHMMart: ; 1613b
+Goldenrod5FTMMart: ; 1613b
 	db 8 ; # items
 	dbw TM_PROTECT,       10000
 	dbw TM_REFLECT,       10000
@@ -376,7 +376,7 @@ Celadon2FMart2: ; 161c2
 	db $ff
 ; 161ce
 
-Celadon3FTMHMMart: ; 161ce
+Celadon3FTMMart: ; 161ce
 	db 8 ; # items
 	dbw TM_SAFEGUARD,     10000
 	dbw TM_BULK_UP,       20000
