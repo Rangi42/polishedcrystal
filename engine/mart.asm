@@ -639,7 +639,6 @@ BuyMenuLoop: ; 15cef
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jr z, .set_carry
-	cp A_BUTTON
 	call MartAskPurchaseQuantity
 	jr c, .cancel
 	call MartConfirmPurchase
@@ -663,6 +662,26 @@ BuyMenuLoop: ; 15cef
 	call TakeMoney
 	ld a, MARTTEXT_HERE_YOU_GO
 	call LoadBuyMenuText
+	call JoyWaitAorB
+	farcall CheckItemPocket
+	ld a, [wItemAttributeParamBuffer]
+	cp BALL
+	jr nz, .cancel
+	ld a, [wItemQuantityChangeBuffer]
+	cp 10
+	jr c, .cancel
+	ld a, PREMIER_BALL
+	ld [CurItem], a
+	ld a, [wItemQuantityChangeBuffer]
+	ld c, 10
+	call SimpleDivide
+	ld a, b
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, NumItems
+	call ReceiveItem
+	jr nc, .cancel
+	ld hl, .PremierBallText
+	call PrintText
 	call JoyWaitAorB
 
 .cancel
@@ -688,6 +707,10 @@ BuyMenuLoop: ; 15cef
 	and a
 	ret
 ; 15d83
+
+.PremierBallText
+	text_jump MartPremierBallText
+	db "@"
 
 BuyTMMenuLoop:
 	farcall PlaceMoneyTopRight

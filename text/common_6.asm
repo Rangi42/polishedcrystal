@@ -207,3 +207,9 @@ AlreadyHaveTMText::
 	text "You already have"
 	line "that TM."
 	done
+
+MartPremierBallText::
+	text "You also get a"
+	line "Premier Ball as"
+	cont "an added bonus."
+	done

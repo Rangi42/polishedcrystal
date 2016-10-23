@@ -222,6 +222,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Politoed can learn Energy Ball.
 * Add: Give in-game trades good natures.
 * Add: TM prices from OR/AS.
+* Add: Get a free Premier Ball with ever 10 Balls bought.
 * Add: Time boundaries from HG/SS (day lasts until 8 PM, not 6 PM).
 * Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
 * Add: Update random Wonder Trade OT names.
