@@ -1623,10 +1623,6 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION
 	jp z, .done
-	cp STEVEN
-	jp z, .done
-	cp CYNTHIA
-	jp z, .done
 
 	ld de, MUSIC_WCS_BATTLE_BW
 	cp RED
@@ -1636,12 +1632,21 @@ PlayBattleMusic: ; 2ee6c
 	cp LEAF
 	jp z, .done
 
-	ld de, MUSIC_ZINNIA_BATTLE_ORAS
-	cp LAWRENCE
+	ld de, MUSIC_CHAMPION_BATTLE_RSE
+	cp STEVEN
+	jp z, .done
+
+	; TODO: Use D/P/Pt Champion music for Cynthia, if available
+	ld de, MUSIC_CHAMPION_BATTLE
+	cp CYNTHIA
 	jp z, .done
 
 	ld de, MUSIC_FRONTIER_BRAIN_BATTLE_RSE
 	cp TOWERTYCOON
+	jp z, .done
+
+	ld de, MUSIC_ZINNIA_BATTLE_ORAS
+	cp LAWRENCE
 	jp z, .done
 
 	ld de, MUSIC_GYM_LEADER_BATTLE_XY
@@ -1678,7 +1683,6 @@ PlayBattleMusic: ; 2ee6c
 	jr z, .done
 	cp RIVAL2
 	jr nz, .othertrainer
-
 	ld a, [OtherTrainerID]
 	cp 4 ; Rival in Indigo Plateau
 	jr c, .done

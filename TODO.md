@@ -56,8 +56,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Aesthetic updates
 
-* Use the RBY Champion theme for the final battle with Silver
-* Use one of the Elite Four battle themes
+* Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
 * Add a Quiet Cave icon on the Town Map
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
@@ -124,7 +123,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ### New items
 
-* Zinc
 * {Pomeg, Kelpsy, Qualot, Hondew, Grepa, Tamato} Berry (if EVs are limited)
 * Big Nugget (and other valuable items)
 * Mulch (use on a picked Berry tree to regrow it)
