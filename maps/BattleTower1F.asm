@@ -90,7 +90,7 @@ Script_ChoseChallenge: ; 0x9e40f
 	writetext Text_RightThisWayToYourBattleRoom
 	waitbutton
 	closetext
-	special Special_BattleTower_RandomlyChooseReward
+	special Special_BattleTower_DetermineReward
 	jump Script_WalkToBattleTowerElevator
 
 Script_ResumeBattleTowerChallenge:
@@ -115,18 +115,9 @@ Script_GivePlayerHisPrize: ; 0x9e47a
 	writebyte BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	special Special_BattleTower_GiveReward
-	if_equal NO_ITEM, Script_YourPackIsStuffedFull
-	itemtotext $0, $1
-	giveitem ITEM_FROM_MEM, 5
-	writetext Text_PlayerGotFive
+	writetext Text_PlayerGotReward
 	writebyte BATTLETOWER_RECEIVED_REWARD
 	special Special_BattleTower_SetChallengeState
-	closetext
-	end
-
-Script_YourPackIsStuffedFull: ; 0x9e498
-	writetext Text_YourPackIsStuffedFull
-	waitbutton
 	closetext
 	end
 
@@ -332,22 +323,14 @@ Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 	line "this great prize!"
 	prompt
 
-Text_PlayerGotFive: ; 0x9eb7e
-	text "<PLAYER> got five"
+Text_PlayerGotReward: ; 0x9eb7e
+	text "<PLAYER> earned"
 	line "@"
-	text_from_ram StringBuffer4
-	text "!@"
+	deciram ScriptVar, 1, 3
+	text " Battle Points!@"
 	sound_item
 	text_waitbutton
 	db "@"
-
-Text_YourPackIsStuffedFull: ; 0x9eb94
-	text "Oops, your Bag is"
-	line "stuffed full."
-
-	para "Please make room"
-	line "and come back."
-	done
 
 Text_WeHopeToServeYouAgain: ; 0x9ec09
 	text "We hope to serve"

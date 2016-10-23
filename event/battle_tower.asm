@@ -192,33 +192,17 @@ Special_BattleTower_GiveReward: ; 1706ee (5c:46ee)
 	ld a, [sBattleTowerReward]
 	call CloseSRAM
 	ld [ScriptVar], a
-	ld hl, NumItems
-	ld a, [hli]
-	cp MAX_ITEMS
-	ret c
-	ld b, MAX_ITEMS
-	ld a, [ScriptVar]
-	ld c, a
-.loop
-	ld a, [hli]
-	cp c
-	jr nz, .next
-	ld a, [hl]
-	cp 95
-	ret c
-.next
-	inc hl
-	dec b
-	jr nz, .loop
-	ld a, NO_ITEM
-	ld [ScriptVar], a
+	ld b, a
+	ld a, [BattlePoints]
+	add b
+	jr nc, .ok
+	ld a, 255
+.ok
+	ld [BattlePoints], a
 	ret
 
-Special_BattleTower_RandomlyChooseReward: ; 17073e (5c:473e)
-	ld a, 7 ; HP_UP to PP_UP, 0 to 6
-	call RandomRange
-	ld a, [hRandomAdd]
-	add HP_UP
+Special_BattleTower_DetermineReward: ; 17073e (5c:473e)
+	ld a, 3
 	push af
 	ld a, BANK(sBattleTowerReward)
 	call GetSRAMBank
