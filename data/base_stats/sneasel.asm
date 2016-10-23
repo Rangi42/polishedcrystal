@@ -6,7 +6,7 @@
 	db DARK, ICE
 	db 60 ; catch rate
 	db 132 ; base exp
-	db QUICK_CLAW ; item 1
+	db GRIP_CLAW ; item 1
 	db RAZOR_CLAW ; item 2
 	db 127 ; gender
 	db 20 ; step cycles to hatch

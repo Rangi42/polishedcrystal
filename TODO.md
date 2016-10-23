@@ -136,7 +136,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower) (if EVs are limited)
 * Choice {Band, Scarf, Specs} (Battle Tower)
 * Binding Band
-* Grip Claw (Seafoam Islands)
 * {Mental, Power, White} Herb (Battle Tower)
 * Big Root (Yellow Forest)
 * Shell Bell (Route 32)

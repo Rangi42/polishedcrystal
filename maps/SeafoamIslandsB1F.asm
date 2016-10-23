@@ -15,8 +15,8 @@ SeafoamIslandsB1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-SeafoamIslandsB1FKingsRock:
-	itemball KINGS_ROCK
+SeafoamIslandsB1FGripClaw:
+	itemball GRIP_CLAW
 
 SeafoamIslandsB1FIceHeal:
 	itemball ICE_HEAL
@@ -49,7 +49,7 @@ SeafoamIslandsB1F_MapEventHeader:
 
 .PersonEvents:
 	db 8
-	person_event SPRITE_POKE_BALL, 3, 20, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB1FKingsRock, EVENT_SEAFOAM_ISLANDS_B1F_KINGS_ROCK
+	person_event SPRITE_POKE_BALL, 3, 20, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB1FGripClaw, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
 	person_event SPRITE_POKE_BALL, 5, 24, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB1FIceHeal, EVENT_SEAFOAM_ISLANDS_B1F_ICE_HEAL
 	person_event SPRITE_BOULDER, 9, 30, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
 	person_event SPRITE_BOULDER, 9, 31, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1

@@ -7356,11 +7356,21 @@ BattleCommand_TrapTarget: ; 36c2d
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret nz
 .bypass_sub
+	push bc
+	call GetUserItem
+	ld a, [hl]
+	cp GRIP_CLAW
+	pop bc
+	jr z, .seven_turns
 	call BattleRandom
 	and 1
 rept 5
 	inc a
 endr
+	jr .got_count
+.seven_turns
+	ld a, 7
+.got_count
 	ld [hl], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar

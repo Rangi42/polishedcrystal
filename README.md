@@ -148,18 +148,18 @@ The game's data files do a fairly good job of listing things you'll want to know
 
 **Where do I get this item?**
 
-* The Helix Fossil and Dome Fossil are in Quiet Cave.
-* The Old Amber is in Pewter City.
-* The Razor Claw is in Quiet Cave, or held by some wild Sneasel.
-* The Razor Fang is in Victory Road, or held by some wild Gligar.
-* The Electirizer is in Rock Tunnel, or held by some wild Electabuzz.
-* The Magmarizer is on Cinnabar Island, or held by some wild Magmar.
-* The Protector is in Mt. Mortar, or held by some wild Rhydon.
-* The Up-Grade is given to you in Silph Co. after fixing the Power Plant generator.
-* The Dubious Disc is in Celadon City.
-* The Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite/Magneton and Steelix.
+* Helix Fossil and Dome Fossil are in Quiet Cave.
+* Old Amber is in Pewter City.
+* Razor Claw is in Quiet Cave, or held by some wild Sneasel.
+* Razor Fang is in Victory Road, or held by some wild Gligar.
+* Electirizer is in Rock Tunnel, or held by some wild Electabuzz.
+* Magmarizer is on Cinnabar Island, or held by some wild Magmar.
+* Protector is in Mt. Mortar, or held by some wild Rhydon.
+* Up-Grade is given to you in Silph Co. after fixing the Power Plant generator.
+* Dubious Disc is in Celadon City.
+* King's Rock is in Slowpoke Well, or held by some wild Slowpoke/Slowbro and Poliwhirl.
+* Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite/Magneton and Steelix.
 * Dragon Scales are in Dragon's Den and Mount Mortar, or held by some wild Horsea/Seadra and Dratini/Dragonair.
-* King's Rocks are in Slowpoke Well and the Seafoam Islands, or held by some wild Slowpoke/Slowbro and Poliwhirl.
 * Dusk Stones are in Dark Cave, Quiet Cave, Cerulean Cave, and Mt. Moon. Bill's grandpa also gives you one.
 * Shiny Stones are in National Park, Cherrygrove Bay, and Mt. Moon. Bill's grandpa also gives you one.
 * Bill's grandpa gives you one of each evolution stone in Goldenrod City. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells the Fire, Water, Thunder, and Leaf Stones.
