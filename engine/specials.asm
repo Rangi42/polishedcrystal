@@ -149,8 +149,6 @@ SpecialsPointers:: ; c029
 	add_special Special_BattleTower_InitChallengeRAM
 	add_special Special_BattleTower_Battle
 	add_special Special_BattleTower_ResetTrainersSRAM
-	add_special Special_BattleTower_GiveReward
-	add_special Special_BattleTower_DetermineReward
 	add_special Special_BattleTower_CheckNewSaveFile
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState

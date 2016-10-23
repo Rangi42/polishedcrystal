@@ -61,6 +61,12 @@ TrainerHouseReceptionistScript:
 	startbattle
 	reloadmapafterbattle
 .End:
+	opentext
+	checkcode VAR_BATTLEPOINTS
+	addvar 1
+	writevarcode VAR_BATTLEPOINTS
+	writetext TrainerHouseB1FEarnedBattlePointText
+	closetext
 	applymovement PLAYER, Movement_ExitTrainerHouseBattleRoom
 	end
 
@@ -172,6 +178,13 @@ TrainerHouseB1FCalBeforeText:
 	line "here just so I"
 	cont "could battle you."
 	done
+
+TrainerHouseB1FEarnedBattlePointText:
+	text "<PLAYER> earned"
+	line "1 Battle Point!@"
+	sound_item
+	text_waitbutton
+	db "@"
 
 TrainerHouseB1F_MapEventHeader:
 	; filler

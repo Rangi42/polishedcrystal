@@ -200,7 +200,6 @@ sBTChoiceOfLevelGroup:: ds 1
 sBTTrainers:: ; sbe48
 	ds 7
 sBattleTowerNewSaveFile:: ds 1
-sBattleTowerReward:: ds 1
 ; Pkmn of previous trainer
 sBTPkmnOfTrainers:: ; 0xbe51
 sBTPkmnPrevTrainer1::

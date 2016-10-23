@@ -186,31 +186,6 @@ Special_BattleTower_ResetTrainersSRAM: ; 1706d6 (5c:46d6)
 	call CloseSRAM
 	ret
 
-Special_BattleTower_GiveReward: ; 1706ee (5c:46ee)
-	ld a, BANK(sBattleTowerReward)
-	call GetSRAMBank
-	ld a, [sBattleTowerReward]
-	call CloseSRAM
-	ld [ScriptVar], a
-	ld b, a
-	ld a, [BattlePoints]
-	add b
-	jr nc, .ok
-	ld a, 255
-.ok
-	ld [BattlePoints], a
-	ret
-
-Special_BattleTower_DetermineReward: ; 17073e (5c:473e)
-	ld a, 3
-	push af
-	ld a, BANK(sBattleTowerReward)
-	call GetSRAMBank
-	pop af
-	ld [sBattleTowerReward], a
-	call CloseSRAM
-	ret
-
 Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	call Special_BattleTower_CheckSaveFileExistsAndIsYours
 	ld a, [ScriptVar]

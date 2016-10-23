@@ -90,7 +90,6 @@ Script_ChoseChallenge: ; 0x9e40f
 	writetext Text_RightThisWayToYourBattleRoom
 	waitbutton
 	closetext
-	special Special_BattleTower_DetermineReward
 	jump Script_WalkToBattleTowerElevator
 
 Script_ResumeBattleTowerChallenge:
@@ -114,7 +113,9 @@ Script_WalkToBattleTowerElevator:
 Script_GivePlayerHisPrize: ; 0x9e47a
 	writebyte BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	special Special_BattleTower_GiveReward
+	checkcode VAR_BATTLEPOINTS
+	addvar 3
+	writevarcode VAR_BATTLEPOINTS
 	writetext Text_PlayerGotReward
 	writebyte BATTLETOWER_RECEIVED_REWARD
 	special Special_BattleTower_SetChallengeState
@@ -300,8 +301,8 @@ Text_BattleTowerIntroduction: ; 0x9e886
 	para "Each Room holds"
 	line "seven trainers."
 
-	para "Beat them all, and"
-	line "win a prize."
+	para "Beat them all to"
+	line "get Battle Points."
 
 	para "To interrupt a"
 	line "session, you must"
@@ -463,11 +464,11 @@ Text_BattleTowerTutorTaught:
 
 
 Text_BattleTowerCooltrainerF: ; 0x9f2a4
-	text "I got five Carbos"
-	line "when I won!"
+	text "There are lots of"
+	line "Battle Rooms, but"
 
-	para "That's enough to"
-	line "evolve my Haunter!"
+	para "I'm going to win"
+	line "them all!"
 	done
 
 Text_BattleTowerGranny: ; 0x9f2e3
