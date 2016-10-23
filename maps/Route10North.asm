@@ -51,7 +51,7 @@ Route10NorthLawrenceEncounter1Script:
 	pause 15
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach1
 	spriteface PLAYER, RIGHT
-	playmusic MUSIC_LAWRENCE
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext Route10NorthLawrenceGreetingText
 	waitbutton
@@ -148,7 +148,7 @@ Route10NorthLawrenceEncounter2Script:
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 .continue
-	playmusic MUSIC_LAWRENCE
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext Route10NorthLawrenceSpeechText
 	waitbutton

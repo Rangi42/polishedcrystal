@@ -118,10 +118,12 @@
 	dba Music_SpikyEaredPichuHGSS
 	dba Music_Route210DPPt
 	dba Music_MountCoronetDPPt
+	dba Music_EternaForestDPPt
 	dba Music_GameCornerDPPt
 	dba Music_Route12BW
 	dba Music_WCSBattleBW
 	dba Music_ReversalMountainWhite2
+	dba Music_WhiteTreehollowWhite2
 	dba Music_ChampionBattleB2W2
 	dba Music_PowerPlantXY
 	dba Music_RivalBattleXY
@@ -133,9 +135,11 @@
 	dba Music_Route120RSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE
+	dba Music_ChampionBattleRSE
 	dba Music_FrontierBrainBattleRSE
 	dba Music_KantoLegendBattleXY
-	dba Music_Lawrence
+	dba Music_ZinniaEncounterORAS
+	dba Music_ZinniaBattleORAS
 	dba Music_LugiasSong2000
 
 ; e91a3

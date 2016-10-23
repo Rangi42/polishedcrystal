@@ -47,7 +47,7 @@ LawrenceLeftIntroScript:
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
 	spriteface PLAYER, RIGHT
-	playmusic MUSIC_LAWRENCE
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext LawrenceIntroText
 	waitbutton
@@ -76,8 +76,8 @@ LawrenceRightIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
-	playmusic MUSIC_LAWRENCE
 	spriteface PLAYER, LEFT
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext LawrenceIntroText
 	waitbutton

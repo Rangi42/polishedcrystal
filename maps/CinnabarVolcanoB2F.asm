@@ -52,7 +52,7 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	spriteface CINNABARVOLCANOB2F_LAWRENCE, UP
 	spriteface PLAYER, DOWN
 .continue
-	playmusic MUSIC_LAWRENCE
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext CinnabarVolcanoB2FLawrenceSpeechText
 	waitbutton

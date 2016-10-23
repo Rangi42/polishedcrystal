@@ -113,25 +113,29 @@
 	const MUSIC_SPIKY_EARED_PICHU_HGSS       ; 6e
 	const MUSIC_ROUTE_210_DPPT               ; 6f
 	const MUSIC_MOUNT_CORONET_DPPT           ; 70
-	const MUSIC_GAME_CORNER_DPPT             ; 71
-	const MUSIC_ROUTE_12_BW                  ; 72
-	const MUSIC_WCS_BATTLE_BW                ; 73
-	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 74
-	const MUSIC_CHAMPION_BATTLE_B2W2         ; 75
-	const MUSIC_POWER_PLANT_XY               ; 76
-	const MUSIC_RIVAL_BATTLE_XY              ; 77
-	const MUSIC_GYM_LEADER_BATTLE_XY         ; 78
-	const MUSIC_POKEMON_TOWER_RBY            ; 79
-	const MUSIC_CINNABAR_MANSION_RBY         ; 7a
-	const MUSIC_DIGLETTS_CAVE_RBY            ; 7b
-	const MUSIC_CERULEAN_CAVE_RBY            ; 7c
-	const MUSIC_ROUTE_120_RSE                ; 7d
-	const MUSIC_MOUNT_PYRE_RSE               ; 7e
-	const MUSIC_ABANDONED_SHIP_RSE           ; 7f
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 80
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 81
-	const MUSIC_LAWRENCE                     ; 82
-	const MUSIC_LUGIAS_SONG_2000             ; 83
+	const MUSIC_ETERNA_FOREST_DPPT           ; 71
+	const MUSIC_GAME_CORNER_DPPT             ; 72
+	const MUSIC_ROUTE_12_BW                  ; 73
+	const MUSIC_WCS_BATTLE_BW                ; 74
+	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 75
+	const MUSIC_WHITE_TREEHOLLOW_W2          ; 76
+	const MUSIC_CHAMPION_BATTLE_B2W2         ; 77
+	const MUSIC_POWER_PLANT_XY               ; 78
+	const MUSIC_RIVAL_BATTLE_XY              ; 79
+	const MUSIC_GYM_LEADER_BATTLE_XY         ; 7a
+	const MUSIC_POKEMON_TOWER_RBY            ; 7b
+	const MUSIC_CINNABAR_MANSION_RBY         ; 7c
+	const MUSIC_DIGLETTS_CAVE_RBY            ; 7d
+	const MUSIC_CERULEAN_CAVE_RBY            ; 7e
+	const MUSIC_ROUTE_120_RSE                ; 7f
+	const MUSIC_MOUNT_PYRE_RSE               ; 80
+	const MUSIC_ABANDONED_SHIP_RSE           ; 81
+	const MUSIC_CHAMPION_BATTLE_RSE          ; 82
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 83
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 84
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 85
+	const MUSIC_ZINNIA_BATTLE_ORAS           ; 86
+	const MUSIC_LUGIAS_SONG_2000             ; 87
 	; special
-	const MUSIC_RADIO_TOWER                  ; 84
-	const MUSIC_MAHOGANY_MART                ; 85
+	const MUSIC_RADIO_TOWER                  ; 88
+	const MUSIC_MAHOGANY_MART                ; 89

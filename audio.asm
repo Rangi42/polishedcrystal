@@ -82,7 +82,6 @@ SECTION "Songs 3", ROMX, BANK[SONGS_3]
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/healpokemon.asm"
 INCLUDE "audio/music/evolution.asm"
-INCLUDE "audio/music/rby/lawrence.asm"
 INCLUDE "audio/music/viridiancity.asm"
 INCLUDE "audio/music/celadoncity.asm"
 INCLUDE "audio/music/hgss/cinnabarisland.asm"
@@ -172,20 +171,25 @@ SECTION "Extra Songs 3", ROMX, BANK[EXTRA_SONGS_3]
 INCLUDE "audio/music/titlescreen.asm"
 INCLUDE "audio/music/dppt/route210.asm"
 INCLUDE "audio/music/dppt/mountcoronet.asm"
+INCLUDE "audio/music/dppt/eternaforest.asm"
 INCLUDE "audio/music/dppt/gamecorner.asm"
 INCLUDE "audio/music/rse/route120.asm"
 INCLUDE "audio/music/rse/mountpyre.asm"
 INCLUDE "audio/music/rse/abandonedship.asm"
+INCLUDE "audio/music/rse/championbattle.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 INCLUDE "audio/music/bw/route12.asm"
-INCLUDE "audio/music/bw/wcsbattle.asm"
-INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 
 
 SECTION "Extra Songs 4", ROMX
 
+INCLUDE "audio/music/bw/wcsbattle.asm"
+INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
+INCLUDE "audio/music/b2w2/whitetreehollow.asm"
 INCLUDE "audio/music/b2w2/championbattle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/oras/zinniaencounter.asm"
+INCLUDE "audio/music/oras/zinniabattle.asm"
 
 
 

@@ -107,7 +107,7 @@ UnknownScript_0x7451f:
 VictoryRoadLawrenceScript:
 	special Special_FadeOutMusic
 	pause 15
-	playmusic MUSIC_LAWRENCE
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	faceplayer
 	opentext
 	writetext LawrenceSeenText
@@ -119,7 +119,7 @@ VictoryRoadLawrenceScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	playmusic MUSIC_LAWRENCE
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext LawrenceAfterText
 	buttonsound
