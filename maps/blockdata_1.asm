@@ -142,7 +142,7 @@ Route2NuggetSpeechHouse_BlockData:
 KrissNeighborsHouse_BlockData:
 Route26HealSpeechHouse_BlockData:
 Route26DayofWeekSiblingsHouse_BlockData:
-Route27SandstormHouse_BlockData:
+Route27RestHouse_BlockData:
 MrPsychicsHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 CherrygroveGymSpeechHouse_BlockData:

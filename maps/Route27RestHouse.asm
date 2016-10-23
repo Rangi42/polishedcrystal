@@ -1,45 +1,45 @@
 const_value set 2
-	const ROUTE27SANDSTORMHOUSE_GRANNY
+	const ROUTE27RESTHOUSE_GRANNY
 
-Route27SandstormHouse_MapScriptHeader:
+Route27RestHouse_MapScriptHeader:
 .MapTriggers:
 	db 0
 
 .MapCallbacks:
 	db 0
 
-SandstormHouseWoman:
+RestHouseWoman:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM37_SANDSTORM
+	checkevent EVENT_GOT_TM44_REST
 	iftrue .AlreadyGotItem
 	special GetFirstPokemonHappiness
-	writetext SandstormHouseWomanText1
+	writetext RestHouseWomanText1
 	buttonsound
 	if_greater_than $95, .Loyal
 	jump .Disloyal
 
 .Loyal:
-	writetext SandstormHouseWomanLoyalText
+	writetext RestHouseWomanLoyalText
 	buttonsound
-	verbosegivetmhm TM_SANDSTORM
-	setevent EVENT_GOT_TM37_SANDSTORM
+	verbosegivetmhm TM_REST
+	setevent EVENT_GOT_TM44_REST
 .AlreadyGotItem:
-	writetext SandstormHouseSandstormDescription
+	writetext RestHouseRestDescription
 	waitbutton
 	closetext
 	end
 
 .Disloyal:
-	writetext SandstormHouseWomanDisloyalText
+	writetext RestHouseWomanDisloyalText
 	waitbutton
 	closetext
 	end
 
-SandstormHouseBookshelf:
+RestHouseBookshelf:
 	jumpstd magazinebookshelf
 
-SandstormHouseWomanText1:
+RestHouseWomanText1:
 	text "Where are you off"
 	line "to with #mon?"
 
@@ -53,7 +53,7 @@ SandstormHouseWomanText1:
 	para "Let me see…"
 	done
 
-SandstormHouseWomanLoyalText:
+RestHouseWomanLoyalText:
 	text "Ah! Your #mon"
 	line "trusts you very"
 	cont "much."
@@ -65,13 +65,14 @@ SandstormHouseWomanLoyalText:
 	line "your journey."
 	done
 
-SandstormHouseSandstormDescription:
-	text "TM37 happens to be"
-	line "Sandstorm."
+RestHouseRestDescription:
+	text "TM44 happens to be"
+	line "Rest."
 
 	para "It's a move that"
-	line "inflicts damage on"
-	cont "both battlers."
+	line "regains health,"
+	cont "but leaves the"
+	cont "user vulnerable."
 
 	para "It's for advanced"
 	line "trainers only."
@@ -80,7 +81,7 @@ SandstormHouseSandstormDescription:
 	line "dare. Good luck!"
 	done
 
-SandstormHouseWomanDisloyalText:
+RestHouseWomanDisloyalText:
 	text "If it doesn't come"
 	line "to trust you some"
 
@@ -92,7 +93,7 @@ SandstormHouseWomanDisloyalText:
 	cont "and trainers."
 	done
 
-Route27SandstormHouse_MapEventHeader:
+Route27RestHouse_MapEventHeader:
 	; filler
 	db 0, 0
 
@@ -106,9 +107,9 @@ Route27SandstormHouse_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 1, 0, SIGNPOST_READ, SandstormHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, SandstormHouseBookshelf
+	signpost 1, 0, SIGNPOST_READ, RestHouseBookshelf
+	signpost 1, 1, SIGNPOST_READ, RestHouseBookshelf
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SandstormHouseWoman, -1
+	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RestHouseWoman, -1

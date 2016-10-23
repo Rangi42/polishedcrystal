@@ -87,7 +87,7 @@ UnknownScript_0x75f09:
 GentlemanScript_0x75f1f:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
+	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 	iftrue UnknownScript_0x75f67
 	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
 	iftrue UnknownScript_0x75f58
@@ -100,8 +100,8 @@ GentlemanScript_0x75f1f:
 UnknownScript_0x75f37:
 	writetext UnknownText_0x7619b
 	buttonsound
-	verbosegivetmhm TM_BODY_SLAM
-	setevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
+	verbosegiveitem MACHO_BRACE
+	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 	closetext
 	waitsfx
 	playsound SFX_ELEVATOR_END
@@ -117,9 +117,9 @@ UnknownScript_0x75f37:
 UnknownScript_0x75f58:
 	writetext UnknownText_0x7619b
 	buttonsound
-	verbosegivetmhm TM_BODY_SLAM
+	verbosegiveitem MACHO_BRACE
 	iffalse UnknownScript_0x75f65
-	setevent EVENT_GOT_TM51_BODY_SLAM_FROM_GRANDPA_ON_SS_AQUA
+	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 UnknownScript_0x75f65:
 	closetext
 	end

@@ -205,9 +205,6 @@ SchoolboyRickyScript:
 	closetext
 	end
 
-FastShipB1FTMBodySlam:
-	itemball TM_BODY_SLAM
-
 FastShipB1FTrashcan:
 	jumpstd trashcan
 

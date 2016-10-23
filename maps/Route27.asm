@@ -545,7 +545,7 @@ Route27_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $7, $21, 1, ROUTE_27_SANDSTORM_HOUSE
+	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE
 	warp_def $5, $1a, 1, TOHJO_FALLS
 	warp_def $5, $24, 2, TOHJO_FALLS
 

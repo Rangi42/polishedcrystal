@@ -476,7 +476,7 @@ MAP_NONE   EQU 0
 	mapgroup ELMS_HOUSE,                                  4,  4 ; 11
 	mapgroup ROUTE_26_HEAL_SPEECH_HOUSE,                  4,  4 ; 12
 	mapgroup ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 13
-	mapgroup ROUTE_27_SANDSTORM_HOUSE,                    4,  4 ; 14
+	mapgroup ROUTE_27_REST_HOUSE,                         4,  4 ; 14
 	mapgroup ROUTE_29_46_GATE,                            4,  5 ; 15
 
 	newgroup                                                    ; 25

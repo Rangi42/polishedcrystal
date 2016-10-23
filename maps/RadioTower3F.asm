@@ -50,7 +50,7 @@ UnknownScript_0x5e564:
 CooltrainerFScript_0x5e56a:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SUNNY_DAY_FROM_RADIO_TOWER
+	checkevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
 	iftrue UnknownScript_0x5e59d
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue UnknownScript_0x5e58a
@@ -70,11 +70,11 @@ UnknownScript_0x5e584:
 UnknownScript_0x5e58a:
 	writetext UnknownText_0x5e7e2
 	buttonsound
-	verbosegivetmhm TM_SUNNY_DAY
+	verbosegiveitem HEAT_ROCK
 	writetext UnknownText_0x5e821
 	waitbutton
 	closetext
-	setevent EVENT_GOT_SUNNY_DAY_FROM_RADIO_TOWER
+	setevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
 	end
 
 UnknownScript_0x5e59d:
@@ -220,10 +220,10 @@ UnknownText_0x5e7e2:
 	done
 
 UnknownText_0x5e821:
-	text "It's Sunny Day."
-	line "It powers up fire-"
-	cont "type moves for a"
-	cont "while."
+	text "It's a Heat Rock."
+	line "It makes the move"
+	cont "Sunny Day last"
+	cont "longer."
 	done
 
 UnknownText_0x5e85c:

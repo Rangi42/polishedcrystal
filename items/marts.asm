@@ -382,10 +382,10 @@ Celadon3FTMMart: ; 161ce
 	dbw TM_BULK_UP,       20000
 	dbw TM_CALM_MIND,     20000
 	dbw TM_SWORDS_DANCE,  20000
-	dbw TM_SUNNY_DAY,     30000 ; TODO: Radio Tower woman has Heat Rock
-	dbw TM_RAIN_DANCE,    30000 ; TODO: Slowpoke Well has Damp Rock
-	dbw TM_SANDSTORM,     30000 ; TODO: old woman gives Rest
-	dbw TM_HAIL,          30000 ; TODO: Pryce gives Icy Wind (remove it from Ice Path)
+	dbw TM_SUNNY_DAY,     30000
+	dbw TM_RAIN_DANCE,    30000
+	dbw TM_SANDSTORM,     30000
+	dbw TM_HAIL,          30000
 	db $ff
 ; 161d5
 

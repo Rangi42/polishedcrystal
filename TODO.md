@@ -85,12 +85,14 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Add Noisy Forest below Route 36 (music: White Treehollow)
 * Add Magnet Train Track between Goldenrod City, Route 32, and Noisy Forest
 * Add Dim/Scary Cave (music: Rock Tunnel) and Cerulean Sea (music: Route 25) between Route 25/Cerulean Cape and Route 10
+   * Add Light Clay in Dim/Scary Cave
 * Expand Diglett's Cave
+   * Add a Smooth Rock
 * Expand Mt. Moon
 * Add five stat trainers
    * Cheryl: Noisy Forest; rewards HP Up
    * Riley: Crossing Cave; rewards Protein
-   * Buck: Diglett's Cave; rewards Iron
+   * Buck: Diglett's Cave; rewards Iron/Zinc
    * Mira: Dim/Scary Cave; rewards Calcium
    * Marley: Mt. Moon; rewards Carbos
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
@@ -127,16 +129,12 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Big Nugget (and other valuable items)
 * Mulch (use on a picked Berry tree to regrow it)
 * Honey (for Honey Trees)
-* Premier Ball
 * Cherish Ball
 * Ability Capsule
 * Soothe Bell (National Park)
 * Quick Powder (wild Ditto)
-* Macho Brace (Goldenrod City)
 * Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower) (if EVs are limited)
 * Choice {Band, Scarf, Specs} (Battle Tower)
-* {Damp, Heat, Icy, Smooth} Rock (Icy Mountain Road)
-* Light Clay (Route 9)
 * Binding Band
 * Grip Claw (Seafoam Islands)
 * {Mental, Power, White} Herb (Battle Tower)

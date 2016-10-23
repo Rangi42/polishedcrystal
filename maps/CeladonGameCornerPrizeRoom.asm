@@ -29,8 +29,8 @@ CeladonPrizeRoom_tmcounterloop:
 	verticalmenu
 	closewindow
 	if_equal $1, .doubleteam
-	if_equal $2, .toxic
-	if_equal $3, .hyperbeam
+	if_equal $2, .bodyslam
+	if_equal $3, .toxic
 	jump CeladonPrizeRoom_cancel
 
 .doubleteam
@@ -45,28 +45,28 @@ CeladonPrizeRoom_tmcounterloop:
 	takecoins 1500
 	jump CeladonPrizeRoom_purchased
 
+.bodyslam
+	checktmhm TM_BODY_SLAM
+	iftrue CeladonPrizeRoom_alreadyhavetm
+	checkcoins 3500
+	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	tmhmtotext TM_BODY_SLAM, $0
+	scall CeladonPrizeRoom_askbuy
+	iffalse CeladonPrizeRoom_cancel
+	givetmhm TM_BODY_SLAM
+	takecoins 3500
+	jump CeladonPrizeRoom_purchased
+
 .toxic
 	checktmhm TM_TOXIC
 	iftrue CeladonPrizeRoom_alreadyhavetm
-	checkcoins 3500
+	checkcoins 5500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_cancel
 	givetmhm TM_TOXIC
-	takecoins 3500
-	jump CeladonPrizeRoom_purchased
-
-.hyperbeam
-	checktmhm TM_HYPER_BEAM
-	iftrue CeladonPrizeRoom_alreadyhavetm
-	checkcoins 7500
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
-	tmhmtotext TM_HYPER_BEAM, $0
-	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_cancel
-	givetmhm TM_HYPER_BEAM
-	takecoins 7500
+	takecoins 5500
 	jump CeladonPrizeRoom_purchased
 
 CeladonPrizeRoom_askbuy:
@@ -122,8 +122,8 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db $80 ; flags
 	db 4 ; items
 	db "TM32    1500@"
-	db "TM06    3500@"
-	db "TM15    7500@"
+	db "TM51    3500@"
+	db "TM06    5500@"
 	db "Cancel@"
 
 

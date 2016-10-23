@@ -8375,7 +8375,8 @@ BattleCommand_Screen: ; 372fc
 	bit SCREENS_LIGHT_SCREEN, [hl]
 	jr nz, .failed
 	set SCREENS_LIGHT_SCREEN, [hl]
-	ld a, 5
+	ld a, LIGHT_CLAY
+	call GetItemBoostedDuration
 	ld [bc], a
 	ld hl, LightScreenEffectText
 	jr .good
@@ -8388,7 +8389,8 @@ BattleCommand_Screen: ; 372fc
 	; LightScreenCount -> ReflectCount
 	inc bc
 
-	ld a, 5
+	ld a, LIGHT_CLAY
+	call GetItemBoostedDuration
 	ld [bc], a
 	ld hl, ReflectEffectText
 
@@ -8401,6 +8403,22 @@ BattleCommand_Screen: ; 372fc
 	jp PrintButItFailed
 
 ; 3733d
+
+
+GetItemBoostedDuration:
+	ld b, a
+	push bc
+	call GetUserItem
+	pop bc
+	ld a, [hl]
+	cp b
+	jr nz, .five
+	ld a, 8
+	ret
+
+.five
+	ld a, 5
+	ret
 
 
 PrintDoesntAffect: ; 3733d
@@ -9351,7 +9369,8 @@ BattleCommand_StartRain: ; 37bf4
 ; startrain
 	ld a, WEATHER_RAIN
 	ld [Weather], a
-	ld a, 5
+	ld a, DAMP_ROCK
+	call GetItemBoostedDuration
 	ld [WeatherCount], a
 	call AnimateCurrentMove
 	ld hl, DownpourText
@@ -9364,7 +9383,8 @@ BattleCommand_StartSun: ; 37c07
 ; startsun
 	ld a, WEATHER_SUN
 	ld [Weather], a
-	ld a, 5
+	ld a, HEAT_ROCK
+	call GetItemBoostedDuration
 	ld [WeatherCount], a
 	call AnimateCurrentMove
 	ld hl, SunGotBrightText

@@ -606,7 +606,7 @@
 	map_header_2 ElmsHouse, ELMS_HOUSE, $0, 0
 	map_header_2 Route26HealSpeechHouse, ROUTE_26_HEAL_SPEECH_HOUSE, $0, 0
 	map_header_2 Route26DayofWeekSiblingsHouse, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE, $0, 0
-	map_header_2 Route27SandstormHouse, ROUTE_27_SANDSTORM_HOUSE, $0, 0
+	map_header_2 Route27RestHouse, ROUTE_27_REST_HOUSE, $0, 0
 	map_header_2 Route2946Gate, ROUTE_29_46_GATE, $0, 0
 	map_header_2 FightingDojo, FIGHTING_DOJO, $0, 0
 	map_header_2 SaffronGym, SAFFRON_GYM, $0, 0

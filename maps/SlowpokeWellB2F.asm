@@ -29,8 +29,8 @@ UnknownScript_0x5ad22:
 	closetext
 	end
 
-SlowpokeWellB2FTMRainDance:
-	itemball TM_RAIN_DANCE
+SlowpokeWellB2FDampRock:
+	itemball DAMP_ROCK
 
 UnknownText_0x5ad2a:
 	text "I'm waiting to see"
@@ -78,4 +78,4 @@ SlowpokeWellB2F_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_GYM_GUY, 4, 5, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
-	person_event SPRITE_POKE_BALL, 5, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_ITEMBALL, 0, SlowpokeWellB2FTMRainDance, EVENT_SLOWPOKE_WELL_B2F_TM_RAIN_DANCE
+	person_event SPRITE_POKE_BALL, 5, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SlowpokeWellB2FDampRock, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK

@@ -7,7 +7,8 @@ BattleCommand_StartHail:
 
 	ld a, WEATHER_HAIL
 	ld [Weather], a
-	ld a, 5
+	ld a, ICY_ROCK
+	call GetItemBoostedDuration
 	ld [WeatherCount], a
 	call AnimateCurrentMove
 	ld hl, HailStartedText

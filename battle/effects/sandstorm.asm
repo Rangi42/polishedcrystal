@@ -7,7 +7,8 @@ BattleCommand_StartSandstorm: ; 376f8
 
 	ld a, WEATHER_SANDSTORM
 	ld [Weather], a
-	ld a, 5
+	ld a, SMOOTH_ROCK
+	call GetItemBoostedDuration
 	ld [WeatherCount], a
 	call AnimateCurrentMove
 	ld hl, SandstormBrewedText

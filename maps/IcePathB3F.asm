@@ -47,8 +47,8 @@ LoreleiAfterIntroScript:
 	opentext
 	writetext LoreleiRewardText
 	buttonsound
-	verbosegivetmhm TM_AVALANCHE
-	setevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
+	verbosegiveitem ICY_ROCK
+	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 LoreleiAfterScript:
 	writetext LoreleiAfterText
 	waitbutton
@@ -80,12 +80,12 @@ LoreleiAfterRematchIntroScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LORELEI_AGAIN
 	opentext
-	checkevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
+	checkevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	iftrue LoreleiRematchAfterScript
 	writetext LoreleiRewardText
 	buttonsound
-	verbosegivetmhm TM_AVALANCHE
-	setevent EVENT_GOT_TM42_AVALANCHE_FROM_LORELEI
+	verbosegiveitem ICY_ROCK
+	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 LoreleiRematchAfterScript:
 	writetext LoreleiRematchAfterText
 	waitbutton
@@ -163,7 +163,7 @@ LoreleiRewardText:
 	cont "#mon."
 
 	para "Then you can use"
-	line "this TM."
+	line "this item."
 	done
 
 LoreleiAfterText:
