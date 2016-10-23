@@ -195,15 +195,9 @@ WeatherAbility:
 	cp b
 	ret z ; don't re-activate it
 	call ShowAbilityActivation
-	ld a, 5
-	ld [WeatherCount], a
-	ld a, b
-	ld [Weather], a
-	; handle swift swim, etc.
-	push bc
-	farcall CalcPlayerStats
-	farcall CalcEnemyStats
-	pop bc
+	; Disable running animations as part of Start(Weather) commands. This will not block
+	; Call_PlayBattleAnim that plays the animation manually.
+	call DisableAnimations
 	ld a, b
 	cp WEATHER_RAIN
 	jr z, .handlerain
@@ -211,26 +205,34 @@ WeatherAbility:
 	jr z, .handlesun
 	cp WEATHER_SANDSTORM
 	jr z, .handlesandstorm
+	cp WEATHER_HAIL
+	jr z, .handlehail
 	; we're dealing with cloud nine
 	xor a
 	ld [WeatherCount], a
 	ld hl, BattleText_TheWeatherSubsided
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 .handlerain
 	ld de, RAIN_DANCE
 	farcall Call_PlayBattleAnim
-	ld hl, DownpourText
-	jp StdBattleTextBox
+	farcall BattleCommand_StartRain
+	jp EnableAnimations
 .handlesun
 	ld de, SUNNY_DAY
 	farcall Call_PlayBattleAnim
-	ld hl, SunGotBrightText
-	jp StdBattleTextBox
+	farcall BattleCommand_StartSun
+	jp EnableAnimations
 .handlesandstorm
 	ld de, SANDSTORM
 	farcall Call_PlayBattleAnim
-	ld hl, SandstormBrewedText
-	jp StdBattleTextBox
+	farcall BattleCommand_StartSandstorm
+	jp EnableAnimations
+.handlehail
+	ld de, HAIL
+	farcall Call_PlayBattleAnim
+	farcall BattleCommand_StartHail
+	jp EnableAnimations
 
 IntimidateAbility:
 	call ShowAbilityActivation
