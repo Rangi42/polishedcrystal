@@ -1,36 +1,37 @@
 CalculateMaximumQuantity:
 ; limit [wItemQuantityBuffer] so that de * [wItemQuantityBuffer] <= Money
 ; 1 <= [wItemQuantityBuffer] <= 99
-
-	ld a, 1
-	ld [wItemQuantityBuffer], a
-
-.loop
 	xor a
-	ld [hMultiplicand + 0], a
-	ld a, [Buffer1]
-	ld [hMultiplicand + 1], a
-	ld a, [Buffer2]
-	ld [hMultiplicand + 2], a
-	ld a, [wItemQuantityBuffer]
-	inc a
-	ld [hMultiplier], a
-	push hl
-	call Multiply
-	pop hl
-	ld de, Money
-	ld bc, hProduct + 1
-	farcall CompareMoney
-	jr c, .limit_reached
-
-	ld a, [wItemQuantityBuffer]
+	ld [hMoneyTemp + 0], a
+	ld [hMoneyTemp + 1], a
+	ld [hMoneyTemp + 2], a
+	ld b, -1
+	jr .start
+.loop
 	cp 99
-	ret z
-	inc a
+	jr nc, .done
+.start
+	ld a, [hMoneyTemp + 2]
+	add e
+	ld [hMoneyTemp + 2], a
+	ld a, [hMoneyTemp + 1]
+	adc d
+	ld [hMoneyTemp + 1], a
+	ld a, [hMoneyTemp + 0]
+	adc 0
+	ld [hMoneyTemp + 0], a
+	inc b
+	push de
+	push bc
+	ld bc, hMoneyTemp
+	ld de, Money
+	farcall CompareMoney
+	pop bc
+	pop de
+	ld a, b
+	jr nc, .loop
+.done
 	ld [wItemQuantityBuffer], a
-	jr .loop
-
-.limit_reached
 	ret
 
 SelectQuantityToToss: ; 24fbf
