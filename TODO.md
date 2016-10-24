@@ -61,7 +61,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
 * Custom Rocket Executive sprites
 * Design custom animations for new moves
-* Show Pokémon portraits when using field moves (refer to TPPAC)
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
 * Support nicknames for NPC trainers' Pokémon
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
