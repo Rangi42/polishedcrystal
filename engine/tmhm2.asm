@@ -105,7 +105,7 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .okay
-	call CheckTMHM
+	call InnerCheckTMHM
 	jr z, .loop
 	dec b
 	jr nz, .loop
@@ -147,7 +147,7 @@ TMHM_ScrollPocket: ; 2c9b1 (b:49b1)
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jp nc, TMHM_JoypadLoop
-	call CheckTMHM
+	call InnerCheckTMHM
 	jr z, .loop
 	dec b
 	jr nz, .loop
@@ -172,7 +172,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	ld a, c
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .NotTMHM
-	call CheckTMHM
+	call InnerCheckTMHM
 	jr z, .loop2
 	ld b, a
 	ld a, c
@@ -257,7 +257,7 @@ TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
 .loop
 	inc c
 	ld a, c
-	call CheckTMHM
+	call InnerCheckTMHM
 	jr z, .loop
 	dec b
 	jr nz, .loop
@@ -286,7 +286,7 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	call CountSetBits
 	ret
 
-CheckTMHM:
+InnerCheckTMHM:
 	push bc
 	push de
 	dec a
