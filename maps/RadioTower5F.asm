@@ -1,7 +1,7 @@
 const_value set 2
 	const RADIOTOWER5F_DIRECTOR
-	const RADIOTOWER5F_ROCKET
-	const RADIOTOWER5F_ROCKET_GIRL
+	const RADIOTOWER5F_ARCHER
+	const RADIOTOWER5F_ARIANA
 	const RADIOTOWER5F_ROCKER
 	const RADIOTOWER5F_POKE_BALL
 
@@ -83,13 +83,13 @@ Ariana1Script:
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	spriteface RADIOTOWER5F_ROCKET, RIGHT
+	spriteface RADIOTOWER5F_ARCHER, RIGHT
 	opentext
 	writetext RadioTower5FRocketBossBeforeText
 	waitbutton
 	closetext
 	winlosstext RadioTower5FRocketBossWinText, 0
-	setlasttalked RADIOTOWER5F_ROCKET
+	setlasttalked RADIOTOWER5F_ARCHER
 	loadtrainer ARCHER, ARCHER1
 	startbattle
 	reloadmapafterbattle
@@ -99,8 +99,8 @@ RadioTower5FRocketBossTrigger:
 	closetext
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
-	disappear RADIOTOWER5F_ROCKET
-	disappear RADIOTOWER5F_ROCKET_GIRL
+	disappear RADIOTOWER5F_ARCHER
+	disappear RADIOTOWER5F_ARIANA
 	pause 15
 	special Special_FadeInQuickly
 	setevent EVENT_BEAT_ARCHER_1
@@ -447,7 +447,7 @@ RadioTower5F_MapEventHeader:
 .PersonEvents:
 	db 5
 	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, -1
-	person_event SPRITE_ROCKET, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET_GIRL, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ARIANA, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_POKE_BALL, 5, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RadioTower5FUltraBall, EVENT_RADIO_TOWER_5F_ULTRA_BALL

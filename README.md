@@ -232,6 +232,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
 * Add: Buy 12 Moomoo Milk at once.
 * Add: Use Yellow's encounter music for Jessie & James.
+* Add: Large red Gyarados sprite.
+* Add: Oak's lab looks different from Elm's lab.
 * Add: Grass-green for Faraway Island.
 * Add: TM prices from OR/AS.
 * Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).

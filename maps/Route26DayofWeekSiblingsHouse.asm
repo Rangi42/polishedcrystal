@@ -1,5 +1,5 @@
 const_value set 2
-	const ROUTE26DAYOFWEEKSIBLINGSHOUSE_POKEDEX
+	const ROUTE26DAYOFWEEKSIBLINGSHOUSE_BOOK
 
 Route26DayofWeekSiblingsHouse_MapScriptHeader:
 .MapTriggers:
@@ -8,7 +8,7 @@ Route26DayofWeekSiblingsHouse_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-PokedexScript_0x7b1e4:
+BookScript_0x7b1e4:
 	opentext
 	writetext UnknownText_0x7b1f9
 	yesorno
@@ -87,4 +87,4 @@ Route26DayofWeekSiblingsHouse_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokedexScript_0x7b1e4, -1
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1

@@ -1766,8 +1766,9 @@
 	const EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
 	const EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	const EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
+; New events (TODO: put in logical order)
+	const EVENT_GOT_POKEDEX
 ; Unused placeholder events
-	const EVENT_687
 	const EVENT_688
 	const EVENT_689
 	const EVENT_68A

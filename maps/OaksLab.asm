@@ -6,6 +6,7 @@ const_value set 2
 	const OAKSLAB_BULBASAUR_DOLL
 	const OAKSLAB_CHARMANDER_DOLL
 	const OAKSLAB_SQUIRTLE_DOLL
+	const OAKSLAB_POKEDEX
 
 OaksLab_MapScriptHeader:
 .MapTriggers:
@@ -162,6 +163,9 @@ NoTradeScript:
 	waitbutton
 	closetext
 	end
+
+OaksLabPokedexScript:
+	jumptext OaksLabPokedexText
 
 OaksAssistant1Script:
 	jumptextfaceplayer OaksAssistant1Text
@@ -506,6 +510,11 @@ ProfOakAfterTradeText:
 	cont "appreciate it!"
 	done
 
+OaksLabPokedexText:
+	text "It's Prof.Oak's"
+	line "#dex."
+	done
+
 OaksLab_MapEventHeader:
 	; filler
 	db 0, 0
@@ -538,7 +547,7 @@ OaksLab_MapEventHeader:
 	signpost 1, 0, SIGNPOST_READ, OaksLabPC
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
 	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant1Script, -1
 	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant2Script, -1
@@ -546,3 +555,4 @@ OaksLab_MapEventHeader:
 	person_event SPRITE_BULBASAUR, 3, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BulbasaurDollScript, EVENT_DECO_BULBASAUR_DOLL
 	person_event SPRITE_CHARMANDER, 3, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CharmanderDollScript, EVENT_DECO_CHARMANDER_DOLL
 	person_event SPRITE_SQUIRTLE, 3, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SquirtleDollScript, EVENT_DECO_SQUIRTLE_DOLL
+	person_event SPRITE_POKEDEX, 1, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OaksLabPokedexScript, -1

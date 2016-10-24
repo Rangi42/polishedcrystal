@@ -180,8 +180,35 @@ JamesSprite:
 JessieSprite:
 	sprite_header JessieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
+ProtonSprite:
+	sprite_header ProtonSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+PetrelSprite:
+	sprite_header PetrelSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+ArcherSprite:
+	sprite_header ArcherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+ArianaSprite:
+	sprite_header ArianaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 GiovanniSprite:
 	sprite_header GiovanniSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
+CherylSprite:
+	sprite_header CherylSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+RileySprite:
+	sprite_header RileySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+BuckSprite:
+	sprite_header BuckSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+MiraSprite:
+	sprite_header MiraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+MarleySprite:
+	sprite_header MarleySpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -415,12 +442,27 @@ UnownRSprite:
 UnownPSprite:
 	sprite_header UnownPSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
+GyaradosTopLeftSprite:
+	sprite_header GyaradosTopLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+
+GyaradosTopRightSprite:
+	sprite_header GyaradosTopRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+
+GyaradosBottomLeftSprite:
+	sprite_header GyaradosBottomLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+
+GyaradosBottomRightSprite:
+	sprite_header GyaradosBottomRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+
 PokeBallSprite: ; 14928
 	sprite_header PokeBallSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
 ; 1492e
 
-PokedexSprite: ; 1492e
-	sprite_header PokedexSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
+PokedexSprite:
+	sprite_header PokedexSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
+
+BookSprite: ; 1492e
+	sprite_header BookSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
 ; 14934
 
 PaperSprite: ; 14934

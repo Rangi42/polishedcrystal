@@ -106,9 +106,8 @@ ValeriesHouseValerieText:
 
 	para "are said to be"
 	line "rather mystifying."
-
-	para "Do you agree with"
-	line "that?"
+	cont "Do you agree with"
+	cont "that?"
 
 	para "I've always wanted"
 	line "to be a #mon,"
@@ -116,10 +115,10 @@ ValeriesHouseValerieText:
 
 	para "That desire is my"
 	line "inspiration and"
-	cont "what I try to"
 
-	para "achieve by"
-	line "designing."
+	para "what I try to"
+	line "achieve by"
+	cont "designing."
 
 	para "And yet… the only"
 	line "time I feel truly"
@@ -216,10 +215,10 @@ ValeriesHouse_MapEventHeader:
 .PersonEvents:
 	db 8
 	person_event SPRITE_VALERIE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseValerieScript, EVENT_VALERIE_ECRUTEAK_CITY
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseRedFairyBookScript, EVENT_RED_FAIRY_BOOK
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ValeriesHouseBlueFairyBookScript, EVENT_BLUE_FAIRY_BOOK
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValeriesHouseGreenFairyBookScript, EVENT_GREEN_FAIRY_BOOK
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseBrownFairyBookScript, EVENT_BROWN_FAIRY_BOOK
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ValeriesHouseVioletFairyBookScript, EVENT_VIOLET_FAIRY_BOOK
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHousePinkFairyBookScript, EVENT_PINK_FAIRY_BOOK
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseYellowFairyBookScript, EVENT_YELLOW_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseRedFairyBookScript, EVENT_RED_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ValeriesHouseBlueFairyBookScript, EVENT_BLUE_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValeriesHouseGreenFairyBookScript, EVENT_GREEN_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseBrownFairyBookScript, EVENT_BROWN_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ValeriesHouseVioletFairyBookScript, EVENT_VIOLET_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHousePinkFairyBookScript, EVENT_PINK_FAIRY_BOOK
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseYellowFairyBookScript, EVENT_YELLOW_FAIRY_BOOK

@@ -1,6 +1,6 @@
 const_value set 2
 	const TEAMROCKETBASEB2F_ROCKET1
-	const TEAMROCKETBASEB2F_ROCKET_GIRL
+	const TEAMROCKETBASEB2F_ARIANA
 	const TEAMROCKETBASEB2F_LANCE
 	const TEAMROCKETBASEB2F_DRAGON
 	const TEAMROCKETBASEB2F_ELECTRODE1
@@ -57,12 +57,12 @@ UnknownScript_0x6cf95:
 	jump UnknownScript_0x6cfac
 
 UnknownScript_0x6cf9c:
-	moveperson TEAMROCKETBASEB2F_ROCKET_GIRL, $15, $10
+	moveperson TEAMROCKETBASEB2F_ARIANA, $15, $10
 	moveperson TEAMROCKETBASEB2F_ROCKET1, $15, $10
 	moveperson TEAMROCKETBASEB2F_DRAGON, $a, $d
 	moveperson TEAMROCKETBASEB2F_LANCE, $a, $d
 UnknownScript_0x6cfac:
-	appear TEAMROCKETBASEB2F_ROCKET_GIRL
+	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_ROCKET1
 	opentext
 	writetext UnknownText_0x6d2ad
@@ -72,7 +72,7 @@ UnknownScript_0x6cfac:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, MovementData_0x6d21f
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	applymovement TEAMROCKETBASEB2F_ROCKET_GIRL, MovementData_0x6d224
+	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d224
 	spriteface PLAYER, UP
 	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d22f
 	opentext
@@ -80,11 +80,11 @@ UnknownScript_0x6cfac:
 	waitbutton
 	closetext
 	cry DRAGONITE
-	spriteface TEAMROCKETBASEB2F_ROCKET_GIRL, LEFT
+	spriteface TEAMROCKETBASEB2F_ARIANA, LEFT
 	spriteface PLAYER, LEFT
 	appear TEAMROCKETBASEB2F_DRAGON
 	applymovement TEAMROCKETBASEB2F_DRAGON, MovementData_0x6d236
-	applymovement TEAMROCKETBASEB2F_ROCKET_GIRL, MovementData_0x6d23b
+	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d23b
 	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d24c
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d244
@@ -93,15 +93,15 @@ UnknownScript_0x6cfac:
 	waitbutton
 	closetext
 	spriteface PLAYER, RIGHT
-	applymovement TEAMROCKETBASEB2F_ROCKET_GIRL, MovementData_0x6d241
+	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
 	opentext
 	writetext UnknownText_0x6d3bd
 	waitbutton
 	closetext
 	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d24a
-	applymovement TEAMROCKETBASEB2F_ROCKET_GIRL, MovementData_0x6d248
+	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d248
 	winlosstext UnknownText_0x6d45c, 0
-	setlasttalked TEAMROCKETBASEB2F_ROCKET_GIRL
+	setlasttalked TEAMROCKETBASEB2F_ARIANA
 	loadtrainer ARIANA, ARIANA2
 	startbattle
 	disappear TEAMROCKETBASEB2F_DRAGON
@@ -117,7 +117,7 @@ UnknownScript_0x6cfac:
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear TEAMROCKETBASEB2F_ROCKET1
-	disappear TEAMROCKETBASEB2F_ROCKET_GIRL
+	disappear TEAMROCKETBASEB2F_ARIANA
 	disappear TEAMROCKETBASEB2F_ROCKET2
 	disappear TEAMROCKETBASEB2F_ROCKET3
 	disappear TEAMROCKETBASEB2F_ROCKET4
@@ -953,7 +953,7 @@ TeamRocketBaseB2F_MapEventHeader:
 .PersonEvents:
 	db 14
 	person_event SPRITE_ROCKET, 16, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_GRUNT_WITH_ARIANA
-	person_event SPRITE_ROCKET_GIRL, 16, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ARIANA
+	person_event SPRITE_ARIANA, 16, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ARIANA
 	person_event SPRITE_LANCE, 13, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	person_event SPRITE_DRAGON, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_DRAGONITE
 	person_event SPRITE_ELECTRODE, 5, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketElectrode1, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1

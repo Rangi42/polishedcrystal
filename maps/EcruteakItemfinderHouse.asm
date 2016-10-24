@@ -1,6 +1,6 @@
 const_value set 2
 	const ECRUTEAKITEMFINDERHOUSE_COOLTRAINER_M
-	const ECRUTEAKITEMFINDERHOUSE_POKEDEX
+	const ECRUTEAKITEMFINDERHOUSE_BOOK
 
 EcruteakItemfinderHouse_MapScriptHeader:
 .MapTriggers:
@@ -33,7 +33,7 @@ UnknownScript_0x9a61a:
 	closetext
 	end
 
-PokedexScript_0x9a620:
+BookScript_0x9a620:
 	opentext
 	writetext UnknownText_0x9a826
 	yesorno
@@ -181,4 +181,4 @@ EcruteakItemfinderHouse_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9a5fb, -1
-	person_event SPRITE_POKEDEX, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokedexScript_0x9a620, -1
+	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x9a620, -1

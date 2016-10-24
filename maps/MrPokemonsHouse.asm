@@ -1,6 +1,7 @@
 const_value set 2
 	const MRPOKEMONSHOUSE_GENTLEMAN
 	const MRPOKEMONSHOUSE_OAK
+	const MRPOKEMONSHOUSE_POKEDEX
 
 MrPokemonsHouse_MapScriptHeader:
 .MapTriggers:
@@ -101,8 +102,15 @@ MrPokemonsHouse_OakScript:
 	spriteface PLAYER, RIGHT
 	opentext
 	writetext MrPokemonsHouse_OakText1
-	buttonsound
-	waitsfx
+	waitbutton
+	closetext
+	spriteface MRPOKEMONSHOUSE_OAK, UP
+	pause 10
+	disappear MRPOKEMONSHOUSE_POKEDEX
+	pause 10
+	spriteface MRPOKEMONSHOUSE_OAK, LEFT
+	pause 10
+	opentext
 	writetext MrPokemonsHouse_GetDexText
 	playsound SFX_ITEM
 	waitsfx
@@ -414,6 +422,7 @@ MrPokemonsHouse_MapEventHeader:
 	signpost 4, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost4Script
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
 	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	person_event SPRITE_POKEDEX, 4, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX
