@@ -111,6 +111,18 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 ![seafoam-islands](screenshots/seafoam-islands.png)
 
 
+## Discussion
+
+You can post questions or comments on any of these sites.
+
+* [Skeetendo](https://hax.iimarck.us/topic/6874/)
+* [PokéCommunity](http://www.pokecommunity.com/showthread.php?t=373172)
+* [/r/PokemonROMHacks](https://www.reddit.com/r/PokemonROMhacks/comments/51kbcn/pok%C3%A9mon_polished_crystal_200/)
+* [Nuzlocke Forums](http://s7.zetaboards.com/Nuzlocke_Forum/topic/11003710/)
+* [Pokémon Hackers Online](http://www.pokemonhackersonline.com/showthread.php?t=15811)
+* [Romhack.me](http://www.romhack.me/polishedcrystal/wall/)
+
+
 ## FAQ
 
 **Is there a Pokédex document I can refer to?**
