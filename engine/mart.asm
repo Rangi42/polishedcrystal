@@ -933,7 +933,7 @@ MenuDataHeader_Buy: ; 0x15e18
 	dbw 0, CurMart
 	dba PlaceMenuItemName
 	dba .PrintBCDPrices
-	dba UpdateItemDescription
+	dba UpdateItemDescriptionAndBagQuantity
 ; 15e30
 
 .PrintBCDPrices: ; 15e30

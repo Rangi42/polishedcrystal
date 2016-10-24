@@ -515,3 +515,62 @@ GetItemPrice: ; d486
 	pop bc
 	pop hl
 	ret
+
+_CountItem::
+	push hl
+	call CheckItemPocket
+	pop de
+	ld a, [wItemAttributeParamBuffer]
+	dec a
+	ld hl, .Pockets
+	rst JumpTable
+	ret
+
+.Pockets:
+	dw .Item
+	dw .Medicine
+	dw .Ball
+	dw .TMHM ; impossible
+	dw .Berry
+	dw .KeyItem ; impossible
+
+.Item:
+	ld hl, NumItems
+	jp CountItemInPocket
+
+.Medicine:
+	ld hl, NumMedicine
+	jp CountItemInPocket
+
+.Ball: ; d1fb
+	ld hl, NumBalls
+	jp CountItemInPocket
+
+.Berry:
+	ld hl, NumBerries
+	jp CountItemInPocket
+
+.KeyItem:
+.TMHM:
+	ret
+
+CountItemInPocket:
+	inc hl
+	ld a, [CurItem]
+	ld d, a
+	ld b, 0
+	ld c, 0
+.loop
+	ld a, [hli]
+	cp -1
+	ret z
+	cp d
+	jr nz, .next
+	ld a, [hl]
+	add c
+	ld c, a
+	jr nc, .next
+	inc b
+.next
+	inc hl
+	jr .loop

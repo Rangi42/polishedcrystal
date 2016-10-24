@@ -659,6 +659,25 @@ StringBufferPointers:: ; 24000
 
 INCLUDE "engine/menu.asm"
 
+UpdateItemDescriptionAndBagQuantity:
+	hlcoord 0, 0
+	lb bc, 3, 10
+	call ClearBox
+	ld a, [MenuSelection]
+	cp -1
+	jr z, UpdateItemDescription
+	hlcoord 0, 0
+	lb bc, 1, 8
+	call TextBox
+	hlcoord 1, 1
+	ld de, BagXString
+	call PlaceString
+	ld a, [MenuSelection]
+	call GetQuantityInBag
+	hlcoord 6, 1
+	ld de, Buffer1
+	lb bc, 2, 3
+	call PrintNum
 UpdateItemDescription: ; 0x244c3
 	ld a, [MenuSelection]
 	ld [CurSpecies], a
@@ -673,6 +692,9 @@ UpdateItemDescription: ; 0x244c3
 	farcall PrintItemDescription
 	ret
 
+BagXString:
+	db "Bag ×@"
+
 UpdateTMHMDescription:
 	ld a, [MenuSelection]
 	ld [CurSpecies], a
@@ -685,6 +707,15 @@ UpdateTMHMDescription:
 	ret z
 	decoord 1, 14
 	farcall PrintTMHMDescription
+	ret
+
+GetQuantityInBag:
+	ld a, [CurItem]
+	push af
+	ld a, [MenuSelection]
+	ld [CurItem], a
+	call CountItem
+	pop af
 	ret
 
 INCLUDE "engine/pokepic.asm"
@@ -904,7 +935,7 @@ Function24b8f: ; 24b8f
 	ld de, .slash_500
 	call PlaceString
 	hlcoord 1, 3
-	ld de, .ballx
+	ld de, .ball_x
 	call PlaceString
 	hlcoord 6, 3
 	ld de, wSafariBallsRemaining
@@ -916,7 +947,7 @@ Function24b8f: ; 24b8f
 
 .slash_500 ; 24bcf
 	db "/500@"
-.ballx ; 24bd4
+.ball_x ; 24bd4
 	db "Ball×@"
 
 StartMenu_DrawBugContestStatusBox: ; 24bdc
