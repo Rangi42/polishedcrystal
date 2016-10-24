@@ -887,7 +887,7 @@ ShowMoney_TerminatorString: ; 24b8e
 	db "@"
 
 Function24b8f: ; 24b8f
-; unreferenced, related to safari?
+; unreferenced, related to safari
 	ld hl, Options
 	ld a, [hl]
 	push af
@@ -904,9 +904,9 @@ Function24b8f: ; 24b8f
 	ld de, .slash_500
 	call PlaceString
 	hlcoord 1, 3
-	ld de, .booru_ko
+	ld de, .ballx
 	call PlaceString
-	hlcoord 5, 3
+	hlcoord 6, 3
 	ld de, wSafariBallsRemaining
 	lb bc, 1, 2
 	call PrintNum
@@ -916,8 +916,8 @@ Function24b8f: ; 24b8f
 
 .slash_500 ; 24bcf
 	db "/500@"
-.booru_ko ; 24bd4
-	db "ボール   こ@"
+.ballx ; 24bd4
+	db "Ball×@"
 
 StartMenu_DrawBugContestStatusBox: ; 24bdc
 	hlcoord 0, 0
@@ -933,14 +933,14 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	set NO_TEXT_SCROLL, [hl]
 	call StartMenu_DrawBugContestStatusBox
 	hlcoord 1, 5
-	ld de, .Balls_EN
+	ld de, .Balls
 	call PlaceString
 	hlcoord 8, 5
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	call PrintNum
 	hlcoord 1, 1
-	ld de, .CAUGHT
+	ld de, .Caught
 	call PlaceString
 	ld a, [wContestMon]
 	and a
@@ -956,7 +956,7 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	and a
 	jr z, .skip_level
 	hlcoord 1, 3
-	ld de, .LEVEL
+	ld de, .Level
 	call PlaceString
 	ld a, [wContestMonLevel]
 	ld h, b
@@ -970,15 +970,13 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	ld [Options], a
 	ret
 
-.Balls_JP: ; 24c43
-	db "ボール   こ@"
-.CAUGHT: ; 24c4b
+.Caught: ; 24c4b
 	db "Caught@"
-.Balls_EN: ; 24c52
+.Balls: ; 24c52
 	db "Balls:@"
 .None: ; 24c59
 	db "None@"
-.LEVEL: ; 24c5e
+.Level: ; 24c5e
 	db "Level@"
 
 FindApricornsInBag: ; 24c64
@@ -3359,10 +3357,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	dec a
 	ld hl, PartyMon1CaughtLocation
 	call GetPartyLocation
-	ld a, [hl]
-	and $80
-	ld b, $13
-	or b
+	ld a, NATIONAL_PARK
 	ld [hl], a
 	xor a
 	ld [wContestMon], a
