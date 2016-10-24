@@ -880,7 +880,7 @@ Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	ret
 
 MoneyString: ; 24b83
-	db "Cash@"
+	db "Money@"
 CoinString: ; 24b89
 	db "Coin@"
 ShowMoney_TerminatorString: ; 24b8e
