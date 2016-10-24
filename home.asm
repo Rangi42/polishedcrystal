@@ -944,6 +944,7 @@ GetTMHMName:: ; 3487
 	jr c, .asm_34b9
 	sub NUM_TMS
 .asm_34b9
+	inc a
 
 ; Divide and mod by 10 to get the top and bottom digits respectively
 	ld b, "0"

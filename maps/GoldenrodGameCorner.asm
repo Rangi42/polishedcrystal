@@ -45,8 +45,8 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	verticalmenu
 	closewindow
 	if_equal $1, .flamethrower
-	if_equal $2, .ice_beam
-	if_equal $3, .thunderbolt
+	if_equal $2, .thunderbolt
+	if_equal $3, .ice_beam
 	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 
 .flamethrower:
@@ -61,18 +61,6 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
-.ice_beam:
-	checktmhm TM_ICE_BEAM
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
-	checkcoins 4000
-	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	tmhmtotext TM_ICE_BEAM, $0
-	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
-	givetmhm TM_ICE_BEAM
-	takecoins 4000
-	jump GoldenrodGameCornerTMVendor_FinishScript
-
 .thunderbolt:
 	checktmhm TM_THUNDERBOLT
 	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
@@ -82,6 +70,18 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
 	givetmhm TM_THUNDERBOLT
+	takecoins 4000
+	jump GoldenrodGameCornerTMVendor_FinishScript
+
+.ice_beam:
+	checktmhm TM_ICE_BEAM
+	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
+	checkcoins 4000
+	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	tmhmtotext TM_ICE_BEAM, $0
+	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
+	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	givetmhm TM_ICE_BEAM
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
 
@@ -138,8 +138,8 @@ GoldenrodGameCornerTMVendorMenuData:
 	db $80 ; flags
 	db 4 ; items
 	db "TM35    4000@"
-	db "TM13    4000@"
 	db "TM24    4000@"
+	db "TM13    4000@"
 	db "Cancel@"
 
 

@@ -1,7 +1,6 @@
 PrintItemDescription: ; 0x1c8955
 ; Print the description for item [CurSpecies] at de.
 
-	push de
 	ld hl, ItemDescriptions
 	ld a, [CurSpecies]
 	dec a
@@ -10,6 +9,7 @@ PrintItemDescription: ; 0x1c8955
 rept 2
 	add hl, bc
 endr
+	push de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -20,10 +20,11 @@ endr
 PrintTMHMDescription:
 ; Print the description for TM/HM [CurSpecies] at de.
 
-	push de
 	ld a, [CurSpecies]
+	inc a
 	ld [CurTMHM], a
 	ld [wCurTMHM], a
+	push de
 	predef GetTMHMMove
 	pop hl
 	ld a, [wd265]

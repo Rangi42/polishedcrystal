@@ -695,13 +695,13 @@ GetPocketName: ; 96ffe
 .Item:
 	db "Item Pocket@"
 .Medicine:
-	db "Med.Pocket@"
+	db "Med.Pouch@"
 .Ball:
 	db "Ball Pocket@"
 .TM:
-	db "TM Pocket@"
+	db "TM Case@"
 .Berry:
-	db "Berry Pocket@"
+	db "Berry Pouch@"
 .Key:
 	db "Key Pocket@"
 ; 97051
@@ -709,13 +709,13 @@ GetPocketName: ; 96ffe
 GetTMHMPocketName:
 	ld hl, .TMHMPocket
 	ld d, h
-	ld l, e
+	ld e, l
 	ld hl, StringBuffer3
 	call CopyName2
 	ret
 
 .TMHMPocket:
-	db "TM Pocket@"
+	db "TM Case@"
 
 CurItemName: ; 97051
 	ld a, [CurItem]
