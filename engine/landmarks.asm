@@ -99,7 +99,7 @@ ENDM
 	landmark  20, 114, CliffCaveName
 	landmark  20, 112, Route48Name
 	landmark  20, 108, YellowForestName
-	landmark  20, 118, QuietCaveName
+	landmark  20, 124, QuietCaveName
 	landmark 100,  60, Route42Name
 	landmark  92,  60, MtMortarName
 	landmark 116,  60, MahoganyTownName
