@@ -1103,9 +1103,7 @@ HandleResidualDamage:
 	ld [wNumHits], a
 	call Call_PlayBattleAnim_OnlyIfVisible
 	call GetEighthMaxHP
-	call SwitchTurnCore
 	call RestoreHP
-	call SwitchTurnCore
 	jr .did_psn_brn
 .got_anim
 
@@ -1170,7 +1168,7 @@ HandleResidualDamage:
 	call GetBattleVar
 	cp LIQUID_OOZE
 	jr z, .hurt
-	call RestoreHP
+	call RestoreEnemyHP
 	jr .sap_text
 .hurt
 	farcall ShowAbilityActivation
@@ -1415,7 +1413,6 @@ HandleLeftovers: ; 3c8eb
 	call CheckFullHP
 	ret z
 	call GetSixteenthMaxHP
-	call SwitchTurnCore
 	call RestoreHP
 	ld hl, BattleText_TargetRecoveredWithItem
 	jp StdBattleTextBox
@@ -2076,13 +2073,17 @@ CheckUserHasEnoughHP: ; 3ccde
 	ret
 ; 3ccef
 
+RestoreEnemyHP:
+	call SwitchTurnCore
+	call RestoreHP
+	jp SwitchTurnCore
 
 RestoreHP ; 3ccef
-	ld hl, EnemyMonMaxHP
+	ld hl, BattleMonMaxHP
 	ld a, [hBattleTurn]
 	and a
 	jr z, .ok
-	ld hl, BattleMonMaxHP
+	ld hl, EnemyMonMaxHP
 .ok
 	ld a, [hli]
 	ld [Buffer2], a

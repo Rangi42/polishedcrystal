@@ -5195,9 +5195,7 @@ SapHealth: ; 36011
 	pop bc
 	cp LIQUID_OOZE
 	jr z, .damage
-	call BattleCommand_SwitchTurn
 	farcall RestoreHP
-	call BattleCommand_SwitchTurn
 	ret
 .damage
 	farcall ShowEnemyAbilityActivation
@@ -8288,10 +8286,7 @@ BattleCommand_Heal: ; 3713e
 	call CallBattleCore
 .finish
 	call AnimateCurrentMove
-	call BattleCommand_SwitchTurn
-	ld hl, RestoreHP
-	call CallBattleCore
-	call BattleCommand_SwitchTurn
+	farcall RestoreHP
 	call UpdateUserInParty
 	call RefreshBattleHuds
 	ld hl, RegainedHealthText
@@ -8671,10 +8666,6 @@ INCLUDE "battle/effects/spikes.asm"
 INCLUDE "battle/effects/foresight.asm"
 
 INCLUDE "battle/effects/perish_song.asm"
-
-INCLUDE "battle/effects/sandstorm.asm"
-
-INCLUDE "battle/effects/hail.asm"
 
 INCLUDE "battle/effects/rollout.asm"
 
@@ -9198,170 +9189,73 @@ BattleCommand_ClearHazards: ; 37b39
 ; 37b74
 
 
-BattleCommand_HealMornOrDay: ; 37b74
-; healmornorday
-	ld hl, BattleMonMaxHP
-	ld de, BattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .start
-	ld hl, EnemyMonMaxHP
-	ld de, EnemyMonHP
-
-.start
-; Index for .Multipliers
-; Default restores half max HP.
-	ld c, 2
-
-; Don't bother healing if HP is already full.
-	push bc
-	call StringCmp
-	pop bc
-	jr z, .Full
-
+BattleCommand_HealMornOrDay:
+	ld d, 0
+	jr BattleCommand_HealTime
+BattleCommand_HealNite:
+	ld d, 1
+BattleCommand_HealTime:
+; d contains default state: 1 = lesser heal. Reverses during night
 ; Don't factor in time of day in link battles.
 	ld a, [wLinkMode]
 	and a
-	jr nz, .Weather
-
+	ld a, 0
+	jr nz, .timecheck_ok
 	ld a, [TimeOfDay]
 	cp NITE
-	jr nz, .Weather
-	dec c ; double
+	ld a, d
+	jr nz, .timecheck_ok
+	; on nighttime, default state is reversed
+	xor 1
+.timecheck_ok
+	add 2
+	ld d, a
+	; d=1: heal 100%, d=2: heal 50%, d=3: heal 25%, d=4: heal 12.5%
 
-.Weather:
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	jr z, .full
+
 	ld a, [Weather]
 	and a
-	jr z, .Heal
+	jr z, .heal
 
-; x2 in sun
-; /2 in rain/sandstorm/hail
-	inc c
+; Heal amount doubles in sun, halves in any other active weather
+	dec d
 	cp WEATHER_SUN
-	jr z, .Heal
-	dec c
-	dec c
+	jr z, .heal
+	inc d
+	inc d
 
-.Heal:
-	ld b, 0
-	ld hl, .Multipliers
-	add hl, bc
-	add hl, bc
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, BANK(GetMaxHP)
-	rst FarCall
-
+.heal
 	call AnimateCurrentMove
-	call BattleCommand_SwitchTurn
 
+	farcall GetMaxHP
+.loop
+	dec d
+	jr z, .done
+	srl b
+	rr c
+	jr .loop
+.done
+	; minimum healing cap is 1
+	ld a, c
+	or b
+	jr nz, .amount_ok
+	inc c
+.amount_ok
 	farcall RestoreHP
-
-	call BattleCommand_SwitchTurn
 	call UpdateUserInParty
 
 ; 'regained health!'
 	ld hl, RegainedHealthText
 	jp StdBattleTextBox
 
-.Full:
+.full
 	call AnimateFailedMove
-
-; 'hp is full!'
 	ld hl, HPIsFullText
 	jp StdBattleTextBox
-
-.Multipliers:
-	dw GetEighthMaxHP
-	dw GetQuarterMaxHP
-	dw GetHalfMaxHP
-	dw GetMaxHP
-; 37b78
-
-BattleCommand_HealNite: ; 37b7c
-; healnite
-	ld hl, BattleMonMaxHP
-	ld de, BattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .start
-	ld hl, EnemyMonMaxHP
-	ld de, EnemyMonHP
-
-.start
-; Index for .Multipliers
-; Default restores half max HP.
-	ld c, 2
-
-; Don't bother healing if HP is already full.
-	push bc
-	call StringCmp
-	pop bc
-	jr z, .Full
-
-; Don't factor in time of day in link battles.
-	ld a, [wLinkMode]
-	and a
-	jr nz, .Weather
-
-	ld a, [TimeOfDay]
-	cp NITE
-	jr z, .Weather
-	dec c ; double
-
-.Weather:
-	ld a, [Weather]
-	and a
-	jr z, .Heal
-
-; x2 in sun
-; /2 in rain/sandstorm/hail
-	inc c
-	cp WEATHER_SUN
-	jr z, .Heal
-	dec c
-	dec c
-
-.Heal:
-	ld b, 0
-	ld hl, .Multipliers
-	add hl, bc
-	add hl, bc
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, BANK(GetMaxHP)
-	rst FarCall
-
-	call AnimateCurrentMove
-	call BattleCommand_SwitchTurn
-
-	farcall RestoreHP
-
-	call BattleCommand_SwitchTurn
-	call UpdateUserInParty
-
-; 'regained health!'
-	ld hl, RegainedHealthText
-	jp StdBattleTextBox
-
-.Full:
-	call AnimateFailedMove
-
-; 'hp is full!'
-	ld hl, HPIsFullText
-	jp StdBattleTextBox
-
-.Multipliers:
-	dw GetEighthMaxHP
-	dw GetQuarterMaxHP
-	dw GetHalfMaxHP
-	dw GetMaxHP
-; 37be8
-
 
 BattleCommand_HiddenPower: ; 37be8
 ; hiddenpower
@@ -9375,32 +9269,43 @@ BattleCommand_HiddenPower: ; 37be8
 ; 37bf4
 
 
-BattleCommand_StartRain: ; 37bf4
-; startrain
-	ld a, WEATHER_RAIN
-	ld [Weather], a
-	ld a, DAMP_ROCK
-	call GetItemBoostedDuration
-	ld [WeatherCount], a
-	call AnimateCurrentMove
-	ld hl, DownpourText
-	jp StdBattleTextBox
-
-; 37c07
-
-
-BattleCommand_StartSun: ; 37c07
-; startsun
-	ld a, WEATHER_SUN
-	ld [Weather], a
-	ld a, HEAT_ROCK
-	call GetItemBoostedDuration
-	ld [WeatherCount], a
-	call AnimateCurrentMove
+BattleCommand_StartSun:
+	ld b, WEATHER_SUN
+	ld c, HEAT_ROCK
 	ld hl, SunGotBrightText
-	jp StdBattleTextBox
+	jr BattleCommand_StartWeather
+BattleCommand_StartRain:
+	ld b, WEATHER_RAIN
+	ld c, DAMP_ROCK
+	ld hl, DownpourText
+	jr BattleCommand_StartWeather
+BattleCommand_StartSandstorm:
+	ld b, WEATHER_SANDSTORM
+	ld c, SMOOTH_ROCK
+	ld hl, SandstormBrewedText
+	jr BattleCommand_StartWeather
+BattleCommand_StartHail:
+	ld b, WEATHER_HAIL
+	ld c, ICY_ROCK
+	ld hl, HailStartedText
+BattleCommand_StartWeather:
+	ld a, [Weather]
+	cp b
+	jr z, .failed
 
-; 37c1a
+	ld a, b
+	ld [Weather], a
+	ld a, c
+	push hl
+	call GetItemBoostedDuration
+	pop hl
+	ld [WeatherCount], a
+	call AnimateCurrentMove
+	jp StdBattleTextBox ; hl has text pointer already
+
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 
 BattleCommand_BellyDrum: ; 37c1a
