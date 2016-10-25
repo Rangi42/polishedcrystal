@@ -243,6 +243,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Update random Wonder Trade OT names.
 * Add: Rock Smash has 60 power (non-Faithful).
 * Add: Strength is Fighting-type (non-Faithful).
+* Add: Submission has 120 power (non-Faithful).
 * Add: Trainers have max happiness for Return.
 * Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
 * Add: Buy 12 Moomoo Milk at once.
