@@ -8667,10 +8667,6 @@ INCLUDE "battle/effects/foresight.asm"
 
 INCLUDE "battle/effects/perish_song.asm"
 
-INCLUDE "battle/effects/sandstorm.asm"
-
-INCLUDE "battle/effects/hail.asm"
-
 INCLUDE "battle/effects/rollout.asm"
 
 
@@ -9273,32 +9269,43 @@ BattleCommand_HiddenPower: ; 37be8
 ; 37bf4
 
 
-BattleCommand_StartRain: ; 37bf4
-; startrain
-	ld a, WEATHER_RAIN
-	ld [Weather], a
-	ld a, DAMP_ROCK
-	call GetItemBoostedDuration
-	ld [WeatherCount], a
-	call AnimateCurrentMove
-	ld hl, DownpourText
-	jp StdBattleTextBox
-
-; 37c07
-
-
-BattleCommand_StartSun: ; 37c07
-; startsun
-	ld a, WEATHER_SUN
-	ld [Weather], a
-	ld a, HEAT_ROCK
-	call GetItemBoostedDuration
-	ld [WeatherCount], a
-	call AnimateCurrentMove
+BattleCommand_StartSun:
+	ld b, WEATHER_SUN
+	ld c, HEAT_ROCK
 	ld hl, SunGotBrightText
-	jp StdBattleTextBox
+	jr BattleCommand_StartWeather
+BattleCommand_StartRain:
+	ld b, WEATHER_RAIN
+	ld c, DAMP_ROCK
+	ld hl, DownpourText
+	jr BattleCommand_StartWeather
+BattleCommand_StartSandstorm:
+	ld b, WEATHER_SANDSTORM
+	ld c, SMOOTH_ROCK
+	ld hl, SandstormBrewedText
+	jr BattleCommand_StartWeather
+BattleCommand_StartHail:
+	ld b, WEATHER_HAIL
+	ld c, ICY_ROCK
+	ld hl, HailStartedText
+BattleCommand_StartWeather:
+	ld a, [Weather]
+	cp b
+	jr z, .failed
 
-; 37c1a
+	ld a, b
+	ld [Weather], a
+	ld a, c
+	push hl
+	call GetItemBoostedDuration
+	pop hl
+	ld [WeatherCount], a
+	call AnimateCurrentMove
+	jp StdBattleTextBox ; hl has text pointer already
+
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 
 BattleCommand_BellyDrum: ; 37c1a
