@@ -885,7 +885,8 @@ TN_PrintCharacteristics:
 	swap a
 	and $f
 	cp b
-	jr nc, .atk_beats_hp
+	jr z, .atk_beats_hp ; tie
+	jr c, .atk_beats_hp
 	ld c, 0
 	ld b, a
 .atk_beats_hp
@@ -893,7 +894,8 @@ TN_PrintCharacteristics:
 	ld a, [hl]
 	and $f
 	cp b
-	jr nc, .last_beats_spd
+	jr z, .last_beats_spd ; tie
+	jr c, .last_beats_spd
 	ld c, 5
 	ld b, a
 .last_beats_spd
@@ -902,7 +904,8 @@ TN_PrintCharacteristics:
 	swap a
 	and $f
 	cp b
-	jr nc, .last_beats_def
+	jr z, .last_beats_def ; tie
+	jr c, .last_beats_def
 	ld c, 2
 	ld b, a
 .last_beats_def
@@ -910,7 +913,8 @@ TN_PrintCharacteristics:
 	ld a, [hl]
 	and $f
 	cp b
-	jr nc, .last_beats_sat
+	jr z, .last_beats_sat ; tie
+	jr c, .last_beats_sat
 	ld c, 3
 	ld b, a
 .last_beats_sat
@@ -919,7 +923,8 @@ TN_PrintCharacteristics:
 	swap a
 	and $f
 	cp b
-	jr nc, .last_beats_sdf
+	jr z, .last_beats_sdf ; tie
+	jr c, .last_beats_sdf
 	ld c, 4
 	ld b, a
 .last_beats_sdf
