@@ -414,6 +414,9 @@ SurfingPikachuSprite: ; 14868
 	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 1486e
 
+MewSprite:
+	sprite_header MewSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 BigSnorlaxSprite: ; 14862
 	sprite_header BigSnorlaxSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 ; 14868

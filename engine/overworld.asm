@@ -769,7 +769,6 @@ SpriteMons: ; 14495
 	db MOLTRES
 	db DRATINI
 	db MEWTWO
-	db MEW
 	db BAYLEEF
 	db FURRET
 	db HOOTHOOT
