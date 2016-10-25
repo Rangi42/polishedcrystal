@@ -765,8 +765,6 @@ BuyTMMenuLoop:
 	ret
 
 StandardMartAskPurchaseQuantity:
-	ld a, 99
-	ld [wItemQuantityBuffer], a
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
 	farcall SelectQuantityToBuy
@@ -837,8 +835,6 @@ RooftopSaleAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
 	call .GetSalePrice
-	ld a, 99
-	ld [wItemQuantityBuffer], a
 	farcall RooftopSale_SelectQuantityToBuy
 	call ExitMenu
 	ret

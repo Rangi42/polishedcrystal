@@ -1,3 +1,39 @@
+CalculateMaximumQuantity:
+; limit [wItemQuantityBuffer] so that de * [wItemQuantityBuffer] <= Money
+; 1 <= [wItemQuantityBuffer] <= 99
+	xor a
+	ld [hMoneyTemp + 0], a
+	ld [hMoneyTemp + 1], a
+	ld [hMoneyTemp + 2], a
+	ld b, -1
+	jr .start
+.loop
+	cp 99
+	jr nc, .done
+.start
+	ld a, [hMoneyTemp + 2]
+	add e
+	ld [hMoneyTemp + 2], a
+	ld a, [hMoneyTemp + 1]
+	adc d
+	ld [hMoneyTemp + 1], a
+	ld a, [hMoneyTemp + 0]
+	adc 0
+	ld [hMoneyTemp + 0], a
+	inc b
+	push de
+	push bc
+	ld bc, hMoneyTemp
+	ld de, Money
+	farcall CompareMoney
+	pop bc
+	pop de
+	ld a, b
+	jr nc, .loop
+.done
+	ld [wItemQuantityBuffer], a
+	ret
+
 SelectQuantityToToss: ; 24fbf
 	ld hl, TossItem_MenuDataHeader
 	call LoadMenuDataHeader
@@ -12,6 +48,7 @@ RooftopSale_SelectQuantityToBuy: ; 24fcf
 	ld [Buffer1], a
 	ld a, e
 	ld [Buffer2], a
+	call CalculateMaximumQuantity
 	ld hl, BuyItem_MenuDataHeader
 	call LoadMenuDataHeader
 	call Toss_Sell_Loop
