@@ -8386,31 +8386,23 @@ BattleCommand_Screen: ; 372fc
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_LIGHT_SCREEN
-	jr nz, .Reflect
+	jr nz, .reflect
 
 	bit SCREENS_LIGHT_SCREEN, [hl]
 	jr nz, .failed
 	set SCREENS_LIGHT_SCREEN, [hl]
-	ld a, LIGHT_CLAY
-	call GetItemBoostedDuration
-	ld [bc], a
 	ld hl, LightScreenEffectText
-	jr .good
-
-.Reflect:
+	jr .set_timer
+.reflect
 	bit SCREENS_REFLECT, [hl]
 	jr nz, .failed
 	set SCREENS_REFLECT, [hl]
-
-	; LightScreenCount -> ReflectCount
-	inc bc
-
+	inc bc ; LightScreenCount -> ReflectCount
+	ld hl, ReflectEffectText
+.set_timer
 	ld a, LIGHT_CLAY
 	call GetItemBoostedDuration
 	ld [bc], a
-	ld hl, ReflectEffectText
-
-.good
 	call AnimateCurrentMove
 	jp StdBattleTextBox
 
@@ -8422,18 +8414,20 @@ BattleCommand_Screen: ; 372fc
 
 
 GetItemBoostedDuration:
+	push bc
+	push hl
 	ld b, a
 	push bc
 	call GetUserItem
 	pop bc
 	ld a, [hl]
 	cp b
-	jr nz, .five
-	ld a, 8
-	ret
-
-.five
 	ld a, 5
+	jr nz, .got_duration
+	ld a, 8
+.got_duration
+	pop hl
+	pop bc
 	ret
 
 
@@ -9307,9 +9301,7 @@ BattleCommand_StartWeather:
 	ld a, b
 	ld [Weather], a
 	ld a, c
-	push hl
 	call GetItemBoostedDuration
-	pop hl
 	ld [WeatherCount], a
 	call AnimateCurrentMove
 	jp StdBattleTextBox ; hl has text pointer already
