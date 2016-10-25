@@ -179,6 +179,10 @@ else
 endc
 endm
 
+tmhmball: MACRO
+	db \1
+endm
+
 stonetable: MACRO
 	db \1, \2
 	dw \3
