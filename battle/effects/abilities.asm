@@ -672,9 +672,7 @@ WaterAbsorbAbility:
 	and a
 	jr z, .full_hp
 	farcall GetQuarterMaxHP
-	farcall BattleCommand_SwitchTurn
 	farcall RestoreHP
-	farcall BattleCommand_SwitchTurn
 	ret
 .full_hp
 	ld hl, HPIsFullText
@@ -732,9 +730,7 @@ RainDishAbility:
 	jr z, .eighth_max_hp
 	farcall GetSixteenthMaxHP
 .got_hp
-	farcall BattleCommand_SwitchTurn
 	farcall RestoreHP
-	farcall BattleCommand_SwitchTurn
 	ret
 
 .eighth_max_hp

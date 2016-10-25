@@ -5195,9 +5195,7 @@ SapHealth: ; 36011
 	pop bc
 	cp LIQUID_OOZE
 	jr z, .damage
-	call BattleCommand_SwitchTurn
 	farcall RestoreHP
-	call BattleCommand_SwitchTurn
 	ret
 .damage
 	farcall ShowEnemyAbilityActivation
@@ -8288,10 +8286,7 @@ BattleCommand_Heal: ; 3713e
 	call CallBattleCore
 .finish
 	call AnimateCurrentMove
-	call BattleCommand_SwitchTurn
-	ld hl, RestoreHP
-	call CallBattleCore
-	call BattleCommand_SwitchTurn
+	farcall RestoreHP
 	call UpdateUserInParty
 	call RefreshBattleHuds
 	ld hl, RegainedHealthText
@@ -9254,9 +9249,7 @@ BattleCommand_HealTime:
 	jr nz, .amount_ok
 	inc c
 .amount_ok
-	call BattleCommand_SwitchTurn
 	farcall RestoreHP
-	call BattleCommand_SwitchTurn
 	call UpdateUserInParty
 
 ; 'regained health!'
