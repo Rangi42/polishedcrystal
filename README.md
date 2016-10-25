@@ -227,6 +227,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * X items sharply raise stats and cost twice as much
    * Thunder Wave has 90% accuracy
    * Paralysis halves (not quarters) Speed
+* Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
@@ -253,6 +254,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
 * Add: Update random Wonder Trade OT names.
 * Add: Use original Jynx sprite.
+* Add: Make overworld sprites darker at night.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Munchlax, Magnezone, and Tangrowth have their relatives' cries.

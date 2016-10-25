@@ -1115,3 +1115,8 @@ tmhmtotext: macro
 	db \1 ; tmhm
 	db \2 ; memory
 	endm
+
+	enum checkdarkness_command
+checkdarkness: macro
+	db checkdarkness_command
+	endm

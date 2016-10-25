@@ -69,7 +69,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Add boats to Goldenrod Harbor
 * Edit SPRITE_DRAGON with Dragonite's side view
 * Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
-* Make overworld sprites darker at night?
 * Briefly beep to warn of low HP
 * Custom overworld sprites for Rocket Executives
 

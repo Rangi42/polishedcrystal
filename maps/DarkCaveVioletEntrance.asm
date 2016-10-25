@@ -30,6 +30,8 @@ DarkCaveVioletEntrance_MapScriptHeader:
 
 DarkCaveVioletEntranceFalknerTrigger:
 	waitsfx
+	checkdarkness
+	iftrue .Darkness
 	playmusic MUSIC_JOHTO_TRAINER_BATTLE
 	pause 40
 	opentext
@@ -69,6 +71,14 @@ DarkCaveVioletEntranceFalknerTrigger:
 	dotrigger $1
 	end
 
+.Darkness:
+	opentext
+	writetext DarkCaveVioletEntranceFalknerDarknessText
+	waitbutton
+	closetext
+	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAway
+	end
+
 DarkCaveVioletEntrancePotion:
 	itemball POTION
 
@@ -97,6 +107,7 @@ DarkCaveVioletEntranceMovementData_PidgeotAttack:
 DarkCaveVioletEntranceMovementData_FalknerHeadBack:
 DarkCaveVioletEntranceMovementData_PlayerStepAside:
 	step_left
+DarkCaveVioletEntranceMovementData_PlayerStepAway:
 	step_left
 	step_end
 
@@ -148,6 +159,17 @@ DarkCaveVioletEntranceFalknerIntroText:
 
 	para "Then meet me at"
 	line "the Violet Gym."
+	done
+
+DarkCaveVioletEntranceFalknerDarknessText:
+	text "Falkner: Is"
+	line "someone there?"
+
+	para "Don't come any"
+	line "closer!"
+
+	para "It's too dark, you"
+	line "could get hurt."
 	done
 
 DarkCaveVioletEntrance_MapEventHeader:

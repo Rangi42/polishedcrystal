@@ -2376,7 +2376,7 @@ wSecretID:: ds 2
 StatusFlags:: ; d84c
 	; 0 - pokedex
 	; 1 - unown dex
-	; 2 -
+	; 2 - flash
 	; 3 - pokerus
 	; 4 - rocket signal
 	; 5 - wild encounters on/off
