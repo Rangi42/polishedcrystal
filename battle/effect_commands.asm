@@ -3976,7 +3976,14 @@ BattleCommand_ConstantDamage: ; 35726
 ; 35813
 
 
-BattleCommand_Counter: ; 35813
+BattleCommand_Counter:
+	ld b, EFFECT_COUNTER
+	ld c, PHYSICAL
+	jr BattleCommand_Counterattack
+BattleCommand_MirrorCoat:
+	ld b, EFFECT_MIRROR_COAT
+	ld c, SPECIAL
+BattleCommand_Counterattack: ; 35813
 ; counter
 
 	ld a, 1
@@ -3986,10 +3993,12 @@ BattleCommand_Counter: ; 35813
 	and a
 	ret z
 
+	push bc
 	ld b, a
 	farcall GetMoveEffect
 	ld a, b
-	cp EFFECT_COUNTER
+	pop bc
+	cp b
 	ret z
 
 	call BattleCommand_ResetTypeMatchup
@@ -4000,19 +4009,21 @@ BattleCommand_Counter: ; 35813
 	call CheckOpponentWentFirst
 	ret z
 
+	push bc
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	call GetBattleVar
 	dec a
 	ld de, StringBuffer1
 	call GetMoveData
+	pop bc
 
 	ld a, [StringBuffer1 + MOVE_POWER]
 	and a
 	ret z
 
 	ld a, [StringBuffer1 + MOVE_CATEGORY]
-	cp SPECIAL
-	ret nc
+	cp c
+	ret nz
 
 	ld hl, CurDamage
 	ld a, [hli]
@@ -9342,69 +9353,6 @@ BattleCommand_BellyDrum: ; 37c1a
 	jp PrintButItFailed
 
 ; 37c55
-
-
-BattleCommand_MirrorCoat: ; 37c95
-; mirrorcoat
-
-	ld a, 1
-	ld [AttackMissed], a
-
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-	call GetBattleVar
-	and a
-	ret z
-
-	ld b, a
-	farcall GetMoveEffect
-	ld a, b
-	cp EFFECT_MIRROR_COAT
-	ret z
-
-	call BattleCommand_ResetTypeMatchup
-	ld a, [wTypeMatchup]
-	and a
-	ret z
-
-	call CheckOpponentWentFirst
-	ret z
-
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-	call GetBattleVar
-	dec a
-	ld de, StringBuffer1
-	call GetMoveData
-
-	ld a, [StringBuffer1 + MOVE_POWER]
-	and a
-	ret z
-
-	ld a, [StringBuffer1 + MOVE_CATEGORY]
-	cp SPECIAL
-	ret c
-
-	ld hl, CurDamage
-	ld a, [hli]
-	or [hl]
-	ret z
-
-	ld a, [hl]
-	add a
-	ld [hld], a
-	ld a, [hl]
-	adc a
-	ld [hl], a
-	jr nc, .capped
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
-.capped
-
-	xor a
-	ld [AttackMissed], a
-	ret
-
-; 37ce6
 
 
 BattleCommand_DoubleMinimizeDamage: ; 37ce6

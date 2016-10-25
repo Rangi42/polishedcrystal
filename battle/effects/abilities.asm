@@ -205,8 +205,6 @@ WeatherAbility:
 	jr z, .handlesun
 	cp WEATHER_SANDSTORM
 	jr z, .handlesandstorm
-	cp WEATHER_HAIL
-	jr z, .handlehail
 	; we're dealing with cloud nine
 	xor a
 	ld [WeatherCount], a
@@ -227,11 +225,6 @@ WeatherAbility:
 	ld de, SANDSTORM
 	farcall Call_PlayBattleAnim
 	farcall BattleCommand_StartSandstorm
-	jp EnableAnimations
-.handlehail
-	ld de, HAIL
-	farcall Call_PlayBattleAnim
-	farcall BattleCommand_StartHail
 	jp EnableAnimations
 
 IntimidateAbility:
