@@ -3983,9 +3983,7 @@ BattleCommand_Counter:
 BattleCommand_MirrorCoat:
 	ld b, EFFECT_MIRROR_COAT
 	ld c, SPECIAL
-BattleCommand_Counterattack: ; 35813
-; counter
-
+BattleCommand_Counterattack:
 	ld a, 1
 	ld [AttackMissed], a
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
@@ -4045,8 +4043,6 @@ BattleCommand_Counterattack: ; 35813
 	xor a
 	ld [AttackMissed], a
 	ret
-
-; 35864
 
 
 BattleCommand_Encore: ; 35864

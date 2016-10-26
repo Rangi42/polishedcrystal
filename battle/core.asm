@@ -2109,19 +2109,14 @@ RestoreHP ; 3ccef
 	ld b, a
 	ld a, [hl]
 	sbc b
-	jr c, .asm_3cd2d
+	jr c, UpdateHPBarBattleHuds
 	ld a, b
 	ld [hli], a
 	ld [Buffer6], a
 	ld a, c
 	ld [hl], a
 	ld [Buffer5], a
-.asm_3cd2d
-
-	call SwitchTurnCore
-	call UpdateHPBarBattleHuds
-	jp SwitchTurnCore
-; 3cd36
+	; fallthrough
 
 UpdateHPBarBattleHuds: ; 3cd36
 	call UpdateHPBar
