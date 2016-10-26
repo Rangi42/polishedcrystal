@@ -224,51 +224,25 @@ BattleTurn: ; 3c12f
 
 
 HandleBetweenTurnEffects: ; 3c1d6
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .CheckEnemyFirst
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleResidualDamage
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleFutureSight
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleWeather
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleWrap
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandlePerishSong
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
-	jr .NoMoreFaintingConditions
-
-.CheckEnemyFirst:
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleResidualDamage
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleFutureSight
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleWeather
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleWrap
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandlePerishSong
-	call CheckFaint_EnemyThenPlayer
-	ret c
-
-.NoMoreFaintingConditions:
 	call HandleLeftovers
 	call HandleLeppaBerry
-	call HandleDefrost
 	call HandleSafeguard
 	call HandleScreens
 	call HandleStatBoostingHeldItems
@@ -279,55 +253,43 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jp HandleEncore
 ; 3c23c
 
-CheckFaint_PlayerThenEnemy: ; 3c23c
+CheckFaint:
+	ld a, [hLinkPlayerNumber]
+	cp $1
+	jr z, .enemy_first
+	call .check_player
+	call nc, .check_enemy
+	ret
+
+.enemy_first
+	call .check_enemy
+	call nc, .check_player
+	ret
+
+.check_player
 	call HasPlayerFainted
-	jr nz, .PlayerNotFainted
+	jr nz, .ok
 	call HandlePlayerMonFaint
 	ld a, [BattleEnded]
 	and a
-	jr nz, .BattleIsOver
+	jr nz, .over
+	ret
 
-.PlayerNotFainted:
+.check_enemy
 	call HasEnemyFainted
-	jr nz, .BattleContinues
+	jr nz, .ok
 	call HandleEnemyMonFaint
 	ld a, [BattleEnded]
 	and a
-	jr nz, .BattleIsOver
-
-.BattleContinues:
-	and a
+	jr nz, .over
 	ret
 
-.BattleIsOver:
+.ok
+	and a
+	ret
+.over
 	scf
 	ret
-; 3c25c
-
-CheckFaint_EnemyThenPlayer: ; 3c25c
-	call HasEnemyFainted
-	jr nz, .EnemyNotFainted
-	call HandleEnemyMonFaint
-	ld a, [BattleEnded]
-	and a
-	jr nz, .BattleIsOver
-
-.EnemyNotFainted:
-	call HasPlayerFainted
-	jr nz, .BattleContinues
-	call HandlePlayerMonFaint
-	ld a, [BattleEnded]
-	and a
-	jr nz, .BattleIsOver
-
-.BattleContinues:
-	and a
-	ret
-
-.BattleIsOver:
-	scf
-	ret
-; 3c27c
 
 HandleBerserkGene: ; 3c27c
 	ld a, [hLinkPlayerNumber]
@@ -1087,9 +1049,8 @@ CheckIfHPIsZero: ; 3c713
 ; 3c716
 
 HandleResidualDamage:
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
@@ -1279,15 +1240,14 @@ CheckFullHP:
 	ret
 
 HandlePerishSong: ; 3c801
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .EnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
 	jp .do_it
 
-.EnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
@@ -1348,15 +1308,14 @@ HandlePerishSong: ; 3c801
 ; 3c874
 
 HandleWrap: ; 3c874
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .EnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
 	jp .do_it
 
-.EnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
@@ -1420,20 +1379,19 @@ SwitchTurnCore: ; 3c8e4
 ; 3c8eb
 
 HandleLeftovers: ; 3c8eb
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .DoEnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
-	jp .do_it
+	jr .do_it
 
-.DoEnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
+
 .do_it
-
 	farcall GetUserItem
 	ld a, [hl]
 	ld [wd265], a
@@ -1451,15 +1409,14 @@ HandleLeftovers: ; 3c8eb
 ; 3c93c
 
 HandleLeppaBerry: ; 3c93c
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .DoEnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
 	jp .do_it
 
-.DoEnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
@@ -1590,9 +1547,8 @@ HandleLeppaBerry: ; 3c93c
 ; 3ca26
 
 HandleFutureSight: ; 3ca26
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
@@ -1648,74 +1604,13 @@ HandleFutureSight: ; 3ca26
 	jp UpdateEnemyMonInParty
 ; 3ca8f
 
-HandleDefrost: ; 3ca8f
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .enemy_first
-	call .do_player_turn
-	jr .do_enemy_turn
-
-.enemy_first
-	call .do_enemy_turn
-.do_player_turn
-	ld a, [BattleMonStatus]
-	bit FRZ, a
-	ret z
-
-	ld a, [wPlayerJustGotFrozen]
-	and a
-	ret nz
-
-	call BattleRandom
-	cp 20 percent
-	ret nc
-	xor a
-	ld [BattleMonStatus], a
-	ld a, [CurBattleMon]
-	ld hl, PartyMon1Status
-	call GetPartyLocation
-	ld [hl], 0
-	call UpdateBattleHuds
-	call SetEnemyTurn
-	ld hl, DefrostedOpponentText
-	jp StdBattleTextBox
-
-.do_enemy_turn
-	ld a, [EnemyMonStatus]
-	bit FRZ, a
-	ret z
-	ld a, [wEnemyJustGotFrozen]
-	and a
-	ret nz
-	call BattleRandom
-	cp 20 percent
-	ret nc
-	xor a
-	ld [EnemyMonStatus], a
-
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Status
-	call GetPartyLocation
-	ld [hl], 0
-.wild
-
-	call UpdateBattleHuds
-	call SetPlayerTurn
-	ld hl, DefrostedOpponentText
-	jp StdBattleTextBox
-; 3cafb
-
 HandleSafeguard: ; 3cafb
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .player1
+	call CheckSpeed
+	jr nz, .enemy_first
 	call .CheckPlayer
 	jr .CheckEnemy
 
-.player1
+.enemy_first
 	call .CheckEnemy
 .CheckPlayer:
 	ld a, [PlayerScreens]
@@ -1747,15 +1642,14 @@ HandleSafeguard: ; 3cafb
 
 
 HandleScreens: ; 3cb36
-	ld a, [hLinkPlayerNumber]
-	cp 1
-	jr z, .Both
+	call CheckSpeed
+	jr nz, .enemy_first
+
 	call .CheckPlayer
 	jr .CheckEnemy
 
-.Both:
+.enemy_first
 	call .CheckEnemy
-
 .CheckPlayer:
 	call SetPlayerTurn
 	ld de, .Your
@@ -1830,9 +1724,8 @@ HandleWeather: ; 3cb9e
 	call SetPlayerTurn
 	call .ShowWeatherAnimation
 
-	ld a, [hLinkPlayerNumber]
-	cp 1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call HandleWeatherEffects
 	call SetEnemyTurn
@@ -4564,28 +4457,22 @@ RecallPlayerMon: ; 3dce6
 ; 3dcf9
 
 HandleHealingItems: ; 3dcf9
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .player_1
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	call UseConfusionHealingItem
+	call .do_it
 	call SetEnemyTurn
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	jp UseConfusionHealingItem
+	jr .do_it
 
-.player_1
+.enemy_first
 	call SetEnemyTurn
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	call UseConfusionHealingItem
+	call .do_it
 	call SetPlayerTurn
+
+.do_it
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
 	jp UseConfusionHealingItem
-; 3dd2f
 
 HandleHPHealingItem: ; 3dd2f
 	farcall GetOpponentItemAfterUnnerve
@@ -4854,24 +4741,23 @@ UseConfusionHealingItem: ; 3de51
 
 HandleStatBoostingHeldItems: ; 3de97
 ; The effects handled here are not used in-game.
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .player_1
-	call .DoEnemy
-	jp .DoPlayer
-
-.player_1
+	call CheckSpeed
+	jr nz, .enemy_first
 	call .DoPlayer
 	jp .DoEnemy
+
+.enemy_first
+	call .DoEnemy
+	jp .DoPlayer
 ; 3dea9
 
-.DoEnemy: ; 3dea9
+.DoPlayer: ; 3dea9
 	call GetPartymonItem
 	ld a, $0
 	jp .HandleItem
 ; 3deb1
 
-.DoPlayer: ; 3deb1
+.DoEnemy: ; 3deb1
 	call GetOTPartymonItem
 	ld a, $1
 .HandleItem: ; 3deb6
