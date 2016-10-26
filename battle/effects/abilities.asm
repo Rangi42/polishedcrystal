@@ -671,6 +671,45 @@ WaterAbsorbAbility:
 	ld hl, HPIsFullText
 	jp StdBattleTextBox
 
+ApplySpeedAbilities:
+; Increases bc by 50% if a passive speed-boosting ability is active
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SWIFT_SWIM
+	jr z, .swift_swim
+	cp CLOROPHYLL
+	jr z, .clorophyll
+	cp SAND_RUSH
+	jr z, .sand_rush
+	cp QUICK_FEET
+	ret nz
+	ld a, BATTLE_VARS_STATUS
+	and a
+	ret z
+	jr .semidouble
+.swift_swim
+	ld h, WEATHER_RAIN
+	jr .weather_ability
+.clorophyll
+	ld h, WEATHER_SUN
+	jr .weather_ability
+.sand_rush
+	ld h, WEATHER_SANDSTORM
+.weather_ability
+	ld a, [Weather]
+	cp h
+	ret nz
+.semidouble
+	; 50% boost
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
+	ret
+
 RunWeatherAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar

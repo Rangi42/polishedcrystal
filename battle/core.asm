@@ -425,120 +425,20 @@ EnemyTriesToFlee: ; 3c300
 ; 3c314
 
 DetermineMoveOrder: ; 3c314
-	ld a, [wLinkMode]
-	and a
-	jr z, .use_move
-	ld a, [wBattleAction]
-	cp BATTLEACTION_E
-	jr z, .use_move
-	cp BATTLEACTION_D
-	jr z, .use_move
-	sub BATTLEACTION_SWITCH1
-	jr c, .use_move
-	ld a, [wPlayerAction]
-	cp $2
-	jr nz, .switch
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr z, .player_2
-
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .player_first
-	jp .enemy_first
-
-.player_2
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .enemy_first
-	jp .player_first
-
-.switch
-	farcall AI_Switch
-	call SetEnemyTurn
-	call SpikesDamage
-	call RunActivationAbilities
-	jp .enemy_first
-
-.use_move
 	ld a, [wPlayerAction]
 	and a
 
 	jp nz, .player_first
 	call CompareMovePriority
 	jr z, .equal_priority
-	jp c, .player_first ; player goes first
+	jp c, .player_first
 	jp .enemy_first
 
 .equal_priority
-	call SetPlayerTurn
-	farcall GetUserItem
-	push bc
-	farcall GetOpponentItem
-	pop de
-	ld a, d
-	cp HELD_QUICK_CLAW
-	jr nz, .player_no_quick_claw
-	ld a, b
-	cp HELD_QUICK_CLAW
-	jr z, .both_have_quick_claw
-	call BattleRandom
-	cp e
-	jr nc, .speed_check
-	jp .player_first
+	call CheckSpeedWithQuickClaw
+	jr z, .player_first
+	jr .enemy_first
 
-.player_no_quick_claw
-	ld a, b
-	cp HELD_QUICK_CLAW
-	jr nz, .speed_check
-	call BattleRandom
-	cp c
-	jr nc, .speed_check
-	jp .enemy_first
-
-.both_have_quick_claw
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr z, .player_2b
-	call BattleRandom
-	cp c
-	jp c, .enemy_first
-	call BattleRandom
-	cp e
-	jp c, .player_first
-	jr .speed_check
-
-.player_2b
-	call BattleRandom
-	cp e
-	jp c, .player_first
-	call BattleRandom
-	cp c
-	jp c, .enemy_first
-	jr .speed_check
-
-.speed_check
-	ld de, BattleMonSpeed
-	ld hl, EnemyMonSpeed
-	ld c, 2
-	call StringCmp
-	jr z, .speed_tie
-	jp nc, .player_first
-	jp .enemy_first
-
-.speed_tie
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr z, .player_2c
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .player_first
-	jp .enemy_first
-
-.player_2c
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .enemy_first
 .player_first
 	scf
 	ret
@@ -548,6 +448,138 @@ DetermineMoveOrder: ; 3c314
 	and a
 	ret
 ; 3c3f5
+
+CheckSpeed:
+; Quick Claw only applies for moves
+	ld d, 0
+	jr CheckSpeedInner
+CheckSpeedWithQuickClaw:
+	ld d, 1
+CheckSpeedInner:
+; Compares speed stat, applying items (usually, see above) and
+; stat changes. and see who ends up on top. Returns z if the player
+; outspeeds, otherwise nz.
+	; save battle turn so this can be used without screwing it up
+	; (needed for AI)
+	ld a, [hBattleTurn]
+	ld e, a
+	call SetPlayerTurn
+	call GetSpeed
+	push bc
+	call SetEnemyTurn
+	call GetSpeed
+	; restore turn
+	ld a, e
+	ld [hBattleTurn], a
+	pop de
+	; bc is enemy speed, de player
+	ld a, b
+	cp d
+	jr c, .player_first
+	jr nz, .enemy_first
+	ld a, c
+	cp e
+	jr c, .player_first
+	jr nz, .enemy_first
+	; Speed is equal, so randomize. Account for linking.
+	ld a, [hLinkPlayerNumber]
+	cp 2
+	ld b, 0
+	jr z, .secondary_player
+	ld b, 1
+.secondary_player
+	call BattleRandom
+	and $1
+	xor b
+	and a
+	ret ; z: player, nz: enemy
+.player_first
+	xor a
+	ret
+.enemy_first
+	or 1
+	ret
+
+GetSpeed:
+; Sets bc to speed after items and stat changes.
+; If d=1, check (and proc) Quick Claw, which increases b by
+; 128, effectively increasing final speed by 32768. This way,
+; no awkward specific checks need to be made for Quick Claw
+; ties and similar.
+	push hl
+	push de
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerSpdLevel]
+	ld bc, BattleMonSpeed
+	jr z, .got_speed
+	ld a, [EnemySpdLevel]
+	ld bc, EnemyMonSpeed
+.got_speed
+	; Apply stat changes
+	ld d, a
+	cp 7
+	ld a, 2
+	jr z, .stat_changes_done
+	jr c, .got_multiplier
+	xor a
+	ld [hMultiplicand + 0], a
+	ld a, b
+	ld [hMultiplicand + 1], a
+	ld a, c
+	ld [hMultiplicand + 2], a
+	ld a, d
+	sub 5
+.got_multiplier
+	ld [hMultiplier], a
+	call Multiply
+	ld b, 3
+	ld a, 7
+	sub d
+	jr nc, .no_overflow
+	ld a, 0
+.no_overflow
+	add 2
+	ld [hDivisor], a
+	call Divide
+	ld a, [hQuotient + 1]
+	ld b, a
+	ld a, [hQuotient + 2]
+	ld c, a
+.stat_changes_done
+	farcall ApplySpeedAbilities
+	; Apply item effects
+	push bc
+	call GetUserItem
+	ld a, b
+	pop bc
+	pop de ; needed early to check quick claw allowance
+	cp HELD_QUICK_CLAW
+	jr z, .quick_claw
+	cp HELD_CHOICE_SCARF
+	jr z, .choice_scarf
+	jr .done
+.quick_claw
+	ld a, d
+	and a
+	jr z, .done ; don't apply quick claw
+	; TODO: item animation
+	ld a, b
+	add 128
+	ld b, a
+	jr .done
+.choice_scarf
+	; Add a 50% boost
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
+.done
+	pop hl
+	ret
 
 CheckContestBattleOver: ; 3c3f5
 	ld a, [BattleType]

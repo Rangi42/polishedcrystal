@@ -459,7 +459,6 @@ DefenseCurlDescription:
 	next "Defense.@"
 
 DoubleTeamDescription:
-MinimizeDescription:
 	db   "Raises the user's"
 	next "evasiveness.@"
 

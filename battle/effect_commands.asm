@@ -5556,9 +5556,12 @@ CheckIfStatCanBeRaised: ; 361ef
 .got_num_stages
 	ld [hl], b
 	push hl
+	; Speed/Accuracy/Evasion doesn't mess with stats
 	ld a, c
-	cp $5
+	cp ACCURACY
 	jr nc, .done_calcing_stats
+	cp SPEED
+	jr z, .done_calcing_stats
 	ld hl, BattleMonStats + 1
 	ld de, PlayerStats
 	ld a, [hBattleTurn]
@@ -5799,11 +5802,14 @@ BattleCommand_StatDown: ; 362e3
 	call CheckHiddenOpponent
 	jr nz, .Failed
 
-; Accuracy/Evasion reduction don't involve stats.
+; Speed/Accuracy/Evasion reduction don't involve stats.
+; TODO: make attack/defense stat changes not mess with stats either
 	ld [hl], b
 	ld a, c
 	cp ACCURACY
 	jr nc, .Hit
+	cp SPEED
+	jr z, .Hit
 
 	push hl
 	ld hl, EnemyMonAttack + 1

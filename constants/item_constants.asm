@@ -393,6 +393,11 @@ const_value SET 80
 	const HELD_EV_SAT_UP
 	const HELD_EV_SDF_UP
 
+const_value SET 90
+	const HELD_CHOICE_BAND
+	const HELD_CHOICE_SPECS
+	const HELD_CHOICE_SCARF
+
 	const_def
 	const ITEMATTR_PRICE
 	const ITEMATTR_PRICE_HI
