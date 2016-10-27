@@ -672,7 +672,7 @@ WaterAbsorbAbility:
 	jp StdBattleTextBox
 
 ApplySpeedAbilities:
-; Increases bc by 50% if a passive speed-boosting ability is active
+; Passive speed boost abilities. Speed in bc
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SWIFT_SWIM
@@ -699,6 +699,10 @@ ApplySpeedAbilities:
 	ld a, [Weather]
 	cp h
 	ret nz
+	; double
+	sla c
+	rl b
+	ret
 .semidouble
 	; 50% boost
 	ld h, b
