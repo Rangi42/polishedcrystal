@@ -258,6 +258,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Make overworld sprites darker at night.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
+* Fix: Minimize raises evasion by two stages.
 * Fix: Munchlax, Magnezone, and Tangrowth have their relatives' cries.
 * Fix: Game console names in room.
 * Fix: Yellow Forest gate clerk does not face you.
