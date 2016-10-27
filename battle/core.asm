@@ -473,34 +473,38 @@ GetSpeed:
 	ld a, [hBattleTurn]
 	and a
 	ld a, [PlayerSpdLevel]
-	ld bc, BattleMonSpeed
+	ld hl, BattleMonSpeed
 	jr z, .got_speed
 	ld a, [EnemySpdLevel]
-	ld bc, EnemyMonSpeed
+	ld hl, EnemyMonSpeed
 .got_speed
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	ld c, a
+
 	; Apply stat changes
-	ld d, a
-	cp 7
-	ld a, 2
+	sub 7
 	jr z, .stat_changes_done
-	jr c, .got_multiplier
+	jr nc, .no_overflow1
+	ld a, 0
+.no_overflow1
+	add 2
+	ld [hMultiplier], a
+	ld d, a
 	xor a
 	ld [hMultiplicand + 0], a
 	ld a, b
 	ld [hMultiplicand + 1], a
 	ld a, c
 	ld [hMultiplicand + 2], a
-	ld a, d
-	sub 5
-.got_multiplier
-	ld [hMultiplier], a
 	call Multiply
-	ld b, 3
+	ld b, 4
 	ld a, 7
 	sub d
-	jr nc, .no_overflow
+	jr nc, .no_overflow2
 	ld a, 0
-.no_overflow
+.no_overflow2
 	add 2
 	ld [hDivisor], a
 	call Divide
