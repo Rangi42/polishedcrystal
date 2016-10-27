@@ -139,8 +139,8 @@ IcePathB1FHiddenMaxPotion:
 	dwb EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION, MAX_POTION
 
 IcePathB1FBuenaText:
-	text "Brr…"
-	line "It's so cold!"
+	text "It's really cold"
+	line "in here!"
 
 	para "The pits in the"
 	line "ground let cold"
