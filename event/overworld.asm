@@ -110,7 +110,7 @@ CheckPartyMove: ; c742
 FieldMovePokepicScript:
 	copybytetovar Buffer6
 	refreshscreen $0
-	pokepic 0
+	pokepic 0, 1
 	cry 0
 	waitsfx
 	closepokepic

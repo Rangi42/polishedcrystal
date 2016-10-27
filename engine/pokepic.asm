@@ -4,9 +4,14 @@ Pokepic:: ; 244e3
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
-;	ld b, SCGB_POKEPIC
-;	call GetSGBLayout
-	farcall LoadGrayscalePalette
+	ld a, [IsCurMonInParty]
+	and a
+	jr nz, .partymon
+	farcall LoadPokemonPalette
+	jr .got_palette
+.partymon
+	farcall LoadPartyMonPalette
+.got_palette
 	call UpdateTimePals
 	xor a
 	ld [hBGMapMode], a
@@ -35,8 +40,8 @@ Trainerpic::
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
-	ld b, SCGB_POKEPIC
-	call GetSGBLayout
+	call LoadGrayscalePalette
+	call UpdateTimePals
 	xor a
 	ld [hBGMapMode], a
 	ld a, [TrainerClass]
@@ -66,8 +71,6 @@ ClosePokepic:: ; 24528
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
 	call ApplyTilemap
-	farcall LoadBlindingFlashPalette
-	call UpdateTimePals
 	call UpdateSprites
 	call LoadStandardFont
 	ret
@@ -78,3 +81,16 @@ PokepicMenuDataHeader: ; 0x24547
 	db 13, 14 ; end coords
 	dw NULL
 	db 1 ; default option
+
+LoadGrayscalePalette:
+	ld a, $5
+	ld de, UnknBGPals + 7 palettes + 2
+	ld hl, GrayscalePalette
+	ld bc, 4
+	call FarCopyWRAM
+	ret
+; 49418
+
+GrayscalePalette:
+	RGB 20, 20, 20
+	RGB 10, 10, 10

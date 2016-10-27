@@ -179,10 +179,10 @@ LoadStatsScreenPals:
 	ld [rSVBK], a
 	ld a, [hli]
 	ld [UnknBGPals], a
-	ld [UnknBGPals + 8 * 2], a
+	ld [UnknBGPals + 2 palettes], a
 	ld a, [hl]
 	ld [UnknBGPals + 1], a
-	ld [UnknBGPals + 8 * 2 + 1], a
+	ld [UnknBGPals + 2 palettes + 1], a
 	pop af
 	ld [rSVBK], a
 	call ApplyPals
@@ -609,6 +609,36 @@ GetMonNormalOrShinyPalettePointer:
 rept 4
 	inc hl
 endr
+	ret
+
+LoadPokemonPalette:
+	; a = species
+	ld a, [CurPartySpecies]
+	; hl = palette
+	call GetMonPalettePointer
+	; load palette in BG 7
+	ld a, $5
+	ld de, UnknBGPals + 7 palettes + 2
+	ld bc, 4
+	call FarCopyWRAM
+	ret
+
+LoadPartyMonPalette:
+	; bc = personality
+	ld hl, PartyMon1Personality
+	ld a, [CurPartyMon]
+	call GetPartyLocation
+	ld c, l
+	ld b, h
+	; a = species
+	ld a, [CurPartySpecies]
+	; hl = palette
+	call GetMonNormalOrShinyPalettePointer
+	; load palette in BG 7
+	ld a, $5
+	ld de, UnknBGPals + 7 palettes + 2
+	ld bc, 4
+	call FarCopyWRAM
 	ret
 
 Function9809:

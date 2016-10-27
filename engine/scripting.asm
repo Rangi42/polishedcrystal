@@ -496,6 +496,7 @@ Script_pokepic: ; 96f16
 ; script command 0x56
 ; parameters:
 ;     pokemon (PokemonParam)
+;     flag (SingleByteParam)
 
 	call GetScriptByte
 	and a
@@ -503,6 +504,8 @@ Script_pokepic: ; 96f16
 	ld a, [ScriptVar]
 .ok
 	ld [CurPartySpecies], a
+	call GetScriptByte
+	ld [IsCurMonInParty], a
 	farcall Pokepic
 	ret
 ; 96f29

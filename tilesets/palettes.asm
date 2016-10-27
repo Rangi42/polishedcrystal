@@ -1,6 +1,6 @@
 LoadBlindingFlashPalette:: ; 49409
 	ld a, $5
-	ld de, UnknBGPals + 8 * 7
+	ld de, UnknBGPals + 7 palettes
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
 	call FarCopyWRAM
@@ -13,21 +13,6 @@ BlindingFlashPalette: ; 49418
 	RGB 05, 05, 16
 	RGB 00, 00, 00
 ; 49420
-
-LoadGrayscalePalette::
-	ld a, $5
-	ld de, UnknBGPals + 8 * 7
-	ld hl, GrayscalePalette
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
-; 49418
-
-GrayscalePalette:
-	RGB 31, 31, 31
-	RGB 20, 20, 20
-	RGB 10, 10, 10
-	RGB 00, 00, 00
 
 LoadSpecialMapPalette: ; 494ac
 	ld a, [wTileset]

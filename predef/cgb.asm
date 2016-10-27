@@ -158,7 +158,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 
 InitPartyMenuBGPal7: ; 8e85
 	ld hl, Palette_b311
-	ld de, UnknBGPals + 8 * 7
+	ld de, UnknBGPals + 7 palettes
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -211,7 +211,7 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld hl, Palettes_a8ca
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, Palette8f52
-	ld de, UnknBGPals + 8 * 3
+	ld de, UnknBGPals + 3 palettes
 	ld bc, 4 palettes
 	ld a, $5
 	call FarCopyWRAM

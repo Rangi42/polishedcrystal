@@ -1725,6 +1725,7 @@ wPokemonWithdrawDepositParameter::
 ; 2: Take from Daycare
 ; 3: Put into Daycare
 wd10b:: ds 1
+IsCurMonInParty::
 wItemQuantityChangeBuffer:: ds 1
 wItemQuantityBuffer:: ds 1
 
