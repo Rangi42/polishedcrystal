@@ -513,6 +513,21 @@ GetSpeed:
 	ld a, [hQuotient + 2]
 	ld c, a
 .stat_changes_done
+	; Apply paralyze effect
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	cp 1 << PAR
+	jr nz, .paralyze_check_done
+	; Quick Feet ignores this
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp QUICK_FEET
+	jr nz, .paralyze_check_done
+	; Cut speed in half. Consistent with
+	; VII (I-VI quartered it)
+	srl b
+	rr c
+.paralyze_check_done
 	farcall ApplySpeedAbilities
 	; Apply item effects
 	push bc
@@ -7073,56 +7088,8 @@ ApplyStatusEffectOnEnemyStats: ; 3ec30
 
 ApplyStatusEffectOnStats: ; 3ec31
 	ld [hBattleTurn], a
-	call ApplyPrzEffectOnSpeed
 	jp ApplyBrnEffectOnAttack
 ; 3ec39
-
-ApplyPrzEffectOnSpeed: ; 3ec39
-	; _OPP because turn checks are reversed for whatever reason
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp QUICK_FEET
-	ret z
-	ld a, [hBattleTurn]
-	and a
-	jr z, .enemy
-	ld a, [BattleMonStatus]
-	and 1 << PAR
-	ret z
-	ld hl, BattleMonSpeed + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .player_ok
-	ld b, $1 ; min speed
-
-.player_ok
-	ld [hl], b
-	ret
-
-.enemy
-	ld a, [EnemyMonStatus]
-	and 1 << PAR
-	ret z
-	ld hl, EnemyMonSpeed + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .enemy_ok
-	ld b, $1 ; min speed
-
-.enemy_ok
-	ld [hl], b
-	ret
-; 3ec76
 
 ApplyBrnEffectOnAttack: ; 3ec76
 	ld a, BATTLE_VARS_ABILITY_OPP

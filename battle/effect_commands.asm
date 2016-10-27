@@ -5386,8 +5386,6 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call GetBattleVarAddr
 	set PAR, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
 	ld de, ANIM_PAR
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
@@ -6391,9 +6389,6 @@ CalcPlayerStats: ; 365d7
 
 	call BattleCommand_SwitchTurn
 
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
-
 	ld hl, ApplyBrnEffectOnAttack
 	call CallBattleCore
 
@@ -6411,9 +6406,6 @@ CalcEnemyStats: ; 365fd
 	call CalcStats
 
 	call BattleCommand_SwitchTurn
-
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
 
 	ld hl, ApplyBrnEffectOnAttack
 	call CallBattleCore
@@ -7781,8 +7773,6 @@ BattleCommand_Paralyze: ; 36dc7
 	call GetBattleVarAddr
 	set PAR, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
 	call UpdateBattleHuds
 	call PrintParalyze
 	farcall RunEnemySynchronizeAbility
