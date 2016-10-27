@@ -4,8 +4,10 @@ Pokepic:: ; 244e3
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
-	ld b, SCGB_POKEPIC
-	call GetSGBLayout
+;	ld b, SCGB_POKEPIC
+;	call GetSGBLayout
+	farcall LoadGrayscalePalette
+	call UpdateTimePals
 	xor a
 	ld [hBGMapMode], a
 	ld a, [CurPartySpecies]
@@ -64,6 +66,8 @@ ClosePokepic:: ; 24528
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
 	call ApplyTilemap
+	farcall LoadBlindingFlashPalette
+	call UpdateTimePals
 	call UpdateSprites
 	call LoadStandardFont
 	ret

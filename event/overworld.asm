@@ -374,6 +374,9 @@ UseFlash: ; c8e0
 Script_UseFlash: ; 0xc8e6
 	reloadmappart
 	special UpdateTimePals
+	callasm PrepareOverworldMove
+	scall FieldMovePokepicScript
+	opentext
 	writetext UnknownText_0xc8f3
 	callasm BlindingFlash
 	closetext
