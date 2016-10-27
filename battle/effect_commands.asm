@@ -5431,18 +5431,28 @@ BattleCommand_DoubleUp:
 	call BattleCommand_StatUp
 	ld a, [FailedMessage]
 	ld d, a ; note for 2nd stat
+	ld e, 0	; track if we've shown animation
 	and a
-	call z, BattleCommand_StatUpMessage
+	call z, .msg_animate
 	pop bc
 	ld b, c
 	call ResetMiss
 	call BattleCommand_StatUp
 	ld a, [FailedMessage]
 	and a
-	jp z, BattleCommand_StatUpMessage
+	jr z, .msg_animate
 	and d ; if this result in a being nonzero, we want to give a failure message
 	ret z
+	call AnimateFailedMove
 	jp BattleCommand_StatUpMessage
+.msg_animate
+	ld a, e
+	and a
+	jp nz, BattleCommand_StatUpMessage
+	ld a, 1
+	ld [wKickCounter], a
+	call AnimateCurrentMove
+	jp nz, BattleCommand_StatUpMessage
 
 BattleCommand_AttackUp: ; 361ac
 ; attackup
