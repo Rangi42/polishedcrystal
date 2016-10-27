@@ -153,8 +153,29 @@ BattleCommand_CheckTurn: ; 34084
 	jp EndTurn
 
 .no_recharge
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_FLINCHED, [hl]
+	jr z, .not_flinched
 
+	res SUBSTATUS_FLINCHED, [hl]
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INNER_FOCUS
+	jr z, .not_flinched
+	push af
+	ld hl, FlinchedText
+	call StdBattleTextBox
+	pop af
+	cp STEADFAST
+	jr nz, .skip_steadfast
+	farcall SteadfastAbility
 
+.skip_steadfast
+	call CantMove
+	jp EndTurn
+
+.not_flinched
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	ld a, [hl]
@@ -230,14 +251,18 @@ BattleCommand_CheckTurn: ; 34084
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp FLAME_WHEEL
-	jr z, .not_frozen
+	jr z, .thaw
 	cp SACRED_FIRE
-	jr z, .not_frozen
+	jr z, .thaw
 	cp SCALD
-	jr z, .not_frozen
+	jr z, .thaw
 	cp FLARE_BLITZ
-	jr z, .not_frozen
+	jr z, .thaw
 
+	; Check for defrosting
+	call BattleRandom
+	cp 1 + (20 percent)
+	jr c, .thaw
 	ld hl, FrozenSolidText
 	call StdBattleTextBox
 	xor a
@@ -248,38 +273,18 @@ BattleCommand_CheckTurn: ; 34084
 	call CantMove
 	jp EndTurn
 
+.thaw
+	call BattleCommand_Defrost
+
 .not_frozen
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	bit SUBSTATUS_FLINCHED, [hl]
-	jr z, .not_flinched
-
-	res SUBSTATUS_FLINCHED, [hl]
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp INNER_FOCUS
-	jr z, .not_flinched
-	push af
-	ld hl, FlinchedText
-	call StdBattleTextBox
-	pop af
-	cp STEADFAST
-	jr nz, .skip_steadfast
-	farcall SteadfastAbility
-
-.skip_steadfast
-	call CantMove
-	jp EndTurn
-
-.not_flinched
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .enemy2
+	jr nz, .enemy3
 	ld hl, PlayerDisableCount
-	jr .ok2
-.enemy2
+	jr .ok3
+.enemy3
 	ld hl, EnemyDisableCount
-.ok2
+.ok3
 	ld a, [hl]
 	and a
 	jr z, .not_disabled
@@ -292,12 +297,12 @@ BattleCommand_CheckTurn: ; 34084
 	ld [hl], a
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .enemy3
+	jr nz, .enemy4
 	ld [DisabledMove], a
-	jr .ok3
-.enemy3
+	jr .ok4
+.enemy4
 	ld [EnemyDisabledMove], a
-.ok3
+.ok4
 	ld hl, DisabledNoMoreText
 	call StdBattleTextBox
 
@@ -308,12 +313,12 @@ BattleCommand_CheckTurn: ; 34084
 	jr nc, .not_confused
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .enemy4
+	jr nz, .enemy5
 	ld hl, PlayerConfuseCount
-	jr .ok4
-.enemy4
+	jr .ok5
+.enemy5
 	ld hl, EnemyConfuseCount
-.ok4
+.ok5
 	dec [hl]
 	jr nz, .confused
 
@@ -377,14 +382,14 @@ BattleCommand_CheckTurn: ; 34084
 	; Are we using a disabled move?
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .enemy5
+	jr nz, .enemy6
 	ld a, [DisabledMove]
 	ld hl, CurPlayerMove
-	jr .ok5
-.enemy5
+	jr .ok6
+.enemy6
 	ld a, [EnemyDisabledMove]
 	ld hl, CurEnemyMove
-.ok5
+.ok6
 	and a
 	jr z, .no_disabled_move ; can't disable a move that doesn't exist
 	cp [hl]
@@ -5381,8 +5386,6 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call GetBattleVarAddr
 	set PAR, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
 	ld de, ANIM_PAR
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
@@ -5426,18 +5429,28 @@ BattleCommand_DoubleUp:
 	call BattleCommand_StatUp
 	ld a, [FailedMessage]
 	ld d, a ; note for 2nd stat
+	ld e, 0	; track if we've shown animation
 	and a
-	call z, BattleCommand_StatUpMessage
+	call z, .msg_animate
 	pop bc
 	ld b, c
 	call ResetMiss
 	call BattleCommand_StatUp
 	ld a, [FailedMessage]
 	and a
-	jp z, BattleCommand_StatUpMessage
+	jr z, .msg_animate
 	and d ; if this result in a being nonzero, we want to give a failure message
 	ret z
+	call AnimateFailedMove
 	jp BattleCommand_StatUpMessage
+.msg_animate
+	ld a, e
+	and a
+	jp nz, BattleCommand_StatUpMessage
+	ld a, 1
+	ld [wKickCounter], a
+	call AnimateCurrentMove
+	jp nz, BattleCommand_StatUpMessage
 
 BattleCommand_AttackUp: ; 361ac
 ; attackup
@@ -5556,9 +5569,12 @@ CheckIfStatCanBeRaised: ; 361ef
 .got_num_stages
 	ld [hl], b
 	push hl
+	; Speed/Accuracy/Evasion doesn't mess with stats
 	ld a, c
-	cp $5
+	cp ACCURACY
 	jr nc, .done_calcing_stats
+	cp SPEED
+	jr z, .done_calcing_stats
 	ld hl, BattleMonStats + 1
 	ld de, PlayerStats
 	ld a, [hBattleTurn]
@@ -5799,11 +5815,14 @@ BattleCommand_StatDown: ; 362e3
 	call CheckHiddenOpponent
 	jr nz, .Failed
 
-; Accuracy/Evasion reduction don't involve stats.
+; Speed/Accuracy/Evasion reduction don't involve stats.
+; TODO: make attack/defense stat changes not mess with stats either
 	ld [hl], b
 	ld a, c
 	cp ACCURACY
 	jr nc, .Hit
+	cp SPEED
+	jr z, .Hit
 
 	push hl
 	ld hl, EnemyMonAttack + 1
@@ -6370,9 +6389,6 @@ CalcPlayerStats: ; 365d7
 
 	call BattleCommand_SwitchTurn
 
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
-
 	ld hl, ApplyBrnEffectOnAttack
 	call CallBattleCore
 
@@ -6390,9 +6406,6 @@ CalcEnemyStats: ; 365fd
 	call CalcStats
 
 	call BattleCommand_SwitchTurn
-
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
 
 	ld hl, ApplyBrnEffectOnAttack
 	call CallBattleCore
@@ -7760,8 +7773,6 @@ BattleCommand_Paralyze: ; 36dc7
 	call GetBattleVarAddr
 	set PAR, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyPrzEffectOnSpeed
-	call CallBattleCore
 	call UpdateBattleHuds
 	call PrintParalyze
 	farcall RunEnemySynchronizeAbility

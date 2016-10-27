@@ -459,7 +459,6 @@ DefenseCurlDescription:
 	next "Defense.@"
 
 DoubleTeamDescription:
-MinimizeDescription:
 	db   "Raises the user's"
 	next "evasiveness.@"
 
@@ -482,6 +481,10 @@ AgilityDescription:
 NastyPlotDescription:
 	db   "Sharply raises the"
 	next "user's Spcl.Atk.@"
+
+MinimizeDescription:
+	db   "Sharply raises the"
+	next "user's evasiveness.@"
 
 GrowthDescription:
 	db   "Raises the user's"

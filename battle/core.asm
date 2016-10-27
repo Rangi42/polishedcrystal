@@ -224,51 +224,25 @@ BattleTurn: ; 3c12f
 
 
 HandleBetweenTurnEffects: ; 3c1d6
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .CheckEnemyFirst
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleResidualDamage
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleFutureSight
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleWeather
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandleWrap
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
 	call HandlePerishSong
-	call CheckFaint_PlayerThenEnemy
+	call CheckFaint
 	ret c
-	jr .NoMoreFaintingConditions
-
-.CheckEnemyFirst:
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleResidualDamage
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleFutureSight
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleWeather
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandleWrap
-	call CheckFaint_EnemyThenPlayer
-	ret c
-	call HandlePerishSong
-	call CheckFaint_EnemyThenPlayer
-	ret c
-
-.NoMoreFaintingConditions:
 	call HandleLeftovers
 	call HandleLeppaBerry
-	call HandleDefrost
 	call HandleSafeguard
 	call HandleScreens
 	call HandleStatBoostingHeldItems
@@ -279,55 +253,43 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jp HandleEncore
 ; 3c23c
 
-CheckFaint_PlayerThenEnemy: ; 3c23c
+CheckFaint:
+	ld a, [hLinkPlayerNumber]
+	cp $1
+	jr z, .enemy_first
+	call .check_player
+	call nc, .check_enemy
+	ret
+
+.enemy_first
+	call .check_enemy
+	call nc, .check_player
+	ret
+
+.check_player
 	call HasPlayerFainted
-	jr nz, .PlayerNotFainted
+	jr nz, .ok
 	call HandlePlayerMonFaint
 	ld a, [BattleEnded]
 	and a
-	jr nz, .BattleIsOver
+	jr nz, .over
+	ret
 
-.PlayerNotFainted:
+.check_enemy
 	call HasEnemyFainted
-	jr nz, .BattleContinues
+	jr nz, .ok
 	call HandleEnemyMonFaint
 	ld a, [BattleEnded]
 	and a
-	jr nz, .BattleIsOver
-
-.BattleContinues:
-	and a
+	jr nz, .over
 	ret
 
-.BattleIsOver:
+.ok
+	and a
+	ret
+.over
 	scf
 	ret
-; 3c25c
-
-CheckFaint_EnemyThenPlayer: ; 3c25c
-	call HasEnemyFainted
-	jr nz, .EnemyNotFainted
-	call HandleEnemyMonFaint
-	ld a, [BattleEnded]
-	and a
-	jr nz, .BattleIsOver
-
-.EnemyNotFainted:
-	call HasPlayerFainted
-	jr nz, .BattleContinues
-	call HandlePlayerMonFaint
-	ld a, [BattleEnded]
-	and a
-	jr nz, .BattleIsOver
-
-.BattleContinues:
-	and a
-	ret
-
-.BattleIsOver:
-	scf
-	ret
-; 3c27c
 
 HandleBerserkGene: ; 3c27c
 	ld a, [hLinkPlayerNumber]
@@ -425,120 +387,20 @@ EnemyTriesToFlee: ; 3c300
 ; 3c314
 
 DetermineMoveOrder: ; 3c314
-	ld a, [wLinkMode]
-	and a
-	jr z, .use_move
-	ld a, [wBattleAction]
-	cp BATTLEACTION_E
-	jr z, .use_move
-	cp BATTLEACTION_D
-	jr z, .use_move
-	sub BATTLEACTION_SWITCH1
-	jr c, .use_move
-	ld a, [wPlayerAction]
-	cp $2
-	jr nz, .switch
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr z, .player_2
-
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .player_first
-	jp .enemy_first
-
-.player_2
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .enemy_first
-	jp .player_first
-
-.switch
-	farcall AI_Switch
-	call SetEnemyTurn
-	call SpikesDamage
-	call RunActivationAbilities
-	jp .enemy_first
-
-.use_move
 	ld a, [wPlayerAction]
 	and a
 
 	jp nz, .player_first
 	call CompareMovePriority
 	jr z, .equal_priority
-	jp c, .player_first ; player goes first
+	jp c, .player_first
 	jp .enemy_first
 
 .equal_priority
-	call SetPlayerTurn
-	farcall GetUserItem
-	push bc
-	farcall GetOpponentItem
-	pop de
-	ld a, d
-	cp HELD_QUICK_CLAW
-	jr nz, .player_no_quick_claw
-	ld a, b
-	cp HELD_QUICK_CLAW
-	jr z, .both_have_quick_claw
-	call BattleRandom
-	cp e
-	jr nc, .speed_check
-	jp .player_first
+	call CheckSpeedWithQuickClaw
+	jr z, .player_first
+	jr .enemy_first
 
-.player_no_quick_claw
-	ld a, b
-	cp HELD_QUICK_CLAW
-	jr nz, .speed_check
-	call BattleRandom
-	cp c
-	jr nc, .speed_check
-	jp .enemy_first
-
-.both_have_quick_claw
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr z, .player_2b
-	call BattleRandom
-	cp c
-	jp c, .enemy_first
-	call BattleRandom
-	cp e
-	jp c, .player_first
-	jr .speed_check
-
-.player_2b
-	call BattleRandom
-	cp e
-	jp c, .player_first
-	call BattleRandom
-	cp c
-	jp c, .enemy_first
-	jr .speed_check
-
-.speed_check
-	ld de, BattleMonSpeed
-	ld hl, EnemyMonSpeed
-	ld c, 2
-	call StringCmp
-	jr z, .speed_tie
-	jp nc, .player_first
-	jp .enemy_first
-
-.speed_tie
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr z, .player_2c
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .player_first
-	jp .enemy_first
-
-.player_2c
-	call BattleRandom
-	cp 1 + (50 percent)
-	jp c, .enemy_first
 .player_first
 	scf
 	ret
@@ -548,6 +410,157 @@ DetermineMoveOrder: ; 3c314
 	and a
 	ret
 ; 3c3f5
+
+CheckSpeed:
+; Quick Claw only applies for moves
+	ld d, 0
+	jr CheckSpeedInner
+CheckSpeedWithQuickClaw:
+	ld d, 1
+CheckSpeedInner:
+; Compares speed stat, applying items (usually, see above) and
+; stat changes. and see who ends up on top. Returns z if the player
+; outspeeds, otherwise nz.
+	; save battle turn so this can be used without screwing it up
+	; (needed for AI)
+	ld a, [hBattleTurn]
+	ld e, a
+	call SetPlayerTurn
+	call GetSpeed
+	push bc
+	call SetEnemyTurn
+	call GetSpeed
+	; restore turn
+	ld a, e
+	ld [hBattleTurn], a
+	pop de
+	; bc is enemy speed, de player
+	ld a, b
+	cp d
+	jr c, .player_first
+	jr nz, .enemy_first
+	ld a, c
+	cp e
+	jr c, .player_first
+	jr nz, .enemy_first
+	; Speed is equal, so randomize. Account for linking.
+	ld a, [hLinkPlayerNumber]
+	cp 2
+	ld b, 0
+	jr z, .secondary_player
+	ld b, 1
+.secondary_player
+	call BattleRandom
+	and $1
+	xor b
+	and a
+	ret ; z: player, nz: enemy
+.player_first
+	xor a
+	ret
+.enemy_first
+	or 1
+	ret
+
+GetSpeed:
+; Sets bc to speed after items and stat changes.
+; If d=1, check (and proc) Quick Claw, which increases b by
+; 128, effectively increasing final speed by 32768. This way,
+; no awkward specific checks need to be made for Quick Claw
+; ties and similar.
+	push hl
+	push de
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerSpdLevel]
+	ld hl, BattleMonSpeed
+	jr z, .got_speed
+	ld a, [EnemySpdLevel]
+	ld hl, EnemyMonSpeed
+.got_speed
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	ld c, a
+
+	; Apply stat changes
+	sub 7
+	jr z, .stat_changes_done
+	jr nc, .no_overflow1
+	ld a, 0
+.no_overflow1
+	add 2
+	ld [hMultiplier], a
+	ld d, a
+	xor a
+	ld [hMultiplicand + 0], a
+	ld a, b
+	ld [hMultiplicand + 1], a
+	ld a, c
+	ld [hMultiplicand + 2], a
+	call Multiply
+	ld b, 4
+	ld a, 7
+	sub d
+	jr nc, .no_overflow2
+	ld a, 0
+.no_overflow2
+	add 2
+	ld [hDivisor], a
+	call Divide
+	ld a, [hQuotient + 1]
+	ld b, a
+	ld a, [hQuotient + 2]
+	ld c, a
+.stat_changes_done
+	; Apply paralyze effect
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	cp 1 << PAR
+	jr nz, .paralyze_check_done
+	; Quick Feet ignores this
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp QUICK_FEET
+	jr nz, .paralyze_check_done
+	; Cut speed in half. Consistent with
+	; VII (I-VI quartered it)
+	srl b
+	rr c
+.paralyze_check_done
+	farcall ApplySpeedAbilities
+	; Apply item effects
+	push bc
+	call GetUserItem
+	ld a, b
+	pop bc
+	pop de ; needed early to check quick claw allowance
+	cp HELD_QUICK_CLAW
+	jr z, .quick_claw
+	cp HELD_CHOICE_SCARF
+	jr z, .choice_scarf
+	jr .done
+.quick_claw
+	ld a, d
+	and a
+	jr z, .done ; don't apply quick claw
+	; TODO: item animation
+	ld a, b
+	add 128
+	ld b, a
+	jr .done
+.choice_scarf
+	; Add a 50% boost
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
+.done
+	pop hl
+	ret
 
 CheckContestBattleOver: ; 3c3f5
 	ld a, [BattleType]
@@ -1055,9 +1068,8 @@ CheckIfHPIsZero: ; 3c713
 ; 3c716
 
 HandleResidualDamage:
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
@@ -1247,15 +1259,14 @@ CheckFullHP:
 	ret
 
 HandlePerishSong: ; 3c801
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .EnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
 	jp .do_it
 
-.EnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
@@ -1316,15 +1327,14 @@ HandlePerishSong: ; 3c801
 ; 3c874
 
 HandleWrap: ; 3c874
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .EnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
 	jp .do_it
 
-.EnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
@@ -1388,20 +1398,19 @@ SwitchTurnCore: ; 3c8e4
 ; 3c8eb
 
 HandleLeftovers: ; 3c8eb
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .DoEnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
-	jp .do_it
+	jr .do_it
 
-.DoEnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
+
 .do_it
-
 	farcall GetUserItem
 	ld a, [hl]
 	ld [wd265], a
@@ -1419,15 +1428,14 @@ HandleLeftovers: ; 3c8eb
 ; 3c93c
 
 HandleLeppaBerry: ; 3c93c
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .DoEnemyFirst
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
 	jp .do_it
 
-.DoEnemyFirst:
+.enemy_first
 	call SetEnemyTurn
 	call .do_it
 	call SetPlayerTurn
@@ -1558,9 +1566,8 @@ HandleLeppaBerry: ; 3c93c
 ; 3ca26
 
 HandleFutureSight: ; 3ca26
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
@@ -1616,74 +1623,13 @@ HandleFutureSight: ; 3ca26
 	jp UpdateEnemyMonInParty
 ; 3ca8f
 
-HandleDefrost: ; 3ca8f
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .enemy_first
-	call .do_player_turn
-	jr .do_enemy_turn
-
-.enemy_first
-	call .do_enemy_turn
-.do_player_turn
-	ld a, [BattleMonStatus]
-	bit FRZ, a
-	ret z
-
-	ld a, [wPlayerJustGotFrozen]
-	and a
-	ret nz
-
-	call BattleRandom
-	cp 20 percent
-	ret nc
-	xor a
-	ld [BattleMonStatus], a
-	ld a, [CurBattleMon]
-	ld hl, PartyMon1Status
-	call GetPartyLocation
-	ld [hl], 0
-	call UpdateBattleHuds
-	call SetEnemyTurn
-	ld hl, DefrostedOpponentText
-	jp StdBattleTextBox
-
-.do_enemy_turn
-	ld a, [EnemyMonStatus]
-	bit FRZ, a
-	ret z
-	ld a, [wEnemyJustGotFrozen]
-	and a
-	ret nz
-	call BattleRandom
-	cp 20 percent
-	ret nc
-	xor a
-	ld [EnemyMonStatus], a
-
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Status
-	call GetPartyLocation
-	ld [hl], 0
-.wild
-
-	call UpdateBattleHuds
-	call SetPlayerTurn
-	ld hl, DefrostedOpponentText
-	jp StdBattleTextBox
-; 3cafb
-
 HandleSafeguard: ; 3cafb
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .player1
+	call CheckSpeed
+	jr nz, .enemy_first
 	call .CheckPlayer
 	jr .CheckEnemy
 
-.player1
+.enemy_first
 	call .CheckEnemy
 .CheckPlayer:
 	ld a, [PlayerScreens]
@@ -1715,15 +1661,14 @@ HandleSafeguard: ; 3cafb
 
 
 HandleScreens: ; 3cb36
-	ld a, [hLinkPlayerNumber]
-	cp 1
-	jr z, .Both
+	call CheckSpeed
+	jr nz, .enemy_first
+
 	call .CheckPlayer
 	jr .CheckEnemy
 
-.Both:
+.enemy_first
 	call .CheckEnemy
-
 .CheckPlayer:
 	call SetPlayerTurn
 	ld de, .Your
@@ -1798,9 +1743,8 @@ HandleWeather: ; 3cb9e
 	call SetPlayerTurn
 	call .ShowWeatherAnimation
 
-	ld a, [hLinkPlayerNumber]
-	cp 1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call HandleWeatherEffects
 	call SetEnemyTurn
@@ -4532,28 +4476,22 @@ RecallPlayerMon: ; 3dce6
 ; 3dcf9
 
 HandleHealingItems: ; 3dcf9
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .player_1
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	call UseConfusionHealingItem
+	call .do_it
 	call SetEnemyTurn
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	jp UseConfusionHealingItem
+	jr .do_it
 
-.player_1
+.enemy_first
 	call SetEnemyTurn
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	call UseConfusionHealingItem
+	call .do_it
 	call SetPlayerTurn
+
+.do_it
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
 	jp UseConfusionHealingItem
-; 3dd2f
 
 HandleHPHealingItem: ; 3dd2f
 	farcall GetOpponentItemAfterUnnerve
@@ -4822,24 +4760,23 @@ UseConfusionHealingItem: ; 3de51
 
 HandleStatBoostingHeldItems: ; 3de97
 ; The effects handled here are not used in-game.
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .player_1
-	call .DoEnemy
-	jp .DoPlayer
-
-.player_1
+	call CheckSpeed
+	jr nz, .enemy_first
 	call .DoPlayer
 	jp .DoEnemy
+
+.enemy_first
+	call .DoEnemy
+	jp .DoPlayer
 ; 3dea9
 
-.DoEnemy: ; 3dea9
+.DoPlayer: ; 3dea9
 	call GetPartymonItem
 	ld a, $0
 	jp .HandleItem
 ; 3deb1
 
-.DoPlayer: ; 3deb1
+.DoEnemy: ; 3deb1
 	call GetOTPartymonItem
 	ld a, $1
 .HandleItem: ; 3deb6
@@ -7151,56 +7088,8 @@ ApplyStatusEffectOnEnemyStats: ; 3ec30
 
 ApplyStatusEffectOnStats: ; 3ec31
 	ld [hBattleTurn], a
-	call ApplyPrzEffectOnSpeed
 	jp ApplyBrnEffectOnAttack
 ; 3ec39
-
-ApplyPrzEffectOnSpeed: ; 3ec39
-	; _OPP because turn checks are reversed for whatever reason
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp QUICK_FEET
-	ret z
-	ld a, [hBattleTurn]
-	and a
-	jr z, .enemy
-	ld a, [BattleMonStatus]
-	and 1 << PAR
-	ret z
-	ld hl, BattleMonSpeed + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .player_ok
-	ld b, $1 ; min speed
-
-.player_ok
-	ld [hl], b
-	ret
-
-.enemy
-	ld a, [EnemyMonStatus]
-	and 1 << PAR
-	ret z
-	ld hl, EnemyMonSpeed + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .enemy_ok
-	ld b, $1 ; min speed
-
-.enemy_ok
-	ld [hl], b
-	ret
-; 3ec76
 
 ApplyBrnEffectOnAttack: ; 3ec76
 	ld a, BATTLE_VARS_ABILITY_OPP

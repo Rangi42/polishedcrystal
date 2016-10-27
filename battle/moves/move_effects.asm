@@ -479,6 +479,7 @@ BubbleBeam:
 	endmove
 
 SpecialAttackDownHit:
+Moonblast:
 	checkobedience
 	usedmovetext
 	doturn
@@ -742,7 +743,6 @@ AccuracyUp:
 
 EvasionUp:
 DoubleTeam:
-Minimize:
 	checkobedience
 	usedmovetext
 	doturn
@@ -840,6 +840,7 @@ AccuracyUp2:
 	endmove
 
 EvasionUp2:
+Minimize:
 	checkobedience
 	usedmovetext
 	doturn
