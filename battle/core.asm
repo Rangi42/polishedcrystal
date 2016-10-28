@@ -480,7 +480,7 @@ GetSpeed::
 	farcall ApplySpeedAbilities
 	; Apply item effects
 	push bc
-	call GetUserItem
+	farcall GetUserItem
 	ld h, c
 	ld a, b
 	pop bc
