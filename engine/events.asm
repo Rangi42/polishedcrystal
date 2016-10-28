@@ -552,8 +552,8 @@ TryObjectEvent: ; 969b5
 	dbw PERSONTYPE_SCRIPT, .script
 	dbw PERSONTYPE_ITEMBALL, .itemball
 	dbw PERSONTYPE_TRAINER, .trainer
-	; the remaining four are dummy events
-	dbw PERSONTYPE_3, .three
+	dbw PERSONTYPE_TMHMBALL, .tmhmball
+	; the remaining three are dummy events
 	dbw PERSONTYPE_4, .four
 	dbw PERSONTYPE_5, .five
 	dbw PERSONTYPE_6, .six
@@ -593,8 +593,18 @@ TryObjectEvent: ; 969b5
 	ret
 ; 96a30
 
-.three ; 96a30
-	xor a
+.tmhmball ; 96a30
+	ld hl, MAPOBJECT_SCRIPT_POINTER
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetMapScriptHeaderBank
+	ld de, EngineBuffer1
+	ld bc, 1
+	call FarCopyBytes
+	ld a, PLAYEREVENT_TMHMBALL
+	scf
 	ret
 ; 96a32
 
@@ -987,7 +997,8 @@ PlayerEventScriptPointers: ; 96c0c
 	dba Script_OverworldWhiteout ; 7
 	dba HatchEggScript           ; 8
 	dba ChangeDirectionScript    ; 9
-	dba Invalid_0x96c2d          ; 10
+	dba FindTMHMInBallScript     ; 10
+	dba Invalid_0x96c2d          ; 11
 ; 96c2d
 
 Invalid_0x96c2d: ; 96c2d

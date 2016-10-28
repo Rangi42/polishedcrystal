@@ -249,6 +249,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_verbosegivetmhm            ; b0
 	dw Script_tmhmnotify                 ; b1
 	dw Script_tmhmtotext                 ; b2
+	dw Script_checkdarkness              ; b3
 ; 96e05
 
 StartScript: ; 96e05
@@ -495,6 +496,7 @@ Script_pokepic: ; 96f16
 ; script command 0x56
 ; parameters:
 ;     pokemon (PokemonParam)
+;     flag (SingleByteParam)
 
 	call GetScriptByte
 	and a
@@ -502,6 +504,8 @@ Script_pokepic: ; 96f16
 	ld a, [ScriptVar]
 .ok
 	ld [CurPartySpecies], a
+	call GetScriptByte
+	ld [IsCurMonInParty], a
 	farcall Pokepic
 	ret
 ; 96f29
@@ -695,13 +699,13 @@ GetPocketName: ; 96ffe
 .Item:
 	db "Item Pocket@"
 .Medicine:
-	db "Med.Pouch@"
+	db "Med.Pocket@"
 .Ball:
 	db "Ball Pocket@"
 .TM:
-	db "TM Case@"
+	db "TM Pocket@"
 .Berry:
-	db "Berry Pouch@"
+	db "Berry Pocket@"
 .Key:
 	db "Key Pocket@"
 ; 97051
@@ -715,7 +719,7 @@ GetTMHMPocketName:
 	ret
 
 .TMHMPocket:
-	db "TM Case@"
+	db "TM Pocket@"
 
 CurItemName: ; 97051
 	ld a, [CurItem]
@@ -2821,7 +2825,7 @@ Script_wildoff: ; 979f5
 ; script command 0x38
 
 	ld hl, StatusFlags
-	set 5, [hl]
+	set 5, [hl] ; wild encounters on/off
 	ret
 ; 979fb
 
@@ -2829,7 +2833,7 @@ Script_wildon: ; 979fb
 ; script command 0x37
 
 	ld hl, StatusFlags
-	res 5, [hl]
+	res 5, [hl] ; wild encounters on/off
 	ret
 ; 97a01
 
@@ -3393,3 +3397,17 @@ Script_tmhmtotext:
 	call GetTMHMName
 	ld de, StringBuffer1
 	jp ConvertMemToText
+
+Script_checkdarkness:
+; script command 0xb3
+
+	xor a
+	ld [ScriptVar], a
+	push hl
+	ld hl, StatusFlags
+	bit 2, [hl] ; Flash
+	pop hl
+	ret nz
+	ld a, TRUE
+	ld [ScriptVar], a
+	ret

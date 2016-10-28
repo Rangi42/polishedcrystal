@@ -39,7 +39,7 @@ _TimeOfDayPals:: ; 8c011
 
 
 ; save bg palette 8
-	ld hl, UnknBGPals + 8 * 7 ; UnknBGPals + 7 pals
+	ld hl, UnknBGPals + 7 palettes
 
 ; save wram bank
 	ld a, [rSVBK]

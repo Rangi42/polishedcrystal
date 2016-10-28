@@ -1,6 +1,6 @@
 LoadBlindingFlashPalette:: ; 49409
 	ld a, $5
-	ld de, UnknBGPals + 8 * 7
+	ld de, UnknBGPals + 7 palettes
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
 	call FarCopyWRAM
@@ -40,6 +40,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_viridian_gym
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
+	cp TILESET_MART
+	jp z, .maybe_goldenrod_dept_store_roof
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
 	jp .do_nothing
@@ -147,6 +149,17 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_EMBEDDED_TOWER
 	jp nz, .do_nothing
 	call LoadEmbeddedTowerPalette
+	scf
+	ret
+
+.maybe_goldenrod_dept_store_roof
+	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_GOLDENROD_DEPT_STORE_ROOF
+	jp nz, .do_nothing
+	call LoadGoldenrodDeptStoreRoofPalette
 	scf
 	ret
 
@@ -268,9 +281,13 @@ INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
 
 LoadCeladonMansionPalette: ; 496c5
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, CeladonMansionPalette
+	call AddNTimes
 	ld a, $5
 	ld de, UnknBGPals
-	ld hl, CeladonMansionPalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
@@ -367,6 +384,21 @@ LoadEmbeddedTowerPalette:
 
 EmbeddedTowerPalette:
 INCLUDE "tilesets/embedded_tower.pal"
+
+LoadGoldenrodDeptStoreRoofPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, GoldenrodDeptStoreRoofPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+GoldenrodDeptStoreRoofPalette:
+INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
 
 LoadCinnabarVolcanoPalette:
 	ld a, $5

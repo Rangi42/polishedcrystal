@@ -563,6 +563,11 @@ buttonsound: macro
 pokepic: macro
 	db pokepic_command
 	db \1 ; pokemon
+if _NARG == 2
+	db \2 ; party flag
+else
+	db 0
+endc
 	endm
 
 	enum closepokepic_command
@@ -1114,4 +1119,9 @@ tmhmtotext: macro
 	db tmhmtotext_command
 	db \1 ; tmhm
 	db \2 ; memory
+	endm
+
+	enum checkdarkness_command
+checkdarkness: macro
+	db checkdarkness_command
 	endm

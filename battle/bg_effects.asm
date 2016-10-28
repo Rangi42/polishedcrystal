@@ -2608,8 +2608,8 @@ BGEffects_LoadBGPal1_OBPal0: ; c8e7f (32:4e7f)
 	ld a, h
 	push bc
 	push af
-	ld hl, BGPals + 8
-	ld de, UnknBGPals + 8
+	ld hl, BGPals + 1 palettes
+	ld de, UnknBGPals + 1 palettes
 	ld b, a
 	ld c, $1
 	call CopyPals

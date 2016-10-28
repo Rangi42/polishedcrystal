@@ -64,12 +64,10 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
 * Support nicknames for NPC trainers' Pokémon
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
-* Goldenrod Dept. Store and Celadon Mansion roofs should have dark sky at night
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
 * Edit SPRITE_DRAGON with Dragonite's side view
 * Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
-* Make overworld sprites darker at night?
 * Briefly beep to warn of low HP
 * Custom overworld sprites for Rocket Executives
 

@@ -9,7 +9,7 @@ Underground_MapScriptHeader:
 	db 0
 
 UndergroundTMExplosion:
-	itemball TM_EXPLOSION
+	tmhmball TM_EXPLOSION
 
 UndergroundHiddenFullRestore:
 	dwb EVENT_UNDERGROUND_HIDDEN_FULL_RESTORE, FULL_RESTORE
@@ -36,4 +36,4 @@ Underground_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_POKE_BALL, 13, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_ITEMBALL, 0, UndergroundTMExplosion, EVENT_UNDERGROUND_TM_EXPLOSION
+	person_event SPRITE_POKE_BALL, 13, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, UndergroundTMExplosion, EVENT_UNDERGROUND_TM_EXPLOSION
