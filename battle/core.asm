@@ -481,6 +481,7 @@ GetSpeed::
 	; Apply item effects
 	push bc
 	call GetUserItem
+	ld h, c
 	ld a, b
 	pop bc
 	pop de ; needed early to check quick claw allowance
@@ -493,6 +494,11 @@ GetSpeed::
 	ld a, d
 	and a
 	jr z, .done ; don't apply quick claw
+	push hl
+	call BattleRandom
+	pop hl
+	cp h
+	ret nc
 	; TODO: item animation
 	ld a, b
 	add 128
