@@ -405,7 +405,7 @@ CheckSpeedWithQuickClaw::
 CheckSpeedInner:
 ; Compares speed stat, applying items (usually, see above) and
 ; stat changes. and see who ends up on top. Returns z if the player
-; outspeeds, otherwise nz.
+; outspeeds, otherwise nz, randomly on tie (which also sets carry)
 	; save battle turn so this can be used without screwing it up
 	; (needed for AI)
 	ld a, [hBattleTurn]
@@ -439,7 +439,8 @@ CheckSpeedInner:
 	and $1
 	xor b
 	and a
-	ret ; z: player, nz: enemy
+	scf
+	ret
 .player_first
 	xor a
 	ret

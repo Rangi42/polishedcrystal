@@ -2862,21 +2862,15 @@ AI_Smart_Thunder: ; 39225
 ; 39233
 
 
-AICompareSpeed: ; 39233
+AICompareSpeed:
 ; Return carry if enemy is faster than player.
-
-	push bc
-	ld a, [EnemyMonSpeed + 1]
-	ld b, a
-	ld a, [BattleMonSpeed + 1]
-	cp b
-	ld a, [EnemyMonSpeed]
-	ld b, a
-	ld a, [BattleMonSpeed]
-	sbc b
-	pop bc
+	call CheckSpeed
+	jr z, .no ; player outspeeds
+	ccf ; nc->c (we outspeed), c->nc (tie)
 	ret
-; 39246
+.no
+	xor a ; clears carry
+	ret
 
 
 AICheckPlayerMaxHP: ; 39246
