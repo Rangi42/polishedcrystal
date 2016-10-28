@@ -628,7 +628,20 @@ FlyFunction: ; ca3b
 	call GetMapPermission
 	call CheckOutdoorMap
 	jr z, .outdoors
-	jr .indoors
+
+	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
+	jr nz, .not_goldenrod_dept_store_roof
+	ld a, [MapNumber]
+	cp MAP_GOLDENROD_DEPT_STORE_ROOF
+	jr z, .outdoors
+.not_goldenrod_dept_store_roof
+	ld a, [MapGroup]
+	cp GROUP_CELADON_MANSION_ROOF
+	jr nz, .indoors
+	ld a, [MapNumber]
+	cp MAP_CELADON_MANSION_ROOF
+	jr nz, .indoors
 
 .outdoors
 	xor a
