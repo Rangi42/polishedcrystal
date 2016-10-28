@@ -256,6 +256,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Update random Wonder Trade OT names.
 * Add: Use original Jynx sprite.
 * Add: Make overworld sprites darker at night.
+* Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.
