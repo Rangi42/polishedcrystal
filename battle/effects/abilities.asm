@@ -1,18 +1,8 @@
 RunActivationAbilitiesInner:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	; do Trace first in case it traces an activation ability,
-	; that way we can run one of the others after the trace.
 	cp TRACE
-	call z, TraceAbility
-	; reload the ability byte if it changed
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp TRACE
-	jr nz, .continue
-	ret ; the trace failed, so don't continue
-.continue
-	; Do Imposter second to allow Transformed abilities to activate
+	jp z, TraceAbility
 	cp IMPOSTER
 	jp z, ImposterAbility
 	cp DRIZZLE
@@ -163,14 +153,7 @@ TraceAbility:
 	ld [hl], a
 	ld hl, TraceActivationText
 	call StdBattleTextBox
-	; handle swift swim, etc.
-	ld a, [hBattleTurn]
-	jr z, .is_player
-	farcall CalcEnemyStats
-	ret
-.is_player
-	farcall CalcPlayerStats
-	ret
+	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
 	call StdBattleTextBox
