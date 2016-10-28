@@ -714,6 +714,100 @@ ApplySpeedAbilities:
 	ld c, l
 	ret
 
+ApplyAccuracyAbilities:
+; Passive accuracy boost/reduction abilities.
+; Current accuracy is in mul/div addresses
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	call .user_abilities
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	farcall BattleCommand_SwitchTurn
+	ld a, b
+	call .enemy_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+
+.user_abilities
+	ld hl, hMultiplier
+	cp COMPOUND_EYES
+	jr z, CompoundEyesAbility
+	cp HUSTLE
+	jr z, HustleAccuracyAbility
+	ret
+
+.enemy_abilities
+	ld hl, hMultiplier
+	cp SAND_VEIL
+	jr z, SandVeilAbility
+	cp TANGLED_FEET
+	jr z, TangledFeetAbility
+	cp SNOW_CLOAK
+	jr z, SnowCloakAbility
+	cp WONDER_SKIN
+	jr z, WonderSkinAbility
+	ret
+
+CompoundEyesAbility:
+; Increase accuracy by 30%
+	ld [hl], 13
+	call Multiply
+	ld [hl], 10
+	ld b, 4
+	jp Divide
+
+HustleAccuracyAbility:
+; Decrease accuracy by 50%
+	ld [hl], 2
+	ld b, 4
+	jp Divide
+
+TangledFeetAbility:
+; Decrease accuracy by 50% while confused
+	push hl
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_CONFUSED, [hl]
+	pop hl
+	ret z
+	ld [hl], 2
+	ld b, 4
+	jp Divide
+
+WonderSkinAbility:
+; Decrease accuracy by 50% for status moves
+	ld a, [wEnemyMoveStructCategory]
+	ld b, a
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_cat
+	ld a, [wPlayerMoveStructCategory]
+	ld b, a
+.got_cat
+	ld a, b
+	cp STATUS
+	ret nz
+
+	ld [hl], 2
+	ld b, 4
+	jp Divide
+
+SandVeilAbility:
+	ld b, WEATHER_SANDSTORM
+	jr WeatherAccAbility
+SnowCloakAbility:
+	ld b, WEATHER_HAIL
+WeatherAccAbility:
+; Decrease accuracy by 20% in relevant weather
+	ld a, [Weather]
+	cp b
+	ret z
+	ld [hl], 4
+	call Multiply
+	ld [hl], 5
+	ld b, 4
+	jp Divide
+
 RunWeatherAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar

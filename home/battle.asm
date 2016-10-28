@@ -504,8 +504,8 @@ endr
 	dw .substatus1, .substatus2, .substatus3, .substatus4
 	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
 	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
-	dw .power, .type, .category, .curmove, .lastcounter, .lastcounteropp
-	dw .lastmove, .lastmoveopp
+	dw .power, .accuracy, .type, .category, .curmove, .lastcounter
+	dw .lastcounteropp, .lastmove, .lastmoveopp
 
 ;                       player                     enemy
 .substatus1     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
@@ -523,6 +523,7 @@ endr
 .animation      db PLAYER_MOVE_ANIMATION, ENEMY_MOVE_ANIMATION
 .effect         db PLAYER_MOVE_EFFECT,    ENEMY_MOVE_EFFECT
 .power          db PLAYER_MOVE_POWER,     ENEMY_MOVE_POWER
+.accuracy       db PLAYER_MOVE_ACCURACY,  ENEMY_MOVE_ACCURACY
 .type           db PLAYER_MOVE_TYPE,      ENEMY_MOVE_TYPE
 .category       db PLAYER_MOVE_CATEGORY,  ENEMY_MOVE_CATEGORY
 .curmove        db PLAYER_CUR_MOVE,       ENEMY_CUR_MOVE
@@ -541,6 +542,7 @@ endr
 	dw wPlayerMoveStructAnimation,   wEnemyMoveStructAnimation
 	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect
 	dw wPlayerMoveStructPower,       wEnemyMoveStructPower
+	dw wPlayerMoveStructAccuracy,    wEnemyMoveStructAccuracy
 	dw wPlayerMoveStructType,        wEnemyMoveStructType
 	dw wPlayerMoveStructCategory,    wEnemyMoveStructCategory
 	dw CurPlayerMove,                CurEnemyMove

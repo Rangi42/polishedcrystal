@@ -1607,37 +1607,121 @@ BattleCommand_CheckHit: ; 34d32
 	cp STRUGGLE
 	ret z
 
-	call .StatModifiers
-
-	ld a, [wPlayerMoveStruct + MOVE_ACC]
+	; Now doing usual accuracy check
+	ld a, [PlayerAccLevel]
 	ld b, a
+	ld a, [EnemyEvaLevel]
+	ld c, a
 	ld a, [hBattleTurn]
 	and a
-	jr z, .BrightPowder
-	ld a, [wEnemyMoveStruct + MOVE_ACC]
+	jr z, .got_acc_eva
+	ld a, [EnemyAccLevel]
 	ld b, a
+	ld a, [PlayerEvaLevel]
+	ld c, a
 
-.BrightPowder:
-	push bc
+.got_acc_eva
+	; Handle stat modifiers
+	; Unaware ignores enemy stat changes
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNAWARE
+	jr nz, .no_user_unaware
+	ld c, 7
+
+.no_user_unaware
+	call GetOpponentAbilityAfterMoldBreaker
+	cp UNAWARE
+	jr nz, .no_opponent_unaware
+	ld b, 7
+
+.no_opponent_unaware
+	xor a
+	ld [hMultiplicand + 0], a
+	ld [hMultiplicand + 1], a
+	ld a, BATTLE_VARS_MOVE_ACCURACY
+	call GetBattleVar
+	cp 255
+	jr nz, .got_base_acc
+	; If internal accuracy is 255, insert
+	; $100 instead to avoid 1/256 miss
+	ld a, 1
+	ld [hMultiplicand + 1], a
+	xor a
+.got_base_acc
+	ld [hMultiplicand + 2], a
+
+	ld hl, hMultiplier
+	ld a, c
+	cp b
+	jr c, .accuracy_not_lowered
+	; No need to multiply/divide if acc=eva
+	jr z, .stat_changes_done
+
+	; If the target's evasion is greater than the user's accuracy,
+	; check the target's foresight status
+	ld a, BATTLE_VARS_SUBSTATUS1_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IDENTIFIED, a
+	jr nz, .stat_changes_done
+
+.accuracy_not_lowered
+	ld a, b
+	cp 7
+	jr c, .acc_reduced
+	sub 4 ; multiply by 4-9, not 8-13
+	ld [hl], a
+	call Multiply
+.acc_reduced
+	ld a, 7
+	sub c
+	jr c, .eva_boosted
+	add 3
+	ld [hl], a
+	call Multiply
+.eva_boosted
+	ld a, 7
+	sub b
+	jr c, .acc_boosted
+	add 3
+	ld [hl], a
+	ld b, 4
+	call Divide
+.acc_boosted
+	ld a, c
+	cp 7
+	jr c, .stat_changes_done
+	ld [hl], a
+	ld b, 4
+	call Divide
+.stat_changes_done
+	farcall ApplyAccuracyAbilities
+
+	; Check items
 	call GetOpponentItem
 	ld a, b
 	cp HELD_BRIGHTPOWDER
-	ld a, c ; % miss
-	pop bc
-	jr nz, .skip_brightpowder
-
-	ld c, a
-	ld a, b
-	sub c
+	jr nz, .brightpowder_done
+	; The effect byte list final % after
+	; the item. Brightpowder has a 10%
+	; evasion boost, so final acc is 91%.
+	ld hl, hMultiplier
+	ld a, c
+	ld [hl], a
+	call Multiply
+	ld [hl], 100
+	ld b, 4
+	call Divide
+.brightpowder_done
+	; Accuracy modifiers done. Grab data
+	; from hMultiplicand
+	ld a, [hMultiplicand + 0]
 	ld b, a
-	jr nc, .skip_brightpowder
-	ld b, 0
-
-.skip_brightpowder
-	ld a, b
-	cp $ff
-	jr z, .Hit
-
+	ld a, [hMultiplicand + 1]
+	or b
+	jr nz, .Hit ; final acc ended up >=100%
+	ld a, [hMultiplicand + 2]
+	ld b, a
 	call BattleRandom
 	cp b
 	jr nc, .Miss
@@ -1812,115 +1896,6 @@ BattleCommand_CheckHit: ; 34d32
 	ld a, [EnemyAbility]
 	cp NO_GUARD
 	ret
-
-.StatModifiers:
-
-	ld a, [hBattleTurn]
-	and a
-
-	; load the user's accuracy into b and the opponent's evasion into c.
-	ld hl, wPlayerMoveStruct + MOVE_ACC
-	ld a, [PlayerAccLevel]
-	ld b, a
-	ld a, [EnemyEvaLevel]
-	ld c, a
-
-	jr z, .got_acc_eva
-
-	ld hl, wEnemyMoveStruct + MOVE_ACC
-	ld a, [EnemyAccLevel]
-	ld b, a
-	ld a, [PlayerEvaLevel]
-	ld c, a
-
-.got_acc_eva
-	cp b
-	jr c, .skip_foresight_check
-
-	; if the target's evasion is greater than the user's accuracy,
-	; check the target's foresight status
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
-	call GetBattleVar
-	bit SUBSTATUS_IDENTIFIED, a
-	ret nz
-
-.skip_foresight_check
-	; subtract evasion from 14
-	ld a, 14
-	sub c
-	ld c, a
-	; store the base move accuracy for math ops
-	xor a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
-	ld a, [hl]
-	ld [hMultiplicand + 2], a
-	push hl
-	ld d, 2 ; do this twice, once for the user's accuracy and once for the target's evasion
-
-.accuracy_loop
-	; look up the multiplier from the table
-	push bc
-	ld hl, .AccProb
-	dec b
-	sla b
-	ld c, b
-	ld b, 0
-	add hl, bc
-	pop bc
-	; multiply by the first byte in that row...
-	ld a, [hli]
-	ld [hMultiplier], a
-	call Multiply
-	; ... and divide by the second byte
-	ld a, [hl]
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-	; minimum accuracy is $0001
-	ld a, [hQuotient + 2]
-	ld b, a
-	ld a, [hQuotient + 1]
-	or b
-	jr nz, .min_accuracy
-	ld [hQuotient + 1], a
-	ld a, 1
-	ld [hQuotient + 2], a
-
-.min_accuracy
-	; do the same thing to the target's evasion
-	ld b, c
-	dec d
-	jr nz, .accuracy_loop
-
-	; if the result is more than 2 bytes, max out at 100%
-	ld a, [hQuotient + 1]
-	and a
-	ld a, [hQuotient + 2]
-	jr z, .finish_accuracy
-	ld a, $ff
-
-.finish_accuracy
-	pop hl
-	ld [hl], a
-	ret
-
-.AccProb:
-	db  33, 100 ;  33% -6
-	db  36, 100 ;  36% -5
-	db  43, 100 ;  43% -4
-	db  50, 100 ;  50% -3
-	db  60, 100 ;  60% -2
-	db  75, 100 ;  75% -1
-	db   1,   1 ; 100%  0
-	db 133, 100 ; 133% +1
-	db 166, 100 ; 166% +2
-	db   2,   1 ; 200% +3
-	db 233, 100 ; 233% +4
-	db 133,  50 ; 266% +5
-	db   3,   1 ; 300% +6
-
-; 34ecc
 
 
 BattleCommand_EffectChance: ; 34ecc
@@ -7579,7 +7554,10 @@ BattleCommand_ConfuseTarget: ; 36d1d
 	ret z
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
-	ret z
+	jr nz, .no_own_tempo
+	farcall ShowEnemyAbilityActivation
+	ret
+.no_own_tempo
 	ld a, [EffectFailed]
 	and a
 	ret nz
