@@ -396,6 +396,57 @@ CheckIfSomeoneIsSomeType
 	cp b
 	ret
 
+CheckSpeed::
+; Quick Claw only applies for moves
+	ld d, 0
+	jr CheckSpeedInner
+CheckSpeedWithQuickClaw::
+	ld d, 1
+CheckSpeedInner:
+; Compares speed stat, applying items (usually, see above) and
+; stat changes. and see who ends up on top. Returns z if the player
+; outspeeds, otherwise nz.
+	; save battle turn so this can be used without screwing it up
+	; (needed for AI)
+	ld a, [hBattleTurn]
+	ld e, a
+	call SetPlayerTurn
+	farcall GetSpeed
+	push bc
+	call SetEnemyTurn
+	farcall GetSpeed
+	; restore turn
+	ld a, e
+	ld [hBattleTurn], a
+	pop de
+	; bc is enemy speed, de player
+	ld a, b
+	cp d
+	jr c, .player_first
+	jr nz, .enemy_first
+	ld a, c
+	cp e
+	jr c, .player_first
+	jr nz, .enemy_first
+	; Speed is equal, so randomize. Account for linking.
+	ld a, [hLinkPlayerNumber]
+	cp 2
+	ld b, 0
+	jr z, .secondary_player
+	ld b, 1
+.secondary_player
+	call BattleRandom
+	and $1
+	xor b
+	and a
+	ret ; z: player, nz: enemy
+.player_first
+	xor a
+	ret
+.enemy_first
+	or 1
+	ret
+
 GetBattleVar:: ; 39e1
 ; Preserves hl.
 	push hl
