@@ -472,7 +472,7 @@ UnknownScript_0xbd1d0:
 ; Gaven
 
 GavenPhoneScript1:
-	trainertotext COOLTRAINERM, GAVEN3, $0
+	trainertotext COOLTRAINERM, GAVEN1, $0
 	checkflag ENGINE_GAVEN
 	iftrue UnknownScript_0xbd1fd
 	farscall PhoneScript_AnswerPhone_Male
@@ -491,7 +491,7 @@ UnknownScript_0xbd1fd:
 	farjump UnknownScript_0xa0a37
 
 GavenPhoneScript2:
-	trainertotext COOLTRAINERM, GAVEN3, $0
+	trainertotext COOLTRAINERM, GAVEN1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_GAVEN
 	iftrue UnknownScript_0xbd220
@@ -992,7 +992,7 @@ UnknownScript_0xbd630:
 ; Anthony
 
 AnthonyPhoneScript1:
-	trainertotext HIKER, ANTHONY2, $0
+	trainertotext HIKER, ANTHONY1, $0
 	checkflag ENGINE_ANTHONY
 	iftrue UnknownScript_0xbd65d
 	farscall PhoneScript_AnswerPhone_Male
@@ -1017,7 +1017,7 @@ UnknownScript_0xbd664:
 	farjump UnknownScript_0xa0afa
 
 AnthonyPhoneScript2:
-	trainertotext HIKER, ANTHONY2, $0
+	trainertotext HIKER, ANTHONY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd68d
@@ -1618,7 +1618,7 @@ UnknownScript_0xbdb95:
 	farjump UnknownScript_0xa07ce
 
 TiffanyPhoneScript1:
-	trainertotext PICNICKER, TIFFANY3, $0
+	trainertotext PICNICKER, TIFFANY1, $0
 	checkflag ENGINE_TIFFANY
 	iftrue UnknownScript_0xbdbc2
 	farscall PhoneScript_AnswerPhone_Female
@@ -1643,7 +1643,7 @@ UnknownScript_0xbdbc9:
 	farjump UnknownScript_0xa0ae5
 
 TiffanyPhoneScript2:
-	trainertotext PICNICKER, TIFFANY3, $0
+	trainertotext PICNICKER, TIFFANY1, $0
 	farscall PhoneScript_Random4
 	if_equal $0, UnknownScript_0xbdc21
 	farscall PhoneScript_GreetPhone_Female
@@ -1838,12 +1838,12 @@ UnknownScript_0xbdd6d:
 ; Kenji
 
 KenjiPhoneScript1:
-	trainertotext BLACKBELT_T, KENJI3, $0
+	trainertotext BLACKBELT_T, KENJI1, $0
 	farscall PhoneScript_AnswerPhone_Male
 	farjump UnknownScript_0xa09ee
 
 KenjiPhoneScript2:
-	trainertotext BLACKBELT_T, KENJI3, $0
+	trainertotext BLACKBELT_T, KENJI1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farjump UnknownScript_0xa064c
 

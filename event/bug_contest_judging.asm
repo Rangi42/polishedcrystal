@@ -173,7 +173,7 @@ BugContestant_PokefanMWilliam:
 	dbw VENONAT,    321
 
 BugContestant_BugCatcherBenny:
-	db BUG_CATCHER, BUG_CATCHER_BENNY
+	db BUG_CATCHER, BENNY
 	dbw BUTTERFREE, 318
 	dbw WEEDLE,     295
 	dbw CATERPIE,   285

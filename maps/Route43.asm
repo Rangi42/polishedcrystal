@@ -219,10 +219,10 @@ FisherMarvinScript:
 	closetext
 	end
 
-TrainerPicnickerTiffany3:
-	trainer EVENT_BEAT_PICNICKER_TIFFANY, PICNICKER, TIFFANY3, PicnickerTiffany3SeenText, PicnickerTiffany3BeatenText, 0, PicnickerTiffany3Script
+TrainerPicnickerTiffany1:
+	trainer EVENT_BEAT_PICNICKER_TIFFANY, PICNICKER, TIFFANY1, PicnickerTiffany1SeenText, PicnickerTiffany1BeatenText, 0, PicnickerTiffany1Script
 
-PicnickerTiffany3Script:
+PicnickerTiffany1Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_TIFFANY
 	end_if_just_battled
 	opentext
@@ -248,13 +248,13 @@ UnknownScript_0x19d1ad:
 	askforphonenumber PHONE_PICNICKER_TIFFANY
 	if_equal $1, UnknownScript_0x19d24d
 	if_equal $2, UnknownScript_0x19d249
-	trainertotext PICNICKER, TIFFANY3, $0
+	trainertotext PICNICKER, TIFFANY1, $0
 	scall UnknownScript_0x19d241
 	jump UnknownScript_0x19d245
 
 UnknownScript_0x19d1c1:
 	scall UnknownScript_0x19d251
-	winlosstext PicnickerTiffany3BeatenText, 0
+	winlosstext PicnickerTiffany1BeatenText, 0
 	copybytetovar wTiffanyFightCount
 	if_equal 3, .Fight3
 	if_equal 2, .Fight2
@@ -270,7 +270,7 @@ UnknownScript_0x19d1c1:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .LoadFight1
 .LoadFight0:
-	loadtrainer PICNICKER, TIFFANY3
+	loadtrainer PICNICKER, TIFFANY1
 	startbattle
 	reloadmapafterbattle
 	loadvar wTiffanyFightCount, 1
@@ -278,7 +278,7 @@ UnknownScript_0x19d1c1:
 	end
 
 .LoadFight1:
-	loadtrainer PICNICKER, TIFFANY1
+	loadtrainer PICNICKER, TIFFANY2
 	startbattle
 	reloadmapafterbattle
 	loadvar wTiffanyFightCount, 2
@@ -286,7 +286,7 @@ UnknownScript_0x19d1c1:
 	end
 
 .LoadFight2:
-	loadtrainer PICNICKER, TIFFANY2
+	loadtrainer PICNICKER, TIFFANY3
 	startbattle
 	reloadmapafterbattle
 	loadvar wTiffanyFightCount, 3
@@ -483,7 +483,7 @@ UnknownText_0x19d57e:
 	line "to camp there."
 	done
 
-PicnickerTiffany3SeenText:
+PicnickerTiffany1SeenText:
 	text "Are you going to"
 	line "Lake of Rage too?"
 
@@ -491,7 +491,7 @@ PicnickerTiffany3SeenText:
 	line "little while!"
 	done
 
-PicnickerTiffany3BeatenText:
+PicnickerTiffany1BeatenText:
 	text "I played too much!"
 	done
 
@@ -628,7 +628,7 @@ Route43_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
 	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
 	person_event SPRITE_FISHER, 16, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerFisherMarvin, -1
-	person_event SPRITE_LASS, 10, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany3, -1
+	person_event SPRITE_LASS, 10, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany1, -1
 	person_event SPRITE_YOUNGSTER, 40, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperSpencer, -1
 	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
 	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1

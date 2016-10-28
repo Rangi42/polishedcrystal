@@ -10,9 +10,9 @@ OlivineLighthouse4F_MapScriptHeader:
 	db 0
 
 TrainerLassConnie:
-	trainer EVENT_BEAT_LASS_CONNIE, LASS, CONNIE1, LassConnie1SeenText, LassConnie1BeatenText, 0, LassConnie1Script
+	trainer EVENT_BEAT_LASS_CONNIE, LASS, CONNIE, LassConnieSeenText, LassConnieBeatenText, 0, LassConnieScript
 
-LassConnie1Script:
+LassConnieScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x5b63c
@@ -53,7 +53,7 @@ UnknownText_0x5b584:
 	line "Cianwood."
 	done
 
-LassConnie1SeenText:
+LassConnieSeenText:
 	text "Jasmine is this"
 	line "city's Gym Leader."
 
@@ -64,7 +64,7 @@ LassConnie1SeenText:
 	line "get in my way!"
 	done
 
-LassConnie1BeatenText:
+LassConnieBeatenText:
 	text "Aaack! My #mon!"
 	done
 

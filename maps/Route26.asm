@@ -28,10 +28,10 @@ DragonTamerKazuScript:
 	closetext
 	end
 
-TrainerCooltrainermGaven3:
-	trainer EVENT_BEAT_COOLTRAINERM_GAVEN, COOLTRAINERM, GAVEN3, CooltrainermGaven3SeenText, CooltrainermGaven3BeatenText, 0, CooltrainermGaven3Script
+TrainerCooltrainermGaven1:
+	trainer EVENT_BEAT_COOLTRAINERM_GAVEN, COOLTRAINERM, GAVEN1, CooltrainermGaven1SeenText, CooltrainermGaven1BeatenText, 0, CooltrainermGaven1Script
 
-CooltrainermGaven3Script:
+CooltrainermGaven1Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
 	end_if_just_battled
 	opentext
@@ -53,13 +53,13 @@ UnknownScript_0x1a4d65:
 	askforphonenumber PHONE_COOLTRAINERM_GAVEN
 	if_equal $1, UnknownScript_0x1a4dd3
 	if_equal $2, UnknownScript_0x1a4dcf
-	trainertotext COOLTRAINERM, GAVEN3, $0
+	trainertotext COOLTRAINERM, GAVEN1, $0
 	scall UnknownScript_0x1a4dc7
 	jump UnknownScript_0x1a4dcb
 
 UnknownScript_0x1a4d79:
 	scall UnknownScript_0x1a4dd7
-	winlosstext CooltrainermGaven3BeatenText, 0
+	winlosstext CooltrainermGaven1BeatenText, 0
 	copybytetovar wGavenFightCount
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
@@ -71,7 +71,7 @@ UnknownScript_0x1a4d79:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
 .LoadFight0:
-	loadtrainer COOLTRAINERM, GAVEN3
+	loadtrainer COOLTRAINERM, GAVEN1
 	startbattle
 	reloadmapafterbattle
 	loadvar wGavenFightCount, 1
@@ -79,7 +79,7 @@ UnknownScript_0x1a4d79:
 	end
 
 .LoadFight1:
-	loadtrainer COOLTRAINERM, GAVEN1
+	loadtrainer COOLTRAINERM, GAVEN2
 	startbattle
 	reloadmapafterbattle
 	loadvar wGavenFightCount, 2
@@ -87,7 +87,7 @@ UnknownScript_0x1a4d79:
 	end
 
 .LoadFight2:
-	loadtrainer COOLTRAINERM, GAVEN2
+	loadtrainer COOLTRAINERM, GAVEN3
 	startbattle
 	reloadmapafterbattle
 	clearflag ENGINE_GAVEN
@@ -297,13 +297,13 @@ UnknownText_0x1a4f08:
 	line "than Gym Leaders."
 	done
 
-CooltrainermGaven3SeenText:
+CooltrainermGaven1SeenText:
 	text "By experiencing"
 	line "tough battles, you"
 	cont "gain power."
 	done
 
-CooltrainermGaven3BeatenText:
+CooltrainermGaven1BeatenText:
 	text "Gaah! Life is even"
 	line "tougher!"
 	done
@@ -467,7 +467,7 @@ Route26_MapEventHeader:
 .PersonEvents:
 	db 10
 	person_event SPRITE_DRAGON_TAMER, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
-	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven3, -1
+	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
 	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
 	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
 	person_event SPRITE_YOUNGSTER, 79, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1

@@ -34,9 +34,9 @@ BattleGirlNozomiScript:
 	end
 
 TrainerBlackbeltKenji:
-	trainer EVENT_BEAT_BLACKBELT_KENJI, BLACKBELT_T, KENJI3, BlackbeltKenji3SeenText, BlackbeltKenji3BeatenText, 0, BlackbeltKenji3Script
+	trainer EVENT_BEAT_BLACKBELT_KENJI, BLACKBELT_T, KENJI1, BlackbeltKenji1SeenText, BlackbeltKenji1BeatenText, 0, BlackbeltKenji1Script
 
-BlackbeltKenji3Script:
+BlackbeltKenji1Script:
 	writecode VAR_CALLERID, PHONE_BLACKBELT_KENJI
 	end_if_just_battled
 	opentext
@@ -57,7 +57,7 @@ UnknownScript_0x19e0d0:
 	askforphonenumber PHONE_BLACKBELT_KENJI
 	if_equal $1, UnknownScript_0x19e12f
 	if_equal $2, UnknownScript_0x19e12b
-	trainertotext BLACKBELT_T, KENJI3, $0
+	trainertotext BLACKBELT_T, KENJI1, $0
 	scall UnknownScript_0x19e123
 	jump UnknownScript_0x19e127
 
@@ -160,9 +160,9 @@ HikerMichaelScript:
 	end
 
 TrainerHikerParry:
-	trainer EVENT_BEAT_HIKER_PARRY, HIKER, PARRY3, HikerParry3SeenText, HikerParry3BeatenText, 0, HikerParry3Script
+	trainer EVENT_BEAT_HIKER_PARRY, HIKER, PARRY1, HikerParry1SeenText, HikerParry1BeatenText, 0, HikerParry1Script
 
-HikerParry3Script:
+HikerParry1Script:
 	writecode VAR_CALLERID, PHONE_HIKER_PARRY
 	end_if_just_battled
 	opentext
@@ -190,7 +190,7 @@ UnknownScript_0x19e1a4:
 
 UnknownScript_0x19e1b8:
 	scall UnknownScript_0x19e133
-	winlosstext HikerParry3BeatenText, 0
+	winlosstext HikerParry1BeatenText, 0
 	copybytetovar wParryFightCount
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
@@ -202,7 +202,7 @@ UnknownScript_0x19e1b8:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
 .LoadFight0:
-	loadtrainer HIKER, PARRY3
+	loadtrainer HIKER, PARRY1
 	startbattle
 	reloadmapafterbattle
 	loadvar wParryFightCount, 1
@@ -210,7 +210,7 @@ UnknownScript_0x19e1b8:
 	end
 
 .LoadFight1:
-	loadtrainer HIKER, PARRY1
+	loadtrainer HIKER, PARRY2
 	startbattle
 	reloadmapafterbattle
 	loadvar wParryFightCount, 2
@@ -218,7 +218,7 @@ UnknownScript_0x19e1b8:
 	end
 
 .LoadFight2:
-	loadtrainer HIKER, PARRY2
+	loadtrainer HIKER, PARRY3
 	startbattle
 	reloadmapafterbattle
 	clearflag ENGINE_PARRY
@@ -372,12 +372,12 @@ UnknownText_0x19e3b1:
 	para "I can't help it!"
 	done
 
-HikerParry3SeenText:
+HikerParry1SeenText:
 	text "My #mon are"
 	line "power packed!"
 	done
 
-HikerParry3BeatenText:
+HikerParry1BeatenText:
 	text "Wahahah! I'm the"
 	line "big loser!"
 	done
@@ -430,7 +430,7 @@ UnknownText_0x19e52c:
 	line "when we last met."
 	done
 
-BlackbeltKenji3SeenText:
+BlackbeltKenji1SeenText:
 	text "I was training"
 	line "here alone."
 
@@ -438,7 +438,7 @@ BlackbeltKenji3SeenText:
 	line "of my labor!"
 	done
 
-BlackbeltKenji3BeatenText:
+BlackbeltKenji1BeatenText:
 	text "Waaaargh!"
 	done
 
