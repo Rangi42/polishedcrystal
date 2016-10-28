@@ -1702,14 +1702,13 @@ BattleCommand_CheckHit: ; 34d32
 	ld a, b
 	cp HELD_BRIGHTPOWDER
 	jr nz, .brightpowder_done
-	; The effect byte list final % after
-	; the item. Brightpowder has a 10%
-	; evasion boost, so final acc is 91%.
 	ld hl, hMultiplier
-	ld a, c
+	ld a, 100
 	ld [hl], a
 	call Multiply
-	ld [hl], 100
+	ld a, 100
+	add c
+	ld [hl], a
 	ld b, 4
 	call Divide
 .brightpowder_done
