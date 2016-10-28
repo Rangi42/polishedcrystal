@@ -396,6 +396,58 @@ CheckIfSomeoneIsSomeType
 	cp b
 	ret
 
+CheckSpeed::
+; Quick Claw only applies for moves
+	ld d, 0
+	jr CheckSpeedInner
+CheckSpeedWithQuickClaw::
+	ld d, 1
+CheckSpeedInner:
+; Compares speed stat, applying items (usually, see above) and
+; stat changes. and see who ends up on top. Returns z if the player
+; outspeeds, otherwise nz, randomly on tie (which also sets carry)
+	; save battle turn so this can be used without screwing it up
+	; (needed for AI)
+	ld a, [hBattleTurn]
+	ld e, a
+	call SetPlayerTurn
+	farcall GetSpeed
+	push bc
+	call SetEnemyTurn
+	farcall GetSpeed
+	; restore turn
+	ld a, e
+	ld [hBattleTurn], a
+	pop de
+	; bc is enemy speed, de player
+	ld a, b
+	cp d
+	jr c, .player_first
+	jr nz, .enemy_first
+	ld a, c
+	cp e
+	jr c, .player_first
+	jr nz, .enemy_first
+	; Speed is equal, so randomize. Account for linking.
+	ld a, [hLinkPlayerNumber]
+	cp 2
+	ld b, 0
+	jr z, .secondary_player
+	ld b, 1
+.secondary_player
+	call BattleRandom
+	and $1
+	xor b
+	and a
+	scf
+	ret
+.player_first
+	xor a
+	ret
+.enemy_first
+	or 1
+	ret
+
 GetBattleVar:: ; 39e1
 ; Preserves hl.
 	push hl
@@ -452,8 +504,8 @@ endr
 	dw .substatus1, .substatus2, .substatus3, .substatus4
 	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
 	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
-	dw .power, .type, .category, .curmove, .lastcounter, .lastcounteropp
-	dw .lastmove, .lastmoveopp
+	dw .power, .accuracy, .type, .category, .curmove, .lastcounter
+	dw .lastcounteropp, .lastmove, .lastmoveopp
 
 ;                       player                     enemy
 .substatus1     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
@@ -471,6 +523,7 @@ endr
 .animation      db PLAYER_MOVE_ANIMATION, ENEMY_MOVE_ANIMATION
 .effect         db PLAYER_MOVE_EFFECT,    ENEMY_MOVE_EFFECT
 .power          db PLAYER_MOVE_POWER,     ENEMY_MOVE_POWER
+.accuracy       db PLAYER_MOVE_ACCURACY,  ENEMY_MOVE_ACCURACY
 .type           db PLAYER_MOVE_TYPE,      ENEMY_MOVE_TYPE
 .category       db PLAYER_MOVE_CATEGORY,  ENEMY_MOVE_CATEGORY
 .curmove        db PLAYER_CUR_MOVE,       ENEMY_CUR_MOVE
@@ -489,6 +542,7 @@ endr
 	dw wPlayerMoveStructAnimation,   wEnemyMoveStructAnimation
 	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect
 	dw wPlayerMoveStructPower,       wEnemyMoveStructPower
+	dw wPlayerMoveStructAccuracy,    wEnemyMoveStructAccuracy
 	dw wPlayerMoveStructType,        wEnemyMoveStructType
 	dw wPlayerMoveStructCategory,    wEnemyMoveStructCategory
 	dw CurPlayerMove,                CurEnemyMove

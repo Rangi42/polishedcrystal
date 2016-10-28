@@ -1,18 +1,8 @@
 RunActivationAbilitiesInner:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	; do Trace first in case it traces an activation ability,
-	; that way we can run one of the others after the trace.
 	cp TRACE
-	call z, TraceAbility
-	; reload the ability byte if it changed
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp TRACE
-	jr nz, .continue
-	ret ; the trace failed, so don't continue
-.continue
-	; Do Imposter second to allow Transformed abilities to activate
+	jp z, TraceAbility
 	cp IMPOSTER
 	jp z, ImposterAbility
 	cp DRIZZLE
@@ -163,14 +153,7 @@ TraceAbility:
 	ld [hl], a
 	ld hl, TraceActivationText
 	call StdBattleTextBox
-	; handle swift swim, etc.
-	ld a, [hBattleTurn]
-	jr z, .is_player
-	farcall CalcEnemyStats
-	ret
-.is_player
-	farcall CalcPlayerStats
-	ret
+	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
 	call StdBattleTextBox
@@ -714,6 +697,100 @@ ApplySpeedAbilities:
 	ld c, l
 	ret
 
+ApplyAccuracyAbilities:
+; Passive accuracy boost/reduction abilities.
+; Current accuracy is in mul/div addresses
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	call .user_abilities
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	farcall BattleCommand_SwitchTurn
+	ld a, b
+	call .enemy_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+
+.user_abilities
+	ld hl, hMultiplier
+	cp COMPOUND_EYES
+	jr z, CompoundEyesAbility
+	cp HUSTLE
+	jr z, HustleAccuracyAbility
+	ret
+
+.enemy_abilities
+	ld hl, hMultiplier
+	cp SAND_VEIL
+	jr z, SandVeilAbility
+	cp TANGLED_FEET
+	jr z, TangledFeetAbility
+	cp SNOW_CLOAK
+	jr z, SnowCloakAbility
+	cp WONDER_SKIN
+	jr z, WonderSkinAbility
+	ret
+
+CompoundEyesAbility:
+; Increase accuracy by 30%
+	ld [hl], 13
+	call Multiply
+	ld [hl], 10
+	ld b, 4
+	jp Divide
+
+HustleAccuracyAbility:
+; Decrease accuracy by 50%
+	ld [hl], 2
+	ld b, 4
+	jp Divide
+
+TangledFeetAbility:
+; Decrease accuracy by 50% while confused
+	push hl
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_CONFUSED, [hl]
+	pop hl
+	ret z
+	ld [hl], 2
+	ld b, 4
+	jp Divide
+
+WonderSkinAbility:
+; Decrease accuracy by 50% for status moves
+	ld a, [wEnemyMoveStructCategory]
+	ld b, a
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_cat
+	ld a, [wPlayerMoveStructCategory]
+	ld b, a
+.got_cat
+	ld a, b
+	cp STATUS
+	ret nz
+
+	ld [hl], 2
+	ld b, 4
+	jp Divide
+
+SandVeilAbility:
+	ld b, WEATHER_SANDSTORM
+	jr WeatherAccAbility
+SnowCloakAbility:
+	ld b, WEATHER_HAIL
+WeatherAccAbility:
+; Decrease accuracy by 20% in relevant weather
+	ld a, [Weather]
+	cp b
+	ret z
+	ld [hl], 4
+	call Multiply
+	ld [hl], 5
+	ld b, 4
+	jp Divide
+
 RunWeatherAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -782,11 +859,8 @@ SolarPowerAbility:
 
 HandleAbilities:
 ; Abilities handled at the end of the turn.
-; This needs to be handled in a consistent order despite not involving faintings, because
-; some abilities (like Moody) depends on randomness.
-	ld a, [hLinkPlayerNumber]
-	cp 1
-	jr z, .enemy_first
+	call CheckSpeed
+	jr nz, .enemy_first
 	call SetPlayerTurn
 	call .do_it
 	call SetEnemyTurn
