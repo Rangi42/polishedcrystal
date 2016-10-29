@@ -1709,9 +1709,10 @@
 	const EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
 	const EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	const EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
+; New events (TODO: move to more logical order)
+	const EVENT_SPOKE_TO_LASS_CONNIE
+	const EVENT_SPOKE_TO_GENTLEMAN_PRESTON
 ; Unused placeholder events
-	const EVENT_64E
-	const EVENT_64F
 	const EVENT_650
 	const EVENT_651
 	const EVENT_652

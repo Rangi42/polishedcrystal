@@ -5413,13 +5413,21 @@ StartBattleWithMapTrainerScript: ; 0xbe68a
 	waitbutton
 	closetext
 	loadmemtrainer
+	callasm CheckTrainerClass
+	iffalse .nobattle
 	startbattle
 	reloadmapafterbattle
+.nobattle
 	trainerflagaction SET_FLAG
 	loadvar wRunningTrainerBattleScript, -1
 
 AlreadyBeatenTrainerScript:
 	scripttalkafter
+
+CheckTrainerClass:
+	ld a, [wTempTrainerClass]
+	ld [ScriptVar], a
+	ret
 
 SECTION "sprites_1", ROMX, BANK[$30]
 
