@@ -260,8 +260,6 @@ ImposterAbility:
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_Transform
-	ld de, TRANSFORM
-	farcall Call_PlayBattleAnim
 	jp EnableAnimations
 
 AnticipationAbility:

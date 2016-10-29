@@ -152,7 +152,10 @@ BattleCommand_Transform: ; 371cd
 .got_byte
 	and a
 	jr nz, .mimic_anims
-	call LoadMoveAnim
+	; Animation is done "raw" to allow Imposter
+	; to use the correct animation
+	ld de, TRANSFORM
+	call FarPlayBattleAnimation
 	jr .after_anim
 
 .mimic_anims
@@ -168,6 +171,12 @@ BattleCommand_Transform: ; 371cd
 	ld a, SUBSTITUTE
 	call nz, LoadAnim
 	ld hl, TransformedText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp IMPOSTER
+	ret z ; avoid infinite loop
+	farcall RunActivationAbilitiesInner
+	ret
 
 ; 372c6
