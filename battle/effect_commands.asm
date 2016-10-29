@@ -8180,7 +8180,7 @@ BattleCommand_Conversion: ; 3707f
 BattleCommand_ResetStats: ; 3710e
 ; resetstats
 
-	ld a, 7 ; neutral
+	ld a, BASE_STAT_LEVEL
 	ld hl, PlayerStatLevels
 	call .Fill
 	ld hl, EnemyStatLevels
@@ -8202,12 +8202,13 @@ BattleCommand_ResetStats: ; 3710e
 	ld hl, EliminatedStatsText
 	jp StdBattleTextBox
 
+; same structure as ResetPlayerStatLevels and ResetEnemyStatLevels
 .Fill:
-	ld b, PlayerStatLevelsEnd - PlayerStatLevels
-.next
+	ld b, NUM_LEVEL_STATS
+.loop
 	ld [hli], a
 	dec b
-	jr nz, .next
+	jr nz, .loop
 	ret
 
 ; 3713e
