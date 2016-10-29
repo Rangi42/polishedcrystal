@@ -33,6 +33,14 @@ PikachuBitmasksPointers:
 	dw PikachuPikaBitmasks
 	dw PikachuChuchuBitmasks
 
+PichuBitmasksPointers:
+	dw PichuPlainBitmasks
+	dw PichuSpikyBitmasks
+
 ArbokBitmasksPointers:
 	dw ArbokJohtoBitmasks
 	dw ArbokKantoBitmasks
+
+MewtwoBitmasksPointers:
+	dw MewtwoPlainBitmasks
+	dw MewtwoArmoredBitmasks

@@ -33,6 +33,14 @@ PikachuAnimationExtraPointers:
 	dw PikachuPikaAnimationExtra
 	dw PikachuChuchuAnimationExtra
 
+PichuAnimationExtraPointers:
+	dw PichuPlainAnimationExtra
+	dw PichuSpikyAnimationExtra
+
 ArbokAnimationExtraPointers:
 	dw ArbokJohtoAnimationExtra
 	dw ArbokKantoAnimationExtra
+
+MewtwoAnimationExtraPointers:
+	dw MewtwoPlainAnimationExtra
+	dw MewtwoArmoredAnimationExtra

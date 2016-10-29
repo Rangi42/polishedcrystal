@@ -33,6 +33,14 @@ PikachuSurfFrames:   INCLUDE "gfx/pics/pikachu_surf/frames.asm"
 PikachuPikaFrames:   INCLUDE "gfx/pics/pikachu_pika/frames.asm"
 PikachuChuchuFrames: INCLUDE "gfx/pics/pikachu_chuchu/frames.asm"
 
+PichusFrames:
+PichuPlainFrames: INCLUDE "gfx/pics/pichu_plain/frames.asm"
+PichuSpikyFrames: INCLUDE "gfx/pics/pichu_spiky/frames.asm"
+
 ArboksFrames:
 ArbokJohtoFrames: INCLUDE "gfx/pics/arbok_johto/frames.asm"
 ArbokKantoFrames: INCLUDE "gfx/pics/arbok_kanto/frames.asm"
+
+MewtwosFrames:
+MewtwoPlainFrames:   INCLUDE "gfx/pics/mewtwo_plain/frames.asm"
+MewtwoArmoredFrames: INCLUDE "gfx/pics/mewtwo_armored/frames.asm"

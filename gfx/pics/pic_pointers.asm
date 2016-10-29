@@ -302,8 +302,11 @@
 	add_pic DragonairBackpic
 	add_pic DragoniteFrontpic
 	add_pic DragoniteBackpic
-	add_pic MewtwoFrontpic
-	add_pic MewtwoBackpic
+
+	; Mewtwo pics have their own table. See MewtwoPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	add_pic MewFrontpic
 	add_pic MewBackpic
 	add_pic ChikoritaFrontpic
@@ -346,8 +349,11 @@
 	add_pic ChinchouBackpic
 	add_pic LanturnFrontpic
 	add_pic LanturnBackpic
-	add_pic PichuFrontpic
-	add_pic PichuBackpic
+
+	; Pichu pics have their own table. See PichuPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	add_pic MunchlaxFrontpic
 	add_pic MunchlaxBackpic
 	add_pic MagnezoneFrontpic

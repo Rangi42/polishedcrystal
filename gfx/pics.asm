@@ -1,19 +1,25 @@
 INCLUDE "includes.asm"
 
 
-; Unown pic pointers are assumed to start at the same address in a different bank.
+; Variant pic pointers are assumed to start at the same address in a different bank.
 
 SECTION "Pic Pointers", ROMX[$4000], BANK[PIC_POINTERS]
 PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
 
+SECTION "Unown Pic Pointers", ROMX[$4000], BANK[UNOWN_PIC_POINTERS]
+UnownPicPointers:: INCLUDE "gfx/pics/unown_pic_pointers.asm"
+
 SECTION "Pikachu Pic Pointers", ROMX[$4000]
 PikachuPicPointers:: INCLUDE "gfx/pics/pikachu_pic_pointers.asm"
+
+SECTION "Pichu Pic Pointers", ROMX[$4000]
+PichuPicPointers:: INCLUDE "gfx/pics/pichu_pic_pointers.asm"
 
 SECTION "Arbok Pic Pointers", ROMX[$4000]
 ArbokPicPointers:: INCLUDE "gfx/pics/arbok_pic_pointers.asm"
 
-SECTION "Unown Pic Pointers", ROMX[$4000], BANK[UNOWN_PIC_POINTERS]
-UnownPicPointers:: INCLUDE "gfx/pics/unown_pic_pointers.asm"
+SECTION "Mewtwo Pic Pointers", ROMX[$4000]
+MewtwoPicPointers:: INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
 SECTION "Trainer Pic Pointers", ROMX ; , BANK[TRAINER_PIC_POINTERS]
@@ -53,7 +59,7 @@ TyranitarFrontpic:     INCBIN "gfx/pics/tyranitar/front.2bpp.lz"
 MoltresFrontpic:       INCBIN "gfx/pics/moltres/front.2bpp.lz"
 ZapdosFrontpic:        INCBIN "gfx/pics/zapdos/front.2bpp.lz"
 ArbokJohtoFrontpic:    INCBIN "gfx/pics/arbok_johto/front.2bpp.lz"
-MewtwoFrontpic:        INCBIN "gfx/pics/mewtwo/front.2bpp.lz"
+MewtwoPlainFrontpic:   INCBIN "gfx/pics/mewtwo_plain/front.2bpp.lz"
 CharizardFrontpic:     INCBIN "gfx/pics/charizard/front.2bpp.lz"
 QuilavaFrontpic:       INCBIN "gfx/pics/quilava/front.2bpp.lz"
 ; 127ffe
@@ -379,7 +385,7 @@ GligarBackpic:         INCBIN "gfx/pics/gligar/back.2bpp.lz"
 TyphlosionBackpic:     INCBIN "gfx/pics/typhlosion/back.2bpp.lz"
 CharmeleonBackpic:     INCBIN "gfx/pics/charmeleon/back.2bpp.lz"
 NidoqueenBackpic:      INCBIN "gfx/pics/nidoqueen/back.2bpp.lz"
-PichuFrontpic:         INCBIN "gfx/pics/pichu/front.2bpp.lz"
+PichuPlainFrontpic:    INCBIN "gfx/pics/pichu_plain/front.2bpp.lz"
 ElectabuzzBackpic:     INCBIN "gfx/pics/electabuzz/back.2bpp.lz"
 LedianBackpic:         INCBIN "gfx/pics/ledian/back.2bpp.lz"
 PupitarBackpic:        INCBIN "gfx/pics/pupitar/back.2bpp.lz"
@@ -464,7 +470,7 @@ SwinubBackpic:         INCBIN "gfx/pics/swinub/back.2bpp.lz"
 
 SECTION "Pics 15", ROMX, BANK[PICS_15]
 
-MewtwoBackpic:         INCBIN "gfx/pics/mewtwo/back.2bpp.lz"
+MewtwoPlainBackpic:    INCBIN "gfx/pics/mewtwo_plain/back.2bpp.lz"
 PokemonProfPic:        INCBIN "gfx/trainers/oak.2bpp.lz"
 CalPic:                INCBIN "gfx/trainers/cal.2bpp.lz"
 DiglettFrontpic:       INCBIN "gfx/pics/diglett/front.2bpp.lz"
@@ -573,7 +579,7 @@ VaporeonBackpic:       INCBIN "gfx/pics/vaporeon/back.2bpp.lz"
 TentacoolBackpic:      INCBIN "gfx/pics/tentacool/back.2bpp.lz"
 ArianaPic:             INCBIN "gfx/trainers/ariana.2bpp.lz"
 BulbasaurBackpic:      INCBIN "gfx/pics/bulbasaur/back.2bpp.lz"
-PichuBackpic:          INCBIN "gfx/pics/pichu/back.2bpp.lz"
+PichuPlainBackpic:     INCBIN "gfx/pics/pichu_plain/back.2bpp.lz"
 HoundoomBackpic:       INCBIN "gfx/pics/houndoom/back.2bpp.lz"
 BellsproutBackpic:     INCBIN "gfx/pics/bellsprout/back.2bpp.lz"
 GrimerBackpic:         INCBIN "gfx/pics/grimer/back.2bpp.lz"
@@ -796,5 +802,9 @@ PikachuPikaFrontpic:   INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
 PikachuPikaBackpic:    INCBIN "gfx/pics/pikachu_pika/back.2bpp.lz"
 PikachuChuchuFrontpic: INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
 PikachuChuchuBackpic:  INCBIN "gfx/pics/pikachu_chuchu/back.2bpp.lz"
+PichuSpikyFrontpic:    INCBIN "gfx/pics/pichu_spiky/front.2bpp.lz"
+PichuSpikyBackpic:     INCBIN "gfx/pics/pichu_spiky/back.2bpp.lz"
 ArbokKantoFrontpic:    INCBIN "gfx/pics/arbok_kanto/front.2bpp.lz"
 ArbokKantoBackpic:     INCBIN "gfx/pics/arbok_kanto/back.2bpp.lz"
+MewtwoArmoredFrontpic: INCBIN "gfx/pics/mewtwo_armored/front.2bpp.lz"
+MewtwoArmoredBackpic:  INCBIN "gfx/pics/mewtwo_armored/back.2bpp.lz"

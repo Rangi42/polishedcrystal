@@ -6473,7 +6473,7 @@ endr
 	jr z, .arbok_form
 	cp ARBOK
 	jr z, .arbok_form
-	xor a
+	ld a, 1
 	jr .got_form
 .arbok_form
 	push bc
