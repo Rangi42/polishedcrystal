@@ -12491,6 +12491,23 @@ GiovanniGroup:
 	db $ff ; end
 
 ; ================
+
+	; unused
+	; GIOVANNI
+	db "Giovanni@"
+	db 3 ; item + moves
+
+	; party
+
+	db 70, MEWTWO, WISE_GLASSES
+		db NASTY_PLOT
+		db PSYSTRIKE
+		db SHADOW_BALL
+		db ICE_BEAM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
