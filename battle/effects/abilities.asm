@@ -12,7 +12,7 @@ RunActivationAbilitiesInner:
 	cp SAND_STREAM
 	jp z, SandStreamAbility
 	cp CLOUD_NINE ; just prints a message
-	jr z, .skip_cloud_nine
+	jr nz, .skip_cloud_nine
 	ld hl, NotifyCloudNine
 	jp StdBattleTextBox
 .skip_cloud_nine
