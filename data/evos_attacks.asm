@@ -3712,6 +3712,7 @@ MisdreavusEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, GROWL
 	db 1, TELEPORT ; Psywave → new move
+	db 1, DISARM_VOICE ; new move
 	db 5, CONFUSION ; Spite → new move
 	db 10, ASTONISH
 	db 14, CONFUSE_RAY
@@ -3735,6 +3736,7 @@ MismagiusEvosAttacks:
 	db 1, DAZZLINGLEAM ; Magical Leaf → TM move
 	db 1, GROWL
 	db 1, TELEPORT ; Psywave → new move
+	db 1, DISARM_VOICE ; new move
 	db 1, CONFUSION ; Spite → new move
 	db 1, ASTONISH
 	db 0 ; no more level-up moves

@@ -386,16 +386,16 @@ MortyGroup:
 	; party
 
 	db 21, GASTLY, NO_ITEM
-		db LICK
 		db CURSE
 		db NIGHT_SHADE
 		db CONFUSE_RAY
+		db SHADOW_BALL
 
 	db 21, HAUNTER, NO_ITEM
 		db HYPNOSIS
 		db ICE_PUNCH
 		db NIGHT_SHADE
-		db SHADOW_BALL
+		db SHADOW_CLAW
 
 	db 23, NOCTOWL, NO_ITEM
 		db HYPNOSIS
@@ -404,7 +404,7 @@ MortyGroup:
 		db SHADOW_BALL
 
 	db 23, MISDREAVUS, NO_ITEM
-		db ASTONISH
+		db DISARM_VOICE
 		db DARK_PULSE
 		db NASTY_PLOT
 		db SHADOW_BALL
@@ -412,14 +412,14 @@ MortyGroup:
 	db 25, GENGAR, SITRUS_BERRY
 		db HYPNOSIS
 		db THUNDERBOLT
-		db SHADOW_CLAW
+		db SHADOW_BALL
 		db DREAM_EATER
 
 	db 23, HAUNTER, NO_ITEM
 		db HYPNOSIS
 		db FIRE_PUNCH
 		db CONFUSE_RAY
-		db SHADOW_BALL
+		db SHADOW_CLAW
 
 	db $ff ; end
 
