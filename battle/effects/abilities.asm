@@ -11,21 +11,24 @@ RunActivationAbilitiesInner:
 	jp z, DroughtAbility
 	cp SAND_STREAM
 	jp z, SandStreamAbility
-	cp CLOUD_NINE
-	jp z, CloudNineAbility
+	cp CLOUD_NINE ; just prints a message
+	jr z, .skip_cloud_nine
+	ld hl, NotifyCloudNine
+	jp StdBattleTextBox
+.skip_cloud_nine
 	cp INTIMIDATE
 	jp z, IntimidateAbility
 	cp PRESSURE ; just prints a message
 	jr nz, .skip_pressure
 	ld hl, NotifyPressure
-	call StdBattleTextBox
+	jp StdBattleTextBox
 .skip_pressure
 	cp DOWNLOAD
 	jp z, DownloadAbility
 	cp MOLD_BREAKER ; just prints a message
 	jr nz, .skip_mold_breaker
 	ld hl, NotifyMoldBreaker
-	call StdBattleTextBox
+	jp StdBattleTextBox
 .skip_mold_breaker
 	cp ANTICIPATION
 	jp z, AnticipationAbility
@@ -36,7 +39,7 @@ RunActivationAbilitiesInner:
 	cp UNNERVE ; just prints a message
 	jr nz, .skip_unnerve
 	ld hl, NotifyUnnerve
-	call StdBattleTextBox
+	jp StdBattleTextBox
 .skip_unnerve
 	jp RunStatusHealAbilities
 
@@ -168,10 +171,6 @@ DroughtAbility:
 	jr WeatherAbility
 SandStreamAbility:
 	ld a, WEATHER_SANDSTORM
-	jr WeatherAbility
-CloudNineAbility:
-	ld a, WEATHER_NONE
-	jr WeatherAbility
 WeatherAbility:
 	ld b, a
 	ld a, [Weather]
@@ -186,13 +185,10 @@ WeatherAbility:
 	jr z, .handlerain
 	cp WEATHER_SUN
 	jr z, .handlesun
-	cp WEATHER_SANDSTORM
-	jr z, .handlesandstorm
-	; we're dealing with cloud nine
-	xor a
-	ld [WeatherCount], a
-	ld hl, BattleText_TheWeatherSubsided
-	call StdBattleTextBox
+	; is sandstorm
+	ld de, SANDSTORM
+	farcall Call_PlayBattleAnim
+	farcall BattleCommand_StartSandstorm
 	jp EnableAnimations
 .handlerain
 	ld de, RAIN_DANCE
@@ -679,7 +675,7 @@ ApplySpeedAbilities:
 .sand_rush
 	ld h, WEATHER_SANDSTORM
 .weather_ability
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp h
 	ret nz
 	; double
@@ -782,7 +778,7 @@ SnowCloakAbility:
 	ld b, WEATHER_HAIL
 WeatherAccAbility:
 ; Decrease accuracy by 20% in relevant weather
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp b
 	ret z
 	ld [hl], 4
@@ -795,7 +791,7 @@ RunWeatherAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld b, a
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL
 	jr z, .hail
 	cp WEATHER_SANDSTORM

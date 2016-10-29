@@ -205,13 +205,6 @@ BattleText_TheHailStopped:
 	text "The hail stopped."
 	prompt
 
-; general weather cancellation used for
-; cloud nine
-BattleText_TheWeatherSubsided:
-	text "The weather"
-	line "subsided."
-	prompt
-
 BattleText_EnemyPkmnFainted: ; 0x809a8
 	text "Foe @"
 	text_from_ram EnemyMonNick
@@ -1294,6 +1287,11 @@ TraceFailureText:
 	text "<USER>"
 	line "failed to trace"
 	cont "<TARGET>!"
+	prompt
+
+NotifyCloudNine:
+	text "The weather was"
+	line "suppressed!"
 	prompt
 
 NotifyPressure:

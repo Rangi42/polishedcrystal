@@ -396,6 +396,21 @@ CheckIfSomeoneIsSomeType
 	cp b
 	ret
 
+GetWeatherAfterCloudNine::
+; Returns 0 if a cloud nine user is on the field,
+; [Weather] otherwise.
+	ld a, [PlayerAbility]
+	cp CLOUD_NINE
+	jr z, .suppress
+	ld a, [EnemyAbility]
+	cp CLOUD_NINE
+	jr z, .suppress
+	ld a, [Weather]
+	ret
+.suppress
+	xor a
+	ret
+
 CheckSpeed::
 ; Quick Claw only applies for moves
 	ld d, 0

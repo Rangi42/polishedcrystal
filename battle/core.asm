@@ -1693,6 +1693,13 @@ HandleWeather: ; 3cb9e
 	dec [hl]
 	jp z, .ended
 
+	; the above needs actual [Weather] to be
+	; able to time it out, but otherwise check
+	; Cloud Nine
+	call GetWeatherAfterCloudNine
+	cp WEATHER_NONE
+	ret z
+
 	ld hl, .WeatherMessages
 	call .PrintWeatherMessage
 	call SetPlayerTurn
@@ -1760,10 +1767,10 @@ HandleWeather: ; 3cb9e
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL
 	call z, .HandleHail
-	ld a, [Weather] ; HandleHail messes with a
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
 	farcall RunWeatherAbilities

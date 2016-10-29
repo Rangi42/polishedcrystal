@@ -1865,7 +1865,7 @@ BattleCommand_CheckHit: ; 34d32
 
 .WeatherAccCheck:
 ; Returns z if the move used always hits in the current weather
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_RAIN
 	jr z, .RainAccCheck
 	cp WEATHER_HAIL
@@ -3217,7 +3217,7 @@ SpeciesItemBoost: ; 353d1
 
 
 SandstormSpDefBoost:
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SANDSTORM
 	ret nz
 	call CheckIfTargetIsRockType
@@ -3235,7 +3235,7 @@ SandstormSpDefBoost:
 
 
 HailDefenseBoost:
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL
 	ret nz
 	call CheckIfTargetIsIceType
@@ -3464,12 +3464,12 @@ BattleCommand_DamageCalc: ; 35612
 	jr nc, .ability_penalties
 	jr .ability_double
 .solar_power
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	jr nz, .ability_penalties
 	jr .ability_semidouble
 .sand_force
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SANDSTORM
 	jr nz, .ability_penalties
 	ld a, BATTLE_VARS_MOVE_TYPE
@@ -5281,7 +5281,7 @@ BattleCommand_FreezeTarget: ; 36102
 	ld a, [TypeModifier]
 	and $7f
 	ret z
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	ret z
 	call CheckIfTargetIsIceType
@@ -5383,7 +5383,7 @@ BattleCommand_CalmMind:
 BattleCommand_Growth:
 	ld b, ATTACK
 	ld c, SP_ATTACK
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	jp nz, BattleCommand_DoubleUp
 	ld b, $10 | ATTACK
@@ -9206,7 +9206,7 @@ BattleCommand_HealTime:
 	and a
 	jr z, .full
 
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	and a
 	jr z, .heal
 
@@ -9358,7 +9358,7 @@ BattleCommand_DoubleMinimizeDamage: ; 37ce6
 
 BattleCommand_SkipSunCharge: ; 37d02
 ; mimicsuncharge
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	ret nz
 	ld b, charge_command
@@ -9460,7 +9460,7 @@ BattleCommand_ThunderAccuracy: ; 37d94
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
 	inc hl
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_RAIN
 	jr z, .rain
 	cp WEATHER_SUN
