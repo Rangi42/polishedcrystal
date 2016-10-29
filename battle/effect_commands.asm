@@ -6358,7 +6358,6 @@ CalcPlayerStats: ; 365d7
 	ld de, PlayerStats
 	ld bc, BattleMonAttack
 
-	ld a, 5
 	call CalcStats
 
 	call BattleCommand_SwitchTurn
@@ -6376,7 +6375,6 @@ CalcEnemyStats: ; 365fd
 	ld de, EnemyStats
 	ld bc, EnemyMonAttack
 
-	ld a, 5
 	call CalcStats
 
 	call BattleCommand_SwitchTurn
@@ -6390,6 +6388,7 @@ CalcEnemyStats: ; 365fd
 
 
 CalcStats: ; 3661d
+	ld a, 5
 .loop
 	push af
 	ld a, [hli]
