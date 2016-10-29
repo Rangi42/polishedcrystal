@@ -293,8 +293,11 @@ CutTreeBlockPointers: ; c862
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
 	dbw TILESET_KANTO, .kanto
+	dbw TILESET_BATTLE_TOWER_OUTSIDE, .johto3
 	dbw TILESET_PARK, .park
-	dbw TILESET_ILEX_FOREST, .ilex
+	dbw TILESET_ILEX_FOREST, .forest
+	dbw TILESET_SAFARI_ZONE, .safari_zone
+	dbw TILESET_FARAWAY_ISLAND, .faraway_island
 	db -1
 
 .johto1 ; Johto OW
@@ -319,13 +322,53 @@ CutTreeBlockPointers: ; c862
 	db $60, $6e, $00 ; tree
 	db -1
 
+.johto3 ; outside Battle Tower
+	db $03, $02, $01 ; grass
+	db -1
+
 .park ; National Park
 	db $13, $03, $01 ; grass
 	db $03, $04, $01 ; grass
 	db -1
 
-.ilex ; Ilex Forest + Yellow Forest
-	db $0f, $17, $00
+.forest ; Ilex Forest + Yellow Forest
+	db $0f, $17, $00 ; tree
+	db $2e, $01, $01 ; grass
+	db $2f, $2c, $01 ; grass
+	db $30, $0e, $01 ; grass
+	db $31, $0c, $01 ; grass
+	db $51, $01, $01 ; grass
+	db $52, $09, $01 ; grass
+	db $53, $11, $01 ; grass
+	db -1
+
+.safari_zone ; Safari Zone
+	db $03, $01, $01 ; grass
+	db $07, $01, $01 ; grass
+	db $24, $20, $01 ; grass
+	db $25, $21, $01 ; grass
+	db $26, $22, $01 ; grass
+	db $27, $23, $01 ; grass
+	db $28, $0a, $01 ; grass
+	db $29, $0a, $01 ; grass
+	db $2a, $0a, $01 ; grass
+	db $2b, $0a, $01 ; grass
+	db $2c, $0a, $01 ; grass
+	db $2d, $0a, $01 ; grass
+	db $2e, $0a, $01 ; grass
+	db $2f, $0a, $01 ; grass
+	db -1
+
+.faraway_island ; Faraway Island
+	db $03, $02, $01 ; grass
+	db $08, $74, $01 ; grass
+	db $09, $75, $01 ; grass
+	db $0a, $76, $01 ; grass
+	db $0b, $77, $01 ; grass
+	db $0c, $02, $01 ; grass
+	db $0d, $02, $01 ; grass
+	db $0e, $02, $01 ; grass
+	db $0f, $02, $01 ; grass
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4
