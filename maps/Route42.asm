@@ -109,15 +109,15 @@ Route42LyraScript:
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
-	loadtrainer LYRA, LYRA_7
+	loadtrainer LYRA1, LYRA1_7
 	jump .AfterBattle
 
 .Totodile:
-	loadtrainer LYRA, LYRA_8
+	loadtrainer LYRA1, LYRA1_8
 	jump .AfterBattle
 
 .Chikorita:
-	loadtrainer LYRA, LYRA_9
+	loadtrainer LYRA1, LYRA1_9
 .AfterBattle
 	startbattle
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA

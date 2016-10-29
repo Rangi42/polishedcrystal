@@ -1646,7 +1646,11 @@ PlayBattleMusic: ; 2ee6c
 
 .trainermusic
 	ld de, MUSIC_RIVAL_BATTLE_XY
-	cp LYRA
+	cp LYRA1
+	jp z, .done
+
+	ld de, MUSIC_WALLY_BATTLE_ORAS
+	cp LYRA2
 	jp z, .done
 
 	ld de, MUSIC_CHAMPION_BATTLE

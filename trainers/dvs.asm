@@ -123,7 +123,8 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; ariana
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   | 1 ; pokemon prof
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   | 1 ; mysticalman
-	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE | 1 ; lyra
+	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE | 1 ; lyra1
+	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE | 1 ; lyra2
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE | 1 ; lorelei
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE | 1 ; agatha
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; yellow

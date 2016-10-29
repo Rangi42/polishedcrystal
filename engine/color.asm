@@ -536,7 +536,7 @@ GetPlayerOrMonPalettePointer:
 	ret
 
 .lyra
-	ld hl, LyraPalette
+	ld hl, Lyra1Palette
 	ret
 
 GetFrontpicPalettePointer:

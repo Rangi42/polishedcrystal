@@ -140,15 +140,15 @@ NewBarkTown_LyraFinalTrigger:
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
-	loadtrainer LYRA, LYRA_10
+	loadtrainer LYRA1, LYRA1_10
 	jump .AfterBattle
 
 .Totodile:
-	loadtrainer LYRA, LYRA_11
+	loadtrainer LYRA1, LYRA1_11
 	jump .AfterBattle
 
 .Chikorita:
-	loadtrainer LYRA, LYRA_12
+	loadtrainer LYRA1, LYRA1_12
 .AfterBattle
 	startbattle
 	dontrestartmapmusic

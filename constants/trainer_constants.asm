@@ -738,61 +738,63 @@ KRIS EQU __enum__
 	trainerclass MYSTICALMAN ; 59
 	const EUSINE
 
-	trainerclass LYRA ; 5a
-	const LYRA_1
-	const LYRA_2
-	const LYRA_3
-	const LYRA_4
-	const LYRA_5
-	const LYRA_6
-	const LYRA_7
-	const LYRA_8
-	const LYRA_9
-	const LYRA_10
-	const LYRA_11
-	const LYRA_12
+	trainerclass LYRA1 ; 5a
+	const LYRA1_1
+	const LYRA1_2
+	const LYRA1_3
+	const LYRA1_4
+	const LYRA1_5
+	const LYRA1_6
+	const LYRA1_7
+	const LYRA1_8
+	const LYRA1_9
+	const LYRA1_10
+	const LYRA1_11
+	const LYRA1_12
 
-	trainerclass LORELEI ; 5b
+	trainerclass LYRA2 ; 5b
 
-	trainerclass AGATHA ; 5c
+	trainerclass LORELEI ; 5c
 
-	trainerclass YELLOW ; 5d
+	trainerclass AGATHA ; 5d
 
-	trainerclass WALKER ; 5e
+	trainerclass YELLOW ; 5e
 
-	trainerclass CHERYL ; 5f
+	trainerclass WALKER ; 5f
 
-	trainerclass RILEY ; 60
+	trainerclass CHERYL ; 60
 
-	trainerclass BUCK ; 61
+	trainerclass RILEY ; 61
 
-	trainerclass MARLEY ; 62
+	trainerclass BUCK ; 62
 
-	trainerclass MIRA ; 63
+	trainerclass MARLEY ; 63
 
-	trainerclass BILL_T ; 64
+	trainerclass MIRA ; 64
 
-	trainerclass LAWRENCE ; 65
+	trainerclass BILL_T ; 65
 
-	trainerclass GIOVANNI ; 66
+	trainerclass LAWRENCE ; 66
 
-	trainerclass STEVEN ; 67
+	trainerclass GIOVANNI ; 67
 
-	trainerclass CYNTHIA ; 68
+	trainerclass STEVEN ; 68
 
-	trainerclass TOWERTYCOON ; 69
+	trainerclass CYNTHIA ; 69
 
-	trainerclass VALERIE ; 6a
+	trainerclass TOWERTYCOON ; 6a
 
-	trainerclass REI ; 6b
+	trainerclass VALERIE ; 6b
 
-	trainerclass OMASTAR_FOSSIL ; 6c
+	trainerclass REI ; 6c
 
-	trainerclass KABUTOPS_FOSSIL ; 6d
+	trainerclass OMASTAR_FOSSIL ; 6d
 
-	trainerclass AERODACTYL_FOSSIL ; 6e
+	trainerclass KABUTOPS_FOSSIL ; 6e
 
-	trainerclass METEORITE ; 6f
+	trainerclass AERODACTYL_FOSSIL ; 6f
+
+	trainerclass METEORITE ; 70
 
 NUM_TRAINER_CLASSES EQU __enum__
 

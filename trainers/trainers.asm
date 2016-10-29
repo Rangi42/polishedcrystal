@@ -11632,11 +11632,11 @@ MysticalmanGroup:
 ; ================================
 
 
-LyraGroup:
+Lyra1Group:
 ; ================================
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 0 ; normal
 
@@ -11647,7 +11647,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 0 ; normal
 
@@ -11658,7 +11658,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 0 ; normal
 
@@ -11669,7 +11669,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11683,7 +11683,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11697,7 +11697,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11711,7 +11711,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11726,7 +11726,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11741,7 +11741,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11756,7 +11756,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11772,7 +11772,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11788,7 +11788,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA1
 	db "Lyra@"
 	db 2 ; item
 
@@ -11803,8 +11803,14 @@ LyraGroup:
 	db $ff ; end
 
 ; ================
+; ================================
 
-	; LYRA
+
+Lyra2Group:
+; ================================
+; ================
+
+	; LYRA2
 	db "Lyra@"
 	db 2 ; item
 
@@ -11820,7 +11826,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA2
 	db "Lyra@"
 	db 2 ; item
 
@@ -11836,7 +11842,7 @@ LyraGroup:
 
 ; ================
 
-	; LYRA
+	; LYRA2
 	db "Lyra@"
 	db 2 ; item
 

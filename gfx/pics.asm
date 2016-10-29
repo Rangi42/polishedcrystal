@@ -745,7 +745,8 @@ BattleGirlPic:         INCBIN "gfx/trainers/battle_girl.2bpp.lz"
 AceDuoPic:             INCBIN "gfx/trainers/ace_duo.2bpp.lz"
 JessieJamesPic:        INCBIN "gfx/trainers/jessie_james.2bpp.lz"
 KayPic:                INCBIN "gfx/trainers/kay.2bpp.lz"
-LyraPic:               INCBIN "gfx/trainers/lyra.2bpp.lz"
+Lyra1Pic:              INCBIN "gfx/trainers/lyra1.2bpp.lz"
+Lyra2Pic:              INCBIN "gfx/trainers/lyra2.2bpp.lz"
 LoreleiPic:            INCBIN "gfx/trainers/lorelei.2bpp.lz"
 AgathaPic:             INCBIN "gfx/trainers/agatha.2bpp.lz"
 YellowPic:             INCBIN "gfx/trainers/yellow.2bpp.lz"
@@ -792,6 +793,11 @@ PetrelPic:             INCBIN "gfx/trainers/petrel.2bpp.lz"
 
 SECTION "Pics 22", ROMX
 
+CherylPic: ; TODO
+RileyPic: ; TODO
+BuckPic: ; TODO
+MarleyPic: ; TODO
+MiraPic: ; TODO
 ValeriePic:            INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:             INCBIN "gfx/trainers/walker.2bpp.lz"
 PikachuFlyFrontpic:    INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"

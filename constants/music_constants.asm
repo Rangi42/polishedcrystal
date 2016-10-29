@@ -128,14 +128,16 @@
 	const MUSIC_DIGLETTS_CAVE_RBY            ; 7d
 	const MUSIC_CERULEAN_CAVE_RBY            ; 7e
 	const MUSIC_ROUTE_120_RSE                ; 7f
-	const MUSIC_MOUNT_PYRE_RSE               ; 80
-	const MUSIC_ABANDONED_SHIP_RSE           ; 81
-	const MUSIC_CHAMPION_BATTLE_RSE          ; 82
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 83
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 84
-	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 85
-	const MUSIC_ZINNIA_BATTLE_ORAS           ; 86
-	const MUSIC_LUGIAS_SONG_2000             ; 87
+	const MUSIC_MOUNT_CHIMNEY_RSE            ; 80
+	const MUSIC_MOUNT_PYRE_RSE               ; 81
+	const MUSIC_ABANDONED_SHIP_RSE           ; 82
+	const MUSIC_CHAMPION_BATTLE_RSE          ; 83
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 84
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 85
+	const MUSIC_WALLY_BATTLE_ORAS            ; 86
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 87
+	const MUSIC_ZINNIA_BATTLE_ORAS           ; 88
+	const MUSIC_LUGIAS_SONG_2000             ; 89
 	; special
-	const MUSIC_RADIO_TOWER                  ; 88
-	const MUSIC_MAHOGANY_MART                ; 89
+	const MUSIC_RADIO_TOWER                  ; 8a
+	const MUSIC_MAHOGANY_MART                ; 8b

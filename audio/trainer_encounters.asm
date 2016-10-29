@@ -112,7 +112,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_ROCKET_ENCOUNTER		; ariana
 	db MUSIC_HIKER_ENCOUNTER		; pokemon_prof
 	db MUSIC_HIKER_ENCOUNTER		; mysticalman
-	db MUSIC_LYRA_ENCOUNTER_HGSS	; lyra
+	db MUSIC_LYRA_ENCOUNTER_HGSS	; lyra1
+	db MUSIC_LYRA_ENCOUNTER_HGSS	; lyra2
 	db MUSIC_HIKER_ENCOUNTER		; lorelei
 	db MUSIC_SAGE_ENCOUNTER			; agatha
 	db MUSIC_LASS_ENCOUNTER			; yellow

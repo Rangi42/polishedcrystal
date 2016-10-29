@@ -88,11 +88,17 @@
 	add_pic ArianaPic
 	add_pic PokemonProfPic
 	add_pic MysticalmanPic
-	add_pic LyraPic
+	add_pic Lyra1Pic
+	add_pic Lyra2Pic
 	add_pic LoreleiPic
 	add_pic AgathaPic
 	add_pic YellowPic
 	add_pic WalkerPic
+	add_pic CherylPic
+	add_pic RileyPic
+	add_pic BuckPic
+	add_pic MarleyPic
+	add_pic MiraPic
 	add_pic BillPic
 	add_pic LawrencePic
 	add_pic GiovanniPic

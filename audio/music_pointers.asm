@@ -133,11 +133,13 @@
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
 	dba Music_Route120RSE
+	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE
 	dba Music_ChampionBattleRSE
 	dba Music_FrontierBrainBattleRSE
 	dba Music_KantoLegendBattleXY
+	dba Music_WallyBattleORAS
 	dba Music_ZinniaEncounterORAS
 	dba Music_ZinniaBattleORAS
 	dba Music_LugiasSong2000

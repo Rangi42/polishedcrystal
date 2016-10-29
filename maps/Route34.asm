@@ -125,7 +125,7 @@ Route34LyraTrigger2:
 	iftrue .Chikorita
 	winlosstext Route34LyraWinText, Route34LyraLossText
 	setlasttalked ROUTE34_LYRA
-	loadtrainer LYRA, LYRA_4
+	loadtrainer LYRA1, LYRA1_4
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -135,7 +135,7 @@ Route34LyraTrigger2:
 .Totodile:
 	winlosstext Route34LyraWinText, Route34LyraLossText
 	setlasttalked ROUTE34_LYRA
-	loadtrainer LYRA, LYRA_5
+	loadtrainer LYRA1, LYRA1_5
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -145,7 +145,7 @@ Route34LyraTrigger2:
 .Chikorita:
 	winlosstext Route34LyraWinText, Route34LyraLossText
 	setlasttalked ROUTE34_LYRA
-	loadtrainer LYRA, LYRA_6
+	loadtrainer LYRA1, LYRA1_6
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

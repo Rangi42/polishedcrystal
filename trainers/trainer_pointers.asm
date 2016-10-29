@@ -90,7 +90,8 @@ TrainerGroups: ; 0x39999
 	dw ArianaGroup
 	dw PokemonProfGroup
 	dw MysticalmanGroup
-	dw LyraGroup
+	dw Lyra1Group
+	dw Lyra2Group
 	dw LoreleiGroup
 	dw AgathaGroup
 	dw YellowGroup
