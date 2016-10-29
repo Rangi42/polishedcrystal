@@ -10,6 +10,8 @@ const_value set 2
 	const ILEXFOREST_POKE_BALL2
 	const ILEXFOREST_POKE_BALL3
 	const ILEXFOREST_POKE_BALL4
+	const ILEXFOREST_LYRA
+	const ILEXFOREST_CELEBI
 
 IlexForest_MapScriptHeader:
 .MapTriggers:
@@ -461,13 +463,15 @@ MapIlexForestSignpost0Script:
 
 MapIlexForestSignpost4Script:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue .ForestIsRestless
-	jump .DontDoCelebiEvent
-
-.ForestIsRestless:
+	iffalse .DontDoCelebiEvent
 	checkitem GS_BALL
 	iftrue .AskCelebiEvent
 .DontDoCelebiEvent:
+	checkevent EVENT_TIME_TRAVEL_FINISHED
+	iftrue .DontDoGiovanniEvent
+	checkpoke CELEBI
+	iftrue .StartGiovanniEvent
+.DontDoGiovanniEvent
 	jumptext Text_IlexForestShrine
 
 .AskCelebiEvent:
@@ -511,6 +515,27 @@ MapIlexForestSignpost4Script:
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef53
 	disappear ILEXFOREST_KURT
 .DidntCatchCelebi:
+	end
+
+.StartGiovanniEvent:
+	opentext
+	writetext Text_IlexForestShrine
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, PLAYER, 15
+	appear ILEXFOREST_CELEBI
+	playsound SFX_BALL_POOF
+	spriteface PLAYER, DOWN
+	waitsfx
+	pause 15
+	cry CELEBI
+	waitsfx
+	applymovement ILEXFOREST_CELEBI, MovementData_CelebiDance
+	opentext
+	writetext Text_CelebiDancedBeautifully
+	waitbutton
+	closetext
+	setevent EVENT_TIME_TRAVEL_FINISHED
 	end
 
 MovementData_Farfetchd_Pos1_Pos2:
@@ -768,6 +793,9 @@ MovementData_0x6ef58:
 	remove_fixed_facing
 	step_end
 
+MovementData_CelebiDance:
+	step_end
+
 UnknownText_0x6ef5c:
 	text "Oh, man… My boss"
 	line "is going to be"
@@ -975,6 +1003,13 @@ Text_KurtCaughtCelebi:
 	line "that Shrine were"
 	cont "real after all."
 
+	para "Maybe the legend"
+	line "that people who"
+	cont "tamper with it"
+
+	para "disappear is"
+	line "true, too…"
+
 	para "I feel inspired by"
 	line "what I just saw."
 
@@ -982,6 +1017,11 @@ Text_KurtCaughtCelebi:
 	line "make better Balls!"
 
 	para "I'm going!"
+	done
+
+Text_CelebiDancedBeautifully:
+	text "Celebi danced"
+	line "beautifully!"
 	done
 
 Bug_catcherWayneSeenText:
@@ -1035,7 +1075,7 @@ IlexForest_MapEventHeader:
 	signpost 6, 17, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
 
 .PersonEvents:
-	db 11
+	db 13
 	person_event SPRITE_BIRD, 31, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	person_event SPRITE_YOUNGSTER, 28, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
 	person_event SPRITE_BLACK_BELT, 28, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
@@ -1047,3 +1087,5 @@ IlexForest_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 17, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestXAttack, EVENT_ILEX_FOREST_X_ATTACK
 	person_event SPRITE_POKE_BALL, 15, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestAntidote, EVENT_ILEX_FOREST_ANTIDOTE
 	person_event SPRITE_POKE_BALL, 1, 27, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestEther, EVENT_ILEX_FOREST_ETHER
+	person_event SPRITE_LYRA, 24, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_LYRA
+	person_event SPRITE_CELEBI, 24, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI

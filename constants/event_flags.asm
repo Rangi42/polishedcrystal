@@ -1712,10 +1712,10 @@
 ; New events (TODO: move to more logical order)
 	const EVENT_SPOKE_TO_LASS_CONNIE
 	const EVENT_SPOKE_TO_GENTLEMAN_PRESTON
+	const EVENT_ILEX_FOREST_LYRA
+	const EVENT_ILEX_FOREST_CELEBI
+	const EVENT_TIME_TRAVEL_FINISHED
 ; Unused placeholder events
-	const EVENT_650
-	const EVENT_651
-	const EVENT_652
 	const EVENT_653
 	const EVENT_654
 	const EVENT_655

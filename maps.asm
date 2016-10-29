@@ -137,11 +137,11 @@ INCLUDE "maps/CeladonDeptStoreElevator.asm"
 INCLUDE "maps/CeladonDeptStore1F.asm"
 INCLUDE "maps/CeladonDeptStore2F.asm"
 INCLUDE "maps/CeladonDeptStore3F.asm"
-INCLUDE "maps/CeladonDeptStore4F.asm"
 
 
 SECTION "Map Scripts 7", ROMX, BANK[MAP_SCRIPTS_7]
 
+INCLUDE "maps/CeladonDeptStore4F.asm"
 INCLUDE "maps/CeladonDeptStore5F.asm"
 INCLUDE "maps/CeladonDeptStore6F.asm"
 INCLUDE "maps/CeladonMansion1F.asm"

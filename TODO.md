@@ -66,7 +66,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
-* Edit SPRITE_DRAGON with Dragonite's side view
+* Edit SPRITE_DRAGONITE with Dragonite's side view
 * Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
 * Briefly beep to warn of low HP
 * Custom overworld sprites for Rocket Executives

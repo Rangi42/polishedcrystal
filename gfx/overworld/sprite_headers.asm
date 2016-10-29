@@ -414,8 +414,26 @@ SurfingPikachuSprite: ; 14868
 	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 1486e
 
+BirdSprite: ; 14904
+	sprite_header BirdSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 1490a
+
+FairySprite: ; 148fe
+	sprite_header FairySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 14904
+
+DragoniteSprite: ; 1490a
+	sprite_header DragoniteSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 14910
+
+ArmoredMewtwoSprite:
+	sprite_header ArmoredMewtwoSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
 MewSprite:
 	sprite_header MewSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+CelebiSprite:
+	sprite_header CelebiSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 
 BigSnorlaxSprite: ; 14862
 	sprite_header BigSnorlaxSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
@@ -516,15 +534,3 @@ SilverTrophySprite: ; 1496a
 GoldTrophySprite: ; 14964
 	sprite_header GoldTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
 ; 1496a
-
-BirdSprite: ; 14904
-	sprite_header BirdSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1490a
-
-DragonSprite: ; 1490a
-	sprite_header DragonSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14910
-
-FairySprite: ; 148fe
-	sprite_header FairySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14904
