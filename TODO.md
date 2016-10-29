@@ -55,6 +55,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 ## Aesthetic updates
 
 * Use separate music for Gym Leaders and the Elite 4
+* Pause music during battle effects (TPP misc/restoremusic.asm)
 * Add separate animation graphics for more Poké Ball designs
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
