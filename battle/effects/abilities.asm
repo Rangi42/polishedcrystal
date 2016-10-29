@@ -287,7 +287,7 @@ RunEnemyOwnTempoAbility:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp OWN_TEMPO
-	call z, SynchronizeAbility
+	call z, OwnTempoAbility
 	farcall BattleCommand_SwitchTurn
 	ret
 
