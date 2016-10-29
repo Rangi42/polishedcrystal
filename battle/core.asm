@@ -5468,9 +5468,9 @@ PlayerSwitch: ; 3e3ad
 
 .linked
 	ld a, [wBattleAction]
-	cp BATTLEACTION_E
+	cp BATTLEACTION_STRUGGLE
 	jp z, .switch
-	cp BATTLEACTION_D
+	cp BATTLEACTION_MOVE255
 	jp z, .switch
 	cp BATTLEACTION_SWITCH1
 	jp c, .switch
@@ -6074,10 +6074,10 @@ ParseEnemyAction: ; 3e7c1
 	call z, LinkBattleSendReceiveAction
 	call Call_LoadTempTileMapToTileMap
 	ld a, [wBattleAction]
-	cp BATTLEACTION_E
+	cp BATTLEACTION_STRUGGLE
 	jp z, .struggle
-	cp BATTLEACTION_D
-	jp z, .battle_action_d
+	cp BATTLEACTION_MOVE255
+	jp z, .move255
 	cp BATTLEACTION_SWITCH1
 	jp nc, ResetVarsForSubstatusRage
 	ld [CurEnemyMoveNum], a
@@ -6111,7 +6111,8 @@ ParseEnemyAction: ; 3e7c1
 	jp nz, ResetVarsForSubstatusRage
 	jr .continue
 
-.battle_action_d
+.move255
+	; this is never used
 	ld a, $ff
 	jr .finish
 

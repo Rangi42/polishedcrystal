@@ -5735,10 +5735,10 @@ _LinkBattleSendReceiveAction: ; 100a09
 	and a
 	jr nz, .switch
 	ld a, [CurPlayerMove]
-	ld b, BATTLEACTION_E
+	ld b, BATTLEACTION_STRUGGLE
 	cp STRUGGLE
 	jr z, .struggle
-	ld b, BATTLEACTION_D
+	ld b, BATTLEACTION_MOVE255
 	cp $ff
 	jr z, .struggle
 	ld a, [CurMoveNum]
