@@ -5424,7 +5424,7 @@ BattleCommand_DoubleUp:
 	ld a, 1
 	ld [wKickCounter], a
 	call AnimateCurrentMove
-	jp nz, BattleCommand_StatUpMessage
+	jp, BattleCommand_StatUpMessage
 
 BattleCommand_AttackUp: ; 361ac
 ; attackup
