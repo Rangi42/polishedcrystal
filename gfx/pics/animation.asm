@@ -492,7 +492,7 @@ PokeAnim_IsPikachu:
 
 PokeAnim_IsPichu:
 	ld a, [wPokeAnimSpecies]
-	cp PIKACHU
+	cp PICHU
 	ret
 
 PokeAnim_IsArbok:
