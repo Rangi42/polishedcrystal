@@ -396,6 +396,33 @@ CheckIfSomeoneIsSomeType
 	cp b
 	ret
 
+CheckPinch::
+; return z if we are in a pinch (HP<=1/3)
+	push hl
+	farcall GetThirdMaxHP
+	ld hl, BattleMonHP
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_hp
+	ld hl, EnemyMonHP
+.got_hp
+	ld a, [hli]
+	sub b
+	jr c, .yes
+	jr nz, .no
+	ld a, [hl]
+	sub c
+	jr c, .yes
+	jr nz, .no
+.yes
+	pop hl
+	xor a
+	ret
+.no
+	pop hl
+	or 1
+	ret
+
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [Weather] otherwise.

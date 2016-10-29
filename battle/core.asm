@@ -1927,6 +1927,65 @@ GetQuarterMaxHP: ; 3cc8e
 ; 3cc9f
 
 
+GetThirdMaxHP::
+; save content of arithmetic hram to allow usage
+; during arithmetic chains (pinch abilities)
+	push hl
+	push de
+	ld hl, hProduct
+	ld a, [hl]
+	ld d, a
+	ld [hl], 0
+	inc hl
+	ld a, [hl]
+	ld e, a
+	ld [hl], 0
+	inc hl
+	push de
+	ld a, [hl]
+	ld d, a
+	ld [hl], 0
+	inc hl
+	ld a, [hl]
+	ld e, a
+	ld [hl], 0
+
+; output: bc
+	call GetMaxHP
+	ld a, b
+	ld [hDividend + 2], a
+	ld a, c
+	ld [hDividend + 3], a
+	ld a, 3
+	ld [hDivisor], a
+	ld b, 4
+	call Divide
+	ld [hQuotient + 2], a
+	ld c, a
+	ld [hQuotient + 1], a
+	ld b, a
+	ld a, e
+	ld [hld], a
+	ld a, d
+	ld [hld], a
+	pop de
+	ld a, e
+	ld [hld], a
+	ld a, d
+	ld [hl], a
+	pop de
+	pop hl
+
+; floor = 1
+	ld a, c
+	or b
+	jr nz, .end
+	inc c
+.end
+	ret
+; 3ccac
+
+
 GetHalfMaxHP: ; 3cc9f
 ; output: bc
 	call GetMaxHP

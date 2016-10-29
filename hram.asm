@@ -47,6 +47,13 @@ hPastLeadingZeroes EQU $ffb3
 hStringCmpString1  EQU $ffb1
 hStringCmpString2  EQU $ffb5
 
+; Arithmetic addresses aren't seperate, to simplify
+; chain usage. The exact format is (all big endian):
+;  hDividend   hProduct
+;  hDividend+1 hProduct+1 hQuotient   hMultiplicand
+;  hDividend+2 hProduct+2 hQuotient+1 hMultiplicand+1
+;  hDividend+3 hProduct+3 hQuotient+2 hMultiplicand+2
+;  hDivisor hMultiplier hRemainder
 hDividend          EQU $ffb3 ; length in b register, before 'call Divide' (max 4 bytes)
 hDivisor           EQU $ffb7 ; 1 byte long
 hQuotient          EQU $ffb4 ; result (3 bytes long)
