@@ -129,6 +129,16 @@ endr
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_2
 
+	; Spiky-eared Pichu cannot evolve
+	ld a, [TempMonSpecies]
+	cp PICHU
+	jr nz, .not_spiky_eared_pichu
+	ld a, [TempMonForm]
+	and FORM_MASK
+	cp 2
+	jp z, .dont_evolve_2
+
+.not_spiky_eared_pichu
 	ld a, [hli]
 	cp TR_ANYTIME
 	jp z, .proceed
