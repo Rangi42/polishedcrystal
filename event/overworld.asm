@@ -605,6 +605,26 @@ AskSurfText: ; ca36
 	text_jump _AskSurfText ; The water is calm.
 	db "@"              ; Want to SURF?
 
+CheckFlyAllowedOnMap:
+; returns z is fly is allowed
+	call GetMapPermission
+	call CheckOutdoorMap
+	ret z
+	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
+	jr nz, .not_goldenrod_dept_store_roof
+	ld a, [MapNumber]
+	cp MAP_GOLDENROD_DEPT_STORE_ROOF
+	ret
+.not_goldenrod_dept_store_roof
+	ld a, [MapGroup]
+	cp GROUP_CELADON_MANSION_ROOF
+	ret nz
+	ld a, [MapNumber]
+	cp MAP_CELADON_MANSION_ROOF
+	ret
+
+
 FlyFunction: ; ca3b
 	call FieldMoveJumptableReset
 .loop
@@ -616,34 +636,17 @@ FlyFunction: ; ca3b
 	ret
 
 .Jumptable:
- 	dw .TryFly
- 	dw .DoFly
- 	dw .FailFly
+	dw .TryFly
+	dw .DoFly
+	dw .FailFly
 
 .TryFly: ; ca52
 ; Fly
 	ld de, ENGINE_STORMBADGE
 	call CheckBadge
 	jr c, .nostormbadge
-	call GetMapPermission
-	call CheckOutdoorMap
-	jr z, .outdoors
-
-	ld a, [MapGroup]
-	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
-	jr nz, .not_goldenrod_dept_store_roof
-	ld a, [MapNumber]
-	cp MAP_GOLDENROD_DEPT_STORE_ROOF
-	jr z, .outdoors
-.not_goldenrod_dept_store_roof
-	ld a, [MapGroup]
-	cp GROUP_CELADON_MANSION_ROOF
+	call CheckFlyAllowedOnMap
 	jr nz, .indoors
-	ld a, [MapNumber]
-	cp MAP_CELADON_MANSION_ROOF
-	jr nz, .indoors
-
-.outdoors
 	xor a
 	ld [hMapAnims], a
 	call LoadStandardMenuDataHeader
@@ -978,12 +981,8 @@ TeleportFunction: ; cc61
 	dw .FailTeleport
 
 .TryTeleport: ; cc78
-	call GetMapPermission
-	call CheckOutdoorMap
-	jr z, .CheckIfSpawnPoint
-	jr .nope
-
-.CheckIfSpawnPoint:
+	call CheckFlyAllowedOnMap
+	jr nz, .nope
 	ld a, [wLastSpawnMapGroup]
 	ld d, a
 	ld a, [wLastSpawnMapNumber]
