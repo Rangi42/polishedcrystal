@@ -117,6 +117,11 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_SAGE_ENCOUNTER			; agatha
 	db MUSIC_LASS_ENCOUNTER			; yellow
 	db MUSIC_HIKER_ENCOUNTER		; walker
+	db MUSIC_BEAUTY_ENCOUNTER		; cheryl
+	db MUSIC_HIKER_ENCOUNTER		; riley
+	db MUSIC_YOUNGSTER_ENCOUNTER	; buck
+	db MUSIC_LASS_ENCOUNTER			; marley
+	db MUSIC_LASS_ENCOUNTER			; mira
 	db MUSIC_POKEMANIAC_ENCOUNTER	; bill_t
 	db MUSIC_HIKER_ENCOUNTER		; lawrence
 	db MUSIC_ROCKET_ENCOUNTER		; giovanni

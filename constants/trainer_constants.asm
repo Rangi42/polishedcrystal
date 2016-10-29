@@ -760,29 +760,39 @@ KRIS EQU __enum__
 
 	trainerclass WALKER ; 5e
 
-	trainerclass BILL_T ; 5f
+	trainerclass CHERYL ; 5f
 
-	trainerclass LAWRENCE ; 60
+	trainerclass RILEY ; 60
 
-	trainerclass GIOVANNI ; 61
+	trainerclass BUCK ; 61
 
-	trainerclass STEVEN ; 62
+	trainerclass MARLEY ; 62
 
-	trainerclass CYNTHIA ; 63
+	trainerclass MIRA ; 63
 
-	trainerclass TOWERTYCOON ; 64
+	trainerclass BILL_T ; 64
 
-	trainerclass VALERIE ; 65
+	trainerclass LAWRENCE ; 65
 
-	trainerclass REI ; 66
+	trainerclass GIOVANNI ; 66
 
-	trainerclass OMASTAR_FOSSIL ; 67
+	trainerclass STEVEN ; 67
 
-	trainerclass KABUTOPS_FOSSIL ; 68
+	trainerclass CYNTHIA ; 68
 
-	trainerclass AERODACTYL_FOSSIL ; 69
+	trainerclass TOWERTYCOON ; 69
 
-	trainerclass METEORITE ; 6a
+	trainerclass VALERIE ; 6a
+
+	trainerclass REI ; 6b
+
+	trainerclass OMASTAR_FOSSIL ; 6c
+
+	trainerclass KABUTOPS_FOSSIL ; 6d
+
+	trainerclass AERODACTYL_FOSSIL ; 6e
+
+	trainerclass METEORITE ; 6f
 
 NUM_TRAINER_CLASSES EQU __enum__
 

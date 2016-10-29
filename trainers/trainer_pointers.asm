@@ -95,6 +95,11 @@ TrainerGroups: ; 0x39999
 	dw AgathaGroup
 	dw YellowGroup
 	dw WalkerGroup
+	dw CherylGroup
+	dw RileyGroup
+	dw BuckGroup
+	dw MarleyGroup
+	dw MiraGroup
 	dw BillGroup
 	dw LawrenceGroup
 	dw GiovanniGroup
@@ -103,7 +108,3 @@ TrainerGroups: ; 0x39999
 	dw TowerTycoonGroup
 	dw ValerieGroup
 	dw ReiGroup
-	dw OmastarFossilGroup
-	dw KabutopsFossilGroup
-	dw AerodactylFossilGroup
-	dw MeteoriteGroup

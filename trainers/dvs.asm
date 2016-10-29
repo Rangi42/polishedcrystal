@@ -128,6 +128,11 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE | 1 ; agatha
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; yellow
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   | 1 ; walker
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; cheryl
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   | 1 ; riley
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   | 1 ; buck
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; marley
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; mira
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   | 1 ; bill
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   | 1 ; lawrence
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   | 1 ; giovanni
@@ -136,10 +141,6 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   | 1 ; towertycoon
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE | 1 ; valerie
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; rei
-	db $00, $00, $00, ABILITY_1 | QUIRKY, MALE   | 1 ; omastar fossil
-	db $00, $00, $00, ABILITY_1 | QUIRKY, MALE   | 1 ; kabutops fossil
-	db $00, $00, $00, ABILITY_1 | QUIRKY, MALE   | 1 ; aerodactyl fossil
-	db $00, $00, $00, ABILITY_1 | QUIRKY, MALE   | 1 ; meteorite
 ; 2715c
 
 INCLUDE "trainers/unique_dvs.asm"

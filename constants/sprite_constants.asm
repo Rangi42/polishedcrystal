@@ -55,8 +55,8 @@
 	const SPRITE_CHERYL ; 33
 	const SPRITE_RILEY ; 34
 	const SPRITE_BUCK ; 35
-	const SPRITE_MIRA ; 36
-	const SPRITE_MARLEY ; 37
+	const SPRITE_MARLEY ; 36
+	const SPRITE_MIRA ; 37
 	const SPRITE_VALERIE ; 38
 	const SPRITE_STEVEN ; 39
 	const SPRITE_CYNTHIA ; 3a

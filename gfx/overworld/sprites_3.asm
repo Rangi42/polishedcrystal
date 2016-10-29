@@ -16,8 +16,8 @@ GiovanniSpriteGFX:            INCBIN "gfx/overworld/giovanni.2bpp"
 CherylSpriteGFX:              INCBIN "gfx/overworld/cooltrainer_f.2bpp" ; TODO
 RileySpriteGFX:               INCBIN "gfx/overworld/veteran_m.2bpp" ; TODO
 BuckSpriteGFX:                INCBIN "gfx/overworld/rich_boy.2bpp" ; TODO
-MiraSpriteGFX:                INCBIN "gfx/overworld/twin.2bpp" ; TODO
 MarleySpriteGFX:              INCBIN "gfx/overworld/lass.2bpp" ; TODO
+MiraSpriteGFX:                INCBIN "gfx/overworld/twin.2bpp" ; TODO
 ValerieSpriteGFX:             INCBIN "gfx/overworld/valerie.2bpp"
 StevenSpriteGFX:              INCBIN "gfx/overworld/steven.2bpp"
 CynthiaSpriteGFX:             INCBIN "gfx/overworld/cynthia.2bpp"

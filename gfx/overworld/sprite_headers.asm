@@ -204,11 +204,11 @@ RileySprite:
 BuckSprite:
 	sprite_header BuckSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-MiraSprite:
-	sprite_header MiraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-
 MarleySprite:
 	sprite_header MarleySpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+MiraSprite:
+	sprite_header MiraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

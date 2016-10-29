@@ -183,6 +183,11 @@ BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; AGATHA
 	db MALE   ; YELLOW
 	db MALE   ; WALKER
+	db FEMALE ; CHERYL
+	db MALE   ; RILEY
+	db MALE   ; BUCK
+	db FEMALE ; MARLEY
+	db FEMALE ; MIRA
 	db MALE   ; BILL
 	db MALE   ; LAWRENCE
 	db MALE   ; GIOVANNI
