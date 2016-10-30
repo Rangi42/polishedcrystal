@@ -78,7 +78,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Victor and Puka the Surfing Pikachu ("Hey, you can do it, too")
 * Add Crossing Cave (music: Mt. Pyre Peak?) to Route 35 and Route 35 Coast
 * Add Noisy Forest below Route 36 (music: White Treehollow)
-* Add Magnet Train Track between Goldenrod City, Route 32, and Noisy Forest
+* Add haunted house inside Noisy Forest with RBY-style Ghosts and a Lapras-like Mismagius
 * Add Dim/Scary Cave (music: Rock Tunnel) and Cerulean Sea (music: Route 25) between Route 25/Cerulean Cape and Route 10
    * Add Light Clay in Dim/Scary Cave
 * Expand Diglett's Cave
