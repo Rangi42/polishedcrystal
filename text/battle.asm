@@ -859,7 +859,7 @@ WontRiseAnymoreText: ; 0x81272
 	line "@"
 	text_from_ram StringBuffer2
 	text " won't"
-	cont "rise anymore!"
+	cont "rise any more!"
 	prompt
 ; 0x8128f
 
@@ -868,7 +868,7 @@ WontDropAnymoreText: ; 0x8128f
 	line "@"
 	text_from_ram StringBuffer2
 	text " won't"
-	cont "drop anymore!"
+	cont "fall any more!"
 	prompt
 ; 0x812ac
 
