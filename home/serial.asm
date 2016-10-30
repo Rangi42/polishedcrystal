@@ -6,7 +6,7 @@ Serial:: ; 6ef
 	push de
 	push hl
 
-	ld a, [wc2d4]
+	ld a, [wPrinterConnectionOpen]
 
 	ld a, [hLinkPlayerNumber]
 	inc a ; is it equal to -1?

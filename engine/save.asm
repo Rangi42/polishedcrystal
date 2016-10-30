@@ -141,13 +141,13 @@ StartMovePkmnWOMail_SaveGame: ; 14b34
 
 SetWRAMStateForSave: ; 14b54
 	ld a, $1
-	ld [wc2cd], a
+	ld [wGameLogicPaused], a
 	ret
 ; 14b5a
 
 ClearWRAMStateAfterSave: ; 14b5a
 	xor a
-	ld [wc2cd], a
+	ld [wGameLogicPaused], a
 	ret
 ; 14b5f
 

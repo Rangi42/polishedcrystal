@@ -34,7 +34,7 @@ wCurTrackDuty:: ds 1
 wCurTrackIntensity:: ds 1
 wCurTrackFrequency:: dw
 wc296:: ds 1 ; BCD value, dummied out
-wc297:: ds 1 ; used in MusicE0 and LoadNote
+wCurNoteDuration:: ds 1 ; used in MusicE0 and LoadNote
 
 CurMusicByte:: ; c298
 	ds 1
@@ -152,19 +152,23 @@ AutoInputLength:: ; c2cb
 	ds 1
 
 wMonStatusFlags:: ds 1
-wc2cd:: ds 1
+wGameLogicPaused:: ds 1 ; c2cd
 wSpriteUpdatesEnabled:: ds 1
 wc2cf:: ds 1
 wMapTimeOfDay:: ds 1
 	ds 3
-wc2d4:: ds 1
-wc2d5:: ds 1
+wPrinterConnectionOpen:: ds 1
+wPrinterOpcode:: ds 1
 wLastDexEntry:: ds 1
-wc2d7:: ds 1
+wDisableTextAcceleration:: ds 1
 wPreviousLandmark:: ds 1
 wCurrentLandmark:: ds 1
 wLandmarkSignTimer:: ds 2
-wLinkMode:: ds 1
+wLinkMode:: ; c2dc
+; 0 not in link battle
+; 1 link battle
+; 4 mobile battle
+	ds 1
 
 ScriptVar:: ; c2dd
 	ds 1
@@ -747,6 +751,8 @@ wAmuletCoin:: ds 1 ; c73a
 wSomeoneIsRampaging:: ds 1 ; c73b
 wPlayerJustGotFrozen:: ds 1 ; c73c
 wEnemyJustGotFrozen:: ds 1 ; c73d
+DVAndPersonalityBuffer::
+	ds 5
 wBattleEnd::
 ; Battle RAM
 
@@ -834,7 +840,6 @@ wCardFlipEnd::
 
 ; Dummy Game
 ; c6d0
-DVAndPersonalityBuffer::
 wDummyGame::
 wDummyGameCards:: ds 9 * 5
 wDummyGameCardsEnd::

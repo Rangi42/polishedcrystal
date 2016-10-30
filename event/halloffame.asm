@@ -3,7 +3,7 @@ HallOfFame:: ; 0x8640e
 	ld a, [StatusFlags]
 	push af
 	ld a, 1
-	ld [wc2cd], a
+	ld [wGameLogicPaused], a
 	call DisableSpriteUpdates
 	ld a, SPAWN_LANCE
 	ld [wSpawnAfterChampion], a
@@ -25,7 +25,7 @@ HallOfFame:: ; 0x8640e
 	farcall AddHallOfFameEntry
 
 	xor a
-	ld [wc2cd], a
+	ld [wGameLogicPaused], a
 	call AnimateHallOfFame
 	pop af
 	ld b, a
