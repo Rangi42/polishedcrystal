@@ -87,11 +87,17 @@
 	db "Executive@"      ; ARIANA
 	db "#mon Prof.@"     ; POKEMON_PROF
 	db "Mystery Man@"    ; MYSTICALMAN
-	db "<PKMN> Trainer@" ; LYRA
+	db "<PKMN> Trainer@" ; LYRA1
+	db "<PKMN> Trainer@" ; LYRA2
 	db "Ex-Elite@"       ; LORELEI
 	db "Ex-Elite@"       ; AGATHA
 	db "<PKMN> Trainer@" ; YELLOW
 	db "Ex-Leader@"      ; WALKER
+	db "<PKMN> Trainer@" ; CHERYL
+	db "<PKMN> Trainer@" ; RILEY
+	db "<PKMN> Trainer@" ; BUCK
+	db "<PKMN> Trainer@" ; MARLEY
+	db "<PKMN> Trainer@" ; MIRA
 	db "#Maniac@"        ; BILL
 	db "Collector@"      ; LAWRENCE
 	db "Rocket@"         ; GIOVANNI
@@ -100,6 +106,3 @@
 	db "TowerTycoon@"    ; TOWERTYCOON
 	db "Designer@"       ; VALERIE
 	db "Shrine@"         ; REI
-	db "Fossil@"         ; OMASTARFOSSIL
-	db "Fossil@"         ; KABUTOPSFOSSIL
-	db "Fossil@"         ; AERODACTYLFOSSIL

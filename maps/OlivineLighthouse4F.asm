@@ -10,9 +10,9 @@ OlivineLighthouse4F_MapScriptHeader:
 	db 0
 
 TrainerLassConnie:
-	trainer EVENT_BEAT_LASS_CONNIE, LASS, CONNIE1, LassConnie1SeenText, LassConnie1BeatenText, 0, LassConnie1Script
+	trainer EVENT_BEAT_LASS_CONNIE, LASS, CONNIE, LassConnieSeenText, LassConnieBeatenText, 0, LassConnieScript
 
-LassConnie1Script:
+LassConnieScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x5b63c
@@ -53,7 +53,7 @@ UnknownText_0x5b584:
 	line "Cianwood."
 	done
 
-LassConnie1SeenText:
+LassConnieSeenText:
 	text "Jasmine is this"
 	line "city's Gym Leader."
 
@@ -64,7 +64,7 @@ LassConnie1SeenText:
 	line "get in my way!"
 	done
 
-LassConnie1BeatenText:
+LassConnieBeatenText:
 	text "Aaack! My #mon!"
 	done
 
@@ -108,4 +108,4 @@ OlivineLighthouse4F_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_SAILOR, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
-	person_event SPRITE_LASS, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, -1
+	person_event SPRITE_LASS, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE

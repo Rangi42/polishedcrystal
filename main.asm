@@ -1646,7 +1646,11 @@ PlayBattleMusic: ; 2ee6c
 
 .trainermusic
 	ld de, MUSIC_RIVAL_BATTLE_XY
-	cp LYRA
+	cp LYRA1
+	jp z, .done
+
+	ld de, MUSIC_WALLY_BATTLE_ORAS
+	cp LYRA2
 	jp z, .done
 
 	ld de, MUSIC_CHAMPION_BATTLE
@@ -5413,13 +5417,21 @@ StartBattleWithMapTrainerScript: ; 0xbe68a
 	waitbutton
 	closetext
 	loadmemtrainer
+	callasm CheckTrainerClass
+	iffalse .nobattle
 	startbattle
 	reloadmapafterbattle
+.nobattle
 	trainerflagaction SET_FLAG
 	loadvar wRunningTrainerBattleScript, -1
 
 AlreadyBeatenTrainerScript:
 	scripttalkafter
+
+CheckTrainerClass:
+	ld a, [wTempTrainerClass]
+	ld [ScriptVar], a
+	ret
 
 SECTION "sprites_1", ROMX, BANK[$30]
 

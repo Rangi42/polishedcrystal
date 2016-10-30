@@ -2365,7 +2365,11 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	call Pokedex_GetSelectedMon
 	cp PIKACHU
 	jr z, .use_variant_1
+	cp PICHU
+	jr z, .use_variant_1
 	cp ARBOK
+	jr z, .use_variant_1
+	cp MEWTWO
 	jr z, .use_variant_1
 	jr .continue
 .use_variant_1

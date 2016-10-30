@@ -78,10 +78,10 @@ PsychicGilbertScript:
 	closetext
 	end
 
-TrainerBird_keeperJose2:
-	trainer EVENT_BEAT_BIRD_KEEPER_JOSE2, BIRD_KEEPER, JOSE2, Bird_keeperJose2SeenText, Bird_keeperJose2BeatenText, 0, Bird_keeperJose2Script
+TrainerBird_keeperJose1:
+	trainer EVENT_BEAT_BIRD_KEEPER_JOSE, BIRD_KEEPER, JOSE1, Bird_keeperJose1SeenText, Bird_keeperJose1BeatenText, 0, Bird_keeperJose1Script
 
-Bird_keeperJose2Script:
+Bird_keeperJose1Script:
 	writecode VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
 	end_if_just_battled
 	opentext
@@ -105,13 +105,13 @@ UnknownScript_0x1a08eb:
 	askforphonenumber PHONE_BIRDKEEPER_JOSE
 	if_equal $1, UnknownScript_0x1a096b
 	if_equal $2, UnknownScript_0x1a0967
-	trainertotext BIRD_KEEPER, JOSE2, $0
+	trainertotext BIRD_KEEPER, JOSE1, $0
 	scall UnknownScript_0x1a095f
 	jump UnknownScript_0x1a0963
 
 UnknownScript_0x1a08ff:
 	scall UnknownScript_0x1a096f
-	winlosstext Bird_keeperJose2BeatenText, 0
+	winlosstext Bird_keeperJose1BeatenText, 0
 	copybytetovar wJoseFightCount
 	if_equal 2, .Fight2
 	if_equal 1, .Fight1
@@ -123,7 +123,7 @@ UnknownScript_0x1a08ff:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight1
 .LoadFight0:
-	loadtrainer BIRD_KEEPER, JOSE2
+	loadtrainer BIRD_KEEPER, JOSE1
 	startbattle
 	reloadmapafterbattle
 	loadvar wJoseFightCount, 1
@@ -131,7 +131,7 @@ UnknownScript_0x1a08ff:
 	end
 
 .LoadFight1:
-	loadtrainer BIRD_KEEPER, JOSE1
+	loadtrainer BIRD_KEEPER, JOSE2
 	startbattle
 	reloadmapafterbattle
 	loadvar wJoseFightCount, 2
@@ -515,12 +515,12 @@ UnknownText_0x1a0dd2:
 	line "premonition says."
 	done
 
-Bird_keeperJose2SeenText:
+Bird_keeperJose1SeenText:
 	text "Tweet! Tweet!"
 	line "Tetweet!"
 	done
 
-Bird_keeperJose2BeatenText:
+Bird_keeperJose1BeatenText:
 	text "Tweet!"
 	done
 
@@ -567,7 +567,7 @@ Route27_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 10, 72, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 37, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
 	person_event SPRITE_YOUNGSTER, 7, 65, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
-	person_event SPRITE_YOUNGSTER, 13, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose2, -1
+	person_event SPRITE_YOUNGSTER, 13, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose1, -1
 	person_event SPRITE_POKE_BALL, 12, 58, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route27TMDragonClaw, EVENT_ROUTE_27_TM_DRAGON_CLAW
 	person_event SPRITE_POKE_BALL, 12, 53, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route27RareCandy, EVENT_ROUTE_27_RARE_CANDY
 	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 3, FisherScript_0x1a089c, -1

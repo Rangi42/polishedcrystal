@@ -430,11 +430,17 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_ROCKET_GIRL   ; ARIANA
 	db SPRITE_OAK           ; POKEMON_PROF
 	db SPRITE_SUPER_NERD    ; MYSTICALMAN
-	db SPRITE_LYRA          ; LYRA
+	db SPRITE_LYRA          ; LYRA1
+	db SPRITE_LYRA          ; LYRA2
 	db SPRITE_LORELEI       ; LORELEI
 	db SPRITE_AGATHA        ; AGATHA
 	db SPRITE_YELLOW        ; YELLOW
 	db SPRITE_WALKER        ; WALKER
+	db SPRITE_CHERYL        ; CHERYL
+	db SPRITE_RILEY         ; RILEY
+	db SPRITE_BUCK          ; BUCK
+	db SPRITE_MARLEY        ; MARLEY
+	db SPRITE_MIRA          ; MIRA
 	db SPRITE_BILL          ; BILL
 	db SPRITE_LAWRENCE      ; LAWRENCE
 	db SPRITE_GIOVANNI      ; GIOVANNI

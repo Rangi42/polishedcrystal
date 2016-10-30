@@ -6358,7 +6358,6 @@ CalcPlayerStats: ; 365d7
 	ld de, PlayerStats
 	ld bc, BattleMonAttack
 
-	ld a, 5
 	call CalcStats
 
 	call BattleCommand_SwitchTurn
@@ -6376,7 +6375,6 @@ CalcEnemyStats: ; 365fd
 	ld de, EnemyStats
 	ld bc, EnemyMonAttack
 
-	ld a, 5
 	call CalcStats
 
 	call BattleCommand_SwitchTurn
@@ -6390,6 +6388,7 @@ CalcEnemyStats: ; 365fd
 
 
 CalcStats: ; 3661d
+	ld a, 5
 .loop
 	push af
 	ld a, [hli]
@@ -8180,7 +8179,7 @@ BattleCommand_Conversion: ; 3707f
 BattleCommand_ResetStats: ; 3710e
 ; resetstats
 
-	ld a, 7 ; neutral
+	ld a, BASE_STAT_LEVEL
 	ld hl, PlayerStatLevels
 	call .Fill
 	ld hl, EnemyStatLevels
@@ -8202,12 +8201,13 @@ BattleCommand_ResetStats: ; 3710e
 	ld hl, EliminatedStatsText
 	jp StdBattleTextBox
 
+; same structure as ResetPlayerStatLevels and ResetEnemyStatLevels
 .Fill:
-	ld b, PlayerStatLevelsEnd - PlayerStatLevels
-.next
+	ld b, NUM_LEVEL_STATS
+.loop
 	ld [hli], a
 	dec b
-	jr nz, .next
+	jr nz, .loop
 	ret
 
 ; 3713e

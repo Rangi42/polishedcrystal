@@ -174,20 +174,22 @@ INCLUDE "audio/music/dppt/mountcoronet.asm"
 INCLUDE "audio/music/dppt/eternaforest.asm"
 INCLUDE "audio/music/dppt/gamecorner.asm"
 INCLUDE "audio/music/rse/route120.asm"
+INCLUDE "audio/music/rse/mountchimney.asm"
 INCLUDE "audio/music/rse/mountpyre.asm"
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/championbattle.asm"
-INCLUDE "audio/music/rse/frontierbrainbattle.asm"
-INCLUDE "audio/music/bw/route12.asm"
 
 
 SECTION "Extra Songs 4", ROMX
 
+INCLUDE "audio/music/rse/frontierbrainbattle.asm"
+INCLUDE "audio/music/bw/route12.asm"
 INCLUDE "audio/music/bw/wcsbattle.asm"
 INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 INCLUDE "audio/music/b2w2/whitetreehollow.asm"
 INCLUDE "audio/music/b2w2/championbattle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/oras/wallybattle.asm"
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
 

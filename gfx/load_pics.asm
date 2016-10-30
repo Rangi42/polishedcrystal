@@ -4,9 +4,13 @@ GetVariant: ; 51040
 	jp z, .GetUnownVariant
 	cp ARBOK
 	jp z, .GetArbokVariant
+	cp PICHU
+	jp z, .GetPichuVariant
+	cp MEWTWO
+	jp z, .GetMewtwoVariant
 
 .GetPikachuVariant:
-; Return Unown letter in MonVariant based on moves
+; Return Pikachu form in MonVariant
 ; hl-8 is ...MonMove1
 ; hl-7 is ...MonMove2
 ; hl-6 is ...MonMove3
@@ -85,8 +89,38 @@ endr
 	ld [MonVariant], a
 	ret
 
+.GetMewtwoVariant:
+; Return Mewtwo form in MonVariant
+
+	push bc
+	ld bc, EnemyMonForm
+	ld a, b
+	cp h
+	jr nz, .notgiovanni
+	ld a, c
+	cp l
+	jr nz, .notgiovanni
+	ld a, [wBattleMode]
+	cp 2
+	jr nz, .notgiovanni
+	ld a, [OtherTrainerClass]
+	cp GIOVANNI
+	jr nz, .notgiovanni
+	pop bc
+	ld a, 2 ; armored
+	ld [MonVariant], a
+	ret
+
+.notgiovanni
+	pop bc
+	ld a, 1 ; plain
+	ld [MonVariant], a
+	ret
+
 .GetUnownVariant:
 ; Return Unown letter in MonVariant based on Form at hl (1-26)
+.GetPichuVariant:
+; Return Pichu form in MonVariant based on Form at hl (1-2)
 .GetArbokVariant:
 ; Return Arbok form in MonVariant based on Form at hl (1-2)
 
@@ -150,15 +184,19 @@ _GetFrontpic: ; 510a5
 	ret
 
 GetFrontpicPointer: ; 510d7
-GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
+GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, UnownPicPointers, MewtwoPicPointers
 
 	ld a, [CurPartySpecies]
 	cp PIKACHU
 	jr z, .pikachu
+	cp PICHU
+	jr z, .pichu
 	cp ARBOK
 	jr z, .arbok
 	cp UNOWN
 	jr z, .unown
+	cp MEWTWO
+	jr z, .mewtwo
 	ld a, [CurPartySpecies]
 	ld d, BANK(PicPointers)
 	ld hl, PicPointers
@@ -168,6 +206,12 @@ GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
 	ld a, [MonVariant]
 	ld d, BANK(PikachuPicPointers)
 	ld hl, PikachuPicPointers
+	jr .ok
+
+.pichu
+	ld a, [MonVariant]
+	ld d, BANK(PichuPicPointers)
+	ld hl, PichuPicPointers
 	jr .ok
 
 .arbok
@@ -180,6 +224,12 @@ GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
 	ld a, [MonVariant]
 	ld d, BANK(UnownPicPointers)
 	ld hl, UnownPicPointers
+	jr .ok
+
+.mewtwo
+	ld a, [MonVariant]
+	ld d, BANK(MewtwoPicPointers)
+	ld hl, MewtwoPicPointers
 
 .ok
 	dec a
@@ -274,7 +324,7 @@ GetBackpic: ; 5116c
 	ld [rSVBK], a
 	push de
 
-	GLOBAL PicPointers, PikachuPicPointers, ArbokPicPointers, UnownPicPointers
+GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, UnownPicPointers, MewtwoPicPointers
 	ld hl, PicPointers
 	ld a, b
 	ld d, BANK(PicPointers)
@@ -285,6 +335,13 @@ GetBackpic: ; 5116c
 	ld d, BANK(PikachuPicPointers)
 	jr .ok
 .not_pikachu
+	cp PICHU
+	jr nz, .not_pichu
+	ld hl, PichuPicPointers
+	ld a, c
+	ld d, BANK(PichuPicPointers)
+	jr .ok
+.not_pichu
 	cp ARBOK
 	jr nz, .not_arbok
 	ld hl, ArbokPicPointers
@@ -293,10 +350,16 @@ GetBackpic: ; 5116c
 	jr .ok
 .not_arbok
 	cp UNOWN
-	jr nz, .ok
+	jr nz, .not_unown
 	ld hl, UnownPicPointers
 	ld a, c
 	ld d, BANK(UnownPicPointers)
+.not_unown
+	cp MEWTWO
+	jr nz, .ok
+	ld hl, MewtwoPicPointers
+	ld a, c
+	ld d, BANK(MewtwoPicPointers)
 .ok
 	dec a
 	ld bc, 6
@@ -328,32 +391,6 @@ GetBackpic: ; 5116c
 FixPicBank: ; 511c5
 	add PICS_FIX
 	ret
-
-.PicsBanks: ; 511d4
-	db PICS_1
-	db PICS_2
-	db PICS_3
-	db PICS_4
-	db PICS_5
-	db PICS_6
-	db PICS_7
-	db PICS_8
-	db PICS_9
-	db PICS_10
-	db PICS_11
-	db PICS_12
-	db PICS_13
-	db PICS_14
-	db PICS_15
-	db PICS_16
-	db PICS_17
-	db PICS_18
-	db PICS_19
-	db PICS_20
-	db PICS_20 + 1
-	db PICS_20 + 2
-	db PICS_20 + 3
-	db PICS_20 + 4
 
 Function511ec: ; 511ec
 	ld a, c

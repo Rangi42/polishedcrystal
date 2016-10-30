@@ -33,6 +33,14 @@ PikachuFramesPointers:
 	dw PikachuPikaFrames
 	dw PikachuChuchuFrames
 
+PichuFramesPointers:
+	dw PichuPlainFrames
+	dw PichuSpikyFrames
+
 ArbokFramesPointers:
 	dw ArbokJohtoFrames
 	dw ArbokKantoFrames
+
+MewtwoFramesPointers:
+	dw MewtwoPlainFrames
+	dw MewtwoArmoredFrames

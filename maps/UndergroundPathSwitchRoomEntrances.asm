@@ -243,13 +243,13 @@ BurglarDuncanScript:
 	closetext
 	end
 
-TrainerBurglarEddie:
-	trainer EVENT_BEAT_BURGLAR_EDDIE, BURGLAR, EDDIE, BurglarEddieSeenText, BurglarEddieBeatenText, 0, BurglarEddieScript
+TrainerBurglarOrson:
+	trainer EVENT_BEAT_BURGLAR_ORSON, BURGLAR, ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText, 0, BurglarOrsonScript
 
-BurglarEddieScript:
+BurglarOrsonScript:
 	end_if_just_battled
 	opentext
-	writetext BurglarEddieAfterText
+	writetext BurglarOrsonAfterText
 	waitbutton
 	closetext
 	end
@@ -840,7 +840,7 @@ BurglarDuncanAfterText:
 	cont "crime, kid!"
 	done
 
-BurglarEddieSeenText:
+BurglarOrsonSeenText:
 	text "They ditched this"
 	line "project before"
 	cont "they finished."
@@ -849,11 +849,11 @@ BurglarEddieSeenText:
 	line "leftover loot."
 	done
 
-BurglarEddieBeatenText:
+BurglarOrsonBeatenText:
 	text "Over the top!"
 	done
 
-BurglarEddieAfterText:
+BurglarOrsonAfterText:
 	text "Underground Ware-"
 	line "house?"
 
@@ -969,7 +969,7 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 .PersonEvents:
 	db 11
 	person_event SPRITE_PHARMACIST, 12, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_PHARMACIST, 8, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarEddie, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_PHARMACIST, 8, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 2, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM11, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

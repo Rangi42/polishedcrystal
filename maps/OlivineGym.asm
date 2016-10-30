@@ -1,6 +1,8 @@
 const_value set 2
 	const OLIVINEGYM_JASMINE
 	const OLIVINEGYM_GYM_GUY
+	const OLIVINEGYM_GENTLEMAN
+	const OLIVINEGYM_LASS
 
 OlivineGym_MapScriptHeader:
 .MapTriggers:
@@ -82,6 +84,44 @@ OlivineGymGuyScript:
 .OlivineGymGuyPreScript:
 	opentext
 	writetext OlivineGymGuyPreText
+	waitbutton
+	closetext
+	end
+
+OlivineGymLassConnie:
+	trainer EVENT_SPOKE_TO_LASS_CONNIE, 0, 0, OlivineGymLassConnieSeenText, 0, 0, OlivineGymLassConnieScript
+
+OlivineGymLassConnieScript:
+	end_if_just_battled
+	opentext
+	checkevent EVENT_BEAT_JASMINE
+	iftrue .BeatJasmine
+	writetext OlivineGymLassConnieSeenText
+	waitbutton
+	closetext
+	end
+
+.BeatJasmine
+	writetext OlivineGymLassConnieAfterText
+	waitbutton
+	closetext
+	end
+
+OlivineGymGentlemanPreston:
+	trainer EVENT_SPOKE_TO_GENTLEMAN_PRESTON, 0, 0, OlivineGymGentlemanPrestonSeenText, 0, 0, OlivineGymGentlemanPrestonScript
+
+OlivineGymGentlemanPrestonScript:
+	end_if_just_battled
+	opentext
+	checkevent EVENT_BEAT_JASMINE
+	iftrue .BeatJasmine
+	writetext OlivineGymGentlemanPrestonSeenText
+	waitbutton
+	closetext
+	end
+
+.BeatJasmine
+	writetext OlivineGymGentlemanPrestonAfterText
 	waitbutton
 	closetext
 	end
@@ -197,6 +237,53 @@ OlivineGymGuyPreText:
 	cont "sionate."
 	done
 
+OlivineGymGentlemanPrestonSeenText:
+	text "I knew you'd"
+	line "come here."
+
+	para "Thank you for"
+	line "helping the"
+	cont "Gym Leader,"
+
+	para "but battle is a"
+	line "separate matter."
+
+	para "Go for it!"
+	done
+
+OlivineGymGentlemanPrestonAfterText:
+	text "Impressive!"
+	line "You should earn"
+
+	para "more badges with"
+	line "that much skill."
+	done
+
+OlivineGymLassConnieSeenText:
+	text "Giggle… I know"
+	line "how capable you"
+
+	para "are from the"
+	line "Lighthouse."
+
+	para "It's time you"
+	line "showed that to"
+	cont "Jasmine!"
+
+	para "Good luck!"
+	done
+
+OlivineGymLassConnieAfterText:
+	text "You are amazing…"
+	line "You should aim"
+
+	para "even higher, with"
+	line "such potential."
+
+	para "Have you been to"
+	line "Mahogany Town?"
+	done
+
 OlivineGym_MapEventHeader:
 	; filler
 	db 0, 0
@@ -215,6 +302,8 @@ OlivineGym_MapEventHeader:
 	signpost 13, 6, SIGNPOST_READ, OlivineGymStatue
 
 .PersonEvents:
-	db 2
+	db 4
 	person_event SPRITE_JASMINE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x9c12f, EVENT_OLIVINE_GYM_JASMINE
 	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
+	person_event SPRITE_GENTLEMAN, 10, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
+	person_event SPRITE_LASS, 7, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE

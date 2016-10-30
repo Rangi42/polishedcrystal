@@ -146,7 +146,7 @@ SailorParkerScript:
 	end
 
 TrainerSailorEddie:
-	trainer EVENT_BEAT_SAILOR_EDDIE, SAILOR, EDDIE_SAILOR, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
+	trainer EVENT_BEAT_SAILOR_EDDIE, SAILOR, EDDIE, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
 
 SailorEddieScript:
 	end_if_just_battled

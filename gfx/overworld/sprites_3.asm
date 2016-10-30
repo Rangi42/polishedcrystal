@@ -16,8 +16,8 @@ GiovanniSpriteGFX:            INCBIN "gfx/overworld/giovanni.2bpp"
 CherylSpriteGFX:              INCBIN "gfx/overworld/cooltrainer_f.2bpp" ; TODO
 RileySpriteGFX:               INCBIN "gfx/overworld/veteran_m.2bpp" ; TODO
 BuckSpriteGFX:                INCBIN "gfx/overworld/rich_boy.2bpp" ; TODO
-MiraSpriteGFX:                INCBIN "gfx/overworld/twin.2bpp" ; TODO
 MarleySpriteGFX:              INCBIN "gfx/overworld/lass.2bpp" ; TODO
+MiraSpriteGFX:                INCBIN "gfx/overworld/twin.2bpp" ; TODO
 ValerieSpriteGFX:             INCBIN "gfx/overworld/valerie.2bpp"
 StevenSpriteGFX:              INCBIN "gfx/overworld/steven.2bpp"
 CynthiaSpriteGFX:             INCBIN "gfx/overworld/cynthia.2bpp"
@@ -35,6 +35,8 @@ FossilSpriteGFX:              INCBIN "gfx/overworld/fossil.2bpp"
 ElectricFenceLeftSpriteGFX:   INCBIN "gfx/overworld/electric_fence_left.2bpp"
 ElectricFenceRightSpriteGFX:  INCBIN "gfx/overworld/electric_fence_right.2bpp"
 MewSpriteGFX:                 INCBIN "gfx/overworld/mew.2bpp"
+CelebiSpriteGFX:              INCBIN "gfx/overworld/celebi.2bpp"
+ArmoredMewtwoSpriteGFX:       INCBIN "gfx/overworld/armored_mewtwo.2bpp"
 UnownWSpriteGFX:              INCBIN "gfx/overworld/unown_w.2bpp"
 UnownASpriteGFX:              INCBIN "gfx/overworld/unown_a.2bpp"
 UnownRSpriteGFX:              INCBIN "gfx/overworld/unown_r.2bpp"

@@ -92,11 +92,17 @@ ArcherPalette:           INCLUDE "gfx/trainers/archer.pal"
 ArianaPalette:           INCLUDE "gfx/trainers/ariana.pal"
 PokemonProfPalette:      INCLUDE "gfx/trainers/oak.pal"
 MysticalmanPalette:      INCLUDE "gfx/trainers/mysticalman.pal"
-LyraPalette:             INCLUDE "gfx/trainers/lyra.pal"
+Lyra1Palette:            INCLUDE "gfx/trainers/lyra1.pal"
+Lyra2Palette:            INCLUDE "gfx/trainers/lyra2.pal"
 LoreleiPalette:          INCLUDE "gfx/trainers/lorelei.pal"
 AgathaPalette:           INCLUDE "gfx/trainers/agatha.pal"
 YellowPalette:           INCLUDE "gfx/trainers/yellow.pal"
 WalkerPalette:           INCLUDE "gfx/trainers/walker.pal"
+CherylPalette:           INCLUDE "gfx/trainers/cal.pal" ; TODO
+RileyPalette:            INCLUDE "gfx/trainers/cal.pal" ; TODO
+BuckPalette:             INCLUDE "gfx/trainers/cal.pal" ; TODO
+MarleyPalette:           INCLUDE "gfx/trainers/cal.pal" ; TODO
+MiraPalette:             INCLUDE "gfx/trainers/cal.pal" ; TODO
 BillPalette:             INCLUDE "gfx/trainers/bill.pal"
 LawrencePalette:         INCLUDE "gfx/trainers/lawrence.pal"
 GiovanniPalette:         INCLUDE "gfx/trainers/giovanni.pal"

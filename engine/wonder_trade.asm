@@ -142,7 +142,7 @@ DoWonderTrade:
 	and a
 	jr nz, .random_trademon
 
-	; ...then receive a shiny Pichu holding a GS Ball
+	; ...then receive a spiky-eared Pichu holding a GS Ball
 	call GetGSBallPichu
 	jp .compute_trademon_stats
 
@@ -487,15 +487,9 @@ GetGSBallPichu:
 	ld hl, wOTTrademonDVs
 	call Trade_CopyThreeBytes
 
-	ld a, SHINY_MASK | HIDDEN_ABILITY | QUIRKY
+	ld a, HIDDEN_ABILITY | QUIRKY
 	ld [wOTTrademonPersonality], a
-	ld b, MALE
-	ld a, [PlayerGender]
-	and a
-	jr z, .male_pikachu
-	ld b, FEMALE
-.male_pikachu
-	ld a, b
+	ld a, FEMALE | 2 ; spiky-eared variant
 	ld [wOTTrademonPersonality + 1], a
 
 	ld hl, PartyMon1Personality

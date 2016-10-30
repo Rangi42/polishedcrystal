@@ -522,7 +522,7 @@ LyraBattleScript:
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
-	loadtrainer LYRA, LYRA_1
+	loadtrainer LYRA1, LYRA1_1
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
@@ -532,7 +532,7 @@ LyraBattleScript:
 	jump .AfterYourDefeat
 
 .Totodile:
-	loadtrainer LYRA, LYRA_2
+	loadtrainer LYRA1, LYRA1_2
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
@@ -542,7 +542,7 @@ LyraBattleScript:
 	jump .AfterYourDefeat
 
 .Chikorita:
-	loadtrainer LYRA, LYRA_3
+	loadtrainer LYRA1, LYRA1_3
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic

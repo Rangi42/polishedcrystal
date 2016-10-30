@@ -490,6 +490,11 @@ PokeAnim_IsPikachu:
 	cp PIKACHU
 	ret
 
+PokeAnim_IsPichu:
+	ld a, [wPokeAnimSpecies]
+	cp PICHU
+	ret
+
 PokeAnim_IsArbok:
 	ld a, [wPokeAnimSpecies]
 	cp ARBOK
@@ -500,6 +505,11 @@ PokeAnim_IsUnown: ; d02ec
 	cp UNOWN
 	ret
 ; d02f2
+
+PokeAnim_IsMewtwo:
+	ld a, [wPokeAnimSpecies]
+	cp MEWTWO
+	ret
 
 PokeAnim_IsEgg: ; d02f2
 	ld a, [wPokeAnimSpecies]
@@ -957,6 +967,11 @@ GetMonAnimPointer: ; d055c
 	ld de, PikachuAnimationExtraPointers
 	call PokeAnim_IsPikachu
 	jr z, .variant
+	ld c, BANK(PichuAnimations)
+	ld hl, PichuAnimationPointers
+	ld de, PichuAnimationExtraPointers
+	call PokeAnim_IsPichu
+	jr z, .variant
 	ld c, BANK(ArbokAnimations)
 	ld hl, ArbokAnimationPointers
 	ld de, ArbokAnimationExtraPointers
@@ -966,6 +981,11 @@ GetMonAnimPointer: ; d055c
 	ld hl, UnownAnimationPointers
 	ld de, UnownAnimationExtraPointers
 	call PokeAnim_IsUnown
+	jr z, .variant
+	ld c, BANK(MewtwoAnimations)
+	ld hl, MewtwoAnimationPointers
+	ld de, MewtwoAnimationExtraPointers
+	call PokeAnim_IsMewtwo
 	jr z, .variant
 	ld c, BANK(PicAnimations)
 	ld hl, AnimationPointers
@@ -1039,6 +1059,11 @@ GetMonFramesPointer: ; d05ce
 	ld c, BANK(PikachusFrames)
 	ld hl, PikachuFramesPointers
 	jr z, .got_frames
+	call PokeAnim_IsPichu
+	ld b, BANK(PichuFramesPointers)
+	ld c, BANK(PichusFrames)
+	ld hl, PichuFramesPointers
+	jr z, .got_frames
 	call PokeAnim_IsArbok
 	ld b, BANK(ArbokFramesPointers)
 	ld c, BANK(ArboksFrames)
@@ -1048,6 +1073,11 @@ GetMonFramesPointer: ; d05ce
 	ld b, BANK(UnownFramesPointers)
 	ld c, BANK(UnownsFrames)
 	ld hl, UnownFramesPointers
+	jr z, .got_frames
+	call PokeAnim_IsMewtwo
+	ld b, BANK(MewtwoFramesPointers)
+	ld c, BANK(MewtwosFrames)
+	ld hl, MewtwoFramesPointers
 	jr z, .got_frames
 	ld a, [wPokeAnimSpecies]
 	cp CHIKORITA
@@ -1095,6 +1125,10 @@ GetMonBitmaskPointer: ; d061b
 	ld a, BANK(PikachuBitmasksPointers)
 	ld hl, PikachuBitmasksPointers
 	jr z, .variant
+	call PokeAnim_IsPichu
+	ld a, BANK(PichuBitmasksPointers)
+	ld hl, PichuBitmasksPointers
+	jr z, .variant
 	call PokeAnim_IsArbok
 	ld a, BANK(ArbokBitmasksPointers)
 	ld hl, ArbokBitmasksPointers
@@ -1102,6 +1136,10 @@ GetMonBitmaskPointer: ; d061b
 	call PokeAnim_IsUnown
 	ld a, BANK(UnownBitmasksPointers)
 	ld hl, UnownBitmasksPointers
+	jr z, .variant
+	call PokeAnim_IsMewtwo
+	ld a, BANK(MewtwoBitmasksPointers)
+	ld hl, MewtwoBitmasksPointers
 	jr z, .variant
 	ld a, BANK(BitmasksPointers)
 	ld hl, BitmasksPointers
@@ -1138,9 +1176,13 @@ endr
 PokeAnim_GetSpeciesOrVariant: ; d065c
 	call PokeAnim_IsPikachu
 	jr z, .variant
+	call PokeAnim_IsPichu
+	jr z, .variant
 	call PokeAnim_IsArbok
 	jr z, .variant
 	call PokeAnim_IsUnown
+	jr z, .variant
+	call PokeAnim_IsMewtwo
 	jr z, .variant
 	ld a, [wPokeAnimSpecies]
 	ret

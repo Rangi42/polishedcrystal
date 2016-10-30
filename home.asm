@@ -1283,7 +1283,7 @@ CheckTrainerBattle:: ; 360d
 	add hl, de
 	ld a, [hl]
 	and $f
-	cp $2
+	cp PERSONTYPE_TRAINER
 	jr nz, .next
 
 ; Is visible on the map

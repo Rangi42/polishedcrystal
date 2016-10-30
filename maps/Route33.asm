@@ -11,7 +11,7 @@ Route33_MapScriptHeader:
 	db 0
 
 TrainerHikerAnthony:
-	trainer EVENT_BEAT_HIKER_ANTHONY, HIKER, ANTHONY2, HikerAnthony2SeenText, HikerAnthony2BeatenText, 0, .Script
+	trainer EVENT_BEAT_HIKER_ANTHONY, HIKER, ANTHONY1, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
@@ -25,7 +25,7 @@ TrainerHikerAnthony:
 	iftrue .NumberAccepted
 	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
-	writetext HikerAnthony2AfterText
+	writetext HikerAnthony1AfterText
 	buttonsound
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
@@ -37,13 +37,13 @@ TrainerHikerAnthony:
 	askforphonenumber PHONE_HIKER_ANTHONY
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
-	trainertotext HIKER, ANTHONY2, $0
+	trainertotext HIKER, ANTHONY1, $0
 	scall .RegisteredNumber
 	jump .NumberAccepted
 
 .Rematch:
 	scall .RematchStd
-	winlosstext HikerAnthony2BeatenText, 0
+	winlosstext HikerAnthony1BeatenText, 0
 	copybytetovar wAnthonyFightCount
 	if_equal 4, .Fight4
 	if_equal 3, .Fight3
@@ -63,7 +63,7 @@ TrainerHikerAnthony:
 	checkflag ENGINE_FLYPOINT_OLIVINE
 	iftrue .LoadFight1
 .LoadFight0:
-	loadtrainer HIKER, ANTHONY2
+	loadtrainer HIKER, ANTHONY1
 	startbattle
 	reloadmapafterbattle
 	loadvar wAnthonyFightCount, 1
@@ -71,7 +71,7 @@ TrainerHikerAnthony:
 	end
 
 .LoadFight1:
-	loadtrainer HIKER, ANTHONY1
+	loadtrainer HIKER, ANTHONY2
 	startbattle
 	reloadmapafterbattle
 	loadvar wAnthonyFightCount, 2
@@ -152,7 +152,7 @@ Route33Sign:
 Route33FruitTreeScript:
 	fruittree FRUITTREE_ROUTE_33
 
-HikerAnthony2SeenText:
+HikerAnthony1SeenText:
 	text "I came through the"
 	line "tunnel, but I"
 
@@ -160,12 +160,12 @@ HikerAnthony2SeenText:
 	line "of energy left."
 	done
 
-HikerAnthony2BeatenText:
+HikerAnthony1BeatenText:
 	text "Whoa! You've got"
 	line "more zip than me!"
 	done
 
-HikerAnthony2AfterText:
+HikerAnthony1AfterText:
 	text "We Hikers are at"
 	line "our best in the"
 	cont "mountains."

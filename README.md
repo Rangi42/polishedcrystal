@@ -233,6 +233,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
 * Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.
 * Add: Politoed can learn Energy Ball.
+* Add: Misdreavus can learn Disarm Voice.
 * Add: Give in-game trades good natures.
 * Add: TM prices from OR/AS.
 * Add: Show quantity in Bag in marts.
@@ -256,7 +257,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Update random Wonder Trade OT names.
 * Add: Use original Jynx sprite.
 * Add: Make overworld sprites darker at night.
-* Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night
+* Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
+* Add: Olivine Gym has its two trainers from HGSS.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.
