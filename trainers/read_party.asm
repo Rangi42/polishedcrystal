@@ -36,10 +36,10 @@ endr
 .skip_trainer
 	dec b
 	jr z, .got_trainer
-.loop
+.loop1
 	ld a, [hli]
 	cp $ff
-	jr nz, .loop
+	jr nz, .loop1
 	jr .skip_trainer
 .got_trainer
 
@@ -49,37 +49,16 @@ endr
 	jr nz, .skip_name
 
 	ld a, [hli]
-	ld c, a
-	ld b, 0
+	ld [OtherTrainerType], a
+
 	ld d, h
 	ld e, l
-	ld hl, TrainerTypes
-rept 2
-	add hl, bc
-endr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld bc, .done
+	ld bc, ComputeTrainerReward
 	push bc
-	jp [hl]
 
-.done
-	jp ComputeTrainerReward
-; 397e3
-
-TrainerTypes: ; 397e3
-	dw TrainerType1 ; level, species
-	dw TrainerType2 ; level, species, moves
-	dw TrainerType3 ; level, species, item
-	dw TrainerType4 ; level, species, item, moves
-; 397eb
-
-TrainerType1: ; 397eb
-; normal (level, species)
 	ld h, d
 	ld l, e
-.loop
+.loop2
 	ld a, [hli]
 	cp $ff
 	ret z
@@ -87,31 +66,40 @@ TrainerType1: ; 397eb
 	ld [CurPartyLevel], a
 	ld a, [hli]
 	ld [CurPartySpecies], a
+
 	ld a, OTPARTYMON
 	ld [MonType], a
+
 	push hl
+
 	predef TryAddMonToParty
+
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_ITEM, a
+	jr z, .not_item_1
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+.not_item_1
+
 	pop hl
-	jr .loop
-; 39806
 
-TrainerType2: ; 39806
-; moves
-	ld h, d
-	ld l, e
-.loop
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_ITEM, a
+	jr z, .not_item_2
 	ld a, [hli]
-	cp $ff
-	ret z
+	ld [de], a
+.not_item_2
 
-	ld [CurPartyLevel], a
-	ld a, [hli]
-	ld [CurPartySpecies], a
-	ld a, OTPARTYMON
-	ld [MonType], a
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_MOVES, a
+	jr z, .not_moves
 
 	push hl
-	predef TryAddMonToParty
 	ld a, [OTPartyCount]
 	dec a
 	ld hl, OTPartyMon1Moves
@@ -140,126 +128,6 @@ TrainerType2: ; 39806
 	ld e, l
 	ld hl, MON_PP
 	add hl, de
-	push hl
-	ld hl, MON_MOVES
-	add hl, de
-	pop de
-
-	ld b, NUM_MOVES
-.copy_pp
-	ld a, [hli]
-	and a
-	jr z, .copied_pp
-
-	push hl
-	push bc
-	dec a
-	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
-	pop bc
-	pop hl
-
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .copy_pp
-.copied_pp
-
-	pop hl
-	jr .loop
-; 39871
-
-TrainerType3: ; 39871
-; item
-	ld h, d
-	ld l, e
-.loop
-	ld a, [hli]
-	cp $ff
-	ret z
-
-	ld [CurPartyLevel], a
-	ld a, [hli]
-	ld [CurPartySpecies], a
-	ld a, OTPARTYMON
-	ld [MonType], a
-	push hl
-	predef TryAddMonToParty
-	ld a, [OTPartyCount]
-	dec a
-	ld hl, OTPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	pop hl
-	ld a, [hli]
-	ld [de], a
-	jr .loop
-; 3989d (e:589d)
-
-TrainerType4: ; 3989d
-; item + moves
-	ld h, d
-	ld l, e
-.loop
-	ld a, [hli]
-	cp $ff
-	ret z
-
-	ld [CurPartyLevel], a
-	ld a, [hli]
-	ld [CurPartySpecies], a
-
-	ld a, OTPARTYMON
-	ld [MonType], a
-
-	push hl
-	predef TryAddMonToParty
-	ld a, [OTPartyCount]
-	dec a
-	ld hl, OTPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	pop hl
-
-	ld a, [hli]
-	ld [de], a
-
-	push hl
-	ld a, [OTPartyCount]
-	dec a
-	ld hl, OTPartyMon1Moves
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	pop hl
-
-	ld b, NUM_MOVES
-.copy_moves
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .copy_moves
-
-	push hl
-
-	ld a, [OTPartyCount]
-	dec a
-	ld hl, OTPartyMon1
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-	ld hl, MON_PP
-	add hl, de
 
 	push hl
 	ld hl, MON_MOVES
@@ -288,9 +156,13 @@ TrainerType4: ; 3989d
 	dec b
 	jr nz, .copy_pp
 .copied_pp
+
 	pop hl
-	jp .loop
-; 3991b
+
+.not_moves
+	jp .loop2
+
+; 397e3
 
 ComputeTrainerReward: ; 3991b (e:591b)
 	ld hl, hProduct

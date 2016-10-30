@@ -2080,6 +2080,7 @@ wMonTriedToEvolve:: ds 1
 TimeOfDay:: ; d269
 	ds 1
 
+OtherTrainerType::
 	ds 1
 
 SECTION "Enemy Party", WRAMX, BANK [1]
