@@ -351,7 +351,7 @@ BattleText_UserHurtBySpikes: ; 0x80bae
 ; 0x80bc2
 
 RecoveredUsingText: ; 0x80bc2
-	text "<TARGET>"
+	text "<USER>"
 	line "recovered using a"
 	cont "@"
 	text_from_ram StringBuffer1
@@ -503,7 +503,7 @@ BattleText_ItemHealedConfusion: ; ItemHealedConfusion
 	text "A @"
 	text_from_ram StringBuffer1
 	text " rid"
-	line "<TARGET>"
+	line "<USER>"
 	cont "of its confusion."
 	prompt
 ; 0x80dcc

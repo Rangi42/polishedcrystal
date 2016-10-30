@@ -4875,6 +4875,12 @@ UpdateMoveData: ; 35e40
 
 ; 35e5c
 
+PostStatusWithSynchronize:
+	farcall RunEnemySynchronizeAbility
+PostStatus:
+	farcall UseEnemyHeldStatusHealingItem
+	farcall RunEnemyStatusHealAbilities
+	ret
 
 BattleCommand_SleepTarget: ; 35e5c
 ; sleeptarget
@@ -4934,9 +4940,7 @@ BattleCommand_SleepTarget: ; 35e5c
 	ld hl, FellAsleepText
 	call StdBattleTextBox
 
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
+	call PostStatus
 	ld a, BATTLE_VARS_STATUS_OPP
 	cp 1 << SLP
 	jp z, OpponentCantMove
@@ -4988,11 +4992,7 @@ BattleCommand_PoisonTarget: ; 35eee
 	ld hl, WasPoisonedText
 	call StdBattleTextBox
 
-	farcall RunEnemySynchronizeAbility
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatusWithSynchronize
 
 ; 35f2c
 
@@ -5079,11 +5079,7 @@ BattleCommand_Poison: ; 35f2c
 	call StdBattleTextBox
 
 .finished
-	farcall RunEnemySynchronizeAbility
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatusWithSynchronize
 
 .failed
 	push hl
@@ -5241,11 +5237,7 @@ BattleCommand_BurnTarget: ; 3608c
 	ld hl, WasBurnedText
 	call StdBattleTextBox
 
-	farcall RunEnemySynchronizeAbility
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatusWithSynchronize
 
 ; 360dd
 
@@ -5320,10 +5312,7 @@ BattleCommand_FreezeTarget: ; 36102
 	ld hl, WasFrozenText
 	call StdBattleTextBox
 
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatus
 .no_magma_armor
 	call OpponentCantMove
 	call EndRechargeOpp
@@ -5375,11 +5364,7 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
 	call PrintParalyze
-	farcall RunEnemySynchronizeAbility
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatusWithSynchronize
 
 ; 361ac
 
@@ -6309,11 +6294,7 @@ BattleCommand_Burn:
 	call UpdateBattleHuds
 	ld hl, WasBurnedText
 	call StdBattleTextBox
-	farcall RunEnemySynchronizeAbility
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatusWithSynchronize
 
 .burned
 	call AnimateFailedMove
@@ -7653,17 +7634,9 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	ld hl, BecameConfusedText
 	call StdBattleTextBox
 
-	call GetOpponentItemAfterUnnerve
-	ld a, b
-	cp HELD_HEAL_STATUS
-	jr z, .heal_confusion
-	cp HELD_HEAL_CONFUSION
-	jr z, .heal_confusion
+	farcall UseEnemyConfusionHealingItem
 	farcall RunEnemyStatusHealAbilities
-	ret nz
-.heal_confusion
-	ld hl, UseConfusionHealingItem
-	jp CallBattleCore
+	ret
 
 ; 36db6
 
@@ -7765,57 +7738,36 @@ BattleCommand_Paralyze: ; 36dc7
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
 	call PrintParalyze
-	farcall RunEnemySynchronizeAbility
-	farcall UseHeldStatusHealingItem
-	ret nz
-	farcall RunEnemyStatusHealAbilities
-	ret
+	jp PostStatusWithSynchronize
 
 ; 36e5b
 
 
 BattleCommand_Substitute: ; 36e7c
 ; substitute
-
 	call BattleCommand_MoveDelay
-	ld hl, BattleMonMaxHP
-	ld de, PlayerSubstituteHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld hl, EnemyMonMaxHP
-	ld de, EnemySubstituteHP
-.got_hp
 
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
 	jr nz, .already_has_sub
-
-	ld a, [hli]
-	ld b, [hl]
-	srl a
-	rr b
-	srl a
-	rr b
-	dec hl
-	dec hl
-	ld a, b
-	ld [de], a
-	ld a, [hld]
-	sub b
-	ld e, a
-	ld a, [hl]
-	sbc 0
-	ld d, a
+	farcall GetQuarterMaxHP
+	push bc
+	call CompareHP
+	pop bc
 	jr c, .too_weak_to_sub
-	ld a, d
-	or e
 	jr z, .too_weak_to_sub
-	ld [hl], d
-	inc hl
-	ld [hl], e
 
+	ld hl, PlayerSubstituteHP
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_hp
+	ld hl, EnemySubstituteHP
+.got_hp
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+	farcall SubtractHPFromUser
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	set SUBSTATUS_SUBSTITUTE, [hl]
@@ -7828,7 +7780,6 @@ BattleCommand_Substitute: ; 36e7c
 	ld hl, wEnemyWrapCount
 	ld de, wEnemyTrappingMove
 .player
-
 	xor a
 	ld [hl], a
 	ld [de], a
@@ -9312,8 +9263,9 @@ BattleCommand_StartWeather:
 BattleCommand_BellyDrum: ; 37c1a
 ; bellydrum
 	farcall GetHalfMaxHP
-	farcall CheckUserHasEnoughHP
-	jr nc, .failed
+	call CompareHP
+	jr c, .failed
+	jr z, .failed
 
 	call BattleCommand_AttackUp2
 	ld a, [AttackMissed]
@@ -9538,11 +9490,6 @@ GetUserItemAfterUnnerve:
 	ld hl, NoItem
 	ld b, HELD_NONE
 	ret
-
-GetOpponentItemAfterUnnerve:
-	call BattleCommand_SwitchTurn
-	call GetUserItemAfterUnnerve
-	jp BattleCommand_SwitchTurn
 
 UnnerveItemsBlocked:
 	db ORAN_BERRY
