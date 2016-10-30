@@ -1378,7 +1378,7 @@ HandleLeftovers: ; 3c8eb
 	ret z
 	call GetSixteenthMaxHP
 	call RestoreHP
-	ld hl, BattleText_TargetRecoveredWithItem
+	ld hl, BattleText_UserRecoveredWithItem
 	jp StdBattleTextBox
 ; 3c93c
 

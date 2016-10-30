@@ -116,8 +116,8 @@ PerishCountText: ; 0x80864
 	prompt
 ; 0x80880
 
-BattleText_TargetRecoveredWithItem: ; 0x80880
-	text "<TARGET>"
+BattleText_UserRecoveredWithItem: ; 0x80880
+	text "<USER>"
 	line "recovered with"
 	cont "@"
 	text_from_ram StringBuffer1
