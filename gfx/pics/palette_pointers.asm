@@ -513,19 +513,13 @@ SylveonPalette:         INCLUDE "gfx/pics/sylveon/normal.pal"
 SylveonShinyPalette:    INCLUDE "gfx/pics/sylveon/shiny.pal"
 PorygonZPalette:        INCLUDE "gfx/pics/porygon_z/normal.pal"
 PorygonZShinyPalette:   INCLUDE "gfx/pics/porygon_z/shiny.pal"
-
-; Egg
-	RGB 30, 26, 11
-	RGB 23, 16, 00
-; Egg shiny
-	RGB 30, 26, 11
-	RGB 23, 16, 00
+EggPalette:             INCLUDE "gfx/pics/egg/normal.pal"
+EggShinyPalette:        INCLUDE "gfx/pics/egg/shiny.pal"
 
 ; 255
-	RGB 23, 23, 23
-	RGB 17, 17, 17
+MewtwoArmoredPalette:   INCLUDE "gfx/pics/mewtwo_armored/normal.pal"
 ; 255 shiny
-	RGB 23, 23, 23
-	RGB 17, 17, 17
+	RGB 30, 22, 17
+	RGB 16, 14, 19
 
 ; b0ce

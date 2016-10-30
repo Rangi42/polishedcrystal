@@ -84,6 +84,7 @@ UniqueDVOrPersonalityTrainerPokemon:
 	db LEAF,        1,         AERODACTYL, 98, PERFECT_DVS, HIDDEN_ABILITY | ADAMANT, MALE
 	db LEAF,        1,         MEW,        99, PERFECT_DVS, HIDDEN_ABILITY | MODEST,  MALE
 	db LEAF,        1,         VENUSAUR,  100, PERFECT_DVS, HIDDEN_ABILITY | HASTY,   MALE
+	db GIOVANNI,    2,         MEWTWO,     70, PERFECT_DVS, ABILITY_2      | MODEST,  MALE
 
 	; Top percentage Rattata
 	db YOUNGSTER,   JOEY1,     RATTATA,     5, PERFECT_DVS, ABILITY_2 | ADAMANT, MALE
