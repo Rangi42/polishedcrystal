@@ -1693,6 +1693,13 @@ HandleWeather: ; 3cb9e
 	dec [hl]
 	jp z, .ended
 
+	; the above needs actual [Weather] to be
+	; able to time it out, but otherwise check
+	; Cloud Nine
+	call GetWeatherAfterCloudNine
+	cp WEATHER_NONE
+	ret z
+
 	ld hl, .WeatherMessages
 	call .PrintWeatherMessage
 	call SetPlayerTurn
@@ -1760,10 +1767,10 @@ HandleWeather: ; 3cb9e
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL
 	call z, .HandleHail
-	ld a, [Weather] ; HandleHail messes with a
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
 	farcall RunWeatherAbilities
@@ -1918,6 +1925,65 @@ GetQuarterMaxHP: ; 3cc8e
 .end
 	ret
 ; 3cc9f
+
+
+GetThirdMaxHP::
+; save content of arithmetic hram to allow usage
+; during arithmetic chains (pinch abilities)
+	push hl
+	push de
+	ld hl, hProduct
+	ld a, [hl]
+	ld d, a
+	ld [hl], 0
+	inc hl
+	ld a, [hl]
+	ld e, a
+	ld [hl], 0
+	inc hl
+	push de
+	ld a, [hl]
+	ld d, a
+	ld [hl], 0
+	inc hl
+	ld a, [hl]
+	ld e, a
+	ld [hl], 0
+
+; output: bc
+	call GetMaxHP
+	ld a, b
+	ld [hDividend + 2], a
+	ld a, c
+	ld [hDividend + 3], a
+	ld a, 3
+	ld [hDivisor], a
+	ld b, 4
+	call Divide
+	ld [hQuotient + 2], a
+	ld c, a
+	ld [hQuotient + 1], a
+	ld b, a
+	ld a, e
+	ld [hld], a
+	ld a, d
+	ld [hld], a
+	pop de
+	ld a, e
+	ld [hld], a
+	ld a, d
+	ld [hl], a
+	pop de
+	pop hl
+
+; floor = 1
+	ld a, c
+	or b
+	jr nz, .end
+	inc c
+.end
+	ret
+; 3ccac
 
 
 GetHalfMaxHP: ; 3cc9f
@@ -5468,9 +5534,9 @@ PlayerSwitch: ; 3e3ad
 
 .linked
 	ld a, [wBattleAction]
-	cp BATTLEACTION_E
+	cp BATTLEACTION_STRUGGLE
 	jp z, .switch
-	cp BATTLEACTION_D
+	cp BATTLEACTION_MOVE255
 	jp z, .switch
 	cp BATTLEACTION_SWITCH1
 	jp c, .switch
@@ -6074,10 +6140,10 @@ ParseEnemyAction: ; 3e7c1
 	call z, LinkBattleSendReceiveAction
 	call Call_LoadTempTileMapToTileMap
 	ld a, [wBattleAction]
-	cp BATTLEACTION_E
+	cp BATTLEACTION_STRUGGLE
 	jp z, .struggle
-	cp BATTLEACTION_D
-	jp z, .battle_action_d
+	cp BATTLEACTION_MOVE255
+	jp z, .move255
 	cp BATTLEACTION_SWITCH1
 	jp nc, ResetVarsForSubstatusRage
 	ld [CurEnemyMoveNum], a
@@ -6111,7 +6177,8 @@ ParseEnemyAction: ; 3e7c1
 	jp nz, ResetVarsForSubstatusRage
 	jr .continue
 
-.battle_action_d
+.move255
+	; this is never used
 	ld a, $ff
 	jr .finish
 

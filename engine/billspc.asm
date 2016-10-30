@@ -2023,10 +2023,10 @@ endr
 .PartyToBox: ; e3267
 	call .CopyFromParty
 	ld a, $1
-	ld [wc2cd], a
+	ld [wGameLogicPaused], a
 	farcall SaveGameData
 	xor a
-	ld [wc2cd], a
+	ld [wGameLogicPaused], a
 	call .CopyToBox
 	ret
 ; e327d

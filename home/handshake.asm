@@ -1,10 +1,10 @@
 AskSerial:: ; 2063
 ; send out a handshake while serial int is off
-	ld a, [wc2d4]
+	ld a, [wPrinterConnectionOpen]
 	bit 0, a
 	ret z
 
-	ld a, [wc2d5]
+	ld a, [wPrinterOpcode]
 	and a
 	ret nz
 
@@ -19,7 +19,7 @@ AskSerial:: ; 2063
 	ld [hl], a
 
 	ld a, $c
-	ld [wc2d5], a
+	ld [wPrinterOpcode], a
 
 ; handshake
 	ld a, $88

@@ -709,7 +709,7 @@ LoadNote: ; e83d1
 	ld hl, Channel1NoteDuration - Channel1
 	add hl, bc
 	ld a, [hl]
-	ld hl, wc297 ; ????
+	ld hl, wCurNoteDuration ; ????
 	sub [hl]
 	jr nc, .ok
 	ld a, 1
@@ -789,7 +789,7 @@ LoadNote: ; e83d1
 	ld d, a
 .resume
 	push bc
-	ld hl, wc297
+	ld hl, wCurNoteDuration
 	ld b, 0; loop count
 .loop
 	inc b
@@ -1786,7 +1786,7 @@ MusicE0: ; e88bd
 ; ????
 ; params: 2
 	call GetMusicByte
-	ld [wc297], a
+	ld [wCurNoteDuration], a
 
 	call GetMusicByte
 	ld d, a

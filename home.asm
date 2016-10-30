@@ -314,7 +314,7 @@ PrintLetterDelay:: ; 313d
 	call GetJoypad
 
 ; input override
-	ld a, [wc2d7]
+	ld a, [wDisableTextAcceleration]
 	and a
 	jr nz, .wait
 
