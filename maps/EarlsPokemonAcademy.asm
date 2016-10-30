@@ -393,7 +393,7 @@ AcademyNotebookText3:
 	para "Boy: E-he-he…"
 
 	para "I haven't written"
-	line "anymore…"
+	line "any more…"
 	done
 
 EarlsPokemonAcademy_MapEventHeader:
