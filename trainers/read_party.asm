@@ -56,14 +56,15 @@ endr
 	ld bc, ComputeTrainerReward
 	push bc
 
-	ld h, d
-	ld l, e
 .loop2
+; level
 	ld a, [hli]
 	cp $ff
 	ret z
 
 	ld [CurPartyLevel], a
+
+; species
 	ld a, [hli]
 	ld [CurPartySpecies], a
 
@@ -71,12 +72,15 @@ endr
 	ld [MonType], a
 
 	push hl
-
 	predef TryAddMonToParty
+	pop hl
 
+; item?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_ITEM, a
-	jr z, .not_item_1
+	jr z, .not_item
+
+	push hl
 	ld a, [OTPartyCount]
 	dec a
 	ld hl, OTPartyMon1Item
@@ -84,17 +88,13 @@ endr
 	call AddNTimes
 	ld d, h
 	ld e, l
-.not_item_1
-
 	pop hl
 
-	ld a, [OtherTrainerType]
-	bit TRNTYPE_ITEM, a
-	jr z, .not_item_2
 	ld a, [hli]
 	ld [de], a
-.not_item_2
 
+.not_item
+; moves?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_MOVES, a
 	jr z, .not_moves
