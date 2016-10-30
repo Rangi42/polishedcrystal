@@ -15,7 +15,7 @@ BASE_STAT_LEVEL EQU 7
 	const SP_DEFENSE
 	const ACCURACY
 	const EVASION
-	const ABILITY ; not related to abilities
+	const MULTIPLE_STATS ; used by Curse
 NUM_LEVEL_STATS EQU const_value
 
 ; move struct

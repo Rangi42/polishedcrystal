@@ -5415,8 +5415,11 @@ BattleCommand_DoubleUp:
 	jr z, .msg_animate
 	and d ; if this result in a being nonzero, we want to give a failure message
 	ret z
+	ld b, MULTIPLE_STATS + 1
+	call GetStatName
 	call AnimateFailedMove
-	jp BattleCommand_StatUpMessage
+	ld hl, WontRiseAnymoreText
+	jp StdBattleTextBox
 .msg_animate
 	ld a, e
 	and a
@@ -6054,7 +6057,7 @@ GetStatName: ; 3648f
 	db "Spcl.Def@"
 	db "Accuracy@"
 	db "Evasion@"
-	db "Ability@"
+	db "stats@" ; used by Curse
 ; 364e6
 
 

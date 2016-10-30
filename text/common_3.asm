@@ -349,11 +349,11 @@ UnknownText_0x1c0cc6::
 
 UnknownText_0x1c0cd0::
 	interpret_data
-	text $4c, "went way up!"
+	text $4c, "sharply rose!"
 	prompt
 
 UnknownText_0x1c0ce0::
-	text " went up!"
+	text " rose!"
 	prompt
 
 UnknownText_0x1c0ceb::
@@ -364,7 +364,7 @@ UnknownText_0x1c0ceb::
 
 UnknownText_0x1c0cf5::
 	interpret_data
-	text $4c, "sharply fell!"
+	text $4c, "harshly fell!"
 	prompt
 
 UnknownText_0x1c0d06::

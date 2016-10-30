@@ -89,7 +89,7 @@ BattleCommand_Curse: ; 37588
 
 ; Can't raise either stat.
 
-	ld b, ABILITY + 1
+	ld b, MULTIPLE_STATS + 1
 	call GetStatName
 	call AnimateFailedMove
 	ld hl, WontRiseAnymoreText
