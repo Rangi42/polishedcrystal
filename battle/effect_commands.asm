@@ -1636,6 +1636,26 @@ BattleCommand_CheckHit: ; 34d32
 	ld b, 7
 
 .no_opponent_unaware
+	; The way accuracy and evasion is combined
+	; from generation III onwards is a bit unintuitive.
+	; Instead of calcing them seperately, they
+	; are both combined additively. For example,
+	; acc-3 and eva+3 is 3/9, not 3/12. In addition,
+	; the change is capped at -6 or +6
+	ld a, 7
+	add b
+	sub c
+	jr c, .min_acc
+	jr z, .min_acc
+	cp 14
+	jr c, .got_acc_stat
+	; max accuracy
+	ld a, 13
+	jr .got_acc_stat
+.min_acc
+	ld a, 1
+.got_acc_stat
+	ld b, a
 	xor a
 	ld [hMultiplicand + 0], a
 	ld [hMultiplicand + 1], a
@@ -1652,8 +1672,8 @@ BattleCommand_CheckHit: ; 34d32
 	ld [hMultiplicand + 2], a
 
 	ld hl, hMultiplier
-	ld a, c
-	cp b
+	ld a, b
+	cp 7
 	jr c, .accuracy_not_lowered
 	; No need to multiply/divide if acc=eva
 	jr z, .stat_changes_done
@@ -1666,31 +1686,22 @@ BattleCommand_CheckHit: ; 34d32
 	jr nz, .stat_changes_done
 
 .accuracy_not_lowered
+	; Multiply by min(acc-4,3)
 	ld a, b
-	cp 7
-	jr c, .acc_reduced
-	sub 4 ; multiply by 4-9, not 8-13
+	sub 4
+	cp 3
+	jr nc, .got_multiplier
+	ld a, 3
+.got_multiplier
 	ld [hl], a
 	call Multiply
-.acc_reduced
-	ld a, 7
-	sub c
-	jr c, .eva_boosted
-	add 3
-	ld [hl], a
-	call Multiply
-.eva_boosted
-	ld a, 7
+	; Divide by min(10-acc,3)
+	ld a, 10
 	sub b
-	jr c, .acc_boosted
-	add 3
-	ld [hl], a
-	ld b, 4
-	call Divide
-.acc_boosted
-	ld a, c
-	cp 7
-	jr c, .stat_changes_done
+	cp 3
+	jr nc, .got_divisor
+	ld a, 3
+.got_divisor
 	ld [hl], a
 	ld b, 4
 	call Divide
