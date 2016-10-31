@@ -310,17 +310,18 @@ BattleTowerMons1:
 	db THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 40000
-	bigdw 35000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bd, $db, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 41 ; HP
@@ -338,17 +339,18 @@ BattleTowerMons1:
 	db MUD_SLAP, PSYCHIC_M, CALM_MIND, TOXIC
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 50000
-	bigdw 35000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $df, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 39 ; HP
@@ -366,17 +368,18 @@ BattleTowerMons1:
 	db SHADOW_BALL, IRON_TAIL, PURSUIT, TOXIC
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $be, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 46 ; HP
@@ -394,17 +397,18 @@ BattleTowerMons1:
 	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $d7, $fd, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 25, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 66 ; HP
@@ -422,17 +426,18 @@ BattleTowerMons1:
 	db REVERSAL, HYPER_BEAM, EARTHQUAKE, ATTRACT
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 30000
-	bigdw 40000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ce, $fc, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 47 ; HP
@@ -450,17 +455,18 @@ BattleTowerMons1:
 	db SURF, PSYCHIC_M, RECOVER, ANCIENTPOWER
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 30000
-	bigdw 33300
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 38 ; HP
@@ -478,17 +484,18 @@ BattleTowerMons1:
 	db BLIZZARD, EARTHQUAKE, HYPER_BEAM, TOXIC
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 35000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $db, $bd, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 46 ; HP
@@ -506,17 +513,18 @@ BattleTowerMons1:
 	db HYPER_BEAM, SUPERSONIC, EARTHQUAKE, BITE
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $bf, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 43 ; HP
@@ -534,17 +542,18 @@ BattleTowerMons1:
 	db BLIZZARD, SURF, THUNDERBOLT, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 52 ; HP
@@ -562,17 +571,18 @@ BattleTowerMons1:
 	db SLASH, FEINT_ATTACK, SURF, BLIZZARD
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 35000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bf, $bb, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 38 ; HP
@@ -590,17 +600,18 @@ BattleTowerMons1:
 	db PSYCHIC_M, BLIZZARD, HYPER_BEAM, TRI_ATTACK
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 40000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $bd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 44 ; HP
@@ -618,17 +629,18 @@ BattleTowerMons1:
 	db PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $de, $fd, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 37 ; HP
@@ -646,17 +658,18 @@ BattleTowerMons1:
 	db FEINT_ATTACK, SOLAR_BEAM, ROAR, SUNNY_DAY
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 33000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $df, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 20, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 36 ; HP
@@ -674,17 +687,18 @@ BattleTowerMons1:
 	db PSYBEAM, MUD_SLAP, SHADOW_BALL, AGILITY
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $df, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 30 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 39 ; HP
@@ -702,17 +716,18 @@ BattleTowerMons1:
 	db HEADBUTT, SOLAR_BEAM, ROLLOUT, STRENGTH
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 32000
-	bigdw 40000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cd, $fc, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 77 ; HP
@@ -730,17 +745,18 @@ BattleTowerMons1:
 	db HEADBUTT, PROTECT, BODY_SLAM, SURF
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $ff, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 57 ; HP
@@ -758,17 +774,18 @@ BattleTowerMons1:
 	db TOXIC, GIGA_DRAIN, THIEF, CONFUSION
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 45 ; HP
@@ -786,17 +803,18 @@ BattleTowerMons1:
 	db REVERSAL, ENDURE, COUNTER, ROCK_SMASH
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $7f, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 43 ; HP
@@ -814,17 +832,18 @@ BattleTowerMons1:
 	db HIDDEN_POWER, 0, 0, 0
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ff, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 0, 0, 0 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 36 ; HP
@@ -842,17 +861,18 @@ BattleTowerMons1:
 	db HEADBUTT, SWAGGER, LEER, ICY_WIND
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $56, $55, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 30, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 40 ; HP
@@ -870,17 +890,18 @@ BattleTowerMons1:
 	db TOXIC, PSYCHIC, FIRE_PUNCH, HEADBUTT
 	dw 0 ; OT ID
 	dt 1000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $67, $36, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 10 ; Level
 	db 0, 0 ; Status
 	bigdw 34 ; HP
@@ -902,17 +923,18 @@ BattleTowerMons2:
 	db PROTECT, TOXIC, MUD_SLAP, ATTRACT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bc, $fb, $cc ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 81 ; HP
@@ -930,17 +952,18 @@ BattleTowerMons2:
 	db RECOVER, PSYCHIC_M, SURF, THUNDERBOLT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $bd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 71 ; HP
@@ -958,17 +981,18 @@ BattleTowerMons2:
 	db HYPER_BEAM, DRAGON_RAGE, THUNDERBOLT, FIRE_BLAST
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $af, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 83 ; HP
@@ -986,17 +1010,18 @@ BattleTowerMons2:
 	db ROAR, IRON_TAIL, SWAGGER, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 30000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ff, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 77 ; HP
@@ -1014,17 +1039,18 @@ BattleTowerMons2:
 	db PSYCHIC_M, CALM_MIND, TOXIC, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 50000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 68 ; HP
@@ -1042,17 +1068,18 @@ BattleTowerMons2:
 	db FLAMETHROWER, ROAR, HYPER_BEAM, IRON_TAIL
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 35000
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $bf, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 5, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 81 ; HP
@@ -1070,17 +1097,18 @@ BattleTowerMons2:
 	db ENDURE, REVERSAL, MEGAHORN, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 30000
-	bigdw 45000
-	bigdw 30000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 78 ; HP
@@ -1098,17 +1126,18 @@ BattleTowerMons2:
 	db HYPER_BEAM, PSYCHIC_M, TOXIC, DREAM_EATER
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 83 ; HP
@@ -1126,17 +1155,18 @@ BattleTowerMons2:
 	db REST, HYPER_BEAM, EARTHQUAKE, DRAGON_RAGE
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bf, $bb, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 78 ; HP
@@ -1154,17 +1184,18 @@ BattleTowerMons2:
 	db PSYCHIC_M, SUBMISSION, SOFTBOILED, COUNTER
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 30000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fb, $df, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 25, 10, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 148 ; HP
@@ -1182,17 +1213,18 @@ BattleTowerMons2:
 	db PSYCHIC_M, THUNDERBOLT, BLIZZARD, CONFUSE_RAY
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 30000
-	bigdw 40000
-	bigdw 55000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $ed, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 98 ; HP
@@ -1210,17 +1242,18 @@ BattleTowerMons2:
 	db THUNDERBOLT, THUNDER_WAVE, STRENGTH, TOXIC
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $cf, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 58 ; HP
@@ -1238,17 +1271,18 @@ BattleTowerMons2:
 	db STEEL_WING, SLASH, TOXIC, SANDSTORM
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 45000
-	bigdw 40000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $df, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 20, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 73 ; HP
@@ -1266,17 +1300,18 @@ BattleTowerMons2:
 	db THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MACH_PUNCH
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 35000
-	bigdw 50000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $bf, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 67 ; HP
@@ -1294,17 +1329,18 @@ BattleTowerMons2:
 	db THUNDERBOLT, EARTHQUAKE, HYPER_BEAM, BLIZZARD
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 76 ; HP
@@ -1322,17 +1358,18 @@ BattleTowerMons2:
 	db SURF, BLIZZARD, ATTRACT, RAIN_DANCE
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $df, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 82 ; HP
@@ -1350,17 +1387,18 @@ BattleTowerMons2:
 	db EARTHQUAKE, THUNDER, ATTRACT, SURF
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $ff, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 83 ; HP
@@ -1378,17 +1416,18 @@ BattleTowerMons2:
 	db HYPER_BEAM, BLIZZARD, FIRE_BLAST, ATTRACT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fc, $7f, $cc ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 5, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 98 ; HP
@@ -1406,17 +1445,18 @@ BattleTowerMons2:
 	db PSYCHIC_M, SWAGGER, PLAY_ROUGH, HEADBUTT
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $7c, $77, $cc ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 97 ; HP
@@ -1434,17 +1474,18 @@ BattleTowerMons2:
 	db BLIZZARD, EARTHQUAKE, SURF, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $45, $64, $55 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 74 ; HP
@@ -1462,17 +1503,18 @@ BattleTowerMons2:
 	db CALM_MIND, EARTHQUAKE, SURF, RAIN_DANCE
 	dw 0 ; OT ID
 	dt 8000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $45, $54, $55 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 5 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 20 ; Level
 	db 0, 0 ; Status
 	bigdw 81 ; HP
@@ -1494,17 +1536,18 @@ BattleTowerMons3:
 	db THUNDERBOLT, THUNDER_WAVE, ROAR, MUD_SLAP
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $be, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 103 ; HP
@@ -1522,17 +1565,18 @@ BattleTowerMons3:
 	db DOUBLE_TEAM, SURF, EARTHQUAKE, SUBMISSION
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 55000
-	bigdw 55000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 119 ; HP
@@ -1550,17 +1594,18 @@ BattleTowerMons3:
 	db THUNDER_WAVE, PSYCHIC_M, RECOVER, SURF
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ff, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 101 ; HP
@@ -1578,17 +1623,18 @@ BattleTowerMons3:
 	db BLIZZARD, DRAIN_KISS, DREAM_EATER, ATTRACT
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 102 ; HP
@@ -1606,17 +1652,18 @@ BattleTowerMons3:
 	db EARTHQUAKE, SLUDGE_BOMB, SLASH, MUD_SLAP
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $ff, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 81 ; HP
@@ -1634,17 +1681,18 @@ BattleTowerMons3:
 	db GIGA_DRAIN, SUNNY_DAY, SOLAR_BEAM, DOUBLE_TEAM
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 109 ; HP
@@ -1662,17 +1710,18 @@ BattleTowerMons3:
 	db TOXIC, REFLECT, SOFTBOILED, PROTECT
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 30000
-	bigdw 45000
-	bigdw 30000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 217 ; HP
@@ -1690,17 +1739,18 @@ BattleTowerMons3:
 	db FLAMETHROWER, CRUNCH, SHADOW_BALL, DREAM_EATER
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 108 ; HP
@@ -1718,17 +1768,18 @@ BattleTowerMons3:
 	db CROSS_CHOP, ICE_PUNCH, EARTHQUAKE, FIRE_BLAST
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bf, $db, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 118 ; HP
@@ -1746,17 +1797,18 @@ BattleTowerMons3:
 	db ATTRACT, CONFUSE_RAY, TOXIC, WING_ATTACK
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 30000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $de, $fd, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 35 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 111 ; HP
@@ -1774,17 +1826,18 @@ BattleTowerMons3:
 	db PSYCHIC_M, RECOVER, HYPER_BEAM, TRI_ATTACK
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 30000
-	bigdw 40000
-	bigdw 55000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 117 ; HP
@@ -1802,17 +1855,18 @@ BattleTowerMons3:
 	db EARTHQUAKE, RETURN, HYPER_BEAM, BONEMERANG
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
 	db 255 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 99 ; HP
@@ -1830,17 +1884,18 @@ BattleTowerMons3:
 	db LIGHT_SCREEN, THUNDERBOLT, PROTECT, THUNDER
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 45000
-	bigdw 40000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $de, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 98 ; HP
@@ -1858,17 +1913,18 @@ BattleTowerMons3:
 	db RAIN_DANCE, WATER_GUN, ICY_WIND, STRENGTH
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 35000
-	bigdw 50000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 25, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 142 ; HP
@@ -1886,17 +1942,18 @@ BattleTowerMons3:
 	db RAIN_DANCE, THUNDER, SURF, FLAIL
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 139 ; HP
@@ -1914,17 +1971,18 @@ BattleTowerMons3:
 	db CONFUSION, SWIFT, TOXIC, CALM_MIND
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $ff, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 20, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 99 ; HP
@@ -1942,17 +2000,18 @@ BattleTowerMons3:
 	db WRAP, TOXIC, SLUDGE_BOMB, BUBBLE_BEAM
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 47000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 10, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 110 ; HP
@@ -1970,17 +2029,18 @@ BattleTowerMons3:
 	db THIEF, LICK, NIGHT_SHADE, GIGA_DRAIN
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $7f, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 30, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 101 ; HP
@@ -1998,17 +2058,18 @@ BattleTowerMons3:
 	db HEADBUTT, PROTECT, ROAR, LEER
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $47, $74, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 30 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 114 ; HP
@@ -2026,17 +2087,18 @@ BattleTowerMons3:
 	db DRILL_PECK, PURSUIT, AIR_SLASH, SWIFT
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $76, $77, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 15, 20 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 106 ; HP
@@ -2054,17 +2116,18 @@ BattleTowerMons3:
 	db LOW_KICK, KARATE_CHOP, REVERSAL, FOCUS_ENERGY
 	dw 0 ; OT ID
 	dt 27000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $67, $76, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 25, 15, 30 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 30 ; Level
 	db 0, 0 ; Status
 	bigdw 99 ; HP
@@ -2086,17 +2149,18 @@ BattleTowerMons4:
 	db RETURN, HYPER_BEAM, EARTHQUAKE, IRON_TAIL
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $df, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 5, 10, 15 ; PP
 	db 255 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 143 ; HP
@@ -2114,17 +2178,18 @@ BattleTowerMons4:
 	db SURF, DRAGONBREATH, HYPER_BEAM, BLIZZARD
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 142 ; HP
@@ -2142,17 +2207,18 @@ BattleTowerMons4:
 	db ATTRACT, BODY_SLAM, CURSE, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $de, $dd, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 205 ; HP
@@ -2170,17 +2236,18 @@ BattleTowerMons4:
 	db THUNDERBOLT, ICE_BEAM, CONFUSE_RAY, SURF
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 186 ; HP
@@ -2198,17 +2265,18 @@ BattleTowerMons4:
 	db SANDSTORM, IRON_TAIL, EARTHQUAKE, TOXIC
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $de, $fd, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 137 ; HP
@@ -2226,17 +2294,18 @@ BattleTowerMons4:
 	db PSYCHIC_M, THUNDERPUNCH, RECOVER, FIRE_PUNCH
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 126 ; HP
@@ -2254,17 +2323,18 @@ BattleTowerMons4:
 	db BLIZZARD, THUNDERBOLT, SURF, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bf, $db, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 131 ; HP
@@ -2282,17 +2352,18 @@ BattleTowerMons4:
 	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $fe, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 25, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 233 ; HP
@@ -2310,17 +2381,18 @@ BattleTowerMons4:
 	db EXPLOSION, EARTHQUAKE, SANDSTORM, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 145 ; HP
@@ -2338,17 +2410,18 @@ BattleTowerMons4:
 	db SLASH, STEEL_WING, PURSUIT, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fb, $df, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 25, 20, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 139 ; HP
@@ -2366,17 +2439,18 @@ BattleTowerMons4:
 	db EARTHQUAKE, HYPER_BEAM, SLUDGE_BOMB, MUD_SLAP
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bf, $eb, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 108 ; HP
@@ -2394,17 +2468,18 @@ BattleTowerMons4:
 	db SURF, PSYCHIC_M, EARTHQUAKE, BLIZZARD
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cb, $fc, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 157 ; HP
@@ -2422,17 +2497,18 @@ BattleTowerMons4:
 	db ICE_BEAM, THUNDERBOLT, PSYBEAM, THIEF
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $ce, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 147 ; HP
@@ -2450,17 +2526,18 @@ BattleTowerMons4:
 	db FLAME_WHEEL, LEER, BODY_SLAM, ROAR
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $bf, $eb, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 30, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 152 ; HP
@@ -2478,17 +2555,18 @@ BattleTowerMons4:
 	db RAPID_SPIN, PROTECT, TOXIC, SANDSTORM
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $7f, $a7, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 40, 10, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 140 ; HP
@@ -2506,17 +2584,18 @@ BattleTowerMons4:
 	db CURSE, WATER_GUN, ANCIENTPOWER, ROCK_SMASH
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $ff, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 25, 5, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 133 ; HP
@@ -2534,17 +2613,18 @@ BattleTowerMons4:
 	db FIRE_SPIN, DRAGON_RAGE, FLY, SLASH
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 142 ; HP
@@ -2562,17 +2642,18 @@ BattleTowerMons4:
 	db EGG_BOMB, STOMP, MEGA_DRAIN, CONFUSION
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $7e, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 10, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 158 ; HP
@@ -2590,17 +2671,18 @@ BattleTowerMons4:
 	db CONFUSION, THUNDERPUNCH, HEADBUTT, DISABLE
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $77, $77, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 15, 15, 20 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 146 ; HP
@@ -2618,17 +2700,18 @@ BattleTowerMons4:
 	db SCREECH, TOXIC, SLUDGE, HARDEN
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $67, $56, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 40, 10, 20, 30 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 161 ; HP
@@ -2646,17 +2729,18 @@ BattleTowerMons4:
 	db LIGHT_SCREEN, THUNDERPUNCH, SWIFT, THUNDERBOLT
 	dw 0 ; OT ID
 	dt 64000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $76, $57, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 15, 20, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 40 ; Level
 	db 0, 0 ; Status
 	bigdw 124 ; HP
@@ -2678,17 +2762,18 @@ BattleTowerMons5:
 	db SURF, HYPER_BEAM, BLIZZARD, DRAGONBREATH
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 55000
-	bigdw 60000
-	bigdw 50000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 20 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 179 ; HP
@@ -2706,17 +2791,18 @@ BattleTowerMons5:
 	db REST, CRUNCH, DREAM_EATER, FLAMETHROWER
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 178 ; HP
@@ -2734,17 +2820,18 @@ BattleTowerMons5:
 	db ANCIENTPOWER, AIR_SLASH, TOXIC, PROTECT
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cf, $dc, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 189 ; HP
@@ -2762,17 +2849,18 @@ BattleTowerMons5:
 	db HYPER_BEAM, EARTHQUAKE, SURF, CURSE
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 55000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 263 ; HP
@@ -2790,17 +2878,18 @@ BattleTowerMons5:
 	db THUNDERBOLT, SURF, CONFUSE_RAY, BLIZZARD
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 60000
-	bigdw 60000
-	bigdw 55000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 5 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 234 ; HP
@@ -2818,17 +2907,18 @@ BattleTowerMons5:
 	db THUNDERBOLT, THUNDER_WAVE, SHADOW_BALL, HIDDEN_POWER
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 60000
-	bigdw 57000
-	bigdw 55000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $df, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 161 ; HP
@@ -2846,17 +2936,18 @@ BattleTowerMons5:
 	db HYPER_BEAM, SLASH, AGILITY, METAL_CLAW
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $fe, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 30, 35 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 169 ; HP
@@ -2874,17 +2965,18 @@ BattleTowerMons5:
 	db REST, SURF, PSYCHIC_M, CALM_MIND
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 20 ; PP
-	db 15 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 196 ; HP
@@ -2902,17 +2994,18 @@ BattleTowerMons5:
 	db CROSS_CHOP, EARTHQUAKE, FIRE_BLAST, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 44000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $fe, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 15 ; PP
-	db 13 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 187 ; HP
@@ -2930,17 +3023,18 @@ BattleTowerMons5:
 	db THUNDER_WAVE, RECOVER, THUNDERBOLT, SURF
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 44000
-	bigdw 40000
-	bigdw 45000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ff, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 161 ; HP
@@ -2958,17 +3052,18 @@ BattleTowerMons5:
 	db EARTHQUAKE, SLASH, HYPER_BEAM, SLUDGE_BOMB
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $7f, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 135 ; HP
@@ -2986,17 +3081,18 @@ BattleTowerMons5:
 	db THUNDERBOLT, EXPLOSION, MIRROR_COAT, REST
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 54000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $f7, $df, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 20, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 161 ; HP
@@ -3014,17 +3110,18 @@ BattleTowerMons5:
 	db HYPER_BEAM, EARTHQUAKE, FIRE_BLAST, IRON_TAIL
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 181 ; HP
@@ -3042,17 +3139,18 @@ BattleTowerMons5:
 	db CONFUSE_RAY, ATTRACT, HYPER_BEAM, TOXIC
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 40000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $ff, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 178 ; HP
@@ -3070,17 +3168,18 @@ BattleTowerMons5:
 	db DRILL_PECK, THUNDERBOLT, THUNDER_WAVE, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 20, 5 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 190 ; HP
@@ -3098,17 +3197,18 @@ BattleTowerMons5:
 	db SANDSTORM, FLY, STEEL_WING, TOXIC
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $7e, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 25, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 164 ; HP
@@ -3126,17 +3226,18 @@ BattleTowerMons5:
 	db SANDSTORM, TOXIC, EXPLOSION, SWAGGER
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 45000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dc, $fd, $cc ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 5, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 169 ; HP
@@ -3154,17 +3255,18 @@ BattleTowerMons5:
 	db SANDSTORM, IRON_TAIL, REST, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 40000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 176 ; HP
@@ -3182,17 +3284,18 @@ BattleTowerMons5:
 	db DREAM_EATER, CRUNCH, PSYCHIC_M, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $54, $55, $44 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 161 ; HP
@@ -3210,17 +3313,18 @@ BattleTowerMons5:
 	db HYPER_BEAM, SURF, RAIN_DANCE, ZAP_CANNON
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $67, $56, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 193 ; HP
@@ -3238,17 +3342,18 @@ BattleTowerMons5:
 	db BLIZZARD, HYPER_BEAM, ROAR, ICY_WIND
 	dw 0 ; OT ID
 	dt 125000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $54, $55, $44 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 20, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 50 ; Level
 	db 0, 0 ; Status
 	bigdw 181 ; HP
@@ -3270,17 +3375,18 @@ BattleTowerMons6:
 	db DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 55000
-	bigdw 50000
-	bigdw 60000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 211 ; HP
@@ -3298,17 +3404,18 @@ BattleTowerMons6:
 	db CRUNCH, EARTHQUAKE, ROCK_SLIDE, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 240 ; HP
@@ -3326,17 +3433,18 @@ BattleTowerMons6:
 	db FLAMETHROWER, CRUNCH, DREAM_EATER, REST
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 55000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 212 ; HP
@@ -3354,17 +3462,18 @@ BattleTowerMons6:
 	db BLIZZARD, RECOVER, TOXIC, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 223 ; HP
@@ -3382,17 +3491,18 @@ BattleTowerMons6:
 	db FIRE_PUNCH, CROSS_CHOP, THUNDERPUNCH, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 226 ; HP
@@ -3410,17 +3520,18 @@ BattleTowerMons6:
 	db REST, DRILL_PECK, THUNDERBOLT, THUNDER_WAVE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 229 ; HP
@@ -3438,17 +3549,18 @@ BattleTowerMons6:
 	db COUNTER, MIRROR_COAT, DESTINY_BOND, SAFEGUARD
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 20, 5, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 346 ; HP
@@ -3466,17 +3578,18 @@ BattleTowerMons6:
 	db HYPER_BEAM, SUPERSONIC, EARTHQUAKE, BITE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 25 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 215 ; HP
@@ -3494,17 +3607,18 @@ BattleTowerMons6:
 	db HYPER_BEAM, ICY_WIND, THUNDERBOLT, SURF
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 229 ; HP
@@ -3522,17 +3636,18 @@ BattleTowerMons6:
 	db MUD_SLAP, MOONLIGHT, PSYCHIC_M, FEINT_ATTACK
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 232 ; HP
@@ -3550,17 +3665,18 @@ BattleTowerMons6:
 	db FLAMETHROWER, CRUNCH, EXTREMESPEED, IRON_TAIL
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 40000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 228 ; HP
@@ -3578,17 +3694,18 @@ BattleTowerMons6:
 	db STEEL_WING, FLY, TOXIC, PROTECT
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 196 ; HP
@@ -3606,17 +3723,18 @@ BattleTowerMons6:
 	db SOFTBOILED, TOXIC, PROTECT, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cf, $bc, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 424 ; HP
@@ -3634,17 +3752,18 @@ BattleTowerMons6:
 	db ROCK_SLIDE, SURF, BODY_SLAM, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $af, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 307 ; HP
@@ -3662,17 +3781,18 @@ BattleTowerMons6:
 	db REVERSAL, MEGAHORN, EARTHQUAKE, COUNTER
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $fe, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 214 ; HP
@@ -3690,17 +3810,18 @@ BattleTowerMons6:
 	db BLIZZARD, PSYCHIC_M, SHADOW_BALL, ICY_WIND
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $fe, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 196 ; HP
@@ -3718,17 +3839,18 @@ BattleTowerMons6:
 	db SURF, EARTHQUAKE, RAPID_SPIN, BLIZZARD
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 40, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 209 ; HP
@@ -3746,17 +3868,18 @@ BattleTowerMons6:
 	db EARTHQUAKE, SURF, IRON_TAIL, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $bf, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 245 ; HP
@@ -3774,17 +3897,18 @@ BattleTowerMons6:
 	db EARTHQUAKE, SLASH, HYPER_BEAM, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $6b, $76, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 201 ; HP
@@ -3802,17 +3926,18 @@ BattleTowerMons6:
 	db SPORE, GIGA_DRAIN, HYPER_BEAM, SLUDGE_BOMB
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $56, $65, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 171 ; HP
@@ -3830,17 +3955,18 @@ BattleTowerMons6:
 	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, RETURN
 	dw 0 ; OT ID
 	dt 216000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $57, $65, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 20 ; PP
 	db 255 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 60 ; Level
 	db 0, 0 ; Status
 	bigdw 205 ; HP
@@ -3862,17 +3988,18 @@ BattleTowerMons7:
 	db THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 56000
-	bigdw 55000
-	bigdw 50000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 231 ; HP
@@ -3890,17 +4017,18 @@ BattleTowerMons7:
 	db BLIZZARD, SHADOW_BALL, SURF, MUD_SLAP
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 60000
-	bigdw 60000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $fe, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 318 ; HP
@@ -3918,17 +4046,18 @@ BattleTowerMons7:
 	db FEINT_ATTACK, MOONLIGHT, CONFUSE_RAY, TOXIC
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 54000
-	bigdw 60000
-	bigdw 55000
-	bigdw 50000
-	bigdw 58000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 5, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 274 ; HP
@@ -3946,17 +4075,18 @@ BattleTowerMons7:
 	db COUNTER, SOFTBOILED, SHADOW_BALL, THUNDERBOLT
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 55000
-	bigdw 55000
-	bigdw 58000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $fe, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 495 ; HP
@@ -3974,17 +4104,18 @@ BattleTowerMons7:
 	db ROCK_SLIDE, EARTHQUAKE, BLIZZARD, SHADOW_BALL
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 5, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 365 ; HP
@@ -4002,17 +4133,18 @@ BattleTowerMons7:
 	db CRUNCH, FLAMETHROWER, FEINT_ATTACK, ROAR
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 58000
-	bigdw 50000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cd, $dc, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 20, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 245 ; HP
@@ -4030,17 +4162,18 @@ BattleTowerMons7:
 	db EARTHQUAKE, CRUNCH, ROCK_SLIDE, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $bd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 279 ; HP
@@ -4058,17 +4191,18 @@ BattleTowerMons7:
 	db THUNDERBOLT, DRILL_PECK, THUNDER_WAVE, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $bd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 20, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 264 ; HP
@@ -4086,17 +4220,18 @@ BattleTowerMons7:
 	db REST, EXPLOSION, PSYCHIC_M, GIGA_DRAIN
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 268 ; HP
@@ -4114,17 +4249,18 @@ BattleTowerMons7:
 	db MOONLIGHT, FEINT_ATTACK, PSYCHIC_M, SHADOW_BALL
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 20, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 269 ; HP
@@ -4142,17 +4278,18 @@ BattleTowerMons7:
 	db SURF, THUNDERBOLT, HYPER_BEAM, ROAR
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $be, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 271 ; HP
@@ -4170,17 +4307,18 @@ BattleTowerMons7:
 	db EARTHQUAKE, SURF, SLUDGE_BOMB, IRON_TAIL
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $ed, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 266 ; HP
@@ -4198,17 +4336,18 @@ BattleTowerMons7:
 	db SLASH, EARTHQUAKE, HYPER_BEAM, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 5, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 262 ; HP
@@ -4226,17 +4365,18 @@ BattleTowerMons7:
 	db REFLECT, FIRE_PUNCH, PSYCHIC_M, ENCORE
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fb, $df, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 195 ; HP
@@ -4254,17 +4394,18 @@ BattleTowerMons7:
 	db CROSS_CHOP, ICE_PUNCH, THUNDERPUNCH, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $de, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 227 ; HP
@@ -4282,17 +4423,18 @@ BattleTowerMons7:
 	db AGILITY, BATON_PASS, CRUNCH, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 40, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 231 ; HP
@@ -4310,17 +4452,18 @@ BattleTowerMons7:
 	db REVERSAL, ENDURE, BODY_SLAM, HI_JUMP_KICK
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 202 ; HP
@@ -4338,17 +4481,18 @@ BattleTowerMons7:
 	db REVERSAL, ENDURE, MEGAHORN, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $7f, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 251 ; HP
@@ -4366,17 +4510,18 @@ BattleTowerMons7:
 	db SUNNY_DAY, SOLAR_BEAM, MORNING_SUN, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $47, $64, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 5 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 233 ; HP
@@ -4394,17 +4539,18 @@ BattleTowerMons7:
 	db SLASH, EARTHQUAKE, HYPER_BEAM, FLAMETHROWER
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $45, $64, $55 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 5, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 230 ; HP
@@ -4422,17 +4568,18 @@ BattleTowerMons7:
 	db HYDRO_PUMP, ICE_PUNCH, HYPER_BEAM, IRON_TAIL
 	dw 0 ; OT ID
 	dt 343000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $67, $66, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 5, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 70 ; Level
 	db 0, 0 ; Status
 	bigdw 231 ; HP
@@ -4454,17 +4601,18 @@ BattleTowerMons8:
 	db THUNDER_WAVE, THUNDERBOLT, IRON_TAIL, ROAR
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 263 ; HP
@@ -4482,17 +4630,18 @@ BattleTowerMons8:
 	db REST, BELLY_DRUM, SLEEP_TALK, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 55000
-	bigdw 50000
-	bigdw 55500
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $be, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 415 ; HP
@@ -4510,17 +4659,18 @@ BattleTowerMons8:
 	db REST, CRUNCH, FLAMETHROWER, SUNNY_DAY
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 55000
-	bigdw 55000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 280 ; HP
@@ -4538,17 +4688,18 @@ BattleTowerMons8:
 	db EARTHQUAKE, BODY_SLAM, IRON_TAIL, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 276 ; HP
@@ -4566,17 +4717,18 @@ BattleTowerMons8:
 	db REST, SURF, CONFUSE_RAY, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 366 ; HP
@@ -4594,17 +4746,18 @@ BattleTowerMons8:
 	db REST, CRUNCH, EARTHQUAKE, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 318 ; HP
@@ -4622,17 +4775,18 @@ BattleTowerMons8:
 	db THUNDERBOLT, SHADOW_BALL, CONFUSE_RAY, THIEF
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $ed, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 247 ; HP
@@ -4650,17 +4804,18 @@ BattleTowerMons8:
 	db EXPLOSION, TOXIC, SOLAR_BEAM, SWAGGER
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 273 ; HP
@@ -4678,17 +4833,18 @@ BattleTowerMons8:
 	db REST, SURF, BLIZZARD, DRAGONBREATH
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 40000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 273 ; HP
@@ -4706,17 +4862,18 @@ BattleTowerMons8:
 	db THUNDER_WAVE, SURF, THUNDERBOLT, OUTRAGE
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 303 ; HP
@@ -4734,17 +4891,18 @@ BattleTowerMons8:
 	db PSYCHIC_M, RECOVER, HYPER_BEAM, TRI_ATTACK
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 40000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $fe, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 20, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 293 ; HP
@@ -4762,17 +4920,18 @@ BattleTowerMons8:
 	db DRAIN_KISS, BLIZZARD, DREAM_EATER, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 264 ; HP
@@ -4790,17 +4949,18 @@ BattleTowerMons8:
 	db SURF, CONFUSE_RAY, BLIZZARD, WING_ATTACK
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 40000
-	bigdw 45000
-	bigdw 40000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 5, 35 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 256 ; HP
@@ -4818,17 +4978,18 @@ BattleTowerMons8:
 	db STEEL_WING, FLY, MUD_SLAP, TOXIC
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 35000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 258 ; HP
@@ -4846,17 +5007,18 @@ BattleTowerMons8:
 	db FLAMETHROWER, SKY_ATTACK, STEEL_WING, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 25, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 300 ; HP
@@ -4874,17 +5036,18 @@ BattleTowerMons8:
 	db HYPER_BEAM, REST, EARTHQUAKE, ROAR
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $fe, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 282 ; HP
@@ -4902,17 +5065,18 @@ BattleTowerMons8:
 	db THUNDERBOLT, EXPLOSION, MIRROR_COAT, TOXIC
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 40000
-	bigdw 40000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $fe, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 250 ; HP
@@ -4930,17 +5094,18 @@ BattleTowerMons8:
 	db SLASH, EARTHQUAKE, THIEF, MUD_SLAP
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 40000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 214 ; HP
@@ -4958,17 +5123,18 @@ BattleTowerMons8:
 	db GIGA_DRAIN, SLUDGE_BOMB, HYPER_BEAM, TOXIC
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $66, $56, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 260 ; HP
@@ -4986,17 +5152,18 @@ BattleTowerMons8:
 	db HYPER_BEAM, SUBMISSION, STRENGTH, TOXIC
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $67, $46, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 25, 15, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 241 ; HP
@@ -5014,17 +5181,18 @@ BattleTowerMons8:
 	db ROAR, SHADOW_BALL, HYPER_BEAM, THUNDERPUNCH
 	dw 0 ; OT ID
 	dt 512000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $57, $65, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 80 ; Level
 	db 0, 0 ; Status
 	bigdw 286 ; HP
@@ -5046,17 +5214,18 @@ BattleTowerMons9:
 	db FEINT_ATTACK, MUD_SLAP, MOONLIGHT, CONFUSE_RAY
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 55000
-	bigdw 60000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 10, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 349 ; HP
@@ -5074,17 +5243,18 @@ BattleTowerMons9:
 	db FIRE_BLAST, HYPER_BEAM, OUTRAGE, BLIZZARD
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 65000
-	bigdw 50000
-	bigdw 56000
-	bigdw 60000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 343 ; HP
@@ -5102,17 +5272,18 @@ BattleTowerMons9:
 	db RECOVER, THUNDERBOLT, SURF, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 55000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 289 ; HP
@@ -5130,17 +5301,18 @@ BattleTowerMons9:
 	db EXPLOSION, BLIZZARD, SURF, ICY_WIND
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $bd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 266 ; HP
@@ -5158,17 +5330,18 @@ BattleTowerMons9:
 	db WING_ATTACK, HAZE, HYPER_BEAM, GIGA_DRAIN
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cf, $dc, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 35, 30, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 325 ; HP
@@ -5186,17 +5359,18 @@ BattleTowerMons9:
 	db TOXIC, PSYCHIC_M, RECOVER, PROTECT
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 325 ; HP
@@ -5214,17 +5388,18 @@ BattleTowerMons9:
 	db DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 309 ; HP
@@ -5242,17 +5417,18 @@ BattleTowerMons9:
 	db HYPER_BEAM, CRUNCH, EARTHQUAKE, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 354 ; HP
@@ -5270,17 +5446,18 @@ BattleTowerMons9:
 	db REST, SURF, THUNDERBOLT, PSYCHIC_M
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $de, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 15, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 405 ; HP
@@ -5298,17 +5475,18 @@ BattleTowerMons9:
 	db PSYCHIC_M, SHADOW_BALL, SUNNY_DAY, MORNING_SUN
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 15, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 294 ; HP
@@ -5326,17 +5504,18 @@ BattleTowerMons9:
 	db CROSS_CHOP, VITAL_THROW, FIRE_BLAST, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 55000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 337 ; HP
@@ -5354,17 +5533,18 @@ BattleTowerMons9:
 	db FIRE_BLAST, SURF, EARTHQUAKE, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 455 ; HP
@@ -5382,17 +5562,18 @@ BattleTowerMons9:
 	db SUNNY_DAY, FLAMETHROWER, EXTREMESPEED, REST
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 45000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $dd, $fd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 336 ; HP
@@ -5410,17 +5591,18 @@ BattleTowerMons9:
 	db SOLAR_BEAM, SUNNY_DAY, SOFTBOILED, FIRE_BLAST
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fb, $df, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 10, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 633 ; HP
@@ -5438,17 +5620,18 @@ BattleTowerMons9:
 	db FLAMETHROWER, CRUNCH, SUNNY_DAY, SOLAR_BEAM
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $bf, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 309 ; HP
@@ -5466,17 +5649,18 @@ BattleTowerMons9:
 	db SANDSTORM, STEEL_WING, TOXIC, RETURN
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fe, $ff, $ee ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 25, 10, 20 ; PP
 	db 255 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 279 ; HP
@@ -5494,17 +5678,18 @@ BattleTowerMons9:
 	db SOFTBOILED, ANCIENTPOWER, AIR_SLASH, FOCUS_BLAST
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 321 ; HP
@@ -5522,17 +5707,18 @@ BattleTowerMons9:
 	db HYPER_BEAM, FLAMETHROWER, SHADOW_BALL, ROAR
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $7f, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 15, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 293 ; HP
@@ -5550,17 +5736,18 @@ BattleTowerMons9:
 	db MILK_DRINK, EARTHQUAKE, ATTRACT, BODY_SLAM
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $54, $75, $44 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 322 ; HP
@@ -5578,17 +5765,18 @@ BattleTowerMons9:
 	db THUNDERBOLT, HYPER_BEAM, ATTRACT, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $76, $57, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 284 ; HP
@@ -5606,17 +5794,18 @@ BattleTowerMons9:
 	db TOXIC, SLUDGE_BOMB, ATTRACT, GIGA_DRAIN
 	dw 0 ; OT ID
 	dt 729000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $45, $44, $55 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 15, 5 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 90 ; Level
 	db 0, 0 ; Status
 	bigdw 342 ; HP
@@ -5638,17 +5827,18 @@ BattleTowerMons10:
 	db CRUNCH, FLAMETHROWER, ROAR, REST
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 15, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 347 ; HP
@@ -5666,17 +5856,18 @@ BattleTowerMons10:
 	db CROSS_CHOP, EARTHQUAKE, HYPER_BEAM, VITAL_THROW
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 377 ; HP
@@ -5694,17 +5885,18 @@ BattleTowerMons10:
 	db SURF, DRAGONBREATH, REST, TOXIC
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
-	bigdw 60000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $ff, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 10, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 349 ; HP
@@ -5722,17 +5914,18 @@ BattleTowerMons10:
 	db THUNDERBOLT, ROAR, THUNDER_WAVE, IRON_TAIL
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 30000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $df, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 20, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 323 ; HP
@@ -5750,17 +5943,18 @@ BattleTowerMons10:
 	db HYPER_BEAM, EARTHQUAKE, IRON_TAIL, THUNDERBOLT
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 341 ; HP
@@ -5778,17 +5972,18 @@ BattleTowerMons10:
 	db FLAMETHROWER, EXTREMESPEED, IRON_TAIL, HYPER_BEAM
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 15, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 374 ; HP
@@ -5806,17 +6001,18 @@ BattleTowerMons10:
 	db FLAMETHROWER, EARTHQUAKE, SLASH, FLY
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 55000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $ed, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 343 ; HP
@@ -5834,17 +6030,18 @@ BattleTowerMons10:
 	db THUNDER_WAVE, THUNDERBOLT, EXPLOSION, MIRROR_COAT
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 5, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 309 ; HP
@@ -5862,17 +6059,18 @@ BattleTowerMons10:
 	db SURF, EARTHQUAKE, HYPER_BEAM, ROCK_SLIDE
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 10, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 404 ; HP
@@ -5890,17 +6088,18 @@ BattleTowerMons10:
 	db EARTHQUAKE, HYPER_BEAM, SWAGGER, CRUNCH
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 60000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $df, $dd, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 15, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 343 ; HP
@@ -5918,17 +6117,18 @@ BattleTowerMons10:
 	db DRILL_PECK, STEEL_WING, HURRICANE, TWISTER
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 55000
-	bigdw 50000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $cf, $dc, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 25, 10, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 360 ; HP
@@ -5946,17 +6146,18 @@ BattleTowerMons10:
 	db PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 45000
-	bigdw 50000
-	bigdw 55000
-	bigdw 50000
-	bigdw 55000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $eb, $de, $bb ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 5, 20, 15 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 309 ; HP
@@ -5974,17 +6175,18 @@ BattleTowerMons10:
 	db SLASH, BLIZZARD, DREAM_EATER, FEINT_ATTACK
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 48000
-	bigdw 45000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 5, 15, 20 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 301 ; HP
@@ -6002,17 +6204,18 @@ BattleTowerMons10:
 	db STEEL_WING, HYPER_BEAM, SLASH, TOXIC
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 45000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $bf, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 25, 5, 20, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 333 ; HP
@@ -6030,17 +6233,18 @@ BattleTowerMons10:
 	db THUNDERBOLT, BLIZZARD, FIRE_BLAST, SOFTBOILED
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 40000
-	bigdw 50000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 703 ; HP
@@ -6058,17 +6262,18 @@ BattleTowerMons10:
 	db REST, BLIZZARD, HYPER_BEAM, EARTHQUAKE
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 5, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 387 ; HP
@@ -6086,17 +6291,18 @@ BattleTowerMons10:
 	db PSYCHIC_M, TOXIC, EXPLOSION, GIGA_DRAIN
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ff, $ef, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 5, 5 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 375 ; HP
@@ -6114,17 +6320,18 @@ BattleTowerMons10:
 	db SURF, ANCIENTPOWER, BLIZZARD, TOXIC
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
-	bigdw 50000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $ef, $be, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
-	db 100 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 331 ; HP
@@ -6142,17 +6349,18 @@ BattleTowerMons10:
 	db EXPLOSION, EARTHQUAKE, ROCK_SLIDE, FIRE_BLAST
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $47, $44, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 5, 10, 10, 5 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 329 ; HP
@@ -6170,17 +6378,18 @@ BattleTowerMons10:
 	db COUNTER, FIRE_PUNCH, THUNDERPUNCH, ICE_PUNCH
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $76, $77, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 20, 15, 15, 15 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 265 ; HP
@@ -6198,17 +6407,18 @@ BattleTowerMons10:
 	db SURF, RAIN_DANCE, ZAP_CANNON, CONFUSE_RAY
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
-	; Stat exp
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
-	bigdw 30000
+	db 200 ; HP EV
+	db 200 ; Atk EV
+	db 200 ; Def EV
+	db 200 ; Spd EV
+	db 200 ; SAtk EV
+	db 200 ; SDef EV
 	db $57, $65, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 	db 15, 5, 5, 10 ; PP
-	db 0 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 255 ; Happiness
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db 100 ; Level
 	db 0, 0 ; Status
 	bigdw 425 ; HP

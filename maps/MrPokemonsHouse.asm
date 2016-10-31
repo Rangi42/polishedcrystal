@@ -365,7 +365,7 @@ MrPokemonText_GimmeTheScale:
 
 MrPokemonText_GotShinyDittoEgg:
 	text "<PLAYER> received"
-	line "Egg!"
+	line "Rare Egg!"
 	done
 
 MrPokemonText_PartyFull:

@@ -1256,18 +1256,6 @@ EggStatsScreen: ; 4e33a
 	ld de, EggString
 	hlcoord 8, 1
 	call PlaceString
-	ld de, IDNoString
-	hlcoord 8, 3
-	call PlaceString
-	ld de, OTString
-	hlcoord 8, 5
-	call PlaceString
-	ld de, FiveQMarkString
-	hlcoord 11, 3
-	call PlaceString
-	ld de, FiveQMarkString
-	hlcoord 11, 5
-	call PlaceString
 	ld a, [TempMonHappiness] ; egg status
 	ld de, EggSoonString
 	cp $6
@@ -1300,16 +1288,9 @@ EggStatsScreen: ; 4e33a
 ; 0x4e3c0
 
 EggString: ; 4e3c0
-	db "Egg@"
-
-FiveQMarkString: ; 4e3c4
-	db "?????@"
-
-OTString:
-	db "OT/@"
-
-IDNoString:
-	db "<ID>№.@"
+	db   "Egg"
+	next "OT/?????"
+	next "<ID>№.?????@"
 
 EggSoonString: ; 0x4e3ca
 	db   "It's making sounds"
