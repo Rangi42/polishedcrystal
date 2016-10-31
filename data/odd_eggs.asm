@@ -2,19 +2,9 @@ GiveEggMon:
 	ld de, OddEggSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
 	call CopyBytes
-
-	ld hl, .Nickname
-	ld de, wTempOddEggNickname
-	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-
 	call AddEggMonToParty
 	ret
 ; 1fb546
-
-.Nickname:
-	db "Egg@@@@@@@@@"
-
 
 AddEggMonToParty:
 	ld hl, PartyCount
@@ -61,7 +51,7 @@ AddEggMonToParty:
 	jr nz, .loop3
 	ld e, l
 	ld d, h
-	ld hl, wTempOddEggNickname
+	ld hl, wOddEggName
 	ld bc, PKMN_NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
@@ -178,7 +168,8 @@ OddEgg1:
 	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -201,7 +192,8 @@ OddEgg2:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -223,7 +215,8 @@ OddEgg2:
 	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -245,7 +238,8 @@ OddEgg2:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -267,7 +261,8 @@ OddEgg2:
 	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -289,7 +284,8 @@ OddEgg2:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -311,7 +307,8 @@ OddEgg2:
 	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -333,7 +330,8 @@ OddEgg2:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -355,7 +353,8 @@ OddEgg2:
 	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -377,7 +376,8 @@ OddEgg2:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -401,7 +401,8 @@ ShinyDittoEgg:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, 0 ; Personality
 	db 10, 0, 0, 0 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP
@@ -425,7 +426,8 @@ MystriEgg:
 	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
 	db 40, 20, 15, 5 ; PP
 	db 20 ; Happiness
-	db 0, 0, 0 ; Pokerus, Caught data
+	db 0 ; Pokerus
+	db 0, 0, 0 ; Caught data
 	db EGG_LEVEL ; Level
 	db 0, 0 ; Status
 	bigdw 0 ; HP

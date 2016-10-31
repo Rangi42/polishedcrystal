@@ -1074,7 +1074,6 @@ wcd27:: ds 1
 wcd28:: ds 1
 wcd29:: ds 1
 wcd2a:: ds 1
-wTempOddEggNickname::
 wcd2b:: ds 1
 wcd2c:: ds 1
 wcd2d:: ds 1
