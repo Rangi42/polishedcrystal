@@ -116,8 +116,8 @@ PerishCountText: ; 0x80864
 	prompt
 ; 0x80880
 
-BattleText_TargetRecoveredWithItem: ; 0x80880
-	text "<TARGET>"
+BattleText_UserRecoveredWithItem: ; 0x80880
+	text "<USER>"
 	line "recovered with"
 	cont "@"
 	text_from_ram StringBuffer1
@@ -351,7 +351,7 @@ BattleText_UserHurtBySpikes: ; 0x80bae
 ; 0x80bc2
 
 RecoveredUsingText: ; 0x80bc2
-	text "<TARGET>"
+	text "<USER>"
 	line "recovered using a"
 	cont "@"
 	text_from_ram StringBuffer1
@@ -503,7 +503,7 @@ BattleText_ItemHealedConfusion: ; ItemHealedConfusion
 	text "A @"
 	text_from_ram StringBuffer1
 	text " rid"
-	line "<TARGET>"
+	line "<USER>"
 	cont "of its confusion."
 	prompt
 ; 0x80dcc
@@ -858,8 +858,8 @@ WontRiseAnymoreText: ; 0x81272
 	text "<USER>'s"
 	line "@"
 	text_from_ram StringBuffer2
-	text " won't"
-	cont "rise any more!"
+	text " won't go"
+	cont "any higher!"
 	prompt
 ; 0x8128f
 
@@ -867,8 +867,8 @@ WontDropAnymoreText: ; 0x8128f
 	text "<TARGET>'s"
 	line "@"
 	text_from_ram StringBuffer2
-	text " won't"
-	cont "fall any more!"
+	text " won't go"
+	cont "any lower!"
 	prompt
 ; 0x812ac
 

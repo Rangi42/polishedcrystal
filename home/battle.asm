@@ -400,6 +400,17 @@ CheckPinch::
 ; return z if we are in a pinch (HP<=1/3)
 	push hl
 	farcall GetThirdMaxHP
+	call CompareHP
+	pop hl
+	jr c, .ok
+	ret
+.ok
+	xor a
+	ret
+
+CompareHP::
+; return c if HP<bc, z if HP=bc, nc+nz if HP>bc
+	push hl
 	ld hl, BattleMonHP
 	ld a, [hBattleTurn]
 	and a
@@ -408,19 +419,11 @@ CheckPinch::
 .got_hp
 	ld a, [hli]
 	sub b
-	jr c, .yes
-	jr nz, .no
+	jr nz, .ok
 	ld a, [hl]
 	sub c
-	jr c, .yes
-	jr nz, .no
-.yes
+.ok
 	pop hl
-	xor a
-	ret
-.no
-	pop hl
-	or 1
 	ret
 
 GetWeatherAfterCloudNine::

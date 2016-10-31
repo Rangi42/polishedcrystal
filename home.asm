@@ -425,7 +425,7 @@ FarQueueScript:: ; 31cf
 
 StringCmp:: ; 31db
 ; Compare c bytes at de and hl.
-; Return z if they all match.
+; Return z if they all match, c if hl>de.
 .loop
 	ld a, [de]
 	cp [hl]

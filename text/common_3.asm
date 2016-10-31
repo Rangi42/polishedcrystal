@@ -349,7 +349,7 @@ UnknownText_0x1c0cc6::
 
 UnknownText_0x1c0cd0::
 	interpret_data
-	text $4c, "sharply rose!"
+	text $4c, "rose sharply!"
 	prompt
 
 UnknownText_0x1c0ce0::

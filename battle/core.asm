@@ -1378,7 +1378,7 @@ HandleLeftovers: ; 3c8eb
 	ret z
 	call GetSixteenthMaxHP
 	call RestoreHP
-	ld hl, BattleText_TargetRecoveredWithItem
+	ld hl, BattleText_UserRecoveredWithItem
 	jp StdBattleTextBox
 ; 3c93c
 
@@ -1513,9 +1513,7 @@ HandleLeppaBerry: ; 3c93c
 
 .skip_consumption
 	call GetItemName
-	call SwitchTurnCore
 	call ItemRecoveryAnim
-	call SwitchTurnCore
 	ld hl, BattleText_UserRecoveredPPUsing
 	jp StdBattleTextBox
 ; 3ca26
@@ -2022,21 +2020,6 @@ GetMaxHP: ; 3ccac
 	ld c, a
 	ret
 ; 3ccc2
-
-CheckUserHasEnoughHP: ; 3ccde
-	ld hl, BattleMonHP + 1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, EnemyMonHP + 1
-.ok
-	ld a, c
-	sub [hl]
-	dec hl
-	ld a, b
-	sbc [hl]
-	ret
-; 3ccef
 
 RestoreEnemyHP:
 	call SwitchTurnCore
@@ -4515,108 +4498,27 @@ HandleHealingItems: ; 3dcf9
 	jp UseConfusionHealingItem
 
 HandleHPHealingItem: ; 3dd2f
-	farcall GetOpponentItemAfterUnnerve
-	ld a, b
-	cp $1
-	ret nz
-	ld de, EnemyMonHP + 1
-	ld hl, EnemyMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .go
-	ld de, BattleMonHP + 1
-	ld hl, BattleMonMaxHP
-
-.go
-; If, and only if, Pokemon's HP is less than half max, use the item.
-; Store current HP in Buffer 3/4
-	push bc
-	ld a, [de]
-	ld [Buffer3], a
-	add a
-	ld c, a
-	dec de
-	ld a, [de]
-	inc de
-	ld [Buffer4], a
-	adc a
-	ld b, a
-	ld a, b
-	cp [hl]
-	ld a, c
-	pop bc
-	jr z, .equal
-	jr c, .less
-	ret
-
-.equal
-	inc hl
-	cp [hl]
-	dec hl
+	; only restore HP if HP<=1/2
+	call GetHalfMaxHP
+	call CompareHP
+	jr z, .ok
 	ret nc
-
-.less
+.ok
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_BERRY
+	ret nz
+	ld b, 0 ; c contains HP to restore
 	call ItemRecoveryAnim
-	; store max HP in Buffer1/2
-	ld a, [hli]
-	ld [Buffer2], a
 	ld a, [hl]
-	ld [Buffer1], a
-
-	ld a, [hBattleTurn]
-	and a
-	ld a, [EnemyMonItem]
-	jr z, .check_sitrus_berry
-	ld a, [BattleMonItem]
-.check_sitrus_berry
 	cp SITRUS_BERRY
-	jr z, .handle_sitrus_berry
-
-	ld a, [de]
-	add c
-	ld [Buffer5], a
-	ld c, a
-	dec de
-	ld a, [de]
-	adc $0
-	ld [Buffer6], a
-	ld b, a
-	jr .finish
-
-.handle_sitrus_berry
-	push hl
-	call SitrusBerryQuarterHP
-	pop hl
-.finish
-	ld a, [hld]
-	cp c
-	ld a, [hl]
-	sbc b
-	jr nc, .okay
-	ld a, [hli]
-	ld [Buffer6], a
-	ld a, [hl]
-	ld [Buffer5], a
-
-.okay
-	ld a, [Buffer6]
-	ld [de], a
-	inc de
-	ld a, [Buffer5]
-	ld [de], a
-	ld a, [hBattleTurn]
-	ld [wWhichHPBar], a
-	and a
-	hlcoord 2, 2
-	jr z, .got_hp_bar_coords
-	hlcoord 10, 9
-
-.got_hp_bar_coords
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
-UseOpponentItem:
+	jr nz, .got_hp_to_restore
+	call GetQuarterMaxHP
+.got_hp_to_restore
+	call RestoreHP
+UseBattleItem:
 	call RefreshBattleHuds
-	farcall GetOpponentItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
@@ -4658,21 +4560,23 @@ ItemRecoveryAnim: ; 3ddc8
 	call EmptyBattleTextBox
 	ld a, RECOVER
 	ld [FXAnimIDLo], a
-	call SwitchTurnCore
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a
 	predef PlayBattleAnim
-	call SwitchTurnCore
 	pop bc
 	pop de
 	pop hl
 	ret
 ; 3dde9
 
+UseEnemyHeldStatusHealingItem:
+	call SwitchTurnCore
+	call UseHeldStatusHealingItem
+	jp SwitchTurnCore
 
 UseHeldStatusHealingItem: ; 3dde9
-	farcall GetOpponentItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld hl, .Statuses
 .loop
 	ld a, [hli]
@@ -4683,44 +4587,42 @@ UseHeldStatusHealingItem: ; 3dde9
 	jr nz, .loop
 	dec hl
 	ld b, [hl]
-	ld a, BATTLE_VARS_STATUS_OPP
+	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	and b
 	ret z
 	xor a
 	ld [hl], a
 	push bc
-	call UpdateOpponentInParty
+	call UpdateUserInParty
 	pop bc
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	and [hl]
 	res SUBSTATUS_TOXIC, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
+	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	and [hl]
 	res SUBSTATUS_NIGHTMARE, [hl]
 	ld a, b
 	cp ALL_STATUS
 	jr nz, .skip_confuse
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 
 .skip_confuse
-	ld hl, CalcEnemyStats
+	ld hl, CalcPlayerStats
 	ld a, [hBattleTurn]
 	and a
 	jr z, .got_pointer
-	ld hl, CalcPlayerStats
+	ld hl, CalcEnemyStats
 
 .got_pointer
-	call SwitchTurnCore
 	ld a, BANK(CalcEnemyStats)
 	rst FarCall
-	call SwitchTurnCore
 	call ItemRecoveryAnim
-	call UseOpponentItem
+	call UseBattleItem
 	ld a, $1
 	and a
 	ret
@@ -4736,13 +4638,17 @@ UseHeldStatusHealingItem: ; 3dde9
 	db $ff
 ; 3de51
 
+UseEnemyConfusionHealingItem:
+	call SwitchTurnCore
+	call UseConfusionHealingItem
+	jp SwitchTurnCore
 
 UseConfusionHealingItem: ; 3de51
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z
-	farcall GetOpponentItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_CONFUSION
 	jr z, .heal_status
@@ -4752,7 +4658,7 @@ UseConfusionHealingItem: ; 3de51
 .heal_status
 	ld a, [hl]
 	ld [wd265], a
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 	call GetItemName
@@ -4761,7 +4667,7 @@ UseConfusionHealingItem: ; 3de51
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .do_partymon
+	jr z, .do_partymon
 	call GetOTPartymonItem
 	xor a
 	ld [bc], a
