@@ -482,13 +482,8 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	dw .OrangePage
 
 .PinkPage: ; 4e013 (13:6013)
-	hlcoord 0, 9
-	ld b, $0
-	predef DrawPlayerHP
-	hlcoord 8, 9
-	ld [hl], $41
 	ld de, .Status_Type
-	hlcoord 0, 12
+	hlcoord 0, 9
 	call PlaceString
 	ld a, [TempMonPokerusStatus]
 	ld b, a
@@ -503,7 +498,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld a, [MonType]
 	cp BOXMON
 	jr z, .StatusOK
-	hlcoord 6, 13
+	hlcoord 6, 10
 	push hl
 	ld de, TempMonStatus
 	predef PlaceStatusString
@@ -512,15 +507,16 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	jr .StatusOK
 .HasPokerus:
 	ld de, .PkrsStr
-	hlcoord 1, 13
+	hlcoord 1, 10
 	call PlaceString
 	jr .done_status
 .StatusOK:
 	ld de, .OK_str
 	call PlaceString
 .done_status
-	hlcoord 1, 15
+	hlcoord 1, 12
 	predef PrintMonTypes
+	call .PlaceOTInfo
 	hlcoord 9, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
@@ -607,6 +603,40 @@ endr
 	ret
 ; 4e119 (13:6119)
 
+.PlaceOTInfo: ; 4e1cc (13:61cc)
+	ld de, .OT_ID_str
+	hlcoord 0, 14
+	call PlaceString
+	hlcoord 4, 16
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	ld de, TempMonID
+	call PrintNum
+	ld hl, .OTNamePointers
+	call GetNicknamePointer
+	call CopyNickname
+	farcall CheckNickErrors
+	hlcoord 2, 15
+	call PlaceString
+	ld a, [TempMonCaughtGender]
+	and FEMALE
+	jr z, .male
+	ld a, "♀"
+	jr .got_gender
+.male
+	ld a, "♂"
+.got_gender
+	hlcoord 9, 15
+	ld [hl], a
+	ret
+; 4e216 (13:6216)
+
+.OTNamePointers: ; 4e216
+	dw PartyMonOT
+	dw OTPartyMonOT
+	dw sBoxMonOT
+	dw wBufferMonOT
+; 4e21e
+
 .Status_Type: ; 4e119
 	db   "Status/"
 	next "Type/@"
@@ -615,6 +645,11 @@ endr
 .OK_str: ; 4e127
 	db "OK @"
 ; 4e12b
+
+.OT_ID_str: ; 4e222 / 4e21e
+	db   "OT/"
+	next "<ID>№.@"
+; 4e226
 
 .ExpPointStr: ; 4e12b
 	db "Exp.Points@"
@@ -679,7 +714,11 @@ endr
 ; 4e1ae
 
 .BluePage: ; 4e1ae (13:61ae)
-	call .PlaceOTInfo
+	hlcoord 0, 9
+	ld b, $0
+	predef DrawPlayerHP
+	hlcoord 8, 9
+	ld [hl], $41
 	call .PlaceNatureInfo
 	call TN_PrintCharacteristics
 	hlcoord 10, 8
@@ -696,45 +735,8 @@ endr
 	predef PrintTempMonStats
 	ret
 
-.PlaceOTInfo: ; 4e1cc (13:61cc)
-	ld de, OTString
-	hlcoord 0, 8
-	call PlaceString
-	ld de, IDNoString
-	hlcoord 0, 10
-	call PlaceString
-	hlcoord 5, 10
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	ld de, TempMonID
-	call PrintNum
-	ld hl, .OTNamePointers
-	call GetNicknamePointer
-	call CopyNickname
-	farcall CheckNickErrors
-	hlcoord 2, 9
-	call PlaceString
-	ld a, [TempMonCaughtGender]
-	and FEMALE
-	jr z, .male
-	ld a, "♀"
-	jr .got_gender
-.male
-	ld a, "♂"
-.got_gender
-	hlcoord 9, 9
-	ld [hl], a
-	ret
-; 4e216 (13:6216)
-
-.OTNamePointers: ; 4e216
-	dw PartyMonOT
-	dw OTPartyMonOT
-	dw sBoxMonOT
-	dw wBufferMonOT
-; 4e21e
-
 .PlaceNatureInfo:
-	ld de, NatureString
+	ld de, .NatureString
 	hlcoord 0, 12
 	call PlaceString
 	ld a, [TempMonNature]
@@ -744,19 +746,12 @@ endr
 	predef PrintNature
 	ret
 
+.NatureString:
+	db "Nature/@"
+
 .OrangePage:
 	farcall OrangePage_
 	ret
-
-OTString: ; 4e222
-	db "OT/@"
-; 4e226
-
-IDNoString: ; 4e21e
-	db "<ID>№.@"
-
-NatureString:
-	db "Nature/@"
 
 
 ; Fourth stats page code by TPP Anniversary Crystal 251
@@ -1309,6 +1304,12 @@ EggString: ; 4e3c0
 
 FiveQMarkString: ; 4e3c4
 	db "?????@"
+
+OTString:
+	db "OT/@"
+
+IDNoString:
+	db "<ID>№.@"
 
 EggSoonString: ; 0x4e3ca
 	db   "It's making sounds"
