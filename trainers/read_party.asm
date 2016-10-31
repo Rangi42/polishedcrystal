@@ -94,6 +94,34 @@ endr
 	ld [de], a
 
 .not_item
+; nickname?
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_NICKNAME, a
+	jr z, .not_nickname
+
+	push de
+	ld de, StringBuffer2
+.copy
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp "@"
+	jr nz, .copy
+	push hl
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, StringBuffer2
+	ld bc, PKMN_NAME_LENGTH
+	call CopyBytes
+	pop hl
+	pop de
+
+.not_nickname
 ; moves?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_MOVES, a

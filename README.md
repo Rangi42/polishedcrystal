@@ -229,7 +229,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Paralysis halves (not quarters) Speed
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
-* Add: Accuracy and evasion work like in Gen III+.
+* Add: NPC trainers can have nicknamed Pokémon.
+* Add: Accuracy and evasion work like in Gen VI.
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
 * Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.

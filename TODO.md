@@ -63,7 +63,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Custom Rocket Executive sprites
 * Design custom animations for new moves
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
-* Support nicknames for NPC trainers' Pokémon
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor

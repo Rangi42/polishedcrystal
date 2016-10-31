@@ -4,10 +4,10 @@ Trainers:
 	; Name
 		; String in format "TEXT@"
 	; Type
-		; 0: Level, species
-		; 1: Level, species, moves
-		; 2: Level, species, item
-		; 3: Level, species, item, moves
+		; TRAINERTYPE_NORMAL:   level, species
+		; TRAINERTYPE_ITEM:     item
+		; TRAINERTYPE_NICKNAME: nickname
+		; TRAINERTYPE_MOVES:    moves
 	; Party
 		; Up to six monsters following the data type
 	; $ff
@@ -6978,10 +6978,10 @@ BeautyGroup:
 
 	; BEAUTY
 	db "Charlotte@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_NICKNAME
 
 	; party
-	db 20, BELLOSSOM
+	db 20, BELLOSSOM, "Blossom@"
 
 	db $ff ; end
 
@@ -7436,12 +7436,12 @@ SchoolboyGroup:
 
 	; SCHOOLBOY
 	db "Johnny@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 18, BELLSPROUT, GOLD_LEAF
-	db 16, SPINARAK, NO_ITEM
-	db 17, RATTATA, ORAN_BERRY
+	db 18, BELLSPROUT, GOLD_LEAF, "Gold@"
+	db 16, SPINARAK, NO_ITEM, "Spin@"
+	db 17, RATTATA, ORAN_BERRY, "Rat@"
 
 	db $ff ; end
 
@@ -7553,12 +7553,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL
 	db "Audrey@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_NICKNAME
 
 	; party
-	db 6, VULPIX
-	db 5, MAREEP
-	db 7, TEDDIURSA
+	db 6, VULPIX, "Vulpix@"
+	db 5, MAREEP, "Mareep@"
+	db 7, TEDDIURSA, "Teddy@"
 
 	db $ff ; end
 
@@ -7566,12 +7566,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL
 	db "Eliza@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 18, ODDISH, SILVER_LEAF
-	db 16, LEDYBA, NO_ITEM
-	db 17, SENTRET, ORAN_BERRY
+	db 18, ODDISH, SILVER_LEAF, "Silver@"
+	db 16, LEDYBA, NO_ITEM, "Lady@"
+	db 17, SENTRET, ORAN_BERRY, "Tret@"
 
 	db $ff ; end
 
@@ -7579,12 +7579,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL
 	db "Faith@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_NICKNAME
 
 	; party
-	db 57, BELLSPROUT
-	db 58, WEEPINBELL
-	db 59, VICTREEBEL
+	db 57, BELLSPROUT, "Bellsprout@"
+	db 58, WEEPINBELL, "Weepinbell@"
+	db 59, VICTREEBEL, "Audrey@"
 
 	db $ff ; end
 
@@ -7592,12 +7592,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL
 	db "Sarah@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_NICKNAME
 
 	; party
-	db 25, CHARMANDER
-	db 23, SENTRET
-	db 24, MARILL
+	db 25, CHARMANDER, "Charmer@"
+	db 23, SENTRET, "Sentret@"
+	db 24, MARILL, "Marill@"
 
 	db $ff ; end
 
@@ -7605,12 +7605,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL
 	db "Isabel@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_NICKNAME
 
 	; party
-	db 25, SQUIRTLE
-	db 23, PIDGEY
-	db 24, PIKACHU
+	db 25, SQUIRTLE, "Turtle@"
+	db 23, PIDGEY, "Pidgey@"
+	db 24, PIKACHU, "Pikachu@"
 
 	db $ff ; end
 
@@ -7618,12 +7618,12 @@ SchoolgirlGroup:
 
 	; SCHOOLGIRL
 	db "Imogen@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_NICKNAME
 
 	; party
-	db 10, BULBASAUR
-	db 9, SANDSHREW
-	db 9, POLIWAG
+	db 10, BULBASAUR, "Garlic@"
+	db 9, SANDSHREW, "Sandshrew@"
+	db 9, POLIWAG, "Poliwag@"
 
 	db $ff ; end
 
@@ -9670,11 +9670,11 @@ BlackbeltGroup:
 
 	; BLACKBELT_T
 	db "Yoshi@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES | TRAINERTYPE_NICKNAME
 
 	; party
 
-	db 27, HITMONLEE
+	db 27, HITMONLEE, "Jackie@"
 		db DOUBLE_KICK
 		db BULK_UP
 		db LOW_KICK
@@ -9686,11 +9686,11 @@ BlackbeltGroup:
 
 	; BLACKBELT_T
 	db "Lao@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES | TRAINERTYPE_NICKNAME
 
 	; party
 
-	db 27, HITMONCHAN
+	db 27, HITMONCHAN, "Bruce@"
 		db AERIAL_ACE
 		db THUNDERPUNCH
 		db ICE_PUNCH
@@ -12124,41 +12124,41 @@ YellowGroup:
 
 	; YELLOW
 	db "Yellow@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES | TRAINERTYPE_NICKNAME
 
 	; party
 
-	db 28, RATTATA, ORAN_BERRY
+	db 28, RATTATA, ORAN_BERRY, "Ratty@"
 		db LEER
 		db QUICK_ATTACK
 		db HYPER_FANG
 		db FOCUS_ENERGY
 
-	db 26, BUTTERFREE, ORAN_BERRY
+	db 26, BUTTERFREE, ORAN_BERRY, "Free@"
 		db CONFUSION
 		db SLEEP_POWDER
 		db POISONPOWDER
 		db STUN_SPORE
 
-	db 29, DODUO, ORAN_BERRY
+	db 29, DODUO, ORAN_BERRY, "Dody@"
 		db PECK
 		db TRI_ATTACK
 		db RETURN
 		db MUD_SLAP
 
-	db 28, GRAVELER, ORAN_BERRY
+	db 28, GRAVELER, ORAN_BERRY, "Gravvy@"
 		db ROLLOUT
 		db DEFENSE_CURL
 		db MAGNITUDE
 		db ROCK_THROW
 
-	db 27, OMANYTE, ORAN_BERRY
+	db 27, OMANYTE, ORAN_BERRY, "Omny@"
 		db WATER_GUN
 		db BITE
 		db DEFENSE_CURL
 		db ICE_SHARD
 
-	db 32, PIKACHU, LIGHT_BALL
+	db 32, PIKACHU, LIGHT_BALL, "Chuchu@"
 		db SURF
 		db FLY
 		db THUNDERBOLT
@@ -12495,11 +12495,11 @@ GiovanniGroup:
 	; unused
 	; GIOVANNI
 	db "Giovanni@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES | TRAINERTYPE_NICKNAME
 
 	; party
 
-	db 70, MEWTWO, WISE_GLASSES
+	db 70, MEWTWO, WISE_GLASSES, "???@"
 		db NASTY_PLOT
 		db PSYSTRIKE
 		db SHADOW_BALL

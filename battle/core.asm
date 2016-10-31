@@ -6771,15 +6771,27 @@ endr
 	ld a, [TempEnemyMonSpecies]
 	ld [wd265], a
 
-	call GetPokemonName
-
 ; Did we catch it?
 	ld a, [wBattleMode]
 	and a
 	ret z
 
 ; Update enemy nick
+	ld a, [wBattleMode]
+	dec a
+	jr z, .no_nickname
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_NICKNAME, a
+	jr z, .no_nickname
+	ld a, [CurPartyMon]
+	ld hl, OTPartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	call AddNTimes
+	jr .got_nickname
+.no_nickname
+	call GetPokemonName
 	ld hl, StringBuffer1
+.got_nickname
 	ld de, EnemyMonNick
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
