@@ -69,6 +69,7 @@ PokeCenterNurseScript:
 	iffalse .morn_center
 	farwritetext PokeComNurseMornText
 	buttonsound
+	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	jump .ok
 .morn_center
 	farwritetext NurseMornText
@@ -82,6 +83,7 @@ PokeCenterNurseScript:
 	iffalse .day_center
 	farwritetext PokeComNurseDayText
 	buttonsound
+	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	jump .ok
 .day_center
 	farwritetext NurseDayText
@@ -95,6 +97,7 @@ PokeCenterNurseScript:
 	iffalse .nite_center
 	farwritetext PokeComNurseNiteText
 	buttonsound
+	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
 	jump .ok
 .nite_center
 	farwritetext NurseNiteText
@@ -102,9 +105,6 @@ PokeCenterNurseScript:
 	jump .ok
 
 .ok
-	; only do this once
-	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
-
 	farwritetext NurseAskHealText
 	yesorno
 	iffalse .done
