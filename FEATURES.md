@@ -128,6 +128,7 @@ These are *most* of the new features as of 2.2.0. Some would be spoilers.
 * Rematch Gym Leaders and other special trainers in the Fighting Dojo after earning all 16 badges.
 * Battle Tower has new trainers.
 * A few NPC trainers have shiny Pokémon.
+* Breeders can be rebattled like in B2/W2.
 
 
 ## Items
