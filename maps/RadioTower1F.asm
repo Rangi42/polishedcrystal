@@ -33,6 +33,14 @@ ReceptionistScript_0x5cd3d:
 	faceplayer
 	opentext
 	writetext UnknownText_0x5ceba
+	waitbutton
+	checkevent EVENT_INTRODUCED_FELICITY
+	iftrue .introduced
+	writetext IntroduceFelicityText
+	waitbutton
+	setevent EVENT_INTRODUCED_FELICITY
+.introduced
+	writetext ExplainLuckyNumberShowText
 	buttonsound
 	special Special_CheckLuckyNumberShowFlag
 	iffalse .skip
@@ -227,12 +235,16 @@ UnknownText_0x5ceba:
 	text "Hi, are you here"
 	line "for the Lucky Num-"
 	cont "ber Show?"
+	done
 
-	para "I'm Felicity,"
+IntroduceFelicityText:
+	text "I'm Felicity,"
 	line "your attendant"
 	cont "today."
+	done
 
-	para "Want me to check"
+ExplainLuckyNumberShowText:
+	text "Want me to check"
 	line "the ID numbers of"
 	cont "your #mon?"
 

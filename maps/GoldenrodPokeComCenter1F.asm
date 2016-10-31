@@ -163,6 +163,14 @@ WonderTradeReceptionistScript:
 	opentext
 	writetext WonderTradeIntroText
 	waitbutton
+	checkevent EVENT_INTRODUCED_TEALA
+	iftrue .introduced
+	writetext IntroduceTealaText
+	waitbutton
+	setevent EVENT_INTRODUCED_TEALA
+.introduced
+	writetext WonderTradeExplanationText
+	buttonsound
 	special WonderTrade
 	writetext WonderTradeGoodbyeText
 	waitbutton
@@ -173,11 +181,15 @@ WonderTradeIntroText:
 	text "Hello! Welcome to"
 	line "#Com Center"
 	cont "Wonder Trade Hub."
+	done
 
-	para "I'm Teala, your"
+IntroduceTealaText:
+	text "I'm Teala, your"
 	line "trade attendant."
+	done
 
-	para "You can trade"
+WonderTradeExplanationText:
+	text "You can trade"
 	line "#mon with other"
 	cont "people far away."
 	done
