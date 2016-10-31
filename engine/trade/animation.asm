@@ -807,9 +807,9 @@ TradeAnim_ShowGetmonData: ; 29461
 	ld a, [wOTTrademonSpecies]
 	ld [CurPartySpecies], a
 	ld a, [wOTTrademonPersonality]
-	ld [TempMonDVs], a
+	ld [TempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
-	ld [TempMonDVs + 1], a
+	ld [TempMonPersonality + 1], a
 	ld b, SCGB_1A
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
