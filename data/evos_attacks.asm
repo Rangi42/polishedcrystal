@@ -1941,7 +1941,8 @@ MarowakEvosAttacks:
 	db 21, BONEMERANG
 	db 23, RAGE
 	db 27, LOW_KICK ; False Swipe → HGSS tutor move
-	db 33, FALSE_SWIPE ; Thrash → False Swipe
+	db 28, PAIN_SPLIT ; new move
+	db 33, SHADOW_CLAW ; Thrash → TM move
 	db 37, THRASH ; Fling → Thrash
 	db 33, MAGNITUDE ; Bone Rush → new move
 	db 49, SUBMISSION ; Endeavor → RBY TM move
