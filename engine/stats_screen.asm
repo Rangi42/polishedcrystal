@@ -615,7 +615,7 @@ endr
 	call GetNicknamePointer
 	call CopyNickname
 	farcall CheckNickErrors
-	hlcoord 2, 15
+	hlcoord 1, 15
 	call PlaceString
 	ld a, [TempMonCaughtGender]
 	and FEMALE
@@ -625,7 +625,7 @@ endr
 .male
 	ld a, "♂"
 .got_gender
-	hlcoord 9, 15
+	hlcoord 8, 15
 	ld [hl], a
 	ret
 ; 4e216 (13:6216)
@@ -742,7 +742,7 @@ endr
 	ld a, [TempMonNature]
 	ld b, a
 	farcall GetNature
-	hlcoord 2, 13
+	hlcoord 1, 13
 	predef PrintNature
 	ret
 
