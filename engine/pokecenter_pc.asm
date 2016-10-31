@@ -449,14 +449,24 @@ KrisDepositItemMenu: ; 0x1588b
 	db "@"
 
 .TryDepositItem:
+	ld a, [wCurrPocket]
+	cp TM_HM - 1
 	ld a, [wSpriteUpdatesEnabled]
 	push af
 	ld a, $0
 	ld [wSpriteUpdatesEnabled], a
+	jr z, .CantDepositTMHM
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
 	rst JumpTable
+	pop af
+	ld [wSpriteUpdatesEnabled], a
+	ret
+
+.CantDepositTMHM
+	ld hl, .CantDepositTMHMText
+	call PrintText
 	pop af
 	ld [wSpriteUpdatesEnabled], a
 	ret
@@ -531,6 +541,10 @@ KrisDepositItemMenu: ; 0x1588b
 .DeclinedToDeposit:
 	and a
 	ret
+
+.CantDepositTMHMText:
+	text_jump _KrissPCCantDepositTMHMText
+	db "@"
 
 .HowManyText: ; 0x1596e
 	text_jump _KrissPCHowManyDepositText

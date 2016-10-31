@@ -724,6 +724,11 @@ UnknownText_0x1c13df::
 	text "No items here!"
 	prompt
 
+_KrissPCCantDepositTMHMText::
+	text "TMs and HMs can't"
+	line "be deposited."
+	prompt
+
 _KrissPCHowManyDepositText::
 	text "How many do you"
 	line "want to deposit?"

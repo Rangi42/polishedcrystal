@@ -1249,7 +1249,7 @@ Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 .BottomWindowText: ; 409ae
 	db   "Search Results"
 	next "  Type"
-	next "    Found!"
+	next "    found!"
 	db   "@"
 
 Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
