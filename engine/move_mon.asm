@@ -1634,7 +1634,7 @@ CalcPkmnStatC: ; e17b
 GetNatureStatMultiplier::
 ; a points to Nature
 ; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
-; returns (sets a to) 9 if c is lowered, 11 if increased, 10 if neutral
+; returns (sets a to) 9 if c is lowered, 11 if raised, 10 if neutral
 ; (to be used in calculations in CalcPkmnStatC)
 	push de
 	ld d, a
@@ -1645,18 +1645,15 @@ GetNatureStatMultiplier::
 	ld b, a
 	call GetNature
 	ld a, b
-	; these increase and lower the same stat, but +10% -10% isn't the same
-	; (the result is 99%), so we need to avoid messing with it altogether.
-	cp HARDY
+	; Neutral natures (divisible by 6) raise and lower the same stat,
+	; but +10% -10% isn't neutral (the result is 99%), so we need to
+	; avoid messing with it altogether.
+.check_neutral
+	and a
 	jr z, .neutral
-	cp DOCILE
-	jr z, .neutral
-	cp SERIOUS
-	jr z, .neutral
-	cp BASHFUL
-	jr z, .neutral
-	cp QUIRKY
-	jr z, .neutral
+	sub 6
+	jr nc, .check_neutral
+	ld a, b
 	ld d, STAT_HP
 .loop
 	inc d
