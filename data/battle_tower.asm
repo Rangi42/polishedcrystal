@@ -63,25 +63,37 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 
 	call CloseSRAM
 
-	push af
 ; Copy name (10 bytes) and class (1 byte) of trainer
 	ld hl, BattleTowerTrainers
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld bc, NAME_LENGTH
 	call CopyBytes
-	call Function_LoadRandomBattleTowerPkmn
-	pop af
+
+; Copy random Pokémon
+rept BATTLETOWER_NROFPKMNS
+	call LoadRandomBattleTowerPkmn
+endr
+
+	ld a, [sBTPkmnPrevTrainer1]
+	ld [sBTPkmnPrevPrevTrainer1], a
+	ld a, [sBTPkmnPrevTrainer2]
+	ld [sBTPkmnPrevPrevTrainer2], a
+	ld a, [sBTPkmnPrevTrainer3]
+	ld [sBTPkmnPrevPrevTrainer3], a
+	ld a, [BT_OTPkmn1]
+	ld [sBTPkmnPrevTrainer1], a
+	ld a, [BT_OTPkmn2]
+	ld [sBTPkmnPrevTrainer2], a
+	ld a, [BT_OTPkmn3]
+	ld [sBTPkmnPrevTrainer3], a
+	call CloseSRAM
 
 	pop af
 	ld [rSVBK], a
 	ret
 
-
-Function_LoadRandomBattleTowerPkmn: ; 1f8081
-	ld c, BATTLETOWER_NROFPKMNS
-.loop
-	push bc
+LoadRandomBattleTowerPkmn:
 	ld a, BANK(sBTPkmnPrevTrainer1)
 	call GetSRAMBank
 
@@ -158,6 +170,7 @@ Function_LoadRandomBattleTowerPkmn: ; 1f8081
 	ld a, [wNamedObjectIndexBuffer]
 	push af
 	push de
+
 	ld hl, - (PARTYMON_STRUCT_LENGTH + PKMN_NAME_LENGTH)
 	add hl, de
 	ld a, [hl]
@@ -175,25 +188,7 @@ Function_LoadRandomBattleTowerPkmn: ; 1f8081
 	pop de
 	pop af
 	ld [wNamedObjectIndexBuffer], a
-	pop bc
-	dec c
-	jp nz, .loop
-
-	ld a, [sBTPkmnPrevTrainer1]
-	ld [sBTPkmnPrevPrevTrainer1], a
-	ld a, [sBTPkmnPrevTrainer2]
-	ld [sBTPkmnPrevPrevTrainer2], a
-	ld a, [sBTPkmnPrevTrainer3]
-	ld [sBTPkmnPrevPrevTrainer3], a
-	ld a, [BT_OTPkmn1]
-	ld [sBTPkmnPrevTrainer1], a
-	ld a, [BT_OTPkmn2]
-	ld [sBTPkmnPrevTrainer2], a
-	ld a, [BT_OTPkmn3]
-	ld [sBTPkmnPrevTrainer3], a
-	call CloseSRAM
 	ret
-; 1f814e
 
 BattleTowerTrainers: ; 1f814e
 	db "Wong@@@@@@", FIREBREATHER
