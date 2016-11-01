@@ -280,3 +280,4 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Lyra's Bag is the female version.
 * Fix: Incorrect Cowgirl and Misty sprites.
 * Fix: Pokémon caught during the Bug-Catching Contest are recorded as caught in Goldenrod Harbor.
+* Fix: Magnet Train tracks were missing tiles.

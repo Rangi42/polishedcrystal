@@ -234,8 +234,8 @@ MagnetTrainBGTiles: ; 8cd82
 	db $31, $31 ; track
 	db $11, $11 ; track
 	db $11, $11 ; track
-	db $0d, $0d ; track
-	db $31, $31 ; track
+	db $34, $34 ; track
+	db $56, $56 ; track
 	db $04, $04 ; fence
 	db $18, $18 ; fence
 	db $4c, $4d ; bush
