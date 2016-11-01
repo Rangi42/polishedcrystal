@@ -6380,11 +6380,22 @@ endr
 
 ; All trainers have preset DVs, determined by class
 ; See GetTrainerDVsAndPersonality for more on that
-	farcall GetTrainerDVsAndPersonality
 ; These are the DVs we'll use if we're actually in a trainer battle
+
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .UpdateDVs
+	jr z, .WildDVs
+
+	ld a, [CurPartyMon]
+	ld hl, OTPartyMon1DVs
+	call GetPartyLocation
+	ld de, DVAndPersonalityBuffer
+	ld bc, 5 ; 3 DVs + 2 personality bytes
+	call CopyBytes
+
+	jr .UpdateDVs
+
+.WildDVs:
 
 ; Wild DVs
 ; Here's where the fun starts

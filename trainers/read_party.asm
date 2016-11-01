@@ -1,4 +1,3 @@
-
 ReadTrainerParty: ; 39771
 	ld a, [InBattleTowerBattle]
 	bit 0, a
@@ -94,6 +93,53 @@ endr
 	ld [de], a
 
 .not_item
+; DVs?
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_DVS, a
+	jr z, .not_dvs
+
+	push hl
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1DVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+
+.not_dvs
+; personality?
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_PERSONALITY, a
+	jr z, .not_personality
+
+	push hl
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+
+.not_personality
 ; nickname?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_NICKNAME, a

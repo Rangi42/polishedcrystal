@@ -2,20 +2,15 @@ GetTrainerDVsAndPersonality: ; 270c4
 ; Return the DVs and Personality of OtherTrainerClass in bc
 	push hl
 
-	call CheckUniqueDVOrPersonalityTrainerPokemon
-	jr z, .done
-
 	ld a, [OtherTrainerClass]
 	dec a
 	ld c, a
 	ld b, 0
-
 	ld hl, TrainerClassDVsAndPersonality
 rept 5
 	add hl, bc
 endr
 
-.done
 	ld a, [hli]
 	ld [DVAndPersonalityBuffer], a
 	ld a, [hli]
@@ -143,5 +138,3 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE | 1 ; valerie
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE | 1 ; rei
 ; 2715c
-
-INCLUDE "trainers/unique_dvs.asm"
