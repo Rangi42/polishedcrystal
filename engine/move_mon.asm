@@ -1645,15 +1645,6 @@ GetNatureStatMultiplier::
 	ld b, a
 	call GetNature
 	ld a, b
-	; Neutral natures (divisible by 6) raise and lower the same stat,
-	; but +10% -10% isn't neutral (the result is 99%), so we need to
-	; avoid messing with it altogether.
-.check_neutral
-	and a
-	jr z, .neutral
-	sub 6
-	jr nc, .check_neutral
-	ld a, b
 	ld d, STAT_HP
 .loop
 	inc d
@@ -1674,6 +1665,11 @@ GetNatureStatMultiplier::
 	pop de
 	ret
 .penalty
+	; Neutral natures (divisible by 6) raise and lower the same stat,
+	; but +10% -10% isn't neutral (the result is 99%), so we need to
+	; avoid messing with it altogether.
+	cp d
+	jr z, .neutral
 	ld a, 9
 	pop de
 	ret

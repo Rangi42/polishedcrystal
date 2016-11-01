@@ -34,8 +34,11 @@ PikachuChuchuBitmasks: INCLUDE "gfx/pics/pikachu_chuchu/bitmask.asm"
 PichuPlainBitmasks: INCLUDE "gfx/pics/pichu_plain/bitmask.asm"
 PichuSpikyBitmasks: INCLUDE "gfx/pics/pichu_spiky/bitmask.asm"
 
-ArbokJohtoBitmasks: INCLUDE "gfx/pics/arbok_johto/bitmask.asm"
-ArbokKantoBitmasks: INCLUDE "gfx/pics/arbok_kanto/bitmask.asm"
+ArbokJohtoBitmasks:  INCLUDE "gfx/pics/arbok_johto/bitmask.asm"
+ArbokKantoBitmasks:  INCLUDE "gfx/pics/arbok_kanto/bitmask.asm"
+ArbokKogaBitmasks:   INCLUDE "gfx/pics/arbok_koga/bitmask.asm"
+ArbokAgathaBitmasks: INCLUDE "gfx/pics/arbok_agatha/bitmask.asm"
+ArbokArianaBitmasks: INCLUDE "gfx/pics/arbok_ariana/bitmask.asm"
 
 MewtwoPlainBitmasks:   INCLUDE "gfx/pics/mewtwo_plain/bitmask.asm"
 MewtwoArmoredBitmasks: INCLUDE "gfx/pics/mewtwo_armored/bitmask.asm"

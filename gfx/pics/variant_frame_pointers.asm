@@ -40,6 +40,9 @@ PichuFramesPointers:
 ArbokFramesPointers:
 	dw ArbokJohtoFrames
 	dw ArbokKantoFrames
+	dw ArbokKogaFrames
+	dw ArbokAgathaFrames
+	dw ArbokArianaFrames
 
 MewtwoFramesPointers:
 	dw MewtwoPlainFrames

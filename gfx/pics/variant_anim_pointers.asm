@@ -40,6 +40,9 @@ PichuAnimationPointers:
 ArbokAnimationPointers:
 	dw ArbokJohtoAnimation
 	dw ArbokKantoAnimation
+	dw ArbokKogaAnimation
+	dw ArbokAgathaAnimation
+	dw ArbokArianaAnimation
 
 MewtwoAnimationPointers:
 	dw MewtwoPlainAnimation

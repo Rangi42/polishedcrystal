@@ -34,8 +34,11 @@ PikachuSurfAnimationExtra:   INCLUDE "gfx/pics/pikachu_surf/anim1.asm"
 PikachuPikaAnimationExtra:   INCLUDE "gfx/pics/pikachu_pika/anim1.asm"
 PikachuChuchuAnimationExtra: INCLUDE "gfx/pics/pikachu_chuchu/anim1.asm"
 
-ArbokJohtoAnimationExtra: INCLUDE "gfx/pics/arbok_johto/anim1.asm"
-ArbokKantoAnimationExtra: INCLUDE "gfx/pics/arbok_kanto/anim1.asm"
+ArbokJohtoAnimationExtra:  INCLUDE "gfx/pics/arbok_johto/anim1.asm"
+ArbokKantoAnimationExtra:  INCLUDE "gfx/pics/arbok_kanto/anim1.asm"
+ArbokKogaAnimationExtra:   INCLUDE "gfx/pics/arbok_koga/anim1.asm"
+ArbokAgathaAnimationExtra: INCLUDE "gfx/pics/arbok_agatha/anim1.asm"
+ArbokArianaAnimationExtra: INCLUDE "gfx/pics/arbok_ariana/anim1.asm"
 
 MewtwoPlainAnimationExtra:   INCLUDE "gfx/pics/mewtwo_plain/anim1.asm"
 MewtwoArmoredAnimationExtra: INCLUDE "gfx/pics/mewtwo_armored/anim1.asm"

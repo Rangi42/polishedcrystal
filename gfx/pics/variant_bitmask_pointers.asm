@@ -40,6 +40,9 @@ PichuBitmasksPointers:
 ArbokBitmasksPointers:
 	dw ArbokJohtoBitmasks
 	dw ArbokKantoBitmasks
+	dw ArbokKogaBitmasks
+	dw ArbokAgathaBitmasks
+	dw ArbokArianaBitmasks
 
 MewtwoBitmasksPointers:
 	dw MewtwoPlainBitmasks
