@@ -16,9 +16,6 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	ld [BT_OTPkmn2Item], a
 	ld [BT_OTPkmn3Item], a
 
-	; Set BT_OTTrainer as start address to write the following data to
-	ld de, BT_OTTrainer
-
 	ld a, [wNrOfBeatenBattleTowerTrainers]
 	cp BATTLETOWER_NROFTRAINERS - 1
 	jr z, .load_tycoon
@@ -65,15 +62,19 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 
 ; Copy name (10 bytes) and class (1 byte) of trainer
 	ld hl, BattleTowerTrainers
+	ld de, BT_OTName
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld bc, NAME_LENGTH
 	call CopyBytes
 
 ; Copy random Pokémon
-rept BATTLETOWER_NROFPKMNS
+	ld de, BT_OTPkmn1
 	call LoadRandomBattleTowerPkmn
-endr
+	ld de, BT_OTPkmn2
+	call LoadRandomBattleTowerPkmn
+	ld de, BT_OTPkmn3
+	call LoadRandomBattleTowerPkmn
 
 	ld a, [sBTPkmnPrevTrainer1]
 	ld [sBTPkmnPrevPrevTrainer1], a
