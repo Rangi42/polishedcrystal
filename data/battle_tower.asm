@@ -122,11 +122,11 @@ LoadRandomBattleTowerPkmn:
 	; Check if Pkmn was already loaded before
 	; Check current and the 2 previous teams
 	; includes check if item is double at the current team
-	ld bc, PARTYMON_STRUCT_LENGTH + PKMN_NAME_LENGTH
+	ld bc, BattleTowerPokemon2 - BattleTowerPokemon1
 	call AddNTimes
-	ld a, [hli]
+	ld a, [hli] ; species
 	ld b, a
-	ld a, [hld]
+	ld a, [hld] ; item
 	ld c, a
 	ld a, [BT_OTPkmn1]
 	cp b
@@ -165,6 +165,10 @@ LoadRandomBattleTowerPkmn:
 	cp b
 	jr z, .FindARandomBattleTowerPkmn
 
+; hl = source battle tower pkmn
+; de = destination party_struct
+; TODO: only store in source: species, item, moves, personality
+; everything else can be calculated, assuming max DVs, EVs, and happiness
 	ld bc, PARTYMON_STRUCT_LENGTH + PKMN_NAME_LENGTH
 	call CopyBytes
 
@@ -301,6 +305,7 @@ BattleTowerMons: ; 1f8450
 ; 10 groups of 21 mons.
 BattleTowerMons1:
 
+BattleTowerPokemon1:
 	db JOLTEON
 	db LUM_BERRY
 	db THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
@@ -330,6 +335,7 @@ BattleTowerMons1:
 	db "SANDA-SU@@@"
 
 
+BattleTowerPokemon2:
 	db ESPEON
 	db LEFTOVERS
 	db MUD_SLAP, PSYCHIC_M, CALM_MIND, TOXIC
