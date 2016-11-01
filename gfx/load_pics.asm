@@ -1,13 +1,14 @@
 GetVariant: ; 51040
 	ld a, [CurPartySpecies]
-	cp UNOWN
-	jp z, .GetUnownVariant
-	cp ARBOK
-	jp z, .GetArbokVariant
-	cp PICHU
-	jp z, .GetPichuVariant
-	cp MEWTWO
-	jp z, .GetMewtwoVariant
+	cp PIKACHU
+	jr z, .GetPikachuVariant
+
+; Return MonVariant based on Form at hl
+; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Mewtwo: 1-2
+	ld a, [hl]
+	and FORM_MASK
+	ld [MonVariant], a
+	ret
 
 .GetPikachuVariant:
 ; Return Pikachu form in MonVariant
@@ -86,46 +87,6 @@ endr
 .yellow_chuchu
 	pop bc
 	ld a, 5 ; Chuchu
-	ld [MonVariant], a
-	ret
-
-.GetMewtwoVariant:
-; Return Mewtwo form in MonVariant
-
-	push bc
-	ld bc, EnemyMonForm
-	ld a, b
-	cp h
-	jr nz, .notgiovanni
-	ld a, c
-	cp l
-	jr nz, .notgiovanni
-	ld a, [wBattleMode]
-	cp 2
-	jr nz, .notgiovanni
-	ld a, [OtherTrainerClass]
-	cp GIOVANNI
-	jr nz, .notgiovanni
-	pop bc
-	ld a, 2 ; armored
-	ld [MonVariant], a
-	ret
-
-.notgiovanni
-	pop bc
-	ld a, 1 ; plain
-	ld [MonVariant], a
-	ret
-
-.GetUnownVariant:
-; Return Unown letter in MonVariant based on Form at hl (1-26)
-.GetPichuVariant:
-; Return Pichu form in MonVariant based on Form at hl (1-2)
-.GetArbokVariant:
-; Return Arbok form in MonVariant based on Form at hl (1-2)
-
-	ld a, [hl]
-	and FORM_MASK
 	ld [MonVariant], a
 	ret
 
