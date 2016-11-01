@@ -7,6 +7,24 @@ GetVariant: ; 51040
 ; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Mewtwo: 1-2
 	ld a, [hl]
 	and FORM_MASK
+	jr nz, .ok
+	ld a, [CurPartySpecies]
+	cp ARBOK
+	jr nz, .not_kanto_arbok
+	push bc
+	push de
+	farcall RegionCheck
+	ld a, e
+	pop de
+	pop bc
+	and a
+	jr z, .not_kanto_arbok
+.kanto_arbok
+	ld a, 2 ; arbok with form 0 in kanto becomes variant 2
+	jr .ok
+.not_kanto_arbok
+	ld a, 1 ; safeguard: form 0 becomes variant 1
+.ok
 	ld [MonVariant], a
 	ret
 

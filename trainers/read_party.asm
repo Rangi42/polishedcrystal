@@ -108,13 +108,26 @@ endr
 	ld e, l
 	pop hl
 
+	; when reading DVs, $00 means $ff, since $ff is the end-of-trainer marker
 	ld a, [hli]
+	and a
+	jr nz, .dv1_ok
+	ld a, $ff
+.dv1_ok
 	ld [de], a
 	inc de
 	ld a, [hli]
+	and a
+	jr nz, .dv2_ok
+	ld a, $ff
+.dv2_ok
 	ld [de], a
 	inc de
 	ld a, [hli]
+	and a
+	jr nz, .dv3_ok
+	ld a, $ff
+.dv3_ok
 	ld [de], a
 
 .not_dvs

@@ -42,25 +42,29 @@ NUM_STATS EQU const_value
 STAT_MIN_NORMAL EQU 5
 STAT_MIN_HP EQU 10
 
-PERFECT_DVS EQUS "$FF, $FF, $FF"
+; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
+; ReadTrainerParty converts $00 to $ff when reading DVs
+
+PERFECT_DVS      EQUS "$ff, $ff, $ff"
+FAKE_PERFECT_DVS EQUS "$00, $00, $00"
 
 ; hidden power dvs
-DVS_HP_FIGHTING EQUS "$FC, $CF, $FF"
-DVS_HP_FLYING   EQUS "$FC, $DF, $FF"
-DVS_HP_POISON   EQUS "$FC, $EF, $FF"
-DVS_HP_GROUND   EQUS "$FC, $FF, $FF"
-DVS_HP_ROCK     EQUS "$FD, $CF, $FF"
-DVS_HP_BUG      EQUS "$FD, $DF, $FF"
-DVS_HP_GHOST    EQUS "$FD, $EF, $FF"
-DVS_HP_STEEL    EQUS "$FD, $FF, $FF"
-DVS_HP_FIRE     EQUS "$FE, $CF, $FF"
-DVS_HP_WATER    EQUS "$FE, $DF, $FF"
-DVS_HP_GRASS    EQUS "$FE, $EF, $FF"
-DVS_HP_ELECTRIC EQUS "$FE, $FF, $FF"
-DVS_HP_PSYCHIC  EQUS "$FF, $CF, $FF"
-DVS_HP_ICE      EQUS "$FF, $DF, $FF"
-DVS_HP_DRAGON   EQUS "$FF, $EF, $FF"
-DVS_HP_DARK     EQUS "$FF, $FF, $FF"
+DVS_HP_FIGHTING EQUS "$fc, $cf, $00"
+DVS_HP_FLYING   EQUS "$fc, $df, $00"
+DVS_HP_POISON   EQUS "$fc, $ef, $00"
+DVS_HP_GROUND   EQUS "$fc, $00, $00"
+DVS_HP_ROCK     EQUS "$fd, $cf, $00"
+DVS_HP_BUG      EQUS "$fd, $df, $00"
+DVS_HP_GHOST    EQUS "$fd, $ef, $00"
+DVS_HP_STEEL    EQUS "$fd, $00, $00"
+DVS_HP_FIRE     EQUS "$fe, $cf, $00"
+DVS_HP_WATER    EQUS "$fe, $df, $00"
+DVS_HP_GRASS    EQUS "$fe, $ef, $00"
+DVS_HP_ELECTRIC EQUS "$fe, $00, $00"
+DVS_HP_PSYCHIC  EQUS "$00, $cf, $00"
+DVS_HP_ICE      EQUS "$00, $df, $00"
+DVS_HP_DRAGON   EQUS "$00, $ef, $00"
+DVS_HP_DARK     EQUS "$00, $00, $00"
 
 ; nature constants
 	const_def
