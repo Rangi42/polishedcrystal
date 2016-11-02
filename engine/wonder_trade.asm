@@ -1228,7 +1228,7 @@ CheckValidLevel:
 	db  37, 100 ; Slowbro
 	db   1,  29 ; Magnemite
 	db  30,  49 ; Magneton
-	db   1, 100 ; Farfetch'd
+	db  20, 100 ; Farfetch'd
 	db   1,  30 ; Doduo
 	db  31, 100 ; Dodrio
 	db   1,  33 ; Seel
@@ -1257,9 +1257,9 @@ CheckValidLevel:
 	db  35, 100 ; Weezing
 	db   1,  41 ; Rhyhorn
 	db  42,  54 ; Rhydon
-	db   1, 100 ; Chansey
+	db  20, 100 ; Chansey
 	db   1,  38 ; Tangela
-	db   1, 100 ; Kangaskhan
+	db  20, 100 ; Kangaskhan
 	db   1,  31 ; Horsea
 	db  32,  54 ; Seadra
 	db   1,  19 ; Togepi
@@ -1267,13 +1267,13 @@ CheckValidLevel:
 	db  40, 100 ; Togekiss
 	db   1,  32 ; Staryu
 	db  33, 100 ; Starmie
-	db   1, 100 ; Mr.Mime
+	db  20, 100 ; Mr. Mime
 	db  10, 100 ; Scyther
-	db   1, 100 ; Jynx
+	db  20, 100 ; Jynx
 	db  20,  46 ; Electabuzz
 	db  20,  46 ; Magmar
 	db  10, 100 ; Pinsir
-	db   1, 100 ; Tauros
+	db  20, 100 ; Tauros
 	db   1,  19 ; Magikarp
 	db  20, 100 ; Gyarados
 	db  20, 100 ; Lapras
@@ -1328,7 +1328,7 @@ CheckValidLevel:
 	db  30, 100 ; Ampharos
 	db  32, 100 ; Bellossom
 	db  55, 100 ; Rhyperior
-	db   1, 100 ; Sudowoodo
+	db  10, 100 ; Sudowoodo
 	db  36, 100 ; Politoed
 	db   1,  31 ; Sunkern
 	db  32, 100 ; Sunflora
@@ -1372,7 +1372,7 @@ CheckValidLevel:
 	db   1,  24 ; Remoraid
 	db  25, 100 ; Octillery
 	db   1, 100 ; Mantine
-	db   1, 100 ; Skarmory
+	db  10, 100 ; Skarmory
 	db   1,  23 ; Houndour
 	db  24, 100 ; Houndoom
 	db  55, 100 ; Kingdra
