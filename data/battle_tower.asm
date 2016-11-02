@@ -16,7 +16,10 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	ld [BT_OTPkmn2Item], a
 	ld [BT_OTPkmn3Item], a
 
-	ld a, [wNrOfBeatenBattleTowerTrainers]
+	ld a, BANK(sBTTrainers)
+	call GetSRAMBank
+	ld a, [sNrOfBeatenBattleTowerTrainers]
+	call CloseSRAM
 	cp BATTLETOWER_NROFTRAINERS - 1
 	jr z, .load_tycoon
 

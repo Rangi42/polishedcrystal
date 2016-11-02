@@ -326,9 +326,7 @@ Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 
 Text_PlayerGotReward: ; 0x9eb7e
 	text "<PLAYER> earned"
-	line "@"
-	deciram ScriptVar, 1, 3
-	text " Battle Points!@"
+	line "3 Battle Points!@"
 	sound_item
 	text_waitbutton
 	db "@"
