@@ -1170,8 +1170,8 @@ Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	db $3b, " Option ", $3c, $ff
 
 .Modes: ; 408bd
-	db   "New #dex Mode"
-	next "Old #dex Mode"
+	db   "Johto Mode"
+	next "National Mode"
 	next "A to Z Mode"
 	db "@"
 
@@ -1248,7 +1248,7 @@ Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 
 .BottomWindowText: ; 409ae
 	db   "Search Results"
-	next "  Type"
+	next "  Type/"
 	next "    found!"
 	db   "@"
 
@@ -1263,9 +1263,9 @@ Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
 	jr z, .done
 	cp b
 	jr z, .done
-	hlcoord 2, 15
-	call Pokedex_PlaceTypeString
 	hlcoord 1, 15
+	call Pokedex_PlaceTypeString
+	hlcoord 0, 15
 	ld [hl], "/"
 .done
 	ret
@@ -1702,12 +1702,12 @@ Pokedex_DisplayModeDescription: ; 40e5b
 	dw .UnownMode
 
 .NewMode: ; 40e85
-	db   "<PK><MN> are listed by"
-	next "evolution type.@"
+	db   "<PK><MN> are listed in"
+	next "regional order.@"
 
 .OldMode: ; 40ea6
-	db   "<PK><MN> are listed by"
-	next "official type.@"
+	db   "<PK><MN> are listed in"
+	next "national order.@"
 
 .ABCMode: ; 40ec6
 	db   "<PK><MN> are listed"
@@ -1715,7 +1715,7 @@ Pokedex_DisplayModeDescription: ; 40e5b
 
 .UnownMode: ; 40ee4
 	db   "Unown are listed"
-	next "in catching order.@"
+	next "in order caught.@"
 
 Pokedex_DisplayChangingModesMessage: ; 40f08 (10:4f08)
 	xor a
