@@ -1401,7 +1401,7 @@ Options:: ; cfcc
 wSaveFileExists:: ds 1
 
 TextBoxFrame:: ; cfce
-; bits 0-2: textbox frame 0-7
+; bits 0-3: textbox frame 0-8
 	ds 1
 TextBoxFlags::
 	ds 1

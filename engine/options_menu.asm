@@ -428,14 +428,19 @@ Options_Frame: ; e44fa
 .RightPressed:
 	ld a, [hl]
 	inc a
+	cp $9
+	jr nz, .Save
+	ld a, $0
 	jr .Save
 
 .LeftPressed:
 	ld a, [hl]
 	dec a
+	cp $ff
+	jr nz, .Save
+	ld a, $8
 
 .Save:
-	and $7
 	ld [hl], a
 UpdateFrame: ; e4512
 	ld a, [TextBoxFrame]

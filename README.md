@@ -262,6 +262,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Make overworld sprites darker at night.
 * Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
 * Add: Olivine Gym has its two trainers from HGSS.
+* Add: Unlock frame type 9.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.

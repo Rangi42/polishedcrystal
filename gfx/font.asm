@@ -119,7 +119,6 @@ _LoadFontsBattleExtra:: ; fb4be
 
 LoadFrame: ; fb4cc
 	ld a, [TextBoxFrame]
-	and 7
 	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
 	ld hl, Frames
 	call AddNTimes
