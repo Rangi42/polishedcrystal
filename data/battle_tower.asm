@@ -165,161 +165,57 @@ LoadRandomBattleTowerPkmn:
 	cp b
 	jr z, .FindARandomBattleTowerPkmn
 
-; hl = source battle tower pkmn (species, item, moves, dvs, personality)
-; de = destination party_struct and subsequent nickname
+; hl = source battle tower pkmn
+; de = destination party_struct
 
-	; species
-	ld a, [hli]
-	ld [de], a
-	ld [wd265], a ; save species for getting name later
-	inc de
+; TODO: dynamically calculate the rest of the data
 
-	; item
-	ld a, [hli]
-	ld [de], a
-	inc de
-
-	; moves
-rept NUM_MOVES
-	ld a, [hli]
-	ld [de], a
-	inc de
-endr
-
-	; id = 0
-	xor a
-rept 3
-	ld [de], a
-	inc de
-endr
-
-	; exp = derived from level group
-	ld a, [wBTChoiceOfLvlGroup]
-	ld c, 10
-	call SimpleMultiply
-	push de
-	ld d, a
-	farcall CalcExpAtLevel
-	pop de
-	ld a, [hProduct + 1]
-	ld [de], a
-	inc de
-	ld a, [hProduct + 2]
-	ld [de], a
-	inc de
-	ld a, [hProduct + 3]
-	ld [de], a
-	inc de
-
-	; evs = 3 + 6 * level
-	ld a, [wBTChoiceOfLvlGroup]
-	ld c, 6
-	call SimpleMultiply
-	add 3
-	ld bc, StringBuffer2 ; save evs for calculating stats later
-rept 6
-	ld [de], a
-	ld [bc], a
-	inc de
-	inc bc
-endr
-
-	; dvs and personality
-rept 5
-	ld a, [hli]
-	ld [de], a
-	inc de
-endr
-
-	; pp = derived from moves
+	; copy species + item + moves
+	ld bc, 6
+	call CopyBytes
+	; skip id + exp + evs
+	ld bc, 11
 	push hl
-rept 9 ; NUM_MOVES + 3 DVs + 2 personality
-	dec hl
-endr
-	ld b, NUM_MOVES
-.pp_loop
-	ld a, [hli]
-	push hl
-	push bc
-	push de
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld de, StringBuffer1
-	ld a, BANK(Moves)
-	call FarCopyBytes
-	pop de
-	pop bc
+	ld h, d
+	ld l, e
+	add hl, bc
+	ld d, h
+	ld e, l
 	pop hl
-	ld a, [StringBuffer1 + MOVE_PP]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .pp_loop
-
-	; happiness = max
-	ld a, $ff
-	ld [de], a
-	inc de
-
-	; pokerus status and caught data = 0
-	xor a
-rept 4
-	ld [de], a
-	inc de
-endr
-
-	; level = derived from level group
-	ld a, [wBTChoiceOfLvlGroup]
-	ld c, 10
-	call SimpleMultiply
-	ld [de], a
-	inc de
-
-	; status and unused = 0
-	xor a
-rept 3
-	ld [de], a
-	inc de
-endr
-
-	; hp = skipped for later
-	inc de
-	inc de
-
-	; hp and stats
+	; copy dvs + personality
+	ld bc, 5
+	call CopyBytes
+	; skip pp + happiness + pokerus + caughtdata + level + status + unused + hp + stats
+	ld bc, 26
 	push hl
-	ld hl, StringBuffer2 ; evs saved here
-	ld b, TRUE
-	predef CalcPkmnStats
+	ld h, d
+	ld l, e
+	add hl, bc
+	ld d, h
+	ld e, l
 	pop hl
 
-	; get back to hp
+	ld a, [wd265]
+	push af
 	push de
-rept 11
-	dec de
-endr
-	ld a, [de]
-	ld c, a
-	dec de
-	ld a, [de]
-	ld b, a
-	dec de
-	ld a, c
-	ld [de], a
-	dec de
-	ld a, b
-	ld [de], a
-	pop de
 
-	; nickname
-	push de
-	call GetPokemonName ; used species saved in wd265
+	ld hl, -PARTYMON_STRUCT_LENGTH
+	add hl, de
+	ld a, [hl]
+	ld [wd265], a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	push hl
+	call GetPokemonName
+	ld h, d
+	ld l, e
 	pop de
-	ld hl, StringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 
+	pop de
+	pop af
+	ld [wd265], a
 	ret
 
 BattleTowerTrainers: ; 1f814e
