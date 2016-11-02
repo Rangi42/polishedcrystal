@@ -198,7 +198,6 @@ battle_tower_struct: MACRO
 \1Pkmn3:: party_struct \1Pkmn3
 \1Pkmn3Name:: ds PKMN_NAME_LENGTH
 \1Pkmn3NameEnd::
-\1TrainerData:: ds BATTLETOWER_TRAINERDATALENGTH
 \1TrainerEnd::
 endm
 
