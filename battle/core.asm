@@ -113,6 +113,7 @@ DoBattle: ; 3c000
 	call SetEnemyTurn
 	call SpikesDamage
 	call RunBothActivationAbilities
+	jp BattleTurn
 
 .not_linked_2
 	call RunBothActivationAbilities
@@ -4297,8 +4298,12 @@ RunBothActivationAbilities:
 	ld a, [hBattleTurn]
 	push af
 	call SetPlayerTurn
-	call RunActivationAbilities
+	call CheckSpeed
+	jr z, .got_order
 	call SetEnemyTurn
+.got_order
+	call RunActivationAbilities
+	call SwitchTurnCore
 	call RunActivationAbilities
 	pop af
 	ld [hBattleTurn], a
@@ -4319,15 +4324,9 @@ RunActivationAbilities:
 	cp TRACE
 	ret nz
 	; invert whose turn it is to properly handle abilities.
-	ld a, [hBattleTurn]
-	xor 1
-	and 1
-	ld [hBattleTurn], a
+	call SwitchTurnCore
 	farcall RunActivationAbilitiesInner
-	ld a, [hBattleTurn]
-	xor 1
-	and 1
-	ld [hBattleTurn], a
+	call SwitchTurnCore
 	ret
 
 SpikesDamage_CheckMoldBreaker:
