@@ -243,7 +243,7 @@ BugsyGroup:
 
 	; BUGSY
 	db "Bugsy@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 
 	; party
 
@@ -263,7 +263,11 @@ BugsyGroup:
 		db BUG_BUZZ
 		db AIR_SLASH
 		db ANCIENTPOWER
+if DEF(FAITHFUL)
 		db PROTECT
+else
+		db DRAGON_PULSE
+endc
 
 	db 72, PARASECT, LEFTOVERS, ABILITY_1 | QUIRKY, MALE
 		db SPORE
@@ -789,11 +793,15 @@ ClairGroup:
 		db DRAGONBREATH
 		db AQUA_TAIL
 
-	db 40, AMPHAROS, NO_ITEM
-		db THUNDER_WAVE
-		db CONFUSE_RAY
+	db 43, YANMEGA, NO_ITEM
+		db DOUBLE_TEAM
+		db SUPERSONIC
+		db ANCIENTPOWER
+if DEF(FAITHFUL)
+		db AIR_SLASH
+else
 		db DRAGON_PULSE
-		db LIGHT_SCREEN
+endc
 
 	db 42, DRAGONAIR, NO_ITEM
 		db THUNDER_WAVE
@@ -829,17 +837,21 @@ ClairGroup:
 
 	; party
 
-	db 74, DRAGONAIR, EVIOLITE
-		db AQUA_TAIL
-		db FLY
-		db THUNDER_WAVE
-		db SAFEGUARD
-
 	db 72, GYARADOS, LUM_BERRY
 		db DRAGON_DANCE
 		db WATERFALL
 		db FLY
 		db EARTHQUAKE
+
+	db 74, YANMEGA, BRIGHTPOWDER
+		db DOUBLE_TEAM
+		db BUG_BUZZ
+		db AIR_SLASH
+if DEF(FAITHFUL)
+		db ANCIENTPOWER
+else
+		db DRAGON_PULSE
+endc
 
 	db 73, DRAGONITE, SILK_SCARF
 		db OUTRAGE
@@ -1300,8 +1312,12 @@ ChampionGroup:
 	db 56, CHARIZARD, MUSCLE_BAND, ABILITY_1 | ADAMANT, MALE
 		db DRAGON_DANCE
 		db FLAME_WHEEL
-		db AERIAL_ACE
 		db SLASH
+if DEF(FAITHFUL)
+		db WING_ATTACK
+else
+		db DRAGON_CLAW
+endc
 
 	db 59, DRAGONITE, WISE_GLASSES, SHINY_MASK | ABILITY_1 | MODEST, MALE
 		db BARRIER
@@ -1347,7 +1363,11 @@ ChampionGroup:
 		db SWORDS_DANCE
 		db FLARE_BLITZ
 		db ROCK_SLIDE
-		db SLASH
+if DEF(FAITHFUL)
+		db AERIAL_ACE
+else
+		db DRAGON_CLAW
+endc
 
 	db 80, DRAGONITE, WISE_GLASSES, SHINY_MASK | ABILITY_1 | MODEST, MALE
 		db HURRICANE
@@ -2193,7 +2213,11 @@ RedGroup:
 		db FLARE_BLITZ
 		db SWORDS_DANCE
 		db EARTHQUAKE
+if DEF(FAITHFUL)
 		db AERIAL_ACE
+else
+		db DRAGON_CLAW
+endc
 
 	db $ff ; end
 
@@ -3205,7 +3229,7 @@ BugCatcherGroup:
 
 	; BUG_CATCHER
 	db "Wade@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3239,7 +3263,7 @@ BugCatcherGroup:
 
 	; BUG_CATCHER
 	db "Wade@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3295,7 +3319,7 @@ BugCatcherGroup:
 
 	; BUG_CATCHER
 	db "Arnie@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3311,7 +3335,7 @@ BugCatcherGroup:
 
 	; BUG_CATCHER
 	db "Arnie@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3327,7 +3351,7 @@ BugCatcherGroup:
 
 	; BUG_CATCHER
 	db "Arnie@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3571,7 +3595,7 @@ CamperGroup:
 
 	; CAMPER
 	db "Todd@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3805,7 +3829,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Liz@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3885,7 +3909,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Gina@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3937,7 +3961,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Erin@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3965,7 +3989,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Tiffany@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3981,7 +4005,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Tiffany@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -3997,7 +4021,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Tiffany@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4013,7 +4037,7 @@ PicnickerGroup:
 
 	; PICNICKER
 	db "Tiffany@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4150,7 +4174,7 @@ TwinsGroup:
 
 	; TWINS
 	db "Tori & Til@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4172,7 +4196,7 @@ TwinsGroup:
 
 	; TWINS
 	db "Tori & Til@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4242,7 +4266,7 @@ TwinsGroup:
 
 	; TWINS
 	db "Lea & Pia@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4264,7 +4288,7 @@ TwinsGroup:
 
 	; TWINS
 	db "Lea & Pia@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4386,7 +4410,7 @@ FisherGroup:
 
 	; FISHER
 	db "Ralph@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4443,7 +4467,7 @@ FisherGroup:
 
 	; FISHER
 	db "Tully@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4497,7 +4521,7 @@ FisherGroup:
 
 	; FISHER
 	db "Wilton@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4599,7 +4623,7 @@ FisherGroup:
 
 	; FISHER
 	db "Raymond@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4633,7 +4657,7 @@ FisherGroup:
 
 	; FISHER
 	db "Edgar@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4763,7 +4787,7 @@ BirdKeeperGroup:
 
 	; BIRD_KEEPER
 	db "Vance@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -4807,7 +4831,7 @@ BirdKeeperGroup:
 
 	; BIRD_KEEPER
 	db "Jose@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -5027,7 +5051,7 @@ HikerGroup:
 
 	; HIKER
 	db "Anthony@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -5078,7 +5102,7 @@ HikerGroup:
 
 	; HIKER
 	db "Parry@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -5183,7 +5207,7 @@ HikerGroup:
 
 	; HIKER
 	db "Timothy@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -5304,7 +5328,7 @@ HikerGroup:
 
 	; HIKER
 	db "Parry@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -5842,7 +5866,7 @@ GruntFGroup:
 
 	; GRUNTF
 	db "Grunt@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 	db 29, ARBOK
@@ -6263,7 +6287,7 @@ PokemaniacGroup:
 
 	; POKEMANIAC
 	db "Brent@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6279,7 +6303,7 @@ PokemaniacGroup:
 
 	; POKEMANIAC
 	db "Brent@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6433,7 +6457,7 @@ PokemaniacGroup:
 
 	; POKEMANIAC
 	db "Aidan@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6547,7 +6571,7 @@ SuperNerdGroup:
 
 	; SUPER_NERD
 	db "Hugh@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6563,7 +6587,7 @@ SuperNerdGroup:
 
 	; SUPER_NERD
 	db "Markus@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6644,7 +6668,7 @@ LassGroup:
 
 	; LASS
 	db "Dana@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6666,7 +6690,7 @@ LassGroup:
 
 	; LASS
 	db "Dana@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6688,7 +6712,7 @@ LassGroup:
 
 	; LASS
 	db "Dana@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6710,7 +6734,7 @@ LassGroup:
 
 	; LASS
 	db "Dana@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6732,7 +6756,7 @@ LassGroup:
 
 	; LASS
 	db "Dana@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6754,7 +6778,7 @@ LassGroup:
 
 	; LASS
 	db "Carrie@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -6889,7 +6913,7 @@ BeautyGroup:
 
 	; BEAUTY
 	db "Samantha@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7246,7 +7270,7 @@ SchoolboyGroup:
 
 	; SCHOOLBOY
 	db "Jack@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7325,7 +7349,7 @@ SchoolboyGroup:
 
 	; SCHOOLBOY
 	db "Alan@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7341,11 +7365,11 @@ SchoolboyGroup:
 		db VINE_WHIP
 		db MEGA_DRAIN
 
-	db 37, YANMEGA
-		db ANCIENTPOWER
+	db 37, YANMA
 		db QUICK_ATTACK
 		db DOUBLE_TEAM
-		db SONIC_BOOM
+		db DRAGON_RAGE
+		db WING_ATTACK
 
 	db 35, QUAGSIRE
 		db LEER
@@ -7406,7 +7430,7 @@ SchoolboyGroup:
 
 	; SCHOOLBOY
 	db "Chad@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7690,7 +7714,7 @@ PsychicGroup:
 
 	; PSYCHIC_T
 	db "Greg@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7706,7 +7730,7 @@ PsychicGroup:
 
 	; PSYCHIC_T
 	db "Norman@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7728,7 +7752,7 @@ PsychicGroup:
 
 	; PSYCHIC_T
 	db "Mark@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -7874,7 +7898,7 @@ HexManiacGroup:
 
 	; HEX_MANIAC
 	db "Luna@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -8619,7 +8643,7 @@ SailorGroup:
 
 	; SAILOR
 	db "Huey@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -8665,7 +8689,7 @@ SailorGroup:
 
 	; SAILOR
 	db "Kent@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9082,7 +9106,7 @@ SwimmerFGroup:
 
 	; SWIMMERF
 	db "Wendy@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9378,7 +9402,7 @@ ScientistGroup:
 
 	; SCIENTIST
 	db "Trenton@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9642,7 +9666,7 @@ BlackbeltGroup:
 	; unused
 	; BLACKBELT_T
 	db "Kenji@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9708,7 +9732,7 @@ BlackbeltGroup:
 
 	; BLACKBELT_T
 	db "Nob@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9878,7 +9902,7 @@ DragonTamerGroup:
 	; party
 	db 37, DRATINI
 	db 37, DRATINI
-	db 37, DRATINI
+	db 38, DRAGONAIR
 
 	db $ff ; end
 
@@ -9886,7 +9910,7 @@ DragonTamerGroup:
 
 	; DRAGON_TAMER
 	db "Darin@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9895,6 +9919,12 @@ DragonTamerGroup:
 		db SURF
 		db DRAGON_PULSE
 		db AQUA_TAIL
+
+	db 38, CHARIZARD
+		db SLASH
+		db FLY
+		db DRAGON_CLAW
+		db FLAME_WHEEL
 
 	db $ff ; end
 
@@ -9905,9 +9935,9 @@ DragonTamerGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 37, HORSEA
-	db 38, DRATINI
-	db 39, SEADRA
+	db 37, YANMA
+	db 38, SEADRA
+	db 39, DRATINI
 
 	db $ff ; end
 
@@ -9915,7 +9945,7 @@ DragonTamerGroup:
 
 	; DRAGON_TAMER
 	db "Erick@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -9931,11 +9961,19 @@ DragonTamerGroup:
 		db WATER_PULSE
 		db OUTRAGE
 
+if DEF(FAITHFUL)
 	db 40, DRAGONAIR
 		db WRAP
 		db DRAGON_RAGE
 		db AQUA_TAIL
 		db DRAGON_PULSE
+else
+	db 40, YANMEGA
+		db DOUBLE_TEAM
+		db DRAGON_RAGE
+		db SLASH
+		db DRAGON_PULSE
+endc
 
 	db $ff ; end
 
@@ -9943,7 +9981,7 @@ DragonTamerGroup:
 
 	; DRAGON_TAMER
 	db "Kazu@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10062,7 +10100,7 @@ GuitaristFGroup:
 
 	; GUITARISTF
 	db "Janet@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10267,7 +10305,7 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM
 	db "Gaven@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10295,7 +10333,7 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM
 	db "Gaven@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10351,7 +10389,7 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM
 	db "Nick@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10396,7 +10434,8 @@ CooltrainerMGroup:
 
 	; party
 	db 36, HORSEA
-	db 38, SEADRA
+	db 37, SEADRA
+	db 38, YANMA
 
 	db $ff ; end
 
@@ -10415,7 +10454,7 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM
 	db "Ryan@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10437,7 +10476,7 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM
 	db "Blake@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10504,7 +10543,7 @@ CooltrainerMGroup:
 
 	; COOLTRAINERM
 	db "Allen@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10557,7 +10596,7 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF
 	db "Beth@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10579,7 +10618,7 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF
 	db "Beth@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10706,7 +10745,11 @@ CooltrainerFGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
+if DEF(FAITHFUL)
 	db 39, SEADRA
+else
+	db 39, CHARIZARD
+endc
 
 	db $ff ; end
 
@@ -10763,7 +10806,7 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF
 	db "Joyce@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10785,7 +10828,7 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF
 	db "Megan@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -10849,7 +10892,7 @@ CooltrainerFGroup:
 
 	; COOLTRAINERF
 	db "Cybil@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -11037,7 +11080,7 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Dan & Cara@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -11059,7 +11102,7 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Dan & Cara@"
-	db TRAINERTYPE_ITEM
+	db TRAINERTYPE_MOVES
 
 	; party
 
@@ -11577,7 +11620,7 @@ PokemonProfGroup:
 	db 80, CHARIZARD, CHARCOAL
 		db FLAMETHROWER
 		db CRUNCH
-		db DRAGONBREATH
+		db WING_ATTACK
 		db SLASH
 
 	db 80, BLASTOISE, MYSTIC_WATER
@@ -12295,7 +12338,11 @@ WalkerGroup:
 		db SWORDS_DANCE
 		db FIRE_BLAST
 		db ROCK_SLIDE
-		db SLASH
+if DEF(FAITHFUL)
+		db AERIAL_ACE
+else
+		db DRAGON_CLAW
+endc
 
 	db 72, XATU, QUICK_CLAW
 		db FUTURE_SIGHT
@@ -12415,8 +12462,12 @@ LawrenceGroup:
 	db 66, CHARIZARD, DRAGON_FANG, SHINY_MASK | ABILITY_1 | ADAMANT, MALE
 		db SWORDS_DANCE
 		db FLARE_BLITZ
-		db DRAGON_CLAW
 		db SLASH
+if DEF(FAITHFUL)
+		db AERIAL_ACE
+else
+		db DRAGON_CLAW
+endc
 
 	db 68, DRAGONITE, LEFTOVERS, ABILITY_1 | QUIRKY, MALE
 		db DRAGON_DANCE
@@ -12667,10 +12718,14 @@ CynthiaGroup:
 		db LIGHT_SCREEN
 
 	db 58, YANMEGA, QUICK_CLAW
-		db BUG_BUZZ
-		db AIR_SLASH
-		db ANCIENTPOWER
 		db PROTECT
+		db BUG_BUZZ
+		db ANCIENTPOWER
+if DEF(FAITHFUL)
+		db AIR_SLASH
+else
+		db DRAGON_PULSE
+endc
 
 	db 62, KINGDRA, LEFTOVERS
 		db DRAGON_DANCE
@@ -12713,10 +12768,14 @@ CynthiaGroup:
 		db LIGHT_SCREEN
 
 	db 76, YANMEGA, QUICK_CLAW
-		db BUG_BUZZ
-		db AIR_SLASH
-		db ANCIENTPOWER
 		db PROTECT
+		db BUG_BUZZ
+		db ANCIENTPOWER
+if DEF(FAITHFUL)
+		db AIR_SLASH
+else
+		db DRAGON_PULSE
+endc
 
 	db 80, KINGDRA, LEFTOVERS
 		db DRAGON_DANCE

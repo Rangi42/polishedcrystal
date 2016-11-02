@@ -3516,12 +3516,12 @@ YanmaEvosAttacks:
 	db 11, DOUBLE_TEAM
 	db 14, SONIC_BOOM
 	db 17, PROTECT ; Detect → similar move
-	db 22, SUPERSONIC
-	db 27, FEINT_ATTACK ; Uproar → egg move
+	db 22, DRAGON_RAGE ; Supersonic → new move
+	db 27, SUPERSONIC ; Uproar → Supersonic
 	db 30, PURSUIT
-	db 33, ANCIENTPOWER
+	db 33, WING_ATTACK ; AncientPower → Wing Attack
 	db 38, HYPNOSIS
-	db 43, WING_ATTACK
+	db 43, ANCIENTPOWER ; Wing Attack → AncientPower
 	db 46, SCREECH
 	db 49, DREAM_EATER ; U-Turn → event move
 	db 54, AIR_SLASH
@@ -3536,14 +3536,14 @@ YanmegaEvosAttacks:
 	db 11, DOUBLE_TEAM
 	db 14, SONIC_BOOM
 	db 17, PROTECT ; Detect → similar move
-	db 22, SUPERSONIC
-	db 27, FEINT_ATTACK ; Uproar → egg move
+	db 22, DRAGON_RAGE ; Supersonic → new move
+	db 27, SUPERSONIC ; Uproar → Supersonic
 	db 30, PURSUIT
-	db 33, ANCIENTPOWER
+	db 33, WING_ATTACK ; AncientPower → Wing Attack
 	db 38, SLASH ; Feint → Slash
-	db 43, AIR_SLASH ; Slash → Air Slash
+	db 43, ANCIENTPOWER ; Slash → AncientPower
 	db 46, SCREECH
-	db 49, DREAM_EATER ; U-Turn → event move
+	db 49, DRAGON_PULSE ; U-Turn → TM move
 	db 54, AIR_SLASH
 	db 57, BUG_BUZZ
 	db 62, FLY ; new move

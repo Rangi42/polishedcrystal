@@ -3,7 +3,11 @@
 	db  78,  84,  78, 100, 109,  85
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
 	db FIRE, FLYING
+else
+	db FIRE, DRAGON
+endc
 	db 45 ; catch rate
 	db 209 ; base exp
 	db NO_ITEM ; item 1
