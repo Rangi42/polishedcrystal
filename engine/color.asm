@@ -61,6 +61,11 @@ CheckContestMon:
 	and a
 	ret
 
+InitPokegearPalettes:
+; This is needed because the regular palette is dark at night.
+	call InitPartyMenuOBPals
+	ret
+
 InitPartyMenuPalettes:
 	ld hl, PalPacket_9c56 + 1
 	call CopyFourPalettes

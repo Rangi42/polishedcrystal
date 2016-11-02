@@ -432,8 +432,12 @@ StartMenu_Pokedex: ; 12937
 StartMenu_Pokegear: ; 1294c
 
 	call FadeToMenu
+	farcall InitPokegearPalettes
 	farcall PokeGear
 	call CloseSubmenu
+	call WaitBGMap
+	call SetPalettes
+	call DelayFrame
 	ld a, 0
 	ret
 ; 1295b
