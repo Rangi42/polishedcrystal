@@ -1930,7 +1930,7 @@ Palettes_b719:
 	RGB 00, 00, 00
 
 MalePokegearPals:
-	RGB 28, 31, 20
+	RGB 31, 31, 31
 	RGB 21, 21, 21
 	RGB 13, 13, 13
 	RGB 00, 00, 00
@@ -1945,7 +1945,7 @@ MalePokegearPals:
 	RGB 10, 22, 16
 	RGB 12, 24, 18
 
-	RGB 28, 31, 20
+	RGB 31, 31, 31
 	RGB 31, 15, 00
 	RGB 15, 07, 00
 	RGB 00, 00, 00
@@ -1971,7 +1971,7 @@ MalePokegearPals:
 	RGB 08, 08, 08
 
 FemalePokegearPals:
-	RGB 28, 31, 20
+	RGB 31, 31, 31
 	RGB 21, 21, 21
 	RGB 13, 13, 13
 	RGB 00, 00, 00
@@ -1986,7 +1986,7 @@ FemalePokegearPals:
 	RGB 10, 22, 16
 	RGB 12, 24, 18
 
-	RGB 28, 31, 20
+	RGB 31, 31, 31
 	RGB 10, 18, 31
 	RGB 13, 06, 31
 	RGB 00, 00, 00
