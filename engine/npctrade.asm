@@ -454,20 +454,20 @@ npctrade: MACRO
 ENDM
 
 
-	; Goldenrod City (TODO: male)
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY, $00, SITRUS_BERRY,   37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
-	; Violet City (TODO: male)
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY, $00, PERSIM_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
-	; Olivine City (TODO: male)
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, $00, SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
-	; Blackthorn City (TODO: female)
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID, $00, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
-	; Pewter City (TODO: male)
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, $00, SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
-	; Route 14 (TODO: female)
-	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM, $00, SITRUS_BERRY,   26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
-	; Goldenrod Harbor (TODO: female)
-	npctrade 0, GYARADOS,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM, $00, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
+	; Goldenrod City
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY,   MALE,   SITRUS_BERRY, 37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
+	; Violet City
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY,   MALE,   PERSIM_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
+	; Olivine City
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
+	; Blackthorn City
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
+	; Pewter City
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
+	; Route 14
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, SITRUS_BERRY, 26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	; Goldenrod Harbor
+	npctrade 0, GYARADOS,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
 ; fcf38
 
 
