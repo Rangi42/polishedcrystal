@@ -62,6 +62,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld [wBillsPC_NumMonsOnScreen], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
+	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [CurPartySpecies], a
 	ld a, SCGB_17
@@ -87,6 +88,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
+	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
@@ -315,6 +317,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	ld [wBillsPC_NumMonsOnScreen], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
+	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [CurPartySpecies], a
 	ld a, SCGB_17
@@ -340,6 +343,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	ld [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
+	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
@@ -562,6 +566,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_RefreshTextboxes
 	call BillsPC_MoveMonWOMail_BoxNameAndArrows
 	call PCMonInfo
+	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [CurPartySpecies], a
 	ld a, SCGB_17
@@ -589,6 +594,7 @@ _MovePKMNWithoutMail: ; e2759
 	ld [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
+	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
@@ -2386,6 +2392,48 @@ BillsPC_PrintBoxCountAndCapacity: ; e3632
 	db "0" + MONS_PER_BOX % 10 ; "0"
 	db "@"
 ; e366c
+
+BillsPC_PrintBoxCountAndCapacityInsideBox:
+	hlcoord 0, 0
+	lb bc, 1, 5
+	call TextBox
+	ld a, [wBillsPC_LoadedBox]
+	and a
+	jr z, .party
+	ld a, [wBillsPC_NumMonsInBox]
+	dec a
+	ld [wd265], a
+	hlcoord 1, 1
+	ld de, wd265
+	lb bc, 1, 2
+	call PrintNum
+	ld de, .out_of_20
+	call PlaceString
+	ret
+
+.party
+	ld a, [PartyCount]
+	ld [wd265], a
+	hlcoord 1, 1
+	ld de, wd265
+	lb bc, 1, 2
+	call PrintNum
+	ld de, .out_of_6
+	call PlaceString
+	ret
+
+.out_of_20
+	; db "/20@"
+	db "/"
+	db "0" + MONS_PER_BOX / 10 ; "2"
+	db "0" + MONS_PER_BOX % 10 ; "0"
+	db "@"
+
+.out_of_6
+	; db "/ 6@"
+	db "/ "
+	db "0" + PARTY_LENGTH % 10 ; "6"
+	db "@"
 
 GetBoxCountWithC:
 	ld a, [wCurBox]
