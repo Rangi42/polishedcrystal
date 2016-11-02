@@ -737,7 +737,7 @@ endr
 	push de
 	xor a ; PARTYMON
 	ld [MonType], a
-	ld b, 0
+	ld b, $0 ; pokemon
 	farcall NamingScreen
 
 	call RotateThreePalettesRight
@@ -795,7 +795,7 @@ endr
 	ld a, BOXMON
 	ld [MonType], a
 	ld de, wMonOrItemNameBuffer
-	ld b, $0
+	ld b, $0 ; pokemon
 	farcall NamingScreen
 
 	ld a, BANK(sBoxMonNicknames)

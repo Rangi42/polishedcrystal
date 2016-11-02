@@ -138,7 +138,7 @@ endr
 ; 123fc
 
 .HealMachineGFX: ; 123fc
-INCBIN "gfx/unknown/0123fc.2bpp"
+INCBIN "gfx/misc/heal_machine.2bpp"
 ; 1241c
 
 .HOF_OAM: ; 1241c

@@ -1742,19 +1742,19 @@ CardFlip_InitAttrPals: ; e0c37 (38:4c37)
 ; e0cdb
 
 CardFlipLZ03: ; e0cdb
-INCBIN "gfx/unknown/0e0cdb.2bpp.lz"
+INCBIN "gfx/card_flip/0e0cdb.2bpp.lz"
 
 CardFlipOffButtonGFX: ; e0cf6
-INCBIN "gfx/unknown/0e0cf6.2bpp"
+INCBIN "gfx/card_flip/off_button.2bpp"
 
 CardFlipOnButtonGFX: ; e0d06
-INCBIN "gfx/unknown/0e0d06.2bpp"
+INCBIN "gfx/card_flip/on_button.2bpp"
 
 CardFlipLZ01: ; e0d16
-INCBIN "gfx/unknown/0e0d16.2bpp.lz"
+INCBIN "gfx/card_flip/0e0d16.2bpp.lz"
 
 CardFlipLZ02: ; e0ea8
-INCBIN "gfx/unknown/0e0ea8.2bpp.lz"
+INCBIN "gfx/card_flip/0e0ea8.2bpp.lz"
 
 CardFlipTilemap: ; e110c
 	db $ef, $15, $27, $2a, $2a, $06, $27, $2a, $2a, $06, $27

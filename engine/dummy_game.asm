@@ -11,13 +11,13 @@ _DummyGame: ; e1e5b (38:5e5b)
 	ld b, SCGB_08
 	call GetSGBLayout
 	farcall ClearSpriteAnims
-	ld hl, LZ_e2221
+	ld hl, DummyGameGFX
 	ld de, VTiles2 tile $00
 	call Decompress
-	ld hl, Unknown_e00ed
+	ld hl, MissingDummyGameGFX
 	ld de, VTiles0 tile $00
 	ld bc, 4 tiles
-	ld a, BANK(Unknown_e00ed)
+	ld a, BANK(MissingDummyGameGFX)
 	call FarCopyBytes
 	ld a, $8
 	ld hl, wc300
@@ -608,5 +608,5 @@ DummyGame_InterpretJoypad_AnimateCursor: ; e21a1 (38:61a1)
 
 ; e2221 (38:6221)
 
-LZ_e2221: ; e2221
-INCBIN "gfx/unknown/0e2221.2bpp.lz"
+DummyGameGFX: ; e2221
+INCBIN "gfx/misc/dummy_game.w16.2bpp.lz"

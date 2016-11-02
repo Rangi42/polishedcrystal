@@ -734,7 +734,7 @@ NamePlayer: ; 0x6074
 	ret
 
 .NewName:
-	ld b, 1
+	ld b, $1 ; player
 	ld de, PlayerName
 	farcall NamingScreen
 

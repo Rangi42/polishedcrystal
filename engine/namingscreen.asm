@@ -79,11 +79,7 @@ endr
 	dw .Pokemon
 	dw .Player
 	dw .Rival
-	dw .Mom
 	dw .Box
-	dw .Tomodachi
-	dw .Pokemon
-	dw .Pokemon
 
 .Pokemon: ; 1173e (4:573e)
 	ld a, [CurPartySpecies]
@@ -157,23 +153,6 @@ endr
 
 ; 117d1
 
-.Mom: ; 117d1 (4:57d1)
-	ld de, MomSpriteGFX
-	ld b, BANK(MomSpriteGFX)
-	call .LoadSprite
-	hlcoord 5, 2
-	ld de, .MomNameString
-	call PlaceString
-	call .StoreSpriteIconParams
-	ret
-
-; 117e6 (4:57e6)
-
-.MomNameString: ; 117e6
-	db "Mother's name?@"
-
-; 117f5
-
 .Box: ; 117f5 (4:57f5)
 	ld de, PokeBallSpriteGFX
 	ld hl, VTiles0 tile $00
@@ -201,20 +180,6 @@ endr
 	db "Box name?@"
 
 ; 1182c
-
-.Tomodachi: ; 1182c (4:582c)
-	hlcoord 3, 2
-	ld de, .oTomodachi_no_namae_sutoringu
-	call PlaceString
-	call .StoreSpriteIconParams
-	ret
-
-; 11839 (4:5839)
-
-.oTomodachi_no_namae_sutoringu ; 11839
-	db "おともだち の なまえは?@"
-
-; 11847
 
 .LoadSprite: ; 11847 (4:5847)
 	push de
@@ -900,12 +865,20 @@ LoadNamingScreenGFX: ; 11c51
 
 ; 11cb7
 
+NamingScreenGFX_MiddleLine:
+INCBIN "gfx/misc/naming_middleline.2bpp"
+; 11e6d
+
+NamingScreenGFX_UnderLine: ; 11e6d
+INCBIN "gfx/misc/naming_underline.2bpp"
+; 11e75
+
 NamingScreenGFX_Border: ; 11cb7
-INCBIN "gfx/unknown/011cb7.2bpp"
+INCBIN "gfx/misc/naming_border.2bpp"
 ; 11cc7
 
 NamingScreenGFX_Cursor: ; 11cc7
-INCBIN "gfx/unknown/011cc7.2bpp"
+INCBIN "gfx/misc/naming_cursor.2bpp"
 ; 11ce7
 
 NameInputLower:
@@ -939,14 +912,6 @@ BoxNameInputUpper:
 	db "Lower  Del   End "
 
 ; 11e5d
-
-NamingScreenGFX_MiddleLine:
-INCBIN "gfx/unknown/011e65.2bpp"
-; 11e6d
-
-NamingScreenGFX_UnderLine: ; 11e6d
-INCBIN "gfx/unknown/011e6d.2bpp"
-; 11e75
 
 _ComposeMailMessage: ; 11e75 (mail?)
 	ld hl, wNamingScreenDestinationPointer

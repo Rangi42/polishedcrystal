@@ -317,7 +317,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	xor a
 	ld [MonType], a
 	push de
-	ld b, $0
+	ld b, $0 ; pokemon
 	farcall NamingScreen
 	pop hl
 	ld de, StringBuffer1
@@ -796,7 +796,7 @@ EggHatch_CrackShell: ; 1736d (5:736d)
 ; 17393 (5:7393)
 
 EggHatchGFX: ; 17393
-INCBIN "gfx/unknown/017393.2bpp"
+INCBIN "gfx/misc/egg_hatch.2bpp"
 ; 173b3
 
 Hatch_InitShellFragments: ; 173b3 (5:73b3)

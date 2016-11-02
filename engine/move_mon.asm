@@ -1873,7 +1873,7 @@ InitNickname: ; e3de
 	call DisableSpriteUpdates
 	pop de
 	push de
-	ld b, $0
+	ld b, $0 ; pokemon
 	farcall NamingScreen
 	pop hl
 	ld de, StringBuffer1

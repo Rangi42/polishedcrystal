@@ -5690,7 +5690,7 @@ endm
 
 	overworldmaprect 7, 7
 
-Unknown_e00ed:
+MissingDummyGameGFX:
 ; Graphics for an unused Game Corner
 ; game were meant to be here.
 

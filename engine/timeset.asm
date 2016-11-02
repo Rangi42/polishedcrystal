@@ -23,17 +23,17 @@ InitClock: ; 90672 (24:4672)
 	xor a
 	ld [hBGMapMode], a
 	call LoadStandardFont
-	ld de, GFX_908fb
+	ld de, TimesetBackgroundGFX
 	ld hl, VTiles2 tile $00
-	lb bc, BANK(GFX_908fb), 1
+	lb bc, BANK(TimesetBackgroundGFX), 1
 	call Request1bpp
-	ld de, GFX_90903
+	ld de, TimesetUpGFX
 	ld hl, VTiles2 tile $01
-	lb bc, BANK(GFX_90903), 1
+	lb bc, BANK(TimesetUpGFX), 1
 	call Request1bpp
-	ld de, GFX_9090b
+	ld de, TimesetDownGFX
 	ld hl, VTiles2 tile $02
-	lb bc, BANK(GFX_9090b), 1
+	lb bc, BANK(TimesetDownGFX), 1
 	call Request1bpp
 	call .ClearScreen
 	call WaitBGMap
@@ -369,12 +369,14 @@ OakText_ResponseToSetTime: ; 0x908b8
 	db "@"
 ; 0x908fb
 
-GFX_908fb: ; 908fb
-INCBIN "gfx/unknown/0908fb.2bpp"
-GFX_90903: ; 90903
-INCBIN "gfx/unknown/090903.2bpp"
-GFX_9090b: ; 9090b
-INCBIN "gfx/unknown/09090b.2bpp"
+TimesetBackgroundGFX: ; 908fb
+INCBIN "gfx/misc/intro_bg.1bpp"
+
+TimesetUpGFX: ; 90903
+INCBIN "gfx/misc/intro_up.1bpp"
+
+TimesetDownGFX: ; 9090b
+INCBIN "gfx/misc/intro_down.1bpp"
 ; 90913
 
 Special_SetDayOfWeek: ; 90913
@@ -382,13 +384,13 @@ Special_SetDayOfWeek: ; 90913
 	push af
 	ld a, $1
 	ld [hInMenu], a
-	ld de, GFX_90903
+	ld de, TimesetUpGFX
 	ld hl, VTiles1 tile $6f
-	lb bc, BANK(GFX_90903), 1
+	lb bc, BANK(TimesetUpGFX), 1
 	call Request1bpp
-	ld de, GFX_9090b
+	ld de, TimesetDownGFX
 	ld hl, VTiles1 tile $75
-	lb bc, BANK(GFX_9090b), 1
+	lb bc, BANK(TimesetDownGFX), 1
 	call Request1bpp
 	xor a
 	ld [wTempDayOfWeek], a

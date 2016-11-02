@@ -32,7 +32,7 @@ NameRater: ; fb6ed
 	ld [wd265], a
 	ld [CurSpecies], a
 	call GetBaseData
-	ld b, 0
+	ld b, $0 ; pokemon
 	ld de, StringBuffer2
 	farcall _NamingScreen
 ; If the new name is empty, treat it as unchanged.
