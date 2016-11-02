@@ -6,7 +6,6 @@
 	charmap "<POKE>",   $24
 	charmap "%",        $25
 	charmap "<ENEMY>",  $3f
-	charmap "<SHINY>",  $3f
 	charmap "<PKMN>",   $4a
 	charmap "<NEXT>",   $4e
 	charmap "<LINE>",   $4f
@@ -120,7 +119,7 @@
 	charmap "ä",        $c3
 	charmap "ö",        $c4
 	charmap "ü",        $c5
-	charmap "<SHINYB>", $c6
+	charmap "<SHINY>",  $c6
 
 	charmap "'d",       $d0
 	charmap "'l",       $d1

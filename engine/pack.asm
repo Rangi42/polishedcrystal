@@ -1527,7 +1527,7 @@ Pack_InitGFX: ; 10955
 ; Background (blue if male, pink if female)
 	hlcoord 0, 1
 	ld bc, 11 * SCREEN_WIDTH
-	ld a, $24
+	ld a, $06
 	call ByteFill
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
@@ -1604,27 +1604,27 @@ DrawPocketName: ; 109bb
 
 .tilemap ; 109e1
 	db $00, $04, $04, $04, $01 ; top border
-	db $06, $07, $08, $09, $0a ; Items
+	db $0a, $0b, $0c, $0d, $0e ; Items
 	db $02, $05, $05, $05, $03 ; bottom border
 
 	db $00, $04, $04, $04, $01 ; top border
-	db $1f, $20, $21, $22, $23 ; Medicine
+	db $0f, $10, $11, $12, $13 ; Medicine
 	db $02, $05, $05, $05, $03 ; bottom border
 
 	db $00, $04, $04, $04, $01 ; top border
-	db $15, $16, $17, $18, $19 ; Balls
+	db $14, $15, $16, $17, $18 ; Balls
 	db $02, $05, $05, $05, $03 ; bottom border
 
 	db $00, $04, $04, $04, $01 ; top border
-	db $10, $11, $12, $13, $14 ; TM/HM
+	db $19, $1a, $1b, $1c, $1d ; TM/HM
 	db $02, $05, $05, $05, $03 ; bottom border
 
 	db $00, $04, $04, $04, $01 ; top border
-	db $1a, $1b, $1c, $1d, $1e ; Berries
+	db $1e, $1f, $20, $21, $22 ; Berries
 	db $02, $05, $05, $05, $03 ; bottom border
 
 	db $00, $04, $04, $04, $01 ; top border
-	db $0b, $0c, $0d, $0e, $0f ; Key Items
+	db $23, $24, $25, $26, $27 ; Key Items
 	db $02, $05, $05, $05, $03 ; bottom border
 ; 10a1d
 
@@ -1878,4 +1878,4 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-INCBIN "gfx/misc/pack_menu.2bpp"
+INCBIN "gfx/misc/pack_menu.w40.2bpp"

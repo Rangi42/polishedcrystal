@@ -21,15 +21,8 @@ INCBIN "gfx/frames/9.1bpp"
 
 ; Various misc graphics here.
 
-GFX_f89b0: ; f89b0
-INCBIN "gfx/unknown/0f89b0.2bpp"
-; f8a90
-
-ShinyIcon: ; f8a90
-INCBIN "gfx/stats/shiny.2bpp"
-
-GFX_f8aa0: ; f8aa0
-INCBIN "gfx/unknown/0f8aa0.2bpp"
+GFX_Stats: ; f89b0
+INCBIN "gfx/misc/stats.2bpp"
 ; f8ac0
 
 EnemyHPBarBorderGFX: ; f8ac0
@@ -65,7 +58,7 @@ INCBIN "gfx/misc/font_up_arrow.2bpp"
 ; f9434
 
 Footprints: ; f9434
-INCBIN "gfx/misc/footprints.1bpp"
+INCBIN "gfx/misc/footprints.w128.1bpp"
 ; fb434
 
 _LoadStandardFont:: ; fb449
@@ -189,9 +182,9 @@ Functionfb53e: ; fb53e
 	call Get2bpp_2
 
 Functionfb571: ; fb571
-	ld de, GFX_f89b0
+	ld de, GFX_Stats
 	ld hl, VTiles2 tile $31
-	lb bc, BANK(GFX_f89b0), $11
+	lb bc, BANK(GFX_Stats), $11
 	call Get2bpp_2
 	ret
 ; fb57e

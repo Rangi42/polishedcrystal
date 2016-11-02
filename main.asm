@@ -2273,9 +2273,9 @@ SECTION "Crystal Unique", ROMX, BANK[$12]
 INCLUDE "engine/init_gender.asm"
 
 PackGFX:
-INCBIN "gfx/misc/pack.2bpp"
+INCBIN "gfx/misc/pack.w40.2bpp"
 PackFGFX: ; 48e9b
-INCBIN "gfx/misc/pack_f.2bpp"
+INCBIN "gfx/misc/pack_f.w40.2bpp"
 
 Special_MoveTutor: ; 4925b
 	call FadeToMenu

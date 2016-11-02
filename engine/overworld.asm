@@ -708,18 +708,18 @@ EmotesPointers: ; 144d
 ; db length, bank
 ; dw dest address
 
-	emote_header ShockEmote,     4, $78
-	emote_header QuestionEmote,  4, $78
-	emote_header HappyEmote,     4, $78
-	emote_header SadEmote,       4, $78
-	emote_header HeartEmote,     4, $78
-	emote_header BoltEmote,      4, $78
-	emote_header SleepEmote,     4, $78
-	emote_header FishEmote,      4, $78
-	emote_header JumpShadowGFX,  1, $7c
-	emote_header FishingRodGFX2, 2, $7c
-	emote_header BoulderDustGFX, 2, $7e
-	emote_header FishingRodGFX4, 1, $7e
+	emote_header ShockEmote,      4, $78
+	emote_header QuestionEmote,   4, $78
+	emote_header HappyEmote,      4, $78
+	emote_header SadEmote,        4, $78
+	emote_header HeartEmote,      4, $78
+	emote_header BoltEmote,       4, $78
+	emote_header SleepEmote,      4, $78
+	emote_header FishEmote,       4, $78
+	emote_header JumpShadowGFX,   1, $7c
+	emote_header FishingRodGFX2,  2, $7c
+	emote_header BoulderDustGFX,  2, $7e
+	emote_header ShakingGrassGFX, 1, $7e
 ; 14495
 
 

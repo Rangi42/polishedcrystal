@@ -912,7 +912,7 @@ NameInputLower:
 	db "a b c d e f g h i"
 	db "j k l m n o p q r"
 	db "s t u v w x y z  "
-	db "× ( ) : ; <PK> <MN> ¥ <SHINYB>"
+	db "× ( ) : ; <PK> <MN> ¥ <SHINY>"
 	db "Upper  Del   End "
 
 BoxNameInputLower:
@@ -934,7 +934,7 @@ BoxNameInputUpper:
 	db "A B C D E F G H I"
 	db "J K L M N O P Q R"
 	db "S T U V W X Y Z  "
-	db "× ( ) : ; <PK> <MN> ¥ <SHINYB>"
+	db "× ( ) : ; <PK> <MN> ¥ <SHINY>"
 	db "- ? ! ♂ ♀ / . , &"
 	db "Lower  Del   End "
 

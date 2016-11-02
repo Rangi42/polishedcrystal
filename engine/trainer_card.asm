@@ -744,7 +744,7 @@ CardStatusGFX: INCBIN "gfx/misc/card_status.2bpp"
 
 LeaderGFX:  INCBIN "gfx/misc/johto_leaders.w24.2bpp"
 LeaderGFX2: INCBIN "gfx/misc/kanto_leaders.w24.2bpp"
-BadgeGFX:   INCBIN "gfx/misc/johto_badges.2bpp"
-BadgeGFX2:  INCBIN "gfx/misc/kanto_badges.2bpp"
+BadgeGFX:   INCBIN "gfx/misc/johto_badges.w16.2bpp"
+BadgeGFX2:  INCBIN "gfx/misc/kanto_badges.w16.2bpp"
 
 CardRightCornerGFX: INCBIN "gfx/misc/card_right_corner.2bpp"
