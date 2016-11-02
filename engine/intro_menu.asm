@@ -180,6 +180,8 @@ endr
 
 	ld [BattlePoints], a
 
+	ld [RegisteredItem], a
+
 START_MONEY EQU 3000
 
 IF START_MONEY / $10000

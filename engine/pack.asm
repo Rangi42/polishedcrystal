@@ -568,16 +568,6 @@ RegisterItem: ; 103c2
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr nz, .cant_register
-	ld a, [wCurrPocket]
-	rrca
-	rrca
-	and $c0
-	ld b, a
-	ld a, [CurItemQuantity]
-	inc a
-	and $3f
-	or b
-	ld [WhichRegisteredItem], a
 	ld a, [CurItem]
 	ld [RegisteredItem], a
 	call Pack_GetItemName

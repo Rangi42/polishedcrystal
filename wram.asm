@@ -2465,9 +2465,9 @@ wPokegearFlags:: ds 1
 ; bit 7: on/off
 wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 2
-WhichRegisteredItem:: ; d95b
-	ds 1
 RegisteredItem:: ; d95c
+	ds 1
+
 	ds 1
 
 PlayerState:: ; d95d

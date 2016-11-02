@@ -21,55 +21,11 @@ ItemMayBeRegisteredText: ; 13340
 
 
 CheckRegisteredItem: ; 13345
-
-	ld a, [WhichRegisteredItem]
+; assume that only key items can be registered
+; (Bicycle, Old/Good/Super Rod, Itemfinder)
+	ld a, [RegisteredItem]
 	and a
 	jr z, .NoRegisteredItem
-	and REGISTERED_POCKET
-	rlca
-	rlca
-	ld hl, .Pockets
-	rst JumpTable
-	ret
-
-.Pockets:
-	dw .CheckItem
-	dw .CheckMedicine
-	dw .CheckBall
-	dw .CheckTMHM
-	dw .CheckBerry
-	dw .CheckKeyItem
-
-.CheckItem:
-	ld hl, NumItems
-	jr .ContinueCheck
-
-.CheckMedicine:
-	ld hl, NumMedicine
-	jr .ContinueCheck
-
-.CheckBall:
-	ld hl, NumBalls
-	jr .ContinueCheck
-
-.CheckBerry:
-	ld hl, NumBerries
-.ContinueCheck
-	call .CheckRegisteredNo
-	jr c, .NoRegisteredItem
-	inc hl
-	ld e, a
-	ld d, 0
-rept 2
-	add hl, de
-endr
-	call .IsSameItem
-	jr c, .NoRegisteredItem
-	and a
-	ret
-
-.CheckKeyItem:
-	ld a, [RegisteredItem]
 	ld hl, KeyItems
 	ld de, 1
 	call IsInArray
@@ -79,46 +35,12 @@ endr
 	and a
 	ret
 
-.CheckTMHM:
-	jr .NoRegisteredItem
-
 .NoRegisteredItem:
 	xor a
-	ld [WhichRegisteredItem], a
 	ld [RegisteredItem], a
 	scf
 	ret
 ; 133a6
-
-
-.CheckRegisteredNo: ; 133a6
-	ld a, [WhichRegisteredItem]
-	and REGISTERED_NUMBER
-	dec a
-	cp [hl]
-	jr nc, .NotEnoughItems
-	ld [wd107], a
-	and a
-	ret
-
-.NotEnoughItems:
-	scf
-	ret
-; 133b6
-
-
-.IsSameItem: ; 133b6
-	ld a, [RegisteredItem]
-	cp [hl]
-	jr nz, .NotSameItem
-	ld [CurItem], a
-	and a
-	ret
-
-.NotSameItem:
-	scf
-	ret
-; 133c3
 
 
 UseRegisteredItem: ; 133c3
