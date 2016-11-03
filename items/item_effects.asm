@@ -210,7 +210,6 @@ ItemEffects: ; e73c
 	dw ChoiceSpecs
 	dw FlameOrb
 	dw ToxicOrb
-	dw StickyBarb
 	dw BlackSludge
 	dw MachoBrace
 	dw PowerWeight
@@ -258,6 +257,7 @@ ItemEffects: ; e73c
 	dw FlowerMail
 	dw FlowerMail
 	dw FlowerMail
+	dw TeruSama
 	dw TeruSama
 	dw TeruSama
 	dw TeruSama
@@ -3213,7 +3213,6 @@ ChoiceScarf:
 ChoiceSpecs:
 FlameOrb:
 ToxicOrb:
-StickyBarb:
 BlackSludge:
 MachoBrace:
 PowerWeight:

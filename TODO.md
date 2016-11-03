@@ -145,5 +145,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Rocky Helmet
 * Safe Goggles
 * Shed Shell (Bug-Catching Contest)
-* {Poison, Paralyze, Burn, Sleep, Freeze, Confuse, Attract, Flinch} Guard
-* Barrier Suit, Screen Suit, Bunny Hood (like Muscle Band and Wise Glasses)
+* Flame Orb
+* Toxic Orb
+* Black Sludge

@@ -230,7 +230,6 @@ ItemDescriptions:
 	dw ChoiceSpecsDesc
 	dw FlameOrbDesc
 	dw ToxicOrbDesc
-	dw StickyBarbDesc
 	dw BlackSludgeDesc
 	dw MachoBraceDesc
 	dw PowerWeightDesc
@@ -278,6 +277,7 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
+	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -962,7 +962,6 @@ ChoiceScarfDesc:
 ChoiceSpecsDesc:
 FlameOrbDesc:
 ToxicOrbDesc:
-StickyBarbDesc:
 BlackSludgeDesc:
 MachoBraceDesc:
 PowerWeightDesc:

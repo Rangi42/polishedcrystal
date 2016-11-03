@@ -223,61 +223,61 @@
 
 	const FLAME_ORB    ; $c3
 	const TOXIC_ORB    ; $c4
-	const STICKY_BARB  ; $c5
-	const BLACK_SLUDGE ; $c6
+	const BLACK_SLUDGE ; $c5
 
-	const MACHO_BRACE  ; $c7
-	const POWER_WEIGHT ; $c8
-	const POWER_BRACER ; $c9
-	const POWER_BELT   ; $ca
-	const POWER_LENS   ; $cb
-	const POWER_BAND   ; $cc
-	const POWER_ANKLET ; $cd
+	const MACHO_BRACE  ; $c6
+	const POWER_WEIGHT ; $c7
+	const POWER_BRACER ; $c8
+	const POWER_BELT   ; $c9
+	const POWER_LENS   ; $ca
+	const POWER_BAND   ; $cb
+	const POWER_ANKLET ; $cc
 
-	const DRAGON_SCALE ; $ce
-	const UP_GRADE     ; $cf
-	const DUBIOUS_DISC ; $d0
-	const PROTECTOR    ; $d1
-	const ELECTIRIZER  ; $d2
-	const MAGMARIZER   ; $d3
-	const RAZOR_FANG   ; $d4
-	const RAZOR_CLAW   ; $d5
+	const DRAGON_SCALE ; $cd
+	const UP_GRADE     ; $ce
+	const DUBIOUS_DISC ; $cf
+	const PROTECTOR    ; $d0
+	const ELECTIRIZER  ; $d1
+	const MAGMARIZER   ; $d2
+	const RAZOR_FANG   ; $d3
+	const RAZOR_CLAW   ; $d4
 
-	const NUGGET       ; $d6
-	const BIG_NUGGET   ; $d7
-	const TINYMUSHROOM ; $d8
-	const BIG_MUSHROOM ; $d9
-	const BALMMUSHROOM ; $da
-	const PEARL        ; $db
-	const BIG_PEARL    ; $dc
-	const PEARL_STRING ; $dd
-	const STARDUST     ; $de
-	const STAR_PIECE   ; $df
-	const BRICK_PIECE  ; $e0
-	const RARE_BONE    ; $e1
-	const SILVER_LEAF  ; $e2
-	const GOLD_LEAF    ; $e3
-	const SLOWPOKETAIL ; $e4
-	const BOTTLE_CAP   ; $e5
+	const NUGGET       ; $d5
+	const BIG_NUGGET   ; $d6
+	const TINYMUSHROOM ; $d7
+	const BIG_MUSHROOM ; $d8
+	const BALMMUSHROOM ; $d9
+	const PEARL        ; $da
+	const BIG_PEARL    ; $db
+	const PEARL_STRING ; $dc
+	const STARDUST     ; $dd
+	const STAR_PIECE   ; $de
+	const BRICK_PIECE  ; $df
+	const RARE_BONE    ; $e0
+	const SILVER_LEAF  ; $e1
+	const GOLD_LEAF    ; $e2
+	const SLOWPOKETAIL ; $e3
+	const BOTTLE_CAP   ; $e4
 
-	const HELIX_FOSSIL ; $e6
-	const DOME_FOSSIL  ; $e7
-	const OLD_AMBER    ; $e8
+	const HELIX_FOSSIL ; $e5
+	const DOME_FOSSIL  ; $e6
+	const OLD_AMBER    ; $e7
 
-	const MULCH        ; $e9
-	const SWEET_HONEY  ; $ea
+	const MULCH        ; $e8
+	const SWEET_HONEY  ; $e9
 
-	const FLOWER_MAIL  ; $eb
-	const SURF_MAIL    ; $ec
-	const LITEBLUEMAIL ; $ed
-	const PORTRAITMAIL ; $ee
-	const LOVELY_MAIL  ; $ef
-	const EON_MAIL     ; $f0
-	const MORPH_MAIL   ; $f1
-	const BLUESKY_MAIL ; $f2
-	const MUSIC_MAIL   ; $f3
-	const MIRAGE_MAIL  ; $f4
+	const FLOWER_MAIL  ; $ea
+	const SURF_MAIL    ; $eb
+	const LITEBLUEMAIL ; $ec
+	const PORTRAITMAIL ; $ed
+	const LOVELY_MAIL  ; $ee
+	const EON_MAIL     ; $ef
+	const MORPH_MAIL   ; $f0
+	const BLUESKY_MAIL ; $f1
+	const MUSIC_MAIL   ; $f2
+	const MIRAGE_MAIL  ; $f3
 
+	const ITEM_F4      ; $f4
 	const ITEM_F5      ; $f5
 	const ITEM_F6      ; $f6
 	const ITEM_F7      ; $f7
