@@ -24,6 +24,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .ice_path
 	cp TILESET_HOUSE_1
 	jp z, .house
+	cp TILESET_GATE
+	jp z, .gate
 	cp TILESET_RADIO_TOWER
 	jp z, .radio_tower
 	cp TILESET_CELADON_MANSION
@@ -67,6 +69,11 @@ LoadSpecialMapPalette: ; 494ac
 
 .house
 	call LoadHousePalette
+	scf
+	ret
+
+.gate
+	call LoadGatePalette
 	scf
 	ret
 
@@ -266,6 +273,17 @@ LoadHousePalette: ; 495df
 HousePalette: ; 495ee
 INCLUDE "tilesets/house.pal"
 ; 4962e
+
+LoadGatePalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, GatePalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+GatePalette:
+INCLUDE "tilesets/gate.pal"
 
 LoadRadioTowerPalette: ; 4962e
 	ld a, $5

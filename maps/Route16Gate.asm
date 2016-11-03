@@ -68,17 +68,19 @@ Route16Gate_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $3, $0, 4, ROUTE_16
-	warp_def $4, $0, 5, ROUTE_16
-	warp_def $3, $9, 2, ROUTE_16
-	warp_def $4, $9, 3, ROUTE_16
-	warp_def $6, $8, 1, ROUTE_16_GATE_2F
+	warp_def $5, $0, 4, ROUTE_16
+	warp_def $6, $0, 5, ROUTE_16
+	warp_def $5, $9, 2, ROUTE_16
+	warp_def $6, $9, 3, ROUTE_16
+	warp_def $8, $8, 1, ROUTE_16_GATE_2F
 
 .XYTriggers:
-	db 3
+	db 5
 	xy_trigger 0, $3, $5, $0, UnknownScript_0x733ed, $0, $0
 	xy_trigger 0, $4, $5, $0, UnknownScript_0x733ed, $0, $0
 	xy_trigger 0, $5, $5, $0, UnknownScript_0x733ed, $0, $0
+	xy_trigger 0, $6, $5, $0, UnknownScript_0x733ed, $0, $0
+	xy_trigger 0, $7, $5, $0, UnknownScript_0x733ed, $0, $0
 
 .Signposts:
 	db 0

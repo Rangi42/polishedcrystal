@@ -25,10 +25,10 @@ Route8SaffronGate_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $3, $0, 14, SAFFRON_CITY
-	warp_def $4, $0, 15, SAFFRON_CITY
-	warp_def $3, $9, 1, ROUTE_8
-	warp_def $4, $9, 2, ROUTE_8
+	warp_def $4, $0, 14, SAFFRON_CITY
+	warp_def $5, $0, 15, SAFFRON_CITY
+	warp_def $4, $9, 1, ROUTE_8
+	warp_def $5, $9, 2, ROUTE_8
 
 .XYTriggers:
 	db 0
