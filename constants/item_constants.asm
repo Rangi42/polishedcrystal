@@ -14,14 +14,14 @@
 	const HEAVY_BALL   ; $0a
 	const LOVE_BALL    ; $0b
 
-	const REPEAT_BALL  ; $0c
-	const TIMER_BALL   ; $0d
-	const QUICK_BALL   ; $0e
-	const DUSK_BALL    ; $0f
-	const PREMIER_BALL ; $10
-	const CHERISH_BALL ; $11
+	const PARK_BALL    ; $0c
 
-	const PARK_BALL    ; $12
+	const REPEAT_BALL  ; $0d
+	const TIMER_BALL   ; $0e
+	const QUICK_BALL   ; $0f
+	const DUSK_BALL    ; $10
+	const PREMIER_BALL ; $11
+	const CHERISH_BALL ; $12
 
 	const POTION       ; $13
 	const SUPER_POTION ; $14

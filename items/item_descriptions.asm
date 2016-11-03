@@ -45,13 +45,13 @@ ItemDescriptions:
 	dw FastBallDesc
 	dw HeavyBallDesc
 	dw LoveBallDesc
+	dw ParkBallDesc
 	dw RepeatBallDesc
 	dw TimerBallDesc
 	dw QuickBallDesc
 	dw DuskBallDesc
 	dw PremierBallDesc
 	dw CherishBallDesc
-	dw ParkBallDesc
 	dw PotionDesc
 	dw SuperPotionDesc
 	dw HyperPotionDesc
@@ -334,6 +334,10 @@ LoveBallDesc:
 	db   "A Ball for the"
 	next "opposite gender.@"
 
+ParkBallDesc:
+	db   "The Bug-Catching"
+	next "Contest Ball.@"
+
 RepeatBallDesc:
 	db   "A Ball for #mon"
 	next "caught before.@"
@@ -357,10 +361,6 @@ PremierBallDesc:
 CherishBallDesc:
 	db   "A quite rare com-"
 	next "memorative Ball.@"
-
-ParkBallDesc:
-	db   "The Bug-Catching"
-	next "Contest Ball.@"
 
 PotionDesc:
 	db   "Restores #mon"

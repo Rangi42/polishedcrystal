@@ -25,13 +25,13 @@ ItemEffects: ; e73c
 	dw FastBall
 	dw HeavyBall
 	dw LoveBall
+	dw ParkBall
 	dw RepeatBall
 	dw TimerBall
 	dw QuickBall
 	dw DuskBall
 	dw PremierBall
 	dw CherishBall
-	dw ParkBall
 	dw Potion
 	dw SuperPotion
 	dw HyperPotion
@@ -283,13 +283,13 @@ FriendBall:
 FastBall:
 HeavyBall:
 LoveBall:
+ParkBall:
 RepeatBall:
 TimerBall:
 QuickBall:
 DuskBall:
 PremierBall:
-CherishBall:
-ParkBall: ; e8a2
+CherishBall: ; e8a2
 	; Only check landmark flags in a Nuzlocke run
 	ld a, [Options2]
 	bit NUZLOCKE_MODE, a
