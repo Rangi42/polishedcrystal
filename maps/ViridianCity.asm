@@ -271,12 +271,14 @@ ViridianCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 5
+	db 7
 	warp_def $7, $20, 1, VIRIDIAN_GYM
 	warp_def $9, $15, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE
 	warp_def $f, $17, 1, TRAINER_HOUSE_1F
 	warp_def $13, $1d, 2, VIRIDIAN_MART
 	warp_def $19, $17, 1, VIRIDIAN_POKECENTER_1F
+	warp_def $21, $1c, 1, ROUTE_1_VIRIDIAN_GATE
+	warp_def $21, $1d, 2, ROUTE_1_VIRIDIAN_GATE
 
 .XYTriggers:
 	db 0

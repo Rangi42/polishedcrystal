@@ -145,7 +145,8 @@ Route1_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 0
+	db 1
+	warp_def $1, $8, 3, ROUTE_1_VIRIDIAN_GATE
 
 .XYTriggers:
 	db 0

@@ -581,6 +581,7 @@ INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
 INCLUDE "maps/GoldenrodHarborGate.asm"
+INCLUDE "maps/Route1ViridianGate.asm"
 
 
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]

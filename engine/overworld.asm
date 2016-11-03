@@ -991,7 +991,6 @@ Group5Sprites:
 
 
 ; Route21 connects to PalletTown
-; Route1 connects to ViridianCity
 Group6Sprites:
 ; Route19
 ; Route20
@@ -1000,25 +999,20 @@ Group6Sprites:
 Group13Sprites:
 ; Route1
 ; PalletTown
-Group23Sprites:
-; Route2
-; Route22
-; ViridianCity
-; ViridianForest
-	db SPRITE_BUG_CATCHER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GRAMPS
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
 	db SPRITE_BLUE ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 8 walking sprites (7 that walk)
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 12 total sprites
+	; 10 total sprites
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1404,7 +1398,6 @@ Group19Sprites:
 	; 1 walking sprite
 	db SPRITE_MEW
 	; 2 total sprites
-	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
@@ -1490,6 +1483,38 @@ Group21Sprites:
 	db SPRITE_POKE_BALL
 
 
+Group23Sprites:
+; Route2
+; Route22
+; ViridianCity
+; ViridianForest
+	db SPRITE_BUG_CATCHER
+	db SPRITE_CELEBI
+	db SPRITE_FISHER
+	db SPRITE_GIOVANNI
+	db SPRITE_GRAMPS
+	db SPRITE_LYRA
+	db SPRITE_SILVER
+	db SPRITE_YOUNGSTER
+	; 8 walking sprites
+	db SPRITE_FRUIT_TREE
+	db SPRITE_POKE_BALL
+	; 10 total sprites
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_GOLD_TROPHY
+	db SPRITE_SILVER_TROPHY
+	db SPRITE_POKE_BALL
+
+
 Group27Sprites:
 ; Route47
 ; Route48
@@ -1506,7 +1531,6 @@ Group27Sprites:
 	; 10 walking sprites (9 that move)
 	db SPRITE_POKE_BALL
 	; 11 total sprites
-	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY
 	db SPRITE_GOLD_TROPHY
 	db SPRITE_SILVER_TROPHY

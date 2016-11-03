@@ -460,6 +460,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 14
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 15
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 16
+	mapgroup ROUTE_1_VIRIDIAN_GATE,                        4, 5 ; 17
 
 	newgroup                                                    ; 24
 
