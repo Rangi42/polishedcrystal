@@ -194,6 +194,13 @@ Route16Gate_BlockData:
 Route1718Gate_BlockData:
 	INCBIN "maps/KantoEastWestGate1F.blk"
 
+Route11Gate2F_BlockData:
+Route12Gate2F_BlockData:
+Route15FuchsiaGate2F_BlockData:
+Route16Gate2F_BlockData:
+Route1718Gate2F_BlockData:
+	INCBIN "maps/KantoGate2F.blk"
+
 CinnabarIsland_BlockData:
 	INCBIN "maps/CinnabarIsland.blk"
 

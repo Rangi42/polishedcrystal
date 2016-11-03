@@ -495,6 +495,7 @@
 	map_header_2 Route6SaffronGate, ROUTE_6_SAFFRON_GATE, $0, 0
 	map_header_2 Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
 	map_header_2 Route11Gate, ROUTE_11_GATE, $0, 0
+	map_header_2 Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
 	map_header_2 RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_header_2 RedsHouse2F, REDS_HOUSE_2F, $0, 0
 	map_header_2 BluesHouse, BLUES_HOUSE, $0, 0
@@ -530,7 +531,9 @@
 	map_header_2 FuchsiaPokeCenter1F, FUCHSIA_POKECENTER_1F, $0, 0
 	map_header_2 SafariZoneWardensHome, SAFARI_ZONE_WARDENS_HOME, $0, 0
 	map_header_2 Route12Gate, ROUTE_12_GATE, $0, 0
+	map_header_2 Route12Gate2F, ROUTE_12_GATE_2F, $0, 0
 	map_header_2 Route15FuchsiaGate, ROUTE_15_FUCHSIA_GATE, $0, 0
+	map_header_2 Route15FuchsiaGate2F, ROUTE_15_FUCHSIA_GATE_2F, $0, 0
 	map_header_2 LavenderPokeCenter1F, LAVENDER_POKECENTER_1F, $0, 0
 	map_header_2 MrFujisHouse, MR_FUJIS_HOUSE, $0, 0
 	map_header_2 LavenderTownSpeechHouse, LAVENDER_TOWN_SPEECH_HOUSE, $0, 0
@@ -567,8 +570,10 @@
 	map_header_2 CeladonHotel, CELADON_HOTEL, $0, 0
 	map_header_2 Route16FuchsiaSpeechHouse, ROUTE_16_FUCHSIA_SPEECH_HOUSE, $0, 0
 	map_header_2 Route16Gate, ROUTE_16_GATE, $0, 0
+	map_header_2 Route16Gate2F, ROUTE_16_GATE_2F, $0, 0
 	map_header_2 Route7SaffronGate, ROUTE_7_SAFFRON_GATE, $0, 0
 	map_header_2 Route1718Gate, ROUTE_17_18_GATE, $0, 0
+	map_header_2 Route1718Gate2F, ROUTE_17_18_GATE_2F, $0, 0
 	map_header_2 CeladonHomeDecorStore1F, CELADON_HOME_DECOR_STORE_1F, $0, 0
 	map_header_2 CeladonHomeDecorStore2F, CELADON_HOME_DECOR_STORE_2F, $0, 0
 	map_header_2 CeladonHomeDecorStore3F, CELADON_HOME_DECOR_STORE_3F, $0, 0

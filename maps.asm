@@ -582,6 +582,11 @@ INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
 INCLUDE "maps/GoldenrodHarborGate.asm"
 INCLUDE "maps/Route1ViridianGate.asm"
+INCLUDE "maps/Route11Gate2F.asm"
+INCLUDE "maps/Route12Gate2F.asm"
+INCLUDE "maps/Route15FuchsiaGate2F.asm"
+INCLUDE "maps/Route16Gate2F.asm"
+INCLUDE "maps/Route1718Gate2F.asm"
 
 
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]

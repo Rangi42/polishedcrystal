@@ -59,11 +59,12 @@ Route1718Gate_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 5
 	warp_def $3, $0, 1, ROUTE_17
 	warp_def $4, $0, 2, ROUTE_17
 	warp_def $3, $9, 1, ROUTE_18
 	warp_def $4, $9, 2, ROUTE_18
+	warp_def $6, $8, 1, ROUTE_17_18_GATE_2F
 
 .XYTriggers:
 	db 2

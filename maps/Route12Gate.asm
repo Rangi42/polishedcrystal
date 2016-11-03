@@ -24,11 +24,12 @@ Route12Gate_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 5
 	warp_def $0, $4, 4, ROUTE_12
 	warp_def $0, $5, 5, ROUTE_12
 	warp_def $7, $4, 6, ROUTE_12
 	warp_def $7, $5, 6, ROUTE_12
+	warp_def $6, $8, 1, ROUTE_12_GATE_2F
 
 .XYTriggers:
 	db 0
