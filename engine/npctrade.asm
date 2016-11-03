@@ -461,13 +461,13 @@ ENDM
 	; Olivine City
 	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
 	; Blackthorn City
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_FEMALE_ONLY
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_EITHER_GENDER
 	; Pewter City
 	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
 	; Route 14
-	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, SITRUS_BERRY, 26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
 	; Goldenrod Harbor
-	npctrade 0, GYARADOS,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
+	npctrade 0, QUAGSIRE,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
 ; fcf38
 
 
