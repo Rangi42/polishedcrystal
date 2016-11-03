@@ -4302,9 +4302,12 @@ RunBothActivationAbilities:
 	jr z, .got_order
 	call SetEnemyTurn
 .got_order
-	call RunActivationAbilities
+	; Don't run RunActivationAbilities, it
+	; will make Traced abilities activate
+	; twice
+	farcall RunActivationAbilitiesInner
 	call SwitchTurnCore
-	call RunActivationAbilities
+	farcall RunActivationAbilitiesInner
 	pop af
 	ld [hBattleTurn], a
 	ret
