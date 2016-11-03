@@ -152,24 +152,26 @@ Route30BerrySpeechHouse_BlockData:
 SinjohRuinsHouse_BlockData:
 	INCBIN "maps/House1.blk"
 
-Route12Gate_BlockData:
-Route19FuchsiaGate_BlockData:
 Route43MahoganyGate_BlockData:
 Route43Gate_BlockData:
 Route35Goldenrodgate_BlockData:
 Route36RuinsofAlphgate_BlockData:
 Route34IlexForestGate_BlockData:
-Route6SaffronGate_BlockData:
 Route40BattleTowerGate_BlockData:
-Route2Gate_BlockData:
 Route2946Gate_BlockData:
+YellowForestGate_BlockData:
+	INCBIN "maps/NorthSouthGate.blk"
+
+Route12Gate_BlockData:
+Route19FuchsiaGate_BlockData:
+Route6SaffronGate_BlockData:
+Route2Gate_BlockData:
 Route5SaffronCityGate_BlockData:
 ViridianForestViridianGate_BlockData:
 ViridianForestPewterGate_BlockData:
 Route1ViridianGate_BlockData:
-YellowForestGate_BlockData:
 SafariZoneFuchsiaGate_BlockData:
-	INCBIN "maps/NorthSouthGate.blk"
+	INCBIN "maps/KantoNorthSouthGate.blk"
 
 CinnabarIsland_BlockData:
 	INCBIN "maps/CinnabarIsland.blk"
@@ -215,15 +217,17 @@ Route42EcruteakGate_BlockData:
 Route32RuinsofAlphGate_BlockData:
 Route36VioletGate_BlockData:
 IlexForestAzaleaGate_BlockData:
+Route31VioletGate_BlockData:
+GoldenrodHarborGate_BlockData:
+	INCBIN "maps/EastWestGate.blk"
+
 Route15FuchsiaGate_BlockData:
 Route8SaffronGate_BlockData:
 Route11Gate_BlockData:
 Route16Gate_BlockData:
 Route7SaffronGate_BlockData:
 Route1718Gate_BlockData:
-Route31VioletGate_BlockData:
-GoldenrodHarborGate_BlockData:
-	INCBIN "maps/EastWestGate.blk"
+	INCBIN "maps/KantoEastWestGate.blk"
 
 VermilionCity_BlockData:
 	INCBIN "maps/VermilionCity.blk"
