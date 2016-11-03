@@ -18,6 +18,20 @@ ItemEffects: ; e73c
 	dw GreatBall
 	dw UltraBall
 	dw MasterBall
+	dw LevelBall
+	dw LureBall
+	dw MoonBall
+	dw FriendBall
+	dw FastBall
+	dw HeavyBall
+	dw LoveBall
+	dw RepeatBall
+	dw TimerBall
+	dw QuickBall
+	dw DuskBall
+	dw PremierBall
+	dw CherishBall
+	dw ParkBall
 	dw Potion
 	dw SuperPotion
 	dw HyperPotion
@@ -126,13 +140,6 @@ ItemEffects: ; e73c
 	dw WhtApricorn
 	dw BlkApricorn
 	dw PnkApricorn
-	dw HeavyBall
-	dw LevelBall
-	dw LureBall
-	dw FastBall
-	dw FriendBall
-	dw MoonBall
-	dw LoveBall
 	dw SilkScarf
 	dw BlackBelt
 	dw SharpBeak
@@ -239,13 +246,6 @@ ItemEffects: ; e73c
 	dw GoldLeaf
 	dw SlowpokeTail
 	dw BottleCap
-	dw ParkBall
-	dw RepeatBall
-	dw TimerBall
-	dw QuickBall
-	dw DuskBall
-	dw PremierBall
-	dw CherishBall
 	dw HelixFossil
 	dw DomeFossil
 	dw OldAmber
@@ -276,12 +276,12 @@ PokeBall:
 GreatBall:
 UltraBall:
 MasterBall:
-HeavyBall:
 LevelBall:
 LureBall:
-FastBall:
-FriendBall:
 MoonBall:
+FriendBall:
+FastBall:
+HeavyBall:
 LoveBall:
 RepeatBall:
 TimerBall:

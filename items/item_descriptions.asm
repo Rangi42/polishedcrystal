@@ -38,6 +38,20 @@ ItemDescriptions:
 	dw GreatBallDesc
 	dw UltraBallDesc
 	dw MasterBallDesc
+	dw LevelBallDesc
+	dw LureBallDesc
+	dw MoonBallDesc
+	dw FriendBallDesc
+	dw FastBallDesc
+	dw HeavyBallDesc
+	dw LoveBallDesc
+	dw RepeatBallDesc
+	dw TimerBallDesc
+	dw QuickBallDesc
+	dw DuskBallDesc
+	dw PremierBallDesc
+	dw CherishBallDesc
+	dw ParkBallDesc
 	dw PotionDesc
 	dw SuperPotionDesc
 	dw HyperPotionDesc
@@ -146,13 +160,6 @@ ItemDescriptions:
 	dw WhtApricornDesc
 	dw BlkApricornDesc
 	dw PnkApricornDesc
-	dw HeavyBallDesc
-	dw LevelBallDesc
-	dw LureBallDesc
-	dw FastBallDesc
-	dw FriendBallDesc
-	dw MoonBallDesc
-	dw LoveBallDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc
@@ -259,13 +266,6 @@ ItemDescriptions:
 	dw GoldLeafDesc
 	dw SlowpokeTailDesc
 	dw BottleCapDesc
-	dw ParkBallDesc
-	dw RepeatBallDesc
-	dw TimerBallDesc
-	dw QuickBallDesc
-	dw DuskBallDesc
-	dw PremierBallDesc
-	dw CherishBallDesc
 	dw HelixFossilDesc
 	dw DomeFossilDesc
 	dw OldAmberDesc
@@ -305,6 +305,62 @@ UltraBallDesc:
 MasterBallDesc:
 	db   "The best Ball. It"
 	next "never misses.@"
+
+LevelBallDesc:
+	db   "A Ball for lower-"
+	next "level #mon.@"
+
+LureBallDesc:
+	db   "A Ball for #mon"
+	next "hooked by a Rod.@"
+
+MoonBallDesc:
+	db   "A Ball for Moon"
+	next "Stone evolvers.@"
+
+FriendBallDesc:
+	db   "A Ball that makes"
+	next "#mon friendly.@"
+
+FastBallDesc:
+	db   "A Ball for catch-"
+	next "ing fast #mon.@"
+
+HeavyBallDesc:
+	db   "A Ball for catch-"
+	next "ing heavy #mon.@"
+
+LoveBallDesc:
+	db   "A Ball for the"
+	next "opposite gender.@"
+
+RepeatBallDesc:
+	db   "A Ball for #mon"
+	next "caught before.@"
+
+TimerBallDesc:
+	db   "A Ball for late"
+	next "in a battle.@"
+
+QuickBallDesc:
+	db   "A Ball for early"
+	next "in a battle.@"
+
+DuskBallDesc:
+	db   "A Ball for night-"
+	next "time or caves.@"
+
+PremierBallDesc:
+	db   "A rare commemor-"
+	next "ative Ball.@"
+
+CherishBallDesc:
+	db   "A quite rare com-"
+	next "memorative Ball.@"
+
+ParkBallDesc:
+	db   "The Bug-Catching"
+	next "Contest Ball.@"
 
 PotionDesc:
 	db   "Restores #mon"
@@ -732,34 +788,6 @@ PnkApricornDesc:
 	db   "A pink Apricorn."
 	next "@"
 
-HeavyBallDesc:
-	db   "A Ball for catch-"
-	next "ing heavy #mon.@"
-
-LevelBallDesc:
-	db   "A Ball for lower-"
-	next "level #mon.@"
-
-LureBallDesc:
-	db   "A Ball for #mon"
-	next "hooked by a Rod.@"
-
-FastBallDesc:
-	db   "A Ball for catch-"
-	next "ing fast #mon.@"
-
-FriendBallDesc:
-	db   "A Ball that makes"
-	next "#mon friendly.@"
-
-MoonBallDesc:
-	db   "A Ball for Moon"
-	next "Stone evolvers.@"
-
-LoveBallDesc:
-	db   "A Ball for the"
-	next "opposite gender.@"
-
 SilkScarfDesc:
 	db   "Powers up Normal-"
 	next "type moves. (Hold)@"
@@ -1055,34 +1083,6 @@ SlowpokeTailDesc:
 BottleCapDesc:
 	db   "A shiny, rare"
 	next "bottle cap.@"
-
-ParkBallDesc:
-	db   "The Bug-Catching"
-	next "Contest Ball.@"
-
-RepeatBallDesc:
-	db   "A Ball for #mon"
-	next "caught before.@"
-
-TimerBallDesc:
-	db   "A Ball for late"
-	next "in a battle.@"
-
-QuickBallDesc:
-	db   "A Ball for early"
-	next "in a battle.@"
-
-DuskBallDesc:
-	db   "A Ball for night-"
-	next "time or caves.@"
-
-PremierBallDesc:
-	db   "A rare commemor-"
-	next "ative Ball.@"
-
-CherishBallDesc:
-	db   "A quite rare com-"
-	next "memorative Ball.@"
 
 HelixFossilDesc:
 	db   "A fossilized"
