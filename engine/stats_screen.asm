@@ -365,6 +365,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call StatsScreen_PlaceHorizontalDivider
 	call StatsScreen_PlacePageSwitchArrows
 	call StatsScreen_PlaceShinyIcon
+	call StatsScreen_PlaceCaughtBall
 	ret
 
 .PlaceHPBar: ; 4df45 (13:5f45)
@@ -428,6 +429,29 @@ StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	hlcoord 19, 0
 	ld [hl], "<SHINY>"
 	ret
+
+; TODO: index GFX_CaughtBalls with TempMonCaughtBall,
+; load that tile to VRAM, and display it
+; The s/t/u/v ball borders are from gfx/misc/stats.2bpp,
+; in the other VRAM section
+StatsScreen_PlaceCaughtBall:
+	hlcoord 8, 5
+	ld [hl], "s" ; top
+	hlcoord 7, 6
+	ld [hl], "t" ; left
+	hlcoord 9, 6
+	ld [hl], "u" ; right
+	hlcoord 8, 7
+	ld [hl], "v" ; bottom
+	hlcoord 8, 6
+	ld a, [TempMonCaughtBall]
+	and CAUGHTBALL_MASK
+	add "A"
+	ld [hl], a
+	ret
+
+GFX_CaughtBalls:
+INCBIN "gfx/misc/balls.2bpp"
 
 StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld a, [BaseDexNo] ; wd236 (aliases: BaseDexNo)

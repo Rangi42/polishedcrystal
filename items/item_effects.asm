@@ -495,10 +495,6 @@ endr
 	call DelayFrames
 
 	ld a, [CurItem]
-	cp MASTER_BALL + 1 ; Assumes Poke/Great/Ultra come before
-	jr c, .not_kurt_ball
-	ld a, POKE_BALL
-.not_kurt_ball
 	ld [wBattleAnimParam], a
 
 	ld de, ANIM_THROW_POKE_BALL

@@ -3387,6 +3387,8 @@ CheckPartyFullAfterContest: ; 4d9e5
 	call GetPartyLocation
 	ld a, [hl]
 	ld [CurPartyLevel], a
+	ld a, PARK_BALL
+	ld [CurItem], a
 	call SetCaughtData
 	ld a, [PartyCount]
 	dec a
@@ -3508,7 +3510,10 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 	rrca
 	or b
 	ld b, a
-	; TODO: CaughtBall
+	; CaughtBall
+	ld a, [CurItem]
+	and CAUGHTBALL_MASK
+	or b
 	ld [hli], a
 	; CaughtLevel
 	ld a, [CurPartyLevel]
@@ -3573,7 +3578,7 @@ SetGiftMonCaughtData: ; 4dbaf
 	ld b, a
 	; CaughtBall
 	; Poké Ball
-	xor a
+	ld a, POKE_BALL
 	or b
 	ld [hli], a
 	; CaughtLevel
@@ -3593,6 +3598,8 @@ SetEggMonCaughtData: ; 4dbb8 (13:5bb8)
 	push af
 	ld a, $1
 	ld [CurPartyLevel], a
+	ld a, POKE_BALL
+	ld [CurItem], a
 	call SetBoxmonOrEggmonCaughtData
 	pop af
 	ld [CurPartyLevel], a

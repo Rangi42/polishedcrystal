@@ -355,8 +355,6 @@ BattleAnim_SweetScent2:
 BattleAnim_ThrowPokeBall
 	anim_jumpif NO_ITEM, .TheTrainerBlockedTheBall
 	anim_jumpif MASTER_BALL, .MasterBall
-	anim_jumpif ULTRA_BALL, .UltraBall
-	anim_jumpif GREAT_BALL, .GreatBall
 	; any other ball
 	anim_2gfx ANIM_GFX_POKE_BALL, ANIM_GFX_SMOKE
 	anim_sound 6, 2, SFX_THROW_BALL
@@ -378,32 +376,6 @@ BattleAnim_ThrowPokeBall
 	anim_obj ANIM_OBJ_01,  14, 0,   5, 0, $0
 	anim_wait 32
 	anim_ret
-
-.UltraBall:
-	anim_2gfx ANIM_GFX_POKE_BALL, ANIM_GFX_SMOKE
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_POKE_BALL,   8, 4,  11, 4, $40
-	anim_wait 36
-	anim_obj ANIM_OBJ_POKE_BALL, -15, 0,   8, 1, $0
-	anim_setobj $2, $7
-	anim_wait 16
-	anim_sound 0, 1, SFX_BALL_POOF
-	anim_obj ANIM_OBJ_1C, -15, 0,   8, 0, $10
-	anim_wait 16
-	anim_jump .Shake
-
-.GreatBall:
-	anim_2gfx ANIM_GFX_POKE_BALL, ANIM_GFX_SMOKE
-	anim_sound 6, 2, SFX_THROW_BALL
-	anim_obj ANIM_OBJ_POKE_BALL,   8, 4,  11, 4, $40
-	anim_wait 36
-	anim_obj ANIM_OBJ_POKE_BALL, -15, 0,   8, 1, $0
-	anim_setobj $2, $7
-	anim_wait 16
-	anim_sound 0, 1, SFX_BALL_POOF
-	anim_obj ANIM_OBJ_1C, -15, 0,   8, 0, $10
-	anim_wait 16
-	anim_jump .Shake
 
 .MasterBall:
 	anim_3gfx ANIM_GFX_POKE_BALL, ANIM_GFX_SMOKE, ANIM_GFX_SPEED

@@ -1404,12 +1404,12 @@ endr
 ; 108cc
 
 PackGFXPointers: ; 108cc
-	dw PackGFX + $f0 * 0 ; Items
-	dw PackGFX + $f0 * 1 ; Medicine
-	dw PackGFX + $f0 * 2 ; Balls
-	dw PackGFX + $f0 * 3 ; TM/HM
-	dw PackGFX + $f0 * 4 ; Berries
-	dw PackGFX + $f0 * 5 ; Key Items
+	dw PackGFX + (15 tiles) * 0 ; Items
+	dw PackGFX + (15 tiles) * 1 ; Medicine
+	dw PackGFX + (15 tiles) * 2 ; Balls
+	dw PackGFX + (15 tiles) * 3 ; TM/HM
+	dw PackGFX + (15 tiles) * 4 ; Berries
+	dw PackGFX + (15 tiles) * 5 ; Key Items
 ; 108d4
 
 PackFGFXPointers: ; 48e93
