@@ -60,10 +60,10 @@ Route1718Gate_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $4, $0, 1, ROUTE_17
-	warp_def $5, $0, 2, ROUTE_17
-	warp_def $4, $9, 1, ROUTE_18
-	warp_def $5, $9, 2, ROUTE_18
+	warp_def $3, $0, 1, ROUTE_17
+	warp_def $4, $0, 2, ROUTE_17
+	warp_def $3, $9, 1, ROUTE_18
+	warp_def $4, $9, 2, ROUTE_18
 
 .XYTriggers:
 	db 2
@@ -75,4 +75,4 @@ Route1718Gate_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7360e, -1
+	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7360e, -1

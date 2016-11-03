@@ -32,10 +32,10 @@ Route11Gate_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $4, $0, 1, ROUTE_11
-	warp_def $5, $0, 2, ROUTE_11
-	warp_def $4, $9, 2, ROUTE_12
-	warp_def $5, $9, 3, ROUTE_12
+	warp_def $3, $0, 1, ROUTE_11
+	warp_def $4, $0, 2, ROUTE_11
+	warp_def $3, $9, 2, ROUTE_12
+	warp_def $4, $9, 3, ROUTE_12
 
 .XYTriggers:
 	db 0
@@ -45,4 +45,4 @@ Route11Gate_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route11GateOfficerScript, -1
+	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route11GateOfficerScript, -1

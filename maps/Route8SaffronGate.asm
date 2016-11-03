@@ -25,10 +25,10 @@ Route8SaffronGate_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $4, $0, 14, SAFFRON_CITY
-	warp_def $5, $0, 15, SAFFRON_CITY
-	warp_def $4, $9, 1, ROUTE_8
-	warp_def $5, $9, 2, ROUTE_8
+	warp_def $3, $0, 14, SAFFRON_CITY
+	warp_def $4, $0, 15, SAFFRON_CITY
+	warp_def $3, $9, 1, ROUTE_8
+	warp_def $4, $9, 2, ROUTE_8
 
 .XYTriggers:
 	db 0
@@ -38,4 +38,4 @@ Route8SaffronGate_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7f416, -1
+	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7f416, -1
