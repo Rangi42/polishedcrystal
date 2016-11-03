@@ -117,6 +117,7 @@ ItemEffects: ; e73c
 	dw OldSeaMap
 	dw ShinyCharm
 	dw OvalCharm
+	dw ArmorPiece
 	dw OranBerry
 	dw SitrusBerry
 	dw PechaBerry
@@ -197,14 +198,6 @@ ItemEffects: ; e73c
 	dw WideLens
 	dw WiseGlasses
 	dw ZoomLens
-	dw PsnGuard
-	dw ParGuard
-	dw BrnGuard
-	dw SlpGuard
-	dw FrzGuard
-	dw ConfuseGuard
-	dw AttractGuard
-	dw FlinchGuard
 	dw MentalHerb
 	dw PowerHerb
 	dw WhiteHerb
@@ -215,6 +208,10 @@ ItemEffects: ; e73c
 	dw ChoiceBand
 	dw ChoiceScarf
 	dw ChoiceSpecs
+	dw FlameOrb
+	dw ToxicOrb
+	dw StickyBarb
+	dw BlackSludge
 	dw MachoBrace
 	dw PowerWeight
 	dw PowerBracer
@@ -3180,6 +3177,7 @@ MysticTicket:
 OldSeaMap:
 ShinyCharm:
 OvalCharm:
+ArmorPiece:
 QuickPowder:
 AirBalloon:
 AssaultVest:
@@ -3203,14 +3201,6 @@ WeakPolicy:
 WideLens:
 WiseGlasses:
 ZoomLens:
-PsnGuard:
-ParGuard:
-BrnGuard:
-SlpGuard:
-FrzGuard:
-ConfuseGuard:
-AttractGuard:
-FlinchGuard:
 MentalHerb:
 PowerHerb:
 WhiteHerb:
@@ -3221,6 +3211,10 @@ IcyRock:
 ChoiceBand:
 ChoiceScarf:
 ChoiceSpecs:
+FlameOrb:
+ToxicOrb:
+StickyBarb:
+BlackSludge:
 MachoBrace:
 PowerWeight:
 PowerBracer:

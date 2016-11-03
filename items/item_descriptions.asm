@@ -137,6 +137,7 @@ ItemDescriptions:
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
+	dw ArmorPieceDesc
 	dw OranBerryDesc
 	dw SitrusBerryDesc
 	dw PechaBerryDesc
@@ -217,14 +218,6 @@ ItemDescriptions:
 	dw WideLensDesc
 	dw WiseGlassesDesc
 	dw ZoomLensDesc
-	dw PsnGuardDesc
-	dw ParGuardDesc
-	dw BrnGuardDesc
-	dw SlpGuardDesc
-	dw FrzGuardDesc
-	dw ConfuseGuardDesc
-	dw AttractGuardDesc
-	dw FlinchGuardDesc
 	dw MentalHerbDesc
 	dw PowerHerbDesc
 	dw WhiteHerbDesc
@@ -235,6 +228,10 @@ ItemDescriptions:
 	dw ChoiceBandDesc
 	dw ChoiceScarfDesc
 	dw ChoiceSpecsDesc
+	dw FlameOrbDesc
+	dw ToxicOrbDesc
+	dw StickyBarbDesc
+	dw BlackSludgeDesc
 	dw MachoBraceDesc
 	dw PowerWeightDesc
 	dw PowerBracerDesc
@@ -281,6 +278,8 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
+	dw TeruSamaDesc
+	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -701,6 +700,10 @@ OvalCharmDesc:
 	db   "A charm for find-"
 	next "ing Eggs.@"
 
+ArmorPieceDesc:
+	db   "A piece of armor"
+	next "from the past.@"
+
 OranBerryDesc:
 	db   "A self-restore"
 	next "item. (10HP, Hold)@"
@@ -947,14 +950,6 @@ SootheBellDesc:
 WeakPolicyDesc:
 WideLensDesc:
 ZoomLensDesc:
-PsnGuardDesc:
-ParGuardDesc:
-BrnGuardDesc:
-SlpGuardDesc:
-FrzGuardDesc:
-ConfuseGuardDesc:
-AttractGuardDesc:
-FlinchGuardDesc:
 MentalHerbDesc:
 PowerHerbDesc:
 WhiteHerbDesc:
@@ -965,6 +960,10 @@ IcyRockDesc:
 ChoiceBandDesc:
 ChoiceScarfDesc:
 ChoiceSpecsDesc:
+FlameOrbDesc:
+ToxicOrbDesc:
+StickyBarbDesc:
+BlackSludgeDesc:
 MachoBraceDesc:
 PowerWeightDesc:
 PowerBracerDesc:
