@@ -150,6 +150,8 @@ TraceAbility:
 	cp IMPOSTER
 	jr z, .trace_failure
 	push af
+	ld b, a
+	farcall BufferAbility
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVarAddr
 	pop af

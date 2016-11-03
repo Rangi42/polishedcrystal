@@ -1280,7 +1280,9 @@ BecameHealthyText:
 TraceActivationText:
 	text "<USER>"
 	line "traced"
-	cont "<OPABIL>!"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
 	prompt
 
 TraceFailureText:
