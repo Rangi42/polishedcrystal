@@ -4,9 +4,12 @@
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
 
-TODO: Investigate overworld effects. Currently, only Pickup, Immunity and Poison Heal have
+TODO:
+
+* Investigate overworld effects. Currently, only Pickup, Immunity and Poison Heal have
 appropriately changed overworld effects. Figure out which abilities have those,
 and fix it.
+* Implement <OPABIL> printing.
 
 ---
 

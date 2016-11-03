@@ -1,26 +1,26 @@
-Tileset06GFX:
-INCBIN "gfx/tilesets/06.2bpp.lz"
+Tileset05GFX:
+INCBIN "gfx/tilesets/05.2bpp.lz"
 
-Tileset06Meta:
-INCBIN "tilesets/06_metatiles.bin"
+Tileset05Meta:
+INCBIN "tilesets/05_metatiles.bin"
 
-Tileset06Coll:
-INCBIN "tilesets/06_collision.bin"
+Tileset05Coll:
+INCBIN "tilesets/05_collision.bin"
 
-Tileset07GFX:
-INCBIN "gfx/tilesets/07.2bpp.lz"
+Tileset20GFX:
+INCBIN "gfx/tilesets/20.2bpp.lz"
 
-Tileset07Meta:
-INCBIN "tilesets/07_metatiles.bin"
+Tileset20Meta:
+INCBIN "tilesets/20_metatiles.bin"
 
-Tileset07Coll:
-INCBIN "tilesets/07_collision.bin"
+Tileset20Coll:
+INCBIN "tilesets/20_collision.bin"
 
-Tileset08GFX:
-INCBIN "gfx/tilesets/08.2bpp.lz"
+Tileset22GFX:
+INCBIN "gfx/tilesets/22.2bpp.lz"
 
-Tileset08Meta:
-INCBIN "tilesets/08_metatiles.bin"
+Tileset22Meta:
+INCBIN "tilesets/22_metatiles.bin"
 
-Tileset08Coll:
-INCBIN "tilesets/08_collision.bin"
+Tileset22Coll:
+INCBIN "tilesets/22_collision.bin"

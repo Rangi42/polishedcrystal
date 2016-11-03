@@ -1,11 +1,11 @@
-Tileset22GFX:
-INCBIN "gfx/tilesets/22.2bpp.lz"
+Tileset07GFX:
+INCBIN "gfx/tilesets/07.2bpp.lz"
 
-Tileset22Meta:
-INCBIN "tilesets/22_metatiles.bin"
+Tileset07Meta:
+INCBIN "tilesets/07_metatiles.bin"
 
-Tileset22Coll:
-INCBIN "tilesets/22_collision.bin"
+Tileset07Coll:
+INCBIN "tilesets/07_collision.bin"
 
 Tileset26Meta:
 INCBIN "tilesets/26_metatiles.bin"
