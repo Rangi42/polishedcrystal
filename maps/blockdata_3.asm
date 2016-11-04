@@ -19,6 +19,9 @@ RuinsofAlphResearchCenter_BlockData:
 GoldenrodBikeShop_BlockData:
 	INCBIN "maps/GoldenrodBikeShop.blk"
 
+CeruleanBikeShop_BlockData:
+	INCBIN "maps/CeruleanBikeShop.blk"
+
 DanceTheatre_BlockData:
 	INCBIN "maps/DanceTheatre.blk"
 

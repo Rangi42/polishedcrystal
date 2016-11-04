@@ -316,7 +316,7 @@ UnknownText_0x198a69:
 
 UnknownText_0x198aa9:
 	text "I know there's a"
-	line "new Bike Shop, but"
+	line "new bike shop, but"
 
 	para "I can't find it"
 	line "anywhere."
@@ -474,7 +474,8 @@ GoldenrodCitySignText:
 GoldenrodCityBikeShopSignText:
 	text "The World is a"
 	line "Cycle Path!"
-	cont "Bike Shop"
+
+	para "Miracle Cycle"
 	done
 
 GoldenrodCityGameCornerSignText:

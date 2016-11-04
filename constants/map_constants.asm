@@ -198,6 +198,7 @@ MAP_NONE   EQU 0
 	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 16
 	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 17
 	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 18
+	mapgroup CERULEAN_BIKE_SHOP,                          4,  4 ; 19
 
 	newgroup                                                    ;  8
 

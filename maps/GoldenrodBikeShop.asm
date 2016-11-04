@@ -45,11 +45,12 @@ MapGoldenrodBikeShopSignpost8Script:
 	jumptext UnknownText_0x548ed
 
 UnknownText_0x54787:
-	text "…sigh… I moved"
-	line "here, but I can't"
+	text "…sigh… I opened"
+	line "a branch here,"
 
-	para "sell my Bicycles."
-	line "Why is that?"
+	para "but I can't sell"
+	line "my Bicycles."
+	cont "Why is that?"
 
 	para "Could you ride a"
 	line "Bicycle and adver-"

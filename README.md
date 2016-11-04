@@ -268,6 +268,9 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Olivine Gym has its two trainers from HGSS.
 * Add: Unlock frame type 9.
 * Add: Show PC box quantity.
+* Add: Pokémon stats show caught Poké Ball.
+* Add: Cerulean Bike Shop from HGSS.
+* Add: Elite 4 rooms have floor arenas.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.

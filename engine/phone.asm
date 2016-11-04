@@ -705,7 +705,7 @@ NonTrainerCallerNames: ; 903d6
 .mom db "Mom:@"
 .bill db "Bill:", $22, "   #maniac@"
 .elm db "Prof.Elm:", $22, "   #mon Prof.@"
-.bikeshop db "Bike Shop:@"
+.bikeshop db "Miracle Cycle:@"
 .lyra db "Lyra:", $22, "   <PKMN> Trainer@"
 .buena db "Buena:", $22, "   Disc Jockey@"
 ; 90423

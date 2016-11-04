@@ -143,9 +143,6 @@ CeruleanPoliceSign:
 CeruleanCapeSign:
 	jumptext CeruleanCapeSignText
 
-CeruleanLockedDoor:
-	jumptext CeruleanLockedDoorText
-
 CeruleanCityPokeCenterSign:
 	jumpstd pokecentersign
 
@@ -269,12 +266,10 @@ CeruleanGymSignText:
 	done
 
 CeruleanBikeShopSignText:
-	text "There's a notice"
-	line "here…"
+	text "Trendsetter of"
+	line "the Bicycle Boom"
 
-	para "The Bike Shop has"
-	line "moved to Goldenrod"
-	cont "City in Johto…"
+	para "Miracle Cycle"
 	done
 
 CeruleanPoliceSignText:
@@ -295,10 +290,6 @@ CeruleanCapeSignText:
 	line "Ahead"
 	done
 
-CeruleanLockedDoorText:
-	text "It's locked…"
-	done
-
 CeruleanBubblerText:
 	text "The water"
 	line "tastes good!"
@@ -309,7 +300,7 @@ CeruleanCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 7
+	db 8
 	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
 	warp_def $11, $1c, 1, CERULEAN_POLICE_STATION
 	warp_def $13, $d, 1, CERULEAN_TRADE_SPEECH_HOUSE
@@ -317,18 +308,18 @@ CeruleanCity_MapEventHeader:
 	warp_def $17, $1e, 1, CERULEAN_GYM
 	warp_def $1d, $19, 2, CERULEAN_MART
 	warp_def $d, $2, 1, CERULEAN_CAVE_1F
+	warp_def $1d, $e, 1, CERULEAN_BIKE_SHOP
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 10
+	db 9
 	signpost 23, 23, SIGNPOST_READ, CeruleanCitySign
 	signpost 25, 27, SIGNPOST_READ, CeruleanGymSign
 	signpost 29, 11, SIGNPOST_READ, CeruleanBikeShopSign
 	signpost 17, 25, SIGNPOST_READ, CeruleanPoliceSign
 	signpost 7, 23, SIGNPOST_READ, CeruleanCapeSign
-	signpost 29, 14, SIGNPOST_READ, CeruleanLockedDoor
 	signpost 21, 20, SIGNPOST_READ, CeruleanCityPokeCenterSign
 	signpost 29, 26, SIGNPOST_READ, CeruleanCityMartSign
 	signpost 22, 11, SIGNPOST_UP, CeruleanBubblerSign
