@@ -119,15 +119,13 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ### New items
 
-* {Pomeg, Kelpsy, Qualot, Hondew, Grepa, Tamato} Berry (if EVs are limited)
-* Big Nugget (and other valuable items)
+* Big Nugget (and other valuable items) (locations...?)
 * Mulch (use on a picked Berry tree to regrow it)
 * Honey (for Honey Trees)
-* Cherish Ball
+* Cherish Ball (locations...?)
 * Ability Capsule
-* Soothe Bell (National Park)
+* Soothe Bell (add in National Park)
 * Quick Powder (wild Ditto)
-* Power {Weight, Bracer, Belt, Lens, Band, Anklet} (Battle Tower) (if EVs are limited)
 * Choice {Band, Scarf, Specs} (Battle Tower)
 * Binding Band
 * {Mental, Power, White} Herb (Battle Tower)
@@ -137,7 +135,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Expert Belt (Mt. Silver)
 * Life Orb (Ruins of Alph)
 * Weak Policy
-* {Wide, Zoom} Lens (Goldenrod Game Corner)
+* {Wide, Zoom} Lens (sold by harbor merchant)
 * Focus Sash
 * Air Balloon
 * Destiny Knot (Route 27)

@@ -166,13 +166,13 @@ RooftopSaleData2: ; 15aff
 
 AdventurerData:
 	db 8
-	dbw GREAT_BALL,    600
-	dbw FRESH_WATER,   200
 	dbw ETHER,        1200
 	dbw ELIXER,       2000
 	dbw RARE_CANDY,  12000
 	dbw BRIGHTPOWDER, 1800
 	dbw SCOPE_LENS,   2400
+	dbw WIDE_LENS,    2400
+	dbw ZOOM_LENS,    2400
 	dbw SURF_MAIL,      50
 	db -1
 

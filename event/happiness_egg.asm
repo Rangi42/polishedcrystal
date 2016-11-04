@@ -79,8 +79,12 @@ endr
 	ld a, [de]
 	jr nc, .negative
 	add [hl]
-	jr nc, .done
-	ld a, -1
+	jr nc, .extra
+	ld a, 255
+	jr .done
+
+.extra
+	call GetExtraHappiness
 	jr .done
 
 .negative
@@ -124,6 +128,54 @@ endr
 	db +10,  +6,  +4 ; Gained a level in the place where it was caught
 	db  +5,  +3,  +2 ; Took a photograph
 	db  +5,  +3,  +2 ; Received a blessing
+
+GetExtraHappiness:
+; Increase happiness in 'a' based on ther factors
+	push af
+
+	ld b, a
+
+	cp 255
+	jr nc, .no_soothe_bell ; already at maximum
+
+	ld a, [CurPartyMon]
+	push bc
+	ld hl, PartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [CurPartyMon]
+	call AddNTimes
+	pop bc
+	ld a, [hl]
+	cp SOOTHE_BELL
+	jr nz, .no_soothe_bell
+
+	; Soothe Bell adds 1
+	inc b
+
+.no_soothe_bell
+	ld a, b
+	cp 255
+	jr nc, .no_luxury_ball ; already at maximum
+
+	ld a, [CurPartyMon]
+	push bc
+	ld hl, PartyMon1CaughtBall
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [CurPartyMon]
+	call AddNTimes
+	pop bc
+	ld a, [hl]
+	and CAUGHTBALL_MASK
+	cp LUXURY_BALL
+	jr nz, .no_luxury_ball
+
+	; Luxury Ball adds 1
+	inc b
+
+.no_luxury_ball
+	pop af
+	ld a, b
+	ret
 
 StepHappiness:: ; 725a
 ; Raise the party's happiness by 1 point every other step cycle.
