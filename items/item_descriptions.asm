@@ -48,6 +48,9 @@ ItemDescriptions:
 	dw ParkBallDesc
 	dw RepeatBallDesc
 	dw TimerBallDesc
+	dw NestBallDesc
+	dw NetBallDesc
+	dw LuxuryBallDesc
 	dw QuickBallDesc
 	dw DuskBallDesc
 	dw PremierBallDesc
@@ -285,9 +288,6 @@ ItemDescriptions:
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
 
 PokeBallDesc:
 	db   "An item for catch-"
@@ -344,6 +344,18 @@ RepeatBallDesc:
 TimerBallDesc:
 	db   "A Ball for late"
 	next "in a battle.@"
+
+NestBallDesc:
+	db   "A Ball for weak-"
+	next "er #mon.@"
+
+NetBallDesc:
+	db   "A Ball for Water"
+	next "or Bug #mon.@"
+
+LuxuryBallDesc:
+	db   "A cozy Ball to"
+	next "befriend #mon.@"
 
 QuickBallDesc:
 	db   "A Ball for early"

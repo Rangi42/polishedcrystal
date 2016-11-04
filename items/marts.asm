@@ -440,9 +440,12 @@ SaffronMart: ; 161f3
 ; 161fd
 
 SilphCoMart: ; 16146
-	db 4 ; # items
+	db 7 ; # items
 	db REPEAT_BALL
 	db TIMER_BALL
+	db NEST_BALL
+	db NET_BALL
+	db LUXURY_BALL
 	db QUICK_BALL
 	db DUSK_BALL
 	db $ff

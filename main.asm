@@ -3572,8 +3572,7 @@ SetGiftPartyMonCaughtData: ; 4dba3
 	pop bc
 SetGiftMonCaughtData: ; 4dbaf
 	; CaughtGender
-	; b contains it, shifted
-	rrc b
+	; b contains it
 	; CaughtTime
 	ld a, [TimeOfDay]
 	inc a
@@ -3585,6 +3584,7 @@ SetGiftMonCaughtData: ; 4dbaf
 	; CaughtBall
 	; Poké Ball
 	ld a, POKE_BALL
+	and CAUGHTBALL_MASK
 	or b
 	ld [hli], a
 	; CaughtLevel

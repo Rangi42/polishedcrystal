@@ -1828,6 +1828,8 @@ GivePoke:: ; e277
 	jr .set_caught_data
 
 .party
+	ld a, POKE_BALL
+	ld [CurItem], a
 	farcall SetCaughtData
 .set_caught_data
 	farcall GiveANickname_YesNo

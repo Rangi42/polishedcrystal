@@ -28,6 +28,9 @@ ItemEffects: ; e73c
 	dw ParkBall
 	dw RepeatBall
 	dw TimerBall
+	dw NestBall
+	dw NetBall
+	dw LuxuryBall
 	dw QuickBall
 	dw DuskBall
 	dw PremierBall
@@ -283,6 +286,9 @@ LoveBall:
 ParkBall:
 RepeatBall:
 TimerBall:
+NestBall:
+NetBall:
+LuxuryBall:
 QuickBall:
 DuskBall:
 PremierBall:
@@ -867,17 +873,19 @@ endr
 BallMultiplierFunctionTable:
 ; table of routines that increase or decrease the catch rate based on
 ; which ball is used in a certain situation.
-	dbw ULTRA_BALL,  UltraBallMultiplier
 	dbw GREAT_BALL,  GreatBallMultiplier
-	dbw HEAVY_BALL,  HeavyBallMultiplier
+	dbw ULTRA_BALL,  UltraBallMultiplier
 	dbw LEVEL_BALL,  LevelBallMultiplier
 	dbw LURE_BALL,   LureBallMultiplier
-	dbw FAST_BALL,   FastBallMultiplier
 	dbw MOON_BALL,   MoonBallMultiplier
+	dbw FAST_BALL,   FastBallMultiplier
+	dbw HEAVY_BALL,  HeavyBallMultiplier
 	dbw LOVE_BALL,   LoveBallMultiplier
 	dbw PARK_BALL,   ParkBallMultiplier
 	dbw REPEAT_BALL, RepeatBallMultiplier
 	dbw TIMER_BALL,  TimerBallMultiplier
+	dbw NEST_BALL,   NestBallMultiplier
+	dbw NET_BALL,    NetBallMultiplier
 	dbw QUICK_BALL,  QuickBallMultiplier
 	dbw DUSK_BALL,   DuskBallMultiplier
 	db $ff
@@ -1281,6 +1289,71 @@ TimerBallMultiplier:
 	ld a, [hQuotient + 2]
 	ld b, a
 
+	ret
+
+NestBallMultiplier:
+; multiply catch rate by (41 - enemy mon level) / 10, floored at 1
+	ld a, [EnemyMonLevel]
+	cp 30
+	ret nc
+
+	push bc
+	ld b, a
+	ld a, 41
+	sub b
+	pop bc
+
+	; hMultiplier = 41 - level
+	ld [hMultiplier], a
+
+	; hMultiplicand = catch rate
+	xor a
+	ld [hMultiplicand + 0], a
+	ld [hMultiplicand + 1], a
+	ld a, b
+	ld [hMultiplicand + 2], a
+
+	; hProduct = catch rate * (41 - level)
+	call Multiply
+
+	; hDivisor = 10
+	ld a, 10
+	ld [hDivisor], a
+
+	; hQuotient = catch rate * (41 - level) / 10
+	ld b, 4
+	call Divide
+
+	; b = hQuotient = catch rate * (41 - level) / 10
+	ld a, [hQuotient + 2]
+	ld b, a
+
+	ret
+
+NetBallMultiplier:
+; multiply catch rate by 3 if mon is water or bug type
+	ld a, [EnemyMonType1]
+	cp WATER
+	jr z, .ok
+	cp BUG
+	jr z, .ok
+	ld a, [EnemyMonType2]
+	cp WATER
+	jr z, .ok
+	cp BUG
+	ret nz
+
+.ok
+	ld a, b
+	add a
+	jr c, .max
+
+	add b
+	jr nc, .done
+.max
+	ld a, $ff
+.done
+	ld b, a
 	ret
 
 QuickBallMultiplier:
