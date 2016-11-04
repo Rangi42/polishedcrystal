@@ -333,7 +333,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_ACCURACY_DOWN,    AI_Smart_AccuracyDown
 	dbw EFFECT_HAZE,             AI_Smart_Haze
 	dbw EFFECT_BIDE,             AI_Smart_Bide
-	dbw EFFECT_WHIRLWIND,        AI_Smart_Whirlwind
+	dbw EFFECT_ROAR,             AI_Smart_Roar
 	dbw EFFECT_HEAL,             AI_Smart_Heal
 	dbw EFFECT_TOXIC,            AI_Smart_Toxic
 	dbw EFFECT_LIGHT_SCREEN,     AI_Smart_LightScreen
@@ -974,9 +974,7 @@ AI_Smart_Bide: ; 38a1e
 ; 38a2a
 
 
-AI_Smart_Whirlwind: ; 38a2a
-; Whirlwind, Roar.
-
+AI_Smart_Roar: ; 38a2a
 ; Discourage this move if the player has not shown
 ; a super-effective move against the enemy.
 ; Consider player's type(s) if its moves are unknown.
@@ -1533,7 +1531,6 @@ endr
 
 .EncoreMoves:
 	db SWORDS_DANCE
-	db WHIRLWIND
 	db LEER
 	db ROAR
 	db DISABLE

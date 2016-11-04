@@ -135,7 +135,6 @@ ZubatEggMoves:
 	db NASTY_PLOT
 	db PURSUIT
 	db QUICK_ATTACK
-	db WHIRLWIND
 	db ZEN_HEADBUTT
 	db $ff
 
@@ -323,7 +322,6 @@ ShellderEggMoves:
 	db RAPID_SPIN
 	db SCREECH
 	db TAKE_DOWN
-	db TWINEEDLE
 	db WATER_PULSE
 	db ICICLE_SPEAR
 	db $ff
@@ -502,7 +500,6 @@ KabutoEggMoves:
 AerodactylEggMoves:
 	db FORESIGHT
 	db PURSUIT
-	db WHIRLWIND
 	db STEEL_WING
 	db $ff
 
@@ -562,7 +559,6 @@ HoothootEggMoves:
 	db FEINT_ATTACK
 	db NIGHT_SHADE
 	db SUPERSONIC
-	db WHIRLWIND
 	db WING_ATTACK
 	db SKY_ATTACK
 	db $ff
@@ -581,7 +577,6 @@ SpinarakEggMoves:
 	db MEGAHORN
 	db PSYBEAM
 	db PURSUIT
-	db TWINEEDLE
 	db SONIC_BOOM
 	db POISON_JAB
 	db NIGHT_SLASH
@@ -611,7 +606,6 @@ MunchlaxEggMoves:
 	db CURSE
 	db DOUBLE_EDGE
 	db PURSUIT
-	db WHIRLWIND
 	db LICK
 	db GUNK_SHOT
 	db $ff
@@ -648,7 +642,6 @@ YanmaEggMoves:
 	db FEINT_ATTACK
 	db LEECH_LIFE
 	db REVERSAL
-	db WHIRLWIND
 	db $ff
 
 WooperEggMoves:
@@ -667,7 +660,6 @@ MurkrowEggMoves:
 	db PERISH_SONG
 	db QUICK_ATTACK
 	db SCREECH
-	db WHIRLWIND
 	db WING_ATTACK
 	db SKY_ATTACK
 	db $ff
@@ -821,7 +813,6 @@ MantineEggMoves:
 SkarmoryEggMoves:
 	db DRILL_PECK
 	db PURSUIT
-	db WHIRLWIND
 	db SKY_ATTACK
 	db $ff
 

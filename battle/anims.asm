@@ -17,7 +17,7 @@ BattleAnimations::
 	dw BattleAnim_Cut
 	dw BattleAnim_Gust
 	dw BattleAnim_WingAttack
-	dw BattleAnim_Whirlwind
+	dw BattleAnim_SuckerPunch
 	dw BattleAnim_Fly
 	dw BattleAnim_DazzlinGleam
 	dw BattleAnim_Slam
@@ -40,7 +40,7 @@ BattleAnimations::
 	dw BattleAnim_DoubleEdge
 	dw BattleAnim_Hail
 	dw BattleAnim_PoisonSting
-	dw BattleAnim_Twineedle
+	dw BattleAnim_UTurn
 	dw BattleAnim_PinMissile
 	dw BattleAnim_Leer
 	dw BattleAnim_Bite
@@ -1887,6 +1887,7 @@ BattleAnim_Amnesia: ; removed
 	anim_ret
 
 BattleAnim_DizzyPunch:
+BattleAnim_UTurn: ; TODO: design custom animation for U-Turn
 	anim_2gfx ANIM_GFX_STATUS, ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_MEGA_PUNCH
 	anim_obj ANIM_OBJ_00, -15, 0,   5, 0, $0
@@ -2065,7 +2066,7 @@ BattleAnim_Submission:
 	anim_call BattleAnim_ShowMon_1
 	anim_ret
 
-BattleAnim_Whirlwind:
+BattleAnim_Whirlwind: ; removed
 BattleAnim_Hurricane: ; TODO: design custom animation for Hurricane
 	anim_1gfx ANIM_GFX_WIND
 .loop
@@ -2170,18 +2171,6 @@ BattleAnim_PoisonJab: ; TODO: design custom Poison Jab animation
 	anim_wait 16
 	anim_sound 0, 1, SFX_POISON_STING
 	anim_obj ANIM_OBJ_05, -15, 0,   7, 0, $0
-	anim_wait 16
-	anim_ret
-
-BattleAnim_Twineedle:
-	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
-	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_60,   8, 0,  11, 4, $14
-	anim_obj ANIM_OBJ_60,   7, 0,  10, 4, $14
-	anim_wait 16
-	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_05, -15, 0,   7, 0, $0
-	anim_obj ANIM_OBJ_05,  16, 0,   6, 0, $0
 	anim_wait 16
 	anim_ret
 
@@ -3229,6 +3218,7 @@ BattleAnim_ScaryFace:
 	anim_ret
 
 BattleAnim_FeintAttack:
+BattleAnim_SuckerPunch: ; TODO: design custom animation for U-Turn
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_CURSE
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -4561,6 +4551,18 @@ BattleAnim_ShowMon_1:
 ; unused animations below here
 ; ================================
 
+;BattleAnim_Twineedle: ; removed
+;	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
+;	anim_sound 0, 1, SFX_POISON_STING
+;	anim_obj ANIM_OBJ_60,   8, 0,  11, 4, $14
+;	anim_obj ANIM_OBJ_60,   7, 0,  10, 4, $14
+;	anim_wait 16
+;	anim_sound 0, 1, SFX_POISON_STING
+;	anim_obj ANIM_OBJ_05, -15, 0,   7, 0, $0
+;	anim_obj ANIM_OBJ_05,  16, 0,   6, 0, $0
+;	anim_wait 16
+;	anim_ret
+;
 ;BattleAnim_Withdraw: ; removed
 ;	anim_1gfx ANIM_GFX_REFLECT
 ;	anim_call BattleAnim_FollowPlayerHead_0

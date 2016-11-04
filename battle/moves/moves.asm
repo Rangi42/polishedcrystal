@@ -33,7 +33,7 @@ else
 endc
 	move GUST,         EFFECT_GUST,               40, FLYING,    100, 35,   0, SPECIAL
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,    100, 35,   0, PHYSICAL
-	move WHIRLWIND,    EFFECT_WHIRLWIND,           0, NORMAL,    100, 20,   0, STATUS
+	move SUCKER_PUNCH, EFFECT_PRIORITY_HIT,       80, DARK,      100,  5,   0, PHYSICAL
 if DEF(FAITHFUL)
 	move FLY,          EFFECT_FLY,                90, FLYING,     95, 15,   0, PHYSICAL
 else
@@ -64,12 +64,12 @@ endc
 	move DOUBLE_EDGE,  EFFECT_RECOIL_HIT,        120, NORMAL,    100, 15,   0, PHYSICAL
 	move HAIL,         EFFECT_HAIL,                0, ICE,       100, 10,   0, STATUS
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,    100, 35,  30, PHYSICAL
-	move TWINEEDLE,    EFFECT_TWINEEDLE,          25, BUG,       100, 20,  20, PHYSICAL
+	move U_TURN,       EFFECT_NORMAL_HIT,         70, BUG,       100, 20,   0, PHYSICAL
 	move PIN_MISSILE,  EFFECT_MULTI_HIT,          25, BUG,        95, 20,   0, PHYSICAL
 	move LEER,         EFFECT_DEFENSE_DOWN,        0, NORMAL,    100, 30,   0, STATUS
 	move BITE,         EFFECT_FLINCH_HIT,         60, DARK,      100, 25,  30, PHYSICAL
 	move GROWL,        EFFECT_ATTACK_DOWN,         0, NORMAL,    100, 40,   0, STATUS
-	move ROAR,         EFFECT_WHIRLWIND,           0, NORMAL,    100, 20,   0, STATUS
+	move ROAR,         EFFECT_ROAR,                0, NORMAL,    100, 20,   0, STATUS
 if DEF(FAITHFUL)
 	move SING,         EFFECT_SLEEP,               0, NORMAL,     55, 15,   0, STATUS
 	move SUPERSONIC,   EFFECT_CONFUSE,             0, NORMAL,     55, 20,   0, STATUS

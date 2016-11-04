@@ -195,7 +195,7 @@ FalknerGroup:
 		db HURRICANE
 		db TWISTER
 		db STEEL_WING
-		db WHIRLWIND
+		db ROAR
 
 	db $ff ; end
 
@@ -639,7 +639,7 @@ JasmineGroup:
 
 	db 74, SKARMORY, LEFTOVERS, $EE, $EE, $EE
 		db SPIKES
-		db WHIRLWIND
+		db METAL_SOUND
 		db DRILL_PECK
 		db STEEL_WING
 
@@ -1213,7 +1213,7 @@ KarenGroup:
 
 	db 53, HONCHKROW, BLACKGLASSES
 		db DRILL_PECK
-		db WHIRLWIND
+		db SUCKER_PUNCH
 		db PURSUIT
 		db FEINT_ATTACK
 
@@ -1253,7 +1253,7 @@ KarenGroup:
 
 	db 72, HONCHKROW, BLACKGLASSES
 		db DRILL_PECK
-		db WHIRLWIND
+		db SUCKER_PUNCH
 		db PURSUIT
 		db NIGHT_SLASH
 
@@ -3237,25 +3237,25 @@ BugCatcherGroup:
 		db CONFUSION
 		db POISONPOWDER
 		db SUPERSONIC
-		db WHIRLWIND
+		db MORNING_SUN
 
 	db 24, BUTTERFREE
 		db CONFUSION
 		db STUN_SPORE
 		db SUPERSONIC
-		db WHIRLWIND
+		db MORNING_SUN
 
 	db 25, BEEDRILL
 		db FURY_ATTACK
 		db FOCUS_ENERGY
-		db TWINEEDLE
+		db PIN_MISSILE
 		db RAGE
 
 	db 24, BUTTERFREE
 		db CONFUSION
 		db SLEEP_POWDER
 		db SUPERSONIC
-		db WHIRLWIND
+		db MORNING_SUN
 
 	db $ff ; end
 
@@ -3282,14 +3282,14 @@ BugCatcherGroup:
 	db 32, BEEDRILL
 		db FURY_ATTACK
 		db PURSUIT
-		db TWINEEDLE
+		db U_TURN
 		db DOUBLE_TEAM
 
 	db 34, BUTTERFREE
 		db PSYBEAM
 		db SLEEP_POWDER
 		db GUST
-		db WHIRLWIND
+		db MORNING_SUN
 
 	db $ff ; end
 
@@ -4794,7 +4794,7 @@ BirdKeeperGroup:
 	db 45, PIDGEOT
 		db TOXIC
 		db QUICK_ATTACK
-		db WHIRLWIND
+		db ROAR
 		db FLY
 
 	db 45, PIDGEOT
@@ -10461,7 +10461,7 @@ CooltrainerMGroup:
 	db 35, PIDGEOT
 		db SAND_ATTACK
 		db QUICK_ATTACK
-		db WHIRLWIND
+		db ROAR
 		db AERIAL_ACE
 
 	db 37, ELECTABUZZ
@@ -11242,7 +11242,7 @@ VeteranFGroup:
 		db FLY
 		db SWIFT
 		db TWISTER
-		db WHIRLWIND
+		db ROAR
 
 	db 39, SCYTHER, EVIOLITE
 		db SLASH
@@ -12311,7 +12311,7 @@ WalkerGroup:
 	; party
 
 	db 75, SKARMORY, LEFTOVERS
-		db WHIRLWIND
+		db METAL_SOUND
 		db SPIKES
 		db DRILL_PECK
 		db NIGHT_SLASH
@@ -12326,7 +12326,7 @@ WalkerGroup:
 		db TWISTER
 		db EXTREMESPEED
 		db HURRICANE
-		db WHIRLWIND
+		db ROAR
 
 	db 73, AERODACTYL, MUSCLE_BAND
 		db ROCK_SLIDE
@@ -12457,7 +12457,7 @@ LawrenceGroup:
 		db ICE_BEAM
 		db AIR_SLASH
 		db ANCIENTPOWER
-		db WHIRLWIND
+		db REFLECT
 
 	db 66, CHARIZARD, DRAGON_FANG, SHINY_MASK | ABILITY_1 | ADAMANT, MALE
 		db SWORDS_DANCE
@@ -12581,7 +12581,7 @@ StevenGroup:
 
 	db 61, SKARMORY, QUICK_CLAW
 		db SPIKES
-		db WHIRLWIND
+		db METAL_SOUND
 		db DRILL_PECK
 		db STEEL_WING
 
@@ -12641,7 +12641,7 @@ endc
 
 	db 78, SKARMORY, QUICK_CLAW
 		db SPIKES
-		db WHIRLWIND
+		db METAL_SOUND
 		db DRILL_PECK
 		db STEEL_WING
 
@@ -13038,7 +13038,7 @@ ReiGroup:
 
 	db 58, HONCHKROW, BLACKGLASSES
 		db DRILL_PECK
-		db WHIRLWIND
+		db SUCKER_PUNCH
 		db PURSUIT
 		db FEINT_ATTACK
 
@@ -13084,7 +13084,7 @@ ReiGroup:
 
 	db 73, HONCHKROW, BLACKGLASSES
 		db DRILL_PECK
-		db WHIRLWIND
+		db SUCKER_PUNCH
 		db PURSUIT
 		db FEINT_ATTACK
 

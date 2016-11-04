@@ -1,8 +1,10 @@
 NormalHit:
+Avalanche: ; TODO: double damage if hit
+UTurn: ; TODO: switch out after attack
+SuckerPunch: ; TODO: fail if foe is not attacking
 AerialAce:
 Aeroblast:
 AquaTail:
-Avalanche:
 BulletPunch:
 Crabhammer:
 CrossChop:
@@ -1214,7 +1216,6 @@ DreamEater:
 	buildopponentrage
 	endmove
 
-Whirlwind:
 Roar:
 	checkobedience
 	usedmovetext
@@ -1300,34 +1301,6 @@ SkyAttack:
 	buildopponentrage
 	flinchtarget
 	kingsrock
-	endmove
-
-Twineedle:
-	checkobedience
-	usedmovetext
-	doturn
-	startloop
-	lowersub
-	checkhit
-	effectchance
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	clearmissdamage
-	hittargetnosub
-	failuretext
-	checkfaint
-	criticaltext
-	cleartext
-	supereffectivelooptext
-	checkdestinybond
-	buildopponentrage
-	poisontarget
-	kingsrock
-	endloop
-	raisesub
 	endmove
 
 Substitute:

@@ -75,14 +75,13 @@
 	dw Trap
 	dw Explosion
 	dw DreamEater
-	dw Whirlwind
+	dw Roar
 	dw Conversion
 	dw PayDay
 	dw TriAttack
 	dw SuperFang
 	dw Transform
 	dw SkyAttack
-	dw Twineedle
 	dw Substitute
 	dw HyperBeam
 	dw Rage

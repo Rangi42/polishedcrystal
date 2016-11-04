@@ -214,7 +214,7 @@ ButterfreeEvosAttacks:
 	db 12, SLEEP_POWDER
 	db 16, GUST
 	db 18, SUPERSONIC
-	db 22, WHIRLWIND
+	db 22, MORNING_SUN ; Whirlwind → new move
 	db 24, PSYBEAM
 	db 28, HYPNOSIS ; Silver Wind → new move
 	db 30, AGILITY ; Tailwind → new move
@@ -247,11 +247,11 @@ BeedrillEvosAttacks:
 	db 1, STRING_SHOT ; new move
 	db 10, FURY_ATTACK
 	db 13, FOCUS_ENERGY
-	db 16, TWINEEDLE
+	db 16, PIN_MISSILE ; Twineedle → Pin Missile
 	db 19, RAGE
 	db 22, PURSUIT
 	db 25, SPIKES ; Toxic Spikes → similar move
-	db 28, PIN_MISSILE
+	db 28, U_TURN ; Pin Missile → new move
 	db 31, AGILITY
 	db 34, FEINT_ATTACK ; Assurance → similar move
 	db 37, POISON_JAB
@@ -266,7 +266,7 @@ PidgeyEvosAttacks:
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 13, QUICK_ATTACK
-	db 17, WHIRLWIND
+	db 17, RAGE ; Whirlwind → RBY TM move
 	db 21, TWISTER
 	db 25, SWIFT ; Feather Dance → TM move
 	db 29, AGILITY
@@ -286,7 +286,7 @@ PidgeottoEvosAttacks:
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 13, QUICK_ATTACK
-	db 17, WHIRLWIND
+	db 17, RAGE ; Whirlwind → RBY TM move
 	db 22, TWISTER
 	db 27, SWIFT ; Feather Dance → TM move
 	db 32, AGILITY
@@ -306,7 +306,7 @@ PidgeotEvosAttacks:
 	db 5, SAND_ATTACK
 	db 9, GUST
 	db 13, QUICK_ATTACK
-	db 17, WHIRLWIND
+	db 17, RAGE ; Whirlwind → RBY TM move
 	db 22, TWISTER
 	db 27, SWIFT ; Feather Dance → TM move
 	db 32, AGILITY
@@ -329,7 +329,7 @@ RattataEvosAttacks:
 	db 10, BITE
 	db 13, PURSUIT
 	db 16, HYPER_FANG
-	db 19, SCREECH ; Sucker Punch → egg move
+	db 19, SUCKER_PUNCH
 	db 22, CRUNCH
 	db 25, FEINT_ATTACK ; Assurance → similar move
 	db 28, SUPER_FANG
@@ -347,7 +347,7 @@ RaticateEvosAttacks:
 	db 10, BITE
 	db 13, PURSUIT
 	db 16, HYPER_FANG
-	db 19, SCREECH ; Sucker Punch → egg move
+	db 19, SUCKER_PUNCH
 	db 20, SCARY_FACE
 	db 24, CRUNCH
 	db 29, FEINT_ATTACK ; Assurance → similar move
@@ -889,7 +889,7 @@ DiglettEvosAttacks:
 	db 12, MUD_SLAP
 	db 15, MAGNITUDE
 	db 18, HEADBUTT ; Bulldoze → egg move
-	db 23, FEINT_ATTACK ; Sucker Punch → egg move
+	db 23, SUCKER_PUNCH
 	db 26, ANCIENTPOWER ; Mud Bomb → egg move
 	db 29, EARTH_POWER
 	db 34, DIG
@@ -906,7 +906,7 @@ DugtrioEvosAttacks:
 	db 12, MUD_SLAP
 	db 15, MAGNITUDE
 	db 18, HEADBUTT ; Bulldoze → egg move
-	db 23, FEINT_ATTACK ; Sucker Punch → egg move
+	db 23, SUCKER_PUNCH
 	db 26, TRI_ATTACK ; Sand Tomb → Tri Attack
 	db 28, ANCIENTPOWER ; Mud Bomb → egg move
 	db 33, EARTH_POWER
@@ -1686,7 +1686,7 @@ GastlyEvosAttacks:
 	db 12, CURSE
 	db 15, NIGHT_SHADE
 	db 19, CONFUSE_RAY
-	db 22, HAZE ; Sucker Punch → egg move
+	db 22, SUCKER_PUNCH
 	db 26, PAIN_SPLIT ; Payback → HGSS tutor move
 	db 29, SHADOW_BALL
 	db 33, DREAM_EATER
@@ -1706,7 +1706,7 @@ HaunterEvosAttacks:
 	db 12, CURSE
 	db 15, NIGHT_SHADE
 	db 19, CONFUSE_RAY
-	db 22, HAZE ; Sucker Punch → egg move
+	db 22, SUCKER_PUNCH
 	db 25, SHADOW_CLAW ; Shadow Punch → TM move
 	db 28, PAIN_SPLIT ; Payback → HGSS tutor move
 	db 33, SHADOW_BALL
@@ -1726,7 +1726,7 @@ GengarEvosAttacks:
 	db 12, CURSE
 	db 15, NIGHT_SHADE
 	db 19, CONFUSE_RAY
-	db 22, HAZE ; Sucker Punch → egg move
+	db 22, SUCKER_PUNCH
 	db 25, SHADOW_CLAW ; Shadow Punch → TM move
 	db 28, PAIN_SPLIT ; Payback → HGSS tutor move
 	db 33, SHADOW_BALL
@@ -2125,7 +2125,7 @@ KangaskhanEvosAttacks:
 	db 37, CRUNCH
 	db 43, ENDURE
 	db 46, OUTRAGE
-	db 49, FEINT_ATTACK ; Sucker Punch → event move
+	db 49, SUCKER_PUNCH
 	db 50, REVERSAL
 	db 0 ; no more level-up moves
 
@@ -3008,11 +3008,11 @@ SentretEvosAttacks:
 	db 4, DEFENSE_CURL
 	db 7, QUICK_ATTACK
 	db 13, FURY_SWIPES
-	db 16, PURSUIT ; Helping Hand → egg move
+	db 16, DIZZY_PUNCH ; Helping Hand → event move
 	db 19, SUPER_FANG ; Follow Me → HGSS tutor move
 	db 25, SLAM
 	db 28, REST
-	db 31, DIZZY_PUNCH ; Sucker Punch → event move
+	db 31, SUCKER_PUNCH
 	db 36, NASTY_PLOT ; Amnesia → new move
 	db 39, BATON_PASS
 	db 42, SLASH ; Me First → egg move
@@ -3026,11 +3026,11 @@ FurretEvosAttacks:
 	db 4, DEFENSE_CURL
 	db 7, QUICK_ATTACK
 	db 13, FURY_SWIPES
-	db 17, PURSUIT ; Helping Hand → egg move
+	db 17, DIZZY_PUNCH ; Helping Hand → event move
 	db 21, SUPER_FANG ; Follow Me → HGSS tutor move
 	db 28, SLAM
 	db 32, REST
-	db 36, DIZZY_PUNCH ; Sucker Punch → event move
+	db 36, SUCKER_PUNCH
 	db 42, NASTY_PLOT ; Amnesia → new move
 	db 46, BATON_PASS
 	db 50, SLASH ; Me First → egg move
@@ -3124,9 +3124,9 @@ SpinarakEvosAttacks:
 	db 8, GLARE ; Constrict → new move
 	db 12, LEECH_LIFE
 	db 15, NIGHT_SHADE
-	db 19, PSYBEAM ; Shadow Sneak → egg move
+	db 19, GROWTH ; Shadow Sneak → event move
 	db 22, FURY_SWIPES
-	db 26, GROWTH ; Sucker Punch → event move
+	db 26, SUCKER_PUNCH
 	db 29, MEAN_LOOK ; Spider Web → similar move
 	db 33, AGILITY
 	db 36, PIN_MISSILE
@@ -3144,9 +3144,9 @@ AriadosEvosAttacks:
 	db 8, GLARE ; Constrict → new move
 	db 12, LEECH_LIFE
 	db 15, NIGHT_SHADE
-	db 19, PSYBEAM ; Shadow Sneak → egg move
+	db 19, GROWTH ; Shadow Sneak → event move
 	db 23, FURY_SWIPES
-	db 28, GROWTH ; Sucker Punch → event move
+	db 28, SUCKER_PUNCH
 	db 32, MEAN_LOOK ; Spider Web → similar move
 	db 37, AGILITY
 	db 41, PIN_MISSILE
@@ -3447,7 +3447,7 @@ SudowoodoEvosAttacks:
 	db 26, PROTECT ; Block → TM move
 	db 29, ROCK_SLIDE
 	db 33, COUNTER
-	db 36, MACH_PUNCH ; Sucker Punch → new move
+	db 36, SUCKER_PUNCH
 	db 40, DOUBLE_EDGE
 	db 43, STONE_EDGE
 	db 47, SUBMISSION ; Hammer Arm → new move
@@ -3523,9 +3523,10 @@ YanmaEvosAttacks:
 	db 38, HYPNOSIS
 	db 43, ANCIENTPOWER ; Wing Attack → AncientPower
 	db 46, SCREECH
-	db 49, DREAM_EATER ; U-Turn → event move
+	db 49, U_TURN
 	db 54, AIR_SLASH
 	db 57, BUG_BUZZ
+	db 62, DREAM_EATER ; event move
 	db 0 ; no more level-up moves
 
 YanmegaEvosAttacks:
@@ -3542,8 +3543,9 @@ YanmegaEvosAttacks:
 	db 33, WING_ATTACK ; AncientPower → Wing Attack
 	db 38, SLASH ; Feint → Slash
 	db 43, ANCIENTPOWER ; Slash → AncientPower
+	db 43, DRAGON_PULSE ; TM move
 	db 46, SCREECH
-	db 49, DRAGON_PULSE ; U-Turn → TM move
+	db 49, U_TURN
 	db 54, AIR_SLASH
 	db 57, BUG_BUZZ
 	db 62, FLY ; new move
@@ -3666,15 +3668,15 @@ MurkrowEvosAttacks:
 	db 35, FEINT_ATTACK
 	db 41, MEAN_LOOK
 	db 45, PERISH_SONG ; Foul Play → egg move
-	db 50, WHIRLWIND ; Tailwind → egg move
-	db 55, DRILL_PECK ; Sucker Punch → egg move
+	db 50, DRILL_PECK ; Tailwind → egg move
+	db 55, SUCKER_PUNCH
 	db 61, TWISTER ; Torment → HGSS tutor move
 	db 65, SKY_ATTACK ; Quash → egg move
 	db 0 ; no more level-up moves
 
 HonchkrowEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, DRILL_PECK ; Sucker Punch → egg move
+	db 1, SUCKER_PUNCH
 	db 1, ASTONISH
 	db 1, PURSUIT
 	db 1, HAZE
@@ -3852,10 +3854,10 @@ GligarEvosAttacks:
 	db 19, FEINT_ATTACK
 	db 22, AGILITY ; Acrobatics → egg move
 	db 27, SLASH
-	db 30, METAL_CLAW ; U-Turn → egg move
+	db 30, U_TURN
 	db 35, SCREECH
 	db 40, X_SCISSOR
-	db 45, BATON_PASS ; Sky Uppercut → egg move
+	db 45, METAL_CLAW ; Sky Uppercut → egg move
 	db 50, SWORDS_DANCE
 	db 55, NIGHT_SLASH ; Guillotine → egg move
 	db 0 ; no more level-up moves
@@ -3871,10 +3873,10 @@ GliscorEvosAttacks:
 	db 19, FEINT_ATTACK
 	db 22, AGILITY ; Acrobatics → egg move
 	db 27, SLASH ; Night Slash → Gligar move
-	db 30, METAL_CLAW ; U-Turn → egg move
+	db 30, U_TURN
 	db 35, SCREECH
 	db 40, X_SCISSOR
-	db 45, BATON_PASS ; Sky Uppercut → egg move
+	db 45, METAL_CLAW ; Sky Uppercut → egg move
 	db 50, SWORDS_DANCE
 	db 55, NIGHT_SLASH ; Guillotine → Night Slash
 	db 0 ; no more level-up moves
@@ -4674,7 +4676,7 @@ TyranitarEvosAttacks:
 
 LugiaEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, WHIRLWIND
+	db 1, ROAR ; Whirlwind → similar move
 	db 8, GUST
 	db 15, TWISTER ; Dragon Rush → HGSS tutor move
 	db 22, EXTRASENSORY
@@ -4693,7 +4695,7 @@ LugiaEvosAttacks:
 
 HoOhEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, WHIRLWIND
+	db 1, ROAR ; Whirlwind → similar move
 	db 8, GUST
 	db 15, TWISTER ; Brave Bird → HGSS tutor move
 	db 22, EXTRASENSORY

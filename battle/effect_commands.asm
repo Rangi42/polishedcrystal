@@ -1600,7 +1600,7 @@ BattleCommand_CheckHit: ; 34d32
 	call GetBattleVar
 	cp EFFECT_ALWAYS_HIT
 	ret z
-	cp EFFECT_WHIRLWIND
+	cp EFFECT_ROAR
 	ret z
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -1855,8 +1855,6 @@ BattleCommand_CheckHit: ; 34d32
 
 	cp GUST
 	ret z
-	cp WHIRLWIND
-	ret z
 	cp THUNDER
 	ret z
 	cp TWISTER
@@ -2106,8 +2104,6 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
-	cp EFFECT_TWINEEDLE
-	jr z, .twineedle
 	cp EFFECT_TRIPLE_KICK
 	jr z, .triplekick
 	xor a
@@ -2135,7 +2131,6 @@ BattleCommand_HitTargetNoSub: ; 34f60
 .multihit
 .conversion
 .doublehit
-.twineedle
 	ld a, [wKickCounter]
 	and 1
 	xor 1
@@ -2253,8 +2248,6 @@ BattleCommand_FailureText: ; 35023
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
-	jr z, .multihit
-	cp EFFECT_TWINEEDLE
 	jr z, .multihit
 	jp EndMoveEffect
 
@@ -2595,8 +2588,6 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	cp EFFECT_MULTI_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_DOUBLE_HIT
-	jr z, .multiple_hit_raise_sub
-	cp EFFECT_TWINEEDLE
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_TRIPLE_KICK
 	jr z, .multiple_hit_raise_sub
@@ -4840,8 +4831,6 @@ SelfInflictDamageToSubstitute: ; 35de0
 	jr z, .ok
 	cp EFFECT_DOUBLE_HIT
 	jr z, .ok
-	cp EFFECT_TWINEEDLE
-	jr z, .ok
 	cp EFFECT_TRIPLE_KICK
 	jr z, .ok
 	cp EFFECT_BEAT_UP
@@ -6972,8 +6961,6 @@ BattleCommand_EndLoop: ; 369b6
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVarAddr
 	ld a, [hl]
-	cp EFFECT_TWINEEDLE
-	jr z, .twineedle
 	cp EFFECT_DOUBLE_HIT
 	ld a, 1
 	jr z, .double_hit
@@ -7039,10 +7026,6 @@ BattleCommand_EndLoop: ; 369b6
 	inc a
 	ld [bc], a
 	jr .loop_back_to_critical
-
-.twineedle
-	ld a, 1
-	jr .double_hit
 
 .in_loop
 	ld a, [de]

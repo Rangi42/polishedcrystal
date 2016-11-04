@@ -188,7 +188,7 @@ BattleTurn: ; 3c12f
 	ld a, [BattleEnded]
 	and a
 	jr nz, .quit
-	ld a, [wForcedSwitch] ; roared/whirlwinded/teleported
+	ld a, [wForcedSwitch] ; roared/teleported
 	and a
 	jr nz, .quit
 .skip_iteration
@@ -861,6 +861,7 @@ MoveEffectPriorities: ; 3c5df
 	db PROTECT,      9
 	db ENDURE,       8
 	db EXTREMESPEED, 7
+	db SUCKER_PUNCH, 6
 	db BULLET_PUNCH, 6
 	db ICE_SHARD,    6
 	db MACH_PUNCH,   6
@@ -870,7 +871,6 @@ MoveEffectPriorities: ; 3c5df
 	db COUNTER,      1
 	db MIRROR_COAT,  1
 	db ROAR,         0
-	db WHIRLWIND,    0
 	db -1
 ; 3c5ec
 

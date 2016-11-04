@@ -18,7 +18,7 @@
 	const CUT          ; $0f
 	const GUST         ; $10
 	const WING_ATTACK  ; $11
-	const WHIRLWIND    ; $12
+	const SUCKER_PUNCH ; $12
 	const FLY          ; $13
 	const DAZZLINGLEAM ; $14
 	const SLAM         ; $15
@@ -41,7 +41,7 @@
 	const DOUBLE_EDGE  ; $26
 	const HAIL         ; $27
 	const POISON_STING ; $28
-	const TWINEEDLE    ; $29
+	const U_TURN       ; $29
 	const PIN_MISSILE  ; $2a
 	const LEER         ; $2b
 	const BITE         ; $2c

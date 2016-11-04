@@ -229,6 +229,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Paralysis halves (not quarters) Speed
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
+* Add: Replace Twineedle with U-turn.
+* Add: Replace Whirlwind with Sucker Punch.
 * Add: NPC trainers can have nicknamed Pokémon.
 * Add: Accuracy and evasion work like in Gen VI.
 * Add: Substitute blocks sound-based moves.

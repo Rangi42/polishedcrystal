@@ -16,7 +16,7 @@
 	dw CutDescription
 	dw GustDescription
 	dw WingAttackDescription
-	dw WhirlwindDescription
+	dw SuckerPunchDescription
 	dw FlyDescription
 	dw DazzlingleamDescription
 	dw SlamDescription
@@ -39,7 +39,7 @@
 	dw DoubleEdgeDescription
 	dw HailDescription
 	dw PoisonStingDescription
-	dw TwineedleDescription
+	dw UTurnDescription
 	dw PinMissileDescription
 	dw LeerDescription
 	dw BiteDescription
@@ -603,9 +603,9 @@ WingAttackDescription:
 	db   "Strikes the foe"
 	next "with wings.@"
 
-WhirlwindDescription:
-	db   "Blows away the foe"
-	next "& ends battle.@"
+SuckerPunchDescription:
+	db   "Attacks before the"
+	next "foe does.@"
 
 DazzlingleamDescription:
 	db   "Dazzles with a"
@@ -642,9 +642,9 @@ PetalDanceDescription:
 	db   "Works 2-3 turns"
 	next "and confuses user.@"
 
-TwineedleDescription:
-	db   "Jabs the foe twice"
-	next "using stingers.@"
+UTurnDescription:
+	db   "Switches out after"
+	next "making its attack.@"
 
 PinMissileDescription:
 	db   "Fires pins that"
