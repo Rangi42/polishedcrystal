@@ -457,6 +457,9 @@ GetBallAnimPal: ; cd249 (33:5249)
 	db PARK_BALL,    3 ; yellow
 	db REPEAT_BALL,  3 ; yellow
 	db TIMER_BALL,   7 ; brown
+	db NEST_BALL,    7 ; brown
+	db NET_BALL,     6 ; blue
+	db LUXURY_BALL,  2 ; gray
 	db QUICK_BALL,   6 ; blue
 	db DUSK_BALL,    5 ; green
 	db PREMIER_BALL, 2 ; gray

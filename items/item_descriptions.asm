@@ -346,8 +346,8 @@ TimerBallDesc:
 	next "in a battle.@"
 
 NestBallDesc:
-	db   "A Ball for weak-"
-	next "er #mon.@"
+	db   "A Ball for weaker"
+	next "#mon.@"
 
 NetBallDesc:
 	db   "A Ball for Water"
