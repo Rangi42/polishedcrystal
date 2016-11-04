@@ -210,11 +210,23 @@ _CGB_StatsScreenHPPals: ; 8edb
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, Palettes_a8ca
 	call LoadPalette_White_Col1_Col2_Black
+
 	ld hl, Palette8f52
 	ld de, UnknBGPals + 3 palettes
 	ld bc, 4 palettes
 	ld a, $5
 	call FarCopyWRAM
+
+	ld hl, CaughtBallPals
+	ld bc, $4
+	ld a, [TempMonCaughtBall]
+	and CAUGHTBALL_MASK
+	call AddNTimes
+	ld de, UnknBGPals + 7 palettes + $2
+	ld bc, $4
+	ld a, $5
+	call FarCopyWRAM
+
 	call WipeAttrMap
 
 	hlcoord 0, 0, AttrMap
@@ -247,6 +259,11 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld a, $6
 	call FillBoxCGB
 
+	hlcoord 8, 6, AttrMap
+	lb bc, 1, 1
+	ld a, $7
+	call FillBoxCGB
+
 	call ApplyAttrMap
 	call ApplyPals
 	ld a, $1
@@ -254,37 +271,102 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ret
 ; 8f52
 
+
 Palette8f52: ; 8f52
+; pink
 	RGB 31, 31, 31
 	RGB 31, 19, 31
 	RGB 31, 15, 31
 	RGB 00, 00, 00
-
+; green
 	RGB 31, 31, 31
 	RGB 21, 31, 14
 	RGB 17, 31, 00
 	RGB 00, 00, 00
-
+; blue
 	RGB 31, 31, 31
 	RGB 17, 31, 31
 	RGB 17, 31, 31
 	RGB 00, 00, 00
-
+; orange
 	RGB 31, 31, 31
 	RGB 30, 24, 16
 	RGB 30, 22, 12
 	RGB 00, 00, 00
 ; 8f6a
 
+
 StatsScreenPals: ; 8f6a
+; pink
 	RGB 31, 19, 31
-
+; green
 	RGB 21, 31, 14
-
+; blue
 	RGB 17, 31, 31
-
+; orange
 	RGB 30, 24, 16
 ; 8f70
+
+
+CaughtBallPals:
+; NO ITEM
+	RGB 20, 20, 20
+	RGB 10, 10, 10
+; POKE BALL
+	RGB 30, 10, 06
+	RGB 30, 10, 06
+; GREAT BALL
+	RGB 00, 17, 25
+	RGB 30, 10, 06
+; ULTRA BALL
+	RGB 07, 07, 08
+	RGB 31, 26, 07
+; MASTER BALL
+	RGB 12, 08, 18
+	RGB 28, 02, 16
+; LEVEL BALL
+	RGB 31, 27, 04
+	RGB 30, 10, 06
+; LURE BALL
+	RGB 00, 19, 21
+	RGB 30, 10, 06
+; MOON BALL
+	RGB 00, 21, 23
+	RGB 30, 24, 08
+; FRIEND BALL
+	RGB 07, 20, 00
+	RGB 30, 10, 06
+; FAST BALL
+	RGB 30, 10, 06
+	RGB 31, 25, 08
+; HEAVY BALL
+	RGB 07, 07, 08
+	RGB 02, 13, 20
+; LOVE BALL
+	RGB 25, 11, 18
+	RGB 31, 23, 26
+; PARK BALL
+	RGB 31, 15, 05
+	RGB 31, 27, 04
+; REPEAT BALL
+	RGB 30, 10, 06
+	RGB 31, 30, 08
+; TIMER BALL
+	RGB 30, 10, 06
+	RGB 30, 10, 06
+; QUICK BALL
+	RGB 00, 16, 24
+	RGB 30, 29, 07
+; DUSK BALL
+	RGB 00, 20, 09
+	RGB 25, 00, 01
+; PREMIER BALL
+	RGB 30, 10, 06
+	RGB 30, 10, 06
+; CHERISH BALL
+	RGB 31, 06, 04
+	RGB 31, 06, 04
+
 
 _CGB_Pokedex: ; 8f70
 	ld de, UnknBGPals
