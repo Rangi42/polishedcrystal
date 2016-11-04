@@ -365,7 +365,6 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call StatsScreen_PlaceHorizontalDivider
 	call StatsScreen_PlacePageSwitchArrows
 	call StatsScreen_PlaceShinyIcon
-	call StatsScreen_PlaceCaughtBall
 	ret
 
 .PlaceHPBar: ; 4df45 (13:5f45)
@@ -430,29 +429,6 @@ StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	ld [hl], "<SHINY>"
 	ret
 
-; TODO: index GFX_CaughtBalls with TempMonCaughtBall,
-; load that tile to VRAM, and display it
-; The s/t/u/v ball borders are from gfx/misc/stats.2bpp,
-; in the other VRAM section
-StatsScreen_PlaceCaughtBall:
-	hlcoord 8, 5
-	ld [hl], "s" ; top
-	hlcoord 7, 6
-	ld [hl], "t" ; left
-	hlcoord 9, 6
-	ld [hl], "u" ; right
-	hlcoord 8, 7
-	ld [hl], "v" ; bottom
-	hlcoord 8, 6
-	ld a, [TempMonCaughtBall]
-	and CAUGHTBALL_MASK
-	add "A"
-	ld [hl], a
-	ret
-
-GFX_CaughtBalls:
-INCBIN "gfx/misc/balls.2bpp"
-
 StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld a, [BaseDexNo] ; wd236 (aliases: BaseDexNo)
 	ld [wd265], a
@@ -460,6 +436,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	xor a
 	ld [hBGMapMode], a
 	call .ClearBox
+	call .LoadPokeBall
 	call .PageTilemap
 	call .LoadPals
 	ld hl, wcf64
@@ -480,6 +457,37 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 0, 8
 	lb bc, 10, 20
 	call ClearBox
+	ret
+
+; There's probably a better/more idiomatic way to do this...
+; TODO: get correct palette from a table and apply it
+.LoadPokeBall:
+	; draw border
+	hlcoord 8, 5
+	ld [hl], $32 ; top
+	hlcoord 7, 6
+	ld [hl], $33 ; left
+	hlcoord 9, 6
+	ld [hl], $34 ; right
+	hlcoord 8, 7
+	ld [hl], $35 ; bottom
+	; get index for center graphics
+	; CaughtBallsGFX + [TempMonCaughtBall] tiles
+	ld hl, CaughtBallsGFX
+	ld bc, 1 tiles
+	ld a, [TempMonCaughtBall]
+	and CAUGHTBALL_MASK
+	call AddNTimes
+	; load center graphics
+	ld d, h
+	ld e, l
+	ld hl, VTiles2 tile $3f
+	lb bc, BANK(CaughtBallsGFX), 1
+	call Request2bpp
+	; draw center
+	hlcoord 8, 6
+	ld a, $3f ; center
+	ld [hl], a
 	ret
 
 .LoadPals: ; 4dfed (13:5fed)
@@ -1461,3 +1469,8 @@ CheckFaintedFrzSlp: ; 4e53f
 	scf
 	ret
 ; 4e554
+
+CaughtBallsGFX:
+INCBIN "gfx/misc/balls.2bpp"
+
+
