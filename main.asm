@@ -1645,6 +1645,16 @@ PlayBattleMusic: ; 2ee6c
 	jp .done
 
 .trainermusic
+	ld de, MUSIC_FRONTIER_BRAIN_BATTLE_RSE
+	cp TOWERTYCOON
+	jp z, .done
+
+	ld de, MUSIC_TRAINER_BATTLE_BW
+	ld a, [InBattleTowerBattle]
+	bit 0, a
+	jp nz, .done
+	ld a, [OtherTrainerClass]
+
 	ld de, MUSIC_RIVAL_BATTLE_XY
 	cp LYRA1
 	jp z, .done
@@ -1670,12 +1680,8 @@ PlayBattleMusic: ; 2ee6c
 	jp z, .done
 
 	; TODO: Use D/P/Pt Champion music for Cynthia, if available
-	ld de, MUSIC_CHAMPION_BATTLE
+	ld de, MUSIC_CHAMPION_BATTLE_RSE
 	cp CYNTHIA
-	jp z, .done
-
-	ld de, MUSIC_FRONTIER_BRAIN_BATTLE_RSE
-	cp TOWERTYCOON
 	jp z, .done
 
 	ld de, MUSIC_ZINNIA_BATTLE_ORAS

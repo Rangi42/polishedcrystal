@@ -184,14 +184,19 @@ SECTION "Extra Songs 4", ROMX
 
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 INCLUDE "audio/music/bw/route12.asm"
+INCLUDE "audio/music/bw/trainerbattle.asm"
 INCLUDE "audio/music/bw/wcsbattle.asm"
 INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 INCLUDE "audio/music/b2w2/whitetreehollow.asm"
 INCLUDE "audio/music/b2w2/championbattle.asm"
-INCLUDE "audio/music/xy/gymbattle.asm"
 INCLUDE "audio/music/oras/wallybattle.asm"
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
+
+
+SECTION "Extra Songs 5", ROMX
+
+INCLUDE "audio/music/xy/gymbattle.asm"
 
 
 
