@@ -459,8 +459,6 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call ClearBox
 	ret
 
-; There's probably a better/more idiomatic way to do this...
-; TODO: get correct palette from a table and apply it
 .LoadPokeBall:
 	; draw border
 	hlcoord 8, 5
