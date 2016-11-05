@@ -158,7 +158,6 @@ SaffronGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext SABRINA, 1, $1
-	writebyte 255
 	jumpstd gymstatue2
 
 UnknownText_0x189cdf:

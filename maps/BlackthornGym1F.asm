@@ -135,8 +135,11 @@ BlackthornGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext CLAIR, 1, $1
-	writebyte 16
+	checkcode VAR_BADGES
+	if_greater_than 15, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 ClairIntroText:
 	text "I am Clair."

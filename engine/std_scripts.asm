@@ -46,6 +46,7 @@ StdScripts::
 	dba RematchGiftFScript
 	dba GymStatue1Script
 	dba GymStatue2Script
+	dba GymStatue3Script
 	dba ReceiveItemScript
 	dba ReceiveTogepiEggScript
 	dba PCScript
@@ -1807,14 +1808,16 @@ GymStatue2Script:
 	opentext
 	farwritetext GymStatue_CityGymText
 	buttonsound
-	checkbadgecount
-	iftrue .LyraToo
 	farwritetext GymStatue_WinningTrainersText
 	waitbutton
 	closetext
 	end
 
-.LyraToo
+GymStatue3Script:
+	mapnametotext $0
+	opentext
+	farwritetext GymStatue_CityGymText
+	buttonsound
 	farwritetext GymStatue_TwoWinningTrainersText
 	waitbutton
 	closetext

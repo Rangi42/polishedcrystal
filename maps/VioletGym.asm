@@ -135,8 +135,11 @@ VioletGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext FALKNER, 1, $1
-	writebyte 9
+	checkcode VAR_BADGES
+	if_greater_than 8, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 VioletGymMovementData_GymGuyStepDown:
 	step_down

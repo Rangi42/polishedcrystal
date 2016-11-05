@@ -146,8 +146,11 @@ AzaleaGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext BUGSY, 1, $1
-	writebyte 10
+	checkcode VAR_BADGES
+	if_greater_than 9, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 BugsyText_INeverLose:
 	text "I'm Bugsy!"

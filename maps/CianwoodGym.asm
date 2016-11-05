@@ -138,8 +138,11 @@ CianwoodGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext CHUCK, 1, $1
-	writebyte 13
+	checkcode VAR_BADGES
+	if_greater_than 12, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 CianwoodGymMovement_ChuckChucksBoulder:
 	set_sliding

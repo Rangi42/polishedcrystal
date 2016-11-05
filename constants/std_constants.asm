@@ -46,6 +46,7 @@
 	enum rematchgiftf
 	enum gymstatue1
 	enum gymstatue2
+	enum gymstatue3
 	enum receiveitem
 	enum receivetogepiegg
 	enum pcscript

@@ -184,8 +184,11 @@ GoldenrodGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext WHITNEY, 1, $1
-	writebyte 11
+	checkcode VAR_BADGES
+	if_greater_than 10, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 JoWalksUpMovement:
 	step_left

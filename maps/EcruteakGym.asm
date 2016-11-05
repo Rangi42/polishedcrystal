@@ -163,8 +163,11 @@ EcruteakGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext MORTY, 1, $1
-	writebyte 12
+	checkcode VAR_BADGES
+	if_greater_than 11, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 MovementData_0x99e5d:
 	step_up

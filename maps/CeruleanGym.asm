@@ -199,7 +199,6 @@ CeruleanGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext MISTY, 1, $1
-	writebyte 255
 	jumpstd gymstatue2
 
 MovementData_0x1884e3:

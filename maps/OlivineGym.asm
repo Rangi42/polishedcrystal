@@ -132,8 +132,11 @@ OlivineGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext JASMINE, 1, $1
-	writebyte 14
+	checkcode VAR_BADGES
+	if_greater_than 13, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 UnknownText_0x9c1b9:
 	text "…Thank you for"

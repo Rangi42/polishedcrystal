@@ -144,7 +144,6 @@ ViridianGymStatue:
 
 .Beaten:
 	trainertotext BLUE, 1, $1
-	writebyte 255
 	jumpstd gymstatue2
 
 LeaderBlueBeforeText:

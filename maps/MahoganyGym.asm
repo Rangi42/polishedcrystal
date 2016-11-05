@@ -145,8 +145,11 @@ MahoganyGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext PRYCE, 1, $1
-	writebyte 15
+	checkcode VAR_BADGES
+	if_greater_than 14, .LyraToo
 	jumpstd gymstatue2
+.LyraToo
+	jumpstd gymstatue3
 
 UnknownText_0x199b8d:
 	text "#mon have many"

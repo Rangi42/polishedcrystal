@@ -251,7 +251,6 @@ ScriptCommandTable: ; 96cb1
 	dw Script_tmhmtotext                 ; b2
 	dw Script_checkdarkness              ; b3
 	dw Script_checkunits                 ; b4
-	dw Script_checkbadgecount            ; b5
 ; 96e05
 
 StartScript: ; 96e05
@@ -3419,21 +3418,5 @@ Script_checkunits:
 
 	ld a, [Options2]
 	bit POKEDEX_UNITS, a
-	ld [ScriptVar], a
-	ret
-
-Script_checkbadgecount:
-; script command 0xb5
-
-	ld a, [ScriptVar]
-	ld b, a
-	ld a, VAR_BADGES
-	call GetVarAction
-	ld a, [de]
-	cp b
-	ld a, FALSE
-	jr c, .no
-	ld a, TRUE
-.no
 	ld [ScriptVar], a
 	ret
