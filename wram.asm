@@ -2872,8 +2872,8 @@ wRoamMons_CurrentMapNumber:: ds 1
 wRoamMons_CurrentMapGroup:: ds 1
 wRoamMons_LastMapNumber:: ds 1
 wRoamMons_LastMapGroup:: ds 1
-wBestMagikarpLengthFeet:: ds 1
-wBestMagikarpLengthInches:: ds 1
+wBestMagikarpLengthMmHi:: ds 1
+wBestMagikarpLengthMmLo:: ds 1
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
 ; dff5
 wPokemonDataEnd::

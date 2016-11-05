@@ -256,7 +256,7 @@ SetDefaultBoxNames: ; 5ca6
 ; 5cd3
 
 InitializeMagikarpHouse: ; 5cd3
-	ld hl, wBestMagikarpLengthFeet
+	ld hl, wBestMagikarpLengthMmHi
 	ld a, $3
 	ld [hli], a
 	ld a, $6

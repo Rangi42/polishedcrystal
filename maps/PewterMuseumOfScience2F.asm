@@ -25,7 +25,13 @@ Museum2FPokefanMScript:
 	opentext
 	checkevent EVENT_LISTENED_TO_SEISMIC_TOSS_INTRO
 	iftrue Museum2FTutorSeismicTossScript
-	writetext Museum2FPokefanMText
+	checkunits
+	iftrue .metric
+	writetext Museum2FPokefanMImperialText
+	jump .ok
+.metric
+	writetext Museum2FPokefanMMetricText
+.ok
 	waitbutton
 	setevent EVENT_LISTENED_TO_SEISMIC_TOSS_INTRO
 Museum2FTutorSeismicTossScript:
@@ -109,13 +115,28 @@ Museum2FLassText:
 	cont "of them."
 	done
 
-Museum2FPokefanMText:
+Museum2FPokefanMImperialText:
 	text "This space shuttle"
 	line "used to fly 160"
 
 	para "miles above the"
 	line "earth, defying"
 	cont "gravity!"
+
+	para "You know what else"
+	line "can defy gravity?"
+
+	para "Seismic Toss,"
+	line "of course!"
+	done
+
+Museum2FPokefanMMetricText:
+	text "This space shuttle"
+	line "used to fly 250"
+
+	para "kilometers above"
+	line "the earth, defy-"
+	cont "ing gravity!"
 
 	para "You know what else"
 	line "can defy gravity?"

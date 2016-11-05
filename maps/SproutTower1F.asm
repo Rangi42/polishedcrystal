@@ -20,7 +20,11 @@ SageScript_0x184501:
 	jumptextfaceplayer UnknownText_0x18460a
 
 GrannyScript_0x184504:
-	jumptextfaceplayer UnknownText_0x184649
+	checkunits
+	iftrue .metric
+	jumptextfaceplayer UnknownText_0x184649_Imperial
+.metric
+	jumptextfaceplayer UnknownText_0x184649_Metric
 
 TeacherScript_0x184507:
 	jumptextfaceplayer UnknownText_0x18469d
@@ -78,9 +82,18 @@ UnknownText_0x18460a:
 	line "#mon training."
 	done
 
-UnknownText_0x184649:
+UnknownText_0x184649_Imperial:
 	text "A Bellsprout over"
 	line "100 feet tall…"
+
+	para "People say that it"
+	line "became the center"
+	cont "pillar here."
+	done
+
+UnknownText_0x184649_Metric:
+	text "A Bellsprout over"
+	line "30 meters tall…"
 
 	para "People say that it"
 	line "became the center"

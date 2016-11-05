@@ -742,6 +742,20 @@ PokedexShow2:
 rept 4
 	inc hl
 endr
+;	call GetFarByte
+;	cp $2f
+;	jr nz, .load
+;	inc hl
+;	ld a, [Options2]
+;	bit POKEDEX_UNITS, a
+;	jr z, .imperial
+;	ld a, d
+;	call GetFarHalfword
+;	jr .load
+;.imperial
+;	inc hl
+;	inc hl
+;.load
 	ld a, l
 	ld [wPokedexShowPointerAddr], a
 	ld a, h

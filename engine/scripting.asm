@@ -250,6 +250,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_tmhmnotify                 ; b1
 	dw Script_tmhmtotext                 ; b2
 	dw Script_checkdarkness              ; b3
+	dw Script_checkunits                 ; b4
 ; 96e05
 
 StartScript: ; 96e05
@@ -3409,5 +3410,13 @@ Script_checkdarkness:
 	pop hl
 	ret nz
 	ld a, TRUE
+	ld [ScriptVar], a
+	ret
+
+Script_checkunits:
+; script command 0xb4
+
+	ld a, [Options2]
+	bit POKEDEX_UNITS, a
 	ld [ScriptVar], a
 	ret

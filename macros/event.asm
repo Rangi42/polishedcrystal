@@ -1125,3 +1125,8 @@ tmhmtotext: macro
 checkdarkness: macro
 	db checkdarkness_command
 	endm
+
+	enum checkunits_command
+checkunits: macro
+	db checkunits_command
+	endm

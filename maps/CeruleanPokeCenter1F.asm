@@ -17,7 +17,11 @@ SuperNerdScript_0x188212:
 	jumptextfaceplayer UnknownText_0x188221
 
 GymGuyScript_0x18821e:
-	jumptextfaceplayer UnknownText_0x1882ff
+	checkunits
+	iftrue .metric
+	jumptextfaceplayer UnknownText_0x1882ff_Imperial
+.metric
+	jumptextfaceplayer UnknownText_0x1882ff_Metric
 
 UnknownText_0x188221:
 	text "For battles, I'd"
@@ -31,11 +35,25 @@ UnknownText_0x188221:
 	cont "caught #mon."
 	done
 
-UnknownText_0x1882ff:
+UnknownText_0x1882ff_Imperial:
 	text "The Magnet Train"
 	line "travels at over"
 
 	para "340 mph. It goes"
+	line "between Kanto and"
+
+	para "Johto in almost no"
+	line "time at all."
+
+	para "It really makes"
+	line "Johto accessible."
+	done
+
+UnknownText_0x1882ff_Metric:
+	text "The Magnet Train"
+	line "travels at over"
+
+	para "550 kph. It goes"
 	line "between Kanto and"
 
 	para "Johto in almost no"

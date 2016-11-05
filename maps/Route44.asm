@@ -175,7 +175,13 @@ FisherWilton1Script:
 	iftrue UnknownScript_0x19d8eb
 	checkevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d957
-	writetext UnknownText_0x19daa8
+	checkunits
+	iftrue .metric
+	writetext UnknownText_0x19daa8_Imperial
+	jump .ok
+.metric
+	writetext UnknownText_0x19daa8_Metric
+.ok
 	buttonsound
 	setevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d8df
@@ -334,13 +340,23 @@ FisherWilton1BeatenText:
 	line "it."
 	done
 
-UnknownText_0x19daa8:
+UnknownText_0x19daa8_Imperial:
 	text "That Poliwag that"
 	line "got away…"
 	cont "It was huge."
 
 	para "I swear it must've"
 	line "been 16 feet long!"
+	done
+
+UnknownText_0x19daa8_Metric:
+	text "That Poliwag that"
+	line "got away…"
+	cont "It was huge."
+
+	para "I swear it must've"
+	line "been five meters"
+	cont "long!"
 	done
 
 FisherEdgarSeenText:
