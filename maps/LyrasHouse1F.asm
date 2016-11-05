@@ -12,14 +12,22 @@ LyrasDadScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LYRA_IN_HER_ROOM
-	iftrue .LyraOutside
-	writetext LyrasDadText1
+	iffalse .LyraInside
+	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
+	iftrue .LyraTraining
+	writetext LyrasDadHelpingText
 	waitbutton
 	closetext
 	end
 
-.LyraOutside
-	writetext LyrasDadText2
+.LyraInside
+	writetext LyrasDadInsideText
+	waitbutton
+	closetext
+	end
+
+.LyraTraining
+	writetext LyrasDadTrainingText
 	waitbutton
 	closetext
 	end
@@ -36,7 +44,7 @@ LyrasSinkScript:
 LyrasFridgeScript:
 	jumptext LyrasFridgeText
 
-LyrasDadText1:
+LyrasDadInsideText:
 	text "Hi, <PLAYER>!"
 	line "Lyra is upstairs."
 
@@ -45,13 +53,22 @@ LyrasDadText1:
 	cont "as usual."
 	done
 
-LyrasDadText2:
+LyrasDadHelpingText:
 	text "Hi, <PLAYER>!"
 	line "Lyra isn't here."
 
 	para "She's been busy"
 	line "helping the prof-"
 	cont "essor."
+	done
+
+LyrasDadTrainingText:
+	text "Hi, <PLAYER>!"
+	line "Lyra isn't here."
+
+	para "She's collecting"
+	line "Badges all over"
+	cont "Johto!"
 	done
 
 LyrasStoveText:

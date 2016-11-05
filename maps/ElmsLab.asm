@@ -463,10 +463,53 @@ ElmGiveTicketScript:
 	writetext ElmGiveTicketText1
 	buttonsound
 	verbosegiveitem S_S_TICKET
-	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	writetext ElmGiveTicketText2
 	waitbutton
 	closetext
+	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
+	special Special_FadeOutMusic
+	pause 10
+	checkcode VAR_FACING
+	if_equal UP, .Longest
+	if_equal DOWN, .Shortest
+	disappear ELMSLAB_LYRA
+	moveperson ELMSLAB_LYRA, 4, 7
+	appear ELMSLAB_LYRA
+	applymovement ELMSLAB_LYRA, LyraRunsInMovement
+	jump .Continue
+
+.Longest
+	disappear ELMSLAB_LYRA
+	moveperson ELMSLAB_LYRA, 5, 8
+	appear ELMSLAB_LYRA
+	applymovement ELMSLAB_LYRA, LyraRunsInMovement
+	jump .Continue
+
+.Shortest
+	disappear ELMSLAB_LYRA
+	moveperson ELMSLAB_LYRA, 5, 6
+	appear ELMSLAB_LYRA
+	applymovement ELMSLAB_LYRA, LyraRunsInLessMovement
+
+.Continue
+	spriteface ELMSLAB_ELM, DOWN
+	spriteface PLAYER, DOWN
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	opentext
+	writetext LyraAnnouncesGymChallengeText
+	waitbutton
+	closetext
+	applymovement ELMSLAB_LYRA, LyraLeavesMovement
+	disappear ELMSLAB_LYRA
+	pause 10
+	faceplayer
+	playmusic MUSIC_PROF_ELM
+	opentext
+	writetext ElmAfterTicketText
+	waitbutton
+	closetext
+	setevent EVENT_LYRA_IN_HER_ROOM
+	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	end
 
 ElmJumpBackScript1:
@@ -791,6 +834,7 @@ LyraLeavesMovement:
 
 LyraRunsInMovement:
 	step_up
+LyraRunsInLessMovement:
 	step_up
 	step_up
 	step_up
@@ -1416,6 +1460,54 @@ ElmGiveTicketText2:
 	para "After all, you've"
 	line "traveled all over"
 	cont "with your #mon."
+	done
+
+LyraAnnouncesGymChallengeText:
+	text "Lyra: There you"
+	line "are, <PLAYER>!"
+
+	para "I saw your battle"
+	line "with the Champion"
+	cont "on TV."
+
+	para "You were incred-"
+	line "ible!"
+
+	para "It really inspired"
+	line "me, <PLAYER>."
+
+	para "Even if I can't"
+	line "reach that level…"
+	cont "I want to try."
+
+	para "I want to see what"
+	line "I'm capable of."
+
+	para "Prof.Elm, I'm"
+	line "sorry I can't keep"
+	cont "helping out here."
+
+	para "I'm going to"
+	line "challenge all the"
+
+	para "Gyms in Johto and"
+	line "make it to the"
+	cont "#mon League!"
+
+	para "Wish me luck!"
+	line "See you later!"
+	done
+
+ElmAfterTicketText:
+	text "Elm: Well then,"
+	line "<PLAYER>, you both"
+
+	para "have your own"
+	line "journeys now."
+
+	para "I wonder if she'll"
+	line "reach the League"
+	cont "first?"
 
 	para "Give my regards to"
 	line "Prof.Oak in Kanto!"
