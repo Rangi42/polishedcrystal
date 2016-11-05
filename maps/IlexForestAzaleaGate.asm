@@ -19,7 +19,7 @@ GrannyScript_0x62c7d:
 ProfOaksAide1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_QUICK_BALLS_FROM_PROF_OAKS_AIDE
+	checkevent EVENT_GOT_NET_BALLS_FROM_PROF_OAKS_AIDE
 	iftrue .Explain
 	writetext ProfOaksAide1HiText
 	waitbutton
@@ -35,14 +35,14 @@ ProfOaksAide1Script:
 .HereYouGo
 	writetext ProfOaksAide1HereYouGoText
 	waitbutton
-	giveitem QUICK_BALL, 5
+	giveitem NET_BALL, 5
 	waitsfx
 	iffalse .NoRoom
-	writetext ProfOaksAide1QuickBallText
+	writetext ProfOaksAide1NetBallText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_QUICK_BALLS_FROM_PROF_OAKS_AIDE
+	setevent EVENT_GOT_NET_BALLS_FROM_PROF_OAKS_AIDE
 .Explain
 	writetext ProfOaksAide1ExplainText
 	waitbutton
@@ -120,13 +120,13 @@ ProfOaksAide1NoRoomText:
 	cont "room for this."
 	done
 
-ProfOaksAide1QuickBallText:
+ProfOaksAide1NetBallText:
 	text "<PLAYER> received"
-	line "5 Quick Balls."
+	line "5 Net Balls."
 	done
 
 ProfOaksAide1ExplainText:
-	text "Those Quick Balls"
+	text "Those Net Balls"
 	line "are like Apricorn"
 
 	para "Balls, but they"
@@ -134,8 +134,8 @@ ProfOaksAide1ExplainText:
 	cont "Silph in Kanto."
 
 	para "They work best"
-	line "early during a"
-	cont "battle."
+	line "on Water- and"
+	cont "Bug-type #mon."
 
 	para "Use them to com-"
 	line "plete the #dex!"
