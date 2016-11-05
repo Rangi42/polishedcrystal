@@ -823,7 +823,7 @@ Function_UberRestriction:
 	cp HO_OH
 	jr z, .uber
 	cp CELEBI
-	jr c, .next
+	jr z, .uber
 	cp NUM_POKEMON + 1
 	jr nc, .next
 .uber
