@@ -8523,7 +8523,11 @@ BattleIntro: ; 3f4dd
 	ld [wd0d2], a
 	xor a
 	ld [hMapAnims], a
+	ld a, [OtherTrainerClass]
+	cp LYRA2
+	jr z, .skip_music ; assume that the music is already playing
 	farcall PlayBattleMusic
+.skip_music
 	farcall ShowLinkBattleParticipants
 	farcall FindFirstAliveMonAndStartBattle
 	call DisableSpriteUpdates
