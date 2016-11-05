@@ -138,6 +138,7 @@ CianwoodGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext CHUCK, 1, $1
+	writebyte 13
 	jumpstd gymstatue2
 
 CianwoodGymMovement_ChuckChucksBoulder:

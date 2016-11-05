@@ -1130,3 +1130,8 @@ checkdarkness: macro
 checkunits: macro
 	db checkunits_command
 	endm
+
+	enum checkbadgecount_command
+checkbadgecount: macro
+	db checkbadgecount_command
+	endm

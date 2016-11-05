@@ -135,6 +135,7 @@ BlackthornGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext CLAIR, 1, $1
+	writebyte 16
 	jumpstd gymstatue2
 
 ClairIntroText:

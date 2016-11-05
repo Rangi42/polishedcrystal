@@ -93,6 +93,7 @@ PewterGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext BROCK, 1, $1
+	writebyte 255
 	jumpstd gymstatue2
 
 UnknownText_0x1a28d0:

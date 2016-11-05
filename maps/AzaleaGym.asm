@@ -146,6 +146,7 @@ AzaleaGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext BUGSY, 1, $1
+	writebyte 10
 	jumpstd gymstatue2
 
 BugsyText_INeverLose:

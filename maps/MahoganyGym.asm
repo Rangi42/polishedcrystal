@@ -145,6 +145,7 @@ MahoganyGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext PRYCE, 1, $1
+	writebyte 15
 	jumpstd gymstatue2
 
 UnknownText_0x199b8d:

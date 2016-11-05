@@ -282,14 +282,21 @@ GymStatue_CityGymText:
 	text_from_ram StringBuffer3
 	text ""
 	line "#mon Gym"
+
+	para "Leader: @"
+	text_from_ram StringBuffer4
+	text ""
 	done
 
 GymStatue_WinningTrainersText:
-	text "Leader: @"
-	text_from_ram StringBuffer4
-	text ""
-	para "Winning Trainers:"
+	text "Winning Trainers:"
 	line "<PLAYER>"
+	done
+
+GymStatue_TwoWinningTrainersText:
+	text "Winning Trainers:"
+	line "<PLAYER>"
+	cont "Lyra"
 	done
 
 CoinVendor_WelcomeText:

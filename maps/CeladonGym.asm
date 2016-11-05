@@ -114,6 +114,7 @@ CeladonGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext ERIKA, 1, $1
+	writebyte 255
 	jumpstd gymstatue2
 
 UnknownText_0x72b28:

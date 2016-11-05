@@ -135,6 +135,7 @@ VioletGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext FALKNER, 1, $1
+	writebyte 9
 	jumpstd gymstatue2
 
 VioletGymMovementData_GymGuyStepDown:

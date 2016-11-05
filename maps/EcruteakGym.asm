@@ -163,6 +163,7 @@ EcruteakGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext MORTY, 1, $1
+	writebyte 12
 	jumpstd gymstatue2
 
 MovementData_0x99e5d:

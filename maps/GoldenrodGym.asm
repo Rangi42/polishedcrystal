@@ -184,6 +184,7 @@ GoldenrodGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext WHITNEY, 1, $1
+	writebyte 11
 	jumpstd gymstatue2
 
 JoWalksUpMovement:

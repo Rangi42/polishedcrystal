@@ -221,6 +221,7 @@ FuchsiaGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext JANINE, 1, $1
+	writebyte 255
 	jumpstd gymstatue2
 
 MovementData_0x195f27:

@@ -132,6 +132,7 @@ OlivineGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	trainertotext JASMINE, 1, $1
+	writebyte 14
 	jumpstd gymstatue2
 
 UnknownText_0x9c1b9:

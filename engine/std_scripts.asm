@@ -1807,7 +1807,15 @@ GymStatue2Script:
 	opentext
 	farwritetext GymStatue_CityGymText
 	buttonsound
+	checkbadgecount
+	iftrue .LyraToo
 	farwritetext GymStatue_WinningTrainersText
+	waitbutton
+	closetext
+	end
+
+.LyraToo
+	farwritetext GymStatue_TwoWinningTrainersText
 	waitbutton
 	closetext
 	end
