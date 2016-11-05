@@ -2942,25 +2942,13 @@ w3_d742:: battle_tower_struct w3_d742
 ; d822
 	ds -$22
 
-wBTChoiceOfLvlGroup::
-w3_d800:: ; ds BG_MAP_WIDTH * SCREEN_HEIGHT ($240)
+wBTChoiceOfLvlGroup:: ; d800
+wVermilionGymTrashCan1:: ; ds BG_MAP_WIDTH * SCREEN_HEIGHT ($240)
 	ds 1
-w3_d801::
-	ds $68
-w3_d869:: ds $17
-w3_d880:: ds 1
-w3_d881:: ds 1
-w3_d882:: ds 1
-w3_d883:: ds 7
-w3_d88a:: ds 5
-w3_d88f:: ds 5
-w3_d894:: ds 1
-w3_d895:: ds 11
-w3_d8a0:: ds 1
-w3_d8a1:: ds 1
-w3_d8a2:: ds 1
-w3_d8a3:: ds $19d
-w3_da40:: ds $1c0
+wVermilionGymTrashCan2::
+	ds 1
+
+	ds $3fe
 
 w3_dc00:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 w3_dd68:: ds SCREEN_WIDTH * SCREEN_HEIGHT

@@ -85,7 +85,9 @@ Script_ChoseChallenge: ; 0x9e40f
 	dotrigger $1
 	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerNewSaveFile]
 	special Special_BattleTower_InitChallengeRAM
-	if_equal $a, Script_Menu_ChallengeExplanationCancel
+	writetext Text_ConfirmBattleRoomLevel
+	yesorno
+	iffalse Script_Menu_ChallengeExplanationCancel
 	special Special_BattleTower_AcceptChallenge
 	writetext Text_RightThisWayToYourBattleRoom
 	waitbutton
@@ -142,16 +144,6 @@ Script_WaitButton: ; 0x9e4bb
 	waitbutton
 	closetext
 	end
-
-Script_APokemonLevelExceeds: ; 0x9e542
-	writetext Text_APokemonLevelExceeds
-	waitbutton
-	jump Script_Menu_ChallengeExplanationCancel
-
-Script_MayNotEnterABattleRoomUnderL70: ; 0x9e549
-	writetext Text_MayNotEnterABattleRoomUnderL70
-	waitbutton
-	jump Script_Menu_ChallengeExplanationCancel
 
 BattleTower_LeftWithoutSaving:
 	opentext
@@ -397,24 +389,14 @@ Text_WeveBeenWaitingForYou:
 	line "please."
 	done
 
-Text_APokemonLevelExceeds: ; 0x9f1e5
-	text "One or more of"
-	line "your #mon's"
-	cont "levels exceeds @"
-	deciram ScriptVar, 1, 3
-	text "."
-	done
+Text_ConfirmBattleRoomLevel: ; 0x9f1e5
+	text "Your #mon"
+	line "qualify for a"
 
-Text_MayNotEnterABattleRoomUnderL70: ; 0x9f217
-	text_from_ram wcd49
-	text " may not"
-	line "enter a Battle"
-	cont "Room under <LV>70."
-
-	para "This Battle Room"
-	line "is for L@"
-	deciram ScriptVar, 1, 3
-	text "."
+	para "Battle Room at"
+	line "<LV>@"
+	deciram ScriptVar, 1, 2
+	text "0. Is that OK?"
 	done
 
 BattleTowerDragonTamerText:
@@ -459,7 +441,6 @@ Text_BattleTowerTutorTaught:
 	line "can use Water"
 	cont "Pulse too!"
 	done
-
 
 Text_BattleTowerCooltrainerF: ; 0x9f2a4
 	text "There are lots of"

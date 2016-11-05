@@ -188,8 +188,23 @@ LoadRandomBattleTowerPkmn:
 	; copy dvs + personality
 	ld bc, 5
 	call CopyBytes
-	; skip pp + happiness + pokerus + caughtdata + level + status + unused + hp + stats
-	ld bc, 26
+	; skip pp + happiness + pokerus + caughtdata
+	ld bc, 9
+	push hl
+	ld h, d
+	ld l, e
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	; level
+	ld a, [wBTChoiceOfLvlGroup]
+	ld c, 10
+	call SimpleMultiply
+	ld [de], a
+	inc de
+	; skip status + unused + hp + stats
+	ld bc, 16
 	push hl
 	ld h, d
 	ld l, e

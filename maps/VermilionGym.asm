@@ -463,9 +463,9 @@ SampleVermilionGymTrashCan:
 	and $3f
 	cp 38
 	jr nc, .loop
-	ld [w3_d800], a
+	ld [wVermilionGymTrashCan1], a
 	xor a
-	ld [w3_d801], a
+	ld [wVermilionGymTrashCan2], a
 	pop af
 	ld [rSVBK], a
 	ret
@@ -489,13 +489,13 @@ CheckVermilionGymTrashCan:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [w3_d800]
+	ld a, [wVermilionGymTrashCan1]
 	ld de, 1
 	push bc
 	call IsInArray
 	pop bc
 	jr nc, .nope
-	ld a, [w3_d801]
+	ld a, [wVermilionGymTrashCan2]
 	and a
 	jr z, .set
 	cp b
@@ -507,7 +507,7 @@ CheckVermilionGymTrashCan:
 
 .set
 	ld a, b
-	ld [w3_d801], a
+	ld [wVermilionGymTrashCan2], a
 	pop af
 	ld [rSVBK], a
 	ld a, 1

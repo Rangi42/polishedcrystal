@@ -12,17 +12,18 @@ Function118121: ; 118121
 	push af
 	ld a, $3
 	ld [rSVBK], a
-.loop
+;.loop
 	call JoyTextDelay
-	call Function11854d
-	call Function11a8fa
+;	call Function11854d
+;	call Function11a8fa
+	call ChooseLevelGroup
 	call Function115dd3
 	call Function11619d
 	call DelayFrame
-	ld a, [wcf66]
-	ld hl, wcd33
-	cp [hl]
-	jr nz, .loop
+;	ld a, [wcf66]
+;	ld hl, wcd33
+;	cp [hl]
+;	jr nz, .loop
 	xor a
 	ld [w3_d000], a
 	pop af
@@ -32,6 +33,44 @@ Function118121: ; 118121
 	call ReturnToMapFromSubmenu
 	ret
 ; 118180
+
+ChooseLevelGroup:
+	ld a, [rSVBK]
+	push af
+	ld a, $1
+	ld [rSVBK], a
+
+	; e = maximum party level [1-100]
+	ld hl, PartyMon1Level
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [PartyCount]
+	ld d, a
+	ld e, 1
+.loop
+	add hl, bc
+	ld a, [hl]
+	cp e
+	jr c, .ok
+	ld e, a
+.ok
+	dec d
+	ld a, d
+	jr nz, .loop
+
+	pop af
+	ld [rSVBK], a
+
+	; wBTChoiceOfLvlGroup = (e + 9) / 10 [1-10]
+	ld a, 9
+	add e
+	ld c, 10
+	call SimpleDivide
+	ld a, b
+
+	ld [wBTChoiceOfLvlGroup], a
+	ld [wc300], a
+
+	ret
 
 Function118180: ; 118180
 	ld a, [ScriptVar]
@@ -321,7 +360,7 @@ Function118982:
 
 .asm_118a30
 	ld a, [wcd4f]
-	ld [w3_d800], a
+	ld [wBTChoiceOfLvlGroup], a
 	jp Function119e2e
 
 .asm_118a39
