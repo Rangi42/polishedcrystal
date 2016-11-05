@@ -608,17 +608,20 @@ OptionsControl: ; e452a
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-	cp $7 ; maximum number of items in option menu
-	jr nz, .CheckFive
-	ld [hl], $0
+
+	cp $4
+	jr nz, .DownOK
+	ld a, [wCurrentOptionsPage]
+	and a
+	jr z, .DownOK
+	ld [hl], $6 ; skip missing option on page 2
 	scf
 	ret
+.DownOK
 
-.CheckFive: ; I have no idea why this exists...
-	cp $5
+	cp $7 ; maximum number of items in option menu
 	jr nz, .Increase
-	ld [hl], $5
-
+	ld [hl], -1
 .Increase:
 	inc [hl]
 	scf
@@ -626,17 +629,21 @@ OptionsControl: ; e452a
 
 .UpPressed:
 	ld a, [hl]
+
 	cp $6
-	jr nz, .NotSix
-	ld [hl], $5 ; Another thing where I'm not sure why it exists
+	jr nz, .UpOK
+	ld a, [wCurrentOptionsPage]
+	and a
+	ld a, [hl]
+	jr z, .UpOK
+	ld [hl], $4 ; skip missing option on page 2
 	scf
 	ret
+.UpOK
 
-.NotSix:
 	and a
 	jr nz, .Decrease
-	ld [hl], $8 ; number of option items +1
-
+	ld [hl], $8 ; number of option items + 1
 .Decrease:
 	dec [hl]
 	scf
