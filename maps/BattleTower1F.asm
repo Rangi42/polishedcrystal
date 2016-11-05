@@ -21,7 +21,7 @@ BattleTower1F_MapScriptHeader:
 	iffalse .Done
 	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
 	if_equal BATTLETOWER_CHALLENGE_IN_PROGESS, .ContinueChallenge
-	if_equal BATTLETOWER_SAVED_AND_LEFT,       .ResumeChallenge
+	if_equal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
 	jump .Done
 
 .ResumeChallenge
@@ -36,7 +36,6 @@ BattleTower1F_MapScriptHeader:
 	priorityjump BattleTower_LeftWithoutSaving
 	writebyte BATTLETOWER_NO_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	special Special_BattleTower_Action06
 .Done
 	dotrigger $1
 	end
@@ -76,6 +75,10 @@ Script_ChoseChallenge: ; 0x9e40f
 	special Special_BattleTower_ResetTrainersSRAM
 	special Special_BattleTower_CheckForRules
 	if_not_equal $0, Script_WaitButton
+	special Special_BattleTower_FindChallengeLevel
+	writetext Text_ConfirmBattleRoomLevel
+	yesorno
+	iffalse Script_Menu_ChallengeExplanationCancel
 	writetext Text_SaveBeforeEnteringBattleRoom
 	yesorno
 	iffalse Script_Menu_ChallengeExplanationCancel
@@ -84,11 +87,7 @@ Script_ChoseChallenge: ; 0x9e40f
 	iffalse Script_Menu_ChallengeExplanationCancel
 	dotrigger $1
 	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerNewSaveFile]
-	special Special_BattleTower_InitChallengeRAM
-	writetext Text_ConfirmBattleRoomLevel
-	yesorno
-	iffalse Script_Menu_ChallengeExplanationCancel
-	special Special_BattleTower_AcceptChallenge
+	special Special_BattleTower_BeginChallenge
 	writetext Text_RightThisWayToYourBattleRoom
 	waitbutton
 	closetext

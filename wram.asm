@@ -1081,7 +1081,7 @@ wcd2e:: ds 1
 wcd2f:: ds 1
 wcd30:: ds 1
 wcd31:: ds 1
-wrIEBackup:: ds 1 ; cd32
+wcd32:: ds 1
 wcd33:: ds 1
 wcd34:: ds 1
 wcd35:: ds 1
@@ -1160,7 +1160,7 @@ wcd78:: ds 1
 wcd79:: ds 1
 wcd7a:: ds 2
 wcd7c:: ds 3
-wVramStateBackup:: ds 1 ; cd7f
+wcd7f:: ds 1
 wcd80:: ds 1
 wcd81:: ds 1
 wcd82:: ds 1

@@ -1,29 +1,9 @@
-Special_BattleTower_InitChallengeRAM: ; 1700b0
-	xor a
-	ld [wBattleTowerBattleEnded], a
-	ld [wNrOfBeatenBattleTowerTrainers], a
-	ld [wcf65], a
-	ld [wcf66], a
-
-	di
-	ld a, [rIE]
-	ld [wrIEBackup], a
-	xor a
-	ld [rIF], a
-	ld [wc300], a
-	ld hl, VramState
-	ld a, [hl]
-	ld [wVramStateBackup], a
-	set 1, [hl]
-	ld a, $f
-	ld [rIE], a
-	ei
-
+Special_BattleTower_FindChallengeLevel: ; 1700b0
+	; e = maximum party level [1-100]
 	ld a, [rSVBK]
 	push af
 	ld a, $1
 	ld [rSVBK], a
-	; e = maximum party level [1-100]
 	ld hl, PartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [PartyCount]
@@ -57,18 +37,6 @@ Special_BattleTower_InitChallengeRAM: ; 1700b0
 	ld [wc300], a ; save here to store in ScriptVar later
 	pop af
 	ld [rSVBK], a
-
-	di
-	xor a
-	ld [hVBlank], a
-	xor a
-	ld [rIF], a
-	ld a, [wrIEBackup]
-	ld [rIE], a
-	ei
-
-	ld a, [wVramStateBackup]
-	ld [VramState], a
 
 	ld a, [wc300] ; saved value of wBTChoiceOfLvlGroup
 	ld [ScriptVar], a
@@ -121,15 +89,6 @@ RunBattleTowerTrainer: ; 17024d
 	ld [wLinkMode], a
 	farcall HealPartyEvenForNuzlocke
 	call ReadBTTrainerParty
-
-	; Clears 05:a89a
-	ld a, $5
-	call GetSRAMBank
-	ld hl, $a89a
-	xor a
-	ld [hli], a
-	ld [hl], a
-	call CloseSRAM
 
 	predef StartBattle
 
@@ -295,16 +254,6 @@ Special_BattleTower_MarkNewSaveFile: ; 170788 (5c:4788)
 	call CloseSRAM
 	ret
 
-Special_BattleTower_Action06: ; 1707f4 (5c:47f4)
-	ld a, $5
-	call GetSRAMBank
-	xor a
-	ld [$be46], a
-	ld [$aa8b], a
-	ld [$aa8c], a
-	call CloseSRAM
-	ret
-
 Special_BattleTower_SaveLevelGroup: ; 170868 (5c:4868)
 	ld a, BANK(sBTChoiceOfLevelGroup)
 	call GetSRAMBank
@@ -354,12 +303,12 @@ Special_BattleTower_MaxVolume: ; 1708b1 (5c:48b1)
 	call MaxVolume
 	ret
 
-Special_BattleTower_AcceptChallenge: ; 170a9c (5c:4a9c)
-	ld a, $5
-	call GetSRAMBank
+Special_BattleTower_BeginChallenge: ; 170a9c (5c:4a9c)
 	xor a
-	ld [$aa8d], a
-	call CloseSRAM
+	ld [wBattleTowerBattleEnded], a
+	ld [wNrOfBeatenBattleTowerTrainers], a
+	ld [wcf65], a
+	ld [wcf66], a
 	ret
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
