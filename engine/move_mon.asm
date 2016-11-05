@@ -1645,6 +1645,8 @@ GetNatureStatMultiplier::
 	ld b, a
 	call GetNature
 	ld a, b
+	cp NO_NATURE
+	jr z, .neutral
 	ld d, STAT_HP
 .loop
 	inc d

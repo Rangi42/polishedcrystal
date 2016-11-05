@@ -94,6 +94,7 @@ DVS_HP_DARK     EQUS "$00, $00, $00"
 	const CAREFUL
 	const QUIRKY
 NUM_NATURES EQU const_value
+NO_NATURE   EQU const_value
 
 ; ability constants
 	const_def

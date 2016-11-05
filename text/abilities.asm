@@ -164,7 +164,7 @@ AbilityNames:
 	dw Competitive
 	dw Pixilate
 
-NoAbility:     db "---"
+NoAbility:     db "---@"
 Stench:        db "Stench@"
 Drizzle:       db "Drizzle@"
 SpeedBoost:    db "Speed Boost@"
@@ -461,8 +461,8 @@ AbilityDescriptions:
 	dw PixilateDescription
 
 NoAbilityDescription:
-	db   "No special"
-	next "ability.@"
+	db   "Abilities are dis-"
+	next "abled in Option.@"
 
 StenchDescription:
 	db   "May cause the foe"

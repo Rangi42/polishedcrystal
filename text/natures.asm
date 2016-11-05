@@ -23,32 +23,34 @@ NatureNames:
 	dw Timid, Hasty, Serious, Jolly, Naive
 	dw Modest, Mild, Quiet, Bashful, Rash
 	dw Calm, Gentle, Sassy, Careful, Quirky
+	dw NoNature
 
-Hardy:   db "Hardy@"
-Lonely:  db "Lonely@"
-Brave:   db "Brave@"
-Adamant: db "Adamant@"
-Naughty: db "Naughty@"
-Bold:    db "Bold@"
-Docile:  db "Docile@"
-Relaxed: db "Relaxed@"
-Impish:  db "Impish@"
-Lax:     db "Lax@"
-Timid:   db "Timid@"
-Hasty:   db "Hasty@"
-Serious: db "Serious@"
-Jolly:   db "Jolly@"
-Naive:   db "Naive@"
-Modest:  db "Modest@"
-Mild:    db "Mild@"
-Quiet:   db "Quiet@"
-Bashful: db "Bashful@"
-Rash:    db "Rash@"
-Calm:    db "Calm@"
-Gentle:  db "Gentle@"
-Sassy:   db "Sassy@"
-Careful: db "Careful@"
-Quirky:  db "Quirky@"
+Hardy:    db "Hardy@"
+Lonely:   db "Lonely@"
+Brave:    db "Brave@"
+Adamant:  db "Adamant@"
+Naughty:  db "Naughty@"
+Bold:     db "Bold@"
+Docile:   db "Docile@"
+Relaxed:  db "Relaxed@"
+Impish:   db "Impish@"
+Lax:      db "Lax@"
+Timid:    db "Timid@"
+Hasty:    db "Hasty@"
+Serious:  db "Serious@"
+Jolly:    db "Jolly@"
+Naive:    db "Naive@"
+Modest:   db "Modest@"
+Mild:     db "Mild@"
+Quiet:    db "Quiet@"
+Bashful:  db "Bashful@"
+Rash:     db "Rash@"
+Calm:     db "Calm@"
+Gentle:   db "Gentle@"
+Sassy:    db "Sassy@"
+Careful:  db "Careful@"
+Quirky:   db "Quirky@"
+NoNature: db "---@"
 
 
 PrintNatureIndicators:
@@ -76,6 +78,7 @@ NatureIndicators:
 	dw TimidInd, HastyInd, SeriousInd, JollyInd, NaiveInd
 	dw ModestInd, MildInd, QuietInd, BashfulInd, RashInd
 	dw CalmInd, GentleInd, SassyInd, CarefulInd, QuirkyInd
+	dw NoNatureInd
 
 SassyInd:   db $4e ; fallthrough
 RashInd:    db $4e ; fallthrough
@@ -101,4 +104,5 @@ HardyInd:
 DocileInd:
 SeriousInd:
 BashfulInd:
-QuirkyInd:  db "@"
+QuirkyInd:
+NoNatureInd: db "@"
