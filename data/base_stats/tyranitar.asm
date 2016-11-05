@@ -13,7 +13,7 @@
 	dn 7, 7 ; frontpic dimensions
 	db SAND_STREAM ; ability 1
 if DEF(FAITHFUL)
-	db UNNERVE ; ability 2
+	db SAND_STREAM ; ability 2
 else
 	db BATTLE_ARMOR ; ability 2
 endc

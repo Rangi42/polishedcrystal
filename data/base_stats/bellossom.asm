@@ -23,7 +23,7 @@ endc
 	db CHLOROPHYLL ; ability 1
 	db CHLOROPHYLL ; ability 2
 if DEF(FAITHFUL)
-	db CHLOROPHYLL ; ability 2
+	db CHLOROPHYLL ; hidden ability
 else
 	db OWN_TEMPO ; hidden ability
 endc
