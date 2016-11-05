@@ -1215,7 +1215,7 @@ CurMove::
 	ds 1
 
 wNamedObjectTypeBuffer:: ds 1
-	ds 1
+wCurrentOptionsPage:: ds 1
 wJumptableIndex::
 wBattleTowerBattleEnded::
 wcf63:: ds 1

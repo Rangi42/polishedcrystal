@@ -12,26 +12,11 @@ _OptionsMenu: ; e41d0
 	ld de, StringOptions
 	call PlaceString
 	xor a
-	ld [wJumptableIndex], a
-	ld c, $6 ; number of items on the menu minus 1 (for cancel)
+	ld [wCurrentOptionsPage], a
+	call OptionsMenu_LoadOptions
 
-.print_text_loop ; this next will display the settings of each option when the menu is opened
-	push bc
-	xor a
-	ld [hJoyLast], a
-	call GetOptionPointer
-	pop bc
-	ld hl, wJumptableIndex
-	inc [hl]
-	dec c
-	jr nz, .print_text_loop
-
-	call UpdateFrame
 	xor a
 	ld [wJumptableIndex], a
-	inc a
-	ld [hBGMapMode], a
-	call WaitBGMap
 	ld b, SCGB_08
 	call GetSGBLayout
 	call SetPalettes
@@ -50,7 +35,7 @@ _OptionsMenu: ; e41d0
 	call Options_UpdateCursorPosition
 	ld c, 3
 	call DelayFrames
-	jr .joypad_loop
+	jr .joypad_loop	
 
 .ExitOptions:
 	ld de, SFX_TRANSACTION
@@ -61,6 +46,28 @@ _OptionsMenu: ; e41d0
 	ret
 ; e4241
 
+OptionsMenu_LoadOptions:
+	xor a
+	ld [wJumptableIndex], a
+	ld [hJoyPressed], a
+	ld c, $6 ; number of items on the menu minus 1 (for cancel)
+.print_text_loop ; this next will display the settings of each option when the menu is opened
+	push bc
+	xor a
+	ld [hJoyLast], a
+	call GetOptionPointer
+	pop bc
+	ld hl, wJumptableIndex
+	inc [hl]
+	dec c
+	jr nz, .print_text_loop
+	ld a, [wCurrentOptionsPage]
+	and a
+	call z, UpdateFrame
+	ld a, 1
+	ld [hBGMapMode], a
+	jp WaitBGMap
+
 StringOptions: ; e4241
 	db "Text Speed<LNBRK>"
 	db "        :<LNBRK>"
@@ -70,19 +77,42 @@ StringOptions: ; e4241
 	db "        :<LNBRK>"
 	db "Running Shoes<LNBRK>"
 	db "        :<LNBRK>"
-	db "Sound<LNBRK>"
-	db "        :<LNBRK>"
 	db "Nuzlocke Mode<LNBRK>"
 	db "        :<LNBRK>"
 	db "Frame<LNBRK>"
 	db "        :Type<LNBRK>"
+	db "Next<LNBRK>"
+	db "        <LNBRK>"
 	db "Cancel@"
 ; e42d6
 
+StringOptions2:
+	db "Natures<LNBRK>"
+	db "        :<LNBRK>"
+	db "Abilities<LNBRK>"
+	db "        :<LNBRK>"
+	db "Clock Format<LNBRK>"
+	db "        :<LNBRK>"
+	db "#dex Units<LNBRK>"
+	db "        :<LNBRK>"
+	db "Sound<LNBRK>"
+	db "        :<LNBRK>"
+	db "<LNBRK>"
+	db "<LNBRK>"
+	db "Previous<LNBRK>"
+	db "        <LNBRK>"
+	db "Cancel@"
 
 GetOptionPointer: ; e42d6
 	ld a, [wJumptableIndex] ; load the cursor position to a
 	ld e, a ; copy it to de
+	ld a, [wCurrentOptionsPage]
+	and a
+	jr z, .page1
+	ld a, $8
+	add e
+	ld e, a
+.page1
 	ld d, 0
 	ld hl, .Pointers
 rept 2
@@ -99,9 +129,18 @@ endr
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_RunningShoes
-	dw Options_Sound
 	dw Options_NuzlockeMode
 	dw Options_Frame
+	dw Options_NextPrevious
+	dw Options_Cancel
+
+	dw Options_Natures
+	dw Options_Abilities
+	dw Options_ClockFormat
+	dw Options_PokedexUnits
+	dw Options_Sound
+	dw Options_Unused
+	dw Options_NextPrevious
 	dw Options_Cancel
 ; e42f5
 
@@ -322,6 +361,142 @@ Options_RunningShoes: ; e44c1
 ; e44fa
 
 
+Options_NuzlockeMode: ; e4424
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit NUZLOCKE_MODE, [hl]
+	jr z, .ToggleOn
+	jr .ToggleOff
+
+.LeftPressed:
+	bit NUZLOCKE_MODE, [hl]
+	jr nz, .ToggleOff
+	jr .ToggleOn
+
+.NonePressed:
+	bit NUZLOCKE_MODE, [hl]
+	jr z, .ToggleOff
+
+.ToggleOn:
+	set NUZLOCKE_MODE, [hl]
+	ld de, .On
+	jr .Display
+
+.ToggleOff:
+	res NUZLOCKE_MODE, [hl]
+	ld de, .Off
+
+.Display:
+	hlcoord 11, 11
+	call PlaceString
+	and a
+	ret
+; e44f2
+
+.On:
+	db "On @"
+.Off:
+	db "Off@"
+; e44c1
+
+
+Options_Frame: ; e44fa
+	ld hl, TextBoxFrame
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr nz, .RightPressed
+	and a
+	ret
+
+.RightPressed:
+	ld a, [hl]
+	inc a
+	cp $9
+	jr nz, .Save
+	ld a, $0
+	jr .Save
+
+.LeftPressed:
+	ld a, [hl]
+	dec a
+	cp $ff
+	jr nz, .Save
+	ld a, $8
+
+.Save:
+	ld [hl], a
+UpdateFrame: ; e4512
+	ld a, [TextBoxFrame]
+	hlcoord 16, 13 ; where on the screen the number is drawn
+	add "1"
+	ld [hl], a
+	call LoadFontsExtra
+	and a
+	ret
+; e4520
+
+
+Options_Natures:
+	ld de, .Yes
+	hlcoord 11, 3
+	call PlaceString
+	and a
+	ret
+; e4416
+
+.Yes:
+	db "Yes@"
+.No:
+	db "No @"
+
+
+Options_Abilities:
+	ld de, .Yes
+	hlcoord 11, 5
+	call PlaceString
+	and a
+	ret
+; e4416
+
+.Yes:
+	db "Yes@"
+.No:
+	db "No @"
+
+
+Options_ClockFormat:
+	ld de, .Twelve
+	hlcoord 11, 7
+	call PlaceString
+	and a
+	ret
+; e4416
+
+.Twelve:
+	db "12-Hour@"
+.TwentyFour:
+	db "24-Hour@"
+
+
+Options_PokedexUnits:
+	ld de, .Imperial
+	hlcoord 11, 9
+	call PlaceString
+	and a
+	ret
+
+.Imperial:
+	db "Imperial@"
+.Metric:
+	db "Metric@"
+
+
 Options_Sound: ; e43dd
 	ld hl, Options
 	ld a, [hJoyPressed]
@@ -372,85 +547,42 @@ Options_Sound: ; e43dd
 ; e4424
 
 
-Options_NuzlockeMode: ; e4424
-	ld hl, Options2
+Options_Unused:
+	and a
+	ret
+
+
+Options_NextPrevious:
+	ld hl, wCurrentOptionsPage
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
+	bit A_BUTTON_F, a
 	jr z, .NonePressed
-	bit NUZLOCKE_MODE, [hl]
+	bit 0, [hl]
 	jr z, .ToggleOn
-	jr .ToggleOff
-
-.LeftPressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr nz, .ToggleOff
-	jr .ToggleOn
-
-.NonePressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .ToggleOff
-
-.ToggleOn:
-	set NUZLOCKE_MODE, [hl]
-	ld de, .On
-	jr .Display
 
 .ToggleOff:
-	res NUZLOCKE_MODE, [hl]
-	ld de, .Off
+	res 0, [hl]
+	ld de, StringOptions
+	jr .Display
 
+.ToggleOn:
+	set 0, [hl]
+	ld de, StringOptions2
 .Display:
-	hlcoord 11, 13
+	push de
+	hlcoord 0, 0
+	ld b, 16
+	ld c, 18
+	call TextBox
+	pop de
+	hlcoord 2, 2
 	call PlaceString
+	call OptionsMenu_LoadOptions
+	ld a, $6
+	ld [wJumptableIndex], a
+.NonePressed:
 	and a
 	ret
-; e44f2
-
-.On:
-	db "On @"
-.Off:
-	db "Off@"
-; e44c1
-
-
-Options_Frame: ; e44fa
-	ld hl, TextBoxFrame
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr nz, .RightPressed
-	and a
-	ret
-
-.RightPressed:
-	ld a, [hl]
-	inc a
-	cp $9
-	jr nz, .Save
-	ld a, $0
-	jr .Save
-
-.LeftPressed:
-	ld a, [hl]
-	dec a
-	cp $ff
-	jr nz, .Save
-	ld a, $8
-
-.Save:
-	ld [hl], a
-UpdateFrame: ; e4512
-	ld a, [TextBoxFrame]
-	hlcoord 16, 15 ; where on the screen the number is drawn
-	add "1"
-	ld [hl], a
-	call LoadFontsExtra
-	and a
-	ret
-; e4520
 
 Options_Cancel: ; e4520
 	ld a, [hJoyPressed]
