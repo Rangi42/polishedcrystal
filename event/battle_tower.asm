@@ -4,7 +4,7 @@ Special_BattleTower_InitChallengeRAM: ; 1700b0
 	ld [wNrOfBeatenBattleTowerTrainers], a
 	ld [wcf65], a
 	ld [wcf66], a
-	farcall Function118121
+	farcall BattleTowerSetLevelGroup
 	ret
 ; 1700ba
 
