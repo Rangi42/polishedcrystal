@@ -248,24 +248,20 @@ UnknownText_0x1c5962::
 	done
 
 Text_OnlyThreePkmnMayBeEntered::
-	text "Only three #mon"
-	line "may be entered."
+	text "Three #mon"
+	line "must be entered."
 	para ""
 	done
 
 Text_ThePkmnMustAllBeDifferentKinds::
-	text "The @"
-	text_from_ram StringBuffer2
-	text " #mon"
+	text "The three #mon"
 	line "must all be"
 	cont "different kinds."
 	para ""
 	done
 
 Text_ThePkmnMustNotHoldTheSameItems::
-	text "The @"
-	text_from_ram StringBuffer2
-	text " #mon"
+	text "The three #mon"
 	line "must not hold the"
 	cont "same items."
 	para ""
@@ -274,6 +270,13 @@ Text_ThePkmnMustNotHoldTheSameItems::
 Text_YouCantTakeAnEgg::
 	text "You can't take an"
 	line "Egg!"
+	para ""
+	done
+
+Text_UberRestriction::
+	text_from_ram StringBuffer1
+	text " must be"
+	line "<LV>70 or higher."
 	para ""
 	done
 

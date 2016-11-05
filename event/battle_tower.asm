@@ -530,10 +530,6 @@ MenuData2_ChallengeExplanationCancel: ; 17d297
 ; 17d2b6
 
 CheckForBattleTowerRules: ; 8b201
-	ld hl, StringBuffer2
-	ld [hl], "3"
-	inc hl
-	ld [hl], "@"
 	ld de, .PointerTables
 	call BattleTower_ExecuteJumptable
 	ret z
@@ -543,7 +539,7 @@ CheckForBattleTowerRules: ; 8b201
 ; 8b215
 
 .PointerTables: ; 8b215
-	db 4
+	db 5
 	dw .Functions
 	dw .TextPointers
 
@@ -552,6 +548,7 @@ CheckForBattleTowerRules: ; 8b201
 	dw Function_PartySpeciesAreUnique
 	dw Function_PartyItemsAreUnique
 	dw Function_HasPartyAnEgg
+	dw Function_UberRestriction
 ; 8b222
 
 .TextPointers: ; 8b222
@@ -560,6 +557,7 @@ CheckForBattleTowerRules: ; 8b201
 	dw JumpText_ThePkmnMustAllBeDifferentKinds
 	dw JumpText_ThePkmnMustNotHoldTheSameItems
 	dw JumpText_YouCantTakeAnEgg
+	dw JumpText_UberRestriction
 ; 8b22c
 
 JumpText_ExcuseMeYoureNotReady: ; 0x8b22c
@@ -581,7 +579,7 @@ BattleTower_PleaseReturnWhenReady: ; 8b231
 ; 0x8b23d
 
 JumpText_OnlyThreePkmnMayBeEntered: ; 0x8b247
-	; Only three #MON may be entered.
+	; Three #MON must be entered.
 	text_jump Text_OnlyThreePkmnMayBeEntered
 	db "@"
 ; 0x8b24c
@@ -603,6 +601,11 @@ JumpText_YouCantTakeAnEgg: ; 0x8b256
 	text_jump Text_YouCantTakeAnEgg
 	db "@"
 ; 0x8b25b
+
+JumpText_UberRestriction:
+	; @  must be <LV>70 or higher.
+	text_jump Text_UberRestriction
+	db "@"
 
 BattleTower_ExecuteJumptable: ; 8b25b
 	ld bc, 0
@@ -802,3 +805,44 @@ Function_HasPartyAnEgg: ; 8b331
 	scf
 	ret
 ; 8b342
+
+Function_UberRestriction:
+	ld hl, PartyMon1Level
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld de, PartySpecies
+	ld a, [PartyCount]
+.loop
+	push af
+	ld a, [de]
+	cp MEWTWO
+	jr z, .uber
+	cp MEW
+	jr z, .uber
+	cp LUGIA
+	jr z, .uber
+	cp HO_OH
+	jr z, .uber
+	cp CELEBI
+	jr c, .next
+	cp NUM_POKEMON + 1
+	jr nc, .next
+.uber
+	ld a, [hl]
+	cp 70
+	jr c, .uber_under_70
+.next
+	add hl, bc
+	inc de
+	pop af
+	dec a
+	jr nz, .loop
+	and a
+	ret
+
+.uber_under_70
+	pop af
+	ld a, [de]
+	ld [wd265], a
+	call GetPokemonName
+	scf
+	ret
