@@ -110,6 +110,7 @@
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
 	dba Music_Route47HGSS
+	dba Music_SafariZoneGateHGSS
 	dba Music_LyraEncounterHGSS
 	dba Music_LyraDepartureHGSS
 	dba Music_HoOhBattleHGSS
@@ -133,7 +134,6 @@
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
-	dba Music_Route120RSE
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE

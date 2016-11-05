@@ -12,8 +12,8 @@
 * FroggestSpirit for ported and demixed music from RBY, HGSS, DPPt, and BW.
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.
 * Pigu for battle music (used in TPP Anniversary Crystal 251).
-* Pum for the Yellow Forest, Valerie battle, and Lugia theme music.
-* ShantyTown for the Rock Tunnel music.
+* Pum for the Valerie battle and Lugia theme music.
+* ShantyTown for the Rock Tunnel (Kalos Power Plant) music.
 * Serious Senator for some trainer dialog.
 * tonyism for the in-battle shiny icon code.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.

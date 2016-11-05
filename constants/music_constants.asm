@@ -105,30 +105,30 @@
 	const MUSIC_CINNABAR_ISLAND_HGSS         ; 66
 	const MUSIC_NUGGET_BRIDGE_HGSS           ; 67
 	const MUSIC_ROUTE_47_HGSS                ; 68
-	const MUSIC_LYRA_ENCOUNTER_HGSS          ; 69
-	const MUSIC_LYRA_DEPARTURE_HGSS          ; 6a
-	const MUSIC_HO_OH_BATTLE_HGSS            ; 6b
-	const MUSIC_LUGIA_BATTLE_HGSS            ; 6c
-	const MUSIC_SUMMONING_DANCE_HGSS         ; 6d
-	const MUSIC_SPIKY_EARED_PICHU_HGSS       ; 6e
-	const MUSIC_ROUTE_210_DPPT               ; 6f
-	const MUSIC_MOUNT_CORONET_DPPT           ; 70
-	const MUSIC_ETERNA_FOREST_DPPT           ; 71
-	const MUSIC_GAME_CORNER_DPPT             ; 72
-	const MUSIC_ROUTE_12_BW                  ; 73
-	const MUSIC_TRAINER_BATTLE_BW            ; 74
-	const MUSIC_WCS_BATTLE_BW                ; 75
-	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 76
-	const MUSIC_WHITE_TREEHOLLOW_W2          ; 77
-	const MUSIC_CHAMPION_BATTLE_B2W2         ; 78
-	const MUSIC_POWER_PLANT_XY               ; 79
-	const MUSIC_RIVAL_BATTLE_XY              ; 7a
-	const MUSIC_GYM_LEADER_BATTLE_XY         ; 7b
-	const MUSIC_POKEMON_TOWER_RBY            ; 7c
-	const MUSIC_CINNABAR_MANSION_RBY         ; 7d
-	const MUSIC_DIGLETTS_CAVE_RBY            ; 7e
-	const MUSIC_CERULEAN_CAVE_RBY            ; 7f
-	const MUSIC_ROUTE_120_RSE                ; 80
+	const MUSIC_SAFARI_ZONE_GATE_HGSS        ; 69
+	const MUSIC_LYRA_ENCOUNTER_HGSS          ; 6a
+	const MUSIC_LYRA_DEPARTURE_HGSS          ; 6b
+	const MUSIC_HO_OH_BATTLE_HGSS            ; 6c
+	const MUSIC_LUGIA_BATTLE_HGSS            ; 6d
+	const MUSIC_SUMMONING_DANCE_HGSS         ; 6e
+	const MUSIC_SPIKY_EARED_PICHU_HGSS       ; 6f
+	const MUSIC_ROUTE_210_DPPT               ; 70
+	const MUSIC_MOUNT_CORONET_DPPT           ; 71
+	const MUSIC_ETERNA_FOREST_DPPT           ; 72
+	const MUSIC_GAME_CORNER_DPPT             ; 73
+	const MUSIC_ROUTE_12_BW                  ; 74
+	const MUSIC_TRAINER_BATTLE_BW            ; 75
+	const MUSIC_WCS_BATTLE_BW                ; 76
+	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 77
+	const MUSIC_WHITE_TREEHOLLOW_W2          ; 78
+	const MUSIC_CHAMPION_BATTLE_B2W2         ; 79
+	const MUSIC_POWER_PLANT_XY               ; 7a
+	const MUSIC_RIVAL_BATTLE_XY              ; 7b
+	const MUSIC_GYM_LEADER_BATTLE_XY         ; 7c
+	const MUSIC_POKEMON_TOWER_RBY            ; 7d
+	const MUSIC_CINNABAR_MANSION_RBY         ; 7e
+	const MUSIC_DIGLETTS_CAVE_RBY            ; 7f
+	const MUSIC_CERULEAN_CAVE_RBY            ; 80
 	const MUSIC_MOUNT_CHIMNEY_RSE            ; 81
 	const MUSIC_MOUNT_PYRE_RSE               ; 82
 	const MUSIC_ABANDONED_SHIP_RSE           ; 83
