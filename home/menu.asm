@@ -130,11 +130,11 @@ PlaceYesNoBox:: ; 1dd2
 	ld hl, YesNoMenuDataHeader
 	call CopyMenuDataHeader
 	pop bc
-; This seems to be an overflow prevention, but
-; it was coded wrong.
+
+	; overflow prevention?
 	ld a, b
 	cp SCREEN_WIDTH - 6
-	jr nz, .okay ; should this be "jr nc"?
+	jr nc, .okay
 	ld a, SCREEN_WIDTH - 6
 	ld b, a
 

@@ -2367,8 +2367,6 @@ INCLUDE "engine/mail.asm"
 
 SECTION "Crystal Unique", ROMX, BANK[$12]
 
-INCLUDE "engine/init_gender.asm"
-
 PackGFX:
 INCBIN "gfx/misc/pack.w40.2bpp"
 PackFGFX: ; 48e9b

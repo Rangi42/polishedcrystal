@@ -50,6 +50,24 @@ NewGame_ClearTileMapEtc: ; 5b44
 	ret
 ; 5b54
 
+InitCrystalData: ; 48000
+	ld a, $1
+	ld [wd474], a
+	xor a
+	ld [wd473], a
+	ld [PlayerGender], a
+	ld [wd475], a
+	ld [wd476], a
+	ld [wd477], a
+	ld [wd478], a
+	ld [wd002], a
+	ld [wd003], a
+	ld a, [wd479]
+	and %11111100
+	ld [wd479], a
+	ret
+; 4802f
+
 OptionsMenu: ; 5b64
 	farcall _OptionsMenu
 	ret
@@ -60,6 +78,7 @@ NewGame: ; 5b6b
 	ld [wMonStatusFlags], a
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
+	call InitCrystalData
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
@@ -671,18 +690,11 @@ OakSpeech: ; 0x5f99
 
 	ld hl, OakText5
 	call PrintText
-	call RotateThreePalettesRight
-	call ClearTileMap
 
-	farcall InitGender
+	call InitGender
 
-	xor a
-	ld [CurPartySpecies], a
-	farcall DrawIntroPlayerPic
-
-	ld b, SCGB_FRONTPICPALS
-	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
+	ld c, 10
+	call DelayFrames
 
 	ld hl, OakText6
 	call PrintText
@@ -722,6 +734,77 @@ OakText6: ; 0x606a
 
 OakText7: ; 0x606f
 	text_jump _OakText7
+	db "@"
+
+InitGender: ; 48dcb (12:4dcb)
+	call RotateThreePalettesRight
+	call ClearTileMap
+	call WaitBGMap2
+	call SetPalettes
+
+	ld hl, AreYouABoyOrAreYouAGirlText
+	call PrintText
+
+	ld hl, .MenuDataHeader
+	call LoadMenuDataHeader
+	call WaitBGMap2
+	call VerticalMenu
+	call CloseWindow
+	ld a, [wMenuCursorY]
+	dec a
+	ld [PlayerGender], a
+
+	call ClearTileMap
+	xor a
+	ld [CurPartySpecies], a
+	farcall DrawIntroPlayerPic
+
+	ld b, SCGB_FRONTPICPALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, SoYoureABoyText
+	ld a, [PlayerGender]
+	and a
+	jr z, .boy
+	ld hl, SoYoureAGirlText
+.boy
+	call PrintText
+
+	call YesNoBox
+	jr c, InitGender
+	ret
+; 48dfc (12:4dfc)
+
+.MenuDataHeader: ; 0x48dfc
+	db $40 ; flags
+	db 04, 06 ; start coords
+	db 09, 12 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+; 0x48e04
+
+.MenuData2: ; 0x48e04
+	db $a1 ; flags
+	db 2 ; items
+	db "Boy@"
+	db "Girl@"
+; 0x48e0f
+
+AreYouABoyOrAreYouAGirlText: ; 0x48e0f
+	; Are you a boy? Or are you a girl?
+	text_jump Text_AreYouABoyOrAreYouAGirl
+	db "@"
+; 0x48e14
+
+SoYoureABoyText:
+	; So you're a boy?
+	text_jump Text_SoYoureABoy
+	db "@"
+
+SoYoureAGirlText:
+	; So you're a girl?
+	text_jump Text_SoYoureAGirl
 	db "@"
 
 NamePlayer: ; 0x6074
