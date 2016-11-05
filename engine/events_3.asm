@@ -355,7 +355,6 @@ CheckForHiddenItems: ; b8172
 	ret
 ; b81ea
 
-
 TreeItemEncounter:
 	call Random
 	cp 15 percent
@@ -369,6 +368,84 @@ TreeItemEncounter:
 	jr .item
 .gold_leaf
 	ld a, GOLD_LEAF
+.item
+	ld [ScriptVar], a
+	ret
+
+; TODO: for this many items, use a table
+RockItemEncounter:
+	call Random
+	cp 0
+	jr z, .fossil_or_big_nugget
+	cp 2 percent
+	jr c, .rare_bone_or_nugget
+	cp 4 percent
+	jr c, .star_piece
+	cp 8 percent
+	jr c, .big_pearl
+	cp 16 percent
+	jr c, .stardust
+	cp 32 percent
+	jr c, .hard_stone_or_soft_sand
+	cp 52 percent
+	jr c, .pearl
+	cp 76 percent
+	jr c, .brick_piece
+	ld a, NO_ITEM
+	jr .item
+.fossil_or_big_nugget
+	call Random
+	and $3
+	cp 1
+	jr z, .helix_fossil
+	cp 2
+	jr z, .dome_fossil
+	cp 3
+	jr z, .old_amber
+.big_nugget
+	ld a, BIG_NUGGET
+	jr .item
+.helix_fossil
+	ld a, HELIX_FOSSIL
+	jr .item
+.dome_fossil
+	ld a, DOME_FOSSIL
+	jr .item
+.old_amber
+	ld a, OLD_AMBER
+	jr .item
+.rare_bone_or_nugget
+	and 1
+	jr z, .rare_bone
+.nugget
+	ld a, NUGGET
+	jr .item
+.rare_bone
+	ld a, RARE_BONE
+	jr .item
+.star_piece
+	ld a, STAR_PIECE
+	jr .item
+.big_pearl
+	ld a, BIG_PEARL
+	jr .item
+.stardust
+	ld a, STARDUST
+	jr .item
+.hard_stone_or_soft_sand
+	and 1
+	jr z, .hard_stone
+.soft_sand
+	ld a, SOFT_SAND
+	jr .item
+.hard_stone
+	ld a, HARD_STONE
+	jr .item
+.pearl
+	ld a, PEARL
+	jr .item
+.brick_piece
+	ld a, BRICK_PIECE
 .item
 	ld [ScriptVar], a
 	ret

@@ -119,12 +119,11 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ### New items
 
-* Big Nugget (and other valuable items) (locations...?)
+Implement effects:
+
 * Mulch (use on a picked Berry tree to regrow it)
 * Honey (for Honey Trees)
-* Cherish Ball (locations...?)
 * Ability Capsule
-* Soothe Bell (add in National Park)
 * Quick Powder (wild Ditto)
 * Choice {Band, Scarf, Specs} (Battle Tower)
 * Binding Band
@@ -146,3 +145,13 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Flame Orb
 * Toxic Orb
 * Black Sludge
+
+Find locations for:
+
+* Big Nugget (replace a Nugget or two)
+* BalmMushroom (add in forests)
+* Pearl String (replace a Big Pearl or two, add in beaches)
+* Rare Bone (add in caves)
+* Bottle Cap
+* Cherish Ball
+* Soothe Bell (add in National Park)
