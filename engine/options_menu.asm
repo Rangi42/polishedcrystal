@@ -9,7 +9,7 @@ _OptionsMenu: ; e41d0
 	ld c, 18
 	call TextBox
 	hlcoord 2, 2
-	ld de, StringOptions
+	ld de, StringOptions1
 	call PlaceString
 	xor a
 	ld [wCurrentOptionsPage], a
@@ -68,7 +68,7 @@ OptionsMenu_LoadOptions:
 	ld [hBGMapMode], a
 	jp WaitBGMap
 
-StringOptions: ; e4241
+StringOptions1: ; e4241
 	db "Text Speed<LNBRK>"
 	db "        :<LNBRK>"
 	db "Battle Scene<LNBRK>"
@@ -443,49 +443,158 @@ UpdateFrame: ; e4512
 
 
 Options_Natures:
-	ld de, .Yes
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit NATURES_OPT, [hl]
+	jr z, .ToggleOff
+	jr .ToggleOn
+
+.LeftPressed:
+	bit NATURES_OPT, [hl]
+	jr nz, .ToggleOn
+	jr .ToggleOff
+
+.NonePressed:
+	bit NATURES_OPT, [hl]
+	jr z, .ToggleOn
+
+.ToggleOff:
+	set NATURES_OPT, [hl]
+	ld de, .Off
+	jr .Display
+
+.ToggleOn:
+	res NATURES_OPT, [hl]
+	ld de, .On
+
+.Display:
 	hlcoord 11, 3
 	call PlaceString
 	and a
 	ret
-; e4416
 
-.Yes:
+.On:
 	db "Yes@"
-.No:
+.Off:
 	db "No @"
 
 
 Options_Abilities:
-	ld de, .Yes
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit ABILITIES_OPT, [hl]
+	jr z, .ToggleOff
+	jr .ToggleOn
+
+.LeftPressed:
+	bit ABILITIES_OPT, [hl]
+	jr nz, .ToggleOn
+	jr .ToggleOff
+
+.NonePressed:
+	bit ABILITIES_OPT, [hl]
+	jr z, .ToggleOn
+
+.ToggleOff:
+	set ABILITIES_OPT, [hl]
+	ld de, .Off
+	jr .Display
+
+.ToggleOn:
+	res ABILITIES_OPT, [hl]
+	ld de, .On
+
+.Display:
 	hlcoord 11, 5
 	call PlaceString
 	and a
 	ret
-; e4416
 
-.Yes:
+.On:
 	db "Yes@"
-.No:
+.Off:
 	db "No @"
 
 
 Options_ClockFormat:
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit CLOCK_FORMAT, [hl]
+	jr z, .Set24Hour
+	jr .Set12Hour
+
+.LeftPressed:
+	bit CLOCK_FORMAT, [hl]
+	jr nz, .Set12Hour
+	jr .Set24Hour
+
+.NonePressed:
+	bit CLOCK_FORMAT, [hl]
+	jr z, .Set12Hour
+
+.Set24Hour:
+	set CLOCK_FORMAT, [hl]
+	ld de, .TwentyFour
+	jr .Display
+
+.Set12Hour:
+	res CLOCK_FORMAT, [hl]
 	ld de, .Twelve
+
+.Display:
 	hlcoord 11, 7
 	call PlaceString
 	and a
 	ret
-; e4416
 
 .Twelve:
-	db "12-Hour@"
+	db "12-hour@"
 .TwentyFour:
-	db "24-Hour@"
+	db "24-hour@"
 
 
 Options_PokedexUnits:
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit POKEDEX_UNITS, [hl]
+	jr z, .SetMetric
+	jr .SetImperial
+
+.LeftPressed:
+	bit POKEDEX_UNITS, [hl]
+	jr nz, .SetImperial
+	jr .SetMetric
+
+.NonePressed:
+	bit POKEDEX_UNITS, [hl]
+	jr z, .SetImperial
+
+.SetMetric:
+	set POKEDEX_UNITS, [hl]
+	ld de, .Metric
+	jr .Display
+
+.SetImperial:
+	res POKEDEX_UNITS, [hl]
 	ld de, .Imperial
+
+.Display:
 	hlcoord 11, 9
 	call PlaceString
 	and a
@@ -494,7 +603,7 @@ Options_PokedexUnits:
 .Imperial:
 	db "Imperial@"
 .Metric:
-	db "Metric@"
+	db "Metric  @"
 
 
 Options_Sound: ; e43dd
@@ -562,7 +671,7 @@ Options_NextPrevious:
 
 .ToggleOff:
 	res 0, [hl]
-	ld de, StringOptions
+	ld de, StringOptions1
 	jr .Display
 
 .ToggleOn:

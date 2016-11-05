@@ -1411,6 +1411,10 @@ TextBoxFlags::
 Options2:: ; cfd1
 ; bit 0: running shoes off/on
 ; bit 1: nuzlocke mode off/on
+; bit 2: natures on/off
+; bit 3: abilities on/off
+; bit 4: clock format 12/24-hour
+; bit 5: pokédex units imperial/metric
 	ds 1
 
 	ds 2

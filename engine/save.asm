@@ -691,8 +691,8 @@ DefaultOptions: ; 14f7c
 	db $00       ; TextBoxFrame: frame 0
 	db $01       ; TextBoxFlags: ?
 	db $0        ; ??
-	db %00000000 ; Options2: running shoes off, nuzlocke mode off
-	db $0        ; ??
+	db %00000000 ; Options2: running shoes off, nuzlocke mode off, natures on,
+	db $0        ; ??        abilities on, 12-hour clock, imperial units
 	db $0        ; ??
 ; 14f84
 
