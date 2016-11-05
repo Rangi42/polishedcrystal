@@ -35,6 +35,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 ## Other mechanics
 
 * Use a proper menu for resurrecting Fossils
+* Get Silver/Gold Leaves also via Headbutt
 * Permanently remove Cut trees, smashable rocks, and whirlpools
 * Kurt gives Balls right away once per day
 * Catch rate formula from Gen III
