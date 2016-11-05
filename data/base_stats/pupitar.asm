@@ -13,7 +13,11 @@
 	dn 6, 6 ; frontpic dimensions
 	db SHED_SKIN ; ability 1
 	db SHED_SKIN ; ability 2
+if DEF(FAITHFUL)
 	db SHED_SKIN ; hidden ability
+else
+	db BATTLE_ARMOR ; hidden ability
+endc
 	db SLOW ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

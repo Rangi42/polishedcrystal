@@ -12,7 +12,11 @@
 	db 15 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db INNER_FOCUS ; ability 1
+if DEF(FAITHFUL)
 	db INNER_FOCUS ; ability 2
+else
+	db ANTICIPATION ; ability 2
+endc
 	db INFILTRATOR ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups

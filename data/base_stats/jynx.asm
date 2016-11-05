@@ -17,7 +17,11 @@ endc
 	db 25 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db OBLIVIOUS ; ability 1
+if DEF(FAITHFUL)
 	db FOREWARN ; ability 2
+else
+	db FILTER ; ability 2
+endc
 	db DRY_SKIN ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups

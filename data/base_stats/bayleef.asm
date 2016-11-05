@@ -12,7 +12,11 @@
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db OVERGROW ; ability 1
+if DEF(FAITHFUL)
 	db OVERGROW ; ability 2
+else
+	db NATURAL_CURE ; ability 2
+endc
 	db LEAF_GUARD ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, PLANT ; egg groups

@@ -12,7 +12,11 @@
 	db 80 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1
+if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
+else
+	db STATIC ; ability 2
+endc
 	db VOLT_ABSORB ; hidden ability
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

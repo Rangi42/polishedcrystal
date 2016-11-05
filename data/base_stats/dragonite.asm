@@ -12,7 +12,11 @@
 	db 40 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db INNER_FOCUS ; ability 1
+if DEF(FAITHFUL)
 	db INNER_FOCUS ; ability 2
+else
+	db MARVEL_SCALE ; ability 2
+endc
 	db MULTISCALE ; hidden ability
 	db SLOW ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups

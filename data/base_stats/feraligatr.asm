@@ -16,7 +16,11 @@ endc
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db TORRENT ; ability 1
+if DEF(FAITHFUL)
 	db TORRENT ; ability 2
+else
+	db INTIMIDATE ; ability 2
+endc
 	db SHEER_FORCE ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups

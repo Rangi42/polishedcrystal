@@ -22,7 +22,11 @@ endc
 	dn 7, 7 ; frontpic dimensions
 	db CHLOROPHYLL ; ability 1
 	db CHLOROPHYLL ; ability 2
-	db CHLOROPHYLL ; hidden ability
+if DEF(FAITHFUL)
+	db CHLOROPHYLL ; ability 2
+else
+	db OWN_TEMPO ; hidden ability
+endc
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 

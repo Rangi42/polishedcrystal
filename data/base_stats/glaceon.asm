@@ -12,7 +12,11 @@
 	db 35 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db SNOW_CLOAK ; ability 1
+if DEF(FAITHFUL)
 	db SNOW_CLOAK ; ability 2
+else
+	db SERENE_GRACE ; ability 2
+endc
 	db ICE_BODY ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

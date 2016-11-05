@@ -12,7 +12,11 @@
 	db 40 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db GUTS ; ability 1
+if DEF(FAITHFUL)
 	db GUTS ; ability 2
+else
+	db BATTLE_ARMOR ; ability 2
+endc
 	db SAND_VEIL ; hidden ability
 	db SLOW ; growth rate
 	dn MONSTER, MONSTER ; egg groups

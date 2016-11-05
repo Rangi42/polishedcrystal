@@ -13,7 +13,11 @@
 	dn 5, 5 ; frontpic dimensions
 	db CUTE_CHARM ; ability 1
 	db COMPETITIVE ; ability 2
-	db CUTE_CHARM ; hidden ability
+if DEF(FAITHFUL)
+	db FRISK ; hidden ability
+else
+	db SOUNDPROOF ; hidden ability
+endc
 	db FAST ; growth rate
 	dn FAERY, FAERY ; egg groups
 

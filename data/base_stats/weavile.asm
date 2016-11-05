@@ -12,7 +12,11 @@
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1
+if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
+else
+	db TECHNICIAN ; ability 2
+endc
 	db PICKPOCKET ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups

@@ -13,7 +13,11 @@
 	dn 5, 5 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1
 	db SYNCHRONIZE ; ability 2
+if DEF(FAITHFUL)
 	db SYNCHRONIZE ; hidden ability
+else
+	db MAGIC_GUARD ; hidden ability
+endc
 	db MEDIUM_SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

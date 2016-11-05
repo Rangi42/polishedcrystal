@@ -12,7 +12,11 @@
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db BLAZE ; ability 1
+if DEF(FAITHFUL)
 	db BLAZE ; ability 2
+else
+	db FLAME_BODY ; ability 2
+endc
 	db FLASH_FIRE ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
