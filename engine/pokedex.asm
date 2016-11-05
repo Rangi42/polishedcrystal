@@ -1125,22 +1125,38 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	ld bc, 18
 	ld a, " "
 	call ByteFill
+	ld a, [Options2]
+	bit POKEDEX_UNITS, a
+	jr nz, .metric
 	hlcoord 9, 7
-	ld de, .Height
+	ld de, .HeightImperial
 	call Pokedex_PlaceString
 	hlcoord 9, 9
-	ld de, .Weight
+	ld de, .WeightImperial
 	call Pokedex_PlaceString
+	jr .done
+.metric
+	hlcoord 9, 7
+	ld de, .HeightMetric
+	call Pokedex_PlaceString
+	hlcoord 9, 9
+	ld de, .WeightMetric
+	call Pokedex_PlaceString
+.done
 	hlcoord 0, 17
 	ld de, .MenuItems
 	call Pokedex_PlaceString
 	call Pokedex_PlaceFrontpicTopLeftCorner
 	ret
 
-.Height: ; 40852
+.HeightImperial: ; 40852
 	db "Ht  ?", $5f, "??", $60, $ff ; HT  ?'??"
-.Weight: ; 4085c
+.WeightImperial: ; 4085c
 	db "Wt   ???lb", $ff ; WT   ???lb
+.HeightMetric:
+	db "Ht   ???m", $ff ; HT   ???m"
+.WeightMetric:
+	db "Wt   ???kg", $ff ; WT   ???kg
 .MenuItems: ; 40867
 	db $3b, " Page Area Cry     ", $ff
 

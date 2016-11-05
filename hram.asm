@@ -127,4 +127,9 @@ hFFE9              EQU $ffe9
 hFFEA              EQU $ffea
 hClockResetTrigger EQU $ffeb
 
+hTmpd              EQU $fff7
+hTmpe              EQU $fff8
+
+hFastMusicUpdate   EQU $fff9
+
 HRAM_END EQU $ffff

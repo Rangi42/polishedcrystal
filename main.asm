@@ -2110,6 +2110,46 @@ DisplayDexEntry: ; 4424d
 	ld a, d
 	or e
 	jr z, .skip_height
+	ld a, [Options2]
+	bit POKEDEX_UNITS, a
+	jr z, .imperial_height
+
+	push hl
+	ld l, d
+	ld h, e
+	ld bc, -100
+	ld e, 0
+.inchloop
+	ld a, h
+	and a
+	jr nz, .inchloop2
+	ld a, l
+	cp 100
+	jr c, .inchdone
+.inchloop2
+	add hl, bc
+	inc e
+	jr .inchloop
+.inchdone
+	ld a, e
+	ld e, l
+	ld d, 0
+	ld hl, 0
+	ld bc, 12
+	call AddNTimes
+	add hl, de
+	ld b, h
+	ld c, l
+	ld de, 16646 ; 0.254 << 16
+	call Mul16
+	ld de, hTmpd
+	hlcoord 11, 7
+	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	call PrintNum
+	pop hl
+	jr .skip_height
+
+.imperial_height
 	push hl
 	push de
 	ld hl, [sp+$0]
@@ -2135,6 +2175,21 @@ DisplayDexEntry: ; 4424d
 	ld a, e
 	or d
 	jr z, .skip_weight
+	ld a, [Options2]
+	bit POKEDEX_UNITS, a
+	jr z, .imperial_weight
+
+	ld c, d
+	ld b, e
+	ld de, 29726 ; 0.45359237 << 16
+	call Mul16
+	ld de, hTmpd
+	hlcoord 11, 9
+	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	call PrintNum
+	jr .skip_weight
+
+.imperial_weight
 	push de
 	ld hl, [sp+$0]
 	ld d, h
@@ -2197,6 +2252,42 @@ DisplayDexEntry: ; 4424d
 	pop af
 	hlcoord 2, 11
 	call FarString
+	ret
+
+; Metric conversion code by TPP Anniversary Crystal 251
+; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
+Mul16:
+	;[hTmpd][hTmpe]hl = bc * de
+	xor a
+	ld [hTmpd], a
+	ld [hTmpe], a
+	ld hl, 0
+	ld a, 16
+	ld [hProduct], a
+.loop
+	sla l
+	rl h
+	ld a, [hTmpe]
+	rla
+	ld [hTmpe], a
+	ld a, [hTmpd]
+	rla
+	ld [hTmpd], a
+	sla e
+	rl d
+	jr nc, .noadd
+	add hl, bc
+	ld a, [hTmpe]
+	adc 0
+	ld [hTmpe], a
+	ld a, [hTmpd]
+	adc 0
+	ld [hTmpd], a
+.noadd
+	ld a, [hProduct]
+	dec a
+	ld [hProduct], a
+	jr nz, .loop
 	ret
 
 GetDexEntryPointer: ; 44333
