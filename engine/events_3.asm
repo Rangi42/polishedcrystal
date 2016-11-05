@@ -356,6 +356,23 @@ CheckForHiddenItems: ; b8172
 ; b81ea
 
 
+TreeItemEncounter:
+	call Random
+	cp 15 percent
+	jr c, .silver_leaf
+	cp 30 percent
+	jr c, .gold_leaf
+	ld a, NO_ITEM
+	jr .item
+.silver_leaf
+	ld a, SILVER_LEAF
+	jr .item
+.gold_leaf
+	ld a, GOLD_LEAF
+.item
+	ld [ScriptVar], a
+	ret
+
 TreeMonEncounter: ; b81ea
 	xor a
 	ld [TempWildMonSpecies], a
