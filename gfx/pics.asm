@@ -6,7 +6,7 @@ INCLUDE "includes.asm"
 SECTION "Pic Pointers", ROMX[$4000], BANK[PIC_POINTERS]
 PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
 
-SECTION "Unown Pic Pointers", ROMX[$4000], BANK[UNOWN_PIC_POINTERS]
+SECTION "Unown Pic Pointers", ROMX[$4000]
 UnownPicPointers:: INCLUDE "gfx/pics/unown_pic_pointers.asm"
 
 SECTION "Pikachu Pic Pointers", ROMX[$4000]
@@ -22,7 +22,7 @@ SECTION "Mewtwo Pic Pointers", ROMX[$4000]
 MewtwoPicPointers:: INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
-SECTION "Trainer Pic Pointers", ROMX ; , BANK[TRAINER_PIC_POINTERS]
+SECTION "Trainer Pic Pointers", ROMX
 TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
 
 

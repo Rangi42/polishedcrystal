@@ -45,9 +45,6 @@ CREDITS                   EQU $42
 ; gfx/pics.o
 
 PIC_POINTERS              EQU $48
-UNOWN_PIC_POINTERS        EQU $49
-PIKACHU_PIC_POINTERS      EQU $4A
-TRAINER_PIC_POINTERS      EQU $4A
 
 PICS_FIX                  EQU $36
 
@@ -125,7 +122,7 @@ SONGS_5                   EQU $5E
 EXTRA_SONGS_1             EQU $7
 EXTRA_SONGS_2             EQU $33
 EXTRA_SONGS_3             EQU $7D
-;EXTRA_SONGS_4             EQU ?
+EXTRA_SONGS_4             EQU $46
 
 SOUND_EFFECTS             EQU $3C
 CRYSTAL_SOUND_EFFECTS     EQU $5E

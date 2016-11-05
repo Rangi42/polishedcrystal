@@ -5845,10 +5845,6 @@ SECTION "bank43", ROMX, BANK[$43]
 
 INCLUDE "engine/title.asm"
 
-SECTION "bank46", ROMX, BANK[$46]
-
-INCLUDE "event/battle_tower_levels.asm"
-
 SECTION "bank47", ROMX, BANK[$47]
 
 INCLUDE "engine/mobile_47.asm"
