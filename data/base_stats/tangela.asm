@@ -11,7 +11,7 @@
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db CLOROPHYLL ; ability 1
+	db CHLOROPHYLL ; ability 1
 	db LEAF_GUARD ; ability 2
 	db REGENERATOR ; hidden ability
 	db MEDIUM_FAST ; growth rate

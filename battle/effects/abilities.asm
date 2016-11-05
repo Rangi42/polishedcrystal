@@ -656,7 +656,7 @@ ApplySpeedAbilities:
 	call GetBattleVar
 	cp SWIFT_SWIM
 	jr z, .swift_swim
-	cp CLOROPHYLL
+	cp CHLOROPHYLL
 	jr z, .clorophyll
 	cp SAND_RUSH
 	jr z, .sand_rush

@@ -28,7 +28,7 @@ endc
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db CLOROPHYLL ; ability 1
+	db CHLOROPHYLL ; ability 1
 	db SOLAR_POWER ; ability 2
 	db EARLY_BIRD ; hidden ability
 	db MEDIUM_SLOW ; growth rate

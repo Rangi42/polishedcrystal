@@ -129,7 +129,7 @@ NO_NATURE   EQU const_value
 	const LIGHTNING_ROD
 	const SERENE_GRACE
 	const SWIFT_SWIM
-	const CLOROPHYLL
+	const CHLOROPHYLL
 	const ILLUMINATE
 	const TRACE
 	const HUGE_POWER

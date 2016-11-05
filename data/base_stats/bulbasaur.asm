@@ -13,7 +13,7 @@
 	dn 5, 5 ; frontpic dimensions
 	db OVERGROW ; ability 1
 	db OVERGROW ; ability 2
-	db CLOROPHYLL ; hidden ability
+	db CHLOROPHYLL ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, PLANT ; egg groups
 

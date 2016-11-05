@@ -13,7 +13,7 @@
 	dn 7, 7 ; frontpic dimensions
 	db LEAF_GUARD ; ability 1
 	db LEAF_GUARD ; ability 2
-	db CLOROPHYLL ; hidden ability
+	db CHLOROPHYLL ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

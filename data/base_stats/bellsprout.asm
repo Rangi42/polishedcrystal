@@ -11,9 +11,9 @@
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db CLOROPHYLL ; ability 1
-	db CLOROPHYLL ; ability 2
-	db CLOROPHYLL ; hidden ability
+	db CHLOROPHYLL ; ability 1
+	db CHLOROPHYLL ; ability 2
+	db CHLOROPHYLL ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 
