@@ -77,10 +77,10 @@ StringOptions1: ; e4241
 	db "        :<LNBRK>"
 	db "Running Shoes<LNBRK>"
 	db "        :<LNBRK>"
-	db "Nuzlocke Mode<LNBRK>"
-	db "        :<LNBRK>"
 	db "Frame<LNBRK>"
 	db "        :Type<LNBRK>"
+	db "Sound<LNBRK>"
+	db "        :<LNBRK>"
 	db "Next<LNBRK>"
 	db "        <LNBRK>"
 	db "Cancel@"
@@ -95,7 +95,7 @@ StringOptions2:
 	db "        :<LNBRK>"
 	db "#dex Units<LNBRK>"
 	db "        :<LNBRK>"
-	db "Sound<LNBRK>"
+	db "Nuzlocke Mode<LNBRK>"
 	db "        :<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
@@ -129,8 +129,8 @@ endr
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_RunningShoes
-	dw Options_NuzlockeMode
 	dw Options_Frame
+	dw Options_Sound
 	dw Options_NextPrevious
 	dw Options_Cancel
 
@@ -138,7 +138,7 @@ endr
 	dw Options_Abilities
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_Sound
+	dw Options_NuzlockeMode
 	dw Options_Unused
 	dw Options_NextPrevious
 	dw Options_Cancel
@@ -361,49 +361,6 @@ Options_RunningShoes: ; e44c1
 ; e44fa
 
 
-Options_NuzlockeMode: ; e4424
-	ld hl, Options2
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .ToggleOn
-	jr .ToggleOff
-
-.LeftPressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr nz, .ToggleOff
-	jr .ToggleOn
-
-.NonePressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .ToggleOff
-
-.ToggleOn:
-	set NUZLOCKE_MODE, [hl]
-	ld de, .On
-	jr .Display
-
-.ToggleOff:
-	res NUZLOCKE_MODE, [hl]
-	ld de, .Off
-
-.Display:
-	hlcoord 11, 11
-	call PlaceString
-	and a
-	ret
-; e44f2
-
-.On:
-	db "On @"
-.Off:
-	db "Off@"
-; e44c1
-
-
 Options_Frame: ; e44fa
 	ld hl, TextBoxFrame
 	ld a, [hJoyPressed]
@@ -433,13 +390,63 @@ Options_Frame: ; e44fa
 	ld [hl], a
 UpdateFrame: ; e4512
 	ld a, [TextBoxFrame]
-	hlcoord 16, 13 ; where on the screen the number is drawn
+	hlcoord 16, 11 ; where on the screen the number is drawn
 	add "1"
 	ld [hl], a
 	call LoadFontsExtra
 	and a
 	ret
 ; e4520
+
+
+Options_Sound: ; e43dd
+	ld hl, Options
+	ld a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit STEREO, [hl]
+	jr nz, .SetMono
+	jr .SetStereo
+
+.LeftPressed:
+	bit STEREO, [hl]
+	jr z, .SetStereo
+	jr .SetMono
+
+.NonePressed:
+	bit STEREO, [hl]
+	jr nz, .ToggleStereo
+	jr .ToggleMono
+
+.SetMono:
+	res STEREO, [hl]
+	call RestartMapMusic
+
+.ToggleMono:
+	ld de, .Mono
+	jr .Display
+
+.SetStereo:
+	set STEREO, [hl]
+	call RestartMapMusic
+
+.ToggleStereo:
+	ld de, .Stereo
+
+.Display:
+	hlcoord 11, 13
+	call PlaceString
+	and a
+	ret
+; e4416
+
+.Mono:
+	db "Mono  @"
+.Stereo:
+	db "Stereo@"
+; e4424
 
 
 Options_Natures:
@@ -606,54 +613,47 @@ Options_PokedexUnits:
 	db "Metric  @"
 
 
-Options_Sound: ; e43dd
-	ld hl, Options
+Options_NuzlockeMode: ; e4424
+	ld hl, Options2
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
-	bit STEREO, [hl]
-	jr nz, .SetMono
-	jr .SetStereo
+	bit NUZLOCKE_MODE, [hl]
+	jr z, .ToggleOn
+	jr .ToggleOff
 
 .LeftPressed:
-	bit STEREO, [hl]
-	jr z, .SetStereo
-	jr .SetMono
+	bit NUZLOCKE_MODE, [hl]
+	jr nz, .ToggleOff
+	jr .ToggleOn
 
 .NonePressed:
-	bit STEREO, [hl]
-	jr nz, .ToggleStereo
-	jr .ToggleMono
+	bit NUZLOCKE_MODE, [hl]
+	jr z, .ToggleOff
 
-.SetMono:
-	res STEREO, [hl]
-	call RestartMapMusic
-
-.ToggleMono:
-	ld de, .Mono
+.ToggleOn:
+	set NUZLOCKE_MODE, [hl]
+	ld de, .On
 	jr .Display
 
-.SetStereo:
-	set STEREO, [hl]
-	call RestartMapMusic
-
-.ToggleStereo:
-	ld de, .Stereo
+.ToggleOff:
+	res NUZLOCKE_MODE, [hl]
+	ld de, .Off
 
 .Display:
 	hlcoord 11, 11
 	call PlaceString
 	and a
 	ret
-; e4416
+; e44f2
 
-.Mono:
-	db "Mono  @"
-.Stereo:
-	db "Stereo@"
-; e4424
+.On:
+	db "On @"
+.Off:
+	db "Off@"
+; e44c1
 
 
 Options_Unused:
