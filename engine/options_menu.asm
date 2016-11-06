@@ -234,33 +234,21 @@ GetTextSpeed: ; e4346
 Options_BattleScene: ; e4365
 	ld hl, Options1
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit BATTLE_SCENE, [hl]
-	jr nz, .ToggleOn
-	jr .ToggleOff
-
-.LeftPressed:
+	jr z, .SetOff
+	jr .SetOn
+.Toggle
 	bit BATTLE_SCENE, [hl]
-	jr z, .ToggleOff
-	jr .ToggleOn
-
-.NonePressed:
-	bit BATTLE_SCENE, [hl]
-	jr z, .ToggleOn
-	jr .ToggleOff
-
-.ToggleOn:
+	jr z, .SetOn
+.SetOff:
 	res BATTLE_SCENE, [hl]
-	ld de, .On
-	jr .Display
-
-.ToggleOff:
-	set BATTLE_SCENE, [hl]
 	ld de, .Off
-
+	jr .Display
+.SetOn:
+	set BATTLE_SCENE, [hl]
+	ld de, .On
 .Display:
 	hlcoord 11, 5
 	call PlaceString
@@ -268,41 +256,41 @@ Options_BattleScene: ; e4365
 	ret
 ; e4398
 
-.On:
-	db "On @"
 .Off:
 	db "Off@"
+.On:
+	db "On @"
 ; e43a0
 
 
-; TODO: add a third option that hides the Pokémon name
+; TODO: support BATTLE_PREDICT
 Options_BattleStyle: ; e43a0
-	ld hl, Options1
+	ld hl, Options2
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
-	bit BATTLE_SHIFT, [hl]
+	bit BATTLE_SWITCH, [hl]
 	jr nz, .ToggleShift
 	jr .ToggleSet
 
 .LeftPressed:
-	bit BATTLE_SHIFT, [hl]
+	bit BATTLE_SWITCH, [hl]
 	jr z, .ToggleSet
 	jr .ToggleShift
 
 .NonePressed:
-	bit BATTLE_SHIFT, [hl]
+	bit BATTLE_SWITCH, [hl]
 	jr nz, .ToggleSet
 
 .ToggleShift:
-	res BATTLE_SHIFT, [hl]
+	res BATTLE_SWITCH, [hl]
 	ld de, .Set
 	jr .Display
 
 .ToggleSet:
-	set BATTLE_SHIFT, [hl]
+	set BATTLE_SWITCH, [hl]
 	ld de, .Shift
 
 .Display:
@@ -313,41 +301,30 @@ Options_BattleStyle: ; e43a0
 ; e43d1
 
 .Set:
-	db "Set  @"
+	db "Set   @"
 .Shift:
-	db "Shift@"
+	db "Switch@"
 ; e43dd
 
 
 Options_RunningShoes: ; e44c1
 	ld hl, Options2
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit RUNNING_SHOES, [hl]
-	jr z, .ToggleOn
-	jr .ToggleOff
-
-.LeftPressed:
+	jr z, .SetOff
+	jr .SetOn
+.Toggle
 	bit RUNNING_SHOES, [hl]
-	jr nz, .ToggleOff
-	jr .ToggleOn
-
-.NonePressed:
-	bit RUNNING_SHOES, [hl]
-	jr z, .ToggleOff
-
-.ToggleOn:
-	set RUNNING_SHOES, [hl]
-	ld de, .On
-	jr .Display
-
-.ToggleOff:
+	jr z, .SetOn
+.SetOff:
 	res RUNNING_SHOES, [hl]
 	ld de, .Off
-
+	jr .Display
+.SetOn:
+	set RUNNING_SHOES, [hl]
+	ld de, .On
 .Display:
 	hlcoord 11, 9
 	call PlaceString
@@ -355,10 +332,10 @@ Options_RunningShoes: ; e44c1
 	ret
 ; e44f2
 
-.On:
-	db "On @"
 .Off:
 	db "Off@"
+.On:
+	db "On @"
 ; e44fa
 
 
@@ -403,39 +380,21 @@ UpdateFrame: ; e4512
 Options_Sound: ; e43dd
 	ld hl, Options1
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit STEREO, [hl]
-	jr nz, .SetMono
+	jr z, .SetMono
 	jr .SetStereo
-
-.LeftPressed:
+.Toggle
 	bit STEREO, [hl]
 	jr z, .SetStereo
-	jr .SetMono
-
-.NonePressed:
-	bit STEREO, [hl]
-	jr nz, .ToggleStereo
-	jr .ToggleMono
-
 .SetMono:
 	res STEREO, [hl]
-	call RestartMapMusic
-
-.ToggleMono:
 	ld de, .Mono
 	jr .Display
-
 .SetStereo:
 	set STEREO, [hl]
-	call RestartMapMusic
-
-.ToggleStereo:
 	ld de, .Stereo
-
 .Display:
 	hlcoord 11, 13
 	call PlaceString
@@ -453,32 +412,21 @@ Options_Sound: ; e43dd
 Options_ClockFormat:
 	ld hl, Options2
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit CLOCK_FORMAT, [hl]
-	jr z, .Set24Hour
-	jr .Set12Hour
-
-.LeftPressed:
-	bit CLOCK_FORMAT, [hl]
-	jr nz, .Set12Hour
-	jr .Set24Hour
-
-.NonePressed:
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit CLOCK_FORMAT, [hl]
 	jr z, .Set12Hour
-
-.Set24Hour:
-	set CLOCK_FORMAT, [hl]
-	ld de, .TwentyFour
-	jr .Display
-
+	jr .Set24Hour
+.Toggle
+	bit CLOCK_FORMAT, [hl]
+	jr z, .Set24Hour
 .Set12Hour:
 	res CLOCK_FORMAT, [hl]
 	ld de, .Twelve
-
+	jr .Display
+.Set24Hour:
+	set CLOCK_FORMAT, [hl]
+	ld de, .TwentyFour
 .Display:
 	hlcoord 11, 3
 	call PlaceString
@@ -494,32 +442,21 @@ Options_ClockFormat:
 Options_PokedexUnits:
 	ld hl, Options2
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit POKEDEX_UNITS, [hl]
-	jr z, .SetMetric
-	jr .SetImperial
-
-.LeftPressed:
-	bit POKEDEX_UNITS, [hl]
-	jr nz, .SetImperial
-	jr .SetMetric
-
-.NonePressed:
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit POKEDEX_UNITS, [hl]
 	jr z, .SetImperial
-
-.SetMetric:
-	set POKEDEX_UNITS, [hl]
-	ld de, .Metric
-	jr .Display
-
+	jr .SetMetric
+.Toggle
+	bit POKEDEX_UNITS, [hl]
+	jr z, .SetMetric
 .SetImperial:
 	res POKEDEX_UNITS, [hl]
 	ld de, .Imperial
-
+	jr .Display
+.SetMetric:
+	set POKEDEX_UNITS, [hl]
+	ld de, .Metric
 .Display:
 	hlcoord 11, 5
 	call PlaceString
@@ -544,12 +481,10 @@ Options_NextPrevious:
 	jr z, .NonePressed
 	bit 0, [hl]
 	jr z, .Page2
-
 .Page1:
 	res 0, [hl]
 	ld de, StringOptions1
 	jr .Display
-
 .Page2:
 	set 0, [hl]
 	ld de, StringOptions2

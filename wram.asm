@@ -1394,8 +1394,8 @@ Options1:: ; cfcc
 ; bit 3: ?
 ; bit 4: no text delay
 ; bit 5: stereo off/on
-; bit 6: battle style shift/set
-; bit 7: battle scene off/on
+; bit 6: battle scene off/on
+; bit 7: unused
 	ds 1
 
 wSaveFileExists:: ds 1
@@ -1412,6 +1412,9 @@ Options2:: ; cfd1
 ; bit 0: running shoes off/on
 ; bit 1: clock format 12/24-hour
 ; bit 2: pokédex units imperial/metric
+; bit 3: battle style set/switch
+; bit 4: battle style set/predict
+; (bits 3 and 4 are never both set)
 	ds 1
 
 EarlyGameOptions::
@@ -1419,6 +1422,7 @@ EarlyGameOptions::
 ; bit 1: abilities off/on
 ; bit 2: traded behavior off/on
 ; bit 3: nuzlocke mode off/on
+; bit 4-7: unused
 	ds 1
 
 	ds 1

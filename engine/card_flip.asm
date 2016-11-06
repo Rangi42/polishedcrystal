@@ -4,7 +4,7 @@ CARDFLIP_DECK_SIZE EQU 4 * 6
 
 _CardFlip: ; e00ee (38:40ee)
 	ld hl, Options1
-	set 4, [hl]
+	set NO_TEXT_SCROLL, [hl]
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -73,7 +73,7 @@ _CardFlip: ; e00ee (38:40ee)
 	call WaitSFX
 	call ClearBGPalettes
 	ld hl, Options1
-	res 4, [hl]
+	res NO_TEXT_SCROLL, [hl]
 	ret
 
 .CardFlip: ; e0191 (38:4191)

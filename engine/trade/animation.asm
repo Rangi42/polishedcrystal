@@ -111,11 +111,11 @@ RunTradeAnimSequence: ; 28fa1
 	ld hl, VramState
 	ld a, [hl]
 	push af
-	res 0, [hl]
+	res 0, [hl] ; overworld sprite updating on
 	ld hl, Options1
 	ld a, [hl]
 	push af
-	set 4, [hl]
+	set NO_TEXT_SCROLL, [hl]
 	call .TradeAnimLayout
 	ld a, [wcf66]
 	and a

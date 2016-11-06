@@ -420,11 +420,10 @@ Gen2ToGen2LinkComms: ; 28177
 	ld [OtherTrainerClass], a
 	call ClearScreen
 	farcall Link_WaitBGMap
-	ld hl, Options1
+	ld hl, Options2
 	ld a, [hl]
 	push af
-	and $20
-	or $3
+	and $ff - (BATTLE_SWITCH | BATTLE_PREDICT)
 	ld [hl], a
 	ld hl, OTPlayerName
 	ld de, OTClassName
@@ -458,7 +457,7 @@ Gen2ToGen2LinkComms: ; 28177
 	pop af
 	ld [wDisableTextAcceleration], a
 	pop af
-	ld [Options1], a
+	ld [Options2], a
 	farcall LoadPokemonData
 	jp Function28b22
 

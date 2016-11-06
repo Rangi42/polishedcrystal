@@ -164,32 +164,21 @@ GetEarlyGameOptionPointer: ; e42d6
 EarlyGameOptions_Natures:
 	ld hl, EarlyGameOptions
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit NATURES_OPT, [hl]
-	jr z, .Yes
-	jr .No
-
-.LeftPressed:
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
 	bit NATURES_OPT, [hl]
-	jr nz, .No
-	jr .Yes
-
-.NonePressed:
-	bit NATURES_OPT, [hl]
-	jr z, .No
-
-.Yes:
-	set NATURES_OPT, [hl]
-	ld de, YesString
-	jr .Display
-
-.No:
+	jr z, .SetYes
+.SetNo:
 	res NATURES_OPT, [hl]
 	ld de, NoString
-
+	jr .Display
+.SetYes:
+	set NATURES_OPT, [hl]
+	ld de, YesString
 .Display:
 	hlcoord 16, 3
 	call PlaceString
@@ -199,32 +188,21 @@ EarlyGameOptions_Natures:
 EarlyGameOptions_Abilities:
 	ld hl, EarlyGameOptions
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit ABILITIES_OPT, [hl]
-	jr z, .Yes
-	jr .No
-
-.LeftPressed:
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
 	bit ABILITIES_OPT, [hl]
-	jr nz, .No
-	jr .Yes
-
-.NonePressed:
-	bit ABILITIES_OPT, [hl]
-	jr z, .No
-
-.Yes:
-	set ABILITIES_OPT, [hl]
-	ld de, YesString
-	jr .Display
-
-.No:
+	jr z, .SetYes
+.SetNo:
 	res ABILITIES_OPT, [hl]
 	ld de, NoString
-
+	jr .Display
+.SetYes:
+	set ABILITIES_OPT, [hl]
+	ld de, YesString
 .Display:
 	hlcoord 16, 6
 	call PlaceString
@@ -234,32 +212,21 @@ EarlyGameOptions_Abilities:
 EarlyGameOptions_TradedMon:
 	ld hl, EarlyGameOptions
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit TRADED_BEHAVIOR, [hl]
-	jr z, .Yes
-	jr .No
-
-.LeftPressed:
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
 	bit TRADED_BEHAVIOR, [hl]
-	jr nz, .No
-	jr .Yes
-
-.NonePressed:
-	bit TRADED_BEHAVIOR, [hl]
-	jr z, .No
-
-.Yes:
-	set TRADED_BEHAVIOR, [hl]
-	ld de, YesString
-	jr .Display
-
-.No:
+	jr z, .SetYes
+.SetNo:
 	res TRADED_BEHAVIOR, [hl]
 	ld de, NoString
-
+	jr .Display
+.SetYes:
+	set TRADED_BEHAVIOR, [hl]
+	ld de, YesString
 .Display:
 	hlcoord 16, 11
 	call PlaceString
@@ -269,32 +236,21 @@ EarlyGameOptions_TradedMon:
 EarlyGameOptions_NuzlockeMode:
 	ld hl, EarlyGameOptions
 	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
 	bit NUZLOCKE_MODE, [hl]
-	jr z, .Yes
-	jr .No
-
-.LeftPressed:
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
 	bit NUZLOCKE_MODE, [hl]
-	jr nz, .No
-	jr .Yes
-
-.NonePressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .No
-
-.Yes:
-	set NUZLOCKE_MODE, [hl]
-	ld de, YesString
-	jr .Display
-
-.No:
+	jr z, .SetYes
+.SetNo:
 	res NUZLOCKE_MODE, [hl]
 	ld de, NoString
-
+	jr .Display
+.SetYes:
+	set NUZLOCKE_MODE, [hl]
+	ld de, YesString
 .Display:
 	hlcoord 16, 14
 	call PlaceString
@@ -312,10 +268,10 @@ EarlyGameOptions_Done:
 	scf
 	ret
 
-YesString:
-	db "Yes@"
 NoString:
 	db "No @"
+YesString:
+	db "Yes@"
 
 EarlyGameOptionsControl: ; e452a
 	ld hl, wJumptableIndex

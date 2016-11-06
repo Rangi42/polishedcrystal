@@ -50,7 +50,7 @@ WritePartyMenuTilemap: ; 0x5005f
 	ld hl, Options1
 	ld a, [hl]
 	push af
-	set 4, [hl] ; Disable text delay
+	set NO_TEXT_SCROLL, [hl] ; Disable text delay
 	xor a
 	ld [hBGMapMode], a
 	hlcoord 0, 0
@@ -720,7 +720,7 @@ endr
 .gotstring ; 504be
 	ld a, [Options1]
 	push af
-	set 4, a ; disable text delay
+	set NO_TEXT_SCROLL, a ; disable text delay
 	ld [Options1], a
 	hlcoord 1, 16 ; Coord
 	call PlaceString

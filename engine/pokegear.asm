@@ -1973,7 +1973,7 @@ PlayRadio: ; 91a53
 	ld hl, Options1
 	ld a, [hl]
 	push af
-	set 4, [hl]
+	set NO_TEXT_SCROLL, [hl]
 	call .PlayStation
 	ld c, 100
 	call DelayFrames

@@ -2048,7 +2048,7 @@ Music_StereoPanning: ; e89ba
 ; params: 1
 	; stereo on?
 	ld a, [Options1]
-	bit 5, a ; stereo
+	bit STEREO, a
 	jr nz, Music_Panning
 	; skip param
 	call GetMusicByte
@@ -2537,7 +2537,7 @@ endr
 ; This only applies in-battle.
 
 	ld a, [Options1]
-	bit 5, a ; stereo
+	bit STEREO, a ; stereo
 	jr z, .next
 
 ; [Tracks] &= [CryTracks]
@@ -2683,7 +2683,7 @@ PlayStereoSFX:: ; e8ca6
 
 ; standard procedure if stereo's off
 	ld a, [Options1]
-	bit 5, a
+	bit STEREO, a
 	jp z, _PlaySFX
 
 ; else, let's go ahead with this
@@ -3220,7 +3220,7 @@ GetLRTracks: ; e8fc2
 ; gets the default sound l/r channels
 ; stores mono/stereo table in hl
 	ld a, [Options1]
-	bit 5, a ; stereo
+	bit STEREO, a ; stereo
 	; made redundant, could have had a purpose in gold
 	jr nz, .stereo
 	ld hl, MonoTracks

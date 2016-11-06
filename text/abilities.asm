@@ -462,7 +462,7 @@ AbilityDescriptions:
 
 NoAbilityDescription:
 	db   "Abilities are dis-"
-	next "abled in Option.@"
+	next "abled in Options.@"
 
 StenchDescription:
 	db   "May cause the foe"

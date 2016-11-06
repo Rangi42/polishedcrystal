@@ -75,10 +75,12 @@ endr
 ; 17024d
 
 RunBattleTowerTrainer: ; 17024d
-	ld a, [Options1]
+	ld a, [Options2]
 	push af
-	ld hl, Options1
-	res BATTLE_SHIFT, [hl] ; SET MODE
+	; force Set mode
+	ld hl, Options2
+	res BATTLE_SWITCH, [hl]
+	res BATTLE_PREDICT, [hl]
 
 	ld a, [InBattleTowerBattle]
 	push af
@@ -114,7 +116,7 @@ RunBattleTowerTrainer: ; 17024d
 	pop af
 	ld [InBattleTowerBattle], a
 	pop af
-	ld [Options1], a
+	ld [Options2], a
 	ld a, $1
 	ld [wBattleTowerBattleEnded], a
 SkipBattleTowerTrainer: ; 1704c9
