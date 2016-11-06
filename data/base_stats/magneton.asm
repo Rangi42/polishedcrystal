@@ -12,7 +12,11 @@
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db MAGNET_PULL ; ability 1
-	db STURDY ; ability 2
+if DEF(FAITHFUL)
+	db STUDRY ; ability 2
+else
+	db LEVITATE ; ability 2
+endc
 	db ANALYTIC ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups

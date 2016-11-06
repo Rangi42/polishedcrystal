@@ -16,8 +16,12 @@ endc
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db BLAZE ; ability 1
-	db SOLAR_POWER ; ability 2
-	db DROUGHT ; hidden ability
+if DEF(FAITHFUL)
+	db BLAZE ; ability 2
+else
+	db LEVITATE ; ability 2
+endc
+	db SOLAR_POWER ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 
