@@ -263,36 +263,45 @@ Options_BattleScene: ; e4365
 ; e43a0
 
 
-; TODO: support BATTLE_PREDICT
 Options_BattleStyle: ; e43a0
 	ld hl, Options2
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
 	bit D_RIGHT_F, a
-	jr z, .NonePressed
+	jr nz, .RightPressed
 	bit BATTLE_SWITCH, [hl]
-	jr nz, .ToggleShift
-	jr .ToggleSet
-
-.LeftPressed:
-	bit BATTLE_SWITCH, [hl]
-	jr z, .ToggleSet
-	jr .ToggleShift
-
-.NonePressed:
-	bit BATTLE_SWITCH, [hl]
-	jr nz, .ToggleSet
-
-.ToggleShift:
+	jr nz, .SetSwitch
+	bit BATTLE_PREDICT, [hl]
+	jr nz, .SetPredict
+.SetSet:
 	res BATTLE_SWITCH, [hl]
+	res BATTLE_PREDICT, [hl]
 	ld de, .Set
 	jr .Display
 
-.ToggleSet:
-	set BATTLE_SWITCH, [hl]
-	ld de, .Shift
+.LeftPressed:
+	bit BATTLE_SWITCH, [hl]
+	jr nz, .SetSet
+	bit BATTLE_PREDICT, [hl]
+	jr nz, .SetSwitch
+	jr .SetPredict
 
+.RightPressed:
+	bit BATTLE_SWITCH, [hl]
+	jr nz, .SetPredict
+	bit BATTLE_PREDICT, [hl]
+	jr nz, .SetSet
+.SetSwitch:
+	set BATTLE_SWITCH, [hl]
+	res BATTLE_PREDICT, [hl]
+	ld de, .Switch
+	jr .Display
+
+.SetPredict:
+	res BATTLE_SWITCH, [hl]
+	set BATTLE_PREDICT, [hl]
+	ld de, .Predict
 .Display:
 	hlcoord 11, 7
 	call PlaceString
@@ -301,9 +310,11 @@ Options_BattleStyle: ; e43a0
 ; e43d1
 
 .Set:
-	db "Set   @"
-.Shift:
-	db "Switch@"
+	db "Set    @"
+.Switch:
+	db "Switch @"
+.Predict:
+	db "Predict@"
 ; e43dd
 
 

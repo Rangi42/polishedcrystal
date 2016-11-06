@@ -44,7 +44,7 @@ WantsToBattleText:: ; 0x807a9
 	prompt
 ; 0x807bd
 
-PluralWantToBattleText::
+WantToBattleText::
 	text "<ENEMY>"
 	line "want to battle!"
 	prompt
@@ -226,7 +226,7 @@ BattleText_EnemyWasDefeated: ; 0x809da
 	prompt
 ; 0x809eb
 
-BattleText_PluralEnemyWereDefeated:
+BattleText_EnemyWereDefeated:
 	text "<ENEMY>"
 	line "were defeated!"
 	prompt
@@ -271,7 +271,7 @@ LostAgainstText: ; 0x80ab9
 	prompt
 ; 0x80aca
 
-BattleText_EnemyIsAboutToUseWillPlayerChangePkmn: ; 0x80aca
+BattleText_EnemyIsAboutToUseWillPlayerSwitchPkmn: ; 0x80aca
 	text "<ENEMY>"
 	line "is about to use"
 	cont "@"
@@ -283,12 +283,31 @@ BattleText_EnemyIsAboutToUseWillPlayerChangePkmn: ; 0x80aca
 	done
 ; 0x80af8
 
-PluralBattleText_EnemyIsAboutToUseWillPlayerChangePkmn:
+BattleText_EnemyAreAboutToUseWillPlayerSwitchPkmn:
 	text "<ENEMY>"
 	line "are about to use"
 	cont "@"
 	text_from_ram EnemyMonNick
 	text "."
+
+	para "Will <PLAYER>"
+	line "switch #mon?"
+	done
+
+BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn:
+	text "<ENEMY>"
+	line "is about to switch"
+	cont "#mon."
+
+	para "Will <PLAYER>"
+	line "switch #mon?"
+	done
+; 0x80af8
+
+BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn:
+	text "<ENEMY>"
+	line "are about to"
+	cont "switch #mon."
 
 	para "Will <PLAYER>"
 	line "switch #mon?"

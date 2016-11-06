@@ -2439,7 +2439,7 @@ WinTrainerBattle: ; 3cfa4
 	call z, PlayVictoryMusic
 	farcall Battle_GetTrainerName
 
-	ld hl, BattleText_PluralEnemyWereDefeated
+	ld hl, BattleText_EnemyWereDefeated
 	call CheckPluralTrainer
 	jr nz, .PlaceBattleEndText
 	ld hl, BattleText_EnemyWasDefeated
@@ -3573,7 +3573,7 @@ CheckWhetherToAskSwitch: ; 3d714
 	and a
 	jp nz, .return_nc
 	ld a, [Options2]
-	and BATTLE_SWITCH | BATTLE_PREDICT
+	and (1 << BATTLE_SWITCH) | (1 << BATTLE_PREDICT)
 	jr z, .return_nc
 	ld a, [CurPartyMon]
 	push af
@@ -3597,10 +3597,19 @@ OfferSwitch: ; 3d74b
 	push af
 	farcall Battle_GetTrainerName
 
-	ld hl, PluralBattleText_EnemyIsAboutToUseWillPlayerChangePkmn
+	ld a, [Options2]
+	bit BATTLE_PREDICT, a
+	jr nz, .predict
+	ld hl, BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn
 	call CheckPluralTrainer
 	jr nz, .PlaceBattleChangeText
-	ld hl, BattleText_EnemyIsAboutToUseWillPlayerChangePkmn
+	ld hl, BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn
+	jr .PlaceBattleChangeText
+.predict
+	ld hl, BattleText_EnemyAreAboutToUseWillPlayerSwitchPkmn
+	call CheckPluralTrainer
+	jr nz, .PlaceBattleChangeText
+	ld hl, BattleText_EnemyIsAboutToUseWillPlayerSwitchPkmn
 
 .PlaceBattleChangeText
 	call StdBattleTextBox
@@ -9524,7 +9533,7 @@ BattleStartMessage: ; 3fc8b
 
 	farcall Battle_GetTrainerName
 
-	ld hl, PluralWantToBattleText
+	ld hl, WantToBattleText
 	call CheckPluralTrainer
 	jr nz, .PlaceBattleStartText
 	ld hl, WantsToBattleText
