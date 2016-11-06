@@ -2286,7 +2286,7 @@ Rival1Group:
 	db TRAINERTYPE_ITEM
 
 	; party
-	db 5, SENTRET, ORAN_BERRY
+	db 5, SENTRET, NO_ITEM
 	db 5, CHIKORITA, ORAN_BERRY
 
 	db $ff ; end
@@ -2298,7 +2298,7 @@ Rival1Group:
 	db TRAINERTYPE_ITEM
 
 	; party
-	db 5, SENTRET, ORAN_BERRY
+	db 5, SENTRET, NO_ITEM
 	db 5, CYNDAQUIL, ORAN_BERRY
 
 	db $ff ; end
@@ -2310,7 +2310,7 @@ Rival1Group:
 	db TRAINERTYPE_ITEM
 
 	; party
-	db 5, SENTRET, ORAN_BERRY
+	db 5, SENTRET, NO_ITEM
 	db 5, TOTODILE, ORAN_BERRY
 
 	db $ff ; end

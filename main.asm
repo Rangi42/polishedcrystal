@@ -4014,7 +4014,7 @@ CheckBattleScene: ; 4ea44
 ; Return carry if battle scene is turned off.
 	ld a, [Options1]
 	bit BATTLE_SCENE, a
-	jr nz, .off
+	jr z, .off
 	and a
 	ret
 .off
