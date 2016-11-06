@@ -92,7 +92,6 @@ EarlyGameOptionsMenu:
 	inc [hl]
 	dec c
 	jr nz, .print_text_loop
-	call UpdateFrame
 	xor a
 	ld [wJumptableIndex], a
 	inc a
@@ -126,18 +125,18 @@ EarlyGameOptionsMenu:
 
 StringEarlyGameOptions:
 	db "Natures<LNBRK>"
-	db "             :<LNBRK>"
+	db "            :<LNBRK>"
 	db "<LNBRK>"
 	db "Abilities<LNBRK>"
-	db "             :<LNBRK>"
+	db "            :<LNBRK>"
 	db "<LNBRK>"
 	db "Traded #mon<LNBRK>"
 	db "grow faster and<LNBRK>"
 	db "can disobey<LNBRK>"
-	db "             :<LNBRK>"
+	db "            :<LNBRK>"
 	db "<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
-	db "             :<LNBRK>"
+	db "            :<LNBRK>"
 	db "<LNBRK>"
 	db "Done@"
 
@@ -180,7 +179,7 @@ EarlyGameOptions_Natures:
 	set NATURES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 16, 3
+	hlcoord 15, 3
 	call PlaceString
 	and a
 	ret
@@ -204,7 +203,7 @@ EarlyGameOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 16, 6
+	hlcoord 15, 6
 	call PlaceString
 	and a
 	ret
@@ -228,7 +227,7 @@ EarlyGameOptions_TradedMon:
 	set TRADED_BEHAVIOR, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 16, 11
+	hlcoord 15, 11
 	call PlaceString
 	and a
 	ret
@@ -252,7 +251,7 @@ EarlyGameOptions_NuzlockeMode:
 	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 16, 14
+	hlcoord 15, 14
 	call PlaceString
 	and a
 	ret
