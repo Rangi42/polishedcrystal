@@ -1,4 +1,4 @@
-EarlyGameOptions:
+SetEarlyGameOptions:
 	call InitEarlyGameOptionsScreen
 	call LoadEarlyGameOptionsScreenPal
 	call LoadEarlyGameOptionsScreenGFX
@@ -169,7 +169,7 @@ EarlyGameOptions_Natures:
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
 	bit NATURES_OPT, [hl]
-	jr nz, .Yes
+	jr z, .Yes
 	jr .No
 
 .LeftPressed:
@@ -315,7 +315,7 @@ EarlyGameOptions_Done:
 YesString:
 	db "Yes@"
 NoString:
-	db "No@"
+	db "No @"
 
 EarlyGameOptionsControl: ; e452a
 	ld hl, wJumptableIndex

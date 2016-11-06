@@ -1406,6 +1406,8 @@ TextBoxFrame:: ; cfce
 TextBoxFlags::
 	ds 1
 
+	ds 1
+
 Options2:: ; cfd1
 ; bit 0: running shoes off/on
 ; bit 1: clock format 12/24-hour
@@ -1419,7 +1421,7 @@ EarlyGameOptions::
 ; bit 3: nuzlocke mode off/on
 	ds 1
 
-	ds 2
+	ds 1
 OptionsEnd::
 
 ; Time buffer, for counting the amount of time since

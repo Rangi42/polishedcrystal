@@ -79,7 +79,7 @@ NewGame: ; 5b6b
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
 	call InitCrystalData
-	call EarlyGameOptions
+	call SetEarlyGameOptions
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
