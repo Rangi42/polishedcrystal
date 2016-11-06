@@ -1676,7 +1676,7 @@ GetNature::
 ; returns nature in b
 	ld a, [EarlyGameOptions]
 	bit NATURES_OPT, a
-	jr nz, .no_nature
+	jr z, .no_nature
 	ld a, b
 	and NATURE_MASK
 	; assume nature is 0-24
@@ -1694,7 +1694,7 @@ GetAbility::
 ; preserves curspecies and base data
 	ld a, [EarlyGameOptions]
 	bit ABILITIES_OPT, a
-	jr nz, .no_ability
+	jr z, .no_ability
 	push de
 	ld a, [CurSpecies]
 	ld d, a
