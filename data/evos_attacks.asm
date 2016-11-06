@@ -18,9 +18,9 @@ BulbasaurEvosAttacks:
 	db 9, VINE_WHIP
 	db 13, POISONPOWDER
 	db 13, SLEEP_POWDER
-	db 15, TAKE_DOWN
+	db 15, SAFEGUARD ; Take Down → egg move
 	db 19, RAZOR_LEAF
-	db 21, SAFEGUARD ; Sweet Scent → egg move
+	db 21, TAKE_DOWN ; Sweet Scent → Take Down
 	db 25, GROWTH
 	db 27, DOUBLE_EDGE
 	db 31, ANCIENTPOWER ; Worry Seed → event move
@@ -38,9 +38,9 @@ IvysaurEvosAttacks:
 	db 9, VINE_WHIP
 	db 13, POISONPOWDER
 	db 13, SLEEP_POWDER
-	db 15, TAKE_DOWN
+	db 15, SAFEGUARD ; Take Down → egg move
 	db 20, RAZOR_LEAF
-	db 23, SAFEGUARD ; Sweet Scent → egg move
+	db 23, TAKE_DOWN ; Sweet Scent → Take Down
 	db 28, GROWTH
 	db 31, DOUBLE_EDGE
 	db 36, ANCIENTPOWER ; Worry Seed → event move
@@ -58,9 +58,9 @@ VenusaurEvosAttacks:
 	db 9, VINE_WHIP
 	db 13, POISONPOWDER
 	db 13, SLEEP_POWDER
-	db 15, TAKE_DOWN
+	db 15, SAFEGUARD ; Take Down → egg move
 	db 20, RAZOR_LEAF
-	db 23, SAFEGUARD ; Sweet Scent → egg move
+	db 23, TAKE_DOWN ; Sweet Scent → Take Down
 	db 28, GROWTH
 	db 31, DOUBLE_EDGE
 	db 32, PETAL_DANCE
@@ -1321,8 +1321,8 @@ GeodudeEvosAttacks:
 	db 10, ROLLOUT
 	db 12, MAGNITUDE
 	db 16, ROCK_THROW
-	db 18, TAKE_DOWN ; Smack Down → RBY TM move
-	db 22, ANCIENTPOWER ; Bulldoze → HGSS tutor move
+	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
+	db 22, TAKE_DOWN ; Bulldoze → RBY TM move
 	db 24, SELFDESTRUCT
 	db 28, ROCK_SLIDE ; Stealth Rock → egg move
 	db 30, FLAIL ; Rock Blast → egg move
@@ -1342,8 +1342,8 @@ GravelerEvosAttacks:
 	db 10, ROLLOUT
 	db 12, MAGNITUDE
 	db 16, ROCK_THROW
-	db 18, TAKE_DOWN ; Smack Down → RBY TM move
-	db 22, ANCIENTPOWER ; Bulldoze → HGSS tutor move
+	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
+	db 22, TAKE_DOWN ; Bulldoze → RBY TM move
 	db 24, SELFDESTRUCT
 	db 30, ROCK_SLIDE ; Stealth Rock → egg move
 	db 34, FLAIL ; Rock Blast → egg move
@@ -1362,8 +1362,8 @@ GolemEvosAttacks:
 	db 10, ROLLOUT
 	db 12, MAGNITUDE
 	db 16, ROCK_THROW
-	db 18, TAKE_DOWN ; Smack Down → RBY TM move
-	db 22, ANCIENTPOWER ; Bulldoze → HGSS tutor move
+	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
+	db 22, TAKE_DOWN ; Bulldoze → RBY TM move
 	db 24, SELFDESTRUCT
 	db 30, ROCK_SLIDE ; Stealth Rock → egg move
 	db 34, FLAIL ; Rock Blast → egg move
@@ -2635,8 +2635,8 @@ SnorlaxEvosAttacks:
 	db 4, DEFENSE_CURL
 	db 9, CALM_MIND ; Amnesia → TM move
 	db 12, LICK
-	db 17, TAKE_DOWN ; Chip Away → RBY TM move
-	db 20, RAGE ; Yawn → RBY TM move
+	db 17, RAGE ; Chip Away → RBY TM move
+	db 20, TAKE_DOWN ; Yawn → RBY TM move
 	db 25, BODY_SLAM
 	db 28, REST
 	db 33, SLEEP_TALK
@@ -3241,8 +3241,8 @@ MunchlaxEvosAttacks:
 	db 4, DEFENSE_CURL
 	db 9, CALM_MIND ; Amnesia → TM move
 	db 12, LICK
-	db 17, TAKE_DOWN ; Chip Away → RBY TM move
-	db 20, RAGE ; Screech → RBY TM move
+	db 17, RAGE ; Chip Away → RBY TM move
+	db 20, TAKE_DOWN ; Screech → RBY TM move
 	db 25, BODY_SLAM
 	db 28, SCREECH ; Stockpile → Screech
 	db 33, PROTECT ; Swallow → TM move
@@ -3348,8 +3348,8 @@ MareepEvosAttacks:
 	db 8, THUNDERSHOCK
 	db 11, SAND_ATTACK ; Cotton Spore → egg move
 	db 15, SPARK ; Charge → new move
-	db 18, TAKE_DOWN
-	db 22, HEAL_BELL ; Electro Ball → HGSS tutor move
+	db 18, HEAL_BELL ; Take Down → HGSS tutor move
+	db 22, TAKE_DOWN ; Electro Ball → Take Down
 	db 25, CONFUSE_RAY
 	db 29, POWER_GEM
 	db 32, THUNDERBOLT ; Discharge → TM move
@@ -3368,8 +3368,8 @@ FlaaffyEvosAttacks:
 	db 8, THUNDERSHOCK
 	db 11, SAND_ATTACK ; Cotton Spore → egg move
 	db 16, SPARK ; Charge → new move
-	db 20, TAKE_DOWN
-	db 25, HEAL_BELL ; Electro Ball → HGSS tutor move
+	db 20, HEAL_BELL ; Take Down → HGSS tutor move
+	db 25, TAKE_DOWN ; Electro Ball → Take Down
 	db 29, CONFUSE_RAY
 	db 34, POWER_GEM
 	db 38, THUNDERBOLT ; Discharge → TM move
@@ -3387,8 +3387,8 @@ AmpharosEvosAttacks:
 	db 8, THUNDERSHOCK
 	db 11, SAND_ATTACK ; Cotton Spore → egg move
 	db 16, SPARK ; Charge → new move
-	db 20, TAKE_DOWN
-	db 25, HEAL_BELL ; Electro Ball → HGSS tutor move
+	db 18, HEAL_BELL ; Take Down → HGSS tutor move
+	db 22, TAKE_DOWN ; Electro Ball → Take Down
 	db 29, CONFUSE_RAY
 	db 30, THUNDERPUNCH
 	db 30, FIRE_PUNCH
@@ -3787,10 +3787,10 @@ PinecoEvosAttacks:
 	db 1, PROTECT
 	db 6, SELFDESTRUCT
 	db 9, DEFENSE_CURL ; Bug Bite → TM move
-	db 12, TAKE_DOWN
+	db 12, SUBSTITUTE ; Take Down → event move
 	db 17, RAPID_SPIN
 	db 20, SWIFT ; Bide → egg move
-	db 23, SUBSTITUTE ; Natural Gift → event move
+	db 23, TAKE_DOWN ; Natural Gift → Take Down
 	db 28, SPIKES
 	db 31, FLAIL ; Payback → egg move
 	db 34, EXPLOSION
@@ -3805,10 +3805,10 @@ ForretressEvosAttacks:
 	db 1, PROTECT
 	db 6, SELFDESTRUCT
 	db 9, DEFENSE_CURL ; Bug Bite → TM move
-	db 12, TAKE_DOWN
+	db 12, SUBSTITUTE ; Take Down → event move
 	db 17, RAPID_SPIN
 	db 20, SWIFT ; Bide → egg move
-	db 23, SUBSTITUTE ; Natural Gift → event move
+	db 23, TAKE_DOWN ; Natural Gift → Take Down
 	db 28, SPIKES
 	db 31, FLASH_CANNON ; Mirror Shot → TM move
 	db 32, AGILITY ; Autotomize → similar move
