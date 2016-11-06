@@ -119,13 +119,13 @@ MainMenu_PrintCurrentTimeAndDay: ; 49e09
 	xor a
 	ld [hBGMapMode], a
 	call .PlaceBox
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call .PlaceTime
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ld a, $1
 	ld [hBGMapMode], a
 	ret

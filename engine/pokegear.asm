@@ -1,5 +1,5 @@
 PokeGear: ; 90b8d (24:4b8d)
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -33,7 +33,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	pop af
 	ld [hInMenu], a
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	call ClearBGPalettes
 	xor a
 	ld [hBGMapAddress], a
@@ -900,7 +900,7 @@ PokegearPhone_MakePhoneCall: ; 911eb (24:51eb)
 	call GetMapHeaderPhoneServiceNybble
 	and a
 	jr nz, .no_service
-	ld hl, Options
+	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	xor a
 	ld [hInMenu], a
@@ -919,7 +919,7 @@ PokegearPhone_MakePhoneCall: ; 911eb (24:51eb)
 	call Function90199
 	ld c, 10
 	call DelayFrames
-	ld hl, Options
+	ld hl, Options1
 	set NO_TEXT_SCROLL, [hl]
 	ld a, $1
 	ld [hInMenu], a
@@ -1800,7 +1800,7 @@ PokeFluteStationName: db "# Flute@"
 ; 9191c
 
 _TownMap: ; 9191c
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -1869,7 +1869,7 @@ _TownMap: ; 9191c
 	pop af
 	ld [hInMenu], a
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	call ClearBGPalettes
 	ret
 
@@ -1970,7 +1970,7 @@ _TownMap: ; 9191c
 ; 91a53
 
 PlayRadio: ; 91a53
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -1996,7 +1996,7 @@ PlayRadio: ; 91a53
 
 .stop
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	call ExitPokegearRadio_HandleMusic
 	ret
 

@@ -3,7 +3,7 @@ TrainerCard: ; 25105
 	push af
 	xor a
 	ld [VramState], a
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -23,7 +23,7 @@ TrainerCard: ; 25105
 
 .quit
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	pop af
 	ld [VramState], a
 	ret

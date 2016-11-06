@@ -67,7 +67,7 @@ sLuckyNumberDay:: ds 1
 sLuckyIDNumber:: ds 2
 
 SECTION "Backup Save", SRAM [$b200], BANK [0]
-sBackupOptions:: ds OptionsEnd - Options
+sBackupOptions:: ds OptionsEnd - Options1
 
 s0_b208:: ds 1 ; loaded with 99, used to check save corruption
 
@@ -88,7 +88,7 @@ sStackTop:: ds 2
 
 SECTION "Save", SRAM, BANK [1]
 
-sOptions:: ds OptionsEnd - Options
+sOptions:: ds OptionsEnd - Options1
 
 s1_a008:: ds 1 ; loaded with 99, used to check save corruption
 

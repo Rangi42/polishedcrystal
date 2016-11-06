@@ -3,7 +3,7 @@ CARDFLIP_LIGHT_ON  EQU $f5
 CARDFLIP_DECK_SIZE EQU 4 * 6
 
 _CardFlip: ; e00ee (38:40ee)
-	ld hl, Options
+	ld hl, Options1
 	set 4, [hl]
 	call ClearBGPalettes
 	call ClearTileMap
@@ -72,7 +72,7 @@ _CardFlip: ; e00ee (38:40ee)
 	call PlaySFX
 	call WaitSFX
 	call ClearBGPalettes
-	ld hl, Options
+	ld hl, Options1
 	res 4, [hl]
 	ret
 

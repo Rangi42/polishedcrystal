@@ -248,17 +248,17 @@ SavedTheGame: ; 14be6
 	ld c, $20
 	call DelayFrames
 	; copy the original text speed setting to the stack
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	; set text speed super slow
 	ld a, 3
-	ld [Options], a
+	ld [Options1], a
 	; <PLAYER> saved the game!
 	ld hl, UnknownText_0x1528d
 	call PrintText
 	; restore the original text speed setting
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ld de, SFX_SAVE
 	call WaitPlaySFX
 	call WaitSFX
@@ -348,17 +348,17 @@ SavingDontTurnOffThePower: ; 14c99
 	ld [hJoypadSum], a
 	ld [hJoypadDown], a
 	; Save the text speed setting to the stack
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	; Set the text speed to super slow
 	ld a, $3
-	ld [Options], a
+	ld [Options1], a
 	; SAVING... DON'T TURN OFF THE POWER.
 	ld hl, UnknownText_0x15288
 	call PrintText
 	; Restore the text speed setting
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	; Wait for 16 frames
 	ld c, $10
 	call DelayFrames
@@ -475,11 +475,11 @@ ValidateSave: ; 14da9
 SaveOptions: ; 14dbb
 	ld a, BANK(sOptions)
 	call GetSRAMBank
-	ld hl, Options
+	ld hl, Options1
 	ld de, sOptions
-	ld bc, OptionsEnd - Options
+	ld bc, OptionsEnd - Options1
 	call CopyBytes
-	ld a, [Options]
+	ld a, [Options1]
 	and $ff ^ (1 << NO_TEXT_SCROLL)
 	ld [sOptions], a
 	jp CloseSRAM
@@ -544,9 +544,9 @@ ValidateBackupSave: ; 14e2d
 SaveBackupOptions: ; 14e40
 	ld a, BANK(sBackupOptions)
 	call GetSRAMBank
-	ld hl, Options
+	ld hl, Options1
 	ld de, sBackupOptions
-	ld bc, OptionsEnd - Options
+	ld bc, OptionsEnd - Options1
 	call CopyBytes
 	call CloseSRAM
 	ret
@@ -624,14 +624,14 @@ TryLoadSaveFile: ; 14ea5 (5:4ea5)
 	ret
 
 .corrupt
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	set NO_TEXT_SCROLL, a
-	ld [Options], a
+	ld [Options1], a
 	ld hl, UnknownText_0x1529c
 	call PrintText
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	scf
 	ret
 
@@ -678,15 +678,15 @@ TryLoadSaveData: ; 14f1c
 
 .corrupt
 	ld hl, DefaultOptions
-	ld de, Options
-	ld bc, OptionsEnd - Options
+	ld de, Options1
+	ld bc, OptionsEnd - Options1
 	call CopyBytes
 	call PanicResetClock
 	ret
 ; 14f7c
 
 DefaultOptions: ; 14f7c
-	db %00100001 ; Options: fast text speed, stereo sound, set battle mode,
+	db %00100001 ; Options1: fast text speed, stereo sound, set battle mode,
 	             ;          battle scene on
 	db $00       ; wSaveFileExists: no
 	db $00       ; TextBoxFrame: frame 0
@@ -708,8 +708,8 @@ CheckPrimarySaveFile: ; 14f84
 	cp " "
 	jr nz, .nope
 	ld hl, sOptions
-	ld de, Options
-	ld bc, OptionsEnd - Options
+	ld de, Options1
+	ld bc, OptionsEnd - Options1
 	call CopyBytes
 	call CloseSRAM
 	ld a, $1
@@ -730,8 +730,8 @@ CheckBackupSaveFile: ; 14faf
 	cp " "
 	jr nz, .nope
 	ld hl, sBackupOptions
-	ld de, Options
-	ld bc, OptionsEnd - Options
+	ld de, Options1
+	ld bc, OptionsEnd - Options1
 	call CopyBytes
 	ld a, $2
 	ld [wSaveFileExists], a

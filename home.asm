@@ -265,15 +265,15 @@ INCLUDE "home/math.asm"
 PrintLetterDelay:: ; 313d
 ; Wait before printing the next letter.
 
-; The text speed setting in Options is actually a frame count:
+; The text speed setting in Options1 is actually a frame count:
 ; 	fast: 1 frame
 ; 	mid:  3 frames
 ; 	slow: 5 frames
 
 ; TextBoxFlags[!0] and A or B override text speed with a one-frame delay.
-; Options[4] and TextBoxFlags[!1] disable the delay.
+; Options1[4] and TextBoxFlags[!1] disable the delay.
 
-	ld a, [Options]
+	ld a, [Options1]
 	bit NO_TEXT_SCROLL, a
 	ret nz
 
@@ -300,7 +300,7 @@ PrintLetterDelay:: ; 313d
 	jr z, .fast
 
 ; text speed
-	ld a, [Options]
+	ld a, [Options1]
 	and %111
 	jr .updatedelay
 

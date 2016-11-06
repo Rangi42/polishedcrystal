@@ -1377,7 +1377,7 @@ MonMenu_RockSmash: ; 12f3b
 ; 12f50
 
 ChooseMoveToDelete: ; 12f5b
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -1385,7 +1385,7 @@ ChooseMoveToDelete: ; 12f5b
 	call .asm_12f73
 	pop bc
 	ld a, b
-	ld [Options], a
+	ld [Options1], a
 	push af
 	call ClearBGPalettes
 	pop af
@@ -1445,13 +1445,13 @@ ManagePokemonMoves: ; 12fba
 	ld a, [CurPartySpecies]
 	cp EGG
 	jr z, .egg
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call MoveScreenLoop
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	call ClearBGPalettes
 
 .egg

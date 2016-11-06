@@ -103,7 +103,7 @@ ResetWRAM: ; 5ba7
 _ResetWRAM: ; 5bae
 
 	ld hl, Sprites
-	ld bc, Options - Sprites
+	ld bc, Options1 - Sprites
 	xor a
 	call ByteFill
 

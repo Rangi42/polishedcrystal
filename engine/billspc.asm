@@ -1,5 +1,5 @@
 _DepositPKMN: ; e2391 (38:6391)
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -32,7 +32,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	pop af
 	ld [VramState], a
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 
 .RunJumptable: ; e23d5 (38:63d5)
@@ -252,7 +252,7 @@ BillsPCDepositMenuDataHeader: ; 0xe253d (38:653d)
 ; 0xe2564 (38:6564)
 
 _WithdrawPKMN: ; e2583 (38:6583)
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -285,7 +285,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	pop af
 	ld [VramState], a
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 
 .RunJumptable: ; e25c8 (38:65c8)
@@ -496,7 +496,7 @@ endr
 ; 0xe2759
 
 _MovePKMNWithoutMail: ; e2759
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -532,7 +532,7 @@ _MovePKMNWithoutMail: ; e2759
 	pop af
 	ld [VramState], a
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 ; e27a2
 

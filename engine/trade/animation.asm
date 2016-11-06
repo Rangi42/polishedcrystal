@@ -112,7 +112,7 @@ RunTradeAnimSequence: ; 28fa1
 	ld a, [hl]
 	push af
 	res 0, [hl]
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -126,7 +126,7 @@ RunTradeAnimSequence: ; 28fa1
 	call DoTradeAnimation
 	jr nc, .anim_loop
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	pop af
 	ld [VramState], a
 	pop af

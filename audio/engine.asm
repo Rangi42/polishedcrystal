@@ -2047,7 +2047,7 @@ Music_StereoPanning: ; e89ba
 ; stereo panning
 ; params: 1
 	; stereo on?
-	ld a, [Options]
+	ld a, [Options1]
 	bit 5, a ; stereo
 	jr nz, Music_Panning
 	; skip param
@@ -2536,7 +2536,7 @@ endr
 ; Stereo only: Play cry from the monster's side.
 ; This only applies in-battle.
 
-	ld a, [Options]
+	ld a, [Options1]
 	bit 5, a ; stereo
 	jr z, .next
 
@@ -2682,7 +2682,7 @@ PlayStereoSFX:: ; e8ca6
 	call MusicOff
 
 ; standard procedure if stereo's off
-	ld a, [Options]
+	ld a, [Options1]
 	bit 5, a
 	jp z, _PlaySFX
 
@@ -3219,7 +3219,7 @@ Kick2: ; e8fbb
 GetLRTracks: ; e8fc2
 ; gets the default sound l/r channels
 ; stores mono/stereo table in hl
-	ld a, [Options]
+	ld a, [Options1]
 	bit 5, a ; stereo
 	; made redundant, could have had a purpose in gold
 	jr nz, .stereo

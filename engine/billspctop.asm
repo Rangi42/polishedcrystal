@@ -24,14 +24,14 @@ _BillsPC: ; e3fd
 	ld [hBGMapMode], a
 	call LoadStandardMenuDataHeader
 	call ClearPCItemScreen
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	ld hl, .Text_What
 	call PrintText
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	call LoadFontsBattleExtra
 	ret
 

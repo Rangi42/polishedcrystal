@@ -34,7 +34,7 @@ RestartClock: ; 20021 (8:4021)
 ; If we're here, we had an RTC overflow.
 	ld hl, .Text_ClockTimeMayBeWrong
 	call PrintText
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -45,7 +45,7 @@ RestartClock: ; 20021 (8:4021)
 	call .SetClock
 	call ExitMenu
 	pop bc
-	ld hl, Options
+	ld hl, Options1
 	ld [hl], b
 	ld c, a
 	ret

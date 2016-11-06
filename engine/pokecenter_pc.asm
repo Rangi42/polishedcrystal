@@ -290,13 +290,13 @@ LOG_OFF       EQU 6
 	db -1
 
 PC_DisplayTextWaitMenu: ; 157bb
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	set NO_TEXT_SCROLL, a
-	ld [Options], a
+	ld [Options1], a
 	call MenuTextBox
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 ; 157cc
 

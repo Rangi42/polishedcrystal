@@ -341,7 +341,7 @@ CherishBall: ; e8a2
 	cp PARK_BALL
 	call nz, ReturnToBattle_UseBall
 
-	ld hl, Options
+	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, UsedItemText
 	call PrintText

@@ -174,10 +174,10 @@ Options_TextSpeed: ; e42f5
 
 .Save:
 	ld b, a
-	ld a, [Options]
+	ld a, [Options1]
 	and $f0
 	or b
-	ld [Options], a
+	ld [Options1], a
 
 .NonePressed:
 	ld b, 0
@@ -209,7 +209,7 @@ endr
 
 
 GetTextSpeed: ; e4346
-	ld a, [Options] ; This converts the number of frames, to 0, 1, 2 representing speed
+	ld a, [Options1] ; This converts the number of frames, to 0, 1, 2 representing speed
 	and 7
 	cp 5 ; 5 frames of delay is slow
 	jr z, .slow
@@ -232,7 +232,7 @@ GetTextSpeed: ; e4346
 
 
 Options_BattleScene: ; e4365
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
@@ -277,7 +277,7 @@ Options_BattleScene: ; e4365
 
 ; TODO: add a third option that hides the Pokémon name
 Options_BattleStyle: ; e43a0
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
@@ -401,7 +401,7 @@ UpdateFrame: ; e4512
 
 
 Options_Sound: ; e43dd
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed

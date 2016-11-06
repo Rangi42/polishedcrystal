@@ -23,7 +23,7 @@ Pokedex: ; 40000
 	push hl
 	ld a, [hSCX]
 	push af
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -63,7 +63,7 @@ Pokedex: ; 40000
 	pop af
 	ld [VramState], a
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	pop af
 	ld [hSCX], a
 	pop hl

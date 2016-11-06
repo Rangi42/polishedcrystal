@@ -3572,7 +3572,7 @@ CheckWhetherToAskSwitch: ; 3d714
 	ld a, [wLinkMode]
 	and a
 	jp nz, .return_nc
-	ld a, [Options]
+	ld a, [Options1]
 	bit BATTLE_SHIFT, a
 	jr z, .return_nc
 	ld a, [CurPartyMon]

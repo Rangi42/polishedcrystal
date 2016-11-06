@@ -152,7 +152,7 @@ Elevator_WhichFloorText: ; 0x1350d
 
 
 Elevator_GetCurrentFloorText: ; 13512
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -166,7 +166,7 @@ Elevator_GetCurrentFloorText: ; 13512
 	hlcoord 4, 4
 	call Elevator_GetCurrentFloorString
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 ; 13537
 

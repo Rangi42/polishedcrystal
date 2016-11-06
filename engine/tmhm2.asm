@@ -319,7 +319,7 @@ endr
 ; 2cb52
 
 AskTeachTMHM: ; 2c7bf (b:47bf)
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
@@ -342,7 +342,7 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	call YesNoBox
 	pop bc
 	ld a, b
-	ld [Options], a
+	ld [Options1], a
 	ret
 
 ChooseMonToLearnTMHM: ; 2c7fb

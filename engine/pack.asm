@@ -1,5 +1,5 @@
 Pack: ; 10000
-	ld hl, Options
+	ld hl, Options1
 	set NO_TEXT_SCROLL, [hl]
 	call InitPackBuffers
 .loop
@@ -14,7 +14,7 @@ Pack: ; 10000
 .done
 	ld a, [wCurrPocket]
 	ld [wLastPocket], a
-	ld hl, Options
+	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	ret
 ; 10026
@@ -196,13 +196,13 @@ Pack: ; 10000
 	ret c
 	farcall ChooseMonToLearnTMHM
 	jr c, .declined
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
 	farcall TeachTMHM
 	pop af
-	ld [Options], a
+	ld [Options1], a
 .declined
 	xor a
 	ld [hBGMapMode], a
@@ -587,10 +587,10 @@ GiveItem: ; 103fd
 	ld a, [PartyCount]
 	and a
 	jp z, .NoPokemon
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	res NO_TEXT_SCROLL, a
-	ld [Options], a
+	ld [Options1], a
 	ld a, $8
 	ld [PartyMenuActionText], a
 	call ClearBGPalettes
@@ -629,7 +629,7 @@ GiveItem: ; 103fd
 	ld [wJumptableIndex], a
 .finish
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	xor a
 	ld [hBGMapMode], a
 	call Pack_InitGFX
@@ -653,7 +653,7 @@ QuitItemSubmenu: ; 10492
 ; 10493
 
 BattlePack: ; 10493
-	ld hl, Options
+	ld hl, Options1
 	set NO_TEXT_SCROLL, [hl]
 	call InitPackBuffers
 .loop
@@ -668,7 +668,7 @@ BattlePack: ; 10493
 .end
 	ld a, [wCurrPocket]
 	ld [wLastPocket], a
-	ld hl, Options
+	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	ret
 ; 104b9
@@ -1355,13 +1355,13 @@ Pack_QuitRunScript: ; 1087e (4:487e)
 	ret
 
 Pack_PrintTextNoScroll: ; 10889 (4:4889)
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	set NO_TEXT_SCROLL, a
-	ld [Options], a
+	ld [Options1], a
 	call PrintText
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 
 WaitBGMap_DrawPackGFX: ; 1089a (4:489a)

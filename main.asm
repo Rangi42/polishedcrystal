@@ -921,7 +921,7 @@ ShowMoney_TerminatorString: ; 24b8e
 
 Function24b8f: ; 24b8f
 ; unreferenced, related to safari
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -944,7 +944,7 @@ Function24b8f: ; 24b8f
 	lb bc, 1, 2
 	call PrintNum
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 
 .slash_500 ; 24bcf
@@ -960,7 +960,7 @@ StartMenu_DrawBugContestStatusBox: ; 24bdc
 	ret
 
 StartMenu_PrintBugContestStatus: ; 24be7
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -1000,7 +1000,7 @@ StartMenu_PrintBugContestStatus: ; 24be7
 
 .skip_level
 	pop af
-	ld [Options], a
+	ld [Options1], a
 	ret
 
 .Caught: ; 24c4b
@@ -3874,11 +3874,11 @@ CatchTutorial:: ; 4e554
 	xor a
 	ld [hJoyDown], a
 	ld [hJoyPressed], a
-	ld a, [Options]
+	ld a, [Options1]
 	push af
 	and $f8
 	add $3
-	ld [Options], a
+	ld [Options1], a
 	ld hl, .AutoInput
 	ld a, BANK(.AutoInput)
 	call StartAutoInput
@@ -3886,7 +3886,7 @@ CatchTutorial:: ; 4e554
 	call StopAutoInput
 	pop af
 
-	ld [Options], a
+	ld [Options1], a
 	ld hl, ExtraName
 	ld de, PlayerName
 	ld bc, NAME_LENGTH
@@ -4012,7 +4012,7 @@ INCLUDE "battle/sliding_intro.asm"
 
 CheckBattleScene: ; 4ea44
 ; Return carry if battle scene is turned off.
-	ld a, [Options]
+	ld a, [Options1]
 	bit BATTLE_SCENE, a
 	jr nz, .off
 	and a
@@ -5621,7 +5621,7 @@ DisplayCaughtContestMonStats: ; cc000
 	call ClearSprites
 	call LoadFontsBattleExtra
 
-	ld hl, Options
+	ld hl, Options1
 	ld a, [hl]
 	push af
 	set 4, [hl]
@@ -5688,7 +5688,7 @@ DisplayCaughtContestMonStats: ; cc000
 	call PrintText
 
 	pop af
-	ld [Options], a
+	ld [Options1], a
 
 	call WaitBGMap
 	ld b, SCGB_08

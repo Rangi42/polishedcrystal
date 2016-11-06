@@ -8,7 +8,7 @@ SLOTS_STARYU EQU $14
 REEL_SIZE EQU 15
 
 _SlotMachine:
-	ld hl, Options
+	ld hl, Options1
 	set NO_TEXT_SCROLL, [hl]
 	call .InitGFX
 	call DelayFrame
@@ -20,7 +20,7 @@ _SlotMachine:
 	call PlaySFX
 	call WaitSFX
 	call ClearBGPalettes
-	ld hl, Options
+	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC ; $ff40
 	res 2, [hl]
