@@ -53,6 +53,8 @@ INCLUDE "engine/map_objects.asm"
 
 INCLUDE "engine/intro_menu.asm"
 
+INCLUDE "engine/early_game_options.asm"
+
 Function6454:: ; 6454
 	call DelayFrame
 	ld a, [hOAMUpdate]
@@ -3564,7 +3566,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ret
 
 GiveANickname_YesNo: ; 4db3b
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 	ld hl, TextJump_GiveANickname

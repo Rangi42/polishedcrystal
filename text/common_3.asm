@@ -1113,6 +1113,12 @@ UnknownText_0x1c1cf3::
 	line "on Select Button."
 	done
 
+_EarlyGameOptionsText::
+	text "Please choose how"
+	line "you want to play"
+	cont "Polished Crystal."
+	prompt
+
 _OakText1::
 	text "Hello! Sorry to"
 	line "keep you waiting!"

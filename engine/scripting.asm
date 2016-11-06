@@ -3311,7 +3311,7 @@ Script_trainerpic:
 Script_check_nuzlocke:
 ; script command 0xad
 
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	ld [ScriptVar], a
 	ret

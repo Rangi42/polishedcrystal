@@ -87,16 +87,16 @@ StringOptions1: ; e4241
 ; e42d6
 
 StringOptions2:
-	db "Natures<LNBRK>"
-	db "        :<LNBRK>"
-	db "Abilities<LNBRK>"
-	db "        :<LNBRK>"
 	db "Clock Format<LNBRK>"
 	db "        :<LNBRK>"
 	db "#dex Units<LNBRK>"
 	db "        :<LNBRK>"
-	db "Nuzlocke Mode<LNBRK>"
-	db "        :<LNBRK>"
+	db "<LNBRK>"
+	db "<LNBRK>"
+	db "<LNBRK>"
+	db "<LNBRK>"
+	db "<LNBRK>"
+	db "<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
 	db "Previous<LNBRK>"
@@ -134,11 +134,11 @@ endr
 	dw Options_NextPrevious
 	dw Options_Cancel
 
-	dw Options_Natures
-	dw Options_Abilities
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_NuzlockeMode
+	dw Options_Unused
+	dw Options_Unused
+	dw Options_Unused
 	dw Options_Unused
 	dw Options_NextPrevious
 	dw Options_Cancel
@@ -275,6 +275,7 @@ Options_BattleScene: ; e4365
 ; e43a0
 
 
+; TODO: add a third option that hides the Pokémon name
 Options_BattleStyle: ; e43a0
 	ld hl, Options
 	ld a, [hJoyPressed]
@@ -449,88 +450,6 @@ Options_Sound: ; e43dd
 ; e4424
 
 
-Options_Natures:
-	ld hl, Options2
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit NATURES_OPT, [hl]
-	jr z, .ToggleOff
-	jr .ToggleOn
-
-.LeftPressed:
-	bit NATURES_OPT, [hl]
-	jr nz, .ToggleOn
-	jr .ToggleOff
-
-.NonePressed:
-	bit NATURES_OPT, [hl]
-	jr z, .ToggleOn
-
-.ToggleOff:
-	set NATURES_OPT, [hl]
-	ld de, .Off
-	jr .Display
-
-.ToggleOn:
-	res NATURES_OPT, [hl]
-	ld de, .On
-
-.Display:
-	hlcoord 11, 3
-	call PlaceString
-	and a
-	ret
-
-.On:
-	db "Yes@"
-.Off:
-	db "No @"
-
-
-Options_Abilities:
-	ld hl, Options2
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit ABILITIES_OPT, [hl]
-	jr z, .ToggleOff
-	jr .ToggleOn
-
-.LeftPressed:
-	bit ABILITIES_OPT, [hl]
-	jr nz, .ToggleOn
-	jr .ToggleOff
-
-.NonePressed:
-	bit ABILITIES_OPT, [hl]
-	jr z, .ToggleOn
-
-.ToggleOff:
-	set ABILITIES_OPT, [hl]
-	ld de, .Off
-	jr .Display
-
-.ToggleOn:
-	res ABILITIES_OPT, [hl]
-	ld de, .On
-
-.Display:
-	hlcoord 11, 5
-	call PlaceString
-	and a
-	ret
-
-.On:
-	db "Yes@"
-.Off:
-	db "No @"
-
-
 Options_ClockFormat:
 	ld hl, Options2
 	ld a, [hJoyPressed]
@@ -561,7 +480,7 @@ Options_ClockFormat:
 	ld de, .Twelve
 
 .Display:
-	hlcoord 11, 7
+	hlcoord 11, 3
 	call PlaceString
 	and a
 	ret
@@ -602,7 +521,7 @@ Options_PokedexUnits:
 	ld de, .Imperial
 
 .Display:
-	hlcoord 11, 9
+	hlcoord 11, 5
 	call PlaceString
 	and a
 	ret
@@ -611,49 +530,6 @@ Options_PokedexUnits:
 	db "Imperial@"
 .Metric:
 	db "Metric  @"
-
-
-Options_NuzlockeMode: ; e4424
-	ld hl, Options2
-	ld a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .ToggleOn
-	jr .ToggleOff
-
-.LeftPressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr nz, .ToggleOff
-	jr .ToggleOn
-
-.NonePressed:
-	bit NUZLOCKE_MODE, [hl]
-	jr z, .ToggleOff
-
-.ToggleOn:
-	set NUZLOCKE_MODE, [hl]
-	ld de, .On
-	jr .Display
-
-.ToggleOff:
-	res NUZLOCKE_MODE, [hl]
-	ld de, .Off
-
-.Display:
-	hlcoord 11, 11
-	call PlaceString
-	and a
-	ret
-; e44f2
-
-.On:
-	db "On @"
-.Off:
-	db "Off@"
-; e44c1
 
 
 Options_Unused:
@@ -667,14 +543,14 @@ Options_NextPrevious:
 	bit A_BUTTON_F, a
 	jr z, .NonePressed
 	bit 0, [hl]
-	jr z, .ToggleOn
+	jr z, .Page2
 
-.ToggleOff:
+.Page1:
 	res 0, [hl]
 	ld de, StringOptions1
 	jr .Display
 
-.ToggleOn:
+.Page2:
 	set 0, [hl]
 	ld de, StringOptions2
 .Display:
@@ -718,12 +594,12 @@ OptionsControl: ; e452a
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
 
-	cp $4
+	cp $1
 	jr nz, .DownOK
 	ld a, [wCurrentOptionsPage]
 	and a
 	jr z, .DownOK
-	ld [hl], $6 ; skip missing option on page 2
+	ld [hl], $6 ; skip missing options on page 2
 	scf
 	ret
 .DownOK
@@ -745,7 +621,7 @@ OptionsControl: ; e452a
 	and a
 	ld a, [hl]
 	jr z, .UpOK
-	ld [hl], $4 ; skip missing option on page 2
+	ld [hl], $1 ; skip missing options on page 2
 	scf
 	ret
 .UpOK

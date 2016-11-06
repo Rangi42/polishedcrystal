@@ -686,14 +686,16 @@ TryLoadSaveData: ; 14f1c
 ; 14f7c
 
 DefaultOptions: ; 14f7c
-	db %00100001 ; Options: fast text speed, stereo sound
+	db %00100001 ; Options: fast text speed, stereo sound, set battle mode,
+	             ;          battle scene on
 	db $00       ; wSaveFileExists: no
 	db $00       ; TextBoxFrame: frame 0
 	db $01       ; TextBoxFlags: ?
-	db $0        ; ??
-	db %00000000 ; Options2: running shoes off, nuzlocke mode off, natures on,
-	db $0        ; ??        abilities on, 12-hour clock, imperial units
-	db $0        ; ??
+	db %00000000 ; Options2: running shoes off, 12-hour clock, imperial units
+	db %11100000 ; EarlyGameOptions: natures on, abilities on, traded behavior on,
+	             ;                   nuzlocke mode off
+	db $0        ; ???
+	db $0        ; ???
 ; 14f84
 
 CheckPrimarySaveFile: ; 14f84

@@ -79,6 +79,7 @@ NewGame: ; 5b6b
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
 	call InitCrystalData
+	call EarlyGameOptions
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
@@ -627,7 +628,6 @@ Continue_DisplayGameTime: ; 5f84
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
 ; 5f99
-
 
 OakSpeech: ; 0x5f99
 	farcall InitClock

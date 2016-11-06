@@ -294,7 +294,7 @@ DuskBall:
 PremierBall:
 CherishBall: ; e8a2
 	; Only check landmark flags in a Nuzlocke run
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jr z, .NoNuzlockeCheck
 
@@ -709,7 +709,7 @@ endr
 	ld [hl], a
 .SkipPartyMonFriendBall:
 
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 
@@ -774,7 +774,7 @@ endr
 .SkipBoxMonFriendBall:
 	call CloseSRAM
 
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNicknameBox
 
@@ -1935,7 +1935,7 @@ StatusHealer_Jumptable: ; f09e (3:709e)
 
 
 RevivalHerb: ; f0a9
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
@@ -1959,7 +1959,7 @@ RevivalHerb: ; f0a9
 
 Revive:
 MaxRevive: ; f0c8
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
@@ -3158,7 +3158,7 @@ BasementKey: ; f74c
 
 
 SacredAsh: ; f753
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 

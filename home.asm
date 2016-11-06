@@ -1674,7 +1674,7 @@ INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 GetNature::
 ; 'b' contains the target Nature to check
 ; returns nature in b
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit NATURES_OPT, a
 	jr nz, .no_nature
 	ld a, b
@@ -1692,7 +1692,7 @@ GetAbility::
 ; 'c' contains the target species
 ; returns ability in b
 ; preserves curspecies and base data
-	ld a, [Options2]
+	ld a, [EarlyGameOptions]
 	bit ABILITIES_OPT, a
 	jr nz, .no_ability
 	push de
