@@ -135,6 +135,7 @@ AbilityNames:
 	dw Scrappy
 	dw IceBody
 	dw SolidRock
+	dw SnowWarning
 	dw Frisk
 	dw Reckless
 	dw Pickpocket
@@ -263,6 +264,7 @@ Filter:        db "Filter@"
 Scrappy:       db "Scrappy@"
 IceBody:       db "Ice Body@"
 SolidRock:     db "Solid Rock@"
+SnowWarning:   db "Snow Warning@"
 Frisk:         db "Frisk@"
 Reckless:      db "Reckless@"
 Pickpocket:    db "Pickpocket@"
@@ -431,6 +433,7 @@ AbilityDescriptions:
 	dw ScrappyDescription
 	dw IceBodyDescription
 	dw SolidRockDescription
+	dw SnowWarningDescription
 	dw FriskDescription
 	dw RecklessDescription
 	dw PickpocketDescription
@@ -846,6 +849,10 @@ ScrappyDescription:
 IceBodyDescription:
 	db   "Gradually regains"
 	next "HP in hail.@"
+
+SnowWarningDescription:
+	db   "Summons hailstorm"
+	next "when switched in.@"
 
 FriskDescription:
 	db   "Checks the foe's"

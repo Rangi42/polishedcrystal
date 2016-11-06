@@ -197,6 +197,7 @@ NO_NATURE   EQU const_value
 	const SCRAPPY
 	const ICE_BODY
 	const SOLID_ROCK
+	const SNOW_WARNING
 	const FRISK
 	const RECKLESS
 	const PICKPOCKET

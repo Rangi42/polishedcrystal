@@ -15,7 +15,7 @@
 if DEF(FAITHFUL)
 	db SNOW_CLOAK ; ability 2
 else
-	db SERENE_GRACE ; ability 2
+	db SNOW_WARNING ; ability 2
 endc
 	db ICE_BODY ; hidden ability
 	db MEDIUM_FAST ; growth rate

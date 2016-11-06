@@ -11,6 +11,8 @@ RunActivationAbilitiesInner:
 	jp z, DroughtAbility
 	cp SAND_STREAM
 	jp z, SandStreamAbility
+	cp SNOW_WARNING
+	jp z, SnowWarningAbility
 	cp CLOUD_NINE ; just prints a message
 	jr nz, .skip_cloud_nine
 	ld hl, NotifyCloudNine
@@ -173,6 +175,10 @@ DroughtAbility:
 	jr WeatherAbility
 SandStreamAbility:
 	ld a, WEATHER_SANDSTORM
+	jr WeatherAbility
+SnowWarningAbility:
+	ld a, WEATHER_HAIL
+	jr WeatherAbility
 WeatherAbility:
 	ld b, a
 	ld a, [Weather]
@@ -187,6 +193,8 @@ WeatherAbility:
 	jr z, .handlerain
 	cp WEATHER_SUN
 	jr z, .handlesun
+	cp WEATHER_HAIL
+	jr z, .handlehail
 	; is sandstorm
 	ld de, SANDSTORM
 	farcall Call_PlayBattleAnim
@@ -206,6 +214,11 @@ WeatherAbility:
 	ld de, SANDSTORM
 	farcall Call_PlayBattleAnim
 	farcall BattleCommand_StartSandstorm
+	jp EnableAnimations
+.handlehail
+	ld de, HAIL
+	farcall Call_PlayBattleAnim
+	farcall BattleCommand_StartHail
 	jp EnableAnimations
 
 IntimidateAbility:
