@@ -2074,7 +2074,9 @@ Special_CheckTimeCapsuleCompatibility: ; 29bfb
 	ld c, NUM_MOVES
 .move_next
 	ld a, [hli]
-	cp STRUGGLE + 1
+; Every index is valid now, so this doesn't work.
+; Just treat them all as new since trading with official games won't work anyway.
+	cp 0 ; STRUGGLE + 1
 	jr nc, .move_too_new
 	dec c
 	jr nz, .move_next

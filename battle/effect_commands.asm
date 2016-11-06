@@ -124,12 +124,6 @@ BattleCommand_CheckTurn: ; 34084
 
 ; Repurposed as hardcoded turn handling. Useless as a command.
 
-; Move $ff immediately ends the turn.
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	inc a
-	jp z, EndTurn
-
 	xor a
 	ld [AttackMissed], a
 	ld [EffectFailed], a

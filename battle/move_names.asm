@@ -162,7 +162,7 @@
 	db "Super Fang@"
 	db "Slash@"
 	db "Substitute@"
-	db "Struggle@"
+	db "Giga Impact@"
 	db "Sketch@"
 	db "Triple Kick@"
 	db "Thief@"
@@ -252,3 +252,4 @@
 	db "Moonblast@"
 	db "Play Rough@"
 	db "Disarm Voice@"
+	db "Struggle@"

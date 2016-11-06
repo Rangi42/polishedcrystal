@@ -231,6 +231,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Replace Twineedle with U-turn.
 * Add: Replace Whirlwind with Sucker Punch.
+* Add: Giga Impact.
 * Add: NPC trainers can have nicknamed Pokémon.
 * Add: Accuracy and evasion work like in Gen VI.
 * Add: Substitute blocks sound-based moves.

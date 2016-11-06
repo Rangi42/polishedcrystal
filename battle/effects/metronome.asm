@@ -18,8 +18,9 @@ BattleCommand_Metronome: ; 37418
 	call BattleRandom
 
 ; No invalid moves.
-	cp NUM_ATTACKS + 1
-	jr nc, .GetMove
+; Commented out since all indexes are valid attacks.
+;	cp NUM_ATTACKS + 1
+;	jr nc, .GetMove
 
 ; None of the moves in MetronomeExcepts.
 	push af

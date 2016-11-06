@@ -1311,6 +1311,7 @@ Substitute:
 	endmove
 
 HyperBeam:
+GigaImpact:
 	checkobedience
 	usedmovetext
 	doturn

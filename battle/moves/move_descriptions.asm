@@ -163,7 +163,7 @@
 	dw SuperFangDescription
 	dw SlashDescription
 	dw SubstituteDescription
-	dw StruggleDescription
+	dw GigaImpactDescription
 	dw SketchDescription
 	dw TripleKickDescription
 	dw ThiefDescription
@@ -253,11 +253,10 @@
 	dw MoonblastDescription
 	dw PlayRoughDescription
 	dw DisarmVoiceDescription
-	dw MoveFFDescription
+	dw StruggleDescription
 	dw Move00Description
 ; 2cd52
 
-MoveFFDescription:
 Move00Description:
 UnknownMoveDescription:
 	db "?@"
@@ -524,6 +523,7 @@ FlyDescription:
 	next "2nd turn: Attack@"
 
 HyperBeamDescription:
+GigaImpactDescription:
 	db   "1st turn: Attack"
 	next "2nd turn: Rest@"
 

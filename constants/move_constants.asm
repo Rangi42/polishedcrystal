@@ -165,7 +165,7 @@
 	const SUPER_FANG   ; $a2
 	const SLASH        ; $a3
 	const SUBSTITUTE   ; $a4
-	const STRUGGLE     ; $a5
+	const GIGA_IMPACT  ; $a5
 	const SKETCH       ; $a6
 	const TRIPLE_KICK  ; $a7
 	const THIEF        ; $a8
@@ -255,14 +255,14 @@
 	const MOONBLAST    ; $fc
 	const PLAY_ROUGH   ; $fd
 	const DISARM_VOICE ; $fe
+	const STRUGGLE     ; $ff
 
 const_value SET const_value + -1
 
-	const NUM_ATTACKS  ; $fe
+	const NUM_ATTACKS  ; $ff
 
 ; Battle animations use the same constants
 ; as the moves up to this point.
-	const ANIM_SWEET_SCENT_2     ; $ff
 	const ANIM_THROW_POKE_BALL   ; $100
 	const ANIM_SEND_OUT_MON      ; $101
 	const ANIM_RETURN_MON        ; $102

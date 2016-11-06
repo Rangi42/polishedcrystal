@@ -2380,8 +2380,9 @@ TaurosEvosAttacks:
 	db 35, ZEN_HEADBUTT
 	db 41, TAKE_DOWN
 	db 48, SWAGGER
-	db 50, THRASH
-	db 63, OUTRAGE ; Giga Impact → HGSS tutor move
+	db 55, THRASH
+	db 63, GIGA_IMPACT
+	db 72, OUTRAGE ; HGSS tutor move
 	db 0 ; no more level-up moves
 
 MagikarpEvosAttacks:
@@ -2626,7 +2627,8 @@ AerodactylEvosAttacks:
 	db 57, IRON_HEAD
 	db 65, HYPER_BEAM
 	db 73, ROCK_SLIDE
-	db 81, SKY_ATTACK ; Giga Impact → HGSS tutor move
+	db 81, GIGA_IMPACT
+	db 89, SKY_ATTACK ; HGSS tutor move
 	db 0 ; no more level-up moves
 
 SnorlaxEvosAttacks:
@@ -2645,7 +2647,7 @@ SnorlaxEvosAttacks:
 	db 44, BELLY_DRUM
 	db 49, CRUNCH
 	db 50, GUNK_SHOT ; Heavy Slam → egg move
-	db 57, DOUBLE_EDGE ; Giga Impact → egg move
+	db 57, GIGA_IMPACT
 	db 0 ; no more level-up moves
 
 ArticunoEvosAttacks:
@@ -4375,7 +4377,7 @@ DonphanEvosAttacks:
 	db 30, MAGNITUDE
 	db 37, SCARY_FACE
 	db 43, EARTHQUAKE
-	db 50, DOUBLE_EDGE ; Giga Impact → Phanpy move
+	db 50, GIGA_IMPACT
 	db 0 ; no more level-up moves
 
 Porygon2EvosAttacks:
@@ -4475,7 +4477,7 @@ ElectivireEvosAttacks:
 	db 42, SCREECH
 	db 49, THUNDERBOLT
 	db 55, THUNDER
-	db 62, DYNAMICPUNCH ; Giga Impact → TM move
+	db 62, GIGA_IMPACT
 	db 0 ; no more level-up moves
 
 MagbyEvosAttacks:
