@@ -15,7 +15,7 @@
 if DEF(FAITHFUL)
 	db FLASH_FIRE ; ability 2
 else
-	db BLAZE ; ability 2
+	db DROUGHT ; ability 2
 endc
 	db GUTS ; hidden ability
 	db MEDIUM_FAST ; growth rate

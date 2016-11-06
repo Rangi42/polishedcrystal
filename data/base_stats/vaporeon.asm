@@ -15,7 +15,7 @@
 if DEF(FAITHFUL)
 	db WATER_ABSORB ; ability 2
 else
-	db TORRENT ; ability 2
+	db DRIZZLE ; ability 2
 endc
 	db HYDRATION ; hidden ability
 	db MEDIUM_FAST ; growth rate
