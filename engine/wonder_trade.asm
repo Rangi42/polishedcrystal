@@ -223,9 +223,6 @@ DoWonderTrade:
 	farcall RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
-	;ld b, SET_FLAG
-	;farcall SetGiftPartyMonCaughtData
-
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonNickname
 	call GetTradeMonName
@@ -269,13 +266,9 @@ DoWonderTrade:
 	ld hl, wOTTrademonOTName
 	call CopyTradeName
 
-	ld b, RESET_FLAG
 	ld a, [wOTTrademonID]
 	call GetWonderTradeOTGender
-	and a
-	jr z, .male_ot
-	ld b, SET_FLAG
-.male_ot
+	ld b, a
 	farcall SetGiftPartyMonCaughtData
 
 	; Random DVs

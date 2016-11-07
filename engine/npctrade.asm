@@ -201,9 +201,9 @@ DoNPCTrade: ; fcc63
 	call GetTradeAttribute
 	ld a, [hl]
 	cp 3
-	ld a, 1
+	ld a, MALE
 	jr c, .okay
-	ld a, 2
+	ld a, FEMALE
 .okay
 	ld [wOTTrademonCaughtData], a
 
