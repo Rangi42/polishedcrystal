@@ -42,6 +42,7 @@ DragonsDenB1F_MapScriptHeader:
 	checkcode VAR_WEEKDAY
 	if_equal TUESDAY, .AppearSilver
 	if_equal THURSDAY, .AppearSilver
+	if_equal SATURDAY, .AppearSilver
 	disappear DRAGONSDENB1F_SILVER
 	return
 

@@ -37,9 +37,7 @@ BlueScript_0x9aa26:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_EARTHBADGE
-	checkcode VAR_BADGES
-	if_not_equal 9, .FightDone
-	specialphonecall SPECIALCALL_FIRSTBADGE
+	setevent EVENT_FINAL_BATTLE_WITH_LYRA
 .FightDone:
 	checkevent EVENT_GOT_TM41_STONE_EDGE
 	iftrue BlueEpilogueScript

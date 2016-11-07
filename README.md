@@ -225,6 +225,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Soda Pop heals 50 HP
    * Lemonade heals 70 HP and costs ¥400
    * X items sharply raise stats and cost twice as much
+   * Tackle has 40 power
    * Thunder Wave has 90% accuracy
    * Paralysis halves (not quarters) Speed
 * Add: Flash is required to return Falkner to the Gym.
@@ -278,6 +279,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Smash rocks to get various items.
 * Add: Three battle styles: set, switch, and predict.
 * Add: Battle Scene → Battle Effects.
+* Add: Final Lyra battle.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.

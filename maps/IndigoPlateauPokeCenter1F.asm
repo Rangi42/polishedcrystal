@@ -5,6 +5,7 @@ const_value set 2
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_GRAMPS
 	const INDIGOPLATEAUPOKECENTER1F_ABRA
+	const INDIGOPLATEAUPOKECENTER1F_LYRA
 
 IndigoPlateauPokeCenter1F_MapScriptHeader:
 .MapTriggers:
@@ -49,16 +50,22 @@ UnknownScript_0x18000a:
 	return
 
 PlateauRivalBattle1:
+	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
+	iftrue .LyraFight
+	checkcode VAR_WEEKDAY
+	if_equal MONDAY, .MaybeRivalFight
+	if_equal TUESDAY, .MaybeLyraFight
+	if_equal WEDNESDAY, .MaybeRivalFight
+	if_equal THURSDAY, .MaybeLyraFight
+	if_equal FRIDAY, .MaybeRivalFight
+	if_equal SATURDAY, .MaybeLyraFight
+	jump PlateauRivalScriptDone
+
+.MaybeRivalFight:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iffalse PlateauRivalScriptDone
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue PlateauRivalScriptDone
-	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, PlateauRivalScriptDone
-	if_equal TUESDAY, PlateauRivalScriptDone
-	if_equal THURSDAY, PlateauRivalScriptDone
-	if_equal FRIDAY, PlateauRivalScriptDone
-	if_equal SATURDAY, PlateauRivalScriptDone
 	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, $11, $9
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
 	spriteface PLAYER, DOWN
@@ -70,17 +77,40 @@ PlateauRivalBattle1:
 	spriteface PLAYER, RIGHT
 	jump PlateauRivalBattleCommon
 
+.MaybeLyraFight:
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iffalse PlateauRivalScriptDone
+	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
+	iftrue PlateauRivalScriptDone
+.LyraFight:
+	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, $11, $9
+	appear INDIGOPLATEAUPOKECENTER1F_LYRA
+	spriteface PLAYER, DOWN
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalMovement1
+	playmusic MUSIC_NONE ; TODO: Wally's final encounter music
+	spriteface PLAYER, RIGHT
+	jump PlateauLyraBattleCommon
+
 PlateauRivalBattle2:
+	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
+	iftrue .LyraFight
+	checkcode VAR_WEEKDAY
+	if_equal MONDAY, .MaybeRivalFight
+	if_equal TUESDAY, .MaybeLyraFight
+	if_equal WEDNESDAY, .MaybeRivalFight
+	if_equal THURSDAY, .MaybeLyraFight
+	if_equal FRIDAY, .MaybeRivalFight
+	if_equal SATURDAY, .MaybeLyraFight
+	jump PlateauRivalScriptDone
+
+.MaybeRivalFight:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iffalse PlateauRivalScriptDone
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue PlateauRivalScriptDone
-	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, PlateauRivalScriptDone
-	if_equal TUESDAY, PlateauRivalScriptDone
-	if_equal THURSDAY, PlateauRivalScriptDone
-	if_equal FRIDAY, PlateauRivalScriptDone
-	if_equal SATURDAY, PlateauRivalScriptDone
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
 	spriteface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -89,6 +119,24 @@ PlateauRivalBattle2:
 	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalMovement2
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	spriteface PLAYER, LEFT
+	jump PlateauRivalBattleCommon
+
+.MaybeLyraFight:
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iffalse PlateauRivalScriptDone
+	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
+	iftrue PlateauRivalScriptDone
+.LyraFight:
+	appear INDIGOPLATEAUPOKECENTER1F_LYRA
+	spriteface PLAYER, DOWN
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalMovement2
+	playmusic MUSIC_NONE ; TODO: Wally's final encounter music
+	spriteface PLAYER, LEFT
+	jump PlateauLyraBattleCommon
+
 PlateauRivalBattleCommon:
 	opentext
 	writetext PlateauRivalText1
@@ -124,8 +172,6 @@ PlateauRivalBattleCommon:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump PlateauRivalPostBattle
-
 PlateauRivalPostBattle:
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
@@ -138,6 +184,59 @@ PlateauRivalPostBattle:
 	dotrigger $0
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
+	end
+
+PlateauLyraBattleCommon:
+	opentext
+	writetext PlateauLyraText1
+	waitbutton
+	playmusic MUSIC_WALLY_BATTLE_ORAS
+	writetext PlateauLyraText2
+	waitbutton
+	closetext
+	setevent EVENT_LYRA_INDIGO_PLATEAU
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .Totodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .Chikorita
+	; Cyndaquil
+	winlosstext PlateauLyraWinText, PlateauLyraLoseText
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
+	loadtrainer LYRA2, 1
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump PlateauLyraPostBattle
+
+.Totodile:
+	winlosstext PlateauRivalWinText, PlateauRivalLoseText
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
+	loadtrainer LYRA2, 2
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump PlateauLyraPostBattle
+
+.Chikorita:
+	winlosstext PlateauRivalWinText, PlateauRivalLoseText
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
+	loadtrainer LYRA2, 3
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+PlateauLyraPostBattle:
+	playmusic MUSIC_NONE ; TODO: Wally's final departure music
+	opentext
+	writetext PlateauLyraText3
+	waitbutton
+	closetext
+	spriteface PLAYER, DOWN
+	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
+	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
+	dotrigger $0
+	playmapmusic
+	setflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
+	clearevent EVENT_FINAL_BATTLE_WITH_LYRA
 PlateauRivalScriptDone:
 	end
 
@@ -272,6 +371,69 @@ PlateauRivalLoseText:
 	line "the Champion!"
 	done
 
+PlateauLyraText1:
+	text "<PLAYER>!"
+
+	para "I've been travel-"
+	line "ing around Johto,"
+
+	para "earning badges and"
+	line "gaining strength."
+
+	para "You know what"
+	line "that's like,"
+	cont "<PLAYER>."
+
+	para "And now…"
+
+	para "Here I am, at the"
+	line "Indigo Plateau."
+
+	para "Do you know what"
+	line "this means?"
+
+	para "I get to battle"
+	line "you, not only as"
+	cont "my friend, but"
+	done
+
+PlateauLyraText2:
+	text "as the Pokemon"
+	line "League Champion!"
+	done
+
+PlateauLyraWinText:
+	text "…I won?"
+	done
+
+PlateauLyraLoseText:
+	text "So you're still"
+	line "stronger than me…"
+	done
+
+PlateauLyraText3:
+	text "I'm not angry that"
+	line "I lost."
+
+	para "I got to explore"
+	line "Johto, meet new"
+	cont "people, raise my"
+
+	para "#mon to be"
+	line "stronger than I"
+
+	para "thought they could"
+	line "ever be…"
+
+	para "And I got to"
+	line "battle you at my"
+	cont "very best."
+
+	para "You beat me--now"
+	line "go beat the #-"
+	cont "mon League!"
+	done
+
 TeleportGuyText1:
 	text "Ah! You're chal-"
 	line "lenging the Elite"
@@ -327,10 +489,11 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_NURSE, 7, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18012c, -1
 	person_event SPRITE_CLERK, 7, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x18012f, -1
 	person_event SPRITE_COOLTRAINER_M, 11, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x180136, -1
 	person_event SPRITE_SILVER, 9, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	person_event SPRITE_GRAMPS, 9, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeleportGuyScript, -1 ; EVENT_TELEPORT_GUY
 	person_event SPRITE_ABRA, 9, 0, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, AbraScript, -1 ; EVENT_TELEPORT_GUY
+	person_event SPRITE_LYRA, 9, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_INDIGO_PLATEAU

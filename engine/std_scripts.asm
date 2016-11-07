@@ -654,6 +654,7 @@ InitializeEventsScript:
 	setevent EVENT_KRIS_IN_NAVEL_ROCK
 	setevent EVENT_ILEX_FOREST_LYRA
 	setevent EVENT_ILEX_FOREST_CELEBI
+	setevent EVENT_LYRA_INDIGO_PLATEAU
 	setevent EVENT_INITIALIZED_EVENTS
 	return
 

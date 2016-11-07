@@ -214,7 +214,7 @@ ENDM
 	engine_flag WeeklyFlags, 3 ; goldenrod mall happiness event floor05 person07
 	engine_flag WeeklyFlags, 4 ; tea in blues house
 	engine_flag WeeklyFlags, 5 ; indigo plateau rival fight
-	engine_flag WeeklyFlags, 6 ; move tutor
+	engine_flag WeeklyFlags, 6 ; indigo plateau lyra fight
 	engine_flag WeeklyFlags, 7 ; buenas password
 
 	engine_flag SwarmFlags, 0 ; $60
