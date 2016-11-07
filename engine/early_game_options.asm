@@ -81,7 +81,7 @@ EarlyGameOptionsMenu:
 	xor a
 	ld [wJumptableIndex], a
 	ld [hJoyPressed], a
-	ld c, $4 ; number of items on the menu minus 1 (for cancel)
+	ld c, $4 ; number of items on the menu minus 1 (for done)
 .print_text_loop ; this next will display the settings of each option when the menu is opened
 	push bc
 	xor a

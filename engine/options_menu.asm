@@ -50,7 +50,7 @@ OptionsMenu_LoadOptions:
 	xor a
 	ld [wJumptableIndex], a
 	ld [hJoyPressed], a
-	ld c, $6 ; number of items on the menu minus 1 (for cancel)
+	ld c, $6 ; number of items on the menu minus 1 (for done)
 .print_text_loop ; this next will display the settings of each option when the menu is opened
 	push bc
 	xor a
@@ -83,7 +83,7 @@ StringOptions1: ; e4241
 	db "        :<LNBRK>"
 	db "Next<LNBRK>"
 	db "        <LNBRK>"
-	db "Cancel@"
+	db "Done@"
 ; e42d6
 
 StringOptions2:
@@ -101,7 +101,7 @@ StringOptions2:
 	db "<LNBRK>"
 	db "Previous<LNBRK>"
 	db "        <LNBRK>"
-	db "Cancel@"
+	db "Done@"
 
 GetOptionPointer: ; e42d6
 	ld a, [wJumptableIndex] ; load the cursor position to a
@@ -132,7 +132,7 @@ endr
 	dw Options_Frame
 	dw Options_Sound
 	dw Options_NextPrevious
-	dw Options_Cancel
+	dw Options_Done
 
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
@@ -141,7 +141,7 @@ endr
 	dw Options_Unused
 	dw Options_Unused
 	dw Options_NextPrevious
-	dw Options_Cancel
+	dw Options_Done
 ; e42f5
 
 
@@ -515,7 +515,7 @@ Options_NextPrevious:
 	and a
 	ret
 
-Options_Cancel: ; e4520
+Options_Done: ; e4520
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Exit
