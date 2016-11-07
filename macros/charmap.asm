@@ -120,6 +120,7 @@
 	charmap "ö",        $c4
 	charmap "ü",        $c5
 	charmap "<SHINY>",  $c6
+	charmap "<PCT>",    $c7
 
 	charmap "'d",       $d0
 	charmap "'l",       $d1
@@ -129,6 +130,7 @@
 	charmap "'t",       $d5
 	charmap "'v",       $d6
 
+	charmap "<BOLDP>",  $dc
 	charmap "↑",        $dd
 	charmap "↓",        $de
 	charmap "←",        $df

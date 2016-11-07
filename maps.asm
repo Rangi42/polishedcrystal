@@ -576,7 +576,6 @@ INCLUDE "maps/Route45.asm"
 
 SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
 
-INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
@@ -587,12 +586,13 @@ INCLUDE "maps/Route12Gate2F.asm"
 INCLUDE "maps/Route15FuchsiaGate2F.asm"
 INCLUDE "maps/Route16Gate2F.asm"
 INCLUDE "maps/Route1718Gate2F.asm"
+INCLUDE "maps/SeafoamIslandsB4F.asm"
+INCLUDE "maps/CeruleanBikeShop.asm"
 
 
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
 
+INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
-INCLUDE "maps/SeafoamIslandsB4F.asm"
 INCLUDE "maps/Route35Coast.asm"
-INCLUDE "maps/CeruleanBikeShop.asm"

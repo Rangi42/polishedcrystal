@@ -4414,7 +4414,7 @@ ListMovePP: ; 50c50
 	ld a, [Buffer1]
 	ld e, a
 	ld d, $0
-	ld a, $3e ; P
+	ld a, "<BOLDP>"
 	call .load_loop
 	ld a, b
 	and a

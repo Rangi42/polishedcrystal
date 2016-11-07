@@ -1819,7 +1819,7 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 11, 12
+	hlcoord 10, 12
 	cp 2
 	jr c, .no_power
 	ld [wd265], a
@@ -1851,7 +1851,7 @@ PlaceMoveData: ; 13256
 	jr z, .no_inc
 	inc a
 .no_inc
-	hlcoord 16, 12
+	hlcoord 15, 12
 	cp 2
 	jr c, .no_acc
 	ld [wd265], a
@@ -1878,7 +1878,7 @@ String_na: ; 132cf
 	db "---@"
 
 String_PwAc:
-	db "P   /A   @"
+	db "   <BOLDP>/   <PCT>@"
 
 String_Phys:
 	db "│Phys/└@"
