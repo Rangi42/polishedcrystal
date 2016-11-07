@@ -6,6 +6,7 @@ SetEarlyGameOptions:
 	call SetPalettes
 	ld hl, EarlyGameOptionsText
 	call PrintText
+	call FadeToMenu
 	call EarlyGameOptionsMenu
 	ret
 

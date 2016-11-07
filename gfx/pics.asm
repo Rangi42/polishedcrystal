@@ -805,6 +805,8 @@ RileyPic: ; TODO
 BuckPic: ; TODO
 MarleyPic: ; TODO
 MiraPic: ; TODO
+CaitlinPic: ; TODO
+DarachPic: ; TODO
 ValeriePic:            INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:             INCBIN "gfx/trainers/walker.2bpp.lz"
 PikachuFlyFrontpic:    INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
