@@ -90,7 +90,7 @@ x = x + 1
 endm
 
 
-UnownWord1:	 unownword "ANGRY"
+UnownWord1:	 unownword "ANGER"
 UnownWord2:	 unownword "BEAR"
 UnownWord3:	 unownword "CHASE"
 UnownWord4:	 unownword "DIRECT"
