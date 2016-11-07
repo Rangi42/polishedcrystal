@@ -4010,10 +4010,10 @@ Function4e906: ; 4e906
 
 INCLUDE "battle/sliding_intro.asm"
 
-CheckBattleScene: ; 4ea44
+CheckBattleEffects: ; 4ea44
 ; Return carry if battle scene is turned off.
 	ld a, [Options1]
-	bit BATTLE_SCENE, a
+	bit BATTLE_EFFECTS, a
 	jr z, .off
 	and a
 	ret

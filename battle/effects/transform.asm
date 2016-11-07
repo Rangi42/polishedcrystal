@@ -142,7 +142,7 @@ BattleCommand_Transform: ; 371cd
 	ld de, PlayerStatLevels
 	ld bc, 8
 	call BattleSideCopy
-	call _CheckBattleScene
+	call _CheckBattleEffects
 	jr c, .mimic_anims
 	ld a, [hBattleTurn]
 	and a

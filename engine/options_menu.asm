@@ -126,7 +126,7 @@ endr
 
 .Pointers:
 	dw Options_TextSpeed
-	dw Options_BattleScene
+	dw Options_BattleEffects
 	dw Options_BattleStyle
 	dw Options_RunningShoes
 	dw Options_Frame
@@ -231,23 +231,23 @@ GetTextSpeed: ; e4346
 ; e4365
 
 
-Options_BattleScene: ; e4365
+Options_BattleEffects: ; e4365
 	ld hl, Options1
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
-	bit BATTLE_SCENE, [hl]
+	bit BATTLE_EFFECTS, [hl]
 	jr z, .SetOff
 	jr .SetOn
 .Toggle
-	bit BATTLE_SCENE, [hl]
+	bit BATTLE_EFFECTS, [hl]
 	jr z, .SetOn
 .SetOff:
-	res BATTLE_SCENE, [hl]
+	res BATTLE_EFFECTS, [hl]
 	ld de, .Off
 	jr .Display
 .SetOn:
-	set BATTLE_SCENE, [hl]
+	set BATTLE_EFFECTS, [hl]
 	ld de, .On
 .Display:
 	hlcoord 11, 5

@@ -61,7 +61,7 @@ BattleAnimRunScript: ; cc11c
 	and a
 	jr nz, .hi_byte
 
-	farcall CheckBattleScene
+	farcall CheckBattleEffects
 	jr c, .disabled
 
 	call BattleAnimClearHud
