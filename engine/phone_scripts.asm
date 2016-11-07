@@ -213,7 +213,7 @@ BillPhoneWholePCFull:
 
 ElmPhoneScript1: ; 0xbd00d
 	checkcode VAR_SPECIALPHONECALL
-	if_equal $1, .pokerus
+	if_equal SPECIALCALL_POKERUS, .pokerus
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue .discovery
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -276,11 +276,11 @@ ElmPhoneScript1: ; 0xbd00d
 
 ElmPhoneScript2: ; 0xbd081
 	checkcode VAR_SPECIALPHONECALL
-	if_equal $2, .disaster
-	if_equal $3, .assistant
-	if_equal $4, .rocket
-	if_equal $5, .gift
-	if_equal $8, .gift
+	if_equal SPECIALCALL_ROBBED, .disaster
+	if_equal SPECIALCALL_ASSISTANT, .assistant
+	if_equal SPECIALCALL_WEIRDBROADCAST, .rocket
+	if_equal SPECIALCALL_SSTICKET, .gift
+	if_equal SPECIALCALL_MASTERBALL, .gift
 	farwritetext ElmPhonePokerusText
 	specialphonecall SPECIALCALL_NONE
 	end
@@ -335,12 +335,18 @@ LyraPhoneScript:
 
 LyraPhoneScript2:
 	checkcode VAR_SPECIALPHONECALL
-	if_equal $9, .yellowforest
+	if_equal SPECIALCALL_YELLOWFOREST, .yellowforest
+	if_equal SPECIALCALL_FIRSTBADGE, .firstbadge
 	specialphonecall SPECIALCALL_NONE
 	jump LyraPhoneScript
 
 .yellowforest
 	farwritetext LyraPhoneYellowForestText
+	specialphonecall SPECIALCALL_NONE
+	end
+
+.firstbadge
+	farwritetext LyraPhoneFirstBadgeText
 	specialphonecall SPECIALCALL_NONE
 	end
 

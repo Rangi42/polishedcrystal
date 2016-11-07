@@ -35,6 +35,9 @@ ErikaScript_0x72a6a:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_RAINBOWBADGE
+	checkcode VAR_BADGES
+	if_not_equal 9, .FightDone
+	specialphonecall SPECIALCALL_FIRSTBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
 	iftrue UnknownScript_0x72aae

@@ -54,6 +54,9 @@ SurgeScript_0x1920a5:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
+	checkcode VAR_BADGES
+	if_not_equal 9, .FightDone
+	specialphonecall SPECIALCALL_FIRSTBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM43_WILD_CHARGE
 	iftrue SurgeAfterTMScript

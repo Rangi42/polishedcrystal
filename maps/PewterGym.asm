@@ -31,6 +31,9 @@ BrockScript_0x1a2864:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
+	checkcode VAR_BADGES
+	if_not_equal 9, .FightDone
+	specialphonecall SPECIALCALL_FIRSTBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
 	iftrue BrockAfterTMScript

@@ -14,7 +14,7 @@ FuchsiaGym_MapScriptHeader:
 	db 0
 
 JanineScript_0x195db9:
-	checkflag ENGINE_SOULBADGE
+	checkflag ENGINE_MARSHBADGE
 	iftrue .FightDone
 	applymovement FUCHSIAGYM_JANINE, MovementData_0x195f27
 	faceplayer
@@ -40,7 +40,10 @@ JanineScript_0x195db9:
 	writetext UnknownText_0x195feb
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_SOULBADGE
+	setflag ENGINE_MARSHBADGE
+	checkcode VAR_BADGES
+	if_not_equal 9, UnknownScript_0x195e02
+	specialphonecall SPECIALCALL_FIRSTBADGE
 	jump UnknownScript_0x195e02
 .FightDone:
 	faceplayer
@@ -216,7 +219,7 @@ FuchsiaGymGuyScript:
 	end
 
 FuchsiaGymStatue:
-	checkflag ENGINE_SOULBADGE
+	checkflag ENGINE_MARSHBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:

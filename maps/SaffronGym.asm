@@ -19,7 +19,7 @@ SaffronGym_MapScriptHeader:
 SabrinaScript_0x189c2e:
 	faceplayer
 	opentext
-	checkflag ENGINE_MARSHBADGE
+	checkflag ENGINE_SOULBADGE
 	iftrue .FightDone
 	writetext UnknownText_0x189cdf
 	waitbutton
@@ -40,7 +40,10 @@ SabrinaScript_0x189c2e:
 	writetext UnknownText_0x189e95
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_MARSHBADGE
+	setflag ENGINE_SOULBADGE
+	checkcode VAR_BADGES
+	if_not_equal 9, .FightDone
+	specialphonecall SPECIALCALL_FIRSTBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
 	iftrue SabrinaAfterTMScript
@@ -153,7 +156,7 @@ SaffronGymGuyScript:
 	end
 
 SaffronGymStatue:
-	checkflag ENGINE_MARSHBADGE
+	checkflag ENGINE_SOULBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:

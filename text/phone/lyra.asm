@@ -63,3 +63,28 @@ LyraPhoneYellowForestText:
 	para "Anyway, good luck"
 	line "on your journey!"
 	done
+
+LyraPhoneFirstBadgeText:
+	text "<PLAYER>! Hi!"
+
+	para "I just got my"
+	line "first Gym Badge!"
+
+	para "Falkner's Pidgeot"
+	line "is strong, but"
+	cont "mine beat him!"
+
+	para "I just had to tell"
+	line "you, <PLAYER>."
+
+	para "Oh, you got your"
+	line "first badge in"
+	cont "Kanto too?"
+	cont "Good going!"
+
+	para "Let's both keep on"
+	line "winning Badges."
+
+	para "I'll see you at"
+	line "the League!"
+	done

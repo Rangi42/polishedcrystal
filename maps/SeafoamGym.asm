@@ -114,6 +114,9 @@ BlaineScript_0x1ab4fb:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
+	checkcode VAR_BADGES
+	if_not_equal 9, .FightDone
+	specialphonecall SPECIALCALL_FIRSTBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
 	iftrue BlaineAfterTMScript

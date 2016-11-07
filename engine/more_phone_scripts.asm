@@ -1225,7 +1225,7 @@ UnknownScript_0xa0848:
 	iftrue UnknownScript_0xa08d8
 	checkevent EVENT_GOT_PASS_FROM_COPYCAT
 	iftrue UnknownScript_0xa08d0
-	checkflag ENGINE_MARSHBADGE
+	checkflag ENGINE_SOULBADGE
 	iftrue UnknownScript_0xa08f0
 	checkflag ENGINE_FLYPOINT_VERMILION
 	iftrue UnknownScript_0xa08c8
