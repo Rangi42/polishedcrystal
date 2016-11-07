@@ -823,6 +823,7 @@ OutdoorSprites: ; 144b8
 	dw Group27Sprites
 	dw Group28Sprites
 	dw Group29Sprites
+	dw Group30Sprites
 
 
 ; OlivineCity connects to Route40
@@ -899,6 +900,7 @@ Group2Sprites:
 Group3Sprites:
 ; NationalPark
 ; NationalParkBugContest
+Group30Sprites:
 ; RuinsofAlphOutside
 	db SPRITE_FISHER
 	db SPRITE_LASS

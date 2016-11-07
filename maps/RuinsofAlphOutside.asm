@@ -33,7 +33,7 @@ UnknownScript_0x5800e:
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock $a, $8, $73
+	changeblock $a, $8, $bb
 .locked
 	return
 

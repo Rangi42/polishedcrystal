@@ -48,6 +48,7 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 27
 	db -1 ; group 28
 	db  3 ; group 29 (Goldenrod Harbor)
+	db  6 ; group 30 (Ruins of Alph)
 ; 1c03c
 
 Roofs: ; 1c03c
@@ -57,4 +58,5 @@ INCBIN "gfx/tilesets/roofs/2.2bpp"
 INCBIN "gfx/tilesets/roofs/3.2bpp"
 INCBIN "gfx/tilesets/roofs/4.2bpp"
 INCBIN "gfx/tilesets/roofs/5.2bpp"
+INCBIN "gfx/tilesets/roofs/6.2bpp"
 ; 1c30c
