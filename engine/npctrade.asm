@@ -9,7 +9,6 @@ TRADE_PERSONALITY EQU 17
 TRADE_ITEM        EQU 19
 TRADE_OT_ID       EQU 21
 TRADE_OT_NAME     EQU 22
-TRADE_GENDER      EQU 33
 
 ; Trade dialogs
 TRADE_INTRO    EQU 0
@@ -17,10 +16,6 @@ TRADE_CANCEL   EQU 1
 TRADE_WRONG    EQU 2
 TRADE_COMPLETE EQU 3
 TRADE_AFTER    EQU 4
-
-TRADE_EITHER_GENDER EQU 0
-TRADE_MALE_ONLY     EQU 1
-TRADE_FEMALE_ONLY   EQU 2
 
 NPCTrade:: ; fcba8
 	ld a, e
@@ -50,10 +45,6 @@ NPCTrade:: ; fcba8
 	cp [hl]
 	ld a, TRADE_WRONG
 	jr nz, .done
-
-	call CheckTradeGender
-	ld a, TRADE_WRONG
-	jr c, .done
 
 	ld b, SET_FLAG
 	call TradeFlagAction
@@ -91,35 +82,6 @@ NPCTrade:: ; fcba8
 	call ReturnToMapWithSpeechTextbox
 	ret
 ; fcc23
-
-CheckTradeGender: ; fcc23
-	xor a
-	ld [MonType], a
-
-	ld e, TRADE_GENDER
-	call GetTradeAttribute
-	ld a, [hl]
-	and a
-	jr z, .matching
-	cp 1
-	jr z, .check_male
-
-	farcall GetGender
-	jr nz, .not_matching
-	jr .matching
-
-.check_male
-	farcall GetGender
-	jr z, .not_matching
-
-.matching
-	and a
-	ret
-
-.not_matching
-	scf
-	ret
-; fcc4a
 
 TradeFlagAction: ; fcc4a
 	ld hl, wTradeFlags
@@ -418,21 +380,6 @@ GetTradeMonNames: ; fce1b
 	cp "@"
 	jr nz, .loop
 
-	dec hl
-	push hl
-	ld e, TRADE_GENDER
-	call GetTradeAttribute
-	ld a, [hl]
-	pop hl
-	and a
-	ret z
-
-	cp 1
-	ld a, "♂"
-	jr z, .done
-	ld a, "♀"
-.done
-	ld [hli], a
 	ld [hl], "@"
 	ret
 ; fce58
@@ -448,26 +395,24 @@ npctrade: MACRO
 	shift
 	dw \9 ; OT ID
 	shift
-	db \9 ; OT name
-	shift
-	db \9, 0 ; gender requested
+	db \9, 0 ; OT name
 ENDM
 
-
+	; OT names have 2 characters less padding so the total struct is 31 bytes
 	; Goldenrod City
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY,   MALE,   SITRUS_BERRY, 37460, "Mike@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY,   MALE,   SITRUS_BERRY, 37460, "Mike@@@@@"
 	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY,   MALE,   PERSIM_BERRY, 48926, "Kyle@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY,   MALE,   PERSIM_BERRY, 48926, "Kyle@@@@@"
 	; Olivine City
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@"
 	; Blackthorn City
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@"
 	; Pewter City
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@@@", TRADE_EITHER_GENDER
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@"
 	; Route 14
-	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@@@", TRADE_EITHER_GENDER
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@"
 	; Goldenrod Harbor
-	npctrade 0, QUAGSIRE,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@@@", TRADE_EITHER_GENDER
+	npctrade 0, QUAGSIRE,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@"
 ; fcf38
 
 
