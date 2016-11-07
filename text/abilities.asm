@@ -464,8 +464,8 @@ AbilityDescriptions:
 	dw PixilateDescription
 
 NoAbilityDescription:
-	db   "Abilities are dis-"
-	next "abled in Options.@"
+	db   "Abilities are"
+	next "disabled.@"
 
 StenchDescription:
 	db   "May cause the foe"
