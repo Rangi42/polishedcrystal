@@ -196,15 +196,15 @@ endr
 
 .Strings:
 	dw .Fast
-	dw .Mid
+	dw .Medium
 	dw .Slow
 
 .Fast:
-	db "Fast@"
-.Mid:
-	db "Mid @"
+	db "Fast  @"
+.Medium:
+	db "Medium@"
 .Slow:
-	db "Slow@"
+	db "Slow  @"
 ; e4346
 
 
@@ -215,7 +215,7 @@ GetTextSpeed: ; e4346
 	jr z, .slow
 	cp 1 ; 1 frame of delay is fast
 	jr z, .fast
-	ld c, MED_TEXT ; set it to mid if not one of the above
+	ld c, MED_TEXT ; set it to medium if not one of the above
 	lb de, 1, 5
 	ret
 

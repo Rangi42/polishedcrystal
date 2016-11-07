@@ -44,7 +44,7 @@ MainMenu: ; 49cdc
 .Strings: ; 49d24
 	db "Continue@"
 	db "New Game@"
-	db "Option@"
+	db "Options@"
 
 .Jumptable: ; 0x49d60
 
