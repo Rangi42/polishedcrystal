@@ -557,6 +557,9 @@ BattleCommand_CheckObedience: ; 343db
 	ld a, [PlayerID + 1]
 	cp [hl]
 	ret z
+	ld a, [EarlyGameOptions]
+	bit TRADED_BEHAVIOR, a
+	ret z
 
 
 .obeylevel
