@@ -1,5 +1,6 @@
 const_value set 2
 	const FARAWAYISLAND_SAILOR
+	const FARAWAYISLAND_LAWRENCE
 
 FarawayIsland_MapScriptHeader:
 .MapTriggers:
@@ -143,5 +144,6 @@ FarawayIsland_MapEventHeader:
 	signpost 34, 4, SIGNPOST_READ, FarawayIslandSign
 
 .PersonEvents:
-	db 1
+	db 2
 	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
