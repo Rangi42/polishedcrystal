@@ -403,12 +403,12 @@ PlateauLyraText2:
 	done
 
 PlateauLyraWinText:
-	text "…I won?"
+	text "So you're still"
+	line "stronger than me…"
 	done
 
 PlateauLyraLoseText:
-	text "So you're still"
-	line "stronger than me…"
+	text "…I won?"
 	done
 
 PlateauLyraText3:
