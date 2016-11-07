@@ -467,8 +467,8 @@ Text_LyraGoodbye2:
 	para "…So, this is"
 	line "goodbye."
 
-	para "I know you can"
-	line "beat the #mon"
+	para "I know you can win"
+	line "at the #mon"
 	cont "League!"
 
 	para "You're going to be"
