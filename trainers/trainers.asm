@@ -512,7 +512,7 @@ ChuckGroup:
 		db MACH_PUNCH
 
 	db 27, HITMONLEE, NO_ITEM
-		db LOCK_ON
+		db SUCKER_PUNCH
 		db BULK_UP
 		db LOW_KICK
 		db HI_JUMP_KICK
@@ -524,7 +524,7 @@ ChuckGroup:
 		db RAPID_SPIN
 
 	db 30, POLIWRATH, SITRUS_BERRY
-		db LOCK_ON
+		db ICE_PUNCH
 		db HYPNOSIS
 		db WATERFALL
 		db DYNAMICPUNCH
@@ -558,10 +558,10 @@ ChuckGroup:
 		db MACH_PUNCH
 
 	db 72, HITMONLEE, QUICK_CLAW
-		db HI_JUMP_KICK
-		db LOCK_ON
+		db SUCKER_PUNCH
 		db BULK_UP
 		db REVERSAL
+		db HI_JUMP_KICK
 
 	db 72, HITMONTOP, KINGS_ROCK
 		db RAPID_SPIN
@@ -1102,7 +1102,7 @@ BrunoGroup:
 		db X_SCISSOR
 
 	db 50, HITMONLEE, FOCUS_BAND
-		db SWAGGER
+		db SUCKER_PUNCH
 		db DOUBLE_KICK
 		db HI_JUMP_KICK
 		db FORESIGHT
@@ -1149,7 +1149,7 @@ BrunoGroup:
 
 	db 70, HITMONLEE, FOCUS_BAND
 		db BULK_UP
-		db RETURN
+		db SUCKER_PUNCH
 		db HI_JUMP_KICK
 		db REVERSAL
 
@@ -9707,7 +9707,7 @@ BlackbeltGroup:
 	db 27, HITMONLEE, "Jackie@"
 		db DOUBLE_KICK
 		db BULK_UP
-		db LOW_KICK
+		db HI_JUMP_KICK
 		db FOCUS_ENERGY
 
 	db $ff ; end
