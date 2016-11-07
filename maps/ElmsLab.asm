@@ -207,7 +207,7 @@ CyndaquilPokeBallScript:
 	disappear ELMSLAB_POKE_BALL3
 	opentext
 	pokenamemem CHIKORITA, $0
-	writetext LyraReceivedStarterText
+	writetext LyraReceivedChikoritaText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterChikoritaMovement
@@ -247,8 +247,7 @@ TotodilePokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL1
 	opentext
-	pokenamemem CYNDAQUIL, $0
-	writetext LyraReceivedStarterText
+	writetext LyraReceivedCyndaquilText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterCyndaquilMovement
@@ -286,8 +285,7 @@ ChikoritaPokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL2
 	opentext
-	pokenamemem TOTODILE, $0
-	writetext LyraReceivedStarterText
+	writetext LyraReceivedTotodileText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterTotodileMovement
@@ -1600,16 +1598,36 @@ LyraChoosesStarterText:
 	line "pick this one!"
 	done
 
-LyraReceivedStarterText:
+LyraReceivedChikoritaText:
 	text "Lyra received"
-	line "@"
-	text_from_ram StringBuffer3
-	text "!"
+	line "Chikorita!"
+
+	para "Lyra: It's so"
+	line "cute! I'll nick-"
+	cont "name it Chicory!"
+	done
+
+LyraReceivedCyndaquilText:
+	text "Lyra received"
+	line "Cyndaquil!"
+
+	para "Lyra: It's so"
+	line "cute! I'll nick-"
+	cont "name it Cinder!"
+	done
+
+LyraReceivedTotodileText:
+	text "Lyra received"
+	line "Totodile!"
+
+	para "Lyra: It's so"
+	line "cute! I'll nick-"
+	cont "name it Toto!"
 	done
 
 ElmsLabLyraGoodChoiceText:
 	text "Your #mon"
-	line "looks so cute!"
+	line "looks cute too!"
 	done
 
 ElmsLabLyraChallengeText:
