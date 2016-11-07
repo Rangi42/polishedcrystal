@@ -52,7 +52,7 @@ endc
 	move HORN_ATTACK,  EFFECT_NORMAL_HIT,         65, NORMAL,    100, 25,   0, PHYSICAL
 	move FURY_ATTACK,  EFFECT_MULTI_HIT,          15, NORMAL,     85, 20,   0, PHYSICAL
 	move HEX,          EFFECT_HEX,                65, GHOST,     100, 10,   0, SPECIAL
-	move TACKLE,       EFFECT_NORMAL_HIT,         50, NORMAL,    100, 35,   0, PHYSICAL
+	move TACKLE,       EFFECT_NORMAL_HIT,         40, NORMAL,    100, 35,   0, PHYSICAL
 	move BODY_SLAM,    EFFECT_PARALYZE_HIT,       85, NORMAL,    100, 15,  30, PHYSICAL
 	move WRAP,         EFFECT_TRAP,               15, NORMAL,     90, 20,   0, PHYSICAL
 if DEF(FAITHFUL)
