@@ -106,6 +106,8 @@
 	add_pic CynthiaPic
 	add_pic TowerTycoonPic
 	add_pic ValeriePic
+	add_pic CaitlinPic
+	add_pic DarachPic
 	add_pic ReiPic
 	add_pic OmastarFossilPic
 	add_pic KabutopsFossilPic

@@ -96,11 +96,9 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Acquire R/S/E and D/P/Pt Champion battle music
 * Use Safari Zone Gate music for Yellow Forest
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
-* Add wild Pokémon to Navel Rock?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower or Trainer House (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-* Battle with Veteran/Hacker Rangi in Celadon Mansion basement once a day?
 * Rebattle Lyra post-Elite 4
 
 

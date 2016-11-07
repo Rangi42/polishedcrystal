@@ -136,5 +136,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; cynthia
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; caitlin
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; darach
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; rei
 ; 2715c

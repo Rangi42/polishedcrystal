@@ -213,6 +213,12 @@ MiraSprite:
 ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
+CaitlinSprite:
+	sprite_header CaitlinSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+DarachSprite:
+	sprite_header DarachSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
 StevenSprite:
 	sprite_header StevenSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 

@@ -104,5 +104,6 @@
 	db "Rock Hound@"     ; STEVEN
 	db "Researcher@"     ; CYNTHIA
 	db "TowerTycoon@"    ; TOWERTYCOON
-	db "Designer@"       ; VALERIE
+	db "Lady@"           ; CAITLIN
+	db "Valet@"          ; DARACH
 	db "Shrine@"         ; REI

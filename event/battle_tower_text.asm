@@ -196,6 +196,8 @@ BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; CYNTHIA
 	db MALE   ; TOWERTYCOON
 	db FEMALE ; VALERIE
+	db FEMALE ; CAITLIN
+	db MALE   ; DARACH
 	db FEMALE ; REI
 
 

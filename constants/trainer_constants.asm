@@ -786,15 +786,19 @@ KRIS EQU __enum__
 
 	trainerclass VALERIE ; 6b
 
-	trainerclass REI ; 6c
+	trainerclass CAITLIN ; 6c
 
-	trainerclass OMASTAR_FOSSIL ; 6d
+	trainerclass DARACH ; 6d
 
-	trainerclass KABUTOPS_FOSSIL ; 6e
+	trainerclass REI ; 6e
 
-	trainerclass AERODACTYL_FOSSIL ; 6f
+	trainerclass OMASTAR_FOSSIL ; 6f
 
-	trainerclass METEORITE ; 70
+	trainerclass KABUTOPS_FOSSIL ; 70
+
+	trainerclass AERODACTYL_FOSSIL ; 71
+
+	trainerclass METEORITE ; 72
 
 NUM_TRAINER_CLASSES EQU __enum__
 

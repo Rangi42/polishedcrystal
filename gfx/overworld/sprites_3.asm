@@ -19,6 +19,8 @@ BuckSpriteGFX:                INCBIN "gfx/overworld/rich_boy.2bpp" ; TODO
 MarleySpriteGFX:              INCBIN "gfx/overworld/lass.2bpp" ; TODO
 MiraSpriteGFX:                INCBIN "gfx/overworld/twin.2bpp" ; TODO
 ValerieSpriteGFX:             INCBIN "gfx/overworld/valerie.2bpp"
+CaitlinSpriteGFX:             INCBIN "gfx/overworld/buena.2bpp" ; TODO
+DarachSpriteGFX:              INCBIN "gfx/overworld/gentleman.2bpp" ; TODO
 StevenSpriteGFX:              INCBIN "gfx/overworld/steven.2bpp"
 CynthiaSpriteGFX:             INCBIN "gfx/overworld/cynthia.2bpp"
 BreederSpriteGFX:             INCBIN "gfx/overworld/breeder.2bpp"

@@ -466,6 +466,8 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_CYNTHIA       ; CYNTHIA
 	db SPRITE_PALMER        ; TOWERTYCOON
 	db SPRITE_VALERIE       ; VALERIE
+	db SPRITE_CAITLIN       ; CAITLIN
+	db SPRITE_DARACH        ; DARACH
 	db SPRITE_SABRINA       ; REI
 
 Special_BattleTower_CheckForRules: ; 170bd3

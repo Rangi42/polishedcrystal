@@ -108,4 +108,6 @@ TrainerGroups: ; 0x39999
 	dw CynthiaGroup
 	dw TowerTycoonGroup
 	dw ValerieGroup
+	dw CaitlinGroup
+	dw DarachGroup
 	dw ReiGroup
