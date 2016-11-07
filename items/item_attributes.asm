@@ -1,5 +1,5 @@
 item_attribute: MACRO
-; price, held effect, parameter, property, pocket, field menu, battle menu
+; price, held effect, parameter, property, pocket, field menu, battle menuz
 	dw \1
 	db \2, \3, \4, \5
 	dn \6, \7
@@ -384,7 +384,6 @@ Item2Attributes:
 	item_attribute 200, HELD_SPECIAL_BOOST, 20, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; ZOOM LENS
 	item_attribute 200, 0, 0, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
-
 ; MENTAL HERB
 	item_attribute 100, 0, 0, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; POWER HERB
@@ -403,6 +402,8 @@ Item2Attributes:
 	item_attribute 100, HELD_CHOICE_BAND, 0, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; CHOICE SCARF
 	item_attribute 200, HELD_CHOICE_SCARF, 0, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
+; CHOICE SPECS
+	item_attribute 200, HELD_CHOICE_SPECS, 0, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; FLAME ORB
 	item_attribute 200, 0, 0, CANT_SELECT, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; TOXIC ORB
