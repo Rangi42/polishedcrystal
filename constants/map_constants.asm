@@ -21,7 +21,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_38,                                    9, 20 ; 12
 	mapgroup ROUTE_39,                                   20, 10 ; 13
 	mapgroup OLIVINE_CITY,                               16, 31 ; 14
-	mapgroup ROUTE_35_COAST,                             13, 24 ; 15
+	mapgroup ROUTE_35_COAST,                             14, 24 ; 15
 
 	newgroup                                                    ;  2
 
@@ -416,7 +416,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 22
 
-	mapgroup ROUTE_40,                                   19, 10 ;  1
+	mapgroup ROUTE_40,                                   20, 10 ;  1
 	mapgroup ROUTE_41,                                   27, 32 ;  2
 	mapgroup CIANWOOD_CITY,                              27, 15 ;  3
 	mapgroup MANIAS_HOUSE,                                4,  4 ;  4
