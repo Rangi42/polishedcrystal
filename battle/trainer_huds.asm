@@ -147,12 +147,19 @@ DrawEnemyHUDBorder: ; 2c0c5
 	ld a, [wBattleMode]
 	dec a
 	ret nz
+	call DoesNuzlockeModePreventCapture
+	jr c, .nuzlocke
 	ld a, [TempEnemyMonSpecies]
 	dec a
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
-	ld [hl], $5d
+	ld [hl], $5d ; poke ball
+	ret
+
+.nuzlocke
+	hlcoord 1, 1
+	ld [hl], $5e ; prohibition symbol
 	ret
 
 .tiles
@@ -267,3 +274,36 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	ld [rOBP0], a
 	ret
 ; 2c1ef
+
+DoesNuzlockeModePreventCapture:
+	; Is nuzlocke mode on?
+	ld a, [EarlyGameOptions]
+	bit NUZLOCKE_MODE, a
+	jr z, .no
+
+	; Is enemy shiny?
+	farcall BattleCheckEnemyShininess
+	jr c, .no
+
+	; Is location already done?
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	ld c, a
+	ld hl, NuzlockeLandmarkFlags
+	; Use landmark as index into flag array
+	ld b, CHECK_FLAG
+	ld d, $0
+	predef FlagPredef
+	ld a, c
+	and a
+	jr z, .no
+
+	scf
+	ret
+
+.no
+	xor a
+	ret

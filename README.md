@@ -281,6 +281,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Battle Scene → Battle Effects.
 * Add: Final Lyra battle.
 * Add: Unown ! and ?.
+* Add: In-battle symbol to show that Nuzlocke mode prevents capture.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.

@@ -4131,7 +4131,6 @@ ResetPlayerStatLevels: ; 3dab1
 	ret
 ; 3dabd
 
-
 InitEnemyMon: ; 3dabd
 	ld a, [CurPartyMon]
 	ld hl, OTPartyMon1Species

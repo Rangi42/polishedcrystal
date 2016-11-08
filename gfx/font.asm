@@ -156,7 +156,7 @@ LoadHPBar: ; fb50d
 	call Get1bpp_2
 	ld de, ExpBarGFX
 	ld hl, VTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 9
+	lb bc, BANK(ExpBarGFX), 10
 	call Get2bpp_2
 	ret
 ; fb53e

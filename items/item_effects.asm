@@ -293,30 +293,8 @@ QuickBall:
 DuskBall:
 PremierBall:
 CherishBall: ; e8a2
-	; Only check landmark flags in a Nuzlocke run
-	ld a, [EarlyGameOptions]
-	bit NUZLOCKE_MODE, a
-	jr z, .NoNuzlockeCheck
-
-	; Shiny clause: always allow catching shiny Pokémon
-	farcall BattleCheckEnemyShininess
-	jr c, .NoNuzlockeCheck
-
-	; Get current landmark
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	ld c, a
-	ld hl, NuzlockeLandmarkFlags
-	; Use landmark as index into flag array
-	ld b, CHECK_FLAG
-	ld d, $0
-	predef FlagPredef
-	ld a, c
-	and a
-	jp nz, Ball_NuzlockeFailureMessage
+	farcall DoesNuzlockeModePreventCapture
+	jp c, Ball_NuzlockeFailureMessage
 
 .NoNuzlockeCheck
 	ld a, [wBattleMode]
