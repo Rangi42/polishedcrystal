@@ -197,6 +197,7 @@ INCLUDE "audio/music/oras/zinniabattle.asm"
 SECTION "Extra Songs 5", ROMX
 
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/dppt/championbattle.asm"
 
 
 

@@ -121,6 +121,7 @@
 	dba Music_MountCoronetDPPt
 	dba Music_EternaForestDPPt
 	dba Music_GameCornerDPPt
+	dba Music_ChampionBattleDPPt
 	dba Music_Route12BW
 	dba Music_TrainerBattleBW
 	dba Music_WCSBattleBW

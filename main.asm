@@ -1681,8 +1681,7 @@ PlayBattleMusic: ; 2ee6c
 	cp STEVEN
 	jp z, .done
 
-	; TODO: Use D/P/Pt Champion music for Cynthia, if available
-	ld de, MUSIC_CHAMPION_BATTLE_RSE
+	ld de, MUSIC_CHAMPION_BATTLE_DPPT
 	cp CYNTHIA
 	jp z, .done
 
