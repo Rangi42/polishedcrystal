@@ -123,7 +123,13 @@ MapRuinsofAlphKabutoChamberSignpost1Script:
 	jumptext UnknownText_0x58b1a
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
-	jumptext UnknownText_0x58b3f
+	unowntypeface
+	opentext
+	writetext UnknownText_0x58b3f
+	waitbutton
+	closetext
+	restoretypeface
+	end
 
 MapRuinsofAlphKabutoChamberSignpost4Script:
 	opentext

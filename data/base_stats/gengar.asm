@@ -11,8 +11,12 @@
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db LEVITATE ; ability 1
+	db CURSED_BODY ; ability 1
+if DEF(FAITHFUL)
+	db CURSED_BODY ; ability 2
+else
 	db LEVITATE ; ability 2
+endc
 	db SHADOW_TAG ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups

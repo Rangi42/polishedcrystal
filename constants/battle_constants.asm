@@ -204,6 +204,7 @@ NO_NATURE   EQU const_value
 	const SHEER_FORCE
 	const UNNERVE
 	const DEFIANT
+	const CURSED_BODY
 	const WEAK_ARMOR
 	const MULTISCALE
 	const HARVEST

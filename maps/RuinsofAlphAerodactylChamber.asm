@@ -83,7 +83,13 @@ MapRuinsofAlphAerodactylChamberSignpost1Script:
 	jumptext UnknownText_0x58ec2
 
 MapRuinsofAlphAerodactylChamberSignpost3Script:
-	jumptext UnknownText_0x58ee7
+	unowntypeface
+	opentext
+	writetext UnknownText_0x58ee7
+	waitbutton
+	closetext
+	restoretypeface
+	end
 
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext

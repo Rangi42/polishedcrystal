@@ -1427,6 +1427,7 @@ EarlyGameOptions::
 ; bit 4-7: unused
 	ds 1
 
+OptionsBuffer::
 	ds 1
 OptionsEnd::
 

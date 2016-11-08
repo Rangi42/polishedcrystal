@@ -1130,3 +1130,13 @@ checkdarkness: macro
 checkunits: macro
 	db checkunits_command
 	endm
+
+	enum savetypeface_command
+savetypeface: macro
+	db savetypeface_command
+	endm
+
+	enum restoretypeface_command
+restoretypeface: macro
+	db restoretypeface_command
+	endm

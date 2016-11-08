@@ -33,7 +33,7 @@ else
 endc
 	move GUST,         EFFECT_GUST,               40, FLYING,    100, 35,   0, SPECIAL
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,    100, 35,   0, PHYSICAL
-	move SUCKER_PUNCH, EFFECT_PRIORITY_HIT,       80, DARK,      100,  5,   0, PHYSICAL
+	move SUCKER_PUNCH, EFFECT_PRIORITY_HIT,       70, DARK,      100,  5,   0, PHYSICAL
 if DEF(FAITHFUL)
 	move FLY,          EFFECT_FLY,                90, FLYING,     95, 15,   0, PHYSICAL
 else
@@ -185,7 +185,7 @@ endc
 	move DREAM_EATER,  EFFECT_DREAM_EATER,       100, PSYCHIC,   100, 15,   0, SPECIAL
 	move POISON_JAB,   EFFECT_POISON_HIT,         80, POISON,    100, 20,  30, PHYSICAL
 	move BULLET_PUNCH, EFFECT_PRIORITY_HIT,       40, STEEL,     100, 30,   0, PHYSICAL
-	move LEECH_LIFE,   EFFECT_LEECH_HIT,          20, BUG,       100, 15,   0, PHYSICAL
+	move LEECH_LIFE,   EFFECT_LEECH_HIT,          80, BUG,       100, 15,   0, PHYSICAL
 	move DRAIN_KISS,   EFFECT_LEECH_HIT,          50, FAIRY,     100, 10,   0, SPECIAL
 	move SKY_ATTACK,   EFFECT_SKY_ATTACK,        140, FLYING,     90,  5,   0, PHYSICAL
 	move TRANSFORM,    EFFECT_TRANSFORM,           0, NORMAL,    100, 10,   0, STATUS

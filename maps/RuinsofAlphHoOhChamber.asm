@@ -84,7 +84,13 @@ MapRuinsofAlphHoOhChamberSignpost1Script:
 	jumptext UnknownText_0x58685
 
 MapRuinsofAlphHoOhChamberSignpost3Script:
-	jumptext UnknownText_0x586aa
+	unowntypeface
+	opentext
+	writetext UnknownText_0x586aa
+	waitbutton
+	closetext
+	restoretypeface
+	end
 
 MapRuinsofAlphHoOhChamberSignpost4Script:
 	opentext

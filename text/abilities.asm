@@ -142,6 +142,7 @@ AbilityNames:
 	dw SheerForce
 	dw Unnerve
 	dw Defiant
+	dw CursedBody
 	dw WeakArmor
 	dw Multiscale
 	dw Harvest
@@ -271,6 +272,7 @@ Pickpocket:    db "Pickpocket@"
 SheerForce:    db "Sheer Force@"
 Unnerve:       db "Unnerve@"
 Defiant:       db "Defiant@"
+CursedBody:    db "Cursed Body@"
 WeakArmor:     db "Weak Armor@"
 Multiscale:    db "Multiscale@"
 Harvest:       db "Harvest@"
@@ -440,6 +442,7 @@ AbilityDescriptions:
 	dw SheerForceDescription
 	dw UnnerveDescription
 	dw DefiantDescription
+	dw CursedBodyDescription
 	dw WeakArmorDescription
 	dw MultiscaleDescription
 	dw HarvestDescription
@@ -877,6 +880,10 @@ UnnerveDescription:
 DefiantDescription:
 	db   "Boosts Attack when"
 	next "stats are lowered.@"
+
+CursedBodyDecription:
+	db   "May disable a move"
+	next "used on it.@"
 
 WeakArmorDescription:
 	db   "Physical attacks"

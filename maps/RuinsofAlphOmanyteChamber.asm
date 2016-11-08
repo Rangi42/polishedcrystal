@@ -84,7 +84,13 @@ MapRuinsofAlphOmanyteChamberSignpost1Script:
 	jumptext UnknownText_0x58d01
 
 MapRuinsofAlphOmanyteChamberSignpost3Script:
-	jumptext UnknownText_0x58d26
+	unowntypeface
+	opentext
+	writetext UnknownText_0x58d26
+	waitbutton
+	closetext
+	restoretypeface
+	end
 
 MapRuinsofAlphOmanyteChamberSignpost4Script:
 	opentext

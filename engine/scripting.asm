@@ -251,6 +251,8 @@ ScriptCommandTable: ; 96cb1
 	dw Script_tmhmtotext                 ; b2
 	dw Script_checkdarkness              ; b3
 	dw Script_checkunits                 ; b4
+	dw Script_unowntypeface              ; b5
+	dw Script_restoretypeface            ; b6
 ; 96e05
 
 StartScript: ; 96e05
@@ -3419,4 +3421,25 @@ Script_checkunits:
 	ld a, [Options2]
 	bit POKEDEX_UNITS, a
 	ld [ScriptVar], a
+	ret
+
+Script_unowntypeface:
+; script command 0xb5
+
+	ld a, [Options2]
+	ld [OptionsBuffer], a
+	and $9f
+	or FONT_UNOWN
+	ld [Options2], a
+	call LoadStandardFont
+	ret
+
+Script_restoretypeface:
+; script command 0xb6
+
+	ld a, [OptionsBuffer]
+	ld [Options2], a
+	xor a
+	ld [OptionsBuffer], a
+	call LoadStandardFont
 	ret

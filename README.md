@@ -219,15 +219,17 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Johto and Kanto forms for Arbok.
 * Add: Drain Kiss drains 75% HP.
 * Add: Update Pokémon, move, and item attributes to Gen VII:
-   * Super Potion heals 60 HP
-   * Hyper Potion heals 120 HP and costs ¥1500
-   * Fresh Water heals 30 HP
-   * Soda Pop heals 50 HP
-   * Lemonade heals 70 HP and costs ¥400
-   * X items sharply raise stats and cost twice as much
-   * Tackle has 40 power
-   * Thunder Wave has 90% accuracy
-   * Paralysis halves (not quarters) Speed
+   * Super Potion heals 60 HP.
+   * Hyper Potion heals 120 HP and costs ¥1500.
+   * Fresh Water heals 30 HP.
+   * Soda Pop heals 50 HP.
+   * Lemonade heals 70 HP and costs ¥400.
+   * X items sharply raise stats and cost twice as much.
+   * Tackle has 40 power.
+   * Sucker Punch has 70 power.
+   * Gengar has Cursed Body. (Can also have Levitate in non-Faithful.)
+   * Thunder Wave has 90% accuracy.
+   * Paralysis halves (not quarters) Speed.
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Replace Twineedle with U-turn.
