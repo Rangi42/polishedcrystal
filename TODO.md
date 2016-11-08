@@ -52,6 +52,8 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Aesthetic updates
 
+* Fix the gray ferry on Faraway Island
+* Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
 * Pause music during battle effects (TPP misc/restoremusic.asm)
 * Add separate animation graphics for more Poké Ball designs
