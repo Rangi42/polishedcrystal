@@ -1131,9 +1131,9 @@ checkunits: macro
 	db checkunits_command
 	endm
 
-	enum savetypeface_command
-savetypeface: macro
-	db savetypeface_command
+	enum unowntypeface_command
+unowntypeface: macro
+	db unowntypeface_command
 	endm
 
 	enum restoretypeface_command

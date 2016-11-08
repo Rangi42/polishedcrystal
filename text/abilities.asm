@@ -881,7 +881,7 @@ DefiantDescription:
 	db   "Boosts Attack when"
 	next "stats are lowered.@"
 
-CursedBodyDecription:
+CursedBodyDescription:
 	db   "May disable a move"
 	next "used on it.@"
 
