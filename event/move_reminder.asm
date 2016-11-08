@@ -407,6 +407,11 @@ ChooseMoveToLearn:
 
 .PrintMoveDesc
 	push de
+	push hl
+	hlcoord 4, 1
+	ld de, .Heading
+	call PlaceString
+	pop hl
 	call SpeechTextBox
 	ld a, [MenuSelection]
 	cp $ff
@@ -416,6 +421,9 @@ ChooseMoveToLearn:
 	hlcoord 1, 14
 	predef PrintMoveDesc
 	ret
+
+.Heading
+	db "Cat/Typ/Pow/<BOLDP><BOLDP>@"
 
 
 Text_MoveReminderIntro:
