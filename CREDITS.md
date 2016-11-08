@@ -24,6 +24,7 @@
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * BettyNewbie for Green's sprite.
+* DarioEMeloD for Unown ! and ? sprites.
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
