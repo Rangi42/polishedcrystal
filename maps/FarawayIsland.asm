@@ -82,6 +82,9 @@ FarawayIslandLawrenceScript:
 	faceplayer
 	opentext
 	writetext FarawayIslandLawrenceText1
+	yesorno
+	iffalse .no_battle
+	writetext FarawayIslandLawrenceYesText
 	waitbutton
 	closetext
 	winlosstext FarawayIslandLawrenceBeatenText, 0
@@ -90,6 +93,7 @@ FarawayIslandLawrenceScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
+	faceplayer
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext FarawayIslandLawrenceText2
@@ -104,6 +108,14 @@ FarawayIslandLawrenceScript:
 	special Special_FadeInQuickly
 	setevent EVENT_BEAT_LAWRENCE
 	setevent EVENT_LAWRENCE_FARAWAY_ISLAND
+	playmapmusic
+	end
+
+.no_battle:
+	writetext FarawayIslandLawrenceNoText
+	waitbutton
+	closetext
+	spriteface FARAWAYISLAND_LAWRENCE, DOWN
 	playmapmusic
 	end
 
@@ -154,15 +166,56 @@ SeagallopFerryFarawayIslandRefusedText:
 	done
 
 FarawayIslandLawrenceText1:
-	text "Lawrence: "
+	text "Lawrence: Well,"
+	line "this certainly is"
+
+	para "a pleasure, though"
+	line "an unexpected one."
+
+	para "I came here to"
+	line "remember how my"
+	cont "collection began…"
+
+	para "with a Mew carving"
+	line "found on this very"
+	cont "island."
+
+	para "…I have been"
+	line "thinking about our"
+	cont "last battle."
+
+	para "I want to under-"
+	line "stand the bond"
+
+	para "you have with your"
+	line "collection."
+
+	para "Will you battle"
+	line "me again?"
+	done
+
+FarawayIslandLawrenceYesText:
+	text "Excellent!"
+	done
+
+FarawayIslandLawrenceNoText:
+	text "…Very well."
 	done
 
 FarawayIslandLawrenceBeatenText:
-	text ""
+	text "You beat me once"
+	line "again…"
 	done
 
 FarawayIslandLawrenceText2:
-	text "Lawrence: "
+	text "Lawrence: …I see."
+	line "I still have far"
+	cont "to go before I"
+
+	para "can build an even"
+	line "better collection."
+
+	para "Farewell."
 	done
 
 FarawayIslandSignText:
