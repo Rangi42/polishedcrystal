@@ -46,9 +46,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Select reorders Pokémon in party menu
 * Longer player and rival names
 * Sometimes wild Pokémon know an egg move
-* More frequently successful Headbutting
 * More likely to find roaming Pokémon when on the correct route
-* Add a trainer type that specifies IVs along with level, item, and moves
 * Get better Wonder Trade items at higher levels
 
 
@@ -60,7 +58,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
-* Custom Rocket Executive sprites
 * Design custom animations for new moves
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
 * Big roofs like Pewter Museum on Silph Co. and Pokémon Tower?
@@ -93,13 +90,10 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Elite Four have different rematch dialog
 * Use RBY's Pokémon Tower music (Crossing Cave bottom)
 * Use Mmmmmm's B/W Route 12 (Magnet Train Track), White Treehollow (Noisy Forest), and Spiky-Eared Pichu (Giovanni event) music
-* Acquire R/S/E and D/P/Pt Champion battle music
-* Use Safari Zone Gate music for Yellow Forest
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower or Trainer House (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-* Rebattle Lyra post-Elite 4
 
 
 ## New features
@@ -108,7 +102,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
-* Pickup ability for Meowth, Teddiursa, and/or Phanpy
 * Abilities in general
 * First Pokémon walks behind you
 * Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
