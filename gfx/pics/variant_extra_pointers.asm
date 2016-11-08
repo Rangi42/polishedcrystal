@@ -25,6 +25,8 @@ UnownAnimationExtraPointers:
 	dw UnownXAnimationExtra
 	dw UnownYAnimationExtra
 	dw UnownZAnimationExtra
+	dw UnownExclamationAnimationExtra
+	dw UnownQuestionAnimationExtra
 
 PikachuAnimationExtraPointers:
 	dw PikachuPlainAnimationExtra

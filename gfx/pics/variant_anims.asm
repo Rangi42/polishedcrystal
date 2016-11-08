@@ -25,6 +25,8 @@ UnownWAnimation: INCLUDE "gfx/pics/unown_w/anim0.asm"
 UnownXAnimation: INCLUDE "gfx/pics/unown_x/anim0.asm"
 UnownYAnimation: INCLUDE "gfx/pics/unown_y/anim0.asm"
 UnownZAnimation: INCLUDE "gfx/pics/unown_z/anim0.asm"
+UnownExclamationAnimation: INCLUDE "gfx/pics/unown_exclamation/anim0.asm"
+UnownQuestionAnimation:    INCLUDE "gfx/pics/unown_question/anim0.asm"
 
 PikachuAnimations:
 PikachuPlainAnimation:  INCLUDE "gfx/pics/pikachu_plain/anim0.asm"

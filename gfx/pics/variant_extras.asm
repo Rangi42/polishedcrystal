@@ -24,6 +24,8 @@ UnownWAnimationExtra: INCLUDE "gfx/pics/unown_w/anim1.asm"
 UnownXAnimationExtra: INCLUDE "gfx/pics/unown_x/anim1.asm"
 UnownYAnimationExtra: INCLUDE "gfx/pics/unown_y/anim1.asm"
 UnownZAnimationExtra: INCLUDE "gfx/pics/unown_z/anim1.asm"
+UnownExclamationAnimationExtra: INCLUDE "gfx/pics/unown_exclamation/anim1.asm"
+UnownQuestionAnimationExtra:    INCLUDE "gfx/pics/unown_question/anim1.asm"
 
 PichuPlainAnimationExtra: INCLUDE "gfx/pics/pichu_plain/anim1.asm"
 PichuSpikyAnimationExtra: INCLUDE "gfx/pics/pichu_spiky/anim1.asm"

@@ -25,6 +25,8 @@ UnownWFrames: INCLUDE "gfx/pics/unown_w/frames.asm"
 UnownXFrames: INCLUDE "gfx/pics/unown_x/frames.asm"
 UnownYFrames: INCLUDE "gfx/pics/unown_y/frames.asm"
 UnownZFrames: INCLUDE "gfx/pics/unown_z/frames.asm"
+UnownExclamationFrames: INCLUDE "gfx/pics/unown_exclamation/frames.asm"
+UnownQuestionFrames:    INCLUDE "gfx/pics/unown_question/frames.asm"
 
 PikachusFrames:
 PikachuPlainFrames:  INCLUDE "gfx/pics/pikachu_plain/frames.asm"

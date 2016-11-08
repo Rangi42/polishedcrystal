@@ -25,6 +25,8 @@ UnownBitmasksPointers:
 	dw UnownXBitmasks
 	dw UnownYBitmasks
 	dw UnownZBitmasks
+	dw UnownExclamationBitmasks
+	dw UnownQuestionBitmasks
 
 PikachuBitmasksPointers:
 	dw PikachuPlainBitmasks

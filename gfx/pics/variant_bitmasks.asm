@@ -24,6 +24,8 @@ UnownWBitmasks: INCLUDE "gfx/pics/unown_w/bitmask.asm"
 UnownXBitmasks: INCLUDE "gfx/pics/unown_x/bitmask.asm"
 UnownYBitmasks: INCLUDE "gfx/pics/unown_y/bitmask.asm"
 UnownZBitmasks: INCLUDE "gfx/pics/unown_z/bitmask.asm"
+UnownExclamationBitmasks: INCLUDE "gfx/pics/unown_exclamation/bitmask.asm"
+UnownQuestionBitmasks:    INCLUDE "gfx/pics/unown_question/bitmask.asm"
 
 PikachuPlainBitmasks:  INCLUDE "gfx/pics/pikachu_plain/bitmask.asm"
 PikachuFlyBitmasks:    INCLUDE "gfx/pics/pikachu_fly/bitmask.asm"
