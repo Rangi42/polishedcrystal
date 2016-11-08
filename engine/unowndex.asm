@@ -118,6 +118,6 @@ UnownWord23: unownword "WANT"
 UnownWord24: unownword "XXXXX"
 UnownWord25: unownword "YIELD"
 UnownWord26: unownword "ZOOM"
-UnownWord27: unownword "(((((("
-UnownWord28: unownword "))))))"
+UnownWord27: unownword "((((("
+UnownWord28: unownword ")))))"
 ; fbb32

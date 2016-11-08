@@ -1289,14 +1289,14 @@ Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
 Pokedex_DrawUnownModeBG: ; 409f1 (10:49f1)
 	call Pokedex_FillBackgroundColor2
 	hlcoord 2, 1
-	lb bc, 10, 14
+	lb bc, 11, 13
 	call Pokedex_PlaceBorder
 	hlcoord 2, 14
-	lb bc, 1, 14
+	lb bc, 1, 13
 	call Pokedex_PlaceBorder
 	hlcoord 2, 15
 	ld [hl], $3d
-	hlcoord 17, 15
+	hlcoord 16, 15
 	ld [hl], $3e
 	hlcoord 6, 5
 	call Pokedex_PlaceFrontpicAtHL
@@ -1331,6 +1331,7 @@ endr
 
 UnownModeLetterAndCursorCoords: ; 40a3e
 ;           letter, cursor
+	dwcoord   4,12,   3,12
 	dwcoord   4,11,   3,11
 	dwcoord   4,10,   3,10
 	dwcoord   4, 9,   3, 9
@@ -1349,16 +1350,15 @@ UnownModeLetterAndCursorCoords: ; 40a3e
 	dwcoord  11, 3,  11, 2
 	dwcoord  12, 3,  12, 2
 	dwcoord  13, 3,  13, 2
-	dwcoord  14, 3,  14, 2
-	dwcoord  15, 3,  16, 2
-	dwcoord  15, 4,  16, 4
-	dwcoord  15, 5,  16, 5
-	dwcoord  15, 6,  16, 6
-	dwcoord  15, 7,  16, 7
-	dwcoord  15, 8,  16, 8
-	dwcoord  15, 9,  16, 9
-	dwcoord  15,10,  16,10
-	dwcoord  15,11,  16,11
+	dwcoord  14, 3,  15, 2
+	dwcoord  14, 4,  15, 4
+	dwcoord  14, 5,  15, 5
+	dwcoord  14, 6,  15, 6
+	dwcoord  14, 7,  15, 7
+	dwcoord  14, 8,  15, 8
+	dwcoord  14, 9,  15, 9
+	dwcoord  14,10,  15,10
+	dwcoord  14,11,  15,11
 
 Pokedex_FillBackgroundColor2: ; 40aa6
 	hlcoord 0, 0
