@@ -3,6 +3,12 @@ INCBIN "gfx/misc/font_extra.2bpp"
 
 Font:
 INCBIN "gfx/misc/font.1bpp"
+FontBold:
+INCBIN "gfx/misc/font_bold.1bpp"
+FontItalic:
+INCBIN "gfx/misc/font_italic.1bpp"
+FontUnown:
+INCBIN "gfx/misc/font_unown.1bpp"
 
 FontBattleExtra:
 INCBIN "gfx/misc/font_battle_extra.2bpp"
@@ -62,31 +68,62 @@ INCBIN "gfx/misc/footprints.w128.1bpp"
 ; fb434
 
 _LoadStandardFont:: ; fb449
-	ld de, Font
+	call LoadStandardFontPointer
+	ld d, h
+	ld e, l
 	ld hl, VTiles1
 	lb bc, BANK(Font), $80
 	ld a, [rLCDC]
 	bit 7, a
 	jp z, Copy1bpp
 
-	ld de, Font
+	call LoadStandardFontPointer
+	ld d, h
+	ld e, l
 	ld hl, VTiles1
 	lb bc, BANK(Font), $20
 	call Get1bpp_2
-	ld de, Font + $20 * LEN_1BPP_TILE
+	call LoadStandardFontPointer
+	ld de, $20 * LEN_1BPP_TILE
+	add hl, de
+	ld d, h
+	ld e, l
 	ld hl, VTiles1 tile $20
 	lb bc, BANK(Font), $20
 	call Get1bpp_2
-	ld de, Font + $40 * LEN_1BPP_TILE
+	call LoadStandardFontPointer
+	ld de, $40 * LEN_1BPP_TILE
+	add hl, de
+	ld d, h
+	ld e, l
 	ld hl, VTiles1 tile $40
 	lb bc, BANK(Font), $20
 	call Get1bpp_2
-	ld de, Font + $60 * LEN_1BPP_TILE
+	call LoadStandardFontPointer
+	ld de, $60 * LEN_1BPP_TILE
+	add hl, de
+	ld d, h
+	ld e, l
 	ld hl, VTiles1 tile $60
 	lb bc, BANK(Font), $20
 	call Get1bpp_2
 	ret
 ; fb48a
+
+LoadStandardFontPointer::
+	ld a, [Options2]
+	and $60
+	ld hl, Font
+	cp FONT_NORMAL
+	ret z
+	ld hl, FontBold
+	cp FONT_BOLD
+	ret z
+	ld hl, FontItalic
+	cp FONT_ITALIC
+	ret z
+	ld hl, FontUnown
+	ret
 
 _LoadFontsExtra1:: ; fb48a
 	ld de, OverworldPhoneIconGFX

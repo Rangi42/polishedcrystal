@@ -91,8 +91,8 @@ StringOptions2:
 	db "        :<LNBRK>"
 	db "#dex Units<LNBRK>"
 	db "        :<LNBRK>"
-	db "<LNBRK>"
-	db "<LNBRK>"
+	db "Typeface<LNBRK>"
+	db "        :<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
@@ -136,7 +136,7 @@ endr
 
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
-	dw Options_Unused
+	dw Options_Typeface
 	dw Options_Unused
 	dw Options_Unused
 	dw Options_Unused
@@ -480,6 +480,77 @@ Options_PokedexUnits:
 	db "Metric  @"
 
 
+Options_Typeface:
+	ld hl, Options2
+	ld a, [hJoyPressed]
+	bit D_RIGHT_F, a
+	jr nz, .RightPressed
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	ld a, [hl]
+	and $60
+.Set:
+	cp FONT_NORMAL
+	jr z, .SetNormal
+	cp FONT_BOLD
+	jr z, .SetBold
+	cp FONT_ITALIC
+	jr z, .SetItalic
+.SetUnown:
+	ld a, [hl]
+	and $9f
+	or FONT_UNOWN
+	ld [hl], a
+	ld de, .Unown
+	jr .Display
+.SetNormal:
+	ld a, [hl]
+	and $9f
+	or FONT_NORMAL
+	ld [hl], a
+	ld de, .Normal
+	jr .Display
+.SetBold:
+	ld a, [hl]
+	and $9f
+	or FONT_BOLD
+	ld [hl], a
+	ld de, .Bold
+	jr .Display
+.SetItalic:
+	ld a, [hl]
+	and $9f
+	or FONT_ITALIC
+	ld [hl], a
+	ld de, .Italic
+	jr .Display
+.LeftPressed:
+	ld a, [hl]
+	sub $20
+	and $60
+	jr .Set
+.RightPressed:
+	ld a, [hl]
+	add $20
+	and $60
+	jr .Set
+.Display:
+	hlcoord 11, 7
+	call PlaceString
+	call LoadStandardFont
+	and a
+	ret
+
+.Normal:
+	db "Normal@"
+.Bold:
+	db "Bold  @"
+.Italic:
+	db "Italic@"
+.Unown:
+	db "Unown @"
+
+
 Options_Unused:
 	and a
 	ret
@@ -540,7 +611,7 @@ OptionsControl: ; e452a
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
 
-	cp $1
+	cp $2
 	jr nz, .DownOK
 	ld a, [wCurrentOptionsPage]
 	and a
@@ -567,7 +638,7 @@ OptionsControl: ; e452a
 	and a
 	ld a, [hl]
 	jr z, .UpOK
-	ld [hl], $1 ; skip missing options on page 2
+	ld [hl], $2 ; skip missing options on page 2
 	scf
 	ret
 .UpOK

@@ -1415,6 +1415,8 @@ Options2:: ; cfd1
 ; bit 3: battle style set/switch
 ; bit 4: battle style set/predict
 ; (bits 3 and 4 are never both set)
+; bit 5-6: typeface regular/bold/italic/unown
+; bit 7: unused
 	ds 1
 
 EarlyGameOptions::

@@ -692,7 +692,7 @@ DefaultOptions: ; 14f7c
 	db $01       ; TextBoxFlags: ?
 	db $0        ; ???
 	db %00000000 ; Options2: running shoes off, 12-hour clock, imperial units,
-	             ;           battle style set
+	             ;           battle style set, default typeface
 	db %00000111 ; EarlyGameOptions: natures on, abilities on, traded behavior on,
 	             ;                   nuzlocke mode off
 	db $0        ; ???

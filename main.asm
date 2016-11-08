@@ -5817,13 +5817,18 @@ INCLUDE "engine/crystal_intro.asm"
 SECTION "bank3E", ROMX, BANK[$3E]
 
 INCLUDE "gfx/font.asm"
-INCLUDE "engine/time_capsule/conversion.asm"
-INCLUDE "engine/unowndex.asm"
-INCLUDE "event/magikarp.asm"
 
 INCLUDE "battle/hidden_power.asm"
 
 INCLUDE "battle/misc.asm"
+
+INCLUDE "engine/unowndex.asm"
+
+SECTION "bank3E spillover", ROMX
+
+INCLUDE "event/magikarp.asm"
+
+INCLUDE "engine/time_capsule/conversion.asm"
 
 SECTION "bank3F", ROMX, BANK[$3F]
 
@@ -5912,19 +5917,46 @@ INCLUDE "engine/warp_connection.asm"
 INCLUDE "battle/used_move_text.asm"
 
 LoadOverworldFont:: ; 106594
-	ld de, .bgfont
+	call LoadPopupFontPointer
+	ld d, h
+	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(.bgfont), $80
+	lb bc, BANK(PopupFont), $80
 	call Get2bpp
-	ld de, .bgfont + $80 tiles
+	call LoadPopupFontPointer
+	ld de, $80 tiles
+	add hl, de
+	ld d, h
+	ld e, l
 	ld hl, VTiles2 tile $7f
-	lb bc, BANK(.bgfont), 1
+	lb bc, BANK(PopupFont), 1
 	call Get2bpp
 	ret
 ; 1065ad
 
-.bgfont
+LoadPopupFontPointer::
+	ld a, [Options2]
+	and $60
+	ld hl, PopupFont
+	cp FONT_NORMAL
+	ret z
+	ld hl, PopupFontBold
+	cp FONT_BOLD
+	ret z
+	ld hl, PopupFontItalic
+	cp FONT_ITALIC
+	ret z
+	ld hl, PopupFontUnown
+	ret
+
+PopupFont:
 INCBIN "gfx/misc/font_popup.2bpp"
+PopupFontBold:
+INCBIN "gfx/misc/font_popup_bold.2bpp"
+PopupFontItalic:
+INCBIN "gfx/misc/font_popup_italic.2bpp"
+PopupFontUnown:
+INCBIN "gfx/misc/font_popup_unown.2bpp"
 
 SECTION "Intro Logo", ROMX, BANK[$42]
 
