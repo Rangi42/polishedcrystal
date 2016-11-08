@@ -546,7 +546,7 @@ Options_Typeface:
 .Bold:
 	db "Bold  @"
 .Italic:
-	db "Italic@"
+	db "Serif @"
 .Unown:
 	db "Unown @"
 
