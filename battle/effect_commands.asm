@@ -7141,7 +7141,6 @@ BattleCommand_KingsRock: ; 36ac9
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp STENCH
-	cp 26
 	ret nc
 	call ShowAbilityActivation
 .ok

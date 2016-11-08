@@ -70,7 +70,7 @@ ScientistScript_0x591d1:
 	checkevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	iftrue .Conclusion
 	checkcode VAR_UNOWNCOUNT
-	if_equal 26, UnknownScript_0x591df
+	if_equal NUM_UNOWN, UnknownScript_0x591df
 	writetext UnknownText_0x59311
 	waitbutton
 	closetext
@@ -150,7 +150,7 @@ ScientistScript_0x591e5:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	if_equal 26, UnknownScript_0x5920b
+	if_equal NUM_UNOWN, UnknownScript_0x5920b
 	checkflag ENGINE_UNOWN_DEX
 	iftrue UnknownScript_0x59205
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
@@ -199,7 +199,7 @@ UnknownScript_0x59228:
 
 UnknownScript_0x5922e:
 	checkcode VAR_UNOWNCOUNT
-	if_equal 26, ResearchCompleteScript_0x596d3
+	if_equal NUM_UNOWN, ResearchCompleteScript_0x596d3
 	checkcode VAR_UNOWNCOUNT
 	if_greater_than 10, ResearchOngoingScript_0x59669
 	writetext UnknownText_0x59769

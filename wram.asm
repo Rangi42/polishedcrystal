@@ -2815,7 +2815,7 @@ PokedexSeen:: ; deb9
 EndPokedexSeen::
 
 UnownDex:: ; ded9
-	ds 26
+	ds NUM_UNOWN
 UnlockedUnowns:: ; def3
 	ds 1
 

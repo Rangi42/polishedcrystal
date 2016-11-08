@@ -93,7 +93,7 @@ ScientistScript_0x587a8:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	if_equal 26, UnknownScript_0x587cf
+	if_equal NUM_UNOWN, UnknownScript_0x587cf
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue UnknownScript_0x587c9
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE

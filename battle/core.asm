@@ -6552,7 +6552,7 @@ endr
 	call CheckUnownLetter
 	pop de
 	jr nc, .Happiness
-	ld a, 26
+	ld a, NUM_UNOWN
 	call RandomRange
 	ld b, a
 	ld a, [EnemyMonForm]

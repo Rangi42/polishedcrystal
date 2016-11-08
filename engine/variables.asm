@@ -126,7 +126,7 @@ endr
 	ret z
 	inc b
 	ld a, b
-	cp 26
+	cp NUM_UNOWN
 	jr c, .loop
 	ret
 ; 80715
