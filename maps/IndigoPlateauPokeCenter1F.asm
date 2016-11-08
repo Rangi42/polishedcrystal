@@ -392,7 +392,7 @@ PlateauLyraText1:
 	para "Do you know what"
 	line "this means?"
 
-	para "I get to battle"
+	para "I get to challenge"
 	line "you, not only as"
 	cont "my friend, but"
 	done
