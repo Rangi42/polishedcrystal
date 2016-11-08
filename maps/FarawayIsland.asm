@@ -11,7 +11,11 @@ FarawayIsland_MapScriptHeader:
 	dw .Trigger1, 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_SPRITES, .SetupLawrence
 
 .Trigger0:
 	end
@@ -19,6 +23,16 @@ FarawayIsland_MapScriptHeader:
 .Trigger1:
 	priorityjump FarawayIsland_PlayerArrives
 	end
+
+.SetupLawrence:
+	disappear FARAWAYISLAND_LAWRENCE
+	checkevent EVENT_FARAWAY_JUNGLE_MEW
+	iffalse .Done
+	checkevent EVENT_BEAT_LAWRENCE
+	iftrue .Done
+	appear FARAWAYISLAND_LAWRENCE
+.Done
+	return
 
 FarawayIsland_PlayerArrives:
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive1MovementData
@@ -59,6 +73,38 @@ FarawayIslandSailorScript:
 	writetext SeagallopFerryFarawayIslandRefusedText
 	waitbutton
 	closetext
+	end
+
+FarawayIslandLawrenceScript:
+	special Special_FadeOutMusic
+	pause 15
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
+	faceplayer
+	opentext
+	writetext FarawayIslandLawrenceText1
+	waitbutton
+	closetext
+	winlosstext FarawayIslandLawrenceBeatenText, 0
+	setlasttalked FARAWAYISLAND_LAWRENCE
+	loadtrainer LAWRENCE, 2
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
+	opentext
+	writetext FarawayIslandLawrenceText2
+	waitbutton
+	closetext
+	pause 15
+	playsound SFX_WARP_TO
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear FARAWAYISLAND_LAWRENCE
+	waitsfx
+	special Special_FadeInQuickly
+	setevent EVENT_BEAT_LAWRENCE
+	setevent EVENT_LAWRENCE_FARAWAY_ISLAND
+	playmapmusic
 	end
 
 FarawayIslandSign:
@@ -107,6 +153,18 @@ SeagallopFerryFarawayIslandRefusedText:
 	line "right here."
 	done
 
+FarawayIslandLawrenceText1:
+	text "Lawrence: "
+	done
+
+FarawayIslandLawrenceBeatenText:
+	text ""
+	done
+
+FarawayIslandLawrenceText2:
+	text "Lawrence: "
+	done
+
 FarawayIslandSignText:
 	text "The writing is"
 	line "fading as if it"
@@ -146,4 +204,4 @@ FarawayIsland_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND

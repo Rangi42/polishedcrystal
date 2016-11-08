@@ -514,6 +514,10 @@ Diploma: ; c49f
 
 
 RespawnOneOffs:
+	ld de, EVENT_BEAT_LAWRENCE
+	ld b, RESET_FLAG
+	call EventFlagAction
+
 	ld de, EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 	ld b, CHECK_FLAG
 	call EventFlagAction
