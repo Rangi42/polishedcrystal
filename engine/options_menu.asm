@@ -514,6 +514,9 @@ Options_Typeface:
 	and NOT_FONT_MASK
 	or c
 	ld [hl], a
+	push bc
+	call LoadStandardFont
+	pop bc
 
 .NonePressed:
 	ld b, 0
@@ -526,7 +529,6 @@ endr
 	ld d, [hl]
 	hlcoord 11, 7
 	call PlaceString
-	call LoadStandardFont
 	and a
 	ret
 
