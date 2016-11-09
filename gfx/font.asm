@@ -49,10 +49,6 @@ TownMapGFX: ; f8ba0
 INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
 
-OverworldPhoneIconGFX: ; f8f24
-INCBIN "gfx/misc/overworld_phone_icon.2bpp"
-; f8f34
-
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.2bpp"
 ; f9214
@@ -60,10 +56,6 @@ INCBIN "gfx/frames/space.2bpp"
 MapEntryFrameGFX: ; f9344
 INCBIN "gfx/frames/map_entry_sign.2bpp"
 ; f9424
-
-UpArrowGFX: ; f9424
-INCBIN "gfx/font/up_arrow.2bpp"
-; f9434
 
 _LoadStandardFont:: ; fb449
 	call LoadStandardFontPointer
@@ -134,26 +126,13 @@ endr
 	dw FontNormal
 	dw FontNormal
 
-_LoadFontsExtra1:: ; fb48a
-	ld de, OverworldPhoneIconGFX
+_LoadFontsExtra:: ; fb48a
+	ld de, FontExtra + 2 * LEN_2BPP_TILE
 	ld hl, VTiles2 tile $62
-	lb bc, BANK(OverworldPhoneIconGFX), 1
-	call Get2bpp_2
-	ld de, FontExtra + 3 * LEN_2BPP_TILE
-	ld hl, VTiles2 tile $63
-	lb bc, BANK(FontExtra), $16
+	lb bc, BANK(FontExtra), $17
 	call Get2bpp_2
 	jr LoadFrame
 ; fb4b0
-
-_LoadFontsExtra2:: ; fb4b0
-	ld de, UpArrowGFX
-	ld hl, VTiles2 tile $61
-	ld b, BANK(UpArrowGFX)
-	ld c, 1
-	call Get2bpp_2
-	ret
-; fb4be
 
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, FontBattleExtra

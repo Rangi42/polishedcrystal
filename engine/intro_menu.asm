@@ -622,7 +622,7 @@ Continue_DisplayGameTime: ; 5f84
 	ld de, GameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld [hl], "<COLON>"
+	ld [hl], ":"
 	inc hl
 	ld de, GameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

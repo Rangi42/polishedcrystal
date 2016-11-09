@@ -77,18 +77,6 @@ Special_CheckMagikarpLength: ; fbb32
 	db "@"
 ; 0xfbbae
 
-Magikarp_LoadFeetInchesChars: ; fbbae
-	ld hl, VTiles2 tile "′"
-	ld de, .feetinchchars
-	lb bc, BANK(.feetinchchars), 2
-	call Request2bpp
-	ret
-; fbbbb
-
-.feetinchchars ; fbbb
-INCBIN "gfx/font/primes.2bpp"
-; fbbdb
-
 PrintMagikarpLength: ; fbbdb
 	ld a, [Options2]
 	bit POKEDEX_UNITS, a
@@ -111,7 +99,6 @@ PrintMagikarpLength: ; fbbdb
 	ret
 
 .imperial
-	call Magikarp_LoadFeetInchesChars
 	ld a, [Buffer1]
 	ld b, a
 	ld a, [Buffer2]

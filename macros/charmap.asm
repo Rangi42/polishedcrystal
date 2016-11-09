@@ -28,21 +28,10 @@
 	charmap "<DEXEND>", $5f
 
 ; Actual characters
-	charmap "▲",        $61
 	charmap "_",        $62
-	charmap "<COLON>",  $6d ; necessary because ":" is already used
-	charmap "′",        $6e
-	charmap "<LV>",     $6e
-	charmap "″",        $6f
 
-	charmap "<PO>",     $70
-	charmap "<KE>",     $71
-	charmap "◀",        $71
-	charmap "<``>",     $72
-	charmap "<''>",     $73
 	charmap "<ID>",     $73
 	charmap "№",        $74
-	charmap "…",        $75
 
 	charmap "┌",        $79
 	charmap "─",        $7a
@@ -113,14 +102,16 @@
 	charmap "y",        $b8
 	charmap "z",        $b9
 
-	charmap "Ä",        $c0
-	charmap "Ö",        $c1
-	charmap "Ü",        $c2
-	charmap "ä",        $c3
-	charmap "ö",        $c4
-	charmap "ü",        $c5
+	charmap "<PO>",     $c0
+	charmap "<KE>",     $c1
+	charmap "<``>",     $c2
+	charmap "<''>",     $c3
+	charmap "<LV>",     $c4
+	charmap "…",        $c5
 	charmap "<SHINY>",  $c6
 	charmap "<PCT>",    $c7
+
+; unused: c8-cf
 
 	charmap "'d",       $d0
 	charmap "'l",       $d1
@@ -130,6 +121,10 @@
 	charmap "'t",       $d5
 	charmap "'v",       $d6
 
+; unused: d7-d9
+
+	charmap "′",        $da
+	charmap "″",        $db
 	charmap "<BOLDP>",  $dc
 	charmap "↑",        $dd
 	charmap "↓",        $de
@@ -138,12 +133,12 @@
 	charmap "<PK>",     $e1
 	charmap "<MN>",     $e2
 	charmap "-",        $e3
-
+	charmap "◀",        $e4
+	charmap "▲",        $e5
 	charmap "?",        $e6
 	charmap "!",        $e7
 	charmap ".",        $e8
 	charmap "&",        $e9
-
 	charmap "é",        $ea
 	charmap "→",        $eb
 	charmap "▷",        $ec
