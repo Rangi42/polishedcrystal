@@ -1,6 +1,8 @@
 NormalHit:
 Avalanche: ; TODO: double damage if hit
+Acrobatics: ; TODO: double damage if not holding item
 UTurn: ; TODO: switch out after attack
+VoltSwitch: ; TODO: switch out after attacking
 SuckerPunch: ; TODO: fail if foe is not attacking
 AerialAce:
 Aeroblast:
@@ -27,7 +29,6 @@ Megahorn:
 MegaKick:
 NightSlash:
 Peck:
-Pound:
 PowerGem:
 Psystrike:
 QuickAttack:
@@ -36,7 +37,6 @@ RockThrow:
 Scratch:
 SeedBomb:
 ShadowClaw:
-Slam:
 Slash:
 StoneEdge:
 Strength:

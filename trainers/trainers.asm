@@ -5122,7 +5122,7 @@ HikerGroup:
 		db DIG
 		db IRON_TAIL
 		db SANDSTORM
-		db SLAM
+		db HEADBUTT
 
 	db $ff ; end
 
@@ -5348,7 +5348,7 @@ HikerGroup:
 		db DIG
 		db IRON_TAIL
 		db SANDSTORM
-		db SLAM
+		db HEADBUTT
 
 	db $ff ; end
 
@@ -7373,7 +7373,7 @@ SchoolboyGroup:
 
 	db 35, QUAGSIRE
 		db LEER
-		db SLAM
+		db HEADBUTT
 		db CALM_MIND
 		db EARTHQUAKE
 
@@ -9915,7 +9915,7 @@ DragonTamerGroup:
 	; party
 
 	db 38, DRAGONAIR
-		db SLAM
+		db BODY_SLAM
 		db SURF
 		db DRAGON_PULSE
 		db AQUA_TAIL
@@ -9953,7 +9953,7 @@ DragonTamerGroup:
 		db THUNDER_WAVE
 		db DRAGON_RAGE
 		db AQUA_TAIL
-		db SLAM
+		db BODY_SLAM
 
 	db 38, SEADRA
 		db SMOKESCREEN
@@ -10488,7 +10488,7 @@ CooltrainerMGroup:
 
 	db 36, QUAGSIRE
 		db WATER_GUN
-		db SLAM
+		db HEADBUTT
 		db CALM_MIND
 		db EARTHQUAKE
 

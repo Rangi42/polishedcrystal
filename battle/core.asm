@@ -581,7 +581,7 @@ ParsePlayerAction: ; 3c434
 	jr nz, .reset_bide
 	xor a
 	ld [wMoveSelectionMenuType], a
-	inc a ; POUND
+	inc a ; ACROBATICS
 	ld [FXAnimIDLo], a
 	call MoveSelectionScreen
 	push af

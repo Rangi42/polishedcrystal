@@ -207,7 +207,7 @@ I was hesitant to make original changes like this, because the goal is to be an 
 * Avalanche's power doesn't double if the user is hit first.
 
 
-## Changes in 2.2.1
+## Changes in 3.0.0
 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 

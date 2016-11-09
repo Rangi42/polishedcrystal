@@ -1,5 +1,5 @@
 ; MoveDescriptions: ; 2cb52
-	dw PoundDescription
+	dw AcrobaticsDescription
 	dw KarateChopDescription
 	dw DoubleSlapDescription
 	dw AerialAceDescription
@@ -19,7 +19,7 @@
 	dw SuckerPunchDescription
 	dw FlyDescription
 	dw DazzlingleamDescription
-	dw SlamDescription
+	dw VoltSwitchDescription
 	dw VineWhipDescription
 	dw StompDescription
 	dw DoubleKickDescription
@@ -547,9 +547,9 @@ SunnyDayDescription:
 	db   "Boosts Fire-type"
 	next "moves for 5 turns.@"
 
-PoundDescription:
-	db   "Pounds with fore-"
-	next "legs or tail.@"
+AcrobaticsDescription:
+	db   "Damage doubles if"
+	next "user has no item.@"
 
 ScratchDescription:
 	db   "Scratches with"
@@ -558,10 +558,6 @@ ScratchDescription:
 PeckDescription:
 	db   "Jabs the foe with"
 	next "a beak, etc.@"
-
-SlamDescription:
-	db   "Slams the foe with"
-	next "a tail, vine, etc.@"
 
 VineWhipDescription:
 	db   "Whips the foe with"
@@ -643,6 +639,7 @@ PetalDanceDescription:
 	next "and confuses user.@"
 
 UTurnDescription:
+VoltSwitchDescription:
 	db   "Switches out after"
 	next "making its attack.@"
 

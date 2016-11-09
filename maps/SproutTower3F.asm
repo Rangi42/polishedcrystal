@@ -68,7 +68,7 @@ UnknownScript_0x184947:
 SageLiScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HM05_FLASH
+	checkevent EVENT_GOT_TM70_FLASH
 	iftrue UnknownScript_0x1849d1
 	writetext SageLiSeenText
 	waitbutton
@@ -80,8 +80,8 @@ SageLiScript:
 	opentext
 	writetext UnknownText_0x184cc2
 	buttonsound
-	verbosegivetmhm HM_FLASH
-	setevent EVENT_GOT_HM05_FLASH
+	verbosegivetmhm TM_FLASH
+	setevent EVENT_GOT_TM70_FLASH
 	setevent EVENT_BEAT_ELDER_LI
 	writetext UnknownText_0x184d13
 	waitbutton
@@ -161,7 +161,7 @@ UnknownText_0x184a27:
 	cont "trainer."
 
 	para "As promised, here"
-	line "is your HM."
+	line "is your TM."
 
 	para "But let me say"
 	line "this: You should"
@@ -242,7 +242,7 @@ UnknownText_0x184cc2:
 	line "this move."
 
 	para "Take this Flash"
-	line "HM."
+	line "TM."
 	done
 
 UnknownText_0x184d13:
@@ -297,7 +297,7 @@ UnknownText_0x184ea4:
 	done
 
 SageNealSeenText:
-	text "The Elder's HM"
+	text "The Elder's TM"
 	line "lights even pitch-"
 	cont "black darkness."
 	done

@@ -98,7 +98,7 @@ UnknownScript_0x9cf08:
 PokefanFScript_0x9cf0e:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM50_SUBSTITUTE_FROM_MOOMOO_FARM
+	checkevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
 	iftrue UnknownScript_0x9cf2f
 	checkevent EVENT_HEALED_MOOMOO
 	iftrue UnknownScript_0x9cf22
@@ -110,8 +110,8 @@ PokefanFScript_0x9cf0e:
 UnknownScript_0x9cf22:
 	writetext UnknownText_0x9d156
 	buttonsound
-	verbosegivetmhm TM_SUBSTITUTE
-	setevent EVENT_GOT_TM50_SUBSTITUTE_FROM_MOOMOO_FARM
+	verbosegivetmhm TM_ACROBATICS
+	setevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
 UnknownScript_0x9cf2f:
 	writetext UnknownText_0x9d1c7
 	waitbutton
@@ -200,20 +200,15 @@ UnknownText_0x9d156:
 	line "fer your trouble."
 	done
 
-UnknownText_0x9d1b5:
-	text "<PLAYER> received"
-	line "TM16."
-	done
-
 UnknownText_0x9d1c7:
 	text "That there's"
-	line "Substitute."
+	line "Acrobatics."
 
 	para "It's a move that"
-	line "makes a decoy to"
+	line "hurts more if'n"
 
-	para "get hit 'stead"
-	line "of your #mon."
+	para "your #mon ain't"
+	line "holdin' an item."
 
 	para "You best think how"
 	line "you ought to use"

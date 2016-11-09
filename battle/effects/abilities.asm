@@ -336,9 +336,12 @@ RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
+	cp STRUGGLE ; Struggle is index -1, the array terminator, so it's handled separately
+	jr z, .run_contact_abilities
 	ld hl, ContactMoves
 	call IsInArray
 	jr c, .skip_contact_abilities
+.run_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities
 	ld a, BATTLE_VARS_MOVE_CATEGORY

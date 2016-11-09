@@ -132,7 +132,7 @@ Route36FloriaScript:
 Route36RockSmashGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HM08_ROCK_SMASH
+	checkevent EVENT_GOT_TM50_ROCK_SMASH
 	iftrue .AlreadyGotRockSmash
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
@@ -144,8 +144,8 @@ Route36RockSmashGuyScript:
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
 	buttonsound
-	verbosegivetmhm HM_ROCK_SMASH
-	setevent EVENT_GOT_HM08_ROCK_SMASH
+	verbosegivetmhm TM_ROCK_SMASH
+	setevent EVENT_GOT_TM50_ROCK_SMASH
 .AlreadyGotRockSmash:
 	writetext RockSmashGuyText3
 	waitbutton
@@ -501,11 +501,6 @@ RockSmashGuyText2:
 	para "I'm impressed!"
 	line "I want you to"
 	cont "have this."
-	done
-
-UnknownText_0x19451a:
-	text "<PLAYER> received"
-	line "TM08."
 	done
 
 RockSmashGuyText3:

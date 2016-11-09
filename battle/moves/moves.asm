@@ -12,7 +12,7 @@ move: MACRO
 	db \8 ; category
 ENDM
 
-	move POUND,        EFFECT_NORMAL_HIT,         40, NORMAL,    100, 35,   0, PHYSICAL
+	move ACROBATICS,   EFFECT_NORMAL_HIT,         55, FLYING,    100, 15,   0, PHYSICAL
 	move KARATE_CHOP,  EFFECT_NORMAL_HIT,         50, FIGHTING,  100, 25,   0, PHYSICAL
 	move DOUBLE_SLAP,  EFFECT_MULTI_HIT,          15, NORMAL,     85, 10,   0, PHYSICAL
 	move AERIAL_ACE,   EFFECT_ALWAYS_HIT,         60, FLYING,    100, 20,   0, PHYSICAL
@@ -40,7 +40,7 @@ else
 	move FLY,          EFFECT_FLY,                90, FLYING,    100, 15,   0, PHYSICAL
 endc
 	move DAZZLINGLEAM, EFFECT_NORMAL_HIT,         80, FAIRY,     100, 10,   0, SPECIAL
-	move SLAM,         EFFECT_NORMAL_HIT,         80, NORMAL,     75, 20,   0, PHYSICAL
+	move VOLT_SWITCH,  EFFECT_NORMAL_HIT,         70, ELECTRIC,   70, 20,   0, SPECIAL
 	move VINE_WHIP,    EFFECT_NORMAL_HIT,         45, GRASS,     100, 25,   0, PHYSICAL
 	move STOMP,        EFFECT_STOMP,              65, NORMAL,    100, 20,  30, PHYSICAL
 	move DOUBLE_KICK,  EFFECT_DOUBLE_HIT,         30, FIGHTING,  100, 30,   0, PHYSICAL

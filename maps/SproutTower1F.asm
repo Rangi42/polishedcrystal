@@ -71,7 +71,7 @@ UnknownText_0x184583:
 UnknownText_0x1845d8:
 	text "Only if you reach"
 	line "the top will you"
-	cont "obtain an HM."
+	cont "obtain a TM."
 	done
 
 UnknownText_0x18460a:

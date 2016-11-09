@@ -1,6 +1,6 @@
 BattleAnimations::
 	dw BattleAnim_0
-	dw BattleAnim_Pound
+	dw BattleAnim_Acrobatics
 	dw BattleAnim_KarateChop
 	dw BattleAnim_DoubleSlap
 	dw BattleAnim_AerialAce
@@ -20,7 +20,7 @@ BattleAnimations::
 	dw BattleAnim_SuckerPunch
 	dw BattleAnim_Fly
 	dw BattleAnim_DazzlinGleam
-	dw BattleAnim_Slam
+	dw BattleAnim_VoltSwitch
 	dw BattleAnim_VineWhip
 	dw BattleAnim_Stomp
 	dw BattleAnim_DoubleKick
@@ -661,7 +661,8 @@ BattleAnim_Shake:
 	anim_wait 40
 	anim_ret
 
-BattleAnim_Pound:
+BattleAnim_Acrobatics: ; TODO: design new animation for Acrobatics
+BattleAnim_Pound: ; removed
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_POUND
 	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
@@ -2865,7 +2866,8 @@ BattleAnim_WingAttack:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_Slam:
+BattleAnim_VoltSwitch: ; TODO: design new animation for Volt Switch
+BattleAnim_Slam: ; removed
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_WING_ATTACK
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2

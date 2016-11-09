@@ -225,8 +225,10 @@ NO_NATURE   EQU const_value
 	const SAP_SIPPER
 	const PRANKSTER
 	const SAND_FORCE
+	const FUR_COAT
 	const COMPETITIVE
 	const PIXILATE
+	const TANGLING_HAIR
 NUM_ABILITIES EQU const_value
 
 ABILITY_1      EQU %00100000

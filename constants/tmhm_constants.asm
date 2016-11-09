@@ -49,8 +49,8 @@
 	add_tm STEEL_WING   ; $2e
 	add_tm ROCK_SLIDE   ; $2f
 	add_tm FURY_CUTTER  ; $30
-	add_tm SUBSTITUTE   ; $31
-	add_tm BODY_SLAM    ; $32
+	add_tm ROCK_SMASH   ; $31
+	add_tm LEECH_LIFE   ; $32
 	add_tm FOCUS_BLAST  ; $33
 	add_tm ENERGY_BALL  ; $34
 	add_tm FALSE_SWIPE  ; $35
@@ -61,40 +61,45 @@
 	add_tm DRAGON_PULSE ; $3a
 	add_tm DAZZLINGLEAM ; $3b
 	add_tm WILL_O_WISP  ; $3c
-	add_tm POISON_JAB   ; $3d
+	add_tm ACROBATICS   ; $3d
 	add_tm THUNDER_WAVE ; $3e
 	add_tm EXPLOSION    ; $3f
 	add_tm SHADOW_CLAW  ; $40
+	add_tm POISON_JAB   ; $41
+	add_tm VOLT_SWITCH  ; $42
+	add_tm GIGA_IMPACT  ; $43
+	add_tm U_TURN       ; $44
+	add_tm FLASH        ; $45
 NUM_TMS = const_value - TM01
 
-	add_hm CUT          ; $41
-	add_hm FLY          ; $42
-	add_hm SURF         ; $43
-	add_hm STRENGTH     ; $44
-	add_hm FLASH        ; $45
-	add_hm WHIRLPOOL    ; $46
-	add_hm WATERFALL    ; $47
-	add_hm ROCK_SMASH   ; $48
+	add_hm CUT          ; $46
+	add_hm FLY          ; $47
+	add_hm SURF         ; $48
+	add_hm STRENGTH     ; $49
+	add_hm WATERFALL    ; $4a
+	add_hm WHIRLPOOL    ; $4b
 NUM_HMS = const_value - HM01
 
-	add_mt AQUA_TAIL    ; $49
-	add_mt COUNTER      ; $4a
-	add_mt DEFENSE_CURL ; $4b
-	add_mt DOUBLE_EDGE  ; $4c
-	add_mt DREAM_EATER  ; $4d
-	add_mt EARTH_POWER  ; $4e
-	add_mt FIRE_PUNCH   ; $4f
-	add_mt HEADBUTT     ; $50
-	add_mt HYPER_VOICE  ; $51
-	add_mt ICE_PUNCH    ; $52
-	add_mt ICY_WIND     ; $53
-	add_mt IRON_HEAD    ; $54
-	add_mt ROLLOUT      ; $55
-	add_mt SEED_BOMB    ; $56
-	add_mt SEISMIC_TOSS ; $57
-	add_mt SLEEP_TALK   ; $58
-	add_mt SWAGGER      ; $59
-	add_mt THUNDERPUNCH ; $5a
-	add_mt WATER_PULSE  ; $5b
-	add_mt ZAP_CANNON   ; $5c
-	add_mt ZEN_HEADBUTT ; $5d
+	add_mt AQUA_TAIL    ; $4c
+	add_mt BODY_SLAM    ; $4d
+	add_mt COUNTER      ; $4e
+	add_mt DEFENSE_CURL ; $4f
+	add_mt DOUBLE_EDGE  ; $50
+	add_mt DREAM_EATER  ; $51
+	add_mt EARTH_POWER  ; $52
+	add_mt FIRE_PUNCH   ; $53
+	add_mt HEADBUTT     ; $54
+	add_mt HYPER_VOICE  ; $55
+	add_mt ICE_PUNCH    ; $56
+	add_mt ICY_WIND     ; $57
+	add_mt IRON_HEAD    ; $58
+	add_mt ROLLOUT      ; $59
+	add_mt SEED_BOMB    ; $5a
+	add_mt SEISMIC_TOSS ; $5b
+	add_mt SLEEP_TALK   ; $5c
+	add_mt SUBSTITUTE   ; $5d
+	add_mt SWAGGER      ; $5e
+	add_mt THUNDERPUNCH ; $5f
+	add_mt WATER_PULSE  ; $60
+	add_mt ZAP_CANNON   ; $61
+	add_mt ZEN_HEADBUTT ; $62

@@ -4,7 +4,7 @@ if DEF(FAITHFUL)
 	db  65,  70,  60, 115,  65,  65
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  65,  90,  60, 115,  65,  65
+	db  65,  60,  60, 115,  75,  65
 	;   hp  atk  def  spd  sat  sdf
 endc
 
@@ -20,7 +20,11 @@ endc
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
+if DEF(FAITHFUL)
 	db LIMBER ; ability 1
+else
+	db FUR_COAT ; ability 1
+endc
 	db TECHNICIAN ; ability 2
 	db UNNERVE ; hidden ability
 	db MEDIUM_FAST ; growth rate

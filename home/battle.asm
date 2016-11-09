@@ -243,6 +243,7 @@ ContactMoves::
 	db FURY_ATTACK
 	db FURY_CUTTER
 	db FURY_SWIPES
+	db GIGA_IMPACT
 	db HEADBUTT
 	db HI_JUMP_KICK
 	db HORN_ATTACK
@@ -263,7 +264,6 @@ ContactMoves::
 	db PETAL_DANCE
 	db PLAY_ROUGH
 	db POISON_JAB
-	db POUND
 	db PURSUIT
 	db QUICK_ATTACK
 	db RAGE
@@ -275,7 +275,6 @@ ContactMoves::
 	db SCRATCH
 	db SEISMIC_TOSS
 	db SHADOW_CLAW
-	db SLAM
 	db SLASH
 	db SPARK
 	db STEEL_WING
@@ -289,6 +288,7 @@ ContactMoves::
 	db THRASH
 	db THUNDERPUNCH
 	db TRIPLE_KICK
+	db U_TURN
 	db VINE_WHIP
 	db VITAL_THROW
 	db WATERFALL

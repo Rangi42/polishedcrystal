@@ -49,12 +49,12 @@ JanineScript_0x195db9:
 	faceplayer
 	opentext
 UnknownScript_0x195e02:
-	checkevent EVENT_GOT_TM62_POISON_JAB
+	checkevent EVENT_GOT_TM66_POISON_JAB
 	iftrue UnknownScript_0x195e15
 	writetext UnknownText_0x196002
 	buttonsound
 	verbosegivetmhm TM_POISON_JAB
-	setevent EVENT_GOT_TM62_POISON_JAB
+	setevent EVENT_GOT_TM66_POISON_JAB
 	writetext JanineOutroText
 	waitbutton
 	closetext

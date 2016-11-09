@@ -1,7 +1,12 @@
 	db DUGTRIO ; 051
 
+if DEF(FAITHFUL)
 	db  35, 100,  50, 120,  50,  70
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  35, 100,  60, 110,  50,  70
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db GROUND, GROUND
@@ -16,7 +21,11 @@ endc
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db SAND_VEIL ; ability 1
+if DEF(FAITHFUL)
 	db ARENA_TRAP ; ability 2
+else
+	db TANGLING_HAIR ; ability 2
+endc
 	db SAND_FORCE ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

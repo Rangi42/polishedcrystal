@@ -1,9 +1,18 @@
 	db DIGLETT ; 050
 
+if DEF(FAITHFUL)
 	db  10,  55,  25,  95,  35,  45
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  10,  55,  30,  90,  35,  45
+	;   hp  atk  def  spd  sat  sdf
+endc
 
+if DEF(FAITHFUL)
 	db GROUND, GROUND
+else
+	db GROUND, STEEL
+endc
 	db 255 ; catch rate
 	db 81 ; base exp
 	db NO_ITEM ; item 1
@@ -12,7 +21,11 @@
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SAND_VEIL ; ability 1
+if DEF(FAITHFUL)
 	db ARENA_TRAP ; ability 2
+else
+	db TANGLING_HAIR ; ability 2
+endc
 	db SAND_FORCE ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

@@ -1,7 +1,7 @@
 
 	const_def
 	const NO_MOVE      ; $00
-	const POUND        ; $01
+	const ACROBATICS   ; $01
 	const KARATE_CHOP  ; $02
 	const DOUBLE_SLAP  ; $03
 	const AERIAL_ACE   ; $04
@@ -21,7 +21,7 @@
 	const SUCKER_PUNCH ; $12
 	const FLY          ; $13
 	const DAZZLINGLEAM ; $14
-	const SLAM         ; $15
+	const VOLT_SWITCH  ; $15
 	const VINE_WHIP    ; $16
 	const STOMP        ; $17
 	const DOUBLE_KICK  ; $18

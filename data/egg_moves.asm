@@ -71,7 +71,6 @@ EkansEggMoves:
 	db DISABLE
 	db PURSUIT
 	db SCARY_FACE
-	db SLAM
 	db $ff
 
 SandshrewEggMoves:
@@ -302,7 +301,6 @@ SeelEggMoves:
 	db LICK
 	db PECK
 	db PERISH_SONG
-	db SLAM
 	db ENCORE
 	db WATER_PULSE
 	db ICICLE_SPEAR
@@ -353,7 +351,6 @@ KrabbyEggMoves:
 	db AGILITY
 	db HAZE
 	db FLAIL
-	db SLAM
 	db DIG
 	db CALM_MIND
 	db $ff
@@ -479,7 +476,6 @@ OmanyteEggMoves:
 	db AURORA_BEAM
 	db BUBBLE_BEAM
 	db HAZE
-	db SLAM
 	db SPIKES
 	db SUPERSONIC
 	db WATER_PULSE
@@ -803,7 +799,6 @@ RemoraidEggMoves:
 MantineEggMoves:
 	db HAZE
 	db MIRROR_COAT
-	db SLAM
 	db SPLASH
 	db TWISTER
 	db HYDRO_PUMP

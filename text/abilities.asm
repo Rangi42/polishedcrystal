@@ -163,8 +163,10 @@ AbilityNames:
 	dw SapSipper
 	dw Prankster
 	dw SandForce
+	dw FurCoat
 	dw Competitive
 	dw Pixilate
+	dw TanglingHair
 
 NoAbility:     db "---@"
 Stench:        db "Stench@"
@@ -293,8 +295,10 @@ MagicBounce:   db "Magic Bounce@"
 SapSipper:     db "Sap Sipper@"
 Prankster:     db "Prankster@"
 SandForce:     db "Sand Force@"
+FurCoat:       db "Fur Coat@"
 Competitive:   db "Competitive@"
 Pixilate:      db "Pixilate@"
+TanglingHair:  db "Tangling Hair@"
 
 
 PrintAbilityDescription:
@@ -463,8 +467,10 @@ AbilityDescriptions:
 	dw SapSipperDescription
 	dw PranksterDescription
 	dw SandForceDescription
+	dw FurCoatDescription
 	dw CompetitiveDescription
 	dw PixilateDescription
+	dw TanglingHairDescription
 
 NoAbilityDescription:
 	db   "Abilities are"
@@ -965,6 +971,10 @@ SandForceDescription:
 	db   "Boosts some moves"
 	next "in a sandstorm.@"
 
+FurCoatDescription:
+	db   "Halves damage from"
+	line "physical moves.@"
+
 CompetitiveDescription:
 	db   "Boosts Spcl.Atk on"
 	next "stat reduction.@"
@@ -972,3 +982,7 @@ CompetitiveDescription:
 PixilateDescription:
 	db   "Normal-type moves"
 	next "become Fairy-type.@"
+
+TanglingHairDescription:
+	db   "Contact may lower"
+	next "the foe's Speed.@"
