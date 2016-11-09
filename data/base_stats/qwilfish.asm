@@ -1,7 +1,7 @@
 	db QWILFISH ; 211
 
 if DEF(FAITHFUL)
-	db  65,  95,  75,  85,  55,  55
+	db  65,  95,  85,  85,  55,  55
 	;   hp  atk  def  spd  sat  sdf
 else
 	db  65, 100, 100,  85,  75,  55

@@ -1,14 +1,13 @@
 	db DUGTRIO ; 051
 
-if DEF(FAITHFUL)
-	db  35,  80,  50, 120,  50,  70
-	;   hp  atk  def  spd  sat  sdf
-else
 	db  35, 100,  50, 120,  50,  70
 	;   hp  atk  def  spd  sat  sdf
-endc
 
+if DEF(FAITHFUL)
 	db GROUND, GROUND
+else
+	db GROUND, STEEL
+endc
 	db 50 ; catch rate
 	db 153 ; base exp
 	db NO_ITEM ; item 1

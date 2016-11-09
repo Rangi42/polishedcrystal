@@ -1,10 +1,10 @@
 	db CORSOLA ; 222
 
 if DEF(FAITHFUL)
-	db  55,  55,  85,  35,  65,  85
+	db  65,  55,  95,  35,  65,  95
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  55,  55, 115,  35, 105, 115
+	db  65,  55, 115,  35, 105, 115
 	;   hp  atk  def  spd  sat  sdf
 endc
 

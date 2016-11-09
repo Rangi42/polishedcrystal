@@ -15,7 +15,7 @@
 if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
 else
-	db FLASH_FIRE ; ability 2
+	db DROUGHT ; ability 2
 endc
 	db FLAME_BODY ; hidden ability
 	db SLOW ; growth rate

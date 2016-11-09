@@ -1,7 +1,7 @@
 	db FARFETCH_D ; 083
 
 if DEF(FAITHFUL)
-	db  52,  65,  55,  60,  58,  62
+	db  52,  90,  55,  60,  58,  62
 	;   hp  atk  def  spd  sat  sdf
 else
 	db  55, 110,  55, 105,  60,  65
@@ -17,7 +17,7 @@ endc
 if DEF(FAITHFUL)
 	db 94 ; base exp
 else
-	db 144 ; base exp
+	db 124 ; base exp
 endc
 	db NO_ITEM ; item 1
 	db STICK ; item 2

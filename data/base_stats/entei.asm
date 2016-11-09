@@ -14,10 +14,11 @@
 	db PRESSURE ; ability 1
 if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
+	db INNER_FOCUS ; hidden ability
 else
 	db INTIMIDATE ; ability 2
-endc
 	db FLASH_FIRE ; hidden ability
+endc
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

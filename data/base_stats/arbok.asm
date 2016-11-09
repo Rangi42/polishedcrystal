@@ -1,20 +1,11 @@
 	db ARBOK ; 024
 
-if DEF(FAITHFUL)
-	db  60,  85,  69,  80,  65,  79
+	db  60,  95,  69,  80,  65,  79
 	;   hp  atk  def  spd  sat  sdf
-else
-	db  60,  91,  69,  86,  65,  79
-	;   hp  atk  def  spd  sat  sdf
-endc
 
 	db POISON, POISON
 	db 90 ; catch rate
-if DEF(FAITHFUL)
 	db 147 ; base exp
-else
-	db 163 ; base exp
-endc
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
 	db 127 ; gender

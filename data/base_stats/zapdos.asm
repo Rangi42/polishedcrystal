@@ -15,7 +15,7 @@
 if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
 else
-	db LIGHTNING_ROD ; ability 2
+	db DRIZZLE ; ability 2
 endc
 	db STATIC ; hidden ability
 	db SLOW ; growth rate

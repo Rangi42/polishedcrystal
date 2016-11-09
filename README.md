@@ -227,9 +227,12 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * X items sharply raise stats and cost twice as much.
    * Tackle has 40 power.
    * Sucker Punch has 70 power.
-   * Gengar has Cursed Body. (Can also have Levitate in non-Faithful.)
+   * Leech Life has 80 power and 10 PP.
    * Thunder Wave has 90% accuracy.
+   * Swagger has 85% accuracy.
    * Paralysis halves (not quarters) Speed.
+   * Gengar has the ability Cursed Body. (Can also have Levitate in non-Faithful.)
+   * Raikou, Entei, and Suicune have the hidden ability Inner Focus. (Faithful only.)
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Replace Twineedle with U-turn.

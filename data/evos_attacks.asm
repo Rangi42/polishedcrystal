@@ -714,7 +714,7 @@ WigglytuffEvosAttacks:
 ZubatEvosAttacks:
 	db EVOLVE_LEVEL, 22, GOLBAT
 	db 0 ; no more evolutions
-	db 1, LEECH_LIFE
+	db 1, ABSORB
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
@@ -724,18 +724,19 @@ ZubatEvosAttacks:
 	db 23, SWIFT
 	db 25, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 29, MEAN_LOOK
-	db 31, FLAIL ; Acrobatics → event move
+	db 31, LEECH_LIFE
 	db 35, HAZE
 	db 37, POISON_JAB ; Venoshock → TM move
 	db 41, AIR_SLASH
 	db 43, PURSUIT ; Quick Guard → egg move
+	db 47, FLAIL ; event move
 	db 0 ; no more level-up moves
 
 GolbatEvosAttacks:
 	db EVOLVE_HAPPINESS, TR_ANYTIME, CROBAT
 	db 0 ; no more evolutions
 	db 1, SCREECH
-	db 1, LEECH_LIFE
+	db 1, ABSORB
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
@@ -745,11 +746,12 @@ GolbatEvosAttacks:
 	db 24, SWIFT
 	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 32, MEAN_LOOK
-	db 35, FLAIL ; Acrobatics → event move
+	db 35, LEECH_LIFE
 	db 40, HAZE
 	db 43, POISON_JAB ; Venoshock → TM move
 	db 48, AIR_SLASH
 	db 51, PURSUIT ; Quick Guard → egg move
+	db 56, FLAIL ; event move
 	db 0 ; no more level-up moves
 
 OddishEvosAttacks:
@@ -809,13 +811,13 @@ ParasEvosAttacks:
 	db 1, SCRATCH
 	db 6, STUN_SPORE
 	db 6, POISONPOWDER
-	db 11, LEECH_LIFE
+	db 11, ABSORB
 	db 17, FURY_CUTTER
 	db 22, SPORE
 	db 27, SLASH
 	db 33, GROWTH
 	db 38, GIGA_DRAIN
-	db 43, METAL_CLAW ; Aromatherapy → egg move
+	db 43, LEECH_LIFE ; Aromatherapy → TM move
 	db 49, MORNING_SUN ; Rage Powder → new move
 	db 54, X_SCISSOR
 	db 0 ; no more level-up moves
@@ -825,13 +827,13 @@ ParasectEvosAttacks:
 	db 1, SCRATCH
 	db 6, STUN_SPORE
 	db 6, POISONPOWDER
-	db 11, LEECH_LIFE
+	db 11, ABSORB
 	db 17, FURY_CUTTER
 	db 22, SPORE
 	db 29, SLASH
 	db 37, GROWTH
 	db 44, GIGA_DRAIN
-	db 51, METAL_CLAW ; Aromatherapy → egg move
+	db 51, LEECH_LIFE ; Aromatherapy → TM move
 	db 59, MORNING_SUN ; Rage Powder → new move
 	db 66, X_SCISSOR
 	db 0 ; no more level-up moves
@@ -845,11 +847,11 @@ VenonatEvosAttacks:
 	db 5, SUPERSONIC
 	db 11, CONFUSION
 	db 13, POISONPOWDER
-	db 17, LEECH_LIFE
+	db 17, PSYBEAM
 	db 23, STUN_SPORE
-	db 25, PSYBEAM
+	db 25, AGILITY ; Signal Beam → egg move
 	db 29, SLEEP_POWDER
-	db 35, AGILITY ; Signal Beam → egg move
+	db 35, LEECH_LIFE
 	db 37, ZEN_HEADBUTT
 	db 41, BATON_PASS ; Poison Fang → egg move
 	db 47, PSYCHIC_M
@@ -864,12 +866,12 @@ VenomothEvosAttacks:
 	db 5, SUPERSONIC
 	db 11, CONFUSION
 	db 13, POISONPOWDER
-	db 17, LEECH_LIFE
+	db 17, PSYBEAM
 	db 23, STUN_SPORE
-	db 25, PSYBEAM
+	db 25, AGILITY ; Signal Beam → egg move
 	db 29, SLEEP_POWDER
 	db 31, GUST
-	db 37, AGILITY ; Signal Beam → egg move
+	db 37, LEECH_LIFE
 	db 41, ZEN_HEADBUTT
 	db 47, BATON_PASS ; Poison Fang → egg move
 	db 55, PSYCHIC_M
@@ -3122,9 +3124,9 @@ SpinarakEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POISON_STING
 	db 1, STRING_SHOT
-	db 5, SCARY_FACE
-	db 8, GLARE ; Constrict → new move
-	db 12, LEECH_LIFE
+	db 5, ABSORB
+	db 8, GLARE ; Infestation → new move
+	db 12, SCARY_FACE
 	db 15, NIGHT_SHADE
 	db 19, GROWTH ; Shadow Sneak → event move
 	db 22, FURY_SWIPES
@@ -3133,18 +3135,18 @@ SpinarakEvosAttacks:
 	db 33, AGILITY
 	db 36, PIN_MISSILE
 	db 40, PSYCHIC_M
-	db 43, FEINT_ATTACK ; Poison Jab → new move
-	db 47, POISON_JAB ; Cross Poison → Poison Jab
-	db 50, DARK_PULSE ; Sticky Web → TM move
+	db 43, POISON_JAB
+	db 47, LEECH_LIFE ; Cross Poison → TM move
+	db 50, FEINT_ATTACK ; Sticky Web → new move
 	db 0 ; no more level-up moves
 
 AriadosEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POISON_STING
 	db 1, STRING_SHOT
-	db 5, SCARY_FACE
-	db 8, GLARE ; Constrict → new move
-	db 12, LEECH_LIFE
+	db 5, ABSORB
+	db 8, GLARE ; Infestation → new move
+	db 12, SCARY_FACE
 	db 15, NIGHT_SHADE
 	db 19, GROWTH ; Shadow Sneak → event move
 	db 23, FURY_SWIPES
@@ -3153,16 +3155,16 @@ AriadosEvosAttacks:
 	db 37, AGILITY
 	db 41, PIN_MISSILE
 	db 46, PSYCHIC_M
-	db 50, FEINT_ATTACK ; Poison Jab → new move
-	db 55, POISON_JAB ; Cross Poison → Poison Jab
-	db 58, DARK_PULSE ; Sticky Web → TM move
+	db 50, POISON_JAB
+	db 55, LEECH_LIFE ; Cross Poison → TM move
+	db 58, FEINT_ATTACK ; Sticky Web → new move
 	db 0 ; no more level-up moves
 
 CrobatEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, X_SCISSOR
 	db 1, SCREECH
-	db 1, LEECH_LIFE
+	db 1, ABSORB
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
@@ -3172,11 +3174,12 @@ CrobatEvosAttacks:
 	db 24, SWIFT
 	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 32, MEAN_LOOK
-	db 35, FLAIL ; Acrobatics → event move
+	db 35, LEECH_LIFE
 	db 40, HAZE
 	db 43, POISON_JAB ; Venoshock → TM move
 	db 48, AIR_SLASH
 	db 51, CRUNCH ; Quick Guard → new move
+	db 56, FLAIL ; event move
 	db 0 ; no more level-up moves
 
 ChinchouEvosAttacks:
