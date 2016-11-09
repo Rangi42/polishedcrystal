@@ -212,6 +212,7 @@ ItemDescriptions:
 	dw LightClayDesc
 	dw MetronomeIDesc
 	dw MuscleBandDesc
+	dw ProtectPadsDesc
 	dw RockyHelmetDesc
 	dw SafeGogglesDesc
 	dw ShedShellDesc
@@ -280,7 +281,6 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
-	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -954,6 +954,7 @@ GripClawDesc:
 LifeOrbDesc:
 LightClayDesc:
 MetronomeIDesc:
+ProtectPadsDesc:
 RockyHelmetDesc:
 SafeGogglesDesc:
 ShedShellDesc:

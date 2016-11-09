@@ -233,6 +233,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Paralysis halves (not quarters) Speed.
    * Gengar has the ability Cursed Body. (Can also have Levitate in non-Faithful.)
    * Raikou, Entei, and Suicune have the hidden ability Inner Focus. (Faithful only.)
+   * New item: Protect Pads (abbreviated "Protective Pads"). "Protect the holder from effects caused by making direct contact with the target."
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Replace Twineedle with U-turn.

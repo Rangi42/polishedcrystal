@@ -192,6 +192,7 @@ ItemEffects: ; e73c
 	dw LightClay
 	dw MetronomeI
 	dw MuscleBand
+	dw ProtectPads
 	dw RockyHelmet
 	dw SafeGoggles
 	dw ShedShell
@@ -260,7 +261,6 @@ ItemEffects: ; e73c
 	dw FlowerMail
 	dw FlowerMail
 	dw FlowerMail
-	dw TeruSama
 	dw TeruSama
 	dw TeruSama
 	dw TeruSama
@@ -3243,6 +3243,7 @@ LifeOrb:
 LightClay:
 MetronomeI:
 MuscleBand:
+ProtectPads:
 RockyHelmet:
 SafeGoggles:
 ShedShell:
