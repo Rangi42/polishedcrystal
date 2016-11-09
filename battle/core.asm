@@ -8420,11 +8420,11 @@ PlaceExpBar: ; 3f41c
 	jr .skip
 
 .loop2
-	ld a, $62 ; empty bar
+	ld a, "_" ; empty bar
 
 .skip
 	ld [hld], a
-	ld a, $62 ; empty bar
+	ld a, "_" ; empty bar
 	dec c
 	jr nz, .loop2
 

@@ -28,8 +28,6 @@
 	charmap "<DEXEND>", $5f
 
 ; Actual characters
-	charmap "_",        $62
-
 	charmap "<ID>",     $73
 	charmap "№",        $74
 
@@ -121,7 +119,9 @@
 	charmap "'t",       $d5
 	charmap "'v",       $d6
 
-; unused: d7-d9
+	charmap "_",        $d7
+
+; unused: d8-d9
 
 	charmap "′",        $da
 	charmap "″",        $db

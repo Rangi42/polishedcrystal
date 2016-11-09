@@ -117,7 +117,7 @@ DrawPlayerHUDBorder: ; 2c095
 	db $73 ; right side
 	db $77 ; bottom right
 	db $6f ; bottom left
-	db $76 ; bottom side
+	db "_" ; bottom side
 ; 2c0ad
 
 DrawPlayerPartyIconHUDBorder: ; 2c0ad
@@ -133,7 +133,7 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	db $73 ; right side
 	db $5c ; bottom right
 	db $6f ; bottom left
-	db $76 ; bottom side
+	db "_" ; bottom side
 ; 2c0c5
 
 DrawEnemyHUDBorder: ; 2c0c5
@@ -166,7 +166,7 @@ DrawEnemyHUDBorder: ; 2c0c5
 	db $6d ; left side
 	db $74 ; bottom left
 	db $78 ; bottom right
-	db $76 ; bottom side
+	db "_" ; bottom side
 ; 2c0f1
 
 PlaceHUDBorderTiles: ; 2c0f1
