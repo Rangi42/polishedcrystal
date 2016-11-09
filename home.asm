@@ -1010,10 +1010,8 @@ IsHMMove:: ; 34e7
 	db FLY
 	db SURF
 	db STRENGTH
-	db FLASH
 	db WATERFALL
 	db WHIRLPOOL
-	db ROCK_SMASH
 	db -1
 ; 34f8
 
