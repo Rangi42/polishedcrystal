@@ -23,9 +23,11 @@ GBCOnlyScreen: ; 4ea82
 	lb bc, BANK(GBCOnlyGFX), $54
 	call Get2bpp
 
-	ld de, Font
+	farcall LoadStandardFontPointer
+	ld d, h
+	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(Font), $80
+	lb bc, BANK(FontNormal), $80
 	call Get1bpp
 
 	call DrawGBCOnlyScreen

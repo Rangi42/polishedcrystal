@@ -66,9 +66,11 @@ ShakeHeadbuttTree: ; 8c80a
 	ld bc, SpritesEnd - (Sprites + 36 * 4)
 	xor a
 	call ByteFill
-	ld de, Font
+	farcall LoadStandardFontPointer
+	ld d, h
+	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(Font), 12
+	lb bc, BANK(FontNormal), 12
 	call Get1bpp
 	call ReplaceKrisSprite
 	ret

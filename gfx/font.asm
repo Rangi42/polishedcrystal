@@ -1,17 +1,19 @@
 FontExtra:
-INCBIN "gfx/misc/font_extra.2bpp"
+INCBIN "gfx/font/extra.2bpp"
 
-Font:
-INCBIN "gfx/misc/font.1bpp"
+FontNormal:
+INCBIN "gfx/font/normal.1bpp"
 FontBold:
-INCBIN "gfx/misc/font_bold.1bpp"
+INCBIN "gfx/font/bold.1bpp"
 FontItalic:
-INCBIN "gfx/misc/font_italic.1bpp"
+INCBIN "gfx/font/italic.1bpp"
+FontSerif:
+INCBIN "gfx/font/serif.1bpp"
 FontUnown:
-INCBIN "gfx/misc/font_unown.1bpp"
+INCBIN "gfx/font/unown.1bpp"
 
 FontBattleExtra:
-INCBIN "gfx/misc/font_battle_extra.2bpp"
+INCBIN "gfx/font/battle_extra.2bpp"
 
 Frames: ; f8800
 INCBIN "gfx/frames/1.1bpp"
@@ -60,19 +62,15 @@ INCBIN "gfx/frames/map_entry_sign.2bpp"
 ; f9424
 
 UpArrowGFX: ; f9424
-INCBIN "gfx/misc/font_up_arrow.2bpp"
+INCBIN "gfx/font/up_arrow.2bpp"
 ; f9434
-
-Footprints: ; f9434
-INCBIN "gfx/misc/footprints.w128.1bpp"
-; fb434
 
 _LoadStandardFont:: ; fb449
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(Font), $80
+	lb bc, BANK(FontNormal), $80
 	ld a, [rLCDC]
 	bit 7, a
 	jp z, Copy1bpp
@@ -81,7 +79,7 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(Font), $20
+	lb bc, BANK(FontNormal), $20
 	call Get1bpp_2
 	call LoadStandardFontPointer
 	ld de, $20 * LEN_1BPP_TILE
@@ -89,7 +87,7 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1 tile $20
-	lb bc, BANK(Font), $20
+	lb bc, BANK(FontNormal), $20
 	call Get1bpp_2
 	call LoadStandardFontPointer
 	ld de, $40 * LEN_1BPP_TILE
@@ -97,7 +95,7 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1 tile $40
-	lb bc, BANK(Font), $20
+	lb bc, BANK(FontNormal), $20
 	call Get1bpp_2
 	call LoadStandardFontPointer
 	ld de, $60 * LEN_1BPP_TILE
@@ -105,25 +103,36 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1 tile $60
-	lb bc, BANK(Font), $20
+	lb bc, BANK(FontNormal), $20
 	call Get1bpp_2
 	ret
 ; fb48a
 
 LoadStandardFontPointer::
+	ld hl, .PopupFontPointers
 	ld a, [Options2]
-	and $60
-	ld hl, Font
-	cp FONT_NORMAL
-	ret z
-	ld hl, FontBold
-	cp FONT_BOLD
-	ret z
-	ld hl, FontItalic
-	cp FONT_ITALIC
-	ret z
-	ld hl, FontUnown
+	and FONT_MASK
+	ld d, 0
+	ld e, a
+rept 2
+	add hl, de
+endr
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld h, d
+	ld l, e
 	ret
+
+.PopupFontPointers:
+	dw FontNormal
+	dw FontBold
+	dw FontItalic
+	dw FontSerif
+	dw FontUnown
+	dw FontNormal
+	dw FontNormal
+	dw FontNormal
 
 _LoadFontsExtra1:: ; fb48a
 	ld de, OverworldPhoneIconGFX

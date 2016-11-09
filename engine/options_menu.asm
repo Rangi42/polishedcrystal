@@ -482,70 +482,68 @@ Options_PokedexUnits:
 
 Options_Typeface:
 	ld hl, Options2
+	ld a, [hl]
+	and FONT_MASK
+	ld c, a
+	ld b, 0
 	ld a, [hJoyPressed]
-	bit D_RIGHT_F, a
-	jr nz, .RightPressed
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
-	ld a, [hl]
-	and $60
-.Set:
-	cp FONT_NORMAL
-	jr z, .SetNormal
-	cp FONT_BOLD
-	jr z, .SetBold
-	cp FONT_ITALIC
-	jr z, .SetItalic
-.SetUnown:
-	ld a, [hl]
-	and $9f
-	or FONT_UNOWN
-	ld [hl], a
-	ld de, .Unown
-	jr .Display
-.SetNormal:
-	ld a, [hl]
-	and $9f
-	or FONT_NORMAL
-	ld [hl], a
-	ld de, .Normal
-	jr .Display
-.SetBold:
-	ld a, [hl]
-	and $9f
-	or FONT_BOLD
-	ld [hl], a
-	ld de, .Bold
-	jr .Display
-.SetItalic:
-	ld a, [hl]
-	and $9f
-	or FONT_ITALIC
-	ld [hl], a
-	ld de, .Italic
-	jr .Display
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	ld a, c ; right pressed
+	cp UNOWN_FONT
+	jr c, .Increase
+	ld c, NORMAL_FONT +- 1
+
+.Increase:
+	inc c
+	jr .Save
+
 .LeftPressed:
+	ld a, c
+	and a
+	jr nz, .Decrease
+	ld c, UNOWN_FONT + 1
+
+.Decrease:
+	dec c
+
+.Save:
 	ld a, [hl]
-	sub $20
-	and $60
-	jr .Set
-.RightPressed:
-	ld a, [hl]
-	add $20
-	and $60
-	jr .Set
-.Display:
+	and NOT_FONT_MASK
+	or c
+	ld [hl], a
+
+.NonePressed:
+	ld b, 0
+	ld hl, .Strings
+rept 2
+	add hl, bc
+endr
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
 	hlcoord 11, 7
 	call PlaceString
 	call LoadStandardFont
 	and a
 	ret
 
+.Strings:
+	dw .Normal
+	dw .Bold
+	dw .Italic
+	dw .Serif
+	dw .Unown
+
 .Normal:
 	db "Normal@"
 .Bold:
 	db "Bold  @"
 .Italic:
+	db "Italic@"
+.Serif:
 	db "Serif @"
 .Unown:
 	db "Unown @"

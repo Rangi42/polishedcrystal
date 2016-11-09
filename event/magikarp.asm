@@ -86,7 +86,7 @@ Magikarp_LoadFeetInchesChars: ; fbbae
 ; fbbbb
 
 .feetinchchars ; fbbb
-INCBIN "gfx/misc/font_primes.2bpp"
+INCBIN "gfx/font/primes.2bpp"
 ; fbbdb
 
 PrintMagikarpLength: ; fbbdb

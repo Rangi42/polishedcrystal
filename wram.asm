@@ -1409,14 +1409,13 @@ TextBoxFlags::
 	ds 1
 
 Options2:: ; cfd1
-; bit 0: running shoes off/on
-; bit 1: clock format 12/24-hour
-; bit 2: pokédex units imperial/metric
-; bit 3: battle style set/switch
-; bit 4: battle style set/predict
-; (bits 3 and 4 are never both set)
-; bit 5-6: typeface regular/bold/italic/unown
-; bit 7: unused
+; bit 0-2: typeface
+; bit 3: running shoes off/on
+; bit 4: clock format 12/24-hour
+; bit 5: pokédex units imperial/metric
+; bit 6: battle style set/switch
+; bit 7: battle style set/predict
+; (bits 6 and 7 are never both set)
 	ds 1
 
 EarlyGameOptions::

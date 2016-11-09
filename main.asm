@@ -5816,19 +5816,23 @@ INCLUDE "engine/crystal_intro.asm"
 
 SECTION "bank3E", ROMX, BANK[$3E]
 
-INCLUDE "gfx/font.asm"
-
 INCLUDE "battle/hidden_power.asm"
 
 INCLUDE "battle/misc.asm"
 
 INCLUDE "engine/unowndex.asm"
 
-SECTION "bank3E spillover", ROMX
-
 INCLUDE "event/magikarp.asm"
 
 INCLUDE "engine/time_capsule/conversion.asm"
+
+Footprints: ; f9434
+INCBIN "gfx/misc/footprints.w128.1bpp"
+; fb434
+
+SECTION "Typefaces", ROMX
+
+INCLUDE "gfx/font.asm"
 
 SECTION "bank3F", ROMX, BANK[$3F]
 
@@ -5921,7 +5925,7 @@ LoadOverworldFont:: ; 106594
 	ld d, h
 	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(PopupFont), $80
+	lb bc, BANK(PopupFontNormal), $80
 	call Get2bpp
 	call LoadPopupFontPointer
 	ld de, $80 tiles
@@ -5929,34 +5933,47 @@ LoadOverworldFont:: ; 106594
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $7f
-	lb bc, BANK(PopupFont), 1
+	lb bc, BANK(PopupFontNormal), 1
 	call Get2bpp
 	ret
 ; 1065ad
 
 LoadPopupFontPointer::
+	ld hl, .PopupFontPointers
 	ld a, [Options2]
-	and $60
-	ld hl, PopupFont
-	cp FONT_NORMAL
-	ret z
-	ld hl, PopupFontBold
-	cp FONT_BOLD
-	ret z
-	ld hl, PopupFontItalic
-	cp FONT_ITALIC
-	ret z
-	ld hl, PopupFontUnown
+	and FONT_MASK
+	ld d, 0
+	ld e, a
+rept 2
+	add hl, de
+endr
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld h, d
+	ld l, e
 	ret
 
-PopupFont:
-INCBIN "gfx/misc/font_popup.2bpp"
+.PopupFontPointers:
+	dw PopupFontNormal
+	dw PopupFontBold
+	dw PopupFontItalic
+	dw PopupFontSerif
+	dw PopupFontUnown
+	dw PopupFontNormal
+	dw PopupFontNormal
+	dw PopupFontNormal
+
+PopupFontNormal:
+INCBIN "gfx/font/popup_normal.2bpp"
 PopupFontBold:
-INCBIN "gfx/misc/font_popup_bold.2bpp"
+INCBIN "gfx/font/popup_bold.2bpp"
 PopupFontItalic:
-INCBIN "gfx/misc/font_popup_italic.2bpp"
+INCBIN "gfx/font/popup_italic.2bpp"
+PopupFontSerif:
+INCBIN "gfx/font/popup_serif.2bpp"
 PopupFontUnown:
-INCBIN "gfx/misc/font_popup_unown.2bpp"
+INCBIN "gfx/font/popup_unown.2bpp"
 
 SECTION "Intro Logo", ROMX, BANK[$42]
 
