@@ -29,11 +29,34 @@ DiglettsCaveHiddenMaxRevive:
 	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 UnknownText_0x74008:
+if DEF(FAITHFUL)
 	text "A bunch of Diglett"
 	line "popped out of the"
 
 	para "ground! That was"
 	line "shocking."
+else
+	text "When the volcano"
+	line "on Cinnabar Island"
+	cont "erupted, it radic-"
+
+	para "ally affected some"
+	line "#mon species."
+
+	para "Diglett and Dug-"
+	line "trio burrowing"
+	cont "underground got"
+
+	para "covered in strands"
+	line "of cooled lava,"
+
+	para "blown here all the"
+	line "way from Cinnabar."
+
+	para "It's made them even"
+	line "tougher. Good luck"
+	cont "in the caves!"
+endc
 	done
 
 DiglettsCaveDiglettDollText:

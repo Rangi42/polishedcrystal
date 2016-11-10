@@ -184,7 +184,11 @@ LedybaFrontpic:        INCBIN "gfx/pics/ledyba/front.2bpp.lz"
 GengarFrontpic:        INCBIN "gfx/pics/gengar/front.2bpp.lz"
 OmastarFrontpic:       INCBIN "gfx/pics/omastar/front.2bpp.lz"
 PiloswineFrontpic:     INCBIN "gfx/pics/piloswine/front.2bpp.lz"
+if DEF(FAITHFUL)
 DugtrioFrontpic:       INCBIN "gfx/pics/dugtrio/front.2bpp.lz"
+else
+DugtrioFrontpic:       INCBIN "gfx/pics/dugtrio_alolan/front.2bpp.lz"
+endc
 MagnetonFrontpic:      INCBIN "gfx/pics/magneton/front.2bpp.lz"
 DragonairFrontpic:     INCBIN "gfx/pics/dragonair/front.2bpp.lz"
 ForretressFrontpic:    INCBIN "gfx/pics/forretress/front.2bpp.lz"
@@ -476,7 +480,11 @@ SECTION "Pics 15", ROMX, BANK[PICS_15]
 MewtwoPlainBackpic:    INCBIN "gfx/pics/mewtwo_plain/back.2bpp.lz"
 PokemonProfPic:        INCBIN "gfx/trainers/oak.2bpp.lz"
 CalPic:                INCBIN "gfx/trainers/cal.2bpp.lz"
+if DEF(FAITHFUL)
 DiglettFrontpic:       INCBIN "gfx/pics/diglett/front.2bpp.lz"
+else
+DiglettFrontpic:       INCBIN "gfx/pics/diglett_alolan/front.2bpp.lz"
+endc
 OfficermPic:           INCBIN "gfx/trainers/officer_m.2bpp.lz"
 MukBackpic:            INCBIN "gfx/pics/muk/back.2bpp.lz"
 SabrinaPic:            INCBIN "gfx/trainers/sabrina.2bpp.lz"
@@ -501,7 +509,11 @@ MachopBackpic:         INCBIN "gfx/pics/machop/back.2bpp.lz"
 AbraBackpic:           INCBIN "gfx/pics/abra/back.2bpp.lz"
 AerodactylBackpic:     INCBIN "gfx/pics/aerodactyl/back.2bpp.lz"
 KakunaFrontpic:        INCBIN "gfx/pics/kakuna/front.2bpp.lz"
+if DEF(FAITHFUL)
 DugtrioBackpic:        INCBIN "gfx/pics/dugtrio/back.2bpp.lz"
+else
+DugtrioBackpic:        INCBIN "gfx/pics/dugtrio_alolan/back.2bpp.lz"
+endc
 WeepinbellBackpic:     INCBIN "gfx/pics/weepinbell/back.2bpp.lz"
 NidoranFBackpic:       INCBIN "gfx/pics/nidoran_f/back.2bpp.lz"
 GravelerBackpic:       INCBIN "gfx/pics/graveler/back.2bpp.lz"
@@ -668,7 +680,11 @@ NatuBackpic:           INCBIN "gfx/pics/natu/back.2bpp.lz"
 UnownAFrontpic:        INCBIN "gfx/pics/unown_a/front.2bpp.lz"
 GolemBackpic:          INCBIN "gfx/pics/golem/back.2bpp.lz"
 UnownUFrontpic:        INCBIN "gfx/pics/unown_u/front.2bpp.lz"
+if DEF(FAITHFUL)
 DiglettBackpic:        INCBIN "gfx/pics/diglett/back.2bpp.lz"
+else
+DiglettBackpic:        INCBIN "gfx/pics/diglett_alolan/back.2bpp.lz"
+endc
 UnownQFrontpic:        INCBIN "gfx/pics/unown_q/front.2bpp.lz"
 UnownPFrontpic:        INCBIN "gfx/pics/unown_p/front.2bpp.lz"
 UnownCBackpic:         INCBIN "gfx/pics/unown_c/back.2bpp.lz"

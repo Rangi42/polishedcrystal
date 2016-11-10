@@ -47,8 +47,13 @@ ParasAnimationExtra:      INCLUDE "gfx/pics/paras/anim1.asm"
 ParasectAnimationExtra:   INCLUDE "gfx/pics/parasect/anim1.asm"
 VenonatAnimationExtra:    INCLUDE "gfx/pics/venonat/anim1.asm"
 VenomothAnimationExtra:   INCLUDE "gfx/pics/venomoth/anim1.asm"
+if DEF(FAITHFUL)
 DiglettAnimationExtra:    INCLUDE "gfx/pics/diglett/anim1.asm"
 DugtrioAnimationExtra:    INCLUDE "gfx/pics/dugtrio/anim1.asm"
+else
+DiglettAnimationExtra:    INCLUDE "gfx/pics/diglett_alolan/anim1.asm"
+DugtrioAnimationExtra:    INCLUDE "gfx/pics/dugtrio_alolan/anim1.asm"
+endc
 MeowthAnimationExtra:     INCLUDE "gfx/pics/meowth/anim1.asm"
 PersianAnimationExtra:    INCLUDE "gfx/pics/persian/anim1.asm"
 PsyduckAnimationExtra:    INCLUDE "gfx/pics/psyduck/anim1.asm"

@@ -18,12 +18,3 @@ INCBIN "tilesets/03_metatiles.bin"
 
 Tileset03Coll:
 INCBIN "tilesets/03_collision.bin"
-
-Tileset06GFX:
-INCBIN "gfx/tilesets/06.2bpp.lz"
-
-Tileset06Meta:
-INCBIN "tilesets/06_metatiles.bin"
-
-Tileset06Coll:
-INCBIN "tilesets/06_collision.bin"

@@ -47,8 +47,13 @@ ParasBitmasks:      INCLUDE "gfx/pics/paras/bitmask.asm"
 ParasectBitmasks:   INCLUDE "gfx/pics/parasect/bitmask.asm"
 VenonatBitmasks:    INCLUDE "gfx/pics/venonat/bitmask.asm"
 VenomothBitmasks:   INCLUDE "gfx/pics/venomoth/bitmask.asm"
+if DEF(FAITHFUL)
 DiglettBitmasks:    INCLUDE "gfx/pics/diglett/bitmask.asm"
 DugtrioBitmasks:    INCLUDE "gfx/pics/dugtrio/bitmask.asm"
+else
+DiglettBitmasks:    INCLUDE "gfx/pics/diglett_alolan/bitmask.asm"
+DugtrioBitmasks:    INCLUDE "gfx/pics/dugtrio_alolan/bitmask.asm"
+endc
 MeowthBitmasks:     INCLUDE "gfx/pics/meowth/bitmask.asm"
 PersianBitmasks:    INCLUDE "gfx/pics/persian/bitmask.asm"
 PsyduckBitmasks:    INCLUDE "gfx/pics/psyduck/bitmask.asm"

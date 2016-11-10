@@ -105,10 +105,17 @@ VenonatPalette:         INCLUDE "gfx/pics/venonat/normal.pal"
 VenonatShinyPalette:    INCLUDE "gfx/pics/venonat/shiny.pal"
 VenomothPalette:        INCLUDE "gfx/pics/venomoth/normal.pal"
 VenomothShinyPalette:   INCLUDE "gfx/pics/venomoth/shiny.pal"
+if DEF(FAITHFUL)
 DiglettPalette:         INCLUDE "gfx/pics/diglett/normal.pal"
 DiglettShinyPalette:    INCLUDE "gfx/pics/diglett/shiny.pal"
 DugtrioPalette:         INCLUDE "gfx/pics/dugtrio/normal.pal"
 DugtrioShinyPalette:    INCLUDE "gfx/pics/dugtrio/shiny.pal"
+else
+DiglettPalette:         INCLUDE "gfx/pics/diglett_alolan/normal.pal"
+DiglettShinyPalette:    INCLUDE "gfx/pics/diglett_alolan/shiny.pal"
+DugtrioPalette:         INCLUDE "gfx/pics/dugtrio_alolan/normal.pal"
+DugtrioShinyPalette:    INCLUDE "gfx/pics/dugtrio_alolan/shiny.pal"
+endc
 MeowthPalette:          INCLUDE "gfx/pics/meowth/normal.pal"
 MeowthShinyPalette:     INCLUDE "gfx/pics/meowth/shiny.pal"
 PersianPalette:         INCLUDE "gfx/pics/persian/normal.pal"

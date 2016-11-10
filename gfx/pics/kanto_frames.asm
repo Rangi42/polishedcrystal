@@ -48,8 +48,13 @@ ParasFrames:      INCLUDE "gfx/pics/paras/frames.asm"
 ParasectFrames:   INCLUDE "gfx/pics/parasect/frames.asm"
 VenonatFrames:    INCLUDE "gfx/pics/venonat/frames.asm"
 VenomothFrames:   INCLUDE "gfx/pics/venomoth/frames.asm"
+if DEF(FAITHFUL)
 DiglettFrames:    INCLUDE "gfx/pics/diglett/frames.asm"
 DugtrioFrames:    INCLUDE "gfx/pics/dugtrio/frames.asm"
+else
+DiglettFrames:    INCLUDE "gfx/pics/diglett_alolan/frames.asm"
+DugtrioFrames:    INCLUDE "gfx/pics/dugtrio_alolan/frames.asm"
+endc
 MeowthFrames:     INCLUDE "gfx/pics/meowth/frames.asm"
 PersianFrames:    INCLUDE "gfx/pics/persian/frames.asm"
 PsyduckFrames:    INCLUDE "gfx/pics/psyduck/frames.asm"

@@ -3643,9 +3643,9 @@ CamperGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 10, DIGLETT
+	db 10, SANDSHREW
 	db 10, ZUBAT
-	db 14, DIGLETT
+	db 14, DUNSPARCE
 
 	db $ff ; end
 
@@ -5171,9 +5171,9 @@ HikerGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 24, DIGLETT
+	db 24, DUNSPARCE
 	db 24, LARVITAR
-	db 28, DUGTRIO
+	db 28, GLIGAR
 
 	db $ff ; end
 
@@ -5207,21 +5207,12 @@ HikerGroup:
 
 	; HIKER
 	db "Timothy@"
-	db TRAINERTYPE_MOVES
+	db TRAINERTYPE_NORMAL
 
 	; party
 
-	db 36, DIGLETT
-		db MAGNITUDE
-		db DIG
-		db SAND_ATTACK
-		db SLASH
-
-	db 37, DUGTRIO
-		db MAGNITUDE
-		db DIG
-		db SAND_ATTACK
-		db SLASH
+	db 36, SANDSLASH
+	db 37, SKARMORY
 
 	db $ff ; end
 
@@ -5246,9 +5237,9 @@ HikerGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
+	db 50, DIGLETT
 	db 52, GRAVELER
-	db 52, GRAVELER
-	db 52, GRAVELER
+	db 54, DUGTRIO
 
 	db $ff ; end
 
@@ -5259,7 +5250,7 @@ HikerGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 45, SANDSLASH
+	db 45, DUGTRIO
 	db 47, GOLEM
 
 	db $ff ; end
