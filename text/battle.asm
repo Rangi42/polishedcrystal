@@ -278,8 +278,8 @@ BattleText_EnemyIsAboutToUseWillPlayerSwitchPkmn: ; 0x80aca
 	text_from_ram EnemyMonNick
 	text "."
 
-	para "Will <PLAYER>"
-	line "switch #mon?"
+	para "Will you switch"
+	line "your #mon?"
 	done
 ; 0x80af8
 
@@ -290,8 +290,8 @@ BattleText_EnemyAreAboutToUseWillPlayerSwitchPkmn:
 	text_from_ram EnemyMonNick
 	text "."
 
-	para "Will <PLAYER>"
-	line "switch #mon?"
+	para "Will you switch"
+	line "your #mon?"
 	done
 
 BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn:
@@ -299,8 +299,8 @@ BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn:
 	line "is about to switch"
 	cont "#mon."
 
-	para "Will <PLAYER>"
-	line "switch #mon?"
+	para "Will you switch"
+	line "your #mon?"
 	done
 ; 0x80af8
 
@@ -309,8 +309,8 @@ BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn:
 	line "are about to"
 	cont "switch #mon."
 
-	para "Will <PLAYER>"
-	line "switch #mon?"
+	para "Will you switch"
+	line "your #mon?"
 	done
 
 BattleText_EnemySentOut: ; 0x80af8
