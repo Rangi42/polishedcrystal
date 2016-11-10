@@ -1470,5 +1470,3 @@ CheckFaintedFrzSlp: ; 4e53f
 
 CaughtBallsGFX:
 INCBIN "gfx/misc/balls.2bpp"
-
-

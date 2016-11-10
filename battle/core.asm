@@ -4818,6 +4818,7 @@ UpdatePlayerHUD:: ; 3df48
 	push bc
 	call DrawPlayerHUD
 	call UpdatePlayerHPPal
+	farcall LoadPlayerStatusIcon
 	call CheckDanger
 	pop bc
 	pop de
@@ -4931,7 +4932,7 @@ endr
 	farcall CheckShininess
 	jr nc, .not_own_shiny
 	ld a, "<SHINY>"
-	hlcoord 18, 8
+	hlcoord 19, 8
 	ld [hl], a
 
 .not_own_shiny
@@ -4947,24 +4948,21 @@ endr
 .got_gender_char
 	hlcoord 17, 8
 	ld [hl], a
-	hlcoord 14, 8
-	push af ; back up gender
-	push hl
-	ld de, BattleMonStatus
-	predef PlaceNonFaintStatus
-	pop hl
-	pop bc
-	ret nz
-	ld a, b
-	cp " "
-	jr nz, .copy_level ; male or female
-	dec hl ; genderless
 
-.copy_level
+	hlcoord 10, 8
+	call PlacePlayerStatusIcon
+
+	hlcoord 14, 8
 	ld a, [BattleMonLevel]
 	ld [TempMonLevel], a
 	jp PrintLevel
 ; 3e036
+
+PlacePlayerStatusIcon:
+	ld [hl], $71
+	inc hl
+	ld [hl], $72
+	ret
 
 UpdateEnemyHUD:: ; 3e036
 	push hl
@@ -4972,6 +4970,7 @@ UpdateEnemyHUD:: ; 3e036
 	push bc
 	call DrawEnemyHUD
 	call UpdateEnemyHPPal
+	farcall LoadEnemyStatusIcon
 	pop bc
 	pop de
 	pop hl
@@ -5036,23 +5035,13 @@ endr
 	hlcoord 9, 1
 	ld [hl], a
 
+	hlcoord 2, 1
+	call PlaceEnemyStatusIcon
+
 	hlcoord 6, 1
-	push af
-	push hl
-	ld de, EnemyMonStatus
-	predef PlaceNonFaintStatus
-	pop hl
-	pop bc
-	jr nz, .skip_level
-	ld a, b
-	cp " "
-	jr nz, .print_level
-	dec hl
-.print_level
 	ld a, [EnemyMonLevel]
 	ld [TempMonLevel], a
 	call PrintLevel
-.skip_level
 
 	ld hl, EnemyMonHP
 	ld a, [hli]
@@ -5120,6 +5109,12 @@ endr
 	call DrawBattleHPBar
 	ret
 ; 3e127
+
+PlaceEnemyStatusIcon:
+	ld [hl], $75
+	inc hl
+	ld [hl], $76
+	ret
 
 UpdateEnemyHPPal: ; 3e127
 	ld hl, EnemyHPPal
@@ -9618,6 +9613,5 @@ CheckPluralTrainer:
 	ld a, 1
 	and a
 	ret
-
 
 INCLUDE "battle/unique_moves.asm"

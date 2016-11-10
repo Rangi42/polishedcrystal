@@ -45,6 +45,9 @@ ExpBarGFX: ; f8b10
 INCBIN "gfx/battle/expbar.2bpp"
 ; f8ba0
 
+StatusIconGFX:
+INCBIN "gfx/battle/status.2bpp"
+
 TownMapGFX: ; f8ba0
 INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
@@ -185,6 +188,54 @@ LoadHPBar: ; fb50d
 	call Get2bpp_2
 	ret
 ; fb53e
+
+LoadPlayerStatusIcon:
+	ld a, [BattleMonStatus]
+	ld de, StatusIconGFX + 2 tiles
+	bit PSN, a
+	jr nz, .load
+	ld de, StatusIconGFX + 4 tiles
+	bit BRN, a
+	jr nz, .load
+	ld de, StatusIconGFX + 6 tiles
+	bit FRZ, a
+	jr nz, .load
+	ld de, StatusIconGFX + 8 tiles
+	bit PAR, a
+	jr nz, .load
+	ld de, StatusIconGFX + 10 tiles
+	and SLP
+	jr nz, .load
+	ld de, StatusIconGFX + 0 tiles
+.load
+	ld hl, VTiles2 tile $71
+	lb bc, BANK(StatusIconGFX), 2
+	call Request2bpp
+	ret
+
+LoadEnemyStatusIcon:
+	ld a, [EnemyMonStatus]
+	ld de, StatusIconGFX + 2 tiles
+	bit PSN, a
+	jr nz, .load
+	ld de, StatusIconGFX + 4 tiles
+	bit BRN, a
+	jr nz, .load
+	ld de, StatusIconGFX + 6 tiles
+	bit FRZ, a
+	jr nz, .load
+	ld de, StatusIconGFX + 8 tiles
+	bit PAR, a
+	jr nz, .load
+	ld de, StatusIconGFX + 10 tiles
+	and SLP
+	jr nz, .load
+	ld de, StatusIconGFX + 0 tiles
+.load
+	ld hl, VTiles2 tile $75
+	lb bc, BANK(StatusIconGFX), 2
+	call Request2bpp
+	ret
 
 Functionfb53e: ; fb53e
 	call _LoadFontsBattleExtra
