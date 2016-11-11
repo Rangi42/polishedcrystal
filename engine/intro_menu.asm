@@ -363,6 +363,12 @@ Continue: ; 5d65
 	jr .FailToLoad
 
 .Check2Pass:
+	call Continue_CheckEGO_ResetEarlyGameOptions
+;	jr nc, .Check3Pass
+;	call CloseWindow
+;	jr .FailToLoad
+
+.Check3Pass:
 	ld a, $8
 	ld [MusicFade], a
 	ld a, MUSIC_NONE % $100
@@ -437,6 +443,15 @@ Continue_CheckRTC_RestartClock: ; 5e48
 	xor a
 	ret
 ; 5e5d
+
+Continue_CheckEGO_ResetEarlyGameOptions:
+	ld a, [EarlyGameOptions]
+	bit RESET_EGO, a
+	jr z, .pass
+	farcall SetEarlyGameOptions
+.pass
+	xor a
+	ret
 
 FinishContinueFunction: ; 5e5d
 .loop
@@ -1066,7 +1081,7 @@ StartTitleScreen: ; 6219
 	call GetSGBLayout
 	call UpdateTimePals
 	ld a, [wcf64]
-	cp $5
+	cp $6
 	jr c, .ok
 	xor a
 .ok
@@ -1087,6 +1102,7 @@ StartTitleScreen: ; 6219
 	dw CrystalIntroSequence
 	dw CrystalIntroSequence
 	dw ResetClock
+	dw ResetEarlyGameOptions
 ; 6274
 
 
@@ -1226,23 +1242,21 @@ TitleScreenMain: ; 6304
 	cp  D_DOWN + B_BUTTON
 	jr z, .clock_reset
 
+; The early game options can be reset by pressing Left + B.
+	ld a, [hl]
+	and D_LEFT + B_BUTTON
+	cp  D_LEFT + B_BUTTON
+	jr z, .early_option_reset
+
 ; Press Start or A to start the game.
 .check_start
 	ld a, [hl]
 	and START | A_BUTTON
-	jr nz, .incave
+	jr nz, .start_game
 	ret
-
-.incave
-	ld a, 0
-	jr .done
-
-.delete_save_data
-	ld a, 1
 
 .done
 	ld [wcf64], a
-
 ; Return to the intro sequence.
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -1264,14 +1278,22 @@ TitleScreenMain: ; 6304
 	inc [hl]
 	ret
 
+.start_game
+	ld a, 0
+	jr .done
+
+.delete_save_data
+	ld a, 1
+	jr .done
+
 .clock_reset
 	ld a, 4
-	ld [wcf64], a
+	jr .done
 
-; Return to the intro sequence.
-	ld hl, wJumptableIndex
-	set 7, [hl]
-	ret
+.early_option_reset
+	ld a, 5
+	jr .done
+
 ; 6375
 
 TitleScreenEnd: ; 6375
@@ -1303,6 +1325,10 @@ ResetClock: ; 6392
 	farcall _ResetClock
 	jp Init
 ; 639b
+
+ResetEarlyGameOptions:
+	farcall _ResetEarlyGameOptions
+	jp Init
 
 Copyright: ; 63e2
 	call ClearTileMap

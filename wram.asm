@@ -1423,7 +1423,8 @@ EarlyGameOptions::
 ; bit 1: abilities off/on
 ; bit 2: traded behavior off/on
 ; bit 3: nuzlocke mode off/on
-; bit 4-7: unused
+; bit 4-6: unused
+; bit 7: ask to reset at start
 	ds 1
 
 OptionsBuffer::

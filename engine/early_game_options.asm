@@ -258,6 +258,8 @@ EarlyGameOptions_NuzlockeMode:
 	ret
 
 EarlyGameOptions_Done:
+	ld hl, EarlyGameOptions
+	res RESET_EGO, [hl]
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Exit

@@ -64,6 +64,11 @@ UnknownText_0x1c564a::
 	line "data?"
 	done
 
+ResetEarlyGameOptionsText::
+	text "Reset the initial"
+	line "game options?"
+	done
+
 UnknownText_0x1c5660::
 	text_from_ram wMonOrItemNameBuffer
 	text " learned"

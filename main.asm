@@ -3022,7 +3022,7 @@ _DeleteSaveData: ; 4d54c
 	call PlayMusic
 	ld hl, .Text_ClearAllSaveData
 	call PrintText
-	ld hl, .NoYesMenuDataHeader
+	ld hl, NoYesMenuDataHeader
 	call CopyMenuDataHeader
 	call VerticalMenu
 	ret c
@@ -3037,7 +3037,39 @@ _DeleteSaveData: ; 4d54c
 	text_jump UnknownText_0x1c564a
 	db "@"
 
-.NoYesMenuDataHeader: ; 0x4d585
+_ResetEarlyGameOptions:
+	farcall BlankScreen
+	ld b, SCGB_08
+	call GetSGBLayout
+	call LoadStandardFont
+	call LoadFontsExtra
+	ld de, MUSIC_MAIN_MENU
+	call PlayMusic
+	ld hl, .Text_ResetEarlyGameOptions
+	call PrintText
+	ld hl, NoYesMenuDataHeader
+	call CopyMenuDataHeader
+	call VerticalMenu
+	ret c
+	ld a, [wMenuCursorY]
+	cp $1
+	ret z
+	ld a, [EarlyGameOptions]
+	set RESET_EGO, a
+	ld [EarlyGameOptions], a
+	ld a, BANK(sOptions)
+	call GetSRAMBank
+	ld a, [EarlyGameOptions]
+	ld [sOptions + 6], a ; sEarlyGameOptions
+	call CloseSRAM
+	ret
+
+.Text_ResetEarlyGameOptions: ; 0x4d580
+	; Reset the initial game options?
+	text_jump ResetEarlyGameOptionsText
+	db "@"
+
+NoYesMenuDataHeader: ; 0x4d585
 	db $00 ; flags
 	db 07, 14 ; start coords
 	db 11, 19 ; end coords
