@@ -105,8 +105,10 @@
 	charmap "…",        $c5
 	charmap "<SHINY>",  $c6
 	charmap "<PCT>",    $c7
+	charmap "<BALL>",   $c8
+	charmap "<NONO>",   $c9
 
-; unused: c8-cf
+; unused: ca-cf
 
 	charmap "'d",       $d0
 	charmap "'l",       $d1

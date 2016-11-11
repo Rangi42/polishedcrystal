@@ -48,6 +48,12 @@ INCBIN "gfx/battle/expbar.2bpp"
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
 
+TypeIconGFX:
+INCBIN "gfx/battle/types.2bpp"
+
+CategoryIconGFX:
+INCBIN "gfx/battle/categories.2bpp"
+
 TownMapGFX: ; f8ba0
 INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
@@ -176,7 +182,7 @@ LoadBattleFontsHPBar: ; fb4f2
 LoadHPBar: ; fb50d
 	ld de, EnemyHPBarBorderGFX
 	ld hl, VTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 4
+	lb bc, BANK(EnemyHPBarBorderGFX), 3
 	call Get1bpp_2
 	ld de, HPExpBarBorderGFX
 	ld hl, VTiles2 tile $73
@@ -184,7 +190,7 @@ LoadHPBar: ; fb50d
 	call Get1bpp_2
 	ld de, ExpBarGFX
 	ld hl, VTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 10
+	lb bc, BANK(ExpBarGFX), 7
 	call Get2bpp_2
 	call LoadPlayerStatusIcon
 	call LoadEnemyStatusIcon

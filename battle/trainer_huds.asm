@@ -116,7 +116,7 @@ DrawPlayerHUDBorder: ; 2c095
 .tiles
 	db $73 ; right side
 	db $77 ; bottom right
-	db $6f ; bottom left
+	db $6e ; bottom left
 	db "_" ; bottom side
 ; 2c0ad
 
@@ -131,8 +131,8 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 
 .tiles
 	db $73 ; right side
-	db $5c ; bottom right
-	db $6f ; bottom left
+	db $77 ; bottom right
+	db $6e ; bottom left
 	db "_" ; bottom side
 ; 2c0c5
 
@@ -154,12 +154,12 @@ DrawEnemyHUDBorder: ; 2c0c5
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
-	ld [hl], $5d ; poke ball
+	ld [hl], "<BALL>"
 	ret
 
 .nuzlocke
 	hlcoord 1, 1
-	ld [hl], $5e ; prohibition symbol
+	ld [hl], "<NONO>"
 	ret
 
 .tiles
