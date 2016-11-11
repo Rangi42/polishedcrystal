@@ -228,6 +228,14 @@ LoadCategoryAndTypePalettes:
 	call ApplyAttrMap
 	ret
 
+RestoreBackSpritePalette:
+	hlcoord 1, 9, AttrMap
+	lb bc, 1, 6
+	ld a, $0
+	call FillBoxCGB
+	call ApplyAttrMap
+	ret
+
 InitPartyMenuBGPal7: ; 8e85
 	ld hl, Palette_b311
 	ld de, UnknBGPals + 7 palettes

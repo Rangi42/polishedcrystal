@@ -584,6 +584,10 @@ ParsePlayerAction: ; 3c434
 	inc a ; ACROBATICS
 	ld [FXAnimIDLo], a
 	call MoveSelectionScreen
+
+; TODO: restore palette after move dialog closes
+;	farcall RestoreBackSpritePalette
+
 	push af
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
@@ -6024,7 +6028,7 @@ MoveInfoBox: ; 3e6c8
 
 ; TODO: properly load the category+type palettes, and restore palette 0
 ; when the move dialog is dismissed
-;	farcall LoadCategoryAndTypePalettes
+	farcall LoadCategoryAndTypePalettes
 
 .done
 	ret
