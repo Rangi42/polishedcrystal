@@ -1125,7 +1125,10 @@ _ReturnToBattle_UseBall: ; 2715c
 	call CloseWindow
 	call LoadStandardMenuDataHeader
 	call WaitBGMap
-	jp SetPalettes
+	call SetPalettes
+	farcall LoadPlayerStatusIcon
+	farcall LoadEnemyStatusIcon
+	ret
 
 ConsumeHeldItem: ; 27192
 	push hl

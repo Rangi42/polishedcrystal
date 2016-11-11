@@ -4818,7 +4818,6 @@ UpdatePlayerHUD:: ; 3df48
 	push bc
 	call DrawPlayerHUD
 	call UpdatePlayerHPPal
-	farcall LoadPlayerStatusIcon
 	call CheckDanger
 	pop bc
 	pop de
@@ -4861,6 +4860,13 @@ DrawPlayerHUD: ; 3df58
 	ld b, a
 	call FillInExpBar
 	pop de
+
+	; Status icon
+	farcall LoadPlayerStatusIcon
+	hlcoord 10, 8
+	ld [hl], $71
+	inc hl
+	ld [hl], $72
 	ret
 ; 3df98
 
@@ -4949,20 +4955,11 @@ endr
 	hlcoord 17, 8
 	ld [hl], a
 
-	hlcoord 10, 8
-	call PlacePlayerStatusIcon
-
 	hlcoord 14, 8
 	ld a, [BattleMonLevel]
 	ld [TempMonLevel], a
 	jp PrintLevel
 ; 3e036
-
-PlacePlayerStatusIcon:
-	ld [hl], $71
-	inc hl
-	ld [hl], $72
-	ret
 
 UpdateEnemyHUD:: ; 3e036
 	push hl
@@ -4970,7 +4967,6 @@ UpdateEnemyHUD:: ; 3e036
 	push bc
 	call DrawEnemyHUD
 	call UpdateEnemyHPPal
-	farcall LoadEnemyStatusIcon
 	pop bc
 	pop de
 	pop hl
@@ -5034,9 +5030,6 @@ endr
 .got_gender
 	hlcoord 9, 1
 	ld [hl], a
-
-	hlcoord 2, 1
-	call PlaceEnemyStatusIcon
 
 	hlcoord 6, 1
 	ld a, [EnemyMonLevel]
@@ -5107,14 +5100,14 @@ endr
 	hlcoord 2, 2
 	ld b, 0
 	call DrawBattleHPBar
-	ret
-; 3e127
 
-PlaceEnemyStatusIcon:
+	farcall LoadEnemyStatusIcon
+	hlcoord 2, 1
 	ld [hl], $75
 	inc hl
 	ld [hl], $76
 	ret
+; 3e127
 
 UpdateEnemyHPPal: ; 3e127
 	ld hl, EnemyHPPal

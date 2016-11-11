@@ -186,6 +186,8 @@ LoadHPBar: ; fb50d
 	ld hl, VTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 10
 	call Get2bpp_2
+	call LoadPlayerStatusIcon
+	call LoadEnemyStatusIcon
 	ret
 ; fb53e
 
