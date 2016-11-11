@@ -193,7 +193,7 @@ LoadHPBar: ; fb50d
 
 LoadPlayerStatusIcon:
 	ld de, BattleMonStatus
-	farcall GetNonFaintStatusConditionIndex
+	farcall GetStatusConditionIndex
 	ld a, b
 	ld hl, StatusIconGFX
 	ld de, 2 tiles
@@ -234,7 +234,7 @@ LoadPlayerStatusIcon:
 
 LoadEnemyStatusIcon:
 	ld de, EnemyMonStatus
-	farcall GetNonFaintStatusConditionIndex
+	farcall GetStatusConditionIndex
 	ld a, b
 	ld hl, StatusIconGFX
 	ld de, 2 tiles

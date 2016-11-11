@@ -4538,13 +4538,7 @@ GetStatusConditionIndex:
 	ld a, [de]
 	or b
 	pop de
-	jr nz, GetNonFaintStatusConditionIndex
-	ld a, 6
-	ret
-
-GetNonFaintStatusConditionIndex:
-; de points to status, e.g. from a party_struct or battle_struct
-; return the status condition index in 'a'
+	jr z, .fnt
 	ld a, [de]
 	bit PSN, a
 	jr nz, .psn
@@ -4573,6 +4567,9 @@ GetNonFaintStatusConditionIndex:
 	jr .done
 .frz
 	ld a, 5
+	jr .done
+.fnt
+	ld a, 6
 .done
 	ld b, a
 	ret

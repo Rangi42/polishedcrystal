@@ -167,7 +167,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 
 LoadPlayerStatusIconPalette:
 	ld de, BattleMonStatus
-	farcall GetNonFaintStatusConditionIndex
+	farcall GetStatusConditionIndex
 	ld hl, StatusIconPalettes
 	ld a, b
 	ld c, a
@@ -181,7 +181,7 @@ endr
 
 LoadEnemyStatusIconPalette:
 	ld de, EnemyMonStatus
-	farcall GetNonFaintStatusConditionIndex
+	farcall GetStatusConditionIndex
 	ld hl, StatusIconPalettes
 	ld a, b
 	ld c, a
