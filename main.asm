@@ -4494,7 +4494,9 @@ endr
 	jr nz, .load_loop
 	ret
 
-PlaceStatusString: ; 50d0a
+GetStatusConditionIndex:
+; de points to status, e.g. from a party_struct or battle_struct
+; return the status condition index in 'a'
 	push de
 	inc de
 	inc de
@@ -4504,19 +4506,64 @@ PlaceStatusString: ; 50d0a
 	ld a, [de]
 	or b
 	pop de
-	jr nz, PlaceNonFaintStatus
-	push de
-	ld de, FntString
-	call CopyStatusString
-	pop de
-	ld a, $1
-	and a
+	jr nz, GetNonFaintStatusConditionIndex
+	ld a, 6
 	ret
 
-FntString: ; 50d22
-	db "Fnt@"
+GetNonFaintStatusConditionIndex:
+; de points to status, e.g. from a party_struct or battle_struct
+; return the status condition index in 'a'
+	ld a, [de]
+	bit PSN, a
+	jr nz, .psn
+	bit PAR, a
+	jr nz, .par
+	bit BRN, a
+	jr nz, .brn
+	bit FRZ, a
+	jr nz, .frz
+	and SLP
+	jr nz, .slp
+.ok
+	xor a
+	jr .done
+.psn
+	ld a, 1
+	jr .done
+.par
+	ld a, 2
+	jr .done
+.slp
+	ld a, 3
+	jr .done
+.brn
+	ld a, 4
+	jr .done
+.frz
+	ld a, 5
+.done
+	ld b, a
+	ret
 
-CopyStatusString: ; 50d25
+PlaceStatusString: ; 50d0a
+	call GetStatusConditionIndex
+	and a
+	ret z
+	push de
+
+	ld d, 0
+	ld e, a
+	push hl
+	ld hl, StatusStringPointers
+rept 2
+	add hl, de
+endr
+	ld a, [hli]
+	ld e, a
+	ld a, [hl]
+	ld d, a
+	pop hl
+
 	ld a, [de]
 	inc de
 	ld [hli], a
@@ -4525,41 +4572,28 @@ CopyStatusString: ; 50d25
 	ld [hli], a
 	ld a, [de]
 	ld [hl], a
-	ret
 
-PlaceNonFaintStatus: ; 50d2e
-	push de
-	ld a, [de]
-	ld de, PsnString
-	bit PSN, a
-	jr nz, .place
-	ld de, BrnString
-	bit BRN, a
-	jr nz, .place
-	ld de, FrzString
-	bit FRZ, a
-	jr nz, .place
-	ld de, ParString
-	bit PAR, a
-	jr nz, .place
-	ld de, SlpString
-	and SLP
-	jr z, .no_status
-
-.place
-	call CopyStatusString
+	pop de
 	ld a, $1
 	and a
-
-.no_status
-	pop de
 	ret
 
-SlpString: db "Slp@"
+StatusStringPointers:
+	dw OKString
+	dw PsnString
+	dw ParString
+	dw SlpString
+	dw BrnString
+	dw FrzString
+	dw FntString
+
+OKString:  db "OK @"
 PsnString: db "Psn@"
+ParString: db "Par@"
+SlpString: db "Slp@"
 BrnString: db "Brn@"
 FrzString: db "Frz@"
-ParString: db "Par@"
+FntString: db "Fnt@"
 
 ListMoves: ; 50d6f
 ; List moves at hl, spaced every [Buffer1] tiles.

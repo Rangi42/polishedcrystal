@@ -528,7 +528,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld a, [MonType]
 	cp BOXMON
 	jr z, .StatusOK
-	hlcoord 6, 10
+	hlcoord 5, 10
 	push hl
 	ld de, TempMonStatus
 	predef PlaceStatusString
@@ -673,7 +673,7 @@ endr
 ; 4e127
 
 .OK_str: ; 4e127
-	db "OK @"
+	db " OK@"
 ; 4e12b
 
 .OT_ID_str: ; 4e222 / 4e21e

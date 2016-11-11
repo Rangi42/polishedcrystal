@@ -113,6 +113,8 @@ _CGB_BattleColors: ; 8ddb
 	call LoadPalette_White_Col1_Col2_Black
 	pop hl
 	call LoadPalette_White_Col1_Col2_Black
+	call LoadPlayerStatusIconPalette
+	call LoadEnemyStatusIconPalette
 	ld a, SCGB_BATTLE_COLORS
 	ld [SGBPredef], a
 	call ApplyPals
@@ -142,6 +144,14 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 1, 9
 	ld a, $4
 	call FillBoxCGB
+	hlcoord 10, 8, AttrMap
+	lb bc, 1, 2
+	ld a, $5
+	call FillBoxCGB
+	hlcoord 2, 1, AttrMap
+	lb bc, 1, 2
+	ld a, $6
+	call FillBoxCGB
 	hlcoord 0, 12, AttrMap
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, $7
@@ -155,6 +165,56 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ret
 ; 8e85
 
+LoadPlayerStatusIconPalette:
+	ld de, BattleMonStatus
+	farcall GetNonFaintStatusConditionIndex
+	ld hl, StatusIconPalettes
+	ld a, b
+	ld c, a
+	ld b, 0
+rept 4
+	add hl, bc
+endr
+	ld de, UnknBGPals + 5 palettes
+	call LoadPalette_White_Col1_Col2_Black
+	ret
+
+LoadEnemyStatusIconPalette:
+	ld de, EnemyMonStatus
+	farcall GetNonFaintStatusConditionIndex
+	ld hl, StatusIconPalettes
+	ld a, b
+	ld c, a
+	ld b, 0
+rept 4
+	add hl, bc
+endr
+	ld de, UnknBGPals + 6 palettes
+	call LoadPalette_White_Col1_Col2_Black
+	ret
+
+StatusIconPalettes:
+; OK
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+; PSN
+	RGB 26, 11, 23
+	RGB 26, 11, 23
+; PAR
+	RGB 24, 23, 05
+	RGB 24, 23, 05
+; SLP
+	RGB 20, 20, 16
+	RGB 20, 20, 16
+; BRN
+	RGB 31, 13, 09
+	RGB 31, 13, 09
+; FRZ
+	RGB 15, 22, 28
+	RGB 15, 22, 28
+; FNT
+	RGB 25, 00, 00
+	RGB 25, 00, 00
 
 InitPartyMenuBGPal7: ; 8e85
 	ld hl, Palette_b311
@@ -222,10 +282,8 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld a, [TempMonCaughtBall]
 	and CAUGHTBALL_MASK
 	call AddNTimes
-	ld de, UnknBGPals + 7 palettes + $2
-	ld bc, $4
-	ld a, $5
-	call FarCopyWRAM
+	ld de, UnknBGPals + 7 palettes
+	call LoadPalette_White_Col1_Col2_Black
 
 	call WipeAttrMap
 
@@ -271,7 +329,6 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ret
 ; 8f52
 
-
 Palette8f52: ; 8f52
 ; pink
 	RGB 31, 31, 31
@@ -295,7 +352,6 @@ Palette8f52: ; 8f52
 	RGB 00, 00, 00
 ; 8f6a
 
-
 StatsScreenPals: ; 8f6a
 ; pink
 	RGB 31, 19, 31
@@ -306,7 +362,6 @@ StatsScreenPals: ; 8f6a
 ; orange
 	RGB 30, 24, 16
 ; 8f70
-
 
 CaughtBallPals:
 ; NO ITEM
@@ -375,7 +430,6 @@ CaughtBallPals:
 ; CHERISH BALL
 	RGB 31, 06, 04
 	RGB 31, 06, 04
-
 
 _CGB_Pokedex: ; 8f70
 	ld de, UnknBGPals

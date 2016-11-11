@@ -62,7 +62,6 @@ PredefPointers:: ; 856b
 	add_predef TradeAnimation
 	add_predef CopyPkmnToTempMon
 	add_predef ListMoves ; $20
-	add_predef PlaceNonFaintStatus
 	add_predef ListMovePP
 	add_predef GetGender
 	add_predef StatsScreenInit

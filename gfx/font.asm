@@ -192,51 +192,85 @@ LoadHPBar: ; fb50d
 ; fb53e
 
 LoadPlayerStatusIcon:
-	ld a, [BattleMonStatus]
-	ld de, StatusIconGFX + 2 tiles
-	bit PSN, a
-	jr nz, .load
-	ld de, StatusIconGFX + 4 tiles
-	bit BRN, a
-	jr nz, .load
-	ld de, StatusIconGFX + 6 tiles
-	bit FRZ, a
-	jr nz, .load
-	ld de, StatusIconGFX + 8 tiles
-	bit PAR, a
-	jr nz, .load
-	ld de, StatusIconGFX + 10 tiles
-	and SLP
-	jr nz, .load
-	ld de, StatusIconGFX + 0 tiles
-.load
+	ld de, BattleMonStatus
+	farcall GetNonFaintStatusConditionIndex
+	ld a, b
+	ld hl, StatusIconGFX
+	ld de, 2 tiles
+.loop
+	and a
+	jr z, .done
+	add hl, de
+	dec a
+	jr .loop
+.done
+	ld d, h
+	ld e, l
 	ld hl, VTiles2 tile $71
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
+	farcall LoadPlayerStatusIconPalette
+
+; Hack to make the palette load instantly
+	ld a, [rSVBK]
+	push af
+	ld a, 5 ; gfx
+	ld [rSVBK], a
+; copy & reorder bg pal buffer
+	ld hl, BGPals + 5 palettes ; to
+	ld de, UnknBGPals + 5 palettes ; from
+; order
+	ld a, [rBGP]
+	ld b, a
+; 1 pal
+	ld c, 1
+	call CopyPals
+; request pal update
+	ld a, 1
+	ld [hCGBPalUpdate], a
+	pop af
+	ld [rSVBK], a
 	ret
 
 LoadEnemyStatusIcon:
-	ld a, [EnemyMonStatus]
-	ld de, StatusIconGFX + 2 tiles
-	bit PSN, a
-	jr nz, .load
-	ld de, StatusIconGFX + 4 tiles
-	bit BRN, a
-	jr nz, .load
-	ld de, StatusIconGFX + 6 tiles
-	bit FRZ, a
-	jr nz, .load
-	ld de, StatusIconGFX + 8 tiles
-	bit PAR, a
-	jr nz, .load
-	ld de, StatusIconGFX + 10 tiles
-	and SLP
-	jr nz, .load
-	ld de, StatusIconGFX + 0 tiles
-.load
+	ld de, EnemyMonStatus
+	farcall GetNonFaintStatusConditionIndex
+	ld a, b
+	ld hl, StatusIconGFX
+	ld de, 2 tiles
+.loop
+	and a
+	jr z, .done
+	add hl, de
+	dec a
+	jr .loop
+.done
+	ld d, h
+	ld e, l
 	ld hl, VTiles2 tile $75
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
+	farcall LoadEnemyStatusIconPalette
+
+; Hack to make the palette load instantly
+	ld a, [rSVBK]
+	push af
+	ld a, 5 ; gfx
+	ld [rSVBK], a
+; copy & reorder bg pal buffer
+	ld hl, BGPals + 6 palettes ; to
+	ld de, UnknBGPals + 6 palettes ; from
+; order
+	ld a, [rBGP]
+	ld b, a
+; 1 pal
+	ld c, 1
+	call CopyPals
+; request pal update
+	ld a, 1
+	ld [hCGBPalUpdate], a
+	pop af
+	ld [rSVBK], a
 	ret
 
 Functionfb53e: ; fb53e
