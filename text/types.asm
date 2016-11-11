@@ -40,8 +40,8 @@ PrintMonTypes: ; 5090d
 ; 5093a
 
 
-PrintMoveType: ; 5093a
-; Print the type of move b at hl.
+GetMoveTypeIndex:
+; Return the type of move b at b.
 
 	push hl
 	ld a, b
@@ -56,7 +56,13 @@ PrintMoveType: ; 5093a
 	pop hl
 
 	ld b, a
+	ret
 
+
+PrintMoveType: ; 5093a
+; Print the type of move b at hl.
+
+	call GetMoveTypeIndex
 
 PrintType: ; 50953
 ; Print type b at hl.

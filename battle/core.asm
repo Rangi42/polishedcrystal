@@ -5896,7 +5896,7 @@ MoveInfoBox: ; 3e6c8
 	hlcoord 1, 10
 	ld de, .Disabled
 	call PlaceString
-	jr .done
+	jp .done
 
 .not_disabled
 	ld hl, wMenuCursorY
@@ -5926,28 +5926,105 @@ MoveInfoBox: ; 3e6c8
 	and $3f
 	ld [StringBuffer1], a
 	call .PrintPP
-	hlcoord 7, 11
-	ld [hl], "/"
+
 	farcall UpdateMoveData
-	hlcoord 1, 9
-	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
-	cp PHYSICAL
-	jr z, .physical
-	cp SPECIAL
-	jr z, .special
-	ld de, .Stat
-	jp .place_category
-.physical
-	ld de, .Phys
-	jp .place_category
-.special
-	ld de, .Spcl
-.place_category
+
+	hlcoord 1, 10
+	ld de, .PowAcc
 	call PlaceString
+
+; Power and accuracy display code copied from engine/startmenu.asm
+
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_POWER
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	hlcoord 1, 10
+	cp 2
+	jr c, .no_power
+	ld [wd265], a
+	ld de, wd265
+	lb bc, 1, 3
+	call PrintNum
+	jr .place_accuracy
+.no_power
+	ld de, .NA
+	call PlaceString
+
+.place_accuracy
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_ACC
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	; convert internal accuracy representation to a number
+	; between 0-100
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld [hMultiplicand], a
+	ld a, 100
+	ld [hMultiplier], a
+	call Multiply
+	ld a, [hProduct]
+	; don't increase a for 0% moves
+	and a
+	jr z, .no_inc
+	inc a
+.no_inc
+	hlcoord 6, 10
+	cp 2
+	jr c, .no_acc
+	ld [wd265], a
+	ld de, wd265
+	lb bc, 1, 3
+	call PrintNum
+	jr .icons
+.no_acc
+	ld de, .NA
+	call PlaceString
+
+.icons
+	ld hl, CategoryIconGFX
+	ld bc, 2 tiles
+	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
+	call AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, VTiles2 tile $6f
+	lb bc, BANK(CategoryIconGFX), 2
+	call Request2bpp
+	hlcoord 1, 9
+	ld [hl], $6f
+	inc hl
+	ld [hl], $70
+
 	ld a, [wPlayerMoveStruct + MOVE_ANIM]
 	ld b, a
-	hlcoord 2, 10
-	predef PrintMoveType
+	farcall GetMoveTypeIndex
+	ld a, b
+	ld hl, TypeIconGFX
+	ld bc, 4 tiles
+	call AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, VTiles2 tile $5c
+	lb bc, BANK(TypeIconGFX), 4
+	call Request2bpp
+	hlcoord 3, 9
+	ld [hl], $5c
+	inc hl
+	ld [hl], $5d
+	inc hl
+	ld [hl], $5e
+	inc hl
+	ld [hl], $5f
+
+; TODO: properly load the category+type palettes, and restore palette 0
+; when the move dialog is dismissed
+;	farcall LoadCategoryAndTypePalettes
 
 .done
 	ret
@@ -5955,17 +6032,20 @@ MoveInfoBox: ; 3e6c8
 
 .Disabled:
 	db "Disabled!@"
-.Phys:
-	db "Physical/@"
-.Spcl:
-	db "Special/@"
-.Stat:
-	db "Status/@"
+.PowAcc:
+	db "   <BOLDP>/   <PCT>@"
+.NA:
+	db "---@"
 ; 3e75f
 
 
 .PrintPP: ; 3e75f
-	hlcoord 5, 11
+	hlcoord 2, 11
+rept 2
+	ld [hl], "<BOLDP>"
+	inc hl
+endr
+	inc hl
 	push hl
 	ld de, StringBuffer1
 	lb bc, 1, 2

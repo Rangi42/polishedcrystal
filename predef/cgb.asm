@@ -216,6 +216,18 @@ StatusIconPalettes:
 	RGB 25, 00, 00
 	RGB 25, 00, 00
 
+LoadCategoryAndTypePalettes:
+	hlcoord 1, 9, AttrMap
+	lb bc, 1, 2
+	ld a, $5
+	call FillBoxCGB
+	hlcoord 3, 9, AttrMap
+	lb bc, 1, 4
+	ld a, $6
+	call FillBoxCGB
+	call ApplyAttrMap
+	ret
+
 InitPartyMenuBGPal7: ; 8e85
 	ld hl, Palette_b311
 	ld de, UnknBGPals + 7 palettes

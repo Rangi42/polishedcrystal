@@ -171,7 +171,7 @@ LoadFrame: ; fb4cc
 LoadBattleFontsHPBar: ; fb4f2
 	ld de, FontBattleExtra
 	ld hl, VTiles2 tile $60
-	lb bc, BANK(FontBattleExtra), $c
+	lb bc, BANK(FontBattleExtra), 12
 	call Get2bpp_2
 	ld hl, VTiles2 tile $70
 	ld de, FontBattleExtra + $10 * LEN_2BPP_TILE
