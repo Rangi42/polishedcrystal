@@ -218,12 +218,8 @@ StatusIconPalettes:
 
 LoadCategoryAndTypePalettes:
 	hlcoord 1, 9, AttrMap
-	lb bc, 1, 2
-	ld a, $5
-	call FillBoxCGB
-	hlcoord 3, 9, AttrMap
-	lb bc, 1, 4
-	ld a, $6
+	lb bc, 1, 6
+	ld a, $7
 	call FillBoxCGB
 	call ApplyAttrMap
 	ret

@@ -586,7 +586,7 @@ ParsePlayerAction: ; 3c434
 	call MoveSelectionScreen
 
 ; TODO: restore palette after move dialog closes
-;	farcall RestoreBackSpritePalette
+	farcall RestoreBackSpritePalette
 
 	push af
 	call Call_LoadTempTileMapToTileMap
@@ -9657,8 +9657,18 @@ BattleStartMessage: ; 3fc8b
 	ld hl, PokemonFellFromTreeText
 	cp BATTLETYPE_TREE
 	jr z, .PlaceBattleStartText
-	ld hl, WildCelebiAppearedText
+	ld hl, LegendaryAppearedText
+	cp BATTLETYPE_ROAMING
+	jr z, .PlaceBattleStartText
 	cp BATTLETYPE_CELEBI
+	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_SUICUNE
+	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_HO_OH
+	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_LUGIA
+	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_KANTO_LEGEND
 	jr z, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 
