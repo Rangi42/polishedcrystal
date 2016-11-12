@@ -4528,7 +4528,7 @@ endr
 
 GetStatusConditionIndex:
 ; de points to status, e.g. from a party_struct or battle_struct
-; return the status condition index in 'a'
+; return the status condition index in b
 	push de
 	inc de
 	inc de

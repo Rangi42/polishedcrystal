@@ -172,11 +172,13 @@ LoadPlayerStatusIconPalette:
 	ld a, b
 	ld c, a
 	ld b, 0
-rept 4
+rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 5 palettes
-	call LoadPalette_White_Col1_Col2_Black
+	ld de, UnknBGPals + 5 palettes + 2
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
 	ret
 
 LoadEnemyStatusIconPalette:
@@ -186,51 +188,86 @@ LoadEnemyStatusIconPalette:
 	ld a, b
 	ld c, a
 	ld b, 0
-rept 4
+rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6 palettes
-	call LoadPalette_White_Col1_Col2_Black
+	ld de, UnknBGPals + 6 palettes + 2
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
 	ret
 
 StatusIconPalettes:
 ; OK
 	RGB 31, 31, 31
-	RGB 00, 00, 00
 ; PSN
-	RGB 26, 11, 23
 	RGB 26, 11, 23
 ; PAR
 	RGB 24, 23, 05
-	RGB 24, 23, 05
 ; SLP
-	RGB 20, 20, 16
 	RGB 20, 20, 16
 ; BRN
 	RGB 31, 13, 09
-	RGB 31, 13, 09
 ; FRZ
-	RGB 15, 22, 28
 	RGB 15, 22, 28
 ; FNT
 	RGB 25, 00, 00
-	RGB 25, 00, 00
 
 LoadCategoryAndTypePalettes:
-	hlcoord 1, 9, AttrMap
-	lb bc, 1, 6
-	ld a, $7
-	call FillBoxCGB
-	call ApplyAttrMap
+	; TODO
 	ret
 
 RestoreBackSpritePalette:
-	hlcoord 1, 9, AttrMap
-	lb bc, 1, 6
-	ld a, $0
-	call FillBoxCGB
-	call ApplyAttrMap
+	; TODO
 	ret
+
+CategoryIconPalettes:
+; PHYSICAL
+	RGB 27, 04, 02
+; SPECIAL
+	RGB 00, 14, 29
+; STATUS
+	RGB 21, 21, 14
+
+TypeIconPalettes:
+; NORMAL
+	RGB 21, 21, 14
+; FIGHTING
+	RGB 27, 04, 02
+; FLYING
+	RGB 22, 17, 30
+; POISON
+	RGB 22, 07, 19
+; GROUND
+	RGB 29, 24, 12
+; ROCK
+	RGB 24, 20, 07
+; BUG
+	RGB 21, 23, 06
+; GHOST
+	RGB 15, 11, 18
+; STEEL
+	RGB 23, 23, 25
+; FIRE
+	RGB 31, 15, 04
+; WATER
+	RGB 11, 18, 30
+; GRASS
+	RGB 11, 25, 11
+; ELECTRIC
+	RGB 31, 24, 06
+; PSYCHIC
+	RGB 31, 09, 15
+; ICE
+	RGB 16, 27, 27
+; DRAGON
+	RGB 15, 07, 31
+; DARK
+	RGB 15, 11, 09
+; FAIRY
+	RGB 31, 20, 29
+; UNKNOWN T
+	RGB 13, 19, 19
 
 InitPartyMenuBGPal7: ; 8e85
 	ld hl, Palette_b311
