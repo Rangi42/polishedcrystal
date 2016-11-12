@@ -146,7 +146,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 4, 10
 	ld a, $7
 	call FillBoxCGB
-	call LoadCategoryAndTypePalettes
+	call LoadBattleCategoryAndTypePalettes
 
 .ok
 	hlcoord 10, 0, AttrMap
@@ -234,7 +234,7 @@ StatusIconPalettes:
 ; FNT
 	RGB 25, 00, 00
 
-LoadCategoryAndTypePalettes:
+LoadBattleCategoryAndTypePalettes:
 	ld hl, CategoryIconPalettes
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld c, a
@@ -1106,23 +1106,47 @@ _CGB_TrainerCard2:
 	ret
 
 _CGB0e: ; 9373
-	ld de, UnknBGPals
-	ld a, $10
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
-	ld a, [PlayerHPPal]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld bc, Palettes_a8be
+	hlcoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld a, $7
+	call ByteFill
+
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_CATEGORY
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld hl, CategoryIconPalettes
+	ld c, a
+	ld b, 0
+rept 2
 	add hl, bc
-	call LoadPalette_White_Col1_Col2_Black
-	call WipeAttrMap
-	hlcoord 11, 1, AttrMap
-	lb bc, 2, 9
-	ld a, $1
-	call FillBoxCGB
+endr
+	ld de, UnknBGPals + 7 palettes + 2
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
+
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_TYPE
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld hl, TypeIconPalettes
+	ld c, a
+	ld b, 0
+rept 2
+	add hl, bc
+endr
+	ld de, UnknBGPals + 7 palettes + 4
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
+
 	call ApplyAttrMap
 	call ApplyPals
 	ld a, $1

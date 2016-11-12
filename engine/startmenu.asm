@@ -1493,10 +1493,6 @@ MoveScreenLoop: ; 12fd5
 	jp .joy_loop
 
 .moving_move
-	ld a, " "
-	hlcoord 1, 11
-	ld bc, 5
-	call ByteFill
 	hlcoord 1, 12
 	lb bc, 5, SCREEN_WIDTH - 2
 	call ClearBox
@@ -1722,8 +1718,6 @@ SetUpMoveScreenBG: ; 13172
 	call PrintLevel
 	ld hl, PlayerHPPal
 	call SetHPPal
-	ld b, SCGB_0E
-	call GetSGBLayout
 	hlcoord 16, 0
 	lb bc, 1, 3
 	jp ClearBox
@@ -1777,18 +1771,12 @@ PlaceMoveData: ; 13256
 	xor a
 	ld [hBGMapMode], a
 
-	hlcoord 0, 10
-	ld de, String_TopFrame
-	call PlaceString
+	ld b, SCGB_0E
+	call GetSGBLayout
 
-	hlcoord 10, 12
-	ld de, String_PwAc
+	hlcoord 7, 12
+	ld de, String_PowAcc
 	call PlaceString
-
-	ld a, [CurMove]
-	ld b, a
-	hlcoord 1, 12
-	predef PrintMoveType
 
 	ld a, [CurMove]
 	dec a
@@ -1797,20 +1785,42 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 0, 11
-	cp PHYSICAL
-	jr z, .physical
-	cp SPECIAL
-	jr z, .special
-	ld de, String_Stat
-	jp .place_category
-.physical
-	ld de, String_Phys
-	jp .place_category
-.special
-	ld de, String_Spcl
-.place_category
-	call PlaceString
+	ld hl, CategoryIconGFX
+	ld bc, 2 tiles
+	call AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, VTiles2 tile $6f
+	lb bc, BANK(CategoryIconGFX), 2
+	call Request2bpp
+	hlcoord 1, 12
+	ld [hl], $6f
+	inc hl
+	ld [hl], $70
+
+	ld a, [CurMove]
+	dec a
+	ld hl, Moves + MOVE_TYPE
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld hl, TypeIconGFX
+	ld bc, 4 tiles
+	call AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, VTiles2 tile $5c
+	lb bc, BANK(TypeIconGFX), 4
+	call Request2bpp
+	hlcoord 3, 12
+	ld [hl], $5c
+	inc hl
+	ld [hl], $5d
+	inc hl
+	ld [hl], $5e
+	inc hl
+	ld [hl], $5f
 
 	ld a, [CurMove]
 	dec a
@@ -1819,7 +1829,7 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 10, 12
+	hlcoord 8, 12
 	cp 2
 	jr c, .no_power
 	ld [wd265], a
@@ -1851,7 +1861,7 @@ PlaceMoveData: ; 13256
 	jr z, .no_inc
 	inc a
 .no_inc
-	hlcoord 15, 12
+	hlcoord 13, 12
 	cp 2
 	jr c, .no_acc
 	ld [wd265], a
@@ -1871,21 +1881,11 @@ PlaceMoveData: ; 13256
 	ret
 ; 132ba
 
-String_TopFrame: ; 132ba
-	db "┌─────┐@"
-; 132ca
 String_na: ; 132cf
 	db "---@"
 
-String_PwAc:
-	db "   <BOLDP>/   <PCT>@"
-
-String_Phys:
-	db "│Phys/└@"
-String_Spcl:
-	db "│Spcl/└@"
-String_Stat:
-	db "│Stat/└@"
+String_PowAcc:
+	db "/   <BOLDP>/   <PCT>@"
 
 Function132d3: ; 132d3
 	call Function132da

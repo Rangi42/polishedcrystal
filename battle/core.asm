@@ -6004,13 +6004,9 @@ MoveInfoBox: ; 3e6c8
 	inc hl
 	ld [hl], $70
 
-	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-;	ld a, [wPlayerMoveStruct + MOVE_ANIM]
-;	ld b, a
-;	farcall GetMoveTypeIndex
-;	ld a, b
 	ld hl, TypeIconGFX
 	ld bc, 4 tiles
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	call AddNTimes
 	ld d, h
 	ld e, l

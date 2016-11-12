@@ -24,7 +24,7 @@ PrintMonTypes: ; 5090d
 
 .Print:
 	ld b, a
-	jr PrintType
+	jr .PrintType
 
 .hide_type_2
 	; Erase any type name that was here before.
@@ -39,31 +39,7 @@ PrintMonTypes: ; 5090d
 	jp ByteFill
 ; 5093a
 
-
-GetMoveTypeIndex:
-; Return the type of move b at b.
-
-	push hl
-	ld a, b
-	dec a
-	ld bc, MOVE_LENGTH
-	ld hl, Moves
-	call AddNTimes
-	ld de, StringBuffer1
-	ld a, BANK(Moves)
-	call FarCopyBytes
-	ld a, [StringBuffer1 + MOVE_TYPE]
-	pop hl
-	ld b, a
-	ret
-
-
-PrintMoveType: ; 5093a
-; Print the type of move b at hl.
-
-	call GetMoveTypeIndex
-
-PrintType: ; 50953
+.PrintType: ; 50953
 ; Print type b at hl.
 
 	ld a, b
