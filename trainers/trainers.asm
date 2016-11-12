@@ -5369,7 +5369,7 @@ HikerGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 64, GOLEM
+	db 24, GRAVELER
 
 	db $ff ; end
 

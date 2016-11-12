@@ -68,6 +68,7 @@ Predef_LoadSGBLayoutCGB: ; 8d59
 ; 8db8
 
 _CGB_BattleGrayscale: ; 8db8
+	push bc
 	ld hl, PalPacket_9c66 + 1
 	ld de, UnknBGPals
 	ld c, $4
@@ -83,6 +84,8 @@ _CGB_BattleGrayscale: ; 8db8
 	jr _CGB_FinishBattleScreenLayout
 
 _CGB_BattleColors: ; 8ddb
+_CGB_Pokepic:
+	push bc
 	ld de, UnknBGPals
 	call GetBattlemonBackpicPalettePointer
 	push hl
@@ -124,10 +127,28 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $2
 	call ByteFill
+
+	pop bc
+	ld a, SCGB_POKEPIC
+	cp b
+	jr z, .move_info_box
 	hlcoord 0, 4, AttrMap
 	lb bc, 8, 10
 	ld a, $0
 	call FillBoxCGB
+	jr .ok
+.move_info_box
+	hlcoord 0, 4, AttrMap
+	lb bc, 4, 10
+	ld a, $0
+	call FillBoxCGB
+	hlcoord 0, 8, AttrMap
+	lb bc, 4, 10
+	ld a, $7
+	call FillBoxCGB
+	call LoadCategoryAndTypePalettes
+
+.ok
 	hlcoord 10, 0, AttrMap
 	lb bc, 7, 10
 	ld a, $1
@@ -214,11 +235,29 @@ StatusIconPalettes:
 	RGB 25, 00, 00
 
 LoadCategoryAndTypePalettes:
-	; TODO
-	ret
+	ld hl, CategoryIconPalettes
+	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
+	ld c, a
+	ld b, 0
+rept 2
+	add hl, bc
+endr
+	ld de, UnknBGPals + 7 palettes + 2
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
 
-RestoreBackSpritePalette:
-	; TODO
+	ld hl, TypeIconPalettes
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+	ld c, a
+	ld b, 0
+rept 2
+	add hl, bc
+endr
+	ld de, UnknBGPals + 7 palettes + 4
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
 	ret
 
 CategoryIconPalettes:
@@ -1228,41 +1267,6 @@ _CGB_PackPals: ; 93d3
 	RGB 07, 19, 07
 	RGB 00, 00, 00
 ; 9499
-
-_CGB_Pokepic: ; 9499
-	call _CGB_MapPals
-	ld de, SCREEN_WIDTH
-	hlcoord 0, 0, AttrMap
-	ld a, [wMenuBorderTopCoord]
-.loop
-	and a
-	jr z, .found_top
-	dec a
-	add hl, de
-	jr .loop
-
-.found_top
-	ld a, [wMenuBorderLeftCoord]
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld a, [wMenuBorderTopCoord]
-	ld b, a
-	ld a, [wMenuBorderBottomCoord]
-	inc a
-	sub b
-	ld b, a
-	ld a, [wMenuBorderLeftCoord]
-	ld c, a
-	ld a, [wMenuBorderRightCoord]
-	sub c
-	inc a
-	ld c, a
-	ld a, $0
-	call FillBoxCGB
-	call ApplyAttrMap
-	ret
-; 94d0
 
 _CGB13: ; 94d0
 	ld hl, PalPacket_9ba6 + 1

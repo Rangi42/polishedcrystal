@@ -54,7 +54,6 @@ GetMoveTypeIndex:
 	call FarCopyBytes
 	ld a, [StringBuffer1 + MOVE_TYPE]
 	pop hl
-
 	ld b, a
 	ret
 

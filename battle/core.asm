@@ -584,8 +584,10 @@ ParsePlayerAction: ; 3c434
 	inc a ; ACROBATICS
 	ld [FXAnimIDLo], a
 	call MoveSelectionScreen
-	farcall RestoreBackSpritePalette
 	push af
+	ld b, SCGB_BATTLE_COLORS
+	call GetSGBLayout
+	call SetPalettes
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 	ld a, [CurPlayerMove]
@@ -4939,7 +4941,7 @@ endr
 	farcall CheckShininess
 	jr nc, .not_own_shiny
 	ld a, "<SHINY>"
-	hlcoord 19, 8
+	hlcoord 18, 8
 	ld [hl], a
 
 .not_own_shiny
@@ -6002,10 +6004,11 @@ MoveInfoBox: ; 3e6c8
 	inc hl
 	ld [hl], $70
 
-	ld a, [wPlayerMoveStruct + MOVE_ANIM]
-	ld b, a
-	farcall GetMoveTypeIndex
-	ld a, b
+	ld a, [wPlayerMoveStruct + MOVE_TYPE]
+;	ld a, [wPlayerMoveStruct + MOVE_ANIM]
+;	ld b, a
+;	farcall GetMoveTypeIndex
+;	ld a, b
 	ld hl, TypeIconGFX
 	ld bc, 4 tiles
 	call AddNTimes
@@ -6023,7 +6026,9 @@ MoveInfoBox: ; 3e6c8
 	inc hl
 	ld [hl], $5f
 
-	farcall LoadCategoryAndTypePalettes
+	ld b, SCGB_POKEPIC
+	call GetSGBLayout
+	call SetPalettes
 
 .done
 	ret
