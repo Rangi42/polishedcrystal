@@ -4203,12 +4203,6 @@ INCLUDE "text/natures.asm"
 
 DrawPlayerHP: ; 50b0a
 	ld a, $1
-	jr DrawHP
-
-DrawEnemyHP: ; 50b0e
-	ld a, $2
-
-DrawHP: ; 50b10
 	ld [wWhichHPBar], a
 	push hl
 	push bc

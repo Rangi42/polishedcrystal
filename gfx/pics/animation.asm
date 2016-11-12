@@ -1,23 +1,5 @@
 ; Pic animation arrangement.
 
-
-AnimateMon_Slow_Normal: ; d0000
-	hlcoord 12, 0
-	ld a, [wBattleMode]
-	cp WILD_BATTLE
-	jr z, .wild
-	ld e, ANIM_MON_SLOW
-	ld d, $0
-	call AnimateFrontpic
-	ret
-
-.wild
-	ld e, ANIM_MON_NORMAL
-	ld d, $0
-	call AnimateFrontpic
-	ret
-; d001a
-
 AnimateMon_Menu: ; d001a
 	ld e, ANIM_MON_MENU
 	ld d, $0
@@ -1191,10 +1173,6 @@ PokeAnim_GetSpeciesOrVariant: ; d065c
 	ld a, [wPokeAnimVariant]
 	ret
 ; d0669
-
-Functiond0669: ; d0669 Predef 48
-	ld a, $1
-	ld [wBoxAlignment], a
 
 HOF_AnimateFrontpic: ; d066e Predef 49
 	call AnimateMon_CheckIfPokemon

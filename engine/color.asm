@@ -16,51 +16,6 @@ CheckShininess:
 	and a
 	ret
 
-CheckContestMon:
-; Check a mon's DVs at hl in the bug catching contest.
-; Return carry if its DVs are good enough to place in the contest.
-
-; HP
-	ld a, [hl]
-	cp 10 << 4
-	jr c, .Bad
-
-; Attack
-	ld a, [hli]
-	and $f
-	cp 10
-	jr c, .Bad
-
-; Defense
-	ld a, [hl]
-	cp 10 << 4
-	jr c, .Bad
-
-; Speed
-	ld a, [hli]
-	and $f
-	cp 10
-	jr c, .Bad
-
-; Special Attack
-	ld a, [hl]
-	cp 10 << 4
-	jr c, .Bad
-
-; Special Defense
-	ld a, [hl]
-	and $f
-	cp 10
-	jr c, .Bad
-
-.Good:
-	scf
-	ret
-
-.Bad:
-	and a
-	ret
-
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	call InitPartyMenuOBPals
