@@ -42,7 +42,7 @@ Predef_LoadSGBLayout: ; 864c
 	dw .SGB0f
 	dw .SGB_PokedexSearchOption
 	dw .SGB11
-	dw .SGB_Pokepic
+	dw .SGB_MoveInfo
 	dw .SGB13
 	dw .SGB_PackPals
 	dw .SGB_TrainerCard
@@ -65,7 +65,7 @@ Predef_LoadSGBLayout: ; 864c
 ; 86b4
 
 .SGB_BattleColors: ; 86b4
-.SGB_Pokepic: ; 8928
+.SGB_MoveInfo: ; 8928
 	ld hl, BlkPacket_9aa6
 	call Function9809
 

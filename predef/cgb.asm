@@ -51,7 +51,7 @@ Predef_LoadSGBLayoutCGB: ; 8d59
 	dw _CGB0f
 	dw _CGB_PokedexSearchOption
 	dw _CGB11
-	dw _CGB_Pokepic
+	dw _CGB_MoveInfo
 	dw _CGB13
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
@@ -84,7 +84,7 @@ _CGB_BattleGrayscale: ; 8db8
 	jr _CGB_FinishBattleScreenLayout
 
 _CGB_BattleColors: ; 8ddb
-_CGB_Pokepic:
+_CGB_MoveInfo:
 	push bc
 	ld de, UnknBGPals
 	call GetBattlemonBackpicPalettePointer
@@ -129,7 +129,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	call ByteFill
 
 	pop bc
-	ld a, SCGB_POKEPIC
+	ld a, SCGB_MOVE_INFO
 	cp b
 	jr z, .move_info_box
 	hlcoord 0, 4, AttrMap

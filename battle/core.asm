@@ -6026,7 +6026,7 @@ MoveInfoBox: ; 3e6c8
 	inc hl
 	ld [hl], $5f
 
-	ld b, SCGB_POKEPIC
+	ld b, SCGB_MOVE_INFO
 	call GetSGBLayout
 	call SetPalettes
 
