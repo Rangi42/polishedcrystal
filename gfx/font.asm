@@ -198,6 +198,7 @@ LoadHPBar: ; fb50d
 ; fb53e
 
 LoadPlayerStatusIcon:
+	push de
 	ld de, BattleMonStatus
 	farcall GetStatusConditionIndex
 	ld a, b
@@ -236,9 +237,12 @@ LoadPlayerStatusIcon:
 	ld [hCGBPalUpdate], a
 	pop af
 	ld [rSVBK], a
+
+	pop de
 	ret
 
 LoadEnemyStatusIcon:
+	push de
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld a, b
@@ -277,6 +281,8 @@ LoadEnemyStatusIcon:
 	ld [hCGBPalUpdate], a
 	pop af
 	ld [rSVBK], a
+
+	pop de
 	ret
 
 Functionfb53e: ; fb53e
