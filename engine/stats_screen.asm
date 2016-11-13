@@ -1062,15 +1062,15 @@ Chara_DEF3:
 	next "endurance@"
 Chara_DEF4:
 	db   "Good"
-	next "perse-"
-	next "verance@"
+	next "persever-"
+	next "ance@"
 
 Chara_SPA0:
 	db   "Highly"
 	next "curious@"
 Chara_SPA1:
-	db   "Mis-"
-	next "chievous@"
+	db   "Mischiev-"
+	next "ous@"
 Chara_SPA2:
 	db   "Thoroughly"
 	next "cunning@"
