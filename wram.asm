@@ -2590,8 +2590,9 @@ wGoldenrodCityTrigger::                      ds 1
 wMystriStageTrigger::                        ds 1
 wRoute10NorthTrigger::                       ds 1
 wRoute22Trigger::                            ds 1
+wGiovannisCaveTrigger::                      ds 1
 
-	ds 19 ; extra space set aside
+	ds 18 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]

@@ -514,6 +514,7 @@ MAP_NONE   EQU 0
 	mapgroup QUIET_CAVE_B1F,                             18, 18 ;  6
 	mapgroup QUIET_CAVE_B2F,                             18, 18 ;  7
 	mapgroup QUIET_CAVE_B3F,                             18, 18 ;  8
+	mapgroup GIOVANNIS_CAVE,                              5,  5 ;  9
 
 	newgroup                                                    ; 28
 

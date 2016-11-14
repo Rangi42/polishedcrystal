@@ -260,3 +260,6 @@ Route9_BlockData:
 
 Route22_BlockData:
 	INCBIN "maps/Route22.blk"
+
+GiovannisCave_BlockData:
+	INCBIN "maps/GiovannisCave.blk"

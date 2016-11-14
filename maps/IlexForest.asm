@@ -582,8 +582,12 @@ MapIlexForestSignpost4Script:
 	pause 30
 	disappear ILEXFOREST_CELEBI
 	disappear ILEXFOREST_LYRA
+	clearevent EVENT_ROUTE_22_CELEBI
+	clearevent EVENT_ROUTE_22_LYRA
+	clearevent EVENT_ROUTE_22_SILVER
+	clearevent EVENT_ROUTE_22_GIOVANNI
 	domaptrigger ROUTE_22, $1
-	warp ROUTE_22, $1f, $9
+	warp ROUTE_22, $20, $9
 ;	setevent EVENT_TIME_TRAVEL_FINISHED
 	end
 

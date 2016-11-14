@@ -97,5 +97,6 @@ ENDM
 	trigger_def MYSTRI_STAGE,                           wMystriStageTrigger
 	trigger_def ROUTE_10_NORTH,                         wRoute10NorthTrigger
 	trigger_def ROUTE_22,                               wRoute22Trigger
+	trigger_def GIOVANNIS_CAVE,                         wGiovannisCaveTrigger
 	db -1
 ; 4d15b

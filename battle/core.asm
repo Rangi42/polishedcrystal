@@ -1046,7 +1046,7 @@ HandleResidualDamage:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << PSN | 1 << BRN
-	jr z, .did_psn_brn
+	jp z, .did_psn_brn
 	ld hl, HurtByBurnText
 	ld de, ANIM_BRN
 	and 1 << PSN
@@ -1064,7 +1064,7 @@ HandleResidualDamage:
 	jr nz, .got_anim
 	; check if we are at full HP
 	call CheckFullHP
-	jr z, .did_psn_brn
+	jp z, .did_psn_brn
 	ld hl, PoisonHealText
 	ld de, ANIM_PSN
 	push de
@@ -1075,7 +1075,7 @@ HandleResidualDamage:
 	call Call_PlayBattleAnim_OnlyIfVisible
 	call GetEighthMaxHP
 	call RestoreHP
-	jr .did_psn_brn
+	jp .did_psn_brn
 .got_anim
 
 	push de
