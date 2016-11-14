@@ -73,49 +73,39 @@ ReadDVs:
 	ld a, MON_DVS
 	call GetPartyParamLocation
 	ld a, [hli]
+	ld c, a
+	ld a, [hli]
 	ld d, a
 	ld a, [hl]
 	ld e, a
 	ld hl, wd002
 ; HP
-	ld a, d
-	and $10
-	srl a
-	ld b, a
-	ld a, d
-	and $1
-	add a
-	add a
-	or b
-	ld b, a
-	ld a, e
-	and $10
+	ld a, c
 	swap a
-	add a
-	or b
-	ld b, a
-	ld a, e
-	and $1
-	or b
+	and $f
 	ld [hli], a
 ; Attack
-	ld a, d
-	and $f0
-	swap a
+	ld a, c
+	and $f
 	ld [hli], a
 ; Defense
 	ld a, d
+	swap a
 	and $f
 	ld [hli], a
 ; Speed
-	ld a, e
-	and $f0
-	swap a
+	ld a, d
+	and $f
 	ld [hli], a
-; Special
+; Special Attack
+	ld a, e
+	swap a
+	and $f
+	ld [hli], a
+; Special Defense
 	ld a, e
 	and $f
-	ld [hl], a
+	ld [hli], a
 	ret
 
 
@@ -173,7 +163,7 @@ JudgePokemon:
 GetDVTotal:
 	ld hl, wd002
 	ld b, 0
-	ld c, 5
+	ld c, 6
 .loop
 	ld a, [hli]
 	add b
@@ -185,20 +175,20 @@ GetDVTotal:
 
 JudgeDVTotal:
 	ld a, b
-	; max dv total is 5 * 15 = 75
+	; max dv total is 6 * 15 = 90
 	and a
 	ld hl, .AbsoluteWorst
 	jr z, .okay
-	cp 20
+	cp 25
 	ld hl, .Poor
 	jr c, .okay
-	cp 35
+	cp 40
 	ld hl, .Unremarkable
 	jr c, .okay
-	cp 50
+	cp 60
 	ld hl, .Decent
 	jr c, .okay
-	cp 75
+	cp 90
 	ld hl, .Strong
 	jr c, .okay
 	ld hl, .Perfect
@@ -252,7 +242,7 @@ JudgeDVTotal:
 GetMaxDV:
 	ld hl, wd002
 	ld b, 0
-	ld c, 5
+	ld c, 6
 .loop
 	ld a, [hli]
 	cp b
@@ -263,7 +253,7 @@ GetMaxDV:
 	jr nz, .loop
 	; We found the max value, now let's get which ones are equal.
 	ld hl, wd002
-	ld c, 5
+	ld c, 6
 	ld d, 0
 .loop2
 	srl d
@@ -285,12 +275,12 @@ InformMaxDVs:
 	jr nc, .next
 	push de
 	push bc
-	ld a, 5
+	ld a, 6
 	sub c
 	add a
 	ld e, a
 	ld d, 0
-	ld hl, .StatNames
+	ld hl, StatNames
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -323,29 +313,13 @@ InformMaxDVs:
 	jr nz, .loop
 	ret
 
-.StatNames
-	dw .hp
-	dw .atk
-	dw .def
-	dw .spd
-	dw .spc
-.hp
-	db "HP@"
-.atk
-	db "Attack@"
-.def
-	db "Defense@"
-.spd
-	db "Speed@"
-.spc
-	db "Special@"
-
 .WhichStatTexts
 	dw .FirstStatText
 	dw .SecondStatText
 	dw .ThirdStatText
 	dw .FourthStatText
 	dw .FifthStatText
+	dw .SixthStatText
 
 .FirstStatText
 	text "Its greatest po-"
@@ -377,6 +351,13 @@ InformMaxDVs:
 	done
 
 .FifthStatText
+	text "Its @"
+	text_from_ram StringBuffer1
+	text " is"
+	line "also good."
+	done
+
+.SixthStatText
 	text "Well, its @"
 	text_from_ram StringBuffer1
 	text ""
@@ -430,7 +411,7 @@ JudgeMaxDV:
 GetMinDV:
 	; Find DVs equal to zero
 	ld hl, wd002
-	ld c, 5
+	ld c, 6
 	ld d, 0
 .loop
 	srl d
@@ -452,12 +433,12 @@ InformMinDVs:
 	jr nc, .next
 	push de
 	push bc
-	ld a, 5
+	ld a, 6
 	sub c
 	add a
 	ld e, a
 	ld d, 0
-	ld hl, .StatNames
+	ld hl, StatNames
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -490,29 +471,13 @@ InformMinDVs:
 	jr nz, .loop
 	ret
 
-.StatNames
-	dw .hp
-	dw .atk
-	dw .def
-	dw .spd
-	dw .spc
-.hp
-	db "HP@"
-.atk
-	db "Attack@"
-.def
-	db "Defense@"
-.spd
-	db "Speed@"
-.spc
-	db "Special@"
-
 .WhichStatTexts
 	dw .FirstStatText
 	dw .SecondStatText
 	dw .ThirdStatText
 	dw .FourthStatText
 	dw .FifthStatText
+	dw .SixthStatText
 
 .FirstStatText
 	text "But its @"
@@ -547,6 +512,14 @@ InformMinDVs:
 	done
 
 .FifthStatText
+	text "Its @"
+	text_from_ram StringBuffer1
+	text ""
+	line "is pretty disap-"
+	cont "pointing, too."
+	done
+
+.SixthStatText
 	text "Well, its @"
 	text_from_ram StringBuffer1
 	text ""
@@ -556,27 +529,34 @@ InformMinDVs:
 	done
 
 
+StatNames:
+	dw .hp
+	dw .atk
+	dw .def
+	dw .spd
+	dw .sat
+	dw .sdf
+.hp
+	db "HP@"
+.atk
+	db "Attack@"
+.def
+	db "Defense@"
+.spd
+	db "Speed@"
+.sat
+	db "Spcl.Atk@"
+.sdf
+	db "Spcl.Def@"
+
+
 GetCaughtGender: ; 4f301
 	ld hl, MON_CAUGHTGENDER
 	add hl, bc
 
 	ld a, [hl]
-	and $7f
-	jr z, .genderless
-	cp $7f
-	jr z, .genderless
-
-	ld a, [hl]
-	and $80
-	jr nz, .male
-	ld c, 1
-	ret
-
-.male
-	ld c, 2
-	ret
-
-.genderless
-	ld c, 0
+	and CAUGHTGENDER_MASK
+	rl a
+	ld c, a
 	ret
 ; 4f31c
