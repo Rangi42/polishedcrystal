@@ -1,9 +1,19 @@
 Route22_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 0
+
+.Trigger0:
+	end
+
+.Trigger1:
+	end
 
 VictoryRoadEntranceSign:
 	jumptext VictoryRoadEntranceSignText

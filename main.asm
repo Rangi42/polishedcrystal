@@ -1621,6 +1621,9 @@ PlayBattleMusic: ; 2ee6c
 	cp BATTLETYPE_LUGIA
 	ld de, MUSIC_LUGIA_BATTLE_HGSS
 	jp z, .done
+	cp BATTLETYPE_CELEBI
+	ld de, MUSIC_SUICUNE_BATTLE
+	jp z, .done
 	cp BATTLETYPE_KANTO_LEGEND
 	ld de, MUSIC_KANTO_LEGEND_BATTLE_XY
 	jp z, .done

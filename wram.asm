@@ -2589,8 +2589,9 @@ wBellchimeTrailTrigger::                     ds 1
 wGoldenrodCityTrigger::                      ds 1
 wMystriStageTrigger::                        ds 1
 wRoute10NorthTrigger::                       ds 1
+wRoute22Trigger::                            ds 1
 
-	ds 20 ; extra space set aside
+	ds 19 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]

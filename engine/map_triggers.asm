@@ -96,5 +96,6 @@ ENDM
 	trigger_def GOLDENROD_CITY,                         wGoldenrodCityTrigger
 	trigger_def MYSTRI_STAGE,                           wMystriStageTrigger
 	trigger_def ROUTE_10_NORTH,                         wRoute10NorthTrigger
+	trigger_def ROUTE_22,                               wRoute22Trigger
 	db -1
 ; 4d15b
