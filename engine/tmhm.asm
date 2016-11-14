@@ -96,7 +96,7 @@ TMHMMoves: ; 1167a
 	db ROCK_SLIDE   ; TM48 (Brock)
 	db FURY_CUTTER  ; TM49 (Bugsy)
 	db ROCK_SMASH   ; TM50 (Route 36)
-	db LEECH_LIFE   ; TM51 (TODO: Yellow Forest)
+	db LEECH_LIFE   ; TM51 (Yellow Forest)
 	db FOCUS_BLAST  ; TM52 (Quiet Cave)
 	db ENERGY_BALL  ; TM53 (Olivine Lighthouse)
 	db FALSE_SWIPE  ; TM54 (Ilex Forest Gate)
