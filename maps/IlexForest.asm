@@ -1,5 +1,4 @@
 const_value set 2
-	const ILEXFOREST_CELEBI
 	const ILEXFOREST_FARFETCHD
 	const ILEXFOREST_YOUNGSTER1
 	const ILEXFOREST_BLACK_BELT
@@ -11,6 +10,7 @@ const_value set 2
 	const ILEXFOREST_POKE_BALL2
 	const ILEXFOREST_POKE_BALL3
 	const ILEXFOREST_POKE_BALL4
+	const ILEXFOREST_CELEBI
 	const ILEXFOREST_LYRA
 
 IlexForest_MapScriptHeader:
@@ -541,6 +541,7 @@ MapIlexForestSignpost4Script:
 	applymovement ILEXFOREST_CELEBI, MovementData_CelebiHop
 	applymovement PLAYER, MovementData_PlayerFollowCelebi
 	waitsfx
+	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ILEXFOREST_LYRA
 	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraApproaches
@@ -549,7 +550,7 @@ MapIlexForestSignpost4Script:
 	writetext Text_IlexForestLyraHello
 	waitbutton
 	closetext
-	playmusic MUSIC_UNION_CAVE
+	special RestartMapMusic
 	pause 30
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
@@ -1197,7 +1198,6 @@ IlexForest_MapEventHeader:
 
 .PersonEvents:
 	db 13
-	person_event SPRITE_CELEBI, 24, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
 	person_event SPRITE_BIRD, 31, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	person_event SPRITE_YOUNGSTER, 28, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
 	person_event SPRITE_BLACK_BELT, 28, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
@@ -1209,4 +1209,5 @@ IlexForest_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 17, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestXAttack, EVENT_ILEX_FOREST_X_ATTACK
 	person_event SPRITE_POKE_BALL, 15, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestAntidote, EVENT_ILEX_FOREST_ANTIDOTE
 	person_event SPRITE_POKE_BALL, 1, 27, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestEther, EVENT_ILEX_FOREST_ETHER
+	person_event SPRITE_CELEBI, 24, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
 	person_event SPRITE_LYRA, 24, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_LYRA

@@ -28,6 +28,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
+* Destiny Bond's success chance halves every successive turn it's used (Gen VII)
 * Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 

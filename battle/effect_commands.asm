@@ -331,9 +331,9 @@ BattleCommand_CheckTurn: ; 34084
 	ld de, ANIM_CONFUSED
 	call FarPlayBattleAnimation
 
-	; 50% chance of hitting itself
+	; 33% chance of hitting itself (updated from 50% in Gen VII)
 	call BattleRandom
-	cp 1 + (50 percent)
+	cp 1 + (33 percent)
 	jr nc, .not_confused
 
 	; clear confusion-dependent substatus

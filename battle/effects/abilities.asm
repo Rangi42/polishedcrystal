@@ -620,7 +620,7 @@ WeakArmorAbility:
 	farcall BattleCommand_StatDownMessage
 	farcall BattleCommand_SwitchTurn
 	farcall ResetMiss
-	farcall BattleCommand_SpeedUp
+	farcall BattleCommand_SpeedUp2
 	ld a, [FailedMessage]
 	and a
 	jp nz, EnableAnimations
@@ -630,7 +630,7 @@ WeakArmorAbility:
 .failed_defensedown
 ; If we can still raise Speed, do that and show ability activation anyway
 	farcall ResetMiss
-	farcall BattleCommand_SpeedUp
+	farcall BattleCommand_SpeedUp2
 	ld a, [FailedMessage]
 	and a
 	jp nz, EnableAnimations

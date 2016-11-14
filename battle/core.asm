@@ -1085,7 +1085,17 @@ HandleResidualDamage:
 	xor a
 	ld [wNumHits], a
 	call Call_PlayBattleAnim_OnlyIfVisible
+
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and 1 << BRN
+	jr nz, .burn_damage_amount
 	call GetEighthMaxHP
+	jr .got_damage_amount
+.burn_damage_amount
+	; Burn does 1/16 damage as of Gen VII
+	call GetSixteenthMaxHP
+.got_damage_amount
 	ld de, PlayerToxicCount
 	ld a, [hBattleTurn]
 	and a

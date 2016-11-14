@@ -10,9 +10,14 @@ Route22_MapScriptHeader:
 	db 0
 
 .Trigger0:
+	priorityjump Route22CelebiEventScript
 	end
 
 .Trigger1:
+	end
+
+Route22CelebiEventScript:
+	dotrigger $0
 	end
 
 VictoryRoadEntranceSign:

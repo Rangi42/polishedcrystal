@@ -231,9 +231,12 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Thunder Wave has 90% accuracy.
    * Swagger has 85% accuracy.
    * Paralysis halves (not quarters) Speed.
+   * Burn does 1/16 (not 1/8) damage per turn.
+   * Confusion has a 33% chance (not 50%) to hit self.
    * Gengar has the ability Cursed Body. (Can also have Levitate in non-Faithful.)
    * Raikou, Entei, and Suicune have the hidden ability Inner Focus. (Faithful only.)
    * New item: Protect Pads (abbreviated "Protective Pads"). "Protect the holder from effects caused by making direct contact with the target."
+   * Paralysis halves Speed.
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Replace Twineedle with U-turn.
