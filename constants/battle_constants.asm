@@ -258,6 +258,7 @@ const_value SET 1
 	const BATTLETYPE_HO_OH
 	const BATTLETYPE_LUGIA
 	const BATTLETYPE_KANTO_LEGEND
+	const BATTLETYPE_GHOST
 
 ; battle variables
 	const_def

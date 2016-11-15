@@ -1358,3 +1358,13 @@ AngerPointMaximizedAttackText:
 	line "maximized Attack"
 	cont "with Anger Point!"
 	prompt
+
+ScaredText:
+	text "<USER> is too"
+	line "scared to move!"
+	prompt
+
+GetOutText:
+	text "Ghost: Get out…"
+	line "Get out…"
+	prompt

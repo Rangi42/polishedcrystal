@@ -564,6 +564,10 @@ CheckPlayerLockedIn: ; 3c410
 ; 3c434
 
 ParsePlayerAction: ; 3c434
+	ld a, [BattleType]
+	cp BATTLETYPE_GHOST
+	jp z, .lavender_ghost
+
 	call CheckPlayerLockedIn
 	jp c, .locked_in
 	ld hl, PlayerSubStatus2
@@ -654,8 +658,10 @@ ParsePlayerAction: ; 3c434
 	ld [wPlayerRageCounter], a
 	ld hl, PlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
+.lavender_ghost
 	xor a
 	ret
+
 ; 3c4df
 
 HandleEncore: ; 3c4df
@@ -3843,6 +3849,8 @@ TryToRunAwayFromBattle: ; 3d8b3
 	cp BATTLETYPE_DEBUG
 	jp z, .can_escape
 	cp BATTLETYPE_CONTEST
+	jp z, .can_escape
+	cp BATTLETYPE_GHOST
 	jp z, .can_escape
 	cp BATTLETYPE_TRAP
 	jp z, .cant_escape

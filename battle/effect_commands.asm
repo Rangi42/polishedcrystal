@@ -5,7 +5,13 @@ DoPlayerTurn: ; 34000
 	and a
 	ret nz
 
-	jr DoTurn
+	ld a, [BattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, DoTurn
+
+	ld hl, ScaredText
+	call StdBattleTextBox
+	ret
 
 ; 3400a
 
@@ -13,6 +19,15 @@ DoPlayerTurn: ; 34000
 DoEnemyTurn: ; 3400a
 	call SetEnemyTurn
 
+	ld a, [BattleType]
+	cp BATTLETYPE_GHOST
+	jr nz, .not_ghost
+
+	ld hl, GetOutText
+	call StdBattleTextBox
+	ret
+
+.not_ghost
 	ld a, [wLinkMode]
 	and a
 	jr z, DoTurn

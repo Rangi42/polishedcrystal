@@ -2008,6 +2008,10 @@ BattleType:: ; d230
 ; $0a force Item1
 ; $0b celebi
 ; $0c suicune
+; $0d ho-oh
+; $0e lugia
+; $0f kanto legend
+; $10 ghost
 	ds 1
 
 OtherTrainerID:: ; d231
