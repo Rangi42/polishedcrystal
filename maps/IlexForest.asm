@@ -580,6 +580,7 @@ MapIlexForestSignpost4Script:
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
 	pause 30
+	waitsfx
 	disappear ILEXFOREST_CELEBI
 	disappear ILEXFOREST_LYRA
 	clearevent EVENT_ROUTE_22_CELEBI

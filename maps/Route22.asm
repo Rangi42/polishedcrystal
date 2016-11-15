@@ -122,8 +122,10 @@ Route22CelebiEventScript:
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
 	pause 30
+	waitsfx
 	disappear ROUTE22_CELEBI
 	disappear ROUTE22_LYRA
+	clearevent EVENT_GIOVANNIS_CAVE_GIOVANNI
 	dotrigger $0
 	warp GIOVANNIS_CAVE, $5, $5
 	end
