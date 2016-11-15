@@ -100,7 +100,7 @@
 	db "<PKMN> Trainer@" ; MIRA
 	db "#Maniac@"        ; BILL
 	db "Collector@"      ; LAWRENCE
-	db "Rocket@"         ; GIOVANNI
+	db "Boss@"           ; GIOVANNI
 	db "Rock Hound@"     ; STEVEN
 	db "Researcher@"     ; CYNTHIA
 	db "TowerTycoon@"    ; TOWERTYCOON

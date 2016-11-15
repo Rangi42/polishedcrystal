@@ -72,17 +72,17 @@ endr
 .Movesets:
 .Moveset0:
 ; Dratini does not normally learn Extremespeed. This is a special gift.
-	db WRAP
+	db EXTREMESPEED
 	db THUNDER_WAVE
 	db TWISTER
-	db EXTREMESPEED
+	db DRAGON_RAGE
 	db 0
 .Moveset1:
 ; This is the normal moveset of a level 15 Dratini
-	db WRAP
 	db LEER
 	db THUNDER_WAVE
 	db TWISTER
+	db DRAGON_RAGE
 	db 0
 
 .GetNthPartyMon: ; 0x8b1ce

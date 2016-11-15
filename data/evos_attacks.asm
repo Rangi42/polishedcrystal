@@ -408,7 +408,7 @@ EkansEvosAttacks:
 	db 25, DISABLE ; Stockpile + Spit Up + Swallow → egg move
 	db 28, PURSUIT ; Acid Spray → egg move
 	db 35, POISON_JAB ; Mud Bomb → TM move
-	db 36, SLUDGE_BOMB ; Gastro Acid → TM move
+	db 36, LEECH_LIFE ; Gastro Acid → TM move
 	db 38, IRON_TAIL ; Belch → TM move
 	db 41, HAZE
 	db 44, SCARY_FACE ; Coil → egg move
@@ -428,7 +428,7 @@ ArbokEvosAttacks:
 	db 27, DISABLE ; Stockpile + Spit Up + Swallow → egg move
 	db 32, PURSUIT ; Acid Spray → egg move
 	db 39, POISON_JAB ; Mud Bomb → TM move
-	db 44, SLUDGE_BOMB ; Gastro Acid → TM move
+	db 44, LEECH_LIFE ; Gastro Acid → TM move
 	db 48, IRON_TAIL ; Belch → TM move
 	db 51, HAZE
 	db 56, SCARY_FACE ; Coil → egg move
@@ -2643,35 +2643,34 @@ KabutoEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, HARDEN
-	db 5, SAND_ATTACK ; Absorb → Sand Attack
-	db 10, ABSORB ; Leer → Absorb
-	db 15, ROCK_THROW ; Mud Shot → Rock Throw (event move)
-	db 20, LEER ; Sand Attack → Leer
-	db 25, ENDURE
-	db 30, DIG ; Aqua Jet → Dig (egg move)
-	db 34, MEGA_DRAIN
-	db 39, ANCIENTPOWER ; Metal Sound → AncientPower
-	db 45, METAL_SOUND ; AncientPower → Metal Sound
-	db 50, GIGA_DRAIN ; Wring Out → TM move
-	db 55, IRON_HEAD ; new move
+	db 6, ABSORB
+	db 11, SAND_ATTACK ; Leer → Sand Attack
+	db 16, ROCK_THROW ; Mud Shot → Rock Throw (event move)
+	db 21, LEER ; Sand Attack → Leer
+	db 26, ENDURE
+	db 31, DIG ; Aqua Jet → Dig (egg move)
+	db 36, MEGA_DRAIN
+	db 41, METAL_SOUND
+	db 46, ANCIENTPOWER
+	db 51, GIGA_DRAIN ; Wring Out → TM move
+	db 56, IRON_HEAD ; new move
 	db 0 ; no more level-up moves
 
 KabutopsEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, HARDEN
-	db 5, SAND_ATTACK ; Absorb → Sand Attack
-	db 10, ABSORB ; Leer → Absorb
-	db 15, ROCK_THROW ; Mud Shot → Rock Throw (event move)
-	db 20, LEER ; Sand Attack → Leer
-	db 25, ENDURE
-	db 30, DIG ; Aqua Jet → Dig (egg move)
-	db 34, MEGA_DRAIN
-	db 39, ANCIENTPOWER ; Metal Sound → AncientPower
+	db 6, ABSORB
+	db 11, SAND_ATTACK ; Leer → Sand Attack
+	db 16, ROCK_THROW ; Mud Shot → Rock Throw (event move)
+	db 21, LEER ; Sand Attack → Leer
+	db 26, ENDURE
+	db 31, DIG ; Aqua Jet → Dig (egg move)
+	db 36, MEGA_DRAIN
 	db 40, SLASH
-	db 45, LOW_KICK ; Metal Sound → HGSS tutor move
-	db 54, METAL_SOUND ; AncientPower → Metal Sound
-	db 63, X_SCISSOR ; Wring Out → TM move
+	db 45, METAL_SOUND
+	db 54, ANCIENTPOWER
+	db 63, LOW_KICK ; Wring Out → HGSS tutor move
 	db 72, NIGHT_SLASH
 	db 0 ; no more level-up moves
 

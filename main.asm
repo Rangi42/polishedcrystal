@@ -1714,6 +1714,8 @@ PlayBattleMusic: ; 2ee6c
 	jp z, .done
 	cp JESSIE_JAMES
 	jp z, .done
+	cp GIOVANNI
+	jp z, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	farcall IsKantoGymLeader
