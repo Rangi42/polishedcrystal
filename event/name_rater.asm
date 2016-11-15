@@ -15,8 +15,12 @@ NameRater: ; fb6ed
 	jr z, .egg
 ; ... or a Pokemon you got from a trade.
 	call GetCurNick
+	ld a, [EarlyGameOptions]
+	bit TRADED_BEHAVIOR, a
+	jr z, .no_name_lock
 	call CheckIfMonIsYourOT
 	jr c, .traded
+.no_name_lock
 ; This name is good, but we can do better.  How about it?
 	ld hl, NameRaterIsGoodText
 	call PrintText
