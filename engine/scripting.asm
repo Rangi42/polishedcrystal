@@ -243,16 +243,15 @@ ScriptCommandTable: ; 96cb1
 	dw Script_count_caught               ; aa
 	dw Script_count_unown_caught         ; ab
 	dw Script_trainerpic                 ; ac
-	dw Script_check_nuzlocke             ; ad
-	dw Script_givetmhm                   ; ae
-	dw Script_checktmhm                  ; af
-	dw Script_verbosegivetmhm            ; b0
-	dw Script_tmhmnotify                 ; b1
-	dw Script_tmhmtotext                 ; b2
-	dw Script_checkdarkness              ; b3
-	dw Script_checkunits                 ; b4
-	dw Script_unowntypeface              ; b5
-	dw Script_restoretypeface            ; b6
+	dw Script_givetmhm                   ; ad
+	dw Script_checktmhm                  ; ae
+	dw Script_verbosegivetmhm            ; af
+	dw Script_tmhmnotify                 ; b0
+	dw Script_tmhmtotext                 ; b1
+	dw Script_checkdarkness              ; b2
+	dw Script_checkunits                 ; b3
+	dw Script_unowntypeface              ; b4
+	dw Script_restoretypeface            ; b5
 ; 96e05
 
 StartScript: ; 96e05
@@ -3310,16 +3309,8 @@ Script_trainerpic:
 	ret
 ; 96f29
 
-Script_check_nuzlocke:
-; script command 0xad
-
-	ld a, [EarlyGameOptions]
-	bit NUZLOCKE_MODE, a
-	ld [ScriptVar], a
-	ret
-
 Script_givetmhm:
-; script command 0xae
+; script command 0xad
 ; parameters:
 ;     tmhm (TMHMLabelByte)
 
@@ -3337,7 +3328,7 @@ Script_givetmhm:
 	ret
 
 Script_checktmhm:
-; script command 0xaf
+; script command 0xae
 ; parameters:
 ;     tmhm (TMHMLabelByte)
 
@@ -3352,7 +3343,7 @@ Script_checktmhm:
 	ret
 
 Script_verbosegivetmhm:
-; script command 0xb0
+; script command 0xaf
 ; parameters:
 ;     tmhm (TMHMLabelByte)
 
@@ -3375,7 +3366,7 @@ GiveTMHMScript:
 	end
 
 Script_tmhmnotify:
-; script command 0xb1
+; script command 0xb0
 
 	call GetTMHMPocketName
 	call CurTMHMName
@@ -3386,7 +3377,7 @@ Script_tmhmnotify:
 ; 96fd5
 
 Script_tmhmtotext:
-; script command 0xb2
+; script command 0xb1
 ; parameters:
 ;     tmhm (TMHMLabelByte); use 0 to draw from ScriptVar
 ;     memory (SingleByteParam)
@@ -3402,7 +3393,7 @@ Script_tmhmtotext:
 	jp ConvertMemToText
 
 Script_checkdarkness:
-; script command 0xb3
+; script command 0xb2
 
 	xor a
 	ld [ScriptVar], a
@@ -3416,7 +3407,7 @@ Script_checkdarkness:
 	ret
 
 Script_checkunits:
-; script command 0xb4
+; script command 0xb3
 
 	ld a, [Options2]
 	bit POKEDEX_UNITS, a
@@ -3424,7 +3415,7 @@ Script_checkunits:
 	ret
 
 Script_unowntypeface:
-; script command 0xb5
+; script command 0xb4
 
 	ld a, [Options2]
 	ld [OptionsBuffer], a
@@ -3435,7 +3426,7 @@ Script_unowntypeface:
 	ret
 
 Script_restoretypeface:
-; script command 0xb6
+; script command 0xb5
 
 	ld a, [OptionsBuffer]
 	ld [Options2], a

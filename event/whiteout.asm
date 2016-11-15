@@ -23,9 +23,7 @@ Script_Whiteout: ; 0x124ce
 	waitbutton
 	special FadeOutPalettes
 	pause 40
-	check_nuzlocke
-	iftrue Script_NuzlockeWhiteout
-	special HealParty
+	special HealPartyEvenForNuzlocke
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .bug_contest
 	callasm GetWhiteoutSpawn
@@ -51,10 +49,6 @@ Script_Whiteout: ; 0x124ce
 .WhitedOutToTrainerText:
 	text_jump WhiteoutToTrainerText
 	db "@"
-
-Script_NuzlockeWhiteout:
-	special SoftReset
-	end_all
 
 OverworldBGMap: ; 124fa
 	call ClearPalettes

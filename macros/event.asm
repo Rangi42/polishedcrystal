@@ -1086,11 +1086,6 @@ trainerpic: macro
 	db \1 ; trainer
 	endm
 
-	enum check_nuzlocke_command
-check_nuzlocke: macro
-	db check_nuzlocke_command
-	endm
-
 	enum givetmhm_command
 givetmhm: macro
 	db givetmhm_command
