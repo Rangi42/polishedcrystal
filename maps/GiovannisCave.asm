@@ -7,15 +7,19 @@ const_value set 2
 
 GiovannisCave_MapScriptHeader:
 .MapTriggers:
-	db 1
+	db 2
 
 	; triggers
 	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
+	end
+
+.Trigger1:
 	priorityjump GiovannisCaveCelebiEventScript
 	end
 
@@ -48,7 +52,7 @@ GiovannisCaveCelebiEventScript:
 	spriteface GIOVANNISCAVE_LYRA, UP
 	spriteface GIOVANNISCAVE_GIOVANNI, UP
 	opentext
-	writetext GiovannisCaveRadioText
+	writetext GiovannisCaveBroadcastText
 	waitbutton
 	closetext
 	spriteface GIOVANNISCAVE_GIOVANNI, DOWN
@@ -56,6 +60,7 @@ GiovannisCaveCelebiEventScript:
 	writetext GiovannisCaveGiovanniIMustGoText
 	waitbutton
 	closetext
+	domaptrigger GIOVANNIS_CAVE, $0
 	winlosstext GiovannisCaveGiovanniBeatenText, 0
 	setlasttalked GIOVANNISCAVE_GIOVANNI
 	loadtrainer GIOVANNI, 1
@@ -73,7 +78,7 @@ GiovannisCaveCelebiEventScript:
 	spriteface PLAYER, DOWN
 	spriteface GIOVANNISCAVE_LYRA, DOWN
 	opentext
-	writetext GiovannisCaveRadioAfterText
+	writetext GiovannisCaveBroadcastAfterText
 	waitbutton
 	closetext
 	applymovement GIOVANNISCAVE_LYRA, GiovannisCave_LyraStepsDownMovementData
@@ -100,8 +105,37 @@ GiovannisCaveCelebiEventScript:
 	special FadeOutPalettes
 	pause 30
 	waitsfx
+	disappear GIOVANNISCAVE_CELEBI
+	disappear GIOVANNISCAVE_LYRA
 ;	warp CINNABAR_LAB, ?, ?
 	end
+
+GiovannisCaveRadioScript:
+	checkevent EVENT_TIME_TRAVEL_FINISHED
+	iftrue .AfterTimeTravel
+	jumptext GiovannisCaveRadioText
+.AfterTimeTravel
+	jumptext GiovannisCaveRadioAfterTimeTravelText
+
+GiovannisCaveHiddenBerserkGene:
+	dwb EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE, BERSERK_GENE
+
+GiovannisCaveRock:
+	jumpstd smashrock
+
+GiovannisCaveRadioText:
+	text "There is a radio"
+	line "that no longer"
+	cont "works…"
+	done
+
+GiovannisCaveRadioAfterTimeTravelText:
+	text "You cannot turn on"
+	line "the radio."
+
+	para "Giovanni must have"
+	line "left it here…"
+	done
 
 GiovannisCave_GiovanniStepsDownMovementData:
 GiovannisCave_LyraStepsDownMovementData:
@@ -213,7 +247,7 @@ GiovannisCaveLyraRecognizesGiovanniText:
 	cont "before…?"
 	done
 
-GiovannisCaveRadioText:
+GiovannisCaveBroadcastText:
 	text "<``>… …Ahem, we are"
 	line "Team Rocket!"
 	cont "After three years"
@@ -283,7 +317,7 @@ GiovannisCaveGiovanniAfterText:
 	line "once again?"
 	done
 
-GiovannisCaveRadioAfterText:
+GiovannisCaveBroadcastAfterText:
 	text "<``>… …Hey! Where has"
 	line "Giovanni gone?"
 	cont "I wonder if he is"
@@ -318,18 +352,21 @@ GiovannisCave_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 0
+	db 1
+	warp_def $7, $5, 3, TOHJO_FALLS
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 2, 5, SIGNPOST_READ, GiovannisCaveRadioScript
+	signpost 6, 2, SIGNPOST_ITEM, GiovannisCaveHiddenBerserkGene
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_CELEBI, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_LYRA, 5, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_CELEBI, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
+	person_event SPRITE_LYRA, 5, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
 	person_event SPRITE_GIOVANNI, 3, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
-	person_event SPRITE_ROCK, 6, 3, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_ROCK, 2, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_ROCK, 6, 3, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GiovannisCaveRock, -1
+	person_event SPRITE_ROCK, 2, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GiovannisCaveRock, -1

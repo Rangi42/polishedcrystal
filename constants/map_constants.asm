@@ -103,13 +103,14 @@ MAP_NONE   EQU 0
 	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 66
 	mapgroup DRAGON_SHRINE,                               5,  5 ; 67
 	mapgroup TOHJO_FALLS,                                 9, 15 ; 68
-	mapgroup DIGLETTS_CAVE,                              18, 10 ; 69
-	mapgroup MOUNT_MOON,                                  9, 15 ; 70
-	mapgroup UNDERGROUND,                                14,  3 ; 71
-	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 72
-	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 73
-	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 74
-	mapgroup VICTORY_ROAD,                               36, 10 ; 75
+	mapgroup GIOVANNIS_CAVE,                              5,  5 ; 69
+	mapgroup DIGLETTS_CAVE,                              18, 10 ; 70
+	mapgroup MOUNT_MOON,                                  9, 15 ; 71
+	mapgroup UNDERGROUND,                                14,  3 ; 72
+	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 73
+	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 74
+	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 75
+	mapgroup VICTORY_ROAD,                               36, 10 ; 76
 
 	newgroup                                                    ;  4
 
@@ -514,7 +515,6 @@ MAP_NONE   EQU 0
 	mapgroup QUIET_CAVE_B1F,                             18, 18 ;  6
 	mapgroup QUIET_CAVE_B2F,                             18, 18 ;  7
 	mapgroup QUIET_CAVE_B3F,                             18, 18 ;  8
-	mapgroup GIOVANNIS_CAVE,                              5,  5 ;  9
 
 	newgroup                                                    ; 28
 

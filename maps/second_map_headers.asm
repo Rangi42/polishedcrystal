@@ -381,6 +381,7 @@
 	map_header_2 DragonsDenB1F, DRAGONS_DEN_B1F, $71, 0
 	map_header_2 DragonShrine, DRAGON_SHRINE, $0, 0
 	map_header_2 TohjoFalls, TOHJO_FALLS, $9, 0
+	map_header_2 GiovannisCave, GIOVANNIS_CAVE, $9, 0
 	map_header_2 OlivinePokeCenter1F, OLIVINE_POKECENTER_1F, $0, 0
 	map_header_2 OlivineGym, OLIVINE_GYM, $0, 0
 	map_header_2 OlivineTimsHouse, OLIVINE_TIMS_HOUSE, $0, 0
@@ -652,7 +653,6 @@
 	map_header_2 QuietCaveB1F, QUIET_CAVE_B1F, $9, 0
 	map_header_2 QuietCaveB2F, QUIET_CAVE_B2F, $9, 0
 	map_header_2 QuietCaveB3F, QUIET_CAVE_B3F, $9, 0
-	map_header_2 GiovannisCave, GIOVANNIS_CAVE, $9, 0
 	map_header_2 CinnabarVolcano1F, CINNABAR_VOLCANO_1F, $9, 0
 	map_header_2 CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $9, 0
 	map_header_2 CinnabarVolcanoB2F, CINNABAR_VOLCANO_B2F, $9, 0

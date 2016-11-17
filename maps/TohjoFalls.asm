@@ -16,9 +16,10 @@ TohjoFalls_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
+	db 3
 	warp_def $f, $d, 2, ROUTE_27
 	warp_def $f, $19, 3, ROUTE_27
+	warp_def $7, $3, 1, GIOVANNIS_CAVE
 
 .XYTriggers:
 	db 0
@@ -28,4 +29,4 @@ TohjoFalls_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, TohjoFallsMoonStone, EVENT_TOHJO_FALLS_MOON_STONE
+	person_event SPRITE_POKE_BALL, 8, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, TohjoFallsMoonStone, EVENT_TOHJO_FALLS_MOON_STONE

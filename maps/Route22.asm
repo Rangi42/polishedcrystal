@@ -125,8 +125,11 @@ Route22CelebiEventScript:
 	waitsfx
 	disappear ROUTE22_CELEBI
 	disappear ROUTE22_LYRA
+	clearevent EVENT_GIOVANNIS_CAVE_CELEBI
+	clearevent EVENT_GIOVANNIS_CAVE_LYRA
 	clearevent EVENT_GIOVANNIS_CAVE_GIOVANNI
 	dotrigger $0
+	domaptrigger GIOVANNIS_CAVE, $1
 	warp GIOVANNIS_CAVE, $5, $5
 	end
 
