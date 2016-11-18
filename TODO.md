@@ -20,6 +20,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Battle mechanics
 
+* Optional Gen V scaled experience formula
 * http://smogon.com/forums/threads/gsc-mechanics.3542417/
 * Defrosted Pokémon can attack on that turn (like waking up)
 * Substitute prevents building Rage
