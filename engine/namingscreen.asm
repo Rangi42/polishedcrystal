@@ -996,11 +996,6 @@ INCBIN "gfx/icon/mail2.2bpp"
 
 ; 11f7a (4:5f7a)
 
-.Dummy: ; dummied out
-	db "メールを かいてね@"
-
-; 11f84
-
 .InitCharset: ; 11f84 (4:5f84)
 	call WaitTop
 	hlcoord 0, 0

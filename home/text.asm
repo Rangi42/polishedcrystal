@@ -248,7 +248,6 @@ endm
 	dict "<ROCKET>", RocketChar
 	dict "<TM>", TMChar
 	dict "<TRNER>", TrainerChar
-	dict $23, PlaceKougeki
 	dict "<LNBRK>", Char22
 	dict "<CONT>", ContText
 	dict "<......>", SixDotsChar
@@ -263,48 +262,6 @@ endm
 	dict "<USER>", PlaceMoveUsersName
 	dict "<ENEMY>", PlaceEnemysName
 
-	cp "ﾟ"
-	jr z, .diacritic
-	cp "ﾞ"
-	jr z, .diacritic
-	jr .not_diacritic
-
-.diacritic
-	ld b, a
-	call Diacritic
-	jp NextChar
-
-.not_diacritic
-	cp $60 ; Regular characters
-	jr nc, .place
-
-	cp "パ"
-	jr nc, .handakuten
-
-.dakuten
-	cp $20
-	jr nc, .daku1
-	add "カ" - "ガ"
-	jr .daku2
-.daku1
-	add "か" - "が"
-.daku2
-	ld b, "ﾞ" ; dakuten
-	call Diacritic
-	jr .place
-
-.handakuten
-	cp "ぱ"
-	jr nc, .han1
-	add "ハ" - "パ"
-	jr .han2
-.han1
-	add "は" - "ぱ"
-.han2
-	ld b, "ﾟ" ; handakuten
-	call Diacritic
-
-.place
 	ld [hli], a
 	call PrintLetterDelay
 	jp NextChar
@@ -324,7 +281,6 @@ TMChar:       print_name TMCharText      ; 11b0
 PCChar:       print_name PCCharText      ; 11b7
 RocketChar:   print_name RocketCharText  ; 11be
 PlacePOKe:    print_name PlacePOKeText   ; 11c5
-PlaceKougeki: print_name KougekiText     ; 11cc
 SixDotsChar:  print_name SixDotsCharText ; 11d3
 PlacePKMN:    print_name PlacePKMNText   ; 11da
 PlacePOKE:    print_name PlacePOKEText   ; 11e1
@@ -405,7 +361,6 @@ TrainerCharText:: db "Trainer@" ; 1276
 PCCharText:: db "PC@" ; 127e
 RocketCharText:: db "Rocket@" ; 1281
 PlacePOKeText:: db "Poké@" ; 1288
-KougekiText:: db "こうげき@" ; 128d
 SixDotsCharText:: db "……@" ; 1292
 EnemyText:: db "Foe @" ; 1295
 PlacePKMNText:: db "<PK><MN>@" ; PK MN ; 129c
@@ -633,10 +588,6 @@ Function13b6:: ; 13b6
 	pop bc
 	ret
 ; 13c6
-
-Diacritic:: ; 13c6
-	ret
-; 13c7
 
 LoadBlinkingCursor:: ; 13c7
 	ld a, "▼"

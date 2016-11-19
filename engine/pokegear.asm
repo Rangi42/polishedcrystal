@@ -519,10 +519,6 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	call PlaceWholeStringInBoxAtOnce
 	ret
 
-; 90fa8 (24:4fa8)
-	db "ごぜん@"
-	db "ごご@"
-
 .DayText: ; 0x90faf
 	text_jump UnknownText_0x1c5821
 	db "@"
