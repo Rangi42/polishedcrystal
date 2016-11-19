@@ -105,6 +105,7 @@ EnterMap: ; 9673e
 	ld [hMapEntryMethod], a
 	ld a, 2 ; HandleMap
 	ld [MapStatus], a
+	farcall DeleteSavedMusic
 	ret
 ; 9676d
 

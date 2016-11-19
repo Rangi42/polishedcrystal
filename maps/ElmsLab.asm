@@ -357,11 +357,12 @@ ElmsLabHealingMachine:
 
 ElmsLabHealingMachine_HealParty:
 	special HealParty
+	special SaveMusic
 	playmusic MUSIC_NONE
 	writebyte 1 ; Machine is in Elm's Lab
 	special HealMachineAnim
 	pause 30
-	special RestartMapMusic
+	special RestoreMusic
 	closetext
 	end
 
@@ -501,7 +502,7 @@ ElmGiveTicketScript:
 	disappear ELMSLAB_LYRA
 	pause 10
 	faceplayer
-	playmusic MUSIC_PROF_ELM
+	playmusic MUSIC_PROF_ELM ; TODO: make 'playmapmusic' or 'special RestartMapMusic' work
 	opentext
 	writetext ElmAfterTicketText
 	waitbutton
@@ -568,6 +569,7 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
@@ -578,6 +580,7 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
@@ -588,11 +591,12 @@ LyraBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
+	special DeleteSavedMusic
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
 	jump .AfterYourDefeat
 
 .AfterVictorious:
-	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext ElmsLabLyraText_YouWon
 	waitbutton
@@ -600,7 +604,6 @@ LyraBattleScript:
 	jump .FinishLyra
 
 .AfterYourDefeat:
-	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext ElmsLabLyraText_YouLost
 	waitbutton

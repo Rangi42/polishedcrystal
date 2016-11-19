@@ -93,6 +93,7 @@ BurglarCoreyScript:
 	end
 
 SailorScript_0x755f1:
+	special SaveMusic
 	playmusic MUSIC_HIKER_ENCOUNTER
 	faceplayer
 	opentext

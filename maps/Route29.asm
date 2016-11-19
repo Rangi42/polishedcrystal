@@ -60,6 +60,7 @@ Route29Tutorial1:
 	stopfollow
 	loadwildmon SENTRET, 5
 	catchtutorial BATTLETYPE_TUTORIAL
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	spriteface ROUTE29_LYRA, UP
 	opentext

@@ -2978,6 +2978,11 @@ w3_dfec:: ds $10
 w3_dffc:: ds 4
 
 
+SECTION "WRAM 4 RM", WRAMX[$d200], BANK [4]
+
+SoundEngineBackup::
+
+
 SECTION "GBC Video", WRAMX, BANK [5]
 
 ; 8 4-color palettes

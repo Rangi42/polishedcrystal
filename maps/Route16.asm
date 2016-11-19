@@ -28,6 +28,7 @@ OfficerfJennyScript:
 	iffalse .NoFight
 	checkevent EVENT_BEAT_OFFICERF_JENNY
 	iftrue .AfterScript
+	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerfJennySeenText
 	waitbutton

@@ -173,6 +173,7 @@ PlateauRivalBattleCommon:
 	dontrestartmapmusic
 	reloadmapafterbattle
 PlateauRivalPostBattle:
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext PlateauRivalText2
@@ -225,6 +226,7 @@ PlateauLyraBattleCommon:
 	dontrestartmapmusic
 	reloadmapafterbattle
 PlateauLyraPostBattle:
+	special DeleteSavedMusic
 	playmusic MUSIC_NONE ; TODO: Wally's final departure music
 	opentext
 	writetext PlateauLyraText3

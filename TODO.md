@@ -57,7 +57,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Fix the gray ferry on Faraway Island
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
-* Pause music during battle effects (TPP misc/restoremusic.asm)
 * Add separate animation graphics for more Poké Ball designs
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
@@ -93,9 +92,8 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
 * Elite Four have different rematch dialog
 * Use RBY's Pokémon Tower music (Crossing Cave bottom)
-* Use Mmmmmm's B/W Route 12 (Magnet Train Track), White Treehollow (Noisy Forest), and Spiky-Eared Pichu (Giovanni event) music
+* Use the Spiky-Eared Pichu and B/W Routes 4 + 12 music somewhere
 * Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
-* Battle with Giovanni either in Radio Tower or with Celebi time traveling
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower or Trainer House (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
 
@@ -110,6 +108,9 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * First Pokémon walks behind you
 * Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
+* Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
+* Dive
+* Rock Climb
 
 
 ### New items

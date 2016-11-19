@@ -418,7 +418,7 @@ EnterMapMusic:: ; 3d03
 TryRestartMapMusic:: ; 3d2f
 	ld a, [wDontPlayMapMusicOnReload]
 	and a
-	jr z, RestartMapMusic
+	jr z, .restore
 	xor a
 	ld [wMapMusic], a
 	ld de, MUSIC_NONE
@@ -426,6 +426,10 @@ TryRestartMapMusic:: ; 3d2f
 	call DelayFrame
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
+	ret
+
+.restore
+	farcall RestoreMusic
 	ret
 ; 3d47
 

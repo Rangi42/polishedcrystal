@@ -174,6 +174,9 @@ SpecialsPointers:: ; c029
 	add_special BillBoxSwitchCheck
 	add_special BillBoxSwitch
 	add_special HealPartyEvenForNuzlocke
+	add_special SaveMusic
+	add_special RestoreMusic
+	add_special DeleteSavedMusic
 
 	add_special SpecialNone
 ; c224

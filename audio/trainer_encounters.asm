@@ -2,6 +2,7 @@
 
 PlayTrainerEncounterMusic:: ; e900a
 ; input: e = trainer type
+	farcall SaveMusic
 	; turn fade off
 	xor a
 	ld [MusicFade], a

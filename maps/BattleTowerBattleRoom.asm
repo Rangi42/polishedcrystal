@@ -49,12 +49,13 @@ Script_BattleRoomLoop: ; 0x9f425
 	writetext Text_YourPokemonWillBeHealedToFullHealth
 	waitbutton
 	closetext
+	special SaveMusic
 	playmusic MUSIC_HEAL
 	special FadeOutPalettes
 	special LoadMapPalettes
 	pause 60
 	special FadeInPalettes
-	special RestartMapMusic
+	special RestoreMusic
 	opentext
 	copybytetovar wNrOfBeatenBattleTowerTrainers
 	if_equal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon

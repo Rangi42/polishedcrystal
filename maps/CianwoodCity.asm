@@ -87,6 +87,7 @@ UnknownScript_0x1a001e:
 	special RunCallback_04
 	pause 20
 	special Special_FadeOutMusic
+	special DeleteSavedMusic
 	playmapmusic
 	pause 10
 .Done:

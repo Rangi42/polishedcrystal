@@ -115,11 +115,12 @@ PokeCenterNurseScript:
 	spriteface LAST_TALKED, LEFT
 	pause 10
 	special HealParty
+	special SaveMusic
 	playmusic MUSIC_NONE
 	writebyte 0 ; Machine is at a Pokemon Center
 	special HealMachineAnim
 	pause 30
-	special RestartMapMusic
+	special RestoreMusic
 	spriteface LAST_TALKED, DOWN
 	pause 10
 

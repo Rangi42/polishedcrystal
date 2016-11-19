@@ -154,6 +154,7 @@ NewBarkTown_LyraFinalTrigger:
 	dontrestartmapmusic
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	reloadmapafterbattle
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext Text_LyraGoodbye2

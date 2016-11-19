@@ -1598,12 +1598,21 @@ FindFirstAliveMonAndStartBattle: ; 2ee2f
 	ld [hMapAnims], a
 	ret
 
+
+PUSHS
+
+INCLUDE "home/restore_music.asm"
+
+POPS
+
+
 PlayBattleMusic: ; 2ee6c
 
 	push hl
 	push de
 	push bc
 
+	farcall SaveMusic
 	xor a
 	ld [MusicFade], a
 	ld de, MUSIC_NONE

@@ -1,4 +1,5 @@
 MainMenu: ; 49cdc
+	farcall DeleteSavedMusic
 	xor a
 	ld [wDisableTextAcceleration], a
 	call Function49ed0

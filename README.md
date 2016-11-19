@@ -293,6 +293,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
 * Add: Status icons in battle.
 * Add: Reset initial options by pressing Left+B at the title screen.
+* Add: Music resumes where it left off after a battle (from TPP).
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Minimize raises evasion by two stages.

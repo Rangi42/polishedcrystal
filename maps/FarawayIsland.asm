@@ -94,6 +94,7 @@ FarawayIslandLawrenceScript:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	faceplayer
+	special DeleteSavedMusic
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext FarawayIslandLawrenceText2

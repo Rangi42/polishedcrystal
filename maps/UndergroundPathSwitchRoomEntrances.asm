@@ -203,6 +203,7 @@ UndergroundSilverBattleScript:
 	jump .FinishRivalBattle
 
 .FinishRivalBattle:
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext UndergroundSilverAfterText

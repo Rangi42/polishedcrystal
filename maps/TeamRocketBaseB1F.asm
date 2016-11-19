@@ -34,6 +34,7 @@ SecurityCamera1a:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $2
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -43,6 +44,7 @@ SecurityCamera1a:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $2
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -59,6 +61,7 @@ SecurityCamera1b:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $3
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -68,6 +71,7 @@ SecurityCamera1b:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $3
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -84,6 +88,7 @@ SecurityCamera2a:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $4, $7
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -93,6 +98,7 @@ SecurityCamera2a:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $c, $5
@@ -110,6 +116,7 @@ SecurityCamera2b:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $4, $8
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -119,6 +126,7 @@ SecurityCamera2b:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $c, $5
@@ -136,6 +144,7 @@ SecurityCamera3a:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $6
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -145,6 +154,7 @@ SecurityCamera3a:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $19, $b
@@ -162,6 +172,7 @@ SecurityCamera3b:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $7
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -171,6 +182,7 @@ SecurityCamera3b:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $19, $c
@@ -188,6 +200,7 @@ SecurityCamera4:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $11, $10
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -197,6 +210,7 @@ SecurityCamera4:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $19, $b
@@ -214,6 +228,7 @@ SecurityCamera5:
 	checkevent EVENT_TEAM_ROCKET_BASE_POPULATION
 	iftrue NoSecurityCamera
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $3, $10
 	appear TEAMROCKETBASEB1F_ROCKET1
@@ -223,6 +238,7 @@ SecurityCamera5:
 	if_equal $1, NoSecurityCamera
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
 	moveperson TEAMROCKETBASEB1F_ROCKET1, $e, $10

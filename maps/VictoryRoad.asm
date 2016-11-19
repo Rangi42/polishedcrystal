@@ -97,6 +97,7 @@ UnknownScript_0x7450f:
 	jump UnknownScript_0x7451f
 
 UnknownScript_0x7451f:
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext UnknownText_0x746ce
@@ -119,6 +120,7 @@ VictoryRoadLawrenceScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
+	special DeleteSavedMusic
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext LawrenceAfterText

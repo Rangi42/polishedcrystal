@@ -129,6 +129,7 @@ Route34LyraTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	jump .AfterBattle
 
@@ -476,6 +477,7 @@ OfficerfMaraScript:
 	iffalse .NoFight
 	checkevent EVENT_BEAT_OFFICERF_MARA
 	iftrue .AfterScript
+	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerfMaraSeenText
 	waitbutton

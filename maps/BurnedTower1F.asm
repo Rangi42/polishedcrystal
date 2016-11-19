@@ -100,6 +100,7 @@ BurnedTowerRivalBattleScript:
 	jump .returnfrombattle
 
 .returnfrombattle
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext BurnedTowerSilver_AfterText1

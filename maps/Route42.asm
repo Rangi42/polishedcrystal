@@ -123,6 +123,7 @@ Route42LyraScript:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	dontrestartmapmusic
 	reloadmapafterbattle
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext Route42LyraPresentText
@@ -307,6 +308,7 @@ OfficermKeithScript:
 	iffalse .NoFight
 	checkevent EVENT_BEAT_OFFICERM_KEITH
 	iftrue .AfterScript
+	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficermKeithSeenText
 	waitbutton

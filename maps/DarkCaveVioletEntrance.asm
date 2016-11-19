@@ -32,6 +32,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	waitsfx
 	checkdarkness
 	iftrue .Darkness
+	special SaveMusic
 	playmusic MUSIC_JOHTO_TRAINER_BATTLE
 	pause 40
 	opentext
@@ -46,7 +47,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	pause 30
 	disappear DARKCAVEVIOLETENTRANCE_URSARING
 	pause 15
-	special RestartMapMusic
+	special RestoreMusic
 	opentext
 	writetext DarkCaveVioletEntranceFalknerReturnText
 	pause 30

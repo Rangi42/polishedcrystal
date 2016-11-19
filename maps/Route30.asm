@@ -20,6 +20,7 @@ Route30_MapScriptHeader:
 
 YoungsterJoey_ImportantBattleScript:
 	waitsfx
+	special SaveMusic
 	playmusic MUSIC_JOHTO_TRAINER_BATTLE
 	opentext
 	writetext Text_UseTackle
@@ -35,7 +36,7 @@ YoungsterJoey_ImportantBattleScript:
 	closetext
 	playsound SFX_TACKLE
 	applymovement ROUTE30_PIDGEY, Route30_MikeysPidgeyAttacksMovement
-	special RestartMapMusic
+	special RestoreMusic
 	end
 
 TrainerYoungsterJoey:

@@ -34,10 +34,11 @@ UnknownScript_0x19b0de:
 	waitbutton
 	closetext
 	special FadeOutPalettes
+	special SaveMusic
 	playmusic MUSIC_HEAL
 	pause 60
 	special FadeInPalettes
-	special RestartMapMusic
+	special RestoreMusic
 	opentext
 	writetext UnknownText_0x19b296
 	special PlayCurMonCry

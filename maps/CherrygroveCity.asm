@@ -156,6 +156,7 @@ CherrygroveSilverTriggerNorth:
 	jump .AfterYourDefeat
 
 .AfterVictorious:
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext CherrygroveRivalText_YouWon
@@ -164,6 +165,7 @@ CherrygroveSilverTriggerNorth:
 	jump .FinishRival
 
 .AfterYourDefeat:
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext CherrygroveRivalText_YouLost

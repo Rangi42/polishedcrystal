@@ -34,6 +34,7 @@ FakeDirectorScript:
 	waitbutton
 	closetext
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorMovement
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	opentext
 	writetext FakeDirectorTextBefore2

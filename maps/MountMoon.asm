@@ -64,6 +64,7 @@ MountMoon_MapScriptHeader:
 	jump .FinishBattle
 
 .FinishBattle:
+	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext MountMoonSilverTextAfter
