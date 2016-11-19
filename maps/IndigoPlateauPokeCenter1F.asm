@@ -90,7 +90,7 @@ PlateauRivalBattle1:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalMovement1
-	playmusic MUSIC_NONE ; TODO: Wally's final encounter music
+	playmusic MUSIC_NONE
 	spriteface PLAYER, RIGHT
 	jump PlateauLyraBattleCommon
 
@@ -133,7 +133,7 @@ PlateauRivalBattle2:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalMovement2
-	playmusic MUSIC_NONE ; TODO: Wally's final encounter music
+	playmusic MUSIC_NONE
 	spriteface PLAYER, LEFT
 	jump PlateauLyraBattleCommon
 
@@ -227,7 +227,7 @@ PlateauLyraBattleCommon:
 	reloadmapafterbattle
 PlateauLyraPostBattle:
 	special DeleteSavedMusic
-	playmusic MUSIC_NONE ; TODO: Wally's final departure music
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext PlateauLyraText3
 	waitbutton
