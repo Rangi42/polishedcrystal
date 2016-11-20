@@ -107,7 +107,7 @@ GiovannisCaveCelebiEventScript:
 	waitsfx
 	disappear GIOVANNISCAVE_CELEBI
 	disappear GIOVANNISCAVE_LYRA
-;	warp CINNABAR_LAB, ?, ?
+	warp CINNABAR_LAB, $1e, $10
 	end
 
 GiovannisCaveRadioScript:

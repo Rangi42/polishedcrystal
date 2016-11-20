@@ -98,5 +98,6 @@ ENDM
 	trigger_def ROUTE_10_NORTH,                         wRoute10NorthTrigger
 	trigger_def ROUTE_22,                               wRoute22Trigger
 	trigger_def GIOVANNIS_CAVE,                         wGiovannisCaveTrigger
+	trigger_def CINNABAR_LAB,                           wCinnabarLabTrigger
 	db -1
 ; 4d15b
