@@ -288,7 +288,7 @@ NavelRockName:       db "Navel Rock@"
 FarawayIslandName:   db "Faraway¯Island@"
 SinjohRuinsName:     db "Sinjoh¯Ruins@"
 MystriStageName:     db "Mystri¯Stage@"
-CinnabarLabName:     db "Cinnabar¯Lab@"
+CinnabarLabName:     db "Pokémon¯Lab@"
 SpecialMapName:      db "Special@"
 
 
