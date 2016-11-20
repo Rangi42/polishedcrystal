@@ -672,3 +672,4 @@
 	map_header_2 SeagallopFerryNavelGate, SEAGALLOP_FERRY_NAVEL_GATE, $0, 0
 	map_header_2 PokemonMansion1F, POKEMON_MANSION_1F, $0, 0
 	map_header_2 PokemonMansionB1F, POKEMON_MANSION_B1F, $45, 0
+	map_header_2 CinnabarLab, CINNABAR_LAB, $0, 0

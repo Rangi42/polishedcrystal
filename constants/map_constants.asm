@@ -164,6 +164,7 @@ MAP_NONE   EQU 0
 	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ; 14
 	mapgroup POKEMON_MANSION_1F,                         14, 15 ; 15
 	mapgroup POKEMON_MANSION_B1F,                        16, 17 ; 16
+	mapgroup CINNABAR_LAB,                                9, 16 ; 17
 
 	newgroup                                                    ;  7
 

@@ -45,3 +45,6 @@ EmbeddedTower_BlockData:
 
 Route35Coast_BlockData:
 	INCBIN "maps/Route35Coast.blk"
+
+CinnabarLab_BlockData:
+	INCBIN "maps/CinnabarLab.blk"

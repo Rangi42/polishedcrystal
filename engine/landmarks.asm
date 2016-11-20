@@ -171,6 +171,7 @@ ENDM
 	landmark 108, 140, FastShipName
 	landmark 140, 156, NavelRockName
 	landmark 156, 156, FarawayIslandName
+	landmark  62, 150, CinnabarLabName
 
 
 NewBarkTownName:     db "New Bark¯Town@"
@@ -287,6 +288,7 @@ NavelRockName:       db "Navel Rock@"
 FarawayIslandName:   db "Faraway¯Island@"
 SinjohRuinsName:     db "Sinjoh¯Ruins@"
 MystriStageName:     db "Mystri¯Stage@"
+CinnabarLabName:     db "Cinnabar¯Lab@"
 SpecialMapName:      db "Special@"
 
 

@@ -597,4 +597,5 @@ INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/Route35Coast.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/GiovannisCave.asm"
+INCLUDE "maps/CinnabarLab.asm"
 

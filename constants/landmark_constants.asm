@@ -119,5 +119,6 @@ KANTO_LANDMARK EQU const_value
 	const FAST_SHIP         ; 70
 	const NAVEL_ROCK        ; 71
 	const FARAWAY_ISLAND    ; 72
+	const CINNABAR_LAB      ; 73
 
 NUM_LANDMARKS EQU const_value
