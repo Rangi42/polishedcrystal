@@ -150,6 +150,8 @@ CinnabarLabCelebiEventScript:
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniThrown2MovementData
 	waitsfx
 	applymovement PLAYER, CinnabarLabPan4MovementData
+	disappear CINNABARLAB_CHRIS
+	disappear CINNABARLAB_KRIS
 	spriteface CINNABARLAB_ARMORED_MEWTWO, DOWN
 	pause 30
 	applymovement CINNABARLAB_ARMORED_MEWTWO, CinnabarLabMewtwoStepsDownMovementData
@@ -158,6 +160,28 @@ CinnabarLabCelebiEventScript:
 	cry MEWTWO
 	waitsfx
 	closetext
+	playsound SFX_GAME_FREAK_LOGO_GS
+	special FadeOutPalettes
+	pause 30
+	appear CINNABARLAB_CELEBI
+	special FadeInPalettes
+	waitsfx
+	opentext
+	writetext CinnabarLabCelebiText
+	cry CELEBI
+	waitsfx
+	closetext
+	spriteface PLAYER, LEFT
+	showemote EMOTE_SHOCK, PLAYER, 15
+	playsound SFX_PROTECT
+	applymovement CINNABARLAB_CELEBI, CinnabarLabCelebiFloatsMovementData
+	waitsfx
+	playsound SFX_GAME_FREAK_LOGO_GS
+	special FadeOutPalettes
+	pause 30
+	waitsfx
+	domaptrigger ILEX_FOREST, $1
+	warp ILEX_FOREST, 8, 24
 	end
 
 CinnabarLabRoom1Sign:
@@ -282,10 +306,21 @@ CinnabarLabPan4MovementData:
 	step_down
 	step_down
 	step_down
+	turn_head_up
+	show_person
 	step_end
 
 CinnabarLabMewtwoStepsDownMovementData:
 	slow_step_down
+	step_end
+
+CinnabarLabCelebiFloatsMovementData:
+	turn_head_down
+	fix_facing
+	slow_step_up
+	slow_step_up
+	slow_step_up
+	remove_fixed_facing
 	step_end
 
 CinnabarLabRoom1SignText:
@@ -371,6 +406,10 @@ CinnabarLabGiovanniStopText:
 	line "this now!"
 	done
 
+CinnabarLabCelebiText:
+	text "Celebi: Biii!"
+	done
+
 CinnabarLab_MapEventHeader:
 	; filler
 	db 0, 0
@@ -402,6 +441,6 @@ CinnabarLab_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
 	person_event SPRITE_SCIENTIST, 4, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
-	person_event SPRITE_CELEBI, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
+	person_event SPRITE_CELEBI, 8, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
 	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
 	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS

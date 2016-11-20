@@ -15,7 +15,11 @@ const_value set 2
 
 IlexForest_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 1
@@ -23,6 +27,13 @@ IlexForest_MapScriptHeader:
 	; callbacks
 
 	dbw MAPCALLBACK_OBJECTS, .FarfetchdCallback
+
+.Trigger0:
+	end
+
+.Trigger1:
+	priorityjump IlexForestFinishCelebiEventScript
+	end
 
 .FarfetchdCallback:
 	checkevent EVENT_GOT_HM01_CUT
@@ -349,6 +360,13 @@ IlexForestFarfetchdScript:
 	checkcode VAR_FACING
 	end
 
+IlexForestFinishCelebiEventScript:
+	; TODO: finish Celebi event
+	giveitem ARMOR_PIECE
+	setevent EVENT_TIME_TRAVEL_FINISHED
+	dotrigger $0
+	end
+
 IlexForestCharcoalMasterScript:
 	faceplayer
 	opentext
@@ -589,7 +607,6 @@ MapIlexForestSignpost4Script:
 	clearevent EVENT_ROUTE_22_GIOVANNI
 	domaptrigger ROUTE_22, $1
 	warp ROUTE_22, $20, $9
-;	setevent EVENT_TIME_TRAVEL_FINISHED
 	end
 
 MovementData_Farfetchd_Pos1_Pos2:

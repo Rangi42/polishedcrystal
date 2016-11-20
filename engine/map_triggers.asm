@@ -99,5 +99,6 @@ ENDM
 	trigger_def ROUTE_22,                               wRoute22Trigger
 	trigger_def GIOVANNIS_CAVE,                         wGiovannisCaveTrigger
 	trigger_def CINNABAR_LAB,                           wCinnabarLabTrigger
+	trigger_def ILEX_FOREST,                            wIlexForestTrigger
 	db -1
 ; 4d15b
