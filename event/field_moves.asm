@@ -6,7 +6,7 @@ PlayWhirlpoolSound: ; 8c7d4
 	ret
 ; 8c7e1
 
-BlindingFlash: ; 8c7e1
+BlindingFlash:: ; 8c7e1
 	farcall FadeOutPalettes
 	ld hl, StatusFlags
 	set 2, [hl] ; Flash

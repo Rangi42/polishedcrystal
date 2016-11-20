@@ -1,8 +1,9 @@
 const_value set 2
 	const CINNABARLAB_GIOVANNI
-	const CINNABARLAB_MEWTWO
+	const CINNABARLAB_ARMORED_MEWTWO
 	const CINNABARLAB_SCIENTIST1
 	const CINNABARLAB_SCIENTIST2
+	const CINNABARLAB_SCIENTIST3
 	const CINNABARLAB_CELEBI
 	const CINNABARLAB_CHRIS
 	const CINNABARLAB_KRIS
@@ -42,6 +43,8 @@ CinnabarLabCelebiEventScript:
 	setevent EVENT_CINNABAR_LAB_CELEBI
 	setevent EVENT_CINNABAR_LAB_CHRIS
 	setevent EVENT_CINNABAR_LAB_KRIS
+	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
+	setevent EVENT_CINNABAR_LAB_SCIENTIST2
 	dotrigger $0
 	warpfacing UP, CINNABAR_LAB, $f, $9
 	special Special_FadeOutMusic
@@ -76,18 +79,85 @@ CinnabarLabCelebiEventScript:
 	writetext CinnabarLabGiovanniAfterText
 	waitbutton
 	closetext
-	showemote EMOTE_SHOCK, CINNABARLAB_MEWTWO, 15
+	showemote EMOTE_SHOCK, CINNABARLAB_ARMORED_MEWTWO, 15
 	opentext
 	writetext CinnabarLabMewtwoText
 	cry MEWTWO
 	waitsfx
 	closetext
-	applymovement CINNABARLAB_MEWTWO, CinnabarLabMewtwoFloatsDownMovementData
-	applymovement PLAYER, CinnabarLabPlayerStepsBackMovementData
+	playmusic MUSIC_KANTO_LEGEND_BATTLE_XY
+	pause 15
+	playsound SFX_SWORDS_DANCE
+	callasm BlindingFlash
+	callasm BlindingFlash
 	waitsfx
+	pause 15
+	playsound SFX_OUTRAGE
+	callasm BlindingFlash
+	callasm BlindingFlash
+	waitsfx
+	pause 15
+	playsound SFX_EMBER
+	callasm BlindingFlash
+	callasm BlindingFlash
+	earthquake 30
+	waitsfx
+	pause 15
+	applymovement CINNABARLAB_ARMORED_MEWTWO, CinnabarLabMewtwoFloatsDownMovementData
+	applymovement PLAYER, CinnabarLabPlayerStepsBackMovementData
+	pause 15
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .Female
 	appear CINNABARLAB_CHRIS
+	jump .Continue
+.Female
+	appear CINNABARLAB_KRIS
+.Continue
 	applymovement PLAYER, CinnabarLabHidePlayerMovementData
 	waitsfx
+	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 10
+	cry MEWTWO
+	waitsfx
+	spriteface CINNABARLAB_ARMORED_MEWTWO, LEFT
+	applymovement PLAYER, CinnabarLabPan1MovementData
+	playsound SFX_PSYCHIC
+	spriteface CINNABARLAB_SCIENTIST1, RIGHT
+	showemote EMOTE_SHOCK, CINNABARLAB_SCIENTIST1, 10
+	applymovement CINNABARLAB_SCIENTIST1, CinnabarLabScientist1Thrown1MovementData
+	playsound SFX_TACKLE
+	applymovement CINNABARLAB_SCIENTIST1, CinnabarLabScientist1Thrown2MovementData
+	disappear CINNABARLAB_SCIENTIST1
+	appear CINNABARLAB_SCIENTIST3
+	spriteface CINNABARLAB_ARMORED_MEWTWO, RIGHT
+	applymovement PLAYER, CinnabarLabPan2MovementData
+	playsound SFX_PSYCHIC
+	spriteface CINNABARLAB_SCIENTIST2, LEFT
+	showemote EMOTE_SHOCK, CINNABARLAB_SCIENTIST2, 10
+	applymovement CINNABARLAB_SCIENTIST2, CinnabarLabScientist2Thrown1MovementData
+	playsound SFX_TACKLE
+	applymovement CINNABARLAB_SCIENTIST2, CinnabarLabScientist2Thrown2MovementData
+	waitsfx
+	opentext
+	writetext CinnabarLabGiovanniStopText
+	pause 20
+	closetext
+	playsound SFX_PSYCHIC
+	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniThrown1MovementData
+	spriteface CINNABARLAB_ARMORED_MEWTWO, UP
+	applymovement PLAYER, CinnabarLabPan3MovementData
+	waitsfx
+	playsound SFX_TACKLE
+	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniThrown2MovementData
+	waitsfx
+	applymovement PLAYER, CinnabarLabPan4MovementData
+	spriteface CINNABARLAB_ARMORED_MEWTWO, DOWN
+	pause 30
+	applymovement CINNABARLAB_ARMORED_MEWTWO, CinnabarLabMewtwoStepsDownMovementData
+	opentext
+	writetext CinnabarLabMewtwoText
+	cry MEWTWO
+	waitsfx
+	closetext
 	end
 
 CinnabarLabRoom1Sign:
@@ -110,11 +180,9 @@ CinnabarLabStepDownMovementData:
 	step_end
 
 CinnabarLabGiovanniStepAsideMovementData:
+	slow_step_right
+	slow_step_right
 	turn_head_left
-	fix_facing
-	slow_step_right
-	slow_step_right
-	remove_fixed_facing
 	step_end
 
 CinnabarLabPlayerStepsUpMovementData:
@@ -123,10 +191,9 @@ CinnabarLabPlayerStepsUpMovementData:
 	step_end
 
 CinnabarLabMewtwoFloatsDownMovementData:
-	fix_facing
-	slow_step_down
-	slow_step_down
-	remove_fixed_facing
+	set_sliding
+	jump_step_down
+	remove_sliding
 	step_end
 
 CinnabarLabPlayerStepsBackMovementData:
@@ -137,6 +204,88 @@ CinnabarLabPlayerStepsBackMovementData:
 
 CinnabarLabHidePlayerMovementData:
 	hide_person
+	step_end
+
+CinnabarLabPan1MovementData:
+	big_step_left
+	big_step_left
+	big_step_left
+	big_step_up
+	big_step_up
+	big_step_up
+	step_end
+
+CinnabarLabScientist1Thrown1MovementData:
+	set_sliding
+	fix_facing
+	step_up
+	step_up
+	remove_fixed_facing
+	remove_sliding
+	big_step_left
+	step_end
+
+CinnabarLabScientist1Thrown2MovementData:
+	jump_step_right
+	turn_head_up
+	step_end
+
+CinnabarLabPan2MovementData:
+	big_step_right
+	big_step_right
+	big_step_right
+	big_step_right
+	big_step_right
+	big_step_right
+	step_end
+
+CinnabarLabScientist2Thrown1MovementData:
+	set_sliding
+	fix_facing
+	step_up
+	step_up
+	remove_fixed_facing
+	remove_sliding
+	big_step_right
+	step_end
+
+CinnabarLabScientist2Thrown2MovementData:
+	jump_step_left
+	turn_head_up
+	step_end
+
+CinnabarLabGiovanniThrown1MovementData:
+	set_sliding
+	step_left
+	turn_head_down
+	fix_facing
+	step_up
+	step_up
+	remove_fixed_facing
+	step_end
+
+CinnabarLabGiovanniThrown2MovementData:
+	jump_step_up
+	step_end
+
+CinnabarLabPan3MovementData:
+	step_up
+	step_up
+	step_end
+
+CinnabarLabPan4MovementData:
+	step_left
+	step_left
+	step_left
+	step_down
+	step_down
+	step_down
+	step_down
+	step_down
+	step_end
+
+CinnabarLabMewtwoStepsDownMovementData:
+	slow_step_down
 	step_end
 
 CinnabarLabRoom1SignText:
@@ -217,6 +366,11 @@ CinnabarLabMewtwoText:
 	text "???: Myuu!"
 	done
 
+CinnabarLabGiovanniStopText:
+	text "Giovanni: Stop"
+	line "this now!"
+	done
+
 CinnabarLab_MapEventHeader:
 	; filler
 	db 0, 0
@@ -242,11 +396,12 @@ CinnabarLab_MapEventHeader:
 	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_MEWTWO, 4, 15, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_ARMORED_MEWTWO, 4, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
+	person_event SPRITE_SCIENTIST, 4, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
 	person_event SPRITE_CELEBI, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
 	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
 	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
