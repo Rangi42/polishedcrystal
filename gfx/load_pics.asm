@@ -1,10 +1,12 @@
 GetVariant: ; 51040
 	ld a, [CurPartySpecies]
 	cp PIKACHU
-	jr z, .GetPikachuVariant
+	jp z, .GetPikachuVariant
+	cp MEWTWO
+	jp z, .GetMewtwoVariant
 
 ; Return MonVariant based on Form at hl
-; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Mewtwo: 1-2
+; Unown: 1-26, Pichu: 1-2, Arbok: 1-2
 	ld a, [hl]
 	and FORM_MASK
 	jr nz, .ok
@@ -29,49 +31,33 @@ GetVariant: ; 51040
 	ret
 
 .GetPikachuVariant:
-; Return Pikachu form in MonVariant
+; Return Pikachu form (1-5) in MonVariant
 ; hl-8 is ...MonMove1
 ; hl-7 is ...MonMove2
 ; hl-6 is ...MonMove3
 ; hl-5 is ...MonMove4
 ; hl is ...MonForm
 
+	ld a, [hl]
+	and FORM_MASK
+	jr nz, .use_form
+
 	push bc
-	ld bc, EnemyMonForm
-	ld a, b
-	cp h
-	jr nz, .notenemy
-	ld a, c
-	cp l
-	jr nz, .notenemy
-	ld a, [wBattleMode]
-	cp 2
-	jr nz, .notenemy
-
-	ld a, [OtherTrainerClass]
-	cp RED
-	jr z, .red_pika
-	cp YELLOW
-	jr z, .yellow_chuchu
-
-.notenemy
 	ld bc, TempMonForm
 	ld a, b
 	cp h
-	jr nz, .nottemp
+	jr nz, .nottemp1
 	ld a, c
 	cp l
-	jr nz, .nottemp
+	jr nz, .nottemp1
 	; skip TempMonID through TempMonSdfEV
-rept 11
-	dec hl
-endr
-.nottemp
+	ld bc, -11
+	add hl, bc
+.nottemp1
+	ld bc, -8
+	add hl, bc
 	pop bc
 
-rept 8
-	dec hl
-endr
 	ld a, 3 ; Surf
 	ld [MonVariant], a
 rept 4
@@ -96,15 +82,40 @@ endr
 	ld [MonVariant], a
 	ret
 
-.red_pika
-	pop bc
-	ld a, 4 ; Pika
+.use_form
 	ld [MonVariant], a
 	ret
 
-.yellow_chuchu
+.GetMewtwoVariant:
+; Return Mewtwo form (1-2) in MonVariant
+; hl-9 is ...MonItem
+; hl is ...MonForm
+
+	push bc
+	ld bc, TempMonForm
+	ld a, b
+	cp h
+	jr nz, .nottemp2
+	ld a, c
+	cp l
+	jr nz, .nottemp2
+	; skip TempMonID through TempMonSdfEV
+	ld bc, -11
+	add hl, bc
+.nottemp2
+	ld bc, -9
+	add hl, bc
 	pop bc
-	ld a, 5 ; Chuchu
+
+	ld a, [hl]
+	cp ARMOR_PIECE
+	jr z, .armored_mewtwo
+	ld a, 1 ; plain
+	ld [MonVariant], a
+	ret
+
+.armored_mewtwo
+	ld a, 2 ; armored
 	ld [MonVariant], a
 	ret
 
