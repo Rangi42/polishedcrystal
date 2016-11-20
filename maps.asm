@@ -131,12 +131,12 @@ SECTION "Map Scripts 6", ROMX, BANK[MAP_SCRIPTS_6]
 
 INCLUDE "maps/TeamRocketBaseB2F.asm"
 INCLUDE "maps/TeamRocketBaseB3F.asm"
-INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/LakeofRage.asm"
 INCLUDE "maps/CeladonDeptStoreElevator.asm"
 INCLUDE "maps/CeladonDeptStore1F.asm"
 INCLUDE "maps/CeladonDeptStore2F.asm"
 INCLUDE "maps/CeladonDeptStore3F.asm"
+INCLUDE "maps/Route35Coast.asm"
 
 
 SECTION "Map Scripts 7", ROMX, BANK[MAP_SCRIPTS_7]
@@ -594,12 +594,12 @@ SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
 INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
-INCLUDE "maps/Route35Coast.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/GiovannisCave.asm"
+INCLUDE "maps/CinnabarLab.asm"
 
 
 SECTION "Map Scripts 29", ROMX
 
-INCLUDE "maps/CinnabarLab.asm"
+INCLUDE "maps/IlexForest.asm"
 

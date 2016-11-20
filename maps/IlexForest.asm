@@ -361,10 +361,50 @@ IlexForestFarfetchdScript:
 	end
 
 IlexForestFinishCelebiEventScript:
-	; TODO: finish Celebi event
-	giveitem ARMOR_SUIT
 	setevent EVENT_TIME_TRAVEL_FINISHED
 	dotrigger $0
+	pause 30
+	showemote EMOTE_SHOCK, ILEXFOREST_LYRA, 15
+	applymovement ILEXFOREST_LYRA, MovementData_LyraStepDown
+	spriteface ILEXFOREST_LYRA, RIGHT
+	spriteface PLAYER, LEFT
+	opentext
+	writetext Text_IlexForestLyraWorried
+	waitbutton
+	writetext Text_IlexForestLyraArmorSuit
+	waitbutton
+	closetext
+	follow ILEXFOREST_LYRA, PLAYER
+	applymovement ILEXFOREST_LYRA, MovementData_LyraStepUp
+	stopfollow
+	spriteface PLAYER, UP
+	spriteface ILEXFOREST_LYRA, DOWN
+	setlasttalked ILEXFOREST_LYRA
+	opentext
+	jump IlexForestLyraContinueScript
+
+IlexForestLyraScript:
+	faceplayer
+	opentext
+	writetext Text_IlexForestLyraArmorSuit
+	buttonsound
+IlexForestLyraContinueScript:
+	verbosegiveitem ARMOR_SUIT
+	iffalse .NoRoom
+	setevent EVENT_GOT_ARMOR_SUIT
+	writetext Text_IlexForestLyraGoodbye
+	waitbutton
+	closetext
+	checkcode VAR_FACING
+	if_equal LEFT, .NotBlockingPath
+	applymovement PLAYER, MovementData_PlayerStepAside
+.NotBlockingPath
+	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraLeaves
+	disappear ILEXFOREST_LYRA
+	end
+
+.NoRoom:
+	closetext
 	end
 
 IlexForestCharcoalMasterScript:
@@ -561,6 +601,7 @@ MapIlexForestSignpost4Script:
 	waitsfx
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	moveperson ILEXFOREST_LYRA, $3, $18
 	appear ILEXFOREST_LYRA
 	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraApproaches
 	spriteface PLAYER, LEFT
@@ -600,7 +641,6 @@ MapIlexForestSignpost4Script:
 	pause 30
 	waitsfx
 	disappear ILEXFOREST_CELEBI
-	disappear ILEXFOREST_LYRA
 	clearevent EVENT_ROUTE_22_CELEBI
 	clearevent EVENT_ROUTE_22_LYRA
 	clearevent EVENT_ROUTE_22_SILVER
@@ -892,6 +932,7 @@ MovementData_CelebiDance:
 
 MovementData_CelebiHop:
 	jump_step_down
+MovementData_LyraStepUp:
 	slow_step_up
 	step_end
 
@@ -905,6 +946,7 @@ MovementData_CelebiFloat:
 	step_end
 
 MovementData_PlayerFollowCelebi:
+MovementData_LyraStepDown:
 	slow_step_down
 	step_end
 
@@ -919,6 +961,19 @@ MovementData_IlexForestLyraApproaches:
 	slow_step_right
 	slow_step_right
 	slow_step_right
+	step_end
+
+MovementData_PlayerStepAside:
+	slow_step_right
+	turn_head_left
+	step_end
+
+MovementData_IlexForestLyraLeaves:
+	slow_step_down
+	slow_step_left
+	slow_step_left
+	slow_step_left
+	slow_step_left
 	step_end
 
 UnknownText_0x6ef5c:
@@ -1168,6 +1223,51 @@ Text_IlexForestLyraWhatWasThat:
 	line "What was that?"
 	done
 
+Text_IlexForestLyraWorried:
+	text "Lyra: …<PLAYER>?"
+	line "You're really back?"
+
+	para "I missed you so"
+	line "much! Celebi sent"
+
+	para "me here and you"
+	line "were missing…"
+
+	para "I thought you'd be"
+	line "stuck in the past"
+	cont "forever!"
+
+	para "…"
+
+	para "At least now we're"
+	line "both safely back"
+	cont "to our time."
+	done
+
+Text_IlexForestLyraArmorSuit:
+	text "Lyra: What strange"
+	line "adventure did you"
+	cont "have by yourself?"
+
+	para "You dropped this…"
+	line "thing when Celebi"
+	cont "brought you back…"
+	done
+
+Text_IlexForestLyraGoodbye:
+	text "Lyra: This sure"
+	line "was a bizarre day."
+
+	para "I'm exhausted, I"
+	line "had better get"
+	cont "going."
+
+	para "You should rest"
+	line "too, <PLAYER>."
+
+	para "See you!"
+	done
+
 Bug_catcherWayneSeenText:
 	text "Don't sneak up on"
 	line "me like that!"
@@ -1232,4 +1332,4 @@ IlexForest_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 15, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestAntidote, EVENT_ILEX_FOREST_ANTIDOTE
 	person_event SPRITE_POKE_BALL, 1, 27, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, IlexForestEther, EVENT_ILEX_FOREST_ETHER
 	person_event SPRITE_CELEBI, 24, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
-	person_event SPRITE_LYRA, 24, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_LYRA
+	person_event SPRITE_LYRA, 23, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA
