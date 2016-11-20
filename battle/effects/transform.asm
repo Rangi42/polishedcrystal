@@ -96,7 +96,7 @@ BattleCommand_Transform: ; 371cd
 	ld [de], a
 	inc de
 ; move pointer to stats
-	ld bc, BattleMonStats - BattleMonPersonality
+	ld bc, BattleMonStats - BattleMonPP
 	add hl, bc
 	push hl
 	ld h, d

@@ -225,6 +225,8 @@ NewBarkTownSilverScript:
 	end
 
 NewBarkTownSign:
+	warp CINNABAR_LAB, $1e, $10
+	end
 	jumptext NewBarkTownSignText
 
 MapNewBarkTownSignpost1Script:

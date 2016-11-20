@@ -3,6 +3,9 @@ const_value set 2
 	const CINNABARLAB_MEWTWO
 	const CINNABARLAB_SCIENTIST1
 	const CINNABARLAB_SCIENTIST2
+	const CINNABARLAB_CELEBI
+	const CINNABARLAB_CHRIS
+	const CINNABARLAB_KRIS
 
 CinnabarLab_MapScriptHeader:
 .MapTriggers:
@@ -36,6 +39,9 @@ CinnabarLabCelebiEventScript:
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	pause 15
+	setevent EVENT_CINNABAR_LAB_CELEBI
+	setevent EVENT_CINNABAR_LAB_CHRIS
+	setevent EVENT_CINNABAR_LAB_KRIS
 	dotrigger $0
 	warpfacing UP, CINNABAR_LAB, $f, $9
 	special Special_FadeOutMusic
@@ -62,7 +68,26 @@ CinnabarLabCelebiEventScript:
 	setlasttalked CINNABARLAB_GIOVANNI
 	loadtrainer GIOVANNI, 2
 	startbattle
+	dontrestartmapmusic
 	reloadmapafterbattle
+	special DeleteSavedMusic
+	playmusic MUSIC_NONE
+	opentext
+	writetext CinnabarLabGiovanniAfterText
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, CINNABARLAB_MEWTWO, 15
+	opentext
+	writetext CinnabarLabMewtwoText
+	cry MEWTWO
+	waitsfx
+	closetext
+	applymovement CINNABARLAB_MEWTWO, CinnabarLabMewtwoFloatsDownMovementData
+	applymovement PLAYER, CinnabarLabPlayerStepsBackMovementData
+	waitsfx
+	appear CINNABARLAB_CHRIS
+	applymovement PLAYER, CinnabarLabHidePlayerMovementData
+	waitsfx
 	end
 
 CinnabarLabRoom1Sign:
@@ -76,6 +101,9 @@ CinnabarLabRoom3Sign:
 
 CinnabarLabRoom4Sign:
 	jumptext CinnabarLabRoom4SignText
+
+CinnabarLabLockedDoorSign:
+	jumptext CinnabarLabLockedDoorText
 
 CinnabarLabStepDownMovementData:
 	step_down
@@ -94,26 +122,38 @@ CinnabarLabPlayerStepsUpMovementData:
 	slow_step_up
 	step_end
 
-CinnabarLabLockedDoorSign:
-	jumptext CinnabarLabLockedDoorText
+CinnabarLabMewtwoFloatsDownMovementData:
+	fix_facing
+	slow_step_down
+	slow_step_down
+	remove_fixed_facing
+	step_end
+
+CinnabarLabPlayerStepsBackMovementData:
+	fix_facing
+	step_down
+	remove_fixed_facing
+	step_end
+
+CinnabarLabHidePlayerMovementData:
+	hide_person
+	step_end
 
 CinnabarLabRoom1SignText:
-	text "Cloning"
-	line "Dept."
+	text "Cloning Room"
 	done
 
 CinnabarLabRoom2SignText:
-	text "Cybernetics"
-	line "Dept."
+	text "Cybernetics Room"
 	done
 
 CinnabarLabRoom3SignText:
-	text "Storage"
+	text "Storage Room"
 	done
 
 CinnabarLabRoom4SignText:
 	text "Project Amber"
-	line "Testing Area"
+	line "Testing Room"
 
 	para "ABSOLUTELY NO"
 	line "ENTRY WITHOUT"
@@ -159,6 +199,24 @@ CinnabarLabGiovanniBeatenText:
 	line "Impossible!"
 	done
 
+CinnabarLabGiovanniAfterText:
+	text "Giovanni: How was"
+	line "a kid like you"
+
+	para "able to beat the"
+	line "perfect #mon?"
+
+	para "It was created to"
+	line "fight for me!"
+
+	para "It shouldn't be"
+	line "this useless!"
+	done
+
+CinnabarLabMewtwoText:
+	text "???: Myuu!"
+	done
+
 CinnabarLab_MapEventHeader:
 	; filler
 	db 0, 0
@@ -184,8 +242,11 @@ CinnabarLab_MapEventHeader:
 	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
 
 .PersonEvents:
-	db 4
+	db 7
 	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_MEWTWO, 4, 15, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_CELEBI, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
+	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
+	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
