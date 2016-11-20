@@ -6,6 +6,19 @@ PrintMonTypes: ; 5090d
 	call GetBaseData
 	pop hl
 
+	; PrintMonTypes is only called for the stats screen,
+	; so assume that the full data is in TempMon
+	; Armored Mewtwo is Psychic/Steel
+	ld a, [TempMonSpecies]
+	cp MEWTWO
+	jr nz, .not_armored_mewtwo
+	ld a, [TempMonItem]
+	cp ARMOR_SUIT
+	jr nz, .not_armored_mewtwo
+	ld a, STEEL
+	ld [BaseType2], a
+.not_armored_mewtwo
+
 	push hl
 	ld a, [BaseType1]
 	call .Print

@@ -108,7 +108,7 @@ endr
 	pop bc
 
 	ld a, [hl]
-	cp ARMOR_PIECE
+	cp ARMOR_SUIT
 	jr z, .armored_mewtwo
 	ld a, 1 ; plain
 	ld [MonVariant], a

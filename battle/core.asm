@@ -4067,6 +4067,18 @@ InitBattleMon: ; 3da0d
 	ld [BattleMonType1], a
 	ld a, [BaseType2]
 	ld [BattleMonType2], a
+
+	; Armored Mewtwo is Psychic/Steel
+	ld a, [BattleMonSpecies]
+	cp MEWTWO
+	jr nz, .not_armored_mewtwo
+	ld a, [BattleMonItem]
+	cp ARMOR_SUIT
+	jr nz, .not_armored_mewtwo
+	ld a, STEEL
+	ld [BattleMonType2], a
+.not_armored_mewtwo
+
 	ld hl, PartyMonNicknames
 	ld a, [CurBattleMon]
 	call SkipNames
@@ -4190,6 +4202,18 @@ InitEnemyMon: ; 3dabd
 	inc de
 	ld a, [hl]
 	ld [de], a
+
+	; Armored Mewtwo is Psychic/Steel
+	ld a, [EnemyMonSpecies]
+	cp MEWTWO
+	jr nz, .not_armored_mewtwo
+	ld a, [EnemyMonItem]
+	cp ARMOR_SUIT
+	jr nz, .not_armored_mewtwo
+	ld a, STEEL
+	ld [EnemyMonType2], a
+.not_armored_mewtwo
+
 	ld hl, BaseStats
 	ld de, EnemyMonBaseStats
 	ld b, 5
@@ -6804,6 +6828,17 @@ endr
 	inc de
 	ld a, [hl]
 	ld [de], a
+
+	; Armored Mewtwo is Psychic/Steel
+	ld a, [EnemyMonSpecies]
+	cp MEWTWO
+	jr nz, .not_armored_mewtwo
+	ld a, [EnemyMonItem]
+	cp ARMOR_SUIT
+	jr nz, .not_armored_mewtwo
+	ld a, STEEL
+	ld [EnemyMonType2], a
+.not_armored_mewtwo
 
 ; Get moves
 	ld de, EnemyMonMoves

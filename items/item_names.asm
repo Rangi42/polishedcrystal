@@ -104,7 +104,7 @@
 	db "Old Sea Map@"
 	db "Shiny Charm@"
 	db "Oval Charm@"
-	db "Armor Piece@"
+	db "Armor Suit@"
 	db "Oran Berry@"
 	db "Sitrus Berry@"
 	db "Pecha Berry@"

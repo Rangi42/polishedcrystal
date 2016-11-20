@@ -12575,7 +12575,7 @@ GiovanniGroup:
 
 	; party
 
-	db 66, MEWTWO, ARMOR_PIECE, ABILITY_2 | MODEST, MALE, "???@"
+	db 66, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE, "???@"
 		db NASTY_PLOT
 		db PSYSTRIKE
 		db SHADOW_BALL

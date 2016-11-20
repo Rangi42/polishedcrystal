@@ -362,7 +362,7 @@ IlexForestFarfetchdScript:
 
 IlexForestFinishCelebiEventScript:
 	; TODO: finish Celebi event
-	giveitem ARMOR_PIECE
+	giveitem ARMOR_SUIT
 	setevent EVENT_TIME_TRAVEL_FINISHED
 	dotrigger $0
 	end

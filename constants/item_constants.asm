@@ -122,7 +122,7 @@
 	const OLD_SEA_MAP  ; $68
 	const SHINY_CHARM  ; $69
 	const OVAL_CHARM   ; $6a
-	const ARMOR_PIECE  ; $6b
+	const ARMOR_SUIT   ; $6b
 
 	const ORAN_BERRY   ; $6c
 	const SITRUS_BERRY ; $6d

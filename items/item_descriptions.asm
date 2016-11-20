@@ -140,7 +140,7 @@ ItemDescriptions:
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
-	dw ArmorPieceDesc
+	dw ArmorSuitDesc
 	dw OranBerryDesc
 	dw SitrusBerryDesc
 	dw PechaBerryDesc
@@ -712,9 +712,9 @@ OvalCharmDesc:
 	db   "A charm for find-"
 	next "ing Eggs.@"
 
-ArmorPieceDesc:
-	db   "A piece of armor"
-	next "from the past.@"
+ArmorSuitDesc:
+	db   "A suit of armor"
+	next "for some #mon.@"
 
 OranBerryDesc:
 	db   "A self-restore"
