@@ -378,3 +378,5 @@ BASEMON_EV_YIELD_1    EQUS "(BaseData + BaseEVYield1 - CurBaseData)"
 BASEMON_EV_YIELD_2    EQUS "(BaseData + BaseEVYield2 - CurBaseData)"
 BASEMON_TMHM          EQUS "(BaseData + BaseTMHM - CurBaseData)"
 BASEMON_STRUCT_LENGTH EQUS "(BaseData1 - BaseData0)"
+
+BATTLEMON_STRUCT_LENGTH EQUS "(BattleMonStructEnd - BattleMonSpecies)"

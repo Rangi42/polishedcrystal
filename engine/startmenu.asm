@@ -1593,7 +1593,6 @@ MoveScreenLoop: ; 12fd5
 	call PlaceHollowCursor
 	jp .moving_move
 
-; BUG: swapping moves corrupts PP (TODO: fix)
 .place_move
 	ld hl, PartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -1602,19 +1601,19 @@ MoveScreenLoop: ; 12fd5
 	push hl
 	call .copy_move
 	pop hl
-	ld bc, $15
+	ld bc, MON_PP - MON_MOVES
 	add hl, bc
 	call .copy_move
 	ld a, [wBattleMode]
 	jr z, .swap_moves
 	ld hl, BattleMonMoves
-	ld bc, $20
+	ld bc, BATTLEMON_STRUCT_LENGTH
 	ld a, [CurPartyMon]
 	call AddNTimes
 	push hl
 	call .copy_move
 	pop hl
-	ld bc, 6
+	ld bc, (BattleMonPP - BattleMonMoves)
 	add hl, bc
 	call .copy_move
 
