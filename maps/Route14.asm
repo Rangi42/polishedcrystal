@@ -119,6 +119,9 @@ UnknownText_0x1ad660:
 
 	para "identify where I"
 	line "got my #mon…"
+
+	para "Oh! I can just"
+	line "check its stats!"
 	done
 
 Route14_MapEventHeader:
