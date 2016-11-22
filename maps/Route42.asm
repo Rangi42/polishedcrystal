@@ -2,6 +2,7 @@ const_value set 2
 	const ROUTE42_FISHER
 	const ROUTE42_POKEFAN_M
 	const ROUTE42_SUPER_NERD
+	const ROUTE42_CUT_TREE
 	const ROUTE42_FRUIT_TREE1
 	const ROUTE42_FRUIT_TREE2
 	const ROUTE42_FRUIT_TREE3
@@ -354,6 +355,9 @@ Route42UltraBall:
 Route42SuperPotion:
 	itemball SUPER_POTION
 
+Route42CutTree:
+	jumpstd cuttree
+
 FruitTreeScript_0x1a934d:
 	fruittree FRUITTREE_ROUTE_42_1
 
@@ -631,10 +635,11 @@ Route42_MapEventHeader:
 	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
 
 .PersonEvents:
-	db 13
+	db 14
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
+	person_event SPRITE_CUT_TREE, 13, 24, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route42CutTree, EVENT_ROUTE_42_CUT_TREE
 	person_event SPRITE_FRUIT_TREE, 16, 27, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934d, -1
 	person_event SPRITE_FRUIT_TREE, 16, 28, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934f, -1
 	person_event SPRITE_FRUIT_TREE, 16, 29, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1

@@ -122,71 +122,71 @@
 	const OLD_SEA_MAP  ; $68
 	const SHINY_CHARM  ; $69
 	const OVAL_CHARM   ; $6a
-	const ARMOR_SUIT   ; $6b
 
-	const ORAN_BERRY   ; $6c
-	const SITRUS_BERRY ; $6d
-	const PECHA_BERRY  ; $6e
-	const RAWST_BERRY  ; $6f
-	const CHERI_BERRY  ; $70
-	const CHESTO_BERRY ; $71
-	const ASPEAR_BERRY ; $72
-	const PERSIM_BERRY ; $73
-	const LUM_BERRY    ; $74
-	const LEPPA_BERRY  ; $75
+	const ORAN_BERRY   ; $6b
+	const SITRUS_BERRY ; $6c
+	const PECHA_BERRY  ; $6d
+	const RAWST_BERRY  ; $6e
+	const CHERI_BERRY  ; $6f
+	const CHESTO_BERRY ; $70
+	const ASPEAR_BERRY ; $71
+	const PERSIM_BERRY ; $72
+	const LUM_BERRY    ; $73
+	const LEPPA_BERRY  ; $74
 
-	const POMEG_BERRY  ; $76
-	const KELPSY_BERRY ; $77
-	const QUALOT_BERRY ; $78
-	const HONDEW_BERRY ; $79
-	const GREPA_BERRY  ; $7a
-	const TAMATO_BERRY ; $7b
+	const POMEG_BERRY  ; $75
+	const KELPSY_BERRY ; $76
+	const QUALOT_BERRY ; $77
+	const HONDEW_BERRY ; $78
+	const GREPA_BERRY  ; $79
+	const TAMATO_BERRY ; $7a
 
-	const RED_APRICORN ; $7c
-	const BLU_APRICORN ; $7d
-	const YLW_APRICORN ; $7e
-	const GRN_APRICORN ; $7f
-	const WHT_APRICORN ; $80
-	const BLK_APRICORN ; $81
-	const PNK_APRICORN ; $82
+	const RED_APRICORN ; $7b
+	const BLU_APRICORN ; $7c
+	const YLW_APRICORN ; $7d
+	const GRN_APRICORN ; $7e
+	const WHT_APRICORN ; $7f
+	const BLK_APRICORN ; $80
+	const PNK_APRICORN ; $81
 
-	const SILK_SCARF   ; $83
-	const BLACK_BELT   ; $84
-	const SHARP_BEAK   ; $85
-	const POISON_BARB  ; $86
-	const SOFT_SAND    ; $87
-	const HARD_STONE   ; $88
-	const SILVERPOWDER ; $89
-	const SPELL_TAG    ; $8a
-	const METAL_COAT   ; $8b
-	const CHARCOAL     ; $8c
-	const MYSTIC_WATER ; $8d
-	const MIRACLE_SEED ; $8e
-	const MAGNET       ; $8f
-	const TWISTEDSPOON ; $90
-	const NEVERMELTICE ; $91
-	const DRAGON_FANG  ; $92
-	const BLACKGLASSES ; $93
-	const PINK_BOW     ; $94
+	const SILK_SCARF   ; $82
+	const BLACK_BELT   ; $83
+	const SHARP_BEAK   ; $84
+	const POISON_BARB  ; $85
+	const SOFT_SAND    ; $86
+	const HARD_STONE   ; $87
+	const SILVERPOWDER ; $88
+	const SPELL_TAG    ; $89
+	const METAL_COAT   ; $8a
+	const CHARCOAL     ; $8b
+	const MYSTIC_WATER ; $8c
+	const MIRACLE_SEED ; $8d
+	const MAGNET       ; $8e
+	const TWISTEDSPOON ; $8f
+	const NEVERMELTICE ; $90
+	const DRAGON_FANG  ; $91
+	const BLACKGLASSES ; $92
+	const PINK_BOW     ; $93
 
-	const BRIGHTPOWDER ; $95
-	const SCOPE_LENS   ; $96
-	const QUICK_CLAW   ; $97
-	const KINGS_ROCK   ; $98
-	const FOCUS_BAND   ; $99
-	const LEFTOVERS    ; $9a
-	const LUCKY_EGG    ; $9b
-	const AMULET_COIN  ; $9c
-	const CLEANSE_TAG  ; $9d
-	const SMOKE_BALL   ; $9e
-	const BERSERK_GENE ; $9f
+	const BRIGHTPOWDER ; $94
+	const SCOPE_LENS   ; $95
+	const QUICK_CLAW   ; $96
+	const KINGS_ROCK   ; $97
+	const FOCUS_BAND   ; $98
+	const LEFTOVERS    ; $99
+	const LUCKY_EGG    ; $9a
+	const AMULET_COIN  ; $9b
+	const CLEANSE_TAG  ; $9c
+	const SMOKE_BALL   ; $9d
+	const BERSERK_GENE ; $9e
 
-	const LIGHT_BALL   ; $a0
-	const STICK        ; $a1
-	const THICK_CLUB   ; $a2
-	const LUCKY_PUNCH  ; $a3
-	const METAL_POWDER ; $a4
-	const QUICK_POWDER ; $a5
+	const LIGHT_BALL   ; $9f
+	const STICK        ; $a0
+	const THICK_CLUB   ; $a1
+	const LUCKY_PUNCH  ; $a2
+	const METAL_POWDER ; $a3
+	const QUICK_POWDER ; $a4
+	const ARMOR_SUIT   ; $a5
 
 	const AIR_BALLOON  ; $a6
 	const ASSAULT_VEST ; $a7

@@ -12,8 +12,8 @@ const_value set 2
 	const LAKEOFRAGE_GYARADOS_BOTTOM_LEFT
 	const LAKEOFRAGE_GYARADOS_BOTTOM_RIGHT
 	const LAKEOFRAGE_WESLEY
-	const LAKEOFRAGE_POKE_BALL1
-	const LAKEOFRAGE_POKE_BALL2
+	const LAKEOFRAGE_POKE_BALL
+	const LAKEOFRAGE_CUT_TREE
 
 LakeofRage_MapScriptHeader:
 .MapTriggers:
@@ -239,8 +239,8 @@ WesleyNotWednesdayScript:
 LakeofRageElixer:
 	itemball ELIXER
 
-LakeofRageMaxRevive:
-	itemball MAX_REVIVE
+LakeofRageCutTree:
+	jumpstd cuttree
 
 LakeofRageHiddenFullRestore:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE, FULL_RESTORE
@@ -250,6 +250,9 @@ LakeofRageHiddenRareCandy:
 
 LakeofRageHiddenMaxPotion:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION, MAX_POTION
+
+LakeofRageHiddenMaxRevive:
+	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 MovementData_0x70155:
 	teleport_from
@@ -517,12 +520,13 @@ LakeofRage_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 5
+	db 6
 	signpost 27, 21, SIGNPOST_READ, MapLakeofRageSignpost0Script
 	signpost 31, 25, SIGNPOST_READ, MapLakeofRageSignpost1Script
 	signpost 28, 11, SIGNPOST_ITEM, LakeofRageHiddenFullRestore
 	signpost 4, 4, SIGNPOST_ITEM, LakeofRageHiddenRareCandy
 	signpost 5, 35, SIGNPOST_ITEM, LakeofRageHiddenMaxPotion
+	signpost 10, 7, SIGNPOST_ITEM, LakeofRageHiddenMaxRevive
 
 .PersonEvents:
 	db 15
@@ -539,5 +543,5 @@ LakeofRage_MapEventHeader:
 	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 22, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GyaradosScript_0x70063, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 22, 19, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GyaradosScript_0x70063, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_SUPER_NERD, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
-	person_event SPRITE_POKE_BALL, 10, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, LakeofRageElixer, EVENT_LAKE_OF_RAGE_ELIXER
-	person_event SPRITE_POKE_BALL, 2, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, LakeofRageMaxRevive, EVENT_LAKE_OF_RAGE_MAX_REVIVE
+	person_event SPRITE_POKE_BALL, 2, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, LakeofRageElixer, EVENT_LAKE_OF_RAGE_ELIXER
+	person_event SPRITE_CUT_TREE, 21, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeofRageCutTree, EVENT_LAKE_OF_RAGE_CUT_TREE

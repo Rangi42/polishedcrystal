@@ -13,6 +13,7 @@ const_value set 2
 	const ROUTE32_FISHER5
 	const ROUTE32_FRIEDA
 	const ROUTE32_POKE_BALL2
+	const ROUTE32_CUT_TREE
 
 Route32_MapScriptHeader:
 .MapTriggers:
@@ -490,6 +491,9 @@ Route32GreatBall:
 Route32Repel:
 	itemball REPEL
 
+Route32CutTree:
+	jumpstd cuttree
+
 Route32Sign:
 	jumptext Route32SignText
 
@@ -505,10 +509,8 @@ Route32PokeCenterSign:
 Route32HiddenGreatBall:
 	dwb EVENT_ROUTE_32_HIDDEN_GREAT_BALL, GREAT_BALL
 
-
 Route32HiddenSuperPotion:
 	dwb EVENT_ROUTE_32_HIDDEN_SUPER_POTION, SUPER_POTION
-
 
 Movement_Route32CooltrainerMPushesYouBackToViolet:
 	step_up
@@ -887,7 +889,7 @@ Route32_MapEventHeader:
 	signpost 40, 11, SIGNPOST_ITEM, Route32HiddenSuperPotion
 
 .PersonEvents:
-	db 14
+	db 15
 	person_event SPRITE_FISHER, 49, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherJustin, -1
 	person_event SPRITE_FISHER, 56, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherRalph1, -1
 	person_event SPRITE_FISHER, 48, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHenry, -1
@@ -902,3 +904,4 @@ Route32_MapEventHeader:
 	person_event SPRITE_FISHER, 13, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32RoarTMGuyScript, -1
 	person_event SPRITE_NEW_BARK_LYRA, 67, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
 	person_event SPRITE_POKE_BALL, 28, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route32Repel, EVENT_ROUTE_32_REPEL
+	person_event SPRITE_CUT_TREE, 19, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CutTree, EVENT_ROUTE_32_CUT_TREE

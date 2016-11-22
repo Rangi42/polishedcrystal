@@ -8,6 +8,7 @@ const_value set 2
 	const ROUTE35_BUG_CATCHER
 	const ROUTE35_SUPER_NERD
 	const ROUTE35_OFFICER_M
+	const ROUTE35_CUT_TREE
 	const ROUTE35_FRUIT_TREE
 	const ROUTE35_POKE_BALL
 
@@ -282,6 +283,9 @@ Route35Sign:
 Route35TMHoneClaws:
 	tmhmball TM_HONE_CLAWS
 
+Route35CutTree:
+	jumpstd cuttree
+
 FruitTreeScript_0x19ca7e:
 	fruittree FRUITTREE_ROUTE_35
 
@@ -485,7 +489,7 @@ Route35_MapEventHeader:
 	signpost 31, 11, SIGNPOST_READ, Route35Sign
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_YOUNGSTER, 19, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
 	person_event SPRITE_YOUNGSTER, 20, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli1, -1
 	person_event SPRITE_LASS, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli2, -1
@@ -495,5 +499,6 @@ Route35_MapEventHeader:
 	person_event SPRITE_BUG_CATCHER, 7, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
 	person_event SPRITE_SUPER_NERD, 10, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
 	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
+	person_event SPRITE_CUT_TREE, 6, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route35CutTree, EVENT_ROUTE_35_CUT_TREE
 	person_event SPRITE_FRUIT_TREE, 25, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19ca7e, -1
 	person_event SPRITE_POKE_BALL, 16, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route35TMHoneClaws, EVENT_ROUTE_35_TM_HONE_CLAWS

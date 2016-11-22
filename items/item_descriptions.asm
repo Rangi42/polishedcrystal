@@ -140,7 +140,6 @@ ItemDescriptions:
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
-	dw ArmorSuitDesc
 	dw OranBerryDesc
 	dw SitrusBerryDesc
 	dw PechaBerryDesc
@@ -199,6 +198,7 @@ ItemDescriptions:
 	dw LuckyPunchDesc
 	dw MetalPowderDesc
 	dw QuickPowderDesc
+	dw ArmorSuitDesc
 	dw AirBalloonDesc
 	dw AssaultVestDesc
 	dw BigRootDesc
@@ -712,10 +712,6 @@ OvalCharmDesc:
 	db   "A charm for find-"
 	next "ing Eggs.@"
 
-ArmorSuitDesc:
-	db   "A suit of armor"
-	next "for some #mon.@"
-
 OranBerryDesc:
 	db   "A self-restore"
 	next "item. (10HP, Hold)@"
@@ -942,6 +938,10 @@ MetalPowderDesc:
 QuickPowderDesc:
 	db   "Raises Speed of"
 	next "Ditto. (Hold)@"
+
+ArmorSuitDesc:
+	db   "A suit of armor"
+	next "for some #mon.@"
 
 AirBalloonDesc:
 AssaultVestDesc:

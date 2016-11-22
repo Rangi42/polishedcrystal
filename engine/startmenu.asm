@@ -1593,6 +1593,7 @@ MoveScreenLoop: ; 12fd5
 	call PlaceHollowCursor
 	jp .moving_move
 
+; BUG: swapping moves corrupts PP (TODO: fix)
 .place_move
 	ld hl, PartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH

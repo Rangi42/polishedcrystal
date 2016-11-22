@@ -120,7 +120,6 @@ ItemEffects: ; e73c
 	dw OldSeaMap
 	dw ShinyCharm
 	dw OvalCharm
-	dw ArmorSuit
 	dw OranBerry
 	dw SitrusBerry
 	dw PechaBerry
@@ -179,6 +178,7 @@ ItemEffects: ; e73c
 	dw LuckyPunch
 	dw MetalPowder
 	dw QuickPowder
+	dw ArmorSuit
 	dw AirBalloon
 	dw AssaultVest
 	dw BigRoot
@@ -3228,8 +3228,8 @@ MysticTicket:
 OldSeaMap:
 ShinyCharm:
 OvalCharm:
-ArmorSuit:
 QuickPowder:
+ArmorSuit:
 AirBalloon:
 AssaultVest:
 BigRoot:
