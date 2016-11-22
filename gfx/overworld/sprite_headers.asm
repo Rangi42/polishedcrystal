@@ -504,6 +504,9 @@ BoulderSprite: ; 1494c
 	sprite_header BoulderSpriteGFX, 1, STILL_SPRITE, PAL_OW_ROCK
 ; 14952
 
+CutTreeSprite:
+	sprite_header CutTreeSpriteGFX, 1, STILL_SPRITE, PAL_OW_TREE
+
 FruitTreeSprite: ; 1495e
 	sprite_header FruitTreeSpriteGFX, 1, STILL_SPRITE, PAL_OW_TREE
 ; 14964

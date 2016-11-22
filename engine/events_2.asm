@@ -57,12 +57,6 @@ CheckFacingTileEvent:: ; 97c5f
 	farcall CheckFacingTileForStd
 	jr c, .done
 
-	call CheckCutTreeTile
-	jr nz, .whirlpool
-	farcall TryCutOW
-	jr .done
-
-.whirlpool
 	ld a, [EngineBuffer1]
 	call CheckWhirlpoolTile
 	jr nz, .waterfall

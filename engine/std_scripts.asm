@@ -52,6 +52,7 @@ StdScripts::
 	dba PCScript
 	dba GameCornerCoinVendorScript
 	dba HappinessCheckScript
+	dba CutTreeScript
 
 PokeCenterNurseScript:
 	opentext
@@ -1970,3 +1971,6 @@ Movement_ContestResults_WalkAfterWarp: ; bcea1
 	turn_head_up
 	step_end
 ; bcea5
+
+CutTreeScript:
+	farjump AskCutTreeScript

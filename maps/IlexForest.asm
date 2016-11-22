@@ -1,4 +1,5 @@
 const_value set 2
+	const ILEXFOREST_CUT_TREE
 	const ILEXFOREST_FARFETCHD
 	const ILEXFOREST_YOUNGSTER1
 	const ILEXFOREST_BLACK_BELT
@@ -648,6 +649,9 @@ MapIlexForestSignpost4Script:
 	domaptrigger ROUTE_22, $1
 	warp ROUTE_22, $20, $9
 	end
+
+IlexForestCutTree:
+	jumpstd cuttree
 
 MovementData_Farfetchd_Pos1_Pos2:
 	big_step_up
@@ -1319,7 +1323,8 @@ IlexForest_MapEventHeader:
 	signpost 6, 17, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
 
 .PersonEvents:
-	db 13
+	db 14
+	person_event SPRITE_CUT_TREE, 25, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCutTree, EVENT_ILEX_FOREST_CUT_TREE
 	person_event SPRITE_BIRD, 31, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	person_event SPRITE_YOUNGSTER, 28, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
 	person_event SPRITE_BLACK_BELT, 28, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER

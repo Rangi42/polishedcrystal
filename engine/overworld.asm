@@ -880,12 +880,12 @@ Group2Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 12 walking sprites (8 that walk)
+	; 10 walking sprites (8 that walk)
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
-	; 13 total sprites
-	db SPRITE_POKE_BALL
+	; 14 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -943,12 +943,12 @@ Group4Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER ; doesn't walk
 	; 10 walking sprites (9 that walk)
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
 	db SPRITE_WEIRD_TREE
-	; 14 total sprites
-	db SPRITE_POKE_BALL
+	; 15 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1052,11 +1052,11 @@ Group28Sprites:
 	db SPRITE_KRIS ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
 	; 12 walking sprites (9 that walk)
+	db SPRITE_CUT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SLOWBRO
 	db SPRITE_ZAPDOS
-	; 15 total sprites
-	db SPRITE_POKE_BALL
+	; 16 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1113,10 +1113,10 @@ Group9Sprites:
 	db SPRITE_GYARADOS_TOP_RIGHT
 	db SPRITE_GYARADOS_BOTTOM_LEFT
 	db SPRITE_GYARADOS_BOTTOM_RIGHT
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 15 total sprites
-	db SPRITE_POKE_BALL
+	; 16 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1152,12 +1152,12 @@ Group26Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_POKEFAN_M ; doesn't walk
 	; 10 walking sprites (9 that walk)
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_PIDGEY
 	db SPRITE_POKE_BALL
 	db SPRITE_RATTATA
-	; 14 total sprites
-	db SPRITE_POKE_BALL
+	; 15 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1212,9 +1212,9 @@ Group12Sprites:
 	; 7 walking sprites
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_MACHOP
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
-	; 10 total sprites
-	db SPRITE_FRUIT_TREE
+	; 11 total sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_FRUIT_TREE
@@ -1340,10 +1340,10 @@ Group17Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	; 8 walking sprites
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 10 total sprites
-	db SPRITE_POKE_BALL
+	; 11 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1372,10 +1372,10 @@ Group18Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
 	; 9 walking sprites
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 11 total sprites
-	db SPRITE_POKE_BALL
+	; 12 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1398,8 +1398,8 @@ Group19Sprites:
 	db SPRITE_LAWRENCE
 	; 2 walking sprites
 	db SPRITE_MEW
-	; 3 total sprites
-	db SPRITE_POKE_BALL
+	db SPRITE_CUT_TREE
+	; 4 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1432,10 +1432,10 @@ Group20Sprites:
 	db SPRITE_YELLOW
 	; 6 walking sprites
 	db SPRITE_HOOTHOOT
+	db SPRITE_CUT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SKARMORY
-	; 9 total sprites
-	db SPRITE_POKE_BALL
+	; 10 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1467,8 +1467,8 @@ Group21Sprites:
 	; 8 walking sprites (7 that walk)
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
-	; 10 total sprites
-	db SPRITE_POKE_BALL
+	db SPRITE_CUT_TREE
+	; 11 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1497,10 +1497,10 @@ Group23Sprites:
 	db SPRITE_SILVER
 	db SPRITE_YOUNGSTER
 	; 8 walking sprites
+	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 10 total sprites
-	db SPRITE_POKE_BALL
+	; 11 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL

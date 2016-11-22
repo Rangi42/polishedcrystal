@@ -195,7 +195,7 @@ CheckMapForSomethingToCut: ; c7ce
 	ld c, [hl]
 	; See if that block contains something that can be cut.
 	push hl
-	ld hl, CutTreeBlockPointers
+	ld hl, CutGrassBlockPointers
 	call CheckOverworldTileArrays
 	pop hl
 	jr nc, .fail
@@ -220,17 +220,15 @@ CheckMapForSomethingToCut: ; c7ce
 Script_CutFromMenu: ; c7fe
 	reloadmappart
 	special UpdateTimePals
-
-Script_Cut: ; 0xc802
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
 	closetext
 	scall FieldMovePokepicScript
-	callasm CutDownTreeOrGrass
+	callasm CutDownGrass
 	closetext
 	end
 
-CutDownTreeOrGrass: ; c810
+CutDownGrass: ; c810
 	ld hl, Buffer3 ; OverworldMapTile
 	ld a, [hli]
 	ld h, [hl]
@@ -242,7 +240,7 @@ CutDownTreeOrGrass: ; c810
 	call OverworldTextModeSwitch
 	call UpdateSprites
 	call DelayFrame
-	ld a, [Buffer6] ; Animation type
+	ld a, [Buffer6] ; Animation type (always 1)
 	ld e, a
 	farcall OWCutAnimation
 	call BufferScreen
@@ -288,7 +286,7 @@ CheckOverworldTileArrays: ; c840
 	xor a
 	ret
 
-CutTreeBlockPointers: ; c862
+CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
@@ -302,73 +300,63 @@ CutTreeBlockPointers: ; c862
 
 .johto1 ; Johto OW
 ; Which meta tile are we facing, which should we replace it with, and which animation?
-	db $03, $02, $01 ; grass
-	db $5b, $3c, $00 ; tree
-	db $5f, $3d, $00 ; tree
-	db $63, $3f, $00 ; tree
-	db $67, $3e, $00 ; tree
+	db $03, $02, $01
 	db -1
 
 .johto2 ; Goldenrod area
-	db $03, $02, $01 ; grass
+	db $03, $02, $01
 	db -1
 
 .kanto ; Kanto OW
-	db $0b, $0a, $01 ; grass
-	db $32, $6d, $00 ; tree
-	db $33, $6c, $00 ; tree
-	db $34, $6f, $00 ; tree
-	db $35, $4c, $00 ; tree
-	db $60, $6e, $00 ; tree
+	db $0b, $0a, $01
 	db -1
 
 .johto3 ; outside Battle Tower
-	db $03, $02, $01 ; grass
+	db $03, $02, $01
 	db -1
 
 .park ; National Park
-	db $13, $03, $01 ; grass
-	db $03, $04, $01 ; grass
+	db $13, $03, $01
+	db $03, $04, $01
 	db -1
 
 .forest ; Ilex Forest + Yellow Forest
-	db $0f, $17, $00 ; tree
-	db $2e, $01, $01 ; grass
-	db $2f, $2c, $01 ; grass
-	db $30, $0e, $01 ; grass
-	db $31, $0c, $01 ; grass
-	db $51, $01, $01 ; grass
-	db $52, $09, $01 ; grass
-	db $53, $11, $01 ; grass
+	db $2e, $01, $01
+	db $2f, $2c, $01
+	db $30, $0e, $01
+	db $31, $0c, $01
+	db $51, $01, $01
+	db $52, $09, $01
+	db $53, $11, $01
 	db -1
 
 .safari_zone ; Safari Zone
-	db $03, $01, $01 ; grass
-	db $07, $01, $01 ; grass
-	db $24, $20, $01 ; grass
-	db $25, $21, $01 ; grass
-	db $26, $22, $01 ; grass
-	db $27, $23, $01 ; grass
-	db $28, $0a, $01 ; grass
-	db $29, $0a, $01 ; grass
-	db $2a, $0a, $01 ; grass
-	db $2b, $0a, $01 ; grass
-	db $2c, $0a, $01 ; grass
-	db $2d, $0a, $01 ; grass
-	db $2e, $0a, $01 ; grass
-	db $2f, $0a, $01 ; grass
+	db $03, $01, $01
+	db $07, $01, $01
+	db $24, $20, $01
+	db $25, $21, $01
+	db $26, $22, $01
+	db $27, $23, $01
+	db $28, $0a, $01
+	db $29, $0a, $01
+	db $2a, $0a, $01
+	db $2b, $0a, $01
+	db $2c, $0a, $01
+	db $2d, $0a, $01
+	db $2e, $0a, $01
+	db $2f, $0a, $01
 	db -1
 
 .faraway_island ; Faraway Island
-	db $03, $02, $01 ; grass
-	db $08, $74, $01 ; grass
-	db $09, $75, $01 ; grass
-	db $0a, $76, $01 ; grass
-	db $0b, $77, $01 ; grass
-	db $0c, $02, $01 ; grass
-	db $0d, $02, $01 ; grass
-	db $0e, $02, $01 ; grass
-	db $0f, $02, $01 ; grass
+	db $03, $02, $01
+	db $08, $74, $01
+	db $09, $75, $01
+	db $0a, $76, $01
+	db $0b, $77, $01
+	db $0c, $02, $01
+	db $0d, $02, $01
+	db $0e, $02, $01
+	db $0f, $02, $01
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4
@@ -384,6 +372,33 @@ WhirlpoolBlockPointers: ; c8a4
 .johto2
 	db $83, $36, $00
 	db -1
+
+Script_CutTree:
+	callasm PrepareOverworldMove
+	writetext Text_UsedCut
+	closetext
+	special WaitSFX
+	scall FieldMovePokepicScript
+	disappear -2
+	callasm CutDownTree
+	closetext
+	end
+
+CutDownTree:
+	xor a
+	ld [hBGMapMode], a
+	call OverworldTextModeSwitch
+	call UpdateSprites
+	call DelayFrame
+	xor a ; Animation type
+	ld e, a
+	farcall OWCutAnimation
+	call BufferScreen
+	call GetMovementPermissions
+	call UpdateSprites
+	call DelayFrame
+	call LoadStandardFont
+	ret
 
 OWFlash: ; c8ac
 	call .CheckUseFlash
@@ -1909,55 +1924,44 @@ GotOffTheBikeText: ; 0xd181
 	text_jump UnknownText_0x1c09c7
 	db "@"
 
-TryCutOW:: ; d186
+HasCutAvailable:: ; d186
 	ld d, CUT
 	call CheckPartyMove
-	jr c, .cant_cut
+	jr c, .no
 
 	ld de, ENGINE_HIVEBADGE
 	call CheckEngineFlag
-	jr c, .cant_cut
+	jr c, .no
 
-	ld a, BANK(AskCutScript)
-	ld hl, AskCutScript
-	call CallScript
-	scf
+.yes
+	xor a
+	jr .done
+
+.no
+	ld a, 1
+.done
+	ld [ScriptVar], a
 	ret
 
-.cant_cut
-	ld a, BANK(CantCutScript)
-	ld hl, CantCutScript
-	call CallScript
-	scf
-	ret
+AskCutTreeScript: ; 0xd1a9
+	callasm HasCutAvailable
+	if_equal 1, .no
 
-AskCutScript: ; 0xd1a9
 	opentext
 	writetext UnknownText_0xd1c8
 	yesorno
-	iffalse .script_d1b8
-	callasm .CheckMap
-	iftrue Script_Cut
-.script_d1b8
+	iftrue Script_CutTree
 	closetext
 	end
-
-.CheckMap: ; d1ba
-	xor a
-	ld [ScriptVar], a
-	call CheckMapForSomethingToCut
-	ret c
-	ld a, TRUE
-	ld [ScriptVar], a
-	ret
+.no ; 0xd1cd
+	jumptext UnknownText_0xd1d0
 
 UnknownText_0xd1c8: ; 0xd1c8
+	; This tree can be CUT! Want to use CUT?
 	text_jump UnknownText_0x1c09dd
 	db "@"
 
-CantCutScript: ; 0xd1cd
-	jumptext UnknownText_0xd1d0
-
 UnknownText_0xd1d0: ; 0xd1d0
+	; This tree can be CUT!
 	text_jump UnknownText_0x1c0a05
 	db "@"

@@ -154,13 +154,6 @@ CheckPuddleTile::
 	cp $85
 	ret
 
-CheckCutTreeTile:: ; 1894
-	cp $12
-	ret z
-	cp $1a
-	ret
-; 189a
-
 CheckHeadbuttTreeTile:: ; 189a
 	cp $15
 	ret z
