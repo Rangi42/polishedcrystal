@@ -2,6 +2,7 @@ const_value set 2
 	const FUCHSIACITY_YOUNGSTER
 	const FUCHSIACITY_POKEFAN_M
 	const FUCHSIACITY_TEACHER
+	const FUCHSIACITY_CUT_TREE
 	const FUCHSIACITY_FRUIT_TREE
 
 FuchsiaCity_MapScriptHeader:
@@ -53,6 +54,9 @@ FuchsiaCityPokeCenterSign:
 
 FuchsiaCityMartSign:
 	jumpstd martsign
+
+FuchsiaCityCutTree:
+	jumpstd cuttree
 
 FruitTreeScript_0x194b43:
 	fruittree FRUITTREE_FUCHSIA_CITY
@@ -177,8 +181,9 @@ FuchsiaCity_MapEventHeader:
 	signpost 13, 31, SIGNPOST_READ, SafariZoneExhibitSign
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_YOUNGSTER, 18, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x194b22, -1
 	person_event SPRITE_POKEFAN_M, 8, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x194b25, -1
 	person_event SPRITE_TEACHER, 13, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x194b28, -1
+	person_event SPRITE_CUT_TREE, 19, 16, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FuchsiaCityCutTree, EVENT_FUCHSIA_CITY_CUT_TREE
 	person_event SPRITE_FRUIT_TREE, 17, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x194b43, -1

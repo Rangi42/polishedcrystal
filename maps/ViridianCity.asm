@@ -3,6 +3,8 @@ const_value set 2
 	const VIRIDIANCITY_GRAMPS2
 	const VIRIDIANCITY_FISHER
 	const VIRIDIANCITY_YOUNGSTER
+	const VIRIDIANCITY_CUT_TREE1
+	const VIRIDIANCITY_CUT_TREE2
 
 ViridianCity_MapScriptHeader:
 .MapTriggers:
@@ -92,6 +94,9 @@ ViridianCityTutorDreamEaterScript:
 
 YoungsterScript_0x1a9a90:
 	jumptextfaceplayer UnknownText_0x1a9daa
+
+ViridianCityCutTree:
+	jumpstd cuttree
 
 ViridianCitySign:
 	jumptext ViridianCitySignText
@@ -293,8 +298,10 @@ ViridianCity_MapEventHeader:
 	signpost 19, 30, SIGNPOST_READ, ViridianCityMartSign
 
 .PersonEvents:
-	db 4
+	db 6
 	person_event SPRITE_GRAMPS, 5, 18, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
 	person_event SPRITE_GRAMPS, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, -1
 	person_event SPRITE_FISHER, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
 	person_event SPRITE_YOUNGSTER, 21, 17, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9a90, -1
+	person_event SPRITE_CUT_TREE, 4, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_1
+	person_event SPRITE_CUT_TREE, 22, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_2

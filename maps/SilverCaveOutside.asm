@@ -1,3 +1,7 @@
+const_value set 2
+	const SILVERCAVEOUTSIDE_CUT_TREE1
+	const SILVERCAVEOUTSIDE_CUT_TREE2
+
 SilverCaveOutside_MapScriptHeader:
 .MapTriggers:
 	db 0
@@ -11,6 +15,9 @@ SilverCaveOutside_MapScriptHeader:
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_SILVER_CAVE
 	return
+
+SilverCaveOutsideCutTree:
+	jumpstd cuttree
 
 MtSilverPokeCenterSign:
 	jumpstd pokecentersign
@@ -44,4 +51,6 @@ SilverCaveOutside_MapEventHeader:
 	signpost 25, 9, SIGNPOST_ITEM, SilverCaveOutsideHiddenFullRestore
 
 .PersonEvents:
-	db 0
+	db 2
+	person_event SPRITE_CUT_TREE, 24, 31, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCaveOutsideCutTree, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1
+	person_event SPRITE_CUT_TREE, 23, 34, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCaveOutsideCutTree, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_2

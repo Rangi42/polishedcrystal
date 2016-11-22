@@ -10,6 +10,7 @@ const_value set 2
 	const ROUTE25_SUPER_NERD
 	const ROUTE25_COOLTRAINER_M
 	const ROUTE25_POKE_BALL
+	const ROUTE25_CUT_TREE
 
 Route25_MapScriptHeader:
 .MapTriggers:
@@ -186,6 +187,9 @@ UnknownScript_0x19efde:
 	closetext
 	end
 
+Route25CutTree:
+	jumpstd cuttree
+
 BillsHouseSign:
 	jumptext BillsHouseSignText
 
@@ -194,7 +198,6 @@ Route25Protein:
 
 Route25HiddenPotion:
 	dwb EVENT_ROUTE_25_HIDDEN_POTION, POTION
-
 
 MovementData_0x19efe8:
 	big_step_down
@@ -447,7 +450,7 @@ Route25_MapEventHeader:
 	signpost 5, 4, SIGNPOST_ITEM, Route25HiddenPotion
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 46, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	person_event SPRITE_COOLTRAINER_M, 10, 46, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	person_event SPRITE_YOUNGSTER, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
@@ -459,3 +462,4 @@ Route25_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 7, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdPat, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 37, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, -1
 	person_event SPRITE_POKE_BALL, 4, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route25Protein, EVENT_ROUTE_25_PROTEIN
+	person_event SPRITE_CUT_TREE, 6, 34, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route25CutTree, EVENT_ROUTE_25_CUT_TREE

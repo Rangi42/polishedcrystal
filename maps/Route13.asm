@@ -4,6 +4,7 @@ const_value set 2
 	const ROUTE13_POKEFAN_M1
 	const ROUTE13_POKEFAN_M2
 	const ROUTE13_POKEFAN_M3
+	const ROUTE13_CUT_TREE
 
 Route13_MapScriptHeader:
 .MapTriggers:
@@ -66,6 +67,9 @@ HikerKennyScript:
 	waitbutton
 	closetext
 	end
+
+Route13CutTree:
+	jumpstd cuttree
 
 Route13TrainerTips:
 	jumptext Route13TrainerTipsText
@@ -210,9 +214,10 @@ Route13_MapEventHeader:
 	signpost 13, 30, SIGNPOST_ITEM, Route13HiddenCalcium
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_YOUNGSTER, 6, 42, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperPerry, -1
 	person_event SPRITE_YOUNGSTER, 6, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperBret, -1
 	person_event SPRITE_POKEFAN_M, 8, 32, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
 	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerHikerKenny, -1
 	person_event SPRITE_POKEFAN_M, 6, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
+	person_event SPRITE_CUT_TREE, 4, 44, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE

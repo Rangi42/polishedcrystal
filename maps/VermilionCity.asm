@@ -6,6 +6,7 @@ const_value set 2
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_POKEFAN_M
 	const VERMILIONCITY_LAWRENCE
+	const VERMILIONCITY_CUT_TREE
 
 VermilionCity_MapScriptHeader:
 .MapTriggers:
@@ -239,6 +240,9 @@ VermilionCityPokeCenterSign:
 VermilionCityMartSign:
 	jumpstd martsign
 
+VermilionCityCutTree:
+	jumpstd cuttree
+
 VermilionCityHiddenFullHeal:
 	dwb EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL, FULL_HEAL
 
@@ -457,7 +461,7 @@ VermilionCity_MapEventHeader:
 	signpost 19, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
 
 .PersonEvents:
-	db 7
+	db 9
 	person_event SPRITE_COOLTRAINER_F, 9, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1aa983, -1
 	person_event SPRITE_GRAMPS, 6, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionMachopOwner, -1
 	person_event SPRITE_MACHOP, 7, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
@@ -465,3 +469,4 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_BIG_SNORLAX, 8, 34, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_POKEFAN_M, 12, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	person_event SPRITE_LAWRENCE, 24, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
+	person_event SPRITE_CUT_TREE, 18, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityCutTree, EVENT_VERMILION_CITY_CUT_TREE

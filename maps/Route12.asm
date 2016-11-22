@@ -5,6 +5,8 @@ const_value set 2
 	const ROUTE12_FISHER4
 	const ROUTE12_POKE_BALL1
 	const ROUTE12_POKE_BALL2
+	const ROUTE12_CUT_TREE1
+	const ROUTE12_CUT_TREE2
 
 Route12_MapScriptHeader:
 .MapTriggers:
@@ -57,6 +59,9 @@ FisherBarneyScript:
 	closetext
 	end
 
+Route12CutTree:
+	jumpstd cuttree
+
 Route12Sign:
 	jumptext Route12SignText
 
@@ -71,7 +76,6 @@ Route12Nugget:
 
 Route12HiddenElixer:
 	dwb EVENT_ROUTE_12_HIDDEN_ELIXER, ELIXER
-
 
 FisherMartinSeenText:
 	text "Patience is the"
@@ -190,10 +194,12 @@ Route12_MapEventHeader:
 	signpost 19, 14, SIGNPOST_ITEM, Route12HiddenElixer
 
 .PersonEvents:
-	db 6
+	db 8
 	person_event SPRITE_FISHER, 19, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
 	person_event SPRITE_FISHER, 29, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherStephen, -1
 	person_event SPRITE_FISHER, 44, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerFisherBarney, -1
 	person_event SPRITE_FISHER, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherKyle, -1
 	person_event SPRITE_POKE_BALL, 51, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route12Calcium, EVENT_ROUTE_12_CALCIUM
 	person_event SPRITE_POKE_BALL, 58, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route12Nugget, EVENT_ROUTE_12_NUGGET
+	person_event SPRITE_CUT_TREE, 51, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route12CutTree, EVENT_ROUTE_12_CUT_TREE_1
+	person_event SPRITE_CUT_TREE, 57, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route12CutTree, EVENT_ROUTE_12_CUT_TREE_2

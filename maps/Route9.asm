@@ -6,6 +6,7 @@ const_value set 2
 	const ROUTE9_POKEFAN_M1
 	const ROUTE9_POKEFAN_M2
 	const ROUTE9_POKE_BALL
+	const ROUTE9_CUT_TREE
 
 Route9_MapScriptHeader:
 .MapTriggers:
@@ -82,6 +83,9 @@ HikerSidneyScript:
 
 Route9TMFlashCannon:
 	tmhmball TM_FLASH_CANNON
+
+Route9CutTree:
+	jumpstd cuttree
 
 Route9Sign:
 	jumptext Route9SignText
@@ -230,7 +234,7 @@ Route9_MapEventHeader:
 	signpost 13, 46, SIGNPOST_ITEM, Route9HiddenSoftSand
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_YOUNGSTER, 11, 23, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
 	person_event SPRITE_LASS, 8, 39, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerHeidi, -1
 	person_event SPRITE_YOUNGSTER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1
@@ -238,3 +242,4 @@ Route9_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 3, 28, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerTim, -1
 	person_event SPRITE_POKEFAN_M, 15, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSidney, -1
 	person_event SPRITE_POKE_BALL, 2, 20, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route9TMFlashCannon, EVENT_ROUTE_9_TM_FLASH_CANNON
+	person_event SPRITE_CUT_TREE, 8, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route9CutTree, EVENT_ROUTE_9_CUT_TREE

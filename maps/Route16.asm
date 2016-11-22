@@ -1,3 +1,7 @@
+const_value set 2
+	const ROUTE16_CUT_TREE
+	const ROUTE16_OFFICER_F
+
 Route16_MapScriptHeader:
 .MapTriggers:
 	db 0
@@ -52,6 +56,9 @@ OfficerfJennyScript:
 	waitbutton
 	closetext
 	end
+
+Route16CutTree:
+	jumpstd cuttree
 
 CyclingRoadSign:
 	jumptext CyclingRoadSignText
@@ -109,5 +116,6 @@ Route16_MapEventHeader:
 	signpost 5, 5, SIGNPOST_READ, CyclingRoadSign
 
 .PersonEvents:
-	db 1
+	db 2
+	person_event SPRITE_CUT_TREE, 4, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16CutTree, EVENT_ROUTE_16_CUT_TREE
 	person_event SPRITE_OFFICER_F, 9, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1
