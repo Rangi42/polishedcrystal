@@ -118,4 +118,4 @@ Route16_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_CUT_TREE, 4, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16CutTree, EVENT_ROUTE_16_CUT_TREE
-	person_event SPRITE_OFFICER_F, 9, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1
+	person_event SPRITE_OFFICER_F, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1

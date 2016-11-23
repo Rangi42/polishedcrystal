@@ -641,7 +641,7 @@ KRIS EQU __enum__
 	const HARRIS
 	const ZEKE
 	const CHARLES
-	const RILEY
+	const REILLY
 	const JOEL
 	const GLENN
 	const DALE

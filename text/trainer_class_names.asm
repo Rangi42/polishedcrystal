@@ -93,12 +93,12 @@
 	db "Ex-Elite@"       ; AGATHA
 	db "<PKMN> Trainer@" ; YELLOW
 	db "Ex-Leader@"      ; WALKER
-	db "<PKMN> Trainer@" ; CHERYL
-	db "<PKMN> Trainer@" ; RILEY
-	db "<PKMN> Trainer@" ; BUCK
-	db "<PKMN> Trainer@" ; MARLEY
-	db "<PKMN> Trainer@" ; MIRA
-	db "#Maniac@"        ; BILL
+	db "<PKMN> Trainer@" ; CHERYL_T
+	db "<PKMN> Trainer@" ; RILEY_T
+	db "<PKMN> Trainer@" ; BUCK_T
+	db "<PKMN> Trainer@" ; MARLEY_T
+	db "<PKMN> Trainer@" ; MIRA_T
+	db "#Maniac@"        ; BILL_T
 	db "Collector@"      ; LAWRENCE
 	db "Boss@"           ; GIOVANNI
 	db "Rock Hound@"     ; STEVEN

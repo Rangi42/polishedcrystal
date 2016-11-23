@@ -459,7 +459,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_BUCK          ; BUCK
 	db SPRITE_MARLEY        ; MARLEY
 	db SPRITE_MIRA          ; MIRA
-	db SPRITE_BILL          ; BILL
+	db SPRITE_BILL          ; BILL_T
 	db SPRITE_LAWRENCE      ; LAWRENCE
 	db SPRITE_GIOVANNI      ; GIOVANNI
 	db SPRITE_STEVEN        ; STEVEN

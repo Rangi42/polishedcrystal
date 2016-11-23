@@ -10182,7 +10182,7 @@ BikerGroup:
 ; ================
 
 	; BIKER
-	db "Riley@"
+	db "Reilly@"
 	db TRAINERTYPE_NORMAL
 
 	; party

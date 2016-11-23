@@ -189,7 +189,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; BUCK
 	db FEMALE ; MARLEY
 	db FEMALE ; MIRA
-	db MALE   ; BILL
+	db MALE   ; BILL_T
 	db MALE   ; LAWRENCE
 	db MALE   ; GIOVANNI
 	db MALE   ; STEVEN
