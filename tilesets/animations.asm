@@ -64,13 +64,13 @@ Tileset02Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset03Anim:
-	dw VTiles2 tile $14, AnimateWaterTile
+	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  KantoTileAnimationPalette
 	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateFlowerTile
+	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
@@ -199,24 +199,24 @@ Tileset31Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset32Anim:
-	dw VTiles2 tile $14, AnimateWaterTile
+	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  KantoTileAnimationPalette
 	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateFlowerTile
+	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 Tileset38Anim:
-	dw VTiles2 tile $14, AnimateWaterTile
+	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  KantoTileAnimationPalette
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -561,6 +561,43 @@ WaterTileFrames: ; fc41c
 ; fc45c
 
 
+AnimateKantoWaterTile:
+; Draw a Kanto water tile for the current frame in VRAM tile at de.
+
+; Save sp in bc (see WriteTile).
+	ld hl, [sp+0]
+	ld b, h
+	ld c, l
+
+	ld a, [TileAnimationTimer]
+
+; 4 tile graphics, updated every other frame.
+	and 3 << 1
+
+; 2 x 8 = 16 bytes per tile
+rept 3
+	add a
+endr
+
+	add KantoWaterTileFrames % $100
+	ld l, a
+	ld a, 0
+	adc KantoWaterTileFrames / $100
+	ld h, a
+
+; Stack now points to the start of the tile for this frame.
+	ld sp, hl
+
+	ld l, e
+	ld h, d
+
+	jp WriteTile
+; fc41c
+
+KantoWaterTileFrames:
+	INCBIN "gfx/tilesets/kanto_water.2bpp"
+
+
 ForestTreeLeftAnimation: ; fc45c
 	ld hl, [sp+0]
 	ld b, h
@@ -768,6 +805,46 @@ FlowerTileFrames: ; fc58c
 	INCBIN "gfx/tilesets/flower/dmg_2.2bpp"
 	INCBIN "gfx/tilesets/flower/cgb_2.2bpp"
 ; fc5cc
+
+
+AnimateKantoFlowerTile:
+; No parameters.
+
+; Save sp in bc (see WriteTile).
+	ld hl, [sp+0]
+	ld b, h
+	ld c, l
+
+; Alternate tile graphic every other frame
+	ld a, [TileAnimationTimer]
+	and %110
+	ld e, a
+
+; CGB has different color mappings for flowers.
+	ld a, [hCGB]
+	and 1
+
+	add e
+	swap a ; << 4 (16 bytes)
+	ld e, a
+	ld d, 0
+	ld hl, KantoFlowerTileFrames
+	add hl, de
+	ld sp, hl
+
+	ld hl, VTiles2 + $30 ; tile 4
+
+	jp WriteTile
+
+KantoFlowerTileFrames:
+	INCBIN "gfx/tilesets/kanto-flower/dmg_1.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/cgb_1.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/dmg_2.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/cgb_2.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/dmg_3.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/cgb_3.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/dmg_2.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/cgb_2.2bpp"
 
 
 SafariFountainAnim1: ; fc5cc
@@ -1089,6 +1166,62 @@ TileAnimationPalette: ; fc6d7
 	ld [rSVBK], a
 	ret
 ; fc71e
+
+
+KantoTileAnimationPalette:
+; Transition between color values 0-1 for color 0 in palette 3.
+
+; No palette changes on DMG.
+	ld a, [hCGB]
+	and a
+	ret z
+
+; We don't want to mess with non-standard palettes.
+	ld a, [rBGP] ; BGP
+	cp %11100100
+	ret nz
+
+; Only update on even frames.
+	ld a, [TileAnimationTimer]
+	ld l, a
+	and 1 ; odd
+	ret nz
+
+; Ready for BGPD input...
+	ld a, %10011000 ; auto increment, index $18 (pal 3 color 0)
+	ld [rBGPI], a
+
+	ld a, [rSVBK]
+	push af
+	ld a, 5 ; wra5: gfx
+	ld [rSVBK], a
+
+; Update color 0 in order 0 1
+
+	ld a, l
+	and %10 ; frames 0 2
+
+	jr z, .color0
+
+.color1
+	ld hl, UnknBGPals + 3 palettes + 2
+	ld a, [hli]
+	ld [rBGPD], a
+	ld a, [hli]
+	ld [rBGPD], a
+	jr .end
+
+.color0
+	ld hl, UnknBGPals + 3 palettes
+	ld a, [hli]
+	ld [rBGPD], a
+	ld a, [hli]
+	ld [rBGPD], a
+
+.end
+	pop af
+	ld [rSVBK], a
+	ret
 
 
 FlickeringCaveEntrancePalette: ; fc71e
