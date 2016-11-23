@@ -415,7 +415,7 @@ endr
 
 	ld a, b
 	ld [hDivisor], a
-	ld b, $4
+	ld b, 4
 	call Divide
 
 	ld a, [hQuotient + 2]
@@ -1272,8 +1272,7 @@ TimerBallMultiplier:
 	ret
 
 NestBallMultiplier:
-; multiply catch rate by (41 - enemy mon level) / 10, floored at 1
-; TODO: multiply catch rate by 8 - (enemy mon level - 1) / 5, floored at 1
+; multiply catch rate by (41 - enemy mon level) / 5, floored at 1
 	ld a, [EnemyMonLevel]
 	cp 30
 	ret nc
@@ -1297,15 +1296,15 @@ NestBallMultiplier:
 	; hProduct = catch rate * (41 - level)
 	call Multiply
 
-	; hDivisor = 10
-	ld a, 10
+	; hDivisor = 5
+	ld a, 5
 	ld [hDivisor], a
 
-	; hQuotient = catch rate * (41 - level) / 10
+	; hQuotient = catch rate * (41 - level) / 5
 	ld b, 4
 	call Divide
 
-	; b = hQuotient = catch rate * (41 - level) / 10
+	; b = hQuotient = catch rate * (41 - level) / 5
 	ld a, [hQuotient + 2]
 	ld b, a
 
