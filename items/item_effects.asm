@@ -1337,15 +1337,20 @@ NetBallMultiplier:
 	ret
 
 QuickBallMultiplier:
-; multiply catch rate by 4 on first turn
+; multiply catch rate by 5 on first turn
 	ld a, [wBattleTurnCounter]
 	cp 1
 	ret z
+
+	ld a, b
 
 	sla b
 	jr c, .max
 
 	sla b
+	jr c, .max
+
+	add a
 	ret nc
 
 .max
