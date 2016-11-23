@@ -519,7 +519,8 @@ INCLUDE "maps/MrPsychicsHouse.asm"
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
 
-INCLUDE "maps/Route12.asm"
+INCLUDE "maps/Route12North.asm"
+INCLUDE "maps/Route12South.asm"
 INCLUDE "maps/Route12Gate.asm"
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"

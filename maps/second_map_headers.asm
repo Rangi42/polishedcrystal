@@ -210,21 +210,25 @@
 	connection west, ROUTE_15, Route15, 9, 0, 9, ROUTE_14
 
 	map_header_2 Route13, ROUTE_13, $43, NORTH | SOUTH
-	connection north, ROUTE_12, Route12, 20, 0, 10, ROUTE_13
+	connection north, ROUTE_12_SOUTH, Route12South, 20, 0, 10, ROUTE_13
 	connection south, ROUTE_14, Route14, 0, 0, 10, ROUTE_13
 
-	map_header_2 Route12, ROUTE_12, $43, NORTH | SOUTH | WEST
-	connection north, LAVENDER_TOWN, LavenderTown, 0, 0, 10, ROUTE_12
-	connection south, ROUTE_13, Route13, -3, 17, 13, ROUTE_12
-	connection west, ROUTE_11, Route11, 12, 0, 9, ROUTE_12
+	map_header_2 Route12North, ROUTE_12_NORTH, $43, NORTH | SOUTH
+	connection north, LAVENDER_TOWN, LavenderTown, 0, 0, 10, ROUTE_12_NORTH
+	connection south, ROUTE_12_SOUTH, Route12South, 0, 0, 10, ROUTE_12_NORTH
+
+	map_header_2 Route12South, ROUTE_12_SOUTH, $43, NORTH | SOUTH | WEST
+	connection north, ROUTE_12_NORTH, Route12North, 0, 0, 10, ROUTE_12_SOUTH
+	connection south, ROUTE_13, Route13, 0, 20, 10, ROUTE_12_SOUTH
+	connection west, ROUTE_11, Route11, 5, 0, 9, ROUTE_12_SOUTH
 
 	map_header_2 Route11, ROUTE_11, $f, WEST | EAST
 	connection west, VERMILION_CITY, VermilionCity, 0, 0, 12, ROUTE_11
-	connection east, ROUTE_12, Route12, -3, 9, 15, ROUTE_11
+	connection east, ROUTE_12_SOUTH, Route12South, -3, 2, 15, ROUTE_11
 
 	map_header_2 LavenderTown, LAVENDER_TOWN, $2c, NORTH | SOUTH | WEST
 	connection north, ROUTE_10_SOUTH, Route10South, 0, 0, 10, LAVENDER_TOWN
-	connection south, ROUTE_12, Route12, 0, 0, 10, LAVENDER_TOWN
+	connection south, ROUTE_12_NORTH, Route12North, 0, 0, 10, LAVENDER_TOWN
 	connection west, ROUTE_8, Route8, 0, 0, 9, LAVENDER_TOWN
 
 	map_header_2 VermilionCity, VERMILION_CITY, $43, NORTH | EAST

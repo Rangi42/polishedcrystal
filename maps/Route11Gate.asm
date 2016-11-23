@@ -34,8 +34,8 @@ Route11Gate_MapEventHeader:
 	db 5
 	warp_def $5, $0, 1, ROUTE_11
 	warp_def $6, $0, 2, ROUTE_11
-	warp_def $5, $9, 2, ROUTE_12
-	warp_def $6, $9, 3, ROUTE_12
+	warp_def $5, $9, 2, ROUTE_12_SOUTH
+	warp_def $6, $9, 3, ROUTE_12_SOUTH
 	warp_def $8, $8, 1, ROUTE_11_GATE_2F
 
 .XYTriggers:

@@ -73,8 +73,11 @@ Route3_BlockData:
 PewterCity_BlockData:
 	INCBIN "maps/PewterCity.blk"
 
-Route12_BlockData:
-	INCBIN "maps/Route12.blk"
+Route12North_BlockData:
+	INCBIN "maps/Route12North.blk"
+
+Route12South_BlockData:
+	INCBIN "maps/Route12South.blk"
 
 Route20_BlockData:
 	INCBIN "maps/Route20.blk"

@@ -36,7 +36,13 @@
 	db 47, PSYDUCK
 	db 52, GOLDUCK
 
-	map ROUTE_12
+	map ROUTE_12_NORTH
+	db 6 percent ; encounter rate
+	db 48, TENTACOOL
+	db 52, QUAGSIRE
+	db 54, TENTACRUEL
+
+	map ROUTE_12_SOUTH
 	db 6 percent ; encounter rate
 	db 48, TENTACOOL
 	db 52, QUAGSIRE
