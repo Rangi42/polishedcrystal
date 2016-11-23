@@ -843,8 +843,8 @@ KantoFlowerTileFrames:
 	INCBIN "gfx/tilesets/kanto-flower/cgb_2.2bpp"
 	INCBIN "gfx/tilesets/kanto-flower/dmg_3.2bpp"
 	INCBIN "gfx/tilesets/kanto-flower/cgb_3.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/dmg_2.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/cgb_2.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/dmg_1.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/cgb_1.2bpp"
 
 
 SafariFountainAnim1: ; fc5cc
