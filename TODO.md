@@ -8,6 +8,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Bugs
 
+* Split Route 12 into north and south parts to fix the overworld sprite glitch
 * Nuzlocke mode sometimes turns on by itself
 * TMs refresh PP
 * Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
@@ -55,6 +56,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 ## Aesthetic updates
 
 * Fix the gray ferry on Faraway Island
+* Use RBY's water and flower tiles in Kanto
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
