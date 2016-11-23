@@ -37,7 +37,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 ## Other mechanics
 
 * Use a proper menu for resurrecting Fossils
-* Cut should work on trees from within the party menu
 * Kurt gives Balls right away once per day
 * Catch rate formula from Gen III
 * Show move stats when overwriting one

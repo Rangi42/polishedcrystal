@@ -286,7 +286,7 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 	const SPRITEMOVEDATA_0F                   ; 0f
 	const SPRITEMOVEDATA_10                   ; 10
 	const SPRITEMOVEDATA_11                   ; 11
-	const SPRITEMOVEDATA_12                   ; 12
+	const SPRITEMOVEDATA_CUTTABLE_TREE        ; 12
 	const SPRITEMOVEDATA_FOLLOWING            ; 13
 	const SPRITEMOVEDATA_SCRIPTED             ; 14
 	const SPRITEMOVEDATA_SNORLAX              ; 15

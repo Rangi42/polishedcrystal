@@ -183,6 +183,12 @@ Text_NothingToCut: ; 0xc7c9
 	db "@"
 
 CheckMapForSomethingToCut: ; c7ce
+	call GetFacingObject
+	jr c, .no_tree
+	ld a, d
+	cp SPRITEMOVEDATA_CUTTABLE_TREE
+	jr z, .tree
+.no_tree
 	; Does the collision data of the facing tile permit cutting?
 	call GetFacingTileCoord
 	ld c, a
@@ -208,9 +214,14 @@ CheckMapForSomethingToCut: ; c7ce
 	ld a, b
 	ld [Buffer5], a
 	; Back up the animation index to Buffer6
-	ld a, c
+	ld a, $1
 	ld [Buffer6], a
 	xor a
+	ret
+
+.tree
+	xor a
+	ld [Buffer6], a
 	ret
 
 .fail
@@ -220,6 +231,9 @@ CheckMapForSomethingToCut: ; c7ce
 Script_CutFromMenu: ; c7fe
 	reloadmappart
 	special UpdateTimePals
+	callasm GetBuffer6
+	if_equal $0, Script_CutTree
+Script_CutGrass:
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
 	closetext
@@ -227,6 +241,11 @@ Script_CutFromMenu: ; c7fe
 	callasm CutDownGrass
 	closetext
 	end
+
+GetBuffer6:
+	ld a, [Buffer6]
+	ld [ScriptVar], a
+	ret
 
 CutDownGrass: ; c810
 	ld hl, Buffer3 ; OverworldMapTile
@@ -1478,7 +1497,7 @@ TryRockSmashFromMenu: ; cef4
 	call GetFacingObject
 	jr c, .no_rock
 	ld a, d
-	cp $18
+	cp SPRITEMOVEDATA_SMASHABLE_ROCK
 	jr nz, .no_rock
 
 	ld hl, RockSmashFromMenuScript
