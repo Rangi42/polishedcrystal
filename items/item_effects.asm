@@ -1223,15 +1223,17 @@ RepeatBallMultiplier:
 	ret
 
 TimerBallMultiplier:
-; multiply catch rate by (turns passed + 10) / 10, capped at 4
+; multiply catch rate by 1 + (turns passed * 3) / 10, capped at 4
 	ld a, [wBattleTurnCounter]
-	cp 30
+	cp 10
 	jr nc, .nocap
-	ld a, 30
+	ld a, 10
 .nocap
-	add 10
+	ld c, a
+	add c
+	add c
 
-	; hMultiplier = turns passed + 10
+	; hMultiplier = turns passed * 3
 	ld [hMultiplier], a
 
 	; hMultiplicand = catch rate
@@ -1241,10 +1243,10 @@ TimerBallMultiplier:
 	ld a, b
 	ld [hMultiplicand + 2], a
 
-	; hProduct = catch rate * (turns passed + 10)
+	; hProduct = catch rate * (turns passed * 3)
 	call Multiply
 
-	; hDividend = hProduct = catch rate * (turns passed + 10)
+	; hDividend = hProduct = catch rate * (turns passed * 3)
 	ld hl, hDividend
 	ld a, [hProduct + 0]
 	ld [hli], a
@@ -1259,11 +1261,11 @@ TimerBallMultiplier:
 	ld a, 10
 	ld [hDivisor], a
 
-	; hQuotient = catch rate * (turns passed + 10) / 10
+	; hQuotient = catch rate * (turns passed * 3) / 10
 	ld b, 4
 	call Divide
 
-	; b = hQuotient = catch rate * (turns passed + 10) / 10
+	; b = hQuotient = catch rate * (turns passed * 3) / 10
 	ld a, [hQuotient + 2]
 	ld b, a
 
@@ -1271,6 +1273,7 @@ TimerBallMultiplier:
 
 NestBallMultiplier:
 ; multiply catch rate by (41 - enemy mon level) / 10, floored at 1
+; TODO: multiply catch rate by 8 - (enemy mon level - 1) / 5, floored at 1
 	ld a, [EnemyMonLevel]
 	cp 30
 	ret nc
