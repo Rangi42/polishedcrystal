@@ -1322,7 +1322,7 @@ Group16Sprites:
 
 
 Group17Sprites:
-; Route12
+; Route12South
 ; Route13
 ; Route14
 ; Route15
@@ -1361,9 +1361,10 @@ Group17Sprites:
 Group18Sprites:
 ; Route8
 ; Route10South
+; Route12North
 ; LavenderTown
 	db SPRITE_BIKER
-	db SPRITE_FISHER ; (on connected part of Route12)
+	db SPRITE_FISHER
 	db SPRITE_GENTLEMAN
 	db SPRITE_GRAMPS
 	db SPRITE_HEX_MANIAC
