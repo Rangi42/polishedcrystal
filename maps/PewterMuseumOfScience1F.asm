@@ -12,68 +12,146 @@ PewterMuseumOfScience1F_MapScriptHeader:
 	db 0
 
 Museum1FFossilScientistScript:
-	; TODO: use a menu like with Kurt's Apricorns
 	faceplayer
 	opentext
 	writetext Museum1FFossilScientistText
 	waitbutton
 	checkitem HELIX_FOSSIL
-	iftrue .AskToResurrect
+	iftrue .own_helix
 	checkitem DOME_FOSSIL
-	iftrue .AskToResurrect
+	iftrue .own_dome
 	checkitem OLD_AMBER
-	iftrue .AskToResurrect
+	iftrue .ask_old_amber
 	writetext NoFossilsText
 	waitbutton
 	closetext
 	end
-.AskToResurrect
-	checkitem HELIX_FOSSIL
-	iffalse .TryDomeFossil
+
+.own_helix
+	checkitem DOME_FOSSIL
+	iftrue .own_helix_and_dome
+	checkitem OLD_AMBER
+	iftrue .ask_helix_amber
 	writetext AskHelixFossilText
 	yesorno
-	iffalse .TryDomeFossil
-	jump ResurrectHelixFossil
-.TryDomeFossil
-	checkitem DOME_FOSSIL
-	iffalse .TryOldAmber
+	iftrue ResurrectHelixFossil
+	jump .maybe_later
+
+.own_dome
+	checkitem OLD_AMBER
+	iftrue .ask_dome_amber
 	writetext AskDomeFossilText
 	yesorno
-	iffalse .TryOldAmber
-	jump ResurrectDomeFossil
-.TryOldAmber
+	iftrue ResurrectDomeFossil
+	jump .maybe_later
+
+.own_helix_and_dome
 	checkitem OLD_AMBER
-	iffalse .MaybeLater
+	iftrue .ask_helix_dome_amber
+	loadmenudata HelixDomeMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, ResurrectHelixFossil
+	if_equal $2, ResurrectDomeFossil
+	jump .maybe_later
+
+.ask_old_amber
 	writetext AskOldAmberText
 	yesorno
-	iffalse .MaybeLater
-	jump ResurrectOldAmber
-.MaybeLater
+	iftrue ResurrectOldAmber
+	jump .maybe_later
+
+.ask_helix_amber
+	loadmenudata HelixAmberMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, ResurrectHelixFossil
+	if_equal $2, ResurrectOldAmber
+	jump .maybe_later
+
+.ask_dome_amber
+	loadmenudata DomeAmberMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, ResurrectDomeFossil
+	if_equal $2, ResurrectOldAmber
+	jump .maybe_later
+
+.ask_helix_dome_amber
+	loadmenudata HelixDomeAmberMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, ResurrectHelixFossil
+	if_equal $2, ResurrectDomeFossil
+	if_equal $3, ResurrectOldAmber
+.maybe_later:
 	writetext MaybeLaterText
 	waitbutton
 	closetext
 	end
 
+HelixDomeMenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "Helix Fossil@"
+	db "Dome Fossil@"
+	db "Cancel@"
+
+HelixAmberMenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "Helix Fossil@"
+	db "Old Amber@"
+	db "Cancel@"
+
+DomeAmberMenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 14 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "Dome Fossil@"
+	db "Old Amber@"
+	db "Cancel@"
+
+HelixDomeAmberMenuDataHeader:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "Helix Fossil@"
+	db "Dome Fossil@"
+	db "Old Amber@"
+	db "Cancel@"
+
 ResurrectHelixFossil:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, NoRoomForFossilPokemon
 	takeitem HELIX_FOSSIL
-	writetext ResurrectingPokemonText
-	waitbutton
-	closetext
-	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, UP
-	pause 30
-	playsound SFX_BOOT_PC
-	waitsfx
-	pause 30
-	playsound SFX_PROTECT
-	waitsfx
-	pause 30
-	playsound SFX_SHUT_DOWN_PC
-	waitsfx
-	pause 30
-	faceplayer
-	opentext
+	scall ResurrectAFossilScript
 	writetext GotOmanyteText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -87,22 +165,7 @@ ResurrectDomeFossil:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, NoRoomForFossilPokemon
 	takeitem DOME_FOSSIL
-	writetext ResurrectingPokemonText
-	waitbutton
-	closetext
-	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, UP
-	pause 30
-	playsound SFX_BOOT_PC
-	waitsfx
-	pause 30
-	playsound SFX_PROTECT
-	waitsfx
-	pause 30
-	playsound SFX_SHUT_DOWN_PC
-	waitsfx
-	pause 30
-	faceplayer
-	opentext
+	scall ResurrectAFossilScript
 	writetext GotKabutoText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -116,6 +179,17 @@ ResurrectOldAmber:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, NoRoomForFossilPokemon
 	takeitem OLD_AMBER
+	scall ResurrectAFossilScript
+	writetext GotAerodactylText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	givepoke AERODACTYL, 20
+	writetext TakeGoodCareOfItText
+	waitbutton
+	closetext
+	end
+
+ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
 	waitbutton
 	closetext
@@ -132,13 +206,6 @@ ResurrectOldAmber:
 	pause 30
 	faceplayer
 	opentext
-	writetext GotAerodactylText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke AERODACTYL, 20
-	writetext TakeGoodCareOfItText
-	waitbutton
-	closetext
 	end
 
 NoRoomForFossilPokemon:
