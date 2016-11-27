@@ -98,8 +98,8 @@ BillsHouse_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $2, 1, ROUTE_25
-	warp_def $7, $3, 1, ROUTE_25
+	warp_def $7, $2, 1, CERULEAN_CAPE
+	warp_def $7, $3, 1, CERULEAN_CAPE
 
 .XYTriggers:
 	db 0

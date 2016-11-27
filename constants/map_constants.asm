@@ -179,12 +179,13 @@ MAP_NONE   EQU 0
 	mapgroup BILLS_HOUSE,                                 4,  4 ; 11
 	mapgroup ROUTE_4,                                     9, 20 ; 12
 	mapgroup ROUTE_24,                                    9, 10 ; 13
-	mapgroup ROUTE_25,                                    9, 30 ; 14
-	mapgroup CERULEAN_CITY,                              18, 20 ; 15
-	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 16
-	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 17
-	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 18
-	mapgroup CERULEAN_BIKE_SHOP,                          4,  4 ; 19
+	mapgroup ROUTE_25,                                    9, 18 ; 14
+	mapgroup CERULEAN_CAPE,                               9, 12 ; 15
+	mapgroup CERULEAN_CITY,                              18, 20 ; 16
+	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 17
+	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 18
+	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 19
+	mapgroup CERULEAN_BIKE_SHOP,                          4,  4 ; 20
 
 	newgroup                                                    ;  8
 

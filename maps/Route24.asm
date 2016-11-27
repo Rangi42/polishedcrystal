@@ -33,7 +33,7 @@ RocketScript_0x1adbfa:
 	disappear ROUTE24_ROCKET
 	clearevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
-	domaptrigger ROUTE_25, $1
+	domaptrigger CERULEAN_CAPE, $1
 	pause 25
 	special Special_FadeInQuickly
 	playmapmusic

@@ -14,7 +14,7 @@ ENDM
 	trigger_def TIME_CAPSULE,                           wTimeCapsuleTrigger
 	trigger_def POWER_PLANT,                            wPowerPlantTrigger
 	trigger_def CERULEAN_GYM,                           wCeruleanGymTrigger
-	trigger_def ROUTE_25,                               wRoute25Trigger
+	trigger_def CERULEAN_CAPE,                          wCeruleanCapeTrigger
 	trigger_def TRAINER_HOUSE_B1F,                      wTrainerHouseB1FTrigger
 	trigger_def VICTORY_ROAD_GATE,                      wVictoryRoadGateTrigger
 	trigger_def SAFFRON_TRAIN_STATION,                  wSaffronTrainStationTrigger

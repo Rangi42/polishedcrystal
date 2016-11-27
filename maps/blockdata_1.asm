@@ -61,6 +61,9 @@ LavenderTown_BlockData:
 PalletTown_BlockData:
 	INCBIN "maps/PalletTown.blk"
 
+CeruleanCape_BlockData:
+	INCBIN "maps/CeruleanCape.blk"
+
 Route25_BlockData:
 	INCBIN "maps/Route25.blk"
 

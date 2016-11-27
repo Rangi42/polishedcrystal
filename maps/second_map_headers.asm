@@ -263,8 +263,12 @@
 	connection north, ROUTE_25, Route25, 0, 0, 13, ROUTE_24
 	connection south, CERULEAN_CITY, CeruleanCity, -3, 3, 16, ROUTE_24
 
-	map_header_2 Route25, ROUTE_25, $2c, SOUTH
+	map_header_2 Route25, ROUTE_25, $2c, SOUTH | EAST
 	connection south, ROUTE_24, Route24, 0, 0, 10, ROUTE_25
+	connection east, CERULEAN_CAPE, CeruleanCape, 0, 0, 18, ROUTE_25
+
+	map_header_2 CeruleanCape, CERULEAN_CAPE, $2c, WEST
+	connection west, ROUTE_25, Route25, 0, 0, 18, CERULEAN_CAPE
 
 	map_header_2 Route3, ROUTE_3, $2c, WEST | EAST
 	connection west, PEWTER_CITY, PewterCity, -3, 2, 15, ROUTE_3

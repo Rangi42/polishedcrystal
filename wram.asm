@@ -2511,7 +2511,7 @@ wColosseumTrigger::                          ds 1 ; d974
 wTimeCapsuleTrigger::                        ds 1 ; d975
 wPowerPlantTrigger::                         ds 1 ; d976
 wCeruleanGymTrigger::                        ds 1 ; d977
-wRoute25Trigger::                            ds 1 ; d978
+wCeruleanCapeTrigger::                       ds 1 ; d978
 wTrainerHouseB1FTrigger::                    ds 1 ; d979
 wVictoryRoadGateTrigger::                    ds 1 ; d97a
 wSaffronTrainStationTrigger::                ds 1 ; d97b
