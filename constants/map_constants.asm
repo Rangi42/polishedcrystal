@@ -278,14 +278,15 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 14
 
 	mapgroup ROUTE_3,                                    11, 32 ;  1
-	mapgroup PEWTER_CITY,                                18, 20 ;  2
-	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  3
-	mapgroup PEWTER_GYM,                                  7,  5 ;  4
-	mapgroup PEWTER_MART,                                 4,  6 ;  5
-	mapgroup PEWTER_POKECENTER_1F,                        4,  6 ;  6
-	mapgroup PEWTER_SNOOZE_SPEECH_HOUSE,                  4,  4 ;  8
-	mapgroup PEWTER_MUSEUM_OF_SCIENCE_1F,                 4, 10 ;  9
-	mapgroup PEWTER_MUSEUM_OF_SCIENCE_2F,                 4,  7 ; 10
+	mapgroup ROUTE_3_POKECENTER_1F,                       4,  6 ;  2
+	mapgroup PEWTER_CITY,                                18, 20 ;  3
+	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  4
+	mapgroup PEWTER_GYM,                                  7,  5 ;  5
+	mapgroup PEWTER_MART,                                 4,  6 ;  6
+	mapgroup PEWTER_POKECENTER_1F,                        4,  6 ;  8
+	mapgroup PEWTER_SNOOZE_SPEECH_HOUSE,                  4,  4 ;  9
+	mapgroup PEWTER_MUSEUM_OF_SCIENCE_1F,                 4, 10 ; 10
+	mapgroup PEWTER_MUSEUM_OF_SCIENCE_2F,                 4,  7 ; 11
 
 	newgroup                                                    ; 15
 
@@ -695,6 +696,7 @@ const_value = -1
 	const SPAWN_PALLET
 	const SPAWN_VIRIDIAN
 	const SPAWN_PEWTER
+	const SPAWN_MT_MOON
 	const SPAWN_CERULEAN
 	const SPAWN_ROCK_TUNNEL
 	const SPAWN_VERMILION

@@ -599,6 +599,7 @@ INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/GiovannisCave.asm"
 INCLUDE "maps/CinnabarLab.asm"
+INCLUDE "maps/Route3PokeCenter1F.asm"
 
 
 SECTION "Map Scripts 29", ROMX

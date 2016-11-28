@@ -1773,8 +1773,9 @@
 	const EVENT_LAKE_OF_RAGE_CUT_TREE
 	const EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1
 	const EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_2
+; New events (TODO: move to logical sections)
+	const EVENT_ROUTE_3_HIDDEN_MOON_STONE
 ; Unused placeholder events
-	const EVENT_68B
 	const EVENT_68C
 	const EVENT_68D
 	const EVENT_68E

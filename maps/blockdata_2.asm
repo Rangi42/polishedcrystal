@@ -19,26 +19,27 @@ CherrygroveMart_BlockData:
 Route10North_BlockData:
 	INCBIN "maps/Route10North.blk"
 
-OlivinePokeCenter1F_BlockData:
-MahoganyPokeCenter1F_BlockData:
-EcruteakPokeCenter1F_BlockData:
-BlackthornPokeCenter1F_BlockData:
-CinnabarPokeCenter1F_BlockData:
-CeruleanPokeCenter1F_BlockData:
-Route10PokeCenter1F_BlockData:
-AzaleaPokeCenter1F_BlockData:
+CherrygrovePokeCenter1F_BlockData:
 VioletPokeCenter1F_BlockData:
 Route32PokeCenter1F_BlockData:
-VermilionPokeCenter1F_BlockData:
-PewterPokeCenter1F_BlockData:
-FuchsiaPokeCenter1F_BlockData:
-LavenderPokeCenter1F_BlockData:
-SilverCavePokeCenter1F_BlockData:
-CeladonPokeCenter1F_BlockData:
+AzaleaPokeCenter1F_BlockData:
+EcruteakPokeCenter1F_BlockData:
+OlivinePokeCenter1F_BlockData:
 CianwoodPokeCenter1F_BlockData:
+MahoganyPokeCenter1F_BlockData:
+BlackthornPokeCenter1F_BlockData:
 ViridianPokeCenter1F_BlockData:
+PewterPokeCenter1F_BlockData:
+Route3PokeCenter1F_BlockData:
+CeruleanPokeCenter1F_BlockData:
+VermilionPokeCenter1F_BlockData:
+CeladonPokeCenter1F_BlockData:
+Route10PokeCenter1F_BlockData:
+LavenderPokeCenter1F_BlockData:
+FuchsiaPokeCenter1F_BlockData:
 SaffronPokeCenter1F_BlockData:
-CherrygrovePokeCenter1F_BlockData:
+CinnabarPokeCenter1F_BlockData:
+SilverCavePokeCenter1F_BlockData:
 	INCBIN "maps/PokeCenter1F.blk"
 
 EarlsPokemonAcademy_BlockData:
