@@ -63,7 +63,7 @@ UnknownText_0x55f74:
 	para "I know of four:"
 	line "Poliwhirl, Onix,"
 
-	para "Slowbro and, um,"
+	para "Slowpoke and, um,"
 	line "Scyther."
 
 	para "I heard there are"
