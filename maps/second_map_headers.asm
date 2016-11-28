@@ -178,16 +178,20 @@
 
 	map_header_2 FuchsiaCity, FUCHSIA_CITY, $f, SOUTH | WEST | EAST
 	connection south, ROUTE_19, Route19, 0, 0, 10, FUCHSIA_CITY
-	connection west, ROUTE_18, Route18, 7, 0, 9, FUCHSIA_CITY
+	connection west, ROUTE_18_EAST, Route18East, 7, 0, 9, FUCHSIA_CITY
 	connection east, ROUTE_15, Route15, 9, 0, 9, FUCHSIA_CITY
 
-	map_header_2 Route18, ROUTE_18, $43, WEST | EAST
-	connection west, ROUTE_17, Route17, -3, 39, 10, ROUTE_18
-	connection east, FUCHSIA_CITY, FuchsiaCity, -3, 4, 14, ROUTE_18
+	map_header_2 Route18East, ROUTE_18_EAST, $43, WEST | EAST
+	connection west, ROUTE_18_WEST, Route18West, 0, 0, 9, ROUTE_18_EAST
+	connection east, FUCHSIA_CITY, FuchsiaCity, -3, 4, 14, ROUTE_18_EAST
 
-	map_header_2 Route17, ROUTE_17, $43, NORTH | EAST
+	map_header_2 Route18West, ROUTE_18_WEST, $43, NORTH | EAST
+	connection north, ROUTE_17, Route17, 0, 0, 10, ROUTE_18_WEST
+	connection east, ROUTE_18_EAST, Route18East, 0, 0, 9, ROUTE_18_WEST
+
+	map_header_2 Route17, ROUTE_17, $43, NORTH | SOUTH
 	connection north, ROUTE_16, Route16, 0, 0, 10, ROUTE_17
-	connection east, ROUTE_18, Route18, 42, 0, 9, ROUTE_17
+	connection south, ROUTE_18_WEST, Route18West, 0, 0, 10, ROUTE_17
 
 	map_header_2 Route16, ROUTE_16, $f, SOUTH | EAST
 	connection south, ROUTE_17, Route17, 0, 0, 10, ROUTE_16
@@ -583,8 +587,8 @@
 	map_header_2 Route16Gate, ROUTE_16_GATE, $0, 0
 	map_header_2 Route16Gate2F, ROUTE_16_GATE_2F, $0, 0
 	map_header_2 Route7SaffronGate, ROUTE_7_SAFFRON_GATE, $0, 0
-	map_header_2 Route1718Gate, ROUTE_17_18_GATE, $0, 0
-	map_header_2 Route1718Gate2F, ROUTE_17_18_GATE_2F, $0, 0
+	map_header_2 Route18Gate, ROUTE_18_GATE, $0, 0
+	map_header_2 Route18Gate2F, ROUTE_18_GATE_2F, $0, 0
 	map_header_2 CeladonHomeDecorStore1F, CELADON_HOME_DECOR_STORE_1F, $0, 0
 	map_header_2 CeladonHomeDecorStore2F, CELADON_HOME_DECOR_STORE_2F, $0, 0
 	map_header_2 CeladonHomeDecorStore3F, CELADON_HOME_DECOR_STORE_3F, $0, 0

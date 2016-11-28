@@ -321,7 +321,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_13,                                    9, 30 ;  2
 	mapgroup ROUTE_14,                                   18, 10 ;  3
 	mapgroup ROUTE_15,                                    9, 20 ;  4
-	mapgroup ROUTE_18,                                    9, 11 ;  5
+	mapgroup ROUTE_18_EAST,                               9, 11 ;  5
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  6
 	mapgroup FUCHSIA_MART,                                4,  6 ;  7
 	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  8
@@ -387,37 +387,38 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
 	mapgroup ROUTE_16,                                    9, 10 ;  2
-	mapgroup ROUTE_17,                                   49, 10 ;  3
-	mapgroup CELADON_CITY,                               18, 20 ;  4
-	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  5
-	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  6
-	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ;  7
-	mapgroup CELADON_DEPT_STORE_4F,                       4,  8 ;  8
-	mapgroup CELADON_DEPT_STORE_5F,                       4,  8 ;  9
-	mapgroup CELADON_DEPT_STORE_6F,                       4,  8 ; 10
-	mapgroup CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 11
-	mapgroup CELADON_MANSION_1F,                          5,  4 ; 12
-	mapgroup CELADON_MANSION_2F,                          5,  4 ; 13
-	mapgroup CELADON_MANSION_3F,                          5,  4 ; 14
-	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 15
-	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 16
-	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 17
-	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 19
-	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 20
-	mapgroup CELADON_GYM,                                 9,  5 ; 21
-	mapgroup CELADON_CAFE,                                4,  6 ; 22
-	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 23
-	mapgroup CELADON_HOTEL,                               4,  7 ; 24
-	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 25
-	mapgroup ROUTE_16_GATE,                               5,  5 ; 26
-	mapgroup ROUTE_16_GATE_2F,                            4,  4 ; 27
-	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 28
-	mapgroup ROUTE_17_18_GATE,                            5,  5 ; 30
-	mapgroup ROUTE_17_18_GATE_2F,                         4,  4 ; 31
-	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 32
-	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 33
-	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 34
-	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 35
+	mapgroup ROUTE_17,                                   42, 10 ;  3
+	mapgroup ROUTE_18_WEST,                               9, 10 ;  4
+	mapgroup CELADON_CITY,                               18, 20 ;  5
+	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  6
+	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  7
+	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ;  8
+	mapgroup CELADON_DEPT_STORE_4F,                       4,  8 ;  9
+	mapgroup CELADON_DEPT_STORE_5F,                       4,  8 ; 10
+	mapgroup CELADON_DEPT_STORE_6F,                       4,  8 ; 11
+	mapgroup CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 12
+	mapgroup CELADON_MANSION_1F,                          5,  4 ; 13
+	mapgroup CELADON_MANSION_2F,                          5,  4 ; 14
+	mapgroup CELADON_MANSION_3F,                          5,  4 ; 15
+	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 16
+	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 17
+	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 19
+	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 20
+	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 21
+	mapgroup CELADON_GYM,                                 9,  5 ; 22
+	mapgroup CELADON_CAFE,                                4,  6 ; 23
+	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 24
+	mapgroup CELADON_HOTEL,                               4,  7 ; 25
+	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 26
+	mapgroup ROUTE_16_GATE,                               5,  5 ; 27
+	mapgroup ROUTE_16_GATE_2F,                            4,  4 ; 28
+	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 30
+	mapgroup ROUTE_18_GATE,                               5,  5 ; 31
+	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 32
+	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 33
+	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 34
+	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 35
+	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 36
 
 	newgroup                                                    ; 22
 

@@ -26,17 +26,6 @@ UnknownScript_0x1ad0ab:
 	setflag ENGINE_DOWNHILL
 	return
 
-TrainerBikerCharles:
-	trainer EVENT_BEAT_BIKER_CHARLES, BIKER, CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText, 0, BikerCharlesScript
-
-BikerCharlesScript:
-	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad293
-	waitbutton
-	closetext
-	end
-
 TrainerBikerReilly:
 	trainer EVENT_BEAT_BIKER_REILLY, BIKER, REILLY, BikerReillySeenText, BikerReillyBeatenText, 0, BikerReillyScript
 
@@ -191,22 +180,6 @@ UnknownText_0x1ad225:
 	cont "on Cycling Road."
 	done
 
-BikerCharlesSeenText:
-	text "We're fearless"
-	line "highway stars!"
-	done
-
-BikerCharlesBeatenText:
-	text "Arrrgh! Crash and"
-	line "burn!"
-	done
-
-UnknownText_0x1ad293:
-	text "Reckless driving"
-	line "causes accidents!"
-	cont "Take it easy!"
-	done
-
 BikerDaleSeenText:
 	text "You're gonna lose!"
 	line "I've got a hunch!"
@@ -320,9 +293,7 @@ Route17_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
-	warp_def $5a, $13, 1, ROUTE_17_18_GATE
-	warp_def $5b, $13, 2, ROUTE_17_18_GATE
+	db 0
 
 .XYTriggers:
 	db 0
@@ -337,10 +308,10 @@ Route17_MapEventHeader:
 	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
 	person_event SPRITE_BIKER, 57, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
 	person_event SPRITE_BIKER, 50, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
-	person_event SPRITE_BIKER, 86, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
 	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
 	person_event SPRITE_BIKER, 24, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerJacob, -1
 	person_event SPRITE_BIKER, 78, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerAiden, -1
+	person_event SPRITE_BIKER, 86, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_BIKER, 29, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRoughneckBrian, -1
 	person_event SPRITE_BIKER, 38, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckTheron, -1
-	person_event SPRITE_BIKER, 73, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerRoughneckMarkey, -1
+	person_event SPRITE_BIKER, 73, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckMarkey, -1

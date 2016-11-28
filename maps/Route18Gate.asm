@@ -1,7 +1,7 @@
 const_value set 2
-	const ROUTE1718GATE_OFFICER
+	const ROUTE18GATE_OFFICER
 
-Route1718Gate_MapScriptHeader:
+Route18Gate_MapScriptHeader:
 .MapTriggers:
 	db 1
 
@@ -23,7 +23,7 @@ UnknownScript_0x73611:
 	end
 
 UnknownScript_0x73617:
-	showemote EMOTE_SHOCK, ROUTE1718GATE_OFFICER, 15
+	showemote EMOTE_SHOCK, ROUTE18GATE_OFFICER, 15
 	spriteface PLAYER, UP
 	opentext
 	writetext UnknownText_0x7364d
@@ -54,17 +54,17 @@ UnknownText_0x7364d:
 	line "Bicycle to go on."
 	done
 
-Route1718Gate_MapEventHeader:
+Route18Gate_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
 	db 5
-	warp_def $5, $0, 1, ROUTE_17
-	warp_def $6, $0, 2, ROUTE_17
-	warp_def $5, $9, 1, ROUTE_18
-	warp_def $6, $9, 2, ROUTE_18
-	warp_def $8, $8, 1, ROUTE_17_18_GATE_2F
+	warp_def $5, $0, 1, ROUTE_18_WEST
+	warp_def $6, $0, 2, ROUTE_18_WEST
+	warp_def $5, $9, 1, ROUTE_18_EAST
+	warp_def $6, $9, 2, ROUTE_18_EAST
+	warp_def $8, $8, 1, ROUTE_18_GATE_2F
 
 .XYTriggers:
 	db 5

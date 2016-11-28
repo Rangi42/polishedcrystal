@@ -19,7 +19,7 @@ ENDM
 	trigger_def VICTORY_ROAD_GATE,                      wVictoryRoadGateTrigger
 	trigger_def SAFFRON_TRAIN_STATION,                  wSaffronTrainStationTrigger
 	trigger_def ROUTE_16_GATE,                          wRoute16GateTrigger
-	trigger_def ROUTE_17_18_GATE,                       wRoute1718GateTrigger
+	trigger_def ROUTE_18_GATE,                          wRoute18GateTrigger
 	trigger_def INDIGO_PLATEAU_POKECENTER_1F,           wIndigoPlateauPokecenter1FTrigger
 	trigger_def WILLS_ROOM,                             wWillsRoomTrigger
 	trigger_def KOGAS_ROOM,                             wKogasRoomTrigger

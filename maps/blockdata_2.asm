@@ -202,8 +202,11 @@ Route7_BlockData:
 Route16_BlockData:
 	INCBIN "maps/Route16.blk"
 
-Route18_BlockData:
-	INCBIN "maps/Route18.blk"
+Route18East_BlockData:
+	INCBIN "maps/Route18East.blk"
+
+Route18West_BlockData:
+	INCBIN "maps/Route18West.blk"
 
 WarehouseEntrance_BlockData:
 	INCBIN "maps/WarehouseEntrance.blk"

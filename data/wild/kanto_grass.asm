@@ -648,7 +648,34 @@
 	db 54, MUK
 	db 56, MUK
 
-	map ROUTE_18
+	map ROUTE_18_EAST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 52, PIDGEOTTO
+	db 56, DODUO
+	db 53, PIDGEOTTO
+	db 54, DODRIO
+	db 54, MAGCARGO
+	db 55, MUK
+	db 57, MUK
+	; day
+	db 52, PIDGEOTTO
+	db 56, DODUO
+	db 53, PIDGEOTTO
+	db 54, DODRIO
+	db 54, MAGCARGO
+	db 55, MUK
+	db 57, MUK
+	; nite
+	db 52, RATICATE
+	db 56, NOCTOWL
+	db 53, RATICATE
+	db 54, MURKROW
+	db 54, MURKROW
+	db 55, MUK
+	db 57, MUK
+
+	map ROUTE_18_WEST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 52, PIDGEOTTO

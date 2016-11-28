@@ -2516,7 +2516,7 @@ wTrainerHouseB1FTrigger::                    ds 1 ; d979
 wVictoryRoadGateTrigger::                    ds 1 ; d97a
 wSaffronTrainStationTrigger::                ds 1 ; d97b
 wRoute16GateTrigger::                        ds 1 ; d97c
-wRoute1718GateTrigger::                      ds 1 ; d97d
+wRoute18GateTrigger::                        ds 1 ; d97d
 wIndigoPlateauPokecenter1FTrigger::          ds 1 ; d97e
 wWillsRoomTrigger::                          ds 1 ; d97f
 wKogasRoomTrigger::                          ds 1 ; d980
