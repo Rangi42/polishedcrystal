@@ -15,7 +15,8 @@ tileset_filename       = 'constants/tilemap_constants.asm'
 map_headers_filename   = 'maps/map_headers.asm'
 map_headers_2_filename = 'maps/second_map_headers.asm'
 block_data_filenames   = {'maps/blockdata_1.asm', 'maps/blockdata_2.asm',
-                          'maps/blockdata_3.asm', 'maps/blockdata_4.asm'}
+                          'maps/blockdata_3.asm', 'maps/blockdata_4.asm',
+                          'maps/blockdata_5.asm'}
 block_filename_fmt     = 'maps/%s.blk'
 metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 
