@@ -2975,9 +2975,9 @@ BattleRestorePP: ; f652
 	push hl
 	push de
 	push bc
-	rept NUM_MOVES + 2 ; BattleMonPP - BattleMonMoves
+rept NUM_MOVES + 5 ; BattleMonPP - BattleMonMoves
 	inc de
-	endr
+endr
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
 	ld a, [hl]

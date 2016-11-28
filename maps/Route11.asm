@@ -152,8 +152,8 @@ Route11_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $8, $23, 1, ROUTE_11_GATE
-	warp_def $9, $23, 2, ROUTE_11_GATE
+	warp_def $8, $25, 1, ROUTE_11_GATE
+	warp_def $9, $25, 2, ROUTE_11_GATE
 
 .XYTriggers:
 	db 0
@@ -161,12 +161,12 @@ Route11_MapEventHeader:
 .Signposts:
 	db 2
 	signpost 7, 3, SIGNPOST_READ, Route11Sign
-	signpost 5, 32, SIGNPOST_ITEM, Route11HiddenRevive
+	signpost 5, 34, SIGNPOST_ITEM, Route11HiddenRevive
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_YOUNGSTER, 14, 22, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
-	person_event SPRITE_YOUNGSTER, 4, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
-	person_event SPRITE_YOUNGSTER, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
-	person_event SPRITE_YOUNGSTER, 6, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
-	person_event SPRITE_FRUIT_TREE, 2, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x68055, -1
+	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
+	person_event SPRITE_YOUNGSTER, 4, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
+	person_event SPRITE_YOUNGSTER, 7, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
+	person_event SPRITE_YOUNGSTER, 6, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
+	person_event SPRITE_FRUIT_TREE, 2, 34, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x68055, -1

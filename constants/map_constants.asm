@@ -156,7 +156,7 @@ MAP_NONE   EQU 0
 	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6
 	mapgroup SEAFOAM_ISLANDS_B4F,                        10, 20 ;  7
 	mapgroup ROUTE_19,                                   20, 10 ;  8
-	mapgroup ROUTE_20,                                    9, 30 ;  9
+	mapgroup ROUTE_20,                                    9, 31 ;  9
 	mapgroup ROUTE_21,                                   19, 10 ; 10
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 11
 	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 12
@@ -252,7 +252,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 12
 
 	mapgroup ROUTE_6,                                    12, 10 ;  1
-	mapgroup ROUTE_11,                                    9, 20 ;  2
+	mapgroup ROUTE_11,                                    9, 21 ;  2
 	mapgroup VERMILION_CITY,                             18, 20 ;  3
 	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
 	mapgroup VERMILION_POKECENTER_1F,                     4,  6 ;  5
@@ -320,7 +320,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_13,                                    9, 30 ;  2
 	mapgroup ROUTE_14,                                   18, 10 ;  3
 	mapgroup ROUTE_15,                                    9, 20 ;  4
-	mapgroup ROUTE_18,                                    9, 10 ;  5
+	mapgroup ROUTE_18,                                    9, 11 ;  5
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  6
 	mapgroup FUCHSIA_MART,                                4,  6 ;  7
 	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  8
@@ -344,7 +344,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 18
 
-	mapgroup ROUTE_8,                                     9, 20 ;  1
+	mapgroup ROUTE_8,                                     9, 21 ;  1
 	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
 	mapgroup LAVENDER_TOWN,                               9, 10 ;  3
 	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
@@ -411,12 +411,12 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_16_GATE,                               5,  5 ; 26
 	mapgroup ROUTE_16_GATE_2F,                            4,  4 ; 27
 	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 28
-	mapgroup ROUTE_17_18_GATE,                            5,  5 ; 29
-	mapgroup ROUTE_17_18_GATE_2F,                         4,  4 ; 30
-	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 31
-	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 32
-	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 33
-	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 34
+	mapgroup ROUTE_17_18_GATE,                            5,  5 ; 30
+	mapgroup ROUTE_17_18_GATE_2F,                         4,  4 ; 31
+	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 32
+	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 33
+	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 34
+	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 35
 
 	newgroup                                                    ; 22
 
