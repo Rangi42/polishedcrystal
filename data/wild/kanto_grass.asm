@@ -864,6 +864,33 @@
 	db 71, SNEASEL
 	db 71, SNEASEL
 
+	map CERULEAN_CAPE
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 48, BUTTERFREE
+	db 48, BEEDRILL
+	db 51, PIDGEOTTO
+	db 50, WEEPINBELL
+	db 49, PIDGEOTTO
+	db 53, KINGLER
+	db 52, KINGLER
+	; day
+	db 48, BUTTERFREE
+	db 48, BEEDRILL
+	db 51, PIDGEOTTO
+	db 50, WEEPINBELL
+	db 49, PIDGEOTTO
+	db 53, KINGLER
+	db 52, KINGLER
+	; nite
+	db 48, VENOMOTH
+	db 48, VENOMOTH
+	db 51, NOCTOWL
+	db 50, GLOOM
+	db 49, GLOOM
+	db 53, KINGLER
+	db 52, KINGLER
+
 	map CERULEAN_CAVE_1F
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn

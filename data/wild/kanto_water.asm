@@ -150,6 +150,12 @@
 	db 50, TENTACOOL
 	db 55, TENTACRUEL
 
+	map CERULEAN_CAPE
+	db 4 percent ; encounter rate
+	db 48, MAGIKARP
+	db 52, POLIWHIRL
+	db 54, KINGLER
+
 	map CERULEAN_CAVE_1F
 	db 6 percent ; encounter rate
 	db 60, SLOWBRO
@@ -161,12 +167,6 @@
 	db 60, SLOWKING
 	db 63, GOLDUCK
 	db 66, GYARADOS
-
-	map CERULEAN_CAPE
-	db 4 percent ; encounter rate
-	db 48, MAGIKARP
-	db 52, POLIWHIRL
-	db 54, KINGLER
 
 	map SAFARI_ZONE_HUB
 	db 6 percent ; encounter rate

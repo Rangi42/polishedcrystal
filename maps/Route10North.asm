@@ -122,29 +122,29 @@ Route10NorthLawrenceEncounter2Script:
 	if_equal DOWN, .down
 	if_equal LEFT, .left
 .right
-	moveperson ROUTE10_LAWRENCE, 7, 5
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 10, 5
+	moveperson ROUTE10_LAWRENCE, 7, 35
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 10, 35
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 	spriteface PLAYER, LEFT
 	jump .continue
 .up
-	moveperson ROUTE10_LAWRENCE, 8, 5
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 5
+	moveperson ROUTE10_LAWRENCE, 8, 35
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 35
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	spriteface ROUTE10_LAWRENCE, DOWN
 	jump .continue
 .down
-	moveperson ROUTE10_LAWRENCE, 8, 5
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 5
+	moveperson ROUTE10_LAWRENCE, 8, 35
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 35
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	spriteface ROUTE10_LAWRENCE, UP
 	jump .continue
 .left
-	moveperson ROUTE10_LAWRENCE, 9, 5
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 5
+	moveperson ROUTE10_LAWRENCE, 9, 35
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 35
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 .continue
@@ -203,6 +203,9 @@ Route10Zapdos:
 	jump Route10NorthLawrenceEncounter2Script
 .end
 	end
+
+Route10RockTunnelSign:
+	jumptext RockTunnelSignText
 
 PowerPlantSign:
 	jumptext PowerPlantSignText
@@ -307,6 +310,10 @@ Route10NorthLawrenceSpeechText:
 	cont "those Pokemon."
 	done
 
+RockTunnelSignText:
+	text "Rock Tunnel"
+	done
+
 PowerPlantSignText:
 	text "Kanto Power Plant"
 	done
@@ -365,23 +372,25 @@ Route10North_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 3
-	warp_def $1, $b, 1, ROUTE_10_POKECENTER_1F
-	warp_def $9, $3, 1, POWER_PLANT
-	warp_def $3, $2, 1, ROCK_TUNNEL_2F
+	db 4
+	warp_def $1d, $b, 1, ROUTE_10_POKECENTER_1F
+	warp_def $27, $3, 1, POWER_PLANT
+	warp_def $21, $2, 1, ROCK_TUNNEL_2F
+	warp_def $1b, $8, 1, ROCK_TUNNEL_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 11, 5, SIGNPOST_READ, PowerPlantSign
-	signpost 1, 12, SIGNPOST_READ, Route10PokeCenterSign
+	db 3
+	signpost 41, 5, SIGNPOST_READ, PowerPlantSign
+	signpost 29, 12, SIGNPOST_READ, Route10PokeCenterSign
+	signpost 29, 7, SIGNPOST_READ, Route10RockTunnelSign
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_ZAPDOS, 5, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
-	person_event SPRITE_ZAPDOS, 10, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
-	person_event SPRITE_CHRIS, 10, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_KRIS, 10, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	person_event SPRITE_ZAPDOS, 35, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 40, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	person_event SPRITE_ZAPDOS, 40, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
+	person_event SPRITE_CHRIS, 40, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	person_event SPRITE_KRIS, 40, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK

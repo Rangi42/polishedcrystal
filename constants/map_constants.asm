@@ -521,8 +521,8 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 28
 
-	mapgroup ROUTE_9,                                     9, 30 ;  1
-	mapgroup ROUTE_10_NORTH,                              9, 10 ;  2
+	mapgroup ROUTE_9,                                     9, 21 ;  1
+	mapgroup ROUTE_10_NORTH,                             24, 10 ;  2
 
 	newgroup                                                    ; 29
 

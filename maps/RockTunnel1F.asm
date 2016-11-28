@@ -55,7 +55,7 @@ RockTunnel1F_MapEventHeader:
 
 .Warps:
 	db 8
-	warp_def $3, $f, 1, ROUTE_9
+	warp_def $3, $f, 4, ROUTE_10_NORTH
 	warp_def $19, $b, 1, ROUTE_10_SOUTH
 	warp_def $3, $5, 1, ROCK_TUNNEL_B1F
 	warp_def $9, $f, 2, ROCK_TUNNEL_B1F
