@@ -180,7 +180,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_4,                                     9, 20 ; 12
 	mapgroup ROUTE_24,                                    9, 10 ; 13
 	mapgroup ROUTE_25,                                    9, 18 ; 14
-	mapgroup CERULEAN_CAPE,                               9, 12 ; 15
+	mapgroup CERULEAN_CAPE,                              20, 25 ; 15
 	mapgroup CERULEAN_CITY,                              18, 20 ; 16
 	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 17
 	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 18
