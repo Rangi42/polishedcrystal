@@ -5015,6 +5015,8 @@ BattleCommand_Poison: ; 35f2c
 .no_ability
 	call CheckIfTargetIsPoisonType
 	jp z, .failed
+	call CheckIfTargetIsSteelType
+	jp z, .failed
 
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
