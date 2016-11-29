@@ -32,7 +32,6 @@ GoldenrodCity_MapScriptHeader:
 
 .FlyPointAndFloria:
 	setflag ENGINE_FLYPOINT_GOLDENROD
-	setflag ENGINE_FLORIA
 	checkevent EVENT_MET_FLORIA
 	iftrue .FloriaDone
 	clearevent EVENT_FLORIA_AT_SUDOWOODO

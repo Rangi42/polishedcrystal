@@ -110,6 +110,11 @@ rept 3
 	ld [hli], a
 endr
 	ld [hl], a
+	ld hl, DailyFlags3
+rept 3
+	ld [hli], a
+endr
+	ld [hl], a
 	ld hl, wDailyRematchFlags
 rept 4
 	ld [hli], a

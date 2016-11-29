@@ -25,10 +25,11 @@ Route32_MapScriptHeader:
 	maptrigger .Trigger2
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
 
+	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Frieda
 
 .Trigger0:
@@ -39,6 +40,10 @@ Route32_MapScriptHeader:
 
 .Trigger2:
 	end
+
+.FlyPoint:
+	setflag ENGINE_FLYPOINT_UNION_CAVE
+	return
 
 .Frieda:
 	checkcode VAR_WEEKDAY

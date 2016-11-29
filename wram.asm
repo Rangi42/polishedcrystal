@@ -2697,9 +2697,10 @@ MomItemTriggerBalance:: ds 3 ; dc19
 wDailyResetTimer:: ds 2
 DailyFlags:: ds 1
 DailyFlags2:: ds 1
-	ds 2 ; extra space set aside
-WeeklyFlags:: ds 1
+DailyFlags3:: ds 1
 	ds 1 ; extra space set aside
+WeeklyFlags:: ds 1
+WeeklyFlags2:: ds 1
 SwarmFlags:: ds 1
 wStartDay:: ds 1
 
