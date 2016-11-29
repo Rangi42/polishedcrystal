@@ -692,7 +692,6 @@ const_value = -1
 	const SPAWN_N_A
 
 	const SPAWN_HOME
-	const SPAWN_DEBUG
 
 	const SPAWN_PALLET
 	const SPAWN_VIRIDIAN

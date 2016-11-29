@@ -2411,12 +2411,12 @@ StatusFlags:: ; d84c
 
 StatusFlags2:: ; d84d
 	; 0 - rockets
-	; 1 -
+	; 1 - safari zone?
 	; 2 - bug contest timer
-	; 3 -
+	; 3 - unused
 	; 4 - bike shop call
 	; 5 - pokerus
-	; 6 - berry juice?
+	; 6 - unused
 	; 7 - rockets in mahogany
 	ds 1
 
