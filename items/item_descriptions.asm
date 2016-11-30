@@ -140,6 +140,7 @@ ItemDescriptions:
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
+	dw SilphScope2Desc
 	dw OranBerryDesc
 	dw SitrusBerryDesc
 	dw PechaBerryDesc
@@ -281,7 +282,6 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
-	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -711,6 +711,10 @@ ShinyCharmDesc:
 OvalCharmDesc:
 	db   "A charm for find-"
 	next "ing Eggs.@"
+
+SilphScope2Desc:
+	db   "A scope to see in-"
+	next "visible #mon.@"
 
 OranBerryDesc:
 	db   "A self-restore"

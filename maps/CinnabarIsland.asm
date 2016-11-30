@@ -19,7 +19,23 @@ CinnabarIsland_MapScriptHeader:
 CinnabarIslandBlue:
 	faceplayer
 	opentext
+	checkevent EVENT_LISTENED_TO_BLUE_INTRO
+	iftrue .HeardIntro
 	writetext CinnabarIslandBlueText
+	waitbutton
+	setevent EVENT_LISTENED_TO_BLUE_INTRO
+.HeardIntro
+	writetext CinnabarIslandBlueBattleText
+	waitbutton
+	checkcode VAR_BADGES
+	if_greater_than 14, .Ready
+	writetext CinnabarIslandBlueNotReadyText
+	waitbutton
+	closetext
+	end
+
+.Ready
+	writetext CinnabarIslandBlueReadyText
 	waitbutton
 	closetext
 	playsound SFX_WARP_TO
@@ -105,17 +121,33 @@ CinnabarIslandBlueText:
 
 	para "But, anyway, I'm"
 	line "still a trainer."
+	done
 
-	para "If I see a strong"
+CinnabarIslandBlueBattleText:
+	text "If I see a strong"
 	line "opponent, it makes"
 	cont "me want to battle."
+	done
 
-	para "If you want to"
+CinnabarIslandBlueReadyText:
+	text "If you want to"
 	line "battle me, come to"
 	cont "the Viridian Gym."
 
 	para "I'll take you on"
 	line "then."
+	done
+
+CinnabarIslandBlueNotReadyText:
+	text "If you want to"
+	line "battle me, show me"
+
+	para "how many Kanto"
+	line "badges you've got."
+
+	para "Less than seven…"
+	line "You're not ready"
+	cont "to battle me."
 	done
 
 CinnabarIslandGymSignText:

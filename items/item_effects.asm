@@ -120,6 +120,7 @@ ItemEffects: ; e73c
 	dw OldSeaMap
 	dw ShinyCharm
 	dw OvalCharm
+	dw SilphScope2
 	dw OranBerry
 	dw SitrusBerry
 	dw PechaBerry
@@ -261,7 +262,6 @@ ItemEffects: ; e73c
 	dw FlowerMail
 	dw FlowerMail
 	dw FlowerMail
-	dw TeruSama
 	dw TeruSama
 	dw TeruSama
 	dw TeruSama
@@ -3235,6 +3235,7 @@ MysticTicket:
 OldSeaMap:
 ShinyCharm:
 OvalCharm:
+SilphScope2:
 QuickPowder:
 ArmorSuit:
 AirBalloon:
