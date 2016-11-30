@@ -409,7 +409,9 @@
 	map_header_2 MahoganyPokeCenter1F, MAHOGANY_POKECENTER_1F, $0, 0
 	map_header_2 Route42EcruteakGate, ROUTE_42_ECRUTEAK_GATE, $0, 0
 	map_header_2 DiglettsCave, DIGLETTS_CAVE, $9, 0
-	map_header_2 MountMoon, MOUNT_MOON, $9, 0
+	map_header_2 MountMoon1F, MOUNT_MOON_1F, $9, 0
+	map_header_2 MountMoonB1F, MOUNT_MOON_B1F, $9, 0
+	map_header_2 MountMoonB2F, MOUNT_MOON_B2F, $9, 0
 	map_header_2 Underground, UNDERGROUND, $0, 0
 	map_header_2 RockTunnel1F, ROCK_TUNNEL_1F, $9, 0
 	map_header_2 RockTunnelB1F, ROCK_TUNNEL_B1F, $9, 0

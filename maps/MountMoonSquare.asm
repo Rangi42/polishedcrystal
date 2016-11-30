@@ -144,9 +144,8 @@ MountMoonSquare_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 3
-	warp_def $5, $14, 5, MOUNT_MOON
-	warp_def $b, $16, 6, MOUNT_MOON
+	db 2
+	warp_def $b, $16, 2, MOUNT_MOON_B1F
 	warp_def $7, $d, 1, MOUNT_MOON_GIFT_SHOP
 
 .XYTriggers:

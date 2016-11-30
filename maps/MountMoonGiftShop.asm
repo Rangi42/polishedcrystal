@@ -33,8 +33,8 @@ MountMoonGiftShop_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $3, 3, MOUNT_MOON_SQUARE
-	warp_def $7, $4, 3, MOUNT_MOON_SQUARE
+	warp_def $7, $3, 2, MOUNT_MOON_SQUARE
+	warp_def $7, $4, 2, MOUNT_MOON_SQUARE
 
 .XYTriggers:
 	db 0

@@ -2554,7 +2554,7 @@ wBattleTowerElevatorTrigger::                ds 1 ; d9a0
 wBattleTowerHallwayTrigger::                 ds 1 ; d9a1
 wBattleTowerOutsideTrigger::                 ds 1 ; d9a2
 wRoute43GateTrigger::                        ds 1 ; d9a3
-wMountMoonTrigger::                          ds 1 ; d9a4
+wMountMoon1FTrigger::                        ds 1 ; d9a4
 wSproutTower3FTrigger::                      ds 1 ; d9a5
 wTinTower1FTrigger::                         ds 1 ; d9a6
 wBurnedTower1FTrigger::                      ds 1 ; d9a7

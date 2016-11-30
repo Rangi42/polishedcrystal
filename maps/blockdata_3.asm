@@ -144,8 +144,14 @@ RockTunnel2F_BlockData:
 DiglettsCave_BlockData:
 	INCBIN "maps/DiglettsCave.blk"
 
-MountMoon_BlockData:
-	INCBIN "maps/MountMoon.blk"
+MountMoon1F_BlockData:
+	INCBIN "maps/MountMoon1F.blk"
+
+MountMoonB1F_BlockData:
+	INCBIN "maps/MountMoonB1F.blk"
+
+MountMoonB2F_BlockData:
+	INCBIN "maps/MountMoonB2F.blk"
 
 SeafoamGym_BlockData:
 	INCBIN "maps/SeafoamGym.blk"

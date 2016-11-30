@@ -1,10 +1,7 @@
 const_value set 2
-	const MOUNTMOON_SILVER
-	const MOUNTMOON_SUPER_NERD
-	const MOUNTMOON_POKE_BALL1
-	const MOUNTMOON_POKE_BALL2
+	const MOUNTMOON1F_SILVER
 
-MountMoon_MapScriptHeader:
+MountMoon1F_MapScriptHeader:
 .MapTriggers:
 	db 2
 
@@ -23,11 +20,11 @@ MountMoon_MapScriptHeader:
 	end
 
 .RivalBattle:
-	spriteface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement MOUNTMOON_SILVER, MountMoonSilverMovementBefore
+	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementBefore
+	spriteface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
 	writetext MountMoonSilverTextBefore
@@ -38,7 +35,7 @@ MountMoon_MapScriptHeader:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
-	setlasttalked MOUNTMOON_SILVER
+	setlasttalked MOUNTMOON1F_SILVER
 	loadtrainer RIVAL2, 3
 	startbattle
 	dontrestartmapmusic
@@ -47,7 +44,7 @@ MountMoon_MapScriptHeader:
 
 .Totodile:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
-	setlasttalked MOUNTMOON_SILVER
+	setlasttalked MOUNTMOON1F_SILVER
 	loadtrainer RIVAL2, 1
 	startbattle
 	dontrestartmapmusic
@@ -56,7 +53,7 @@ MountMoon_MapScriptHeader:
 
 .Chikorita:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
-	setlasttalked MOUNTMOON_SILVER
+	setlasttalked MOUNTMOON1F_SILVER
 	loadtrainer RIVAL2, 2
 	startbattle
 	dontrestartmapmusic
@@ -70,44 +67,32 @@ MountMoon_MapScriptHeader:
 	writetext MountMoonSilverTextAfter
 	waitbutton
 	closetext
-	applymovement MOUNTMOON_SILVER, MountMoonSilverMovementAfter
-	disappear MOUNTMOON_SILVER
+	applymovement PLAYER, MountMoon1FPlayerMovement
+	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementAfter
+	disappear MOUNTMOON1F_SILVER
+	playsound SFX_EXIT_BUILDING
+	waitsfx
 	dotrigger $1
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
 	end
 
-TrainerSupernerdMiguel:
-	trainer EVENT_BEAT_SUPER_NERD_MIGUEL, SUPER_NERD, MIGUEL, SupernerdMiguelSeenText, SupernerdMiguelBeatenText, 0, SupernerdMiguelScript
-
-SupernerdMiguelScript:
-	end_if_just_battled
-	opentext
-	writetext SupernerdMiguelAfterText
-	waitbutton
-	closetext
-	end
-
-MountMoonDuskStone:
-	itemball DUSK_STONE
-
-MountMoonShinyStone:
-	itemball SHINY_STONE
-
-MountMoonSilverMovementBefore:
-	step_left
-	step_left
-	step_left
+MountMoon1FSilverMovementBefore:
+	step_down
+	step_down
+	step_down
+	step_down
+	turn_head_right
 	step_end
 
-MountMoonSilverMovementAfter:
+MountMoon1FPlayerMovement:
+	slow_step_up
+	turn_head_down
+	step_end
+
+MountMoon1FSilverMovementAfter:
 	step_right
-	step_right
-	step_down
-	step_down
-	step_down
-	step_down
-	step_down
+	turn_head_down
 	step_end
 
 MountMoonSilverTextBefore:
@@ -183,39 +168,13 @@ MountMoonSilverTextLoss:
 	cont "greatest trainer."
 	done
 
-SupernerdMiguelSeenText:
-	text "I found these"
-	line "fossils and re-"
-	cont "vived them!"
-
-	para "Now they're both"
-	line "mine!"
-	done
-
-SupernerdMiguelBeatenText:
-	text "My fossils were"
-	line "crushed!"
-	done
-
-SupernerdMiguelAfterText:
-	text "Maybe if I had"
-	line "an Aerodactyl…"
-	done
-
-MountMoon_MapEventHeader:
+MountMoon1F_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 8
-	warp_def $3, $3, 1, ROUTE_3
-	warp_def $f, $f, 1, ROUTE_4
-	warp_def $3, $d, 7, MOUNT_MOON
-	warp_def $b, $f, 8, MOUNT_MOON
-	warp_def $5, $19, 1, MOUNT_MOON_SQUARE
-	warp_def $f, $19, 2, MOUNT_MOON_SQUARE
-	warp_def $3, $19, 3, MOUNT_MOON
-	warp_def $d, $19, 4, MOUNT_MOON
+	db 1
+	warp_def $17, $b, 1, ROUTE_3
 
 .XYTriggers:
 	db 0
@@ -224,8 +183,5 @@ MountMoon_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
-	person_event SPRITE_SILVER, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
-	person_event SPRITE_SUPER_NERD, 11, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMiguel, -1
-	person_event SPRITE_POKE_BALL, 4, 22, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMoonDuskStone, EVENT_MOUNT_MOON_DUSK_STONE
-	person_event SPRITE_POKE_BALL, 13, 23, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMoonShinyStone, EVENT_MOUNT_MOON_SHINY_STONE
+	db 1
+	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL

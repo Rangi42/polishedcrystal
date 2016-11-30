@@ -105,12 +105,14 @@ MAP_NONE   EQU 0
 	mapgroup TOHJO_FALLS,                                 9, 15 ; 68
 	mapgroup GIOVANNIS_CAVE,                              5,  5 ; 69
 	mapgroup DIGLETTS_CAVE,                              18, 10 ; 70
-	mapgroup MOUNT_MOON,                                  9, 15 ; 71
-	mapgroup UNDERGROUND,                                14,  3 ; 72
-	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 73
-	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 74
-	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 75
-	mapgroup VICTORY_ROAD,                               36, 10 ; 76
+	mapgroup MOUNT_MOON_1F,                              13, 15 ; 71
+	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 72
+	mapgroup MOUNT_MOON_B2F,                             17, 16 ; 73
+	mapgroup UNDERGROUND,                                14,  3 ; 74
+	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 75
+	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 76
+	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 77
+	mapgroup VICTORY_ROAD,                               36, 10 ; 78
 
 	newgroup                                                    ;  4
 

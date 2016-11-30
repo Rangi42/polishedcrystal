@@ -215,7 +215,7 @@ Route3_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $1, $38, 1, MOUNT_MOON
+	warp_def $1, $38, 1, MOUNT_MOON_1F
 	warp_def $3, $33, 1, ROUTE_3_POKECENTER_1F
 
 .XYTriggers:

@@ -27,7 +27,61 @@
 	db 58, DUGTRIO
 	db 60, DUGTRIO
 
-	map MOUNT_MOON
+	map MOUNT_MOON_1F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, GOLBAT
+	db 56, GRAVELER
+	db 56, SANDSLASH
+	db 56, PARASECT
+	db 57, GRAVELER
+	db 58, CLEFAIRY
+	db 60, CLEFABLE
+	; day
+	db 55, GOLBAT
+	db 56, GRAVELER
+	db 56, SANDSLASH
+	db 56, PARASECT
+	db 57, GRAVELER
+	db 58, CLEFAIRY
+	db 60, CLEFABLE
+	; nite
+	db 55, GOLBAT
+	db 56, GRAVELER
+	db 56, CLEFAIRY
+	db 56, PARASECT
+	db 57, GRAVELER
+	db 58, CLEFAIRY
+	db 60, CLEFABLE
+
+	map MOUNT_MOON_B1F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, GOLBAT
+	db 56, GRAVELER
+	db 56, SANDSLASH
+	db 56, PARASECT
+	db 57, GRAVELER
+	db 58, CLEFAIRY
+	db 60, CLEFABLE
+	; day
+	db 55, GOLBAT
+	db 56, GRAVELER
+	db 56, SANDSLASH
+	db 56, PARASECT
+	db 57, GRAVELER
+	db 58, CLEFAIRY
+	db 60, CLEFABLE
+	; nite
+	db 55, GOLBAT
+	db 56, GRAVELER
+	db 56, CLEFAIRY
+	db 56, PARASECT
+	db 57, GRAVELER
+	db 58, CLEFAIRY
+	db 60, CLEFABLE
+
+	map MOUNT_MOON_B2F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 55, GOLBAT
