@@ -12,7 +12,12 @@ MountMoonB2F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 0
+	db 5
+	warp_def $18, $a, 4, MOUNT_MOON_B1F
+	warp_def $7, $15, 5, MOUNT_MOON_B1F
+	warp_def $f, $11, 6, MOUNT_MOON_B1F
+	warp_def $9, $3, 7, MOUNT_MOON_B1F
+	warp_def $15, $12, 9, MOUNT_MOON_B1F
 
 .XYTriggers:
 	db 0

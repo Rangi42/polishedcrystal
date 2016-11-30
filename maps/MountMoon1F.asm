@@ -36,7 +36,7 @@ MountMoon1F_MapScriptHeader:
 	iftrue .Chikorita
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON1F_SILVER
-	loadtrainer RIVAL2, 3
+	loadtrainer RIVAL1, 3
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -45,7 +45,7 @@ MountMoon1F_MapScriptHeader:
 .Totodile:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON1F_SILVER
-	loadtrainer RIVAL2, 1
+	loadtrainer RIVAL1, 1
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -54,7 +54,7 @@ MountMoon1F_MapScriptHeader:
 .Chikorita:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON1F_SILVER
-	loadtrainer RIVAL2, 2
+	loadtrainer RIVAL1, 2
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -173,8 +173,11 @@ MountMoon1F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 1
+	db 4
 	warp_def $17, $b, 1, ROUTE_3
+	warp_def $c, $16, 1, MOUNT_MOON_B1F
+	warp_def $9, $b, 2, MOUNT_MOON_B1F
+	warp_def $4, $4, 3, MOUNT_MOON_B1F
 
 .XYTriggers:
 	db 0

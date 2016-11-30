@@ -789,17 +789,23 @@ SometimesFleeMons: ; 3c59a
 	db MAGNEMITE
 	db GRIMER
 	db TANGELA
+	db TOGEPI
 	db TOGETIC
 	db MR__MIME
 	db EEVEE
 	db PORYGON
 	db DRATINI
 	db DRAGONAIR
+	db ESPEON
 	db UMBREON
 	db UNOWN
 	db SNUBBULL
 	db HERACROSS
+	db PICHU
 	db MUNCHLAX
+	db TYROGUE
+	db ELEKID
+	db MAGBY
 	db LARVITAR
 	db -1
 
