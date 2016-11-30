@@ -1020,6 +1020,7 @@ ShedSkinAbility:
 	cp 1 + (30 percent)
 	ret nc
 	; fallthrough
+NaturalCureAbility:
 HydrationAbility:
 	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
 	jp HealStatusAbility
@@ -1041,6 +1042,25 @@ AngerPointAbility:
 	call StdBattleTextBox
 	jp EnableAnimations
 
+RunSwitchAbilities:
+; abilities that activate when you switch out
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp NATURAL_CURE
+	jr z, NaturalCureAbility
+	cp REGENERATOR
+	jr z, RegeneratorAbility
+	ret
+
+RegeneratorAbility:
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	ret z
+	call ShowAbilityActivation
+	farcall GetThirdMaxHP
+	farcall RestoreHP
+	ret
 
 DisableAnimations:
 	ld a, 1

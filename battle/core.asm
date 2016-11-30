@@ -4472,9 +4472,7 @@ PursuitSwitch: ; 3dc5b
 
 	ld a, [LastPlayerMon]
 	call UpdateBattleMon
-	ld hl, BattleMonHP
-	ld a, [hli]
-	or [hl]
+	call HasPlayerFainted
 	jp nz, PursuitSwitch_done
 
 	ld a, $f0
@@ -4492,9 +4490,7 @@ PursuitSwitch: ; 3dc5b
 	jr .done_fainted
 
 .check_enemy_fainted
-	ld hl, EnemyMonHP
-	ld a, [hli]
-	or [hl]
+	call HasEnemyFainted
 	jp nz, PursuitSwitch_done
 
 	ld a, $0f
@@ -4517,6 +4513,10 @@ PursuitSwitch: ; 3dc5b
 	ret
 
 PursuitSwitch_done
+	; run switch-out abilities
+	call SwitchTurnCore
+	farcall RunSwitchAbilities
+	call SwitchTurnCore
 	and a
 	ret
 ; 3dce6
