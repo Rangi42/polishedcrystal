@@ -52,6 +52,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Aesthetic updates
 
+* Cross whirlpools, don't remove them (like HGSS)
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
@@ -70,6 +71,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## New content
 
+* Whitney is getting a radio card (from HGSS)
 * Victor and Puka the Surfing Pikachu ("Hey, you can do it, too")
 * Add Crossing Cave (music: Mt. Pyre Peak?) to Route 35 and Route 35 Coast
 * Add Noisy Forest below Route 36 (music: White Treehollow)
@@ -79,6 +81,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Expand Diglett's Cave
    * Add a Smooth Rock
 * Expand Mt. Moon
+* Expand Route 23
 * Add five stat trainers
    * Cheryl: Noisy Forest; rewards HP Up
    * Riley: Crossing Cave; rewards Protein

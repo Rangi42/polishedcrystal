@@ -612,6 +612,7 @@
 	map_header_2 CliffCave, CLIFF_CAVE, $9, 0
 	map_header_2 ViridianGym, VIRIDIAN_GYM, $0, 0
 	map_header_2 ViridianNicknameSpeechHouse, VIRIDIAN_NICKNAME_SPEECH_HOUSE, $0, 0
+	map_header_2 ViridianSchoolHouse, VIRIDIAN_SCHOOL_HOUSE, $0, 0
 	map_header_2 TrainerHouse1F, TRAINER_HOUSE_1F, $0, 0
 	map_header_2 TrainerHouseB1F, TRAINER_HOUSE_B1F, $0, 0
 	map_header_2 ViridianMart, VIRIDIAN_MART, $0, 0

@@ -252,3 +252,6 @@ BattleTowerOutside_BlockData:
 
 GoldenrodDeptStoreRoof_BlockData:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
+
+ViridianSchoolHouse_BlockData:
+	INCBIN "maps/ViridianSchoolHouse.blk"

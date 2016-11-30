@@ -448,17 +448,18 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_CITY,                              18, 20 ;  3
 	mapgroup VIRIDIAN_GYM,                               23,  7 ;  4
 	mapgroup VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
-	mapgroup TRAINER_HOUSE_1F,                            7,  5 ;  6
-	mapgroup TRAINER_HOUSE_B1F,                           8,  5 ;  7
-	mapgroup VIRIDIAN_MART,                               4,  6 ;  8
-	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  6 ;  9
-	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 11
-	mapgroup ROUTE_2_GATE,                                4,  5 ; 12
-	mapgroup VICTORY_ROAD_GATE,                           9, 10 ; 13
-	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 14
-	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 15
-	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 16
-	mapgroup ROUTE_1_VIRIDIAN_GATE,                        4, 5 ; 17
+	mapgroup VIRIDIAN_SCHOOL_HOUSE,                       4,  4 ;  6
+	mapgroup TRAINER_HOUSE_1F,                            7,  5 ;  7
+	mapgroup TRAINER_HOUSE_B1F,                           8,  5 ;  8
+	mapgroup VIRIDIAN_MART,                               4,  6 ;  9
+	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  6 ; 11
+	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 12
+	mapgroup ROUTE_2_GATE,                                4,  5 ; 13
+	mapgroup VICTORY_ROAD_GATE,                           9, 10 ; 14
+	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 15
+	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 16
+	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 17
+	mapgroup ROUTE_1_VIRIDIAN_GATE,                        4, 5 ; 18
 
 	newgroup                                                    ; 24
 
