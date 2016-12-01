@@ -614,7 +614,7 @@ endr
 
 .TMMartPointers:
 	dw Text_Mart_HowMany
-	dw Text_Mart_CostsThisMuch
+	dw Text_TMMart_CostsThisMuch
 	dw Text_Mart_InsufficientFunds
 	dw Text_Mart_BagFull
 	dw Text_Mart_HereYouGo
@@ -785,6 +785,17 @@ TMMartConfirmPurchase:
 	ld [wd265], a
 	call GetTMHMName
 	call CopyName1
+
+	; off by one error?
+	ld a, [wd265]
+	inc a
+	ld [wd265], a
+
+	predef GetTMHMMove
+	ld a, [wd265]
+	ld [wPutativeTMHMMove], a
+	call GetMoveName
+
 	ld a, MARTTEXT_COSTS_THIS_MUCH
 	call LoadBuyMenuText
 	call YesNoBox
@@ -1151,6 +1162,11 @@ Text_AdventurerMart_Intro:
 Text_InformalMart_Intro:
 	; What's up? Need some supplies?
 	text_jump InformalMartIntroText
+	db "@"
+
+Text_TMMart_CostsThisMuch:
+	; @  @  will be ¥@ .
+	text_jump TMMartCostsThisMuchText
 	db "@"
 
 

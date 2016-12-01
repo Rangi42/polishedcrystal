@@ -39,7 +39,7 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins 3500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_DOUBLE_TEAM, $0
-	scall CeladonPrizeRoom_askbuy
+	scall CeladonPrizeRoom_askbuytm
 	iffalse CeladonPrizeRoom_cancel
 	givetmhm TM_DOUBLE_TEAM
 	takecoins 3500
@@ -51,7 +51,7 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins 5500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_TOXIC, $0
-	scall CeladonPrizeRoom_askbuy
+	scall CeladonPrizeRoom_askbuytm
 	iffalse CeladonPrizeRoom_cancel
 	givetmhm TM_TOXIC
 	takecoins 5500
@@ -63,7 +63,7 @@ CeladonPrizeRoom_tmcounterloop:
 	checkcoins 7500
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_GIGA_IMPACT, $0
-	scall CeladonPrizeRoom_askbuy
+	scall CeladonPrizeRoom_askbuytm
 	iffalse CeladonPrizeRoom_cancel
 	givetmhm TM_GIGA_IMPACT
 	takecoins 7500
@@ -71,6 +71,11 @@ CeladonPrizeRoom_tmcounterloop:
 
 CeladonPrizeRoom_askbuy:
 	writetext CeladonPrizeRoom_ConfirmPurchaseText
+	yesorno
+	end
+
+CeladonPrizeRoom_askbuytm:
+	writetext CeladonPrizeRoom_ConfirmTMPurchaseText
 	yesorno
 	end
 
@@ -249,6 +254,13 @@ CeladonPrizeRoom_AskWhichPrizeText:
 CeladonPrizeRoom_ConfirmPurchaseText:
 	text "OK, so you wanted"
 	line "a @"
+	text_from_ram StringBuffer3
+	text "?"
+	done
+
+CeladonPrizeRoom_ConfirmTMPurchaseText:
+	text "OK, so you wanted"
+	line "@"
 	text_from_ram StringBuffer3
 	text "?"
 	done

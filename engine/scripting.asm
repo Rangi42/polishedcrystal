@@ -3390,7 +3390,25 @@ Script_tmhmtotext:
 	ld [wd265], a
 	call GetTMHMName
 	ld de, StringBuffer1
-	jp ConvertMemToText
+	call ConvertMemToText
+
+	; off by one error?
+	ld a, [wd265]
+	inc a
+	ld [wd265], a
+
+	predef GetTMHMMove
+	ld a, [wd265]
+	ld [wPutativeTMHMMove], a
+	call GetMoveName
+
+	ld hl, StringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
+	ld a, " "
+	ld [hli], a
+	xor a
+	call AddNTimes
+	call CopyName2
+	ret
 
 Script_checkdarkness:
 ; script command 0xb2

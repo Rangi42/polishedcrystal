@@ -494,12 +494,12 @@ HiddenItemScript:: ; 0x13625
 
 .found_text ; 0x13645
 	; found @ !
-	text_jump UnknownText_0x1bd321
+	text_jump UnknownText_0x1c0a1c
 	db "@"
 
 .no_room_text ; 0x1364a
-	; But   has no space left…
-	text_jump UnknownText_0x1bd331
+	; But   can't carry any more items.
+	text_jump UnknownText_0x1c0a2c
 	db "@"
 
 SetMemEvent: ; 1364f

@@ -35,7 +35,7 @@ CanLearnTMHMMove: ; 11639
 
 GetTMHMMove: ; 1166a
 	ld a, [wd265]
-	dec a
+	dec a ; off by one error?
 	ld hl, TMHMMoves
 	ld b, 0
 	ld c, a

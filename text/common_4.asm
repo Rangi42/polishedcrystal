@@ -389,3 +389,14 @@ UnknownText_0x1c5049::
 	text "Bet how many"
 	line "coins?"
 	done
+
+TMMartCostsThisMuchText::
+	text "@"
+	text_from_ram StringBuffer2
+	text " @"
+	text_from_ram StringBuffer1
+	text ""
+	line "will be ¥@"
+	deciram hMoneyTemp, 3, 7
+	text "."
+	done
