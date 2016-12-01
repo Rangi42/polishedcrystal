@@ -1,8 +1,6 @@
 ; growth rate
 	const_def
 	const MEDIUM_FAST
-	const SLIGHTLY_FAST
-	const SLIGHTLY_SLOW
 	const MEDIUM_SLOW
 	const FAST
 	const SLOW
