@@ -991,18 +991,6 @@ UseAnotherRepelText::
 	para "Use another?"
 	done
 
-UnknownText_0x1bd321::
-	text "<PLAYER> found"
-	line "@"
-	text_from_ram StringBuffer3
-	text "!"
-	done
-
-UnknownText_0x1bd331::
-	text "But <PLAYER> has"
-	line "no space left…"
-	done
-
 UnknownText_0x1bd34b::
 	text "I just saw some"
 	line "rare @"

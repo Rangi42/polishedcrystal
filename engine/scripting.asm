@@ -3405,8 +3405,6 @@ Script_tmhmtotext:
 	ld hl, StringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
 	ld a, " "
 	ld [hli], a
-	xor a
-	call AddNTimes
 	call CopyName2
 	ret
 

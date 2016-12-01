@@ -70,6 +70,22 @@ FindTMHMInBallScript::
 	call GetTMHMName
 	ld hl, StringBuffer3
 	call CopyName2
+
+	; off by one error?
+	ld a, [wd265]
+	inc a
+	ld [wd265], a
+
+	predef GetTMHMMove
+	ld a, [wd265]
+	ld [wPutativeTMHMMove], a
+	call GetMoveName
+
+	ld hl, StringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
+	ld a, " "
+	ld [hli], a
+	call CopyName2
+
 	ld a, [EngineBuffer1]
 	ld [CurTMHM], a
 	call ReceiveTMHM
