@@ -99,10 +99,10 @@ AgathaPalette:           INCLUDE "gfx/trainers/agatha.pal"
 YellowPalette:           INCLUDE "gfx/trainers/yellow.pal"
 WalkerPalette:           INCLUDE "gfx/trainers/walker.pal"
 CherylPalette:           INCLUDE "gfx/trainers/cal.pal" ; TODO
-RileyPalette:            INCLUDE "gfx/trainers/cal.pal" ; TODO
-BuckPalette:             INCLUDE "gfx/trainers/cal.pal" ; TODO
-MarleyPalette:           INCLUDE "gfx/trainers/cal.pal" ; TODO
-MiraPalette:             INCLUDE "gfx/trainers/cal.pal" ; TODO
+RileyPalette:            INCLUDE "gfx/trainers/riley.pal"
+BuckPalette:             INCLUDE "gfx/trainers/buck.pal"
+MarleyPalette:           INCLUDE "gfx/trainers/marley.pal"
+MiraPalette:             INCLUDE "gfx/trainers/mira.pal"
 BillPalette:             INCLUDE "gfx/trainers/bill.pal"
 LawrencePalette:         INCLUDE "gfx/trainers/lawrence.pal"
 GiovanniPalette:         INCLUDE "gfx/trainers/giovanni.pal"

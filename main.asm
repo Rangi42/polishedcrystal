@@ -4776,18 +4776,14 @@ CalcLevel: ; 50e1b
 
 CalcExpAtLevel: ; 50e47
 ; (a/b)*n**3 + c*n**2 + d*n - e
-	ld a, [BaseGrowthRate]
-	cp MEDIUM_SLOW
-	jr nz, .UseExpFormula
 	ld a, d
 	cp 1
 	jr nz, .UseExpFormula
-; Medium Slow Pokémon have 1 experience at level 1, not -54
+; Pokémon have 0 experience at level 1
 	xor a
 	ld [hProduct], a
 	ld [hProduct + 1], a
 	ld [hProduct + 2], a
-	ld a, 1
 	ld [hProduct + 3], a
 	ret
 .UseExpFormula

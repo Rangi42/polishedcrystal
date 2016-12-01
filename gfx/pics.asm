@@ -817,10 +817,10 @@ PetrelPic:             INCBIN "gfx/trainers/petrel.2bpp.lz"
 SECTION "Pics 22", ROMX
 
 CherylPic: ; TODO
-RileyPic: ; TODO
-BuckPic: ; TODO
-MarleyPic: ; TODO
-MiraPic: ; TODO
+RileyPic:                INCBIN "gfx/trainers/riley.2bpp.lz"
+BuckPic:                 INCBIN "gfx/trainers/buck.2bpp.lz"
+MarleyPic:               INCBIN "gfx/trainers/marley.2bpp.lz"
+MiraPic:                 INCBIN "gfx/trainers/mira.2bpp.lz"
 CaitlinPic: ; TODO
 DarachPic: ; TODO
 ValeriePic:               INCBIN "gfx/trainers/valerie.2bpp.lz"
