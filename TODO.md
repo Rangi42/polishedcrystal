@@ -42,6 +42,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Show stat changes and then absolute values on level up
 * Send gift Pokémon to the PC if the party is full
 * Separate radio channels for March and Lullaby, available every day
+* Show TM moves before buying them
 * Press Start to auto-sort items
 * Select reorders Pokémon in party menu
 * Longer player and rival names
@@ -56,6 +57,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
+* Show item pictures in bag, and possibly when picking them up
 * Change Igglybuff and Smoochum in the credits to Munchlax and Magby
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
