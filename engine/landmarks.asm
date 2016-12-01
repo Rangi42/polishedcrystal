@@ -68,10 +68,10 @@ ENDM
 	landmark  92, 108, Route32Name
 	landmark  84,  92, RuinsOfAlphName
 	landmark  92, 140, UnionCaveName
-	landmark  90, 140, Route33Name
+	landmark  84, 140, Route33Name
 	landmark  76, 140, AzaleaTownName
-	landmark  78, 138, SlowpokeWellName
-	landmark  60, 136, IlexForestName
+	landmark  84, 132, SlowpokeWellName
+	landmark  60, 140, IlexForestName
 	landmark  60, 128, Route34Name
 	landmark  60, 108, GoldenrodCityName
 	landmark  58, 108, RadioTowerName
@@ -125,7 +125,7 @@ ENDM
 	landmark  84,  68, MtMoonName
 	landmark 100,  68, Route4Name
 	landmark 116,  68, CeruleanCityName
-	landmark 114,  66, CeruleanCaveName
+	landmark 108,  60, CeruleanCaveName
 	landmark 116,  60, Route24Name
 	landmark 124,  52, Route25Name
 	landmark 140,  52, CeruleanCapeName
@@ -133,13 +133,13 @@ ENDM
 	landmark 122,  90, UndergroundName
 	landmark 116,  92, Route6Name
 	landmark 116, 100, VermilionCityName
-	landmark  96,  76, DiglettsCaveName
+	landmark 124,  92, DiglettsCaveName
 	landmark 104,  84, Route7Name
 	landmark 128,  84, Route8Name
 	landmark 128,  68, Route9Name
 	landmark 140,  68, RockTunnelName
+	landmark 148,  68, PowerPlantName
 	landmark 140,  76, Route10Name
-	landmark 148,  76, PowerPlantName
 	landmark 140,  84, LavenderTownName
 	landmark 144,  84, LavRadioTowerName
 	landmark  92,  84, CeladonCityName
