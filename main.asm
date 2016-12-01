@@ -485,8 +485,7 @@ HiddenItemScript:: ; 0x13625
 
 .bag_full ; 0x1363e
 	buttonsound
-	writetext .no_room_text
-	waitbutton
+	pocketisfull
 
 .finish ; 13643
 	closetext
@@ -495,11 +494,6 @@ HiddenItemScript:: ; 0x13625
 .found_text ; 0x13645
 	; found @ !
 	text_jump UnknownText_0x1c0a1c
-	db "@"
-
-.no_room_text ; 0x1364a
-	; But   can't carry any more items.
-	text_jump UnknownText_0x1c0a2c
 	db "@"
 
 SetMemEvent: ; 1364f

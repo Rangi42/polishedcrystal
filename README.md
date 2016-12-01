@@ -268,6 +268,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Trainers have max happiness for Return.
 * Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
 * Add: Buy 12 Moomoo Milk at once.
+* Add: Show TM names before buying them.
+* Add: Say which pocket is full if an item can't be picked up.
 * Add: Use Yellow's encounter music for Jessie & James.
 * Add: Large red Gyarados sprite.
 * Add: Oak's lab looks different from Elm's lab.

@@ -199,12 +199,6 @@ UnknownText_0x1c0a1c::
 	text "!"
 	done
 
-UnknownText_0x1c0a2c::
-	text "But <PLAYER> can't"
-	line "carry any more"
-	cont "items."
-	done
-
 WhiteoutText::
 	text "<PLAYER> is out of"
 	line "useable #mon!"

@@ -15,8 +15,7 @@ FindItemInBallScript:: ; 0x122ce
 	opentext
 	writetext .text_found
 	waitbutton
-	writetext .text_bag_full
-	waitbutton
+	pocketisfull
 	closetext
 	end
 ; 0x122ee
@@ -26,12 +25,6 @@ FindItemInBallScript:: ; 0x122ce
 	text_jump UnknownText_0x1c0a1c
 	db "@"
 ; 0x122f3
-
-.text_bag_full ; 0x122f3
-	; But   can't carry any more items.
-	text_jump UnknownText_0x1c0a2c
-	db "@"
-; 0x122f8
 
 .TryReceiveItem: ; 122f8
 	xor a
