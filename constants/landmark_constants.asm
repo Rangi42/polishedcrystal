@@ -110,16 +110,17 @@ KANTO_LANDMARK EQU const_value
 	const CINNABAR_VOLCANO  ; 67
 	const ROUTE_21          ; 68
 	const ROUTE_22          ; 69
-	const VICTORY_ROAD      ; 6a
-	const ROUTE_23          ; 6b
-	const INDIGO_PLATEAU    ; 6c
-	const ROUTE_26          ; 6d
-	const ROUTE_27          ; 6e
-	const TOHJO_FALLS       ; 6f
-	const ROUTE_28          ; 70
-	const FAST_SHIP         ; 71
-	const NAVEL_ROCK        ; 72
-	const FARAWAY_ISLAND    ; 73
-	const CINNABAR_LAB      ; 74
+	const ROUTE_27          ; 6a
+	const TOHJO_FALLS       ; 7b
+	const ROUTE_26          ; 6c
+	const POKEMON_LEAGUE    ; 6d
+	const ROUTE_23          ; 6e
+	const VICTORY_ROAD      ; 6f
+	const INDIGO_PLATEAU    ; 70
+	const ROUTE_28          ; 71
+	const FAST_SHIP         ; 72
+	const NAVEL_ROCK        ; 73
+	const FARAWAY_ISLAND    ; 74
+	const CINNABAR_LAB      ; 75
 
 NUM_LANDMARKS EQU const_value

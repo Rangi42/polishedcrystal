@@ -162,12 +162,13 @@ ENDM
 	landmark  62, 146, CinnabarVolcanoName
 	landmark  60, 136, Route21Name
 	landmark  44,  84, Route22Name
-	landmark  36,  68, VictoryRoadName
-	landmark  36,  60, Route23Name
-	landmark  36,  52, IndigoPlateauName
-	landmark  36, 108, Route26Name
 	landmark  28, 116, Route27Name
 	landmark  20, 116, TohjoFallsName
+	landmark  36, 108, Route26Name
+	landmark  36,  84, PokemonLeagueName
+	landmark  36,  76, Route23Name
+	landmark  36,  68, VictoryRoadName
+	landmark  36,  52, IndigoPlateauName
 	landmark  28,  84, Route28Name
 	landmark 108, 140, FastShipName
 	landmark 140, 156, NavelRockName
@@ -211,8 +212,9 @@ CeladonCityName:     db "Celadon¯City@"
 SaffronCityName:     db "Saffron¯City@"
 FuchsiaCityName:     db "Fuchsia¯City@"
 CinnabarIslandName:  db "Cinnabar¯Island@"
-IndigoPlateauName:   db "Indigo¯Plateau@"
+PokemonLeagueName:   db "Pokémon¯League@"
 VictoryRoadName:     db "Victory¯Road@"
+IndigoPlateauName:   db "Indigo¯Plateau@"
 MtMoonName:          db "Mt.Moon@"
 RockTunnelName:      db "Rock Tunnel@"
 LavRadioTowerName:   db "Lav.Radio¯Tower@"
