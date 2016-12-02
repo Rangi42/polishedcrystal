@@ -589,9 +589,12 @@ ParsePlayerAction: ; 3c434
 	ld [FXAnimIDLo], a
 	call MoveSelectionScreen
 	push af
+
+	; TODO: more efficient way to restore layout after move info box?
 	ld b, SCGB_BATTLE_COLORS
 	call GetSGBLayout
 	call SetPalettes
+
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 	ld a, [CurPlayerMove]
@@ -6070,8 +6073,16 @@ MoveInfoBox: ; 3e6c8
 	inc hl
 	ld [hl], $5f
 
-	ld b, SCGB_MOVE_INFO
-	call GetSGBLayout
+	hlcoord 0, 4, AttrMap
+	lb bc, 4, 10
+	ld a, $0
+	farcall FillBoxCGB
+	hlcoord 0, 8, AttrMap
+	lb bc, 4, 10
+	ld a, $7
+	farcall FillBoxCGB
+	farcall ApplyAttrMap
+	farcall LoadBattleCategoryAndTypePalettes
 	call SetPalettes
 
 .done

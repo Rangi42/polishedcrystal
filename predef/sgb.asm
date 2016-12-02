@@ -42,7 +42,7 @@ Predef_LoadSGBLayout: ; 864c
 	dw .SGB0f
 	dw .SGB_PokedexSearchOption
 	dw .SGB11
-	dw .SGB_MoveInfo
+	dw .SGB12
 	dw .SGB13
 	dw .SGB_PackPals
 	dw .SGB_TrainerCard
@@ -65,7 +65,6 @@ Predef_LoadSGBLayout: ; 864c
 ; 86b4
 
 .SGB_BattleColors: ; 86b4
-.SGB_MoveInfo: ; 8928
 	ld hl, BlkPacket_9aa6
 	call Function9809
 
@@ -444,6 +443,36 @@ endr
 	ld de, BlkPacket_9a86
 	ret
 ; 8928
+
+.SGB12: ; 8928
+	ld hl, PalPacket_9bd6
+	ld de, wSGBPals
+	ld bc, $10
+	call CopyBytes
+	ld hl, BlkPacket_9a86
+	ld de, wSGBPals + $10
+	ld bc, $10
+	call CopyBytes
+	call .GetMapPalsIndex
+	ld hl, wSGBPals + 1
+	ld [hl], a
+	ld hl, wSGBPals + 3
+	ld [hl], $2e
+	ld hl, wSGBPals + $13
+	ld a, 5
+	ld [hli], a
+	ld a, [wMenuBorderLeftCoord]
+	ld [hli], a
+	ld a, [wMenuBorderTopCoord]
+	ld [hli], a
+	ld a, [wMenuBorderRightCoord]
+	ld [hli], a
+	ld a, [wMenuBorderBottomCoord]
+	ld [hl], a
+	ld hl, wSGBPals
+	ld de, wSGBPals + $10
+	ret
+; 8969
 
 .SGB1e: ; 8969
 	ld hl, PalPacket_9ce6
