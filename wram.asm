@@ -1214,6 +1214,9 @@ CurSpecies:: ; cf60
 CurMove::
 	ds 1
 
+CurForm::
+	ds 1
+
 wNamedObjectTypeBuffer:: ds 1
 wCurrentOptionsPage:: ds 1
 wJumptableIndex::
@@ -1354,8 +1357,6 @@ wFarCallBCBuffer:: ; cfb9
 wcfbb:: ds 1
 GameTimerPause:: ; cfbc
 ; bit 0
-	ds 1
-
 	ds 1
 
 wcfbe::
