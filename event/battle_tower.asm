@@ -420,6 +420,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_GENTLEMAN     ; GENTLEMAN
 	db SPRITE_RICH_BOY      ; RICH_BOY
 	db SPRITE_BREEDER       ; BREEDER
+	db SPRITE_POKEFAN_F     ; BAKER
 	db SPRITE_COWGIRL       ; COWGIRL
 	db SPRITE_SAILOR        ; SAILOR
 	db SPRITE_SWIMMER_GUY   ; SWIMMERM
@@ -465,9 +466,9 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_STEVEN        ; STEVEN
 	db SPRITE_CYNTHIA       ; CYNTHIA
 	db SPRITE_PALMER        ; TOWERTYCOON
-	db SPRITE_VALERIE       ; VALERIE
 	db SPRITE_CAITLIN       ; CAITLIN
 	db SPRITE_DARACH        ; DARACH
+	db SPRITE_VALERIE       ; VALERIE
 	db SPRITE_SABRINA       ; REI
 
 Special_BattleTower_CheckForRules: ; 170bd3

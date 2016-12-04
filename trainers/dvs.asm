@@ -90,6 +90,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; gentleman
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; rich boy
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; breeder
+	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; baker
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; cowgirl
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; sailor
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; swimmerm
@@ -135,8 +136,8 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; steven
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; cynthia
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; caitlin
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; darach
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; rei
 ; 2715c

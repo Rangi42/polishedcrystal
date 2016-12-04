@@ -59,6 +59,7 @@
 	db "Gentleman@"      ; GENTLEMAN
 	db "Rich Boy@"       ; RICH_BOY
 	db "Breeder@"        ; BREEDER
+	db "Baker@"          ; BAKER
 	db "Cowgirl@"        ; COWGIRL
 	db "Sailor@"         ; SAILOR
 	db "Swimmer@"        ; SWIMMERM
@@ -104,6 +105,6 @@
 	db "Rock Hound@"     ; STEVEN
 	db "Researcher@"     ; CYNTHIA
 	db "TowerTycoon@"    ; TOWERTYCOON
-	db "Lady@"           ; CAITLIN
 	db "Valet@"          ; DARACH
+	db "Lady@"           ; CAITLIN
 	db "Shrine@"         ; REI

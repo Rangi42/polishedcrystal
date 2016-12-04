@@ -798,6 +798,7 @@ ElectivireBackpic:     INCBIN "gfx/pics/electivire/back.2bpp.lz"
 MagmortarFrontpic:     INCBIN "gfx/pics/magmortar/front.2bpp.lz"
 MagmortarBackpic:      INCBIN "gfx/pics/magmortar/back.2bpp.lz"
 BreederPic:            INCBIN "gfx/trainers/breeder.2bpp.lz"
+BakerPic:              INCBIN "gfx/trainers/baker.2bpp.lz"
 OfficerfPic:           INCBIN "gfx/trainers/officer_f.2bpp.lz"
 SrAndJrPic:            INCBIN "gfx/trainers/sr_and_jr.2bpp.lz"
 CouplePic:             INCBIN "gfx/trainers/couple.2bpp.lz"
@@ -817,12 +818,12 @@ PetrelPic:             INCBIN "gfx/trainers/petrel.2bpp.lz"
 SECTION "Pics 22", ROMX
 
 CherylPic: ; TODO
-RileyPic:                INCBIN "gfx/trainers/riley.2bpp.lz"
-BuckPic:                 INCBIN "gfx/trainers/buck.2bpp.lz"
-MarleyPic:               INCBIN "gfx/trainers/marley.2bpp.lz"
-MiraPic:                 INCBIN "gfx/trainers/mira.2bpp.lz"
-CaitlinPic: ; TODO
-DarachPic: ; TODO
+RileyPic:                 INCBIN "gfx/trainers/riley.2bpp.lz"
+BuckPic:                  INCBIN "gfx/trainers/buck.2bpp.lz"
+MarleyPic:                INCBIN "gfx/trainers/marley.2bpp.lz"
+MiraPic:                  INCBIN "gfx/trainers/mira.2bpp.lz"
+CaitlinPic:               INCBIN "gfx/trainers/caitlin.2bpp.lz"
+DarachPic:                INCBIN "gfx/trainers/darach.2bpp.lz"
 ValeriePic:               INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:                INCBIN "gfx/trainers/walker.2bpp.lz"
 PikachuFlyFrontpic:       INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"

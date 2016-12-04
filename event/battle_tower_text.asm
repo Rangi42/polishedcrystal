@@ -150,6 +150,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; GENTLEMAN
 	db MALE   ; RICH_BOY
 	db FEMALE ; BREEDER
+	db FEMALE ; BAKER
 	db FEMALE ; COWGIRL
 	db MALE   ; SAILOR
 	db MALE   ; SWIMMERM
@@ -195,9 +196,9 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; STEVEN
 	db FEMALE ; CYNTHIA
 	db MALE   ; TOWERTYCOON
-	db FEMALE ; VALERIE
 	db FEMALE ; CAITLIN
 	db MALE   ; DARACH
+	db FEMALE ; VALERIE
 	db FEMALE ; REI
 
 

@@ -366,6 +366,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Baker
+	db MOOMOO_MILK, 0 ; items
+	db 14 ; base reward
+	dw AI_BASIC + AI_OFFENSIVE + AI_OPPORTUNIST + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Cowgirl
 	db MOOMOO_MILK, 0 ; items
 	db 14 ; base reward
@@ -636,12 +642,6 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_OFTEN
 
-; Valerie
-	db HYPER_POTION, 0 ; items
-	db 25 ; base reward
-	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
-	dw CONTEXT_USE + SWITCH_OFTEN
-
 ; Caitlin
 	db HYPER_POTION, 0 ; items
 	db 25 ; base reward
@@ -649,6 +649,12 @@ TrainerClassAttributes: ; 3959c
 	dw CONTEXT_USE + SWITCH_OFTEN
 
 ; Darach
+	db HYPER_POTION, 0 ; items
+	db 25 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_OFTEN
+
+; Valerie
 	db HYPER_POTION, 0 ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY

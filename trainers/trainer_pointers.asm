@@ -62,6 +62,7 @@ TrainerGroups: ; 0x39999
 	dw GentlemanGroup
 	dw RichBoyGroup
 	dw BreederGroup
+	dw BakerGroup
 	dw CowgirlGroup
 	dw SailorGroup
 	dw SwimmerMGroup
@@ -107,7 +108,7 @@ TrainerGroups: ; 0x39999
 	dw StevenGroup
 	dw CynthiaGroup
 	dw TowerTycoonGroup
-	dw ValerieGroup
 	dw CaitlinGroup
 	dw DarachGroup
+	dw ValerieGroup
 	dw ReiGroup

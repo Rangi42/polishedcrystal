@@ -60,6 +60,7 @@
 	add_pic GentlemanPic
 	add_pic RichBoyPic
 	add_pic BreederPic
+	add_pic BakerPic
 	add_pic CowgirlPic
 	add_pic SailorPic
 	add_pic SwimmermPic
@@ -105,9 +106,9 @@
 	add_pic StevenPic
 	add_pic CynthiaPic
 	add_pic TowerTycoonPic
-	add_pic ValeriePic
 	add_pic CaitlinPic
 	add_pic DarachPic
+	add_pic ValeriePic
 	add_pic ReiPic
 	add_pic OmastarFossilPic
 	add_pic KabutopsFossilPic
