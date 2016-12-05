@@ -6018,16 +6018,18 @@ endr
 
 .PopupFontPointers:
 	dw PopupFontNormal
+	dw PopupFontNarrow
 	dw PopupFontBold
 	dw PopupFontItalic
 	dw PopupFontSerif
 	dw PopupFontUnown
 	dw PopupFontNormal
 	dw PopupFontNormal
-	dw PopupFontNormal
 
 PopupFontNormal:
 INCBIN "gfx/font/popup_normal.2bpp"
+PopupFontNarrow:
+INCBIN "gfx/font/popup_narrow.2bpp"
 PopupFontBold:
 INCBIN "gfx/font/popup_bold.2bpp"
 PopupFontItalic:

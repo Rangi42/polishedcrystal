@@ -282,6 +282,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
 * Add: Olivine Gym has its two trainers from HGSS.
 * Add: Unlock frame type 9.
+* Add: Choose a typeface/font.
 * Add: Show PC box quantity.
 * Add: Pokémon stats show caught Poké Ball.
 * Add: Nest, Net, and Luxury Balls.
@@ -320,3 +321,4 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Incorrect Cowgirl and Misty sprites.
 * Fix: Pokémon caught during the Bug-Catching Contest are recorded as caught in Goldenrod Harbor.
 * Fix: Magnet Train tracks were missing tiles.
+* Fix: Shiny icon is the star from Gen 3+.

@@ -549,6 +549,7 @@ endr
 
 .Strings:
 	dw .Normal
+	dw .Narrow
 	dw .Bold
 	dw .Italic
 	dw .Serif
@@ -556,6 +557,8 @@ endr
 
 .Normal:
 	db "Normal@"
+.Narrow:
+	db "Narrow@"
 .Bold:
 	db "Bold  @"
 .Italic:

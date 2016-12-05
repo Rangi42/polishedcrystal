@@ -3,6 +3,8 @@ INCBIN "gfx/font/extra.2bpp"
 
 FontNormal:
 INCBIN "gfx/font/normal.1bpp"
+FontNarrow:
+INCBIN "gfx/font/narrow.1bpp"
 FontBold:
 INCBIN "gfx/font/bold.1bpp"
 FontItalic:
@@ -127,11 +129,11 @@ endr
 
 .PopupFontPointers:
 	dw FontNormal
+	dw FontNarrow
 	dw FontBold
 	dw FontItalic
 	dw FontSerif
 	dw FontUnown
-	dw FontNormal
 	dw FontNormal
 	dw FontNormal
 
