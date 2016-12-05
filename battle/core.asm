@@ -5066,7 +5066,7 @@ endr
 	farcall CheckShininess
 	jr nc, .not_shiny
 	ld a, "<SHINY>"
-	hlcoord 10, 1
+	hlcoord 9, 1
 	ld [hl], a
 
 .not_shiny
@@ -5080,10 +5080,10 @@ endr
 	ld a, "♀"
 
 .got_gender
-	hlcoord 9, 1
+	hlcoord 8, 1
 	ld [hl], a
 
-	hlcoord 6, 1
+	hlcoord 5, 1
 	ld a, [EnemyMonLevel]
 	ld [TempMonLevel], a
 	call PrintLevel
@@ -5149,11 +5149,11 @@ endr
 .draw_bar
 	xor a
 	ld [wWhichHPBar], a
-	hlcoord 2, 2
+	hlcoord 1, 2
 	call DrawBattleHPBar
 
 	farcall LoadEnemyStatusIcon
-	hlcoord 2, 1
+	hlcoord 1, 1
 	ld [hl], $5e
 	inc hl
 	ld [hl], $5f

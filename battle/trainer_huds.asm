@@ -162,12 +162,12 @@ DrawEnemyHUDBorder: ; 2c0c5
 	dec a
 	call CheckCaughtMon
 	ret z
-	hlcoord 1, 1
+	hlcoord 0, 2
 	ld [hl], "<BALL>"
 	ret
 
 .nuzlocke
-	hlcoord 1, 1
+	hlcoord 0, 2
 	ld [hl], "<NONO>"
 	ret
 ; 2c0f1
