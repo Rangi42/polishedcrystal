@@ -127,28 +127,28 @@ ENDM
 	landmark 116,  68, CeruleanCityName
 	landmark 108,  60, CeruleanCaveName
 	landmark 116,  60, Route24Name
-	landmark 124,  52, Route25Name
-	landmark 140,  52, CeruleanCapeName
+	landmark 132,  52, Route25Name
+	landmark 148,  52, CeruleanCapeName
 	landmark 116,  76, Route5Name
 	landmark 122,  90, UndergroundName
 	landmark 116,  92, Route6Name
 	landmark 116, 100, VermilionCityName
 	landmark 124,  92, DiglettsCaveName
 	landmark 104,  84, Route7Name
-	landmark 128,  84, Route8Name
-	landmark 128,  68, Route9Name
-	landmark 140,  68, RockTunnelName
-	landmark 148,  68, PowerPlantName
-	landmark 140,  76, Route10Name
-	landmark 140,  84, LavenderTownName
-	landmark 144,  84, LavRadioTowerName
+	landmark 132,  84, Route8Name
+	landmark 132,  68, Route9Name
+	landmark 148,  68, RockTunnelName
+	landmark 156,  68, PowerPlantName
+	landmark 148,  76, Route10Name
+	landmark 148,  84, LavenderTownName
+	landmark 150,  84, LavRadioTowerName
 	landmark  92,  84, CeladonCityName
 	landmark 116,  84, SaffronCityName
-	landmark 128, 100, Route11Name
-	landmark 140,  96, Route12Name
-	landmark 132, 116, Route13Name
-	landmark 124, 128, Route14Name
-	landmark 112, 132, Route15Name
+	landmark 132, 100, Route11Name
+	landmark 148, 100, Route12Name
+	landmark 140, 116, Route13Name
+	landmark 132, 124, Route14Name
+	landmark 116, 132, Route15Name
 	landmark  84,  84, Route16Name
 	landmark  84, 108, Route17Name
 	landmark  88, 132, Route18Name
