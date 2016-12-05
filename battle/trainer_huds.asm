@@ -105,6 +105,8 @@ endr
 ; 2c095
 
 DrawPlayerHUDBorder: ; 2c095
+	hlcoord 18, 10
+	ld [hl], $77
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
 	ld bc, 4
@@ -115,7 +117,7 @@ DrawPlayerHUDBorder: ; 2c095
 
 .tiles
 	db $7f ; past right
-	db $6b ; right end
+	db $78 ; right end
 	db $62 ; bar
 	db $6c ; left end
 ; 2c0ad

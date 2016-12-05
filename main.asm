@@ -4180,6 +4180,8 @@ DrawPlayerHP: ; 50b0a
 	push hl
 	push hl
 	call DrawBattleHPBar
+	hlcoord 18, 9
+	ld [hl], $76 ; alternate end cap
 	pop hl
 
 ; Print HP

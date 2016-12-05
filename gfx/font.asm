@@ -151,11 +151,7 @@ LoadFrame:: ; fb4cc
 ; fb4f2
 
 LoadBattleFontsHPBar: ; fb4f2
-	ld de, BattleExtraGFX
-	ld hl, VTiles2 tile $60
-	lb bc, BANK(BattleExtraGFX), 16
-	call Get2bpp_2
-	call LoadFrame
+	call _LoadFontsBattleExtra
 
 LoadHPBar: ; fb50d
 	ld de, ExpBarGFX
@@ -259,7 +255,7 @@ LoadStatsScreenGFX: ; fb53e
 	call _LoadFontsBattleExtra
 	ld de, ExpBarGFX
 	ld hl, VTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 8
+	lb bc, BANK(ExpBarGFX), 7
 	call Get2bpp_2
 
 LoadStatsGFX: ; fb571

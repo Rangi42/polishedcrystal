@@ -2106,7 +2106,7 @@ UpdateHPBar: ; 3cd3c
 	and a
 	ld a, 1
 	jr z, .ok
-	hlcoord 2, 2
+	hlcoord 1, 2
 	xor a
 .ok
 	push bc

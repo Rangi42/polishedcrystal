@@ -2554,7 +2554,7 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	ld a, [hBattleTurn]
 	and a
 	ld hl, EnemyMonMaxHP + 1
-	bccoord 2, 2 ; hp bar
+	bccoord 1, 2 ; hp bar
 	ld a, 0
 	jr nz, .got_max_hp
 	ld hl, BattleMonMaxHP + 1
@@ -4189,7 +4189,7 @@ BattleCommand_PainSplit: ; 35926
 	xor a
 	ld [wWhichHPBar], a
 	call ResetDamage
-	hlcoord 2, 2
+	hlcoord 1, 2
 	predef AnimateHPBar
 	farcall _UpdateBattleHUDs
 
@@ -4728,7 +4728,7 @@ EnemyHurtItself: ; 35d1c
 	ld [Buffer6], a
 	ld a, [hl]
 	ld [Buffer5], a
-	hlcoord 2, 2
+	hlcoord 1, 2
 	xor a
 	ld [wWhichHPBar], a
 	predef AnimateHPBar
@@ -7495,7 +7495,7 @@ BattleCommand_Recoil: ; 36cb2
 	and a
 	ld a, 1
 	jr z, .animate_hp_bar
-	hlcoord 2, 2
+	hlcoord 1, 2
 	xor a
 .animate_hp_bar
 	ld [wWhichHPBar], a
