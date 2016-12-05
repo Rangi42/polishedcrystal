@@ -153,7 +153,7 @@ Options_TextSpeed: ; e42f5
 	bit D_RIGHT_F, a
 	jr z, .NonePressed
 	ld a, c ; right pressed
-	cp SLOW_TEXT
+	cp INST_TEXT
 	jr c, .Increase
 	ld c, FAST_TEXT +- 1
 
@@ -166,7 +166,7 @@ Options_TextSpeed: ; e42f5
 	ld a, c
 	and a
 	jr nz, .Decrease
-	ld c, SLOW_TEXT + 1
+	ld c, INST_TEXT + 1
 
 .Decrease:
 	dec c
@@ -198,35 +198,50 @@ endr
 	dw .Fast
 	dw .Medium
 	dw .Slow
+	dw .Instant
 
 .Fast:
-	db "Fast  @"
+	db "Fast   @"
 .Medium:
-	db "Medium@"
+	db "Medium @"
 .Slow:
-	db "Slow  @"
+	db "Slow   @"
+.Instant:
+	db "Instant@"
 ; e4346
 
+
+INST_RATE EQU 0
+FAST_RATE EQU 1
+MED_RATE  EQU 3
+SLOW_RATE EQU 5
 
 GetTextSpeed: ; e4346
 	ld a, [Options1] ; This converts the number of frames, to 0, 1, 2 representing speed
 	and 7
-	cp 5 ; 5 frames of delay is slow
+	cp SLOW_RATE
 	jr z, .slow
-	cp 1 ; 1 frame of delay is fast
+	cp MED_RATE
+	jr z, .medium
+	cp FAST_RATE
 	jr z, .fast
-	ld c, MED_TEXT ; set it to medium if not one of the above
-	lb de, 1, 5
+	ld c, INST_TEXT
+	lb de, SLOW_RATE, FAST_RATE
 	ret
 
 .slow
 	ld c, SLOW_TEXT
-	lb de, 3, 1
+	lb de, MED_RATE, INST_RATE
+	ret
+
+.medium
+	ld c, MED_TEXT
+	lb de, FAST_RATE, SLOW_RATE
 	ret
 
 .fast
 	ld c, FAST_TEXT
-	lb de, 5, 3
+	lb de, INST_RATE, MED_RATE
 	ret
 ; e4365
 
