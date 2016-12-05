@@ -533,10 +533,6 @@ DisplayHOFMon: ; 86748
 
 HOF_AnimatePlayerPic: ; 86810
 	call ClearBGPalettes
-	ld hl, VTiles2 tile $63
-	ld de, FontExtra + 13 tiles
-	lb bc, BANK(FontExtra), 1
-	call Request2bpp
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
@@ -606,7 +602,7 @@ HOF_AnimatePlayerPic: ; 86810
 	ld de, GameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld [hl], 99
+	ld [hl], ":"
 	inc hl
 	ld de, GameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

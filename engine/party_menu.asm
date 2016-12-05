@@ -140,7 +140,6 @@ PlacePartyHPBar: ; 500cf
 	call PlacePartymonHPBar
 	pop hl
 	ld d, $6
-	ld b, $0
 	call DrawBattleHPBar
 	ld hl, wHPPals
 	ld a, [wSGBPals]

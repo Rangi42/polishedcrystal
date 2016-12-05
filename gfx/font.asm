@@ -1,6 +1,3 @@
-FontExtra:
-INCBIN "gfx/font/extra.2bpp"
-
 FontNormal:
 INCBIN "gfx/font/normal.1bpp"
 FontNarrow:
@@ -13,9 +10,6 @@ FontSerif:
 INCBIN "gfx/font/serif.1bpp"
 FontUnown:
 INCBIN "gfx/font/unown.1bpp"
-
-FontBattleExtra:
-INCBIN "gfx/font/battle_extra.2bpp"
 
 Frames: ; f8800
 INCBIN "gfx/frames/1.1bpp"
@@ -31,17 +25,12 @@ INCBIN "gfx/frames/9.1bpp"
 
 ; Various misc graphics here.
 
+BattleExtraGFX:
+INCBIN "gfx/battle/extra.2bpp"
+
 GFX_Stats: ; f89b0
 INCBIN "gfx/misc/stats.2bpp"
 ; f8ac0
-
-EnemyHPBarBorderGFX: ; f8ac0
-INCBIN "gfx/battle/enemy_hp_bar_border.1bpp"
-; f8ae0
-
-HPExpBarBorderGFX: ; f8ae0
-INCBIN "gfx/battle/hp_exp_bar_border.1bpp"
-; f8b10
 
 ExpBarGFX: ; f8b10
 INCBIN "gfx/battle/expbar.2bpp"
@@ -137,23 +126,14 @@ endr
 	dw FontNormal
 	dw FontNormal
 
-_LoadFontsExtra:: ; fb48a
-	ld de, FontExtra + 2 * LEN_2BPP_TILE
-	ld hl, VTiles2 tile $62
-	lb bc, BANK(FontExtra), $17
-	call Get2bpp_2
-	jr LoadFrame
-; fb4b0
-
 _LoadFontsBattleExtra:: ; fb4be
-	ld de, FontBattleExtra
+	ld de, BattleExtraGFX
 	ld hl, VTiles2 tile $60
-	lb bc, BANK(FontBattleExtra), $19
+	lb bc, BANK(BattleExtraGFX), 25
 	call Get2bpp_2
-	jr LoadFrame
 ; fb4cc
 
-LoadFrame: ; fb4cc
+LoadFrame:: ; fb4cc
 	ld a, [TextBoxFrame]
 	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
 	ld hl, Frames
@@ -171,25 +151,13 @@ LoadFrame: ; fb4cc
 ; fb4f2
 
 LoadBattleFontsHPBar: ; fb4f2
-	ld de, FontBattleExtra
+	ld de, BattleExtraGFX
 	ld hl, VTiles2 tile $60
-	lb bc, BANK(FontBattleExtra), 12
-	call Get2bpp_2
-	ld hl, VTiles2 tile $70
-	ld de, FontBattleExtra + $10 * LEN_2BPP_TILE
-	lb bc, BANK(FontBattleExtra), 3
+	lb bc, BANK(BattleExtraGFX), 16
 	call Get2bpp_2
 	call LoadFrame
 
 LoadHPBar: ; fb50d
-	ld de, EnemyHPBarBorderGFX
-	ld hl, VTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 3
-	call Get1bpp_2
-	ld de, HPExpBarBorderGFX
-	ld hl, VTiles2 tile $73
-	lb bc, BANK(HPExpBarBorderGFX), 6
-	call Get1bpp_2
 	ld de, ExpBarGFX
 	ld hl, VTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 7
@@ -215,7 +183,7 @@ LoadPlayerStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $71
+	ld hl, VTiles2 tile $5c
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
 	farcall LoadPlayerStatusIconPalette
@@ -259,7 +227,7 @@ LoadEnemyStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $75
+	ld hl, VTiles2 tile $5e
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
 	farcall LoadEnemyStatusIconPalette
@@ -287,29 +255,17 @@ LoadEnemyStatusIcon:
 	pop de
 	ret
 
-Functionfb53e: ; fb53e
+LoadStatsScreenGFX: ; fb53e
 	call _LoadFontsBattleExtra
-	ld de, EnemyHPBarBorderGFX
-	ld hl, VTiles2 tile $6c
-	lb bc, BANK(EnemyHPBarBorderGFX), 4
-	call Get1bpp_2
-	ld de, HPExpBarBorderGFX
-	ld hl, VTiles2 tile $78
-	lb bc, BANK(HPExpBarBorderGFX), 1
-	call Get1bpp_2
-	ld de, HPExpBarBorderGFX + 3 * LEN_1BPP_TILE
-	ld hl, VTiles2 tile $76
-	lb bc, BANK(HPExpBarBorderGFX), 2
-	call Get1bpp_2
 	ld de, ExpBarGFX
 	ld hl, VTiles2 tile $55
 	lb bc, BANK(ExpBarGFX), 8
 	call Get2bpp_2
 
-Functionfb571: ; fb571
+LoadStatsGFX: ; fb571
 	ld de, GFX_Stats
 	ld hl, VTiles2 tile $31
-	lb bc, BANK(GFX_Stats), $11
+	lb bc, BANK(GFX_Stats), 14
 	call Get2bpp_2
 	ret
 ; fb57e

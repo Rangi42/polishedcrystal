@@ -583,7 +583,6 @@ Phone_StartRinging: ; 9033f
 	call PlaySFX
 	call Phone_CallerTextbox
 	call UpdateSprites
-	farcall PhoneRing_LoadEDTile
 	ret
 ; 90355
 
@@ -593,7 +592,6 @@ HangUp_Wait20Frames: ; 90355
 Phone_Wait20Frames
 	ld c, 20
 	call DelayFrames
-	farcall PhoneRing_LoadEDTile
 	ret
 ; 90363
 
@@ -602,7 +600,7 @@ Function90363: ; 90363 (24:4363)
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
-	ld [hl], $62
+	ld [hl], "<PHONE>"
 rept 2
 	inc hl
 endr

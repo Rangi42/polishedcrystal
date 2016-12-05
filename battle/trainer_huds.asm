@@ -33,7 +33,7 @@ ShowPlayerMonsRemaining: ; 2c01c
 ; 2c03a
 
 ShowOTTrainerMonsRemaining: ; 2c03a
-	call DrawEnemyHUDBorder
+	call DrawEnemyPartyIconHUDBorder
 	ld hl, OTPartyMon1HP
 	ld de, OTPartyCount
 	call StageBallTilesData
@@ -109,15 +109,15 @@ DrawPlayerHUDBorder: ; 2c095
 	ld de, wTrainerHUDTiles
 	ld bc, 4
 	call CopyBytes
-	hlcoord 18, 10
+	hlcoord 19, 11
 	ld de, -1 ; start on right
 	jr PlaceHUDBorderTiles
 
 .tiles
-	db $73 ; right side
-	db $77 ; bottom right
-	db $6e ; bottom left
-	db "_" ; bottom side
+	db $7f ; past right
+	db $6b ; right end
+	db $62 ; bar
+	db $6c ; left end
 ; 2c0ad
 
 DrawPlayerPartyIconHUDBorder: ; 2c0ad
@@ -125,25 +125,34 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	ld de, wTrainerHUDTiles
 	ld bc, 4
 	call CopyBytes
-	hlcoord 18, 10
+	hlcoord 19, 11
 	ld de, -1 ; start on right
 	jr PlaceHUDBorderTiles
 
 .tiles
-	db $73 ; right side
-	db $77 ; bottom right
-	db $6e ; bottom left
-	db "_" ; bottom side
+	db $6e ; past right
+	db $6e ; right end
+	db $6e ; bar
+	db $6d ; left end
 ; 2c0c5
 
-DrawEnemyHUDBorder: ; 2c0c5
+DrawEnemyPartyIconHUDBorder:
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
 	ld bc, 4
 	call CopyBytes
-	hlcoord 1, 2
+	hlcoord 0, 3
 	ld de, 1 ; start on left
 	call PlaceHUDBorderTiles
+	jr DrawEnemyHUDBorder
+
+.tiles
+	db $6e ; past left
+	db $6e ; left end
+	db $6e ; bar
+	db $6f ; right end
+
+DrawEnemyHUDBorder: ; 2c0c5
 	ld a, [wBattleMode]
 	dec a
 	ret nz
@@ -161,30 +170,23 @@ DrawEnemyHUDBorder: ; 2c0c5
 	hlcoord 1, 1
 	ld [hl], "<NONO>"
 	ret
-
-.tiles
-	db $6d ; left side
-	db $74 ; bottom left
-	db $78 ; bottom right
-	db "_" ; bottom side
 ; 2c0f1
 
 PlaceHUDBorderTiles: ; 2c0f1
 	ld a, [wTrainerHUDTiles]
 	ld [hl], a
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	ld a, [StartFlypoint]
-	ld [hl], a
 	ld b, $8
 .loop
 	add hl, de
-	ld a, [MovementBuffer]
+	ld a, [wTrainerHUDTiles + 1]
 	ld [hl], a
 	dec b
 	jr nz, .loop
 	add hl, de
-	ld a, [EndFlypoint]
+	ld a, [wTrainerHUDTiles + 2]
+	ld [hl], a
+	add hl, de
+	ld a, [wTrainerHUDTiles + 3]
 	ld [hl], a
 	ret
 ; 2c10d

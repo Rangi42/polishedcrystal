@@ -2188,8 +2188,8 @@ DoubleSwitch: ; 3cdca
 	cp $1
 	jr z, .player_1
 	call ClearSprites
-	hlcoord 1, 0
-	lb bc, 4, 10
+	hlcoord 0, 0
+	lb bc, 4, 11
 	call ClearBox
 	call PlayerPartyMonEntrance
 	ld a, $1
@@ -2374,8 +2374,8 @@ FaintEnemyPokemon: ; 3cf14
 	call EnemyMonFaintedAnimation
 	ld de, SFX_FAINT
 	call PlaySFX
-	hlcoord 1, 0
-	lb bc, 4, 10
+	hlcoord 0, 0
+	lb bc, 4, 11
 	call ClearBox
 	ld hl, BattleText_EnemyPkmnFainted
 	jp StdBattleTextBox
@@ -3681,8 +3681,8 @@ ClearEnemyMonBox: ; 3d7a0
 	ld [hBGMapMode], a
 	call ExitMenu
 	call ClearSprites
-	hlcoord 1, 0
-	lb bc, 4, 10
+	hlcoord 0, 0
+	lb bc, 4, 11
 	call ClearBox
 	call WaitBGMap
 	jp FinishBattleAnim
@@ -4263,8 +4263,7 @@ SendOutPlayerMon: ; 3db5f
 	ld hl, BattleMonForm
 	predef GetVariant
 	hlcoord 1, 5
-	ld b, 7
-	ld c, 8
+	lb bc, 7, 8
 	call ClearBox
 	call WaitBGMap
 	xor a
@@ -4896,7 +4895,6 @@ DrawPlayerHUD: ; 3df58
 
 	; HP bar
 	hlcoord 10, 9
-	ld b, 1
 	xor a ; PARTYMON
 	ld [MonType], a
 	predef DrawPlayerHP
@@ -4918,9 +4916,9 @@ DrawPlayerHUD: ; 3df58
 	; Status icon
 	farcall LoadPlayerStatusIcon
 	hlcoord 10, 8
-	ld [hl], $71
+	ld [hl], $5c
 	inc hl
-	ld [hl], $72
+	ld [hl], $5d
 	ret
 ; 3df98
 
@@ -5031,8 +5029,8 @@ DrawEnemyHUD: ; 3e043
 	xor a
 	ld [hBGMapMode], a
 
-	hlcoord 1, 0
-	lb bc, 4, 11
+	hlcoord 0, 0
+	lb bc, 4, 12
 	call ClearBox
 
 	farcall DrawEnemyHUDBorder
@@ -5152,14 +5150,13 @@ endr
 	xor a
 	ld [wWhichHPBar], a
 	hlcoord 2, 2
-	ld b, 0
 	call DrawBattleHPBar
 
 	farcall LoadEnemyStatusIcon
 	hlcoord 2, 1
-	ld [hl], $75
+	ld [hl], $5e
 	inc hl
-	ld [hl], $76
+	ld [hl], $5f
 	ret
 ; 3e127
 
@@ -6047,13 +6044,13 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $6f
+	ld hl, VTiles2 tile $70
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 9
-	ld [hl], $6f
-	inc hl
 	ld [hl], $70
+	inc hl
+	ld [hl], $71
 
 	ld hl, TypeIconGFX
 	ld bc, 4 tiles
@@ -6061,17 +6058,17 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5c
+	ld hl, VTiles2 tile $72
 	lb bc, BANK(TypeIconGFX), 4
 	call Request2bpp
 	hlcoord 3, 9
-	ld [hl], $5c
+	ld [hl], $72
 	inc hl
-	ld [hl], $5d
+	ld [hl], $73
 	inc hl
-	ld [hl], $5e
+	ld [hl], $74
 	inc hl
-	ld [hl], $5f
+	ld [hl], $75
 
 	hlcoord 0, 4, AttrMap
 	lb bc, 4, 10
@@ -8558,7 +8555,7 @@ PlaceExpBar: ; 3f41c
 	jr .skip
 
 .loop2
-	ld a, "_" ; empty bar
+	ld a, $62 ; empty bar
 
 .skip
 	ld [hld], a
@@ -8697,8 +8694,8 @@ BattleIntro: ; 3f4dd
 	hlcoord 9, 7
 	lb bc, 5, 11
 	call ClearBox
-	hlcoord 1, 0
-	lb bc, 4, 10
+	hlcoord 0, 0
+	lb bc, 4, 11
 	call ClearBox
 	call ClearSprites
 	ld a, [wBattleMode]

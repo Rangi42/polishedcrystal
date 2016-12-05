@@ -63,7 +63,7 @@ LoadFontsBattleExtra:: ; e58
 ; e5f
 
 LoadFontsExtra:: ; e5f
-	farcall _LoadFontsExtra
+	farcall LoadFrame
 	ret
 ; e6c
 

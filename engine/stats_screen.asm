@@ -16,7 +16,7 @@ StatsScreenInit: ; 4dc8a
 	call ClearBGPalettes
 	call ClearTileMap
 	call UpdateSprites
-	farcall Functionfb53e
+	farcall LoadStatsScreenGFX
 	pop hl
 	call _hl_
 	call ClearBGPalettes
@@ -479,12 +479,12 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	; load center graphics
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $3f
+	ld hl, VTiles2 tile $3e
 	lb bc, BANK(CaughtBallsGFX), 1
 	call Request2bpp
 	; draw center
 	hlcoord 8, 6
-	ld a, $3f ; center
+	ld a, $3e ; center
 	ld [hl], a
 	ret
 
@@ -582,9 +582,9 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld de, TempMonExp + 2
 	predef FillInExpBar
 	hlcoord 10, 16
-	ld [hl], $40
+	ld [hl], $6c
 	hlcoord 19, 16
-	ld [hl], $41
+	ld [hl], $6b
 	ret
 
 .PrintNextLevel: ; 4e0d3 (13:60d3)
@@ -745,10 +745,7 @@ endr
 
 .BluePage: ; 4e1ae (13:61ae)
 	hlcoord 0, 9
-	ld b, $0
 	predef DrawPlayerHP
-	hlcoord 8, 9
-	ld [hl], $41
 	call .PlaceNatureInfo
 	call TN_PrintCharacteristics
 	hlcoord 10, 8

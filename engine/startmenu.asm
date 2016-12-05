@@ -1683,7 +1683,7 @@ SetUpMoveScreenBG: ; 13172
 	call ClearSprites
 	xor a
 	ld [hBGMapMode], a
-	farcall Functionfb571
+	farcall LoadStatsGFX
 	farcall ClearSpriteAnims2
 	ld a, [CurPartyMon]
 	ld e, a
