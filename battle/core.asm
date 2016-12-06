@@ -8181,7 +8181,7 @@ AnimateExpBar: ; 3f136
 	inc b
 	push bc
 	push de
-	hlcoord 17, 11
+	hlcoord 10, 11
 	call PlaceExpBar
 	pop de
 	ld a, $1
@@ -8197,7 +8197,7 @@ AnimateExpBar: ; 3f136
 	inc b
 	push bc
 	push de
-	hlcoord 17, 11
+	hlcoord 10, 11
 	call PlaceExpBar
 	pop de
 	ld a, $1
@@ -8429,8 +8429,6 @@ FillInExpBar: ; 3f390
 	push hl
 	call CalcExpBar
 	pop hl
-	ld de, 7
-	add hl, de
 	jp PlaceExpBar
 ; 3f39c
 
@@ -8543,7 +8541,7 @@ PlaceExpBar: ; 3f41c
 	jr c, .next
 	ld b, a
 	ld a, $6d ; full thin bar
-	ld [hld], a
+	ld [hli], a
 	dec c
 	jr z, .finish
 	jr .loop1
@@ -8558,7 +8556,7 @@ PlaceExpBar: ; 3f41c
 	ld a, $6c ; empty thin bar
 
 .skip
-	ld [hld], a
+	ld [hli], a
 	ld a, $6c ; empty thin bar
 	dec c
 	jr nz, .loop2
