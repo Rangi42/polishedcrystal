@@ -248,13 +248,8 @@ HPBarAnim_RedrawHPBar: ; d771
 	ld a, 0
 	adc h
 	ld h, a
-	call DrawBattleHPBar
-	ret
-
 .player
 	call DrawBattleHPBar
-	hlcoord 18, 9
-	ld [hl], $76 ; alternate end cap
 	ret
 ; d784
 

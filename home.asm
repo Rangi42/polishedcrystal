@@ -1501,8 +1501,7 @@ DrawBattleHPBar:: ; 3750
 	ld [hli], a
 	dec d
 	jr nz, .template
-	; TODO: use $76, not $6b, for player's battle HP bar
-	ld a, $6b ; default bar end
+	ld a, $6b ; bar end cap
 	ld [hl], a
 	pop hl
 

@@ -105,8 +105,6 @@ endr
 ; 2c095
 
 DrawPlayerHUDBorder: ; 2c095
-	hlcoord 18, 10
-	ld [hl], $77
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
 	ld bc, 4
@@ -117,9 +115,9 @@ DrawPlayerHUDBorder: ; 2c095
 
 .tiles
 	db $7f ; past right
-	db $78 ; right end
-	db $62 ; bar
-	db $6c ; left end
+	db $6f ; right end
+	db $6c ; bar
+	db $6e ; left end
 ; 2c0ad
 
 DrawPlayerPartyIconHUDBorder: ; 2c0ad
@@ -132,10 +130,10 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	jr PlaceHUDBorderTiles
 
 .tiles
-	db $6e ; past right
-	db $6e ; right end
-	db $6e ; bar
-	db $6d ; left end
+	db $77 ; past right
+	db $77 ; right end
+	db $77 ; bar
+	db $76 ; left end
 ; 2c0c5
 
 DrawEnemyPartyIconHUDBorder:
@@ -149,10 +147,10 @@ DrawEnemyPartyIconHUDBorder:
 	jr DrawEnemyHUDBorder
 
 .tiles
-	db $6e ; past left
-	db $6e ; left end
-	db $6e ; bar
-	db $6f ; right end
+	db $77 ; past left
+	db $77 ; left end
+	db $77 ; bar
+	db $78 ; right end
 
 DrawEnemyHUDBorder: ; 2c0c5
 	ld a, [wBattleMode]
@@ -164,12 +162,12 @@ DrawEnemyHUDBorder: ; 2c0c5
 	dec a
 	call CheckCaughtMon
 	ret z
-	hlcoord 0, 2
+	hlcoord 0, 1
 	ld [hl], "<BALL>"
 	ret
 
 .nuzlocke
-	hlcoord 0, 2
+	hlcoord 0, 1
 	ld [hl], "<NONO>"
 	ret
 ; 2c0f1

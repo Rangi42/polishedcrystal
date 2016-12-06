@@ -8542,7 +8542,7 @@ PlaceExpBar: ; 3f41c
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, $6a ; full bar
+	ld a, $6d ; full thin bar
 	ld [hld], a
 	dec c
 	jr z, .finish
@@ -8551,15 +8551,15 @@ PlaceExpBar: ; 3f41c
 .next
 	add $8
 	jr z, .loop2
-	add $54 ; tile to the left of small exp bar tile
+	add $54 ; tile to the left of thin exp bar tile
 	jr .skip
 
 .loop2
-	ld a, $62 ; empty bar
+	ld a, $6c ; empty thin bar
 
 .skip
 	ld [hld], a
-	ld a, "_" ; empty bar
+	ld a, $6c ; empty thin bar
 	dec c
 	jr nz, .loop2
 

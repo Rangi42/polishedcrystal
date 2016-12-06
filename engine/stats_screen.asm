@@ -582,9 +582,9 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld de, TempMonExp + 2
 	predef FillInExpBar
 	hlcoord 10, 16
-	ld [hl], $6c
+	ld [hl], $6e
 	hlcoord 19, 16
-	ld [hl], $6b
+	ld [hl], $6f
 	ret
 
 .PrintNextLevel: ; 4e0d3 (13:60d3)
