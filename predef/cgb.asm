@@ -143,8 +143,8 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 5, 10
 	ld a, $3
 	call FillBoxCGB
-	hlcoord 10, 11, AttrMap
-	lb bc, 1, 9
+	hlcoord 12, 11, AttrMap
+	lb bc, 1, 7
 	ld a, $4
 	call FillBoxCGB
 	hlcoord 10, 8, AttrMap

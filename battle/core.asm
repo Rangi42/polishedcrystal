@@ -4907,7 +4907,7 @@ DrawPlayerHUD: ; 3df58
 	ld d, h
 	ld e, l
 
-	hlcoord 10, 11
+	hlcoord 12, 11
 	ld a, [TempMonLevel]
 	ld b, a
 	call FillInExpBar
@@ -8181,7 +8181,7 @@ AnimateExpBar: ; 3f136
 	inc b
 	push bc
 	push de
-	hlcoord 10, 11
+	hlcoord 12, 11
 	call PlaceExpBar
 	pop de
 	ld a, $1
@@ -8197,7 +8197,7 @@ AnimateExpBar: ; 3f136
 	inc b
 	push bc
 	push de
-	hlcoord 10, 11
+	hlcoord 12, 11
 	call PlaceExpBar
 	pop de
 	ld a, $1
@@ -8496,8 +8496,8 @@ CalcExpBar: ; 3f39c
 	ld [hld], a
 	xor a
 	ld [hl], a
-; multiply by 64
-	ld a, $40
+; multiply by (7 tiles * 8 px/tile) = 56 px
+	ld a, 56
 	ld [hMultiplier], a
 	call Multiply
 	pop af
@@ -8527,14 +8527,14 @@ CalcExpBar: ; 3f39c
 	call Divide
 	ld a, [hQuotient + 2]
 	ld b, a
-	ld a, $40
+	ld a, 56
 	sub b
 	ld b, a
 	ret
 ; 3f41c
 
 PlaceExpBar: ; 3f41c
-	ld c, $8 ; number of tiles
+	ld c, 7 ; number of tiles
 .loop1
 	ld a, b
 	sub $8

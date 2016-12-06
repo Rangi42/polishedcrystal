@@ -685,7 +685,7 @@ AnimateEndOfExpBar: ; 8e79d
 	call Sprites_Cosine
 	pop hl
 	pop de
-	add 18 * 8 + 4
+	add 19 * 8 + 4
 	ld [hli], a
 
 	ld a, $0

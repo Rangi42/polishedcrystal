@@ -105,20 +105,13 @@ endr
 ; 2c095
 
 DrawPlayerHUDBorder: ; 2c095
-	ld hl, .tiles
-	ld de, wTrainerHUDTiles
-	ld bc, 4
-	call CopyBytes
 	hlcoord 19, 11
-	ld de, -1 ; start on right
-	jr PlaceHUDBorderTiles
-
-.tiles
-	db $7f ; past right
-	db $6f ; right end
-	db $6c ; bar
-	db $6e ; left end
-; 2c0ad
+	ld [hl], $77 ; exp bar end cap
+	hlcoord 10, 11
+	ld [hl], $6e ; first "EXP" tile
+	inc hl
+	ld [hl], $6f ; second "EXP" tile
+	ret
 
 DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	ld hl, .tiles
@@ -130,9 +123,9 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	jr PlaceHUDBorderTiles
 
 .tiles
-	db $77 ; past right
-	db $77 ; right end
-	db $77 ; bar
+	db "—" ; past right
+	db "—" ; right end
+	db "—" ; bar
 	db $76 ; left end
 ; 2c0c5
 
@@ -147,9 +140,9 @@ DrawEnemyPartyIconHUDBorder:
 	jr DrawEnemyHUDBorder
 
 .tiles
-	db $77 ; past left
-	db $77 ; left end
-	db $77 ; bar
+	db "—" ; past left
+	db "—" ; left end
+	db "—" ; bar
 	db $78 ; right end
 
 DrawEnemyHUDBorder: ; 2c0c5

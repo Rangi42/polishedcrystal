@@ -110,8 +110,9 @@
 	charmap "<BALL>",   $c8
 	charmap "<NONO>",   $c9
 
-; unused: ca-ce
+; unused: ca-cd
 
+	charmap "—",        $ce
 	charmap "<PHONE>",  $cf
 
 	charmap "'d",       $d0
