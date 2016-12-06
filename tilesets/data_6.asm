@@ -1,35 +1,35 @@
 Tileset12GFX:
-INCBIN "gfx/tilesets/12.2bpp.lz"
+INCBIN "gfx/tilesets/mart.2bpp.lz"
 
 Tileset12Meta:
-INCBIN "tilesets/12_metatiles.bin"
+INCBIN "tilesets/mart_metatiles.bin"
 
 Tileset12Coll:
-INCBIN "tilesets/12_collision.bin"
+INCBIN "tilesets/mart_collision.bin"
 
 Tileset23GFX:
-INCBIN "gfx/tilesets/23.2bpp.lz"
+INCBIN "gfx/tilesets/tower.2bpp.lz"
 
 Tileset23Meta:
-INCBIN "tilesets/23_metatiles.bin"
+INCBIN "tilesets/tower_metatiles.bin"
 
 Tileset23Coll:
-INCBIN "tilesets/23_collision.bin"
+INCBIN "tilesets/tower_collision.bin"
 
 Tileset27GFX:
-INCBIN "gfx/tilesets/27.2bpp.lz"
+INCBIN "gfx/tilesets/radio_tower.2bpp.lz"
 
 Tileset27Meta:
-INCBIN "tilesets/27_metatiles.bin"
+INCBIN "tilesets/radio_tower_metatiles.bin"
 
 Tileset27Coll:
-INCBIN "tilesets/27_collision.bin"
+INCBIN "tilesets/radio_tower_collision.bin"
 
 Tileset28GFX:
-INCBIN "gfx/tilesets/28.2bpp.lz"
+INCBIN "gfx/tilesets/warehouse.2bpp.lz"
 
 Tileset28Meta:
-INCBIN "tilesets/28_metatiles.bin"
+INCBIN "tilesets/warehouse_metatiles.bin"
 
 Tileset28Coll:
-INCBIN "tilesets/28_collision.bin"
+INCBIN "tilesets/warehouse_collision.bin"

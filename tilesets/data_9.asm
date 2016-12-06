@@ -1,26 +1,26 @@
 Tileset02GFX:
-INCBIN "gfx/tilesets/02.2bpp.lz"
+INCBIN "gfx/tilesets/johto2.2bpp.lz"
 
 Tileset02Meta:
-INCBIN "tilesets/02_metatiles.bin"
+INCBIN "tilesets/johto2_metatiles.bin"
 
 Tileset02Coll:
-INCBIN "tilesets/02_collision.bin"
+INCBIN "tilesets/johto2_collision.bin"
 
 Tileset04GFX:
-INCBIN "gfx/tilesets/04.2bpp.lz"
+INCBIN "gfx/tilesets/johto3.2bpp.lz"
 
 Tileset04Meta:
-INCBIN "tilesets/04_metatiles.bin"
+INCBIN "tilesets/johto3_metatiles.bin"
 
 Tileset04Coll:
-INCBIN "tilesets/04_collision.bin"
+INCBIN "tilesets/johto3_collision.bin"
 
 Tileset32GFX:
-INCBIN "gfx/tilesets/32.2bpp.lz"
+INCBIN "gfx/tilesets/safari.2bpp.lz"
 
 Tileset32Meta:
-INCBIN "tilesets/32_metatiles.bin"
+INCBIN "tilesets/safari_metatiles.bin"
 
 Tileset32Coll:
-INCBIN "tilesets/32_collision.bin"
+INCBIN "tilesets/safari_collision.bin"

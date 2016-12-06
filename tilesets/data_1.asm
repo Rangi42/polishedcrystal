@@ -1,20 +1,20 @@
 Tileset00GFX:
 Tileset01GFX:
-INCBIN "gfx/tilesets/01.2bpp.lz"
+INCBIN "gfx/tilesets/johto1.2bpp.lz"
 
 Tileset00Meta:
 Tileset01Meta:
-INCBIN "tilesets/01_metatiles.bin"
+INCBIN "tilesets/johto1_metatiles.bin"
 
 Tileset00Coll:
 Tileset01Coll:
-INCBIN "tilesets/01_collision.bin"
+INCBIN "tilesets/johto1_collision.bin"
 
 Tileset03GFX:
-INCBIN "gfx/tilesets/03.2bpp.lz"
+INCBIN "gfx/tilesets/kanto1.2bpp.lz"
 
 Tileset03Meta:
-INCBIN "tilesets/03_metatiles.bin"
+INCBIN "tilesets/kanto1_metatiles.bin"
 
 Tileset03Coll:
-INCBIN "tilesets/03_collision.bin"
+INCBIN "tilesets/kanto1_collision.bin"

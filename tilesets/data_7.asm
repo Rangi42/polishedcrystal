@@ -1,32 +1,32 @@
 Tileset07GFX:
-INCBIN "gfx/tilesets/07.2bpp.lz"
+INCBIN "gfx/tilesets/pokecenter.2bpp.lz"
 
 Tileset07Meta:
-INCBIN "tilesets/07_metatiles.bin"
+INCBIN "tilesets/pokecenter_metatiles.bin"
 
 Tileset07Coll:
-INCBIN "tilesets/07_collision.bin"
+INCBIN "tilesets/pokecenter_collision.bin"
 
 Tileset26Meta:
-INCBIN "tilesets/26_metatiles.bin"
+INCBIN "tilesets/ruins_metatiles.bin"
 
 Tileset26Coll:
-INCBIN "tilesets/26_collision.bin"
+INCBIN "tilesets/ruins_collision.bin"
 
 Tileset33Meta:
-INCBIN "tilesets/33_metatiles.bin"
+INCBIN "tilesets/alph1_metatiles.bin"
 
 Tileset34Meta:
-INCBIN "tilesets/34_metatiles.bin"
+INCBIN "tilesets/alph2_metatiles.bin"
 
 Tileset35Meta:
-INCBIN "tilesets/35_metatiles.bin"
+INCBIN "tilesets/alph3_metatiles.bin"
 
 Tileset36Meta:
-INCBIN "tilesets/36_metatiles.bin"
+INCBIN "tilesets/alph4_metatiles.bin"
 
 Tileset33Coll:
 Tileset34Coll:
 Tileset35Coll:
 Tileset36Coll:
-INCBIN "tilesets/33_collision.bin"
+INCBIN "tilesets/alph1_collision.bin"

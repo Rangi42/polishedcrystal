@@ -167,23 +167,16 @@ def process(tileset_name, palette_map_name, metatiles_name):
 
 def main():
 	valid = False
-	if len(sys.argv) >= 2:
+	if len(sys.argv) == 2:
+		name = sys.argv[1]
+		tileset = 'gfx/tilesets/%s.2bpp.lz' % name
+		palette_map = 'tilesets/%s_palette_map.asm' % name
+		metatiles = 'tilesets/%s_metatiles.bin' % name
+	elif len(sys.argv) == 4:
 		tileset = sys.argv[1]
-		if re.match(r'\d\d$', tileset):
-			tileset = 'gfx/tilesets/%s.2bpp.lz' % tileset
-		name_rx = r'gfx/tilesets/(\d\d)\.(?:2bpp\.lz|2bpp|png)$'
-		name_match = re.match(name_rx, tileset)
-		if name_match:
-			number = name_match.group(1)
-			palette_map = 'tilesets/%s_palette_map.asm' % number
-			metatiles = 'tilesets/%s_metatiles.bin' % number
-			valid = True
-		elif len(sys.argv) == 4:
-			palette_map = sys.argv[2]
-			metatiles = sys.argv[3]
-			valid = True
-
-	if not valid:
+		palette_map = sys.argv[2]
+		metatiles = sys.argv[3]
+	else:
 		usage = '''Usage: %s tileset [palette_map.asm metatiles.bin]
        Generate a .png of a metatileset for viewing
 
