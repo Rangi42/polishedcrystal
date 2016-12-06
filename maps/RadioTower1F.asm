@@ -5,6 +5,7 @@ const_value set 2
 	const RADIOTOWER1F_ROCKET
 	const RADIOTOWER1F_FELICITY
 	const RADIOTOWER1F_COOLTRAINER_F
+	const RADIOTOWER1F_WHITNEY
 
 RadioTower1F_MapScriptHeader:
 .MapTriggers:
@@ -124,7 +125,7 @@ ReceptionistScript_0x5cd3d:
 CooltrainerFScript_0x5cdd5:
 	faceplayer
 	opentext
-	checkflag ENGINE_RADIO_CARD
+	checkevent EVENT_GOLDENROD_GYM_WHITNEY
 	iftrue UnknownScript_0x5ce2d
 	writetext UnknownText_0x5d12d
 	yesorno
@@ -146,7 +147,7 @@ CooltrainerFScript_0x5cdd5:
 	waitsfx
 	writetext UnknownText_0x5d2bc
 	yesorno
-	iffalse UnknownScript_0x5ce42
+	iftrue UnknownScript_0x5ce42
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext UnknownText_0x5d30e
@@ -161,6 +162,22 @@ CooltrainerFScript_0x5cdd5:
 	writetext UnknownText_0x5d3c0
 	buttonsound
 	setflag ENGINE_RADIO_CARD
+	writetext UnknownText_0x5d3e5
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, RADIOTOWER1F_WHITNEY, 15
+	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyApproachesMovementData
+	spriteface PLAYER, RIGHT
+	opentext
+	writetext RadioTower1FWhitney2Text
+	waitbutton
+	closetext
+	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves1MovementData
+	spriteface PLAYER, LEFT
+	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
+	disappear RADIOTOWER1F_WHITNEY
+	end
+
 UnknownScript_0x5ce2d:
 	writetext UnknownText_0x5d3e5
 	waitbutton
@@ -204,6 +221,15 @@ GruntM3Script:
 	closetext
 	end
 
+RadioTower1FWhitneyScript:
+	faceplayer
+	opentext
+	writetext RadioTower1FWhitney1Text
+	waitbutton
+	closetext
+	spriteface RADIOTOWER1F_WHITNEY, LEFT
+	end
+
 MapRadioTower1FSignpost0Script:
 	jumptext UnknownText_0x5d5e7
 
@@ -218,6 +244,25 @@ MovementData_0x5ce71:
 MovementData_0x5ce74:
 	step_left
 	turn_head_up
+	step_end
+
+RadioTower1FWhitneyApproachesMovementData:
+	step_up
+	step_up
+	step_left
+	step_end
+
+RadioTower1FWhitneyLeaves1MovementData:
+	step_up
+	step_left
+	step_left
+	step_end
+
+RadioTower1FWhitneyLeaves2MovementData:
+	step_left
+	step_left
+	step_left
+	step_left
 	step_end
 
 UnknownText_0x5ce77:
@@ -350,30 +395,27 @@ UnknownText_0x5d231:
 	text "Correct!"
 	line "Question 2:"
 
-	para "Is this statement"
-	line "correct?"
-
-	para "You can't buy any"
-	line "Berries at a Mart."
+	para "Nidorina can only"
+	line "be female. True?"
 	done
 
 UnknownText_0x5d282:
 	text "Bull's-eye!"
 	line "Question 3:"
 
-	para "Does TM70 contain"
-	line "the move Flash?"
+	para "Can Magikarp learn"
+	line "any moves via TM?"
 	done
 
 UnknownText_0x5d2bc:
 	text "So far so good!"
 	line "Question 4:"
 
-	para "Is Falkner the"
-	line "Violet Gym Leader"
+	para "Does Kurt, the"
+	line "# Ball creator,"
 
-	para "who uses bird"
-	line "#mon?"
+	para "use apricots as"
+	line "ingredients?"
 	done
 
 UnknownText_0x5d30e:
@@ -466,6 +508,32 @@ UnknownText_0x5d5a2:
 	cont "warn the others…"
 	done
 
+RadioTower1FWhitney1Text:
+	text "Hi! I'm Whitney!"
+
+	para "I heard about the"
+	line "quiz to win a"
+	cont "Radio Card,"
+
+	para "so I came here"
+	line "to get one…"
+
+	para "But this quiz is"
+	line "so hard!"
+	done
+
+RadioTower1FWhitney2Text:
+	text "Whitney: Wow, you"
+	line "did it!"
+
+	para "I thought the"
+	line "fourth answer"
+	cont "was apricots…"
+
+	para "Oops! I should get"
+	line "back to the Gym!"
+	done
+
 UnknownText_0x5d5e7:
 	text "1F Reception"
 	line "2F Sales"
@@ -507,10 +575,11 @@ RadioTower1F_MapEventHeader:
 	signpost 0, 13, SIGNPOST_READ, MapRadioTower1FSignpost1Script
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_RECEPTIONIST, 6, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
 	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x5ce51, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_YOUNGSTER, 4, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5ce54, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_RECEPTIONIST, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 6, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_WHITNEY, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY

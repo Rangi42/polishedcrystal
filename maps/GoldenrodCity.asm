@@ -4,7 +4,7 @@ const_value set 2
 	const GOLDENRODCITY_COOLTRAINER_F1
 	const GOLDENRODCITY_COOLTRAINER_F2
 	const GOLDENRODCITY_YOUNGSTER2
-	const GOLDENRODCITY_LASS
+	const GOLDENRODCITY_LASS1
 	const GOLDENRODCITY_GRAMPS
 	const GOLDENRODCITY_ROCKET1
 	const GOLDENRODCITY_ROCKET2
@@ -12,8 +12,8 @@ const_value set 2
 	const GOLDENRODCITY_ROCKET4
 	const GOLDENRODCITY_ROCKET5
 	const GOLDENRODCITY_ROCKET6
-	const GOLDENRODCITY_ROCKET7
 	const GOLDENRODCITY_POKEFAN_M2
+	const GOLDENRODCITY_LASS2
 
 GoldenrodCity_MapScriptHeader:
 .MapTriggers:
@@ -242,14 +242,14 @@ RocketScript_0x198a2c:
 RocketScript_0x198a2f:
 	jumptextfaceplayer UnknownText_0x198daa
 
-RocketScript_0x198a32:
-	jumptextfaceplayer UnknownText_0x198de2
-
 RocketScript_0x198a35:
 	jumptextfaceplayer UnknownText_0x198e1f
 
 RocketScript_0x198a38:
 	jumptextfaceplayer UnknownText_0x198e4b
+
+GoldenrodCityGymLassScript:
+	jumptextfaceplayer GoldenrodCityGymLassText
 
 GoldenrodCityStationSign:
 	jumptext GoldenrodCityStationSignText
@@ -416,14 +416,6 @@ UnknownText_0x198daa:
 	line "money!"
 	done
 
-UnknownText_0x198de2:
-	text "Our dream will"
-	line "soon come true…"
-
-	para "It was such a long"
-	line "struggle…"
-	done
-
 UnknownText_0x198e1f:
 	text "Hey, brat! You"
 	line "don't belong here!"
@@ -434,6 +426,15 @@ UnknownText_0x198e4b:
 	text "Come taste the"
 	line "true terror of"
 	cont "Team Rocket!"
+	done
+
+GoldenrodCityGymLassText:
+	text "The Gym Leader,"
+	line "Whitney, went"
+	cont "flying by saying,"
+
+	para "<``>I have got to get"
+	line "a Radio Card!<''>"
 	done
 
 GoldenrodCityStationSignText:
@@ -629,7 +630,7 @@ GoldenrodCity_MapEventHeader:
 	person_event SPRITE_ROCKET, 20, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a29, EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a2c, EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 23, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a2f, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 20, 33, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a32, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 7, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a35, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 10, 35, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a38, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_POKEFAN_M, 22, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
+	person_event SPRITE_LASS, 8, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodCityGymLassScript, EVENT_GOLDENROD_GYM_WHITNEY

@@ -72,7 +72,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## New content
 
-* Whitney is getting a radio card (from HGSS)
 * Victor and Puka the Surfing Pikachu ("Hey, you can do it, too")
 * Add Crossing Cave (music: Mt. Pyre Peak?) to Route 35 and Route 35 Coast
 * Add Noisy Forest below Route 36 (music: White Treehollow)
