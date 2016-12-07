@@ -2598,8 +2598,10 @@ wRoute22Trigger::                            ds 1
 wGiovannisCaveTrigger::                      ds 1
 wCinnabarLabTrigger::                        ds 1
 wIlexForestTrigger::                         ds 1
+wRoute23NorthTrigger::                       ds 1
+wRoute23SouthTrigger::                       ds 1
 
-	ds 16 ; extra space set aside
+	ds 14 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]
