@@ -477,8 +477,8 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $d, $5, 1, ROUTE_23
-	warp_def $d, $6, 2, ROUTE_23
+	warp_def $d, $5, 1, INDIGO_PLATEAU
+	warp_def $d, $6, 2, INDIGO_PLATEAU
 	warp_def $d, $0, 1, POKECENTER_2F
 	warp_def $3, $e, 1, WILLS_ROOM
 

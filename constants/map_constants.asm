@@ -210,7 +210,7 @@ MAP_NONE   EQU 0
 	mapgroup SINJOH_RUINS,                               13,  9 ;  7
 	mapgroup SINJOH_RUINS_HOUSE,                           4, 4 ;  8
 	mapgroup MYSTRI_STAGE,                                9,  7 ;  9
-	mapgroup EMBEDDED_TOWER,                            12,  11 ; 10
+	mapgroup EMBEDDED_TOWER,                             12, 11 ; 10
 
 	newgroup                                                    ; 10
 
@@ -307,15 +307,17 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 16
 
-	mapgroup ROUTE_23,                                    9, 10 ;  1
-	mapgroup INDIGO_PLATEAU_POKECENTER_1F,                7,  9 ;  2
-	mapgroup WILLS_ROOM,                                  9,  5 ;  3
-	mapgroup KOGAS_ROOM,                                  9,  5 ;  4
-	mapgroup BRUNOS_ROOM,                                 9,  5 ;  5
-	mapgroup KARENS_ROOM,                                 9,  5 ;  6
-	mapgroup LANCES_ROOM,                                12,  5 ;  7
-	mapgroup HALL_OF_FAME,                                7,  5 ;  8
-	mapgroup BELLCHIME_TRAIL,                             7, 12 ;  9
+	mapgroup ROUTE_23_NORTH,                             36, 10 ;  1
+	mapgroup ROUTE_23_SOUTH,                             36, 10 ;  2
+	mapgroup INDIGO_PLATEAU,                             13, 10 ;  3
+	mapgroup INDIGO_PLATEAU_POKECENTER_1F,                7,  9 ;  4
+	mapgroup WILLS_ROOM,                                  9,  5 ;  5
+	mapgroup KOGAS_ROOM,                                  9,  5 ;  6
+	mapgroup BRUNOS_ROOM,                                 9,  5 ;  7
+	mapgroup KARENS_ROOM,                                 9,  5 ;  8
+	mapgroup LANCES_ROOM,                                12,  5 ;  9
+	mapgroup HALL_OF_FAME,                                7,  5 ; 10
+	mapgroup BELLCHIME_TRAIL,                             7, 12 ; 11
 
 	newgroup                                                    ; 17
 
@@ -455,7 +457,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  6 ; 11
 	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 12
 	mapgroup ROUTE_2_GATE,                                4,  5 ; 13
-	mapgroup VICTORY_ROAD_GATE,                           9, 10 ; 14
+	mapgroup VICTORY_ROAD_GATE,                           9, 11 ; 14
 	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 15
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 16
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 17

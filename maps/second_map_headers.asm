@@ -308,7 +308,16 @@
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24, GOLDENROD_HARBOR
 	connection west, ROUTE_41, Route41, -3, 0, 20, GOLDENROD_HARBOR
 
-	map_header_2 Route23, ROUTE_23, $f, 0
+	map_header_2 Route23North, ROUTE_23_NORTH, $0, NORTH | SOUTH
+	connection north, INDIGO_PLATEAU, IndigoPlateau, 0, 0, 10, ROUTE_23_NORTH
+	connection south, ROUTE_23_SOUTH, Route23South, 0, 0, 10, ROUTE_23_NORTH
+
+	map_header_2 Route23South, ROUTE_23_SOUTH, $0, NORTH
+	connection north, ROUTE_23_NORTH, Route23North, 0, 0, 10, ROUTE_23_SOUTH
+
+	map_header_2 IndigoPlateau, INDIGO_PLATEAU, $0, SOUTH
+	connection south, ROUTE_23_NORTH, Route23North, 0, 0, 10, INDIGO_PLATEAU
+
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_header_2 SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_header_2 SproutTower3F, SPROUT_TOWER_3F, $0, 0

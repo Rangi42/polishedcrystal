@@ -521,7 +521,7 @@ VictoryRoad_MapEventHeader:
 
 .Warps:
 	db 10
-	warp_def $43, $9, 5, VICTORY_ROAD_GATE
+	warp_def $43, $9, 1, ROUTE_23_NORTH
 	warp_def $31, $1, 3, VICTORY_ROAD
 	warp_def $23, $1, 2, VICTORY_ROAD
 	warp_def $1f, $d, 5, VICTORY_ROAD
@@ -530,7 +530,7 @@ VictoryRoad_MapEventHeader:
 	warp_def $13, $11, 6, VICTORY_ROAD
 	warp_def $b, $0, 9, VICTORY_ROAD
 	warp_def $1b, $0, 8, VICTORY_ROAD
-	warp_def $5, $d, 3, ROUTE_23
+	warp_def $5, $d, 2, ROUTE_23_NORTH
 
 .XYTriggers:
 	db 2

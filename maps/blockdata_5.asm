@@ -48,3 +48,9 @@ Route35Coast_BlockData:
 
 CinnabarLab_BlockData:
 	INCBIN "maps/CinnabarLab.blk"
+
+Route23North_BlockData:
+	INCBIN "maps/Route23North.blk"
+
+Route23South_BlockData:
+	INCBIN "maps/Route23South.blk"

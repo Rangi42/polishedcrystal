@@ -104,17 +104,16 @@ def process(blockfile_name, height, metatiles_name):
 
 def main():
 	if len(sys.argv) < 4:
-		usage = '''Usage: %s map.blk height tilesetID
+		usage = '''Usage: %s map.blk height tileset
        Generate a .png of a map for viewing'''
 		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
 
 	blockfile = sys.argv[1]
 	height = int(sys.argv[2])
-	tilesetID = int(sys.argv[3])
-	tileset = 'gfx/tilesets/%02d.2bpp.lz' % tilesetID
+	tileset = sys.argv[3]
 	os.system('python utils/metatiles.py %s' % tileset)
-	metatiles = 'tilesets/%02d_metatiles_colored.png' % tilesetID
+	metatiles = 'tilesets/%s_metatiles_colored.png' % tileset
 
 	process(blockfile, height, metatiles)
 

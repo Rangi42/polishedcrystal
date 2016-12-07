@@ -178,8 +178,8 @@ Route39Barn_BlockData:
 VictoryRoad_BlockData:
 	INCBIN "maps/VictoryRoad.blk"
 
-Route23_BlockData:
-	INCBIN "maps/Route23.blk"
+IndigoPlateau_BlockData:
+	INCBIN "maps/IndigoPlateau.blk"
 
 LancesRoom_BlockData:
 	INCBIN "maps/LancesRoom.blk"

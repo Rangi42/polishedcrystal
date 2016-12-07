@@ -1,4 +1,4 @@
-Route23_MapScriptHeader:
+IndigoPlateau_MapScriptHeader:
 .MapTriggers:
 	db 0
 
@@ -24,16 +24,14 @@ IndigoPlateauSignText:
 	para "#mon League HQ"
 	done
 
-Route23_MapEventHeader:
+IndigoPlateau_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 4
+	db 2
 	warp_def $5, $9, 1, INDIGO_PLATEAU_POKECENTER_1F
 	warp_def $5, $a, 2, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def $d, $9, 10, VICTORY_ROAD
-	warp_def $d, $a, 10, VICTORY_ROAD
 
 .XYTriggers:
 	db 0

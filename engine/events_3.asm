@@ -73,9 +73,11 @@ ReturnFromMapSetupScript:: ; b8000
 	ret z
 	cp UNDERGROUND
 	ret z
-	cp INDIGO_PLATEAU
-	ret z
 	cp POWER_PLANT
+	ret z
+	cp POKEMON_MANSION
+	ret z
+	cp CINNABAR_LAB
 	ret z
 	ld a, $1
 	and a

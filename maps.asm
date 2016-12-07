@@ -493,7 +493,7 @@ INCLUDE "maps/CinnabarVolcanoB1F.asm"
 INCLUDE "maps/Route3.asm"
 INCLUDE "maps/Route4.asm"
 INCLUDE "maps/Route10South.asm"
-INCLUDE "maps/Route23.asm"
+INCLUDE "maps/IndigoPlateau.asm"
 INCLUDE "maps/Route24.asm"
 INCLUDE "maps/Route28FamousSpeechHouse.asm"
 INCLUDE "maps/Route19FuchsiaGate.asm"
@@ -608,4 +608,6 @@ INCLUDE "maps/CinnabarLab.asm"
 SECTION "Map Scripts 29", ROMX
 
 INCLUDE "maps/IlexForest.asm"
+INCLUDE "maps/Route23North.asm"
+INCLUDE "maps/Route23South.asm"
 
