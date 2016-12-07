@@ -608,6 +608,5 @@ INCLUDE "maps/CinnabarLab.asm"
 SECTION "Map Scripts 29", ROMX
 
 INCLUDE "maps/IlexForest.asm"
-INCLUDE "maps/Route23North.asm"
-INCLUDE "maps/Route23South.asm"
+INCLUDE "maps/Route23.asm"
 

@@ -1,4 +1,4 @@
-Route23South_MapScriptHeader:
+Route23_MapScriptHeader:
 .MapTriggers:
 	db 6
 
@@ -31,7 +31,7 @@ Route23South_MapScriptHeader:
 .Trigger5:
 	end
 
-Route23SouthZephyrBadgeTriggerScript:
+Route23ZephyrBadgeTriggerScript:
 	stringtotext .ZephyrBadgeText, 0
 	opentext
 	writetext Route23GuardNeedBadgeText
@@ -49,7 +49,7 @@ Route23SouthZephyrBadgeTriggerScript:
 .ZephyrBadgeText:
 	db "Zephyr Badge@"
 
-Route23SouthHiveBadgeTriggerScript:
+Route23HiveBadgeTriggerScript:
 	stringtotext .HiveBadgeText, 0
 	opentext
 	writetext Route23GuardNeedBadgeText
@@ -67,7 +67,7 @@ Route23SouthHiveBadgeTriggerScript:
 .HiveBadgeText:
 	db "Hive Badge@"
 
-Route23SouthPlainBadgeTriggerScript:
+Route23PlainBadgeTriggerScript:
 	stringtotext .PlainBadgeText, 0
 	opentext
 	writetext Route23GuardNeedBadgeText
@@ -85,7 +85,7 @@ Route23SouthPlainBadgeTriggerScript:
 .PlainBadgeText:
 	db "Plain Badge@"
 
-Route23SouthFogBadgeTriggerScript:
+Route23FogBadgeTriggerScript:
 	stringtotext .FogBadgeText, 0
 	opentext
 	writetext Route23GuardNeedBadgeText
@@ -103,7 +103,7 @@ Route23SouthFogBadgeTriggerScript:
 .FogBadgeText:
 	db "Fog Badge@"
 
-Route23SouthStormBadgeTriggerScript:
+Route23StormBadgeTriggerScript:
 	stringtotext .StormBadgeText, 0
 	opentext
 	writetext Route23GuardNeedBadgeText
@@ -126,6 +126,9 @@ Route23GuardNoBadgeScript:
 	waitbutton
 	closetext
 	end
+
+VictoryRoadSign:
+	jumptext VictoryRoadSignText
 
 Route23GuardNeedBadgeText:
 	text "You can pass here"
@@ -159,35 +162,42 @@ Route23GuardGoAheadText:
 	line "go right ahead!"
 	done
 
-Route23South_MapEventHeader:
+VictoryRoadSignText:
+	text "Victory Road"
+	done
+
+Route23_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 2
-	warp_def $3f, $7, 5, VICTORY_ROAD_GATE
-	warp_def $3f, $8, 6, VICTORY_ROAD_GATE
+	db 4
+	warp_def $87, $7, 5, VICTORY_ROAD_GATE
+	warp_def $87, $8, 6, VICTORY_ROAD_GATE
+	warp_def $1f, $4, 1, VICTORY_ROAD
+	warp_def $1f, $e, 10, VICTORY_ROAD
 
 .XYTriggers:
 	db 15
-	xy_trigger 0, $3b, $e, $0, Route23SouthZephyrBadgeTriggerScript, $0, $0
-	xy_trigger 1, $33, $9, $0, Route23SouthHiveBadgeTriggerScript, $0, $0
-	xy_trigger 2, $23, $b, $0, Route23SouthPlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $23, $c, $0, Route23SouthPlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $23, $d, $0, Route23SouthPlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $23, $e, $0, Route23SouthPlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $23, $f, $0, Route23SouthPlainBadgeTriggerScript, $0, $0
-	xy_trigger 3, $1a, $8, $0, Route23SouthFogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $1a, $9, $0, Route23SouthFogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $1a, $a, $0, Route23SouthFogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $1a, $c, $0, Route23SouthFogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $1a, $d, $0, Route23SouthFogBadgeTriggerScript, $0, $0
-	xy_trigger 4, $b, $4, $0, Route23SouthStormBadgeTriggerScript, $0, $0
-	xy_trigger 4, $b, $6, $0, Route23SouthStormBadgeTriggerScript, $0, $0
-	xy_trigger 4, $b, $7, $0, Route23SouthStormBadgeTriggerScript, $0, $0
+	xy_trigger 0, $83, $e, $0, Route23ZephyrBadgeTriggerScript, $0, $0
+	xy_trigger 1, $7b, $9, $0, Route23HiveBadgeTriggerScript, $0, $0
+	xy_trigger 2, $6b, $b, $0, Route23PlainBadgeTriggerScript, $0, $0
+	xy_trigger 2, $6b, $c, $0, Route23PlainBadgeTriggerScript, $0, $0
+	xy_trigger 2, $6b, $d, $0, Route23PlainBadgeTriggerScript, $0, $0
+	xy_trigger 2, $6b, $e, $0, Route23PlainBadgeTriggerScript, $0, $0
+	xy_trigger 2, $6b, $f, $0, Route23PlainBadgeTriggerScript, $0, $0
+	xy_trigger 3, $62, $8, $0, Route23FogBadgeTriggerScript, $0, $0
+	xy_trigger 3, $62, $9, $0, Route23FogBadgeTriggerScript, $0, $0
+	xy_trigger 3, $62, $a, $0, Route23FogBadgeTriggerScript, $0, $0
+	xy_trigger 3, $62, $c, $0, Route23FogBadgeTriggerScript, $0, $0
+	xy_trigger 3, $62, $d, $0, Route23FogBadgeTriggerScript, $0, $0
+	xy_trigger 4, $53, $4, $0, Route23StormBadgeTriggerScript, $0, $0
+	xy_trigger 4, $53, $6, $0, Route23StormBadgeTriggerScript, $0, $0
+	xy_trigger 4, $53, $7, $0, Route23StormBadgeTriggerScript, $0, $0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 32, 3, SIGNPOST_READ, VictoryRoadSign
 
 .PersonEvents:
 	db 0

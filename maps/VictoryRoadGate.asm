@@ -92,8 +92,8 @@ VictoryRoadGate_MapEventHeader:
 	warp_def $7, $14, 1, ROUTE_22
 	warp_def $11, $a, 1, ROUTE_26
 	warp_def $11, $b, 1, ROUTE_26
-	warp_def $0, $a, 1, ROUTE_23_SOUTH
-	warp_def $0, $b, 2, ROUTE_23_SOUTH
+	warp_def $0, $a, 1, ROUTE_23
+	warp_def $0, $b, 2, ROUTE_23
 	warp_def $7, $1, 2, ROUTE_28
 	warp_def $7, $2, 2, ROUTE_28
 

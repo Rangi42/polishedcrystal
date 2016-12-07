@@ -307,17 +307,16 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 16
 
-	mapgroup ROUTE_23_NORTH,                             36, 10 ;  1
-	mapgroup ROUTE_23_SOUTH,                             36, 10 ;  2
-	mapgroup INDIGO_PLATEAU,                             13, 10 ;  3
-	mapgroup INDIGO_PLATEAU_POKECENTER_1F,                7,  9 ;  4
-	mapgroup WILLS_ROOM,                                  9,  5 ;  5
-	mapgroup KOGAS_ROOM,                                  9,  5 ;  6
-	mapgroup BRUNOS_ROOM,                                 9,  5 ;  7
-	mapgroup KARENS_ROOM,                                 9,  5 ;  8
-	mapgroup LANCES_ROOM,                                12,  5 ;  9
-	mapgroup HALL_OF_FAME,                                7,  5 ; 10
-	mapgroup BELLCHIME_TRAIL,                             7, 12 ; 11
+	mapgroup ROUTE_23,                                   72, 10 ;  1
+	mapgroup INDIGO_PLATEAU,                             13, 10 ;  2
+	mapgroup INDIGO_PLATEAU_POKECENTER_1F,                7,  9 ;  3
+	mapgroup WILLS_ROOM,                                  9,  5 ;  4
+	mapgroup KOGAS_ROOM,                                  9,  5 ;  5
+	mapgroup BRUNOS_ROOM,                                 9,  5 ;  6
+	mapgroup KARENS_ROOM,                                 9,  5 ;  7
+	mapgroup LANCES_ROOM,                                12,  5 ;  8
+	mapgroup HALL_OF_FAME,                                7,  5 ;  9
+	mapgroup BELLCHIME_TRAIL,                             7, 12 ; 10
 
 	newgroup                                                    ; 17
 
