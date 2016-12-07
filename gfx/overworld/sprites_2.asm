@@ -50,3 +50,5 @@ KrisSpriteGFX:                INCBIN "gfx/overworld/kris.2bpp" ; c7a40
 KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
 KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
 StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
+SwimmingOfficerSpriteGFX:     INCBIN "gfx/overworld/swimming_officer.2bpp"
+SwimmingOfficerFSpriteGFX:    INCBIN "gfx/overworld/swimming_officer_f.2bpp"

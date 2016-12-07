@@ -81,7 +81,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Expand Diglett's Cave
    * Add a Smooth Rock
 * Expand Mt. Moon
-* Expand Route 23
 * Add five stat trainers
    * Cheryl: Noisy Forest; rewards HP Up
    * Riley: Crossing Cave; rewards Protein

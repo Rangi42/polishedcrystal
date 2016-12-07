@@ -810,6 +810,33 @@
 	db 59, RATICATE
 	db 60, POLIWHIRL
 
+	map ROUTE_23
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 37, DODUO
+	db 38, SANDSLASH
+	db 38, ARBOK
+	db 39, PRIMEAPE
+	db 39, SANDSLASH
+	db 40, SANDSLASH
+	db 42, DITTO
+	; day
+	db 37, DODUO
+	db 38, SANDSLASH
+	db 38, ARBOK
+	db 39, PRIMEAPE
+	db 39, SANDSLASH
+	db 40, SANDSLASH
+	db 42, DITTO
+	; nite
+	db 37, NOCTOWL
+	db 38, RATICATE
+	db 38, RATICATE
+	db 39, QUAGSIRE
+	db 39, QUAGSIRE
+	db 40, QUAGSIRE
+	db 42, DITTO
+
 	map ROUTE_24
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
@@ -869,7 +896,7 @@
 	; morn
 	db 36, DODUO
 	db 36, SANDSLASH
-	db 40, PONYTA
+	db 39, PONYTA
 	db 38, RATICATE
 	db 38, DODUO
 	db 38, ARBOK
@@ -877,7 +904,7 @@
 	; day
 	db 36, DODUO
 	db 36, SANDSLASH
-	db 40, PONYTA
+	db 39, PONYTA
 	db 38, RATICATE
 	db 38, DODUO
 	db 38, ARBOK
@@ -885,7 +912,7 @@
 	; nite
 	db 36, NOCTOWL
 	db 36, RATICATE
-	db 40, NOCTOWL
+	db 39, NOCTOWL
 	db 38, RATICATE
 	db 38, QUAGSIRE
 	db 38, QUAGSIRE

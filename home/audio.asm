@@ -453,6 +453,14 @@ RestartMapMusic:: ; 3d47
 ; 3d62
 
 SpecialMapMusic:: ; 3d62
+	ld a, [MapGroup]
+	cp GROUP_ROUTE_23
+	jr nz, .not_route_23
+	ld a, [MapNumber]
+	cp MAP_ROUTE_23
+	jr z, .no
+
+.not_route_23
 	ld a, [PlayerState]
 	cp PLAYER_SURF
 	jr z, .surf

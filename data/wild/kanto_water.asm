@@ -78,6 +78,12 @@
 	db 56, POLIWAG
 	db 58, POLIWHIRL
 
+	map ROUTE_23
+	db 6 percent ; encounter rate
+	db 35, TENTACOOL
+	db 35, KINGLER
+	db 35, TENTACRUEL
+
 	map ROUTE_24
 	db 4 percent ; encounter rate
 	db 48, MAGIKARP

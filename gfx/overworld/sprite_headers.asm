@@ -404,6 +404,12 @@ StandingYoungsterSprite: ; 14994
 	sprite_header StandingYoungsterSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 ; 1499a
 
+SwimmingOfficerSprite:
+	sprite_header SwimmingOfficerSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
+
+SwimmingOfficerFSprite:
+	sprite_header SwimmingOfficerFSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
+
 CalSprite: ; 148c8
 	sprite_header CalSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 148ce

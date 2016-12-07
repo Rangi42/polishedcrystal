@@ -1301,14 +1301,15 @@ Group15Sprites:
 
 Group16Sprites:
 ; Route23
+; IndigoPlateau
 ; BellchimeTrail
 	db SPRITE_VALERIE
-	; 1 walking sprite
-	; 1 total sprite
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
+	db SPRITE_OFFICER
+	db SPRITE_OFFICER_F
+	db SPRITE_SWIMMING_OFFICER
+	db SPRITE_SWIMMING_OFFICER_F
+	; 5 walking sprites
+	; 5 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
