@@ -108,3 +108,6 @@ INCLUDE "tilesets/rock_tunnel_palette_map.asm"
 
 Tileset40PalMap:
 INCLUDE "tilesets/decor_palette_map.asm"
+
+Tileset41PalMap:
+INCLUDE "tilesets/kanto2_palette_map.asm"

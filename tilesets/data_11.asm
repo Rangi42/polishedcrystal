@@ -15,3 +15,12 @@ INCBIN "tilesets/pokemon_mansion_metatiles.bin"
 
 Tileset37Coll:
 INCBIN "tilesets/pokemon_mansion_collision.bin"
+
+Tileset41GFX:
+INCBIN "gfx/tilesets/kanto2.2bpp.lz"
+
+Tileset41Meta:
+INCBIN "tilesets/kanto2_metatiles.bin"
+
+Tileset41Coll:
+INCBIN "tilesets/kanto2_collision.bin"

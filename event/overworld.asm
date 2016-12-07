@@ -309,12 +309,13 @@ CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
-	dbw TILESET_KANTO, .kanto
 	dbw TILESET_BATTLE_TOWER_OUTSIDE, .johto3
+	dbw TILESET_KANTO_1, .kanto1
 	dbw TILESET_PARK, .park
 	dbw TILESET_ILEX_FOREST, .forest
 	dbw TILESET_SAFARI_ZONE, .safari_zone
 	dbw TILESET_FARAWAY_ISLAND, .faraway_island
+	dbw TILESET_KANTO_2, .kanto2
 	db -1
 
 .johto1 ; Johto OW
@@ -326,7 +327,7 @@ CutGrassBlockPointers: ; c862
 	db $03, $02, $01
 	db -1
 
-.kanto ; Kanto OW
+.kanto1 ; Kanto OW
 	db $0b, $0a, $01
 	db -1
 
@@ -376,6 +377,9 @@ CutGrassBlockPointers: ; c862
 	db $0d, $02, $01
 	db $0e, $02, $01
 	db $0f, $02, $01
+	db -1
+
+.kanto2 ; Route 23
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4

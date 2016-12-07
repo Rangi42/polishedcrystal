@@ -7,7 +7,7 @@ TALK     EQU  1 << 4
 const_value SET 1
 	const TILESET_JOHTO_1              ; 01
 	const TILESET_JOHTO_2              ; 02
-	const TILESET_KANTO                ; 03
+	const TILESET_KANTO_1              ; 03
 	const TILESET_BATTLE_TOWER_OUTSIDE ; 04
 	const TILESET_HOUSE_1              ; 05
 	const TILESET_KRISS_HOUSE          ; 06
@@ -45,6 +45,7 @@ const_value SET 1
 	const TILESET_FARAWAY_ISLAND       ; 26
 	const TILESET_ROCK_TUNNEL          ; 27
 	const TILESET_HOME_DECOR_STORE     ; 28
+	const TILESET_KANTO_2              ; 29
 
 	const_def
 	const PAL_BG_GRAY
