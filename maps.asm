@@ -609,4 +609,6 @@ SECTION "Map Scripts 29", ROMX
 
 INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/Route23.asm"
+INCLUDE "maps/Route34Coast.asm"
+INCLUDE "maps/StormyBeach.asm"
 

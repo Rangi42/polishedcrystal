@@ -51,3 +51,9 @@ CinnabarLab_BlockData:
 
 Route23_BlockData:
 	INCBIN "maps/Route23.blk"
+
+Route34Coast_BlockData:
+	INCBIN "maps/Route34Coast.blk"
+
+StormyBeach_BlockData:
+	INCBIN "maps/StormyBeach.blk"

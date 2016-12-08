@@ -72,7 +72,12 @@ ENDM
 	landmark  76, 140, AzaleaTownName
 	landmark  84, 132, SlowpokeWellName
 	landmark  60, 140, IlexForestName
-	landmark  60, 128, Route34Name
+	landmark  60, 124, Route34Name
+	landmark  48, 128, Route34CoastName
+	landmark  44, 136, ScaryCaveName
+	landmark  52, 148, StormyBeachName
+	landmark  60, 148, NoisyForestName
+	landmark  60, 146, HauntedMansionName
 	landmark  60, 108, GoldenrodCityName
 	landmark  58, 108, RadioTowerName
 	landmark  52, 108, GoldenrodHarborName
@@ -137,9 +142,10 @@ ENDM
 	landmark 104,  84, Route7Name
 	landmark 132,  84, Route8Name
 	landmark 132,  68, Route9Name
+	landmark 148,  76, Route10Name
 	landmark 148,  68, RockTunnelName
 	landmark 156,  68, PowerPlantName
-	landmark 148,  76, Route10Name
+	landmark 148,  64, DimCaveName
 	landmark 148,  84, LavenderTownName
 	landmark 150,  84, LavRadioTowerName
 	landmark  92,  84, CeladonCityName
@@ -287,7 +293,13 @@ YellowForestName:    db "Yellow¯Forest@"
 QuietCaveName:       db "Quiet Cave@"
 CherrygroveBayName:  db "Cherrygrove¯Bay@"
 GoldenrodHarborName: db "Goldenrod¯Harbor@"
+Route34CoastName:    db "Route 34¯Coast@"
 Route35CoastName:    db "Route 35¯Coast@"
+StormyBeachName:     db "Stormy¯Beach@"
+NoisyForestName:     db "Noisy¯Forest@"
+ScaryCaveName:       db "Scary¯Cave@"
+HauntedMansionName:  db "Haunted¯Mansion@"
+DimCaveName:         db "Dim¯Cave@"
 NavelRockName:       db "Navel Rock@"
 FarawayIslandName:   db "Faraway¯Island@"
 SinjohRuinsName:     db "Sinjoh¯Ruins@"
