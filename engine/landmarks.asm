@@ -167,15 +167,15 @@ ENDM
 	landmark  58, 146, PokemonMansionName
 	landmark  62, 146, CinnabarVolcanoName
 	landmark  60, 136, Route21Name
-	landmark  44,  84, Route22Name
+	landmark  48,  92, Route22Name
 	landmark  28, 116, Route27Name
 	landmark  20, 116, TohjoFallsName
 	landmark  36, 108, Route26Name
-	landmark  36,  84, PokemonLeagueName
-	landmark  36,  76, Route23Name
+	landmark  36,  92, PokemonLeagueName
+	landmark  36,  80, Route23Name
 	landmark  36,  68, VictoryRoadName
 	landmark  36,  52, IndigoPlateauName
-	landmark  28,  84, Route28Name
+	landmark  24,  92, Route28Name
 	landmark  28, 148, ShamoutiIslandName
 	landmark  36, 148, NoisyForestName
 	landmark  24, 144, SouthTunnelName
