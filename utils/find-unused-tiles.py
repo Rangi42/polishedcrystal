@@ -20,6 +20,15 @@ block_data_filenames   = {'maps/blockdata_1.asm', 'maps/blockdata_2.asm',
 block_filename_fmt     = 'maps/%s.blk'
 metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 
+tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
+                 'pokecenter', 'gate', 'port', 'lab', 'facility', 'mart',
+                 'mansion', 'game_corner', 'gym1', 'house3', 'gym2', 'gym3',
+                 'lighthouse', 'bedroom', 'pokecom', 'battle_tower', 'tower',
+                 'cave', 'park', 'ruins', 'radio_tower', 'warehouse',
+                 'ice_path', 'dark_cave', 'forest', 'safari', 'alph1', 'alph2',
+                 'alph3', 'alph4', 'pokemon_mansion', 'faraway', 'rock_tunnel',
+                 'decor', 'kanto2']
+
 # {'TILESET_JOHTO_1': '01', ...}
 tileset_ids = {}
 # {'OlivinePokeCenter1F': '01', ...}
@@ -52,7 +61,7 @@ def read_tileset_ids():
 			elif line.startswith('const '):
 				parts = line.split()
 				tileset_name = parts[1]
-				tileset_ids[tileset_name] = str(tileset_id).zfill(2)
+				tileset_ids[tileset_name] = tileset_names[tileset_id - 1]
 				tileset_id += 1
 			elif line.startswith('const_def'):
 				break
@@ -157,7 +166,7 @@ def main():
 	print('Finding unused tile IDs...', file=sys.stderr)
 	find_unused_tile_ids()
 	print('Printing results...', file=sys.stderr)
-	for tileset_id in sorted(tileset_unused_tile_ids):
+	for tileset_id in sorted(tileset_unused_tile_ids, key=tileset_names.index):
 		print('tileset %s:' % tileset_id)
 		print('\tunused tiles = %s' % ' '.join(sorted(tileset_unused_tile_ids[tileset_id])))
 		print('\tunused blocks = %s' % ' '.join(sorted(tileset_unused_block_ids[tileset_id])))
