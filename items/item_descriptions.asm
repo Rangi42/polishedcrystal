@@ -136,6 +136,7 @@ ItemDescriptions:
 	dw ClearBellDesc
 	dw GSBallDesc
 	dw BlueCardDesc
+	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
@@ -282,7 +283,6 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
-	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
@@ -695,6 +695,10 @@ GSBallDesc:
 BlueCardDesc:
 	db   "Card to save"
 	next "points.@"
+
+OrangeTicketDesc:
+	db   "A ticket for the"
+	next "Seagallop Ferry.@"
 
 MysticTicketDesc:
 	db   "A ticket for the"

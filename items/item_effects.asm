@@ -116,6 +116,7 @@ ItemEffects: ; e73c
 	dw ClearBell
 	dw GSBall
 	dw BlueCard
+	dw OrangeTicket
 	dw MysticTicket
 	dw OldSeaMap
 	dw ShinyCharm
@@ -262,7 +263,6 @@ ItemEffects: ; e73c
 	dw FlowerMail
 	dw FlowerMail
 	dw FlowerMail
-	dw TeruSama
 	dw TeruSama
 	dw TeruSama
 	dw TeruSama
@@ -3231,6 +3231,7 @@ PinkBow:
 UpGrade:
 RainbowWing:
 OldAmber:
+OrangeTicket:
 MysticTicket:
 OldSeaMap:
 ShinyCharm:
