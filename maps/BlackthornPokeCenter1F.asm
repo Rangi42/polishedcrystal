@@ -92,7 +92,7 @@ ProfOaksAide4HiText:
 	text "Hello there! I'm"
 	line "Prof.Oak's aide."
 
-	para "If you caught 50"
+	para "If you caught 60"
 	line "kinds of #mon,"
 
 	para "I'm supposed to"
