@@ -128,6 +128,7 @@
 	dba Music_ReversalMountainWhite2
 	dba Music_WhiteTreehollowWhite2
 	dba Music_ChampionBattleB2W2
+	dba Music_BicycleXY
 	dba Music_PowerPlantXY
 	dba Music_RivalBattleXY
 	dba Music_GymLeaderBattleXY

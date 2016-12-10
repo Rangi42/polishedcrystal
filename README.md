@@ -284,6 +284,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Olivine Gym has its two trainers from HGSS.
 * Add: Unlock frame type 9.
 * Add: Choose a typeface/font.
+* Add: XY Bicycle music for Cycling Road.
 * Add: Show PC box quantity.
 * Add: Pokémon stats show caught Poké Ball.
 * Add: Nest, Net, and Luxury Balls.

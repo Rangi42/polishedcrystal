@@ -123,23 +123,24 @@
 	const MUSIC_REVERSAL_MOUNTAIN_W2         ; 78
 	const MUSIC_WHITE_TREEHOLLOW_W2          ; 79
 	const MUSIC_CHAMPION_BATTLE_B2W2         ; 7a
-	const MUSIC_POWER_PLANT_XY               ; 7b
-	const MUSIC_RIVAL_BATTLE_XY              ; 7c
-	const MUSIC_GYM_LEADER_BATTLE_XY         ; 7d
-	const MUSIC_POKEMON_TOWER_RBY            ; 7e
-	const MUSIC_CINNABAR_MANSION_RBY         ; 7f
-	const MUSIC_DIGLETTS_CAVE_RBY            ; 80
-	const MUSIC_CERULEAN_CAVE_RBY            ; 81
-	const MUSIC_MOUNT_CHIMNEY_RSE            ; 82
-	const MUSIC_MOUNT_PYRE_RSE               ; 83
-	const MUSIC_ABANDONED_SHIP_RSE           ; 84
-	const MUSIC_CHAMPION_BATTLE_RSE          ; 85
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 86
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 87
-	const MUSIC_WALLY_BATTLE_ORAS            ; 88
-	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 89
-	const MUSIC_ZINNIA_BATTLE_ORAS           ; 8a
-	const MUSIC_LUGIAS_SONG_2000             ; 8b
+	const MUSIC_BICYCLE_XY                   ; 7b
+	const MUSIC_POWER_PLANT_XY               ; 7c
+	const MUSIC_RIVAL_BATTLE_XY              ; 7d
+	const MUSIC_GYM_LEADER_BATTLE_XY         ; 7e
+	const MUSIC_POKEMON_TOWER_RBY            ; 7f
+	const MUSIC_CINNABAR_MANSION_RBY         ; 80
+	const MUSIC_DIGLETTS_CAVE_RBY            ; 81
+	const MUSIC_CERULEAN_CAVE_RBY            ; 82
+	const MUSIC_MOUNT_CHIMNEY_RSE            ; 83
+	const MUSIC_MOUNT_PYRE_RSE               ; 84
+	const MUSIC_ABANDONED_SHIP_RSE           ; 85
+	const MUSIC_CHAMPION_BATTLE_RSE          ; 86
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 87
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 88
+	const MUSIC_WALLY_BATTLE_ORAS            ; 89
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 8a
+	const MUSIC_ZINNIA_BATTLE_ORAS           ; 8b
+	const MUSIC_LUGIAS_SONG_2000             ; 8c
 	; special
-	const MUSIC_RADIO_TOWER                  ; 8c
-	const MUSIC_MAHOGANY_MART                ; 8d
+	const MUSIC_RADIO_TOWER                  ; 8d
+	const MUSIC_MAHOGANY_MART                ; 8e
