@@ -577,7 +577,7 @@ Options_Unused:
 Options_NextPrevious:
 	ld hl, wCurrentOptionsPage
 	ld a, [hJoyPressed]
-	bit A_BUTTON_F, a
+	and A_BUTTON | D_LEFT | D_RIGHT
 	jr z, .NonePressed
 	bit 0, [hl]
 	jr z, .Page2
