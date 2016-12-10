@@ -32,13 +32,8 @@ ProfOaksAide3Script:
 .HereYouGo
 	writetext ProfOaksAide3HereYouGoText
 	waitbutton
-	giveitem MACHO_BRACE
-	waitsfx
+	verbosegiveitem MACHO_BRACE
 	iffalse .NoRoom
-	writetext ProfOaksAide3MachoBraceText
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
 	setevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 .Explain
 	writetext ProfOaksAide3ExplainText
@@ -122,11 +117,6 @@ ProfOaksAide3NoRoomText:
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
-	done
-
-ProfOaksAide3MachoBraceText:
-	text "<PLAYER> received"
-	line "Macho Brace."
 	done
 
 ProfOaksAide3ExplainText:

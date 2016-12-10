@@ -42,13 +42,8 @@ ProfOaksAide4Script:
 .HereYouGo
 	writetext ProfOaksAide4HereYouGoText
 	waitbutton
-	giveitem LUCKY_EGG
-	waitsfx
+	verbosegiveitem LUCKY_EGG
 	iffalse .NoRoom
-	writetext ProfOaksAide4LuckyEggText
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
 	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
 .Explain
 	writetext ProfOaksAide4ExplainText
@@ -136,11 +131,6 @@ ProfOaksAide4NoRoomText:
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
-	done
-
-ProfOaksAide4LuckyEggText:
-	text "<PLAYER> received"
-	line "Lucky Egg."
 	done
 
 ProfOaksAide4ExplainText:

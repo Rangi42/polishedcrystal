@@ -31,13 +31,8 @@ ProfOaksAide2Script:
 .HereYouGo
 	writetext ProfOaksAide2HereYouGoText
 	waitbutton
-	giveitem EXP_SHARE
-	waitsfx
+	verbosegiveitem EXP_SHARE
 	iffalse .NoRoom
-	writetext ProfOaksAide2ExpShareText
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
 	writetext ProfOaksAide2ExplainText
@@ -112,11 +107,6 @@ ProfOaksAide2NoRoomText:
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
-	done
-
-ProfOaksAide2ExpShareText:
-	text "<PLAYER> received"
-	line "Exp.Share."
 	done
 
 ProfOaksAide2ExplainText:
