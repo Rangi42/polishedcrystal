@@ -120,7 +120,7 @@ Implement effects:
 * Mulch (use on a picked Berry tree to regrow it)
 * Honey (for Honey Trees)
 * Ability Capsule
-* Quick Powder (wild Ditto)
+* Quick Powder (already on wild Ditto)
 * Choice {Band, Scarf, Specs} (Battle Tower)
 * Binding Band
 * {Mental, Power, White} Herb (Battle Tower)

@@ -11,7 +11,7 @@ endc
 	db NORMAL, NORMAL
 	db 35 ; catch rate
 	db 61 ; base exp
-	db NO_ITEM ; item 1
+	db QUICK_POWDER ; item 1
 	db METAL_POWDER ; item 2
 	db 255 ; gender
 	db 20 ; step cycles to hatch
