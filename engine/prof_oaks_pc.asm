@@ -123,7 +123,7 @@ endm
 	oakrating 214, SFX_DEX_FANFARE_200_229,      OakRating15
 	oakrating 229, SFX_DEX_FANFARE_200_229,      OakRating16
 	oakrating 239, SFX_DEX_FANFARE_230_PLUS,     OakRating17
-	oakrating 248, SFX_DEX_FANFARE_230_PLUS,     OakRating18
+	oakrating 249, SFX_DEX_FANFARE_230_PLUS,     OakRating18
 	oakrating 255, SFX_DEX_FANFARE_230_PLUS,     OakRating19
 
 OakPCText1: ; 0x266de

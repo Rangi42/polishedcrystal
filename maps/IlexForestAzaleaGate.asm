@@ -23,7 +23,7 @@ ProfOaksAide1Script:
 	iftrue .Explain
 	writetext ProfOaksAide1HiText
 	waitbutton
-	count_caught
+	count_seen_caught
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 14, .HereYouGo
 .UhOh
@@ -92,7 +92,7 @@ ProfOaksAide1UhOhText:
 	line "Uh-oh! You've only"
 
 	para "caught @"
-	deciram wd002, 1, 3
+	deciram wd003, 1, 3
 	text " kinds"
 	line "of #mon."
 
@@ -106,7 +106,7 @@ ProfOaksAide1HereYouGoText:
 	line "Great job! You've"
 
 	para "caught @"
-	deciram wd002, 1, 3
+	deciram wd003, 1, 3
 	text " kinds"
 	line "of #mon."
 

@@ -240,7 +240,7 @@ ScriptCommandTable: ; 96cb1
 	dw Script_name                       ; a7
 	dw Script_wait                       ; a8
 	dw Script_check_save                 ; a9
-	dw Script_count_caught               ; aa
+	dw Script_count_seen_caught          ; aa
 	dw Script_count_unown_caught         ; ab
 	dw Script_trainerpic                 ; ac
 	dw Script_givetmhm                   ; ad
@@ -3276,13 +3276,17 @@ Script_check_save: ; 97c15
 	ret
 ; 97c20
 
-Script_count_caught:
+Script_count_seen_caught:
 ; script command 0xaa
 
+	ld hl, PokedexSeen
+	ld b, EndPokedexSeen - PokedexSeen
+	call CountSetBits
+	ld [wd002], a
 	ld hl, PokedexCaught
 	ld b, EndPokedexCaught - PokedexCaught
 	call CountSetBits
-	ld [wd002], a
+	ld [wd003], a
 	ret
 
 Script_count_unown_caught:

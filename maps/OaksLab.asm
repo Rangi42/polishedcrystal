@@ -40,6 +40,31 @@ Oak:
 	writetext OakLabDexCheckText
 	waitbutton
 	special ProfOaksPCBoot
+
+	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
+	iftrue .NoOvalCharm
+	checkcode VAR_DEXSEEN
+	if_less_than NUM_POKEMON, .NoOvalCharm
+	writetext OakLabSeenAllText
+	buttonsound
+	verbosegiveitem OVAL_CHARM
+	setevent EVENT_GOT_OVAL_CHARM_FROM_OAK
+	writetext OakLabOvalCharmText
+	waitbutton
+.NoOvalCharm
+
+	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
+	iftrue .NoShinyCharm
+	checkcode VAR_DEXCAUGHT
+	if_less_than NUM_POKEMON, .NoShinyCharm
+	writetext OakLabCaughtAllText
+	buttonsound
+	verbosegiveitem SHINY_CHARM
+	setevent EVENT_GOT_SHINY_CHARM_FROM_OAK
+	writetext OakLabShinyCharmText
+	waitbutton
+.NoShinyCharm
+
 	writetext OakLabGoodbyeText
 	waitbutton
 	closetext
@@ -210,6 +235,59 @@ OakLabDexCheckText:
 	line "dex coming?"
 
 	para "Let's see…"
+	done
+
+OakLabSeenAllText:
+	text "You've been meeting"
+	line "new #mon at a"
+
+	para "good clip, haven't"
+	line "you?"
+
+	para "Take this as a"
+	line "reward for your"
+	cont "hard work!"
+	done
+
+OakLabOvalCharmText:
+	text "Holding an Oval"
+	line "Charm will improve"
+
+	para "your chances of"
+	line "finding an Egg at"
+	cont "the Day-Care."
+	done
+
+OakLabCaughtAllText:
+	text "I was completely"
+	line "justified in"
+
+	para "giving you that"
+	line "#dex."
+
+	para "It is a testament"
+	line "to your effort…"
+
+	para "And to the support"
+	line "of the many who"
+	cont "helped you…"
+
+	para "And to the bonds"
+	line "you have built"
+	cont "with your #mon!"
+
+	para "Take this as a"
+	line "reward for your"
+	cont "hard work!"
+	done
+
+OakLabShinyCharmText:
+	text "Holding a Shiny"
+	line "Charm will improve"
+
+	para "your chances of"
+	line "finding a shiny"
+	cont "#mon!"
 	done
 
 OakLabGoodbyeText:

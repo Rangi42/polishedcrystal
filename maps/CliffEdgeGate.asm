@@ -13,41 +13,41 @@ CliffEdgeGate_MapScriptHeader:
 CliffEdgeGateReceptionistScript:
 	jumptextfaceplayer CliffEdgeGateReceptionistText
 
-ProfOaksAide2Script:
+ProfOaksAide3Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
+	checkevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 	iftrue .Explain
-	writetext ProfOaksAide2HiText
+	writetext ProfOaksAide3HiText
 	waitbutton
-	count_caught
+	count_seen_caught
 	checkcode VAR_DEXCAUGHT
-	if_greater_than 29, .HereYouGo
+	if_greater_than 44, .HereYouGo
 .UhOh
-	writetext ProfOaksAide2UhOhText
+	writetext ProfOaksAide3UhOhText
 	waitbutton
 	closetext
 	end
 
 .HereYouGo
-	writetext ProfOaksAide2HereYouGoText
+	writetext ProfOaksAide3HereYouGoText
 	waitbutton
-	giveitem EXP_SHARE
+	giveitem MACHO_BRACE
 	waitsfx
 	iffalse .NoRoom
-	writetext ProfOaksAide2ExpShareText
+	writetext ProfOaksAide3MachoBraceText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
+	setevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 .Explain
-	writetext ProfOaksAide2ExplainText
+	writetext ProfOaksAide3ExplainText
 	waitbutton
 	closetext
 	end
 
 .NoRoom
-	writetext ProfOaksAide2NoRoomText
+	writetext ProfOaksAide3NoRoomText
 	waitbutton
 	closetext
 	end
@@ -74,11 +74,11 @@ CliffEdgeGateReceptionistText:
 	line "tourist sight!"
 	done
 
-ProfOaksAide2HiText:
+ProfOaksAide3HiText:
 	text "Hello there! I'm"
 	line "Prof.Oak's aide."
 
-	para "If you caught 30"
+	para "If you caught 45"
 	line "kinds of #mon,"
 
 	para "I'm supposed to"
@@ -87,30 +87,30 @@ ProfOaksAide2HiText:
 	para "So, <PLAYER>,"
 	line "have you caught"
 
-	para "at least 30 kinds"
+	para "at least 45 kinds"
 	line "of #mon?"
 	done
 
-ProfOaksAide2UhOhText:
+ProfOaksAide3UhOhText:
 	text "Let's see…"
 	line "Uh-oh! You've only"
 
 	para "caught @"
-	deciram wd002, 1, 3
+	deciram wd003, 1, 3
 	text " kinds"
 	line "of #mon."
 
 	para "Come back and see"
 	line "me when you catch"
-	cont "30 kinds."
+	cont "45 kinds."
 	done
 
-ProfOaksAide2HereYouGoText:
+ProfOaksAide3HereYouGoText:
 	text "Let's see…"
 	line "Great job! You've"
 
 	para "caught @"
-	deciram wd002, 1, 3
+	deciram wd003, 1, 3
 	text " kinds"
 	line "of #mon."
 
@@ -118,24 +118,31 @@ ProfOaksAide2HereYouGoText:
 	line "Here you go!"
 	done
 
-ProfOaksAide2NoRoomText:
+ProfOaksAide3NoRoomText:
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
 	done
 
-ProfOaksAide2ExpShareText:
+ProfOaksAide3MachoBraceText:
 	text "<PLAYER> received"
-	line "Exp.Share."
+	line "Macho Brace."
 	done
 
-ProfOaksAide2ExplainText:
-	text "That Exp.Share"
+ProfOaksAide3ExplainText:
+	text "That Macho Brace"
 	line "helps a #mon"
 
-	para "gain experience"
-	line "without even"
-	cont "battling."
+	para "grow more from"
+	line "battling, but"
+	cont "slows it down."
+
+	para "According to"
+	line "Prof.Elm, some"
+	cont "#mon evolve"
+
+	para "when one stat has"
+	line "grown enough."
 
 	para "Use it to com-"
 	line "plete the #dex!"
@@ -182,5 +189,5 @@ CliffEdgeGate_MapEventHeader:
 .PersonEvents:
 	db 3
 	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CliffEdgeGateReceptionistScript, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide2Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST

@@ -141,8 +141,8 @@ Implement effects:
 * Flame Orb
 * Toxic Orb
 * Black Sludge
-* Shiny Charm (for catching all Pokémon)
-* Oval Charm (for seeing all Pokémon)
+* Shiny Charm
+* Oval Charm
 
 Find locations for:
 

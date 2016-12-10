@@ -1070,9 +1070,9 @@ check_save: macro
 	db check_save_command
 	endm
 
-	enum count_caught_command
-count_caught: macro
-	db count_caught_command
+	enum count_seen_caught_command
+count_seen_caught: macro
+	db count_seen_caught_command
 	endm
 
 	enum count_unown_caught_command
