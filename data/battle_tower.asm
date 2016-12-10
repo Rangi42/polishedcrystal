@@ -257,6 +257,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Dorothy@@@", SKIER
 	db "Sawyer@@@@", POKEMANIAC
 	db "Kafuka@@@@", SCHOOLGIRL
+	db "Douglas@@@", SIGHTSEERM
 	db "Hatcher@@@", GENTLEMAN
 	db "Salim@@@@@", ROUGHNECK
 	db "Kubrick@@@", HEX_MANIAC
@@ -282,6 +283,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Eleni@@@@@", BATTLE_GIRL
 	db "Lavigne@@@", SCHOOLGIRL
 	db "Mozi@@@@@@", SAGE
+	db "Ichigo@@@@", BAKER
 	db "Cobb@@@@@@", SCHOOLBOY
 	db "Dennett@@@", GENTLEMAN
 	db "Newandyke@", OFFICERM
@@ -290,6 +292,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Carrie@@@@", LASS
 	db "Pov@@@@@@@", BOARDER
 	db "Hitesh@@@@", POKEMANIAC
+	db "Alice@@@@@", SIGHTSEERF
 	db "Hughes@@@@", FISHER
 	db "James@@@@@", BOARDER
 	db "Newton@@@@", SCIENTIST
@@ -298,6 +301,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Nadia@@@@@", BREEDER
 	db "Uri@@@@@@@", PSYCHIC_T
 	db "Rebecca@@@", SKIER
+	db "Molly@@@@@", BAKER
 	db "Argo@@@@@@", BIRD_KEEPER
 	db "Holmes@@@@", PI
 	db "Park@@@@@@", COOLTRAINERF
@@ -308,6 +312,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Ricky@@@@@", BIRD_KEEPER
 	db "Murray@@@@", SAILOR
 	db "Morse@@@@@", SUPER_NERD
+	db "Amelia@@@@", SIGHTSEERF
 	db "Paul@@@@@@", GUITARISTM
 	db "Angelica@@", BEAUTY
 	db "Buckley@@@", RICH_BOY
@@ -326,6 +331,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Hopper@@@@", VETERANF
 	db "Sagan@@@@@", SCIENTIST
 	db "Armstrong@", BIKER
+	db "Gerald@@@@", SIGHTSEERM
 	db "Joan@@@@@@", GUITARISTF
 	db "Phelps@@@@", SWIMMERM
 	db "Andre@@@@@", ROUGHNECK

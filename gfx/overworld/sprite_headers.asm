@@ -289,6 +289,9 @@ KimonoGirlSprite: ; 1489e
 	sprite_header KimonoGirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 148a4
 
+LadySprite:
+	sprite_header LadySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 LassSprite: ; 14820
 	sprite_header LassSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14826

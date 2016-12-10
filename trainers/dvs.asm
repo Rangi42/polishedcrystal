@@ -108,6 +108,8 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; guitaristf
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; biker
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; roughneck
+	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; sightseerm
+	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; sightseerf
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; cooltrainerm
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; cooltrainerf
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; ace duo

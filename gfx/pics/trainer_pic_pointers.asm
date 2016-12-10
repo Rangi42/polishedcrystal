@@ -78,6 +78,8 @@
 	add_pic GuitaristfPic
 	add_pic BikerPic
 	add_pic RoughneckPic
+	add_pic SightseermPic
+	add_pic SightseerfPic
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
 	add_pic AceDuoPic

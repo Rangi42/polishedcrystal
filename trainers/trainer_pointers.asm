@@ -80,6 +80,8 @@ TrainerGroups: ; 0x39999
 	dw GuitaristFGroup
 	dw BikerGroup
 	dw RoughneckGroup
+	dw SightseerMGroup
+	dw SightseerFGroup
 	dw CooltrainerMGroup
 	dw CooltrainerFGroup
 	dw AceDuoGroup

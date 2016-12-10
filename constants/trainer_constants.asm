@@ -655,7 +655,11 @@ KRIS EQU __enum__
 	const THERON
 	const MARKEY
 
-	trainerclass COOLTRAINERM ; 50
+	trainerclass SIGHTSEERM ; 50
+
+	trainerclass SIGHTSEERF ; 51
+
+	trainerclass COOLTRAINERM ; 52
 	const GAVEN1
 	const GAVEN2
 	const GAVEN3
@@ -672,7 +676,7 @@ KRIS EQU __enum__
 	const FRENCH
 	const HENRI
 
-	trainerclass COOLTRAINERF ; 51
+	trainerclass COOLTRAINERF ; 53
 	const BETH1
 	const BETH2
 	const BETH3
@@ -696,7 +700,7 @@ KRIS EQU __enum__
 	const SALMA
 	const BONITA
 
-	trainerclass ACE_DUO ; 52
+	trainerclass ACE_DUO ; 54
 	const ELANANDIDA1
 	const ELANANDIDA2
 	const ARAANDBELA1
@@ -710,37 +714,37 @@ KRIS EQU __enum__
 	const DANANDCARA1
 	const DANANDCARA2
 
-	trainerclass VETERANM ; 53
+	trainerclass VETERANM ; 55
 	const MATT
 	const REMY
 
-	trainerclass VETERANF ; 54
+	trainerclass VETERANF ; 56
 	const JOANNE
 	const SYLVIE
 
-	trainerclass PROTON ; 55
+	trainerclass PROTON ; 57
 	const PROTON1
 	const PROTON2
 
-	trainerclass PETREL ; 56
+	trainerclass PETREL ; 58
 	const PETREL1
 	const PETREL2
 
-	trainerclass ARCHER ; 57
+	trainerclass ARCHER ; 59
 	const ARCHER1
 	const ARCHER2
 
-	trainerclass ARIANA ; 58
+	trainerclass ARIANA ; 5a
 	const ARIANA1
 	const ARIANA2
 
-	trainerclass POKEMON_PROF ; 59
+	trainerclass POKEMON_PROF ; 5b
 	const OAK
 
-	trainerclass MYSTICALMAN ; 5a
+	trainerclass MYSTICALMAN ; 5c
 	const EUSINE
 
-	trainerclass LYRA1 ; 5b
+	trainerclass LYRA1 ; 5d
 	const LYRA1_1
 	const LYRA1_2
 	const LYRA1_3
@@ -754,53 +758,53 @@ KRIS EQU __enum__
 	const LYRA1_11
 	const LYRA1_12
 
-	trainerclass LYRA2 ; 5c
+	trainerclass LYRA2 ; 5e
 
-	trainerclass LORELEI ; 5d
+	trainerclass LORELEI ; 5f
 
-	trainerclass AGATHA ; 5e
+	trainerclass AGATHA ; 60
 
-	trainerclass YELLOW ; 5f
+	trainerclass YELLOW ; 51
 
-	trainerclass WALKER ; 60
+	trainerclass WALKER ; 62
 
-	trainerclass CHERYL ; 61
+	trainerclass CHERYL ; 63
 
-	trainerclass RILEY ; 62
+	trainerclass RILEY ; 64
 
-	trainerclass BUCK ; 63
+	trainerclass BUCK ; 65
 
-	trainerclass MARLEY ; 64
+	trainerclass MARLEY ; 66
 
-	trainerclass MIRA ; 65
+	trainerclass MIRA ; 67
 
-	trainerclass BILL_T ; 66
+	trainerclass BILL_T ; 68
 
-	trainerclass LAWRENCE ; 67
+	trainerclass LAWRENCE ; 69
 
-	trainerclass GIOVANNI ; 68
+	trainerclass GIOVANNI ; 6a
 
-	trainerclass STEVEN ; 69
+	trainerclass STEVEN ; 6b
 
-	trainerclass CYNTHIA ; 6a
+	trainerclass CYNTHIA ; 6c
 
-	trainerclass TOWERTYCOON ; 6b
+	trainerclass TOWERTYCOON ; 6d
 
-	trainerclass CAITLIN ; 6c
+	trainerclass CAITLIN ; 6e
 
-	trainerclass DARACH ; 6d
+	trainerclass DARACH ; 6f
 
-	trainerclass VALERIE ; 6e
+	trainerclass VALERIE ; 70
 
-	trainerclass REI ; 6f
+	trainerclass REI ; 71
 
-	trainerclass OMASTAR_FOSSIL ; 70
+	trainerclass OMASTAR_FOSSIL ; 72
 
-	trainerclass KABUTOPS_FOSSIL ; 71
+	trainerclass KABUTOPS_FOSSIL ; 73
 
-	trainerclass AERODACTYL_FOSSIL ; 72
+	trainerclass AERODACTYL_FOSSIL ; 74
 
-	trainerclass METEORITE ; 73
+	trainerclass METEORITE ; 75
 
 NUM_TRAINER_CLASSES EQU __enum__
 

@@ -52,3 +52,8 @@ KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
 StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
 SwimmingOfficerSpriteGFX:     INCBIN "gfx/overworld/swimming_officer.2bpp"
 SwimmingOfficerFSpriteGFX:    INCBIN "gfx/overworld/swimming_officer_f.2bpp"
+CutTreeSpriteGFX:             INCBIN "gfx/overworld/cut_tree.2bpp"
+BookSpriteGFX:                INCBIN "gfx/overworld/book.2bpp"
+FossilSpriteGFX:              INCBIN "gfx/overworld/fossil.2bpp"
+ElectricFenceLeftSpriteGFX:   INCBIN "gfx/overworld/electric_fence_left.2bpp"
+ElectricFenceRightSpriteGFX:  INCBIN "gfx/overworld/electric_fence_right.2bpp"

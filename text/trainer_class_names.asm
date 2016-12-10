@@ -77,6 +77,8 @@
 	db "Guitarist@"      ; GUITARISTF
 	db "Biker@"          ; BIKER
 	db "Roughneck@"      ; ROUGHNECK
+	db "Sightseer@"      ; SIGHTSEERM
+	db "Sightseer@"      ; SIGHTSEERF
 	db "Ace Trainer@"    ; COOLTRAINERM
 	db "Ace Trainer@"    ; COOLTRAINERF
 	db "Ace Duo@"        ; ACE_DUO
