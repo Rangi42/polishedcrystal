@@ -11,14 +11,14 @@ RuinsofAlphHoOhItemRoom_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-RuinsofAlphHoOhItemRoomSitrusBerry:
-	itemball SITRUS_BERRY
+RuinsofAlphHoOhItemRoomSunStone:
+	itemball SUN_STONE
 
-RuinsofAlphHoOhItemRoomLeppaBerry:
-	itemball LEPPA_BERRY
+RuinsofAlphHoOhItemRoomMoonStone:
+	itemball MOON_STONE
 
-RuinsofAlphHoOhItemRoomRevivalHerb:
-	itemball REVIVAL_HERB
+RuinsofAlphHoOhItemRoomPearlString:
+	itemball PEARL_STRING
 
 RuinsofAlphHoOhItemRoomCharcoal:
 	itemball CHARCOAL
@@ -53,7 +53,7 @@ RuinsofAlphHoOhItemRoom_MapEventHeader:
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomSitrusBerry, EVENT_PICKED_UP_SITRUS_BERRY_FROM_HO_OH_ITEM_ROOM
-	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomLeppaBerry, EVENT_PICKED_UP_LEPPA_BERRY_FROM_HO_OH_ITEM_ROOM
-	person_event SPRITE_POKE_BALL, 4, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomRevivalHerb, EVENT_PICKED_UP_REVIVAL_HERB_FROM_HO_OH_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomSunStone, EVENT_PICKED_UP_SUN_STONE_FROM_HO_OH_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomMoonStone, EVENT_PICKED_UP_MOON_STONE_FROM_HO_OH_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 4, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomPearlString, EVENT_PICKED_UP_PEARL_STRING_FROM_HO_OH_ITEM_ROOM
 	person_event SPRITE_POKE_BALL, 4, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphHoOhItemRoomCharcoal, EVENT_PICKED_UP_CHARCOAL_FROM_HO_OH_ITEM_ROOM

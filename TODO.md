@@ -125,7 +125,7 @@ Implement effects:
 * Binding Band
 * {Mental, Power, White} Herb (Battle Tower)
 * Big Root (Yellow Forest)
-* Shell Bell (Route 32)
+* Shell Bell (already in Aerodactyl chamber)
 * Assault Vest
 * Expert Belt (Mt. Silver)
 * Life Orb (Ruins of Alph)
@@ -141,13 +141,12 @@ Implement effects:
 * Flame Orb
 * Toxic Orb
 * Black Sludge
-* Shiny Charm
-* Oval Charm
+* Shiny Charm (already given by Prof. Oak)
+* Oval Charm (already given by Prof. Oak)
 
 Find locations for:
 
-* Big Nugget (replace a Nugget or two)
-* BalmMushroom (add in forests)
+* BalmMushroom (add in Noisy Forest)
 * Pearl String (replace a Big Pearl or two, add in beaches)
 * Rare Bone (add in caves)
 * Bottle Cap

@@ -11,17 +11,17 @@ RuinsofAlphAerodactylItemRoom_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-RuinsofAlphAerodactylItemRoomSitrusBerry:
-	itemball SITRUS_BERRY
-
-RuinsofAlphAerodactylItemRoomMoonStone:
-	itemball MOON_STONE
-
-RuinsofAlphAerodactylItemRoomHealPowder:
-	itemball HEAL_POWDER
+RuinsofAlphAerodactylItemRoomRareBone:
+	itemball RARE_BONE
 
 RuinsofAlphAerodactylItemRoomEnergyRoot:
 	itemball ENERGY_ROOT
+
+RuinsofAlphAerodactylItemRoomRevivalHerb:
+	itemball REVIVAL_HERB
+
+RuinsofAlphAerodactylItemRoomShellBell:
+	itemball SHELL_BELL
 
 MapRuinsofAlphAerodactylItemRoomSignpost1Script:
 	jumptext UnknownText_0x59ac1
@@ -53,7 +53,7 @@ RuinsofAlphAerodactylItemRoom_MapEventHeader:
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomSitrusBerry, EVENT_PICKED_UP_SITRUS_BERRY_FROM_AERODACTYL_ITEM_ROOM
-	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomMoonStone, EVENT_PICKED_UP_MOON_STONE_FROM_AERODACTYL_ITEM_ROOM
-	person_event SPRITE_POKE_BALL, 4, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomHealPowder, EVENT_PICKED_UP_HEAL_POWDER_FROM_AERODACTYL_ITEM_ROOM
-	person_event SPRITE_POKE_BALL, 4, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomEnergyRoot, EVENT_PICKED_UP_ENERGY_ROOT_FROM_AERODACTYL_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomRareBone, EVENT_PICKED_UP_RARE_BONE_FROM_AERODACTYL_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomEnergyRoot, EVENT_PICKED_UP_ENERGY_ROOT_FROM_AERODACTYL_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 4, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomRevivalHerb, EVENT_PICKED_UP_REVIVAL_HERB_FROM_AERODACTYL_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 4, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomShellBell, EVENT_PICKED_UP_SHELL_BELL_FROM_AERODACTYL_ITEM_ROOM

@@ -10,8 +10,8 @@ CeruleanCave1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-CeruleanCave1FNugget:
-	itemball NUGGET
+CeruleanCave1FBigNugget:
+	itemball BIG_NUGGET
 
 CeruleanCave1FFullRestore:
 	itemball FULL_RESTORE
@@ -54,6 +54,6 @@ CeruleanCave1F_MapEventHeader:
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_POKE_BALL, 4, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave1FNugget, EVENT_CERULEAN_CAVE_1F_NUGGET
+	person_event SPRITE_POKE_BALL, 4, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave1FBigNugget, EVENT_CERULEAN_CAVE_1F_BIG_NUGGET
 	person_event SPRITE_POKE_BALL, 15, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave1FFullRestore, EVENT_CERULEAN_CAVE_1F_FULL_RESTORE
 	person_event SPRITE_POKE_BALL, 5, 21, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, CeruleanCave1FMaxRevive, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE

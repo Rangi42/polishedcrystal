@@ -216,11 +216,11 @@ YellowForestSurfPikachuDoll:
 	closetext
 	end
 
-YellowForestHiddenBigMushroom1:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM_1, BIG_MUSHROOM
+YellowForestHiddenBigMushroom:
+	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM, BIG_MUSHROOM
 
-YellowForestHiddenBigMushroom2:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM_2, BIG_MUSHROOM
+YellowForestHiddenBalmMushroom:
+	dwb EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM, BALM_MUSHROOM
 
 YellowForestHiddenGoldLeaf1:
 	dwb EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1, GOLD_LEAF
@@ -516,8 +516,8 @@ YellowForest_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 4, 30, SIGNPOST_ITEM, YellowForestHiddenBigMushroom1
-	signpost 36, 34, SIGNPOST_ITEM, YellowForestHiddenBigMushroom2
+	signpost 4, 30, SIGNPOST_ITEM, YellowForestHiddenBigMushroom
+	signpost 36, 34, SIGNPOST_ITEM, YellowForestHiddenBalmMushroom
 	signpost 37, 5, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf1
 	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
 

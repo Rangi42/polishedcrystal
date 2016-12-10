@@ -11,8 +11,8 @@ RuinsofAlphOmanyteItemRoom_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-RuinsofAlphOmanyteItemRoomMoonStone:
-	itemball MOON_STONE
+RuinsofAlphOmanyteItemRoomPearlString:
+	itemball PEARL_STRING
 
 RuinsofAlphOmanyteItemRoomBigPearl:
 	itemball BIG_PEARL
@@ -53,7 +53,7 @@ RuinsofAlphOmanyteItemRoom_MapEventHeader:
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphOmanyteItemRoomMoonStone, EVENT_PICKED_UP_MOON_STONE_FROM_OMANYTE_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphOmanyteItemRoomPearlString, EVENT_PICKED_UP_PEARL_STRING_FROM_OMANYTE_ITEM_ROOM
 	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphOmanyteItemRoomBigPearl, EVENT_PICKED_UP_BIG_PEARL_FROM_OMANYTE_ITEM_ROOM
 	person_event SPRITE_POKE_BALL, 4, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphOmanyteItemRoomStardust, EVENT_PICKED_UP_STARDUST_FROM_OMANYTE_ITEM_ROOM
 	person_event SPRITE_POKE_BALL, 4, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphOmanyteItemRoomStarPiece, EVENT_PICKED_UP_STAR_PIECE_FROM_OMANYTE_ITEM_ROOM

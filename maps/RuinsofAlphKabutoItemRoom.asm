@@ -11,11 +11,11 @@ RuinsofAlphKabutoItemRoom_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-RuinsofAlphKabutoItemRoomOranBerry:
-	itemball ORAN_BERRY
+RuinsofAlphKabutoItemRoomSitrusBerry:
+	itemball SITRUS_BERRY
 
-RuinsofAlphKabutoItemRoomLeppaBerry:
-	itemball LEPPA_BERRY
+RuinsofAlphKabutoItemRoomLumBerry:
+	itemball LUM_BERRY
 
 RuinsofAlphKabutoItemRoomHealPowder:
 	itemball HEAL_POWDER
@@ -53,7 +53,7 @@ RuinsofAlphKabutoItemRoom_MapEventHeader:
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphKabutoItemRoomOranBerry, EVENT_PICKED_UP_ORAN_BERRY_FROM_KABUTO_ITEM_ROOM
-	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphKabutoItemRoomLeppaBerry, EVENT_PICKED_UP_LEPPA_BERRY_FROM_KABUTO_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphKabutoItemRoomSitrusBerry, EVENT_PICKED_UP_SITRUS_BERRY_FROM_KABUTO_ITEM_ROOM
+	person_event SPRITE_POKE_BALL, 6, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphKabutoItemRoomLumBerry, EVENT_PICKED_UP_LUM_BERRY_FROM_KABUTO_ITEM_ROOM
 	person_event SPRITE_POKE_BALL, 4, 2, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphKabutoItemRoomHealPowder, EVENT_PICKED_UP_HEAL_POWDER_FROM_KABUTO_ITEM_ROOM
 	person_event SPRITE_POKE_BALL, 4, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, RuinsofAlphKabutoItemRoomEnergypowder, EVENT_PICKED_UP_ENERGYPOWDER_FROM_KABUTO_ITEM_ROOM
