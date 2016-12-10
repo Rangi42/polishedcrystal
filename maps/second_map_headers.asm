@@ -79,13 +79,17 @@
 	connection north, ROUTE_32, Route32, 0, 0, 10, ROUTE_33
 	connection west, AZALEA_TOWN, AzaleaTown, 0, 0, 9, ROUTE_33
 
-	map_header_2 Route34, ROUTE_34, $5, NORTH | EAST
+	map_header_2 Route34, ROUTE_34, $5, NORTH | WEST | EAST
 	connection north, GOLDENROD_CITY, GoldenrodCity, -3, 4, 16, ROUTE_34
+	connection west, ROUTE_34_COAST, Route34Coast, 0, 0, 27, ROUTE_34
 	connection east, AZALEA_TOWN, AzaleaTown, 18, 0, 9, ROUTE_34
 
-	map_header_2 Route34Coast, ROUTE_34_COAST, $35, 0
+	map_header_2 Route34Coast, ROUTE_34_COAST, $35, SOUTH | EAST
+	connection south, STORMY_BEACH, StormyBeach, 0, 0, 9, ROUTE_34_COAST
+	connection east, ROUTE_34, Route34, 0, 0, 27, ROUTE_34_COAST
 
-	map_header_2 StormyBeach, STORMY_BEACH, $35, 0
+	map_header_2 StormyBeach, STORMY_BEACH, $35, NORTH
+	connection north, ROUTE_34_COAST, Route34Coast, 0, 0, 9, STORMY_BEACH
 
 	map_header_2 Route35, ROUTE_35, $5, NORTH | SOUTH
 	connection north, ROUTE_36, Route36, 0, 0, 13, ROUTE_35
