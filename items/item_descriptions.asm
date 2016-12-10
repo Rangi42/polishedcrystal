@@ -113,6 +113,7 @@ ItemDescriptions:
 	dw SunStoneDesc
 	dw DuskStoneDesc
 	dw ShinyStoneDesc
+	dw IceStoneDesc
 	dw EverstoneDesc
 	dw BicycleDesc
 	dw OldRodDesc
@@ -252,6 +253,7 @@ ItemDescriptions:
 	dw MagmarizerDesc
 	dw RazorFangDesc
 	dw RazorClawDesc
+	dw OddSouvenirDesc
 	dw NuggetDesc
 	dw BigNuggetDesc
 	dw TinyMushroomDesc
@@ -574,34 +576,14 @@ AbilityCapDesc:
 	next "mon's ability.@"
 
 LeafStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 FireStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 WaterStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 ThunderStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 MoonStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 SunStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 DuskStoneDesc:
-	db   "Evolves certain"
-	next "kinds of #mon.@"
-
 ShinyStoneDesc:
+IceStoneDesc:
 	db   "Evolves certain"
 	next "kinds of #mon.@"
 
@@ -697,9 +679,6 @@ BlueCardDesc:
 	next "points.@"
 
 OrangeTicketDesc:
-	db   "A ticket for the"
-	next "Seagallop Ferry.@"
-
 MysticTicketDesc:
 	db   "A ticket for the"
 	next "Seagallop Ferry.@"
@@ -884,6 +863,7 @@ BrightPowderDesc:
 	next "accuracy. (Hold)@"
 
 ScopeLensDesc:
+RazorClawDesc:
 	db   "Raises critical"
 	next "hit ratio. (Hold)@"
 
@@ -892,6 +872,7 @@ QuickClawDesc:
 	next "ratio. (Hold)@"
 
 KingsRockDesc:
+RazorFangDesc:
 	db   "May make the foe"
 	next "flinch. (Hold)@"
 
@@ -952,48 +933,172 @@ ArmorSuitDesc:
 	next "for some #mon.@"
 
 AirBalloonDesc:
+	db   "Avoids one Ground"
+	next "attack. (Hold)@"
+
 AssaultVestDesc:
+	db   "Ups Spcl.Def, but"
+	next "bans status moves.@"
+
 BigRootDesc:
+	db   "Powers up draining"
+	next "moves. (Hold)@"
+
 BindingBandDesc:
+	db   "Powers up trapping"
+	next "moves. (Hold)@"
+
 DestinyKnotDesc:
+	db   "Infatuates the foe"
+	next "back. (Hold)@"
+
 ExpertBeltDesc:
+	db   "Ups super-effect-"
+	next "ive moves. (Hold)@"
+
 FocusSashDesc:
+	db   "Endures one OHKO"
+	next "move at full HP.@"
+
 GripClawDesc:
+	db   "Extends duration"
+	next "of trapping moves.@"
+
 LifeOrbDesc:
+	db   "Powers up moves"
+	next "with HP. (Hold)@"
+
 LightClayDesc:
+	db   "Extends duration"
+	next "of barrier moves.@"
+
 MetronomeIDesc:
+	db   "Powers up moves"
+	next "used again. (Hold)@"
+
 ProtectPadsDesc:
+	db   "Protects from"
+	next "contact effects.@"
+
 RockyHelmetDesc:
+	db   "Damages foe on"
+	next "contact. (Hold)@"
+
 SafeGogglesDesc:
+	db   "Protects from"
+	next "weather effects.@"
+
 ShedShellDesc:
+	db   "Allows switching"
+	next "out. (Hold)@"
+
 ShellBellDesc:
+	db   "Self-restore item."
+	next "(1/8 damage, Hold)@"
+
 SootheBellDesc:
+	db   "Calms and fosters"
+	next "friendship. (Hold)@"
+
 WeakPolicyDesc:
+	db   "Super-effective"
+	next "hit ups offense.@"
+
 WideLensDesc:
+	db   "Slightly boosts"
+	next "accuracy. (Hold)@"
+
 ZoomLensDesc:
+	db   "Boosts accuracy"
+	next "when moving 2nd.@"
+
 MentalHerbDesc:
+	db   "A self-cure for"
+	next "infatuation.@"
+
 PowerHerbDesc:
+	db   "Skips charging"
+	next "of moves. (Hold)@"
+
 WhiteHerbDesc:
+	db   "A self-cure for"
+	next "lowered stats.@"
+
 DampRockDesc:
+	db   "Extends duration"
+	next "of rain. (Hold)@"
+
 HeatRockDesc:
+	db   "Extends duration"
+	next "of sun. (Hold)@"
+
 SmoothRockDesc:
+	db   "Extends duration"
+	next "of sandstorms.@"
+
 IcyRockDesc:
+	db   "Extends duration"
+	next "of hail. (Hold)@"
+
 ChoiceBandDesc:
+	db   "Boosts Attack, but"
+	next "allows one move.@"
+
 ChoiceScarfDesc:
+	db   "Boosts Speed, but"
+	next "allows one move.@"
+
 ChoiceSpecsDesc:
+	db   "Boosts Sp.Atk, but"
+	next "allows one move.@"
+
 FlameOrbDesc:
+	db   "Causes a burn."
+	next "(Hold)@"
+
 ToxicOrbDesc:
+	db   "Causes bad poison."
+	next "(Hold)@"
+
 BlackSludgeDesc:
+	db   "Restores HP for"
+	next "Poison #mon.@"
+
 MachoBraceDesc:
+	db   "Boosts stat gain,"
+	next "but lowers Speed.@"
+
 PowerWeightDesc:
+	db   "Boosts HP gain,"
+	next "but lowers Speed.@"
+
 PowerBracerDesc:
+	db   "Ups Attack gain,"
+	next "but lowers Speed.@"
+
 PowerBeltDesc:
+	db   "Ups Defense gain,"
+	next "but lowers Speed.@"
+
 PowerLensDesc:
+	db   "Ups Spcl.Atk gain,"
+	next "but lowers Speed.@"
+
 PowerBandDesc:
+	db   "Ups Spcl.Def gain,"
+	next "but lowers Speed.@"
+
 PowerAnkletDesc:
+	db   "Ups Speed gain,"
+	next "but lowers Speed.@"
+
 MulchDesc:
+	db   "Plant fertilizer"
+	next "for Berry soil.@"
+
 SweetHoneyDesc:
-	db   "TODO@"
+	db   "The aroma attracts"
+	next "wild #mon.@"
 
 EvioliteDesc:
 	db   "Ups Def and Spcl."
@@ -1031,13 +1136,9 @@ MagmarizerDesc:
 	db   "A box packed with"
 	next "magma energy.@"
 
-RazorFangDesc:
-	db   "May make the foe"
-	next "flinch. (Hold)@"
-
-RazorClawDesc:
-	db   "Raises critical"
-	next "hit ratio. (Hold)@"
+OddSouvenirDesc:
+	db   "An ornament from"
+	next "a far-away place.@"
 
 NuggetDesc:
 	db   "Made of pure gold."
@@ -1104,9 +1205,6 @@ BottleCapDesc:
 	next "bottle cap.@"
 
 HelixFossilDesc:
-	db   "A fossilized"
-	next "#mon shell.@"
-
 DomeFossilDesc:
 	db   "A fossilized"
 	next "#mon shell.@"
