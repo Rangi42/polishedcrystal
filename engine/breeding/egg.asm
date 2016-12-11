@@ -299,7 +299,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld e, l
 	push de
 
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .alwaysnickname
 	ld hl, .Text_NicknameHatchling

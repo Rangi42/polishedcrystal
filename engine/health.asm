@@ -1,29 +1,29 @@
 HealPartyEvenForNuzlocke:
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp z, HealParty
 
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	res NUZLOCKE_MODE, a
-	ld [EarlyGameOptions], a
+	ld [InitialOptions], a
 	call HealParty
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	set NUZLOCKE_MODE, a
-	ld [EarlyGameOptions], a
+	ld [InitialOptions], a
 	ret
 
 HealPartyMonEvenForNuzlocke:
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp z, HealPartyMon
 
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	res NUZLOCKE_MODE, a
-	ld [EarlyGameOptions], a
+	ld [InitialOptions], a
 	call HealPartyMon
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	set NUZLOCKE_MODE, a
-	ld [EarlyGameOptions], a
+	ld [InitialOptions], a
 	ret
 
 HealParty: ; c658
@@ -71,7 +71,7 @@ HealPartyMon: ; c677
 	dec bc
 	dec bc
 
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr z, .Revive
 	ld a, [bc]

@@ -64,7 +64,7 @@ UnknownText_0x1c564a::
 	line "data?"
 	done
 
-ResetEarlyGameOptionsText::
+ResetInitialOptionsText::
 	text "Reset the initial"
 	line "game options?"
 	done

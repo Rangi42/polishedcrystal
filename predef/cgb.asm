@@ -62,7 +62,7 @@ Predef_LoadSGBLayoutCGB: ; 8d59
 	dw _CGB1a
 	dw _CGB1b
 	dw _CGB_FrontpicPals
-	dw _CGB1d
+	dw _CGB_NamingScreenPals
 	dw _CGB1e
 	dw _CGB_TrainerCard2
 ; 8db8
@@ -1396,52 +1396,48 @@ _CGB_FrontpicPals: ; 9578
 	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	call WipeAttrMap
-	call ApplyAttrMap
-	call ApplyPals
-	ret
-; 9591
-
-_CGB1d: ; 9591
-	ld hl, .Palettes
-	ld de, UnknBGPals
-	ld bc, 2 palettes
+	ld hl, IntroGradientPalette
+	ld de, UnknBGPals + 1 palettes
+	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 	call ApplyPals
 	call WipeAttrMap
-	hlcoord 3, 7, AttrMap
-	lb bc, 8, 14
+	hlcoord 0, 0, AttrMap
+	lb bc, 3, 20
 	ld a, $1
 	call FillBoxCGB
-	hlcoord 1, 5, AttrMap
-	lb bc, 1, 18
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 1, 16, AttrMap
-	lb bc, 1, 18
+	call ApplyAttrMap
+	ret
+; 9591
+
+_CGB_NamingScreenPals: ; 9591
+	ld de, UnknBGPals
+	ld a, [CurPartySpecies]
+	ld bc, TempMonPersonality
+	call GetFrontpicPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld hl, IntroGradientPalette
+	ld de, UnknBGPals + 1 palettes
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
+	call ApplyPals
+	call WipeAttrMap
+	hlcoord 11, 0, AttrMap
+	lb bc, 3, 9
 	ld a, $1
 	call FillBoxCGB
 	hlcoord 0, 0, AttrMap
-	lb bc, 17, 2
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 18, 5, AttrMap
-	lb bc, 12, 1
-	ld a, $1
+	lb bc, 3, 11
+	xor a
 	call FillBoxCGB
 	call ApplyAttrMap
 	ret
 ; 95e0
 
-.Palettes: ; 95e0
+IntroGradientPalette:
 	RGB 31, 31, 31
-	RGB 16, 31, 14
-	RGB 05, 14, 21
-	RGB 05, 13, 10
-
-	RGB 31, 31, 31
-	RGB 11, 21, 25
-	RGB 05, 14, 21
-	RGB 00, 03, 19
-; 95f0
+	RGB 27, 31, 31
+	RGB 19, 31, 31
+	RGB 09, 30, 31

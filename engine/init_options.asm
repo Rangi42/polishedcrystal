@@ -1,20 +1,20 @@
-SetEarlyGameOptions:
-	call InitEarlyGameOptionsScreen
-	call LoadEarlyGameOptionsScreenPal
-	call LoadEarlyGameOptionsScreenGFX
+SetInitialOptions:
+	call InitInitialOptionsScreen
+	call LoadInitialOptionsScreenPal
+	call LoadInitialOptionsScreenGFX
 	call WaitBGMap2
 	call SetPalettes
-	ld hl, EarlyGameOptionsText
+	ld hl, InitialOptionsText
 	call PrintText
 	call FadeToMenu
-	call EarlyGameOptionsMenu
+	call InitialOptionsMenu
 	ret
 
-EarlyGameOptionsText:
-	text_jump _EarlyGameOptionsText
+InitialOptionsText:
+	text_jump _InitialOptionsText
 	db "@"
 
-InitEarlyGameOptionsScreen: ; 48e14 (12:4e14)
+InitInitialOptionsScreen: ; 48e14 (12:4e14)
 	ld a, $10
 	ld [MusicFade], a
 	ld a, MUSIC_NONE
@@ -35,7 +35,7 @@ InitEarlyGameOptionsScreen: ; 48e14 (12:4e14)
 	call ByteFill
 	ret
 
-LoadEarlyGameOptionsScreenPal: ; 48e47 (12:4e47)
+LoadInitialOptionsScreenPal: ; 48e47 (12:4e47)
 	ld hl, .Palette
 	ld de, UnknBGPals
 	ld bc, 1 palettes
@@ -52,7 +52,7 @@ LoadEarlyGameOptionsScreenPal: ; 48e47 (12:4e47)
 	RGB 00, 00, 00
 ; 48e64
 
-LoadEarlyGameOptionsScreenGFX: ; 48e64 (12:4e64)
+LoadInitialOptionsScreenGFX: ; 48e64 (12:4e64)
 	ld de, .LightBlueTile
 	ld hl, VTiles2 tile $00
 	lb bc, BANK(.LightBlueTile), 1
@@ -61,9 +61,9 @@ LoadEarlyGameOptionsScreenGFX: ; 48e64 (12:4e64)
 ; 48e71 (12:4e71)
 
 .LightBlueTile: ; 48e71
-INCBIN "gfx/intro/init_bg.2bpp"
+INCBIN "gfx/misc/init_bg.2bpp"
 
-EarlyGameOptionsMenu:
+InitialOptionsMenu:
 	ld hl, hInMenu
 	ld a, [hl]
 	push af
@@ -74,7 +74,7 @@ EarlyGameOptionsMenu:
 	ld c, 18
 	call TextBox
 	hlcoord 2, 2
-	ld de, StringEarlyGameOptions
+	ld de, StringInitialOptions
 	call PlaceString
 	ld b, SCGB_08
 	call GetSGBLayout
@@ -87,7 +87,7 @@ EarlyGameOptionsMenu:
 	push bc
 	xor a
 	ld [hJoyLast], a
-	call GetEarlyGameOptionPointer
+	call GetInitialOptionPointer
 	pop bc
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -104,13 +104,13 @@ EarlyGameOptionsMenu:
 	ld a, [hJoyPressed]
 	and START | B_BUTTON
 	jr nz, .ExitOptions
-	call EarlyGameOptionsControl
+	call InitialOptionsControl
 	jr c, .dpad
-	call GetEarlyGameOptionPointer
+	call GetInitialOptionPointer
 	jr c, .ExitOptions
 
 .dpad
-	call EarlyGameOptions_UpdateCursorPosition
+	call InitialOptions_UpdateCursorPosition
 	ld c, 3
 	call DelayFrames
 	jr .joypad_loop
@@ -124,7 +124,7 @@ EarlyGameOptionsMenu:
 	ret
 ; e4241
 
-StringEarlyGameOptions:
+StringInitialOptions:
 	db "Natures<LNBRK>"
 	db "            :<LNBRK>"
 	db "<LNBRK>"
@@ -141,7 +141,7 @@ StringEarlyGameOptions:
 	db "<LNBRK>"
 	db "Done@"
 
-GetEarlyGameOptionPointer: ; e42d6
+GetInitialOptionPointer: ; e42d6
 	ld a, [wJumptableIndex] ; load the cursor position to a
 	ld e, a ; copy it to de
 	ld d, 0
@@ -155,14 +155,14 @@ GetEarlyGameOptionPointer: ; e42d6
 ; e42e5
 
 .Pointers:
-	dw EarlyGameOptions_Natures
-	dw EarlyGameOptions_Abilities
-	dw EarlyGameOptions_TradedMon
-	dw EarlyGameOptions_NuzlockeMode
-	dw EarlyGameOptions_Done
+	dw InitialOptions_Natures
+	dw InitialOptions_Abilities
+	dw InitialOptions_TradedMon
+	dw InitialOptions_NuzlockeMode
+	dw InitialOptions_Done
 
-EarlyGameOptions_Natures:
-	ld hl, EarlyGameOptions
+InitialOptions_Natures:
+	ld hl, InitialOptions
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -185,8 +185,8 @@ EarlyGameOptions_Natures:
 	and a
 	ret
 
-EarlyGameOptions_Abilities:
-	ld hl, EarlyGameOptions
+InitialOptions_Abilities:
+	ld hl, InitialOptions
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -209,8 +209,8 @@ EarlyGameOptions_Abilities:
 	and a
 	ret
 
-EarlyGameOptions_TradedMon:
-	ld hl, EarlyGameOptions
+InitialOptions_TradedMon:
+	ld hl, InitialOptions
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -233,8 +233,8 @@ EarlyGameOptions_TradedMon:
 	and a
 	ret
 
-EarlyGameOptions_NuzlockeMode:
-	ld hl, EarlyGameOptions
+InitialOptions_NuzlockeMode:
+	ld hl, InitialOptions
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -257,8 +257,8 @@ EarlyGameOptions_NuzlockeMode:
 	and a
 	ret
 
-EarlyGameOptions_Done:
-	ld hl, EarlyGameOptions
+InitialOptions_Done:
+	ld hl, InitialOptions
 	res RESET_EGO, [hl]
 	ld a, [hJoyPressed]
 	and A_BUTTON
@@ -275,7 +275,7 @@ NoString:
 YesString:
 	db "Yes@"
 
-EarlyGameOptionsControl: ; e452a
+InitialOptionsControl: ; e452a
 	ld hl, wJumptableIndex
 	ld a, [hJoyLast]
 	cp D_DOWN
@@ -306,7 +306,7 @@ EarlyGameOptionsControl: ; e452a
 	ret
 ; e455c
 
-EarlyGameOptions_UpdateCursorPosition: ; e455c
+InitialOptions_UpdateCursorPosition: ; e455c
 	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
 	ld c, $10
@@ -315,7 +315,7 @@ EarlyGameOptions_UpdateCursorPosition: ; e455c
 	add hl, de
 	dec c
 	jr nz, .loop
-	ld hl, .EarlyGameOptions_CursorPositions
+	ld hl, .InitialOptions_CursorPositions
 	ld a, [wJumptableIndex]
 	ld c, a
 	ld b, 0
@@ -330,5 +330,5 @@ EarlyGameOptions_UpdateCursorPosition: ; e455c
 	ret
 ; e4579
 
-.EarlyGameOptions_CursorPositions:
+.InitialOptions_CursorPositions:
 	db 2, 5, 8, 13, 16

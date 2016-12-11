@@ -28,7 +28,7 @@
 	const SCGB_1A
 	const SCGB_1B
 	const SCGB_FRONTPICPALS
-	const SCGB_1D
+	const SCGB_NAMINGSCREENPALS
 	const SCGB_1E
 	const SCGB_TRAINER_CARD_2
 

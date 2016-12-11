@@ -53,7 +53,7 @@ INCLUDE "engine/map_objects.asm"
 
 INCLUDE "engine/intro_menu.asm"
 
-INCLUDE "engine/early_game_options.asm"
+INCLUDE "engine/init_options.asm"
 
 Function6454:: ; 6454
 	call DelayFrame
@@ -2951,7 +2951,7 @@ _DeleteSaveData: ; 4d54c
 	text_jump UnknownText_0x1c564a
 	db "@"
 
-_ResetEarlyGameOptions:
+_ResetInitialOptions:
 	farcall BlankScreen
 	ld b, SCGB_08
 	call GetSGBLayout
@@ -2959,7 +2959,7 @@ _ResetEarlyGameOptions:
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
 	call PlayMusic
-	ld hl, .Text_ResetEarlyGameOptions
+	ld hl, .Text_ResetInitialOptions
 	call PrintText
 	ld hl, NoYesMenuDataHeader
 	call CopyMenuDataHeader
@@ -2968,19 +2968,19 @@ _ResetEarlyGameOptions:
 	ld a, [wMenuCursorY]
 	cp $1
 	ret z
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	set RESET_EGO, a
-	ld [EarlyGameOptions], a
+	ld [InitialOptions], a
 	ld a, BANK(sOptions)
 	call GetSRAMBank
-	ld a, [EarlyGameOptions]
-	ld [sOptions + 6], a ; sEarlyGameOptions
+	ld a, [InitialOptions]
+	ld [sOptions + 6], a ; sInitialOptions
 	call CloseSRAM
 	ret
 
-.Text_ResetEarlyGameOptions: ; 0x4d580
+.Text_ResetInitialOptions: ; 0x4d580
 	; Reset the initial game options?
-	text_jump ResetEarlyGameOptionsText
+	text_jump ResetInitialOptionsText
 	db "@"
 
 NoYesMenuDataHeader: ; 0x4d585
@@ -3514,7 +3514,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ret
 
 GiveANickname_YesNo: ; 4db3b
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 	ld hl, TextJump_GiveANickname

@@ -15,7 +15,7 @@ NameRater: ; fb6ed
 	jr z, .egg
 ; ... or a Pokemon you got from a trade.
 	call GetCurNick
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit TRADED_BEHAVIOR, a
 	jr z, .no_name_lock
 	call CheckIfMonIsYourOT

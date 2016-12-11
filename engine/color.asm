@@ -54,28 +54,6 @@ SGB_ApplyPartyMenuHPPals: ; 8ade SGB layout $fc
 	ld [hl], e
 	ret
 
-ApplyMonOrTrainerPals:
-	call CheckCGB
-	ret z
-	ld a, e
-	and a
-	jr z, .get_trainer
-	ld a, [CurPartySpecies]
-	call GetMonPalettePointer_
-	jr .load_palettes
-
-.get_trainer
-	ld a, [TrainerClass]
-	call GetTrainerPalettePointer
-
-.load_palettes
-	ld de, UnknBGPals
-	call LoadPalette_White_Col1_Col2_Black
-	call WipeAttrMap
-	call ApplyAttrMap
-	call ApplyPals
-	ret
-
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
 	and a

@@ -572,7 +572,7 @@ BattleCommand_CheckObedience: ; 343db
 	ld a, [PlayerID + 1]
 	cp [hl]
 	ret z
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit TRADED_BEHAVIOR, a
 	ret z
 

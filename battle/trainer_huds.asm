@@ -272,7 +272,7 @@ _ShowLinkBattleParticipants: ; 2c1b2
 
 DoesNuzlockeModePreventCapture:
 	; Is nuzlocke mode on?
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr z, .no
 

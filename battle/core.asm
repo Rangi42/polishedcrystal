@@ -7583,7 +7583,7 @@ GiveExperiencePoints: ; 3ee3b
 	cp [hl]
 	ld a, $0
 	jr z, .no_boost
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit TRADED_BEHAVIOR, a
 	jr z, .no_boost
 

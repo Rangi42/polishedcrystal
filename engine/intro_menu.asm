@@ -1,3 +1,31 @@
+InitIntroGradient::
+	; top stripe
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH
+	ld a, $70
+	call ByteFill
+	; middle stripe
+	hlcoord 0, 1
+	ld bc, SCREEN_WIDTH
+	ld a, $71
+	call ByteFill
+	; bottom stripe
+	hlcoord 0, 2
+	ld bc, SCREEN_WIDTH
+	ld a, $72
+	call ByteFill
+	ret
+
+LoadIntroGradientGFX::
+	ld de, .IntroGradientGFX
+	ld hl, VTiles2 tile $70
+	lb bc, BANK(.IntroGradientGFX), 3
+	call Get2bpp
+	ret
+
+.IntroGradientGFX:
+INCBIN "gfx/misc/intro_gradient.2bpp"
+
 _MainMenu: ; 5ae8
 	ld de, MUSIC_NONE
 	call PlayMusic
@@ -79,7 +107,7 @@ NewGame: ; 5b6b
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
 	call InitCrystalData
-	call SetEarlyGameOptions
+	call SetInitialOptions
 	call OakSpeech
 	call InitializeWorld
 	ld a, 1
@@ -363,7 +391,7 @@ Continue: ; 5d65
 	jr .FailToLoad
 
 .Check2Pass:
-	call Continue_CheckEGO_ResetEarlyGameOptions
+	call Continue_CheckEGO_ResetInitialOptions
 ;	jr nc, .Check3Pass
 ;	call CloseWindow
 ;	jr .FailToLoad
@@ -444,11 +472,11 @@ Continue_CheckRTC_RestartClock: ; 5e48
 	ret
 ; 5e5d
 
-Continue_CheckEGO_ResetEarlyGameOptions:
-	ld a, [EarlyGameOptions]
+Continue_CheckEGO_ResetInitialOptions:
+	ld a, [InitialOptions]
 	bit RESET_EGO, a
 	jr z, .pass
-	farcall SetEarlyGameOptions
+	farcall SetInitialOptions
 .pass
 	xor a
 	ret
@@ -654,6 +682,7 @@ OakSpeech: ; 0x5f99
 
 	call RotateFourPalettesRight
 	call RotateThreePalettesRight
+
 	xor a
 	ld [CurPartySpecies], a
 	ld a, POKEMON_PROF
@@ -662,6 +691,8 @@ OakSpeech: ; 0x5f99
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
+	call InitIntroGradient
+	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, OakText1
@@ -684,7 +715,9 @@ OakSpeech: ; 0x5f99
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
-	call Intro_WipeInFrontpic
+	call InitIntroGradient
+	call LoadIntroGradientGFX
+	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, OakText2
 	call PrintText
@@ -701,6 +734,8 @@ OakSpeech: ; 0x5f99
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
+	call InitIntroGradient
+	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, OakText5
@@ -714,6 +749,12 @@ OakSpeech: ; 0x5f99
 	ld hl, OakText6
 	call PrintText
 	call NamePlayer
+
+	ld b, SCGB_FRONTPICPALS
+	call GetSGBLayout
+	call InitIntroGradient
+	call LoadIntroGradientGFX
+
 	ld hl, OakText7
 	call PrintText
 	ret
@@ -757,6 +798,9 @@ InitGender: ; 48dcb (12:4dcb)
 	call WaitBGMap2
 	call SetPalettes
 
+	call InitIntroGradient
+	call LoadIntroGradientGFX
+
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
 
@@ -776,6 +820,8 @@ InitGender: ; 48dcb (12:4dcb)
 
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
+	call InitIntroGradient
+	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, SoYoureABoyText
@@ -824,12 +870,23 @@ SoYoureAGirlText:
 
 NamePlayer: ; 0x6074
 	farcall MovePlayerPicRight
+
+	xor a
+	ld [CurPartySpecies], a
+	ld b, SCGB_NAMINGSCREENPALS
+	call GetSGBLayout
+
 	farcall ShowPlayerNamingChoices
 	ld a, [wMenuCursorY]
 	dec a
 	jr z, .NewName
 	call StorePlayerName
-	farcall ApplyMonOrTrainerPals
+
+	xor a
+	ld [CurPartySpecies], a
+	ld b, SCGB_FRONTPICPALS
+	call GetSGBLayout
+
 	farcall MovePlayerPicLeft
 	ret
 
@@ -844,13 +901,13 @@ NamePlayer: ; 0x6074
 	call LoadFontsExtra
 	call WaitBGMap
 
-	xor a
-	ld [CurPartySpecies], a
-	farcall DrawIntroPlayerPic
-
 	ld b, SCGB_FRONTPICPALS
 	call GetSGBLayout
 	call RotateThreePalettesLeft
+
+	xor a
+	ld [CurPartySpecies], a
+	farcall DrawIntroPlayerPic
 
 	ld hl, PlayerName
 	ld de, .Chris
@@ -915,8 +972,7 @@ ShrinkPlayer: ; 610f
 	call DelayFrames
 
 	hlcoord 6, 5
-	ld b, 7
-	ld c, 7
+	lb bc, 7, 7
 	call ClearBox
 
 	ld c, 3
@@ -955,22 +1011,6 @@ IntroFadePalettes: ; 0x617c
 	db %11100100
 IntroFadePalettesEnd
 ; 6182
-
-Intro_WipeInFrontpic: ; 6182
-	ld a, $77
-	ld [hWX], a
-	call DelayFrame
-	ld a, %11100100
-	call DmgToCgbBGPals
-.loop
-	call DelayFrame
-	ld a, [hWX]
-	sub $8
-	cp -1
-	ret z
-	ld [hWX], a
-	jr .loop
-; 619c
 
 Intro_PrepTrainerPic: ; 619c
 	ld de, VTiles2
@@ -1102,7 +1142,7 @@ StartTitleScreen: ; 6219
 	dw CrystalIntroSequence
 	dw CrystalIntroSequence
 	dw ResetClock
-	dw ResetEarlyGameOptions
+	dw ResetInitialOptions
 ; 6274
 
 
@@ -1326,8 +1366,8 @@ ResetClock: ; 6392
 	jp Init
 ; 639b
 
-ResetEarlyGameOptions:
-	farcall _ResetEarlyGameOptions
+ResetInitialOptions:
+	farcall _ResetInitialOptions
 	jp Init
 
 Copyright: ; 63e2

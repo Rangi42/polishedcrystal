@@ -1416,7 +1416,7 @@ Options2:: ; cfd1
 ; (bits 6 and 7 are never both set)
 	ds 1
 
-EarlyGameOptions::
+InitialOptions::
 ; bit 0: natures off/on
 ; bit 1: abilities off/on
 ; bit 2: traded behavior off/on

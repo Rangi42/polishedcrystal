@@ -687,7 +687,7 @@ endr
 	ld [hl], a
 .SkipPartyMonFriendBall:
 
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 
@@ -752,7 +752,7 @@ endr
 .SkipBoxMonFriendBall:
 	call CloseSRAM
 
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNicknameBox
 
@@ -1920,7 +1920,7 @@ StatusHealer_Jumptable: ; f09e (3:709e)
 
 
 RevivalHerb: ; f0a9
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
@@ -1944,7 +1944,7 @@ RevivalHerb: ; f0a9
 
 Revive:
 MaxRevive: ; f0c8
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 
@@ -3143,7 +3143,7 @@ BasementKey: ; f74c
 
 
 SacredAsh: ; f753
-	ld a, [EarlyGameOptions]
+	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp nz, Revive_NuzlockeFailureMessage
 

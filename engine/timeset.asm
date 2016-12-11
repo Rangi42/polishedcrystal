@@ -370,13 +370,13 @@ OakText_ResponseToSetTime: ; 0x908b8
 ; 0x908fb
 
 TimesetBackgroundGFX: ; 908fb
-INCBIN "gfx/misc/intro_bg.1bpp"
+INCBIN "gfx/misc/timeset_bg.1bpp"
 
 TimesetUpGFX: ; 90903
-INCBIN "gfx/misc/intro_up.1bpp"
+INCBIN "gfx/misc/timeset_up.1bpp"
 
 TimesetDownGFX: ; 9090b
-INCBIN "gfx/misc/intro_down.1bpp"
+INCBIN "gfx/misc/timeset_down.1bpp"
 ; 90913
 
 Special_SetDayOfWeek: ; 90913
