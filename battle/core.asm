@@ -7952,7 +7952,7 @@ GiveBattleEVs:
 	; power item for the current stat.
 	bit 0, e
 	jr z, .no_power_item
-	add 4
+	add 8
 .no_power_item
 	; check EV doubling with pokerus or macho brace
 	bit 0, d
