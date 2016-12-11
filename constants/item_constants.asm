@@ -351,6 +351,7 @@ const_value SET 30
 const_value SET 40
 	const HELD_METAL_POWDER
 	const HELD_EVIOLITE
+	const HELD_QUICK_POWDER
 
 const_value SET 50
 	const HELD_NORMAL_BOOST
