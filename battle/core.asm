@@ -490,6 +490,8 @@ GetSpeed::
 	jr z, .quick_claw
 	cp HELD_CHOICE_SCARF
 	jr z, .choice_scarf
+	cp HELD_QUICK_POWDER
+	jr z, .quick_powder
 	jr .done
 .quick_claw
 	ld a, d
@@ -514,6 +516,21 @@ GetSpeed::
 	add hl, bc
 	ld b, h
 	ld c, l
+	jr .done
+.quick_powder
+	; Double speed, but only for Ditto
+	ld a, MON_SPECIES
+	call BattlePartyAttr
+	ld a, [hBattleTurn]
+	and a
+	ld a, [hl]
+	jr nz, .got_species
+	ld a, [TempEnemyMonSpecies]
+.got_species
+	cp DITTO
+	jr nz, .done
+	sla c
+	rl b
 .done
 	pop hl
 	ret

@@ -5909,6 +5909,8 @@ INCLUDE "event/mom_phone.asm"
 SECTION "bank40", ROMX, BANK[$40]
 
 _LinkBattleSendReceiveAction: ; 100a09
+; Note that only the lower 4 bits is usable. The higher 4 determines what kind of
+; linking we are performing.
 	call .StageForSend
 	ld [wd431], a
 	farcall PlaceWaitingText
