@@ -26,9 +26,9 @@ FarawayIsland_MapScriptHeader:
 
 .SetupLawrence:
 	disappear FARAWAYISLAND_LAWRENCE
-	checkevent EVENT_FARAWAY_JUNGLE_MEW
-	iffalse .Done
 	checkevent EVENT_BEAT_LAWRENCE
+	iffalse .Done
+	checkevent EVENT_BEAT_LAWRENCE_AGAIN
 	iftrue .Done
 	appear FARAWAYISLAND_LAWRENCE
 .Done
@@ -107,7 +107,7 @@ FarawayIslandLawrenceScript:
 	disappear FARAWAYISLAND_LAWRENCE
 	waitsfx
 	special Special_FadeInQuickly
-	setevent EVENT_BEAT_LAWRENCE
+	setevent EVENT_BEAT_LAWRENCE_AGAIN
 	setevent EVENT_LAWRENCE_FARAWAY_ISLAND
 	playmapmusic
 	end

@@ -162,7 +162,7 @@ VictoryRoadLawrenceScript:
 	disappear VICTORYROAD_LAWRENCE
 	waitsfx
 	special Special_FadeInQuickly
-	setevent EVENT_LAWRENCE_VICTORY_ROAD
+	setevent EVENT_BEAT_LAWRENCE
 	playmapmusic
 	end
 

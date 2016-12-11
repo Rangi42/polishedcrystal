@@ -1781,8 +1781,9 @@
 	const EVENT_LAKE_OF_RAGE_CUT_TREE
 	const EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1
 	const EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_2
+; TODO: relocate to logical sections
+	const EVENT_BEAT_LAWRENCE_AGAIN
 ; Unused placeholder events
-	const EVENT_691
 	const EVENT_692
 	const EVENT_693
 	const EVENT_694
