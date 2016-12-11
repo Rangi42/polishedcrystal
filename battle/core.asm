@@ -4730,7 +4730,7 @@ UseConfusionHealingItem: ; 3de51
 	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
-	cp HELD_HEAL_CONFUSION
+	cp HELD_HEAL_CONFUSE
 	jr z, .heal_status
 	cp HELD_HEAL_STATUS
 	ret nz

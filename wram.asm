@@ -1214,9 +1214,6 @@ CurSpecies:: ; cf60
 CurMove::
 	ds 1
 
-CurForm::
-	ds 1
-
 wNamedObjectTypeBuffer:: ds 1
 wCurrentOptionsPage:: ds 1
 wJumptableIndex::

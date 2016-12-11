@@ -310,55 +310,44 @@ CANT_TOSS   EQU 1 << 7
 ; held item effects
 	const_def
 
-	const HELD_NONE
+	const HELD_NONE ; $00
 	const HELD_BERRY
-	const HELD_2
 	const HELD_LEFTOVERS
-	const HELD_4
-	const HELD_5
 	const HELD_RESTORE_PP
-	const HELD_7
 	const HELD_CLEANSE_TAG
 
-const_value SET 10
 	const HELD_HEAL_POISON
-	const HELD_HEAL_FREEZE
 	const HELD_HEAL_BURN
-	const HELD_HEAL_SLEEP
 	const HELD_HEAL_PARALYZE
+	const HELD_HEAL_SLEEP ; $08
+	const HELD_HEAL_FREEZE
 	const HELD_HEAL_STATUS
-	const HELD_HEAL_CONFUSION
+	const HELD_HEAL_CONFUSE
 
-const_value SET 20
 	const HELD_PREVENT_POISON
 	const HELD_PREVENT_BURN
-	const HELD_PREVENT_FREEZE
-	const HELD_PREVENT_SLEEP
 	const HELD_PREVENT_PARALYZE
+	const HELD_PREVENT_SLEEP
+	const HELD_PREVENT_FREEZE ; $10
 	const HELD_PREVENT_CONFUSE
 
-const_value SET 30
-	const HELD_30
 	const HELD_ATTACK_UP
 	const HELD_DEFENSE_UP
 	const HELD_SPEED_UP
 	const HELD_SP_ATTACK_UP
 	const HELD_SP_DEFENSE_UP
 	const HELD_ACCURACY_UP
-	const HELD_EVASION_UP
-	const HELD_38
+	const HELD_EVASION_UP ; $18
 
-const_value SET 40
 	const HELD_METAL_POWDER
-	const HELD_EVIOLITE
 	const HELD_QUICK_POWDER
+	const HELD_EVIOLITE
 
-const_value SET 50
 	const HELD_NORMAL_BOOST
 	const HELD_FIGHTING_BOOST
 	const HELD_FLYING_BOOST
 	const HELD_POISON_BOOST
-	const HELD_GROUND_BOOST
+	const HELD_GROUND_BOOST ; $20
 	const HELD_ROCK_BOOST
 	const HELD_BUG_BOOST
 	const HELD_GHOST_BOOST
@@ -366,7 +355,7 @@ const_value SET 50
 	const HELD_WATER_BOOST
 	const HELD_GRASS_BOOST
 	const HELD_ELECTRIC_BOOST
-	const HELD_PSYCHIC_BOOST
+	const HELD_PSYCHIC_BOOST ; $28
 	const HELD_ICE_BOOST
 	const HELD_DRAGON_BOOST
 	const HELD_DARK_BOOST
@@ -375,20 +364,16 @@ const_value SET 50
 	const HELD_PHYSICAL_BOOST
 	const HELD_SPECIAL_BOOST
 
-const_value SET 70
-	const HELD_CATCH_CHANCE
-	const HELD_71
+	const HELD_CATCH_CHANCE ; $30
 	const HELD_ESCAPE
 	const HELD_CRITICAL_UP
-	const HELD_QUICK_CLAW
 	const HELD_FLINCH_UP
+	const HELD_QUICK_CLAW
 	const HELD_AMULET_COIN
 	const HELD_BRIGHTPOWDER
-	const HELD_78
 	const HELD_FOCUS_BAND
 
-const_value SET 80
-	const HELD_EV_DOUBLE
+	const HELD_EV_DOUBLE ; $38
 	const HELD_EV_HP_UP
 	const HELD_EV_ATK_UP
 	const HELD_EV_DEF_UP
@@ -396,11 +381,12 @@ const_value SET 80
 	const HELD_EV_SAT_UP
 	const HELD_EV_SDF_UP
 
-const_value SET 90
 	const HELD_CHOICE_BAND
-	const HELD_CHOICE_SPECS
+	const HELD_CHOICE_SPECS ; $40
 	const HELD_CHOICE_SCARF
 
+
+; item attributes
 	const_def
 	const ITEMATTR_PRICE
 	const ITEMATTR_PRICE_HI
@@ -416,6 +402,8 @@ ITEMMENU_CURRENT            EQU 4
 ITEMMENU_PARTY              EQU 5
 ITEMMENU_CLOSE              EQU 6
 
+
+; mart types
 	const_def
 	const MARTTYPE_STANDARD
 	const MARTTYPE_BITTER
@@ -427,6 +415,8 @@ ITEMMENU_CLOSE              EQU 6
 	const MARTTYPE_INFORMAL
 	const MARTTYPE_TM
 
+
+; marts
 	const_def
 	const MART_CHERRYGROVE
 	const MART_CHERRYGROVE_DEX
@@ -462,6 +452,7 @@ ITEMMENU_CLOSE              EQU 6
 	const MART_SAFFRON
 	const MART_SILPH_CO
 	const MART_FUCHSIA
+
 
 ; PartyMenuActionText
 	const_def
