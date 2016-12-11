@@ -436,7 +436,7 @@ Route22_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $5, $d, 1, VICTORY_ROAD_GATE
+	warp_def $5, $d, 1, POKEMON_LEAGUE_GATE
 
 .XYTriggers:
 	db 0

@@ -248,10 +248,10 @@ Route23_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $87, $7, 5, VICTORY_ROAD_GATE
-	warp_def $87, $8, 6, VICTORY_ROAD_GATE
-	warp_def $1f, $4, 1, VICTORY_ROAD
-	warp_def $1f, $e, 10, VICTORY_ROAD
+	warp_def $87, $7, 5, POKEMON_LEAGUE_GATE
+	warp_def $87, $8, 6, POKEMON_LEAGUE_GATE
+	warp_def $1f, $4, 1, VICTORY_ROAD_1F
+	warp_def $1f, $e, 1, VICTORY_ROAD_2F
 
 .XYTriggers:
 	db 23

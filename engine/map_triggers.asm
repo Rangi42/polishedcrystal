@@ -16,7 +16,7 @@ ENDM
 	trigger_def CERULEAN_GYM,                           wCeruleanGymTrigger
 	trigger_def CERULEAN_CAPE,                          wCeruleanCapeTrigger
 	trigger_def TRAINER_HOUSE_B1F,                      wTrainerHouseB1FTrigger
-	trigger_def VICTORY_ROAD_GATE,                      wVictoryRoadGateTrigger
+	trigger_def POKEMON_LEAGUE_GATE,                    wPokemonLeagueGateTrigger
 	trigger_def SAFFRON_TRAIN_STATION,                  wSaffronTrainStationTrigger
 	trigger_def ROUTE_16_GATE,                          wRoute16GateTrigger
 	trigger_def ROUTE_18_GATE,                          wRoute18GateTrigger
@@ -76,7 +76,7 @@ ENDM
 	trigger_def TEAM_ROCKET_BASE_B3F,                   wTeamRocketBaseB3FTrigger
 	trigger_def UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, wUndergroundPathSwitchRoomEntrancesTrigger
 	trigger_def SILVER_CAVE_ROOM_3,                     wSilverCaveRoom3Trigger
-	trigger_def VICTORY_ROAD,                           wVictoryRoadTrigger
+	trigger_def VICTORY_ROAD_2F,                        wVictoryRoad2FTrigger
 	trigger_def DRAGONS_DEN_B1F,                        wDragonsDenB1FTrigger
 	trigger_def DRAGON_SHRINE,                          wDragonShrineTrigger
 	trigger_def OLIVINE_PORT,                           wOlivinePortTrigger

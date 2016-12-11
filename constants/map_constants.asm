@@ -112,7 +112,9 @@ MAP_NONE   EQU 0
 	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 75
 	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 76
 	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 77
-	mapgroup VICTORY_ROAD,                               36, 10 ; 78
+	mapgroup VICTORY_ROAD_1F,                            13, 12 ; 78
+	mapgroup VICTORY_ROAD_2F,                            11, 14 ; 79
+	mapgroup VICTORY_ROAD_3F,                             9, 12 ; 80
 
 	newgroup                                                    ;  4
 
@@ -458,7 +460,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  6 ; 11
 	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 12
 	mapgroup ROUTE_2_GATE,                                4,  5 ; 13
-	mapgroup VICTORY_ROAD_GATE,                           9, 11 ; 14
+	mapgroup POKEMON_LEAGUE_GATE,                         9, 11 ; 14
 	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 15
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 16
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 17

@@ -429,7 +429,9 @@
 	map_header_2 RockTunnel1F, ROCK_TUNNEL_1F, $9, 0
 	map_header_2 RockTunnelB1F, ROCK_TUNNEL_B1F, $9, 0
 	map_header_2 RockTunnel2F, ROCK_TUNNEL_2F, $9, 0
-	map_header_2 VictoryRoad, VICTORY_ROAD, $1d, 0
+	map_header_2 VictoryRoad1F, VICTORY_ROAD_1F, $9, 0
+	map_header_2 VictoryRoad2F, VICTORY_ROAD_2F, $9, 0
+	map_header_2 VictoryRoad3F, VICTORY_ROAD_3F, $9, 0
 	map_header_2 EcruteakHouse, ECRUTEAK_HOUSE, $0, 0
 	map_header_2 WiseTriosRoom, WISE_TRIOS_ROOM, $0, 0
 	map_header_2 EcruteakPokeCenter1F, ECRUTEAK_POKECENTER_1F, $0, 0
@@ -632,7 +634,7 @@
 	map_header_2 ViridianPokeCenter1F, VIRIDIAN_POKECENTER_1F, $0, 0
 	map_header_2 Route2NuggetSpeechHouse, ROUTE_2_NUGGET_SPEECH_HOUSE, $0, 0
 	map_header_2 Route2Gate, ROUTE_2_GATE, $0, 0
-	map_header_2 VictoryRoadGate, VICTORY_ROAD_GATE, $0, 0
+	map_header_2 PokemonLeagueGate, POKEMON_LEAGUE_GATE, $0, 0
 	map_header_2 ElmsLab, ELMS_LAB, $0, 0
 	map_header_2 KrissHouse1F, KRISS_HOUSE_1F, $0, 0
 	map_header_2 KrissHouse2F, KRISS_HOUSE_2F, $0, 0

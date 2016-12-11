@@ -189,7 +189,7 @@
 	db 56, GOLBAT
 	db 56, GOLBAT
 
-	map VICTORY_ROAD
+	map VICTORY_ROAD_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 39, GRAVELER
@@ -215,6 +215,60 @@
 	db 40, HAUNTER
 	db 42, STEELIX
 	db 41, RHYDON
+
+	map VICTORY_ROAD_2F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 40, GRAVELER
+	db 39, RHYHORN
+	db 38, ONIX
+	db 39, GOLBAT
+	db 41, SANDSLASH
+	db 43, RHYDON
+	db 42, STEELIX
+	; day
+	db 40, GRAVELER
+	db 39, RHYHORN
+	db 38, ONIX
+	db 39, GOLBAT
+	db 41, SANDSLASH
+	db 43, RHYDON
+	db 42, STEELIX
+	; nite
+	db 40, GOLBAT
+	db 39, GRAVELER
+	db 38, ONIX
+	db 39, GRAVELER
+	db 41, HAUNTER
+	db 43, STEELIX
+	db 42, RHYDON
+
+	map VICTORY_ROAD_3F
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 41, GRAVELER
+	db 40, RHYHORN
+	db 39, ONIX
+	db 40, GOLBAT
+	db 42, SANDSLASH
+	db 44, RHYDON
+	db 43, STEELIX
+	; day
+	db 41, GRAVELER
+	db 40, RHYHORN
+	db 39, ONIX
+	db 40, GOLBAT
+	db 42, SANDSLASH
+	db 44, RHYDON
+	db 43, STEELIX
+	; nite
+	db 41, GOLBAT
+	db 40, GRAVELER
+	db 39, ONIX
+	db 40, GRAVELER
+	db 42, HAUNTER
+	db 44, STEELIX
+	db 43, RHYDON
 
 	map TOHJO_FALLS
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite

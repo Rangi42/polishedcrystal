@@ -501,7 +501,7 @@ GetSpeed::
 	call BattleRandom
 	pop hl
 	cp h
-	ret nc
+	jr nc, .done
 	; TODO: item animation
 	ld a, b
 	add 128

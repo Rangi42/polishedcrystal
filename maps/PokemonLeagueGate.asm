@@ -1,9 +1,9 @@
 const_value set 2
-	const VICTORYROADGATE_OFFICER
-	const VICTORYROADGATE_BLACK_BELT1
-	const VICTORYROADGATE_BLACK_BELT2
+	const POKEMONLEAGUEGATE_OFFICER
+	const POKEMONLEAGUEGATE_BLACK_BELT1
+	const POKEMONLEAGUEGATE_BLACK_BELT2
 
-VictoryRoadGate_MapScriptHeader:
+PokemonLeagueGate_MapScriptHeader:
 .MapTriggers:
 	db 2
 
@@ -20,10 +20,10 @@ UnknownScript_0x9b9fb:
 UnknownScript_0x9b9fc:
 	end
 
-VictoryRoadGateXYTriggerScript2:
-	applymovement PLAYER, VictoryRoadGateXYTriggerScript2Movement
+PokemonLeagueGateXYTriggerScript2:
+	applymovement PLAYER, PokemonLeagueGateXYTriggerScript2Movement
 
-VictoryRoadGateXYTriggerScript1:
+PokemonLeagueGateXYTriggerScript1:
 	spriteface PLAYER, LEFT
 	jump UnknownScript_0x9ba04
 
@@ -43,7 +43,7 @@ BlackBeltScript_0x9ba21:
 BlackBeltScript_0x9ba24:
 	jumptextfaceplayer UnknownText_0x9bb37
 
-VictoryRoadGateXYTriggerScript2Movement:
+PokemonLeagueGateXYTriggerScript2Movement:
 	step_left
 	step_end
 
@@ -82,7 +82,7 @@ UnknownText_0x9bb37:
 	line "ready for you!"
 	done
 
-VictoryRoadGate_MapEventHeader:
+PokemonLeagueGate_MapEventHeader:
 	; filler
 	db 0, 0
 
@@ -99,8 +99,8 @@ VictoryRoadGate_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $a, $a, $0, VictoryRoadGateXYTriggerScript1, $0, $0
-	xy_trigger 0, $a, $b, $0, VictoryRoadGateXYTriggerScript2, $0, $0
+	xy_trigger 0, $a, $a, $0, PokemonLeagueGateXYTriggerScript1, $0, $0
+	xy_trigger 0, $a, $b, $0, PokemonLeagueGateXYTriggerScript2, $0, $0
 
 .Signposts:
 	db 0

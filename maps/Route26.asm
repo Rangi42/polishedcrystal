@@ -453,7 +453,7 @@ Route26_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $5, $7, 3, VICTORY_ROAD_GATE
+	warp_def $5, $7, 3, POKEMON_LEAGUE_GATE
 	warp_def $39, $f, 1, ROUTE_26_HEAL_SPEECH_HOUSE
 	warp_def $47, $5, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
 

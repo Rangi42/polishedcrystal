@@ -23,7 +23,7 @@ Route28_MapEventHeader:
 .Warps:
 	db 2
 	warp_def $3, $7, 1, ROUTE_28_FAMOUS_SPEECH_HOUSE
-	warp_def $5, $21, 7, VICTORY_ROAD_GATE
+	warp_def $5, $21, 7, POKEMON_LEAGUE_GATE
 
 .XYTriggers:
 	db 0

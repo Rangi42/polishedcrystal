@@ -159,8 +159,8 @@ SeafoamGym_BlockData:
 MrPokemonsHouse_BlockData:
 	INCBIN "maps/MrPokemonsHouse.blk"
 
-VictoryRoadGate_BlockData:
-	INCBIN "maps/VictoryRoadGate.blk"
+PokemonLeagueGate_BlockData:
+	INCBIN "maps/PokemonLeagueGate.blk"
 
 OlivinePortPassage_BlockData:
 VermilionPortPassage_BlockData:
@@ -175,8 +175,14 @@ Underground_BlockData:
 Route39Barn_BlockData:
 	INCBIN "maps/Route39Barn.blk"
 
-VictoryRoad_BlockData:
-	INCBIN "maps/VictoryRoad.blk"
+VictoryRoad1F_BlockData:
+	INCBIN "maps/VictoryRoad1F.blk"
+
+VictoryRoad2F_BlockData:
+	INCBIN "maps/VictoryRoad2F.blk"
+
+VictoryRoad3F_BlockData:
+	INCBIN "maps/VictoryRoad3F.blk"
 
 IndigoPlateau_BlockData:
 	INCBIN "maps/IndigoPlateau.blk"

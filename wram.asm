@@ -2511,7 +2511,7 @@ wPowerPlantTrigger::                         ds 1 ; d976
 wCeruleanGymTrigger::                        ds 1 ; d977
 wCeruleanCapeTrigger::                       ds 1 ; d978
 wTrainerHouseB1FTrigger::                    ds 1 ; d979
-wVictoryRoadGateTrigger::                    ds 1 ; d97a
+wPokemonLeagueGateTrigger::                  ds 1 ; d97a
 wSaffronTrainStationTrigger::                ds 1 ; d97b
 wRoute16GateTrigger::                        ds 1 ; d97c
 wRoute18GateTrigger::                        ds 1 ; d97d
@@ -2571,7 +2571,7 @@ wTeamRocketBaseB2FTrigger::                  ds 1 ; d9b3
 wTeamRocketBaseB3FTrigger::                  ds 1 ; d9b4
 wUndergroundPathSwitchRoomEntrancesTrigger:: ds 1 ; d9b5
 wSilverCaveRoom3Trigger::                    ds 1 ; d9b6
-wVictoryRoadTrigger::                        ds 1 ; d9b7
+wVictoryRoad2FTrigger::                      ds 1 ; d9b7
 wDragonsDenB1FTrigger::                      ds 1 ; d9b8
 wDragonShrineTrigger::                       ds 1 ; d9b9
 wOlivinePortTrigger::                        ds 1 ; d9ba

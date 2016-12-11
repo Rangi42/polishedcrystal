@@ -85,6 +85,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; gentleman
 	db MUSIC_YOUNGSTER_ENCOUNTER	; rich_boy
 	db MUSIC_LASS_ENCOUNTER			; breeder
+	db MUSIC_LASS_ENCOUNTER			; baker
 	db MUSIC_LASS_ENCOUNTER			; cowgirl
 	db MUSIC_HIKER_ENCOUNTER		; sailor
 	db MUSIC_HIKER_ENCOUNTER		; swimmerm
@@ -102,6 +103,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_BEAUTY_ENCOUNTER		; guitaristf
 	db MUSIC_HIKER_ENCOUNTER		; biker
 	db MUSIC_HIKER_ENCOUNTER		; roughneck
+	db MUSIC_HIKER_ENCOUNTER		; sightseerm
+	db MUSIC_BEAUTY_ENCOUNTER		; sightseerf
 	db MUSIC_HIKER_ENCOUNTER		; cooltrainerm
 	db MUSIC_BEAUTY_ENCOUNTER		; cooltrainerf
 	db MUSIC_HIKER_ENCOUNTER		; ace_duo
@@ -130,8 +133,8 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; steven
 	db MUSIC_HIKER_ENCOUNTER		; cynthia
 	db MUSIC_HIKER_ENCOUNTER		; towertycoon
-	db MUSIC_KIMONO_ENCOUNTER		; valerie
 	db MUSIC_KIMONO_ENCOUNTER		; caitlin
 	db MUSIC_HIKER_ENCOUNTER		; darach
+	db MUSIC_KIMONO_ENCOUNTER		; valerie
 	db MUSIC_KIMONO_ENCOUNTER		; rei
 ; e906e
