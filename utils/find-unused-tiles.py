@@ -27,24 +27,24 @@ tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
                  'cave', 'park', 'ruins', 'radio_tower', 'warehouse',
                  'ice_path', 'dark_cave', 'forest', 'safari', 'alph1', 'alph2',
                  'alph3', 'alph4', 'pokemon_mansion', 'faraway', 'rock_tunnel',
-                 'decor', 'kanto2']
+                 'decor', 'kanto2', 'shamouti']
 
-# {'TILESET_JOHTO_1': '01', ...}
+# {'TILESET_JOHTO_1': 'johto1', ...}
 tileset_ids = {}
-# {'OlivinePokeCenter1F': '01', ...}
+# {'OlivinePokeCenter1F': 'johto1', ...}
 map_tilesets = {}
 
 # {'OlivineTimsHouse': 'House1', ...}
 map_block_data_exceptions = {}
 
-# {tileset '01': {tile '01', tile '02', tile '03', ...}, ...}
+# {tileset 'johto1': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_used_tile_ids = defaultdict(lambda: set())
-# {tileset '01': {block '01', block '02', block '03', ...}, ...}
+# {tileset 'johto1': {block '01', block '02', block '03', ...}, ...}
 tileset_used_block_ids = defaultdict(lambda: set())
 
-# {tileset '01': {tile '01', tile '02', tile '03', ...}, ...}
+# {tileset 'johto1': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_unused_tile_ids = defaultdict(lambda: set())
-# {tileset '01': {block '01', block '02', block '03', ...}, ...}
+# {tileset 'johto1': {block '01', block '02', block '03', ...}, ...}
 tileset_unused_block_ids = defaultdict(lambda: set())
 
 def pretty(n):

@@ -111,3 +111,6 @@ INCLUDE "tilesets/decor_palette_map.asm"
 
 Tileset41PalMap:
 INCLUDE "tilesets/kanto2_palette_map.asm"
+
+Tileset42PalMap:
+INCLUDE "tilesets/shamouti_palette_map.asm"
