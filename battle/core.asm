@@ -2695,7 +2695,7 @@ PlayVictoryMusic: ; 3d0ea
 
 .trainer_victory
 	ld de, MUSIC_GYM_VICTORY
-	call IsJohtoGymLeader
+	call IsBossTrainer
 	jr c, .play_music
 	ld de, MUSIC_TRAINER_VICTORY
 
@@ -2715,16 +2715,17 @@ PlayVictoryMusic: ; 3d0ea
 ; Note: KantoGymLeaders is a subset of JohtoGymLeaders. If you wish to
 ; differentiate between the two, call IsKantoGymLeader first.
 
-; The Lance and Red entries are unused for music checks; those trainers are
-; accounted for elsewhere.
-
 IsKantoGymLeader: ; 0x3d123
 	ld hl, KantoGymLeaders
-	jr IsGymLeaderCommon
+	jr IsBossTrainerCommon
 
 IsJohtoGymLeader: ; 0x3d128
 	ld hl, JohtoGymLeaders
-IsGymLeaderCommon:
+	jr IsBossTrainerCommon
+
+IsBossTrainer:
+	ld hl, BossTrainers
+IsBossTrainerCommon:
 	push de
 	ld a, [OtherTrainerClass]
 	ld de, $0001
@@ -2733,6 +2734,23 @@ IsGymLeaderCommon:
 	ret
 ; 0x3d137
 
+BossTrainers:
+	; unused for music checks
+	db CHAMPION
+	db RED
+	db LEAF
+	db STEVEN
+	db CYNTHIA
+	db TOWERTYCOON
+	db VALERIE
+	db GIOVANNI
+	db LORELEI
+	db AGATHA
+	; elite 4
+	db WILL
+	db KOGA
+	db BRUNO
+	db KAREN
 JohtoGymLeaders:
 	db FALKNER
 	db WHITNEY
@@ -2742,16 +2760,6 @@ JohtoGymLeaders:
 	db JASMINE
 	db PRYCE
 	db CLAIR
-	db WILL
-	db KOGA
-	db BRUNO
-	db KAREN
-	db CHAMPION
-	db STEVEN
-	db CYNTHIA
-	db TOWERTYCOON
-	db VALERIE
-; fallthrough
 KantoGymLeaders:
 	db BROCK
 	db MISTY
@@ -2761,11 +2769,6 @@ KantoGymLeaders:
 	db SABRINA
 	db BLAINE
 	db BLUE
-	db LORELEI
-	db AGATHA
-	db GIOVANNI
-	db RED
-	db LEAF
 	db -1
 
 
@@ -3709,7 +3712,23 @@ Function_BattleTextEnemySentOut: ; 3d7b8
 	farcall Battle_GetTrainerName
 	ld hl, BattleText_EnemySentOut
 	call StdBattleTextBox
-	jp WaitBGMap
+	call WaitBGMap
+; TODO: play B/W final Pokémon music for Gym Leaders
+;	; if this is a Gym Leader...
+;	call IsJohtoGymLeader
+;	ret nc
+;	; ...and this is their last Pokémon...
+;	farcall CheckAnyOtherAliveEnemyMons
+;	ret nz
+;	; ...then play the final Pokémon music
+;	push de
+;	ld de, MUSIC_NONE
+;	call PlayMusic
+;	call DelayFrame
+;	ld de, MUSIC_CHAMPION_BATTLE
+;	call PlayMusic
+;	pop de
+	ret
 ; 3d7c7
 
 Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
@@ -8784,7 +8803,7 @@ InitEnemyTrainer: ; 3f594
 	ld a, TRAINER_BATTLE
 	ld [wBattleMode], a
 
-	call IsJohtoGymLeader
+	call IsBossTrainer
 	jr nc, .done
 	xor a
 	ld [CurPartyMon], a

@@ -1710,9 +1710,17 @@ PlayBattleMusic: ; 2ee6c
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	farcall IsKantoGymLeader
 	jr c, .done
+	ld a, [OtherTrainerClass]
+	cp LORELEI
+	jp z, .done
+	cp AGATHA
+	jp z, .done
 
 	ld de, MUSIC_JOHTO_GYM_LEADER_BATTLE
-	farcall IsJohtoGymLeader
+	; all boss trainers other than the Johto Gym Leaders and the Elite 4
+	; have already been handled, and calling IsJohtoGymLeader would not
+	; count the Elite 4
+	farcall IsBossTrainer
 	jr c, .done
 
 	ld de, MUSIC_RIVAL_BATTLE
