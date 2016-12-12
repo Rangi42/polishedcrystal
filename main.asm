@@ -5148,6 +5148,53 @@ INCLUDE "engine/variables.asm"
 BattleText::
 INCLUDE "text/battle.asm"
 
+GetFinalPkmnTextPointer::
+	ld a, [OtherTrainerClass]
+	dec a
+	cp BLUE
+	jr nc, .return_nc ; TODO: handle trainers beyond Blue more specifically
+	ld hl, .GymLeaderFinalTexts
+	ld b, 0
+	ld c, a
+rept 2
+	add hl, bc
+endr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	scf
+	ret
+
+.return_nc
+	xor a
+	and a
+	ret
+
+.GymLeaderFinalTexts:
+	dw KayFinalPkmnText
+	dw CalFinalPkmnText
+	dw FalknerFinalPkmnText
+	dw BugsyFinalPkmnText
+	dw WhitneyFinalPkmnText
+	dw MortyFinalPkmnText
+	dw ChuckFinalPkmnText
+	dw JasmineFinalPkmnText
+	dw PryceFinalPkmnText
+	dw ClairFinalPkmnText
+	dw WillFinalPkmnText
+	dw KogaFinalPkmnText
+	dw BrunoFinalPkmnText
+	dw KarenFinalPkmnText
+	dw ChampionFinalPkmnText
+	dw BrockFinalPkmnText
+	dw MistyFinalPkmnText
+	dw LtSurgeFinalPkmnText
+	dw ErikaFinalPkmnText
+	dw JanineFinalPkmnText
+	dw SabrinaFinalPkmnText
+	dw BlaineFinalPkmnText
+	dw BlueFinalPkmnText
+
 SECTION "bank21", ROMX, BANK[$21]
 
 INCLUDE "battle/anim_gfx.asm"

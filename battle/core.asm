@@ -57,8 +57,6 @@ DoBattle: ; 3c000
 	jp z, LostBattle
 	call Call_LoadTempTileMapToTileMap
 	ld a, [BattleType]
-	cp BATTLETYPE_DEBUG
-	jp z, .tutorial_debug
 	cp BATTLETYPE_TUTORIAL
 	jp z, .tutorial_debug
 	xor a
@@ -3613,38 +3611,38 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 ; 3d714
 
 FinalPkmnMusicAndAnimation:
-;	; if this is a Gym Leader...
-;	call IsJohtoGymLeader
-;	ret nc
-;	; ...and this is their last Pokémon...
-;	farcall CheckAnyOtherAliveEnemyMons
-;	ret nz
-;	; ...then play the final Pokémon music...
+	; if this trainer has final text...
+	farcall GetFinalPkmnTextPointer
+	ret nc
+	; ...and this is their last Pokémon...
+	farcall CheckAnyOtherAliveEnemyMons
+	ret nz
+	; ...then hide the Pokémon...
+	call EmptyBattleTextBox
+	ld c, 20
+	call DelayFrames
+	hlcoord 18, 0
+	ld a, 8
+	call SlideBattlePicOut
+;	; ...play the final Pokémon music...
 ;	push de
 ;	ld de, MUSIC_NONE
 ;	call PlayMusic
 ;	call DelayFrame
-;	ld de, MUSIC_CHAMPION_BATTLE
+;	ld de, MUSIC_CHAMPION_BATTLE ; TODO: demix B/W music
 ;	call PlayMusic
 ;	pop de
-;	; ...hide the Pokémon...
-;	hlcoord 18, 0
-;	ld a, 8
-;	call SlideBattlePicOut
-;	call EmptyBattleTextBox
-;	; ...show their sprite and final dialog...
-;	call FinalPkmnSlideInEnemyTrainerFrontpic
-;	ld c, 40
-;	call DelayFrames
-;	ld hl, BattleText_FinalPkmn ; TODO: dispatch on trainer class
-;	call StdBattleTextBox
-;	; ...and return the Pokémon
-;	hlcoord 18, 0
-;	ld a, 8
-;	call SlideBattlePicOut
-;	ld c, 10
-;	call DelayFrames
-;	call FinalPkmnSlideInEnemyMonFrontpic
+	; ...show their sprite and final dialog...
+	call FinalPkmnSlideInEnemyTrainerFrontpic
+	farcall GetFinalPkmnTextPointer
+	call StdBattleTextBox
+	; ...and return the Pokémon
+	hlcoord 18, 0
+	ld a, 8
+	call SlideBattlePicOut
+	ld c, 10
+	call DelayFrames
+	call FinalPkmnSlideInEnemyMonFrontpic
 	ret
 
 CheckWhetherToAskSwitch: ; 3d714
@@ -3912,8 +3910,6 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 TryToRunAwayFromBattle: ; 3d8b3
 ; Run away from battle, with or without item
 	ld a, [BattleType]
-	cp BATTLETYPE_DEBUG
-	jp z, .can_escape
 	cp BATTLETYPE_CONTEST
 	jp z, .can_escape
 	cp BATTLETYPE_GHOST
@@ -5242,8 +5238,6 @@ BattleMenu: ; 3e139
 	call LoadTempTileMapToTileMap
 
 	ld a, [BattleType]
-	cp BATTLETYPE_DEBUG
-	jr z, .ok
 	cp BATTLETYPE_TUTORIAL
 	jr z, .ok
 	call EmptyBattleTextBox

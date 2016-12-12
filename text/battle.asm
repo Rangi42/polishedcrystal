@@ -1369,8 +1369,134 @@ GetOutText:
 	line "Get out…"
 	prompt
 
-BattleText_FinalPkmn:
-	text "<ENEMY>:"
-	line "This is my last"
-	cont "#mon!"
+KayFinalPkmnText:
+CalFinalPkmnText:
+	text "I still have one"
+	line "#mon!"
+	prompt
+
+FalknerFinalPkmnText:
+	text "The wind is"
+	line "finally with us!"
+	prompt
+
+BugsyFinalPkmnText:
+	text "Even though it's"
+	line "my last #mon,"
+
+	para "Bug #mon are"
+	line "tough!"
+	prompt
+
+WhitneyFinalPkmnText:
+	text "H-hey! Just one"
+	line "left? But…"
+
+	para "I ain't losin',"
+	line "you hear?"
+	prompt
+
+MortyFinalPkmnText:
+	text "I still believe"
+	line "we can do it!"
+	prompt
+
+ChuckFinalPkmnText:
+	text "We haven't lost"
+	line "yet!"
+	prompt
+
+JasmineFinalPkmnText:
+	text "Well-tempered"
+	line "steel will hang on"
+	cont "to the very last!"
+	prompt
+
+PryceFinalPkmnText:
+	text "Humph… You are"
+	line "quite the Trainer."
+	prompt
+
+ClairFinalPkmnText:
+	text "One last #mon?"
+	line "This is where the"
+	cont "real fight begins!"
+	prompt
+
+WillFinalPkmnText:
+	text "We Psychics don't"
+	line "give up until we"
+	cont "reach zero!"
+	prompt
+
+KogaFinalPkmnText:
+	text "Fwahaha! I've been"
+	line "counting on this"
+
+	para "one from the very"
+	line "beginning!"
+	prompt
+
+BrunoFinalPkmnText:
+	text "Fight as hard as"
+	line "you can 'til you"
+	cont "faint!"
+	prompt
+
+KarenFinalPkmnText:
+	text "This is far from"
+	line "being backed into"
+	cont "a corner!"
+	prompt
+
+ChampionFinalPkmnText:
+	text "All right! I"
+	line "thought this would"
+	cont "never happen!"
+	prompt
+
+BrockFinalPkmnText:
+	text "Ah ha ha!"
+	line "It itches!"
+	prompt
+
+MistyFinalPkmnText:
+	text "Hmm… You're"
+	line "pretty good…"
+	prompt
+
+LtSurgeFinalPkmnText:
+	text "It's not over yet."
+	line "It's just getting"
+	cont "started!"
+	prompt
+
+ErikaFinalPkmnText:
+	text "Don't go easy on"
+	line "me. Give me every-"
+	cont "thing you've got!"
+	prompt
+
+JanineFinalPkmnText:
+	text "You've got a great"
+	line "battle technique!"
+	prompt
+
+SabrinaFinalPkmnText:
+	text "What will happen"
+	line "after this?"
+	cont "I already know."
+	prompt
+
+BlaineFinalPkmnText:
+	text "I'll show you the"
+	line "spirit of my cave"
+	cont "Gym!"
+	prompt
+
+BlueFinalPkmnText:
+	text "Heh heh heh…"
+	line "You're unprepared"
+	cont "for this. We'll"
+	cont "knock you down!"
 	prompt
