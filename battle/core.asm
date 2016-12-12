@@ -3281,12 +3281,12 @@ EnemySwitch: ; 3d4e1
 .skip
 	; 'b' contains the PartyNr of the Pkmn the AI will switch to
 	call LoadEnemyPkmnToSwitchTo
-	call FinalPkmnMusicAndAnimation
 	call OfferSwitch
 	push af
 	call ClearEnemyMonBox
 	call Function_BattleTextEnemySentOut
 	call Function_SetEnemyPkmnAndSendOutAnimation
+	call FinalPkmnMusicAndAnimation
 	pop af
 	ret c
 	; If we're here, then we're switching too
@@ -3308,12 +3308,12 @@ EnemySwitch_SetMode: ; 3d517
 .skip
 	; 'b' contains the PartyNr of the Pkmn the AI will switch to
 	call LoadEnemyPkmnToSwitchTo
-	call FinalPkmnMusicAndAnimation
 	ld a, 1
 	ld [wEnemyIsSwitching], a
 	call ClearEnemyMonBox
 	call Function_BattleTextEnemySentOut
-	jp Function_SetEnemyPkmnAndSendOutAnimation
+	call Function_SetEnemyPkmnAndSendOutAnimation
+	jp FinalPkmnMusicAndAnimation
 ; 3d533
 
 CheckWhetherSwitchmonIsPredetermined: ; 3d533
@@ -3613,7 +3613,7 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 ; 3d714
 
 FinalPkmnMusicAndAnimation:
-	; if this is a Gym Leader...
+;	; if this is a Gym Leader...
 ;	call IsJohtoGymLeader
 ;	ret nc
 ;	; ...and this is their last Pokémon...
@@ -3627,15 +3627,24 @@ FinalPkmnMusicAndAnimation:
 ;	ld de, MUSIC_CHAMPION_BATTLE
 ;	call PlayMusic
 ;	pop de
-;	; ...and show their final dialog
+;	; ...hide the Pokémon...
+;	hlcoord 18, 0
+;	ld a, 8
+;	call SlideBattlePicOut
+;	call EmptyBattleTextBox
+;	; ...show their sprite and final dialog...
 ;	call FinalPkmnSlideInEnemyTrainerFrontpic
 ;	ld c, 40
 ;	call DelayFrames
 ;	ld hl, BattleText_FinalPkmn ; TODO: dispatch on trainer class
 ;	call StdBattleTextBox
+;	; ...and return the Pokémon
 ;	hlcoord 18, 0
 ;	ld a, 8
 ;	call SlideBattlePicOut
+;	ld c, 10
+;	call DelayFrames
+;	call FinalPkmnSlideInEnemyMonFrontpic
 	ret
 
 CheckWhetherToAskSwitch: ; 3d714
@@ -7158,6 +7167,11 @@ CheckUnownLetter: ; 3eb75
 ; 3ebc7
 
 
+FinalPkmnSlideInEnemyMonFrontpic:
+	call FinishBattleAnim
+	call GetMonFrontpic
+	jr FinalPkmnSlideInCommonFrontpic
+
 FinalPkmnSlideInEnemyTrainerFrontpic:
 	ld a, [TempEnemyMonSpecies]
 	push af
@@ -7170,6 +7184,7 @@ FinalPkmnSlideInEnemyTrainerFrontpic:
 	farcall GetTrainerPic
 	pop af
 	ld [TempEnemyMonSpecies], a
+FinalPkmnSlideInCommonFrontpic:
 	hlcoord 18, 0
 	ld c, 0
 
