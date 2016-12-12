@@ -277,7 +277,7 @@ FindOwnedPosters: ; 268fb
 	db DECO_TOWN_MAP ; 10
 	db DECO_PIKACHU_POSTER ; 11
 	db DECO_CLEFAIRY_POSTER ; 12
-	db DECO_JIGGLYPUFF_POSTER ; 13
+	db DECO_MARILL_POSTER ; 13
 	db -1
 ; 26908
 
@@ -568,7 +568,7 @@ DecorationAttributes: ; 26a4f
 	decoration DECO_PLANT,    TOWN_MAP_D,        SET_UP_POSTER,      EVENT_DECO_PLANT_4,                $1f
 	decoration DECO_POSTER,   PIKACHU,           SET_UP_POSTER,      EVENT_DECO_POSTER_1,               $23
 	decoration DECO_POSTER,   CLEFAIRY,          SET_UP_POSTER,      EVENT_DECO_POSTER_2,               $24
-	decoration DECO_POSTER,   JIGGLYPUFF,        SET_UP_POSTER,      EVENT_DECO_POSTER_3,               $25
+	decoration DECO_POSTER,   MARILL,            SET_UP_POSTER,      EVENT_DECO_POSTER_3,               $25
 	decoration DECO_PLANT,    PUT_IT_AWAY,       PUT_AWAY_CONSOLE,   EVENT_GAVE_KURT_APRICORNS,                         $00
 	decoration DECO_PLANT,    SUPER_NES,         SET_UP_CONSOLE,     EVENT_DECO_SNES,                   SPRITE_SNES
 	decoration DECO_PLANT,    NINTENDO_64,       SET_UP_CONSOLE,     EVENT_DECO_N64,                    SPRITE_N64
@@ -1132,7 +1132,7 @@ DecorationIDs: ; 26f2b
 	db DECO_TOWN_MAP ; 10
 	db DECO_PIKACHU_POSTER ; 11
 	db DECO_CLEFAIRY_POSTER ; 12
-	db DECO_JIGGLYPUFF_POSTER ; 13
+	db DECO_MARILL_POSTER ; 13
 
 	db DECO_SNES ; 15
 	db DECO_N64 ; 16
@@ -1206,7 +1206,7 @@ DecorationDesc_PosterPointers: ; 26f84
 	dbw DECO_TOWN_MAP, DecorationDesc_TownMapPoster
 	dbw DECO_PIKACHU_POSTER, DecorationDesc_PikachuPoster
 	dbw DECO_CLEFAIRY_POSTER, DecorationDesc_ClefairyPoster
-	dbw DECO_JIGGLYPUFF_POSTER, DecorationDesc_JigglypuffPoster
+	dbw DECO_MARILL_POSTER, DecorationDesc_MarillPoster
 	db -1
 ; 26f91
 
@@ -1245,12 +1245,12 @@ DecorationDesc_ClefairyPoster: ; 0x26fa8
 	db "@"
 ; 0x26fb0
 
-DecorationDesc_JigglypuffPoster: ; 0x26fb0
-	jumptext .JigglypuffPosterText
+DecorationDesc_MarillPoster: ; 0x26fb0
+	jumptext .MarillPosterText
 ; 0x26fb3
 
-.JigglypuffPosterText: ; 0x26fb3
-	; It's a poster of a cute JIGGLYPUFF.
+.MarillPosterText: ; 0x26fb3
+	; It's a poster of a cute MARILL.
 	text_jump UnknownText_0x1bc5b3
 	db "@"
 ; 0x26fb8

@@ -21,7 +21,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	verticalmenu
 	closewindow
 	if_equal $1, .RedCarpet
-	if_equal $2, .BlueCarpet
+	if_equal $2, .YellowCarpet
 	if_equal $3, .GreenCarpet
 	closetext
 	end
@@ -40,17 +40,17 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	jump .Start
 
-.BlueCarpet:
+.YellowCarpet:
 	checkmoney $0, 45000
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_CARPET_2
+	checkevent EVENT_DECO_CARPET_3
 	iftrue .AlreadyBought
 	takemoney $0, 45000
-	setevent EVENT_DECO_CARPET_2
-	writetext BoughtBlueCarpetText
+	setevent EVENT_DECO_CARPET_3
+	writetext BoughtYellowCarpetText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BlueCarpetSentText
+	writetext YellowCarpetSentText
 	waitbutton
 	jump .Start
 
@@ -89,14 +89,14 @@ CeladonHomeDecorStore3FClerk1Script:
 	db $80 ; flags
 	db 4 ; items
 	db "Red C.    ¥45000@"
-	db "Blue C.   ¥45000@"
+	db "Yellow C. ¥45000@"
 	db "Green C.  ¥45000@"
 	db "Cancel@"
 
 CeladonHomeDecorStore3FClerk2Script:
 	faceplayer
 	opentext
-	checkevent EVENT_DECO_CARPET_3
+	checkevent EVENT_DECO_CARPET_2
 	iftrue .Sold
 	special PlaceMoneyTopRight
 	writetext CeladonHomeDecorStore3FClerk2SaleText
@@ -105,11 +105,11 @@ CeladonHomeDecorStore3FClerk2Script:
 	checkmoney $0, 35000
 	if_equal $2, .NotEnoughMoney
 	takemoney $0, 35000
-	setevent EVENT_DECO_CARPET_3
-	writetext BoughtYellowCarpetText
+	setevent EVENT_DECO_CARPET_2
+	writetext BoughtBlueCarpetText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext YellowCarpetSentText
+	writetext BlueCarpetSentText
 	waitbutton
 	writetext CeladonHomeDecorStore3FClerk2YesText
 	waitbutton
@@ -156,10 +156,10 @@ CeladonHomeDecorStore3FClerk2Text:
 
 CeladonHomeDecorStore3FClerk2SaleText:
 	text "Our imported"
-	line "Yellow Carpet is"
+	line "Royal Blue Carpet"
 
-	para "on sale right now"
-	line "for ¥35,000."
+	para "is on sale right"
+	line "now for ¥35,000."
 
 	para "Would you like to"
 	line "buy one?"

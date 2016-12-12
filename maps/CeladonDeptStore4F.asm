@@ -27,23 +27,23 @@ PosterClerkScript:
 	loadmenudata .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .JigglypuffPoster
+	if_equal $1, .MarillPoster
 	if_equal $2, .ClefairyPoster
 	if_equal $3, .PikachuPoster
 	closetext
 	end
 
-.JigglypuffPoster:
+.MarillPoster:
 	checkmoney $0, 3200
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_POSTER_1
+	checkevent EVENT_DECO_POSTER_3
 	iftrue .AlreadyBought
 	takemoney $0, 3200
-	setevent EVENT_DECO_POSTER_1
-	writetext BoughtJigglypuffPosterText
+	setevent EVENT_DECO_POSTER_3
+	writetext BoughtMarillPosterText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext JigglypuffPosterSentText
+	writetext MarillPosterSentText
 	waitbutton
 	jump .Start
 
@@ -64,10 +64,10 @@ PosterClerkScript:
 .PikachuPoster:
 	checkmoney $0, 6400
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_POSTER_3
+	checkevent EVENT_DECO_POSTER_1
 	iftrue .AlreadyBought
 	takemoney $0, 6400
-	setevent EVENT_DECO_POSTER_3
+	setevent EVENT_DECO_POSTER_1
 	writetext BoughtPikachuPosterText
 	playsound SFX_TRANSACTION
 	waitbutton
@@ -95,7 +95,7 @@ PosterClerkScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Jigglypuff  ¥3200@"
+	db "Marill      ¥3200@"
 	db "Clefairy    ¥4800@"
 	db "Pikachu     ¥6400@"
 	db "Cancel@"
@@ -127,13 +127,13 @@ PosterClerkAlreadyBoughtText:
 	line "already."
 	done
 
-BoughtJigglypuffPosterText:
+BoughtMarillPosterText:
 	text "<PLAYER> bought"
-	line "Jigglypuff Poster."
+	line "Marill Poster."
 	done
 
-JigglypuffPosterSentText:
-	text "Jigglypuff Poster"
+MarillPosterSentText:
+	text "Marill Poster"
 	line "was sent home."
 	done
 

@@ -19,7 +19,7 @@ CeladonHomeDecorStore2FClerkScript:
 	verticalmenu
 	closewindow
 	if_equal $1, .PinkBed
-	if_equal $2, .PolkadotBed
+	if_equal $2, .PolkaDotBed
 	if_equal $3, .PikachuBed
 	closetext
 	end
@@ -38,17 +38,17 @@ CeladonHomeDecorStore2FClerkScript:
 	waitbutton
 	jump .Start
 
-.PolkadotBed:
+.PolkaDotBed:
 	checkmoney $0, 94000
 	if_equal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_3
 	iftrue .AlreadyBought
 	takemoney $0, 94000
 	setevent EVENT_DECO_BED_3
-	writetext BoughtPolkadotBedText
+	writetext BoughtPolkaDotBedText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext PolkadotBedSentText
+	writetext PolkaDotBedSentText
 	waitbutton
 	jump .Start
 
@@ -87,7 +87,7 @@ CeladonHomeDecorStore2FClerkScript:
 	db $80 ; flags
 	db 4 ; items
 	db "Pink      ¥62000@"
-	db "Polkadot  ¥94000@"
+	db "PolkaDot  ¥94000@"
 	db "Pikachu  ¥126000@"
 	db "Cancel@"
 
@@ -113,13 +113,13 @@ PinkBedSentText:
 	line "was sent home."
 	done
 
-BoughtPolkadotBedText:
+BoughtPolkaDotBedText:
 	text "<PLAYER> bought"
-	line "Polkadot Bed."
+	line "PolkaDot Bed."
 	done
 
-PolkadotBedSentText:
-	text "Polkadot Bed"
+PolkaDotBedSentText:
+	text "PolkaDot Bed"
 	line "was sent home."
 	done
 

@@ -242,7 +242,7 @@ UnknownText_0x1bc591::
 
 UnknownText_0x1bc5b3::
 	text "It's a poster of a"
-	line "cute Jigglypuff."
+	line "cute Marill."
 	done
 
 UnknownText_0x1bc5d7::

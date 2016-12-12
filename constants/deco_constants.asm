@@ -79,7 +79,7 @@ __enum__ = 0
 	deco  TOWN_MAP ; 10 (b)
 	deco  PIKACHU_POSTER ; 11 (c)
 	deco  CLEFAIRY_POSTER ; 12 (d)
-	deco  JIGGLYPUFF_POSTER ; 13(e)
+	deco  MARILL_POSTER ; 13(e)
 
 	const CONSOLES
 	deco  SNES ; 15 (f)

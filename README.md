@@ -304,6 +304,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
 * Add: Instant text option.
+* Add: Replace Jigglypuff Poster with Marill Poster.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Quick Ball catch rate multiplier is 5 on the first turn.
