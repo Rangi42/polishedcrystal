@@ -1368,3 +1368,9 @@ GetOutText:
 	text "Ghost: Get out…"
 	line "Get out…"
 	prompt
+
+BattleText_FinalPkmn:
+	text "<ENEMY>:"
+	line "This is my last"
+	cont "#mon!"
+	prompt

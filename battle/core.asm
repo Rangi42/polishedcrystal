@@ -3281,6 +3281,7 @@ EnemySwitch: ; 3d4e1
 .skip
 	; 'b' contains the PartyNr of the Pkmn the AI will switch to
 	call LoadEnemyPkmnToSwitchTo
+	call FinalPkmnMusicAndAnimation
 	call OfferSwitch
 	push af
 	call ClearEnemyMonBox
@@ -3307,6 +3308,7 @@ EnemySwitch_SetMode: ; 3d517
 .skip
 	; 'b' contains the PartyNr of the Pkmn the AI will switch to
 	call LoadEnemyPkmnToSwitchTo
+	call FinalPkmnMusicAndAnimation
 	ld a, 1
 	ld [wEnemyIsSwitching], a
 	call ClearEnemyMonBox
@@ -3610,6 +3612,32 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	jp ResetEnemyAbility
 ; 3d714
 
+FinalPkmnMusicAndAnimation:
+	; if this is a Gym Leader...
+;	call IsJohtoGymLeader
+;	ret nc
+;	; ...and this is their last Pokémon...
+;	farcall CheckAnyOtherAliveEnemyMons
+;	ret nz
+;	; ...then play the final Pokémon music...
+;	push de
+;	ld de, MUSIC_NONE
+;	call PlayMusic
+;	call DelayFrame
+;	ld de, MUSIC_CHAMPION_BATTLE
+;	call PlayMusic
+;	pop de
+;	; ...and show their final dialog
+;	call FinalPkmnSlideInEnemyTrainerFrontpic
+;	ld c, 40
+;	call DelayFrames
+;	ld hl, BattleText_FinalPkmn ; TODO: dispatch on trainer class
+;	call StdBattleTextBox
+;	hlcoord 18, 0
+;	ld a, 8
+;	call SlideBattlePicOut
+	ret
+
 CheckWhetherToAskSwitch: ; 3d714
 	ld a, [wAISwitch]
 	dec a
@@ -3712,23 +3740,7 @@ Function_BattleTextEnemySentOut: ; 3d7b8
 	farcall Battle_GetTrainerName
 	ld hl, BattleText_EnemySentOut
 	call StdBattleTextBox
-	call WaitBGMap
-; TODO: play B/W final Pokémon music for Gym Leaders
-;	; if this is a Gym Leader...
-;	call IsJohtoGymLeader
-;	ret nc
-;	; ...and this is their last Pokémon...
-;	farcall CheckAnyOtherAliveEnemyMons
-;	ret nz
-;	; ...then play the final Pokémon music
-;	push de
-;	ld de, MUSIC_NONE
-;	call PlayMusic
-;	call DelayFrame
-;	ld de, MUSIC_CHAMPION_BATTLE
-;	call PlayMusic
-;	pop de
-	ret
+	jp WaitBGMap
 ; 3d7c7
 
 Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
@@ -7144,6 +7156,71 @@ CheckUnownLetter: ; 3eb75
 	db 24, 25, 26, 27, 28, $ff
 
 ; 3ebc7
+
+
+FinalPkmnSlideInEnemyTrainerFrontpic:
+	ld a, [TempEnemyMonSpecies]
+	push af
+	xor a
+	ld [TempEnemyMonSpecies], a
+	call FinishBattleAnim
+	ld a, [OtherTrainerClass]
+	ld [TrainerClass], a
+	ld de, VTiles2
+	farcall GetTrainerPic
+	pop af
+	ld [TempEnemyMonSpecies], a
+	hlcoord 18, 0
+	ld c, 0
+
+.outer_loop
+	inc c
+	ld a, c
+	cp 8
+	ret z
+	xor a
+	ld [hBGMapMode], a
+	ld [hBGMapThird], a
+	ld d, $0
+	push bc
+	push hl
+
+.inner_loop
+	call .CopyColumn
+	inc hl
+	ld a, 7
+	add d
+	ld d, a
+	dec c
+	jr nz, .inner_loop
+
+	ld a, $1
+	ld [hBGMapMode], a
+	ld c, 4
+	call DelayFrames
+	pop hl
+	pop bc
+	dec hl
+	jr .outer_loop
+
+.CopyColumn:
+	push hl
+	push de
+	push bc
+	ld e, 7
+
+.loop
+	ld [hl], d
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	inc d
+	dec e
+	jr nz, .loop
+
+	pop bc
+	pop de
+	pop hl
+	ret
 
 
 BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
