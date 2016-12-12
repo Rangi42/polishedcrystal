@@ -899,7 +899,6 @@ MoveEffectPriorities: ; 3c5df
 	db ICE_SHARD,    6
 	db MACH_PUNCH,   6
 	db QUICK_ATTACK, 6
-	db VITAL_THROW,  4
 	db AVALANCHE,    2
 	db COUNTER,      1
 	db MIRROR_COAT,  1

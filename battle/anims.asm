@@ -232,7 +232,7 @@ BattleAnimations::
 	dw BattleAnim_ShadowClaw
 	dw BattleAnim_IronTail
 	dw BattleAnim_MetalClaw
-	dw BattleAnim_VitalThrow
+	dw BattleAnim_AuraSphere
 	dw BattleAnim_MorningSun
 	dw BattleAnim_Hurricane
 	dw BattleAnim_Moonlight
@@ -3326,6 +3326,7 @@ BattleAnim_Spikes:
 
 BattleAnim_ZapCannon:
 BattleAnim_FlashCannon: ; TODO: design custom animation for Flash Cannon
+BattleAnim_AuraSphere: ; TODO: design custom animation for Aura Sphere
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_bgp $1b
 	anim_obp0 $30
@@ -3940,28 +3941,6 @@ BattleAnim_ShadowClaw: ; TODO: design custom animation for Shadow Claw
 	anim_obj ANIM_OBJ_37, -15, 4,   5, 4, $0
 	anim_obj ANIM_OBJ_37, -15, 0,   5, 0, $0
 	anim_wait 32
-	anim_ret
-
-BattleAnim_VitalThrow:
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_FollowEnemyFeet_0
-	anim_bgeffect ANIM_BG_2F, $0, $1, $0
-	anim_wait 16
-	anim_sound 0, 0, SFX_MENU
-	anim_obj ANIM_OBJ_04,   8, 0,  12, 0, $0
-	anim_wait 8
-	anim_sound 0, 0, SFX_MENU
-	anim_obj ANIM_OBJ_04,   7, 0,  11, 0, $0
-	anim_wait 8
-	anim_sound 0, 0, SFX_MENU
-	anim_obj ANIM_OBJ_04,   8, 4,  13, 0, $0
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_2F
-	anim_wait 16
-	anim_call BattleAnim_ShowMon_0
-	anim_sound 0, 1, SFX_MEGA_PUNCH
-	anim_obj ANIM_OBJ_03, -16, 4,   7, 0, $0
-	anim_wait 16
 	anim_ret
 
 BattleAnim_MorningSun:
@@ -4882,4 +4861,26 @@ BattleAnim_ShowMon_1:
 ;	anim_wait 32
 ;	anim_incbgeffect ANIM_BG_26
 ;	anim_call BattleAnim_ShowMon_0
+;	anim_ret
+
+;BattleAnim_VitalThrow: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_call BattleAnim_FollowEnemyFeet_0
+;	anim_bgeffect ANIM_BG_2F, $0, $1, $0
+;	anim_wait 16
+;	anim_sound 0, 0, SFX_MENU
+;	anim_obj ANIM_OBJ_04,   8, 0,  12, 0, $0
+;	anim_wait 8
+;	anim_sound 0, 0, SFX_MENU
+;	anim_obj ANIM_OBJ_04,   7, 0,  11, 0, $0
+;	anim_wait 8
+;	anim_sound 0, 0, SFX_MENU
+;	anim_obj ANIM_OBJ_04,   8, 4,  13, 0, $0
+;	anim_wait 8
+;	anim_incbgeffect ANIM_BG_2F
+;	anim_wait 16
+;	anim_call BattleAnim_ShowMon_0
+;	anim_sound 0, 1, SFX_MEGA_PUNCH
+;	anim_obj ANIM_OBJ_03, -16, 4,   7, 0, $0
+;	anim_wait 16
 ;	anim_ret

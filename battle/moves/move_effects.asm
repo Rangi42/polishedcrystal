@@ -7,6 +7,7 @@ SuckerPunch: ; TODO: fail if foe is not attacking
 AerialAce:
 Aeroblast:
 AquaTail:
+AuraSphere:
 BulletPunch:
 Crabhammer:
 CrossChop:
@@ -44,7 +45,6 @@ Surf:
 Swift:
 Tackle:
 VineWhip:
-VitalThrow:
 WaterGun:
 WingAttack:
 XScissor:

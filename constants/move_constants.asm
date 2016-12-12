@@ -233,7 +233,7 @@
 	const SHADOW_CLAW  ; $e6
 	const IRON_TAIL    ; $e7
 	const METAL_CLAW   ; $e8
-	const VITAL_THROW  ; $e9
+	const AURA_SPHERE  ; $e9
 	const MORNING_SUN  ; $ea
 	const HURRICANE    ; $eb
 	const MOONLIGHT    ; $ec

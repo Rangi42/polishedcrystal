@@ -230,7 +230,7 @@
 	db "Shadow Claw@"
 	db "Iron Tail@"
 	db "Metal Claw@"
-	db "Vital Throw@"
+	db "Aura Sphere@"
 	db "Morning Sun@"
 	db "Hurricane@"
 	db "Moonlight@"

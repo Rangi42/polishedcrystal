@@ -243,6 +243,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Spike Cannon with Icicle Spear.
 * Add: Replace Twineedle with U-turn.
 * Add: Replace Whirlwind with Sucker Punch.
+* Add: Replace Vital Throw with Aura Sphere.
 * Add: Giga Impact.
 * Add: NPC trainers can have nicknamed Pokémon.
 * Add: Accuracy and evasion work like in Gen VI.
@@ -253,6 +254,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Charizard is Fire/Dragon.
 * Add: Yanma is Bug/Dragon.
 * Add: Politoed can learn Energy Ball.
+* Add: Pidgeot can learn Focus Blast.
 * Add: Misdreavus can learn Disarm Voice.
 * Add: Give in-game trades good natures.
 * Add: TM prices from OR/AS.

@@ -231,7 +231,7 @@
 	dw ShadowClawDescription
 	dw IronTailDescription
 	dw MetalClawDescription
-	dw VitalThrowDescription
+	dw AuraSphereDescription
 	dw MorningSunDescription
 	dw HurricaneDescription
 	dw MoonlightDescription
@@ -277,6 +277,7 @@ SwiftDescription:
 FeintAttackDescription:
 DisarmVoiceDescription:
 AerialAceDescription:
+AuraSphereDescription:
 	db   "An attack that"
 	next "never misses.@"
 
@@ -1023,10 +1024,6 @@ RapidSpinDescription:
 MetalClawDescription:
 	db   "An attack that may"
 	next "up user's Attack.@"
-
-VitalThrowDescription:
-	db   "A 2nd-strike move"
-	next "that never misses.@"
 
 MorningSunDescription:
 	db   "Restores HP (best"

@@ -290,7 +290,6 @@ ContactMoves::
 	db TRIPLE_KICK
 	db U_TURN
 	db VINE_WHIP
-	db VITAL_THROW
 	db WATERFALL
 	db WILD_CHARGE
 	db WING_ATTACK
