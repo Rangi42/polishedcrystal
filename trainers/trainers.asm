@@ -12911,6 +12911,22 @@ TowerTycoonGroup:
 CaitlinGroup:
 ; ================================
 ; ================
+
+	; CAITLIN
+	db "Caitlin@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 58, ESPEON
+	db 56, XATU
+	db 57, STARMIE
+	db 56, JYNX
+	db 58, ALAKAZAM
+	db 60, HYPNO
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12918,6 +12934,27 @@ CaitlinGroup:
 DarachGroup:
 ; ================================
 ; ================
+
+	; DARACH
+	db "Darach@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 58, NIDOQUEEN
+	db 56, HERACROSS
+if DEF(FAITHFUL)
+	db 57, MACHAMP
+	db 56, SKARMORY
+else
+	db 57, BLASTOISE
+	db 56, FARFETCH_D
+endc
+	db 58, MISMAGIUS
+	db 60, HOUNDOOM
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
