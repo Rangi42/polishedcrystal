@@ -4658,12 +4658,12 @@ RaikouEvosAttacks:
 	db 29, SPARK
 	db 36, REFLECT
 	db 43, CRUNCH
-	db 50, HYPER_FANG ; Thunder Fang → new move
+	db 50, WILD_CHARGE ; Thunder Fang → TM move
 	db 57, EXTREMESPEED ; Discharge → event move
 	db 64, EXTRASENSORY
 	db 71, RAIN_DANCE
 	db 78, CALM_MIND
-	db 85, WILD_CHARGE ; Thunder → TM move
+	db 85, AURA_SPHERE ; Thunder → event move
 	db 92, THUNDER
 	db 99, HIDDEN_POWER ; TM move
 	db 0 ; no more level-up moves
