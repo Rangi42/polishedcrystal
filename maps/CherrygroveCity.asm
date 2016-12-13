@@ -130,8 +130,7 @@ CherrygroveSilverTriggerNorth:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	iftrue .AfterVictorious
-	jump .AfterYourDefeat
+	jump .FinishRival
 
 .Totodile:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
@@ -141,8 +140,7 @@ CherrygroveSilverTriggerNorth:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	iftrue .AfterVictorious
-	jump .AfterYourDefeat
+	jump .FinishRival
 
 .Chikorita:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
@@ -152,26 +150,18 @@ CherrygroveSilverTriggerNorth:
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	iftrue .AfterVictorious
-	jump .AfterYourDefeat
-
-.AfterVictorious:
-	special DeleteSavedMusic
-	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext CherrygroveRivalText_YouWon
-	waitbutton
-	closetext
-	jump .FinishRival
-
-.AfterYourDefeat:
-	special DeleteSavedMusic
-	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext CherrygroveRivalText_YouLost
-	waitbutton
-	closetext
 .FinishRival:
+	special DeleteSavedMusic
+	playmusic MUSIC_RIVAL_AFTER
+	opentext
+	writetext CherrygroveRivalTextAfter1
+	waitbutton
+	closetext
+	showemote EMOTE_SHOCK, CHERRYGROVECITY_SILVER, 15
+	opentext
+	writetext CherrygroveRivalTextAfter2
+	waitbutton
+	closetext
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
 	spriteface PLAYER, LEFT
@@ -465,16 +455,24 @@ SilverCherrygroveLossText:
 	line "waste of time."
 	done
 
-CherrygroveRivalText_YouWon:
-CherrygroveRivalText_YouLost:
+CherrygroveRivalTextAfter1:
 	text "<......> <......> <......>"
 
-	para "My name's ???."
+	para "You want to know"
+	line "who I am?"
 
 	para "I'm going to be"
 	line "the world's great-"
 	cont "est #mon"
 	cont "trainer."
+	done
+
+CherrygroveRivalTextAfter2:
+	text "Hey! Give back my"
+	line "Trainer Card!"
+
+	para "Oh no… You saw"
+	line "my name…"
 	done
 
 CherrygroveTeacherText_NoMapCard:

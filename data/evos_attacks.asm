@@ -2842,21 +2842,21 @@ DragoniteEvosAttacks:
 
 MewtwoEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, TELEPORT ; RBY TM move
+	db 1, TELEPORT ; Psywave → RBY TM move
 	db 1, FOCUS_ENERGY ; Laser Focus → similar move
 	db 1, CONFUSION
 	db 1, DISABLE
-	db 1, SAFEGUARD
-	db 11, SWIFT
-	db 22, FUTURE_SIGHT
-	db 33, CALM_MIND ; Psych Up → TM move
-	db 44, RECOVER
+	db 10, SAFEGUARD
+	db 19, SWIFT
+	db 28, FUTURE_SIGHT
+	db 37, CALM_MIND ; Psych Up → TM move
+	db 46, RECOVER
 	db 55, PSYCHIC_M
-	db 66, BARRIER
-	db 77, NASTY_PLOT ; Amnesia → new move
-	db 88, MIST
-	db 99, PSYSTRIKE
-	db 100, AURA_SPHERE
+	db 64, NASTY_PLOT ; Barrier → new move
+	db 73, AURA_SPHERE
+	db 82, BARRIER ; Amnesia → Barrier
+	db 91, MIST
+	db 100, PSYSTRIKE
 	db 0 ; no more level-up moves
 
 MewEvosAttacks:
@@ -2864,13 +2864,14 @@ MewEvosAttacks:
 	db 1, TELEPORT ; event move
 	db 1, SKETCH ; Reflect Type → new move
 	db 1, TACKLE ; Pound → similar move
-	db 10, TRANSFORM
-	db 20, HEADBUTT ; Mega Punch → TM move
-	db 30, METRONOME
-	db 40, PSYCHIC_M
-	db 50, BARRIER
-	db 60, ANCIENTPOWER
-	db 70, CALM_MIND ; Amnesia → TM move
+	db 1, TRANSFORM
+	db 10, HEADBUTT ; Mega Punch → TM move
+	db 20, METRONOME
+	db 30, PSYCHIC_M
+	db 40, BARRIER
+	db 50, ANCIENTPOWER
+	db 60, CALM_MIND ; Amnesia → TM move
+	db 70, SAFEGUARD ; Me First → Mewtwo move
 	db 80, BATON_PASS
 	db 90, NASTY_PLOT
 	db 100, AURA_SPHERE

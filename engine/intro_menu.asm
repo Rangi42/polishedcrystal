@@ -331,7 +331,7 @@ InitializeNPCNames: ; 5ce9
 	call CopyBytes
 	ret
 
-.Rival:  db "???@"
+.Rival:  db "Someone@"
 .Extra:  db "???@"
 ; 5d23
 
