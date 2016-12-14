@@ -63,7 +63,7 @@ GiovannisCaveCelebiEventScript:
 	domaptrigger GIOVANNIS_CAVE, $0
 	winlosstext GiovannisCaveGiovanniBeatenText, 0
 	setlasttalked GIOVANNISCAVE_GIOVANNI
-	loadtrainer GIOVANNI, 1
+	loadtrainer GIOVANNI, GIOVANNI2
 	startbattle
 	reloadmapafterbattle
 	applymovement GIOVANNISCAVE_GIOVANNI, GiovannisCave_GiovanniStepsBackMovementData

@@ -290,12 +290,19 @@ GymStatue_CityGymText:
 
 GymStatue_WinningTrainersText:
 	text "Winning Trainers:"
-	line "<PLAYER>"
+	line "<RIVAL>"
 	done
 
 GymStatue_TwoWinningTrainersText:
 	text "Winning Trainers:"
+	line "<RIVAL>"
 	line "<PLAYER>"
+	done
+
+GymStatue_ThreeWinningTrainersText:
+	text "Winning Trainers:"
+	line "<RIVAL>"
+	cont "<PLAYER>"
 	cont "Lyra"
 	done
 

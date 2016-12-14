@@ -323,9 +323,9 @@ PlaceEnemysName:: ; 121b
 
 	ld a, [TrainerClass]
 	cp RIVAL1
-	jr z, .rival
+	jr z, .rival1
 	cp RIVAL2
-	jr z, .rival
+	jr z, .rival2
 
 	ld de, OTClassName
 	call PlaceString
@@ -339,7 +339,18 @@ PlaceEnemysName:: ; 121b
 	ld de, StringBuffer1
 	jr PlaceCommandCharacter
 
-.rival
+.rival1
+	ld a, [OtherTrainerID]
+	cp RIVAL1_3 + 1
+	jr c, .no_class
+.rival2
+	ld de, OTClassName
+	call PlaceString
+	ld h, b
+	ld l, c
+	ld de, String12a2
+	call PlaceString
+.no_class
 	ld de, RivalName
 	jr PlaceCommandCharacter
 

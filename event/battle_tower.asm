@@ -386,6 +386,8 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_LEAF          ; LEAF
 	db SPRITE_SILVER        ; RIVAL1
 	db SPRITE_SILVER        ; RIVAL2
+	db SPRITE_LYRA          ; LYRA1
+	db SPRITE_LYRA          ; LYRA2
 	db SPRITE_YOUNGSTER     ; YOUNGSTER
 	db SPRITE_BUG_CATCHER   ; BUG_CATCHER
 	db SPRITE_YOUNGSTER     ; CAMPER
@@ -396,7 +398,6 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_POKEFAN_M     ; HIKER
 	db SPRITE_ROCKET        ; GRUNTM
 	db SPRITE_ROCKET_GIRL   ; GRUNTF
-	db SPRITE_JAMES         ; JESSIE_JAMES
 	db SPRITE_POKEFAN_M     ; POKEFANM
 	db SPRITE_POKEFAN_F     ; POKEFANF
 	db SPRITE_OFFICER       ; OFFICERM
@@ -449,29 +450,10 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_ROCKET        ; PETREL
 	db SPRITE_ROCKET        ; ARCHER
 	db SPRITE_ROCKET_GIRL   ; ARIANA
+	db SPRITE_GIOVANNI      ; GIOVANNI
 	db SPRITE_OAK           ; POKEMON_PROF
 	db SPRITE_SUPER_NERD    ; MYSTICALMAN
-	db SPRITE_LYRA          ; LYRA1
-	db SPRITE_LYRA          ; LYRA2
-	db SPRITE_LORELEI       ; LORELEI
-	db SPRITE_AGATHA        ; AGATHA
-	db SPRITE_YELLOW        ; YELLOW
-	db SPRITE_WALKER        ; WALKER
-	db SPRITE_CHERYL        ; CHERYL
-	db SPRITE_RILEY         ; RILEY
-	db SPRITE_BUCK          ; BUCK
-	db SPRITE_MARLEY        ; MARLEY
-	db SPRITE_MIRA          ; MIRA
-	db SPRITE_BILL          ; BILL_T
-	db SPRITE_LAWRENCE      ; LAWRENCE
-	db SPRITE_GIOVANNI      ; GIOVANNI
-	db SPRITE_STEVEN        ; STEVEN
-	db SPRITE_CYNTHIA       ; CYNTHIA
 	db SPRITE_PALMER        ; TOWERTYCOON
-	db SPRITE_CAITLIN       ; CAITLIN
-	db SPRITE_DARACH        ; DARACH
-	db SPRITE_VALERIE       ; VALERIE
-	db SPRITE_SABRINA       ; REI
 
 Special_BattleTower_CheckForRules: ; 170bd3
 	farcall CheckForBattleTowerRules

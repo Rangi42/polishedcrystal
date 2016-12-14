@@ -56,6 +56,8 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; leaf
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival1
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival2
+	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra1
+	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra2
 	db $66, $66, $66, ABILITY_1 | QUIRKY, MALE   ; youngster
 	db $66, $66, $66, ABILITY_1 | QUIRKY, MALE   ; bug catcher
 	db $77, $77, $77, ABILITY_1 | QUIRKY, MALE   ; camper
@@ -66,7 +68,6 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $99, $99, $99, ABILITY_1 | QUIRKY, MALE   ; hiker
 	db $AA, $AA, $AA, ABILITY_1 | QUIRKY, MALE   ; gruntm
 	db $AA, $AA, $AA, ABILITY_1 | QUIRKY, FEMALE ; gruntf
-	db $BB, $B8, $BB, ABILITY_1 | QUIRKY, MALE   ; jessie&james
 	db $AA, $AA, $AA, ABILITY_1 | QUIRKY, MALE   ; pokefanm
 	db $AA, $AA, $AA, ABILITY_1 | QUIRKY, FEMALE ; pokefanf
 	db $DD, $BB, $DB, ABILITY_1 | QUIRKY, MALE   ; officerm
@@ -119,27 +120,26 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; petrel
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; archer
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; ariana
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; giovanni
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; pokemon prof
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; mysticalman
-	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra1
-	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra2
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
+	db $BB, $B8, $BB, ABILITY_1 | QUIRKY, MALE   ; jessie&james
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; lorelei
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; agatha
-	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow
-	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; walker
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; steven
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; cynthia
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; cheryl
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; riley
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; buck
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; marley
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; mira
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; lawrence
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; giovanni
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; steven
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; cynthia
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
-	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; caitlin
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; darach
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; caitlin
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; walker
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; lawrence
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; rei
 ; 2715c

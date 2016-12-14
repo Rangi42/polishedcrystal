@@ -1500,3 +1500,135 @@ BlueFinalPkmnText:
 	cont "for this. We'll"
 	cont "knock you down!"
 	prompt
+
+RedFinalPkmnText:
+LeafFinalPkmnText:
+	text "<......><......><......>"
+	prompt
+
+Rival1_1FinalPkmnText:
+	text "…Humph!"
+	line "You're doing OK"
+	cont "for someone weak."
+	prompt
+
+Rival1_2FinalPkmnText:
+	text "Say, you've got a"
+	line "lot of nerve,"
+	cont "coming here…"
+	prompt
+
+Rival1_3FinalPkmnText:
+	text "Out of despera-"
+	line "tion, weak people"
+
+	para "sometimes do OK"
+	line "at fighting back."
+	prompt
+
+Rival1_4FinalPkmnText:
+	text "Hey, hey!"
+	line "Why so serious?"
+	prompt
+
+Rival1_5FinalPkmnText:
+	text "I see. Seems like"
+	line "it wasn't just luck"
+
+	para "that's gotten you"
+	line "this far."
+	prompt
+
+Rival2_1FinalPkmnText:
+	text "I see. You weren't"
+	line "coming to Kanto"
+	cont "just to show off…"
+	prompt
+
+Rival2_2FinalPkmnText:
+	text "Why?! I've still"
+	line "got one left!"
+	prompt
+
+Lyra1_1FinalPkmnText:
+	text "Do your best,"
+	line "<PLAYER>!"
+	prompt
+
+Lyra1_2FinalPkmnText:
+	text "TODO"
+	prompt
+
+Lyra1_3FinalPkmnText:
+	text "TODO"
+	prompt
+
+Lyra1_4FinalPkmnText:
+	text "TODO"
+	prompt
+
+Lyra2_1FinalPkmnText:
+	text "TODO"
+	prompt
+
+Lyra2_2FinalPkmnText:
+	text "TODO"
+	prompt
+
+Proton1FinalPkmnText:
+	text "Seriously, you'd"
+	line "chase me this far?"
+	prompt
+
+Proton2FinalPkmnText:
+	text "Everywhere we go,"
+	line "someone always"
+	cont "disagrees with us…"
+	prompt
+
+Petrel1FinalPkmnText:
+	text "What? Am I"
+	line "losing?"
+	prompt
+
+Petrel2FinalPkmnText:
+	text "Hey, you're good!"
+	prompt
+
+Archer1FinalPkmnText:
+	text "We can't have you"
+	line "getting in the way"
+
+	para "before Giovanni"
+	line "rejoins us!"
+	prompt
+
+Archer2FinalPkmnText:
+	text "Ah, you are indeed"
+	line "strong, but…"
+	cont "I wonder…"
+	prompt
+
+Ariana1FinalPkmnText:
+	text "Wh… Wha… Why are"
+	line "you so strong?!"
+	prompt
+
+Ariana2FinalPkmnText:
+	text "Hey, what do you"
+	line "think you're"
+	cont "doing?!"
+	prompt
+
+Giovanni1FinalPkmnText:
+	text "What in the world"
+	line "was that?"
+	prompt
+
+Giovanni2FinalPkmnText:
+	text "Don't tell me some"
+	line "inexperienced kid"
+
+	para "can possibly be"
+	line "that strong!"
+	prompt

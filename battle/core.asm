@@ -3624,6 +3624,8 @@ FinalPkmnMusicAndAnimation:
 	ld a, 8
 	call SlideBattlePicOut
 ;	; ...play the final Pokémon music...
+;	call IsBossTrainer
+;	jr nc, .no_music
 ;	push de
 ;	ld de, MUSIC_NONE
 ;	call PlayMusic
@@ -3631,6 +3633,7 @@ FinalPkmnMusicAndAnimation:
 ;	ld de, MUSIC_CHAMPION_BATTLE ; TODO: demix B/W music
 ;	call PlayMusic
 ;	pop de
+;.no_music
 	; ...show their sprite and final dialog...
 	call FinalPkmnSlideInEnemyTrainerFrontpic
 	farcall GetFinalPkmnTextPointer

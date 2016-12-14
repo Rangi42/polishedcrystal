@@ -25,6 +25,8 @@
 	db "<PKMN> Trainer@" ; LEAF
 	db "Rival@"          ; RIVAL1
 	db "Rival@"          ; RIVAL2
+	db "Rival@"          ; LYRA1
+	db "Rival@"          ; LYRA2
 	db "Youngster@"      ; YOUNGSTER
 	db "Bug Catcher@"    ; BUG_CATCHER
 	db "Camper@"         ; CAMPER
@@ -35,7 +37,6 @@
 	db "Hiker@"          ; HIKER
 	db "Rocket@"         ; GRUNTM
 	db "Rocket@"         ; GRUNTF
-	db "Jessie@"         ; JESSIE_JAMES
 	db "#fan@"           ; POKEFANM
 	db "#fan@"           ; POKEFANF
 	db "Officer@"        ; OFFICERM
@@ -88,25 +89,25 @@
 	db "Executive@"      ; PETREL
 	db "Executive@"      ; ARCHER
 	db "Executive@"      ; ARIANA
+	db "Boss@"           ; GIOVANNI
 	db "#mon Prof.@"     ; POKEMON_PROF
 	db "Mystery Man@"    ; MYSTICALMAN
-	db "<PKMN> Trainer@" ; LYRA1
-	db "<PKMN> Trainer@" ; LYRA2
+	db "TowerTycoon@"    ; TOWERTYCOON
+	db "Jessie@"         ; JESSIE_JAMES
 	db "Ex-Elite@"       ; LORELEI
 	db "Ex-Elite@"       ; AGATHA
-	db "<PKMN> Trainer@" ; YELLOW
-	db "Ex-Leader@"      ; WALKER
+	db "Rock Hound@"     ; STEVEN
+	db "Researcher@"     ; CYNTHIA
 	db "<PKMN> Trainer@" ; CHERYL
 	db "<PKMN> Trainer@" ; RILEY
 	db "<PKMN> Trainer@" ; BUCK
 	db "<PKMN> Trainer@" ; MARLEY
 	db "<PKMN> Trainer@" ; MIRA
-	db "#Maniac@"        ; BILL_T
-	db "Collector@"      ; LAWRENCE
-	db "Boss@"           ; GIOVANNI
-	db "Rock Hound@"     ; STEVEN
-	db "Researcher@"     ; CYNTHIA
-	db "TowerTycoon@"    ; TOWERTYCOON
 	db "Valet@"          ; DARACH
 	db "Lady@"           ; CAITLIN
+	db "Designer@"       ; VALERIE
+	db "#Maniac@"        ; BILL_T
+	db "<PKMN> Trainer@" ; YELLOW
+	db "Ex-Leader@"      ; WALKER
+	db "Collector@"      ; LAWRENCE
 	db "Shrine@"         ; REI

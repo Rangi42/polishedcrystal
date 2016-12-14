@@ -1809,6 +1809,8 @@ GymStatue1Script:
 	mapnametotext $0
 	opentext
 	farwritetext GymStatue_CityGymText
+	buttonsound
+	farwritetext GymStatue_WinningTrainersText
 	waitbutton
 	closetext
 	end
@@ -1818,7 +1820,7 @@ GymStatue2Script:
 	opentext
 	farwritetext GymStatue_CityGymText
 	buttonsound
-	farwritetext GymStatue_WinningTrainersText
+	farwritetext GymStatue_TwoWinningTrainersText
 	waitbutton
 	closetext
 	end
@@ -1828,7 +1830,7 @@ GymStatue3Script:
 	opentext
 	farwritetext GymStatue_CityGymText
 	buttonsound
-	farwritetext GymStatue_TwoWinningTrainersText
+	farwritetext GymStatue_ThreeWinningTrainersText
 	waitbutton
 	closetext
 	end

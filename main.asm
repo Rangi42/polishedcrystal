@@ -5135,8 +5135,6 @@ INCLUDE "text/phone/lyra.asm"
 
 SECTION "bank20", ROMX, BANK[$20]
 
-INCLUDE "text/abilities.asm"
-
 INCLUDE "battle/effects/abilities.asm"
 
 INCLUDE "engine/player_movement.asm"
@@ -5149,11 +5147,56 @@ BattleText::
 INCLUDE "text/battle.asm"
 
 GetFinalPkmnTextPointer::
+	; Silver and Lyra have a phrase for each set of three IDs
 	ld a, [OtherTrainerClass]
+	ld hl, .Rival1FinalTexts
+	cp RIVAL1
+	jr z, .rival_or_lyra
+	ld hl, .Rival2FinalTexts
+	cp RIVAL2
+	jr z, .rival_or_lyra
+	ld hl, .Lyra1FinalTexts
+	cp LYRA1
+	jr z, .rival_or_lyra
+	ld hl, .Lyra2FinalTexts
+	cp LYRA2
+	jr z, .rival_or_lyra
+	; Proton to Giovanni have a phrase for each ID
+	cp PROTON
+	jr c, .not_rocket
+	cp GIOVANNI + 1
+	jr c, .rocket
+.not_rocket
+	; Leaf and below have one unique phrase
 	dec a
-	cp BLUE
-	jr nc, .return_nc ; TODO: handle trainers beyond Blue more specifically
+	cp LEAF
+	jr c, .leader
+	xor a
+	and a
+	ret
+
+.rival_or_lyra:
+	ld a, [OtherTrainerID]
+	dec a
+	ld c, 3
+	call SimpleDivide
+	ld a, b
+	jr .get_text
+
+.rocket:
+	; a = ([OtherTrainerClass] - PROTON) * 2 + [OtherTrainerID] - 1
+	sub PROTON
+	add a
+	ld b, a
+	ld a, [OtherTrainerID]
+	dec a
+	add b
+	ld hl, .TeamRocketFinalTexts
+	jr .get_text
+
+.leader:
 	ld hl, .GymLeaderFinalTexts
+.get_text:
 	ld b, 0
 	ld c, a
 rept 2
@@ -5165,10 +5208,38 @@ endr
 	scf
 	ret
 
-.return_nc
-	xor a
-	and a
-	ret
+.Rival1FinalTexts:
+	dw Rival1_1FinalPkmnText
+	dw Rival1_2FinalPkmnText
+	dw Rival1_3FinalPkmnText
+	dw Rival1_4FinalPkmnText
+	dw Rival1_5FinalPkmnText
+
+.Rival2FinalTexts:
+	dw Rival2_1FinalPkmnText
+	dw Rival2_2FinalPkmnText
+
+.Lyra1FinalTexts:
+	dw Lyra1_1FinalPkmnText
+	dw Lyra1_2FinalPkmnText
+	dw Lyra1_3FinalPkmnText
+	dw Lyra1_4FinalPkmnText
+
+.Lyra2FinalTexts:
+	dw Lyra2_1FinalPkmnText
+	dw Lyra2_2FinalPkmnText
+
+.TeamRocketFinalTexts:
+	dw Proton1FinalPkmnText
+	dw Proton2FinalPkmnText
+	dw Petrel1FinalPkmnText
+	dw Petrel2FinalPkmnText
+	dw Archer1FinalPkmnText
+	dw Archer2FinalPkmnText
+	dw Ariana1FinalPkmnText
+	dw Ariana2FinalPkmnText
+	dw Giovanni1FinalPkmnText
+	dw Giovanni2FinalPkmnText
 
 .GymLeaderFinalTexts:
 	dw KayFinalPkmnText
@@ -5194,12 +5265,16 @@ endr
 	dw SabrinaFinalPkmnText
 	dw BlaineFinalPkmnText
 	dw BlueFinalPkmnText
+	dw RedFinalPkmnText
+	dw LeafFinalPkmnText
 
 SECTION "bank21", ROMX, BANK[$21]
 
 INCLUDE "battle/anim_gfx.asm"
 
 INCLUDE "event/halloffame.asm"
+
+INCLUDE "text/abilities.asm"
 
 SECTION "bank22", ROMX, BANK[$22]
 

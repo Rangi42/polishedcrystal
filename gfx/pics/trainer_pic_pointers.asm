@@ -26,6 +26,8 @@
 	add_pic LeafPic
 	add_pic Rival1Pic
 	add_pic Rival2Pic
+	add_pic Lyra1Pic
+	add_pic Lyra2Pic
 	add_pic YoungsterPic
 	add_pic BugCatcherPic
 	add_pic CamperPic
@@ -36,7 +38,6 @@
 	add_pic HikerPic
 	add_pic GruntmPic
 	add_pic GruntfPic
-	add_pic JessieJamesPic
 	add_pic PokefanmPic
 	add_pic PokefanfPic
 	add_pic OfficermPic
@@ -89,28 +90,27 @@
 	add_pic PetrelPic
 	add_pic ArcherPic
 	add_pic ArianaPic
+	add_pic GiovanniPic
 	add_pic PokemonProfPic
 	add_pic MysticalmanPic
-	add_pic Lyra1Pic
-	add_pic Lyra2Pic
+	add_pic TowerTycoonPic
+	add_pic JessieJamesPic
 	add_pic LoreleiPic
 	add_pic AgathaPic
-	add_pic YellowPic
-	add_pic WalkerPic
+	add_pic StevenPic
+	add_pic CynthiaPic
 	add_pic CherylPic
 	add_pic RileyPic
 	add_pic BuckPic
 	add_pic MarleyPic
 	add_pic MiraPic
-	add_pic BillPic
-	add_pic LawrencePic
-	add_pic GiovanniPic
-	add_pic StevenPic
-	add_pic CynthiaPic
-	add_pic TowerTycoonPic
-	add_pic CaitlinPic
 	add_pic DarachPic
+	add_pic CaitlinPic
 	add_pic ValeriePic
+	add_pic BillPic
+	add_pic YellowPic
+	add_pic WalkerPic
+	add_pic LawrencePic
 	add_pic ReiPic
 	add_pic OmastarFossilPic
 	add_pic KabutopsFossilPic

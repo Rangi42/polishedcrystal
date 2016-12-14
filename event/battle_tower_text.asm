@@ -116,6 +116,8 @@ BTTrainerClassGenders: ; 11f2f0
 	db FEMALE ; LEAF
 	db MALE   ; RIVAL1
 	db MALE   ; RIVAL2
+	db FEMALE ; LYRA1
+	db FEMALE ; LYRA2
 	db MALE   ; YOUNGSTER
 	db MALE   ; BUG_CATCHER
 	db MALE   ; CAMPER
@@ -126,7 +128,6 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; HIKER
 	db MALE   ; GRUNTM
 	db FEMALE ; GRUNTF
-	db MALE   ; JESSIE_JAMES
 	db MALE   ; POKEFANM
 	db FEMALE ; POKEFANF
 	db MALE   ; OFFICERM
@@ -179,29 +180,10 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; PETREL
 	db MALE   ; ARCHER
 	db FEMALE ; ARIANA
+	db MALE   ; GIOVANNI
 	db MALE   ; POKEMON_PROF
 	db FEMALE ; MYSTICALMAN
-	db FEMALE ; LYRA1
-	db FEMALE ; LYRA2
-	db FEMALE ; LORELEI
-	db FEMALE ; AGATHA
-	db MALE   ; YELLOW
-	db MALE   ; WALKER
-	db FEMALE ; CHERYL
-	db MALE   ; RILEY
-	db MALE   ; BUCK
-	db FEMALE ; MARLEY
-	db FEMALE ; MIRA
-	db MALE   ; BILL_T
-	db MALE   ; LAWRENCE
-	db MALE   ; GIOVANNI
-	db MALE   ; STEVEN
-	db FEMALE ; CYNTHIA
 	db MALE   ; TOWERTYCOON
-	db FEMALE ; CAITLIN
-	db MALE   ; DARACH
-	db FEMALE ; VALERIE
-	db FEMALE ; REI
 
 
 BTMaleTrainerTexts: ; 11f332

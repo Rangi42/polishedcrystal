@@ -28,6 +28,8 @@ TrainerGroups: ; 0x39999
 	dw LeafGroup
 	dw Rival1Group
 	dw Rival2Group
+	dw Lyra1Group
+	dw Lyra2Group
 	dw YoungsterGroup
 	dw BugCatcherGroup
 	dw CamperGroup
@@ -38,7 +40,6 @@ TrainerGroups: ; 0x39999
 	dw HikerGroup
 	dw GruntMGroup
 	dw GruntFGroup
-	dw JessieJamesGroup
 	dw PokefanMGroup
 	dw PokefanFGroup
 	dw OfficerMGroup
@@ -91,26 +92,25 @@ TrainerGroups: ; 0x39999
 	dw PetrelGroup
 	dw ArcherGroup
 	dw ArianaGroup
+	dw GiovanniGroup
 	dw PokemonProfGroup
 	dw MysticalmanGroup
-	dw Lyra1Group
-	dw Lyra2Group
+	dw TowerTycoonGroup
+	dw JessieJamesGroup
 	dw LoreleiGroup
 	dw AgathaGroup
-	dw YellowGroup
-	dw WalkerGroup
+	dw StevenGroup
+	dw CynthiaGroup
 	dw CherylGroup
 	dw RileyGroup
 	dw BuckGroup
 	dw MarleyGroup
 	dw MiraGroup
-	dw BillGroup
-	dw LawrenceGroup
-	dw GiovanniGroup
-	dw StevenGroup
-	dw CynthiaGroup
-	dw TowerTycoonGroup
-	dw CaitlinGroup
 	dw DarachGroup
+	dw CaitlinGroup
 	dw ValerieGroup
+	dw BillGroup
+	dw YellowGroup
+	dw WalkerGroup
+	dw LawrenceGroup
 	dw ReiGroup

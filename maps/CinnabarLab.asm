@@ -71,7 +71,7 @@ CinnabarLabCelebiEventScript:
 	closetext
 	winlosstext CinnabarLabGiovanniBeatenText, 0
 	setlasttalked CINNABARLAB_GIOVANNI
-	loadtrainer GIOVANNI, 2
+	loadtrainer GIOVANNI, GIOVANNI1
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
