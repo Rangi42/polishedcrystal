@@ -3639,6 +3639,8 @@ FinalPkmnMusicAndAnimation:
 	farcall GetFinalPkmnTextPointer
 	call StdBattleTextBox
 	; ...and return the Pokémon
+	call EmptyBattleTextBox
+	call WaitBGMap
 	hlcoord 18, 0
 	ld a, 8
 	call SlideBattlePicOut
