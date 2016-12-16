@@ -400,15 +400,24 @@ Text_LyraIntro:
 	text "Lyra: Oh, hello,"
 	line "<PLAYER>!"
 
-	para "Are you meeting"
-	line "Prof.Elm?"
+	para "I came by your"
+	line "house earlier,"
 
-	para "Let me come with"
-	line "you! He always has"
+	para "but you were"
+	line "still sleeping."
 
-	para "interesting things"
-	line "to say about"
-	cont "#mon."
+	para "You know how I"
+	line "assist Prof.Elm"
+	cont "sometimes?"
+
+	para "He's starting new"
+	line "#mon research"
+
+	para "and would like us"
+	line "both to help."
+
+	para "Let's go and see"
+	line "what he wants!"
 	done
 
 Text_LyraGoodbye1:
@@ -429,7 +438,7 @@ Text_LyraGoodbye1:
 	line "town…"
 
 	para "I do what I can"
-	line "to help the prof-"
+	line "to help the Prof-"
 	cont "essor, but I could"
 
 	para "never take on the"

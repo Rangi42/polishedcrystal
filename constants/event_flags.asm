@@ -1785,8 +1785,8 @@
 	const EVENT_BEAT_LAWRENCE_AGAIN
 	const EVENT_LYRA_GAVE_AWAY_EGG
 	const EVENT_GOT_LYRAS_EGG
+	const EVENT_GOT_RIVALS_EGG
 ; Unused placeholder events
-	const EVENT_694
 	const EVENT_695
 	const EVENT_696
 	const EVENT_697

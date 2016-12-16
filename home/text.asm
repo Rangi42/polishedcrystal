@@ -350,6 +350,8 @@ PlaceEnemysName:: ; 121b
 	ld l, c
 	ld de, String12a2
 	call PlaceString
+	ld h, b
+	ld l, c
 .no_class
 	ld de, RivalName
 	jr PlaceCommandCharacter

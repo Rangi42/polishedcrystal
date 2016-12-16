@@ -9,7 +9,7 @@ const_value set 2
 
 ElmsLab_MapScriptHeader:
 .MapTriggers:
-	db 7
+	db 8
 
 	; triggers
 	maptrigger .Trigger0
@@ -19,6 +19,7 @@ ElmsLab_MapScriptHeader:
 	maptrigger .Trigger4
 	maptrigger .Trigger5
 	maptrigger .Trigger6
+	maptrigger .Trigger7
 
 .MapCallbacks:
 	db 1
@@ -47,6 +48,10 @@ ElmsLab_MapScriptHeader:
 	end
 
 .Trigger6:
+	end
+
+.Trigger7:
+	priorityjump ElmsLab_AutoAideSpeech
 	end
 
 .Callback_MoveElm:
@@ -96,8 +101,21 @@ ElmsLab_ElmGetsEmail:
 	opentext
 	writetext ElmText_ChooseAPokemon
 	waitbutton
-	dotrigger $1
 	closetext
+	dotrigger $1
+	end
+
+ElmsLab_AutoAideSpeech:
+	spriteface ELMSLAB_ELMS_AIDE, DOWN
+	showemote EMOTE_SHOCK, ELMSLAB_ELMS_AIDE, 15
+	applymovement ELMSLAB_ELMS_AIDE, AideWalksDownMovement
+	opentext
+	writetext AideText_ThiefReturnedMon
+	waitbutton
+	closetext
+	applymovement ELMSLAB_ELMS_AIDE, AideWalksBackMovement
+	spriteface ELMSLAB_ELMS_AIDE, DOWN
+	dotrigger $2
 	end
 
 ProfElmScript:
@@ -207,7 +225,11 @@ CyndaquilPokeBallScript:
 	disappear ELMSLAB_POKE_BALL3
 	opentext
 	pokenamemem CHIKORITA, $0
-	writetext LyraReceivedChikoritaText
+	writetext LyraReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	writetext LyraNicknamedChikoritaText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterChikoritaMovement
@@ -247,7 +269,12 @@ TotodilePokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL1
 	opentext
-	writetext LyraReceivedCyndaquilText
+	pokenamemem CHIKORITA, $0
+	writetext LyraReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	writetext LyraNicknamedCyndaquilText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterCyndaquilMovement
@@ -285,7 +312,12 @@ ChikoritaPokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL2
 	opentext
-	writetext LyraReceivedTotodileText
+	pokenamemem CHIKORITA, $0
+	writetext LyraReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	writetext LyraNicknamedTotodileText
 	waitbutton
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterTotodileMovement
@@ -645,6 +677,8 @@ AideScript_GivePotions:
 ElmsAideScript:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_RIVALS_EGG
+	iftrue AideScript_AlwaysBusy
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	iftrue AideScript_AfterTheft
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -895,6 +929,18 @@ AideWalksLeft2:
 	turn_head_down
 	step_end
 
+AideWalksDownMovement:
+	step_right
+	step_right
+	step_down
+	step_end
+
+AideWalksBackMovement:
+	step_up
+	step_left
+	step_left
+	step_end
+
 ElmJumpUpMovement:
 	fix_facing
 	big_step_up
@@ -956,25 +1002,10 @@ ElmText_Intro:
 	line "There you are!"
 
 	para "Hello to you too,"
-	line "Lyra. Looking out"
-	cont "for your friend?"
+	line "Lyra."
 
-	para "Lyra: Hello,"
-	line "Professor!"
-
-	para "I just ran into"
-	line "<PLAYER> here."
-
-	para "Elm: <PLAYER>,"
-	line "I needed to ask"
-	cont "you a favor."
-
-	para "I'm conducting new"
-	line "#mon research"
-
-	para "right now. I was"
-	line "wondering if you"
-	cont "could help me."
+	para "I needed to ask"
+	line "you both a favor."
 
 	para "You see…"
 
@@ -992,8 +1023,8 @@ ElmText_Intro:
 
 	para "So!"
 
-	para "I'd like you to"
-	line "raise a #mon"
+	para "I'd like you both"
+	line "to raise #mon"
 
 	para "that I recently"
 	line "caught."
@@ -1023,14 +1054,6 @@ ElmText_ResearchAmbitions:
 
 	para "You can count on"
 	line "it!"
-
-	para "Lyra: Neat! Can I"
-	line "raise a #mon"
-	cont "too?"
-
-	para "Elm: Sure, Lyra."
-	line "I know you're"
-	cont "responsible."
 	done
 
 ElmText_GotAnEmail:
@@ -1391,6 +1414,41 @@ AideText_AfterTheft:
 	line "itself."
 	done
 
+AideText_ThiefReturnedMon:
+	text "<PLAYER>!"
+	line "Guess what!"
+
+	para "The boy who took"
+	line "the Professor's"
+	cont "#mon…"
+
+	para "…came back to"
+	line "return it!"
+
+	para "But Prof.Elm said"
+	line "to him…"
+
+	para "<``>It seems that"
+	line "the Pokemon likes"
+	cont "you very much."
+
+	para "Pokemon do their"
+	line "best with someone"
+	cont "they love."
+
+	para "I think it should"
+	line "stay with you.<''>"
+
+	para "…Isn't it moving?"
+	line "It made me cry!"
+	
+	para "I saw the boy's"
+	line "face as he left."
+
+	para "He looked so"
+	line "happy!"
+	done
+
 ElmGiveMasterBallText1:
 	text "Elm: Hi, <PLAYER>!"
 	line "Thanks to you, my"
@@ -1601,29 +1659,27 @@ LyraChoosesStarterText:
 	line "pick this one!"
 	done
 
-LyraReceivedChikoritaText:
+LyraReceivedStarterText:
 	text "Lyra received"
-	line "Chikorita!"
+	line "@"
+	text_from_ram StringBuffer3
+	text "!"
+	done
 
-	para "Lyra: It's so"
+LyraNicknamedChikoritaText:
+	text "Lyra: It's so"
 	line "cute! I'll nick-"
 	cont "name it Chicory!"
 	done
 
-LyraReceivedCyndaquilText:
-	text "Lyra received"
-	line "Cyndaquil!"
-
-	para "Lyra: It's so"
+LyraNicknamedCyndaquilText:
+	text "Lyra: It's so"
 	line "cute! I'll nick-"
 	cont "name it Cinder!"
 	done
 
-LyraReceivedTotodileText:
-	text "Lyra received"
-	line "Totodile!"
-
-	para "Lyra: It's so"
+LyraNicknamedTotodileText:
+	text "Lyra: It's so"
 	line "cute! I'll nick-"
 	cont "name it Toto!"
 	done
@@ -1682,6 +1738,10 @@ ElmsLabLyraTheftGoodbyeText:
 
 	para "stood that you're"
 	line "innocent."
+
+	para "I hope he makes"
+	line "real thief return"
+	cont "that #mon…"
 
 	para "See you later!"
 	done

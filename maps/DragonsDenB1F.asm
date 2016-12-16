@@ -152,6 +152,47 @@ SilverScript_0x18c97e:
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iftrue .SilverTalkAgain
+	checkevent EVENT_GOT_RIVALS_EGG
+	iftrue .SilverTalk
+	writetext SilverText_Training1
+	waitbutton
+	writetext SilverText_GiveEgg
+	buttonsound
+	checkcode VAR_PARTYCOUNT
+	if_equal PARTY_LENGTH, .PartyFull
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .GiveChikoritaEgg
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .GiveCyndaquilEgg
+	giveegg TOTODILE, EGG_LEVEL
+	jump .GotRivalsEgg
+
+.GiveChikoritaEgg:
+	giveegg CHIKORITA, EGG_LEVEL
+	jump .GotRivalsEgg
+
+.GiveCyndaquilEgg:
+	giveegg CYNDAQUIL, EGG_LEVEL
+.GotRivalsEgg
+	farwritetext UnknownText_0x1bdfa5
+	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
+	waitsfx
+	writetext SilverText_DescribeEgg
+	waitbutton
+	closetext
+	setevent EVENT_GOT_RIVALS_EGG
+	setevent EVENT_GAVE_KURT_APRICORNS
+	domaptrigger ELMS_LAB, $7
+	special RestartMapMusic
+	end
+
+.PartyFull:
+	writetext SilverText_PartyFull
+	waitbutton
+	closetext
+	end
+
+.SilverTalk:
 	writetext SilverText_Training1
 	waitbutton
 	closetext
@@ -278,6 +319,31 @@ DragonShrineSignpostText:
 
 	para "said to have lived"
 	line "in Dragon's Den."
+	done
+
+SilverText_GiveEgg:
+	text "…"
+	line "Listen."
+
+	para "The Pokemon I…"
+	line "took from the Lab…"
+
+	para "It had an Egg."
+	line "I don't need it."
+	cont "Here. Take it."
+	done
+
+SilverText_DescribeEgg:
+	text "Humph. Are you"
+	line "through here?"
+
+	para "Then stay out of"
+	line "my way."
+	done
+
+SilverText_PartyFull:
+	text "Humph. You don't"
+	line "have any room…"
 	done
 
 SilverText_Training1:

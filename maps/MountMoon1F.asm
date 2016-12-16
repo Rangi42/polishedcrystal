@@ -138,6 +138,10 @@ MountMoonSilverTextAfter:
 	line "this isn't the"
 	cont "end."
 
+	para "After some more"
+	line "training in"
+	cont "Dragon's Den…"
+
 	para "I'm going to be"
 	line "the greatest #-"
 	cont "mon trainer ever."
