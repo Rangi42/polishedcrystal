@@ -38,6 +38,7 @@ ItemDescriptions:
 	dw GreatBallDesc
 	dw UltraBallDesc
 	dw MasterBallDesc
+	dw SafariBallDesc
 	dw LevelBallDesc
 	dw LureBallDesc
 	dw MoonBallDesc
@@ -50,7 +51,9 @@ ItemDescriptions:
 	dw TimerBallDesc
 	dw NestBallDesc
 	dw NetBallDesc
+	dw DiveBallDesc
 	dw LuxuryBallDesc
+	dw HealBallDesc
 	dw QuickBallDesc
 	dw DuskBallDesc
 	dw PremierBallDesc
@@ -287,9 +290,6 @@ ItemDescriptions:
 	dw MirageMailDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
 
 PokeBallDesc:
 	db   "An item for catch-"
@@ -306,6 +306,10 @@ UltraBallDesc:
 MasterBallDesc:
 	db   "The best Ball. It"
 	next "never misses.@"
+
+SafariBallDesc:
+	db   "The Safari Game"
+	next "Ball.@"
 
 LevelBallDesc:
 	db   "A Ball for lower-"
@@ -355,9 +359,17 @@ NetBallDesc:
 	db   "A Ball for Water"
 	next "or Bug #mon.@"
 
+DiveBallDesc:
+	db   "A Ball for under-"
+	next "water #mon.@"
+
 LuxuryBallDesc:
 	db   "A cozy Ball to"
 	next "befriend #mon.@"
+
+HealBallDesc:
+	db   "A remedial Ball to"
+	next "heal #mon.@"
 
 QuickBallDesc:
 	db   "A Ball for early"

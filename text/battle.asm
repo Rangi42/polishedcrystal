@@ -1560,7 +1560,7 @@ Lyra1_1FinalPkmnText:
 	cont "more from exper-"
 	cont "ience."
 
-	text "Do your best,"
+	para "Do your best,"
 	line "<PLAYER>!"
 	prompt
 

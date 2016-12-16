@@ -18,6 +18,7 @@ ItemEffects: ; e73c
 	dw GreatBall
 	dw UltraBall
 	dw MasterBall
+	dw SafariBall
 	dw LevelBall
 	dw LureBall
 	dw MoonBall
@@ -30,7 +31,9 @@ ItemEffects: ; e73c
 	dw TimerBall
 	dw NestBall
 	dw NetBall
+	dw DiveBall
 	dw LuxuryBall
+	dw HealBall
 	dw QuickBall
 	dw DuskBall
 	dw PremierBall
@@ -276,6 +279,7 @@ PokeBall:
 GreatBall:
 UltraBall:
 MasterBall:
+SafariBall:
 LevelBall:
 LureBall:
 MoonBall:
@@ -288,7 +292,9 @@ RepeatBall:
 TimerBall:
 NestBall:
 NetBall:
+DiveBall:
 LuxuryBall:
+HealBall:
 QuickBall:
 DuskBall:
 PremierBall:
@@ -851,6 +857,7 @@ BallMultiplierFunctionTable:
 ; which ball is used in a certain situation.
 	dbw GREAT_BALL,  GreatBallMultiplier
 	dbw ULTRA_BALL,  UltraBallMultiplier
+	dbw SAFARI_BALL, SafariBallMultiplier
 	dbw LEVEL_BALL,  LevelBallMultiplier
 	dbw LURE_BALL,   LureBallMultiplier
 	dbw MOON_BALL,   MoonBallMultiplier
@@ -862,6 +869,7 @@ BallMultiplierFunctionTable:
 	dbw TIMER_BALL,  TimerBallMultiplier
 	dbw NEST_BALL,   NestBallMultiplier
 	dbw NET_BALL,    NetBallMultiplier
+	dbw DIVE_BALL,   DiveBallMultiplier
 	dbw QUICK_BALL,  QuickBallMultiplier
 	dbw DUSK_BALL,   DuskBallMultiplier
 	db $ff
@@ -874,6 +882,7 @@ UltraBallMultiplier:
 	ret
 
 GreatBallMultiplier:
+SafariBallMultiplier:
 ParkBallMultiplier:
 ; multiply catch rate by 1.5
 	ld a, b
@@ -1332,6 +1341,10 @@ NetBallMultiplier:
 	ld a, $ff
 .done
 	ld b, a
+	ret
+
+DiveBallMultiplier:
+; TODO: multiply catch rate by 3.5 if surfing or fishing
 	ret
 
 QuickBallMultiplier:

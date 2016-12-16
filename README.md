@@ -290,7 +290,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Prof.Oak gives you the Oval Charm for seeing all 253 Pokémon, and the Shiny Charm for catching all 253.
 * Add: Show PC box quantity.
 * Add: Pokémon stats show caught Poké Ball.
-* Add: Nest, Net, and Luxury Balls.
+* Add: Nest, Net, Dive, Luxury, and Heal Balls.
 * Add: Cerulean Bike Shop from HGSS.
 * Add: Elite 4 rooms have floor arenas.
 * Add: Confirm gender selection.

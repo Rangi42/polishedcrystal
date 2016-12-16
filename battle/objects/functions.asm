@@ -447,6 +447,7 @@ GetBallAnimPal: ; cd249 (33:5249)
 	db GREAT_BALL,   6 ; blue
 	db ULTRA_BALL,   3 ; yellow
 	db MASTER_BALL,  5 ; green
+	db SAFARI_BALL,  7 ; brown
 	db LEVEL_BALL,   7 ; brown
 	db LURE_BALL,    6 ; blue
 	db MOON_BALL,    2 ; gray
@@ -459,7 +460,9 @@ GetBallAnimPal: ; cd249 (33:5249)
 	db TIMER_BALL,   7 ; brown
 	db NEST_BALL,    7 ; brown
 	db NET_BALL,     6 ; blue
+	db DIVE_BALL,    6 ; blue
 	db LUXURY_BALL,  2 ; gray
+	db HEAL_BALL,    4 ; red
 	db QUICK_BALL,   6 ; blue
 	db DUSK_BALL,    5 ; green
 	db PREMIER_BALL, 2 ; gray
