@@ -143,6 +143,9 @@ ElmSprite: ; 14790
 	sprite_header ElmSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 14796
 
+IvySprite:
+	sprite_header IvySpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
 BillSprite: ; 14760
 	sprite_header BillSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14766

@@ -125,12 +125,12 @@ KANTO_LANDMARK EQU const_value
 	const INDIGO_PLATEAU    ; 76
 	const ROUTE_28          ; 77
 	const SHAMOUTI_ISLAND   ; 78
-	const NOISY_FOREST      ; 79
-	const SOUTH_TUNNEL      ; 7a
+	const BEAUTIFUL_BEACH   ; 79
+	const SHAMOUTI_TUNNEL   ; 7a
 	const WARM_BEACH        ; 7b
-	const FIRE_ISLAND       ; 7c
-	const ICE_ISLAND        ; 7d
-	const LIGHTNING_ISLAND  ; 7e
+	const ROCKY_BEACH       ; 7c
+	const NOISY_FOREST      ; 7d
+	const SHRINE_RUINS      ; 7e
 	const FAST_SHIP         ; 7f
 	const NAVEL_ROCK        ; 80
 	const FARAWAY_ISLAND    ; 81

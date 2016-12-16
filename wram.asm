@@ -2582,6 +2582,7 @@ wMountMoonSquareTrigger::                    ds 1 ; d9be
 wVermilionCityTrigger::                      ds 1
 wSeagallopFerryVermilionGateTrigger::        ds 1
 wSeagallopFerryNavelGateTrigger::            ds 1
+wSeagallopFerryShamoutiGateTrigger::         ds 1
 wFarawayIslandTrigger::                      ds 1
 wRoute48Trigger::                            ds 1
 wDayCareTrigger::                            ds 1
@@ -2597,7 +2598,7 @@ wCinnabarLabTrigger::                        ds 1
 wIlexForestTrigger::                         ds 1
 wRoute23Trigger::                            ds 1
 
-	ds 15 ; extra space set aside
+	ds 20 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]

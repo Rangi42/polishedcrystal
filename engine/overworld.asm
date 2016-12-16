@@ -773,6 +773,7 @@ SpriteMons: ; 14495
 	db FURRET
 	db HOOTHOOT
 	db AMPHAROS
+	db MARILL
 	db MURKROW
 	db UNOWN
 	db HERACROSS
@@ -823,6 +824,7 @@ OutdoorSprites: ; 144b8
 	dw Group28Sprites
 	dw Group29Sprites
 	dw Group30Sprites
+	dw Group31Sprites
 
 
 ; OlivineCity connects to Route40
@@ -1549,8 +1551,34 @@ Group30Sprites:
 	db SPRITE_ROCK
 	db SPRITE_ROCK
 	db SPRITE_ROCK
-	db SPRITE_ROCK
-	db SPRITE_ROCK
+
+Group31Sprites:
+; ShamoutiIsland
+	db SPRITE_CAITLIN
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_DARACH
+	db SPRITE_FISHING_GURU
+	db SPRITE_GRAMPS
+	db SPRITE_IVY
+	db SPRITE_LADY
+	db SPRITE_LASS
+	db SPRITE_YOUNGSTER
+	; 9 walking sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_FRUIT_TREE
+	db SPRITE_MARILL
+	; 12 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
 
 
 SpriteHeaders: ; 14736

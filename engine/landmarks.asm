@@ -99,11 +99,11 @@ ENDM
 	landmark  36, 108, WhirlIslandsName
 	landmark  36, 116, Route41Name
 	landmark  28, 116, CianwoodCityName
-	landmark  28, 114, CliffEdgeGateName
+	landmark  24, 114, CliffEdgeGateName
 	landmark  20, 116, Route47Name
-	landmark  20, 114, CliffCaveName
-	landmark  20, 112, Route48Name
-	landmark  20, 108, YellowForestName
+	landmark  20, 112, CliffCaveName
+	landmark  20, 108, Route48Name
+	landmark  20, 100, YellowForestName
 	landmark  20, 124, QuietCaveName
 	landmark 100,  60, Route42Name
 	landmark  92,  60, MtMortarName
@@ -177,12 +177,12 @@ ENDM
 	landmark  36,  52, IndigoPlateauName
 	landmark  24,  92, Route28Name
 	landmark  28, 148, ShamoutiIslandName
-	landmark  36, 148, NoisyForestName
-	landmark  24, 144, SouthTunnelName
+	landmark  20, 152, BeautifulBeachName
+	landmark  24, 144, ShamoutiTunnelName
 	landmark  20, 148, WarmBeachName
-	landmark  20, 152, FireIslandName
-	landmark  24, 152, IceIslandName
-	landmark  28, 152, LightningIslandName
+	landmark  24, 152, RockyBeachName
+	landmark  36, 148, NoisyForestName
+	landmark  28, 152, ShrineRuinsName
 	landmark 108, 140, FastShipName
 	landmark 140, 156, NavelRockName
 	landmark 156, 156, FarawayIslandName
@@ -308,12 +308,12 @@ ScaryCaveName:       db "Scary¯Cave@"
 HauntedMansionName:  db "Haunted¯Mansion@"
 DimCaveName:         db "Dim¯Cave@"
 ShamoutiIslandName:  db "Shamouti¯Island@"
+BeautifulBeachName:  db "Beautiful¯Beach@"
+ShamoutiTunnelName:  db "Shamouti¯Tunnel@"
 WarmBeachName:       db "Warm Beach@"
+RockyBeachName:      db "Rocky¯Beach@"
 NoisyForestName:     db "Noisy¯Forest@"
-SouthTunnelName:     db "South¯Tunnel@"
-FireIslandName:      db "Fire¯Island@"
-IceIslandName:       db "Ice Island@"
-LightningIslandName: db "Lightning¯Island@"
+ShrineRuinsName:     db "Shrine¯Ruins@"
 NavelRockName:       db "Navel Rock@"
 FarawayIslandName:   db "Faraway¯Island@"
 SinjohRuinsName:     db "Sinjoh¯Ruins@"

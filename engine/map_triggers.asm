@@ -87,6 +87,7 @@ ENDM
 	trigger_def VERMILION_CITY,                         wVermilionCityTrigger
 	trigger_def SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateTrigger
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
+	trigger_def SEAGALLOP_FERRY_SHAMOUTI_GATE,          wSeagallopFerryShamoutiGateTrigger
 	trigger_def FARAWAY_ISLAND,                         wFarawayIslandTrigger
 	trigger_def ROUTE_48,                               wRoute48Trigger
 	trigger_def DAYCARE,                                wDayCareTrigger

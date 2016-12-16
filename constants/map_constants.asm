@@ -378,6 +378,7 @@ MAP_NONE   EQU 0
 	mapgroup FARAWAY_JUNGLE,                             12, 14 ;  9
 	mapgroup SEAGALLOP_FERRY_VERMILION_GATE,              6,  7 ;  10
 	mapgroup SEAGALLOP_FERRY_NAVEL_GATE,                  6,  7 ;  11
+	mapgroup SEAGALLOP_FERRY_SHAMOUTI_GATE,               6,  7 ;  12
 
 	newgroup                                                    ; 20
 
@@ -557,6 +558,21 @@ MAP_NONE   EQU 0
 	mapgroup RUINS_OF_ALPH_OMANYTE_WORD_ROOM,             8, 10 ; 14
 	mapgroup RUINS_OF_ALPH_AERODACTYL_WORD_ROOM,          7, 10 ; 15
 	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  5 ; 16
+
+	newgroup                                                    ; 31
+
+	mapgroup SHAMOUTI_ISLAND,                            15, 17 ;  1
+	mapgroup SHAMOUTI_EAST_BEACH,                        11, 21 ;  2
+	mapgroup SHAMOUTI_WEST_BEACH,                        12, 12 ;  3
+	mapgroup ROCKY_BEACH,                                15, 20 ;  4
+	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 13 ;  5
+	mapgroup SHAMOUTI_TUNNEL,                            10, 18 ;  6
+	mapgroup NOISY_FOREST,                               20, 22 ;  7
+	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  8
+	mapgroup SHAMOUTI_HOTEL,                              4,  4 ;  9
+	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 10
+	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 11
+	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 12
 
 
 ; elevator floors

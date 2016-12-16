@@ -322,6 +322,12 @@
 	map_header_2 IndigoPlateau, INDIGO_PLATEAU, $0, SOUTH
 	connection south, ROUTE_23, Route23, 0, 0, 10, INDIGO_PLATEAU
 
+	map_header_2 ShamoutiIsland, SHAMOUTI_ISLAND, $6, 0
+	map_header_2 ShamoutiEastBeach, SHAMOUTI_EAST_BEACH, $6, 0
+	map_header_2 ShamoutiWestBeach, SHAMOUTI_WEST_BEACH, $6, 0
+	map_header_2 RockyBeach, ROCKY_BEACH, $6, 0
+	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $6, 0
+
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_header_2 SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_header_2 SproutTower3F, SPROUT_TOWER_3F, $0, 0
@@ -701,6 +707,14 @@
 	map_header_2 FarawayJungle, FARAWAY_JUNGLE, $17, 0
 	map_header_2 SeagallopFerryVermilionGate, SEAGALLOP_FERRY_VERMILION_GATE, $0, 0
 	map_header_2 SeagallopFerryNavelGate, SEAGALLOP_FERRY_NAVEL_GATE, $0, 0
+	map_header_2 SeagallopFerryShamoutiGate, SEAGALLOP_FERRY_SHAMOUTI_GATE, $0, 0
 	map_header_2 PokemonMansion1F, POKEMON_MANSION_1F, $0, 0
 	map_header_2 PokemonMansionB1F, POKEMON_MANSION_B1F, $45, 0
 	map_header_2 CinnabarLab, CINNABAR_LAB, $0, 0
+	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
+	map_header_2 NoisyForest, NOISY_FOREST, $89, 0
+	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
+	map_header_2 ShamoutiHotel, SHAMOUTI_HOTEL, $0, 0
+	map_header_2 ShamoutiEastBeachVilla, SHAMOUTI_EAST_BEACH_VILLA, $0, 0
+	map_header_2 ShamoutiWestBeachShack, SHAMOUTI_WEST_BEACH_SHACK, $0, 0
+	map_header_2 RockyBeachHouse, ROCKY_BEACH_HOUSE, $0, 0

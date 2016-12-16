@@ -49,6 +49,7 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 28
 	db  3 ; group 29 (Goldenrod Harbor)
 	db  6 ; group 30 (Ruins of Alph)
+	db -1 ; group 31 (Shamouti Island)
 ; 1c03c
 
 Roofs: ; 1c03c

@@ -34,6 +34,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .pokecenter
 	cp TILESET_FARAWAY_ISLAND
 	jp z, .faraway_island
+	cp TILESET_SHAMOUTI_ISLAND
+	jp z, .shamouti_island
 	cp TILESET_JOHTO_1
 	jp z, .maybe_bellchime_trail
 	cp TILESET_ILEX_FOREST
@@ -101,6 +103,11 @@ LoadSpecialMapPalette: ; 494ac
 
 .faraway_island
 	call LoadFarawayIslandPalette
+	scf
+	ret
+
+.shamouti_island
+	call LoadShamoutiIslandPalette
 	scf
 	ret
 
@@ -339,6 +346,21 @@ LoadFarawayIslandPalette:
 
 FarawayIslandPalette:
 INCLUDE "tilesets/faraway_island.pal"
+
+LoadShamoutiIslandPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, ShamoutiIslandPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+ShamoutiIslandPalette:
+INCLUDE "tilesets/shamouti_island.pal"
 
 LoadBellchimeTrailPalette:
 	ld a, [TimeOfDayPal]

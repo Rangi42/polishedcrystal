@@ -40,6 +40,7 @@ FuchsiaPokeCenter1F_BlockData:
 SaffronPokeCenter1F_BlockData:
 CinnabarPokeCenter1F_BlockData:
 SilverCavePokeCenter1F_BlockData:
+ShamoutiPokeCenter1F_BlockData:
 	INCBIN "maps/PokeCenter1F.blk"
 
 EarlsPokemonAcademy_BlockData:

@@ -57,3 +57,24 @@ Route34Coast_BlockData:
 
 StormyBeach_BlockData:
 	INCBIN "maps/StormyBeach.blk"
+
+ShamoutiIsland_BlockData:
+	INCBIN "maps/ShamoutiIsland.blk"
+
+ShamoutiEastBeach_BlockData:
+	INCBIN "maps/ShamoutiEastBeach.blk"
+
+ShamoutiWestBeach_BlockData:
+	INCBIN "maps/ShamoutiWestBeach.blk"
+
+RockyBeach_BlockData:
+	INCBIN "maps/RockyBeach.blk"
+
+ShamoutiShrineRuins_BlockData:
+	INCBIN "maps/ShamoutiShrineRuins.blk"
+
+ShamoutiTunnel_BlockData:
+	INCBIN "maps/ShamoutiTunnel.blk"
+
+NoisyForest_BlockData:
+	INCBIN "maps/NoisyForest.blk"

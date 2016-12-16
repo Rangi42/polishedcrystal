@@ -156,6 +156,10 @@ GuideGentsHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 SinjohRuinsHouse_BlockData:
+ShamoutiHotel_BlockData:
+ShamoutiEastBeachVilla_BlockData:
+ShamoutiWestBeachShack_BlockData:
+RockyBeachHouse_BlockData:
 	INCBIN "maps/House1.blk"
 
 Route43MahoganyGate_BlockData:
