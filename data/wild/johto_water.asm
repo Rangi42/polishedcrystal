@@ -274,7 +274,7 @@
 	db 6 percent ; encounter rate
 	db 20, MARILL
 	db 20, PIKACHU
-	db 10, TOTODILE
+	db 20, PSYDUCK
 
 	map QUIET_CAVE_B1F
 	db 6 percent ; encounter rate

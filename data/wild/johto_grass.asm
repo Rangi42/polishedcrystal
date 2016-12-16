@@ -1735,7 +1735,7 @@
 	db 24, SNUBBULL
 	db 20, PIKACHU
 	db 22, LEDYBA
-	db 10, CHIKORITA
+	db 20, MARILL
 	db 10, PICHU
 	db 10, PICHU
 	; day
@@ -1743,17 +1743,17 @@
 	db 24, SNUBBULL
 	db 20, PIKACHU
 	db 22, PARAS
-	db 10, CHIKORITA
+	db 20, MARILL
 	db 10, PICHU
 	db 10, PICHU
 	; nite
 	db 23, HOOTHOOT
 	db 20, MEOWTH
-	db 25, NOCTOWL
+	db 22, PARAS
 	db 23, SPINARAK
 	db 24, PSYDUCK
-	db 10, CYNDAQUIL
-	db 10, CYNDAQUIL
+	db 25, NOCTOWL
+	db 25, NOCTOWL
 
 	map QUIET_CAVE_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite

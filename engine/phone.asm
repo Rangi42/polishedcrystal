@@ -836,6 +836,10 @@ SpecialPhoneCallList: ; 90627
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_LYRA
 	dba LyraPhoneScript2
+
+	dw SpecialCallOnlyWhenOutside
+	db PHONE_LYRA
+	dba LyraPhoneScript2
 ; 90657
 
 UnknownScript_0x90657: ; 0x90657

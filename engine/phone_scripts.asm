@@ -337,6 +337,7 @@ LyraPhoneScript2:
 	checkcode VAR_SPECIALPHONECALL
 	if_equal SPECIALCALL_YELLOWFOREST, .yellowforest
 	if_equal SPECIALCALL_FIRSTBADGE, .firstbadge
+	if_equal SPECIALCALL_LYRASEGG, .lyrasegg
 	specialphonecall SPECIALCALL_NONE
 	jump LyraPhoneScript
 
@@ -347,6 +348,29 @@ LyraPhoneScript2:
 
 .firstbadge
 	farwritetext LyraPhoneFirstBadgeText
+	specialphonecall SPECIALCALL_NONE
+	end
+
+.lyrasegg
+	farwritetext LyraPhoneLyrasEggIntroText
+	buttonsound
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .lyrasegg_totodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .lyrasegg_chikorita
+	farwritetext LyraPhoneLyrasEggChikoritaText
+	jump .lyrasegg_end
+
+.lyrasegg_totodile
+	farwritetext LyraPhoneLyrasEggCyndaquilText
+	jump .lyrasegg_end
+
+.lyrasegg_chikorita:
+	farwritetext LyraPhoneLyrasEggTotodileText
+.lyrasegg_end
+	buttonsound
+	farwritetext LyraPhoneLyrasEggEndText
+	setevent EVENT_LYRA_GAVE_AWAY_EGG
 	specialphonecall SPECIALCALL_NONE
 	end
 

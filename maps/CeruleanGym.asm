@@ -84,8 +84,14 @@ MistyScript_0x188432:
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
 	checkcode VAR_BADGES
-	if_not_equal 9, .FightDone
+	if_equal 9, .FirstBadge
+	if_equal 12, .LyrasEgg
+	jump .FightDone
+.FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump .FightDone
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM55_SCALD
 	iftrue MistyAfterTMScript

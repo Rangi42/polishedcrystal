@@ -178,13 +178,13 @@
 	db 6 percent ; encounter rate
 	db 55, SLOWBRO
 	db 55, GOLDUCK
-	db 10, SQUIRTLE
+	db 55, KINGLER
 
 	map SAFARI_ZONE_EAST
 	db 6 percent ; encounter rate
 	db 55, SLOWBRO
 	db 55, GOLDUCK
-	db 10, SQUIRTLE
+	db 55, KINGLER
 
 	map SAFARI_ZONE_NORTH
 	db 6 percent ; encounter rate

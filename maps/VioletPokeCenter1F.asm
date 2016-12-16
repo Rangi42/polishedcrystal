@@ -27,8 +27,9 @@ VioletPokeCenter1F_ElmsAideScript:
 	checkcode VAR_PARTYCOUNT
 	if_equal PARTY_LENGTH, .PartyFull
 	giveegg TOGEPI, EGG_LEVEL
-	stringtotext .eggname, $1
-	scall .AideGivesEgg
+	farwritetext UnknownText_0x1bdfa5
+	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
+	waitsfx
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	clearevent EVENT_ELMS_AIDE_IN_LAB
 	clearevent EVENT_TOGEPI_HATCHED
@@ -52,13 +53,6 @@ VioletPokeCenter1F_ElmsAideScript:
 	playsound SFX_EXIT_BUILDING
 	disappear VIOLETPOKECENTER1F_SCIENTIST
 	waitsfx
-	end
-
-.eggname
-	db "Egg@"
-
-.AideGivesEgg:
-	jumpstd receivetogepiegg
 	end
 
 .PartyFull:

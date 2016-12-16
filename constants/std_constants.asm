@@ -48,7 +48,6 @@
 	enum gymstatue2
 	enum gymstatue3
 	enum receiveitem
-	enum receivetogepiegg
 	enum pcscript
 	enum gamecornercoinvendor
 	enum happinesschecknpc

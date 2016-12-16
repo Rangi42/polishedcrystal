@@ -36,8 +36,14 @@ ErikaScript_0x72a6a:
 	waitsfx
 	setflag ENGINE_RAINBOWBADGE
 	checkcode VAR_BADGES
-	if_not_equal 9, .FightDone
+	if_equal 9, .FirstBadge
+	if_equal 12, .LyrasEgg
+	jump .FightDone
+.FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump .FightDone
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
 	iftrue UnknownScript_0x72aae

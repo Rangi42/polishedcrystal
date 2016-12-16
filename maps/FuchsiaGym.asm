@@ -42,8 +42,14 @@ JanineScript_0x195db9:
 	waitsfx
 	setflag ENGINE_MARSHBADGE
 	checkcode VAR_BADGES
-	if_not_equal 9, UnknownScript_0x195e02
+	if_equal 9, .FirstBadge
+	if_equal 12, .LyrasEgg
+	jump UnknownScript_0x195e02
+.FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump UnknownScript_0x195e02
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
 	jump UnknownScript_0x195e02
 .FightDone:
 	faceplayer

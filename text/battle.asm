@@ -1551,6 +1551,15 @@ Rival2_2FinalPkmnText:
 	prompt
 
 Lyra1_1FinalPkmnText:
+	text "You've never had a"
+	line "#mon battle"
+	cont "before, have you?"
+
+	para "I could explain,"
+	line "but you'll learn"
+	cont "more from exper-"
+	cont "ience."
+
 	text "Do your best,"
 	line "<PLAYER>!"
 	prompt

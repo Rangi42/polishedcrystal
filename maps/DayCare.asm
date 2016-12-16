@@ -97,13 +97,11 @@ DayCareManScript_Inside:
 	iftrue .AlreadyHaveOddEgg
 	writetext DayCareManText_GiveOddEgg
 	buttonsound
-	closetext
 	checkcode VAR_PARTYCOUNT
 	if_equal PARTY_LENGTH, .PartyFull
 	special GiveOddEgg
-	opentext
 	writetext DayCareText_GotOddEgg
-	playsound SFX_KEY_ITEM
+	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	writetext DayCareText_DescribeOddEgg
 	waitbutton
@@ -112,7 +110,6 @@ DayCareManScript_Inside:
 	end
 
 .PartyFull:
-	opentext
 	writetext DayCareText_PartyFull
 	waitbutton
 	closetext
@@ -129,6 +126,44 @@ DayCareLadyScript:
 	opentext
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
 	iftrue .HusbandWasLookingForYou
+	checkevent EVENT_LYRA_GAVE_AWAY_EGG
+	iffalse .NoLyrasEgg
+	checkevent EVENT_GOT_LYRAS_EGG
+	iftrue .NoLyrasEgg
+	writetext DayCareLadyText_GiveLyrasEgg
+	buttonsound
+	checkcode VAR_PARTYCOUNT
+	if_equal PARTY_LENGTH, .PartyFull
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .GiveCyndaquilEgg
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .GiveTotodileEgg
+	giveegg CHIKORITA, EGG_LEVEL
+	jump .GotLyrasEgg
+
+.GiveCyndaquilEgg:
+	giveegg CYNDAQUIL, EGG_LEVEL
+	jump .GotLyrasEgg
+
+.GiveTotodileEgg:
+	giveegg TOTODILE, EGG_LEVEL
+.GotLyrasEgg
+	farwritetext UnknownText_0x1bdfa5
+	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
+	waitsfx
+	writetext DayCareLadyText_DescribeLyrasEgg
+	waitbutton
+	closetext
+	setevent EVENT_GOT_LYRAS_EGG
+	end
+
+.PartyFull:
+	writetext DayCareText_PartyFull
+	waitbutton
+	closetext
+	end
+
+.NoLyrasEgg:
 	special Special_DayCareLady
 	waitbutton
 	closetext
@@ -332,7 +367,7 @@ DayCareText_ComeAgain:
 
 DayCareText_GotOddEgg:
 	text "<PLAYER> received"
-	line "Odd Egg!"
+	line "the Odd Egg!"
 	done
 
 DayCareText_DescribeOddEgg:
@@ -347,6 +382,23 @@ DayCareText_DescribeOddEgg:
 
 	para "Egg, so I'd kept"
 	line "it around."
+	done
+
+DayCareLadyText_GiveLyrasEgg:
+	text "Hello, dear."
+
+	para "Lyra told me this"
+	line "Egg was a gift for"
+	cont "you. Here you go!"
+	done
+
+DayCareLadyText_DescribeLyrasEgg:
+	text "That Egg came from"
+	line "her first #mon."
+
+	para "She must really"
+	line "trust you as a"
+	cont "trainer."
 	done
 
 DayCareText_PartyFull:

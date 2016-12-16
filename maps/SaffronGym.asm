@@ -42,8 +42,14 @@ SabrinaScript_0x189c2e:
 	waitsfx
 	setflag ENGINE_SOULBADGE
 	checkcode VAR_BADGES
-	if_not_equal 9, .FightDone
+	if_equal 9, .FirstBadge
+	if_equal 12, .LyrasEgg
+	jump .FightDone
+.FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump .FightDone
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
 	iftrue SabrinaAfterTMScript

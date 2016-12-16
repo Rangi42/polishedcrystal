@@ -48,7 +48,6 @@ StdScripts::
 	dba GymStatue2Script
 	dba GymStatue3Script
 	dba ReceiveItemScript
-	dba ReceiveTogepiEggScript
 	dba PCScript
 	dba GameCornerCoinVendorScript
 	dba HappinessCheckScript
@@ -1842,14 +1841,6 @@ ReceiveItemScript: ; 0xbcdb9
 	waitsfx
 	end
 ; 0xbcdc3
-
-ReceiveTogepiEggScript: ; 0xbcdc3
-	waitsfx
-	farwritetext ReceivedItemText
-	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
-	waitsfx
-	end
-; 0xbcdcd
 
 GameCornerCoinVendorScript: ; 0xbcdcd
 	faceplayer

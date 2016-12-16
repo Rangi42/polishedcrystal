@@ -55,8 +55,14 @@ SurgeScript_0x1920a5:
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
 	checkcode VAR_BADGES
-	if_not_equal 9, .FightDone
+	if_equal 9, .FirstBadge
+	if_equal 12, .LyrasEgg
+	jump .FightDone
+.FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump .FightDone
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM43_WILD_CHARGE
 	iftrue SurgeAfterTMScript

@@ -1783,9 +1783,9 @@
 	const EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_2
 ; TODO: relocate to logical sections
 	const EVENT_BEAT_LAWRENCE_AGAIN
+	const EVENT_LYRA_GAVE_AWAY_EGG
+	const EVENT_GOT_LYRAS_EGG
 ; Unused placeholder events
-	const EVENT_692
-	const EVENT_693
 	const EVENT_694
 	const EVENT_695
 	const EVENT_696

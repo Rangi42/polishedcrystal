@@ -88,3 +88,56 @@ LyraPhoneFirstBadgeText:
 	para "I'll see you at"
 	line "the League!"
 	done
+
+LyraPhoneLyrasEggIntroText:
+	text "Hi, <PLAYER>!"
+
+	para "Are you doing well"
+	line "against Kanto's Gym"
+	cont "Leaders?"
+
+	para "I'm sure you are!"
+
+	para "Listen, listen!"
+	done
+
+LyraPhoneLyrasEggChikoritaText:
+	text "I left my Chicory"
+	line "at the Day-Care"
+	done
+
+LyraPhoneLyrasEggCyndaquilText:
+	text "I left my Cinder"
+	line "at the Day-Care"
+	done
+
+LyraPhoneLyrasEggTotodileText:
+	text "I left my Toto"
+	line "at the Day-Care"
+	done
+
+LyraPhoneLyrasEggEndText:
+	text "with Grandma and"
+	line "Grandpa, and they"
+	cont "found an Egg!"
+
+	para "Isn't that neat?"
+
+	para "I'm raising a full"
+	line "party of #mon,"
+
+	para "so, um, if you'd"
+	line "like to have it…"
+
+	para "That is… Anyway,"
+	line "I left the Egg at"
+
+	para "the Day-Care if"
+	line "you want it!"
+
+	para "I know you'll take"
+	line "good care of it,"
+	cont "<PLAYER>."
+
+	para "Bye-bye!"
+	done

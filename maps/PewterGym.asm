@@ -32,8 +32,14 @@ BrockScript_0x1a2864:
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
 	checkcode VAR_BADGES
-	if_not_equal 9, .FightDone
+	if_equal 9, .FirstBadge
+	if_equal 12, .LyrasEgg
+	jump .FightDone
+.FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump .FightDone
+.LyrasEgg:
+	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
 	iftrue BrockAfterTMScript

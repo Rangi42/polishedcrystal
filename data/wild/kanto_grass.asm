@@ -1143,7 +1143,7 @@
 	db 59, EXEGGUTOR
 	db 58, TANGELA
 	db 60, SCYTHER
-	db 10, BULBASAUR
+	db 50, SCYTHER
 	; day
 	db 55, DODUO
 	db 59, DODRIO
@@ -1151,7 +1151,7 @@
 	db 59, EXEGGUTOR
 	db 58, TANGELA
 	db 60, SCYTHER
-	db 10, BULBASAUR
+	db 50, SCYTHER
 	; nite
 	db 55, DODUO
 	db 59, DODRIO
@@ -1170,7 +1170,7 @@
 	db 59, TAUROS
 	db 60, NIDOKING
 	db 60, NIDOQUEEN
-	db 10, CHARMANDER
+	db 50, PARASECT
 	; day
 	db 55, PARAS
 	db 57, NIDORINA
@@ -1178,7 +1178,7 @@
 	db 59, TAUROS
 	db 60, NIDOKING
 	db 60, NIDOQUEEN
-	db 10, CHARMANDER
+	db 50, PARASECT
 	; nite
 	db 55, PARAS
 	db 57, NIDORINA
