@@ -96,6 +96,7 @@ ItemEffects: ; e73c
 	dw SunStone
 	dw DuskStone
 	dw ShinyStone
+	dw IceStone
 	dw Everstone
 	dw Bicycle
 	dw OldRod
@@ -235,6 +236,7 @@ ItemEffects: ; e73c
 	dw Magmarizer
 	dw RazorFang
 	dw RazorClaw
+	dw OddSouvenir
 	dw Nugget
 	dw BigNugget
 	dw TinyMushroom
@@ -266,12 +268,6 @@ ItemEffects: ; e73c
 	dw FlowerMail
 	dw FlowerMail
 	dw FlowerMail
-	dw TeruSama
-	dw TeruSama
-	dw TeruSama
-	dw TeruSama
-	dw TeruSama
-	dw TeruSama
 ; e8a2
 
 
@@ -1494,6 +1490,7 @@ LeafStone:
 SunStone:
 DuskStone:
 ShinyStone:
+IceStone:
 	ld b, PARTYMENUACTION_EVO_STONE
 	call UseItem_SelectMon
 
@@ -3299,9 +3296,9 @@ Electirizer:
 Magmarizer:
 RazorFang:
 RazorClaw:
+OddSouvenir:
 Mulch:
-SweetHoney:
-TeruSama: ; f77d
+SweetHoney: ; f77d
 	jp IsntTheTimeMessage
 ; f780
 
