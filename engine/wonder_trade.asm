@@ -424,11 +424,11 @@ GetGSBallPichu:
 	farcall RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
-	ld b, RESET_FLAG
+	ld b, MALE
 	ld a, [PlayerGender]
 	and a
 	jr z, .male_ot_pikachu
-	ld b, SET_FLAG
+	ld b, FEMALE
 .male_ot_pikachu
 	farcall SetGiftPartyMonCaughtData
 

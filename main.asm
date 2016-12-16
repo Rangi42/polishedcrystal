@@ -3649,7 +3649,7 @@ SetEggMonCaughtData: ; 4dbb8 (13:5bb8)
 	call GetPartyLocation
 	ld a, [CurPartyLevel]
 	push af
-	ld a, $1
+	ld a, EGG_LEVEL
 	ld [CurPartyLevel], a
 	ld a, POKE_BALL
 	ld [CurItem], a

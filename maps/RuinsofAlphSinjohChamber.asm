@@ -12,8 +12,14 @@ RuinsofAlphSinjohChamber_MapScriptHeader:
 	db 0
 
 RuinsofAlphSinjohChamberSignpost:
+	unowntypeface
 	opentext
 	writetext RuinsofAlphSinjohChamberMystriText
+	waitbutton
+	closetext
+	restoretypeface
+	opentext
+	writetext RuinsofAlphSinjohChamberSurpriseText
 	waitbutton
 	closetext
 	special Special_FadeOutMusic
@@ -79,18 +85,13 @@ MovementData_WarpToSinjohRuins:
 	step_end
 
 RuinsofAlphSinjohChamberMystriText:
-	text "It's a panel with"
-	line "strange writing."
-
-	para "Wait… the text"
-	line "is starting to"
-	cont "make sense?"
-
-	para "<``>The lead enters"
+	text "The lead enters"
 	line "the Mystri Stage"
-	cont "at last.<''>"
+	cont "at last."
+	done
 
-	para "…!"
+RuinsofAlphSinjohChamberSurpriseText
+	text "…!"
 	done
 
 RuinsofAlphSinjohChamberStatueText:
