@@ -970,6 +970,15 @@ BattleCommand_DoTurn: ; 34555
 	and $3f
 	jr z, .out_of_pp
 	dec [hl]
+	ld a, [hl]
+	and $3f
+	jr z, .take_one_pp_only
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp PRESSURE
+	jr nz, .take_one_pp_only
+	dec [hl]
+.take_one_pp_only
 	ld b, 0
 	ret
 
