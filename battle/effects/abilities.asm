@@ -334,8 +334,6 @@ SynchronizeAbility:
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
-; FIXME: this function is rather awkwardly constructed due to relying on
-; several different kind of factors for triggering abilities
 	; First, check contact moves. Struggle makes contact, but can't be part of
 	; the array check, being 0xFF (the array terminator)
 	ld a, BATTLE_VARS_MOVE
@@ -361,11 +359,10 @@ RunHitAbilities:
 	farcall BattleCommand_SwitchTurn
 	pop af
 	pop bc
-	call .check_abilities
+	call .do_enemy_abilities
 	farcall BattleCommand_SwitchTurn
 	ret
-
-.check_abilities
+.do_enemy_abilities
 	cp CURSED_BODY
 	jp z, CursedBodyAbility
 	cp JUSTIFIED
@@ -466,6 +463,7 @@ CursedBodyAbility:
 	and a
 	ret z ; move is out of PP
 	push de
+	call ShowAbilityActivation
 	call DisableAnimations
 	farcall BattleCommand_Disable
 	pop de
