@@ -627,7 +627,6 @@ SapSipperAbility:
 LightningRodAbility:
 	ld b, SP_ATTACK
 	jr StatUpAbility
-MotorDriveAbility:
 RattledAbility:
 	; only for bug-, dark or ghost type moves
 	ld a, c
@@ -640,6 +639,7 @@ RattledAbility:
 	ret
 .ok
 	; fallthrough
+MotorDriveAbility:
 SteadfastAbility:
 SpeedBoostAbility:
 	ld b, SPEED
