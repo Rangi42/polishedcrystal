@@ -6705,6 +6705,9 @@ BattleCommand_ForceSwitch: ; 3680f
 	jp z, .fail
 	cp BATTLETYPE_KANTO_LEGEND
 	jp z, .fail
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SUCTION_CUPS
+	jp z, .fail
 	ld a, [hBattleTurn]
 	and a
 	jp nz, .force_player_switch

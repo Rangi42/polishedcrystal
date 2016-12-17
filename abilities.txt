@@ -9,7 +9,6 @@ TODO:
 * Investigate overworld effects. Currently, only Pickup, Immunity and Poison Heal have
 appropriately changed overworld effects. Figure out which abilities have those,
 and fix it.
-* Implement <OPABIL> printing.
 
 ---
 
@@ -32,7 +31,7 @@ OK	IMMUNITY
 OK	FLASH_FIRE
 OK	SHIELD_DUST
 OK	OWN_TEMPO
-.	SUCTION_CUPS
+OK	SUCTION_CUPS
 OK	INTIMIDATE
 !	SHADOW_TAG (Routines done, not fully used yet)
 OK	LEVITATE
