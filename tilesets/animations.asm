@@ -228,9 +228,13 @@ Tileset38Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset39Anim:
+	dw VTiles2 tile $26, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileRightLeft
 	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $26, WriteTileFromBuffer
 	dw NULL,  WaitTileAnimation
+	dw NULL,  TileAnimationPalette
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
