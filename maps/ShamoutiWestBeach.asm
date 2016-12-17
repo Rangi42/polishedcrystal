@@ -13,9 +13,8 @@ ShamoutiWestBeach_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $0, $0, 1, SHAMOUTI_WEST_BEACH_SHACK
-	warp_def $0, $0, 2, SHAMOUTI_TUNNEL
-
+	warp_def $d, $f, 1, SHAMOUTI_WEST_BEACH_SHACK
+	warp_def $5, $8, 2, SHAMOUTI_TUNNEL
 
 .XYTriggers:
 	db 0

@@ -12,8 +12,9 @@ ShamoutiShrineRuins_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 1
-	warp_def $0, $0, 2, NOISY_FOREST
+	db 2
+	warp_def $12, $2, 3, NOISY_FOREST
+	warp_def $13, $2, 4, NOISY_FOREST
 
 .XYTriggers:
 	db 0

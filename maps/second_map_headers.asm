@@ -322,11 +322,19 @@
 	map_header_2 IndigoPlateau, INDIGO_PLATEAU, $0, SOUTH
 	connection south, ROUTE_23, Route23, 0, 0, 10, INDIGO_PLATEAU
 
-	map_header_2 ShamoutiIsland, SHAMOUTI_ISLAND, $6, 0
-	map_header_2 ShamoutiEastBeach, SHAMOUTI_EAST_BEACH, $6, 0
-	map_header_2 ShamoutiWestBeach, SHAMOUTI_WEST_BEACH, $6, 0
-	map_header_2 RockyBeach, ROCKY_BEACH, $6, 0
-	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $6, 0
+	map_header_2 ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
+	connection north, ROCKY_BEACH, RockyBeach, 0, 0, 18, SHAMOUTI_ISLAND
+	connection east, SHAMOUTI_EAST_BEACH, ShamoutiEastBeach, 0, 0, 15, SHAMOUTI_ISLAND
+
+	map_header_2 ShamoutiEastBeach, SHAMOUTI_EAST_BEACH, $35, WEST
+	connection west, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 15, SHAMOUTI_EAST_BEACH
+
+	map_header_2 ShamoutiWestBeach, SHAMOUTI_WEST_BEACH, $35, 0
+
+	map_header_2 RockyBeach, ROCKY_BEACH, $35, SOUTH
+	connection south, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 18, ROCKY_BEACH
+
+	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $37, 0
 
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_header_2 SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -712,7 +720,7 @@
 	map_header_2 PokemonMansionB1F, POKEMON_MANSION_B1F, $45, 0
 	map_header_2 CinnabarLab, CINNABAR_LAB, $0, 0
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
-	map_header_2 NoisyForest, NOISY_FOREST, $89, 0
+	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
 	map_header_2 ShamoutiHotel, SHAMOUTI_HOTEL, $0, 0
 	map_header_2 ShamoutiEastBeachVilla, SHAMOUTI_EAST_BEACH_VILLA, $0, 0

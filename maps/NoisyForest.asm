@@ -12,9 +12,11 @@ NoisyForest_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
-	warp_def $0, $0, 2, ROCKY_BEACH
-	warp_def $0, $0, 1, SHAMOUTI_SHRINE_RUINS
+	db 4
+	warp_def $4, $6, 2, ROCKY_BEACH
+	warp_def $5, $6, 3, ROCKY_BEACH
+	warp_def $1c, $23, 1, SHAMOUTI_SHRINE_RUINS
+	warp_def $1d, $23, 2, SHAMOUTI_SHRINE_RUINS
 
 .XYTriggers:
 	db 0

@@ -12,9 +12,10 @@ RockyBeach_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
-	warp_def $0, $0, 1, ROCKY_BEACH_HOUSE
-	warp_def $0, $0, 1, NOISY_FOREST
+	db 3
+	warp_def $14, $19, 1, ROCKY_BEACH_HOUSE
+	warp_def $a, $1d, 1, NOISY_FOREST
+	warp_def $b, $1d, 2, NOISY_FOREST
 
 .XYTriggers:
 	db 0

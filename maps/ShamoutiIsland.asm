@@ -13,9 +13,9 @@ ShamoutiIsland_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $0, $0, 1, SHAMOUTI_POKECENTER_1F
-	warp_def $0, $0, 1, SHAMOUTI_HOTEL
-	warp_def $0, $0, 1, SHAMOUTI_TUNNEL
+	warp_def $d, $17, 1, SHAMOUTI_POKECENTER_1F
+	warp_def $5, $1d, 1, SHAMOUTI_HOTEL
+	warp_def $7, $10, 1, SHAMOUTI_TUNNEL
 
 .XYTriggers:
 	db 0

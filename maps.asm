@@ -599,12 +599,12 @@ INCLUDE "maps/CeruleanBikeShop.asm"
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
 
 INCLUDE "maps/Route3PokeCenter1F.asm"
-INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/GiovannisCave.asm"
 INCLUDE "maps/CinnabarLab.asm"
+INCLUDE "maps/ElmsLab.asm"
 
 
 SECTION "Map Scripts 29", ROMX

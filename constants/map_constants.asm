@@ -561,11 +561,11 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 31
 
-	mapgroup SHAMOUTI_ISLAND,                            15, 17 ;  1
-	mapgroup SHAMOUTI_EAST_BEACH,                        11, 21 ;  2
-	mapgroup SHAMOUTI_WEST_BEACH,                        12, 12 ;  3
+	mapgroup SHAMOUTI_ISLAND,                            15, 18 ;  1
+	mapgroup SHAMOUTI_EAST_BEACH,                        15, 21 ;  2
+	mapgroup SHAMOUTI_WEST_BEACH,                        13, 12 ;  3
 	mapgroup ROCKY_BEACH,                                15, 20 ;  4
-	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 13 ;  5
+	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 12 ;  5
 	mapgroup SHAMOUTI_TUNNEL,                            10, 18 ;  6
 	mapgroup NOISY_FOREST,                               20, 22 ;  7
 	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  8
