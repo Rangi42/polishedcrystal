@@ -3440,6 +3440,8 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .tinted_lens
 	cp SOLAR_POWER
 	jr z, .solar_power
+	cp IRON_FIST
+	jr z, .iron_fist
 	cp SAND_FORCE
 	jr z, .sand_force
 	cp RECKLESS
@@ -3450,16 +3452,16 @@ BattleCommand_DamageCalc: ; 35612
 	call GetBattleVar
 	and a
 	jp z, .ability_penalties
-	jr .ability_semidouble
+	jp .ability_semidouble
 .sheer_force
 	; Only nonzero for sheer force users when using a move with an additional effect
 	ld a, [EffectFailed]
 	and a
-	jr z, .ability_penalties
+	jp z, .ability_penalties
 	jr .ability_x1_3
 .analytic
 	call CheckOpponentWentFirst
-	jr z, .ability_penalties
+	jp z, .ability_penalties
 	jr .ability_x1_3
 .tinted_lens
 	ld a, [TypeModifier]
@@ -3472,6 +3474,13 @@ BattleCommand_DamageCalc: ; 35612
 	cp WEATHER_SUN
 	jr nz, .ability_penalties
 	jr .ability_semidouble
+.iron_fist
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PunchingMoves
+	call IsInArray
+	jr c, .ability_penalties
+	jr .ability_x1_2
 .sand_force
 	call GetWeatherAfterCloudNine
 	cp WEATHER_SANDSTORM
