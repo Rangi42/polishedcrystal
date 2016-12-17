@@ -1,16 +1,14 @@
+Key:
+
 -	: No progress
 .	: In progress
 ?	: Partially implemented
 !	: Fully implemented at least one part (for abilities with multiple effects)
 OK	: Fully implemented
 
-TODO:
-
-* Investigate overworld effects. Currently, only Pickup, Immunity and Poison Heal have
-appropriately changed overworld effects. Figure out which abilities have those,
-and fix it.
-
 ---
+
+In-battle effects:
 
 OK	STENCH
 OK	DRIZZLE
@@ -33,7 +31,7 @@ OK	SHIELD_DUST
 OK	OWN_TEMPO
 OK	SUCTION_CUPS
 OK	INTIMIDATE
-!	SHADOW_TAG (Routines done, not fully used yet)
+!	SHADOW_TAG (routines done, not fully used yet)
 OK	LEVITATE
 OK	EFFECT_SPORE
 OK	SYNCHRONIZE
@@ -43,25 +41,25 @@ OK	LIGHTNING_ROD
 OK	SERENE_GRACE
 OK	SWIFT_SWIM
 OK	CHLOROPHYLL
--	ILLUMINATE
+OK	ILLUMINATE (no effect)
 OK	TRACE
 OK	HUGE_POWER
 OK	POISON_POINT
 OK	INNER_FOCUS
 OK	MAGMA_ARMOR
 OK	WATER_VEIL
-!	MAGNET_PULL (Routines done, not fully used yet)
+!	MAGNET_PULL (routines done, not fully used yet)
 OK	SOUNDPROOF
 OK	RAIN_DISH
 OK	SAND_STREAM
-!	PRESSURE (Overworld effect not yet done)
+OK	PRESSURE
 OK	THICK_FAT
 OK	EARLY_BIRD
 OK	FLAME_BODY
 OK	RUN_AWAY
 OK	KEEN_EYE
 OK	HYPER_CUTTER
-!	PICKUP (Overworld effect done)
+-	PICKUP
 OK	HUSTLE
 -	CUTE_CHARM
 OK	STICKY_HOLD
@@ -72,10 +70,10 @@ OK	LIQUID_OOZE
 OK	OVERGROW
 OK	BLAZE
 OK	TORRENT
-!	SWARM (Overworld effect not yet done)
+OK	SWARM
 OK	ROCK_HEAD
 OK	DROUGHT
-!	ARENA_TRAP (Routines done, not fully used yet)
+!	ARENA_TRAP (routines done, not fully used yet)
 OK	VITAL_SPIRIT
 OK	SHELL_ARMOR
 OK	TANGLED_FEET
@@ -140,3 +138,34 @@ OK	SAND_FORCE
 OK	FUR_COAT
 OK	COMPETITIVE
 -	PIXILATE
+
+---
+
+Out-of-battle effects:
+
+-	STENCH
+-	SAND_VEIL
+-	STATIC
+-	COMPOUND_EYES
+OK	IMMUNITY
+-	SUCTION_CUPS
+-	INTIMIDATE
+-	SYNCHRONIZE
+-	LIGHTNING_ROD
+-	ILLUMINATE
+-	MAGMA_ARMOR
+-	MAGNET_PULL
+-	PRESSURE
+-	FLAME_BODY
+-	KEEN_EYE
+-	HYPER_CUTTER
+OK	PICKUP
+-	HUSTLE
+-	CUTE_CHARM
+-	STICKY_HOLD
+-	SWARM
+-	ARENA_TRAP
+-	VITAL_SPIRIT
+-	SNOW_CLOAK
+-	QUICK_FEET
+-	NO_GUARD
