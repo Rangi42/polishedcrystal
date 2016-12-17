@@ -150,7 +150,9 @@
 	charmap "♂",        $ef
 	charmap "¥",        $f0
 	charmap "×",        $f1
-	charmap "·",        $f2
+
+; unused: f2
+
 	charmap "/",        $f3
 	charmap ",",        $f4
 	charmap "♀",        $f5

@@ -489,7 +489,7 @@ DisplayHOFMon: ; 86748
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
-	ld [hl], "·"
+	ld [hl], "."
 	hlcoord 3, 13
 	ld de, wd265
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
