@@ -334,9 +334,11 @@ SynchronizeAbility:
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
+	; First, check contact moves. Struggle makes contact, but can't be part of
+	; the array check, being 0xFF (the array terminator)
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE ; Struggle is index -1, the array terminator, so it's handled separately
+	cp STRUGGLE
 	jr z, .run_contact_abilities
 	ld hl, ContactMoves
 	call IsInArray
@@ -344,42 +346,31 @@ RunHitAbilities:
 .run_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities
+	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
-	cp PHYSICAL
-	call z, .weakarmor
+	ld b, a
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
-	cp DARK
-	jr z, .justified
-	cp BUG
-	jr z, .rattled
-	cp GHOST
-	jr z, .rattled
-	ret
-.justified
+	ld c, a
+	push bc
 	call GetOpponentAbilityAfterMoldBreaker
+	push af
+	farcall BattleCommand_SwitchTurn
+	pop af
+	pop bc
+	call .do_enemy_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+.do_enemy_abilities
+	cp CURSED_BODY
+	jp z, CursedBodyAbility
 	cp JUSTIFIED
-	jr nz, .rattled
-	farcall BattleCommand_SwitchTurn
-	call JustifiedAbility
-	farcall BattleCommand_SwitchTurn
-	ret
-.rattled
-	call GetOpponentAbilityAfterMoldBreaker
+	jp z, JustifiedAbility
 	cp RATTLED
-	ret nz
-	farcall BattleCommand_SwitchTurn
-	call RattledAbility
-	farcall BattleCommand_SwitchTurn
-	ret
-.weakarmor
-	call GetOpponentAbilityAfterMoldBreaker
+	jp z, RattledAbility
 	cp WEAK_ARMOR
-	ret nz
-	farcall BattleCommand_SwitchTurn
-	call WeakArmorAbility
-	farcall BattleCommand_SwitchTurn
+	jp z, WeakArmorAbility
 	ret
 
 RunContactAbilities:
@@ -428,6 +419,59 @@ RunContactAbilities:
 	cp STATIC
 	jp z, StaticAbility
 	ret
+
+CursedBodyAbility:
+	; TODO: checks are duplicated from BattleCommand_Disable, consider merging
+	; them, somehow (just calling it needlessy will spam text)
+	ld de, EnemyDisableCount
+	ld hl, EnemyMonMoves
+	ld a, [hBattleTurn]
+	and a
+	jr z, .got_moves
+	ld de, PlayerDisableCount
+	ld hl, BattleMonMoves
+
+.got_moves
+	ld a, [de]
+	and a
+	ret nz ; already disabled
+
+	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
+	call GetBattleVar
+	and a
+	ret z ; no last move
+	cp STRUGGLE
+	ret z ; can't disable struggle
+
+	ld b, a
+	ld c, $ff
+.loop
+	inc c
+	ld a, [hli]
+	cp b
+	jr nz, .loop
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, EnemyMonPP
+	jr z, .got_pp
+	ld hl, BattleMonPP
+.got_pp
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	and a
+	ret z ; move is out of PP
+	push de
+	call ShowAbilityActivation
+	call DisableAnimations
+	farcall BattleCommand_Disable
+	pop de
+	; now set duration to 3 (it goes away on the turn *after* it gets 0, so $02)
+	ld a, [de]
+	and $f0
+	or $02
+	jp EnableAnimations
 
 PickPocketAbility:
 CuteCharmAbility:
@@ -571,14 +615,29 @@ DefiantAbility:
 	ld b, $10 | ATTACK
 	jr StatUpAbility
 JustifiedAbility:
+	; only for dark type moves
+	ld a, c
+	cp DARK
+	ret nz
 SapSipperAbility:
 	ld b, ATTACK
 	jr StatUpAbility
 LightningRodAbility:
 	ld b, SP_ATTACK
 	jr StatUpAbility
-MotorDriveAbility:
 RattledAbility:
+	; only for bug-, dark or ghost type moves
+	ld a, c
+	cp BUG
+	jr .ok
+	cp DARK
+	jr .ok
+	cp GHOST
+	jr .ok
+	ret
+.ok
+	; fallthrough
+MotorDriveAbility:
 SteadfastAbility:
 SpeedBoostAbility:
 	ld b, SPEED
@@ -608,6 +667,11 @@ StatUpAbility:
 	jp EnableAnimations
 
 WeakArmorAbility:
+	; only physical moves activate this
+	ld a, b
+	cp PHYSICAL
+	ret nz
+
 	ld b, DEFENSE
 	call DisableAnimations
 	farcall ResetMiss
