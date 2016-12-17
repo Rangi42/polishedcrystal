@@ -218,6 +218,7 @@ TryWildEncounter:: ; 2a0e7
 	call GetMapEncounterRate
 	call ApplyMusicEffectOnEncounterRate
 	call ApplyCleanseTagEffectOnEncounterRate
+	call ApplyAbilityEffectOnEncounterRate
 	call Random
 	cp b
 	ret
@@ -274,6 +275,44 @@ ApplyCleanseTagEffectOnEncounterRate:: ; 2a138
 	srl b
 	ret
 ; 2a14f
+
+ApplyAbilityEffectOnEncounterRate::
+	push bc
+	ld a, [PartyMon1Ability]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	farcall GetAbility
+	ld a, b
+	pop bc
+	cp ARENA_TRAP
+	jr z, .double
+	cp ILLUMINATE
+	jr z, .double
+	cp NO_GUARD
+	jr z, .semidouble
+	cp SWARM
+	jr z, .semidouble
+	cp QUICK_FEET
+	jr z, .halve
+	cp STENCH
+	jr z, .halve
+	ret
+
+.double
+	sla b
+	ret
+
+.semidouble
+	ld a, b
+	srl a
+	add b
+	ld b, a
+	ret
+
+.halve
+	srl b
+	ret
 
 ChooseWildEncounter: ; 2a14f
 	call LoadWildMonDataPointer
