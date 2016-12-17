@@ -1075,6 +1075,12 @@ HandleResidualDamage:
 	call HasUserFainted
 	ret z
 
+	; Magic guard prevents everything here
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp MAGIC_GUARD
+	ret z
+
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << PSN | 1 << BRN
