@@ -2536,9 +2536,8 @@ BattleCommand_SuperEffectiveText: ; 351ad
 ; 351c0
 
 
-BattleCommand_CheckDestinyBond: ; 351c0
-; Faint the user if it fainted an opponent using Destiny Bond, or proc Aftermath
-
+BattleCommand_PostFaintEffects: ; 351c0
+; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
 	ld hl, EnemyMonHP
 	ld a, [hBattleTurn]
 	and a
@@ -2573,27 +2572,7 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	jr .finish
 
 .no_dbond
-	call GetOpponentAbilityAfterMoldBreaker
-	cp AFTERMATH
-	jr nz, .no_aftermath
-	; Damp protects against this
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DAMP
-	jr z, .no_aftermath
-	; Only contact moves proc Aftermath
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
-	jr z, .is_contact
-	ld hl, ContactMoves
-	call IsInArray
-	jr c, .no_aftermath
-.is_contact
-	call ShowEnemyAbilityActivation
-	call GetQuarterMaxHP
-	call SubtractHPFromUser
-.no_aftermath
+	farcall RunFaintAbilities
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_MULTI_HIT

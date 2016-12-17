@@ -332,6 +332,53 @@ SynchronizeAbility:
 	farcall BattleCommand_Burn
 	jp EnableAnimations
 
+RunFaintAbilities:
+; abilities that run after an attack faints an enemy
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	call .user_abilities
+	call GetOpponentAbilityAfterMoldBreaker
+	push af
+	farcall BattleCommand_SwitchTurn
+	pop af
+	call .opponent_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+.user_abilities
+	cp MOXIE
+	jp z, MoxieAbility
+	ret
+.opponent_abilities
+	cp AFTERMATH
+	jp z, AftermathAbility
+	ret
+
+AftermathAbility:
+	; Damp protects against this
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp DAMP
+	ret z
+	; Only contact moves proc Aftermath
+	farcall BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	push af
+	farcall BattleCommand_SwitchTurn
+	pop af
+	jr z, .is_contact
+	ld hl, ContactMoves
+	call IsInArray
+	ret c
+.is_contact
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
+	farcall GetQuarterMaxHP
+	farcall SubtractHPFromUser
+	farcall BattleCommand_SwitchTurn
+	ret
+
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	; First, check contact moves. Struggle makes contact, but can't be part of
@@ -578,6 +625,7 @@ JustifiedAbility:
 	ld a, c
 	cp DARK
 	ret nz
+MoxieAbility:
 SapSipperAbility:
 	ld b, ATTACK
 	jr StatUpAbility
