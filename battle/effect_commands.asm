@@ -3462,7 +3462,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp SAND_FORCE
 	jr z, .sand_force
 	cp RECKLESS
-	jr z, .reckless
+	jp z, .reckless
 	cp GUTS
 	jp nz, .ability_penalties
 	ld a, BATTLE_VARS_STATUS
@@ -3513,8 +3513,10 @@ BattleCommand_DamageCalc: ; 35612
 .iron_fist
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
+	push hl
 	ld hl, PunchingMoves
 	call IsInArray
+	pop hl
 	jr c, .ability_penalties
 	jr .ability_x1_2
 .sand_force
