@@ -3432,6 +3432,14 @@ BattleCommand_DamageCalc: ; 35612
 	jp z, .ability_double
 	cp HUSTLE
 	jp z, .ability_semidouble
+	cp OVERGROW
+	jr z, .overgrow
+	cp BLAZE
+	jr z, .blaze
+	cp TORRENT
+	jr z, .torrent
+	cp SWARM
+	jr z, .swarm
 	cp SHEER_FORCE
 	jr z, .sheer_force
 	cp ANALYTIC
@@ -3453,6 +3461,25 @@ BattleCommand_DamageCalc: ; 35612
 	and a
 	jp z, .ability_penalties
 	jp .ability_semidouble
+.overgrow
+	ld b, GRASS
+	jr .pinch_ability
+.blaze
+	ld b, FIRE
+	jr .pinch_ability
+.torrent
+	ld b, WATER
+	jr .pinch_ability
+.swarm
+	ld b, BUG
+.pinch_ability
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	jp nz, .ability_penalties
+	call CheckPinch
+	jp z, .ability_semidouble
+	jp .ability_penalties
 .sheer_force
 	; Only nonzero for sheer force users when using a move with an additional effect
 	ld a, [EffectFailed]
