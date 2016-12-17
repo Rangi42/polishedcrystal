@@ -2537,9 +2537,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 
 
 BattleCommand_CheckDestinyBond: ; 351c0
-; checkdestinybond
-
-; Faint the user if it fainted an opponent using Destiny Bond.
+; Faint the user if it fainted an opponent using Destiny Bond, or proc Aftermath
 
 	ld hl, EnemyMonHP
 	ld a, [hBattleTurn]
@@ -2560,38 +2558,9 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
 
-	ld a, [hBattleTurn]
-	and a
-	ld hl, EnemyMonMaxHP + 1
-	bccoord 1, 2 ; hp bar
-	ld a, 0
-	jr nz, .got_max_hp
-	ld hl, BattleMonMaxHP + 1
-	bccoord 10, 9 ; hp bar
-	ld a, 1
-
-.got_max_hp
-	ld [wWhichHPBar], a
-	ld a, [hld]
-	ld [Buffer1], a
-	ld a, [hld]
-	ld [Buffer2], a
-	ld a, [hl]
-	ld [Buffer3], a
-	xor a
-	ld [hld], a
-	ld a, [hl]
-	ld [Buffer4], a
-	xor a
-	ld [hl], a
-	ld [Buffer5], a
-	ld [Buffer6], a
-	ld h, b
-	ld l, c
-	predef AnimateHPBar
-	call RefreshBattleHuds
-
 	call BattleCommand_SwitchTurn
+	farcall GetMaxHP
+	farcall SubtractHPFromUser
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a
@@ -2604,6 +2573,27 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	jr .finish
 
 .no_dbond
+	call GetOpponentAbilityAfterMoldBreaker
+	cp AFTERMATH
+	jr nz, .no_aftermath
+	; Damp protects against this
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp DAMP
+	jr z, .no_aftermath
+	; Only contact moves proc Aftermath
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	jr z, .is_contact
+	ld hl, ContactMoves
+	call IsInArray
+	jr c, .no_aftermath
+.is_contact
+	call ShowEnemyAbilityActivation
+	call GetQuarterMaxHP
+	call SubtractHPFromUser
+.no_aftermath
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_MULTI_HIT
