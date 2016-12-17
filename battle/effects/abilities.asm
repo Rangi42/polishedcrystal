@@ -426,9 +426,15 @@ CursedBodyAbility:
 	farcall BattleCommand_Disable
 	jp EnableAnimations
 
-PickPocketAbility:
 CuteCharmAbility:
+	call DisableAnimations
+	; this runs ShowAbilityActivation when relevant
+	farcall BattleCommand_Attract
+	jp EnableAnimations
+
+PickPocketAbility:
 	ret
+
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
 	ret z
