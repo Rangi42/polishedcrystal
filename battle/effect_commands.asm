@@ -3546,18 +3546,18 @@ BattleCommand_DamageCalc: ; 35612
 	pop hl
 	ld a, b
 	and a
-	jr nz, .abilities_done
+	jp nz, .abilities_done
 	ld [hl], 2
 	ld b, $4
 	call Divide
-	jr .abilities_done
+	jp .abilities_done
 .skip_multiscale
 	cp MARVEL_SCALE
 	jr nz, .skip_marvelscale
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and a
-	jr z, .abilities_done
+	jp z, .abilities_done
 	ld [hl], 2
 	call Multiply
 	ld [hl], 3
@@ -3599,7 +3599,7 @@ BattleCommand_DamageCalc: ; 35612
 	jr .abilities_done
 .skip_thick_fat
 	cp DRY_SKIN
-	jr nz, .abilities_done
+	jr nz, .skip_dry_skin
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
@@ -3609,6 +3609,22 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hl], 4
 	ld b, $4
 	call Divide
+.skip_dry_skin
+	cp FUR_COAT
+	jr nz, .abilities_done
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp PHYSICAL
+	jr z, .fur_coat_ok
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp PSYSTRIKE
+	jr nz, .abilities_done
+.fur_coat_ok
+	ld [hl], 2
+	ld b, $4
+	call Divide
+	jr .abilities_done
 .abilities_done
 ; Flash Fire
 	ld a, BATTLE_VARS_SUBSTATUS3
