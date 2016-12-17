@@ -13,7 +13,7 @@
 	dn 5, 5 ; frontpic dimensions
 	db MAGNET_PULL ; ability 1
 if DEF(FAITHFUL)
-	db STUDRY ; ability 2
+	db STURDY ; ability 2
 else
 	db LEVITATE ; ability 2
 endc
