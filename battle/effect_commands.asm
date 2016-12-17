@@ -8032,7 +8032,15 @@ BattleCommand_Disable: ; 36fed
 	ld a, [hl]
 	and a
 	jr z, .failed
+	call ShowPotentialAbilityActivation
+	; check for AnimationsDisabled to determine if this is via Cursed Body, in
+	; which we want to change the duration to always be 3 turns
+	ld a, [AnimationsDisabled]
+	and a
 	ld a, 4
+	jr z, .got_duration
+	ld a, 2
+.got_duration
 	inc c
 	swap c
 	add c
@@ -9712,6 +9720,17 @@ CallBattleCore: ; 37e73
 
 ; 37e77
 
+ShowPotentialAbilityActivation:
+; This avoids duplicating checks to avoid text spam. This will run
+; ShowAbilityActivation if animations are disabled (something only abilities do)
+	ld a, [AnimationsDisabled]
+	and a
+	ret z
+	; push/pop hl isn't redundant, farcall clobbers it
+	push hl
+	farcall ShowAbilityActivation
+	pop hl
+	ret
 
 AnimateFailedMove: ; 37e77
 	ld a, [AnimationsDisabled]

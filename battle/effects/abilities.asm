@@ -421,56 +421,9 @@ RunContactAbilities:
 	ret
 
 CursedBodyAbility:
-	; TODO: checks are duplicated from BattleCommand_Disable, consider merging
-	; them, somehow (just calling it needlessy will spam text)
-	ld de, EnemyDisableCount
-	ld hl, EnemyMonMoves
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_moves
-	ld de, PlayerDisableCount
-	ld hl, BattleMonMoves
-
-.got_moves
-	ld a, [de]
-	and a
-	ret nz ; already disabled
-
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-	call GetBattleVar
-	and a
-	ret z ; no last move
-	cp STRUGGLE
-	ret z ; can't disable struggle
-
-	ld b, a
-	ld c, $ff
-.loop
-	inc c
-	ld a, [hli]
-	cp b
-	jr nz, .loop
-
-	ld a, [hBattleTurn]
-	and a
-	ld hl, EnemyMonPP
-	jr z, .got_pp
-	ld hl, BattleMonPP
-.got_pp
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	and a
-	ret z ; move is out of PP
-	push de
-	call ShowAbilityActivation
 	call DisableAnimations
+	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_Disable
-	pop de
-	; now set duration to 3 (it goes away on the turn *after* it gets 0, so $02)
-	ld a, [de]
-	and $f0
-	or $02
 	jp EnableAnimations
 
 PickPocketAbility:
