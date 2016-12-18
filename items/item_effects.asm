@@ -1340,7 +1340,29 @@ NetBallMultiplier:
 	ret
 
 DiveBallMultiplier:
-; TODO: multiply catch rate by 3.5 if surfing or fishing
+; multiply catch rate by 3.5 if surfing or fishing
+	ld a, [PlayerState]
+	cp PLAYER_SURF
+	jr z, .water
+	cp PLAYER_SURF_PIKA
+	jr z, .water
+
+	ld a, [BattleType]
+	cp BATTLETYPE_FISH
+	jr z, .water
+
+	ret
+
+.water
+	ld a, b
+	srl a
+	add b
+	add b
+	add b
+	ld b, a
+	ret nc
+	ld b, $ff
+	ret
 	ret
 
 QuickBallMultiplier:

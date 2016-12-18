@@ -53,8 +53,8 @@ Predef_LoadSGBLayout: ; 864c
 	dw .SGB1a
 	dw .SGB1b
 	dw .SGB_FrontpicPals
-	dw .SGB1d
-	dw .SGB1e
+	dw .SGB_IntroPals
+	dw .SGB_IntroNamingPals
 	dw .SGB_TrainerCard2
 ; 86ad
 
@@ -309,8 +309,7 @@ endr
 	ret
 ; 8860
 
-.SGB08:
-.SGB1d: ; 8860
+.SGB08: ; 8860
 	ld hl, PalPacket_9cb6
 	ld de, BlkPacket_9a86
 	ret
@@ -474,39 +473,6 @@ endr
 	ret
 ; 8969
 
-.SGB1e: ; 8969
-	ld hl, PalPacket_9ce6
-	ld de, wSGBPals
-	ld bc, $10
-	call CopyBytes
-	ld a, [CurPartySpecies]
-	ld l, a
-	ld h, 0
-rept 3
-	add hl, hl
-endr
-	ld de, PokemonPalettes
-	add hl, de
-	ld a, [wcf65]
-	and 3
-	sla a
-	sla a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hli]
-	ld [wSGBPals + 3], a
-	ld a, [hli]
-	ld [wSGBPals + 4], a
-	ld a, [hli]
-	ld [wSGBPals + 5], a
-	ld a, [hl]
-	ld [wSGBPals + 6], a
-	ld hl, wSGBPals
-	ld de, BlkPacket_9a86
-	ret
-; 89a6
-
 .SGB19: ; 89a6
 	ld hl, PalPacket_9cd6
 	ld de, BlkPacket_9a86
@@ -540,7 +506,9 @@ endr
 	ret
 ; 89e0
 
-.SGB_FrontpicPals: ; 89e0
+.SGB_FrontpicPals:
+.SGB_IntroPals:
+.SGB_IntroNamingPals: ; 89e0
 	ld hl, PalPacket_9ce6
 	ld de, wSGBPals
 	ld bc, $10

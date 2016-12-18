@@ -689,7 +689,7 @@ OakSpeech: ; 0x5f99
 	ld [TrainerClass], a
 	call Intro_PrepTrainerPic
 
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
 	call LoadIntroGradientGFX
@@ -713,7 +713,7 @@ OakSpeech: ; 0x5f99
 	ld [TempMonDVs + 1], a
 	ld [TempMonDVs + 2], a
 
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
 	call LoadIntroGradientGFX
@@ -732,7 +732,7 @@ OakSpeech: ; 0x5f99
 	ld [TrainerClass], a
 	call Intro_PrepTrainerPic
 
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
 	call LoadIntroGradientGFX
@@ -750,7 +750,7 @@ OakSpeech: ; 0x5f99
 	call PrintText
 	call NamePlayer
 
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
 	call LoadIntroGradientGFX
@@ -818,7 +818,7 @@ InitGender: ; 48dcb (12:4dcb)
 	ld [CurPartySpecies], a
 	farcall DrawIntroPlayerPic
 
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
 	call LoadIntroGradientGFX
@@ -873,7 +873,7 @@ NamePlayer: ; 0x6074
 
 	xor a
 	ld [CurPartySpecies], a
-	ld b, SCGB_NAMINGSCREENPALS
+	ld b, SCGB_INTRO_NAMING_PALS
 	call GetSGBLayout
 
 	farcall ShowPlayerNamingChoices
@@ -884,7 +884,7 @@ NamePlayer: ; 0x6074
 
 	xor a
 	ld [CurPartySpecies], a
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 
 	farcall MovePlayerPicLeft
@@ -901,7 +901,7 @@ NamePlayer: ; 0x6074
 	call LoadFontsExtra
 	call WaitBGMap
 
-	ld b, SCGB_FRONTPICPALS
+	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call RotateThreePalettesLeft
 

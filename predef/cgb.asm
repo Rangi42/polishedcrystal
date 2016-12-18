@@ -62,8 +62,8 @@ Predef_LoadSGBLayoutCGB: ; 8d59
 	dw _CGB1a
 	dw _CGB1b
 	dw _CGB_FrontpicPals
-	dw _CGB_NamingScreenPals
-	dw _CGB1e
+	dw _CGB_IntroPals
+	dw _CGB_IntroNamingPals
 	dw _CGB_TrainerCard2
 ; 8db8
 
@@ -1373,16 +1373,6 @@ _CGB1a: ; 9529
 	ret
 ; 9542
 
-_CGB1e: ; 9542
-	ld de, UnknBGPals
-	ld a, [CurPartySpecies]
-	call GetMonPalettePointer_
-	call LoadPalette_White_Col1_Col2_Black
-	call WipeAttrMap
-	call ApplyAttrMap
-	ret
-; 9555
-
 _CGB1b: ; 9555
 	ld hl, PalPacket_9cc6 + 1
 	call CopyFourPalettes
@@ -1402,6 +1392,18 @@ _CGB1b: ; 9555
 _CGB_FrontpicPals: ; 9578
 	ld de, UnknBGPals
 	ld a, [CurPartySpecies]
+	ld bc, TempMonDVs
+	call GetFrontpicPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	call WipeAttrMap
+	call ApplyAttrMap
+	call ApplyPals
+	ret
+; 9591
+
+_CGB_IntroPals: ; 9591
+	ld de, UnknBGPals
+	ld a, [CurPartySpecies]
 	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
@@ -1418,9 +1420,9 @@ _CGB_FrontpicPals: ; 9578
 	call FillBoxCGB
 	call ApplyAttrMap
 	ret
-; 9591
+; 95e0
 
-_CGB_NamingScreenPals: ; 9591
+_CGB_IntroNamingPals: ; 9542
 	ld de, UnknBGPals
 	ld a, [CurPartySpecies]
 	ld bc, TempMonPersonality
@@ -1443,10 +1445,11 @@ _CGB_NamingScreenPals: ; 9591
 	call FillBoxCGB
 	call ApplyAttrMap
 	ret
-; 95e0
+; 9555
 
 IntroGradientPalette:
 	RGB 31, 31, 31
 	RGB 27, 31, 31
 	RGB 19, 31, 31
 	RGB 09, 30, 31
+
