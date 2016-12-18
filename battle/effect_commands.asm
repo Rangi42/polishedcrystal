@@ -6691,11 +6691,6 @@ CheckIfTrappedByAbilityInner:
 	; Only works on Steel types
 	call CheckIfUserIsSteelType
 	ret nz
-	; Except if they also have Magnet Pull
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp MAGNET_PULL
-	ret z
 	jr .is_trapped
 .has_arena_trap
 	; Doesn't work on flying types or levitate users
