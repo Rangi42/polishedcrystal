@@ -406,6 +406,12 @@ BattleText_PkmnCantBeRecalled: ; 0x80c22
 	prompt
 ; 0x80c39
 
+BattleText_PkmnCantBeRecalledAbility: ; 0x80c22
+	text_from_ram EnemyMonNick
+	text "'s"
+	line "ability traps you!"
+	prompt
+
 BattleText_TheresNoPPLeftForThisMove: ; 0x80c39
 	text "There's no PP left"
 	line "for this move!"
