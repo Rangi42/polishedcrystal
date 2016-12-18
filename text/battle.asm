@@ -1359,6 +1359,12 @@ AngerPointMaximizedAttackText:
 	cont "with Anger Point!"
 	prompt
 
+DampAbilityText:
+	text "<USER>'s"
+	line "Damp prevented"
+	cont "the explosion!"
+	prompt
+
 ScaredText:
 	text "<USER> is too"
 	line "scared to move!"

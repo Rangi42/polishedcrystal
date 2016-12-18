@@ -15,7 +15,7 @@ OK	DRIZZLE
 OK	SPEED_BOOST
 OK	BATTLE_ARMOR
 -	STURDY
-!	DAMP (protects against Aftermath, not selfdestruction otherwise yet)
+OK	DAMP
 OK	LIMBER
 OK	SAND_VEIL
 OK	STATIC
