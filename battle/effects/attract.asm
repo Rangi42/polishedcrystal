@@ -19,6 +19,8 @@ BattleCommand_Attract: ; 377ce
 	jp StdBattleTextBox
 
 .no_ability_protection
+	; maybe this was called by cute charm
+	call ShowPotentialAbilityActivation
 	set SUBSTATUS_IN_LOVE, [hl]
 	call AnimateCurrentMove
 

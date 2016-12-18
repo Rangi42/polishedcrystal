@@ -17,7 +17,7 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_CheckFaint ; 3505e
 	dw BattleCommand_CriticalText ; 35175
 	dw BattleCommand_SuperEffectiveText ; 351ad
-	dw BattleCommand_CheckDestinyBond ; 351c0
+	dw BattleCommand_PostFaintEffects ; 351c0
 	dw BattleCommand_PostHitEffects ; 35250
 	dw BattleCommand_PoisonTarget ; 35eee
 	dw BattleCommand_SleepTarget ; 35e5c

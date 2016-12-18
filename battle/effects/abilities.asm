@@ -332,6 +332,53 @@ SynchronizeAbility:
 	farcall BattleCommand_Burn
 	jp EnableAnimations
 
+RunFaintAbilities:
+; abilities that run after an attack faints an enemy
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	call .user_abilities
+	call GetOpponentAbilityAfterMoldBreaker
+	push af
+	farcall BattleCommand_SwitchTurn
+	pop af
+	call .opponent_abilities
+	farcall BattleCommand_SwitchTurn
+	ret
+.user_abilities
+	cp MOXIE
+	jp z, MoxieAbility
+	ret
+.opponent_abilities
+	cp AFTERMATH
+	jp z, AftermathAbility
+	ret
+
+AftermathAbility:
+	; Damp protects against this
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp DAMP
+	ret z
+	; Only contact moves proc Aftermath
+	farcall BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	push af
+	farcall BattleCommand_SwitchTurn
+	pop af
+	jr z, .is_contact
+	ld hl, ContactMoves
+	call IsInArray
+	ret c
+.is_contact
+	call ShowAbilityActivation
+	farcall BattleCommand_SwitchTurn
+	farcall GetQuarterMaxHP
+	farcall SubtractHPFromUser
+	farcall BattleCommand_SwitchTurn
+	ret
+
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	; First, check contact moves. Struggle makes contact, but can't be part of
@@ -421,61 +468,20 @@ RunContactAbilities:
 	ret
 
 CursedBodyAbility:
-	; TODO: checks are duplicated from BattleCommand_Disable, consider merging
-	; them, somehow (just calling it needlessy will spam text)
-	ld de, EnemyDisableCount
-	ld hl, EnemyMonMoves
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_moves
-	ld de, PlayerDisableCount
-	ld hl, BattleMonMoves
-
-.got_moves
-	ld a, [de]
-	and a
-	ret nz ; already disabled
-
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
-	call GetBattleVar
-	and a
-	ret z ; no last move
-	cp STRUGGLE
-	ret z ; can't disable struggle
-
-	ld b, a
-	ld c, $ff
-.loop
-	inc c
-	ld a, [hli]
-	cp b
-	jr nz, .loop
-
-	ld a, [hBattleTurn]
-	and a
-	ld hl, EnemyMonPP
-	jr z, .got_pp
-	ld hl, BattleMonPP
-.got_pp
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	and a
-	ret z ; move is out of PP
-	push de
-	call ShowAbilityActivation
 	call DisableAnimations
+	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_Disable
-	pop de
-	; now set duration to 3 (it goes away on the turn *after* it gets 0, so $02)
-	ld a, [de]
-	and $f0
-	or $02
+	jp EnableAnimations
+
+CuteCharmAbility:
+	call DisableAnimations
+	; this runs ShowAbilityActivation when relevant
+	farcall BattleCommand_Attract
 	jp EnableAnimations
 
 PickPocketAbility:
-CuteCharmAbility:
 	ret
+
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
 	ret z
@@ -619,6 +625,7 @@ JustifiedAbility:
 	ld a, c
 	cp DARK
 	ret nz
+MoxieAbility:
 SapSipperAbility:
 	ld b, ATTACK
 	jr StatUpAbility

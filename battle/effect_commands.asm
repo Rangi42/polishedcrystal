@@ -2536,11 +2536,8 @@ BattleCommand_SuperEffectiveText: ; 351ad
 ; 351c0
 
 
-BattleCommand_CheckDestinyBond: ; 351c0
-; checkdestinybond
-
-; Faint the user if it fainted an opponent using Destiny Bond.
-
+BattleCommand_PostFaintEffects: ; 351c0
+; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
 	ld hl, EnemyMonHP
 	ld a, [hBattleTurn]
 	and a
@@ -2560,38 +2557,9 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
 
-	ld a, [hBattleTurn]
-	and a
-	ld hl, EnemyMonMaxHP + 1
-	bccoord 1, 2 ; hp bar
-	ld a, 0
-	jr nz, .got_max_hp
-	ld hl, BattleMonMaxHP + 1
-	bccoord 10, 9 ; hp bar
-	ld a, 1
-
-.got_max_hp
-	ld [wWhichHPBar], a
-	ld a, [hld]
-	ld [Buffer1], a
-	ld a, [hld]
-	ld [Buffer2], a
-	ld a, [hl]
-	ld [Buffer3], a
-	xor a
-	ld [hld], a
-	ld a, [hl]
-	ld [Buffer4], a
-	xor a
-	ld [hl], a
-	ld [Buffer5], a
-	ld [Buffer6], a
-	ld h, b
-	ld l, c
-	predef AnimateHPBar
-	call RefreshBattleHuds
-
 	call BattleCommand_SwitchTurn
+	farcall GetMaxHP
+	farcall SubtractHPFromUser
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a
@@ -2604,6 +2572,7 @@ BattleCommand_CheckDestinyBond: ; 351c0
 	jr .finish
 
 .no_dbond
+	farcall RunFaintAbilities
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_MULTI_HIT
@@ -8034,7 +8003,15 @@ BattleCommand_Disable: ; 36fed
 	ld a, [hl]
 	and a
 	jr z, .failed
+	call ShowPotentialAbilityActivation
+	; check for AnimationsDisabled to determine if this is via Cursed Body, in
+	; which we want to change the duration to always be 3 turns
+	ld a, [AnimationsDisabled]
+	and a
 	ld a, 4
+	jr z, .got_duration
+	ld a, 2
+.got_duration
 	inc c
 	swap c
 	add c
@@ -9714,6 +9691,17 @@ CallBattleCore: ; 37e73
 
 ; 37e77
 
+ShowPotentialAbilityActivation:
+; This avoids duplicating checks to avoid text spam. This will run
+; ShowAbilityActivation if animations are disabled (something only abilities do)
+	ld a, [AnimationsDisabled]
+	and a
+	ret z
+	; push/pop hl isn't redundant, farcall clobbers it
+	push hl
+	farcall ShowAbilityActivation
+	pop hl
+	ret
 
 AnimateFailedMove: ; 37e77
 	ld a, [AnimationsDisabled]
