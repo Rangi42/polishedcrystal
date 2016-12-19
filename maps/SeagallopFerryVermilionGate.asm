@@ -33,100 +33,175 @@ SeagallopFerryVermilionGate_PlayerArrives:
 SeagallopFerryVermilionGateSailorScript:
 	faceplayer
 	opentext
+	writetext SeagallopFerryWelcomeText
+	waitbutton
+	checkitem ORANGETICKET
+	iftrue .have_orangeticket
 	checkitem MYSTICTICKET
-	iffalse .MaybeOldSeaMap
+	iftrue .have_mysticticket
 	checkitem OLD_SEA_MAP
-	iffalse .JustMysticTicket
-	jump .BothTicketAndMap
-.MaybeOldSeaMap
-	checkitem OLD_SEA_MAP
-	iffalse .NeitherTicketNorMap
-	jump .JustOldSeaMap
-
-.NeitherTicketNorMap
+	iftrue .have_old_sea_map
 	writetext SeagallopFerryClosedText
 	waitbutton
 	closetext
 	end
 
-.JustMysticTicket
-	writetext SeagallopFerryNavelRockQuestionText
+.have_orangeticket
+	checkitem MYSTICTICKET
+	iftrue .have_orangeticket_and_mysticticket
+	checkitem OLD_SEA_MAP
+	iftrue .have_orangeticket_and_old_sea_map
+.use_orangeticket
+	writetext SeagallopFerryOrangeTicketQuestionText
 	yesorno
-	iffalse .RefuseFerry
-	jump .NavelRock
+	iffalse .no_ferry
+	scall SeagallopFerryDepartureScript
+	domaptrigger SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
+	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, $6, $5
+	end
 
-.JustOldSeaMap
-	writetext SeagallopFerryFarawayIslandQuestionText
+.have_mysticticket
+	checkitem OLD_SEA_MAP
+	iftrue .have_mysticticket_and_old_sea_map
+.use_mysticticket
+	writetext SeagallopFerryMysticTicketQuestionText
 	yesorno
-	iffalse .RefuseFerry
-	jump .FarawayIsland
-
-.BothTicketAndMap
-	writetext SeagallopFerryWhichDestinationText
-	loadmenudata .FerryMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .NavelRock
-	if_equal $2, .FarawayIsland
-	jump .RefuseFerry
-
-.NavelRock
-	writetext SeagallopFerryNavelRockText
-	waitbutton
-	closetext
-	spriteface SEAGALLOPFERRYVERMILIONGATE_SAILOR, DOWN
-	pause 10
-	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorDepartMovementData
-	playsound SFX_EXIT_BUILDING
-	disappear SEAGALLOPFERRYVERMILIONGATE_SAILOR
-	waitsfx
-	applymovement PLAYER, SeagallopFerryVermilionGatePlayerDepartMovementData
-	playsound SFX_EXIT_BUILDING
-	special FadeOutPalettes
-	waitsfx
-	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
+	iffalse .no_ferry
+	scall SeagallopFerryDepartureScript
 	domaptrigger SEAGALLOP_FERRY_NAVEL_GATE, $1
 	warp SEAGALLOP_FERRY_NAVEL_GATE, $6, $5
 	end
 
-.FarawayIsland
-	writetext SeagallopFerryFarawayIslandText
+.have_orangeticket_and_mysticticket
+	checkitem OLD_SEA_MAP
+	iftrue .have_three_tickets
+	writetext SeagallopFerryWhichTicketText
 	waitbutton
-	closetext
-	spriteface SEAGALLOPFERRYVERMILIONGATE_SAILOR, DOWN
-	pause 10
-	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorDepartMovementData
-	playsound SFX_EXIT_BUILDING
-	disappear SEAGALLOPFERRYVERMILIONGATE_SAILOR
-	waitsfx
-	applymovement PLAYER, SeagallopFerryVermilionGatePlayerDepartMovementData
-	playsound SFX_EXIT_BUILDING
-	special FadeOutPalettes
-	waitsfx
-	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
+	loadmenudata OrangeMysticMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .use_orangeticket
+	if_equal $2, .use_mysticticket
+	jump .no_ferry
+
+.have_old_sea_map
+.use_old_sea_map
+	writetext SeagallopFerryOldSeaMapQuestionText
+	yesorno
+	iffalse .no_ferry
+	scall SeagallopFerryDepartureScript
 	domaptrigger FARAWAY_ISLAND, $1
 	warp FARAWAY_ISLAND, $c, $2a
 	end
 
-.RefuseFerry
+.have_orangeticket_and_old_sea_map
+	writetext SeagallopFerryWhichTicketText
+	waitbutton
+	loadmenudata MysticOldSeaMapMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .use_mysticticket
+	if_equal $2, .use_old_sea_map
+	jump .no_ferry
+
+.have_mysticticket_and_old_sea_map
+	writetext SeagallopFerryWhichTicketText
+	waitbutton
+	loadmenudata OrangeOldSeaMapMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .use_orangeticket
+	if_equal $2, .use_old_sea_map
+	jump .no_ferry
+
+.have_three_tickets
+	writetext SeagallopFerryWhichTicketText
+	waitbutton
+	loadmenudata ThreeTicketsMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .use_orangeticket
+	if_equal $2, .use_mysticticket
+	if_equal $3, .use_old_sea_map
+.no_ferry:
 	writetext SeagallopFerryVermilionCityRefusedText
 	waitbutton
 	closetext
 	end
 
-.FerryMenuDataHeader:
+OrangeMysticMenuDataHeader:
 	db $40 ; flags
 	db 04, 00 ; start coords
-	db 11, 17 ; end coords
+	db 11, 15 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 
 .MenuData2:
 	db $80 ; flags
 	db 3 ; items
-	db "Navel Rock@"
-	db "Faraway Island@"
+	db "OrangeTicket@"
+	db "MysticTicket@"
 	db "Cancel@"
+
+MysticOldSeaMapMenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "MysticTicket@"
+	db "Old Sea Map@"
+	db "Cancel@"
+
+OrangeOldSeaMapMenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "OrangeTicket@"
+	db "Old Sea Map@"
+	db "Cancel@"
+
+ThreeTicketsMenuDataHeader:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 15 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "OrangeTicket@"
+	db "MysticTicket@"
+	db "Old Sea Map@"
+	db "Cancel@"
+
+SeagallopFerryDepartureScript:
+	writetext SeagallopFerryDepartureText
+	waitbutton
+	closetext
+	spriteface SEAGALLOPFERRYVERMILIONGATE_SAILOR, DOWN
+	pause 10
+	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorDepartMovementData
+	playsound SFX_EXIT_BUILDING
+	disappear SEAGALLOPFERRYVERMILIONGATE_SAILOR
+	waitsfx
+	applymovement PLAYER, SeagallopFerryVermilionGatePlayerDepartMovementData
+	playsound SFX_EXIT_BUILDING
+	special FadeOutPalettes
+	waitsfx
+	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
+	end
 
 SeagallopFerryVermilionGateSailorDepartMovementData:
 	step_down
@@ -156,19 +231,28 @@ SeagallopFerryVermilionGateSailorArrive2MovementData:
 	turn_head_up
 	step_end
 
-SeagallopFerryClosedText:
+SeagallopFerryWelcomeText:
 	text "Welcome aboard the"
 	line "Seagallop Ferry!"
+	done
 
-	para "I'm sorry, you don't"
+SeagallopFerryClosedText:
+	text "I'm sorry, you don't"
 	line "have a ticket."
 	done
 
-SeagallopFerryNavelRockQuestionText:
-	text "Welcome aboard the"
-	line "Seagallop Ferry!"
+SeagallopFerryOrangeTicketQuestionText:
+	text "That OrangeTicket"
+	line "is for a ride to"
+	cont "Shamouti Island."
 
-	para "Oh! That's a"
+	para "We'll be happy to"
+	line "take you there"
+	cont "any time."
+	done
+
+SeagallopFerryMysticTicketQuestionText:
+	text "Oh! That's a"
 	line "MysticTicket!"
 	cont "Now that is rare."
 
@@ -177,11 +261,8 @@ SeagallopFerryNavelRockQuestionText:
 	cont "Rock any time."
 	done
 
-SeagallopFerryFarawayIslandQuestionText:
-	text "Welcome aboard the"
-	line "Seagallop Ferry!"
-
-	para "Oh! That Old Sea"
+SeagallopFerryOldSeaMapQuestionText:
+	text "Oh! That Old Sea"
 	line "Map you have…"
 
 	para "It looks like a"
@@ -192,16 +273,12 @@ SeagallopFerryFarawayIslandQuestionText:
 	cont "any time."
 	done
 
-SeagallopFerryWhichDestinationText:
-	text "Welcome aboard the"
-	line "Seagallop Ferry!"
-
-	para "Where are you"
-	line "bound for?"
+SeagallopFerryWhichTicketText:
+	text "Do you have a"
+	line "ticket?"
 	done
 
-SeagallopFerryNavelRockText:
-SeagallopFerryFarawayIslandText:
+SeagallopFerryDepartureText:
 	text "All right!"
 
 	para "All aboard the"

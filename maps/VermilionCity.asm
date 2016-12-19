@@ -52,6 +52,9 @@ LawrenceLeftIntroScript:
 	opentext
 	writetext LawrenceIntroText
 	waitbutton
+	verbosegiveitem ORANGETICKET
+	writetext LawrenceOrangeTicketText
+	waitbutton
 	closetext
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
@@ -247,12 +250,12 @@ VermilionCityHiddenFullHeal:
 	dwb EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL, FULL_HEAL
 
 LawrenceOverheardText:
-	text "…Yes, if my re-"
-	line "search is correct,"
+	text "…So the legendary"
+	line "#mon was not"
+	cont "on that island…"
 
-	para "the legendary"
-	line "#mon should be"
-	cont "on the island…"
+	para "I must continue my"
+	line "search elsewhere…"
 	done
 
 LawrenceIntroText:
@@ -267,12 +270,40 @@ LawrenceIntroText:
 	para "My name is"
 	line "Lawrence III."
 
-	para "Legendary Pokemon"
+	para "Legendary #mon"
 	line "have always been"
 	cont "my passion."
 
+	para "I've just returned"
+	line "from Shamouti"
+	cont "Island."
+
+	para "There was no sign"
+	line "of the #mon I"
+
+	para "seek, so I have no"
+	line "more use for this."
+	done
+
+LawrenceOrangeTicketText:
+	text "You can use that"
+	line "ticket at the"
+
+	para "ferry here in"
+	line "Vermilion Port"
+
+	para "to visit Shamouti"
+	line "Island."
+
+	para "It's a source of"
+	line "many legends, but"
+
+	para "no more legendary"
+	line "#mon…"
+
 	para "Oh, you've encoun-"
-	line "tered one before?"
+	line "tered #mon out"
+	cont "of Johto's legends?"
 
 	para "Then our paths may"
 	line "cross again as"
