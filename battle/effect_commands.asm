@@ -6655,6 +6655,7 @@ CheckIfTrappedByAbility:
 	ld a, b
 	and a
 	ret
+
 _CheckIfTrappedByAbility:
 	; Wrapper around ability checks to ensure that no double-traps
 	; happen.

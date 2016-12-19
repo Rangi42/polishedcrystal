@@ -409,7 +409,9 @@ BattleText_PkmnCantBeRecalled: ; 0x80c22
 BattleText_PkmnCantBeRecalledAbility: ; 0x80c22
 	text_from_ram EnemyMonNick
 	text "'s"
-	line "ability traps you!"
+	line "@"
+	text_from_ram StringBuffer1
+	cont "prevents escape!"
 	prompt
 
 BattleText_TheresNoPPLeftForThisMove: ; 0x80c39
