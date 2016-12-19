@@ -646,7 +646,6 @@ endr
 	ld hl, .OTNamePointers
 	call GetNicknamePointer
 	call CopyNickname
-	farcall CheckNickErrors
 	hlcoord 1, 15
 	call PlaceString
 	ld a, [TempMonCaughtGender]

@@ -1,12 +1,8 @@
 ; Control characters
 	charmap "<START>",  $00
-	charmap "<DAY>",    $15
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22
-	charmap "<POKE>",   $24
 	charmap "%",        $25
-	charmap "<ENEMY>",  $3f
-	charmap "<PKMN>",   $4a
 	charmap "<NEXT>",   $4e
 	charmap "<LINE>",   $4f
 
@@ -21,10 +17,10 @@
 	charmap "<PROMPT>", $58
 	charmap "<TARGET>", $59
 	charmap "<USER>",   $5a
-	charmap "<PC>",     $5b
-	charmap "<TM>",     $5c
-	charmap "<TRNER>",  $5d
-	charmap "<ROCKET>", $5e
+	charmap "<ENEMY>",  $5b
+	charmap "<TRENDY>", $5c
+	charmap "<POKE>",   $5d
+	charmap "<PKMN>",   $5e
 	charmap "<DEXEND>", $5f
 
 ; Actual characters

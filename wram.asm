@@ -2241,9 +2241,10 @@ wPlayerData::
 PlayerID:: ; d47b
 	ds 2
 
-PlayerName:: ds NAME_LENGTH ; d47d
-RivalName::  ds NAME_LENGTH ; d493
-ExtraName::  ds NAME_LENGTH ; d488
+PlayerName::   ds NAME_LENGTH ; d47d
+RivalName::    ds NAME_LENGTH ; d488
+ExtraName::    ds NAME_LENGTH ; d493
+TrendyPhrase:: ds NAME_LENGTH ; d49e
 
 wSavedAtLeastOnce:: ds 1
 wSpawnAfterChampion:: ds 1

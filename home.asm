@@ -1733,8 +1733,6 @@ GetNick:: ; 38a2
 	call CopyBytes
 	pop de
 
-	farcall CheckNickErrors
-
 	pop bc
 	pop hl
 	ret

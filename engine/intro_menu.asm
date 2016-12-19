@@ -325,6 +325,10 @@ InitializeNPCNames: ; 5ce9
 
 	ld hl, .Extra
 	ld de, ExtraName
+	call .Copy
+
+	ld hl, .Trendy
+	ld de, TrendyPhrase
 
 .Copy:
 	ld bc, NAME_LENGTH
@@ -333,6 +337,7 @@ InitializeNPCNames: ; 5ce9
 
 .Rival:  db "Someone@"
 .Extra:  db "???@"
+.Trendy: db "Rainbow@"
 ; 5d23
 
 InitializeWorld: ; 5d23

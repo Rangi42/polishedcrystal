@@ -7,6 +7,29 @@ ShamoutiHotel_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+;No matter where
+;you go, <TRENDY> is
+;the coolest thing
+;around!
+;Isn't that so?
+;
+;You know it! I
+;just can't get
+;enough of <TRENDY>!
+;
+;What?! <TRENDY>
+;isn't the coolest
+;thing around?
+;Well, what is the
+;coolest thing
+;these days?
+;
+;Oh, yeah! I've got
+;it now!
+;<TRENDY> is totally
+;the best thing
+;ever!
+
 ShamoutiHotel_MapEventHeader:
 	; filler
 	db 0, 0

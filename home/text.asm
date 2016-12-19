@@ -232,22 +232,13 @@ endm
 	dict TX_FAR, TextFar
 	dict $00, NullChar
 	dict $14, PrintPlayerName ; formerly <PLAY_G>
-	dict $4c, Char4C
 	dict $4b, Char4B
+	dict $4c, Char4C
 	dict "<PARA>", Paragraph
-	dict $49, PrintPlayerName ; formerly <MOM>
 	dict "<PLAYER>", PrintPlayerName
 	dict "<RIVAL>", PrintRivalName
-	dict $35, Char35
-	dict $36, Char36
-	dict $37, Char37
-	dict $38, PrintPlayerName ; formerly <RED>
-	dict $39, PrintRivalName ; formerly <GREEN>
+	dict "<TRENDY>", PrintTrendyPhrase
 	dict "#", PlacePOKe
-	dict "<PC>", PCChar
-	dict "<ROCKET>", RocketChar
-	dict "<TM>", TMChar
-	dict "<TRNER>", TrainerChar
 	dict "<LNBRK>", Char22
 	dict "<CONT>", ContText
 	dict "<......>", SixDotsChar
@@ -255,8 +246,8 @@ endm
 	dict "<PROMPT>", PromptText
 	dict "<PKMN>", PlacePKMN
 	dict "<POKE>", PlacePOKE
-	dict $25, NextChar
-	dict2 $1f, " "
+	dict "%", NextChar
+	dict2 "¯", " "
 	dict "<DEXEND>", PlaceDexEnd
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>", PlaceMoveUsersName
@@ -273,20 +264,13 @@ print_name: macro
 	jp PlaceCommandCharacter
 endm
 
-PrintPlayerName: print_name PlayerName ; 118d
-PrintRivalName:  print_name RivalName  ; 1194
-
-TrainerChar:  print_name TrainerCharText ; 11a9
-TMChar:       print_name TMCharText      ; 11b0
-PCChar:       print_name PCCharText      ; 11b7
-RocketChar:   print_name RocketCharText  ; 11be
-PlacePOKe:    print_name PlacePOKeText   ; 11c5
-SixDotsChar:  print_name SixDotsCharText ; 11d3
-PlacePKMN:    print_name PlacePKMNText   ; 11da
-PlacePOKE:    print_name PlacePOKEText   ; 11e1
-Char35:       print_name Char35Text      ; 11e8
-Char36:       print_name Char36Text      ; 11ef
-Char37:       print_name Char37Text      ; 11f6
+PrintPlayerName:   print_name PlayerName      ; 118d
+PrintRivalName:    print_name RivalName       ; 1194
+PrintTrendyPhrase: print_name TrendyPhrase    ; 119b
+PlacePOKe:         print_name PlacePOKeText   ; 11c5
+SixDotsChar:       print_name SixDotsCharText ; 11d3
+PlacePKMN:         print_name PlacePKMNText   ; 11da
+PlacePOKE:         print_name PlacePOKEText   ; 11e1
 
 
 PlaceMoveTargetsName:: ; 11fd
@@ -331,7 +315,7 @@ PlaceEnemysName:: ; 121b
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, String12a2
+	ld de, SpaceText
 	call PlaceString
 	push bc
 	farcall Battle_GetTrainerName
@@ -348,7 +332,7 @@ PlaceEnemysName:: ; 121b
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, String12a2
+	ld de, SpaceText
 	call PlaceString
 	ld h, b
 	ld l, c
@@ -369,19 +353,12 @@ PlaceCommandCharacter:: ; 126a
 	jp NextChar
 ; 0x1273
 
-TMCharText:: db "TM@" ; 1273
-TrainerCharText:: db "Trainer@" ; 1276
-PCCharText:: db "PC@" ; 127e
-RocketCharText:: db "Rocket@" ; 1281
 PlacePOKeText:: db "Poké@" ; 1288
 SixDotsCharText:: db "……@" ; 1292
 EnemyText:: db "Foe @" ; 1295
 PlacePKMNText:: db "<PK><MN>@" ; PK MN ; 129c
 PlacePOKEText:: db "<PO><KE>@" ; PO KE ; 129f
-String12a2:: db " @" ; 12a2
-Char35Text::
-Char36Text::
-Char37Text:: db "@" ; 12a4
+SpaceText:: db " @" ; 12a2
 ; 12a7
 
 NextLineChar:: ; 12a7
@@ -677,29 +654,29 @@ endr
 ; 1410
 
 TextCommands:: ; 1410
-	dw Text_TX
-	dw Text_TX_RAM
-	dw Text_TX_BCD
-	dw Text_TX_MOVE
-	dw Text_TX_BOX
-	dw Text_TX_LOW
-	dw Text_WAIT_BUTTON
-	dw Text_TX_SCROLL
-	dw Text_START_ASM
-	dw Text_TX_NUM
-	dw Text_TX_EXIT
-	dw Text_PlaySound ; $0b
-	dw Text_TX_DOTS
-	dw Text_0D
-	dw Text_PlaySound ; $0e
-	dw Text_PlaySound ; $0f
-	dw Text_PlaySound ; $10
-	dw Text_PlaySound ; $11
-	dw Text_PlaySound ; $12
-	dw Text_PlaySound ; $13
-	dw Text_TX_STRINGBUFFER
-	dw Text_TX_DAY
-	dw Text_TX_FAR
+	dw Text_TX              ; $00 <START>
+	dw Text_TX_RAM          ; $01
+	dw Text_TX_BCD          ; $02
+	dw Text_TX_MOVE         ; $03
+	dw Text_TX_BOX          ; $04
+	dw Text_TX_LOW          ; $05
+	dw Text_WAIT_BUTTON     ; $06
+	dw Text_TX_SCROLL       ; $07
+	dw Text_START_ASM       ; $08
+	dw Text_TX_NUM          ; $09
+	dw Text_TX_EXIT         ; $0a
+	dw Text_PlaySound       ; $0b
+	dw Text_TX_DOTS         ; $0c
+	dw Text_0D              ; $0d
+	dw Text_PlaySound       ; $0e
+	dw Text_PlaySound       ; $0f
+	dw Text_PlaySound       ; $10
+	dw Text_PlaySound       ; $11
+	dw Text_PlaySound       ; $12
+	dw Text_PlaySound       ; $13
+	dw Text_TX_STRINGBUFFER ; $14
+	dw Text_TX_DAY          ; $15
+	dw Text_TX_FAR          ; $16
 ; 143e
 
 Text_TX:: ; 143e
