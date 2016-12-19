@@ -12,6 +12,18 @@ AI_SwitchOrTryItem: ; 38000
 	farcall CheckEnemyLockedIn
 	ret nz
 
+	; check if we're trapped by an ability
+	ld a, [hBattleTurn]
+	push af
+	ld a, 1
+	ld [hBattleTurn], a
+	farcall _CheckIfTrappedByAbility
+	pop af
+	ld [hBattleTurn], a
+	ld a, b
+	and a
+	jr z, DontSwitch
+
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, DontSwitch
@@ -148,13 +160,6 @@ SwitchSometimes: ; 380c1
 	ld [wEnemySwitchMonIndex], a
 	jp AI_TrySwitch
 ; 380ff
-
-
-CheckSubstatusCantRun: ; 380ff
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	ret
-; 38105
 
 
 AI_TryItem: ; 38105

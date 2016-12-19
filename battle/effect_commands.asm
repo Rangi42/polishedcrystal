@@ -1979,6 +1979,17 @@ CheckNullificationAbilities:
 ; renders it useless. Called from CheckHit and CheckTypeMatchup (the latter for the AI's
 ; benefit).
 	call GetOpponentAbilityAfterMoldBreaker
+	; Damp protects against specific moves, so check it specifically
+	cp DAMP
+	jr nz, .no_damp
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_EXPLOSION
+	jr nz, .ability_fail
+	ld a, 0
+	or 3
+	ret
+.no_damp
 	ld b, a
 	ld hl, .NullificationAbilityTypes
 .loop
@@ -6682,11 +6693,6 @@ CheckIfTrappedByAbilityInner:
 	; Only works on Steel types
 	call CheckIfUserIsSteelType
 	ret nz
-	; Except if they also have Magnet Pull
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp MAGNET_PULL
-	ret z
 	jr .is_trapped
 .has_arena_trap
 	; Doesn't work on flying types or levitate users
@@ -8491,6 +8497,9 @@ CheckSubstituteOpp: ; 37378
 
 
 BattleCommand_SelfDestruct: ; 37380
+	call GetOpponentAbilityAfterMoldBreaker
+	cp DAMP
+	ret z ; nullification ability checks handle messages
 	ld a, BATTLEANIM_PLAYER_DAMAGE
 	ld [wNumHits], a
 	ld c, 3

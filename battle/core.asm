@@ -750,6 +750,10 @@ TryEnemyFlee: ; 3c543
 	cp RUN_AWAY
 	jr z, .skip_traps
 
+	call SetEnemyTurn
+	call CheckIfTrappedByAbility_Core
+	jr z, .Stay
+
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .Stay
@@ -5499,6 +5503,14 @@ TryPlayerSwitch: ; 3e358
 	jp BattleMenuPKMN_Loop
 
 .check_trapped
+	call SetPlayerTurn
+	call CheckIfTrappedByAbility_Core
+	jr nz, .check_other_trapped
+	ld hl, BattleText_PkmnCantBeRecalledAbility
+	call StdBattleTextBox
+	jp BattleMenuPKMN_Loop
+
+.check_other_trapped
 	ld a, [wPlayerWrapCount]
 	and a
 	jr nz, .trapped

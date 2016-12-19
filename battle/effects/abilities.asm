@@ -595,6 +595,8 @@ RunEnemyNullificationAbilities:
 	jp z, VoltAbsorbAbility
 	cp WATER_ABSORB
 	jp z, WaterAbsorbAbility
+	cp DAMP
+	jp z, DampAbility
 	; For other abilities, don't do anything except print a message (for example Levitate)
 	call ShowAbilityActivation
 	farcall BattleCommand_SwitchTurn
@@ -602,6 +604,11 @@ RunEnemyNullificationAbilities:
 	call StdBattleTextBox
 	farcall BattleCommand_SwitchTurn
 	ret
+
+DampAbility:
+	; doesn't use the normal activation message or "doesn't affect"
+	ld hl, DampAbilityText
+	jp StdBattleTextBox
 
 RunEnemyStatIncreaseAbilities:
 	farcall BattleCommand_SwitchTurn
