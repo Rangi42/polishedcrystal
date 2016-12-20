@@ -751,7 +751,7 @@ TryEnemyFlee: ; 3c543
 	jr z, .skip_traps
 
 	call SetEnemyTurn
-	farcall CheckIfTrappedByAbility
+	call CheckIfTrappedByAbility_Core
 	jr z, .Stay
 
 	ld a, [PlayerSubStatus2]
@@ -3986,7 +3986,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jp nz, .cant_escape
 
 	call SetPlayerTurn
-	farcall CheckIfTrappedByAbility
+	call CheckIfTrappedByAbility_Core
 	jp z, .skip_inescapable_text
 	ld a, [wNumFleeAttempts]
 	inc a
@@ -4111,6 +4111,12 @@ TryToRunAwayFromBattle: ; 3d8b3
 	scf
 	ret
 ; 3da0d
+
+CheckIfTrappedByAbility_Core:
+	farcall _CheckIfTrappedByAbility
+	ld a, b
+	and a
+	ret
 
 InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
@@ -5498,7 +5504,7 @@ TryPlayerSwitch: ; 3e358
 
 .check_trapped
 	call SetPlayerTurn
-	farcall CheckIfTrappedByAbility
+	call CheckIfTrappedByAbility_Core
 	jr nz, .check_other_trapped
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
