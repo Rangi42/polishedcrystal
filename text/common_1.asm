@@ -118,8 +118,8 @@ UnknownText_0x1bc16e::
 	done
 
 UnknownText_0x1bc29c::
-	text "<......><......><......><......><......><......>"
-	line "<......><......><......><......><......><......>"
+	text "………………………………"
+	line "………………………………"
 
 	para "Zzz… Hm? Wha…?"
 	line "You woke me up!"
@@ -1222,7 +1222,7 @@ UnknownText_0x1bd868::
 	text "OK, I'll take care"
 	line "of your money."
 
-	para "<......><......><......>"
+	para "………………"
 	prompt
 
 UnknownText_0x1bd88e::

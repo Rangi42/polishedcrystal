@@ -151,7 +151,7 @@ MomPhoneNoGymQuestText: ; 0x1b435f
 MomPhoneLectureText: ; 0x1b43a1
 	text "Hello?"
 
-	para "<......><PLAYER>?"
+	para "……<PLAYER>?"
 	line "I heard from Prof."
 
 	para "Elm that you went"

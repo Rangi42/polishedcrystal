@@ -1517,7 +1517,7 @@ BlueFinalPkmnText:
 
 RedFinalPkmnText:
 LeafFinalPkmnText:
-	text "<......><......><......>"
+	text "………………"
 	prompt
 
 Rival1_1FinalPkmnText:

@@ -826,8 +826,6 @@ CopyDexEntryPart1:
 	ret z
 	cp "<NEXT>"
 	ret z
-	cp "<DEXEND>"
-	ret z
 	jr .loop
 
 CopyDexEntryPart2:
@@ -839,8 +837,6 @@ CopyDexEntryPart2:
 	cp "@"
 	jr z, .okay
 	cp "<NEXT>"
-	jr z, .okay
-	cp "<DEXEND>"
 	jr nz, .loop
 .okay
 	ld a, l

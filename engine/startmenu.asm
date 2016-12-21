@@ -185,7 +185,7 @@ StartMenu:: ; 125cd
 .SaveString:    	db "Save@"
 .OptionString:  	db "Options@"
 .ExitString:    	db "Exit@"
-.PokegearString:	db $24, "gear@"
+.PokegearString:	db "<PO><KE>gear@"
 .QuitString:    	db "Quit@"
 
 ; Menu accounts are removed; this is vestigial

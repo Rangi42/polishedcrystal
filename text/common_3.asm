@@ -217,8 +217,8 @@ WhiteoutToWildText::
 	deciram hMoneyTemp, 3, 7
 	text "…"
 
-	para "<......><......><......>"
-	line "<......><......><......>"
+	para "………………"
+	line "………………"
 
 	para "<PLAYER> blacked"
 	line "out!"
@@ -234,8 +234,8 @@ WhiteoutToTrainerText::
 	text " to the"
 	cont "winner…"
 
-	para "<......><......><......>"
-	line "<......><......><......>"
+	para "………………"
+	line "………………"
 
 	para "<PLAYER> blacked"
 	line "out!"

@@ -291,7 +291,7 @@ Route22SilverQuestionsGiovanniText:
 	done
 
 Route22GiovanniSilverArgumentText:
-	text "<......> <......> <......>"
+	text "…… …… ……"
 
 	para "One must acknow-"
 	line "ledge one's defeat"
@@ -318,7 +318,7 @@ Route22GiovanniSilverArgumentText:
 	para "defeated by a"
 	line "mere child!"
 
-	para "<......> <......> <......>"
+	para "…… …… ……"
 
 	para "Putting together"
 	line "the potential of"
@@ -352,7 +352,7 @@ Route22SilverProtestsText:
 	done
 
 Route22GiovanniGoodbyeText:
-	text "<......> <......> <......>"
+	text "…… …… ……"
 
 	para "One day, you will"
 	line "understand."

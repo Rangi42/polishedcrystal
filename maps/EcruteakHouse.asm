@@ -207,7 +207,7 @@ UnknownText_0x98250:
 	line "but I must ask you"
 	cont "to leave."
 
-	para $56, $56, $56
+	para "………………"
 
 	para "Ah!"
 

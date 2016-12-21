@@ -12,16 +12,14 @@
 	charmap "<RIVAL>",  $53
 	charmap "#",        $54
 	charmap "<CONT>",   $55
-	charmap "<......>", $56
+	charmap "<TRENDY>", $56
 	charmap "<DONE>",   $57
 	charmap "<PROMPT>", $58
 	charmap "<TARGET>", $59
 	charmap "<USER>",   $5a
 	charmap "<ENEMY>",  $5b
-	charmap "<TRENDY>", $5c
-	charmap "<POKE>",   $5d
-	charmap "<PKMN>",   $5e
-	charmap "<DEXEND>", $5f
+
+; unused: 5c-5f
 
 ; Actual characters
 	charmap "┌",        $79

@@ -190,7 +190,7 @@ PicnickerSharonBeatenText:
 	done
 
 UnknownText_0x1ae369:
-	text "<......>I'll go train"
+	text "……I'll go train"
 	line "some more…"
 	done
 

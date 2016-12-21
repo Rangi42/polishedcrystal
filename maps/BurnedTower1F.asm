@@ -190,7 +190,7 @@ BurnedTower1FEusineMovement:
 	step_end
 
 BurnedTowerSilver_BeforeText:
-	text "<......> <......> <......>"
+	text "…… …… ……"
 
 	para "…Oh, it's you."
 

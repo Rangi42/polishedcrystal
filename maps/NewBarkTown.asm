@@ -384,7 +384,7 @@ Text_ElmDiscoveredNewMon:
 	done
 
 NewBarkTownRivalText1:
-	text "<......>"
+	text "……"
 
 	para "So this is the"
 	line "famous Elm #mon"

@@ -227,31 +227,26 @@ dict2: macro
 ._\@:
 endm
 
+	dict "<PLAYER>", PrintPlayerName
+	dict "<RIVAL>", PrintRivalName
+	dict "<TRENDY>", PrintTrendyPhrase
+	dict "<TARGET>", PlaceMoveTargetsName
+	dict "<USER>", PlaceMoveUsersName
+	dict "<ENEMY>", PlaceEnemysName
+	dict "%", NextChar
 	dict "<LINE>", LineChar
 	dict "<NEXT>", NextLineChar
 	dict TX_FAR, TextFar
 	dict $00, NullChar
-	dict $14, PrintPlayerName ; formerly <PLAY_G>
 	dict $4b, Char4B
 	dict $4c, Char4C
 	dict "<PARA>", Paragraph
-	dict "<PLAYER>", PrintPlayerName
-	dict "<RIVAL>", PrintRivalName
-	dict "<TRENDY>", PrintTrendyPhrase
 	dict "#", PlacePOKe
 	dict "<LNBRK>", Char22
 	dict "<CONT>", ContText
-	dict "<......>", SixDotsChar
 	dict "<DONE>", DoneText
 	dict "<PROMPT>", PromptText
-	dict "<PKMN>", PlacePKMN
-	dict "<POKE>", PlacePOKE
-	dict "%", NextChar
 	dict2 "¯", " "
-	dict "<DEXEND>", PlaceDexEnd
-	dict "<TARGET>", PlaceMoveTargetsName
-	dict "<USER>", PlaceMoveUsersName
-	dict "<ENEMY>", PlaceEnemysName
 
 	ld [hli], a
 	call PrintLetterDelay
@@ -268,9 +263,6 @@ PrintPlayerName:   print_name PlayerName      ; 118d
 PrintRivalName:    print_name RivalName       ; 1194
 PrintTrendyPhrase: print_name TrendyPhrase    ; 119b
 PlacePOKe:         print_name PlacePOKeText   ; 11c5
-SixDotsChar:       print_name SixDotsCharText ; 11d3
-PlacePKMN:         print_name PlacePKMNText   ; 11da
-PlacePOKE:         print_name PlacePOKEText   ; 11e1
 
 
 PlaceMoveTargetsName:: ; 11fd
@@ -354,10 +346,7 @@ PlaceCommandCharacter:: ; 126a
 ; 0x1273
 
 PlacePOKeText:: db "Poké@" ; 1288
-SixDotsCharText:: db "……@" ; 1292
 EnemyText:: db "Foe @" ; 1295
-PlacePKMNText:: db "<PK><MN>@" ; PK MN ; 129c
-PlacePOKEText:: db "<PO><KE>@" ; PO KE ; 129f
 SpaceText:: db " @" ; 12a2
 ; 12a7
 
@@ -490,15 +479,6 @@ ContText:: ; 1345
 
 .cont	db $4b, "@"
 ; 1356
-
-
-PlaceDexEnd:: ; 1356
-; Legacy: ends a Pokédex entry (Red).
-; Dex entries are now regular strings.
-	ld [hl], "."
-	pop hl
-	ret
-; 135a
 
 PromptText:: ; 135a
 	ld a, [wLinkMode]

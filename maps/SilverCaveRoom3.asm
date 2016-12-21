@@ -35,7 +35,7 @@ Red:
 	special Special_FadeOutMusic
 	faceplayer
 	opentext
-	writetext .Text3
+	writetext .Text1
 	waitbutton
 	checkitem MYSTICTICKET
 	iftrue .AlreadyHaveMysticTicket
@@ -54,17 +54,12 @@ Red:
 	end
 
 .Text1:
-	text $56
-	line $56
+	text "……"
+	line "……"
 	done
 
 .Text2:
 	text "…"
-	done
-
-.Text3:
-	text $56
-	line $56
 	done
 
 SilverCaveRoom3_MapEventHeader:

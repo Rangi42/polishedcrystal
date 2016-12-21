@@ -160,7 +160,7 @@ NoBeastsText1:
 	line "the legendary"
 	cont "beast #mon?"
 
-	para $56, $56, $56
+	para "………………"
 
 	para "Okay…"
 

@@ -616,7 +616,7 @@ UnknownText_0x18d916:
 
 	para "You did fail?"
 
-	para $56, $56, $56, $56, $56, $56
+	para "………………………………"
 
 	para "…What? You passed?"
 	done
@@ -667,7 +667,7 @@ UnknownText_0x18da0b:
 	done
 
 UnknownText_0x18dab4:
-	text $56, $56, $56, $56, $56, $56
+	text "………………………………"
 	done
 
 DragonShrine_MapEventHeader:

@@ -2012,9 +2012,9 @@ DisplayDexEntry: ; 4424d
 	push de
 ; Print dex number
 	hlcoord 2, 8
-	ld a, $5c ; No
+	ld a, "№"
 	ld [hli], a
-	ld a, $e8 ; .
+	ld a, "."
 	ld [hli], a
 	ld de, wd265
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
@@ -2091,7 +2091,7 @@ DisplayDexEntry: ; 4424d
 	lb bc, 2, PRINTNUM_MONEY | 4
 	call PrintNum
 	hlcoord 14, 7
-	ld [hl], $5f ; ft symbol
+	ld [hl], "′"
 	pop af
 	pop hl
 

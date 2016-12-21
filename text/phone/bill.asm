@@ -34,8 +34,8 @@ BillPhoneGenericText: ; 0x1b44fe
 	para "<PLAYER>, is it?"
 	line "Hang on a sec…"
 
-	para $56
-	line $56
+	para "……"
+	line "……"
 	done
 
 BillPhoneNotFullText: ; 0x1b452a

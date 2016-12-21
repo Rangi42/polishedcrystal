@@ -109,7 +109,7 @@ AgathaSeenText:
 	line "as a member of"
 	cont "the Elite Four."
 
-	para "<......><......>"
+	para "…………"
 
 	para "Have you come to"
 	line "mourn a #mon?"
@@ -124,7 +124,7 @@ AgathaSeenText:
 	para "the radio company"
 	line "took over."
 
-	para "<......><......>"
+	para "…………"
 
 	para "He could have"
 	line "fought to preserve"

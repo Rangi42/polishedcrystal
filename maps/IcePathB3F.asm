@@ -191,7 +191,7 @@ LoreleiRematchSeenText:
 	para "I hope you took"
 	line "Karen down a peg."
 
-	para "<......><......>You're the"
+	para "…………You're the"
 	line "new Champion."
 	cont "I'm impressed."
 

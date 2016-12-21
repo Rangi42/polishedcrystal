@@ -488,7 +488,7 @@ UnknownText_0x62b26:
 	line "Office received an"
 	cont "e-mail. It says…"
 
-	para "<......> <......> <......>"
+	para "…… …… ……"
 
 	para "To the #Com"
 	line "Center staff…"
@@ -508,7 +508,7 @@ UnknownText_0x62b26:
 	para "the world can link"
 	line "without barriers!"
 
-	para "<......> <......> <......>"
+	para "…… …… ……"
 	done
 
 GoldenrodPokeComCenter1F_MapEventHeader:

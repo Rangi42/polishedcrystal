@@ -373,11 +373,11 @@ AzaleaTownYoungsterText:
 AzaleaTownSlowpokeText1:
 	text "Slowpoke: …"
 
-	para "<......> <......> <......>"
+	para "…… …… ……"
 	done
 
 AzaleaTownSlowpokeText2:
-	text "<......> <......>Yawn?"
+	text "…… ……Yawn?"
 	done
 
 IlexForestIsRestlessText:

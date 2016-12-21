@@ -95,8 +95,8 @@ Leaf:
 	end
 
 LeafText:
-	text "<......><......>"
-	line "<......><......>!"
+	text "…………"
+	line "…………!"
 	done
 
 LeafWinLossText:
@@ -104,8 +104,8 @@ LeafWinLossText:
 	done
 
 LeafAfterText:
-	text "<......><......>"
-	line "<......><......>"
+	text "…………"
+	line "…………"
 	done
 
 NavelRockRoofHidePlayerMovementData:

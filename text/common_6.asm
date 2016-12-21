@@ -91,7 +91,7 @@ WonderTradeForGSBallPichuText::
 	para "holding? Is it an"
 	line "Apricorn Ball?"
 
-	para "<......><......>"
+	para "…………"
 
 	para "Well, a #mon"
 	line "is a #mon."
