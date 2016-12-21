@@ -33,7 +33,6 @@ FillBoxWithByte::
 	ret
 ; fc8
 
-
 ClearTileMap:: ; fc8
 ; Fill TileMap with blank tiles.
 
@@ -49,7 +48,6 @@ ClearTileMap:: ; fc8
 	jp WaitBGMap
 ; fdb
 
-
 ClearScreen:: ; fdb
 	ld a, TEXTBOX_PAL
 	hlcoord 0, 0, AttrMap
@@ -57,8 +55,6 @@ ClearScreen:: ; fdb
 	call ByteFill
 	jr ClearTileMap
 ; fe8
-
-
 
 TextBox:: ; fe8
 ; Draw a text box at hl with room for
@@ -73,7 +69,6 @@ TextBox:: ; fe8
 	pop bc
 	jr TextBoxPalette
 ; ff1
-
 
 TextBoxBorder:: ; ff1
 
@@ -124,7 +119,6 @@ TextBoxBorder:: ; ff1
 	ret
 ; 1024
 
-
 TextBoxPalette:: ; 1024
 ; Fill text box width c height b at hl with pal 7
 	ld de, AttrMap - TileMap
@@ -152,7 +146,6 @@ endr
 	ret
 ; 103e
 
-
 SpeechTextBox:: ; 103e
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y
@@ -166,7 +159,6 @@ RadioTerminator:: ; 1052
 	ret
 .stop	db "@"
 ; 1057
-
 
 PrintText:: ; 1057
 	call SetUpTextBox
@@ -191,7 +183,6 @@ SetUpTextBox:: ; 106c
 	pop hl
 	ret
 ; 1078
-
 
 PlaceString:: ; 1078
 	push hl
@@ -259,11 +250,13 @@ print_name: macro
 	jp PlaceCommandCharacter
 endm
 
-PrintPlayerName:   print_name PlayerName      ; 118d
-PrintRivalName:    print_name RivalName       ; 1194
-PrintTrendyPhrase: print_name TrendyPhrase    ; 119b
-PlacePOKe:         print_name PlacePOKeText   ; 11c5
+PrintPlayerName:   print_name PlayerName   ; 118d
+PrintRivalName:    print_name RivalName    ; 1194
+PrintTrendyPhrase: print_name TrendyPhrase ; 119b
+PlacePOKe:         print_name .POKeText    ; 11c5
 
+.POKeText:
+	db "Poké@" ; 1288
 
 PlaceMoveTargetsName:: ; 11fd
 	ld a, [hBattleTurn]
@@ -281,14 +274,16 @@ PlaceMoveTargetsName_5A: ; 1205
 	ld de, BattleMonNick
 	jr PlaceCommandCharacter
 
-.enemy
-	ld de, EnemyText ; Enemy
+.enemy:
+	ld de, .EnemyText ; Enemy
 	call PlaceString
 	ld h, b
 	ld l, c
 	ld de, EnemyMonNick
 	jr PlaceCommandCharacter
 
+.EnemyText:
+	db "Foe @" ; 1295
 
 PlaceEnemysName:: ; 121b
 	push de
@@ -307,7 +302,7 @@ PlaceEnemysName:: ; 121b
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, SpaceText
+	ld de, .SpaceText
 	call PlaceString
 	push bc
 	farcall Battle_GetTrainerName
@@ -315,27 +310,29 @@ PlaceEnemysName:: ; 121b
 	ld de, StringBuffer1
 	jr PlaceCommandCharacter
 
-.rival1
+.rival1:
 	ld a, [OtherTrainerID]
 	cp RIVAL1_3 + 1
 	jr c, .no_class
-.rival2
+.rival2:
 	ld de, OTClassName
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, SpaceText
+	ld de, .SpaceText
 	call PlaceString
 	ld h, b
 	ld l, c
-.no_class
+.no_class:
 	ld de, RivalName
 	jr PlaceCommandCharacter
 
-.linkbattle
+.linkbattle:
 	ld de, OTClassName
 	jr PlaceCommandCharacter
 
+.SpaceText:
+	db " @" ; 12a2
 
 PlaceCommandCharacter:: ; 126a
 	call PlaceString
@@ -344,11 +341,6 @@ PlaceCommandCharacter:: ; 126a
 	pop de
 	jp NextChar
 ; 0x1273
-
-PlacePOKeText:: db "Poké@" ; 1288
-EnemyText:: db "Foe @" ; 1295
-SpaceText:: db " @" ; 12a2
-; 12a7
 
 NextLineChar:: ; 12a7
 	pop hl
@@ -408,7 +400,6 @@ TextFar:: ; 12b9
 	jp NextChar
 ; 12ea
 
-
 LineChar:: ; 12ea
 	pop hl
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
@@ -438,7 +429,6 @@ Paragraph:: ; 12f2
 	jp NextChar
 ; 131f
 
-
 Char4B:: ; 131f
 	ld a, [wLinkMode]
 	or a
@@ -464,7 +454,6 @@ Char4C:: ; 1337
 	pop de
 	jp NextChar
 ; 1345
-
 
 ContText:: ; 1345
 	push de
@@ -591,7 +580,6 @@ PokeFluteTerminatorCharacter:: ; 13e0
 
 .stop	db "@"
 ; 13e5
-
 
 PlaceWholeStringInBoxAtOnce:: ; 13e5
 	ld a, [TextBoxFlags]
