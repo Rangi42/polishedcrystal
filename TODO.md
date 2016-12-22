@@ -36,7 +36,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 ## Other mechanics
 
-* Dive Ball is 3.5x when Surfing or fishing
 * Heal Balls heals HP, PP, and status
 * Kurt gives Balls right away once per day
 * Catch rate formula from Gen III
@@ -109,6 +108,8 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Use the News Machine for something (Mystery Gift?)
 * Abilities in general
 * First Pokémon walks behind you
+* Short-term: rewrite Bill's PC to not use -1 as a terminator, allowing 254 Pokémon
+* Long-term: rewrite everything to use two-byte IDs, allowing 65534 Pokémon
 * Earn Battle Points in the Battle Tower, tradable for new held items (replace TMs/HMs with a bit array to make room)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
