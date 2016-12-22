@@ -554,12 +554,12 @@ INCLUDE "maps/SafariZoneHubRestHouse.asm"
 INCLUDE "maps/SafariZoneEastRestHouse.asm"
 INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 INCLUDE "maps/NewBarkTown.asm"
-INCLUDE "maps/LyrasHouse1F.asm"
-INCLUDE "maps/LyrasHouse2F.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
+INCLUDE "maps/LyrasHouse1F.asm"
+INCLUDE "maps/LyrasHouse2F.asm"
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route16.asm"
 INCLUDE "maps/Route17.asm"

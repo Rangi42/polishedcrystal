@@ -193,7 +193,6 @@ Unknown_8aebc: ; 8aebc
 	db $26, $20, $0c, $0e, $46, $ff ; L, I, G, H, T
 	db $4c, $00, $46, $08, $42, $ff ; W, A, T, E, R
 	db $0a, $00, $20, $42, $4e, $ff ; F, A, I, R, Y
-	db $48, $2a, $2c, $4c, $2a, $ff ; U, N, O, W, N
 ; 8aed5
 
 MenuDataHeader_0x8aed5: ; 0x8aed5
@@ -215,11 +214,7 @@ MenuDataHeader_0x8aee4: ; 0x8aee4
 	db $40 ; flags
 	db 04, 04 ; start coords
 	db 09, 15 ; end coords
-
-MenuDataHeader_0x8aee9: ; 0x8aee9
-	db $40 ; flags
-	db 04, 04 ; start coords
-	db 09, 15 ; end coords
+; 8aee9
 
 Function8aee9: ; 8aee9
 .asm_8aee9
