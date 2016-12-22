@@ -58,6 +58,9 @@ Route34Coast_BlockData:
 StormyBeach_BlockData:
 	INCBIN "maps/StormyBeach.blk"
 
+SouthIlexForest_BlockData:
+	INCBIN "maps/SouthIlexForest.blk"
+
 ShamoutiIsland_BlockData:
 	INCBIN "maps/ShamoutiIsland.blk"
 

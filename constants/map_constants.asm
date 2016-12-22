@@ -232,28 +232,29 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_34,                                   27, 10 ;  1
 	mapgroup ROUTE_34_COAST,                             34,  9 ;  2
 	mapgroup STORMY_BEACH,                               11, 22 ;  3
-	mapgroup GOLDENROD_CITY,                             18, 22 ;  4
-	mapgroup GOLDENROD_GYM,                               9, 10 ;  5
-	mapgroup GOLDENROD_BIKE_SHOP,                         4,  4 ;  6
-	mapgroup GOLDENROD_HAPPINESS_RATER,                   4,  4 ;  7
-	mapgroup GOLDENROD_BILLS_HOUSE,                       4,  4 ;  8
-	mapgroup GOLDENROD_MAGNET_TRAIN_STATION,              9, 10 ;  9
-	mapgroup GOLDENROD_FLOWER_SHOP,                       4,  4 ; 10
-	mapgroup GOLDENROD_PP_SPEECH_HOUSE,                   4,  4 ; 11
-	mapgroup GOLDENROD_NAME_RATER,                        4,  4 ; 12
-	mapgroup GOLDENROD_DEPT_STORE_1F,                     4,  8 ; 13
-	mapgroup GOLDENROD_DEPT_STORE_2F,                     4,  8 ; 14
-	mapgroup GOLDENROD_DEPT_STORE_3F,                     4,  8 ; 15
-	mapgroup GOLDENROD_DEPT_STORE_4F,                     4,  8 ; 16
-	mapgroup GOLDENROD_DEPT_STORE_5F,                     4,  8 ; 17
-	mapgroup GOLDENROD_DEPT_STORE_6F,                     4,  8 ; 18
-	mapgroup GOLDENROD_DEPT_STORE_ELEVATOR,               2,  2 ; 19
-	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   4,  8 ; 20
-	mapgroup GOLDENROD_GAME_CORNER,                       7, 10 ; 21
-	mapgroup GOLDENROD_POKECOM_CENTER_1F,                16, 16 ; 22
-	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 23
-	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 24
-	mapgroup DAYCARE,                                     4,  5 ; 25
+	mapgroup SOUTH_ILEX_FOREST,                          16, 20 ;  4
+	mapgroup GOLDENROD_CITY,                             18, 22 ;  5
+	mapgroup GOLDENROD_GYM,                               9, 10 ;  6
+	mapgroup GOLDENROD_BIKE_SHOP,                         4,  4 ;  7
+	mapgroup GOLDENROD_HAPPINESS_RATER,                   4,  4 ;  8
+	mapgroup GOLDENROD_BILLS_HOUSE,                       4,  4 ;  9
+	mapgroup GOLDENROD_MAGNET_TRAIN_STATION,              9, 10 ; 10
+	mapgroup GOLDENROD_FLOWER_SHOP,                       4,  4 ; 11
+	mapgroup GOLDENROD_PP_SPEECH_HOUSE,                   4,  4 ; 12
+	mapgroup GOLDENROD_NAME_RATER,                        4,  4 ; 13
+	mapgroup GOLDENROD_DEPT_STORE_1F,                     4,  8 ; 14
+	mapgroup GOLDENROD_DEPT_STORE_2F,                     4,  8 ; 15
+	mapgroup GOLDENROD_DEPT_STORE_3F,                     4,  8 ; 16
+	mapgroup GOLDENROD_DEPT_STORE_4F,                     4,  8 ; 17
+	mapgroup GOLDENROD_DEPT_STORE_5F,                     4,  8 ; 18
+	mapgroup GOLDENROD_DEPT_STORE_6F,                     4,  8 ; 19
+	mapgroup GOLDENROD_DEPT_STORE_ELEVATOR,               2,  2 ; 20
+	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   4,  8 ; 21
+	mapgroup GOLDENROD_GAME_CORNER,                       7, 10 ; 22
+	mapgroup GOLDENROD_POKECOM_CENTER_1F,                16, 16 ; 23
+	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 24
+	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 25
+	mapgroup DAYCARE,                                     4,  5 ; 26
 
 	newgroup                                                    ; 12
 

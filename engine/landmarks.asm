@@ -76,7 +76,7 @@ ENDM
 	landmark  48, 128, Route34CoastName
 	landmark  36, 140, ScaryCaveName
 	landmark  52, 148, StormyBeachName
-	landmark  60, 148, IlexForestSouthName
+	landmark  60, 148, SouthIlexForestName
 	landmark  60, 146, HauntedMansionName
 	landmark  60, 108, GoldenrodCityName
 	landmark  58, 108, RadioTowerName
@@ -303,7 +303,7 @@ GoldenrodHarborName: db "Goldenrod¯Harbor@"
 Route34CoastName:    db "Route 34¯Coast@"
 Route35CoastName:    db "Route 35¯Coast@"
 StormyBeachName:     db "Stormy¯Beach@"
-IlexForestSouthName: db "Ilex Forest¯South@"
+SouthIlexForestName: db "South Ilex¯Forest@"
 ScaryCaveName:       db "Scary¯Cave@"
 HauntedMansionName:  db "Haunted¯Mansion@"
 DimCaveName:         db "Dim¯Cave@"

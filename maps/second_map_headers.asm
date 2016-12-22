@@ -389,6 +389,7 @@
 	map_header_2 TeamRocketBaseB2F, TEAM_ROCKET_BASE_B2F, $0, 0
 	map_header_2 TeamRocketBaseB3F, TEAM_ROCKET_BASE_B3F, $0, 0
 	map_header_2 IlexForest, ILEX_FOREST, $5, 0
+	map_header_2 SouthIlexForest, SOUTH_ILEX_FOREST, $5, 0
 	map_header_2 WarehouseEntrance, WAREHOUSE_ENTRANCE, $0, 0
 	map_header_2 UndergroundPathSwitchRoomEntrances, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, $0, 0
 	map_header_2 GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $0, 0

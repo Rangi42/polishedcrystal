@@ -21,7 +21,7 @@
 	const ROUTE_34_COAST    ; 11
 	const SCARY_CAVE        ; 12
 	const STORMY_BEACH      ; 13
-	const ILEX_FOREST_SOUTH ; 14
+	const SOUTH_ILEX_FOREST ; 14
 	const HAUNTED_MANSION   ; 15
 	const GOLDENROD_CITY    ; 16
 	const RADIO_TOWER       ; 17
