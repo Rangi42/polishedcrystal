@@ -6,6 +6,10 @@ NAME = polishedcrystal-$(VERSION)
 FNAME = polishedcrystal-faithful-$(VERSION)
 FAITHFUL =
 
+TITLE = PKPCRYSTAL
+MCODE = PKPC
+ROMVERSION = 0x30
+FILLER = 0x00
 
 .SUFFIXES:
 .PHONY: all clean crystal
@@ -48,12 +52,12 @@ clean:
 	rgbasm $(FAITHFUL) -o $@ $<
 
 $(NAME).gbc: $(crystal_obj)
-	rgblink -n $(NAME).sym -m $(NAME).map -o $@ $^
-	rgbfix -Cjv -t PKPCRYSTAL -i PKPC -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 $@
+	rgblink -n $(NAME).sym -m $(NAME).map -p $(FILLER) -o $@ $^
+	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
 
 $(FNAME).gbc: $(crystal_obj)
-	rgblink -n $(FNAME).sym -m $(FNAME).map -o $@ $^
-	rgbfix -Cjv -t PKPCRYSTAL -i PKPC -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 $@
+	rgblink -n $(FNAME).sym -m $(FNAME).map -p $(FILLER) -o $@ $^
+	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<
