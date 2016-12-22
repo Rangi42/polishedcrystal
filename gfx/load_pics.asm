@@ -227,7 +227,6 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	call AddNTimes
 	ld a, d
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, d
@@ -358,7 +357,6 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	add hl, bc
 	ld a, d
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, d
@@ -378,10 +376,6 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	ld [rSVBK], a
 	ret
 
-FixPicBank: ; 511c5
-	add PICS_FIX
-	ret
-
 Function511ec: ; 511ec
 	ld a, c
 	push de
@@ -391,7 +385,6 @@ Function511ec: ; 511ec
 	call AddNTimes
 	ld a, BANK(PicPointers)
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, BANK(PicPointers)
@@ -422,7 +415,6 @@ GetTrainerPic: ; 5120d
 	push de
 	ld a, BANK(TrainerPicPointers)
 	call GetFarByte
-	call FixPicBank
 	push af
 	inc hl
 	ld a, BANK(TrainerPicPointers)

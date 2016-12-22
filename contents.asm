@@ -46,8 +46,6 @@ CREDITS                   EQU $42
 
 PIC_POINTERS              EQU $48
 
-PICS_FIX                  EQU $36
-
 PICS_1                    EQU $48
 PICS_2                    EQU $49
 PICS_3                    EQU $4A
