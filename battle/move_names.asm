@@ -139,7 +139,7 @@
 	db "Poison Jab@"
 	db "Bullet Punch@"
 	db "Leech Life@"
-	db "Drain Kiss@"
+	db "DrainingKiss@"
 	db "Sky Attack@"
 	db "Transform@"
 	db "Water Pulse@"
