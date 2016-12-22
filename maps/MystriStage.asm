@@ -228,10 +228,10 @@ MystriStageCynthiaLeadText1:
 	line "power of creation."
 
 	para "It speaks of when"
-	line "<``>the lead enters"
+	line "“the lead enters"
 
 	para "the Mystri Stage"
-	line "at last…<''>"
+	line "at last…”"
 	done
 
 MystriStageCynthiaLeadText2:
@@ -244,7 +244,7 @@ MystriStageCynthiaLeadText2:
 	para "That is very"
 	line "intriguing."
 
-	para "Could <``>the lead<''>"
+	para "Could “the lead”"
 	line "be a #mon?"
 	cont "Or a person?"
 	done

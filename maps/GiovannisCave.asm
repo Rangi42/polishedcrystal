@@ -248,7 +248,7 @@ GiovannisCaveLyraRecognizesGiovanniText:
 	done
 
 GiovannisCaveBroadcastText:
-	text "<``>… …Ahem, we are"
+	text "“… …Ahem, we are"
 	line "Team Rocket!"
 	cont "After three years"
 	cont "of preparation, we"
@@ -257,7 +257,7 @@ GiovannisCaveBroadcastText:
 	cont "Giovanni! Can you"
 	cont "hear? We did it!"
 	cont "Where is our boss?"
-	cont "Is he listening?<''>"
+	cont "Is he listening?”"
 
 	para "Lyra: Team Rocket"
 	line "has occupied the"
@@ -318,11 +318,11 @@ GiovannisCaveGiovanniAfterText:
 	done
 
 GiovannisCaveBroadcastAfterText:
-	text "<``>… …Hey! Where has"
+	text "“… …Hey! Where has"
 	line "Giovanni gone?"
 	cont "I wonder if he is"
 	cont "listening to our"
-	cont "broadcast… …<''>"
+	cont "broadcast… …”"
 	done
 
 GiovannisCaveLyraFeelsSorryText:

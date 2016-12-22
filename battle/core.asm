@@ -5056,7 +5056,7 @@ endr
 	ld bc, BattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, "<SHINY>"
+	ld a, "★"
 	hlcoord 18, 8
 	ld [hl], a
 
@@ -5132,7 +5132,7 @@ endr
 	ld bc, EnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, "<SHINY>"
+	ld a, "★"
 	hlcoord 9, 1
 	ld [hl], a
 

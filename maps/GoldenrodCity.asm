@@ -433,8 +433,8 @@ GoldenrodCityGymLassText:
 	line "Whitney, went"
 	cont "flying by saying,"
 
-	para "<``>I have got to get"
-	line "a Radio Card!<''>"
+	para "“I have got to get"
+	line "a Radio Card!”"
 	done
 
 GoldenrodCityStationSignText:

@@ -226,7 +226,7 @@ FarawayIslandSignText:
 	para "was written a long"
 	line "time ago…"
 
-	para "<``>…ber, 6th day"
+	para "“…ber, 6th day"
 
 	para "If any human…sets"
 	line "foot here…"
@@ -236,7 +236,7 @@ FarawayIslandSignText:
 	para "…ith that hope,"
 	line "I depar…"
 
-	para "…ji<''>"
+	para "…ji”"
 	done
 
 FarawayIsland_MapEventHeader:

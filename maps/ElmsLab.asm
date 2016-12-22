@@ -1428,7 +1428,7 @@ AideText_ThiefReturnedMon:
 	para "But Prof.Elm said"
 	line "to him…"
 
-	para "<``>It seems that"
+	para "“It seems that"
 	line "the Pokemon likes"
 	cont "you very much."
 
@@ -1437,7 +1437,7 @@ AideText_ThiefReturnedMon:
 	cont "they love."
 
 	para "I think it should"
-	line "stay with you.<''>"
+	line "stay with you.”"
 
 	para "…Isn't it moving?"
 	line "It made me cry!"
@@ -1620,11 +1620,11 @@ ElmsLabOfficerText1:
 	line "was stolen here."
 
 	para "Rule number one!"
-	line "<``>The criminal will"
+	line "“The criminal will"
 
 	para "always return to"
 	line "the scene of the"
-	cont "crime…<''>"
+	cont "crime…”"
 
 	para "Oh my… So you're"
 	line "the thief?"

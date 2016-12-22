@@ -2018,13 +2018,13 @@ PlayRadio: ; 91a53
 	lb bc, 4, 18
 	call TextBox
 	hlcoord 1, 14
-	ld [hl], "<``>"
+	ld [hl], "“"
 	pop de
 	hlcoord 2, 14
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld [hl], "<''>"
+	ld [hl], "”"
 	call WaitBGMap
 	ret
 

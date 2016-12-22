@@ -95,11 +95,11 @@
 
 	charmap "<PO>",     $c0
 	charmap "<KE>",     $c1
-	charmap "<``>",     $c2
-	charmap "<''>",     $c3
+	charmap "“",        $c2
+	charmap "”",        $c3
 	charmap "<LV>",     $c4
 	charmap "…",        $c5
-	charmap "<SHINY>",  $c6
+	charmap "★",        $c6
 	charmap "<PCT>",    $c7
 	charmap "<BALL>",   $c8
 	charmap "<NONO>",   $c9

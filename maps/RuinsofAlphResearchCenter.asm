@@ -480,7 +480,7 @@ UnknownText_0x597d9:
 UnknownText_0x5980e:
 	text "It's a printer."
 	line "The display says"
-	cont "<``>PC LOAD LETTER<''>."
+	cont "“PC LOAD LETTER”."
 
 	para "…What does that"
 	line "mean?"
