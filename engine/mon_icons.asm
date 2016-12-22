@@ -352,7 +352,7 @@ FreezeMonIcons: ; 8ea4a
 	jr .ok
 
 .loadwithtwo
-	ld a, SPRITE_ANIM_SEQ_02
+	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
 
 .ok
 	push hl
@@ -383,7 +383,7 @@ UnfreezeMonIcons: ; 8ea71
 	ld b, h
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
-	ld [hl], SPRITE_ANIM_SEQ_01
+	ld [hl], SPRITE_ANIM_SEQ_PARTY_MON
 	pop hl
 .next
 	ld bc, $10
@@ -404,11 +404,11 @@ HoldSwitchmonIcon: ; 8ea8c
 	jr z, .next
 	cp d
 	jr z, .is_switchmon
-	ld a, SPRITE_ANIM_SEQ_03
+	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
 	jr .join_back
 
 .is_switchmon
-	ld a, SPRITE_ANIM_SEQ_02
+	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
 .join_back
 	push hl
 	ld c, l

@@ -14,53 +14,53 @@ DoAnimFrame: ; 8d24b
 
 .Jumptable: ; 8d25b (23:525b)
 
-	dw .Null        ; null
-	dw .one         ; bouncing mon icon
-	dw .two         ; bouncing mon icon, selected
-	dw .three       ; bouncing mon icon, menu open
-	dw .four
-	dw .namingscreencursor
-	dw .GameFreakLogo         ; Game Freak logo
-	dw .seven
-	dw .eight
-	dw .SlotsGolem        ; Something to do with slots
-	dw .SlotsChansey         ; Something to do with slots
-	dw .SlotsChanseyEgg      ; Something to do with slots
-	dw .mailcompositioncursor      ; blinking cursor
-	dw .thirteen
-	dw .fourteen
-	dw .fifteen
-	dw .sixteen
-	dw .seventeen
-	dw .eighteen
-	dw .EggShell    ; finish egg hatching animation
-	dw .RadioTuningKnob      ; radio tuning knob
-	dw .twentyone   ; cut grass leaves
-	dw .FlyFrom   ; flying sprite
-	dw .FlyLeaf ; flying leaves
-	dw .FlyTo  ; fly to
-	dw .twentyfive
-	dw .twentysix
-	dw .twentyseven
-	dw .twentyeight
-	dw .twentynine  ; intro suicune
-	dw .thirty      ; intro pichu wooper
-	dw .thirtyone   ; celebi
-	dw .thirtytwo   ; intro unown
-	dw .thirtythree ; intro unown F with suicune leaping up
-	dw .thirtyfour  ; intro suicune facing away from us
+	dw .Null                     ; SPRITE_ANIM_SEQ_NULL
+	dw .PartyMon                 ; SPRITE_ANIM_SEQ_PARTY_MON
+	dw .PartyMonSwitch           ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	dw .PartyMonSelected         ; SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
+	dw .four                     ; SPRITE_ANIM_SEQ_04
+	dw .NamingScreenCursor       ; SPRITE_ANIM_SEQ_NAMING_SCREEN_CURSOR
+	dw .GameFreakLogo            ; SPRITE_ANIM_SEQ_GAMEFREAK_LOGO
+	dw .seven                    ; SPRITE_ANIM_SEQ_07
+	dw .eight                    ; SPRITE_ANIM_SEQ_08
+	dw .SlotsGolem               ; SPRITE_ANIM_SEQ_SLOTS_GOLEM
+	dw .SlotsChansey             ; SPRITE_ANIM_SEQ_SLOTS_CHANSEY
+	dw .SlotsChanseyEgg          ; SPRITE_ANIM_SEQ_SLOTS_EGG
+	dw .ComposeMailCursor        ; SPRITE_ANIM_SEQ_COMPOSE_MAIL_CURSOR
+	dw .thirteen                 ; SPRITE_ANIM_SEQ_0D
+	dw .fourteen                 ; SPRITE_ANIM_SEQ_0E
+	dw .fifteen                  ; SPRITE_ANIM_SEQ_0F
+	dw .sixteen                  ; SPRITE_ANIM_SEQ_10
+	dw .seventeen                ; SPRITE_ANIM_SEQ_11
+	dw .eighteen                 ; SPRITE_ANIM_SEQ_12
+	dw .EggShell                 ; SPRITE_ANIM_SEQ_EGG_SHELL
+	dw .RadioTuningKnob          ; SPRITE_ANIM_SEQ_RADIO_TUNING_KNOB
+	dw .CutGrassLeaves           ; SPRITE_ANIM_SEQ_CUT_GRASS_LEAVES
+	dw .FlyFrom                  ; SPRITE_ANIM_SEQ_FLY_FROM
+	dw .FlyLeaf                  ; SPRITE_ANIM_SEQ_FLY_LEAF
+	dw .FlyTo                    ; SPRITE_ANIM_SEQ_FLY_TO
+	dw .twentyfive               ; SPRITE_ANIM_SEQ_19
+	dw .twentysix                ; SPRITE_ANIM_SEQ_1A
+	dw .twentyseven              ; SPRITE_ANIM_SEQ_1B
+	dw .twentyeight              ; SPRITE_ANIM_SEQ_1C
+	dw .IntroSuicune             ; SPRITE_ANIM_SEQ_INTRO_SUICUNE
+	dw .IntroPichuWooper         ; SPRITE_ANIM_SEQ_PICHU_WOOPER
+	dw .Celebi                   ; SPRITE_ANIM_SEQ_CELEBI
+	dw .IntroUnown               ; SPRITE_ANIM_SEQ_UNOWN
+	dw .IntroUnownF              ; SPRITE_ANIM_SEQ_UNOWN_F
+	dw .IntroSuicuneAway         ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
 
 
 .Null: ; 8d2a1 (23:52a1)
 	ret
 
-.one ; 8d2a2 (23:52a2)
+.PartyMon ; 8d2a2 (23:52a2)
 	ld a, [wMenuCursorY]
 
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	cp [hl]
-	jr z, .two
+	jr z, .PartyMonSwitch
 
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
@@ -71,7 +71,7 @@ DoAnimFrame: ; 8d24b
 	ld [hl], $0
 	ret
 
-.two ; 8d2b9 (23:52b9)
+.PartyMonSwitch ; 8d2b9 (23:52b9)
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld [hl], 8 * 3
@@ -113,20 +113,20 @@ DoAnimFrame: ; 8d24b
 	ld [hl], a
 	ret
 
-.three ; 8d2ea (23:52ea)
+.PartyMonSelected ; 8d2ea (23:52ea)
 	ld a, [wMenuCursorY]
 
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	cp [hl]
-	jr z, .three_offset_right
+	jr z, .PartyMonSelected_offset_right
 
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld [hl], 8 * 2
 	ret
 
-.three_offset_right
+.PartyMonSelected_offset_right
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld [hl], 8 * 3
@@ -217,11 +217,11 @@ DoAnimFrame: ; 8d24b
 	ld [hl], a
 	ret
 
-.namingscreencursor ; 8d36c (23:536c)
+.NamingScreenCursor ; 8d36c (23:536c)
 	farcall NamingScreen_AnimateCursor
 	ret
 
-.mailcompositioncursor ; 8d373 (23:5373)
+.ComposeMailCursor ; 8d373 (23:5373)
 	farcall ComposeMail_AnimateCursor
 	ret
 
@@ -610,7 +610,7 @@ DoAnimFrame: ; 8d24b
 	farcall AnimateTuningKnob
 	ret
 
-.twentyone ; 8d57f (23:557f)
+.CutGrassLeaves ; 8d57f (23:557f)
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld e, [hl]
@@ -775,7 +775,7 @@ endr
 	ld [hl], a
 	ret
 
-.twentynine ; 8d63e (23:563e)
+.IntroSuicune ; 8d63e (23:563e)
 	ld a, [wcf65]
 	and a
 	jr nz, .asm_8d645
@@ -802,7 +802,7 @@ endr
 	call _ReinitSpriteAnimFrame
 	ret
 
-.thirty ; 8d666 (23:5666)
+.IntroPichuWooper ; 8d666 (23:5666)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
@@ -821,7 +821,7 @@ endr
 .asm_8d67f
 	ret
 
-.thirtytwo ; 8d680 (23:5680)
+.IntroUnown ; 8d680 (23:5680)
 	ld hl, SPRITEANIMSTRUCT_0B
 	add hl, bc
 	ld d, [hl]
@@ -848,7 +848,7 @@ endr
 	ld [hl], a
 	ret
 
-.thirtythree ; 8d6a2 (23:56a2)
+.IntroUnownF ; 8d6a2 (23:56a2)
 	ld a, [wcf64]
 	cp $40
 	ret nz
@@ -856,7 +856,7 @@ endr
 	call _ReinitSpriteAnimFrame
 	ret
 
-.thirtyfour ; 8d6ae (23:56ae)
+.IntroSuicuneAway ; 8d6ae (23:56ae)
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
@@ -868,7 +868,7 @@ endr
 	farcall Function11d0b6
 	ret
 
-.thirtyone ; 8d6be (23:56be)
+.Celebi ; 8d6be (23:56be)
 	farcall UpdateCelebiPosition
 	ret
 
