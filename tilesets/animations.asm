@@ -578,7 +578,7 @@ endr
 ; fc41c
 
 WaterTileFrames: ; fc41c
-	INCBIN "gfx/tilesets/water.2bpp"
+	INCBIN "gfx/tilesets/water/johto_water.2bpp"
 ; fc45c
 
 
@@ -616,7 +616,7 @@ endr
 ; fc41c
 
 KantoWaterTileFrames:
-	INCBIN "gfx/tilesets/kanto_water.2bpp"
+	INCBIN "gfx/tilesets/water/kanto_water.2bpp"
 
 
 ForestTreeLeftAnimation: ; fc45c
