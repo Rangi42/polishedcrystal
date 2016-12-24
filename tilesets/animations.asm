@@ -213,11 +213,11 @@ Tileset32Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset38Anim:
-	dw VTiles2 tile $14, AnimateKantoWaterTile
+	dw FarawayWaterFrames1, AnimateFarawayWaterTile
+	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  KantoTileAnimationPalette
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -255,15 +255,14 @@ Tileset39Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset42Anim:
-	dw VTiles2 tile $14, AnimateWaterTile
+	dw FarawayWaterFrames1, AnimateFarawayWaterTile
+	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -617,6 +616,51 @@ endr
 
 KantoWaterTileFrames:
 	INCBIN "gfx/tilesets/water/kanto_water.2bpp"
+
+
+AnimateFarawayWaterTile:
+; Draw a faraway water tile for the current frame in VRAM tile at de.
+
+; Struct:
+; 	VRAM address
+;	Address of the first tile
+
+; Only does one of 2 tiles at a time.
+
+; Save sp in bc (see WriteTile).
+	ld hl, [sp+0]
+	ld b, h
+	ld c, l
+
+; de = VRAM address
+	ld l, e
+	ld h, d
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+; Tile address is now at hl.
+
+; Get the tile for this frame.
+	ld a, [TileAnimationTimer]
+	and %111 ; 8 frames x2
+	swap a  ; * 16 bytes per tile
+
+	add [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld a, 0
+	adc h
+	ld h, a
+
+; Stack now points to the desired frame.
+	ld sp, hl
+
+	ld l, e
+	ld h, d
+
+	jp WriteTile
 
 
 ForestTreeLeftAnimation: ; fc45c
@@ -1322,3 +1366,10 @@ WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"
 WhirlpoolTiles3: INCBIN "gfx/tilesets/whirlpool/3.2bpp"
 WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
 ; fcba8
+
+
+FarawayWaterFrames1: dw VTiles2 tile $14, FarawayWaterTiles1
+FarawayWaterFrames2: dw VTiles2 tile $59, FarawayWaterTiles2
+
+FarawayWaterTiles1: INCBIN "gfx/tilesets/water/faraway_water_1.2bpp"
+FarawayWaterTiles2: INCBIN "gfx/tilesets/water/faraway_water_2.2bpp"
