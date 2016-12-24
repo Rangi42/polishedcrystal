@@ -85,6 +85,9 @@ LawrenceRightIntroScript:
 	opentext
 	writetext LawrenceIntroText
 	waitbutton
+	verbosegiveitem ORANGETICKET
+	writetext LawrenceOrangeTicketText
+	waitbutton
 	closetext
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
