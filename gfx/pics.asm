@@ -819,7 +819,7 @@ PetrelPic:             INCBIN "gfx/trainers/petrel.2bpp.lz"
 
 SECTION "Pics 22", ROMX
 
-CherylPic: ; TODO
+CherylPic:                INCBIN "gfx/trainers/cheryl.2bpp.lz"
 RileyPic:                 INCBIN "gfx/trainers/riley.2bpp.lz"
 BuckPic:                  INCBIN "gfx/trainers/buck.2bpp.lz"
 MarleyPic:                INCBIN "gfx/trainers/marley.2bpp.lz"
