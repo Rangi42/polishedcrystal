@@ -604,11 +604,11 @@ INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/GiovannisCave.asm"
 INCLUDE "maps/CinnabarLab.asm"
+INCLUDE "maps/ElmsLab.asm"
 
 
 SECTION "Map Scripts 29", ROMX
 
-INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/Route34Coast.asm"
