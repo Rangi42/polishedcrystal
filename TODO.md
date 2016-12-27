@@ -59,7 +59,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Play B/W final Pokémon music for Gym Leaders
 * Add separate animation graphics for more Poké Ball designs
 * Show item pictures in bag, and possibly when picking them up
-* Change Igglybuff and Smoochum in the credits to Munchlax and Magby
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
 * Design custom animations for new moves
