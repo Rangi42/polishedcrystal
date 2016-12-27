@@ -50,6 +50,7 @@ UnknownScript_0x1883de:
 	playsound SFX_EXIT_BUILDING
 	disappear CERULEANGYM_ROCKET
 	setevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
+	clearevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	clearevent EVENT_ROUTE_24_ROCKET
 	dotrigger $0
 	domaptrigger POWER_PLANT, $0
@@ -182,7 +183,24 @@ CeruleanGymGuyScript:
 	end
 
 CeruleanGymHiddenMachinePart:
-	dwb EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM, MACHINE_PART
+	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+	iftrue .Done
+	checkevent EVENT_LEARNED_ABOUT_MACHINE_PART
+	iffalse .SomethingUnderwater
+	giveitem MACHINE_PART
+	opentext
+	itemtotext MACHINE_PART, $0
+	writetext CeruleanGymFoundMachinePartText
+	playsound SFX_ITEM
+	waitsfx
+	itemnotify
+	closetext
+	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
+.Done:
+	end
+
+.SomethingUnderwater:
+	jumptext CeruleanGymSomethingUnderwaterText
 
 CeruleanGymStatue1:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -465,6 +483,19 @@ CeruleanGymGuyWinText:
 	cont "great battle!"
 	done
 
+CeruleanGymFoundMachinePartText:
+	text "<PLAYER> found"
+	line "@"
+	text_from_ram StringBuffer3
+	text "!"
+	done
+
+CeruleanGymSomethingUnderwaterText:
+	text "There's something"
+	line "under the water…"
+	cont "Wonder what it is?"
+	done
+
 CeruleanGym_MapEventHeader:
 	; filler
 	db 0, 0
@@ -479,7 +510,7 @@ CeruleanGym_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 8, 3, SIGNPOST_ITEM, CeruleanGymHiddenMachinePart
+	signpost 8, 3, SIGNPOST_READ, CeruleanGymHiddenMachinePart
 	signpost 13, 2, SIGNPOST_READ, CeruleanGymStatue1
 	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
 
