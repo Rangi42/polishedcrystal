@@ -1212,6 +1212,7 @@ MonType:: ; cf5f
 
 CurSpecies:: ; cf60
 CurMove::
+wCreditsSpawn::
 	ds 1
 
 wNamedObjectTypeBuffer:: ds 1

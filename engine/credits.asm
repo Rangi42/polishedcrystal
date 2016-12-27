@@ -117,6 +117,12 @@ const_value SET -7
 	const CREDITS_END
 
 
+SetCreditsSpawn::
+	ld a, b
+	ld [wCreditsSpawn], a
+	ret
+
+
 Credits:: ; 109847
 	bit 6, b ; Hall Of Fame
 	ld a, $0
@@ -442,8 +448,7 @@ endr
 .scene
 ; Update the scene number and corresponding palette.
 
-; TODO: make the Lance/Leaf spawn check check work
-	ld a, [wSpawnAfterChampion]
+	ld a, [wCreditsSpawn]
 	cp SPAWN_LEAF
 	jr z, .leaf_scene
 	call .get
@@ -452,7 +457,6 @@ endr
 .leaf_scene
 	call .get
 	add 4
-	ld a, [wSpawnAfterChampion] ; DEBUG
 	ld [wCreditsBorderMon], a ; scene
 .got_scene
 	xor a
@@ -777,15 +781,15 @@ CreditsPalettes:
 	RGB 17, 23, 31
 	RGB 07, 07, 07
 
-	RGB 31, 31, 31
+	RGB 29, 05, 05
 	RGB 17, 23, 31
 	RGB 17, 23, 31
 	RGB 00, 00, 00
 
+	RGB 29, 05, 05
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 	RGB 31, 31, 31
-	RGB 00, 00, 00
 
 ; Bellossom
 	RGB 30, 30, 10
@@ -793,14 +797,14 @@ CreditsPalettes:
 	RGB 15, 24, 12
 	RGB 07, 07, 07
 
-	RGB 31, 31, 31
+	RGB 27, 27, 12
 	RGB 15, 24, 12
 	RGB 15, 24, 12
 	RGB 00, 00, 00
 
-	RGB 31, 31, 31
-	RGB 29, 08, 27
-	RGB 29, 08, 27
+	RGB 27, 27, 12
+	RGB 09, 15, 07
+	RGB 09, 15, 07
 	RGB 00, 00, 00
 ; 109bca
 
