@@ -452,6 +452,7 @@ endr
 .leaf_scene
 	call .get
 	add 4
+	ld a, [wSpawnAfterChampion] ; DEBUG
 	ld [wCreditsBorderMon], a ; scene
 .got_scene
 	xor a
@@ -464,7 +465,7 @@ endr
 ; Clear the banner.
 	ld a, $ff
 	ld [wCreditsBorderFrame], a ; frame
-	jr .loop
+	jp .loop
 
 .music
 ; Play the credits music.
@@ -636,15 +637,15 @@ GetCreditsPalette: ; 109b2c
 ; Each set of palette data is 24 bytes long.
 	ld a, [wCreditsBorderMon] ; scene
 	and 7
-	add a
+rept 3
 	add a ; * 8
-	add a
+endr
 	ld e, a
 	ld d, 0
 	ld hl, CreditsPalettes
-	add hl, de
+rept 3
 	add hl, de ; * 3
-	add hl, de
+endr
 	ret
 
 .UpdatePals:
@@ -690,21 +691,21 @@ CreditsPalettes:
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 
-; Munchlax
+; Sentret
 	RGB 31, 31, 31
-	RGB 08, 17, 17
-	RGB 30, 28, 16
+	RGB 22, 15, 10
+	RGB 31, 19, 09
 	RGB 07, 07, 07
 
-	RGB 16, 15, 08
-	RGB 30, 28, 16
-	RGB 30, 28, 16
 	RGB 31, 31, 31
-
-	RGB 16, 15, 08
+	RGB 31, 19, 09
+	RGB 31, 19, 09
 	RGB 00, 00, 00
+
 	RGB 31, 31, 31
 	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 
 ; Ditto
 	RGB 31, 31, 31
@@ -754,21 +755,21 @@ CreditsPalettes:
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 
-; Sentret
+; Munchlax
 	RGB 31, 31, 31
-	RGB 22, 15, 10
-	RGB 31, 19, 09
+	RGB 08, 17, 17
+	RGB 30, 28, 16
 	RGB 07, 07, 07
 
+	RGB 16, 15, 08
+	RGB 30, 28, 16
+	RGB 30, 28, 16
 	RGB 31, 31, 31
-	RGB 31, 19, 09
-	RGB 31, 19, 09
-	RGB 00, 00, 00
 
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
+	RGB 16, 15, 08
 	RGB 00, 00, 00
+	RGB 31, 31, 31
+	RGB 31, 31, 31
 
 ; Elekid
 	RGB 31, 31, 31
@@ -817,7 +818,7 @@ Credits_LoadBorderGFX: ; 109bca (42:5bca)
 	ld a, [wCreditsBorderMon]
 	and 7
 rept 3
-	add a
+	add a ; * 8
 endr
 	add e
 	add a
@@ -844,14 +845,14 @@ endr
 	dw CreditsPichuGFX     + 16 tiles
 	dw CreditsPichuGFX     + 32 tiles
 	dw CreditsPichuGFX     + 48 tiles
-	dw CreditsMunchlaxGFX
-	dw CreditsMunchlaxGFX
-	dw CreditsMunchlaxGFX  + 16 tiles
-	dw CreditsMunchlaxGFX  + 16 tiles
-	dw CreditsMunchlaxGFX  + 32 tiles
-	dw CreditsMunchlaxGFX  + 32 tiles
-	dw CreditsMunchlaxGFX  + 48 tiles
-	dw CreditsMunchlaxGFX  + 48 tiles
+	dw CreditsSentretGFX
+	dw CreditsSentretGFX
+	dw CreditsSentretGFX   + 16 tiles
+	dw CreditsSentretGFX   + 16 tiles
+	dw CreditsSentretGFX   + 32 tiles
+	dw CreditsSentretGFX   + 32 tiles
+	dw CreditsSentretGFX   + 48 tiles
+	dw CreditsSentretGFX   + 48 tiles
 	dw CreditsDittoGFX
 	dw CreditsDittoGFX     + 16 tiles
 	dw CreditsDittoGFX     + 32 tiles
@@ -876,14 +877,14 @@ endr
 	dw CreditsSmoochumGFX  + 16 tiles
 	dw CreditsSmoochumGFX  + 32 tiles
 	dw CreditsSmoochumGFX  + 48 tiles
-	dw CreditsSentretGFX
-	dw CreditsSentretGFX
-	dw CreditsSentretGFX   + 16 tiles
-	dw CreditsSentretGFX   + 16 tiles
-	dw CreditsSentretGFX   + 32 tiles
-	dw CreditsSentretGFX   + 32 tiles
-	dw CreditsSentretGFX   + 48 tiles
-	dw CreditsSentretGFX   + 48 tiles
+	dw CreditsMunchlaxGFX
+	dw CreditsMunchlaxGFX
+	dw CreditsMunchlaxGFX  + 16 tiles
+	dw CreditsMunchlaxGFX  + 16 tiles
+	dw CreditsMunchlaxGFX  + 32 tiles
+	dw CreditsMunchlaxGFX  + 32 tiles
+	dw CreditsMunchlaxGFX  + 48 tiles
+	dw CreditsMunchlaxGFX  + 48 tiles
 	dw CreditsElekidGFX
 	dw CreditsElekidGFX
 	dw CreditsElekidGFX    + 16 tiles
@@ -922,11 +923,11 @@ CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp"
 
 CreditsMonsGFX:
 CreditsPichuGFX:     INCBIN "gfx/credits/pichu.2bpp"
-CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
+CreditsSentretGFX:   INCBIN "gfx/credits/sentret.2bpp"
 CreditsDittoGFX:     INCBIN "gfx/credits/ditto.2bpp"
 CreditsTogepiGFX:    INCBIN "gfx/credits/togepi.2bpp"
 CreditsSmoochumGFX:  INCBIN "gfx/credits/smoochum.2bpp"
-CreditsSentretGFX:   INCBIN "gfx/credits/sentret.2bpp"
+CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
 CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
 CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 
@@ -1009,7 +1010,7 @@ CreditsScript: ; 10acb4
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 1 ; Munchlax or Sentret
+	db CREDITS_SCENE, 1 ; Sentret or Munchlax
 
 	db      GRAPHICS_DESIGN, 0
 	db     HIRONOBU_YOSHIDA, 1
