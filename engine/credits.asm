@@ -380,7 +380,7 @@ ParseCredits: ; 1099aa
 	cp CREDITS_END
 	jp z, .end
 	cp CREDITS_WAIT
-	jr z, .wait
+	jp z, .wait
 	cp CREDITS_SCENE
 	jr z, .scene
 	cp CREDITS_CLEAR
@@ -441,8 +441,19 @@ endr
 
 .scene
 ; Update the scene number and corresponding palette.
+
+; TODO: make the Lance/Leaf spawn check check work
+	ld a, [wSpawnAfterChampion]
+	cp SPAWN_LEAF
+	jr z, .leaf_scene
 	call .get
 	ld [wCreditsBorderMon], a ; scene
+	jr .got_scene
+.leaf_scene
+	call .get
+	add 4
+	ld [wCreditsBorderMon], a ; scene
+.got_scene
 	xor a
 	ld [wCreditsBorderFrame], a ; frame
 	call GetCreditsPalette
@@ -624,7 +635,7 @@ GetCreditsPalette: ; 109b2c
 .GetPalAddress:
 ; Each set of palette data is 24 bytes long.
 	ld a, [wCreditsBorderMon] ; scene
-	and 3
+	and 7
 	add a
 	add a ; * 8
 	add a
@@ -679,18 +690,18 @@ CreditsPalettes:
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 
-; Smoochum
+; Munchlax
 	RGB 31, 31, 31
-	RGB 31, 27, 00
-	RGB 26, 06, 31
+	RGB 08, 17, 17
+	RGB 30, 28, 16
 	RGB 07, 07, 07
 
-	RGB 03, 13, 31
-	RGB 20, 00, 24
-	RGB 26, 06, 31
+	RGB 16, 15, 08
+	RGB 30, 28, 16
+	RGB 30, 28, 16
 	RGB 31, 31, 31
 
-	RGB 03, 13, 31
+	RGB 16, 15, 08
 	RGB 00, 00, 00
 	RGB 31, 31, 31
 	RGB 31, 31, 31
@@ -711,21 +722,85 @@ CreditsPalettes:
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 
-; Igglybuff
+; Togepi
 	RGB 31, 31, 31
-	RGB 31, 10, 31
-	RGB 31, 00, 09
+	RGB 30, 26, 11
+	RGB 31, 11, 27
 	RGB 07, 07, 07
 
-	RGB 31, 14, 00
-	RGB 31, 00, 09
-	RGB 31, 00, 09
+	RGB 04, 19, 31
+	RGB 31, 11, 27
+	RGB 31, 11, 27
 	RGB 31, 31, 31
 
-	RGB 31, 14, 00
+	RGB 04, 19, 31
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 	RGB 31, 31, 31
+
+; Smoochum
+	RGB 31, 31, 31
+	RGB 31, 27, 00
+	RGB 26, 06, 31
+	RGB 07, 07, 07
+
+	RGB 03, 13, 31
+	RGB 20, 00, 24
+	RGB 26, 06, 31
+	RGB 31, 31, 31
+
+	RGB 03, 13, 31
+	RGB 00, 00, 00
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+
+; Sentret
+	RGB 31, 31, 31
+	RGB 22, 15, 10
+	RGB 31, 19, 09
+	RGB 07, 07, 07
+
+	RGB 31, 31, 31
+	RGB 31, 19, 09
+	RGB 31, 19, 09
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+
+; Elekid
+	RGB 31, 31, 31
+	RGB 31, 31, 05
+	RGB 17, 23, 31
+	RGB 07, 07, 07
+
+	RGB 31, 31, 31
+	RGB 17, 23, 31
+	RGB 17, 23, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+
+; Bellossom
+	RGB 30, 30, 10
+	RGB 29, 08, 27
+	RGB 15, 24, 12
+	RGB 07, 07, 07
+
+	RGB 31, 31, 31
+	RGB 15, 24, 12
+	RGB 15, 24, 12
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 29, 08, 27
+	RGB 29, 08, 27
+	RGB 00, 00, 00
 ; 109bca
 
 Credits_LoadBorderGFX: ; 109bca (42:5bca)
@@ -734,14 +809,14 @@ Credits_LoadBorderGFX: ; 109bca (42:5bca)
 	cp $ff
 	jr z, .init
 
-	and 3
+	and 7
 	ld e, a
 	inc a
-	and 3
+	and 7
 	ld [hl], a
 	ld a, [wCreditsBorderMon]
-	and 3
-rept 2
+	and 7
+rept 3
 	add a
 endr
 	add e
@@ -765,18 +840,66 @@ endr
 	dw CreditsPichuGFX     + 16 tiles
 	dw CreditsPichuGFX     + 32 tiles
 	dw CreditsPichuGFX     + 48 tiles
-	dw CreditsSmoochumGFX
-	dw CreditsSmoochumGFX  + 16 tiles
-	dw CreditsSmoochumGFX  + 32 tiles
-	dw CreditsSmoochumGFX  + 48 tiles
+	dw CreditsPichuGFX
+	dw CreditsPichuGFX     + 16 tiles
+	dw CreditsPichuGFX     + 32 tiles
+	dw CreditsPichuGFX     + 48 tiles
+	dw CreditsMunchlaxGFX
+	dw CreditsMunchlaxGFX
+	dw CreditsMunchlaxGFX  + 16 tiles
+	dw CreditsMunchlaxGFX  + 16 tiles
+	dw CreditsMunchlaxGFX  + 32 tiles
+	dw CreditsMunchlaxGFX  + 32 tiles
+	dw CreditsMunchlaxGFX  + 48 tiles
+	dw CreditsMunchlaxGFX  + 48 tiles
 	dw CreditsDittoGFX
 	dw CreditsDittoGFX     + 16 tiles
 	dw CreditsDittoGFX     + 32 tiles
 	dw CreditsDittoGFX     + 48 tiles
-	dw CreditsIgglybuffGFX
-	dw CreditsIgglybuffGFX + 16 tiles
-	dw CreditsIgglybuffGFX + 32 tiles
-	dw CreditsIgglybuffGFX + 48 tiles
+	dw CreditsDittoGFX
+	dw CreditsDittoGFX     + 16 tiles
+	dw CreditsDittoGFX     + 32 tiles
+	dw CreditsDittoGFX     + 48 tiles
+	dw CreditsTogepiGFX
+	dw CreditsTogepiGFX
+	dw CreditsTogepiGFX    + 16 tiles
+	dw CreditsTogepiGFX    + 16 tiles
+	dw CreditsTogepiGFX    + 32 tiles
+	dw CreditsTogepiGFX    + 32 tiles
+	dw CreditsTogepiGFX    + 48 tiles
+	dw CreditsTogepiGFX    + 48 tiles
+	dw CreditsSmoochumGFX
+	dw CreditsSmoochumGFX  + 16 tiles
+	dw CreditsSmoochumGFX  + 32 tiles
+	dw CreditsSmoochumGFX  + 48 tiles
+	dw CreditsSmoochumGFX
+	dw CreditsSmoochumGFX  + 16 tiles
+	dw CreditsSmoochumGFX  + 32 tiles
+	dw CreditsSmoochumGFX  + 48 tiles
+	dw CreditsSentretGFX
+	dw CreditsSentretGFX
+	dw CreditsSentretGFX   + 16 tiles
+	dw CreditsSentretGFX   + 16 tiles
+	dw CreditsSentretGFX   + 32 tiles
+	dw CreditsSentretGFX   + 32 tiles
+	dw CreditsSentretGFX   + 48 tiles
+	dw CreditsSentretGFX   + 48 tiles
+	dw CreditsElekidGFX
+	dw CreditsElekidGFX
+	dw CreditsElekidGFX    + 16 tiles
+	dw CreditsElekidGFX    + 16 tiles
+	dw CreditsElekidGFX    + 32 tiles
+	dw CreditsElekidGFX    + 32 tiles
+	dw CreditsElekidGFX    + 48 tiles
+	dw CreditsElekidGFX    + 48 tiles
+	dw CreditsBellossomGFX
+	dw CreditsBellossomGFX
+	dw CreditsBellossomGFX + 16 tiles
+	dw CreditsBellossomGFX + 16 tiles
+	dw CreditsBellossomGFX + 32 tiles
+	dw CreditsBellossomGFX + 32 tiles
+	dw CreditsBellossomGFX + 48 tiles
+	dw CreditsBellossomGFX + 48 tiles
 ; 109c11
 
 Credits_TheEnd: ; 109c11 (42:5c11)
@@ -799,9 +922,13 @@ CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp"
 
 CreditsMonsGFX:
 CreditsPichuGFX:     INCBIN "gfx/credits/pichu.2bpp"
-CreditsSmoochumGFX:  INCBIN "gfx/credits/smoochum.2bpp"
+CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
 CreditsDittoGFX:     INCBIN "gfx/credits/ditto.2bpp"
-CreditsIgglybuffGFX: INCBIN "gfx/credits/igglybuff.2bpp"
+CreditsTogepiGFX:    INCBIN "gfx/credits/togepi.2bpp"
+CreditsSmoochumGFX:  INCBIN "gfx/credits/smoochum.2bpp"
+CreditsSentretGFX:   INCBIN "gfx/credits/sentret.2bpp"
+CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
+CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 
 
 CreditsScript: ; 10acb4
@@ -822,7 +949,7 @@ CreditsScript: ; 10acb4
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 0 ; Pichu
+	db CREDITS_SCENE, 0 ; Pichu or Smoochum
 
 	db             DIRECTOR, 1
 	db       SATOSHI_TAJIRI, 2
@@ -882,7 +1009,7 @@ CreditsScript: ; 10acb4
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 1 ; Smoochum
+	db CREDITS_SCENE, 1 ; Munchlax or Sentret
 
 	db      GRAPHICS_DESIGN, 0
 	db     HIRONOBU_YOSHIDA, 1
@@ -950,7 +1077,7 @@ CreditsScript: ; 10acb4
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 2 ; Ditto
+	db CREDITS_SCENE, 2 ; Ditto or Elekid
 
 	db        SCRIPT_DESIGN, 1
 	db         TETSUJI_OOTA, 2
@@ -994,7 +1121,7 @@ CreditsScript: ; 10acb4
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 3 ; Igglybuff
+	db CREDITS_SCENE, 3 ; Togepi or Bellossom
 
 	db     US_VERSION_STAFF, 2
 
