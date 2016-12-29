@@ -2125,7 +2125,7 @@ UpdateHPBarBattleHuds: ; 3cd36
 ; 3cd3c
 
 UpdateHPBar: ; 3cd3c
-	hlcoord 10, 9
+	hlcoord 11, 9
 	ld a, [hBattleTurn]
 	and a
 	ld a, 1
@@ -4961,7 +4961,7 @@ DrawPlayerHUD: ; 3df58
 	call PrintPlayerHUD
 
 	; HP bar
-	hlcoord 10, 9
+	hlcoord 11, 9
 	xor a ; PARTYMON
 	ld [MonType], a
 	predef DrawPlayerHP
@@ -4982,7 +4982,7 @@ DrawPlayerHUD: ; 3df58
 
 	; Status icon
 	farcall LoadPlayerStatusIcon
-	hlcoord 10, 8
+	hlcoord 11, 8
 	ld [hl], $5c
 	inc hl
 	ld [hl], $5d
@@ -5057,7 +5057,7 @@ endr
 	farcall CheckShininess
 	jr nc, .not_own_shiny
 	ld a, "★"
-	hlcoord 18, 8
+	hlcoord 19, 8
 	ld [hl], a
 
 .not_own_shiny
@@ -5071,10 +5071,10 @@ endr
 	ld a, "♀"
 
 .got_gender_char
-	hlcoord 17, 8
+	hlcoord 18, 8
 	ld [hl], a
 
-	hlcoord 14, 8
+	hlcoord 15, 8
 	ld a, [BattleMonLevel]
 	ld [TempMonLevel], a
 	jp PrintLevel
