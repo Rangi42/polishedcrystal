@@ -3686,7 +3686,7 @@ EspeonEvosAttacks:
 	db 33, MORNING_SUN
 	db 37, PSYCHIC_M
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
-	db 45, CALM_MIND ; Power Swap → TM move
+	db 45, POWER_GEM ; Power Swap → new move
 	db 0 ; no more level-up moves
 
 UmbreonEvosAttacks:
