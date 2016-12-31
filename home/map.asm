@@ -1381,7 +1381,7 @@ LoadTileset:: ; 2821
 
 	ld hl, w6_d600
 	ld de, VTiles2
-	ld bc, $60 tiles
+	ld bc, $80 tiles
 	call CopyBytes
 
 	pop af
