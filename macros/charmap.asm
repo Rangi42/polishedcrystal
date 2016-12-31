@@ -91,7 +91,12 @@
 	charmap "y",        $b8
 	charmap "z",        $b9
 
-; unused: ba-bf
+	charmap "É",        $ba
+	charmap "á",        $bb
+	charmap "'a",       $bc
+	charmap "ê",        $bd
+	charmap "í",        $be
+	charmap "ó",        $bf
 
 	charmap "<PO>",     $c0
 	charmap "<KE>",     $c1
@@ -99,12 +104,15 @@
 	charmap "”",        $c3
 	charmap "<LV>",     $c4
 	charmap "…",        $c5
-	charmap "★",        $c6
-	charmap "%",        $c7
+
+	charmap "¿",        $c6
+	charmap "¡",        $c7
+
 	charmap "<BALL>",   $c8
 	charmap "<NONO>",   $c9
+	charmap "★",        $ca
 
-; unused: ca-cd
+; unused: cb-cd
 
 	charmap "—",        $ce
 	charmap "<PHONE>",  $cf
@@ -144,9 +152,7 @@
 	charmap "♂",        $ef
 	charmap "¥",        $f0
 	charmap "×",        $f1
-
-; unused: f2
-
+	charmap "%",        $f2
 	charmap "/",        $f3
 	charmap ",",        $f4
 	charmap "♀",        $f5
