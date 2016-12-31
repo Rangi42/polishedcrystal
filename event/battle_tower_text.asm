@@ -181,7 +181,8 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; ARCHER
 	db FEMALE ; ARIANA
 	db MALE   ; GIOVANNI
-	db MALE   ; POKEMON_PROF
+	db MALE   ; PROF_OAK
+	db MALE   ; PROF_ELM
 	db FEMALE ; MYSTICALMAN
 	db MALE   ; TOWERTYCOON
 

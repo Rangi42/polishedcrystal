@@ -108,7 +108,7 @@ NewGame: ; 5b6b
 	call NewGame_ClearTileMapEtc
 	call InitCrystalData
 	call SetInitialOptions
-	call OakSpeech
+	call ProfElmSpeech
 	call InitializeWorld
 	ld a, 1
 	ld [wPreviousLandmark], a
@@ -677,7 +677,7 @@ Continue_DisplayGameTime: ; 5f84
 	jp PrintNum
 ; 5f99
 
-OakSpeech: ; 0x5f99
+ProfElmSpeech: ; 0x5f99
 	farcall InitClock
 	call RotateFourPalettesLeft
 	call ClearTileMap
@@ -690,7 +690,7 @@ OakSpeech: ; 0x5f99
 
 	xor a
 	ld [CurPartySpecies], a
-	ld a, POKEMON_PROF
+	ld a, PROF_ELM
 	ld [TrainerClass], a
 	call Intro_PrepTrainerPic
 
@@ -700,7 +700,7 @@ OakSpeech: ; 0x5f99
 	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText1
+	ld hl, ElmText1
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTileMap
@@ -724,16 +724,16 @@ OakSpeech: ; 0x5f99
 	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText2
+	ld hl, ElmText2
 	call PrintText
-	ld hl, OakText4
+	ld hl, ElmText4
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTileMap
 
 	xor a
 	ld [CurPartySpecies], a
-	ld a, POKEMON_PROF
+	ld a, PROF_ELM
 	ld [TrainerClass], a
 	call Intro_PrepTrainerPic
 
@@ -743,7 +743,7 @@ OakSpeech: ; 0x5f99
 	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText5
+	ld hl, ElmText5
 	call PrintText
 
 	call InitGender
@@ -751,7 +751,7 @@ OakSpeech: ; 0x5f99
 	ld c, 10
 	call DelayFrames
 
-	ld hl, OakText6
+	ld hl, ElmText6
 	call PrintText
 	call NamePlayer
 
@@ -760,41 +760,41 @@ OakSpeech: ; 0x5f99
 	call InitIntroGradient
 	call LoadIntroGradientGFX
 
-	ld hl, OakText7
+	ld hl, ElmText7
 	call PrintText
 	ret
 
-OakText1: ; 0x6045
-	text_jump _OakText1
+ElmText1: ; 0x6045
+	text_jump _ElmText1
 	db "@"
 
-OakText2: ; 0x604a
-	text_jump _OakText2
+ElmText2: ; 0x604a
+	text_jump _ElmText2
 	start_asm
 	ld a, SYLVEON
 	call PlayCry
 	call WaitSFX
-	ld hl, OakText3
+	ld hl, ElmText3
 	ret
 
-OakText3: ; 0x605b
-	text_jump _OakText3
+ElmText3: ; 0x605b
+	text_jump _ElmText3
 	db "@"
 
-OakText4: ; 0x6060
-	text_jump _OakText4
+ElmText4: ; 0x6060
+	text_jump _ElmText4
 	db "@"
 
-OakText5: ; 0x6065
-	text_jump _OakText5
+ElmText5: ; 0x6065
+	text_jump _ElmText5
 	db "@"
 
-OakText6: ; 0x606a
-	text_jump _OakText6
+ElmText6: ; 0x606a
+	text_jump _ElmText6
 	db "@"
 
-OakText7: ; 0x606f
-	text_jump _OakText7
+ElmText7: ; 0x606f
+	text_jump _ElmText7
 	db "@"
 
 InitGender: ; 48dcb (12:4dcb)

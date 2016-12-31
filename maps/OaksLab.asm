@@ -79,7 +79,7 @@ Oak:
 	closetext
 	winlosstext OakWinText, 0
 	setlasttalked OAKSLAB_OAK
-	loadtrainer POKEMON_PROF, 1
+	loadtrainer PROF_OAK, 1
 	startbattle
 	reloadmapafterbattle
 	opentext

@@ -478,7 +478,7 @@ SwinubBackpic:         INCBIN "gfx/pics/swinub/back.2bpp.lz"
 SECTION "Pics 15", ROMX, BANK[PICS_15]
 
 MewtwoPlainBackpic:    INCBIN "gfx/pics/mewtwo_plain/back.2bpp.lz"
-PokemonProfPic:        INCBIN "gfx/trainers/oak.2bpp.lz"
+ProfOakPic:            INCBIN "gfx/trainers/oak.2bpp.lz"
 CalPic:                INCBIN "gfx/trainers/cal.2bpp.lz"
 if DEF(FAITHFUL)
 DiglettFrontpic:       INCBIN "gfx/pics/diglett/front.2bpp.lz"
@@ -819,6 +819,7 @@ PetrelPic:             INCBIN "gfx/trainers/petrel.2bpp.lz"
 
 SECTION "Pics 22", ROMX
 
+ProfElmPic:               INCBIN "gfx/trainers/elm.2bpp.lz"
 CherylPic:                INCBIN "gfx/trainers/cheryl.2bpp.lz"
 RileyPic:                 INCBIN "gfx/trainers/riley.2bpp.lz"
 BuckPic:                  INCBIN "gfx/trainers/buck.2bpp.lz"

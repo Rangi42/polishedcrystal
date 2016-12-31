@@ -1,9 +1,9 @@
-_OakText6::
+_ElmText6::
 	text "Please tell me"
 	line "your name."
 	prompt
 
-_OakText7::
+_ElmText7::
 	text "<PLAYER>, are you"
 	line "ready?"
 

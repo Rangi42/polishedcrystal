@@ -756,57 +756,58 @@ KRIS EQU __enum__
 	const GIOVANNI1
 	const GIOVANNI2
 
-	trainerclass POKEMON_PROF ; 5d
-	const OAK
+	trainerclass PROF_OAK ; 5d
 
-	trainerclass MYSTICALMAN ; 5e
+	trainerclass PROF_ELM ; 5e
+
+	trainerclass MYSTICALMAN ; 5f
 	const EUSINE
 
-	trainerclass TOWERTYCOON ; 5f
+	trainerclass TOWERTYCOON ; 60
 
-	trainerclass JESSIE_JAMES ; 60
+	trainerclass JESSIE_JAMES ; 61
 
-	trainerclass LORELEI ; 61
+	trainerclass LORELEI ; 62
 
-	trainerclass AGATHA ; 62
+	trainerclass AGATHA ; 63
 
-	trainerclass STEVEN ; 63
+	trainerclass STEVEN ; 64
 
-	trainerclass CYNTHIA ; 64
+	trainerclass CYNTHIA ; 65
 
-	trainerclass CHERYL ; 65
+	trainerclass CHERYL ; 66
 
-	trainerclass RILEY ; 66
+	trainerclass RILEY ; 67
 
-	trainerclass BUCK ; 67
+	trainerclass BUCK ; 68
 
-	trainerclass MARLEY ; 68
+	trainerclass MARLEY ; 69
 
-	trainerclass MIRA ; 69
+	trainerclass MIRA ; 6a
 
-	trainerclass DARACH ; 6a
+	trainerclass DARACH ; 6b
 
-	trainerclass CAITLIN ; 6b
+	trainerclass CAITLIN ; 6c
 
-	trainerclass VALERIE ; 6c
+	trainerclass VALERIE ; 6d
 
-	trainerclass BILL_T ; 6d
+	trainerclass BILL_T ; 6e
 
-	trainerclass YELLOW ; 6e
+	trainerclass YELLOW ; 6f
 
-	trainerclass WALKER ; 6f
+	trainerclass WALKER ; 70
 
-	trainerclass LAWRENCE ; 70
+	trainerclass LAWRENCE ; 71
 
-	trainerclass REI ; 71
+	trainerclass REI ; 72
 
-	trainerclass OMASTAR_FOSSIL ; 72
+	trainerclass OMASTAR_FOSSIL ; 73
 
-	trainerclass KABUTOPS_FOSSIL ; 73
+	trainerclass KABUTOPS_FOSSIL ; 74
 
-	trainerclass AERODACTYL_FOSSIL ; 74
+	trainerclass AERODACTYL_FOSSIL ; 75
 
-	trainerclass METEORITE ; 75
+	trainerclass METEORITE ; 76
 
 NUM_TRAINER_CLASSES EQU __enum__
 

@@ -90,7 +90,8 @@
 	db "Executive@"        ; ARCHER
 	db "Executive@"        ; ARIANA
 	db "Boss@"             ; GIOVANNI
-	db "#mon Prof.@"       ; POKEMON_PROF
+	db "#mon Prof.@"       ; PROF_OAK
+	db "#mon Prof.@"       ; PROF_ELM
 	db "Mystery Man@"      ; MYSTICALMAN
 	db "TowerTycoon@"      ; TOWERTYCOON
 	db "Jessie@"           ; JESSIE_JAMES

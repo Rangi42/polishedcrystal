@@ -91,7 +91,8 @@
 	add_pic ArcherPic
 	add_pic ArianaPic
 	add_pic GiovanniPic
-	add_pic PokemonProfPic
+	add_pic ProfOakPic
+	add_pic ProfElmPic
 	add_pic MysticalmanPic
 	add_pic TowerTycoonPic
 	add_pic JessieJamesPic

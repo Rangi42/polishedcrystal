@@ -451,7 +451,8 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_ROCKET        ; ARCHER
 	db SPRITE_ROCKET_GIRL   ; ARIANA
 	db SPRITE_GIOVANNI      ; GIOVANNI
-	db SPRITE_OAK           ; POKEMON_PROF
+	db SPRITE_OAK           ; PROF_OAK
+	db SPRITE_ELM           ; PROF_ELM
 	db SPRITE_SUPER_NERD    ; MYSTICALMAN
 	db SPRITE_PALMER        ; TOWERTYCOON
 

@@ -1198,7 +1198,7 @@ PeoplePlaces4: ; People
 
 .E4Names:          db WILL, KOGA, BRUNO, KAREN, CHAMPION
 .KantoLeaderNames: db BROCK, MISTY, LT_SURGE, ERIKA, JANINE, SABRINA, BLAINE, BLUE
-.MiscNames:        db RIVAL1, RIVAL2, POKEMON_PROF, CAL, RED
+.MiscNames:        db RIVAL1, LYRA1, PROF_OAK, PROF_ELM, CAL, KAY, RED
                    db -1
 
 PnP_Text4:

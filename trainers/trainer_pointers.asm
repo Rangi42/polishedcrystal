@@ -93,7 +93,8 @@ TrainerGroups: ; 0x39999
 	dw ArcherGroup
 	dw ArianaGroup
 	dw GiovanniGroup
-	dw PokemonProfGroup
+	dw ProfOakGroup
+	dw ProfElmGroup
 	dw MysticalmanGroup
 	dw TowerTycoonGroup
 	dw JessieJamesGroup
