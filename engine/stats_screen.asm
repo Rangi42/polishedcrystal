@@ -679,7 +679,7 @@ endr
 
 .OT_ID_str: ; 4e222 / 4e21e
 	db   "OT/"
-	next "<ID>№.@"
+	next " <ID>№.@"
 ; 4e226
 
 .ExpPointStr: ; 4e12b

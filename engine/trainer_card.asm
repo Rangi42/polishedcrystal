@@ -36,15 +36,9 @@ TrainerCard: ; 25105
 
 	farcall GetCardPic
 
-	ld hl, CardRightCornerGFX
-	ld de, VTiles2 tile $1c
-	ld bc, 1 tiles
-	ld a, BANK(CardRightCornerGFX)
-	call FarCopyBytes
-
 	ld hl, CardStatusGFX
 	ld de, VTiles2 tile $29
-	ld bc, 86 tiles
+	ld bc, 5 tiles
 	ld a, BANK(CardStatusGFX)
 	call FarCopyBytes
 
@@ -98,7 +92,7 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call WaitBGMap
 	ld de, CardStatusGFX
 	ld hl, VTiles2 tile $29
-	lb bc, BANK(CardStatusGFX), 86
+	lb bc, BANK(CardStatusGFX), 5
 	call Request2bpp
 	call TrainerCard_Page1_PrintDexCaught_GameTime
 	call TrainerCard_IncrementJumptable
@@ -241,7 +235,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 
 	hlcoord 2, 4
 	ld de, .ID_No
-	call TrainerCardSetup_PlaceTilemapString
+	call PlaceString
 
 	hlcoord 7, 2
 	ld de, PlayerName
@@ -290,7 +284,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 	next "Money@"
 
 .ID_No: ; 252f9
-	db $27, $28, $ff ; ID NO
+	db "<ID>№.@"
 
 .HorizontalDivider: ; 252fc
 	db $25, $25, $25, $25, $25, $25, $25, $25, $25, $25, $25, $25, $26, $ff ; ____________>
@@ -446,7 +440,7 @@ TrainerCard_InitBorder: ; 253b0 (9:53b0)
 	dec e
 	jr nz, .loop2
 
-	ld a, $1c
+	ld a, $27
 	ld [hli], a
 	ld a, $23
 	ld [hli], a
@@ -532,7 +526,13 @@ TrainerCard_Page1_PrintGameTime: ; 25415 (9:5415)
 	ret nz
 	hlcoord 15, 12
 	ld a, [hl]
-	xor %01010001 ; $7F " " <--> $2E ":"
+	cp ":"
+	jr z, .space
+	ld a, ":"
+	jr .ok
+.space
+	ld a, " "
+.ok
 	ld [hl], a
 	ret
 
@@ -742,9 +742,7 @@ TrainerCard_KantoBadgesOAM:
 
 CardStatusGFX: INCBIN "gfx/misc/card_status.2bpp"
 
-LeaderGFX:  INCBIN "gfx/misc/johto_leaders.w24.2bpp"
-LeaderGFX2: INCBIN "gfx/misc/kanto_leaders.w24.2bpp"
+LeaderGFX:  INCBIN "gfx/misc/johto_leaders.w40.2bpp"
+LeaderGFX2: INCBIN "gfx/misc/kanto_leaders.w40.2bpp"
 BadgeGFX:   INCBIN "gfx/misc/johto_badges.w16.2bpp"
 BadgeGFX2:  INCBIN "gfx/misc/kanto_badges.w16.2bpp"
-
-CardRightCornerGFX: INCBIN "gfx/misc/card_right_corner.2bpp"

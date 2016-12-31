@@ -1511,7 +1511,7 @@ Pack_InitGFX: ; 10955
 	call DisableLCD
 	ld hl, PackMenuGFX
 	ld de, VTiles2
-	ld bc, $60 tiles
+	ld bc, $32 tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes
 ; Background (blue if male, pink if female)
@@ -1525,13 +1525,15 @@ Pack_InitGFX: ; 10955
 	call ClearBox
 ; ◀▶ POCKET       ▼▲ ITEMS
 	hlcoord 0, 0
-	ld a, $28
-	ld c, SCREEN_WIDTH
+	ld de, .PocketItemsString
 .loop
+	ld a, [de]
+	cp $ff
+	jr z, .ok
 	ld [hli], a
-	inc a
-	dec c
-	jr nz, .loop
+	inc de
+	jr .loop
+.ok
 	call DrawPocketName
 	call PlacePackGFX
 ; Place the textbox for displaying the item description
@@ -1542,6 +1544,13 @@ Pack_InitGFX: ; 10955
 	call DrawPackGFX
 	ret
 ; 109a5
+
+.PocketItemsString:
+	db $08, $09, $28, $29, $2a, $2b ; ◀▶ POCKET
+	db $07, $07, $07, $07
+	db $2c, $2d, $2e, $2f, $30, $31 ; ▼▲ ITEMS
+	db $07, $07, $07, $07
+	db $ff
 
 PlacePackGFX: ; 109a5
 	hlcoord 0, 3
