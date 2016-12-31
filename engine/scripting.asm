@@ -2357,7 +2357,7 @@ Script_givepokeitem: ; 97792
 	ld b, a
 	push bc
 	inc hl
-	ld bc, MAIL_MAX_LENGTH
+	ld bc, MAIL_MSG_LENGTH
 	ld de, wd002
 	ld a, [ScriptBank]
 	call FarCopyBytes

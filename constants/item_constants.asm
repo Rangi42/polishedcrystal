@@ -289,10 +289,8 @@
 	const MUSIC_MAIL   ; $fd
 	const MIRAGE_MAIL  ; $fe
 
-ITEM_FROM_MEM EQU $ff
+	const ITEM_FROM_MEM ; $ff
 
-
-MAIL_MAX_LENGTH EQU $20
 
 ; pockets
 ITEM     EQU 1
