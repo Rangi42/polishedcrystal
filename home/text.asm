@@ -224,9 +224,9 @@ endm
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>", PlaceMoveUsersName
 	dict "<ENEMY>", PlaceEnemysName
-	dict "%", NextChar
+	dict "<NEXT>", NextChar
 	dict "<LINE>", LineChar
-	dict "<NEXT>", NextLineChar
+	dict "<NL>", NextLineChar
 	dict TX_FAR, TextFar
 	dict $00, NullChar
 	dict $4b, Char4B

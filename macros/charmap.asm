@@ -2,8 +2,8 @@
 	charmap "<START>",  $00
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22
-	charmap "%",        $25
-	charmap "<NEXT>",   $4e
+	charmap "<NEXT>",   $25
+	charmap "<NL>",     $4e
 	charmap "<LINE>",   $4f
 
 	charmap "@",        $50
@@ -100,7 +100,7 @@
 	charmap "<LV>",     $c4
 	charmap "…",        $c5
 	charmap "★",        $c6
-	charmap "<PCT>",    $c7
+	charmap "%",        $c7
 	charmap "<BALL>",   $c8
 	charmap "<NONO>",   $c9
 

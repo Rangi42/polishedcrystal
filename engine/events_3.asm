@@ -167,7 +167,7 @@ PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	ld a, [hli]
 	cp "@"
 	jr z, .stop
-	cp "%"
+	cp "<NEXT>"
 	jr z, .loop
 	inc c
 	jr .loop

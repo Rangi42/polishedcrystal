@@ -6246,7 +6246,7 @@ DrawPokedexSearchResultsWindow: ; 1de1d1 (77:61d1)
 
 .esults_D ; 1de23c
 ; (SEARCH R)
-	db   "esults<NEXT>"
+	db   "esults<NL>"
 ; (### FOUN)
 	next "d!@"
 
@@ -6345,7 +6345,7 @@ Function1de2c5: ; 1de2c5
 	ld a, [hl]
 	cp "@"
 	jr z, .end
-	cp "%"
+	cp "<NEXT>"
 	jr z, .line_break
 	cp "¯"
 	jr z, .line_break

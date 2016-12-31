@@ -824,7 +824,7 @@ CopyDexEntryPart1:
 	ld a, [hli]
 	cp "@"
 	ret z
-	cp "<NEXT>"
+	cp "<NL>"
 	ret z
 	jr .loop
 
@@ -836,7 +836,7 @@ CopyDexEntryPart2:
 	inc hl
 	cp "@"
 	jr z, .okay
-	cp "<NEXT>"
+	cp "<NL>"
 	jr nz, .loop
 .okay
 	ld a, l

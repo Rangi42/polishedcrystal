@@ -6166,7 +6166,7 @@ MoveInfoBox: ; 3e6c8
 .Disabled:
 	db "Disabled!@"
 .PowAcc:
-	db "   <BOLDP>/   <PCT>@"
+	db "   <BOLDP>/   %@"
 .NA:
 	db "---@"
 ; 3e75f

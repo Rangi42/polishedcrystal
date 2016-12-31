@@ -1885,7 +1885,7 @@ String_na: ; 132cf
 	db "---@"
 
 String_PowAcc:
-	db "/   <BOLDP>/   <PCT>@"
+	db "/   <BOLDP>/   %@"
 
 Function132d3: ; 132d3
 	call Function132da
