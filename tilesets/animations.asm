@@ -155,7 +155,7 @@ Tileset30Anim:
 Tileset25Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $5f, AnimateFountain
+	dw VTiles2 tile $15, AnimateFountain
 	dw NULL,  WaitTileAnimation
 	dw NULL,  TileAnimationPalette
 	dw NULL,  WaitTileAnimation
