@@ -50,7 +50,7 @@ INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
 
 TextBoxSpaceGFX: ; f9204
-INCBIN "gfx/frames/space.2bpp"
+INCBIN "gfx/frames/space.1bpp"
 ; f9214
 
 MapEntryFrameGFX: ; f9344
