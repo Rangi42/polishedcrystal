@@ -5026,7 +5026,7 @@ PrintPlayerHUD: ; 3dfbf
 	ld a, [BattleMonNick + PKMN_NAME_LENGTH - 2]
 	cp "@"
 	jr z, .short_name
-	hlcoord 10, 7
+	dec hl ; hlcoord 10, 7
 .short_name
 	call PlaceString
 
