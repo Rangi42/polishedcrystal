@@ -5020,9 +5020,14 @@ CheckDanger: ; 3df9e
 ; 3dfbf
 
 PrintPlayerHUD: ; 3dfbf
+
 	ld de, BattleMonNick
+	hlcoord 11, 7
+	ld a, [BattleMonNick + PKMN_NAME_LENGTH - 2]
+	cp "@"
+	jr z, .short_name
 	hlcoord 10, 7
-	call ret_3e138
+.short_name
 	call PlaceString
 
 	push bc
@@ -5108,7 +5113,6 @@ DrawEnemyHUD: ; 3e043
 	call GetBaseData
 	ld de, EnemyMonNick
 	hlcoord 1, 0
-	call ret_3e138
 	call PlaceString
 	ld h, b
 	ld l, c
@@ -5241,10 +5245,6 @@ UpdateHPPal: ; 3e12e
 	ret z
 	jp FinishBattleAnim
 ; 3e138
-
-ret_3e138: ; 3e138
-	ret
-; 3e139
 
 BattleMenu: ; 3e139
 	xor a
