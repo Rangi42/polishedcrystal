@@ -4982,7 +4982,7 @@ DrawPlayerHUD: ; 3df58
 
 	; Status icon
 	farcall LoadPlayerStatusIcon
-	hlcoord 11, 8
+	hlcoord 12, 8
 	ld [hl], $5c
 	inc hl
 	ld [hl], $5d
@@ -5220,7 +5220,7 @@ endr
 	call DrawBattleHPBar
 
 	farcall LoadEnemyStatusIcon
-	hlcoord 1, 1
+	hlcoord 2, 1
 	ld [hl], $5e
 	inc hl
 	ld [hl], $5f
