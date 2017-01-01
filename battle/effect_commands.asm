@@ -1387,15 +1387,27 @@ BattleCheckTypeMatchup: ; 347c8
 	; fallthrough
 ; 347d3
 
-
-CheckTypeMatchup: ; 347d3
+CheckTypeMatchup:
+; wrapper that handles ability immunities, because type matchups take predecence,
+; this matters for Ground pokémon with Lightning Rod (and Trace edge-cases).
+; Yes, Lightning Rod is useless on ground types since GSC has no doubles.
 	push hl
 	push de
 	push bc
+	call _CheckTypeMatchup
+	; if the attack is ineffective, bypass ability checks
+	ld a, [wTypeMatchup]
+	and a
+	ret z
+	farcall CheckNullificationAbilities
+	pop bc
+	pop de
+	pop hl
+	ret
+
+_CheckTypeMatchup: ; 347d3
 	ld de, 1 ; IsInArray checks below use single-byte arrays
-; Handle special immunities
-	call CheckNullificationAbilities
-	jp nz, .AbilImmune
+; Handle powder moves
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, PowderMoves
@@ -1407,15 +1419,6 @@ CheckTypeMatchup: ; 347d3
 	cp OVERCOAT
 	jp z, .AbilImmune
 .skip_powder
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	ld hl, SoundMoves
-	call IsInArray
-	jr nc, .skip_sound
-	call GetOpponentAbilityAfterMoldBreaker
-	cp SOUNDPROOF
-	jr z, .AbilImmune
-.skip_sound
 	pop hl
 	push hl
 	ld a, BATTLE_VARS_MOVE_TYPE
@@ -1487,16 +1490,13 @@ CheckTypeMatchup: ; 347d3
 	jr .TypesLoop
 
 .AbilImmune:
-	; makes sure to print "User's ability activated!" to clarify why a target was immune
+	; most abilities are checked seperately, but Overcoat ends up here (powder)
 	ld a, 3
 	ld [AttackMissed], a
 .Immune:
-	ld a, 0
+	xor a
 	ld [wTypeMatchup], a
 .End:
-	pop bc
-	pop de
-	pop hl
 	ret
 
 ; 34833
@@ -1597,9 +1597,6 @@ BattleCommand_CheckHit: ; 34d32
 
 	call .Substitute
 	jp nz, .Miss
-
-	call CheckNullificationAbilities
-	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
 	ret z
@@ -1972,65 +1969,6 @@ BattleCommand_EffectChance: ; 34ecc
 	ret
 
 ; 34eee
-
-
-CheckNullificationAbilities:
-; Return nz if an opponent's ability either powers it up outright by the attack, or
-; renders it useless. Called from CheckHit and CheckTypeMatchup (the latter for the AI's
-; benefit).
-	call GetOpponentAbilityAfterMoldBreaker
-	; Damp protects against specific moves, so check it specifically
-	cp DAMP
-	jr nz, .no_damp
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_EXPLOSION
-	jr nz, .ability_fail
-	ld a, 0
-	or 3
-	ret
-.no_damp
-	ld b, a
-	ld hl, .NullificationAbilityTypes
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .found_ability
-	inc hl
-	cp -1
-	jr nz, .loop
-	ret
-
-.found_ability
-; Type immunities override these abilities, but abilities override everything if they do
-; proc, so checking early is required. So check type matchups here.
-	ld a, [hl]
-	ld b, a
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp b
-	jr nz, .ability_fail
-
-	call BattleCheckTypeMatchup
-	ld a, [wTypeMatchup]
-	and a
-	ret z
-	ld a, 3
-	ret
-
-.ability_fail
-	xor a
-	ret
-
-.NullificationAbilityTypes:
-	db VOLT_ABSORB,   ELECTRIC
-	db LIGHTNING_ROD, ELECTRIC
-	db MOTOR_DRIVE,   ELECTRIC
-	db DRY_SKIN,      WATER
-	db WATER_ABSORB,  WATER
-	db FLASH_FIRE,    FIRE
-	db SAP_SIPPER,    GRASS
-	db -1
 
 
 BattleCommand_LowerSub: ; 34eee
@@ -7917,20 +7855,7 @@ BattleCommand_LeechSeed: ; 36f9d
 	jr nz, .evaded
 	call CheckSubstituteOpp
 	jr nz, .evaded
-
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-
-	ld a, [de]
-	cp GRASS
-	jr z, .grass
-	inc de
-	ld a, [de]
-	cp GRASS
+	call CheckIfTargetIsGrassType
 	jr z, .grass
 
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
