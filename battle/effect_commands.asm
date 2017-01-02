@@ -1387,15 +1387,27 @@ BattleCheckTypeMatchup: ; 347c8
 	; fallthrough
 ; 347d3
 
-
-CheckTypeMatchup: ; 347d3
+CheckTypeMatchup:
+; wrapper that handles ability immunities, because type matchups take predecence,
+; this matters for Ground pokémon with Lightning Rod (and Trace edge-cases).
+; Yes, Lightning Rod is useless on ground types since GSC has no doubles.
 	push hl
 	push de
 	push bc
+	call _CheckTypeMatchup
+	; if the attack is ineffective, bypass ability checks
+	ld a, [wTypeMatchup]
+	and a
+	ret z
+	farcall CheckNullificationAbilities
+	pop bc
+	pop de
+	pop hl
+	ret
+
+_CheckTypeMatchup: ; 347d3
 	ld de, 1 ; IsInArray checks below use single-byte arrays
-; Handle special immunities
-	call CheckNullificationAbilities
-	jp nz, .AbilImmune
+; Handle powder moves
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, PowderMoves
@@ -1407,15 +1419,6 @@ CheckTypeMatchup: ; 347d3
 	cp OVERCOAT
 	jp z, .AbilImmune
 .skip_powder
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	ld hl, SoundMoves
-	call IsInArray
-	jr nc, .skip_sound
-	call GetOpponentAbilityAfterMoldBreaker
-	cp SOUNDPROOF
-	jr z, .AbilImmune
-.skip_sound
 	pop hl
 	push hl
 	ld a, BATTLE_VARS_MOVE_TYPE
@@ -1487,16 +1490,13 @@ CheckTypeMatchup: ; 347d3
 	jr .TypesLoop
 
 .AbilImmune:
-	; makes sure to print "User's ability activated!" to clarify why a target was immune
+	; most abilities are checked seperately, but Overcoat ends up here (powder)
 	ld a, 3
 	ld [AttackMissed], a
 .Immune:
-	ld a, 0
+	xor a
 	ld [wTypeMatchup], a
 .End:
-	pop bc
-	pop de
-	pop hl
 	ret
 
 ; 34833
@@ -1597,9 +1597,6 @@ BattleCommand_CheckHit: ; 34d32
 
 	call .Substitute
 	jp nz, .Miss
-
-	call CheckNullificationAbilities
-	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
 	ret z
@@ -1972,65 +1969,6 @@ BattleCommand_EffectChance: ; 34ecc
 	ret
 
 ; 34eee
-
-
-CheckNullificationAbilities:
-; Return nz if an opponent's ability either powers it up outright by the attack, or
-; renders it useless. Called from CheckHit and CheckTypeMatchup (the latter for the AI's
-; benefit).
-	call GetOpponentAbilityAfterMoldBreaker
-	; Damp protects against specific moves, so check it specifically
-	cp DAMP
-	jr nz, .no_damp
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_EXPLOSION
-	jr nz, .ability_fail
-	ld a, 0
-	or 3
-	ret
-.no_damp
-	ld b, a
-	ld hl, .NullificationAbilityTypes
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .found_ability
-	inc hl
-	cp -1
-	jr nz, .loop
-	ret
-
-.found_ability
-; Type immunities override these abilities, but abilities override everything if they do
-; proc, so checking early is required. So check type matchups here.
-	ld a, [hl]
-	ld b, a
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp b
-	jr nz, .ability_fail
-
-	call BattleCheckTypeMatchup
-	ld a, [wTypeMatchup]
-	and a
-	ret z
-	ld a, 3
-	ret
-
-.ability_fail
-	xor a
-	ret
-
-.NullificationAbilityTypes:
-	db VOLT_ABSORB,   ELECTRIC
-	db LIGHTNING_ROD, ELECTRIC
-	db MOTOR_DRIVE,   ELECTRIC
-	db DRY_SKIN,      WATER
-	db WATER_ABSORB,  WATER
-	db FLASH_FIRE,    FIRE
-	db SAP_SIPPER,    GRASS
-	db -1
 
 
 BattleCommand_LowerSub: ; 34eee
@@ -4909,6 +4847,15 @@ UpdateMoveData: ; 35e40
 
 ; 35e5c
 
+IsLeafGuardActive:
+; returns z if leaf guard applies for enemy
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LEAF_GUARD
+	ret nz
+	ld a, [Weather]
+	cp WEATHER_SUN
+	ret
+
 PostStatusWithSynchronize:
 	farcall RunEnemySynchronizeAbility
 PostStatus:
@@ -4946,13 +4893,11 @@ BattleCommand_SleepTarget: ; 35e5c
 
 	call GetOpponentAbilityAfterMoldBreaker
 	cp INSOMNIA
-	jr z, .ability_protected
+	jr z, .ability_ok
 	cp VITAL_SPIRIT
-	jr nz, .no_ability
-.ability_protected
-	farcall ShowEnemyAbilityActivation
-	jp PrintDidntAffect2
-.no_ability
+	jr z, .ability_ok
+	call IsLeafGuardActive
+	jr z, .ability_ok
 	ld a, [de]
 	and a
 	jr nz, .fail
@@ -4979,6 +4924,10 @@ BattleCommand_SleepTarget: ; 35e5c
 	cp 1 << SLP
 	jp z, OpponentCantMove
 	ret
+
+.ability_ok
+	farcall ShowEnemyAbilityActivation
+	jp PrintDidntAffect2
 
 .fail
 	push hl
@@ -5012,6 +4961,8 @@ BattleCommand_PoisonTarget: ; 35eee
 	call GetOpponentAbilityAfterMoldBreaker
 	cp IMMUNITY
 	ret z
+	call IsLeafGuardActive
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -5028,8 +4979,6 @@ BattleCommand_PoisonTarget: ; 35eee
 
 	jp PostStatusWithSynchronize
 
-; 35f2c
-
 
 BattleCommand_Poison: ; 35f2c
 ; poison
@@ -5040,12 +4989,9 @@ BattleCommand_Poison: ; 35f2c
 	jp z, .failed
 	call GetOpponentAbilityAfterMoldBreaker
 	cp IMMUNITY
-	jr nz, .no_ability
-	farcall ShowEnemyAbilityActivation
-	ld hl, DoesntAffectText
-	jp .failed
-
-.no_ability
+	jp z, .ability_ok
+	call IsLeafGuardActive
+	jr z, .ability_ok
 	call CheckIfTargetIsPoisonType
 	jp z, .failed
 	call CheckIfTargetIsSteelType
@@ -5117,6 +5063,9 @@ BattleCommand_Poison: ; 35f2c
 .finished
 	jp PostStatusWithSynchronize
 
+.ability_ok
+	farcall ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
 .failed
 	push hl
 	call AnimateFailedMove
@@ -5255,6 +5204,8 @@ BattleCommand_BurnTarget: ; 3608c
 	call GetOpponentAbilityAfterMoldBreaker
 	cp WATER_VEIL
 	ret z
+	call IsLeafGuardActive
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -5332,6 +5283,8 @@ BattleCommand_FreezeTarget: ; 36102
 	call GetOpponentAbilityAfterMoldBreaker
 	cp MAGMA_ARMOR
 	ret z
+	call IsLeafGuardActive
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
@@ -5386,6 +5339,8 @@ BattleCommand_ParalyzeTarget: ; 36165
 	ret z
 	call GetOpponentAbilityAfterMoldBreaker
 	cp LIMBER
+	ret z
+	call IsLeafGuardActive
 	ret z
 	ld a, [EffectFailed]
 	and a
@@ -6268,10 +6223,9 @@ BattleCommand_Burn:
 	jp z, .didnt_affect
 	call GetOpponentAbilityAfterMoldBreaker
 	cp WATER_VEIL
-	jr nz, .no_ability
-	farcall ShowEnemyAbilityActivation
-	jp .didnt_affect
-.no_ability
+	jp z, .ability_ok
+	call IsLeafGuardActive
+	jp z, .ability_ok
 	call CheckIfTargetIsFireType
 	jp z, .didnt_affect
 	call GetOpponentItem
@@ -6340,6 +6294,8 @@ BattleCommand_Burn:
 .failed
 	jp PrintDidntAffect2
 
+.ability_ok
+	farcall ShowEnemyAbilityActivation
 .didnt_affect
 	call AnimateFailedMove
 	jp PrintDoesntAffect
@@ -7694,10 +7650,9 @@ BattleCommand_Paralyze: ; 36dc7
 	jp z, .didnt_affect
 	call GetOpponentAbilityAfterMoldBreaker
 	cp LIMBER
-	jr nz, .no_ability
-	farcall ShowEnemyAbilityActivation
-	jr .didnt_affect
-.no_ability
+	jr z, .ability_ok
+	call IsLeafGuardActive
+	jr z, .ability_ok
 	call CheckIfTargetIsElectricType
 	jr z, .didnt_affect
 	call GetOpponentItem
@@ -7741,6 +7696,8 @@ BattleCommand_Paralyze: ; 36dc7
 .failed
 	jp PrintDidntAffect2
 
+.ability_ok
+	farcall ShowEnemyAbilityActivation
 .didnt_affect
 	call AnimateFailedMove
 	jp PrintDoesntAffect
@@ -7920,20 +7877,7 @@ BattleCommand_LeechSeed: ; 36f9d
 	jr nz, .evaded
 	call CheckSubstituteOpp
 	jr nz, .evaded
-
-	ld de, EnemyMonType1
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld de, BattleMonType1
-.ok
-
-	ld a, [de]
-	cp GRASS
-	jr z, .grass
-	inc de
-	ld a, [de]
-	cp GRASS
+	call CheckIfTargetIsGrassType
 	jr z, .grass
 
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
@@ -8217,33 +8161,27 @@ BattleCommand_ResetStats: ; 3710e
 BattleCommand_Heal: ; 3713e
 ; heal
 
-	ld de, BattleMonHP
-	ld hl, BattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld de, EnemyMonHP
-	ld hl, EnemyMonMaxHP
-.got_hp
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld b, a
-	push hl
-	push de
-	push bc
-	ld c, 2
-	call StringCmp
-	pop bc
-	pop de
-	pop hl
-	jp z, .hp_full
+	farcall CheckFullHP_b
 	ld a, b
+	and a
+	jr z, .hp_full
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
 	cp REST
 	jr nz, .not_rest
 
-	push hl
-	push de
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp INSOMNIA
+	jr z, .ability_prevents_rest
+	cp VITAL_SPIRIT
+	jr z, .ability_prevents_rest
+	call BattleCommand_SwitchTurn
+	call IsLeafGuardActive
 	push af
+	call BattleCommand_SwitchTurn
+	pop af
+	jr z, .ability_prevents_rest
 	call BattleCommand_MoveDelay
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
@@ -8258,28 +8196,13 @@ BattleCommand_Heal: ; 3713e
 	ld hl, RestedText
 .no_status_to_heal
 	call StdBattleTextBox
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .calc_enemy_stats
+	; potential healed burn
 	call CalcPlayerStats
-	jr .got_stats
-
-.calc_enemy_stats
 	call CalcEnemyStats
-.got_stats
-	pop af
-	pop de
-	pop hl
-
-.not_rest
-	jr z, .restore_full_hp
-	ld hl, GetHalfMaxHP
-	call CallBattleCore
+	farcall GetMaxHP
 	jr .finish
-
-.restore_full_hp
-	ld hl, GetMaxHP
-	call CallBattleCore
+.not_rest
+	farcall GetHalfMaxHP
 .finish
 	call AnimateCurrentMove
 	farcall RestoreHP
@@ -8287,6 +8210,11 @@ BattleCommand_Heal: ; 3713e
 	call RefreshBattleHuds
 	ld hl, RegainedHealthText
 	jp StdBattleTextBox
+
+.ability_prevents_rest
+	call AnimateFailedMove
+	farcall ShowAbilityActivation
+	ret
 
 .hp_full
 	call AnimateFailedMove

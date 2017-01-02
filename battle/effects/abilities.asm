@@ -571,6 +571,73 @@ AfflictStatusAbility
 	farcall BattleCommand_Poison
 	jp EnableAnimations
 
+CheckNullificationAbilities:
+; Doesn't deal with the active effect of this, but just checking if they apply vs
+; an opponent's used attack (not Overcoat vs powder which is checked with Grass)
+	; Most abilities depends on types and can use a lookup table, but a few
+	; doesn't. Check these first.
+	call GetOpponentAbilityAfterMoldBreaker
+	cp DAMP
+	jr z, .damp
+	cp SOUNDPROOF
+	jr z, .soundproof
+	ld b, a
+	ld hl, .NullificationAbilityTypes
+.loop
+	ld a, [hli]
+	cp b
+	jr z, .found_ability
+	inc hl
+	cp -1
+	jr nz, .loop
+	ret
+
+.found_ability
+	ld a, [hl]
+	ld b, a
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	jr z, .ability_ok
+	ret
+
+.damp
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_EXPLOSION
+	jr z, .ability_ok
+	ret
+
+.soundproof
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, SoundMoves
+	ld de, 1
+	call IsInArray
+	jr c, .ability_ok
+	ret
+
+.ability_ok
+	; Set AttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
+	; to 0 (not neccessary for the engine itself, but helps the AI)
+	ld a, 3
+	ld [AttackMissed], a
+	xor a
+	ld [wTypeMatchup], a
+	ret
+
+.NullificationAbilityTypes:
+	db VOLT_ABSORB,   ELECTRIC
+	db LIGHTNING_ROD, ELECTRIC
+	db MOTOR_DRIVE,   ELECTRIC
+	db DRY_SKIN,      WATER
+	db WATER_ABSORB,  WATER
+	db FLASH_FIRE,    FIRE
+	db SAP_SIPPER,    GRASS
+	db LEVITATE,      GROUND
+	db -1
+
+
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
@@ -606,7 +673,8 @@ RunEnemyNullificationAbilities:
 	ret
 
 DampAbility:
-	; doesn't use the normal activation message or "doesn't affect"
+	; doesn't use the normal activation message or "doesn't affect", because it
+	; would be confusing
 	ld hl, DampAbilityText
 	jp StdBattleTextBox
 
