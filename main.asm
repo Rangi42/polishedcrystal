@@ -2575,10 +2575,6 @@ EmptyAllSRAMBanks: ; 4cf1f
 	ret
 
 SaveMenu_LoadEDTile: ; 4cf45 (13:4f45)
-	ld a, [hCGB]
-	and a
-	jp z, WaitBGMap
-
 ; The following is a modified version of Function3246.
 	ld a, [hBGMapMode]
 	push af
@@ -5456,10 +5452,6 @@ INCLUDE "engine/battle_start.asm"
 INCLUDE "event/field_moves.asm"
 INCLUDE "event/magnet_train.asm"
 
-BattleStart_LoadEDTile: ; 8cf4f
-	call CGBOnly_LoadEDTile
-	ret
-
 INCLUDE "engine/sprites.asm"
 
 INCLUDE "engine/mon_icons.asm"
@@ -5578,31 +5570,6 @@ INCLUDE "battle/bg_effects.asm"
 INCLUDE "battle/anims.asm"
 
 LoadPoisonBGPals: ; cbcdd
-	call .LoadPals
-	ld a, [hCGB]
-	and a
-	ret nz
-	ret
-
-.LoadPals: ; cbce5
-	ld a, [hCGB]
-	and a
-	jr nz, .cgb
-	ld a, [TimeOfDayPal]
-	and $3
-	cp $3
-	ld a, $0
-	jr z, .convert_pals
-	ld a, $aa
-
-.convert_pals
-	call DmgToCgbBGPals
-	ld c, 4
-	call DelayFrames
-	farcall _UpdateTimePals
-	ret
-
-.cgb
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -6130,22 +6097,6 @@ String_AM: db "AM@" ; 1dd6fc
 String_PM: db "PM@" ; 1dd6ff
 
 INCLUDE "engine/diploma.asm"
-
-LoadSGBPokedexGFX: ; 1ddf1c
-	ld hl, LZ_1ddf33
-	ld de, VTiles2 tile $31
-	call Decompress
-	ret
-
-Function1ddf26: ; 1ddf26 (77:5f26)
-	ld hl, LZ_1ddf33
-	ld de, VTiles2 tile $31
-	lb bc, BANK(LZ_1ddf33), $3a
-	call DecompressRequest2bpp
-	ret
-
-LZ_1ddf33: ; 1ddf33
-INCBIN "gfx/pokedex/sgb.2bpp.lz"
 
 LoadQuestionMarkPic: ; 1de0d7
 	ld hl, .QuestionMarkLZ

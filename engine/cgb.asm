@@ -1,20 +1,14 @@
 ; Replaces the functionality of sgb.asm to work with CGB hardware.
 
-CheckCGB: ; 8d55
-	ld a, [hCGB]
-	and a
-	ret
-; 8d59
-
-Predef_LoadSGBLayoutCGB: ; 8d59
+Predef_LoadCGBLayout: ; 8d59
 	ld a, b
 	cp SCGB_RAM
 	jr nz, .not_ram
 	ld a, [SGBPredef]
 .not_ram
 	cp SCGB_PARTY_MENU_HP_PALS
-	jp z, CGB_ApplyPartyMenuHPPals
-	call Function9673
+	jp z, ApplyPartyMenuHPPals
+	call ResetBGPals
 	ld l, a
 	ld h, 0
 	add hl, hl

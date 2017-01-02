@@ -58,7 +58,7 @@ Predef_StartBattle: ; 8c20f
 	call UpdateSprites
 	call DelayFrame
 	call .LoadPokeballTiles
-	call BattleStart_LoadEDTile
+	call LoadEDTile
 	ld a, SCREEN_HEIGHT_PX
 	ld [hWY], a
 	call DelayFrame
@@ -620,16 +620,6 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	dec b
 	jr nz, .loop2
 
-	ld a, [hCGB]
-	and a
-	jr nz, .cgb
-	ld a, $1
-	ld [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	jr .nextscene
-
-.cgb
 	ld hl, .daypals
 	ld a, [TimeOfDayPal]
 	and (1 << 2) - 1
@@ -655,7 +645,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	call DelayFrame
-	call BattleStart_LoadEDTile
+	call LoadEDTile
 
 .nextscene ; 8c673 (23:4673)
 	call StartTrainerBattle_NextScene

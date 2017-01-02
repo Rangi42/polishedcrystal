@@ -26,7 +26,7 @@ ReadAnyMail: ; b9237
 	call WaitBGMap
 	ld a, [Buffer3]
 	ld e, a
-	farcall Function8cb4
+	farcall LoadMailPalettes
 	call SetPalettes
 	xor a
 	ld [hJoyPressed], a

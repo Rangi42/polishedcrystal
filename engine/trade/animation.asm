@@ -143,9 +143,6 @@ RunTradeAnimSequence: ; 28fa1
 	call DisableLCD
 	call LoadFontsBattleExtra
 	farcall ClearSpriteAnims
-	ld a, [hCGB]
-	and a
-	jr z, .NotCGB
 	ld a, $1
 	ld [rVBK], a
 	ld hl, VTiles0
@@ -154,8 +151,6 @@ RunTradeAnimSequence: ; 28fa1
 	call ByteFill
 	ld a, $0
 	ld [rVBK], a
-
-.NotCGB:
 	hlbgcoord 0, 0
 	ld bc, sScratch - VBGMap0
 	ld a, " "
@@ -1373,13 +1368,7 @@ Function297db: ; 297db
 ; 297ed
 
 Function297ed: ; 297ed
-	ld a, [hSGB]
-	and a
 	ld a, %11100100 ; 3,2,1,0
-	jr z, .not_sgb
-	ld a, $f0
-
-.not_sgb
 	call DmgToCgbObjPal0
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals

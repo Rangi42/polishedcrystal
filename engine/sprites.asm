@@ -676,13 +676,7 @@ Sprites_Sine: ; 8e72c
 
 
 AnimateEndOfExpBar: ; 8e79d
-	ld a, [hSGB]
 	ld de, EndOfExpBarGFX
-	and a
-	jr z, .load
-	ld de, SGBEndOfExpBarGFX
-
-.load
 	ld hl, VTiles0 tile $00
 	lb bc, BANK(EndOfExpBarGFX), 1
 	call Request2bpp
@@ -742,8 +736,6 @@ AnimateEndOfExpBar: ; 8e79d
 
 EndOfExpBarGFX: ; 8e7f4
 INCBIN "gfx/battle/expbarend.2bpp"
-SGBEndOfExpBarGFX: ; 8e804
-INCBIN "gfx/battle/expbarend_sgb.2bpp"
 
 ClearSpriteAnims2: ; 8e814
 	push hl

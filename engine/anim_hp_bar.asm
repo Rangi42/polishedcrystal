@@ -285,9 +285,6 @@ endr
 ; d7b4
 
 HPBarAnim_PaletteUpdate: ; d7b4
-	ld a, [hCGB]
-	and a
-	ret z
 	ld hl, wd1f0
 	call SetHPPal
 	ld a, [wd1f0]
@@ -297,14 +294,6 @@ HPBarAnim_PaletteUpdate: ; d7b4
 ; d7c9
 
 HPBarAnim_BGMapUpdate: ; d7c9
-	ld a, [hCGB]
-	and a
-	jr nz, .cgb
-	call DelayFrame
-	call DelayFrame
-	ret
-
-.cgb
 	ld a, [wWhichHPBar]
 	and a
 	jr z, .load_0

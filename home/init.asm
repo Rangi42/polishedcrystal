@@ -21,17 +21,8 @@ SoftReset:: ; 150
 
 
 _Start:: ; 16e
-	cp $11
-	jr z, .cgb
-	xor a
-	jr .load
-
-.cgb
 	ld a, $1
-
-.load
 	ld [hCGB], a
-	ld a, $1
 	ld [hFFEA], a
 ; 17d
 
@@ -139,7 +130,7 @@ Init:: ; 17d
 	ld a, -1
 	ld [hLinkPlayerNumber], a
 
-	farcall Function9890
+	farcall InitCGBPals
 
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
@@ -152,11 +143,7 @@ Init:: ; 17d
 	ld [MBC3LatchClock], a
 	ld [MBC3SRamEnable], a
 
-	ld a, [hCGB]
-	and a
-	jr z, .asm_22b
 	call NormalSpeed
-.asm_22b
 
 	xor a
 	ld [rIF], a
@@ -165,8 +152,6 @@ Init:: ; 17d
 	ei
 
 	call DelayFrame
-
-	predef Function9853
 
 	call MapSetup_Sound_Off
 	xor a

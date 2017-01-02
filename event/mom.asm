@@ -480,7 +480,7 @@ Function1651a: ; 1651a
 	lb bc, PRINTNUM_MONEY | PRINTNUM_LEADINGZEROS | 3, 6
 	call PrintNum
 	call UpdateSprites
-	call CGBOnly_LoadEDTile
+	call LoadEDTile
 	ret
 ; 1656b
 

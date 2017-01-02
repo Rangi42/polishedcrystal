@@ -1,29 +1,13 @@
 ; Functions to fade the screen in and out.
 
 RotateFourPalettesRight:: ; 4a3
-	ld a, [hCGB]
-	and a
-	jr z, .dmg
 	ld hl, IncGradGBPalTable_00
-	ld b, 4
-	jr RotatePalettesRight
-
-.dmg
-	ld hl, IncGradGBPalTable_08
 	ld b, 4
 	jr RotatePalettesRight
 ; 4b6
 
 RotateThreePalettesRight:: ; 4b6
-	ld a, [hCGB]
-	and a
-	jr z, .dmg
 	ld hl, IncGradGBPalTable_05
-	ld b, 3
-	jr RotatePalettesRight
-
-.dmg
-	ld hl, IncGradGBPalTable_13
 	ld b, 3
 RotatePalettesRight:: ; 4c7
 ; Rotate palettes to the right and fill with loaded colors from the left
@@ -45,29 +29,13 @@ RotatePalettesRight:: ; 4c7
 ; 4dd
 
 RotateFourPalettesLeft:: ; 4dd
-	ld a, [hCGB]
-	and a
-	jr z, .dmg
 	ld hl, IncGradGBPalTable_04 - 1
-	ld b, 4
-	jr RotatePalettesLeft
-
-.dmg
-	ld hl, IncGradGBPalTable_12 - 1
 	ld b, 4
 	jr RotatePalettesLeft
 ; 4f0
 
 RotateThreePalettesLeft:: ; 4f0
-	ld a, [hCGB]
-	and a
-	jr z, .dmg
 	ld hl, IncGradGBPalTable_07 - 1
-	ld b, 3
-	jr RotatePalettesLeft
-
-.dmg
-	ld hl, IncGradGBPalTable_15 - 1
 	ld b, 3
 RotatePalettesLeft:: ; 501
 ; Rotate palettes to the left and fill with loaded colors from the right
