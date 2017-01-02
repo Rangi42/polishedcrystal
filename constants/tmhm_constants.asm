@@ -76,8 +76,8 @@ NUM_TMS = const_value - TM01
 	add_hm FLY          ; $47
 	add_hm SURF         ; $48
 	add_hm STRENGTH     ; $49
-	add_hm WATERFALL    ; $4a
-	add_hm WHIRLPOOL    ; $4b
+	add_hm WHIRLPOOL    ; $4a
+	add_hm WATERFALL    ; $4b
 NUM_HMS = const_value - HM01
 
 	add_mt AQUA_TAIL    ; $4c
