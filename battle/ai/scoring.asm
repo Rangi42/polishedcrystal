@@ -1837,8 +1837,8 @@ AI_Smart_MeanLook: ; 38dfb
 	pop hl
 	jp z, AIDiscourageMove
 
-; 80% chance to greatly encourage this move if the enemy is badly poisoned (weird).
-	ld a, [EnemySubStatus2]
+; 80% chance to greatly encourage this move if the player is badly poisoned
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38e26
 
