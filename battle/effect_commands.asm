@@ -1427,13 +1427,6 @@ _CheckTypeMatchup: ; 347d3
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
-	call GetOpponentAbilityAfterMoldBreaker
-	cp LEVITATE
-	jr nz, .skip_levitate
-	ld a, d
-	cp GROUND
-	jr z, .AbilImmune
-.skip_levitate
 	ld a, 10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, TypeMatchup
