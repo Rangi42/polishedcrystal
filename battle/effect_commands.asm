@@ -4145,7 +4145,7 @@ BattleCommand_PainSplit: ; 35926
 	call .PlayerShareHP
 	ld a, $1
 	ld [wWhichHPBar], a
-	hlcoord 10, 9
+	hlcoord 11, 9
 	predef AnimateHPBar
 	ld hl, EnemyMonHP
 	ld a, [hli]
