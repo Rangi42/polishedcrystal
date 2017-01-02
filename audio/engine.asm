@@ -519,9 +519,11 @@ _CheckSFX: ; e82e7
 ; e8307
 
 PlayDanger: ; e8307
-	; The danger sound will loop 4 times and then stop
 	ld a, [Danger]
 	bit 7, a
+	ret z
+	; only loop 4 times
+	cp 255
 	ret z
 	and $7f
 	ld d, a
@@ -552,19 +554,17 @@ PlayDanger: ; e8307
 	ld a, [hli]
 	ld [rNR14], a ; ch1 frequency hi
 .asm_e8335
-	; Check if we reached the end of the current loop (lower $1f is 30)
+	; Iterate 15 times per note (15*4=60, 2 loops/sec)
 	ld a, d
 	inc a
-	and $1f
-	cp 30
+	and $f
+	cp 14
 	ld a, d
 	jr c, .asm_e833c
 	inc a
-	inc a
 .asm_e833c
 	inc a
-	; xor is intentional, it means that once a is $80, the beeps are done
-	xor $80
+	or $80
 	ld [Danger], a
 	; is hw ch1 on?
 	ld a, [SoundOutput]
