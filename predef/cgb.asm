@@ -1188,7 +1188,7 @@ _CGB_PackPals: ; 93d3
 
 .got_gender
 	ld de, UnknBGPals
-	ld bc, 8 palettes ; 6 palettes?
+	ld bc, 5 palettes
 	ld a, $5
 	call FarCopyWRAM
 	call WipeAttrMap
@@ -1204,13 +1204,9 @@ _CGB_PackPals: ; 93d3
 	lb bc, 9, 1
 	ld a, $3
 	call FillBoxCGB
-	hlcoord 0, 7, AttrMap
-	lb bc, 3, 5
+	hlcoord 0, 2, AttrMap
+	lb bc, 5, 5
 	ld a, $4
-	call FillBoxCGB
-	hlcoord 0, 3, AttrMap
-	lb bc, 3, 5
-	ld a, $5
 	call FillBoxCGB
 	call ApplyAttrMap
 	call ApplyPals
@@ -1241,11 +1237,6 @@ _CGB_PackPals: ; 93d3
 	RGB 31, 00, 00
 
 	RGB 31, 31, 31
-	RGB 15, 15, 31
-	RGB 31, 00, 00
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
 	RGB 07, 19, 07
 	RGB 07, 19, 07
 	RGB 00, 00, 00
@@ -1271,11 +1262,6 @@ _CGB_PackPals: ; 93d3
 	RGB 31, 14, 31
 	RGB 31, 07, 31
 	RGB 31, 00, 00
-
-	RGB 31, 31, 31
-	RGB 31, 14, 31
-	RGB 31, 00, 00
-	RGB 00, 00, 00
 
 	RGB 31, 31, 31
 	RGB 07, 19, 07

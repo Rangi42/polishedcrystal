@@ -58,7 +58,6 @@ Pack: ; 10000
 	ld a, ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -86,7 +85,6 @@ Pack: ; 10000
 	ld a, MEDICINE - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -114,7 +112,6 @@ Pack: ; 10000
 	ld a, BALL - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -142,7 +139,6 @@ Pack: ; 10000
 	ld a, TM_HM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	xor a
 	ld [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
@@ -215,7 +211,6 @@ Pack: ; 10000
 	ld a, BERRIES - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -243,7 +238,6 @@ Pack: ; 10000
 	ld a, KEY_ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -712,7 +706,6 @@ BattlePack: ; 10493
 	ld a, ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -740,7 +733,6 @@ BattlePack: ; 10493
 	ld a, MEDICINE - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -768,7 +760,6 @@ BattlePack: ; 10493
 	ld a, BALL - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -796,7 +787,6 @@ BattlePack: ; 10493
 	ld a, TM_HM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	xor a
 	ld [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
@@ -819,7 +809,6 @@ BattlePack: ; 10493
 	ld a, BERRIES - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -847,7 +836,6 @@ BattlePack: ; 10493
 	ld a, KEY_ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	call Pack_JumptableNext
 	ret
@@ -1150,7 +1138,6 @@ DepositSellPack: ; 106be
 InitPocket: ; 10762 (4:4762)
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call DrawPocketName
 	call WaitBGMap_DrawPackGFX
 	ret
 
@@ -1385,7 +1372,7 @@ endr
 	ld e, a
 	ld d, [hl]
 	ld hl, VTiles2 tile $50
-	lb bc, BANK(PackGFX), 15
+	lb bc, BANK(PackGFX), 25
 	call Request2bpp
 	ret
 
@@ -1398,27 +1385,27 @@ endr
 	ld e, a
 	ld d, [hl]
 	ld hl, VTiles2 tile $50
-	lb bc, BANK(PackFGFX), 15
+	lb bc, BANK(PackFGFX), 25
 	call Request2bpp
 	ret
 ; 108cc
 
 PackGFXPointers: ; 108cc
-	dw PackGFX + (15 tiles) * 0 ; Items
-	dw PackGFX + (15 tiles) * 1 ; Medicine
-	dw PackGFX + (15 tiles) * 2 ; Balls
-	dw PackGFX + (15 tiles) * 3 ; TM/HM
-	dw PackGFX + (15 tiles) * 4 ; Berries
-	dw PackGFX + (15 tiles) * 5 ; Key Items
+	dw PackGFX + (25 tiles) * 0 ; Items
+	dw PackGFX + (25 tiles) * 1 ; Medicine
+	dw PackGFX + (25 tiles) * 2 ; Balls
+	dw PackGFX + (25 tiles) * 3 ; TM/HM
+	dw PackGFX + (25 tiles) * 4 ; Berries
+	dw PackGFX + (25 tiles) * 5 ; Key Items
 ; 108d4
 
 PackFGFXPointers: ; 48e93
-	dw PackFGFX + (15 tiles) * 0 ; Items
-	dw PackFGFX + (15 tiles) * 1 ; Medicine
-	dw PackFGFX + (15 tiles) * 2 ; Balls
-	dw PackFGFX + (15 tiles) * 3 ; TM/HM
-	dw PackFGFX + (15 tiles) * 4 ; Berries
-	dw PackFGFX + (15 tiles) * 5 ; Key Items
+	dw PackFGFX + (25 tiles) * 0 ; Items
+	dw PackFGFX + (25 tiles) * 1 ; Medicine
+	dw PackFGFX + (25 tiles) * 2 ; Balls
+	dw PackFGFX + (25 tiles) * 3 ; TM/HM
+	dw PackFGFX + (25 tiles) * 4 ; Berries
+	dw PackFGFX + (25 tiles) * 5 ; Key Items
 
 Pack_InterpretJoypad: ; 108d4 (4:48d4)
 	ld hl, wMenuJoypad
@@ -1511,7 +1498,7 @@ Pack_InitGFX: ; 10955
 	call DisableLCD
 	ld hl, PackMenuGFX
 	ld de, VTiles2
-	ld bc, $32 tiles
+	ld bc, 28 tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes
 ; Background (blue if male, pink if female)
@@ -1534,7 +1521,6 @@ Pack_InitGFX: ; 10955
 	inc de
 	jr .loop
 .ok
-	call DrawPocketName
 	call PlacePackGFX
 ; Place the textbox for displaying the item description
 	hlcoord 0, SCREEN_HEIGHT - 4 - 2
@@ -1546,17 +1532,17 @@ Pack_InitGFX: ; 10955
 ; 109a5
 
 .PocketItemsString:
-	db $08, $09, $28, $29, $2a, $2b ; ◀▶ POCKET
+	db $08, $09, $0a, $0b, $0c, $0d ; ◀▶ POCKET
 	db $07, $07, $07, $07
-	db $2c, $2d, $2e, $2f, $30, $31 ; ▼▲ ITEMS
+	db $0e, $0f, $10, $11, $12, $13 ; ▼▲ ITEMS
 	db $07, $07, $07, $07
 	db $ff
 
 PlacePackGFX: ; 109a5
-	hlcoord 0, 3
+	hlcoord 0, 2
 	ld a, $50
 	ld de, SCREEN_WIDTH - 5
-	ld b, 3
+	ld b, 5
 .row
 	ld c, 5
 .column
@@ -1569,63 +1555,6 @@ PlacePackGFX: ; 109a5
 	jr nz, .row
 	ret
 ; 109bb
-
-DrawPocketName: ; 109bb
-	ld a, [wCurrPocket]
-	; * 15
-	ld d, a
-	swap a
-	sub d
-	ld d, 0
-	ld e, a
-	ld hl, .tilemap
-	add hl, de
-	ld d, h
-	ld e, l
-	hlcoord 0, 7
-	ld c, 3
-.row
-	ld b, 5
-.col
-	ld a, [de]
-	inc de
-	ld [hli], a
-	dec b
-	jr nz, .col
-	ld a, c
-	ld c, SCREEN_WIDTH - 5
-	add hl, bc
-	ld c, a
-	dec c
-	jr nz, .row
-	ret
-; 109e1
-
-.tilemap ; 109e1
-	db $00, $04, $04, $04, $01 ; top border
-	db $0a, $0b, $0c, $0d, $0e ; Items
-	db $02, $05, $05, $05, $03 ; bottom border
-
-	db $00, $04, $04, $04, $01 ; top border
-	db $0f, $10, $11, $12, $13 ; Medicine
-	db $02, $05, $05, $05, $03 ; bottom border
-
-	db $00, $04, $04, $04, $01 ; top border
-	db $14, $15, $16, $17, $18 ; Balls
-	db $02, $05, $05, $05, $03 ; bottom border
-
-	db $00, $04, $04, $04, $01 ; top border
-	db $19, $1a, $1b, $1c, $1d ; TM/HM
-	db $02, $05, $05, $05, $03 ; bottom border
-
-	db $00, $04, $04, $04, $01 ; top border
-	db $1e, $1f, $20, $21, $22 ; Berries
-	db $02, $05, $05, $05, $03 ; bottom border
-
-	db $00, $04, $04, $04, $01 ; top border
-	db $23, $24, $25, $26, $27 ; Key Items
-	db $02, $05, $05, $05, $03 ; bottom border
-; 10a1d
 
 Pack_GetItemName: ; 10a1d
 	ld a, [CurItem]
@@ -1877,4 +1806,4 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-INCBIN "gfx/misc/pack_menu.w40.2bpp"
+INCBIN "gfx/misc/pack_menu.2bpp"
