@@ -4759,7 +4759,7 @@ PlayerHurtItself: ; 35d7e
 	ld [Buffer2], a
 	ld a, [hl]
 	ld [Buffer1], a
-	hlcoord 10, 9
+	hlcoord 11, 9
 	ld a, $1
 	ld [wWhichHPBar], a
 	predef AnimateHPBar
@@ -7478,7 +7478,7 @@ BattleCommand_Recoil: ; 36cb2
 	ld [hli], a
 	ld [hl], a
 .dont_ko
-	hlcoord 10, 9
+	hlcoord 11, 9
 	ld a, [hBattleTurn]
 	and a
 	ld a, 1
