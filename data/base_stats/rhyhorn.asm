@@ -11,8 +11,13 @@
 	db 127 ; gender
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
+if DEF(FAITHFUL)
 	db LIGHTNING_ROD ; ability 1
 	db ROCK_HEAD ; ability 2
+else
+	db ROCK_HEAD ; ability 1
+	db SOLID_ROCK ; ability 2
+endc
 	db RECKLESS ; hidden ability
 	db SLOW ; growth rate
 	dn MONSTER, FIELD ; egg groups
