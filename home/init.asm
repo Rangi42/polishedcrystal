@@ -73,8 +73,6 @@ Init:: ; 17d
 	ld sp, Stack
 
 ; Clear HRAM
-	ld a, [hCGB]
-	push af
 	ld a, [hFFEA]
 	push af
 	xor a
@@ -83,7 +81,7 @@ Init:: ; 17d
 	call ByteFill
 	pop af
 	ld [hFFEA], a
-	pop af
+	ld a, $1
 	ld [hCGB], a
 
 	call ClearWRAM

@@ -227,7 +227,7 @@ Pokedex_InitMainScreen: ; 4013c (10:413c)
 	ld a, 7
 	ld [wDexListingHeight], a
 	call Pokedex_PrintListing
-	call Pokedex_SetBGMapMode_3ifDMG_4ifCGB
+	call Pokedex_SetBGMapMode4
 	call Pokedex_ResetBGMapMode
 	call Pokedex_DrawMainScreenBG
 	ld a, $5
@@ -2580,16 +2580,6 @@ Pokedex_SetBGMapMode4: ; 41ae1 (10:5ae1)
 	ld c, 4
 	call DelayFrames
 	ret
-
-Pokedex_SetBGMapMode_3ifDMG_4ifCGB: ; 41aeb (10:5aeb)
-	ld a, [hCGB]
-	and a
-	jr z, .DMG
-	call Pokedex_SetBGMapMode4
-.DMG:
-	call Pokedex_SetBGMapMode3
-	ret
-
 
 Pokedex_ResetBGMapMode: ; 41af7
 	xor a

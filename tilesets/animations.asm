@@ -844,14 +844,9 @@ AnimateFlowerTile: ; fc56d
 
 ; Alternate tile graphic every other frame
 	ld a, [TileAnimationTimer]
-	and 1 << 1
-	ld e, a
+	and %10
+	srl a
 
-; CGB has different color mappings for flowers.
-	ld a, [hCGB]
-	and 1
-
-	add e
 	swap a ; << 4 (16 bytes)
 	ld e, a
 	ld d, 0
@@ -865,10 +860,8 @@ AnimateFlowerTile: ; fc56d
 ; fc58c
 
 FlowerTileFrames: ; fc58c
-	INCBIN "gfx/tilesets/flower/dmg_1.2bpp"
-	INCBIN "gfx/tilesets/flower/cgb_1.2bpp"
-	INCBIN "gfx/tilesets/flower/dmg_2.2bpp"
-	INCBIN "gfx/tilesets/flower/cgb_2.2bpp"
+	INCBIN "gfx/tilesets/flower/1.2bpp"
+	INCBIN "gfx/tilesets/flower/2.2bpp"
 ; fc5cc
 
 
@@ -883,13 +876,8 @@ AnimateKantoFlowerTile:
 ; Alternate tile graphic every other frame
 	ld a, [TileAnimationTimer]
 	and %110
-	ld e, a
+	srl a
 
-; CGB has different color mappings for flowers.
-	ld a, [hCGB]
-	and 1
-
-	add e
 	swap a ; << 4 (16 bytes)
 	ld e, a
 	ld d, 0
@@ -902,14 +890,10 @@ AnimateKantoFlowerTile:
 	jp WriteTile
 
 KantoFlowerTileFrames:
-	INCBIN "gfx/tilesets/kanto-flower/dmg_1.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/cgb_1.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/dmg_2.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/cgb_2.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/dmg_3.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/cgb_3.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/dmg_1.2bpp"
-	INCBIN "gfx/tilesets/kanto-flower/cgb_1.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/1.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/2.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/3.2bpp"
+	INCBIN "gfx/tilesets/kanto-flower/1.2bpp"
 
 
 SafariFountainAnim1: ; fc5cc
