@@ -4843,7 +4843,7 @@ IsLeafGuardActive:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp LEAF_GUARD
 	ret nz
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	ret
 
@@ -8401,8 +8401,17 @@ PrintParalyze: ; 37372
 
 ; 37378
 
+CheckSubstituteOpp_b:
+; stores result in b rather than zero flag (ld a, b; and a for equavilent result),
+; used for farcalls
+	call CheckSubstituteOpp
+	ld b, 0
+	ret z
+	ld b, 1
+	ret
 
 CheckSubstituteOpp: ; 37378
+; returns z when not behind a sub (or if Infiltrator overrides it)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR
