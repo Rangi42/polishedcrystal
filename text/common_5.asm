@@ -102,6 +102,7 @@ UnknownText_0x1c56af::
 
 UnknownText_0x1c56c9::
 	text_from_ram wMonOrItemNameBuffer
+	text ""
 	line "wants to learn"
 	cont "@"
 	text_from_ram StringBuffer2
