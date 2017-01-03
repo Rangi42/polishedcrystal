@@ -1210,7 +1210,9 @@ RepeatBallMultiplier:
 ; multiply catch rate by 3 if enemy mon is already in Pokédex
 	ld a, [TempEnemyMonSpecies]
 	dec a
+	push bc
 	call CheckCaughtMon
+	pop bc
 	ret z
 
 	ld a, b
