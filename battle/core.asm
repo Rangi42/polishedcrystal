@@ -5007,8 +5007,8 @@ CheckDanger: ; 3df9e
 	jr z, .danger
 
 .no_danger
-	ld hl, Danger
-	res 7, [hl]
+	xor a
+	ld [Danger], a
 	jr .done
 
 .danger
