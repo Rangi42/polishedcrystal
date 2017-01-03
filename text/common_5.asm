@@ -102,21 +102,14 @@ UnknownText_0x1c56af::
 
 UnknownText_0x1c56c9::
 	text_from_ram wMonOrItemNameBuffer
-	text " is"
-	line "trying to learn"
+	line "wants to learn"
 	cont "@"
 	text_from_ram StringBuffer2
-	text "."
+	text "…"
 
-	para "But @"
-	text_from_ram wMonOrItemNameBuffer
-	text ""
-	line "can't learn more"
-	cont "than four moves."
-
-	para "Delete an older"
-	line "move to make room"
-	cont "for @"
+	para "Should it forget"
+	line "an old move for"
+	cont "@"
 	text_from_ram StringBuffer2
 	text "?"
 	done
