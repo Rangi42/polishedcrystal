@@ -1285,7 +1285,7 @@ BattleCommand_Stab: ; 346d2
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SCRAPPY
-	jp z, .TypesLoop
+	jp nz, .TypesLoop
 	jr .end
 
 .SkipForesightCheck:
@@ -1443,7 +1443,7 @@ _CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SCRAPPY
-	jp z, .TypesLoop
+	jp nz, .TypesLoop
 	jr .End
 
 .Next:
