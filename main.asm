@@ -5912,6 +5912,8 @@ INCLUDE "engine/warp_connection.asm"
 
 INCLUDE "battle/used_move_text.asm"
 
+;INCLUDE "gfx/items.asm"
+
 SECTION "Intro Logo", ROMX, BANK[$42]
 
 IntroLogoGFX: ; 109407
