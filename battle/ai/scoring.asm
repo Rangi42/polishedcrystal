@@ -1837,8 +1837,8 @@ AI_Smart_MeanLook: ; 38dfb
 	pop hl
 	jp z, AIDiscourageMove
 
-; 80% chance to greatly encourage this move if the enemy is badly poisoned (weird).
-	ld a, [EnemySubStatus2]
+; 80% chance to greatly encourage this move if the player is badly poisoned
+	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38e26
 
@@ -3385,7 +3385,8 @@ AI_Cautious: ; 39418
 
 AI_Status: ; 39453
 ; Dismiss status moves that don't affect the player.
-
+	ld a, 1
+	ld [hBattleTurn], a
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
 	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
@@ -3401,79 +3402,130 @@ AI_Status: ; 39453
 	inc de
 	call AIGetEnemyMove
 
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_TOXIC
-	jr z, .psnimmunity
-	cp EFFECT_POISON
-	jr z, .psnimmunity
-	cp EFFECT_PARALYZE
-	jr z, .parimmunity
-	cp EFFECT_BURN
-	jr z, .brnimmunity
-	cp EFFECT_FREEZE
-	jr z, .frzimmunity
-	cp EFFECT_SLEEP
-	jr z, .typeimmunity
+	; For some reason, this routine also handles ordinary move hits to discourage immune
+	; moves. This is redundant with AI_Types, but kept to avoid potential issues.
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	jp nz, .typematchup
 
-	ld a, [wEnemyMoveStruct + MOVE_POWER]
-	and a
-	jr z, .checkmove
-
-	jr .typeimmunity
-
-.psnimmunity
-	ld a, [BattleMonType1]
-	cp POISON
-	jr z, .immune
-	ld a, [BattleMonType2]
-	cp POISON
-	jr z, .immune
-
-	jr .typeimmunity
-
-.parimmunity
-	ld a, [BattleMonType1]
-	cp ELECTRIC
-	jr z, .immune
-	ld a, [BattleMonType2]
-	cp ELECTRIC
-	jr z, .immune
-
-	jr .typeimmunity
-
-.brnimmunity
-	ld a, [BattleMonType1]
-	cp FIRE
-	jr z, .immune
-	ld a, [BattleMonType2]
-	cp FIRE
-	jr z, .immune
-
-	jr .typeimmunity
-
-.frzimmunity
-	ld a, [BattleMonType1]
-	cp ICE
-	jr z, .immune
-	ld a, [BattleMonType2]
-	cp ICE
-	jr z, .immune
-
-.typeimmunity
-	push hl
 	push bc
 	push de
-	ld a, 1
-	ld [hBattleTurn], a
-	farcall BattleCheckTypeMatchup
+	push hl
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_TOXIC
+	jr z, .poison
+	cp EFFECT_POISON
+	jr z, .poison
+	cp EFFECT_PARALYZE
+	jr z, .paralyze
+	cp EFFECT_BURN
+	jr z, .burn
+	cp EFFECT_FREEZE
+	jr z, .freeze
+	cp EFFECT_SLEEP
+	jr z, .sleep
+	cp EFFECT_CONFUSE
+	jr z, .confusion
+	cp EFFECT_ATTRACT
+	jr z, .attract
+	pop hl
 	pop de
 	pop bc
-	pop hl
+	jr .checkmove
 
+.poison
+	ld a, POISON
+	ld b, IMMUNITY
+	ld c, HELD_PREVENT_POISON
+	jr .checkstatus
+.paralyze
+	ld a, ELECTRIC
+	ld b, LIMBER
+	ld c, HELD_PREVENT_PARALYZE
+	jr .checkstatus
+.burn
+	ld a, FIRE
+	ld b, WATER_VEIL
+	ld c, HELD_PREVENT_BURN
+	jr .checkstatus
+.freeze
+	ld a, ICE
+	ld b, MAGMA_ARMOR
+	ld c, HELD_PREVENT_FREEZE
+	jr .checkstatus
+.sleep
+	; has 2 abilities, check one of them here
+	call GetOpponentAbilityAfterMoldBreaker
+	cp VITAL_SPIRIT
+	jr z, .pop_and_discourage
+
+	ld b, INSOMNIA
+	ld c, HELD_PREVENT_SLEEP
+	jr .checkstatus_after_type
+.confusion
+	ld b, OWN_TEMPO
+	ld c, HELD_PREVENT_CONFUSE
+	jr .checkstatus_after_type
+.attract
+	ld b, OBLIVIOUS
+	jr .checkstatus_after_items
+
+.checkstatus
+	; Check opponent typings (fire types can't be burned and similar)
+	push bc
+	call CheckIfTargetIsSomeType
+	pop bc
+	jr z, .pop_and_discourage
+
+.checkstatus_after_type
+	; Check opponent item (Poison Guard/etc)
+	push bc
+	call GetOpponentItem
+	ld a, b
+	pop bc
+	cp c
+	jr z, .pop_and_discourage
+
+.checkstatus_after_items
+	; Check opponent ability
+	push bc
+	call GetOpponentAbilityAfterMoldBreaker
+	pop bc
+	cp b
+	jr z, .pop_and_discourage
+	; Also check for Leaf Guard
+	cp LEAF_GUARD
+	jr nz, .no_leaf_guard
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SUN
+	jr z, .pop_and_discourage
+
+.no_leaf_guard
+	; Check Substitute
+	farcall CheckSubstituteOpp_b
+	ld a, b
+	and a
+	jr nz, .pop_and_discourage
+
+	pop hl
+	pop de
+	pop bc
+.typematchup
+	; Check type matchups
+	push hl
+	farcall BattleCheckTypeMatchup
+	pop hl
 	ld a, [wd265]
 	and a
-	jp nz, .checkmove
+	jr z, .immune
+	jp .checkmove
 
+.pop_and_discourage
+	pop hl
+	pop de
+	pop bc
+	; fallthrough
 .immune
 	call AIDiscourageMove
 	jp .checkmove

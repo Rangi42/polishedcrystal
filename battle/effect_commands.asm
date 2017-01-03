@@ -1427,13 +1427,6 @@ _CheckTypeMatchup: ; 347d3
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
-	call GetOpponentAbilityAfterMoldBreaker
-	cp LEVITATE
-	jr nz, .skip_levitate
-	ld a, d
-	cp GROUND
-	jr z, .AbilImmune
-.skip_levitate
 	ld a, 10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, TypeMatchup
@@ -4852,7 +4845,7 @@ IsLeafGuardActive:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp LEAF_GUARD
 	ret nz
-	ld a, [Weather]
+	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	ret
 
@@ -8411,8 +8404,17 @@ PrintParalyze: ; 37372
 
 ; 37378
 
+CheckSubstituteOpp_b:
+; stores result in b rather than zero flag (ld a, b; and a for equavilent result),
+; used for farcalls
+	call CheckSubstituteOpp
+	ld b, 0
+	ret z
+	ld b, 1
+	ret
 
 CheckSubstituteOpp: ; 37378
+; returns z when not behind a sub (or if Infiltrator overrides it)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR
