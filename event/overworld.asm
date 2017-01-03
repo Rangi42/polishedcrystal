@@ -790,7 +790,7 @@ FlyFunction: ; ca3b
 	farcall Function561d
 	call DelayFrame
 	call ReplaceKrisSprite
-	farcall LoadOverworldFont
+	call LoadStandardFont
 	ret
 
 WaterfallFunction: ; cade

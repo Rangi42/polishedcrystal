@@ -303,7 +303,7 @@ LoadGraphics: ; 1047cf
 	ld [hTileAnimFrame], a
 	farcall RefreshSprites
 	call LoadFontsExtra
-	farcall LoadOverworldFont
+	call LoadStandardFont
 	ret
 
 LoadMapPalettes: ; 1047eb

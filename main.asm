@@ -5912,63 +5912,6 @@ INCLUDE "engine/warp_connection.asm"
 
 INCLUDE "battle/used_move_text.asm"
 
-LoadOverworldFont:: ; 106594
-	call LoadPopupFontPointer
-	ld d, h
-	ld e, l
-	ld hl, VTiles1
-	lb bc, BANK(PopupFontNormal), $80
-	call Get2bpp
-	call LoadPopupFontPointer
-	ld de, $80 tiles
-	add hl, de
-	ld d, h
-	ld e, l
-	ld hl, VTiles2 tile $7f
-	lb bc, BANK(PopupFontNormal), 1
-	call Get2bpp
-	ret
-; 1065ad
-
-LoadPopupFontPointer::
-	ld hl, .PopupFontPointers
-	ld a, [Options2]
-	and FONT_MASK
-	ld d, 0
-	ld e, a
-rept 2
-	add hl, de
-endr
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld h, d
-	ld l, e
-	ret
-
-.PopupFontPointers:
-	dw PopupFontNormal
-	dw PopupFontNarrow
-	dw PopupFontBold
-	dw PopupFontItalic
-	dw PopupFontSerif
-	dw PopupFontUnown
-	dw PopupFontNormal
-	dw PopupFontNormal
-
-PopupFontNormal:
-INCBIN "gfx/font/popup_normal.2bpp"
-PopupFontNarrow:
-INCBIN "gfx/font/popup_narrow.2bpp"
-PopupFontBold:
-INCBIN "gfx/font/popup_bold.2bpp"
-PopupFontItalic:
-INCBIN "gfx/font/popup_italic.2bpp"
-PopupFontSerif:
-INCBIN "gfx/font/popup_serif.2bpp"
-PopupFontUnown:
-INCBIN "gfx/font/popup_unown.2bpp"
-
 SECTION "Intro Logo", ROMX, BANK[$42]
 
 IntroLogoGFX: ; 109407
