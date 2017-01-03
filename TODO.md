@@ -67,13 +67,13 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Add boats to Goldenrod Harbor
 * Edit SPRITE_DRAGONITE with Dragonite's side view
 * Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
-* Briefly beep to warn of low HP
 * Custom overworld sprites for Rocket Executives
 
 
 ## New content
 
 * Victor and Puka the Surfing Pikachu ("Hey, you can do it, too")
+* Use RBY's Surf and Bike themes in Kanto
 * Add Crossing Cave (music: Mt. Pyre Peak?) to Route 35 and Route 35 Coast
 * Add Noisy Forest below Route 36 (music: White Treehollow)
 * Add haunted house inside Noisy Forest with RBY-style Ghosts and a Lapras-like Mismagius

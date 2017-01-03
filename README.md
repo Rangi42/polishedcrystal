@@ -309,6 +309,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Use a proper menu for resurrecting Fossils.
 * Add: Instant text option.
 * Add: Replace Jigglypuff Poster with Marill Poster.
+* Add: Briefly beep to warn of low HP.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Explosion and Self-Destruct do not halve Defense.
