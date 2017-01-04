@@ -298,7 +298,7 @@
 	db 15, RATICATE
 
 	map BURNED_TOWER_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 14, RATTATA
 	db 14, KOFFING
@@ -406,7 +406,7 @@
 	db 5, UNOWN
 
 	map UNION_CAVE_1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 6, GEODUDE
 	db 6, SANDSHREW
@@ -433,7 +433,7 @@
 	db 6, ONIX
 
 	map UNION_CAVE_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 8, GEODUDE
 	db 6, ZUBAT
@@ -568,7 +568,7 @@
 	db 8, PARAS
 
 	map MOUNT_MORTAR_1F_OUTSIDE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 22, RATTATA
 	db 21, ZUBAT
@@ -595,7 +595,7 @@
 	db 25, RATICATE
 
 	map MOUNT_MORTAR_1F_INSIDE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 21, GEODUDE
 	db 22, RATTATA
@@ -622,7 +622,7 @@
 	db 25, GOLBAT
 
 	map MOUNT_MORTAR_2F_INSIDE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 34, GRAVELER
 	db 35, MACHOKE
@@ -649,7 +649,7 @@
 	db 35, GOLBAT
 
 	map MOUNT_MORTAR_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 15, ZUBAT
 	db 17, ZUBAT
@@ -811,7 +811,7 @@
 	db 36, SNEASEL
 
 	map WHIRL_ISLAND_NW
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 32, KRABBY
 	db 33, ZUBAT
@@ -838,7 +838,7 @@
 	db 34, GOLBAT
 
 	map WHIRL_ISLAND_NE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 32, KRABBY
 	db 33, ZUBAT
@@ -865,7 +865,7 @@
 	db 34, GOLBAT
 
 	map WHIRL_ISLAND_SW
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 32, KRABBY
 	db 33, ZUBAT
@@ -892,7 +892,7 @@
 	db 34, GOLBAT
 
 	map WHIRL_ISLAND_CAVE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 32, KRABBY
 	db 33, ZUBAT
@@ -919,7 +919,7 @@
 	db 34, GOLBAT
 
 	map WHIRL_ISLAND_SE
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 32, KRABBY
 	db 33, ZUBAT
@@ -946,7 +946,7 @@
 	db 34, GOLBAT
 
 	map WHIRL_ISLAND_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 33, KRABBY
 	db 34, ZUBAT
@@ -973,7 +973,7 @@
 	db 35, GOLBAT
 
 	map WHIRL_ISLAND_B2F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 34, KRABBY
 	db 35, ZUBAT
@@ -1000,7 +1000,7 @@
 	db 36, GOLBAT
 
 	map WHIRL_ISLAND_LUGIA_CHAMBER
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 35, KRABBY
 	db 36, ZUBAT
@@ -1675,7 +1675,7 @@
 	db 20, GIRAFARIG
 
 	map CLIFF_CAVE
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 22, GOLBAT
 	db 19, GEODUDE
@@ -1756,7 +1756,7 @@
 	db 25, NOCTOWL
 
 	map QUIET_CAVE_1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 27, CUBONE
 	db 28, ZUBAT
@@ -1783,7 +1783,7 @@
 	db 28, GOLBAT
 
 	map QUIET_CAVE_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 28, CUBONE
 	db 29, ZUBAT
@@ -1810,7 +1810,7 @@
 	db 28, GOLBAT
 
 	map QUIET_CAVE_B2F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 29, CUBONE
 	db 30, ZUBAT
@@ -1837,7 +1837,7 @@
 	db 32, ONIX
 
 	map QUIET_CAVE_B3F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 30, CUBONE
 	db 31, ZUBAT

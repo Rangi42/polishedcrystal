@@ -28,7 +28,7 @@
 	db 60, DUGTRIO
 
 	map MOUNT_MOON_1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 55, GOLBAT
 	db 56, GRAVELER
@@ -55,7 +55,7 @@
 	db 60, CLEFABLE
 
 	map MOUNT_MOON_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 55, GOLBAT
 	db 56, GRAVELER
@@ -82,7 +82,7 @@
 	db 60, CLEFABLE
 
 	map MOUNT_MOON_B2F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 55, GOLBAT
 	db 56, GRAVELER
@@ -109,7 +109,7 @@
 	db 60, CLEFABLE
 
 	map ROCK_TUNNEL_1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 49, MAROWAK
 	db 50, GRAVELER
@@ -136,7 +136,7 @@
 	db 51, GOLBAT
 
 	map ROCK_TUNNEL_B1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 50, MAROWAK
 	db 51, GRAVELER
@@ -163,7 +163,7 @@
 	db 52, GOLBAT
 
 	map ROCK_TUNNEL_2F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 52, ELECTRODE
 	db 54, GRAVELER
@@ -271,7 +271,7 @@
 	db 43, RHYDON
 
 	map TOHJO_FALLS
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 22, ZUBAT
 	db 22, RATICATE
@@ -1054,7 +1054,7 @@
 	db 52, KINGLER
 
 	map CERULEAN_CAVE_1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 65, CROBAT
 	db 65, PARASECT
@@ -1081,7 +1081,7 @@
 	db 70, DITTO
 
 	map CERULEAN_CAVE_2F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 67, CROBAT
 	db 67, PARASECT
@@ -1108,7 +1108,7 @@
 	db 72, DITTO
 
 	map CERULEAN_CAVE_B1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 69, PARASECT
 	db 69, MAGNEZONE
@@ -1216,7 +1216,7 @@
 	db 60, KANGASKHAN
 
 	map SEAFOAM_ISLANDS_1F
-	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 56, ZUBAT
 	db 59, GOLBAT
@@ -1243,7 +1243,7 @@
 	db 62, GOLDUCK
 
 	map SEAFOAM_ISLANDS_B1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 57, SEEL
 	db 60, GOLBAT
@@ -1270,7 +1270,7 @@
 	db 63, GOLBAT
 
 	map SEAFOAM_ISLANDS_B2F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 58, SEEL
 	db 61, GOLBAT
@@ -1297,7 +1297,7 @@
 	db 64, GOLBAT
 
 	map SEAFOAM_ISLANDS_B3F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 59, GOLBAT
 	db 62, DEWGONG
@@ -1324,7 +1324,7 @@
 	db 65, SEEL
 
 	map SEAFOAM_ISLANDS_B4F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 60, GOLBAT
 	db 63, DEWGONG
@@ -1351,7 +1351,7 @@
 	db 66, DEWGONG
 
 	map POKEMON_MANSION_1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 58, RATICATE
 	db 56, WEEZING
@@ -1378,7 +1378,7 @@
 	db 60, RAPIDASH
 
 	map POKEMON_MANSION_B1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 58, RATICATE
 	db 56, WEEZING
@@ -1405,7 +1405,7 @@
 	db 60, DITTO
 
 	map CINNABAR_VOLCANO_1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 56, KOFFING
 	db 58, GRAVELER
@@ -1432,7 +1432,7 @@
 	db 62, MAGMAR
 
 	map CINNABAR_VOLCANO_B1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 58, GRAVELER
 	db 60, WEEZING
@@ -1459,7 +1459,7 @@
 	db 64, STEELIX
 
 	map CINNABAR_VOLCANO_B2F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 60, MAGCARGO
 	db 62, WEEZING
