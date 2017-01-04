@@ -147,7 +147,7 @@ BattleCommand_CheckTurn: ; 34084
 	ld [AlreadyFailed], a
 	ld [wSomeoneIsRampaging], a
 
-	ld a, 10 ; 1.0
+	ld a, $10 ; 1.0
 	ld [TypeModifier], a
 
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -1187,194 +1187,106 @@ BattleCommand_KickCounter: ; 346cd
 
 BattleCommand_Stab: ; 346d2
 ; STAB = Same Type Attack Bonus
-	ld a, BATTLE_VARS_MOVE_ANIM
+; Also handles type matchups and fire/water in sun/rain
+; Uses an one-byte var to finally use for damage calculation. Max/min listed in case
+; future extension is done to keep potential overflow/rounding errors in mind.
+; Min value: $04 (quad-resist, no STAB, bad weather modifier)
+; Base value: $10
+; Max value: $c0 (quad-weak, STAB, good weather modifier
+	; Struggle doesn't apply STAB or matchups
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp STRUGGLE
 	ret z
 
-	ld hl, BattleMonType1
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, EnemyMonType1
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
+	; Apply type matchups
+	call BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	and a
+	jr nz, .not_immune
+	; Immunities are treated as we missing and dealing 0 damage
+	ld hl, CurDamage
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld [TypeModifier], a
+	; AttackMissed being nonzero can mean special immunity, so avoid overriding it
+	ld a, [AttackMissed]
+	and a
+	ret nz
+	ld a, 1
+	ld [AttackMissed], a
+	ret
 
+.not_immune
+	; Apply STAB
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	ld b, a
 	ld a, [hBattleTurn]
 	and a
-	jr z, .go ; Who Attacks and who Defends
-
-	ld hl, EnemyMonType1
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
 	ld hl, BattleMonType1
+	jr z, .got_attacker_types
+	ld hl, EnemyMonType1
+.got_attacker_types
 	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-
-.go
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVarAddr
-	ld [wTypeMatchup], a
-
-	push hl
-	push de
-	push bc
-	farcall DoWeatherModifiers
-	pop bc
-	pop de
-	pop hl
-
-	ld a, [wTypeMatchup]
 	cp b
 	jr z, .stab
-	cp c
-	jr z, .stab
-
-	jr .SkipStab
-
+	ld a, [hl]
+	cp b
+	jr nz, .stab_done
 .stab
+	; Adaptability gives 2x, otherwise STAB is 1.5x
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp ADAPTABILITY
+	ld a, [wTypeMatchup]
 	jr nz, .no_adaptability
-	call DoubleDamage
+	sla a
+	ld [wTypeMatchup], a
 	jr .stab_done
 .no_adaptability
-	ld hl, CurDamage + 1
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a
-
-	ld b, h
-	ld c, l
+	ld b, a
 	srl b
-	rr c
-	add hl, bc
+	add b
 
 .stab_done
-	ld a, h
-	ld [CurDamage], a
-	ld a, l
-	ld [CurDamage + 1], a
-
-	ld hl, TypeModifier
-	set 7, [hl]
-
-.SkipStab:
+	; Apply weather modifiers
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld b, a
-	ld hl, TypeMatchup
+	farcall DoWeatherModifiers
 
-.TypesLoop:
-	ld a, [hli]
-
-	cp $ff
-	jr z, .end
-
-	; foresight
-	cp $fe
-	jr nz, .SkipForesightCheck
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
-	call GetBattleVar
-	bit SUBSTATUS_IDENTIFIED, a
-	jr z, .TypesLoop
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp SCRAPPY
-	jp nz, .TypesLoop
-	jr .end
-
-.SkipForesightCheck:
-	cp b
-	jr nz, .SkipType
-	ld a, [hl]
-	cp d
-	jr z, .GotMatchup
-	cp e
-	jr z, .GotMatchup
-	jr .SkipType
-
-.GotMatchup:
-	push hl
-	push bc
-	inc hl
-	ld a, [TypeModifier]
-	and %10000000
-	ld b, a
-; If the target is immune to the move, treat it as a miss and calculate the damage as 0
-	ld a, [hl]
-	and a
-	jr nz, .NotImmune
-	inc a
-	ld [AttackMissed], a
-	xor a
-.NotImmune:
+	; Now calculate the damage changes with the modifiers in mind.
+	ld a, [wTypeMatchup]
 	ld [hMultiplier], a
-	add b
-	ld [TypeModifier], a
-
 	xor a
 	ld [hMultiplicand + 0], a
-
 	ld hl, CurDamage
 	ld a, [hli]
 	ld [hMultiplicand + 1], a
 	ld a, [hld]
 	ld [hMultiplicand + 2], a
-
 	call Multiply
 
-	ld a, [hProduct + 1]
-	ld b, a
-	ld a, [hProduct + 2]
-	or b
-	ld b, a
-	ld a, [hProduct + 3]
-	or b
-	jr z, .ok ; This is a very convoluted way to get back that we've essentially dealt no damage.
-
-; Take the product and divide it by 10.
-	ld a, 10
+	ld a, $10
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	or b
-	jr nz, .ok
 
-	ld a, 1
-	ld [hMultiplicand + 2], a
-
-.ok
+	; Store in curDamage
 	ld a, [hMultiplicand + 1]
 	ld [hli], a
+	ld b, a
 	ld a, [hMultiplicand + 2]
 	ld [hl], a
-	pop bc
-	pop hl
-
-.SkipType:
-	inc hl
-	inc hl
-	jr .TypesLoop
-
-.end
-	call BattleCheckTypeMatchup
-	ld a, [wTypeMatchup]
-	ld b, a
-	ld a, [TypeModifier]
-	and %10000000
 	or b
-	ld [TypeModifier], a
-	ret
+	ret nz
 
-; 347c8
+	; damage ended up 0, so set it to 1
+	inc a
+	ld [hl], a
+	ret
 
 
 BattleCheckTypeMatchup: ; 347c8
@@ -1388,6 +1300,7 @@ BattleCheckTypeMatchup: ; 347c8
 ; 347d3
 
 CheckTypeMatchup:
+; FIXME: Broken in AI usage! (assumes placing move type in a will work, it wont)
 ; wrapper that handles ability immunities, because type matchups take predecence,
 ; this matters for Ground pokémon with Lightning Rod (and Trace edge-cases).
 ; Yes, Lightning Rod is useless on ground types since GSC has no doubles.
@@ -1427,29 +1340,33 @@ _CheckTypeMatchup: ; 347d3
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
-	ld a, 10 ; 1.0
+	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, TypeMatchup
 .TypesLoop:
 	ld a, [hli]
+	; terminator
 	cp $ff
 	jr z, .End
 	cp $fe
 	jr nz, .Next
+	; stuff beyond this point is ignored if the foe is identified or we have Scrappy
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr z, .TypesLoop
+	jr nz, .End
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SCRAPPY
-	jp nz, .TypesLoop
-	jr .End
+	jp z, .End
+	jr .TypesLoop
 
 .Next:
+	; attacking type
 	cp d
 	jr nz, .Nope
 	ld a, [hli]
+	; defending types
 	cp b
 	jr z, .Yup
 	cp c
@@ -1463,22 +1380,23 @@ _CheckTypeMatchup: ; 347d3
 	jr .TypesLoop
 
 .Yup:
-	xor a
-	ld [hDividend + 0], a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
+	; no need to continue if we encountered a 0x matchup
 	ld a, [hli]
-	ld [hMultiplicand + 2], a
+	and a
+	jr z, .Immune
+	cp SUPER_EFFECTIVE
+	jr z, .se
+	cp NOT_VERY_EFFECTIVE
+	jr z, .nve
+	jr .TypesLoop
+.se
 	ld a, [wTypeMatchup]
-	ld [hMultiplier], a
-	call Multiply
-	ld a, 10
-	ld [hDivisor], a
-	push bc
-	ld b, 4
-	call Divide
-	pop bc
-	ld a, [hQuotient + 2]
+	sla a
+	ld [wTypeMatchup], a
+	jr .TypesLoop
+.nve
+	ld a, [wTypeMatchup]
+	srl a
 	ld [wTypeMatchup], a
 	jr .TypesLoop
 
@@ -1501,7 +1419,7 @@ BattleCommand_ResetTypeMatchup: ; 34833
 	call BattleCheckTypeMatchup
 	ld a, [wTypeMatchup]
 	and a
-	ld a, 10 ; 1.0
+	ld a, $10 ; 1.0
 	jr nz, .reset
 	call ResetDamage
 	xor a
@@ -2328,7 +2246,7 @@ BattleCommand_CheckFaint: ; 3505e
 GetFailureResultText: ; 350e4
 	ld hl, DoesntAffectText
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	jr z, .got_text
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -2351,7 +2269,7 @@ GetFailureResultText: ; 350e4
 	ret nz
 
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	ret z
 
 	ld hl, CurDamage
@@ -2466,8 +2384,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 ; supereffectivetext
 
 	ld a, [TypeModifier]
-	and $7f
-	cp 10 ; 1.0
+	cp $10 ; 1.0
 	ret z
 	ld hl, SuperEffectiveText
 	jr nc, .print
@@ -3412,8 +3329,7 @@ BattleCommand_DamageCalc: ; 35612
 	jr .ability_x1_3
 .tinted_lens
 	ld a, [TypeModifier]
-	and $7f
-	cp 10 ; x1
+	cp $10 ; x1
 	jr nc, .ability_penalties
 	jr .ability_double
 .solar_power
@@ -3520,8 +3436,7 @@ BattleCommand_DamageCalc: ; 35612
 .solid_rock
 ; Check super effective status
 	ld a, [TypeModifier]
-	and $7f
-	cp 10 ; x1
+	cp $10 ; x1
 	jr z, .abilities_done
 	jr c, .abilities_done
 	ld [hl], 3
@@ -4939,7 +4854,7 @@ BattleCommand_PoisonTarget: ; 35eee
 	and a
 	ret nz
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	ret z
 	call CheckIfTargetIsPoisonType
 	ret z
@@ -4976,7 +4891,7 @@ BattleCommand_Poison: ; 35f2c
 
 	ld hl, DoesntAffectText
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	jp z, .failed
 	call GetOpponentAbilityAfterMoldBreaker
 	cp IMMUNITY
@@ -5184,7 +5099,7 @@ BattleCommand_BurnTarget: ; 3608c
 	and a
 	jp nz, Defrost
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	ret z
 	call CheckIfTargetIsFireType
 	ret z
@@ -5260,7 +5175,7 @@ BattleCommand_FreezeTarget: ; 36102
 	and a
 	ret nz
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	ret z
 	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
@@ -5320,7 +5235,7 @@ BattleCommand_ParalyzeTarget: ; 36165
 	and a
 	ret nz
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	ret z
 	call CheckIfTargetIsElectricType
 	ret z
@@ -6210,7 +6125,7 @@ BattleCommand_Burn:
 	bit BRN, a
 	jp nz, .burned
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	jp z, .didnt_affect
 	call GetOpponentAbilityAfterMoldBreaker
 	cp WATER_VEIL
@@ -7636,7 +7551,7 @@ BattleCommand_Paralyze: ; 36dc7
 	bit PAR, a
 	jr nz, .paralyzed
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	jp z, .didnt_affect
 	call GetOpponentAbilityAfterMoldBreaker
 	cp LIMBER
