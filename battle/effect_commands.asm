@@ -1249,6 +1249,7 @@ BattleCommand_Stab: ; 346d2
 	ld b, a
 	srl b
 	add b
+	ld [wTypeMatchup], a
 
 .stab_done
 	; Apply weather modifiers
