@@ -278,6 +278,10 @@ ImposterAbility:
 	jp EnableAnimations
 
 AnticipationAbility:
+	; Anticipation considers special types (just Hidden Power is applicable here) as
+	; whatever type they are listed as (e.g. HP is Normal). It will also (as of 5gen)
+	; treat Counter/Mirror Coat (and Metal Burst) as attacking moves of their type.
+	; It also ignores Pixilate.
 	ld a, [hBattleTurn]
 	and a
 	ld hl, EnemyMonMoves
@@ -311,21 +315,24 @@ AnticipationAbility:
 .got_move_struct
 	ld a, BANK(Moves)
 	call FarCopyBytes
-	; Ignore status moves
+	; Ignore status moves. Don't ignore Counter/Mirror Coat (counterintuitive)
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	cp STATUS
 	jr z, .end_of_loop
 	; If the move is super effective, shudder
 	farcall BattleCheckTypeMatchup
-	pop bc
-	pop hl
 	ld a, [wTypeMatchup]
 	cp SUPER_EFFECTIVE
 	jr nc, .shudder
+.end_of_loop
+	pop bc
+	pop hl
 	dec b
 	jr nz, .loop
 	jr .done
 .shudder
+	pop bc
+	pop hl
 	call ShowEnemyAbilityActivation
 	ld hl, ShudderedText
 	call StdBattleTextBox
