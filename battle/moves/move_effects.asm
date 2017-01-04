@@ -451,7 +451,6 @@ RockSmash:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	effectchance
 	defensedown
 	statdownmessage
 	endmove
