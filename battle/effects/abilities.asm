@@ -319,16 +319,11 @@ AnticipationAbility:
 	jr z, .end_of_loop
 	; If the move is super effective, shudder
 	farcall BattleCheckTypeMatchup
+	pop bc
+	pop hl
 	ld a, [wTypeMatchup]
-	cp $10
-	jr z, .end_of_loop
-	jr c, .end_of_loop
-	pop bc
-	pop hl
-	jr .shudder
-.end_of_loop
-	pop bc
-	pop hl
+	cp SUPER_EFFECTIVE
+	jr nc, .shudder
 	dec b
 	jr nz, .loop
 	jr .done
