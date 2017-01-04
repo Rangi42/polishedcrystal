@@ -284,9 +284,8 @@ AnticipationAbility:
 	jr z, .got_move_ptr
 	ld hl, BattleMonMoves
 .got_move_ptr
-	; Since Anticipation can run in the middle of a turn and
-	; we don't want to ruin the opponent's move struct, save
-	; the current move of it to be reapplied afterwards.
+	; Since Anticipation can run in the middle of a turn and we don't want to ruin the
+	; opponent's move struct, save the current move of it to be reapplied afterwards.
 	farcall BattleCommand_SwitchTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
@@ -297,8 +296,7 @@ AnticipationAbility:
 	ld a, [hli]
 	and a
 	jr z, .done
-	; copy the current move into the move structure to
-	; make CheckTypeMatchup happy
+	; copy the current move into the move structure to make CheckTypeMatchup happy
 	push hl
 	push bc
 	dec a
