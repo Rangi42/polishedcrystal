@@ -1,9 +1,3 @@
-; The multiplier is divided by 10, so we can use values like 0.5.
-
-SUPER_EFFECTIVE    EQU 20
-NOT_VERY_EFFECTIVE EQU 05
-NO_EFFECT          EQU 00
-
 ; All other cases are neutral (1x).
 
 	;  attacker  defender*=

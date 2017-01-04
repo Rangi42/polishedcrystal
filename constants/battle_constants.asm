@@ -7,6 +7,11 @@ REST_TURNS EQU 2
 MAX_STAT_LEVEL EQU 13
 BASE_STAT_LEVEL EQU 7
 
+; matchups, baseline is $10 for better doubling/halving
+SUPER_EFFECTIVE    EQU $20
+NOT_VERY_EFFECTIVE EQU $08
+NO_EFFECT          EQU 00
+
 	const_def
 	const ATTACK
 	const DEFENSE

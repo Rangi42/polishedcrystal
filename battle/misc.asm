@@ -51,110 +51,37 @@ GetPlayerBackpicCoords: ; fbd9d (3e:7d9d)
 
 
 DoWeatherModifiers: ; fbda4
-
-	ld de, .WeatherTypeModifiers
+; checks attacking move type in b with current weather for a x1.5 boost or x0.5 penalty to
+; apply for wTypeMatchup for later damage calc adjustment (alongside STAB and type matchup)
 	call GetWeatherAfterCloudNine
-	ld b, a
-	ld a, [wd265] ; move type
-	ld c, a
-
-.CheckWeatherType:
-	ld a, [de]
-	inc de
-	cp $ff
-	jr z, .done_weather_types
-
-	cp b
-	jr nz, .NextWeatherType
-
-	ld a, [de]
-	cp c
-	jr z, .ApplyModifier
-
-.NextWeatherType:
-rept 2
-	inc de
-endr
-	jr .CheckWeatherType
-
-
-.done_weather_types
-	ld de, .WeatherMoveModifiers
-
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	ld c, a
-
-.CheckWeatherMove:
-	ld a, [de]
-	inc de
-	cp $ff
-	jr z, .done
-
-	cp b
-	jr nz, .NextWeatherMove
-
-	ld a, [de]
-	cp c
-	jr z, .ApplyModifier
-
-.NextWeatherMove:
-rept 2
-	inc de
-endr
-	jr .CheckWeatherMove
-
-.ApplyModifier:
-	xor a
-	ld [hMultiplicand + 0], a
-	ld hl, CurDamage
-	ld a, [hli]
-	ld [hMultiplicand + 1], a
-	ld a, [hl]
-	ld [hMultiplicand + 2], a
-
-	inc de
-	ld a, [de]
-	ld [hMultiplier], a
-
-	call Multiply
-
-	ld a, 10
-	ld [hDivisor], a
-	ld b, $4
-	call Divide
-
-	ld a, [hQuotient + 0]
-	and a
-	ld bc, -1
-	jr nz, .Update
-
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	ld c, a
-	or b
-	jr nz, .Update
-
-	ld bc, 1
-
-.Update:
-	ld a, b
-	ld [CurDamage], a
-	ld a, c
-	ld [CurDamage + 1], a
-
-.done
+	cp WEATHER_SUN
+	jr z, .sun
+	cp WEATHER_RAIN
+	jr z, .rain
 	ret
-
-.WeatherTypeModifiers:
-	db WEATHER_RAIN, WATER, 15
-	db WEATHER_RAIN, FIRE,  05
-	db WEATHER_SUN,  FIRE,  15
-	db WEATHER_SUN,  WATER, 05
-	db $ff
-
-.WeatherMoveModifiers:
-	db WEATHER_RAIN, EFFECT_SOLAR_BEAM, 05
-	db $ff
-; fbe24
+.sun
+	ld d, FIRE
+	ld e, WATER
+	jr .check_movetype
+.rain
+	ld d, WATER
+	ld e, FIRE
+.check_movetype
+	ld a, b ; move type
+	cp d
+	jr z, .boost
+	cp e
+	jr z, .reduce
+	ret z
+.boost
+	ld a, [wTypeMatchup]
+	ld b, a
+	srl b
+	add b
+	ld [wTypeMatchup], a
+	ret
+.reduce
+	ld a, [wTypeMatchup]
+	srl a
+	ld [wTypeMatchup], a
+	ret

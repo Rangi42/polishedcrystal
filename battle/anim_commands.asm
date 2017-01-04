@@ -1355,10 +1355,10 @@ PlayHitSound: ; cc881
 
 .okay
 	ld a, [TypeModifier]
-	and $7f
+	and a
 	ret z
 
-	cp 10
+	cp $10
 	ld de, SFX_DAMAGE
 	jr z, .play
 
