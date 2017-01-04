@@ -278,6 +278,82 @@ ImposterAbility:
 	jp EnableAnimations
 
 AnticipationAbility:
+	ld a, [hBattleTurn]
+	and a
+	ld hl, EnemyMonMoves
+	jr z, .got_move_ptr
+	ld hl, BattleMonMoves
+.got_move_ptr
+	; Since Anticipation can run in the middle of a turn and
+	; we don't want to ruin the opponent's move struct, save
+	; the current move of it to be reapplied afterwards.
+	farcall BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	push af
+	ld b, NUM_MOVES
+.loop
+	; a mon can have less than 4 moves
+	ld a, [hli]
+	and a
+	jr z, .done
+	; copy the current move into the move structure to
+	; make CheckTypeMatchup happy
+	push hl
+	push bc
+	dec a
+	ld hl, Moves
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, [hBattleTurn]
+	and a
+	ld de, wPlayerMoveStruct
+	jr z, .got_move_struct
+	ld de, wEnemyMoveStruct
+.got_move_struct
+	ld a, BANK(Moves)
+	call FarCopyBytes
+	; Ignore status moves
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	cp STATUS
+	jr z, .end_of_loop
+	; If the move is super effective, shudder
+	farcall BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	cp $10
+	jr z, .end_of_loop
+	jr c, .end_of_loop
+	pop bc
+	pop hl
+	jr .shudder
+.end_of_loop
+	pop bc
+	pop hl
+	dec b
+	jr nz, .loop
+	jr .done
+.shudder
+	call ShowEnemyAbilityActivation
+	ld hl, ShudderedText
+	call StdBattleTextBox
+.done
+	; now restore the move struct
+	pop af
+	dec a
+	ld hl, Moves
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, [hBattleTurn]
+	and a
+	ld de, wPlayerMoveStruct
+	jr z, .got_move_struct2
+	ld de, wEnemyMoveStruct
+.got_move_struct2
+	ld a, BANK(Moves)
+	call FarCopyBytes
+	farcall BattleCommand_SwitchTurn
+	ret
+
 ForewarnAbility:
 	ret
 
