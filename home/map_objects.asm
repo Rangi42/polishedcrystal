@@ -185,7 +185,6 @@ CheckIceTile:: ; 18ac
 ; 18b4
 
 CheckWhirlpoolTile:: ; 18b4
-	nop
 	cp $24
 	ret z
 	cp $2c
@@ -196,8 +195,8 @@ CheckWhirlpoolTile:: ; 18b4
 
 CheckWaterfallTile:: ; 18bd
 	cp $33
-	ret z
-	cp $3b
+;	ret z
+;	cp $3b
 	ret
 ; 18c3
 
