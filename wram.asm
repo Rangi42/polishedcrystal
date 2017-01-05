@@ -3117,8 +3117,8 @@ wBattleAnimEnd::
 SECTION "WRAM 6", WRAMX, BANK [6]
 
 wDecompressScratch:: ds $400
-wBackupAttrMap:: ds $300
-w6_d700:: ds $100
+wBackupAttrMap:: ds $200
+w6_d600:: ds $200
 w6_d800::
 
 INCLUDE "sram.asm"
