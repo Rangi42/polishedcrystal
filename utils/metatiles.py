@@ -116,7 +116,7 @@ class Metatiles(object):
 				tile_indexes = [ord(c) for c in file.read(Metatiles.t_per_m**2)]
 				if not len(tile_indexes):
 					break
-				metatile = [tileset.tile(ti if ti < 0x70 else ti - 0x10) for ti in tile_indexes]
+				metatile = [tileset.tile(ti if ti < 0x60 else ti - 0x20) for ti in tile_indexes]
 				self.data.append(metatile)
 				i += 1
 
