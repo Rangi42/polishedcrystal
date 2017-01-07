@@ -367,9 +367,6 @@ endr
 
 
 LoadSpriteGFX: ; 14306
-; Bug: b is not preserved, so
-; it's useless as a next count.
-
 	ld hl, UsedSprites
 	ld b, SPRITE_GFX_LIST_CAPACITY
 .loop
@@ -377,7 +374,9 @@ LoadSpriteGFX: ; 14306
 	and a
 	jr z, .done
 	push hl
+	push bc
 	call .LoadSprite
+	pop bc
 	pop hl
 	ld [hli], a
 	dec b

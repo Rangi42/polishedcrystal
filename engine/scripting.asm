@@ -950,7 +950,6 @@ Script_winlosstext: ; 9714c
 	ld [hli], a
 	call GetScriptByte
 	ld [hli], a
-	ld hl, wLossTextPointer ; d049; this is unnecessary
 	call GetScriptByte
 	ld [hli], a
 	call GetScriptByte

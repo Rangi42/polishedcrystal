@@ -178,9 +178,8 @@ endr
 	call GetSpriteAnimVTile
 	ld [hli], a
 	pop de
-; Set hl to field 4 (X coordinate).  Kinda pointless, because we're presumably already here.
-	ld hl, SPRITEANIMSTRUCT_XCOORD
-	add hl, bc
+;	ld hl, SPRITEANIMSTRUCT_XCOORD
+;	add hl, bc
 ; Load the original value of de into here.
 	ld a, e
 	ld [hli], a

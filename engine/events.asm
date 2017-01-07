@@ -203,7 +203,7 @@ Function967f4: ; 967f4
 	jr nz, .noevents
 	call EnableEvents
 .events
-	ld a, 0 ; events
+	xor a ; events
 	ld [MapEventStatus], a
 	ret
 

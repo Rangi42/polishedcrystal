@@ -107,7 +107,7 @@ BuySellToss_InterpretJoypad: ; 2500e
 	ret
 
 .a
-	ld a, 0
+	xor a
 	scf
 	ret
 

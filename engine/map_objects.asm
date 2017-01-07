@@ -196,7 +196,6 @@ CopyNextCoordsTileToStandingCoordsTile: ; 4600
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
-	call UselessAndA
 	ret
 ; 462a
 
@@ -226,15 +225,9 @@ UpdateTallGrassFlags: ; 463f
 	ld a, [hl]
 	call SetTallGrassFlags
 .ok
-	ld hl, OBJECT_NEXT_TILE
-	add hl, bc
-	ld a, [hl]
-	call UselessAndA
-	ret c ; never happens
 	ld hl, OBJECT_STANDING_TILE
 	add hl, bc
 	ld a, [hl]
-	call UselessAndA
 	ret
 ; 4661
 
@@ -255,11 +248,6 @@ SetTallGrassFlags: ; 4661
 	res 3, [hl]
 	ret
 ; 4679
-
-UselessAndA: ; 4679
-	and a
-	ret
-; 467b
 
 EndSpriteMovement: ; 467b
 	xor a
@@ -642,7 +630,6 @@ MapObjectMovementPattern: ; 47dd
 	add hl, bc
 	ld a, [hl]
 	and %00000011
-	or 0
 	call InitStep
 	call Function6ec1
 	jr c, .ok2
@@ -708,7 +695,7 @@ MapObjectMovementPattern: ; 47dd
 	cp e
 	jr z, .standing
 	jr c, .less2
-	ld a, 0
+	xor a
 	jr .done
 
 .less2
@@ -2483,7 +2470,7 @@ RefreshPlayerSprite: ; 579d
 ; 57d9
 
 SpawnInFacingDown: ; 57d9
-	ld a, 0
+	xor a
 ContinueSpawnFacing: ; 57db
 	ld bc, PlayerStruct
 	call SetSpriteDirection

@@ -30,9 +30,6 @@ VioletCityEarlScript:
 	writetext Text_EarlAsksIfYouBeatFalkner
 	yesorno
 	iffalse .FollowEarl
-	jump .PointlessJump
-
-.PointlessJump:
 	writetext Text_VeryNiceIndeed
 	waitbutton
 	closetext

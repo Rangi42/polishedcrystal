@@ -106,7 +106,7 @@ UnknownText_0x1c56c9::
 	line "wants to learn"
 	cont "@"
 	text_from_ram StringBuffer2
-	text "…"
+	text "!"
 
 	para "Should it forget"
 	line "an old move for"

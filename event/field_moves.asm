@@ -141,7 +141,7 @@ OWCutAnimation: ; 8c940
 ; 8c96d
 
 .LoadCutGFX: ; 8c96d
-	farcall ClearSpriteAnims ; pointless to farcall
+	call ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, VTiles1
 	lb bc, BANK(CutGrassGFX), 4

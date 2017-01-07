@@ -192,7 +192,7 @@ FindOwnedDecosInCategory: ; 2689b
 
 	ld a, c
 	call AppendDecoIndex
-	ld a, 0
+	xor a
 	call AppendDecoIndex
 	scf
 	ret

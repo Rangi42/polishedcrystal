@@ -1787,9 +1787,9 @@ GivePoke:: ; e277
 	ld hl, PartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
-	ld a, 01001 / $100
+	ld a, 01001 / $100 ; ld a, $3
 	ld [hli], a
-	ld [hl], 01001 % $100
+	ld [hl], 01001 % $100 ; ld a, $e9
 	pop bc
 	farcall SetGiftPartyMonCaughtData
 	jr .skip_nickname

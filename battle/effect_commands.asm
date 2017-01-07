@@ -1947,7 +1947,7 @@ BattleCommand_LowerSub: ; 34eee
 .rollout_rampage
 	ld a, [wSomeoneIsRampaging]
 	and a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	ld [wSomeoneIsRampaging], a
 	ret
 
@@ -3694,7 +3694,7 @@ BattleCommand_ConstantDamage: ; 35726
 	call GetBattleVar
 	cp EFFECT_LEVEL_DAMAGE
 	ld b, [hl]
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .got_power
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -9038,7 +9038,7 @@ BattleCommand_HealTime:
 ; Don't factor in time of day in link battles.
 	ld a, [wLinkMode]
 	and a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr nz, .timecheck_ok
 	ld a, [TimeOfDay]
 	cp NITE

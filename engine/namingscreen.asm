@@ -1201,7 +1201,7 @@ ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
 	ld [hl], e
 	cp $5
 	ld de, .LetterEntries
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr nz, .got_pointer
 	ld de, .CaseDelEnd
 	ld a, 1

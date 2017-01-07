@@ -42,7 +42,6 @@ SetFacingStanding: ; 44a3
 
 SetFacingCurrent: ; 44aa
 	call GetSpriteDirection
-	or 0 ; useless
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], a
@@ -77,7 +76,6 @@ Function44c1: ; 44c1
 	ld d, a
 
 	call GetSpriteDirection
-	or 0 ; useless
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -104,7 +102,6 @@ Function44e4: ; 44e4
 	ld d, a
 
 	call GetSpriteDirection
-	or 0 ; useless
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -130,7 +127,6 @@ Function4508: ; 4508
 	ld d, a
 
 	call GetSpriteDirection
-	or 0 ; useless
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -143,7 +139,6 @@ Function4529: ; 4529
 	ld hl, OBJECT_FACING
 	add hl, bc
 	ld a, [hl]
-	or 0 ; useless
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], a

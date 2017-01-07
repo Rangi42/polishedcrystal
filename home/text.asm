@@ -782,7 +782,7 @@ Text_WAIT_BUTTON:: ; 149f
 ; TX_WAITBUTTON
 ; wait for button press
 ; show arrow
-; [06]
+; [$06]
 
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM

@@ -1337,7 +1337,7 @@ TitleScreenMain: ; 6304
 	ret
 
 .start_game
-	ld a, 0
+	xor a
 	jr .done
 
 .delete_save_data

@@ -245,7 +245,7 @@ HPBarAnim_RedrawHPBar: ; d771
 	ld a, 2 * SCREEN_WIDTH
 	add l
 	ld l, a
-	ld a, 0
+	xor a
 	adc h
 	ld h, a
 .player

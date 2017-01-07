@@ -2,7 +2,6 @@ InitMovementBuffer:: ; 1b1e
 	ld [wMovementBufferPerson], a
 	xor a
 	ld [wMovementBufferCount], a
-	ld a, $0 ; useless
 	ld [wd004], a
 	ld a, MovementBuffer % $100
 	ld [wd005], a

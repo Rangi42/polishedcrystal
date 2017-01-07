@@ -662,17 +662,6 @@ ClearObjectStructs:: ; 2471
 	ld bc, OBJECT_STRUCT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
 	call ByteFill
-
-; Just to make sure (this is rather pointless)
-	ld hl, Object1Struct
-	ld de, OBJECT_STRUCT_LENGTH
-	ld c, NUM_OBJECT_STRUCTS - 1
-	xor a
-.loop
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .loop
 	ret
 ; 248a
 

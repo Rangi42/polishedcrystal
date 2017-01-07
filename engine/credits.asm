@@ -632,7 +632,7 @@ GetCreditsPalette: ; 109b2c
 	call .GetPalAddress
 
 	push hl
-	ld a, 0
+	xor a
 	call .UpdatePals
 	pop hl
 	ret
@@ -659,7 +659,7 @@ endr
 	push hl
 	add UnknBGPals % $100
 	ld e, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc UnknBGPals / $100
 	ld d, a
 	ld bc, 24
@@ -669,7 +669,7 @@ endr
 	pop af
 	add BGPals % $100
 	ld e, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc BGPals / $100
 	ld d, a
 	ld bc, 24

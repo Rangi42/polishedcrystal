@@ -1212,8 +1212,9 @@ DisableAnimations:
 	ld a, 1
 	ld [AnimationsDisabled], a
 	ret
+
 EnableAnimations:
-	ld a, 0
+	xor a
 	ld [AnimationsDisabled], a
 	ret
 

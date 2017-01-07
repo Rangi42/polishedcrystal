@@ -30,9 +30,8 @@ OpenMartDialog:: ; 15a45
 ; 15a61
 
 MartDialog: ; 15a61
-	ld a, 0
-	ld [EngineBuffer1], a
 	xor a
+	ld [EngineBuffer1], a
 	ld [EngineBuffer5], a
 	call StandardMart
 	ret

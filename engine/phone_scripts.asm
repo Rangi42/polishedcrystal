@@ -3213,9 +3213,6 @@ PhoneScript_MonFlavorText:
 	farjump PhoneScript_HangupText_Male
 
 .TooEnergetic:
-	farjump .unnecessary
-
-.unnecessary
 	farwritetext UnknownText_0x1b522b
 	buttonsound
 	farjump PhoneScript_HangupText_Male

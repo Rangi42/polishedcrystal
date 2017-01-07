@@ -177,7 +177,6 @@ FixTime:: ; 61d
 SetTimeOfDay:: ; 658
 	xor a
 	ld [StringBuffer2], a
-	ld a, $0 ; useless
 	ld [StringBuffer2 + 3], a
 	jr InitTime
 
@@ -189,7 +188,6 @@ SetDayOfWeek:: ; 663
 	ld [StringBuffer2 + 2], a
 	ld a, [hSeconds]
 	ld [StringBuffer2 + 3], a
-	jr InitTime ; useless
 
 InitTime:: ; 677
 	farcall _InitTime

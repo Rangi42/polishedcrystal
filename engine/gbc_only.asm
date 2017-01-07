@@ -12,7 +12,7 @@ GBCOnlyScreen: ; 4ea82
 	ld de, $d000
 	ld a, [rSVBK]
 	push af
-	ld a, 0
+	xor a
 	ld [rSVBK], a
 	call Decompress
 	pop af

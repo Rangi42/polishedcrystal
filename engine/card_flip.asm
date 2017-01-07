@@ -654,7 +654,7 @@ CardFlip_BlankDiscardedCardSlot: ; e0534
 	srl a
 	add .Jumptable % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc .Jumptable / $100
 	ld h, a
 	ld a, [hli]

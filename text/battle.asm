@@ -622,6 +622,21 @@ DisabledMoveText: ; 0x80f02
 	prompt
 ; 0x80f19
 
+UsedMoveText:
+	text "<USER>"
+	line "used @"
+	text_from_ram StringBuffer2
+	text "!"
+	done
+
+UsedMoveInsteadText:
+	text "<USER>"
+	line "used @"
+	text_from_ram StringBuffer2
+	text ""
+	cont "instead!"
+	done
+
 LoafingAroundText: ; 0x80f19
 	text_from_ram BattleMonNick
 	text " is"

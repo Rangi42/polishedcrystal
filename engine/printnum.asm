@@ -216,7 +216,7 @@ _PrintNum:: ; c4c7
 	cp b
 	jr nc, .skip2
 	ld a, [hPrintNum2]
-	or 0
+	and a
 	jr z, .skip3
 	dec a
 	ld [hPrintNum2], a

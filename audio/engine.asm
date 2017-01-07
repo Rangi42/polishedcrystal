@@ -128,7 +128,6 @@ _UpdateSound:: ; e805c
 	; get next note
 	call ParseMusic
 .asm_e8093
-	;
 	call Functione84f9
 	; duty cycle
 	ld hl, Channel1DutyCycle - Channel1
@@ -143,7 +142,6 @@ _UpdateSound:: ; e805c
 	ld [wCurTrackFrequency], a
 	ld a, [hl]
 	ld [wCurTrackFrequency + 1], a
-	;
 	call Functione8466 ; handle vibrato and other things
 	call HandleNoise
 	; turn off music when playing sfx?
@@ -254,7 +252,6 @@ UpdateChannels: ; e8125
 	add hl, bc
 	bit NOTE_UNKN_3, [hl]
 	jr z, .asm_e8159
-	;
 	ld a, [SoundInput]
 	ld [rNR10], a
 .asm_e8159
@@ -922,12 +919,11 @@ Functione8466: ; e8466
 	; get the delay
 	ld a, d
 	and $f ; lo
-	;
 	ld d, a
 	ld a, e
 	sub d
 	jr nc, .asm_e84ef
-	ld a, 0
+	xor a
 	jr .asm_e84ef
 
 .down
@@ -937,13 +933,11 @@ Functione8466: ; e8466
 	ld a, d
 	and $f0 ; hi
 	swap a ; move it to lo
-	;
 	add e
 	jr nc, .asm_e84ef
 	ld a, $ff
 .asm_e84ef
 	ld [wCurTrackFrequency], a
-	;
 	ld hl, Channel1NoteFlags - Channel1
 	add hl, bc
 	set NOTE_UNKN_6, [hl]
@@ -964,12 +958,10 @@ Functione84f9: ; e84f9
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	;
 	ld hl, Channel1Flags3 - Channel1
 	add hl, bc
 	bit SOUND_UNKN_11, [hl]
 	jr z, .next
-	;
 	ld hl, Channel1Field0x23 - Channel1
 	add hl, bc
 	ld l, [hl]
@@ -986,13 +978,12 @@ Functione84f9: ; e84f9
 	add hl, bc
 	add [hl]
 	ld [hl], a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc e
 	ld e, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc d
 	ld d, a
-	;
 	ld hl, Channel1Field0x22 - Channel1
 	add hl, bc
 	ld a, [hl]
@@ -1078,7 +1069,6 @@ HandleNoise: ; e858c
 	; is ch8 playing noise?
 	bit SOUND_NOISE, [hl]
 	ret nz ; quit if so
-	;
 .next
 	ld a, [wNoiseSampleDelay]
 	and a
@@ -1852,11 +1842,9 @@ MusicE7: ; e88f7
 MusicDE: ; e8906
 ; ???? + duty cycle
 ; params: 1
-	;
 	ld hl, Channel1Flags2 - Channel1
 	add hl, bc
 	set SOUND_DUTY, [hl] ; duty cycle
-	;
 	call GetMusicByte
 	rrca
 	rrca
@@ -2412,7 +2400,7 @@ SetLRTracks: ; e8b1b
 	ld e, a
 	ld d, 0
 	; get this channel's lr tracks
-	call GetLRTracks
+	ld hl, MonoOrStereoTracks
 	add hl, de ; de = channel 0-3
 	ld a, [hl]
 	; load lr tracks into Tracks
@@ -2735,7 +2723,7 @@ endr
 	and 3 ; ch1-4
 	ld e, a
 	ld d, 0
-	call GetLRTracks
+	ld hl, MonoOrStereoTracks
 	add hl, de
 	ld a, [hl]
 	ld hl, wStereoPanningMask
@@ -3224,34 +3212,12 @@ Kick2: ; e8fbb
 	endchannel
 ; e8fc2
 
-GetLRTracks: ; e8fc2
-; gets the default sound l/r channels
-; stores mono/stereo table in hl
-	ld a, [Options1]
-	bit STEREO, a ; stereo
-	; made redundant, could have had a purpose in gold
-	jr nz, .stereo
-	ld hl, MonoTracks
-	ret
-
-.stereo
-	ld hl, StereoTracks
-	ret
-
-; e8fd1
-
-MonoTracks: ; e8fd1
+MonoOrStereoTracks: ; e8fd5
 ; bit corresponds to track #
 ; hi: left channel
 ; lo: right channel
 	db $11, $22, $44, $88
 ; e8fd5
-
-StereoTracks: ; e8fd5
-; made redundant
-; seems to be modified on a per-song basis
-	db $11, $22, $44, $88
-; e8fd9
 
 ChannelPointers: ; e8fd9
 ; music channels

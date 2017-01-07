@@ -435,7 +435,7 @@ GetSpeed::
 	sub 7
 	jr z, .stat_changes_done
 	jr nc, .no_overflow1
-	ld a, 0
+	xor a
 .no_overflow1
 	add 2
 	ld [hMultiplier], a
@@ -451,7 +451,7 @@ GetSpeed::
 	ld a, 7
 	sub d
 	jr nc, .no_overflow2
-	ld a, 0
+	xor a
 .no_overflow2
 	add 2
 	ld [hDivisor], a

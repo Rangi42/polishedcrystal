@@ -807,21 +807,18 @@ JumpRoamMons: ; 2a394
 JumpRoamMon: ; 2a3cd
 .loop
 	ld hl, RoamMaps
-.innerloop1 ; This loop is completely unnecessary.
 	call Random ; Choose a random number
 	and $f ; Take the lower nybble only.  This gives a number between 0 and 15.
-	cp $10 ; If the number is greater than or equal to 16, loop back and try again.
-	jr nc, .innerloop1 ; I'm sure you can guess why this check is bogus.
 	inc a
 	ld b, a
-.innerloop2 ; Loop to get hl to the address of the chosen roam map.
+.innerloop ; Loop to get hl to the address of the chosen roam map.
 	dec b
 	jr z, .ok
-.innerloop3 ; Loop to skip the current roam map, which is terminated by a 0.
+.innerloop2 ; Loop to skip the current roam map, which is terminated by a 0.
 	ld a, [hli]
 	and a
-	jr nz, .innerloop3
-	jr .innerloop2
+	jr nz, .innerloop2
+	jr .innerloop
 ; Check to see if the selected map is the one the player is currently in.  If so, try again.
 .ok
 	ld a, [MapGroup]
