@@ -325,7 +325,6 @@ DelayLoadingNewSprites: ; 154f1
 	ret
 
 CheckReplaceKrisSprite: ; 154f7
-	nop
 	call .CheckBiking
 	jr c, .ok
 	call .CheckSurfing

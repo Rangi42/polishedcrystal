@@ -273,8 +273,6 @@ PlayerEvents: ; 9681f
 ; 96867
 
 CheckTrainerBattle3: ; 96867
-	nop
-	nop
 	call CheckTrainerBattle2
 	jr nc, .nope
 

@@ -78,7 +78,6 @@ Rate: ; 0x26616
 FindOakRating: ; 0x2666b
 ; return sound effect in de
 ; return text pointer in hl
-	nop
 	ld c, a
 .loop
 	ld a, [hli]

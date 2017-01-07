@@ -264,8 +264,6 @@ ContestMons: ; 97d87
 ; 97db3
 
 DoBikeStep:: ; 97db3
-	nop
-	nop
 	; If the bike shop owner doesn't have our number, or
 	; if we've already gotten the call, we don't have to
 	; be here.

@@ -74,9 +74,6 @@ MainMenuItems:
 	db -1
 
 MainMenu_GetWhichMenu: ; 49da4
-	nop
-	nop
-	nop
 	ld a, [wSaveFileExists]
 	and a
 	jr nz, .next

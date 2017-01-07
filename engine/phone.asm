@@ -124,7 +124,6 @@ CheckPhoneCall:: ; 90074 (24:4074)
 	jr z, .no_call
 
 	call .timecheck
-	nop
 	jr nc, .no_call
 
 	call Random
@@ -404,8 +403,6 @@ UnknownScript_0x90209: ; 0x90209
 ; 0x9020d
 
 LoadCallerScript: ; 9020d (24:420d)
-	nop
-	nop
 	ld a, e
 	ld [wCurrentCaller], a
 	and a

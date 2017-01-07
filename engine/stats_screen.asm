@@ -1250,7 +1250,6 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	ret
 
 StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
-	nop
 	push hl
 	push de
 	push bc

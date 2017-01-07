@@ -1797,7 +1797,6 @@ UpdateJumpPosition: ; 4fd5
 	ld e, [hl]
 	add e
 	ld [hl], a
-	nop
 	srl e
 	ld d, 0
 	ld hl, .y

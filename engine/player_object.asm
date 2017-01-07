@@ -285,7 +285,6 @@ InitializeVisibleSprites: ; 8177
 	ret
 
 CheckObjectEnteringVisibleRange:: ; 81ca
-	nop
 	ld a, [wPlayerStepDirection]
 	cp STANDING
 	ret z
