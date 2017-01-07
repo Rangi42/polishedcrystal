@@ -196,9 +196,13 @@ INCLUDE "audio/music/oras/zinniabattle.asm"
 
 SECTION "Extra Songs 5", ROMX
 
+INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/bicycle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/sm/motherbeastbattle.asm"
 INCLUDE "audio/music/dppt/championbattle.asm"
+INCLUDE "audio/music/hgss/cianwoodcity.asm"
+INCLUDE "audio/music/bw/finalpokemon.asm"
 
 
 

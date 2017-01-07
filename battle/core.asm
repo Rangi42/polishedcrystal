@@ -2862,8 +2862,7 @@ PlayerMonFaintHappinessMod: ; 3d1aa
 	ld [wBattleResult], a
 	ld a, [wWhichMonFaintedFirst]
 	and a
-	ret z
-	ret ; ??????????
+	ret
 ; 3d1f8
 
 AskUseNextPokemon: ; 3d1f8
@@ -3633,17 +3632,17 @@ FinalPkmnMusicAndAnimation:
 	hlcoord 18, 0
 	ld a, 8
 	call SlideBattlePicOut
-;	; ...play the final Pokémon music...
-;	call IsBossTrainer
-;	jr nc, .no_music
-;	push de
-;	ld de, MUSIC_NONE
-;	call PlayMusic
-;	call DelayFrame
-;	ld de, MUSIC_CHAMPION_BATTLE ; TODO: demix B/W music
-;	call PlayMusic
-;	pop de
-;.no_music
+	; ...play the final Pokémon music...
+	call IsBossTrainer
+	jr nc, .no_music
+	push de
+	ld de, MUSIC_NONE
+	call PlayMusic
+	call DelayFrame
+	ld de, MUSIC_FINAL_POKEMON_BW
+	call PlayMusic
+	pop de
+.no_music
 	; ...show their sprite and final dialog...
 	call FinalPkmnSlideInEnemyTrainerFrontpic
 	farcall GetFinalPkmnTextPointer
@@ -3928,20 +3927,8 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jp z, .can_escape
 	cp BATTLETYPE_GHOST
 	jp z, .can_escape
-	cp BATTLETYPE_TRAP
-	jp z, .cant_escape
-	cp BATTLETYPE_CELEBI
-	jp z, .cant_escape
-	cp BATTLETYPE_SHINY
-	jp z, .cant_escape
-	cp BATTLETYPE_SUICUNE
-	jp z, .cant_escape
-	cp BATTLETYPE_HO_OH
-	jp z, .cant_escape
-	cp BATTLETYPE_LUGIA
-	jp z, .cant_escape
-	cp BATTLETYPE_KANTO_LEGEND
-	jp z, .cant_escape
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_CELEBI, BATTLETYPE_SUICUNE, BATTLETYPE_HO_OH, BATTLETYPE_LUGIA, BATTLETYPE_KANTO_LEGEND
+	jp nc, .cant_escape
 
 	ld a, [wLinkMode]
 	and a

@@ -93,7 +93,9 @@ sOptions:: ds OptionsEnd - Options1
 s1_a008:: ds 1 ; loaded with 99, used to check save corruption
 
 sGameData::
-sPlayerData::  ds wPlayerDataEnd - wPlayerData
+sPlayerData::  ds wPlayerDataEnd - StatusFlags
+sStatusFlags:: ds 1
+sPlayerData2:: ds StatusFlags2 - wPlayerData
 sMapData::     ds wMapDataEnd - wMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::

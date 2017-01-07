@@ -106,6 +106,7 @@
 	dba Music_SurfingPikachu
 	dba Music_LookJessieJames
 	dba Music_MartHGSS
+	dba Music_CianwoodCityHGSS
 	dba Music_CeruleanCityHGSS
 	dba Music_CinnabarIslandHGSS
 	dba Music_NuggetBridgeHGSS
@@ -125,9 +126,11 @@
 	dba Music_Route12BW
 	dba Music_TrainerBattleBW
 	dba Music_WCSBattleBW
+	dba Music_FinalPokemonBW
 	dba Music_ReversalMountainWhite2
 	dba Music_WhiteTreehollowWhite2
 	dba Music_ChampionBattleB2W2
+	dba Music_TitleScreenXY
 	dba Music_BicycleXY
 	dba Music_PowerPlantXY
 	dba Music_RivalBattleXY
@@ -145,6 +148,7 @@
 	dba Music_WallyBattleORAS
 	dba Music_ZinniaEncounterORAS
 	dba Music_ZinniaBattleORAS
+	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
 
 ; e91a3

@@ -1231,8 +1231,21 @@ TitleScreenEntrance: ; 62bc
 	xor a
 	ld [hFFC6], a
 
+	ld a, BANK(sStatusFlags)
+	call GetSRAMBank
+	ld hl, sStatusFlags
+	ld de, StatusFlags
+	ld bc, 1
+	call CopyBytes
+	call CloseSRAM
+
 ; Play the title screen music.
 	ld de, MUSIC_TITLE
+	ld hl, StatusFlags
+	bit 6, [hl] ; hall of fame
+	jr nz, .ok
+	ld de, MUSIC_TITLE_XY
+.ok
 	call PlayMusic
 
 	ld a, $88

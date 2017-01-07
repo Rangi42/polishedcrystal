@@ -56,7 +56,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Cross whirlpools, don't remove them (like HGSS)
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
-* Play B/W final Pokémon music for Gym Leaders
 * Add separate animation graphics for more Poké Ball designs
 * Show item pictures in bag, and possibly when picking them up
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
