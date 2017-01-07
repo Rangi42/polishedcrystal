@@ -327,6 +327,22 @@ SoundMoves::
 	db SUPERSONIC
 	db -1
 
+DynamicPowerMoves::
+; used by Forewarn and for move power listing
+	db COUNTER
+	db MIRROR_COAT
+	db DRAGON_RAGE
+	db FLAIL
+;   db LOW_KICK
+	db MAGNITUDE
+	db NIGHT_SHADE
+	db RETURN
+	db REVERSAL
+	db SEISMIC_TOSS
+	db SONIC_BOOM
+	db SUPER_FANG
+	db -1
+
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
