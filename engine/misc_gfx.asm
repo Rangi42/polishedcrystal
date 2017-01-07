@@ -6,7 +6,7 @@ Function10402d:: ; 10402d
 	decoord 0, 0
 	ld hl, wDecompressScratch
 	call CutAndPasteTilemap
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, wDecompressScratch
 	call Function10419d
@@ -47,7 +47,7 @@ ReloadMapPart:: ; 104061
 	ld [rVBK], a
 	ld hl, wBackupAttrMap
 	call Function1041ad
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, wDecompressScratch
 	call Function1041ad
@@ -77,7 +77,7 @@ Function104110:: ; 104110
 	ld [rVBK], a
 	ld hl, wBackupAttrMap
 	call Function1041b7
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, wDecompressScratch
 	call Function1041b7
@@ -387,7 +387,7 @@ Function104309:
 	ld hl, wDecompressScratch + $80
 	debgcoord 0, 0, VBGMap1
 	call Function104209
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld c, $8
 	ld hl, wDecompressScratch

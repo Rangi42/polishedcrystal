@@ -346,7 +346,7 @@ FlyFromAnim: ; 8caed
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
-	ld a, 0 * 4
+	xor a
 	ld [wCurrSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
@@ -384,7 +384,7 @@ FlyToAnim: ; 8cb33
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
-	ld a, 0 * 4
+	xor a
 	ld [wCurrSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer

@@ -269,7 +269,7 @@ ClearVBank1:: ; d79
 	xor a
 	call ByteFill
 
-	ld a, 0
+	xor a
 	ld [rVBK], a
 	ret
 ; d90

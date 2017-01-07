@@ -76,7 +76,7 @@ LoseMoney: ; 12513
 	or [hl]
 	inc hl
 	or [hl]
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .load
 	; 806e1
 	ld hl, Badges

@@ -20,12 +20,12 @@ SpawnPlayer: ; 8029
 	ld a, -1
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
-	ld a, $0
+	xor a
 	ld hl, PlayerObjectTemplate
 	call CopyPlayerObjectTemplate
 	ld b, $0
 	call PlayerSpawn_ConvertCoords
-	ld a, $0
+	xor a
 	call GetMapObject
 	ld hl, MAPOBJECT_COLOR
 	add hl, bc
@@ -40,10 +40,9 @@ SpawnPlayer: ; 8029
 
 .ok
 	ld [hl], e
-	ld a, $0
+	xor a
 	ld [hMapObjectIndexBuffer], a
 	ld bc, MapObjects
-	ld a, $0
 	ld [hObjectStructIndexBuffer], a
 	ld de, ObjectStructs
 	call CopyMapObjectToObjectStruct

@@ -492,7 +492,7 @@ IntroScene1: ; e495b (39:495b)
 	ld hl, IntroTilemap001
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroUnownsGFX
 	ld de, VTiles2 tile $00
@@ -568,7 +568,7 @@ IntroScene3: ; e49fd (39:49fd)
 	ld hl, IntroTilemap003
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroBackgroundGFX
 	ld de, VTiles2 tile $00
@@ -631,7 +631,7 @@ IntroScene5: ; e4a7a (39:4a7a)
 	ld hl, IntroTilemap005
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroUnownsGFX
 	ld de, VTiles2 tile $00
@@ -734,7 +734,7 @@ IntroScene7: ; e4b3f (39:4b3f)
 	ld de, VTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneRunGFX
 	ld de, VTiles0 tile $00
@@ -899,7 +899,7 @@ IntroScene11: ; e4c86 (39:4c86)
 	ld hl, IntroTilemap007
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroUnownsGFX
 	ld de, VTiles2 tile $00
@@ -1024,7 +1024,7 @@ IntroScene13: ; e4d6d (39:4d6d)
 	ld hl, IntroTilemap003
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneRunGFX
 	ld de, VTiles0 tile $00
@@ -1128,7 +1128,7 @@ IntroScene15: ; e4e40 (39:4e40)
 	ld hl, IntroTilemap009
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneJumpGFX
 	ld de, VTiles2 tile $00
@@ -1210,7 +1210,7 @@ IntroScene17: ; e4ef5 (39:4ef5)
 	ld hl, IntroTilemap011
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneCloseGFX
 	ld de, VTiles1 tile $00
@@ -1276,7 +1276,7 @@ IntroScene19: ; e4f7e (39:4f7e)
 	ld hl, IntroTilemap013
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneBackGFX
 	ld de, VTiles2 tile $00
@@ -1445,7 +1445,7 @@ IntroScene26: ; e50bb (39:50bb)
 	ld hl, IntroTilemap015
 	debgcoord 0, 0
 	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld hl, IntroCrystalUnownsGFX
 	ld de, VTiles2 tile $00
@@ -1537,7 +1537,7 @@ Intro_Scene24_ApplyPaletteFade: ; e5172 (39:5172)
 	ld hl, .FadePals
 	add l
 	ld l, a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 
@@ -1792,7 +1792,7 @@ endr
 	ld a, c
 	add e
 	ld e, a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc d
 	ld d, a
 
@@ -1804,7 +1804,7 @@ endr
 	ld a, c
 	add e
 	ld e, a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc d
 	ld d, a
 
@@ -1925,7 +1925,7 @@ Intro_LoadTilemap: ; e541b (39:541b)
 	ld a, $20 - SCREEN_WIDTH
 	add l
 	ld l, a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	dec b

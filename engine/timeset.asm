@@ -5,7 +5,7 @@ InitClock: ; 90672 (24:4672)
 	ld a, $1
 	ld [hInMenu], a
 
-	ld a, $0
+	xor a
 	ld [wSpriteUpdatesEnabled], a
 	ld a, $10
 	ld [MusicFade], a
@@ -469,7 +469,7 @@ Special_SetDayOfWeek: ; 90913
 	ld a, [hl]
 	cp 6
 	jr c, .increase
-	ld a, 0 - 1
+	ld a, -1
 
 .increase
 	inc a

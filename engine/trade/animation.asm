@@ -149,7 +149,7 @@ RunTradeAnimSequence: ; 28fa1
 	ld bc, sScratch - VTiles0
 	xor a
 	call ByteFill
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	hlbgcoord 0, 0
 	ld bc, sScratch - VBGMap0

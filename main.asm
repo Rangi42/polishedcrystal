@@ -2402,7 +2402,7 @@ INCLUDE "engine/search.asm"
 
 AskRememberPassword: ; 4ae12
 	call .DoMenu
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr c, .okay
 	ld a, $1
 
@@ -2554,7 +2554,7 @@ TileCollisionTable:: ; 4ce1f
 INCLUDE "tilesets/collision.asm"
 
 EmptyAllSRAMBanks: ; 4cf1f
-	ld a, $0
+	xor a
 	call .EmptyBank
 	ld a, $1
 	call .EmptyBank
@@ -2593,7 +2593,7 @@ SaveMenu_LoadEDTile: ; 4cf45 (13:4f45)
 	ld [rVBK], a
 	hlcoord 0, 0, AttrMap
 	call .LoadEDTile
-	ld a, 0 ; BANK(VBGMap0)
+	xor a ; BANK(VBGMap0)
 	ld [rVBK], a
 	hlcoord 0, 0
 	call .LoadEDTile

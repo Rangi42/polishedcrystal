@@ -72,7 +72,7 @@ PokemonCenterPC: ; 1559a
 .ChooseWhichPCListToUse:
 	call CheckReceivedDex
 	jr nz, .got_dex
-	ld a, $0
+	xor a
 	ret
 
 .got_dex
@@ -453,7 +453,7 @@ KrisDepositItemMenu: ; 0x1588b
 	cp TM_HM - 1
 	ld a, [wSpriteUpdatesEnabled]
 	push af
-	ld a, $0
+	xor a
 	ld [wSpriteUpdatesEnabled], a
 	jr z, .CantDepositTMHM
 	farcall CheckItemMenu
@@ -570,7 +570,7 @@ PCItemsJoypad: ; 0x15985
 .loop
 	ld a, [wSpriteUpdatesEnabled]
 	push af
-	ld a, $0
+	xor a
 	ld [wSpriteUpdatesEnabled], a
 	ld hl, .PCItemsMenuData
 	call CopyMenuDataHeader

@@ -194,7 +194,7 @@ ClearWRAM:: ; 25a
 ; 270
 
 Function270:: ; 270
-	ld a, $0
+	xor a
 	call GetSRAMBank
 	ld hl, $a000
 	ld bc, $0020

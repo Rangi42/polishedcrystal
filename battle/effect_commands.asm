@@ -3711,7 +3711,7 @@ BattleCommand_ConstantDamage: ; 35726
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVar
 	ld b, a
-	ld a, $0
+	xor a
 	jr .got_power
 
 .psywave
@@ -3726,7 +3726,7 @@ BattleCommand_ConstantDamage: ; 35726
 	cp b
 	jr nc, .psywave_loop
 	ld b, a
-	ld a, $0
+	xor a
 	jr .got_power
 
 .super_fang
@@ -3747,7 +3747,7 @@ BattleCommand_ConstantDamage: ; 35726
 	and a
 	jr nz, .got_power
 	or b
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	jr nz, .got_power
 	ld b, $1
 	jr .got_power

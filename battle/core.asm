@@ -2388,7 +2388,7 @@ FaintYourPokemon: ; 3cef1
 
 FaintEnemyPokemon: ; 3cf14
 	call WaitSFX
-	ld a, $0f
+	ld a, $f
 	ld [CryTracks], a
 	ld a, [EnemyMonSpecies]
 	ld b, a
@@ -2446,7 +2446,7 @@ HandleEnemySwitch: ; 3cf4a
 	ld hl, BattleMonHP
 	ld a, [hli]
 	or [hl]
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr nz, EnemyPartyMonEntrance
 	inc a
 	ret
@@ -2547,7 +2547,7 @@ WinTrainerBattle: ; 3cfa4
 	call nz, .DoubleReward
 	call .CheckMaxedOutMomMoney
 	push af
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	jr nc, .okay
 	ld a, [wMomSavingMoney]
 	and $7
@@ -4555,7 +4555,7 @@ PursuitSwitch: ; 3dc5b
 	call HasEnemyFainted
 	jp nz, PursuitSwitch_done
 
-	ld a, $0f
+	ld a, $f
 	ld [CryTracks], a
 	ld a, [EnemyMonSpecies]
 	ld b, a
@@ -4816,7 +4816,7 @@ HandleStatBoostingHeldItems: ; 3de97
 
 .DoPlayer: ; 3dea9
 	call GetPartymonItem
-	ld a, $0
+	xor a
 	jp .HandleItem
 ; 3deb1
 
@@ -5656,7 +5656,7 @@ BattleMenu_Run: ; 3e489
 	ld hl, BattleMonSpeed
 	ld de, EnemyMonSpeed
 	call TryToRunAwayFromBattle
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	ld [wFailedToFlee], a
 	ret c
 	ld a, [wPlayerAction]
@@ -6136,7 +6136,7 @@ MoveInfoBox: ; 3e6c8
 
 	hlcoord 0, 4, AttrMap
 	lb bc, 4, 10
-	ld a, $0
+	xor a
 	farcall FillBoxCGB
 	hlcoord 0, 8, AttrMap
 	lb bc, 4, 10
@@ -7699,7 +7699,7 @@ GiveExperiencePoints: ; 3ee3b
 	inc hl
 	ld a, [PlayerID + 1]
 	cp [hl]
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .no_boost
 	ld a, [InitialOptions]
 	bit TRADED_BEHAVIOR, a
@@ -9836,7 +9836,7 @@ BattleStartMessage: ; 3fc8b
 	jr .skip_cry ; cry is played during the animation
 
 .cry_no_anim
-	ld a, $0f
+	ld a, $f
 	ld [CryTracks], a
 	ld a, [TempEnemyMonSpecies]
 	call PlayStereoCry

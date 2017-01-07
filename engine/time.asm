@@ -151,7 +151,7 @@ Special_SampleKenjiBreakCountdown: ; 11485
 StartBugContestTimer: ; 11490
 	ld a, 20
 	ld [wBugContestMinsRemaining], a
-	ld a, 0
+	xor a
 	ld [wBugContestSecsRemaining], a
 	call UpdateTime
 	ld hl, wBugContestStartTime

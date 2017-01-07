@@ -257,7 +257,7 @@ endr
 	ld hl, StatusFlags
 	bit 0, [hl]
 	jr z, .no_pokedex
-	ld a, 0 ; pokedex
+	xor a ; pokedex
 	call .AppendMenuList
 .no_pokedex
 
@@ -369,7 +369,7 @@ StartMenu_Quit: ; 128f0
 	ret
 
 .DontEndContest:
-	ld a, 0
+	xor a
 	ret
 
 .EndTheContestText:
@@ -384,7 +384,7 @@ StartMenu_Save: ; 1290b
 	call BufferScreen
 	farcall SaveMenu
 	jr nc, .asm_12919
-	ld a, 0
+	xor a
 	ret
 .asm_12919
 	ld a, 1
@@ -408,7 +408,7 @@ StartMenu_Status: ; 12928
 	call FadeToMenu
 	farcall TrainerCard
 	call CloseSubmenu
-	ld a, 0
+	xor a
 	ret
 ; 12937
 
@@ -424,7 +424,7 @@ StartMenu_Pokedex: ; 12937
 	call CloseSubmenu
 
 .asm_12949
-	ld a, 0
+	xor a
 	ret
 ; 1294c
 
@@ -438,7 +438,7 @@ StartMenu_Pokegear: ; 1294c
 	call WaitBGMap
 	call SetPalettes
 	call DelayFrame
-	ld a, 0
+	xor a
 	ret
 ; 1295b
 
@@ -451,7 +451,7 @@ StartMenu_Pack: ; 1295b
 	and a
 	jr nz, .used_item
 	call CloseSubmenu
-	ld a, 0
+	xor a
 	ret
 
 .used_item
@@ -500,7 +500,7 @@ StartMenu_Pokemon: ; 12976
 
 .return
 	call CloseSubmenu
-	ld a, 0
+	xor a
 	ret
 
 .quit
@@ -643,7 +643,7 @@ PokemonActionSubmenu: ; 12a88
 	jp [hl]
 
 .nothing
-	ld a, 0
+	xor a
 	ret
 
 .Actions:
@@ -750,7 +750,7 @@ GiveTakePartyMonItem: ; 12b60
 	call ClearPalettes
 	call LoadFontsBattleExtra
 	call ExitMenu
-	ld a, 0
+	xor a
 	ret
 
 .take
@@ -1055,7 +1055,7 @@ MonMailAction: ; 12d45
 
 .read
 	farcall ReadPartyMonMail
-	ld a, $0
+	xor a
 	ret
 
 .take
@@ -1166,7 +1166,7 @@ OpenPartyStats: ; 12e00
 	predef StatsScreenInit
 	call MaxVolume
 	call Call_ExitMenu
-	ld a, 0
+	xor a
 	ret
 ; 12e1b
 
@@ -1202,7 +1202,7 @@ MonMenu_Fly: ; 12e30
 	ret
 
 .Error:
-	ld a, $0
+	xor a
 	ret
 
 MonMenu_Flash: ; 12e55
@@ -1455,7 +1455,7 @@ ManagePokemonMoves: ; 12fba
 	call ClearBGPalettes
 
 .egg
-	ld a, $0
+	xor a
 	ret
 ; 12fd5
 

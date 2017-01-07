@@ -93,7 +93,7 @@ _TitleScreen: ; 10ed67
 
 
 ; Back to VRAM bank 0
-	ld a, $0
+	xor a
 	ld [rVBK], a
 
 
@@ -289,7 +289,7 @@ LoadSuicuneFrame: ; 10eed2
 	ld a, SCREEN_WIDTH - 8
 	add l
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	ld a, 8

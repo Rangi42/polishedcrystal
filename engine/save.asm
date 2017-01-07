@@ -1111,7 +1111,7 @@ Checksum: ; 15273
 	ld a, [hli]
 	add e
 	ld e, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc d
 	ld d, a
 	dec bc

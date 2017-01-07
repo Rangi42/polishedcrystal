@@ -47,7 +47,7 @@ Functionb92b8: ; b92b8
 	ld h, d
 	ld l, e
 	push hl
-	ld a, $0
+	xor a
 	call GetSRAMBank
 	ld de, sPartyMon1MailAuthorID - sPartyMon1Mail
 	add hl, de

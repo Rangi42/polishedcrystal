@@ -162,7 +162,7 @@ CheckPokeItem:: ; 44654
 	cp "@"
 	jr z, .done
 	cp c
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	jr nz, .close_sram_return
 	inc hl
 	inc de

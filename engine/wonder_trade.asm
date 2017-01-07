@@ -1043,7 +1043,7 @@ GetWonderTradeHeldItem:
 ; TODO: factor out the repetition here with rept...endr and sla
 	and a, %00000001
 	jr z, .isbit2on
-	ld a, 0
+	xor a
 	jp .done
 .isbit2on
 	ld a, b

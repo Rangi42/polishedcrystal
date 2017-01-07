@@ -554,20 +554,18 @@ DoPlayerMovement:: ; 80000
 ; 802b3
 
 .StandInPlace: ; 802b3
-	ld a, 0
-	ld [wd04e], a
 	ld a, movement_step_sleep_1
 	ld [MovementAnimation], a
 	xor a
+	ld [wd04e], a
 	ret
 ; 802bf
 
 ._WalkInPlace: ; 802bf
-	ld a, 0
-	ld [wd04e], a
 	ld a, movement_step_bump
 	ld [MovementAnimation], a
 	xor a
+	ld [wd04e], a
 	ret
 ; 802cb
 
@@ -666,7 +664,7 @@ DoPlayerMovement:: ; 80000
 ; Returns 0 if there is an NPC in front that you can't move
 ; Returns 1 if there is no NPC in front
 ; Returns 2 if there is a movable NPC in front
-	ld a, 0
+	xor a
 	ld [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
 	ld a, [PlayerStandingMapX]
@@ -908,7 +906,7 @@ Function80422:: ; 80422
 	ret z
 
 	ld [hl], a
-	ld a, 0
+	xor a
 	ld [wd04e], a
 	ret
 ; 80430

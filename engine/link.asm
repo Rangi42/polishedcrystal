@@ -2120,7 +2120,7 @@ WaitForOtherPlayerToExit: ; 29c92
 	xor a
 	ld [rSB], a
 	ld [hSerialReceive], a
-	ld a, $0
+	xor a ; redundant?
 	ld [rSC], a
 	ld a, $80
 	ld [rSC], a
@@ -2170,7 +2170,7 @@ Special_SetBitsForTimeCapsuleRequest: ; 29cfa
 	ld [rSB], a
 	xor a
 	ld [hSerialReceive], a
-	ld a, $0
+	xor a ; redundant?
 	ld [rSC], a
 	ld a, $80
 	ld [rSC], a
@@ -2188,7 +2188,7 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [rSB], a
 	xor a
 	ld [hSerialReceive], a
-	ld a, $0
+	xor a ; redundant?
 	ld [rSC], a
 	ld a, $80
 	ld [rSC], a
@@ -2213,7 +2213,7 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [rSB], a
 	xor a
 	ld [hSerialReceive], a
-	ld a, $0
+	xor a ; redundant ?
 	ld [rSC], a
 	ld a, $80
 	ld [rSC], a

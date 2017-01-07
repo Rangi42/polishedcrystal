@@ -59,7 +59,7 @@ DisableSpriteUpdates:: ; 0x2ed3
 	ld a, [VramState]
 	res 0, a
 	ld [VramState], a
-	ld a, $0
+	xor a
 	ld [wSpriteUpdatesEnabled], a
 	ret
 ; 0x2ee4
@@ -514,7 +514,7 @@ LoadEDTile:: ; 323d
 	ld [rVBK], a
 	hlcoord 0, 0, AttrMap
 	call .StackPointerMagic
-	ld a, 0 ; BANK(VTiles0)
+	xor a ; BANK(VTiles0)
 	ld [rVBK], a
 	hlcoord 0, 0
 	call .StackPointerMagic
@@ -649,7 +649,7 @@ CountSetBits:: ; 0x335f
 
 .count
 	srl e
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc c
 	ld c, a
 	dec d

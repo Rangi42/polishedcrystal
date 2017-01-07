@@ -1190,7 +1190,7 @@ DepositSellTutorial_InterpretJoypad: ; 1076f
 	inc a
 	cp 6
 	jr nz, .right_ok
-	ld a, 0
+	xor a
 .right_ok
 	ld [wJumptableIndex], a
 	push de
@@ -1504,7 +1504,7 @@ Pack_InitGFX: ; 10955
 ; Background (blue if male, pink if female)
 	hlcoord 0, 1
 	ld bc, 11 * SCREEN_WIDTH
-	ld a, $06
+	ld a, $6
 	call ByteFill
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1

@@ -402,7 +402,7 @@ Slots_RestartOrQuit: ; 929d9 (24:69d9)
 	call WaitPressAorB_BlinkCursor
 	call Slots_AskPlayAgain
 	jr c, .exit_slots
-	ld a, 0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -838,7 +838,7 @@ Slots_StopReelIgnoreJoypad: ; 92c4c
 .EndReel:
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
-	ld a, $0
+	xor a
 	ld [hl], a
 	ret
 

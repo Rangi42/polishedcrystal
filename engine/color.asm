@@ -344,7 +344,7 @@ ApplyAttrMap:
 	ld e, a
 	dec b
 	jr nz, .row
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ret
 
@@ -546,7 +546,7 @@ InitCGBPals::
 	ld bc, $200 tiles
 	xor a
 	call ByteFill
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ld a, $80
 	ld [rBGPI], a

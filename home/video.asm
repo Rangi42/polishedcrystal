@@ -63,7 +63,7 @@ rept 2
 	dec c
 
 ; Tiles
-	ld a, 0
+	xor a
 	ld [rVBK], a
 
 	ld a, [de]
@@ -171,7 +171,7 @@ UpdateBGMap:: ; 164c
 	hlcoord 0, 0, AttrMap
 	call .update
 
-	ld a, 0
+	xor a
 	ld [rVBK], a
 	ret
 
@@ -471,7 +471,7 @@ AnimateTileset:: ; 17d3
 
 	ld a, [rVBK]
 	push af
-	ld a, 0
+	xor a
 	ld [rVBK], a
 
 	call _AnimateTileset

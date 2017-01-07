@@ -380,7 +380,7 @@ Options_Frame: ; e44fa
 	inc a
 	cp $9
 	jr nz, .Save
-	ld a, $0
+	xor a
 	jr .Save
 
 .LeftPressed:

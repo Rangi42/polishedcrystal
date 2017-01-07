@@ -726,7 +726,7 @@ AnimateEndOfExpBar: ; 8e79d
 	add 19 * 8 + 4
 	ld [hli], a
 
-	ld a, $0
+	xor a
 	ld [hli], a
 	ld a, $6 ; OBJ 6
 	ld [hli], a

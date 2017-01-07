@@ -17,9 +17,8 @@ InitialOptionsText:
 InitInitialOptionsScreen: ; 48e14 (12:4e14)
 	ld a, $10
 	ld [MusicFade], a
-	ld a, MUSIC_NONE
+	xor a ; MUSIC_NONE
 	ld [MusicFadeIDLo], a
-	ld a, $0
 	ld [MusicFadeIDHi], a
 	ld c, 8
 	call DelayFrames
@@ -27,7 +26,7 @@ InitInitialOptionsScreen: ; 48e14 (12:4e14)
 	call LoadFontsExtra
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	ld a, $0
+	xor a
 	call ByteFill
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH

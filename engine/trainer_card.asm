@@ -174,7 +174,7 @@ TrainerCard_Page2_Joypad: ; 25221 (9:5221)
 	ret
 
 .d_left
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -571,7 +571,7 @@ TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 	ld a, [wcf64]
 	add l
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	ld a, [hl]

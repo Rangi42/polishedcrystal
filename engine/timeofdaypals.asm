@@ -208,7 +208,7 @@ ReplaceTimeOfDayPals: ; 8c0e5
 	and $7
 	add l
 	ld l, a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	ld a, [hl]

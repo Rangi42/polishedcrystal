@@ -1,6 +1,6 @@
 
 _SacredAsh: ; 507e6
-	ld a, $0
+	xor a
 	ld [wItemEffectSucceeded], a
 	call CheckAnyFaintedMon
 	ret nc

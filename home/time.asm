@@ -3,9 +3,9 @@
 
 LatchClock:: ; 59c
 ; latch clock counter data
-	ld a, 0
+	xor a
 	ld [MBC3LatchClock], a
-	ld a, 1
+	inc a
 	ld [MBC3LatchClock], a
 	ret
 ; 5a7

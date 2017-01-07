@@ -165,9 +165,8 @@ BillsPCDepositFuncDeposit: ; e24a9 (38:64a9)
 	jp c, BillsPCDepositFuncCancel
 	call DepositPokemon
 	jr c, .box_full
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	ret
@@ -213,9 +212,8 @@ BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
 	call ReleasePKMN_ByePKMN
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	pop af
@@ -229,7 +227,7 @@ BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
 	ret
 
 BillsPCDepositFuncCancel: ; e2537 (38:6537)
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 ; e253d (38:653d)
@@ -413,9 +411,8 @@ endr
 	jp c, .cancel
 	call TryWithdrawPokemon
 	jr c, .FailedWithdraw
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	ret
@@ -458,9 +455,8 @@ endr
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
 	call ReleasePKMN_ByePKMN
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	pop af
@@ -473,7 +469,7 @@ endr
 	ret
 
 .cancel ; e272b (38:672b)
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 ; e2731 (38:6731)
@@ -605,7 +601,6 @@ _MovePKMNWithoutMail: ; e2759
 	xor a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
-	ld a, $0
 	ld [wJumptableIndex], a
 	ret
 
@@ -696,7 +691,7 @@ endr
 ; e28bd
 
 .Cancel: ; e28bd
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 ; e28c3
@@ -768,7 +763,7 @@ endr
 	call BillsPC_CheckSpaceInDestination
 	jr c, .no_space
 	call MovePKMNWitoutMail_InsertMon
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -784,7 +779,7 @@ endr
 	ld [wBillsPC_CursorPosition], a
 	ld a, [wBillsPC_BackupLoadedBox]
 	ld [wBillsPC_LoadedBox], a
-	ld a, $0
+	xor a
 	ld [wJumptableIndex], a
 	ret
 ; e2963

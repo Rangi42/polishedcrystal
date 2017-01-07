@@ -2483,7 +2483,7 @@ Script_checkmoney: ; 97843
 CompareMoneyAction: ; 9784f
 	jr c, .two
 	jr z, .one
-	ld a, 0
+	xor a
 	jr .done
 .one
 	ld a, 1

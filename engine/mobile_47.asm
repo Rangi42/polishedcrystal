@@ -353,9 +353,9 @@ Function11d2ee: ; 11d2ee (47:52ee)
 	ret
 
 .flip_bit_0
-	ld a, $0
+	xor a
 	ld [hld], a
-	ld a, $1
+	inc a
 	xor [hl]
 	ld [hl], a
 	and a

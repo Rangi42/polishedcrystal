@@ -185,7 +185,7 @@ BattleAnimFunction_03: ; cd0e3 (33:50e3)
 	ld hl, BATTLEANIMSTRUCT_0B
 	add hl, bc
 	bit 7, [hl]
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	jr z, .asm_cd0f9
 	ld a, $20
 .asm_cd0f9

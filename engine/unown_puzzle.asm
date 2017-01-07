@@ -485,7 +485,7 @@ GetCurrentPuzzlePieceVTileCorner: ; e1481
 	ld hl, .Corners
 	add l
 	ld l, a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	ld a, [hl]
@@ -746,7 +746,7 @@ ConvertLoadedPuzzlePieces: ; e1631
 	ld hl, .EnlargedTiles
 	add l
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	ld a, [hl]

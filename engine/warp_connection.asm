@@ -290,7 +290,7 @@ Function1047a3: ; 1047a3 (41:47a3)
 	pop bc
 	dec b
 	jr nz, .row
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ret
 

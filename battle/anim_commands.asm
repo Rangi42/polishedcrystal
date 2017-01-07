@@ -1286,7 +1286,7 @@ endr
 	jr .done_cry_tracks
 
 .enemy
-	ld a, $0f
+	ld a, $f
 	ld [CryTracks], a ; CryTracks
 	ld a, [EnemyMonSpecies] ; EnemyMon
 
@@ -1471,7 +1471,7 @@ BattleAnim_SetOBPals: ; cc94b
 ; cc96e
 
 BattleAnim_UpdateOAM_All: ; cc96e
-	ld a, $0
+	xor a
 	ld [wBattleAnimOAMPointerLo], a
 	ld hl, ActiveAnimObjects
 	ld e, 10

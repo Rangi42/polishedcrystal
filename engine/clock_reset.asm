@@ -141,7 +141,7 @@ RestartClock: ; 20021 (8:4021)
 	jr .joy_loop
 
 .press_A
-	ld a, $0
+	xor a
 	scf
 	ret
 
@@ -158,7 +158,7 @@ RestartClock: ; 20021 (8:4021)
 	ld [de], a
 	cp b
 	jr c, .done_scroll
-	ld a, $0
+	xor a
 	ld [de], a
 	jr .done_scroll
 

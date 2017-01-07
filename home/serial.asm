@@ -22,7 +22,7 @@ Serial:: ; 6ef
 	cp $2
 	jr z, .player2
 
-	ld a, 0 << rSC_ON
+	xor a
 	ld [rSC], a
 	ld a, 1 << rSC_ON
 	ld [rSC], a
@@ -51,7 +51,7 @@ Serial:: ; 6ef
 	bit 7, a
 	jr nz, .wait_bit_7
 
-	ld a, 0 << rSC_ON
+	xor a
 	ld [rSC], a
 	ld a, 1 << rSC_ON
 	ld [rSC], a
@@ -250,7 +250,7 @@ Function83b:: ; 83b
 	inc hl
 	ld a, [hFFCC]
 	and a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	ld [hFFCC], a
 	jr nz, .asm_847
 	ld a, b

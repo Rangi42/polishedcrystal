@@ -1696,7 +1696,7 @@ FishFunction: ; cf8e
 	ret
 
 .FishNoFish: ; d010
-	ld a, $0
+	xor a
 	ld [Buffer6], a
 	ld hl, Script_NotEvenANibble2
 	call QueueScript
@@ -1856,7 +1856,7 @@ BikeFunction: ; d0b3
 	jr .done
 
 .CannotUseBike:
-	ld a, $0
+	xor a
 	ret
 
 .done

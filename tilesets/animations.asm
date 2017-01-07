@@ -563,7 +563,7 @@ endr
 
 	add WaterTileFrames % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc WaterTileFrames / $100
 	ld h, a
 
@@ -601,7 +601,7 @@ endr
 
 	add KantoWaterTileFrames % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc KantoWaterTileFrames / $100
 	ld h, a
 
@@ -650,7 +650,7 @@ AnimateFarawayWaterTile:
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 
@@ -683,7 +683,7 @@ rept 3
 endr
 	add ForestTreeLeftFrames % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 
@@ -725,7 +725,7 @@ rept 3
 endr
 	add ForestTreeLeftFrames % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 	push bc
@@ -761,7 +761,7 @@ rept 3
 endr
 	add ForestTreeLeftFrames % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 
@@ -793,7 +793,7 @@ rept 3
 endr
 	add ForestTreeLeftFrames % $100
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 	push bc
@@ -1004,7 +1004,7 @@ AnimateSproutPillarTile: ; fc645
 	ld hl, .frames
 	add l
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 	ld a, [hl]
@@ -1022,7 +1022,7 @@ AnimateSproutPillarTile: ; fc645
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 
@@ -1075,7 +1075,7 @@ AnimateWhirlpoolTile: ; fc678
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
 	ld h, a
 

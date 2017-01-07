@@ -124,8 +124,8 @@ SetCreditsSpawn::
 
 
 Credits:: ; 109847
+	xor a
 	bit 6, b ; Hall Of Fame
-	ld a, $0
 	jr z, .okay
 	ld a, $40
 .okay

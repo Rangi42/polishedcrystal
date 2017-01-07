@@ -286,7 +286,7 @@ SetMagnetTrainPals: ; 8cdc3
 	ld a, $4
 	call ByteFill
 
-	ld a, $0
+	xor a
 	ld [rVBK], a
 	ret
 ; 8cdf7

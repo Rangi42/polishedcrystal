@@ -207,9 +207,8 @@ TownMap_InitCursorAndPlayerIconPositions: ; 90d70 (24:4d70)
 	ret
 
 Pokegear_InitJumptableIndices: ; 90d9e (24:4d9e)
-	ld a, $0
-	ld [wJumptableIndex], a
 	xor a
+	ld [wJumptableIndex], a
 	ld [wcf64], a
 	ret
 

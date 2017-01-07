@@ -123,7 +123,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	pop bc
 	hlcoord 0, 4, AttrMap
 	lb bc, 8, 10
-	ld a, $0
+	xor a
 	call FillBoxCGB
 	hlcoord 10, 0, AttrMap
 	lb bc, 7, 10
@@ -878,7 +878,7 @@ _CGB18: ; 925e
 	ld hl, UnknOBPals
 	ld a, $1f
 	ld [hli], a
-	ld a, $0
+	xor a
 	ld [hl], a
 	pop af
 	ld [rSVBK], a
@@ -923,14 +923,14 @@ _CGB_TrainerCard: ; 9289
 	and a
 	ld a, $1
 	jr z, .got_gender
-	ld a, $0
+	xor a
 .got_gender
 	call ByteFill
 	hlcoord 14, 1, AttrMap
 	lb bc, 7, 5
 	ld a, [PlayerGender]
 	and a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .got_gender2
 	ld a, $1
 .got_gender2
@@ -1025,14 +1025,14 @@ _CGB_TrainerCard2:
 	and a
 	ld a, $1
 	jr z, .got_gender
-	ld a, $0
+	xor a
 .got_gender
 	call ByteFill
 	hlcoord 14, 1, AttrMap
 	lb bc, 7, 5
 	ld a, [PlayerGender]
 	and a
-	ld a, $0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .got_gender2
 	ld a, $1
 .got_gender2
@@ -1292,7 +1292,7 @@ _CGB_Pokepic: ; 9499
 	sub c
 	inc a
 	ld c, a
-	ld a, $0
+	xor a
 	call FillBoxCGB
 	call ApplyAttrMap
 	ret

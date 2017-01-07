@@ -3,7 +3,7 @@
 Clearwc7e8:: ; 210f
 	ld hl, wc7e8
 	ld bc, 15
-	ld a, $0
+	xor a
 	call ByteFill
 	ret
 ; 211b
@@ -710,7 +710,7 @@ endr
 LoadBlockData:: ; 24cd
 	ld hl, OverworldMap
 	ld bc, OverworldMapEnd - OverworldMap
-	ld a, 0
+	xor a
 	call ByteFill
 	call ChangeMap
 	call FillMapConnections
@@ -1535,7 +1535,7 @@ GetMovementPermissions:: ; 2914
 	ld hl, .MovementPermissionsData
 	add l
 	ld l, a
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 	ld a, [hl]
