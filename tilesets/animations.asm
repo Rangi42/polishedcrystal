@@ -40,10 +40,11 @@ endr
 Tileset00Anim:
 Tileset01Anim:
 Tileset02Anim:
+Tileset04Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
 	dw WhirlpoolFrames1, AnimateWhirlpoolTile
@@ -69,7 +70,7 @@ Tileset41Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  KantoTileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
@@ -83,7 +84,7 @@ Tileset09Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -138,7 +139,7 @@ Tileset30Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $25, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $26, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
@@ -157,7 +158,7 @@ Tileset25Anim:
 	dw NULL,  WaitTileAnimation
 	dw VTiles2 tile $15, AnimateFountain
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
 	dw NULL,  WaitTileAnimation
@@ -172,7 +173,7 @@ Tileset29Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $44, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
@@ -186,7 +187,7 @@ Tileset31Anim:
 	dw NULL,  ForestTreeRightAnimation2
 	dw NULL,  AnimateFlowerTile
 	dw VTiles2 tile $14, AnimateWaterTile
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
 	dw VTiles2 tile $4b, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
@@ -204,7 +205,7 @@ Tileset32Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  KantoTileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
@@ -233,7 +234,7 @@ Tileset39Anim:
 	dw NULL,  WaitTileAnimation
 	dw VTiles2 tile $26, WriteTileFromBuffer
 	dw NULL,  WaitTileAnimation
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -243,7 +244,7 @@ Tileset39Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $30, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw NULL,  TileAnimationPalette
+	dw NULL,  WaitTileAnimation
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $31, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
@@ -269,7 +270,6 @@ Tileset42Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset04Anim:
 Tileset05Anim:
 Tileset06Anim:
 Tileset07Anim:
@@ -1147,120 +1147,6 @@ endr
 	ld sp, hl
 	ret
 ; fc6d7
-
-
-TileAnimationPalette: ; fc6d7
-; Transition between color values 0-2 for color 0 in palette 3.
-
-; We don't want to mess with non-standard palettes.
-	ld a, [rBGP] ; BGP
-	cp %11100100
-	ret nz
-
-; Only update on even frames.
-	ld a, [TileAnimationTimer]
-	ld l, a
-	and 1 ; odd
-	ret nz
-
-; Ready for BGPD input...
-	ld a, %10011000 ; auto increment, index $18 (pal 3 color 0)
-	ld [rBGPI], a
-
-	ld a, [rSVBK]
-	push af
-	ld a, 5 ; wra5: gfx
-	ld [rSVBK], a
-
-; Update color 0 in order 0 1 2 1
-
-	ld a, l
-	and %110 ; frames 0 2 4 6
-
-	jr z, .color0
-
-	cp 4
-	jr z, .color2
-
-.color1
-	ld hl, UnknBGPals + 3 palettes + 2
-	ld a, [hli]
-	ld [rBGPD], a
-	ld a, [hli]
-	ld [rBGPD], a
-	jr .end
-
-.color0
-	ld hl, UnknBGPals + 3 palettes
-	ld a, [hli]
-	ld [rBGPD], a
-	ld a, [hli]
-	ld [rBGPD], a
-	jr .end
-
-.color2
-	ld hl, UnknBGPals + 3 palettes + 4
-	ld a, [hli]
-	ld [rBGPD], a
-	ld a, [hli]
-	ld [rBGPD], a
-
-.end
-	pop af
-	ld [rSVBK], a
-	ret
-; fc71e
-
-
-KantoTileAnimationPalette:
-; Transition between color values 0-1 for color 0 in palette 3.
-
-; We don't want to mess with non-standard palettes.
-	ld a, [rBGP] ; BGP
-	cp %11100100
-	ret nz
-
-; Only update on even frames.
-	ld a, [TileAnimationTimer]
-	ld l, a
-	and 1 ; odd
-	ret nz
-
-; Ready for BGPD input...
-	ld a, %10011000 ; auto increment, index $18 (pal 3 color 0)
-	ld [rBGPI], a
-
-	ld a, [rSVBK]
-	push af
-	ld a, 5 ; wra5: gfx
-	ld [rSVBK], a
-
-; Update color 0 in order 0 1
-
-	ld a, l
-	and %10 ; frames 0 2
-
-	jr z, .color0
-
-.color1
-	ld hl, UnknBGPals + 3 palettes + 2
-	ld a, [hli]
-	ld [rBGPD], a
-	ld a, [hli]
-	ld [rBGPD], a
-	jr .end
-
-.color0
-	ld hl, UnknBGPals + 3 palettes
-	ld a, [hli]
-	ld [rBGPD], a
-	ld a, [hli]
-	ld [rBGPD], a
-
-.end
-	pop af
-	ld [rSVBK], a
-	ret
 
 
 FlickeringCaveEntrancePalette: ; fc71e
