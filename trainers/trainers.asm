@@ -8194,7 +8194,7 @@ SageGroup:
 	; party
 	db 3, BELLSPROUT
 	db 3, BELLSPROUT
-	db 3, BELLSPROUT
+	db 3, HOOTHOOT
 
 	db $ff ; end
 
@@ -8205,7 +8205,7 @@ SageGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 6, BELLSPROUT
+	db 7, BELLSPROUT
 
 	db $ff ; end
 
@@ -8217,7 +8217,7 @@ SageGroup:
 
 	; party
 	db 7, BELLSPROUT
-	db 7, HOOTHOOT
+	db 7, GASTLY
 
 	db $ff ; end
 
@@ -8256,7 +8256,7 @@ SageGroup:
 
 	; party
 	db 3, BELLSPROUT
-	db 3, BELLSPROUT
+	db 3, HOOTHOOT
 	db 3, BELLSPROUT
 
 	db $ff ; end
@@ -8269,6 +8269,7 @@ SageGroup:
 
 	; party
 	db 6, BELLSPROUT
+	db 6, HOOTHOOT
 
 	db $ff ; end
 
@@ -8401,9 +8402,9 @@ ElderGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 7, BELLSPROUT
-	db 7, BELLSPROUT
-	db 10, HOOTHOOT
+	db 7, HOOTHOOT
+	db 7, GASTLY
+	db 10, BELLSPROUT
 
 	db $ff ; end
 
