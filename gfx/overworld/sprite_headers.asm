@@ -229,7 +229,7 @@ CynthiaSprite:
 	sprite_header CynthiaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 ElderSprite: ; 14766
-	sprite_header ElderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+	sprite_header ElderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 ; 1476c
 
 CaptainSprite: ; 148d4

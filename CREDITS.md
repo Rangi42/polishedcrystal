@@ -8,7 +8,7 @@
 * FredrIQ for multiple feature code contributions (specifically: Natures affecting stats, better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen).
 * VictoriaLacroix for her Running Shoes routine.
 * Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many sprites and icons.
-* metalflygon08 for the HGSS Team Rocket, Sylveon, and Rhyperior sprites.
+* metalflygon08 for the many Pokémon and trainer sprites.
 * FroggestSpirit for ported and demixed music from RBY, HGSS, DPPt, and BW.
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.
 * Pigu for battle music (used in TPP Anniversary Crystal 251).
