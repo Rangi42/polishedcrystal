@@ -186,6 +186,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; PROF_ELM
 	db FEMALE ; PROF_IVY
 	db FEMALE ; MYSTICALMAN
+	db MALE   ; KARATE_KING
 	db MALE   ; TOWERTYCOON
 
 

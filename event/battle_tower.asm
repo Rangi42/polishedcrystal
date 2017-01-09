@@ -456,6 +456,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_ELM           ; PROF_ELM
 	db SPRITE_IVY           ; PROF_IVY
 	db SPRITE_SUPER_NERD    ; MYSTICALMAN
+	db SPRITE_BLACK_BELT    ; KARATE_KING
 	db SPRITE_PALMER        ; TOWERTYCOON
 
 Special_BattleTower_CheckForRules: ; 170bd3

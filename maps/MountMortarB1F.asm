@@ -54,21 +54,21 @@ MountMortarB1FTutorDefenseCurlScript:
 	closetext
 	end
 
-BlackBeltScript_0x7e1f6:
+KiyoScript_0x7e1f6:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
 	iftrue UnknownScript_0x7e231
-	checkevent EVENT_BEAT_BLACKBELT_KIYO
+	checkevent EVENT_BEAT_KIYO
 	iftrue UnknownScript_0x7e217
 	writetext UnknownText_0x7e24d
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x7e2a9, 0
-	loadtrainer BLACKBELT_T, KIYO
+	loadtrainer KARATE_KING, KIYO
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_BLACKBELT_KIYO
+	setevent EVENT_BEAT_KIYO
 	opentext
 UnknownScript_0x7e217:
 	writetext UnknownText_0x7e2c0
@@ -240,7 +240,7 @@ MountMortarB1F_MapEventHeader:
 .PersonEvents:
 	db 8
 	person_event SPRITE_POKEFAN_M, 31, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
-	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7e1f6, -1
+	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
 	person_event SPRITE_BOULDER, 10, 9, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MountMortarB1FBoulder, -1
 	person_event SPRITE_POKE_BALL, 12, 29, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FHyperPotion, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
 	person_event SPRITE_POKE_BALL, 16, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, MountMortarB1FCarbos, EVENT_MOUNT_MORTAR_B1F_CARBOS

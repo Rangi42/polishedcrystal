@@ -126,6 +126,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; prof elm
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; prof ivy
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; mysticalman
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; karate king
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
 	db $BB, $B8, $BB, ABILITY_1 | QUIRKY, MALE   ; jessie&james
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; lorelei

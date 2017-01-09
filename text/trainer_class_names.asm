@@ -42,6 +42,7 @@
 	db "Officer@"          ; OFFICERM
 	db "Officer@"          ; OFFICERF
 	db "#Maniac@"          ; POKEMANIAC
+	db "Cosplayer@"        ; COSPLAYER
 	db "Super Nerd@"       ; SUPER_NERD
 	db "Lass@"             ; LASS
 	db "Beauty@"           ; BEAUTY
@@ -93,6 +94,7 @@
 	db "#mon Prof.@"       ; PROF_OAK
 	db "#mon Prof.@"       ; PROF_ELM
 	db "Mystery Man@"      ; MYSTICALMAN
+	db "Karate King@"      ; KARATE_KING
 	db "TowerTycoon@"      ; TOWERTYCOON
 	db "Jessie@"           ; JESSIE_JAMES
 	db "Ex-Elite@"         ; LORELEI

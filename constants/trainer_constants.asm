@@ -622,7 +622,6 @@ KRIS EQU __enum__
 	const YOSHI
 	const LAO
 	const NOB
-	const KIYO
 	const LUNG
 	const WAI
 
@@ -767,51 +766,54 @@ KRIS EQU __enum__
 	trainerclass MYSTICALMAN ; 61
 	const EUSINE
 
-	trainerclass TOWERTYCOON ; 62
+	trainerclass KARATE_KING ; 62
+	const KIYO
 
-	trainerclass JESSIE_JAMES ; 63
+	trainerclass TOWERTYCOON ; 63
 
-	trainerclass LORELEI ; 64
+	trainerclass JESSIE_JAMES ; 64
 
-	trainerclass AGATHA ; 65
+	trainerclass LORELEI ; 65
 
-	trainerclass STEVEN ; 66
+	trainerclass AGATHA ; 66
 
-	trainerclass CYNTHIA ; 67
+	trainerclass STEVEN ; 67
 
-	trainerclass CHERYL ; 68
+	trainerclass CYNTHIA ; 68
 
-	trainerclass RILEY ; 69
+	trainerclass CHERYL ; 69
 
-	trainerclass BUCK ; 6a
+	trainerclass RILEY ; 6a
 
-	trainerclass MARLEY ; 6b
+	trainerclass BUCK ; 6b
 
-	trainerclass MIRA ; 6c
+	trainerclass MARLEY ; 6c
 
-	trainerclass DARACH ; 6d
+	trainerclass MIRA ; 6d
 
-	trainerclass CAITLIN ; 6e
+	trainerclass DARACH ; 6e
 
-	trainerclass VALERIE ; 6f
+	trainerclass CAITLIN ; 6f
 
-	trainerclass BILL_T ; 70
+	trainerclass VALERIE ; 70
 
-	trainerclass YELLOW ; 71
+	trainerclass BILL_T ; 71
 
-	trainerclass WALKER ; 72
+	trainerclass YELLOW ; 72
 
-	trainerclass LAWRENCE ; 73
+	trainerclass WALKER ; 73
 
-	trainerclass REI ; 74
+	trainerclass LAWRENCE ; 74
 
-	trainerclass OMASTAR_FOSSIL ; 75
+	trainerclass REI ; 75
 
-	trainerclass KABUTOPS_FOSSIL ; 76
+	trainerclass OMASTAR_FOSSIL ; 76
 
-	trainerclass AERODACTYL_FOSSIL ; 77
+	trainerclass KABUTOPS_FOSSIL ; 77
 
-	trainerclass METEORITE ; 78
+	trainerclass AERODACTYL_FOSSIL ; 78
+
+	trainerclass METEORITE ; 79
 
 NUM_TRAINER_CLASSES EQU __enum__
 

@@ -96,6 +96,7 @@
 	add_pic ProfElmPic
 	add_pic ProfIvyPic
 	add_pic MysticalmanPic
+	add_pic KarateKingPic
 	add_pic TowerTycoonPic
 	add_pic JessieJamesPic
 	add_pic LoreleiPic

@@ -98,6 +98,7 @@ TrainerGroups: ; 0x39999
 	dw ProfElmGroup
 	dw ProfIvyGroup
 	dw MysticalmanGroup
+	dw KarateKingGroup
 	dw TowerTycoonGroup
 	dw JessieJamesGroup
 	dw LoreleiGroup

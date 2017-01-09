@@ -9991,34 +9991,6 @@ BlackbeltGroup:
 ; ================
 
 	; BLACKBELT_T
-	db "Kiyo@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
-
-	; party
-
-	db 40, HITMONLEE, BLACK_BELT
-		db BULK_UP
-		db FOCUS_ENERGY
-		db HI_JUMP_KICK
-		db LOCK_ON
-
-	db 40, HITMONCHAN, KINGS_ROCK
-		db THUNDERPUNCH
-		db ICE_PUNCH
-		db FIRE_PUNCH
-		db MACH_PUNCH
-
-	db 40, HITMONTOP, FOCUS_BAND
-		db BULK_UP
-		db TRIPLE_KICK
-		db RAPID_SPIN
-		db COUNTER
-
-	db $ff ; end
-
-; ================
-
-	; BLACKBELT_T
 	db "Lung@"
 	db TRAINERTYPE_NORMAL
 
@@ -11979,6 +11951,40 @@ MysticalmanGroup:
 		db SCREECH
 		db SONIC_BOOM
 		db ROLLOUT
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+KarateKingGroup:
+; ================================
+; ================
+
+	; KARATE_KING
+	db "Kiyo@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+
+	; party
+
+	db 40, HITMONLEE, BLACK_BELT
+		db BULK_UP
+		db FOCUS_ENERGY
+		db HI_JUMP_KICK
+		db LOCK_ON
+
+	db 40, HITMONCHAN, KINGS_ROCK
+		db THUNDERPUNCH
+		db ICE_PUNCH
+		db FIRE_PUNCH
+		db MACH_PUNCH
+
+	db 40, HITMONTOP, FOCUS_BAND
+		db BULK_UP
+		db TRIPLE_KICK
+		db RAPID_SPIN
+		db COUNTER
 
 	db $ff ; end
 
