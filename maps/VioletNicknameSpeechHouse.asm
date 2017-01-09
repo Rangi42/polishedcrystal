@@ -1,7 +1,7 @@
 const_value set 2
 	const VIOLETNICKNAMESPEECHHOUSE_TEACHER
 	const VIOLETNICKNAMESPEECHHOUSE_LASS
-	const VIOLETNICKNAMESPEECHHOUSE_BIRD
+	const VIOLETNICKNAMESPEECHHOUSE_EEVEE
 
 VioletNicknameSpeechHouse_MapScriptHeader:
 .MapTriggers:
@@ -16,11 +16,11 @@ TeacherScript_0x693e9:
 LassScript_0x693ec:
 	jumptextfaceplayer UnknownText_0x6945e
 
-BirdScript_0x693ef:
+EeveeScript_0x693ef:
 	faceplayer
 	opentext
 	writetext UnknownText_0x6947c
-	cry PIDGEY
+	cry EEVEE
 	waitbutton
 	closetext
 	end
@@ -36,12 +36,12 @@ UnknownText_0x693fa:
 	done
 
 UnknownText_0x6945e:
-	text "I call my Pidgey"
+	text "I call my Eevee"
 	line "Strawberry!"
 	done
 
 UnknownText_0x6947c:
-	text "Strawberry: Pijji!"
+	text "Strawberry: Eevee!"
 	done
 
 VioletNicknameSpeechHouse_MapEventHeader:
@@ -63,4 +63,4 @@ VioletNicknameSpeechHouse_MapEventHeader:
 	db 3
 	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x693e9, -1
 	person_event SPRITE_LASS, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x693ec, -1
-	person_event SPRITE_BIRD, 2, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BirdScript_0x693ef, -1
+	person_event SPRITE_EEVEE, 2, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EeveeScript_0x693ef, -1

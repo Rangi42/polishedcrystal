@@ -728,6 +728,7 @@ SpriteMons: ; 14495
 	db SQUIRTLE
 	db WEEDLE
 	db PIDGEY
+	db PIDGEOTTO
 	db PIDGEOT
 	db RATTATA
 	db PIKACHU
@@ -751,7 +752,6 @@ SpriteMons: ; 14495
 	db GEODUDE
 	db SLOWPOKE
 	db SLOWBRO
-	db FARFETCH_D
 	db DODRIO
 	db GRIMER
 	db SHELLDER
@@ -839,7 +839,7 @@ Group22Sprites:
 ; BattleTowerOutside
 Group29Sprites:
 ; GoldenrodHarbor
-	db SPRITE_BUENA
+	db SPRITE_BEAUTY
 	db SPRITE_FISHER
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
@@ -933,7 +933,7 @@ Group4Sprites:
 ; Route36
 ; Route37
 	db SPRITE_BREEDER
-	db SPRITE_BUENA
+	db SPRITE_BEAUTY
 	db SPRITE_BUG_CATCHER
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
@@ -1273,7 +1273,7 @@ Group15Sprites:
 ; MountMoonSquare
 ; TinTowerRoof
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_FAIRY
+	db SPRITE_CLEFAIRY_WALK
 	db SPRITE_FISHING_GURU
 	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD
@@ -1472,14 +1472,14 @@ Group21Sprites:
 	db SPRITE_LASS
 	db SPRITE_RICH_BOY
 	db SPRITE_TEACHER
+	db SPRITE_ROUGHNECK
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 8 walking sprites (7 that walk)
+	; 9 walking sprites (8 that walk)
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
 	db SPRITE_CUT_TREE
-	; 11 total sprites
-	db SPRITE_POKE_BALL
+	; 12 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL

@@ -1,6 +1,6 @@
 const_value set 2
 	const BATTLETOWEROUTSIDE_STANDING_YOUNGSTER
-	const BATTLETOWEROUTSIDE_BUENA
+	const BATTLETOWEROUTSIDE_BEAUTY
 	const BATTLETOWEROUTSIDE_SAILOR
 	const BATTLETOWEROUTSIDE_LASS
 
@@ -77,8 +77,8 @@ BattleTowerOutsidePanUpScript2:
 BattleTowerOutsideYoungsterScript:
 	jumptextfaceplayer BattleTowerOutsideYoungsterText
 
-BattleTowerOutsideBuenaScript:
-	jumptextfaceplayer BattleTowerOutsideBuenaText
+BattleTowerOutsideBeautyScript:
+	jumptextfaceplayer BattleTowerOutsideBeautyText
 
 BattleTowerOutsideSailorScript:
 	jumptextfaceplayer BattleTowerOutsideSailorText
@@ -111,7 +111,7 @@ BattleTowerOutsideYoungsterText:
 	cont "in there!"
 	done
 
-BattleTowerOutsideBuenaText:
+BattleTowerOutsideBeautyText:
 	text "You can use only"
 	line "three #mon."
 
@@ -176,6 +176,6 @@ BattleTowerOutside_MapEventHeader:
 .PersonEvents:
 	db 4
 	person_event SPRITE_STANDING_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
-	person_event SPRITE_BUENA, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBuenaScript, -1
+	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
 	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
 	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

@@ -234,13 +234,16 @@ StevenSprite:
 CynthiaSprite:
 	sprite_header CynthiaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
-ElderSprite: ; 14766
-	sprite_header ElderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 1476c
+BuenaSprite: ; 1482c
+	sprite_header BuenaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 14832
 
 CaptainSprite: ; 148d4
-	sprite_header CaptainSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 148da
+
+BeautySprite:
+	sprite_header BeautySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
 BikerSprite: ; 148ec
 	sprite_header BikerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
@@ -250,12 +253,11 @@ BlackBeltSprite: ; 148b6
 	sprite_header BlackBeltSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 148bc
 
+BoarderSprite:
+	sprite_header BoarderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
 BreederSprite:
 	sprite_header BreederSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-
-BuenaSprite: ; 1482c
-	sprite_header BuenaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14832
 
 BugCatcherSprite: ; 1480e
 	sprite_header BugCatcherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
@@ -277,6 +279,10 @@ CowgirlSprite:
 
 DragonTamerSprite:
 	sprite_header DragonTamerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+ElderSprite: ; 14766
+	sprite_header ElderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+; 1476c
 
 FisherSprite: ; 1488c
 	sprite_header FisherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
@@ -345,6 +351,9 @@ RocketGirlSprite: ; 14874
 	sprite_header RocketGirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 1487a
 
+RoughneckSprite:
+	sprite_header RoughneckSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
 SageSprite: ; 148a4
 	sprite_header SageSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 148aa
@@ -356,6 +365,9 @@ SailorSprite: ; 148e6
 ScientistSprite: ; 14898
 	sprite_header ScientistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 1489e
+
+SkierSprite:
+	sprite_header SkierSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 SuperNerdSprite: ; 14832
 	sprite_header SuperNerdSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
@@ -433,13 +445,13 @@ KurtOutsideSprite: ; 1497c
 	sprite_header KurtOutsideSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 14982
 
-BirdSprite: ; 14904
-	sprite_header BirdSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1490a
-
-FairySprite: ; 148fe
-	sprite_header FairySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+ClefairyWalkSprite: ; 148fe
+	sprite_header ClefairyWalkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14904
+
+FarfetchDSprite: ; 14904
+	sprite_header FarfetchDSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 1490a
 
 LaprasSprite: ; 14922
 	sprite_header LaprasSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE

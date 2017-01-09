@@ -1,7 +1,7 @@
 const_value set 2
-	const ICEPATHB1F_BUENA
+	const ICEPATHB1F_SKIER1
 	const ICEPATHB1F_BOARDER
-	const ICEPATHB1F_SKIER
+	const ICEPATHB1F_SKIER2
 	const ICEPATHB1F_BOULDER1
 	const ICEPATHB1F_BOULDER2
 	const ICEPATHB1F_BOULDER3
@@ -68,12 +68,12 @@ IcePathB1F_MapScriptHeader:
 	earthquake 80
 	end
 
-IcePathB1FBuenaScript:
+IcePathB1FSkierScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_ICY_WIND_INTRO
 	iftrue IcePathB1FTutorIcyWindScript
-	writetext IcePathB1FBuenaText
+	writetext IcePathB1FSkierText
 	waitbutton
 	setevent EVENT_LISTENED_TO_ICY_WIND_INTRO
 IcePathB1FTutorIcyWindScript:
@@ -138,7 +138,7 @@ IcePathB1FIron:
 IcePathB1FHiddenMaxPotion:
 	dwb EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION, MAX_POTION
 
-IcePathB1FBuenaText:
+IcePathB1FSkierText:
 	text "It's really cold"
 	line "in here!"
 
@@ -248,9 +248,9 @@ IcePathB1F_MapEventHeader:
 
 .PersonEvents:
 	db 8
-	person_event SPRITE_BUENA, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FBuenaScript, -1
-	person_event SPRITE_ROCKER, 23, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
-	person_event SPRITE_BUENA, 24, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
+	person_event SPRITE_SKIER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
+	person_event SPRITE_BOARDER, 23, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
+	person_event SPRITE_SKIER, 24, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
 	person_event SPRITE_BOULDER, 7, 11, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_1
 	person_event SPRITE_BOULDER, 8, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_2
 	person_event SPRITE_BOULDER, 9, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_3

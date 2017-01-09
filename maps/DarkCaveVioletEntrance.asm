@@ -8,7 +8,7 @@ const_value set 2
 	const DARKCAVEVIOLETENTRANCE_POKE_BALL3
 	const DARKCAVEVIOLETENTRANCE_POKE_BALL4
 	const DARKCAVEVIOLETENTRANCE_URSARING
-	const DARKCAVEVIOLETENTRANCE_PIDGEOT
+	const DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	const DARKCAVEVIOLETENTRANCE_FALKNER
 
 DarkCaveVioletEntrance_MapScriptHeader:
@@ -40,7 +40,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	pause 30
 	closetext
 	playsound SFX_TACKLE
-	applymovement DARKCAVEVIOLETENTRANCE_PIDGEOT, DarkCaveVioletEntranceMovementData_PidgeotAttack
+	applymovement DARKCAVEVIOLETENTRANCE_PIDGEOTTO, DarkCaveVioletEntranceMovementData_PidgeottoAttack
 	waitsfx
 	pause 30
 	cry URSARING
@@ -52,7 +52,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	writetext DarkCaveVioletEntranceFalknerReturnText
 	pause 30
 	closetext
-	disappear DARKCAVEVIOLETENTRANCE_PIDGEOT
+	disappear DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	pause 20
 	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerHeadBack
 	showemote EMOTE_SHOCK, DARKCAVEVIOLETENTRANCE_FALKNER, 15
@@ -98,7 +98,7 @@ DarkCaveVioletEntranceRock:
 DarkCaveVioletEntranceHiddenElixer:
 	dwb EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER, ELIXER
 
-DarkCaveVioletEntranceMovementData_PidgeotAttack:
+DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 	fix_facing
 	big_step_right
 	big_step_left
@@ -122,13 +122,13 @@ DarkCaveVioletEntranceMovementData_FalknerLeave:
 	step_end
 
 DarkCaveVioletEntranceFalknerAttackText:
-	text "Falkner: Pidgeot,"
-	line "use Wing Attack!"
+	text "Falkner: Use Wing"
+	line "Attack, Pidgeotto!"
 	done
 
 DarkCaveVioletEntranceFalknerReturnText:
 	text "Good job,"
-	line "Pidgeot."
+	line "Pidgeotto."
 	done
 
 DarkCaveVioletEntranceFalknerIntroText:
@@ -202,5 +202,5 @@ DarkCaveVioletEntrance_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 9, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DarkCaveVioletEntranceHyperPotion, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
 	person_event SPRITE_POKE_BALL, 28, 30, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, DarkCaveVioletEntranceDireHit, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 	person_event SPRITE_URSARING, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
-	person_event SPRITE_BIRD, 2, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOT
+	person_event SPRITE_PIDGEOTTO, 2, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
 	person_event SPRITE_FALKNER, 2, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER

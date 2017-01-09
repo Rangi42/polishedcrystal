@@ -2,7 +2,7 @@ const_value set 2
 	const CELADONHOMEDECORSTORE3F_CLERK1
 	const CELADONHOMEDECORSTORE3F_CLERK2
 	const CELADONHOMEDECORSTORE3F_YOUNGSTER
-	const CELADONHOMEDECORSTORE3F_BUENA
+	const CELADONHOMEDECORSTORE3F_BEAUTY
 
 CeladonHomeDecorStore3F_MapScriptHeader:
 .MapTriggers:
@@ -262,4 +262,4 @@ CeladonHomeDecorStore3F_MapEventHeader:
 	person_event SPRITE_CLERK, 7, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk1Script, -1
 	person_event SPRITE_CLERK, 7, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk2Script, -1
 	person_event SPRITE_YOUNGSTER, 5, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FYoungsterScript, -1
-	person_event SPRITE_BUENA, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FBeautyScript, -1
+	person_event SPRITE_BEAUTY, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FBeautyScript, -1

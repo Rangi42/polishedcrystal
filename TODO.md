@@ -64,7 +64,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
-* Factor SPRITE_BIRD into Farfetch'd, Pidgey, and Pidgeot
 * Custom overworld sprites for Rocket Executives
 
 

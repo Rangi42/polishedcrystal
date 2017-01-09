@@ -28,8 +28,8 @@ GymGuySpriteGFX:              INCBIN "gfx/overworld/gym_guy.2bpp" ; c6480
 SailorSpriteGFX:              INCBIN "gfx/overworld/sailor.2bpp" ; c6600
 BikerSpriteGFX:               INCBIN "gfx/overworld/biker.2bpp" ; c6780
 PharmacistSpriteGFX:          INCBIN "gfx/overworld/pharmacist.2bpp" ; c6900
-FairySpriteGFX:               INCBIN "gfx/overworld/fairy.2bpp" ; c6c00
-BirdSpriteGFX:                INCBIN "gfx/overworld/bird.2bpp" ; c6d80
+ClefairyWalkSpriteGFX:        INCBIN "gfx/overworld/clefairy.2bpp" ; c6c00
+FarfetchDSpriteGFX:           INCBIN "gfx/overworld/farfetch_d.2bpp" ; c6d80
 DragoniteSpriteGFX:           INCBIN "gfx/overworld/dragonite.2bpp" ; c6f00
 BigOnixSpriteGFX:             INCBIN "gfx/overworld/big_onix.2bpp" ; c7080
 N64SpriteGFX:                 INCBIN "gfx/overworld/n64.2bpp" ; c7140
