@@ -73,6 +73,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $DD, $BB, $DB, ABILITY_1 | QUIRKY, MALE   ; officerm
 	db $7B, $DB, $FF, ABILITY_1 | QUIRKY, FEMALE ; officerf
 	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; pokemaniac
+	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; cosplayer
 	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; super nerd
 	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lass
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; beauty
@@ -123,6 +124,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; giovanni
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; prof oak
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; prof elm
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; prof ivy
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; mysticalman
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
 	db $BB, $B8, $BB, ABILITY_1 | QUIRKY, MALE   ; jessie&james

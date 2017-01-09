@@ -1,0 +1,8 @@
+UnownWSpriteGFX:              INCBIN "gfx/overworld/unown_w.2bpp"
+UnownASpriteGFX:              INCBIN "gfx/overworld/unown_a.2bpp"
+UnownRSpriteGFX:              INCBIN "gfx/overworld/unown_r.2bpp"
+UnownPSpriteGFX:              INCBIN "gfx/overworld/unown_p.2bpp"
+GyaradosTopLeftSpriteGFX:     INCBIN "gfx/overworld/gyarados_top_left.2bpp"
+GyaradosTopRightSpriteGFX:    INCBIN "gfx/overworld/gyarados_top_right.2bpp"
+GyaradosBottomLeftSpriteGFX:  INCBIN "gfx/overworld/gyarados_bottom_left.2bpp"
+GyaradosBottomRightSpriteGFX: INCBIN "gfx/overworld/gyarados_bottom_right.2bpp"

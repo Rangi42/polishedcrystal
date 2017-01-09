@@ -43,6 +43,7 @@
 	add_pic OfficermPic
 	add_pic OfficerfPic
 	add_pic PokemaniacPic
+	add_pic CosplayerPic
 	add_pic SuperNerdPic
 	add_pic LassPic
 	add_pic BeautyPic
@@ -93,6 +94,7 @@
 	add_pic GiovanniPic
 	add_pic ProfOakPic
 	add_pic ProfElmPic
+	add_pic ProfIvyPic
 	add_pic MysticalmanPic
 	add_pic TowerTycoonPic
 	add_pic JessieJamesPic

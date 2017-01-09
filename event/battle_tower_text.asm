@@ -133,6 +133,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; OFFICERM
 	db FEMALE ; OFFICERF
 	db MALE   ; POKEMANIAC
+	db FEMALE ; COSPLAYER
 	db MALE   ; SUPER_NERD
 	db FEMALE ; LASS
 	db FEMALE ; BEAUTY
@@ -183,6 +184,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; GIOVANNI
 	db MALE   ; PROF_OAK
 	db MALE   ; PROF_ELM
+	db FEMALE ; PROF_IVY
 	db FEMALE ; MYSTICALMAN
 	db MALE   ; TOWERTYCOON
 

@@ -403,6 +403,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_OFFICER       ; OFFICERM
 	db SPRITE_OFFICER_F     ; OFFICERF
 	db SPRITE_SUPER_NERD    ; POKEMANIAC
+	db SPRITE_COSPLAYER     ; COSPLAYER
 	db SPRITE_SUPER_NERD    ; SUPER_NERD
 	db SPRITE_LASS          ; LASS
 	db SPRITE_BUENA         ; BEAUTY
@@ -453,6 +454,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_GIOVANNI      ; GIOVANNI
 	db SPRITE_OAK           ; PROF_OAK
 	db SPRITE_ELM           ; PROF_ELM
+	db SPRITE_IVY           ; PROF_IVY
 	db SPRITE_SUPER_NERD    ; MYSTICALMAN
 	db SPRITE_PALMER        ; TOWERTYCOON
 

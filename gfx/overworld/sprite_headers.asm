@@ -263,6 +263,9 @@ CooltrainerMSprite: ; 14802
 	sprite_header CooltrainerMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 14808
 
+CosplayerSprite:
+	sprite_header CosplayerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 CowgirlSprite:
 	sprite_header CowgirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 

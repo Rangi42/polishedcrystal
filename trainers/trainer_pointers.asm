@@ -45,6 +45,7 @@ TrainerGroups: ; 0x39999
 	dw OfficerMGroup
 	dw OfficerFGroup
 	dw PokemaniacGroup
+	dw CosplayerGroup
 	dw SuperNerdGroup
 	dw LassGroup
 	dw BeautyGroup
@@ -95,6 +96,7 @@ TrainerGroups: ; 0x39999
 	dw GiovanniGroup
 	dw ProfOakGroup
 	dw ProfElmGroup
+	dw ProfIvyGroup
 	dw MysticalmanGroup
 	dw TowerTycoonGroup
 	dw JessieJamesGroup
