@@ -334,3 +334,4 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Pokémon caught during the Bug-Catching Contest are recorded as caught in Goldenrod Harbor.
 * Fix: Magnet Train tracks were missing tiles.
 * Fix: Shiny icon is the star from Gen 3+.
+* Fix: SPRITE_DRAGONITE uses Dragonite's side view.

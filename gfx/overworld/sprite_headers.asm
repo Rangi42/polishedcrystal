@@ -18,6 +18,9 @@ ChrisBikeSprite: ; 1473c
 	sprite_header ChrisBikeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14742
 
+ChrisSurfSprite:
+	sprite_header ChrisSurfSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 KrisSprite: ; 14970
 	sprite_header KrisSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 14976
@@ -25,6 +28,9 @@ KrisSprite: ; 14970
 KrisBikeSprite: ; 14976
 	sprite_header KrisBikeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 1497c
+
+KrisSurfSprite:
+	sprite_header KrisSurfSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
 MomSprite: ; 14778
 	sprite_header MomSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -427,14 +433,6 @@ KurtOutsideSprite: ; 1497c
 	sprite_header KurtOutsideSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 14982
 
-SurfSprite: ; 14922
-	sprite_header SurfSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14928
-
-SurfingPikachuSprite: ; 14868
-	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1486e
-
 BirdSprite: ; 14904
 	sprite_header BirdSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 1490a
@@ -443,18 +441,29 @@ FairySprite: ; 148fe
 	sprite_header FairySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14904
 
+LaprasSprite: ; 14922
+	sprite_header LaprasSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+; 14928
+
+EeveeSprite:
+	sprite_header EeveeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+
 DragoniteSprite: ; 1490a
 	sprite_header DragoniteSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14910
-
-ArmoredMewtwoSprite:
-	sprite_header ArmoredMewtwoSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 MewSprite:
 	sprite_header MewSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 CelebiSprite:
 	sprite_header CelebiSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
+
+SurfingPikachuSprite: ; 14868
+	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+; 1486e
+
+ArmoredMewtwoSprite:
+	sprite_header ArmoredMewtwoSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 BigSnorlaxSprite: ; 14862
 	sprite_header BigSnorlaxSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
