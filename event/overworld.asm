@@ -1698,7 +1698,7 @@ FishFunction: ; cf8e
 .FishNoFish: ; d010
 	xor a
 	ld [Buffer6], a
-	ld hl, Script_NotEvenANibble2
+	ld hl, Script_NotEvenANibble
 	call QueueScript
 	ld a, $81
 	ret
@@ -1706,13 +1706,6 @@ FishFunction: ; cf8e
 Script_NotEvenANibble: ; 0xd01e
 	scall Script_FishCastRod
 	writetext UnknownText_0xd0a9
-	jump Script_NotEvenANibble_FallThrough
-
-Script_NotEvenANibble2: ; 0xd027
-	scall Script_FishCastRod
-	writetext UnknownText_0xd0a9
-
-Script_NotEvenANibble_FallThrough: ; 0xd02d
 	loademote EMOTE_SHADOW
 	callasm PutTheRodAway
 	closetext
