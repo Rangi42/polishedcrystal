@@ -150,6 +150,6 @@ Find locations for:
 * BalmMushroom (add in Noisy Forest)
 * Pearl String (replace a Big Pearl or two, add in beaches)
 * Rare Bone (add in caves)
-* Bottle Cap (rock smash, fishing, goldenrod lottery)
+* Bottle Cap (rock smash, fishing)
 * Cherish Ball
 * Soothe Bell (add in National Park)

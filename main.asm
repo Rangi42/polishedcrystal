@@ -3223,9 +3223,12 @@ endr
 	cp 5
 	jr z, .okay
 	ld b, 2
+	cp 4
+	jr z, .okay
+	ld b, 3
 	cp 3
 	jr nc, .okay
-	ld b, 3
+	ld b, 4
 	cp 2
 	jr nz, .nomatch
 

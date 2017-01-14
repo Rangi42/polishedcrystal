@@ -69,6 +69,7 @@ ReceptionistScript_0x5cd3d:
 	if_equal 1, .FirstPlace
 	if_equal 2, .SecondPlace
 	if_equal 3, .ThirdPlace
+	if_equal 4, .FourthPlace
 	jump .NoPrize
 
 .GameOver:
@@ -78,7 +79,7 @@ ReceptionistScript_0x5cd3d:
 	end
 
 .FirstPlace:
-	writetext UnknownText_0x5cfb5
+	writetext WonFirstPlaceText
 	playsound SFX_1ST_PLACE
 	waitsfx
 	buttonsound
@@ -89,18 +90,29 @@ ReceptionistScript_0x5cd3d:
 	jump .GameOver
 
 .SecondPlace:
-	writetext UnknownText_0x5d023
+	writetext WonSecondPlaceText
 	playsound SFX_2ND_PLACE
 	waitsfx
 	buttonsound
-	giveitem EXP_SHARE
+	giveitem BOTTLE_CAP
 	iffalse .BagFull
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
 	jump .GameOver
 
 .ThirdPlace:
-	writetext UnknownText_0x5d076
+	writetext WonThirdPlaceText
+	playsound SFX_2ND_PLACE
+	waitsfx
+	buttonsound
+	giveitem PP_MAX
+	iffalse .BagFull
+	itemnotify
+	setflag ENGINE_LUCKY_NUMBER_SHOW
+	jump .GameOver
+
+.FourthPlace:
+	writetext WonFourthPlaceText
 	playsound SFX_3RD_PLACE
 	waitsfx
 	buttonsound
@@ -320,7 +332,7 @@ UnknownText_0x5cf7e:
 	cont "next Lucky Number."
 	done
 
-UnknownText_0x5cfb5:
+WonFirstPlaceText:
 	text "Wow! You have a"
 	line "perfect match of"
 	cont "all five numbers!"
@@ -332,22 +344,31 @@ UnknownText_0x5cfb5:
 	line "Master Ball!"
 	done
 
-UnknownText_0x5d023:
+WonSecondPlaceText:
+	text "Hey! You've"
+	line "matched the last"
+	cont "four numbers!"
+
+	para "You've won second"
+	line "prize, a rare"
+	cont "Bottle Cap!"
+	done
+
+WonThirdPlaceText:
 	text "Hey! You've"
 	line "matched the last"
 	cont "three numbers!"
 
-	para "You've won second"
-	line "prize, an Exp."
-	cont "Share!"
+	para "You've won third"
+	line "prize, a PP Max!"
 	done
 
-UnknownText_0x5d076:
+WonFourthPlaceText:
 	text "Ooh, you've"
 	line "matched the last"
 	cont "two numbers."
 
-	para "You've won third"
+	para "You've won fourth"
 	line "prize, a PP Up."
 	done
 
