@@ -11,7 +11,7 @@ GoldenrodFlowerShop_MapScriptHeader:
 
 FlowerShopTeacherScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .Lalala
+	iftrue .SellMulch
 	checkevent EVENT_GOT_SQUIRTBOTTLE
 	iftrue .GotSquirtbottle
 	checkevent EVENT_MET_FLORIA
@@ -47,6 +47,75 @@ FlowerShopTeacherScript:
 
 .HaventMetFloria:
 	jumptextfaceplayer UnknownText_0x553d4
+
+.SellMulch:
+	faceplayer
+	opentext
+	writetext WoukdYouLikeMulchText
+	special PlaceMoneyTopRight
+	loadmenudata .MenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .Buy1
+	if_equal $2, .Buy10
+	jump .Cancel
+
+.Buy1:
+	checkmoney $0, 200
+	if_equal $2, .NotEnoughMoney
+	giveitem MULCH
+	iffalse .BagFull
+	takemoney $0, 200
+	jump .Done
+
+.Buy10:
+	checkmoney $0, 2000
+	if_equal $2, .NotEnoughMoney
+	giveitem MULCH, 10
+	iffalse .BagFull
+	takemoney $0, 2000
+
+.Done:
+	special PlaceMoneyTopRight
+	waitsfx
+	playsound SFX_TRANSACTION
+	itemnotify
+	writetext BoughtMulchText
+	waitbutton
+	closetext
+	end
+
+.Cancel:
+	writetext DontBuyMulchText
+	waitbutton
+	closetext
+	end
+
+.NotEnoughMoney:
+	writetext NotEnoughMulchMoneyText
+	waitbutton
+	closetext
+	end
+
+.BagFull:
+	writetext NoRoomForMulchText
+	waitbutton
+	closetext
+	end
+
+.MenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 14 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "× 1    ¥200@"
+	db "×10   ¥2000@"
+	db "Cancel@"
 
 FlowerShopFloriaScript:
 	faceplayer
@@ -145,6 +214,40 @@ UnknownText_0x555e6:
 UnknownText_0x55604:
 	text "So it really was a"
 	line "#mon!"
+	done
+
+WoukdYouLikeMulchText:
+	text "Would you like to"
+	line "buy some Mulch?"
+
+	para "It's a powerful"
+	line "Berry fertilizer!"
+	done
+
+BoughtMulchText:
+	text "Mulch is made from"
+	line "a mix of high-"
+	cont "grade soil and"
+
+	para "#mon, er, you"
+	line "know what."
+
+	para "But it's clean and"
+	line "healthy for trees!"
+	done
+
+DontBuyMulchText:
+	text "Oh, okay…"
+	done
+
+NotEnoughMulchMoneyText:
+	text "But you don't have"
+	line "enough money…"
+	done
+
+NoRoomForMulchText:
+	text "But you don't have"
+	line "room for it…"
 	done
 
 GoldenrodFlowerShop_MapEventHeader:

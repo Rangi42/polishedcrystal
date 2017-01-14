@@ -9,6 +9,16 @@ FruitTreeScript:: ; 44000
 	callasm CheckFruitTree
 	iffalse .fruit
 	writetext NothingHereText
+	buttonsound
+	checkitem MULCH
+	iffalse .end
+	writetext WantToUseMulchText
+	yesorno
+	iffalse .end
+	callasm GetCurTreeFruit
+	copybytetovar CurFruit
+	callasm FertilizedFruitTree
+	writetext UsedMulchText
 	waitbutton
 	jump .end
 
@@ -82,6 +92,10 @@ PickedFruitTree: ; 4405f
 	ld b, SET_FLAG
 	jp GetFruitTreeFlag
 ; 4406a
+
+FertilizedFruitTree:
+	ld b, RESET_FLAG
+	jp GetFruitTreeFlag
 
 ResetFruitTrees: ; 4406a
 	xor a
@@ -196,3 +210,11 @@ NothingHereText: ; 440c9
 	text_jump _NothingHereText
 	db "@"
 ; 440ce
+
+WantToUseMulchText:
+	text_jump _WantToUseMulchText
+	db "@"
+
+UsedMulchText:
+	text_jump _UsedMulchText
+	db "@"

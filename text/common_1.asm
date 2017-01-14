@@ -41,6 +41,19 @@ _NothingHereText::
 	line "here…"
 	done
 
+_WantToUseMulchText::
+	text "Want to use"
+	line "Mulch?"
+	done
+
+_UsedMulchText::
+	text "<PLAYER> used"
+	line "Mulch!"
+
+	para "The tree was"
+	line "fertilized!"
+	done
+
 UnknownText_0x1bc06b::
 	text "Which Apricorn"
 	line "should I use?"

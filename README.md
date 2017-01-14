@@ -299,6 +299,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Confirm gender selection.
 * Add: Headbutt trees to get Silver and Gold Leaves.
 * Add: Smash rocks to get various items.
+* Add: Mulch regrows Berries.
 * Add: Three battle styles: set, switch, and predict.
 * Add: Battle Scene → Battle Effects.
 * Add: Final Lyra battle.

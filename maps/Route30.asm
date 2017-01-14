@@ -237,6 +237,9 @@ MrPokemonsHouseDirectionsSign:
 MrPokemonsHouseSign:
 	jumptext MrPokemonsHouseSignText
 
+BerryMastersHouseSign:
+	jumptext BerryMastersHouseSignText
+
 Route30TrainerTips:
 	jumptext Route30TrainerTipsText
 
@@ -383,6 +386,11 @@ MrPokemonsHouseSignText:
 	text "Mr.#mon's House"
 	done
 
+BerryMastersHouseSignText:
+	text "Berry Master's"
+	line "House"
+	done
+
 Route30TrainerTipsText:
 	text "Trainer Tips"
 
@@ -422,12 +430,13 @@ Route30_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 5
+	db 6
 	signpost 43, 9, SIGNPOST_READ, Route30Sign
 	signpost 29, 13, SIGNPOST_READ, MrPokemonsHouseDirectionsSign
 	signpost 5, 15, SIGNPOST_READ, MrPokemonsHouseSign
 	signpost 21, 3, SIGNPOST_READ, Route30TrainerTips
 	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
+	signpost 39, 5, SIGNPOST_READ, BerryMastersHouseSign
 
 .PersonEvents:
 	db 12
@@ -439,7 +448,7 @@ Route30_MapEventHeader:
 	person_event SPRITE_PIDGEY, 24, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	person_event SPRITE_RATTATA, 25, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	person_event SPRITE_CUT_TREE, 6, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CutTree, EVENT_ROUTE_30_CUT_TREE
-	person_event SPRITE_FRUIT_TREE, 39, 5, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
+	person_event SPRITE_FRUIT_TREE, 39, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
 	person_event SPRITE_FRUIT_TREE, 5, 11, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree2, -1
 	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CooltrainerFScript, -1
 	person_event SPRITE_POKE_BALL, 35, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route30Antidote, EVENT_ROUTE_30_ANTIDOTE

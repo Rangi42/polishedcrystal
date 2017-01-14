@@ -11,13 +11,13 @@ Route30BerrySpeechHouse_MapScriptHeader:
 PokefanMScript_0x196d64:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_ORAN_BERRY_FROM_ROUTE_30_HOUSE
+	checkevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE
 	iftrue UnknownScript_0x196d79
 	writetext UnknownText_0x196d82
 	buttonsound
-	verbosegiveitem ORAN_BERRY
+	verbosegiveitem MULCH
 	iffalse UnknownScript_0x196d7d
-	setevent EVENT_GOT_ORAN_BERRY_FROM_ROUTE_30_HOUSE
+	setevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE
 UnknownScript_0x196d79:
 	writetext UnknownText_0x196dec
 	waitbutton
@@ -32,18 +32,22 @@ UnknownText_0x196d82:
 	text "You know, #mon"
 	line "eat Berries."
 
-	para "Well, my #mon"
-	line "got healthier by"
-	cont "eating a Berry."
+	para "They take time to"
+	line "grow back when"
+	cont "they're picked,"
+
+	para "but using Mulch"
+	line "on the soil really"
+	cont "speeds that up!"
 
 	para "Here. I'll share"
-	line "one with you!"
+	line "some with you!"
 	done
 
 UnknownText_0x196dec:
-	text "Check trees for"
-	line "Berries. They just"
-	cont "drop right off."
+	text "I buy top-quality"
+	line "Mulch in Goldenrod"
+	cont "City."
 	done
 
 Route30BerrySpeechHouse_MapEventHeader:

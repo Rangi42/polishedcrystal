@@ -119,7 +119,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 Implement effects:
 
-* Mulch (use on a picked Berry tree to regrow it)
 * Honey (for Honey Trees)
 * Ability Capsule
 * Quick Powder (already on wild Ditto)
@@ -151,6 +150,6 @@ Find locations for:
 * BalmMushroom (add in Noisy Forest)
 * Pearl String (replace a Big Pearl or two, add in beaches)
 * Rare Bone (add in caves)
-* Bottle Cap
+* Bottle Cap (rock smash, fishing, goldenrod lottery)
 * Cherish Ball
 * Soothe Bell (add in National Park)

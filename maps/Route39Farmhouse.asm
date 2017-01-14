@@ -78,15 +78,15 @@ UnknownScript_0x9cec5:
 .MenuDataHeader:
 	db $40 ; flags
 	db 04, 00 ; start coords
-	db 11, 13 ; end coords
+	db 11, 14 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 
 .MenuData2:
 	db $80 ; flags
 	db 3 ; items
-	db " 1 :  ¥500@"
-	db "12 : ¥6000@"
+	db "× 1    ¥500@"
+	db "×12   ¥6000@"
 	db "Cancel@"
 
 UnknownScript_0x9cf08:
