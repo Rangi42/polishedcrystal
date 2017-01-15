@@ -1423,15 +1423,15 @@ MalePokegearPals:
 	RGB 13, 13, 13
 	RGB 00, 00, 00
 
-	RGB 12, 24, 18
 	RGB 24, 18, 13
+	RGB 12, 24, 18
 	RGB 07, 20, 23
 	RGB 10, 23, 27
 
-	RGB 27, 20, 14
-	RGB 20, 16, 11
 	RGB 10, 22, 16
 	RGB 12, 24, 18
+	RGB 27, 20, 14
+	RGB 20, 16, 11
 
 	RGB 31, 31, 31
 	RGB 31, 15, 00
@@ -1439,13 +1439,13 @@ MalePokegearPals:
 	RGB 00, 00, 00
 
 	RGB 17, 27, 30
-	RGB 10, 23, 27
-	RGB 07, 20, 23
 	RGB 03, 15, 27
+	RGB 07, 20, 23
+	RGB 10, 23, 27
 
 	RGB 31, 10, 12
-	RGB 25, 07, 09
 	RGB 12, 24, 18
+	RGB 25, 07, 09
 	RGB 08, 08, 08
 
 	RGB 31, 31, 31
@@ -1453,9 +1453,9 @@ MalePokegearPals:
 	RGB 09, 19, 13
 	RGB 08, 08, 08
 
+	RGB 31, 23, 06
 	RGB 12, 24, 18
 	RGB 27, 20, 14
-	RGB 10, 23, 27
 	RGB 08, 08, 08
 
 FemalePokegearPals:
@@ -1464,15 +1464,15 @@ FemalePokegearPals:
 	RGB 13, 13, 13
 	RGB 00, 00, 00
 
-	RGB 12, 24, 18
 	RGB 24, 18, 13
+	RGB 12, 24, 18
 	RGB 07, 20, 23
 	RGB 10, 23, 27
 
-	RGB 27, 20, 14
-	RGB 20, 16, 11
 	RGB 10, 22, 16
 	RGB 12, 24, 18
+	RGB 27, 20, 14
+	RGB 20, 16, 11
 
 	RGB 31, 31, 31
 	RGB 10, 18, 31
@@ -1480,13 +1480,13 @@ FemalePokegearPals:
 	RGB 00, 00, 00
 
 	RGB 17, 27, 30
-	RGB 10, 23, 27
-	RGB 07, 20, 23
 	RGB 03, 15, 27
+	RGB 07, 20, 23
+	RGB 10, 23, 27
 
 	RGB 31, 10, 12
-	RGB 25, 07, 09
 	RGB 12, 24, 18
+	RGB 25, 07, 09
 	RGB 08, 08, 08
 
 	RGB 31, 31, 31
@@ -1494,9 +1494,9 @@ FemalePokegearPals:
 	RGB 09, 19, 13
 	RGB 08, 08, 08
 
+	RGB 31, 23, 06
 	RGB 12, 24, 18
 	RGB 27, 20, 14
-	RGB 10, 23, 27
 	RGB 08, 08, 08
 
 Palettes_b789:
