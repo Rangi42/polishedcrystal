@@ -250,8 +250,7 @@ SetClock:: ; 691
 	ld [de], a
 
 ; cleanup
-	call CloseSRAM ; unlatch clock, disable clock r/w
-	ret
+	jp CloseSRAM ; unlatch clock, disable clock r/w
 ; 6c4
 
 

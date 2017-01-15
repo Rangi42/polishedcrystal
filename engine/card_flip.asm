@@ -114,8 +114,7 @@ endr
 	call YesNoBox
 	jr c, .SaidNo
 	call CardFlip_ShuffleDeck
-	call .Increment
-	ret
+	jp .Increment
 
 .SaidNo:
 	ld a, 7
@@ -161,8 +160,7 @@ endr
 	ld a, $1
 	ld [hBGMapMode], a
 	call WaitSFX
-	call .Increment
-	ret
+	jp .Increment
 ; e0212
 
 .NotEnoughCoinsText: ; 0xe0212
@@ -240,8 +238,7 @@ endr
 	call CardFlip_FillGreenBox
 	pop af
 	ld [wCardFlipWhichCard], a
-	call .Increment
-	ret
+	jp .Increment
 ; e02b2
 
 .ChooseACardText: ; 0xe02b2
@@ -264,8 +261,7 @@ endr
 	jr .betloop
 
 .betdone
-	call .Increment
-	ret
+	jp .Increment
 ; e02d5
 
 .PlaceYourBetText: ; 0xe02d5
@@ -301,15 +297,13 @@ endr
 	call GetCoordsOfChosenCard
 	call CardFlip_DisplayCardFaceUp
 	call WaitBGMap2
-	call .Increment
-	ret
+	jp .Increment
 ; e0314
 
 .TabulateTheResult: ; e0314
 	call CardFlip_CheckWinCondition
 	call WaitPressAorB_BlinkCursor
-	call .Increment
-	ret
+	jp .Increment
 ; e031e
 
 .PlayAgain: ; e031e
@@ -318,8 +312,7 @@ endr
 	call CardFlip_UpdateCoinBalanceDisplay
 	call YesNoBox
 	jr nc, .Continue
-	call .Increment
-	ret
+	jp .Increment
 
 .Continue:
 	ld a, [wCardFlipNumCardsPlayed]
@@ -387,8 +380,7 @@ CardFlip_ShuffleDeck: ; e0366
 	ld [wCardFlipNumCardsPlayed], a
 	ld hl, wDiscardPile
 	ld bc, CARDFLIP_DECK_SIZE
-	call ByteFill
-	ret
+	jp ByteFill
 ; e0398
 
 CollapseCursorPosition: ; e0398
@@ -424,8 +416,7 @@ PlaceCardFaceDown: ; e03c1
 	ld [hBGMapMode], a
 	ld de, .FaceDownCardTilemap
 	lb bc, 6, 5
-	call CardFlip_CopyToBox
-	ret
+	jp CardFlip_CopyToBox
 ; e03ce
 
 .FaceDownCardTilemap: ; e03ce
@@ -492,8 +483,7 @@ endr
 	and 3
 	inc a
 	lb bc, 6, 5
-	call CardFlip_FillBox
-	ret
+	jp CardFlip_FillBox
 ; e043b
 
 .FaceUpCardTilemap: ; e043b
@@ -523,8 +513,7 @@ CardFlip_UpdateCoinBalanceDisplay: ; e0489
 	call TextBox
 	pop hl
 	call PrintTextBoxText
-	call CardFlip_PrintCoinBalance
-	ret
+	jp CardFlip_PrintCoinBalance
 ; e049c
 
 CardFlip_PrintCoinBalance: ; e049c
@@ -538,8 +527,7 @@ CardFlip_PrintCoinBalance: ; e049c
 	hlcoord 14, 16
 	ld de, Coins
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	call PrintNum
-	ret
+	jp PrintNum
 ; e04bc
 
 .CoinStr:
@@ -559,8 +547,7 @@ CardFlip_InitTilemap: ; e04c1 (38:44c1)
 	call CardFlip_CopyToBox
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
-	ret
+	jp TextBox
 ; e04e5 (38:44e5)
 
 CardFlip_FillGreenBox: ; e04e5
@@ -1148,7 +1135,7 @@ CardFlip_CheckWinCondition: ; e0637
 	call PlaySFX
 	ld hl, .Text_Darn
 	call CardFlip_UpdateCoinBalanceDisplay
-	call WaitSFX
+	jp WaitSFX
 	ret
 
 .Payout: ; e07eb
@@ -1199,8 +1186,7 @@ CardFlip_CheckWinCondition: ; e0637
 	ld a, l
 	ld [Coins + 1], a
 	ld de, SFX_PAY_DAY
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; e0833
 
 .IsCoinCaseFull: ; e0833
@@ -1227,8 +1213,7 @@ CardFlip_CheckWinCondition: ; e0637
 PlaceOAMCardBorder: ; e0849
 	call GetCoordsOfChosenCard
 	ld hl, .SpriteData
-	call CardFlip_CopyOAM
-	ret
+	jp CardFlip_CopyOAM
 ; e0853
 
 .SpriteData: ; e0853
@@ -1398,8 +1383,7 @@ endr
 
 .play_sound ; e0959
 	ld de, SFX_POKEBALLS_PLACED_ON_TABLE
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; e0960
 
 CardFlip_UpdateCursorOAM: ; e0960
@@ -1417,8 +1401,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call CardFlip_CopyOAM
-	ret
+	jp CardFlip_CopyOAM
 ; e0981
 
 .OAMData: ; e0981
