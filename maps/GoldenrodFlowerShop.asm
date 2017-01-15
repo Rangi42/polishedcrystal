@@ -139,7 +139,15 @@ FlowerShopFloriaScript:
 	end
 
 .FoughtSudowoodo:
+	checkitem MULCH
+	iftrue .DescribeMulch
 	writetext UnknownText_0x55604
+	waitbutton
+	closetext
+	end
+
+.DescribeMulch:
+	writetext DescribeMulchText
 	waitbutton
 	closetext
 	end
@@ -217,37 +225,42 @@ UnknownText_0x55604:
 	done
 
 WoukdYouLikeMulchText:
-	text "Would you like to"
-	line "buy some Mulch?"
+	text "Care to buy some"
+	line "Mulch?"
 
-	para "It's a powerful"
-	line "Berry fertilizer!"
+	para "It makes Berries"
+	line "grow faster!"
 	done
 
 BoughtMulchText:
-	text "Mulch is made from"
-	line "a mix of high-"
-	cont "grade soil and"
-
-	para "#mon, er, you"
-	line "know what."
-
-	para "But it's clean and"
-	line "healthy for trees!"
+	text "Thank you!"
+	line "Please come again!"
 	done
 
 DontBuyMulchText:
-	text "Oh, okay…"
+	text "Please come again!"
 	done
 
 NotEnoughMulchMoneyText:
-	text "But you don't have"
-	line "enough money…"
+	text "Well… Excuse me,"
+	line "but you're short"
+	cont "of money."
 	done
 
 NoRoomForMulchText:
-	text "But you don't have"
-	line "room for it…"
+	text "Oh no, your Bag"
+	line "is full!"
+	done
+
+DescribeMulchText:
+	text "Our Mulch is a"
+	line "mix of high-qual-"
+
+	para "ity soil and #-"
+	line "mon's… er… you"
+
+	para "know. It's full"
+	line "of nutrients!"
 	done
 
 GoldenrodFlowerShop_MapEventHeader:
