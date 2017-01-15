@@ -39,7 +39,7 @@ CheckPlayerMoveTypeMatchups: ; 3484e
 
 .not_very_effective
 	ld a, e
-	cp 1 ; 0.1
+	dec a ; 0.1
 	jr nc, .next
 	ld e, 1
 	jr .next
@@ -192,7 +192,7 @@ CheckAbleToSwitch: ; 34941
 	jr z, .no_perish
 
 	ld a, [EnemyPerishCount]
-	cp 1
+	dec a
 	jr nz, .no_perish
 
 	; Perish count is 1
@@ -508,7 +508,7 @@ Function34aa7: ; 34aa7
 	cp $2
 	jr z, .done2
 
-	cp $1
+	dec a
 	jr nz, .next
 
 	ld a, d

@@ -19,13 +19,13 @@ RunCallback_03: ; 1045c4
 EnterMapConnection: ; 1045d6
 ; Return carry if a connection has been entered.
 	ld a, [wPlayerStepDirection]
-	and a
+	and a ; 0
 	jp z, EnterSouthConnection
-	cp 1
+	dec a ; 1
 	jp z, EnterNorthConnection
-	cp 2
+	dec a ; 2
 	jp z, EnterWestConnection
-	cp 3
+	dec a ; 3
 	jp z, EnterEastConnection
 	ret
 ; 1045ed

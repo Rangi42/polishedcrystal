@@ -1039,17 +1039,43 @@ endr
 	ld a, BANK(Trainers)
 	call GetFarByte
 	inc hl
-	ld bc, 2
-	cp 0
-	jr z, .got_mon_length
-	ld bc, 2 + NUM_MOVES
-	cp 1
-	jr z, .got_mon_length
-	ld bc, 2 + 1
-	cp 2
-	jr z, .got_mon_length
-	ld bc, 2 + 1 + NUM_MOVES
-.got_mon_length
+
+	; get trainer type
+	ld b, a
+	; nicknames have uneven length, so always use the first mon
+	bit TRNTYPE_NICKNAME, b
+	jr nz, .got_mon
+	; NORMAL uses 2 bytes per mon
+	ld c, 2
+	; ITEM uses 1 more byte
+	bit TRNTYPE_ITEM, b
+	jr z, .no_item
+	inc c
+.no_item
+	; DVS uses 3 more bytes
+	bit TRNTYPE_DVS, b
+	jr z, .no_dvs
+	inc c
+	inc c
+	inc c
+.no_dvs
+	; PErSONALITY uses 2 more bytes
+	bit TRNTYPE_PERSONALITY, b
+	jr z, .no_personality
+	inc c
+	inc c
+.no_personality
+	; MOVES uses 4 more bytes
+	bit TRNTYPE_MOVES, b
+	jr z, .no_moves
+	inc c
+	inc c
+	inc c
+	inc c
+.no_moves
+	; bc == size of mon sub-struct
+	xor a
+	ld b, a
 
 	ld e, 0
 	push hl

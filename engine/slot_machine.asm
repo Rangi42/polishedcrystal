@@ -1020,10 +1020,10 @@ ReelAction_InitGolem: ; 92d20
 	ld [wcf64], a
 ReelAction_WaitGolem: ; 92d4f
 	ld a, [wcf64]
-	cp 2
-	jr z, .two
-	cp 1
+	dec a ; 1
 	jr z, .one
+	dec a ; 2
+	jr z, .two
 	ret
 
 .two

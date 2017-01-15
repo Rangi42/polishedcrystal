@@ -47,7 +47,7 @@ rept 2
 endr
 	pop af
 	push af
-	cp $1
+	dec a
 	jr z, .skip1
 	push de
 	call .subfunction3

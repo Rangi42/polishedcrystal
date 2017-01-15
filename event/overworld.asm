@@ -506,7 +506,7 @@ SurfFunction: ; c909
 	jr z, .alreadyfail
 	call GetFacingTileCoord
 	call GetTileCollision
-	cp $1
+	dec a
 	jr nz, .cannotsurf
 	call CheckDirection
 	jr c, .cannotsurf
@@ -640,7 +640,7 @@ TrySurfOW:: ; c9e7
 ; Must be facing water.
 	ld a, [EngineBuffer1]
 	call GetTileCollision
-	cp 1 ; surfable
+	dec a ; surfable
 	jr nz, .quit
 
 ; Check tile permissions.
@@ -1642,7 +1642,7 @@ FishFunction: ; cf8e
 	jr z, .fail
 	call GetFacingTileCoord
 	call GetTileCollision
-	cp $1
+	dec a
 	jr z, .facingwater
 .fail
 	ld a, $3

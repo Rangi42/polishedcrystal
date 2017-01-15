@@ -495,16 +495,16 @@ endr
 	and a
 	jr nz, .caught
 	ld a, [Buffer2]
-	cp $1
+	dec a ; 1
 	ld hl, Text_NoShake
 	jp z, .shake_and_break_free
-	cp $2
+	dec a ; 2
 	ld hl, Text_OneShake
 	jp z, .shake_and_break_free
-	cp $3
+	dec a ; 3
 	ld hl, Text_TwoShakes
 	jp z, .shake_and_break_free
-	cp $4
+	dec a ; 4
 	ld hl, Text_ThreeShakes
 	jp z, .shake_and_break_free
 .caught
@@ -1370,7 +1370,7 @@ DiveBallMultiplier:
 QuickBallMultiplier:
 ; multiply catch rate by 5 on first turn
 	ld a, [wBattleTurnCounter]
-	cp 1
+	dec a
 	ret z
 
 	ld a, b
@@ -2588,7 +2588,7 @@ EscapeRope: ; f44f
 	farcall EscapeRopeFunction
 
 	ld a, [wItemEffectSucceeded]
-	cp 1
+	dec a
 	call z, UseDisposableItem
 	ret
 ; f462
@@ -3181,7 +3181,7 @@ SacredAsh: ; f753
 
 	farcall _SacredAsh
 	ld a, [wItemEffectSucceeded]
-	cp $1
+	dec a
 	ret nz
 	call UseDisposableItem
 	ret

@@ -1348,9 +1348,9 @@ endr
 
 PlayHitSound: ; cc881
 	ld a, [wNumHits]
-	cp $1
+	dec a
 	jr z, .okay
-	cp $4
+	cp 4 - 1
 	ret nz
 
 .okay

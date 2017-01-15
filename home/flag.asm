@@ -15,9 +15,9 @@ ResetBikeFlags:: ; 2e56
 
 ResetFlashIfOutOfCave:: ; 2e5d
 	ld a, [wPermission]
-	cp $2
+	dec a ; 1
 	jr z, .asm_2e69
-	cp $1
+	dec a ; 2
 	jr z, .asm_2e69
 	ret
 
@@ -75,7 +75,7 @@ FlagAction:: ; 0x2e76
 
 	; check b's value: 0, 1, 2
 	ld a, b
-	cp 1
+	dec a
 	jr c, .clearbit ; 0
 	jr z, .setbit ; 1
 

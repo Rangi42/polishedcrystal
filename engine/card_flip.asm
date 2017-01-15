@@ -968,7 +968,7 @@ CardFlip_CheckWinCondition: ; e0637
 .Jigglypuff: ; e06f6
 	ld a, [wCardFlipFaceUpCard]
 	and $3
-	cp $1
+	dec a
 	jr z, .WinTwelve
 	jp .Lose
 
@@ -1280,7 +1280,7 @@ ChooseCard_HandleJoypad: ; e089c
 	ld a, [wCardFlipCursorY]
 	and a
 	jr z, .mon_pair_left
-	cp $1
+	dec a
 	jr z, .mon_group_left
 	ld a, [hl]
 	and a
@@ -1341,7 +1341,7 @@ endr
 	ld a, [wCardFlipCursorX]
 	and a
 	jr z, .num_pair_up
-	cp $1
+	dec a
 	jr z, .num_gp_up
 	ld a, [hl]
 	and a

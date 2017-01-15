@@ -238,9 +238,9 @@ StandardMart: ; 15b47
 	call VerticalMenu
 	jr c, .quit
 	ld a, [wMenuCursorY]
-	cp $1
+	dec a ; 1
 	jr z, .buy
-	cp $2
+	dec a ; 2
 	jr z, .sell
 .quit
 	ld a, $4 ;  Come again!
@@ -526,7 +526,7 @@ endr
 	ld a, [hl]
 	and a
 	jp z, StandardMartAskPurchaseQuantity
-	cp 1
+	dec a
 	jp z, BargainShopAskPurchaseQuantity
 	jp RooftopSaleAskPurchaseQuantity
 ; 15ca3

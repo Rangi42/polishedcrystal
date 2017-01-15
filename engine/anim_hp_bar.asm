@@ -257,7 +257,7 @@ HPBarAnim_UpdateHPRemaining: ; d784
 	ld a, [wWhichHPBar]
 	and a
 	ret z
-	cp $1
+	dec a
 	jr z, .load_15
 	ld de, SCREEN_WIDTH + 2
 	jr .loaded_de
@@ -297,7 +297,7 @@ HPBarAnim_BGMapUpdate: ; d7c9
 	ld a, [wWhichHPBar]
 	and a
 	jr z, .load_0
-	cp $1
+	dec a
 	jr z, .load_1
 	ld a, [CurPartyMon]
 	cp $3

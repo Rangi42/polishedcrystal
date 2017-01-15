@@ -161,7 +161,7 @@ RadioScroll:
 	ld a, [wNextRadioLine]
 	ld [wCurrentRadioLine], a
 	ld a, [wNumRadioLinesPrinted]
-	cp 1
+	dec a
 	call nz, CopyBottomLineToTopLine
 	jp ClearBottomLine
 

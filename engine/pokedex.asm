@@ -1765,7 +1765,7 @@ Pokedex_PrevSearchMonType: ; 40f65
 
 	ld hl, wDexSearchMonType1
 	ld a, [hl]
-	cp $1
+	dec a
 	jr z, .wrap_around
 	dec [hl]
 	jr .done

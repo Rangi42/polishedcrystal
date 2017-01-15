@@ -29,11 +29,11 @@ InitPartyMenuPalettes:
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
-	and a
+	and a ; 0
 	jr z, .Enemy
-	cp $1
+	dec a ; 1
 	jr z, .Player
-	cp $2
+	dec a ; 2
 	jr z, .PartyMenu
 	ret
 

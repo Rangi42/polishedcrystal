@@ -1521,7 +1521,7 @@ Function28926: ; 28926
 
 Function28ac9: ; 28ac9
 	ld a, [wMenuCursorY]
-	cp 1
+	dec a
 	jp nz, LinkTradePartiesMenuMasterLoop
 	call HideCursor
 	push hl
@@ -1862,7 +1862,7 @@ LinkTrade: ; 28b87
 	ld b, SCGB_08
 	call GetSGBLayout
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	jr z, .player_2
 	predef TradeAnimation
 	jr .done_animation
@@ -2203,9 +2203,9 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [wcf5b], a
 .asm_29d39
 	ld a, [hLinkPlayerNumber]
-	cp $2
+	dec a ; 1
 	jr z, .asm_29d79
-	cp $1
+	dec a ; 2
 	jr z, .asm_29d79
 	ld a, -1
 	ld [hLinkPlayerNumber], a
@@ -2524,7 +2524,7 @@ Function29f17: ; 29f17
 
 Special_CableClubCheckWhichChris: ; 29f47
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	ld a, $1
 	jr z, .yes
 	dec a

@@ -254,7 +254,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 
 CheckFaint:
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	jr z, .enemy_first
 	call .check_player
 	call nc, .check_enemy
@@ -292,7 +292,7 @@ CheckFaint:
 
 HandleBerserkGene: ; 3c27c
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	jr z, .reverse
 
 	call .player
@@ -684,7 +684,7 @@ ParsePlayerAction: ; 3c434
 
 HandleEncore: ; 3c4df
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	jr z, .player_1
 	call .do_player
 	jr .do_enemy
@@ -1597,7 +1597,7 @@ HandleFutureSight: ; 3ca26
 	ret z
 	dec a
 	ld [hl], a
-	cp $1
+	dec a
 	ret nz
 
 	ld hl, BattleText_TargetWasHitByFutureSight
@@ -2209,7 +2209,7 @@ HandleEnemyMonFaint: ; 3cd55
 
 DoubleSwitch: ; 3cdca
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	jr z, .player_1
 	call ClearSprites
 	hlcoord 0, 0
@@ -2887,7 +2887,7 @@ AskUseNextPokemon: ; 3d1f8
 
 .pressed_b
 	ld a, [wMenuCursorY]
-	cp $1 ; YES
+	dec a ; YES
 	jr z, .loop
 	ld hl, PartyMon1Speed
 	ld de, EnemyMonSpeed
@@ -5269,13 +5269,13 @@ BattleMenu: ; 3e139
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, [wd0d2]
-	cp $1
+	dec a ; 1
 	jp z, BattleMenu_Fight
-	cp $3
-	jp z, BattleMenu_Pack
-	cp $2
+	dec a ; 2
 	jp z, BattleMenu_PKMN
-	cp $4
+	dec a ; 3
+	jp z, BattleMenu_Pack
+	dec a ; 4
 	jp z, BattleMenu_Run
 	jr .loop
 ; 3e192
@@ -5416,11 +5416,11 @@ BattleMenuPKMN_Loop:
 	jr c, .PressedB
 	call PlaceHollowCursor
 	ld a, [wMenuCursorY]
-	cp $1 ; SWITCH
+	dec a ; 1, SWITCH
 	jp z, TryPlayerSwitch
-	cp $2 ; STATS
+	dec a ; 2, STATS
 	jr z, .Stats
-	cp $3 ; CANCEL
+	dec a ; 3, CANCEL
 	jr z, .Cancel
 	jr .loop
 
@@ -5566,7 +5566,7 @@ PlayerSwitch: ; 3e3ad
 
 .dont_run
 	ld a, [hLinkPlayerNumber]
-	cp $1
+	dec a
 	jr z, .player_1
 	call BattleMonEntrance
 	call EnemyMonEntrance
@@ -9108,7 +9108,7 @@ ShowLinkBattleResult: ; 3f77c
 
 	ld a, [wBattleResult]
 	and $f
-	cp $1
+	dec a
 	jr c, .victory
 	jr z, .loss
 	ld de, .Draw
@@ -9474,7 +9474,7 @@ AddLastBattleToLinkRecord: ; 3fa42
 .StoreResult: ; 3faa0
 	ld a, [wBattleResult]
 	and $f
-	cp $1
+	dec a
 	ld bc, sLinkBattleWins + 1 - sLinkBattleResults
 	jr c, .okay
 	ld bc, sLinkBattleLosses + 1 - sLinkBattleResults

@@ -89,7 +89,7 @@ Function6f2c: ; 6f2c
 	add hl, bc
 	ld a, [hl]
 	call GetTileCollision
-	cp $1
+	dec a
 	jr z, Function6f3e
 	scf
 	ret
