@@ -48,8 +48,7 @@ Predef_StartBattle: ; 8c20f
 	ld [rSVBK], a
 	pop af
 	ld [hVBlank], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 8c26d
 
 .InitGFX: ; 8c26d
@@ -69,15 +68,13 @@ Predef_StartBattle: ; 8c20f
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
-	call WipeLYOverrides
-	ret
+	jp WipeLYOverrides
 ; 8c2a0
 
 .LoadPokeballTiles: ; 8c2a0
 	call LoadTrainerBattlePokeballTiles
 	hlbgcoord 0, 0
-	call Function8c2cf
-	ret
+	jp Function8c2cf
 ; 8c2aa
 
 LoadTrainerBattlePokeballTiles:
@@ -241,8 +238,7 @@ StartTrainerBattle_SetUpBGMap: ; 8c3a1 (23:43a1)
 StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
 	call .DoFlashAnimation
 	ret nc
-	call StartTrainerBattle_NextScene
-	ret
+	jp StartTrainerBattle_NextScene
 
 .DoFlashAnimation: ; 8c3b3 (23:43b3)
 	ld a, [wTimeOfDayPalset]
@@ -308,11 +304,8 @@ StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
 StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	ld a, [wcf64]
 	cp $60
-	jr nc, .end
-	call .DoSineWave
-	ret
+	jr c, .DoSineWave
 
-.end
 	ld a, $20
 	ld [wJumptableIndex], a
 	ret
@@ -560,7 +553,7 @@ StartTrainerBattle_SpeckleToBlack: ; 8c58f (23:458f)
 StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld a, [OtherTrainerClass]
 	and a
-	jp z, .nextscene ; don't need to be here if wild
+	jp z, StartTrainerBattle_NextScene ; don't need to be here if wild
 
 	xor a
 	ld [hBGMapMode], a
@@ -646,10 +639,6 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld [hCGBPalUpdate], a
 	call DelayFrame
 	call LoadEDTile
-
-.nextscene ; 8c673 (23:4673)
-	call StartTrainerBattle_NextScene
-	ret
 
 .copypals ; 8c677 (23:4677)
 	ld de, UnknBGPals + 7 palettes

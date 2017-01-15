@@ -59,6 +59,7 @@ QueueBGEffect: ; c801a (32:401a)
 	ret
 
 EndBattleBGEffect: ; c8043 (32:4043)
+BattleBGEffect_End: ; c80c6 (32:40c6)
 	ld hl, BG_EFFECT_STRUCT_FUNCTION
 	add hl, bc
 	ld [hl], 0
@@ -134,10 +135,6 @@ BattleBGEffects: ; c805a (32:405a)
 	dw BattleBGEffect_35
 
 
-BattleBGEffect_End: ; c80c6 (32:40c6)
-	call EndBattleBGEffect
-	ret
-
 BatttleBGEffects_GetNamedJumptablePointer: ; c80ca (32:40ca)
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
@@ -211,8 +208,7 @@ BattleBGEffect_FlashContinue: ; c80fb (32:40fb)
 	ld a, [hl]
 	and a
 	jr nz, .apply_pal
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .apply_pal
 	dec a
@@ -228,12 +224,8 @@ BattleBGEffect_FlashContinue: ; c80fb (32:40fb)
 BattleBGEffect_WhiteHues: ; c812d (32:412d)
 	ld de, .Pals
 	call BattleBGEffect_GetNthDMGPal
-	jr c, .quit
+	jp c, EndBattleBGEffect
 	ld [wBGP], a
-	ret
-
-.quit
-	call EndBattleBGEffect
 	ret
 
 .Pals:
@@ -246,12 +238,8 @@ BattleBGEffect_WhiteHues: ; c812d (32:412d)
 BattleBGEffect_BlackHues: ; c8141 (32:4141)
 	ld de, .Pals
 	call BattleBGEffect_GetNthDMGPal
-	jr c, .quit
+	jp c, EndBattleBGEffect
 	ld [wBGP], a
-	ret
-
-.quit
-	call EndBattleBGEffect
 	ret
 
 .Pals:
@@ -264,13 +252,9 @@ BattleBGEffect_BlackHues: ; c8141 (32:4141)
 BattleBGEffect_AlternateHues: ; c8155 (32:4155)
 	ld de, .Pals
 	call BattleBGEffect_GetNthDMGPal
-	jr c, .quit
+	jp c, EndBattleBGEffect
 	ld [wBGP], a
 	ld [wOBP1], a
-	ret
-
-.quit
-	call EndBattleBGEffect
 	ret
 
 .Pals:
@@ -356,14 +340,12 @@ BattleBGEffect_HideMon: ; c81b3 (32:41b3)
 .four
 	xor a
 	ld [hBGMapMode], a
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffect_ShowMon: ; c81ea (32:41ea)
 	call BGEffect_CheckFlyDigStatus
 	jr z, .not_flying
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .not_flying
 	call BGEffect_CheckBattleTurn
@@ -378,8 +360,7 @@ BattleBGEffect_ShowMon: ; c81ea (32:41ea)
 	ld [wBattleAnimTemp1], a
 	ld a, d
 	ld [wBattleAnimTemp2], a
-	call BattleBGEffect_RunPicResizeScript
-	ret
+	jp BattleBGEffect_RunPicResizeScript
 
 .PlayerData:
 	db  0, $31, 0
@@ -405,8 +386,7 @@ BattleBGEffect_FeetFollow: ; c8214 (32:4214)
 	jr z, .not_flying_digging
 	ld hl, wNumActiveBattleAnims
 	inc [hl]
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .not_flying_digging
 	call BattleBGEffects_IncrementJumptable
@@ -454,8 +434,7 @@ BattleBGEffect_FeetFollow: ; c8214 (32:4214)
 .five
 	xor a
 	ld [hBGMapMode], a
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffect_HeadFollow: ; c8281 (32:4281)
 	call BattleBGEffects_AnonJumptable
@@ -473,8 +452,7 @@ BattleBGEffect_HeadFollow: ; c8281 (32:4281)
 	jr z, .not_flying_digging
 	ld hl, wNumActiveBattleAnims
 	inc [hl]
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .not_flying_digging
 	call BattleBGEffects_IncrementJumptable
@@ -522,8 +500,7 @@ BattleBGEffect_HeadFollow: ; c8281 (32:4281)
 .five
 	xor a
 	ld [hBGMapMode], a
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 _QueueBattleAnimation: ; c82ee (32:42ee)
 	farcall QueueBattleAnimation
@@ -620,14 +597,10 @@ BattleBGEffect_27: ; c82f5 (32:42f5)
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .done
+	jp z, EndBattleBGEffect
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld [hl], $1
-	ret
-
-.done
-	call EndBattleBGEffect
 	ret
 
 BattleBGEffect_EnterMon: ; c837b (32:437b)
@@ -643,8 +616,7 @@ BattleBGEffect_EnterMon: ; c837b (32:437b)
 	ld [wBattleAnimTemp1], a
 	ld a, d
 	ld [wBattleAnimTemp2], a
-	call BattleBGEffect_RunPicResizeScript
-	ret
+	jp BattleBGEffect_RunPicResizeScript
 
 .PlayerData:
 	db  2, $31, 2
@@ -671,8 +643,7 @@ BattleBGEffect_ReturnMon: ; c83a8 (32:43a8)
 	ld [wBattleAnimTemp1], a
 	ld a, d
 	ld [wBattleAnimTemp2], a
-	call BattleBGEffect_RunPicResizeScript
-	ret
+	jp BattleBGEffect_RunPicResizeScript
 
 .PlayerData:
 	db  0, $31, 0
@@ -746,8 +717,7 @@ endr
 .end
 	xor a
 	ld [hBGMapMode], a
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .ClearBox:
 ; get dims
@@ -900,7 +870,7 @@ BattleBGEffect_Surf: ; c8545 (32:4545)
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
+	dw BattleAnim_ResetLCDStatCustom
 
 
 .zero
@@ -915,10 +885,6 @@ BattleBGEffect_Surf: ; c8545 (32:4545)
 	push bc
 	call .RotatewSurfWaveBGEffect
 	pop bc
-	ret
-
-.two
-	call BattleAnim_ResetLCDStatCustom
 	ret
 
 .RotatewSurfWaveBGEffect:
@@ -966,9 +932,8 @@ BattleBGEffect_Whirlpool: ; c8599 (32:4599)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
-	dw .one
-	dw .two
-
+	dw BattleBGEffect_WavyScreenFX
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -980,23 +945,13 @@ BattleBGEffect_Whirlpool: ; c8599 (32:4599)
 	ld a, $5e
 	ld [hFFC8], a
 	lb de, 2, 2
-	call Functionc8f2e
-	ret
-
-.one
-	call BattleBGEffect_WavyScreenFX
-	ret
-
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp Functionc8f2e
 
 BattleBGEffect_30: ; c85c2 (32:45c2)
 	call BattleBGEffects_ClearLYOverrides
 	ld a, $42
 	call BattleBGEffect_SetLCDStatCustoms1
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffect_31: ; c85ce (32:45ce)
 	ld hl, BG_EFFECT_STRUCT_03
@@ -1024,25 +979,18 @@ BattleBGEffect_31: ; c85ce (32:45ce)
 	jr nc, .done
 	inc [hl]
 	inc [hl]
-	call Functionc8f9a
-	ret
+	jp Functionc8f9a
 
 .done
 	call BattleBGEffects_ClearLYOverrides
-	call EndBattleBGEffect
-	ret
-
-BattleBGEffect_32: ; c8603 (32:4603)
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffect_Psychic: ; c8607 (32:4607)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1067,20 +1015,14 @@ BattleBGEffect_Psychic: ; c8607 (32:4607)
 	inc [hl]
 	and $3
 	ret nz
-	call BattleBGEffect_WavyScreenFX
-	ret
-
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp BattleBGEffect_WavyScreenFX
 
 BattleBGEffect_Teleport: ; c863f (32:463f)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
-	dw .one
-	dw .two
-
+	dw BattleBGEffect_WavyScreenFX
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1088,24 +1030,14 @@ BattleBGEffect_Teleport: ; c863f (32:463f)
 	ld a, $43
 	call BattleBGEffect_SetLCDStatCustoms1
 	lb de, 6, 5
-	call Functionc8f2e
-	ret
-
-.one
-	call BattleBGEffect_WavyScreenFX
-	ret
-
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp Functionc8f2e
 
 BattleBGEffect_NightShade: ; c8662 (32:4662)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
-	dw .one
-	dw .two
-
+	dw BattleBGEffect_WavyScreenFX
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1116,16 +1048,7 @@ BattleBGEffect_NightShade: ; c8662 (32:4662)
 	add hl, bc
 	ld e, [hl]
 	ld d, 2
-	call Functionc8f2e
-	ret
-
-.one
-	call BattleBGEffect_WavyScreenFX
-	ret
-
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp Functionc8f2e
 
 BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	call BattleBGEffects_AnonJumptable
@@ -1135,8 +1058,7 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	dw .two
 	dw .three
 	dw .four
-	dw .five
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1149,6 +1071,7 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld [hl], $0
+.four
 	ret
 
 .one
@@ -1156,24 +1079,18 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	add hl, bc
 	ld a, [hl]
 	cp $10
-	jr nc, .next
+	jp nc, BattleBGEffects_IncrementJumptable
 	inc [hl]
-	call .UpdateLYOverrides
-	ret
+	jr .UpdateLYOverrides
 
 .three
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
 	cp $ff
-	jr z, .next
+	jp z, BattleBGEffects_IncrementJumptable
 	dec [hl]
-	call .UpdateLYOverrides
-	ret
-
-.next
-	call BattleBGEffects_IncrementJumptable
-	ret
+	jr .UpdateLYOverrides
 
 .two
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
@@ -1190,9 +1107,6 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	ld a, [hl]
 	add $4
 	ld [hl], a
-
-.four
-	ret
 
 .UpdateLYOverrides:
 	ld e, a
@@ -1218,17 +1132,12 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	ld [hl], e
 	ret
 
-.five
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_AcidArmor: ; c8709 (32:4709)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1281,17 +1190,12 @@ BattleBGEffect_AcidArmor: ; c8709 (32:4709)
 	ld [hl], $0
 	ret
 
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_21: ; c8761 (32:4761)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1330,18 +1234,13 @@ BattleBGEffect_21: ; c8761 (32:4761)
 	ld [hl], a
 	ret
 
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_Dig: ; c87a7 (32:47a7)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
 	dw .two
-	dw .three
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1397,18 +1296,13 @@ BattleBGEffect_Dig: ; c87a7 (32:47a7)
 	inc [hl]
 	ret
 
-.three
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_Tackle: ; c8805 (32:4805)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw Tackle_BGEffect25_2d_one
 	dw Tackle_BGEffect25_2d_two
-	dw .three
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1432,18 +1326,13 @@ BattleBGEffect_Tackle: ; c8805 (32:4805)
 	ld [hl], a
 	ret
 
-.three
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_25: ; c8837 (32:4837)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw Tackle_BGEffect25_2d_one
 	dw Tackle_BGEffect25_2d_two
-	dw .three
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1465,10 +1354,6 @@ BattleBGEffect_25: ; c8837 (32:4837)
 	ld a, -2
 .okay
 	ld [hl], a
-	ret
-
-.three
-	call BattleAnim_ResetLCDStatCustom
 	ret
 
 Tackle_BGEffect25_2d_one:
@@ -1570,12 +1455,7 @@ BattleBGEffect_2d: ; c88e7 (32:48e7)
 	dw BGEffect2d_2f_zero
 	dw Tackle_BGEffect25_2d_one
 	dw Tackle_BGEffect25_2d_two
-	dw .three
-
-
-.three
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	dw BattleAnim_ResetLCDStatCustom
 
 BGEffect2d_2f_zero:
 	call BattleBGEffects_IncrementJumptable
@@ -1606,10 +1486,8 @@ BattleBGEffect_2f: ; c8919 (32:4919)
 	dw Tackle_BGEffect25_2d_one
 	dw .two
 	dw Tackle_BGEffect25_2d_two
-	dw .four
+	dw BattleAnim_ResetLCDStatCustom
 
-.four
-	call BattleAnim_ResetLCDStatCustom
 .two
 	ret
 
@@ -1618,8 +1496,7 @@ BattleBGEffect_26: ; c892a (32:492a)
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1648,17 +1525,12 @@ BattleBGEffect_26: ; c892a (32:492a)
 	ld [hl], a
 	ret
 
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_2c: ; c8964 (32:4964)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1703,10 +1575,6 @@ BattleBGEffect_2c: ; c8964 (32:4964)
 	ld [hl], a
 	ret
 
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_28: ; c89b5 (32:49b5)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
@@ -1714,13 +1582,11 @@ BattleBGEffect_28: ; c89b5 (32:49b5)
 	dw .one
 	dw .two
 
-
 .zero
 	call BattleBGEffects_IncrementJumptable
 	call BattleBGEffects_ClearLYOverrides
 	ld a, $43
-	call BattleBGEffect_SetLCDStatCustoms1
-	ret
+	jp BattleBGEffect_SetLCDStatCustoms1
 
 .one
 	ld hl, BG_EFFECT_STRUCT_03
@@ -1731,32 +1597,25 @@ BattleBGEffect_28: ; c89b5 (32:49b5)
 	inc [hl]
 	ld d, a
 	ld e, 4
-	call Functionc8f2e
-	ret
+	jp Functionc8f2e
 
 .two
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .reset
+	jp z, BattleAnim_ResetLCDStatCustom
 	dec [hl]
 	ld d, a
 	ld e, 4
-	call Functionc8f2e
-	ret
-
-.reset
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp Functionc8f2e
 
 BattleBGEffect_BounceDown: ; c89ee (32:49ee)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1797,10 +1656,6 @@ BattleBGEffect_BounceDown: ; c89ee (32:49ee)
 	inc [hl]
 	ret
 
-.two
-	call BattleAnim_ResetLCDStatCustom
-	ret
-
 BattleBGEffect_2a: ; c8a3a (32:4a3a)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
@@ -1809,7 +1664,7 @@ BattleBGEffect_2a: ; c8a3a (32:4a3a)
 	dw .two
 	dw .three
 	dw .four
-	dw .five
+	dw BattleBGEffects_ResetVideoHRAM
 
 .zero
 	call BattleBGEffects_IncrementJumptable
@@ -1842,8 +1697,7 @@ BattleBGEffect_2a: ; c8a3a (32:4a3a)
 .two
 	call .GetLYOverride
 	jr nc, .next
-	call .SetLYOverridesBackup
-	ret
+	jr .SetLYOverridesBackup
 
 .next
 	ld hl, BG_EFFECT_STRUCT_03
@@ -1852,21 +1706,16 @@ BattleBGEffect_2a: ; c8a3a (32:4a3a)
 	ld a, [hFFC7]
 	inc a
 	ld [hFFC7], a
-	call BattleBGEffects_IncrementJumptable
-	ret
+	jp BattleBGEffects_IncrementJumptable
 
 .three
 	call .GetLYOverride
-	jr nc, .finish
+	jp nc, BattleBGEffects_IncrementJumptable
 	call .SetLYOverridesBackup
 	ld a, [hFFC8]
 	dec a
 	ld l, a
 	ld [hl], e
-	ret
-
-.finish
-	call BattleBGEffects_IncrementJumptable
 	ret
 
 .SetLYOverridesBackup:
@@ -1883,10 +1732,6 @@ BattleBGEffect_2a: ; c8a3a (32:4a3a)
 	inc hl
 	dec a
 	jr nz, .loop2
-	ret
-
-.five
-	call BattleBGEffects_ResetVideoHRAM
 	ret
 
 .GetLYOverride:
@@ -1916,7 +1761,6 @@ BattleBGEffect_2b: ; c8acc (32:4acc)
 	dw .zero
 	dw .one
 
-
 .zero
 	call BattleBGEffects_IncrementJumptable
 	call BattleBGEffects_ClearLYOverrides
@@ -1932,7 +1776,7 @@ BattleBGEffect_2b: ; c8acc (32:4acc)
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .done
+	jp z, BattleAnim_ResetLCDStatCustom
 	dec [hl]
 	srl a
 	srl a
@@ -1940,12 +1784,7 @@ BattleBGEffect_2b: ; c8acc (32:4acc)
 	and $f
 	ld d, a
 	ld e, a
-	call Functionc8f2e
-	ret
-
-.done
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp Functionc8f2e
 
 BattleBGEffect_1c: ; c8b00 (32:4b00)
 	ld de, .Jumptable
@@ -1987,8 +1826,7 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 	call BGEffects_LoadBGPal1_OBPal0
 	pop hl
 	ld a, [hl]
-	call BGEffects_LoadBGPal0_OBPal1
-	ret
+	jp BGEffects_LoadBGPal0_OBPal1
 
 .player_2
 	ld hl, .CGB_DMGEnemyData
@@ -1998,16 +1836,14 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 	call BGEffects_LoadBGPal0_OBPal1
 	pop hl
 	ld a, [hl]
-	call BGEffects_LoadBGPal1_OBPal0
-	ret
+	jp BGEffects_LoadBGPal1_OBPal0
 
 .cgb_two
 	ld a, $e4
 	call BGEffects_LoadBGPal0_OBPal1
 	ld a, $e4
 	call BGEffects_LoadBGPal1_OBPal0
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .CGB_DMGEnemyData:
 	db $e4, $e4
@@ -2023,8 +1859,7 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 
 BattleBGEffect_RapidFlash: ; c8be8 (32:4be8)
 	ld de, .FlashPals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .FlashPals:
 	db $e4, $6c, $fe
@@ -2032,8 +1867,7 @@ BattleBGEffect_RapidFlash: ; c8be8 (32:4be8)
 
 BattleBGEffect_16: ; c8bf2 (32:4bf2)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $90, $40, $ff
@@ -2041,8 +1875,7 @@ BattleBGEffect_16: ; c8bf2 (32:4bf2)
 
 BattleBGEffect_17: ; c8bfd (32:4bfd)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $f8, $fc, $ff
@@ -2050,8 +1883,7 @@ BattleBGEffect_17: ; c8bfd (32:4bfd)
 
 BattleBGEffect_18: ; c8c08 (32:4c08)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $90, $40, $90, $fe
@@ -2059,8 +1891,7 @@ BattleBGEffect_18: ; c8c08 (32:4c08)
 
 BattleBGEffect_19: ; c8c14 (32:4c14)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $f8, $fc, $f8, $fe
@@ -2068,8 +1899,7 @@ BattleBGEffect_19: ; c8c14 (32:4c14)
 
 BattleBGEffect_1a: ; c8c20 (32:4c20)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $f8, $fc, $f8, $e4, $90, $40, $90, $fe
@@ -2077,8 +1907,7 @@ BattleBGEffect_1a: ; c8c20 (32:4c20)
 
 BattleBGEffect_1b: ; c8c30 (32:4c30)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $fc, $e4, $00, $fe
@@ -2086,8 +1915,7 @@ BattleBGEffect_1b: ; c8c30 (32:4c30)
 
 BattleBGEffect_1d: ; c8c3c (32:4c3c)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $e4, $90, $40, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $40, $90, $e4, $ff
@@ -2095,8 +1923,7 @@ BattleBGEffect_1d: ; c8c3c (32:4c3c)
 
 BattleBGEffect_1e: ; c8c55 (32:4c55)
 	ld de, .Pals
-	call BGEffect_RapidCyclePals
-	ret
+	jp BGEffect_RapidCyclePals
 
 .Pals:
 	db $00, $40, $90, $e4, $ff
@@ -2107,7 +1934,6 @@ BattleBGEffect_VibrateMon: ; c8c61 (32:4c61)
 .anon_dw
 	dw .zero
 	dw .one
-
 
 .zero ; c8c68 (32:4c68)
 	call BattleBGEffects_IncrementJumptable
@@ -2130,7 +1956,7 @@ BattleBGEffect_VibrateMon: ; c8c61 (32:4c61)
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .finish
+	jp z, BattleAnim_ResetLCDStatCustom
 	dec [hl]
 	and $1
 	ret nz
@@ -2140,20 +1966,14 @@ BattleBGEffect_VibrateMon: ; c8c61 (32:4c61)
 	xor $ff
 	inc a
 	ld [hl], a
-	call Functionc900b
-	ret
-
-.finish
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp Functionc900b
 
 BattleBGEffect_WobbleMon: ; c8ca2 (32:4ca2)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
 	dw .one
-	dw .two
-
+	dw BattleAnim_ResetLCDStatCustom
 
 .zero ; c8cab (32:4cab)
 	call BattleBGEffects_IncrementJumptable
@@ -2174,7 +1994,7 @@ BattleBGEffect_WobbleMon: ; c8ca2 (32:4ca2)
 	add hl, bc
 	ld a, [hl]
 	cp $40
-	jr nc, .two
+	jp nc, BattleAnim_ResetLCDStatCustom
 	ld d, $6
 	call BattleBGEffects_Sine
 	call Functionc900b
@@ -2183,10 +2003,6 @@ BattleBGEffect_WobbleMon: ; c8ca2 (32:4ca2)
 	ld a, [hl]
 	add $2
 	ld [hl], a
-	ret
-
-.two ; c8cdd (32:4cdd)
-	call BattleAnim_ResetLCDStatCustom
 	ret
 
 BattleBGEffect_2e: ; c8ce1 (32:4ce1)
@@ -2291,8 +2107,7 @@ BattleBGEffect_GetNthDMGPal: ; c8d57 (32:4d57)
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
-	call BattleBGEffect_GetNextDMGPal
-	ret
+	jp BattleBGEffect_GetNextDMGPal
 
 .zero
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
@@ -2301,8 +2116,7 @@ BattleBGEffect_GetNthDMGPal: ; c8d57 (32:4d57)
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld [hl], a
-	call BattleBGEffect_GetFirstDMGPal
-	ret
+	jp BattleBGEffect_GetFirstDMGPal
 
 BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 	push de
@@ -2351,8 +2165,7 @@ BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 	ld [hl], a
 	call BattleBGEffect_GetFirstDMGPal
 	jr c, .okay_2_cgb
-	call BGEffects_LoadBGPal0_OBPal1
-	ret
+	jp BGEffects_LoadBGPal0_OBPal1
 
 .okay_2_cgb
 	ld hl, BG_EFFECT_STRUCT_03
@@ -2363,8 +2176,7 @@ BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 .two_cgb ; c8e21 (32:4e21)
 	ld a, $e4
 	call BGEffects_LoadBGPal0_OBPal1
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .three_cgb ; c8e2a (32:4e2a)
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
@@ -2382,8 +2194,7 @@ BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 	ld [hl], a
 	call BattleBGEffect_GetFirstDMGPal
 	jr c, .okay_4_cgb
-	call BGEffects_LoadBGPal1_OBPal0
-	ret
+	jp BGEffects_LoadBGPal1_OBPal0
 
 .okay_4_cgb
 	ld hl, BG_EFFECT_STRUCT_03
@@ -2394,8 +2205,7 @@ BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 .four_cgb ; c8e49 (32:4e49)
 	ld a, $e4
 	call BGEffects_LoadBGPal1_OBPal0
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BGEffects_LoadBGPal0_OBPal1: ; c8e52 (32:4e52)
 	ld h, a
@@ -2527,14 +2337,14 @@ BattleBGEffect_SetLCDStatCustoms2: ; c8ef4 (32:4ef4)
 	ret
 
 BattleAnim_ResetLCDStatCustom: ; c8f0a (32:4f0a)
+BattleBGEffect_32: ; c8603 (32:4603)
 	xor a
 	ld [hFFC7], a
 	ld [hFFC8], a
 	call BattleBGEffects_ClearLYOverrides
 	xor a
 	ld [hFFC6], a
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffects_ResetVideoHRAM: ; c8f19 (32:4f19)
 	xor a
@@ -2545,8 +2355,7 @@ BattleBGEffects_ResetVideoHRAM: ; c8f19 (32:4f19)
 	ld [wOBP1], a
 	ld [hFFC7], a
 	ld [hFFC8], a
-	call BattleBGEffects_ClearLYOverrides
-	ret
+	jp BattleBGEffects_ClearLYOverrides
 
 Functionc8f2e: ; c8f2e (32:4f2e)
 	push bc

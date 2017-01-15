@@ -537,7 +537,6 @@ _PushWindow:: ; 24374
 
 .done
 	pop hl
-	call .ret ; empty function
 	ld a, h
 	ld [de], a
 	dec de
@@ -560,7 +559,6 @@ _PushWindow:: ; 24374
 	call GetMenuBoxDims
 	inc b
 	inc c
-	call .ret ; empty function
 
 .row
 	push bc
@@ -582,10 +580,6 @@ _PushWindow:: ; 24374
 
 	ret
 ; 243e7
-
-.ret ; 243e7
-	ret
-; 243e8
 
 _ExitMenu:: ; 243e8
 	xor a

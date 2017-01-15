@@ -267,7 +267,7 @@ InitializeVisibleSprites: ; 8177
 	push bc
 	call CopyObjectStruct
 	pop bc
-	jp c, .ret
+	ret c
 
 .next
 	ld hl, OBJECT_LENGTH
@@ -278,9 +278,6 @@ InitializeVisibleSprites: ; 8177
 	inc a
 	cp NUM_OBJECTS
 	jr nz, .loop
-	ret
-
-.ret ; 81c9
 	ret
 
 CheckObjectEnteringVisibleRange:: ; 81ca

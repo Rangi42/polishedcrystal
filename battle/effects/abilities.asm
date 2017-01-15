@@ -163,8 +163,7 @@ TraceAbility:
 	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
@@ -967,7 +966,6 @@ RunWeatherAbilities:
 	ld a, b
 	cp ICE_BODY
 	jp z, IceBodyAbility
-	ret
 .sandstorm
 	ret ; No active abilities for sandstorm
 .rain

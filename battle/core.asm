@@ -2538,8 +2538,7 @@ WinTrainerBattle: ; 3cfa4
 	or [hl]
 	ret nz
 	call ClearTileMap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 
 .GiveMoney:
 	ld a, [wAmuletCoin]
@@ -2990,8 +2989,7 @@ JumpToPartyMenuAndPrintText: ; 3d313
 	farcall PrintPartyMenuText
 	call WaitBGMap
 	call SetPalettes
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 3d329
 
 SelectBattleMon: ; 3d329
@@ -3108,8 +3106,7 @@ LostBattle: ; 3d38e
 	farcall BattleTowerText
 	call WaitPressAorB_BlinkCursor
 	call ClearTileMap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 
 .not_canlose
 	ld a, [wLinkMode]
@@ -3271,8 +3268,7 @@ ForceEnemySwitch: ; 3d4c3
 	call ResetEnemyStatLevels
 	call Function_SetEnemyPkmnAndSendOutAnimation
 	call BreakAttraction
-	call ResetBattleParticipants
-	ret
+	jp ResetBattleParticipants
 ; 3d4e1
 
 
@@ -3655,8 +3651,7 @@ FinalPkmnMusicAndAnimation:
 	call SlideBattlePicOut
 	ld c, 10
 	call DelayFrames
-	call FinalPkmnSlideInEnemyMonFrontpic
-	ret
+	jp FinalPkmnSlideInEnemyMonFrontpic
 
 CheckWhetherToAskSwitch: ; 3d714
 	ld a, [wAISwitch]
@@ -4444,8 +4439,7 @@ RunActivationAbilities:
 	; invert whose turn it is to properly handle abilities.
 	call SwitchTurnCore
 	farcall RunActivationAbilitiesInner
-	call SwitchTurnCore
-	ret
+	jp SwitchTurnCore
 
 SpikesDamage_CheckMoldBreaker:
 ; Called when a Pokémon with Mold Breaker uses Roar/Whirlwind.
@@ -5220,8 +5214,6 @@ endr
 
 UpdateEnemyHPPal: ; 3e127
 	ld hl, EnemyHPPal
-	call UpdateHPPal
-	ret
 ; 3e12e
 
 UpdateHPPal: ; 3e12e
@@ -5315,23 +5307,19 @@ BattleMenu_Pack: ; 3e1c7
 	ld a, [wPlayerAction]
 	and a
 	jr z, .didnt_use_item
-	jr .got_item
+	jr .UseItem
 
 .tutorial
 	farcall TutorialPack
 	ld a, POKE_BALL
 	ld [CurItem], a
 	call DoItemEffect
-	jr .got_item
+	jr .UseItem
 
 .contest
 	ld a, PARK_BALL
 	ld [CurItem], a
 	call DoItemEffect
-
-.got_item
-	call .UseItem
-	ret
 
 .didnt_use_item
 	call ClearPalettes
@@ -5474,8 +5462,7 @@ Battle_StatsScreen: ; 3e308
 	ld de, VTiles2
 	ld bc, $31 tiles
 	call CopyBytes
-	call EnableLCD
-	ret
+	jp EnableLCD
 ; 3e358
 
 
@@ -5560,11 +5547,8 @@ PlayerSwitch: ; 3e3ad
 	cp BATTLEACTION_SWITCH1
 	jp c, .switch
 	cp BATTLEACTION_FORFEIT
-	jr nz, .dont_run
-	call WildFled_EnemyFled_LinkBattleCanceled
-	ret
+	jp z, WildFled_EnemyFled_LinkBattleCanceled
 
-.dont_run
 	ld a, [hLinkPlayerNumber]
 	dec a
 	jr z, .player_1
@@ -6177,8 +6161,7 @@ endr
 	inc hl
 	ld de, wNamedObjectIndexBuffer
 	lb bc, 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 ; 3e786
 
 CheckPlayerHasUsableMoves: ; 3e786
@@ -8965,8 +8948,7 @@ InitEnemyWildmon: ; 3f607
 ExitBattle: ; 3f69e
 	call .HandleEndOfBattle
 	call HandleNuzlockeFlags
-	call CleanUpBattleRAM
-	ret
+	jp CleanUpBattleRAM
 ; 3f6a5
 
 .HandleEndOfBattle: ; 3f6a5
@@ -8976,8 +8958,7 @@ ExitBattle: ; 3f69e
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	call ShowLinkBattleResult
-	ret
+	jp ShowLinkBattleResult
 
 .not_linked
 	ld a, [wBattleResult]
@@ -9052,8 +9033,7 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	call WaitSFX
-	ret
+	jp WaitSFX
 ; 3f71d
 
 CheckPayDay: ; 3f71d
@@ -9088,8 +9068,7 @@ CheckPayDay: ; 3f71d
 	bit 0, a
 	ret z
 	call ClearTileMap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 ; 3f759
 
 ShowLinkBattleParticipantsAfterEnd: ; 3f759
@@ -9137,8 +9116,7 @@ ShowLinkBattleResult: ; 3f77c
 	call CloseSRAM
 
 	call WaitPressAorB_BlinkCursor
-	call ClearTileMap
-	ret
+	jp ClearTileMap
 ; 3f7f7
 
 .Win:
@@ -9167,8 +9145,7 @@ DisplayLinkRecord: ; 3f836
 	call SetPalettes
 	ld c, 8
 	call DelayFrames
-	call WaitPressAorB_BlinkCursor
-	ret
+	jp WaitPressAorB_BlinkCursor
 ; 3f85f
 
 
@@ -9468,9 +9445,9 @@ AddLastBattleToLinkRecord: ; 3fa42
 
 .done
 	call .StoreResult
-	call .FindOpponentAndAppendRecord
-	ret
+	jr .FindOpponentAndAppendRecord
 ; 3faa0
+
 .StoreResult: ; 3faa0
 	ld a, [wBattleResult]
 	and $f
@@ -9592,8 +9569,7 @@ AddLastBattleToLinkRecord: ; 3fa42
 	ld hl, wd002
 	ld bc, 18
 	pop de
-	call CopyBytes
-	ret
+	jp CopyBytes
 ; 3fb54
 
 .LoadPointer: ; 3fb54
@@ -9690,8 +9666,7 @@ InitBattleDisplay: ; 3fb6c
 
 .InitBackPic: ; 3fbf8
 	call GetTrainerBackpic
-	call CopyBackpic
-	ret
+	jp CopyBackpic
 ; 3fbff
 
 
@@ -9872,8 +9847,7 @@ BattleStartMessage: ; 3fc8b
 	push hl
 	farcall BattleStart_TrainerHuds
 	pop hl
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 ; 3fd26
 
 CheckPluralTrainer:
