@@ -72,6 +72,8 @@ ENDM
 
 map_header_2: MACRO
 ; label, map, border block, connections
+CURRENT_MAP_WIDTH = \2_WIDTH
+CURRENT_MAP_HEIGHT = \2_HEIGHT
 \1_SecondMapHeader::
 	db \3
 	db \2_HEIGHT, \2_WIDTH
@@ -90,7 +92,6 @@ if "\1" == "north"
 ;\4: x
 ;\5: offset?
 ;\6: strip length
-;\7: this map id
 	map \2
 	dw \3_BlockData + \2_WIDTH * (\2_HEIGHT - 3) + \5
 	dw OverworldMap + \4 + 3
@@ -107,10 +108,9 @@ if "\1" == "south"
 ;\4: x
 ;\5: offset?
 ;\6: strip length
-;\7: this map id
 	map \2
 	dw \3_BlockData + \5
-	dw OverworldMap + (\7_HEIGHT + 3) * (\7_WIDTH + 6) + \4 + 3
+	dw OverworldMap + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
 	db \6
 	db \2_WIDTH
 	db 0
@@ -124,10 +124,9 @@ if "\1" == "west"
 ;\4: y
 ;\5: offset?
 ;\6: strip length
-;\7: this map id
 	map \2
 	dw \3_BlockData + (\2_WIDTH * \5) + \2_WIDTH - 3
-	dw OverworldMap + (\7_WIDTH + 6) * (\4 + 3)
+	dw OverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
 	db \6
 	db \2_WIDTH
 	db (\4 - \5) * -2
@@ -141,10 +140,9 @@ if "\1" == "east"
 ;\4: y
 ;\5: offset?
 ;\6: strip length
-;\7: this map id
 	map \2
 	dw \3_BlockData + (\2_WIDTH * \5)
-	dw OverworldMap + (\7_WIDTH + 6) * (\4 + 3 + 1) - 3
+	dw OverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
 	db \6
 	db \2_WIDTH
 	db (\4 - \5) * -2
