@@ -3052,7 +3052,7 @@ Lyra1Group:
 
 	; LYRA1
 	db "Lyra@"
-	db TRAINERTYPE_NORMAL | TRAINERTYPE_NICKNAME
+	db TRAINERTYPE_NICKNAME
 
 	; party
 	db 5, CHIKORITA, "Chicory@"
@@ -3063,7 +3063,7 @@ Lyra1Group:
 
 	; LYRA1
 	db "Lyra@"
-	db TRAINERTYPE_NORMAL | TRAINERTYPE_NICKNAME
+	db TRAINERTYPE_NICKNAME
 
 	; party
 	db 5, CYNDAQUIL, "Cinder@"
@@ -3074,7 +3074,7 @@ Lyra1Group:
 
 	; LYRA1
 	db "Lyra@"
-	db TRAINERTYPE_NORMAL | TRAINERTYPE_NICKNAME
+	db TRAINERTYPE_NICKNAME
 
 	; party
 	db 5, TOTODILE, "Toto@"
