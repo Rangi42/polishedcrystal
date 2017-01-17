@@ -6,26 +6,26 @@
 	db 3, RATTATA
 	db 4, RATTATA
 	db 5, RATTATA
-	db 3, RATTATA
+	db 3, BELLSPROUT
 	db 6, RATTATA
-	db 5, RATTATA
-	db 5, RATTATA
+	db 5, BELLSPROUT
+	db 6, BELLSPROUT
 	; day
 	db 3, RATTATA
 	db 4, RATTATA
 	db 5, RATTATA
-	db 3, RATTATA
+	db 3, BELLSPROUT
 	db 6, RATTATA
-	db 5, RATTATA
-	db 5, RATTATA
+	db 5, BELLSPROUT
+	db 6, BELLSPROUT
 	; nite
-	db 3, GASTLY
-	db 4, GASTLY
-	db 5, GASTLY
 	db 3, RATTATA
+	db 4, RATTATA
+	db 5, GASTLY
+	db 3, BELLSPROUT
 	db 6, GASTLY
-	db 5, RATTATA
-	db 5, RATTATA
+	db 5, BELLSPROUT
+	db 6, BELLSPROUT
 
 	map SPROUT_TOWER_3F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -33,26 +33,26 @@
 	db 3, RATTATA
 	db 4, RATTATA
 	db 5, RATTATA
-	db 3, RATTATA
+	db 3, BELLSPROUT
 	db 6, RATTATA
-	db 5, RATTATA
-	db 5, RATTATA
+	db 5, BELLSPROUT
+	db 6, BELLSPROUT
 	; day
 	db 3, RATTATA
 	db 4, RATTATA
 	db 5, RATTATA
-	db 3, RATTATA
+	db 3, BELLSPROUT
 	db 6, RATTATA
-	db 5, RATTATA
-	db 5, RATTATA
+	db 5, BELLSPROUT
+	db 6, BELLSPROUT
 	; nite
-	db 3, GASTLY
-	db 4, GASTLY
-	db 5, GASTLY
 	db 3, RATTATA
+	db 4, RATTATA
+	db 5, GASTLY
+	db 3, BELLSPROUT
 	db 6, GASTLY
-	db 5, RATTATA
-	db 5, RATTATA
+	db 5, BELLSPROUT
+	db 6, BELLSPROUT
 
 	map TIN_TOWER_2F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
@@ -194,81 +194,81 @@
 	; morn
 	db 20, RATTATA
 	db 21, RATTATA
-	db 22, RATTATA
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
-	db 22, RATTATA
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
-	db 22, GASTLY
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 
 	map TIN_TOWER_8F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn
 	db 20, RATTATA
 	db 21, RATTATA
-	db 22, RATTATA
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
-	db 22, RATTATA
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
-	db 22, GASTLY
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 
 	map TIN_TOWER_9F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn
 	db 20, RATTATA
 	db 21, RATTATA
-	db 22, RATTATA
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 	; day
 	db 20, RATTATA
 	db 21, RATTATA
-	db 22, RATTATA
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 	; nite
 	db 20, GASTLY
 	db 21, GASTLY
-	db 22, GASTLY
 	db 22, RATICATE
-	db 23, RATICATE
-	db 24, RATICATE
-	db 24, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
 
 	map BURNED_TOWER_1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
@@ -291,57 +291,57 @@
 	; nite
 	db 13, RATTATA
 	db 14, KOFFING
-	db 15, RATTATA
+	db 15, GASTLY
 	db 14, ZUBAT
-	db 15, RATTATA
+	db 15, GASTLY
 	db 15, RATICATE
 	db 15, RATICATE
 
 	map BURNED_TOWER_B1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
-	db 14, RATTATA
 	db 14, KOFFING
+	db 14, RATTATA
 	db 16, KOFFING
 	db 15, ZUBAT
 	db 12, SLUGMA
-	db 16, WEEZING
-	db 16, MAGBY
+	db 15, SLUGMA
+	db 15, MAGBY
 	; day
-	db 14, RATTATA
 	db 14, KOFFING
+	db 14, RATTATA
 	db 16, KOFFING
 	db 15, ZUBAT
 	db 12, SLUGMA
-	db 16, WEEZING
-	db 16, MAGBY
+	db 15, SLUGMA
+	db 15, MAGBY
 	; nite
-	db 14, RATTATA
 	db 14, KOFFING
+	db 14, GASTLY
 	db 16, KOFFING
 	db 15, ZUBAT
 	db 12, SLUGMA
-	db 16, WEEZING
-	db 16, MAGBY
+	db 15, SLUGMA
+	db 15, MAGBY
 
 	map NATIONAL_PARK
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 12, NIDORAN_M
-	db 12, NIDORAN_F
+	db 13, NIDORAN_F
 	db 14, LEDYBA
-	db 13, PIDGEY
+	db 15, PIDGEY
 	db 10, CATERPIE
-	db 10, WEEDLE
-	db 10, WEEDLE
+	db 12, WEEDLE
+	db 12, WEEDLE
 	; day
 	db 12, NIDORAN_F
-	db 12, NIDORAN_M
+	db 13, NIDORAN_M
 	db 14, SENTRET
-	db 13, PIDGEY
+	db 15, PIDGEY
 	db 10, CATERPIE
-	db 10, WEEDLE
-	db 10, WEEDLE
+	db 12, WEEDLE
+	db 12, WEEDLE
 	; nite
 	db 12, PSYDUCK
 	db 13, HOOTHOOT
@@ -370,13 +370,13 @@
 	db 22, SMEARGLE
 	db 22, SMEARGLE
 	; nite
-	db 20, NATU
 	db 22, NATU
-	db 18, NATU
 	db 24, NATU
-	db 22, WOOPER
+	db 20, NATU
+	db 18, WOOPER
 	db 22, QUAGSIRE
-	db 22, QUAGSIRE
+	db 25, XATU
+	db 25, XATU
 
 	map RUINS_OF_ALPH_INNER_CHAMBER
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
@@ -1100,7 +1100,7 @@
 	db 80, TYRANITAR
 	; nite
 	db 76, CROBAT
-	db 76, ONIX
+	db 76, MISDREAVUS
 	db 74, GOLEM
 	db 78, CROBAT
 	db 78, STEELIX
