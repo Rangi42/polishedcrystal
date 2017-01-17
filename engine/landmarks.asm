@@ -183,9 +183,9 @@ ENDM
 	landmark  24, 140, RockyBeachName
 	landmark  32, 140, NoisyForestName
 	landmark  36, 140, ShrineRuinsName
-	landmark 108, 140, FastShipName
-	landmark 140, 156, NavelRockName
-	landmark 156, 156, FarawayIslandName
+	landmark 110, 140, FastShipName
+	landmark 124, 156, NavelRockName
+	landmark 164,  92, FarawayIslandName
 	landmark  62, 150, CinnabarLabName
 
 
