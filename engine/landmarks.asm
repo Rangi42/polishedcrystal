@@ -117,51 +117,51 @@ ENDM
 	landmark 140,  80, Route45Name
 	landmark 120,  84, DarkCaveName
 	landmark 132, 104, Route46Name
-	landmark 156,  84, SilverCaveName
+	landmark 156,  76, SilverCaveName
 	landmark 132,  38, SinjohRuinsName
 	landmark 132,  34, MystriStageName
 	landmark  60, 124, PalletTownName
 	landmark  60, 108, Route1Name
 	landmark  60,  92, ViridianCityName
-	landmark  60,  80, Route2Name
-	landmark  60,  74, ViridianForestName
-	landmark  60,  68, PewterCityName
-	landmark  72,  68, Route3Name
-	landmark  84,  68, MtMoonName
-	landmark 100,  68, Route4Name
-	landmark 116,  68, CeruleanCityName
-	landmark 108,  60, CeruleanCaveName
-	landmark 116,  60, Route24Name
-	landmark 132,  52, Route25Name
-	landmark 148,  52, CeruleanCapeName
-	landmark 116,  76, Route5Name
-	landmark 122,  90, UndergroundName
-	landmark 116,  92, Route6Name
-	landmark 116, 100, VermilionCityName
-	landmark 124,  92, DiglettsCaveName
-	landmark 104,  84, Route7Name
-	landmark 132,  84, Route8Name
-	landmark 132,  68, Route9Name
-	landmark 148,  76, Route10Name
-	landmark 148,  68, RockTunnelName
-	landmark 156,  68, PowerPlantName
-	landmark 148,  64, DimCaveName
-	landmark 148,  84, LavenderTownName
-	landmark 150,  84, LavRadioTowerName
-	landmark  92,  84, CeladonCityName
-	landmark 116,  84, SaffronCityName
-	landmark 132, 100, Route11Name
-	landmark 148, 100, Route12Name
-	landmark 140, 116, Route13Name
-	landmark 132, 124, Route14Name
-	landmark 116, 132, Route15Name
-	landmark  84,  84, Route16Name
-	landmark  84, 108, Route17Name
-	landmark  88, 132, Route18Name
-	landmark 100, 132, FuchsiaCityName
-	landmark 100, 124, SafariZoneName
-	landmark 100, 144, Route19Name
-	landmark  84, 148, Route20Name
+	landmark  60,  84, Route2Name
+	landmark  60,  76, ViridianForestName
+	landmark  60,  60, PewterCityName
+	landmark  72,  60, Route3Name
+	landmark  84,  60, MtMoonName
+	landmark 100,  60, Route4Name
+	landmark 116,  60, CeruleanCityName
+	landmark 108,  52, CeruleanCaveName
+	landmark 116,  52, Route24Name
+	landmark 132,  44, Route25Name
+	landmark 148,  44, CeruleanCapeName
+	landmark 116,  68, Route5Name
+	landmark 122,  82, UndergroundName
+	landmark 116,  84, Route6Name
+	landmark 116,  92, VermilionCityName
+	landmark 124,  84, DiglettsCaveName
+	landmark 104,  76, Route7Name
+	landmark 132,  76, Route8Name
+	landmark 132,  60, Route9Name
+	landmark 148,  68, Route10Name
+	landmark 148,  60, RockTunnelName
+	landmark 156,  60, PowerPlantName
+	landmark 148,  56, DimCaveName
+	landmark 148,  76, LavenderTownName
+	landmark 150,  76, LavRadioTowerName
+	landmark  92,  76, CeladonCityName
+	landmark 116,  76, SaffronCityName
+	landmark 132,  92, Route11Name
+	landmark 148,  92, Route12Name
+	landmark 140, 108, Route13Name
+	landmark 132, 116, Route14Name
+	landmark 116, 124, Route15Name
+	landmark  84,  76, Route16Name
+	landmark  84, 104, Route17Name
+	landmark  88, 124, Route18Name
+	landmark 100, 124, FuchsiaCityName
+	landmark 100, 116, SafariZoneName
+	landmark 100, 136, Route19Name
+	landmark  88, 148, Route20Name
 	landmark  76, 148, SeafoamIslandsName
 	landmark  60, 148, CinnabarIslandName
 	landmark  58, 146, PokemonMansionName
@@ -177,12 +177,12 @@ ENDM
 	landmark  36,  52, IndigoPlateauName
 	landmark  24,  92, Route28Name
 	landmark  28, 148, ShamoutiIslandName
-	landmark  20, 152, BeautifulBeachName
-	landmark  24, 144, ShamoutiTunnelName
-	landmark  20, 148, WarmBeachName
-	landmark  24, 152, RockyBeachName
-	landmark  36, 148, NoisyForestName
-	landmark  28, 152, ShrineRuinsName
+	landmark  36, 148, BeautifulBeachName
+	landmark  22, 146, ShamoutiTunnelName
+	landmark  18, 150, WarmBeachName
+	landmark  24, 140, RockyBeachName
+	landmark  32, 140, NoisyForestName
+	landmark  36, 140, ShrineRuinsName
 	landmark 108, 140, FastShipName
 	landmark 140, 156, NavelRockName
 	landmark 156, 156, FarawayIslandName
