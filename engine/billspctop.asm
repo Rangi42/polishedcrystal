@@ -3,7 +3,7 @@ _BillsPC: ; e3fd
 	ret c
 	call .LogIn
 	call .UseBillsPC
-	jp CloseSubmenu
+	jp .LogOut
 
 .CheckCanUsePC: ; e40a (3:640a)
 	ld a, [PartyCount]
@@ -32,12 +32,17 @@ _BillsPC: ; e3fd
 	call PrintText
 	pop af
 	ld [Options1], a
-	jp LoadFontsBattleExtra
+	call LoadFontsBattleExtra
+	ret
 
 .Text_What: ; 0xe43a
 	; What?
 	text_jump UnknownText_0x1c1024
 	db "@"
+
+.LogOut: ; e43f (3:643f)
+	call CloseSubmenu
+	ret
 
 .UseBillsPC: ; e443 (3:6443)
 	ld hl, .MenuDataHeader
@@ -50,7 +55,7 @@ _BillsPC: ; e3fd
 	ld [wWhichIndexSet], a
 	ld [hBGMapMode], a
 	call DoNthMenu
-	jp c, CloseWindow
+	jr c, .cancel
 	ld a, [wMenuCursorBuffer]
 	push af
 	ld a, [MenuSelection]
@@ -59,7 +64,9 @@ _BillsPC: ; e3fd
 	pop bc
 	ld a, b
 	jr nc, .loop
-	jp CloseWindow
+.cancel
+	call CloseWindow
+	ret
 
 .MenuDataHeader: ; 0xe46f
 	db $40 ; flags
@@ -196,7 +203,8 @@ ClearPCItemScreen: ; e58b
 	lb bc, 4, 18
 	call TextBox
 	call WaitBGMap2
-	jp SetPalettes ; load regular palettes?
+	call SetPalettes ; load regular palettes?
+	ret
 
 CopyBoxmonToTempMon: ; e5bb
 	ld a, [CurPartyMon]
@@ -208,4 +216,5 @@ CopyBoxmonToTempMon: ; e5bb
 	ld a, BANK(sBoxMon1Species)
 	call GetSRAMBank
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret

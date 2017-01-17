@@ -3,7 +3,8 @@ LoadBlindingFlashPalette:: ; 49409
 	ld de, UnknBGPals + 7 palettes
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 49418
 
 BlindingFlashPalette: ; 49418
@@ -233,7 +234,8 @@ LoadPokeComPalette: ; 494f2
 	ld de, UnknBGPals
 	ld hl, PokeComPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 49501
 
 PokeComPalette: ; 49501
@@ -245,7 +247,8 @@ LoadBattleTowerPalette: ; 49541
 	ld de, UnknBGPals
 	ld hl, BattleTowerPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 49550
 
 BattleTowerPalette: ; 49550
@@ -257,7 +260,8 @@ LoadIcePathPalette: ; 49590
 	ld de, UnknBGPals
 	ld hl, IcePathPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 4959f
 
 IcePathPalette: ; 4959f
@@ -269,7 +273,8 @@ LoadHousePalette: ; 495df
 	ld de, UnknBGPals
 	ld hl, HousePalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 495ee
 
 HousePalette: ; 495ee
@@ -281,7 +286,8 @@ LoadGatePalette:
 	ld de, UnknBGPals
 	ld hl, GatePalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 GatePalette:
 INCLUDE "tilesets/gate.pal"
@@ -291,7 +297,8 @@ LoadRadioTowerPalette: ; 4962e
 	ld de, UnknBGPals
 	ld hl, RadioTowerPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 4963d
 
 RadioTowerPalette: ; 4963d
@@ -307,7 +314,8 @@ LoadCeladonMansionPalette: ; 496c5
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 4963d
 
 CeladonMansionPalette:
@@ -318,7 +326,8 @@ LoadPokeCenterPalette:
 	ld de, UnknBGPals
 	ld hl, PokeCenterPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 PokeCenterPalette:
 INCLUDE "tilesets/pokecenter.pal"
@@ -332,7 +341,8 @@ LoadFarawayIslandPalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 FarawayIslandPalette:
 INCLUDE "tilesets/faraway_island.pal"
@@ -346,7 +356,8 @@ LoadShamoutiIslandPalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 ShamoutiIslandPalette:
 INCLUDE "tilesets/shamouti_island.pal"
@@ -360,7 +371,8 @@ LoadBellchimeTrailPalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 BellchimeTrailPalette:
 INCLUDE "tilesets/bellchime_trail.pal"
@@ -374,7 +386,8 @@ LoadYellowForestPalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 YellowForestPalette:
 INCLUDE "tilesets/yellow_forest.pal"
@@ -384,7 +397,8 @@ LoadViridianGymPalette:
 	ld de, UnknBGPals
 	ld hl, ViridianGymPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 ViridianGymPalette:
 INCLUDE "tilesets/viridian_gym.pal"
@@ -394,7 +408,8 @@ LoadMystriStagePalette:
 	ld de, UnknBGPals
 	ld hl, MystriStagePalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 MystriStagePalette:
 INCLUDE "tilesets/mystri_stage.pal"
@@ -404,7 +419,8 @@ LoadEmbeddedTowerPalette:
 	ld de, UnknBGPals
 	ld hl, EmbeddedTowerPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 EmbeddedTowerPalette:
 INCLUDE "tilesets/embedded_tower.pal"
@@ -418,7 +434,8 @@ LoadGoldenrodDeptStoreRoofPalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
@@ -428,7 +445,8 @@ LoadCinnabarVolcanoPalette:
 	ld de, UnknBGPals
 	ld hl, CinnabarVolcanoPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 CinnabarVolcanoPalette:
 INCLUDE "tilesets/cinnabar_volcano.pal"
@@ -438,7 +456,8 @@ LoadCeruleanCavePalette:
 	ld de, UnknBGPals
 	ld hl, CeruleanCavePalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 CeruleanCavePalette:
 INCLUDE "tilesets/cerulean_cave.pal"
@@ -448,7 +467,8 @@ LoadSilverCavePalette:
 	ld de, UnknBGPals
 	ld hl, SilverCavePalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 SilverCavePalette:
 INCLUDE "tilesets/silver_cave.pal"
@@ -458,7 +478,8 @@ LoadNavelRockPalette:
 	ld de, UnknBGPals
 	ld hl, NavelRockPalette
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 LoadNavelRockTimePalette:
 	ld a, [TimeOfDayPal]
@@ -469,7 +490,8 @@ LoadNavelRockTimePalette:
 	ld a, $5
 	ld de, UnknBGPals
 	ld bc, 8 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"
@@ -491,7 +513,7 @@ LinkTrade_Layout_FillBox: ; 49336
 	ret
 ; 49346
 
-InitLinkTradePalMap: ; 49856
+_InitLinkTradePalMap: ; 49797
 	hlcoord 0, 0, AttrMap
 	lb bc, 16, 2
 	ld a, $4
@@ -539,7 +561,8 @@ endr
 	hlcoord 2, 17, AttrMap
 	ld a, $3
 	ld bc, 6
-	jp ByteFill
+	call ByteFill
+	ret
 ; 49811
 
 LoadLinkTradePalette: ; 49811
@@ -555,6 +578,11 @@ LoadLinkTradePalette: ; 49811
 LinkTradePalette:
 INCLUDE "tilesets/link_trade.pal"
 
+InitLinkTradePalMap: ; 49856
+	call _InitLinkTradePalMap
+	ret
+; 4985a
+
 LoadSpecialMapOBPalette:
 	ld a, [MapGroup]
 	cp GROUP_VERMILION_GYM
@@ -568,7 +596,8 @@ LoadSpecialMapOBPalette:
 	ld de, UnknOBPals + 6 palettes
 	ld hl, VermilionGymOBPalette_Tree
 	ld bc, 1 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 .not_vermilion_gym:
 	ld a, [MapGroup]
@@ -587,7 +616,8 @@ LoadSpecialMapOBPalette:
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
 	ld bc, 1 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 .not_faraway_island:
 	ld a, [MapGroup]
@@ -606,7 +636,8 @@ LoadSpecialMapOBPalette:
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
 	ld bc, 1 palettes
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 .not_faraway_jungle:
 	ret

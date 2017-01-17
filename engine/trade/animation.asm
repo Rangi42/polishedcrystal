@@ -382,7 +382,8 @@ TradeAnim_TubeToOT2: ; 291af
 	ret nz
 	ld a, $1
 	call Function29281
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 291c4
 
 TradeAnim_TubeToOT3: ; 291c4
@@ -394,7 +395,8 @@ TradeAnim_TubeToOT3: ; 291c4
 	ret nz
 	ld a, $2
 	call Function29281
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 291d9
 
 TradeAnim_TubeToOT4: ; 291d9
@@ -404,7 +406,8 @@ TradeAnim_TubeToOT4: ; 291d9
 	ld [hSCX], a
 	and a
 	ret nz
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 291e8
 
 TradeAnim_TubeToPlayer3: ; 291e8
@@ -416,7 +419,8 @@ TradeAnim_TubeToPlayer3: ; 291e8
 	ret nz
 	ld a, $1
 	call Function29281
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 291fd
 
 TradeAnim_TubeToPlayer4: ; 291fd
@@ -428,7 +432,8 @@ TradeAnim_TubeToPlayer4: ; 291fd
 	ret nz
 	xor a
 	call Function29281
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 29211
 
 TradeAnim_TubeToPlayer5: ; 29211
@@ -438,14 +443,16 @@ TradeAnim_TubeToPlayer5: ; 29211
 	ld [hSCX], a
 	and a
 	ret nz
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 29220
 
 TradeAnim_TubeToOT6:
 TradeAnim_TubeToPlayer6: ; 29220
 	ld a, $80
 	ld [wcf64], a
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 29229
 
 TradeAnim_TubeToOT8:
@@ -467,7 +474,8 @@ TradeAnim_TubeToPlayer8: ; 29229
 	call LoadTradeBallAndCableGFX
 	call WaitBGMap
 	call Function297ed
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 2925d
 
 TradeAnim_TubeToOT5:
@@ -483,7 +491,8 @@ TradeAnim_TubeToPlayer7: ; 2925d
 	ret
 
 .done
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 2926d
 
 TradeAnim_GiveTrademonSFX: ; 2926d
@@ -638,7 +647,8 @@ TradeAnim_EnterLinkTube: ; 29348
 	call DmgToCgbObjPals
 	ld de, SFX_POTION
 	call PlaySFX
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 2937e
 
 TradeAnim_04: ; 2937e
@@ -652,7 +662,8 @@ TradeAnim_04: ; 2937e
 .done
 	ld c, 80
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29391
 
 TradeAnim_ExitLinkTube: ; 29391
@@ -667,7 +678,8 @@ TradeAnim_ExitLinkTube: ; 29391
 	call ClearTileMap
 	xor a
 	ld [hSCX], a
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 293a6
 
 TradeAnim_SetupGivemonScroll: ; 293a6
@@ -677,7 +689,8 @@ TradeAnim_SetupGivemonScroll: ; 293a6
 	ld [hSCX], a
 	ld a, $50
 	ld [hWY], a
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 293b6
 
 TradeAnim_DoGivemonScroll: ; 293b6
@@ -696,7 +709,8 @@ TradeAnim_DoGivemonScroll: ; 293b6
 	ld [hWX], a
 	xor a
 	ld [hSCX], a
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 293d2
 
 TradeAnim_1d: ; 293d2
@@ -704,7 +718,8 @@ TradeAnim_1d: ; 293d2
 	ld [hWX], a
 	ld a, $50
 	ld [hWY], a
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 293de
 
 TradeAnim_1e: ; 293de
@@ -712,7 +727,8 @@ TradeAnim_1e: ; 293de
 	ld [hWX], a
 	ld a, $90
 	ld [hWY], a
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 293ea
 
 TradeAnim_ScrollOutRight: ; 293ea
@@ -729,7 +745,8 @@ TradeAnim_ScrollOutRight: ; 293ea
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	call ClearTileMap
-	jp NextTradeAnim
+	call NextTradeAnim
+	ret
 ; 2940c
 
 TradeAnim_ScrollOutRight2: ; 2940c
@@ -750,7 +767,8 @@ TradeAnim_ScrollOutRight2: ; 2940c
 	ld [hWY], a
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 2942e
 
 TradeAnim_ShowGivemonData: ; 2942e
@@ -775,7 +793,8 @@ TradeAnim_ShowGivemonData: ; 2942e
 	call PlayCryHeader
 .skip_cry
 
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29461
 
 TradeAnim_ShowGetmonData: ; 29461
@@ -791,12 +810,14 @@ TradeAnim_ShowGetmonData: ; 29461
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	call TradeAnim_ShowGetmonFrontpic
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29487
 
 TradeAnim_AnimateFrontpic: ; 29487
 	farcall AnimateTrademonFrontpic
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29491
 
 TradeAnim_GetFrontpic: ; 29491
@@ -848,19 +869,22 @@ TradeAnim_ShowFrontpic: ; 294c3
 TraideAnim_Wait80: ; 294e7
 	ld c, 80
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 294f0
 
 TraideAnim_Wait40: ; 294f0
 	ld c, 40
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 294f9
 
 TraideAnim_Wait96: ; 294f9
 	ld c, 96
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29502
 
 TraideAnim_Wait80IfOTEgg: ; 29502
@@ -1194,13 +1218,15 @@ TradeAnim_SentToOTText: ; 29701
 	call Function297c9
 	ld c, 128
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 
 .time_capsule
 	ld hl, UnknownText_0x29732
 	call PrintText
 	call Function297c9
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29732
 
 UnknownText_0x29732: ; 0x29732
@@ -1222,7 +1248,8 @@ TradeAnim_OTBidsFarewell: ; 2973c
 	ld hl, UnknownText_0x29757
 	call PrintText
 	call Function297c9
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29752
 
 UnknownText_0x29752: ; 0x29752
@@ -1247,7 +1274,8 @@ TradeAnim_TakeCareOfText: ; 2975c
 	ld hl, UnknownText_0x2977a
 	call PrintText
 	call Function297c9
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 2977a
 
 UnknownText_0x2977a: ; 0x2977a
@@ -1265,7 +1293,8 @@ TradeAnim_OTSendsText1: ; 2977f
 	call Function297c9
 	ld c, 14
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 2979a
 
 UnknownText_0x2979a: ; 0x2979a
@@ -1289,7 +1318,8 @@ TradeAnim_OTSendsText2: ; 297a4
 	call Function297c9
 	ld c, 14
 	call DelayFrames
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 297bf
 
 UnknownText_0x297bf: ; 0x297bf
@@ -1420,7 +1450,8 @@ TradeAnim_WaitAnim: ; 29879
 	ret
 
 .done
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29886
 
 TradeAnim_WaitAnim2: ; 29886
@@ -1432,7 +1463,8 @@ TradeAnim_WaitAnim2: ; 29886
 	ret
 
 .done
-	jp TradeAnim_Next
+	call TradeAnim_Next
+	ret
 ; 29893
 
 TradeGameBoyTilemap: ; 298c7

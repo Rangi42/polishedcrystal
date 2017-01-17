@@ -15,11 +15,17 @@ CheckShininess:
 	and a
 	ret
 
+InitPokegearPalettes:
+; This is needed because the regular palette is dark at night.
+	call InitPartyMenuOBPals
+	ret
+
 InitPartyMenuPalettes:
 	ld hl, PalPacket_9c56 + 1
 	call CopyFourPalettes
 	call InitPartyMenuOBPals
-	jp WipeAttrMap
+	call WipeAttrMap
+	ret
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
@@ -68,7 +74,8 @@ ApplyHPBarPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	jp FillBoxCGB
+	call FillBoxCGB
+	ret
 
 LoadStatsScreenPals:
 	ld hl, StatsScreenPals
@@ -105,7 +112,8 @@ endr
 	call FarCopyWRAM
 	call ApplyPals
 	call WipeAttrMap
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 
 .MailPals:
 	RGB 20, 31, 11
@@ -287,14 +295,16 @@ WipeAttrMap:
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	jp ByteFill
+	call ByteFill
+	ret
 
 ApplyPals:
 	ld hl, UnknBGPals
 	ld de, BGPals
 	ld bc, 16 palettes
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 ApplyAttrMap:
 	ld a, [rLCDC]
@@ -361,16 +371,16 @@ ApplyPartyMenuHPPals: ; 96f3
 .done
 	lb bc, 2, 8
 	ld a, e
-	jp FillBoxCGB
+	call FillBoxCGB
+	ret
 
-InitPokegearPalettes:
-; This is needed because the regular palette is dark at night.
 InitPartyMenuOBPals:
 	ld hl, Palettes_b681
 	ld de, UnknOBPals
 	ld bc, 2 palettes
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -441,6 +451,10 @@ GetTrainerPalettePointer:
 	add hl, bc
 	ret
 
+GetMonPalettePointer_:
+	call GetMonPalettePointer
+	ret
+
 Palettes_979c:
 	RGB 31, 31, 31
 	RGB 25, 25, 25
@@ -504,7 +518,8 @@ LoadPokemonPalette:
 	ld a, $5
 	ld de, UnknBGPals + 7 palettes + 2
 	ld bc, 4
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 LoadPartyMonPalette:
 	; bc = personality
@@ -521,7 +536,8 @@ LoadPartyMonPalette:
 	ld a, $5
 	ld de, UnknBGPals + 7 palettes + 2
 	ld bc, 4
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 InitCGBPals::
 	ld a, $1

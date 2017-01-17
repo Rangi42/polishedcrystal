@@ -857,7 +857,8 @@ ReelAction_StopReel1: ; 92c5e
 	call .CheckForBias
 	ret nz
 .NoBias:
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 ; 92c76
 
@@ -897,7 +898,8 @@ ReelAction_StopReel2: ; 92c86
 	ret
 
 .NoBias:
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 ; 92ca9
 
@@ -928,7 +930,8 @@ ReelAction_StopReel3: ; 92ca9
 	ret
 
 .NoBias:
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 ; 92cd2
 
@@ -938,7 +941,8 @@ ReelAction_SetUpReel2SkipTo7: ; 92cd2
 	ld a, [wFirstTwoReelsMatchingSevens]
 	and a
 	jr z, .no_match
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 .no_match
 	ld a, SFX_STOP_SLOT
@@ -984,7 +988,8 @@ ReelAction_FastSpinReel2UntilLinedUp7s: ; 92d13
 	ld a, [wFirstTwoReelsMatchingSevens]
 	and a
 	ret z
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 ; 92d20
 
@@ -1023,7 +1028,8 @@ ReelAction_WaitGolem: ; 92d4f
 
 .two
 	call Slots_CheckMatchedAllThreeReels
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 .one
 	ld hl, wReel1ReelAction - wReel1
@@ -1110,7 +1116,8 @@ ReelAction_DropReel: ; 92dca
 	jr nz, .EggAgain
 	ld a, $5
 	ld [wcf64], a
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 .EggAgain:
 	ld hl, wReel1SpinRate - wReel1
@@ -1146,7 +1153,8 @@ ReelAction_CheckDropReel: ; 92e10
 	and a
 	jr nz, .spin
 	call Slots_CheckMatchedAllThreeReels
-	jp Slots_StopReel
+	call Slots_StopReel
+	ret
 
 .spin
 	dec [hl]
@@ -1215,13 +1223,15 @@ ReelAction_WaitSlowAdvanceReel3: ; 92e64
 	and a
 	jr nz, .play_sfx
 	call Slots_StopReel
-	jp WaitSFX
+	call WaitSFX
+	ret
 
 .check2
 	call Slots_CheckMatchedAllThreeReels
 	jr c, .play_sfx
 	call Slots_StopReel
-	jp WaitSFX
+	call WaitSFX
+	ret
 
 ; 92e94
 
@@ -1863,14 +1873,16 @@ endr
 .LinedUpPokeballs: ; 9320b
 	ld a, SFX_3RD_PLACE
 	call Slots_PlaySFX
-	jp WaitSFX
+	call WaitSFX
+	ret
 
 ; 93214
 
 .LinedUpMonOrCherry: ; 93214
 	ld a, SFX_PRESENT
 	call Slots_PlaySFX
-	jp WaitSFX
+	call WaitSFX
+	ret
 
 ; 9321d
 

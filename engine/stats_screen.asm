@@ -112,11 +112,13 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	ld hl, wcf64
 	set 4, [hl]
 	ld h, 4
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 .egg
 	ld h, 1
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 EggStatsInit: ; 4dda1
 	call EggStatsScreen
@@ -131,7 +133,8 @@ EggStatsJoypad: ; 4ddac (13:5dac)
 	call StatsScreen_GetJoypad
 	jr nc, .check
 	ld h, 0
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 .check
 	bit A_BUTTON_F, a
@@ -141,7 +144,8 @@ EggStatsJoypad: ; 4ddac (13:5dac)
 
 .quit
 	ld h, 7
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 StatsScreen_LoadPage: ; 4ddc6 (13:5dc6)
 	call StatsScreen_LoadGFX
@@ -156,7 +160,8 @@ MonStatsJoypad: ; 4ddd6 (13:5dd6)
 	call StatsScreen_GetJoypad
 	jr nc, .next
 	ld h, 0
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 .next
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
@@ -312,15 +317,18 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	or c
 	ld [wcf64], a
 	ld h, 4
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 .load_mon
 	ld h, 0
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 .b_button ; 4dee4 (13:5ee4)
 	ld h, 7
-	jp StatsScreen_SetJumptableIndex
+	call StatsScreen_SetJumptableIndex
+	ret
 
 StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call .PlaceHPBar

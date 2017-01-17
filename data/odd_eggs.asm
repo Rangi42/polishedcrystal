@@ -2,7 +2,8 @@ GiveEggMon:
 	ld de, OddEggSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
 	call CopyBytes
-	jp AddEggMonToParty
+	call AddEggMonToParty
+	ret
 ; 1fb546
 
 AddEggMonToParty:
@@ -71,7 +72,9 @@ AddEggMonToParty:
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
-	jp CloseSRAM
+
+	call CloseSRAM
+	ret
 ; 11ba38
 
 

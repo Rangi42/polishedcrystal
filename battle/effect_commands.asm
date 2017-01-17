@@ -10,7 +10,8 @@ DoPlayerTurn: ; 34000
 	jr nz, DoTurn
 
 	ld hl, ScaredText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	ret
 
 ; 3400a
 
@@ -23,7 +24,8 @@ DoEnemyTurn: ; 3400a
 	jr nz, .not_ghost
 
 	ld hl, GetOutText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	ret
 
 .not_ghost
 	ld a, [wLinkMode]
@@ -982,7 +984,8 @@ BattleCommand_DoTurn: ; 34555
 
 .wild
 	ld hl, wWildMonPP
-	jr .consume_pp
+	call .consume_pp
+	ret
 
 .out_of_pp
 	call BattleCommand_MoveDelay
@@ -8756,7 +8759,8 @@ BattleCommand_BatonPass: ; 379c9
 	ld hl, PassedBattleMonEntrance
 	call CallBattleCore
 
-	jp ResetBatonPassStatus
+	call ResetBatonPassStatus
+	ret
 
 
 .Enemy:

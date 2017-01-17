@@ -102,7 +102,8 @@ Function1409b: ; 1409b
 .set_bit_7
 	; Day count exceeds 16383
 	ld a, %10000000
-	jp RecordRTCStatus ; set bit 7 on sRTCStatusFlags
+	call RecordRTCStatus ; set bit 7 on sRTCStatusFlags
+	ret
 ; 140ae
 
 Function140ae: ; 140ae

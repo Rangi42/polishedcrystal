@@ -13,7 +13,8 @@ LoadMapGroupRoof:: ; 1c000
 	call AddNTimes
 	ld de, VTiles2 tile $0a
 	ld bc, $90
-	jp CopyBytes
+	call CopyBytes
+	ret
 ; 1c021
 
 MapGroupRoofs: ; 1c021i

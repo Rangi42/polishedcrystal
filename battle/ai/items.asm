@@ -51,7 +51,8 @@ AI_SwitchOrTryItem: ; 38000
 	; fallthrough
 
 DontSwitch: ; 38041
-	jp AI_TryItem
+	call AI_TryItem
+	ret
 ; 38045
 
 SwitchOften: ; 38045

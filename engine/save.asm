@@ -170,7 +170,8 @@ AddHallOfFameEntry: ; 14b5f
 	ld de, sHallOfFame
 	ld bc, HOF_LENGTH
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14b85
 
 SaveGameData: ; 14b85
@@ -294,7 +295,8 @@ SaveGameData_: ; 14c10
 	xor a
 	ld [sBattleTowerChallengeState], a
 .ok
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14c6b
 
 UpdateStackTop: ; 14c6b
@@ -322,7 +324,8 @@ UpdateStackTop: ; 14c6b
 	ld [sStackTop + 1], a
 
 .done
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14c90
 
 FindStackTop: ; 14c90
@@ -426,7 +429,8 @@ Function14d6c: ; 14d6c
 .ok
 	ld a, b
 	ld [$a60b], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14d83
 
 ; unused?
@@ -436,7 +440,8 @@ Function14d83: ; 14d83
 	xor a
 	ld [$a60c], a
 	ld [$a60d], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14d93
 
 ; unused?
@@ -445,7 +450,8 @@ Function14d93: ; 14d93
 	call GetSRAMBank
 	xor a
 	ld [$a000], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14da0
 
 HallOfFame_InitSaveIfNeeded: ; 14da0
@@ -500,7 +506,8 @@ SavePokemonData: ; 14df7
 	ld de, sPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14e0c
 
 SaveBox: ; 14e0c
@@ -519,7 +526,8 @@ SaveChecksum: ; 14e13
 	ld [sChecksum + 0], a
 	ld a, d
 	ld [sChecksum + 1], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14e2d
 
 ValidateBackupSave: ; 14e2d
@@ -529,7 +537,8 @@ ValidateBackupSave: ; 14e2d
 	ld [s0_b208], a
 	ld a, " "
 	ld [s0_bf0f], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14e40
 
 SaveBackupOptions: ; 14e40
@@ -539,7 +548,8 @@ SaveBackupOptions: ; 14e40
 	ld de, sBackupOptions
 	ld bc, OptionsEnd - Options1
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14e55
 
 SaveBackupPlayerData: ; 14e55
@@ -553,7 +563,8 @@ SaveBackupPlayerData: ; 14e55
 	ld de, sBackupMapData
 	ld bc, wMapDataEnd - wMapData
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14e76
 
 SaveBackupPokemonData: ; 14e76
@@ -563,7 +574,8 @@ SaveBackupPokemonData: ; 14e76
 	ld de, sBackupPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14e8b
 
 SaveBackupChecksum: ; 14e8b
@@ -576,7 +588,8 @@ SaveBackupChecksum: ; 14e8b
 	ld [sBackupChecksum + 0], a
 	ld a, d
 	ld [sBackupChecksum + 1], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14ea5
 
 
@@ -641,7 +654,8 @@ TryLoadSaveData: ; 14f1c
 	ld de, StatusFlags
 	ld a, [hl]
 	ld [de], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 
 .backup
 	call CheckBackupSaveFile
@@ -659,7 +673,8 @@ TryLoadSaveData: ; 14f1c
 	ld de, StatusFlags
 	ld a, [hl]
 	ld [de], a
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 
 .corrupt
 	ld hl, DefaultOptions
@@ -701,7 +716,8 @@ CheckPrimarySaveFile: ; 14f84
 	ld [wSaveFileExists], a
 
 .nope
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14faf
 
 CheckBackupSaveFile: ; 14faf
@@ -721,7 +737,8 @@ CheckBackupSaveFile: ; 14faf
 	ld [wSaveFileExists], a
 
 .nope
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 14fd7
 
 
@@ -745,7 +762,8 @@ LoadPlayerData: ; 14fd7 (5:4fd7)
 	ld a, BATTLETOWER_WON_CHALLENGE
 	ld [sBattleTowerChallengeState], a
 .not_4
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 
 LoadPokemonData: ; 1500c
 	ld a, BANK(sPokemonData)
@@ -754,7 +772,8 @@ LoadPokemonData: ; 1500c
 	ld de, wPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 ; 15021
 
 LoadBox: ; 15021 (5:5021)
@@ -790,7 +809,8 @@ LoadBackupPlayerData: ; 15046 (5:5046)
 	ld de, wMapData
 	ld bc, wMapDataEnd - wMapData
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 
 LoadBackupPokemonData: ; 15067 (5:5067)
 	ld a, BANK(sBackupPokemonData)
@@ -799,7 +819,8 @@ LoadBackupPokemonData: ; 15067 (5:5067)
 	ld de, wPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
 	call CopyBytes
-	jp CloseSRAM
+	call CloseSRAM
+	ret
 
 VerifyBackupChecksum: ; 1507c (5:507c)
 	ld hl, sBackupGameData

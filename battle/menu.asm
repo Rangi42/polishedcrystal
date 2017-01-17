@@ -6,7 +6,8 @@ LoadBattleMenu: ; 24ef2
 	call InterpretBattleMenu
 	ld a, [wMenuCursorBuffer]
 	ld [wd0d2], a
-	jp ExitMenu
+	call ExitMenu
+	ret
 ; 24f0b
 
 SafariBattleMenu: ; 24f0b
@@ -27,7 +28,8 @@ Function24f19: ; 24f19
 	call _2DMenu
 	ld a, [wMenuCursorBuffer]
 	ld [wd0d2], a
-	jp ExitMenu
+	call ExitMenu
+	ret
 ; 24f2c
 
 BattleMenuDataHeader: ; 24f2c
@@ -80,7 +82,8 @@ Function24f7c: ; 24f7c
 	hlcoord 17, 13
 	ld de, wSafariBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	jp PrintNum
+	call PrintNum
+	ret
 ; 24f89
 
 MenuDataHeader_0x24f89: ; 24f89
@@ -110,5 +113,6 @@ Function24fb2: ; 24fb2
 	hlcoord 13, 16
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	jp PrintNum
+	call PrintNum
+	ret
 ; 24fbf

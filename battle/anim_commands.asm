@@ -51,7 +51,8 @@ _PlayBattleAnim: ; cc0e4
 	call BattleAnimDelayFrame
 	call BattleAnimDelayFrame
 	call BattleAnimDelayFrame
-	jp WaitSFX
+	call WaitSFX
+	ret
 ; cc11c
 
 BattleAnimRunScript: ; cc11c
@@ -95,7 +96,8 @@ BattleAnimRunScript: ; cc11c
 	call RunBattleAnimScript
 
 .done
-	jp BattleAnim_RevertPals
+	call BattleAnim_RevertPals
+	ret
 ; cc163
 
 RunBattleAnimScript: ; cc163
@@ -137,7 +139,8 @@ RunBattleAnimScript: ; cc163
 	bit 0, a
 	jr z, .playframe
 
-	jp BattleAnim_ClearCGB_OAMFlags
+	call BattleAnim_ClearCGB_OAMFlags
+	ret
 ; cc1a1
 
 BattleAnimClearHud: ; cc1a1
@@ -150,7 +153,8 @@ BattleAnimClearHud: ; cc1a1
 	call BattleAnimDelayFrame
 	call BattleAnimDelayFrame
 	call BattleAnimDelayFrame
-	jp WaitTop
+	call WaitTop
+	ret
 ; cc1bb
 
 BattleAnimRestoreHuds: ; cc1bb
@@ -175,7 +179,8 @@ BattleAnimRestoreHuds: ; cc1bb
 	call BattleAnimDelayFrame
 	call BattleAnimDelayFrame
 	call BattleAnimDelayFrame
-	jp WaitTop
+	call WaitTop
+	ret
 ; cc1e2
 
 BattleAnimRequestPals: ; cc1e2
@@ -214,12 +219,14 @@ ClearActorHud: ; cc207
 
 	hlcoord 0, 0
 	lb bc, 4, 11
-	jp ClearBox
+	call ClearBox
+	ret
 
 .player
 	hlcoord 9, 7
 	lb bc, 5, 11
-	jp ClearBox
+	call ClearBox
+	ret
 ; cc220
 
 
@@ -256,7 +263,8 @@ endr
 RunBattleAnimCommand: ; cc25f
 	call .CheckTimer
 	ret nc
-	jr .RunScript
+	call .RunScript
+	ret
 ; cc267
 
 .CheckTimer: ; cc267
@@ -598,7 +606,8 @@ BattleAnimCmd_Obj: ; cc41f (33:441f)
 	ld [wBattleAnimTemp2], a
 	call GetBattleAnimByte
 	ld [wBattleAnimTemp3], a
-	jp QueueBattleAnimation
+	call QueueBattleAnimation
+	ret
 
 BattleAnimCmd_BGEffect: ; cc43b (33:443b)
 	call GetBattleAnimByte
@@ -609,7 +618,8 @@ BattleAnimCmd_BGEffect: ; cc43b (33:443b)
 	ld [wBattleAnimTemp2], a
 	call GetBattleAnimByte
 	ld [wBattleAnimTemp3], a
-	jp _QueueBGEffect
+	call _QueueBGEffect
+	ret
 
 BattleAnimCmd_BGP: ; cc457 (33:4457)
 	call GetBattleAnimByte
@@ -787,6 +797,8 @@ BattleAnimCmd_EnemyFeetObj: ; cc52c (33:452c)
 	ld a, $60
 	ld [wBattleAnimTemp0], a
 	ld a, $6
+	call .LoadFootprint
+	ret
 
 .LoadFootprint: ; cc561 (33:4561)
 	push af
@@ -840,6 +852,8 @@ BattleAnimCmd_PlayerHeadObj: ; cc57e (33:457e)
 	ld a, $60
 	ld [wBattleAnimTemp0], a
 	ld a, $6
+	call .LoadHead
+	ret
 
 .LoadHead: ; cc5b3 (33:45b3)
 	push af
@@ -916,13 +930,15 @@ BattleAnimCmd_UpdateActorPic: ; cc622 (33:4622)
 	ld hl, VTiles2 tile $00
 	ld b, 0
 	ld c, $31
-	jp Request2bpp
+	call Request2bpp
+	ret
 
 .player
 	ld hl, VTiles2 tile $31
 	ld b, 0
 	ld c, $24
-	jp Request2bpp
+	call Request2bpp
+	ret
 
 BattleAnimCmd_RaiseSub: ; cc640 (33:4640)
 
@@ -1044,7 +1060,8 @@ GetSubstitutePic: ; cc64c
 .CopyTile ; cc6c6 (33:46c6)
 	ld bc, 1 tiles
 	ld a, BANK(GetSubstitutePic)
-	jp FarCopyBytes
+	call FarCopyBytes
+	ret
 
 BattleAnimCmd_MinimizeOpp: ; cc6cf (33:46cf)
 	ld a, [rSVBK]
@@ -1094,7 +1111,8 @@ CopyMinimizePic: ; cc719 (33:4719)
 	ld hl, MinimizePic
 	ld bc, $10
 	ld a, BANK(MinimizePic)
-	jp FarCopyBytes
+	call FarCopyBytes
+	ret
 ; cc725 (33:4725)
 
 MinimizePic: ; cc725
@@ -1350,7 +1368,8 @@ PlayHitSound: ; cc881
 	ld de, SFX_NOT_VERY_EFFECTIVE
 
 .play
-	jp PlaySFX
+	call PlaySFX
+	ret
 ; cc8a4
 
 BattleAnimAssignPals: ; cc8a4
@@ -1360,7 +1379,8 @@ BattleAnimAssignPals: ; cc8a4
 	ld [wOBP1], a
 	call DmgToCgbBGPals
 	lb de, %11100100, %11100100
-	jp DmgToCgbObjPals
+	call DmgToCgbObjPals
+	ret
 ; cc8d3
 
 ClearBattleAnims: ; cc8d3
@@ -1384,7 +1404,8 @@ ClearBattleAnims: ; cc8d3
 	add hl, de
 	call GetBattleAnimPointer
 	call BattleAnimAssignPals
-	jp BattleAnimDelayFrame
+	call BattleAnimDelayFrame
+	ret
 ; cc8f6
 
 BattleAnim_RevertPals: ; cc8f6

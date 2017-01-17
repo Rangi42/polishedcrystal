@@ -211,7 +211,8 @@ ShortHPBarAnim_UpdateTiles: ; d730
 	push de
 	call HPBarAnim_RedrawHPBar
 	pop de
-	jp HPBarAnim_PaletteUpdate
+	call HPBarAnim_PaletteUpdate
+	ret
 ; d749
 
 LongHPBarAnim_UpdateTiles: ; d749
@@ -233,7 +234,8 @@ LongHPBarAnim_UpdateTiles: ; d749
 	push de
 	call HPBarAnim_RedrawHPBar
 	pop de
-	jp HPBarAnim_PaletteUpdate
+	call HPBarAnim_PaletteUpdate
+	ret
 ; d771
 
 HPBarAnim_RedrawHPBar: ; d771
@@ -247,7 +249,8 @@ HPBarAnim_RedrawHPBar: ; d771
 	adc h
 	ld h, a
 .player
-	jp DrawBattleHPBar
+	call DrawBattleHPBar
+	ret
 ; d784
 
 HPBarAnim_UpdateHPRemaining: ; d784
@@ -339,7 +342,8 @@ HPBarAnim_BGMapUpdate: ; d7c9
 	ld [hBGMapMode], a
 	ld a, c
 	ld [hBGMapThird], a
-	jp DelayFrame
+	call DelayFrame
+	ret
 
 .load_0
 	ld c, $0
@@ -351,7 +355,8 @@ HPBarAnim_BGMapUpdate: ; d7c9
 	call DelayFrame
 	ld a, c
 	ld [hBGMapThird], a
-	jp DelayFrame
+	call DelayFrame
+	ret
 ; d839
 
 ShortHPBar_CalcPixelFrame: ; d839

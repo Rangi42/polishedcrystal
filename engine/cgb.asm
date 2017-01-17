@@ -158,7 +158,8 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld bc, 6 palettes
 	ld a, $5
 	call FarCopyWRAM
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 8e85
 
 LoadPlayerStatusIconPalette:
@@ -174,7 +175,8 @@ endr
 	ld de, UnknBGPals + 5 palettes + 2
 	ld bc, 2
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 LoadEnemyStatusIconPalette:
 	ld de, EnemyMonStatus
@@ -189,7 +191,8 @@ endr
 	ld de, UnknBGPals + 6 palettes + 2
 	ld bc, 2
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 StatusIconPalettes:
 ; OK
@@ -230,7 +233,8 @@ endr
 	ld de, UnknBGPals + 7 palettes + 4
 	ld bc, 2
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 
 CategoryIconPalettes:
 ; PHYSICAL
@@ -285,7 +289,8 @@ InitPartyMenuBGPal7: ; 8e85
 	ld de, UnknBGPals + 7 palettes
 	ld bc, 1 palettes
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 8e9f
 
 InitPartyMenuBGPal0: ; 8e9f
@@ -293,7 +298,8 @@ InitPartyMenuBGPal0: ; 8e9f
 	ld de, UnknBGPals
 	ld bc, 1 palettes
 	ld a, $5
-	jp FarCopyWRAM
+	call FarCopyWRAM
+	ret
 ; 8eb9
 
 _CGB_PokegearPals: ; 8eb9
@@ -515,7 +521,7 @@ _CGB_Pokedex: ; 8f70
 	jr .got_palette
 
 .is_pokemon
-	call GetMonPalettePointer
+	call GetMonPalettePointer_
 	call LoadPalette_White_Col1_Col2_Black
 .got_palette
 	call WipeAttrMap
@@ -592,7 +598,7 @@ _CGB_PokedexUnownMode: ; 903e
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
 	ld a, [CurPartySpecies]
-	call GetMonPalettePointer
+	call GetMonPalettePointer_
 	call LoadPalette_White_Col1_Col2_Black
 	call WipeAttrMap
 	hlcoord 7, 5, AttrMap
@@ -706,7 +712,8 @@ Function9133: ; 9133
 	ld bc, 2 palettes
 	ld a, $5
 	call FarCopyWRAM
-	jp WipeAttrMap
+	call WipeAttrMap
+	ret
 ; 914e
 
 Palette_914e: ; 914e
@@ -737,7 +744,8 @@ Function9166: ; 9166
 	ld a, $39
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
-	jp WipeAttrMap
+	call WipeAttrMap
+	ret
 ; 9180
 
 Function9180: ; 9180
@@ -747,7 +755,8 @@ Function9180: ; 9180
 	ld a, $3a
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
-	jp WipeAttrMap
+	call WipeAttrMap
+	ret
 ; 9195
 
 _CGB11: ; 9195
@@ -758,7 +767,8 @@ _CGB11: ; 9195
 	call FarCopyWRAM
 	call ApplyPals
 	call WipeAttrMap
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 91ad
 
 _CGB08: ; 91ad
@@ -771,7 +781,8 @@ _CGB08: ; 91ad
 	ld hl, PalPacket_9cb6 + 1
 	call CopyFourPalettes
 	call WipeAttrMap
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 91c8
 
 _CGB_MapPals: ; 91c8
@@ -787,7 +798,8 @@ _CGB0a: ; 91d1
 	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 	call InitPartyMenuOBPals
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 91e4
 
 _CGB0b: ; 91e4
@@ -848,7 +860,8 @@ _CGB0d: ; 9251
 	ld hl, PalPacket_9cb6 + 1
 	call CopyFourPalettes
 	call WipeAttrMap
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 925e
 
 _CGB18: ; 925e
@@ -870,7 +883,8 @@ _CGB18: ; 925e
 	pop af
 	ld [rSVBK], a
 	call WipeAttrMap
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 9289
 
 _CGB_TrainerCard: ; 9289
@@ -1280,7 +1294,8 @@ _CGB_Pokepic: ; 9499
 	ld c, a
 	xor a
 	call FillBoxCGB
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 94d0
 
 _CGB13: ; 94d0
@@ -1315,7 +1330,8 @@ _CGB19: ; 94fa
 	call LoadHLPaletteIntoDE
 	call WipeAttrMap
 	call ApplyAttrMap
-	jp ApplyPals
+	call ApplyPals
+	ret
 ; 9521
 
 .Palette: ; 9521
@@ -1333,7 +1349,8 @@ _CGB1a: ; 9529
 	call LoadPalette_White_Col1_Col2_Black
 	call WipeAttrMap
 	call ApplyAttrMap
-	jp ApplyPals
+	call ApplyPals
+	ret
 ; 9542
 
 _CGB1b: ; 9555
@@ -1348,7 +1365,8 @@ _CGB1b: ; 9555
 	ld a, $1c
 	call GetPredefPal
 	call LoadHLPaletteIntoDE
-	jp WipeAttrMap
+	call WipeAttrMap
+	ret
 ; 9578
 
 _CGB_FrontpicPals: ; 9578
@@ -1359,7 +1377,8 @@ _CGB_FrontpicPals: ; 9578
 	call LoadPalette_White_Col1_Col2_Black
 	call WipeAttrMap
 	call ApplyAttrMap
-	jp ApplyPals
+	call ApplyPals
+	ret
 ; 9591
 
 _CGB_IntroPals: ; 9591
@@ -1379,7 +1398,8 @@ _CGB_IntroPals: ; 9591
 	lb bc, 3, 20
 	ld a, $1
 	call FillBoxCGB
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 95e0
 
 _CGB_IntroNamingPals: ; 9542
@@ -1403,7 +1423,8 @@ _CGB_IntroNamingPals: ; 9542
 	lb bc, 3, 11
 	xor a
 	call FillBoxCGB
-	jp ApplyAttrMap
+	call ApplyAttrMap
+	ret
 ; 9555
 
 IntroGradientPalette:
