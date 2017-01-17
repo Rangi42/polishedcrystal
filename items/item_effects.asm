@@ -3724,7 +3724,6 @@ GetMaxPPOfMove: ; f8ec
 	ld [hl], a
 	xor a
 	ld [wd265], a
-	ld a, b ; this gets lost anyway
 	call ComputeMaxPP
 	ld a, [hl]
 	and (1 << 6) - 1

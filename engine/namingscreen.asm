@@ -253,7 +253,7 @@ NamingScreen_InitText: ; 118a8
 	call WaitTop
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, $60
+	ld a, $60 ; border
 	call ByteFill
 	hlcoord 1, 1
 	lb bc, 6, 18
@@ -529,10 +529,10 @@ NamingScreen_AnimateCursor: ; 11a3b (4:5a3b)
 .ok
 	cp d
 	ld de, .LetterEntries
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	jr nz, .ok2
 	ld de, .CaseDelEnd
-	ld a, $1
+	inc a
 .ok2
 	ld hl, SPRITEANIMSTRUCT_0E
 	add hl, bc
@@ -676,7 +676,6 @@ endr
 	ret
 
 NamingScreen_TryAddCharacter: ; 11b14 (4:5b14)
-	ld a, [wNamingScreenLastCharacter] ; lost
 MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
 	ld a, [wNamingScreenMaxNameLength]
 	ld c, a
@@ -693,7 +692,7 @@ MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
 	ld a, [hl]
 	cp "@"
 	jr z, .end_of_string
-	ld [hl], $f2
+	ld [hl], "_"
 	and a
 	ret
 
@@ -710,12 +709,12 @@ NamingScreen_DeleteCharacter: ; 11bbc (4:5bbc)
 	ret z
 	dec [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], $f2
+	ld [hl], "_"
 	inc hl
 	ld a, [hl]
-	cp $f2
+	cp "_"
 	ret nz
-	ld [hl], $eb
+	ld [hl], "—"
 	ret
 
 NamingScreen_GetTextCursorPosition: ; 11bd0 (4:5bd0)
@@ -734,17 +733,17 @@ NamingScreen_GetTextCursorPosition: ; 11bd0 (4:5bd0)
 ; 11be0
 
 NamingScreen_InitNameEntry: ; 11be0
-; load $f2, ($eb * [wNamingScreenMaxNameLength]), $50 into the dw address at wNamingScreenDestinationPointer
+; load "_", ("—" * [wNamingScreenMaxNameLength]), $50 into the dw address at wNamingScreenDestinationPointer
 	ld hl, wNamingScreenDestinationPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld [hl], $f2
+	ld [hl], "_"
 	inc hl
 	ld a, [wNamingScreenMaxNameLength]
 	dec a
 	ld c, a
-	ld a, $eb
+	ld a, "—"
 .loop
 	ld [hli], a
 	dec c
@@ -763,9 +762,9 @@ NamingScreen_StoreEntry: ; 11bf7 (4:5bf7)
 	ld c, a
 .loop
 	ld a, [hl]
-	cp $eb
+	cp "—"
 	jr z, .terminator
-	cp $f2
+	cp "_"
 	jr nz, .not_terminator
 .terminator
 	ld [hl], "@"
@@ -825,12 +824,12 @@ LoadNamingScreenGFX: ; 11c51
 	call LoadFontsExtra
 
 	ld de, NamingScreenGFX_MiddleLine
-	ld hl, VTiles1 tile $6b
+	ld hl, VTiles1 tile ("—" - $80)
 	lb bc, BANK(NamingScreenGFX_MiddleLine), 1
 	call Get1bpp
 
 	ld de, NamingScreenGFX_UnderLine
-	ld hl, VTiles1 tile $72
+	ld hl, VTiles1 tile ("_" - $80)
 	lb bc, BANK(NamingScreenGFX_UnderLine), 1
 	call Get1bpp
 
@@ -866,11 +865,11 @@ LoadNamingScreenGFX: ; 11c51
 ; 11cb7
 
 NamingScreenGFX_MiddleLine:
-INCBIN "gfx/misc/naming_middleline.2bpp"
+INCBIN "gfx/misc/naming_middleline.1bpp"
 ; 11e6d
 
 NamingScreenGFX_UnderLine: ; 11e6d
-INCBIN "gfx/misc/naming_underline.2bpp"
+INCBIN "gfx/misc/naming_underline.1bpp"
 ; 11e75
 
 NamingScreenGFX_Border: ; 11cb7
@@ -885,7 +884,7 @@ NameInputLower:
 	db "a b c d e f g h i"
 	db "j k l m n o p q r"
 	db "s t u v w x y z  "
-	db "× ( ) : ; <PK> <MN> ¥ ★"
+	db "× / ( ) : <PK> <MN> ¥ ★"
 	db "Upper  Del   End "
 
 BoxNameInputLower:
@@ -900,18 +899,38 @@ NameInputUpper:
 	db "A B C D E F G H I"
 	db "J K L M N O P Q R"
 	db "S T U V W X Y Z  "
-	db "- ? ! ♂ ♀ / . , &"
+	db "- ? ! ♂ ♀ . , & %"
 	db "Lower  Del   End "
 
 BoxNameInputUpper:
 	db "A B C D E F G H I"
 	db "J K L M N O P Q R"
 	db "S T U V W X Y Z  "
-	db "× ( ) : ; <PK> <MN> ¥ ★"
-	db "- ? ! ♂ ♀ / . , &"
+	db "× / ( ) : <PK> <MN> ¥ ★"
+	db "- ? ! ♂ ♀ . , & %"
 	db "Lower  Del   End "
 
 ; 11e5d
+
+MailEntry_Uppercase: ; 122dd
+	db "A B C D E F G H I J"
+	db "K L M N O P Q R S T"
+	db "U V W X Y Z   , ? !"
+	db "1 2 3 4 5 6 7 8 9 0"
+	db "<PK> <MN> <PO> <KE> é ♂ ♀ ¥ × /"
+	db "Lower  Del   End   "
+
+; 1224f
+
+MailEntry_Lowercase: ; 1224f
+	db "a b c d e f g h i j"
+	db "k l m n o p q r s t"
+	db "u v w x y z   . - …"
+	db "'d 'l 'm 'r 's 't 'v ( ) &"
+	db "“ ” [ ] ' : % [ ] ★"
+	db "Upper  Del   End   "
+
+; 122c1
 
 _ComposeMailMessage: ; 11e75 (mail?)
 	ld hl, wNamingScreenDestinationPointer
@@ -980,7 +999,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	ld d, [hl]
 	ld hl, $10
 	add hl, de
-	ld [hl], $4e
+	ld [hl], "<NL>"
 	ret
 
 ; 11ef4 (4:5ef4)
@@ -1135,9 +1154,9 @@ endr
 	ret nz
 	inc [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], $f2
+	ld [hl], "_"
 	dec hl
-	ld [hl], $4e
+	ld [hl], "<NL>"
 	ret
 
 .start
@@ -1161,9 +1180,9 @@ endr
 	ret nz
 	dec [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], $f2
+	ld [hl], "_"
 	inc hl
-	ld [hl], $4e
+	ld [hl], "<NL>"
 	ret
 
 .finished
@@ -1375,23 +1394,3 @@ MailComposition_TryAddLastCharacter: ; 121ac (4:61ac)
 	jp MailComposition_TryAddCharacter
 
 ; 121b2 (4:61b2)
-
-MailEntry_Uppercase: ; 122dd
-	db "A B C D E F G H I J"
-	db "K L M N O P Q R S T"
-	db "U V W X Y Z   , ? !"
-	db "1 2 3 4 5 6 7 8 9 0"
-	db "<PK> <MN> <PO> <KE> é ♂ ♀ ¥ … ×"
-	db "Lower  Del   End   "
-
-; 1224f
-
-MailEntry_Lowercase: ; 1224f
-	db "a b c d e f g h i j"
-	db "k l m n o p q r s t"
-	db "u v w x y z   . - /"
-	db "'d 'l 'm 'r 's 't 'v & ( )"
-	db "“ ” [ ] ' : ;      "
-	db "Upper  Del   End   "
-
-; 122c1

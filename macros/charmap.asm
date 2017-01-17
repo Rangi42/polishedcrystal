@@ -59,8 +59,8 @@
 
 	charmap "(",        $9a
 	charmap ")",        $9b
-	charmap ":",        $9c
-	charmap ";",        $9d
+	charmap ".",        $9c
+	charmap ",",        $9d
 	charmap "[",        $9e
 	charmap "]",        $9f
 
@@ -91,31 +91,30 @@
 	charmap "y",        $b8
 	charmap "z",        $b9
 
-	charmap "É",        $ba
-	charmap "á",        $bb
-	charmap "'a",       $bc
+	charmap "é",        $ba
+	charmap "É",        $bb
+	charmap "á",        $bc
 	charmap "ê",        $bd
 	charmap "í",        $be
 	charmap "ó",        $bf
 
-	charmap "<PO>",     $c0
-	charmap "<KE>",     $c1
+	charmap "?",        $c0
+	charmap "!",        $c1
 	charmap "“",        $c2
 	charmap "”",        $c3
-	charmap "<LV>",     $c4
-	charmap "…",        $c5
+	charmap "&",        $c4
+	charmap "-",        $c5
+	charmap "♂",        $c6
+	charmap "♀",        $c7
+	charmap "¿",        $c8
+	charmap "¡",        $c9
+	charmap "′",        $ca
+	charmap "″",        $cb
 
-	charmap "¿",        $c6
-	charmap "¡",        $c7
-
-	charmap "<BALL>",   $c8
-	charmap "<NONO>",   $c9
-	charmap "★",        $ca
-
-; unused: cb-cd
-
-	charmap "—",        $ce
-	charmap "<PHONE>",  $cf
+	charmap "<PO>",     $cc
+	charmap "<KE>",     $cd
+	charmap "<PK>",     $ce
+	charmap "<MN>",     $cf
 
 	charmap "'d",       $d0
 	charmap "'l",       $d1
@@ -125,37 +124,42 @@
 	charmap "'t",       $d5
 	charmap "'v",       $d6
 
-	charmap "_",        $d7
-	charmap "<ID>",     $d8
-	charmap "№",        $d9
-	charmap "′",        $da
-	charmap "″",        $db
+	charmap "'",        $d7
+	charmap "…",        $d8
+	charmap "<ID>",     $d9
+	charmap "№",        $da
+	charmap "<LV>",     $db
 	charmap "<BOLDP>",  $dc
-	charmap "↑",        $dd
-	charmap "↓",        $de
-	charmap "←",        $df
-	charmap "'",        $e0
-	charmap "<PK>",     $e1
-	charmap "<MN>",     $e2
-	charmap "-",        $e3
-	charmap "◀",        $e4
-	charmap "▲",        $e5
-	charmap "?",        $e6
-	charmap "!",        $e7
-	charmap ".",        $e8
-	charmap "&",        $e9
-	charmap "é",        $ea
+	charmap "★",        $dd
+	charmap "<BALL>",   $de
+	charmap "<NONO>",   $df
+	charmap "<PHONE>",  $e0
+
+	charmap "<JO>",     $e1
+	charmap "<HT>",     $e2
+	charmap "<TO>",     $e3
+	charmap "<KA>",     $e4
+	charmap "<NT>",     $e5
+
+	charmap "—",        $e6
+	charmap "_",        $e7
+
+	charmap "↑",        $e8
+	charmap "↓",        $e9
+	charmap "←",        $ea
 	charmap "→",        $eb
-	charmap "▷",        $ec
-	charmap "▶",        $ed
-	charmap "▼",        $ee
-	charmap "♂",        $ef
-	charmap "¥",        $f0
-	charmap "×",        $f1
-	charmap "%",        $f2
+
+	charmap "▲",        $ec
+	charmap "▼",        $ed
+	charmap "◀",        $ee
+	charmap "▶",        $ef
+	charmap "▷",        $f0
+
+	charmap "¥",        $f1
+	charmap "×",        $f2
 	charmap "/",        $f3
-	charmap ",",        $f4
-	charmap "♀",        $f5
+	charmap "%",        $f4
+	charmap ":",        $f5
 
 	charmap "0",        $f6
 	charmap "1",        $f7
