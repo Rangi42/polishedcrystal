@@ -27,14 +27,6 @@ InitClock: ; 90672 (24:4672)
 	ld hl, VTiles2 tile $00
 	lb bc, BANK(TimesetBackgroundGFX), 1
 	call Request1bpp
-	ld de, TimesetUpGFX
-	ld hl, VTiles2 tile $01
-	lb bc, BANK(TimesetUpGFX), 1
-	call Request1bpp
-	ld de, TimesetDownGFX
-	ld hl, VTiles2 tile $02
-	lb bc, BANK(TimesetDownGFX), 1
-	call Request1bpp
 	call .ClearScreen
 	call WaitBGMap
 	call RotateFourPalettesRight
@@ -51,13 +43,13 @@ InitClock: ; 90672 (24:4672)
 	ld hl, Text_WhatTimeIsIt
 	call PrintText
 	hlcoord 3, 7
-	ld b, 2
+	ld b, 3
 	ld c, 15
 	call TextBox
-	hlcoord 11, 7
-	ld [hl], $1
+	hlcoord 11, 8
+	ld [hl], "▲"
 	hlcoord 11, 10
-	ld [hl], $2
+	ld [hl], "▼"
 	hlcoord 4, 9
 	call DisplayHourOClock
 	ld c, 10
@@ -82,12 +74,12 @@ InitClock: ; 90672 (24:4672)
 	ld hl, Text_HowManyMinutes
 	call PrintText
 	hlcoord 11, 7
-	lb bc, 2, 7
+	lb bc, 3, 7
 	call TextBox
-	hlcoord 15, 7
-	ld [hl], $1
+	hlcoord 15, 8
+	ld [hl], "▲"
 	hlcoord 15, 10
-	ld [hl], $2
+	ld [hl], "▼"
 	hlcoord 12, 9
 	call DisplayMinutesWithMinString
 	ld c, 10
@@ -372,28 +364,13 @@ OakText_ResponseToSetTime: ; 0x908b8
 TimesetBackgroundGFX: ; 908fb
 INCBIN "gfx/misc/timeset_bg.1bpp"
 
-TimesetUpGFX: ; 90903
-INCBIN "gfx/misc/timeset_up.1bpp"
-
-TimesetDownGFX: ; 9090b
-INCBIN "gfx/misc/timeset_down.1bpp"
-; 90913
-
 Special_SetDayOfWeek: ; 90913
 	ld a, [hInMenu]
 	push af
-	ld a, $1
-	ld [hInMenu], a
-	ld de, TimesetUpGFX
-	ld hl, VTiles1 tile $6f
-	lb bc, BANK(TimesetUpGFX), 1
-	call Request1bpp
-	ld de, TimesetDownGFX
-	ld hl, VTiles1 tile $75
-	lb bc, BANK(TimesetDownGFX), 1
-	call Request1bpp
 	xor a
 	ld [wTempDayOfWeek], a
+	inc a
+	ld [hInMenu], a
 .loop
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -406,9 +383,9 @@ Special_SetDayOfWeek: ; 90913
 	ld c, 9
 	call TextBox
 	hlcoord 14, 3
-	ld [hl], "♂" ; gets overwritten with special up arrow
+	ld [hl], "▲"
 	hlcoord 14, 6
-	ld [hl], "♀" ; gets overwritten with special down arrow
+	ld [hl], "▼"
 	hlcoord 10, 5
 	call .PlaceWeekdayString
 	call ApplyTilemap
