@@ -43,10 +43,10 @@ InitClock: ; 90672 (24:4672)
 	ld hl, Text_WhatTimeIsIt
 	call PrintText
 	hlcoord 3, 7
-	ld b, 3
+	ld b, 2
 	ld c, 15
 	call TextBox
-	hlcoord 11, 8
+	hlcoord 11, 7
 	ld [hl], "▲"
 	hlcoord 11, 10
 	ld [hl], "▼"
@@ -74,9 +74,9 @@ InitClock: ; 90672 (24:4672)
 	ld hl, Text_HowManyMinutes
 	call PrintText
 	hlcoord 11, 7
-	lb bc, 3, 7
+	lb bc, 2, 7
 	call TextBox
-	hlcoord 15, 8
+	hlcoord 15, 7
 	ld [hl], "▲"
 	hlcoord 15, 10
 	ld [hl], "▼"
