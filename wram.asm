@@ -1187,8 +1187,12 @@ wSGBPals:: ds 48 ; cda9
 AttrMap:: ; cdd9
 ; 20x18 grid of palettes for 8x8 tiles
 ; read horizontally from the top row
-; bit 3: vram bank
-; bit 0-2: palette id
+; bit 7: priority
+; bit 6: y flip
+; bit 5: x flip
+; bit 4: pal # (non-cgb)
+; bit 3: vram bank (cgb only)
+; bit 2-0: pal # (cgb only)
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
 AttrMapEnd::
 	ds 1
