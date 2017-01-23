@@ -235,7 +235,17 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 
 .return_from_jumptable
 	call Pokegear_FinishTilemap
-	farcall TownMapPals
+	call TownMapPals
+	ld a, [wcf64]
+	cp 1 ; Town Map
+	jr nz, .not_town_map
+	ld a, [wJumptableIndex]
+	cp 3 ; Johto
+	call z, TownMapJohtoFlips
+	ld a, [wJumptableIndex]
+	cp 5 ; Kanto
+	call z, TownMapKantoFlips
+.not_town_map
 	ld a, [wcf65]
 	and a
 	jr nz, .kanto_0
@@ -1949,7 +1959,15 @@ _TownMap: ; 9191c
 	ld [hl], $17
 	ld a, [wd003]
 	call PokegearMap_UpdateLandmarkName
-	farcall TownMapPals
+	call TownMapPals
+	ld a, [wd002]
+	cp KANTO_LANDMARK
+	jr nc, .kanto3
+	call TownMapJohtoFlips
+	jr .okay_flips
+.kanto3
+	call TownMapJohtoFlips
+.okay_flips
 	ret
 ; 91a53
 
@@ -2078,7 +2096,6 @@ _FlyMap: ; 91af3
 	lb bc, BANK(FlyMapLabelBorderGFX), 6
 	call Request1bpp
 	call FlyMap
-	call ret_91c8f
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes
@@ -2332,11 +2349,6 @@ KANTO_FLYPOINT EQU const_value
 	flypoint INDIGO,      INDIGO_PLATEAU
 	db -1
 
-; 91c8f
-
-ret_91c8f: ; 91c8f
-	ret
-
 ; 91c90
 
 FlyMap: ; 91c90
@@ -2372,6 +2384,9 @@ FlyMap: ; 91c90
 	ld [EndFlypoint], a
 ; Fill out the map
 	call FillJohtoMap
+	call TownMapBubble
+	call TownMapPals
+	call TownMapJohtoFlips
 	call .MapHud
 	pop af
 	call TownMapPlayerIcon
@@ -2409,6 +2424,9 @@ FlyMap: ; 91c90
 	ld [wd002], a
 ; Fill out the map
 	call FillKantoMap
+	call TownMapBubble
+	call TownMapPals
+	call TownMapKantoFlips
 	call .MapHud
 	pop af
 	call TownMapPlayerIcon
@@ -2427,9 +2445,10 @@ FlyMap: ; 91c90
 	ld [EndFlypoint], a
 	call FillJohtoMap
 	pop af
-.MapHud:
 	call TownMapBubble
 	call TownMapPals
+	call TownMapJohtoFlips
+.MapHud:
 	hlbgcoord 0, 0 ; BG Map 0
 	call TownMapBGUpdate
 	call TownMapMon
@@ -2466,11 +2485,13 @@ _Area: ; 91d11
 	call FillKantoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
+	call TownMapKantoFlips
 	hlbgcoord 0, 0, VBGMap1
 	call TownMapBGUpdate
 	call FillJohtoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
+	call TownMapJohtoFlips
 	hlbgcoord 0, 0
 	call TownMapBGUpdate
 	ld b, SCGB_POKEGEAR_PALS
@@ -2844,6 +2865,78 @@ endm
 	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0
 	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0
 ; 91f7b
+
+TownMapJohtoFlips:
+	hlcoord 0, 0, .JohtoFlips
+	decoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+.loop
+	ld a, [de]
+	or [hl]
+	ld [de], a
+	inc hl
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
+	ret
+
+.JohtoFlips:
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 3<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 1<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 1<<6, 1<<6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 3<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1<<5, 0, 0, 1<<6, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1<<5, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 1<<6, 0, 0, 3<<5, 0, 0, 0, 0, 3<<5, 1<<6, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 1<<6, 0, 0, 0, 0, 0, 0, 3<<5, 0, 1<<6, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 1<<6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+TownMapKantoFlips:
+	hlcoord 0, 0, .KantoFlips
+	decoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+.loop
+	ld a, [de]
+	or [hl]
+	ld [de], a
+	inc hl
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
+	ret
+
+.KantoFlips:
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1<<5, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3<<5, 0, 0, 0, 0, 1<<5, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 3<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1<<6, 0, 0, 1<<5, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3<<5, 0
+	db 0, 0, 3<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 3<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3<<5, 0, 0
+	db 0, 0, 0, 3<<5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 1<<6, 0, 0, 0, 0, 0, 3<<5, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	db 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 TownMapMon: ; 91f7b
 ; Draw the FlyMon icon at town map location in
