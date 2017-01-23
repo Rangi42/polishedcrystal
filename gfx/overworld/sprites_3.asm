@@ -1,4 +1,5 @@
 AgathaSpriteGFX:              INCBIN "gfx/overworld/agatha.2bpp"
+AnabelSpriteGFX:              INCBIN "gfx/overworld/beauty.2bpp" ; TODO
 ArcherSpriteGFX:              INCBIN "gfx/overworld/rocket.2bpp" ; TODO
 ArianaSpriteGFX:              INCBIN "gfx/overworld/rocket_girl.2bpp" ; TODO
 BeautySpriteGFX:              INCBIN "gfx/overworld/beauty.2bpp"

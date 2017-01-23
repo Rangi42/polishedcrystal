@@ -219,6 +219,9 @@ MarleySprite:
 MiraSprite:
 	sprite_header MiraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
+AnabelSprite:
+	sprite_header AnabelSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
 ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
