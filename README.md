@@ -290,7 +290,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: XY Bicycle music for Cycling Road.
 * Add: Prof.Oak gives you the Oval Charm for seeing all 253 Pokémon, and the Shiny Charm for catching all 253.
 * Add: Prof.Elm is in the intro.
-* Add: Baker, Sightseer♂, Sightseer♀, Cosplayer, Karate King
+* Add: Cosplayer, Bug Maniac, Ruin Maniac, Lady, Baker, Sightseer♂, Sightseer♀, Karate King
 * Add: Show PC box quantity.
 * Add: Pokémon stats show caught Poké Ball.
 * Add: Nest, Net, Dive, Luxury, and Heal Balls.

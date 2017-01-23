@@ -384,6 +384,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_BLUE          ; BLUE
 	db SPRITE_RED           ; RED
 	db SPRITE_LEAF          ; LEAF
+	db SPRITE_SILVER        ; RIVAL0
 	db SPRITE_SILVER        ; RIVAL1
 	db SPRITE_SILVER        ; RIVAL2
 	db SPRITE_LYRA          ; LYRA1
@@ -407,6 +408,8 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_SUPER_NERD    ; SUPER_NERD
 	db SPRITE_LASS          ; LASS
 	db SPRITE_BEAUTY        ; BEAUTY
+	db SPRITE_SUPER_NERD    ; BUG_MANIAC
+	db SPRITE_POKEFAN_M     ; RUIN_MANIAC
 	db SPRITE_FISHER        ; FIREBREATHER
 	db SPRITE_SUPER_NERD    ; JUGGLER
 	db SPRITE_YOUNGSTER     ; SCHOOLBOY
@@ -421,6 +424,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_YOUNGSTER     ; COUPLE
 	db SPRITE_GENTLEMAN     ; GENTLEMAN
 	db SPRITE_RICH_BOY      ; RICH_BOY
+	db SPRITE_LADY          ; LADY
 	db SPRITE_BREEDER       ; BREEDER
 	db SPRITE_POKEFAN_F     ; BAKER
 	db SPRITE_COWGIRL       ; COWGIRL

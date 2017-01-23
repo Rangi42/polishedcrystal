@@ -23,6 +23,7 @@
 	db "Leader@"           ; BLUE
 	db "<PK><MN> Trainer@" ; RED
 	db "<PK><MN> Trainer@" ; LEAF
+	db "Passerby@"         ; RIVAL0
 	db "Rival@"            ; RIVAL1
 	db "Rival@"            ; RIVAL2
 	db "Rival@"            ; LYRA1
@@ -46,6 +47,8 @@
 	db "Super Nerd@"       ; SUPER_NERD
 	db "Lass@"             ; LASS
 	db "Beauty@"           ; BEAUTY
+	db "Bug Maniac@"       ; BUG_MANIAC
+	db "Ruin Maniac@"      ; RUIN_MANIAC
 	db "Firebreather@"     ; FIREBREATHER
 	db "Juggler@"          ; JUGGLER
 	db "Schoolboy@"        ; SCHOOLBOY
@@ -60,6 +63,7 @@
 	db "Couple@"           ; COUPLE
 	db "Gentleman@"        ; GENTLEMAN
 	db "Rich Boy@"         ; RICH_BOY
+	db "Lady@"             ; Lady
 	db "Breeder@"          ; BREEDER
 	db "Baker@"            ; BAKER
 	db "Cowgirl@"          ; COWGIRL
@@ -106,6 +110,7 @@
 	db "<PK><MN> Trainer@" ; BUCK
 	db "<PK><MN> Trainer@" ; MARLEY
 	db "<PK><MN> Trainer@" ; MIRA
+	db "<PK><MN> Trainer@" ; ANABEL
 	db "Valet@"            ; DARACH
 	db "Lady@"             ; CAITLIN
 	db "Designer@"         ; VALERIE

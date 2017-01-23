@@ -24,6 +24,7 @@
 	add_pic BluePic
 	add_pic RedPic
 	add_pic LeafPic
+	add_pic Rival0Pic
 	add_pic Rival1Pic
 	add_pic Rival2Pic
 	add_pic Lyra1Pic
@@ -47,6 +48,8 @@
 	add_pic SuperNerdPic
 	add_pic LassPic
 	add_pic BeautyPic
+	add_pic BugManiacPic
+	add_pic RuinManiacPic
 	add_pic FirebreatherPic
 	add_pic JugglerPic
 	add_pic SchoolboyPic
@@ -61,6 +64,7 @@
 	add_pic CouplePic
 	add_pic GentlemanPic
 	add_pic RichBoyPic
+	add_pic LadyPic
 	add_pic BreederPic
 	add_pic BakerPic
 	add_pic CowgirlPic
@@ -108,6 +112,7 @@
 	add_pic BuckPic
 	add_pic MarleyPic
 	add_pic MiraPic
+	add_pic AnabelPic
 	add_pic DarachPic
 	add_pic CaitlinPic
 	add_pic ValeriePic

@@ -26,6 +26,7 @@ TrainerGroups: ; 0x39999
 	dw BlueGroup
 	dw RedGroup
 	dw LeafGroup
+	dw Rival0Group
 	dw Rival1Group
 	dw Rival2Group
 	dw Lyra1Group
@@ -49,6 +50,8 @@ TrainerGroups: ; 0x39999
 	dw SuperNerdGroup
 	dw LassGroup
 	dw BeautyGroup
+	dw BugManiacGroup
+	dw RuinManiacGroup
 	dw FirebreatherGroup
 	dw JugglerGroup
 	dw SchoolboyGroup
@@ -63,6 +66,7 @@ TrainerGroups: ; 0x39999
 	dw CoupleGroup
 	dw GentlemanGroup
 	dw RichBoyGroup
+	dw LadyGroup
 	dw BreederGroup
 	dw BakerGroup
 	dw CowgirlGroup
@@ -110,6 +114,7 @@ TrainerGroups: ; 0x39999
 	dw BuckGroup
 	dw MarleyGroup
 	dw MiraGroup
+	dw AnabelGroup
 	dw DarachGroup
 	dw CaitlinGroup
 	dw ValerieGroup

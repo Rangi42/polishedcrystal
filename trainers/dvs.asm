@@ -54,6 +54,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; blue
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; red
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; leaf
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival0
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival1
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival2
 	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra1
@@ -77,6 +78,8 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; super nerd
 	db $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lass
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; beauty
+	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; bug maniac
+	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; ruin maniac
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; firebreather
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; juggler
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; schoolboy
@@ -91,6 +94,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; couple
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; gentleman
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; rich boy
+	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; lady
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; breeder
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; baker
 	db $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; cowgirl
@@ -138,6 +142,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; buck
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; marley
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; mira
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; anabel
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; darach
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; caitlin
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie

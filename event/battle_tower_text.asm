@@ -114,6 +114,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; BLUE
 	db MALE   ; RED
 	db FEMALE ; LEAF
+	db MALE   ; RIVAL0
 	db MALE   ; RIVAL1
 	db MALE   ; RIVAL2
 	db FEMALE ; LYRA1
@@ -137,6 +138,8 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; SUPER_NERD
 	db FEMALE ; LASS
 	db FEMALE ; BEAUTY
+	db MALE   ; BUG_MANIAC
+	db MALE   ; RUIN_MANIAC
 	db MALE   ; FIREBREATHER
 	db MALE   ; JUGGLER
 	db MALE   ; SCHOOLBOY
@@ -151,6 +154,7 @@ BTTrainerClassGenders: ; 11f2f0
 	db MALE   ; COUPLE
 	db MALE   ; GENTLEMAN
 	db MALE   ; RICH_BOY
+	db FEMALE ; LADY
 	db FEMALE ; BREEDER
 	db FEMALE ; BAKER
 	db FEMALE ; COWGIRL
