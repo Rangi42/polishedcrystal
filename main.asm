@@ -1613,6 +1613,15 @@ PlayBattleMusic: ; 2ee6c
 	cp VALERIE
 	jp z, .done
 
+	ld de, MUSIC_MOTHER_BEAST_BATTLE_SM
+	cp GIOVANNI
+	jr nz, .not_armored_mewtwo
+	ld a, [OtherTrainerID]
+	cp 1 ; Armored Mewtwo
+	jp z, .done
+	ld a, [OtherTrainerClass]
+.not_armored_mewtwo
+
 	ld de, MUSIC_ROCKET_BATTLE
 	cp GRUNTM
 	jp z, .done
@@ -1626,9 +1635,9 @@ PlayBattleMusic: ; 2ee6c
 	jp z, .done
 	cp ARIANA
 	jp z, .done
-	cp JESSIE_JAMES
-	jp z, .done
 	cp GIOVANNI
+	jp z, .done
+	cp JESSIE_JAMES
 	jp z, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
@@ -1649,6 +1658,8 @@ PlayBattleMusic: ; 2ee6c
 
 	ld de, MUSIC_RIVAL_BATTLE
 	ld a, [OtherTrainerClass]
+	cp RIVAL0
+	jr z, .done
 	cp RIVAL1
 	jr z, .done
 	cp RIVAL2
@@ -5069,8 +5080,21 @@ BattleText::
 INCLUDE "text/battle.asm"
 
 GetFinalPkmnTextPointer::
-	; Silver and Lyra have a phrase for each set of three IDs
+	; Some trainers have one unique phrase
 	ld a, [OtherTrainerClass]
+	ld hl, LoreleiFinalPkmnText
+	cp LORELEI
+	jr z, .ok
+	ld hl, AgathaFinalPkmnText
+	cp AGATHA
+	jr z, .ok
+	ld hl, StevenFinalPkmnText
+	cp STEVEN
+	jr z, .ok
+	ld hl, CynthiaFinalPkmnText
+	cp CYNTHIA
+	jr z, .ok
+	; Silver and Lyra have a phrase for each set of three IDs
 	ld hl, .Rival1FinalTexts
 	cp RIVAL1
 	jr z, .rival_or_lyra
@@ -5127,6 +5151,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+.ok:
 	scf
 	ret
 

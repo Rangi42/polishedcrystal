@@ -232,8 +232,9 @@ EmbeddedTowerSteven2ChallengeText:
 	done
 
 EmbeddedTowerSteven2AfterText:
-	text "Steven: I knew you"
-	line "would be strong…"
+	text "Steven: In the"
+	line "end, you are still"
+	cont "the strongest."
 
 	para "But I don't regret"
 	line "our battle."

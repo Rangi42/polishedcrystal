@@ -1659,8 +1659,8 @@ Ariana2FinalPkmnText:
 	prompt
 
 Giovanni1FinalPkmnText:
-	text "What in the world"
-	line "was that?"
+	text "My #mon is"
+	line "invincible!"
 	prompt
 
 Giovanni2FinalPkmnText:
@@ -1669,4 +1669,27 @@ Giovanni2FinalPkmnText:
 
 	para "can possibly be"
 	line "that strong!"
+	prompt
+
+LoreleiFinalPkmnText:
+	text "You only got a"
+	line "taste of my power!"
+	prompt
+
+AgathaFinalPkmnText:
+	text "Don't assume that"
+	line "you've won, child!"
+	prompt
+
+StevenFinalPkmnText:
+	text "I knew you would"
+	line "be strong…"
+	prompt
+
+CynthiaFinalPkmnText:
+	text "I can't remember"
+	line "the last time I"
+
+	para "was put in a"
+	line "corner like this!"
 	prompt
