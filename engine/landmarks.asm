@@ -144,8 +144,8 @@ ENDM
 	landmark 132,  60, Route9Name
 	landmark 148,  68, Route10Name
 	landmark 148,  60, RockTunnelName
-	landmark 156,  60, PowerPlantName
-	landmark 148,  56, DimCaveName
+	landmark 156,  68, PowerPlantName
+	landmark 156,  60, DimCaveName
 	landmark 148,  76, LavenderTownName
 	landmark 150,  76, LavRadioTowerName
 	landmark  92,  76, CeladonCityName
