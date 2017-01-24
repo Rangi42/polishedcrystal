@@ -679,7 +679,26 @@ BattleAnim_Shake:
 	anim_wait 40
 	anim_ret
 
-BattleAnim_Acrobatics: ; TODO: design new animation for Acrobatics
+BattleAnim_Acrobatics:
+	anim_1gfx ANIM_GFX_HIT
+	anim_sound 0, 0, SFX_KINESIS
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_1D, $0, $1, $20
+	anim_wait 16
+	anim_sound 0, 1, SFX_COMET_PUNCH
+	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
+	anim_wait 12
+	anim_sound 0, 1, SFX_COMET_PUNCH
+	anim_obj ANIM_OBJ_01, -14, 0,   5, 0, $0
+	anim_wait 12
+	anim_sound 0, 1, SFX_COMET_PUNCH
+	anim_obj ANIM_OBJ_01, -15, 0,   3, 0, $0
+	anim_wait 24
+	anim_incbgeffect ANIM_BG_1D
+	anim_call BattleAnim_ShowMon_0
+	anim_wait 4
+	anim_ret
+
 BattleAnim_Pound: ; removed
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_POUND
