@@ -120,8 +120,8 @@ ENDM
 	landmark 152,  76, SilverCaveName
 	landmark 132,  38, SinjohRuinsName
 	landmark 132,  34, MystriStageName
-	landmark  60, 124, PalletTownName
-	landmark  60, 108, Route1Name
+	landmark  60, 116, PalletTownName
+	landmark  60, 104, Route1Name
 	landmark  60,  92, ViridianCityName
 	landmark  60,  84, Route2Name
 	landmark  60,  76, ViridianForestName
@@ -166,7 +166,7 @@ ENDM
 	landmark  60, 148, CinnabarIslandName
 	landmark  58, 146, PokemonMansionName
 	landmark  62, 146, CinnabarVolcanoName
-	landmark  60, 136, Route21Name
+	landmark  60, 132, Route21Name
 	landmark  48,  92, Route22Name
 	landmark  28, 116, Route27Name
 	landmark  20, 116, TohjoFallsName
