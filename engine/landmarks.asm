@@ -117,7 +117,7 @@ ENDM
 	landmark 140,  80, Route45Name
 	landmark 120,  84, DarkCaveName
 	landmark 132, 104, Route46Name
-	landmark 156,  76, SilverCaveName
+	landmark 152,  76, SilverCaveName
 	landmark 132,  38, SinjohRuinsName
 	landmark 132,  34, MystriStageName
 	landmark  60, 124, PalletTownName
