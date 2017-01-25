@@ -1398,19 +1398,19 @@ MusicCommands: ; e8720
 	dw Music_ToggleSFX ;
 	dw MusicE0 ;
 	dw Music_Vibrato ; vibrato
-	dw MusicE2 ; unused
+	dw MusicE2 ; nothing
 	dw Music_ToggleNoise ; music noise sampling
 	dw Music_Panning ; force panning
 	dw Music_Volume ; volume
 	dw Music_Tone ; tone
-	dw MusicE7 ; unused
-	dw MusicE8 ; unused
+	dw MusicE7 ; nothing
+	dw MusicE8 ; nothing
 	dw Music_TempoRelative ; global tempo
 	dw Music_RestartChannel ; restart current channel from header
 	dw Music_NewSong ; new song
 	dw Music_SFXPriorityOn ; sfx priority on
 	dw Music_SFXPriorityOff ; sfx priority off
-	dw MusicEE ; unused
+	dw MusicEE ; nothing
 	dw Music_StereoPanning ; stereo panning
 	dw Music_SFXToggleNoise ; sfx noise sampling
 	dw MusicF1 ; nothing
@@ -1421,7 +1421,7 @@ MusicCommands: ; e8720
 	dw MusicF6 ; nothing
 	dw MusicF7 ; nothing
 	dw MusicF8 ; nothing
-	dw MusicF9 ; unused
+	dw MusicF9 ; nothing
 	dw Music_SetCondition ;
 	dw Music_JumpIf ;
 	dw Music_JumpChannel ; jump
@@ -1430,6 +1430,10 @@ MusicCommands: ; e8720
 	dw Music_EndChannel ; return
 ; e8780
 
+MusicE2: ; e8873
+MusicE7: ; e88f7
+MusicE8: ; e891e
+MusicEE: ; e883e
 MusicF1: ; e8780
 MusicF2: ; e8780
 MusicF3: ; e8780
@@ -1438,6 +1442,7 @@ MusicF5: ; e8780
 MusicF6: ; e8780
 MusicF7: ; e8780
 MusicF8: ; e8780
+MusicF9: ; e886d
 	ret
 
 ; e8781
@@ -1644,85 +1649,6 @@ endr
 
 ; e883e
 
-MusicEE; e883e
-; conditional jump
-; checks a byte in ram corresponding to the current channel
-; doesn't seem to be set by any commands
-; params: 2
-;		ll hh ; pointer
-
-; if ????, jump
-	; get channel
-	ld a, [CurChannel]
-	and $3 ; ch0-3
-	ld e, a
-	ld d, 0
-	; hl = Channel1JumpCondition + channel id
-	ld hl, Channel1JumpCondition
-	add hl, de
-	; if set, jump
-	ld a, [hl]
-	and a
-	jr nz, .jump
-; skip to next command
-	; get address
-	ld hl, Channel1MusicAddress - Channel1
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	; skip pointer
-rept 2
-	inc de
-endr
-	; update address
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	ret
-
-.jump
-	; reset jump flag
-	ld [hl], 0
-	; de = pointer
-	call GetMusicByte
-	ld e, a
-	call GetMusicByte
-	ld d, a
-	; update address
-	ld hl, Channel1MusicAddress - Channel1
-	add hl, bc
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ret
-
-; e886d
-
-MusicF9: ; e886d
-; sets some flag
-; seems to be unused
-; params: 0
-	ld a, 1
-	ld [wc2b5], a
-	ret
-
-; e8873
-
-MusicE2: ; e8873
-; seems to have been dummied out
-; params: 1
-	call GetMusicByte
-	ld hl, Channel1Field0x2c - Channel1
-	add hl, bc
-	ld [hl], a
-	ld hl, Channel1Flags2 - Channel1
-	add hl, bc
-	set SOUND_UNKN_0B, [hl]
-	ret
-
-; e8882
-
 Music_Vibrato: ; e8882
 ; vibrato
 ; params: 2
@@ -1825,20 +1751,6 @@ Music_Tone: ; e88e4
 
 ; e88f7
 
-MusicE7: ; e88f7
-; unused
-; params: 1
-	ld hl, Channel1Flags2 - Channel1
-	add hl, bc
-	set SOUND_UNKN_0E, [hl]
-	call GetMusicByte
-	ld hl, Channel1Field0x29 - Channel1
-	add hl, bc
-	ld [hl], a
-	ret
-
-; e8906
-
 MusicDE: ; e8906
 ; ???? + duty cycle
 ; params: 1
@@ -1859,20 +1771,6 @@ MusicDE: ; e8906
 	ret
 
 ; e891e
-
-MusicE8: ; e891e
-; unused
-; params: 1
-	ld hl, Channel1Flags2 - Channel1
-	add hl, bc
-	set SOUND_UNKN_0D, [hl]
-	call GetMusicByte
-	ld hl, Channel1Field0x2a - Channel1
-	add hl, bc
-	ld [hl], a
-	ret
-
-; e892d
 
 Music_ToggleSFX: ; e892d
 ; toggle something
