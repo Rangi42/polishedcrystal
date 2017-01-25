@@ -1212,23 +1212,24 @@ TitleScreenEntrance: ; 62bc
 	xor a
 	ld [hFFC6], a
 
-;	ld a, BANK(sStatusFlags)
-;	call GetSRAMBank
-;	ld a, [sStatusFlags]
-;	ld [StatusFlags], a
-;	call CloseSRAM
+	ld a, BANK(sPlayerData)
+	call GetSRAMBank
+	ld hl, sPlayerData + StatusFlags - wPlayerData
+	ld de, StatusFlags
+	ld a, [hl]
+	ld [de], a
+	call CloseSRAM
 
 ; Play the title screen music.
-; TODO: Play XY music if in the Hall of Fame
 	ld de, MUSIC_TITLE
-;	ld a, [wSaveFileExists]
-;	and a
-;	jr z, .ok
-;	ld hl, StatusFlags
-;	bit 6, [hl] ; hall of fame
-;	jr z, .ok
-;	ld de, MUSIC_TITLE_XY
-;.ok
+	ld a, [wSaveFileExists]
+	and a
+	jr z, .ok
+	ld hl, StatusFlags
+	bit 6, [hl] ; hall of fame
+	jr z, .ok
+	ld de, MUSIC_TITLE_XY
+.ok
 	call PlayMusic
 
 	ld a, $88
