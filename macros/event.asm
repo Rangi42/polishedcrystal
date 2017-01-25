@@ -153,11 +153,6 @@ random: macro
 	db \1 ; input
 	endm
 
-	enum checkver_command
-checkver: macro
-	db checkver_command
-	endm
-
 	enum copybytetovar_command
 copybytetovar: macro
 	db copybytetovar_command

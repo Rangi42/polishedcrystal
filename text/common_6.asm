@@ -14,13 +14,13 @@ WonderTradeCantTradeEggText::
 	prompt
 
 ; unused
-UnknownText_0x613c8::
-	text "Sorry, but your"
-	line "#mon appears to"
-
-	para "be abnormal. We"
-	line "can't accept it."
-	prompt
+;UnknownText_0x613c8::
+;	text "Sorry, but your"
+;	line "#mon appears to"
+;
+;	para "be abnormal. We"
+;	line "can't accept it."
+;	prompt
 
 WonderTradeCantTradeGSBallText::
 	text "Sorry, but your"

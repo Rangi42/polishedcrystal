@@ -245,16 +245,16 @@ Lass2Script:
 	jumptextfaceplayer UnknownText_0x61cef
 
 ; unused
-UnknownText_0x61dfd:
-	text "They said you can"
-	line "trade #mon with"
-
-	para "total strangers up"
-	line "here."
-
-	para "But they're still"
-	line "adjusting things."
-	done
+;UnknownText_0x61dfd:
+;	text "They said you can"
+;	line "trade #mon with"
+;
+;	para "total strangers up"
+;	line "here."
+;
+;	para "But they're still"
+;	line "adjusting things."
+;	done
 
 UnknownText_0x61cef:
 	text "I thought up a fun"
@@ -297,38 +297,38 @@ UnknownText_0x61efa:
 	done
 
 ; unused
-UnknownText_0x6202c:
-	text "My friend was in"
-	line "the News a while"
-
-	para "back. I was really"
-	line "surprised!"
-	done
+;UnknownText_0x6202c:
+;	text "My friend was in"
+;	line "the News a while"
+;
+;	para "back. I was really"
+;	line "surprised!"
+;	done
 
 ; unused
-UnknownText_0x6206d:
-	text "I get anxious if I"
-	line "don't check out"
-	cont "the latest News!"
-	done
+;UnknownText_0x6206d:
+;	text "I get anxious if I"
+;	line "don't check out"
+;	cont "the latest News!"
+;	done
 
 TeacherScript:
 	jumptextfaceplayer UnknownText_0x61e5c
 
 ; unused
-UnknownText_0x61f48:
-	text "The #Com Center"
-	line "will link with all"
-
-	para "#mon Centers in"
-	line "a wireless net."
-
-	para "That must mean"
-	line "I'll be able to"
-
-	para "link with all"
-	line "sorts of people."
-	done
+;UnknownText_0x61f48:
+;	text "The #Com Center"
+;	line "will link with all"
+;
+;	para "#mon Centers in"
+;	line "a wireless net."
+;
+;	para "That must mean"
+;	line "I'll be able to"
+;
+;	para "link with all"
+;	line "sorts of people."
+;	done
 
 UnknownText_0x61e5c:
 	text "Some girl I don't"
@@ -342,16 +342,16 @@ UnknownText_0x61e5c:
 	done
 
 ; unused
-UnknownText_0x61eb2:
-	text "I received a"
-	line "female Sunflora,"
-
-	para "but it's named"
-	line "Stanley!"
-
-	para "That's my dad's"
-	line "name!"
-	done
+;UnknownText_0x61eb2:
+;	text "I received a"
+;	line "female Sunflora,"
+;
+;	para "but it's named"
+;	line "Stanley!"
+;
+;	para "That's my dad's"
+;	line "name!"
+;	done
 
 RockerScript:
 	jumptextfaceplayer UnknownText_0x61fc9
@@ -369,39 +369,39 @@ UnknownText_0x61fc9:
 	done
 
 ; unused
-UnknownText_0x620a1:
-	text "If I get in the"
-	line "News and become"
-
-	para "famous, I bet I'll"
-	line "be adored."
-
-	para "I wonder how I"
-	line "could get in the"
-	cont "News?"
-	done
+;UnknownText_0x620a1:
+;	text "If I get in the"
+;	line "News and become"
+;
+;	para "famous, I bet I'll"
+;	line "be adored."
+;
+;	para "I wonder how I"
+;	line "could get in the"
+;	cont "News?"
+;	done
 
 GrampsScript:
 	jumptextfaceplayer UnknownText_0x62222
 
 ; unused
-UnknownText_0x62173:
-	text "I came over here"
-	line "when I got word"
-
-	para "that Goldenrod's"
-	line "#mon Center has"
-
-	para "new machines that"
-	line "no one's ever seen"
-	cont "before."
-
-	para "But it looks like"
-	line "they're still busy"
-
-	para "with all their"
-	line "preparations…"
-	done
+;UnknownText_0x62173:
+;	text "I came over here"
+;	line "when I got word"
+;
+;	para "that Goldenrod's"
+;	line "#mon Center has"
+;
+;	para "new machines that"
+;	line "no one's ever seen"
+;	cont "before."
+;
+;	para "But it looks like"
+;	line "they're still busy"
+;
+;	para "with all their"
+;	line "preparations…"
+;	done
 
 UnknownText_0x62222:
 	text "Just seeing all"

@@ -5555,8 +5555,6 @@ PlayerSwitch: ; 3e3ad
 	ld a, [wBattleAction]
 	cp BATTLEACTION_STRUGGLE
 	jp z, .switch
-	cp BATTLEACTION_MOVE255
-	jp z, .switch
 	cp BATTLEACTION_SWITCH1
 	jp c, .switch
 	cp BATTLEACTION_FORFEIT
@@ -6246,8 +6244,6 @@ ParseEnemyAction: ; 3e7c1
 	ld a, [wBattleAction]
 	cp BATTLEACTION_STRUGGLE
 	jp z, .struggle
-	cp BATTLEACTION_MOVE255
-	jp z, .move255
 	cp BATTLEACTION_SWITCH1
 	jp nc, ResetVarsForSubstatusRage
 	ld [CurEnemyMoveNum], a
@@ -6280,11 +6276,6 @@ ParseEnemyAction: ; 3e7c1
 	call CheckEnemyLockedIn
 	jp nz, ResetVarsForSubstatusRage
 	jr .continue
-
-.move255
-	; this is never used
-	ld a, $ff
-	jr .finish
 
 .continue
 	ld hl, EnemyMonMoves
