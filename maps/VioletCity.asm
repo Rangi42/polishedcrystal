@@ -2,8 +2,11 @@ const_value set 2
 	const VIOLETCITY_EARL
 	const VIOLETCITY_LASS
 	const VIOLETCITY_COOLTRAINER_M
-	const VIOLETCITY_GRAMPS
+	const VIOLETCITY_COOLTRAINER_F
+	const VIOLETCITY_GRAMPS1
+	const VIOLETCITY_GRAMPS2
 	const VIOLETCITY_YOUNGSTER
+	const VIOLETCITY_FISHER
 	const VIOLETCITY_CUT_TREE
 	const VIOLETCITY_FRUIT_TREE
 	const VIOLETCITY_POKE_BALL1
@@ -64,11 +67,20 @@ VioletCityLassScript:
 VioletCityCooltrainerMScript:
 	jumptextfaceplayer VioletCityCooltrainerMText
 
-VioletCityGrampsScript:
-	jumptextfaceplayer VioletCityGrampsText
+VioletCityCooltrainerFScript:
+	jumptextfaceplayer VioletCityCooltrainerFText
+
+VioletCityGramps1Script:
+	jumptextfaceplayer VioletCityGramps1Text
+
+VioletCityGramps2Script:
+	jumptextfaceplayer VioletCityGramps2Text
 
 VioletCityYoungsterScript:
 	jumptextfaceplayer VioletCityYoungsterText
+
+VioletCityFisherScript:
+	jumptextfaceplayer VioletCityFisherText
 
 VioletCitySign:
 	jumptext VioletCitySignText
@@ -230,7 +242,17 @@ VioletCityCooltrainerMText:
 	line "for prime time!"
 	done
 
-VioletCityGrampsText:
+VioletCityCooltrainerFText:
+	text "Bellsprout is a"
+	line "popular #mon"
+	cont "in this town."
+
+	para "It doesn't do well"
+	line "against our Gym"
+	cont "Leader, though…"
+	done
+
+VioletCityGramps1Text:
 	text "Falkner, from the"
 	line "Violet #mon"
 
@@ -244,6 +266,14 @@ VioletCityGrampsText:
 	line "job with it."
 	done
 
+VioletCityGramps2Text:
+	text "Howdy, youngster."
+	line "Are you here to"
+
+	para "join the #mon"
+	line "school?"
+	done
+
 VioletCityYoungsterText:
 	text "I saw a wiggly"
 	line "tree up ahead!"
@@ -251,6 +281,15 @@ VioletCityYoungsterText:
 	para "If you touch it,"
 	line "it squirms and"
 	cont "dances! Cool!"
+	done
+
+VioletCityFisherText:
+	text "How does such a"
+	line "wobbly building"
+
+	para "survive an earth-"
+	line "quake? I must be"
+	cont "missing something."
 	done
 
 VioletCitySignText:
@@ -313,12 +352,15 @@ VioletCity_MapEventHeader:
 	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
 
 .PersonEvents:
-	db 9
+	db 12
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
 	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerMScript, -1
-	person_event SPRITE_GRAMPS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGrampsScript, -1
+	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerMScript, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerFScript, -1
+	person_event SPRITE_GRAMPS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGramps1Script, -1
+	person_event SPRITE_GRAMPS, 25, 26, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityGramps2Script, -1
 	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
+	person_event SPRITE_FISHER, 12, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
 	person_event SPRITE_CUT_TREE, 23, 36, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityCutTree, EVENT_VIOLET_CITY_CUT_TREE
 	person_event SPRITE_FRUIT_TREE, 33, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1
 	person_event SPRITE_POKE_BALL, 6, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VioletCityPPUp, EVENT_VIOLET_CITY_PP_UP
