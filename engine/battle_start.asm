@@ -620,13 +620,22 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	dec b
 	jr nz, .loop2
 
+	ld hl, .armored_mewtwo_pals
+	ld a, [OtherTrainerClass]
+	cp GIOVANNI
+	jr nz, .not_armored_mewtwo
+	ld a, [OtherTrainerID]
+	cp GIOVANNI1
+	jr z, .got_palette
+
+.not_armored_mewtwo
 	ld hl, .daypals
 	ld a, [TimeOfDayPal]
 	and (1 << 2) - 1
 	cp 3
-	jr nz, .daytime
+	jr nz, .got_palette
 	ld hl, .nightpals
-.daytime
+.got_palette
 	ld a, [rSVBK]
 	push af
 	ld a, $5 ; WRAM5 = palettes
@@ -684,6 +693,12 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	RGB 31, 05, 05
 	RGB 31, 05, 05
 	RGB 31, 05, 05
+
+.armored_mewtwo_pals
+	RGB 29, 18, 31
+	RGB 21, 11, 31
+	RGB 13, 05, 31
+	RGB 07, 07, 07
 
 .loadpokeballgfx
 	ld a, [OtherTrainerClass]

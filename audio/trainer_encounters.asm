@@ -49,6 +49,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_RIVAL_ENCOUNTER		; blue
 	db MUSIC_HIKER_ENCOUNTER		; red
 	db MUSIC_HIKER_ENCOUNTER		; leaf
+	db MUSIC_RIVAL_ENCOUNTER		; rival0
 	db MUSIC_RIVAL_ENCOUNTER		; rival1
 	db MUSIC_RIVAL_ENCOUNTER		; rival2
 	db MUSIC_LYRA_ENCOUNTER_HGSS	; lyra1
@@ -68,9 +69,12 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; officerm
 	db MUSIC_HIKER_ENCOUNTER		; officerf
 	db MUSIC_POKEMANIAC_ENCOUNTER	; pokemaniac
+	db MUSIC_LASS_ENCOUNTER			; cosplayer
 	db MUSIC_POKEMANIAC_ENCOUNTER	; super_nerd
 	db MUSIC_LASS_ENCOUNTER			; lass
 	db MUSIC_BEAUTY_ENCOUNTER		; beauty
+	db MUSIC_POKEMANIAC_ENCOUNTER	; bug_maniac
+	db MUSIC_HIKER_ENCOUNTER		; ruin_maniac
 	db MUSIC_HIKER_ENCOUNTER		; firebreather
 	db MUSIC_POKEMANIAC_ENCOUNTER	; juggler
 	db MUSIC_YOUNGSTER_ENCOUNTER	; schoolboy
@@ -85,6 +89,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; couple
 	db MUSIC_HIKER_ENCOUNTER		; gentleman
 	db MUSIC_YOUNGSTER_ENCOUNTER	; rich_boy
+	db MUSIC_BEAUTY_ENCOUNTER		; lady
 	db MUSIC_LASS_ENCOUNTER			; breeder
 	db MUSIC_LASS_ENCOUNTER			; baker
 	db MUSIC_LASS_ENCOUNTER			; cowgirl
@@ -116,8 +121,11 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_ROCKET_ENCOUNTER		; archer
 	db MUSIC_ROCKET_ENCOUNTER		; ariana
 	db MUSIC_ROCKET_ENCOUNTER		; giovanni
-	db MUSIC_HIKER_ENCOUNTER		; pokemon_prof
+	db MUSIC_HIKER_ENCOUNTER		; prof_oak
+	db MUSIC_HIKER_ENCOUNTER		; prof_elm
+	db MUSIC_HIKER_ENCOUNTER		; prof_ivy
 	db MUSIC_HIKER_ENCOUNTER		; mysticalman
+	db MUSIC_HIKER_ENCOUNTER		; karate_king
 	db MUSIC_HIKER_ENCOUNTER		; towertycoon
 	db MUSIC_JESSIE_JAMES_ENCOUNTER	; jessie&james
 	db MUSIC_HIKER_ENCOUNTER		; lorelei
@@ -129,6 +137,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_YOUNGSTER_ENCOUNTER	; buck
 	db MUSIC_LASS_ENCOUNTER			; marley
 	db MUSIC_LASS_ENCOUNTER			; mira
+	db MUSIC_LASS_ENCOUNTER			; anabel
 	db MUSIC_HIKER_ENCOUNTER		; darach
 	db MUSIC_KIMONO_ENCOUNTER		; caitlin
 	db MUSIC_KIMONO_ENCOUNTER		; valerie

@@ -3633,7 +3633,7 @@ FinalPkmnMusicAndAnimation:
 	ld a, 8
 	call SlideBattlePicOut
 	; ...play the final Pokémon music...
-	call IsBossTrainer
+	call IsJohtoGymLeader
 	jr nc, .no_music
 	push de
 	ld de, MUSIC_NONE
