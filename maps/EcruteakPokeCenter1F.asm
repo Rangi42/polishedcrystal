@@ -1,6 +1,7 @@
 const_value set 2
 	const ECRUTEAKPOKECENTER1F_NURSE
 	const ECRUTEAKPOKECENTER1F_POKEFAN_M
+	const ECRUTEAKPOKECENTER1F_LASS
 	const ECRUTEAKPOKECENTER1F_COOLTRAINER_F
 	const ECRUTEAKPOKECENTER1F_GYM_GUY
 	const ECRUTEAKPOKECENTER1F_BILL
@@ -99,6 +100,23 @@ EcruteakPokeCenter1FNurseScript:
 
 EcruteakPokeCenter1FPokefanMScript:
 	jumptextfaceplayer EcruteakPokeCenter1FPokefanMText
+
+EcruteakPokeCenter1FLassScript:
+	faceplayer
+	opentext
+	writetext EcruteakPokeCenter1FLassQuestionText
+	yesorno
+	iffalse .No
+	writetext EcruteakPokeCenter1FLassYesText
+	waitbutton
+	closetext
+	end
+
+.No:
+	writetext EcruteakPokeCenter1FLassNoText
+	waitbutton
+	closetext
+	end
 
 EcruteakPokeCenter1FCooltrainerFScript:
 	jumptextfaceplayer EcruteakPokeCenter1FCooltrainerFText
@@ -226,6 +244,27 @@ EcruteakPokeCenter1FPokefanMText:
 	cont "use their #mon."
 	done
 
+EcruteakPokeCenter1FLassQuestionText:
+	text "Do you know who"
+	line "Bill is?"
+	done
+
+EcruteakPokeCenter1FLassYesText:
+	text "I once heard that"
+	line "Bill's mother used"
+
+	para "to be a Kimono"
+	line "Girl. Maybe that's"
+
+	para "why he visits"
+	line "here so often."
+	done
+
+EcruteakPokeCenter1FLassNoText:
+	text "Oh… Never mind"
+	line "then."
+	done
+
 EcruteakPokeCenter1FCooltrainerFText:
 	text "Morty, the Gym"
 	line "Leader, is soooo"
@@ -262,9 +301,10 @@ EcruteakPokeCenter1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FNurseScript, -1
-	person_event SPRITE_POKEFAN_M, 6, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1
+	person_event SPRITE_POKEFAN_M, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1
+	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FLassScript, -1
 	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FCooltrainerFScript, -1
 	person_event SPRITE_GYM_GUY, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FGymGuyScript, -1
 	person_event SPRITE_BILL, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FBillScript, EVENT_ECRUTEAK_POKE_CENTER_BILL

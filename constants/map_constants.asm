@@ -136,6 +136,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 16
 	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ; 17
 	mapgroup VALERIES_HOUSE,                              4,  4 ; 18
+	mapgroup ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 19
+	mapgroup ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 20
 
 	newgroup                                                    ;  5
 

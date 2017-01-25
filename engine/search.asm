@@ -6,25 +6,20 @@ SpecialBeastsCheck: ; 0x4a6e8
 	ld a, RAIKOU
 	ld [ScriptVar], a
 	call CheckOwnMonAnywhere
-	jr nc, .notexist
+	jr nc, SpecialMonCheckFailed
 
 	ld a, ENTEI
 	ld [ScriptVar], a
 	call CheckOwnMonAnywhere
-	jr nc, .notexist
+	jr nc, SpecialMonCheckFailed
 
 	ld a, SUICUNE
 	ld [ScriptVar], a
 	call CheckOwnMonAnywhere
-	jr nc, .notexist
+	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [ScriptVar], a
-	ret
-
-.notexist
-	xor a
 	ld [ScriptVar], a
 	ret
 
@@ -37,25 +32,41 @@ SpecialBirdsCheck:
 	ld a, ARTICUNO
 	ld [ScriptVar], a
 	call CheckOwnMonAnywhere
-	jr nc, .notexist
+	jr nc, SpecialMonCheckFailed
 
 	ld a, ZAPDOS
 	ld [ScriptVar], a
 	call CheckOwnMonAnywhere
-	jr nc, .notexist
+	jr nc, SpecialMonCheckFailed
 
 	ld a, MOLTRES
 	ld [ScriptVar], a
 	call CheckOwnMonAnywhere
-	jr nc, .notexist
+	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
 	ld [ScriptVar], a
 	ret
 
-.notexist
-	xor a
+
+SpecialDuoCheck:
+; Check if the player owns Lugia and Ho-Oh.
+; They must exist in either party or PC, and have the player's OT and ID.
+; Return the result in ScriptVar.
+
+	ld a, LUGIA
+	ld [ScriptVar], a
+	call CheckOwnMonAnywhere
+	jr nc, SpecialMonCheckFailed
+
+	ld a, HO_OH
+	ld [ScriptVar], a
+	call CheckOwnMonAnywhere
+	jr nc, SpecialMonCheckFailed
+
+	; they exist
+	ld a, 1
 	ld [ScriptVar], a
 	ret
 
@@ -65,15 +76,16 @@ SpecialMonCheck: ; 0x4a711
 ; Return the result in ScriptVar.
 
 	call CheckOwnMonAnywhere
-	jr c, .exists
+	jr nc, SpecialMonCheckFailed
 
-	; doesn't exist
-	xor a
+	; they exist
+	ld a, 1
 	ld [ScriptVar], a
 	ret
 
-.exists
-	ld a, 1
+
+SpecialMonCheckFailed:
+	xor a
 	ld [ScriptVar], a
 	ret
 

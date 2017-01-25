@@ -778,6 +778,7 @@ SpriteMons: ; 14495
 	db HERACROSS
 	db URSARING
 	db SKARMORY
+	db SMEARGLE
 	db MILTANK
 	db BLISSEY
 	db RAIKOU
@@ -941,17 +942,17 @@ Group4Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
+	db SPRITE_FISHING_GURU ; doesn't walk
+	db SPRITE_HEX_MANIAC ; doesn't walk
 	db SPRITE_OFFICER ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 12 walking sprites (9 that walk)
+	db SPRITE_WEIRD_TREE
 	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
-	db SPRITE_POKE_BALL
+	db SPRITE_SMEARGLE
 	db SPRITE_SUICUNE
-	db SPRITE_WEIRD_TREE
-	; 15 total sprites
 	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
+	; 18 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL

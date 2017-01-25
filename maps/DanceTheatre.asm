@@ -8,6 +8,7 @@ const_value set 2
 	const DANCETHEATRE_RHYDON
 	const DANCETHEATRE_COOLTRAINER_M
 	const DANCETHEATRE_GRANNY
+	const DANCETHEATRE_LADY
 
 DanceTheatre_MapScriptHeader:
 .MapTriggers:
@@ -133,6 +134,9 @@ CooltrainerMScript_0x99525:
 
 GrannyScript_0x99528:
 	jumptextfaceplayer UnknownText_0x99aaa
+
+DanceTheatreLadyScript:
+	jumptextfaceplayer DanceTheatreLadyText
 
 MapDanceTheatreSignpost1Script:
 	jumptext UnknownText_0x99b79
@@ -331,6 +335,18 @@ UnknownText_0x99aaa:
 	cont "thing is possible."
 	done
 
+DanceTheatreLadyText:
+	text "Eevee can evolve"
+	line "into Leafeon, Gla-"
+	cont "ceon, or Sylveon,"
+
+	para "but none of the"
+	line "Kimono Girls use"
+	cont "those #mon."
+
+	para "I wonder why?"
+	done
+
 UnknownText_0x99b79:
 	text "It's a fancy panel"
 	line "that's decorated"
@@ -355,7 +371,7 @@ DanceTheatre_MapEventHeader:
 	signpost 6, 6, SIGNPOST_UP, MapDanceTheatreSignpost1Script
 
 .PersonEvents:
-	db 9
+	db 10
 	person_event SPRITE_KIMONO_GIRL, 2, 0, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlNaoko, -1
 	person_event SPRITE_KIMONO_GIRL, 1, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlSayo, -1
 	person_event SPRITE_KIMONO_GIRL, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerKimono_girlZuki, -1
@@ -365,3 +381,4 @@ DanceTheatre_MapEventHeader:
 	person_event SPRITE_RHYDON, 8, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RhydonScript_0x9951b, -1
 	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x99525, -1
 	person_event SPRITE_GRANNY, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x99528, -1
+	person_event SPRITE_LADY, 10, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, DanceTheatreLadyScript, -1

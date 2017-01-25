@@ -94,6 +94,8 @@ TimeCapsule_BlockData:
 
 EcruteakLugiaSpeechHouse_BlockData:
 EcruteakItemfinderHouse_BlockData:
+EcruteakCherishBallHouse_BlockData:
+EcruteakDestinyKnotHouse_BlockData:
 VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
 ValeriesHouse_BlockData:

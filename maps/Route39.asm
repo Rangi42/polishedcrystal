@@ -6,10 +6,11 @@ const_value set 2
 	const ROUTE39_MILTANK2
 	const ROUTE39_MILTANK3
 	const ROUTE39_MILTANK4
-	const ROUTE39_PSYCHIC_NORMAN
+	const ROUTE39_YOUNGSTER
 	const ROUTE39_FRUIT_TREE
 	const ROUTE39_POKEFAN_F2
 	const ROUTE39_COWGIRL
+	const ROUTE39_BEAUTY
 
 Route39_MapScriptHeader:
 .MapTriggers:
@@ -179,6 +180,9 @@ UnknownScript_0x1a5be5:
 	closetext
 	end
 
+Route39BeautyScript:
+	jumptextfaceplayer Route39BeautyText
+
 Route39Sign:
 	jumptext Route39SignText
 
@@ -343,6 +347,18 @@ UnknownText_0x1a5f31:
 	line "anywhere else."
 	done
 
+Route39BeautyText:
+	text "Which is taller:"
+	line "the Bell Tower in"
+	cont "Ecruteak City,"
+
+	para "or the Lighthouse"
+	line "in Olivine City?"
+
+	para "The Bell Tower,"
+	line "no doubt!"
+	done
+
 Route39SignText:
 	text "Route 39"
 
@@ -392,7 +408,7 @@ Route39_MapEventHeader:
 	signpost 13, 5, SIGNPOST_ITEM, Route39HiddenNugget
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
 	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
 	person_event SPRITE_POKEFAN_F, 19, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
@@ -404,3 +420,4 @@ Route39_MapEventHeader:
 	person_event SPRITE_FRUIT_TREE, 3, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a5bf4, -1
 	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
 	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerCowgirlAnnie, -1
+	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route39BeautyScript, -1

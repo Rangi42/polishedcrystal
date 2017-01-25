@@ -136,6 +136,7 @@ SpecialsPointers:: ; c029
 	add_special Special_SampleKenjiBreakCountdown
 	add_special SpecialBeastsCheck
 	add_special SpecialBirdsCheck
+	add_special SpecialDuoCheck
 	add_special SpecialMonCheck
 	add_special Special_SetPlayerPalette
 	add_special RefreshSprites

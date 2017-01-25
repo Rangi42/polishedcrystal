@@ -6,6 +6,9 @@ const_value set 2
 	const ECRUTEAKCITY_FISHER
 	const ECRUTEAKCITY_YOUNGSTER
 	const ECRUTEAKCITY_GRAMPS3
+	const ECRUTEAKCITY_HEX_MANIAC
+	const ECRUTEAKCITY_SIGHTSEER
+	const ECRUTEAKCITY_SMEARGLE
 
 EcruteakCity_MapScriptHeader:
 .MapTriggers:
@@ -32,6 +35,21 @@ GrampsScript_0x1a400f:
 
 LassScript_0x1a4012:
 	jumptextfaceplayer UnknownText_0x1a41db
+
+EcruteakCityHexManiacScript:
+	jumptextfaceplayer EcruteakCityHexManiacText
+
+EcruteakCitySightseerScript:
+	jumptextfaceplayer EcruteakCitySightseerText
+
+EcruteakCitySmeargleScript:
+	faceplayer
+	opentext
+	writetext EcruteakCitySmeargleText
+	cry SMEARGLE
+	waitbutton
+	closetext
+	end
 
 LassScript_0x1a4015:
 	faceplayer
@@ -121,6 +139,25 @@ UnknownText_0x1a41db:
 
 	para "at the shrine."
 	line "Care to join me?"
+	done
+
+EcruteakCityHexManiacText:
+	text "Spirits of #mon"
+	line "haunt this place…"
+	done
+
+EcruteakCitySightseerText:
+	text "Ecruteak has such"
+	line "an incredible"
+	cont "history."
+
+	para "Smeargle and I"
+	line "traveled here to"
+	cont "draw it."
+	done
+
+EcruteakCitySmeargleText:
+	text "Smeargle: Smeer!"
 	done
 
 UnknownText_0x1a421a:
@@ -241,7 +278,7 @@ EcruteakCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 15
+	db 17
 	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def $1b, $23, 2, ROUTE_42_ECRUTEAK_GATE
 	warp_def $b, $15, 1, ECRUTEAK_HOUSE
@@ -257,6 +294,8 @@ EcruteakCity_MapEventHeader:
 	warp_def $5, $5, 1, BURNED_TOWER_1F
 	warp_def $12, $0, 3, ROUTE_38_ECRUTEAK_GATE
 	warp_def $13, $0, 4, ROUTE_38_ECRUTEAK_GATE
+	warp_def $1b, $1d, 1, ECRUTEAK_CHERISH_BALL_HOUSE
+	warp_def $11, $d, 1, ECRUTEAK_DESTINY_KNOT_HOUSE
 
 .XYTriggers:
 	db 0
@@ -273,11 +312,14 @@ EcruteakCity_MapEventHeader:
 	signpost 11, 18, SIGNPOST_READ, EcruteakShrineSign
 
 .PersonEvents:
-	db 7
+	db 10
 	person_event SPRITE_GRAMPS, 15, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a4009, -1
 	person_event SPRITE_GRAMPS, 21, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a400c, -1
-	person_event SPRITE_LASS, 29, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, LassScript_0x1a4012, -1
+	person_event SPRITE_LASS, 26, 21, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, LassScript_0x1a4012, -1
 	person_event SPRITE_LASS, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a4015, -1
 	person_event SPRITE_FISHER, 22, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a4029, -1
 	person_event SPRITE_YOUNGSTER, 14, 10, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a403d, -1
 	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a400f, EVENT_ECRUTEAK_CITY_GRAMPS
+	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, EcruteakCityHexManiacScript, -1
+	person_event SPRITE_FISHING_GURU, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakCitySightseerScript, -1
+	person_event SPRITE_SMEARGLE, 15, 23, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCitySmeargleScript, -1

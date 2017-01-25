@@ -456,6 +456,8 @@
 	map_header_2 EcruteakGym, ECRUTEAK_GYM, $0, 0
 	map_header_2 EcruteakItemfinderHouse, ECRUTEAK_ITEMFINDER_HOUSE, $0, 0
 	map_header_2 ValeriesHouse, VALERIES_HOUSE, $0, 0
+	map_header_2 EcruteakCherishBallHouse, ECRUTEAK_CHERISH_BALL_HOUSE, $0, 0
+	map_header_2 EcruteakDestinyKnotHouse, ECRUTEAK_DESTINY_KNOT_HOUSE, $0, 0
 	map_header_2 EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $5, 0
 	map_header_2 EcruteakShrineInside, ECRUTEAK_SHRINE_INSIDE, $0, 0
 	map_header_2 BlackthornGym1F, BLACKTHORN_GYM_1F, $0, 0
