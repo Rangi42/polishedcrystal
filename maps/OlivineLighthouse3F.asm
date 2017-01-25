@@ -108,7 +108,7 @@ GentlemanPrestonBeatenText:
 
 UnknownText_0x5b457:
 	text "Jasmine used to"
-	line "use rock #mon"
+	line "use Rock #mon"
 	cont "like Onix."
 	done
 

@@ -56,7 +56,7 @@ BeautyCharlotteNoBattleScript:
 
 UnknownText_0x9c00e:
 	text "The Sailor in the"
-	line "Olivine Cafe next"
+	line "Olivine Café next"
 
 	para "door is really"
 	line "generous."

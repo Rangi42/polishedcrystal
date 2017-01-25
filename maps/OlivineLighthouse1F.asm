@@ -10,18 +10,40 @@ OlivineLighthouse1F_MapScriptHeader:
 	db 0
 
 SailorScript_0x5ae67:
-	jumptextfaceplayer UnknownText_0x5ae6d
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
+	iftrue .GotItem
+	writetext OlivineLighthouse1FSailorText1
+	buttonsound
+	verbosegiveitem FULL_RESTORE
+	iffalse .Done
+	setevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
+.GotItem:
+	writetext OlivineLighthouse1FSailorText2
+	waitbutton
+.Done:
+	closetext
+	end
 
 PokefanFScript_0x5ae6a:
 	jumptextfaceplayer UnknownText_0x5aec2
 
-UnknownText_0x5ae6d:
-	text "People train at"
-	line "this Lighthouse."
+OlivineLighthouse1FSailorText1:
+	text "People are train-"
+	line "ing hard at this"
+	cont "Lighthouse."
 
-	para "It's not easy to"
-	line "climb because of"
-	cont "all the trainers."
+	para "You should take"
+	line "this."
+	done
+
+OlivineLighthouse1FSailorText2:
+	text "The trainers here"
+	line "are all keen to"
+	cont "battle."
+
+	para "Be prepared!"
 	done
 
 UnknownText_0x5aec2:
@@ -42,8 +64,8 @@ OlivineLighthouse1F_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $11, $a, 9, OLIVINE_CITY
-	warp_def $11, $b, 9, OLIVINE_CITY
+	warp_def $11, $a, 8, OLIVINE_CITY
+	warp_def $11, $b, 8, OLIVINE_CITY
 	warp_def $b, $3, 1, OLIVINE_LIGHTHOUSE_2F
 	warp_def $d, $10, 3, OLIVINE_LIGHTHOUSE_2F
 	warp_def $d, $11, 4, OLIVINE_LIGHTHOUSE_2F

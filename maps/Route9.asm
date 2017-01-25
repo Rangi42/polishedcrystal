@@ -172,9 +172,9 @@ UnknownText_0x1ab15f:
 	done
 
 HikerTimSeenText:
-	text "She'll be coming"
+	text "♪ She'll be coming"
 	line "'round Mt.Silver"
-	cont "when she comes…"
+	cont "when she comes… ♪"
 
 	para "Mt.Silver is in"
 	line "Johto, right?"

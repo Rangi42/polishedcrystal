@@ -90,7 +90,7 @@ UnknownText_0x9c965:
 	done
 
 UnknownText_0x9c9c5:
-	text "Olivine Cafe's"
+	text "Olivine Café's"
 	line "menu is chock full"
 
 	para "of hearty fare for"
@@ -102,7 +102,7 @@ UnknownText_0x9ca09:
 	line "into this town, I"
 
 	para "always visit the"
-	line "Olivine Cafe."
+	line "Olivine Café."
 
 	para "Everything on the"
 	line "menu makes me feel"
@@ -156,8 +156,8 @@ OlivineCafe_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $2, 7, OLIVINE_CITY
-	warp_def $7, $3, 7, OLIVINE_CITY
+	warp_def $7, $2, 6, OLIVINE_CITY
+	warp_def $7, $3, 6, OLIVINE_CITY
 
 .XYTriggers:
 	db 0

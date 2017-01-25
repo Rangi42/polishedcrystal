@@ -146,8 +146,8 @@
 
 	charmap "↑",        $e8
 	charmap "↓",        $e9
-	charmap "←",        $ea
-	charmap "→",        $eb
+	charmap "♪",        $ea
+	charmap "♥",        $eb
 
 	charmap "▲",        $ec
 	charmap "▼",        $ed

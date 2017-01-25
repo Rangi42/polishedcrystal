@@ -49,8 +49,8 @@ UnknownText_0x1a2f01:
 	done
 
 PewterJigglypuffText:
-	text "Jigglypuff: Puu"
-	line "pupuu."
+	text "Jigglypuff:"
+	line "♪ Puu pupuu. ♪"
 	done
 
 UnknownText_0x1a2f75:

@@ -339,7 +339,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	next "Battle Pts@@"
 
 .Badges:
-	db "Badges→@"
+	db "Badges▶@"
 
 .StatusTilemap: ; 25366
 	db $29, $2a, $2b, $2c, $2d, $ff

@@ -585,7 +585,7 @@ _BenIntroText1::
 
 _BenIntroText2::
 	text ""
-	line "Channel!"
+	line "Channel! ♪"
 	done
 
 _BenIntroText3::
@@ -595,7 +595,7 @@ _BenIntroText3::
 
 _FernIntroText1::
 	text ""
-	line "Fern: #music!"
+	line "Fern: #music! ♪"
 	done
 
 _FernIntroText2::
