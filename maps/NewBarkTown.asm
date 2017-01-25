@@ -1,6 +1,7 @@
 const_value set 2
 	const NEWBARKTOWN_TEACHER
 	const NEWBARKTOWN_FISHER
+	const NEWBARKTOWN_YOUNGSTER
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
 
@@ -177,7 +178,7 @@ NewBarkTownTeacherScript:
 	iftrue .TellMomYoureLeaving
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .MonIsAdorable
-	writetext Text_GearIsImpressive
+	writetext Text_RefreshingBreeze
 	waitbutton
 	closetext
 	end
@@ -199,6 +200,9 @@ NewBarkTownTeacherScript:
 	waitbutton
 	closetext
 	end
+
+NewBarkTownYoungsterScript:
+	jumptextfaceplayer Text_GearIsImpressive
 
 NewBarkTownFisherScript:
 	jumptextfaceplayer Text_ElmDiscoveredNewMon
@@ -329,6 +333,12 @@ Text_GearIsImpressive:
 
 	para "Did your mom get"
 	line "it for you?"
+	done
+
+Text_RefreshingBreeze:
+	text "There's always"
+	line "such a refreshing"
+	cont "breeze here."
 	done
 
 Text_WaitPlayer:
@@ -535,8 +545,9 @@ NewBarkTown_MapEventHeader:
 	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
-	person_event SPRITE_FISHER, 9, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
+	person_event SPRITE_FISHER, 7, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
+	person_event SPRITE_YOUNGSTER, 12, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, NewBarkTownYoungsterScript, -1
 	person_event SPRITE_CHERRYGROVE_RIVAL, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
 	person_event SPRITE_NEW_BARK_LYRA, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
