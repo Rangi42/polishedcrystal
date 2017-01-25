@@ -343,7 +343,6 @@ INCLUDE "maps/DragonsDenB1F.asm"
 INCLUDE "maps/DragonShrine.asm"
 INCLUDE "maps/TohjoFalls.asm"
 INCLUDE "maps/CharcoalKiln.asm"
-INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/KurtsHouse.asm"
 INCLUDE "maps/AzaleaGym.asm"
 INCLUDE "maps/TrainerHouse1F.asm"
@@ -352,6 +351,7 @@ INCLUDE "maps/MahoganyTown.asm"
 
 SECTION "Map Scripts 16", ROMX, BANK[MAP_SCRIPTS_16]
 
+INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/VermilionPokeCenter1F.asm"
 INCLUDE "maps/PokeCenter2F.asm"
 INCLUDE "maps/Route32.asm"

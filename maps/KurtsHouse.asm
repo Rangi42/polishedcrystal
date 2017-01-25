@@ -40,8 +40,8 @@ UnknownScript_0x18e177:
 KurtScript_0x18e178:
 	faceplayer
 	opentext
-	checkevent EVENT_KURT_GAVE_YOU_LURE_BALL
-	iftrue .GotLureBall
+	checkevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
+	iftrue .GotLevelBall
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue .ClearedSlowpokeWell
 	writetext UnknownText_0x18e473
@@ -73,10 +73,10 @@ KurtScript_0x18e178:
 .ClearedSlowpokeWell:
 	writetext UnknownText_0x18e615
 	buttonsound
-	verbosegiveitem LURE_BALL
+	verbosegiveitem LEVEL_BALL
 	iffalse .NoRoomForBall
-	setevent EVENT_KURT_GAVE_YOU_LURE_BALL
-.GotLureBall:
+	setevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
+.GotLevelBall:
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iftrue .WaitForApricorns
 	checkevent EVENT_GAVE_KURT_RED_APRICORN

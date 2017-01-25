@@ -115,6 +115,9 @@ VioletCityFruitTreeScript:
 VioletCityHiddenHyperPotion:
 	dwb EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION, HYPER_POTION
 
+VioletCityHiddenPokeBall:
+	dwb EVENT_VIOLET_CITY_HIDDEN_POKE_BALL, POKE_BALL
+
 VioletCityFollowEarl_MovementData:
 	big_step_down
 	big_step_down
@@ -342,7 +345,7 @@ VioletCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 7
+	db 8
 	signpost 24, 24, SIGNPOST_READ, VioletCitySign
 	signpost 21, 15, SIGNPOST_READ, VioletGymSign
 	signpost  8, 24, SIGNPOST_READ, SproutTowerSign
@@ -350,6 +353,7 @@ VioletCity_MapEventHeader:
 	signpost 29, 32, SIGNPOST_READ, VioletCityPokeCenterSign
 	signpost 21, 10, SIGNPOST_READ, VioletCityMartSign
 	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
+	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
 
 .PersonEvents:
 	db 12
@@ -360,7 +364,7 @@ VioletCity_MapEventHeader:
 	person_event SPRITE_GRAMPS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGramps1Script, -1
 	person_event SPRITE_GRAMPS, 25, 26, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityGramps2Script, -1
 	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
-	person_event SPRITE_FISHER, 12, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
+	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
 	person_event SPRITE_CUT_TREE, 23, 36, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityCutTree, EVENT_VIOLET_CITY_CUT_TREE
 	person_event SPRITE_FRUIT_TREE, 33, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1
 	person_event SPRITE_POKE_BALL, 6, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VioletCityPPUp, EVENT_VIOLET_CITY_PP_UP
