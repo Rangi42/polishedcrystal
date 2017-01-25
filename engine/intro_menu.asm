@@ -522,7 +522,7 @@ DisplaySaveInfoOnContinue: ; 5e85
 ; 5e9a
 
 DisplaySaveInfoOnSave: ; 5e9a
-	lb de, 4, 0
+	lb de, 0, 0
 	jr DisplayNormalContinueData
 ; 5e9f
 
