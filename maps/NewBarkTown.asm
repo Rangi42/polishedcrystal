@@ -240,6 +240,9 @@ MapNewBarkTownSignpost2Script:
 MapNewBarkTownSignpost3Script:
 	jumptext LyrasHouseSignText
 
+MapNewBarkTownHiddenPotion:
+	dwb EVENT_NEW_BARK_TOWN_HIDDEN_POTION, POTION
+
 Movement_TeacherRunsToYou1_NBT:
 	step_left
 	step_left
@@ -538,11 +541,12 @@ NewBarkTown_MapEventHeader:
 	xy_trigger 1, $9, $11, $0, NewBarkTown_LyraFinalTrigger4, $0, $0
 
 .Signposts:
-	db 4
+	db 5
 	signpost 8, 8, SIGNPOST_READ, NewBarkTownSign
 	signpost 5, 13, SIGNPOST_READ, MapNewBarkTownSignpost1Script
 	signpost 3, 3, SIGNPOST_READ, MapNewBarkTownSignpost2Script
 	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
+	signpost 2, 3, SIGNPOST_ITEM, MapNewBarkTownHiddenPotion
 
 .PersonEvents:
 	db 5
