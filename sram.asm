@@ -83,7 +83,6 @@ sBackupGameDataEnd::
 
 sBackupChecksum:: ds 2
 s0_bf0f:: ds 1 ; loaded with 0x7f, used to check save corruption
-sStackTop:: ds 2
 
 
 SECTION "Save", SRAM, BANK [1]
@@ -194,7 +193,7 @@ sNrOfBeatenBattleTowerTrainers:: ds 1
 sBTChoiceOfLevelGroup:: ds 1
 ; The 7 trainers of the BattleTower are saved here, so nobody appears more than once
 sBTTrainers:: ; sbe48
-	ds 7
+	ds BATTLETOWER_NROFTRAINERS
 sBattleTowerNewSaveFile:: ds 1
 ; Pkmn of previous trainer
 sBTPkmnOfTrainers:: ; 0xbe51

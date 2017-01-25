@@ -2215,7 +2215,7 @@ wPlayerSpriteSetupFlags:: ds 1 ; d45b
 wMapReentryScriptQueueFlag:: ds 1 ; d45c MemScriptFlag
 wMapReentryScriptBank:: ds 1 ; d45d MemScriptBank
 wMapReentryScriptAddress:: ds 2 ; d45e MemScriptAddr
-	ds 4     ; ?????????????
+	ds 4
 wTimeCyclesSinceLastCall:: ds 1 ; d464
 wReceiveCallDelay_MinsRemaining:: ds 1 ; d465
 wReceiveCallDelay_StartTime:: ds 3 ; d466

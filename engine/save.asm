@@ -150,7 +150,6 @@ ClearWRAMStateAfterSave: ; 14b5a
 	ret
 ; 14b5f
 
-
 AddHallOfFameEntry: ; 14b5f
 	ld a, BANK(sHallOfFame)
 	call GetSRAMBank
@@ -280,7 +279,6 @@ SaveGameData_: ; 14c10
 	call SaveBackupPlayerData
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
-	call UpdateStackTop
 	farcall BackupPartyMonMail
 	farcall SaveRTC
 	ld a, BANK(sBattleTowerChallengeState)
@@ -294,47 +292,6 @@ SaveGameData_: ; 14c10
 	call CloseSRAM
 	ret
 ; 14c6b
-
-UpdateStackTop: ; 14c6b
-; sStackTop appears to be unused.
-; It could have been used to debug stack overflow during saving.
-	call FindStackTop
-	ld a, BANK(sStackTop)
-	call GetSRAMBank
-	ld a, [sStackTop + 0]
-	ld e, a
-	ld a, [sStackTop + 1]
-	ld d, a
-	or e
-	jr z, .update
-	ld a, e
-	sub l
-	ld a, d
-	sbc h
-	jr c, .done
-
-.update
-	ld a, l
-	ld [sStackTop + 0], a
-	ld a, h
-	ld [sStackTop + 1], a
-
-.done
-	call CloseSRAM
-	ret
-; 14c90
-
-FindStackTop: ; 14c90
-; Find the furthest point that sp has traversed to.
-; This is distinct from the current value of sp.
-	ld hl, Stack - $ff
-.loop
-	ld a, [hl]
-	or a
-	ret nz
-	inc hl
-	jr .loop
-; 14c99
 
 SavingDontTurnOffThePower: ; 14c99
 	; Prevent joypad interrupts
@@ -367,12 +324,6 @@ ErasePreviousSave: ; 14cbb
 	call EraseHallOfFame
 	call EraseLinkBattleStats
 	call EraseBattleTowerStatus
-	ld a, BANK(sStackTop)
-	call GetSRAMBank
-	xor a
-	ld [sStackTop + 0], a
-	ld [sStackTop + 1], a
-	call CloseSRAM
 	ld a, $1
 	ld [wSavedAtLeastOnce], a
 	ret
