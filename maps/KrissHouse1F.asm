@@ -10,144 +10,117 @@ KrissHouse1F_MapScriptHeader:
 	db 2
 
 	; triggers
-	dw UnknownScript_0x7a4d6, 0
-	dw UnknownScript_0x7a4d7, 0
+	dw .Trigger0, 0
+	dw .Trigger1, 0
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x7a4d6:
+.Trigger0:
 	end
 
-UnknownScript_0x7a4d7:
+.Trigger1:
 	end
 
-UnknownScript_0x7a4d8:
-	setevent EVENT_GAVE_KURT_APRICORNS
-
-UnknownScript_0x7a4db:
+MomTrigger1:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
+	spriteface KRISSHOUSE1F_MOM1, RIGHT
 	spriteface PLAYER, LEFT
-	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x7a4f2
-	applymovement KRISSHOUSE1F_MOM1, MovementData_0x7a5fc
-	jump UnknownScript_0x7a4f6
+	jump MomEventScript
 
-UnknownScript_0x7a4f2:
-	applymovement KRISSHOUSE1F_MOM1, MovementData_0x7a5fe
-UnknownScript_0x7a4f6:
+MomTrigger2:
+	playmusic MUSIC_MOM
+	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
+	spriteface KRISSHOUSE1F_MOM1, RIGHT
+	applymovement PLAYER, KrissHouse1FSlowStepLeftMovementData
+MomEventScript:
 	opentext
-	writetext UnknownText_0x7a604
+	writetext MomIntroText
 	buttonsound
 	stringtotext GearName, $1
-	scall UnknownScript_0x7a57e
+	callstd receiveitem
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
 	dotrigger $1
 	setevent EVENT_KRISS_HOUSE_MOM_1
 	clearevent EVENT_KRISS_HOUSE_MOM_2
-	writetext UnknownText_0x7a6bd
+	writetext MomPokegearText
 	buttonsound
 	special Special_SetDayOfWeek
-UnknownScript_0x7a519:
-	writetext UnknownText_0x7a742
+.InitialSetDSTFlag:
+	writetext MomDSTText
 	yesorno
-	iffalse UnknownScript_0x7a52a
+	iffalse .NotDST
 	special Special_InitialSetDSTFlag
 	yesorno
-	iffalse UnknownScript_0x7a519
-	jump UnknownScript_0x7a531
+	iffalse .InitialSetDSTFlag
+	jump .InitializedDSTFlag
 
-UnknownScript_0x7a52a:
+.NotDST:
 	special Special_InitialClearDSTFlag
 	yesorno
-	iffalse UnknownScript_0x7a519
-UnknownScript_0x7a531:
-	writetext UnknownText_0x7a763
+	iffalse .InitialSetDSTFlag
+.InitializedDSTFlag:
+	writetext MomRunningShoesText
 	yesorno
-	iffalse UnknownScript_0x7a542
-	jump UnknownScript_0x7a549
-
-UnknownScript_0x7a542:
-	writetext UnknownText_0x7a807
+	iftrue .NoInstructions
+	writetext MomInstructionsText
 	buttonsound
-	jump UnknownScript_0x7a549
-
-UnknownScript_0x7a549:
-	writetext UnknownText_0x7a850
+.NoInstructions:
+	writetext MomOutroText
 	waitbutton
 	closetext
-	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue UnknownScript_0x7a55d
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
-	iffalse UnknownScript_0x7a564
-	jump UnknownScript_0x7a56b
-
-UnknownScript_0x7a55d:
-	applymovement KRISSHOUSE1F_MOM1, MovementData_0x7a600
-	jump UnknownScript_0x7a56b
-
-UnknownScript_0x7a564:
-	applymovement KRISSHOUSE1F_MOM1, MovementData_0x7a602
-	jump UnknownScript_0x7a56b
-
-UnknownScript_0x7a56b:
-	special RestartMapMusic
 	spriteface KRISSHOUSE1F_MOM1, LEFT
+	special RestartMapMusic
 	end
-
-UnknownScript_0x7a572:
-	playmusic MUSIC_MOM
-	jump UnknownScript_0x7a4f6
 
 GearName:
 	db "#gear@"
 
-UnknownScript_0x7a57e:
-	jumpstd receiveitem
-	end
-
-MomScript_0x7a582:
+MomScript:
 	faceplayer
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
 	checktriggers
-	iffalse UnknownScript_0x7a572
+	iffalse .MomEvent
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-	iftrue UnknownScript_0x7a5af
+	iftrue .DoIt
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iftrue UnknownScript_0x7a5b8
+	iftrue .BankOfMom
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue UnknownScript_0x7a5b5
+	iftrue .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue UnknownScript_0x7a5a9
-	writetext UnknownText_0x7a8b5
+	iftrue .Errand
+	writetext MomHurryUpText
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x7a5a9:
-	writetext UnknownText_0x7a8e5
+.Errand:
+	writetext MomErrandText
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x7a5af:
-	writetext UnknownText_0x7a957
+.DoIt:
+	writetext MomDoItText
 	waitbutton
 	closetext
 	end
 
-UnknownScript_0x7a5b5:
+.FirstTimeBanking:
 	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-UnknownScript_0x7a5b8:
+.BankOfMom:
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	special Special_BankOfMom
 	waitbutton
 	closetext
 	end
+
+.MomEvent:
+	playmusic MUSIC_MOM
+	jump MomEventScript
 
 NeighborScript:
 	faceplayer
@@ -205,11 +178,11 @@ MovementData_0x7a600:
 	turn_head_left
 	step_end
 
-MovementData_0x7a602:
+KrissHouse1FSlowStepLeftMovementData:
 	slow_step_left
 	step_end
 
-UnknownText_0x7a604:
+MomIntroText:
 	text "Oh, <PLAYER>!"
 	line "You're awake."
 
@@ -231,7 +204,7 @@ UnknownText_0x7a604:
 	para "Here you go!"
 	done
 
-UnknownText_0x7a6bd:
+MomPokegearText:
 	text "#mon Gear, or"
 	line "just #gear."
 
@@ -246,12 +219,12 @@ UnknownText_0x7a6bd:
 	line "that!"
 	done
 
-UnknownText_0x7a742:
+MomDSTText:
 	text "Is it Daylight"
 	line "Saving Time now?"
 	done
 
-UnknownText_0x7a763:
+MomRunningShoesText:
 	text "Come home to"
 	line "adjust your clock"
 
@@ -265,7 +238,7 @@ UnknownText_0x7a763:
 	line "Running Shoes?"
 	done
 
-UnknownText_0x7a807:
+MomInstructionsText:
 	text "I'll read the"
 	line "instructions."
 
@@ -278,19 +251,19 @@ UnknownText_0x7a807:
 	cont "hold B to walk."
 	done
 
-UnknownText_0x7a850:
+MomOutroText:
 	text "Gee, aren't they"
 	line "convenient?"
 	done
 
-UnknownText_0x7a8b5:
+MomHurryUpText:
 	text "Prof.Elm is wait-"
 	line "ing for you."
 
 	para "Hurry up, baby!"
 	done
 
-UnknownText_0x7a8e5:
+MomErrandText:
 	text "So, what was Prof."
 	line "Elm's errand?"
 
@@ -304,7 +277,7 @@ UnknownText_0x7a8e5:
 	cont "rely on you."
 	done
 
-UnknownText_0x7a957:
+MomDoItText:
 	text "<PLAYER>, do it!"
 
 	para "I'm behind you all"
@@ -388,8 +361,8 @@ KrissHouse1F_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $4, $8, $0, UnknownScript_0x7a4d8, $0, $0
-	xy_trigger 0, $4, $9, $0, UnknownScript_0x7a4db, $0, $0
+	xy_trigger 0, $4, $8, $0, MomTrigger1, $0, $0
+	xy_trigger 0, $4, $9, $0, MomTrigger2, $0, $0
 
 .Signposts:
 	db 4
@@ -400,8 +373,8 @@ KrissHouse1F_MapEventHeader:
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript_0x7a582, EVENT_KRISS_HOUSE_MOM_1
-	person_event SPRITE_MOM, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript_0x7a582, EVENT_KRISS_HOUSE_MOM_2
-	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript_0x7a582, EVENT_KRISS_HOUSE_MOM_2
-	person_event SPRITE_MOM, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript_0x7a582, EVENT_KRISS_HOUSE_MOM_2
+	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
+	person_event SPRITE_MOM, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	person_event SPRITE_MOM, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	person_event SPRITE_POKEFAN_F, 4, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR

@@ -43,8 +43,6 @@ MortyScript_0x99d58:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_FOGBADGE
-	checkcode VAR_BADGES
-	scall EcruteakGymTriggerRockets
 	domaptrigger ECRUTEAK_HOUSE, $1
 	setevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_RANG_CLEAR_BELL_2
@@ -69,17 +67,6 @@ UnknownScript_0x99db1:
 	waitbutton
 	closetext
 	end
-
-EcruteakGymTriggerRockets:
-	if_equal 7, .RadioTowerRockets
-	if_equal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd goldenrodrockets
-
-.RadioTowerRockets:
-	jumpstd radiotowerrockets
 
 UnknownScript_0x99dc6:
 	applymovement PLAYER, MovementData_0x99e5d

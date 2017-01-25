@@ -64,8 +64,6 @@ WhitneyScript_0x5400c:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_PLAINBADGE
-	checkcode VAR_BADGES
-	scall GoldenrodGymTriggerRockets
 UnknownScript_0x54064:
 	writetext UnknownText_0x5428b
 	buttonsound
@@ -81,17 +79,6 @@ UnknownScript_0x54077:
 	waitbutton
 	closetext
 	end
-
-GoldenrodGymTriggerRockets:
-	if_equal 7, .RadioTowerRockets
-	if_equal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd goldenrodrockets
-
-.RadioTowerRockets:
-	jumpstd radiotowerrockets
 
 TrainerLassCarrie:
 	trainer EVENT_BEAT_LASS_CARRIE, LASS, CARRIE, LassCarrieSeenText, LassCarrieBeatenText, 0, LassCarrieScript

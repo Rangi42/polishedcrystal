@@ -24,11 +24,12 @@ GoldenrodCity_MapScriptHeader:
 	maptrigger .Trigger1
 
 .MapCallbacks:
-	db 2
+	db 3
 
 	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPointAndFloria
 	dbw MAPCALLBACK_OBJECTS, .MoveTutor
+	dbw MAPCALLBACK_SPRITES, .RocketScout
 
 .FlyPointAndFloria:
 	setflag ENGINE_FLYPOINT_GOLDENROD
@@ -49,6 +50,13 @@ GoldenrodCity_MapScriptHeader:
 
 .MoveTutorDisappear:
 	disappear GOLDENRODCITY_POKEFAN_M2
+	return
+
+.RocketScout:
+	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	iffalse .RocketScoutDone
+	moveperson GOLDENRODCITY_ROCKET1, 29, 17
+.RocketScoutDone
 	return
 
 .Trigger0:
@@ -223,6 +231,11 @@ GrampsScript_0x198a17:
 	jumptextfaceplayer UnknownText_0x198ccf
 
 RocketScript_0x198a1a:
+	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	iffalse .RocketScout
+	jumptextfaceplayer UnknownText_0x198de2
+
+.RocketScout:
 	opentext
 	writetext UnknownText_0x198d0d
 	buttonsound
@@ -416,6 +429,14 @@ UnknownText_0x198daa:
 	line "money!"
 	done
 
+UnknownText_0x198de2:
+	text "Our dream will"
+	line "soon come true…"
+
+	para "It was such a long"
+	line "struggle…"
+	done
+
 UnknownText_0x198e1f:
 	text "Hey, brat! You"
 	line "don't belong here!"
@@ -582,7 +603,7 @@ GoldenrodCity_MapEventHeader:
 	db 17
 	warp_def $7, $1c, 1, GOLDENROD_GYM
 	warp_def $1d, $21, 1, GOLDENROD_BIKE_SHOP
-	warp_def $15, $23, 1, GOLDENROD_HAPPINESS_RATER
+	warp_def $f, $1d, 1, GOLDENROD_HAPPINESS_RATER
 	warp_def $19, $9, 1, GOLDENROD_BILLS_HOUSE
 	warp_def $d, $d, 2, GOLDENROD_MAGNET_TRAIN_STATION
 	warp_def $5, $21, 1, GOLDENROD_FLOWER_SHOP
@@ -620,14 +641,14 @@ GoldenrodCity_MapEventHeader:
 .PersonEvents:
 	db 15
 	person_event SPRITE_POKEFAN_M, 18, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1989e3, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_YOUNGSTER, 17, 34, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1989e6, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_YOUNGSTER, 16, 33, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1989e6, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 16, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1989e9, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 26, 24, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1989fd, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_YOUNGSTER, 17, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x198a11, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_LASS, 10, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x198a14, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_GRAMPS, 27, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x198a17, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_ROCKET, 16, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a1a, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
-	person_event SPRITE_ROCKET, 20, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a29, EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a29, EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a2c, EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 23, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a2f, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 7, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a35, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

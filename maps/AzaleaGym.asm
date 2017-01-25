@@ -32,8 +32,6 @@ BugsyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_HIVEBADGE
-	checkcode VAR_BADGES
-	scall AzaleaGymTriggerRockets
 	domaptrigger AZALEA_TOWN, $1
 .FightDone:
 	checkevent EVENT_GOT_TM49_FURY_CUTTER
@@ -56,17 +54,6 @@ BugsyScript:
 	waitbutton
 	closetext
 	end
-
-AzaleaGymTriggerRockets:
-	if_equal 7, .RadioTowerRockets
-	if_equal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd goldenrodrockets
-
-.RadioTowerRockets:
-	jumpstd radiotowerrockets
 
 TrainerTwinsAmyandmay1:
 	trainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY1, TwinsAmyandmay1SeenText, TwinsAmyandmay1BeatenText, 0, .AfterScript

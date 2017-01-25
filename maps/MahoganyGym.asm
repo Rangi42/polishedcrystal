@@ -32,8 +32,7 @@ PryceScript_0x199a9e:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_GLACIERBADGE
-	checkcode VAR_BADGES
-	scall MahoganyGymTriggerRockets
+	callstd radiotowerrockets
 .FightDone:
 	checkevent EVENT_GOT_TM42_AVALANCHE
 	iftrue UnknownScript_0x199af0
@@ -56,17 +55,6 @@ UnknownScript_0x199af0:
 	waitbutton
 	closetext
 	end
-
-MahoganyGymTriggerRockets:
-	if_equal 7, .RadioTowerRockets
-	if_equal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd goldenrodrockets
-
-.RadioTowerRockets:
-	jumpstd radiotowerrockets
 
 TrainerSkierRoxanne:
 	trainer EVENT_BEAT_SKIER_ROXANNE, SKIER, ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText, 0, SkierRoxanneScript

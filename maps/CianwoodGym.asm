@@ -51,8 +51,6 @@ ChuckScript_0x9d60f:
 	waitsfx
 	setflag ENGINE_STORMBADGE
 	specialphonecall SPECIALCALL_YELLOWFOREST
-	checkcode VAR_BADGES
-	scall CianwoodGymTriggerRockets
 .FightDone:
 	checkevent EVENT_GOT_TM01_DYNAMICPUNCH
 	iftrue .AlreadyGotTM
@@ -74,17 +72,6 @@ ChuckScript_0x9d60f:
 	waitbutton
 	closetext
 	end
-
-CianwoodGymTriggerRockets:
-	if_equal 7, .RadioTowerRockets
-	if_equal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd goldenrodrockets
-
-.RadioTowerRockets:
-	jumpstd radiotowerrockets
 
 TrainerBlackbeltYoshi:
 	trainer EVENT_BEAT_BLACKBELT_YOSHI, BLACKBELT_T, YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText, 0, .Script

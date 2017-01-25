@@ -844,14 +844,14 @@ InitGender: ; 48dcb (12:4dcb)
 
 .MenuDataHeader: ; 0x48dfc
 	db $40 ; flags
-	db 06, 13 ; start coords
+	db 7, 13 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 ; 0x48e04
 
 .MenuData2: ; 0x48e04
-	db $a1 ; flags
+	db $c1 ; flags
 	db 2 ; items
 	db "Boy@"
 	db "Girl@"
@@ -1231,21 +1231,23 @@ TitleScreenEntrance: ; 62bc
 	xor a
 	ld [hFFC6], a
 
-	ld a, BANK(sStatusFlags)
-	call GetSRAMBank
-	ld hl, sStatusFlags
-	ld de, StatusFlags
-	ld bc, 1
-	call CopyBytes
-	call CloseSRAM
+;	ld a, BANK(sStatusFlags)
+;	call GetSRAMBank
+;	ld a, [sStatusFlags]
+;	ld [StatusFlags], a
+;	call CloseSRAM
 
 ; Play the title screen music.
+; TODO: Play XY music if in the Hall of Fame
 	ld de, MUSIC_TITLE
-	ld hl, StatusFlags
-	bit 6, [hl] ; hall of fame
-	jr nz, .ok
-	ld de, MUSIC_TITLE_XY
-.ok
+;	ld a, [wSaveFileExists]
+;	and a
+;	jr z, .ok
+;	ld hl, StatusFlags
+;	bit 6, [hl] ; hall of fame
+;	jr z, .ok
+;	ld de, MUSIC_TITLE_XY
+;.ok
 	call PlayMusic
 
 	ld a, $88

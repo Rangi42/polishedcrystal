@@ -31,8 +31,7 @@ JasmineScript_0x9c12f:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MINERALBADGE
-	checkcode VAR_BADGES
-	scall OlivineGymTriggerRockets
+	callstd goldenrodrockets
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
 	iftrue UnknownScript_0x9c172
@@ -50,17 +49,6 @@ UnknownScript_0x9c172:
 	waitbutton
 	closetext
 	end
-
-OlivineGymTriggerRockets:
-	if_equal 7, .RadioTowerRockets
-	if_equal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd goldenrodrockets
-
-.RadioTowerRockets:
-	jumpstd radiotowerrockets
 
 OlivineGymGuyScript:
 	faceplayer
