@@ -2225,26 +2225,16 @@ wBugContestSecsRemaining:: ds 1 ; d46d
 	ds 2
 wMapStatusEnd:: ds 2 ; d470
 
-wCrystalData::
+wGameData::
+wPlayerData::
+PlayerID:: ; d47b
+	ds 2
+
 PlayerGender:: ; d472
 ; bit 0:
 ;	0 male
 ;	1 female
 	ds 1
-wd473:: ds 1
-wd474:: ds 1
-wd475:: ds 1
-wd476:: ds 1
-wd477:: ds 1
-wd478:: ds 1
-wCrystalDataEnd::
-
-wd479:: ds 2
-
-wGameData::
-wPlayerData::
-PlayerID:: ; d47b
-	ds 2
 
 PlayerName::   ds NAME_LENGTH ; d47d
 RivalName::    ds NAME_LENGTH ; d488

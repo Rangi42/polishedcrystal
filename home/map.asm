@@ -1944,7 +1944,6 @@ CloseSubmenu:: ; 2b3c
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
 	call Call_ExitMenu
-	call ret_d90
 	jr FinishExitMenu
 ; 2b4d
 
@@ -1953,7 +1952,6 @@ ExitAllMenus:: ; 2b4d
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
-	call ret_d90
 FinishExitMenu:: ; 2b5c
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout

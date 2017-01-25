@@ -183,12 +183,6 @@ sHallOfFame:: ; b2c0
 ; endr
 sHallOfFameEnd::
 
-SECTION "SRAM Crystal Data", SRAM, BANK [1]
-	ds 1
-sCrystalData::
-	ds wCrystalDataEnd - wCrystalData
-	ds 1
-
 SECTION "SRAM Battle Tower", SRAM, BANK [1]
 ; data of the BattleTower must be in SRAM because you can save and leave between battles
 sBattleTowerChallengeState:: ds 1

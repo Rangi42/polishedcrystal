@@ -140,7 +140,6 @@ StartMenu:: ; 125cd
 	call MenuFunc_1e7f
 	call .DrawBugContestStatus
 	call UpdateSprites
-	call ret_d90
 	call FinishExitMenu
 	ret
 ; 126d3

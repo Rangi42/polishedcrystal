@@ -78,24 +78,6 @@ NewGame_ClearTileMapEtc: ; 5b44
 	ret
 ; 5b54
 
-InitCrystalData: ; 48000
-	ld a, $1
-	ld [wd474], a
-	xor a
-	ld [wd473], a
-	ld [PlayerGender], a
-	ld [wd475], a
-	ld [wd476], a
-	ld [wd477], a
-	ld [wd478], a
-	ld [wd002], a
-	ld [wd003], a
-	ld a, [wd479]
-	and %11111100
-	ld [wd479], a
-	ret
-; 4802f
-
 OptionsMenu: ; 5b64
 	farcall _OptionsMenu
 	ret
@@ -106,7 +88,6 @@ NewGame: ; 5b6b
 	ld [wMonStatusFlags], a
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
-	call InitCrystalData
 	call SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
@@ -169,6 +150,7 @@ _ResetWRAM: ; 5bae
 	xor a
 	ld [wCurBox], a
 	ld [wSavedAtLeastOnce], a
+	ld [PlayerGender], a
 
 	call SetDefaultBoxNames
 
@@ -377,7 +359,6 @@ LoadOrRegenerateLuckyIDNumber: ; 5d33
 Continue: ; 5d65
 	farcall TryLoadSaveFile
 	jr c, .FailToLoad
-	farcall _LoadData
 	call LoadStandardMenuDataHeader
 	call DisplaySaveInfoOnContinue
 	ld a, $1

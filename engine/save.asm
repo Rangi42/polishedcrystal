@@ -18,7 +18,6 @@ SaveMenu: ; 14a1a
 
 .refused
 	call ExitMenu
-	call ret_d90
 	farcall SaveMenu_LoadEDTile
 	scf
 	ret
@@ -217,9 +216,6 @@ SaveTheGame_yesorno: ; 14baf
 	ld a, [wMenuCursorY]
 	dec a
 	call CloseWindow
-	push af
-	call ret_d90
-	pop af
 	and a
 	ret
 ; 14bcb
@@ -370,7 +366,6 @@ ErasePreviousSave: ; 14cbb
 	call EraseBoxes
 	call EraseHallOfFame
 	call EraseLinkBattleStats
-	call SaveData
 	call EraseBattleTowerStatus
 	ld a, BANK(sStackTop)
 	call GetSRAMBank
@@ -410,49 +405,6 @@ EraseBattleTowerStatus: ; 14d5c
 	ld [sBattleTowerChallengeState], a
 	jp CloseSRAM
 ; 14d68
-
-SaveData: ; 14d68
-	call _SaveData
-	ret
-; 14d6c
-
-; unused?
-Function14d6c: ; 14d6c
-	ld a, $4
-	call GetSRAMBank
-	ld a, [$a60b]
-	ld b, $0
-	and a
-	jr z, .ok
-	ld b, $2
-
-.ok
-	ld a, b
-	ld [$a60b], a
-	call CloseSRAM
-	ret
-; 14d83
-
-; unused?
-Function14d83: ; 14d83
-	ld a, $4
-	call GetSRAMBank
-	xor a
-	ld [$a60c], a
-	ld [$a60d], a
-	call CloseSRAM
-	ret
-; 14d93
-
-; unused?
-Function14d93: ; 14d93
-	ld a, $7
-	call GetSRAMBank
-	xor a
-	ld [$a000], a
-	call CloseSRAM
-	ret
-; 14da0
 
 HallOfFame_InitSaveIfNeeded: ; 14da0
 	ld a, [wSavedAtLeastOnce]
@@ -838,42 +790,6 @@ VerifyBackupChecksum: ; 1507c (5:507c)
 	call CloseSRAM
 	pop af
 	ret
-
-
-_SaveData: ; 1509a
-	ld a, BANK(sCrystalData)
-	call GetSRAMBank
-	ld hl, wCrystalData
-	ld de, sCrystalData
-	ld bc, wCrystalDataEnd - wCrystalData
-	call CopyBytes
-
-	; XXX SRAM bank 7
-	ld hl, wd479
-	ld a, [hli]
-	ld [$a60e + 0], a
-	ld a, [hli]
-	ld [$a60e + 1], a
-
-	jp CloseSRAM
-
-
-_LoadData: ; 150b9
-	ld a, BANK(sCrystalData)
-	call GetSRAMBank
-	ld hl, sCrystalData
-	ld de, wCrystalData
-	ld bc, wCrystalDataEnd - wCrystalData
-	call CopyBytes
-
-	; XXX SRAM bank 7
-	ld hl, wd479
-	ld a, [$a60e + 0]
-	ld [hli], a
-	ld a, [$a60e + 1]
-	ld [hli], a
-
-	jp CloseSRAM
 
 
 GetBoxAddress: ; 150d8
