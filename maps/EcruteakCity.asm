@@ -244,9 +244,9 @@ EcruteakCity_MapEventHeader:
 	db 15
 	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def $1b, $23, 2, ROUTE_42_ECRUTEAK_GATE
-	warp_def $b, $13, 1, ECRUTEAK_HOUSE
-	warp_def $b, $d, 3, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def $b, $e, 4, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def $b, $15, 1, ECRUTEAK_HOUSE
+	warp_def $b, $f, 3, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def $b, $10, 4, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def $1b, $17, 1, ECRUTEAK_POKECENTER_1F
 	warp_def $15, $5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
 	warp_def $15, $17, 1, DANCE_THEATRE
@@ -269,8 +269,8 @@ EcruteakCity_MapEventHeader:
 	signpost 10, 2, SIGNPOST_READ, BurnedTowerSign
 	signpost 27, 24, SIGNPOST_READ, EcruteakCityPokeCenterSign
 	signpost 21, 30, SIGNPOST_READ, EcruteakCityMartSign
-	signpost 14, 23, SIGNPOST_ITEM, EcruteakCityHiddenHyperPotion
-	signpost 11, 16, SIGNPOST_READ, EcruteakShrineSign
+	signpost 14, 25, SIGNPOST_ITEM, EcruteakCityHiddenHyperPotion
+	signpost 11, 18, SIGNPOST_READ, EcruteakShrineSign
 
 .PersonEvents:
 	db 7
