@@ -172,8 +172,8 @@ UnknownText_0x174485: ; 0x174485
 UnknownText_0x1744d6: ; 0x1744d6
 	text "Did you know…?"
 
-	para "The rock, ground"
-	line "and steel types"
+	para "The Rock, Ground"
+	line "and Steel types"
 
 	para "can't be hurt by"
 	line "Sandstorm."

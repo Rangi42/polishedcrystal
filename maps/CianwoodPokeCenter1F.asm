@@ -3,6 +3,7 @@ const_value set 2
 	const CIANWOODPOKECENTER1F_LASS
 	const CIANWOODPOKECENTER1F_GYM_GUY
 	const CIANWOODPOKECENTER1F_SUPER_NERD
+	const CIANWOODPOKECENTER1F_RICH_BOY
 
 CianwoodPokeCenter1F_MapScriptHeader:
 .MapTriggers:
@@ -36,6 +37,9 @@ CianwoodGymGuyScript:
 
 SuperNerdScript_0x9dbea:
 	jumptextfaceplayer UnknownText_0x9ded7
+
+CianwoodPokeCenterRichBoyScript:
+	jumptextfaceplayer CianwoodPokeCenterRichBoyText
 
 UnknownText_0x9dbed:
 	text "Did you meet the"
@@ -119,6 +123,15 @@ UnknownText_0x9ded7:
 	line "off my #mon!"
 	done
 
+CianwoodPokeCenterRichBoyText:
+	text "There's no #"
+	line "Mart in this town,"
+
+	para "so we have to im-"
+	line "port products from"
+	cont "across the sea."
+	done
+
 CianwoodPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -136,8 +149,9 @@ CianwoodPokeCenter1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9dbcf, -1
 	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9dbd2, -1
 	person_event SPRITE_GYM_GUY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
 	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x9dbea, -1
+	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CianwoodPokeCenterRichBoyScript, -1

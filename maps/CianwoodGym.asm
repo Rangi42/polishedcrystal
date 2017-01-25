@@ -4,6 +4,7 @@ const_value set 2
 	const CIANWOODGYM_BLACK_BELT2
 	const CIANWOODGYM_BLACK_BELT3
 	const CIANWOODGYM_BLACK_BELT4
+	const CIANWOODGYM_BLACK_BELT5
 	const CIANWOODGYM_BOULDER1
 	const CIANWOODGYM_BOULDER2
 	const CIANWOODGYM_BOULDER3
@@ -128,6 +129,9 @@ TrainerBlackbeltLung:
 	waitbutton
 	closetext
 	end
+
+CianwoodGymBlackBeltScript:
+	jumptextfaceplayer CianwoodGymBlackBeltText
 
 CianwoodGymBoulder:
 	jumpstd strengthboulder
@@ -303,6 +307,14 @@ BlackbeltLungAfterText:
 	cont "shattered…"
 	done
 
+CianwoodGymBlackBeltText:
+	text "The Gym guide is"
+	line "too scared of us"
+	cont "to stay here."
+
+	para "What a wimp!"
+	done
+
 CianwoodGym_MapEventHeader:
 	; filler
 	db 0, 0
@@ -321,12 +333,13 @@ CianwoodGym_MapEventHeader:
 	signpost 15, 6, SIGNPOST_READ, CianwoodGymStatue
 
 .PersonEvents:
-	db 9
+	db 10
 	person_event SPRITE_CHUCK, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ChuckScript_0x9d60f, -1
 	person_event SPRITE_BLACK_BELT, 12, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBlackbeltYoshi, -1
 	person_event SPRITE_BLACK_BELT, 12, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerBlackbeltLao, -1
 	person_event SPRITE_BLACK_BELT, 9, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltNob, -1
 	person_event SPRITE_BLACK_BELT, 5, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerBlackbeltLung, -1
+	person_event SPRITE_BLACK_BELT, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CianwoodGymBlackBeltScript, -1
 	person_event SPRITE_BOULDER, 1, 5, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1
 	person_event SPRITE_BOULDER, 7, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1
 	person_event SPRITE_BOULDER, 7, 4, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1

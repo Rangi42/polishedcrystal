@@ -12,6 +12,8 @@ const_value set 2
 	const CIANWOODCITY_ROCKET
 	const CIANWOODCITY_EUSINE
 	const CIANWOODCITY_SUICUNE
+	const CIANWOODCITY_SAILOR
+	const CIANWOODCITY_FISHER
 
 CianwoodCity_MapScriptHeader:
 .MapTriggers:
@@ -120,6 +122,12 @@ LassScript_0x1a00b9:
 
 CianwoodCityRocketScript:
 	jumptextfaceplayer CianwoodCityRocketText
+
+CianwoodCitySailorScript:
+	jumptextfaceplayer CianwoodCitySailorText
+
+CianwoodCityFisherScript:
+	jumptextfaceplayer CianwoodCityFisherText
 
 CianwoodCitySign:
 	jumptext CianwoodCitySignText
@@ -248,6 +256,23 @@ CianwoodCityRocketText:
 
 	para "Why? Mind your"
 	line "own business!"
+	done
+
+CianwoodCitySailorText:
+	text "That cave is the"
+	line "only way to reach"
+	cont "Route 47."
+	done
+
+CianwoodCityFisherText:
+	text "Cianwood Pharmacy"
+	line "has been in busi-"
+	cont "ness for over"
+	cont "500 years."
+
+	para "That's got to be"
+	line "some kind of"
+	cont "record, right?"
 	done
 
 UnknownText_0x1a0433:
@@ -392,7 +417,7 @@ CianwoodCity_MapEventHeader:
 	signpost 29, 5, SIGNPOST_ITEM, CianwoodCityHiddenMaxEther
 
 .PersonEvents:
-	db 13
+	db 15
 	person_event SPRITE_STANDING_YOUNGSTER, 37, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, StandingYoungsterScript_0x1a00b3, -1
 	person_event SPRITE_POKEFAN_M, 33, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a00b6, -1
 	person_event SPRITE_LASS, 42, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a00b9, -1
@@ -406,3 +431,5 @@ CianwoodCity_MapEventHeader:
 	person_event SPRITE_ROCKET, 26, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRocketScript, EVENT_BEAT_CHUCK
 	person_event SPRITE_OLIVINE_RIVAL, 21, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
 	person_event SPRITE_SUICUNE, 14, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
+	person_event SPRITE_SAILOR, 25, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CianwoodCitySailorScript, -1
+	person_event SPRITE_FISHER, 32, 22, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CianwoodCityFisherScript, -1

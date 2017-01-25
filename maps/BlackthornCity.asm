@@ -4,10 +4,13 @@ const_value set 2
 	const BLACKTHORNCITY_GRAMPS1
 	const BLACKTHORNCITY_GRAMPS2
 	const BLACKTHORNCITY_BLACK_BELT
-	const BLACKTHORNCITY_COOLTRAINER_F1
+	const BLACKTHORNCITY_LASS
 	const BLACKTHORNCITY_YOUNGSTER1
 	const BLACKTHORNCITY_SANTOS
+	const BLACKTHORNCITY_COOLTRAINER_F1
 	const BLACKTHORNCITY_COOLTRAINER_F2
+	const BLACKTHORNCITY_DRAGON_TAMER3
+	const BLACKTHORNCITY_DRAGON_TAMER4
 
 BlackthornCity_MapScriptHeader:
 .MapTriggers:
@@ -34,7 +37,7 @@ BlackthornCity_MapScriptHeader:
 	appear BLACKTHORNCITY_SANTOS
 	return
 
-BlackthornDragonTamerScript:
+BlackthornDragonTamer1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CLAIR
@@ -80,14 +83,23 @@ BlackthornBlackBeltScript:
 	closetext
 	end
 
-BlackthornCooltrainerF1Script:
-	jumptextfaceplayer BlackthornCooltrainerF1Text
+BlackthornLassScript:
+	jumptextfaceplayer BlackthornLassText
 
 BlackthornYoungsterScript:
 	jumptextfaceplayer BlackthornYoungsterText
 
+BlackthornCooltrainerF1Script:
+	jumptextfaceplayer BlackthornCooltrainerF1Text
+
 BlackthornCooltrainerF2Script:
 	jumptextfaceplayer BlackthornCooltrainerF2Text
+
+BlackthornDragonTamer2Script:
+	jumptextfaceplayer BlackthornDragonTamer2Text
+
+BlackthornDragonTamer3Script:
+	jumptextfaceplayer BlackthornDragonTamer3Text
 
 SantosScript:
 	faceplayer
@@ -216,7 +228,7 @@ BlackBeltText_VoicesInMyHead:
 	line "to my radio!"
 	done
 
-BlackthornCooltrainerF1Text:
+BlackthornLassText:
 	text "Are you going to"
 	line "make your #mon"
 	cont "forget some moves?"
@@ -268,13 +280,44 @@ SantosNotSaturdayText:
 	line "not Saturday…"
 	done
 
-BlackthornCooltrainerF2Text:
+BlackthornCooltrainerF1Text:
 	text "Wow, you came"
 	line "through the Ice"
 	cont "Path?"
 
 	para "You must be a real"
 	line "hotshot trainer!"
+	done
+
+BlackthornCooltrainerF2Text:
+	text "The Fairy type was"
+	line "discovered only"
+	cont "recently."
+
+	para "It totally shuts"
+	line "down Dragon types."
+	done
+
+BlackthornDragonTamer2Text:
+	text "When our Gym Lead-"
+	line "er was a young"
+
+	para "girl, she used to"
+	line "train in the"
+
+	para "Dragon's Den non-"
+	line "stop."
+	done
+
+BlackthornDragonTamer3Text:
+	text "Blackthorn City is"
+	line "the home of many"
+
+	para "famous dragon"
+	line "tamers, including"
+
+	para "Lance, the Champ-"
+	line "ion."
 	done
 
 BlackthornCitySignText:
@@ -344,13 +387,16 @@ BlackthornCity_MapEventHeader:
 	signpost 29, 22, SIGNPOST_READ, BlackthornCityPokeCenterSign
 
 .PersonEvents:
-	db 9
-	person_event SPRITE_DRAGON_TAMER, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamerScript, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_BLOCKS_GYM
-	person_event SPRITE_DRAGON_TAMER, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamerScript, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_DOES_NOT_BLOCK_GYM
+	db 12
+	person_event SPRITE_DRAGON_TAMER, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_BLOCKS_GYM
+	person_event SPRITE_DRAGON_TAMER, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_DOES_NOT_BLOCK_GYM
 	person_event SPRITE_GRAMPS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGramps1Script, EVENT_BLACKTHORN_CITY_GRAMPS_BLOCKS_DRAGONS_DEN
 	person_event SPRITE_GRAMPS, 2, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGramps2Script, EVENT_BLACKTHORN_CITY_GRAMPS_NOT_BLOCKING_DRAGONS_DEN
-	person_event SPRITE_BLACK_BELT, 31, 24, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornBlackBeltScript, -1
-	person_event SPRITE_COOLTRAINER_F, 25, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornCooltrainerF1Script, -1
+	person_event SPRITE_BLACK_BELT, 31, 24, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlackthornBlackBeltScript, -1
+	person_event SPRITE_LASS, 25, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornLassScript, -1
 	person_event SPRITE_YOUNGSTER, 15, 13, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornYoungsterScript, -1
 	person_event SPRITE_YOUNGSTER, 20, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SantosScript, EVENT_BLACKTHORN_CITY_SANTOS_OF_SATURDAY
-	person_event SPRITE_COOLTRAINER_F, 19, 35, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BlackthornCooltrainerF2Script, -1
+	person_event SPRITE_COOLTRAINER_F, 19, 35, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BlackthornCooltrainerF1Script, -1
+	person_event SPRITE_COOLTRAINER_F, 29, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornCooltrainerF2Script, -1
+	person_event SPRITE_DRAGON_TAMER, 27, 27, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer2Script, -1
+	person_event SPRITE_DRAGON_TAMER, 24, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer3Script, -1
