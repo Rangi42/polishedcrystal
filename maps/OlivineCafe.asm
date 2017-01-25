@@ -3,6 +3,7 @@ const_value set 2
 	const OLIVINECAFE_FISHING_GURU
 	const OLIVINECAFE_SAILOR2
 	const OLIVINECAFE_LYRA
+	const OLIVINECAFE_OFFICER
 
 OlivineCafe_MapScriptHeader:
 .MapTriggers:
@@ -54,6 +55,9 @@ FishingGuruScript_0x9c8d9:
 SailorScript_0x9c8dc:
 	jumptextfaceplayer UnknownText_0x9ca09
 
+OlivineCafeOfficerScript:
+	jumptextfaceplayer OlivineCafeOfficerText
+
 OlivineCafeMovementData_Lyra1:
 	step_right
 	step_end
@@ -94,7 +98,7 @@ UnknownText_0x9c9c5:
 	line "menu is chock full"
 
 	para "of hearty fare for"
-	line "beefy Sailors!"
+	line "beefy sailors!"
 	done
 
 UnknownText_0x9ca09:
@@ -150,6 +154,16 @@ OlivineCafeLyraText2:
 	line "<PLAYER>!"
 	done
 
+OlivineCafeOfficerText:
+	text "I know it's cli-"
+	line "ché, but I always"
+
+	para "come to this place"
+	line "for doughnuts."
+
+	para "I can't get enough!"
+	done
+
 OlivineCafe_MapEventHeader:
 	; filler
 	db 0, 0
@@ -166,8 +180,9 @@ OlivineCafe_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
-	person_event SPRITE_SAILOR, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8c1, -1
+	db 5
+	person_event SPRITE_SAILOR, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8c1, -1
 	person_event SPRITE_FISHING_GURU, 3, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9c8d9, -1
-	person_event SPRITE_SAILOR, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8dc, -1
+	person_event SPRITE_SAILOR, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8dc, -1
 	person_event SPRITE_LYRA, 4, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCafeLyraScript, EVENT_GOT_AMULET_COIN_FROM_LYRA
+	person_event SPRITE_OFFICER, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, OlivineCafeOfficerScript, -1

@@ -252,7 +252,6 @@ INCLUDE "maps/OlivinePunishmentSpeechHouse.asm"
 INCLUDE "maps/OlivineGoodRodHouse.asm"
 INCLUDE "maps/OlivineCafe.asm"
 INCLUDE "maps/OlivineMart.asm"
-INCLUDE "maps/Route38EcruteakGate.asm"
 INCLUDE "maps/Route39Barn.asm"
 INCLUDE "maps/Route39Farmhouse.asm"
 INCLUDE "maps/ManiasHouse.asm"
@@ -281,6 +280,7 @@ INCLUDE "maps/HallOfFame.asm"
 INCLUDE "maps/CeruleanCity.asm"
 INCLUDE "maps/SproutTower1F.asm"
 INCLUDE "maps/SproutTower2F.asm"
+INCLUDE "maps/Route38EcruteakGate.asm"
 
 
 SECTION "Map Scripts 13", ROMX, BANK[MAP_SCRIPTS_13]

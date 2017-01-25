@@ -10,8 +10,9 @@ const_value set 2
 	const OLIVINECITY_POKEFAN_M
 	const OLIVINECITY_SAILOR4
 	const OLIVINECITY_SAILOR5
-	const OLIVINECITY_LASS
+	const OLIVINECITY_LASS1
 	const OLIVINECITY_STANDING_YOUNGSTER2
+	const OLIVINECITY_LASS2
 
 OlivineCity_MapScriptHeader:
 .MapTriggers:
@@ -130,11 +131,14 @@ OlivineCitySailor4Script:
 OlivineCitySailor5Script:
 	jumptextfaceplayer OlivineCitySailor5Text
 
-OlivineCityLassScript:
-	jumptextfaceplayer OlivineCityLassText
+OlivineCityLass1Script:
+	jumptextfaceplayer OlivineCityLass1Text
 
 OlivineCityStandingYoungster2Script:
 	jumptextfaceplayer OlivineCityStandingYoungster2Text
+
+OlivineCityLass2Script:
+	jumptextfaceplayer OlivineCityLass2Text
 
 TrainerSwimmerfJill:
 	trainer EVENT_BEAT_SWIMMERF_JILL, SWIMMERF, JILL, SwimmerfJillSeenText, SwimmerfJillBeatenText, 0, SwimmerfJillScript
@@ -419,7 +423,7 @@ OlivineCitySailor5Text:
 	line "fiddle-dee dee… ♪"
 	done
 
-OlivineCityLassText:
+OlivineCityLass1Text:
 	text "The sailors here"
 	line "may seem like a"
 
@@ -433,6 +437,14 @@ OlivineCityStandingYoungster2Text:
 	cont "much?"
 
 	para "I don't get it."
+	done
+
+OlivineCityLass2Text:
+	text "Jasmine, our Gym"
+	line "Leader, is a shy"
+
+	para "girl. She's no"
+	line "pushover, mind!"
 	done
 
 OlivineCitySignText:
@@ -505,17 +517,18 @@ OlivineCity_MapEventHeader:
 	signpost 14, 36, SIGNPOST_ITEM, OlivineCityHiddenRareCandy
 
 .PersonEvents:
-	db 13
+	db 14
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
 	person_event SPRITE_SWIMMER_GIRL, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJill, -1
 	person_event SPRITE_STANDING_YOUNGSTER, 11, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster1Script, -1
 	person_event SPRITE_SAILOR, 22, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor1Script, -1
-	person_event SPRITE_SAILOR, 21, 15, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor2Script, -1
-	person_event SPRITE_FISHER, 17, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, OlivineCityFisherScript, -1
+	person_event SPRITE_SAILOR, 21, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor2Script, -1
+	person_event SPRITE_FISHER, 17, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityFisherScript, -1
 	person_event SPRITE_SAILOR, 17, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor3Script, -1
 	person_event SPRITE_POKEFAN_F, 26, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, OlivineCityPokefanFScript, -1
 	person_event SPRITE_POKEFAN_M, 27, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN) | (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCityPokefanMScript, -1
 	person_event SPRITE_SAILOR, 13, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor4Script, -1
 	person_event SPRITE_SAILOR, 13, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor5Script, -1
-	person_event SPRITE_LASS, 12, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityLassScript, -1
+	person_event SPRITE_LASS, 12, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityLass1Script, -1
 	person_event SPRITE_STANDING_YOUNGSTER, 11, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster2Script, -1
+	person_event SPRITE_LASS, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, OlivineCityLass2Script, -1
