@@ -1586,7 +1586,7 @@ AI_Smart_SleepTalk: ; 38cba
 
 	ld a, [EnemyMonStatus]
 	and $7
-	dec a
+	cp $1
 	jr z, .asm_38cc7
 
 rept 3

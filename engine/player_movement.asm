@@ -814,12 +814,14 @@ DoPlayerMovement:: ; 80000
 ; Otherwise, return carry.
 
 	call GetTileCollision
-	and a ; Can walk back onto land from water.
-	jr z, .Land
-	dec a
+	cp 1
 	jr z, .Water
-	scf
-	ret
+
+; Can walk back onto land from water.
+	and a
+	jr z, .Land
+
+	jr .Neither
 
 .Water:
 	xor a
@@ -828,6 +830,10 @@ DoPlayerMovement:: ; 80000
 .Land:
 	ld a, 1
 	and a
+	ret
+
+.Neither:
+	scf
 	ret
 ; 803ee
 

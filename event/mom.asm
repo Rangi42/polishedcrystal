@@ -111,11 +111,11 @@ endr
 	call CloseWindow
 	jr c, .cancel
 	ld a, [wMenuCursorY]
-	dec a ; 1
+	cp $1
 	jr z, .withdraw
-	dec a ; 2
+	cp $2
 	jr z, .deposit
-	dec a ; 3
+	cp $3
 	jr z, .stopsaving
 
 .cancel

@@ -94,9 +94,9 @@ DoAnimFrame: ; 8d24b
 	and $10 ; bit 4
 	jr z, .load_zero
 	ld a, e
-	and a ; 0
+	and a
 	jr z, .load_minus_two
-	dec a ; 1
+	cp $1
 	jr z, .load_minus_one
 .load_zero
 	xor a

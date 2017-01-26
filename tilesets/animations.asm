@@ -811,13 +811,7 @@ endr
 GetForestTreeFrame: ; fc54c
 ; Return 0 if a is even, or 2 if odd.
 	and 1
-	jr z, .even
-.odd
-	ld a, 2
-	scf
-	ret
-.even
-	xor a
+	sla a
 	ret
 ; fc56d
 

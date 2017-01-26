@@ -1059,7 +1059,7 @@ endr
 	inc c
 	inc c
 .no_dvs
-	; PErSONALITY uses 2 more bytes
+	; PERSONALITY uses 2 more bytes
 	bit TRNTYPE_PERSONALITY, b
 	jr z, .no_personality
 	inc c

@@ -215,7 +215,7 @@ BugContest_GetPlayersResult: ; 13807
 	ld b, 3
 .loop
 	ld a, [hl]
-	dec a ; Player
+	cp 1 ; Player
 	jr z, .done
 	add hl, de
 	dec b

@@ -2018,7 +2018,7 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	xor 1
 	ld [wKickCounter], a
 	ld a, [de]
-	dec a
+	cp $1
 	push af
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2307,11 +2307,11 @@ FailText_CheckOpponentProtect: ; 35157
 ; has side effects -- it triggers the ability.
 ; TODO: perhaps an enum?
 	ld a, [AttackMissed]
-	dec a ; cp 1
+	cp 1
 	jr z, .printmsg
-	dec a ; cp 2
+	cp 2
 	jr z, .protected
-	dec a ; cp 3
+	cp 3
 	jr z, .ability_immune
 	jr .printmsg ; just in case
 .protected
@@ -2440,8 +2440,6 @@ BattleCommand_PostFaintEffects: ; 351c0
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_TRIPLE_KICK
-;	jr z, .multiple_hit_raise_sub
-;	cp EFFECT_BEAT_UP
 	jr nz, .finish
 
 .multiple_hit_raise_sub
@@ -4725,8 +4723,6 @@ SelfInflictDamageToSubstitute: ; 35de0
 	jr z, .ok
 	cp EFFECT_TRIPLE_KICK
 	jr z, .ok
-;	cp EFFECT_BEAT_UP
-;	jr z, .ok
 	xor a
 	ld [hl], a
 .ok
@@ -6642,10 +6638,10 @@ BattleCommand_ForceSwitch: ; 3680f
 
 .trainer
 	call FindAliveEnemyMons
-	jp c, .fail
+	jr c, .switch_fail
 	ld a, [wEnemyGoesFirst]
 	and a
-	jp z, .fail
+	jr z, .switch_fail
 	call UpdateEnemyMonInParty
 	ld a, $1
 	ld [wKickCounter], a
@@ -6691,6 +6687,9 @@ BattleCommand_ForceSwitch: ; 3680f
 
 	ld hl, RunActivationAbilities
 	jp CallBattleCore
+
+.switch_fail
+	jp .fail
 
 .force_player_switch
 	ld a, [AttackMissed]
@@ -6738,8 +6737,8 @@ BattleCommand_ForceSwitch: ; 3680f
 	jr c, .fail
 
 	ld a, [wEnemyGoesFirst]
-	dec a
-	jr z, .fail
+	cp $1
+	jr z, .switch_fail
 
 	call UpdateBattleMonInParty
 	ld a, $1
@@ -6873,8 +6872,6 @@ BattleCommand_EndLoop: ; 369b6
 	ld a, 1
 	jr z, .double_hit
 	ld a, [hl]
-;	cp EFFECT_BEAT_UP
-;	jr z, .beat_up
 	cp EFFECT_TRIPLE_KICK
 	jr nz, .not_triple_kick
 .reject_triple_kick_sample
@@ -6886,32 +6883,6 @@ BattleCommand_EndLoop: ; 369b6
 	ld a, 1
 	ld [bc], a
 	jr .done_loop
-
-;.beat_up
-;	ld a, [hBattleTurn]
-;	and a
-;	jr nz, .check_ot_beat_up
-;	ld a, [PartyCount]
-;	cp 1
-;	jp z, .only_one_beatup
-;	dec a
-;	jr .double_hit
-;
-;.check_ot_beat_up
-;	ld a, [wBattleMode]
-;	cp WILD_BATTLE
-;	jp z, .only_one_beatup
-;	ld a, [OTPartyCount]
-;	cp 1
-;	jp z, .only_one_beatup
-;	dec a
-;	jr .double_hit
-;
-;.only_one_beatup
-;	ld a, BATTLE_VARS_SUBSTATUS3
-;	call GetBattleVarAddr
-;	res SUBSTATUS_IN_LOOP, [hl]
-;	jp EndMoveEffect
 
 .not_triple_kick
 	ld a, BATTLE_VARS_ABILITY
@@ -6951,16 +6922,6 @@ BattleCommand_EndLoop: ; 369b6
 	jr z, .got_hit_n_times_text
 	ld hl, EnemyHitTimesText
 .got_hit_n_times_text
-
-;	push bc
-;	ld a, BATTLE_VARS_MOVE_EFFECT
-;	call GetBattleVar
-;	cp EFFECT_BEAT_UP
-;	jr z, .beat_up_2
-;	call StdBattleTextBox
-;.beat_up_2
-;	pop bc
-
 	xor a
 	ld [bc], a
 	ret
@@ -9228,10 +9189,12 @@ BattleCommand_CheckFutureSight: ; 37d0d
 .ok
 
 	ld a, [hl]
-	dec a
+	and a
+	ret z
+	cp 1
 	ret nz
 
-	ld [hl], a ; 0
+	ld [hl], 0
 	ld a, [de]
 	inc de
 	ld [CurDamage], a

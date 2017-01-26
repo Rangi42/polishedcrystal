@@ -227,7 +227,7 @@ endr
 	push bc
 	ld a, [Buffer1]
 	bcpixel 2, 4
-	dec a ; ElmsLab
+	cp $1 ; ElmsLab
 	jr z, .okay
 	bcpixel 0, 0
 

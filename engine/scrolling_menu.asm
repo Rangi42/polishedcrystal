@@ -515,8 +515,9 @@ ScrollingMenu_GetListItemCoordAndFunctionArgs: ; 248d5
 	ld l, a
 	inc hl ; items
 	ld a, [wMenuData2_ScrollingMenuSpacing]
-	dec a
+	cp 1
 	jr z, .got_spacing
+	cp 2
 	add hl, de
 .got_spacing
 	add hl, de

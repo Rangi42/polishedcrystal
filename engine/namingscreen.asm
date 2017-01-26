@@ -420,11 +420,11 @@ endr
 
 .a
 	call .GetCursorPosition
-	dec a ; 1
+	cp $1
 	jr z, .select
-	dec a ; 2
+	cp $2
 	jr z, .b
-	dec a ; 3
+	cp $3
 	jr z, .end
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter

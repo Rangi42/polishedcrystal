@@ -271,16 +271,15 @@ DaycareStep:: ; 7282
 	and a
 	ret z
 	; TODO: check Oval Charm (change odds from 20/50/70 to 40/70/90)
-	; slightly compatible
-	ld b, 1 + 20 percent
-	dec a
-	jr z, .got_odds
-	; compatible
-	ld b, 1 + 50 percent
-	dec a
-	jr z, .got_odds
-	; very compatible
+	cp 3 ; very compatible
 	ld b, 1 + 70 percent
+	jr z, .got_odds
+	cp 2 ; compatible
+	ld b, 1 + 50 percent
+	jr z, .got_odds
+	cp 1 ; slightly compatible
+	ld b, 1 + 20 percent
+	jr z, .got_odds
 
 .got_odds
 	call Random

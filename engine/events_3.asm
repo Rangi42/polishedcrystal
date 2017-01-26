@@ -398,11 +398,11 @@ RockItemEncounter:
 .fossil_or_big_nugget
 	call Random
 	and $3
-	dec a ; 1
+	cp 1
 	jr z, .helix_fossil
-	dec a ; 2
+	cp 2
 	jr z, .dome_fossil
-	dec a ; 3
+	cp 3
 	jr z, .old_amber
 .big_nugget
 	ld a, BIG_NUGGET
@@ -759,9 +759,9 @@ GetTreeMon: ; b83e5
 	pop hl
 	and a
 	jr z, .bad
-	dec a ; 1
+	cp 1
 	jr z, .good
-	dec a ; 2
+	cp 2
 	jr z, .rare
 	ret
 

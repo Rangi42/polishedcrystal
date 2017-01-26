@@ -488,14 +488,14 @@ StartMenu_Pokemon: ; 12976
 	jr c, .return ; if cancelled or pressed B
 
 	call PokemonActionSubmenu
-	and a ; 0
-	jr z, .choosemenu
-	dec a ; 1
-	jr z, .menunoreload
-	dec a ; 2
-	jr z, .quit
-	dec a ; 3
+	cp 3
 	jr z, .menu
+	cp 0
+	jr z, .choosemenu
+	cp 1
+	jr z, .menunoreload
+	cp 2
+	jr z, .quit
 
 .return
 	call CloseSubmenu
@@ -740,7 +740,7 @@ GiveTakePartyMonItem: ; 12b60
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	ld a, [wMenuCursorY]
-	dec a
+	cp 1
 	jr nz, .take
 
 	call LoadStandardMenuDataHeader
@@ -754,6 +754,9 @@ GiveTakePartyMonItem: ; 12b60
 
 .take
 	call TakePartyItem
+	ld a, 3
+	ret
+
 .cancel
 	ld a, 3
 	ret
@@ -1043,9 +1046,9 @@ MonMailAction: ; 12d45
 ; Interpret the menu.
 	jp c, .done
 	ld a, [wMenuCursorY]
-	dec a ; 1
+	cp $1
 	jr z, .read
-	dec a ; 2
+	cp $2
 	jr z, .take
 	jp .done
 
@@ -1170,7 +1173,7 @@ OpenPartyStats: ; 12e00
 MonMenu_Cut: ; 12e1b
 	farcall CutFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1204,7 +1207,7 @@ MonMenu_Fly: ; 12e30
 MonMenu_Flash: ; 12e55
 	farcall OWFlash
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1218,7 +1221,7 @@ MonMenu_Flash: ; 12e55
 MonMenu_Strength: ; 12e6a
 	farcall StrengthFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1232,7 +1235,7 @@ MonMenu_Strength: ; 12e6a
 MonMenu_Whirlpool: ; 12e7f
 	farcall WhirlpoolFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1246,7 +1249,7 @@ MonMenu_Whirlpool: ; 12e7f
 MonMenu_Waterfall: ; 12e94
 	farcall WaterfallFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1288,7 +1291,7 @@ MonMenu_Surf: ; 12ebd
 MonMenu_Dig: ; 12ed1
 	farcall DigFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1347,7 +1350,7 @@ MonMenu_Softboiled_MilkDrink: ; 12ee6
 MonMenu_Headbutt: ; 12f26
 	farcall HeadbuttFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2
@@ -1361,7 +1364,7 @@ MonMenu_Headbutt: ; 12f26
 MonMenu_RockSmash: ; 12f3b
 	farcall RockSmashFunction
 	ld a, [wFieldMoveSucceeded]
-	dec a
+	cp $1
 	jr nz, .Fail
 	ld b, $4
 	ld a, $2

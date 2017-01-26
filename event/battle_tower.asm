@@ -50,7 +50,7 @@ Special_BattleTower_Battle: ; 170215
 	call .do_dw
 	call DelayFrame
 	ld a, [wBattleTowerBattleEnded]
-	dec a
+	cp $1
 	jr nz, .loop
 	ret
 ; 17023a

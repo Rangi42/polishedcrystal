@@ -1153,9 +1153,9 @@ DetermineLinkBattleResult: ; 2b930
 	call .BothSides_CheckNumberMonsAtFullHealth
 	jr z, .drawn
 	ld a, e
-	dec a ; 1
+	cp $1
 	jr z, .victory
-	dec a ; 2
+	cp $2
 	jr z, .defeat
 	ld hl, PartyMon1HP
 	call .CalcPercentHPRemaining
@@ -1399,7 +1399,7 @@ TrySpreadPokerus:
 	ret nc              ; 1/3 chance
 
 	ld a, [PartyCount]
-	dec a
+	cp 1
 	ret z               ; only one mon, nothing to do
 
 	ld c, [hl]
@@ -1420,7 +1420,7 @@ TrySpreadPokerus:
 	ret z               ; if mon has cured pokerus, stop searching
 	dec b               ; go on to next mon
 	ld a, b
-	dec a
+	cp 1
 	jr nz, .checkFollowingMonsLoop ; no more mons left
 	ret
 
@@ -2831,7 +2831,7 @@ _ResetClock: ; 4d3b1
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]
-	dec a
+	cp $1
 	ret z
 	ld a, BANK(sRTCStatusFlags)
 	call GetSRAMBank
@@ -2880,7 +2880,7 @@ _DeleteSaveData: ; 4d54c
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]
-	dec a
+	cp $1
 	ret z
 	farcall EmptyAllSRAMBanks
 	ret
@@ -2905,7 +2905,7 @@ _ResetInitialOptions:
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]
-	dec a
+	cp $1
 	ret z
 	ld a, [InitialOptions]
 	set RESET_EGO, a
@@ -4530,7 +4530,8 @@ ListMoves: ; 50d6f
 
 Function50db9: ; 50db9
 	ld a, [wd263]
-	dec a
+
+	cp $1
 	jr nz, .check_party_ot_name
 	ld hl, OTPartyCount
 	ld de, OTPartyMonOT
@@ -4618,7 +4619,7 @@ CalcLevel: ; 50e1b
 CalcExpAtLevel: ; 50e47
 ; (a/b)*n**3 + c*n**2 + d*n - e
 	ld a, d
-	dec a
+	cp 1
 	jr nz, .UseExpFormula
 ; Pokémon have 0 experience at level 1
 	xor a

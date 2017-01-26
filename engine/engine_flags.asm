@@ -53,7 +53,7 @@ EngineFlagAction:: ; 80430
 ; What are we doing with this flag?
 
 	ld a, b
-	dec a
+	cp 1
 	jr c, .reset ; b = 0
 	jr z, .set   ; b = 1
 

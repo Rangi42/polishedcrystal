@@ -1023,7 +1023,7 @@ QueryWhichSide: ; 26e9a
 	ld hl, RightOrnament
 	ld de, LeftOrnament
 	ld a, [Buffer2]
-	dec a
+	cp 1
 	ret z
 	push hl
 	ld h, d

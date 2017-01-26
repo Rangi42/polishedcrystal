@@ -1076,7 +1076,7 @@ MoodyAbility:
 	or d
 	ld b, a
 	ld a, [hl]
-	dec a
+	cp 1
 	jr z, .minimized
 .maxed
 	ld a, c

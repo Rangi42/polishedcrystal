@@ -128,7 +128,7 @@ _Divide:: ; 673e
 
 .next
 	ld a, b
-	dec a
+	cp 1
 	jr z, .done
 
 	ld a, [hMathBuffer + 4]
@@ -167,7 +167,7 @@ _Divide:: ; 673e
 
 .next2
 	ld a, e
-	dec a
+	cp 1
 	jr nz, .okay
 	dec b
 

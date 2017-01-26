@@ -170,7 +170,7 @@ NextOverworldFrame: ; 967b7
 
 HandleMapTimeAndJoypad: ; 967c1
 	ld a, [MapEventStatus]
-	dec a ; no events
+	cp 1 ; no events
 	ret z
 
 	call UpdateTime

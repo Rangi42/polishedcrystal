@@ -637,7 +637,7 @@ FadeMusic: ; e8358
 	ld [Volume], a
 	; did we just get on a bike?
 	ld a, [PlayerState]
-	dec a ; bicycle
+	cp $1 ; bicycle
 	jr z, .bicycle
 	push bc
 	; restart sound

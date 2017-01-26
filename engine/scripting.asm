@@ -1593,7 +1593,7 @@ Script_reloadmapafterbattle: ; 97459
 	ld [hl], d
 	ld a, [wBattleResult]
 	and $3f
-	dec a
+	cp $1
 	jr nz, .notblackedout
 	ld b, BANK(Script_BattleWhiteout)
 	ld hl, Script_BattleWhiteout

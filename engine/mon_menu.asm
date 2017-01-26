@@ -139,7 +139,7 @@ GetMonMenuString: ; 24db0
 	call IsInArray
 	dec hl
 	ld a, [hli]
-	dec a
+	cp 1
 	jr z, .NotMove
 	inc hl
 	ld a, [hl]

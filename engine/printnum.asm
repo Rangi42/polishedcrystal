@@ -28,9 +28,9 @@ _PrintNum:: ; c4c7
 	ld [hPrintNum3], a
 	ld a, b
 	and $f
-	dec a ; 1
+	cp 1
 	jr z, .byte
-	dec a ; 2
+	cp 2
 	jr z, .word
 ; maximum 3 bytes
 .long
