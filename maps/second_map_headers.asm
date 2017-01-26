@@ -214,7 +214,7 @@
 	connection east, SAFFRON_CITY, SaffronCity, -3, 6, 12
 
 	map_header_2 SunnyMeadow, SUNNY_MEADOW, $43, NORTH | WEST
-	connection north, ROUTE_13_EAST, Route13East, 0, 0, 18
+	connection north, ROUTE_13_EAST, Route13East, 0, 0, 23
 	connection west, ROUTE_14, Route14, 0, 0, 18
 
 	map_header_2 Route15, ROUTE_15, $f, WEST | EAST
@@ -224,11 +224,11 @@
 	map_header_2 Route14, ROUTE_14, $43, NORTH | WEST | EAST
 	connection north, ROUTE_13_WEST, Route13West, 0, 0, 12
 	connection west, ROUTE_15, Route15, 9, 0, 9
-	connection east, SUNNY_MEADOW, SunnyMeadow, 0, 0, 18
+	connection east, SUNNY_MEADOW, SunnyMeadow, 0, 0, 16
 
 	map_header_2 Route13East, ROUTE_13_EAST, $43, NORTH | SOUTH | WEST
-	connection north, ROUTE_12_SOUTH, Route12South, 8, 0, 10
-	connection south, SUNNY_MEADOW, SunnyMeadow, 0, 0, 18
+	connection north, ROUTE_12_SOUTH, Route12South, 13, 0, 10
+	connection south, SUNNY_MEADOW, SunnyMeadow, 0, 0, 23
 	connection west, ROUTE_13_WEST, Route13West, 0, 0, 11
 
 	map_header_2 Route13West, ROUTE_13_WEST, $43, SOUTH | EAST
@@ -241,7 +241,7 @@
 
 	map_header_2 Route12South, ROUTE_12_SOUTH, $43, NORTH | SOUTH | WEST
 	connection north, ROUTE_12_NORTH, Route12North, 0, 0, 10
-	connection south, ROUTE_13_EAST, Route13East, 0, 8, 10
+	connection south, ROUTE_13_EAST, Route13East, 0, 13, 10
 	connection west, ROUTE_11, Route11, 5, 0, 9
 
 	map_header_2 Route11, ROUTE_11, $f, WEST | EAST

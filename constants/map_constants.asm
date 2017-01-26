@@ -185,7 +185,7 @@ MAP_NONE   EQU 0
 	mapgroup BILLS_HOUSE,                                 4,  4 ; 11
 	mapgroup ROUTE_4,                                     9, 20 ; 12
 	mapgroup ROUTE_24,                                    9, 10 ; 13
-	mapgroup ROUTE_25,                                    9, 18 ; 14
+	mapgroup ROUTE_25,                                    9, 23 ; 14
 	mapgroup CERULEAN_CAPE,                              20, 25 ; 15
 	mapgroup CERULEAN_CITY,                              18, 20 ; 16
 	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 17
@@ -261,7 +261,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 12
 
 	mapgroup ROUTE_6,                                    12, 10 ;  1
-	mapgroup ROUTE_11,                                    9, 21 ;  2
+	mapgroup ROUTE_11,                                    9, 26 ;  2
 	mapgroup VERMILION_CITY,                             18, 20 ;  3
 	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
 	mapgroup VERMILION_POKECENTER_1F,                     4,  6 ;  5
@@ -328,7 +328,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 17
 
 	mapgroup ROUTE_12_SOUTH,                             23, 10 ;  1
-	mapgroup ROUTE_13_EAST,                              11, 18 ;  2
+	mapgroup ROUTE_13_EAST,                              11, 23 ;  2
 	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
 	mapgroup ROUTE_14,                                   18, 12 ;  4
 	mapgroup ROUTE_15,                                    9, 20 ;  5
@@ -353,11 +353,11 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 24
 	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 25
 	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 26
-	mapgroup SUNNY_MEADOW,                               18, 18 ; 27
+	mapgroup SUNNY_MEADOW,                               16, 23 ; 27
 
 	newgroup                                                    ; 18
 
-	mapgroup ROUTE_8,                                     9, 21 ;  1
+	mapgroup ROUTE_8,                                     9, 26 ;  1
 	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
 	mapgroup LAVENDER_TOWN,                               9, 10 ;  3
 	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
@@ -537,7 +537,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 28
 
-	mapgroup ROUTE_9,                                     9, 21 ;  1
+	mapgroup ROUTE_9,                                     9, 26 ;  1
 	mapgroup ROUTE_10_NORTH,                             24, 10 ;  2
 
 	newgroup                                                    ; 29

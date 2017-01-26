@@ -164,14 +164,14 @@ Route13East_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 13, 5, SIGNPOST_READ, Route13TrainerTips
-	signpost 11, 17, SIGNPOST_READ, Route13Sign
-	signpost 13, 6, SIGNPOST_ITEM, Route13HiddenCalcium
+	signpost 13, 11, SIGNPOST_READ, Route13TrainerTips
+	signpost 11, 27, SIGNPOST_READ, Route13Sign
+	signpost 13, 12, SIGNPOST_ITEM, Route13HiddenCalcium
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_YOUNGSTER, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperPerry, -1
-	person_event SPRITE_YOUNGSTER, 6, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperBret, -1
-	person_event SPRITE_POKEFAN_M, 8, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
+	person_event SPRITE_YOUNGSTER, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperPerry, -1
+	person_event SPRITE_YOUNGSTER, 6, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperBret, -1
+	person_event SPRITE_POKEFAN_M, 8, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
 	person_event SPRITE_POKEFAN_M, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
-	person_event SPRITE_CUT_TREE, 4, 20, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE
+	person_event SPRITE_CUT_TREE, 4, 30, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE

@@ -85,7 +85,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
    * Buck: Diglett's Cave; rewards Iron/Zinc
    * Mira: Dim/Scary Cave; rewards Calcium
    * Marley: Mt. Moon; rewards Carbos
-* Larger Kanto maps, like in RBY (particularly the routes to and below Fuchsia City)
+* Larger Kanto routes (3, 4, 19, 20, 21)
 * Elite Four have different rematch dialog
 * Use RBY's Pokémon Tower music (Crossing Cave bottom)
 * Use the Spiky-Eared Pichu and B/W Routes 4 + 12 music somewhere
