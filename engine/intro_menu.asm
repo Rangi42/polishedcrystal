@@ -1209,6 +1209,7 @@ TitleScreenEntrance: ; 62bc
 ; Next scene
 	ld hl, wJumptableIndex
 	inc [hl]
+
 	xor a
 	ld [hFFC6], a
 
@@ -1244,9 +1245,25 @@ TitleScreenTimer: ; 62f6
 	ld hl, wJumptableIndex
 	inc [hl]
 
+	ld a, BANK(sPlayerData)
+	call GetSRAMBank
+	ld hl, sPlayerData + StatusFlags - wPlayerData
+	ld de, StatusFlags
+	ld a, [hl]
+	ld [de], a
+	call CloseSRAM
+
 ; Start a timer
-	ld hl, wcf65
 	ld de, 73 * 60 + 36
+	ld a, [wSaveFileExists]
+	and a
+	jr z, .ok
+	ld hl, StatusFlags
+	bit 6, [hl] ; hall of fame
+	jr z, .ok
+	ld de, 56 * 60
+.ok
+	ld hl, wcf65
 	ld [hl], e
 	inc hl
 	ld [hl], d

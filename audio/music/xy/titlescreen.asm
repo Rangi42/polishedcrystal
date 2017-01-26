@@ -241,6 +241,8 @@ Music_TitleScreenXY_Ch1_b3:
 	note D#, 2
 	note D#, 2
 	note D#, 12
+	note __, 16
+	note __, 16
 	loopchannel 0, Music_TitleScreenXY_Ch1_b0
 
 Music_TitleScreenXY_Ch1_b5:
@@ -523,6 +525,8 @@ Music_TitleScreenXY_Ch2_b4:
 	note __, 1
 	note G#, 2
 	note __, 10
+	note __, 16
+	note __, 16
 	loopchannel 0, Music_TitleScreenXY_Ch2_b0
 
 Music_TitleScreenXY_Ch3:
@@ -809,6 +813,8 @@ Music_TitleScreenXY_Ch3_b1:
 	octave 2
 	note G#, 2
 	note __, 10
+	note __, 16
+	note __, 16
 	loopchannel 0, Music_TitleScreenXY_Ch3_b0
 
 Music_TitleScreenXY_Ch3_b2:
@@ -947,6 +953,8 @@ Music_TitleScreenXY_Ch4_b1:
 	note SNARE, 4
 	note SNARE, 12
 	note __, 12
+	note __, 16
+	note __, 16
 	loopchannel 0, Music_TitleScreenXY_Ch4_b0
 
 Music_TitleScreenXY_Ch4_b2:
