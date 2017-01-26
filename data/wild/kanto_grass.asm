@@ -621,7 +621,7 @@
 	db 51, HYPNO
 	db 51, HYPNO
 
-	map ROUTE_13
+	map ROUTE_13_EAST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 50, NIDORINO

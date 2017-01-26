@@ -1,12 +1,11 @@
 const_value set 2
-	const ROUTE13_YOUNGSTER1
-	const ROUTE13_YOUNGSTER2
-	const ROUTE13_POKEFAN_M1
-	const ROUTE13_POKEFAN_M2
-	const ROUTE13_POKEFAN_M3
-	const ROUTE13_CUT_TREE
+	const ROUTE13EAST_YOUNGSTER1
+	const ROUTE13EAST_YOUNGSTER2
+	const ROUTE13EAST_POKEFAN_M1
+	const ROUTE13EAST_POKEFAN_M2
+	const ROUTE13EAST_CUT_TREE
 
-Route13_MapScriptHeader:
+Route13East_MapScriptHeader:
 .MapTriggers:
 	db 0
 
@@ -57,17 +56,6 @@ Bird_keeperBretScript:
 	closetext
 	end
 
-TrainerHikerKenny:
-	trainer EVENT_BEAT_HIKER_KENNY, HIKER, KENNY, HikerKennySeenText, HikerKennyBeatenText, 0, HikerKennyScript
-
-HikerKennyScript:
-	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a26c2
-	waitbutton
-	closetext
-	end
-
 Route13CutTree:
 	jumpstd cuttree
 
@@ -77,12 +65,8 @@ Route13TrainerTips:
 Route13Sign:
 	jumptext Route13SignText
 
-Route13DirectionsSign:
-	jumptext Route13DirectionsSignText
-
 Route13HiddenCalcium:
 	dwb EVENT_ROUTE_13_HIDDEN_CALCIUM, CALCIUM
-
 
 PokefanmAlexSeenText:
 	text "Bow down before my"
@@ -153,26 +137,6 @@ UnknownText_0x1a2662:
 	line "#mon get happy."
 	done
 
-HikerKennySeenText:
-	text "I should go to"
-	line "Rock Tunnel to get"
-	cont "myself an Onix."
-	done
-
-HikerKennyBeatenText:
-	text "I lost…"
-	done
-
-UnknownText_0x1a26c2:
-	text "Geological fea-"
-	line "tures don't appear"
-	cont "to change."
-
-	para "But they actually"
-	line "change, little by"
-	cont "little."
-	done
-
 Route13TrainerTipsText:
 	text "Trainer Tips"
 
@@ -188,15 +152,7 @@ Route13SignText:
 	line "Bridge"
 	done
 
-Route13DirectionsSignText:
-	text "North to Lavender"
-	line "Town"
-
-	para "West to Fuchsia"
-	line "City"
-	done
-
-Route13_MapEventHeader:
+Route13East_MapEventHeader:
 	; filler
 	db 0, 0
 
@@ -207,17 +163,15 @@ Route13_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 4
-	signpost 13, 29, SIGNPOST_READ, Route13TrainerTips
-	signpost 11, 41, SIGNPOST_READ, Route13Sign
-	signpost 13, 17, SIGNPOST_READ, Route13DirectionsSign
-	signpost 13, 30, SIGNPOST_ITEM, Route13HiddenCalcium
+	db 3
+	signpost 13, 5, SIGNPOST_READ, Route13TrainerTips
+	signpost 11, 17, SIGNPOST_READ, Route13Sign
+	signpost 13, 6, SIGNPOST_ITEM, Route13HiddenCalcium
 
 .PersonEvents:
-	db 6
-	person_event SPRITE_YOUNGSTER, 6, 42, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperPerry, -1
-	person_event SPRITE_YOUNGSTER, 6, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperBret, -1
-	person_event SPRITE_POKEFAN_M, 8, 32, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
-	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerHikerKenny, -1
-	person_event SPRITE_POKEFAN_M, 6, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
-	person_event SPRITE_CUT_TREE, 4, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE
+	db 5
+	person_event SPRITE_YOUNGSTER, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperPerry, -1
+	person_event SPRITE_YOUNGSTER, 6, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperBret, -1
+	person_event SPRITE_POKEFAN_M, 8, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
+	person_event SPRITE_POKEFAN_M, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
+	person_event SPRITE_CUT_TREE, 4, 20, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE

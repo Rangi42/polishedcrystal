@@ -223,8 +223,11 @@ Route8_BlockData:
 ViridianCity_BlockData:
 	INCBIN "maps/ViridianCity.blk"
 
-Route13_BlockData:
-	INCBIN "maps/Route13.blk"
+Route13East_BlockData:
+	INCBIN "maps/Route13East.blk"
+
+Route13West_BlockData:
+	INCBIN "maps/Route13West.blk"
 
 Route21_BlockData:
 	INCBIN "maps/Route21.blk"

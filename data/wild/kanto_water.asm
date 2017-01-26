@@ -48,7 +48,7 @@
 	db 52, QUAGSIRE
 	db 54, TENTACRUEL
 
-	map ROUTE_13
+	map ROUTE_13_EAST
 	db 6 percent ; encounter rate
 	db 49, TENTACOOL
 	db 53, QUAGSIRE

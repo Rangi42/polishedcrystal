@@ -608,19 +608,11 @@ TryObjectEvent: ; 969b5
 ; 96a32
 
 .four ; 96a32
-	xor a
-	ret
-; 96a34
-
 .five ; 96a34
-	xor a
-	ret
-; 96a36
-
 .six ; 96a36
 	xor a
 	ret
-; 96a38
+; 96a34
 
 TryReadSign: ; 96a38
 	call CheckFacingSign

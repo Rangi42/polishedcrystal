@@ -218,12 +218,16 @@
 	connection east, ROUTE_14, Route14, -3, 6, 12
 
 	map_header_2 Route14, ROUTE_14, $43, NORTH | WEST
-	connection north, ROUTE_13, Route13, 0, 0, 13
+	connection north, ROUTE_13_WEST, Route13West, 0, 0, 12
 	connection west, ROUTE_15, Route15, 9, 0, 9
 
-	map_header_2 Route13, ROUTE_13, $43, NORTH | SOUTH
-	connection north, ROUTE_12_SOUTH, Route12South, 20, 0, 10
+	map_header_2 Route13East, ROUTE_13_EAST, $43, NORTH | WEST
+	connection north, ROUTE_12_SOUTH, Route12South, 8, 0, 10
+	connection west, ROUTE_13_WEST, Route13West, 0, 0, 11
+
+	map_header_2 Route13West, ROUTE_13_WEST, $43, SOUTH | EAST
 	connection south, ROUTE_14, Route14, 0, 0, 10
+	connection east, ROUTE_13_EAST, Route13East, 0, 0, 11
 
 	map_header_2 Route12North, ROUTE_12_NORTH, $43, NORTH | SOUTH
 	connection north, LAVENDER_TOWN, LavenderTown, 0, 0, 10
@@ -231,7 +235,7 @@
 
 	map_header_2 Route12South, ROUTE_12_SOUTH, $43, NORTH | SOUTH | WEST
 	connection north, ROUTE_12_NORTH, Route12North, 0, 0, 10
-	connection south, ROUTE_13, Route13, 0, 20, 10
+	connection south, ROUTE_13_EAST, Route13East, 0, 8, 10
 	connection west, ROUTE_11, Route11, 5, 0, 9
 
 	map_header_2 Route11, ROUTE_11, $f, WEST | EAST

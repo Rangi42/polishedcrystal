@@ -163,7 +163,7 @@ MAP_NONE   EQU 0
 	mapgroup SEAFOAM_ISLANDS_B4F,                        10, 20 ;  7
 	mapgroup ROUTE_19,                                   20, 10 ;  8
 	mapgroup ROUTE_20,                                    9, 31 ;  9
-	mapgroup ROUTE_21,                                   19, 10 ; 10
+	mapgroup ROUTE_21,                                   21, 10 ; 10
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 11
 	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 12
 	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 13
@@ -328,30 +328,31 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 17
 
 	mapgroup ROUTE_12_SOUTH,                             23, 10 ;  1
-	mapgroup ROUTE_13,                                    9, 30 ;  2
-	mapgroup ROUTE_14,                                   18, 10 ;  3
-	mapgroup ROUTE_15,                                    9, 20 ;  4
-	mapgroup ROUTE_18_EAST,                               9, 11 ;  5
-	mapgroup FUCHSIA_CITY,                               18, 20 ;  6
-	mapgroup FUCHSIA_MART,                                4,  6 ;  7
-	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  8
-	mapgroup FUCHSIA_GYM,                                 9,  5 ;  9
-	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ; 10
-	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 11
-	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
-	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 13
-	mapgroup SAFARI_ZONE_HUB,                            15, 15 ; 14
-	mapgroup SAFARI_ZONE_EAST,                           13, 15 ; 15
-	mapgroup SAFARI_ZONE_NORTH,                          16, 15 ; 16
-	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 17
-	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 18
-	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 19
-	mapgroup ROUTE_12_GATE,                               5,  5 ; 20
-	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 21
-	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 22
-	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 23
-	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 24
-	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 25
+	mapgroup ROUTE_13_EAST,                              11, 18 ;  2
+	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
+	mapgroup ROUTE_14,                                   18, 10 ;  4
+	mapgroup ROUTE_15,                                    9, 20 ;  5
+	mapgroup ROUTE_18_EAST,                               9, 11 ;  6
+	mapgroup FUCHSIA_CITY,                               18, 20 ;  7
+	mapgroup FUCHSIA_MART,                                4,  6 ;  8
+	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  9
+	mapgroup FUCHSIA_GYM,                                 9,  5 ; 10
+	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ; 11
+	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 12
+	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 13
+	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 14
+	mapgroup SAFARI_ZONE_HUB,                            15, 15 ; 15
+	mapgroup SAFARI_ZONE_EAST,                           13, 15 ; 16
+	mapgroup SAFARI_ZONE_NORTH,                          16, 15 ; 17
+	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 18
+	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 19
+	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 20
+	mapgroup ROUTE_12_GATE,                               5,  5 ; 21
+	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 22
+	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 23
+	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 24
+	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 25
+	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 26
 
 	newgroup                                                    ; 18
 
@@ -398,7 +399,7 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
 	mapgroup ROUTE_16,                                    9, 10 ;  2
-	mapgroup ROUTE_17,                                   42, 10 ;  3
+	mapgroup ROUTE_17,                                   44, 10 ;  3
 	mapgroup ROUTE_18_WEST,                               9, 10 ;  4
 	mapgroup CELADON_CITY,                               18, 20 ;  5
 	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  6
