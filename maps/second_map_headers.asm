@@ -178,11 +178,11 @@
 
 	map_header_2 Route20, ROUTE_20, $43, WEST | EAST
 	connection west, CINNABAR_ISLAND, CinnabarIsland, -2, 0, 11
-	connection east, ROUTE_19, Route19, -3, 8, 12
+	connection east, ROUTE_19, Route19, -3, 17, 12
 
 	map_header_2 Route19, ROUTE_19, $43, NORTH | WEST
 	connection north, FUCHSIA_CITY, FuchsiaCity, 0, 0, 13
-	connection west, ROUTE_20, Route20, 11, 0, 9
+	connection west, ROUTE_20, Route20, 20, 0, 9
 
 	map_header_2 FuchsiaCity, FUCHSIA_CITY, $f, SOUTH | WEST | EAST
 	connection south, ROUTE_19, Route19, 0, 0, 10
