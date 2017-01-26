@@ -155,6 +155,7 @@ ENDM
 	landmark 140, 108, Route13Name
 	landmark 132, 116, Route14Name
 	landmark 116, 124, Route15Name
+	landmark 144, 120, SunnyMeadowName
 	landmark  84,  76, Route16Name
 	landmark  84, 104, Route17Name
 	landmark  88, 124, Route18Name
@@ -237,6 +238,7 @@ PokemonMansionName:  db "Pokémon¯Mansion@"
 CinnabarVolcanoName: db "Cinnabar¯Volcano@"
 CeruleanCaveName:    db "Cerulean¯Cave@"
 CeruleanCapeName:    db "Cerulean¯Cape@"
+SunnyMeadowName:     db "Sunny¯Meadow@"
 Route1Name:          db "Route 1@"
 Route2Name:          db "Route 2@"
 Route3Name:          db "Route 3@"

@@ -81,3 +81,6 @@ ShamoutiTunnel_BlockData:
 
 NoisyForest_BlockData:
 	INCBIN "maps/NoisyForest.blk"
+
+SunnyMeadow_BlockData:
+	INCBIN "maps/SunnyMeadow.blk"

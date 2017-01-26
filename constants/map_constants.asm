@@ -330,7 +330,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_12_SOUTH,                             23, 10 ;  1
 	mapgroup ROUTE_13_EAST,                              11, 18 ;  2
 	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
-	mapgroup ROUTE_14,                                   18, 10 ;  4
+	mapgroup ROUTE_14,                                   18, 12 ;  4
 	mapgroup ROUTE_15,                                    9, 20 ;  5
 	mapgroup ROUTE_18_EAST,                               9, 11 ;  6
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  7
@@ -353,6 +353,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 24
 	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 25
 	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 26
+	mapgroup SUNNY_MEADOW,                               18, 18 ; 27
 
 	newgroup                                                    ; 18
 
