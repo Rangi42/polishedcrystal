@@ -125,8 +125,8 @@ Route4TutorAquaTailScript:
 	closetext
 	end
 
-MtMoonSquareSign:
-	jumptext MtMoonSquareSignText
+MtMoonSign:
+	jumptext MtMoonSignText
 
 Route4HPUp:
 	itemball HP_UP
@@ -192,13 +192,6 @@ PicnickerSharonBeatenText:
 UnknownText_0x1ae369:
 	text "……I'll go train"
 	line "some more…"
-	done
-
-MtMoonSquareSignText:
-	text "Mt.Moon Square"
-
-	para "Just go up the"
-	line "stairs."
 	done
 
 Route4SuperNerd1Text:
@@ -280,6 +273,11 @@ Text_Route4Tutor2Taught:
 	cont "Aqua Tail!"
 	done
 
+MtMoonSignText:
+	text "Mt.Moon"
+	line "Tunnel Entrance"
+	done
+
 Route4_MapEventHeader:
 	; filler
 	db 0, 0
@@ -293,15 +291,15 @@ Route4_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 7, 3, SIGNPOST_READ, MtMoonSquareSign
-	signpost 3, 10, SIGNPOST_ITEM, Route4HiddenUltraBall
+	signpost 7, 5, SIGNPOST_READ, MtMoonSign
+	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
 
 .PersonEvents:
 	db 7
-	person_event SPRITE_YOUNGSTER, 9, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
-	person_event SPRITE_LASS, 8, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerHope, -1
-	person_event SPRITE_LASS, 6, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
-	person_event SPRITE_POKE_BALL, 3, 26, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP
-	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
-	person_event SPRITE_SUPER_NERD, 3, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 42, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
+	person_event SPRITE_YOUNGSTER, 9, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
+	person_event SPRITE_LASS, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerHope, -1
+	person_event SPRITE_LASS, 6, 33, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
+	person_event SPRITE_POKE_BALL, 3, 40, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP
+	person_event SPRITE_SUPER_NERD, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
+	person_event SPRITE_SUPER_NERD, 3, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE

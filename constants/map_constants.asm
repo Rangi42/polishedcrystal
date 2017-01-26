@@ -183,7 +183,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_10_POKECENTER_1F,                      4,  6 ;  8
 	mapgroup POWER_PLANT,                                 9, 10 ; 10
 	mapgroup BILLS_HOUSE,                                 4,  4 ; 11
-	mapgroup ROUTE_4,                                     9, 20 ; 12
+	mapgroup ROUTE_4,                                     9, 32 ; 12
 	mapgroup ROUTE_24,                                    9, 10 ; 13
 	mapgroup ROUTE_25,                                    9, 23 ; 14
 	mapgroup CERULEAN_CAPE,                              20, 25 ; 15
@@ -286,7 +286,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                    11, 32 ;  1
+	mapgroup ROUTE_3,                                    11, 35 ;  1
 	mapgroup ROUTE_3_POKECENTER_1F,                       4,  6 ;  2
 	mapgroup PEWTER_CITY,                                18, 20 ;  3
 	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  4

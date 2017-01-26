@@ -203,10 +203,8 @@ AceDuoZacandjen2AfterText:
 	done
 
 UnknownText_0x1ae163:
-	text "Mt.Moon Square"
-
-	para "Just go up the"
-	line "stairs."
+	text "Mt.Moon"
+	line "Tunnel Entrance"
 	done
 
 Route3_MapEventHeader:
@@ -215,23 +213,23 @@ Route3_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $1, $38, 1, MOUNT_MOON_1F
-	warp_def $3, $33, 1, ROUTE_3_POKECENTER_1F
+	warp_def $1, $42, 1, MOUNT_MOON_1F
+	warp_def $3, $3d, 1, ROUTE_3_POKECENTER_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 3
-	signpost 13, 53, SIGNPOST_READ, MapRoute3Signpost0Script
-	signpost 3, 52, SIGNPOST_READ, MapRoute3Signpost1Script
-	signpost 17, 9, SIGNPOST_ITEM, Route3HiddenMoonStone
+	signpost 15, 61, SIGNPOST_READ, MapRoute3Signpost0Script
+	signpost 3, 62, SIGNPOST_READ, MapRoute3Signpost1Script
+	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
 
 .PersonEvents:
 	db 6
-	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
-	person_event SPRITE_YOUNGSTER, 7, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterWarren, -1
-	person_event SPRITE_YOUNGSTER, 3, 16, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
-	person_event SPRITE_FISHER, 13, 39, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherBurt, -1
-	person_event SPRITE_COOLTRAINER_M, 11, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1
+	person_event SPRITE_FISHER, 12, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
+	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterWarren, -1
+	person_event SPRITE_YOUNGSTER, 3, 18, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
+	person_event SPRITE_FISHER, 13, 45, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherBurt, -1
+	person_event SPRITE_COOLTRAINER_M, 11, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1

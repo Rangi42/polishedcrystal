@@ -288,12 +288,10 @@
 	map_header_2 CeruleanCape, CERULEAN_CAPE, $2c, WEST
 	connection west, ROUTE_25, Route25, 0, 0, 18
 
-	map_header_2 Route3, ROUTE_3, $2c, WEST | EAST
+	map_header_2 Route3, ROUTE_3, $2c, WEST
 	connection west, PEWTER_CITY, PewterCity, -3, 2, 15
-	connection east, ROUTE_4, Route4, 0, 0, 9
 
-	map_header_2 Route4, ROUTE_4, $2c, WEST | EAST
-	connection west, ROUTE_3, Route3, 0, 0, 9
+	map_header_2 Route4, ROUTE_4, $2c, EAST
 	connection east, CERULEAN_CITY, CeruleanCity, -3, 2, 15
 
 	map_header_2 Route8, ROUTE_8, $2c, WEST | EAST
