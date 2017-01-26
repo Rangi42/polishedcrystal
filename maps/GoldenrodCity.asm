@@ -54,9 +54,13 @@ GoldenrodCity_MapScriptHeader:
 
 .RocketScout:
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	iffalse .RocketScoutDone
+	iftrue .RocketScoutDone
 	moveperson GOLDENRODCITY_ROCKET1, 29, 17
 .RocketScoutDone
+	checkevent EVENT_GOLDENROD_GYM_WHITNEY
+	iffalse .GymLassDone
+	moveperson GOLDENRODCITY_LASS2, 38, 24
+.GymLassDone
 	return
 
 .Trigger0:
@@ -222,7 +226,20 @@ CooltrainerFScript_0x1989fd:
 	end
 
 YoungsterScript_0x198a11:
-	jumptextfaceplayer UnknownText_0x198c36
+	faceplayer
+	opentext
+	checknite
+	iftrue .nite
+	writetext GoldenrodCityYoungsterDayText
+	waitbutton
+	closetext
+	end
+
+.nite
+	writetext UnknownText_0x198c36
+	waitbutton
+	closetext
+	end
 
 LassScript_0x198a14:
 	jumptextfaceplayer UnknownText_0x198c83
@@ -232,7 +249,7 @@ GrampsScript_0x198a17:
 
 RocketScript_0x198a1a:
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	iffalse .RocketScout
+	iftrue .RocketScout
 	jumptextfaceplayer UnknownText_0x198de2
 
 .RocketScout:
@@ -262,6 +279,11 @@ RocketScript_0x198a38:
 	jumptextfaceplayer UnknownText_0x198e4b
 
 GoldenrodCityGymLassScript:
+	checkevent EVENT_GOLDENROD_GYM_WHITNEY
+	iffalse .GymLass
+	jumptextfaceplayer GoldenrodCityLass2Text
+
+.GymLass
 	jumptextfaceplayer GoldenrodCityGymLassText
 
 GoldenrodCityStationSign:
@@ -324,6 +346,15 @@ UnknownText_0x198a69:
 
 	para "replace the old,"
 	line "creaky one."
+
+	para "Now it transmits"
+	line "every #gear"
+
+	para "broadcast in"
+	line "Johto."
+
+	para "That's pretty"
+	line "crazy, right?"
 	done
 
 UnknownText_0x198aa9:
@@ -367,8 +398,19 @@ UnknownText_0x198b73:
 	done
 
 UnknownText_0x198c14:
-	text "Oh, your #gear"
-	line "works as a radio!"
+	text "DJ Mary is so"
+	line "cool. I listen to"
+
+	para "her radio show"
+	line "every day."
+	done
+
+GoldenrodCityYoungsterDayText:
+	text "So this is Johto's"
+	line "biggest city…"
+
+	para "How do I find my"
+	line "way around?"
 	done
 
 UnknownText_0x198c36:
@@ -386,8 +428,12 @@ UnknownText_0x198c83:
 	line "house rates your"
 	cont "#mon names."
 
-	para "He can even rename"
-	line "your #mon."
+	para "He can help rename"
+	line "your #mon too."
+
+	para "He liked all of"
+	line "my nicknames, even"
+	cont "the silly ones!"
 	done
 
 UnknownText_0x198ccf:
@@ -456,6 +502,18 @@ GoldenrodCityGymLassText:
 
 	para "“I have got to get"
 	line "a Radio Card!”"
+	done
+
+GoldenrodCityLass2Text:
+	text "I gave my Pichu a"
+	line "haircut from the"
+
+	para "Haircut Brothers"
+	line "every day."
+
+	para "Then it went and"
+	line "evolved! I didn't"
+	cont "expect that!"
 	done
 
 GoldenrodCityStationSignText:
@@ -654,4 +712,4 @@ GoldenrodCity_MapEventHeader:
 	person_event SPRITE_ROCKET, 7, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a35, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 10, 35, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a38, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_POKEFAN_M, 22, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
-	person_event SPRITE_LASS, 8, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodCityGymLassScript, EVENT_GOLDENROD_GYM_WHITNEY
+	person_event SPRITE_LASS, 8, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodCityGymLassScript, EVENT_GOLDENROD_CITY_CIVILIANS

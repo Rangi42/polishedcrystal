@@ -400,6 +400,8 @@ INCLUDE "maps/MrPokemonsHouse.asm"
 INCLUDE "maps/Route31VioletGate.asm"
 INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 INCLUDE "maps/Route42EcruteakGate.asm"
+INCLUDE "maps/RedsHouse1F.asm"
+INCLUDE "maps/RedsHouse2F.asm"
 
 
 SECTION "Map Scripts 18", ROMX, BANK[MAP_SCRIPTS_18]
@@ -412,8 +414,6 @@ INCLUDE "maps/SaffronCity.asm"
 INCLUDE "maps/MahoganyGym.asm"
 INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route43Gate.asm"
-INCLUDE "maps/RedsHouse1F.asm"
-INCLUDE "maps/RedsHouse2F.asm"
 INCLUDE "maps/BluesHouse.asm"
 INCLUDE "maps/OaksLab.asm"
 
