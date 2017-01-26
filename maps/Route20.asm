@@ -130,19 +130,19 @@ Route20_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $9, $26, 1, SEAFOAM_ISLANDS_1F
-	warp_def $5, $1e, 4, SEAFOAM_ISLANDS_1F
+	warp_def $9, $38, 1, SEAFOAM_ISLANDS_1F
+	warp_def $5, $30, 4, SEAFOAM_ISLANDS_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 11, 37, SIGNPOST_READ, CinnabarGymSign
-	signpost 7, 33, SIGNPOST_READ, SeafoamIslandsSign
+	signpost 11, 55, SIGNPOST_READ, CinnabarGymSign
+	signpost 7, 51, SIGNPOST_READ, SeafoamIslandsSign
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_SWIMMER_GIRL, 8, 54, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
-	person_event SPRITE_SWIMMER_GIRL, 13, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfLori, -1
+	person_event SPRITE_SWIMMER_GIRL, 8, 72, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
+	person_event SPRITE_SWIMMER_GIRL, 13, 64, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfLori, -1
 	person_event SPRITE_SWIMMER_GUY, 13, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermCameron, -1
