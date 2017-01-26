@@ -15,6 +15,7 @@ FruitTreeScript:: ; 44000
 	writetext WantToUseMulchText
 	yesorno
 	iffalse .end
+	takeitem MULCH
 	callasm GetCurTreeFruit
 	copybytetovar CurFruit
 	callasm FertilizedFruitTree
