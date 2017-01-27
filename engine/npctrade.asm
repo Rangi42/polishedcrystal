@@ -412,7 +412,7 @@ ENDM
 	; Route 14
 	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@"
 	; Goldenrod Harbor
-	npctrade 0, QUAGSIRE,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@"
+	npctrade 0, QWILFISH,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@"
 ; fcf38
 
 
