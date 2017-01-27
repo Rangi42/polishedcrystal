@@ -186,7 +186,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_4,                                     9, 32 ; 12
 	mapgroup ROUTE_24,                                    9, 10 ; 13
 	mapgroup ROUTE_25,                                    9, 23 ; 14
-	mapgroup CERULEAN_CAPE,                              20, 25 ; 15
+	mapgroup CERULEAN_CAPE,                              19, 27 ; 15
 	mapgroup CERULEAN_CITY,                              18, 20 ; 16
 	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 17
 	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 18
@@ -357,9 +357,9 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 18
 
-	mapgroup ROUTE_8,                                    10, 26 ;  1
+	mapgroup ROUTE_8,                                    11, 26 ;  1
 	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
-	mapgroup LAVENDER_TOWN,                               9, 10 ;  3
+	mapgroup LAVENDER_TOWN,                              10, 10 ;  3
 	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
 	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  5
 	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  6
@@ -538,7 +538,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 28
 
 	mapgroup ROUTE_9,                                     9, 26 ;  1
-	mapgroup ROUTE_10_NORTH,                             24, 10 ;  2
+	mapgroup ROUTE_10_NORTH,                             29, 10 ;  2
 
 	newgroup                                                    ; 29
 

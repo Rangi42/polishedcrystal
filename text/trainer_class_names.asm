@@ -63,7 +63,7 @@
 	db "Couple@"           ; COUPLE
 	db "Gentleman@"        ; GENTLEMAN
 	db "Rich Boy@"         ; RICH_BOY
-	db "Lady@"             ; Lady
+	db "Lady@"             ; LADY
 	db "Breeder@"          ; BREEDER
 	db "Baker@"            ; BAKER
 	db "Cowgirl@"          ; COWGIRL
@@ -88,8 +88,8 @@
 	db "Ace Trainer@"      ; COOLTRAINERM
 	db "Ace Trainer@"      ; COOLTRAINERF
 	db "Ace Duo@"          ; ACE_DUO
-	db "Veteran@"          ; VETERAN_M
-	db "Veteran@"          ; VETERAN_F
+	db "Veteran@"          ; VETERANM
+	db "Veteran@"          ; VETERANF
 	db "Executive@"        ; PROTON
 	db "Executive@"        ; PETREL
 	db "Executive@"        ; ARCHER
@@ -97,6 +97,7 @@
 	db "Boss@"             ; GIOVANNI
 	db "#mon Prof.@"       ; PROF_OAK
 	db "#mon Prof.@"       ; PROF_ELM
+	db "#mon Prof.@"       ; PROF_IVY
 	db "Mystery Man@"      ; MYSTICALMAN
 	db "Karate King@"      ; KARATE_KING
 	db "TowerTycoon@"      ; TOWERTYCOON

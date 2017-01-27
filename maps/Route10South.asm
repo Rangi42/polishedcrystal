@@ -112,17 +112,17 @@ Route10South_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $1, $6, 2, ROCK_TUNNEL_1F
+	warp_def $3, $6, 2, ROCK_TUNNEL_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 1
-	signpost 3, 5, SIGNPOST_READ, Route10Sign
+	signpost 5, 5, SIGNPOST_READ, Route10Sign
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_POKEFAN_M, 3, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerJim, -1
-	person_event SPRITE_POKEFAN_M, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmRobert, -1
-	person_event SPRITE_HEX_MANIAC, 10, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacAmy, -1
+	person_event SPRITE_POKEFAN_M, 5, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerJim, -1
+	person_event SPRITE_POKEFAN_M, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmRobert, -1
+	person_event SPRITE_HEX_MANIAC, 12, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacAmy, -1

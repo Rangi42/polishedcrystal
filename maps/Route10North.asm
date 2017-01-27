@@ -66,7 +66,7 @@ Route10NorthLawrenceEncounter1Script:
 	appear ROUTE10_CHRIS
 	applymovement PLAYER, Route10NorthMovementData_HidePlayer
 	applymovement PLAYER, Route10NorthMovementData_PanUp
-	pause 30
+	pause 40
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applymovement PLAYER, Route10NorthMovementData_ShowPlayer
 	disappear ROUTE10_CHRIS
@@ -75,7 +75,7 @@ Route10NorthLawrenceEncounter1Script:
 	appear ROUTE10_KRIS
 	applymovement PLAYER, Route10NorthMovementData_HidePlayer
 	applymovement PLAYER, Route10NorthMovementData_PanUp
-	pause 30
+	pause 40
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applymovement PLAYER, Route10NorthMovementData_ShowPlayer
 	disappear ROUTE10_KRIS
@@ -122,29 +122,29 @@ Route10NorthLawrenceEncounter2Script:
 	if_equal DOWN, .down
 	if_equal LEFT, .left
 .right
-	moveperson ROUTE10_LAWRENCE, 7, 35
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 10, 35
+	moveperson ROUTE10_LAWRENCE, 7, 44
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 10, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 	spriteface PLAYER, LEFT
 	jump .continue
 .up
-	moveperson ROUTE10_LAWRENCE, 8, 35
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 35
+	moveperson ROUTE10_LAWRENCE, 8, 44
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	spriteface ROUTE10_LAWRENCE, DOWN
 	jump .continue
 .down
-	moveperson ROUTE10_LAWRENCE, 8, 35
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 35
+	moveperson ROUTE10_LAWRENCE, 8, 44
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	spriteface ROUTE10_LAWRENCE, UP
 	jump .continue
 .left
-	moveperson ROUTE10_LAWRENCE, 9, 35
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 35
+	moveperson ROUTE10_LAWRENCE, 9, 44
+	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 .continue
@@ -351,11 +351,19 @@ Route10NorthMovementData_PanUp:
 	step_up
 	step_up
 	step_up
+	step_up
+	step_up
+	step_up
+	step_up
 	remove_fixed_facing
 	step_end
 
 Route10NorthMovementData_PanDown:
 	fix_facing
+	step_down
+	step_down
+	step_down
+	step_down
 	step_down
 	step_down
 	step_down
@@ -373,24 +381,24 @@ Route10North_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $1d, $b, 1, ROUTE_10_POKECENTER_1F
-	warp_def $27, $3, 1, POWER_PLANT
-	warp_def $21, $2, 1, ROCK_TUNNEL_2F
-	warp_def $1b, $8, 1, ROCK_TUNNEL_1F
+	warp_def $23, $b, 1, ROUTE_10_POKECENTER_1F
+	warp_def $33, $3, 1, POWER_PLANT
+	warp_def $2b, $4, 1, ROCK_TUNNEL_2F
+	warp_def $21, $8, 1, ROCK_TUNNEL_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 3
-	signpost 41, 5, SIGNPOST_READ, PowerPlantSign
-	signpost 29, 12, SIGNPOST_READ, Route10PokeCenterSign
-	signpost 29, 7, SIGNPOST_READ, Route10RockTunnelSign
+	signpost 53, 5, SIGNPOST_READ, PowerPlantSign
+	signpost 35, 12, SIGNPOST_READ, Route10PokeCenterSign
+	signpost 35, 7, SIGNPOST_READ, Route10RockTunnelSign
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_ZAPDOS, 35, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 40, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
-	person_event SPRITE_ZAPDOS, 40, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
-	person_event SPRITE_CHRIS, 40, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_KRIS, 40, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
+	person_event SPRITE_CHRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	person_event SPRITE_KRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
