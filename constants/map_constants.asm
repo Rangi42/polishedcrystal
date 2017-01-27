@@ -327,7 +327,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 17
 
-	mapgroup ROUTE_12_SOUTH,                             23, 10 ;  1
+	mapgroup ROUTE_12_SOUTH,                             44, 10 ;  1
 	mapgroup ROUTE_13_EAST,                              11, 23 ;  2
 	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
 	mapgroup ROUTE_14,                                   18, 12 ;  4
@@ -368,7 +368,7 @@ MAP_NONE   EQU 0
 	mapgroup SOUL_HOUSE,                                  4,  5 ;  9
 	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 10
 	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 11
-	mapgroup ROUTE_12_NORTH,                              7, 10 ; 12
+	mapgroup ROUTE_12_NORTH,                              9, 10 ; 12
 
 	newgroup                                                    ; 19
 

@@ -242,11 +242,11 @@
 	map_header_2 Route12South, ROUTE_12_SOUTH, $43, NORTH | SOUTH | WEST
 	connection north, ROUTE_12_NORTH, Route12North, 0, 0, 10
 	connection south, ROUTE_13_EAST, Route13East, 0, 13, 10
-	connection west, ROUTE_11, Route11, 5, 0, 9
+	connection west, ROUTE_11, Route11, 17, 0, 9
 
 	map_header_2 Route11, ROUTE_11, $f, WEST | EAST
 	connection west, VERMILION_CITY, VermilionCity, -3, 2, 15
-	connection east, ROUTE_12_SOUTH, Route12South, -3, 2, 15
+	connection east, ROUTE_12_SOUTH, Route12South, -3, 14, 15
 
 	map_header_2 LavenderTown, LAVENDER_TOWN, $2c, NORTH | SOUTH | WEST
 	connection north, ROUTE_10_SOUTH, Route10South, 0, 0, 10
