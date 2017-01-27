@@ -488,7 +488,7 @@ VermilionCity_MapEventHeader:
 	signpost 5, 25, SIGNPOST_READ, VermilionCitySign
 	signpost 23, 5, SIGNPOST_READ, VermilionGymSign
 	signpost 17, 5, SIGNPOST_READ, PokemonFanClubSign
-	signpost 19, 33, SIGNPOST_READ, VermilionCityDiglettsCaveSign
+	signpost 17, 33, SIGNPOST_READ, VermilionCityDiglettsCaveSign
 	signpost 19, 27, SIGNPOST_READ, VermilionCityPortSign
 	signpost 5, 10, SIGNPOST_READ, VermilionCityPokeCenterSign
 	signpost 17, 22, SIGNPOST_READ, VermilionCityMartSign
@@ -501,6 +501,6 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_MACHOP, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
 	person_event SPRITE_SUPER_NERD, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1aa99b, -1
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
-	person_event SPRITE_POKEFAN_M, 16, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
+	person_event SPRITE_POKEFAN_M, 16, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	person_event SPRITE_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	person_event SPRITE_CUT_TREE, 23, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityCutTree, EVENT_VERMILION_CITY_CUT_TREE

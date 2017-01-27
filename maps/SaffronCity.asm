@@ -284,8 +284,8 @@ SaffronCity_MapEventHeader:
 	warp_def $1, $12, 3, ROUTE_5_SAFFRON_CITY_GATE
 	warp_def $12, $0, 3, ROUTE_7_SAFFRON_GATE
 	warp_def $13, $0, 4, ROUTE_7_SAFFRON_GATE
-	warp_def $21, $10, 1, ROUTE_6_SAFFRON_GATE
-	warp_def $21, $11, 2, ROUTE_6_SAFFRON_GATE
+	warp_def $23, $10, 1, ROUTE_6_SAFFRON_GATE
+	warp_def $23, $11, 2, ROUTE_6_SAFFRON_GATE
 	warp_def $12, $27, 1, ROUTE_8_SAFFRON_GATE
 	warp_def $13, $27, 2, ROUTE_8_SAFFRON_GATE
 
