@@ -211,7 +211,7 @@
 
 	map_header_2 Route7, ROUTE_7, $f, WEST | EAST
 	connection west, CELADON_CITY, CeladonCity, -3, 2, 15
-	connection east, SAFFRON_CITY, SaffronCity, -3, 6, 12
+	connection east, SAFFRON_CITY, SaffronCity, -3, 3, 12
 
 	map_header_2 SunnyMeadow, SUNNY_MEADOW, $43, NORTH | WEST
 	connection north, ROUTE_13_EAST, Route13East, 0, 0, 23
@@ -245,17 +245,17 @@
 	connection west, ROUTE_11, Route11, 5, 0, 9
 
 	map_header_2 Route11, ROUTE_11, $f, WEST | EAST
-	connection west, VERMILION_CITY, VermilionCity, 0, 0, 12
+	connection west, VERMILION_CITY, VermilionCity, -3, 2, 15
 	connection east, ROUTE_12_SOUTH, Route12South, -3, 2, 15
 
 	map_header_2 LavenderTown, LAVENDER_TOWN, $2c, NORTH | SOUTH | WEST
 	connection north, ROUTE_10_SOUTH, Route10South, 0, 0, 10
 	connection south, ROUTE_12_NORTH, Route12North, 0, 0, 10
-	connection west, ROUTE_8, Route8, 0, 0, 9
+	connection west, ROUTE_8, Route8, 0, 0, 10
 
 	map_header_2 VermilionCity, VERMILION_CITY, $43, NORTH | EAST
 	connection north, ROUTE_6, Route6, 5, 0, 10
-	connection east, ROUTE_11, Route11, 0, 0, 9
+	connection east, ROUTE_11, Route11, 5, 0, 9
 
 	map_header_2 Route6, ROUTE_6, $f, NORTH | SOUTH
 	connection north, SAFFRON_CITY, SaffronCity, -3, 2, 16
@@ -264,8 +264,8 @@
 	map_header_2 SaffronCity, SAFFRON_CITY, $f, NORTH | SOUTH | WEST | EAST
 	connection north, ROUTE_5, Route5, 5, 0, 10
 	connection south, ROUTE_6, Route6, 5, 0, 10
-	connection west, ROUTE_7, Route7, 9, 0, 9
-	connection east, ROUTE_8, Route8, 9, 0, 9
+	connection west, ROUTE_7, Route7, 6, 0, 9
+	connection east, ROUTE_8, Route8, 5, 0, 10
 
 	map_header_2 Route5, ROUTE_5, $f, NORTH | SOUTH
 	connection north, CERULEAN_CITY, CeruleanCity, -3, 2, 16
@@ -295,7 +295,7 @@
 	connection east, CERULEAN_CITY, CeruleanCity, -3, 2, 15
 
 	map_header_2 Route8, ROUTE_8, $2c, WEST | EAST
-	connection west, SAFFRON_CITY, SaffronCity, -3, 6, 12
+	connection west, SAFFRON_CITY, SaffronCity, -3, 2, 13
 	connection east, LAVENDER_TOWN, LavenderTown, 0, 0, 9
 
 	map_header_2 Route9, ROUTE_9, $2c, WEST | EAST

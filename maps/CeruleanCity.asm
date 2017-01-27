@@ -216,7 +216,7 @@ UnknownText_0x18424e:
 UnknownText_0x184275:
 	text "I saw this shady"
 	line "guy go off toward"
-	cont "Cerulean's Cape."
+	cont "Cerulean Cape."
 	done
 
 UnknownText_0x1842a9:

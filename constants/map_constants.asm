@@ -260,9 +260,9 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 12
 
-	mapgroup ROUTE_6,                                    12, 10 ;  1
+	mapgroup ROUTE_6,                                    16, 10 ;  1
 	mapgroup ROUTE_11,                                    9, 26 ;  2
-	mapgroup VERMILION_CITY,                             18, 20 ;  3
+	mapgroup VERMILION_CITY,                             20, 20 ;  3
 	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
 	mapgroup VERMILION_POKECENTER_1F,                     4,  6 ;  5
 	mapgroup POKEMON_FAN_CLUB,                            4,  5 ;  6
@@ -357,7 +357,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 18
 
-	mapgroup ROUTE_8,                                     9, 26 ;  1
+	mapgroup ROUTE_8,                                    10, 26 ;  1
 	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
 	mapgroup LAVENDER_TOWN,                               9, 10 ;  3
 	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
@@ -454,7 +454,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 23
 
-	mapgroup ROUTE_2,                                    27, 10 ;  1
+	mapgroup ROUTE_2,                                    36, 10 ;  1
 	mapgroup ROUTE_22,                                    9, 20 ;  2
 	mapgroup VIRIDIAN_CITY,                              18, 20 ;  3
 	mapgroup VIRIDIAN_GYM,                               23,  7 ;  4
@@ -492,7 +492,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 25
 
-	mapgroup SAFFRON_CITY,                               18, 20 ;  1
+	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 	mapgroup FIGHTING_DOJO,                               6,  5 ;  2
 	mapgroup SAFFRON_GYM,                                 9, 10 ;  3
 	mapgroup SAFFRON_MART,                                4,  6 ;  4
@@ -504,7 +504,7 @@ MAP_NONE   EQU 0
 	mapgroup SILPH_CO_3F,                                 4,  8 ; 10
 	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 11
 	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 12
-	mapgroup ROUTE_5,                                     9, 10 ;  1
+	mapgroup ROUTE_5,                                    17, 10 ;  1
 	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ;  5
 	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ;  6
 	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ;  7

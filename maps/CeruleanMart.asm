@@ -27,7 +27,7 @@ UnknownText_0x188acd:
 	line "many trainers on"
 
 	para "the way to Ceru-"
-	line "lean's Cape."
+	line "lean Cape."
 
 	para "They want to see"
 	line "how they stack"
@@ -42,7 +42,7 @@ UnknownText_0x188b46:
 
 	para "town who can beat"
 	line "the trainers at"
-	cont "Cerulean's Cape."
+	cont "Cerulean Cape."
 	done
 
 CeruleanMart_MapEventHeader:
