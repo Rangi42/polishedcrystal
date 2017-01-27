@@ -400,7 +400,7 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
 	mapgroup ROUTE_16,                                    9, 10 ;  2
-	mapgroup ROUTE_17,                                   44, 10 ;  3
+	mapgroup ROUTE_17,                                   66, 10 ;  3
 	mapgroup ROUTE_18_WEST,                               9, 10 ;  4
 	mapgroup CELADON_CITY,                               18, 20 ;  5
 	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  6

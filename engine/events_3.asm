@@ -108,6 +108,7 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	jr nz, .skip2
 	call InitMapNameFrame
 	call PlaceMapNameCenterAlign
+	call GiveFontOpaqueBackground
 	farcall Function104303
 .skip2
 	ld a, $80
@@ -122,6 +123,24 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ld [hWY], a
 	xor a
 	ld [hFFC6], a
+	ret
+
+
+GiveFontOpaqueBackground:
+; Two bytes in VRAM define eight pixels (2 bits/pixel)
+; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
+; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
+; %00 = white, %11 = black, %10 = light, %01 = dark
+	ld hl, VTiles1
+	ld bc, ($80 tiles) / 2
+.loop
+	ld a, $ff
+	ld [hli], a
+	inc hl
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
 	ret
 
 
