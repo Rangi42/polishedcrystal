@@ -87,8 +87,8 @@ Route7_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 11, 5, SIGNPOST_READ, Route7UndergroundPathSign
-	signpost 9, 6, SIGNPOST_READ, Route7LockedDoor
+	signpost 13, 5, SIGNPOST_READ, Route7UndergroundPathSign
+	signpost 11, 6, SIGNPOST_READ, Route7LockedDoor
 
 .PersonEvents:
 	db 1

@@ -91,7 +91,7 @@ UnknownScript_0x54c19:
 GiftEeveeMail:
 	db   EON_MAIL
 	db   "Greetings from"
-	next "Kanto! - Oak@"
+	next "Kanto! -- Oak@"
 
 	db 0
 
