@@ -163,7 +163,7 @@ MAP_NONE   EQU 0
 	mapgroup SEAFOAM_ISLANDS_B4F,                        10, 20 ;  7
 	mapgroup ROUTE_19,                                   29, 10 ;  8
 	mapgroup ROUTE_20,                                    9, 48 ;  9
-	mapgroup ROUTE_21,                                   30, 10 ; 10
+	mapgroup ROUTE_21,                                   48, 10 ; 10
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 11
 	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 12
 	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 13
