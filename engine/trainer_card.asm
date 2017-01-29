@@ -668,15 +668,15 @@ TrainerCard_JohtoBadgesOAM: ; 254c9
 	db $0c, $20, $24, $20 | $80
 	db $0c | $80, $20, $24, $20 | $80
 
-	; Storm Badge
+	; Mineral Badge
 	db $80, $38, 5
 	db $10, $20, $24, $20 | $80
-	db $10 | $80, $20, $24, $20 | $80
+	db $10, $20, $24, $20 | $80
 
-	; Mineral Badge
+	; Storm Badge
 	db $80, $18, 4
 	db $14, $20, $24, $20 | $80
-	db $14, $20, $24, $20 | $80
+	db $14 | $80, $20, $24, $20 | $80
 
 	; Glacier Badge
 	db $80, $58, 6

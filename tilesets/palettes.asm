@@ -46,6 +46,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_mystri_or_tower
 	cp TILESET_MART
 	jp z, .maybe_goldenrod_dept_store_roof
+	cp TILESET_HOME_DECOR_STORE
+	jp z, .maybe_celadon_home_decor_store_4f
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
 	jp .do_nothing
@@ -174,6 +176,17 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_GOLDENROD_DEPT_STORE_ROOF
 	jp nz, .do_nothing
 	call LoadGoldenrodDeptStoreRoofPalette
+	scf
+	ret
+
+.maybe_celadon_home_decor_store_4f
+	ld a, [MapGroup]
+	cp GROUP_CELADON_HOME_DECOR_STORE_4F
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_CELADON_HOME_DECOR_STORE_4F
+	jp nz, .do_nothing
+	call LoadCeladonHomeDecorStore4FPalette
 	scf
 	ret
 
@@ -439,6 +452,17 @@ LoadGoldenrodDeptStoreRoofPalette:
 
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
+
+LoadCeladonHomeDecorStore4FPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, CeladonHomeDecorStore4FPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+CeladonHomeDecorStore4FPalette:
+INCLUDE "tilesets/celadon_home_decor_store_4f.pal"
 
 LoadCinnabarVolcanoPalette:
 	ld a, $5

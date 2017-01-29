@@ -992,11 +992,11 @@ JohtoBadgePalettes:
 ; Zephyr Badge
 	RGB 31, 31, 31
 	RGB 21, 21, 24
-	RGB 15, 15, 18
+	RGB 13, 13, 16
 	RGB 00, 00, 00
 ; Hive Badge
 	RGB 31, 31, 31
-	RGB 29, 20, 20
+	RGB 31, 12, 12
 	RGB 29, 00, 00
 	RGB 00, 00, 00
 ; Plain Badge
@@ -1006,7 +1006,7 @@ JohtoBadgePalettes:
 	RGB 00, 00, 00
 ; Fog Badge
 	RGB 31, 31, 31
-	RGB 27, 27, 29
+	RGB 23, 22, 26
 	RGB 11, 10, 23
 	RGB 00, 00, 00
 ; Storm Badge
@@ -1153,13 +1153,13 @@ KantoBadgePalettes:
 	RGB 00, 00, 00
 ; Marsh Badge
 	RGB 31, 31, 31
-	RGB 31, 20, 31
-	RGB 31, 10, 31
+	RGB 31, 19, 30
+	RGB 31, 09, 30
 	RGB 00, 00, 00
 ; Soul Badge
 	RGB 31, 31, 31
-	RGB 31, 31, 15
-	RGB 29, 21, 04
+	RGB 31, 22, 04
+	RGB 19, 13, 01
 	RGB 00, 00, 00
 ; Volcano Badge
 	RGB 31, 31, 31
