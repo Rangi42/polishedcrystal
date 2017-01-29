@@ -332,7 +332,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
 	mapgroup ROUTE_14,                                   18, 12 ;  4
 	mapgroup ROUTE_15,                                    9, 20 ;  5
-	mapgroup ROUTE_18_EAST,                               9, 11 ;  6
+	mapgroup ROUTE_18_EAST,                               9, 14 ;  6
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  7
 	mapgroup FUCHSIA_MART,                                4,  6 ;  8
 	mapgroup SAFARI_ZONE_MAIN_OFFICE,                     4,  4 ;  9
@@ -399,10 +399,10 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 21
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
-	mapgroup ROUTE_16,                                    9, 10 ;  2
-	mapgroup ROUTE_17,                                   66, 10 ;  3
+	mapgroup ROUTE_16,                                   11, 11 ;  2
+	mapgroup ROUTE_17,                                   63, 10 ;  3
 	mapgroup ROUTE_18_WEST,                               9, 10 ;  4
-	mapgroup CELADON_CITY,                               18, 20 ;  5
+	mapgroup CELADON_CITY,                               18, 22 ;  5
 	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  6
 	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  7
 	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ;  8

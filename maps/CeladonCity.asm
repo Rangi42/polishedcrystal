@@ -102,6 +102,9 @@ CeladonCitySign:
 CeladonGymSign:
 	jumptext CeladonGymSignText
 
+CeladonUniversitySign:
+	jumptext CeladonUniversitySignText
+
 CeladonCityDeptStoreSign:
 	jumptext CeladonCityDeptStoreSignText
 
@@ -290,6 +293,10 @@ CeladonGymSignText:
 	line "Princess"
 	done
 
+CeladonUniversitySignText:
+	text "Celadon University"
+	done
+
 CeladonCityDeptStoreSignText:
 	text "Find What You"
 	line "Need at Celadon"
@@ -331,44 +338,45 @@ CeladonCity_MapEventHeader:
 
 .Warps:
 	db 12
-	warp_def $9, $4, 1, CELADON_DEPT_STORE_1F
-	warp_def $9, $10, 1, CELADON_MANSION_1F
-	warp_def $3, $10, 3, CELADON_MANSION_1F
-	warp_def $3, $11, 3, CELADON_MANSION_1F
-	warp_def $9, $1d, 1, CELADON_POKECENTER_1F
-	warp_def $13, $12, 1, CELADON_GAME_CORNER
-	warp_def $13, $17, 1, CELADON_GAME_CORNER_PRIZE_ROOM
-	warp_def $1d, $a, 1, CELADON_GYM
-	warp_def $1d, $15, 1, CELADON_CAFE
-	warp_def $1d, $1d, 1, CELADON_CHIEF_HOUSE
-	warp_def $1d, $21, 1, CELADON_HOTEL
-	warp_def $9, $9, 1, CELADON_HOME_DECOR_STORE_1F
+	warp_def $9, $8, 1, CELADON_DEPT_STORE_1F
+	warp_def $9, $14, 1, CELADON_MANSION_1F
+	warp_def $3, $14, 3, CELADON_MANSION_1F
+	warp_def $3, $15, 3, CELADON_MANSION_1F
+	warp_def $9, $21, 1, CELADON_POKECENTER_1F
+	warp_def $13, $16, 1, CELADON_GAME_CORNER
+	warp_def $13, $1b, 1, CELADON_GAME_CORNER_PRIZE_ROOM
+	warp_def $1d, $e, 1, CELADON_GYM
+	warp_def $1d, $19, 1, CELADON_CAFE
+	warp_def $1d, $21, 1, CELADON_CHIEF_HOUSE
+	warp_def $1d, $25, 1, CELADON_HOTEL
+	warp_def $9, $d, 1, CELADON_HOME_DECOR_STORE_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 9
+	db 10
 	signpost 18, 9, SIGNPOST_READ, CeladonCitySign
-	signpost 31, 11, SIGNPOST_READ, CeladonGymSign
-	signpost 9, 6, SIGNPOST_READ, CeladonCityDeptStoreSign
-	signpost 9, 10, SIGNPOST_READ, CeladonCityHomeDecorStoreSign
-	signpost 9, 13, SIGNPOST_READ, CeladonCityMansionSign
-	signpost 21, 19, SIGNPOST_READ, CeladonCityGameCornerSign
-	signpost 21, 29, SIGNPOST_READ, CeladonCityTrainerTips
-	signpost 9, 30, SIGNPOST_READ, CeladonCityPokeCenterSign
-	signpost 21, 37, SIGNPOST_ITEM, CeladonCityHiddenPpUp
+	signpost 31, 15, SIGNPOST_READ, CeladonGymSign
+	signpost 31, 3, SIGNPOST_READ, CeladonUniversitySign
+	signpost 9, 10, SIGNPOST_READ, CeladonCityDeptStoreSign
+	signpost 9, 14, SIGNPOST_READ, CeladonCityHomeDecorStoreSign
+	signpost 9, 17, SIGNPOST_READ, CeladonCityMansionSign
+	signpost 21, 21, SIGNPOST_READ, CeladonCityGameCornerSign
+	signpost 21, 33, SIGNPOST_READ, CeladonCityTrainerTips
+	signpost 9, 34, SIGNPOST_READ, CeladonCityPokeCenterSign
+	signpost 21, 41, SIGNPOST_ITEM, CeladonCityHiddenPpUp
 
 .PersonEvents:
 	db 11
-	person_event SPRITE_RICH_BOY, 17, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
-	person_event SPRITE_FISHER, 11, 26, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9f43, -1
-	person_event SPRITE_POLIWRATH, 11, 27, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
-	person_event SPRITE_TEACHER, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f50, -1
-	person_event SPRITE_GRAMPS, 16, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9f53, -1
-	person_event SPRITE_GRAMPS, 31, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9f56, -1
-	person_event SPRITE_YOUNGSTER, 13, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9f59, -1
-	person_event SPRITE_YOUNGSTER, 33, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9f5c, -1
-	person_event SPRITE_TEACHER, 13, 8, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f5f, -1
-	person_event SPRITE_LASS, 22, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x1a9f62, -1
-	person_event SPRITE_BIG_SNORLAX, 10, 41, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX
+	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
+	person_event SPRITE_FISHER, 11, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9f43, -1
+	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
+	person_event SPRITE_TEACHER, 24, 24, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f50, -1
+	person_event SPRITE_GRAMPS, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9f53, -1
+	person_event SPRITE_GRAMPS, 31, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9f56, -1
+	person_event SPRITE_YOUNGSTER, 13, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9f59, -1
+	person_event SPRITE_YOUNGSTER, 33, 27, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9f5c, -1
+	person_event SPRITE_TEACHER, 13, 12, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f5f, -1
+	person_event SPRITE_LASS, 22, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x1a9f62, -1
+	person_event SPRITE_BIG_SNORLAX, 10, 45, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX

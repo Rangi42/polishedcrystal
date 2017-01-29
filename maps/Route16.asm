@@ -15,7 +15,7 @@ Route16_MapScriptHeader:
 
 UnknownScript_0x1ad318:
 	checkcode VAR_YCOORD
-	if_less_than $5, UnknownScript_0x1ad328
+	if_less_than $a, UnknownScript_0x1ad328
 	checkcode VAR_XCOORD
 	if_greater_than $d, UnknownScript_0x1ad328
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -102,20 +102,20 @@ Route16_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $1, $3, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
-	warp_def $6, $e, 3, ROUTE_16_GATE
-	warp_def $7, $e, 4, ROUTE_16_GATE
-	warp_def $6, $9, 1, ROUTE_16_GATE
-	warp_def $7, $9, 2, ROUTE_16_GATE
+	warp_def $1, $5, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
+	warp_def $a, $e, 3, ROUTE_16_GATE
+	warp_def $b, $e, 4, ROUTE_16_GATE
+	warp_def $a, $9, 1, ROUTE_16_GATE
+	warp_def $b, $9, 2, ROUTE_16_GATE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 1
-	signpost 5, 5, SIGNPOST_READ, CyclingRoadSign
+	signpost 9, 5, SIGNPOST_READ, CyclingRoadSign
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_CUT_TREE, 4, 15, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16CutTree, EVENT_ROUTE_16_CUT_TREE
-	person_event SPRITE_OFFICER_F, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1
+	person_event SPRITE_CUT_TREE, 2, 17, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16CutTree, EVENT_ROUTE_16_CUT_TREE
+	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1

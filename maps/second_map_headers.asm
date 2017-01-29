@@ -203,10 +203,10 @@
 
 	map_header_2 Route16, ROUTE_16, $f, SOUTH | EAST
 	connection south, ROUTE_17, Route17, 0, 0, 10
-	connection east, CELADON_CITY, CeladonCity, -3, 6, 12
+	connection east, CELADON_CITY, CeladonCity, -3, 7, 10
 
 	map_header_2 CeladonCity, CELADON_CITY, $f, WEST | EAST
-	connection west, ROUTE_16, Route16, 9, 0, 9
+	connection west, ROUTE_16, Route16, 10, 0, 8
 	connection east, ROUTE_7, Route7, 5, 0, 9
 
 	map_header_2 Route7, ROUTE_7, $f, WEST | EAST

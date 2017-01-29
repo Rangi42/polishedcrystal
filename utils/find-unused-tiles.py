@@ -97,6 +97,8 @@ def read_used_block_ids():
 		block_data_name = map_block_data_exceptions.get(map_name, map_name)
 		with open(code_directory + block_filename_fmt % block_data_name, 'rb') as f:
 			used_block_ids = {pretty(ord(b)) for b in f.read()}
+			if tileset_id == 'kanto1' and ('67' in used_block_ids or '6a' in used_block_ids):
+				print(map_name)
 			tileset_used_block_ids[tileset_id].update(used_block_ids)
 
 def read_used_block_ids_2():
