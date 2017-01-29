@@ -1032,7 +1032,7 @@ JohtoBadgePalettes:
 
 _CGB_TrainerCard2:
 	ld de, UnknBGPals
-	xor a ; CHRIS ; also MISTY
+	xor a ; CHRIS
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, KRIS
@@ -1047,13 +1047,13 @@ _CGB_TrainerCard2:
 	ld a, LT_SURGE ; also ERIKA
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+	ld a, MISTY
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
 	ld a, JANINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, BLAINE
-	call GetTrainerPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	ld a, BLUE
+	ld a, BLUE ; also BLAINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -1097,7 +1097,7 @@ _CGB_TrainerCard2:
 	; Misty
 	hlcoord 10, 11, AttrMap
 	lb bc, 2, 4
-	ld a, $0
+	ld a, $5
 	call FillBoxCGB
 	; Erika
 	hlcoord 14, 11, AttrMap
@@ -1107,7 +1107,7 @@ _CGB_TrainerCard2:
 	; Janine
 	hlcoord 2, 14, AttrMap
 	lb bc, 2, 4
-	ld a, $5
+	ld a, $6
 	call FillBoxCGB
 	; Brock
 	hlcoord 6, 14, AttrMap
@@ -1117,7 +1117,7 @@ _CGB_TrainerCard2:
 	; Blaine
 	hlcoord 10, 14, AttrMap
 	lb bc, 2, 4
-	ld a, $6
+	ld a, $7
 	call FillBoxCGB
 	; Blue
 	hlcoord 14, 14, AttrMap
