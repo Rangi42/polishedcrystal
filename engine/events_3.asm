@@ -141,6 +141,15 @@ GiveFontOpaqueBackground:
 	ld a, b
 	or c
 	jr nz, .loop
+	ld hl, VTiles1 + $ff tiles
+	ld a, 8
+.loop2
+	ld [hl], $ff
+	inc hl
+	ld [hl], $0
+	inc hl
+	dec a
+	jr nz, .loop2
 	ret
 
 
