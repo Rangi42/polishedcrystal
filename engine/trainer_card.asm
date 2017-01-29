@@ -648,46 +648,45 @@ TrainerCard_JohtoBadgesOAM: ; 254c9
 
 	dw JohtoBadges
 
-	; Zephyrbadge
+	; Zephyr Badge
 	db $68, $18, 0
 	db $00, $20, $24, $20 | $80
 	db $00, $20, $24, $20 | $80
 
-	; Hivebadge
-	db $68, $38, 0
+	; Hive Badge
+	db $68, $38, 1
 	db $04, $20, $24, $20 | $80
 	db $04, $20, $24, $20 | $80
 
-	; Plainbadge
-	db $68, $58, 0
+	; Plain Badge
+	db $68, $58, 2
 	db $08, $20, $24, $20 | $80
 	db $08, $20, $24, $20 | $80
 
-	; Fogbadge
-	db $68, $78, 0
+	; Fog Badge
+	db $68, $78, 3
 	db $0c, $20, $24, $20 | $80
-	db $0c, $20, $24, $20 | $80
+	db $0c | $80, $20, $24, $20 | $80
 
-	; Mineralbadge
-	db $80, $38, 0
+	; Storm Badge
+	db $80, $38, 5
 	db $10, $20, $24, $20 | $80
-	db $10, $20, $24, $20 | $80
+	db $10 | $80, $20, $24, $20 | $80
 
-	; Stormbadge
-	db $80, $18, 0
+	; Mineral Badge
+	db $80, $18, 4
 	db $14, $20, $24, $20 | $80
 	db $14, $20, $24, $20 | $80
 
-	; Glacierbadge
-	db $80, $58, 0
+	; Glacier Badge
+	db $80, $58, 6
 	db $18, $20, $24, $20 | $80
 	db $18, $20, $24, $20 | $80
 
-	; Risingbadge
-	; X-flips on alternate cycles.
-	db $80, $78, 0
+	; Rising Badge
+	db $80, $78, 7
 	db $1c, $20, $24, $20 | $80
-	db $1c | $80, $20, $24, $20 | $80
+	db $1c, $20, $24, $20 | $80
 ; 25523
 
 TrainerCard_KantoBadgesOAM:
@@ -699,44 +698,43 @@ TrainerCard_KantoBadgesOAM:
 
 	dw KantoBadges
 
-	; Boulderbadge
+	; Boulder Badge
 	db $80, $38, 0
 	db $00, $20, $24, $20 | $80
 	db $00, $20, $24, $20 | $80
 
-	; Cascadebadge
-	db $68, $58, 0
+	; Cascade Badge
+	db $68, $58, 1
 	db $04, $20, $24, $20 | $80
 	db $04, $20, $24, $20 | $80
 
-	; Thunderbadge
-	db $68, $18, 0
+	; Thunder Badge
+	db $68, $18, 2
 	db $08, $20, $24, $20 | $80
 	db $08, $20, $24, $20 | $80
 
-	; Rainbowbadge
-	db $68, $78, 0
+	; Rainbow Badge
+	db $68, $78, 3
 	db $0c, $20, $24, $20 | $80
 	db $0c, $20, $24, $20 | $80
 
-	; Soulbadge
-	db $80, $18, 0
+	; Soul Badge
+	db $80, $18, 4
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
-	; Marshbadge
-	db $68, $38, 0
+	; Marsh Badge
+	db $68, $38, 5
 	db $14, $20, $24, $20 | $80
 	db $14, $20, $24, $20 | $80
 
-	; Volcanobadge
-	db $80, $58, 0
+	; Volcano Badge
+	db $80, $58, 6
 	db $18, $20, $24, $20 | $80
 	db $18, $20, $24, $20 | $80
 
-	; Earthbadge
-	; X-flips on alternate cycles.
-	db $80, $78, 0
+	; Earth Badge
+	db $80, $78, 7
 	db $1c, $20, $24, $20 | $80
 	db $1c | $80, $20, $24, $20 | $80
 

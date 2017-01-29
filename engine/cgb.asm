@@ -913,9 +913,13 @@ _CGB_TrainerCard: ; 9289
 	ld a, CLAIR
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $24
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
+
+	; Badges
+	ld hl, JohtoBadgePalettes
+	ld de, UnknOBPals
+	ld bc, 8 palettes
+	ld a, $5 ; BANK(UnknOBPals)
+	call FarCopyWRAM
 
 	; Border
 	hlcoord 0, 0, AttrMap
@@ -984,6 +988,48 @@ _CGB_TrainerCard: ; 9289
 	ret
 ; 9373
 
+JohtoBadgePalettes:
+; Zephyr Badge
+	RGB 31, 31, 31
+	RGB 21, 21, 24
+	RGB 15, 15, 18
+	RGB 00, 00, 00
+; Hive Badge
+	RGB 31, 31, 31
+	RGB 29, 20, 20
+	RGB 29, 00, 00
+	RGB 00, 00, 00
+; Plain Badge
+	RGB 31, 31, 31
+	RGB 29, 29, 29
+	RGB 27, 24, 00
+	RGB 00, 00, 00
+; Fog Badge
+	RGB 31, 31, 31
+	RGB 27, 27, 29
+	RGB 11, 10, 23
+	RGB 00, 00, 00
+; Storm Badge
+	RGB 31, 31, 31
+	RGB 27, 16, 08
+	RGB 12, 07, 04
+	RGB 00, 00, 00
+; Mineral Badge
+	RGB 31, 31, 31
+	RGB 23, 26, 29
+	RGB 15, 19, 23
+	RGB 00, 00, 00
+; Glacier Badge
+	RGB 31, 31, 31
+	RGB 19, 27, 30
+	RGB 00, 22, 26
+	RGB 00, 00, 00
+; Rising Badge
+	RGB 31, 31, 31
+	RGB 30, 09, 05
+	RGB 05, 05, 06
+	RGB 00, 00, 00
+
 _CGB_TrainerCard2:
 	ld de, UnknBGPals
 	xor a ; CHRIS ; also MISTY
@@ -1010,9 +1056,13 @@ _CGB_TrainerCard2:
 	ld a, BLUE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, $24
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
+
+	; Badges
+	ld hl, KantoBadgePalettes
+	ld de, UnknOBPals
+	ld bc, 8 palettes
+	ld a, $5 ; BANK(UnknOBPals)
+	call FarCopyWRAM
 
 	; Border
 	hlcoord 0, 0, AttrMap
@@ -1079,6 +1129,48 @@ _CGB_TrainerCard2:
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	ret
+
+KantoBadgePalettes:
+; Boulder Badge
+	RGB 31, 31, 31
+	RGB 23, 22, 22
+	RGB 14, 13, 13
+	RGB 00, 00, 00
+; Cascade Badge
+	RGB 31, 31, 31
+	RGB 19, 31, 30
+	RGB 00, 23, 30
+	RGB 00, 00, 00
+; Thunder Badge
+	RGB 31, 31, 31
+	RGB 31, 26, 05
+	RGB 31, 11, 00
+	RGB 00, 00, 00
+; Rainbow Badge
+	RGB 31, 31, 31
+	RGB 31, 31, 14
+	RGB 00, 29, 07
+	RGB 00, 00, 00
+; Marsh Badge
+	RGB 31, 31, 31
+	RGB 31, 20, 31
+	RGB 31, 10, 31
+	RGB 00, 00, 00
+; Soul Badge
+	RGB 31, 31, 31
+	RGB 31, 31, 15
+	RGB 29, 21, 04
+	RGB 00, 00, 00
+; Volcano Badge
+	RGB 31, 31, 31
+	RGB 31, 17, 23
+	RGB 31, 00, 06
+	RGB 00, 00, 00
+; Earth Badge
+	RGB 31, 31, 31
+	RGB 19, 30, 12
+	RGB 00, 16, 06
+	RGB 00, 00, 00
 
 _CGB0e: ; 9373
 	hlcoord 0, 0, AttrMap
