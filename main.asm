@@ -5357,7 +5357,7 @@ GetCardPic: ; 8833e
 	call FarCopyBytes
 	ld hl, CardGFX
 	ld de, VTiles2 tile $23
-	ld bc, 5 tiles
+	ld bc, 6 tiles
 	ld a, BANK(CardGFX)
 	call FarCopyBytes
 	ret
