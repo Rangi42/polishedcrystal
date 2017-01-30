@@ -29,14 +29,14 @@ EvolutionMoves::
 	db NO_MOVE      ; SANDSLASH
 	db NO_MOVE      ; NIDORAN_F
 	db NO_MOVE      ; NIDORINA
-	db NO_MOVE      ; NIDOQUEEN
+	db BODY_SLAM    ; NIDOQUEEN
 	db NO_MOVE      ; NIDORAN_M
 	db NO_MOVE      ; NIDORINO
-	db NO_MOVE      ; NIDOKING
+	db THRASH       ; NIDOKING
 	db NO_MOVE      ; CLEFAIRY
 	db NO_MOVE      ; CLEFABLE
 	db NO_MOVE      ; VULPIX
-	db NO_MOVE      ; NINETALES
+	db NASTY_PLOT   ; NINETALES
 	db NO_MOVE      ; JIGGLYPUFF
 	db NO_MOVE      ; WIGGLYTUFF
 	db NO_MOVE      ; ZUBAT
@@ -57,7 +57,7 @@ EvolutionMoves::
 	db NO_MOVE      ; MANKEY
 	db RAGE         ; PRIMEAPE
 	db NO_MOVE      ; GROWLITHE
-	db NO_MOVE      ; ARCANINE
+	db EXTREMESPEED ; ARCANINE
 	db NO_MOVE      ; POLIWAG
 	db NO_MOVE      ; POLIWHIRL
 	db SUBMISSION   ; POLIWRATH
@@ -89,7 +89,7 @@ EvolutionMoves::
 	db NO_MOVE      ; GRIMER
 	db NO_MOVE      ; MUK
 	db NO_MOVE      ; SHELLDER
-	db NO_MOVE      ; CLOYSTER
+	db SPIKES       ; CLOYSTER
 	db NO_MOVE      ; GASTLY
 	db SHADOW_CLAW  ; HAUNTER
 	db SHADOW_CLAW  ; GENGAR
@@ -236,17 +236,17 @@ EvolutionMoves::
 	db NO_MOVE      ; TYROGUE
 	db LOW_KICK     ; HITMONTOP
 	db NO_MOVE      ; ELEKID
-	db NO_MOVE      ; ELECTIVIRE
+	db CROSS_CHOP   ; ELECTIVIRE
 	db NO_MOVE      ; MAGBY
-	db NO_MOVE      ; MAGMORTAR
+	db FLASH_CANNON ; MAGMORTAR
 	db NO_MOVE      ; MILTANK
 	db NO_MOVE      ; BLISSEY
 	db NO_MOVE      ; RAIKOU
 	db NO_MOVE      ; ENTEI
 	db NO_MOVE      ; SUICUNE
 	db NO_MOVE      ; LARVITAR
-	db NO_MOVE      ; PUPITAR
-	db NO_MOVE      ; TYRANITAR
+	db HARDEN       ; PUPITAR
+	db STOMP        ; TYRANITAR
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH
 	db NO_MOVE      ; CELEBI
