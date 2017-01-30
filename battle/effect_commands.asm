@@ -1201,7 +1201,9 @@ BattleCommand_Stab: ; 346d2
 
 	; Apply type matchups
 	call BattleCheckTypeMatchup
+	; Store TypeModifier (handles effectiveness)
 	ld a, [wTypeMatchup]
+	ld [TypeModifier], a
 	and a
 	jr nz, .not_immune
 	; Immunities are treated as we missing and dealing 0 damage
@@ -1209,7 +1211,6 @@ BattleCommand_Stab: ; 346d2
 	xor a
 	ld [hli], a
 	ld [hl], a
-	ld [TypeModifier], a
 	; AttackMissed being nonzero can mean special immunity, so avoid overriding it
 	ld a, [AttackMissed]
 	and a
