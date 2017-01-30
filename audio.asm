@@ -196,14 +196,21 @@ INCLUDE "audio/music/oras/zinniabattle.asm"
 
 SECTION "Extra Songs 5", ROMX
 
-INCLUDE "audio/music/xy/titlescreen.asm"
-INCLUDE "audio/music/xy/bicycle.asm"
-INCLUDE "audio/music/xy/gymbattle.asm"
-INCLUDE "audio/music/sm/motherbeastbattle.asm"
+INCLUDE "audio/music/dppt/sunyshorecity.asm"
+INCLUDE "audio/music/dppt/route205.asm"
+INCLUDE "audio/music/dppt/starkmountain.asm"
 INCLUDE "audio/music/dppt/championbattle.asm"
 INCLUDE "audio/music/hgss/cianwoodcity.asm"
 INCLUDE "audio/music/bw/finalpokemon.asm"
 
+
+SECTION "Extra Songs 6", ROMX
+
+INCLUDE "audio/music/xy/titlescreen.asm"
+INCLUDE "audio/music/xy/laverrecity.asm"
+INCLUDE "audio/music/xy/bicycle.asm"
+INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 
 SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]

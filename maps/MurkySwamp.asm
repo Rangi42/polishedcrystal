@@ -1,13 +1,13 @@
 const_value set 2
 
-SouthIlexForest_MapScriptHeader:
+MurkySwamp_MapScriptHeader:
 .MapTriggers:
 	db 0
 
 .MapCallbacks:
 	db 0
 
-SouthIlexForest_MapEventHeader:
+MurkySwamp_MapEventHeader:
 	; filler
 	db 0, 0
 

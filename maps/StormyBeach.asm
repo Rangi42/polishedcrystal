@@ -13,8 +13,8 @@ StormyBeach_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $4, $1e, 1, SOUTH_ILEX_FOREST
-	warp_def $4, $1f, 2, SOUTH_ILEX_FOREST
+	warp_def $4, $1e, 1, MURKY_SWAMP
+	warp_def $4, $1f, 2, MURKY_SWAMP
 
 .XYTriggers:
 	db 0

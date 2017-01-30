@@ -1,13 +1,13 @@
 const_value set 2
 
-SunnyMeadow_MapScriptHeader:
+LuckyIsland_MapScriptHeader:
 .MapTriggers:
 	db 0
 
 .MapCallbacks:
 	db 0
 
-SunnyMeadow_MapEventHeader:
+LuckyIsland_MapEventHeader:
 	; filler
 	db 0, 0
 

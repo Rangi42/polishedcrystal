@@ -118,7 +118,10 @@
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS
 	dba Music_SpikyEaredPichuHGSS
+	dba Music_Route205DPPt
 	dba Music_Route210DPPt
+	dba Music_SunyshoreCityDPPt
+	dba Music_StarkMountainDPPt
 	dba Music_MountCoronetDPPt
 	dba Music_EternaForestDPPt
 	dba Music_GameCornerDPPt
@@ -132,6 +135,7 @@
 	dba Music_ChampionBattleB2W2
 	dba Music_TitleScreenXY
 	dba Music_BicycleXY
+	dba Music_LaverreCityXY
 	dba Music_PowerPlantXY
 	dba Music_RivalBattleXY
 	dba Music_GymLeaderBattleXY

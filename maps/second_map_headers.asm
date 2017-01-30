@@ -213,7 +213,7 @@
 	connection west, CELADON_CITY, CeladonCity, -3, 2, 15
 	connection east, SAFFRON_CITY, SaffronCity, -3, 3, 12
 
-	map_header_2 SunnyMeadow, SUNNY_MEADOW, $43, NORTH | WEST
+	map_header_2 LuckyIsland, LUCKY_ISLAND, $43, NORTH | WEST
 	connection north, ROUTE_13_EAST, Route13East, 0, 0, 23
 	connection west, ROUTE_14, Route14, 0, 0, 18
 
@@ -224,11 +224,11 @@
 	map_header_2 Route14, ROUTE_14, $43, NORTH | WEST | EAST
 	connection north, ROUTE_13_WEST, Route13West, 0, 0, 12
 	connection west, ROUTE_15, Route15, 9, 0, 9
-	connection east, SUNNY_MEADOW, SunnyMeadow, 0, 0, 16
+	connection east, LUCKY_ISLAND, LuckyIsland, 0, 0, 16
 
 	map_header_2 Route13East, ROUTE_13_EAST, $43, NORTH | SOUTH | WEST
 	connection north, ROUTE_12_SOUTH, Route12South, 13, 0, 10
-	connection south, SUNNY_MEADOW, SunnyMeadow, 0, 0, 23
+	connection south, LUCKY_ISLAND, LuckyIsland, 0, 0, 23
 	connection west, ROUTE_13_WEST, Route13West, 0, 0, 11
 
 	map_header_2 Route13West, ROUTE_13_WEST, $43, SOUTH | EAST
@@ -397,7 +397,7 @@
 	map_header_2 TeamRocketBaseB2F, TEAM_ROCKET_BASE_B2F, $0, 0
 	map_header_2 TeamRocketBaseB3F, TEAM_ROCKET_BASE_B3F, $0, 0
 	map_header_2 IlexForest, ILEX_FOREST, $5, 0
-	map_header_2 SouthIlexForest, SOUTH_ILEX_FOREST, $5, 0
+	map_header_2 MurkySwamp, MURKY_SWAMP, $5, 0
 	map_header_2 WarehouseEntrance, WAREHOUSE_ENTRANCE, $0, 0
 	map_header_2 UndergroundPathSwitchRoomEntrances, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, $0, 0
 	map_header_2 GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $0, 0

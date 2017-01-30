@@ -234,7 +234,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_34,                                   27, 10 ;  1
 	mapgroup ROUTE_34_COAST,                             34,  9 ;  2
 	mapgroup STORMY_BEACH,                               11, 22 ;  3
-	mapgroup SOUTH_ILEX_FOREST,                          16, 20 ;  4
+	mapgroup MURKY_SWAMP,                                16, 20 ;  4
 	mapgroup GOLDENROD_CITY,                             18, 22 ;  5
 	mapgroup GOLDENROD_GYM,                               9, 10 ;  6
 	mapgroup GOLDENROD_BIKE_SHOP,                         4,  4 ;  7
@@ -353,7 +353,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 24
 	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 25
 	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 26
-	mapgroup SUNNY_MEADOW,                               16, 23 ; 27
+	mapgroup LUCKY_ISLAND,                               16, 23 ; 27
 
 	newgroup                                                    ; 18
 
