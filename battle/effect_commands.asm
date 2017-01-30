@@ -1313,14 +1313,16 @@ CheckTypeMatchup:
 	; if the attack is ineffective, bypass ability checks
 	ld a, [wTypeMatchup]
 	and a
-	ret z
+	jr z, .end
 	farcall CheckNullificationAbilities
+.end
 	pop bc
 	pop de
 	pop hl
 	ret
 
 _CheckTypeMatchup: ; 347d3
+	push hl
 	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle powder moves
 	ld a, BATTLE_VARS_MOVE
@@ -1410,6 +1412,7 @@ _CheckTypeMatchup: ; 347d3
 	xor a
 	ld [wTypeMatchup], a
 .End:
+	pop hl
 	ret
 
 ; 34833
