@@ -209,6 +209,7 @@ ButterfreeEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE ; new move
 	db 1, STRING_SHOT ; new move
+	db 1, GUST
 	db 11, CONFUSION
 	db 13, POISONPOWDER
 	db 13, STUN_SPORE
@@ -1590,6 +1591,7 @@ DodrioEvosAttacks:
 	db 22, DOUBLE_KICK ; Double Hit → new move
 	db 26, AGILITY
 	db 29, DOUBLE_TEAM ; Uproar → TM move
+	db 31, TRI_ATTACK
 	db 34, TRIPLE_KICK ; Acupressure → new move
 	db 38, SWORDS_DANCE
 	db 43, HI_JUMP_KICK ; Jump Kick → similar move
@@ -3178,6 +3180,7 @@ LedybaEvosAttacks:
 
 LedianEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, SWORDS_DANCE ; TM move
 	db 1, TACKLE
 	db 5, SUPERSONIC
 	db 8, SWIFT
@@ -3576,6 +3579,7 @@ SunfloraEvosAttacks:
 	db 1, SPLASH ; Growth → Hoppip move
 	db 1, TACKLE ; Pound → similar move
 	db 1, ABSORB
+	db 1, EMBER
 	db 4, GROWTH ; Ingrain → Growth
 	db 7, DEFENSE_CURL ; Grass Whistle → TM move
 	db 10, MEGA_DRAIN
@@ -4858,3 +4862,7 @@ PorygonZEvosAttacks:
 	db 62, ZAP_CANNON
 	db 67, HYPER_BEAM
 	db 0 ; no more level-up moves
+
+
+INCLUDE "data/evolution_moves.asm"
+
