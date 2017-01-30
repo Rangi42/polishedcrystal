@@ -26,7 +26,7 @@ EvolutionMoves::
 	db NO_MOVE      ; PIKACHU
 	db NO_MOVE      ; RAICHU
 	db NO_MOVE      ; SANDSHREW
-	db NO_MOVE      ; SANDSLASH
+	db SLASH        ; SANDSLASH
 	db NO_MOVE      ; NIDORAN_F
 	db NO_MOVE      ; NIDORINA
 	db BODY_SLAM    ; NIDOQUEEN

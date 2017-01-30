@@ -502,9 +502,9 @@ SandslashEvosAttacks:
 	db 14, MAGNITUDE
 	db 17, SWIFT
 	db 20, FURY_SWIPES
-	db 22, SUBMISSION ; Crush Claw → RBY TM move
+	db 22, SLASH ; Crush Claw → Slash
 	db 24, SUPER_FANG ; Sand Tomb → HGSS tutor move
-	db 28, SLASH
+	db 28, SUBMISSION ; Slash → RBY TM move
 	db 33, DIG
 	db 38, METAL_CLAW ; Gyro Ball → TM move
 	db 43, SWORDS_DANCE
