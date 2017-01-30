@@ -278,8 +278,183 @@ ImposterAbility:
 	jp EnableAnimations
 
 AnticipationAbility:
-ForewarnAbility:
+	; Anticipation considers special types (just Hidden Power is applicable here) as
+	; whatever type they are listed as (e.g. HP is Normal). It will also (as of 5gen)
+	; treat Counter/Mirror Coat (and Metal Burst) as attacking moves of their type.
+	; It also ignores Pixilate.
+	ld a, [hBattleTurn]
+	and a
+	ld hl, EnemyMonMoves
+	jr z, .got_move_ptr
+	ld hl, BattleMonMoves
+.got_move_ptr
+	; Since Anticipation can run in the middle of a turn and we don't want to ruin the
+	; opponent's move struct, save the current move of it to be reapplied afterwards.
+	farcall BattleCommand_SwitchTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	push af
+	ld b, NUM_MOVES
+.loop
+	; a mon can have less than 4 moves
+	ld a, [hli]
+	and a
+	jr z, .done
+	; copy the current move into the move structure to make CheckTypeMatchup happy
+	push hl
+	push bc
+	dec a
+	ld hl, Moves
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, [hBattleTurn]
+	and a
+	ld de, wPlayerMoveStruct
+	jr z, .got_move_struct
+	ld de, wEnemyMoveStruct
+.got_move_struct
+	ld a, BANK(Moves)
+	call FarCopyBytes
+	; Ignore status moves. Don't ignore Counter/Mirror Coat (counterintuitive)
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	cp STATUS
+	jr z, .end_of_loop
+	; If the move is super effective, shudder
+	farcall BattleCheckTypeMatchup
+	ld a, [wTypeMatchup]
+	cp SUPER_EFFECTIVE
+	jr nc, .shudder
+.end_of_loop
+	pop bc
+	pop hl
+	dec b
+	jr nz, .loop
+	jr .done
+.shudder
+	pop bc
+	pop hl
+	call ShowEnemyAbilityActivation
+	ld hl, ShudderedText
+	call StdBattleTextBox
+.done
+	; now restore the move struct
+	pop af
+	dec a
+	ld hl, Moves
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, [hBattleTurn]
+	and a
+	ld de, wPlayerMoveStruct
+	jr z, .got_move_struct2
+	ld de, wEnemyMoveStruct
+.got_move_struct2
+	ld a, BANK(Moves)
+	call FarCopyBytes
+	farcall BattleCommand_SwitchTurn
 	ret
+
+ForewarnAbility:
+; A note on moves with non-regular damage: Bulbapedia and Showdown has conflicting info on
+; what power these moves actually have. I am using Showdown numbers here which assigns
+; 160 to counter moves and 80 to everything else with nonstandard base power.
+	ld a, [hBattleTurn]
+	and a
+	ld hl, EnemyMonMoves
+	jr z, .got_move_ptr
+	ld hl, BattleMonMoves
+.got_move_ptr
+	ld a, NUM_MOVES + 1
+	ld [Buffer1], a ; iterator
+	xor a
+	ld [Buffer2], a ; used when randomizing between equal-power moves
+	ld [Buffer3], a ; highest power move index
+	ld [Buffer4], a	; power of said move for comparing
+.loop
+	ld a, [Buffer1]
+	dec a
+	jr z, .done
+	ld [Buffer1], a
+	; a mon can have less than 4 moves
+	ld a, [hli]
+	and a
+	jr z, .done
+	push hl
+	; Check for special cases
+	ld de, 1
+	ld hl, DynamicPowerMoves
+	call IsInArray
+	pop hl
+	jr nc, .not_special
+	; Counter/Mirror Coat are regarded as 160BP moves, everything else as 80BP
+	ld b, a
+	ld c, 160
+	cp COUNTER
+	jr z, .compare_power
+	cp MIRROR_COAT
+	jr z, .compare_power
+	ld c, 80
+	jr .compare_power
+.not_special
+	ld b, a
+	dec a
+	push hl
+	ld hl, Moves + MOVE_POWER
+	push bc
+	call GetMoveAttr
+	pop bc
+	pop hl
+	ld c, a
+	; Status moves have 0 power
+	and a
+	jr z, .loop
+.compare_power
+	; b: current move ID, c: current move power
+	ld a, [Buffer4]
+	cp c
+	jr z, .randomize
+	jr nc, .loop
+	; This move has higher BP, reset the random range
+	xor a
+	ld [Buffer2], a
+	jr .replace
+.randomize
+	; Move power was equal: randomize. This is done as follows as to give even results:
+	; 2 moves share power: 2nd move replaces 1/2 of the time
+	; 3 moves share power: 3rd move replaces 2/3 of the time
+	; 4 moves share power: 4th move replaces 3/4 of the time
+	ld a, [Buffer2]
+	inc a
+	ld [Buffer2], a
+	ld d, a
+	call BattleRandom
+	cp 1 + (50 percent)
+	jr nc, .replace
+	dec d
+	jr z, .loop
+	cp 1 + (66 percent)
+	jr nc, .replace
+	dec d
+	jr z, .loop
+	cp 1 + (75 percent)
+	jr c, .loop
+.replace
+	ld a, b
+	ld [Buffer3], a
+	ld a, c
+	ld [Buffer4], a
+	jr .loop
+.done
+	; Check if we have an attacking move in first place
+	ld a, [Buffer3]
+	and a
+	ret z
+	call ShowAbilityActivation
+	ld a, [Buffer3]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	ld hl, ForewarnText
+	jp StdBattleTextBox
 
 FriskAbility:
 	farcall GetOpponentItem

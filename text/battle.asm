@@ -1388,6 +1388,21 @@ DampAbilityText:
 	cont "the explosion!"
 	prompt
 
+ShudderedText:
+; since the ability works with the opponent move data,
+; it is on the opponent turn mostly
+	text "<TARGET>"
+	line "shuddered!"
+	prompt
+
+ForewarnText: ; 0x80f02
+	text "<TARGET>"
+	line "has"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
 ScaredText:
 	text "<USER> is too"
 	line "scared to move!"

@@ -1983,7 +1983,7 @@ GetThirdMaxHP::
 ; during arithmetic chains (pinch abilities)
 	push hl
 	push de
-	ld hl, hProduct
+	ld hl, hDividend
 	ld a, [hl]
 	ld d, a
 	ld [hl], 0
@@ -2010,12 +2010,15 @@ GetThirdMaxHP::
 	ld a, 3
 	ld [hDivisor], a
 	ld b, 4
+	push de
 	call Divide
+	pop de
 	ld [hQuotient + 2], a
 	ld c, a
 	ld [hQuotient + 1], a
 	ld b, a
 	ld a, e
+	ld hl, hDividend + 3
 	ld [hld], a
 	ld a, d
 	ld [hld], a

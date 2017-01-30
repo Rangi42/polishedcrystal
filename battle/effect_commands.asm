@@ -1190,7 +1190,7 @@ BattleCommand_Stab: ; 346d2
 ; Also handles type matchups and fire/water in sun/rain
 ; Uses an one-byte var to finally use for damage calculation. Max/min listed in case
 ; future extension is done to keep potential overflow/rounding errors in mind.
-; Min value: $04 (quad-resist, no STAB, bad weather modifier)
+; Min value: $02 (quad-resist, no STAB, bad weather modifier)
 ; Base value: $10
 ; Max value: $c0 (quad-weak, STAB, good weather modifier
 	; Struggle doesn't apply STAB or matchups
@@ -1201,7 +1201,9 @@ BattleCommand_Stab: ; 346d2
 
 	; Apply type matchups
 	call BattleCheckTypeMatchup
+	; Store TypeModifier (handles effectiveness)
 	ld a, [wTypeMatchup]
+	ld [TypeModifier], a
 	and a
 	jr nz, .not_immune
 	; Immunities are treated as we missing and dealing 0 damage
@@ -1209,7 +1211,6 @@ BattleCommand_Stab: ; 346d2
 	xor a
 	ld [hli], a
 	ld [hl], a
-	ld [TypeModifier], a
 	; AttackMissed being nonzero can mean special immunity, so avoid overriding it
 	ld a, [AttackMissed]
 	and a
