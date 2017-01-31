@@ -25,7 +25,7 @@ def convert_to_html(content):
 		'<table border="1" cellpadding="10" cellspacing="0">\n<tr>\n<td>\n')
 	n = 0
 	for line in content.split('\n'):
-		line = line.strip()
+		line = line.split(';')[0].lstrip()
 		if line.startswith('RGB'):
 			rgb = tuple(int(c, 10) * 8 for c in line[3:].split(','))
 			html += ('<span style="background: rgb(%d, %d, %d);">&nbsp;&nbsp;'

@@ -93,7 +93,7 @@ Function6454:: ; 6454
 	xor a
 	ld [hBGMapMode], a
 	ld [hWY], a
-	farcall Function64db ; no need to farcall
+	call Function64db
 	ld a, VBGMap0 / $100
 	call .Function64b9
 	xor a

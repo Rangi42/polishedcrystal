@@ -81,17 +81,48 @@ class Tileset(object):
 			writer.write(file, chunk(rgb_bytes(self.data), self.w * 3))
 
 class PaletteMap(object):
-	colors = {
-		'GRAY': [(56,56,56), (104,104,104), (168,168,168), (216,248,216)],
-		'RED': [(56,56,56), (240,80,48), (248,152,192), (216,248,216)],
-		'GREEN': [(56,56,56), (40,112,0), (96,200,8), (176,248,80)],
-		'WATER': [(56,56,56), (104,96,248), (144,152,248), (184,184,248)],
-		'YELLOW': [(56,56,56), (248,128,8), (248,248,56), (216,248,216)],
-		'BROWN': [(56,56,56), (160,120,24), (192,144,56), (216,248,216)],
-		'ROOF': [(56,56,56), (120,40,168), (120,112,224), (216,248,216)],
+	day_colors = {
+		'GRAY': [(27*8,31*8,27*8), (21*8,21*8,21*8), (13*8,13*8,13*8), (7*8,7*8,7*8)],
+		'RED': [(27*8,31*8,27*8), (31*8,19*8,24*8), (30*8,10*8,6*8), (7*8,7*8,7*8)],
+		'GREEN': [(22*8,31*8,10*8), (12*8,25*8,1*8), (5*8,14*8,0*8), (7*8,7*8,7*8)],
+		'WATER': [(23*8,23*8,31*8), (18*8,19*8,31*8), (13*8,12*8,31*8), (7*8,7*8,7*8)],
+		'YELLOW': [(27*8,31*8,27*8), (31*8,31*8,7*8), (31*8,16*8,1*8), (7*8,7*8,7*8)],
+		'BROWN': [(27*8,31*8,27*8), (24*8,18*8,7*8), (20*8,15*8,3*8), (7*8,7*8,7*8)],
+		'ROOF': [(27*8,31*8,27*8), (15*8,31*8,31*8), (5*8,17*8,31*8), (7*8,7*8,7*8)],
+		'TEXT': [(31*8,31*8,16*8), (31*8,31*8,16*8), (14*8,9*8,0*8), (0*8,0*8,0*8)]
 	}
 
-	def __init__(self, filename):
+	nite_colors = {
+		'GRAY': [(15*8,14*8,24*8),(11*8,11*8,19*8),(7*8,7*8,12*8),(0*8,0*8,0*8)],
+		'RED': [(15*8,14*8,24*8),(14*8,7*8,17*8),(13*8,0*8,8*8),(0*8,0*8,0*8)],
+		'GREEN': [(15*8,14*8,24*8),(8*8,13*8,19*8),(0*8,11*8,13*8),(0*8,0*8,0*8)],
+		'WATER': [(15*8,13*8,27*8),(10*8,9*8,20*8),(4*8,3*8,18*8),(0*8,0*8,0*8)],
+		'YELLOW': [(30*8,30*8,11*8),(16*8,14*8,18*8),(16*8,14*8,10*8),(0*8,0*8,0*8)],
+		'BROWN': [(15*8,14*8,24*8),(12*8,9*8,15*8),(8*8,4*8,5*8),(0*8,0*8,0*8)],
+		'ROOF': [(15*8,14*8,24*8),(13*8,12*8,23*8),(11*8,9*8,20*8),(0*8,0*8,0*8)],
+		'TEXT': [(31*8,31*8,16*8),(31*8,31*8,16*8),(14*8,9*8,0*8),(0*8,0*8,0*8)]
+	}
+
+	indoor_colors = {
+		'GRAY': [(30*8,28*8,26*8), (19*8,19*8,19*8), (13*8,13*8,13*8), (7*8,7*8,7*8)],
+		'RED': [(30*8,28*8,26*8), (31*8,19*8,24*8), (30*8,10*8,6*8), (7*8,7*8,7*8)],
+		'GREEN': [(18*8,24*8,9*8), (15*8,20*8,1*8), (9*8,13*8,0*8), (7*8,7*8,7*8)],
+		'WATER': [(30*8,28*8,26*8), (15*8,16*8,31*8), (9*8,9*8,31*8), (7*8,7*8,7*8)],
+		'YELLOW': [(30*8,28*8,26*8), (31*8,31*8,7*8), (31*8,16*8,1*8), (7*8,7*8,7*8)],
+		'BROWN': [(26*8,24*8,17*8), (21*8,17*8,7*8), (16*8,13*8,3*8), (7*8,7*8,7*8)],
+		'ROOF': [(30*8,28*8,26*8), (17*8,19*8,31*8), (14*8,16*8,31*8), (7*8,7*8,7*8)],
+		'TEXT': [(31*8,31*8,16*8), (31*8,31*8,16*8), (14*8,9*8,0*8), (0*8,0*8,0*8)]
+	}
+
+	day_tilesets = {'faraway', 'johto1', 'johto2', 'johto3', 'kanto1', 'kanto2',
+		'park', 'safari', 'shamouti'}
+
+	nite_tilesets = {'cave', 'dark_cave', 'forest', 'rock_tunnel'}
+
+	def __init__(self, filename, key):
+		colors = (PaletteMap.day_colors if key in PaletteMap.day_tilesets
+			else PaletteMap.nite_colors if key in PaletteMap.nite_tilesets
+			else PaletteMap.indoor_colors)
 		self.data = []
 		with open(filename, 'r') as file:
 			for line in file:
@@ -99,10 +130,10 @@ class PaletteMap(object):
 				if line.startswith('tilepal'):
 					eight = line[7:].split(',')[-8:]
 					assert len(eight) == 8
-					self.data.extend([PaletteMap.colors[c.strip()] for c in eight])
+					self.data.extend([colors[c.strip()][::-1] for c in eight])
 
 	def color4(self, i):
-		return self.data[i]
+		return self.data[i] if i < len(self.data) else [default_rgb] * 4
 
 class Metatiles(object):
 	t_per_m = 4
@@ -152,8 +183,8 @@ class Metatiles(object):
 			writer = png.Writer(overall_w, overall_h)
 			writer.write(file, chunk(rgb_bytes(data), overall_w * 3))
 
-def process(tileset_name, palette_map_name, metatiles_name):
-	palette_map = PaletteMap(palette_map_name)
+def process(key, tileset_name, palette_map_name, metatiles_name):
+	palette_map = PaletteMap(palette_map_name, key)
 	tileset = Tileset(tileset_name, palette_map)
 	metatiles = Metatiles(metatiles_name, tileset)
 
@@ -173,6 +204,7 @@ def main():
 		palette_map = 'tilesets/%s_palette_map.asm' % name
 		metatiles = 'tilesets/%s_metatiles.bin' % name
 	elif len(sys.argv) == 4:
+		name = None
 		tileset = sys.argv[1]
 		palette_map = sys.argv[2]
 		metatiles = sys.argv[3]
@@ -196,7 +228,7 @@ def main():
 	elif tileset.endswith('.2bpp.lz'):
 		tileset = tileset[:-8] + '.png'
 
-	process(tileset, palette_map, metatiles)
+	process(name, tileset, palette_map, metatiles)
 
 if __name__ == '__main__':
 	main()
