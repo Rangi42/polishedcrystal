@@ -4523,14 +4523,7 @@ BattleCommand_HealBell: ; 35cc9
 	call AnimateCurrentMove
 
 	ld hl, BellChimedText
-	call StdBattleTextBox
-
-	ld a, [hBattleTurn]
-	and a
-	jp z, CalcPlayerStats
-	jp CalcEnemyStats
-
-; 35d00
+	jp StdBattleTextBox
 
 
 FarPlayBattleAnimation: ; 35d00
@@ -8077,9 +8070,6 @@ BattleCommand_Heal: ; 3713e
 	ld hl, RestedText
 .no_status_to_heal
 	call StdBattleTextBox
-	; potential healed burn
-	call CalcPlayerStats
-	call CalcEnemyStats
 	farcall GetMaxHP
 	jr .finish
 .not_rest
