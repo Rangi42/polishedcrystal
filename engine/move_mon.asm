@@ -1552,7 +1552,7 @@ CalcPkmnStatC: ; e17b
 	call Divide
 	ld a, c
 	cp STAT_HP
-	ld a, 5
+	ld a, STAT_MIN_NORMAL
 	jr nz, .not_hp
 	ld a, [CurPartyLevel]
 	ld b, a
@@ -1565,7 +1565,7 @@ CalcPkmnStatC: ; e17b
 	ld [hMultiplicand + 1], a
 
 .no_overflow_3
-	ld a, 10
+	ld a, STAT_MIN_HP
 
 .not_hp
 	ld b, a

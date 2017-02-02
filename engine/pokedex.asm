@@ -462,12 +462,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	ret
 
 .Cry: ; 40340
-	call Pokedex_GetSelectedMon
-	ld a, [wd265]
-	call GetCryIndex
-	ld e, c
-	ld d, b
-	call PlayCryHeader
+	ld a, [CurPartySpecies]
+	call PlayCry
 	ret
 
 Pokedex_RedisplayDexEntry: ; 4038d
