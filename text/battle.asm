@@ -1319,6 +1319,14 @@ BecameHealthyText:
 	line "became healthy!"
 	prompt
 
+NotifyAirBalloonText:
+	text "<USER>"
+	line "floats in the air"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
 TraceActivationText:
 	text "<USER>"
 	line "traced"

@@ -5128,8 +5128,6 @@ BattleCommand_BurnTarget: ; 3608c
 	call GetBattleVarAddr
 	set BRN, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
 	ld de, ANIM_BRN
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
@@ -6192,8 +6190,6 @@ BattleCommand_Burn:
 	call GetBattleVarAddr
 	set BRN, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
 	call UpdateBattleHuds
 	ld hl, WasBurnedText
 	call StdBattleTextBox
@@ -6257,36 +6253,11 @@ CalcPlayerStats: ; 365d7
 	ld hl, PlayerAtkLevel
 	ld de, PlayerStats
 	ld bc, BattleMonAttack
-
-	call CalcStats
-
-	call BattleCommand_SwitchTurn
-
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
-
-	jp BattleCommand_SwitchTurn
-
-; 365fd
-
-
+	jr CalcStats
 CalcEnemyStats: ; 365fd
 	ld hl, EnemyAtkLevel
 	ld de, EnemyStats
 	ld bc, EnemyMonAttack
-
-	call CalcStats
-
-	call BattleCommand_SwitchTurn
-
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
-
-	jp BattleCommand_SwitchTurn
-
-; 3661d
-
-
 CalcStats: ; 3661d
 	ld a, 5
 .loop

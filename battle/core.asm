@@ -4168,7 +4168,6 @@ InitBattleMon: ; 3da0d
 	ld de, PlayerStats
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
 	call CopyBytes
-	call ApplyStatusEffectOnPlayerStats
 	jp ResetPlayerAbility
 ; 3da74
 
@@ -4273,7 +4272,6 @@ InitEnemyMon: ; 3dabd
 	ld de, EnemyStats
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
 	call CopyBytes
-	call ApplyStatusEffectOnEnemyStats
 	ld hl, BaseType1
 	ld de, EnemyMonType1
 	ld a, [hli]
@@ -4473,8 +4471,10 @@ SpikesDamage_CheckMoldBreaker:
 SpikesDamage: ; 3dc23
 	ld a, BATTLE_VARS_ABILITY
 	cp LEVITATE
-	ret z
+	jr z, HandleAirBalloon ; still print the message even if we have levitate
 SpikesDamage_SkipLevitate:
+	call HandleAirBalloon
+	ret z
 	ld a, BATTLE_VARS_ABILITY
 	cp MAGIC_GUARD
 	ret z
@@ -4512,6 +4512,20 @@ SpikesDamage_SkipLevitate:
 .hl
 	jp [hl]
 ; 3dc5b
+
+HandleAirBalloon:
+; prints air balloon msg and returns z if we have air balloon
+	call GetUserItem
+	ld a, b
+	cp HELD_AIR_BALLOON
+	ret nz
+	ld a, [hl]
+	ld [wd265], a
+	call GetItemName
+	ld hl, NotifyAirBalloonText
+	call StdBattleTextBox
+	xor a
+	ret
 
 PursuitSwitch: ; 3dc5b
 	ld a, BATTLE_VARS_MOVE
@@ -7328,66 +7342,6 @@ BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
 ; 3ec2c
 
 
-ApplyStatusEffectOnPlayerStats: ; 3ec2c
-	ld a, 1
-	jr ApplyStatusEffectOnStats
-; 3ec30
-
-ApplyStatusEffectOnEnemyStats: ; 3ec30
-	xor a
-; 3ec31
-
-ApplyStatusEffectOnStats: ; 3ec31
-	ld [hBattleTurn], a
-	jp ApplyBrnEffectOnAttack
-; 3ec39
-
-ApplyBrnEffectOnAttack: ; 3ec76
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp GUTS
-	ret z
-	ld a, [hBattleTurn]
-	and a
-	jr z, .enemy
-	ld a, [BattleMonStatus]
-	and 1 << BRN
-	ret z
-	ld hl, BattleMonAttack + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .player_ok
-	ld b, $1 ; min attack
-
-.player_ok
-	ld [hl], b
-	ret
-
-.enemy
-	ld a, [EnemyMonStatus]
-	and 1 << BRN
-	ret z
-	ld hl, EnemyMonAttack + 1
-	ld a, [hld]
-	ld b, a
-	ld a, [hl]
-	srl a
-	rr b
-	ld [hli], a
-	or b
-	jr nz, .enemy_ok
-	ld b, $1 ; min attack
-
-.enemy_ok
-	ld [hl], b
-	ret
-; 3ecab
-
 ApplyStatLevelMultiplierOnAllStats: ; 3ecab
 ; Apply StatLevelMultipliers on all 5 Stats
 	ld c, 0
@@ -7906,7 +7860,6 @@ GiveExperiencePoints: ; 3ee3b
 	xor a
 	ld [wd265], a
 	call ApplyStatLevelMultiplierOnAllStats
-	farcall ApplyStatusEffectOnPlayerStats
 	farcall UpdatePlayerHUD
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
