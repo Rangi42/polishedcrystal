@@ -5879,6 +5879,14 @@ MoveSelectionScreen: ; 3e4bc
 	ld hl, BattleText_TheMoveIsDisabled
 	jr .place_textbox_start_over
 
+.choiced
+	ld hl, BattleText_ItemOnlyAllowsMove
+	jr .place_textbox_start_over
+
+.assault_vest
+	ld hl, BattleText_ItemPreventsStatusMoves
+	jr .place_textbox_start_over
+
 .no_pp_left
 	ld hl, BattleText_TheresNoPPLeftForThisMove
 
