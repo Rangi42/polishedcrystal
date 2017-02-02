@@ -426,18 +426,10 @@ ForewarnAbility:
 	ld a, [Buffer2]
 	inc a
 	ld [Buffer2], a
-	ld d, a
-	call BattleRandom
-	cp 1 + (50 percent)
-	jr c, .replace
-	dec d
+	inc a
+	call BattleRandomRange
+	and a
 	jr z, .loop
-	cp 1 + (66 percent)
-	jr c, .replace
-	dec d
-	jr z, .loop
-	cp 1 + (75 percent)
-	jr nc, .loop
 .replace
 	ld a, b
 	ld [Buffer3], a
