@@ -278,10 +278,10 @@ ImposterAbility:
 	jp EnableAnimations
 
 AnticipationAbility:
-	; Anticipation considers special types (just Hidden Power is applicable here) as
-	; whatever type they are listed as (e.g. HP is Normal). It will also (as of 5gen)
-	; treat Counter/Mirror Coat (and Metal Burst) as attacking moves of their type.
-	; It also ignores Pixilate.
+; Anticipation considers special types (just Hidden Power is applicable here) as
+; whatever type they are listed as (e.g. HP is Normal). It will also (as of 5gen)
+; treat Counter/Mirror Coat (and Metal Burst) as attacking moves of their type.
+; It also ignores Pixilate.
 	ld a, [hBattleTurn]
 	and a
 	ld hl, EnemyMonMoves
@@ -429,15 +429,15 @@ ForewarnAbility:
 	ld d, a
 	call BattleRandom
 	cp 1 + (50 percent)
-	jr nc, .replace
+	jr c, .replace
 	dec d
 	jr z, .loop
 	cp 1 + (66 percent)
-	jr nc, .replace
+	jr c, .replace
 	dec d
 	jr z, .loop
 	cp 1 + (75 percent)
-	jr c, .loop
+	jr nc, .loop
 .replace
 	ld a, b
 	ld [Buffer3], a
