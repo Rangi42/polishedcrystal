@@ -7240,15 +7240,13 @@ BattleCommand_TrapTarget: ; 36c2d
 .bypass_sub
 	push bc
 	call GetUserItem
-	ld a, [hl]
-	cp GRIP_CLAW
+	ld a, b
+	cp HELD_PROLONG_WRAP
 	pop bc
 	jr z, .seven_turns
 	call BattleRandom
 	and 1
-rept 5
-	inc a
-endr
+	add 4
 	jr .got_count
 .seven_turns
 	ld a, 7
@@ -8225,7 +8223,7 @@ BattleCommand_Screen: ; 372fc
 	inc bc ; LightScreenCount -> ReflectCount
 	ld hl, ReflectEffectText
 .set_timer
-	ld a, LIGHT_CLAY
+	ld a, HELD_PROLONG_SCREENS
 	call GetItemBoostedDuration
 	ld [bc], a
 	call AnimateCurrentMove
@@ -8241,11 +8239,12 @@ BattleCommand_Screen: ; 372fc
 GetItemBoostedDuration:
 	push bc
 	push hl
-	ld b, a
+	ld c, a
 	push bc
 	call GetUserItem
+	ld a, b
 	pop bc
-	ld a, [hl]
+	cp c
 	cp b
 	ld a, 5
 	jr nz, .got_duration
@@ -8333,11 +8332,26 @@ CheckSubstituteOpp_b:
 	ret
 
 CheckSubstituteOpp: ; 37378
-; returns z when not behind a sub (or if Infiltrator overrides it)
+; returns z when not behind a sub (or if overridden by Infiltrator or sound)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR
 	ret z
+	push bc
+	push de
+	push hl
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, SoundMoves
+	ld de, 1
+	call IsInArray
+	pop hl
+	pop de
+	pop bc
+	jr nc, .no_sound_move
+	xor a
+	ret
+.no_sound_move
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
@@ -9113,22 +9127,22 @@ BattleCommand_HiddenPower: ; 37be8
 
 BattleCommand_StartSun:
 	ld b, WEATHER_SUN
-	ld c, HEAT_ROCK
+	ld c, HELD_PROLONG_SUN
 	ld hl, SunGotBrightText
 	jr BattleCommand_StartWeather
 BattleCommand_StartRain:
 	ld b, WEATHER_RAIN
-	ld c, DAMP_ROCK
+	ld c, HELD_PROLONG_RAIN
 	ld hl, DownpourText
 	jr BattleCommand_StartWeather
 BattleCommand_StartSandstorm:
 	ld b, WEATHER_SANDSTORM
-	ld c, SMOOTH_ROCK
+	ld c, HELD_PROLONG_SANDSTORM
 	ld hl, SandstormBrewedText
 	jr BattleCommand_StartWeather
 BattleCommand_StartHail:
 	ld b, WEATHER_HAIL
-	ld c, ICY_ROCK
+	ld c, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 BattleCommand_StartWeather:
 	ld a, [Weather]

@@ -486,7 +486,7 @@ GetSpeed::
 	pop de ; needed early to check quick claw allowance
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
-	cp HELD_CHOICE_SCARF
+	cp HELD_CHOICE_SPD
 	jr z, .choice_scarf
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
