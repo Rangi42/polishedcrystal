@@ -45,8 +45,8 @@ const_value SET 1
 	const STAT_SDEF
 NUM_STATS EQU const_value
 
-STAT_MIN_NORMAL EQU 6
-STAT_MIN_HP EQU 11
+STAT_MIN_NORMAL EQU 5
+STAT_MIN_HP EQU 10
 
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs

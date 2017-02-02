@@ -1522,6 +1522,7 @@ CalcPkmnStatC: ; e17b
 
 .no_overflow_1
 	sla e
+	inc e
 	rl d
 	srl b
 	srl b
