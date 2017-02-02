@@ -1556,14 +1556,23 @@ BattleCommand_CheckHit: ; 34d32
 
 .got_acc_eva
 	; Handle stat modifiers
-	; Unaware ignores enemy stat changes
+	; Unaware ignores enemy stat changes, identification also does if above 0
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp UNAWARE
-	jr nz, .no_user_unaware
-	ld c, 7
+	jr z, .reset_evasion
 
-.no_user_unaware
+	; check Foresight
+	ld a, BATTLE_VARS_SUBSTATUS1_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IDENTIFIED, a
+	jr z, .check_opponent_unaware
+	ld a, c
+	cp 7
+	jr c, .check_opponent_unaware
+.reset_evasion
+	ld c, 7
+.check_opponent_unaware
 	call GetOpponentAbilityAfterMoldBreaker
 	cp UNAWARE
 	jr nz, .no_opponent_unaware
@@ -1611,13 +1620,6 @@ BattleCommand_CheckHit: ; 34d32
 	jr c, .accuracy_not_lowered
 	; No need to multiply/divide if acc=eva
 	jr z, .stat_changes_done
-
-	; If the target's evasion is greater than the user's accuracy,
-	; check the target's foresight status
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
-	call GetBattleVar
-	bit SUBSTATUS_IDENTIFIED, a
-	jr nz, .stat_changes_done
 
 .accuracy_not_lowered
 	; Multiply by min(acc-4,3)
