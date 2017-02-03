@@ -1466,7 +1466,7 @@ BattleCommand_DamageVariation: ; 34cfd
 	ret c
 
 .go
-; Start with the maximum damage.
+	; Start with the current (100%) damage.
 	xor a
 	ld [hMultiplicand + 0], a
 	dec hl
@@ -1475,23 +1475,20 @@ BattleCommand_DamageVariation: ; 34cfd
 	ld a, [hl]
 	ld [hMultiplicand + 2], a
 
-; Multiply by 85-100%...
-.loop
-	call BattleRandom
-	rrca
-	cp $d9 ; 85%
-	jr c, .loop
-
+	; Multiply by 85-100%...
+	ld a, 16
+	call BattleRandomRange
+	add 85
 	ld [hMultiplier], a
 	call Multiply
 
-; ...divide by 100%...
-	ld a, $ff ; 100%
+	; ...divide by 100%...
+	ld a, 100
 	ld [hDivisor], a
 	ld b, $4
 	call Divide
 
-; ...to get .85-1.00x damage.
+	; ...to get .85-1.00x damage.
 	ld a, [hQuotient + 1]
 	ld hl, CurDamage
 	ld [hli], a
@@ -2461,6 +2458,9 @@ BattleCommand_PostFaintEffects: ; 351c0
 
 BattleCommand_PostHitEffects: ; 35250
 ; previously buildopponentrage
+	call CheckSubstituteOpp
+	ret nz
+
 	ld a, [AttackMissed]
 	and a
 	ret nz
