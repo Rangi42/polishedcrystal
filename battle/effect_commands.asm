@@ -2473,18 +2473,9 @@ BattleCommand_PostHitEffects: ; 35250
 	bit SUBSTATUS_RAGE, a
 	ret z
 
-	ld de, wEnemyRageCounter
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player
-	ld de, wPlayerRageCounter
-.player
-	ld a, [de]
-	inc a
-	ret z
-	ld [de], a
-
 	call BattleCommand_SwitchTurn
+	call ResetMiss
+	call BattleCommand_AttackUp
 	ld hl, RageBuildingText
 	call StdBattleTextBox
 	jp BattleCommand_SwitchTurn
