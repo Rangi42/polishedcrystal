@@ -1051,7 +1051,7 @@ MapTextbox:: ; 269a
 
 	push hl
 	call SpeechTextBox
-	call Function2e31
+	call SafeUpdateSprites
 	ld a, 1
 	ld [hOAMUpdate], a
 	call ApplyTilemap

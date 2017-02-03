@@ -1096,7 +1096,7 @@ StartTitleScreen: ; 6219
 	call ClearScreen
 	call WaitBGMap2
 	xor a
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	ld [hSCX], a
 	ld [hSCY], a
 	ld a, $7
@@ -1211,7 +1211,7 @@ TitleScreenEntrance: ; 62bc
 	inc [hl]
 
 	xor a
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank

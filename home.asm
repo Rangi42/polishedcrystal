@@ -1787,7 +1787,7 @@ INCLUDE "home/battle.asm"
 
 Function3b0c:: ; 3b0c
 
-	ld a, [hFFC6]
+	ld a, [hLCDCPointer]
 	and a
 	ret z
 

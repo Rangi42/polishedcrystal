@@ -2726,7 +2726,7 @@ _UpdateSprites:: ; 5920
 	ret
 ; 5958
 
-Function5958: ; 5958
+ApplyBGMapAnchorToObjects: ; 5958
 	push hl
 	push de
 	push bc

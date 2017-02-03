@@ -9668,7 +9668,7 @@ InitBattleDisplay: ; 3fb6c
 	ld [rSVBK], a
 
 	ld hl, wDecompressScratch
-	ld bc, wBackupAttrMap - wDecompressScratch
+	ld bc, wScratchAttrMap - wDecompressScratch
 	ld a, " "
 	call ByteFill
 

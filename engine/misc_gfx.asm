@@ -19,11 +19,11 @@ Function104047: ; 104047
 
 .Function:
 	decoord 0, 0, AttrMap
-	ld hl, wBackupAttrMap
+	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	ld a, $1
 	ld [rVBK], a
-	ld hl, wBackupAttrMap
+	ld hl, wScratchAttrMap
 	call Function10419d
 	ret
 ; 104061
@@ -34,7 +34,7 @@ ReloadMapPart:: ; 104061
 
 .Function:
 	decoord 0, 0, AttrMap
-	ld hl, wBackupAttrMap
+	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	decoord 0, 0
 	ld hl, wDecompressScratch
@@ -45,7 +45,7 @@ ReloadMapPart:: ; 104061
 	push af
 	ld a, $1
 	ld [rVBK], a
-	ld hl, wBackupAttrMap
+	ld hl, wScratchAttrMap
 	call Function1041ad
 	xor a
 	ld [rVBK], a
@@ -63,7 +63,7 @@ Function104110:: ; 104110
 
 .Function:
 	decoord 0, 0, AttrMap
-	ld hl, wBackupAttrMap
+	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	decoord 0, 0
 	ld hl, wDecompressScratch
@@ -75,7 +75,7 @@ Function104110:: ; 104110
 	push af
 	ld a, $1
 	ld [rVBK], a
-	ld hl, wBackupAttrMap
+	ld hl, wScratchAttrMap
 	call Function1041b7
 	xor a
 	ld [rVBK], a

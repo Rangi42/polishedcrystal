@@ -5,7 +5,7 @@ StartMenu:: ; 125cd
 	ld de, SFX_MENU
 	call PlaySFX
 
-	farcall Function6454
+	farcall ReanchorBGMap_NoOAMUpdate
 
 	ld hl, StatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
@@ -20,9 +20,9 @@ StartMenu:: ; 125cd
 	ld [wMenuCursorBuffer], a
 	call MenuFunc_1e7f
 	call .DrawBugContestStatusBox
-	call Function2e31
-	call Function2e20
-	farcall Function64bf
+	call SafeUpdateSprites
+	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
+	farcall LoadFonts_NoOAMUpdate
 	call .DrawBugContestStatus
 	call UpdateTimePals
 	jr .Select

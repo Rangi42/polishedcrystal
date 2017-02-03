@@ -625,7 +625,7 @@ IntroScene5: ; e4a7a (39:4a7a)
 	call ClearTileMap
 	xor a
 	ld [hBGMapMode], a
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	ld a, $1
 	ld [rVBK], a
 	ld hl, IntroTilemap005
@@ -819,7 +819,7 @@ IntroScene8: ; e4bd3 (39:4bd3)
 IntroScene9: ; e4c04 (39:4c04)
 ; Set up the next scene (same bg).
 	xor a
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	call ClearSprites
 	hlcoord 0, 0, AttrMap
 	; first 12 rows have palette 1
@@ -893,7 +893,7 @@ IntroScene11: ; e4c86 (39:4c86)
 	call ClearTileMap
 	xor a
 	ld [hBGMapMode], a
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	ld a, $1
 	ld [rVBK], a
 	ld hl, IntroTilemap007
@@ -2094,7 +2094,7 @@ Intro_ResetLYOverrides: ; e5516 (39:5516)
 	pop af
 	ld [rSVBK], a
 	ld a, $43
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	ret
 
 Intro_PerspectiveScrollBG: ; e552f (39:552f)

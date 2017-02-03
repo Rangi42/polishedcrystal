@@ -244,7 +244,7 @@ MenuWriteText::
 	ld [hBGMapMode], a
 	call GetMenuIndexSet ; sort out the text
 	call Function1eda ; actually write it
-	call Function2e31
+	call SafeUpdateSprites
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1

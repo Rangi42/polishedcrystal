@@ -84,10 +84,10 @@ hFFC1              EQU $ffc1
 hFFC2              EQU $ffc2
 hMoneyTemp         EQU $ffc3
 
-hFFC6              EQU $ffc6
-hFFC7              EQU $ffc7
-hFFC8              EQU $ffc8
-hFFC9              EQU $ffc9
+hLCDCPointer       EQU $ffc6
+hLYOverrideStart   EQU $ffc7
+hLYOverrideEnd     EQU $ffc8
+
 hFFCA              EQU $ffca
 hLinkPlayerNumber  EQU $ffcb
 hFFCC              EQU $ffcc

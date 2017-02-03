@@ -250,7 +250,7 @@ Function104770: ; 104770 (41:4770)
 	ld [wBGMapAnchor], a
 	ld [hSCY], a
 	ld [hSCX], a
-	farcall Function5958
+	farcall ApplyBGMapAnchorToObjects
 	ld a, [rVBK]
 	push af
 	ld a, $1
@@ -322,7 +322,7 @@ RefreshMapSprites: ; 1047f0
 	jr nz, .skip
 	ld hl, VramState
 	set 0, [hl]
-	call Function2e31
+	call SafeUpdateSprites
 .skip
 	ld a, [wPlayerSpriteSetupFlags]
 	and %00011100

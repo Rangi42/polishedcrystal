@@ -39,9 +39,9 @@ Predef_StartBattle: ; 8c20f
 	call DmgToCgbBGPals
 	call DelayFrame
 	xor a
-	ld [hFFC6], a
-	ld [hFFC7], a
-	ld [hFFC8], a
+	ld [hLCDCPointer], a
+	ld [hLYOverrideStart], a
+	ld [hLYOverrideEnd], a
 	ld [hSCY], a
 
 	ld a, $1
@@ -54,7 +54,7 @@ Predef_StartBattle: ; 8c20f
 
 .InitGFX: ; 8c26d
 	ld a, [wLinkMode]
-	farcall Function6454
+	farcall ReanchorBGMap_NoOAMUpdate
 	call UpdateSprites
 	call DelayFrame
 	call .LoadPokeballTiles
@@ -295,11 +295,11 @@ StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
 	call StartTrainerBattle_NextScene
 
 	ld a, $43
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	xor a
-	ld [hFFC7], a
+	ld [hLYOverrideStart], a
 	ld a, $90
-	ld [hFFC8], a
+	ld [hLYOverrideEnd], a
 	xor a
 	ld [wcf64], a
 	ld [wcf65], a

@@ -1156,11 +1156,11 @@ BattleAnimFunction_0D: ; cd66a (33:566a)
 .zero
 	call BattleAnim_IncAnonJumptableIndex
 	ld a, $42
-	ld [hFFC6], a
+	ld [hLCDCPointer], a
 	ld a, $58
-	ld [hFFC7], a
+	ld [hLYOverrideStart], a
 	ld a, $5e
-	ld [hFFC8], a
+	ld [hLYOverrideEnd], a
 	ret
 
 .one
@@ -1174,7 +1174,7 @@ BattleAnimFunction_0D: ; cd66a (33:566a)
 	jr nc, .asm_cd69b
 	call BattleAnim_IncAnonJumptableIndex
 	xor a
-	ld [hFFC7], a
+	ld [hLYOverrideStart], a
 	ret
 
 .asm_cd69b
@@ -1193,7 +1193,7 @@ BattleAnimFunction_0D: ; cd66a (33:566a)
 	add [hl]
 	sub $10
 	ret c
-	ld [hFFC7], a
+	ld [hLYOverrideStart], a
 	ld hl, BATTLEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -1214,9 +1214,9 @@ BattleAnimFunction_0D: ; cd66a (33:566a)
 	cp $70
 	jr c, asm_cd6da
 	xor a
-	ld [hFFC6], a
-	ld [hFFC7], a
-	ld [hFFC8], a
+	ld [hLCDCPointer], a
+	ld [hLYOverrideStart], a
+	ld [hLYOverrideEnd], a
 .four
 	call DeinitBattleAnimation
 	ret
@@ -1227,7 +1227,7 @@ asm_cd6da: ; cd6da (33:56da)
 	ld [hl], a
 	sub $10
 	ret c
-	ld [hFFC7], a
+	ld [hLYOverrideStart], a
 	ret
 
 BattleAnimFunction_0E: ; cd6e3 (33:56e3)
