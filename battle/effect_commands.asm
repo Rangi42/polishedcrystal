@@ -2491,34 +2491,8 @@ BattleCommand_PostHitEffects: ; 35250
 
 
 BattleCommand_RageDamage: ; 3527b
-; ragedamage
-
-	ld a, [CurDamage]
-	ld h, a
-	ld b, a
-	ld a, [CurDamage + 1]
-	ld l, a
-	ld c, a
-	ld a, [hBattleTurn]
-	and a
-	ld a, [wPlayerRageCounter]
-	jr z, .rage_loop
-	ld a, [wEnemyRageCounter]
-.rage_loop
-	and a
-	jr z, .done
-	dec a
-	add hl, bc
-	jr nc, .rage_loop
-	ld hl, -1
-.done
-	ld a, h
-	ld [CurDamage], a
-	ld a, l
-	ld [CurDamage + 1], a
+; unused (Rage is now Attack boosts again)
 	ret
-
-; 352a3
 
 
 EndMoveEffect: ; 352a3
