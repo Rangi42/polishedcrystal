@@ -2476,8 +2476,15 @@ BattleCommand_PostHitEffects: ; 35250
 	call BattleCommand_SwitchTurn
 	call ResetMiss
 	call BattleCommand_AttackUp
+
+	; don't print a failure message if we're maxed out in atk
+	ld a, [FailedMessage]
+	and a
+	jp z, BattleCommand_SwitchTurn
+
 	ld hl, RageBuildingText
 	call StdBattleTextBox
+	call BattleCommand_StatUpMessage
 	jp BattleCommand_SwitchTurn
 
 ; 3527b
