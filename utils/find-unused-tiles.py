@@ -26,7 +26,7 @@ tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
                  'lighthouse', 'bedroom', 'pokecom', 'battle_tower', 'tower',
                  'cave', 'park', 'ruins', 'radio_tower', 'warehouse',
                  'ice_path', 'dark_cave', 'forest', 'safari', 'alph1', 'alph2',
-                 'alph3', 'alph4', 'pokemon_mansion', 'faraway', 'rock_tunnel',
+                 'alph3', 'alph4', 'pokemon_mansion', 'faraway', 'tunnel',
                  'decor', 'kanto2', 'shamouti']
 
 # {'TILESET_JOHTO_1': 'johto1', ...}

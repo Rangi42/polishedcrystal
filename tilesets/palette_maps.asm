@@ -104,7 +104,7 @@ Tileset38PalMap:
 INCLUDE "tilesets/faraway_palette_map.asm"
 
 Tileset39PalMap:
-INCLUDE "tilesets/rock_tunnel_palette_map.asm"
+INCLUDE "tilesets/tunnel_palette_map.asm"
 
 Tileset40PalMap:
 INCLUDE "tilesets/decor_palette_map.asm"

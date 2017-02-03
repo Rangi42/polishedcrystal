@@ -117,7 +117,7 @@ class PaletteMap(object):
 	day_tilesets = {'faraway', 'johto1', 'johto2', 'johto3', 'kanto1', 'kanto2',
 		'park', 'safari', 'shamouti'}
 
-	nite_tilesets = {'cave', 'dark_cave', 'forest', 'rock_tunnel'}
+	nite_tilesets = {'cave', 'dark_cave', 'forest', 'tunnel'}
 
 	def __init__(self, filename, key):
 		colors = (PaletteMap.day_colors if key in PaletteMap.day_tilesets
