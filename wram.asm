@@ -1779,8 +1779,8 @@ wPrevMapGroup:: ds 1
 wPrevMapNumber:: ds 1
 ; d14c
 
-wFollowNotExactPersonX:: ds 1 ; used in FollowNotExact
-wFollowNotExactPersonY:: ds 1 ; used in FollowNotExact
+wPlayerBGMapOffsetX:: ds 1 ; used in FollowNotExact; unit is pixels
+wPlayerBGMapOffsetY:: ds 1 ; used in FollowNotExact; unit is pixels
 
 ; Player movement
 wPlayerStepVectorX:: ds 1   ; d14e
@@ -1802,7 +1802,7 @@ UsedSpritesEnd::
 wd154:: ; d154
 	ds 31 ; 64
 
-wd173:: ds 1
+wd173:: ds 1 ; related to command queue type 3
 	ds 13
 wd181:: ds 1
 wd182:: ds 1

@@ -472,7 +472,7 @@ CopyTempObjectToObjectStruct: ; 8286
 	sub [hl]
 	and $f
 	swap a
-	ld hl, wFollowNotExactPersonY
+	ld hl, wPlayerBGMapOffsetY
 	sub [hl]
 	ld hl, OBJECT_SPRITE_Y
 	add hl, de
@@ -490,7 +490,7 @@ CopyTempObjectToObjectStruct: ; 8286
 	sub [hl]
 	and $f
 	swap a
-	ld hl, wFollowNotExactPersonX
+	ld hl, wPlayerBGMapOffsetX
 	sub [hl]
 	ld hl, OBJECT_SPRITE_X
 	add hl, de
@@ -658,7 +658,7 @@ FollowNotExact:: ; 839e
 	sub [hl]
 	and $f
 	swap a
-	ld hl, wFollowNotExactPersonX
+	ld hl, wPlayerBGMapOffsetX
 	sub [hl]
 	ld hl, OBJECT_SPRITE_X
 	add hl, de
@@ -671,7 +671,7 @@ FollowNotExact:: ; 839e
 	sub [hl]
 	and $f
 	swap a
-	ld hl, wFollowNotExactPersonY
+	ld hl, wPlayerBGMapOffsetY
 	sub [hl]
 	ld hl, OBJECT_SPRITE_Y
 	add hl, de

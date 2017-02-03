@@ -312,7 +312,7 @@ IsNPCAtCoord: ; 7041
 	xor a
 .loop
 	ld [hObjectStructIndexBuffer], a
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .next
 
 	ld hl, OBJECT_FLAGS1

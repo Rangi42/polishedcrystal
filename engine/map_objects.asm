@@ -2137,7 +2137,7 @@ Function55e0:: ; 55e0
 	xor a
 .loop
 	ld [hMapObjectIndexBuffer], a
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .ok
 	call Function565c
 .ok
@@ -2188,7 +2188,7 @@ Function5629: ; 5629
 	cp NUM_OBJECT_STRUCTS
 	ret nc
 	call GetObjectStruct
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	ret z
 	call Function5673
 	ret
@@ -2291,7 +2291,7 @@ Function56a3: ; 56a3
 ; 56cd
 
 Function56cd: ; 56cd
-	ld a, [wFollowNotExactPersonX]
+	ld a, [wPlayerBGMapOffsetX]
 	ld d, a
 	ld hl, OBJECT_SPRITE_X_OFFSET
 	add hl, bc
@@ -2320,7 +2320,7 @@ Function56cd: ; 56cd
 	sub $20
 .ok3
 	ld [hUsedSpriteIndex], a
-	ld a, [wFollowNotExactPersonY]
+	ld a, [wPlayerBGMapOffsetY]
 	ld e, a
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
@@ -2417,7 +2417,7 @@ HandleNPCStep:: ; 576a
 	xor a
 .loop
 	ld [hMapObjectIndexBuffer], a
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .next
 	call Function437b
 .next
@@ -2580,7 +2580,7 @@ Function587a: ; 587a
 	xor a
 .loop
 	push af
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .next
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
@@ -2625,7 +2625,7 @@ Function58b9:: ; 58b9
 	xor a
 .loop
 	push af
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .next
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
@@ -2730,15 +2730,15 @@ ApplyBGMapAnchorToObjects: ; 5958
 	push hl
 	push de
 	push bc
-	ld a, [wFollowNotExactPersonX]
+	ld a, [wPlayerBGMapOffsetX]
 	ld d, a
-	ld a, [wFollowNotExactPersonY]
+	ld a, [wPlayerBGMapOffsetY]
 	ld e, a
 	ld bc, ObjectStructs
 	ld a, NUM_OBJECT_STRUCTS
 .loop
 	push af
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .skip
 	ld hl, OBJECT_SPRITE_X
 	add hl, bc
@@ -2759,8 +2759,8 @@ ApplyBGMapAnchorToObjects: ; 5958
 	dec a
 	jr nz, .loop
 	xor a
-	ld [wFollowNotExactPersonX], a
-	ld [wFollowNotExactPersonY], a
+	ld [wPlayerBGMapOffsetX], a
+	ld [wPlayerBGMapOffsetY], a
 	pop bc
 	pop de
 	pop hl
@@ -2790,7 +2790,7 @@ PRIORITY_HIGH EQU $30
 	ld hl, wMovementPointer
 .loop
 	push hl
-	call GetObjectSprite
+	call DoesObjectHaveASprite
 	jr z, .skip
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -2895,7 +2895,7 @@ PRIORITY_HIGH EQU $30
 	add [hl]
 	add 8
 	ld e, a
-	ld a, [wFollowNotExactPersonX]
+	ld a, [wPlayerBGMapOffsetX]
 	add e
 	ld [hFFBF], a
 	ld hl, OBJECT_SPRITE_Y
@@ -2906,7 +2906,7 @@ PRIORITY_HIGH EQU $30
 	add [hl]
 	add 12
 	ld e, a
-	ld a, [wFollowNotExactPersonY]
+	ld a, [wPlayerBGMapOffsetY]
 	add e
 	ld [hFFC0], a
 	ld hl, OBJECT_FACING_STEP
