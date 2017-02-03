@@ -71,7 +71,7 @@ _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap:: ; 2e20
 	ld a, $1
 	ld [hOAMUpdate], a
 
-	farcall Function104110
+	farcall OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
 
 	pop af
 	ld [hOAMUpdate], a

@@ -38,7 +38,7 @@ ReturnFromMapSetupScript:: ; b8000
 	ld [wLandmarkSignTimer], a
 	call LoadMapNameSignGFX
 	call InitMapNameFrame
-	farcall Function104303
+	farcall HDMATransfer_OnlyTopFourRows
 	ret
 
 .dont_do_map_sign
@@ -109,7 +109,7 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	call InitMapNameFrame
 	call PlaceMapNameCenterAlign
 	call GiveFontOpaqueBackground
-	farcall Function104303
+	farcall HDMATransfer_OnlyTopFourRows
 .skip2
 	ld a, $80
 	ld a, $70
