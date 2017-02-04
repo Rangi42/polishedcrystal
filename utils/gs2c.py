@@ -81,7 +81,7 @@ def convert_line(line):
 		depth = parseint(depth.rstrip(','))
 		rate = parseint(rate)
 		extent = hexint((depth << 4) | rate)
-		return 'notetype %s, %s' % (delay, extent)
+		return 'vibrato %s, %s' % (delay, extent)
 
 	# Example: pkmsSetDuty 2 == dutycycle 2
 	if line.startswith('pkmsSetDuty'):

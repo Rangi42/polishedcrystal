@@ -2344,7 +2344,7 @@ Function56cd: ; 56cd
 	srl a
 	srl a
 	srl a
-	cp $12
+	cp SCREEN_HEIGHT
 	jr c, .ok6
 	sub $20
 .ok6
