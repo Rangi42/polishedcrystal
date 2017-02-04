@@ -84,3 +84,6 @@ NoisyForest_BlockData:
 
 LuckyIsland_BlockData:
 	INCBIN "maps/LuckyIsland.blk"
+
+Route32Coast_BlockData:
+	INCBIN "maps/Route32Coast.blk"

@@ -316,9 +316,13 @@
 	map_header_2 Route48, ROUTE_48, $35, SOUTH
 	connection south, ROUTE_47, Route47, 0, 0, 36
 
-	map_header_2 CherrygroveBay, CHERRYGROVE_BAY, $35, WEST | EAST
+	map_header_2 CherrygroveBay, CHERRYGROVE_BAY, $35, SOUTH | WEST | EAST
+	connection south, ROUTE_32_COAST, Route32Coast, 0, 0, 15
 	connection west, ROUTE_32, Route32, -2, 16, 20
 	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10
+
+	map_header_2 Route32Coast, ROUTE_32_COAST, $35, NORTH
+	connection north, CHERRYGROVE_BAY, CherrygroveBay, 0, 0, 15
 
 	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24

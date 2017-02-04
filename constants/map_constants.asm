@@ -219,15 +219,16 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 10
 
 	mapgroup ROUTE_32,                                   45, 10 ;  1
-	mapgroup VIOLET_CITY,                                20, 20 ;  2
-	mapgroup VIOLET_MART,                                 4,  6 ;  3
-	mapgroup VIOLET_GYM,                                  8,  5 ;  4
-	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  5
-	mapgroup VIOLET_NICKNAME_SPEECH_HOUSE,                4,  4 ;  6
-	mapgroup VIOLET_POKECENTER_1F,                        4,  6 ;  7
-	mapgroup VIOLET_ONIX_TRADE_HOUSE,                     4,  4 ;  8
-	mapgroup ROUTE_32_RUINS_OF_ALPH_GATE,                 4,  5 ;  9
-	mapgroup ROUTE_32_POKECENTER_1F,                      4,  6 ; 10
+	mapgroup ROUTE_32_COAST,                             35, 15 ;  2
+	mapgroup VIOLET_CITY,                                20, 20 ;  3
+	mapgroup VIOLET_MART,                                 4,  6 ;  4
+	mapgroup VIOLET_GYM,                                  8,  5 ;  5
+	mapgroup EARLS_POKEMON_ACADEMY,                       8,  4 ;  6
+	mapgroup VIOLET_NICKNAME_SPEECH_HOUSE,                4,  4 ;  7
+	mapgroup VIOLET_POKECENTER_1F,                        4,  6 ;  8
+	mapgroup VIOLET_ONIX_TRADE_HOUSE,                     4,  4 ;  9
+	mapgroup ROUTE_32_RUINS_OF_ALPH_GATE,                 4,  5 ; 10
+	mapgroup ROUTE_32_POKECENTER_1F,                      4,  6 ; 11
 
 	newgroup                                                    ; 11
 
