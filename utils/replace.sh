@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sed -i 's/'$1'/'$2'/' $(grep -lwr --include="*.asm" --exclude-dir=".git" --exclude-dir="extras" --exclude-dir="utils" *.asm)
+grep --exclude-dir=".git" --exclude-dir="extras" --exclude-dir="utils" -rl "$1" . | xargs sed -i 's/'$1'/'$2'/g'
