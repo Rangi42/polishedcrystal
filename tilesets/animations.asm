@@ -53,7 +53,7 @@ Tileset04Anim:
 	dw WhirlpoolFrames4, AnimateWhirlpoolTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
-	dw VTiles2 tile $59, WriteTileToBuffer
+	dw VTiles2 tile $40, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
@@ -61,7 +61,7 @@ Tileset04Anim:
 	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $59, WriteTileFromBuffer
+	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 Tileset03Anim:
