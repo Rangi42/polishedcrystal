@@ -48,15 +48,15 @@ def transpose_palette(palette, mapping):
 				continue
 			parts = [p.strip() for p in line.split(',')]
 			data.extend(parts[1:9])
-			if len(data) == 0x60 or len(data) == 0xE0:
+			if len(data) == 0x60:
 				data.extend(['ROOF'] * 0x20)
-	assert len(data) == 0x100
+	data.extend(['ROOF'] * (0x100 - len(data)))
 	with open(palette, 'wb') as f:
 		for i in range(28):
 			if i == 12:
 				f.write('\nrept 16\n\tdb $ff\nendr\n\n')
 				continue
-			if i in [13, 14, 15]:
+			elif i in [13, 14, 15]:
 				continue
 			seg = 0 if i < 12 else 1
 			row = [mapping.get(i*8+j, i*8+j) for j in range(8)]
