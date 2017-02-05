@@ -31,8 +31,10 @@ tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
 
 # {'TILESET_JOHTO_1': 'johto1', ...}
 tileset_ids = {}
-# {'OlivinePokeCenter1F': 'johto1', ...}
+# {'NewBarkTown': 'johto1', ...}
 map_tilesets = {}
+# {'johto1': {'NewBarkTown', ...}, ...}
+tileset_maps = defaultdict(lambda: set())
 
 # {'OlivineTimsHouse': 'House1', ...}
 map_block_data_exceptions = {}
@@ -76,6 +78,7 @@ def read_map_tilesets():
 				tileset_name = parts[2].rstrip(',')
 				tileset_id = tileset_ids[tileset_name]
 				map_tilesets[map_name] = tileset_id
+				tileset_maps[tileset_id].add(map_name)
 
 def read_block_filenames():
 	for block_data_filename in block_data_filenames:
@@ -97,8 +100,6 @@ def read_used_block_ids():
 		block_data_name = map_block_data_exceptions.get(map_name, map_name)
 		with open(code_directory + block_filename_fmt % block_data_name, 'rb') as f:
 			used_block_ids = {pretty(ord(b)) for b in f.read()}
-			if tileset_id == 'kanto1' and ('67' in used_block_ids or '6a' in used_block_ids):
-				print(map_name)
 			tileset_used_block_ids[tileset_id].update(used_block_ids)
 
 def read_used_block_ids_2():
@@ -170,6 +171,7 @@ def main():
 	print('Printing results...', file=sys.stderr)
 	for tileset_id in sorted(tileset_unused_tile_ids, key=tileset_names.index):
 		print('tileset %s:' % tileset_id)
+		print('\tmaps = %s' % ', '.join(sorted(tileset_maps[tileset_id])))
 		print('\tunused tiles = %s' % ' '.join(sorted(tileset_unused_tile_ids[tileset_id])))
 		print('\tunused blocks = %s' % ' '.join(sorted(tileset_unused_block_ids[tileset_id])))
 		print()
