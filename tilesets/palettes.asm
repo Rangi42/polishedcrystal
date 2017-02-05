@@ -36,8 +36,6 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .faraway_island
 	cp TILESET_SHAMOUTI_ISLAND
 	jp z, .shamouti_island
-	cp TILESET_JOHTO_1
-	jp z, .maybe_bellchime_trail
 	cp TILESET_ILEX_FOREST
 	jp z, .maybe_yellow_forest
 	cp TILESET_TRAIN_STATION
@@ -48,6 +46,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_goldenrod_dept_store_roof
 	cp TILESET_HOME_DECOR_STORE
 	jp z, .maybe_celadon_home_decor_store_4f
+	cp TILESET_JOHTO_1
+	jp z, .maybe_special_johto_1
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
 	jp .do_nothing
@@ -110,17 +110,6 @@ LoadSpecialMapPalette: ; 494ac
 
 .shamouti_island
 	call LoadShamoutiIslandPalette
-	scf
-	ret
-
-.maybe_bellchime_trail
-	ld a, [MapGroup]
-	cp GROUP_BELLCHIME_TRAIL
-	jp nz, .do_nothing
-	ld a, [MapNumber]
-	cp MAP_BELLCHIME_TRAIL
-	jp nz, .do_nothing
-	call LoadBellchimeTrailPalette
 	scf
 	ret
 
@@ -187,6 +176,40 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_CELADON_HOME_DECOR_STORE_4F
 	jp nz, .do_nothing
 	call LoadCeladonHomeDecorStore4FPalette
+	scf
+	ret
+
+.maybe_special_johto_1
+	ld a, [MapGroup]
+	cp GROUP_VIOLET_CITY
+	jr nz, .not_violet_city
+	ld a, [MapNumber]
+	cp MAP_VIOLET_CITY
+	jr z, .violet_ecruteak
+.not_violet_city
+	ld a, [MapGroup]
+	cp GROUP_ECRUTEAK_CITY
+	jr nz, .not_ecruteak_city
+	ld a, [MapNumber]
+	cp MAP_ECRUTEAK_CITY
+	jr z, .violet_ecruteak
+.not_ecruteak_city
+	ld a, [MapGroup]
+	cp GROUP_BELLCHIME_TRAIL
+	jr nz, .not_bellchime_trail
+	ld a, [MapNumber]
+	cp MAP_BELLCHIME_TRAIL
+	jr z, .bellchime_trail
+.not_bellchime_trail
+	jp .do_nothing
+
+.violet_ecruteak
+	call LoadVioletEcruteakPalette
+	scf
+	ret
+
+.bellchime_trail
+	call LoadBellchimeTrailPalette
 	scf
 	ret
 
@@ -375,21 +398,6 @@ LoadShamoutiIslandPalette:
 ShamoutiIslandPalette:
 INCLUDE "tilesets/shamouti_island.pal"
 
-LoadBellchimeTrailPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, BellchimeTrailPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-BellchimeTrailPalette:
-INCLUDE "tilesets/bellchime_trail.pal"
-
 LoadYellowForestPalette:
 	ld a, [TimeOfDayPal]
 	and 3
@@ -463,6 +471,36 @@ LoadCeladonHomeDecorStore4FPalette:
 
 CeladonHomeDecorStore4FPalette:
 INCLUDE "tilesets/celadon_home_decor_store_4f.pal"
+
+LoadVioletEcruteakPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, VioletEcruteakPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+VioletEcruteakPalette:
+INCLUDE "tilesets/violet_ecruteak.pal"
+
+LoadBellchimeTrailPalette:
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	ld hl, BellchimeTrailPalette
+	call AddNTimes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+BellchimeTrailPalette:
+INCLUDE "tilesets/bellchime_trail.pal"
 
 LoadCinnabarVolcanoPalette:
 	ld a, $5
