@@ -693,7 +693,7 @@ GoldenrodCity_MapEventHeader:
 	signpost 7, 16, SIGNPOST_READ, GoldenrodCityNameRaterSign
 	signpost 6, 12, SIGNPOST_READ, GoldenrodCityUndergroundSignNorth
 	signpost 30, 14, SIGNPOST_READ, GoldenrodCityUndergroundSignSouth
-	signpost 27, 21, SIGNPOST_UP, GoldenrodCityPokeCenterSign
+	signpost 27, 20, SIGNPOST_UP, GoldenrodCityPokeCenterSign
 	signpost 6, 34, SIGNPOST_READ, GoldenrodCityFlowerShopSign
 
 .PersonEvents:
