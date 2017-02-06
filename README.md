@@ -316,6 +316,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: New title music after beating the Elite 4.
 * Add: Larger Kanto routes, like in RBY.
 * Add: Evolution moves from Gen VII.
+* Add: Dark battle intro at night.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Explosion and Self-Destruct do not halve Defense.

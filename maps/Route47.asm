@@ -361,7 +361,9 @@ Route47SealedCaveSignText:
 	done
 
 Route47QuietCaveSignText:
-	text "West to"
+	text "Route 47"
+
+	para "West to"
 	line "Quiet Cave"
 	done
 

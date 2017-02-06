@@ -117,8 +117,9 @@ Route48JessieJamesSeenText:
 
 	para "The boss will be"
 	line "pleased if we"
-	cont "capture a"
-	cont "powerful one!"
+
+	para "capture a power-"
+	line "ful one!"
 
 	para "Surrender now, or"
 	line "prepare to fight!"
@@ -171,7 +172,9 @@ Archer2AfterText:
 	done
 
 Route48YellowForestSignText:
-	text "North to"
+	text "Route 48"
+
+	para "North to"
 	line "Yellow Forest"
 	done
 

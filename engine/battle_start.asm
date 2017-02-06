@@ -631,9 +631,9 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 .not_armored_mewtwo
 	ld hl, .daypals
 	ld a, [TimeOfDayPal]
-	and (1 << 2) - 1
-	cp 3
-	jr nz, .got_palette
+	and %00000011
+	cp 2
+	jr c, .got_palette
 	ld hl, .nightpals
 .got_palette
 	ld a, [rSVBK]
@@ -689,10 +689,14 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 ; 8c6a9
 
 .nightpals ; 8c6a9
-	RGB 31, 18, 29
-	RGB 31, 05, 05
-	RGB 31, 05, 05
-	RGB 31, 05, 05
+	RGB 15, 09, 22
+	RGB 15, 05, 11
+	RGB 15, 02, 04
+	RGB 00, 00, 00
+;	RGB 31, 18, 29
+;	RGB 31, 05, 05
+;	RGB 31, 05, 05
+;	RGB 31, 05, 05
 
 .armored_mewtwo_pals
 	RGB 29, 18, 31
