@@ -33,8 +33,8 @@ FuchsiaBillSpeechHouse_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $2, 4, FUCHSIA_CITY
-	warp_def $7, $3, 4, FUCHSIA_CITY
+	warp_def $7, $2, 3, FUCHSIA_CITY
+	warp_def $7, $3, 3, FUCHSIA_CITY
 
 .XYTriggers:
 	db 0

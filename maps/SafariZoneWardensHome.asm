@@ -82,8 +82,8 @@ SafariZoneWardensHome_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $2, 6, FUCHSIA_CITY
-	warp_def $7, $3, 6, FUCHSIA_CITY
+	warp_def $7, $2, 5, FUCHSIA_CITY
+	warp_def $7, $3, 5, FUCHSIA_CITY
 
 .XYTriggers:
 	db 0

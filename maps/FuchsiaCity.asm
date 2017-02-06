@@ -148,9 +148,8 @@ FuchsiaCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 11
+	db 10
 	warp_def $d, $5, 2, FUCHSIA_MART
-	warp_def $d, $16, 1, SAFARI_ZONE_MAIN_OFFICE
 	warp_def $1b, $8, 1, FUCHSIA_GYM
 	warp_def $1b, $b, 1, FUCHSIA_BILL_SPEECH_HOUSE
 	warp_def $1b, $13, 1, FUCHSIA_POKECENTER_1F

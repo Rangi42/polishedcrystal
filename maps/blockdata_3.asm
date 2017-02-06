@@ -59,7 +59,6 @@ VermilionPort_BlockData:
 	INCBIN "maps/VermilionPort.blk"
 
 OlivineCafe_BlockData:
-SafariZoneMainOffice_BlockData:
 	INCBIN "maps/OlivineCafe.blk"
 
 KrissHouse2F_BlockData:

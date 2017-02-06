@@ -495,7 +495,7 @@ OlivineCity_MapEventHeader:
 	warp_def $7, $1d, 1, OLIVINE_PUNISHMENT_SPEECH_HOUSE
 	warp_def $b, $d, 1, OLIVINE_GOOD_ROD_HOUSE
 	warp_def $11, $7, 1, OLIVINE_CAFE
-	warp_def $f, $13, 2, OLIVINE_MART
+	warp_def $d, $13, 2, OLIVINE_MART
 	warp_def $13, $21, 1, OLIVINE_LIGHTHOUSE_1F
 	warp_def $1f, $13, 1, OLIVINE_PORT_PASSAGE
 	warp_def $1f, $14, 2, OLIVINE_PORT_PASSAGE
@@ -513,22 +513,22 @@ OlivineCity_MapEventHeader:
 	signpost 20, 34, SIGNPOST_READ, OlivineLighthouseSign
 	signpost 21, 1, SIGNPOST_READ, OlivineCityBattleTowerSign
 	signpost 17, 14, SIGNPOST_READ, OlivineCityPokeCenterSign
-	signpost 15, 20, SIGNPOST_READ, OlivineCityMartSign
+	signpost 13, 20, SIGNPOST_READ, OlivineCityMartSign
 	signpost 14, 36, SIGNPOST_ITEM, OlivineCityHiddenRareCandy
 
 .PersonEvents:
 	db 14
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
 	person_event SPRITE_SWIMMER_GIRL, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJill, -1
-	person_event SPRITE_STANDING_YOUNGSTER, 11, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster1Script, -1
+	person_event SPRITE_STANDING_YOUNGSTER, 8, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster1Script, -1
 	person_event SPRITE_SAILOR, 22, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor1Script, -1
 	person_event SPRITE_SAILOR, 21, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor2Script, -1
 	person_event SPRITE_FISHER, 17, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityFisherScript, -1
 	person_event SPRITE_SAILOR, 17, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor3Script, -1
 	person_event SPRITE_POKEFAN_F, 26, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, OlivineCityPokefanFScript, -1
 	person_event SPRITE_POKEFAN_M, 27, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN) | (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCityPokefanMScript, -1
-	person_event SPRITE_SAILOR, 13, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor4Script, -1
-	person_event SPRITE_SAILOR, 13, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor5Script, -1
-	person_event SPRITE_LASS, 12, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityLass1Script, -1
-	person_event SPRITE_STANDING_YOUNGSTER, 11, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster2Script, -1
+	person_event SPRITE_SAILOR, 16, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor4Script, -1
+	person_event SPRITE_SAILOR, 17, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor5Script, -1
+	person_event SPRITE_LASS, 11, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityLass1Script, -1
+	person_event SPRITE_STANDING_YOUNGSTER, 11, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster2Script, -1
 	person_event SPRITE_LASS, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, OlivineCityLass2Script, -1
