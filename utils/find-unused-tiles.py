@@ -139,11 +139,11 @@ def find_unused_block_ids():
 
 def find_unused_tile_ids():
 	for tileset_id, used_tile_ids in tileset_used_tile_ids.items():
-		domain = {pretty(b) for b in set(range(0x00, 0x60)) | set(range(0x80, 0x100))}
+		domain = {pretty(b) for b in set(range(0x00, 0x70)) | set(range(0x80, 0x100))}
 		unused_tile_ids = domain - used_tile_ids
-		offsets = set(range(0x00, 0x60, 0x10)) | set(range(0x80, 0x100, 0x10))
+		offsets = set(range(0x00, 0x70, 0x10)) | set(range(0x80, 0x100, 0x10))
 		stripes = sum([[{pretty(b) for b in range(d, d + span)} for d in offsets]
-			for span in range(0x60, 0x00, -0x10)], [])
+			for span in range(0x80, 0x00, -0x10)], [])
 		for stripe in stripes:
 			if stripe.issubset(unused_tile_ids):
 				unused_tile_ids -= stripe
