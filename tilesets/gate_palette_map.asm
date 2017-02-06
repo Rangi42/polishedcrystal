@@ -10,8 +10,10 @@
 	tilepal 0, GRAY, GRAY, GRAY, GRAY, WATER, GRAY, WATER, WATER
 	tilepal 0, GRAY, GRAY, GRAY, GRAY, GRAY, GRAY, GRAY, GRAY
 	tilepal 0, GRAY, GRAY, GRAY, GRAY, WATER, WATER, RED, RED
+	tilepal 0, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF
+	tilepal 0, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF
 
-rept 16
+rept 8
 	db $ff
 endr
 

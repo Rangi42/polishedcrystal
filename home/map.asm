@@ -1360,7 +1360,7 @@ LoadTileset:: ; 2821
 
 	ld hl, wDecompressScratch
 	ld de, VTiles2
-	ld bc, $60 tiles
+	ld bc, $70 tiles
 	call CopyBytes
 
 	ld a, [rVBK]
@@ -1368,7 +1368,7 @@ LoadTileset:: ; 2821
 	ld a, $1
 	ld [rVBK], a
 
-	ld hl, wDecompressScratch + $60 tiles
+	ld hl, wDecompressScratch + $70 tiles
 	ld de, VTiles2
 	ld bc, $80 tiles
 	call CopyBytes
