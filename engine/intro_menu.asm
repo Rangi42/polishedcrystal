@@ -857,6 +857,12 @@ SoYoureAGirlText:
 NamePlayer: ; 0x6074
 	farcall MovePlayerPicRight
 
+	hlcoord 0, 0
+	lb bc, 3, 11
+	call ClearBox
+	ld c, 3
+	call DelayFrames
+
 	xor a
 	ld [CurPartySpecies], a
 	ld b, SCGB_INTRO_NAMING_PALS
@@ -872,6 +878,8 @@ NamePlayer: ; 0x6074
 	ld [CurPartySpecies], a
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
+
+	call InitIntroGradient
 
 	farcall MovePlayerPicLeft
 	ret
