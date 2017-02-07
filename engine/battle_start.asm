@@ -703,9 +703,9 @@ endr
 	RGB 15, 02, 04
 	RGB 00, 00, 00
 ; dark
-	RGB 15, 10, 10
-	RGB 11, 06, 06
-	RGB 07, 02, 02
+	RGB 11, 07, 07
+	RGB 07, 03, 03
+	RGB 00, 00, 00
 	RGB 00, 00, 00
 
 .armored_mewtwo_pals

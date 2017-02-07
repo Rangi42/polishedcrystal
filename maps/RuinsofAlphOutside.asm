@@ -5,6 +5,12 @@ const_value set 2
 	const RUINSOFALPHOUTSIDE_YOUNGSTER2
 	const RUINSOFALPHOUTSIDE_YOUNGSTER3
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
+	const RUINSOFALPHOUTSIDE_ROCK1
+	const RUINSOFALPHOUTSIDE_ROCK2
+	const RUINSOFALPHOUTSIDE_ROCK3
+	const RUINSOFALPHOUTSIDE_ROCK4
+	const RUINSOFALPHOUTSIDE_ROCK5
+	const RUINSOFALPHOUTSIDE_ROCK6
 
 RuinsofAlphOutside_MapScriptHeader:
 .MapTriggers:
@@ -170,6 +176,12 @@ MapRuinsofAlphOutsideSignpost2Script:
 
 MapRuinsofAlphOutsideSignpost3Script:
 	jumptext MapRuinsofAlphOutsideSignpost3Text
+
+RuinsofAlphOutsideHiddenRareCandy:
+	dwb EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY, RARE_CANDY
+
+RuinsofAlphOutsideRock:
+	jumpstd smashrock
 
 MovementData_0x580ba:
 	step_right
@@ -410,17 +422,24 @@ RuinsofAlphOutside_MapEventHeader:
 	xy_trigger 1, $15, $c, $0, UnknownScript_0x5803a, $0, $0
 
 .Signposts:
-	db 4
+	db 5
 	signpost 14, 18, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost0Script
 	signpost 22, 14, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost1Script
 	signpost 18, 20, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
 	signpost 9, 10, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost3Script
+	signpost 13, 4, SIGNPOST_ITEM, RuinsofAlphOutsideHiddenRareCandy
 
 .PersonEvents:
-	db 6
+	db 12
 	person_event SPRITE_YOUNGSTER, 26, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
 	person_event SPRITE_SCIENTIST, 21, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	person_event SPRITE_FISHER, 23, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	person_event SPRITE_YOUNGSTER, 17, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	person_event SPRITE_YOUNGSTER, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	person_event SPRITE_SCIENTIST, 18, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
+	person_event SPRITE_ROCK, 10, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
+	person_event SPRITE_ROCK, 10, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
+	person_event SPRITE_ROCK, 12, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
+	person_event SPRITE_ROCK, 13, 5, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
+	person_event SPRITE_ROCK, 13, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
+	person_event SPRITE_ROCK, 15, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
