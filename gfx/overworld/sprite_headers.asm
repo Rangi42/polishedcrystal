@@ -453,7 +453,7 @@ ClefairyWalkSprite: ; 148fe
 ; 14904
 
 FarfetchDSprite: ; 14904
-	sprite_header FarfetchDSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+	sprite_header FarfetchDSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 ; 1490a
 
 LaprasSprite: ; 14922
