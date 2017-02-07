@@ -104,18 +104,23 @@ _CGB_BattleColors: ; 8ddb
 	call LoadPalette_White_Col1_Col2_Black
 	ld hl, Palettes_a8ca
 	call LoadPalette_White_Col1_Col2_Black
+	call LoadPlayerStatusIconPalette
+	call LoadEnemyStatusIconPalette
+	ld hl, UnknBGPals + 0 palettes
+	ld de, UnknBGPals + 7 palettes
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
 	ld de, UnknOBPals
 	pop hl
 	call LoadPalette_White_Col1_Col2_Black
 	pop hl
 	call LoadPalette_White_Col1_Col2_Black
-	call LoadPlayerStatusIconPalette
-	call LoadEnemyStatusIconPalette
 	ld a, SCGB_BATTLE_COLORS
 	ld [SGBPredef], a
 	call ApplyPals
 _CGB_FinishBattleScreenLayout: ; 8e23
-	call InitPartyMenuBGPal7
+;	call InitPartyMenuBGPal7
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $2
@@ -153,6 +158,10 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, $7
 	call ByteFill
+	hlcoord 0, 8, AttrMap
+	lb bc, 4, 10
+	ld a, $7
+	call FillBoxCGB
 	ld hl, Palettes_979c
 	ld de, UnknOBPals + 2 palettes
 	ld bc, 6 palettes
