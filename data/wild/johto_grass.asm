@@ -570,54 +570,54 @@
 	map MOUNT_MORTAR_1F_OUTSIDE
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
-	db 22, RATTATA
 	db 21, ZUBAT
 	db 22, MACHOP
 	db 21, GOLBAT
 	db 22, GEODUDE
+	db 20, CUBONE
 	db 25, RATICATE
-	db 25, RATICATE
+	db 24, RATTATA
 	; day
-	db 22, RATTATA
 	db 21, ZUBAT
 	db 22, MACHOP
 	db 21, GOLBAT
 	db 22, GEODUDE
+	db 22, CUBONE
 	db 25, RATICATE
-	db 25, RATICATE
+	db 24, RATTATA
 	; nite
-	db 22, RATTATA
 	db 21, ZUBAT
 	db 22, MARILL
 	db 21, GOLBAT
 	db 22, GEODUDE
+	db 20, CUBONE
 	db 25, RATICATE
-	db 25, RATICATE
+	db 24, RATTATA
 
 	map MOUNT_MORTAR_1F_INSIDE
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 21, GEODUDE
-	db 22, RATTATA
 	db 23, MACHOP
-	db 22, RATICATE
 	db 23, ZUBAT
+	db 22, RATICATE
+	db 20, CUBONE
 	db 25, GOLBAT
 	db 25, GOLBAT
 	; day
 	db 21, GEODUDE
-	db 22, RATTATA
 	db 23, MACHOP
-	db 22, RATICATE
 	db 23, ZUBAT
+	db 22, RATICATE
+	db 20, CUBONE
 	db 25, GOLBAT
 	db 25, GOLBAT
 	; nite
 	db 21, GEODUDE
-	db 22, RATTATA
-	db 23, RATICATE
-	db 22, ZUBAT
 	db 23, MARILL
+	db 22, ZUBAT
+	db 23, RATICATE
+	db 20, CUBONE
 	db 25, GOLBAT
 	db 25, GOLBAT
 
@@ -627,24 +627,24 @@
 	db 34, GRAVELER
 	db 35, MACHOKE
 	db 34, GEODUDE
-	db 33, RATICATE
 	db 31, MACHOP
+	db 33, MAROWAK
 	db 33, GOLBAT
 	db 33, GOLBAT
 	; day
 	db 34, GRAVELER
 	db 35, MACHOKE
 	db 34, GEODUDE
-	db 33, RATICATE
 	db 31, MACHOP
+	db 33, MAROWAK
 	db 33, GOLBAT
 	db 33, GOLBAT
 	; nite
 	db 34, GRAVELER
+	db 35, GOLBAT
 	db 34, GEODUDE
-	db 33, RATICATE
-	db 33, GOLBAT
 	db 31, MARILL
+	db 33, MAROWAK
 	db 35, GOLBAT
 	db 35, GOLBAT
 
@@ -652,26 +652,26 @@
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 15, ZUBAT
-	db 17, ZUBAT
-	db 17, GOLBAT
 	db 16, MACHOP
+	db 17, GOLBAT
 	db 16, GEODUDE
+	db 17, CUBONE
 	db 18, RATICATE
 	db 18, RATICATE
 	; day
 	db 15, ZUBAT
-	db 17, ZUBAT
-	db 17, GOLBAT
 	db 16, MACHOP
+	db 17, GOLBAT
 	db 16, GEODUDE
+	db 17, CUBONE
 	db 18, RATICATE
 	db 18, RATICATE
 	; nite
 	db 15, ZUBAT
-	db 17, ZUBAT
+	db 16, GEODUDE
 	db 17, GOLBAT
 	db 16, MARILL
-	db 16, GEODUDE
+	db 17, CUBONE
 	db 18, RATICATE
 	db 18, RATICATE
 
@@ -1149,7 +1149,7 @@
 	db 2, ZUBAT
 	db 2, GEODUDE
 	db 4, GEODUDE
-	db 2, TEDDIURSA
+	db 2, ZUBAT
 	db 4, ZUBAT
 	db 4, DUNSPARCE
 	; nite
@@ -1168,8 +1168,8 @@
 	db 23, ZUBAT
 	db 25, GRAVELER
 	db 25, URSARING
-	db 23, GOLBAT
 	db 20, TEDDIURSA
+	db 23, GOLBAT
 	db 23, DUNSPARCE
 	; day
 	db 23, GEODUDE
@@ -1320,8 +1320,8 @@
 	db 6, GEODUDE
 	db 6, ZUBAT
 	db 7, RATTATA
-	db 7, RATTATA
-	db 7, RATTATA
+	db 7, ODDISH
+	db 7, ODDISH
 
 	map ROUTE_34
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1355,16 +1355,16 @@
 	; morn
 	db 12, SNUBBULL
 	db 14, PIDGEY
-	db 13, GROWLITHE
-	db 10, ABRA
+	db 13, NIDORAN_F
+	db 13, NIDORAN_M
 	db 12, JIGGLYPUFF
 	db 10, DITTO
 	db 12, YANMA
 	; day
 	db 12, SNUBBULL
 	db 14, PIDGEY
-	db 13, GROWLITHE
-	db 10, ABRA
+	db 13, NIDORAN_M
+	db 13, NIDORAN_F
 	db 12, JIGGLYPUFF
 	db 10, DITTO
 	db 12, YANMA
@@ -1409,27 +1409,27 @@
 	; morn
 	db 13, LEDYBA
 	db 14, PIDGEY
-	db 14, ELEKID
-	db 16, GROWLITHE
 	db 15, PIDGEOTTO
+	db 16, GROWLITHE
+	db 14, SMEARGLE
 	db 15, LEDIAN
-	db 15, LEDIAN
+	db 16, PIDGEOTTO
 	; day
 	db 14, PIDGEY
 	db 14, GROWLITHE
-	db 14, ELEKID
-	db 16, GROWLITHE
 	db 15, PIDGEOTTO
+	db 16, GROWLITHE
+	db 14, SMEARGLE
 	db 15, PIDGEY
-	db 15, PIDGEY
+	db 16, PIDGEOTTO
 	; nite
 	db 13, SPINARAK
 	db 14, ARIADOS
 	db 14, HOOTHOOT
 	db 15, NOCTOWL
+	db 15, HOUNDOUR
 	db 16, HOUNDOUR
-	db 15, ARIADOS
-	db 16, HOUNDOUR
+	db 16, ARIADOS
 
 	map ROUTE_38
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1463,7 +1463,7 @@
 	; morn
 	db 16, RATTATA
 	db 16, RATICATE
-	db 16, MAGNEMITE
+	db 15, ELEKID
 	db 16, PIDGEOTTO
 	db 15, MILTANK
 	db 15, TAUROS
@@ -1471,7 +1471,7 @@
 	; day
 	db 16, RATTATA
 	db 16, RATICATE
-	db 16, MAGNEMITE
+	db 15, ELEKID
 	db 16, PIDGEOTTO
 	db 15, MILTANK
 	db 15, TAUROS
@@ -1479,7 +1479,7 @@
 	; nite
 	db 16, MEOWTH
 	db 16, RATICATE
-	db 16, MAGNEMITE
+	db 15, ELEKID
 	db 16, NOCTOWL
 	db 18, MEOWTH
 	db 18, MURKROW
@@ -1509,8 +1509,8 @@
 	db 22, RATICATE
 	db 23, GOLBAT
 	db 21, MARILL
-	db 24, GOLBAT
-	db 24, GOLBAT
+	db 24, GLIGAR
+	db 24, GLIGAR
 
 	map ROUTE_43
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
@@ -1563,33 +1563,33 @@
 	db 30, BELLSPROUT
 	db 32, WEEPINBELL
 	db 32, POLIWHIRL
-	db 34, POLIWHIRL
-	db 34, POLIWHIRL
+	db 34, GLIGAR
+	db 34, GLIGAR
 
 	map ROUTE_45
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 32, GEODUDE
-	db 32, GRAVELER
-	db 28, TEDDIURSA
-	db 34, DONPHAN
-	db 28, PHANPY
+	db 34, GRAVELER
+	db 33, DONPHAN
+	db 33, URSARING
+	db 33, DONPHAN
 	db 35, SKARMORY
 	db 36, SKARMORY
 	; day
 	db 32, GEODUDE
-	db 32, GRAVELER
-	db 28, TEDDIURSA
-	db 34, DONPHAN
-	db 28, PHANPY
+	db 34, GRAVELER
+	db 33, URSARING
+	db 33, DONPHAN
+	db 33, URSARING
 	db 35, SKARMORY
 	db 36, SKARMORY
 	; nite
 	db 32, GEODUDE
-	db 32, GRAVELER
-	db 33, GLIGAR
-	db 33, GLIGAR
 	db 34, GRAVELER
+	db 33, GLIGAR
+	db 34, GLIGAR
+	db 33, GRAVELER
 	db 35, GRAVELER
 	db 36, GRAVELER
 
@@ -1599,26 +1599,26 @@
 	db 2, GEODUDE
 	db 2, PIDGEY
 	db 3, GEODUDE
-	db 3, RATTATA
 	db 2, PHANPY
 	db 2, RATTATA
-	db 2, RATTATA
+	db 3, RATTATA
+	db 3, RATTATA
 	; day
 	db 2, GEODUDE
 	db 2, PIDGEY
 	db 3, GEODUDE
+	db 2, JIGGLYPUFF
+	db 2, RATTATA
 	db 3, RATTATA
-	db 2, RATTATA
-	db 2, RATTATA
-	db 2, RATTATA
+	db 3, RATTATA
 	; nite
 	db 2, GEODUDE
 	db 2, RATTATA
 	db 3, GEODUDE
+	db 2, RATTATA
+	db 2, RATTATA
 	db 3, RATTATA
-	db 2, RATTATA
-	db 2, RATTATA
-	db 2, RATTATA
+	db 3, RATTATA
 
 	map ROUTE_47
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

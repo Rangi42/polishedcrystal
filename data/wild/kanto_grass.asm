@@ -867,7 +867,7 @@
 	map ROUTE_23
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 37, DODUO
+	db 37, DODRIO
 	db 38, SANDSLASH
 	db 38, ARBOK
 	db 39, PRIMEAPE
@@ -875,7 +875,7 @@
 	db 40, SANDSLASH
 	db 42, DITTO
 	; day
-	db 37, DODUO
+	db 37, DODRIO
 	db 38, SANDSLASH
 	db 38, ARBOK
 	db 39, PRIMEAPE
