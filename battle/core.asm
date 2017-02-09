@@ -1982,6 +1982,7 @@ GetThirdMaxHP::
 ; divides by 3 without using arithmetic helpers (screws up dam calc)
 ; Parts of this function relies on the fact that the result can't
 ; be more than 1 byte (Blissey's base 255 HP is at most 718 at L100)
+; This works because x/3 is x/4 + x/16 + x/64 + ...
 	call GetMaxHP
 	push de
 	ld d, 0
