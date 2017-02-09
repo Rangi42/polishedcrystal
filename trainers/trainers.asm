@@ -7059,6 +7059,7 @@ LassGroup:
 
 	; party
 	db 21, MARILL
+	db 21, MAGNETON
 
 	db $ff ; end
 
@@ -8624,7 +8625,7 @@ GentlemanGroup:
 
 	; party
 	db 18, GROWLITHE
-	db 18, GROWLITHE
+	db 18, SKARMORY
 
 	db $ff ; end
 
