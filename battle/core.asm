@@ -1979,60 +1979,48 @@ GetQuarterMaxHP: ; 3cc8e
 
 
 GetThirdMaxHP::
-; save content of arithmetic hram to allow usage
-; during arithmetic chains (pinch abilities)
-	push hl
-	push de
-	ld hl, hDividend
-	ld a, [hl]
-	ld d, a
-	ld [hl], 0
-	inc hl
-	ld a, [hl]
-	ld e, a
-	ld [hl], 0
-	inc hl
-	push de
-	ld a, [hl]
-	ld d, a
-	ld [hl], 0
-	inc hl
-	ld a, [hl]
-	ld e, a
-	ld [hl], 0
-
-; output: bc
+; divides by 3 without using arithmetic helpers (screws up dam calc)
+; Parts of this function relies on the fact that the result can't
+; be more than 1 byte (Blissey's base 255 HP is at most 718 at L100)
 	call GetMaxHP
-	ld a, b
-	ld [hDividend + 2], a
-	ld a, c
-	ld [hDividend + 3], a
-	ld a, 3
-	ld [hDivisor], a
-	ld b, 4
 	push de
-	call Divide
-	pop de
-	ld [hQuotient + 2], a
-	ld c, a
-	ld [hQuotient + 1], a
-	ld b, a
-	ld a, e
-	ld hl, hDividend + 3
-	ld [hld], a
-	ld a, d
-	ld [hld], a
-	pop de
-	ld a, e
-	ld [hld], a
-	ld a, d
-	ld [hl], a
-	pop de
-	pop hl
-
-; floor = 1
+	ld d, 0
+	; if b is nonzero, involve b in the bitshift
+	ld a, b
+	and a
 	ld a, c
-	or b
+	jr z, .loop
+	and 3
+	ld e, a
+	srl b
+	rr c
+	srl b
+	rr c
+	jr .postshift
+.loop
+	cp 3
+	jr c, .loop_end_skip_add
+	jr z, .loop_end
+	and 3
+	ld e, a
+	srl c
+	srl c
+.postshift
+	ld a, d
+	add c
+	ld d, a
+	ld a, c
+	add e
+	ld c, a
+	jr .loop
+.loop_end
+	inc d
+.loop_end_skip_add
+	ld a, d
+	pop de
+; floor = 1
+	and a
+	ld c, a
 	jr nz, .end
 	inc c
 .end
