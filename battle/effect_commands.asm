@@ -1313,14 +1313,16 @@ CheckTypeMatchup:
 	; if the attack is ineffective, bypass ability checks
 	ld a, [wTypeMatchup]
 	and a
-	ret z
+	jr z, .end
 	farcall CheckNullificationAbilities
+.end
 	pop bc
 	pop de
 	pop hl
 	ret
 
 _CheckTypeMatchup: ; 347d3
+	push hl
 	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle powder moves
 	ld a, BATTLE_VARS_MOVE
@@ -1410,6 +1412,7 @@ _CheckTypeMatchup: ; 347d3
 	xor a
 	ld [wTypeMatchup], a
 .End:
+	pop hl
 	ret
 
 ; 34833
@@ -1463,7 +1466,7 @@ BattleCommand_DamageVariation: ; 34cfd
 	ret c
 
 .go
-; Start with the maximum damage.
+	; Start with the current (100%) damage.
 	xor a
 	ld [hMultiplicand + 0], a
 	dec hl
@@ -1472,23 +1475,20 @@ BattleCommand_DamageVariation: ; 34cfd
 	ld a, [hl]
 	ld [hMultiplicand + 2], a
 
-; Multiply by 85-100%...
-.loop
-	call BattleRandom
-	rrca
-	cp $d9 ; 85%
-	jr c, .loop
-
+	; Multiply by 85-100%...
+	ld a, 16
+	call BattleRandomRange
+	add 85
 	ld [hMultiplier], a
 	call Multiply
 
-; ...divide by 100%...
-	ld a, $ff ; 100%
+	; ...divide by 100%...
+	ld a, 100
 	ld [hDivisor], a
 	ld b, $4
 	call Divide
 
-; ...to get .85-1.00x damage.
+	; ...to get .85-1.00x damage.
 	ld a, [hQuotient + 1]
 	ld hl, CurDamage
 	ld [hli], a
@@ -1553,14 +1553,23 @@ BattleCommand_CheckHit: ; 34d32
 
 .got_acc_eva
 	; Handle stat modifiers
-	; Unaware ignores enemy stat changes
+	; Unaware ignores enemy stat changes, identification also does if above 0
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp UNAWARE
-	jr nz, .no_user_unaware
-	ld c, 7
+	jr z, .reset_evasion
 
-.no_user_unaware
+	; check Foresight
+	ld a, BATTLE_VARS_SUBSTATUS1_OPP
+	call GetBattleVar
+	bit SUBSTATUS_IDENTIFIED, a
+	jr z, .check_opponent_unaware
+	ld a, c
+	cp 7
+	jr c, .check_opponent_unaware
+.reset_evasion
+	ld c, 7
+.check_opponent_unaware
 	call GetOpponentAbilityAfterMoldBreaker
 	cp UNAWARE
 	jr nz, .no_opponent_unaware
@@ -1608,13 +1617,6 @@ BattleCommand_CheckHit: ; 34d32
 	jr c, .accuracy_not_lowered
 	; No need to multiply/divide if acc=eva
 	jr z, .stat_changes_done
-
-	; If the target's evasion is greater than the user's accuracy,
-	; check the target's foresight status
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
-	call GetBattleVar
-	bit SUBSTATUS_IDENTIFIED, a
-	jr nz, .stat_changes_done
 
 .accuracy_not_lowered
 	; Multiply by min(acc-4,3)
@@ -2454,6 +2456,9 @@ BattleCommand_PostFaintEffects: ; 351c0
 
 BattleCommand_PostHitEffects: ; 35250
 ; previously buildopponentrage
+	call CheckSubstituteOpp
+	ret nz
+
 	ld a, [AttackMissed]
 	and a
 	ret nz
@@ -2466,54 +2471,26 @@ BattleCommand_PostHitEffects: ; 35250
 	bit SUBSTATUS_RAGE, a
 	ret z
 
-	ld de, wEnemyRageCounter
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player
-	ld de, wPlayerRageCounter
-.player
-	ld a, [de]
-	inc a
-	ret z
-	ld [de], a
-
 	call BattleCommand_SwitchTurn
+	call ResetMiss
+	call BattleCommand_AttackUp
+
+	; don't print a failure message if we're maxed out in atk
+	ld a, [FailedMessage]
+	and a
+	jp z, BattleCommand_SwitchTurn
+
 	ld hl, RageBuildingText
 	call StdBattleTextBox
+	call BattleCommand_StatUpMessage
 	jp BattleCommand_SwitchTurn
 
 ; 3527b
 
 
 BattleCommand_RageDamage: ; 3527b
-; ragedamage
-
-	ld a, [CurDamage]
-	ld h, a
-	ld b, a
-	ld a, [CurDamage + 1]
-	ld l, a
-	ld c, a
-	ld a, [hBattleTurn]
-	and a
-	ld a, [wPlayerRageCounter]
-	jr z, .rage_loop
-	ld a, [wEnemyRageCounter]
-.rage_loop
-	and a
-	jr z, .done
-	dec a
-	add hl, bc
-	jr nc, .rage_loop
-	ld hl, -1
-.done
-	ld a, h
-	ld [CurDamage], a
-	ld a, l
-	ld [CurDamage + 1], a
+; unused (Rage is now Attack boosts again)
 	ret
-
-; 352a3
 
 
 EndMoveEffect: ; 352a3
@@ -4518,14 +4495,7 @@ BattleCommand_HealBell: ; 35cc9
 	call AnimateCurrentMove
 
 	ld hl, BellChimedText
-	call StdBattleTextBox
-
-	ld a, [hBattleTurn]
-	and a
-	jp z, CalcPlayerStats
-	jp CalcEnemyStats
-
-; 35d00
+	jp StdBattleTextBox
 
 
 FarPlayBattleAnimation: ; 35d00
@@ -5121,8 +5091,6 @@ BattleCommand_BurnTarget: ; 3608c
 	call GetBattleVarAddr
 	set BRN, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
 	ld de, ANIM_BRN
 	call PlayOpponentBattleAnim
 	call RefreshBattleHuds
@@ -6185,8 +6153,6 @@ BattleCommand_Burn:
 	call GetBattleVarAddr
 	set BRN, [hl]
 	call UpdateOpponentInParty
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
 	call UpdateBattleHuds
 	ld hl, WasBurnedText
 	call StdBattleTextBox
@@ -6250,36 +6216,11 @@ CalcPlayerStats: ; 365d7
 	ld hl, PlayerAtkLevel
 	ld de, PlayerStats
 	ld bc, BattleMonAttack
-
-	call CalcStats
-
-	call BattleCommand_SwitchTurn
-
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
-
-	jp BattleCommand_SwitchTurn
-
-; 365fd
-
-
+	jr CalcStats
 CalcEnemyStats: ; 365fd
 	ld hl, EnemyAtkLevel
 	ld de, EnemyStats
 	ld bc, EnemyMonAttack
-
-	call CalcStats
-
-	call BattleCommand_SwitchTurn
-
-	ld hl, ApplyBrnEffectOnAttack
-	call CallBattleCore
-
-	jp BattleCommand_SwitchTurn
-
-; 3661d
-
-
 CalcStats: ; 3661d
 	ld a, 5
 .loop
@@ -7196,15 +7137,13 @@ BattleCommand_TrapTarget: ; 36c2d
 .bypass_sub
 	push bc
 	call GetUserItem
-	ld a, [hl]
-	cp GRIP_CLAW
+	ld a, b
+	cp HELD_PROLONG_WRAP
 	pop bc
 	jr z, .seven_turns
 	call BattleRandom
 	and 1
-rept 5
-	inc a
-endr
+	add 4
 	jr .got_count
 .seven_turns
 	ld a, 7
@@ -8064,9 +8003,6 @@ BattleCommand_Heal: ; 3713e
 	ld hl, RestedText
 .no_status_to_heal
 	call StdBattleTextBox
-	; potential healed burn
-	call CalcPlayerStats
-	call CalcEnemyStats
 	farcall GetMaxHP
 	jr .finish
 .not_rest
@@ -8181,7 +8117,7 @@ BattleCommand_Screen: ; 372fc
 	inc bc ; LightScreenCount -> ReflectCount
 	ld hl, ReflectEffectText
 .set_timer
-	ld a, LIGHT_CLAY
+	ld a, HELD_PROLONG_SCREENS
 	call GetItemBoostedDuration
 	ld [bc], a
 	call AnimateCurrentMove
@@ -8197,11 +8133,12 @@ BattleCommand_Screen: ; 372fc
 GetItemBoostedDuration:
 	push bc
 	push hl
-	ld b, a
+	ld c, a
 	push bc
 	call GetUserItem
+	ld a, b
 	pop bc
-	ld a, [hl]
+	cp c
 	cp b
 	ld a, 5
 	jr nz, .got_duration
@@ -8289,11 +8226,26 @@ CheckSubstituteOpp_b:
 	ret
 
 CheckSubstituteOpp: ; 37378
-; returns z when not behind a sub (or if Infiltrator overrides it)
+; returns z when not behind a sub (or if overridden by Infiltrator or sound)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR
 	ret z
+	push bc
+	push de
+	push hl
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, SoundMoves
+	ld de, 1
+	call IsInArray
+	pop hl
+	pop de
+	pop bc
+	jr nc, .no_sound_move
+	xor a
+	ret
+.no_sound_move
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
@@ -9069,22 +9021,22 @@ BattleCommand_HiddenPower: ; 37be8
 
 BattleCommand_StartSun:
 	ld b, WEATHER_SUN
-	ld c, HEAT_ROCK
+	ld c, HELD_PROLONG_SUN
 	ld hl, SunGotBrightText
 	jr BattleCommand_StartWeather
 BattleCommand_StartRain:
 	ld b, WEATHER_RAIN
-	ld c, DAMP_ROCK
+	ld c, HELD_PROLONG_RAIN
 	ld hl, DownpourText
 	jr BattleCommand_StartWeather
 BattleCommand_StartSandstorm:
 	ld b, WEATHER_SANDSTORM
-	ld c, SMOOTH_ROCK
+	ld c, HELD_PROLONG_SANDSTORM
 	ld hl, SandstormBrewedText
 	jr BattleCommand_StartWeather
 BattleCommand_StartHail:
 	ld b, WEATHER_HAIL
-	ld c, ICY_ROCK
+	ld c, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 BattleCommand_StartWeather:
 	ld a, [Weather]

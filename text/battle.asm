@@ -420,6 +420,24 @@ BattleText_TheresNoPPLeftForThisMove: ; 0x80c39
 	prompt
 ; 0x80c5b
 
+BattleText_ItemOnlyAllowsMove: ; choice items
+	text "The @"
+	text_from_ram StringBuffer1
+	text ""
+	line "only allows use"
+	cont "of @"
+	text_from_ram StringBuffer2
+	text "!"
+	prompt
+
+BattleText_ItemPreventsStatusMoves: ; assault vest
+	text "The @"
+	text_from_ram StringBuffer1
+	text ""
+	line "prevents usage"
+	cont "of status moves!"
+	prompt
+
 BattleText_TheMoveIsDisabled: ; 0x80c5b
 	text "The move is"
 	line "disabled!"
@@ -1316,6 +1334,14 @@ IgnoredOrders2Text: ; 0x81850
 BecameHealthyText:
 	text "<USER>"
 	line "became healthy!"
+	prompt
+
+NotifyAirBalloonText:
+	text "<USER>"
+	line "floats in the air"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
 	prompt
 
 TraceActivationText:

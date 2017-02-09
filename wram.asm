@@ -733,6 +733,7 @@ wBackupEnemyMonCatchRate:: db ; c725
 wBackupEnemyMonBaseExp:: db ; c726
 wPlayerFutureSightDamage:: ds 2 ; c727
 wEnemyFutureSightDamage:: ds 2 ; c729
+; rage counters unused, Rage is now attack stage boosts again
 wPlayerRageCounter:: ds 1 ; c72b
 wEnemyRageCounter:: ds 1 ; c72c
 AnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilities

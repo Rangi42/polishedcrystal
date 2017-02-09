@@ -1339,7 +1339,6 @@ Rage:
 	damagecalc
 	stab
 	checkhit
-	ragedamage
 	damagevariation
 	hittarget
 	failuretext

@@ -82,3 +82,30 @@ RandomRange:: ; 2fb1
 	pop bc
 	ret
 ; 2fcb
+
+BattleRandomRange::
+; battle friendly RandomRange
+	push bc
+	ld b, a
+
+	; ensure even distribution by cutting off the top
+.loop
+	add b
+	jr nc, .loop
+	sub b
+	ld c, a
+.loop2
+	call BattleRandom
+	ld a, [hRandomAdd]
+	cp c
+	jr nc, .loop2
+
+	; now we have a random number without the uneven top, get mod of it
+.loop3
+	sub b
+	jr nc, .loop3
+	add b
+
+	; return the result
+	pop bc
+	ret
