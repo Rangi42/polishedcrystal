@@ -508,8 +508,8 @@ YellowForest_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $2d, $1b, 1, YELLOW_FOREST_GATE
-	warp_def $2d, $1c, 2, YELLOW_FOREST_GATE
+	warp_def $2d, $1c, 1, YELLOW_FOREST_GATE
+	warp_def $2d, $1d, 2, YELLOW_FOREST_GATE
 
 .XYTriggers:
 	db 0
