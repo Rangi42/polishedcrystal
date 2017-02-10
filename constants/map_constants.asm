@@ -71,7 +71,7 @@ MAP_NONE   EQU 0
 	mapgroup TEAM_ROCKET_BASE_B1F,                        9, 15 ; 34
 	mapgroup TEAM_ROCKET_BASE_B2F,                        9, 15 ; 35
 	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 36
-	mapgroup ILEX_FOREST,                                27, 15 ; 37
+	mapgroup ILEX_FOREST,                                24, 17 ; 37
 	mapgroup WAREHOUSE_ENTRANCE,                         18, 15 ; 38
 	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     18, 15 ; 39
 	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 40

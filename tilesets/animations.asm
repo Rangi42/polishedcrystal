@@ -189,7 +189,7 @@ Tileset31Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
-	dw VTiles2 tile $4b, WriteTileToBuffer
+	dw VTiles2 tile $40, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
@@ -197,7 +197,7 @@ Tileset31Anim:
 	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $4b, WriteTileFromBuffer
+	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 Tileset32Anim:
@@ -689,7 +689,7 @@ endr
 
 .asm_fc47d
 	ld sp, hl
-	ld hl, VTiles2 tile $1c
+	ld hl, VTiles2 tile $05
 	jp WriteTile
 ; fc484
 
@@ -735,7 +735,7 @@ endr
 
 .asm_fc4eb
 	ld sp, hl
-	ld hl, VTiles2 tile $1f
+	ld hl, VTiles2 tile $06
 	jp WriteTile
 ; fc4f2
 
@@ -767,7 +767,7 @@ endr
 
 .asm_fc515
 	ld sp, hl
-	ld hl, VTiles2 tile $1c
+	ld hl, VTiles2 tile $05
 	jp WriteTile
 ; fc51c
 
@@ -803,7 +803,7 @@ endr
 
 .asm_fc545
 	ld sp, hl
-	ld hl, VTiles2 tile $1f
+	ld hl, VTiles2 tile $06
 	jp WriteTile
 ; fc54c
 

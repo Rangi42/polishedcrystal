@@ -190,7 +190,7 @@ CinnabarLabCelebiEventScript:
 	pause 30
 	waitsfx
 	domaptrigger ILEX_FOREST, $1
-	warp ILEX_FOREST, 8, 24
+	warp ILEX_FOREST, $a, $1a
 	end
 
 CinnabarLabRoom1Sign:

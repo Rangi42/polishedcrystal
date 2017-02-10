@@ -400,8 +400,8 @@
 	map_header_2 TeamRocketBaseB1F, TEAM_ROCKET_BASE_B1F, $0, 0
 	map_header_2 TeamRocketBaseB2F, TEAM_ROCKET_BASE_B2F, $0, 0
 	map_header_2 TeamRocketBaseB3F, TEAM_ROCKET_BASE_B3F, $0, 0
-	map_header_2 IlexForest, ILEX_FOREST, $5, 0
-	map_header_2 MurkySwamp, MURKY_SWAMP, $5, 0
+	map_header_2 IlexForest, ILEX_FOREST, $35, 0
+	map_header_2 MurkySwamp, MURKY_SWAMP, $35, 0
 	map_header_2 WarehouseEntrance, WAREHOUSE_ENTRANCE, $0, 0
 	map_header_2 UndergroundPathSwitchRoomEntrances, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, $0, 0
 	map_header_2 GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $0, 0
@@ -699,7 +699,7 @@
 	map_header_2 BellchimeTrail, BELLCHIME_TRAIL, $5, 0
 	map_header_2 PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_header_2 PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
-	map_header_2 ViridianForest, VIRIDIAN_FOREST, $36, 0
+	map_header_2 ViridianForest, VIRIDIAN_FOREST, $45, 0
 	map_header_2 ViridianForestViridianGate, VIRIDIAN_FOREST_VIRIDIAN_GATE, $0, 0
 	map_header_2 ViridianForestPewterGate, VIRIDIAN_FOREST_PEWTER_GATE, $0, 0
 	map_header_2 Route1ViridianGate, ROUTE_1_VIRIDIAN_GATE, $0, 0
@@ -707,7 +707,7 @@
 	map_header_2 CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_header_2 CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
 	map_header_2 YellowForestGate, YELLOW_FOREST_GATE, $0, 0
-	map_header_2 YellowForest, YELLOW_FOREST, $38, 0
+	map_header_2 YellowForest, YELLOW_FOREST, $55, 0
 	map_header_2 QuietCave1F, QUIET_CAVE_1F, $9, 0
 	map_header_2 QuietCaveB1F, QUIET_CAVE_B1F, $9, 0
 	map_header_2 QuietCaveB2F, QUIET_CAVE_B2F, $9, 0
