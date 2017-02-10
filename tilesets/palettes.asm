@@ -93,11 +93,20 @@ LoadSpecialMapPalette: ; 494ac
 
 .pokecenter
 	ld a, [MapGroup]
-	cp GROUP_CELADON_HOTEL
+	cp GROUP_POKECENTER_2F
 	jr nz, .ok
 	ld a, [MapNumber]
-	cp MAP_CELADON_HOTEL
-	jp z, .do_nothing
+	cp MAP_POKECENTER_2F
+	jr nz, .ok
+	ld a, [BackupMapGroup]
+	cp GROUP_SHAMOUTI_POKECENTER_1F
+	jr nz, .ok
+	ld a, [BackupMapNumber]
+	cp MAP_SHAMOUTI_POKECENTER_1F
+	jr nz, .ok
+	call LoadShamoutiPokeCenterPalette
+	scf
+	ret
 .ok
 	call LoadPokeCenterPalette
 	scf
@@ -367,6 +376,17 @@ LoadPokeCenterPalette:
 
 PokeCenterPalette:
 INCLUDE "tilesets/pokecenter.pal"
+
+LoadShamoutiPokeCenterPalette:
+	ld a, $5
+	ld de, UnknBGPals
+	ld hl, ShamoutiPokeCenterPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+ShamoutiPokeCenterPalette:
+INCLUDE "tilesets/shamouti_pokecenter.pal"
 
 LoadFarawayIslandPalette:
 	ld a, [TimeOfDayPal]

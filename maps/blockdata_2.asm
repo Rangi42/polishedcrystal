@@ -28,6 +28,7 @@ OlivinePokeCenter1F_BlockData:
 CianwoodPokeCenter1F_BlockData:
 MahoganyPokeCenter1F_BlockData:
 BlackthornPokeCenter1F_BlockData:
+SilverCavePokeCenter1F_BlockData:
 	INCBIN "maps/JohtoPokeCenter1F.blk"
 
 ViridianPokeCenter1F_BlockData:
@@ -41,7 +42,6 @@ LavenderPokeCenter1F_BlockData:
 FuchsiaPokeCenter1F_BlockData:
 SaffronPokeCenter1F_BlockData:
 CinnabarPokeCenter1F_BlockData:
-SilverCavePokeCenter1F_BlockData:
 ShamoutiPokeCenter1F_BlockData:
 	INCBIN "maps/KantoPokeCenter1F.blk"
 

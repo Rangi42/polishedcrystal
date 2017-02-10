@@ -14,7 +14,11 @@ PokeCenter2F_MapScriptHeader:
 	maptrigger .Trigger3
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_TILES, Script_ChangePokeCenter2FMap
 
 .Trigger0:
 	end
@@ -46,6 +50,13 @@ Script_BattleRoomClosed:
 	waitbutton
 	closetext
 	end
+
+Script_ChangePokeCenter2FMap:
+	callasm CheckPokeCenter2FRegion
+	if_equal $0, .done
+	changemap BANK(KantoPokeCenter2F_BlockData), KantoPokeCenter2F_BlockData
+.done
+	return
 
 LinkReceptionistScript_Trade:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -758,3 +769,20 @@ PokeCenter2F_MapEventHeader:
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
+
+CheckPokeCenter2FRegion:
+	ld a, [BackupMapGroup]
+	ld b, a
+	ld a, [BackupMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	ld hl, ScriptVar
+	cp KANTO_LANDMARK
+	jr nc, .kanto
+.johto
+	ld [hl], 0
+	ret
+
+.kanto
+	ld [hl], 1
+	ret
