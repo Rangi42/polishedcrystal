@@ -290,7 +290,7 @@ ViridianForest_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $7, $3, 1, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_def $5, $3, 1, VIRIDIAN_FOREST_PEWTER_GATE
 	warp_def $2f, $12, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
 	warp_def $2f, $13, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
 
