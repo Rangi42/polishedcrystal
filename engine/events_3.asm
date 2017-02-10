@@ -574,8 +574,10 @@ endm
 	treemon_map BLACKTHORN_CITY, 0
 	treemon_map SILVER_CAVE_OUTSIDE, 0
 	treemon_map ILEX_FOREST, 6
-	treemon_map VIRIDIAN_FOREST, 6
+	treemon_map MURKY_SWAMP, 6
 	treemon_map YELLOW_FOREST, 6
+	treemon_map ROUTE_32_COAST, 4
+	treemon_map ROUTE_34_COAST, 3
 	treemon_map ROUTE_35_COAST, 3
 	db -1
 ; b82c5

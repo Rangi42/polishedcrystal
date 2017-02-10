@@ -290,34 +290,34 @@ ViridianForest_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $3, $1, 1, VIRIDIAN_FOREST_PEWTER_GATE
-	warp_def $2D, $11, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
-	warp_def $2D, $12, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	warp_def $4, $3, 1, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_def $2f, $12, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	warp_def $2f, $13, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 11
-	signpost 5, 2, SIGNPOST_READ, MapViridianForestSignpost1Script
-	signpost 24, 4, SIGNPOST_READ, MapViridianForestSignpost2Script
-	signpost 17, 26, SIGNPOST_READ, MapViridianForestSignpost3Script
-	signpost 32, 16, SIGNPOST_READ, MapViridianForestSignpost4Script
-	signpost 40, 24, SIGNPOST_READ, MapViridianForestSignpost5Script
-	signpost 42, 18, SIGNPOST_READ, MapViridianForestSignpost6Script
-	signpost 42, 30, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
-	signpost 41, 16, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
-	signpost 41, 2, SIGNPOST_ITEM, ViridianForestHiddenFullRestore
-	signpost 7, 28, SIGNPOST_ITEM, ViridianForestHiddenRevive
-	signpost 12, 1, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
+	signpost 7, 4, SIGNPOST_READ, MapViridianForestSignpost1Script
+	signpost 26, 6, SIGNPOST_READ, MapViridianForestSignpost2Script
+	signpost 19, 28, SIGNPOST_READ, MapViridianForestSignpost3Script
+	signpost 34, 18, SIGNPOST_READ, MapViridianForestSignpost4Script
+	signpost 42, 26, SIGNPOST_READ, MapViridianForestSignpost5Script
+	signpost 44, 20, SIGNPOST_READ, MapViridianForestSignpost6Script
+	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
+	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
+	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenFullRestore
+	signpost 9, 30, SIGNPOST_ITEM, ViridianForestHiddenRevive
+	signpost 14, 3, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
 
 .PersonEvents:
 	db 8
-	person_event SPRITE_POKE_BALL, 29, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
-	person_event SPRITE_POKE_BALL, 31, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
-	person_event SPRITE_POKE_BALL, 16, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
-	person_event SPRITE_BUG_CATCHER, 40, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDane, -1
-	person_event SPRITE_BUG_CATCHER, 33, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_catcherDion, -1
-	person_event SPRITE_BUG_CATCHER, 19, 30, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherStacey, -1
-	person_event SPRITE_BUG_CATCHER, 2, 29, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_catcherEllis, -1
-	person_event SPRITE_BUG_CATCHER, 22, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherAbner, -1
+	person_event SPRITE_POKE_BALL, 31, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
+	person_event SPRITE_POKE_BALL, 33, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
+	person_event SPRITE_POKE_BALL, 18, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
+	person_event SPRITE_BUG_CATCHER, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDane, -1
+	person_event SPRITE_BUG_CATCHER, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_catcherDion, -1
+	person_event SPRITE_BUG_CATCHER, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherStacey, -1
+	person_event SPRITE_BUG_CATCHER, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_catcherEllis, -1
+	person_event SPRITE_BUG_CATCHER, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherAbner, -1

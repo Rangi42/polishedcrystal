@@ -467,7 +467,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_2_NUGGET_SPEECH_HOUSE,                 4,  4 ; 12
 	mapgroup ROUTE_2_GATE,                                4,  5 ; 13
 	mapgroup POKEMON_LEAGUE_GATE,                         9, 11 ; 14
-	mapgroup VIRIDIAN_FOREST,                            25, 17 ; 15
+	mapgroup VIRIDIAN_FOREST,                            26, 19 ; 15
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 16
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 17
 	mapgroup ROUTE_1_VIRIDIAN_GATE,                        4, 5 ; 18
