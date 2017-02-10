@@ -38,7 +38,7 @@ Route10South_BlockData:
 	INCBIN "maps/Route10South.blk"
 
 PokeCenter2F_BlockData:
-	INCBIN "maps/PokeCenter2F.blk"
+	INCBIN "maps/JohtoPokeCenter2F.blk"
 
 Route41_BlockData:
 	INCBIN "maps/Route41.blk"

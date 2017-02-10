@@ -28,6 +28,8 @@ OlivinePokeCenter1F_BlockData:
 CianwoodPokeCenter1F_BlockData:
 MahoganyPokeCenter1F_BlockData:
 BlackthornPokeCenter1F_BlockData:
+	INCBIN "maps/JohtoPokeCenter1F.blk"
+
 ViridianPokeCenter1F_BlockData:
 PewterPokeCenter1F_BlockData:
 Route3PokeCenter1F_BlockData:
@@ -41,7 +43,7 @@ SaffronPokeCenter1F_BlockData:
 CinnabarPokeCenter1F_BlockData:
 SilverCavePokeCenter1F_BlockData:
 ShamoutiPokeCenter1F_BlockData:
-	INCBIN "maps/PokeCenter1F.blk"
+	INCBIN "maps/KantoPokeCenter1F.blk"
 
 EarlsPokemonAcademy_BlockData:
 	INCBIN "maps/EarlsPokemonAcademy.blk"

@@ -7,7 +7,8 @@ BattleText_PlayerPickedUpPayDayMoney: ; 0x80730
 ; 0x80746
 
 WildPokemonAppearedText: ; 0x80746
-	text "Wild @"
+	text "A wild @"
+LegendaryAppearedText: ; 0x80793
 	text_from_ram EnemyMonNick
 	text ""
 	line "appeared!"
@@ -29,13 +30,6 @@ PokemonFellFromTreeText: ; 0x80778
 	line "out of the tree!"
 	prompt
 ; 0x80793
-
-LegendaryAppearedText: ; 0x80793
-	text_from_ram EnemyMonNick
-	text ""
-	line "appeared!"
-	prompt
-; 0x807a9
 
 WantsToBattleText:: ; 0x807a9
 	text "<ENEMY>"
