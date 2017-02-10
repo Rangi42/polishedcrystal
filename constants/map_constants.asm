@@ -235,7 +235,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_34,                                   27, 10 ;  1
 	mapgroup ROUTE_34_COAST,                             34,  9 ;  2
 	mapgroup STORMY_BEACH,                               11, 22 ;  3
-	mapgroup MURKY_SWAMP,                                16, 20 ;  4
+	mapgroup MURKY_SWAMP,                                18, 23 ;  4
 	mapgroup GOLDENROD_CITY,                             18, 22 ;  5
 	mapgroup GOLDENROD_GYM,                               9, 10 ;  6
 	mapgroup GOLDENROD_BIKE_SHOP,                         4,  4 ;  7
