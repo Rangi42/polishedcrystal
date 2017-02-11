@@ -7,7 +7,7 @@
 * PikalaxALT, pigdevil2010, Koolboyman, chaos_lord2, padz, and everyone else who developed TPP Anniversary Crystal 251 and made the code public (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, Substitute sprite, and caught data stats page code).
 * FredrIQ for multiple feature code contributions (specifically: Natures affecting stats, better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen).
 * VictoriaLacroix for her Running Shoes routine.
-* Blue Emerald, Chamber, solo993, Lake, Neslug, and Pikachu25 for many sprites and icons.
+* Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
 * FroggestSpirit for ported and demixed music from RBY, HGSS, DPPt, and BW.
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.

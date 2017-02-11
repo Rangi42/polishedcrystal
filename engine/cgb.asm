@@ -913,13 +913,13 @@ _CGB_TrainerCard: ; 9289
 	ld a, MORTY
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, CHUCK ; also PRYCE
+	ld a, CHUCK
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, JASMINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, CLAIR
+	ld a, CLAIR ; also PRYCE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -983,7 +983,7 @@ _CGB_TrainerCard: ; 9289
 	; Pryce
 	hlcoord 10, 14, AttrMap
 	lb bc, 2, 4
-	ld a, $5
+	ld a, $7
 	call FillBoxCGB
 	; Clair
 	hlcoord 14, 14, AttrMap
@@ -1050,7 +1050,7 @@ _CGB_TrainerCard2:
 	ld a, BROCK
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, SABRINA
+	ld a, SABRINA ; also BLAINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, ERIKA ; also LT_SURGE
@@ -1062,7 +1062,7 @@ _CGB_TrainerCard2:
 	ld a, JANINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, BLUE ; also BLAINE
+	ld a, BLUE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -1126,7 +1126,7 @@ _CGB_TrainerCard2:
 	; Blaine
 	hlcoord 10, 14, AttrMap
 	lb bc, 2, 4
-	ld a, $7
+	ld a, $3
 	call FillBoxCGB
 	; Blue
 	hlcoord 14, 14, AttrMap

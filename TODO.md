@@ -89,7 +89,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Use the Spiky-Eared Pichu and B/W Routes 4 + 12 music somewhere
 * Use the B/W Route 4 and Route 12 music somewhere rugged
 * Use the Laverre City and Malie City music somewhere traditional
-* Use some of Soloo93's HG/SS Gym Leader [sprite devamps](https://hax.iimarck.us/post/36679/#p36679)?
 * Battle Caitlin and Darach somewhere, possibly around the Battle Tower or Trainer House (reward: ?)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
 
