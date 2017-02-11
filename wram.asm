@@ -1207,6 +1207,7 @@ wTileAnimBuffer::
 wOtherPlayerLinkMode:: ds 1
 wOtherPlayerLinkAction:: ds 4
 wPlayerLinkAction:: ds 1
+wTrainerCardBadgePaletteAddr::
 wcf57:: ds 4
 wcf5b:: ds 1
 wcf5c:: ds 1
@@ -1243,7 +1244,6 @@ wCreditsLYOverride::
 wTitleScreenTimerHi::
 wUnownPuzzleHeldPiece::
 wCardFlipWhichCard::
-wTrainerCardBadgePaletteAddr::
 wcf66:: ds 1
 
 Requested2bpp:: ; cf67
