@@ -445,8 +445,8 @@ GetFrontpicPalettePointer:
 GetTrainerPalettePointer:
 	ld l, a
 	ld h, 0
-	add hl,hl
-	add hl,hl
+	add hl, hl
+	add hl, hl
 	ld bc, TrainerPalettes
 	add hl, bc
 	ret
