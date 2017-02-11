@@ -164,9 +164,9 @@ DoNPCTrade: ; fcc63
 	ld a, [hl]
 	cp 3
 	ld a, MALE
-	jr c, .okay
+	jr c, .male
 	ld a, FEMALE
-.okay
+.male
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, PartyMon1Level
@@ -185,11 +185,11 @@ DoNPCTrade: ; fcc63
 	ld e, TRADE_DIALOG
 	call GetTradeAttribute
 	ld a, [hl]
-	cp TRADE_COMPLETE
-	ld b, RESET_FLAG
-	jr c, .incomplete
-	ld b, SET_FLAG
-.incomplete
+	cp 3
+	ld b, MALE
+	jr c, .male2
+	ld b, FEMALE
+.male2
 	farcall SetGiftPartyMonCaughtData
 
 	ld e, TRADE_NICK

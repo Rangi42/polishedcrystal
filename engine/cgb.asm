@@ -951,43 +951,43 @@ _CGB_TrainerCard: ; 9289
 .got_gender2
 	call FillBoxCGB
 	; Falkner
-	hlcoord 2, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 3, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $1
 	call FillBoxCGB
 	; Bugsy
-	hlcoord 6, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 7, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $2
 	call FillBoxCGB
 	; Whitney
-	hlcoord 10, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 11, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $3
 	call FillBoxCGB
 	; Morty
-	hlcoord 14, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 15, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $4
 	call FillBoxCGB
 	; Chuck
-	hlcoord 2, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 3, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $5
 	call FillBoxCGB
 	; Jasmine
-	hlcoord 6, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 7, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $6
 	call FillBoxCGB
 	; Pryce
-	hlcoord 10, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 11, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $7
 	call FillBoxCGB
 	; Clair
-	hlcoord 14, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 15, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $7
 	call FillBoxCGB
 	call ApplyAttrMap
@@ -1094,43 +1094,43 @@ _CGB_TrainerCard2:
 .got_gender2
 	call FillBoxCGB
 	; Lt.Surge
-	hlcoord 2, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 3, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $4
 	call FillBoxCGB
 	; Sabrina
-	hlcoord 6, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 7, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $3
 	call FillBoxCGB
 	; Misty
-	hlcoord 10, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 11, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $5
 	call FillBoxCGB
 	; Erika
-	hlcoord 14, 11, AttrMap
-	lb bc, 2, 4
+	hlcoord 15, 10, AttrMap
+	lb bc, 3, 3
 	ld a, $4
 	call FillBoxCGB
 	; Janine
-	hlcoord 2, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 3, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $6
 	call FillBoxCGB
 	; Brock
-	hlcoord 6, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 7, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $2
 	call FillBoxCGB
 	; Blaine
-	hlcoord 10, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 11, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $3
 	call FillBoxCGB
 	; Blue
-	hlcoord 14, 14, AttrMap
-	lb bc, 2, 4
+	hlcoord 15, 13, AttrMap
+	lb bc, 3, 3
 	ld a, $7
 	call FillBoxCGB
 	call ApplyAttrMap
