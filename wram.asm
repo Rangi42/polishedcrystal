@@ -1243,6 +1243,7 @@ wCreditsLYOverride::
 wTitleScreenTimerHi::
 wUnownPuzzleHeldPiece::
 wCardFlipWhichCard::
+wTrainerCardBadgePaletteAddr::
 wcf66:: ds 1
 
 Requested2bpp:: ; cf67

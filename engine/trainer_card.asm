@@ -572,8 +572,13 @@ TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 	ld b, a
 	ld a, [hli] ; x
 	ld c, a
-	ld a, [hli] ; pal
-	ld [wcf66], a
+	ld a, h
+	ld [wTrainerCardBadgePaletteAddr], a
+	ld a, l
+	ld [wTrainerCardBadgePaletteAddr + 1], a
+rept 4
+	inc hl
+endr
 	ld a, [wcf64]
 	add l
 	ld l, a
@@ -585,7 +590,7 @@ TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 	call .PrepOAM
 	pop hl
 .skip_badge
-	ld bc, $b ; 3 + 2 * 4
+	ld bc, $e ; 6 + 2 * 4
 	add hl, bc
 	pop bc
 	dec b
@@ -620,8 +625,21 @@ TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 	ld [de], a
 	inc hl
 	inc de
-
-	ld a, [wcf66]
+	push hl
+	push bc
+	ld a, [wTrainerCardBadgePaletteAddr]
+	ld h, a
+	ld a, [wTrainerCardBadgePaletteAddr + 1]
+	ld l, a
+	ld a, [hli]
+	ld b, a
+	ld a, h
+	ld [wTrainerCardBadgePaletteAddr], a
+	ld a, l
+	ld [wTrainerCardBadgePaletteAddr + 1], a
+	ld a, b
+	pop bc
+	pop hl
 	add [hl]
 	ld [de], a
 	inc hl
@@ -648,49 +666,49 @@ TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 TrainerCard_JohtoBadgesOAM: ; 254c9
 ; Template OAM data for each badge on the trainer card.
 ; Format:
-	; y, x, palette
+	; y, x, palette1, palette2, palette3, palette4
 	; cycle 1: face tile, in1 tile, in2 tile, in3 tile
 	; cycle 2: face tile, in1 tile, in2 tile, in3 tile
 
 	dw JohtoBadges
 
 	; Zephyr Badge
-	db $68, $18, 0
+	db $68, $18, 0, 0, 0, 0
 	db $00, $20, $24, $20 | $80
 	db $00, $20, $24, $20 | $80
 
 	; Hive Badge
-	db $68, $38, 1
+	db $68, $38, 1, 1, 1, 1
 	db $04, $20, $24, $20 | $80
 	db $04, $20, $24, $20 | $80
 
 	; Plain Badge
-	db $68, $58, 2
+	db $68, $58, 2, 2, 2, 2
 	db $08, $20, $24, $20 | $80
 	db $08, $20, $24, $20 | $80
 
 	; Fog Badge
-	db $68, $78, 3
+	db $68, $78, 3, 3, 3, 3
 	db $0c, $20, $24, $20 | $80
 	db $0c | $80, $20, $24, $20 | $80
 
 	; Mineral Badge
-	db $80, $38, 5
+	db $80, $38, 5, 5, 5, 5
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
 	; Storm Badge
-	db $80, $18, 4
+	db $80, $18, 4, 4, 4, 4
 	db $14, $20, $24, $20 | $80
 	db $14 | $80, $20, $24, $20 | $80
 
 	; Glacier Badge
-	db $80, $58, 6
+	db $80, $58, 6, 6, 6, 6
 	db $18, $20, $24, $20 | $80
 	db $18, $20, $24, $20 | $80
 
 	; Rising Badge
-	db $80, $78, 7
+	db $80, $78, 7, 7, 7, 7
 	db $1c, $20, $24, $20 | $80
 	db $1c, $20, $24, $20 | $80
 ; 25523
@@ -698,49 +716,49 @@ TrainerCard_JohtoBadgesOAM: ; 254c9
 TrainerCard_KantoBadgesOAM:
 ; Template OAM data for each badge on the trainer card.
 ; Format:
-	; y, x, palette
+	; y, x, palette1, palette2, palette3, palette4
 	; cycle 1: face tile, in1 tile, in2 tile, in3 tile
 	; cycle 2: face tile, in1 tile, in2 tile, in3 tile
 
 	dw KantoBadges
 
 	; Boulder Badge
-	db $80, $38, 0
+	db $80, $38, 0, 0, 0, 0
 	db $00, $20, $24, $20 | $80
 	db $00, $20, $24, $20 | $80
 
 	; Cascade Badge
-	db $68, $58, 1
+	db $68, $58, 1, 1, 1, 1
 	db $04, $20, $24, $20 | $80
 	db $04, $20, $24, $20 | $80
 
 	; Thunder Badge
-	db $68, $18, 2
+	db $68, $18, 2, 2, 2, 2
 	db $08, $20, $24, $20 | $80
 	db $08, $20, $24, $20 | $80
 
 	; Rainbow Badge
-	db $68, $78, 3
+	db $68, $78, 6, 2, 1, 3
 	db $0c, $20, $24, $20 | $80
 	db $0c, $20, $24, $20 | $80
 
 	; Soul Badge
-	db $80, $18, 4
+	db $80, $18, 4, 4, 4, 4
 	db $10, $20, $24, $20 | $80
 	db $10, $20, $24, $20 | $80
 
 	; Marsh Badge
-	db $68, $38, 5
+	db $68, $38, 5, 5, 5, 5
 	db $14, $20, $24, $20 | $80
 	db $14, $20, $24, $20 | $80
 
 	; Volcano Badge
-	db $80, $58, 6
+	db $80, $58, 6, 6, 6, 6
 	db $18, $20, $24, $20 | $80
 	db $18, $20, $24, $20 | $80
 
 	; Earth Badge
-	db $80, $78, 7
+	db $80, $78, 7, 7, 7, 7
 	db $1c, $20, $24, $20 | $80
 	db $1c | $80, $20, $24, $20 | $80
 
