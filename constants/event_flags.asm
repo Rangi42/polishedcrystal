@@ -1821,8 +1821,10 @@
 	const EVENT_MURKY_SWAMP_CUT_TREE_1
 	const EVENT_MURKY_SWAMP_CUT_TREE_2
 
+; TODO: reorder events
+	const EVENT_GOT_ORANGE_TICKET
+
 ; Unused placeholder events
-	const EVENT_6A3
 	const EVENT_6A4
 	const EVENT_6A5
 	const EVENT_6A6

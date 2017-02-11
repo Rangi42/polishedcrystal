@@ -169,7 +169,7 @@ UnknownScript_0x188e93:
 	setevent EVENT_ROUTE_24_ROCKET
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-	domaptrigger ROUTE_10_NORTH, $0
+	domaptrigger ROUTE_10_NORTH, $1
 	clearevent EVENT_LAWRENCE_ROUTE_10
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_LAWRENCE
 	writetext UnknownText_0x1893c4

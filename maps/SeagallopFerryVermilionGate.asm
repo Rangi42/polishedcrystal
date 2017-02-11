@@ -35,6 +35,13 @@ SeagallopFerryVermilionGateSailorScript:
 	opentext
 	writetext SeagallopFerryWelcomeText
 	waitbutton
+	checkevent EVENT_GOT_ORANGE_TICKET
+	iftrue .got_orangeticket
+	writetext SeagallopFerryGiveOrangeTicketText
+	waitbutton
+	verbosegiveitem ORANGETICKET
+	setevent EVENT_GOT_ORANGE_TICKET
+.got_orangeticket
 	checkitem ORANGETICKET
 	iftrue .have_orangeticket
 	checkitem MYSTICTICKET
@@ -234,6 +241,14 @@ SeagallopFerryVermilionGateSailorArrive2MovementData:
 SeagallopFerryWelcomeText:
 	text "Welcome aboard the"
 	line "Seagallop Ferry!"
+	done
+
+SeagallopFerryGiveOrangeTicketText:
+	text "The man who just"
+	line "left said he didn't"
+
+	para "need this ticket."
+	line "You can have it."
 	done
 
 SeagallopFerryClosedText:

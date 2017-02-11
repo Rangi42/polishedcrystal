@@ -52,15 +52,11 @@ LawrenceLeftIntroScript:
 	opentext
 	writetext LawrenceIntroText
 	waitbutton
-	verbosegiveitem ORANGETICKET
-	writetext LawrenceOrangeTicketText
-	waitbutton
 	closetext
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
-	domaptrigger ROUTE_10_NORTH, $1
 	dotrigger $1
 	special RestartMapMusic
 	end
@@ -84,9 +80,6 @@ LawrenceRightIntroScript:
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext LawrenceIntroText
-	waitbutton
-	verbosegiveitem ORANGETICKET
-	writetext LawrenceOrangeTicketText
 	waitbutton
 	closetext
 	spriteface PLAYER, DOWN
@@ -273,36 +266,22 @@ LawrenceIntroText:
 	para "My name is"
 	line "Lawrence III."
 
+	para "And you're the"
+	line "League Champion?"
+
+	para "…Well, appearances"
+	line "can be deceiving."
+
 	para "Legendary #mon"
 	line "have always been"
 	cont "my passion."
 
-	para "I've just returned"
-	line "from Shamouti"
-	cont "Island."
+	para "I took the Seagal-"
+	line "lop Ferry here to"
 
-	para "There was no sign"
-	line "of the #mon I"
-
-	para "seek, so I have no"
-	line "more use for this."
-	done
-
-LawrenceOrangeTicketText:
-	text "You can use that"
-	line "ticket at the"
-
-	para "ferry here in"
-	line "Vermilion Port"
-
-	para "to visit Shamouti"
-	line "Island."
-
-	para "It's a source of"
-	line "many legends, but"
-
-	para "no more legendary"
-	line "#mon…"
+	para "Shamouti Island,"
+	line "but did not find"
+	cont "the one I sought."
 
 	para "Oh, you've encoun-"
 	line "tered #mon out"

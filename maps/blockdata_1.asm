@@ -160,8 +160,12 @@ CherrygroveEvolutionSpeechHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 SinjohRuinsHouse_BlockData:
 ShamoutiHotel_BlockData:
+ShamoutiTouristCenter_BlockData:
+ShamoutiMerchant_BlockData:
+ShamoutiHouse_BlockData:
 ShamoutiEastBeachVilla_BlockData:
 ShamoutiWestBeachShack_BlockData:
+ShamoutiWestBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
 	INCBIN "maps/House1.blk"
 

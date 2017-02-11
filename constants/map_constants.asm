@@ -575,9 +575,13 @@ MAP_NONE   EQU 0
 	mapgroup NOISY_FOREST,                               20, 22 ;  7
 	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  8
 	mapgroup SHAMOUTI_HOTEL,                              4,  4 ;  9
-	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 10
-	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 11
-	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 12
+	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 10
+	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 11
+	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 12
+	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 13
+	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 14
+	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 15
+	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 16
 
 
 ; elevator floors

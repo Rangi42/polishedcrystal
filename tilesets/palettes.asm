@@ -100,14 +100,23 @@ LoadSpecialMapPalette: ; 494ac
 	jr nz, .ok
 	ld a, [BackupMapGroup]
 	cp GROUP_SHAMOUTI_POKECENTER_1F
-	jr nz, .ok
+	jr nz, .normal_pokecenter
 	ld a, [BackupMapNumber]
 	cp MAP_SHAMOUTI_POKECENTER_1F
-	jr nz, .ok
+	jr nz, .normal_pokecenter
+	jr .shamouti_pokecenter
+.ok
+	ld a, [MapGroup]
+	cp GROUP_SHAMOUTI_POKECENTER_1F
+	jr nz, .normal_pokecenter
+	ld a, [MapNumber]
+	cp MAP_SHAMOUTI_POKECENTER_1F
+	jr nz, .normal_pokecenter
+.shamouti_pokecenter
 	call LoadShamoutiPokeCenterPalette
 	scf
 	ret
-.ok
+.normal_pokecenter
 	call LoadPokeCenterPalette
 	scf
 	ret

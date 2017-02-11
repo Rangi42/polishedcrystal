@@ -737,6 +737,10 @@
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
 	map_header_2 ShamoutiHotel, SHAMOUTI_HOTEL, $0, 0
+	map_header_2 ShamoutiTouristCenter, SHAMOUTI_TOURIST_CENTER, $0, 0
+	map_header_2 ShamoutiMerchant, SHAMOUTI_MERCHANT, $0, 0
+	map_header_2 ShamoutiHouse, SHAMOUTI_HOUSE, $0, 0
 	map_header_2 ShamoutiEastBeachVilla, SHAMOUTI_EAST_BEACH_VILLA, $0, 0
 	map_header_2 ShamoutiWestBeachShack, SHAMOUTI_WEST_BEACH_SHACK, $0, 0
+	map_header_2 ShamoutiWestBeachHouse, SHAMOUTI_WEST_BEACH_HOUSE, $0, 0
 	map_header_2 RockyBeachHouse, ROCKY_BEACH_HOUSE, $0, 0

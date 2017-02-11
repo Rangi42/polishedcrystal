@@ -26,10 +26,10 @@ Route10North_MapScriptHeader:
 	dbw MAPCALLBACK_OBJECTS, .Zapdos
 
 .Trigger0:
-	priorityjump Route10NorthLawrenceEncounter1Script
 	end
 
 .Trigger1:
+	priorityjump Route10NorthLawrenceEncounter1Script
 	end
 
 .FlyPoint:
@@ -111,7 +111,7 @@ Route10NorthLawrenceEncounter1Script:
 	pause 15
 	special Special_FadeInQuickly
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
-	dotrigger $1
+	dotrigger $0
 	special RestartMapMusic
 	end
 
