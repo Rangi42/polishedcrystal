@@ -44,8 +44,8 @@
 	map_header_2 BlackthornCity, BLACKTHORN_CITY, $71, SOUTH
 	connection south, ROUTE_45, Route45, -2, 0, 12
 
-	map_header_2 SilverCaveOutside, SILVER_CAVE_OUTSIDE, $2c, EAST
-	connection east, ROUTE_28, Route28, 9, 0, 9
+	map_header_2 SilverCaveOutside, SILVER_CAVE_OUTSIDE, $71, EAST
+	connection east, ROUTE_28, Route28, 6, 0, 9
 
 	map_header_2 Route26, ROUTE_26, $5, WEST
 	connection west, ROUTE_27, Route27, 45, 0, 9
@@ -54,8 +54,8 @@
 	connection west, NEW_BARK_TOWN, NewBarkTown, 0, 0, 9
 	connection east, ROUTE_26, Route26, -3, 42, 12
 
-	map_header_2 Route28, ROUTE_28, $2c, WEST
-	connection west, SILVER_CAVE_OUTSIDE, SilverCaveOutside, -3, 6, 12
+	map_header_2 Route28, ROUTE_28, $71, WEST
+	connection west, SILVER_CAVE_OUTSIDE, SilverCaveOutside, -3, 3, 12
 
 	map_header_2 Route29, ROUTE_29, $5, NORTH | WEST | EAST
 	connection north, ROUTE_46, Route46, 10, 0, 10

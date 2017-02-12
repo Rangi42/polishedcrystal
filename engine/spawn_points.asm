@@ -35,7 +35,7 @@ ENDM
 	spawn MAHOGANY_TOWN,              15, 14
 	spawn LAKE_OF_RAGE,               21, 29
 	spawn BLACKTHORN_CITY,            21, 30
-	spawn SILVER_CAVE_OUTSIDE,        23, 20
+	spawn SILVER_CAVE_OUTSIDE,        23, 14
 	spawn FAST_SHIP_CABINS_SW_SSW_NW,  6,  2
 	spawn N_A,                        -1, -1
 

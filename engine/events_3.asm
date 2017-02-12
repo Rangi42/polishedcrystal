@@ -540,7 +540,7 @@ treemon_map: macro
 endm
 	treemon_map ROUTE_26, 4
 	treemon_map ROUTE_27, 4
-	treemon_map ROUTE_28, 0
+	treemon_map ROUTE_28, 1
 	treemon_map ROUTE_29, 3
 	treemon_map ROUTE_30, 3
 	treemon_map ROUTE_31, 3
@@ -572,7 +572,7 @@ endm
 	treemon_map MAHOGANY_TOWN, 0
 	treemon_map LAKE_OF_RAGE, 5
 	treemon_map BLACKTHORN_CITY, 0
-	treemon_map SILVER_CAVE_OUTSIDE, 0
+	treemon_map SILVER_CAVE_OUTSIDE, 1
 	treemon_map ILEX_FOREST, 6
 	treemon_map MURKY_SWAMP, 6
 	treemon_map YELLOW_FOREST, 6

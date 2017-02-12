@@ -373,7 +373,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 19
 
 	mapgroup ROUTE_28,                                    9, 20 ;  1
-	mapgroup SILVER_CAVE_OUTSIDE,                        18, 20 ;  2
+	mapgroup SILVER_CAVE_OUTSIDE,                        15, 20 ;  2
 	mapgroup SILVER_CAVE_POKECENTER_1F,                   4,  6 ;  3
 	mapgroup ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4
 	mapgroup NAVEL_ROCK_OUTSIDE,                         16, 13 ;  5
