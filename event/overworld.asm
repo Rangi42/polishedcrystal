@@ -1828,6 +1828,14 @@ BikeFunction: ; d0b3
 	call DelayFrame
 	call MaxVolume
 	ld de, MUSIC_BICYCLE
+	ld a, [MapGroup]
+	cp GROUP_ROUTE_18_WEST
+	jr nz, .not_route_18_west
+	ld a, [MapNumber]
+	cp MAP_ROUTE_18_WEST
+	jr z, .not_route_18_west
+	ld de, MUSIC_BICYCLE_XY
+.not_route_18_west
 	ld a, e
 	ld [wMapMusic], a
 	call PlayMusic

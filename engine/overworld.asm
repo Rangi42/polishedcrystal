@@ -996,6 +996,7 @@ Group6Sprites:
 ; Route19
 ; Route20
 ; Route21
+; UragaChannelWest
 ; CinnabarIsland
 Group13Sprites:
 ; Route1
@@ -1337,6 +1338,7 @@ Group17Sprites:
 ; Route14
 ; Route15
 ; Route18
+; UragaChannelEast
 ; FuchsiaCity
 ; SafariZoneEast
 ; SafariZoneHub

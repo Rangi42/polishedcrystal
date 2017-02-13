@@ -164,13 +164,14 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_19,                                   29, 10 ;  8
 	mapgroup ROUTE_20,                                    9, 48 ;  9
 	mapgroup ROUTE_21,                                   48, 10 ; 10
-	mapgroup CINNABAR_ISLAND,                            11, 12 ; 11
-	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 12
-	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 13
-	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ; 14
-	mapgroup POKEMON_MANSION_1F,                         14, 15 ; 15
-	mapgroup POKEMON_MANSION_B1F,                        16, 17 ; 16
-	mapgroup CINNABAR_LAB,                                9, 16 ; 17
+	mapgroup URAGA_CHANNEL_WEST,                          9, 12 ; 11
+	mapgroup CINNABAR_ISLAND,                            11, 12 ; 12
+	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 13
+	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 14
+	mapgroup CINNABAR_VOLCANO_B2F,                       14, 14 ; 15
+	mapgroup POKEMON_MANSION_1F,                         14, 15 ; 16
+	mapgroup POKEMON_MANSION_B1F,                        16, 17 ; 17
+	mapgroup CINNABAR_LAB,                                9, 16 ; 18
 
 	newgroup                                                    ;  7
 
@@ -402,36 +403,37 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_16,                                   11, 11 ;  2
 	mapgroup ROUTE_17,                                   63, 10 ;  3
 	mapgroup ROUTE_18_WEST,                               9, 10 ;  4
-	mapgroup CELADON_CITY,                               18, 22 ;  5
-	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  6
-	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  7
-	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ;  8
-	mapgroup CELADON_DEPT_STORE_4F,                       4,  8 ;  9
-	mapgroup CELADON_DEPT_STORE_5F,                       4,  8 ; 10
-	mapgroup CELADON_DEPT_STORE_6F,                       4,  8 ; 11
-	mapgroup CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 12
-	mapgroup CELADON_MANSION_1F,                          5,  4 ; 13
-	mapgroup CELADON_MANSION_2F,                          5,  4 ; 14
-	mapgroup CELADON_MANSION_3F,                          5,  4 ; 15
-	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 16
-	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 17
-	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 19
-	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 20
-	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 21
-	mapgroup CELADON_GYM,                                 9,  5 ; 22
-	mapgroup CELADON_CAFE,                                4,  6 ; 23
-	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 24
-	mapgroup CELADON_HOTEL,                               4,  7 ; 25
-	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 26
-	mapgroup ROUTE_16_GATE,                               5,  5 ; 27
-	mapgroup ROUTE_16_GATE_2F,                            4,  4 ; 28
-	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 30
-	mapgroup ROUTE_18_GATE,                               5,  5 ; 31
-	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 32
-	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 33
-	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 34
-	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 35
-	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 36
+	mapgroup URAGA_CHANNEL_EAST,                          9, 17 ;  5
+	mapgroup CELADON_CITY,                               18, 22 ;  6
+	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  7
+	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  8
+	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ;  9
+	mapgroup CELADON_DEPT_STORE_4F,                       4,  8 ; 10
+	mapgroup CELADON_DEPT_STORE_5F,                       4,  8 ; 11
+	mapgroup CELADON_DEPT_STORE_6F,                       4,  8 ; 12
+	mapgroup CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 13
+	mapgroup CELADON_MANSION_1F,                          5,  4 ; 14
+	mapgroup CELADON_MANSION_2F,                          5,  4 ; 15
+	mapgroup CELADON_MANSION_3F,                          5,  4 ; 16
+	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 17
+	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 19
+	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 20
+	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 21
+	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 22
+	mapgroup CELADON_GYM,                                 9,  5 ; 23
+	mapgroup CELADON_CAFE,                                4,  6 ; 24
+	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 25
+	mapgroup CELADON_HOTEL,                               4,  7 ; 26
+	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 27
+	mapgroup ROUTE_16_GATE,                               5,  5 ; 28
+	mapgroup ROUTE_16_GATE_2F,                            4,  4 ; 30
+	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 31
+	mapgroup ROUTE_18_GATE,                               5,  5 ; 32
+	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 33
+	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 34
+	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 35
+	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 36
+	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 37
 
 	newgroup                                                    ; 22
 

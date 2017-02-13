@@ -54,6 +54,24 @@
 	db 53, QUAGSIRE
 	db 55, TENTACRUEL
 
+	map ROUTE_14
+	db 6 percent ; encounter rate
+	db 49, TENTACOOL
+	db 53, QUAGSIRE
+	db 55, TENTACRUEL
+
+	map LUCKY_ISLAND
+	db 6 percent ; encounter rate
+	db 49, TENTACOOL
+	db 53, QUAGSIRE
+	db 55, TENTACRUEL
+
+	map ROUTE_18_WEST
+	db 6 percent ; encounter rate
+	db 54, TENTACOOL
+	db 56, TENTACOOL
+	db 58, TENTACRUEL
+
 	map ROUTE_19
 	db 6 percent ; encounter rate
 	db 54, TENTACOOL
@@ -161,6 +179,18 @@
 	db 48, MAGIKARP
 	db 52, POLIWHIRL
 	db 54, KINGLER
+
+	map URAGA_CHANNEL_EAST
+	db 6 percent ; encounter rate
+	db 54, TENTACOOL
+	db 56, TENTACOOL
+	db 58, TENTACRUEL
+
+	map URAGA_CHANNEL_WEST
+	db 6 percent ; encounter rate
+	db 54, TENTACOOL
+	db 56, TENTACOOL
+	db 58, TENTACRUEL
 
 	map CERULEAN_CAVE_1F
 	db 6 percent ; encounter rate

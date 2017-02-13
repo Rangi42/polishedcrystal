@@ -87,3 +87,9 @@ LuckyIsland_BlockData:
 
 Route32Coast_BlockData:
 	INCBIN "maps/Route32Coast.blk"
+
+UragaChannelEast_BlockData:
+	INCBIN "maps/UragaChannelEast.blk"
+
+UragaChannelWest_BlockData:
+	INCBIN "maps/UragaChannelWest.blk"

@@ -3765,19 +3765,13 @@ CatchTutorial:: ; 4e554
 	xor a
 	ld [hJoyDown], a
 	ld [hJoyPressed], a
-	ld a, [Options1]
-	push af
-	and $f8
-	add $3
-	ld [Options1], a
+
 	ld hl, .AutoInput
 	ld a, BANK(.AutoInput)
 	call StartAutoInput
 	farcall StartBattle
 	call StopAutoInput
-	pop af
 
-	ld [Options1], a
 	ld hl, ExtraName
 	ld de, PlayerName
 	ld bc, NAME_LENGTH

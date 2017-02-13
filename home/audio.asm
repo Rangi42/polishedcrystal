@@ -462,16 +462,19 @@ SpecialMapMusic:: ; 3d62
 
 .not_route_23
 	ld a, [MapGroup]
-	cp GROUP_ROUTE_16
-	jr nz, .not_route_16_bike
+	cp GROUP_ROUTE_16 ; same as GROUP_ROUTE_18_WEST
+	jr nz, .not_cycling_road_bike
 	ld a, [MapNumber]
 	cp MAP_ROUTE_16
-	jr nz, .not_route_16_bike
+	jr z, .route_16
+	cp MAP_ROUTE_18_WEST
+	jr nz, .not_cycling_road_bike
+.route_16
 	ld a, [PlayerState]
 	cp PLAYER_BIKE
-	jr z, .route_16_bike
+	jr z, .cycling_road_bike
 
-.not_route_16_bike
+.not_cycling_road_bike
 	ld a, [PlayerState]
 	cp PLAYER_SURF
 	jr z, .surf
@@ -491,7 +494,7 @@ SpecialMapMusic:: ; 3d62
 	scf
 	ret
 
-.route_16_bike
+.cycling_road_bike
 	ld de, MUSIC_BICYCLE_XY
 	scf
 	ret

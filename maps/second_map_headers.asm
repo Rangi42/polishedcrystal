@@ -168,9 +168,10 @@
 	connection north, ROUTE_1, Route1, 0, 0, 10
 	connection south, ROUTE_21, Route21, 0, 0, 10
 
-	map_header_2 Route21, ROUTE_21, $43, NORTH | SOUTH
+	map_header_2 Route21, ROUTE_21, $43, NORTH | SOUTH | EAST
 	connection north, PALLET_TOWN, PalletTown, 0, 0, 10
 	connection south, CINNABAR_ISLAND, CinnabarIsland, 0, 0, 10
+	connection east, URAGA_CHANNEL_WEST, UragaChannelWest, 19, 0, 9
 
 	map_header_2 CinnabarIsland, CINNABAR_ISLAND, $43, NORTH | EAST
 	connection north, ROUTE_21, Route21, 0, 0, 10
@@ -193,9 +194,18 @@
 	connection west, ROUTE_18_WEST, Route18West, 0, 0, 9
 	connection east, FUCHSIA_CITY, FuchsiaCity, -3, 4, 14
 
-	map_header_2 Route18West, ROUTE_18_WEST, $43, NORTH | EAST
+	map_header_2 Route18West, ROUTE_18_WEST, $43, NORTH | WEST | EAST
 	connection north, ROUTE_17, Route17, 0, 0, 10
+	connection west, URAGA_CHANNEL_EAST, UragaChannelEast, 0, 0, 9
 	connection east, ROUTE_18_EAST, Route18East, 0, 0, 9
+
+	map_header_2 UragaChannelEast, URAGA_CHANNEL_EAST, $43, WEST | EAST
+	connection west, URAGA_CHANNEL_WEST, UragaChannelWest, 0, 0, 9
+	connection east, ROUTE_18_WEST, Route18West, 0, 0, 9
+
+	map_header_2 UragaChannelWest, URAGA_CHANNEL_WEST, $43, WEST | EAST
+	connection west, ROUTE_21, Route21, -3, 22, 9
+	connection east, URAGA_CHANNEL_EAST, UragaChannelEast, 0, 0, 9
 
 	map_header_2 Route17, ROUTE_17, $43, NORTH | SOUTH
 	connection north, ROUTE_16, Route16, 0, 0, 10
