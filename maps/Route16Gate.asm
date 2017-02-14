@@ -68,10 +68,10 @@ Route16Gate_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $5, $0, 4, ROUTE_16
-	warp_def $6, $0, 5, ROUTE_16
-	warp_def $5, $9, 2, ROUTE_16
-	warp_def $6, $9, 3, ROUTE_16
+	warp_def $5, $0, 1, ROUTE_16_SOUTH
+	warp_def $6, $0, 2, ROUTE_16_SOUTH
+	warp_def $5, $9, 2, ROUTE_16_NORTH
+	warp_def $6, $9, 3, ROUTE_16_NORTH
 	warp_def $8, $8, 1, ROUTE_16_GATE_2F
 
 .XYTriggers:

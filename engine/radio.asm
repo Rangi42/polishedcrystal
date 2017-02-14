@@ -1353,7 +1353,7 @@ PeoplePlaces6: ; Places
 	map CERULEAN_POLICE_STATION
 	map ROUTE_12_NORTH
 	map ROUTE_11
-	map ROUTE_16
+	map ROUTE_16_NORTH
 	map ROUTE_14
 
 PnP_Text5:

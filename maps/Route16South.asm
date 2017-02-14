@@ -1,8 +1,7 @@
 const_value set 2
-	const ROUTE16_CUT_TREE
 	const ROUTE16_OFFICER_F
 
-Route16_MapScriptHeader:
+Route16South_MapScriptHeader:
 .MapTriggers:
 	db 0
 
@@ -14,15 +13,7 @@ Route16_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
 UnknownScript_0x1ad318:
-	checkcode VAR_YCOORD
-	if_less_than $a, UnknownScript_0x1ad328
-	checkcode VAR_XCOORD
-	if_greater_than $d, UnknownScript_0x1ad328
 	setflag ENGINE_ALWAYS_ON_BIKE
-	return
-
-UnknownScript_0x1ad328:
-	clearflag ENGINE_ALWAYS_ON_BIKE
 	return
 
 OfficerfJennyScript:
@@ -56,9 +47,6 @@ OfficerfJennyScript:
 	waitbutton
 	closetext
 	end
-
-Route16CutTree:
-	jumpstd cuttree
 
 CyclingRoadSign:
 	jumptext CyclingRoadSignText
@@ -96,15 +84,12 @@ CyclingRoadSignText:
 	line "all the way!"
 	done
 
-Route16_MapEventHeader:
+Route16South_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 5
-	warp_def $1, $5, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
-	warp_def $a, $e, 3, ROUTE_16_GATE
-	warp_def $b, $e, 4, ROUTE_16_GATE
+	db 2
 	warp_def $a, $9, 1, ROUTE_16_GATE
 	warp_def $b, $9, 2, ROUTE_16_GATE
 
@@ -116,6 +101,5 @@ Route16_MapEventHeader:
 	signpost 9, 5, SIGNPOST_READ, CyclingRoadSign
 
 .PersonEvents:
-	db 2
-	person_event SPRITE_CUT_TREE, 2, 17, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16CutTree, EVENT_ROUTE_16_CUT_TREE
+	db 1
 	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1

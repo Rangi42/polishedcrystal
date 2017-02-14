@@ -462,10 +462,10 @@ SpecialMapMusic:: ; 3d62
 
 .not_route_23
 	ld a, [MapGroup]
-	cp GROUP_ROUTE_16 ; same as GROUP_ROUTE_18_WEST
+	cp GROUP_ROUTE_16_SOUTH ; same as GROUP_ROUTE_18_WEST
 	jr nz, .not_cycling_road_bike
 	ld a, [MapNumber]
-	cp MAP_ROUTE_16
+	cp MAP_ROUTE_16_SOUTH
 	jr z, .route_16
 	cp MAP_ROUTE_18_WEST
 	jr nz, .not_cycling_road_bike

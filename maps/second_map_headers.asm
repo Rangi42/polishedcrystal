@@ -204,19 +204,21 @@
 	connection east, ROUTE_18_WEST, Route18West, 0, 0, 9
 
 	map_header_2 UragaChannelWest, URAGA_CHANNEL_WEST, $43, WEST | EAST
-	connection west, ROUTE_21, Route21, -3, 22, 9
+	connection west, ROUTE_21, Route21, -3, 16, 12
 	connection east, URAGA_CHANNEL_EAST, UragaChannelEast, 0, 0, 9
 
 	map_header_2 Route17, ROUTE_17, $43, NORTH | SOUTH
-	connection north, ROUTE_16, Route16, 0, 0, 10
+	connection north, ROUTE_16_SOUTH, Route16South, 0, 0, 10
 	connection south, ROUTE_18_WEST, Route18West, 0, 0, 10
 
-	map_header_2 Route16, ROUTE_16, $f, SOUTH | EAST
+	map_header_2 Route16South, ROUTE_16_SOUTH, $f, SOUTH
 	connection south, ROUTE_17, Route17, 0, 0, 10
+
+	map_header_2 Route16North, ROUTE_16_NORTH, $f, EAST
 	connection east, CELADON_CITY, CeladonCity, -3, 7, 10
 
 	map_header_2 CeladonCity, CELADON_CITY, $f, WEST | EAST
-	connection west, ROUTE_16, Route16, 10, 0, 8
+	connection west, ROUTE_16_NORTH, Route16North, 10, 0, 8
 	connection east, ROUTE_7, Route7, 5, 0, 9
 
 	map_header_2 Route7, ROUTE_7, $f, WEST | EAST
@@ -338,10 +340,10 @@
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24
 	connection west, ROUTE_41, Route41, -3, 0, 20
 
-	map_header_2 Route23, ROUTE_23, $0, NORTH
+	map_header_2 Route23, ROUTE_23, $f, NORTH
 	connection north, INDIGO_PLATEAU, IndigoPlateau, 0, 0, 10
 
-	map_header_2 IndigoPlateau, INDIGO_PLATEAU, $0, SOUTH
+	map_header_2 IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
 	connection south, ROUTE_23, Route23, 0, 0, 10
 
 	map_header_2 ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST

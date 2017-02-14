@@ -647,7 +647,7 @@ MapIlexForestSignpost4Script:
 	clearevent EVENT_ROUTE_22_SILVER
 	clearevent EVENT_ROUTE_22_GIOVANNI
 	domaptrigger ROUTE_22, $1
-	warp ROUTE_22, $20, $9
+	warp ROUTE_22, $16, $9
 	end
 
 IlexForestCutTree:
