@@ -164,7 +164,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_19,                                   29, 10 ;  8
 	mapgroup ROUTE_20,                                    9, 48 ;  9
 	mapgroup ROUTE_21,                                   48, 10 ; 10
-	mapgroup URAGA_CHANNEL_WEST,                          9, 12 ; 11
+	mapgroup URAGA_CHANNEL_WEST,                          9,  6 ; 11
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 12
 	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 13
 	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 14
@@ -404,7 +404,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_16_SOUTH,                             11, 11 ;  3
 	mapgroup ROUTE_17,                                   63, 10 ;  4
 	mapgroup ROUTE_18_WEST,                               9, 10 ;  5
-	mapgroup URAGA_CHANNEL_EAST,                          9, 17 ;  6
+	mapgroup URAGA_CHANNEL_EAST,                          9, 23 ;  6
 	mapgroup CELADON_CITY,                               18, 22 ;  7
 	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  8
 	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  9

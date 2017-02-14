@@ -65,7 +65,6 @@ Tileset04Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset03Anim:
-Tileset41Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -253,6 +252,22 @@ Tileset39Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $31, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
+	dw NULL,  DoneTileAnimation
+
+Tileset41Anim:
+	dw VTiles2 tile $14, AnimateKantoWaterTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $20, ScrollTileUp
+	dw VTiles2 tile $21, ScrollTileDown
+	dw VTiles2 tile $22, ScrollTileLeft
+	dw VTiles2 tile $23, ScrollTileRight
+	dw NULL,  AnimateKantoFlowerTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
 Tileset42Anim:

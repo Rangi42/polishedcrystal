@@ -21,14 +21,14 @@ UragaChannelWest_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $9, $14, 1, URAGA_CHANNEL_EAST
+	warp_def $9, $8, 1, URAGA_CHANNEL_EAST
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 1
-	signpost 11, 31, SIGNPOST_READ, ScaryCaveEastSign
+	signpost 11, 9, SIGNPOST_READ, ScaryCaveWestSign
 
 .PersonEvents:
 	db 0

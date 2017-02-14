@@ -36,9 +36,9 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .faraway_island
 	cp TILESET_SHAMOUTI_ISLAND
 	jp z, .shamouti_island
-	cp TILESET_ILEX_FOREST
+	cp TILESET_FOREST
 	jp z, .maybe_yellow_forest
-	cp TILESET_TRAIN_STATION
+	cp TILESET_GYM_2
 	jp z, .maybe_viridian_gym
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower

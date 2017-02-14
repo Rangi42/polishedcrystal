@@ -31,14 +31,14 @@ UragaChannelEast_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $b, $4, 1, URAGA_CHANNEL_WEST
+	warp_def $b, $2, 1, URAGA_CHANNEL_WEST
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 5, 23, SIGNPOST_READ, UragaChannelSign
+	signpost 5, 45, SIGNPOST_READ, UragaChannelSign
 	signpost 13, 3, SIGNPOST_READ, ScaryCaveEastSign
 
 .PersonEvents:
