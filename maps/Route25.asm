@@ -8,6 +8,8 @@ const_value set 2
 	const ROUTE25_SUPER_NERD
 	const ROUTE25_POKE_BALL
 	const ROUTE25_CUT_TREE
+	const ROUTE25_YOUNGSTER4
+	const ROUTE25_SLOWPOKE
 	const ROUTE25_COOLTRAINER_M
 
 Route25_MapScriptHeader:
@@ -90,6 +92,19 @@ SupernerdPatScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x19f41a
+	waitbutton
+	closetext
+	end
+
+Route25MewYoungsterScript:
+	jumptextfaceplayer Route25MewYoungsterText
+
+Route25SlowpokeScript:
+	opentext
+	writetext Route25SlowpokeText1
+	pause 60
+	writetext Route25SlowpokeText2
+	cry SLOWPOKE
 	waitbutton
 	closetext
 	end
@@ -216,6 +231,25 @@ UnknownText_0x19f41a:
 	line "cheat anymore…"
 	done
 
+Route25MewYoungsterText:
+	text "One time I saw a"
+	line "Mew around here!"
+
+	para "You don't believe"
+	line "me? Slowpoke saw"
+	cont "it too!"
+	done
+
+Route25SlowpokeText1:
+	text "Slowpoke: …"
+
+	para "…… …… ……"
+	done
+
+Route25SlowpokeText2:
+	text "…… ……Yawn?"
+	done
+
 Route25_MapEventHeader:
 	; filler
 	db 0, 0
@@ -231,7 +265,7 @@ Route25_MapEventHeader:
 	signpost 5, 4, SIGNPOST_ITEM, Route25HiddenPotion
 
 .PersonEvents:
-	db 10
+	db 12
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
 	person_event SPRITE_LASS, 11, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassEllen, -1
 	person_event SPRITE_YOUNGSTER, 8, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyJoe, -1
@@ -241,4 +275,6 @@ Route25_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 7, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdPat, -1
 	person_event SPRITE_POKE_BALL, 4, 42, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route25Protein, EVENT_ROUTE_25_PROTEIN
 	person_event SPRITE_CUT_TREE, 6, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route25CutTree, EVENT_ROUTE_25_CUT_TREE
+	person_event SPRITE_YOUNGSTER, 4, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route25MewYoungsterScript, -1
+	person_event SPRITE_SLOWPOKE, 4, 37, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route25SlowpokeScript, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 47, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

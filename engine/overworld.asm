@@ -1056,10 +1056,10 @@ Group28Sprites:
 	; 12 walking sprites (9 that walk)
 	db SPRITE_CUT_TREE
 	db SPRITE_POKE_BALL
+	db SPRITE_SLOWPOKE
 	db SPRITE_SLOWBRO
 	db SPRITE_ZAPDOS
-	; 16 total sprites
-	db SPRITE_POKE_BALL
+	; 17 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
