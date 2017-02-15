@@ -49,8 +49,8 @@ MAP_NONE   EQU 0
 	mapgroup TIN_TOWER_9F,                                9, 10 ; 12
 	mapgroup BURNED_TOWER_1F,                             9, 10 ; 13
 	mapgroup BURNED_TOWER_B1F,                            9, 10 ; 14
-	mapgroup NATIONAL_PARK,                              27, 20 ; 15
-	mapgroup NATIONAL_PARK_BUG_CONTEST,                  27, 20 ; 16
+	mapgroup NATIONAL_PARK,                              27, 21 ; 15
+	mapgroup NATIONAL_PARK_BUG_CONTEST,                  27, 21 ; 16
 	mapgroup RADIO_TOWER_1F,                              4,  9 ; 17
 	mapgroup RADIO_TOWER_2F,                              4,  9 ; 18
 	mapgroup RADIO_TOWER_3F,                              4,  9 ; 19
