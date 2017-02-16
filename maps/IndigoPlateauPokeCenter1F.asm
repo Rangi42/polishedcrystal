@@ -66,7 +66,7 @@ PlateauRivalBattle1:
 	iffalse PlateauRivalScriptDone
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue PlateauRivalScriptDone
-	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, $11, $7
+	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, $f, $9
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
 	spriteface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -83,7 +83,7 @@ PlateauRivalBattle1:
 	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
 	iftrue PlateauRivalScriptDone
 .LyraFight:
-	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, $11, $7
+	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, $f, $9
 	appear INDIGOPLATEAUPOKECENTER1F_LYRA
 	spriteface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15

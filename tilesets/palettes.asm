@@ -213,6 +213,15 @@ LoadSpecialMapPalette: ; 494ac
 	jr z, .violet_ecruteak
 .not_ecruteak_city
 	ld a, [MapGroup]
+	cp GROUP_SILVER_CAVE_OUTSIDE
+	jr nz, .not_silver_cave_outside
+	ld a, [MapNumber]
+	cp MAP_SILVER_CAVE_OUTSIDE
+	jr z, .violet_ecruteak
+	cp MAP_ROUTE_28
+	jr z, .violet_ecruteak
+.not_silver_cave_outside
+	ld a, [MapGroup]
 	cp GROUP_BELLCHIME_TRAIL
 	jr nz, .not_bellchime_trail
 	ld a, [MapNumber]
