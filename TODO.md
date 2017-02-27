@@ -57,6 +57,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
 * Show item pictures in bag, and possibly when picking them up
+* Make Eggs use their Pokémon's palette
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
 * Design custom animations for new moves
@@ -150,3 +151,15 @@ Find locations for:
 * Bottle Cap (rock smash, fishing)
 * Cherish Ball
 * Soothe Bell (add in National Park)
+
+
+### New music
+
+* S/M Battle! Trainer (for Shamouti trainers)
+* S/M Battle! Elite 4 (for the Elite 4)
+* X/Y Santalune Forest (for Seafoam Islands)
+* B/W Dragonspiral Tower (for haunted Lavender Radio Tower and/or Soul House basement)
+* B/W Black City (for Silph Co. and/or Lavender Radio Tower post-haunting)
+* X/Y Battle! Xerneas/Yveltal (for Celebi)
+* B/W Battle! Elite Four (for Caitlin)
+* S/M Malie City (Day) (for Shamouti Shrine)
