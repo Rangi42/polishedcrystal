@@ -1432,15 +1432,44 @@ BattleAnim_SetBGPals: ; cc91a
 	push af
 	ld a, $5
 	ld [rSVBK], a
+	ld a, b
+	cp $1b
+	ld a, [rBGP]
+	jr z, .is_1b
+	cp $1b
+	jr nz, .not_1b
+.is_1b
+	ld c, 8 palettes
+	ld hl, UnknBGPals
+.loop_UnknBGPals
+	ld a, [hl]
+	ld b, a
+	ld a, $ff
+	sub b
+	ld [hli], a
+	dec c
+	jr nz, .loop_UnknBGPals
+	ld c, $10
+	ld hl, UnknOBPals
+.loop_UnknOBPals
+	ld a, [hl]
+	ld b, a
+	ld a, $ff
+	sub b
+	ld [hli], a
+	dec c
+	jr nz, .loop_UnknOBPals
+	ld a, $e4
+.not_1b
+	push af
 	ld hl, BGPals
 	ld de, UnknBGPals
-	ld a, [rBGP]
 	ld b, a
-	ld c, $7
+	ld c, $8
 	call CopyPals
 	ld hl, OBPals
 	ld de, UnknOBPals
-	ld a, [rBGP]
+	pop af
 	ld b, a
 	ld c, $2
 	call CopyPals

@@ -303,6 +303,7 @@ BattleAnim_Moonblast:
 	anim_wait 17
 	anim_call BattleAnim_ShowMon_0
 	anim_wait 12
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_PlayRough:
@@ -886,6 +887,7 @@ BattleAnim_WillOWisp:
 	anim_obj ANIM_OBJ_0F, 17, 0,  6, 0, $4
 	anim_obj ANIM_OBJ_0F, 17, 0,  6, 0, $5
 	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FirePunch:
@@ -1283,6 +1285,7 @@ BattleAnim_ThunderWave:
 	anim_bgp $1b
 	anim_incobj  1
 	anim_wait 96
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Thunder:
@@ -1545,6 +1548,7 @@ BattleAnim_DragonPulse:
 	anim_wait 32
 	anim_call BattleAnim_ShowMon_1
 	anim_wait 1
+	anim_bgp $e4
 	anim_ret
 
 ; X-Scissor animation from Pokémon Prism
@@ -2501,6 +2505,7 @@ BattleAnim_NightSlash:
 	anim_obj ANIM_OBJ_3A, 19, 0,  5, 0, $0
 	anim_obj ANIM_OBJ_3A, 18, 4,  4, 4, $0
 	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Flash:
@@ -2622,6 +2627,7 @@ BattleAnim_NightShade:
 	anim_wait 96
 	anim_incbgeffect ANIM_BG_NIGHT_SHADE
 	anim_call BattleAnim_ShowMon_1
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Lick:
@@ -2674,6 +2680,7 @@ BattleAnim_DarkPulse:
 	anim_wait 32
 	anim_call BattleAnim_ShowMon_1
 	anim_wait 1
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_DreamEater:
@@ -2684,6 +2691,7 @@ BattleAnim_DreamEater:
 	anim_call BattleAnim_DreamEater_branch_cbab3
 	anim_wait 128
 	anim_wait 48
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_LeechLife:
@@ -3192,6 +3200,7 @@ BattleAnim_Nightmare:
 	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $a0
 	anim_sound 0, 1, SFX_NIGHTMARE
 	anim_wait 96
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FlameWheel:
@@ -3327,6 +3336,7 @@ BattleAnim_Aeroblast:
 	anim_obj ANIM_OBJ_27,  14, 0,   8, 4, $0
 	anim_obj ANIM_OBJ_28,  15, 6,   7, 6, $0
 	anim_wait 48
+	anim_bgp $e4
 	anim_ret
 
 ; Seed Bomb animation from Pokémon Prism
@@ -3598,6 +3608,7 @@ BattleAnim_ZapCannon:
 	anim_wait 16
 	anim_obj ANIM_OBJ_31, -15, 0,   7, 0, $0
 	anim_wait 128
+	anim_bgp $e4
 	anim_ret
 
 ; Flash Cannon animation from Pokémon Prism
@@ -3621,6 +3632,7 @@ BattleAnim_FlashCannon:
 	anim_wait 32
 	anim_call BattleAnim_ShowMon_1
 	anim_wait 1
+	anim_bgp $e4
 	anim_ret
 
 ; Aura Sphere animation from Pokémon Prism
@@ -3687,6 +3699,7 @@ BattleAnim_DestinyBond:
 	anim_sound 6, 2, SFX_WHIRLWIND
 	anim_obj ANIM_OBJ_9B,   5, 4,  15, 0, $2
 	anim_wait 128
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_DestinyBond_branch_cb104:
@@ -3694,6 +3707,7 @@ BattleAnim_DestinyBond_branch_cb104:
 	anim_sound 0, 1, SFX_KINESIS
 	anim_bgeffect ANIM_BG_RETURN_MON, $0, $0, $0
 	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_PerishSong:
@@ -4353,6 +4367,7 @@ BattleAnim_Crunch:
 	anim_sound 0, 1, SFX_BITE
 	anim_obj ANIM_OBJ_00,  16, 0,   8, 0, $18
 	anim_wait 8
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Moonlight:
@@ -4369,10 +4384,12 @@ BattleAnim_Moonlight:
 	anim_wait 63
 	anim_jumpif $3, BattleAnim_Moonlight_branch_cb7d7
 	anim_call BattleAnim_Moonlight_branch_cbc6a
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Moonlight_branch_cb7d7:
 	anim_call BattleAnim_Moonlight_branch_cbc80
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_HiddenPower:
@@ -4610,6 +4627,7 @@ BattleAnim_ShadowBall:
 	anim_wait 32
 	anim_obj ANIM_OBJ_1C, -16, 4,   7, 0, $10
 	anim_wait 24
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FutureSight:

@@ -315,6 +315,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Play B/W final Pokémon music for Gym Leaders and Elite 4.
 * Add: New title music after beating the Elite 4.
 * Add: Larger Kanto routes, like in RBY.
+* Add: Proper inverted colors in battle (by MeroMero).
 * Add: Evolution moves from Gen VII.
 * Add: Dark battle intro at night.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
