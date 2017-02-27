@@ -18,6 +18,7 @@
 * tonyism for the in-battle shiny icon code.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
 * bloodless for sprites of Buck, Veteran♂, Pikachu, Diglett, and Dugtrio.
+* spritershawn for sprites of Red, Blue, and Green.
 * The Pokémon Prism developers for overworld sprites of Beauty, Boarder, Roughneck, and Skier.
 * Kuroko Aizawa for Cheryl's sprite.
 * Twilir for Lyra's back sprite.
@@ -25,7 +26,7 @@
 * Nic7C5 for Yellow's sprite.
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
-* BettyNewbie for Green's sprite.
+* BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.

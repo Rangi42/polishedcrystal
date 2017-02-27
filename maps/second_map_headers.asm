@@ -745,6 +745,9 @@
 	map_header_2 PokemonMansion1F, POKEMON_MANSION_1F, $0, 0
 	map_header_2 PokemonMansionB1F, POKEMON_MANSION_B1F, $45, 0
 	map_header_2 CinnabarLab, CINNABAR_LAB, $0, 0
+	map_header_2 ScaryCave1F, SCARY_CAVE_1F, $9, 0
+	map_header_2 ScaryCaveB1F, SCARY_CAVE_B1F, $9, 0
+	map_header_2 ScaryCaveShipwreck, SCARY_CAVE_SHIPWRECK, $9, 0
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0

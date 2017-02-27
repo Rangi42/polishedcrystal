@@ -93,3 +93,13 @@ UragaChannelEast_BlockData:
 
 UragaChannelWest_BlockData:
 	INCBIN "maps/UragaChannelWest.blk"
+
+ScaryCave1F_BlockData:
+	INCBIN "maps/ScaryCave1F.blk"
+
+ScaryCaveB1F_BlockData:
+	INCBIN "maps/ScaryCaveB1F.blk"
+
+ScaryCaveShipwreck_BlockData:
+	INCBIN "maps/ScaryCaveShipwreck.blk"
+

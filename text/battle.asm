@@ -44,6 +44,7 @@ WantToBattleText::
 
 BattleText_WildFled: ; 0x807bd
 	text "Wild @"
+BattleText_LegendaryFled:
 	text_from_ram EnemyMonNick
 	text ""
 	line "fled!"
@@ -51,7 +52,7 @@ BattleText_WildFled: ; 0x807bd
 ; 0x807cf
 
 BattleText_EnemyFled: ; 0x807cf
-	text "Foe @"
+	text "The foe @"
 	text_from_ram EnemyMonNick
 	text ""
 	line "fled!"
@@ -199,7 +200,7 @@ BattleText_TheHailStopped:
 	prompt
 
 BattleText_EnemyPkmnFainted: ; 0x809a8
-	text "Foe @"
+	text "The foe @"
 	text_from_ram EnemyMonNick
 	text ""
 	line "fainted!"

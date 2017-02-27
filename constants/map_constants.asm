@@ -172,6 +172,9 @@ MAP_NONE   EQU 0
 	mapgroup POKEMON_MANSION_1F,                         14, 15 ; 16
 	mapgroup POKEMON_MANSION_B1F,                        16, 17 ; 17
 	mapgroup CINNABAR_LAB,                                9, 16 ; 18
+	mapgroup SCARY_CAVE_1F,                              17, 20 ; 19
+	mapgroup SCARY_CAVE_B1F,                             12, 12 ; 20
+	mapgroup SCARY_CAVE_SHIPWRECK,                        6,  6 ; 21
 
 	newgroup                                                    ;  7
 

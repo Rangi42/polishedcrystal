@@ -129,9 +129,17 @@ WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 	and $c0
 	add $2
 	ld [wBattleResult], a
+
+	ld hl, BattleText_LegendaryFled
+	ld a, [BattleType]
+	cp BATTLETYPE_ROAMING
+	jr z, .print_text
+	cp BATTLETYPE_CELEBI ; or BATTLETYPE_SUICUNE, BATTLETYPE_HO_OH, BATTLETYPE_LUGIA, BATTLETYPE_KANTO_LEGEND
+	jr nc, .print_text
+
+	ld hl, BattleText_WildFled
 	ld a, [wLinkMode]
 	and a
-	ld hl, BattleText_WildFled
 	jr z, .print_text
 
 	ld a, [wBattleResult]
@@ -9794,16 +9802,8 @@ BattleStartMessage: ; 3fc8b
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
 	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_CELEBI
-	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_SUICUNE
-	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_HO_OH
-	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_LUGIA
-	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_KANTO_LEGEND
-	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_CELEBI ; or BATTLETYPE_SUICUNE, BATTLETYPE_HO_OH, BATTLETYPE_LUGIA, BATTLETYPE_KANTO_LEGEND
+	jr nc, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 
 .PlaceBattleStartText:
