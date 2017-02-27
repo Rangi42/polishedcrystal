@@ -1829,24 +1829,12 @@ AIScoring: ; 38591
 INCLUDE "battle/ai/scoring.asm"
 
 GetTrainerClassName: ; 3952d
-	ld hl, RivalName
 	ld a, c
-	cp RIVAL1
-	jr z, .rival
-
 	ld [CurSpecies], a
 	ld a, TRAINER_NAME
 	ld [wNamedObjectTypeBuffer], a
 	call GetName
 	ld de, StringBuffer1
-	ret
-
-.rival
-	ld de, StringBuffer1
-	push de
-	ld bc, NAME_LENGTH
-	call CopyBytes
-	pop de
 	ret
 
 GetOTName: ; 39550
@@ -1855,11 +1843,7 @@ GetOTName: ; 39550
 	and a
 	jr nz, .ok
 
-	ld hl, RivalName
 	ld a, c
-	cp RIVAL1
-	jr z, .ok
-
 	ld [CurSpecies], a
 	ld a, TRAINER_NAME
 	ld [wNamedObjectTypeBuffer], a

@@ -26,8 +26,8 @@
 	db "Passerby@"         ; RIVAL0
 	db "Rival@"            ; RIVAL1
 	db "Rival@"            ; RIVAL2
-	db "Rival@"            ; LYRA1
-	db "Rival@"            ; LYRA2
+	db "<PK><MN> Trainer@" ; LYRA1
+	db "<PK><MN> Trainer@" ; LYRA2
 	db "Youngster@"        ; YOUNGSTER
 	db "Bug Catcher@"      ; BUG_CATCHER
 	db "Camper@"           ; CAMPER

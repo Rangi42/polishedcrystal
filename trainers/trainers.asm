@@ -2348,7 +2348,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2362,7 +2362,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2376,7 +2376,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2390,7 +2390,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2430,7 +2430,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2470,7 +2470,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2510,7 +2510,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2550,7 +2550,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2590,7 +2590,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2630,7 +2630,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2676,7 +2676,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2722,7 +2722,7 @@ Rival1Group:
 ; ================
 
 	; RIVAL1
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2774,7 +2774,7 @@ Rival2Group:
 ; ================
 
 	; RIVAL2
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2820,7 +2820,7 @@ Rival2Group:
 ; ================
 
 	; RIVAL2
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2866,7 +2866,7 @@ Rival2Group:
 ; ================
 
 	; RIVAL2
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2912,7 +2912,7 @@ Rival2Group:
 ; ================
 
 	; RIVAL2
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -2958,7 +2958,7 @@ Rival2Group:
 ; ================
 
 	; RIVAL2
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -3004,7 +3004,7 @@ Rival2Group:
 ; ================
 
 	; RIVAL2
-	db "?@"
+	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
