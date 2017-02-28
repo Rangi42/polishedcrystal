@@ -16,30 +16,42 @@ BlindingFlashPalette: ; 49418
 
 LoadSpecialMapPalette: ; 494ac
 	ld a, [wTileset]
+	ld hl, PokeComPalette
 	cp TILESET_POKECOM_CENTER
-	jp z, .pokecom_center
+	jp z, .load_eight_bg_palettes
+	ld hl, BattleTowerPalette
 	cp TILESET_BATTLE_TOWER
-	jp z, .battle_tower
-	cp TILESET_ICE_PATH
-	jp z, .ice_path
+	jp z, .load_eight_bg_palettes
+	ld hl, HousePalette
 	cp TILESET_HOUSE_1
-	jp z, .house
+	jp z, .load_eight_bg_palettes
+	ld hl, GatePalette
 	cp TILESET_GATE
-	jp z, .gate
+	jp z, .load_eight_bg_palettes
+	ld hl, RadioTowerPalette
 	cp TILESET_RADIO_TOWER
-	jp z, .radio_tower
+	jp z, .load_eight_bg_palettes
+	ld hl, CeladonMansionPalette
 	cp TILESET_CELADON_MANSION
-	jp z, .celadon_mansion
+	jp z, .load_eight_time_of_day_bg_palettes
+	ld hl, FarawayIslandPalette
+	cp TILESET_FARAWAY_ISLAND
+	jp z, .load_eight_time_of_day_bg_palettes
+	ld hl, ShamoutiIslandPalette
+	cp TILESET_SHAMOUTI_ISLAND
+	jp z, .load_eight_time_of_day_bg_palettes
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
-	cp TILESET_FARAWAY_ISLAND
-	jp z, .faraway_island
-	cp TILESET_SHAMOUTI_ISLAND
-	jp z, .shamouti_island
+	cp TILESET_ICE_PATH
+	jp z, .maybe_ice_path
 	cp TILESET_FOREST
-	jp z, .maybe_yellow_forest
+	jp z, .maybe_yellow_forest_or_murky_swamp
+	cp TILESET_GYM_1
+	jp z, .maybe_elite_room
 	cp TILESET_GYM_2
 	jp z, .maybe_viridian_gym
+	cp TILESET_OLIVINE_GYM
+	jp z, .maybe_lances_room
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
 	cp TILESET_MART
@@ -50,46 +62,10 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_special_johto_1
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
-	jp .do_nothing
-
-.pokecom_center
-	call LoadPokeComPalette
-	scf
+.do_nothing
+	and a
 	ret
-
-.battle_tower
-	call LoadBattleTowerPalette
-	scf
-	ret
-
-.ice_path
-	ld a, [wPermission] ; permission
-	and 7
-	cp 3 ; Hall of Fame
-	jp z, .do_nothing
-	call LoadIcePathPalette
-	scf
-	ret
-
-.house
-	call LoadHousePalette
-	scf
-	ret
-
-.gate
-	call LoadGatePalette
-	scf
-	ret
-
-.radio_tower
-	call LoadRadioTowerPalette
-	scf
-	ret
-
-.celadon_mansion
-	call LoadCeladonMansionPalette
-	scf
-	ret
+; 494f2
 
 .pokecenter
 	ld a, [MapGroup]
@@ -113,34 +89,75 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_SHAMOUTI_POKECENTER_1F
 	jr nz, .normal_pokecenter
 .shamouti_pokecenter
-	call LoadShamoutiPokeCenterPalette
-	scf
-	ret
+	ld hl, ShamoutiPokeCenterPalette
+	jp .load_eight_bg_palettes
+
 .normal_pokecenter
-	call LoadPokeCenterPalette
+	ld hl, PokeCenterPalette
+.load_eight_bg_palettes
+	ld a, $5
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	call FarCopyWRAM
 	scf
 	ret
 
-.faraway_island
-	call LoadFarawayIslandPalette
-	scf
-	ret
+.maybe_ice_path
+	ld a, [wPermission] ; permission
+	and 7
+	cp 3 ; Hall of Fame
+	jp z, .do_nothing
+	ld hl, IcePathPalette
+	jp .load_eight_bg_palettes
 
-.shamouti_island
-	call LoadShamoutiIslandPalette
-	scf
-	ret
-
-.maybe_yellow_forest
+.maybe_yellow_forest_or_murky_swamp
 	ld a, [MapGroup]
 	cp GROUP_YELLOW_FOREST
-	jp nz, .do_nothing
+	jr nz, .not_yellow_forest
 	ld a, [MapNumber]
 	cp MAP_YELLOW_FOREST
+	jr nz, .not_yellow_forest
+	ld hl, YellowForestPalette
+	jp .load_eight_time_of_day_bg_palettes
+
+.not_yellow_forest
+	ld a, [MapGroup]
+	cp GROUP_MURKY_SWAMP
 	jp nz, .do_nothing
-	call LoadYellowForestPalette
-	scf
-	ret
+	ld a, [MapNumber]
+	cp MAP_MURKY_SWAMP
+	jp nz, .do_nothing
+	ld hl, MurkySwampPalette
+	jp .load_eight_bg_palettes
+
+.maybe_elite_room
+	ld a, [MapGroup]
+	cp GROUP_WILLS_ROOM ; same as GROUP_KOGAS_ROOM, GROUP_BRUNOS_ROOM, and GROUP_KARENS_ROOM
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	ld hl, WillsRoomPalette
+	cp MAP_WILLS_ROOM
+	jp z, .load_eight_bg_palettes
+	ld hl, KogasRoomPalette
+	cp MAP_KOGAS_ROOM
+	jp z, .load_eight_bg_palettes
+	ld hl, BrunosRoomPalette
+	cp MAP_BRUNOS_ROOM
+	jp z, .load_eight_bg_palettes
+	ld hl, KarensRoomPalette
+	cp MAP_KARENS_ROOM
+	jp z, .load_eight_bg_palettes
+	jp .do_nothing
+
+.maybe_lances_room
+	ld a, [MapGroup]
+	cp GROUP_LANCES_ROOM
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_LANCES_ROOM
+	jp nz, .do_nothing
+	ld hl, LancesRoomPalette
+	jp .load_eight_bg_palettes
 
 .maybe_viridian_gym
 	ld a, [MapGroup]
@@ -149,9 +166,8 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_VIRIDIAN_GYM
 	jp nz, .do_nothing
-	call LoadViridianGymPalette
-	scf
-	ret
+	ld hl, ViridianGymPalette
+	jp .load_eight_bg_palettes
 
 .maybe_mystri_or_tower
 	ld a, [MapGroup]
@@ -160,9 +176,8 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_MYSTRI_STAGE
 	jp nz, .maybe_embedded_tower
-	call LoadMystriStagePalette
-	scf
-	ret
+	ld hl, MystriStagePalette
+	jp .load_eight_bg_palettes
 
 .maybe_embedded_tower
 	ld a, [MapGroup]
@@ -171,9 +186,8 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_EMBEDDED_TOWER
 	jp nz, .do_nothing
-	call LoadEmbeddedTowerPalette
-	scf
-	ret
+	ld hl, EmbeddedTowerPalette
+	jp .load_eight_bg_palettes
 
 .maybe_goldenrod_dept_store_roof
 	ld a, [MapGroup]
@@ -182,9 +196,8 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_GOLDENROD_DEPT_STORE_ROOF
 	jp nz, .do_nothing
-	call LoadGoldenrodDeptStoreRoofPalette
-	scf
-	ret
+	ld hl, GoldenrodDeptStoreRoofPalette
+	jp .load_eight_time_of_day_bg_palettes
 
 .maybe_celadon_home_decor_store_4f
 	ld a, [MapGroup]
@@ -193,52 +206,43 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_CELADON_HOME_DECOR_STORE_4F
 	jp nz, .do_nothing
-	call LoadCeladonHomeDecorStore4FPalette
-	scf
-	ret
+	ld hl, CeladonHomeDecorStore4FPalette
+	jp .load_eight_bg_palettes
 
 .maybe_special_johto_1
+	ld hl, VioletEcruteakPalette
 	ld a, [MapGroup]
 	cp GROUP_VIOLET_CITY
 	jr nz, .not_violet_city
 	ld a, [MapNumber]
 	cp MAP_VIOLET_CITY
-	jr z, .violet_ecruteak
+	jp z, .load_eight_time_of_day_bg_palettes
 .not_violet_city
 	ld a, [MapGroup]
 	cp GROUP_ECRUTEAK_CITY
 	jr nz, .not_ecruteak_city
 	ld a, [MapNumber]
 	cp MAP_ECRUTEAK_CITY
-	jr z, .violet_ecruteak
+	jp z, .load_eight_time_of_day_bg_palettes
 .not_ecruteak_city
 	ld a, [MapGroup]
 	cp GROUP_SILVER_CAVE_OUTSIDE
 	jr nz, .not_silver_cave_outside
 	ld a, [MapNumber]
 	cp MAP_SILVER_CAVE_OUTSIDE
-	jr z, .violet_ecruteak
+	jp z, .load_eight_time_of_day_bg_palettes
 	cp MAP_ROUTE_28
-	jr z, .violet_ecruteak
+	jp z, .load_eight_time_of_day_bg_palettes
 .not_silver_cave_outside
+	ld hl, BellchimeTrailPalette
 	ld a, [MapGroup]
 	cp GROUP_BELLCHIME_TRAIL
 	jr nz, .not_bellchime_trail
 	ld a, [MapNumber]
 	cp MAP_BELLCHIME_TRAIL
-	jr z, .bellchime_trail
+	jp z, .load_eight_time_of_day_bg_palettes
 .not_bellchime_trail
 	jp .do_nothing
-
-.violet_ecruteak
-	call LoadVioletEcruteakPalette
-	scf
-	ret
-
-.bellchime_trail
-	call LoadBellchimeTrailPalette
-	scf
-	ret
 
 .maybe_special_cave
 	ld a, [MapGroup]
@@ -246,352 +250,124 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
+	ld hl, CinnabarVolcanoPalette
 	cp CINNABAR_VOLCANO
-	jr z, .cinnabar_volcano
+	jp z, .load_eight_bg_palettes
+	ld hl, CeruleanCavePalette
 	cp CERULEAN_CAVE
-	jr z, .cerulean_cave
+	jp z, .load_eight_bg_palettes
+	ld hl, SilverCavePalette
 	cp SILVER_CAVE
-	jr z, .silver_cave
+	jp z, .load_eight_bg_palettes
 	cp NAVEL_ROCK
-	jr z, .navel_rock
-	jp .do_nothing
-
-.cinnabar_volcano
-	call LoadCinnabarVolcanoPalette
-	scf
-	ret
-
-.cerulean_cave
-	call LoadCeruleanCavePalette
-	scf
-	ret
-
-.silver_cave
-	call LoadSilverCavePalette
-	scf
-	ret
-
-.navel_rock
+	jp nz, .do_nothing
+	ld hl, NavelRockPalette
 	ld a, [MapGroup]
 	cp GROUP_NAVEL_ROCK_ROOF
-	jr nz, .navel_rock_day
+	jp nz, .load_eight_bg_palettes
 	ld a, [MapNumber]
 	cp MAP_NAVEL_ROCK_ROOF
-	jr nz, .navel_rock_day
-	call LoadNavelRockTimePalette
-	scf
-	ret
-
-.navel_rock_day
-	call LoadNavelRockPalette
-	scf
-	ret
-
-.do_nothing
-	and a
-	ret
-; 494f2
-
-LoadPokeComPalette: ; 494f2
+	jp nz, .load_eight_bg_palettes
+.load_eight_time_of_day_bg_palettes
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	call AddNTimes
 	ld a, $5
 	ld de, UnknBGPals
-	ld hl, PokeComPalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
+	scf
 	ret
-; 49501
 
 PokeComPalette: ; 49501
 INCLUDE "tilesets/pokecom.pal"
 ; 49541
 
-LoadBattleTowerPalette: ; 49541
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, BattleTowerPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-; 49550
-
 BattleTowerPalette: ; 49550
 INCLUDE "tilesets/battle_tower.pal"
 ; 49590
-
-LoadIcePathPalette: ; 49590
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, IcePathPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-; 4959f
 
 IcePathPalette: ; 4959f
 INCLUDE "tilesets/ice_path.pal"
 ; 495df
 
-LoadHousePalette: ; 495df
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, HousePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-; 495ee
-
 HousePalette: ; 495ee
 INCLUDE "tilesets/house.pal"
 ; 4962e
 
-LoadGatePalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, GatePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 GatePalette:
 INCLUDE "tilesets/gate.pal"
-
-LoadRadioTowerPalette: ; 4962e
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, RadioTowerPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-; 4963d
 
 RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
 
-LoadCeladonMansionPalette: ; 496c5
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, CeladonMansionPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-; 4963d
-
 CeladonMansionPalette:
 INCLUDE "tilesets/celadon_mansion.pal"
-
-LoadPokeCenterPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, PokeCenterPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 PokeCenterPalette:
 INCLUDE "tilesets/pokecenter.pal"
 
-LoadShamoutiPokeCenterPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, ShamoutiPokeCenterPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 ShamoutiPokeCenterPalette:
 INCLUDE "tilesets/shamouti_pokecenter.pal"
-
-LoadFarawayIslandPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, FarawayIslandPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 FarawayIslandPalette:
 INCLUDE "tilesets/faraway_island.pal"
 
-LoadShamoutiIslandPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, ShamoutiIslandPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 ShamoutiIslandPalette:
 INCLUDE "tilesets/shamouti_island.pal"
-
-LoadYellowForestPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, YellowForestPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 YellowForestPalette:
 INCLUDE "tilesets/yellow_forest.pal"
 
-LoadViridianGymPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, ViridianGymPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
+MurkySwampPalette:
+INCLUDE "tilesets/murky_swamp.pal"
+
+WillsRoomPalette:
+INCLUDE "tilesets/wills_room.pal"
+
+KogasRoomPalette:
+INCLUDE "tilesets/kogas_room.pal"
+
+BrunosRoomPalette:
+INCLUDE "tilesets/brunos_room.pal"
+
+KarensRoomPalette:
+INCLUDE "tilesets/karens_room.pal"
+
+LancesRoomPalette:
+INCLUDE "tilesets/lances_room.pal"
 
 ViridianGymPalette:
 INCLUDE "tilesets/viridian_gym.pal"
 
-LoadMystriStagePalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, MystriStagePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 MystriStagePalette:
 INCLUDE "tilesets/mystri_stage.pal"
-
-LoadEmbeddedTowerPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, EmbeddedTowerPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 EmbeddedTowerPalette:
 INCLUDE "tilesets/embedded_tower.pal"
 
-LoadGoldenrodDeptStoreRoofPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, GoldenrodDeptStoreRoofPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
-
-LoadCeladonHomeDecorStore4FPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, CeladonHomeDecorStore4FPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 CeladonHomeDecorStore4FPalette:
 INCLUDE "tilesets/celadon_home_decor_store_4f.pal"
 
-LoadVioletEcruteakPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, VioletEcruteakPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 VioletEcruteakPalette:
 INCLUDE "tilesets/violet_ecruteak.pal"
-
-LoadBellchimeTrailPalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, BellchimeTrailPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 BellchimeTrailPalette:
 INCLUDE "tilesets/bellchime_trail.pal"
 
-LoadCinnabarVolcanoPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, CinnabarVolcanoPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 CinnabarVolcanoPalette:
 INCLUDE "tilesets/cinnabar_volcano.pal"
-
-LoadCeruleanCavePalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, CeruleanCavePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 CeruleanCavePalette:
 INCLUDE "tilesets/cerulean_cave.pal"
 
-LoadSilverCavePalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, SilverCavePalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
 SilverCavePalette:
 INCLUDE "tilesets/silver_cave.pal"
-
-LoadNavelRockPalette:
-	ld a, $5
-	ld de, UnknBGPals
-	ld hl, NavelRockPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
-
-LoadNavelRockTimePalette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, NavelRockPalette
-	call AddNTimes
-	ld a, $5
-	ld de, UnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
 
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"
@@ -690,8 +466,6 @@ LoadSpecialMapOBPalette:
 	ld a, [MapNumber]
 	cp MAP_VERMILION_GYM
 	jr nz, .not_vermilion_gym
-
-.vermilion_gym:
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
 	ld hl, VermilionGymOBPalette_Tree
@@ -701,13 +475,25 @@ LoadSpecialMapOBPalette:
 
 .not_vermilion_gym:
 	ld a, [MapGroup]
+	cp GROUP_MURKY_SWAMP
+	jr nz, .not_murky_swamp
+	ld a, [MapNumber]
+	cp MAP_MURKY_SWAMP
+	jr nz, .not_murky_swamp
+	ld a, $5
+	ld de, UnknOBPals + 6 palettes
+	ld hl, MurkySwampOBPalette_Tree
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+
+.not_murky_swamp:
+	ld a, [MapGroup]
 	cp GROUP_FARAWAY_ISLAND
 	jr nz, .not_faraway_island
 	ld a, [MapNumber]
 	cp MAP_FARAWAY_ISLAND
 	jr nz, .not_faraway_island
-
-.faraway_island:
 	ld a, [TimeOfDayPal]
 	and 3
 	ld bc, 1 palettes
@@ -726,8 +512,6 @@ LoadSpecialMapOBPalette:
 	ld a, [MapNumber]
 	cp MAP_FARAWAY_JUNGLE
 	jr nz, .not_faraway_jungle
-
-.faraway_jungle:
 	ld a, [TimeOfDayPal]
 	and 3
 	ld bc, 1 palettes
@@ -747,6 +531,12 @@ VermilionGymOBPalette_Tree:
 	RGB 31, 31, 30
 	RGB 19, 24, 31
 	RGB 05, 10, 27
+
+MurkySwampOBPalette_Tree:
+	RGB 12, 19, 18
+	RGB 07, 14, 13
+	RGB 04, 08, 07
+	RGB 00, 00, 00
 
 FarawayIslandOBPalette_Tree:
 	RGB 31, 31, 31

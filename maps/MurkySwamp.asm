@@ -18,8 +18,8 @@ MurkySwamp_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $1f, $5, 1, STORMY_BEACH
-	warp_def $1f, $6, 2, STORMY_BEACH
+	warp_def $21, $7, 1, STORMY_BEACH
+	warp_def $21, $8, 2, STORMY_BEACH
 
 .XYTriggers:
 	db 0

@@ -1449,7 +1449,7 @@ BattleAnim_SetBGPals: ; cc91a
 	ld [hli], a
 	dec c
 	jr nz, .loop_UnknBGPals
-	ld c, $10
+	ld c, 2 palettes
 	ld hl, UnknOBPals
 .loop_UnknOBPals
 	ld a, [hl]
