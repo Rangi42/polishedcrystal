@@ -774,8 +774,10 @@ GiveTakePartyMonItem: ; 12b60
 	and a
 	jr z, .quit
 
-	ld a, [wcf65]
-	cp 2
+	ld a, [wCurrPocket]
+	cp KEY_ITEM - 1
+	jr z, .next
+	cp TM_HM - 1
 	jr z, .next
 
 	call CheckTossableItem

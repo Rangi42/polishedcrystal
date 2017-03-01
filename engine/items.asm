@@ -431,7 +431,7 @@ _CheckTossableItem:: ; d427
 ; Return 1 in wItemAttributeParamBuffer and carry if CurItem can't be removed from the bag.
 	ld a, ITEMATTR_PERMISSIONS
 	call GetItemAttr
-	bit 7, a
+	bit CANT_TOSS_F, a
 	jr nz, ItemAttr_ReturnCarry
 	and a
 	ret
@@ -440,7 +440,7 @@ CheckSelectableItem: ; d432
 ; Return 1 in wItemAttributeParamBuffer and carry if CurItem can't be selected.
 	ld a, ITEMATTR_PERMISSIONS
 	call GetItemAttr
-	bit 6, a
+	bit CANT_SELECT_F, a
 	jr nz, ItemAttr_ReturnCarry
 	and a
 	ret
