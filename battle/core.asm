@@ -6158,6 +6158,7 @@ MoveInfoBox: ; 3e6c8
 	ld [hl], $75
 
 	farcall LoadBattleCategoryAndTypePalettes
+	call WaitBGMap
 	call SetPalettes
 
 .done
