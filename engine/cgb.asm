@@ -106,8 +106,8 @@ _CGB_BattleColors: ; 8ddb
 	call LoadPalette_White_Col1_Col2_Black
 	call LoadPlayerStatusIconPalette
 	call LoadEnemyStatusIconPalette
-	ld hl, UnknBGPals + 0 palettes
-	ld de, UnknBGPals + 7 palettes
+	ld hl, UnknBGPals
+	ld de, UnknBGPals + 6 palettes
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -152,16 +152,16 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	call FillBoxCGB
 	hlcoord 2, 1, AttrMap
 	lb bc, 1, 2
+	ld a, $5
+	call FillBoxCGB
+	hlcoord 0, 8, AttrMap
+	lb bc, 4, 10
 	ld a, $6
 	call FillBoxCGB
 	hlcoord 0, 12, AttrMap
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, $7
 	call ByteFill
-	hlcoord 0, 8, AttrMap
-	lb bc, 4, 10
-	ld a, $7
-	call FillBoxCGB
 	ld hl, Palettes_979c
 	ld de, UnknOBPals + 2 palettes
 	ld bc, 6 palettes
@@ -197,7 +197,7 @@ LoadEnemyStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6 palettes + 2
+	ld de, UnknBGPals + 5 palettes + 4
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM
@@ -227,7 +227,7 @@ LoadBattleCategoryAndTypePalettes:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 7 palettes + 2
+	ld de, UnknBGPals + 6 palettes + 2
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM
@@ -239,7 +239,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 7 palettes + 4
+	ld de, UnknBGPals + 6 palettes + 4
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM

@@ -616,8 +616,8 @@ ParsePlayerAction: ; 3c434
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 
-	ld hl, UnknBGPals + 0 palettes
-	ld de, UnknBGPals + 7 palettes
+	ld hl, UnknBGPals
+	ld de, UnknBGPals + 6 palettes
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM

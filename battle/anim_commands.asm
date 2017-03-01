@@ -1439,7 +1439,7 @@ BattleAnim_SetBGPals: ; cc91a
 	cp $1b
 	jr nz, .not_1b
 .is_1b
-	ld c, 8 palettes
+	ld c, 7 palettes
 	ld hl, UnknBGPals
 .loop_UnknBGPals
 	ld a, [hl]
@@ -1465,13 +1465,13 @@ BattleAnim_SetBGPals: ; cc91a
 	ld hl, BGPals
 	ld de, UnknBGPals
 	ld b, a
-	ld c, $8
+	ld c, 7
 	call CopyPals
 	ld hl, OBPals
 	ld de, UnknOBPals
 	pop af
 	ld b, a
-	ld c, $2
+	ld c, 2
 	call CopyPals
 	pop af
 	ld [rSVBK], a

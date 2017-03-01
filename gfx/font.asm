@@ -187,7 +187,7 @@ LoadPlayerStatusIcon:
 ; Hack to make the palette load instantly
 	ld a, [rSVBK]
 	push af
-	ld a, 5 ; gfx
+	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
 	ld hl, BGPals + 5 palettes ; to
@@ -226,16 +226,34 @@ LoadEnemyStatusIcon:
 	ld hl, VTiles2 tile $5e
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
+
+; Replace light color with dark color
+	ld hl, VTiles2 tile $5e
+	ld bc, (2 tiles) / 2
+.loop2
+	ld a, [hli]
+	ld d, a
+	ld a, [hld]
+	ld e, a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop2
+
 	farcall LoadEnemyStatusIconPalette
 
 ; Hack to make the palette load instantly
 	ld a, [rSVBK]
 	push af
-	ld a, 5 ; gfx
+	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
-	ld hl, BGPals + 6 palettes ; to
-	ld de, UnknBGPals + 6 palettes ; from
+	ld hl, BGPals + 5 palettes ; to
+	ld de, UnknBGPals + 5 palettes ; from
 ; order
 	ld a, [rBGP]
 	ld b, a
