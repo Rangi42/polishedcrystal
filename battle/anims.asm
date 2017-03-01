@@ -851,21 +851,6 @@ BattleAnim_FocusBlast:
 	anim_incbgeffect ANIM_BG_18
 	anim_bgp $e4
 	anim_ret
-	
-;BattleAnim_MegaPunch: ; removed
-;	anim_1gfx ANIM_GFX_HIT
-;	anim_bgeffect ANIM_BG_1F, $40, $2, $0
-;	anim_wait 48
-;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $3
-;.loop
-;	anim_sound 0, 1, SFX_MEGA_PUNCH
-;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
-;	anim_obj ANIM_OBJ_00, -15, 0,   7, 0, $0
-;	anim_wait 6
-;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
-;	anim_wait 6
-;	anim_loop 3, .loop
-;	anim_ret
 
 BattleAnim_HyperFang:
 	anim_1gfx ANIM_GFX_HIT
@@ -5451,4 +5436,19 @@ BattleAnim_ShowMon_1:
 ;	anim_sound 0, 1, SFX_EGG_BOMB
 ;	anim_obj ANIM_OBJ_18, -15, 0,   7, 0, $0
 ;	anim_wait 16
+;	anim_ret
+
+;BattleAnim_MegaPunch: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_bgeffect ANIM_BG_1F, $40, $2, $0
+;	anim_wait 48
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $3
+;.loop
+;	anim_sound 0, 1, SFX_MEGA_PUNCH
+;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
+;	anim_obj ANIM_OBJ_00, -15, 0,   7, 0, $0
+;	anim_wait 6
+;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
+;	anim_wait 6
+;	anim_loop 3, .loop
 ;	anim_ret
