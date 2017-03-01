@@ -20,10 +20,3 @@ INCBIN "tilesets/forest_metatiles.bin"
 
 Tileset31Coll:
 INCBIN "tilesets/forest_collision.bin"
-
-Tileset26GFX:
-Tileset33GFX:
-Tileset34GFX:
-Tileset35GFX:
-Tileset36GFX:
-INCBIN "gfx/tilesets/ruins.2bpp.lz"
