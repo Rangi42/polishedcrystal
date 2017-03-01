@@ -333,6 +333,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Fix some sprites.
 * Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.
 * Fix: Enemy Psystrike uses player's Defense.
+* Fix: Sketch fails if user is transformed.
 * Fix: Yellow Carpet is buyable.
 * Fix: Tangrowth can learn Curse.
 * Fix: Lyra's Bag is the female version.
