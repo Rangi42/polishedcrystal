@@ -131,6 +131,7 @@ GiveFontOpaqueBackground:
 ; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
 ; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
 ; %00 = white, %11 = black, %10 = light, %01 = dark
+	;call DisableLCD
 	ld hl, VTiles1
 	ld bc, ($80 tiles) / 2
 .loop
@@ -150,6 +151,7 @@ GiveFontOpaqueBackground:
 	inc hl
 	dec a
 	jr nz, .loop2
+	;call EnableLCD
 	ret
 
 

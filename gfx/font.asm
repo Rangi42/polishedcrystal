@@ -39,6 +39,9 @@ INCBIN "gfx/battle/expbar.2bpp"
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
 
+EnemyStatusIconGFX:
+INCBIN "gfx/battle/status-enemy.2bpp"
+
 TypeIconGFX:
 INCBIN "gfx/battle/types.2bpp"
 
@@ -212,7 +215,7 @@ LoadEnemyStatusIcon:
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld a, b
-	ld hl, StatusIconGFX
+	ld hl, EnemyStatusIconGFX
 	ld de, 2 tiles
 .loop
 	and a
@@ -224,26 +227,8 @@ LoadEnemyStatusIcon:
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $5e
-	lb bc, BANK(StatusIconGFX), 2
+	lb bc, BANK(EnemyStatusIconGFX), 2
 	call Request2bpp
-
-; Replace light color with dark color
-	ld hl, VTiles2 tile $5e
-	ld bc, (2 tiles) / 2
-.loop2
-	ld a, [hli]
-	ld d, a
-	ld a, [hld]
-	ld e, a
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop2
-
 	farcall LoadEnemyStatusIconPalette
 
 ; Hack to make the palette load instantly
