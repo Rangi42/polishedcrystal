@@ -1,7 +1,7 @@
 const_value set 2
 	const VIOLETCITY_EARL
 	const VIOLETCITY_LASS
-	const VIOLETCITY_COOLTRAINER_M
+	const VIOLETCITY_COOLTRAINER_M1
 	const VIOLETCITY_COOLTRAINER_F
 	const VIOLETCITY_GRAMPS1
 	const VIOLETCITY_GRAMPS2
@@ -11,6 +11,7 @@ const_value set 2
 	const VIOLETCITY_FRUIT_TREE
 	const VIOLETCITY_POKE_BALL1
 	const VIOLETCITY_POKE_BALL2
+	const VIOLETCITY_COOLTRAINER_M2
 
 VioletCity_MapScriptHeader:
 .MapTriggers:
@@ -64,8 +65,8 @@ VioletCityEarlScript:
 VioletCityLassScript:
 	jumptextfaceplayer VioletCityLassText
 
-VioletCityCooltrainerMScript:
-	jumptextfaceplayer VioletCityCooltrainerMText
+VioletCityCooltrainerM1Script:
+	jumptextfaceplayer VioletCityCooltrainerM1Text
 
 VioletCityCooltrainerFScript:
 	jumptextfaceplayer VioletCityCooltrainerFText
@@ -81,6 +82,9 @@ VioletCityYoungsterScript:
 
 VioletCityFisherScript:
 	jumptextfaceplayer VioletCityFisherText
+
+VioletCityCooltrainerM2Script:
+	jumptextfaceplayer VioletCityCooltrainerM2Text
 
 VioletCitySign:
 	jumptext VioletCitySignText
@@ -234,7 +238,7 @@ VioletCityLassText:
 	line "ghosts."
 	done
 
-VioletCityCooltrainerMText:
+VioletCityCooltrainerM1Text:
 	text "Hey, you're a"
 	line "#mon trainer?"
 
@@ -293,6 +297,18 @@ VioletCityFisherText:
 	para "survive an earth-"
 	line "quake? I must be"
 	cont "missing something."
+	done
+
+VioletCityCooltrainerM2Text:
+	text "We care about the"
+	line "traditional build-"
+	cont "ings around here."
+
+	para "Even the # Mart"
+	line "and #mon Center"
+
+	para "are painted som-"
+	line "berly to blend in."
 	done
 
 VioletCitySignText:
@@ -356,10 +372,10 @@ VioletCity_MapEventHeader:
 	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
 
 .PersonEvents:
-	db 12
+	db 13
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
 	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerMScript, -1
+	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM1Script, -1
 	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerFScript, -1
 	person_event SPRITE_GRAMPS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGramps1Script, -1
 	person_event SPRITE_GRAMPS, 25, 26, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityGramps2Script, -1
@@ -369,3 +385,4 @@ VioletCity_MapEventHeader:
 	person_event SPRITE_FRUIT_TREE, 33, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1
 	person_event SPRITE_POKE_BALL, 6, 10, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VioletCityPPUp, EVENT_VIOLET_CITY_PP_UP
 	person_event SPRITE_POKE_BALL, 11, 35, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, VioletCityRareCandy, EVENT_VIOLET_CITY_RARE_CANDY
+	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM2Script, -1

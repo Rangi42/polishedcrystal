@@ -363,7 +363,8 @@ GuideGentPokeCenterText:
 
 GuideGentMartText:
 	text "This is a #mon"
-	line "Mart."
+	line "Mart, or just"
+	cont "# Mart."
 
 	para "They sell Balls"
 	line "for catching wild"

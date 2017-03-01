@@ -455,7 +455,6 @@ SECTION "Map Scripts 21", ROMX, BANK[MAP_SCRIPTS_21]
 
 INCLUDE "maps/EcruteakCity.asm"
 INCLUDE "maps/ValeriesHouse.asm"
-INCLUDE "maps/EcruteakShrineOutside.asm"
 INCLUDE "maps/EcruteakShrineInside.asm"
 INCLUDE "maps/BellchimeTrail.asm"
 INCLUDE "maps/Route40.asm"
@@ -469,6 +468,7 @@ INCLUDE "maps/BlackthornCity.asm"
 SECTION "Map Scripts 22", ROMX, BANK[MAP_SCRIPTS_22]
 
 INCLUDE "maps/CinnabarPokeCenter1F.asm"
+INCLUDE "maps/EcruteakShrineOutside.asm"
 INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/Route37.asm"
 INCLUDE "maps/Route46.asm"
