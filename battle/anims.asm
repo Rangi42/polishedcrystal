@@ -804,21 +804,68 @@ BattleAnim_HiJumpKick_branch_c971e:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_FocusBlast: ; TODO: design new animation for Focus Blast
-BattleAnim_MegaPunch: ; removed
-	anim_1gfx ANIM_GFX_HIT
-	anim_bgeffect ANIM_BG_1F, $40, $2, $0
-	anim_wait 48
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $3
+BattleAnim_FocusBlast:
+	anim_3gfx ANIM_GFX_SPEED, ANIM_GFX_CHARGE, ANIM_GFX_BEAM
+	anim_obj ANIM_OBJ_FOCUS_BLAST,   5, 4,  11, 0, $0
+	anim_bgeffect ANIM_BG_16, $0, $1, $40
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
 .loop
-	anim_sound 0, 1, SFX_MEGA_PUNCH
-	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
-	anim_obj ANIM_OBJ_00, -15, 0,   7, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
-	anim_wait 6
-	anim_loop 3, .loop
+	anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_47,   5, 4,  13, 4, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_47,   4, 4,  13, 4, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_47,   6, 4,  13, 4, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_47,   3, 4,  13, 4, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_47,   7, 4,  13, 4, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_47,   2, 4,  13, 4, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_47,   8, 4,  13, 4, $8
+	anim_wait 2
+	anim_loop 5, .loop
+	anim_wait 56
+	anim_bgeffect ANIM_BG_1F, $8, $2, $10
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_bgp $1b
+	anim_sound 0, 0, SFX_SUPER_EFFECTIVE
+	anim_obj ANIM_OBJ_27,  8, 0, 11, 4, $0
+	anim_incobj 8
+	anim_wait 2
+	anim_obj ANIM_OBJ_27, 10, 0, 10, 4, $0
+	anim_incobj 9
+	anim_wait 2
+	anim_obj ANIM_OBJ_27, 12, 0,  9, 4, $0
+	anim_incobj 10
+	anim_wait 2
+	anim_obj ANIM_OBJ_27, 14, 0,  8, 4, $0
+	anim_obj ANIM_OBJ_28, 15, 6,  7, 6, $0
+	anim_incobj 11
+	anim_incobj 12
+	anim_wait 2
+	anim_obj ANIM_OBJ_28, 17, 4,  7, 0, $0
+	anim_wait 2
+	anim_incobj 13
+	anim_incbgeffect ANIM_BG_18
+	anim_bgp $e4
 	anim_ret
+	
+;BattleAnim_MegaPunch: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_bgeffect ANIM_BG_1F, $40, $2, $0
+;	anim_wait 48
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $3
+;.loop
+;	anim_sound 0, 1, SFX_MEGA_PUNCH
+;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
+;	anim_obj ANIM_OBJ_00, -15, 0,   7, 0, $0
+;	anim_wait 6
+;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
+;	anim_wait 6
+;	anim_loop 3, .loop
+;	anim_ret
 
 BattleAnim_HyperFang:
 	anim_1gfx ANIM_GFX_HIT
