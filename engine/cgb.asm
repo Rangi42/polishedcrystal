@@ -172,6 +172,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 ; 8e85
 
 LoadPlayerStatusIconPalette:
+	ld a, [PlayerSubStatus2]
 	ld de, BattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPalettes
@@ -188,6 +189,7 @@ endr
 	ret
 
 LoadEnemyStatusIconPalette:
+	ld a, [EnemySubStatus2]
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPalettes
@@ -218,6 +220,8 @@ StatusIconPalettes:
 	RGB 15, 22, 28
 ; FNT
 	RGB 25, 00, 00
+; TOX
+	RGB 27, 06, 28
 
 LoadBattleCategoryAndTypePalettes:
 	ld hl, CategoryIconPalettes
