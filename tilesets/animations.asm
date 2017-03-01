@@ -123,8 +123,6 @@ Tileset24Anim:
 Tileset30Anim:
 	dw NULL,  SafariFountainAnim4
 	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
 	dw NULL,  SafariFountainAnim3
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
@@ -146,6 +144,10 @@ Tileset30Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  FlickeringCaveEntrancePalette
+	dw VTiles2 tile $4a, ScrollTileUp
+	dw VTiles2 tile $4b, ScrollTileDown
+	dw VTiles2 tile $5a, ScrollTileLeft
+	dw VTiles2 tile $5b, ScrollTileRight
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $26, WriteTileFromBuffer
@@ -258,14 +260,17 @@ Tileset41Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $20, ScrollTileUp
+	dw VTiles2 tile $21, ScrollTileDown
+	dw VTiles2 tile $22, ScrollTileLeft
+	dw VTiles2 tile $23, ScrollTileRight
 	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
 	dw VTiles2 tile $20, ScrollTileUp
 	dw VTiles2 tile $21, ScrollTileDown
 	dw VTiles2 tile $22, ScrollTileLeft
 	dw VTiles2 tile $23, ScrollTileRight
-	dw NULL,  AnimateKantoFlowerTile
-	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
