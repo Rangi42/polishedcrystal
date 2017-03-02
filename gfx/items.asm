@@ -359,45 +359,41 @@ MaxRepelIcon:     INCBIN "gfx/items/repel.2bpp.lz"
 EscapeRopeIcon:   INCBIN "gfx/items/escape_rope.2bpp.lz"
 PokeDollIcon:     INCBIN "gfx/items/poke_doll.2bpp.lz"
 AbilityCapIcon:   INCBIN "gfx/items/ability_cap.2bpp.lz"
-
-LeafStoneIcon:
-FireStoneIcon:
-WaterStoneIcon:
-ThunderStoneIcon:
-MoonStoneIcon:
-SunStoneIcon:
-DuskStoneIcon:
-ShinyStoneIcon:
-IceStoneIcon:
-EverstoneIcon:
-BicycleIcon:
-OldRodIcon:
-GoodRodIcon:
-SuperRodIcon:
-CoinCaseIcon:
-ItemfinderIcon:
-ExpShareIcon:
-MysteryEggIcon:
-SquirtBottleIcon:
-SecretPotionIcon:
-RedScaleIcon:
-CardKeyIcon:
-BasementKeyIcon:
-SSTicketIcon:
-PassIcon:
-MachinePartIcon:
-LostItemIcon:
-RainbowWingIcon:
-SilverWingIcon:
-ClearBellIcon:
-
+LeafStoneIcon:    INCBIN "gfx/items/leaf_stone.2bpp.lz"
+FireStoneIcon:    INCBIN "gfx/items/fire_stone.2bpp.lz"
+WaterStoneIcon:   INCBIN "gfx/items/water_stone.2bpp.lz"
+ThunderStoneIcon: INCBIN "gfx/items/thunderstone.2bpp.lz"
+MoonStoneIcon:    INCBIN "gfx/items/moon_stone.2bpp.lz"
+SunStoneIcon:     INCBIN "gfx/items/sun_stone.2bpp.lz"
+DuskStoneIcon:    INCBIN "gfx/items/dusk_stone.2bpp.lz"
+ShinyStoneIcon:   INCBIN "gfx/items/shiny_stone.2bpp.lz"
+IceStoneIcon:     INCBIN "gfx/items/ice_stone.2bpp.lz"
+EverstoneIcon:    INCBIN "gfx/items/everstone.2bpp.lz"
+BicycleIcon:      INCBIN "gfx/items/bicycle.2bpp.lz"
+OldRodIcon:       INCBIN "gfx/items/old_rod.2bpp.lz"
+GoodRodIcon:      INCBIN "gfx/items/good_rod.2bpp.lz"
+SuperRodIcon:     INCBIN "gfx/items/super_rod.2bpp.lz"
+CoinCaseIcon:     INCBIN "gfx/items/coin_case.2bpp.lz"
+ItemfinderIcon:   INCBIN "gfx/items/itemfinder.2bpp.lz"
+ExpShareIcon:     INCBIN "gfx/items/exp_share.2bpp.lz"
+MysteryEggIcon:   INCBIN "gfx/items/mystery_egg.2bpp.lz"
+SquirtBottleIcon: INCBIN "gfx/items/squirtbottle.2bpp.lz"
+SecretPotionIcon: INCBIN "gfx/items/secretpotion.2bpp.lz"
+RedScaleIcon:     INCBIN "gfx/items/red_scale.2bpp.lz"
+CardKeyIcon:      INCBIN "gfx/items/card_key.2bpp.lz"
+BasementKeyIcon:  INCBIN "gfx/items/basement_key.2bpp.lz"
+SSTicketIcon:     INCBIN "gfx/items/s_s_ticket.2bpp.lz"
+PassIcon:         INCBIN "gfx/items/pass.2bpp.lz"
+MachinePartIcon:  INCBIN "gfx/items/machine_part.2bpp.lz"
+LostItemIcon:     INCBIN "gfx/items/lost_item.2bpp.lz"
+RainbowWingIcon:  INCBIN "gfx/items/rainbow_wing.2bpp.lz"
+SilverWingIcon:   INCBIN "gfx/items/silver_wing.2bpp.lz"
+ClearBellIcon:    INCBIN "gfx/items/clear_bell.2bpp.lz"
 GSBallIcon:       INCBIN "gfx/items/gs_ball.2bpp.lz"
-
-BlueCardIcon:
-OrangeTicketIcon:
-MysticTicketIcon:
-OldSeaMapIcon:
-
+BlueCardIcon:     INCBIN "gfx/items/blue_card.2bpp.lz"
+OrangeTicketIcon: INCBIN "gfx/items/orangeticket.2bpp.lz"
+MysticTicketIcon: INCBIN "gfx/items/mysticticket.2bpp.lz"
+OldSeaMapIcon:    INCBIN "gfx/items/old_sea_map.2bpp.lz"
 ShinyCharmIcon:   INCBIN "gfx/items/shiny_charm.2bpp.lz"
 OvalCharmIcon:    INCBIN "gfx/items/oval_charm.2bpp.lz"
 
