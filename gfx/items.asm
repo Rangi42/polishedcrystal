@@ -466,9 +466,7 @@ LuckyEggIcon:     INCBIN "gfx/items/lucky_egg.2bpp.lz"
 AmuletCoinIcon:   INCBIN "gfx/items/amulet_coin.2bpp.lz"
 CleanseTagIcon:   INCBIN "gfx/items/cleanse_tag.2bpp.lz"
 SmokeBallIcon:    INCBIN "gfx/items/smoke_ball.2bpp.lz"
-
-BerserkGeneIcon: ; TODO
-
+BerserkGeneIcon:  INCBIN "gfx/items/berserk_gene.2bpp.lz"
 LightBallIcon:    INCBIN "gfx/items/light_ball.2bpp.lz"
 StickIcon:        INCBIN "gfx/items/stick.2bpp.lz"
 ThickClubIcon:
@@ -512,15 +510,13 @@ ChoiceSpecsIcon:  INCBIN "gfx/items/choice_specs.2bpp.lz"
 FlameOrbIcon:     INCBIN "gfx/items/flame_orb.2bpp.lz"
 ToxicOrbIcon:     INCBIN "gfx/items/toxic_orb.2bpp.lz"
 BlackSludgeIcon:  INCBIN "gfx/items/black_sludge.2bpp.lz"
-
-MachoBraceIcon: ; TODO
-PowerWeightIcon:
-PowerBracerIcon:
-PowerBeltIcon:
-PowerLensIcon:
-PowerBandIcon:
-PowerAnkletIcon:
-
+MachoBraceIcon:   INCBIN "gfx/items/macho_brace.2bpp.lz"
+PowerWeightIcon:  INCBIN "gfx/items/power_weight.2bpp.lz"
+PowerBracerIcon:  INCBIN "gfx/items/power_bracer.2bpp.lz"
+PowerBeltIcon:    INCBIN "gfx/items/power_belt.2bpp.lz"
+PowerLensIcon:    INCBIN "gfx/items/power_lens.2bpp.lz"
+PowerBandIcon:    INCBIN "gfx/items/power_band.2bpp.lz"
+PowerAnkletIcon:  INCBIN "gfx/items/power_anklet.2bpp.lz"
 DragonScaleIcon:  INCBIN "gfx/items/dragon_scale.2bpp.lz"
 UpGradeIcon:      INCBIN "gfx/items/up_grade.2bpp.lz"
 DubiousDiscIcon:  INCBIN "gfx/items/dubious_disc.2bpp.lz"
@@ -541,15 +537,13 @@ PearlStringIcon:  INCBIN "gfx/items/pearl_string.2bpp.lz"
 StarPieceIcon:    INCBIN "gfx/items/star_piece.2bpp.lz"
 BrickPieceIcon:   INCBIN "gfx/items/brick_piece.2bpp.lz"
 SlowpokeTailIcon: INCBIN "gfx/items/slowpoketail.2bpp.lz"
-
 BottleCapIcon:    INCBIN "gfx/items/bottle_cap.2bpp.lz"
 HelixFossilIcon:  INCBIN "gfx/items/helix_fossil.2bpp.lz"
 DomeFossilIcon:   INCBIN "gfx/items/dome_fossil.2bpp.lz"
 OldAmberIcon:     INCBIN "gfx/items/old_amber.2bpp.lz"
 MulchIcon:        INCBIN "gfx/items/mulch.2bpp.lz"
 SweetHoneyIcon:   INCBIN "gfx/items/sweet_honey.2bpp.lz"
-
-FlowerMailIcon: ; TODO
+FlowerMailIcon:
 SurfMailIcon:
 LiteBlueMailIcon:
 PortraitMailIcon:
@@ -558,4 +552,4 @@ EonMailIcon:
 MorphMailIcon:
 BlueSkyMailIcon:
 MusicMailIcon:
-MirageMailIcon: INCBIN "gfx/items/no_item.2bpp.lz"
+MirageMailIcon:   INCBIN "gfx/items/mail.2bpp.lz"
