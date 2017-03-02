@@ -2002,6 +2002,7 @@ GetThirdMaxHP::
 	and a
 	ld a, c
 	jr z, .loop
+
 	and 3
 	ld e, a
 	srl b
@@ -4502,7 +4503,7 @@ SpikesDamage_SkipLevitate:
 
 HandleAirBalloon:
 ; prints air balloon msg and returns z if we have air balloon
-	call GetUserItem
+	farcall GetUserItem
 	ld a, b
 	cp HELD_AIR_BALLOON
 	ret nz
