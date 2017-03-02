@@ -20,13 +20,11 @@ UpdateItemIconAndDescription::
 GetItemIconBank:
 	lb bc, BANK(ItemIcons1), $9
 	ld a, [CurSpecies]
-	cp AIR_BALLOON
+	cp SCOPE_LENS
 	ret c
 	cp STARDUST
 	ret z
 	cp CHOICE_SCARF
-	ret z
-	cp RARE_BONE
 	ret z
 	cp ITEM_FROM_MEM
 	ret z
@@ -414,24 +412,22 @@ OldSeaMapIcon:    INCBIN "gfx/items/old_sea_map.2bpp.lz"
 ShinyCharmIcon:   INCBIN "gfx/items/shiny_charm.2bpp.lz"
 OvalCharmIcon:    INCBIN "gfx/items/oval_charm.2bpp.lz"
 SilphScope2Icon:  INCBIN "gfx/items/silphscope2.2bpp.lz"
-
-OranBerryIcon: ; TODO
-SitrusBerryIcon:
-PechaBerryIcon:
-RawstBerryIcon:
-CheriBerryIcon:
-ChestoBerryIcon:
-AspearBerryIcon:
-PersimBerryIcon:
-LumBerryIcon:
-LeppaBerryIcon:
-PomegBerryIcon:
-KelpsyBerryIcon:
-QualotBerryIcon:
-HondewBerryIcon:
-GrepaBerryIcon:
-TamatoBerryIcon:
-
+OranBerryIcon:    INCBIN "gfx/items/oran_berry.2bpp.lz"
+SitrusBerryIcon:  INCBIN "gfx/items/sitrus_berry.2bpp.lz"
+PechaBerryIcon:   INCBIN "gfx/items/pecha_berry.2bpp.lz"
+RawstBerryIcon:   INCBIN "gfx/items/rawst_berry.2bpp.lz"
+CheriBerryIcon:   INCBIN "gfx/items/cheri_berry.2bpp.lz"
+ChestoBerryIcon:  INCBIN "gfx/items/chesto_berry.2bpp.lz"
+AspearBerryIcon:  INCBIN "gfx/items/aspear_berry.2bpp.lz"
+PersimBerryIcon:  INCBIN "gfx/items/persim_berry.2bpp.lz"
+LumBerryIcon:     INCBIN "gfx/items/lum_berry.2bpp.lz"
+LeppaBerryIcon:   INCBIN "gfx/items/leppa_berry.2bpp.lz"
+PomegBerryIcon:   INCBIN "gfx/items/pomeg_berry.2bpp.lz"
+KelpsyBerryIcon:  INCBIN "gfx/items/kelpsy_berry.2bpp.lz"
+QualotBerryIcon:  INCBIN "gfx/items/qualot_berry.2bpp.lz"
+HondewBerryIcon:  INCBIN "gfx/items/hondew_berry.2bpp.lz"
+GrepaBerryIcon:   INCBIN "gfx/items/grepa_berry.2bpp.lz"
+TamatoBerryIcon:  INCBIN "gfx/items/tamato_berry.2bpp.lz"
 RedApricornIcon:
 BluApricornIcon:
 YlwApricornIcon:
@@ -456,6 +452,11 @@ NeverMeltIceIcon: INCBIN "gfx/items/nevermeltice.2bpp.lz"
 DragonFangIcon:   INCBIN "gfx/items/dragon_fang.2bpp.lz"
 BlackGlassesIcon: INCBIN "gfx/items/blackglasses.2bpp.lz"
 PinkBowIcon:      INCBIN "gfx/items/pink_bow.2bpp.lz"
+
+
+SECTION "Item Icons 2", ROMX, BANK[$43]
+
+ItemIcons2:
 ScopeLensIcon:    INCBIN "gfx/items/scope_lens.2bpp.lz"
 QuickClawIcon:    INCBIN "gfx/items/quick_claw.2bpp.lz"
 KingsRockIcon:    INCBIN "gfx/items/kings_rock.2bpp.lz"
@@ -476,10 +477,6 @@ LuckyPunchIcon:   INCBIN "gfx/items/lucky_punch.2bpp.lz"
 
 ArmorSuitIcon: ; TODO
 
-
-SECTION "Item Icons 2", ROMX, BANK[$43]
-
-ItemIcons2:
 AirBalloonIcon:   INCBIN "gfx/items/air_balloon.2bpp.lz"
 AssaultVestIcon:  INCBIN "gfx/items/assault_vest.2bpp.lz"
 BigRootIcon:      INCBIN "gfx/items/big_root.2bpp.lz"
@@ -493,17 +490,23 @@ LifeOrbIcon:      INCBIN "gfx/items/life_orb.2bpp.lz"
 LightClayIcon:    INCBIN "gfx/items/light_clay.2bpp.lz"
 MetronomeIIcon:   INCBIN "gfx/items/metronome_i.2bpp.lz"
 
-MuscleBandIcon:
+MuscleBandIcon: ; TODO
 ProtectPadsIcon:
-RockyHelmetIcon:
-SafeGogglesIcon:
+
+RockyHelmetIcon:  INCBIN "gfx/items/rocky_helmet.2bpp.lz"
+
+SafeGogglesIcon: ; TODO
 ShedShellIcon:
 ShellBellIcon:
 SootheBellIcon:
-WeakPolicyIcon:
-WideLensIcon:
-WiseGlassesIcon:
-ZoomLensIcon:
+
+WeakPolicyIcon:   INCBIN "gfx/items/weak_policy.2bpp.lz"
+
+WideLensIcon: ; TODO
+
+WiseGlassesIcon:  INCBIN "gfx/items/wise_glasses.2bpp.lz"
+
+ZoomLensIcon: ; TODO
 
 MentalHerbIcon:
 PowerHerbIcon:
@@ -511,16 +514,20 @@ WhiteHerbIcon:
 SilverLeafIcon:
 GoldLeafIcon:     INCBIN "gfx/items/leaf.2bpp.lz"
 
-DampRockIcon:
+DampRockIcon: ; TODO
 HeatRockIcon:
 SmoothRockIcon:
 IcyRockIcon:
-ChoiceBandIcon:
-ChoiceSpecsIcon:
-FlameOrbIcon:
+
+ChoiceBandIcon:   INCBIN "gfx/items/choice_band.2bpp.lz"
+ChoiceSpecsIcon:  INCBIN "gfx/items/choice_specs.2bpp.lz"
+
+FlameOrbIcon: ; TODO
 ToxicOrbIcon:
-BlackSludgeIcon:
-MachoBraceIcon:
+
+BlackSludgeIcon:  INCBIN "gfx/items/black_sludge.2bpp.lz"
+
+MachoBraceIcon: ; TODO
 PowerWeightIcon:
 PowerBracerIcon:
 PowerBeltIcon:
@@ -530,13 +537,15 @@ PowerAnkletIcon:
 DragonScaleIcon:
 UpGradeIcon:
 DubiousDiscIcon:
-ProtectorIcon:
-ElectirizerIcon:
-MagmarizerIcon:
-RazorFangIcon:
-RazorClawIcon:
-OddSouvenirIcon:
-NuggetIcon:
+
+ProtectorIcon:    INCBIN "gfx/items/protector.2bpp.lz"
+ElectirizerIcon:  INCBIN "gfx/items/electirizer.2bpp.lz"
+MagmarizerIcon:   INCBIN "gfx/items/magmarizer.2bpp.lz"
+RazorFangIcon:    INCBIN "gfx/items/razor_fang.2bpp.lz"
+RazorClawIcon:    INCBIN "gfx/items/razor_claw.2bpp.lz"
+OddSouvenirIcon:  INCBIN "gfx/items/odd_souvenir.2bpp.lz"
+
+NuggetIcon: ; TODO
 BigNuggetIcon:
 TinyMushroomIcon:
 BigMushroomIcon:
@@ -544,12 +553,12 @@ BalmMushroomIcon:
 PearlIcon:
 BigPearlIcon:
 PearlStringIcon:
-StarPieceIcon:
 
+StarPieceIcon:    INCBIN "gfx/items/star_piece.2bpp.lz"
 BrickPieceIcon:   INCBIN "gfx/items/brick_piece.2bpp.lz"
+SlowpokeTailIcon: INCBIN "gfx/items/slowpoketail.2bpp.lz"
 
-SlowpokeTailIcon:
-BottleCapIcon:
+BottleCapIcon: ; TODO
 HelixFossilIcon:
 DomeFossilIcon:
 OldAmberIcon:
