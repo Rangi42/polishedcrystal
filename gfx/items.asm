@@ -278,22 +278,23 @@ ItemIconPointers:
 
 SECTION "Item Icons 1", ROMX, BANK[$41]
 
-NoItemIcon: INCBIN "gfx/items/no_item.2bpp.lz"
-PokeBallIcon:
-GreatBallIcon:
-UltraBallIcon:
-MasterBallIcon:
-SafariBallIcon:
-LevelBallIcon:
-LureBallIcon:
-MoonBallIcon:
-FriendBallIcon:
-FastBallIcon:
-HeavyBallIcon:
-LoveBallIcon:
-ParkBallIcon:
-RepeatBallIcon:
-TimerBallIcon:
+NoItemIcon:       INCBIN "gfx/items/no_item.2bpp.lz"
+PokeBallIcon:     INCBIN "gfx/items/poke_ball.2bpp.lz"
+GreatBallIcon:    INCBIN "gfx/items/great_ball.2bpp.lz"
+UltraBallIcon:    INCBIN "gfx/items/ultra_ball.2bpp.lz"
+MasterBallIcon:   INCBIN "gfx/items/master_ball.2bpp.lz"
+SafariBallIcon:   INCBIN "gfx/items/safari_ball.2bpp.lz"
+LevelBallIcon:    INCBIN "gfx/items/level_ball.2bpp.lz"
+LureBallIcon:     INCBIN "gfx/items/lure_ball.2bpp.lz"
+MoonBallIcon:     INCBIN "gfx/items/moon_ball.2bpp.lz"
+FriendBallIcon:   INCBIN "gfx/items/friend_ball.2bpp.lz"
+FastBallIcon:     INCBIN "gfx/items/fast_ball.2bpp.lz"
+HeavyBallIcon:    INCBIN "gfx/items/heavy_ball.2bpp.lz"
+LoveBallIcon:     INCBIN "gfx/items/love_ball.2bpp.lz"
+ParkBallIcon:     INCBIN "gfx/items/park_ball.2bpp.lz"
+RepeatBallIcon:   INCBIN "gfx/items/repeat_ball.2bpp.lz"
+TimerBallIcon:    INCBIN "gfx/items/timer_ball.2bpp.lz"
+
 NestBallIcon:
 NetBallIcon:
 DiveBallIcon:
@@ -303,32 +304,40 @@ QuickBallIcon:
 DuskBallIcon:
 PremierBallIcon:
 CherishBallIcon:
+
 PotionIcon:
 SuperPotionIcon:
-HyperPotionIcon:
+HyperPotionIcon:  INCBIN "gfx/items/potion.2bpp.lz"
+
 MaxPotionIcon:
+
 AntidoteIcon:
 BurnHealIcon:
 ParlyzHealIcon:
 AwakeningIcon:
-IceHealIcon:
-FullHealIcon:
+IceHealIcon:      INCBIN "gfx/items/antidote.2bpp.lz"
+FullHealIcon:     INCBIN "gfx/items/full_heal.2bpp.lz"
+
 FullRestoreIcon:
-ReviveIcon:
-MaxReviveIcon:
+
+ReviveIcon:       INCBIN "gfx/items/revive.2bpp.lz"
+MaxReviveIcon:    INCBIN "gfx/items/max_revive.2bpp.lz"
+
 EtherIcon:
 MaxEtherIcon:
 ElixirIcon:
 MaxElixirIcon:
-HPUpIcon:
+
+HPUpIcon:         INCBIN "gfx/items/hp_up.2bpp.lz"
 ProteinIcon:
 IronIcon:
 CarbosIcon:
 CalciumIcon:
-ZincIcon:
-RareCandyIcon:
-PPUpIcon:
-PPMaxIcon:
+ZincIcon:         INCBIN "gfx/items/vitamin.2bpp.lz"
+RareCandyIcon:    INCBIN "gfx/items/rare_candy.2bpp.lz"
+PPUpIcon:         INCBIN "gfx/items/pp_up.2bpp.lz"
+PPMaxIcon:        INCBIN "gfx/items/pp_max.2bpp.lz"
+
 FreshWaterIcon:
 SodaPopIcon:
 LemonadeIcon:
@@ -407,13 +416,15 @@ QualotBerryIcon:
 HondewBerryIcon:
 GrepaBerryIcon:
 TamatoBerryIcon:
+
 RedApricornIcon:
 BluApricornIcon:
 YlwApricornIcon:
 GrnApricornIcon:
 WhtApricornIcon:
 BlkApricornIcon:
-PnkApricornIcon:
+PnkApricornIcon:  INCBIN "gfx/items/apricorn.2bpp.lz"
+
 SilkScarfIcon:
 BlackBeltIcon:
 SharpBeakIcon:
@@ -532,6 +543,6 @@ EonMailIcon:
 MorphMailIcon:
 BlueSkyMailIcon:
 MusicMailIcon:
-MirageMailIcon: INCBIN "gfx/items/master_ball.2bpp.lz"
+MirageMailIcon: INCBIN "gfx/items/no_item.2bpp.lz"
 
 ;SECTION "Item Icons 2", ROMX, BANK[$43]
