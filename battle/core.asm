@@ -434,10 +434,9 @@ GetSpeed::
 	ld a, [EnemySpdLevel]
 	ld hl, EnemyMonSpeed
 .got_speed
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
 
 	; Apply stat changes
 	sub 7
