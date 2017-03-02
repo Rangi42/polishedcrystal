@@ -294,16 +294,15 @@ LoveBallIcon:     INCBIN "gfx/items/love_ball.2bpp.lz"
 ParkBallIcon:     INCBIN "gfx/items/park_ball.2bpp.lz"
 RepeatBallIcon:   INCBIN "gfx/items/repeat_ball.2bpp.lz"
 TimerBallIcon:    INCBIN "gfx/items/timer_ball.2bpp.lz"
-
-NestBallIcon:
-NetBallIcon:
-DiveBallIcon:
-LuxuryBallIcon:
-HealBallIcon:
-QuickBallIcon:
-DuskBallIcon:
-PremierBallIcon:
-CherishBallIcon:
+NestBallIcon:     INCBIN "gfx/items/nest_ball.2bpp.lz"
+NetBallIcon:      INCBIN "gfx/items/net_ball.2bpp.lz"
+DiveBallIcon:     INCBIN "gfx/items/dive_ball.2bpp.lz"
+LuxuryBallIcon:   INCBIN "gfx/items/luxury_ball.2bpp.lz"
+HealBallIcon:     INCBIN "gfx/items/heal_ball.2bpp.lz"
+QuickBallIcon:    INCBIN "gfx/items/quick_ball.2bpp.lz"
+DuskBallIcon:     INCBIN "gfx/items/dusk_ball.2bpp.lz"
+PremierBallIcon:  INCBIN "gfx/items/premier_ball.2bpp.lz"
+CherishBallIcon:  INCBIN "gfx/items/cherish_ball.2bpp.lz"
 
 PotionIcon:
 SuperPotionIcon:
@@ -392,7 +391,9 @@ LostItemIcon:
 RainbowWingIcon:
 SilverWingIcon:
 ClearBellIcon:
-GSBallIcon:
+
+GSBallIcon:       INCBIN "gfx/items/gs_ball.2bpp.lz"
+
 BlueCardIcon:
 OrangeTicketIcon:
 MysticTicketIcon:
