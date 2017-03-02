@@ -396,8 +396,8 @@ MysticTicketIcon: INCBIN "gfx/items/mysticticket.2bpp.lz"
 OldSeaMapIcon:    INCBIN "gfx/items/old_sea_map.2bpp.lz"
 ShinyCharmIcon:   INCBIN "gfx/items/shiny_charm.2bpp.lz"
 OvalCharmIcon:    INCBIN "gfx/items/oval_charm.2bpp.lz"
+SilphScope2Icon:  INCBIN "gfx/items/silphscope2.2bpp.lz"
 
-SilphScope2Icon:
 OranBerryIcon:
 SitrusBerryIcon:
 PechaBerryIcon:
@@ -424,25 +424,25 @@ BlkApricornIcon:
 PnkApricornIcon:  INCBIN "gfx/items/apricorn.2bpp.lz"
 SilkScarfIcon:
 ChoiceScarfIcon:  INCBIN "gfx/items/scarf.2bpp.lz"
+BlackBeltIcon:    INCBIN "gfx/items/black_belt.2bpp.lz"
+SharpBeakIcon:    INCBIN "gfx/items/sharp_beak.2bpp.lz"
+PoisonBarbIcon:   INCBIN "gfx/items/poison_barb.2bpp.lz"
+HardStoneIcon:    INCBIN "gfx/items/hard_stone.2bpp.lz"
+SpellTagIcon:     INCBIN "gfx/items/spell_tag.2bpp.lz"
+MetalCoatIcon:    INCBIN "gfx/items/metal_coat.2bpp.lz"
+CharcoalIcon:     INCBIN "gfx/items/charcoal.2bpp.lz"
+MysticWaterIcon:  INCBIN "gfx/items/mystic_water.2bpp.lz"
+MiracleSeedIcon:  INCBIN "gfx/items/miracle_seed.2bpp.lz"
+MagnetIcon:       INCBIN "gfx/items/magnet.2bpp.lz"
+TwistedSpoonIcon: INCBIN "gfx/items/twistedspoon.2bpp.lz"
+NeverMeltIceIcon: INCBIN "gfx/items/nevermeltice.2bpp.lz"
+DragonFangIcon:   INCBIN "gfx/items/dragon_fang.2bpp.lz"
+BlackGlassesIcon: INCBIN "gfx/items/blackglasses.2bpp.lz"
+PinkBowIcon:      INCBIN "gfx/items/pink_bow.2bpp.lz"
+ScopeLensIcon:    INCBIN "gfx/items/scope_lens.2bpp.lz"
+QuickClawIcon:    INCBIN "gfx/items/quick_claw.2bpp.lz"
+KingsRockIcon:    INCBIN "gfx/items/kings_rock.2bpp.lz"
 
-BlackBeltIcon:
-SharpBeakIcon:
-PoisonBarbIcon:
-HardStoneIcon:
-SpellTagIcon:
-MetalCoatIcon:
-CharcoalIcon:
-MysticWaterIcon:
-MiracleSeedIcon:
-MagnetIcon:
-TwistedSpoonIcon:
-NeverMeltIceIcon:
-DragonFangIcon:
-BlackGlassesIcon:
-PinkBowIcon:
-ScopeLensIcon:
-QuickClawIcon:
-KingsRockIcon:
 FocusBandIcon:
 LeftoversIcon:
 LuckyEggIcon:
