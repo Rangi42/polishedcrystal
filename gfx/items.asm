@@ -322,12 +322,10 @@ FullRestoreIcon:
 
 ReviveIcon:       INCBIN "gfx/items/revive.2bpp.lz"
 MaxReviveIcon:    INCBIN "gfx/items/max_revive.2bpp.lz"
-
 EtherIcon:
 MaxEtherIcon:
 ElixirIcon:
-MaxElixirIcon:
-
+MaxElixirIcon:    INCBIN "gfx/items/ether.2bpp.lz"
 HPUpIcon:         INCBIN "gfx/items/hp_up.2bpp.lz"
 ProteinIcon:
 IronIcon:
@@ -348,6 +346,7 @@ EnergyPowderIcon:
 EnergyRootIcon:
 HealPowderIcon:
 RevivalHerbIcon:
+
 XAttackIcon:
 XDefendIcon:
 XSpeedIcon:
@@ -355,10 +354,11 @@ XSpclAtkIcon:
 XSpclDefIcon:
 DireHitIcon:
 GuardSpecIcon:
-XAccuracyIcon:
+XAccuracyIcon:    INCBIN "gfx/items/battle_item.2bpp.lz"
 RepelIcon:
 SuperRepelIcon:
-MaxRepelIcon:
+MaxRepelIcon:     INCBIN "gfx/items/repel.2bpp.lz"
+
 EscapeRopeIcon:
 PokeDollIcon:
 AbilityCapIcon:
@@ -523,7 +523,9 @@ BigPearlIcon:
 PearlStringIcon:
 StardustIcon:
 StarPieceIcon:
-BrickPieceIcon:
+
+BrickPieceIcon:   INCBIN "gfx/items/brick_piece.2bpp.lz"
+
 RareBoneIcon:
 SilverLeafIcon:
 GoldLeafIcon:
