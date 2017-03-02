@@ -474,9 +474,7 @@ StickIcon:        INCBIN "gfx/items/stick.2bpp.lz"
 ThickClubIcon:
 RareBoneIcon:     INCBIN "gfx/items/bone.2bpp.lz"
 LuckyPunchIcon:   INCBIN "gfx/items/lucky_punch.2bpp.lz"
-
-ArmorSuitIcon: ; TODO
-
+ArmorSuitIcon:    INCBIN "gfx/items/armor_suit.2bpp.lz"
 AirBalloonIcon:   INCBIN "gfx/items/air_balloon.2bpp.lz"
 AssaultVestIcon:  INCBIN "gfx/items/assault_vest.2bpp.lz"
 BigRootIcon:      INCBIN "gfx/items/big_root.2bpp.lz"
