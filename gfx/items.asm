@@ -303,22 +303,17 @@ QuickBallIcon:    INCBIN "gfx/items/quick_ball.2bpp.lz"
 DuskBallIcon:     INCBIN "gfx/items/dusk_ball.2bpp.lz"
 PremierBallIcon:  INCBIN "gfx/items/premier_ball.2bpp.lz"
 CherishBallIcon:  INCBIN "gfx/items/cherish_ball.2bpp.lz"
-
 PotionIcon:
 SuperPotionIcon:
 HyperPotionIcon:  INCBIN "gfx/items/potion.2bpp.lz"
-
 MaxPotionIcon:
-
+FullRestoreIcon:  INCBIN "gfx/items/max_potion.2bpp.lz"
 AntidoteIcon:
 BurnHealIcon:
 ParlyzHealIcon:
 AwakeningIcon:
 IceHealIcon:      INCBIN "gfx/items/antidote.2bpp.lz"
 FullHealIcon:     INCBIN "gfx/items/full_heal.2bpp.lz"
-
-FullRestoreIcon:
-
 ReviveIcon:       INCBIN "gfx/items/revive.2bpp.lz"
 MaxReviveIcon:    INCBIN "gfx/items/max_revive.2bpp.lz"
 EtherIcon:
@@ -334,18 +329,22 @@ ZincIcon:         INCBIN "gfx/items/vitamin.2bpp.lz"
 RareCandyIcon:    INCBIN "gfx/items/rare_candy.2bpp.lz"
 PPUpIcon:         INCBIN "gfx/items/pp_up.2bpp.lz"
 PPMaxIcon:        INCBIN "gfx/items/pp_max.2bpp.lz"
-
-FreshWaterIcon:
-SodaPopIcon:
-LemonadeIcon:
-MoomooMilkIcon:
-RageCandyBarIcon:
+FreshWaterIcon:   INCBIN "gfx/items/fresh_water.2bpp.lz"
+SodaPopIcon:      INCBIN "gfx/items/soda_pop.2bpp.lz"
+LemonadeIcon:     INCBIN "gfx/items/lemonade.2bpp.lz"
+MoomooMilkIcon:   INCBIN "gfx/items/moomoo_milk.2bpp.lz"
+RageCandyBarIcon: INCBIN "gfx/items/ragecandybar.2bpp.lz"
 SacredAshIcon:
+SoftSandIcon:
+BrightPowderIcon:
+MetalPowderIcon:
+QuickPowderIcon:
+StardustIcon:     INCBIN "gfx/items/sand.2bpp.lz"
 EnergyPowderIcon:
-EnergyRootIcon:
 HealPowderIcon:
-RevivalHerbIcon:
-
+SilverPowderIcon: INCBIN "gfx/items/powder.2bpp.lz"
+EnergyRootIcon:   INCBIN "gfx/items/energy_root.2bpp.lz"
+RevivalHerbIcon:  INCBIN "gfx/items/revival_herb.2bpp.lz"
 XAttackIcon:
 XDefendIcon:
 XSpeedIcon:
@@ -357,10 +356,10 @@ XAccuracyIcon:    INCBIN "gfx/items/battle_item.2bpp.lz"
 RepelIcon:
 SuperRepelIcon:
 MaxRepelIcon:     INCBIN "gfx/items/repel.2bpp.lz"
+EscapeRopeIcon:   INCBIN "gfx/items/escape_rope.2bpp.lz"
+PokeDollIcon:     INCBIN "gfx/items/poke_doll.2bpp.lz"
+AbilityCapIcon:   INCBIN "gfx/items/ability_cap.2bpp.lz"
 
-EscapeRopeIcon:
-PokeDollIcon:
-AbilityCapIcon:
 LeafStoneIcon:
 FireStoneIcon:
 WaterStoneIcon:
@@ -398,8 +397,10 @@ BlueCardIcon:
 OrangeTicketIcon:
 MysticTicketIcon:
 OldSeaMapIcon:
-ShinyCharmIcon:
-OvalCharmIcon:
+
+ShinyCharmIcon:   INCBIN "gfx/items/shiny_charm.2bpp.lz"
+OvalCharmIcon:    INCBIN "gfx/items/oval_charm.2bpp.lz"
+
 SilphScope2Icon:
 OranBerryIcon:
 SitrusBerryIcon:
@@ -425,14 +426,13 @@ GrnApricornIcon:
 WhtApricornIcon:
 BlkApricornIcon:
 PnkApricornIcon:  INCBIN "gfx/items/apricorn.2bpp.lz"
-
 SilkScarfIcon:
+ChoiceScarfIcon:  INCBIN "gfx/items/scarf.2bpp.lz"
+
 BlackBeltIcon:
 SharpBeakIcon:
 PoisonBarbIcon:
-SoftSandIcon:
 HardStoneIcon:
-SilverPowderIcon:
 SpellTagIcon:
 MetalCoatIcon:
 CharcoalIcon:
@@ -444,7 +444,6 @@ NeverMeltIceIcon:
 DragonFangIcon:
 BlackGlassesIcon:
 PinkBowIcon:
-BrightPowderIcon:
 ScopeLensIcon:
 QuickClawIcon:
 KingsRockIcon:
@@ -459,8 +458,6 @@ LightBallIcon:
 StickIcon:
 ThickClubIcon:
 LuckyPunchIcon:
-MetalPowderIcon:
-QuickPowderIcon:
 ArmorSuitIcon:
 AirBalloonIcon:
 AssaultVestIcon:
@@ -485,15 +482,18 @@ WeakPolicyIcon:
 WideLensIcon:
 WiseGlassesIcon:
 ZoomLensIcon:
+
 MentalHerbIcon:
 PowerHerbIcon:
 WhiteHerbIcon:
+SilverLeafIcon:
+GoldLeafIcon:     INCBIN "gfx/items/leaf.2bpp.lz"
+
 DampRockIcon:
 HeatRockIcon:
 SmoothRockIcon:
 IcyRockIcon:
 ChoiceBandIcon:
-ChoiceScarfIcon:
 ChoiceSpecsIcon:
 FlameOrbIcon:
 ToxicOrbIcon:
@@ -522,14 +522,11 @@ BalmMushroomIcon:
 PearlIcon:
 BigPearlIcon:
 PearlStringIcon:
-StardustIcon:
 StarPieceIcon:
 
 BrickPieceIcon:   INCBIN "gfx/items/brick_piece.2bpp.lz"
 
 RareBoneIcon:
-SilverLeafIcon:
-GoldLeafIcon:
 SlowpokeTailIcon:
 BottleCapIcon:
 HelixFossilIcon:
