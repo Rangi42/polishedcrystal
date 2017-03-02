@@ -10,11 +10,27 @@ UpdateItemIconAndDescription::
 	ld h, [hl]
 	ld l, a
 	ld de, VTiles2 tile $1c
-	lb bc, BANK(NoItemIcon), $9
+	call GetItemIconBank
 	call DecompressRequest2bpp
 	farcall LoadItemIconPalette
 	call SetPalettes
 	call WaitBGMap
+	ret
+
+GetItemIconBank:
+	lb bc, BANK(ItemIcons1), $9
+	ld a, [CurSpecies]
+	cp AIR_BALLOON
+	ret c
+	cp STARDUST
+	ret z
+	cp CHOICE_SCARF
+	ret z
+	cp RARE_BONE
+	ret z
+	cp ITEM_FROM_MEM
+	ret z
+	lb bc, BANK(ItemIcons2), $9
 	ret
 
 ItemIconPointers:
@@ -278,6 +294,7 @@ ItemIconPointers:
 
 SECTION "Item Icons 1", ROMX, BANK[$41]
 
+ItemIcons1:
 NoItemIcon:       INCBIN "gfx/items/no_item.2bpp.lz"
 PokeBallIcon:     INCBIN "gfx/items/poke_ball.2bpp.lz"
 GreatBallIcon:    INCBIN "gfx/items/great_ball.2bpp.lz"
@@ -398,7 +415,7 @@ ShinyCharmIcon:   INCBIN "gfx/items/shiny_charm.2bpp.lz"
 OvalCharmIcon:    INCBIN "gfx/items/oval_charm.2bpp.lz"
 SilphScope2Icon:  INCBIN "gfx/items/silphscope2.2bpp.lz"
 
-OranBerryIcon:
+OranBerryIcon: ; TODO
 SitrusBerryIcon:
 PechaBerryIcon:
 RawstBerryIcon:
@@ -442,31 +459,40 @@ PinkBowIcon:      INCBIN "gfx/items/pink_bow.2bpp.lz"
 ScopeLensIcon:    INCBIN "gfx/items/scope_lens.2bpp.lz"
 QuickClawIcon:    INCBIN "gfx/items/quick_claw.2bpp.lz"
 KingsRockIcon:    INCBIN "gfx/items/kings_rock.2bpp.lz"
+FocusBandIcon:    INCBIN "gfx/items/focus_band.2bpp.lz"
+LeftoversIcon:    INCBIN "gfx/items/leftovers.2bpp.lz"
+LuckyEggIcon:     INCBIN "gfx/items/lucky_egg.2bpp.lz"
+AmuletCoinIcon:   INCBIN "gfx/items/amulet_coin.2bpp.lz"
+CleanseTagIcon:   INCBIN "gfx/items/cleanse_tag.2bpp.lz"
+SmokeBallIcon:    INCBIN "gfx/items/smoke_ball.2bpp.lz"
 
-FocusBandIcon:
-LeftoversIcon:
-LuckyEggIcon:
-AmuletCoinIcon:
-CleanseTagIcon:
-SmokeBallIcon:
-BerserkGeneIcon:
-LightBallIcon:
-StickIcon:
+BerserkGeneIcon: ; TODO
+
+LightBallIcon:    INCBIN "gfx/items/light_ball.2bpp.lz"
+StickIcon:        INCBIN "gfx/items/stick.2bpp.lz"
 ThickClubIcon:
-LuckyPunchIcon:
-ArmorSuitIcon:
-AirBalloonIcon:
-AssaultVestIcon:
-BigRootIcon:
-BindingBandIcon:
-DestinyKnotIcon:
-EvioliteIcon:
-ExpertBeltIcon:
-FocusSashIcon:
-GripClawIcon:
-LifeOrbIcon:
-LightClayIcon:
-MetronomeIIcon:
+RareBoneIcon:     INCBIN "gfx/items/bone.2bpp.lz"
+LuckyPunchIcon:   INCBIN "gfx/items/lucky_punch.2bpp.lz"
+
+ArmorSuitIcon: ; TODO
+
+
+SECTION "Item Icons 2", ROMX, BANK[$43]
+
+ItemIcons2:
+AirBalloonIcon:   INCBIN "gfx/items/air_balloon.2bpp.lz"
+AssaultVestIcon:  INCBIN "gfx/items/assault_vest.2bpp.lz"
+BigRootIcon:      INCBIN "gfx/items/big_root.2bpp.lz"
+BindingBandIcon:  INCBIN "gfx/items/binding_band.2bpp.lz"
+DestinyKnotIcon:  INCBIN "gfx/items/destiny_knot.2bpp.lz"
+EvioliteIcon:     INCBIN "gfx/items/eviolite.2bpp.lz"
+ExpertBeltIcon:   INCBIN "gfx/items/expert_belt.2bpp.lz"
+FocusSashIcon:    INCBIN "gfx/items/focus_sash.2bpp.lz"
+GripClawIcon:     INCBIN "gfx/items/grip_claw.2bpp.lz"
+LifeOrbIcon:      INCBIN "gfx/items/life_orb.2bpp.lz"
+LightClayIcon:    INCBIN "gfx/items/light_clay.2bpp.lz"
+MetronomeIIcon:   INCBIN "gfx/items/metronome_i.2bpp.lz"
+
 MuscleBandIcon:
 ProtectPadsIcon:
 RockyHelmetIcon:
@@ -522,7 +548,6 @@ StarPieceIcon:
 
 BrickPieceIcon:   INCBIN "gfx/items/brick_piece.2bpp.lz"
 
-RareBoneIcon:
 SlowpokeTailIcon:
 BottleCapIcon:
 HelixFossilIcon:
@@ -540,5 +565,3 @@ MorphMailIcon:
 BlueSkyMailIcon:
 MusicMailIcon:
 MirageMailIcon: INCBIN "gfx/items/no_item.2bpp.lz"
-
-;SECTION "Item Icons 2", ROMX, BANK[$43]
