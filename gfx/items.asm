@@ -489,25 +489,17 @@ GripClawIcon:     INCBIN "gfx/items/grip_claw.2bpp.lz"
 LifeOrbIcon:      INCBIN "gfx/items/life_orb.2bpp.lz"
 LightClayIcon:    INCBIN "gfx/items/light_clay.2bpp.lz"
 MetronomeIIcon:   INCBIN "gfx/items/metronome_i.2bpp.lz"
-
-MuscleBandIcon: ; TODO
-ProtectPadsIcon:
-
+MuscleBandIcon:   INCBIN "gfx/items/muscle_band.2bpp.lz"
+ProtectPadsIcon:  INCBIN "gfx/items/protect_pads.2bpp.lz"
 RockyHelmetIcon:  INCBIN "gfx/items/rocky_helmet.2bpp.lz"
-
-SafeGogglesIcon: ; TODO
-ShedShellIcon:
-ShellBellIcon:
-SootheBellIcon:
-
+SafeGogglesIcon:  INCBIN "gfx/items/safe_goggles.2bpp.lz"
+ShedShellIcon:    INCBIN "gfx/items/shed_shell.2bpp.lz"
+ShellBellIcon:    INCBIN "gfx/items/shell_bell.2bpp.lz"
+SootheBellIcon:   INCBIN "gfx/items/soothe_bell.2bpp.lz"
 WeakPolicyIcon:   INCBIN "gfx/items/weak_policy.2bpp.lz"
-
-WideLensIcon: ; TODO
-
+WideLensIcon:     INCBIN "gfx/items/wide_lens.2bpp.lz"
 WiseGlassesIcon:  INCBIN "gfx/items/wise_glasses.2bpp.lz"
-
-ZoomLensIcon: ; TODO
-
+ZoomLensIcon:     INCBIN "gfx/items/zoom_lens.2bpp.lz"
 MentalHerbIcon:
 PowerHerbIcon:
 WhiteHerbIcon:
@@ -521,10 +513,8 @@ IcyRockIcon:
 
 ChoiceBandIcon:   INCBIN "gfx/items/choice_band.2bpp.lz"
 ChoiceSpecsIcon:  INCBIN "gfx/items/choice_specs.2bpp.lz"
-
-FlameOrbIcon: ; TODO
-ToxicOrbIcon:
-
+FlameOrbIcon:     INCBIN "gfx/items/flame_orb.2bpp.lz"
+ToxicOrbIcon:     INCBIN "gfx/items/toxic_orb.2bpp.lz"
 BlackSludgeIcon:  INCBIN "gfx/items/black_sludge.2bpp.lz"
 
 MachoBraceIcon: ; TODO
@@ -534,8 +524,10 @@ PowerBeltIcon:
 PowerLensIcon:
 PowerBandIcon:
 PowerAnkletIcon:
-DragonScaleIcon:
-UpGradeIcon:
+
+DragonScaleIcon:  INCBIN "gfx/items/dragon_scale.2bpp.lz"
+
+UpGradeIcon: ; TODO
 DubiousDiscIcon:
 
 ProtectorIcon:    INCBIN "gfx/items/protector.2bpp.lz"
@@ -544,27 +536,26 @@ MagmarizerIcon:   INCBIN "gfx/items/magmarizer.2bpp.lz"
 RazorFangIcon:    INCBIN "gfx/items/razor_fang.2bpp.lz"
 RazorClawIcon:    INCBIN "gfx/items/razor_claw.2bpp.lz"
 OddSouvenirIcon:  INCBIN "gfx/items/odd_souvenir.2bpp.lz"
-
-NuggetIcon: ; TODO
-BigNuggetIcon:
-TinyMushroomIcon:
-BigMushroomIcon:
-BalmMushroomIcon:
-PearlIcon:
-BigPearlIcon:
-PearlStringIcon:
-
+NuggetIcon:       INCBIN "gfx/items/nugget.2bpp.lz"
+BigNuggetIcon:    INCBIN "gfx/items/big_nugget.2bpp.lz"
+TinyMushroomIcon: INCBIN "gfx/items/tinymushroom.2bpp.lz"
+BigMushroomIcon:  INCBIN "gfx/items/big_mushroom.2bpp.lz"
+BalmMushroomIcon: INCBIN "gfx/items/balmmushroom.2bpp.lz"
+PearlIcon:        INCBIN "gfx/items/pearl.2bpp.lz"
+BigPearlIcon:     INCBIN "gfx/items/big_pearl.2bpp.lz"
+PearlStringIcon:  INCBIN "gfx/items/pearl_string.2bpp.lz"
 StarPieceIcon:    INCBIN "gfx/items/star_piece.2bpp.lz"
 BrickPieceIcon:   INCBIN "gfx/items/brick_piece.2bpp.lz"
 SlowpokeTailIcon: INCBIN "gfx/items/slowpoketail.2bpp.lz"
 
-BottleCapIcon: ; TODO
-HelixFossilIcon:
-DomeFossilIcon:
-OldAmberIcon:
-MulchIcon:
-SweetHoneyIcon:
-FlowerMailIcon:
+BottleCapIcon:    INCBIN "gfx/items/bottle_cap.2bpp.lz"
+HelixFossilIcon:  INCBIN "gfx/items/helix_fossil.2bpp.lz"
+DomeFossilIcon:   INCBIN "gfx/items/dome_fossil.2bpp.lz"
+OldAmberIcon:     INCBIN "gfx/items/old_amber.2bpp.lz"
+MulchIcon:        INCBIN "gfx/items/mulch.2bpp.lz"
+SweetHoneyIcon:   INCBIN "gfx/items/sweet_honey.2bpp.lz"
+
+FlowerMailIcon: ; TODO
 SurfMailIcon:
 LiteBlueMailIcon:
 PortraitMailIcon:
