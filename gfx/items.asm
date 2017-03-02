@@ -505,12 +505,10 @@ PowerHerbIcon:
 WhiteHerbIcon:
 SilverLeafIcon:
 GoldLeafIcon:     INCBIN "gfx/items/leaf.2bpp.lz"
-
-DampRockIcon: ; TODO
-HeatRockIcon:
-SmoothRockIcon:
-IcyRockIcon:
-
+DampRockIcon:     INCBIN "gfx/items/damp_rock.2bpp.lz"
+HeatRockIcon:     INCBIN "gfx/items/heat_rock.2bpp.lz"
+SmoothRockIcon:   INCBIN "gfx/items/smooth_rock.2bpp.lz"
+IcyRockIcon:      INCBIN "gfx/items/icy_rock.2bpp.lz"
 ChoiceBandIcon:   INCBIN "gfx/items/choice_band.2bpp.lz"
 ChoiceSpecsIcon:  INCBIN "gfx/items/choice_specs.2bpp.lz"
 FlameOrbIcon:     INCBIN "gfx/items/flame_orb.2bpp.lz"
@@ -526,10 +524,8 @@ PowerBandIcon:
 PowerAnkletIcon:
 
 DragonScaleIcon:  INCBIN "gfx/items/dragon_scale.2bpp.lz"
-
-UpGradeIcon: ; TODO
-DubiousDiscIcon:
-
+UpGradeIcon:      INCBIN "gfx/items/up_grade.2bpp.lz"
+DubiousDiscIcon:  INCBIN "gfx/items/dubious_disc.2bpp.lz"
 ProtectorIcon:    INCBIN "gfx/items/protector.2bpp.lz"
 ElectirizerIcon:  INCBIN "gfx/items/electirizer.2bpp.lz"
 MagmarizerIcon:   INCBIN "gfx/items/magmarizer.2bpp.lz"
