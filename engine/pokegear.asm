@@ -1971,7 +1971,7 @@ _TownMap: ; 9191c
 	call TownMapJohtoFlips
 	jr .okay_flips
 .kanto3
-	call TownMapJohtoFlips
+	call TownMapKantoFlips
 .okay_flips
 	ret
 ; 91a53
