@@ -6013,7 +6013,10 @@ SECTION "bank77_2", ROMX, BANK[$77]
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
 	ld a, b
+	jr nz, .h24
 	cp 12
 	push af
 	jr c, .AM
@@ -6026,6 +6029,7 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	ld a, 12
 .PM:
 	ld b, a
+.h24:
 ; Crazy stuff happening with the stack
 	push bc
 	ld hl, [sp+$1]
@@ -6048,6 +6052,9 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	pop bc
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
+	ret nz
 	ld de, String_AM
 	pop af
 	jr c, .place_am_pm
