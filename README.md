@@ -323,6 +323,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Dark battle intro at night.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
+* Fix: Pay Day pays 5 times the user's level, not 2.
 * Fix: Explosion and Self-Destruct do not halve Defense.
 * Fix: Quick Ball catch rate multiplier is 5 on the first turn.
 * Fix: Minimize raises evasion by two stages.

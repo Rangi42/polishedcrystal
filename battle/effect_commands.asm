@@ -7817,7 +7817,13 @@ BattleCommand_PayDay: ; 3705c
 	ld a, [EnemyMonLevel]
 .ok
 
+	push bc
+	ld b, a
 	add a
+	add a
+	add b
+	pop bc
+
 	ld hl, wPayDayMoney + 2
 	add [hl]
 	ld [hld], a
