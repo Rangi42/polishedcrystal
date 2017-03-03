@@ -14,7 +14,6 @@ UpdateItemIconAndDescription::
 	call DecompressRequest2bpp
 	farcall LoadItemIconPalette
 	call SetPalettes
-	call WaitBGMap
 	ret
 
 GetItemIconBank:
@@ -29,6 +28,25 @@ GetItemIconBank:
 	cp ITEM_FROM_MEM
 	ret z
 	lb bc, BANK(ItemIcons2), $9
+	ret
+
+LoadTMHMIcon::
+	ld hl, TMHMIcon
+	ld de, VTiles2 tile $1c
+	lb bc, BANK(TMHMIcon), $9
+	call DecompressRequest2bpp
+	ret
+
+ClearTMHMIcon::
+	ld hl, NoItemIcon
+	ld de, VTiles2 tile $1c
+	lb bc, BANK(NoItemIcon), $9
+	call DecompressRequest2bpp
+	ret
+
+UpdateTMHMIconPalette::
+	farcall LoadTMHMIconPalette
+	call SetPalettes
 	ret
 
 ItemIconPointers:
@@ -553,3 +571,4 @@ MorphMailIcon:
 BlueSkyMailIcon:
 MusicMailIcon:
 MirageMailIcon:   INCBIN "gfx/items/mail.2bpp.lz"
+TMHMIcon:         INCBIN "gfx/items/tm_hm.2bpp.lz"

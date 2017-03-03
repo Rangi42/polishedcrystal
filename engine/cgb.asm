@@ -1289,6 +1289,26 @@ endr
 	call FarCopyWRAM
 	ret
 
+LoadTMHMIconPalette:
+	ld a, [CurTMHM]
+	dec a
+	ld hl, TMHMTypes
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	ld hl, TMHMTypeIconPalettes
+	ld c, a
+	ld b, 0
+rept 4
+	add hl, bc
+endr
+	ld de, UnknBGPals + 4 palettes + 2
+	ld bc, 4
+	ld a, $5
+	call FarCopyWRAM
+	ret
+
 ItemIconPalettes:
 CaughtBallPals:
 ; NO ITEM
@@ -2056,6 +2076,157 @@ CaughtBallPals:
 ; MIRAGE MAIL
 	RGB 20, 20, 20
 	RGB 10, 10, 10
+
+TMHMTypes:
+; This merges data from battle/moves/moves.asm:Moves and engine/tmhm.asm:TMHMMoves
+; for efficiency.
+	db FIGHTING ; DYNAMICPUNCH
+	db DRAGON   ; DRAGON_CLAW
+	db GHOST    ; CURSE
+	db PSYCHIC  ; CALM_MIND
+	db NORMAL   ; ROAR
+	db POISON   ; TOXIC
+	db ICE      ; HAIL
+	db FIGHTING ; BULK_UP
+	db NORMAL   ; SWORDS_DANCE
+if DEF(FAITHFUL)
+	db NORMAL   ; HIDDEN_POWER
+else
+	db UNKNOWN_T ; HIDDEN_POWER
+endc
+	db FIRE     ; SUNNY_DAY
+	db DARK     ; HONE_CLAWS
+	db ICE      ; ICE_BEAM
+	db ICE      ; BLIZZARD
+	db NORMAL   ; HYPER_BEAM
+	db PSYCHIC  ; LIGHT_SCREEN
+	db NORMAL   ; PROTECT
+	db WATER    ; RAIN_DANCE
+	db GRASS    ; GIGA_DRAIN
+	db NORMAL   ; SAFEGUARD
+	db DRAGON   ; DRAGONBREATH
+	db GRASS    ; SOLAR_BEAM
+	db STEEL    ; IRON_TAIL
+	db ELECTRIC ; THUNDERBOLT
+	db ELECTRIC ; THUNDER
+	db GROUND   ; EARTHQUAKE
+	db NORMAL   ; RETURN
+	db GROUND   ; DIG
+	db PSYCHIC  ; PSYCHIC_M
+	db GHOST    ; SHADOW_BALL
+	db GROUND   ; MUD_SLAP
+	db NORMAL   ; DOUBLE_TEAM
+	db PSYCHIC  ; REFLECT
+	db STEEL    ; FLASH_CANNON
+	db FIRE     ; FLAMETHROWER
+	db POISON   ; SLUDGE_BOMB
+	db GROUND   ; SANDSTORM
+	db FIRE     ; FIRE_BLAST
+	db NORMAL   ; SWIFT
+	db FLYING   ; AERIAL_ACE
+	db ROCK     ; STONE_EDGE
+	db ICE      ; AVALANCHE
+	db ELECTRIC ; WILD_CHARGE
+	db PSYCHIC  ; REST
+	db NORMAL   ; ATTRACT
+	db DARK     ; THIEF
+	db STEEL    ; STEEL_WING
+	db ROCK     ; ROCK_SLIDE
+	db BUG      ; FURY_CUTTER
+	db ROCK     ; ROCK_SMASH
+	db BUG      ; LEECH_LIFE
+	db FIGHTING ; FOCUS_BLAST
+	db GRASS    ; ENERGY_BALL
+	db NORMAL   ; FALSE_SWIPE
+	db WATER    ; SCALD
+	db BUG      ; X_SCISSOR
+	db DARK     ; DARK_PULSE
+	db NORMAL   ; ENDURE
+	db DRAGON   ; DRAGON_PULSE
+	db FAIRY    ; DAZZLINGLEAM
+	db FIRE     ; WILL_O_WISP
+	db FLYING   ; ACROBATICS
+	db ELECTRIC ; THUNDER_WAVE
+	db NORMAL   ; EXPLOSION
+	db GHOST    ; SHADOW_CLAW
+	db POISON   ; POISON_JAB
+	db ELECTRIC ; VOLT_SWITCH
+	db FIGHTING ; GIGA_IMPACT
+	db BUG      ; U_TURN
+	db NORMAL   ; FLASH
+if DEF(FAITHFUL)
+	db NORMAL   ; CUT
+else
+	db STEEL    ; CUT
+endc
+	db FLYING   ; FLY
+	db WATER    ; SURF
+if DEF(FAITHFUL)
+	db NORMAL   ; STRENGTH
+else
+	db FIGHTING ; STRENGTH
+endc
+	db WATER    ; WHIRLPOOL
+	db WATER    ; WATERFALL
+
+TMHMTypeIconPalettes:
+; NORMAL
+	RGB 28, 28, 29
+	RGB 24, 24, 23
+; FIGHTING
+	RGB 30, 24, 18
+	RGB 31, 13, 00
+; FLYING
+	RGB 21, 29, 31
+	RGB 24, 24, 23
+; POISON
+	RGB 31, 25, 20
+	RGB 24, 11, 26
+; GROUND
+	RGB 31, 31, 18
+	RGB 28, 24, 08
+; ROCK
+	RGB 30, 27, 20
+	RGB 27, 21, 08
+; BUG
+	RGB 27, 30, 24
+	RGB 17, 29, 13
+; GHOST
+	RGB 29, 25, 30
+	RGB 24, 11, 26
+; STEEL
+	RGB 26, 26, 25
+	RGB 05, 19, 19
+; FIRE
+	RGB 31, 27, 18
+	RGB 31, 20, 03
+; WATER
+	RGB 21, 26, 30
+	RGB 00, 20, 29
+; GRASS
+	RGB 22, 30, 26
+	RGB 00, 29, 20
+; ELECTRIC
+	RGB 31, 28, 14
+	RGB 31, 24, 00
+; PSYCHIC
+	RGB 31, 26, 24
+	RGB 31, 20, 18
+; ICE
+	RGB 22, 30, 31
+	RGB 11, 26, 29
+; DRAGON
+	RGB 17, 24, 31
+	RGB 31, 21, 14
+; DARK
+	RGB 22, 26, 25
+	RGB 05, 19, 19
+; FAIRY
+	RGB 29, 23, 30
+	RGB 31, 17, 26
+; UNKNOWN T
+	RGB 17, 26, 24
+	RGB 10, 20, 17
 
 _CGB_Pokepic: ; 9499
 	call _CGB_MapPals
