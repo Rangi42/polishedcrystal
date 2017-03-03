@@ -56,7 +56,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
-* Show item pictures in bag, and possibly when picking them up
 * Make Eggs use their Pokémon's palette
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)
