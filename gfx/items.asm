@@ -37,13 +37,6 @@ LoadTMHMIcon::
 	call DecompressRequest2bpp
 	ret
 
-ClearTMHMIcon::
-	ld hl, NoItemIcon
-	ld de, VTiles2 tile $1c
-	lb bc, BANK(NoItemIcon), $9
-	call DecompressRequest2bpp
-	ret
-
 UpdateTMHMIconPalette::
 	farcall LoadTMHMIconPalette
 	call SetPalettes

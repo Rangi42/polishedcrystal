@@ -68,26 +68,22 @@ TMHM_JoypadLoop: ; 2c915 (b:4915)
 	jp nz, TMHM_ExitPocket
 TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	call TMHM_CheckHoveringOverCancel
-	jp nc, .Cancel
+	jp nc, TMHM_ExitPocket
 	hlcoord 0, 12
 	ld b, 4
 	ld c, SCREEN_WIDTH - 2
 	call TextBox
+	farcall UpdateTMHMIconPalette
 	ld a, [CurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, TMHM_JoypadLoop
 	ld [wd265], a
-	farcall UpdateTMHMIconPalette
 	predef GetTMHMMove
 	ld a, [wd265]
 	ld [CurSpecies], a
 	hlcoord 1, 14
 	call PrintMoveDesc
 	jp TMHM_JoypadLoop
-
-.Cancel:
-;	farcall ClearTMHMIcon
-	jp TMHM_ExitPocket
 
 TMHM_ChooseTMorHM: ; 2c974 (b:4974)
 	call TMHM_PlaySFX_ReadText2

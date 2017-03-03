@@ -1291,6 +1291,9 @@ endr
 
 LoadTMHMIconPalette:
 	ld a, [CurTMHM]
+	ld hl, .cancel_palette
+	cp NUM_TMS + NUM_HMS + 1
+	jr nc, .got_palette
 	dec a
 	ld hl, TMHMTypes
 	ld b, 0
@@ -1303,11 +1306,16 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
+.got_palette:
 	ld de, UnknBGPals + 4 palettes + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
 	ret
+
+.cancel_palette:
+	RGB 31, 31, 31
+	RGB 31, 31, 31
 
 ItemIconPalettes:
 CaughtBallPals:
