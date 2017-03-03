@@ -561,14 +561,15 @@ DomeFossilIcon:   INCBIN "gfx/items/dome_fossil.2bpp.lz"
 OldAmberIcon:     INCBIN "gfx/items/old_amber.2bpp.lz"
 MulchIcon:        INCBIN "gfx/items/mulch.2bpp.lz"
 SweetHoneyIcon:   INCBIN "gfx/items/sweet_honey.2bpp.lz"
-FlowerMailIcon:
+FlowerMailIcon:   INCBIN "gfx/items/flower_mail.2bpp.lz"
 SurfMailIcon:
-LiteBlueMailIcon:
-PortraitMailIcon:
-LovelyMailIcon:
-EonMailIcon:
-MorphMailIcon:
-BlueSkyMailIcon:
-MusicMailIcon:
-MirageMailIcon:   INCBIN "gfx/items/mail.2bpp.lz"
+LiteBlueMailIcon: INCBIN "gfx/items/mail.2bpp.lz"
+PortraitMailIcon: INCBIN "gfx/items/portraitmail.2bpp.lz"
+LovelyMailIcon:   INCBIN "gfx/items/lovely_mail.2bpp.lz"
+EonMailIcon:      INCBIN "gfx/items/eon_mail.2bpp.lz"
+MorphMailIcon:    INCBIN "gfx/items/morph_mail.2bpp.lz"
+BlueSkyMailIcon:  INCBIN "gfx/items/bluesky_mail.2bpp.lz"
+MusicMailIcon:    INCBIN "gfx/items/music_mail.2bpp.lz"
+MirageMailIcon:   INCBIN "gfx/items/mirage_mail.2bpp.lz"
+
 TMHMIcon:         INCBIN "gfx/items/tm_hm.2bpp.lz"
