@@ -1291,7 +1291,7 @@ endr
 
 LoadTMHMIconPalette:
 	ld a, [CurTMHM]
-	ld hl, .cancel_palette
+	ld hl, TMHMCancelPalette
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .got_palette
 	dec a
@@ -1312,10 +1312,6 @@ endr
 	ld a, $5
 	call FarCopyWRAM
 	ret
-
-.cancel_palette:
-	RGB 31, 31, 31
-	RGB 31, 31, 31
 
 ItemIconPalettes:
 CaughtBallPals:
@@ -2084,6 +2080,10 @@ CaughtBallPals:
 ; MIRAGE MAIL
 	RGB 07, 26, 31
 	RGB 00, 21, 00
+TMHMCancelPalette:
+; CANCEL
+	RGB 31, 31, 31
+	RGB 31, 31, 31
 
 TMHMTypes:
 ; This merges data from battle/moves/moves.asm:Moves and engine/tmhm.asm:TMHMMoves
