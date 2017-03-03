@@ -37,9 +37,10 @@ Red:
 	opentext
 	writetext .Text1
 	waitbutton
-	checkitem MYSTICTICKET
+	checkevent EVENT_GOT_MYSTICTICKET_FROM_RED
 	iftrue .AlreadyHaveMysticTicket
 	verbosegiveitem MYSTICTICKET
+	setevent EVENT_GOT_MYSTICTICKET_FROM_RED
 .AlreadyHaveMysticTicket
 	closetext
 	special Special_FadeBlackQuickly
