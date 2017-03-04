@@ -142,7 +142,6 @@ Pack: ; 10000
 	xor a
 	ld [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
-	farcall LoadTMHMIcon
 	call Pack_JumptableNext
 	ret
 

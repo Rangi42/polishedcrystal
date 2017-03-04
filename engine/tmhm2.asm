@@ -1,6 +1,7 @@
 TMHMPocket: ; 2c76f (b:476f)
 	ld a, $1
 	ld [hInMenu], a
+	farcall LoadTMHMIcon
 	call TMHM_PocketLoop
 	ld a, 0 ; not xor a; preserve carry flag
 	ld [hInMenu], a
