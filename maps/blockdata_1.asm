@@ -112,52 +112,11 @@ Route38_BlockData:
 OlivineTimsHouse_BlockData:
 OlivinePunishmentSpeechHouse_BlockData:
 OlivineGoodRodHouse_BlockData:
-Route39Farmhouse_BlockData:
-MahoganyRedGyaradosSpeechHouse_BlockData:
-BlackthornDragonSpeechHouse_BlockData:
-BlackthornEmysHouse_BlockData:
-MoveDeletersHouse_BlockData:
-CeruleanGymBadgeSpeechHouse_BlockData:
-CeruleanPoliceStation_BlockData:
-CeruleanTradeSpeechHouse_BlockData:
-BillsHouse_BlockData:
-CharcoalKiln_BlockData:
-LakeofRageHiddenPowerHouse_BlockData:
-LakeofRageMagikarpHouse_BlockData:
-GoldenrodHappinessRater_BlockData:
+CharcoalKiln_BlockData: ; TODO: traditional with kiln tiles
 GoldenrodBillsHouse_BlockData:
-GoldenrodPPSpeechHouse_BlockData:
-GoldenrodNameRater_BlockData:
-VermilionHouseFishingSpeechHouse_BlockData:
-VermilionMagnetTrainSpeechHouse_BlockData:
-VermilionHouseDiglettsCaveSpeechHouse_BlockData:
-BluesHouse_BlockData:
-PewterNidoranSpeechHouse_BlockData:
-PewterSnoozeSpeechHouse_BlockData:
-FuchsiaBillSpeechHouse_BlockData:
-LavenderTownSpeechHouse_BlockData:
-LavenderNameRater_BlockData:
-Route12SuperRodHouse_BlockData:
-Route28FamousSpeechHouse_BlockData:
-CeladonMansionRoofHouse_BlockData:
-Route16FuchsiaSpeechHouse_BlockData:
-ManiasHouse_BlockData:
-CianwoodPharmacy_BlockData:
 CianwoodCityPhotoStudio_BlockData:
-CianwoodLugiaSpeechHouse_BlockData:
-StatsJudgesHouse_BlockData:
-ViridianNicknameSpeechHouse_BlockData:
-Route2NuggetSpeechHouse_BlockData:
-KrissNeighborsHouse_BlockData:
-Route26HealSpeechHouse_BlockData:
-Route26DayofWeekSiblingsHouse_BlockData:
-Route27RestHouse_BlockData:
-MrPsychicsHouse_BlockData:
-Route5CleanseTagSpeechHouse_BlockData:
 CherrygroveGymSpeechHouse_BlockData:
-GuideGentsHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
-Route30BerrySpeechHouse_BlockData:
 SinjohRuinsHouse_BlockData:
 ShamoutiHotel_BlockData:
 ShamoutiTouristCenter_BlockData:
@@ -167,7 +126,62 @@ ShamoutiEastBeachVilla_BlockData:
 ShamoutiWestBeachShack_BlockData:
 ShamoutiWestBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
-	INCBIN "maps/House1.blk"
+	INCBIN "maps/JohtoHouse1.blk"
+
+GoldenrodHappinessRater_BlockData:
+GoldenrodPPSpeechHouse_BlockData:
+GuideGentsHouse_BlockData:
+	INCBIN "maps/JohtoHouse2.blk"
+
+MahoganyRedGyaradosSpeechHouse_BlockData:
+BlackthornDragonSpeechHouse_BlockData:
+BlackthornEmysHouse_BlockData:
+MoveDeletersHouse_BlockData:
+LakeofRageMagikarpHouse_BlockData:
+GoldenrodNameRater_BlockData:
+ManiasHouse_BlockData:
+CianwoodLugiaSpeechHouse_BlockData:
+StatsJudgesHouse_BlockData:
+	INCBIN "maps/JohtoHouse3.blk"
+
+Route39Farmhouse_BlockData:
+LakeofRageHiddenPowerHouse_BlockData:
+Route28FamousSpeechHouse_BlockData:
+CianwoodPharmacy_BlockData: ; TODO: merchandise tiles
+KrissNeighborsHouse_BlockData:
+Route30BerrySpeechHouse_BlockData:
+	INCBIN "maps/JohtoHouse4.blk"
+
+CeruleanPoliceStation_BlockData:
+CeladonMansionRoofHouse_BlockData:
+MrPsychicsHouse_BlockData:
+	INCBIN "maps/KantoHouse1.blk"
+
+CeruleanGymBadgeSpeechHouse_BlockData:
+CeruleanTradeSpeechHouse_BlockData:
+BillsHouse_BlockData: ; TODO: teleporter tiles
+BluesHouse_BlockData:
+FuchsiaBillSpeechHouse_BlockData:
+LavenderTownSpeechHouse_BlockData:
+ViridianNicknameSpeechHouse_BlockData:
+	INCBIN "maps/KantoHouse2.blk"
+
+VermilionHouseFishingSpeechHouse_BlockData:
+VermilionMagnetTrainSpeechHouse_BlockData:
+VermilionHouseDiglettsCaveSpeechHouse_BlockData:
+LavenderNameRater_BlockData:
+	INCBIN "maps/KantoHouse3.blk"
+
+PewterNidoranSpeechHouse_BlockData:
+PewterSnoozeSpeechHouse_BlockData:
+Route12SuperRodHouse_BlockData:
+Route16FuchsiaSpeechHouse_BlockData:
+Route2NuggetSpeechHouse_BlockData:
+Route26HealSpeechHouse_BlockData:
+Route26DayofWeekSiblingsHouse_BlockData:
+Route27RestHouse_BlockData:
+Route5CleanseTagSpeechHouse_BlockData:
+	INCBIN "maps/KantoHouse4.blk"
 
 Route43MahoganyGate_BlockData:
 Route43Gate_BlockData:

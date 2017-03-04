@@ -19,9 +19,6 @@ KrissNeighborsHusband:
 KrissNeighbor:
 	jumptextfaceplayer KrissNeighborText
 
-KrissNeighborsHouseBookshelf:
-	jumpstd magazinebookshelf
-
 KrissNeighborsHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .NormalRadio
@@ -123,10 +120,8 @@ KrissNeighborsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 0, SIGNPOST_READ, KrissNeighborsHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, KrissNeighborsHouseBookshelf
-	signpost 1, 7, SIGNPOST_READ, KrissNeighborsHouseRadio
+	db 1
+	signpost 1, 5, SIGNPOST_READ, KrissNeighborsHouseRadio
 
 .PersonEvents:
 	db 3

@@ -25,9 +25,6 @@ UnknownScript_0x196d7d:
 	closetext
 	end
 
-Route30BerrySpeechHouseBookshelf:
-	jumpstd magazinebookshelf
-
 UnknownText_0x196d82:
 	text "You know, #mon"
 	line "eat Berries."
@@ -63,9 +60,7 @@ Route30BerrySpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, Route30BerrySpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, Route30BerrySpeechHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 1

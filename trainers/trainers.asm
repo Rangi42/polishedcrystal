@@ -2306,7 +2306,7 @@ Rival0Group:
 ; ================
 
 	; RIVAL0
-	db "Boy@"
+	db "boy@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2318,7 +2318,7 @@ Rival0Group:
 ; ================
 
 	; RIVAL0
-	db "Boy@"
+	db "boy@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2330,7 +2330,7 @@ Rival0Group:
 ; ================
 
 	; RIVAL0
-	db "Boy@"
+	db "boy@"
 	db TRAINERTYPE_ITEM
 
 	; party

@@ -261,7 +261,7 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_POKECOM_CENTER_1F,                16, 16 ; 23
 	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 24
 	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 25
-	mapgroup DAYCARE,                                     4,  5 ; 26
+	mapgroup DAYCARE,                                     4,  4 ; 26
 
 	newgroup                                                    ; 12
 
@@ -369,7 +369,7 @@ MAP_NONE   EQU 0
 	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  6
 	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  7
 	mapgroup LAVENDER_MART,                               4,  6 ;  8
-	mapgroup SOUL_HOUSE,                                  4,  5 ;  9
+	mapgroup SOUL_HOUSE,                                  5,  5 ;  9
 	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 10
 	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 11
 	mapgroup ROUTE_12_NORTH,                              9, 10 ; 12
@@ -466,7 +466,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_GYM,                               23,  7 ;  4
 	mapgroup VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
 	mapgroup VIRIDIAN_SCHOOL_HOUSE,                       4,  4 ;  6
-	mapgroup TRAINER_HOUSE_1F,                            7,  5 ;  7
+	mapgroup TRAINER_HOUSE_1F,                            6,  5 ;  7
 	mapgroup TRAINER_HOUSE_B1F,                           8,  5 ;  8
 	mapgroup VIRIDIAN_MART,                               4,  6 ;  9
 	mapgroup VIRIDIAN_POKECENTER_1F,                      4,  6 ; 11
@@ -509,7 +509,7 @@ MAP_NONE   EQU 0
 	mapgroup SILPH_CO_2F,                                 4,  8 ;  9
 	mapgroup SILPH_CO_3F,                                 4,  8 ; 10
 	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 11
-	mapgroup COPYCATS_HOUSE_2F,                           3,  5 ; 12
+	mapgroup COPYCATS_HOUSE_2F,                           3,  4 ; 12
 	mapgroup ROUTE_5,                                    17, 10 ;  1
 	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ;  5
 	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ;  6
