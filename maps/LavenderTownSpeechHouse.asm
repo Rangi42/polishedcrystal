@@ -11,9 +11,6 @@ LavenderTownSpeechHouse_MapScriptHeader:
 PokefanFScript_0x7ea47:
 	jumptextfaceplayer UnknownText_0x7ea4d
 
-LavenderTownSpeechHouseBookshelf:
-	jumpstd picturebookshelf
-
 UnknownText_0x7ea4d:
 	text "Lavender is a"
 	line "tiny, quiet town"
@@ -41,9 +38,7 @@ LavenderTownSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, LavenderTownSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, LavenderTownSpeechHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 1

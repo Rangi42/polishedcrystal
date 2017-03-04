@@ -42,14 +42,10 @@ MrFujisPidgey:
 	closetext
 	end
 
-MrFujisHouseBookshelf:
-	jumpstd difficultbookshelf
-
 UnknownText_0x7e8f1:
 	text "Mr.Fuji does live"
 	line "here, but he's not"
-
-	para "home now."
+	cont "home now."
 
 	para "He should be at"
 	line "the Soul House."
@@ -92,14 +88,12 @@ MrFujisHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, MrFujisHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, MrFujisHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 5
 	person_event SPRITE_SUPER_NERD, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7e8ca, -1
 	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x7e8cd, -1
-	person_event SPRITE_PSYDUCK, 4, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrFujisPsyduck, -1
+	person_event SPRITE_PSYDUCK, 4, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrFujisPsyduck, -1
 	person_event SPRITE_NIDORINO, 5, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, MrFujisNidorino, -1
 	person_event SPRITE_PIDGEY, 3, 1, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MrFujisPidgey, -1

@@ -35,9 +35,8 @@ Route16FuchsiaSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, Route16FuchsiaSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, Route16FuchsiaSpeechHouseBookshelf
+	db 1
+	signpost 1, 7, SIGNPOST_READ, Route16FuchsiaSpeechHouseBookshelf
 
 .PersonEvents:
 	db 1

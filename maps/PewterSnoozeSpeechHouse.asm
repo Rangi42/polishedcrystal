@@ -33,9 +33,8 @@ PewterSnoozeSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, PewterSnoozeSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, PewterSnoozeSpeechHouseBookshelf
+	db 1
+	signpost 1, 7, SIGNPOST_READ, PewterSnoozeSpeechHouseBookshelf
 
 .PersonEvents:
 	db 1

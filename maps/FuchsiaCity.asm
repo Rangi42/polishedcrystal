@@ -37,6 +37,9 @@ FuchsiaGymSign:
 SafariZoneOfficeSign:
 	jumptext SafariZoneOfficeSignText
 
+SafariZoneOfficeClosedSign:
+	jumptext SafariZoneOfficeClosedSignText
+
 WardensHomeSign:
 	jumptext WardensHomeSignText
 
@@ -117,6 +120,10 @@ SafariZoneOfficeSignText:
 	cont "further notice."
 	done
 
+SafariZoneOfficeClosedSignText:
+	text "It's locked…"
+	done
+
 WardensHomeSignText:
 	text "Safari Zone"
 	line "Warden's Home"
@@ -164,10 +171,11 @@ FuchsiaCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 13
+	db 14
 	signpost 15, 21, SIGNPOST_READ, FuchsiaCitySign
 	signpost 29, 5, SIGNPOST_READ, FuchsiaGymSign
 	signpost 15, 25, SIGNPOST_READ, SafariZoneOfficeSign
+	signpost 13, 22, SIGNPOST_READ, SafariZoneOfficeClosedSign
 	signpost 29, 27, SIGNPOST_READ, WardensHomeSign
 	signpost 5, 17, SIGNPOST_READ, SafariZoneClosedSign
 	signpost 19, 14, SIGNPOST_READ, NoLitteringSign

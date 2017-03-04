@@ -40,9 +40,6 @@ CelebritysPidgeot:
 	closetext
 	end
 
-CelebrityHouseBookshelf:
-	jumpstd magazinebookshelf
-
 CelebrityText1:
 	text "Oh, dear."
 	line "You've found me."
@@ -83,9 +80,7 @@ Route28FamousSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CelebrityHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, CelebrityHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 2

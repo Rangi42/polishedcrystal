@@ -179,8 +179,8 @@ SoulHouse_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $4, 6, LAVENDER_TOWN
-	warp_def $7, $5, 6, LAVENDER_TOWN
+	warp_def $9, $4, 6, LAVENDER_TOWN
+	warp_def $9, $5, 6, LAVENDER_TOWN
 
 .XYTriggers:
 	db 0
@@ -192,6 +192,6 @@ SoulHouse_MapEventHeader:
 	db 5
 	person_event SPRITE_GRAMPS, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MrFuji, -1
 	person_event SPRITE_TEACHER, 3, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7ec4a, -1
-	person_event SPRITE_LASS, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, LassScript_0x7ec4d, -1
-	person_event SPRITE_GRANNY, 3, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7ec50, -1
-	person_event SPRITE_AGATHA, 5, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
+	person_event SPRITE_LASS, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, LassScript_0x7ec4d, -1
+	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7ec50, -1
+	person_event SPRITE_AGATHA, 7, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
