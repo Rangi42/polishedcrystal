@@ -22,9 +22,6 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, BattleTowerPalette
 	cp TILESET_BATTLE_TOWER
 	jp z, .load_eight_bg_palettes
-	ld hl, HousePalette
-	cp TILESET_HOUSE_1
-	jp z, .load_eight_bg_palettes
 	ld hl, GatePalette
 	cp TILESET_GATE
 	jp z, .load_eight_bg_palettes
@@ -303,10 +300,6 @@ INCLUDE "tilesets/battle_tower.pal"
 IcePathPalette: ; 4959f
 INCLUDE "tilesets/ice_path.pal"
 ; 495df
-
-HousePalette: ; 495ee
-INCLUDE "tilesets/house.pal"
-; 4962e
 
 GatePalette:
 INCLUDE "tilesets/gate.pal"

@@ -458,12 +458,16 @@ CheckFacingTileForStd:: ; 1365b
 
 .table1
 	dbw $91, magazinebookshelf
+	dbw $92, trashcan
 	dbw $93, pcscript
 	dbw $94, radio1
 	dbw $95, townmap
 	dbw $96, merchandiseshelf
 	dbw $97, tv
+	dbw $9b, refrigerator
+	dbw $9c, sink
 	dbw $9d, window
+	dbw $9e, stove
 	dbw $9f, incenseburner
 	db   -1 ; end
 

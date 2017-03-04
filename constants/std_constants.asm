@@ -9,7 +9,6 @@
 	enum townmap
 	enum window
 	enum tv
-	enum homepage
 	enum radio1
 	enum radio2
 	enum trashcan
@@ -52,3 +51,6 @@
 	enum gamecornercoinvendor
 	enum happinesschecknpc
 	enum cuttree
+	enum refrigerator
+	enum sink
+	enum stove

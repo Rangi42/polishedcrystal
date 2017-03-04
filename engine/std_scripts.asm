@@ -9,7 +9,6 @@ StdScripts::
 	dba TownMapScript
 	dba WindowScript
 	dba TVScript
-	dba HomepageScript
 	dba Radio1Script
 	dba Radio2Script
 	dba TrashCanScript
@@ -52,6 +51,9 @@ StdScripts::
 	dba GameCornerCoinVendorScript
 	dba HappinessCheckScript
 	dba CutTreeScript
+	dba RefrigeratorScript
+	dba SinkScript
+	dba StoveScript
 
 PokeCenterNurseScript:
 	opentext
@@ -184,6 +186,15 @@ IncenseBurnerScript:
 MerchandiseShelfScript:
 	farjumptext MerchandiseShelfText
 
+RefrigeratorScript:
+	farjumptext RefrigeratorText
+
+SinkScript:
+	farjumptext SinkText
+
+StoveScript:
+	farjumptext StoveText
+
 TownMapScript:
 	opentext
 	farwritetext TownMapText
@@ -201,9 +212,6 @@ TVScript:
 	waitbutton
 	closetext
 	end
-
-HomepageScript:
-	farjumptext HomepageText
 
 Radio1Script:
 	opentext

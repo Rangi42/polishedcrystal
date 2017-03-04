@@ -76,11 +76,6 @@ NurseGoodbyeText:
 	line "again."
 	done
 
-; not used
-	text "We hope to see you"
-	line "again."
-	done
-
 NursePokerusText:
 	text "Your #mon"
 	line "appear to be"
@@ -148,10 +143,8 @@ TeamRocketOathText:
 	done
 
 IncenseBurnerText:
-	text "What is this?"
-
-	para "Oh, it's an"
-	line "incense burner!"
+	text "It's an incense"
+	line "burner!"
 	done
 
 MerchandiseShelfText:
@@ -172,34 +165,21 @@ TVText:
 	text "It's a TV."
 	done
 
-HomepageText:
-	text "#mon Journal"
-	line "Home Page…"
-
-	para "It hasn't been"
-	line "updated…"
+RefrigeratorText:
+	text "It's a fridge."
 	done
 
-; not used
-	text "#mon Radio!"
+SinkText:
+	text "It's a sink."
+	done
 
-	para "Call in with your"
-	line "requests now!"
+StoveText:
+	text "It's a stove."
 	done
 
 TrashCanText:
 	text "There's nothing in"
 	line "here…"
-	done
-
-; not used
-	text "A #mon may be"
-	line "able to move this."
-	done
-
-; not used
-	text "Maybe a #mon"
-	line "can break this."
 	done
 
 PokeCenterSignText:
