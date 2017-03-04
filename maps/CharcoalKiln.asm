@@ -71,9 +71,6 @@ CharcoalKilnFarfetchd:
 	closetext
 	end
 
-CharcoalKilnBookshelf:
-	jumpstd magazinebookshelf
-
 CharcoalKilnRadio:
 	jumpstd radio2
 
@@ -161,10 +158,7 @@ CharcoalKiln_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 0, SIGNPOST_READ, CharcoalKilnBookshelf
-	signpost 1, 1, SIGNPOST_READ, CharcoalKilnBookshelf
-	signpost 1, 7, SIGNPOST_READ, CharcoalKilnRadio
+	db 0
 
 .PersonEvents:
 	db 3

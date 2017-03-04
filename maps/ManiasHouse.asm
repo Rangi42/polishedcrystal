@@ -96,7 +96,10 @@ ManiaScript:
 	closetext
 	end
 
-UnknownScript_0x9d300:
+ManiasHouseRadio:
+	jumpstd radio2
+
+ManiasHouseBookshelf:
 	jumpstd picturebookshelf
 
 ManiaText_AskLookAfterWobbuffet:
@@ -211,7 +214,9 @@ ManiasHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 1, 5, SIGNPOST_READ, ManiasHouseRadio
+	signpost 1, 7, SIGNPOST_READ, ManiasHouseBookshelf
 
 .PersonEvents:
 	db 1

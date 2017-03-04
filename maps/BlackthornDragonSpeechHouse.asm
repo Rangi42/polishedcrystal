@@ -20,6 +20,9 @@ Dratini:
 	closetext
 	end
 
+BlackthornDragonSpeechHouseBookshelf:
+	jumpstd difficultbookshelf
+
 UnknownText_0x19595c:
 	text "A clan of trainers"
 	line "who can freely"
@@ -52,7 +55,8 @@ BlackthornDragonSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 7, SIGNPOST_READ, BlackthornDragonSpeechHouseBookshelf
 
 .PersonEvents:
 	db 2

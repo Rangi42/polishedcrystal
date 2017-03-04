@@ -35,10 +35,6 @@ KrissHouse2F_MapScriptHeader:
 	special ToggleMaptileDecorations
 	return
 
-
-	db 0, 0, 0 ; filler
-
-
 Doll1:
 	describedecoration 1
 
@@ -132,7 +128,7 @@ KrissHouse2F_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 1, 2, SIGNPOST_UP, KrissHousePC
+	signpost 1, 2, SIGNPOST_READ, KrissHousePC
 	signpost 1, 3, SIGNPOST_READ, KrissHouseRadio
 	signpost 1, 5, SIGNPOST_READ, KrissHouseBookshelf
 	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster

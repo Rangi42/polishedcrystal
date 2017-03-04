@@ -221,7 +221,6 @@ Radio1Script:
 	end
 
 Radio2Script:
-; Lucky Channel
 	opentext
 	writebyte MAPRADIO_LUCKY_CHANNEL
 	special MapRadio

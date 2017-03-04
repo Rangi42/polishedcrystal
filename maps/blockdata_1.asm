@@ -166,6 +166,7 @@ LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 	INCBIN "maps/KantoHouse2.blk"
 
+Route26DayofWeekSiblingsHouse_BlockData:
 VermilionHouseFishingSpeechHouse_BlockData:
 VermilionMagnetTrainSpeechHouse_BlockData:
 VermilionHouseDiglettsCaveSpeechHouse_BlockData:
@@ -178,7 +179,6 @@ Route12SuperRodHouse_BlockData:
 Route16FuchsiaSpeechHouse_BlockData:
 Route2NuggetSpeechHouse_BlockData:
 Route26HealSpeechHouse_BlockData:
-Route26DayofWeekSiblingsHouse_BlockData:
 Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 	INCBIN "maps/KantoHouse4.blk"

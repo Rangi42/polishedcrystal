@@ -39,6 +39,9 @@ CianwoodPharmacist:
 	closetext
 	end
 
+CianwoodPharmacyRadio:
+	jumpstd radio2
+
 CianwoodPharmacyBookshelf:
 	jumpstd difficultbookshelf
 
@@ -87,9 +90,10 @@ CianwoodPharmacy_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CianwoodPharmacyBookshelf
-	signpost 1, 1, SIGNPOST_READ, CianwoodPharmacyBookshelf
+	db 3
+	signpost 1, 5, SIGNPOST_READ, CianwoodPharmacyRadio
+	signpost 1, 6, SIGNPOST_READ, CianwoodPharmacyBookshelf
+	signpost 1, 7, SIGNPOST_READ, CianwoodPharmacyBookshelf
 
 .PersonEvents:
 	db 1

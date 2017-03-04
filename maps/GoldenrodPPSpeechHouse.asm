@@ -15,12 +15,6 @@ FisherScript_0x5564a:
 LassScript_0x5564d:
 	jumptextfaceplayer UnknownText_0x556ca
 
-GoldenrodPPSpeechHouseBookshelf2:
-	jumpstd difficultbookshelf
-
-GoldenrodPPSpeechHouseBookshelf1:
-	jumpstd magazinebookshelf
-
 GoldenrodPPSpeechHouseRadio:
 	jumpstd radio2
 
@@ -65,8 +59,6 @@ GoldenrodPPSpeechHouse_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 1, 0, SIGNPOST_READ, GoldenrodPPSpeechHouseBookshelf1
-	signpost 1, 1, SIGNPOST_READ, GoldenrodPPSpeechHouseBookshelf2
 	signpost 1, 7, SIGNPOST_READ, GoldenrodPPSpeechHouseRadio
 
 .PersonEvents:

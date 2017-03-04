@@ -15,12 +15,6 @@ OlivinePunishmentSpeechHouseDad:
 OlivinePunishmentSpeechHouseDaughter:
 	jumptextfaceplayer OlivinePunishmentSpeechHouseDaughterText
 
-OlivinePunishmentSpeechHouseBookshelf2:
-	jumpstd picturebookshelf
-
-OlivinePunishmentSpeechHouseBookshelf1:
-	jumpstd magazinebookshelf
-
 OlivinePunishmentSpeechHouseDadText:
 	text "Along the way to"
 	line "Cianwood, there"
@@ -52,9 +46,7 @@ OlivinePunishmentSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, OlivinePunishmentSpeechHouseBookshelf1
-	signpost 1, 1, SIGNPOST_READ, OlivinePunishmentSpeechHouseBookshelf2
+	db 0
 
 .PersonEvents:
 	db 2

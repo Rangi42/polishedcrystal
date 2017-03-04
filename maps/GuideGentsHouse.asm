@@ -11,9 +11,6 @@ GuideGentsHouse_MapScriptHeader:
 GuideGentsHouseGuideGent:
 	jumptextfaceplayer GuideGentsHouseGuideGentText
 
-GuideGentsHouseBookshelf:
-	jumpstd magazinebookshelf
-
 GuideGentsHouseGuideGentText:
 	text "When I was a wee"
 	line "lad, I was a hot-"
@@ -40,9 +37,7 @@ GuideGentsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, GuideGentsHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, GuideGentsHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 1
