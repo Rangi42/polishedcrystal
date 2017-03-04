@@ -186,7 +186,7 @@ AI_Types: ; 38635
 	ld a, [wd265]
 	and a
 	jr z, .immune
-	cp 10 ; 1.0
+	cp $10 ; 1.0
 	jr z, .checkmove
 	jr c, .noteffective
 
@@ -3481,7 +3481,7 @@ AI_Status: ; 39453
 .checkstatus_after_type
 	; Check opponent item (Poison Guard/etc)
 	push bc
-	call GetOpponentItem
+	farcall GetOpponentItem
 	ld a, b
 	pop bc
 	cp c
