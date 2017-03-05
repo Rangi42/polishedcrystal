@@ -1562,8 +1562,9 @@ BlaineFinalPkmnText:
 BlueFinalPkmnText:
 	text "Heh heh heh…"
 	line "You're unprepared"
-	cont "for this. We'll"
-	cont "knock you down!"
+
+	para "for this. We'll"
+	line "knock you down!"
 	prompt
 
 RedFinalPkmnText:
@@ -1622,8 +1623,9 @@ Lyra1_1FinalPkmnText:
 
 	para "I could explain,"
 	line "but you'll learn"
-	cont "more from exper-"
-	cont "ience."
+
+	para "more from exper-"
+	line "ience."
 
 	para "Do your best,"
 	line "<PLAYER>!"

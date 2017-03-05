@@ -258,9 +258,9 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	ld de, OTPlayerName
 	call PlaceString
 	hlcoord 9, 8
-	ld a, $69 ; "V"
+	ld a, "V"
 	ld [hli], a
-	ld [hl], $6a ; "S"
+	ld [hl], "S"
 	farcall LinkBattle_TrainerHuds ; no need to callba
 	ld b, SCGB_08
 	call GetSGBLayout
