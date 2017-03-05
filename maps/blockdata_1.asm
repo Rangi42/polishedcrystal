@@ -112,7 +112,8 @@ Route38_BlockData:
 OlivineTimsHouse_BlockData:
 OlivinePunishmentSpeechHouse_BlockData:
 OlivineGoodRodHouse_BlockData:
-CharcoalKiln_BlockData: ; TODO: traditional with kiln tiles
+; TODO: traditional with kiln tiles
+CharcoalKiln_BlockData:
 GoldenrodBillsHouse_BlockData:
 CianwoodCityPhotoStudio_BlockData:
 CherrygroveGymSpeechHouse_BlockData:
@@ -147,7 +148,8 @@ StatsJudgesHouse_BlockData:
 Route39Farmhouse_BlockData:
 LakeofRageHiddenPowerHouse_BlockData:
 Route28FamousSpeechHouse_BlockData:
-CianwoodPharmacy_BlockData: ; TODO: merchandise tiles
+; TODO: merchandise tiles
+CianwoodPharmacy_BlockData:
 KrissNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 	INCBIN "maps/JohtoHouse4.blk"
@@ -159,7 +161,8 @@ MrPsychicsHouse_BlockData:
 
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
-BillsHouse_BlockData: ; TODO: teleporter tiles
+; TODO: teleporter tiles
+BillsHouse_BlockData:
 BluesHouse_BlockData:
 FuchsiaBillSpeechHouse_BlockData:
 LavenderTownSpeechHouse_BlockData:
