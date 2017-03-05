@@ -67,10 +67,15 @@ Tileset04Anim:
 Tileset03Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $40, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
