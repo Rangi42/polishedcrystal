@@ -40,7 +40,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
 	cp TILESET_ICE_PATH
-	jp z, .maybe_ice_path
+	jp z, .ice_path_or_hall_of_fame
 	cp TILESET_FOREST
 	jp z, .maybe_yellow_forest_or_murky_swamp
 	cp TILESET_GYM_1
@@ -101,11 +101,12 @@ LoadSpecialMapPalette: ; 494ac
 	scf
 	ret
 
-.maybe_ice_path
+.ice_path_or_hall_of_fame
+	ld hl, LancesRoomPalette
 	ld a, [wPermission] ; permission
 	and 7
 	cp 3 ; Hall of Fame
-	jp z, .do_nothing
+	jp z, .load_eight_bg_palettes
 	ld hl, IcePathPalette
 	jp .load_eight_bg_palettes
 
