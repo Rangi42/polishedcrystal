@@ -106,6 +106,25 @@ Tileset15Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
+Tileset20Anim:
+	dw VTiles2 tile $14, AnimateKantoWaterTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $20, ScrollTileUp
+	dw VTiles2 tile $21, ScrollTileDown
+	dw VTiles2 tile $22, ScrollTileLeft
+	dw VTiles2 tile $23, ScrollTileRight
+	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateKantoFlowerTile
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $20, ScrollTileUp
+	dw VTiles2 tile $21, ScrollTileDown
+	dw VTiles2 tile $22, ScrollTileLeft
+	dw VTiles2 tile $23, ScrollTileRight
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
+
 Tileset23Anim:
 	dw SproutPillarTilePointer9,  AnimateSproutPillarTile
 	dw SproutPillarTilePointer10, AnimateSproutPillarTile
@@ -262,25 +281,6 @@ Tileset39Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset41Anim:
-	dw VTiles2 tile $14, AnimateKantoWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $20, ScrollTileUp
-	dw VTiles2 tile $21, ScrollTileDown
-	dw VTiles2 tile $22, ScrollTileLeft
-	dw VTiles2 tile $23, ScrollTileRight
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateKantoFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $20, ScrollTileUp
-	dw VTiles2 tile $21, ScrollTileDown
-	dw VTiles2 tile $22, ScrollTileLeft
-	dw VTiles2 tile $23, ScrollTileRight
-	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-Tileset42Anim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -308,7 +308,6 @@ Tileset16Anim:
 Tileset17Anim:
 Tileset18Anim:
 Tileset19Anim:
-Tileset20Anim:
 Tileset21Anim:
 Tileset22Anim:
 Tileset26Anim:

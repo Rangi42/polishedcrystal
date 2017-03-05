@@ -24,7 +24,7 @@ const_value SET 1
 	const TILESET_GYM_2                ; 11
 	const TILESET_OLIVINE_GYM          ; 12
 	const TILESET_LIGHTHOUSE           ; 13
-	const TILESET_KRISS_HOUSE_2F       ; 14
+	const TILESET_KANTO_2              ; 14
 	const TILESET_POKECOM_CENTER       ; 15
 	const TILESET_BATTLE_TOWER         ; 16
 	const TILESET_SPROUT_TOWER         ; 17
@@ -45,8 +45,7 @@ const_value SET 1
 	const TILESET_FARAWAY_ISLAND       ; 26
 	const TILESET_TUNNEL               ; 27
 	const TILESET_HOME_DECOR_STORE     ; 28
-	const TILESET_KANTO_2              ; 29
-	const TILESET_SHAMOUTI_ISLAND      ; 2a
+	const TILESET_SHAMOUTI_ISLAND      ; 29
 
 	const_def
 	const PAL_BG_GRAY

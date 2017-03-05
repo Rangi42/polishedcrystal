@@ -16,13 +16,13 @@ INCBIN "tilesets/decor_metatiles.bin"
 Tileset40Coll:
 INCBIN "tilesets/decor_collision.bin"
 
-Tileset42GFX:
+Tileset41GFX:
 INCBIN "gfx/tilesets/shamouti.2bpp.lz"
 
-Tileset42Meta:
+Tileset41Meta:
 INCBIN "tilesets/shamouti_metatiles.bin"
 
-Tileset42Coll:
+Tileset41Coll:
 INCBIN "tilesets/shamouti_collision.bin"
 
 Tileset26GFX:

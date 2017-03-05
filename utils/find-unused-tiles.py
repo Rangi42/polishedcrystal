@@ -23,11 +23,11 @@ metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
                  'pokecenter', 'gate', 'port', 'lab', 'facility', 'mart',
                  'mansion', 'game_corner', 'gym1', 'house3', 'gym2', 'gym3',
-                 'lighthouse', 'bedroom', 'pokecom', 'battle_tower', 'tower',
+                 'lighthouse', 'kanto2', 'pokecom', 'battle_tower', 'tower',
                  'cave', 'park', 'ruins', 'radio_tower', 'warehouse',
                  'ice_path', 'dark_cave', 'forest', 'safari', 'alph1', 'alph2',
                  'alph3', 'alph4', 'pokemon_mansion', 'faraway', 'tunnel',
-                 'decor', 'kanto2', 'shamouti']
+                 'decor', 'shamouti']
 
 # {'TILESET_JOHTO_1': 'johto1', ...}
 tileset_ids = {}
