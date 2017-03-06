@@ -32,11 +32,13 @@ CianwoodPharmacist:
 	writetext PharmacistDescribeSecretpotionText
 	waitbutton
 	closetext
+	spriteface CIANWOODPHARMACY_PHARMACIST, UP
 	end
 
 .Mart:
 	pokemart MARTTYPE_PHARMACY, MART_CIANWOOD
 	closetext
+	spriteface CIANWOODPHARMACY_PHARMACIST, UP
 	end
 
 CianwoodPharmacyRadio:
@@ -83,8 +85,8 @@ CianwoodPharmacy_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $2, 4, CIANWOOD_CITY
 	warp_def $7, $3, 4, CIANWOOD_CITY
+	warp_def $7, $4, 4, CIANWOOD_CITY
 
 .XYTriggers:
 	db 0
@@ -97,4 +99,4 @@ CianwoodPharmacy_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_PHARMACIST, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
+	person_event SPRITE_PHARMACIST, 3, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1

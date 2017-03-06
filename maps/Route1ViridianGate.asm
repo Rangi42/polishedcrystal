@@ -1,5 +1,6 @@
 const_value set 2
 	const ROUTE1VIRIDIANGATE_OFFICER
+	const ROUTE1VIRIDIANGATE_ROCKER
 
 Route1ViridianGate_MapScriptHeader:
 .MapTriggers:
@@ -11,12 +12,24 @@ Route1ViridianGate_MapScriptHeader:
 Route1ViridianGateOfficerScript:
 	jumptextfaceplayer Route1ViridianGateOfficerText
 
+Route1ViridianGateRockerScript:
+	jumptextfaceplayer Route1ViridianGateRockerText
+
 Route1ViridianGateOfficerText:
 	text "To the south is"
 	line "Pallet Town."
 
 	para "That's where"
 	line "Prof.Oak lives."
+	done
+
+Route1ViridianGateRockerText:
+	text "If you really"
+	line "think about it,"
+
+	para "aren't we ALL on"
+	line "the road to Vir-"
+	cont "idian City?"
 	done
 
 Route1ViridianGate_MapEventHeader:
@@ -37,5 +50,6 @@ Route1ViridianGate_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
+	db 2
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route1ViridianGateOfficerScript, -1
+	person_event SPRITE_ROCKER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route1ViridianGateRockerScript, -1

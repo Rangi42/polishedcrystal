@@ -90,7 +90,6 @@ INCLUDE "maps/OlivineLighthouse3F.asm"
 INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/EcruteakCherishBallHouse.asm"
 INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
-INCLUDE "maps/ViridianSchoolHouse.asm"
 
 
 SECTION "Map Scripts 3", ROMX, BANK[MAP_SCRIPTS_3]
@@ -102,6 +101,7 @@ INCLUDE "maps/RadioTower2F.asm"
 INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
+INCLUDE "maps/ViridianSchoolHouse.asm"
 
 
 SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]

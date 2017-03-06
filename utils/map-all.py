@@ -89,15 +89,19 @@ def read_map_block_data():
 					map_names[:] = []
 
 def render_map_images(valid_tilesets):
+	rendered = set()
 	for map_const, map_name in sorted(zip(map_heights, map_tilesets)):
 		map_height = map_heights[map_const]
 		tileset_name = tileset_names[tileset_ids[map_tilesets[map_name]] - 1]
 		if not valid_tilesets or tileset_name in valid_tilesets:
 			block_data_name = map_block_data_exceptions.get(map_name, map_name)
+			if block_data_name in rendered:
+				continue
 			command = 'python utils/map.py %s %d %s' % (block_filename_fmt % block_data_name, map_height, tileset_name)
+			print()
 			print(command)
 			os.system(command)
-			print()
+			rendered.add(block_data_name)
 
 def main():
 	valid_tilesets = sys.argv[1:]

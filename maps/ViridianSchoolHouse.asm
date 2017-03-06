@@ -1,9 +1,10 @@
 const_value set 2
 	const VIRIDIANSCHOOLHOUSE_TEACHER
-	const VIRIDIANSCHOOLHOUSE_LASS
+	const VIRIDIANSCHOOLHOUSE_LASS1
 	const VIRIDIANSCHOOLHOUSE_BOOK
 	const VIRIDIANSCHOOLHOUSE_YOUNGSTER
 	const VIRIDIANSCHOOLHOUSE_GAMEBOY_KID
+	const VIRIDIANSCHOOLHOUSE_LASS2
 
 ViridianSchoolHouse_MapScriptHeader:
 .MapTriggers:
@@ -15,8 +16,8 @@ ViridianSchoolHouse_MapScriptHeader:
 ViridianSchoolHouseTeacherScript:
 	jumptextfaceplayer ViridianSchoolHouseTeacherText
 
-ViridianSchoolHouseLassScript:
-	jumptextfaceplayer ViridianSchoolHouseLassText
+ViridianSchoolHouseLass1Script:
+	jumptextfaceplayer ViridianSchoolHouseLass1Text
 
 ViridianSchoolHouseNotesScript:
 	jumptext ViridianSchoolHouseNotesText
@@ -47,6 +48,9 @@ ViridianSchoolHouseGameBoyKidScript:
 	spriteface VIRIDIANSCHOOLHOUSE_GAMEBOY_KID, DOWN
 	end
 
+ViridianSchoolHouseLass2Script:
+	jumptextfaceplayer ViridianSchoolHouseLass2Text
+
 ViridianSchoolHouseBlackboardScript:
 	jumptext ViridianSchoolHouseBlackboardText
 
@@ -61,7 +65,7 @@ ViridianSchoolHouseTeacherText:
 	line "attention!"
 	done
 
-ViridianSchoolHouseLassText:
+ViridianSchoolHouseLass1Text:
 	text "Wait! I thought"
 	line "that, like, all"
 
@@ -70,8 +74,10 @@ ViridianSchoolHouseLassText:
 	done
 
 ViridianSchoolHouseNotesText:
-	text "There's a doodle"
-	line "of a maze."
+	text "The page is cover-"
+	line "ed in doodles."
+	para "A maze, flowers,"
+	line "the letter S…"
 	done
 
 ViridianSchoolHouseYoungsterText1:
@@ -99,6 +105,14 @@ ViridianSchoolHouseGameBoyKidText:
 	line "off! Really!"
 	done
 
+ViridianSchoolHouseLass2Text:
+	text "I'm in the pro-"
+	line "tagonist's seat!"
+
+	para "So why is my life"
+	line "so boring?"
+	done
+
 ViridianSchoolHouseBlackboardText:
 	text "Physical moves use"
 	line "the Attack and"
@@ -108,8 +122,9 @@ ViridianSchoolHouseBlackboardText:
 	line "the Spcl.Atk and"
 	cont "Spcl.Def stats."
 
-	para "Status moves are"
-	line "not damaging."
+	para "Status moves do"
+	line "not cause damage"
+	cont "directly."
 	done
 
 ViridianSchoolHouseBookshelfText:
@@ -137,9 +152,10 @@ ViridianSchoolHouse_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_TEACHER, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseTeacherScript, -1
-	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLassScript, -1
+	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass1Script, -1
 	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseNotesScript, -1
 	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseYoungsterScript, -1
-	person_event SPRITE_GAMEBOY_KID, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseGameBoyKidScript, -1
+	person_event SPRITE_GAMEBOY_KID, 6, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseGameBoyKidScript, -1
+	person_event SPRITE_LASS, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass2Script, -1

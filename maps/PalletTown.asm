@@ -51,11 +51,11 @@ UnknownText_0x1ac720:
 	line "incredible!"
 
 	para "You can now make"
-	line "games by writing"
+	line "games just by"
 
-	para "code instead of"
-	line "editing binary"
-	cont "data."
+	para "writing code in-"
+	line "stead of editing"
+	cont "binary data."
 	done
 
 PalletTownYoungsterText:

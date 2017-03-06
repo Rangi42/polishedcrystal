@@ -152,8 +152,6 @@ StatsJudgesHouse_BlockData:
 Route39Farmhouse_BlockData:
 LakeofRageHiddenPowerHouse_BlockData:
 Route28FamousSpeechHouse_BlockData:
-; TODO: merchandise tiles
-CianwoodPharmacy_BlockData:
 KrissNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 	INCBIN "maps/JohtoHouse4.blk"
@@ -189,6 +187,9 @@ Route26HealSpeechHouse_BlockData:
 Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 	INCBIN "maps/KantoHouse4.blk"
+
+CianwoodPharmacy_BlockData:
+	INCBIN "maps/CianwoodPharmacy.blk"
 
 Route43MahoganyGate_BlockData:
 Route43Gate_BlockData:
