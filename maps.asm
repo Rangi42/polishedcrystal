@@ -558,18 +558,17 @@ INCLUDE "maps/PokemonMansionB1F.asm"
 INCLUDE "maps/SafariZoneHubRestHouse.asm"
 INCLUDE "maps/SafariZoneEastRestHouse.asm"
 INCLUDE "maps/SafariZoneNorthRestHouse.asm"
-INCLUDE "maps/NewBarkTown.asm"
+INCLUDE "maps/LyrasHouse1F.asm"
+INCLUDE "maps/LyrasHouse2F.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
-INCLUDE "maps/LyrasHouse1F.asm"
-INCLUDE "maps/LyrasHouse2F.asm"
+INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route7.asm"
 INCLUDE "maps/Route16North.asm"
 INCLUDE "maps/Route16South.asm"
-INCLUDE "maps/Route17.asm"
 INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
@@ -585,6 +584,7 @@ INCLUDE "maps/SinjohRuins.asm"
 INCLUDE "maps/SinjohRuinsHouse.asm"
 INCLUDE "maps/MystriStage.asm"
 INCLUDE "maps/EmbeddedTower.asm"
+INCLUDE "maps/Route17.asm"
 INCLUDE "maps/Route45.asm"
 
 

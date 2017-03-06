@@ -1,6 +1,7 @@
 const_value set 2
 	const PEWTERMUSEUMOFSCIENCE2F_SCIENTIST
-	const PEWTERMUSEUMOFSCIENCE2F_YOUNGSTER
+	const PEWTERMUSEUMOFSCIENCE2F_BUG_CATCHER
+	const PEWTERMUSEUMOFSCIENCE2F_TEACHER
 	const PEWTERMUSEUMOFSCIENCE2F_LASS
 	const PEWTERMUSEUMOFSCIENCE2F_POKEFAN_M
 
@@ -14,8 +15,11 @@ PewterMuseumOfScience2F_MapScriptHeader:
 Museum2FScientistScript:
 	jumptextfaceplayer Museum2FScientistText
 
-Museum2FYoungsterScript:
-	jumptextfaceplayer Museum2FYoungsterText
+Museum2FBugCatcherScript:
+	jumptextfaceplayer Museum2FBugCatcherText
+
+Museum2FTeacherScript:
+	jumptextfaceplayer Museum2FTeacherText
 
 Museum2FLassScript:
 	jumptextfaceplayer Museum2FLassText
@@ -87,32 +91,21 @@ Museum2FScientistText:
 	line "strange energy…"
 	done
 
-Museum2FYoungsterText:
-	text "There are two"
-	line "places that I"
-	cont "love!"
 
-	para "One is the Ruins"
-	line "of Alph in Johto."
-	cont "The other is the"
-	cont "Pewter Museum!"
-
-	para "I get a sense of"
-	line "history from both"
-	cont "of them."
-	done
 
 Museum2FLassText:
-	text "Scientists found"
-	line "a way to resurr-"
+	text "#mon revived"
+	line "from fossils are"
 
-	para "ect #mon from"
-	line "fossils like the"
-	cont "ones here."
+	para "all part Rock-"
+	line "type."
 
-	para "I heard that"
-	line "Brock raises some"
-	cont "of them."
+	para "Were they always"
+	line "that way, or is it"
+
+	para "a result of the"
+	line "fossilization"
+	cont "process?"
 	done
 
 Museum2FPokefanMImperialText:
@@ -128,6 +121,24 @@ Museum2FPokefanMImperialText:
 
 	para "Seismic Toss,"
 	line "of course!"
+	done
+
+Museum2FBugCatcherText:
+	text "Stuff and rocks"
+	line "and rocks and"
+
+	para "stuff. Can we go"
+	line "already?"
+	done
+
+Museum2FTeacherText:
+	text "Sigh… My son isn't"
+	line "enjoying the mu-"
+
+	para "seum as much as I"
+	line "hoped he would."
+
+	para "Kids, huh?"
 	done
 
 Museum2FPokefanMMetricText:
@@ -201,12 +212,13 @@ PewterMuseumOfScience2F_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 6, 2, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
+	signpost 6, 3, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
 	signpost 2, 11, SIGNPOST_READ, Museum2FSpaceShuttleSignpostScript
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum2FScientistScript, -1
-	person_event SPRITE_YOUNGSTER, 7, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FYoungsterScript, -1
+	person_event SPRITE_BUG_CATCHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Museum2FBugCatcherScript, -1
+	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FTeacherScript, -1
 	person_event SPRITE_LASS, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FLassScript, -1
 	person_event SPRITE_POKEFAN_M, 5, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FPokefanMScript, -1

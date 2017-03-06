@@ -3,6 +3,7 @@ const_value set 2
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST1
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
 	const PEWTERMUSEUMOFSCIENCE1F_GRAMPS
+	const PEWTERMUSEUMOFSCIENCE1F_YOUNGSTER
 
 PewterMuseumOfScience1F_MapScriptHeader:
 .MapTriggers:
@@ -223,6 +224,9 @@ Museum1FScientistScript:
 Museum1FGrampsScript:
 	jumptextfaceplayer Museum1FGrampsText
 
+Museum1FYoungsterScript:
+	jumptextfaceplayer Museum1FYoungsterText
+
 Museum1FReceptionistDeskSignpostScript:
 	jumptext Museum1FReceptionistDeskSignpostText
 
@@ -258,15 +262,20 @@ Museum1FReceptionistText:
 Museum1FScientistText:
 	text "We are proud of"
 	line "three fossils of"
-	cont "rare, prehistoric"
-	cont "#mon!"
+
+	para "rare, prehistoric"
+	line "#mon."
+
+	para "I helped assemble"
+	line "them!"
 	done
 
 Museum1FFossilScientistText:
 	text "Did you know that"
 	line "you can extract"
-	cont "#mon from"
-	cont "fossils?"
+
+	para "#mon from"
+	line "fossils?"
 
 	para "If you ever need"
 	line "to, let me take"
@@ -279,12 +288,28 @@ Museum1FGrampsText:
 	cont "fossil!"
 	done
 
+Museum1FYoungsterText:
+	text "There are two"
+	line "places that I"
+	cont "love!"
+
+	para "One is the Ruins"
+	line "of Alph in Johto."
+
+	para "The other is the"
+	line "Pewter Museum!"
+
+	para "I get a sense of"
+	line "history from both"
+	cont "of them."
+	done
+
 Museum1FReceptionistDeskSignpostText:
 	text "Welcome!"
 
 	para "Thanks to a gene-"
 	line "rous donation"
-	cont "from Silph Co.,"
+	cont "by Silph Co.,"
 
 	para "admission is free"
 	line "of charge!"
@@ -409,7 +434,7 @@ PewterMuseumOfScience1F_MapEventHeader:
 	signpost 4, 11, SIGNPOST_READ, Museum1FReceptionistDeskSignpostScript
 	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
 	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
-	signpost 6, 2, SIGNPOST_READ, AerodactylFossilSignpostScript
+	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
 	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript
@@ -418,8 +443,9 @@ PewterMuseumOfScience1F_MapEventHeader:
 	signpost 1, 18, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
 	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FScientistScript, -1
 	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
-	person_event SPRITE_GRAMPS, 4, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FGrampsScript, -1
+	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FGrampsScript, -1
+	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FYoungsterScript, -1
