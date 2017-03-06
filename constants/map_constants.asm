@@ -13,7 +13,7 @@ MAP_NONE   EQU 0
 	mapgroup OLIVINE_TIMS_HOUSE,                          4,  4 ;  3
 	mapgroup OLIVINE_PUNISHMENT_SPEECH_HOUSE,             4,  4 ;  5
 	mapgroup OLIVINE_GOOD_ROD_HOUSE,                      4,  4 ;  6
-	mapgroup OLIVINE_CAFE,                                4,  4 ;  7
+	mapgroup OLIVINE_CAFE,                                4,  5 ;  7
 	mapgroup OLIVINE_MART,                                4,  6 ;  8
 	mapgroup ROUTE_38_ECRUTEAK_GATE,                      4,  5 ;  9
 	mapgroup ROUTE_39_BARN,                               4,  4 ; 10
