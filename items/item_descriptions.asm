@@ -1014,7 +1014,7 @@ SootheBellDesc:
 
 WeakPolicyDesc:
 	db   "Super-effective"
-	next "hit ups offense.@"
+	next "hit ups offenses.@"
 
 WideLensDesc:
 	db   "Slightly boosts"

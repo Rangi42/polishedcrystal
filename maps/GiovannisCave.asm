@@ -61,11 +61,13 @@ GiovannisCaveCelebiEventScript:
 	waitbutton
 	closetext
 	domaptrigger GIOVANNIS_CAVE, $0
+	clearevent EVENT_TIME_TRAVELING
 	winlosstext GiovannisCaveGiovanniBeatenText, 0
 	setlasttalked GIOVANNISCAVE_GIOVANNI
 	loadtrainer GIOVANNI, GIOVANNI2
 	startbattle
 	reloadmapafterbattle
+	setevent EVENT_TIME_TRAVELING
 	applymovement GIOVANNISCAVE_GIOVANNI, GiovannisCave_GiovanniStepsBackMovementData
 	opentext
 	writetext GiovannisCaveGiovanniAfterText

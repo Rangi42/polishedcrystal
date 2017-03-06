@@ -363,6 +363,7 @@ IlexForestFarfetchdScript:
 
 IlexForestFinishCelebiEventScript:
 	setevent EVENT_TIME_TRAVEL_FINISHED
+	clearevent EVENT_TIME_TRAVELING
 	dotrigger $0
 	pause 30
 	showemote EMOTE_SHOCK, ILEXFOREST_LYRA, 15
@@ -642,6 +643,7 @@ MapIlexForestSignpost4Script:
 	pause 30
 	waitsfx
 	disappear ILEXFOREST_CELEBI
+	setevent EVENT_TIME_TRAVELING
 	clearevent EVENT_ROUTE_22_CELEBI
 	clearevent EVENT_ROUTE_22_LYRA
 	clearevent EVENT_ROUTE_22_SILVER

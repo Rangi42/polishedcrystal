@@ -469,7 +469,7 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_CITY,                              18, 20 ;  3
 	mapgroup VIRIDIAN_GYM,                               23,  7 ;  4
 	mapgroup VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
-	mapgroup VIRIDIAN_SCHOOL_HOUSE,                       4,  4 ;  6
+	mapgroup VIRIDIAN_SCHOOL_HOUSE,                       5,  4 ;  6
 	mapgroup TRAINER_HOUSE_1F,                            6,  5 ;  7
 	mapgroup TRAINER_HOUSE_B1F,                           8,  5 ;  8
 	mapgroup VIRIDIAN_MART,                               4,  6 ;  9

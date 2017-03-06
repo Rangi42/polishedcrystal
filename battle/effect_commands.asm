@@ -6750,12 +6750,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld c, 20
 	call DelayFrames
 	pop af
-
 	ld hl, FledInFearText
-	cp ROAR
-	jr z, .do_text
-	ld hl, BlownAwayText
-.do_text
 	jp StdBattleTextBox
 
 ; 36994
