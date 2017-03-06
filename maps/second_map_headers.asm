@@ -558,6 +558,10 @@
 	map_header_2 IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_header_2 Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
 	map_header_2 DayCare, DAYCARE, $0, 0
+	map_header_2 GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
+	map_header_2 GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
+	map_header_2 GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0
+	map_header_2 GoldenrodSpeechHouse, GOLDENROD_SPEECH_HOUSE, $0, 0
 	map_header_2 VermilionHouseFishingSpeechHouse, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, $0, 0
 	map_header_2 VermilionPokeCenter1F, VERMILION_POKECENTER_1F, $0, 0
 	map_header_2 PokemonFanClub, POKEMON_FAN_CLUB, $0, 0

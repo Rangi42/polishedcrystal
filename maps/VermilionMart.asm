@@ -34,6 +34,9 @@ UnknownText_0x191fca:
 	text "I'm thinking about"
 	line "going shopping in"
 	cont "Saffron."
+
+	para "They sell Luxury"
+	line "Balls there."
 	done
 
 VermilionMart_MapEventHeader:

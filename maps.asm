@@ -56,7 +56,10 @@ INCLUDE "maps/GoldenrodDeptStore5F.asm"
 INCLUDE "maps/GoldenrodDeptStore6F.asm"
 INCLUDE "maps/GoldenrodDeptStoreElevator.asm"
 INCLUDE "maps/GoldenrodDeptStoreRoof.asm"
-INCLUDE "maps/ViridianSchoolHouse.asm"
+INCLUDE "maps/GoldenrodHPUpHouse.asm"
+INCLUDE "maps/GoldenrodNetBallHouse.asm"
+INCLUDE "maps/GoldenrodBandHouse.asm"
+INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
 SECTION "Map Scripts 2", ROMX, BANK[MAP_SCRIPTS_2]
@@ -87,6 +90,7 @@ INCLUDE "maps/OlivineLighthouse3F.asm"
 INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/EcruteakCherishBallHouse.asm"
 INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
+INCLUDE "maps/ViridianSchoolHouse.asm"
 
 
 SECTION "Map Scripts 3", ROMX, BANK[MAP_SCRIPTS_3]

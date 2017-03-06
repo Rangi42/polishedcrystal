@@ -262,6 +262,10 @@ MAP_NONE   EQU 0
 	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 24
 	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 25
 	mapgroup DAYCARE,                                     4,  4 ; 26
+	mapgroup GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 27
+	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 28
+	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 29
+	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 30
 
 	newgroup                                                    ; 12
 

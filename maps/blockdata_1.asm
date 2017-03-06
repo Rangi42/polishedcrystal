@@ -115,6 +115,7 @@ OlivineGoodRodHouse_BlockData:
 ; TODO: traditional with kiln tiles
 CharcoalKiln_BlockData:
 GoldenrodBillsHouse_BlockData:
+GoldenrodNetBallHouse_BlockData:
 CianwoodCityPhotoStudio_BlockData:
 CherrygroveGymSpeechHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
@@ -131,6 +132,8 @@ RockyBeachHouse_BlockData:
 
 GoldenrodHappinessRater_BlockData:
 GoldenrodPPSpeechHouse_BlockData:
+GoldenrodHPUpHouse_BlockData:
+GoldenrodSpeechHouse_BlockData:
 GuideGentsHouse_BlockData:
 	INCBIN "maps/JohtoHouse2.blk"
 
@@ -140,6 +143,7 @@ BlackthornEmysHouse_BlockData:
 MoveDeletersHouse_BlockData:
 LakeofRageMagikarpHouse_BlockData:
 GoldenrodNameRater_BlockData:
+GoldenrodBandHouse_BlockData:
 ManiasHouse_BlockData:
 CianwoodLugiaSpeechHouse_BlockData:
 StatsJudgesHouse_BlockData:

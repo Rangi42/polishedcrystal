@@ -23,7 +23,6 @@ OpenMartDialog:: ; 15a45
 	dw BargainShop
 	dw Pharmacist
 	dw RooftopSale
-	dw SilphMart
 	dw AdventurerMart
 	dw InformalMart
 	dw TMMart
@@ -101,16 +100,6 @@ RooftopSale: ; 15ac4
 	call MartTextBox
 	ret
 ; 15aee
-
-SilphMart:
-	call FarReadMart
-	call LoadStandardMenuDataHeader
-	ld hl, Text_SilphMart_Intro
-	call MartTextBox
-	call BuyMenu
-	ld hl, Text_SilphMart_ComeAgain
-	call MartTextBox
-	ret
 
 AdventurerMart:
 	ld b, BANK(AdventurerData)
@@ -548,7 +537,6 @@ endr
 	dwb .BargainShopPointers, 1
 	dwb .PharmacyPointers, 0
 	dwb .StandardMartPointers, 2
-	dwb .SilphMartPointers, 0
 	dwb .AdventurerMartPointers, 2
 	dwb .InformalMartPointers, 0
 	dwb .TMMartPointers, 0
@@ -586,14 +574,6 @@ endr
 	dw Text_Pharmacy_HereYouGo
 	dw BuyMenuLoop
 ; 15cef
-
-.SilphMartPointers:
-	dw Text_SilphMart_HowMany
-	dw Text_SilphMart_CostsThisMuch
-	dw Text_SilphMart_InsufficientFunds
-	dw Text_SilphMart_BagFull
-	dw Text_SilphMart_HereYouGo
-	dw BuyMenuLoop
 
 .AdventurerMartPointers:
 	dw Text_AdventurerMart_HowMany
@@ -910,14 +890,12 @@ endr
 
 
 Text_Mart_HowMany: ; 0x15e0e
-Text_SilphMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4bfd
 	db "@"
 ; 0x15e13
 
 Text_Mart_CostsThisMuch: ; 0x15e13
-Text_SilphMart_CostsThisMuch:
 Text_AdventurerMart_CostsThisMuch:
 	; @ (S) will be ¥@ .
 	text_jump UnknownText_0x1c4c08
@@ -1052,7 +1030,6 @@ Text_BargainShop_CostsThisMuch: ; 0x15e72
 ; 0x15e77
 
 Text_BargainShop_HereYouGo: ; 0x15e77
-Text_SilphMart_HereYouGo:
 Text_AdventurerMart_HereYouGo:
 	; Thanks.
 	text_jump UnknownText_0x1c4dcd
@@ -1134,28 +1111,13 @@ Text_InformalMart_ComeAgain:
 	db "@"
 ; 0x15eb3
 
-Text_SilphMart_Intro:
-	text_jump SilphMartIntroText
-	db "@"
-
-Text_SilphMart_BagFull:
-	; You don't have space for it.
-	text_jump SilphMartBagFullText
-	db "@"
-
-Text_SilphMart_InsufficientFunds:
-	; That's not enough money…
-	text_jump SilphMartInsufficientFundsText
-	db "@"
-
-Text_SilphMart_ComeAgain:
-Text_AdventurerMart_ComeAgain:
-	; Come by again!
-	text_jump SilphMartComeAgainText
-	db "@"
-
 Text_AdventurerMart_Intro:
 	text_jump AdventurerMartIntroText
+	db "@"
+
+Text_AdventurerMart_ComeAgain:
+	; Come by again!
+	text_jump AdventurerMartComeAgainText
 	db "@"
 
 Text_InformalMart_Intro:
