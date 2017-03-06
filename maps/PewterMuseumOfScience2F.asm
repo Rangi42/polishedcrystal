@@ -201,7 +201,7 @@ PewterMuseumOfScience2F_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 5, 2, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
+	signpost 6, 2, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
 	signpost 2, 11, SIGNPOST_READ, Museum2FSpaceShuttleSignpostScript
 
 .PersonEvents:

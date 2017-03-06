@@ -193,7 +193,7 @@ ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
 	waitbutton
 	closetext
-	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, UP
+	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
 	pause 30
 	playsound SFX_BOOT_PC
 	waitsfx
@@ -408,18 +408,18 @@ PewterMuseumOfScience1F_MapEventHeader:
 	db 10
 	signpost 4, 11, SIGNPOST_READ, Museum1FReceptionistDeskSignpostScript
 	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
-	signpost 3, 4, SIGNPOST_READ, OmastarFossilSignpostScript
+	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
 	signpost 6, 2, SIGNPOST_READ, AerodactylFossilSignpostScript
 	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 15, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 16, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 	signpost 1, 17, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 18, SIGNPOST_READ, Museum1FBookshelfSignpostScript
 
 .PersonEvents:
 	db 4
 	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
 	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FScientistScript, -1
-	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
+	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
 	person_event SPRITE_GRAMPS, 4, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FGrampsScript, -1

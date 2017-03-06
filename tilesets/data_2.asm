@@ -6,3 +6,10 @@ INCBIN "tilesets/house1_metatiles.bin"
 
 Tileset05Coll:
 INCBIN "tilesets/house1_collision.bin"
+
+
+Tileset42Meta:
+INCBIN "tilesets/museum_metatiles.bin"
+
+Tileset42Coll:
+INCBIN "tilesets/museum_collision.bin"
