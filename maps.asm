@@ -285,6 +285,9 @@ INCLUDE "maps/CeruleanCity.asm"
 INCLUDE "maps/SproutTower1F.asm"
 INCLUDE "maps/SproutTower2F.asm"
 INCLUDE "maps/Route38EcruteakGate.asm"
+INCLUDE "maps/CeruleanBerryPowderHouse.asm"
+INCLUDE "maps/CeruleanCoupleHouse.asm"
+INCLUDE "maps/CeruleanWaterShowSpeechHouse.asm"
 
 
 SECTION "Map Scripts 13", ROMX, BANK[MAP_SCRIPTS_13]
@@ -328,6 +331,7 @@ INCLUDE "maps/SilverCaveItemRooms.asm"
 INCLUDE "maps/SilverCaveRoom1.asm"
 INCLUDE "maps/SilverCaveRoom2.asm"
 INCLUDE "maps/SilverCaveRoom3.asm"
+INCLUDE "maps/CharcoalKiln.asm"
 
 
 SECTION "Map Scripts 15", ROMX, BANK[MAP_SCRIPTS_15]
@@ -348,7 +352,6 @@ INCLUDE "maps/DragonsDen1F.asm"
 INCLUDE "maps/DragonsDenB1F.asm"
 INCLUDE "maps/DragonShrine.asm"
 INCLUDE "maps/TohjoFalls.asm"
-INCLUDE "maps/CharcoalKiln.asm"
 INCLUDE "maps/KurtsHouse.asm"
 INCLUDE "maps/AzaleaGym.asm"
 INCLUDE "maps/TrainerHouse1F.asm"

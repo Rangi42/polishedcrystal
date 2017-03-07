@@ -92,14 +92,11 @@ UnknownScript_0x18405e:
 YoungsterScript_0x184064:
 	faceplayer
 	opentext
+	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
+	iftrue .FoundBerserkGene
 	writetext UnknownText_0x1842a9
 	waitbutton
 	closetext
-	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
-	iffalse UnknownScript_0x184072
-	end
-
-UnknownScript_0x184072:
 	waitsfx
 	playsound SFX_SECOND_PART_OF_ITEMFINDER
 	waitsfx
@@ -121,6 +118,12 @@ UnknownScript_0x184072:
 	spriteface CERULEANCITY_YOUNGSTER, LEFT
 	opentext
 	writetext UnknownText_0x1842ee
+	waitbutton
+	closetext
+	end
+
+.FoundBerserkGene:
+	writetext CeruleanCityYoungsterText
 	waitbutton
 	closetext
 	end
@@ -233,6 +236,15 @@ UnknownText_0x1842ee:
 	line "responding…"
 	done
 
+CeruleanCityYoungsterText:
+	text "My Itemfinder"
+	line "stopped respond-"
+	cont "ing…"
+
+	para "Someone must have"
+	line "beat me to it."
+	done
+
 CeruleanCaveGuardText:
 	text "This is…"
 
@@ -244,8 +256,9 @@ CeruleanCaveGuardText:
 
 	para "Only those who"
 	line "have defeated all"
-	cont "eight Kanto Gym"
-	cont "Leaders are allow-"
+
+	para "eight Kanto Gym"
+	line "Leaders are allow-"
 	cont "ed inside."
 	done
 
@@ -300,7 +313,7 @@ CeruleanCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 8
+	db 11
 	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
 	warp_def $11, $1c, 1, CERULEAN_POLICE_STATION
 	warp_def $13, $d, 1, CERULEAN_TRADE_SPEECH_HOUSE
@@ -309,6 +322,9 @@ CeruleanCity_MapEventHeader:
 	warp_def $1d, $19, 2, CERULEAN_MART
 	warp_def $d, $2, 1, CERULEAN_CAVE_1F
 	warp_def $1d, $e, 1, CERULEAN_BIKE_SHOP
+	warp_def $f, $f, 1, CERULEAN_BERRY_POWDER_HOUSE
+	warp_def $1d, $13, 1, CERULEAN_COUPLE_HOUSE
+	warp_def $9, $1d, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
 
 .XYTriggers:
 	db 0

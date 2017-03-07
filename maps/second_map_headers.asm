@@ -506,6 +506,9 @@
 	map_header_2 CeruleanGym, CERULEAN_GYM, $0, 0
 	map_header_2 CeruleanMart, CERULEAN_MART, $0, 0
 	map_header_2 CeruleanBikeShop, CERULEAN_BIKE_SHOP, $0, 0
+	map_header_2 CeruleanBerryPowderHouse, CERULEAN_BERRY_POWDER_HOUSE, $0, 0
+	map_header_2 CeruleanCoupleHouse, CERULEAN_COUPLE_HOUSE, $0, 0
+	map_header_2 CeruleanWaterShowSpeechHouse, CERULEAN_WATER_SHOW_SPEECH_HOUSE, $0, 0
 	map_header_2 Route3PokeCenter1F, ROUTE_3_POKECENTER_1F, $0, 0
 	map_header_2 Route10PokeCenter1F, ROUTE_10_POKECENTER_1F, $0, 0
 	map_header_2 PowerPlant, POWER_PLANT, $0, 0

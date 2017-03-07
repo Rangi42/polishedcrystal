@@ -157,12 +157,15 @@ Route30BerrySpeechHouse_BlockData:
 	INCBIN "maps/JohtoHouse4.blk"
 
 CeruleanPoliceStation_BlockData:
+CeruleanBerryPowderHouse_BlockData:
+CeruleanWaterShowSpeechHouse_BlockData:
 CeladonMansionRoofHouse_BlockData:
 MrPsychicsHouse_BlockData:
 	INCBIN "maps/KantoHouse1.blk"
 
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
+CeruleanCoupleHouse_BlockData:
 ; TODO: teleporter tiles
 BillsHouse_BlockData:
 BluesHouse_BlockData:

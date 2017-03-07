@@ -1833,9 +1833,9 @@
 	const EVENT_DECO_EEVEE_DOLL
 	const EVENT_LISTENED_TO_OAK_INTRO
 	const EVENT_BEAT_COSPLAYER_CLARA
+	const EVENT_GOT_HP_UP_FROM_CERULEAN
 
 ; Unused placeholder events
-	const EVENT_6AE
 	const EVENT_6AF
 	const EVENT_6B0
 	const EVENT_6B1
