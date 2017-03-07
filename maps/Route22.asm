@@ -441,9 +441,9 @@ Route22CooltrainermText:
 	done
 
 VictoryRoadEntranceSignText:
-	para "Route 22"
+	text "Route 22"
 
-	text "#mon League"
+	para "#mon League"
 	line "Reception Gate"
 	done
 

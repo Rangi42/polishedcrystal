@@ -276,7 +276,7 @@ GymStatue_WinningTrainersText:
 GymStatue_TwoWinningTrainersText:
 	text "Winning Trainers:"
 	line "<RIVAL>"
-	line "<PLAYER>"
+	cont "<PLAYER>"
 	done
 
 GymStatue_ThreeWinningTrainersText:

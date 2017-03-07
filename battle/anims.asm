@@ -2563,6 +2563,7 @@ BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam
 	anim_wait 4
 	anim_obj ANIM_OBJ_6C, -15, 0,   7, 0, $38
 	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 ; Astonish animation from Pokémon Prism
