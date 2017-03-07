@@ -6711,6 +6711,17 @@ PokemaniacGroup:
 CosplayerGroup:
 ; ================================
 ; ================
+
+	; POKEMANIAC
+	db "Clara@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 11, VULPIX
+	db 11, VULPIX
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

@@ -188,9 +188,6 @@ CopycatsDodrio:
 CopycatsHouse2FDoll:
 	jumptext CopycatsHouse2FDollText
 
-CopycatsHouse2FBookshelf:
-	jumpstd picturebookshelf
-
 MovementData_0x18afd0:
 	turn_head_down
 	turn_head_left
@@ -375,9 +372,7 @@ CopycatsHouse2F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CopycatsHouse2FBookshelf
-	signpost 1, 1, SIGNPOST_READ, CopycatsHouse2FBookshelf
+	db 0
 
 .PersonEvents:
 	db 6

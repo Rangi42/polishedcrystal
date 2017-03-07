@@ -332,6 +332,7 @@ KRIS EQU __enum__
 	const AIDAN
 
 	trainerclass COSPLAYER ; 2e
+	const CLARA
 
 	trainerclass SUPER_NERD ; 2f
 	const STAN

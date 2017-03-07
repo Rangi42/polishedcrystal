@@ -1,6 +1,7 @@
 const_value set 2
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
 	const GOLDENRODMAGNETTRAINSTATION_GENTLEMAN
+	const GOLDENRODMAGNETTRAINSTATION_COOLTRAINER_F
 
 GoldenrodMagnetTrainStation_MapScriptHeader:
 .MapTriggers:
@@ -72,6 +73,14 @@ Script_ArriveFromSaffron:
 
 GentlemanScript_0x55143:
 	jumptextfaceplayer UnknownText_0x552a3
+
+GoldenrodMagnetTrainStationCooltrainerfScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue .PowerRestored
+	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText1
+
+.PowerRestored
+	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText2
 
 MovementData_0x55146:
 	step_up
@@ -166,6 +175,23 @@ UnknownText_0x552a3:
 	cont "to Kanto."
 	done
 
+GoldenrodMagnetTrainStationCooltrainerfText1:
+	text "The Magnet Train"
+	line "is like, zoooom,"
+	cont "byun! Shuuu!"
+
+	para "At least when"
+	line "it's running…"
+	done
+
+GoldenrodMagnetTrainStationCooltrainerfText2:
+	text "The Magnet Train"
+	line "is like, zoooom,"
+	cont "byun! Shuuu!"
+
+	para "It's so cool!"
+	done
+
 GoldenrodMagnetTrainStation_MapEventHeader:
 	; filler
 	db 0, 0
@@ -185,6 +211,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
 	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55143, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
+	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1

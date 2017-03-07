@@ -38,7 +38,8 @@ const_value set 2
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_ROCKET3
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_ROCKET_GIRL
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_TEACHER
-	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SUPER_NERD
+	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SUPER_NERD1
+	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SUPER_NERD2
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_POKE_BALL1
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_POKE_BALL2
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
@@ -116,11 +117,14 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 .false14
 	return
 
-SuperNerdScript_0x7ca7a:
-	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_SuperNerdText
-
 TeacherScript_0x7ca7d:
 	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_TeacherText
+
+UndergroundPathSwitchRoomEntrancesSuperNerd1Script:
+	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_SuperNerd1Text
+
+SuperNerdScript_0x7ca7a:
+	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_SuperNerd2Text
 
 UndergroundSilverTrigger1:
 	spriteface PLAYER, RIGHT
@@ -757,16 +761,6 @@ UndergroundSilverLossText:
 	cont "under my heels."
 	done
 
-UndergroundPathSwitchRoomEntrances_SuperNerdText:
-	text "I was challenged"
-	line "to a battle down-"
-	cont "stairs."
-
-	para "It's rough down"
-	line "there. You'd"
-	cont "better be careful."
-	done
-
 UndergroundPathSwitchRoomEntrances_TeacherText:
 	text "There are some"
 	line "shops downstairs…"
@@ -776,6 +770,29 @@ UndergroundPathSwitchRoomEntrances_TeacherText:
 
 	para "I'm scared to go"
 	line "down there."
+	done
+
+UndergroundPathSwitchRoomEntrances_SuperNerd1Text:
+	text "This tunnel was"
+	line "originally made"
+	cont "for deliveries to"
+
+	para "the department"
+	line "store."
+
+	para "It's a nice short-"
+	line "cut across the"
+	cont "city too."
+	done
+
+UndergroundPathSwitchRoomEntrances_SuperNerd2Text:
+	text "I was challenged"
+	line "to a battle down-"
+	cont "stairs."
+
+	para "It's rough down"
+	line "there. You'd"
+	cont "better be careful."
 	done
 
 GruntM11SeenText:
@@ -968,7 +985,7 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	signpost 8, 1, SIGNPOST_ITEM, UndergroundPathSwitchRoomEntrancesHiddenRevive
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_PHARMACIST, 12, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_PHARMACIST, 8, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 2, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -976,6 +993,7 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	person_event SPRITE_ROCKET, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_TEACHER, 27, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7ca7d, -1
+	person_event SPRITE_SUPER_NERD, 26, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, UndergroundPathSwitchRoomEntrancesSuperNerd1Script, -1
 	person_event SPRITE_SUPER_NERD, 27, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ca7a, -1
 	person_event SPRITE_POKE_BALL, 12, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, UndergroundPathSwitchRoomEntrancesSmokeBall, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
 	person_event SPRITE_POKE_BALL, 9, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, UndergroundPathSwitchRoomEntrancesFullHeal, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL

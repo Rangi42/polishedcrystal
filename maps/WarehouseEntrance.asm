@@ -8,6 +8,7 @@ const_value set 2
 	const WAREHOUSEENTRANCE_SUPER_NERD5
 	const WAREHOUSEENTRANCE_SUPER_NERD6
 	const WAREHOUSEENTRANCE_GRANNY
+	const WAREHOUSEENTRANCE_COSPLAYER
 
 WarehouseEntrance_MapScriptHeader:
 .MapTriggers:
@@ -155,6 +156,17 @@ PokemaniacDonaldScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x7c52f
+	waitbutton
+	closetext
+	end
+
+TrainerCosplayerClara:
+	trainer EVENT_BEAT_COSPLAYER_CLARA, COSPLAYER, CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText, 0, CosplayerClaraScript
+
+CosplayerClaraScript:
+	end_if_just_battled
+	opentext
+	writetext CosplayerClaraAfterText
 	waitbutton
 	closetext
 	end
@@ -516,6 +528,23 @@ UnknownText_0x7c52f:
 	cont "#mon."
 	done
 
+CosplayerClaraSeenText:
+	text "Pix! Vul, pix! ♥"
+	done
+
+CosplayerClaraBeatenText:
+	text "You thought I was"
+	line "a #mon?"
+
+	para "Nope! It's just"
+	line "quality cosplay."
+	done
+
+CosplayerClaraAfterText:
+	text "I made this cos-"
+	line "tume myself!"
+	done
+
 UnknownText_0x7c5b0:
 	text "The door's locked…"
 	done
@@ -679,7 +708,7 @@ WarehouseEntrance_MapEventHeader:
 	signpost 8, 17, SIGNPOST_ITEM, WarehouseEntranceHiddenAntidote
 
 .PersonEvents:
-	db 9
+	db 10
 	person_event SPRITE_SUPER_NERD, 31, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdEric, -1
 	person_event SPRITE_SUPER_NERD, 9, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
 	person_event SPRITE_SUPER_NERD, 27, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
@@ -689,3 +718,4 @@ WarehouseEntrance_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
 	person_event SPRITE_SUPER_NERD, 15, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
 	person_event SPRITE_GRANNY, 21, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7c132, EVENT_WAREHOUSE_ENTRANCE_GRANNY
+	person_event SPRITE_COSPLAYER, 18, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1

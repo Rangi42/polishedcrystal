@@ -71,6 +71,12 @@ Oak:
 	end
 
 .BattleOak:
+	checkevent EVENT_LISTENED_TO_OAK_INTRO
+	iftrue .HeardIntro
+	writetext OakMightBeReadyText
+	waitbutton
+	setevent EVENT_LISTENED_TO_OAK_INTRO
+.HeardIntro:
 	writetext OakChallengeText
 	yesorno
 	iffalse .NotReady
@@ -296,7 +302,7 @@ OakLabGoodbyeText:
 	cont "come visit again."
 	done
 
-OakChallengeText:
+OakMightBeReadyText:
 	text "Oak: Incredible,"
 	line "<PLAYER>!"
 
@@ -307,12 +313,14 @@ OakChallengeText:
 	para "You just might be"
 	line "ready to ascend"
 	cont "Mt.Silver."
+	done
 
-	para "Mt.Silver is a"
-	line "tall mountain that"
+OakChallengeText:
+	text "Oak: Mt.Silver is"
+	line "a tall mountain"
 
-	para "is home to many"
-	line "wild #mon."
+	para "that is home to"
+	line "many wild #mon."
 
 	para "It's too dangerous"
 	line "for your average"

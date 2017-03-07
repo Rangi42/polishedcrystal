@@ -5537,9 +5537,9 @@ TalkToTrainerScript:: ; 0xbe66a
 	jump StartBattleWithMapTrainerScript
 
 SeenByTrainerScript:: ; 0xbe675
-	writepersonxy LAST_TALKED
-	trainerflagaction SET_FLAG
-	end ; TODO: REMOVE DEBUG!!!
+;	writepersonxy LAST_TALKED
+;	trainerflagaction SET_FLAG
+;	end ; TODO: REMOVE DEBUG!!!
 
 	loadmemtrainer
 	encountermusic

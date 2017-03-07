@@ -101,7 +101,7 @@ INCLUDE "maps/RadioTower2F.asm"
 INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
-INCLUDE "maps/ViridianSchoolHouse.asm"
+INCLUDE "maps/VioletNicknameSpeechHouse.asm"
 
 
 SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
@@ -114,9 +114,9 @@ INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 INCLUDE "maps/DayCare.asm"
 INCLUDE "maps/EarlsPokemonAcademy.asm"
-INCLUDE "maps/VioletNicknameSpeechHouse.asm"
 INCLUDE "maps/IlexForestAzaleaGate.asm"
 INCLUDE "maps/Route34IlexForestGate.asm"
+INCLUDE "maps/ViridianSchoolHouse.asm"
 
 
 SECTION "Map Scripts 5", ROMX, BANK[MAP_SCRIPTS_5]
@@ -191,13 +191,13 @@ INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route42.asm"
 INCLUDE "maps/ElmsHouse.asm"
 INCLUDE "maps/KrissNeighborsHouse.asm"
+INCLUDE "maps/Route26HealSpeechHouse.asm"
 
 
 SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
 
 INCLUDE "maps/KrissHouse1F.asm"
 INCLUDE "maps/KrissHouse2F.asm"
-INCLUDE "maps/Route26HealSpeechHouse.asm"
 INCLUDE "maps/Route26DayofWeekSiblingsHouse.asm"
 INCLUDE "maps/Route27RestHouse.asm"
 INCLUDE "maps/Route2946Gate.asm"
