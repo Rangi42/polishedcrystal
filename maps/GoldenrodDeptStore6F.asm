@@ -10,78 +10,7 @@ GoldenrodDeptStore6F_MapScriptHeader:
 	db 0
 
 GoldenrodVendingMachine:
-	opentext
-	writetext GoldenrodVendingText
-.Start:
-	special PlaceMoneyTopRight
-	loadmenudata .MenuData
-	verticalmenu
-	closewindow
-	if_equal $1, .FreshWater
-	if_equal $2, .SodaPop
-	if_equal $3, .Lemonade
-	closetext
-	end
-
-.FreshWater:
-	checkmoney $0, 200
-	if_equal $2, .NotEnoughMoney
-	giveitem FRESH_WATER
-	iffalse .NotEnoughSpace
-	takemoney $0, 200
-	itemtotext FRESH_WATER, $0
-	jump .VendItem
-
-.SodaPop:
-	checkmoney $0, 300
-	if_equal $2, .NotEnoughMoney
-	giveitem SODA_POP
-	iffalse .NotEnoughSpace
-	takemoney $0, 300
-	itemtotext SODA_POP, $0
-	jump .VendItem
-
-.Lemonade:
-	checkmoney $0, 350
-	if_equal $2, .NotEnoughMoney
-	giveitem LEMONADE
-	iffalse .NotEnoughSpace
-	takemoney $0, 350
-	itemtotext LEMONADE, $0
-	jump .VendItem
-
-.VendItem:
-	pause 10
-	playsound SFX_ENTER_DOOR
-	writetext GoldenrodClangText
-	buttonsound
-	itemnotify
-	jump .Start
-
-.NotEnoughMoney:
-	writetext GoldenrodVendingNoMoneyText
-	waitbutton
-	jump .Start
-
-.NotEnoughSpace:
-	writetext GoldenrodVendingNoSpaceText
-	waitbutton
-	jump .Start
-
-.MenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 4 ; items
-	db "Fresh Water  ¥200@"
-	db "Soda Pop     ¥300@"
-	db "Lemonade     ¥350@"
-	db "Cancel@"
+	jumpstd vendingmachine
 
 LassScript_0x564bf:
 	jumptextfaceplayer UnknownText_0x5654b
@@ -94,29 +23,6 @@ GoldenrodDeptStore6FDirectory:
 
 GoldenrodDeptStore6FElevatorButton:
 	jumpstd elevatorbutton
-
-GoldenrodVendingText:
-	text "A vending machine!"
-	line "Here's the menu."
-	done
-
-GoldenrodClangText:
-	text "Clang! A can of"
-	line "@"
-	text_from_ram StringBuffer3
-	text $55
-	db "popped out!"
-	done
-
-GoldenrodVendingNoMoneyText:
-	text "Oops, not enough"
-	line "money."
-	done
-
-GoldenrodVendingNoSpaceText:
-	text "There's no more"
-	line "room for stuff."
-	done
 
 UnknownText_0x5654b:
 	text "Do you listen to"

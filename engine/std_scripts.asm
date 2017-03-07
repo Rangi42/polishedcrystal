@@ -54,6 +54,7 @@ StdScripts::
 	dba RefrigeratorScript
 	dba SinkScript
 	dba StoveScript
+	dba VendingMachineScript
 
 PokeCenterNurseScript:
 	opentext
@@ -1974,3 +1975,103 @@ Movement_ContestResults_WalkAfterWarp: ; bcea1
 
 CutTreeScript:
 	farjump AskCutTreeScript
+
+VendingMachineScript:
+	opentext
+	farwritetext VendingMachineText
+.Start:
+	special PlaceMoneyTopRight
+	loadmenudata .MenuData
+	verticalmenu
+	closewindow
+	if_equal $1, .FreshWater
+	if_equal $2, .SodaPop
+	if_equal $3, .Lemonade
+	closetext
+	end
+
+.FreshWater:
+	checkmoney $0, 200
+	if_equal $2, .NotEnoughMoney
+	giveitem FRESH_WATER
+	iffalse .NotEnoughSpace
+	takemoney $0, 200
+	itemtotext FRESH_WATER, $0
+	scall .VendItem
+	random $20
+	if_not_equal $0, .Start
+	giveitem FRESH_WATER
+	iffalse .Start
+	itemtotext FRESH_WATER, $0
+	jump .ExtraItem
+
+.SodaPop:
+	checkmoney $0, 300
+	if_equal $2, .NotEnoughMoney
+	giveitem SODA_POP
+	iffalse .NotEnoughSpace
+	takemoney $0, 300
+	itemtotext SODA_POP, $0
+	scall .VendItem
+	random $20
+	if_not_equal $0, .Start
+	giveitem SODA_POP
+	iffalse .Start
+	itemtotext SODA_POP, $0
+	jump .ExtraItem
+
+.Lemonade:
+	checkmoney $0, 350
+	if_equal $2, .NotEnoughMoney
+	giveitem LEMONADE
+	iffalse .NotEnoughSpace
+	takemoney $0, 350
+	itemtotext LEMONADE, $0
+	scall .VendItem
+	random $20
+	if_not_equal $0, .Start
+	giveitem LEMONADE
+	iffalse .Start
+	itemtotext LEMONADE, $0
+	jump .ExtraItem
+
+.VendItem:
+	pause 10
+	playsound SFX_ENTER_DOOR
+	farwritetext VendingMachineClangText
+	buttonsound
+	itemnotify
+	end
+
+.ExtraItem:
+	pause 10
+	playsound SFX_ENTER_DOOR
+	farwritetext VendingMachineScoreText
+	buttonsound
+	itemnotify
+	jump .Start
+
+.NotEnoughMoney:
+	farwritetext VendingMachineNoMoneyText
+	waitbutton
+	jump .Start
+
+.NotEnoughSpace:
+	farwritetext VendingMachineNoSpaceText
+	waitbutton
+	jump .Start
+
+.MenuData:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "Fresh Water  ¥200@"
+	db "Soda Pop     ¥300@"
+	db "Lemonade     ¥350@"
+	db "Cancel@"

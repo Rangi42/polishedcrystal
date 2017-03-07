@@ -14,78 +14,7 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 	db 0
 
 CeladonHomeDecorStore1FVendingMachine:
-	opentext
-	writetext CeladonHomeDecorStore1FVendingText
-.Start:
-	special PlaceMoneyTopRight
-	loadmenudata .MenuData
-	verticalmenu
-	closewindow
-	if_equal $1, .FreshWater
-	if_equal $2, .SodaPop
-	if_equal $3, .Lemonade
-	closetext
-	end
-
-.FreshWater:
-	checkmoney $0, 200
-	if_equal $2, .NotEnoughMoney
-	giveitem FRESH_WATER
-	iffalse .NotEnoughSpace
-	takemoney $0, 200
-	itemtotext FRESH_WATER, $0
-	jump .VendItem
-
-.SodaPop:
-	checkmoney $0, 300
-	if_equal $2, .NotEnoughMoney
-	giveitem SODA_POP
-	iffalse .NotEnoughSpace
-	takemoney $0, 300
-	itemtotext SODA_POP, $0
-	jump .VendItem
-
-.Lemonade:
-	checkmoney $0, 350
-	if_equal $2, .NotEnoughMoney
-	giveitem LEMONADE
-	iffalse .NotEnoughSpace
-	takemoney $0, 350
-	itemtotext LEMONADE, $0
-	jump .VendItem
-
-.VendItem:
-	pause 10
-	playsound SFX_ENTER_DOOR
-	writetext CeladonHomeDecorStore1FClangText
-	buttonsound
-	itemnotify
-	jump .Start
-
-.NotEnoughMoney:
-	writetext CeladonHomeDecorStore1FVendingNoMoneyText
-	waitbutton
-	jump .Start
-
-.NotEnoughSpace:
-	writetext CeladonHomeDecorStore1FVendingNoSpaceText
-	waitbutton
-	jump .Start
-
-.MenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 4 ; items
-	db "Fresh Water  ¥200@"
-	db "Soda Pop     ¥300@"
-	db "Lemonade     ¥350@"
-	db "Cancel@"
+	jumpstd vendingmachine
 
 CeladonHomeDecorStore1FClerkScript:
 	faceplayer
@@ -263,30 +192,6 @@ CeladonHomeDecorStore1FCooltrainerfText:
 
 	para "than the main"
 	line "Dept.Store."
-	done
-
-CeladonHomeDecorStore1FVendingText:
-	text "A vending machine!"
-	line "Here's the menu."
-	done
-
-CeladonHomeDecorStore1FClangText:
-	text "Clang!"
-
-	para "@"
-	text_from_ram StringBuffer3
-	text ""
-	line "popped out."
-	done
-
-CeladonHomeDecorStore1FVendingNoMoneyText:
-	text "Oops, not enough"
-	line "money…"
-	done
-
-CeladonHomeDecorStore1FVendingNoSpaceText:
-	text "There's no more"
-	line "room for stuff…"
 	done
 
 CeladonHomeDecorStore1FDirectoryText:

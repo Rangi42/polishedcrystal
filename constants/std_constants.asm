@@ -54,3 +54,4 @@
 	enum refrigerator
 	enum sink
 	enum stove
+	enum vendingmachine
