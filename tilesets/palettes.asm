@@ -368,6 +368,8 @@ EmbeddedTowerPalette:
 INCLUDE "tilesets/embedded_tower.pal"
 
 TinTowerRoofPalette:
+INCLUDE "tilesets/tin_tower_roof.pal"
+
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
 

@@ -322,7 +322,7 @@ MAP_NONE   EQU 0
 	mapgroup VERMILION_PORT_PASSAGE,                      9, 10 ;  9
 	mapgroup MOUNT_MOON_SQUARE,                           9, 15 ; 10
 	mapgroup MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 11
-	mapgroup TIN_TOWER_ROOF,                              9,  5 ; 12
+	mapgroup TIN_TOWER_ROOF,                              9,  7 ; 12
 
 	newgroup                                                    ; 16
 
