@@ -35,19 +35,19 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ;  3
 
-	mapgroup SPROUT_TOWER_1F,                             8, 10 ;  1
-	mapgroup SPROUT_TOWER_2F,                             8, 10 ;  2
-	mapgroup SPROUT_TOWER_3F,                             8, 10 ;  3
-	mapgroup TIN_TOWER_1F,                                9, 10 ;  4
-	mapgroup TIN_TOWER_2F,                                9, 10 ;  5
-	mapgroup TIN_TOWER_3F,                                9, 10 ;  6
-	mapgroup TIN_TOWER_4F,                                9, 10 ;  7
-	mapgroup TIN_TOWER_5F,                                9, 10 ;  8
-	mapgroup TIN_TOWER_6F,                                9, 10 ;  9
-	mapgroup TIN_TOWER_7F,                                9, 10 ; 10
-	mapgroup TIN_TOWER_8F,                                9, 10 ; 11
-	mapgroup TIN_TOWER_9F,                                9, 10 ; 12
-	mapgroup BURNED_TOWER_1F,                             9, 10 ; 13
+	mapgroup SPROUT_TOWER_1F,                             8,  8 ;  1
+	mapgroup SPROUT_TOWER_2F,                             8,  8 ;  2
+	mapgroup SPROUT_TOWER_3F,                             8,  8 ;  3
+	mapgroup TIN_TOWER_1F,                                8,  8 ;  4
+	mapgroup TIN_TOWER_2F,                                8,  8 ;  5
+	mapgroup TIN_TOWER_3F,                                8,  8 ;  6
+	mapgroup TIN_TOWER_4F,                                8,  8 ;  7
+	mapgroup TIN_TOWER_5F,                                8,  8 ;  8
+	mapgroup TIN_TOWER_6F,                                8,  8 ;  9
+	mapgroup TIN_TOWER_7F,                                8,  8 ; 10
+	mapgroup TIN_TOWER_8F,                                8,  8 ; 11
+	mapgroup TIN_TOWER_9F,                                8,  8 ; 12
+	mapgroup BURNED_TOWER_1F,                             8,  8 ; 13
 	mapgroup BURNED_TOWER_B1F,                            9, 10 ; 14
 	mapgroup NATIONAL_PARK,                              27, 21 ; 15
 	mapgroup NATIONAL_PARK_BUG_CONTEST,                  27, 21 ; 16
@@ -72,33 +72,33 @@ MAP_NONE   EQU 0
 	mapgroup TEAM_ROCKET_BASE_B2F,                        9, 15 ; 35
 	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 36
 	mapgroup ILEX_FOREST,                                24, 17 ; 37
-	mapgroup WAREHOUSE_ENTRANCE,                         18, 15 ; 38
-	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     18, 15 ; 39
+	mapgroup WAREHOUSE_ENTRANCE,                         18, 10 ; 38
+	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     15, 13 ; 39
 	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 40
 	mapgroup UNDERGROUND_WAREHOUSE,                       9, 10 ; 41
 	mapgroup MOUNT_MORTAR_1F_OUTSIDE,                    18, 20 ; 42
-	mapgroup MOUNT_MORTAR_1F_INSIDE,                     27, 20 ; 43
+	mapgroup MOUNT_MORTAR_1F_INSIDE,                     25, 20 ; 43
 	mapgroup MOUNT_MORTAR_2F_INSIDE,                     18, 20 ; 44
 	mapgroup MOUNT_MORTAR_B1F,                           18, 20 ; 45
-	mapgroup ICE_PATH_1F,                                18, 20 ; 46
+	mapgroup ICE_PATH_1F,                                15, 20 ; 46
 	mapgroup ICE_PATH_B1F,                               18, 10 ; 47
 	mapgroup ICE_PATH_B2F_MAHOGANY_SIDE,                  9, 10 ; 48
 	mapgroup ICE_PATH_B2F_BLACKTHORN_SIDE,                9,  5 ; 49
-	mapgroup ICE_PATH_B3F,                                9, 10 ; 50
+	mapgroup ICE_PATH_B3F,                                5, 10 ; 50
 	mapgroup WHIRL_ISLAND_NW,                             9,  5 ; 51
 	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 52
 	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 53
-	mapgroup WHIRL_ISLAND_CAVE,                           9,  5 ; 54
+	mapgroup WHIRL_ISLAND_CAVE,                           8,  5 ; 54
 	mapgroup WHIRL_ISLAND_SE,                             9,  5 ; 55
 	mapgroup WHIRL_ISLAND_B1F,                           18, 20 ; 56
 	mapgroup WHIRL_ISLAND_B2F,                           18, 10 ; 57
 	mapgroup WHIRL_ISLAND_LUGIA_CHAMBER,                  9, 10 ; 58
 	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 59
-	mapgroup SILVER_CAVE_ROOM_2,                         18, 15 ; 60
-	mapgroup SILVER_CAVE_ROOM_3,                         19, 10 ; 61
-	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9, 10 ; 62
+	mapgroup SILVER_CAVE_ROOM_2,                         17, 15 ; 60
+	mapgroup SILVER_CAVE_ROOM_3,                         16, 10 ; 61
+	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9,  9 ; 62
 	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 63
-	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              18, 15 ; 64
+	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 64
 	mapgroup DRAGONS_DEN_1F,                              9,  5 ; 65
 	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 66
 	mapgroup DRAGON_SHRINE,                               5,  5 ; 67
@@ -311,18 +311,18 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 15
 
-	mapgroup OLIVINE_PORT,                               18, 10 ;  1
-	mapgroup VERMILION_PORT,                             18, 10 ;  2
+	mapgroup OLIVINE_PORT,                               16, 10 ;  1
+	mapgroup VERMILION_PORT,                             13, 10 ;  2
 	mapgroup FAST_SHIP_1F,                                9, 16 ;  3
 	mapgroup FAST_SHIP_CABINS_NNW_NNE_NE,                16,  4 ;  4
 	mapgroup FAST_SHIP_CABINS_SW_SSW_NW,                 16,  4 ;  5
 	mapgroup FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN,     17,  5 ;  6
-	mapgroup FAST_SHIP_B1F,                               8, 16 ;  7
+	mapgroup FAST_SHIP_B1F,                               7, 14 ;  7
 	mapgroup OLIVINE_PORT_PASSAGE,                        9, 10 ;  8
 	mapgroup VERMILION_PORT_PASSAGE,                      9, 10 ;  9
 	mapgroup MOUNT_MOON_SQUARE,                           9, 15 ; 10
 	mapgroup MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 11
-	mapgroup TIN_TOWER_ROOF,                              9, 10 ; 12
+	mapgroup TIN_TOWER_ROOF,                              9,  5 ; 12
 
 	newgroup                                                    ; 16
 
@@ -383,7 +383,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 19
 
-	mapgroup ROUTE_28,                                    9, 20 ;  1
+	mapgroup ROUTE_28,                                    9, 19 ;  1
 	mapgroup SILVER_CAVE_OUTSIDE,                        15, 20 ;  2
 	mapgroup SILVER_CAVE_POKECENTER_1F,                   4,  6 ;  3
 	mapgroup ROUTE_28_FAMOUS_SPEECH_HOUSE,                4,  4 ;  4

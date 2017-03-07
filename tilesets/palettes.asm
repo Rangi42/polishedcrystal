@@ -192,12 +192,22 @@ LoadSpecialMapPalette: ; 494ac
 .maybe_embedded_tower
 	ld a, [MapGroup]
 	cp GROUP_EMBEDDED_TOWER
-	jp nz, .do_nothing
+	jp nz, .maybe_tin_tower_roof
 	ld a, [MapNumber]
 	cp MAP_EMBEDDED_TOWER
-	jp nz, .do_nothing
-	ld hl, EmbeddedTowerPalette
+	jp nz, .maybe_tin_tower_roof
+	ld hl, MystriStagePalette
 	jp .load_eight_bg_palettes
+
+.maybe_tin_tower_roof
+	ld a, [MapGroup]
+	cp GROUP_TIN_TOWER_ROOF
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_TIN_TOWER_ROOF
+	jp nz, .do_nothing
+	ld hl, TinTowerRoofPalette
+	jp .load_eight_time_of_day_bg_palettes
 
 .maybe_goldenrod_dept_store_roof
 	ld a, [MapGroup]
@@ -357,6 +367,7 @@ INCLUDE "tilesets/mystri_stage.pal"
 EmbeddedTowerPalette:
 INCLUDE "tilesets/embedded_tower.pal"
 
+TinTowerRoofPalette:
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
 

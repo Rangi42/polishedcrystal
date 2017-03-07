@@ -25,19 +25,19 @@ TinTower5F_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $f, $b, 2, TIN_TOWER_6F
-	warp_def $4, $2, 1, TIN_TOWER_4F
-	warp_def $e, $2, 3, TIN_TOWER_4F
-	warp_def $f, $11, 4, TIN_TOWER_4F
+	warp_def $f, $9, 2, TIN_TOWER_6F
+	warp_def $4, $0, 1, TIN_TOWER_4F
+	warp_def $e, $0, 3, TIN_TOWER_4F
+	warp_def $f, $e, 4, TIN_TOWER_4F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 14, 16, SIGNPOST_ITEM, TinTower5FHiddenFullRestore
-	signpost 15, 3, SIGNPOST_ITEM, TinTower5FHiddenCarbos
+	signpost 14, 14, SIGNPOST_ITEM, TinTower5FHiddenFullRestore
+	signpost 15, 1, SIGNPOST_ITEM, TinTower5FHiddenCarbos
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_POKE_BALL, 9, 9, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, TinTower5FRareCandy, EVENT_TIN_TOWER_5F_RARE_CANDY
+	person_event SPRITE_POKE_BALL, 9, 7, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, TinTower5FRareCandy, EVENT_TIN_TOWER_5F_RARE_CANDY

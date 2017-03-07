@@ -331,27 +331,27 @@ SproutTower3F_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $e, $a, 4, SPROUT_TOWER_2F
+	warp_def $e, $8, 4, SPROUT_TOWER_2F
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $9, $b, $0, UnknownScript_0x184947, $0, $0
+	xy_trigger 0, $9, $9, $0, UnknownScript_0x184947, $0, $0
 
 .Signposts:
 	db 6
-	signpost 1, 8, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 1, 11, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 0, 9, SIGNPOST_READ, MapSproutTower3FSignpost3Script
-	signpost 0, 10, SIGNPOST_READ, MapSproutTower3FSignpost3Script
-	signpost 15, 5, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 15, 14, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 1, 6, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 1, 9, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 0, 7, SIGNPOST_READ, MapSproutTower3FSignpost3Script
+	signpost 0, 8, SIGNPOST_READ, MapSproutTower3FSignpost3Script
+	signpost 15, 3, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 15, 12, SIGNPOST_READ, MapSproutTower3FSignpost5Script
 
 .PersonEvents:
 	db 7
-	person_event SPRITE_SAGE, 13, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
-	person_event SPRITE_SAGE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
-	person_event SPRITE_SAGE, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
-	person_event SPRITE_ELDER, 2, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
-	person_event SPRITE_POKE_BALL, 14, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SproutTower3FPotion, EVENT_SPROUT_TOWER_3F_POTION
-	person_event SPRITE_POKE_BALL, 1, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SproutTower3FEscapeRope, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
-	person_event SPRITE_SILVER, 4, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
+	person_event SPRITE_SAGE, 13, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
+	person_event SPRITE_SAGE, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
+	person_event SPRITE_SAGE, 11, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
+	person_event SPRITE_ELDER, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
+	person_event SPRITE_POKE_BALL, 14, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SproutTower3FPotion, EVENT_SPROUT_TOWER_3F_POTION
+	person_event SPRITE_POKE_BALL, 1, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SproutTower3FEscapeRope, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
+	person_event SPRITE_SILVER, 4, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER

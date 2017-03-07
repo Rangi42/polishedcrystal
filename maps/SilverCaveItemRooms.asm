@@ -21,8 +21,8 @@ SilverCaveItemRooms_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $3, $d, 3, SILVER_CAVE_ROOM_2
-	warp_def $f, $7, 4, SILVER_CAVE_ROOM_2
+	warp_def $3, $b, 3, SILVER_CAVE_ROOM_2
+	warp_def $f, $5, 4, SILVER_CAVE_ROOM_2
 
 .XYTriggers:
 	db 0
@@ -32,5 +32,5 @@ SilverCaveItemRooms_MapEventHeader:
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_POKE_BALL, 3, 6, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SilverCaveItemRoomsMaxRevive, EVENT_SILVER_CAVE_ITEM_ROOMS_MAX_REVIVE
-	person_event SPRITE_POKE_BALL, 11, 15, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SilverCaveItemRoomsFullRestore, EVENT_SILVER_CAVE_ITEM_ROOMS_FULL_RESTORE
+	person_event SPRITE_POKE_BALL, 3, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SilverCaveItemRoomsMaxRevive, EVENT_SILVER_CAVE_ITEM_ROOMS_MAX_REVIVE
+	person_event SPRITE_POKE_BALL, 11, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SilverCaveItemRoomsFullRestore, EVENT_SILVER_CAVE_ITEM_ROOMS_FULL_RESTORE

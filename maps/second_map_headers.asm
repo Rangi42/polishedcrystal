@@ -596,7 +596,7 @@
 	map_header_2 VermilionPortPassage, VERMILION_PORT_PASSAGE, $0, 0
 	map_header_2 MountMoonSquare, MOUNT_MOON_SQUARE, $2d, 0
 	map_header_2 MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $0, 0
-	map_header_2 TinTowerRoof, TIN_TOWER_ROOF, $0, 0
+	map_header_2 TinTowerRoof, TIN_TOWER_ROOF, $1, 0
 	map_header_2 IndigoPlateauPokeCenter1F, INDIGO_PLATEAU_POKECENTER_1F, $0, 0
 	map_header_2 WillsRoom, WILLS_ROOM, $0, 0
 	map_header_2 KogasRoom, KOGAS_ROOM, $0, 0
