@@ -1375,7 +1375,7 @@ CaughtBallPals:
 	RGB 30, 10, 06
 ; NEST BALL
 	RGB 00, 19, 07
-	RGB 21, 21, 09
+	RGB 30, 26, 12
 ; NET BALL
 	RGB 00, 22, 25
 	RGB 07, 07, 08
