@@ -62,8 +62,8 @@ EvolutionMoves::
 	db NO_MOVE      ; POLIWHIRL
 	db SUBMISSION   ; POLIWRATH
 	db NO_MOVE      ; ABRA
-	db NO_MOVE      ; KADABRA
-	db NO_MOVE      ; ALAKAZAM
+	db FORESIGHT    ; KADABRA
+	db FORESIGHT    ; ALAKAZAM
 	db NO_MOVE      ; MACHOP
 	db NO_MOVE      ; MACHOKE
 	db STRENGTH     ; MACHAMP
@@ -188,7 +188,7 @@ EvolutionMoves::
 	db NO_MOVE      ; YANMA
 	db DRAGON_PULSE ; YANMEGA
 	db NO_MOVE      ; WOOPER
-	db NO_MOVE      ; QUAGSIRE
+	db ANCIENTPOWER ; QUAGSIRE
 	db CONFUSION    ; ESPEON
 	db PURSUIT      ; UMBREON
 	db RAZOR_LEAF   ; LEAFEON

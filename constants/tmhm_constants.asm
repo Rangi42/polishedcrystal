@@ -93,13 +93,15 @@ NUM_HMS = const_value - HM01
 	add_mt ICE_PUNCH    ; $56
 	add_mt ICY_WIND     ; $57
 	add_mt IRON_HEAD    ; $58
-	add_mt ROLLOUT      ; $59
-	add_mt SEED_BOMB    ; $5a
-	add_mt SEISMIC_TOSS ; $5b
-	add_mt SLEEP_TALK   ; $5c
-	add_mt SUBSTITUTE   ; $5d
-	add_mt SWAGGER      ; $5e
-	add_mt THUNDERPUNCH ; $5f
-	add_mt WATER_PULSE  ; $60
-	add_mt ZAP_CANNON   ; $61
-	add_mt ZEN_HEADBUTT ; $62
+	add_mt PAY_DAY      ; $59
+	add_mt ROLLOUT      ; $5a
+	add_mt SEED_BOMB    ; $5b
+	add_mt SEISMIC_TOSS ; $5c
+	add_mt SLEEP_TALK   ; $5d
+	add_mt SUBSTITUTE   ; $5e
+	add_mt SUCKER_PUNCH ; $5f
+	add_mt SWAGGER      ; $60
+	add_mt THUNDERPUNCH ; $61
+	add_mt WATER_PULSE  ; $62
+	add_mt ZAP_CANNON   ; $63
+	add_mt ZEN_HEADBUTT ; $64
