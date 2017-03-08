@@ -4,6 +4,8 @@ const_value set 2
 	const OLIVINECAFE_SAILOR2
 	const OLIVINECAFE_LYRA
 	const OLIVINECAFE_OFFICER
+	const OLIVINECAFE_YOUNGSTER
+	const OLIVINECAFE_FISHER
 
 OlivineCafe_MapScriptHeader:
 .MapTriggers:
@@ -57,6 +59,12 @@ SailorScript_0x9c8dc:
 
 OlivineCafeOfficerScript:
 	jumptextfaceplayer OlivineCafeOfficerText
+
+OlivineCafeYoungsterScript:
+	jumptextfaceplayer OlivineCafeYoungsterText
+
+OlivineCafeFisherScript:
+	jumptextfaceplayer OlivineCafeFisherText
 
 OlivineCafeMovementData_Lyra1:
 	step_right
@@ -122,10 +130,6 @@ OlivineCafeLyraText1:
 	para "food here. It's"
 	line "really good!"
 
-	para "I always come"
-	line "here when I visit"
-	cont "Olivine."
-
 	para "Although I don't"
 	line "want to eat too"
 	cont "much…"
@@ -164,14 +168,34 @@ OlivineCafeOfficerText:
 	para "I can't get enough!"
 	done
 
+OlivineCafeYoungsterText:
+	text "These doughnuts"
+	line "are great."
+
+	para "Jelly-filled ones"
+	line "are my favorite!"
+
+	para "Nothing beats a"
+	line "jelly-filled"
+	cont "doughnut."
+	done
+
+OlivineCafeFisherText:
+	text "I'd go for a run,"
+	line "but I wouldn't"
+
+	para "want to ruin my"
+	line "physique."
+	done
+
 OlivineCafe_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
 	db 2
-	warp_def $7, $2, 6, OLIVINE_CITY
-	warp_def $7, $3, 6, OLIVINE_CITY
+	warp_def $7, $4, 6, OLIVINE_CITY
+	warp_def $7, $5, 6, OLIVINE_CITY
 
 .XYTriggers:
 	db 0
@@ -180,9 +204,11 @@ OlivineCafe_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 5
-	person_event SPRITE_SAILOR, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8c1, -1
-	person_event SPRITE_FISHING_GURU, 3, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9c8d9, -1
-	person_event SPRITE_SAILOR, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8dc, -1
-	person_event SPRITE_LYRA, 4, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCafeLyraScript, EVENT_GOT_AMULET_COIN_FROM_LYRA
-	person_event SPRITE_OFFICER, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, OlivineCafeOfficerScript, -1
+	db 7
+	person_event SPRITE_SAILOR, 2, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8c1, -1
+	person_event SPRITE_FISHING_GURU, 3, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9c8d9, -1
+	person_event SPRITE_SAILOR, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8dc, -1
+	person_event SPRITE_LYRA, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCafeLyraScript, EVENT_GOT_AMULET_COIN_FROM_LYRA
+	person_event SPRITE_OFFICER, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, OlivineCafeOfficerScript, -1
+	person_event SPRITE_YOUNGSTER, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, OlivineCafeYoungsterScript, -1
+	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCafeFisherScript, -1

@@ -168,6 +168,7 @@ LoadHPBar: ; fb50d
 
 LoadPlayerStatusIcon:
 	push de
+	ld a, [PlayerSubStatus2]
 	ld de, BattleMonStatus
 	farcall GetStatusConditionIndex
 	ld a, b
@@ -212,6 +213,7 @@ LoadPlayerStatusIcon:
 
 LoadEnemyStatusIcon:
 	push de
+	ld a, [EnemySubStatus2]
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld a, b

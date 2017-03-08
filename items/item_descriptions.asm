@@ -517,11 +517,11 @@ SacredAshDesc:
 
 EnergyPowderDesc:
 	db   "Restores #mon"
-	next "HP by 50. Bitter.@"
+	next "HP by 60. Bitter.@"
 
 EnergyRootDesc:
 	db   "Restores #mon"
-	next "HP by 200. Bitter.@"
+	next "HP by 120. Bitter.@"
 
 HealPowderDesc:
 	db   "Cures all status"
@@ -1014,7 +1014,7 @@ SootheBellDesc:
 
 WeakPolicyDesc:
 	db   "Super-effective"
-	next "hit ups offense.@"
+	next "hit ups offenses.@"
 
 WideLensDesc:
 	db   "Slightly boosts"

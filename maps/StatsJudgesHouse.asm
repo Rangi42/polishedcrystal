@@ -16,6 +16,9 @@ StatsJudgeScript:
 	closetext
 	end
 
+StatsJudgesHouseBookshelf:
+	jumpstd difficultbookshelf
+
 StatsJudgesHouse_MapEventHeader:
 	; filler
 	db 0, 0
@@ -29,7 +32,8 @@ StatsJudgesHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 7, SIGNPOST_READ, StatsJudgesHouseBookshelf
 
 .PersonEvents:
 	db 1

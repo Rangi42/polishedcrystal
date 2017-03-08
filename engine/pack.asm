@@ -1251,7 +1251,7 @@ TutorialPack: ; 107bb
 	dbw 0, wDudeNumItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10807
 
 .Medicine: ; 10807 (4:4807)
@@ -1275,7 +1275,7 @@ TutorialPack: ; 107bb
 	dbw 0, wDudeNumMedicine
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10826
 
 .Balls: ; 1083b (4:483b)
@@ -1299,7 +1299,7 @@ TutorialPack: ; 107bb
 	dbw 0, wDudeNumBalls
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 1085a
 
 .DisplayPocket: ; 1085a (4:485a)
@@ -1498,30 +1498,31 @@ Pack_InitGFX: ; 10955
 	call DisableLCD
 	ld hl, PackMenuGFX
 	ld de, VTiles2
-	ld bc, 28 tiles
+	ld bc, 37 tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes
-; Background (blue if male, pink if female)
-	hlcoord 0, 1
-	ld bc, 11 * SCREEN_WIDTH
-	ld a, $6
-	call ByteFill
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
 	lb bc, 11, 15
 	call ClearBox
-; ◀▶ POCKET       ▼▲ ITEMS
+; Place the top row and left column
 	hlcoord 0, 0
-	ld de, .PocketItemsString
+	ld de, .PackTilemapString
+	ld bc, SCREEN_WIDTH - 5
 .loop
 	ld a, [de]
+	and a
+	jr nz, .continue
+	add hl, bc
+	jr .next
+.continue
 	cp $ff
 	jr z, .ok
 	ld [hli], a
+.next
 	inc de
 	jr .loop
 .ok
-	call PlacePackGFX
 ; Place the textbox for displaying the item description
 	hlcoord 0, SCREEN_HEIGHT - 4 - 2
 	lb bc, 4, SCREEN_WIDTH - 2
@@ -1531,30 +1532,24 @@ Pack_InitGFX: ; 10955
 	ret
 ; 109a5
 
-.PocketItemsString:
+.PackTilemapString:
+	; Top row
 	db $08, $09, $0a, $0b, $0c, $0d ; ◀▶ POCKET
 	db $07, $07, $07, $07
 	db $0e, $0f, $10, $11, $12, $13 ; ▼▲ ITEMS
 	db $07, $07, $07, $07
-	db $ff
-
-PlacePackGFX: ; 109a5
-	hlcoord 0, 2
-	ld a, $50
-	ld de, SCREEN_WIDTH - 5
-	ld b, 5
-.row
-	ld c, 5
-.column
-	ld [hli], a
-	inc a
-	dec c
-	jr nz, .column
-	add hl, de
-	dec b
-	jr nz, .row
-	ret
-; 109bb
+	; Left column
+	db $06, $06, $06, $06, $06, $00 ; Background (blue if male, pink if female)
+	db $50, $51, $52, $53, $54, $00 ; Pack image
+	db $55, $56, $57, $58, $59, $00
+	db $5a, $5b, $5c, $5d, $5e, $00
+	db $5f, $60, $61, $62, $63, $00
+	db $64, $65, $66, $67, $68, $00
+	db $14, $15, $15, $15, $16, $00 ; Item icon
+	db $17, $1c, $1d, $1e, $18, $00
+	db $17, $1f, $20, $21, $18, $00
+	db $17, $22, $23, $24, $18, $00
+	db $19, $1a, $1a, $1a, $1b, $ff
 
 Pack_GetItemName: ; 10a1d
 	ld a, [CurItem]
@@ -1594,7 +1589,7 @@ ItemsPocketMenuDataHeader: ; 0x10a4f
 	dbw 0, NumItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10a67
 
 PC_Mart_ItemsPocketMenuDataHeader: ; 0x10a67
@@ -1612,7 +1607,7 @@ PC_Mart_ItemsPocketMenuDataHeader: ; 0x10a67
 	dbw 0, NumItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10a7f
 
 MedicinePocketMenuDataHeader:
@@ -1629,7 +1624,7 @@ MedicinePocketMenuDataHeader:
 	dbw 0, NumMedicine
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 
 PC_Mart_MedicinePocketMenuDataHeader:
 	db $40 ; flags
@@ -1645,7 +1640,7 @@ PC_Mart_MedicinePocketMenuDataHeader:
 	dbw 0, NumMedicine
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 
 BallsPocketMenuDataHeader: ; 0x10aaf
 	db $40 ; flags
@@ -1662,7 +1657,7 @@ BallsPocketMenuDataHeader: ; 0x10aaf
 	dbw 0, NumBalls
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10ac7
 
 PC_Mart_BallsPocketMenuDataHeader: ; 0x10ac7
@@ -1680,7 +1675,7 @@ PC_Mart_BallsPocketMenuDataHeader: ; 0x10ac7
 	dbw 0, NumBalls
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10adf
 
 BerriesPocketMenuDataHeader:
@@ -1697,7 +1692,7 @@ BerriesPocketMenuDataHeader:
 	dbw 0, NumBerries
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 
 PC_Mart_BerriesPocketMenuDataHeader:
 	db $40 ; flags
@@ -1713,7 +1708,7 @@ PC_Mart_BerriesPocketMenuDataHeader:
 	dbw 0, NumBerries
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 
 KeyItemsPocketMenuDataHeader: ; 0x10a7f
 	db $40 ; flags
@@ -1730,7 +1725,7 @@ KeyItemsPocketMenuDataHeader: ; 0x10a7f
 	dbw 0, NumKeyItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10a97
 
 PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
@@ -1748,7 +1743,7 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 	dbw 0, NumKeyItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
-	dba UpdateItemDescription
+	dba UpdateItemIconAndDescription
 ; 10aaf
 
 Text_ThrowAwayHowMany: ; 0x10ae4

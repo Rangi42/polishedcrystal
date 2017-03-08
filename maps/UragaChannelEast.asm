@@ -31,7 +31,7 @@ UragaChannelEast_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $b, $2, 1, URAGA_CHANNEL_WEST
+	warp_def $b, $2, 1, SCARY_CAVE_1F
 
 .XYTriggers:
 	db 0

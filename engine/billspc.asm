@@ -1876,7 +1876,7 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	ld h, b
 	ld de, StringBuffer1
 	call PlaceString
-	ld a, $e7
+	ld a, "!"
 	ld [bc], a
 	ld c, 50
 	call DelayFrames
@@ -1936,7 +1936,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld [hl], $e7
+	ld [hl], "!"
 	ld c, 50
 	call DelayFrames
 	ret

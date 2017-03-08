@@ -23,9 +23,6 @@ LassScript_0x196cb9:
 	closetext
 	end
 
-CherrygroveEvolutionSpeechHouseBookshelf:
-	jumpstd magazinebookshelf
-
 UnknownText_0x196cc3:
 	text "#mon gain expe-"
 	line "rience in battle"
@@ -54,9 +51,7 @@ CherrygroveEvolutionSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CherrygroveEvolutionSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, CherrygroveEvolutionSpeechHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 2

@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE22_COOLTRAINER_M
 	const ROUTE22_CELEBI
 	const ROUTE22_LYRA
 	const ROUTE22_SILVER
@@ -132,6 +133,9 @@ Route22CelebiEventScript:
 	domaptrigger GIOVANNIS_CAVE, $1
 	warp GIOVANNIS_CAVE, $5, $5
 	end
+
+Route22CooltrainermScript:
+	jumptextfaceplayer Route22CooltrainermText
 
 VictoryRoadEntranceSign:
 	jumptext VictoryRoadEntranceSignText
@@ -423,11 +427,24 @@ Route22LyraOhNoText:
 	line "Time Travel!"
 	done
 
-VictoryRoadEntranceSignText:
-	text "#mon League"
+Route22CooltrainermText:
+	text "You think you're"
+	line "ready for the"
+	cont "#mon League?"
 
-	para "Victory Road"
-	line "Entrance"
+	para "Bah!"
+
+	para "…What?! You al-"
+	line "ready beat them?"
+
+	para "Well then."
+	done
+
+VictoryRoadEntranceSignText:
+	text "Route 22"
+
+	para "#mon League"
+	line "Reception Gate"
 	done
 
 Route22_MapEventHeader:
@@ -446,7 +463,8 @@ Route22_MapEventHeader:
 	signpost 7, 5, SIGNPOST_READ, VictoryRoadEntranceSign
 
 .PersonEvents:
-	db 4
+	db 5
+	person_event SPRITE_COOLTRAINER_M, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route22CooltrainermScript, EVENT_TIME_TRAVELING
 	person_event SPRITE_CELEBI, 10, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_22_CELEBI
 	person_event SPRITE_LYRA, 9, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_22_LYRA
 	person_event SPRITE_SILVER, 4, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_22_SILVER

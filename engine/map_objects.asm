@@ -2317,7 +2317,7 @@ Function56cd: ; 56cd
 	srl a
 	cp SCREEN_WIDTH
 	jr c, .ok3
-	sub $20
+	sub BG_MAP_WIDTH
 .ok3
 	ld [hUsedSpriteIndex], a
 	ld a, [wPlayerBGMapOffsetY]
@@ -2346,7 +2346,7 @@ Function56cd: ; 56cd
 	srl a
 	cp SCREEN_HEIGHT
 	jr c, .ok6
-	sub $20
+	sub BG_MAP_HEIGHT
 .ok6
 	ld [hUsedSpriteTile], a
 	ld hl, OBJECT_PALETTE
@@ -2382,7 +2382,7 @@ Function56cd: ; 56cd
 	call Coord2Tile
 	pop bc
 	ld a, [hl]
-	cp $60
+	cp $70 ; hide sprites standing on tiles $70-$7f or $f0-$ff
 	jr nc, .nope
 .ok8
 	dec d

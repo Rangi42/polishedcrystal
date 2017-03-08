@@ -53,7 +53,7 @@ TinTowerRoof_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $d, $9, 4, TIN_TOWER_9F
+	warp_def $d, $7, 4, TIN_TOWER_9F
 
 .XYTriggers:
 	db 0
@@ -63,4 +63,4 @@ TinTowerRoof_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_HO_OH, 5, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
+	person_event SPRITE_HO_OH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH

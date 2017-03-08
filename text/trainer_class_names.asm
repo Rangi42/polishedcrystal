@@ -23,7 +23,7 @@
 	db "Leader@"           ; BLUE
 	db "<PK><MN> Trainer@" ; RED
 	db "<PK><MN> Trainer@" ; LEAF
-	db "Passerby@"         ; RIVAL0
+	db "Strange@"          ; RIVAL0
 	db "Rival@"            ; RIVAL1
 	db "Rival@"            ; RIVAL2
 	db "<PK><MN> Trainer@" ; LYRA1

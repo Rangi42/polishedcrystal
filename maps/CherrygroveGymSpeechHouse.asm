@@ -15,9 +15,6 @@ PokefanMScript_0x196ae1:
 BugCatcherScript_0x196ae4:
 	jumptextfaceplayer UnknownText_0x196b65
 
-CherrygroveGymSpeechHouseBookshelf:
-	jumpstd picturebookshelf
-
 UnknownText_0x196aea:
 	text "You're trying to"
 	line "see how good you"
@@ -57,9 +54,7 @@ CherrygroveGymSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CherrygroveGymSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, CherrygroveGymSpeechHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 2

@@ -4161,10 +4161,10 @@ BattleCommand_Sketch: ; 35a74
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, .fail
 ; If the user is transformed, fail.
-;	ld a, BATTLE_VARS_SUBSTATUS2
-;	call GetBattleVarAddr
-;	bit SUBSTATUS_TRANSFORMED, [hl]
-;	jp nz, .fail
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	bit SUBSTATUS_TRANSFORMED, [hl]
+	jp nz, .fail
 ; Get the user's moveset in its party struct.
 ; This move replacement shall be permanent.
 ; Pointer will be in de.
@@ -6750,12 +6750,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld c, 20
 	call DelayFrames
 	pop af
-
 	ld hl, FledInFearText
-	cp ROAR
-	jr z, .do_text
-	ld hl, BlownAwayText
-.do_text
 	jp StdBattleTextBox
 
 ; 36994
@@ -7817,7 +7812,13 @@ BattleCommand_PayDay: ; 3705c
 	ld a, [EnemyMonLevel]
 .ok
 
+	push bc
+	ld b, a
 	add a
+	add a
+	add b
+	pop bc
+
 	ld hl, wPayDayMoney + 2
 	add [hl]
 	ld [hld], a

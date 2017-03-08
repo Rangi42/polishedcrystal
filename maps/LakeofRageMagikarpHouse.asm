@@ -218,9 +218,8 @@ LakeofRageMagikarpHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, MagikarpHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, MagikarpHouseBookshelf
+	db 1
+	signpost 1, 7, SIGNPOST_READ, MagikarpHouseBookshelf
 
 .PersonEvents:
 	db 1

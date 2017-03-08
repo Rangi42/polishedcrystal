@@ -14,7 +14,17 @@ SilphCo3F_MapScriptHeader:
 SilphCo3FScientist1Script:
 	faceplayer
 	opentext
-	pokemart MARTTYPE_SILPH_CO, MART_SILPH_CO
+	checkevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
+	iftrue .GotItem
+	writetext SilphCo3FScientist1Text1
+	buttonsound
+	verbosegiveitem CHERISH_BALL
+	iffalse .Done
+	setevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
+.GotItem:
+	writetext SilphCo3FScientist1Text2
+	waitbutton
+.Done:
 	closetext
 	end
 
@@ -35,6 +45,31 @@ SilphCo3FElevator:
 
 SilphCo3FBookshelf:
 	jumpstd difficultbookshelf
+
+SilphCo3FScientist1Text1:
+	text "Silph and Devon"
+	line "partnered up"
+
+	para "to design some"
+	line "special new #"
+	cont "Balls."
+
+	para "We sell them in"
+	line "Kanto, Johto, and"
+	cont "Hoenn."
+
+	para "But they're not"
+	line "all on the market"
+	cont "yet. Like this!"
+	done
+
+SilphCo3FScientist1Text2:
+	text "That's an un-"
+	line "released proto-"
+	cont "type # Ball."
+
+	para "Don't waste it!"
+	done
 
 SilphCo3FScientist2Text:
 	text "Silph just entered"

@@ -458,12 +458,16 @@ CheckFacingTileForStd:: ; 1365b
 
 .table1
 	dbw $91, magazinebookshelf
+	dbw $92, trashcan
 	dbw $93, pcscript
 	dbw $94, radio1
 	dbw $95, townmap
 	dbw $96, merchandiseshelf
 	dbw $97, tv
+	dbw $9b, refrigerator
+	dbw $9c, sink
 	dbw $9d, window
+	dbw $9e, stove
 	dbw $9f, incenseburner
 	db   -1 ; end
 
@@ -4356,8 +4360,11 @@ endr
 	ret
 
 GetStatusConditionIndex:
+; a is the SubStatus2 value, for checking Toxic
 ; de points to status, e.g. from a party_struct or battle_struct
 ; return the status condition index in b
+	bit SUBSTATUS_TOXIC, a
+	jr nz, .tox
 	push de
 	inc de
 	inc de
@@ -4399,11 +4406,15 @@ GetStatusConditionIndex:
 	jr .done
 .fnt
 	ld a, 6
+	jr .done
+.tox
+	ld a, 7
 .done
 	ld b, a
 	ret
 
 PlaceStatusString: ; 50d0a
+	xor a
 	call GetStatusConditionIndex
 	and a
 	ret z
@@ -5526,10 +5537,9 @@ TalkToTrainerScript:: ; 0xbe66a
 	jump StartBattleWithMapTrainerScript
 
 SeenByTrainerScript:: ; 0xbe675
-	writepersonxy LAST_TALKED
-	trainerflagaction SET_FLAG
-	end ; TODO: REMOVE DEBUG!!!
-
+;	writepersonxy LAST_TALKED
+;	trainerflagaction SET_FLAG
+;	end ; TODO: REMOVE DEBUG!!!
 
 	loadmemtrainer
 	encountermusic
@@ -5924,7 +5934,7 @@ INCLUDE "engine/warp_connection.asm"
 
 INCLUDE "battle/used_move_text.asm"
 
-;INCLUDE "gfx/items.asm"
+INCLUDE "gfx/items.asm"
 
 SECTION "Intro Logo", ROMX, BANK[$42]
 
@@ -6006,7 +6016,10 @@ SECTION "bank77_2", ROMX, BANK[$77]
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
 	ld a, b
+	jr nz, .h24
 	cp 12
 	push af
 	jr c, .AM
@@ -6019,6 +6032,7 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	ld a, 12
 .PM:
 	ld b, a
+.h24:
 ; Crazy stuff happening with the stack
 	push bc
 	ld hl, [sp+$1]
@@ -6041,6 +6055,9 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	pop bc
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
+	ret nz
 	ld de, String_AM
 	pop af
 	jr c, .place_am_pm

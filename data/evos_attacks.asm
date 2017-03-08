@@ -800,9 +800,10 @@ GloomEvosAttacks:
 
 VileplumeEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, MEGA_DRAIN
+	db 1, HEAL_BELL ; Aromatherapy → similar move
 	db 1, POISONPOWDER
 	db 1, STUN_SPORE
-	db 1, MEGA_DRAIN
 	db 1, GROWTH
 	db 59, PETAL_DANCE
 	db 64, SOLAR_BEAM
@@ -2896,7 +2897,7 @@ ChikoritaEvosAttacks:
 	db 39, SAFEGUARD
 	db 42, PLAY_ROUGH ; Aromatherapy → new move
 	db 45, SOLAR_BEAM
-	db 48, CALM_MIND ; new move
+	db 48, HEAL_BELL ; Aromatherapy → similar move
 	db 51, OUTRAGE ; HGSS tutor move
 	db 56, MOONBLAST ; new move
 	db 0 ; no more level-up moves
@@ -2918,7 +2919,7 @@ BayleefEvosAttacks:
 	db 43, SAFEGUARD
 	db 47, PLAY_ROUGH ; Aromatherapy → new move
 	db 51, SOLAR_BEAM
-	db 54, CALM_MIND ; new move
+	db 54, HEAL_BELL ; Aromatherapy → similar move
 	db 58, OUTRAGE ; HGSS tutor move
 	db 64, MOONBLAST ; new move
 	db 0 ; no more level-up moves
@@ -2940,7 +2941,7 @@ MeganiumEvosAttacks:
 	db 50, SAFEGUARD
 	db 56, PLAY_ROUGH ; Aromatherapy → new move
 	db 62, SOLAR_BEAM
-	db 66, CALM_MIND ; new move
+	db 66, HEAL_BELL ; Aromatherapy → similar move
 	db 72, OUTRAGE ; HGSS tutor move
 	db 80, MOONBLAST ; new move
 	db 0 ; no more level-up moves
@@ -3491,9 +3492,10 @@ AmpharosEvosAttacks:
 
 BellossomEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, MEGA_DRAIN
+	db 1, HEAL_BELL ; new move
 	db 1, SUNNY_DAY
 	db 1, STUN_SPORE
-	db 1, MEGA_DRAIN
 	db 1, GROWTH
 	db 59, PETAL_DANCE
 	db 69, SOLAR_BEAM ; Leaf Storm → TM move

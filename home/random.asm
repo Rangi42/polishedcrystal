@@ -96,7 +96,6 @@ BattleRandomRange::
 	ld c, a
 .loop2
 	call BattleRandom
-	ld a, [hRandomAdd]
 	cp c
 	jr nc, .loop2
 

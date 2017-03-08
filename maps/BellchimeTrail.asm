@@ -61,7 +61,7 @@ BellchimeTrailPanUpScript:
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
-	warpfacing UP, TIN_TOWER_1F, $9, $f
+	warpfacing UP, TIN_TOWER_1F, $7, $f
 	end
 
 BellchimeTrailValerieScript:

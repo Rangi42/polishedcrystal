@@ -29,7 +29,7 @@ UnknownScript_0x18b64d:
 TeacherScript_0x18b64f:
 	jumptextfaceplayer UnknownText_0x18b6de
 
-HouseForSaleBookshelf:
+Route5CleanseTagSpeechBookshelf:
 	jumpstd difficultbookshelf
 
 UnknownText_0x18b655:
@@ -73,9 +73,8 @@ Route5CleanseTagSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, HouseForSaleBookshelf
-	signpost 1, 1, SIGNPOST_READ, HouseForSaleBookshelf
+	db 1
+	signpost 1, 7, SIGNPOST_READ, Route5CleanseTagSpeechBookshelf
 
 .PersonEvents:
 	db 2

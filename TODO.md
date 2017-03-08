@@ -10,7 +10,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 * Nuzlocke mode sometimes turns on by itself
 * TMs refresh PP
-* Protect prints (sometimes?) "X is protecting itself! Y's attack missed!"
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
 * Some trainers use X Spcl. Atk (seems to involve their second item slot, e.g. Lance's Full Restore)
@@ -22,9 +21,7 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 
 * Optional Gen V scaled experience formula
 * http://smogon.com/forums/threads/gsc-mechanics.3542417/
-* Defrosted Pokémon can attack on that turn (like waking up)
 * Avalanche doubles damage if user is hit first (description claims it does this already)
-* Thunder, Blizzard, and Hurricane ignore accuracy and evasion in weather (not just 100% accuracy)
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -56,7 +53,6 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Make shiny Gyarados some color, and red Gyarados special
 * Use separate music for Gym Leaders and the Elite 4
 * Add separate animation graphics for more Poké Ball designs
-* Show item pictures in bag, and possibly when picking them up
 * Make Eggs use their Pokémon's palette
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Animate new Pokémon sprites (Sylveon, Pikachu, etc)

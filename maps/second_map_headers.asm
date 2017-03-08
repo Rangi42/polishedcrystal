@@ -506,6 +506,9 @@
 	map_header_2 CeruleanGym, CERULEAN_GYM, $0, 0
 	map_header_2 CeruleanMart, CERULEAN_MART, $0, 0
 	map_header_2 CeruleanBikeShop, CERULEAN_BIKE_SHOP, $0, 0
+	map_header_2 CeruleanBerryPowderHouse, CERULEAN_BERRY_POWDER_HOUSE, $0, 0
+	map_header_2 CeruleanCoupleHouse, CERULEAN_COUPLE_HOUSE, $0, 0
+	map_header_2 CeruleanWaterShowSpeechHouse, CERULEAN_WATER_SHOW_SPEECH_HOUSE, $0, 0
 	map_header_2 Route3PokeCenter1F, ROUTE_3_POKECENTER_1F, $0, 0
 	map_header_2 Route10PokeCenter1F, ROUTE_10_POKECENTER_1F, $0, 0
 	map_header_2 PowerPlant, POWER_PLANT, $0, 0
@@ -558,6 +561,10 @@
 	map_header_2 IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_header_2 Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
 	map_header_2 DayCare, DAYCARE, $0, 0
+	map_header_2 GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
+	map_header_2 GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
+	map_header_2 GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0
+	map_header_2 GoldenrodSpeechHouse, GOLDENROD_SPEECH_HOUSE, $0, 0
 	map_header_2 VermilionHouseFishingSpeechHouse, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, $0, 0
 	map_header_2 VermilionPokeCenter1F, VERMILION_POKECENTER_1F, $0, 0
 	map_header_2 PokemonFanClub, POKEMON_FAN_CLUB, $0, 0
@@ -569,6 +576,8 @@
 	map_header_2 Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
 	map_header_2 Route11Gate, ROUTE_11_GATE, $0, 0
 	map_header_2 Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
+	map_header_2 VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
+	map_header_2 VermilionSSAnneSpeechHouse, VERMILION_S_S_ANNE_SPEECH_HOUSE, $0, 0
 	map_header_2 RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_header_2 RedsHouse2F, REDS_HOUSE_2F, $0, 0
 	map_header_2 BluesHouse, BLUES_HOUSE, $0, 0
@@ -589,7 +598,7 @@
 	map_header_2 VermilionPortPassage, VERMILION_PORT_PASSAGE, $0, 0
 	map_header_2 MountMoonSquare, MOUNT_MOON_SQUARE, $2d, 0
 	map_header_2 MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $0, 0
-	map_header_2 TinTowerRoof, TIN_TOWER_ROOF, $0, 0
+	map_header_2 TinTowerRoof, TIN_TOWER_ROOF, $1, 0
 	map_header_2 IndigoPlateauPokeCenter1F, INDIGO_PLATEAU_POKECENTER_1F, $0, 0
 	map_header_2 WillsRoom, WILLS_ROOM, $0, 0
 	map_header_2 KogasRoom, KOGAS_ROOM, $0, 0

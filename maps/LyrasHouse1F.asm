@@ -32,17 +32,17 @@ LyrasDadScript:
 	closetext
 	end
 
-LyrasTVScript:
-	jumptext LyrasTVText
-
-LyrasStoveScript:
-	jumptext LyrasStoveText
+LyrasFridgeScript:
+	jumptext LyrasFridgeText
 
 LyrasSinkScript:
 	jumptext LyrasSinkText
 
-LyrasFridgeScript:
-	jumptext LyrasFridgeText
+LyrasStoveScript:
+	jumptext LyrasStoveText
+
+LyrasTVScript:
+	jumptext LyrasTVText
 
 LyrasDadInsideText:
 	text "Hi, <PLAYER>!"
@@ -71,9 +71,12 @@ LyrasDadTrainingText:
 	cont "Johto!"
 	done
 
-LyrasStoveText:
-	text "Curry is simmering"
-	line "on the stove."
+LyrasFridgeText:
+	text "Let's see what's"
+	line "in the fridge…"
+
+	para "Fresh Water and"
+	line "rice balls!"
 	done
 
 LyrasSinkText:
@@ -81,12 +84,9 @@ LyrasSinkText:
 	line "less."
 	done
 
-LyrasFridgeText:
-	text "Let's see what's"
-	line "in the fridge…"
-
-	para "Fresh Water and"
-	line "rice balls!"
+LyrasStoveText:
+	text "Curry is simmering"
+	line "on the stove."
 	done
 
 LyrasTVText:
@@ -116,10 +116,10 @@ LyrasHouse1F_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 1, 8, SIGNPOST_READ, LyrasStoveScript
-	signpost 1, 9, SIGNPOST_READ, LyrasSinkScript
 	signpost 1, 7, SIGNPOST_READ, LyrasFridgeScript
-	signpost 1, 4, SIGNPOST_READ, LyrasTVScript
+	signpost 1, 8, SIGNPOST_READ, LyrasSinkScript
+	signpost 1, 9, SIGNPOST_READ, LyrasStoveScript
+	signpost 1, 2, SIGNPOST_READ, LyrasTVScript
 
 .PersonEvents:
 	db 1

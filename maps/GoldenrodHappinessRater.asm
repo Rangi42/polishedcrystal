@@ -149,9 +149,7 @@ GoldenrodHappinessRater_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 0, SIGNPOST_READ, HappinessRatersHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, HappinessRatersHouseBookshelf
+	db 1
 	signpost 1, 7, SIGNPOST_READ, HappinessRatersHouseRadio
 
 .PersonEvents:

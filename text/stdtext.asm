@@ -76,11 +76,6 @@ NurseGoodbyeText:
 	line "again."
 	done
 
-; not used
-	text "We hope to see you"
-	line "again."
-	done
-
 NursePokerusText:
 	text "Your #mon"
 	line "appear to be"
@@ -148,10 +143,8 @@ TeamRocketOathText:
 	done
 
 IncenseBurnerText:
-	text "What is this?"
-
-	para "Oh, it's an"
-	line "incense burner!"
+	text "It's an incense"
+	line "burner!"
 	done
 
 MerchandiseShelfText:
@@ -172,34 +165,21 @@ TVText:
 	text "It's a TV."
 	done
 
-HomepageText:
-	text "#mon Journal"
-	line "Home Page…"
-
-	para "It hasn't been"
-	line "updated…"
+RefrigeratorText:
+	text "It's a fridge."
 	done
 
-; not used
-	text "#mon Radio!"
+SinkText:
+	text "It's a sink."
+	done
 
-	para "Call in with your"
-	line "requests now!"
+StoveText:
+	text "It's a stove."
 	done
 
 TrashCanText:
 	text "There's nothing in"
 	line "here…"
-	done
-
-; not used
-	text "A #mon may be"
-	line "able to move this."
-	done
-
-; not used
-	text "Maybe a #mon"
-	line "can break this."
 	done
 
 PokeCenterSignText:
@@ -296,7 +276,7 @@ GymStatue_WinningTrainersText:
 GymStatue_TwoWinningTrainersText:
 	text "Winning Trainers:"
 	line "<RIVAL>"
-	line "<PLAYER>"
+	cont "<PLAYER>"
 	done
 
 GymStatue_ThreeWinningTrainersText:
@@ -399,4 +379,37 @@ RegisteredNumber2Text:
 	line "@"
 	text_from_ram StringBuffer3
 	text "'s number."
+	done
+
+VendingMachineText:
+	text "A vending machine!"
+	line "Here's the menu."
+	done
+
+VendingMachineClangText:
+	text "Clang!"
+
+	para "@"
+	text_from_ram StringBuffer3
+	text ""
+	line "popped out."
+	done
+
+VendingMachineScoreText:
+	text "Score! An extra"
+
+	line "@"
+	text_from_ram StringBuffer3
+	text ""
+	cont "popped out."
+	done
+
+VendingMachineNoMoneyText:
+	text "Oops, not enough"
+	line "money…"
+	done
+
+VendingMachineNoSpaceText:
+	text "There's no more"
+	line "room for stuff…"
 	done

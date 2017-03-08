@@ -1,8 +1,17 @@
 BattleAnimObjects: ; ccb56
 battleanimobj: MACRO
-
-; ??, ??, frameset, function, ??, tile offset
-	db \1, \2, \3, \4, \5, \6
+	db \1 ; flags
+	; bit 7: priority
+	; bit 6: y flip
+	; bit 5: x flip
+	; bit 0: enable enemy animation coord fixing (x = $b4 - x; see below for y)
+	db \2 ; enemy animation y fix param
+	; if $FF: y = y + 5 tiles
+	; else:   y = -y - (1 tile) * (is_softboiled_animation)
+	db \3 ; video sequence
+	db \4 ; callback
+	db \5 ; palette
+	db \6 ; tile offset
 endm
 
 

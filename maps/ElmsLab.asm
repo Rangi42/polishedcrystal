@@ -269,7 +269,7 @@ TotodilePokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL1
 	opentext
-	pokenamemem CHIKORITA, $0
+	pokenamemem CYNDAQUIL, $0
 	writetext LyraReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -312,7 +312,7 @@ ChikoritaPokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL2
 	opentext
-	pokenamemem CHIKORITA, $0
+	pokenamemem TOTODILE, $0
 	writetext LyraReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx

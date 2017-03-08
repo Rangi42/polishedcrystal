@@ -230,7 +230,7 @@ VoltorbDollSentText:
 
 GoldenrodDeptStoreRoofFisherCatchEmAllText:
 	text "I heard there are"
-	line "21 kinds of dolls."
+	line "22 kinds of dolls."
 	done
 
 UnknownText_0x56839:

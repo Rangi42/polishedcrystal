@@ -26,6 +26,13 @@ UnknownText_0x9b5f4:
 	text "The Gym Leader"
 	line "here is totally"
 	cont "cool."
+
+	para "He's the only one"
+	line "without a type"
+	cont "specialty."
+
+	para "He likes to keep"
+	line "people guessing."
 	done
 
 UnknownText_0x9b61a:

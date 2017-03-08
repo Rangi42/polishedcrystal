@@ -434,10 +434,9 @@ GetSpeed::
 	ld a, [EnemySpdLevel]
 	ld hl, EnemyMonSpeed
 .got_speed
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
 
 	; Apply stat changes
 	sub 7
@@ -2002,6 +2001,7 @@ GetThirdMaxHP::
 	and a
 	ld a, c
 	jr z, .loop
+
 	and 3
 	ld e, a
 	srl b
@@ -3622,7 +3622,11 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 ; 3d714
 
 FinalPkmnMusicAndAnimation:
-	; if this trainer has final text...
+	; if this is not a link battle...
+	ld a, [wLinkMode]
+	and a
+	ret nz
+	; ...and this trainer has final text...
 	farcall GetFinalPkmnTextPointer
 	ret nc
 	; ...and this is their last Pokémon...
@@ -4041,9 +4045,6 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jr nc, .can_escape
 	ld a, $1
 	ld [wPlayerAction], a
-	ld hl, BattleText_CantEscape2
-	jr .print_inescapable_text
-
 .cant_escape
 	ld hl, BattleText_CantEscape
 	jr .print_inescapable_text
@@ -4502,7 +4503,7 @@ SpikesDamage_SkipLevitate:
 
 HandleAirBalloon:
 ; prints air balloon msg and returns z if we have air balloon
-	call GetUserItem
+	farcall GetUserItem
 	ld a, b
 	cp HELD_AIR_BALLOON
 	ret nz
@@ -8474,37 +8475,37 @@ TextJump_ComeBack: ; 3f35b
 ; 3f360
 
 
-HandleSafariAngerEatingStatus: ; unreferenced
-	ld hl, wSafariMonEating
-	ld a, [hl]
-	and a
-	jr z, .angry
-	dec [hl]
-	ld hl, BattleText_WildPkmnIsEating
-	jr .finish
-
-.angry
-	dec hl ; wSafariMonAngerCount
-	ld a, [hl]
-	and a
-	ret z
-	dec [hl]
-	ld hl, BattleText_WildPkmnIsAngry
-	jr nz, .finish
-	push hl
-	ld a, [EnemyMonSpecies]
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, [BaseCatchRate]
-	ld [EnemyMonCatchRate], a
-	pop hl
-
-.finish
-	push hl
-	call Call_LoadTempTileMapToTileMap
-	pop hl
-	jp StdBattleTextBox
-; 3f390
+;HandleSafariAngerEatingStatus: ; unreferenced
+;	ld hl, wSafariMonEating
+;	ld a, [hl]
+;	and a
+;	jr z, .angry
+;	dec [hl]
+;	ld hl, BattleText_WildPkmnIsEating
+;	jr .finish
+;
+;.angry
+;	dec hl ; wSafariMonAngerCount
+;	ld a, [hl]
+;	and a
+;	ret z
+;	dec [hl]
+;	ld hl, BattleText_WildPkmnIsAngry
+;	jr nz, .finish
+;	push hl
+;	ld a, [EnemyMonSpecies]
+;	ld [CurSpecies], a
+;	call GetBaseData
+;	ld a, [BaseCatchRate]
+;	ld [EnemyMonCatchRate], a
+;	pop hl
+;
+;.finish
+;	push hl
+;	call Call_LoadTempTileMapToTileMap
+;	pop hl
+;	jp StdBattleTextBox
+;; 3f390
 
 
 FillInExpBar: ; 3f390

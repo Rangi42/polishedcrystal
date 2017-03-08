@@ -34,6 +34,13 @@ MomTrigger2:
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
 	spriteface KRISSHOUSE1F_MOM1, RIGHT
 	applymovement PLAYER, KrissHouse1FSlowStepLeftMovementData
+	jump MomEventScript
+
+MomTrigger3:
+	playmusic MUSIC_MOM
+	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
+	spriteface KRISSHOUSE1F_MOM1, UP
+	applymovement PLAYER, KrissHouse1FSlowStepDownMovementData
 MomEventScript:
 	opentext
 	writetext MomIntroText
@@ -154,17 +161,17 @@ NeighborScript:
 	spriteface KRISSHOUSE1F_POKEFAN_F, RIGHT
 	end
 
-TVScript:
-	jumptext TVText
-
-StoveScript:
-	jumptext StoveText
+FridgeScript:
+	jumptext FridgeText
 
 SinkScript:
 	jumptext SinkText
 
-FridgeScript:
-	jumptext FridgeText
+StoveScript:
+	jumptext StoveText
+
+TVScript:
+	jumptext TVText
 
 MovementData_0x7a5fc:
 	turn_head_right
@@ -180,6 +187,10 @@ MovementData_0x7a600:
 
 KrissHouse1FSlowStepLeftMovementData:
 	slow_step_left
+	step_end
+
+KrissHouse1FSlowStepDownMovementData:
+	slow_step_down
 	step_end
 
 MomIntroText:
@@ -317,11 +328,12 @@ NeighborText:
 	line "#mon!"
 	done
 
-StoveText:
-	text "Mom's specialty!"
+FridgeText:
+	text "Let's see what's"
+	line "in the fridge…"
 
-	para "Cinnabar Volcano"
-	line "Burger!"
+	para "Fresh Water and"
+	line "tasty Lemonade!"
 	done
 
 SinkText:
@@ -330,12 +342,11 @@ SinkText:
 	cont "clean."
 	done
 
-FridgeText:
-	text "Let's see what's"
-	line "in the fridge…"
+StoveText:
+	text "Mom's specialty!"
 
-	para "Fresh Water and"
-	line "tasty Lemonade!"
+	para "Cinnabar Volcano"
+	line "Burger!"
 	done
 
 TVText:
@@ -360,15 +371,16 @@ KrissHouse1F_MapEventHeader:
 	warp_def $0, $9, 1, KRISS_HOUSE_2F
 
 .XYTriggers:
-	db 2
+	db 3
 	xy_trigger 0, $4, $8, $0, MomTrigger1, $0, $0
 	xy_trigger 0, $4, $9, $0, MomTrigger2, $0, $0
+	xy_trigger 0, $2, $7, $0, MomTrigger3, $0, $0
 
 .Signposts:
 	db 4
-	signpost 1, 0, SIGNPOST_READ, StoveScript
+	signpost 1, 0, SIGNPOST_READ, FridgeScript
 	signpost 1, 1, SIGNPOST_READ, SinkScript
-	signpost 1, 2, SIGNPOST_READ, FridgeScript
+	signpost 1, 2, SIGNPOST_READ, StoveScript
 	signpost 1, 4, SIGNPOST_READ, TVScript
 
 .PersonEvents:

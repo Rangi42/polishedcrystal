@@ -9,7 +9,7 @@ LoadOverworldMonIcon: ; 8e82b
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	call GetExtendedIconBank
+	call GetMonIconBank
 	ret
 ; 8e83f
 
@@ -321,7 +321,7 @@ endr
 	ld e, a
 	ld d, [hl]
 	pop hl
-	call GetExtendedIconBank
+	call GetMonIconBank
 	call Request2bpp
 	pop hl
 	ret
@@ -329,7 +329,7 @@ endr
 
 ; Extended icon bank routine by com3tiin
 ; http://www.pokecommunity.com/showthread.php?t=338470
-GetExtendedIconBank:
+GetMonIconBank:
 	ld a, [CurIcon]
 	cp a, $80
 	lb bc, BANK(Icons1), 8

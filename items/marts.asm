@@ -31,7 +31,6 @@ Marts: ; 160a9
 	dw Celadon5FMart1
 	dw Celadon5FMart2
 	dw SaffronMart
-	dw SilphCoMart
 	dw FuchsiaMart
 MartsEnd
 ; 160ed
@@ -47,8 +46,9 @@ CherrygroveMart: ; 160ed
 ; 160f3
 
 CherrygroveMartAfterDex: ; 160f3
-	db 5 ; # items
+	db 6 ; # items
 	db POKE_BALL
+	db HEAL_BALL
 	db POTION
 	db ANTIDOTE
 	db PARLYZ_HEAL
@@ -59,6 +59,7 @@ CherrygroveMartAfterDex: ; 160f3
 VioletMart: ; 160fa
 	db 10 ; # items
 	db POKE_BALL
+	db REPEAT_BALL
 	db POTION
 	db ESCAPE_ROPE
 	db ANTIDOTE
@@ -72,9 +73,10 @@ VioletMart: ; 160fa
 ; 16106
 
 AzaleaMart: ; 16106
-	db 9 ; # items
+	db 10 ; # items
 	db CHARCOAL
 	db POKE_BALL
+	db NET_BALL
 	db POTION
 	db SUPER_POTION
 	db ESCAPE_ROPE
@@ -86,7 +88,7 @@ AzaleaMart: ; 16106
 ; 16111
 
 Goldenrod2FMart1: ; 16118
-	db 7 ; # items
+	db 10 ; # items
 	db POTION
 	db SUPER_POTION
 	db ANTIDOTE
@@ -94,6 +96,9 @@ Goldenrod2FMart1: ; 16118
 	db AWAKENING
 	db BURN_HEAL
 	db ICE_HEAL
+	db FULL_HEAL
+	db REVIVE
+	db REPEL
 	db $ff
 ; 16121
 
@@ -101,10 +106,10 @@ Goldenrod2FMart2: ; 16121
 	db 9 ; # items
 	db POKE_BALL
 	db GREAT_BALL
+	db LUXURY_BALL
+	db TIMER_BALL
+	db QUICK_BALL
 	db ESCAPE_ROPE
-	db REPEL
-	db REVIVE
-	db FULL_HEAL
 	db POKE_DOLL
 	db BLUESKY_MAIL
 	db MORPH_MAIL
@@ -115,10 +120,11 @@ Goldenrod2FMart2Eevee: ; 16140
 	db 10 ; # items
 	db POKE_BALL
 	db GREAT_BALL
+	db LUXURY_BALL
+	db TIMER_BALL
+	db QUICK_BALL
 	db ESCAPE_ROPE
 	db REPEL
-	db REVIVE
-	db FULL_HEAL
 	db POKE_DOLL
 	db BLUESKY_MAIL
 	db MORPH_MAIL
@@ -174,8 +180,8 @@ UndergroundMart: ; 1620e
 
 EcruteakMart: ; 1615e
 	db 10 ; # items
-	db POKE_BALL
 	db GREAT_BALL
+	db NEST_BALL
 	db POTION
 	db SUPER_POTION
 	db ANTIDOTE
@@ -188,8 +194,9 @@ EcruteakMart: ; 1615e
 ; 1616a
 
 OlivineMart: ; 16153
-	db 9 ; # items
+	db 10 ; # items
 	db GREAT_BALL
+	db DIVE_BALL
 	db SUPER_POTION
 	db HYPER_POTION
 	db ANTIDOTE
@@ -216,7 +223,7 @@ YellowForestMart: ; 1614c
 	db POKE_BALL
 	db REPEL
 	db FRESH_WATER
-	db PARLYZ_HEAL
+	db FULL_HEAL
 	db $ff
 ; 16153
 
@@ -245,8 +252,8 @@ MahoganyMart2: ; 16170
 
 BlackthornMart: ; 1617b
 	db 10 ; # items
-	db GREAT_BALL
 	db ULTRA_BALL
+	db DUSK_BALL
 	db HYPER_POTION
 	db MAX_POTION
 	db FULL_HEAL
@@ -271,8 +278,9 @@ IndigoPlateauMart: ; 16205
 ; 1620e
 
 ViridianMart: ; 16186
-	db 9 ; # items
+	db 10 ; # items
 	db ULTRA_BALL
+	db NET_BALL
 	db HYPER_POTION
 	db FULL_HEAL
 	db REVIVE
@@ -285,8 +293,9 @@ ViridianMart: ; 16186
 ; 16191
 
 PewterMart: ; 16191
-	db 7 ; # items
+	db 8 ; # items
 	db GREAT_BALL
+	db DUSK_BALL
 	db SUPER_POTION
 	db SUPER_REPEL
 	db ANTIDOTE
@@ -310,9 +319,10 @@ MtMoonMart: ; 161fd
 ; 16205
 
 CeruleanMart: ; 1619a
-	db 9 ; # items
+	db 10 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
+	db DIVE_BALL
 	db SUPER_POTION
 	db SUPER_REPEL
 	db FULL_HEAL
@@ -324,8 +334,9 @@ CeruleanMart: ; 1619a
 ; 161a5
 
 LavenderMart: ; 161a5
-	db 8 ; # items
+	db 9 ; # items
 	db GREAT_BALL
+	db HEAL_BALL
 	db POTION
 	db SUPER_POTION
 	db MAX_REPEL
@@ -337,8 +348,9 @@ LavenderMart: ; 161a5
 ; 161af
 
 VermilionMart: ; 161af
-	db 8 ; # items
+	db 9 ; # items
 	db ULTRA_BALL
+	db REPEAT_BALL
 	db SUPER_POTION
 	db HYPER_POTION
 	db REVIVE
@@ -350,12 +362,15 @@ VermilionMart: ; 161af
 ; 161b9
 
 Celadon2FMart1: ; 161b9
-	db 7 ; # items
+	db 10 ; # items
+	db QUICK_BALL
+	db TIMER_BALL
 	db POTION
 	db SUPER_POTION
 	db HYPER_POTION
 	db MAX_POTION
 	db REVIVE
+	db REPEL
 	db SUPER_REPEL
 	db MAX_REPEL
 	db $ff
@@ -367,12 +382,12 @@ Celadon2FMart2: ; 161c2
 	db GREAT_BALL
 	db ULTRA_BALL
 	db ESCAPE_ROPE
-	db FULL_HEAL
 	db ANTIDOTE
 	db BURN_HEAL
 	db ICE_HEAL
 	db AWAKENING
 	db PARLYZ_HEAL
+	db FULL_HEAL
 	db $ff
 ; 161ce
 
@@ -427,9 +442,10 @@ Celadon5FMart2: ; 161e1
 ; 161ea
 
 SaffronMart: ; 161f3
-	db 8 ; # items
+	db 9 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
+	db LUXURY_BALL
 	db HYPER_POTION
 	db MAX_POTION
 	db FULL_HEAL
@@ -439,24 +455,11 @@ SaffronMart: ; 161f3
 	db $ff
 ; 161fd
 
-SilphCoMart: ; 16146
-	db 9 ; # items
-	db REPEAT_BALL
-	db TIMER_BALL
-	db NEST_BALL
-	db NET_BALL
-	db DIVE_BALL
-	db LUXURY_BALL
-	db HEAL_BALL
-	db QUICK_BALL
-	db DUSK_BALL
-	db $ff
-; 1614c
-
 FuchsiaMart: ; 161ea
-	db 7 ; # items
+	db 8 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
+	db NEST_BALL
 	db SUPER_POTION
 	db HYPER_POTION
 	db FULL_HEAL

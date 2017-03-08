@@ -27,6 +27,9 @@ HiddenPowerGuy:
 	closetext
 	end
 
+HiddenPowerHouseRadio:
+	jumpstd radio2
+
 HiddenPowerHouseBookshelf:
 	jumpstd difficultbookshelf
 
@@ -78,9 +81,10 @@ LakeofRageHiddenPowerHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, HiddenPowerHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, HiddenPowerHouseBookshelf
+	db 3
+	signpost 1, 5, SIGNPOST_READ, HiddenPowerHouseRadio
+	signpost 1, 6, SIGNPOST_READ, HiddenPowerHouseBookshelf
+	signpost 1, 7, SIGNPOST_READ, HiddenPowerHouseBookshelf
 
 .PersonEvents:
 	db 1

@@ -2,6 +2,7 @@ const_value set 2
 	const PEWTERCITY_COOLTRAINER_F
 	const PEWTERCITY_BUG_CATCHER
 	const PEWTERCITY_GRAMPS
+	const PEWTERCITY_YOUNGSTER
 	const PEWTERCITY_FRUIT_TREE1
 	const PEWTERCITY_FRUIT_TREE2
 
@@ -35,6 +36,19 @@ GrampsScript_0x18c00f:
 	verbosegiveitem OLD_AMBER
 	iffalse .Done
 	setevent EVENT_GOT_OLD_AMBER
+.Done
+	closetext
+	end
+
+PewterCityYoungsterScript:
+	faceplayer
+	opentext
+	writetext PewterCityYoungsterText1
+	waitbutton
+	checkflag ENGINE_BOULDERBADGE
+	iffalse .Done
+	writetext PewterCityYoungsterText2
+	waitbutton
 .Done
 	closetext
 	end
@@ -120,6 +134,21 @@ UnknownText_0x18c1aa:
 	line "of travel."
 	done
 
+PewterCityYoungsterText1:
+	text "The Pewter Gym is"
+	line "as rough and tough"
+	cont "as rock itself."
+
+	para "Be careful in"
+	line "there."
+	done
+
+PewterCityYoungsterText2:
+	text "You beat the Gym?"
+	line "Then you're tough"
+	cont "as rock too!"
+	done
+
 PewterCitySignText:
 	text "Pewter City"
 	line "A Stone Gray City"
@@ -180,9 +209,10 @@ PewterCity_MapEventHeader:
 	signpost 17, 24, SIGNPOST_READ, PewterCityMartSign
 
 .PersonEvents:
-	db 5
+	db 7
 	person_event SPRITE_COOLTRAINER_F, 11, 19, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18c009, -1
 	person_event SPRITE_BUG_CATCHER, 29, 14, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x18c00c, -1
 	person_event SPRITE_GRAMPS, 17, 29, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x18c00f, -1
+	person_event SPRITE_YOUNGSTER, 18, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	person_event SPRITE_FRUIT_TREE, 3, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x18c03e, -1
 	person_event SPRITE_FRUIT_TREE, 3, 30, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x18c040, -1

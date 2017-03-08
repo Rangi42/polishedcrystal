@@ -7,6 +7,15 @@ INCBIN "tilesets/gym3_metatiles.bin"
 Tileset18Coll:
 INCBIN "tilesets/gym3_collision.bin"
 
+Tileset20GFX:
+INCBIN "gfx/tilesets/kanto2.2bpp.lz"
+
+Tileset20Meta:
+INCBIN "tilesets/kanto2_metatiles.bin"
+
+Tileset20Coll:
+INCBIN "tilesets/kanto2_collision.bin"
+
 Tileset37GFX:
 INCBIN "gfx/tilesets/pokemon_mansion.2bpp.lz"
 
@@ -15,12 +24,3 @@ INCBIN "tilesets/pokemon_mansion_metatiles.bin"
 
 Tileset37Coll:
 INCBIN "tilesets/pokemon_mansion_collision.bin"
-
-Tileset41GFX:
-INCBIN "gfx/tilesets/kanto2.2bpp.lz"
-
-Tileset41Meta:
-INCBIN "tilesets/kanto2_metatiles.bin"
-
-Tileset41Coll:
-INCBIN "tilesets/kanto2_collision.bin"

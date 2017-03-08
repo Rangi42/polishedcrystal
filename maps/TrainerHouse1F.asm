@@ -143,8 +143,8 @@ TrainerHouse1F_MapEventHeader:
 
 .Warps:
 	db 3
-	warp_def $d, $2, 3, VIRIDIAN_CITY
-	warp_def $d, $3, 3, VIRIDIAN_CITY
+	warp_def $b, $4, 3, VIRIDIAN_CITY
+	warp_def $b, $5, 3, VIRIDIAN_CITY
 	warp_def $2, $8, 1, TRAINER_HOUSE_B1F
 
 .XYTriggers:
@@ -152,14 +152,14 @@ TrainerHouse1F_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 0, 5, SIGNPOST_READ, MapTrainerHouse1FSignpost0Script
-	signpost 0, 7, SIGNPOST_READ, MapTrainerHouse1FSignpost1Script
-	signpost 10, 7, SIGNPOST_READ, MapTrainerHouse1FSignpost2Script
+	signpost 0, 7, SIGNPOST_READ, MapTrainerHouse1FSignpost0Script
+	signpost 0, 9, SIGNPOST_READ, MapTrainerHouse1FSignpost1Script
+	signpost 6, 4, SIGNPOST_READ, MapTrainerHouse1FSignpost2Script
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_RECEPTIONIST, 11, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9af67, -1
-	person_event SPRITE_COOLTRAINER_M, 11, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9af6a, -1
+	person_event SPRITE_RECEPTIONIST, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9af67, -1
+	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9af6a, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9af6d, -1
-	person_event SPRITE_YOUNGSTER, 8, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x9af70, -1
+	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x9af70, -1
 	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x9af73, -1

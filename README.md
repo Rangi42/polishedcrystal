@@ -310,6 +310,9 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
 * Add: Instant text option.
+* Add: Imperial or metric units.
+* Add: 12-hour or 24-hour clock.
+* Add: Item icons in the Bag.
 * Add: Replace Jigglypuff Poster with Marill Poster.
 * Add: Briefly beep to warn of low HP.
 * Add: Play B/W final Pokémon music for Gym Leaders and Elite 4.
@@ -318,8 +321,10 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Proper inverted colors in battle (by MeroMero).
 * Add: Evolution moves from Gen VII.
 * Add: Dark battle intro at night.
+* Add: Vending machines have a 1/32 chance of giving an extra item.
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
+* Fix: Pay Day pays 5 times the user's level, not 2.
 * Fix: Explosion and Self-Destruct do not halve Defense.
 * Fix: Quick Ball catch rate multiplier is 5 on the first turn.
 * Fix: Minimize raises evasion by two stages.

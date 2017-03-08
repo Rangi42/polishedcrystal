@@ -328,10 +328,10 @@ BattleText_AnEGGCantBattle: ; 0x80b26
 	prompt
 ; 0x80b3b
 
-BattleText_CantEscape2: ; 0x80b3b
+BattleText_CantEscape: ; 0x80ba0
 	text "Can't escape!"
 	prompt
-; 0x80b49
+; 0x80bae
 
 BattleText_TheresNoEscapeFromTrainerBattle: ; 0x80b49
 	text "No! There's no"
@@ -351,11 +351,6 @@ BattleText_UserFledUsingAStringBuffer1: ; 0x80b89
 	text "!"
 	prompt
 ; 0x80ba0
-
-BattleText_CantEscape: ; 0x80ba0
-	text "Can't escape!"
-	prompt
-; 0x80bae
 
 BattleText_UserHurtBySpikes: ; 0x80bae
 	text "<USER>'s"
@@ -462,21 +457,21 @@ BattleText_StringBuffer1GrewToLevel: ; 0x80c9c
 	db "@@"
 ; 0x80cb9
 
-BattleText_WildPkmnIsEating: ; 0x80cba
-	text "Wild @"
-	text_from_ram EnemyMonNick
-	text ""
-	line "is eating!"
-	prompt
-; 0x80cd1
+;BattleText_WildPkmnIsEating: ; 0x80cba
+;	text "Wild @"
+;	text_from_ram EnemyMonNick
+;	text ""
+;	line "is eating!"
+;	prompt
+;; 0x80cd1
 
-BattleText_WildPkmnIsAngry: ; 0x80cd1
-	text "Wild @"
-	text_from_ram EnemyMonNick
-	text ""
-	line "is angry!"
-	prompt
-; 0x80ce7
+;BattleText_WildPkmnIsAngry: ; 0x80cd1
+;	text "Wild @"
+;	text_from_ram EnemyMonNick
+;	text ""
+;	line "is angry!"
+;	prompt
+;; 0x80ce7
 
 FastAsleepText: ; 0x80ce7
 	text "<USER>"
@@ -762,11 +757,6 @@ CriticalHitText: ; 0x81086
 	prompt
 ; 0x81097
 
-OneHitKOText: ; 0x81097
-	text "It's a one-hit KO!"
-	prompt
-; 0x810aa
-
 SuperEffectiveText: ; 0x810aa
 	text "It's super-"
 	line "effective!"
@@ -825,17 +815,6 @@ DestinyBondEffectText: ; 0x81156
 	cont "opponent with it!"
 	prompt
 ; 0x8117f
-
-SpiteEffectText: ; 0x8117f
-	text "<TARGET>'s"
-	line "@"
-	text_from_ram StringBuffer1
-	text " was"
-	cont "reduced by @"
-	deciram wd265, 1, 1
-	text " PP!"
-	prompt
-; 0x811a0
 
 BellChimedText: ; 0x811a0
 	text "A bell chimed!"
@@ -937,12 +916,6 @@ FledInFearText: ; 0x812c1
 	line "fled in fear!"
 	prompt
 ; 0x812d2
-
-BlownAwayText: ; 0x812d2
-	text "<TARGET>"
-	line "was blown away!"
-	prompt
-; 0x812e5
 
 PlayerHitTimesText: ; 0x812e5
 	text "Hit @"
@@ -1307,19 +1280,6 @@ ForesawAttackText: ; 0x81817
 	prompt
 ; 0x8182d
 
-BeatUpAttackText: ; 0x8182d
-	text_from_ram StringBuffer1
-	text "'s"
-	line "attack!"
-	done
-; 0x8183b
-
-RefusedGiftText: ; 0x8183b
-	text "<TARGET>"
-	line "refused the gift!"
-	prompt
-; 0x81850
-
 IgnoredOrders2Text: ; 0x81850
 	text "<USER>"
 	line "ignored orders!"
@@ -1562,8 +1522,9 @@ BlaineFinalPkmnText:
 BlueFinalPkmnText:
 	text "Heh heh heh…"
 	line "You're unprepared"
-	cont "for this. We'll"
-	cont "knock you down!"
+
+	para "for this. We'll"
+	line "knock you down!"
 	prompt
 
 RedFinalPkmnText:
@@ -1622,8 +1583,9 @@ Lyra1_1FinalPkmnText:
 
 	para "I could explain,"
 	line "but you'll learn"
-	cont "more from exper-"
-	cont "ience."
+
+	para "more from exper-"
+	line "ience."
 
 	para "Do your best,"
 	line "<PLAYER>!"
