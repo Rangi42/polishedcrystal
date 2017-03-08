@@ -536,8 +536,9 @@ AftermathAbility:
 	pop af
 	jr z, .is_contact
 	ld hl, ContactMoves
+	ld de, 1
 	call IsInArray
-	ret c
+	ret nc
 .is_contact
 	call ShowAbilityActivation
 	farcall BattleCommand_SwitchTurn
@@ -555,8 +556,9 @@ RunHitAbilities:
 	cp STRUGGLE
 	jr z, .run_contact_abilities
 	ld hl, ContactMoves
+	ld de, 1
 	call IsInArray
-	jr c, .skip_contact_abilities
+	jr nc, .skip_contact_abilities
 .run_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities
@@ -781,8 +783,7 @@ CheckNullificationAbilities:
 	ld hl, SoundMoves
 	ld de, 1
 	call IsInArray
-	jr c, .ability_ok
-	ret
+	ret nc
 
 .ability_ok
 	; Set AttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
