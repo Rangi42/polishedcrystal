@@ -1291,9 +1291,8 @@ endr
 
 LoadTMHMIconPalette:
 	ld a, [CurTMHM]
-	ld hl, TMHMCancelPalette
 	cp NUM_TMS + NUM_HMS + 1
-	jr nc, .got_palette
+	jr nc, .cancel
 	dec a
 	ld hl, TMHMTypes
 	ld b, 0
@@ -1306,9 +1305,20 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-.got_palette:
 	ld de, UnknBGPals + 4 palettes + 2
 	ld bc, 4
+	ld a, $5
+	call FarCopyWRAM
+	ld hl, BlackPalette
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
+	ret
+
+.cancel:
+	ld hl, TMHMCancelPalette
+	ld de, UnknBGPals + 4 palettes + 2
+	ld bc, 6
 	ld a, $5
 	call FarCopyWRAM
 	ret
@@ -2084,6 +2094,10 @@ TMHMCancelPalette:
 ; CANCEL
 	RGB 31, 31, 31
 	RGB 31, 31, 31
+WhitePalette:
+	RGB 31, 31, 31
+BlackPalette:
+	RGB 00, 00, 00
 
 TMHMTypes:
 ; This merges data from battle/moves/moves.asm:Moves and engine/tmhm.asm:TMHMMoves

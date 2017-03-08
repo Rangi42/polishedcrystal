@@ -37,11 +37,6 @@ LoadTMHMIcon::
 	call DecompressRequest2bpp
 	ret
 
-UpdateTMHMIconPalette::
-	farcall LoadTMHMIconPalette
-	call SetPalettes
-	ret
-
 ItemIconPointers:
 	dw NoItemIcon
 	dw PokeBallIcon
