@@ -883,10 +883,11 @@ GetMovePriority: ; 3c5c5
 	cp -1
 	jr nz, .loop
 
-	ld a, 5
+	xor a
 	jr .check_prankster
 .done
 	ld a, [hl]
+	xor $80 ; treat it as a signed byte
 .check_prankster
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
@@ -905,20 +906,20 @@ GetMovePriority: ; 3c5c5
 
 
 MoveEffectPriorities: ; 3c5df
-	db PROTECT,      9
-	db ENDURE,       8
-	db EXTREMESPEED, 7
-	db SUCKER_PUNCH, 6
-	db BULLET_PUNCH, 6
-	db ICE_SHARD,    6
-	db MACH_PUNCH,   6
-	db QUICK_ATTACK, 6
-	db AVALANCHE,    2
-	db COUNTER,      1
-	db MIRROR_COAT,  1
-	db ROAR,         0
+	db PROTECT,      4
+	db ENDURE,       4
+	db EXTREMESPEED, 2
+	db SUCKER_PUNCH, 1
+	db BULLET_PUNCH, 1
+	db ICE_SHARD,    1
+	db MACH_PUNCH,   1
+	db QUICK_ATTACK, 1
+	; everything else at 0
+	db AVALANCHE,    -4
+	db COUNTER,      -5
+	db MIRROR_COAT,  -5
+	db ROAR,         -6
 	db -1
-; 3c5ec
 
 
 GetMoveEffect: ; 3c5ec
