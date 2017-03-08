@@ -160,6 +160,8 @@ CeruleanPoliceStation_BlockData:
 CeruleanBerryPowderHouse_BlockData:
 CeruleanWaterShowSpeechHouse_BlockData:
 CeladonMansionRoofHouse_BlockData:
+VermilionPollutionSpeechHouse_BlockData:
+VermilionSSAnneSpeechHouse_BlockData:
 MrPsychicsHouse_BlockData:
 	INCBIN "maps/KantoHouse1.blk"
 

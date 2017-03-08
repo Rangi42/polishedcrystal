@@ -376,6 +376,8 @@ INCLUDE "maps/TradeCenter.asm"
 INCLUDE "maps/Colosseum.asm"
 INCLUDE "maps/TimeCapsule.asm"
 INCLUDE "maps/TrainerHouseB1F.asm"
+INCLUDE "maps/VermilionPollutionSpeechHouse.asm"
+INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
 
 
 SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]
@@ -490,7 +492,6 @@ INCLUDE "maps/Route18East.asm"
 INCLUDE "maps/Route18West.asm"
 INCLUDE "maps/Route14.asm"
 INCLUDE "maps/LavenderTown.asm"
-INCLUDE "maps/Route6.asm"
 
 
 SECTION "Map Scripts 23", ROMX, BANK[MAP_SCRIPTS_23]
@@ -502,6 +503,7 @@ INCLUDE "maps/CinnabarVolcano1F.asm"
 INCLUDE "maps/CinnabarVolcanoB1F.asm"
 INCLUDE "maps/Route3.asm"
 INCLUDE "maps/Route4.asm"
+INCLUDE "maps/Route6.asm"
 INCLUDE "maps/Route10South.asm"
 INCLUDE "maps/IndigoPlateau.asm"
 INCLUDE "maps/Route24.asm"
@@ -525,8 +527,6 @@ INCLUDE "maps/SafariZoneFuchsiaGate.asm"
 INCLUDE "maps/SafariZoneHub.asm"
 INCLUDE "maps/SafariZoneEast.asm"
 INCLUDE "maps/SafariZoneNorth.asm"
-INCLUDE "maps/BillsHouse.asm"
-INCLUDE "maps/MrPsychicsHouse.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
@@ -563,6 +563,8 @@ INCLUDE "maps/SafariZoneEastRestHouse.asm"
 INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
+INCLUDE "maps/BillsHouse.asm"
+INCLUDE "maps/MrPsychicsHouse.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]

@@ -576,6 +576,8 @@
 	map_header_2 Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
 	map_header_2 Route11Gate, ROUTE_11_GATE, $0, 0
 	map_header_2 Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
+	map_header_2 VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
+	map_header_2 VermilionSSAnneSpeechHouse, VERMILION_S_S_ANNE_SPEECH_HOUSE, $0, 0
 	map_header_2 RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_header_2 RedsHouse2F, REDS_HOUSE_2F, $0, 0
 	map_header_2 BluesHouse, BLUES_HOUSE, $0, 0

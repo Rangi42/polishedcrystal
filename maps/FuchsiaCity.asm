@@ -2,6 +2,7 @@ const_value set 2
 	const FUCHSIACITY_YOUNGSTER
 	const FUCHSIACITY_POKEFAN_M
 	const FUCHSIACITY_TEACHER
+	const FUCHSIACITY_POKEFAN_F
 	const FUCHSIACITY_CUT_TREE
 	const FUCHSIACITY_FRUIT_TREE
 
@@ -27,6 +28,9 @@ PokefanMScript_0x194b25:
 
 TeacherScript_0x194b28:
 	jumptextfaceplayer UnknownText_0x194bd3
+
+FuchsiaCityPokefanFScript:
+	jumptextfaceplayer FuchsiaCityPokefanFText
 
 FuchsiaCitySign:
 	jumptext FuchsiaCitySignText
@@ -91,8 +95,22 @@ UnknownText_0x194bd3:
 
 	para "You'll need a"
 	line "strong #mon"
-	cont "to explore it,"
-	cont "though."
+
+	para "to explore it,"
+	line "though."
+	done
+
+FuchsiaCityPokefanFText:
+	text "When the Safari"
+	line "Zone Warden left,"
+
+	para "there was nobody"
+	line "to maintain the"
+	cont "town zoo."
+
+	para "So the #mon"
+	line "were released back"
+	cont "into the wild."
 	done
 
 FuchsiaCitySignText:
@@ -188,9 +206,10 @@ FuchsiaCity_MapEventHeader:
 	signpost 13, 31, SIGNPOST_READ, SafariZoneExhibitSign
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_YOUNGSTER, 18, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x194b22, -1
 	person_event SPRITE_POKEFAN_M, 8, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x194b25, -1
 	person_event SPRITE_TEACHER, 13, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x194b28, -1
+	person_event SPRITE_POKEFAN_F, 8, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaCityPokefanFScript, -1
 	person_event SPRITE_CUT_TREE, 19, 16, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FuchsiaCityCutTree, EVENT_FUCHSIA_CITY_CUT_TREE
-	person_event SPRITE_FRUIT_TREE, 17, 13, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x194b43, -1
+	person_event SPRITE_FRUIT_TREE, 17, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x194b43, -1

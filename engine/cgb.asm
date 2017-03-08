@@ -1200,7 +1200,7 @@ _CGB_PackPals: ; 93d3
 
 .got_gender
 	ld de, UnknBGPals
-	ld bc, 4 palettes
+	ld bc, 5 palettes
 	ld a, $5
 	call FarCopyWRAM
 	call WipeAttrMap
@@ -1251,6 +1251,11 @@ _CGB_PackPals: ; 93d3
 	RGB 07, 19, 07
 	RGB 07, 19, 07
 	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 ; 9469
 
 .KrisPackPals: ; 9469
@@ -1272,6 +1277,11 @@ _CGB_PackPals: ; 93d3
 	RGB 31, 31, 31
 	RGB 07, 19, 07
 	RGB 07, 19, 07
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
 	RGB 00, 00, 00
 ; 9499
 
@@ -1356,7 +1366,7 @@ CaughtBallPals:
 	RGB 07, 20, 00
 	RGB 30, 10, 06
 ; FAST BALL
-	RGB 30, 10, 06
+	RGB 31, 15, 00
 	RGB 31, 25, 08
 ; HEAVY BALL
 	RGB 07, 07, 08

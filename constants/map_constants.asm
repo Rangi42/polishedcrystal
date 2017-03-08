@@ -286,6 +286,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 12
 	mapgroup ROUTE_11_GATE,                               5,  5 ; 13
 	mapgroup ROUTE_11_GATE_2F,                            4,  4 ; 14
+	mapgroup VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
+	mapgroup VERMILION_S_S_ANNE_SPEECH_HOUSE,             4,  4 ; 16
 
 	newgroup                                                    ; 13
 
