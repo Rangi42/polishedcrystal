@@ -3974,7 +3974,6 @@ BattleAnim_MilkDrink:
 	anim_ret
 
 BattleAnim_Spark:
-BattleAnim_WildCharge: ; TODO: design custom animation for Wild Charge
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_sound 0, 0, SFX_ZAP_CANNON
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
@@ -3994,6 +3993,29 @@ BattleAnim_WildCharge: ; TODO: design custom animation for Wild Charge
 	anim_obj ANIM_OBJ_LIGHTNING_BOLT, -15, 0,   7, 0, $2
 	anim_obj ANIM_OBJ_33, -15, 0,   7, 0, $0
 	anim_wait 32
+	anim_ret
+	
+BattleAnim_WildCharge:
+	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
+	anim_sound 0, 0, SFX_ZAP_CANNON
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
+	anim_obj ANIM_OBJ_30,   6, 0,  11, 4, $0
+	anim_wait 24
+	anim_setobj $1, $3
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_sound 0, 0, SFX_SPARK
+	anim_wait 16
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 4
+	anim_incobj  2
+	anim_wait 1
+	anim_bgp $1b
+	anim_sound 0, 1, SFX_THUNDERSHOCK
+	anim_obj ANIM_OBJ_LIGHTNING_BOLT, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_33, -15, 0,   7, 0, $0
+	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FuryCutter:
@@ -4153,7 +4175,6 @@ BattleAnim_PainSplit:
 	anim_ret
 
 BattleAnim_SacredFire:
-BattleAnim_FlareBlitz: ; TODO: design custo animation for Flare Blitz
 	anim_1gfx ANIM_GFX_FIRE
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
@@ -4171,6 +4192,39 @@ BattleAnim_FlareBlitz: ; TODO: design custo animation for Flare Blitz
 	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $4
 	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $5
 	anim_wait 8
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 4
+	anim_incobj  9
+	anim_wait 8
+	anim_ret
+	
+BattleAnim_FlareBlitz:
+	anim_1gfx ANIM_GFX_FIRE
+.loop
+	anim_sound 0, 0, SFX_EMBER
+	anim_obj ANIM_OBJ_7F,   6, 0,  12, 0, $0
+	anim_wait 6
+	anim_sound 0, 0, SFX_EMBER
+	anim_obj ANIM_OBJ_80,   6, 0,  13, 0, $0
+	anim_wait 6
+	anim_loop 4, .loop
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_sound 0, 0, SFX_OUTRAGE
+	anim_wait 96
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_wait 4
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
+	anim_sound 0, 1, SFX_EMBER
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $1
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $4
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $5
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $2
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $3
+	anim_wait 4
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
+	anim_wait 4	
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_wait 4
 	anim_incobj  9
