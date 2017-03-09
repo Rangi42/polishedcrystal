@@ -1,6 +1,6 @@
 const_value set 2
 	const VIOLETNICKNAMESPEECHHOUSE_TEACHER
-	const VIOLETNICKNAMESPEECHHOUSE_LASS
+	const VIOLETNICKNAMESPEECHHOUSE_TWIN
 	const VIOLETNICKNAMESPEECHHOUSE_EEVEE
 	const VIOLETNICKNAMESPEECHHOUSE_GRAMPS
 
@@ -14,7 +14,7 @@ VioletNicknameSpeechHouse_MapScriptHeader:
 TeacherScript_0x693e9:
 	jumptextfaceplayer UnknownText_0x693fa
 
-LassScript_0x693ec:
+TwinScript_0x693ec:
 	jumptextfaceplayer UnknownText_0x6945e
 
 VioletNicknameSpeechHouseGrampsScript:
@@ -77,6 +77,6 @@ VioletNicknameSpeechHouse_MapEventHeader:
 .PersonEvents:
 	db 4
 	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x693e9, -1
-	person_event SPRITE_LASS, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x693ec, -1
+	person_event SPRITE_TWIN, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x693ec, -1
 	person_event SPRITE_EEVEE, 2, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EeveeScript_0x693ef, -1
 	person_event SPRITE_GRAMPS, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletNicknameSpeechHouseGrampsScript, -1

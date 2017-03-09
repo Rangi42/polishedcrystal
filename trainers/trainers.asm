@@ -3637,31 +3637,6 @@ BugCatcherGroup:
 ; ================
 
 	; BUG_CATCHER
-	db "Rob@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 60, BEEDRILL
-	db 59, BUTTERFREE
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Ed@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 61, YANMA
-	db 62, BEEDRILL
-	db 62, BUTTERFREE
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
 	db "Benny@"
 	db TRAINERTYPE_NORMAL
 
@@ -3710,86 +3685,12 @@ BugCatcherGroup:
 ; ================
 
 	; BUG_CATCHER
-	db "Doug@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 59, BUTTERFREE
-	db 57, ARIADOS
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
 	db "Wayne@"
 	db TRAINERTYPE_NORMAL
 
 	; party
 	db 9, PARAS
 	db 10, PINECO
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Dane@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 59, BEEDRILL
-	db 61, BUTTERFREE
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Dion@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 63, ARIADOS
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Stacey@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 60, METAPOD
-	db 62, METAPOD
-	db 64, METAPOD
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Ellis@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 58, WEEDLE
-	db 60, KAKUNA
-	db 62, BEEDRILL
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Abner@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 59, BUTTERFREE
-	db 59, BEEDRILL
-	db 59, PIKACHU
 
 	db $ff ; end
 
@@ -7270,6 +7171,115 @@ BeautyGroup:
 BugManiacGroup:
 ; ================================
 ; ================
+
+	; BUG_MANIAC
+	db "Lou@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 17, PARASECT
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Rob@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, BEEDRILL
+	db 59, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Ed@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 61, YANMA
+	db 62, BEEDRILL
+	db 62, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Doug@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, BUTTERFREE
+	db 57, ARIADOS
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Dane@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, BEEDRILL
+	db 61, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Dion@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 63, ARIADOS
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Stacey@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, METAPOD
+	db 62, METAPOD
+	db 64, METAPOD
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Ellis@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, WEEDLE
+	db 60, KAKUNA
+	db 62, BEEDRILL
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Abner@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, BUTTERFREE
+	db 59, BEEDRILL
+	db 59, PIKACHU
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

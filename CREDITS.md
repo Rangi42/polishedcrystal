@@ -46,7 +46,7 @@
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 
 
-### Special Thanks
+## Special Thanks
 
 * yenatch, kanzure, Pikalax, iimarckus, and everyone else who's contributed to disassembling Pokémon Crystal.
 * Mateo for his inspiring Red++ ROM hack, and help on Skeetendo.

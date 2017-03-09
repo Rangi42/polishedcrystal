@@ -901,20 +901,20 @@ Group2Sprites:
 Group3Sprites:
 ; NationalPark
 ; NationalParkBugContest
+	db SPRITE_BUG_CATCHER
+	db SPRITE_BUG_MANIAC
+	db SPRITE_COOLTRAINER_M
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
-	db SPRITE_ROCKER
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 7 walking sprites
+	; 9 walking sprites
 	db SPRITE_GAMEBOY_KID
 	db SPRITE_PERSIAN
 	db SPRITE_POKE_BALL
-	; 10 total sprites
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
+	; 12 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -942,7 +942,7 @@ Group4Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	db SPRITE_FISHING_GURU ; doesn't walk
+	db SPRITE_SIGHTSEER_M ; doesn't walk
 	db SPRITE_HEX_MANIAC ; doesn't walk
 	db SPRITE_OFFICER ; doesn't walk
 	; 12 walking sprites (9 that walk)
@@ -1240,7 +1240,7 @@ Group23Sprites:
 ; Route22
 ; ViridianCity
 ; ViridianForest
-	db SPRITE_BUG_CATCHER
+	db SPRITE_BUG_MANIAC
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
@@ -1559,7 +1559,7 @@ Group31Sprites:
 	db SPRITE_CAITLIN
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_DARACH
-	db SPRITE_FISHING_GURU
+	db SPRITE_SIGHTSEER_M
 	db SPRITE_GRAMPS
 	db SPRITE_IVY
 	db SPRITE_LADY

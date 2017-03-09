@@ -103,6 +103,14 @@ Text_StringBuffer2ExpPoints::
 	text " Exp. Points!"
 	prompt
 
+Text_PkmnPickedUpItem::
+	text_from_ram StringBuffer1
+	line "picked up@"
+	cont ""
+	text_from_ram wMonOrItemNameBuffer
+	text "!"
+	prompt
+
 Text_GoPkmn::
 	text "Go! @@"
 

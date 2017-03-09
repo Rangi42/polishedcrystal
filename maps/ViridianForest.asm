@@ -2,11 +2,11 @@ const_value set 2
 	const VIRIDIAN_FOREST_POKE_BALL1
 	const VIRIDIAN_FOREST_POKE_BALL2
 	const VIRIDIAN_FOREST_POKE_BALL3
-	const VIRIDIAN_FOREST_BUG_CATCHER1
-	const VIRIDIAN_FOREST_BUG_CATCHER2
-	const VIRIDIAN_FOREST_BUG_CATCHER3
-	const VIRIDIAN_FOREST_BUG_CATCHER4
-	const VIRIDIAN_FOREST_BUG_CATCHER5
+	const VIRIDIAN_FOREST_BUG_MANIAC1
+	const VIRIDIAN_FOREST_BUG_MANIAC2
+	const VIRIDIAN_FOREST_BUG_MANIAC3
+	const VIRIDIAN_FOREST_BUG_MANIAC4
+	const VIRIDIAN_FOREST_BUG_MANIAC5
 
 ViridianForest_MapScriptHeader:
 .MapTriggers:
@@ -15,57 +15,57 @@ ViridianForest_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-TrainerBug_catcherDane:
-	trainer EVENT_BEAT_BUG_CATCHER_DANE, BUG_CATCHER, DANE, BugCatcherDaneSeenText, BugCatcherDaneBeatenText, 0, .Script
+TrainerBug_maniacDane:
+	trainer EVENT_BEAT_BUG_MANIAC_DANE, BUG_MANIAC, DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext BugCatcherDaneAfterText
+	writetext BugManiacDaneAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerBug_catcherDion:
-	trainer EVENT_BEAT_BUG_CATCHER_DION, BUG_CATCHER, DION, BugCatcherDionSeenText, BugCatcherDionBeatenText, 0, .Script
+TrainerBug_maniacDion:
+	trainer EVENT_BEAT_BUG_MANIAC_DION, BUG_MANIAC, DION, BugManiacDionSeenText, BugManiacDionBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext BugCatcherDionAfterText
+	writetext BugManiacDionAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerBug_catcherStacey:
-	trainer EVENT_BEAT_BUG_CATCHER_STACEY, BUG_CATCHER, STACEY, BugCatcherStaceySeenText, BugCatcherStaceyBeatenText, 0, .Script
+TrainerBug_maniacStacey:
+	trainer EVENT_BEAT_BUG_MANIAC_STACEY, BUG_MANIAC, STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext BugCatcherStaceyAfterText
+	writetext BugManiacStaceyAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerBug_catcherEllis:
-	trainer EVENT_BEAT_BUG_CATCHER_ELLIS, BUG_CATCHER, ELLIS, BugCatcherEllisSeenText, BugCatcherEllisBeatenText, 0, .Script
+TrainerBug_maniacEllis:
+	trainer EVENT_BEAT_BUG_MANIAC_ELLIS, BUG_MANIAC, ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext BugCatcherEllisAfterText
+	writetext BugManiacEllisAfterText
 	waitbutton
 	closetext
 	end
 
-TrainerBug_catcherAbner:
-	trainer EVENT_BEAT_BUG_CATCHER_ABNER, BUG_CATCHER, ABNER, BugCatcherAbnerSeenText, BugCatcherAbnerBeatenText, 0, .Script
+TrainerBug_maniacAbner:
+	trainer EVENT_BEAT_BUG_MANIAC_ABNER, BUG_MANIAC, ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext BugCatcherAbnerAfterText
+	writetext BugManiacAbnerAfterText
 	waitbutton
 	closetext
 	end
@@ -122,18 +122,18 @@ ViridianForestHiddenRevive:
 ViridianForestHiddenLeafStone:
 	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE, LEAF_STONE
 
-BugCatcherDaneSeenText:
+BugManiacDaneSeenText:
 	text "Welcome to"
 	line "Viridian Forest."
 	cont "Enjoy my Bug-type"
 	cont "#mon."
 	done
 
-BugCatcherDaneBeatenText:
+BugManiacDaneBeatenText:
 	text "That's wonderful…"
 	done
 
-BugCatcherDaneAfterText:
+BugManiacDaneAfterText:
 	text "Pretty impressive!"
 
 	para "I'm sure you can"
@@ -141,17 +141,17 @@ BugCatcherDaneAfterText:
 	cont "that skill!"
 	done
 
-BugCatcherDionSeenText:
+BugManiacDionSeenText:
 	text "Shh! Be quiet! The"
 	line "bug #mon will"
 	cont "run away!"
 	done
 
-BugCatcherDionBeatenText:
+BugManiacDionBeatenText:
 	text "Phew…"
 	done
 
-BugCatcherDionAfterText:
+BugManiacDionAfterText:
 	text "Bug-type #mon"
 	line "make all kinds of"
 	cont "sounds."
@@ -162,7 +162,7 @@ BugCatcherDionAfterText:
 	cont "them is key!"
 	done
 
-BugCatcherStaceySeenText:
+BugManiacStaceySeenText:
 	text "Wow, that's a HUGE"
 	line "#mon!"
 
@@ -171,50 +171,50 @@ BugCatcherStaceySeenText:
 	cont "Trainer?!"
 	done
 
-BugCatcherStaceyBeatenText:
+BugManiacStaceyBeatenText:
 	text "I couldn't catch"
 	line "it!"
 	done
 
-BugCatcherStaceyAfterText:
+BugManiacStaceyAfterText:
 	text "Has anyone ever"
 	line "told you that from"
 	cont "behind you look"
 	cont "like a Venonat?"
 	done
 
-BugCatcherEllisSeenText:
+BugManiacEllisSeenText:
 	text "There's nothing"
 	line "more efficient and"
 	cont "beautiful than a"
 	cont "Bug-type #mon."
 	done
 
-BugCatcherEllisBeatenText:
+BugManiacEllisBeatenText:
 	text "I lost"
 	line "beautifully!"
 	done
 
-BugCatcherEllisAfterText:
+BugManiacEllisAfterText:
 	text "If this is it,"
 	line "then I don't mind"
 	cont "losing!"
 	done
 
-BugCatcherAbnerSeenText:
+BugManiacAbnerSeenText:
 	text "Many people prefer"
 	line "solid bug #mon"
 	cont "over squishy bug"
 	cont "#mon."
 	done
 
-BugCatcherAbnerBeatenText:
+BugManiacAbnerBeatenText:
 	text "Thanks for your"
 	line "hard work, my"
 	cont "lovely #mon…"
 	done
 
-BugCatcherAbnerAfterText:
+BugManiacAbnerAfterText:
 	text "Doesn't matter what"
 	line "kind of #mon--"
 
@@ -316,8 +316,8 @@ ViridianForest_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 31, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
 	person_event SPRITE_POKE_BALL, 33, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
 	person_event SPRITE_POKE_BALL, 18, 17, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
-	person_event SPRITE_BUG_CATCHER, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDane, -1
-	person_event SPRITE_BUG_CATCHER, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_catcherDion, -1
-	person_event SPRITE_BUG_CATCHER, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherStacey, -1
-	person_event SPRITE_BUG_CATCHER, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_catcherEllis, -1
-	person_event SPRITE_BUG_CATCHER, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_catcherAbner, -1
+	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
+	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
+	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
+	person_event SPRITE_BUG_MANIAC, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
+	person_event SPRITE_BUG_MANIAC, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
