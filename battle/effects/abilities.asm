@@ -1523,7 +1523,7 @@ BasePickupTable:
 	db RARE_CANDY
 	db DUSK_STONE
 	db SHINY_STONE
-	db EXP_SHARE
+	db MAX_ETHER
 	db FULL_RESTORE
 	db MAX_REVIVE
 	db PP_UP
