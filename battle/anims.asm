@@ -1607,6 +1607,7 @@ BattleAnim_XScissor:
 	anim_obj ANIM_OBJ_3A, 18, 4,  5, 0, $0
 	anim_obj ANIM_OBJ_3B, 14, 4,  5, 0, $0
 	anim_wait 20
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Scratch:
