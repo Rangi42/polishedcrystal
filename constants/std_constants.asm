@@ -43,6 +43,7 @@
 	enum giftf
 	enum packfullf
 	enum rematchgiftf
+	enum gymstatue0
 	enum gymstatue1
 	enum gymstatue2
 	enum gymstatue3

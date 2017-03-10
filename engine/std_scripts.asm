@@ -43,6 +43,7 @@ StdScripts::
 	dba GiftFScript
 	dba PackFullFScript
 	dba RematchGiftFScript
+	dba GymStatue0Script
 	dba GymStatue1Script
 	dba GymStatue2Script
 	dba GymStatue3Script
@@ -1811,6 +1812,14 @@ RematchGiftFScript:
 	opentext
 	farwritetext ErinRematchGiftText
 	buttonsound
+	end
+
+GymStatue0Script:
+	mapnametotext $0
+	opentext
+	farwritetext GymStatue_CityGymText
+	waitbutton
+	closetext
 	end
 
 GymStatue1Script:
