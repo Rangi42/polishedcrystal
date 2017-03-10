@@ -1890,18 +1890,31 @@ InitNickname: ; e3de
 ; e3fd
 
 GetRandomShininess:
-; 1/4096 chance to be shiny
-; TODO: account for Shiny Charm
+; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 
 	call Random
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny
+	ld a, SHINY_CHARM
+	ld [CurItem], a
+	push hl
+	push bc
+	ld hl, NumItems
+	call CheckItem
+	pop bc
+	pop hl
+	jr c, .shiny_charm
+.no_shiny_charm
 	call Random
 	cp $10
 	jr nc, .not_shiny ; 240/256 still not shiny
 .shiny
 	ld a, SHINY_MASK
 	jr .got_shininess
+.shiny_charm
+	call Random
+	cp $30
+	jr c, .shiny ; 208/256 still not shiny
 .not_shiny
 	xor a
 .got_shininess
