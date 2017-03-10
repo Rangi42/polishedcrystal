@@ -119,6 +119,8 @@ CherrygroveSilverTriggerNorth:
 	writetext UnknownText_0x19c4e2
 	waitbutton
 	closetext
+	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
+	dotrigger $0
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -126,30 +128,32 @@ CherrygroveSilverTriggerNorth:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 3
-	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
-	dontrestartmapmusic
-	reloadmap
+	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
+	setevent EVENT_RIVAL_CHERRYGROVE_CITY
+	reloadmapafterbattle
 	jump .FinishRival
 
 .Totodile:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 1
-	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
-	reloadmap
+	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
+	setevent EVENT_RIVAL_CHERRYGROVE_CITY
+	reloadmapafterbattle
 	jump .FinishRival
 
 .Chikorita:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 2
-	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
-	reloadmap
+	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
+	setevent EVENT_RIVAL_CHERRYGROVE_CITY
+	reloadmapafterbattle
 .FinishRival:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
@@ -169,8 +173,6 @@ CherrygroveSilverTriggerNorth:
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	special RunCallback_04
-	dotrigger $0
-	special HealPartyEvenForNuzlocke
 	playmapmusic
 	end
 

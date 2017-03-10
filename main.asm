@@ -5086,6 +5086,9 @@ GetFinalPkmnTextPointer::
 	cp CYNTHIA
 	jr z, .ok
 	; Silver and Lyra have a phrase for each set of three IDs
+	ld hl, .Rival0FinalTexts
+	cp RIVAL0
+	jr z, .rival_or_lyra
 	ld hl, .Rival1FinalTexts
 	cp RIVAL1
 	jr z, .rival_or_lyra
@@ -5146,8 +5149,10 @@ endr
 	scf
 	ret
 
-.Rival1FinalTexts:
+.Rival0FinalTexts:
 	dw Rival1_1FinalPkmnText
+
+.Rival1FinalTexts:
 	dw Rival1_2FinalPkmnText
 	dw Rival1_3FinalPkmnText
 	dw Rival1_4FinalPkmnText
