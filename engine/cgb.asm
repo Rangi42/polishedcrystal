@@ -1297,6 +1297,10 @@ endr
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
+	ld hl, BlackPalette
+	ld bc, 2
+	ld a, $5
+	call FarCopyWRAM
 	ret
 
 LoadTMHMIconPalette:

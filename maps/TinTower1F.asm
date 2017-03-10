@@ -138,7 +138,6 @@ SuicuneBattle:
 	domaptrigger CIANWOOD_CITY, $0
 	dotrigger $1
 	clearevent EVENT_SET_WHEN_FOUGHT_HO_OH
-	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	reloadmapafterbattle
 	spriteface PLAYER, DOWN
 	pause 20
