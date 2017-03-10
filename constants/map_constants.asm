@@ -447,6 +447,8 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 36
 	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 37
 	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 38
+	mapgroup CELADON_UNIVERSITY_1F,                      10, 15 ; 39
+	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 40
 
 	newgroup                                                    ; 22
 

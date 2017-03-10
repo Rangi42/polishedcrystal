@@ -103,3 +103,8 @@ ScaryCaveB1F_BlockData:
 ScaryCaveShipwreck_BlockData:
 	INCBIN "maps/ScaryCaveShipwreck.blk"
 
+CeladonUniversity1F_BlockData:
+	INCBIN "maps/CeladonUniversity1F.blk"
+
+CeladonUniversity2F_BlockData:
+	INCBIN "maps/CeladonUniversity2F.blk"

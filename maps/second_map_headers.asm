@@ -659,6 +659,8 @@
 	map_header_2 CeladonHomeDecorStore2F, CELADON_HOME_DECOR_STORE_2F, $0, 0
 	map_header_2 CeladonHomeDecorStore3F, CELADON_HOME_DECOR_STORE_3F, $0, 0
 	map_header_2 CeladonHomeDecorStore4F, CELADON_HOME_DECOR_STORE_4F, $0, 0
+	map_header_2 CeladonUniversity1F, CELADON_UNIVERSITY_1F, $0, 0
+	map_header_2 CeladonUniversity2F, CELADON_UNIVERSITY_2F, $0, 0
 	map_header_2 ManiasHouse, MANIAS_HOUSE, $0, 0
 	map_header_2 CianwoodGym, CIANWOOD_GYM, $0, 0
 	map_header_2 CianwoodPokeCenter1F, CIANWOOD_POKECENTER_1F, $0, 0
