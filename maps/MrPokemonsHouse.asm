@@ -106,6 +106,7 @@ MrPokemonsHouse_OakScript:
 	closetext
 	spriteface MRPOKEMONSHOUSE_OAK, UP
 	pause 10
+	applymovement MRPOKEMONSHOUSE_POKEDEX, MrPokemonsHouse_OakTakesPokedex
 	disappear MRPOKEMONSHOUSE_POKEDEX
 	pause 10
 	spriteface MRPOKEMONSHOUSE_OAK, LEFT
@@ -184,11 +185,15 @@ MrPokemonsHouse_OakWalksToPlayer:
 	step_left
 	step_end
 
+MrPokemonsHouse_OakTakesPokedex:
+	step_down
+	step_end
+
 MrPokemonsHouse_OakExits:
 	step_down
 	step_left
 	turn_head_down
-	db $3f ; movement
+	step_sleep_2
 	step_end
 
 MrPokemonIntroText1:
@@ -425,4 +430,4 @@ MrPokemonsHouse_MapEventHeader:
 	db 3
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
 	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	person_event SPRITE_POKEDEX, 5, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+	person_event SPRITE_POKEDEX, 4, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
