@@ -464,6 +464,7 @@ CheckFacingTileForStd:: ; 1365b
 	dbw $95, townmap
 	dbw $96, merchandiseshelf
 	dbw $97, tv
+	dbw $9a, vendingmachine
 	dbw $9b, refrigerator
 	dbw $9c, sink
 	dbw $9d, window

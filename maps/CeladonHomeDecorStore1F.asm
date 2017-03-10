@@ -13,9 +13,6 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-CeladonHomeDecorStore1FVendingMachine:
-	jumpstd vendingmachine
-
 CeladonHomeDecorStore1FClerkScript:
 	faceplayer
 	opentext
@@ -218,10 +215,8 @@ CeladonHomeDecorStore1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 1
 	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore1FDirectory
-	signpost 1, 0, SIGNPOST_UP, CeladonHomeDecorStore1FVendingMachine
-	signpost 1, 1, SIGNPOST_UP, CeladonHomeDecorStore1FVendingMachine
 
 .PersonEvents:
 	db 6

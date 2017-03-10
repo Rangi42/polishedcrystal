@@ -9,9 +9,6 @@ GoldenrodDeptStore6F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-GoldenrodVendingMachine:
-	jumpstd vendingmachine
-
 LassScript_0x564bf:
 	jumptextfaceplayer UnknownText_0x5654b
 
@@ -68,13 +65,9 @@ GoldenrodDeptStore6F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 2
 	signpost 0, 14, SIGNPOST_READ, GoldenrodDeptStore6FDirectory
 	signpost 0, 3, SIGNPOST_READ, GoldenrodDeptStore6FElevatorButton
-	signpost 1, 8, SIGNPOST_UP, GoldenrodVendingMachine
-	signpost 1, 9, SIGNPOST_UP, GoldenrodVendingMachine
-	signpost 1, 10, SIGNPOST_UP, GoldenrodVendingMachine
-	signpost 1, 11, SIGNPOST_UP, GoldenrodVendingMachine
 
 .PersonEvents:
 	db 2

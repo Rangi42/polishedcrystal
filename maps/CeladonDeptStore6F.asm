@@ -41,9 +41,6 @@ CeladonDeptStore6FDirectory:
 UnknownScript_0x7124d:
 	jumpstd elevatorbutton
 
-CeladonVendingMachine:
-	jumpstd vendingmachine
-
 UnknownText_0x712c7:
 	text "A vending machine"
 	line "with a prize rou-"
@@ -101,13 +98,9 @@ CeladonDeptStore6F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 2
 	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore6FDirectory
 	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore1FElevatorButton
-	signpost 1, 8, SIGNPOST_UP, CeladonVendingMachine
-	signpost 1, 9, SIGNPOST_UP, CeladonVendingMachine
-	signpost 1, 10, SIGNPOST_UP, CeladonVendingMachine
-	signpost 1, 11, SIGNPOST_UP, CeladonVendingMachine
 
 .PersonEvents:
 	db 4
