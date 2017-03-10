@@ -44,10 +44,10 @@ BattleCommand_Curse: ; 37588
 	call AnimateCurrentMove
 	ld b, SPEED
 	call LowerStat
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call BattleCommand_StatDownMessage
 	call ResetMiss
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call BattleCommand_AttackUp
 	call BattleCommand_StatUpMessage
 	call ResetMiss

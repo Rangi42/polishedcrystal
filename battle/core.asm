@@ -370,7 +370,7 @@ HandleBerserkGene: ; 3c27c
 	ld [wNumHits], a
 	ld de, ANIM_CONFUSED
 	call Call_PlayBattleAnim_OnlyIfVisible
-	call SwitchTurnCore
+	call SwitchTurn
 	ld hl, BecameConfusedText
 	jp StdBattleTextBox
 ; 3c300
@@ -1181,7 +1181,7 @@ HandleResidualDamage:
 	bit SUBSTATUS_LEECH_SEED, [hl]
 	jr z, .not_seeded
 
-	call SwitchTurnCore
+	call SwitchTurn
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_SAP
@@ -1189,7 +1189,7 @@ HandleResidualDamage:
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	call z, Call_PlayBattleAnim_OnlyIfVisible
-	call SwitchTurnCore
+	call SwitchTurn
 
 	call GetEighthMaxHP
 	call SubtractHPFromUser
@@ -1203,9 +1203,9 @@ HandleResidualDamage:
 	jr .sap_text
 .hurt
 	farcall ShowAbilityActivation
-	call SwitchTurnCore
+	call SwitchTurn
 	call SubtractHPFromUser
-	call SwitchTurnCore
+	call SwitchTurn
 .sap_text
 	ld hl, LeechSeedSapsText
 	call StdBattleTextBox
@@ -1389,12 +1389,12 @@ HandleWrap: ; 3c874
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .skip_anim
 
-	call SwitchTurnCore
+	call SwitchTurn
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a
 	predef PlayBattleAnim
-	call SwitchTurnCore
+	call SwitchTurn
 
 .skip_anim
 	call GetEighthMaxHP
@@ -1408,13 +1408,6 @@ HandleWrap: ; 3c874
 .print_text
 	jp StdBattleTextBox
 ; 3c8e4
-
-SwitchTurnCore: ; 3c8e4
-	ld a, [hBattleTurn]
-	xor 1
-	ld [hBattleTurn], a
-	ret
-; 3c8eb
 
 HandleLeftovers: ; 3c8eb
 	call CheckSpeed
@@ -2079,9 +2072,9 @@ GetMaxHP: ; 3ccac
 ; 3ccc2
 
 RestoreEnemyHP:
-	call SwitchTurnCore
+	call SwitchTurn
 	call RestoreHP
-	jp SwitchTurnCore
+	jp SwitchTurn
 
 RestoreHP ; 3ccef
 	ld hl, BattleMonMaxHP
@@ -4423,7 +4416,7 @@ RunBothActivationAbilities:
 	; will make Traced abilities activate
 	; twice
 	farcall RunActivationAbilitiesInner
-	call SwitchTurnCore
+	call SwitchTurn
 	farcall RunActivationAbilitiesInner
 	pop af
 	ld [hBattleTurn], a
@@ -4444,9 +4437,9 @@ RunActivationAbilities:
 	cp TRACE
 	ret nz
 	; invert whose turn it is to properly handle abilities.
-	call SwitchTurnCore
+	call SwitchTurn
 	farcall RunActivationAbilitiesInner
-	call SwitchTurnCore
+	call SwitchTurn
 	ret
 
 SpikesDamage_CheckMoldBreaker:
@@ -4594,9 +4587,9 @@ PursuitSwitch: ; 3dc5b
 
 PursuitSwitch_done
 	; run switch-out abilities
-	call SwitchTurnCore
+	call SwitchTurn
 	farcall RunSwitchAbilities
-	call SwitchTurnCore
+	call SwitchTurn
 	and a
 	ret
 ; 3dce6
@@ -4706,9 +4699,9 @@ ItemRecoveryAnim: ; 3ddc8
 ; 3dde9
 
 UseEnemyHeldStatusHealingItem:
-	call SwitchTurnCore
+	call SwitchTurn
 	call UseHeldStatusHealingItem
-	jp SwitchTurnCore
+	jp SwitchTurn
 
 UseHeldStatusHealingItem: ; 3dde9
 	farcall GetUserItemAfterUnnerve
@@ -4774,9 +4767,9 @@ UseHeldStatusHealingItem: ; 3dde9
 ; 3de51
 
 UseEnemyConfusionHealingItem:
-	call SwitchTurnCore
+	call SwitchTurn
 	call UseConfusionHealingItem
-	jp SwitchTurnCore
+	jp SwitchTurn
 
 UseConfusionHealingItem: ; 3de51
 	ld a, BATTLE_VARS_SUBSTATUS3
