@@ -2420,9 +2420,9 @@ BattleCommand_PostFaintEffects: ; 351c0
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
 
-	call SwitchTurn
 	farcall GetMaxHP
 	farcall SubtractHPFromUser
+	call SwitchTurn
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a
@@ -2432,6 +2432,13 @@ BattleCommand_PostFaintEffects: ; 351c0
 	call LoadAnim
 	call SwitchTurn
 
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy_dbond
+	call UpdateBattleMonInParty
+	jr .finish
+.enemy_dbond
+	call UpdateEnemyMonInParty
 	jr .finish
 
 .no_dbond
