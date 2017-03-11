@@ -269,6 +269,7 @@ BattleAnimations::
 	dw BattleAnim_InLove
 	dw BattleAnim_InSandstorm
 	dw BattleAnim_InHail
+	dw BattleAnim_UnderCurse
 	dw BattleAnim_InWhirlpool
 	dw BattleAnim_Miss
 	dw BattleAnim_EnemyDamage
@@ -608,6 +609,13 @@ BattleAnim_InHail:
 	anim_wait 4
 	anim_loop 8, .loop
 	anim_wait 8
+	anim_ret
+
+BattleAnim_UnderCurse:
+	anim_1gfx ANIM_GFX_ANGELS
+	anim_sound 0, 0, SFX_BUBBLE_BEAM
+	anim_obj ANIM_OBJ_95,   8, 4,  10, 0, $0
+	anim_wait 40
 	anim_ret
 
 BattleAnim_InWhirlpool:
@@ -5501,11 +5509,4 @@ BattleAnim_ShowMon_1:
 ;	anim_sound 0, 1, SFX_NIGHTMARE
 ;	anim_wait 96
 ;	anim_bgp $e4
-;	anim_ret
-
-;BattleAnim_InNightmare: ; removed
-;	anim_1gfx ANIM_GFX_ANGELS
-;	anim_sound 0, 0, SFX_BUBBLE_BEAM
-;	anim_obj ANIM_OBJ_95,   8, 4,  10, 0, $0
-;	anim_wait 40
 ;	anim_ret

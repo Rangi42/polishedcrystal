@@ -274,8 +274,8 @@ const_value SET const_value + -1
 	const ANIM_FRZ               ; $108
 	const ANIM_PAR               ; $109
 	const ANIM_IN_LOVE           ; $10a
-	const ANIM_IN_SANDSTORM      ; $10b, unused
-	const ANIM_IN_HAIL           ; $10c, unused
+	const ANIM_IN_SANDSTORM      ; $10b
+	const ANIM_IN_HAIL           ; $10c
 	const ANIM_UNDER_CURSE       ; $10d
 	const ANIM_IN_WHIRLPOOL      ; $10e
 ; battle anims

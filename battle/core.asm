@@ -1805,6 +1805,7 @@ HandleWeather: ; 3cb9e
 .WeatherAnimations:
 	db RAIN_DANCE
 	db SUNNY_DAY
+	; TODO: use ANIM_IN_SANDSTORM and ANIM_IN_HAIL (16-bit values)
 	db SANDSTORM
 	db HAIL
 ; 3cc39
