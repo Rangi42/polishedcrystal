@@ -46,9 +46,9 @@ RunActivationAbilitiesInner:
 	jp RunStatusHealAbilities
 
 RunEnemyStatusHealAbilities:
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	call RunStatusHealAbilities
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 RunStatusHealAbilities:
@@ -111,10 +111,10 @@ HealStatusAbility:
 	and a
 	jr z, .is_player
 	farcall CalcEnemyStats
-	ret
+	jp UpdateEnemyMonInParty
 .is_player
 	farcall CalcPlayerStats
-	ret
+	jp UpdateBattleMonInParty
 
 OwnTempoAbility:
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -286,7 +286,7 @@ AnticipationAbility:
 .got_move_ptr
 	; Since Anticipation can run in the middle of a turn and we don't want to ruin the
 	; opponent's move struct, save the current move of it to be reapplied afterwards.
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	push af
@@ -347,7 +347,7 @@ AnticipationAbility:
 .got_move_struct2
 	ld a, BANK(Moves)
 	call FarCopyBytes
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 ForewarnAbility:
@@ -455,21 +455,21 @@ FriskAbility:
 	jp StdBattleTextBox
 
 RunEnemyOwnTempoAbility:
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp OWN_TEMPO
 	call z, OwnTempoAbility
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 RunEnemySynchronizeAbility:
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 SynchronizeAbility:
@@ -502,10 +502,10 @@ RunFaintAbilities:
 	call .user_abilities
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop af
 	call .opponent_abilities
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 .user_abilities
 	cp MOXIE
@@ -523,12 +523,12 @@ AftermathAbility:
 	cp DAMP
 	ret z
 	; Only contact moves proc Aftermath
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp STRUGGLE
 	push af
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop af
 	jr z, .is_contact
 	ld hl, ContactMoves
@@ -537,10 +537,10 @@ AftermathAbility:
 	ret nc
 .is_contact
 	call ShowAbilityActivation
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	farcall GetQuarterMaxHP
 	farcall SubtractHPFromUser
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 RunHitAbilities:
@@ -568,11 +568,11 @@ RunHitAbilities:
 	push bc
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop af
 	pop bc
 	call .do_enemy_abilities
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 .do_enemy_abilities
 	cp CURSED_BODY
@@ -599,9 +599,9 @@ RunContactAbilities:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp PICKPOCKET
 	jr nz, .not_pickpocket
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	call PickPocketAbility
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 .not_pickpocket
 ; other abilities only trigger 30% of the time
@@ -614,9 +614,9 @@ RunContactAbilities:
 	ret nc
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	call .do_enemy_abilities
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 .do_enemy_abilities
 	ld a, b
@@ -805,9 +805,9 @@ CheckNullificationAbilities:
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	call .do_enemy_abilities
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 .do_enemy_abilities
 	ld a, BATTLE_VARS_ABILITY
@@ -830,10 +830,10 @@ RunEnemyNullificationAbilities:
 	jp z, DampAbility
 	; For other abilities, don't do anything except print a message (for example Levitate)
 	call ShowAbilityActivation
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 DampAbility:
@@ -843,14 +843,14 @@ DampAbility:
 	jp StdBattleTextBox
 
 RunEnemyStatIncreaseAbilities:
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp DEFIANT
 	call z, DefiantAbility
 	cp COMPETITIVE
 	call z, CompetitiveAbility
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 CompetitiveAbility:
@@ -926,9 +926,9 @@ WeakArmorAbility:
 	and a
 	jr nz, .failed_defensedown
 	call ShowAbilityActivation
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	farcall BattleCommand_StatDownMessage
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	farcall ResetMiss
 	farcall BattleCommand_SpeedUp2
 	ld a, [FailedMessage]
@@ -1027,10 +1027,10 @@ ApplyAccuracyAbilities:
 	call .user_abilities
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, b
 	call .enemy_abilities
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 
 .user_abilities
@@ -1319,9 +1319,9 @@ MoodyAbility:
 	ld b, e
 	farcall ResetMiss
 	farcall LowerStat
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	farcall BattleCommand_StatDownMessage
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	jp EnableAnimations
 
 ShedSkinAbility:
@@ -1370,7 +1370,10 @@ RegeneratorAbility:
 	call ShowAbilityActivation
 	farcall GetThirdMaxHP
 	farcall RestoreHP
-	ret
+	ld a, [hBattleTurn]
+	and a
+	jp z, UpdateBattleMonInParty
+	jp UpdateEnemyMonInParty
 
 DisableAnimations:
 	ld a, 1
@@ -1383,9 +1386,9 @@ EnableAnimations:
 	ret
 
 ShowEnemyAbilityActivation::
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	call ShowAbilityActivation
-	farcall BattleCommand_SwitchTurn
+	call SwitchTurn
 	ret
 ShowAbilityActivation::
 	push bc

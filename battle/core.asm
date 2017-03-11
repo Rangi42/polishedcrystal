@@ -370,7 +370,7 @@ HandleBerserkGene: ; 3c27c
 	ld [wNumHits], a
 	ld de, ANIM_CONFUSED
 	call Call_PlayBattleAnim_OnlyIfVisible
-	call SwitchTurnCore
+	call SwitchTurn
 	ld hl, BecameConfusedText
 	jp StdBattleTextBox
 ; 3c300
@@ -883,11 +883,12 @@ GetMovePriority: ; 3c5c5
 	cp -1
 	jr nz, .loop
 
-	ld a, 5
+	xor a
 	jr .check_prankster
 .done
 	ld a, [hl]
 .check_prankster
+	xor $80 ; treat it as a signed byte
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -905,20 +906,20 @@ GetMovePriority: ; 3c5c5
 
 
 MoveEffectPriorities: ; 3c5df
-	db PROTECT,      9
-	db ENDURE,       8
-	db EXTREMESPEED, 7
-	db SUCKER_PUNCH, 6
-	db BULLET_PUNCH, 6
-	db ICE_SHARD,    6
-	db MACH_PUNCH,   6
-	db QUICK_ATTACK, 6
-	db AVALANCHE,    2
-	db COUNTER,      1
-	db MIRROR_COAT,  1
-	db ROAR,         0
+	db PROTECT,      4
+	db ENDURE,       4
+	db EXTREMESPEED, 2
+	db SUCKER_PUNCH, 1
+	db BULLET_PUNCH, 1
+	db ICE_SHARD,    1
+	db MACH_PUNCH,   1
+	db QUICK_ATTACK, 1
+	; everything else at 0
+	db AVALANCHE,    -4
+	db COUNTER,      -5
+	db MIRROR_COAT,  -5
+	db ROAR,         -6
 	db -1
-; 3c5ec
 
 
 GetMoveEffect: ; 3c5ec
@@ -1180,7 +1181,7 @@ HandleResidualDamage:
 	bit SUBSTATUS_LEECH_SEED, [hl]
 	jr z, .not_seeded
 
-	call SwitchTurnCore
+	call SwitchTurn
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_SAP
@@ -1188,7 +1189,7 @@ HandleResidualDamage:
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	call z, Call_PlayBattleAnim_OnlyIfVisible
-	call SwitchTurnCore
+	call SwitchTurn
 
 	call GetEighthMaxHP
 	call SubtractHPFromUser
@@ -1202,9 +1203,9 @@ HandleResidualDamage:
 	jr .sap_text
 .hurt
 	farcall ShowAbilityActivation
-	call SwitchTurnCore
+	call SwitchTurn
 	call SubtractHPFromUser
-	call SwitchTurnCore
+	call SwitchTurn
 .sap_text
 	ld hl, LeechSeedSapsText
 	call StdBattleTextBox
@@ -1371,12 +1372,12 @@ HandleWrap: ; 3c874
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .skip_anim
 
-	call SwitchTurnCore
+	call SwitchTurn
 	xor a
 	ld [wNumHits], a
 	ld [FXAnimIDHi], a
 	predef PlayBattleAnim
-	call SwitchTurnCore
+	call SwitchTurn
 
 .skip_anim
 	call GetEighthMaxHP
@@ -1390,13 +1391,6 @@ HandleWrap: ; 3c874
 .print_text
 	jp StdBattleTextBox
 ; 3c8e4
-
-SwitchTurnCore: ; 3c8e4
-	ld a, [hBattleTurn]
-	xor 1
-	ld [hBattleTurn], a
-	ret
-; 3c8eb
 
 HandleLeftovers: ; 3c8eb
 	call CheckSpeed
@@ -2062,9 +2056,9 @@ GetMaxHP: ; 3ccac
 ; 3ccc2
 
 RestoreEnemyHP:
-	call SwitchTurnCore
+	call SwitchTurn
 	call RestoreHP
-	jp SwitchTurnCore
+	jp SwitchTurn
 
 RestoreHP ; 3ccef
 	ld hl, BattleMonMaxHP
@@ -4407,7 +4401,7 @@ RunBothActivationAbilities:
 	; will make Traced abilities activate
 	; twice
 	farcall RunActivationAbilitiesInner
-	call SwitchTurnCore
+	call SwitchTurn
 	farcall RunActivationAbilitiesInner
 	pop af
 	ld [hBattleTurn], a
@@ -4428,9 +4422,9 @@ RunActivationAbilities:
 	cp TRACE
 	ret nz
 	; invert whose turn it is to properly handle abilities.
-	call SwitchTurnCore
+	call SwitchTurn
 	farcall RunActivationAbilitiesInner
-	call SwitchTurnCore
+	call SwitchTurn
 	ret
 
 SpikesDamage_CheckMoldBreaker:
@@ -4511,6 +4505,8 @@ PursuitSwitch: ; 3dc5b
 	ld a, [CurBattleMon]
 	push af
 
+	; Kludge: if player is target, override CurPlayerMon to
+	; properly update party struct (FIXME: make this unneccessary)
 	ld hl, DoPlayerTurn
 	ld a, [hBattleTurn]
 	and a
@@ -4578,9 +4574,19 @@ PursuitSwitch: ; 3dc5b
 
 PursuitSwitch_done
 	; run switch-out abilities
-	call SwitchTurnCore
+	call SwitchTurn
+	ld a, [CurBattleMon]
+	push af
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .override_done
+	ld a, [LastPlayerMon]
+	ld [CurBattleMon], a
+.override_done
 	farcall RunSwitchAbilities
-	call SwitchTurnCore
+	pop af
+	ld [CurBattleMon], a
+	call SwitchTurn
 	and a
 	ret
 ; 3dce6
@@ -4690,9 +4696,9 @@ ItemRecoveryAnim: ; 3ddc8
 ; 3dde9
 
 UseEnemyHeldStatusHealingItem:
-	call SwitchTurnCore
+	call SwitchTurn
 	call UseHeldStatusHealingItem
-	jp SwitchTurnCore
+	jp SwitchTurn
 
 UseHeldStatusHealingItem: ; 3dde9
 	farcall GetUserItemAfterUnnerve
@@ -4754,9 +4760,9 @@ UseHeldStatusHealingItem: ; 3dde9
 ; 3de51
 
 UseEnemyConfusionHealingItem:
-	call SwitchTurnCore
+	call SwitchTurn
 	call UseConfusionHealingItem
-	jp SwitchTurnCore
+	jp SwitchTurn
 
 UseConfusionHealingItem: ; 3de51
 	ld a, BATTLE_VARS_SUBSTATUS3

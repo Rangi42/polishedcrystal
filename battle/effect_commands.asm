@@ -463,9 +463,9 @@ CantMove: ; 341f0
 
 
 OpponentCantMove: ; 34216
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call CantMove
-	jp BattleCommand_SwitchTurn
+	jp SwitchTurn
 
 ; 3421f
 
@@ -2344,9 +2344,9 @@ BattleCommand_CriticalText: ; 35175
 	call GetOpponentAbilityAfterMoldBreaker
 	cp ANGER_POINT
 	jr nz, .wait
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	farcall AngerPointAbility
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 
 .wait
 	ld c, 20
@@ -2417,7 +2417,7 @@ BattleCommand_PostFaintEffects: ; 351c0
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
 
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	farcall GetMaxHP
 	farcall SubtractHPFromUser
 	xor a
@@ -2427,7 +2427,7 @@ BattleCommand_PostFaintEffects: ; 351c0
 	ld [wKickCounter], a
 	ld a, DESTINY_BOND
 	call LoadAnim
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 
 	jr .finish
 
@@ -2468,19 +2468,19 @@ BattleCommand_PostHitEffects: ; 35250
 	bit SUBSTATUS_RAGE, a
 	ret z
 
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call ResetMiss
 	call BattleCommand_AttackUp
 
 	; don't print a failure message if we're maxed out in atk
 	ld a, [FailedMessage]
 	and a
-	jp z, BattleCommand_SwitchTurn
+	jp z, SwitchTurn
 
 	ld hl, RageBuildingText
 	call StdBattleTextBox
 	call BattleCommand_StatUpMessage
-	jp BattleCommand_SwitchTurn
+	jp SwitchTurn
 
 ; 3527b
 
@@ -3379,10 +3379,10 @@ BattleCommand_DamageCalc: ; 35612
 	cp MULTISCALE
 	jr nz, .skip_multiscale
 	push hl
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld hl, CheckFullHP_b
 	call CallBattleCore
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop hl
 	ld a, b
 	and a
@@ -4678,13 +4678,13 @@ SelfInflictDamageToSubstitute: ; 35de0
 	ld hl, SubFadedText
 	call StdBattleTextBox
 
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call BattleCommand_LowerSubNoAnim
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	call z, AppearUserLowerSub
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVarAddr
@@ -5831,15 +5831,15 @@ TryLowerStat: ; 3641a
 	and a
 	jr z, .Player
 
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call CalcPlayerStats
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	jr .end
 
 .Player:
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call CalcEnemyStats
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 .end
 	ld a, 1
 	and a
@@ -6313,10 +6313,10 @@ BattleCommand_CheckRampage: ; 3671a
 	jr nz, .continue_rampage
 
 	res SUBSTATUS_RAMPAGE, [hl]
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call SafeCheckSafeguard
 	push af
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop af
 	jr nz, .continue_rampage
 
@@ -6466,9 +6466,9 @@ _CheckIfTrappedByAbility:
 	ld a, b
 	and a
 	ret nz ; we aren't trapped
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call CheckIfTrappedByAbilityInner
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	ld a, b
 	and a
 	jp z, .is_double_trap
@@ -7984,10 +7984,10 @@ BattleCommand_Heal: ; 3713e
 	jr z, .ability_prevents_rest
 	cp VITAL_SPIRIT
 	jr z, .ability_prevents_rest
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call IsLeafGuardActive
 	push af
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop af
 	jr z, .ability_prevents_rest
 	call BattleCommand_MoveDelay
@@ -9249,9 +9249,9 @@ GetUserItem: ; 37db2
 
 GetOpponentItem: ; 37dc1
 ; Return the effect of the opponent's item in bc, and its id at hl.
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	call GetUserItem
-	jp BattleCommand_SwitchTurn
+	jp SwitchTurn
 
 GetUserItemAfterUnnerve:
 ; Returns the effect of the user's item in bc, and its id at hl,
@@ -9425,11 +9425,11 @@ PlayOpponentBattleAnim: ; 37e54
 	push hl
 	push de
 	push bc
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 
 	farcall PlayBattleAnim
 
-	call BattleCommand_SwitchTurn
+	call SwitchTurn
 	pop bc
 	pop de
 	pop hl

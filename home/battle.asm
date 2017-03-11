@@ -71,6 +71,11 @@ SetEnemyTurn:: ; 3989
 	ret
 ; 398e
 
+SwitchTurn::
+	ld a, [hBattleTurn]
+	xor 1
+	ld [hBattleTurn], a
+	ret
 
 UpdateOpponentInParty:: ; 398e
 	ld a, [hBattleTurn]
