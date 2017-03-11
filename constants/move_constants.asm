@@ -171,7 +171,7 @@
 	const THIEF        ; $a8
 	const WILL_O_WISP  ; $a9
 	const ZEN_HEADBUTT ; $aa
-	const NIGHTMARE    ; $ab
+	const FACADE       ; $ab
 	const FLAME_WHEEL  ; $ac
 	const HYPER_VOICE  ; $ad
 	const CURSE        ; $ae
@@ -276,7 +276,7 @@ const_value SET const_value + -1
 	const ANIM_IN_LOVE           ; $10a
 	const ANIM_IN_SANDSTORM      ; $10b, unused
 	const ANIM_IN_HAIL           ; $10c, unused
-	const ANIM_IN_NIGHTMARE      ; $10d
+	const ANIM_UNDER_CURSE       ; $10d
 	const ANIM_IN_WHIRLPOOL      ; $10e
 ; battle anims
 	const ANIM_MISS              ; $10f

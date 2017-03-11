@@ -232,9 +232,6 @@ BattleCommand_CheckTurn: ; 34084
 	call CallBattleCore
 	ld a, $1
 	ld [hBGMapMode], a
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	res SUBSTATUS_NIGHTMARE, [hl]
 	jr .not_asleep
 
 .fast_asleep
@@ -3095,6 +3092,7 @@ BattleCommand_Snore:
 BattleCommand_OHKO:
 BattleCommand_MirrorMove:
 BattleCommand_Mimic:
+BattleCommand_Nightmare:
 	ret
 
 
@@ -4475,9 +4473,6 @@ BattleCommand_FalseSwipe: ; 35c94
 BattleCommand_HealBell: ; 35cc9
 ; healbell
 
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	res SUBSTATUS_NIGHTMARE, [hl]
 	ld de, PartyMon1Status
 	ld a, [hBattleTurn]
 	and a
@@ -8374,9 +8369,6 @@ BattleCommand_ArenaTrap: ; 37517
 ; 37536
 
 
-INCLUDE "battle/effects/nightmare.asm"
-
-
 BattleCommand_Defrost: ; 37563
 ; defrost
 
@@ -8777,17 +8769,6 @@ FailedBatonPass: ; 37aab
 
 ResetBatonPassStatus: ; 37ab1
 ; Reset status changes that aren't passed by Baton Pass.
-
-	; Nightmare isn't passed.
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	and SLP
-	jr nz, .ok
-
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	res SUBSTATUS_NIGHTMARE, [hl]
-.ok
 
 	; Disable isn't passed.
 	call ResetActorDisable

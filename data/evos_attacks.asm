@@ -1169,12 +1169,14 @@ KadabraEvosAttacks:
 	db 33, BARRIER ; Telekinesis → egg move
 	db 36, BATON_PASS ; Ally Switch → new move
 	db 38, PSYCHIC_M
-	db 41, CONFUSE_RAY ; Role Play → new move
-	db 43, FUTURE_SIGHT
+	db 41, CALM_MIND
+	db 43, CONFUSE_RAY ; Role Play → new move
+	db 46, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
 AlakazamEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, TRI_ATTACK ; RBY TM move
 	db 1, TELEPORT
 	db 1, FORESIGHT ; evolution move
 	db 16, CONFUSION
@@ -1188,8 +1190,8 @@ AlakazamEvosAttacks:
 	db 36, BATON_PASS ; Ally Switch → new move
 	db 38, PSYCHIC_M
 	db 41, CALM_MIND
-	db 43, FUTURE_SIGHT
-	db 46, TRI_ATTACK ; Trick → RBY TM move
+	db 43, CONFUSE_RAY ; Role Play → new move
+	db 46, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
 MachopEvosAttacks:
@@ -1253,10 +1255,9 @@ MachampEvosAttacks:
 	db 33, THRASH ; Dual Chop → event move
 	db 37, SUBMISSION
 	db 43, BULK_UP
-	db 46, MACH_PUNCH ; new move
-	db 50, CROSS_CHOP
-	db 57, SCARY_FACE
-	db 63, DYNAMICPUNCH
+	db 47, CROSS_CHOP
+	db 53, SCARY_FACE
+	db 57, DYNAMICPUNCH
 	db 0 ; no more level-up moves
 
 BellsproutEvosAttacks:
@@ -1405,9 +1406,8 @@ GolemEvosAttacks:
 	db 34, FLAIL ; Rock Blast → egg move
 	db 40, EARTHQUAKE
 	db 44, EXPLOSION
-	db 45, SUBSTITUTE ; TM move
-	db 58, DOUBLE_EDGE
-	db 64, STONE_EDGE
+	db 50, DOUBLE_EDGE
+	db 54, STONE_EDGE
 	db 0 ; no more level-up moves
 
 PonytaEvosAttacks:
@@ -1751,7 +1751,7 @@ GastlyEvosAttacks:
 	db 36, DARK_PULSE
 	db 40, DESTINY_BOND
 	db 43, HEX
-	db 47, NIGHTMARE
+	db 47, PERISH_SONG ; Nightmare → new move
 	db 0 ; no more level-up moves
 
 HaunterEvosAttacks:
@@ -1772,7 +1772,7 @@ HaunterEvosAttacks:
 	db 44, DARK_PULSE
 	db 50, DESTINY_BOND
 	db 55, HEX
-	db 61, NIGHTMARE
+	db 61, PERISH_SONG ; Nightmare → new move
 	db 0 ; no more level-up moves
 
 GengarEvosAttacks:
@@ -1790,10 +1790,9 @@ GengarEvosAttacks:
 	db 33, SHADOW_BALL
 	db 39, DREAM_EATER
 	db 44, DARK_PULSE
-	db 45, PERISH_SONG ; new move
-	db 56, DESTINY_BOND
-	db 62, HEX
-	db 68, NIGHTMARE
+	db 50, DESTINY_BOND
+	db 55, HEX
+	db 61, PERISH_SONG ; Nightmare → new move
 	db 0 ; no more level-up moves
 
 OnixEvosAttacks:
@@ -1839,7 +1838,7 @@ DrowzeeEvosAttacks:
 	db 45, SWAGGER
 	db 49, PSYCHIC_M
 	db 53, NASTY_PLOT
-	db 57, NIGHTMARE ; Psyshock → GSC TM move
+	db 57, TOXIC ; Psyshock → TM move
 	db 61, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
@@ -1860,7 +1859,7 @@ HypnoEvosAttacks:
 	db 45, SWAGGER
 	db 49, PSYCHIC_M
 	db 53, NASTY_PLOT
-	db 57, NIGHTMARE ; Psyshock → GSC TM move
+	db 57, TOXIC ; Psyshock → TM move
 	db 61, FUTURE_SIGHT
 	db 0 ; no more level-up moves
 
@@ -1958,7 +1957,7 @@ ExeggcuteEvosAttacks:
 	db 37, MORNING_SUN ; Natural Gift → new move
 	db 43, SOLAR_BEAM
 	db 47, EXTRASENSORY
-	db 50, NIGHTMARE ; Bestow → GSC TM move
+	db 50, PSYCHIC_M ; Bestow → TM move
 	db 0 ; no more level-up moves
 
 ExeggutorEvosAttacks:
@@ -2291,7 +2290,7 @@ StaryuEvosAttacks:
 	db 13, HYPNOSIS ; Psywave → new move
 	db 16, SWIFT
 	db 18, BUBBLE_BEAM
-	db 22, NIGHTMARE ; Camouflage → GSC TM move
+	db 22, AGILITY ; Camouflage → new move
 	db 24, TWISTER ; Gyro Ball → HGSS tutor move
 	db 28, PAIN_SPLIT ; Brine → HGSS tutor move
 	db 31, MINIMIZE
@@ -2322,7 +2321,7 @@ MrMimeEvosAttacks:
 	db 8, CALM_MIND ; Meditate → TM move
 	db 11, DOUBLE_SLAP
 	db 13, PROTECT ; Mimic → event move
-	db 15, NIGHTMARE ; Psywave → GSC TM move
+	db 15, METRONOME ; Psywave → RBY TM move
 	db 18, ENCORE
 	db 22, LIGHT_SCREEN
 	db 22, REFLECT
@@ -2368,7 +2367,7 @@ JynxEvosAttacks:
 	db 11, ICY_WIND ; Powder Snow → TM move
 	db 15, DOUBLE_SLAP
 	db 18, ICE_PUNCH
-	db 21, NIGHTMARE ; Heart Stamp → GSC TM move
+	db 21, METRONOME ; Heart Stamp → RBY TM move
 	db 25, MEAN_LOOK
 	db 28, DRAIN_KISS ; Fake Tears → Drain Kiss
 	db 33, PSYBEAM ; Wake-Up Slap → new move
@@ -3135,7 +3134,7 @@ HoothootEvosAttacks:
 	db 28, REFLECT
 	db 31, AIR_SLASH
 	db 34, TWISTER ; Uproar → HGSS tutor move
-	db 37, NIGHTMARE ; Roost → GSC TM move
+	db 37, MOONLIGHT ; Roost → similar move
 	db 40, MOONBLAST
 	db 43, SKY_ATTACK ; Synchronoise → HGSS tutor move
 	db 46, DREAM_EATER
@@ -3159,7 +3158,7 @@ NoctowlEvosAttacks:
 	db 31, REFLECT
 	db 35, AIR_SLASH
 	db 39, TWISTER ; Uproar → HGSS tutor move
-	db 43, NIGHTMARE ; Roost → GSC TM move
+	db 43, MOONLIGHT ; Roost → similar move
 	db 47, MOONBLAST
 	db 51, SKY_ATTACK ; Synchronoise → HGSS tutor move
 	db 55, DREAM_EATER
@@ -3408,7 +3407,7 @@ NatuEvosAttacks:
 	db 36, HAZE ; Miracle Eye → egg move
 	db 39, TWISTER ; Psycho Shift → HGSS tutor move
 	db 44, FUTURE_SIGHT
-	db 47, NIGHTMARE ; Power Swap + Guard Swap → GSC TM move
+	db 47, HEX ; Power Swap + Guard Swap → new move
 	db 50, SKY_ATTACK ; Me First → HGSS tutor move
 	db 0 ; no more level-up moves
 
@@ -3428,7 +3427,7 @@ XatuEvosAttacks:
 	db 39, HAZE ; Miracle Eye → egg move
 	db 43, TWISTER ; Psycho Shift → HGSS tutor move
 	db 49, FUTURE_SIGHT
-	db 53, NIGHTMARE ; Power Swap + Guard Swap → GSC TM move
+	db 53, HEX ; Power Swap + Guard Swap → new move
 	db 57, SKY_ATTACK ; Me First → HGSS tutor move
 	db 0 ; no more level-up moves
 
@@ -3766,7 +3765,7 @@ MurkrowEvosAttacks:
 	db 15, WING_ATTACK
 	db 21, NIGHT_SHADE
 	db 25, THIEF ; Assurance → TM move
-	db 31, NIGHTMARE ; Taunt → GSC TM move
+	db 31, TWISTER ; Taunt → HGSS tutor move
 	db 35, FEINT_ATTACK
 	db 41, MEAN_LOOK
 	db 45, PERISH_SONG ; Foul Play → egg move

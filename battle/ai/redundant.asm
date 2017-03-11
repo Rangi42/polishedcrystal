@@ -29,7 +29,6 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_SNORE,        .Snore
 	dbw EFFECT_SLEEP_TALK,   .SleepTalk
 	dbw EFFECT_MEAN_LOOK,    .MeanLook
-	dbw EFFECT_NIGHTMARE,    .Nightmare
 	dbw EFFECT_SPIKES,       .Spikes
 	dbw EFFECT_FORESIGHT,    .Foresight
 	dbw EFFECT_PERISH_SONG,  .PerishSong
@@ -109,14 +108,6 @@ AI_Redundant: ; 2c41a
 .MeanLook: ; 2c4d1
 	ld a, [EnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
-	ret
-
-.Nightmare: ; 2c4d7
-	ld a, [BattleMonStatus]
-	and a
-	jr z, .Redundant
-	ld a, [PlayerSubStatus1]
-	bit SUBSTATUS_NIGHTMARE, a
 	ret
 
 .Spikes: ; 2c4e3

@@ -105,10 +105,6 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	and [hl]
 	res SUBSTATUS_TOXIC, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	and [hl]
-	res SUBSTATUS_NIGHTMARE, [hl]
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
 	ld a, [hBattleTurn]

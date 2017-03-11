@@ -102,7 +102,7 @@
 	dw TripleKick
 	dw Thief
 	dw MeanLook
-	dw Nightmare
+	dw Facade
 	dw FlameWheel
 	dw Curse
 	dw Protect

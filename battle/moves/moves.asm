@@ -227,7 +227,7 @@ endc
 	move THIEF,        EFFECT_THIEF,              60, DARK,      100, 25, 100, PHYSICAL
 	move WILL_O_WISP,  EFFECT_BURN,                0, FIRE,       85, 15,   0, STATUS
 	move ZEN_HEADBUTT, EFFECT_FLINCH_HIT,         80, PSYCHIC,    90, 15,  20, PHYSICAL
-	move NIGHTMARE,    EFFECT_NIGHTMARE,           0, GHOST,     100, 15,   0, STATUS
+	move FACADE,       EFFECT_FACADE,             70, NORMAL,    100, 20,   0, PHYSICAL
 	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,      100, 25,  10, PHYSICAL
 	move HYPER_VOICE,  EFFECT_NORMAL_HIT,         90, NORMAL,    100, 10,   0, SPECIAL
 	move CURSE,        EFFECT_CURSE,               0, GHOST,     100, 10,   0, STATUS

@@ -722,8 +722,6 @@ AI_HealStatus: ; 384e0
 	ld [EnemyMonStatus], a
 	ld hl, EnemySubStatus2
 	res SUBSTATUS_TOXIC, [hl]
-	ld hl, EnemySubStatus1
-	res SUBSTATUS_NIGHTMARE, [hl]
 	ret
 ; 384f7
 

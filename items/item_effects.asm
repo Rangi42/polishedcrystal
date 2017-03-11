@@ -1878,8 +1878,6 @@ HealStatus: ; f030 (3:7030)
 	ld [BattleMonStatus], a
 	ld hl, PlayerSubStatus2
 	res SUBSTATUS_TOXIC, [hl]
-	ld hl, PlayerSubStatus1
-	res SUBSTATUS_NIGHTMARE, [hl]
 	call GetItemHealingAction
 	ld a, c
 	cp %11111111

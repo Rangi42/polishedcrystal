@@ -366,7 +366,6 @@ AI_Smart: ; 386be
 	dbw EFFECT_PRIORITY_HIT,     AI_Smart_PriorityHit
 	dbw EFFECT_THIEF,            AI_Smart_Thief
 	dbw EFFECT_MEAN_LOOK,        AI_Smart_MeanLook
-	dbw EFFECT_NIGHTMARE,        AI_Smart_Nightmare
 	dbw EFFECT_FLAME_WHEEL,      AI_Smart_FlameWheel
 	dbw EFFECT_FLARE_BLITZ,      AI_Smart_FlameWheel
 	dbw EFFECT_SACRED_FIRE,      AI_Smart_FlameWheel
@@ -407,18 +406,13 @@ AI_Smart: ; 386be
 
 
 AI_Smart_Sleep: ; 387e3
-; Greatly encourage sleep inducing moves if the enemy has either Dream Eater or Nightmare.
+; Greatly encourage sleep inducing moves if the enemy has Dream Eater.
 ; 50% chance to greatly encourage sleep inducing moves otherwise.
 
 	ld b, EFFECT_DREAM_EATER
 	call AIHasMoveEffect
-	jr c, .asm_387f0
-
-	ld b, EFFECT_NIGHTMARE
-	call AIHasMoveEffect
 	ret nc
 
-.asm_387f0
 	call AI_50_50
 	ret c
 rept 2
@@ -1065,13 +1059,13 @@ AI_Smart_Bind: ; 38a71
 	jr nz, .asm_38a8b
 
 ; 50% chance to greatly encourage this move if player is either
-; badly poisoned, in love, identified, stuck in Rollout, or has a Nightmare.
+; badly poisoned, in love, identified, or stuck in Rollout.
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TOXIC, a
 	jr nz, .asm_38a91
 
 	ld a, [PlayerSubStatus1]
-	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_ROLLOUT | 1<<SUBSTATUS_IDENTIFIED | 1<<SUBSTATUS_NIGHTMARE
+	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_ROLLOUT | 1<<SUBSTATUS_IDENTIFIED
 	jr nz, .asm_38a91
 
 ; Else, 50% chance to greatly encourage this move if it's the player's Pokemon first turn.
@@ -1843,9 +1837,9 @@ AI_Smart_MeanLook: ; 38dfb
 	jr nz, .asm_38e26
 
 ; 80% chance to greatly encourage this move if the player is either
-; in love, identified, stuck in Rollout, or has a Nightmare.
+; in love, identified, or stuck in Rollout.
 	ld a, [PlayerSubStatus1]
-	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_ROLLOUT | 1<<SUBSTATUS_IDENTIFIED | 1<<SUBSTATUS_NIGHTMARE
+	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_ROLLOUT | 1<<SUBSTATUS_IDENTIFIED
 	jr nz, .asm_38e26
 
 ; Otherwise, discourage this move unless the player only has not very effective moves against the enemy.
@@ -1895,18 +1889,6 @@ AICheckLastPlayerMon: ; 38e2e
 
 	ret
 ; 38e4a
-
-
-AI_Smart_Nightmare: ; 38e4a
-; 50% chance to encourage this move.
-; The AI_Basic layer will make sure that
-; Dream Eater is only used against sleeping targets.
-
-	call AI_50_50
-	ret c
-	dec [hl]
-	ret
-; 38e50
 
 
 AI_Smart_FlameWheel: ; 38e50

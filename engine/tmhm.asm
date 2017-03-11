@@ -87,7 +87,7 @@ TMHMMoves: ; 1167a
 	db SWIFT        ; TM39 (Union Cave)
 	db AERIAL_ACE   ; TM40 (Mount Mortar)
 	db STONE_EDGE   ; TM41 (Blue)
-	db AVALANCHE    ; TM42 (Pryce)
+	db FACADE       ; TM42 (TODO: Dim Cave)
 	db WILD_CHARGE  ; TM43 (Lt. Surge)
 	db REST         ; TM44 (Route 27)
 	db ATTRACT      ; TM45 (Whitney)
@@ -112,7 +112,7 @@ TMHMMoves: ; 1167a
 	db EXPLOSION    ; TM64 (Underground)
 	db SHADOW_CLAW  ; TM65 (Lake of Rage)
 	db POISON_JAB   ; TM66 (Janine)
-	db VOLT_SWITCH  ; TM67 (TODO: Dim Cave)
+	db AVALANCHE    ; TM67 (Pryce)
 	db GIGA_IMPACT  ; TM68 (Celadon Game Corner)
 	db U_TURN       ; TM69 (TODO: Noisy Forest)
 	db FLASH        ; TM70 (Sprout Tower)
@@ -144,9 +144,10 @@ TMHMMoves: ; 1167a
 	db SUCKER_PUNCH ; MT20 (TODO: Scary Cave)
 	db SWAGGER      ; MT21 (Celadon City)
 	db THUNDERPUNCH ; MT22 (Goldenrod City)
-	db WATER_PULSE  ; MT23 (Battle Tower)
-	db ZAP_CANNON   ; MT24 (Power Plant)
-	db ZEN_HEADBUTT ; MT25 (Saffron City)
+	db VOLT_SWITCH  ; MT23 (TODO: Vermilion City)
+	db WATER_PULSE  ; MT24 (Battle Tower)
+	db ZAP_CANNON   ; MT25 (Power Plant)
+	db ZEN_HEADBUTT ; MT26 (Saffron City)
 
 	db 0 ; end
 ; 116b7

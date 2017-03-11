@@ -170,7 +170,7 @@ BattleAnimations::
 	dw BattleAnim_Thief
 	dw BattleAnim_WillOWisp
 	dw BattleAnim_ZenHeadbutt
-	dw BattleAnim_Nightmare
+	dw BattleAnim_Facade
 	dw BattleAnim_FlameWheel
 	dw BattleAnim_HyperVoice
 	dw BattleAnim_Curse
@@ -269,7 +269,6 @@ BattleAnimations::
 	dw BattleAnim_InLove
 	dw BattleAnim_InSandstorm
 	dw BattleAnim_InHail
-	dw BattleAnim_InNightmare
 	dw BattleAnim_InWhirlpool
 	dw BattleAnim_Miss
 	dw BattleAnim_EnemyDamage
@@ -609,13 +608,6 @@ BattleAnim_InHail:
 	anim_wait 4
 	anim_loop 8, .loop
 	anim_wait 8
-	anim_ret
-
-BattleAnim_InNightmare:
-	anim_1gfx ANIM_GFX_ANGELS
-	anim_sound 0, 0, SFX_BUBBLE_BEAM
-	anim_obj ANIM_OBJ_95,   8, 4,  10, 0, $0
-	anim_wait 40
 	anim_ret
 
 BattleAnim_InWhirlpool:
@@ -2067,6 +2059,7 @@ BattleAnim_Rest:
 	anim_ret
 
 BattleAnim_Splash:
+BattleAnim_Facade: ; TODO: design custom animation for Facade
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_VICEGRIP
 	anim_call BattleAnim_FollowPlayerHead_0
@@ -3225,17 +3218,6 @@ BattleAnim_BugBuzz:
 	anim_wait 4
 	anim_obj ANIM_OBJ_4C,  8, 0, 11, 0, $2
 	anim_wait 24
-	anim_ret
-
-BattleAnim_Nightmare:
-	anim_1gfx ANIM_GFX_ANGELS
-	anim_bgp $1b
-	anim_obp0 $f
-	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $0
-	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $a0
-	anim_sound 0, 1, SFX_NIGHTMARE
-	anim_wait 96
-	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FlameWheel:
@@ -5508,4 +5490,22 @@ BattleAnim_ShowMon_1:
 ;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
 ;	anim_wait 6
 ;	anim_loop 3, .loop
+;	anim_ret
+
+;BattleAnim_Nightmare: ; removed
+;	anim_1gfx ANIM_GFX_ANGELS
+;	anim_bgp $1b
+;	anim_obp0 $f
+;	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $0
+;	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $a0
+;	anim_sound 0, 1, SFX_NIGHTMARE
+;	anim_wait 96
+;	anim_bgp $e4
+;	anim_ret
+
+;BattleAnim_InNightmare: ; removed
+;	anim_1gfx ANIM_GFX_ANGELS
+;	anim_sound 0, 0, SFX_BUBBLE_BEAM
+;	anim_obj ANIM_OBJ_95,   8, 4,  10, 0, $0
+;	anim_wait 40
 ;	anim_ret

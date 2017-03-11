@@ -41,7 +41,7 @@
 	add_tm SWIFT        ; $26
 	add_tm AERIAL_ACE   ; $27
 	add_tm STONE_EDGE   ; $28
-	add_tm AVALANCHE    ; $29
+	add_tm FACADE       ; $29
 	add_tm WILD_CHARGE  ; $2a
 	add_tm REST         ; $2b
 	add_tm ATTRACT      ; $2c
@@ -66,7 +66,7 @@
 	add_tm EXPLOSION    ; $3f
 	add_tm SHADOW_CLAW  ; $40
 	add_tm POISON_JAB   ; $41
-	add_tm VOLT_SWITCH  ; $42
+	add_tm AVALANCHE    ; $42
 	add_tm GIGA_IMPACT  ; $43
 	add_tm U_TURN       ; $44
 	add_tm FLASH        ; $45
@@ -102,6 +102,7 @@ NUM_HMS = const_value - HM01
 	add_mt SUCKER_PUNCH ; $5f
 	add_mt SWAGGER      ; $60
 	add_mt THUNDERPUNCH ; $61
-	add_mt WATER_PULSE  ; $62
-	add_mt ZAP_CANNON   ; $63
-	add_mt ZEN_HEADBUTT ; $64
+	add_mt VOLT_SWITCH  ; $62
+	add_mt WATER_PULSE  ; $63
+	add_mt ZAP_CANNON   ; $64
+	add_mt ZEN_HEADBUTT ; $65
