@@ -108,3 +108,29 @@ CeladonUniversity1F_BlockData:
 
 CeladonUniversity2F_BlockData:
 	INCBIN "maps/CeladonUniversity2F.blk"
+
+CeladonUniversityLibrary1F_BlockData:
+	INCBIN "maps/CeladonUniversityLibrary1F.blk"
+
+CeladonUniversityLibrary2F_BlockData:
+	INCBIN "maps/CeladonUniversityLibrary2F.blk"
+
+CeladonUniversityDeansOffice_BlockData:
+	INCBIN "maps/CeladonUniversityDeansOffice.blk"
+
+CeladonUniversityWestwoodsOffice_BlockData:
+	INCBIN "maps/CeladonUniversityWestwoodsOffice.blk"
+
+CeladonUniversityWillowsOffice_BlockData:
+	INCBIN "maps/CeladonUniversityWillowsOffice.blk"
+
+CeladonUniversityLounge_BlockData:
+	INCBIN "maps/CeladonUniversityLounge.blk"
+
+CeladonUniversityClassroom1_BlockData:
+CeladonUniversityClassroom2_BlockData:
+CeladonUniversityClassroom3_BlockData:
+CeladonUniversityClassroom4_BlockData:
+CeladonUniversityClassroom5_BlockData:
+CeladonUniversityHyperTestRoom_BlockData:
+	INCBIN "maps/CeladonUniversityClassroom.blk"

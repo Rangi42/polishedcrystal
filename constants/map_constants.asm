@@ -295,8 +295,9 @@ MAP_NONE   EQU 0
 	mapgroup PALLET_TOWN,                                 9, 10 ;  2
 	mapgroup REDS_HOUSE_1F,                               4,  4 ;  3
 	mapgroup REDS_HOUSE_2F,                               4,  4 ;  4
-	mapgroup BLUES_HOUSE,                                 4,  4 ;  5
-	mapgroup OAKS_LAB,                                    6,  5 ;  6
+	mapgroup BLUES_HOUSE_1F,                              4,  4 ;  5
+	mapgroup BLUES_HOUSE_2F,                              4,  4 ;  6
+	mapgroup OAKS_LAB,                                    6,  5 ;  7
 
 	newgroup                                                    ; 14
 
@@ -449,6 +450,18 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 38
 	mapgroup CELADON_UNIVERSITY_1F,                      10, 15 ; 39
 	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 40
+	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 41
+	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 42
+	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 43
+	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 44
+	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 45
+	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 46
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 47
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 48
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 49
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 50
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_5,              6,  4 ; 51
+	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 52
 
 	newgroup                                                    ; 22
 

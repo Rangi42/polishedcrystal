@@ -1,7 +1,7 @@
 const_value set 2
-	const BLUESHOUSE_DAISY
+	const BLUESHOUSE1F_DAISY
 
-BluesHouse_MapScriptHeader:
+BluesHouse1F_MapScriptHeader:
 .MapTriggers:
 	db 0
 
@@ -65,6 +65,9 @@ UnknownScript_0x19b12a:
 	waitbutton
 	closetext
 	end
+
+BluesHouse1FTV:
+	jumptext BluesHouse1FTVText
 
 UnknownText_0x19b130:
 	text "Daisy: Hi! My kid"
@@ -145,20 +148,28 @@ UnknownText_0x19b377:
 	cont "groom an Egg."
 	done
 
-BluesHouse_MapEventHeader:
+BluesHouse1FTVText:
+	text "They have programs"
+	line "that aren't shown"
+	cont "in Johto…"
+	done
+
+BluesHouse1F_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 2
+	db 3
 	warp_def $7, $2, 2, PALLET_TOWN
 	warp_def $7, $3, 2, PALLET_TOWN
+	warp_def $0, $7, 1, BLUES_HOUSE_2F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 5, SIGNPOST_READ, BluesHouse1FTV
 
 .PersonEvents:
 	db 1

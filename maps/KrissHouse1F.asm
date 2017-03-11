@@ -381,7 +381,7 @@ KrissHouse1F_MapEventHeader:
 	signpost 1, 0, SIGNPOST_READ, FridgeScript
 	signpost 1, 1, SIGNPOST_READ, SinkScript
 	signpost 1, 2, SIGNPOST_READ, StoveScript
-	signpost 1, 4, SIGNPOST_READ, TVScript
+	signpost 1, 7, SIGNPOST_READ, TVScript
 
 .PersonEvents:
 	db 5

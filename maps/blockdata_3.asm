@@ -101,7 +101,11 @@ TrainerHouseB1F_BlockData:
 RedsHouse1F_BlockData:
 	INCBIN "maps/RedsHouse1F.blk"
 
+BluesHouse1F_BlockData:
+	INCBIN "maps/BluesHouse1F.blk"
+
 RedsHouse2F_BlockData:
+BluesHouse2F_BlockData:
 	INCBIN "maps/RedsHouse2F.blk"
 
 OaksLab_BlockData:

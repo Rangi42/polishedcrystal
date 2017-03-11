@@ -170,7 +170,6 @@ CeruleanTradeSpeechHouse_BlockData:
 CeruleanCoupleHouse_BlockData:
 ; TODO: teleporter tiles
 BillsHouse_BlockData:
-BluesHouse_BlockData:
 FuchsiaBillSpeechHouse_BlockData:
 LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:

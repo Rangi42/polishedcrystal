@@ -33,9 +33,6 @@ RedsMom:
 RedsHouse1FTV:
 	jumptext RedsHouse1FTVText
 
-RedsHouse1FBookshelf:
-	jumpstd picturebookshelf
-
 RedsMomText1:
 	text "Hi!"
 

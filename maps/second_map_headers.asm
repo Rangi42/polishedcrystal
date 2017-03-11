@@ -580,7 +580,8 @@
 	map_header_2 VermilionSSAnneSpeechHouse, VERMILION_S_S_ANNE_SPEECH_HOUSE, $0, 0
 	map_header_2 RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_header_2 RedsHouse2F, REDS_HOUSE_2F, $0, 0
-	map_header_2 BluesHouse, BLUES_HOUSE, $0, 0
+	map_header_2 BluesHouse1F, BLUES_HOUSE_1F, $0, 0
+	map_header_2 BluesHouse2F, BLUES_HOUSE_2F, $0, 0
 	map_header_2 OaksLab, OAKS_LAB, $0, 0
 	map_header_2 PewterNidoranSpeechHouse, PEWTER_NIDORAN_SPEECH_HOUSE, $0, 0
 	map_header_2 PewterGym, PEWTER_GYM, $0, 0
@@ -661,6 +662,18 @@
 	map_header_2 CeladonHomeDecorStore4F, CELADON_HOME_DECOR_STORE_4F, $0, 0
 	map_header_2 CeladonUniversity1F, CELADON_UNIVERSITY_1F, $0, 0
 	map_header_2 CeladonUniversity2F, CELADON_UNIVERSITY_2F, $0, 0
+	map_header_2 CeladonUniversityLibrary1F, CELADON_UNIVERSITY_LIBRARY_1F, $0, 0
+	map_header_2 CeladonUniversityLibrary2F, CELADON_UNIVERSITY_LIBRARY_2F, $0, 0
+	map_header_2 CeladonUniversityDeansOffice, CELADON_UNIVERSITY_DEANS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityWestwoodsOffice, CELADON_UNIVERSITY_WESTWOODS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityWillowsOffice, CELADON_UNIVERSITY_WILLOWS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityLounge, CELADON_UNIVERSITY_LOUNGE, $0, 0
+	map_header_2 CeladonUniversityClassroom1, CELADON_UNIVERSITY_CLASSROOM_1, $0, 0
+	map_header_2 CeladonUniversityClassroom2, CELADON_UNIVERSITY_CLASSROOM_2, $0, 0
+	map_header_2 CeladonUniversityClassroom3, CELADON_UNIVERSITY_CLASSROOM_3, $0, 0
+	map_header_2 CeladonUniversityClassroom4, CELADON_UNIVERSITY_CLASSROOM_4, $0, 0
+	map_header_2 CeladonUniversityClassroom5, CELADON_UNIVERSITY_CLASSROOM_5, $0, 0
+	map_header_2 CeladonUniversityHyperTestRoom, CELADON_UNIVERSITY_HYPER_TEST_ROOM, $0, 0
 	map_header_2 ManiasHouse, MANIAS_HOUSE, $0, 0
 	map_header_2 CianwoodGym, CIANWOOD_GYM, $0, 0
 	map_header_2 CianwoodPokeCenter1F, CIANWOOD_POKECENTER_1F, $0, 0
