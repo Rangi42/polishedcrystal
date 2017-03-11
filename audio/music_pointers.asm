@@ -154,6 +154,8 @@
 	dba Music_WallyBattleORAS
 	dba Music_ZinniaEncounterORAS
 	dba Music_ZinniaBattleORAS
+	dba Music_WildBattleSM
+	dba Music_TrainerBattleSM
 	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
 

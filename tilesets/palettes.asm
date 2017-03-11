@@ -28,6 +28,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, RadioTowerPalette
 	cp TILESET_RADIO_TOWER
 	jp z, .load_eight_bg_palettes
+	ld hl, GameCornerPalette
+	cp TILESET_GAME_CORNER
+	jp z, .load_eight_bg_palettes
 	ld hl, CeladonMansionPalette
 	cp TILESET_CELADON_MANSION
 	jp z, .load_eight_time_of_day_bg_palettes
@@ -318,6 +321,9 @@ INCLUDE "tilesets/gate.pal"
 RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
+
+GameCornerPalette:
+INCLUDE "tilesets/game_corner.pal"
 
 CeladonMansionPalette:
 INCLUDE "tilesets/celadon_mansion.pal"

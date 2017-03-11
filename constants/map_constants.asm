@@ -432,7 +432,7 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 20
 	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 21
 	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 22
-	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              3,  3 ; 23
+	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              4,  4 ; 23
 	mapgroup CELADON_GYM,                                 9,  5 ; 24
 	mapgroup CELADON_CAFE,                                4,  6 ; 25
 	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 26
