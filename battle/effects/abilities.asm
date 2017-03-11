@@ -115,10 +115,10 @@ HealStatusAbility:
 	and a
 	jr z, .is_player
 	farcall CalcEnemyStats
-	ret
+	jp UpdateEnemyMonInParty
 .is_player
 	farcall CalcPlayerStats
-	ret
+	jp UpdateBattleMonInParty
 
 OwnTempoAbility:
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1374,7 +1374,10 @@ RegeneratorAbility:
 	call ShowAbilityActivation
 	farcall GetThirdMaxHP
 	farcall RestoreHP
-	ret
+	ld a, [hBattleTurn]
+	and a
+	jp z, UpdateBattleMonInParty
+	jp UpdateEnemyMonInParty
 
 DisableAnimations:
 	ld a, 1

@@ -887,8 +887,8 @@ GetMovePriority: ; 3c5c5
 	jr .check_prankster
 .done
 	ld a, [hl]
-	xor $80 ; treat it as a signed byte
 .check_prankster
+	xor $80 ; treat it as a signed byte
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -4520,6 +4520,8 @@ PursuitSwitch: ; 3dc5b
 	ld a, [CurBattleMon]
 	push af
 
+	; Kludge: if player is target, override CurPlayerMon to
+	; properly update party struct (FIXME: make this unneccessary)
 	ld hl, DoPlayerTurn
 	ld a, [hBattleTurn]
 	and a
@@ -4588,7 +4590,17 @@ PursuitSwitch: ; 3dc5b
 PursuitSwitch_done
 	; run switch-out abilities
 	call SwitchTurn
+	ld a, [CurBattleMon]
+	push af
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .override_done
+	ld a, [LastPlayerMon]
+	ld [CurBattleMon], a
+.override_done
 	farcall RunSwitchAbilities
+	pop af
+	ld [CurBattleMon], a
 	call SwitchTurn
 	and a
 	ret
