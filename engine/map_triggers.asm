@@ -97,7 +97,7 @@ ENDM
 	trigger_def GOLDENROD_CITY,                         wGoldenrodCityTrigger
 	trigger_def MYSTRI_STAGE,                           wMystriStageTrigger
 	trigger_def ROUTE_10_NORTH,                         wRoute10NorthTrigger
-	trigger_def ROUTE_22,                               wRoute22Trigger
+	trigger_def ROUTE_22_PAST,                          wRoute22PastTrigger
 	trigger_def GIOVANNIS_CAVE,                         wGiovannisCaveTrigger
 	trigger_def CINNABAR_LAB,                           wCinnabarLabTrigger
 	trigger_def ILEX_FOREST,                            wIlexForestTrigger

@@ -397,6 +397,7 @@
 	map_header_2 RuinsofAlphOmanyteWordRoom, RUINS_OF_ALPH_OMANYTE_WORD_ROOM, $0, 0
 	map_header_2 RuinsofAlphAerodactylWordRoom, RUINS_OF_ALPH_AERODACTYL_WORD_ROOM, $0, 0
 	map_header_2 RuinsofAlphSinjohChamber, RUINS_OF_ALPH_SINJOH_CHAMBER, $0, 0
+	map_header_2 Route22Past, ROUTE_22_PAST, $2c, 0
 	map_header_2 UnionCave1F, UNION_CAVE_1F, $9, 0
 	map_header_2 UnionCaveB1F, UNION_CAVE_B1F, $9, 0
 	map_header_2 UnionCaveB2F, UNION_CAVE_B2F, $9, 0

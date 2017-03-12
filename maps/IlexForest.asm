@@ -644,12 +644,7 @@ MapIlexForestSignpost4Script:
 	waitsfx
 	disappear ILEXFOREST_CELEBI
 	setevent EVENT_TIME_TRAVELING
-	clearevent EVENT_ROUTE_22_CELEBI
-	clearevent EVENT_ROUTE_22_LYRA
-	clearevent EVENT_ROUTE_22_SILVER
-	clearevent EVENT_ROUTE_22_GIOVANNI
-	domaptrigger ROUTE_22, $1
-	warp ROUTE_22, $16, $9
+	warp ROUTE_22_PAST, $6, $7
 	end
 
 IlexForestCutTree:

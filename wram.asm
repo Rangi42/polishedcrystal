@@ -2590,7 +2590,7 @@ wBellchimeTrailTrigger::                     ds 1
 wGoldenrodCityTrigger::                      ds 1
 wMystriStageTrigger::                        ds 1
 wRoute10NorthTrigger::                       ds 1
-wRoute22Trigger::                            ds 1
+wRoute22PastTrigger::                        ds 1
 wGiovannisCaveTrigger::                      ds 1
 wCinnabarLabTrigger::                        ds 1
 wIlexForestTrigger::                         ds 1

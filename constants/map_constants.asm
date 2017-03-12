@@ -593,6 +593,7 @@ MAP_NONE   EQU 0
 	mapgroup RUINS_OF_ALPH_OMANYTE_WORD_ROOM,             8, 10 ; 14
 	mapgroup RUINS_OF_ALPH_AERODACTYL_WORD_ROOM,          7, 10 ; 15
 	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  5 ; 16
+	mapgroup ROUTE_22_PAST,                               6,  6 ; 17
 
 	newgroup                                                    ; 31
 

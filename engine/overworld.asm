@@ -1240,21 +1240,21 @@ Group23Sprites:
 ; Route22
 ; ViridianCity
 ; ViridianForest
+	db SPRITE_BUG_CATCHER
 	db SPRITE_BUG_MANIAC
+	db SPRITE_CHILD
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
-	db SPRITE_CELEBI
-	db SPRITE_LYRA
-	db SPRITE_SILVER
-	db SPRITE_GIOVANNI
-	; 10 walking sprites
+	; 8 walking sprites
 	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 13 total sprites
+	; 11 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1528,16 +1528,17 @@ Group27Sprites:
 
 Group30Sprites:
 ; RuinsofAlphOutside
+; Route22Past
 	db SPRITE_FISHER
 	db SPRITE_SCIENTIST
 	db SPRITE_YOUNGSTER
-	; 3 walking sprites
+	db SPRITE_CELEBI
+	db SPRITE_LYRA
+	db SPRITE_SILVER
+	db SPRITE_GIOVANNI
+	; 7 walking sprites
 	db SPRITE_ROCK
-	; 4 total sprites
-	db SPRITE_ROCK
-	db SPRITE_ROCK
-	db SPRITE_ROCK
-	db SPRITE_ROCK
+	; 8 total sprites
 	db SPRITE_ROCK
 	db SPRITE_ROCK
 	db SPRITE_ROCK
