@@ -668,12 +668,12 @@
 	map_header_2 CeladonUniversityWestwoodsOffice, CELADON_UNIVERSITY_WESTWOODS_OFFICE, $0, 0
 	map_header_2 CeladonUniversityWillowsOffice, CELADON_UNIVERSITY_WILLOWS_OFFICE, $0, 0
 	map_header_2 CeladonUniversityLounge, CELADON_UNIVERSITY_LOUNGE, $0, 0
+	map_header_2 CeladonUniversityCafeteria, CELADON_UNIVERSITY_CAFETERIA, $0, 0
+	map_header_2 CeladonUniversityHyperTestRoom, CELADON_UNIVERSITY_HYPER_TEST_ROOM, $0, 0
 	map_header_2 CeladonUniversityClassroom1, CELADON_UNIVERSITY_CLASSROOM_1, $0, 0
 	map_header_2 CeladonUniversityClassroom2, CELADON_UNIVERSITY_CLASSROOM_2, $0, 0
 	map_header_2 CeladonUniversityClassroom3, CELADON_UNIVERSITY_CLASSROOM_3, $0, 0
 	map_header_2 CeladonUniversityClassroom4, CELADON_UNIVERSITY_CLASSROOM_4, $0, 0
-	map_header_2 CeladonUniversityClassroom5, CELADON_UNIVERSITY_CLASSROOM_5, $0, 0
-	map_header_2 CeladonUniversityHyperTestRoom, CELADON_UNIVERSITY_HYPER_TEST_ROOM, $0, 0
 	map_header_2 ManiasHouse, MANIAS_HOUSE, $0, 0
 	map_header_2 CianwoodGym, CIANWOOD_GYM, $0, 0
 	map_header_2 CianwoodPokeCenter1F, CIANWOOD_POKECENTER_1F, $0, 0

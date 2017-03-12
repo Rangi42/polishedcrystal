@@ -127,10 +127,14 @@ CeladonUniversityWillowsOffice_BlockData:
 CeladonUniversityLounge_BlockData:
 	INCBIN "maps/CeladonUniversityLounge.blk"
 
+CeladonUniversityCafeteria_BlockData:
+	INCBIN "maps/CeladonUniversityCafeteria.blk"
+
+CeladonUniversityHyperTestRoom_BlockData:
+	INCBIN "maps/CeladonUniversityHyperTestRoom.blk"
+
 CeladonUniversityClassroom1_BlockData:
 CeladonUniversityClassroom2_BlockData:
 CeladonUniversityClassroom3_BlockData:
 CeladonUniversityClassroom4_BlockData:
-CeladonUniversityClassroom5_BlockData:
-CeladonUniversityHyperTestRoom_BlockData:
 	INCBIN "maps/CeladonUniversityClassroom.blk"

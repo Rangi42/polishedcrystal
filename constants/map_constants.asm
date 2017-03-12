@@ -456,12 +456,12 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 44
 	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 45
 	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 46
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 47
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 48
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 49
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 50
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_5,              6,  4 ; 51
-	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 52
+	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  6 ; 47
+	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 48
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 49
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 50
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 51
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 52
 
 	newgroup                                                    ; 22
 
