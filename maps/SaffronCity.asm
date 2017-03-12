@@ -7,6 +7,11 @@ const_value set 2
 	const SAFFRONCITY_YOUNGSTER1
 	const SAFFRONCITY_YOUNGSTER2
 	const SAFFRONCITY_LASS2
+	const SAFFRONCITY_BLACK_BELT1
+	const SAFFRONCITY_BLACK_BELT2
+	const SAFFRONCITY_SUPER_NERD
+	const SAFFRONCITY_SCIENTIST
+	const SAFFRONCITY_SILPH_EMPLOYEE
 
 SaffronCity_MapScriptHeader:
 .MapTriggers:
@@ -84,6 +89,21 @@ YoungsterScript_0x19936f:
 
 LassScript_0x199372:
 	jumptextfaceplayer UnknownText_0x199745
+
+SaffronCityBlackBelt1Script:
+	jumptextfaceplayer SaffronCityBlackBelt1Text
+
+SaffronCityBlackBelt2Script:
+	jumptextfaceplayer SaffronCityBlackBelt2Text
+
+SaffronCitySuperNerdScript:
+	jumptextfaceplayer SaffronCitySuperNerdText
+
+SaffronCityScientistScript:
+	jumptextfaceplayer SaffronCityScientistText
+
+SaffronCitySilphEmployeeScript:
+	jumptextfaceplayer SaffronCitySilphEmployeeText
 
 SaffronCitySign:
 	jumptext SaffronCitySignText
@@ -233,6 +253,65 @@ UnknownText_0x199745:
 	cont "too."
 	done
 
+SaffronCityBlackBelt1Text:
+	text "Every morning when"
+	line "I wake up I run"
+
+	para "two laps around"
+	line "the city."
+
+	para "It's a great way"
+	line "to start the day!"
+	done
+
+SaffronCityBlackBelt2Text:
+	text "If I was an item,"
+	line "I'd be X Attack."
+
+	para "I'm just brimming"
+	line "with power, and"
+
+	para "the X makes it"
+	line "sound cool."
+	done
+
+SaffronCitySuperNerdText:
+	text "There was a time"
+	line "when Psychic-type"
+
+	para "#mon were be-"
+	line "lieved to be the"
+
+	para "strongest, and Bug"
+	line "types the weakest."
+
+	para "The irony is, Bug"
+	line "is super-effective"
+	cont "against Psychic!"
+	done
+
+SaffronCityScientistText:
+	text "The original Silph"
+	line "Scope had some"
+	cont "bugs, so we've been"
+
+	para "working tirelessly"
+	line "on its successor--"
+	cont "the SilphScope2!"
+	done
+
+SaffronCitySilphEmployeeText:
+	text "Silph is named"
+	line "after a mythical"
+	cont "spirit of the air."
+
+	para "What that has to"
+	line "do with the com-"
+
+	para "pany's business,"
+	line "I have no idea."
+	done
+
 SaffronCitySignText:
 	text "Saffron City"
 
@@ -284,7 +363,7 @@ SaffronCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 16
+	db 20
 	warp_def $3, $1a, 1, FIGHTING_DOJO
 	warp_def $3, $22, 1, SAFFRON_GYM
 	warp_def $b, $19, 2, SAFFRON_MART
@@ -301,6 +380,10 @@ SaffronCity_MapEventHeader:
 	warp_def $12, $27, 1, ROUTE_8_SAFFRON_GATE
 	warp_def $13, $27, 2, ROUTE_8_SAFFRON_GATE
 	warp_def $b, $22, 1, POKEMON_TRAINER_FAN_CLUB
+	warp_def $1d, $5, 1, SAFFRON_ORRE_SPEECH_HOUSE
+	warp_def $1d, $d, 1, SAFFRON_BOOK_SPEECH_HOUSE
+	warp_def $1d, $15, 1, SAFFRON_HITMONTOP_KID_HOUSE
+	warp_def $b, $d, 1, SAFFRON_RICH_SPEECH_HOUSE
 
 .XYTriggers:
 	db 0
@@ -318,12 +401,17 @@ SaffronCity_MapEventHeader:
 	signpost 12, 32, SIGNPOST_READ, PokemonTrainerFanClubSign
 
 .PersonEvents:
-	db 8
+	db 13
 	person_event SPRITE_LASS, 14, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
-	person_event SPRITE_POKEFAN_M, 30, 19, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
+	person_event SPRITE_POKEFAN_M, 30, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x199352, -1
 	person_event SPRITE_COOLTRAINER_F, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x199355, -1
 	person_event SPRITE_FISHER, 12, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
 	person_event SPRITE_YOUNGSTER, 19, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936c, -1
 	person_event SPRITE_YOUNGSTER, 22, 35, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936f, -1
-	person_event SPRITE_LASS, 8, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x199372, -1
+	person_event SPRITE_LASS, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x199372, -1
+	person_event SPRITE_BLACK_BELT, 24, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt1Script, -1
+	person_event SPRITE_BLACK_BELT, 25, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt2Script, -1
+	person_event SPRITE_SUPER_NERD, 8, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCitySuperNerdScript, -1
+	person_event SPRITE_SCIENTIST, 22, 23, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCityScientistScript, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCitySilphEmployeeScript, -1

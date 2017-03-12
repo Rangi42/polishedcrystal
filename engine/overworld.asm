@@ -825,6 +825,7 @@ OutdoorSprites: ; 144b8
 	dw Group29Sprites
 	dw Group30Sprites
 	dw Group31Sprites
+	dw Group32Sprites
 
 
 ; OlivineCity connects to Route40
@@ -1036,7 +1037,6 @@ Group7Sprites:
 ; Route25
 ; CeruleanCity
 Group25Sprites:
-; SaffronCity
 ; Route5
 Group28Sprites:
 ; Route9
@@ -1571,6 +1571,34 @@ Group31Sprites:
 	db SPRITE_FRUIT_TREE
 	db SPRITE_MARILL
 	; 12 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+
+Group32Sprites:
+; SaffronCity
+	db SPRITE_BLACK_BELT
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_FISHER
+	db SPRITE_LASS
+	db SPRITE_POKEFAN_M
+	db SPRITE_SCIENTIST
+	db SPRITE_SUPER_NERD
+	db SPRITE_YOUNGSTER
+	; 9 walking sprites
+	db SPRITE_SILPH_EMPLOYEE
+	; 10 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL

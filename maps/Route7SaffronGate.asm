@@ -1,5 +1,6 @@
 const_value set 2
 	const ROUTE7SAFFRONGATE_OFFICER
+	const ROUTE7SAFFRONGATE_SILPH_EMPLOYEE
 
 Route7SaffronGate_MapScriptHeader:
 .MapTriggers:
@@ -24,6 +25,9 @@ UnknownScript_0x73526:
 	closetext
 	end
 
+Route7SaffronGateSilphEmployeeScript:
+	jumptextfaceplayer Route7SaffronGateSilphEmployeeText
+
 UnknownText_0x7352c:
 	text "Did you hear about"
 	line "the accident at"
@@ -45,6 +49,20 @@ UnknownText_0x73592:
 	line "through."
 	done
 
+Route7SaffronGateSilphEmployeeText:
+	text "The Elite Four's"
+	line "Bruno used to hone"
+
+	para "his skills in"
+	line "Saffron."
+
+	para "He trained with a"
+	line "guy named Brawly"
+
+	para "back in the early"
+	line "days."
+	done
+
 Route7SaffronGate_MapEventHeader:
 	; filler
 	db 0, 0
@@ -63,5 +81,6 @@ Route7SaffronGate_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
+	db 2
 	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x73518, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route7SaffronGateSilphEmployeeScript, -1

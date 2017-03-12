@@ -522,23 +522,26 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 25
 
-	mapgroup SAFFRON_CITY,                               19, 20 ;  1
-	mapgroup FIGHTING_DOJO,                               6,  5 ;  2
-	mapgroup SAFFRON_GYM,                                 9, 10 ;  3
-	mapgroup SAFFRON_MART,                                4,  6 ;  4
-	mapgroup SAFFRON_POKECENTER_1F,                       4,  6 ;  5
-	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ;  6
-	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ;  7
-	mapgroup SILPH_CO_1F,                                 4,  8 ;  8
-	mapgroup SILPH_CO_2F,                                 4,  8 ;  9
-	mapgroup SILPH_CO_3F,                                 4,  8 ; 10
-	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 11
-	mapgroup COPYCATS_HOUSE_2F,                           3,  4 ; 12
-	mapgroup ROUTE_5,                                    17, 10 ; 13
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 14
-	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 15
-	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 16
-	mapgroup POKEMON_TRAINER_FAN_CLUB,                    5,  4 ; 17
+	mapgroup FIGHTING_DOJO,                               6,  5 ;  1
+	mapgroup SAFFRON_GYM,                                 9, 10 ;  2
+	mapgroup SAFFRON_MART,                                4,  6 ;  3
+	mapgroup SAFFRON_POKECENTER_1F,                       4,  6 ;  4
+	mapgroup MR_PSYCHICS_HOUSE,                           4,  4 ;  5
+	mapgroup SAFFRON_TRAIN_STATION,                       9, 10 ;  6
+	mapgroup SILPH_CO_1F,                                 4,  8 ;  7
+	mapgroup SILPH_CO_2F,                                 4,  8 ;  8
+	mapgroup SILPH_CO_3F,                                 4,  8 ;  9
+	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 10
+	mapgroup COPYCATS_HOUSE_2F,                           3,  4 ; 11
+	mapgroup ROUTE_5,                                    17, 10 ; 12
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
+	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 14
+	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
+	mapgroup POKEMON_TRAINER_FAN_CLUB,                    5,  4 ; 16
+	mapgroup SAFFRON_HITMONTOP_KID_HOUSE,                 4,  4 ; 17
+	mapgroup SAFFRON_BOOK_SPEECH_HOUSE,                   4,  4 ; 18
+	mapgroup SAFFRON_ORRE_SPEECH_HOUSE,                   4,  4 ; 19
+	mapgroup SAFFRON_RICH_SPEECH_HOUSE,                   4,  4 ; 20
 
 	newgroup                                                    ; 26
 
@@ -614,6 +617,10 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 14
 	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 15
 	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 16
+
+	newgroup                                                    ; 32
+
+	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 
 
 ; elevator floors

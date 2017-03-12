@@ -378,6 +378,8 @@ INCLUDE "maps/TimeCapsule.asm"
 INCLUDE "maps/TrainerHouseB1F.asm"
 INCLUDE "maps/VermilionPollutionSpeechHouse.asm"
 INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
+INCLUDE "maps/Route43MahoganyGate.asm"
+INCLUDE "maps/Route43Gate.asm"
 
 
 SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]
@@ -420,8 +422,6 @@ INCLUDE "maps/AzaleaTown.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/SaffronCity.asm"
 INCLUDE "maps/MahoganyGym.asm"
-INCLUDE "maps/Route43MahoganyGate.asm"
-INCLUDE "maps/Route43Gate.asm"
 INCLUDE "maps/BluesHouse1F.asm"
 INCLUDE "maps/BluesHouse2F.asm"
 INCLUDE "maps/OaksLab.asm"
@@ -565,8 +565,6 @@ INCLUDE "maps/SafariZoneEastRestHouse.asm"
 INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
-INCLUDE "maps/BillsHouse.asm"
-INCLUDE "maps/MrPsychicsHouse.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
@@ -580,6 +578,8 @@ INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
+INCLUDE "maps/BillsHouse.asm"
+INCLUDE "maps/MrPsychicsHouse.asm"
 
 
 SECTION "Map Scripts 26", ROMX, BANK[MAP_SCRIPTS_26]
@@ -667,3 +667,7 @@ INCLUDE "maps/CeladonUniversityClassroom2.asm"
 INCLUDE "maps/CeladonUniversityClassroom3.asm"
 INCLUDE "maps/CeladonUniversityClassroom4.asm"
 INCLUDE "maps/PokemonTrainerFanClub.asm"
+INCLUDE "maps/SaffronHitmontopKidHouse.asm"
+INCLUDE "maps/SaffronBookSpeechHouse.asm"
+INCLUDE "maps/SaffronOrreSpeechHouse.asm"
+INCLUDE "maps/SaffronRichSpeechHouse.asm"

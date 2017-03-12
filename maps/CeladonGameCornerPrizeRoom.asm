@@ -217,7 +217,7 @@ CeladonGameCornerPokemonVendor:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Mr. Mime   3333@"
+	db "Mr.Mime    3333@"
 	db "Eevee      6666@"
 	db "Porygon    9999@"
 	db "Cancel@"

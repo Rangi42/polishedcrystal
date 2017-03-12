@@ -171,6 +171,7 @@ CeruleanCoupleHouse_BlockData:
 ; TODO: teleporter tiles
 BillsHouse_BlockData:
 FuchsiaBillSpeechHouse_BlockData:
+SaffronRichSpeechHouse_BlockData:
 LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
 	INCBIN "maps/KantoHouse2.blk"
@@ -180,6 +181,8 @@ VermilionHouseFishingSpeechHouse_BlockData:
 VermilionMagnetTrainSpeechHouse_BlockData:
 VermilionHouseDiglettsCaveSpeechHouse_BlockData:
 LavenderNameRater_BlockData:
+SaffronHitmontopKidHouse_BlockData:
+SaffronOrreSpeechHouse_BlockData:
 	INCBIN "maps/KantoHouse3.blk"
 
 PewterNidoranSpeechHouse_BlockData:
@@ -194,6 +197,9 @@ Route5CleanseTagSpeechHouse_BlockData:
 
 CianwoodPharmacy_BlockData:
 	INCBIN "maps/CianwoodPharmacy.blk"
+
+SaffronBookSpeechHouse_BlockData:
+	INCBIN "maps/SaffronBookSpeechHouse.blk"
 
 Route43MahoganyGate_BlockData:
 Route43Gate_BlockData:

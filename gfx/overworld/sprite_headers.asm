@@ -443,6 +443,9 @@ StandingYoungsterSprite: ; 14994
 	sprite_header StandingYoungsterSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 ; 1499a
 
+SilphEmployeeSprite:
+	sprite_header SilphEmployeeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
+
 SwimmingOfficerSprite:
 	sprite_header SwimmingOfficerSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
