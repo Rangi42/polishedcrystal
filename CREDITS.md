@@ -28,6 +28,7 @@
 * spritershawn for sprites of Red, Blue, and Green.
 * Megaman-Omega for Prism's overworld sprites of Beauty, Boarder, Roughneck, and Skier.
 * Mateo for some sprites and tiles.
+* Freeline for the Rocket Executives' overworld sprites.
 * Kuroko Aizawa for Cheryl's sprite.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.

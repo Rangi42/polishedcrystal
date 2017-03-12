@@ -196,7 +196,7 @@ PetrelSprite:
 	sprite_header PetrelSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 ArcherSprite:
-	sprite_header ArcherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+	sprite_header ArcherSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 ArianaSprite:
 	sprite_header ArianaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

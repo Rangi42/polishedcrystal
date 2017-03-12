@@ -1,7 +1,7 @@
 AgathaSpriteGFX:              INCBIN "gfx/overworld/agatha.2bpp"
 AnabelSpriteGFX:              INCBIN "gfx/overworld/beauty.2bpp" ; TODO
-ArcherSpriteGFX:              INCBIN "gfx/overworld/rocket.2bpp" ; TODO
-ArianaSpriteGFX:              INCBIN "gfx/overworld/rocket_girl.2bpp" ; TODO
+ArcherSpriteGFX:              INCBIN "gfx/overworld/archer.2bpp"
+ArianaSpriteGFX:              INCBIN "gfx/overworld/ariana.2bpp"
 BuckSpriteGFX:                INCBIN "gfx/overworld/rich_boy.2bpp" ; TODO
 BugManiacSpriteGFX:           INCBIN "gfx/overworld/bug_maniac.2bpp"
 CaitlinSpriteGFX:             INCBIN "gfx/overworld/buena.2bpp" ; TODO
@@ -25,9 +25,9 @@ LyraSpriteGFX:                INCBIN "gfx/overworld/lyra.2bpp"
 MarleySpriteGFX:              INCBIN "gfx/overworld/lass.2bpp" ; TODO
 MiraSpriteGFX:                INCBIN "gfx/overworld/twin.2bpp" ; TODO
 PalmerSpriteGFX:              INCBIN "gfx/overworld/palmer.2bpp"
-PetrelSpriteGFX:              INCBIN "gfx/overworld/rocket.2bpp" ; TODO
+PetrelSpriteGFX:              INCBIN "gfx/overworld/petrel.2bpp"
 PISpriteGFX:                  INCBIN "gfx/overworld/pi.2bpp"
-ProtonSpriteGFX:              INCBIN "gfx/overworld/rocket.2bpp" ; TODO
+ProtonSpriteGFX:              INCBIN "gfx/overworld/proton.2bpp"
 RichBoySpriteGFX:             INCBIN "gfx/overworld/rich_boy.2bpp"
 RileySpriteGFX:               INCBIN "gfx/overworld/veteran_m.2bpp" ; TODO
 RoughneckSpriteGFX:           INCBIN "gfx/overworld/roughneck.2bpp"
