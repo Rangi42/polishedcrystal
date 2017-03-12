@@ -103,6 +103,9 @@ MrPsychicsHouseSign:
 SaffronCityMagnetTrainStationSign:
 	jumptext SaffronCityMagnetTrainStationSignText
 
+PokemonTrainerFanClubSign:
+	jumptext PokemonTrainerFanClubSignText
+
 SaffronCityPokeCenterSign:
 	jumpstd pokecentersign
 
@@ -267,12 +270,21 @@ SaffronCityMagnetTrainStationSignText:
 	cont "Station"
 	done
 
+PokemonTrainerFanClubSignText:
+	text "#mon Trainer"
+	line "Fan Club"
+
+	para "Many trainers have"
+	line "scribbled their"
+	cont "names here…"
+	done
+
 SaffronCity_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 15
+	db 16
 	warp_def $3, $1a, 1, FIGHTING_DOJO
 	warp_def $3, $22, 1, SAFFRON_GYM
 	warp_def $b, $19, 2, SAFFRON_MART
@@ -288,12 +300,13 @@ SaffronCity_MapEventHeader:
 	warp_def $23, $11, 2, ROUTE_6_SAFFRON_GATE
 	warp_def $12, $27, 1, ROUTE_8_SAFFRON_GATE
 	warp_def $13, $27, 2, ROUTE_8_SAFFRON_GATE
+	warp_def $b, $22, 1, POKEMON_TRAINER_FAN_CLUB
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 8
+	db 9
 	signpost 5, 21, SIGNPOST_READ, SaffronCitySign
 	signpost 5, 33, SIGNPOST_READ, SaffronGymSign
 	signpost 5, 25, SIGNPOST_READ, FightingDojoSign
@@ -302,6 +315,7 @@ SaffronCity_MapEventHeader:
 	signpost 5, 11, SIGNPOST_READ, SaffronCityMagnetTrainStationSign
 	signpost 29, 10, SIGNPOST_READ, SaffronCityPokeCenterSign
 	signpost 11, 26, SIGNPOST_READ, SaffronCityMartSign
+	signpost 12, 32, SIGNPOST_READ, PokemonTrainerFanClubSign
 
 .PersonEvents:
 	db 8

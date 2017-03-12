@@ -534,10 +534,11 @@ MAP_NONE   EQU 0
 	mapgroup SILPH_CO_3F,                                 4,  8 ; 10
 	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 11
 	mapgroup COPYCATS_HOUSE_2F,                           3,  4 ; 12
-	mapgroup ROUTE_5,                                    17, 10 ;  1
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ;  5
-	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ;  6
-	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ;  7
+	mapgroup ROUTE_5,                                    17, 10 ; 13
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 14
+	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 15
+	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 16
+	mapgroup POKEMON_TRAINER_FAN_CLUB,                    5,  4 ; 17
 
 	newgroup                                                    ; 26
 

@@ -24,3 +24,10 @@ INCBIN "tilesets/safari_metatiles.bin"
 
 Tileset32Coll:
 INCBIN "tilesets/safari_collision.bin"
+
+Tileset26GFX:
+Tileset33GFX:
+Tileset34GFX:
+Tileset35GFX:
+Tileset36GFX:
+INCBIN "gfx/tilesets/ruins.2bpp.lz"

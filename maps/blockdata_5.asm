@@ -138,3 +138,6 @@ CeladonUniversityClassroom2_BlockData:
 CeladonUniversityClassroom3_BlockData:
 CeladonUniversityClassroom4_BlockData:
 	INCBIN "maps/CeladonUniversityClassroom.blk"
+
+PokemonTrainerFanClub_BlockData:
+	INCBIN "maps/PokemonTrainerFanClub.blk"
