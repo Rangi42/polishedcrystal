@@ -133,6 +133,9 @@ CeladonUniversityCafeteria_BlockData:
 CeladonUniversityHyperTestRoom_BlockData:
 	INCBIN "maps/CeladonUniversityHyperTestRoom.blk"
 
+CeladonUniversityPool_BlockData:
+	INCBIN "maps/CeladonUniversityPool.blk"
+
 CeladonUniversityClassroom1_BlockData:
 CeladonUniversityClassroom2_BlockData:
 CeladonUniversityClassroom3_BlockData:

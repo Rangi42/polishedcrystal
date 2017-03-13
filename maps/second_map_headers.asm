@@ -671,6 +671,7 @@
 	map_header_2 CeladonUniversityLounge, CELADON_UNIVERSITY_LOUNGE, $0, 0
 	map_header_2 CeladonUniversityCafeteria, CELADON_UNIVERSITY_CAFETERIA, $0, 0
 	map_header_2 CeladonUniversityHyperTestRoom, CELADON_UNIVERSITY_HYPER_TEST_ROOM, $0, 0
+	map_header_2 CeladonUniversityPool, CELADON_UNIVERSITY_POOL, $0, 0
 	map_header_2 CeladonUniversityClassroom1, CELADON_UNIVERSITY_CLASSROOM_1, $0, 0
 	map_header_2 CeladonUniversityClassroom2, CELADON_UNIVERSITY_CLASSROOM_2, $0, 0
 	map_header_2 CeladonUniversityClassroom3, CELADON_UNIVERSITY_CLASSROOM_3, $0, 0

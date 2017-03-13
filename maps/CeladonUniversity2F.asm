@@ -12,12 +12,13 @@ CeladonUniversity2F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 5
+	db 6
 	warp_def $8, $17, 3, CELADON_UNIVERSITY_1F
 	warp_def $0, $7, 1, CELADON_UNIVERSITY_CAFETERIA
-	warp_def $0, $13, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
-	warp_def $8, $5, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
+	warp_def $8, $5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
+	warp_def $0, $d, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
 	warp_def $8, $13, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
+	warp_def $0, $15, 1, CELADON_UNIVERSITY_POOL
 
 .XYTriggers:
 	db 0
