@@ -240,7 +240,7 @@ PlacePartyMonLevel: ; 50176
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 8, 2
+	hlcoord 7, 2
 .loop
 	push bc
 	push hl
@@ -462,7 +462,7 @@ PlacePartyMonGender: ; 502b1
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 12, 2
+	hlcoord 10, 2
 .loop
 	push bc
 	push hl
@@ -475,15 +475,15 @@ PlacePartyMonGender: ; 502b1
 	xor a
 	ld [MonType], a
 	call GetGender
-	ld de, .unknown
+	ld a, " "
 	jr c, .got_gender
-	ld de, .male
+	ld a, "♂"
 	jr nz, .got_gender
-	ld de, .female
+	ld a, "♀"
 
 .got_gender
 	pop hl
-	call PlaceString
+	ld [hli], a
 
 .next
 	pop hl
@@ -495,18 +495,6 @@ PlacePartyMonGender: ; 502b1
 	jr nz, .loop
 	ret
 ; 502ee
-
-.male ; 502ee
-	db "♂…Male@"
-; 502f5
-
-.female ; 502f5
-	db "♀…Female@"
-; 502fe
-
-.unknown ; 502fe
-	db "…Unknown@"
-; 50307
 
 
 PartyMenuCheckEgg: ; 50389
@@ -556,10 +544,10 @@ endr
 	dw .Default
 ; 503c6
 
-.Default: db 0, 1, 2, 3, 4, $ff
-.TMHM: db 0, 5, 3, 4, $ff
-.EvoStone: db 0, 6, 3, 4, $ff
-.Gender: db 0, 7, 3, 4, $ff
+.Default:
+.Gender: db 0, 1, 2, 3, 7, 4, $ff
+.TMHM: db 0, 5, 3, 7, 4, $ff
+.EvoStone: db 0, 6, 3, 7, 4, $ff
 ; 503e0
 
 
