@@ -5776,6 +5776,8 @@ INCLUDE "gfx/pics/variant_anims.asm"
 INCLUDE "gfx/pics/variant_extra_pointers.asm"
 INCLUDE "gfx/pics/variant_extras.asm"
 
+SECTION "Pic Animations 4", ROMX
+
 ; Bitmasks
 INCLUDE "gfx/pics/bitmask_pointers.asm"
 INCLUDE "gfx/pics/bitmasks.asm"
