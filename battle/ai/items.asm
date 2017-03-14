@@ -690,8 +690,9 @@ AI_Switch: ; 3846c
 	call PrintText
 
 .skiptext
+	; Actively switched -- don't prompt the user about the switch
 	ld a, 1
-	ld [wAISwitch], a
+	ld [wBattleHasJustStarted], a
 	farcall NewEnemyMonStatus
 	farcall ResetEnemyStatLevels
 	ld hl, PlayerSubStatus1
@@ -699,7 +700,7 @@ AI_Switch: ; 3846c
 	farcall EnemySwitch
 	farcall ResetBattleParticipants
 	xor a
-	ld [wAISwitch], a
+	ld [wBattleHasJustStarted], a
 	ld a, [wLinkMode]
 	and a
 	ret nz
