@@ -11,7 +11,7 @@ endc
 if DEF(FAITHFUL)
 	db NORMAL, FLYING
 else
-	db FIGHTING, FLYING
+	db FLYING, FIGHTING
 endc
 	db 45 ; catch rate
 if DEF(FAITHFUL)

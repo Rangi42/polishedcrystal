@@ -1,5 +1,6 @@
 const_value set 2
 	const RADIOTOWER5F_DIRECTOR
+	const RADIOTOWER5F_PETREL
 	const RADIOTOWER5F_ARCHER
 	const RADIOTOWER5F_ARIANA
 	const RADIOTOWER5F_ROCKER
@@ -40,8 +41,17 @@ FakeDirectorScript:
 	writetext FakeDirectorTextBefore2
 	waitbutton
 	closetext
+	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorSpinMovement
+	appear RADIOTOWER5F_PETREL
+	disappear RADIOTOWER5F_DIRECTOR
+	spriteface RADIOTOWER5F_PETREL, UP
+	pause 10
+	opentext
+	writetext FakeDirectorTextBefore3
+	waitbutton
+	closetext
 	winlosstext FakeDirectorWinText, 0
-	setlasttalked RADIOTOWER5F_DIRECTOR
+	setlasttalked RADIOTOWER5F_PETREL
 	loadtrainer PETREL, PETREL1
 	startbattle
 	reloadmapafterbattle
@@ -54,21 +64,11 @@ FakeDirectorScript:
 	setevent EVENT_BEAT_PETREL_1
 	end
 
-Director:
-	faceplayer
-	opentext
-	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .TrueDirector
-	writetext FakeDirectorTextAfter
-	waitbutton
-	closetext
-	end
+Petrel1Script:
+	jumptextfaceplayer FakeDirectorTextAfter
 
-.TrueDirector:
-	writetext RadioTower5FDirectorText
-	waitbutton
-	closetext
-	end
+Director:
+	jumptextfaceplayer RadioTower5FDirectorText
 
 TrainerAriana1:
 	trainer EVENT_BEAT_ARIANA_1, ARIANA, ARIANA1, Ariana1SeenText, Ariana1BeatenText, 0, Ariana1Script
@@ -117,6 +117,7 @@ RadioTower5FRocketBossTrigger:
 	setevent EVENT_BLACKTHORN_CITY_DRAGON_TAMER_BLOCKS_GYM
 	clearevent EVENT_BLACKTHORN_CITY_DRAGON_TAMER_DOES_NOT_BLOCK_GYM
 	special PlayMapMusic
+	disappear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
 	moveperson RADIOTOWER5F_DIRECTOR, $c, $0
 	appear RADIOTOWER5F_DIRECTOR
@@ -136,6 +137,8 @@ RadioTower5FRocketBossTrigger:
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksOut
 	playsound SFX_EXIT_BUILDING
 	disappear RADIOTOWER5F_DIRECTOR
+	moveperson RADIOTOWER5F_DIRECTOR, $3, $6
+	appear RADIOTOWER5F_DIRECTOR
 	end
 
 Ben:
@@ -159,6 +162,22 @@ FakeDirectorMovement:
 	step_left
 	step_up
 	step_up
+	step_end
+
+FakeDirectorSpinMovement:
+	turn_head_down
+	turn_head_left
+	turn_head_up
+	turn_head_right
+	turn_head_down
+	turn_head_left
+	turn_head_up
+	turn_head_right
+	turn_head_down
+	turn_head_left
+	turn_head_up
+	turn_head_right
+	turn_head_down
 	step_end
 
 RadioTower5FDirectorWalksIn:
@@ -203,8 +222,10 @@ FakeDirectorTextBefore2:
 
 	para "Wrong!"
 	line "I'm an imposter!"
+	done
 
-	para "I pretended to be"
+FakeDirectorTextBefore3:
+	text "I pretended to be"
 	line "the real thing to"
 
 	para "prepare for our"
@@ -443,8 +464,9 @@ RadioTower5F_MapEventHeader:
 	signpost 1, 17, SIGNPOST_READ, RadioTower5FBookshelf
 
 .PersonEvents:
-	db 5
-	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, -1
+	db 6
+	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, EVENT_RADIO_TOWER_DIRECTOR
+	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Petrel1Script, EVENT_RADIO_TOWER_PETREL
 	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ARIANA, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
