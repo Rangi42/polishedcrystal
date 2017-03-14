@@ -5475,7 +5475,7 @@ Battle_StatsScreen: ; 3e308
 	call DisableLCD
 	ld hl, VTiles2 tile $31
 	ld de, VTiles0
-	ld bc, $0110
+	ld bc, $11 tiles
 	call CopyBytes
 	ld hl, VTiles2
 	ld de, VTiles0 tile $11
@@ -6829,7 +6829,7 @@ endr
 ; Fill stats
 	ld de, EnemyMonMaxHP
 	ld b, FALSE
-	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS - 1)) ; LinkBattleRNs + 7 (?)
+	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS - 1))
 	predef CalcPkmnStats
 
 ; If we're in a trainer battle,
