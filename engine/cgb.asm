@@ -154,8 +154,8 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 1, 2
 	ld a, $5
 	call FillBoxCGB
-	hlcoord 0, 8, AttrMap
-	lb bc, 4, 10
+	hlcoord 1, 9, AttrMap
+	lb bc, 1, 6
 	ld a, $6
 	call FillBoxCGB
 	hlcoord 0, 12, AttrMap
@@ -209,15 +209,15 @@ StatusIconPalettes:
 ; OK
 	RGB 31, 31, 31
 ; PSN
-	RGB 26, 11, 23
+	RGB 27, 11, 27
 ; PAR
-	RGB 24, 23, 05
+	RGB 30, 20, 00
 ; SLP
-	RGB 20, 20, 16
+	RGB 17, 17, 17
 ; BRN
-	RGB 31, 13, 09
+	RGB 31, 08, 02
 ; FRZ
-	RGB 15, 22, 28
+	RGB 09, 18, 31
 ; FNT
 	RGB 25, 00, 00
 ; TOX
@@ -228,11 +228,11 @@ LoadBattleCategoryAndTypePalettes:
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld c, a
 	ld b, 0
-rept 2
+rept 4
 	add hl, bc
 endr
 	ld de, UnknBGPals + 6 palettes + 2
-	ld bc, 2
+	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
 
@@ -243,7 +243,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6 palettes + 4
+	ld de, UnknBGPals + 6 palettes + 6
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM
@@ -251,10 +251,13 @@ endr
 
 CategoryIconPalettes:
 ; PHYSICAL
+	RGB 31, 28, 00
 	RGB 27, 04, 02
 ; SPECIAL
+	RGB 27, 31, 31
 	RGB 00, 14, 29
 ; STATUS
+	RGB 31, 31, 31
 	RGB 21, 21, 14
 
 TypeIconPalettes:
@@ -1114,6 +1117,11 @@ _CGB0e: ; 9373
 	ld a, $7
 	call ByteFill
 
+	hlcoord 1, 12, AttrMap
+	ld bc, 6
+	xor a
+	call ByteFill
+
 	ld a, [CurMove]
 	dec a
 	ld hl, Moves + MOVE_CATEGORY
@@ -1124,11 +1132,11 @@ _CGB0e: ; 9373
 	ld hl, CategoryIconPalettes
 	ld c, a
 	ld b, 0
-rept 2
+rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals + 7 palettes + 2
-	ld bc, 2
+	ld de, UnknBGPals + 0 palettes + 2
+	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
 
@@ -1145,7 +1153,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 7 palettes + 4
+	ld de, UnknBGPals + 0 palettes + 6
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM

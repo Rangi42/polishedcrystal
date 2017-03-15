@@ -106,7 +106,7 @@ endr
 
 DrawPlayerHUDBorder: ; 2c095
 	hlcoord 19, 11
-	ld [hl], $77 ; exp bar end cap
+	ld [hl], $76 ; exp bar end cap
 	hlcoord 10, 11
 	ld [hl], $6e ; first "EXP" tile
 	inc hl
@@ -126,7 +126,7 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	db "—" ; past right
 	db "—" ; right end
 	db "—" ; bar
-	db $76 ; left end
+	db $77 ; left end
 ; 2c0c5
 
 DrawEnemyPartyIconHUDBorder:
