@@ -298,15 +298,15 @@ GetAnimatedFrontpic: ; 51103
 	db GLACEON,    $64 - 7 * 7 + 1
 	db MAMOSWINE,  $6f - 7 * 7 + 1
 	db PORYGON_Z,  $6f - 7 * 7 + 1
-	db SYLVEON,    $71 - 7 * 7 + 1
+	db SYLVEON,    $71 - 7 * 7 + 1 ; TODO
 	db MISMAGIUS,  $71 - 7 * 7 + 1
 	db ELECTIVIRE, $76 - 7 * 7 + 1
-	db WEAVILE,    $80 - 7 * 7 + 1
-	db LEAFEON,    $81 - 7 * 7 + 1
-	db GLISCOR,    $83 - 7 * 7 + 1
-	db RHYPERIOR,  $85 - 7 * 7 + 1
-	db TOGEKISS,   $88 - 7 * 7 + 1
-	db MAGMORTAR,  $8b - 7 * 7 + 1
+	db WEAVILE,    $80 - 7 * 7 + 1 ; TODO
+	db LEAFEON,    $81 - 7 * 7 + 1 ; TODO
+	db GLISCOR,    $83 - 7 * 7 + 1 ; TODO
+	db RHYPERIOR,  $85 - 7 * 7 + 1 ; TODO
+	db TOGEKISS,   $88 - 7 * 7 + 1 ; TODO
+	db MAGMORTAR,  $8b - 7 * 7 + 1 ; TODO
 	db -1
 
 LoadOrientedFrontpicTiles: ; 5114f
