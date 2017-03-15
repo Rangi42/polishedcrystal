@@ -261,7 +261,7 @@ GetAnimatedFrontpic: ; 51103
 	cp 6
 	jr z, .got_dims
 	ld de, w6_d800 + 7 * 7 tiles
-	ld c, 7 * 7
+	ld c, 127 - 7 * 7
 .got_dims
 
 	push hl
