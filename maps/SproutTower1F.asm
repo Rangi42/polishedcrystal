@@ -121,25 +121,25 @@ SproutTower1F_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $f, $9, 7, VIOLET_CITY
-	warp_def $f, $a, 7, VIOLET_CITY
-	warp_def $4, $6, 1, SPROUT_TOWER_2F
-	warp_def $6, $2, 2, SPROUT_TOWER_2F
-	warp_def $3, $11, 3, SPROUT_TOWER_2F
+	warp_def $f, $7, 7, VIOLET_CITY
+	warp_def $f, $8, 7, VIOLET_CITY
+	warp_def $4, $4, 1, SPROUT_TOWER_2F
+	warp_def $6, $0, 2, SPROUT_TOWER_2F
+	warp_def $3, $f, 3, SPROUT_TOWER_2F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 15, 7, SIGNPOST_READ, MapSproutTower1FSignpost1Script
-	signpost 15, 12, SIGNPOST_READ, MapSproutTower1FSignpost1Script
+	signpost 15, 5, SIGNPOST_READ, MapSproutTower1FSignpost1Script
+	signpost 15, 10, SIGNPOST_READ, MapSproutTower1FSignpost1Script
 
 .PersonEvents:
 	db 6
-	person_event SPRITE_SAGE, 4, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SageScript_0x1844fe, -1
-	person_event SPRITE_SAGE, 7, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SageScript_0x184501, -1
-	person_event SPRITE_GRANNY, 12, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
-	person_event SPRITE_TEACHER, 9, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x184507, -1
-	person_event SPRITE_SAGE, 5, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
-	person_event SPRITE_POKE_BALL, 7, 16, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SproutTower1FParlyzHeal, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
+	person_event SPRITE_SAGE, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SageScript_0x1844fe, -1
+	person_event SPRITE_SAGE, 7, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SageScript_0x184501, -1
+	person_event SPRITE_GRANNY, 12, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
+	person_event SPRITE_TEACHER, 9, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x184507, -1
+	person_event SPRITE_SAGE, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
+	person_event SPRITE_POKE_BALL, 7, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, SproutTower1FParlyzHeal, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL

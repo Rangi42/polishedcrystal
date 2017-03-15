@@ -1,6 +1,7 @@
 NormalHit:
 Avalanche: ; TODO: double damage if hit
 Acrobatics: ; TODO: double damage if not holding item
+Facade: ; TODO: double damage if Psn, Brn, or Prz
 UTurn: ; TODO: switch out after attack
 VoltSwitch: ; TODO: switch out after attacking
 SuckerPunch: ; TODO: fail if foe is not attacking
@@ -1539,13 +1540,6 @@ MeanLook:
 	usedmovetext
 	doturn
 	arenatrap
-	endmove
-
-Nightmare:
-	checkobedience
-	usedmovetext
-	doturn
-	nightmare
 	endmove
 
 FlameWheel:

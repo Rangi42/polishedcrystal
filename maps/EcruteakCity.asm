@@ -7,7 +7,7 @@ const_value set 2
 	const ECRUTEAKCITY_YOUNGSTER
 	const ECRUTEAKCITY_GRAMPS3
 	const ECRUTEAKCITY_HEX_MANIAC
-	const ECRUTEAKCITY_SIGHTSEER
+	const ECRUTEAKCITY_SIGHTSEER_M
 	const ECRUTEAKCITY_SMEARGLE
 
 EcruteakCity_MapScriptHeader:
@@ -39,8 +39,8 @@ LassScript_0x1a4012:
 EcruteakCityHexManiacScript:
 	jumptextfaceplayer EcruteakCityHexManiacText
 
-EcruteakCitySightseerScript:
-	jumptextfaceplayer EcruteakCitySightseerText
+EcruteakCitySightseerMScript:
+	jumptextfaceplayer EcruteakCitySightseerMText
 
 EcruteakCitySmeargleScript:
 	faceplayer
@@ -146,7 +146,7 @@ EcruteakCityHexManiacText:
 	line "haunt this place…"
 	done
 
-EcruteakCitySightseerText:
+EcruteakCitySightseerMText:
 	text "Ecruteak has such"
 	line "an incredible"
 	cont "history."
@@ -321,5 +321,5 @@ EcruteakCity_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 16, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a403d, -1
 	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a400f, EVENT_ECRUTEAK_CITY_GRAMPS
 	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, EcruteakCityHexManiacScript, -1
-	person_event SPRITE_FISHING_GURU, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakCitySightseerScript, -1
+	person_event SPRITE_SIGHTSEER_M, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakCitySightseerMScript, -1
 	person_event SPRITE_SMEARGLE, 15, 23, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCitySmeargleScript, -1

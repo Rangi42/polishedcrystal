@@ -21,7 +21,6 @@ GentlemanSpriteGFX:           INCBIN "gfx/overworld/gentleman.2bpp" ; c5ac0
 BlackBeltSpriteGFX:           INCBIN "gfx/overworld/black_belt.2bpp" ; c5c40
 ReceptionistSpriteGFX:        INCBIN "gfx/overworld/receptionist.2bpp" ; c5dc0
 OfficerSpriteGFX:             INCBIN "gfx/overworld/officer.2bpp" ; c5f40
-CalSpriteGFX:                 INCBIN "gfx/overworld/cal.2bpp" ; c60c0
 CaptainSpriteGFX:             INCBIN "gfx/overworld/captain.2bpp" ; c6280
 BigLaprasSpriteGFX:           INCBIN "gfx/overworld/big_lapras.2bpp" ; c6400
 GymGuySpriteGFX:              INCBIN "gfx/overworld/gym_guy.2bpp" ; c6480
@@ -52,3 +51,6 @@ KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
 StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
 ChrisSurfSpriteGFX:           INCBIN "gfx/overworld/chris_surf.2bpp"
 KrisSurfSpriteGFX:            INCBIN "gfx/overworld/kris_surf.2bpp"
+CutTreeSpriteGFX:             INCBIN "gfx/overworld/cut_tree.2bpp"
+BookSpriteGFX:                INCBIN "gfx/overworld/book.2bpp"
+FossilSpriteGFX:              INCBIN "gfx/overworld/fossil.2bpp"

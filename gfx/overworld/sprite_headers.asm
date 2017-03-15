@@ -196,7 +196,7 @@ PetrelSprite:
 	sprite_header PetrelSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
 ArcherSprite:
-	sprite_header ArcherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+	sprite_header ArcherSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 ArianaSprite:
 	sprite_header ArianaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -265,6 +265,12 @@ BreederSprite:
 BugCatcherSprite: ; 1480e
 	sprite_header BugCatcherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 14814
+
+BugManiacSprite:
+	sprite_header BugManiacSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+ChildSprite:
+	sprite_header ChildSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
 CooltrainerFSprite: ; 14808
 	sprite_header CooltrainerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
@@ -369,6 +375,9 @@ ScientistSprite: ; 14898
 	sprite_header ScientistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 ; 1489e
 
+SightseerMSprite:
+	sprite_header SightseerMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 SkierSprite:
 	sprite_header SkierSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
@@ -434,15 +443,14 @@ StandingYoungsterSprite: ; 14994
 	sprite_header StandingYoungsterSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 ; 1499a
 
+SilphEmployeeSprite:
+	sprite_header SilphEmployeeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
+
 SwimmingOfficerSprite:
 	sprite_header SwimmingOfficerSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 SwimmingOfficerFSprite:
 	sprite_header SwimmingOfficerFSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
-
-CalSprite: ; 148c8
-	sprite_header CalSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 148ce
 
 KurtOutsideSprite: ; 1497c
 	sprite_header KurtOutsideSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN

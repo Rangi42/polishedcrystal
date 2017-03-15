@@ -397,6 +397,7 @@
 	map_header_2 RuinsofAlphOmanyteWordRoom, RUINS_OF_ALPH_OMANYTE_WORD_ROOM, $0, 0
 	map_header_2 RuinsofAlphAerodactylWordRoom, RUINS_OF_ALPH_AERODACTYL_WORD_ROOM, $0, 0
 	map_header_2 RuinsofAlphSinjohChamber, RUINS_OF_ALPH_SINJOH_CHAMBER, $0, 0
+	map_header_2 Route22Past, ROUTE_22_PAST, $2c, 0
 	map_header_2 UnionCave1F, UNION_CAVE_1F, $9, 0
 	map_header_2 UnionCaveB1F, UNION_CAVE_B1F, $9, 0
 	map_header_2 UnionCaveB2F, UNION_CAVE_B2F, $9, 0
@@ -506,6 +507,9 @@
 	map_header_2 CeruleanGym, CERULEAN_GYM, $0, 0
 	map_header_2 CeruleanMart, CERULEAN_MART, $0, 0
 	map_header_2 CeruleanBikeShop, CERULEAN_BIKE_SHOP, $0, 0
+	map_header_2 CeruleanBerryPowderHouse, CERULEAN_BERRY_POWDER_HOUSE, $0, 0
+	map_header_2 CeruleanCoupleHouse, CERULEAN_COUPLE_HOUSE, $0, 0
+	map_header_2 CeruleanWaterShowSpeechHouse, CERULEAN_WATER_SHOW_SPEECH_HOUSE, $0, 0
 	map_header_2 Route3PokeCenter1F, ROUTE_3_POKECENTER_1F, $0, 0
 	map_header_2 Route10PokeCenter1F, ROUTE_10_POKECENTER_1F, $0, 0
 	map_header_2 PowerPlant, POWER_PLANT, $0, 0
@@ -558,6 +562,10 @@
 	map_header_2 IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_header_2 Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
 	map_header_2 DayCare, DAYCARE, $0, 0
+	map_header_2 GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
+	map_header_2 GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
+	map_header_2 GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0
+	map_header_2 GoldenrodSpeechHouse, GOLDENROD_SPEECH_HOUSE, $0, 0
 	map_header_2 VermilionHouseFishingSpeechHouse, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, $0, 0
 	map_header_2 VermilionPokeCenter1F, VERMILION_POKECENTER_1F, $0, 0
 	map_header_2 PokemonFanClub, POKEMON_FAN_CLUB, $0, 0
@@ -569,9 +577,12 @@
 	map_header_2 Route6UndergroundEntrance, ROUTE_6_UNDERGROUND_ENTRANCE, $0, 0
 	map_header_2 Route11Gate, ROUTE_11_GATE, $0, 0
 	map_header_2 Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
+	map_header_2 VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
+	map_header_2 VermilionSSAnneSpeechHouse, VERMILION_S_S_ANNE_SPEECH_HOUSE, $0, 0
 	map_header_2 RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_header_2 RedsHouse2F, REDS_HOUSE_2F, $0, 0
-	map_header_2 BluesHouse, BLUES_HOUSE, $0, 0
+	map_header_2 BluesHouse1F, BLUES_HOUSE_1F, $0, 0
+	map_header_2 BluesHouse2F, BLUES_HOUSE_2F, $0, 0
 	map_header_2 OaksLab, OAKS_LAB, $0, 0
 	map_header_2 PewterNidoranSpeechHouse, PEWTER_NIDORAN_SPEECH_HOUSE, $0, 0
 	map_header_2 PewterGym, PEWTER_GYM, $0, 0
@@ -589,7 +600,7 @@
 	map_header_2 VermilionPortPassage, VERMILION_PORT_PASSAGE, $0, 0
 	map_header_2 MountMoonSquare, MOUNT_MOON_SQUARE, $2d, 0
 	map_header_2 MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $0, 0
-	map_header_2 TinTowerRoof, TIN_TOWER_ROOF, $0, 0
+	map_header_2 TinTowerRoof, TIN_TOWER_ROOF, $1, 0
 	map_header_2 IndigoPlateauPokeCenter1F, INDIGO_PLATEAU_POKECENTER_1F, $0, 0
 	map_header_2 WillsRoom, WILLS_ROOM, $0, 0
 	map_header_2 KogasRoom, KOGAS_ROOM, $0, 0
@@ -650,6 +661,21 @@
 	map_header_2 CeladonHomeDecorStore2F, CELADON_HOME_DECOR_STORE_2F, $0, 0
 	map_header_2 CeladonHomeDecorStore3F, CELADON_HOME_DECOR_STORE_3F, $0, 0
 	map_header_2 CeladonHomeDecorStore4F, CELADON_HOME_DECOR_STORE_4F, $0, 0
+	map_header_2 CeladonUniversity1F, CELADON_UNIVERSITY_1F, $0, 0
+	map_header_2 CeladonUniversity2F, CELADON_UNIVERSITY_2F, $0, 0
+	map_header_2 CeladonUniversityLibrary1F, CELADON_UNIVERSITY_LIBRARY_1F, $0, 0
+	map_header_2 CeladonUniversityLibrary2F, CELADON_UNIVERSITY_LIBRARY_2F, $0, 0
+	map_header_2 CeladonUniversityDeansOffice, CELADON_UNIVERSITY_DEANS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityWestwoodsOffice, CELADON_UNIVERSITY_WESTWOODS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityWillowsOffice, CELADON_UNIVERSITY_WILLOWS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityLounge, CELADON_UNIVERSITY_LOUNGE, $0, 0
+	map_header_2 CeladonUniversityCafeteria, CELADON_UNIVERSITY_CAFETERIA, $0, 0
+	map_header_2 CeladonUniversityHyperTestRoom, CELADON_UNIVERSITY_HYPER_TEST_ROOM, $0, 0
+	map_header_2 CeladonUniversityPool, CELADON_UNIVERSITY_POOL, $0, 0
+	map_header_2 CeladonUniversityClassroom1, CELADON_UNIVERSITY_CLASSROOM_1, $0, 0
+	map_header_2 CeladonUniversityClassroom2, CELADON_UNIVERSITY_CLASSROOM_2, $0, 0
+	map_header_2 CeladonUniversityClassroom3, CELADON_UNIVERSITY_CLASSROOM_3, $0, 0
+	map_header_2 CeladonUniversityClassroom4, CELADON_UNIVERSITY_CLASSROOM_4, $0, 0
 	map_header_2 ManiasHouse, MANIAS_HOUSE, $0, 0
 	map_header_2 CianwoodGym, CIANWOOD_GYM, $0, 0
 	map_header_2 CianwoodPokeCenter1F, CIANWOOD_POKECENTER_1F, $0, 0
@@ -700,6 +726,11 @@
 	map_header_2 Route5UndergroundEntrance, ROUTE_5_UNDERGROUND_ENTRANCE, $0, 0
 	map_header_2 Route5SaffronCityGate, ROUTE_5_SAFFRON_CITY_GATE, $0, 0
 	map_header_2 Route5CleanseTagSpeechHouse, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE, $0, 0
+	map_header_2 PokemonTrainerFanClub, POKEMON_TRAINER_FAN_CLUB, $0, 0
+	map_header_2 SaffronHitmontopKidHouse, SAFFRON_HITMONTOP_KID_HOUSE, $0, 0
+	map_header_2 SaffronBookSpeechHouse, SAFFRON_BOOK_SPEECH_HOUSE, $0, 0
+	map_header_2 SaffronOrreSpeechHouse, SAFFRON_ORRE_SPEECH_HOUSE, $0, 0
+	map_header_2 SaffronRichSpeechHouse, SAFFRON_RICH_SPEECH_HOUSE, $0, 0
 	map_header_2 CherrygroveMart, CHERRYGROVE_MART, $0, 0
 	map_header_2 CherrygrovePokeCenter1F, CHERRYGROVE_POKECENTER_1F, $0, 0
 	map_header_2 CherrygroveGymSpeechHouse, CHERRYGROVE_GYM_SPEECH_HOUSE, $0, 0

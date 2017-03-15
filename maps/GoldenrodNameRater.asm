@@ -16,13 +16,11 @@ GoldenrodNameRater:
 	closetext
 	end
 
-GoldenrodNameRaterBookshelf:
-	jumpstd difficultbookshelf
-
 GoldenrodNameRaterRadio:
 	jumpstd radio2
 
-INCLUDE "text/sweethoney.asm"
+GoldenrodNameRaterBookshelf:
+	jumpstd difficultbookshelf
 
 GoldenrodNameRater_MapEventHeader:
 	; filler
@@ -37,10 +35,9 @@ GoldenrodNameRater_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 0, SIGNPOST_READ, GoldenrodNameRaterBookshelf
-	signpost 1, 1, SIGNPOST_READ, GoldenrodNameRaterBookshelf
-	signpost 1, 7, SIGNPOST_READ, GoldenrodNameRaterRadio
+	db 2
+	signpost 1, 5, SIGNPOST_READ, GoldenrodNameRaterRadio
+	signpost 1, 7, SIGNPOST_READ, GoldenrodNameRaterBookshelf
 
 .PersonEvents:
 	db 1

@@ -60,9 +60,8 @@ Route26HealSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, Route26HealHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, Route26HealHouseBookshelf
+	db 1
+	signpost 1, 7, SIGNPOST_READ, Route26HealHouseBookshelf
 
 .PersonEvents:
 	db 1

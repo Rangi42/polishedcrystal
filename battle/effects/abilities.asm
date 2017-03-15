@@ -105,10 +105,6 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	and [hl]
 	res SUBSTATUS_TOXIC, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	and [hl]
-	res SUBSTATUS_NIGHTMARE, [hl]
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
@@ -1524,13 +1520,13 @@ BasePickupTable:
 	db ULTRA_BALL
 	db REVIVE
 	db RARE_CANDY
-	db SILVER_LEAF
-	db GOLD_LEAF
+	db DUSK_STONE
+	db SHINY_STONE
+	db MAX_ETHER
 	db FULL_RESTORE
 	db MAX_REVIVE
 	db PP_UP
 	db MAX_ELIXER
-	db EXP_SHARE
 
 RarePickupTable:
 	db HYPER_POTION
@@ -1539,8 +1535,8 @@ RarePickupTable:
 	db FULL_RESTORE
 	db ETHER
 	db LUCKY_EGG
-	db MAX_ETHER
-	db LUCKY_EGG
+	db DESTINY_KNOT
 	db ELIXER
-	db LUCKY_EGG
+	db BIG_NUGGET
 	db LEFTOVERS
+	db BOTTLE_CAP

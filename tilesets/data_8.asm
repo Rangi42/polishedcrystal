@@ -20,3 +20,6 @@ INCBIN "tilesets/forest_metatiles.bin"
 
 Tileset31Coll:
 INCBIN "tilesets/forest_collision.bin"
+
+Tileset42GFX:
+INCBIN "gfx/tilesets/museum.2bpp.lz"

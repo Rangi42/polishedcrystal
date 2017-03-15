@@ -19,7 +19,7 @@ GrannyScript_0x62c7d:
 ProfOaksAide1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_NET_BALLS_FROM_PROF_OAKS_AIDE
+	checkevent EVENT_GOT_NEST_BALLS_FROM_PROF_OAKS_AIDE
 	iftrue .Explain
 	writetext ProfOaksAide1HiText
 	waitbutton
@@ -35,14 +35,14 @@ ProfOaksAide1Script:
 .HereYouGo
 	writetext ProfOaksAide1HereYouGoText
 	waitbutton
-	giveitem NET_BALL, 5
+	giveitem NEST_BALL, 5
 	waitsfx
 	iffalse .NoRoom
-	writetext ProfOaksAide1NetBallText
+	writetext ProfOaksAide1NestBallText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_NET_BALLS_FROM_PROF_OAKS_AIDE
+	setevent EVENT_GOT_NEST_BALLS_FROM_PROF_OAKS_AIDE
 .Explain
 	writetext ProfOaksAide1ExplainText
 	waitbutton
@@ -120,22 +120,22 @@ ProfOaksAide1NoRoomText:
 	cont "room for this."
 	done
 
-ProfOaksAide1NetBallText:
+ProfOaksAide1NestBallText:
 	text "<PLAYER> received"
-	line "5 Net Balls."
+	line "5 Nest Balls."
 	done
 
 ProfOaksAide1ExplainText:
-	text "Those Net Balls"
+	text "Those Nest Balls"
 	line "are like Apricorn"
 
-	para "Balls, but they"
-	line "were developed by"
-	cont "Silph in Kanto."
+	para "Balls, but they're"
+	line "made by Silph Co."
+	cont "in Kanto."
 
 	para "They work best"
-	line "on Water- and"
-	cont "Bug-type #mon."
+	line "on low-leveled"
+	cont "#mon."
 
 	para "Use them to com-"
 	line "plete the #dex!"

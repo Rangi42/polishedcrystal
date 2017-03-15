@@ -38,7 +38,10 @@ Route48JessieJamesScript:
 	setlasttalked ROUTE48_JESSIE
 	loadtrainer JESSIE_JAMES, 1
 	startbattle
-	reloadmapafterbattle
+	dontrestartmapmusic
+	reloadmap
+	special DeleteSavedMusic
+	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	opentext
 	writetext Route48JessieJamesAfterText
 	waitbutton
@@ -49,7 +52,7 @@ Route48JessieJamesScript:
 	disappear ROUTE48_JAMES
 	dotrigger $0
 	setevent EVENT_BEAT_JESSIE_AND_JAMES
-	waitsfx
+	playmapmusic
 .End
 	end
 

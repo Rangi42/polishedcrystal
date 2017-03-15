@@ -825,6 +825,7 @@ OutdoorSprites: ; 144b8
 	dw Group29Sprites
 	dw Group30Sprites
 	dw Group31Sprites
+	dw Group32Sprites
 
 
 ; OlivineCity connects to Route40
@@ -901,20 +902,20 @@ Group2Sprites:
 Group3Sprites:
 ; NationalPark
 ; NationalParkBugContest
+	db SPRITE_BUG_CATCHER
+	db SPRITE_BUG_MANIAC
+	db SPRITE_COOLTRAINER_M
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
-	db SPRITE_ROCKER
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 7 walking sprites
+	; 9 walking sprites
 	db SPRITE_GAMEBOY_KID
 	db SPRITE_PERSIAN
 	db SPRITE_POKE_BALL
-	; 10 total sprites
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
+	; 12 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -942,7 +943,7 @@ Group4Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	db SPRITE_FISHING_GURU ; doesn't walk
+	db SPRITE_SIGHTSEER_M ; doesn't walk
 	db SPRITE_HEX_MANIAC ; doesn't walk
 	db SPRITE_OFFICER ; doesn't walk
 	; 12 walking sprites (9 that walk)
@@ -1036,7 +1037,6 @@ Group7Sprites:
 ; Route25
 ; CeruleanCity
 Group25Sprites:
-; SaffronCity
 ; Route5
 Group28Sprites:
 ; Route9
@@ -1208,16 +1208,16 @@ Group12Sprites:
 	db SPRITE_GRAMPS
 	db SPRITE_LAWRENCE
 	db SPRITE_POKEFAN_M
+	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 7 walking sprites
+	; 8 walking sprites
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_MACHOP
 	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
-	; 11 total sprites
-	db SPRITE_FRUIT_TREE
+	; 12 total sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_FRUIT_TREE
@@ -1241,20 +1241,20 @@ Group23Sprites:
 ; ViridianCity
 ; ViridianForest
 	db SPRITE_BUG_CATCHER
+	db SPRITE_BUG_MANIAC
+	db SPRITE_CHILD
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
-	db SPRITE_CELEBI
-	db SPRITE_LYRA
-	db SPRITE_SILVER
-	db SPRITE_GIOVANNI
-	; 10 walking sprites
+	; 8 walking sprites
 	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 13 total sprites
+	; 11 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1528,16 +1528,17 @@ Group27Sprites:
 
 Group30Sprites:
 ; RuinsofAlphOutside
+; Route22Past
 	db SPRITE_FISHER
 	db SPRITE_SCIENTIST
 	db SPRITE_YOUNGSTER
-	; 3 walking sprites
+	db SPRITE_CELEBI
+	db SPRITE_LYRA
+	db SPRITE_SILVER
+	db SPRITE_GIOVANNI
+	; 7 walking sprites
 	db SPRITE_ROCK
-	; 4 total sprites
-	db SPRITE_ROCK
-	db SPRITE_ROCK
-	db SPRITE_ROCK
-	db SPRITE_ROCK
+	; 8 total sprites
 	db SPRITE_ROCK
 	db SPRITE_ROCK
 	db SPRITE_ROCK
@@ -1559,7 +1560,7 @@ Group31Sprites:
 	db SPRITE_CAITLIN
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_DARACH
-	db SPRITE_FISHING_GURU
+	db SPRITE_SIGHTSEER_M
 	db SPRITE_GRAMPS
 	db SPRITE_IVY
 	db SPRITE_LADY
@@ -1570,6 +1571,34 @@ Group31Sprites:
 	db SPRITE_FRUIT_TREE
 	db SPRITE_MARILL
 	; 12 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
+
+Group32Sprites:
+; SaffronCity
+	db SPRITE_BLACK_BELT
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_FISHER
+	db SPRITE_LASS
+	db SPRITE_POKEFAN_M
+	db SPRITE_SCIENTIST
+	db SPRITE_SUPER_NERD
+	db SPRITE_YOUNGSTER
+	; 9 walking sprites
+	db SPRITE_SILPH_EMPLOYEE
+	; 10 total sprites
+	db SPRITE_POKE_BALL
+	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL

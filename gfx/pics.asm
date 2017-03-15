@@ -744,12 +744,7 @@ GliscorFrontpic:       INCBIN "gfx/pics/gliscor/front.2bpp.lz"
 GliscorBackpic:        INCBIN "gfx/pics/gliscor/back.2bpp.lz"
 WeavileFrontpic:       INCBIN "gfx/pics/weavile/front.2bpp.lz"
 WeavileBackpic:        INCBIN "gfx/pics/weavile/back.2bpp.lz"
-MamoswineFrontpic:     INCBIN "gfx/pics/mamoswine/front.2bpp.lz"
-MamoswineBackpic:      INCBIN "gfx/pics/mamoswine/back.2bpp.lz"
-SylveonFrontpic:       INCBIN "gfx/pics/sylveon/front.2bpp.lz"
-SylveonBackpic:        INCBIN "gfx/pics/sylveon/back.2bpp.lz"
-PorygonZFrontpic:      INCBIN "gfx/pics/porygon_z/front.2bpp.lz"
-PorygonZBackpic:       INCBIN "gfx/pics/porygon_z/back.2bpp.lz"
+
 
 
 SECTION "Pics 20", ROMX, BANK[PICS_20]
@@ -854,3 +849,13 @@ UnownExclamationFrontpic: INCBIN "gfx/pics/unown_exclamation/front.2bpp.lz"
 UnownExclamationBackpic:  INCBIN "gfx/pics/unown_exclamation/back.2bpp.lz"
 UnownQuestionFrontpic:    INCBIN "gfx/pics/unown_question/front.2bpp.lz"
 UnownQuestionBackpic:     INCBIN "gfx/pics/unown_question/back.2bpp.lz"
+
+
+SECTION "Pics 23", ROMX
+
+MamoswineFrontpic:     INCBIN "gfx/pics/mamoswine/front.2bpp.lz"
+MamoswineBackpic:      INCBIN "gfx/pics/mamoswine/back.2bpp.lz"
+SylveonFrontpic:       INCBIN "gfx/pics/sylveon/front.2bpp.lz"
+SylveonBackpic:        INCBIN "gfx/pics/sylveon/back.2bpp.lz"
+PorygonZFrontpic:      INCBIN "gfx/pics/porygon_z/front.2bpp.lz"
+PorygonZBackpic:       INCBIN "gfx/pics/porygon_z/back.2bpp.lz"

@@ -33,9 +33,6 @@ RedsMom:
 RedsHouse1FTV:
 	jumptext RedsHouse1FTVText
 
-RedsHouse1FBookshelf:
-	jumpstd picturebookshelf
-
 RedsMomText1:
 	text "Hi!"
 
@@ -90,10 +87,8 @@ RedsHouse1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 0, SIGNPOST_READ, RedsHouse1FBookshelf
-	signpost 1, 1, SIGNPOST_READ, RedsHouse1FBookshelf
-	signpost 1, 2, SIGNPOST_READ, RedsHouse1FTV
+	db 1
+	signpost 1, 5, SIGNPOST_READ, RedsHouse1FTV
 
 .PersonEvents:
 	db 1

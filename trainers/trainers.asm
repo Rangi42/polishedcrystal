@@ -1934,7 +1934,7 @@ SabrinaGroup:
 	db 59, HYPNO, NO_ITEM
 		db HYPNOSIS
 		db DREAM_EATER
-		db NIGHTMARE
+		db NASTY_PLOT
 		db PSYCHIC_M
 
 	db 58, WOBBUFFET, NO_ITEM
@@ -1981,7 +1981,7 @@ SabrinaGroup:
 		db NASTY_PLOT
 		db PSYCHIC_M
 		db HYPNOSIS
-		db NIGHTMARE
+		db FUTURE_SIGHT
 
 	db 74, SLOWKING, KINGS_ROCK
 		db THUNDER_WAVE
@@ -2306,7 +2306,7 @@ Rival0Group:
 ; ================
 
 	; RIVAL0
-	db "Boy@"
+	db "boy@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2318,7 +2318,7 @@ Rival0Group:
 ; ================
 
 	; RIVAL0
-	db "Boy@"
+	db "boy@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -2330,7 +2330,7 @@ Rival0Group:
 ; ================
 
 	; RIVAL0
-	db "Boy@"
+	db "boy@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -3637,31 +3637,6 @@ BugCatcherGroup:
 ; ================
 
 	; BUG_CATCHER
-	db "Rob@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 60, BEEDRILL
-	db 59, BUTTERFREE
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Ed@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 61, YANMA
-	db 62, BEEDRILL
-	db 62, BUTTERFREE
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
 	db "Benny@"
 	db TRAINERTYPE_NORMAL
 
@@ -3710,86 +3685,12 @@ BugCatcherGroup:
 ; ================
 
 	; BUG_CATCHER
-	db "Doug@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 59, BUTTERFREE
-	db 57, ARIADOS
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
 	db "Wayne@"
 	db TRAINERTYPE_NORMAL
 
 	; party
 	db 9, PARAS
 	db 10, PINECO
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Dane@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 59, BEEDRILL
-	db 61, BUTTERFREE
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Dion@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 63, ARIADOS
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Stacey@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 60, METAPOD
-	db 62, METAPOD
-	db 64, METAPOD
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Ellis@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 58, WEEDLE
-	db 60, KAKUNA
-	db 62, BEEDRILL
-
-	db $ff ; end
-
-; ================
-
-	; BUG_CATCHER
-	db "Abner@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 59, BUTTERFREE
-	db 59, BEEDRILL
-	db 59, PIKACHU
 
 	db $ff ; end
 
@@ -6711,6 +6612,17 @@ PokemaniacGroup:
 CosplayerGroup:
 ; ================================
 ; ================
+
+	; POKEMANIAC
+	db "Clara@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 11, VULPIX
+	db 11, VULPIX
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -7259,6 +7171,115 @@ BeautyGroup:
 BugManiacGroup:
 ; ================================
 ; ================
+
+	; BUG_MANIAC
+	db "Lou@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 17, PARASECT
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Rob@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, BEEDRILL
+	db 59, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Ed@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 61, YANMA
+	db 62, BEEDRILL
+	db 62, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Doug@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, BUTTERFREE
+	db 57, ARIADOS
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Dane@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, BEEDRILL
+	db 61, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Dion@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 63, ARIADOS
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Stacey@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, METAPOD
+	db 62, METAPOD
+	db 64, METAPOD
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Ellis@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, WEEDLE
+	db 60, KAKUNA
+	db 62, BEEDRILL
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Abner@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, BUTTERFREE
+	db 59, BEEDRILL
+	db 59, PIKACHU
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -11952,33 +11973,39 @@ MysticalmanGroup:
 
 	; MYSTICALMAN
 	db "Eusine@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 
 	; party
 
-	db 26, DROWZEE, TWISTEDSPOON, ABILITY_1 | QUIRKY, MALE
+	db 26, DROWZEE, EVIOLITE, FAKE_PERFECT_DVS, ABILITY_1 | QUIRKY, MALE
 		db DREAM_EATER
 		db HYPNOSIS
 		db DISABLE
 		db PSYBEAM
 
-	db 26, HAUNTER, EVIOLITE, ABILITY_1 | QUIRKY, MALE
+	db 26, HAUNTER, SPELL_TAG, FAKE_PERFECT_DVS, ABILITY_1 | QUIRKY, MALE
 		db SHADOW_BALL
 		db HYPNOSIS
 		db CONFUSE_RAY
 		db CURSE
 
-	db 26, SUNFLORA, CHARCOAL, ABILITY_1 | QUIRKY, MALE
+	db 26, SUNFLORA, CHARCOAL, FAKE_PERFECT_DVS, ABILITY_1 | QUIRKY, MALE
 		db GROWTH
 		db LEECH_SEED
 		db GIGA_DRAIN
 		db FLAMETHROWER
 
-	db 28, ELECTRODE, MAGNET, SHINY_MASK | HIDDEN_ABILITY | QUIRKY, MALE
+	db 27, ELECTRODE, MAGNET, FAKE_PERFECT_DVS, SHINY_MASK | HIDDEN_ABILITY | QUIRKY, MALE
 		db THUNDER
 		db SCREECH
 		db SONIC_BOOM
 		db ROLLOUT
+
+	db 28, ALAKAZAM, TWISTEDSPOON, DVS_HP_FIGHTING, ABILITY_1 | QUIRKY, MALE
+		db REFLECT
+		db LIGHT_SCREEN
+		db HIDDEN_POWER ; Fighting
+		db PSYBEAM
 
 	db $ff ; end
 
@@ -12144,7 +12171,7 @@ LoreleiGroup:
 	db 42, JYNX, SITRUS_BERRY
 		db DRAIN_KISS
 		db SING
-		db NIGHTMARE
+		db AVALANCHE
 		db PETAL_DANCE
 
 	db 41, LAPRAS, NO_ITEM

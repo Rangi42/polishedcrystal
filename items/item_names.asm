@@ -188,7 +188,7 @@
 	db "Shed Shell@"
 	db "Shell Bell@"
 	db "Soothe Bell@"
-	db "Weak.Policy@"
+	db "Weak Policy@"
 	db "Wide Lens@"
 	db "Wise Glasses@"
 	db "Zoom Lens@"

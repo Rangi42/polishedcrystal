@@ -1,6 +1,7 @@
 const_value set 2
 	const GOLDENRODFLOWERSHOP_TEACHER
 	const GOLDENRODFLOWERSHOP_FLORIA
+	const GOLDENRODFLOWERSHOP_GENTLEMAN
 
 GoldenrodFlowerShop_MapScriptHeader:
 .MapTriggers:
@@ -152,6 +153,9 @@ FlowerShopFloriaScript:
 	closetext
 	end
 
+FlowerShopGentlemanScript:
+	jumptextfaceplayer FlowerShopGentlemanText
+
 UnknownText_0x553d4:
 	text "Have you seen that"
 	line "wiggly tree that's"
@@ -263,6 +267,15 @@ DescribeMulchText:
 	line "of nutrients!"
 	done
 
+FlowerShopGentlemanText:
+	text "I've been working"
+	line "late a lot recent-"
+	cont "ly, so I'm buying"
+
+	para "some flowers for"
+	line "my wife."
+	done
+
 GoldenrodFlowerShop_MapEventHeader:
 	; filler
 	db 0, 0
@@ -279,6 +292,7 @@ GoldenrodFlowerShop_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
 	person_event SPRITE_LASS, 6, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
+	person_event SPRITE_GENTLEMAN, 3, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopGentlemanScript, EVENT_FLORIA_AT_SUDOWOODO

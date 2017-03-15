@@ -120,6 +120,7 @@
 	dba Music_SpikyEaredPichuHGSS
 	dba Music_Route205DPPt
 	dba Music_Route210DPPt
+	dba Music_CanalaveCityDPPt
 	dba Music_SunyshoreCityDPPt
 	dba Music_StarkMountainDPPt
 	dba Music_MountCoronetDPPt
@@ -139,6 +140,7 @@
 	dba Music_PowerPlantXY
 	dba Music_RivalBattleXY
 	dba Music_GymLeaderBattleXY
+	dba Music_LavenderTownRBY
 	dba Music_PokemonTowerRBY
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY
@@ -152,6 +154,8 @@
 	dba Music_WallyBattleORAS
 	dba Music_ZinniaEncounterORAS
 	dba Music_ZinniaBattleORAS
+	dba Music_WildBattleSM
+	dba Music_TrainerBattleSM
 	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
 

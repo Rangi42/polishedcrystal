@@ -1,47 +1,35 @@
 SpecialHoOhChamber: ; 0x8addb
 	ld hl, PartySpecies
 	ld a, [hl]
-	cp AZUMARILL
-	jr z, .ok
-	cp CLEFABLE
-	jr z, .ok
-	cp CLEFAIRY
-	jr z, .ok
-	cp GRANBULL
-	jr z, .ok
-	cp JIGGLYPUFF
-	jr z, .ok
-	cp MARILL
-	jr z, .ok
-	cp MR__MIME
-	jr z, .ok
-	cp SNUBBULL
-	jr z, .ok
-	cp SYLVEON
-	jr z, .ok
-	cp TOGEKISS
-	jr z, .ok
-	cp TOGEPI
-	jr z, .ok
-	cp TOGETIC
-	jr z, .ok
-	cp WIGGLYTUFF
-	jr z, .ok
-if DEF(FAITHFUL)
-else
-	cp MEGANIUM
-	jr z, .ok
-	cp MISMAGIUS
-	jr z, .ok
-endc
-	ret
-
-.ok
+	ld hl, .FairyTable
+	ld de, 1
+	call IsInArray
+	ret nc
 	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ld b, SET_FLAG
 	call EventFlagAction
 	ret
+
+.FairyTable:
+	db AZUMARILL
+	db CLEFABLE
+	db CLEFAIRY
+	db GRANBULL
+	db JIGGLYPUFF
+	db MARILL
+	db MR__MIME
+	db SNUBBULL
+	db SYLVEON
+	db TOGEKISS
+	db TOGEPI
+	db TOGETIC
+	db WIGGLYTUFF
+if !DEF(FAITHFUL)
+	db MEGANIUM
+	db MISMAGIUS
+endc
+	db -1
 ; 0x8adef
 
 SpecialOmanyteChamber: ; 8adef

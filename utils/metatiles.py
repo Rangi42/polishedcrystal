@@ -27,7 +27,7 @@ def rgb_bytes(rgbs):
 		yield px[2]
 
 num_shades = 4
-default_rgb = (255, 255, 255)
+default_rgb = (0xAB, 0xCD, 0xEF)
 
 class Tileset(object):
 	p_per_t = 8

@@ -398,11 +398,11 @@ UnknownText_0x198b73:
 	done
 
 UnknownText_0x198c14:
-	text "DJ Mary is so"
-	line "cool. I listen to"
+	text "I came here on the"
+	line "Magnet Train."
 
-	para "her radio show"
-	line "every day."
+	para "Time to do some"
+	line "shopping!"
 	done
 
 GoldenrodCityYoungsterDayText:
@@ -505,15 +505,14 @@ GoldenrodCityGymLassText:
 	done
 
 GoldenrodCityLass2Text:
-	text "I gave my Pichu a"
-	line "haircut from the"
+	text "I went on a tour"
+	line "of the Radio"
 
-	para "Haircut Brothers"
-	line "every day."
+	para "Tower. I saw all"
+	line "three studios and"
 
-	para "Then it went and"
-	line "evolved! I didn't"
-	cont "expect that!"
+	para "even ate in the"
+	line "café."
 	done
 
 GoldenrodCityStationSignText:
@@ -658,7 +657,7 @@ GoldenrodCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 17
+	db 21
 	warp_def $7, $1c, 1, GOLDENROD_GYM
 	warp_def $1d, $21, 1, GOLDENROD_BIKE_SHOP
 	warp_def $f, $1d, 1, GOLDENROD_HAPPINESS_RATER
@@ -676,6 +675,10 @@ GoldenrodCity_MapEventHeader:
 	warp_def $1b, $12, 2, GOLDENROD_POKECOM_CENTER_1F
 	warp_def $10, $4, 3, GOLDENROD_HARBOR_GATE
 	warp_def $11, $4, 4, GOLDENROD_HARBOR_GATE
+	warp_def $f, $23, 1, GOLDENROD_HP_UP_HOUSE
+	warp_def $13, $25, 1, GOLDENROD_NET_BALL_HOUSE
+	warp_def $17, $21, 1, GOLDENROD_BAND_HOUSE
+	warp_def $15, $d, 1, GOLDENROD_SPEECH_HOUSE
 
 .XYTriggers:
 	db 1

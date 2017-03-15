@@ -9,8 +9,8 @@ const_value SET 1
 	const TILESET_JOHTO_2              ; 02
 	const TILESET_KANTO_1              ; 03
 	const TILESET_JOHTO_3              ; 04
-	const TILESET_HOUSE_1              ; 05
-	const TILESET_KRISS_HOUSE          ; 06
+	const TILESET_JOHTO_HOUSE          ; 05
+	const TILESET_KANTO_HOUSE          ; 06
 	const TILESET_POKECENTER           ; 07
 	const TILESET_GATE                 ; 08
 	const TILESET_PORT                 ; 09
@@ -20,11 +20,11 @@ const_value SET 1
 	const TILESET_CELADON_MANSION      ; 0d
 	const TILESET_GAME_CORNER          ; 0e
 	const TILESET_GYM_1                ; 0f
-	const TILESET_KURT_HOUSE           ; 10
+	const TILESET_TRADITIONAL          ; 10
 	const TILESET_GYM_2                ; 11
 	const TILESET_OLIVINE_GYM          ; 12
 	const TILESET_LIGHTHOUSE           ; 13
-	const TILESET_KRISS_HOUSE_2F       ; 14
+	const TILESET_KANTO_2              ; 14
 	const TILESET_POKECOM_CENTER       ; 15
 	const TILESET_BATTLE_TOWER         ; 16
 	const TILESET_SPROUT_TOWER         ; 17
@@ -45,8 +45,8 @@ const_value SET 1
 	const TILESET_FARAWAY_ISLAND       ; 26
 	const TILESET_TUNNEL               ; 27
 	const TILESET_HOME_DECOR_STORE     ; 28
-	const TILESET_KANTO_2              ; 29
-	const TILESET_SHAMOUTI_ISLAND      ; 2a
+	const TILESET_SHAMOUTI_ISLAND      ; 29
+	const TILESET_MUSEUM               ; 2a
 
 	const_def
 	const PAL_BG_GRAY

@@ -134,6 +134,7 @@ INCLUDE "audio/music/battletowertheme.asm"
 INCLUDE "audio/music/battletowerlobby.asm"
 INCLUDE "audio/music/suicunebattle.asm"
 INCLUDE "audio/music/clair.asm"
+INCLUDE "audio/music/rby/lavendertown.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
@@ -196,6 +197,7 @@ INCLUDE "audio/music/oras/zinniabattle.asm"
 
 SECTION "Extra Songs 5", ROMX
 
+INCLUDE "audio/music/dppt/canalavecity.asm"
 INCLUDE "audio/music/dppt/sunyshorecity.asm"
 INCLUDE "audio/music/dppt/route205.asm"
 INCLUDE "audio/music/dppt/starkmountain.asm"
@@ -210,6 +212,8 @@ INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/laverrecity.asm"
 INCLUDE "audio/music/xy/bicycle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/sm/wildbattle.asm"
+INCLUDE "audio/music/sm/trainerbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 

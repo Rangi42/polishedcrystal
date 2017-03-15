@@ -23,11 +23,11 @@ metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
                  'pokecenter', 'gate', 'port', 'lab', 'facility', 'mart',
                  'mansion', 'game_corner', 'gym1', 'house3', 'gym2', 'gym3',
-                 'lighthouse', 'bedroom', 'pokecom', 'battle_tower', 'tower',
+                 'lighthouse', 'kanto2', 'pokecom', 'battle_tower', 'tower',
                  'cave', 'park', 'ruins', 'radio_tower', 'warehouse',
                  'ice_path', 'dark_cave', 'forest', 'safari', 'alph1', 'alph2',
                  'alph3', 'alph4', 'pokemon_mansion', 'faraway', 'tunnel',
-                 'decor', 'kanto2', 'shamouti']
+                 'decor', 'shamouti', 'museum']
 
 # {'TILESET_JOHTO_1': 'johto1', ...}
 tileset_ids = {}
@@ -51,6 +51,9 @@ tileset_unused_block_ids = defaultdict(lambda: set())
 
 def pretty(n):
 	return hex(n)[2:].zfill(2)
+
+def pretty_join(s, g, x='none!'):
+	return g.join(sorted(s)) if s else x
 
 def read_tileset_ids():
 	tileset_id = 1
@@ -131,10 +134,13 @@ def read_used_tile_ids():
 
 def find_unused_block_ids():
 	for tileset_id, used_block_ids in tileset_used_block_ids.items():
-		limit = int(max(used_block_ids), 16) + 1
-		domain = set(pretty(b) for b in range(limit))
-		unused_block_ids = domain - used_block_ids
-		unused_block_ids.add(pretty(limit) + '+')
+		try:
+			limit = int(max(used_block_ids), 16) + 1
+			domain = set(pretty(b) for b in range(limit))
+			unused_block_ids = domain - used_block_ids
+			unused_block_ids.add(pretty(limit) + '+')
+		except ValueError:
+			unused_block_ids = set()
 		tileset_unused_block_ids[tileset_id].update(unused_block_ids)
 
 def find_unused_tile_ids():
@@ -171,9 +177,9 @@ def main():
 	print('Printing results...', file=sys.stderr)
 	for tileset_id in sorted(tileset_unused_tile_ids, key=tileset_names.index):
 		print('tileset %s:' % tileset_id)
-		print('\tmaps = %s' % ', '.join(sorted(tileset_maps[tileset_id])))
-		print('\tunused tiles = %s' % ' '.join(sorted(tileset_unused_tile_ids[tileset_id])))
-		print('\tunused blocks = %s' % ' '.join(sorted(tileset_unused_block_ids[tileset_id])))
+		print('\tmaps = %s' % pretty_join(tileset_maps[tileset_id], ', '))
+		print('\tunused tiles = %s' % pretty_join(tileset_unused_tile_ids[tileset_id], ' '))
+		print('\tunused blocks = %s' % pretty_join(tileset_unused_block_ids[tileset_id], ' '))
 		print()
 
 if __name__ == '__main__':

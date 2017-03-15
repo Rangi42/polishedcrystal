@@ -1,5 +1,5 @@
 const_value set 2
-	const CERULEANGYMBADGESPEECHHOUSE_POKEFAN_M
+	const CERULEANGYMBADGESPEECHHOUSE_GENTLEMAN
 
 CeruleanGymBadgeSpeechHouse_MapScriptHeader:
 .MapTriggers:
@@ -8,12 +8,21 @@ CeruleanGymBadgeSpeechHouse_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-PokefanMScript_0x188002:
+GentlemanScript_0x188002:
 	jumptextfaceplayer UnknownText_0x188005
 
 UnknownText_0x188005:
-	text "Are you collecting"
+	text "We had a spate of"
+	line "burglaries a few"
+	cont "years back, so now"
+
+	para "everyone's super-"
+	line "cautious."
+	cont "Who're you?"
+
+	para "You're collecting"
 	line "Kanto Gym Badges?"
+	cont "Good luck!"
 	done
 
 CeruleanGymBadgeSpeechHouse_MapEventHeader:
@@ -33,4 +42,4 @@ CeruleanGymBadgeSpeechHouse_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x188002, -1
+	person_event SPRITE_GENTLEMAN, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x188002, -1

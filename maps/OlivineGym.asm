@@ -115,11 +115,15 @@ OlivineGymGentlemanPrestonScript:
 	end
 
 OlivineGymStatue:
+	trainertotext JASMINE, 1, $1
+	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	iftrue .Returned
+	jumpstd gymstatue0
+.Returned
 	checkflag ENGINE_MINERALBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
-.Beaten:
-	trainertotext JASMINE, 1, $1
+.Beaten
 	checkcode VAR_BADGES
 	if_greater_than 13, .LyraToo
 	jumpstd gymstatue2

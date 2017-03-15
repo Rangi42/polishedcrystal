@@ -458,12 +458,17 @@ CheckFacingTileForStd:: ; 1365b
 
 .table1
 	dbw $91, magazinebookshelf
+	dbw $92, trashcan
 	dbw $93, pcscript
 	dbw $94, radio1
 	dbw $95, townmap
 	dbw $96, merchandiseshelf
 	dbw $97, tv
+	dbw $9a, vendingmachine
+	dbw $9b, refrigerator
+	dbw $9c, sink
 	dbw $9d, window
+	dbw $9e, stove
 	dbw $9f, incenseburner
 	db   -1 ; end
 
@@ -5082,6 +5087,9 @@ GetFinalPkmnTextPointer::
 	cp CYNTHIA
 	jr z, .ok
 	; Silver and Lyra have a phrase for each set of three IDs
+	ld hl, .Rival0FinalTexts
+	cp RIVAL0
+	jr z, .rival_or_lyra
 	ld hl, .Rival1FinalTexts
 	cp RIVAL1
 	jr z, .rival_or_lyra
@@ -5142,8 +5150,10 @@ endr
 	scf
 	ret
 
-.Rival1FinalTexts:
+.Rival0FinalTexts:
 	dw Rival1_1FinalPkmnText
+
+.Rival1FinalTexts:
 	dw Rival1_2FinalPkmnText
 	dw Rival1_3FinalPkmnText
 	dw Rival1_4FinalPkmnText
@@ -5533,10 +5543,9 @@ TalkToTrainerScript:: ; 0xbe66a
 	jump StartBattleWithMapTrainerScript
 
 SeenByTrainerScript:: ; 0xbe675
-	writepersonxy LAST_TALKED
-	trainerflagaction SET_FLAG
-	end ; TODO: REMOVE DEBUG!!!
-
+;	writepersonxy LAST_TALKED
+;	trainerflagaction SET_FLAG
+;	end ; TODO: REMOVE DEBUG!!!
 
 	loadmemtrainer
 	encountermusic
@@ -5767,6 +5776,8 @@ INCLUDE "gfx/pics/variant_anims.asm"
 INCLUDE "gfx/pics/variant_extra_pointers.asm"
 INCLUDE "gfx/pics/variant_extras.asm"
 
+SECTION "Pic Animations 4", ROMX
+
 ; Bitmasks
 INCLUDE "gfx/pics/bitmask_pointers.asm"
 INCLUDE "gfx/pics/bitmasks.asm"
@@ -5931,7 +5942,7 @@ INCLUDE "engine/warp_connection.asm"
 
 INCLUDE "battle/used_move_text.asm"
 
-;INCLUDE "gfx/items.asm"
+INCLUDE "gfx/items.asm"
 
 SECTION "Intro Logo", ROMX, BANK[$42]
 
@@ -6013,7 +6024,10 @@ SECTION "bank77_2", ROMX, BANK[$77]
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
 	ld a, b
+	jr nz, .h24
 	cp 12
 	push af
 	jr c, .AM
@@ -6026,6 +6040,7 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	ld a, 12
 .PM:
 	ld b, a
+.h24:
 ; Crazy stuff happening with the stack
 	push bc
 	ld hl, [sp+$1]
@@ -6048,6 +6063,9 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	pop bc
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
+	ret nz
 	ld de, String_AM
 	pop af
 	jr c, .place_am_pm

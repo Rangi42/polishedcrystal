@@ -35,109 +35,11 @@ GameboyKidScript_0x70d3f:
 	spriteface CELADONDEPTSTORE6F_GAMEBOY_KID2, DOWN
 	end
 
-CeladonVendingMachine:
-	opentext
-	writetext CeladonVendingText
-.Start:
-	special PlaceMoneyTopRight
-	loadmenudata .MenuData
-	verticalmenu
-	closewindow
-	if_equal $1, .FreshWater
-	if_equal $2, .SodaPop
-	if_equal $3, .Lemonade
-	closetext
-	end
-
-.FreshWater:
-	checkmoney $0, 200
-	if_equal $2, .NotEnoughMoney
-	giveitem FRESH_WATER
-	iffalse .NotEnoughSpace
-	takemoney $0, 200
-	itemtotext FRESH_WATER, $0
-	jump .VendItem
-
-.SodaPop:
-	checkmoney $0, 300
-	if_equal $2, .NotEnoughMoney
-	giveitem SODA_POP
-	iffalse .NotEnoughSpace
-	takemoney $0, 300
-	itemtotext SODA_POP, $0
-	jump .VendItem
-
-.Lemonade:
-	checkmoney $0, 350
-	if_equal $2, .NotEnoughMoney
-	giveitem LEMONADE
-	iffalse .NotEnoughSpace
-	takemoney $0, 350
-	itemtotext LEMONADE, $0
-	jump .VendItem
-
-.VendItem:
-	pause 10
-	playsound SFX_ENTER_DOOR
-	writetext CeladonClangText
-	buttonsound
-	itemnotify
-	jump .Start
-
-.NotEnoughMoney:
-	writetext CeladonVendingNoMoneyText
-	waitbutton
-	jump .Start
-
-.NotEnoughSpace:
-	writetext CeladonVendingNoSpaceText
-	waitbutton
-	jump .Start
-
-.MenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 4 ; items
-	db "Fresh Water  ¥200@"
-	db "Soda Pop     ¥300@"
-	db "Lemonade     ¥350@"
-	db "Cancel@"
-
 CeladonDeptStore6FDirectory:
 	jumptext CeladonDeptStore6FDirectoryText
 
 UnknownScript_0x7124d:
 	jumpstd elevatorbutton
-
-CeladonVendingText:
-	text "A vending machine!"
-	line "Here's the menu."
-	done
-
-CeladonClangText:
-	text "Clang!"
-
-	para "@"
-	text_from_ram StringBuffer3
-	text ""
-	line "popped out."
-	done
-
-CeladonVendingNoMoneyText:
-	text "Oops, not enough"
-	line "money…"
-	done
-
-CeladonVendingNoSpaceText:
-	text "There's no more"
-	line "room for stuff…"
-	done
 
 UnknownText_0x712c7:
 	text "A vending machine"
@@ -196,13 +98,9 @@ CeladonDeptStore6F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 2
 	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore6FDirectory
 	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore1FElevatorButton
-	signpost 1, 8, SIGNPOST_UP, CeladonVendingMachine
-	signpost 1, 9, SIGNPOST_UP, CeladonVendingMachine
-	signpost 1, 10, SIGNPOST_UP, CeladonVendingMachine
-	signpost 1, 11, SIGNPOST_UP, CeladonVendingMachine
 
 .PersonEvents:
 	db 4

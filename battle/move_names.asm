@@ -168,7 +168,7 @@
 	db "Thief@"
 	db "Will-O-Wisp@"
 	db "Zen Headbutt@"
-	db "Nightmare@"
+	db "Facade@"
 	db "Flame Wheel@"
 	db "Hyper Voice@"
 	db "Curse@"

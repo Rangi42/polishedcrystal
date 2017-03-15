@@ -169,7 +169,7 @@
 	dw ThiefDescription
 	dw WillOWispDescription
 	dw ZenHeadbuttDescription
-	dw NightmareDescription
+	dw FacadeDescription
 	dw FlameWheelDescription
 	dw HyperVoiceDescription
 	dw CurseDescription
@@ -713,11 +713,8 @@ EarthquakeDescription:
 	next "vs. flying foes.@"
 
 AvalancheDescription:
-; TODO: implement Avalanche effect
-;	db   "Damage doubles if"
-;	next "user is hit first.@"
-	db   "Pelt the foe with"
-	next "ice and rocks.@"
+	db   "Damage doubles if"
+	next "user is hit first.@"
 
 IceShardDescription:
 	db   "Hurls icy shards."
@@ -847,9 +844,9 @@ ThiefDescription:
 	db   "An attack that may"
 	next "steal a held item.@"
 
-NightmareDescription:
-	db   "A sleeper loses"
-	next "1/4 HP every turn.@"
+FacadeDescription:
+	db   "Double damage with"
+	next "Psn, Brn, or Prz.@"
 
 HyperVoiceDescription:
 	db   "Attack the foe"

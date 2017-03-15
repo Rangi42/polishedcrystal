@@ -10,6 +10,7 @@ const_value set 2
 	const RADIOTOWER2F_JIGGLYPUFF
 	const RADIOTOWER2F_BUENA
 	const RADIOTOWER2F_RECEPTIONIST
+	const RADIOTOWER2F_ROCKER
 
 RadioTower2F_MapScriptHeader:
 .MapTriggers:
@@ -23,6 +24,9 @@ UnknownScript_0x5d6fd:
 
 SuperNerdScript_0x5d6fe:
 	jumptextfaceplayer UnknownText_0x5d924
+
+RadioTower2FRockerScript:
+	jumptextfaceplayer RadioTower2FRockerText
 
 TeacherScript_0x5d701:
 	faceplayer
@@ -347,6 +351,21 @@ UnknownText_0x5d924:
 	text "You can listen to"
 	line "the radio any-"
 	cont "where. Tune in!"
+	done
+
+RadioTower2FRockerText:
+	text "I have a radio"
+	line "interview to pro-"
+
+	para "mote my latest"
+	line "song."
+
+	para "I've performed in"
+	line "front of big"
+	cont "crowds before,"
+
+	para "but boy am I"
+	line "nervous."
 	done
 
 UnknownText_0x5d956:
@@ -732,11 +751,11 @@ RadioTower2F_MapEventHeader:
 	signpost 0, 13, SIGNPOST_READ, MapRadioTower2FSignpost5Script
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_SUPER_NERD, 6, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x5d6fe, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_TEACHER, 2, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5d701, -1
 	person_event SPRITE_ROCKET, 4, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_BLACK_BELT, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x5d71f, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
@@ -744,3 +763,4 @@ RadioTower2F_MapEventHeader:
 	person_event SPRITE_JIGGLYPUFF, 1, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RadioTowerJigglypuff, -1
 	person_event SPRITE_BUENA, 5, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Buena, -1
 	person_event SPRITE_RECEPTIONIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5d8ff, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_ROCKER, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower2FRockerScript, EVENT_GOLDENROD_CITY_CIVILIANS

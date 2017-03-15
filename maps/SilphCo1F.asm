@@ -1,6 +1,8 @@
 const_value set 2
 	const SILPHCO1F_RECEPTIONIST
 	const SILPHCO1F_OFFICER
+	const SILPHCO1F_GENTLEMAN
+	const SILPHCO1F_COOLTRAINER_F
 
 SilphCo1F_MapScriptHeader:
 .MapTriggers:
@@ -39,6 +41,12 @@ OfficerScript_0x18abe8:
 	closetext
 	end
 
+SilphCo1FGentlemanScript:
+	jumptextfaceplayer SilphCo1FGentlemanText
+
+SilphCo1FCooltrainerfScript:
+	jumptextfaceplayer SilphCo1FCooltrainerfText
+
 SilphCoReceptionistText:
 	text "Welcome. This is"
 	line "Silph Co.'s Head"
@@ -76,6 +84,27 @@ UnknownText_0x18aca8:
 	line "a tour upstairs."
 	done
 
+SilphCo1FGentlemanText:
+	text "I have an appoint-"
+	line "ment with the"
+
+	para "chief engineer"
+	line "here at Silph Co."
+	done
+
+SilphCo1FCooltrainerfText:
+	text "I'm trying to"
+	line "pluck up the"
+	cont "courage to ask"
+
+	para "the receptionist"
+	line "out on a date."
+
+	para "Just as soon as"
+	line "she's done on the"
+	cont "phone…"
+	done
+
 SilphCo1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -93,6 +122,8 @@ SilphCo1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 2
+	db 4
 	person_event SPRITE_RECEPTIONIST, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCoReceptionist, -1
 	person_event SPRITE_OFFICER, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18abe8, -1
+	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo1FGentlemanScript, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SilphCo1FCooltrainerfScript, -1

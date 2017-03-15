@@ -141,7 +141,7 @@ FrontpicPredef: ; 5108b
 	xor a
 	ld [hBGMapMode], a
 	call _GetFrontpic
-	call Function51103
+	call GetAnimatedFrontpic
 	pop af
 	ld [rSVBK], a
 	ret
@@ -162,7 +162,7 @@ _GetFrontpic: ; 510a5
 	pop bc
 	ld hl, wDecompressScratch
 	ld de, wDecompressScratch + $800
-	call Function512ab
+	call PadFrontpic
 	pop hl
 	push hl
 	ld de, wDecompressScratch
@@ -234,7 +234,7 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	pop bc
 	ret
 
-Function51103: ; 51103
+GetAnimatedFrontpic: ; 51103
 	ld a, $1
 	ld [rVBK], a
 	push hl
@@ -266,7 +266,7 @@ Function51103: ; 51103
 
 	push hl
 	push bc
-	call Function5114f
+	call LoadOrientedFrontpicTiles
 	pop bc
 	pop hl
 	ld de, wDecompressScratch
@@ -277,8 +277,9 @@ Function51103: ; 51103
 	ld [rVBK], a
 	ret
 
-Function5114f: ; 5114f
+LoadOrientedFrontpicTiles: ; 5114f
 	ld hl, wDecompressScratch
+; bc = c * $10
 	swap c
 	ld a, c
 	and $f
@@ -286,16 +287,18 @@ Function5114f: ; 5114f
 	ld a, c
 	and $f0
 	ld c, a
+; load the first c bytes to round down bc to a multiple of $100
 	push bc
 	call LoadFrontpic
 	pop bc
-.asm_51161
+; load the remaining bytes in batches of $100
+.loop
 	push bc
 	ld c, $0
 	call LoadFrontpic
 	pop bc
 	dec b
-	jr nz, .asm_51161
+	jr nz, .loop
 	ret
 
 GetBackpic: ; 5116c
@@ -495,47 +498,47 @@ FixBackpicAlignment: ; 5127c
 	pop de
 	ret
 
-Function512ab: ; 512ab
+PadFrontpic: ; 512ab
 	ld a, b
-	cp 6
-	jr z, .six
-	cp 5
+	sub 5
 	jr z, .five
+	dec a
+	jr z, .six
 
 .seven_loop
-	ld c, $70
+	ld c, 7 tiles
 	call LoadFrontpic
 	dec b
 	jr nz, .seven_loop
 	ret
 
 .six
-	ld c, $70
+	ld c, 7 tiles
 	xor a
 	call .Fill
 .six_loop
-	ld c, $10
+	ld c, 1 tiles
 	xor a
 	call .Fill
-	ld c, $60
+	ld c, 6 tiles
 	call LoadFrontpic
 	dec b
 	jr nz, .six_loop
 	ret
 
 .five
-	ld c, $70
+	ld c, 7 tiles
 	xor a
 	call .Fill
 .five_loop
-	ld c, $20
+	ld c, 2 tiles
 	xor a
 	call .Fill
-	ld c, $50
+	ld c, 5 tiles
 	call LoadFrontpic
 	dec b
 	jr nz, .five_loop
-	ld c, $70
+	ld c, 7 tiles
 	xor a
 	call .Fill
 	ret

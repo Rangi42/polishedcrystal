@@ -1216,29 +1216,12 @@ HandleResidualDamage:
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	bit SUBSTATUS_NIGHTMARE, [hl]
-	jr z, .not_nightmare
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_IN_NIGHTMARE
-	call Call_PlayBattleAnim_OnlyIfVisible
-	call GetQuarterMaxHP
-	call SubtractHPFromUser
-	ld hl, HasANightmareText
-	call StdBattleTextBox
-.not_nightmare
-
-	call HasUserFainted
-	ret z
-
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
 	bit SUBSTATUS_CURSE, [hl]
 	ret z
 
 	xor a
 	ld [wNumHits], a
-	ld de, ANIM_IN_NIGHTMARE
+	ld de, ANIM_UNDER_CURSE
 	call Call_PlayBattleAnim_OnlyIfVisible
 	call GetQuarterMaxHP
 	call SubtractHPFromUser
@@ -1816,6 +1799,7 @@ HandleWeather: ; 3cb9e
 .WeatherAnimations:
 	db RAIN_DANCE
 	db SUNNY_DAY
+	; TODO: use ANIM_IN_SANDSTORM and ANIM_IN_HAIL (16-bit values)
 	db SANDSTORM
 	db HAIL
 ; 3cc39
@@ -3616,7 +3600,11 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 ; 3d714
 
 FinalPkmnMusicAndAnimation:
-	; if this trainer has final text...
+	; if this is not a link battle...
+	ld a, [wLinkMode]
+	and a
+	ret nz
+	; ...and this trainer has final text...
 	farcall GetFinalPkmnTextPointer
 	ret nc
 	; ...and this is their last Pokémon...
@@ -4035,9 +4023,6 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jr nc, .can_escape
 	ld a, $1
 	ld [wPlayerAction], a
-	ld hl, BattleText_CantEscape2
-	jr .print_inescapable_text
-
 .cant_escape
 	ld hl, BattleText_CantEscape
 	jr .print_inescapable_text
@@ -4740,10 +4725,6 @@ UseHeldStatusHealingItem: ; 3dde9
 	call GetBattleVarAddr
 	and [hl]
 	res SUBSTATUS_TOXIC, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	and [hl]
-	res SUBSTATUS_NIGHTMARE, [hl]
 	ld a, b
 	cp ALL_STATUS
 	jr nz, .skip_confuse
@@ -8480,37 +8461,37 @@ TextJump_ComeBack: ; 3f35b
 ; 3f360
 
 
-HandleSafariAngerEatingStatus: ; unreferenced
-	ld hl, wSafariMonEating
-	ld a, [hl]
-	and a
-	jr z, .angry
-	dec [hl]
-	ld hl, BattleText_WildPkmnIsEating
-	jr .finish
-
-.angry
-	dec hl ; wSafariMonAngerCount
-	ld a, [hl]
-	and a
-	ret z
-	dec [hl]
-	ld hl, BattleText_WildPkmnIsAngry
-	jr nz, .finish
-	push hl
-	ld a, [EnemyMonSpecies]
-	ld [CurSpecies], a
-	call GetBaseData
-	ld a, [BaseCatchRate]
-	ld [EnemyMonCatchRate], a
-	pop hl
-
-.finish
-	push hl
-	call Call_LoadTempTileMapToTileMap
-	pop hl
-	jp StdBattleTextBox
-; 3f390
+;HandleSafariAngerEatingStatus: ; unreferenced
+;	ld hl, wSafariMonEating
+;	ld a, [hl]
+;	and a
+;	jr z, .angry
+;	dec [hl]
+;	ld hl, BattleText_WildPkmnIsEating
+;	jr .finish
+;
+;.angry
+;	dec hl ; wSafariMonAngerCount
+;	ld a, [hl]
+;	and a
+;	ret z
+;	dec [hl]
+;	ld hl, BattleText_WildPkmnIsAngry
+;	jr nz, .finish
+;	push hl
+;	ld a, [EnemyMonSpecies]
+;	ld [CurSpecies], a
+;	call GetBaseData
+;	ld a, [BaseCatchRate]
+;	ld [EnemyMonCatchRate], a
+;	pop hl
+;
+;.finish
+;	push hl
+;	call Call_LoadTempTileMapToTileMap
+;	pop hl
+;	jp StdBattleTextBox
+;; 3f390
 
 
 FillInExpBar: ; 3f390

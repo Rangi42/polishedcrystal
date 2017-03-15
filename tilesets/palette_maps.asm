@@ -57,7 +57,7 @@ Tileset19PalMap:
 INCLUDE "tilesets/lighthouse_palette_map.asm"
 
 Tileset20PalMap:
-INCLUDE "tilesets/bedroom_palette_map.asm"
+INCLUDE "tilesets/kanto2_palette_map.asm"
 
 Tileset21PalMap:
 INCLUDE "tilesets/pokecom_palette_map.asm"
@@ -110,7 +110,7 @@ Tileset40PalMap:
 INCLUDE "tilesets/decor_palette_map.asm"
 
 Tileset41PalMap:
-INCLUDE "tilesets/kanto2_palette_map.asm"
+INCLUDE "tilesets/shamouti_palette_map.asm"
 
 Tileset42PalMap:
-INCLUDE "tilesets/shamouti_palette_map.asm"
+INCLUDE "tilesets/museum_palette_map.asm"

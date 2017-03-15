@@ -353,15 +353,6 @@ UnknownScript_0x54c64:
 	buttonsound
 	jump UnknownScript_0x54c5e
 
-BillsHouseBookshelf1:
-	jumpstd picturebookshelf
-
-BillsHouseBookshelf2:
-	jumpstd magazinebookshelf
-
-BillsHouseRadio:
-	jumpstd radio2
-
 BillsGrandpaIntroText:
 	text "Hm? You know Bill?"
 	line "He's my grandson."
@@ -623,10 +614,7 @@ GoldenrodBillsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 1, 0, SIGNPOST_READ, BillsHouseBookshelf2
-	signpost 1, 1, SIGNPOST_READ, BillsHouseBookshelf1
-	signpost 1, 7, SIGNPOST_READ, BillsHouseRadio
+	db 0
 
 .PersonEvents:
 	db 3

@@ -9,7 +9,6 @@
 	enum townmap
 	enum window
 	enum tv
-	enum homepage
 	enum radio1
 	enum radio2
 	enum trashcan
@@ -44,6 +43,7 @@
 	enum giftf
 	enum packfullf
 	enum rematchgiftf
+	enum gymstatue0
 	enum gymstatue1
 	enum gymstatue2
 	enum gymstatue3
@@ -52,3 +52,7 @@
 	enum gamecornercoinvendor
 	enum happinesschecknpc
 	enum cuttree
+	enum refrigerator
+	enum sink
+	enum stove
+	enum vendingmachine

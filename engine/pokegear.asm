@@ -514,7 +514,12 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	ld b, a
 	ld a, [hMinutes]
 	ld c, a
+	ld a, [Options2]
+	bit CLOCK_FORMAT, a
 	decoord 6, 8
+	jr z, .h12
+	decoord 8, 8
+.h12
 	farcall PrintHoursMins
 	ld hl, .DayText
 	bccoord 6, 6
@@ -1966,7 +1971,7 @@ _TownMap: ; 9191c
 	call TownMapJohtoFlips
 	jr .okay_flips
 .kanto3
-	call TownMapJohtoFlips
+	call TownMapKantoFlips
 .okay_flips
 	ret
 ; 91a53

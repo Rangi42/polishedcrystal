@@ -1,6 +1,6 @@
 const_value set 2
 	const CHERRYGROVEGYMSPEECHHOUSE_POKEFAN_M
-	const CHERRYGROVEGYMSPEECHHOUSE_BUG_CATCHER
+	const CHERRYGROVEGYMSPEECHHOUSE_CHILD
 
 CherrygroveGymSpeechHouse_MapScriptHeader:
 .MapTriggers:
@@ -12,11 +12,8 @@ CherrygroveGymSpeechHouse_MapScriptHeader:
 PokefanMScript_0x196ae1:
 	jumptextfaceplayer UnknownText_0x196aea
 
-BugCatcherScript_0x196ae4:
+ChildScript_0x196ae4:
 	jumptextfaceplayer UnknownText_0x196b65
-
-CherrygroveGymSpeechHouseBookshelf:
-	jumpstd picturebookshelf
 
 UnknownText_0x196aea:
 	text "You're trying to"
@@ -57,11 +54,9 @@ CherrygroveGymSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CherrygroveGymSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, CherrygroveGymSpeechHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 2
 	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x196ae1, -1
-	person_event SPRITE_BUG_CATCHER, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x196ae4, -1
+	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ChildScript_0x196ae4, -1

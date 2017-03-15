@@ -216,10 +216,10 @@ LoadPalette_White_Col1_Col2_Black:
 	ld a, $5
 	ld [rSVBK], a
 
-	ld a, $7fff % $100
+	ld a, $7fff % $100 ; (RGB 31, 31, 31) % $100
 	ld [de], a
 	inc de
-	ld a, $7fff / $100
+	ld a, $7fff / $100 ; (RGB 31, 31, 31) / $100
 	ld [de], a
 	inc de
 
@@ -231,11 +231,11 @@ LoadPalette_White_Col1_Col2_Black:
 	dec c
 	jr nz, .loop
 
-	xor a
+	xor a ; RGB 00, 00, 00
+rept 2
 	ld [de], a
 	inc de
-	ld [de], a
-	inc de
+endr
 
 	pop af
 	ld [rSVBK], a

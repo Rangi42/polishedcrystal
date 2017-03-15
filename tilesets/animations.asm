@@ -67,10 +67,15 @@ Tileset04Anim:
 Tileset03Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $40, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  AnimateKantoFlowerTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -97,6 +102,25 @@ Tileset15Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  SafariFountainAnim1
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
+
+Tileset20Anim:
+	dw VTiles2 tile $14, AnimateKantoWaterTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $20, ScrollTileUp
+	dw VTiles2 tile $21, ScrollTileDown
+	dw VTiles2 tile $22, ScrollTileLeft
+	dw VTiles2 tile $23, ScrollTileRight
+	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateKantoFlowerTile
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $20, ScrollTileUp
+	dw VTiles2 tile $21, ScrollTileDown
+	dw VTiles2 tile $22, ScrollTileLeft
+	dw VTiles2 tile $23, ScrollTileRight
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
@@ -257,25 +281,6 @@ Tileset39Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset41Anim:
-	dw VTiles2 tile $14, AnimateKantoWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $20, ScrollTileUp
-	dw VTiles2 tile $21, ScrollTileDown
-	dw VTiles2 tile $22, ScrollTileLeft
-	dw VTiles2 tile $23, ScrollTileRight
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateKantoFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $20, ScrollTileUp
-	dw VTiles2 tile $21, ScrollTileDown
-	dw VTiles2 tile $22, ScrollTileLeft
-	dw VTiles2 tile $23, ScrollTileRight
-	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-Tileset42Anim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -303,7 +308,6 @@ Tileset16Anim:
 Tileset17Anim:
 Tileset18Anim:
 Tileset19Anim:
-Tileset20Anim:
 Tileset21Anim:
 Tileset22Anim:
 Tileset26Anim:
@@ -315,6 +319,7 @@ Tileset35Anim:
 Tileset36Anim:
 Tileset37Anim:
 Tileset40Anim:
+Tileset42Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

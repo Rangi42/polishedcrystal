@@ -170,7 +170,7 @@ BattleAnimations::
 	dw BattleAnim_Thief
 	dw BattleAnim_WillOWisp
 	dw BattleAnim_ZenHeadbutt
-	dw BattleAnim_Nightmare
+	dw BattleAnim_Facade
 	dw BattleAnim_FlameWheel
 	dw BattleAnim_HyperVoice
 	dw BattleAnim_Curse
@@ -269,7 +269,7 @@ BattleAnimations::
 	dw BattleAnim_InLove
 	dw BattleAnim_InSandstorm
 	dw BattleAnim_InHail
-	dw BattleAnim_InNightmare
+	dw BattleAnim_UnderCurse
 	dw BattleAnim_InWhirlpool
 	dw BattleAnim_Miss
 	dw BattleAnim_EnemyDamage
@@ -611,7 +611,7 @@ BattleAnim_InHail:
 	anim_wait 8
 	anim_ret
 
-BattleAnim_InNightmare:
+BattleAnim_UnderCurse:
 	anim_1gfx ANIM_GFX_ANGELS
 	anim_sound 0, 0, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_95,   8, 4,  10, 0, $0
@@ -1433,6 +1433,7 @@ BattleAnim_Explosion:
 	anim_jumpif $1, .loop
 	anim_call BattleAnim_Explosion_branch_cbb8f
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 .loop
@@ -1606,6 +1607,7 @@ BattleAnim_XScissor:
 	anim_obj ANIM_OBJ_3A, 18, 4,  5, 0, $0
 	anim_obj ANIM_OBJ_3B, 14, 4,  5, 0, $0
 	anim_wait 20
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Scratch:
@@ -2065,6 +2067,7 @@ BattleAnim_Rest:
 	anim_ret
 
 BattleAnim_Splash:
+BattleAnim_Facade: ; TODO: design custom animation for Facade
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_VICEGRIP
 	anim_call BattleAnim_FollowPlayerHead_0
@@ -2562,6 +2565,7 @@ BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam
 	anim_wait 4
 	anim_obj ANIM_OBJ_6C, -15, 0,   7, 0, $38
 	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 ; Astonish animation from Pokémon Prism
@@ -3222,17 +3226,6 @@ BattleAnim_BugBuzz:
 	anim_wait 4
 	anim_obj ANIM_OBJ_4C,  8, 0, 11, 0, $2
 	anim_wait 24
-	anim_ret
-
-BattleAnim_Nightmare:
-	anim_1gfx ANIM_GFX_ANGELS
-	anim_bgp $1b
-	anim_obp0 $f
-	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $0
-	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $a0
-	anim_sound 0, 1, SFX_NIGHTMARE
-	anim_wait 96
-	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FlameWheel:
@@ -3972,7 +3965,6 @@ BattleAnim_MilkDrink:
 	anim_ret
 
 BattleAnim_Spark:
-BattleAnim_WildCharge: ; TODO: design custom animation for Wild Charge
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_sound 0, 0, SFX_ZAP_CANNON
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
@@ -3992,6 +3984,29 @@ BattleAnim_WildCharge: ; TODO: design custom animation for Wild Charge
 	anim_obj ANIM_OBJ_LIGHTNING_BOLT, -15, 0,   7, 0, $2
 	anim_obj ANIM_OBJ_33, -15, 0,   7, 0, $0
 	anim_wait 32
+	anim_ret
+	
+BattleAnim_WildCharge:
+	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
+	anim_sound 0, 0, SFX_ZAP_CANNON
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
+	anim_obj ANIM_OBJ_30,   6, 0,  11, 4, $0
+	anim_wait 24
+	anim_setobj $1, $3
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_sound 0, 0, SFX_SPARK
+	anim_wait 16
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 4
+	anim_incobj  2
+	anim_wait 1
+	anim_bgp $1b
+	anim_sound 0, 1, SFX_THUNDERSHOCK
+	anim_obj ANIM_OBJ_LIGHTNING_BOLT, -15, 0,   7, 0, $2
+	anim_obj ANIM_OBJ_33, -15, 0,   7, 0, $0
+	anim_wait 32
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_FuryCutter:
@@ -4151,7 +4166,6 @@ BattleAnim_PainSplit:
 	anim_ret
 
 BattleAnim_SacredFire:
-BattleAnim_FlareBlitz: ; TODO: design custo animation for Flare Blitz
 	anim_1gfx ANIM_GFX_FIRE
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
@@ -4169,6 +4183,39 @@ BattleAnim_FlareBlitz: ; TODO: design custo animation for Flare Blitz
 	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $4
 	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $5
 	anim_wait 8
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
+	anim_wait 4
+	anim_incobj  9
+	anim_wait 8
+	anim_ret
+	
+BattleAnim_FlareBlitz:
+	anim_1gfx ANIM_GFX_FIRE
+.loop
+	anim_sound 0, 0, SFX_EMBER
+	anim_obj ANIM_OBJ_7F,   6, 0,  12, 0, $0
+	anim_wait 6
+	anim_sound 0, 0, SFX_EMBER
+	anim_obj ANIM_OBJ_80,   6, 0,  13, 0, $0
+	anim_wait 6
+	anim_loop 4, .loop
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_sound 0, 0, SFX_OUTRAGE
+	anim_wait 96
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_wait 4
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
+	anim_sound 0, 1, SFX_EMBER
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $1
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $4
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $5
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $2
+	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $3
+	anim_wait 4
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
+	anim_wait 4	
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_wait 4
 	anim_incobj  9
@@ -5451,4 +5498,15 @@ BattleAnim_ShowMon_1:
 ;	anim_obj ANIM_OBJ_06, -15, 0,   7, 0, $0
 ;	anim_wait 6
 ;	anim_loop 3, .loop
+;	anim_ret
+
+;BattleAnim_Nightmare: ; removed
+;	anim_1gfx ANIM_GFX_ANGELS
+;	anim_bgp $1b
+;	anim_obp0 $f
+;	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $0
+;	anim_obj ANIM_OBJ_94, -16, 4,   5, 0, $a0
+;	anim_sound 0, 1, SFX_NIGHTMARE
+;	anim_wait 96
+;	anim_bgp $e4
 ;	anim_ret

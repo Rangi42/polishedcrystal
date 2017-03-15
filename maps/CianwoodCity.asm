@@ -78,6 +78,7 @@ UnknownScript_0x1a001e:
 	dontrestartmapmusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
 	reloadmapafterbattle
+	special DeleteSavedMusic
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	opentext
 	writetext UnknownText_0x1a05c3
@@ -89,7 +90,6 @@ UnknownScript_0x1a001e:
 	special RunCallback_04
 	pause 20
 	special Special_FadeOutMusic
-	special DeleteSavedMusic
 	playmapmusic
 	pause 10
 .Done:

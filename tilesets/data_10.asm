@@ -25,20 +25,3 @@ INCBIN "tilesets/faraway_metatiles.bin"
 Tileset38Coll:
 INCBIN "tilesets/faraway_collision.bin"
 
-Tileset39GFX:
-INCBIN "gfx/tilesets/tunnel.2bpp.lz"
-
-Tileset39Meta:
-INCBIN "tilesets/tunnel_metatiles.bin"
-
-Tileset39Coll:
-INCBIN "tilesets/tunnel_collision.bin"
-
-Tileset40GFX:
-INCBIN "gfx/tilesets/decor.2bpp.lz"
-
-Tileset40Meta:
-INCBIN "tilesets/decor_metatiles.bin"
-
-Tileset40Coll:
-INCBIN "tilesets/decor_collision.bin"

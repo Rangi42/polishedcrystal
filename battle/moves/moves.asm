@@ -50,7 +50,11 @@ endc
 	move SAND_ATTACK,  EFFECT_ACCURACY_DOWN,       0, GROUND,    100, 15,   0, STATUS
 	move HEADBUTT,     EFFECT_FLINCH_HIT,         70, NORMAL,    100, 15,  30, PHYSICAL
 	move HORN_ATTACK,  EFFECT_NORMAL_HIT,         65, NORMAL,    100, 25,   0, PHYSICAL
+if DEF(FAITHFUL)
 	move FURY_ATTACK,  EFFECT_MULTI_HIT,          15, NORMAL,     85, 20,   0, PHYSICAL
+else
+	move FURY_ATTACK,  EFFECT_MULTI_HIT,          20, NORMAL,     85, 20,   0, PHYSICAL
+endc
 	move HEX,          EFFECT_HEX,                65, GHOST,     100, 10,   0, SPECIAL
 	move TACKLE,       EFFECT_NORMAL_HIT,         40, NORMAL,    100, 35,   0, PHYSICAL
 	move BODY_SLAM,    EFFECT_PARALYZE_HIT,       85, NORMAL,    100, 15,  30, PHYSICAL
@@ -202,7 +206,11 @@ else
 	move CRABHAMMER,   EFFECT_NORMAL_HIT,        100, WATER,      95, 10,   0, PHYSICAL
 endc
 	move EXPLOSION,    EFFECT_EXPLOSION,         250, NORMAL,    100,  5,   0, PHYSICAL
+if DEF(FAITHFUL)
 	move FURY_SWIPES,  EFFECT_MULTI_HIT,          18, NORMAL,     80, 15,   0, PHYSICAL
+else
+	move FURY_SWIPES,  EFFECT_MULTI_HIT,          20, NORMAL,     80, 15,   0, PHYSICAL
+endc
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,     90, 10,   0, PHYSICAL
 	move REST,         EFFECT_HEAL,                0, PSYCHIC,   100, 10,   0, STATUS
 	move ROCK_SLIDE,   EFFECT_FLINCH_HIT,         75, ROCK,       90, 10,  30, PHYSICAL
@@ -219,7 +227,7 @@ endc
 	move THIEF,        EFFECT_THIEF,              60, DARK,      100, 25, 100, PHYSICAL
 	move WILL_O_WISP,  EFFECT_BURN,                0, FIRE,       85, 15,   0, STATUS
 	move ZEN_HEADBUTT, EFFECT_FLINCH_HIT,         80, PSYCHIC,    90, 15,  20, PHYSICAL
-	move NIGHTMARE,    EFFECT_NIGHTMARE,           0, GHOST,     100, 15,   0, STATUS
+	move FACADE,       EFFECT_FACADE,             70, NORMAL,    100, 20,   0, PHYSICAL
 	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,      100, 25,  10, PHYSICAL
 	move HYPER_VOICE,  EFFECT_NORMAL_HIT,         90, NORMAL,    100, 10,   0, SPECIAL
 	move CURSE,        EFFECT_CURSE,               0, GHOST,     100, 10,   0, STATUS

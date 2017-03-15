@@ -15,9 +15,6 @@ PokefanFScript_0x191eb7:
 YoungsterScript_0x191eba:
 	jumptextfaceplayer UnknownText_0x191f16
 
-VermilionMagnetTrainSpeechHouseBookshelf:
-	jumpstd picturebookshelf
-
 UnknownText_0x191ec0:
 	text "Do you know about"
 	line "the Magnet Train?"
@@ -46,9 +43,7 @@ VermilionMagnetTrainSpeechHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, VermilionMagnetTrainSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, VermilionMagnetTrainSpeechHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 2

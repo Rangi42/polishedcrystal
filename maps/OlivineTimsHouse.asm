@@ -16,9 +16,6 @@ Tim:
 	closetext
 	end
 
-TimsHouseBookshelf:
-	jumpstd magazinebookshelf
-
 OlivineTimsHouse_MapEventHeader:
 	; filler
 	db 0, 0
@@ -32,9 +29,7 @@ OlivineTimsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, TimsHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, TimsHouseBookshelf
+	db 0
 
 .PersonEvents:
 	db 1

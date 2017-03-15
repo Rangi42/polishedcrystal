@@ -13,6 +13,7 @@ const_value set 2
 	const NATIONALPARK_POKE_BALL1
 	const NATIONALPARK_GAMEBOY_KID
 	const NATIONALPARK_POKE_BALL2
+	const NATIONALPARK_BUG_MANIAC
 
 NationalPark_MapScriptHeader:
 .MapTriggers:
@@ -41,6 +42,17 @@ UnknownScript_0x5c01d:
 	writetext UnknownText_0x5c30d
 	waitbutton
 UnknownScript_0x5c021:
+	closetext
+	end
+
+TrainerBugManiacLou:
+	trainer EVENT_BEAT_BUG_MANIAC_LOU, BUG_MANIAC, LOU, BugManiacLouSeenText, BugManiacLouBeatenText, 0, BugManiacLouScript
+
+BugManiacLouScript:
+	end_if_just_battled
+	opentext
+	writetext BugManiacLouAfterText
+	waitbutton
 	closetext
 	end
 
@@ -523,6 +535,24 @@ UnknownText_0x5c71d:
 	cont "because I'm cute!"
 	done
 
+BugManiacLouSeenText:
+	text "Nobody can beat"
+	line "my passion for"
+	cont "bug #mon!"
+	done
+
+BugManiacLouBeatenText:
+	text "How can this be?!"
+	done
+
+BugManiacLouAfterText:
+	text "I used to be just"
+	line "a Bug Catcher,"
+
+	para "but I evolved into"
+	line "a Bug Maniac!"
+	done
+
 UnknownText_0x5c750:
 	text "Relaxation Square"
 	line "National Park"
@@ -572,7 +602,7 @@ NationalPark_MapEventHeader:
 	signpost 4, 14, SIGNPOST_READ, MapNationalParkSignpost3Script
 
 .PersonEvents:
-	db 14
+	db 15
 	person_event SPRITE_LASS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x5c002, -1
 	person_event SPRITE_POKEFAN_F, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x5c005, -1
 	person_event SPRITE_TEACHER, 40, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1
@@ -587,3 +617,4 @@ NationalPark_MapEventHeader:
 	person_event SPRITE_POKE_BALL, 12, 37, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, NationalParkShinyStone, EVENT_NATIONAL_PARK_SHINY_STONE
 	person_event SPRITE_GAMEBOY_KID, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x5c037, -1
 	person_event SPRITE_POKE_BALL, 43, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, NationalParkTMDig, EVENT_NATIONAL_PARK_TM_DIG
+	person_event SPRITE_BUG_MANIAC, 13, 28, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacLou, -1

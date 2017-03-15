@@ -101,7 +101,7 @@ EcruteakDestinyKnotHouse_BlockData:
 VioletNicknameSpeechHouse_BlockData:
 VioletOnixTradeHouse_BlockData:
 ValeriesHouse_BlockData:
-	INCBIN "maps/House2.blk"
+	INCBIN "maps/TraditionalHouse.blk"
 
 UnionCaveB1F_BlockData:
 	INCBIN "maps/UnionCaveB1F.blk"

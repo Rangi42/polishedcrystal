@@ -1,7 +1,7 @@
 const_value set 2
-	const ROUTE2_BUG_CATCHER1
-	const ROUTE2_BUG_CATCHER2
-	const ROUTE2_BUG_CATCHER3
+	const ROUTE2_BUG_MANIAC1
+	const ROUTE2_BUG_MANIAC2
+	const ROUTE2_BUG_MANIAC3
 	const ROUTE2_POKE_BALL1
 	const ROUTE2_POKE_BALL2
 	const ROUTE2_CUT_TREE1
@@ -18,10 +18,10 @@ Route2_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-TrainerBug_catcherRob:
-	trainer EVENT_BEAT_BUG_CATCHER_ROB, BUG_CATCHER, ROB, Bug_catcherRobSeenText, Bug_catcherRobBeatenText, 0, Bug_catcherRobScript
+TrainerBug_maniacRob:
+	trainer EVENT_BEAT_BUG_MANIAC_ROB, BUG_MANIAC, ROB, Bug_maniacRobSeenText, Bug_maniacRobBeatenText, 0, Bug_maniacRobScript
 
-Bug_catcherRobScript:
+Bug_maniacRobScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1ac34d
@@ -29,10 +29,10 @@ Bug_catcherRobScript:
 	closetext
 	end
 
-TrainerBug_catcherEd:
-	trainer EVENT_BEAT_BUG_CATCHER_ED, BUG_CATCHER, ED, Bug_catcherEdSeenText, Bug_catcherEdBeatenText, 0, Bug_catcherEdScript
+TrainerBug_maniacEd:
+	trainer EVENT_BEAT_BUG_MANIAC_ED, BUG_MANIAC, ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText, 0, Bug_maniacEdScript
 
-Bug_catcherEdScript:
+Bug_maniacEdScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1ac3cf
@@ -40,10 +40,10 @@ Bug_catcherEdScript:
 	closetext
 	end
 
-TrainerBug_catcherDoug:
-	trainer EVENT_BEAT_BUG_CATCHER_DOUG, BUG_CATCHER, DOUG, Bug_catcherDougSeenText, Bug_catcherDougBeatenText, 0, Bug_catcherDougScript
+TrainerBug_maniacDoug:
+	trainer EVENT_BEAT_BUG_MANIAC_DOUG, BUG_MANIAC, DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText, 0, Bug_maniacDougScript
 
-Bug_catcherDougScript:
+Bug_maniacDougScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x1ac423
@@ -69,13 +69,13 @@ Route2Elixer:
 FruitTreeScript_0x1ac306:
 	fruittree FRUITTREE_ROUTE_2
 
-Bug_catcherRobSeenText:
+Bug_maniacRobSeenText:
 	text "My bug #mon are"
 	line "tough. Prepare to"
 	cont "lose!"
 	done
 
-Bug_catcherRobBeatenText:
+Bug_maniacRobBeatenText:
 	text "I was whipped…"
 	done
 
@@ -85,7 +85,7 @@ UnknownText_0x1ac34d:
 	cont "#mon."
 	done
 
-Bug_catcherEdSeenText:
+Bug_maniacEdSeenText:
 	text "If you walk in"
 	line "tall grass wearing"
 
@@ -93,7 +93,7 @@ Bug_catcherEdSeenText:
 	line "nicks and cuts?"
 	done
 
-Bug_catcherEdBeatenText:
+Bug_maniacEdBeatenText:
 	text "Ouch, ouch, ouch!"
 	done
 
@@ -103,12 +103,12 @@ UnknownText_0x1ac3cf:
 	cont "take a bath."
 	done
 
-Bug_catcherDougSeenText:
+Bug_maniacDougSeenText:
 	text "Why don't girls"
 	line "like bug #mon?"
 	done
 
-Bug_catcherDougBeatenText:
+Bug_maniacDougBeatenText:
 	text "No good!"
 	done
 
@@ -159,9 +159,9 @@ Route2_MapEventHeader:
 
 .PersonEvents:
 	db 11
-	person_event SPRITE_BUG_CATCHER, 59, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherRob, -1
-	person_event SPRITE_BUG_CATCHER, 6, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherEd, -1
-	person_event SPRITE_BUG_CATCHER, 52, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDoug, -1
+	person_event SPRITE_BUG_MANIAC, 59, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacRob, -1
+	person_event SPRITE_BUG_MANIAC, 6, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
+	person_event SPRITE_BUG_MANIAC, 52, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacDoug, -1
 	person_event SPRITE_POKE_BALL, 4, 19, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2Carbos, EVENT_ROUTE_2_CARBOS
 	person_event SPRITE_POKE_BALL, 66, 14, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_ITEMBALL, 0, Route2Elixer, EVENT_ROUTE_2_ELIXER
 	person_event SPRITE_CUT_TREE, 10, 5, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route2CutTree, EVENT_ROUTE_2_CUT_TREE_1

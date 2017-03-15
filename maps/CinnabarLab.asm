@@ -69,6 +69,7 @@ CinnabarLabCelebiEventScript:
 	cry MEWTWO
 	waitsfx
 	closetext
+	clearevent EVENT_TIME_TRAVELING
 	winlosstext CinnabarLabGiovanniBeatenText, 0
 	setlasttalked CINNABARLAB_GIOVANNI
 	loadtrainer GIOVANNI, GIOVANNI1
@@ -77,6 +78,7 @@ CinnabarLabCelebiEventScript:
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_NONE
+	setevent EVENT_TIME_TRAVELING
 	opentext
 	writetext CinnabarLabGiovanniAfterText
 	waitbutton

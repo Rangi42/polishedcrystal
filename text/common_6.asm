@@ -100,38 +100,13 @@ WonderTradeForGSBallPichuText::
 	line "it carefully."
 	prompt
 
-SilphMartIntroText::
-	text "Hi there!"
-
-	para "Silph and Devon"
-	line "partnered up"
-
-	para "to design some"
-	line "special new #"
-	cont "Balls."
-
-	para "Want to buy them"
-	line "before they're"
-	cont "released?"
-	done
-
-SilphMartBagFullText::
-	text "You don't have"
-	line "space for it."
-	done
-
-SilphMartInsufficientFundsText::
-	text "That's not enough"
-	line "money…"
-	done
-
-SilphMartComeAgainText::
-	text "Come by again!"
-	done
-
 AdventurerMartIntroText::
 	text "I picked up some"
 	line "rare items abroad!"
+	done
+
+AdventurerMartComeAgainText::
+	text "Come by again!"
 	done
 
 InformalMartIntroText::

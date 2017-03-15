@@ -1,7 +1,8 @@
 const_value set 2
 	const SILPHCO2F_SCIENTIST1
 	const SILPHCO2F_SCIENTIST2
-	const SILPHCO2F_SCIENTIST3
+	const SILPHCO2F_SILPH_EMPLOYEE1
+	const SILPHCO2F_SILPH_EMPLOYEE2
 
 SilphCo2F_MapScriptHeader:
 .MapTriggers:
@@ -30,8 +31,11 @@ SilphCo2FScientist1NoRoomForUpGradeScript:
 SilphCo2FScientist2Script:
 	jumptextfaceplayer SilphCo2FScientist2Text
 
-SilphCo2FScientist3Script:
-	jumptextfaceplayer SilphCo2FScientist3Text
+SilphCo2FSilphEmployee1Script:
+	jumptextfaceplayer SilphCo2FSilphEmployee1Text
+
+SilphCo2FSilphEmployee2Script:
+	jumptextfaceplayer SilphCo2FSilphEmployee2Text
 
 SilphCo2FDeptSign:
 	jumptext SilphCo2FDeptSignText
@@ -62,6 +66,12 @@ SilphCo2FScientist1Text2:
 	done
 
 SilphCo2FScientist2Text:
+	text "I'm coding! Don't"
+	line "break my concen-"
+	cont "tration!"
+	done
+
+SilphCo2FSilphEmployee1Text:
 	text "We used to use"
 	line "teleporters to get"
 
@@ -72,10 +82,18 @@ SilphCo2FScientist2Text:
 	line "the second floor!"
 	done
 
-SilphCo2FScientist3Text:
-	text "I'm coding! Don't"
-	line "break my concen-"
-	cont "tration!"
+SilphCo2FSilphEmployee2Text:
+	text "We're always work-"
+	line "ing on new TMs."
+
+	para "Some have been"
+	line "discontinued, but"
+
+	para "others are so pop-"
+	line "ular that they"
+
+	para "haven't changed in"
+	line "over 20 years!"
 	done
 
 SilphCo2FDeptSignText:
@@ -111,7 +129,8 @@ SilphCo2F_MapEventHeader:
 	signpost 3, 13, SIGNPOST_READ, SilphCo2FBookshelf
 
 .PersonEvents:
-	db 3
+	db 4
 	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	person_event SPRITE_SCIENTIST, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist2Script, -1
-	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist3Script, -1
+	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist2Script, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee1Script, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee2Script, -1

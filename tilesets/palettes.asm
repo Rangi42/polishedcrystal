@@ -22,14 +22,14 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, BattleTowerPalette
 	cp TILESET_BATTLE_TOWER
 	jp z, .load_eight_bg_palettes
-	ld hl, HousePalette
-	cp TILESET_HOUSE_1
-	jp z, .load_eight_bg_palettes
 	ld hl, GatePalette
 	cp TILESET_GATE
 	jp z, .load_eight_bg_palettes
 	ld hl, RadioTowerPalette
 	cp TILESET_RADIO_TOWER
+	jp z, .load_eight_bg_palettes
+	ld hl, GameCornerPalette
+	cp TILESET_GAME_CORNER
 	jp z, .load_eight_bg_palettes
 	ld hl, CeladonMansionPalette
 	cp TILESET_CELADON_MANSION
@@ -43,7 +43,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
 	cp TILESET_ICE_PATH
-	jp z, .maybe_ice_path
+	jp z, .ice_path_or_hall_of_fame
 	cp TILESET_FOREST
 	jp z, .maybe_yellow_forest_or_murky_swamp
 	cp TILESET_GYM_1
@@ -52,6 +52,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_viridian_gym
 	cp TILESET_OLIVINE_GYM
 	jp z, .maybe_lances_room
+	cp TILESET_PORT
+	jp z, .maybe_cerulean_gym
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
 	cp TILESET_MART
@@ -102,11 +104,12 @@ LoadSpecialMapPalette: ; 494ac
 	scf
 	ret
 
-.maybe_ice_path
+.ice_path_or_hall_of_fame
+	ld hl, LancesRoomPalette
 	ld a, [wPermission] ; permission
 	and 7
 	cp 3 ; Hall of Fame
-	jp z, .do_nothing
+	jp z, .load_eight_bg_palettes
 	ld hl, IcePathPalette
 	jp .load_eight_bg_palettes
 
@@ -159,6 +162,16 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, LancesRoomPalette
 	jp .load_eight_bg_palettes
 
+.maybe_cerulean_gym
+	ld a, [MapGroup]
+	cp GROUP_CERULEAN_GYM
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_CERULEAN_GYM
+	jp nz, .do_nothing
+	ld hl, CeruleanGymPalette
+	jp .load_eight_bg_palettes
+
 .maybe_viridian_gym
 	ld a, [MapGroup]
 	cp GROUP_VIRIDIAN_GYM
@@ -182,12 +195,22 @@ LoadSpecialMapPalette: ; 494ac
 .maybe_embedded_tower
 	ld a, [MapGroup]
 	cp GROUP_EMBEDDED_TOWER
-	jp nz, .do_nothing
+	jp nz, .maybe_tin_tower_roof
 	ld a, [MapNumber]
 	cp MAP_EMBEDDED_TOWER
-	jp nz, .do_nothing
-	ld hl, EmbeddedTowerPalette
+	jp nz, .maybe_tin_tower_roof
+	ld hl, MystriStagePalette
 	jp .load_eight_bg_palettes
+
+.maybe_tin_tower_roof
+	ld a, [MapGroup]
+	cp GROUP_TIN_TOWER_ROOF
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_TIN_TOWER_ROOF
+	jp nz, .do_nothing
+	ld hl, TinTowerRoofPalette
+	jp .load_eight_time_of_day_bg_palettes
 
 .maybe_goldenrod_dept_store_roof
 	ld a, [MapGroup]
@@ -292,16 +315,15 @@ IcePathPalette: ; 4959f
 INCLUDE "tilesets/ice_path.pal"
 ; 495df
 
-HousePalette: ; 495ee
-INCLUDE "tilesets/house.pal"
-; 4962e
-
 GatePalette:
 INCLUDE "tilesets/gate.pal"
 
 RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
+
+GameCornerPalette:
+INCLUDE "tilesets/game_corner.pal"
 
 CeladonMansionPalette:
 INCLUDE "tilesets/celadon_mansion.pal"
@@ -339,6 +361,9 @@ INCLUDE "tilesets/karens_room.pal"
 LancesRoomPalette:
 INCLUDE "tilesets/lances_room.pal"
 
+CeruleanGymPalette:
+INCLUDE "tilesets/cerulean_gym.pal"
+
 ViridianGymPalette:
 INCLUDE "tilesets/viridian_gym.pal"
 
@@ -347,6 +372,9 @@ INCLUDE "tilesets/mystri_stage.pal"
 
 EmbeddedTowerPalette:
 INCLUDE "tilesets/embedded_tower.pal"
+
+TinTowerRoofPalette:
+INCLUDE "tilesets/tin_tower_roof.pal"
 
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"

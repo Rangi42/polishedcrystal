@@ -122,19 +122,11 @@ KRIS EQU __enum__
 	const ARNIE4
 	const ARNIE5
 	const DON
-	const ROB
-	const ED
 	const BENNY
 	const AL
 	const JOSH
 	const KEN
-	const DOUG
 	const WAYNE
-	const DANE
-	const DION
-	const STACEY
-	const ELLIS
-	const ABNER
 
 	trainerclass CAMPER ; 21
 	const TODD1
@@ -332,6 +324,7 @@ KRIS EQU __enum__
 	const AIDAN
 
 	trainerclass COSPLAYER ; 2e
+	const CLARA
 
 	trainerclass SUPER_NERD ; 2f
 	const STAN
@@ -377,6 +370,15 @@ KRIS EQU __enum__
 	const CHARLOTTE
 
 	trainerclass BUG_MANIAC ; 32
+	const LOU
+	const ROB
+	const ED
+	const DOUG
+	const DANE
+	const DION
+	const STACEY
+	const ELLIS
+	const ABNER
 
 	trainerclass RUIN_MANIAC ; 33
 

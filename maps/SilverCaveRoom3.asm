@@ -37,9 +37,10 @@ Red:
 	opentext
 	writetext .Text1
 	waitbutton
-	checkitem MYSTICTICKET
+	checkevent EVENT_GOT_MYSTICTICKET_FROM_RED
 	iftrue .AlreadyHaveMysticTicket
 	verbosegiveitem MYSTICTICKET
+	setevent EVENT_GOT_MYSTICTICKET_FROM_RED
 .AlreadyHaveMysticTicket
 	closetext
 	special Special_FadeBlackQuickly
@@ -68,7 +69,7 @@ SilverCaveRoom3_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $21, $9, 2, SILVER_CAVE_ROOM_2
+	warp_def $1d, $9, 2, SILVER_CAVE_ROOM_2
 
 .XYTriggers:
 	db 0
@@ -78,4 +79,4 @@ SilverCaveRoom3_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_RED, 10, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
+	person_event SPRITE_RED, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER

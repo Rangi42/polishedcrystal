@@ -3,6 +3,7 @@ const_value set 2
 	const VIRIDIANCITY_GRAMPS2
 	const VIRIDIANCITY_GRAMPS3
 	const VIRIDIANCITY_FISHER
+	const VIRIDIANCITY_BUG_CATCHER
 	const VIRIDIANCITY_YOUNGSTER
 	const VIRIDIANCITY_CUT_TREE1
 	const VIRIDIANCITY_CUT_TREE2
@@ -93,8 +94,11 @@ ViridianCityTutorDreamEaterScript:
 	closetext
 	end
 
-YoungsterScript_0x1a9a90:
+BugCatcherScript_0x1a9a90:
 	jumptextfaceplayer UnknownText_0x1a9daa
+
+ViridianCityYoungsterScript:
+	jumptextfaceplayer ViridianCityYoungsterText
 
 ViridianCityCutTree:
 	jumpstd cuttree
@@ -241,6 +245,20 @@ UnknownText_0x1a9daa:
 	line "Viridian Forest."
 	done
 
+ViridianCityYoungsterText:
+	text "The leader of Team"
+	line "Rocket was the Gym"
+
+	para "Leader here for a"
+	line "time, but one day"
+
+	para "three years ago"
+	line "he vanished."
+
+	para "He wasn't usually"
+	line "at the Gym anyway…"
+	done
+
 ViridianCitySignText:
 	text "Viridian City"
 
@@ -300,11 +318,12 @@ ViridianCity_MapEventHeader:
 	signpost 19, 30, SIGNPOST_READ, ViridianCityMartSign
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_GRAMPS, 5, 18, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
 	person_event SPRITE_GRAMPS, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
 	person_event SPRITE_GRAMPS, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
 	person_event SPRITE_FISHER, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
-	person_event SPRITE_YOUNGSTER, 21, 17, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a9a90, -1
+	person_event SPRITE_BUG_CATCHER, 21, 17, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x1a9a90, -1
+	person_event SPRITE_YOUNGSTER, 23, 31, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianCityYoungsterScript, -1
 	person_event SPRITE_CUT_TREE, 4, 14, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_1
 	person_event SPRITE_CUT_TREE, 22, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_2

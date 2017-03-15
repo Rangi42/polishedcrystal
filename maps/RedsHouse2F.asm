@@ -5,24 +5,27 @@ RedsHouse2F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-MapRedsHouse2FSignpost0Script:
-	jumptext UnknownText_0x19b050
+RedsHouse2FPCScript:
+	jumptext RedsHouse2FPCText
 
-MapRedsHouse2FSignpost1Script:
-	jumptext UnknownText_0x19b087
+RedsHouse2FSNESScript:
+	jumptext RedsHouse2FSNESText
 
-UnknownText_0x19b050:
-	text "<PLAYER> played the"
-	line "N64."
+RedsHouse2FBookshelfScript:
+	jumpstd picturebookshelf
 
-	para "Better get going--"
-	line "no time to lose!"
-	done
-
-UnknownText_0x19b087:
+RedsHouse2FPCText:
 	text "It looks like it"
 	line "hasn't been used"
 	cont "in a long time…"
+	done
+
+RedsHouse2FSNESText:
+	text "<PLAYER> played the"
+	line "SNES."
+
+	para "Better get going--"
+	line "no time to lose!"
 	done
 
 RedsHouse2F_MapEventHeader:
@@ -37,9 +40,11 @@ RedsHouse2F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 5, 3, SIGNPOST_READ, MapRedsHouse2FSignpost0Script
-	signpost 1, 0, SIGNPOST_READ, MapRedsHouse2FSignpost1Script
+	db 4
+	signpost 1, 0, SIGNPOST_READ, RedsHouse2FPCScript
+	signpost 5, 3, SIGNPOST_READ, RedsHouse2FSNESScript
+	signpost 1, 4, SIGNPOST_READ, RedsHouse2FBookshelfScript
+	signpost 1, 5, SIGNPOST_READ, RedsHouse2FBookshelfScript
 
 .PersonEvents:
 	db 0

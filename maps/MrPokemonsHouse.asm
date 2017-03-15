@@ -106,6 +106,7 @@ MrPokemonsHouse_OakScript:
 	closetext
 	spriteface MRPOKEMONSHOUSE_OAK, UP
 	pause 10
+	applymovement MRPOKEMONSHOUSE_POKEDEX, MrPokemonsHouse_OakTakesPokedex
 	disappear MRPOKEMONSHOUSE_POKEDEX
 	pause 10
 	spriteface MRPOKEMONSHOUSE_OAK, LEFT
@@ -184,11 +185,15 @@ MrPokemonsHouse_OakWalksToPlayer:
 	step_left
 	step_end
 
+MrPokemonsHouse_OakTakesPokedex:
+	step_down
+	step_end
+
 MrPokemonsHouse_OakExits:
 	step_down
 	step_left
 	turn_head_down
-	db $3f ; movement
+	step_sleep_2
 	step_end
 
 MrPokemonIntroText1:

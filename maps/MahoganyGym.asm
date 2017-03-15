@@ -34,7 +34,7 @@ PryceScript_0x199a9e:
 	setflag ENGINE_GLACIERBADGE
 	callstd radiotowerrockets
 .FightDone:
-	checkevent EVENT_GOT_TM42_AVALANCHE
+	checkevent EVENT_GOT_TM67_AVALANCHE
 	iftrue UnknownScript_0x199af0
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
@@ -44,7 +44,7 @@ PryceScript_0x199a9e:
 	writetext UnknownText_0x199d55
 	buttonsound
 	verbosegivetmhm TM_AVALANCHE
-	setevent EVENT_GOT_TM42_AVALANCHE
+	setevent EVENT_GOT_TM67_AVALANCHE
 	writetext UnknownText_0x199def
 	waitbutton
 	closetext

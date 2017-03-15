@@ -9,7 +9,6 @@ StdScripts::
 	dba TownMapScript
 	dba WindowScript
 	dba TVScript
-	dba HomepageScript
 	dba Radio1Script
 	dba Radio2Script
 	dba TrashCanScript
@@ -44,6 +43,7 @@ StdScripts::
 	dba GiftFScript
 	dba PackFullFScript
 	dba RematchGiftFScript
+	dba GymStatue0Script
 	dba GymStatue1Script
 	dba GymStatue2Script
 	dba GymStatue3Script
@@ -52,6 +52,10 @@ StdScripts::
 	dba GameCornerCoinVendorScript
 	dba HappinessCheckScript
 	dba CutTreeScript
+	dba RefrigeratorScript
+	dba SinkScript
+	dba StoveScript
+	dba VendingMachineScript
 
 PokeCenterNurseScript:
 	opentext
@@ -184,6 +188,15 @@ IncenseBurnerScript:
 MerchandiseShelfScript:
 	farjumptext MerchandiseShelfText
 
+RefrigeratorScript:
+	farjumptext RefrigeratorText
+
+SinkScript:
+	farjumptext SinkText
+
+StoveScript:
+	farjumptext StoveText
+
 TownMapScript:
 	opentext
 	farwritetext TownMapText
@@ -202,9 +215,6 @@ TVScript:
 	closetext
 	end
 
-HomepageScript:
-	farjumptext HomepageText
-
 Radio1Script:
 	opentext
 	writebyte MAPRADIO_POKEMON_CHANNEL
@@ -213,7 +223,6 @@ Radio1Script:
 	end
 
 Radio2Script:
-; Lucky Channel
 	opentext
 	writebyte MAPRADIO_LUCKY_CHANNEL
 	special MapRadio
@@ -301,6 +310,7 @@ RadioTowerRocketsScript:
 	clearevent EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	clearevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	specialphonecall SPECIALCALL_WEIRDBROADCAST
 	domaptrigger MAHOGANY_TOWN, $1
 	end
@@ -611,6 +621,7 @@ InitializeEventsScript:
 	setevent EVENT_ROUTE_48_JAMES
 	setevent EVENT_YELLOW_FOREST_SKARMORY
 	setevent EVENT_ROUTE_42_OFFICER
+	setevent EVENT_RADIO_TOWER_PETREL
 	setevent EVENT_LAWRENCE_ROUTE_10
 	setevent EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	setevent EVENT_LAWRENCE_FINAL_BIRD
@@ -657,10 +668,6 @@ InitializeEventsScript:
 	setevent EVENT_ILEX_FOREST_CELEBI
 	setevent EVENT_LYRA_INDIGO_PLATEAU
 	setevent EVENT_LAWRENCE_FARAWAY_ISLAND
-	setevent EVENT_ROUTE_22_LYRA
-	setevent EVENT_ROUTE_22_CELEBI
-	setevent EVENT_ROUTE_22_SILVER
-	setevent EVENT_ROUTE_22_GIOVANNI
 	setevent EVENT_GIOVANNIS_CAVE_LYRA
 	setevent EVENT_GIOVANNIS_CAVE_CELEBI
 	setevent EVENT_GIOVANNIS_CAVE_GIOVANNI
@@ -1805,6 +1812,14 @@ RematchGiftFScript:
 	buttonsound
 	end
 
+GymStatue0Script:
+	mapnametotext $0
+	opentext
+	farwritetext GymStatue_CityGymText
+	waitbutton
+	closetext
+	end
+
 GymStatue1Script:
 	mapnametotext $0
 	opentext
@@ -1967,3 +1982,103 @@ Movement_ContestResults_WalkAfterWarp: ; bcea1
 
 CutTreeScript:
 	farjump AskCutTreeScript
+
+VendingMachineScript:
+	opentext
+	farwritetext VendingMachineText
+.Start:
+	special PlaceMoneyTopRight
+	loadmenudata .MenuData
+	verticalmenu
+	closewindow
+	if_equal $1, .FreshWater
+	if_equal $2, .SodaPop
+	if_equal $3, .Lemonade
+	closetext
+	end
+
+.FreshWater:
+	checkmoney $0, 200
+	if_equal $2, .NotEnoughMoney
+	giveitem FRESH_WATER
+	iffalse .NotEnoughSpace
+	takemoney $0, 200
+	itemtotext FRESH_WATER, $0
+	scall .VendItem
+	random $20
+	if_not_equal $0, .Start
+	giveitem FRESH_WATER
+	iffalse .Start
+	itemtotext FRESH_WATER, $0
+	jump .ExtraItem
+
+.SodaPop:
+	checkmoney $0, 300
+	if_equal $2, .NotEnoughMoney
+	giveitem SODA_POP
+	iffalse .NotEnoughSpace
+	takemoney $0, 300
+	itemtotext SODA_POP, $0
+	scall .VendItem
+	random $20
+	if_not_equal $0, .Start
+	giveitem SODA_POP
+	iffalse .Start
+	itemtotext SODA_POP, $0
+	jump .ExtraItem
+
+.Lemonade:
+	checkmoney $0, 350
+	if_equal $2, .NotEnoughMoney
+	giveitem LEMONADE
+	iffalse .NotEnoughSpace
+	takemoney $0, 350
+	itemtotext LEMONADE, $0
+	scall .VendItem
+	random $20
+	if_not_equal $0, .Start
+	giveitem LEMONADE
+	iffalse .Start
+	itemtotext LEMONADE, $0
+	jump .ExtraItem
+
+.VendItem:
+	pause 10
+	playsound SFX_ENTER_DOOR
+	farwritetext VendingMachineClangText
+	buttonsound
+	itemnotify
+	end
+
+.ExtraItem:
+	pause 10
+	playsound SFX_ENTER_DOOR
+	farwritetext VendingMachineScoreText
+	buttonsound
+	itemnotify
+	jump .Start
+
+.NotEnoughMoney:
+	farwritetext VendingMachineNoMoneyText
+	waitbutton
+	jump .Start
+
+.NotEnoughSpace:
+	farwritetext VendingMachineNoSpaceText
+	waitbutton
+	jump .Start
+
+.MenuData:
+	db $40 ; flags
+	db 02, 00 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 4 ; items
+	db "Fresh Water  ¥200@"
+	db "Soda Pop     ¥300@"
+	db "Lemonade     ¥350@"
+	db "Cancel@"

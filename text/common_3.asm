@@ -777,7 +777,7 @@ _OakRating01::
 _OakRating02::
 	text "Good. I see you"
 	line "understand how to"
-	cont "use # Ball."
+	cont "use # Balls."
 	done
 
 _OakRating03::

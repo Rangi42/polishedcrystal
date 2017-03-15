@@ -1,6 +1,6 @@
 const_value set 2
 	const VIRIDIANNICKNAMESPEECHHOUSE_POKEFAN_M
-	const VIRIDIANNICKNAMESPEECHHOUSE_LASS
+	const VIRIDIANNICKNAMESPEECHHOUSE_TWIN
 	const VIRIDIANNICKNAMESPEECHHOUSE_HOOTY
 	const VIRIDIANNICKNAMESPEECHHOUSE_RATTEY
 
@@ -14,7 +14,7 @@ ViridianNicknameSpeechHouse_MapScriptHeader:
 PokefanMScript_0x9ae3a:
 	jumptextfaceplayer UnknownText_0x9ae54
 
-LassScript_0x9ae3d:
+TwinScript_0x9ae3d:
 	jumptextfaceplayer UnknownText_0x9aecb
 
 Hooty:
@@ -79,6 +79,6 @@ ViridianNicknameSpeechHouse_MapEventHeader:
 .PersonEvents:
 	db 4
 	person_event SPRITE_POKEFAN_M, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ae3a, -1
-	person_event SPRITE_LASS, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9ae3d, -1
+	person_event SPRITE_TWIN, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x9ae3d, -1
 	person_event SPRITE_HOOTHOOT, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Hooty, -1
 	person_event SPRITE_RATTATA, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Rattey, -1
