@@ -285,10 +285,35 @@ GetAnimatedFrontpic: ; 51103
 	call LoadOrientedFrontpicTiles
 	pop bc
 	pop hl
+
+;	ld a, c
+;	cp $80 - 7 * 7 + 1
+;	jr c, .no_overflow
+;	ld de, wDecompressScratch
+;	ld a, [hROMBank]
+;	ld b, a
+;	push bc
+;	call Get2bpp
+;	pop bc
+;	ld a, BANK(VTiles4)
+;	ld [rVBK], a
+;	ld de, w6_d800 + $80 tiles
+;	ld hl, VTiles4
+;	ld a, [hROMBank]
+;	ld b, a
+;	ld a, c
+;	sub $80
+;	ld c, a
+;	call Get2bpp
+;	jr .finish
+
+.no_overflow
 	ld de, wDecompressScratch
 	ld a, [hROMBank]
 	ld b, a
 	call Get2bpp
+
+.finish
 	xor a
 	ld [rVBK], a
 	ret
