@@ -261,9 +261,25 @@ GetAnimatedFrontpic: ; 51103
 	cp 6
 	jr z, .got_dims
 	ld de, w6_d800 + 7 * 7 tiles
-	ld c, 7 * 7
-.got_dims
 
+	push hl
+	ld a, [CurSpecies]
+	ld c, a
+	ld hl, .LargeSpriteSizes
+.loop
+	ld a, [hli]
+	cp -1
+	jr z, .got_large_dims
+	cp c
+	ld a, [hli]
+	jr nz, .loop
+	ld c, a
+	jr .got_large_dims
+	ld c, 7 * 7
+.got_large_dims
+	pop hl
+
+.got_dims
 	push hl
 	push bc
 	call LoadOrientedFrontpicTiles
@@ -276,6 +292,22 @@ GetAnimatedFrontpic: ; 51103
 	xor a
 	ld [rVBK], a
 	ret
+
+.LargeSpriteSizes:
+; species, max tile - size + 1
+	db GLACEON,    $64 - 7 * 7 + 1
+	db MAMOSWINE,  $6f - 7 * 7 + 1
+	db PORYGON_Z,  $6f - 7 * 7 + 1
+	db SYLVEON,    $71 - 7 * 7 + 1
+	db MISMAGIUS,  $71 - 7 * 7 + 1
+	db ELECTIVIRE, $76 - 7 * 7 + 1
+	db WEAVILE,    $80 - 7 * 7 + 1
+	db LEAFEON,    $81 - 7 * 7 + 1
+	db GLISCOR,    $83 - 7 * 7 + 1
+	db RHYPERIOR,  $85 - 7 * 7 + 1
+	db TOGEKISS,   $88 - 7 * 7 + 1
+	db MAGMORTAR,  $8b - 7 * 7 + 1
+	db -1
 
 LoadOrientedFrontpicTiles: ; 5114f
 	ld hl, wDecompressScratch
