@@ -253,15 +253,15 @@ GetAnimatedFrontpic: ; 51103
 	pop hl
 	and $f
 	ld de, w6_d800 + 5 * 5 tiles
-	ld c, 128 - (5 * 5)
+	ld c, 5 * 5
 	cp 5
 	jr z, .got_dims
 	ld de, w6_d800 + 6 * 6 tiles
-	ld c, 128 - (6 * 6)
+	ld c, 6 * 6
 	cp 6
 	jr z, .got_dims
 	ld de, w6_d800 + 7 * 7 tiles
-	ld c, 128 - (7 * 7)
+	ld c, 7 * 7
 .got_dims
 
 	push hl
