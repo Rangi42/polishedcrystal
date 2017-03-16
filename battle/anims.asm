@@ -164,7 +164,7 @@ BattleAnimations::
 	dw BattleAnim_SuperFang
 	dw BattleAnim_Slash
 	dw BattleAnim_Substitute
-	dw BattleAnim_Struggle
+	dw BattleAnim_GigaImpact
 	dw BattleAnim_Sketch
 	dw BattleAnim_TripleKick
 	dw BattleAnim_Thief
@@ -254,7 +254,7 @@ BattleAnimations::
 	dw BattleAnim_Moonblast
 	dw BattleAnim_PlayRough
 	dw BattleAnim_DisarmVoice
-	dw BattleAnim_GigaImpact
+	dw BattleAnim_Struggle
 ; $100
 	dw BattleAnim_ThrowPokeBall
 	dw BattleAnim_SendOutMon
