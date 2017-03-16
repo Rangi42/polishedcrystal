@@ -1791,13 +1791,13 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $6f
+	ld hl, VTiles2 tile $5b
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 12
-	ld [hl], $6f
+	ld [hl], $5b
 	inc hl
-	ld [hl], $70
+	ld [hl], $5c
 
 	ld a, [CurMove]
 	dec a
@@ -1811,17 +1811,17 @@ PlaceMoveData: ; 13256
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5c
+	ld hl, VTiles2 tile $5d
 	lb bc, BANK(TypeIconGFX), 4
 	call Request2bpp
 	hlcoord 3, 12
-	ld [hl], $5c
-	inc hl
 	ld [hl], $5d
 	inc hl
 	ld [hl], $5e
 	inc hl
 	ld [hl], $5f
+	inc hl
+	ld [hl], $60
 
 	ld a, [CurMove]
 	dec a

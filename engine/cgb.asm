@@ -102,7 +102,7 @@ _CGB_BattleColors: ; 8ddb
 	ld bc, Palettes_a8be
 	add hl, bc
 	call LoadPalette_White_Col1_Col2_Black
-	ld hl, Palettes_a8ca
+	ld hl, GenderAndExpPalettes
 	call LoadPalette_White_Col1_Col2_Black
 	call LoadPlayerStatusIconPalette
 	call LoadEnemyStatusIconPalette
@@ -146,6 +146,12 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 1, 7
 	ld a, $4
 	call FillBoxCGB
+	hlcoord 8, 1, AttrMap
+	ld a, $4
+	ld [hl], a
+	hlcoord 19, 8, AttrMap
+	ld a, $4
+	ld [hl], a
 	hlcoord 12, 8, AttrMap
 	lb bc, 1, 2
 	ld a, $5

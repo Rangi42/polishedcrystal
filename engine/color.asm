@@ -1125,6 +1125,10 @@ Palettes_a8ca:
 	RGB 30, 26, 15
 	RGB 04, 17, 31
 
+GenderAndExpPalettes:
+	RGB 31, 12, 06
+	RGB 04, 17, 31
+
 INCLUDE "gfx/pics/palette_pointers.asm"
 
 INCLUDE "gfx/trainers/palette_pointers.asm"

@@ -1052,6 +1052,7 @@ _ReturnToBattle_UseBall: ; 2715c
 	call SetPalettes
 	farcall LoadPlayerStatusIcon
 	farcall LoadEnemyStatusIcon
+	farcall InstantReloadPaletteHack
 	ret
 
 ConsumeHeldItem: ; 27192
@@ -5376,9 +5377,8 @@ GetPlayerBackpic: ; 88825
 
 GetChrisBackpic: ; 88830
 	ld hl, ChrisBackpic
-	ld b, BANK(ChrisBackpic)
 	ld de, VTiles2 tile $31
-	ld c, 7 * 7
+	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
 	predef DecompressPredef
 	ret
 
@@ -5454,7 +5454,7 @@ GetKrisBackpic: ; 88ec9
 ; Kris's backpic is uncompressed.
 	ld de, KrisBackpic
 	ld hl, VTiles2 tile $31
-	lb bc, BANK(KrisBackpic), 7 * 7 ; dimensions
+	lb bc, BANK(KrisBackpic), 6 * 6 ; dimensions
 	call Get2bpp
 	ret
 

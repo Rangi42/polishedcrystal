@@ -2897,7 +2897,7 @@ ForcePlayerMonChoice: ; 3d227
 
 	call ClearSprites
 	call ClearBGPalettes
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call ExitMenu
 	call LoadTileMapToTempTileMap
 	call WaitBGMap
@@ -2918,7 +2918,7 @@ ForcePlayerMonChoice: ; 3d227
 	call ResetPlayerStatLevels
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call CloseWindow
 	call GetMemSGBLayout
 	call SetPalettes
@@ -3708,7 +3708,7 @@ OfferSwitch: ; 3d74b
 	ld [CurBattleMon], a
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 	pop af
 	ld [CurPartyMon], a
 	xor a
@@ -3720,7 +3720,7 @@ OfferSwitch: ; 3d74b
 .canceled_switch
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 
 .said_no
 	pop af
@@ -4947,8 +4947,8 @@ DrawPlayerHUD: ; 3df58
 
 	farcall DrawPlayerHUDBorder
 
-	hlcoord 18, 9
-	ld [hl], $73 ; vertical bar
+;	hlcoord 18, 9
+;	ld [hl], $73 ; vertical bar
 	call PrintPlayerHUD
 
 	; HP bar
@@ -4974,9 +4974,10 @@ DrawPlayerHUD: ; 3df58
 	; Status icon
 	farcall LoadPlayerStatusIcon
 	hlcoord 12, 8
-	ld [hl], $5c
+	ld [hl], $57
 	inc hl
-	ld [hl], $5d
+	ld [hl], $58
+	farcall InstantReloadPaletteHack
 	ret
 ; 3df98
 
@@ -5216,9 +5217,10 @@ endr
 
 	farcall LoadEnemyStatusIcon
 	hlcoord 2, 1
-	ld [hl], $5e
+	ld [hl], $59
 	inc hl
-	ld [hl], $5f
+	ld [hl], $5a
+	farcall InstantReloadPaletteHack
 	ret
 ; 3e127
 
@@ -5439,7 +5441,7 @@ BattleMenuPKMN_Loop:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call CloseWindow
 	call LoadTileMapToTempTileMap
 	call GetMemSGBLayout
@@ -5528,7 +5530,7 @@ TryPlayerSwitch: ; 3e358
 	call ClearPalettes
 	call DelayFrame
 	call ClearSprites
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call CloseWindow
 	call GetMemSGBLayout
 	call SetPalettes
@@ -6118,13 +6120,13 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $70
+	ld hl, VTiles2 tile $5b
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 9
-	ld [hl], $70
+	ld [hl], $5b
 	inc hl
-	ld [hl], $71
+	ld [hl], $5c
 
 	ld hl, TypeIconGFX
 	ld bc, 4 tiles
@@ -6132,17 +6134,17 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $72
+	ld hl, VTiles2 tile $5d
 	lb bc, BANK(TypeIconGFX), 4
 	call Request2bpp
 	hlcoord 3, 9
-	ld [hl], $72
+	ld [hl], $5d
 	inc hl
-	ld [hl], $73
+	ld [hl], $5e
 	inc hl
-	ld [hl], $74
+	ld [hl], $5f
 	inc hl
-	ld [hl], $75
+	ld [hl], $60
 
 	farcall LoadBattleCategoryAndTypePalettes
 	call WaitBGMap
@@ -7457,8 +7459,8 @@ _LoadBattleFontsHPBar: ; 3ed9f
 	ret
 ; 3eda6
 
-_LoadHPBar: ; 3eda6
-	farcall LoadHPBar
+_LoadStatusIcons: ; 3eda6
+	farcall LoadStatusIcons
 	ret
 ; 3edad
 
@@ -8609,7 +8611,7 @@ PlaceExpBar: ; 3f41c
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, $6d ; full thin bar
+	ld a, $77 ; full thin bar
 	ld [hli], a
 	dec c
 	jr z, .finish
@@ -8618,15 +8620,15 @@ PlaceExpBar: ; 3f41c
 .next
 	add $8
 	jr z, .loop2
-	add $54 ; tile to the left of thin exp bar tile
+	add $6f ; tile to the left of thin exp bar tile
 	jr .skip
 
 .loop2
-	ld a, $6c ; empty thin bar
+	ld a, $6f ; empty thin bar
 
 .skip
 	ld [hli], a
-	ld a, $6c ; empty thin bar
+	ld a, $6f ; empty thin bar
 	dec c
 	jr nz, .loop2
 
@@ -9658,7 +9660,7 @@ GetTrainerBackpic: ; 3fbff
 
 .Decompress:
 	ld de, VTiles2 tile $31
-	ld c, $31
+	ld c, 6 * 6
 	predef DecompressPredef
 	ret
 ; 3fc30
@@ -9673,7 +9675,7 @@ CopyBackpic: ; 3fc30
 	ld de, VTiles2 tile $31
 	ld a, [hROMBank]
 	ld b, a
-	ld c, $31
+	ld c, 7 * 7
 	call Get2bpp
 	pop af
 	ld [rSVBK], a

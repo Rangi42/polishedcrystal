@@ -135,12 +135,10 @@
 	charmap "<NONO>",   $df
 	charmap "<PHONE>",  $e0
 
-	charmap "<JO>",     $e1
-	charmap "<HT>",     $e2
-	charmap "<TO>",     $e3
-	charmap "<KA>",     $e4
-	charmap "<NT>",     $e5
+; unused: e1-e3
 
+	charmap "◢",        $e4
+	charmap "◣",        $e5
 	charmap "—",        $e6
 	charmap "_",        $e7
 
