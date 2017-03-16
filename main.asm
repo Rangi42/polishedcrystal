@@ -587,15 +587,12 @@ StringBufferPointers:: ; 24000
 INCLUDE "engine/menu.asm"
 
 UpdateItemDescriptionAndBagQuantity:
-	hlcoord 0, 0
-	lb bc, 3, 10
+	hlcoord 1, 1
+	lb bc, 1, 8
 	call ClearBox
 	ld a, [MenuSelection]
 	cp -1
 	jr z, UpdateItemDescription
-	hlcoord 0, 0
-	lb bc, 1, 8
-	call TextBox
 	hlcoord 1, 1
 	ld de, BagXString
 	call PlaceString
@@ -622,6 +619,21 @@ UpdateItemDescription: ; 0x244c3
 BagXString:
 	db "Bag ×@"
 
+UpdateTMHMDescriptionAndOwnership:
+	hlcoord 1, 1
+	lb bc, 1, 8
+	call ClearBox
+	ld a, [MenuSelection]
+	cp -1
+	jr z, UpdateTMHMDescription
+	ld a, [CurTMHM]
+	call CheckTMHM
+	ld de, OwnedTMString
+	jr c, .GotString
+	ld de, UnownedTMString
+.GotString
+	hlcoord 1, 1
+	call PlaceString
 UpdateTMHMDescription:
 	ld a, [MenuSelection]
 	ld [CurSpecies], a
@@ -635,6 +647,11 @@ UpdateTMHMDescription:
 	decoord 1, 14
 	farcall PrintTMHMDescription
 	ret
+
+OwnedTMString:
+	db "Owned@"
+UnownedTMString:
+	db "Unowned@"
 
 GetQuantityInBag:
 	ld a, [CurItem]

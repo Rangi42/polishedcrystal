@@ -45,7 +45,7 @@ Predef_LoadCGBLayout: ; 8d59
 	dw _CGB0f
 	dw _CGB_PokedexSearchOption
 	dw _CGB11
-	dw _CGB_Pokepic
+	dw _CGB_BuyMenu
 	dw _CGB13
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
@@ -1207,11 +1207,11 @@ _CGB_PackPals: ; 93d3
 	jr z, .male
 
 .tutorial_female
-	ld hl, .KrisPackPals
+	ld hl, KrisPackPals
 	jr .got_gender
 
 .male
-	ld hl, .ChrisPackPals
+	ld hl, ChrisPackPals
 
 .got_gender
 	ld de, UnknBGPals
@@ -1246,7 +1246,7 @@ _CGB_PackPals: ; 93d3
 	ret
 ; 9439
 
-.ChrisPackPals: ; 9439
+ChrisPackPals: ; 9439
 	RGB 31, 31, 31
 	RGB 15, 15, 31
 	RGB 00, 00, 31
@@ -1273,7 +1273,7 @@ _CGB_PackPals: ; 93d3
 	RGB 00, 00, 00
 ; 9469
 
-.KrisPackPals: ; 9469
+KrisPackPals: ; 9469
 	RGB 31, 31, 31
 	RGB 31, 14, 31
 	RGB 31, 07, 31
@@ -2279,38 +2279,32 @@ TMHMTypeIconPalettes:
 	RGB 17, 26, 24
 	RGB 10, 20, 17
 
-_CGB_Pokepic: ; 9499
-	call _CGB_MapPals
-	ld de, SCREEN_WIDTH
-	hlcoord 0, 0, AttrMap
-	ld a, [wMenuBorderTopCoord]
-.loop
-	and a
-	jr z, .found_top
-	dec a
-	add hl, de
-	jr .loop
-
-.found_top
-	ld a, [wMenuBorderLeftCoord]
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld a, [wMenuBorderTopCoord]
-	ld b, a
-	ld a, [wMenuBorderBottomCoord]
-	inc a
-	sub b
-	ld b, a
-	ld a, [wMenuBorderLeftCoord]
-	ld c, a
-	ld a, [wMenuBorderRightCoord]
-	sub c
-	inc a
-	ld c, a
-	xor a
+_CGB_BuyMenu: ; 9499
+	ld a, [PlayerGender]
+	bit 0, a
+	jr z, .male
+	ld hl, KrisPackPals
+	jr .got_gender
+.male
+	ld hl, ChrisPackPals
+.got_gender
+	ld de, UnknBGPals
+	ld bc, 5 palettes
+	ld a, $5
+	call FarCopyWRAM
+	call WipeAttrMap
+	hlcoord 6, 4, AttrMap
+	lb bc, 7, 1
+	ld a, $2
+	call FillBoxCGB
+	hlcoord 1, 8, AttrMap
+	lb bc, 3, 3
+	ld a, $4
 	call FillBoxCGB
 	call ApplyAttrMap
+	call ApplyPals
+	ld a, $1
+	ld [hCGBPalUpdate], a
 	ret
 ; 94d0
 

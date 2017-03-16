@@ -1,5 +1,16 @@
 UpdateItemIconAndDescription::
 	farcall UpdateItemDescription
+	jr UpdateItemIcon
+
+UpdateTMHMIconAndDescriptionAndOwnership::
+	farcall UpdateTMHMDescriptionAndOwnership
+	farcall LoadTMHMIconPalette
+	call SetPalettes
+	ret
+
+UpdateItemIconAndDescriptionAndBagQuantity::
+	farcall UpdateItemDescriptionAndBagQuantity
+UpdateItemIcon::
 	ld hl, ItemIconPointers
 	ld a, [CurSpecies]
 	ld e, a
