@@ -132,14 +132,13 @@
 	charmap "<LV>",     $db
 	charmap "<BOLDP>",  $dc
 	charmap "★",        $dd
-	charmap "<BALL>",   $de
-	charmap "<NONO>",   $df
-	charmap "<PHONE>",  $e0
-	charmap "<HPEND>",  $e1
-	charmap "<XPEND>",  $e2
+	charmap "<NONO>",   $de
+	charmap "<PHONE>",  $df
 
-; unused: e3
+; unused: e0-e1
 
+	charmap "<HPEND>",  $e2
+	charmap "<XPEND>",  $e3
 	charmap "◢",        $e4
 	charmap "◣",        $e5
 	charmap "—",        $e6

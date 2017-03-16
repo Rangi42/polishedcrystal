@@ -156,7 +156,7 @@ DrawEnemyHUDBorder: ; 2c0c5
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
-	ld [hl], "<BALL>"
+	ld [hl], $62 ; colored ball
 	ret
 
 .nuzlocke
