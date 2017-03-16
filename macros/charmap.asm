@@ -126,6 +126,7 @@
 
 	charmap "'",        $d7
 	charmap "…",        $d8
+
 	charmap "<ID>",     $d9
 	charmap "№",        $da
 	charmap "<LV>",     $db
@@ -134,8 +135,10 @@
 	charmap "<BALL>",   $de
 	charmap "<NONO>",   $df
 	charmap "<PHONE>",  $e0
+	charmap "<HPEND>",  $e1
+	charmap "<XPEND>",  $e2
 
-; unused: e1-e3
+; unused: e3
 
 	charmap "◢",        $e4
 	charmap "◣",        $e5

@@ -582,11 +582,11 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld de, TempMonExp + 2
 	predef FillInExpBar
 	hlcoord 10, 16
-	ld [hl], $6d ; first "EXP" tile
+	ld [hl], $6e ; first "EXP" tile
 	inc hl
-	ld [hl], $6e ; second "EXP" tile
+	ld [hl], $6f ; second "EXP" tile
 	hlcoord 19, 16
-	ld [hl], $78 ; exp bar end cap
+	ld [hl], "<XPEND>" ; exp bar end cap
 	ret
 
 .PrintNextLevel: ; 4e0d3 (13:60d3)

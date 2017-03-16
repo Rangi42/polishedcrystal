@@ -1433,19 +1433,19 @@ DrawBattleHPBar:: ; 3750
 	push bc
 
 ; Place 'HP:'
-	ld a, $61
+	ld a, $63
 	ld [hli], a
-	ld a, $62
+	ld a, $64
 	ld [hli], a
 
 ; Draw a template
 	push hl
-	ld a, $63 ; empty bar
+	ld a, $65 ; empty bar
 .template
 	ld [hli], a
 	dec d
 	jr nz, .template
-	ld a, $6c ; bar end cap
+	ld a, "<HPEND>" ; bar end cap
 	ld [hl], a
 	pop hl
 
@@ -1465,7 +1465,7 @@ DrawBattleHPBar:: ; 3750
 	jr c, .lastbar
 
 	ld e, a
-	ld a, $6b ; full bar
+	ld a, $6d ; full bar
 	ld [hli], a
 	ld a, e
 	and a
@@ -1473,7 +1473,7 @@ DrawBattleHPBar:: ; 3750
 	jr .fill
 
 .lastbar
-	ld a, $63  ; empty bar
+	ld a, $65  ; empty bar
 	add e      ; + e
 	ld [hl], a
 

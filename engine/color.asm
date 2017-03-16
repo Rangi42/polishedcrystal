@@ -952,17 +952,17 @@ Palettes_9df6:
 	RGB 00, 00, 00
 
 	RGB 31, 31, 31
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 00, 23, 00
 	RGB 00, 00, 00
 
 	RGB 31, 31, 31
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 31, 23, 00
 	RGB 00, 00, 00
 
 	RGB 31, 31, 31
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 31, 00, 00
 	RGB 00, 00, 00
 
@@ -1112,17 +1112,17 @@ Palettes_9df6:
 	RGB 31, 31, 31
 
 Palettes_a8be:
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 00, 23, 00
 
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 31, 21, 00
 
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 31, 00, 00
 
 Palettes_a8ca:
-	RGB 30, 26, 15
+	RGB 31, 25, 02
 	RGB 04, 17, 31
 
 GenderAndExpPalettes:

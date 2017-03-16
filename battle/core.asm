@@ -4947,8 +4947,6 @@ DrawPlayerHUD: ; 3df58
 
 	farcall DrawPlayerHUDBorder
 
-;	hlcoord 18, 9
-;	ld [hl], $73 ; vertical bar
 	call PrintPlayerHUD
 
 	; HP bar
@@ -4974,9 +4972,9 @@ DrawPlayerHUD: ; 3df58
 	; Status icon
 	farcall LoadPlayerStatusIcon
 	hlcoord 12, 8
-	ld [hl], $57
+	ld [hl], $55
 	inc hl
-	ld [hl], $58
+	ld [hl], $56
 	farcall InstantReloadPaletteHack
 	ret
 ; 3df98
@@ -5053,7 +5051,7 @@ endr
 	ld bc, BattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, "★"
+	ld a, $61 ; colored "★"
 	hlcoord 19, 8
 	ld [hl], a
 
@@ -5063,9 +5061,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender_char
-	ld a, $55 ; colored "♂"
+	ld a, $5f ; colored "♂"
 	jr nz, .got_gender_char
-	ld a, $56 ; colored "♀"
+	ld a, $60 ; colored "♀"
 
 .got_gender_char
 	hlcoord 18, 8
@@ -5128,7 +5126,7 @@ endr
 	ld bc, EnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, "★"
+	ld a, $61 ; colored "★"
 	hlcoord 9, 1
 	ld [hl], a
 
@@ -5138,9 +5136,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, $55 ; colored "♂"
+	ld a, $5f ; colored "♂"
 	jr nz, .got_gender
-	ld a, $56 ; colored "♀"
+	ld a, $60 ; colored "♀"
 
 .got_gender
 	hlcoord 8, 1
@@ -5217,9 +5215,9 @@ endr
 
 	farcall LoadEnemyStatusIcon
 	hlcoord 2, 1
-	ld [hl], $59
+	ld [hl], $57
 	inc hl
-	ld [hl], $5a
+	ld [hl], $58
 	farcall InstantReloadPaletteHack
 	ret
 ; 3e127
@@ -6120,13 +6118,13 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5b
+	ld hl, VTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 9
-	ld [hl], $5b
+	ld [hl], $59
 	inc hl
-	ld [hl], $5c
+	ld [hl], $5a
 
 	ld hl, TypeIconGFX
 	ld bc, 4 tiles
@@ -6134,17 +6132,17 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5d
+	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
 	call Request2bpp
 	hlcoord 3, 9
+	ld [hl], $5b
+	inc hl
+	ld [hl], $5c
+	inc hl
 	ld [hl], $5d
 	inc hl
 	ld [hl], $5e
-	inc hl
-	ld [hl], $5f
-	inc hl
-	ld [hl], $60
 
 	farcall LoadBattleCategoryAndTypePalettes
 	call WaitBGMap
@@ -8611,7 +8609,7 @@ PlaceExpBar: ; 3f41c
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, $77 ; full thin bar
+	ld a, $78 ; full thin bar
 	ld [hli], a
 	dec c
 	jr z, .finish
@@ -8620,15 +8618,15 @@ PlaceExpBar: ; 3f41c
 .next
 	add $8
 	jr z, .loop2
-	add $6f ; tile to the left of thin exp bar tile
+	add $70 ; tile to the left of thin exp bar tile
 	jr .skip
 
 .loop2
-	ld a, $6f ; empty thin bar
+	ld a, $70 ; empty thin bar
 
 .skip
 	ld [hli], a
-	ld a, $6f ; empty thin bar
+	ld a, $70 ; empty thin bar
 	dec c
 	jr nz, .loop2
 

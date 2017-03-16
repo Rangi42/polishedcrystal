@@ -106,11 +106,11 @@ endr
 
 DrawPlayerHUDBorder: ; 2c095
 	hlcoord 19, 11
-	ld [hl], $78 ; exp bar end cap
+	ld [hl], "<XPEND>" ; exp bar end cap
 	hlcoord 10, 11
-	ld [hl], $6d ; first "EXP" tile
+	ld [hl], $6e ; first "EXP" tile
 	inc hl
-	ld [hl], $6e ; second "EXP" tile
+	ld [hl], $6f ; second "EXP" tile
 	ret
 
 DrawPlayerPartyIconHUDBorder: ; 2c0ad

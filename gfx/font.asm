@@ -25,9 +25,6 @@ INCBIN "gfx/frames/9.1bpp"
 
 ; Various misc graphics here.
 
-BarsGFX:
-INCBIN "gfx/battle/bars.2bpp"
-
 BattleExtrasGFX:
 INCBIN "gfx/battle/extras.2bpp"
 
@@ -136,12 +133,8 @@ endr
 
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleExtrasGFX
-	ld hl, VTiles2 tile $55
-	lb bc, BANK(BattleExtrasGFX), 2
-	call Get2bpp_2
-	ld de, BarsGFX
-	ld hl, VTiles2 tile $61
-	lb bc, BANK(BarsGFX), 24
+	ld hl, VTiles2 tile $5f
+	lb bc, BANK(BattleExtrasGFX), 26
 	call Get2bpp_2
 ; fb4cc
 
@@ -189,7 +182,7 @@ LoadPlayerStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $57
+	ld hl, VTiles2 tile $55
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
 	farcall LoadPlayerStatusIconPalette
@@ -213,7 +206,7 @@ LoadEnemyStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $59
+	ld hl, VTiles2 tile $57
 	lb bc, BANK(EnemyStatusIconGFX), 2
 	call Request2bpp
 	farcall LoadEnemyStatusIconPalette
