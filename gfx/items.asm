@@ -9,7 +9,7 @@ UpdateItemIconAndDescription::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, VTiles2 tile $1c
+	ld de, VTiles2 tile $17
 	call GetItemIconBank
 	call DecompressRequest2bpp
 	farcall LoadItemIconPalette
@@ -32,7 +32,7 @@ GetItemIconBank:
 
 LoadTMHMIcon::
 	ld hl, TMHMIcon
-	ld de, VTiles2 tile $1c
+	ld de, VTiles2 tile $17
 	lb bc, BANK(TMHMIcon), $9
 	call DecompressRequest2bpp
 	ret

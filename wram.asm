@@ -1616,9 +1616,10 @@ FacingDirection:: ; d044
 
 wSeenTextPointer::
 WalkingX::
-wd045:: ; d045
+wMenuCursorBufferBackup:: ; d045
 	ds 1
-WalkingY:: ; d046
+WalkingY::
+wMenuScrollPositionBackup:: ; d046
 	ds 1
 
 WalkingTile:: ; d047
