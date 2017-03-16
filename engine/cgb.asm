@@ -149,7 +149,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	hlcoord 8, 1, AttrMap
 	ld a, $4
 	ld [hl], a
-	hlcoord 19, 8, AttrMap
+	hlcoord 18, 8, AttrMap
 	ld a, $4
 	ld [hl], a
 	hlcoord 12, 8, AttrMap

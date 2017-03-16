@@ -28,6 +28,9 @@ INCBIN "gfx/frames/9.1bpp"
 BarsGFX:
 INCBIN "gfx/battle/bars.2bpp"
 
+BattleExtrasGFX:
+INCBIN "gfx/battle/extras.2bpp"
+
 GFX_Stats: ; f89b0
 INCBIN "gfx/misc/stats.2bpp"
 ; f8ac0
@@ -132,6 +135,10 @@ endr
 	dw FontNormal
 
 _LoadFontsBattleExtra:: ; fb4be
+	ld de, BattleExtrasGFX
+	ld hl, VTiles2 tile $55
+	lb bc, BANK(BattleExtrasGFX), 2
+	call Get2bpp_2
 	ld de, BarsGFX
 	ld hl, VTiles2 tile $61
 	lb bc, BANK(BarsGFX), 24

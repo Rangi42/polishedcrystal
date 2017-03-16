@@ -5063,9 +5063,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender_char
-	ld a, "♂"
+	ld a, $55 ; colored "♂"
 	jr nz, .got_gender_char
-	ld a, "♀"
+	ld a, $56 ; colored "♀"
 
 .got_gender_char
 	hlcoord 18, 8
@@ -5138,9 +5138,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, "♂"
+	ld a, $55 ; colored "♂"
 	jr nz, .got_gender
-	ld a, "♀"
+	ld a, $56 ; colored "♀"
 
 .got_gender
 	hlcoord 8, 1
