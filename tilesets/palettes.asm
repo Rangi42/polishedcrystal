@@ -121,9 +121,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_HAUNTED_RADIO_TOWER_2F
 	jp z, .load_eight_bg_palettes
-	ld hl, HauntedPokemonTowerPalette
 	cp MAP_HAUNTED_RADIO_TOWER_3F
 	jp z, .load_eight_bg_palettes
+	ld hl, HauntedPokemonTowerPalette
 	cp MAP_HAUNTED_RADIO_TOWER_4F
 	jp z, .load_eight_bg_palettes
 	cp MAP_HAUNTED_RADIO_TOWER_5F
