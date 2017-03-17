@@ -151,7 +151,7 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Articuno is in the Seafoam Islands.
 * Zapdos is above the Power Plant after you fix the generator.
 * Moltres is inside Cinnabar Volcano.
-* Raikou and Entei are roaming Johto.
+* Raikou and Entei are roaming Johto after you awaken them.
 * Suicune is in the Bell Tower after you get the Clear Bell.
 * Lugia is in the Whirl Islands after you catch all three legendary birds and then get the Silver Wing in Victory Road.
 * Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and then get the Rainbow Wing in Bell Tower.

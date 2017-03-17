@@ -144,3 +144,28 @@ CeladonUniversityClassroom4_BlockData:
 
 PokemonTrainerFanClub_BlockData:
 	INCBIN "maps/PokemonTrainerFanClub.blk"
+
+LavRadioTower2F_BlockData:
+HauntedRadioTower2F_BlockData:
+	INCBIN "maps/LavRadioTower2F.blk"
+
+LavRadioTower3F_BlockData:
+	INCBIN "maps/LavRadioTower3F.blk"
+
+LavRadioTower4F_BlockData:
+	INCBIN "maps/LavRadioTower4F.blk"
+
+LavRadioTower5F_BlockData:
+	INCBIN "maps/LavRadioTower5F.blk"
+
+HauntedRadioTower3F_BlockData:
+	INCBIN "maps/HauntedRadioTower3F.blk"
+
+HauntedRadioTower4F_BlockData:
+	INCBIN "maps/HauntedRadioTower4F.blk"
+
+HauntedRadioTower5F_BlockData:
+	INCBIN "maps/HauntedRadioTower5F.blk"
+
+HauntedRadioTower6F_BlockData:
+	INCBIN "maps/HauntedRadioTower6F.blk"

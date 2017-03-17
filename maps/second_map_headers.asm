@@ -624,6 +624,15 @@
 	map_header_2 LavenderMart, LAVENDER_MART, $0, 0
 	map_header_2 SoulHouse, SOUL_HOUSE, $0, 0
 	map_header_2 LavRadioTower1F, LAV_RADIO_TOWER_1F, $0, 0
+	map_header_2 LavRadioTower2F, LAV_RADIO_TOWER_2F, $0, 0
+	map_header_2 LavRadioTower3F, LAV_RADIO_TOWER_3F, $0, 0
+	map_header_2 LavRadioTower4F, LAV_RADIO_TOWER_3F, $0, 0
+	map_header_2 LavRadioTower5F, LAV_RADIO_TOWER_5F, $0, 0
+	map_header_2 HauntedRadioTower2F, HAUNTED_RADIO_TOWER_2F, $0, 0
+	map_header_2 HauntedRadioTower3F, HAUNTED_RADIO_TOWER_3F, $0, 0
+	map_header_2 HauntedRadioTower4F, HAUNTED_RADIO_TOWER_4F, $0, 0
+	map_header_2 HauntedRadioTower5F, HAUNTED_RADIO_TOWER_5F, $0, 0
+	map_header_2 HauntedRadioTower6F, HAUNTED_RADIO_TOWER_6F, $0, 0
 	map_header_2 Route8SaffronGate, ROUTE_8_SAFFRON_GATE, $0, 0
 	map_header_2 Route12SuperRodHouse, ROUTE_12_SUPER_ROD_HOUSE, $0, 0
 	map_header_2 SilverCavePokeCenter1F, SILVER_CAVE_POKECENTER_1F, $0, 0

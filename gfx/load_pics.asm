@@ -302,7 +302,7 @@ GetAnimatedFrontpic: ; 51103
 ;	ld a, [hROMBank]
 ;	ld b, a
 ;	ld a, c
-;	sub $80
+;	sub $80 - 7 * 7
 ;	ld c, a
 ;	call Get2bpp
 ;	jr .finish

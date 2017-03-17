@@ -381,8 +381,17 @@ MAP_NONE   EQU 0
 	mapgroup LAVENDER_MART,                               4,  6 ;  8
 	mapgroup SOUL_HOUSE,                                  5,  5 ;  9
 	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 10
-	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 11
-	mapgroup ROUTE_12_NORTH,                              9, 10 ; 12
+	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 11
+	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 12
+	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 13
+	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 14
+	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 15
+	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 16
+	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 17
+	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 18
+	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 19
+	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 20
+	mapgroup ROUTE_12_NORTH,                              9, 10 ; 21
 
 	newgroup                                                    ; 19
 

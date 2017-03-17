@@ -1842,8 +1842,10 @@
 	const EVENT_MURKY_SWAMP_CUT_TREE_1
 	const EVENT_MURKY_SWAMP_CUT_TREE_2
 
+; TODO: reorganize events
+	const EVENT_EXORCISED_LAV_RADIO_TOWER
+
 ; Unused placeholder events
-	const EVENT_6B5
 	const EVENT_6B6
 	const EVENT_6B7
 	const EVENT_6B8

@@ -25,9 +25,6 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, GatePalette
 	cp TILESET_GATE
 	jp z, .load_eight_bg_palettes
-	ld hl, RadioTowerPalette
-	cp TILESET_RADIO_TOWER
-	jp z, .load_eight_bg_palettes
 	ld hl, GameCornerPalette
 	cp TILESET_GAME_CORNER
 	jp z, .load_eight_bg_palettes
@@ -44,6 +41,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .pokecenter
 	cp TILESET_ICE_PATH
 	jp z, .ice_path_or_hall_of_fame
+	cp TILESET_RADIO_TOWER
+	jp z, .radio_towers
 	cp TILESET_FOREST
 	jp z, .maybe_yellow_forest_or_murky_swamp
 	cp TILESET_GYM_1
@@ -111,6 +110,27 @@ LoadSpecialMapPalette: ; 494ac
 	cp 3 ; Hall of Fame
 	jp z, .load_eight_bg_palettes
 	ld hl, IcePathPalette
+	jp .load_eight_bg_palettes
+
+.radio_towers
+	ld hl, RadioTowerPalette
+	ld a, [MapGroup]
+	cp GROUP_RADIO_TOWER_1F
+	jp z, .load_eight_bg_palettes
+	ld hl, HauntedRadioTowerPalette
+	ld a, [MapNumber]
+	cp MAP_HAUNTED_RADIO_TOWER_2F
+	jp z, .load_eight_bg_palettes
+	ld hl, HauntedPokemonTowerPalette
+	cp MAP_HAUNTED_RADIO_TOWER_3F
+	jp z, .load_eight_bg_palettes
+	cp MAP_HAUNTED_RADIO_TOWER_4F
+	jp z, .load_eight_bg_palettes
+	cp MAP_HAUNTED_RADIO_TOWER_5F
+	jp z, .load_eight_bg_palettes
+	cp MAP_HAUNTED_RADIO_TOWER_6F
+	jp z, .load_eight_bg_palettes
+	ld hl, RadioTowerPalette
 	jp .load_eight_bg_palettes
 
 .maybe_yellow_forest_or_murky_swamp
@@ -318,10 +338,6 @@ INCLUDE "tilesets/ice_path.pal"
 GatePalette:
 INCLUDE "tilesets/gate.pal"
 
-RadioTowerPalette: ; 4963d
-INCLUDE "tilesets/radio_tower.pal"
-; 4967d
-
 GameCornerPalette:
 INCLUDE "tilesets/game_corner.pal"
 
@@ -339,6 +355,16 @@ INCLUDE "tilesets/faraway_island.pal"
 
 ShamoutiIslandPalette:
 INCLUDE "tilesets/shamouti_island.pal"
+
+RadioTowerPalette: ; 4963d
+INCLUDE "tilesets/radio_tower.pal"
+; 4967d
+
+HauntedRadioTowerPalette:
+INCLUDE "tilesets/haunted_radio_tower.pal"
+
+HauntedPokemonTowerPalette:
+INCLUDE "tilesets/haunted_pokemon_tower.pal"
 
 YellowForestPalette:
 INCLUDE "tilesets/yellow_forest.pal"
