@@ -127,9 +127,6 @@ UnknownScript_0x75629:
 	waitsfx
 	end
 
-FastShipCabins_NNW_NNE_NETrashcan:
-	jumpstd trashcan
-
 MovementData_0x75637:
 	step_left
 	step_left
@@ -326,10 +323,7 @@ FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 13, 6, SIGNPOST_READ, FastShipCabins_NNW_NNE_NETrashcan
-	signpost 19, 7, SIGNPOST_READ, FastShipCabins_NNW_NNE_NETrashcan
-	signpost 31, 7, SIGNPOST_READ, FastShipCabins_NNW_NNE_NETrashcan
+	db 0
 
 .PersonEvents:
 	db 8

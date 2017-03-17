@@ -112,9 +112,6 @@ UnknownScript_0x75af7:
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	end
 
-FastShipCabinsNorthwestCabinTrashcan:
-	jumpstd trashcan
-
 FirebreatherLyleSeenText:
 	text "I'm going to Kanto"
 	line "to put on fire-"
@@ -249,10 +246,9 @@ FastShipCabins_SW_SSW_NW_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 2
 	signpost 1, 7, SIGNPOST_READ, FastShipBed
 	signpost 2, 7, SIGNPOST_READ, FastShipBed
-	signpost 7, 7, SIGNPOST_READ, FastShipCabinsNorthwestCabinTrashcan
 
 .PersonEvents:
 	db 5

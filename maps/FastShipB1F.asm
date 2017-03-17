@@ -205,9 +205,6 @@ SchoolboyRickyScript:
 	closetext
 	end
 
-FastShipB1FTrashcan:
-	jumpstd trashcan
-
 MovementData_0x76871:
 	fix_facing
 	big_step_right
@@ -465,8 +462,7 @@ FastShipB1F_MapEventHeader:
 	xy_trigger 0, $5, $1b, $0, UnknownScript_0x76751, $0, $0
 
 .Signposts:
-	db 1
-	signpost 7, 23, SIGNPOST_READ, FastShipB1FTrashcan
+	db 0
 
 .PersonEvents:
 	db 12

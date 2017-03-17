@@ -215,9 +215,6 @@ SupernerdShawnScript:
 	closetext
 	end
 
-FastShipCaptainsCabinTrashcan:
-	jumpstd trashcan
-
 MovementData_0x76004:
 	big_step_right
 	big_step_up
@@ -477,8 +474,7 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 1
-	signpost 25, 4, SIGNPOST_READ, FastShipCaptainsCabinTrashcan
+	db 0
 
 .PersonEvents:
 	db 11
