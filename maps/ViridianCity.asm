@@ -115,12 +115,6 @@ ViridianCityWelcomeSign:
 TrainerHouseSign:
 	jumptext TrainerHouseSignText
 
-ViridianCityPokeCenterSign:
-	jumpstd pokecentersign
-
-ViridianCityMartSign:
-	jumpstd martsign
-
 UnknownText_0x1a9aa5:
 	text "Hey, kid! I just"
 	line "had a double shot"
@@ -309,13 +303,11 @@ ViridianCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 4
 	signpost 17, 17, SIGNPOST_READ, ViridianCitySign
 	signpost 7, 27, SIGNPOST_READ, ViridianGymSign
 	signpost 1, 19, SIGNPOST_READ, ViridianCityWelcomeSign
 	signpost 15, 21, SIGNPOST_READ, TrainerHouseSign
-	signpost 25, 24, SIGNPOST_READ, ViridianCityPokeCenterSign
-	signpost 19, 30, SIGNPOST_READ, ViridianCityMartSign
 
 .PersonEvents:
 	db 8

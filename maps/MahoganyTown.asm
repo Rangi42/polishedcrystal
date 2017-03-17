@@ -122,9 +122,6 @@ MahoganyTownRagecandybarSign:
 MahoganyGymSign:
 	jumptext MahoganyGymSignText
 
-MahoganyTownPokeCenterSign:
-	jumpstd pokecentersign
-
 MovementData_0x1900a4:
 	step_down
 	big_step_up
@@ -266,11 +263,10 @@ MahoganyTown_MapEventHeader:
 	xy_trigger 0, $9, $13, $0, UnknownScript_0x190013, $0, $0
 
 .Signposts:
-	db 4
+	db 3
 	signpost 5, 1, SIGNPOST_READ, MahoganyTownSign
 	signpost 7, 9, SIGNPOST_READ, MahoganyTownRagecandybarSign
 	signpost 13, 3, SIGNPOST_READ, MahoganyGymSign
-	signpost 13, 16, SIGNPOST_READ, MahoganyTownPokeCenterSign
 
 .PersonEvents:
 	db 4

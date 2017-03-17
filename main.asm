@@ -464,12 +464,15 @@ CheckFacingTileForStd:: ; 1365b
 	dbw $95, townmap
 	dbw $96, merchandiseshelf
 	dbw $97, tv
+	dbw $98, pokecentersign
+	dbw $99, martsign
 	dbw $9a, vendingmachine
 	dbw $9b, refrigerator
 	dbw $9c, sink
 	dbw $9d, window
 	dbw $9e, stove
 	dbw $9f, incenseburner
+	dbw $d1, elevatorbutton
 	db   -1 ; end
 
 Script_JumpStdFromRAM: ; 0x1369a

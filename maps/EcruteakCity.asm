@@ -101,12 +101,6 @@ BurnedTowerSign:
 EcruteakShrineSign:
 	jumptext EcruteakShrineSignText
 
-EcruteakCityPokeCenterSign:
-	jumpstd pokecentersign
-
-EcruteakCityMartSign:
-	jumpstd martsign
-
 EcruteakCityHiddenHyperPotion:
 	dwb EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION, HYPER_POTION
 
@@ -301,13 +295,11 @@ EcruteakCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 8
+	db 6
 	signpost 21, 15, SIGNPOST_READ, EcruteakCitySign
 	signpost 28, 8, SIGNPOST_READ, EcruteakGymSign
 	signpost 21, 21, SIGNPOST_READ, EcruteakDanceTheaterSign
 	signpost 10, 2, SIGNPOST_READ, BurnedTowerSign
-	signpost 27, 24, SIGNPOST_READ, EcruteakCityPokeCenterSign
-	signpost 21, 30, SIGNPOST_READ, EcruteakCityMartSign
 	signpost 14, 25, SIGNPOST_ITEM, EcruteakCityHiddenHyperPotion
 	signpost 11, 18, SIGNPOST_READ, EcruteakShrineSign
 

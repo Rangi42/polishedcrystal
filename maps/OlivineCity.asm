@@ -166,12 +166,6 @@ OlivineLighthouseSign:
 OlivineCityBattleTowerSign:
 	jumptext OlivineCityBattleTowerSignText
 
-OlivineCityPokeCenterSign:
-	jumpstd pokecentersign
-
-OlivineCityMartSign:
-	jumpstd martsign
-
 OlivineCityHiddenRareCandy:
 	dwb EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY, RARE_CANDY
 
@@ -506,14 +500,12 @@ OlivineCity_MapEventHeader:
 	xy_trigger 0, $17, $21, $0, OlivineCityRivalLighthouseScript, $0, $0
 
 .Signposts:
-	db 8
+	db 6
 	signpost 7, 17, SIGNPOST_READ, OlivineCitySign
 	signpost 22, 20, SIGNPOST_READ, OlivineCityPortSign
 	signpost 7, 7, SIGNPOST_READ, OlivineGymSign
 	signpost 20, 34, SIGNPOST_READ, OlivineLighthouseSign
 	signpost 21, 1, SIGNPOST_READ, OlivineCityBattleTowerSign
-	signpost 17, 14, SIGNPOST_READ, OlivineCityPokeCenterSign
-	signpost 13, 20, SIGNPOST_READ, OlivineCityMartSign
 	signpost 14, 36, SIGNPOST_ITEM, OlivineCityHiddenRareCandy
 
 .PersonEvents:

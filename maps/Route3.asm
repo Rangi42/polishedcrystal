@@ -90,9 +90,6 @@ AceDuoZacandjen2Script:
 MapRoute3Signpost0Script:
 	jumptext UnknownText_0x1ae163
 
-MapRoute3Signpost1Script:
-	jumpstd pokecentersign
-
 Route3HiddenMoonStone:
 	dwb EVENT_ROUTE_3_HIDDEN_MOON_STONE, MOON_STONE
 
@@ -220,9 +217,8 @@ Route3_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 2
 	signpost 15, 61, SIGNPOST_READ, MapRoute3Signpost0Script
-	signpost 3, 62, SIGNPOST_READ, MapRoute3Signpost1Script
 	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
 
 .PersonEvents:

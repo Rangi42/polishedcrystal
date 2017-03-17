@@ -152,12 +152,6 @@ DragonDensSign:
 BlackthornCityTrainerTips:
 	jumptext BlackthornCityTrainerTipsText
 
-BlackthornCityPokeCenterSign:
-	jumpstd pokecentersign
-
-BlackthornCityMartSign:
-	jumpstd martsign
-
 Text_ClairIsOut:
 	text "I am sorry."
 
@@ -377,14 +371,12 @@ BlackthornCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 7
+	db 5
 	signpost 24, 34, SIGNPOST_READ, BlackthornCitySign
 	signpost 13, 17, SIGNPOST_READ, BlackthornGymSign
 	signpost 29, 7, SIGNPOST_READ, MoveDeletersHouseSign
 	signpost 3, 21, SIGNPOST_READ, DragonDensSign
 	signpost 19, 9, SIGNPOST_READ, BlackthornCityTrainerTips
-	signpost 29, 16, SIGNPOST_READ, BlackthornCityMartSign
-	signpost 29, 22, SIGNPOST_READ, BlackthornCityPokeCenterSign
 
 .PersonEvents:
 	db 12

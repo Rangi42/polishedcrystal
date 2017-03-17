@@ -231,12 +231,6 @@ CherrygroveCitySign:
 GuideGentsHouseSign:
 	jumptext GuideGentsHouseSignText
 
-CherrygroveCityPokeCenterSign:
-	jumpstd pokecentersign
-
-CherrygroveCityMartSign:
-	jumpstd martsign
-
 GuideGentMovement1:
 	step_left
 	step_left
@@ -557,11 +551,9 @@ CherrygroveCity_MapEventHeader:
 	xy_trigger 1, $7, $21, $0, CherrygroveSilverTriggerSouth, $0, $0
 
 .Signposts:
-	db 4
+	db 2
 	signpost 8, 30, SIGNPOST_READ, CherrygroveCitySign
 	signpost 9, 23, SIGNPOST_READ, GuideGentsHouseSign
-	signpost 3, 24, SIGNPOST_READ, CherrygroveCityMartSign
-	signpost 3, 30, SIGNPOST_READ, CherrygroveCityPokeCenterSign
 
 .PersonEvents:
 	db 5

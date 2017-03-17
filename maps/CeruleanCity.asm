@@ -146,12 +146,6 @@ CeruleanPoliceSign:
 CeruleanCapeSign:
 	jumptext CeruleanCapeSignText
 
-CeruleanCityPokeCenterSign:
-	jumpstd pokecentersign
-
-CeruleanCityMartSign:
-	jumpstd martsign
-
 CeruleanBubblerSign:
 	jumptext CeruleanBubblerText
 
@@ -330,14 +324,12 @@ CeruleanCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 9
+	db 7
 	signpost 23, 23, SIGNPOST_READ, CeruleanCitySign
 	signpost 25, 27, SIGNPOST_READ, CeruleanGymSign
 	signpost 29, 11, SIGNPOST_READ, CeruleanBikeShopSign
 	signpost 17, 25, SIGNPOST_READ, CeruleanPoliceSign
 	signpost 7, 23, SIGNPOST_READ, CeruleanCapeSign
-	signpost 21, 20, SIGNPOST_READ, CeruleanCityPokeCenterSign
-	signpost 29, 26, SIGNPOST_READ, CeruleanCityMartSign
 	signpost 22, 11, SIGNPOST_UP, CeruleanBubblerSign
 	signpost 17, 4, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
 

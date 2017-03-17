@@ -74,12 +74,6 @@ PewterCityMtMoonGiftShopSign:
 PewterCityWelcomeSign:
 	jumptext PewterCityWelcomeSignText
 
-PewterCityPokeCenterSign:
-	jumpstd pokecentersign
-
-PewterCityMartSign:
-	jumpstd martsign
-
 FruitTreeScript_0x18c03e:
 	fruittree FRUITTREE_PEWTER_CITY_1
 
@@ -199,14 +193,12 @@ PewterCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 7
+	db 5
 	signpost 23, 25, SIGNPOST_READ, PewterCitySign
 	signpost 17, 11, SIGNPOST_READ, PewterGymSign
 	signpost 9, 15, SIGNPOST_READ, PewterMuseumOfScienceSign
 	signpost 19, 33, SIGNPOST_READ, PewterCityMtMoonGiftShopSign
 	signpost 29, 19, SIGNPOST_READ, PewterCityWelcomeSign
-	signpost 25, 14, SIGNPOST_READ, PewterCityPokeCenterSign
-	signpost 17, 24, SIGNPOST_READ, PewterCityMartSign
 
 .PersonEvents:
 	db 7

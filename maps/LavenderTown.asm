@@ -42,12 +42,6 @@ VolunteerPokemonHouseSign:
 SoulHouseSign:
 	jumptext SoulHouseSignText
 
-LavenderPokeCenterSignText:
-	jumpstd pokecentersign
-
-LavenderMartSignText:
-	jumpstd martsign
-
 UnknownText_0x1ad702:
 	text "That's quite some"
 	line "building, eh?"
@@ -125,13 +119,11 @@ LavenderTown_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 4
 	signpost 5, 11, SIGNPOST_READ, LavenderTownSign
 	signpost 9, 15, SIGNPOST_READ, KantoRadioStationSign
 	signpost 11, 3, SIGNPOST_READ, VolunteerPokemonHouseSign
 	signpost 15, 15, SIGNPOST_READ, SoulHouseSign
-	signpost 7, 6, SIGNPOST_READ, LavenderPokeCenterSignText
-	signpost 7, 2, SIGNPOST_READ, LavenderMartSignText
 
 .PersonEvents:
 	db 4

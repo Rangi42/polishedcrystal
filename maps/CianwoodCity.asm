@@ -147,9 +147,6 @@ CianwoodCliffEdgeGateSign:
 CianwoodStatsJudgeSign:
 	jumptext CianwoodStatsJudgeSignText
 
-CianwoodPokeCenterSign:
-	jumpstd pokecentersign
-
 CianwoodCityRock:
 	jumpstd smashrock
 
@@ -405,10 +402,9 @@ CianwoodCity_MapEventHeader:
 	xy_trigger 1, $10, $b, $0, UnknownScript_0x1a001e, $0, $0
 
 .Signposts:
-	db 9
+	db 8
 	signpost 34, 20, SIGNPOST_READ, CianwoodCitySign
 	signpost 44, 6, SIGNPOST_READ, CianwoodGymSign
-	signpost 43, 24, SIGNPOST_READ, CianwoodPokeCenterSign
 	signpost 47, 19, SIGNPOST_READ, CianwoodPharmacySign
 	signpost 32, 8, SIGNPOST_READ, CianwoodPhotoStudioSign
 	signpost 26, 6, SIGNPOST_READ, CianwoodCliffEdgeGateSign
