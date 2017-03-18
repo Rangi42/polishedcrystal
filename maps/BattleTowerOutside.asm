@@ -57,7 +57,7 @@ BattleTowerOutsidePanUpScript1:
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
-	warpfacing UP, BATTLE_TOWER_1F, $7, $9
+	warpfacing UP, BATTLE_TOWER_1F, $a, $d
 	end
 
 BattleTowerOutsidePanUpScript2:
@@ -71,7 +71,7 @@ BattleTowerOutsidePanUpScript2:
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
-	warpfacing UP, BATTLE_TOWER_1F, $8, $9
+	warpfacing UP, BATTLE_TOWER_1F, $b, $d
 	end
 
 BattleTowerOutsideYoungsterScript:
