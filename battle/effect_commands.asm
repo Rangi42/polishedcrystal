@@ -1343,6 +1343,10 @@ _CheckTypeMatchup: ; 347d3
 	ld c, [hl]
 	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
+	ld hl, InverseTypeMatchup
+	ld a, [battleType]
+	cp BATTLETYPE_INVERSE
+	jr z, .TypesLoop
 	ld hl, TypeMatchup
 .TypesLoop:
 	ld a, [hli]
@@ -1441,6 +1445,9 @@ INCLUDE "battle/ai/switch.asm"
 TypeMatchup: ; 34bb1
 INCLUDE "battle/type_matchup.asm"
 ; 34cfd
+
+InverseTypeMatchup:
+INCLUDE "battle/inverse_type_matchup.asm"
 
 
 BattleCommand_DamageVariation: ; 34cfd
