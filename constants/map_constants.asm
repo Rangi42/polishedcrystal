@@ -487,11 +487,12 @@ MAP_NONE   EQU 0
 	mapgroup CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
 	mapgroup STATS_JUDGES_HOUSE,                          4,  4 ; 10
 	mapgroup BATTLE_TOWER_1F,                             7, 11 ; 11
-	mapgroup BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 12
-	mapgroup BATTLE_TOWER_ELEVATOR,                       2,  2 ; 13
-	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 14
-	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
-	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
+	mapgroup BATTLE_TOWER_2F,                             5, 11 ; 12
+	mapgroup BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 13
+	mapgroup BATTLE_TOWER_ELEVATOR,                       2,  2 ; 14
+	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 15
+	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 16
+	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 17
 
 	newgroup                                                    ; 23
 

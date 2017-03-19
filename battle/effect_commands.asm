@@ -1344,7 +1344,7 @@ _CheckTypeMatchup: ; 347d3
 	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
 	ld hl, InverseTypeMatchup
-	ld a, [battleType]
+	ld a, [BattleType]
 	cp BATTLETYPE_INVERSE
 	jr z, .TypesLoop
 	ld hl, TypeMatchup

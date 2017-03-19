@@ -244,6 +244,9 @@ DragonShrine_BlockData:
 BattleTower1F_BlockData:
 	INCBIN "maps/BattleTower1F.blk"
 
+BattleTower2F_BlockData:
+	INCBIN "maps/BattleTower2F.blk"
+
 BattleTowerBattleRoom_BlockData:
 	INCBIN "maps/BattleTowerBattleRoom.blk"
 
