@@ -107,6 +107,7 @@ INCLUDE "maps/VioletNicknameSpeechHouse.asm"
 SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
 
 INCLUDE "maps/GoldenrodPokeComCenter1F.asm"
+INCLUDE "maps/GoldenrodPokeComCenterOffice.asm"
 INCLUDE "maps/Route11.asm"
 INCLUDE "maps/VioletMart.asm"
 INCLUDE "maps/VioletGym.asm"

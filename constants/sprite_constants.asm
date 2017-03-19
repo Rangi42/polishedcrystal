@@ -158,12 +158,13 @@
 	const SPRITE_ELECTRIC_FENCE_LEFT ; $9a
 	const SPRITE_ELECTRIC_FENCE_RIGHT ; $9b
 	const SPRITE_FOSSIL ; $9c
-	const SPRITE_SNES ; $9d
-	const SPRITE_N64 ; $9e
-	const SPRITE_GAMECUBE ; $9f
-	const SPRITE_WII ; $a0
-	const SPRITE_SILVER_TROPHY ; $a1
-	const SPRITE_GOLD_TROPHY ; $a2
+	const SPRITE_SIGN ; $9d
+	const SPRITE_SNES ; $9e
+	const SPRITE_N64 ; $9f
+	const SPRITE_GAMECUBE ; $a0
+	const SPRITE_WII ; $a1
+	const SPRITE_SILVER_TROPHY ; $a2
+	const SPRITE_GOLD_TROPHY ; $a3
 
 const_value SET $a8
 SPRITE_POKEMON EQU const_value

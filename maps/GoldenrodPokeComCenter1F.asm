@@ -10,10 +10,7 @@ const_value set 2
 	const GOLDENRODPOKECOMCENTER1F_ROCKER
 	const GOLDENRODPOKECOMCENTER1F_GRAMPS
 	const GOLDENRODPOKECOMCENTER1F_LASS2
-	const GOLDENRODPOKECOMCENTER1F_SCIENTIST1
-	const GOLDENRODPOKECOMCENTER1F_SCIENTIST2
-	const GOLDENRODPOKECOMCENTER1F_SCIENTIST3
-
+	const GOLDENRODPOKECOMCENTER1F_SIGN
 
 GoldenrodPokeComCenter1F_MapScriptHeader:
 .MapTriggers:
@@ -333,12 +330,11 @@ TeacherScript:
 UnknownText_0x61e5c:
 	text "Some girl I don't"
 	line "know sent me her"
+	cont "Sunflora."
 
-	para "Sunflora."
-	line "You should trade"
-
-	para "for a #mon that"
-	line "you want."
+	para "You should trade"
+	line "for a #mon that"
+	cont "you want."
 	done
 
 ; unused
@@ -411,128 +407,22 @@ UnknownText_0x62222:
 	line "younger!"
 	done
 
-ScientistScript_0x625d1:
-	jumptextfaceplayer UnknownText_0x62674
-
-ScientistScript_0x625d4:
-	jumptextfaceplayer UnknownText_0x626f9
-
-ScientistScript_0x625d7:
-	jumptextfaceplayer UnknownText_0x62795
-
-Computer0Script:
-	jumptext UnknownText_0x627ee
-
-Computer1Script:
-	jumptext UnknownText_0x62989
-
-Computer2Script:
-	jumptext UnknownText_0x62b26
-
-UnknownText_0x62674:
-	text "#Com Center and"
-	line "its Wonder Trade"
-
-	para "Hub were built to"
-	line "satisfy demand for"
-
-	para "trading with"
-	line "people far away."
-	done
-
-UnknownText_0x626f9:
-	text "When you traded"
-	line "with someone"
-	cont "in another region"
-
-	para "wirelessly for"
-	line "the first time,"
-
-	para "weren't you"
-	line "impressed?"
-
-	para "When my first try"
-	line "worked, I was so"
-
-	para "amazed that I"
-	line "got the shakes!"
-	done
-
-UnknownText_0x62795:
-	text "They were able to"
-	line "build this huge"
-
-	para "facility thanks to"
-	line "advances in wire-"
-	cont "less technology."
-	done
-
-UnknownText_0x627ee:
-	text "Network traffic"
-	line "from Wonder Trades"
-
-	para "is streaming by"
-	line "on the screen."
-	done
-
-UnknownText_0x62989:
-	text "There's a screen-"
-	line "saver endlessly"
-
-	para "running through"
-	line "a 3D maze."
-	done
-
-UnknownText_0x62b26:
-	text "The Administration"
-	line "Office received an"
-	cont "e-mail. It says…"
-
-	para "…… …… ……"
-
-	para "To the #Com"
-	line "Center staff…"
-
-	para "Wireless communi-"
-	line "cation has enabled"
-
-	para "#mon trainers"
-	line "to interact across"
-
-	para "the nation. Let's"
-	line "keep working for"
-
-	para "the day when all"
-	line "the trainers in"
-
-	para "the world can link"
-	line "without barriers!"
-
-	para "…… …… ……"
-	done
-
 GoldenrodPokeComCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 6
+	db 4
 	warp_def $f, $6, 15, GOLDENROD_CITY
 	warp_def $f, $7, 15, GOLDENROD_CITY
-	warp_def $6, $0, 5, GOLDENROD_POKECOM_CENTER_1F
+	warp_def $6, $1, 5, GOLDENROD_POKECOM_CENTER_OFFICE
 	warp_def $f, $0, 1, POKECENTER_2F
-	warp_def $1f, $0, 3, GOLDENROD_POKECOM_CENTER_1F
-	warp_def $1f, $1, 3, GOLDENROD_POKECOM_CENTER_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 19
-	signpost 26, 6, SIGNPOST_UP, Computer0Script
-	signpost 28, 6, SIGNPOST_UP, Computer1Script
-	signpost 26, 3, SIGNPOST_UP, Computer2Script
-	signpost 9, 2, SIGNPOST_UP, InfoSignScript
+	db 15
 	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
 	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
 	signpost 7, 24, SIGNPOST_RIGHT, NewsMachineScript
@@ -550,18 +440,16 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	signpost 10, 29, SIGNPOST_LEFT, NewsMachineScript
 
 .PersonEvents:
-	db 14
+	db 12
 	person_event SPRITE_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
-	person_event SPRITE_GAMEBOY_KID, 12, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x6101e, -1
+	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x6101e, -1
 	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass1Script_0x61021, -1
-	person_event SPRITE_POKEFAN_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
+	person_event SPRITE_POKEFAN_F, 14, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
 	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript, -1
 	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript, -1
 	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript, -1
 	person_event SPRITE_ROCKER, 6, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockerScript, -1
-	person_event SPRITE_GRAMPS, 14, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript, -1
+	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript, -1
 	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass2Script, -1
-	person_event SPRITE_SCIENTIST, 28, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d1, -1
-	person_event SPRITE_SCIENTIST, 27, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d4, -1
-	person_event SPRITE_SCIENTIST, 29, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d7, -1
+	person_event SPRITE_SIGN, 9, 3, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1

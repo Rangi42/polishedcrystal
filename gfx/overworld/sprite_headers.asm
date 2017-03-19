@@ -567,6 +567,9 @@ ElectricFenceRightSprite:
 FossilSprite:
 	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
 
+SignSprite:
+	sprite_header SignSpriteGFX, 1, STILL_SPRITE, PAL_OW_SILVER
+
 SnesSprite: ; 14952
 	sprite_header SnesSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
 ; 14958

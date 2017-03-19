@@ -261,14 +261,15 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_DEPT_STORE_ELEVATOR,               2,  2 ; 20
 	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   4,  8 ; 21
 	mapgroup GOLDENROD_GAME_CORNER,                       7, 10 ; 22
-	mapgroup GOLDENROD_POKECOM_CENTER_1F,                16, 16 ; 23
-	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 24
-	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 25
-	mapgroup DAYCARE,                                     4,  4 ; 26
-	mapgroup GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 27
-	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 28
-	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 29
-	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 30
+	mapgroup GOLDENROD_POKECOM_CENTER_1F,                 8, 16 ; 23
+	mapgroup GOLDENROD_POKECOM_CENTER_OFFICE,             4,  4 ; 24
+	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 25
+	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 26
+	mapgroup DAYCARE,                                     4,  4 ; 27
+	mapgroup GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 28
+	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 29
+	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 30
+	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 31
 
 	newgroup                                                    ; 12
 
