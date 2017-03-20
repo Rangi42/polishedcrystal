@@ -9,7 +9,7 @@
 	const SCGB_07
 	const SCGB_08
 	const SCGB_MAPPALS
-	const SCGB_0A
+	const SCGB_PARTY_MENU
 	const SCGB_0B
 	const SCGB_0C
 	const SCGB_0D

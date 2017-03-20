@@ -741,9 +741,15 @@ _CGB_MapPals: ; 91c8
 _CGB0a: ; 91d1
 	ld hl, PalPacket_9c56 + 1
 	call CopyFourPalettes
+	ld hl, GenderAndExpPalettes
+	call LoadPalette_White_Col1_Col2_Black
 	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 	call InitPartyMenuOBPals
+	hlcoord 10, 2, AttrMap
+	lb bc, 11, 1
+	ld a, $4
+	call FillBoxCGB
 	call ApplyAttrMap
 	ret
 ; 91e4

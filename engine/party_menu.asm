@@ -20,7 +20,7 @@ SelectTradeOrDaycareMon: ; 5001d
 	call ClearBGPalettes
 	call InitPartyMenuLayout
 	call WaitBGMap
-	ld b, SCGB_0A
+	ld b, SCGB_PARTY_MENU
 	call GetSGBLayout
 	call SetPalettes
 	call DelayFrame
@@ -159,7 +159,7 @@ PlacePartyHPBar: ; 500cf
 	inc b
 	dec c
 	jr nz, .loop
-	ld b, SCGB_0A
+	ld b, SCGB_PARTY_MENU
 	call GetSGBLayout
 	ret
 ; 50117
@@ -477,9 +477,9 @@ PlacePartyMonGender: ; 502b1
 	call GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, "♂"
+	ld a, $5f ; colored "♂"
 	jr nz, .got_gender
-	ld a, "♀"
+	ld a, $60 ; colored "♀"
 
 .got_gender
 	pop hl
