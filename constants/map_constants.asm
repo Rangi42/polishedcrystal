@@ -381,18 +381,21 @@ MAP_NONE   EQU 0
 	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  7
 	mapgroup LAVENDER_MART,                               4,  6 ;  8
 	mapgroup SOUL_HOUSE,                                  5,  5 ;  9
-	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 10
-	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 11
-	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 12
-	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 13
-	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 14
-	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 15
-	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 16
-	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 17
-	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 18
-	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 19
-	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 20
-	mapgroup ROUTE_12_NORTH,                              9, 10 ; 21
+	mapgroup SOUL_HOUSE_B1F,                              9, 10 ; 10
+	mapgroup SOUL_HOUSE_B2F,                              9, 10 ; 11
+	mapgroup SOUL_HOUSE_B3F,                              9,  4 ; 12
+	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 13
+	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 14
+	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 15
+	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 16
+	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 17
+	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 18
+	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 19
+	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 20
+	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 21
+	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 22
+	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 23
+	mapgroup ROUTE_12_NORTH,                              9, 10 ; 24
 
 	newgroup                                                    ; 19
 

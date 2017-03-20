@@ -126,6 +126,15 @@ DayCare_BlockData:
 SoulHouse_BlockData:
 	INCBIN "maps/SoulHouse.blk"
 
+SoulHouseB1F_BlockData:
+	INCBIN "maps/SoulHouseB1F.blk"
+
+SoulHouseB2F_BlockData:
+	INCBIN "maps/SoulHouseB2F.blk"
+
+SoulHouseB3F_BlockData:
+	INCBIN "maps/SoulHouseB3F.blk"
+
 PewterGym_BlockData:
 	INCBIN "maps/PewterGym.blk"
 
