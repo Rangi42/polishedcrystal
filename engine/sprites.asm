@@ -295,8 +295,12 @@ UpdateAnimFrame: ; 8d04c
 	inc de
 	; fourth byte: attributes
 	; [de] = GetSpriteOAMAttr([hl])
+	ld a, [hl]
+	cp $ff
+	jr z, .skipOAM
 	call GetSpriteOAMAttr
 	ld [de], a
+.skipOAM
 	inc hl
 	inc de
 	ld a, e
