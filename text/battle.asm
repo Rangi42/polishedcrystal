@@ -395,6 +395,7 @@ BattleText_PkmnCantBeRecalledAbility: ; 0x80c22
 	text "'s"
 	line "@"
 	text_from_ram StringBuffer1
+	text ""
 	cont "prevents escape!"
 	prompt
 

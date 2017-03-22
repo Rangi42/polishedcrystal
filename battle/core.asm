@@ -3959,7 +3959,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 
 	call SetPlayerTurn
 	call CheckIfTrappedByAbility_Core
-	jp z, .skip_inescapable_text
+	jp z, .ability_prevents_escape
 	ld a, [wNumFleeAttempts]
 	inc a
 	ld [wNumFleeAttempts], a
@@ -4029,11 +4029,17 @@ TryToRunAwayFromBattle: ; 3d8b3
 
 .cant_run_from_trainer
 	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
+	jr .print_inescapable_text
+
+.ability_prevents_escape
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_PkmnCantBeRecalledAbility
 
 .print_inescapable_text
 	call StdBattleTextBox
-.skip_inescapable_text
-	; for abilities preventing escape to avoid redundancy
 	ld a, 1
 	ld [wFailedToFlee], a
 	call LoadTileMapToTempTileMap
