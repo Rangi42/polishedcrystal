@@ -415,7 +415,7 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	db 4
 	warp_def $f, $6, 15, GOLDENROD_CITY
 	warp_def $f, $7, 15, GOLDENROD_CITY
-	warp_def $6, $1, 5, GOLDENROD_POKECOM_CENTER_OFFICE
+	warp_def $6, $1, 1, GOLDENROD_POKECOM_CENTER_OFFICE
 	warp_def $f, $0, 1, POKECENTER_2F
 
 .XYTriggers:
