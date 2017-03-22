@@ -4432,10 +4432,12 @@ SpikesDamage_CheckMoldBreaker:
 ; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
 ; but can't be checked unconditionally since other kind of switches ignore MB as usual.
 	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
 	cp MOLD_BREAKER
 	jr z, SpikesDamage_SkipLevitate
 SpikesDamage: ; 3dc23
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp LEVITATE
 	jr z, HandleAirBalloon ; still print the message even if we have levitate
 SpikesDamage_SkipLevitate:
