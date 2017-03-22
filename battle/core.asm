@@ -8,7 +8,7 @@ DoBattle: ; 3c000
 	ld [wPlayerAction], a
 	ld [BattleEnded], a
 	inc a
-	ld [wAISwitch], a
+	ld [wBattleHasJustStarted], a
 	ld hl, OTPartyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH - 1
 	ld d, BATTLEACTION_SWITCH1 - 1
@@ -169,7 +169,7 @@ BattleTurn: ; 3c12f
 	xor a
 	ld [wPlayerIsSwitching], a
 	ld [wEnemyIsSwitching], a
-	ld [wAISwitch], a
+	ld [wBattleHasJustStarted], a
 	ld [wPlayerJustGotFrozen], a
 	ld [wEnemyJustGotFrozen], a
 	ld [CurDamage], a
@@ -906,15 +906,15 @@ GetMovePriority: ; 3c5c5
 
 
 MoveEffectPriorities: ; 3c5df
-	db PROTECT,      4
-	db ENDURE,       4
-	db EXTREMESPEED, 2
-	db SUCKER_PUNCH, 1
-	db BULLET_PUNCH, 1
-	db ICE_SHARD,    1
-	db MACH_PUNCH,   1
-	db QUICK_ATTACK, 1
-	; everything else at 0
+	db PROTECT,       4
+	db ENDURE,        4
+	db EXTREMESPEED,  2
+	db SUCKER_PUNCH,  1
+	db BULLET_PUNCH,  1
+	db ICE_SHARD,     1
+	db MACH_PUNCH,    1
+	db QUICK_ATTACK,  1
+	; everything else 0
 	db AVALANCHE,    -4
 	db COUNTER,      -5
 	db MIRROR_COAT,  -5
@@ -3317,14 +3317,14 @@ CheckWhetherSwitchmonIsPredetermined: ; 3d533
 .not_linked
 	ld a, [wEnemySwitchMonIndex]
 	and a
-	jr z, .check_wAISwitch
+	jr z, .check_wBattleHasJustStarted
 
 	dec a
 	ld b, a
 	jr .return_carry
 
-.check_wAISwitch
-	ld a, [wAISwitch]
+.check_wBattleHasJustStarted
+	ld a, [wBattleHasJustStarted]
 	and a
 	ld b, $0
 	jr nz, .return_carry
@@ -3644,7 +3644,7 @@ FinalPkmnMusicAndAnimation:
 	ret
 
 CheckWhetherToAskSwitch: ; 3d714
-	ld a, [wAISwitch]
+	ld a, [wBattleHasJustStarted]
 	dec a
 	jp z, .return_nc
 	ld a, [PartyCount]
@@ -3881,7 +3881,7 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 	or [hl]
 	ret nz
 
-	ld a, [wAISwitch]
+	ld a, [wBattleHasJustStarted]
 	and a
 	jr nz, .finish_fail
 	ld hl, PartySpecies
@@ -4432,10 +4432,12 @@ SpikesDamage_CheckMoldBreaker:
 ; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
 ; but can't be checked unconditionally since other kind of switches ignore MB as usual.
 	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
 	cp MOLD_BREAKER
 	jr z, SpikesDamage_SkipLevitate
 SpikesDamage: ; 3dc23
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp LEVITATE
 	jr z, HandleAirBalloon ; still print the message even if we have levitate
 SpikesDamage_SkipLevitate:
@@ -5456,7 +5458,7 @@ Battle_StatsScreen: ; 3e308
 	call DisableLCD
 	ld hl, VTiles2 tile $31
 	ld de, VTiles0
-	ld bc, $0110
+	ld bc, $11 tiles
 	call CopyBytes
 	ld hl, VTiles2
 	ld de, VTiles0 tile $11
@@ -6810,7 +6812,7 @@ endr
 ; Fill stats
 	ld de, EnemyMonMaxHP
 	ld b, FALSE
-	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS - 1)) ; LinkBattleRNs + 7 (?)
+	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS - 1))
 	predef CalcPkmnStats
 
 ; If we're in a trainer battle,
@@ -8297,7 +8299,7 @@ SendOutPkmnText: ; 3f26d
 
 	ld hl, JumpText_GoPkmn ; If we're in a LinkBattle print just "Go <PlayerMon>"
 
-	ld a, [wAISwitch] ; unless this (unidentified) variable is set
+	ld a, [wBattleHasJustStarted]
 	and a
 	jr nz, .skip_to_textbox
 
