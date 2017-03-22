@@ -268,15 +268,15 @@ GetAnimatedFrontpic: ; 51103
 	ld hl, .LargeSpriteSizes
 .loop
 	ld a, [hli]
-	cp -1
-	jr z, .got_large_dims
 	cp c
-	ld a, [hli]
-	jr nz, .loop
+	jr z, .found
+	cp -1
+	jr z, .found
+	inc hl
+	jr .loop
+.found
+	ld a, [hl]
 	ld c, a
-	jr .got_large_dims
-	ld c, 7 * 7
-.got_large_dims
 	pop hl
 
 .got_dims
@@ -332,7 +332,7 @@ GetAnimatedFrontpic: ; 51103
 	db RHYPERIOR,  $85 - 7 * 7 + 1 ; TODO
 	db TOGEKISS,   $88 - 7 * 7 + 1 ; TODO
 	db MAGMORTAR,  $8b - 7 * 7 + 1 ; TODO
-	db -1
+	db -1,         7 * 7
 
 LoadOrientedFrontpicTiles: ; 5114f
 	ld hl, wDecompressScratch
