@@ -888,6 +888,10 @@ SteadfastAbility:
 SpeedBoostAbility:
 	ld b, SPEED
 StatUpAbility:
+	ld a, [AttackMissed]
+	push af
+	xor a
+	ld [AttackMissed], a
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_StatUp
@@ -896,7 +900,7 @@ StatUpAbility:
 	jr nz, .cant_raise
 	call ShowAbilityActivation
 	farcall BattleCommand_StatUpMessage
-	jp EnableAnimations
+	jr .done
 .cant_raise
 ; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
 	ld a, BATTLE_VARS_ABILITY
@@ -905,11 +909,16 @@ StatUpAbility:
 	cp MOTOR_DRIVE
 	jr z, .print_immunity
 	cp SAP_SIPPER
-	jp nz, EnableAnimations
+	jr nz, .done
 .print_immunity
 	call ShowAbilityActivation
+	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
+	call SwitchTurn
+.done
+	pop af
+	ld [AttackMissed], a
 	jp EnableAnimations
 
 WeakArmorAbility:
