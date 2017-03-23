@@ -4446,15 +4446,11 @@ SpikesDamage_SkipLevitate:
 	ld a, BATTLE_VARS_ABILITY
 	cp MAGIC_GUARD
 	ret z
-	ld hl, PlayerScreens
-	ld de, BattleMonType
-	ld bc, UpdatePlayerHUD
 	ld a, [hBattleTurn]
 	and a
+	ld hl, PlayerScreens
 	jr z, .ok
 	ld hl, EnemyScreens
-	ld de, EnemyMonType
-	ld bc, UpdateEnemyHUD
 .ok
 
 	bit SCREENS_SPIKES, [hl]
@@ -4464,22 +4460,12 @@ SpikesDamage_SkipLevitate:
 	call CheckIfUserIsFlyingType
 	ret z
 
-	push bc
-
-	ld hl, BattleText_UserHurtBySpikes ; "hurt by Spikes!"
-	call StdBattleTextBox
-
 	call GetEighthMaxHP
-	call SubtractHPFromTarget
+	call SubtractHPFromUser
+	call UpdateUserInParty
 
-	pop hl
-	call .hl
-
-	jp WaitBGMap
-
-.hl
-	jp [hl]
-; 3dc5b
+	ld hl, BattleText_UserHurtBySpikes
+	jp StdBattleTextBox
 
 HandleAirBalloon:
 ; prints air balloon msg and returns z if we have air balloon
