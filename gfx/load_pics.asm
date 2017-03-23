@@ -286,26 +286,28 @@ GetAnimatedFrontpic: ; 51103
 	pop bc
 	pop hl
 
-;	ld a, c
-;	cp $80 - 7 * 7 + 1
-;	jr c, .no_overflow
-;	ld de, wDecompressScratch
-;	ld a, [hROMBank]
-;	ld b, a
-;	push bc
-;	call Get2bpp
-;	pop bc
-;	ld a, BANK(VTiles4)
-;	ld [rVBK], a
-;	ld de, w6_d800 + $80 tiles
-;	ld hl, VTiles4
-;	ld a, [hROMBank]
-;	ld b, a
-;	ld a, c
-;	sub $80 - 7 * 7
-;	ld c, a
-;	call Get2bpp
-;	jr .finish
+	ld a, c
+	cp $80 - 7 * 7 + 1
+	jr c, .no_overflow
+	; TODO: load tiles in VTiles4 as oriented correctly
+	ld de, wDecompressScratch
+	ld a, [hROMBank]
+	ld b, a
+	push bc
+	ld c, $80 - 7 * 7 - 1
+	call Get2bpp
+	pop bc
+	ld a, BANK(VTiles4)
+	ld [rVBK], a
+	ld de, w6_d800 + $7f tiles
+	ld hl, VTiles4
+	ld a, [hROMBank]
+	ld b, a
+	ld a, c
+	sub $80 - 7 * 7 - 1 - 1
+	ld c, a
+	call Get2bpp
+	jr .finish
 
 .no_overflow
 	ld de, wDecompressScratch
@@ -326,12 +328,12 @@ GetAnimatedFrontpic: ; 51103
 	db SYLVEON,    $71 - 7 * 7 + 1 ; TODO
 	db MISMAGIUS,  $71 - 7 * 7 + 1
 	db ELECTIVIRE, $76 - 7 * 7 + 1
-	db WEAVILE,    $80 - 7 * 7 + 1 ; TODO
-	db LEAFEON,    $81 - 7 * 7 + 1 ; TODO
-	db GLISCOR,    $83 - 7 * 7 + 1 ; TODO
-	db RHYPERIOR,  $85 - 7 * 7 + 1 ; TODO
-	db TOGEKISS,   $88 - 7 * 7 + 1 ; TODO
-	db MAGMORTAR,  $8b - 7 * 7 + 1 ; TODO
+	db WEAVILE,    $80 - 7 * 7 + 1 ; TODO - fix flip
+	db LEAFEON,    $81 - 7 * 7 + 1 ; TODO - fix flip
+	db GLISCOR,    $83 - 7 * 7 + 1 ; TODO - fix flip
+	db RHYPERIOR,  $85 - 7 * 7 + 1 ; TODO - fix flip
+	db TOGEKISS,   $88 - 7 * 7 + 1 ; TODO - fix flip
+	db MAGMORTAR,  $8b - 7 * 7 + 1 ; TODO - fix flip
 	db -1,         7 * 7
 
 LoadOrientedFrontpicTiles: ; 5114f
