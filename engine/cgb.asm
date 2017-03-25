@@ -2388,7 +2388,7 @@ _CGB1b: ; 9555
 _CGB_FrontpicPals: ; 9578
 	ld de, UnknBGPals
 	ld a, [CurPartySpecies]
-	ld bc, TempMonDVs
+	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	call WipeAttrMap
