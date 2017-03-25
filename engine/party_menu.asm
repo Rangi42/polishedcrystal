@@ -159,8 +159,6 @@ PlacePartyHPBar: ; 500cf
 	inc b
 	dec c
 	jr nz, .loop
-	ld b, SCGB_PARTY_MENU
-	call GetSGBLayout
 	ret
 ; 50117
 
@@ -493,6 +491,9 @@ PlacePartyMonGender: ; 502b1
 	inc b
 	dec c
 	jr nz, .loop
+
+	ld b, SCGB_PARTY_MENU
+	call GetSGBLayout
 	ret
 ; 502ee
 
