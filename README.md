@@ -341,6 +341,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.
 * Fix: Enemy Psystrike uses player's Defense.
 * Fix: Sketch fails if user is transformed.
+* Fix: Wild encounter battle transitions correctly depend on relative levels
 * Fix: Yellow Carpet is buyable.
 * Fix: Tangrowth can learn Curse.
 * Fix: Lyra's Bag is the female version.
