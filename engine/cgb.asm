@@ -2419,27 +2419,27 @@ _CGB_IntroPals: ; 9591
 ; 95e0
 
 _CGB_IntroNamingPals: ; 9542
-	ld de, UnknBGPals
-	ld a, [CurPartySpecies]
-	ld bc, TempMonPersonality
-	call GetFrontpicPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	ld hl, IntroGradientPalette
-	ld de, UnknBGPals + 1 palettes
-	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
-	call ApplyPals
-	call WipeAttrMap
-	hlcoord 11, 0, AttrMap
-	lb bc, 3, 9
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 0, 0, AttrMap
-	lb bc, 3, 11
-	xor a
-	call FillBoxCGB
-	call ApplyAttrMap
+;	ld de, UnknBGPals
+;	ld a, [CurPartySpecies]
+;	ld bc, TempMonPersonality
+;	call GetFrontpicPalettePointer
+;	call LoadPalette_White_Col1_Col2_Black
+;	ld hl, IntroGradientPalette
+;	ld de, UnknBGPals + 1 palettes
+;	ld bc, 1 palettes
+;	ld a, $5
+;	call FarCopyWRAM
+;	call ApplyPals
+;	call WipeAttrMap
+;	hlcoord 11, 0, AttrMap
+;	lb bc, 3, 9
+;	ld a, $1
+;	call FillBoxCGB
+;	hlcoord 0, 0, AttrMap
+;	lb bc, 3, 11
+;	xor a
+;	call FillBoxCGB
+;	call ApplyAttrMap
 	ret
 ; 9555
 

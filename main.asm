@@ -5290,58 +5290,58 @@ MovePlayerPic: ; 88266
 	pop hl
 	jr .loop
 
-ShowPlayerNamingChoices: ; 88297
-	ld hl, ChrisNameMenuHeader
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .GotGender
-	ld hl, KrisNameMenuHeader
-.GotGender:
-	call LoadMenuDataHeader
-	call VerticalMenu
-	ld a, [wMenuCursorY]
-	dec a
-	call CopyNameFromMenu
-	call CloseWindow
-	ret
-
-ChrisNameMenuHeader: ; 882b5
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 11, 10 ; end coords
-	dw .MaleNames
-	db 1 ; ????
-	db 0 ; default option
-
-.MaleNames: ; 882be
-	db $91 ; flags
-	db 5 ; items
-	db "New Name@"
-	db "Chris@"
-	db "Ethan@"
-	db "Vincent@"
-	db "James@"
-	db 2 ; displacement
-	db " Name @" ; title
-
-KrisNameMenuHeader: ; 882e5
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 11, 10 ; end coords
-	dw .FemaleNames
-	db 1 ; ????
-	db 0 ; default option
-
-.FemaleNames: ; 882ee
-	db $91 ; flags
-	db 5 ; items
-	db "New Name@"
-	db "Kris@"
-	db "Marina@"
-	db "Celeste@"
-	db "Reina@"
-	db 2 ; displacement
-	db " Name @" ; title
+;ShowPlayerNamingChoices: ; 88297
+;	ld hl, ChrisNameMenuHeader
+;	ld a, [PlayerGender]
+;	bit 0, a
+;	jr z, .GotGender
+;	ld hl, KrisNameMenuHeader
+;.GotGender:
+;	call LoadMenuDataHeader
+;	call VerticalMenu
+;	ld a, [wMenuCursorY]
+;	dec a
+;	call CopyNameFromMenu
+;	call CloseWindow
+;	ret
+;
+;ChrisNameMenuHeader: ; 882b5
+;	db $40 ; flags
+;	db 00, 00 ; start coords
+;	db 11, 10 ; end coords
+;	dw .MaleNames
+;	db 1 ; ????
+;	db 0 ; default option
+;
+;.MaleNames: ; 882be
+;	db $91 ; flags
+;	db 5 ; items
+;	db "New Name@"
+;	db "Chris@"
+;	db "Ethan@"
+;	db "Vincent@"
+;	db "James@"
+;	db 2 ; displacement
+;	db " Name @" ; title
+;
+;KrisNameMenuHeader: ; 882e5
+;	db $40 ; flags
+;	db 00, 00 ; start coords
+;	db 11, 10 ; end coords
+;	dw .FemaleNames
+;	db 1 ; ????
+;	db 0 ; default option
+;
+;.FemaleNames: ; 882ee
+;	db $91 ; flags
+;	db 5 ; items
+;	db "New Name@"
+;	db "Kris@"
+;	db "Marina@"
+;	db "Celeste@"
+;	db "Reina@"
+;	db 2 ; displacement
+;	db " Name @" ; title
 
 GetPlayerIcon: ; 8832c
 ; Get the player icon corresponding to gender
