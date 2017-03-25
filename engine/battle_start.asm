@@ -193,6 +193,12 @@ StartTrainerBattle_DetermineWhichAnimation: ; 8c365 (23:4365)
 ; Pokemon relative to the opponent's.
 	ld de, 0
 
+	ld a, [OtherTrainerClass]
+	and a
+	jr z, .wild
+	farcall SetTrainerBattleLevel
+.wild
+
 ; Get the first Pokemon in your party that isn't fainted.
 	ld hl, PartyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH - 1
