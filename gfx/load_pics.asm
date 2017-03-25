@@ -289,33 +289,32 @@ GetAnimatedFrontpic: ; 51103
 	ld a, c
 	cp $80 - 7 * 7 + 1
 	jr c, .no_overflow
-	; TODO: load tiles in VTiles4 as oriented correctly
+
+	; TODO: fix corrupt/extra loaded tiles
+	push bc
 	ld de, wDecompressScratch
 	ld a, [hROMBank]
 	ld b, a
-	push bc
 	ld c, $80 - 7 * 7 - 1
 	call Get2bpp
+	ld de, w6_d800 + $7f tiles
+	ld hl, wDecompressScratch
+	ld bc, ($80 - 7 * 7 - 1) * $10
+	call LoadFrontpic
 	pop bc
+
 	ld a, BANK(VTiles4)
 	ld [rVBK], a
-	ld de, w6_d800 + $7f tiles
-	ld hl, VTiles4
-	ld a, [hROMBank]
-	ld b, a
 	ld a, c
 	sub $80 - 7 * 7 - 1 - 1
 	ld c, a
-	call Get2bpp
-	jr .finish
+	ld hl, VTiles4
 
 .no_overflow
 	ld de, wDecompressScratch
 	ld a, [hROMBank]
 	ld b, a
 	call Get2bpp
-
-.finish
 	xor a
 	ld [rVBK], a
 	ret
