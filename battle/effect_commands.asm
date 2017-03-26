@@ -2643,8 +2643,7 @@ PlayerAttackDamage: ; 352e2
 	ld b, a
 	ld c, [hl]
 
-if DEF(FAITHFUL)
-else
+if !DEF(FAITHFUL)
 	call HailDefenseBoost
 endc
 
@@ -2758,8 +2757,7 @@ EnemyAttackDamage: ; 353f6
 	ld b, a
 	ld c, [hl]
 
-if DEF(FAITHFUL)
-else
+if !DEF(FAITHFUL)
 	call HailDefenseBoost
 endc
 

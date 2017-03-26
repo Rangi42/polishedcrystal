@@ -952,8 +952,7 @@ MeowthEvosAttacks:
 	db 41, THIEF ; Assurance → TM move
 	db 46, CHARM ; Captivate → egg move
 	db 49, NIGHT_SLASH
-if DEF(FAITHFUL)
-else
+if !DEF(FAITHFUL)
 	db 55, DARK_PULSE
 endc
 	db 0 ; no more level-up moves
@@ -977,8 +976,7 @@ PersianEvosAttacks:
 	db 49, THIEF ; Assurance → TM move
 	db 56, CHARM ; Captivate → egg move
 	db 61, NIGHT_SLASH
-if DEF(FAITHFUL)
-else
+if !DEF(FAITHFUL)
 	db 65, DARK_PULSE
 endc
 	db 0 ; no more level-up moves

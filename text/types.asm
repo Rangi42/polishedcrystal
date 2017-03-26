@@ -6,6 +6,7 @@ PrintMonTypes: ; 5090d
 	call GetBaseData
 	pop hl
 
+if !DEF(FAITHFUL)
 	; PrintMonTypes is only called for the stats screen,
 	; so assume that the full data is in TempMon
 	; Armored Mewtwo is Psychic/Steel
@@ -18,6 +19,7 @@ PrintMonTypes: ; 5090d
 	ld a, STEEL
 	ld [BaseType2], a
 .not_armored_mewtwo
+endc
 
 	push hl
 	ld a, [BaseType1]

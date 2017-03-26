@@ -4119,6 +4119,7 @@ InitBattleMon: ; 3da0d
 	ld a, [BaseType2]
 	ld [BattleMonType2], a
 
+if !DEF(FAITHFUL)
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [BattleMonSpecies]
 	cp MEWTWO
@@ -4129,6 +4130,7 @@ InitBattleMon: ; 3da0d
 	ld a, STEEL
 	ld [BattleMonType2], a
 .not_armored_mewtwo
+endc
 
 	ld hl, PartyMonNicknames
 	ld a, [CurBattleMon]
@@ -4252,6 +4254,7 @@ InitEnemyMon: ; 3dabd
 	ld a, [hl]
 	ld [de], a
 
+if !DEF(FAITHFUL)
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [EnemyMonSpecies]
 	cp MEWTWO
@@ -4262,6 +4265,7 @@ InitEnemyMon: ; 3dabd
 	ld a, STEEL
 	ld [EnemyMonType2], a
 .not_armored_mewtwo
+endc
 
 	ld hl, BaseStats
 	ld de, EnemyMonBaseStats
@@ -6896,6 +6900,7 @@ endr
 	ld a, [hl]
 	ld [de], a
 
+if !DEF(FAITHFUL)
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [EnemyMonSpecies]
 	cp MEWTWO
@@ -6906,6 +6911,7 @@ endr
 	ld a, STEEL
 	ld [EnemyMonType2], a
 .not_armored_mewtwo
+endc
 
 ; Get moves
 	ld de, EnemyMonMoves
