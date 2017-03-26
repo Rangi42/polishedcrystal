@@ -105,7 +105,7 @@ MAP_NONE   EQU 0
 	mapgroup DRAGON_SHRINE,                               5,  5 ; 68
 	mapgroup TOHJO_FALLS,                                 9, 15 ; 69
 	mapgroup GIOVANNIS_CAVE,                              5,  5 ; 70
-	mapgroup DIGLETTS_CAVE,                              18, 10 ; 71
+	mapgroup DIGLETTS_CAVE,                              19, 21 ; 71
 	mapgroup MOUNT_MOON_1F,                              13, 15 ; 72
 	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 73
 	mapgroup MOUNT_MOON_B2F,                             17, 16 ; 74
