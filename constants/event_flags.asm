@@ -1844,9 +1844,9 @@
 
 ; TODO: reorganize events
 	const EVENT_EXORCISED_LAV_RADIO_TOWER
+	const EVENT_SHAMOUTI_ISLAND_VILEPLUME
 
 ; Unused placeholder events
-	const EVENT_6B6
 	const EVENT_6B7
 	const EVENT_6B8
 	const EVENT_6B9
