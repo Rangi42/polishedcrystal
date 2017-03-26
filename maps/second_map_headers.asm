@@ -372,6 +372,7 @@
 	map_header_2 TinTower7F, TIN_TOWER_7F, $0, 0
 	map_header_2 TinTower8F, TIN_TOWER_8F, $0, 0
 	map_header_2 TinTower9F, TIN_TOWER_9F, $0, 0
+	map_header_2 TinTower10F, TIN_TOWER_10F, $0, 0
 	map_header_2 BurnedTower1F, BURNED_TOWER_1F, $0, 0
 	map_header_2 BurnedTowerB1F, BURNED_TOWER_B1F, $9, 0
 	map_header_2 NationalPark, NATIONAL_PARK, $0, 0
@@ -386,6 +387,7 @@
 	map_header_2 RuinsofAlphKabutoChamber, RUINS_OF_ALPH_KABUTO_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphOmanyteChamber, RUINS_OF_ALPH_OMANYTE_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphAerodactylChamber, RUINS_OF_ALPH_AERODACTYL_CHAMBER, $0, 0
+	map_header_2 RuinsofAlphEntranceChamber, RUINS_OF_ALPH_ENTRANCE_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphInnerChamber, RUINS_OF_ALPH_INNER_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphResearchCenter, RUINS_OF_ALPH_RESEARCH_CENTER, $0, 0
 	map_header_2 RuinsofAlphHoOhItemRoom, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, $0, 0

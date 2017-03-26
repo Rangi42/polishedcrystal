@@ -86,7 +86,7 @@ RuinsofAlphInnerChamber_MapEventHeader:
 
 .Warps:
 	db 9
-	warp_def $d, $a, 5, RUINS_OF_ALPH_OUTSIDE
+	warp_def $d, $a, 3, RUINS_OF_ALPH_ENTRANCE_CHAMBER
 	warp_def $f, $3, 3, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def $f, $4, 4, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def $3, $f, 3, RUINS_OF_ALPH_KABUTO_CHAMBER

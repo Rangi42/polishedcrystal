@@ -132,6 +132,9 @@ GoldenrodMagnetTrainStation_BlockData:
 RuinsofAlphOutside_BlockData:
 	INCBIN "maps/RuinsofAlphOutside.blk"
 
+RuinsofAlphEntranceChamber_BlockData:
+	INCBIN "maps/RuinsofAlphEntranceChamber.blk"
+
 RuinsofAlphInnerChamber_BlockData:
 	INCBIN "maps/RuinsofAlphInnerChamber.blk"
 
@@ -255,6 +258,9 @@ TinTower8F_BlockData:
 
 TinTower9F_BlockData:
 	INCBIN "maps/TinTower9F.blk"
+
+TinTower10F_BlockData:
+	INCBIN "maps/TinTower10F.blk"
 
 TinTowerRoof_BlockData:
 	INCBIN "maps/TinTowerRoof.blk"
