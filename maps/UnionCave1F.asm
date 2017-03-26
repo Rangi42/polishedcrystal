@@ -205,8 +205,8 @@ UnionCave1F_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $13, $5, 3, UNION_CAVE_B1F
-	warp_def $21, $3, 4, UNION_CAVE_B1F
+	warp_def $13, $5, 3, UNION_CAVE_B1F_NORTH
+	warp_def $21, $3, 1, UNION_CAVE_B1F_SOUTH
 	warp_def $1f, $11, 1, ROUTE_33
 	warp_def $3, $11, 4, ROUTE_32
 

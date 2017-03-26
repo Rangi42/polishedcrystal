@@ -103,14 +103,17 @@ VioletOnixTradeHouse_BlockData:
 ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.blk"
 
-UnionCaveB1F_BlockData:
-	INCBIN "maps/UnionCaveB1F.blk"
+UnionCave1F_BlockData:
+	INCBIN "maps/UnionCave1F.blk"
+
+UnionCaveB1FNorth_BlockData:
+	INCBIN "maps/UnionCaveB1FNorth.blk"
+
+UnionCaveB1FSouth_BlockData:
+	INCBIN "maps/UnionCaveB1FSouth.blk"
 
 UnionCaveB2F_BlockData:
 	INCBIN "maps/UnionCaveB2F.blk"
-
-UnionCave1F_BlockData:
-	INCBIN "maps/UnionCave1F.blk"
 
 NationalPark_BlockData:
 NationalParkBugContest_BlockData:

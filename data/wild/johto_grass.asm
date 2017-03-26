@@ -432,7 +432,7 @@
 	db 6, ONIX
 	db 6, ONIX
 
-	map UNION_CAVE_B1F
+	map UNION_CAVE_B1F_NORTH
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 8, GEODUDE
@@ -458,6 +458,33 @@
 	db 6, RATTATA
 	db 8, RATTATA
 	db 8, RATTATA
+
+	map UNION_CAVE_B1F_SOUTH
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	db 21, ZUBAT
+	db 21, GOLBAT
+	db 21, ZUBAT
+	db 20, RATICATE
+	db 19, GEODUDE
+	db 22, ONIX
+	db 22, ONIX
+	; day
+	db 21, ZUBAT
+	db 21, GOLBAT
+	db 21, ZUBAT
+	db 20, RATICATE
+	db 19, GEODUDE
+	db 22, ONIX
+	db 22, ONIX
+	; nite
+	db 21, ZUBAT
+	db 21, GOLBAT
+	db 21, QUAGSIRE
+	db 20, RATICATE
+	db 19, GEODUDE
+	db 22, ONIX
+	db 22, ONIX
 
 	map UNION_CAVE_B2F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite

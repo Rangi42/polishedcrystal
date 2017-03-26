@@ -399,7 +399,8 @@
 	map_header_2 RuinsofAlphSinjohChamber, RUINS_OF_ALPH_SINJOH_CHAMBER, $0, 0
 	map_header_2 Route22Past, ROUTE_22_PAST, $2c, 0
 	map_header_2 UnionCave1F, UNION_CAVE_1F, $9, 0
-	map_header_2 UnionCaveB1F, UNION_CAVE_B1F, $9, 0
+	map_header_2 UnionCaveB1FNorth, UNION_CAVE_B1F_NORTH, $9, 0
+	map_header_2 UnionCaveB1FSouth, UNION_CAVE_B1F_SOUTH, $9, 0
 	map_header_2 UnionCaveB2F, UNION_CAVE_B2F, $9, 0
 	map_header_2 SlowpokeWellB1F, SLOWPOKE_WELL_B1F, $9, 0
 	map_header_2 SlowpokeWellB2F, SLOWPOKE_WELL_B2F, $9, 0
