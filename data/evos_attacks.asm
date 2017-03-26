@@ -718,9 +718,9 @@ ZubatEvosAttacks:
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
-	db 13, WING_ATTACK
+	db 13, GUST ; Wing Attack → egg move
 	db 17, CONFUSE_RAY
-	db 19, GUST ; Air Cutter → egg move
+	db 19, WING_ATTACK ; Air Cutter → Wing Attack
 	db 23, SWIFT
 	db 25, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 29, MEAN_LOOK
@@ -740,9 +740,9 @@ GolbatEvosAttacks:
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
-	db 13, WING_ATTACK
+	db 13, GUST ; Wing Attack → egg move
 	db 17, CONFUSE_RAY
-	db 19, GUST ; Air Cutter → egg move
+	db 19, WING_ATTACK ; Air Cutter → Wing Attack
 	db 24, SWIFT
 	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 32, MEAN_LOOK
@@ -3255,9 +3255,9 @@ CrobatEvosAttacks:
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
-	db 13, WING_ATTACK
+	db 13, GUST ; Wing Attack → egg move
 	db 17, CONFUSE_RAY
-	db 19, GUST ; Air Cutter → egg move
+	db 19, WING_ATTACK ; Air Cutter → Wing Attack
 	db 24, SWIFT
 	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 32, MEAN_LOOK

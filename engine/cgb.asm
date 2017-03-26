@@ -2286,14 +2286,7 @@ TMHMTypeIconPalettes:
 	RGB 10, 20, 17
 
 _CGB_BuyMenu: ; 9499
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .male
-	ld hl, KrisPackPals
-	jr .got_gender
-.male
-	ld hl, ChrisPackPals
-.got_gender
+	ld hl, BuyMenuPals
 	ld de, UnknBGPals
 	ld bc, 5 palettes
 	ld a, $5
@@ -2313,6 +2306,32 @@ _CGB_BuyMenu: ; 9499
 	ld [hCGBPalUpdate], a
 	ret
 ; 94d0
+
+BuyMenuPals:
+	RGB 31, 31, 31
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 00, 00, 00
+
+	RGB 15, 15, 31
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 31, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 
 _CGB13: ; 94d0
 	ld hl, PalPacket_9ba6 + 1

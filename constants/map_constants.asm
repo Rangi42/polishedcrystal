@@ -164,7 +164,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_19,                                   29, 10 ;  8
 	mapgroup ROUTE_20,                                    9, 48 ;  9
 	mapgroup ROUTE_21,                                   48, 10 ; 10
-	mapgroup URAGA_CHANNEL_WEST,                          9,  6 ; 11
+	mapgroup URAGA_CHANNEL_WEST,                         15,  6 ; 11
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 12
 	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 13
 	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 14
