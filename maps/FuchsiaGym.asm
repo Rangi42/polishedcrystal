@@ -43,10 +43,16 @@ JanineScript_0x195db9:
 	setflag ENGINE_MARSHBADGE
 	checkcode VAR_BADGES
 	if_equal 9, .FirstBadge
+	if_equal 10, .SecondBadge
 	if_equal 12, .LyrasEgg
 	jump UnknownScript_0x195e02
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump UnknownScript_0x195e02
+.SecondBadge:
+	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
+	iftrue UnknownScript_0x195e02
+	specialphonecall SPECIALCALL_SECONDBADGE
 	jump UnknownScript_0x195e02
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG

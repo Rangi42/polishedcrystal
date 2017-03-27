@@ -187,6 +187,8 @@ BillPhoneScript1: ; 0xbcfc5
 	jump BillPhoneScriptCheckForBoxes
 
 BillPhoneScript2: ; 0xbd007
+	checkcode VAR_SPECIALPHONECALL
+	if_equal SPECIALCALL_SECONDBADGE, BillPhoneScriptSecondBadge
 	farwritetext BillPhoneNewlyFullText
 BillPhoneScriptCheckForBoxes:
 	special BillBoxSwitchCheck
@@ -202,6 +204,11 @@ BillPhoneScriptCheckForBoxes:
 	farwritetext BillCallMeToSwitch
 .hang_up
 	farwritetext BillThankYouText
+	end
+
+BillPhoneScriptSecondBadge:
+	farwritetext BillPhoneSecondBadgeText
+	specialphonecall SPECIALCALL_NONE
 	end
 
 BillPhoneWholePCFull:

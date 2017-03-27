@@ -116,10 +116,16 @@ BlaineScript_0x1ab4fb:
 	setflag ENGINE_VOLCANOBADGE
 	checkcode VAR_BADGES
 	if_equal 9, .FirstBadge
+	if_equal 10, .SecondBadge
 	if_equal 12, .LyrasEgg
 	jump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
+	jump .FightDone
+.SecondBadge:
+	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
+	iftrue .FightDone
+	specialphonecall SPECIALCALL_SECONDBADGE
 	jump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG

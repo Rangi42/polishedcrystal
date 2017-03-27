@@ -794,46 +794,62 @@ ENDM
 ; 90627
 
 SpecialPhoneCallList: ; 90627
+	; SPECIALCALL_POKERUS
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_ELM
 	dba ElmPhoneScript2
 
+	; SPECIALCALL_ROBBED
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_ELM
 	dba ElmPhoneScript2
 
+	; SPECIALCALL_ASSISTANT
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_ELM
 	dba ElmPhoneScript2
 
+	; SPECIALCALL_WEIRDBROADCAST
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_ELM
 	dba ElmPhoneScript2
 
+	; SPECIALCALL_SSTICKET
 	dw SpecialCallWhereverYouAre
 	db PHONE_ELM
 	dba ElmPhoneScript2
 
+	; SPECIALCALL_BIKESHOP
 	dw SpecialCallWhereverYouAre
 	db PHONE_OAK ; ????????
 	dba BikeShopPhoneScript ; bike shop
 
+	; SPECIALCALL_WORRIED
 	dw SpecialCallWhereverYouAre
 	db PHONE_MOM
 	dba MomPhoneLectureScript
 
+	; SPECIALCALL_MASTERBALL
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_ELM
 	dba ElmPhoneScript2
 
+	; SPECIALCALL_YELLOWFOREST
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_LYRA
 	dba LyraPhoneScript2
 
+	; SPECIALCALL_FIRSTBADGE
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_LYRA
 	dba LyraPhoneScript2
 
+	; SPECIALCALL_SECONDBADGE
+	dw SpecialCallOnlyWhenOutside
+	db PHONE_BILL
+	dba BillPhoneScript2
+
+	; SPECIALCALL_LYRASEGG
 	dw SpecialCallOnlyWhenOutside
 	db PHONE_LYRA
 	dba LyraPhoneScript2

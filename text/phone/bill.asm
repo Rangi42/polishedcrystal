@@ -133,3 +133,33 @@ BillCallMeToSwitch:
 	line "change boxes your-"
 	cont "self via PC."
 	prompt
+
+BillPhoneSecondBadgeText:
+	text "Hey there,"
+	line "trainers!"
+	cont "It's me, Bill!"
+
+	para "I'm just calling to"
+	line "warn y'all about"
+	cont "Wonder Trading."
+
+	para "The machine has"
+	line "been unstable"
+	cont "recently, and my"
+
+	para "repairs aren't"
+	line "quite complete."
+
+	para "So if you're in"
+	line "Goldenrod City,"
+
+	para "be careful with"
+	line "Wonder Trading."
+
+	para "You might get a"
+	line "weird Pokemon"
+	cont "in exchange."
+
+	para "That's all."
+	line "Buh-bye!"
+	prompt
