@@ -59,7 +59,7 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	closetext
 	spriteface CINNABARVOLCANOB2F_LAWRENCE, UP
 	opentext
-	writetext SeafoamIslandsB4FLawrenceEscapeRopeText
+	writetext CinnabarVolcanoB2FLawrenceEscapeRopeText
 	pause 15
 	closetext
 	playsound SFX_WARP_TO
@@ -146,6 +146,11 @@ CinnabarVolcanoB2FLawrenceSpeechText:
 	para "I'll show you that"
 	line "I deserve to own"
 	cont "those Pokemon."
+	done
+
+CinnabarVolcanoB2FLawrenceEscapeRopeText:
+	text "Lawrence used an"
+	line "Escape Rope!"
 	done
 
 CinnabarVolcanoB2FMovementData_LawrenceApproachUp:
