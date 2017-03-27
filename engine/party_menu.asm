@@ -281,7 +281,7 @@ PlacePartyMonStatus: ; 501b2
 	ret z
 	ld c, a
 	ld b, 0
-	hlcoord 5, 2
+	hlcoord 4, 2
 .loop
 	push bc
 	push hl
