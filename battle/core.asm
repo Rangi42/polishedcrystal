@@ -437,6 +437,7 @@ GetSpeed::
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
+	ld d, a
 
 	; Apply stat changes
 	sub 7
@@ -446,7 +447,6 @@ GetSpeed::
 .no_overflow1
 	add 2
 	ld [hMultiplier], a
-	ld d, a
 	xor a
 	ld [hMultiplicand + 0], a
 	ld a, b
@@ -471,8 +471,8 @@ GetSpeed::
 	; Apply paralyze effect
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	cp 1 << PAR
-	jr nz, .paralyze_check_done
+	and 1 << PAR
+	jr z, .paralyze_check_done
 	; Quick Feet ignores this
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
