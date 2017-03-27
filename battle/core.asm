@@ -437,6 +437,7 @@ GetSpeed::
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
+	ld d, a
 
 	; Apply stat changes
 	sub 7
@@ -446,7 +447,6 @@ GetSpeed::
 .no_overflow1
 	add 2
 	ld [hMultiplier], a
-	ld d, a
 	xor a
 	ld [hMultiplicand + 0], a
 	ld a, b
