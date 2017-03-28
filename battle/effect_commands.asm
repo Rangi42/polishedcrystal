@@ -315,7 +315,7 @@ BattleCommand_CheckTurn: ; 34084
 .not_disabled
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	add a ; bit SUBSTATUS_CONFUSED
+	add a ; bit SUBSTATUS_CONFUSED, a
 	jr nc, .not_confused
 	ld a, [hBattleTurn]
 	and a
