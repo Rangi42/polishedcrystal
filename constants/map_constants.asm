@@ -164,7 +164,7 @@ MAP_NONE   EQU 0
 	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6
 	mapgroup SEAFOAM_ISLANDS_B4F,                        10, 20 ;  7
 	mapgroup ROUTE_19,                                   29, 10 ;  8
-	mapgroup ROUTE_20,                                    9, 48 ;  9
+	mapgroup ROUTE_20,                                    9, 51 ;  9
 	mapgroup ROUTE_21,                                   48, 10 ; 10
 	mapgroup URAGA_CHANNEL_WEST,                         15,  6 ; 11
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 12
@@ -304,7 +304,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                    11, 35 ;  1
+	mapgroup ROUTE_3,                                    11, 36 ;  1
 	mapgroup ROUTE_3_POKECENTER_1F,                       4,  6 ;  2
 	mapgroup PEWTER_CITY,                                18, 20 ;  3
 	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  4

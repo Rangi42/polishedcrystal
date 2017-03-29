@@ -210,7 +210,7 @@ Route3_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $1, $42, 1, MOUNT_MOON_1F
+	warp_def $1, $44, 1, MOUNT_MOON_1F
 	warp_def $3, $3d, 1, ROUTE_3_POKECENTER_1F
 
 .XYTriggers:
@@ -218,7 +218,7 @@ Route3_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 15, 61, SIGNPOST_READ, MapRoute3Signpost0Script
+	signpost 15, 63, SIGNPOST_READ, MapRoute3Signpost0Script
 	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
 
 .PersonEvents:
