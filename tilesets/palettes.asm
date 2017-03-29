@@ -28,6 +28,17 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, GameCornerPalette
 	cp TILESET_GAME_CORNER
 	jp z, .load_eight_bg_palettes
+	ld hl, RuinsPalette
+	cp TILESET_RUINS_OF_ALPH
+	jp z, .load_eight_bg_palettes
+	cp TILESET_HO_OH_WORD_ROOM
+	jp z, .load_eight_bg_palettes
+	cp TILESET_KABUTO_WORD_ROOM
+	jp z, .load_eight_bg_palettes
+	cp TILESET_OMANYTE_WORD_ROOM
+	jp z, .load_eight_bg_palettes
+	cp TILESET_AERODACTYL_WORD_ROOM
+	jp z, .load_eight_bg_palettes
 	ld hl, CeladonMansionPalette
 	cp TILESET_CELADON_MANSION
 	jp z, .load_eight_time_of_day_bg_palettes
@@ -340,6 +351,9 @@ INCLUDE "tilesets/gate.pal"
 
 GameCornerPalette:
 INCLUDE "tilesets/game_corner.pal"
+
+RuinsPalette:
+INCLUDE "tilesets/ruins.pal"
 
 CeladonMansionPalette:
 INCLUDE "tilesets/celadon_mansion.pal"
