@@ -90,8 +90,8 @@ Route16South_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $a, $9, 1, ROUTE_16_GATE
-	warp_def $b, $9, 2, ROUTE_16_GATE
+	warp_def $a, $9, 1, ROUTE_16_17_GATE
+	warp_def $b, $9, 2, ROUTE_16_17_GATE
 
 .XYTriggers:
 	db 0

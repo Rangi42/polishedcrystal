@@ -1238,24 +1238,25 @@ Group14Sprites:
 ; PewterCity
 Group23Sprites:
 ; Route2
+; Route16West
 ; Route22
 ; ViridianCity
 ; ViridianForest
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BUG_MANIAC
-	db SPRITE_CHILD
+	db SPRITE_COSPLAYER
 	db SPRITE_COOLTRAINER_M
-	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
+	db SPRITE_LADY
+	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	db SPRITE_COOLTRAINER_F ; doesn't move
+	; 10 walking sprites (9 that move)
 	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
-	; 11 total sprites
-	db SPRITE_POKE_BALL
-	db SPRITE_POKE_BALL
+	; 13 total sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
 	db SPRITE_POKE_BALL
@@ -1467,7 +1468,8 @@ Group20Sprites:
 
 Group21Sprites:
 ; Route7
-; Route16
+; Route16North
+; Route16South
 ; Route17
 ; CeladonCity
 	db SPRITE_BIKER

@@ -1,6 +1,6 @@
 const_value set 2
 	const PEWTERCITY_COOLTRAINER_F
-	const PEWTERCITY_CHILD
+	const PEWTERCITY_BUG_CATCHER
 	const PEWTERCITY_GRAMPS
 	const PEWTERCITY_YOUNGSTER
 	const PEWTERCITY_FRUIT_TREE1
@@ -23,7 +23,7 @@ PewterCity_MapScriptHeader:
 CooltrainerFScript_0x18c009:
 	jumptextfaceplayer UnknownText_0x18c042
 
-ChildScript_0x18c00c:
+BugCatcherScript_0x18c00c:
 	jumptextfaceplayer UnknownText_0x18c080
 
 GrampsScript_0x18c00f:
@@ -203,7 +203,7 @@ PewterCity_MapEventHeader:
 .PersonEvents:
 	db 7
 	person_event SPRITE_COOLTRAINER_F, 11, 19, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18c009, -1
-	person_event SPRITE_CHILD, 29, 14, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ChildScript_0x18c00c, -1
+	person_event SPRITE_BUG_CATCHER, 29, 14, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x18c00c, -1
 	person_event SPRITE_GRAMPS, 17, 29, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x18c00f, -1
 	person_event SPRITE_YOUNGSTER, 18, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	person_event SPRITE_FRUIT_TREE, 3, 32, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x18c03e, -1

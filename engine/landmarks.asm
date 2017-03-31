@@ -157,7 +157,7 @@ ENDM
 	landmark 132, 116, Route14Name
 	landmark 116, 124, Route15Name
 	landmark 144, 120, LuckyIslandName
-	landmark  84,  76, Route16Name
+	landmark  76,  76, Route16Name
 	landmark  84, 104, Route17Name
 	landmark  88, 124, Route18Name
 	landmark 100, 124, FuchsiaCityName

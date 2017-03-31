@@ -214,6 +214,9 @@ Route16North_BlockData:
 Route16South_BlockData:
 	INCBIN "maps/Route16.blk"
 
+Route16West_BlockData:
+	INCBIN "maps/Route16West.blk"
+
 Route18East_BlockData:
 	INCBIN "maps/Route18East.blk"
 
