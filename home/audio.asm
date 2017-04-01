@@ -462,6 +462,14 @@ SpecialMapMusic:: ; 3d62
 
 .not_route_23
 	ld a, [MapGroup]
+	cp GROUP_SCARY_CAVE_SHIPWRECK
+	jr nz, .not_shipwreck
+	ld a, [MapNumber]
+	cp MAP_SCARY_CAVE_SHIPWRECK
+	jr z, .no
+
+.not_shipwreck
+	ld a, [MapGroup]
 	cp GROUP_ROUTE_16_SOUTH ; same as GROUP_ROUTE_18_WEST
 	jr nz, .not_cycling_road_bike
 	ld a, [MapNumber]

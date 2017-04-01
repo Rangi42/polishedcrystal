@@ -11872,10 +11872,10 @@ GiovanniGroup:
 
 	; party
 
-	db 66, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE, "???@"
-		db NASTY_PLOT
-		db PSYSTRIKE
+	db 70, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE, "???@"
 		db SHADOW_BALL
+		db PSYSTRIKE
+		db NASTY_PLOT
 		db AURA_SPHERE
 
 	db $ff ; end
