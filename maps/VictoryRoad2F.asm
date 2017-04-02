@@ -24,13 +24,12 @@ VictoryRoad2F_MapScriptHeader:
 	end
 
 UnknownScript_0x74492:
-	spriteface PLAYER, DOWN
+	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	appear VICTORYROAD2F_SILVER
 	applymovement VICTORYROAD2F_SILVER, MovementData_0x74539
-	spriteface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
 	writetext UnknownText_0x7455f

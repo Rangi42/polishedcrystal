@@ -139,9 +139,9 @@ INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rby/indigoplateau.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
 INCLUDE "audio/music/rby/lookjessiejames.asm"
-INCLUDE "audio/music/custom/lugiassong.asm"
 INCLUDE "audio/music/hgss/route47.asm"
 INCLUDE "audio/music/hgss/safarizonegate.asm"
 INCLUDE "audio/music/hgss/mart.asm"
@@ -151,6 +151,7 @@ INCLUDE "audio/music/hgss/ceruleancity.asm"
 INCLUDE "audio/music/hgss/nuggetbridge.asm"
 INCLUDE "audio/music/hgss/summoningdance.asm"
 INCLUDE "audio/music/hgss/spikyearedpichu.asm"
+INCLUDE "audio/music/custom/lugiassong.asm"
 
 
 SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]

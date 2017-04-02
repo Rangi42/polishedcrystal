@@ -145,6 +145,7 @@
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
+	dba Music_IndigoPlateauRBY
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE
