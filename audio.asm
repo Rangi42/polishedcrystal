@@ -151,7 +151,6 @@ INCLUDE "audio/music/hgss/ceruleancity.asm"
 INCLUDE "audio/music/hgss/nuggetbridge.asm"
 INCLUDE "audio/music/hgss/summoningdance.asm"
 INCLUDE "audio/music/hgss/spikyearedpichu.asm"
-INCLUDE "audio/music/custom/lugiassong.asm"
 
 
 SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
@@ -213,6 +212,11 @@ INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/laverrecity.asm"
 INCLUDE "audio/music/xy/bicycle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/custom/lugiassong.asm"
+
+
+SECTION "Extra Songs 7", ROMX
+
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
 INCLUDE "audio/music/sm/elitefourbattle.asm"
