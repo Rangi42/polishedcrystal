@@ -1,6 +1,6 @@
 ; Pokémon R/S/E - Abandoned Ship
 ; Demixed by Mmmmmm
-; http://pastebin.com/8yZgqyZ8
+; https://pastebin.com/8yZgqyZ8
 ; https://hax.iimarck.us/topic/6777/
 
 Music_AbandonedShipRSE:

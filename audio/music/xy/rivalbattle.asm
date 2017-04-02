@@ -1,6 +1,6 @@
 ; Pokémon X/Y - Battle! Rival
 ; Demixed by Mmmmmm
-; http://pastebin.com/KvYS4SPR
+; https://pastebin.com/KvYS4SPR
 ; https://hax.iimarck.us/topic/6777/3/
 
 Music_RivalBattleXY:

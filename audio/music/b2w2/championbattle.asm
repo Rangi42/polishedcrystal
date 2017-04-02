@@ -1,6 +1,6 @@
 ; Pokémon B2/W2 - Battle! Champion Iris
 ; Demixed by Mmmmmm
-; http://pastebin.com/1TeQ2sMe
+; https://pastebin.com/1TeQ2sMe
 ; https://hax.iimarck.us/topic/6777/2/
 
 Music_ChampionBattleB2W2:

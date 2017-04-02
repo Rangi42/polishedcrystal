@@ -215,6 +215,7 @@ INCLUDE "audio/music/xy/bicycle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
+INCLUDE "audio/music/sm/elitefourbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 

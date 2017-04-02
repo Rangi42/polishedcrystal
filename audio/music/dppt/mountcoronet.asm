@@ -1,6 +1,6 @@
 ; Pokémon D/P/Pt - Mount Coronet
 ; Demixed by Mmmmmm
-; http://pastebin.com/NeuV0aPD
+; https://pastebin.com/NeuV0aPD
 ; https://hax.iimarck.us/topic/6777/
 
 Music_MountCoronetDPPt:

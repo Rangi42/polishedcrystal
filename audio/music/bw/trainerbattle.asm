@@ -1,6 +1,6 @@
 ; Pokémon B/W - Battle! Trainer
 ; Demixed by FroggestSpirit
-; http://pastebin.com/7Hz9jRHq
+; https://pastebin.com/7Hz9jRHq
 
 Music_TrainerBattleBW:
 	musicheader 4, 1, Music_TrainerBattleBW_Ch1

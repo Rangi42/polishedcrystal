@@ -152,8 +152,9 @@
 	const MUSIC_ZINNIA_BATTLE_ORAS           ; 95
 	const MUSIC_WILD_BATTLE_SM               ; 96
 	const MUSIC_TRAINER_BATTLE_SM            ; 97
-	const MUSIC_MOTHER_BEAST_BATTLE_SM       ; 98
-	const MUSIC_LUGIAS_SONG_2000             ; 99
+	const MUSIC_ELITE_FOUR_BATTLE_SM         ; 98
+	const MUSIC_MOTHER_BEAST_BATTLE_SM       ; 99
+	const MUSIC_LUGIAS_SONG_2000             ; 9a
 	; special
-	const MUSIC_RADIO_TOWER                  ; 9a
-	const MUSIC_MAHOGANY_MART                ; 9b
+	const MUSIC_RADIO_TOWER                  ; 9b
+	const MUSIC_MAHOGANY_MART                ; 9c

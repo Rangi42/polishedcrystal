@@ -1,6 +1,6 @@
 ; Pokémon OR/AS - Battle! Wally
 ; Demixed by Mmmmmm
-; http://pastebin.com/7vneX9pj
+; https://pastebin.com/7vneX9pj
 ; https://hax.iimarck.us/topic/6777/4/
 
 Music_WallyBattleORAS:

@@ -1,6 +1,6 @@
 ; Pokémon OR/AS - Battle! Zinnia
 ; Demixed by Mmmmmm
-; http://pastebin.com/fsqpcGL3
+; https://pastebin.com/fsqpcGL3
 ; https://hax.iimarck.us/topic/6777/4/
 
 Music_ZinniaBattleORAS:

@@ -1552,167 +1552,66 @@ PlayBattleMusic: ; 2ee6c
 	call DelayFrame
 	call MaxVolume
 
-	ld a, [BattleType]
-	cp BATTLETYPE_SUICUNE
-	ld de, MUSIC_SUICUNE_BATTLE
-	jp z, .done
-	cp BATTLETYPE_HO_OH
-	ld de, MUSIC_HO_OH_BATTLE_HGSS
-	jp z, .done
-	cp BATTLETYPE_LUGIA
-	ld de, MUSIC_LUGIA_BATTLE_HGSS
-	jp z, .done
-	cp BATTLETYPE_CELEBI
-	ld de, MUSIC_SUICUNE_BATTLE
-	jp z, .done
-	cp BATTLETYPE_KANTO_LEGEND
-	ld de, MUSIC_KANTO_LEGEND_BATTLE_XY
-	jp z, .done
-	cp BATTLETYPE_ROAMING
-	ld de, MUSIC_SUICUNE_BATTLE
-	jp z, .done
-
 	; Are we fighting a trainer?
 	ld a, [OtherTrainerClass]
 	and a
 	jr nz, .trainermusic
 
-	farcall RegionCheck
-	ld a, e
-	and a
-	jr nz, .kantowild
+	ld a, [TempEnemyMonSpecies]
+	ld hl, .legendaries
+	call .loadfromarray
+	jr c, .done
 
-	ld de, MUSIC_JOHTO_WILD_BATTLE
-	ld a, [TimeOfDay]
-	cp NITE
-	jp nz, .done
-	ld de, MUSIC_JOHTO_WILD_BATTLE_NIGHT
-	jp .done
-
-.kantowild
-	ld de, MUSIC_KANTO_WILD_BATTLE
-	jp .done
+	ld hl, .regional_wilds
+	call .getregionmusicfromarray
+	jr .done
 
 .trainermusic
-	ld de, MUSIC_FRONTIER_BRAIN_BATTLE_RSE
-	cp TOWERTYCOON
-	jp z, .done
+	ld a, [OtherTrainerClass]
+	cp RIVAL2
+	jr nz, .not_rival2_4
+	ld a, [OtherTrainerID]
+	cp 4 ; Rival in Indigo Plateau
+	jr c, .not_rival2_4
+	ld de, MUSIC_CHAMPION_BATTLE
+	jr .done
+
+.not_rival2_4
+	ld a, [OtherTrainerClass]
+	cp GIOVANNI
+	jr nz, .othertrainer
+	ld a, [OtherTrainerID]
+	cp 1 ; Armored Mewtwo
+	jr nz, .othertrainer
+	ld de, MUSIC_MOTHER_BEAST_BATTLE_SM
+	jr .done
+
+.othertrainer
+	ld a, [OtherTrainerClass]
+	ld hl, .trainers
+	call .loadfromarray
+	jr c, .done
 
 	ld de, MUSIC_TRAINER_BATTLE_BW
 	ld a, [InBattleTowerBattle]
 	bit 0, a
-	jp nz, .done
-	ld a, [OtherTrainerClass]
-
-	ld de, MUSIC_RIVAL_BATTLE_XY
-	cp LYRA1
-	jp z, .done
-
-	ld de, MUSIC_WALLY_BATTLE_ORAS
-	cp LYRA2
-	jp z, .done
-
-	ld de, MUSIC_CHAMPION_BATTLE
-	cp CHAMPION
-	jp z, .done
-
-	ld de, MUSIC_WCS_BATTLE_BW
-	cp RED
-	jp z, .done
-
-	ld de, MUSIC_CHAMPION_BATTLE_B2W2
-	cp LEAF
-	jp z, .done
-
-	ld de, MUSIC_CHAMPION_BATTLE_RSE
-	cp STEVEN
-	jp z, .done
-
-	ld de, MUSIC_CHAMPION_BATTLE_DPPT
-	cp CYNTHIA
-	jp z, .done
-
-	ld de, MUSIC_ZINNIA_BATTLE_ORAS
-	cp LAWRENCE
-	jp z, .done
-
-	ld de, MUSIC_GYM_LEADER_BATTLE_XY
-	cp VALERIE
-	jp z, .done
-
-	ld de, MUSIC_MOTHER_BEAST_BATTLE_SM
-	cp GIOVANNI
-	jr nz, .not_armored_mewtwo
-	ld a, [OtherTrainerID]
-	cp 1 ; Armored Mewtwo
-	jp z, .done
-	ld a, [OtherTrainerClass]
-.not_armored_mewtwo
-
-	ld de, MUSIC_ROCKET_BATTLE
-	cp GRUNTM
-	jp z, .done
-	cp GRUNTF
-	jp z, .done
-	cp PROTON
-	jp z, .done
-	cp PETREL
-	jp z, .done
-	cp ARCHER
-	jp z, .done
-	cp ARIANA
-	jp z, .done
-	cp GIOVANNI
-	jp z, .done
-	cp JESSIE_JAMES
-	jp z, .done
+	jr nz, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
 	farcall IsKantoGymLeader
 	jr c, .done
-	ld a, [OtherTrainerClass]
-	cp LORELEI
-	jp z, .done
-	cp AGATHA
-	jp z, .done
 
 	ld de, MUSIC_JOHTO_GYM_LEADER_BATTLE
-	; all boss trainers other than the Johto Gym Leaders and the Elite 4
-	; have already been handled, and calling IsJohtoGymLeader would not
-	; count the Elite 4
-	farcall IsBossTrainer
+	farcall IsJohtoGymLeader
 	jr c, .done
 
-	ld de, MUSIC_RIVAL_BATTLE
-	ld a, [OtherTrainerClass]
-	cp RIVAL0
-	jr z, .done
-	cp RIVAL1
-	jr z, .done
-	cp RIVAL2
-	jr nz, .othertrainer
-	ld a, [OtherTrainerID]
-	cp 4 ; Rival in Indigo Plateau
-	jr c, .done
-	ld de, MUSIC_CHAMPION_BATTLE
-	jr .done
-
-.othertrainer
 	ld a, [wLinkMode]
 	and a
-	jr nz, .johtotrainer
-
-	farcall RegionCheck
-	ld a, e
-	and a
-	jr nz, .kantotrainer
-
-.johtotrainer
 	ld de, MUSIC_JOHTO_TRAINER_BATTLE
-	jr .done
+	jr nz, .done
 
-.kantotrainer
-	ld de, MUSIC_KANTO_TRAINER_BATTLE
+	ld hl, .regional_trainers
+	call .getregionmusicfromarray
 
 .done
 	call PlayMusic
@@ -1721,6 +1620,90 @@ PlayBattleMusic: ; 2ee6c
 	pop de
 	pop hl
 	ret
+
+.loadfromarray
+	ld e, 3
+	call IsInArray
+	ret nc
+	inc hl
+	jr .found
+
+.getregionmusicfromarray
+	push hl
+	farcall RegionCheck
+	pop hl
+	ld a, e
+	and a ; Johto
+	jr nz, .ok
+	ld a, [TimeOfDay]
+	cp NITE
+	jr nz, .ok
+	ld e, 3 ; Johto at night
+.ok
+	ld d, 0
+	add hl, de
+	add hl, de
+.found
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ret
+
+.trainers
+	dbw WILL,         MUSIC_ELITE_FOUR_BATTLE_SM
+	dbw KOGA,         MUSIC_ELITE_FOUR_BATTLE_SM
+	dbw BRUNO,        MUSIC_ELITE_FOUR_BATTLE_SM
+	dbw KAREN,        MUSIC_ELITE_FOUR_BATTLE_SM
+	dbw CHAMPION,     MUSIC_CHAMPION_BATTLE
+	dbw RED,          MUSIC_WCS_BATTLE_BW
+	dbw LEAF,         MUSIC_CHAMPION_BATTLE_B2W2
+	dbw RIVAL0,       MUSIC_RIVAL_BATTLE
+	dbw RIVAL1,       MUSIC_RIVAL_BATTLE
+	dbw RIVAL2,       MUSIC_RIVAL_BATTLE
+	dbw LYRA1,        MUSIC_RIVAL_BATTLE_XY
+	dbw LYRA2,        MUSIC_WALLY_BATTLE_ORAS
+	dbw GRUNTM,       MUSIC_ROCKET_BATTLE
+	dbw GRUNTF,       MUSIC_ROCKET_BATTLE
+	dbw PROTON,       MUSIC_ROCKET_BATTLE
+	dbw PETREL,       MUSIC_ROCKET_BATTLE
+	dbw ARIANA,       MUSIC_ROCKET_BATTLE
+	dbw ARIANA,       MUSIC_ROCKET_BATTLE
+	dbw GIOVANNI,     MUSIC_ROCKET_BATTLE
+	dbw TOWERTYCOON,  MUSIC_FRONTIER_BRAIN_BATTLE_RSE
+	dbw JESSIE_JAMES, MUSIC_ROCKET_BATTLE
+	dbw LORELEI,      MUSIC_KANTO_GYM_LEADER_BATTLE
+	dbw AGATHA,       MUSIC_KANTO_GYM_LEADER_BATTLE
+	dbw STEVEN,       MUSIC_CHAMPION_BATTLE_RSE
+	dbw CYNTHIA,      MUSIC_CHAMPION_BATTLE_DPPT
+	dbw VALERIE,      MUSIC_GYM_LEADER_BATTLE_XY
+	dbw LAWRENCE,     MUSIC_ZINNIA_BATTLE_ORAS
+	db -1
+
+.legendaries
+	dbw ARTICUNO, MUSIC_KANTO_LEGEND_BATTLE_XY
+	dbw ZAPDOS,   MUSIC_KANTO_LEGEND_BATTLE_XY
+	dbw MOLTRES,  MUSIC_KANTO_LEGEND_BATTLE_XY
+	dbw MEWTWO,   MUSIC_KANTO_LEGEND_BATTLE_XY
+	dbw MEW,      MUSIC_KANTO_LEGEND_BATTLE_XY
+	dbw RAIKOU,   MUSIC_SUICUNE_BATTLE
+	dbw ENTEI,    MUSIC_SUICUNE_BATTLE
+	dbw SUICUNE,  MUSIC_SUICUNE_BATTLE
+	dbw HO_OH,    MUSIC_HO_OH_BATTLE_HGSS
+	dbw LUGIA,    MUSIC_LUGIA_BATTLE_HGSS
+	dbw CELEBI,   MUSIC_SUICUNE_BATTLE
+	db -1
+
+.regional_trainers
+	dw MUSIC_JOHTO_TRAINER_BATTLE
+	dw MUSIC_KANTO_TRAINER_BATTLE
+	dw MUSIC_TRAINER_BATTLE_SM
+	dw MUSIC_JOHTO_TRAINER_BATTLE
+
+.regional_wilds
+	dw MUSIC_JOHTO_WILD_BATTLE
+	dw MUSIC_KANTO_WILD_BATTLE
+	dw MUSIC_WILD_BATTLE_SM
+	dw MUSIC_JOHTO_WILD_BATTLE_NIGHT
 
 ClearBattleRAM: ; 2ef18
 	xor a

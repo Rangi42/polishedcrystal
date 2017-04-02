@@ -157,6 +157,7 @@
 	dba Music_ZinniaBattleORAS
 	dba Music_WildBattleSM
 	dba Music_TrainerBattleSM
+	dba Music_EliteFourBattleSM
 	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
 

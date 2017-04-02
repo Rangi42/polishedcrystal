@@ -334,15 +334,18 @@ RegionCheck: ; 0x1caea1
 ; Checks if the player is in Kanto or Johto.
 ; If in Johto, returns 0 in e.
 ; If in Kanto, returns 1 in e.
+; If on Shamouti Island, returns 2 in e.
 	ld a, [MapGroup]
 	ld b, a
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp FAST_SHIP ; S.S. Aqua
+	cp FAST_SHIP
 	jr z, .johto
+	cp CINNABAR_LAB
+	jr z, .kanto
 	cp SPECIAL_MAP
-	jr nz, .checkagain
+	jr nz, .ok
 
 ; In a special map, get the backup map group / map id
 	ld a, [BackupMapGroup]
@@ -351,17 +354,20 @@ RegionCheck: ; 0x1caea1
 	ld c, a
 	call GetWorldMapLocation
 
-.checkagain
+.ok
 	cp KANTO_LANDMARK
 	jr c, .johto
-
-; Victory Road area is considered to be Johto.
-	cp VICTORY_ROAD
+	cp SHAMOUTI_LANDMARK
 	jr c, .kanto
+.shamouti
+	ld e, 2
+	ret
 
 .johto
 	ld e, 0
 	ret
+
 .kanto
 	ld e, 1
 	ret
+

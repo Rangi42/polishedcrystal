@@ -2716,14 +2716,13 @@ IsBossTrainer:
 IsBossTrainerCommon:
 	push de
 	ld a, [OtherTrainerClass]
-	ld de, $0001
+	ld de, $1
 	call IsInArray
 	pop de
 	ret
 ; 0x3d137
 
 BossTrainers:
-	; unused for music checks
 	db CHAMPION
 	db RED
 	db LEAF

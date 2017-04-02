@@ -1,6 +1,6 @@
 ; Pokémon R/S/E - Mount Chimney
 ; Demixed by Mmmmmm
-; http://pastebin.com/Yivqb9Tq
+; https://pastebin.com/Yivqb9Tq
 ; https://hax.iimarck.us/topic/6777/4/
 
 Music_MountChimneyRSE:
