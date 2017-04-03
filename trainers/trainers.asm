@@ -8841,6 +8841,33 @@ BreederGroup:
 BakerGroup:
 ; ================================
 ; ================
+
+	; BAKER
+	db "Chelsie@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 18, MILTANK
+if DEF(FAITHFUL)
+	db 18, MAGMAR
+else
+	db 18, SUNFLORA
+endc
+
+	db $ff ; end
+
+; ================
+
+	; BAKER
+	db "Sharyn@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 46, MILTANK
+	db 46, TAUROS
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

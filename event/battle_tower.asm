@@ -426,7 +426,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_RICH_BOY      ; RICH_BOY
 	db SPRITE_LADY          ; LADY
 	db SPRITE_BREEDER       ; BREEDER
-	db SPRITE_POKEFAN_F     ; BAKER
+	db SPRITE_BAKER         ; BAKER
 	db SPRITE_COWGIRL       ; COWGIRL
 	db SPRITE_SAILOR        ; SAILOR
 	db SPRITE_SWIMMER_GUY   ; SWIMMERM

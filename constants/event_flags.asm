@@ -1845,10 +1845,10 @@
 ; TODO: reorganize events
 	const EVENT_EXORCISED_LAV_RADIO_TOWER
 	const EVENT_SHAMOUTI_ISLAND_VILEPLUME
+	const EVENT_BEAT_BAKER_CHELSIE
+	const EVENT_BEAT_BAKER_SHARYN
 
 ; Unused placeholder events
-	const EVENT_6B7
-	const EVENT_6B8
 	const EVENT_6B9
 	const EVENT_6BA
 	const EVENT_6BB

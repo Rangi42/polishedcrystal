@@ -522,6 +522,8 @@ KRIS EQU __enum__
 	const CARLENE
 
 	trainerclass BAKER ; 44
+	const CHELSIE
+	const SHARYN
 
 	trainerclass COWGIRL ; 45
 	const ANNIE

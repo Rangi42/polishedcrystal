@@ -20,16 +20,24 @@ LassScript_0x9dbd2:
 
 CianwoodGymGuyScript:
 	faceplayer
+	opentext
 	checkevent EVENT_BEAT_CHUCK
 	iftrue .CianwoodGymGuyWinScript
-	opentext
 	writetext CianwoodGymGuyText
 	waitbutton
+	checkevent EVENT_GOT_HM04_STRENGTH
+	iftrue .Done
+	writetext CianwoodGymGuyStrengthText1
+	buttonsound
+	verbosegivetmhm HM_STRENGTH
+	setevent EVENT_GOT_HM04_STRENGTH
+	writetext CianwoodGymGuyStrengthText2
+	waitbutton
+.Done
 	closetext
 	end
 
 .CianwoodGymGuyWinScript:
-	opentext
 	writetext CianwoodGymGuyWinText
 	waitbutton
 	closetext
@@ -87,6 +95,19 @@ CianwoodGymGuyText:
 
 	para "If you get stuck,"
 	line "go outside."
+	done
+
+CianwoodGymGuyStrengthText1:
+	text "You can't move the"
+	line "boulders aside?"
+
+	para "Here, use this"
+	line "and teach your"
+	cont "#mon Strength!"
+	done
+
+CianwoodGymGuyStrengthText2:
+	text "Good luck!"
 	done
 
 CianwoodGymGuyWinText:

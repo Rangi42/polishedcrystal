@@ -245,6 +245,9 @@ CaptainSprite: ; 148d4
 	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 148da
 
+BakerSprite:
+	sprite_header BakerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 BeautySprite:
 	sprite_header BeautySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
