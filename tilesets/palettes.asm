@@ -28,6 +28,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, GameCornerPalette
 	cp TILESET_GAME_CORNER
 	jp z, .load_eight_bg_palettes
+	ld hl, HotelPalette
+	cp TILESET_HOTEL
+	jp z, .load_eight_bg_palettes
 	ld hl, RuinsPalette
 	cp TILESET_RUINS_OF_ALPH
 	jp z, .load_eight_bg_palettes
@@ -351,6 +354,9 @@ INCLUDE "tilesets/gate.pal"
 
 GameCornerPalette:
 INCLUDE "tilesets/game_corner.pal"
+
+HotelPalette:
+INCLUDE "tilesets/hotel.pal"
 
 RuinsPalette:
 INCLUDE "tilesets/ruins.pal"

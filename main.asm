@@ -6320,6 +6320,10 @@ SECTION "Tileset Data 12", ROMX
 
 INCLUDE "tilesets/data_12.asm"
 
+SECTION "Tileset Data 13", ROMX
+
+INCLUDE "tilesets/data_13.asm"
+
 SECTION "bank7B", ROMX, BANK[$7B]
 
 INCLUDE "text/battle_tower.asm"

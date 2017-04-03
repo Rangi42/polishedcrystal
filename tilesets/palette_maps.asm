@@ -114,3 +114,6 @@ INCLUDE "tilesets/shamouti_palette_map.asm"
 
 Tileset42PalMap:
 INCLUDE "tilesets/museum_palette_map.asm"
+
+Tileset43PalMap:
+INCLUDE "tilesets/hotel_palette_map.asm"

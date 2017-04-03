@@ -24,4 +24,3 @@ INCBIN "tilesets/faraway_metatiles.bin"
 
 Tileset38Coll:
 INCBIN "tilesets/faraway_collision.bin"
-
