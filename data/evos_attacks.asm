@@ -3583,7 +3583,9 @@ SunfloraEvosAttacks:
 	db 1, SPLASH ; Growth → Hoppip move
 	db 1, TACKLE ; Pound → similar move
 	db 1, ABSORB
+if !DEF(FAITHFUL)
 	db 1, EMBER ; evolution move
+endc
 	db 4, GROWTH ; Ingrain → Growth
 	db 7, DEFENSE_CURL ; Grass Whistle → TM move
 	db 10, MEGA_DRAIN
@@ -3593,12 +3595,18 @@ SunfloraEvosAttacks:
 	db 22, GIGA_DRAIN
 	db 25, AGILITY ; Bullet Seed → TM move
 	db 28, PETAL_DANCE
+if DEF(FAITHFUL)
+	db 31, EARTH_POWER ; Natural Gift → tutor move
+else
 	db 31, FLAMETHROWER ; Natural Gift → TM move
+endc
 	db 34, SOLAR_BEAM
 	db 37, DOUBLE_EDGE
 	db 40, SUNNY_DAY
 	db 43, SEED_BOMB ; Leaf Storm → Sunkern move
+if !DEF(FAITHFUL)
 	db 50, FIRE_BLAST ; Petal Blizzard → TM move
+endc
 	db 0 ; no more level-up moves
 
 YanmaEvosAttacks:
