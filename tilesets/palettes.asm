@@ -307,6 +307,15 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
+	ld hl, QuietCavePalette
+	cp QUIET_CAVE
+	jp z, .load_eight_bg_palettes
+	ld hl, DimCavePalette
+	cp DIM_CAVE
+	jp z, .load_eight_bg_palettes
+	ld hl, ScaryCavePalette
+	cp SCARY_CAVE
+	jp z, .load_eight_bg_palettes
 	ld hl, CinnabarVolcanoPalette
 	cp CINNABAR_VOLCANO
 	jp z, .load_eight_bg_palettes
@@ -433,6 +442,15 @@ INCLUDE "tilesets/violet_ecruteak.pal"
 
 BellchimeTrailPalette:
 INCLUDE "tilesets/bellchime_trail.pal"
+
+QuietCavePalette:
+INCLUDE "tilesets/quiet_cave.pal"
+
+DimCavePalette:
+INCLUDE "tilesets/dim_cave.pal"
+
+ScaryCavePalette:
+INCLUDE "tilesets/scary_cave.pal"
 
 CinnabarVolcanoPalette:
 INCLUDE "tilesets/cinnabar_volcano.pal"
