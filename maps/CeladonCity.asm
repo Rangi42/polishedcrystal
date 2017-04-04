@@ -345,7 +345,7 @@ CeladonCity_MapEventHeader:
 	warp_def $1d, $e, 1, CELADON_GYM
 	warp_def $1d, $19, 1, CELADON_CAFE
 	warp_def $1d, $21, 1, CELADON_CHIEF_HOUSE
-	warp_def $1d, $25, 1, CELADON_HOTEL
+	warp_def $1d, $25, 1, CELADON_HOTEL_1F
 	warp_def $9, $d, 1, CELADON_HOME_DECOR_STORE_1F
 	warp_def $1d, $4, 1, CELADON_UNIVERSITY_1F
 

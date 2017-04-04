@@ -672,7 +672,12 @@
 	map_header_2 CeladonGym, CELADON_GYM, $0, 0
 	map_header_2 CeladonCafe, CELADON_CAFE, $0, 0
 	map_header_2 CeladonChiefHouse, CELADON_CHIEF_HOUSE, $0, 0
-	map_header_2 CeladonHotel, CELADON_HOTEL, $0, 0
+	map_header_2 CeladonHotel1F, CELADON_HOTEL_1F, $0, 0
+	map_header_2 CeladonHotel2F, CELADON_HOTEL_2F, $0, 0
+	map_header_2 CeladonHotelRoom1, CELADON_HOTEL_ROOM_1, $0, 0
+	map_header_2 CeladonHotelRoom2, CELADON_HOTEL_ROOM_2, $0, 0
+	map_header_2 CeladonHotelRoom3, CELADON_HOTEL_ROOM_3, $0, 0
+	map_header_2 CeladonHotelPool, CELADON_HOTEL_POOL, $0, 0
 	map_header_2 PsychicInversHouse, PSYCHIC_INVERS_HOUSE, $0, 0
 	map_header_2 Route16FuchsiaSpeechHouse, ROUTE_16_FUCHSIA_SPEECH_HOUSE, $0, 0
 	map_header_2 Route16Gate, ROUTE_16_GATE, $0, 0

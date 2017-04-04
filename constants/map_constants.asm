@@ -451,34 +451,39 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_GYM,                                 9,  5 ; 22
 	mapgroup CELADON_CAFE,                                4,  6 ; 23
 	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 24
-	mapgroup CELADON_HOTEL,                               4,  7 ; 25
-	mapgroup PSYCHIC_INVERS_HOUSE,                        4,  4 ; 26
-	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 27
-	mapgroup ROUTE_16_GATE,                               4,  5 ; 28
-	mapgroup ROUTE_16_17_GATE,                            5,  5 ; 29
-	mapgroup ROUTE_16_17_GATE_2F,                         4,  4 ; 30
-	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 31
-	mapgroup ROUTE_18_GATE,                               5,  5 ; 32
-	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 33
-	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 34
-	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 35
-	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 36
-	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 37
-	mapgroup CELADON_UNIVERSITY_1F,                      10, 15 ; 38
-	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 39
-	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 40
-	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 41
-	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 42
-	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 43
-	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 44
-	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 45
-	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  6 ; 46
-	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 47
-	mapgroup CELADON_UNIVERSITY_POOL,                     5,  8 ; 48
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 49
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 50
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 51
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 52
+	mapgroup CELADON_HOTEL_1F,                            4,  9 ; 25
+	mapgroup CELADON_HOTEL_2F,                            2,  9 ; 26
+	mapgroup CELADON_HOTEL_ROOM_1,                        3,  3 ; 27
+	mapgroup CELADON_HOTEL_ROOM_2,                        3,  3 ; 28
+	mapgroup CELADON_HOTEL_ROOM_3,                        3,  3 ; 29
+	mapgroup CELADON_HOTEL_POOL,                          4,  7 ; 30
+	mapgroup PSYCHIC_INVERS_HOUSE,                        4,  4 ; 31
+	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 32
+	mapgroup ROUTE_16_GATE,                               4,  5 ; 33
+	mapgroup ROUTE_16_17_GATE,                            5,  5 ; 34
+	mapgroup ROUTE_16_17_GATE_2F,                         4,  4 ; 35
+	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 36
+	mapgroup ROUTE_18_GATE,                               5,  5 ; 37
+	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 38
+	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 39
+	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 40
+	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 41
+	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 42
+	mapgroup CELADON_UNIVERSITY_1F,                      10, 15 ; 43
+	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 44
+	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 45
+	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 46
+	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 47
+	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 48
+	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 49
+	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 50
+	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  6 ; 51
+	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 52
+	mapgroup CELADON_UNIVERSITY_POOL,                     5,  8 ; 53
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 54
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 55
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 56
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 57
 
 	newgroup                                                    ; 22
 
