@@ -5,4 +5,4 @@ Tileset43Meta:
 INCBIN "tilesets/hotel_metatiles.bin"
 
 Tileset43Coll:
-INCBIN "tilesets/hotel_collision.bin"
+INCLUDE "tilesets/hotel_collision.asm"

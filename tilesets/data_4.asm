@@ -5,7 +5,7 @@ Tileset08Meta:
 INCBIN "tilesets/gate_metatiles.bin"
 
 Tileset08Coll:
-INCBIN "tilesets/gate_collision.bin"
+INCLUDE "tilesets/gate_collision.asm"
 
 Tileset15GFX:
 INCBIN "gfx/tilesets/gym1.2bpp.lz"
@@ -14,7 +14,7 @@ Tileset15Meta:
 INCBIN "tilesets/gym1_metatiles.bin"
 
 Tileset15Coll:
-INCBIN "tilesets/gym1_collision.bin"
+INCLUDE "tilesets/gym1_collision.asm"
 
 Tileset16GFX:
 INCBIN "gfx/tilesets/house3.2bpp.lz"
@@ -23,7 +23,7 @@ Tileset16Meta:
 INCBIN "tilesets/house3_metatiles.bin"
 
 Tileset16Coll:
-INCBIN "tilesets/house3_collision.bin"
+INCLUDE "tilesets/house3_collision.asm"
 
 Tileset17GFX:
 INCBIN "gfx/tilesets/gym2.2bpp.lz"
@@ -32,4 +32,4 @@ Tileset17Meta:
 INCBIN "tilesets/gym2_metatiles.bin"
 
 Tileset17Coll:
-INCBIN "tilesets/gym2_collision.bin"
+INCLUDE "tilesets/gym2_collision.asm"

@@ -5,7 +5,7 @@ Tileset06Meta:
 INCBIN "tilesets/house2_metatiles.bin"
 
 Tileset06Coll:
-INCBIN "tilesets/house2_collision.bin"
+INCLUDE "tilesets/house2_collision.asm"
 
 Tileset10GFX:
 INCBIN "gfx/tilesets/lab.2bpp.lz"
@@ -14,7 +14,7 @@ Tileset10Meta:
 INCBIN "tilesets/lab_metatiles.bin"
 
 Tileset10Coll:
-INCBIN "tilesets/lab_collision.bin"
+INCLUDE "tilesets/lab_collision.asm"
 
 Tileset38GFX:
 INCBIN "gfx/tilesets/faraway.2bpp.lz"
@@ -23,4 +23,4 @@ Tileset38Meta:
 INCBIN "tilesets/faraway_metatiles.bin"
 
 Tileset38Coll:
-INCBIN "tilesets/faraway_collision.bin"
+INCLUDE "tilesets/faraway_collision.asm"

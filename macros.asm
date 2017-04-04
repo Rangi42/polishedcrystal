@@ -14,7 +14,7 @@ INCLUDE "macros/predef.asm"
 INCLUDE "macros/rst.asm"
 INCLUDE "macros/trainer.asm"
 INCLUDE "macros/trade_anim.asm"
-INCLUDE "macros/pals.asm"
+INCLUDE "macros/tilesets.asm"
 
 RGB: MACRO
 	dw ((\3) << 10) + ((\2) << 5) + (\1)
