@@ -315,7 +315,12 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .load_eight_bg_palettes
 	ld hl, ScaryCavePalette
 	cp SCARY_CAVE
-	jp z, .load_eight_bg_palettes
+	jr nz, .not_scary_cave
+	ld a, [MapNumber]
+	cp MAP_SCARY_CAVE_SHIPWRECK
+	jp z, .do_nothing
+	jp .load_eight_bg_palettes
+.not_scary_cave
 	ld hl, CinnabarVolcanoPalette
 	cp CINNABAR_VOLCANO
 	jp z, .load_eight_bg_palettes
