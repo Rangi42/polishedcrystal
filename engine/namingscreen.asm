@@ -71,7 +71,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 ; 1172e
 
@@ -372,7 +372,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 ; 11977
 
@@ -1097,7 +1097,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 .Jumptable: ; 12017 (4:6017)
 	dw .init_blinking_cursor

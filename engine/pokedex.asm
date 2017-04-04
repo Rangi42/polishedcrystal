@@ -182,7 +182,7 @@ Pokedex_RunJumptable: ; 4010b
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
 	call Pokedex_LoadPointer
-	jp [hl]
+	jp hl
 
 
 .Jumptable: ; 40115 (10:4115)
@@ -367,7 +367,7 @@ Pokedex_UpdateDexEntryScreen: ; 40258 (10:4258)
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, DexEntryScreen_MenuActionJumptable
 	call Pokedex_LoadPointer
-	jp [hl]
+	jp hl
 
 .return_to_prev_screen
 	ld a, [LastVolume]
@@ -512,7 +512,7 @@ Pokedex_UpdateOptionScreen: ; 403be (10:43be)
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, .MenuActionJumptable
 	call Pokedex_LoadPointer
-	jp [hl]
+	jp hl
 
 .return_to_main_screen
 	call Pokedex_BlackOutBG
@@ -614,7 +614,7 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, .MenuActionJumptable
 	call Pokedex_LoadPointer
-	jp [hl]
+	jp hl
 
 .cancel
 	call Pokedex_BlackOutBG
@@ -1584,7 +1584,7 @@ Pokedex_OrderMonsByMode: ; 40bdc
 	ld a, [wCurrentDexMode]
 	ld hl, .Jumptable
 	call Pokedex_LoadPointer
-	jp [hl]
+	jp hl
 
 
 .Jumptable: ; 40bf0 (10:4bf0)
