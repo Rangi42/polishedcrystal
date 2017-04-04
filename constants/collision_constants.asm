@@ -57,4 +57,3 @@ COLL_LEFT_WALL         EQU $b1
 COLL_TOP_WALL          EQU $b2
 COLL_BOTTOM_WALL       EQU $b3
 COLL_ELEVATOR_BUTTON   EQU $d1
-COLL_FF                EQU $ff
