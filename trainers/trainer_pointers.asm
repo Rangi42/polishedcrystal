@@ -81,6 +81,7 @@ TrainerGroups: ; 0x39999
 	dw BlackbeltGroup
 	dw BattleGirlGroup
 	dw DragonTamerGroup
+	dw EngineerGroup
 	dw TeacherGroup
 	dw GuitaristMGroup
 	dw GuitaristFGroup
@@ -117,9 +118,13 @@ TrainerGroups: ; 0x39999
 	dw AnabelGroup
 	dw DarachGroup
 	dw CaitlinGroup
+	dw CandelaGroup
+	dw BlancheGroup
+	dw SparkGroup
 	dw ValerieGroup
 	dw BillGroup
 	dw YellowGroup
 	dw WalkerGroup
+	dw ImakuniGroup
 	dw LawrenceGroup
 	dw ReiGroup

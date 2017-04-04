@@ -2,6 +2,10 @@ BakerSpriteGFX:               INCBIN "gfx/overworld/pokefan_f.2bpp" ; TODO
 BeautySpriteGFX:              INCBIN "gfx/overworld/beauty.2bpp"
 BoarderSpriteGFX:             INCBIN "gfx/overworld/boarder.2bpp"
 BreederSpriteGFX:             INCBIN "gfx/overworld/breeder.2bpp"
+BugManiacSpriteGFX:           INCBIN "gfx/overworld/bug_maniac.2bpp"
+ChildSpriteGFX:               INCBIN "gfx/overworld/child.2bpp"
+CosplayerSpriteGFX:           INCBIN "gfx/overworld/lady.2bpp" ; TODO
+EngineerSpriteGFX:            INCBIN "gfx/overworld/engineer.2bpp"
 OfficerFSpriteGFX:            INCBIN "gfx/overworld/officer_f.2bpp"
 SilphEmployeeSpriteGFX:       INCBIN "gfx/overworld/silph_employee.2bpp"
 SwimmingOfficerFSpriteGFX:    INCBIN "gfx/overworld/swimming_officer_f.2bpp"

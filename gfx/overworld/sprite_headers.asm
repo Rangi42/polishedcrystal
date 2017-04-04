@@ -180,6 +180,9 @@ PalmerSprite:
 WalkerSprite:
 	sprite_header WalkerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
+ImakuniSprite:
+	sprite_header ImakuniSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
 LawrenceSprite:
 	sprite_header LawrenceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 
@@ -236,6 +239,15 @@ StevenSprite:
 
 CynthiaSprite:
 	sprite_header CynthiaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+CandelaSprite:
+	sprite_header CandelaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+BlancheSprite:
+	sprite_header BlancheSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
+SparkSprite:
+	sprite_header SparkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 BuenaSprite: ; 1482c
 	sprite_header BuenaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -295,6 +307,9 @@ DragonTamerSprite:
 ElderSprite: ; 14766
 	sprite_header ElderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 ; 1476c
+
+EngineerSprite:
+	sprite_header EngineerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 FisherSprite: ; 1488c
 	sprite_header FisherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE

@@ -27,8 +27,8 @@
 * bloodless for sprites of Buck, Veteran♂, Pikachu, Diglett, and Dugtrio.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
+* Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
-* Megaman-Omega for Prism's overworld sprites of Beauty, Boarder, Roughneck, and Skier.
 * Mateo for some sprites and tiles.
 * Kuroko Aizawa for Cheryl's sprite.
 * Twilir for Lyra's back sprite.
