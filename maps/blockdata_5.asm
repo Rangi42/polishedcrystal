@@ -79,6 +79,18 @@ ShamoutiShrineRuins_BlockData:
 ShamoutiTunnel_BlockData:
 	INCBIN "maps/ShamoutiTunnel.blk"
 
+ShamoutiHotel1F_BlockData:
+	INCBIN "maps/ShamoutiHotel1F.blk"
+
+ShamoutiHotel2F_BlockData:
+	INCBIN "maps/ShamoutiHotel2F.blk"
+
+ShamoutiHotel3F_BlockData:
+	INCBIN "maps/ShamoutiHotel3F.blk"
+
+ShamoutiHotelRestaurant_BlockData:
+	INCBIN "maps/ShamoutiHotelRestaurant.blk"
+
 NoisyForest_BlockData:
 	INCBIN "maps/NoisyForest.blk"
 

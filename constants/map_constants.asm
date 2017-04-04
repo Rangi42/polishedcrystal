@@ -635,14 +635,21 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_TUNNEL,                            10, 18 ;  6
 	mapgroup NOISY_FOREST,                               20, 22 ;  7
 	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  8
-	mapgroup SHAMOUTI_HOTEL,                              4,  4 ;  9
-	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 10
-	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 11
-	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 12
-	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 13
-	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 14
-	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 15
-	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 16
+	mapgroup SHAMOUTI_HOTEL_1F,                           4,  9 ;  9
+	mapgroup SHAMOUTI_HOTEL_2F,                           2,  9 ; 10
+	mapgroup SHAMOUTI_HOTEL_3F,                           2,  9 ; 11
+	mapgroup SHAMOUTI_HOTEL_ROOM_2A,                      3,  3 ; 12
+	mapgroup SHAMOUTI_HOTEL_ROOM_2B,                      3,  3 ; 13
+	mapgroup SHAMOUTI_HOTEL_ROOM_3B,                      3,  3 ; 14
+	mapgroup SHAMOUTI_HOTEL_ROOM_3C,                      3,  3 ; 15
+	mapgroup SHAMOUTI_HOTEL_RESTAURANT,                   4,  9 ; 16
+	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 17
+	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 18
+	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 19
+	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 20
+	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 21
+	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 22
+	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 23
 
 	newgroup                                                    ; 32
 

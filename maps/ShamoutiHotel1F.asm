@@ -1,6 +1,6 @@
 const_value set 0
 
-ShamoutiHotel_MapScriptHeader:
+ShamoutiHotel1F_MapScriptHeader:
 .MapTriggers:
 	db 0
 
@@ -30,14 +30,16 @@ ShamoutiHotel_MapScriptHeader:
 ;the best thing
 ;ever!
 
-ShamoutiHotel_MapEventHeader:
+ShamoutiHotel1F_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
-	db 2
-	warp_def $7, $2, 2, SHAMOUTI_ISLAND
-	warp_def $7, $3, 2, SHAMOUTI_ISLAND
+	db 4
+	warp_def $7, $8, 2, SHAMOUTI_ISLAND
+	warp_def $7, $9, 2, SHAMOUTI_ISLAND
+	warp_def $0, $2, 1, SHAMOUTI_HOTEL_2F
+	warp_def $0, $e, 1, SHAMOUTI_HOTEL_RESTAURANT
 
 .XYTriggers:
 	db 0

@@ -99,6 +99,10 @@ CeladonHotelPool_BlockData:
 CeladonHotelRoom1_BlockData:
 CeladonHotelRoom2_BlockData:
 CeladonHotelRoom3_BlockData:
+ShamoutiHotelRoom2A_BlockData:
+ShamoutiHotelRoom2B_BlockData:
+ShamoutiHotelRoom3B_BlockData:
+ShamoutiHotelRoom3C_BlockData:
 	INCBIN "maps/HotelRoom.blk"
 
 CherrygroveBay_BlockData:

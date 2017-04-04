@@ -812,7 +812,14 @@
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
-	map_header_2 ShamoutiHotel, SHAMOUTI_HOTEL, $0, 0
+	map_header_2 ShamoutiHotel1F, SHAMOUTI_HOTEL_1F, $0, 0
+	map_header_2 ShamoutiHotel2F, SHAMOUTI_HOTEL_2F, $0, 0
+	map_header_2 ShamoutiHotel3F, SHAMOUTI_HOTEL_3F, $0, 0
+	map_header_2 ShamoutiHotelRoom2A, SHAMOUTI_HOTEL_ROOM_2A, $0, 0
+	map_header_2 ShamoutiHotelRoom2B, SHAMOUTI_HOTEL_ROOM_2B, $0, 0
+	map_header_2 ShamoutiHotelRoom3B, SHAMOUTI_HOTEL_ROOM_3B, $0, 0
+	map_header_2 ShamoutiHotelRoom3C, SHAMOUTI_HOTEL_ROOM_3C, $0, 0
+	map_header_2 ShamoutiHotelRestaurant, SHAMOUTI_HOTEL_RESTAURANT, $0, 0
 	map_header_2 ShamoutiTouristCenter, SHAMOUTI_TOURIST_CENTER, $0, 0
 	map_header_2 ShamoutiMerchant, SHAMOUTI_MERCHANT, $0, 0
 	map_header_2 ShamoutiHouse, SHAMOUTI_HOUSE, $0, 0

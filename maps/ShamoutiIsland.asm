@@ -55,7 +55,7 @@ ShamoutiIsland_MapEventHeader:
 .Warps:
 	db 6
 	warp_def $d, $15, 1, SHAMOUTI_POKECENTER_1F
-	warp_def $5, $21, 1, SHAMOUTI_HOTEL
+	warp_def $5, $21, 1, SHAMOUTI_HOTEL_1F
 	warp_def $7, $10, 1, SHAMOUTI_TUNNEL
 	warp_def $5, $1b, 1, SHAMOUTI_TOURIST_CENTER
 	warp_def $c, $1f, 1, SHAMOUTI_HOUSE
