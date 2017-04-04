@@ -5,7 +5,7 @@ SECTION "Map Headers", ROMX[$4000], BANK[MAP_HEADERS]
 
 INCLUDE "maps/map_headers.asm"
 
-SECTION "Second Map Headers", ROMX[$5d46], BANK[$22]
+SECTION "Second Map Headers", ROMX[$5af3], BANK[$6F]
 
 INCLUDE "maps/second_map_headers.asm"
 
@@ -35,6 +35,10 @@ SECTION "Map Blockdata 5", ROMX[$6296], BANK[$A]
 
 INCLUDE "maps/blockdata_5.asm"
 
+
+SECTION "Map Blockdata 6", ROMX[$755e], BANK[$5]
+
+INCLUDE "maps/blockdata_6.asm"
 
 
 SECTION "Map Scripts 1", ROMX[$4000], BANK[MAP_SCRIPTS_1]
@@ -704,3 +708,8 @@ INCLUDE "maps/CeladonHotelRoom1.asm"
 INCLUDE "maps/CeladonHotelRoom2.asm"
 INCLUDE "maps/CeladonHotelRoom3.asm"
 INCLUDE "maps/CeladonHotelPool.asm"
+INCLUDE "maps/DimCave1F.asm"
+INCLUDE "maps/DimCave2F.asm"
+INCLUDE "maps/DimCave3F.asm"
+INCLUDE "maps/DimCave4F.asm"
+INCLUDE "maps/DimCave5F.asm"

@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 
-SECTION "Events", ROMX[$53b1], BANK[EVENTS]
+SECTION "Events", ROMX[$53de], BANK[EVENTS]
 
 
 OverworldLoop:: ; 966b0

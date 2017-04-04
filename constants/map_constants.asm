@@ -598,6 +598,11 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_9,                                     9, 26 ;  1
 	mapgroup ROUTE_10_NORTH,                             29, 10 ;  2
+	mapgroup DIM_CAVE_1F,                                18, 18 ;  3
+	mapgroup DIM_CAVE_2F,                                18, 18 ;  4
+	mapgroup DIM_CAVE_3F,                                18, 18 ;  5
+	mapgroup DIM_CAVE_4F,                                18, 18 ;  6
+	mapgroup DIM_CAVE_5F,                                18, 18 ;  7
 
 	newgroup                                                    ; 29
 
