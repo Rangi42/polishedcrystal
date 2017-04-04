@@ -586,7 +586,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	inc hl
 	ld [hl], $6f ; second "EXP" tile
 	hlcoord 19, 16
-	ld [hl], $77 ; exp bar end cap
+	ld [hl], "<XPEND>" ; exp bar end cap
 	ret
 
 .PrintNextLevel: ; 4e0d3 (13:60d3)

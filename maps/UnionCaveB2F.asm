@@ -150,7 +150,7 @@ UnionCaveB2F_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $3, $5, 5, UNION_CAVE_B1F
+	warp_def $3, $5, 2, UNION_CAVE_B1F_SOUTH
 
 .XYTriggers:
 	db 0

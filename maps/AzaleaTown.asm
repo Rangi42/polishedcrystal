@@ -197,12 +197,6 @@ CharcoalKilnSign:
 AzaleaTownIlextForestSign:
 	jumptext AzaleaTownIlexForestSignText
 
-AzaleaTownPokeCenterSign:
-	jumpstd pokecentersign
-
-AzaleaTownMartSign:
-	jumpstd martsign
-
 WhiteApricornTree:
 	fruittree FRUITTREE_AZALEA_TOWN
 
@@ -470,14 +464,12 @@ AzaleaTown_MapEventHeader:
 	xy_trigger 2, $6, $9, $0, AzaleaTown_CelebiEventScript, $0, $0
 
 .Signposts:
-	db 9
+	db 7
 	signpost 9, 19, SIGNPOST_READ, AzaleaTownSign
 	signpost 9, 10, SIGNPOST_READ, KurtsHouseSign
 	signpost 15, 14, SIGNPOST_READ, AzaleaGymSign
 	signpost 7, 29, SIGNPOST_READ, SlowpokeWellSign
 	signpost 13, 19, SIGNPOST_READ, CharcoalKilnSign
-	signpost 9, 16, SIGNPOST_READ, AzaleaTownPokeCenterSign
-	signpost 5, 22, SIGNPOST_READ, AzaleaTownMartSign
 	signpost 9, 3, SIGNPOST_READ, AzaleaTownIlextForestSign
 	signpost 6, 31, SIGNPOST_ITEM, AzaleaTownHiddenFullHeal
 

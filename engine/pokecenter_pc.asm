@@ -451,11 +451,13 @@ KrisDepositItemMenu: ; 0x1588b
 .TryDepositItem:
 	ld a, [wCurrPocket]
 	cp TM_HM - 1
+	jr z, .CantDepositItem
+	cp KEY_ITEM - 1
+	jr z, .CantDepositItem
 	ld a, [wSpriteUpdatesEnabled]
 	push af
 	xor a
 	ld [wSpriteUpdatesEnabled], a
-	jr z, .CantDepositTMHM
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
@@ -464,10 +466,9 @@ KrisDepositItemMenu: ; 0x1588b
 	ld [wSpriteUpdatesEnabled], a
 	ret
 
-.CantDepositTMHM
-	ld hl, .CantDepositTMHMText
+.CantDepositItem
+	ld hl, .CantDepositItemText
 	call PrintText
-	pop af
 	ld [wSpriteUpdatesEnabled], a
 	ret
 
@@ -480,9 +481,6 @@ KrisDepositItemMenu: ; 0x1588b
 	dw .tossable
 	dw .tossable
 
-.no_toss
-	ret
-
 .tossable
 	ld a, [Buffer1]
 	push af
@@ -493,6 +491,7 @@ KrisDepositItemMenu: ; 0x1588b
 	ld [Buffer2], a
 	pop af
 	ld [Buffer1], a
+.no_toss
 	ret
 
 .DepositItem_:
@@ -542,8 +541,8 @@ KrisDepositItemMenu: ; 0x1588b
 	and a
 	ret
 
-.CantDepositTMHMText:
-	text_jump _KrissPCCantDepositTMHMText
+.CantDepositItemText:
+	text_jump _KrissPCCantDepositItemText
 	db "@"
 
 .HowManyText: ; 0x1596e

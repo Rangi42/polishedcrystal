@@ -10,7 +10,20 @@ LavRadioTower1F_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+	dbw MAPCALLBACK_OBJECTS, LavRadioTower1FUpstairsScript
+
+LavRadioTower1FUpstairsScript:
+	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
+	iftrue .Exorcised
+	callasm LavRadioTowerHauntedUpstairs
+	return
+
+.Exorcised:
+	callasm LavRadioTowerNormalUpstairs
+	return
 
 ReceptionistScript_0x7ee63:
 	jumptextfaceplayer UnknownText_0x7eebf
@@ -226,9 +239,10 @@ LavRadioTower1F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 2
+	db 3
 	warp_def $7, $2, 7, LAVENDER_TOWN
 	warp_def $7, $3, 7, LAVENDER_TOWN
+	warp_def $0, $f, 255, LAV_RADIO_TOWER_2F
 
 .XYTriggers:
 	db 0
@@ -241,7 +255,25 @@ LavRadioTower1F_MapEventHeader:
 .PersonEvents:
 	db 5
 	person_event SPRITE_RECEPTIONIST, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x7ee63, -1
-	person_event SPRITE_OFFICER, 1, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7ee66, -1
+	person_event SPRITE_OFFICER, 1, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7ee66, -1
 	person_event SPRITE_SUPER_NERD, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ee69, -1
 	person_event SPRITE_GENTLEMAN, 1, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7ee6c, -1
 	person_event SPRITE_SUPER_NERD, 6, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7eea2, -1
+
+LavRadioTowerHauntedUpstairs:
+	ld hl, HauntedRadioTower2FWarpNumber
+	jr SetLavRadioTowerUpstairs
+LavRadioTowerNormalUpstairs:
+	ld hl, NormalRadioTower2FWarpNumber
+SetLavRadioTowerUpstairs:
+	ld de, BackupWarpNumber
+	ld a, BANK(HauntedRadioTower2FWarpNumber) ; BANK(NormalRadioTower2FWarpNumber)
+	ld bc, 3
+	call FarCopyBytes
+	ret
+
+HauntedRadioTower2FWarpNumber:
+	db 1, GROUP_HAUNTED_RADIO_TOWER_2F, MAP_HAUNTED_RADIO_TOWER_2F
+
+NormalRadioTower2FWarpNumber:
+	db 1, GROUP_LAV_RADIO_TOWER_2F, MAP_LAV_RADIO_TOWER_2F

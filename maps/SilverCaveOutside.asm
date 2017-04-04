@@ -19,9 +19,6 @@ SilverCaveOutside_MapScriptHeader:
 SilverCaveOutsideCutTree:
 	jumpstd cuttree
 
-MtSilverPokeCenterSign:
-	jumpstd pokecentersign
-
 MtSilverSign:
 	jumptext MtSilverSignText
 
@@ -45,8 +42,7 @@ SilverCaveOutside_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
-	signpost 13, 24, SIGNPOST_READ, MtSilverPokeCenterSign
+	db 2
 	signpost 7, 17, SIGNPOST_READ, MtSilverSign
 	signpost 19, 9, SIGNPOST_ITEM, SilverCaveOutsideHiddenFullRestore
 

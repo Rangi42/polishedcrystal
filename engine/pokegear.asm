@@ -89,9 +89,13 @@ Pokegear_LoadGFX: ; 90c4e
 	ld a, BANK(TownMapGFX)
 	call FarDecompress
 	ld hl, PokegearGFX
-	ld de, VTiles2 + $30 tiles
+	ld de, VTiles2 tile $30
 	ld a, BANK(PokegearGFX)
 	call FarDecompress
+	ld de, JohtoKantoGFX
+	ld hl, VTiles2 tile $5c
+	lb bc, BANK(JohtoKantoGFX), 5
+	call Get2bpp_2
 	ld hl, PokegearSpritesGFX
 	ld de, VTiles0
 	ld a, BANK(PokegearSpritesGFX)
@@ -2788,22 +2792,22 @@ FillJohtoMap: ; 91eff
 	ld de, JohtoMap
 	call FillTownMap
 	hlcoord 16, 16
-	ld [hl], "<JO>"
+	ld [hl], $5c ; Jo...
 	inc hl
-	ld [hl], "<HT>"
+	ld [hl], $5d ; ...oh...
 	inc hl
-	ld [hl], "<TO>"
+	ld [hl], $5e ; ...to
 	ret
 
 FillKantoMap: ; 91f04
 	ld de, KantoMap
 	call FillTownMap
 	hlcoord 16, 16
-	ld [hl], "<KA>"
+	ld [hl], $5f ; Ka...
 	inc hl
-	ld [hl], "<NT>"
+	ld [hl], $60 ; ...nt...
 	inc hl
-	ld [hl], "<TO>"
+	ld [hl], $5e ; ...to
 	ret
 
 FillTownMap: ; 91f07
@@ -2992,6 +2996,10 @@ LoadTownMapGFX: ; 91ff2
 	ld de, VTiles2
 	lb bc, BANK(TownMapGFX), $30
 	call DecompressRequest2bpp
+	ld de, JohtoKantoGFX
+	ld hl, VTiles2 tile $5c
+	lb bc, BANK(JohtoKantoGFX), 5
+	call Request2bpp
 	ret
 
 ; 91fff

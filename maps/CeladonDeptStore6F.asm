@@ -38,7 +38,7 @@ GameboyKidScript_0x70d3f:
 CeladonDeptStore6FDirectory:
 	jumptext CeladonDeptStore6FDirectoryText
 
-UnknownScript_0x7124d:
+CeladonDeptStore6FElevatorButton:
 	jumpstd elevatorbutton
 
 UnknownText_0x712c7:
@@ -100,7 +100,7 @@ CeladonDeptStore6F_MapEventHeader:
 .Signposts:
 	db 2
 	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore6FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore1FElevatorButton
+	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore6FElevatorButton
 
 .PersonEvents:
 	db 4

@@ -163,6 +163,7 @@ CeladonMansionRoofHouse_BlockData:
 VermilionPollutionSpeechHouse_BlockData:
 VermilionSSAnneSpeechHouse_BlockData:
 MrPsychicsHouse_BlockData:
+PsychicInversHouse_BlockData:
 	INCBIN "maps/KantoHouse1.blk"
 
 CeruleanGymBadgeSpeechHouse_BlockData:
@@ -235,18 +236,19 @@ GoldenrodHarborGate_BlockData:
 
 Route8SaffronGate_BlockData:
 Route7SaffronGate_BlockData:
+Route16Gate_BlockData:
 	INCBIN "maps/KantoEastWestGate.blk"
 
 Route11Gate_BlockData:
 Route15FuchsiaGate_BlockData:
-Route16Gate_BlockData:
+Route1617Gate_BlockData:
 Route18Gate_BlockData:
 	INCBIN "maps/KantoEastWestGate1F.blk"
 
 Route11Gate2F_BlockData:
 Route12Gate2F_BlockData:
 Route15FuchsiaGate2F_BlockData:
-Route16Gate2F_BlockData:
+Route1617Gate2F_BlockData:
 Route18Gate2F_BlockData:
 	INCBIN "maps/KantoGate2F.blk"
 

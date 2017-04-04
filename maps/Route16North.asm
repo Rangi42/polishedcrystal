@@ -8,7 +8,7 @@ Route16North_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-Route16CutTree:
+Route16NorthCutTree:
 	jumpstd cuttree
 
 Route16North_MapEventHeader:
@@ -16,10 +16,14 @@ Route16North_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 3
-	warp_def $1, $5, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
-	warp_def $a, $e, 3, ROUTE_16_GATE
-	warp_def $b, $e, 4, ROUTE_16_GATE
+	db 7
+	warp_def $1, $1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
+	warp_def $a, $e, 3, ROUTE_16_17_GATE
+	warp_def $b, $e, 4, ROUTE_16_17_GATE
+	warp_def $4, $9, 1, ROUTE_16_GATE
+	warp_def $5, $9, 2, ROUTE_16_GATE
+	warp_def $4, $e, 3, ROUTE_16_GATE
+	warp_def $5, $e, 4, ROUTE_16_GATE
 
 .XYTriggers:
 	db 0
@@ -29,4 +33,4 @@ Route16North_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_CUT_TREE, 2, 17, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16CutTree, EVENT_ROUTE_16_CUT_TREE
+	person_event SPRITE_CUT_TREE, 4, 17, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16NorthCutTree, EVENT_ROUTE_16_CUT_TREE

@@ -508,9 +508,6 @@ Route32RuinsSign:
 Route32UnionCaveSign:
 	jumptext Route32UnionCaveSignText
 
-Route32PokeCenterSign:
-	jumpstd pokecentersign
-
 Route32HiddenGreatBall:
 	dwb EVENT_ROUTE_32_HIDDEN_GREAT_BALL, GREAT_BALL
 
@@ -885,11 +882,10 @@ Route32_MapEventHeader:
 	xy_trigger 1, $47, $7, $0, Route32WannaBuyASlowpokeTailScript, $0, $0
 
 .Signposts:
-	db 6
+	db 5
 	signpost  5, 13, SIGNPOST_READ, Route32Sign
 	signpost  1,  9, SIGNPOST_READ, Route32RuinsSign
 	signpost 84, 10, SIGNPOST_READ, Route32UnionCaveSign
-	signpost 73, 12, SIGNPOST_READ, Route32PokeCenterSign
 	signpost 67, 12, SIGNPOST_ITEM, Route32HiddenGreatBall
 	signpost 40, 11, SIGNPOST_ITEM, Route32HiddenSuperPotion
 

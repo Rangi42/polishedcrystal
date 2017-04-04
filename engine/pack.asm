@@ -1371,7 +1371,7 @@ endr
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld hl, VTiles2 tile $50
+	ld hl, VTiles2 tile $20
 	lb bc, BANK(PackGFX), 25
 	call Request2bpp
 	ret
@@ -1384,7 +1384,7 @@ endr
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld hl, VTiles2 tile $50
+	ld hl, VTiles2 tile $20
 	lb bc, BANK(PackFGFX), 25
 	call Request2bpp
 	ret
@@ -1497,8 +1497,8 @@ Pack_InitGFX: ; 10955
 	call ClearSprites
 	call DisableLCD
 	ld hl, PackMenuGFX
-	ld de, VTiles2
-	ld bc, 37 tiles
+	ld de, VTiles2 tile $01
+	ld bc, 31 tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes
 ; This is where the items themselves will be listed.
@@ -1534,22 +1534,22 @@ Pack_InitGFX: ; 10955
 
 .PackTilemapString:
 	; Top row
-	db $08, $09, $0a, $0b, $0c, $0d ; ◀▶ POCKET
-	db $07, $07, $07, $07
-	db $0e, $0f, $10, $11, $12, $13 ; ▼▲ ITEMS
-	db $07, $07, $07, $07
+	db $02, $03, $04, $05, $06, $07 ; ◀▶ POCKET
+	db $01, $01, $01, $01
+	db $08, $09, $0a, $0b, $0c, $0d ; ▼▲ ITEMS
+	db $01, $01, $01, $01
 	; Left column
-	db $06, $06, $06, $06, $06, $00 ; Background (blue if male, pink if female)
-	db $50, $51, $52, $53, $54, $00 ; Pack image
-	db $55, $56, $57, $58, $59, $00
-	db $5a, $5b, $5c, $5d, $5e, $00
-	db $5f, $60, $61, $62, $63, $00
-	db $64, $65, $66, $67, $68, $00
-	db $14, $15, $15, $15, $16, $00 ; Item icon
-	db $17, $1c, $1d, $1e, $18, $00
-	db $17, $1f, $20, $21, $18, $00
-	db $17, $22, $23, $24, $18, $00
-	db $19, $1a, $1a, $1a, $1b, $ff
+	db $0e, $0e, $0e, $0e, $0e, $00 ; Background (blue if male, pink if female)
+	db $20, $21, $22, $23, $24, $00 ; Pack image
+	db $25, $26, $27, $28, $29, $00
+	db $2a, $2b, $2c, $2d, $2e, $00
+	db $2f, $30, $31, $32, $33, $00
+	db $34, $35, $36, $37, $38, $00
+	db $0f, $10, $10, $10, $11, $00 ; Item icon
+	db $12, $17, $18, $19, $13, $00
+	db $12, $1a, $1b, $1c, $13, $00
+	db $12, $1d, $1e, $1f, $13, $00
+	db $14, $15, $15, $15, $16, $ff
 
 Pack_GetItemName: ; 10a1d
 	ld a, [CurItem]
@@ -1801,4 +1801,7 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-INCBIN "gfx/misc/pack_menu.2bpp"
+PackTopRowGFX:
+INCBIN "gfx/misc/pack_top_row.2bpp"
+PackLeftColumnGFX:
+INCBIN "gfx/misc/pack_left_column.2bpp"

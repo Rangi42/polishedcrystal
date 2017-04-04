@@ -151,7 +151,7 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Articuno is in the Seafoam Islands.
 * Zapdos is above the Power Plant after you fix the generator.
 * Moltres is inside Cinnabar Volcano.
-* Raikou and Entei are roaming Johto.
+* Raikou and Entei are roaming Johto after you awaken them.
 * Suicune is in the Bell Tower after you get the Clear Bell.
 * Lugia is in the Whirl Islands after you catch all three legendary birds and then get the Silver Wing in Victory Road.
 * Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and then get the Rainbow Wing in Bell Tower.
@@ -341,6 +341,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.
 * Fix: Enemy Psystrike uses player's Defense.
 * Fix: Sketch fails if user is transformed.
+* Fix: Wild encounter battle transitions correctly depend on relative levels.
+* Fix: Dig and Fly prevent capture.
 * Fix: Yellow Carpet is buyable.
 * Fix: Tangrowth can learn Curse.
 * Fix: Lyra's Bag is the female version.

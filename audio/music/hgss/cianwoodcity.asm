@@ -1,6 +1,6 @@
 ; Pokémon HG/SS - Cianwood City
 ; Demixed by Mmmmmm
-; http://pastebin.com/GguFiV8e
+; https://pastebin.com/GguFiV8e
 
 Music_CianwoodCityHGSS:
 	musicheader 3, 1, Music_CianwoodCityHGSS_Ch1

@@ -226,10 +226,10 @@ BugsyGroup:
 		db FURY_ATTACK
 
 	db 14, YANMA, NO_ITEM, ABILITY_1 | QUIRKY, FEMALE
-		db TACKLE
 		db FORESIGHT
 		db QUICK_ATTACK
 		db DOUBLE_TEAM
+		db SONIC_BOOM
 
 	db 17, SCYTHER, SITRUS_BERRY, ABILITY_1 | QUIRKY, FEMALE
 		db QUICK_ATTACK
@@ -1713,7 +1713,11 @@ ErikaGroup:
 		db SUNNY_DAY
 		db MORNING_SUN
 		db GIGA_DRAIN
+if DEF(FAITHFUL)
+		db EARTH_POWER
+else
 		db FLAMETHROWER
+endc
 
 	db 62, TANGELA, EVIOLITE
 		db GROWTH
@@ -1767,7 +1771,11 @@ endc
 		db SUNNY_DAY
 		db LEECH_SEED
 		db GIGA_DRAIN
+if DEF(FAITHFUL)
+		db EARTH_POWER
+else
 		db FIRE_BLAST
+endc
 
 	db 73, TANGROWTH, LEFTOVERS, FAKE_PERFECT_DVS
 		db EARTHQUAKE
@@ -2141,7 +2149,11 @@ BlueGroup:
 		db SURF
 		db ICE_BEAM
 		db BODY_SLAM
+if DEF(FAITHFUL)
+		db EARTHQUAKE
+else
 		db FLASH_CANNON
+endc
 
 	db $ff ; end
 
@@ -4076,12 +4088,20 @@ PicnickerGroup:
 	db 33, SUNFLORA
 		db LEECH_SEED
 		db GIGA_DRAIN
+if DEF(FAITHFUL)
+		db EARTH_POWER
+else
 		db FLAMETHROWER
+endc
 		db SUNNY_DAY
 
 	db 34, SUNFLORA
 		db GIGA_DRAIN
+if DEF(FAITHFUL)
+		db EARTH_POWER
+else
 		db FLAMETHROWER
+endc
 		db SOLAR_BEAM
 		db SUNNY_DAY
 
@@ -8841,6 +8861,33 @@ BreederGroup:
 BakerGroup:
 ; ================================
 ; ================
+
+	; BAKER
+	db "Chelsie@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 18, MILTANK
+if DEF(FAITHFUL)
+	db 18, MAGMAR
+else
+	db 18, SUNFLORA
+endc
+
+	db $ff ; end
+
+; ================
+
+	; BAKER
+	db "Sharyn@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 46, MILTANK
+	db 46, TAUROS
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -10268,6 +10315,13 @@ endc
 ; ================================
 
 
+EngineerGroup:
+; ================================
+; ================
+; ================
+; ================================
+
+
 TeacherGroup:
 ; ================================
 ; ================
@@ -11456,7 +11510,11 @@ VeteranMGroup:
 	db 42, BLASTOISE, MYSTIC_WATER
 		db SURF
 		db AQUA_TAIL
+if DEF(FAITHFUL)
+		db BODY_SLAM
+else
 		db FLASH_CANNON
+endc
 		db ICE_BEAM
 
 	db 41, NINETALES, CHARCOAL
@@ -11872,10 +11930,10 @@ GiovanniGroup:
 
 	; party
 
-	db 66, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE, "???@"
-		db NASTY_PLOT
-		db PSYSTRIKE
+	db 70, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE, "???@"
 		db SHADOW_BALL
+		db PSYSTRIKE
+		db NASTY_PLOT
 		db AURA_SPHERE
 
 	db $ff ; end
@@ -11989,11 +12047,19 @@ MysticalmanGroup:
 		db CONFUSE_RAY
 		db CURSE
 
+if DEF(FAITHFUL)
+	db 26, SUNFLORA, SOFT_SAND, FAKE_PERFECT_DVS, ABILITY_1 | QUIRKY, MALE
+		db GROWTH
+		db LEECH_SEED
+		db GIGA_DRAIN
+		db EARTH_POWER
+else
 	db 26, SUNFLORA, CHARCOAL, FAKE_PERFECT_DVS, ABILITY_1 | QUIRKY, MALE
 		db GROWTH
 		db LEECH_SEED
 		db GIGA_DRAIN
 		db FLAMETHROWER
+endc
 
 	db 27, ELECTRODE, MAGNET, FAKE_PERFECT_DVS, SHINY_MASK | HIDDEN_ABILITY | QUIRKY, MALE
 		db THUNDER
@@ -12711,6 +12777,27 @@ CaitlinGroup:
 ; ================================
 
 
+CandelaGroup:
+; ================================
+; ================
+; ================
+; ================================
+
+
+BlancheGroup:
+; ================================
+; ================
+; ================
+; ================================
+
+
+SparkGroup:
+; ================================
+; ================
+; ================
+; ================================
+
+
 ValerieGroup:
 ; ================================
 ; ================
@@ -13091,6 +13178,13 @@ endc
 
 	db $ff ; end
 
+; ================
+; ================================
+
+
+ImakuniGroup:
+; ================================
+; ================
 ; ================
 ; ================================
 

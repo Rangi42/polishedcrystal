@@ -79,6 +79,7 @@
 	add_pic BlackbeltTPic
 	add_pic BattleGirlPic
 	add_pic DragonTamerPic
+	add_pic EngineerPic
 	add_pic TeacherPic
 	add_pic GuitaristmPic
 	add_pic GuitaristfPic
@@ -115,10 +116,14 @@
 	add_pic AnabelPic
 	add_pic DarachPic
 	add_pic CaitlinPic
+	add_pic CandelaPic
+	add_pic BlanchePic
+	add_pic SparkPic
 	add_pic ValeriePic
 	add_pic BillPic
 	add_pic YellowPic
 	add_pic WalkerPic
+	add_pic ImakuniPic
 	add_pic LawrencePic
 	add_pic ReiPic
 	add_pic OmastarFossilPic

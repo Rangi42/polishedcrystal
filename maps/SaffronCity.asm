@@ -126,12 +126,6 @@ SaffronCityMagnetTrainStationSign:
 PokemonTrainerFanClubSign:
 	jumptext PokemonTrainerFanClubSignText
 
-SaffronCityPokeCenterSign:
-	jumpstd pokecentersign
-
-SaffronCityMartSign:
-	jumpstd martsign
-
 UnknownText_0x19938d:
 	text "A little girl who"
 	line "is an expert at"
@@ -389,15 +383,13 @@ SaffronCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 9
+	db 7
 	signpost 5, 21, SIGNPOST_READ, SaffronCitySign
 	signpost 5, 33, SIGNPOST_READ, SaffronGymSign
 	signpost 5, 25, SIGNPOST_READ, FightingDojoSign
 	signpost 21, 15, SIGNPOST_READ, SilphCoSign
 	signpost 29, 25, SIGNPOST_READ, MrPsychicsHouseSign
 	signpost 5, 11, SIGNPOST_READ, SaffronCityMagnetTrainStationSign
-	signpost 29, 10, SIGNPOST_READ, SaffronCityPokeCenterSign
-	signpost 11, 26, SIGNPOST_READ, SaffronCityMartSign
 	signpost 12, 32, SIGNPOST_READ, PokemonTrainerFanClubSign
 
 .PersonEvents:

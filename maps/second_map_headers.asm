@@ -148,9 +148,10 @@
 	connection south, ROUTE_2, Route2, 5, 0, 10
 	connection east, ROUTE_3, Route3, 5, 0, 9
 
-	map_header_2 Route2, ROUTE_2, $f, NORTH | SOUTH
+	map_header_2 Route2, ROUTE_2, $f, NORTH | SOUTH | EAST
 	connection north, PEWTER_CITY, PewterCity, -3, 2, 16
 	connection south, VIRIDIAN_CITY, ViridianCity, -3, 2, 16
+	connection east, ROUTE_16_WEST, Route16West, 26, 0, 10
 
 	map_header_2 ViridianCity, VIRIDIAN_CITY, $f, NORTH | SOUTH | WEST
 	connection north, ROUTE_2, Route2, 5, 0, 10
@@ -214,8 +215,13 @@
 	map_header_2 Route16South, ROUTE_16_SOUTH, $f, SOUTH
 	connection south, ROUTE_17, Route17, 0, 0, 10
 
-	map_header_2 Route16North, ROUTE_16_NORTH, $f, EAST
+	map_header_2 Route16North, ROUTE_16_NORTH, $f, WEST | EAST
+	connection west, ROUTE_16_WEST, Route16West, 0, 0, 11
 	connection east, CELADON_CITY, CeladonCity, -3, 7, 10
+
+	map_header_2 Route16West, ROUTE_16_WEST, $f, WEST | EAST
+	connection west, ROUTE_2, Route2, -3, 23, 10
+	connection east, ROUTE_16_NORTH, Route16North, 0, 0, 11
 
 	map_header_2 CeladonCity, CELADON_CITY, $f, WEST | EAST
 	connection west, ROUTE_16_NORTH, Route16North, 10, 0, 8
@@ -372,6 +378,7 @@
 	map_header_2 TinTower7F, TIN_TOWER_7F, $0, 0
 	map_header_2 TinTower8F, TIN_TOWER_8F, $0, 0
 	map_header_2 TinTower9F, TIN_TOWER_9F, $0, 0
+	map_header_2 TinTower10F, TIN_TOWER_10F, $0, 0
 	map_header_2 BurnedTower1F, BURNED_TOWER_1F, $0, 0
 	map_header_2 BurnedTowerB1F, BURNED_TOWER_B1F, $9, 0
 	map_header_2 NationalPark, NATIONAL_PARK, $0, 0
@@ -386,6 +393,7 @@
 	map_header_2 RuinsofAlphKabutoChamber, RUINS_OF_ALPH_KABUTO_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphOmanyteChamber, RUINS_OF_ALPH_OMANYTE_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphAerodactylChamber, RUINS_OF_ALPH_AERODACTYL_CHAMBER, $0, 0
+	map_header_2 RuinsofAlphEntranceChamber, RUINS_OF_ALPH_ENTRANCE_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphInnerChamber, RUINS_OF_ALPH_INNER_CHAMBER, $0, 0
 	map_header_2 RuinsofAlphResearchCenter, RUINS_OF_ALPH_RESEARCH_CENTER, $0, 0
 	map_header_2 RuinsofAlphHoOhItemRoom, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, $0, 0
@@ -399,7 +407,8 @@
 	map_header_2 RuinsofAlphSinjohChamber, RUINS_OF_ALPH_SINJOH_CHAMBER, $0, 0
 	map_header_2 Route22Past, ROUTE_22_PAST, $2c, 0
 	map_header_2 UnionCave1F, UNION_CAVE_1F, $9, 0
-	map_header_2 UnionCaveB1F, UNION_CAVE_B1F, $9, 0
+	map_header_2 UnionCaveB1FNorth, UNION_CAVE_B1F_NORTH, $9, 0
+	map_header_2 UnionCaveB1FSouth, UNION_CAVE_B1F_SOUTH, $9, 0
 	map_header_2 UnionCaveB2F, UNION_CAVE_B2F, $9, 0
 	map_header_2 SlowpokeWellB1F, SLOWPOKE_WELL_B1F, $9, 0
 	map_header_2 SlowpokeWellB2F, SLOWPOKE_WELL_B2F, $9, 0
@@ -558,6 +567,7 @@
 	map_header_2 GoldenrodDeptStoreRoof, GOLDENROD_DEPT_STORE_ROOF, $24, 0
 	map_header_2 GoldenrodGameCorner, GOLDENROD_GAME_CORNER, $0, 0
 	map_header_2 GoldenrodPokeComCenter1F, GOLDENROD_POKECOM_CENTER_1F, $0, 0
+	map_header_2 GoldenrodPokeComCenterOffice, GOLDENROD_POKECOM_CENTER_OFFICE, $0, 0
 	map_header_2 GoldenrodHarborGate, GOLDENROD_HARBOR_GATE, $0, 0
 	map_header_2 IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_header_2 Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
@@ -623,7 +633,19 @@
 	map_header_2 LavenderNameRater, LAVENDER_NAME_RATER, $0, 0
 	map_header_2 LavenderMart, LAVENDER_MART, $0, 0
 	map_header_2 SoulHouse, SOUL_HOUSE, $0, 0
+	map_header_2 SoulHouseB1F, SOUL_HOUSE_B1F, $0, 0
+	map_header_2 SoulHouseB2F, SOUL_HOUSE_B2F, $0, 0
+	map_header_2 SoulHouseB3F, SOUL_HOUSE_B3F, $0, 0
 	map_header_2 LavRadioTower1F, LAV_RADIO_TOWER_1F, $0, 0
+	map_header_2 LavRadioTower2F, LAV_RADIO_TOWER_2F, $0, 0
+	map_header_2 LavRadioTower3F, LAV_RADIO_TOWER_3F, $0, 0
+	map_header_2 LavRadioTower4F, LAV_RADIO_TOWER_3F, $0, 0
+	map_header_2 LavRadioTower5F, LAV_RADIO_TOWER_5F, $0, 0
+	map_header_2 HauntedRadioTower2F, HAUNTED_RADIO_TOWER_2F, $0, 0
+	map_header_2 HauntedRadioTower3F, HAUNTED_RADIO_TOWER_3F, $0, 0
+	map_header_2 HauntedRadioTower4F, HAUNTED_RADIO_TOWER_4F, $0, 0
+	map_header_2 HauntedRadioTower5F, HAUNTED_RADIO_TOWER_5F, $0, 0
+	map_header_2 HauntedRadioTower6F, HAUNTED_RADIO_TOWER_6F, $0, 0
 	map_header_2 Route8SaffronGate, ROUTE_8_SAFFRON_GATE, $0, 0
 	map_header_2 Route12SuperRodHouse, ROUTE_12_SUPER_ROD_HOUSE, $0, 0
 	map_header_2 SilverCavePokeCenter1F, SILVER_CAVE_POKECENTER_1F, $0, 0
@@ -650,10 +672,17 @@
 	map_header_2 CeladonGym, CELADON_GYM, $0, 0
 	map_header_2 CeladonCafe, CELADON_CAFE, $0, 0
 	map_header_2 CeladonChiefHouse, CELADON_CHIEF_HOUSE, $0, 0
-	map_header_2 CeladonHotel, CELADON_HOTEL, $0, 0
+	map_header_2 CeladonHotel1F, CELADON_HOTEL_1F, $0, 0
+	map_header_2 CeladonHotel2F, CELADON_HOTEL_2F, $0, 0
+	map_header_2 CeladonHotelRoom1, CELADON_HOTEL_ROOM_1, $0, 0
+	map_header_2 CeladonHotelRoom2, CELADON_HOTEL_ROOM_2, $0, 0
+	map_header_2 CeladonHotelRoom3, CELADON_HOTEL_ROOM_3, $0, 0
+	map_header_2 CeladonHotelPool, CELADON_HOTEL_POOL, $0, 0
+	map_header_2 PsychicInversHouse, PSYCHIC_INVERS_HOUSE, $0, 0
 	map_header_2 Route16FuchsiaSpeechHouse, ROUTE_16_FUCHSIA_SPEECH_HOUSE, $0, 0
 	map_header_2 Route16Gate, ROUTE_16_GATE, $0, 0
-	map_header_2 Route16Gate2F, ROUTE_16_GATE_2F, $0, 0
+	map_header_2 Route1617Gate, ROUTE_16_17_GATE, $0, 0
+	map_header_2 Route1617Gate2F, ROUTE_16_17_GATE_2F, $0, 0
 	map_header_2 Route7SaffronGate, ROUTE_7_SAFFRON_GATE, $0, 0
 	map_header_2 Route18Gate, ROUTE_18_GATE, $0, 0
 	map_header_2 Route18Gate2F, ROUTE_18_GATE_2F, $0, 0
@@ -684,6 +713,7 @@
 	map_header_2 CianwoodLugiaSpeechHouse, CIANWOOD_LUGIA_SPEECH_HOUSE, $0, 0
 	map_header_2 StatsJudgesHouse, STATS_JUDGES_HOUSE, $0, 0
 	map_header_2 BattleTower1F, BATTLE_TOWER_1F, $0, 0
+	map_header_2 BattleTower2F, BATTLE_TOWER_2F, $0, 0
 	map_header_2 BattleTowerBattleRoom, BATTLE_TOWER_BATTLE_ROOM, $0, 0
 	map_header_2 BattleTowerElevator, BATTLE_TOWER_ELEVATOR, $0, 0
 	map_header_2 BattleTowerHallway, BATTLE_TOWER_HALLWAY, $0, 0
@@ -782,7 +812,14 @@
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
-	map_header_2 ShamoutiHotel, SHAMOUTI_HOTEL, $0, 0
+	map_header_2 ShamoutiHotel1F, SHAMOUTI_HOTEL_1F, $0, 0
+	map_header_2 ShamoutiHotel2F, SHAMOUTI_HOTEL_2F, $0, 0
+	map_header_2 ShamoutiHotel3F, SHAMOUTI_HOTEL_3F, $0, 0
+	map_header_2 ShamoutiHotelRoom2A, SHAMOUTI_HOTEL_ROOM_2A, $0, 0
+	map_header_2 ShamoutiHotelRoom2B, SHAMOUTI_HOTEL_ROOM_2B, $0, 0
+	map_header_2 ShamoutiHotelRoom3B, SHAMOUTI_HOTEL_ROOM_3B, $0, 0
+	map_header_2 ShamoutiHotelRoom3C, SHAMOUTI_HOTEL_ROOM_3C, $0, 0
+	map_header_2 ShamoutiHotelRestaurant, SHAMOUTI_HOTEL_RESTAURANT, $0, 0
 	map_header_2 ShamoutiTouristCenter, SHAMOUTI_TOURIST_CENTER, $0, 0
 	map_header_2 ShamoutiMerchant, SHAMOUTI_MERCHANT, $0, 0
 	map_header_2 ShamoutiHouse, SHAMOUTI_HOUSE, $0, 0

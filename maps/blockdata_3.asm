@@ -126,6 +126,15 @@ DayCare_BlockData:
 SoulHouse_BlockData:
 	INCBIN "maps/SoulHouse.blk"
 
+SoulHouseB1F_BlockData:
+	INCBIN "maps/SoulHouseB1F.blk"
+
+SoulHouseB2F_BlockData:
+	INCBIN "maps/SoulHouseB2F.blk"
+
+SoulHouseB3F_BlockData:
+	INCBIN "maps/SoulHouseB3F.blk"
+
 PewterGym_BlockData:
 	INCBIN "maps/PewterGym.blk"
 
@@ -244,11 +253,17 @@ DragonShrine_BlockData:
 BattleTower1F_BlockData:
 	INCBIN "maps/BattleTower1F.blk"
 
+BattleTower2F_BlockData:
+	INCBIN "maps/BattleTower2F.blk"
+
 BattleTowerBattleRoom_BlockData:
 	INCBIN "maps/BattleTowerBattleRoom.blk"
 
 GoldenrodPokeComCenter1F_BlockData:
 	INCBIN "maps/GoldenrodPokeComCenter1F.blk"
+
+GoldenrodPokeComCenterOffice_BlockData:
+	INCBIN "maps/GoldenrodPokeComCenterOffice.blk"
 
 BattleTowerHallway_BlockData:
 	INCBIN "maps/BattleTowerHallway.blk"

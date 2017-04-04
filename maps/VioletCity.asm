@@ -98,12 +98,6 @@ SproutTowerSign:
 EarlsPokemonAcademySign:
 	jumptext EarlsPokemonAcademySignText
 
-VioletCityPokeCenterSign:
-	jumpstd pokecentersign
-
-VioletCityMartSign:
-	jumpstd martsign
-
 VioletCityPPUp:
 	itemball PP_UP
 
@@ -361,13 +355,11 @@ VioletCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 8
+	db 6
 	signpost 24, 24, SIGNPOST_READ, VioletCitySign
 	signpost 21, 15, SIGNPOST_READ, VioletGymSign
 	signpost  8, 24, SIGNPOST_READ, SproutTowerSign
 	signpost 21, 27, SIGNPOST_READ, EarlsPokemonAcademySign
-	signpost 29, 32, SIGNPOST_READ, VioletCityPokeCenterSign
-	signpost 21, 10, SIGNPOST_READ, VioletCityMartSign
 	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
 	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
 

@@ -192,9 +192,32 @@ StartTrainerBattle_DetermineWhichAnimation: ; 8c365 (23:4365)
 ; times depending on the level of your lead
 ; Pokemon relative to the opponent's.
 	ld de, 0
-	ld a, [BattleMonLevel]
+
+	ld a, [OtherTrainerClass]
+	and a
+	jr z, .wild
+	farcall SetTrainerBattleLevel
+.wild
+
+; Get the first Pokemon in your party that isn't fainted.
+	ld hl, PartyMon1HP
+	ld bc, PARTYMON_STRUCT_LENGTH - 1
+.loop
+	ld a, [hli]
+	or [hl]
+	jr nz, .ok
+	add hl, bc
+	jr .loop
+.ok
+; to PartyMonLevel
+rept 4
+	dec hl
+endr
+	ld a, [hl]
 	add 3
-	ld hl, EnemyMonLevel
+
+; Compare with wild encounter level
+	ld hl, CurPartyLevel
 	cp [hl]
 	jr nc, .okay
 	set 0, e

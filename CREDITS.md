@@ -6,7 +6,7 @@
 * FredrIQ for multiple feature code contributions (specifically: Abilities, Natures affecting stats, better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen).
 * The TPP Anniversary Crystal 251 dev team for making their code publically usable (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, and caught data stats page code).
 * VictoriaLacroix for her Running Shoes routine.
-* MeroMero for the in-battle color inversion code.
+* MeroMero for the in-battle color inversion code and some move animations.
 * tonyism for the in-battle shiny icon code.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
 
@@ -25,10 +25,11 @@
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
 * bloodless for sprites of Buck, Veteran♂, Pikachu, Diglett, and Dugtrio.
+* SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
+* Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
+* Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
-* Megaman-Omega for Prism's overworld sprites of Beauty, Boarder, Roughneck, and Skier.
 * Mateo for some sprites and tiles.
-* Freeline for the Rocket Executives' overworld sprites.
 * Kuroko Aizawa for Cheryl's sprite.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.

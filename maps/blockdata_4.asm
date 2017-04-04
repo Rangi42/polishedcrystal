@@ -87,8 +87,23 @@ QuietCaveB3F_BlockData:
 CeladonChiefHouse_BlockData:
 	INCBIN "maps/CeladonChiefHouse.blk"
 
-CeladonHotel_BlockData:
-	INCBIN "maps/CeladonHotel.blk"
+CeladonHotel1F_BlockData:
+	INCBIN "maps/CeladonHotel1F.blk"
+
+CeladonHotel2F_BlockData:
+	INCBIN "maps/CeladonHotel2F.blk"
+
+CeladonHotelPool_BlockData:
+	INCBIN "maps/CeladonHotelPool.blk"
+
+CeladonHotelRoom1_BlockData:
+CeladonHotelRoom2_BlockData:
+CeladonHotelRoom3_BlockData:
+ShamoutiHotelRoom2A_BlockData:
+ShamoutiHotelRoom2B_BlockData:
+ShamoutiHotelRoom3B_BlockData:
+ShamoutiHotelRoom3C_BlockData:
+	INCBIN "maps/HotelRoom.blk"
 
 CherrygroveBay_BlockData:
 	INCBIN "maps/CherrygroveBay.blk"

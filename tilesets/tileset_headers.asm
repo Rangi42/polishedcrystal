@@ -50,3 +50,4 @@ Tileset01::
 	tileset Tileset40
 	tileset Tileset41
 	tileset Tileset42
+	tileset Tileset43

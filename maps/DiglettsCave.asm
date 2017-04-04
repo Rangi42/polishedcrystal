@@ -75,21 +75,21 @@ DiglettsCave_MapEventHeader:
 
 .Warps:
 	db 6
-	warp_def $21, $3, 10, VERMILION_CITY
-	warp_def $1f, $5, 5, DIGLETTS_CAVE
-	warp_def $5, $f, 5, ROUTE_2
-	warp_def $3, $11, 6, DIGLETTS_CAVE
-	warp_def $21, $11, 2, DIGLETTS_CAVE
-	warp_def $3, $3, 4, DIGLETTS_CAVE
+	warp_def $f, $25, 10, VERMILION_CITY
+	warp_def $d, $27, 5, DIGLETTS_CAVE
+	warp_def $5, $25, 5, ROUTE_2
+	warp_def $3, $27, 6, DIGLETTS_CAVE
+	warp_def $1f, $25, 2, DIGLETTS_CAVE
+	warp_def $5, $5, 4, DIGLETTS_CAVE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 1
-	signpost 11, 6, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
+	signpost 15, 8, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_POKEFAN_M, 31, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x74002, -1
-	person_event SPRITE_POKE_BALL, 17, 12, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DiglettsCaveDiglettDoll, EVENT_DECO_DIGLETT_DOLL
+	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x74002, -1
+	person_event SPRITE_POKE_BALL, 8, 18, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DiglettsCaveDiglettDoll, EVENT_DECO_DIGLETT_DOLL

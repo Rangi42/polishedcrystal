@@ -320,6 +320,7 @@ Tileset36Anim:
 Tileset37Anim:
 Tileset40Anim:
 Tileset42Anim:
+Tileset43Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

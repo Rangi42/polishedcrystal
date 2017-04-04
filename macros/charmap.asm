@@ -61,8 +61,8 @@
 	charmap ")",        $9b
 	charmap ".",        $9c
 	charmap ",",        $9d
-	charmap "[",        $9e
-	charmap "]",        $9f
+
+; unused: 9e-9f
 
 	charmap "a",        $a0
 	charmap "b",        $a1
@@ -126,21 +126,21 @@
 
 	charmap "'",        $d7
 	charmap "…",        $d8
+
 	charmap "<ID>",     $d9
 	charmap "№",        $da
 	charmap "<LV>",     $db
 	charmap "<BOLDP>",  $dc
 	charmap "★",        $dd
-	charmap "<BALL>",   $de
-	charmap "<NONO>",   $df
-	charmap "<PHONE>",  $e0
+	charmap "<NONO>",   $de
+	charmap "<PHONE>",  $df
 
-	charmap "<JO>",     $e1
-	charmap "<HT>",     $e2
-	charmap "<TO>",     $e3
-	charmap "<KA>",     $e4
-	charmap "<NT>",     $e5
+; unused: e0-e1
 
+	charmap "<HPEND>",  $e2
+	charmap "<XPEND>",  $e3
+	charmap "◢",        $e4
+	charmap "◣",        $e5
 	charmap "—",        $e6
 	charmap "_",        $e7
 

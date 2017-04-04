@@ -215,9 +215,6 @@ Route10RockTunnelSign:
 PowerPlantSign:
 	jumptext PowerPlantSignText
 
-Route10PokeCenterSign:
-	jumpstd pokecentersign
-
 Route10CutTree:
 	jumpstd cuttree
 
@@ -398,9 +395,8 @@ Route10North_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 2
 	signpost 53, 5, SIGNPOST_READ, PowerPlantSign
-	signpost 35, 12, SIGNPOST_READ, Route10PokeCenterSign
 	signpost 35, 7, SIGNPOST_READ, Route10RockTunnelSign
 
 .PersonEvents:

@@ -1,6 +1,6 @@
 ; Pokémon R/S/E - Battle! Champion
 ; Demixed by Mmmmmm
-; http://pastebin.com/qyNUWZfz
+; https://pastebin.com/qyNUWZfz
 ; https://hax.iimarck.us/topic/6777/4/
 
 Music_ChampionBattleRSE:

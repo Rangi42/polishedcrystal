@@ -56,12 +56,6 @@ NoLitteringSign:
 SafariZoneExhibitSign:
 	jumptext SafariZoneExhibitSignText
 
-FuchsiaCityPokeCenterSign:
-	jumpstd pokecentersign
-
-FuchsiaCityMartSign:
-	jumpstd martsign
-
 FuchsiaCityCutTree:
 	jumpstd cuttree
 
@@ -189,7 +183,7 @@ FuchsiaCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 14
+	db 12
 	signpost 15, 21, SIGNPOST_READ, FuchsiaCitySign
 	signpost 29, 5, SIGNPOST_READ, FuchsiaGymSign
 	signpost 15, 25, SIGNPOST_READ, SafariZoneOfficeSign
@@ -197,8 +191,6 @@ FuchsiaCity_MapEventHeader:
 	signpost 29, 27, SIGNPOST_READ, WardensHomeSign
 	signpost 5, 17, SIGNPOST_READ, SafariZoneClosedSign
 	signpost 19, 14, SIGNPOST_READ, NoLitteringSign
-	signpost 27, 20, SIGNPOST_READ, FuchsiaCityPokeCenterSign
-	signpost 13, 6, SIGNPOST_READ, FuchsiaCityMartSign
 	signpost 7, 7, SIGNPOST_READ, SafariZoneExhibitSign
 	signpost 7, 13, SIGNPOST_READ, SafariZoneExhibitSign
 	signpost 7, 27, SIGNPOST_READ, SafariZoneExhibitSign

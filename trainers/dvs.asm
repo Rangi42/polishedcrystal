@@ -109,6 +109,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $FF, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; blackbelt
 	db $FF, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; battle girl
 	db $DF, $DF, $DD, ABILITY_1 | QUIRKY, MALE   ; dragon tamer
+	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; engineer
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; teacher
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; guitaristm
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; guitaristf
@@ -145,10 +146,14 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; anabel
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; darach
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; caitlin
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; candela
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; blanche
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; spark
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; walker
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; imakuni
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; lawrence
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; rei
 ; 2715c

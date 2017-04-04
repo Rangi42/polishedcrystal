@@ -2716,14 +2716,13 @@ IsBossTrainer:
 IsBossTrainerCommon:
 	push de
 	ld a, [OtherTrainerClass]
-	ld de, $0001
+	ld de, $1
 	call IsInArray
 	pop de
 	ret
 ; 0x3d137
 
 BossTrainers:
-	; unused for music checks
 	db CHAMPION
 	db RED
 	db LEAF
@@ -2897,7 +2896,7 @@ ForcePlayerMonChoice: ; 3d227
 
 	call ClearSprites
 	call ClearBGPalettes
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call ExitMenu
 	call LoadTileMapToTempTileMap
 	call WaitBGMap
@@ -2918,7 +2917,7 @@ ForcePlayerMonChoice: ; 3d227
 	call ResetPlayerStatLevels
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call CloseWindow
 	call GetMemSGBLayout
 	call SetPalettes
@@ -3708,7 +3707,7 @@ OfferSwitch: ; 3d74b
 	ld [CurBattleMon], a
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 	pop af
 	ld [CurPartyMon], a
 	xor a
@@ -3720,7 +3719,7 @@ OfferSwitch: ; 3d74b
 .canceled_switch
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 
 .said_no
 	pop af
@@ -3959,7 +3958,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 
 	call SetPlayerTurn
 	call CheckIfTrappedByAbility_Core
-	jp z, .skip_inescapable_text
+	jp z, .ability_prevents_escape
 	ld a, [wNumFleeAttempts]
 	inc a
 	ld [wNumFleeAttempts], a
@@ -4029,11 +4028,17 @@ TryToRunAwayFromBattle: ; 3d8b3
 
 .cant_run_from_trainer
 	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
+	jr .print_inescapable_text
+
+.ability_prevents_escape
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_PkmnCantBeRecalledAbility
 
 .print_inescapable_text
 	call StdBattleTextBox
-.skip_inescapable_text
-	; for abilities preventing escape to avoid redundancy
 	ld a, 1
 	ld [wFailedToFlee], a
 	call LoadTileMapToTempTileMap
@@ -4113,6 +4118,7 @@ InitBattleMon: ; 3da0d
 	ld a, [BaseType2]
 	ld [BattleMonType2], a
 
+if !DEF(FAITHFUL)
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [BattleMonSpecies]
 	cp MEWTWO
@@ -4123,6 +4129,7 @@ InitBattleMon: ; 3da0d
 	ld a, STEEL
 	ld [BattleMonType2], a
 .not_armored_mewtwo
+endc
 
 	ld hl, PartyMonNicknames
 	ld a, [CurBattleMon]
@@ -4246,6 +4253,7 @@ InitEnemyMon: ; 3dabd
 	ld a, [hl]
 	ld [de], a
 
+if !DEF(FAITHFUL)
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [EnemyMonSpecies]
 	cp MEWTWO
@@ -4256,6 +4264,7 @@ InitEnemyMon: ; 3dabd
 	ld a, STEEL
 	ld [EnemyMonType2], a
 .not_armored_mewtwo
+endc
 
 	ld hl, BaseStats
 	ld de, EnemyMonBaseStats
@@ -4935,8 +4944,6 @@ DrawPlayerHUD: ; 3df58
 
 	farcall DrawPlayerHUDBorder
 
-	hlcoord 18, 9
-	ld [hl], $73 ; vertical bar
 	call PrintPlayerHUD
 
 	; HP bar
@@ -4962,9 +4969,10 @@ DrawPlayerHUD: ; 3df58
 	; Status icon
 	farcall LoadPlayerStatusIcon
 	hlcoord 12, 8
-	ld [hl], $5c
+	ld [hl], $55
 	inc hl
-	ld [hl], $5d
+	ld [hl], $56
+	farcall InstantReloadPaletteHack
 	ret
 ; 3df98
 
@@ -5040,7 +5048,7 @@ endr
 	ld bc, BattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, "★"
+	ld a, $61 ; colored "★"
 	hlcoord 19, 8
 	ld [hl], a
 
@@ -5050,9 +5058,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender_char
-	ld a, "♂"
+	ld a, $5f ; colored "♂"
 	jr nz, .got_gender_char
-	ld a, "♀"
+	ld a, $60 ; colored "♀"
 
 .got_gender_char
 	hlcoord 18, 8
@@ -5115,7 +5123,7 @@ endr
 	ld bc, EnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, "★"
+	ld a, $61 ; colored "★"
 	hlcoord 9, 1
 	ld [hl], a
 
@@ -5125,9 +5133,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, "♂"
+	ld a, $5f ; colored "♂"
 	jr nz, .got_gender
-	ld a, "♀"
+	ld a, $60 ; colored "♀"
 
 .got_gender
 	hlcoord 8, 1
@@ -5204,9 +5212,10 @@ endr
 
 	farcall LoadEnemyStatusIcon
 	hlcoord 2, 1
-	ld [hl], $5e
+	ld [hl], $57
 	inc hl
-	ld [hl], $5f
+	ld [hl], $58
+	farcall InstantReloadPaletteHack
 	ret
 ; 3e127
 
@@ -5427,7 +5436,7 @@ BattleMenuPKMN_Loop:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call CloseWindow
 	call LoadTileMapToTempTileMap
 	call GetMemSGBLayout
@@ -5516,7 +5525,7 @@ TryPlayerSwitch: ; 3e358
 	call ClearPalettes
 	call DelayFrame
 	call ClearSprites
-	call _LoadHPBar
+	call _LoadStatusIcons
 	call CloseWindow
 	call GetMemSGBLayout
 	call SetPalettes
@@ -6106,13 +6115,13 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $70
+	ld hl, VTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 9
-	ld [hl], $70
+	ld [hl], $59
 	inc hl
-	ld [hl], $71
+	ld [hl], $5a
 
 	ld hl, TypeIconGFX
 	ld bc, 4 tiles
@@ -6120,17 +6129,17 @@ MoveInfoBox: ; 3e6c8
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $72
+	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
 	call Request2bpp
 	hlcoord 3, 9
-	ld [hl], $72
+	ld [hl], $5b
 	inc hl
-	ld [hl], $73
+	ld [hl], $5c
 	inc hl
-	ld [hl], $74
+	ld [hl], $5d
 	inc hl
-	ld [hl], $75
+	ld [hl], $5e
 
 	farcall LoadBattleCategoryAndTypePalettes
 	call WaitBGMap
@@ -6890,6 +6899,7 @@ endr
 	ld a, [hl]
 	ld [de], a
 
+if !DEF(FAITHFUL)
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [EnemyMonSpecies]
 	cp MEWTWO
@@ -6900,6 +6910,7 @@ endr
 	ld a, STEEL
 	ld [EnemyMonType2], a
 .not_armored_mewtwo
+endc
 
 ; Get moves
 	ld de, EnemyMonMoves
@@ -7445,8 +7456,8 @@ _LoadBattleFontsHPBar: ; 3ed9f
 	ret
 ; 3eda6
 
-_LoadHPBar: ; 3eda6
-	farcall LoadHPBar
+_LoadStatusIcons: ; 3eda6
+	farcall LoadStatusIcons
 	ret
 ; 3edad
 
@@ -8597,7 +8608,7 @@ PlaceExpBar: ; 3f41c
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, $6d ; full thin bar
+	ld a, $78 ; full thin bar
 	ld [hli], a
 	dec c
 	jr z, .finish
@@ -8606,15 +8617,15 @@ PlaceExpBar: ; 3f41c
 .next
 	add $8
 	jr z, .loop2
-	add $54 ; tile to the left of thin exp bar tile
+	add $70 ; tile to the left of thin exp bar tile
 	jr .skip
 
 .loop2
-	ld a, $6c ; empty thin bar
+	ld a, $70 ; empty thin bar
 
 .skip
 	ld [hli], a
-	ld a, $6c ; empty thin bar
+	ld a, $70 ; empty thin bar
 	dec c
 	jr nz, .loop2
 
@@ -9646,7 +9657,7 @@ GetTrainerBackpic: ; 3fbff
 
 .Decompress:
 	ld de, VTiles2 tile $31
-	ld c, $31
+	ld c, 6 * 6
 	predef DecompressPredef
 	ret
 ; 3fc30
@@ -9661,7 +9672,7 @@ CopyBackpic: ; 3fc30
 	ld de, VTiles2 tile $31
 	ld a, [hROMBank]
 	ld b, a
-	ld c, $31
+	ld c, 7 * 7
 	call Get2bpp
 	pop af
 	ld [rSVBK], a

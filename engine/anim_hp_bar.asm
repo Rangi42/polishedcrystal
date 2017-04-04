@@ -241,16 +241,14 @@ LongHPBarAnim_UpdateTiles: ; d749
 HPBarAnim_RedrawHPBar: ; d771
 	ld a, [wWhichHPBar]
 	cp $2
-	jr nz, .player
-	ld a, 2 * SCREEN_WIDTH
+	jr nz, .skip
+	ld a, SCREEN_WIDTH * 2
 	add l
 	ld l, a
-	xor a
-	adc h
-	ld h, a
-.player
-	call DrawBattleHPBar
-	ret
+	jr nc, .skip
+	inc h
+.skip
+	jp DrawBattleHPBar
 ; d784
 
 HPBarAnim_UpdateHPRemaining: ; d784

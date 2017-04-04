@@ -20,7 +20,7 @@ TinTower9F_MapEventHeader:
 	warp_def $3, $a, 2, TIN_TOWER_8F
 	warp_def $5, $0, 3, TIN_TOWER_8F
 	warp_def $7, $a, 4, TIN_TOWER_8F
-	warp_def $9, $5, 1, TIN_TOWER_ROOF
+	warp_def $9, $5, 1, TIN_TOWER_10F
 	warp_def $7, $e, 5, TIN_TOWER_7F
 	warp_def $d, $4, 5, TIN_TOWER_8F
 	warp_def $d, $6, 6, TIN_TOWER_8F

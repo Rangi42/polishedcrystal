@@ -4,6 +4,7 @@ const_value set 2
 	const FASTSHIPB1F_SAILOR3
 	const FASTSHIPB1F_LASS
 	const FASTSHIPB1F_SUPER_NERD
+	const FASTSHIPB1F_BAKER
 	const FASTSHIPB1F_SAILOR4
 	const FASTSHIPB1F_FISHER
 	const FASTSHIPB1F_BLACK_BELT
@@ -128,6 +129,17 @@ JugglerFritzScript:
 	closetext
 	end
 
+TrainerBakerSharyn:
+	trainer EVENT_BEAT_BAKER_SHARYN, BAKER, SHARYN, BakerSharynSeenText, BakerSharynBeatenText, 0, BakerSharynScript
+
+BakerSharynScript:
+	end_if_just_battled
+	opentext
+	writetext BakerSharynAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerSailorGarrett:
 	trainer EVENT_BEAT_SAILOR_GARRETT, SAILOR, GARRETT, SailorGarrettSeenText, SailorGarrettBeatenText, 0, SailorGarrettScript
 
@@ -204,9 +216,6 @@ SchoolboyRickyScript:
 	waitbutton
 	closetext
 	end
-
-FastShipB1FTrashcan:
-	jumpstd trashcan
 
 MovementData_0x76871:
 	fix_facing
@@ -318,6 +327,25 @@ UnknownText_0x76b02:
 
 	para "I'm taking the"
 	line "Magnet Train."
+	done
+
+BakerSharynSeenText:
+	text "As I bake bread,"
+	line "I will bake your"
+	cont "#mon, too!"
+	done
+
+BakerSharynBeatenText:
+	text "At least my bread"
+	line "is a winner."
+	done
+
+BakerSharynAfterText:
+	text "I may not be the"
+	line "best at battles,"
+
+	para "but people love"
+	line "my baking."
 	done
 
 SailorGarrettSeenText:
@@ -465,16 +493,16 @@ FastShipB1F_MapEventHeader:
 	xy_trigger 0, $5, $1b, $0, UnknownScript_0x76751, $0, $0
 
 .Signposts:
-	db 1
-	signpost 7, 23, SIGNPOST_READ, FastShipB1FTrashcan
+	db 0
 
 .PersonEvents:
-	db 12
+	db 13
 	person_event SPRITE_SAILOR, 4, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x76767, EVENT_FAST_SHIP_B1F_SAILOR_LEFT
 	person_event SPRITE_SAILOR, 4, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x76767, EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	person_event SPRITE_SAILOR, 9, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorJeff, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_LASS, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerDebra, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_SUPER_NERD, 7, 22, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerJugglerFritz, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	person_event SPRITE_BAKER, 11, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerBakerSharyn, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_SAILOR, 2, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSailorGarrett, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_FISHER, 6, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherJonah, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_BLACK_BELT, 9, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBlackbeltWai, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND

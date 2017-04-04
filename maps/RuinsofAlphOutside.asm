@@ -407,10 +407,10 @@ RuinsofAlphOutside_MapEventHeader:
 	warp_def $d, $10, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
 	warp_def $23, $4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
 	warp_def $27, $12, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
-	warp_def $13, $c, 1, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $13, $c, 1, RUINS_OF_ALPH_ENTRANCE_CHAMBER
 	warp_def $11, $13, 1, RUINS_OF_ALPH_RESEARCH_CENTER
-	warp_def $19, $8, 1, UNION_CAVE_B1F
-	warp_def $21, $9, 2, UNION_CAVE_B1F
+	warp_def $19, $8, 1, UNION_CAVE_B1F_NORTH
+	warp_def $21, $9, 2, UNION_CAVE_B1F_NORTH
 	warp_def $5, $3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
 	warp_def $1a, $f, 1, ROUTE_32_RUINS_OF_ALPH_GATE
 	warp_def $1b, $f, 2, ROUTE_32_RUINS_OF_ALPH_GATE

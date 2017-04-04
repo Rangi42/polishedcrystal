@@ -79,6 +79,18 @@ ShamoutiShrineRuins_BlockData:
 ShamoutiTunnel_BlockData:
 	INCBIN "maps/ShamoutiTunnel.blk"
 
+ShamoutiHotel1F_BlockData:
+	INCBIN "maps/ShamoutiHotel1F.blk"
+
+ShamoutiHotel2F_BlockData:
+	INCBIN "maps/ShamoutiHotel2F.blk"
+
+ShamoutiHotel3F_BlockData:
+	INCBIN "maps/ShamoutiHotel3F.blk"
+
+ShamoutiHotelRestaurant_BlockData:
+	INCBIN "maps/ShamoutiHotelRestaurant.blk"
+
 NoisyForest_BlockData:
 	INCBIN "maps/NoisyForest.blk"
 
@@ -144,3 +156,28 @@ CeladonUniversityClassroom4_BlockData:
 
 PokemonTrainerFanClub_BlockData:
 	INCBIN "maps/PokemonTrainerFanClub.blk"
+
+LavRadioTower2F_BlockData:
+HauntedRadioTower2F_BlockData:
+	INCBIN "maps/LavRadioTower2F.blk"
+
+LavRadioTower3F_BlockData:
+	INCBIN "maps/LavRadioTower3F.blk"
+
+LavRadioTower4F_BlockData:
+	INCBIN "maps/LavRadioTower4F.blk"
+
+LavRadioTower5F_BlockData:
+	INCBIN "maps/LavRadioTower5F.blk"
+
+HauntedRadioTower3F_BlockData:
+	INCBIN "maps/HauntedRadioTower3F.blk"
+
+HauntedRadioTower4F_BlockData:
+	INCBIN "maps/HauntedRadioTower4F.blk"
+
+HauntedRadioTower5F_BlockData:
+	INCBIN "maps/HauntedRadioTower5F.blk"
+
+HauntedRadioTower6F_BlockData:
+	INCBIN "maps/HauntedRadioTower6F.blk"

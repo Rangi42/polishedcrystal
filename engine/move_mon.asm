@@ -1899,8 +1899,10 @@ GetRandomShininess:
 	ld [CurItem], a
 	push hl
 	push bc
+	push de
 	ld hl, NumItems
 	call CheckItem
+	pop de
 	pop bc
 	pop hl
 	jr c, .shiny_charm

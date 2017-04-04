@@ -128,6 +128,9 @@ KANTO_LANDMARK EQU const_value
 	const VICTORY_ROAD       ; 79
 	const INDIGO_PLATEAU     ; 7a
 	const ROUTE_28           ; 7b
+
+SHAMOUTI_LANDMARK EQU const_value
+
 	const SHAMOUTI_ISLAND    ; 7c
 	const BEAUTIFUL_BEACH    ; 7d
 	const SHAMOUTI_TUNNEL    ; 7e

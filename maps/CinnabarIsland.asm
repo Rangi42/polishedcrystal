@@ -47,9 +47,6 @@ CinnabarIslandBlue:
 CinnabarIslandMagmarizer:
 	itemball MAGMARIZER
 
-CinnabarIslandPokeCenterSign:
-	jumpstd pokecentersign
-
 CinnabarIslandGymSign:
 	jumptext CinnabarIslandGymSignText
 
@@ -195,8 +192,7 @@ CinnabarIsland_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 5
-	signpost 15, 12, SIGNPOST_READ, CinnabarIslandPokeCenterSign
+	db 4
 	signpost 15, 9, SIGNPOST_READ, CinnabarIslandGymSign
 	signpost 11, 9, SIGNPOST_READ, CinnabarIslandSign
 	signpost 11, 21, SIGNPOST_READ, CinnabarIslandVolcanoWarningSign

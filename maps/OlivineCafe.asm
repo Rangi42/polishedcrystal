@@ -1,7 +1,7 @@
 const_value set 2
-	const OLIVINECAFE_SAILOR1
+	const OLIVINECAFE_BAKER
 	const OLIVINECAFE_FISHING_GURU
-	const OLIVINECAFE_SAILOR2
+	const OLIVINECAFE_SAILOR
 	const OLIVINECAFE_LYRA
 	const OLIVINECAFE_OFFICER
 	const OLIVINECAFE_YOUNGSTER
@@ -14,17 +14,32 @@ OlivineCafe_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-SailorScript_0x9c8c1:
+BakerScript_0x9c8c1:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HM04_STRENGTH
-	iftrue UnknownScript_0x9c8d3
-	writetext UnknownText_0x9c8df
-	buttonsound
-	verbosegivetmhm HM_STRENGTH
-	setevent EVENT_GOT_HM04_STRENGTH
-UnknownScript_0x9c8d3:
-	writetext UnknownText_0x9c965
+	checkevent EVENT_BEAT_BAKER_CHELSIE
+	iftrue BakerChelsieAfterScript
+	writetext BakerChelsieGreetingText
+	yesorno
+	iffalse BakerChelsieNoBattleScript
+	writetext BakerChelsieSeenText
+	waitbutton
+	closetext
+	winlosstext BakerChelsieBeatenText, 0
+	setlasttalked OLIVINECAFE_BAKER
+	loadtrainer BAKER, CHELSIE
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_BAKER_CHELSIE
+	opentext
+BakerChelsieAfterScript:
+	writetext BakerChelsieAfterText
+	waitbutton
+	closetext
+	end
+
+BakerChelsieNoBattleScript:
+	writetext BakerChelsieNoBattleText
 	waitbutton
 	closetext
 	end
@@ -76,31 +91,6 @@ OlivineCafeMovementData_Lyra2:
 	step_down
 	step_end
 
-UnknownText_0x9c8df:
-	text "Hah! Your #mon"
-	line "sure look like"
-	cont "lightweights!"
-
-	para "They don't have"
-	line "the power to move"
-	cont "boulders aside."
-
-	para "Here, use this"
-	line "and teach them"
-	cont "Strength!"
-	done
-
-UnknownText_0x9c965:
-	text "On the sea, the"
-	line "only thing you can"
-
-	para "count on is your"
-	line "own good self!"
-
-	para "I'm so proud of my"
-	line "buff bod!"
-	done
-
 UnknownText_0x9c9c5:
 	text "Olivine Café's"
 	line "menu is chock full"
@@ -121,6 +111,43 @@ UnknownText_0x9ca09:
 
 	para "stronger. I can't"
 	line "stop eating!"
+	done
+
+BakerChelsieGreetingText:
+	text "My Pokemon are on"
+	line "the rise!"
+
+	para "I raised them with"
+	line "my special yeast"
+	cont "bread!"
+
+	para "Want to battle"
+	line "them?"
+	done
+
+BakerChelsieSeenText:
+	text "You'll see what my"
+	line "bread can do!"
+	done
+
+BakerChelsieBeatenText:
+	text "You are strong."
+	line "Are you eating my"
+	cont "special bread?"
+	done
+
+BakerChelsieAfterText:
+	text "I always add vita-"
+	line "mins to my bread."
+
+	para "They make my #-"
+	line "mon stronger."
+	done
+
+BakerChelsieNoBattleText:
+	text "My bread-raised"
+	line "#mon are un-"
+	cont "beatable!"
 	done
 
 OlivineCafeLyraText1:
@@ -205,7 +232,7 @@ OlivineCafe_MapEventHeader:
 
 .PersonEvents:
 	db 7
-	person_event SPRITE_SAILOR, 2, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8c1, -1
+	person_event SPRITE_BAKER, 2, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BakerScript_0x9c8c1, -1
 	person_event SPRITE_FISHING_GURU, 3, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9c8d9, -1
 	person_event SPRITE_SAILOR, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x9c8dc, -1
 	person_event SPRITE_LYRA, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCafeLyraScript, EVENT_GOT_AMULET_COIN_FROM_LYRA

@@ -78,6 +78,7 @@
 	db "Black Belt@"       ; BLACKBELT_T
 	db "Battle Girl@"      ; BATTLE_GIRL
 	db "Dragon Tamer@"     ; DRAGON_TAMER
+	db "Engineer@"         ; ENGINEER
 	db "Teacher@"          ; TEACHER
 	db "Guitarist@"        ; GUITARISTM
 	db "Guitarist@"        ; GUITARISTF
@@ -114,9 +115,13 @@
 	db "<PK><MN> Trainer@" ; ANABEL
 	db "Valet@"            ; DARACH
 	db "Lady@"             ; CAITLIN
+	db "Leader@"           ; CANDELA
+	db "Leader@"           ; BLANCHE
+	db "Leader@"           ; SPARK
 	db "Designer@"         ; VALERIE
 	db "#Maniac@"          ; BILL_T
 	db "<PK><MN> Trainer@" ; YELLOW
 	db "Ex-Leader@"        ; WALKER
+	db "Student@"          ; IMAKUNI
 	db "Collector@"        ; LAWRENCE
 	db "Shrine@"           ; REI

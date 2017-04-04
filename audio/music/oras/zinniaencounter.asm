@@ -1,6 +1,6 @@
 ; Pokémon OR/AS - Encounter! Zinnia
 ; Demixed by Mmmmmm
-; http://pastebin.com/eXmCVCCX
+; https://pastebin.com/eXmCVCCX
 ; https://hax.iimarck.us/topic/6777/4/
 
 Music_ZinniaEncounterORAS:

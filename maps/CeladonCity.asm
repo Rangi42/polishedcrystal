@@ -120,9 +120,6 @@ CeladonCityGameCornerSign:
 CeladonCityTrainerTips:
 	jumptext CeladonCityTrainerTipsText
 
-CeladonCityPokeCenterSign:
-	jumpstd pokecentersign
-
 CeladonCityHiddenPpUp:
 	dwb EVENT_CELADON_CITY_HIDDEN_PP_UP, PP_UP
 
@@ -348,7 +345,7 @@ CeladonCity_MapEventHeader:
 	warp_def $1d, $e, 1, CELADON_GYM
 	warp_def $1d, $19, 1, CELADON_CAFE
 	warp_def $1d, $21, 1, CELADON_CHIEF_HOUSE
-	warp_def $1d, $25, 1, CELADON_HOTEL
+	warp_def $1d, $25, 1, CELADON_HOTEL_1F
 	warp_def $9, $d, 1, CELADON_HOME_DECOR_STORE_1F
 	warp_def $1d, $4, 1, CELADON_UNIVERSITY_1F
 
@@ -356,7 +353,7 @@ CeladonCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 10
+	db 9
 	signpost 18, 9, SIGNPOST_READ, CeladonCitySign
 	signpost 31, 15, SIGNPOST_READ, CeladonGymSign
 	signpost 31, 3, SIGNPOST_READ, CeladonUniversitySign
@@ -365,7 +362,6 @@ CeladonCity_MapEventHeader:
 	signpost 9, 17, SIGNPOST_READ, CeladonCityMansionSign
 	signpost 21, 21, SIGNPOST_READ, CeladonCityGameCornerSign
 	signpost 21, 33, SIGNPOST_READ, CeladonCityTrainerTips
-	signpost 9, 34, SIGNPOST_READ, CeladonCityPokeCenterSign
 	signpost 21, 41, SIGNPOST_ITEM, CeladonCityHiddenPpUp
 
 .PersonEvents:

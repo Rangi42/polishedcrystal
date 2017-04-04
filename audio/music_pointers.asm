@@ -145,6 +145,7 @@
 	dba Music_CinnabarMansionRBY
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
+	dba Music_IndigoPlateauRBY
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE
@@ -156,6 +157,7 @@
 	dba Music_ZinniaBattleORAS
 	dba Music_WildBattleSM
 	dba Music_TrainerBattleSM
+	dba Music_EliteFourBattleSM
 	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
 

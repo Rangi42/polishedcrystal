@@ -53,7 +53,7 @@ TinTowerRoof_MapEventHeader:
 
 .Warps:
 	db 1
-	warp_def $d, $7, 4, TIN_TOWER_9F
+	warp_def $d, $7, 2, TIN_TOWER_10F
 
 .XYTriggers:
 	db 0

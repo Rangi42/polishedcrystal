@@ -153,9 +153,6 @@ MapRadioTower5FSignpost0Script:
 MapRadioTower5FSignpost2Script:
 	jumptext SignpostRadioTower5FStudio
 
-RadioTower5FBookshelf:
-	jumpstd magazinebookshelf
-
 FakeDirectorMovement:
 	step_left
 	step_left
@@ -456,12 +453,10 @@ RadioTower5F_MapEventHeader:
 	xy_trigger 1, $5, $10, $0, RadioTower5FRocketBossTrigger, $0, $0
 
 .Signposts:
-	db 5
+	db 3
 	signpost 0, 3, SIGNPOST_READ, MapRadioTower5FSignpost0Script
 	signpost 0, 11, SIGNPOST_READ, MapRadioTower5FSignpost2Script
 	signpost 0, 15, SIGNPOST_READ, MapRadioTower5FSignpost2Script
-	signpost 1, 16, SIGNPOST_READ, RadioTower5FBookshelf
-	signpost 1, 17, SIGNPOST_READ, RadioTower5FBookshelf
 
 .PersonEvents:
 	db 6

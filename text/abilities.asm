@@ -16,7 +16,7 @@ PrintAbility:
 	jp PlaceString
 
 BufferAbility:
-; Buffer description for b into StringBuffer1
+; Buffer name for b into StringBuffer1
 	ld l, b
 	ld h, 0
 	ld bc, AbilityNames

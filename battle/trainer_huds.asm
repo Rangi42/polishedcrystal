@@ -106,7 +106,7 @@ endr
 
 DrawPlayerHUDBorder: ; 2c095
 	hlcoord 19, 11
-	ld [hl], $77 ; exp bar end cap
+	ld [hl], "<XPEND>" ; exp bar end cap
 	hlcoord 10, 11
 	ld [hl], $6e ; first "EXP" tile
 	inc hl
@@ -126,7 +126,7 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	db "—" ; past right
 	db "—" ; right end
 	db "—" ; bar
-	db $76 ; left end
+	db "◢" ; left end
 ; 2c0c5
 
 DrawEnemyPartyIconHUDBorder:
@@ -143,7 +143,7 @@ DrawEnemyPartyIconHUDBorder:
 	db "—" ; past left
 	db "—" ; left end
 	db "—" ; bar
-	db $78 ; right end
+	db "◣" ; right end
 
 DrawEnemyHUDBorder: ; 2c0c5
 	ld a, [wBattleMode]
@@ -156,7 +156,7 @@ DrawEnemyHUDBorder: ; 2c0c5
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
-	ld [hl], "<BALL>"
+	ld [hl], $62 ; colored ball
 	ret
 
 .nuzlocke
@@ -261,7 +261,7 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	ld a, "V"
 	ld [hli], a
 	ld [hl], "S"
-	farcall LinkBattle_TrainerHuds ; no need to callba
+	call LinkBattle_TrainerHuds
 	ld b, SCGB_08
 	call GetSGBLayout
 	call SetPalettes

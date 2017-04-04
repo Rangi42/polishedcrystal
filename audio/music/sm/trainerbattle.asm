@@ -1,6 +1,6 @@
 ; Pokémon S/M - Battle! Trainer
 ; Demixed by Mmmmmm
-; http://pastebin.com/jFntMups
+; https://pastebin.com/jFntMups
 ; https://hax.iimarck.us/topic/6777/7/
 
 Music_TrainerBattleSM:

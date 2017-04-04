@@ -1,5 +1,9 @@
 const_value set 2
 	const BATTLETOWER1F_RECEPTIONIST
+	const BATTLETOWER1F_NURSE
+	const BATTLETOWER1F_CLERK1
+	const BATTLETOWER1F_CLERK2
+	const BATTLETOWER1F_CLERK3
 	const BATTLETOWER1F_DRAGON_TAMER
 	const BATTLETOWER1F_COOLTRAINER_F
 	const BATTLETOWER1F_BUG_CATCHER
@@ -189,6 +193,9 @@ BattleTowerTutorWaterPulseScript:
 	closetext
 	end
 
+BattleTowerNurse:
+	jumpstd pokecenternurse
+
 CooltrainerFScript_0x9e568:
 	jumptextfaceplayer Text_BattleTowerCooltrainerF
 
@@ -199,6 +206,7 @@ GrannyScript_0x9e56e:
 	jumptextfaceplayer Text_BattleTowerGranny
 
 MovementData_BattleTower1FWalkToElevator:
+	step_up
 	step_up
 	step_up
 	step_up
@@ -479,22 +487,27 @@ BattleTower1F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 3
-	warp_def $9, $7, 3, BATTLE_TOWER_OUTSIDE
-	warp_def $9, $8, 4, BATTLE_TOWER_OUTSIDE
-	warp_def $0, $7, 1, BATTLE_TOWER_ELEVATOR
+	db 4
+	warp_def $d, $a, 3, BATTLE_TOWER_OUTSIDE
+	warp_def $d, $b, 4, BATTLE_TOWER_OUTSIDE
+	warp_def $0, $a, 1, BATTLE_TOWER_ELEVATOR
+	warp_def $5, $0, 1, BATTLE_TOWER_2F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 1
-	signpost 6, 6, SIGNPOST_READ, MapBattleTower1FSignpost0Script
+	signpost 7, 11, SIGNPOST_READ, MapBattleTower1FSignpost0Script
 
 .PersonEvents:
-	db 5
-	person_event SPRITE_RECEPTIONIST, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
-	person_event SPRITE_DRAGON_TAMER, 8, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
-	person_event SPRITE_COOLTRAINER_F, 9, 13, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9e568, -1
-	person_event SPRITE_BUG_CATCHER, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9e56b, -1
-	person_event SPRITE_GRANNY, 3, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x9e56e, -1
+	db 9
+	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
+	person_event SPRITE_NURSE, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerNurse, -1
+	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_DRAGON_TAMER, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9e568, -1
+	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9e56b, -1
+	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x9e56e, -1

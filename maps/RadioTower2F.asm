@@ -339,9 +339,6 @@ MapRadioTower2FSignpost1Script:
 MapRadioTower2FSignpost5Script:
 	jumptext UnknownText_0x5e463
 
-RadioTower2FBookshelf:
-	jumpstd magazinebookshelf
-
 MovementData_0x5d921:
 	slow_step_down
 	slow_step_right
@@ -742,12 +739,9 @@ RadioTower2F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 6
+	db 3
 	signpost 0, 3, SIGNPOST_READ, MapRadioTower2FSignpost0Script
 	signpost 0, 5, SIGNPOST_READ, MapRadioTower2FSignpost1Script
-	signpost 1, 9, SIGNPOST_READ, RadioTower2FBookshelf
-	signpost 1, 10, SIGNPOST_READ, RadioTower2FBookshelf
-	signpost 1, 11, SIGNPOST_READ, RadioTower2FBookshelf
 	signpost 0, 13, SIGNPOST_READ, MapRadioTower2FSignpost5Script
 
 .PersonEvents:

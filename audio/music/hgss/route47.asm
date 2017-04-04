@@ -1,6 +1,6 @@
 ; Pokémon HG/SS - Route 47
 ; Demixed by Mmmmmm
-; http://pastebin.com/aSDuVfDW
+; https://pastebin.com/aSDuVfDW
 ; https://hax.iimarck.us/topic/6777/4/
 
 Music_Route47HGSS:

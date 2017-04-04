@@ -270,6 +270,33 @@
 	db 24, MURKROW
 	db 24, MURKROW
 
+	map TIN_TOWER_10F
+	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	; morn
+	db 20, RATTATA
+	db 21, RATTATA
+	db 22, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
+	; day
+	db 20, RATTATA
+	db 21, RATTATA
+	db 22, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
+	; nite
+	db 20, GASTLY
+	db 21, GASTLY
+	db 22, RATICATE
+	db 22, RATICATE
+	db 23, MURKROW
+	db 24, MURKROW
+	db 24, MURKROW
+
 	map BURNED_TOWER_1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
@@ -378,6 +405,33 @@
 	db 25, XATU
 	db 25, XATU
 
+	map RUINS_OF_ALPH_ENTRANCE_CHAMBER
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	; day
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	; nite
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+	db 5, UNOWN
+
 	map RUINS_OF_ALPH_INNER_CHAMBER
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
@@ -432,7 +486,7 @@
 	db 6, ONIX
 	db 6, ONIX
 
-	map UNION_CAVE_B1F
+	map UNION_CAVE_B1F_NORTH
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 8, GEODUDE
@@ -458,6 +512,33 @@
 	db 6, RATTATA
 	db 8, RATTATA
 	db 8, RATTATA
+
+	map UNION_CAVE_B1F_SOUTH
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	db 21, ZUBAT
+	db 21, GOLBAT
+	db 21, ZUBAT
+	db 20, RATICATE
+	db 19, GEODUDE
+	db 22, ONIX
+	db 22, ONIX
+	; day
+	db 21, ZUBAT
+	db 21, GOLBAT
+	db 21, ZUBAT
+	db 20, RATICATE
+	db 19, GEODUDE
+	db 22, ONIX
+	db 22, ONIX
+	; nite
+	db 21, ZUBAT
+	db 21, GOLBAT
+	db 21, QUAGSIRE
+	db 20, RATICATE
+	db 19, GEODUDE
+	db 22, ONIX
+	db 22, ONIX
 
 	map UNION_CAVE_B2F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite

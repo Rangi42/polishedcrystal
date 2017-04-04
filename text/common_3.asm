@@ -687,8 +687,8 @@ UnknownText_0x1c13df::
 	text "No items here!"
 	prompt
 
-_KrissPCCantDepositTMHMText::
-	text "TMs and HMs can't"
+_KrissPCCantDepositItemText::
+	text "That item can't"
 	line "be deposited."
 	prompt
 

@@ -481,6 +481,11 @@ UnknownText_0x1c5e3a::
 	cont "can't be used now."
 	prompt
 
+Text_MonIsHiddenFromBall::
+	text "The #mon can't"
+	line "be seen!"
+	prompt
+
 Text_NuzlockeBallFailure::
 	text "You already"
 	line "encountered a"

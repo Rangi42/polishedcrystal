@@ -12,7 +12,13 @@
 	db 20, QUAGSIRE
 	db 15, QUAGSIRE
 
-	map UNION_CAVE_B1F
+	map UNION_CAVE_B1F_NORTH
+	db 2 percent ; encounter rate
+	db 15, WOOPER
+	db 20, QUAGSIRE
+	db 15, QUAGSIRE
+
+	map UNION_CAVE_B1F_SOUTH
 	db 2 percent ; encounter rate
 	db 15, WOOPER
 	db 20, QUAGSIRE

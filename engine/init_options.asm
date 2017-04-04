@@ -7,6 +7,7 @@ SetInitialOptions:
 	ld hl, InitialOptionsText
 	call PrintText
 	call FadeToMenu
+	farcall BlankScreen
 	call InitialOptionsMenu
 	ret
 

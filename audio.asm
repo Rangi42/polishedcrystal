@@ -139,9 +139,9 @@ INCLUDE "audio/music/rby/pokemontower.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
 INCLUDE "audio/music/rby/ceruleancave.asm"
+INCLUDE "audio/music/rby/indigoplateau.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
 INCLUDE "audio/music/rby/lookjessiejames.asm"
-INCLUDE "audio/music/custom/lugiassong.asm"
 INCLUDE "audio/music/hgss/route47.asm"
 INCLUDE "audio/music/hgss/safarizonegate.asm"
 INCLUDE "audio/music/hgss/mart.asm"
@@ -212,8 +212,14 @@ INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/laverrecity.asm"
 INCLUDE "audio/music/xy/bicycle.asm"
 INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/custom/lugiassong.asm"
+
+
+SECTION "Extra Songs 7", ROMX
+
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
+INCLUDE "audio/music/sm/elitefourbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 

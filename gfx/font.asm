@@ -25,16 +25,12 @@ INCBIN "gfx/frames/9.1bpp"
 
 ; Various misc graphics here.
 
-BattleExtraGFX:
-INCBIN "gfx/battle/extra.2bpp"
+BattleExtrasGFX:
+INCBIN "gfx/battle/extras.2bpp"
 
 GFX_Stats: ; f89b0
 INCBIN "gfx/misc/stats.2bpp"
 ; f8ac0
-
-ExpBarGFX: ; f8b10
-INCBIN "gfx/battle/expbar.2bpp"
-; f8ba0
 
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
@@ -51,6 +47,9 @@ INCBIN "gfx/battle/categories.2bpp"
 TownMapGFX: ; f8ba0
 INCBIN "gfx/misc/town_map.2bpp.lz"
 ; f8ea4
+
+JohtoKantoGFX:
+INCBIN "gfx/misc/johto-kanto.2bpp"
 
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"
@@ -133,9 +132,9 @@ endr
 	dw FontNormal
 
 _LoadFontsBattleExtra:: ; fb4be
-	ld de, BattleExtraGFX
-	ld hl, VTiles2 tile $60
-	lb bc, BANK(BattleExtraGFX), 25
+	ld de, BattleExtrasGFX
+	ld hl, VTiles2 tile $5f
+	lb bc, BANK(BattleExtrasGFX), 26
 	call Get2bpp_2
 ; fb4cc
 
@@ -159,13 +158,10 @@ LoadFrame:: ; fb4cc
 LoadBattleFontsHPBar: ; fb4f2
 	call _LoadFontsBattleExtra
 
-LoadHPBar: ; fb50d
-	ld de, ExpBarGFX
-	ld hl, VTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 7
-	call Get2bpp_2
+LoadStatusIcons: ; fb50d
 	call LoadPlayerStatusIcon
 	call LoadEnemyStatusIcon
+	call InstantReloadPaletteHack
 	ret
 ; fb53e
 
@@ -186,31 +182,10 @@ LoadPlayerStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5c
+	ld hl, VTiles2 tile $55
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
 	farcall LoadPlayerStatusIconPalette
-
-; Hack to make the palette load instantly
-	ld a, [rSVBK]
-	push af
-	ld a, $5 ; gfx
-	ld [rSVBK], a
-; copy & reorder bg pal buffer
-	ld hl, BGPals + 5 palettes ; to
-	ld de, UnknBGPals + 5 palettes ; from
-; order
-	ld a, [rBGP]
-	ld b, a
-; 1 pal
-	ld c, 1
-	call CopyPals
-; request pal update
-	ld a, 1
-	ld [hCGBPalUpdate], a
-	pop af
-	ld [rSVBK], a
-
 	pop de
 	ret
 
@@ -231,14 +206,18 @@ LoadEnemyStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5e
+	ld hl, VTiles2 tile $57
 	lb bc, BANK(EnemyStatusIconGFX), 2
 	call Request2bpp
 	farcall LoadEnemyStatusIconPalette
+	pop de
+	ret
 
+InstantReloadPaletteHack:
 ; Hack to make the palette load instantly
 	ld a, [rSVBK]
 	push af
+	push de
 	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
@@ -253,18 +232,13 @@ LoadEnemyStatusIcon:
 ; request pal update
 	ld a, 1
 	ld [hCGBPalUpdate], a
+	pop de
 	pop af
 	ld [rSVBK], a
-
-	pop de
 	ret
 
 LoadStatsScreenGFX: ; fb53e
 	call _LoadFontsBattleExtra
-	ld de, ExpBarGFX
-	ld hl, VTiles2 tile $55
-	lb bc, BANK(ExpBarGFX), 7
-	call Get2bpp_2
 
 LoadStatsGFX: ; fb571
 	ld de, GFX_Stats

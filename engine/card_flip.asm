@@ -1,5 +1,5 @@
-CARDFLIP_LIGHT_OFF EQU $ef
-CARDFLIP_LIGHT_ON  EQU $f5
+CARDFLIP_LIGHT_OFF EQU $e4
+CARDFLIP_LIGHT_ON  EQU $e5
 CARDFLIP_DECK_SIZE EQU 4 * 6
 
 _CardFlip: ; e00ee (38:40ee)
@@ -25,11 +25,11 @@ _CardFlip: ; e00ee (38:40ee)
 	ld de, VTiles0 tile $00
 	call Decompress
 	ld hl, CardFlipOffButtonGFX
-	ld de, VTiles1 tile $6f
+	ld de, VTiles1 tile (CARDFLIP_LIGHT_OFF - $80)
 	ld bc, 1 tiles
 	call CopyBytes
 	ld hl, CardFlipOnButtonGFX
-	ld de, VTiles1 tile $75
+	ld de, VTiles1 tile (CARDFLIP_LIGHT_ON - $80)
 	ld bc, 1 tiles
 	call CopyBytes
 
@@ -1740,16 +1740,16 @@ CardFlipLZ02: ; e0ea8
 INCBIN "gfx/card_flip/0e0ea8.2bpp.lz"
 
 CardFlipTilemap: ; e110c
-	db $ef, $15, $27, $2a, $2a, $06, $27, $2a, $2a, $06, $27
-	db $ef, $07, $27, $3e, $3f, $42, $43, $46, $47, $4a, $4b
-	db $ef, $17, $26, $40, $41, $44, $45, $48, $49, $4c, $4d
-	db $ef, $25, $04, $00, $01, $00, $01, $00, $01, $00, $01
-	db $ef, $05, $14, $10, $11, $10, $11, $10, $11, $10, $11
-	db $ef, $16, $24, $20, $21, $20, $21, $20, $21, $20, $21
-	db $ef, $25, $04, $00, $02, $00, $02, $00, $02, $00, $02
-	db $ef, $05, $14, $10, $12, $10, $12, $10, $12, $10, $12
-	db $ef, $16, $24, $20, $22, $20, $22, $20, $22, $20, $22
-	db $ef, $25, $04, $00, $03, $00, $03, $00, $03, $00, $03
-	db $ef, $05, $14, $10, $13, $10, $13, $10, $13, $10, $13
-	db $ef, $16, $24, $20, $23, $20, $23, $20, $23, $20, $23
+	db CARDFLIP_LIGHT_OFF, $15, $27, $2a, $2a, $06, $27, $2a, $2a, $06, $27
+	db CARDFLIP_LIGHT_OFF, $07, $27, $3e, $3f, $42, $43, $46, $47, $4a, $4b
+	db CARDFLIP_LIGHT_OFF, $17, $26, $40, $41, $44, $45, $48, $49, $4c, $4d
+	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $01, $00, $01, $00, $01, $00, $01
+	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $11, $10, $11, $10, $11, $10, $11
+	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $21, $20, $21, $20, $21, $20, $21
+	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $02, $00, $02, $00, $02, $00, $02
+	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $12, $10, $12, $10, $12, $10, $12
+	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $22, $20, $22, $20, $22, $20, $22
+	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $03, $00, $03, $00, $03, $00, $03
+	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $13, $10, $13, $10, $13, $10, $13
+	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $23, $20, $23, $20, $23, $20, $23
 ; e1190

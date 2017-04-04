@@ -9,7 +9,7 @@
 	const SCGB_07
 	const SCGB_08
 	const SCGB_MAPPALS
-	const SCGB_0A
+	const SCGB_PARTY_MENU
 	const SCGB_0B
 	const SCGB_0C
 	const SCGB_0D
@@ -17,7 +17,7 @@
 	const SCGB_0F
 	const SCGB_POKEDEX_SEARCH_OPTION
 	const SCGB_11
-	const SCGB_12
+	const SCGB_BUYMENU_PALS
 	const SCGB_13
 	const SCGB_PACKPALS
 	const SCGB_TRAINER_CARD

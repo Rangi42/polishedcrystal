@@ -718,9 +718,9 @@ ZubatEvosAttacks:
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
-	db 13, WING_ATTACK
+	db 13, GUST ; Wing Attack → egg move
 	db 17, CONFUSE_RAY
-	db 19, GUST ; Air Cutter → egg move
+	db 19, WING_ATTACK ; Air Cutter → Wing Attack
 	db 23, SWIFT
 	db 25, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 29, MEAN_LOOK
@@ -740,9 +740,9 @@ GolbatEvosAttacks:
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
-	db 13, WING_ATTACK
+	db 13, GUST ; Wing Attack → egg move
 	db 17, CONFUSE_RAY
-	db 19, GUST ; Air Cutter → egg move
+	db 19, WING_ATTACK ; Air Cutter → Wing Attack
 	db 24, SWIFT
 	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 32, MEAN_LOOK
@@ -952,8 +952,7 @@ MeowthEvosAttacks:
 	db 41, THIEF ; Assurance → TM move
 	db 46, CHARM ; Captivate → egg move
 	db 49, NIGHT_SLASH
-if DEF(FAITHFUL)
-else
+if !DEF(FAITHFUL)
 	db 55, DARK_PULSE
 endc
 	db 0 ; no more level-up moves
@@ -977,8 +976,7 @@ PersianEvosAttacks:
 	db 49, THIEF ; Assurance → TM move
 	db 56, CHARM ; Captivate → egg move
 	db 61, NIGHT_SLASH
-if DEF(FAITHFUL)
-else
+if !DEF(FAITHFUL)
 	db 65, DARK_PULSE
 endc
 	db 0 ; no more level-up moves
@@ -3255,9 +3253,9 @@ CrobatEvosAttacks:
 	db 5, SUPERSONIC
 	db 7, ASTONISH
 	db 11, BITE
-	db 13, WING_ATTACK
+	db 13, GUST ; Wing Attack → egg move
 	db 17, CONFUSE_RAY
-	db 19, GUST ; Air Cutter → egg move
+	db 19, WING_ATTACK ; Air Cutter → Wing Attack
 	db 24, SWIFT
 	db 27, SUPER_FANG ; Poison Fang → HGSS tutor move
 	db 32, MEAN_LOOK
@@ -3585,7 +3583,9 @@ SunfloraEvosAttacks:
 	db 1, SPLASH ; Growth → Hoppip move
 	db 1, TACKLE ; Pound → similar move
 	db 1, ABSORB
+if !DEF(FAITHFUL)
 	db 1, EMBER ; evolution move
+endc
 	db 4, GROWTH ; Ingrain → Growth
 	db 7, DEFENSE_CURL ; Grass Whistle → TM move
 	db 10, MEGA_DRAIN
@@ -3595,12 +3595,18 @@ SunfloraEvosAttacks:
 	db 22, GIGA_DRAIN
 	db 25, AGILITY ; Bullet Seed → TM move
 	db 28, PETAL_DANCE
+if DEF(FAITHFUL)
+	db 31, EARTH_POWER ; Natural Gift → tutor move
+else
 	db 31, FLAMETHROWER ; Natural Gift → TM move
+endc
 	db 34, SOLAR_BEAM
 	db 37, DOUBLE_EDGE
 	db 40, SUNNY_DAY
 	db 43, SEED_BOMB ; Leaf Storm → Sunkern move
+if !DEF(FAITHFUL)
 	db 50, FIRE_BLAST ; Petal Blizzard → TM move
+endc
 	db 0 ; no more level-up moves
 
 YanmaEvosAttacks:

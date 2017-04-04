@@ -1,6 +1,6 @@
 ; Pokémon X/Y - Laverre City
 ; Demixed by Mmmmmm
-; http://pastebin.com/pVtgJivC
+; https://pastebin.com/pVtgJivC
 ; https://hax.iimarckus.org/topic/6777/
 
 Music_LaverreCityXY: ; ef2d0

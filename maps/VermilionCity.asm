@@ -240,12 +240,6 @@ VermilionCityDiglettsCaveSign:
 VermilionCityPortSign:
 	jumptext VermilionCityPortSignText
 
-VermilionCityPokeCenterSign:
-	jumpstd pokecentersign
-
-VermilionCityMartSign:
-	jumpstd martsign
-
 VermilionCityCutTree:
 	jumpstd cuttree
 
@@ -487,14 +481,12 @@ VermilionCity_MapEventHeader:
 	xy_trigger 0, $20, $13, $0, LawrenceRightIntroScript, $0, $0
 
 .Signposts:
-	db 8
+	db 6
 	signpost 5, 25, SIGNPOST_READ, VermilionCitySign
 	signpost 23, 5, SIGNPOST_READ, VermilionGymSign
 	signpost 17, 5, SIGNPOST_READ, PokemonFanClubSign
 	signpost 17, 33, SIGNPOST_READ, VermilionCityDiglettsCaveSign
 	signpost 19, 27, SIGNPOST_READ, VermilionCityPortSign
-	signpost 5, 10, SIGNPOST_READ, VermilionCityPokeCenterSign
-	signpost 17, 22, SIGNPOST_READ, VermilionCityMartSign
 	signpost 23, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
 
 .PersonEvents:

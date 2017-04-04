@@ -103,14 +103,17 @@ VioletOnixTradeHouse_BlockData:
 ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.blk"
 
-UnionCaveB1F_BlockData:
-	INCBIN "maps/UnionCaveB1F.blk"
+UnionCave1F_BlockData:
+	INCBIN "maps/UnionCave1F.blk"
+
+UnionCaveB1FNorth_BlockData:
+	INCBIN "maps/UnionCaveB1FNorth.blk"
+
+UnionCaveB1FSouth_BlockData:
+	INCBIN "maps/UnionCaveB1FSouth.blk"
 
 UnionCaveB2F_BlockData:
 	INCBIN "maps/UnionCaveB2F.blk"
-
-UnionCave1F_BlockData:
-	INCBIN "maps/UnionCave1F.blk"
 
 NationalPark_BlockData:
 NationalParkBugContest_BlockData:
@@ -128,6 +131,9 @@ GoldenrodMagnetTrainStation_BlockData:
 
 RuinsofAlphOutside_BlockData:
 	INCBIN "maps/RuinsofAlphOutside.blk"
+
+RuinsofAlphEntranceChamber_BlockData:
+	INCBIN "maps/RuinsofAlphEntranceChamber.blk"
 
 RuinsofAlphInnerChamber_BlockData:
 	INCBIN "maps/RuinsofAlphInnerChamber.blk"
@@ -208,6 +214,9 @@ Route16North_BlockData:
 Route16South_BlockData:
 	INCBIN "maps/Route16.blk"
 
+Route16West_BlockData:
+	INCBIN "maps/Route16West.blk"
+
 Route18East_BlockData:
 	INCBIN "maps/Route18East.blk"
 
@@ -252,6 +261,9 @@ TinTower8F_BlockData:
 
 TinTower9F_BlockData:
 	INCBIN "maps/TinTower9F.blk"
+
+TinTower10F_BlockData:
+	INCBIN "maps/TinTower10F.blk"
 
 TinTowerRoof_BlockData:
 	INCBIN "maps/TinTowerRoof.blk"

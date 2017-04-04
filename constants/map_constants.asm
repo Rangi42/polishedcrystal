@@ -47,74 +47,76 @@ MAP_NONE   EQU 0
 	mapgroup TIN_TOWER_7F,                                8,  8 ; 10
 	mapgroup TIN_TOWER_8F,                                8,  8 ; 11
 	mapgroup TIN_TOWER_9F,                                8,  8 ; 12
-	mapgroup BURNED_TOWER_1F,                             8,  8 ; 13
-	mapgroup BURNED_TOWER_B1F,                            9, 10 ; 14
-	mapgroup NATIONAL_PARK,                              27, 21 ; 15
-	mapgroup NATIONAL_PARK_BUG_CONTEST,                  27, 21 ; 16
-	mapgroup RADIO_TOWER_1F,                              4,  9 ; 17
-	mapgroup RADIO_TOWER_2F,                              4,  9 ; 18
-	mapgroup RADIO_TOWER_3F,                              4,  9 ; 19
-	mapgroup RADIO_TOWER_4F,                              4,  9 ; 20
-	mapgroup RADIO_TOWER_5F,                              4,  9 ; 21
-	mapgroup UNION_CAVE_1F,                              18, 10 ; 22
-	mapgroup UNION_CAVE_B1F,                             18, 10 ; 23
-	mapgroup UNION_CAVE_B2F,                             18, 10 ; 24
-	mapgroup SLOWPOKE_WELL_B1F,                           9, 10 ; 25
-	mapgroup SLOWPOKE_WELL_B2F,                           9, 10 ; 26
-	mapgroup OLIVINE_LIGHTHOUSE_1F,                       9, 10 ; 27
-	mapgroup OLIVINE_LIGHTHOUSE_2F,                       9, 10 ; 28
-	mapgroup OLIVINE_LIGHTHOUSE_3F,                       9, 10 ; 29
-	mapgroup OLIVINE_LIGHTHOUSE_4F,                       9, 10 ; 30
-	mapgroup OLIVINE_LIGHTHOUSE_5F,                       9, 10 ; 31
-	mapgroup OLIVINE_LIGHTHOUSE_6F,                       9, 10 ; 32
-	mapgroup MAHOGANY_MART_1F,                            4,  4 ; 33
-	mapgroup TEAM_ROCKET_BASE_B1F,                        9, 15 ; 34
-	mapgroup TEAM_ROCKET_BASE_B2F,                        9, 15 ; 35
-	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 36
-	mapgroup ILEX_FOREST,                                24, 17 ; 37
-	mapgroup WAREHOUSE_ENTRANCE,                         18, 10 ; 38
-	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     15, 13 ; 39
-	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 40
-	mapgroup UNDERGROUND_WAREHOUSE,                       9, 10 ; 41
-	mapgroup MOUNT_MORTAR_1F_OUTSIDE,                    18, 20 ; 42
-	mapgroup MOUNT_MORTAR_1F_INSIDE,                     25, 20 ; 43
-	mapgroup MOUNT_MORTAR_2F_INSIDE,                     18, 20 ; 44
-	mapgroup MOUNT_MORTAR_B1F,                           18, 20 ; 45
-	mapgroup ICE_PATH_1F,                                15, 20 ; 46
-	mapgroup ICE_PATH_B1F,                               18, 10 ; 47
-	mapgroup ICE_PATH_B2F_MAHOGANY_SIDE,                  9, 10 ; 48
-	mapgroup ICE_PATH_B2F_BLACKTHORN_SIDE,                9,  5 ; 49
-	mapgroup ICE_PATH_B3F,                                5, 10 ; 50
-	mapgroup WHIRL_ISLAND_NW,                             9,  5 ; 51
-	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 52
-	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 53
-	mapgroup WHIRL_ISLAND_CAVE,                           8,  5 ; 54
-	mapgroup WHIRL_ISLAND_SE,                             9,  5 ; 55
-	mapgroup WHIRL_ISLAND_B1F,                           18, 20 ; 56
-	mapgroup WHIRL_ISLAND_B2F,                           18, 10 ; 57
-	mapgroup WHIRL_ISLAND_LUGIA_CHAMBER,                  9, 10 ; 58
-	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 59
-	mapgroup SILVER_CAVE_ROOM_2,                         17, 15 ; 60
-	mapgroup SILVER_CAVE_ROOM_3,                         16, 10 ; 61
-	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9,  9 ; 62
-	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 63
-	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 64
-	mapgroup DRAGONS_DEN_1F,                              9,  5 ; 65
-	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 66
-	mapgroup DRAGON_SHRINE,                               5,  5 ; 67
-	mapgroup TOHJO_FALLS,                                 9, 15 ; 68
-	mapgroup GIOVANNIS_CAVE,                              5,  5 ; 69
-	mapgroup DIGLETTS_CAVE,                              18, 10 ; 70
-	mapgroup MOUNT_MOON_1F,                              13, 15 ; 71
-	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 72
-	mapgroup MOUNT_MOON_B2F,                             17, 16 ; 73
-	mapgroup UNDERGROUND,                                14,  3 ; 74
-	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 75
-	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 76
-	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 77
-	mapgroup VICTORY_ROAD_1F,                            13, 12 ; 78
-	mapgroup VICTORY_ROAD_2F,                            11, 14 ; 79
-	mapgroup VICTORY_ROAD_3F,                             9, 12 ; 80
+	mapgroup TIN_TOWER_10F,                               8,  8 ; 13
+	mapgroup BURNED_TOWER_1F,                             8,  8 ; 14
+	mapgroup BURNED_TOWER_B1F,                            9, 10 ; 15
+	mapgroup NATIONAL_PARK,                              27, 21 ; 16
+	mapgroup NATIONAL_PARK_BUG_CONTEST,                  27, 21 ; 17
+	mapgroup RADIO_TOWER_1F,                              4,  9 ; 18
+	mapgroup RADIO_TOWER_2F,                              4,  9 ; 19
+	mapgroup RADIO_TOWER_3F,                              4,  9 ; 20
+	mapgroup RADIO_TOWER_4F,                              4,  9 ; 21
+	mapgroup RADIO_TOWER_5F,                              4,  9 ; 22
+	mapgroup UNION_CAVE_1F,                              18, 10 ; 23
+	mapgroup UNION_CAVE_B1F_NORTH,                       13, 10 ; 24
+	mapgroup UNION_CAVE_B1F_SOUTH,                       18, 10 ; 25
+	mapgroup UNION_CAVE_B2F,                             18, 10 ; 26
+	mapgroup SLOWPOKE_WELL_B1F,                           9, 10 ; 27
+	mapgroup SLOWPOKE_WELL_B2F,                           9, 10 ; 28
+	mapgroup OLIVINE_LIGHTHOUSE_1F,                       9, 10 ; 29
+	mapgroup OLIVINE_LIGHTHOUSE_2F,                       9, 10 ; 30
+	mapgroup OLIVINE_LIGHTHOUSE_3F,                       9, 10 ; 31
+	mapgroup OLIVINE_LIGHTHOUSE_4F,                       9, 10 ; 32
+	mapgroup OLIVINE_LIGHTHOUSE_5F,                       9, 10 ; 33
+	mapgroup OLIVINE_LIGHTHOUSE_6F,                       9, 10 ; 34
+	mapgroup MAHOGANY_MART_1F,                            4,  4 ; 35
+	mapgroup TEAM_ROCKET_BASE_B1F,                        9, 15 ; 36
+	mapgroup TEAM_ROCKET_BASE_B2F,                        9, 15 ; 37
+	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 38
+	mapgroup ILEX_FOREST,                                24, 17 ; 39
+	mapgroup WAREHOUSE_ENTRANCE,                         18, 10 ; 40
+	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     15, 13 ; 41
+	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 42
+	mapgroup UNDERGROUND_WAREHOUSE,                       9, 10 ; 43
+	mapgroup MOUNT_MORTAR_1F_OUTSIDE,                    18, 20 ; 44
+	mapgroup MOUNT_MORTAR_1F_INSIDE,                     25, 20 ; 45
+	mapgroup MOUNT_MORTAR_2F_INSIDE,                     18, 20 ; 46
+	mapgroup MOUNT_MORTAR_B1F,                           18, 20 ; 47
+	mapgroup ICE_PATH_1F,                                15, 20 ; 48
+	mapgroup ICE_PATH_B1F,                               18, 10 ; 49
+	mapgroup ICE_PATH_B2F_MAHOGANY_SIDE,                  9, 10 ; 50
+	mapgroup ICE_PATH_B2F_BLACKTHORN_SIDE,                9,  5 ; 51
+	mapgroup ICE_PATH_B3F,                                5, 10 ; 52
+	mapgroup WHIRL_ISLAND_NW,                             9,  5 ; 53
+	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 54
+	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 55
+	mapgroup WHIRL_ISLAND_CAVE,                           8,  5 ; 56
+	mapgroup WHIRL_ISLAND_SE,                             9,  5 ; 57
+	mapgroup WHIRL_ISLAND_B1F,                           18, 20 ; 58
+	mapgroup WHIRL_ISLAND_B2F,                           18, 10 ; 59
+	mapgroup WHIRL_ISLAND_LUGIA_CHAMBER,                  9, 10 ; 60
+	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 61
+	mapgroup SILVER_CAVE_ROOM_2,                         17, 15 ; 62
+	mapgroup SILVER_CAVE_ROOM_3,                         16, 10 ; 63
+	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9,  9 ; 64
+	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 65
+	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 66
+	mapgroup DRAGONS_DEN_1F,                              9,  5 ; 67
+	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 68
+	mapgroup DRAGON_SHRINE,                               5,  5 ; 69
+	mapgroup TOHJO_FALLS,                                 9, 15 ; 70
+	mapgroup GIOVANNIS_CAVE,                              5,  5 ; 71
+	mapgroup DIGLETTS_CAVE,                              19, 21 ; 72
+	mapgroup MOUNT_MOON_1F,                              13, 15 ; 73
+	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 74
+	mapgroup MOUNT_MOON_B2F,                             17, 16 ; 75
+	mapgroup UNDERGROUND,                                14,  3 ; 76
+	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 77
+	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 78
+	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 79
+	mapgroup VICTORY_ROAD_1F,                            13, 12 ; 80
+	mapgroup VICTORY_ROAD_2F,                            11, 14 ; 81
+	mapgroup VICTORY_ROAD_3F,                             9, 12 ; 82
 
 	newgroup                                                    ;  4
 
@@ -162,9 +164,9 @@ MAP_NONE   EQU 0
 	mapgroup SEAFOAM_ISLANDS_B3F,                        10, 20 ;  6
 	mapgroup SEAFOAM_ISLANDS_B4F,                        10, 20 ;  7
 	mapgroup ROUTE_19,                                   29, 10 ;  8
-	mapgroup ROUTE_20,                                    9, 48 ;  9
+	mapgroup ROUTE_20,                                    9, 51 ;  9
 	mapgroup ROUTE_21,                                   48, 10 ; 10
-	mapgroup URAGA_CHANNEL_WEST,                          9,  6 ; 11
+	mapgroup URAGA_CHANNEL_WEST,                         15,  6 ; 11
 	mapgroup CINNABAR_ISLAND,                            11, 12 ; 12
 	mapgroup CINNABAR_VOLCANO_1F,                        14, 14 ; 13
 	mapgroup CINNABAR_VOLCANO_B1F,                       18, 18 ; 14
@@ -242,7 +244,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_34,                                   27, 10 ;  1
 	mapgroup ROUTE_34_COAST,                             34,  9 ;  2
 	mapgroup STORMY_BEACH,                               11, 22 ;  3
-	mapgroup MURKY_SWAMP,                                18, 23 ;  4
+	mapgroup MURKY_SWAMP,                                19, 23 ;  4
 	mapgroup GOLDENROD_CITY,                             18, 22 ;  5
 	mapgroup GOLDENROD_GYM,                               9, 10 ;  6
 	mapgroup GOLDENROD_BIKE_SHOP,                         4,  4 ;  7
@@ -261,14 +263,15 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_DEPT_STORE_ELEVATOR,               2,  2 ; 20
 	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   4,  8 ; 21
 	mapgroup GOLDENROD_GAME_CORNER,                       7, 10 ; 22
-	mapgroup GOLDENROD_POKECOM_CENTER_1F,                16, 16 ; 23
-	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 24
-	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 25
-	mapgroup DAYCARE,                                     4,  4 ; 26
-	mapgroup GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 27
-	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 28
-	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 29
-	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 30
+	mapgroup GOLDENROD_POKECOM_CENTER_1F,                 8, 16 ; 23
+	mapgroup GOLDENROD_POKECOM_CENTER_OFFICE,             4,  4 ; 24
+	mapgroup ILEX_FOREST_AZALEA_GATE,                     4,  5 ; 25
+	mapgroup ROUTE_34_ILEX_FOREST_GATE,                   4,  5 ; 26
+	mapgroup DAYCARE,                                     4,  4 ; 27
+	mapgroup GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 28
+	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 29
+	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 30
+	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 31
 
 	newgroup                                                    ; 12
 
@@ -301,7 +304,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                    11, 35 ;  1
+	mapgroup ROUTE_3,                                    11, 36 ;  1
 	mapgroup ROUTE_3_POKECENTER_1F,                       4,  6 ;  2
 	mapgroup PEWTER_CITY,                                18, 20 ;  3
 	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  4
@@ -380,9 +383,21 @@ MAP_NONE   EQU 0
 	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  7
 	mapgroup LAVENDER_MART,                               4,  6 ;  8
 	mapgroup SOUL_HOUSE,                                  5,  5 ;  9
-	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 10
-	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 11
-	mapgroup ROUTE_12_NORTH,                              9, 10 ; 12
+	mapgroup SOUL_HOUSE_B1F,                              9, 10 ; 10
+	mapgroup SOUL_HOUSE_B2F,                              9, 10 ; 11
+	mapgroup SOUL_HOUSE_B3F,                              9,  4 ; 12
+	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 13
+	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 14
+	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 15
+	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 16
+	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 17
+	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 18
+	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 19
+	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 20
+	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 21
+	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 22
+	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 23
+	mapgroup ROUTE_12_NORTH,                              9, 10 ; 24
 
 	newgroup                                                    ; 19
 
@@ -413,56 +428,62 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 21
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
-	mapgroup ROUTE_16_NORTH,                             11, 11 ;  2
-	mapgroup ROUTE_16_SOUTH,                             11, 11 ;  3
-	mapgroup ROUTE_17,                                   63, 10 ;  4
-	mapgroup ROUTE_18_WEST,                               9, 10 ;  5
-	mapgroup URAGA_CHANNEL_EAST,                          9, 23 ;  6
-	mapgroup CELADON_CITY,                               18, 22 ;  7
-	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  8
-	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  9
-	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ; 10
-	mapgroup CELADON_DEPT_STORE_4F,                       4,  8 ; 11
-	mapgroup CELADON_DEPT_STORE_5F,                       4,  8 ; 12
-	mapgroup CELADON_DEPT_STORE_6F,                       4,  8 ; 13
-	mapgroup CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 14
-	mapgroup CELADON_MANSION_1F,                          5,  4 ; 15
-	mapgroup CELADON_MANSION_2F,                          5,  4 ; 16
-	mapgroup CELADON_MANSION_3F,                          5,  4 ; 17
-	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 19
-	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 20
-	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 21
-	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 22
-	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              4,  4 ; 23
-	mapgroup CELADON_GYM,                                 9,  5 ; 24
-	mapgroup CELADON_CAFE,                                4,  6 ; 25
-	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 26
-	mapgroup CELADON_HOTEL,                               4,  7 ; 27
-	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 28
-	mapgroup ROUTE_16_GATE,                               5,  5 ; 30
-	mapgroup ROUTE_16_GATE_2F,                            4,  4 ; 31
-	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 32
-	mapgroup ROUTE_18_GATE,                               5,  5 ; 33
-	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 34
-	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 35
-	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 36
-	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 37
-	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 38
-	mapgroup CELADON_UNIVERSITY_1F,                      10, 15 ; 39
-	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 40
-	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 41
-	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 42
-	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 43
-	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 44
-	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 45
-	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 46
-	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  6 ; 47
-	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 48
-	mapgroup CELADON_UNIVERSITY_POOL,                     5,  8 ; 49
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 50
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 51
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 52
-	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 53
+	mapgroup ROUTE_16_SOUTH,                             11, 11 ;  2
+	mapgroup ROUTE_17,                                   63, 10 ;  3
+	mapgroup ROUTE_18_WEST,                               9, 10 ;  4
+	mapgroup URAGA_CHANNEL_EAST,                          9, 23 ;  5
+	mapgroup CELADON_CITY,                               18, 22 ;  6
+	mapgroup CELADON_DEPT_STORE_1F,                       4,  8 ;  7
+	mapgroup CELADON_DEPT_STORE_2F,                       4,  8 ;  8
+	mapgroup CELADON_DEPT_STORE_3F,                       4,  8 ;  9
+	mapgroup CELADON_DEPT_STORE_4F,                       4,  8 ; 10
+	mapgroup CELADON_DEPT_STORE_5F,                       4,  8 ; 11
+	mapgroup CELADON_DEPT_STORE_6F,                       4,  8 ; 12
+	mapgroup CELADON_DEPT_STORE_ELEVATOR,                 2,  2 ; 13
+	mapgroup CELADON_MANSION_1F,                          5,  4 ; 14
+	mapgroup CELADON_MANSION_2F,                          5,  4 ; 15
+	mapgroup CELADON_MANSION_3F,                          5,  4 ; 16
+	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 17
+	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 18
+	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 19
+	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 20
+	mapgroup CELADON_GAME_CORNER_PRIZE_ROOM,              4,  4 ; 21
+	mapgroup CELADON_GYM,                                 9,  5 ; 22
+	mapgroup CELADON_CAFE,                                4,  6 ; 23
+	mapgroup CELADON_CHIEF_HOUSE,                         4,  4 ; 24
+	mapgroup CELADON_HOTEL_1F,                            4,  9 ; 25
+	mapgroup CELADON_HOTEL_2F,                            2,  9 ; 26
+	mapgroup CELADON_HOTEL_ROOM_1,                        3,  3 ; 27
+	mapgroup CELADON_HOTEL_ROOM_2,                        3,  3 ; 28
+	mapgroup CELADON_HOTEL_ROOM_3,                        3,  3 ; 29
+	mapgroup CELADON_HOTEL_POOL,                          4,  7 ; 30
+	mapgroup PSYCHIC_INVERS_HOUSE,                        4,  4 ; 31
+	mapgroup ROUTE_16_FUCHSIA_SPEECH_HOUSE,               4,  4 ; 32
+	mapgroup ROUTE_16_GATE,                               4,  5 ; 33
+	mapgroup ROUTE_16_17_GATE,                            5,  5 ; 34
+	mapgroup ROUTE_16_17_GATE_2F,                         4,  4 ; 35
+	mapgroup ROUTE_7_SAFFRON_GATE,                        4,  5 ; 36
+	mapgroup ROUTE_18_GATE,                               5,  5 ; 37
+	mapgroup ROUTE_18_GATE_2F,                            4,  4 ; 38
+	mapgroup CELADON_HOME_DECOR_STORE_1F,                 4,  5 ; 39
+	mapgroup CELADON_HOME_DECOR_STORE_2F,                 4,  5 ; 40
+	mapgroup CELADON_HOME_DECOR_STORE_3F,                 4,  5 ; 41
+	mapgroup CELADON_HOME_DECOR_STORE_4F,                 4,  5 ; 42
+	mapgroup CELADON_UNIVERSITY_1F,                      10, 15 ; 43
+	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 44
+	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 45
+	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 46
+	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 47
+	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 48
+	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 49
+	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 50
+	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  6 ; 51
+	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 52
+	mapgroup CELADON_UNIVERSITY_POOL,                     5,  8 ; 53
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 54
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 55
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 56
+	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 57
 
 	newgroup                                                    ; 22
 
@@ -476,12 +497,13 @@ MAP_NONE   EQU 0
 	mapgroup CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  8
 	mapgroup CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
 	mapgroup STATS_JUDGES_HOUSE,                          4,  4 ; 10
-	mapgroup BATTLE_TOWER_1F,                             5,  8 ; 11
-	mapgroup BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 12
-	mapgroup BATTLE_TOWER_ELEVATOR,                       2,  2 ; 13
-	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 14
-	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 15
-	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 16
+	mapgroup BATTLE_TOWER_1F,                             7, 11 ; 11
+	mapgroup BATTLE_TOWER_2F,                             5, 11 ; 12
+	mapgroup BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 13
+	mapgroup BATTLE_TOWER_ELEVATOR,                       2,  2 ; 14
+	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 15
+	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 16
+	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 17
 
 	newgroup                                                    ; 23
 
@@ -502,6 +524,8 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 16
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 17
 	mapgroup ROUTE_1_VIRIDIAN_GATE,                        4, 5 ; 18
+	mapgroup ROUTE_16_NORTH,                             11, 11 ; 19
+	mapgroup ROUTE_16_WEST,                              11, 34 ; 20
 
 	newgroup                                                    ; 24
 
@@ -587,18 +611,19 @@ MAP_NONE   EQU 0
 	mapgroup RUINS_OF_ALPH_KABUTO_CHAMBER,                5,  4 ;  3
 	mapgroup RUINS_OF_ALPH_OMANYTE_CHAMBER,               5,  4 ;  4
 	mapgroup RUINS_OF_ALPH_AERODACTYL_CHAMBER,            5,  4 ;  5
-	mapgroup RUINS_OF_ALPH_INNER_CHAMBER,                14, 10 ;  6
-	mapgroup RUINS_OF_ALPH_RESEARCH_CENTER,               4,  4 ;  7
-	mapgroup RUINS_OF_ALPH_HO_OH_ITEM_ROOM,               5,  4 ;  8
-	mapgroup RUINS_OF_ALPH_KABUTO_ITEM_ROOM,              5,  4 ;  9
-	mapgroup RUINS_OF_ALPH_OMANYTE_ITEM_ROOM,             5,  4 ; 10
-	mapgroup RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM,          5,  4 ; 11
-	mapgroup RUINS_OF_ALPH_HO_OH_WORD_ROOM,              12, 10 ; 12
-	mapgroup RUINS_OF_ALPH_KABUTO_WORD_ROOM,              7, 10 ; 13
-	mapgroup RUINS_OF_ALPH_OMANYTE_WORD_ROOM,             8, 10 ; 14
-	mapgroup RUINS_OF_ALPH_AERODACTYL_WORD_ROOM,          7, 10 ; 15
-	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  5 ; 16
-	mapgroup ROUTE_22_PAST,                               6,  6 ; 17
+	mapgroup RUINS_OF_ALPH_ENTRANCE_CHAMBER,              4,  4 ;  6
+	mapgroup RUINS_OF_ALPH_INNER_CHAMBER,                14, 10 ;  7
+	mapgroup RUINS_OF_ALPH_RESEARCH_CENTER,               4,  4 ;  8
+	mapgroup RUINS_OF_ALPH_HO_OH_ITEM_ROOM,               5,  4 ;  9
+	mapgroup RUINS_OF_ALPH_KABUTO_ITEM_ROOM,              5,  4 ; 10
+	mapgroup RUINS_OF_ALPH_OMANYTE_ITEM_ROOM,             5,  4 ; 11
+	mapgroup RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM,          5,  4 ; 12
+	mapgroup RUINS_OF_ALPH_HO_OH_WORD_ROOM,              12, 10 ; 13
+	mapgroup RUINS_OF_ALPH_KABUTO_WORD_ROOM,              7, 10 ; 14
+	mapgroup RUINS_OF_ALPH_OMANYTE_WORD_ROOM,             8, 10 ; 15
+	mapgroup RUINS_OF_ALPH_AERODACTYL_WORD_ROOM,          7, 10 ; 16
+	mapgroup RUINS_OF_ALPH_SINJOH_CHAMBER,                5,  5 ; 17
+	mapgroup ROUTE_22_PAST,                               6,  6 ; 18
 
 	newgroup                                                    ; 31
 
@@ -610,14 +635,21 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_TUNNEL,                            10, 18 ;  6
 	mapgroup NOISY_FOREST,                               20, 22 ;  7
 	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  8
-	mapgroup SHAMOUTI_HOTEL,                              4,  4 ;  9
-	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 10
-	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 11
-	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 12
-	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 13
-	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 14
-	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 15
-	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 16
+	mapgroup SHAMOUTI_HOTEL_1F,                           4,  9 ;  9
+	mapgroup SHAMOUTI_HOTEL_2F,                           2,  9 ; 10
+	mapgroup SHAMOUTI_HOTEL_3F,                           2,  9 ; 11
+	mapgroup SHAMOUTI_HOTEL_ROOM_2A,                      3,  3 ; 12
+	mapgroup SHAMOUTI_HOTEL_ROOM_2B,                      3,  3 ; 13
+	mapgroup SHAMOUTI_HOTEL_ROOM_3B,                      3,  3 ; 14
+	mapgroup SHAMOUTI_HOTEL_ROOM_3C,                      3,  3 ; 15
+	mapgroup SHAMOUTI_HOTEL_RESTAURANT,                   4,  9 ; 16
+	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 17
+	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 18
+	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 19
+	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 20
+	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 21
+	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 22
+	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 23
 
 	newgroup                                                    ; 32
 

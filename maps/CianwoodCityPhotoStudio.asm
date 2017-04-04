@@ -31,6 +31,11 @@ FishingGuruScript_0x9e0e0:
 	waitsfx
 	pause 10
 	special FadeInPalettes
+	copybytetovar CurPartySpecies
+	pokepic 0, 1
+	cry 0
+	waitsfx
+	closepokepic
 	opentext
 	writetext PhotoStudioPrestoText
 	special PlayCurMonCry

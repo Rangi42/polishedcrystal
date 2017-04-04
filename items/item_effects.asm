@@ -303,6 +303,10 @@ CherishBall: ; e8a2
 	dec a
 	jp nz, UseBallInTrainerBattle
 
+	ld a, [EnemySubStatus3] ; BATTLE_VARS_SUBSTATUS3_OPP
+	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	jp nz, Ball_MonIsHiddenMessage
+
 	ld a, [PartyCount]
 	cp PARTY_LENGTH
 	jr nz, .room_in_party
@@ -3382,6 +3386,15 @@ Ball_BoxIsFullMessage: ; f7dc
 	ret
 ; f7e8
 
+Ball_MonIsHiddenMessage:
+	ld hl, Ball_MonIsHiddenText
+	call PrintText
+
+	; Item wasn't used.
+	ld a, $2
+	ld [wItemEffectSucceeded], a
+	ret
+
 Ball_NuzlockeFailureMessage:
 	ld hl, Ball_NuzlockeFailureText
 	call PrintText
@@ -3494,6 +3507,11 @@ Ball_BoxIsFullText: ; 0xf838
 	text_jump UnknownText_0x1c5e3a
 	db "@"
 ; 0xf83d
+
+Ball_MonIsHiddenText:
+	; The #MON can't be seen!
+	text_jump Text_MonIsHiddenFromBall
+	db "@"
 
 Ball_NuzlockeFailureText:
 	; You already encountered a #MON here.

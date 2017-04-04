@@ -260,7 +260,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Adam@@@@@@", YOUNGSTER
 	db "Oakley@@@@", COWGIRL
 	db "Annie@@@@@", OFFICERF
-	db "Park@@@@@@", COOLTRAINERF
+	db "Park@@@@@@", ENGINEER
 	db "Patricia@@", COSPLAYER
 	db "Rajan@@@@@", PICNICKER
 	db "Diaz@@@@@@", PICNICKER
@@ -278,7 +278,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Chelsea@@@", MEDIUM
 	db "Kuroki@@@@", HEX_MANIAC
 	db "Hitesh@@@@", POKEMANIAC
-	db "Abdul@@@@@", COOLTRAINERM
+	db "Abdul@@@@@", ENGINEER
 	db "Emily@@@@@", LASS
 	db "Hopper@@@@", VETERANF
 	db "Marc@@@@@@", HIKER

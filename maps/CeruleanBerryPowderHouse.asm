@@ -17,6 +17,7 @@ CeruleanBerryPowderHouseGrampsScript:
 	buttonsound
 	verbosegiveitem HP_UP
 	iffalse .Done
+	setevent EVENT_GOT_HP_UP_FROM_CERULEAN
 .GotItem:
 	writetext CeruleanBerryPowderHouseGrampsText2
 	waitbutton

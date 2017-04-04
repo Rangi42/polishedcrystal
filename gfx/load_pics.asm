@@ -261,14 +261,56 @@ GetAnimatedFrontpic: ; 51103
 	cp 6
 	jr z, .got_dims
 	ld de, w6_d800 + 7 * 7 tiles
-	ld c, 7 * 7
-.got_dims
 
+	push hl
+	ld a, [CurSpecies]
+	ld c, a
+	ld hl, .LargeSpriteSizes
+.loop
+	ld a, [hli]
+	cp c
+	jr z, .found
+	cp -1
+	jr z, .found
+	inc hl
+	jr .loop
+.found
+	ld a, [hl]
+	ld c, a
+	pop hl
+
+.got_dims
 	push hl
 	push bc
 	call LoadOrientedFrontpicTiles
 	pop bc
 	pop hl
+
+	ld a, c
+	cp $80 - 7 * 7 + 1
+	jr c, .no_overflow
+
+	; TODO: fix corrupt/extra loaded tiles
+	push bc
+	ld de, wDecompressScratch
+	ld a, [hROMBank]
+	ld b, a
+	ld c, $80 - 7 * 7 - 1
+	call Get2bpp
+	ld de, w6_d800 + $7f tiles
+	ld hl, wDecompressScratch
+	ld bc, ($80 - 7 * 7 - 1) * $10
+	call LoadFrontpic
+	pop bc
+
+	ld a, BANK(VTiles4)
+	ld [rVBK], a
+	ld a, c
+	sub $80 - 7 * 7 - 1 - 1
+	ld c, a
+	ld hl, VTiles4
+
+.no_overflow
 	ld de, wDecompressScratch
 	ld a, [hROMBank]
 	ld b, a
@@ -276,6 +318,22 @@ GetAnimatedFrontpic: ; 51103
 	xor a
 	ld [rVBK], a
 	ret
+
+.LargeSpriteSizes:
+; species, max tile - size + 1
+	db GLACEON,    $64 - 7 * 7 + 1
+	db MAMOSWINE,  $6f - 7 * 7 + 1
+	db PORYGON_Z,  $6f - 7 * 7 + 1
+	db SYLVEON,    $71 - 7 * 7 + 1 ; TODO
+	db MISMAGIUS,  $71 - 7 * 7 + 1
+	db ELECTIVIRE, $76 - 7 * 7 + 1
+	db WEAVILE,    $80 - 7 * 7 + 1 ; TODO - fix flip
+	db LEAFEON,    $81 - 7 * 7 + 1 ; TODO - fix flip
+	db GLISCOR,    $83 - 7 * 7 + 1 ; TODO - fix flip
+	db RHYPERIOR,  $85 - 7 * 7 + 1 ; TODO - fix flip
+	db TOGEKISS,   $88 - 7 * 7 + 1 ; TODO - fix flip
+	db MAGMORTAR,  $8b - 7 * 7 + 1 ; TODO - fix flip
+	db -1,         7 * 7
 
 LoadOrientedFrontpicTiles: ; 5114f
 	ld hl, wDecompressScratch

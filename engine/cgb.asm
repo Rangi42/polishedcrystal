@@ -45,7 +45,7 @@ Predef_LoadCGBLayout: ; 8d59
 	dw _CGB0f
 	dw _CGB_PokedexSearchOption
 	dw _CGB11
-	dw _CGB_Pokepic
+	dw _CGB_BuyMenu
 	dw _CGB13
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
@@ -102,7 +102,7 @@ _CGB_BattleColors: ; 8ddb
 	ld bc, Palettes_a8be
 	add hl, bc
 	call LoadPalette_White_Col1_Col2_Black
-	ld hl, Palettes_a8ca
+	ld hl, GenderAndExpPalettes
 	call LoadPalette_White_Col1_Col2_Black
 	call LoadPlayerStatusIconPalette
 	call LoadEnemyStatusIconPalette
@@ -146,6 +146,13 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 1, 7
 	ld a, $4
 	call FillBoxCGB
+	ld a, $4
+	hlcoord 1, 1, AttrMap
+	ld [hl], a
+	hlcoord 8, 1, AttrMap
+	ld [hl], a
+	hlcoord 18, 8, AttrMap
+	ld [hl], a
 	hlcoord 12, 8, AttrMap
 	lb bc, 1, 2
 	ld a, $5
@@ -154,8 +161,8 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	lb bc, 1, 2
 	ld a, $5
 	call FillBoxCGB
-	hlcoord 0, 8, AttrMap
-	lb bc, 4, 10
+	hlcoord 1, 9, AttrMap
+	lb bc, 1, 6
 	ld a, $6
 	call FillBoxCGB
 	hlcoord 0, 12, AttrMap
@@ -209,15 +216,15 @@ StatusIconPalettes:
 ; OK
 	RGB 31, 31, 31
 ; PSN
-	RGB 26, 11, 23
+	RGB 27, 11, 27
 ; PAR
-	RGB 24, 23, 05
+	RGB 30, 20, 00
 ; SLP
-	RGB 20, 20, 16
+	RGB 17, 17, 17
 ; BRN
-	RGB 31, 13, 09
+	RGB 31, 08, 02
 ; FRZ
-	RGB 15, 22, 28
+	RGB 09, 18, 31
 ; FNT
 	RGB 25, 00, 00
 ; TOX
@@ -228,11 +235,11 @@ LoadBattleCategoryAndTypePalettes:
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld c, a
 	ld b, 0
-rept 2
+rept 4
 	add hl, bc
 endr
 	ld de, UnknBGPals + 6 palettes + 2
-	ld bc, 2
+	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
 
@@ -243,7 +250,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6 palettes + 4
+	ld de, UnknBGPals + 6 palettes + 6
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM
@@ -251,10 +258,13 @@ endr
 
 CategoryIconPalettes:
 ; PHYSICAL
+	RGB 31, 28, 00
 	RGB 27, 04, 02
 ; SPECIAL
+	RGB 27, 31, 31
 	RGB 00, 14, 29
 ; STATUS
+	RGB 31, 31, 31
 	RGB 21, 21, 14
 
 TypeIconPalettes:
@@ -731,9 +741,15 @@ _CGB_MapPals: ; 91c8
 _CGB0a: ; 91d1
 	ld hl, PalPacket_9c56 + 1
 	call CopyFourPalettes
+	ld hl, GenderAndExpPalettes
+	call LoadPalette_White_Col1_Col2_Black
 	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 	call InitPartyMenuOBPals
+	hlcoord 10, 2, AttrMap
+	lb bc, 11, 1
+	ld a, $4
+	call FillBoxCGB
 	call ApplyAttrMap
 	ret
 ; 91e4
@@ -1114,6 +1130,11 @@ _CGB0e: ; 9373
 	ld a, $7
 	call ByteFill
 
+	hlcoord 1, 12, AttrMap
+	ld bc, 6
+	xor a
+	call ByteFill
+
 	ld a, [CurMove]
 	dec a
 	ld hl, Moves + MOVE_CATEGORY
@@ -1124,11 +1145,11 @@ _CGB0e: ; 9373
 	ld hl, CategoryIconPalettes
 	ld c, a
 	ld b, 0
-rept 2
+rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals + 7 palettes + 2
-	ld bc, 2
+	ld de, UnknBGPals + 0 palettes + 2
+	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
 
@@ -1145,7 +1166,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 7 palettes + 4
+	ld de, UnknBGPals + 0 palettes + 6
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM
@@ -1192,11 +1213,11 @@ _CGB_PackPals: ; 93d3
 	jr z, .male
 
 .tutorial_female
-	ld hl, .KrisPackPals
+	ld hl, KrisPackPals
 	jr .got_gender
 
 .male
-	ld hl, .ChrisPackPals
+	ld hl, ChrisPackPals
 
 .got_gender
 	ld de, UnknBGPals
@@ -1231,7 +1252,7 @@ _CGB_PackPals: ; 93d3
 	ret
 ; 9439
 
-.ChrisPackPals: ; 9439
+ChrisPackPals: ; 9439
 	RGB 31, 31, 31
 	RGB 15, 15, 31
 	RGB 00, 00, 31
@@ -1258,7 +1279,7 @@ _CGB_PackPals: ; 93d3
 	RGB 00, 00, 00
 ; 9469
 
-.KrisPackPals: ; 9469
+KrisPackPals: ; 9469
 	RGB 31, 31, 31
 	RGB 31, 14, 31
 	RGB 31, 07, 31
@@ -2264,40 +2285,53 @@ TMHMTypeIconPalettes:
 	RGB 17, 26, 24
 	RGB 10, 20, 17
 
-_CGB_Pokepic: ; 9499
-	call _CGB_MapPals
-	ld de, SCREEN_WIDTH
-	hlcoord 0, 0, AttrMap
-	ld a, [wMenuBorderTopCoord]
-.loop
-	and a
-	jr z, .found_top
-	dec a
-	add hl, de
-	jr .loop
-
-.found_top
-	ld a, [wMenuBorderLeftCoord]
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld a, [wMenuBorderTopCoord]
-	ld b, a
-	ld a, [wMenuBorderBottomCoord]
-	inc a
-	sub b
-	ld b, a
-	ld a, [wMenuBorderLeftCoord]
-	ld c, a
-	ld a, [wMenuBorderRightCoord]
-	sub c
-	inc a
-	ld c, a
-	xor a
+_CGB_BuyMenu: ; 9499
+	ld hl, BuyMenuPals
+	ld de, UnknBGPals
+	ld bc, 5 palettes
+	ld a, $5
+	call FarCopyWRAM
+	call WipeAttrMap
+	hlcoord 6, 4, AttrMap
+	lb bc, 7, 1
+	ld a, $2
+	call FillBoxCGB
+	hlcoord 1, 8, AttrMap
+	lb bc, 3, 3
+	ld a, $4
 	call FillBoxCGB
 	call ApplyAttrMap
+	call ApplyPals
+	ld a, $1
+	ld [hCGBPalUpdate], a
 	ret
 ; 94d0
+
+BuyMenuPals:
+	RGB 31, 31, 31
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 00, 00, 00
+
+	RGB 15, 15, 31
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 31, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 
 _CGB13: ; 94d0
 	ld hl, PalPacket_9ba6 + 1
@@ -2373,7 +2407,7 @@ _CGB1b: ; 9555
 _CGB_FrontpicPals: ; 9578
 	ld de, UnknBGPals
 	ld a, [CurPartySpecies]
-	ld bc, TempMonDVs
+	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	call WipeAttrMap
@@ -2404,27 +2438,27 @@ _CGB_IntroPals: ; 9591
 ; 95e0
 
 _CGB_IntroNamingPals: ; 9542
-	ld de, UnknBGPals
-	ld a, [CurPartySpecies]
-	ld bc, TempMonPersonality
-	call GetFrontpicPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	ld hl, IntroGradientPalette
-	ld de, UnknBGPals + 1 palettes
-	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
-	call ApplyPals
-	call WipeAttrMap
-	hlcoord 11, 0, AttrMap
-	lb bc, 3, 9
-	ld a, $1
-	call FillBoxCGB
-	hlcoord 0, 0, AttrMap
-	lb bc, 3, 11
-	xor a
-	call FillBoxCGB
-	call ApplyAttrMap
+;	ld de, UnknBGPals
+;	ld a, [CurPartySpecies]
+;	ld bc, TempMonPersonality
+;	call GetFrontpicPalettePointer
+;	call LoadPalette_White_Col1_Col2_Black
+;	ld hl, IntroGradientPalette
+;	ld de, UnknBGPals + 1 palettes
+;	ld bc, 1 palettes
+;	ld a, $5
+;	call FarCopyWRAM
+;	call ApplyPals
+;	call WipeAttrMap
+;	hlcoord 11, 0, AttrMap
+;	lb bc, 3, 9
+;	ld a, $1
+;	call FillBoxCGB
+;	hlcoord 0, 0, AttrMap
+;	lb bc, 3, 11
+;	xor a
+;	call FillBoxCGB
+;	call ApplyAttrMap
 	ret
 ; 9555
 
