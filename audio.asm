@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Audio", ROMX, BANK[AUDIO]
+SECTION "Audio Engine", ROMX[$4000], BANK[AUDIO]
 
 INCLUDE "audio/engine.asm"
 
@@ -21,7 +21,7 @@ INCLUDE "audio/sfx_pointers.asm"
 
 
 
-SECTION "Songs 1", ROMX, BANK[SONGS_1]
+SECTION "Songs 1", ROMX[$5547], BANK[SONGS_1]
 
 INCLUDE "audio/music/route36.asm"
 INCLUDE "audio/music/rivalbattle.asm"
@@ -41,7 +41,7 @@ INCLUDE "audio/music/route1.asm"
 INCLUDE "audio/music/route3.asm"
 
 
-SECTION "Songs 2", ROMX, BANK[SONGS_2]
+SECTION "Songs 2", ROMX[$4000], BANK[SONGS_2]
 
 INCLUDE "audio/music/route12.asm"
 INCLUDE "audio/music/kantogymbattle.asm"
@@ -77,7 +77,7 @@ INCLUDE "audio/music/violetcity.asm"
 INCLUDE "audio/music/route29.asm"
 
 
-SECTION "Songs 3", ROMX, BANK[SONGS_3]
+SECTION "Songs 3", ROMX[$4000], BANK[SONGS_3]
 
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/healpokemon.asm"
@@ -87,7 +87,7 @@ INCLUDE "audio/music/celadoncity.asm"
 INCLUDE "audio/music/hgss/cinnabarisland.asm"
 
 
-SECTION "Songs 4", ROMX, BANK[SONGS_4]
+SECTION "Songs 4", ROMX[$4000], BANK[SONGS_4]
 
 INCLUDE "audio/music/wildpokemonvictory.asm"
 INCLUDE "audio/music/successfulcapture.asm"
@@ -128,7 +128,7 @@ INCLUDE "audio/music/lookmysticalman.asm"
 INCLUDE "audio/music/pokecomcenter.asm"
 
 
-SECTION "Songs 5", ROMX, BANK[SONGS_5]
+SECTION "Songs 5", ROMX[$401f], BANK[SONGS_5]
 
 INCLUDE "audio/music/battletowertheme.asm"
 INCLUDE "audio/music/battletowerlobby.asm"
@@ -153,7 +153,7 @@ INCLUDE "audio/music/hgss/summoningdance.asm"
 INCLUDE "audio/music/hgss/spikyearedpichu.asm"
 
 
-SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
+SECTION "Extra Songs 1", ROMX[$62eb], BANK[EXTRA_SONGS_1]
 
 INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/music/hgss/hoohbattle.asm"
@@ -163,12 +163,12 @@ INCLUDE "audio/music/xy/rivalbattle.asm"
 INCLUDE "audio/music/xy/kantolegendbattle.asm"
 
 
-SECTION "Extra Songs 2", ROMX, BANK[EXTRA_SONGS_2]
+SECTION "Extra Songs 2", ROMX[$7dc5], BANK[EXTRA_SONGS_2]
 
 INCLUDE "audio/music/postcredits.asm"
 
 
-SECTION "Extra Songs 3", ROMX, BANK[EXTRA_SONGS_3]
+SECTION "Extra Songs 3", ROMX[$4000], BANK[EXTRA_SONGS_3]
 
 INCLUDE "audio/music/titlescreen.asm"
 INCLUDE "audio/music/dppt/route210.asm"
@@ -182,7 +182,7 @@ INCLUDE "audio/music/rse/championbattle.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
 
-SECTION "Extra Songs 4", ROMX, BANK[EXTRA_SONGS_4]
+SECTION "Extra Songs 4", ROMX[$4000], BANK[EXTRA_SONGS_4]
 
 INCLUDE "audio/music/bw/route12.asm"
 INCLUDE "audio/music/bw/trainerbattle.asm"
@@ -223,18 +223,18 @@ INCLUDE "audio/music/sm/elitefourbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 
-SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]
+SECTION "Sound Effects", ROMX[$47fd], BANK[SOUND_EFFECTS]
 
 INCLUDE "audio/sfx.asm"
 
 
-SECTION "Crystal Sound Effects", ROMX, BANK[CRYSTAL_SOUND_EFFECTS]
+SECTION "Crystal Sound Effects", ROMX[$784e], BANK[CRYSTAL_SOUND_EFFECTS]
 
 INCLUDE "audio/sfx_crystal.asm"
 
 
 
-SECTION "Cries", ROMX, BANK[CRIES]
+SECTION "Cries", ROMX[$6643], BANK[CRIES]
 
 CryHeaders:: INCLUDE "audio/cry_headers.asm"
 

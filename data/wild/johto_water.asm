@@ -81,8 +81,8 @@
 	map WHIRL_ISLAND_LUGIA_CHAMBER
 	db 4 percent ; encounter rate
 	db 25, HORSEA
-	db 25, TENTACRUEL
 	db 30, SEADRA
+	db 30, OCTILLERY
 
 	map SILVER_CAVE_ROOM_2
 	db 2 percent ; encounter rate
@@ -219,8 +219,8 @@
 	map CIANWOOD_CITY
 	db 6 percent ; encounter rate
 	db 20, TENTACOOL
-	db 15, TENTACOOL
-	db 20, TENTACRUEL
+	db 20, MANTINE
+	db 20, REMORAID
 
 	map GOLDENROD_CITY
 	db 4 percent ; encounter rate
