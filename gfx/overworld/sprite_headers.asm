@@ -225,6 +225,15 @@ MiraSprite:
 AnabelSprite:
 	sprite_header AnabelSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
+FlannerySprite:
+	sprite_header FlannerySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
+MayleneSprite:
+	sprite_header MayleneSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+SkylaSprite:
+	sprite_header SkylaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
@@ -457,10 +466,6 @@ GameboyKidSprite: ; 14742
 	sprite_header GameboyKidSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
 ; 14748
 
-StandingYoungsterSprite: ; 14994
-	sprite_header StandingYoungsterSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
-; 1499a
-
 SilphEmployeeSprite:
 	sprite_header SilphEmployeeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
@@ -469,10 +474,6 @@ SwimmingOfficerSprite:
 
 SwimmingOfficerFSprite:
 	sprite_header SwimmingOfficerFSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
-
-KurtOutsideSprite: ; 1497c
-	sprite_header KurtOutsideSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-; 14982
 
 ClefairyWalkSprite: ; 148fe
 	sprite_header ClefairyWalkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

@@ -118,6 +118,9 @@
 	db "Leader@"           ; CANDELA
 	db "Leader@"           ; BLANCHE
 	db "Leader@"           ; SPARK
+	db "Trainer@"          ; FLANNERY
+	db "Fighter@"          ; MAYLENE
+	db "Pilot@"            ; SKYLA
 	db "Designer@"         ; VALERIE
 	db "#Maniac@"          ; BILL_T
 	db "<PK><MN> Trainer@" ; YELLOW

@@ -1676,6 +1676,9 @@ PlayBattleMusic: ; 2ee6c
 	dbw AGATHA,       MUSIC_KANTO_GYM_LEADER_BATTLE
 	dbw STEVEN,       MUSIC_CHAMPION_BATTLE_RSE
 	dbw CYNTHIA,      MUSIC_CHAMPION_BATTLE_DPPT
+	dbw FLANNERY,     MUSIC_GYM_LEADER_BATTLE_RSE
+	dbw MAYLENE,      MUSIC_GYM_LEADER_BATTLE_DPPT
+	dbw SKYLA,        MUSIC_GYM_LEADER_BATTLE_BW
 	dbw VALERIE,      MUSIC_GYM_LEADER_BATTLE_XY
 	dbw LAWRENCE,     MUSIC_ZINNIA_BATTLE_ORAS
 	db -1
@@ -5547,10 +5550,6 @@ TalkToTrainerScript:: ; 0xbe66a
 	jump StartBattleWithMapTrainerScript
 
 SeenByTrainerScript:: ; 0xbe675
-;	writepersonxy LAST_TALKED
-;	trainerflagaction SET_FLAG
-;	end ; TODO: REMOVE DEBUG!!!
-
 	loadmemtrainer
 	encountermusic
 	showemote EMOTE_SHOCK, LAST_TALKED, 30

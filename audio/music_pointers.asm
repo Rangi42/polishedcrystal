@@ -149,6 +149,9 @@
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE
+	dba Music_GymLeaderBattleRSE
+	dba Music_GymLeaderBattleDPPt
+	dba Music_GymLeaderBattleBW
 	dba Music_ChampionBattleRSE
 	dba Music_FrontierBrainBattleRSE
 	dba Music_KantoLegendBattleXY

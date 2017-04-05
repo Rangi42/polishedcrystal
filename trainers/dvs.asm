@@ -149,6 +149,9 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; candela
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; blanche
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; spark
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; flannery
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; maylene
+	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; skyla
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
 	db PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow

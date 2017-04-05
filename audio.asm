@@ -21,7 +21,7 @@ INCLUDE "audio/sfx_pointers.asm"
 
 
 
-SECTION "Songs 1", ROMX[$5547], BANK[SONGS_1]
+SECTION "Songs 1", ROMX[$5550], BANK[SONGS_1]
 
 INCLUDE "audio/music/route36.asm"
 INCLUDE "audio/music/rivalbattle.asm"
@@ -211,12 +211,13 @@ SECTION "Extra Songs 6", ROMX
 INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/laverrecity.asm"
 INCLUDE "audio/music/xy/bicycle.asm"
-INCLUDE "audio/music/xy/gymbattle.asm"
+INCLUDE "audio/music/xy/gymleaderbattle.asm"
 INCLUDE "audio/music/custom/lugiassong.asm"
 
 
 SECTION "Extra Songs 7", ROMX
 
+INCLUDE "audio/music/rse/gymleaderbattle.asm"
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
 INCLUDE "audio/music/sm/elitefourbattle.asm"

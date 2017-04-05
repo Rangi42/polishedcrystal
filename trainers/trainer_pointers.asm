@@ -121,6 +121,9 @@ TrainerGroups: ; 0x39999
 	dw CandelaGroup
 	dw BlancheGroup
 	dw SparkGroup
+	dw FlanneryGroup
+	dw MayleneGroup
+	dw SkylaGroup
 	dw ValerieGroup
 	dw BillGroup
 	dw YellowGroup

@@ -851,9 +851,9 @@ Group29Sprites:
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_OLIVINE_RIVAL
+	db SPRITE_YOUNGSTER ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	; 10 walking sprites (9 that walk)
-	db SPRITE_STANDING_YOUNGSTER
+	; 11 walking sprites (9 that walk)
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_FRUIT_TREE
@@ -1081,9 +1081,9 @@ Group8Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	db SPRITE_KURT ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_FRUIT_TREE
-	db SPRITE_KURT_OUTSIDE
 	db SPRITE_SLOWPOKE
 	; 12 total sprites
 	db SPRITE_FRUIT_TREE
@@ -1251,8 +1251,8 @@ Group23Sprites:
 	db SPRITE_LADY
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	db SPRITE_COOLTRAINER_F ; doesn't move
-	; 10 walking sprites (9 that move)
+	db SPRITE_COOLTRAINER_F ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_CUT_TREE
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
@@ -1511,8 +1511,8 @@ Group27Sprites:
 	db SPRITE_ROCKET
 	db SPRITE_ROCKET_GIRL
 	db SPRITE_YOUNGSTER
-	db SPRITE_ARCHER ; doesn't move
-	; 10 walking sprites (9 that move)
+	db SPRITE_ARCHER ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_POKE_BALL
 	; 11 total sprites
 	db SPRITE_POKE_BALL

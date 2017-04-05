@@ -834,20 +834,23 @@ DarachPic:                INCBIN "gfx/trainers/darach.2bpp.lz"
 CandelaPic:               INCBIN "gfx/trainers/candela.2bpp.lz"
 BlanchePic:               INCBIN "gfx/trainers/blanche.2bpp.lz"
 SparkPic:                 INCBIN "gfx/trainers/spark.2bpp.lz"
+FlanneryPic:              INCBIN "gfx/trainers/flannery.2bpp.lz"
+MaylenePic:               INCBIN "gfx/trainers/flannery.2bpp.lz" ; TODO
+SkylaPic:                 INCBIN "gfx/trainers/flannery.2bpp.lz" ; TODO
 ValeriePic:               INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:                INCBIN "gfx/trainers/walker.2bpp.lz"
 ImakuniPic:               INCBIN "gfx/trainers/imakuni.2bpp.lz"
 PikachuFlyFrontpic:       INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:        INCBIN "gfx/pics/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:      INCBIN "gfx/pics/pikachu_surf/front.2bpp.lz"
-PikachuPikaFrontpic:      INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
-PikachuChuchuFrontpic:    INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
-PichuSpikyFrontpic:       INCBIN "gfx/pics/pichu_spiky/front.2bpp.lz"
-PichuSpikyBackpic:        INCBIN "gfx/pics/pichu_spiky/back.2bpp.lz"
 
 
 SECTION "Pics 23", ROMX
 
+PikachuPikaFrontpic:      INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
+PikachuChuchuFrontpic:    INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
+PichuSpikyFrontpic:       INCBIN "gfx/pics/pichu_spiky/front.2bpp.lz"
+PichuSpikyBackpic:        INCBIN "gfx/pics/pichu_spiky/back.2bpp.lz"
 ArbokKantoFrontpic:       INCBIN "gfx/pics/arbok_kanto/front.2bpp.lz"
 ArbokKogaFrontpic:        INCBIN "gfx/pics/arbok_koga/front.2bpp.lz"
 ArbokAgathaFrontpic:      INCBIN "gfx/pics/arbok_agatha/front.2bpp.lz"

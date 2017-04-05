@@ -47,10 +47,9 @@ GoldTrophySpriteGFX:          INCBIN "gfx/overworld/gold_trophy.2bpp" ; c79c0
 SilverTrophySpriteGFX:        INCBIN "gfx/overworld/silver_trophy.2bpp" ; c7a00
 KrisSpriteGFX:                INCBIN "gfx/overworld/kris.2bpp" ; c7a40
 KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
-KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
-StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
 ChrisSurfSpriteGFX:           INCBIN "gfx/overworld/chris_surf.2bpp"
 KrisSurfSpriteGFX:            INCBIN "gfx/overworld/kris_surf.2bpp"
 CutTreeSpriteGFX:             INCBIN "gfx/overworld/cut_tree.2bpp"
 BookSpriteGFX:                INCBIN "gfx/overworld/book.2bpp"
 FossilSpriteGFX:              INCBIN "gfx/overworld/fossil.2bpp"
+SignSpriteGFX:                INCBIN "gfx/overworld/sign.2bpp"

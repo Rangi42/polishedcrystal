@@ -814,27 +814,33 @@ KRIS EQU __enum__
 
 	trainerclass SPARK ; 78
 
-	trainerclass VALERIE ; 79
+	trainerclass FLANNERY ; 79
 
-	trainerclass BILL_T ; 7a
+	trainerclass MAYLENE ; 7a
 
-	trainerclass YELLOW ; 7b
+	trainerclass SKYLA ; 7b
 
-	trainerclass WALKER ; 7c
+	trainerclass VALERIE ; 7c
 
-	trainerclass IMAKUNI ; 7d
+	trainerclass BILL_T ; 7d
 
-	trainerclass LAWRENCE ; 7e
+	trainerclass YELLOW ; 7e
 
-	trainerclass REI ; 7f
+	trainerclass WALKER ; 7f
 
-	trainerclass OMASTAR_FOSSIL ; 80
+	trainerclass IMAKUNI ; 80
 
-	trainerclass KABUTOPS_FOSSIL ; 81
+	trainerclass LAWRENCE ; 81
 
-	trainerclass AERODACTYL_FOSSIL ; 82
+	trainerclass REI ; 82
 
-	trainerclass METEORITE ; 83
+	trainerclass OMASTAR_FOSSIL ; 83
+
+	trainerclass KABUTOPS_FOSSIL ; 84
+
+	trainerclass AERODACTYL_FOSSIL ; 85
+
+	trainerclass METEORITE ; 86
 
 NUM_TRAINER_CLASSES EQU __enum__
 
