@@ -12,7 +12,11 @@ DimCave1F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 0
+	db 4
+	warp_def $2, $1e, 5, DIM_CAVE_2F
+	warp_def $11, $5, 6, DIM_CAVE_2F
+	warp_def $12, $1c, 7, DIM_CAVE_2F
+	warp_def $20, $18, 8, DIM_CAVE_2F
 
 .XYTriggers:
 	db 0

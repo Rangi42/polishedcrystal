@@ -230,8 +230,10 @@ CeruleanCape_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 1
+	db 3
 	warp_def $5, $b, 1, BILLS_HOUSE
+	warp_def $1d, $2a, 1, DIM_CAVE_2F
+	warp_def $1d, $2b, 1, DIM_CAVE_2F
 
 .XYTriggers:
 	db 2

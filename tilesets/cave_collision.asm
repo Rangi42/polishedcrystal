@@ -205,3 +205,4 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
 	tilecoll WALL, FLOOR, WALL, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
+	tilecoll FLOOR, WALL, FLOOR, WALL
