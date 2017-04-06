@@ -186,7 +186,9 @@ MrPokemonsHouse_OakWalksToPlayer:
 	step_end
 
 MrPokemonsHouse_OakTakesPokedex:
-	step_down
+	fix_facing
+	slide_step_down
+	remove_fixed_facing
 	step_end
 
 MrPokemonsHouse_OakExits:
