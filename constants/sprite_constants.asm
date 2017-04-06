@@ -287,7 +287,7 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 ; sprite movement data table indices
 	const_def
 	const SPRITEMOVEDATA_00                   ; 00
-	const SPRITEMOVEDATA_DOLL            ; 01
+	const SPRITEMOVEDATA_DOLL                 ; 01
 	const SPRITEMOVEDATA_WANDER               ; 02
 	const SPRITEMOVEDATA_SPINRANDOM_SLOW      ; 03
 	const SPRITEMOVEDATA_WALK_UP_DOWN         ; 04
