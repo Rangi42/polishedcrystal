@@ -523,18 +523,6 @@ WeirdTreeSprite: ; 1491c
 	sprite_header WeirdTreeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
 ; 14922
 
-UnownWSprite:
-	sprite_header UnownWSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
-UnownASprite:
-	sprite_header UnownASpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
-UnownRSprite:
-	sprite_header UnownRSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
-UnownPSprite:
-	sprite_header UnownPSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
 GyaradosTopLeftSprite:
 	sprite_header GyaradosTopLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 
@@ -547,47 +535,29 @@ GyaradosBottomLeftSprite:
 GyaradosBottomRightSprite:
 	sprite_header GyaradosBottomRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 
-PokeBallSprite: ; 14928
-	sprite_header PokeBallSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
-; 1492e
+BallCutFruitSprite:
+	sprite_header BallCutFruitSpriteGFX, 3, STANDING_SPRITE, PAL_OW_TREE
 
-PokedexSprite:
-	sprite_header PokedexSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
+RockBoulderFossilSprite:
+	sprite_header RockBoulderFossilSpriteGFX, 3, STANDING_SPRITE, PAL_OW_ROCK
 
-BookSprite: ; 1492e
-	sprite_header BookSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
-; 14934
+PaperUnownWSprite:
+	sprite_header PaperUnownWSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
-PaperSprite: ; 14934
-	sprite_header PaperSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
-; 1493a
+PokedexUnownASprite:
+	sprite_header PokedexUnownASpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
-RockSprite: ; 14946
-	sprite_header RockSpriteGFX, 1, STILL_SPRITE, PAL_OW_ROCK
-; 1494c
+BookUnownRSprite:
+	sprite_header BookUnownRSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
-BoulderSprite: ; 1494c
-	sprite_header BoulderSpriteGFX, 1, STILL_SPRITE, PAL_OW_ROCK
-; 14952
-
-CutTreeSprite:
-	sprite_header CutTreeSpriteGFX, 1, STILL_SPRITE, PAL_OW_TREE
-
-FruitTreeSprite: ; 1495e
-	sprite_header FruitTreeSpriteGFX, 1, STILL_SPRITE, PAL_OW_TREE
-; 14964
+SignUnownPSprite:
+	sprite_header SignUnownPSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
 ElectricFenceLeftSprite:
 	sprite_header ElectricFenceLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
 
 ElectricFenceRightSprite:
 	sprite_header ElectricFenceRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
-
-FossilSprite:
-	sprite_header FossilSpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
-
-SignSprite:
-	sprite_header SignSpriteGFX, 1, STILL_SPRITE, PAL_OW_SILVER
 
 SnesSprite: ; 14952
 	sprite_header SnesSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED

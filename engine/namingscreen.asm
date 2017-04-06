@@ -154,9 +154,9 @@ endr
 ; 117d1
 
 .Box: ; 117f5 (4:57f5)
-	ld de, PokeBallSpriteGFX
+	ld de, BallCutFruitSpriteGFX
 	ld hl, VTiles0 tile $00
-	lb bc, BANK(PokeBallSpriteGFX), $4
+	lb bc, BANK(BallCutFruitSpriteGFX), $4
 	call Request2bpp
 	xor a
 	ld hl, wSpriteAnimDict

@@ -146,33 +146,26 @@
 	const SPRITE_BIG_LAPRAS ; $8e
 	const SPRITE_BIG_ONIX ; $8f
 	const SPRITE_WEIRD_TREE ; $90
-	const SPRITE_UNOWN_W ; $91
-	const SPRITE_UNOWN_A ; $92
-	const SPRITE_UNOWN_R ; $93
-	const SPRITE_UNOWN_P ; $94
-	const SPRITE_GYARADOS_TOP_LEFT ; $95
-	const SPRITE_GYARADOS_TOP_RIGHT ; $96
-	const SPRITE_GYARADOS_BOTTOM_LEFT ; $97
-	const SPRITE_GYARADOS_BOTTOM_RIGHT ; $98
-	const SPRITE_POKE_BALL ; $99
-	const SPRITE_POKEDEX ; $9a
-	const SPRITE_BOOK ; $9b
-	const SPRITE_PAPER ; $9c
-	const SPRITE_ROCK ; $9d
-	const SPRITE_BOULDER ; $9e
-	const SPRITE_CUT_TREE ; $9f
-	const SPRITE_FRUIT_TREE ; $a0
-	const SPRITE_ELECTRIC_FENCE_LEFT ; $a1
-	const SPRITE_ELECTRIC_FENCE_RIGHT ; $a2
-	const SPRITE_FOSSIL ; $a3
-	const SPRITE_SIGN ; $a4
-	const SPRITE_SNES ; $a5
-	const SPRITE_N64 ; $a6
-	const SPRITE_GAMECUBE ; $a7
-	const SPRITE_WII ; $a8
-	const SPRITE_SILVER_TROPHY ; $a9
-	const SPRITE_GOLD_TROPHY ; $aa
+	const SPRITE_GYARADOS_TOP_LEFT ; $91
+	const SPRITE_GYARADOS_TOP_RIGHT ; $92
+	const SPRITE_GYARADOS_BOTTOM_LEFT ; $93
+	const SPRITE_GYARADOS_BOTTOM_RIGHT ; $94
+	const SPRITE_BALL_CUT_FRUIT ; $95
+	const SPRITE_ROCK_BOULDER_FOSSIL ; $96
+	const SPRITE_PAPER_UNOWN_W ; $97
+	const SPRITE_POKEDEX_UNOWN_A ; $98
+	const SPRITE_BOOK_UNOWN_R ; $99
+	const SPRITE_SIGN_UNOWN_P ; $9a
+	const SPRITE_ELECTRIC_FENCE_LEFT ; $9b
+	const SPRITE_ELECTRIC_FENCE_RIGHT ; $9c
+	const SPRITE_SNES ; $9d
+	const SPRITE_N64 ; $9e
+	const SPRITE_GAMECUBE ; $9f
+	const SPRITE_WII ; $a0
+	const SPRITE_SILVER_TROPHY ; $a1
+	const SPRITE_GOLD_TROPHY ; $a2
 
+const_value set $ab
 SPRITE_POKEMON EQU const_value
 	const SPRITE_BULBASAUR ; $ab
 	const SPRITE_CHARMANDER ; $ac
@@ -294,7 +287,7 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 ; sprite movement data table indices
 	const_def
 	const SPRITEMOVEDATA_00                   ; 00
-	const SPRITEMOVEDATA_ITEM_TREE            ; 01
+	const SPRITEMOVEDATA_DOLL            ; 01
 	const SPRITEMOVEDATA_WANDER               ; 02
 	const SPRITEMOVEDATA_SPINRANDOM_SLOW      ; 03
 	const SPRITEMOVEDATA_WALK_UP_DOWN         ; 04
