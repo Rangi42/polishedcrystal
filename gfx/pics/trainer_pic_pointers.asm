@@ -119,6 +119,9 @@
 	add_pic CandelaPic
 	add_pic BlanchePic
 	add_pic SparkPic
+	add_pic FlanneryPic
+	add_pic MaylenePic
+	add_pic SkylaPic
 	add_pic ValeriePic
 	add_pic BillPic
 	add_pic YellowPic

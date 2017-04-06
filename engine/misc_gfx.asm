@@ -121,7 +121,7 @@ CallInSafeGFXMode: ; 104177
 ; 10419c
 
 ._hl_ ; 10419c
-	jp [hl]
+	jp hl
 ; 10419d
 
 HDMATransferToWRAMBank3: ; 10419d (41:419d)

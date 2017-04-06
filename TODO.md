@@ -124,11 +124,8 @@ Find locations for:
 
 ### New music
 
-* S/M Battle! Trainer (for Shamouti trainers)
-* S/M Battle! Elite 4 (for the Elite 4)
 * X/Y Santalune Forest (for Seafoam Islands)
 * B/W Dragonspiral Tower (for haunted Lavender Radio Tower and/or Soul House basement)
 * B/W Black City (for Silph Co. and/or Lavender Radio Tower post-haunting)
-* X/Y Battle! Xerneas/Yveltal (for Celebi)
 * B/W Battle! Elite Four (for Caitlin)
 * S/M Malie City (Day) (for Shamouti Shrine)

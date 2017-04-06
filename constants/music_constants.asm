@@ -144,17 +144,20 @@
 	const MUSIC_MOUNT_CHIMNEY_RSE            ; 8d
 	const MUSIC_MOUNT_PYRE_RSE               ; 8e
 	const MUSIC_ABANDONED_SHIP_RSE           ; 8f
-	const MUSIC_CHAMPION_BATTLE_RSE          ; 90
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 91
-	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 92
-	const MUSIC_WALLY_BATTLE_ORAS            ; 93
-	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 94
-	const MUSIC_ZINNIA_BATTLE_ORAS           ; 95
-	const MUSIC_WILD_BATTLE_SM               ; 96
-	const MUSIC_TRAINER_BATTLE_SM            ; 97
-	const MUSIC_ELITE_FOUR_BATTLE_SM         ; 98
-	const MUSIC_MOTHER_BEAST_BATTLE_SM       ; 99
-	const MUSIC_LUGIAS_SONG_2000             ; 9a
+	const MUSIC_GYM_LEADER_BATTLE_RSE        ; 90
+	const MUSIC_GYM_LEADER_BATTLE_DPPT       ; 91
+	const MUSIC_GYM_LEADER_BATTLE_BW         ; 92
+	const MUSIC_CHAMPION_BATTLE_RSE          ; 93
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE    ; 94
+	const MUSIC_KANTO_LEGEND_BATTLE_XY       ; 95
+	const MUSIC_WALLY_BATTLE_ORAS            ; 96
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS        ; 97
+	const MUSIC_ZINNIA_BATTLE_ORAS           ; 98
+	const MUSIC_WILD_BATTLE_SM               ; 99
+	const MUSIC_TRAINER_BATTLE_SM            ; 9a
+	const MUSIC_ELITE_FOUR_BATTLE_SM         ; 9b
+	const MUSIC_MOTHER_BEAST_BATTLE_SM       ; 9c
+	const MUSIC_LUGIAS_SONG_2000             ; 9d
 	; special
-	const MUSIC_RADIO_TOWER                  ; 9b
-	const MUSIC_MAHOGANY_MART                ; 9c
+	const MUSIC_RADIO_TOWER                  ; 9e
+	const MUSIC_MAHOGANY_MART                ; 9f

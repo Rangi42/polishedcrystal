@@ -1,43 +1,47 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Map Headers", ROMX, BANK[MAP_HEADERS]
+SECTION "Map Headers", ROMX[$4000], BANK[MAP_HEADERS]
 
 INCLUDE "maps/map_headers.asm"
 
-SECTION "Second Map Headers", ROMX
+SECTION "Second Map Headers", ROMX[$5af3], BANK[$6F]
 
 INCLUDE "maps/second_map_headers.asm"
 
 
 
-SECTION "Map Blockdata 1", ROMX, BANK[MAPS_1]
+SECTION "Map Blockdata 1", ROMX[$4000], BANK[MAPS_1]
 
 INCLUDE "maps/blockdata_1.asm"
 
 
-SECTION "Map Blockdata 2", ROMX, BANK[MAPS_2]
+SECTION "Map Blockdata 2", ROMX[$4000], BANK[MAPS_2]
 
 INCLUDE "maps/blockdata_2.asm"
 
 
-SECTION "Map Blockdata 3", ROMX, BANK[MAPS_3]
+SECTION "Map Blockdata 3", ROMX[$4000], BANK[MAPS_3]
 
 INCLUDE "maps/blockdata_3.asm"
 
 
-SECTION "Map Blockdata 4", ROMX
+SECTION "Map Blockdata 4", ROMX[$4000], BANK[$7F]
 
 INCLUDE "maps/blockdata_4.asm"
 
 
-SECTION "Map Blockdata 5", ROMX
+SECTION "Map Blockdata 5", ROMX[$6296], BANK[$A]
 
 INCLUDE "maps/blockdata_5.asm"
 
 
+SECTION "Map Blockdata 6", ROMX[$77ff], BANK[$2]
 
-SECTION "Map Scripts 1", ROMX, BANK[MAP_SCRIPTS_1]
+INCLUDE "maps/blockdata_6.asm"
+
+
+SECTION "Map Scripts 1", ROMX[$4000], BANK[MAP_SCRIPTS_1]
 
 INCLUDE "maps/GoldenrodGym.asm"
 INCLUDE "maps/GoldenrodBikeShop.asm"
@@ -62,7 +66,7 @@ INCLUDE "maps/GoldenrodBandHouse.asm"
 INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
-SECTION "Map Scripts 2", ROMX, BANK[MAP_SCRIPTS_2]
+SECTION "Map Scripts 2", ROMX[$4000], BANK[MAP_SCRIPTS_2]
 
 INCLUDE "maps/RuinsofAlphAerodactylChamber.asm"
 INCLUDE "maps/RuinsofAlphAerodactylItemRoom.asm"
@@ -94,7 +98,7 @@ INCLUDE "maps/EcruteakCherishBallHouse.asm"
 INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
 
 
-SECTION "Map Scripts 3", ROMX, BANK[MAP_SCRIPTS_3]
+SECTION "Map Scripts 3", ROMX[$4000], BANK[MAP_SCRIPTS_3]
 
 INCLUDE "maps/NationalPark.asm"
 INCLUDE "maps/NationalParkBugContest.asm"
@@ -106,7 +110,7 @@ INCLUDE "maps/RadioTower5F.asm"
 INCLUDE "maps/VioletNicknameSpeechHouse.asm"
 
 
-SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
+SECTION "Map Scripts 4", ROMX[$4000], BANK[MAP_SCRIPTS_4]
 
 INCLUDE "maps/GoldenrodPokeComCenter1F.asm"
 INCLUDE "maps/GoldenrodPokeComCenterOffice.asm"
@@ -122,7 +126,7 @@ INCLUDE "maps/Route34IlexForestGate.asm"
 INCLUDE "maps/ViridianSchoolHouse.asm"
 
 
-SECTION "Map Scripts 5", ROMX, BANK[MAP_SCRIPTS_5]
+SECTION "Map Scripts 5", ROMX[$4000], BANK[MAP_SCRIPTS_5]
 
 INCLUDE "maps/VioletPokeCenter1F.asm"
 INCLUDE "maps/Route32PokeCenter1F.asm"
@@ -137,7 +141,7 @@ INCLUDE "maps/TeamRocketBaseB1F.asm"
 INCLUDE "maps/MahoganyMart1F.asm"
 
 
-SECTION "Map Scripts 6", ROMX, BANK[MAP_SCRIPTS_6]
+SECTION "Map Scripts 6", ROMX[$4000], BANK[MAP_SCRIPTS_6]
 
 INCLUDE "maps/LakeofRage.asm"
 INCLUDE "maps/Route35Coast.asm"
@@ -149,7 +153,7 @@ INCLUDE "maps/CeladonDeptStore2F.asm"
 INCLUDE "maps/CeladonDeptStore3F.asm"
 
 
-SECTION "Map Scripts 7", ROMX, BANK[MAP_SCRIPTS_7]
+SECTION "Map Scripts 7", ROMX[$4000], BANK[MAP_SCRIPTS_7]
 
 INCLUDE "maps/CeladonPokeCenter1F.asm"
 INCLUDE "maps/CeladonDeptStore4F.asm"
@@ -180,7 +184,7 @@ INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
 
 
-SECTION "Map Scripts 8", ROMX, BANK[MAP_SCRIPTS_8]
+SECTION "Map Scripts 8", ROMX[$4000], BANK[MAP_SCRIPTS_8]
 
 INCLUDE "maps/FastShip1F.asm"
 INCLUDE "maps/FastShipCabins_NNW_NNE_NE.asm"
@@ -198,7 +202,7 @@ INCLUDE "maps/KrissNeighborsHouse.asm"
 INCLUDE "maps/Route26HealSpeechHouse.asm"
 
 
-SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
+SECTION "Map Scripts 9", ROMX[$4000], BANK[MAP_SCRIPTS_9]
 
 INCLUDE "maps/KrissHouse1F.asm"
 INCLUDE "maps/KrissHouse2F.asm"
@@ -222,7 +226,7 @@ INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/GoldenrodHarborGate.asm"
 
 
-SECTION "Map Scripts 10", ROMX, BANK[MAP_SCRIPTS_10]
+SECTION "Map Scripts 10", ROMX[$4000], BANK[MAP_SCRIPTS_10]
 
 INCLUDE "maps/EcruteakPokeCenter1F.asm"
 INCLUDE "maps/LavenderPokeCenter1F.asm"
@@ -254,7 +258,7 @@ INCLUDE "maps/Route2NuggetSpeechHouse.asm"
 INCLUDE "maps/Route2Gate.asm"
 
 
-SECTION "Map Scripts 11", ROMX, BANK[MAP_SCRIPTS_11]
+SECTION "Map Scripts 11", ROMX[$4000], BANK[MAP_SCRIPTS_11]
 
 INCLUDE "maps/OlivinePokeCenter1F.asm"
 INCLUDE "maps/ViridianPokeCenter1F.asm"
@@ -279,7 +283,7 @@ INCLUDE "maps/CianwoodLugiaSpeechHouse.asm"
 INCLUDE "maps/StatsJudgesHouse.asm"
 
 
-SECTION "Map Scripts 12", ROMX, BANK[MAP_SCRIPTS_12]
+SECTION "Map Scripts 12", ROMX[$4000], BANK[MAP_SCRIPTS_12]
 
 INCLUDE "maps/IndigoPlateauPokeCenter1F.asm"
 INCLUDE "maps/BattleTower1F.asm"
@@ -304,7 +308,7 @@ INCLUDE "maps/CeruleanCoupleHouse.asm"
 INCLUDE "maps/CeruleanWaterShowSpeechHouse.asm"
 
 
-SECTION "Map Scripts 13", ROMX, BANK[MAP_SCRIPTS_13]
+SECTION "Map Scripts 13", ROMX[$4000], BANK[MAP_SCRIPTS_13]
 
 INCLUDE "maps/CeruleanPokeCenter1F.asm"
 INCLUDE "maps/SproutTower3F.asm"
@@ -325,7 +329,7 @@ INCLUDE "maps/CeruleanPoliceStation.asm"
 INCLUDE "maps/CeruleanTradeSpeechHouse.asm"
 
 
-SECTION "Map Scripts 14", ROMX, BANK[MAP_SCRIPTS_14]
+SECTION "Map Scripts 14", ROMX[$4000], BANK[MAP_SCRIPTS_14]
 
 INCLUDE "maps/SaffronPokeCenter1F.asm"
 INCLUDE "maps/Route10PokeCenter1F.asm"
@@ -349,7 +353,7 @@ INCLUDE "maps/SilverCaveRoom3.asm"
 INCLUDE "maps/CharcoalKiln.asm"
 
 
-SECTION "Map Scripts 15", ROMX, BANK[MAP_SCRIPTS_15]
+SECTION "Map Scripts 15", ROMX[$4000], BANK[MAP_SCRIPTS_15]
 
 INCLUDE "maps/AzaleaPokeCenter1F.asm"
 INCLUDE "maps/PewterCity.asm"
@@ -373,7 +377,7 @@ INCLUDE "maps/TrainerHouse1F.asm"
 INCLUDE "maps/MahoganyTown.asm"
 
 
-SECTION "Map Scripts 16", ROMX, BANK[MAP_SCRIPTS_16]
+SECTION "Map Scripts 16", ROMX[$4000], BANK[MAP_SCRIPTS_16]
 
 INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/VermilionPokeCenter1F.asm"
@@ -397,7 +401,7 @@ INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route43Gate.asm"
 
 
-SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]
+SECTION "Map Scripts 17", ROMX[$4000], BANK[MAP_SCRIPTS_17]
 
 INCLUDE "maps/BlackthornPokeCenter1F.asm"
 INCLUDE "maps/FuchsiaPokeCenter1F.asm"
@@ -429,7 +433,7 @@ INCLUDE "maps/RedsHouse1F.asm"
 INCLUDE "maps/RedsHouse2F.asm"
 
 
-SECTION "Map Scripts 18", ROMX, BANK[MAP_SCRIPTS_18]
+SECTION "Map Scripts 18", ROMX[$4000], BANK[MAP_SCRIPTS_18]
 
 INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
 INCLUDE "maps/LakeofRageMagikarpHouse.asm"
@@ -442,7 +446,7 @@ INCLUDE "maps/BluesHouse2F.asm"
 INCLUDE "maps/OaksLab.asm"
 
 
-SECTION "Map Scripts 19", ROMX, BANK[MAP_SCRIPTS_19]
+SECTION "Map Scripts 19", ROMX[$4000], BANK[MAP_SCRIPTS_19]
 
 INCLUDE "maps/PewterPokeCenter1F.asm"
 INCLUDE "maps/CherrygroveCity.asm"
@@ -461,7 +465,7 @@ INCLUDE "maps/Route20.asm"
 INCLUDE "maps/Route21.asm"
 
 
-SECTION "Map Scripts 20", ROMX, BANK[MAP_SCRIPTS_20]
+SECTION "Map Scripts 20", ROMX[$4000], BANK[MAP_SCRIPTS_20]
 
 INCLUDE "maps/CianwoodCity.asm"
 INCLUDE "maps/Route27.asm"
@@ -476,7 +480,7 @@ INCLUDE "maps/Route31.asm"
 INCLUDE "maps/Route39.asm"
 
 
-SECTION "Map Scripts 21", ROMX, BANK[MAP_SCRIPTS_21]
+SECTION "Map Scripts 21", ROMX[$4000], BANK[MAP_SCRIPTS_21]
 
 INCLUDE "maps/EcruteakCity.asm"
 INCLUDE "maps/ValeriesHouse.asm"
@@ -490,7 +494,7 @@ INCLUDE "maps/CeladonCity.asm"
 INCLUDE "maps/BlackthornCity.asm"
 
 
-SECTION "Map Scripts 22", ROMX, BANK[MAP_SCRIPTS_22]
+SECTION "Map Scripts 22", ROMX[$4000], BANK[MAP_SCRIPTS_22]
 
 INCLUDE "maps/CinnabarPokeCenter1F.asm"
 INCLUDE "maps/EcruteakShrineOutside.asm"
@@ -511,7 +515,7 @@ INCLUDE "maps/Route14.asm"
 INCLUDE "maps/LavenderTown.asm"
 
 
-SECTION "Map Scripts 23", ROMX, BANK[MAP_SCRIPTS_23]
+SECTION "Map Scripts 23", ROMX[$4000], BANK[MAP_SCRIPTS_23]
 
 INCLUDE "maps/SilverCavePokeCenter1F.asm"
 INCLUDE "maps/Route36VioletGate.asm"
@@ -546,7 +550,7 @@ INCLUDE "maps/SafariZoneEast.asm"
 INCLUDE "maps/SafariZoneNorth.asm"
 
 
-SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
+SECTION "Map Scripts 24", ROMX[$4000], BANK[MAP_SCRIPTS_24]
 
 INCLUDE "maps/Route12North.asm"
 INCLUDE "maps/Route12South.asm"
@@ -581,7 +585,7 @@ INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
 
 
-SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
+SECTION "Map Scripts 25", ROMX[$606b], BANK[MAP_SCRIPTS_25]
 
 INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/Route5.asm"
@@ -596,7 +600,7 @@ INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
 
 
-SECTION "Map Scripts 26", ROMX, BANK[MAP_SCRIPTS_26]
+SECTION "Map Scripts 26", ROMX[$4000], BANK[MAP_SCRIPTS_26]
 
 INCLUDE "maps/YellowForestGate.asm"
 INCLUDE "maps/YellowForest.asm"
@@ -609,7 +613,7 @@ INCLUDE "maps/Route17.asm"
 INCLUDE "maps/Route45.asm"
 
 
-SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
+SECTION "Map Scripts 27", ROMX[$4000], BANK[MAP_SCRIPTS_27]
 
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
@@ -624,7 +628,7 @@ INCLUDE "maps/SeafoamIslandsB4F.asm"
 INCLUDE "maps/CeruleanBikeShop.asm"
 
 
-SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
+SECTION "Map Scripts 28", ROMX[$4000], BANK[MAP_SCRIPTS_28]
 
 INCLUDE "maps/Route3PokeCenter1F.asm"
 INCLUDE "maps/Route10North.asm"
@@ -635,7 +639,7 @@ INCLUDE "maps/CinnabarLab.asm"
 INCLUDE "maps/ElmsLab.asm"
 
 
-SECTION "Map Scripts 29", ROMX
+SECTION "Map Scripts 29", ROMX[$5b01], BANK[$6E]
 
 INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/Route23.asm"
@@ -704,3 +708,8 @@ INCLUDE "maps/CeladonHotelRoom1.asm"
 INCLUDE "maps/CeladonHotelRoom2.asm"
 INCLUDE "maps/CeladonHotelRoom3.asm"
 INCLUDE "maps/CeladonHotelPool.asm"
+INCLUDE "maps/DimCave1F.asm"
+INCLUDE "maps/DimCave2F.asm"
+INCLUDE "maps/DimCave3F.asm"
+INCLUDE "maps/DimCave4F.asm"
+INCLUDE "maps/DimCave5F.asm"

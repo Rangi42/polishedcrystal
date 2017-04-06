@@ -438,7 +438,7 @@ CeladonDeptStore3F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70d31, -1
 	person_event SPRITE_SUPER_NERD, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x70d4a, -1
 	person_event SPRITE_CLERK, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VideoGameClerkScript, -1
-	person_event SPRITE_SNES, 3, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
-	person_event SPRITE_N64, 5, 1, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
-	person_event SPRITE_GAMECUBE, 3, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
-	person_event SPRITE_WII, 5, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1
+	person_event SPRITE_SNES, 3, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
+	person_event SPRITE_N64, 5, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
+	person_event SPRITE_GAMECUBE, 3, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
+	person_event SPRITE_WII, 5, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1

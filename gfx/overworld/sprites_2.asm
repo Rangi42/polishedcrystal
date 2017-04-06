@@ -34,23 +34,14 @@ BigOnixSpriteGFX:             INCBIN "gfx/overworld/big_onix.2bpp" ; c7080
 N64SpriteGFX:                 INCBIN "gfx/overworld/n64.2bpp" ; c7140
 WeirdTreeSpriteGFX:           INCBIN "gfx/overworld/weird_tree.2bpp" ; c7180
 LaprasSpriteGFX:              INCBIN "gfx/overworld/lapras.2bpp" ; c7200
-PokeBallSpriteGFX:            INCBIN "gfx/overworld/poke_ball.2bpp" ; c7380
-PokedexSpriteGFX:             INCBIN "gfx/overworld/pokedex.2bpp" ; c7500
-PaperSpriteGFX:               INCBIN "gfx/overworld/paper.2bpp" ; c7680
 GameCubeSpriteGFX:            INCBIN "gfx/overworld/gamecube.2bpp" ; c7800
-RockSpriteGFX:                INCBIN "gfx/overworld/rock.2bpp" ; c7880
-BoulderSpriteGFX:             INCBIN "gfx/overworld/boulder.2bpp" ; c78c0
 SnesSpriteGFX:                INCBIN "gfx/overworld/snes.2bpp" ; c7900
 WiiSpriteGFX:                 INCBIN "gfx/overworld/wii.2bpp" ; c7940
-FruitTreeSpriteGFX:           INCBIN "gfx/overworld/fruit_tree.2bpp" ; c7980
 GoldTrophySpriteGFX:          INCBIN "gfx/overworld/gold_trophy.2bpp" ; c79c0
 SilverTrophySpriteGFX:        INCBIN "gfx/overworld/silver_trophy.2bpp" ; c7a00
 KrisSpriteGFX:                INCBIN "gfx/overworld/kris.2bpp" ; c7a40
 KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
-KurtOutsideSpriteGFX:         INCBIN "gfx/overworld/kurt_outside.2bpp" ; c7d40
-StandingYoungsterSpriteGFX:   INCBIN "gfx/overworld/standing_youngster.2bpp" ; c7ec0
 ChrisSurfSpriteGFX:           INCBIN "gfx/overworld/chris_surf.2bpp"
 KrisSurfSpriteGFX:            INCBIN "gfx/overworld/kris_surf.2bpp"
-CutTreeSpriteGFX:             INCBIN "gfx/overworld/cut_tree.2bpp"
-BookSpriteGFX:                INCBIN "gfx/overworld/book.2bpp"
-FossilSpriteGFX:              INCBIN "gfx/overworld/fossil.2bpp"
+BallCutFruitSpriteGFX:        INCBIN "gfx/overworld/ball_cut_fruit.2bpp"
+RockBoulderFossilSpriteGFX:   INCBIN "gfx/overworld/rock_boulder_fossil.2bpp"

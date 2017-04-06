@@ -350,7 +350,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
 	mapgroup ROUTE_14,                                   18, 12 ;  4
 	mapgroup ROUTE_15,                                    9, 20 ;  5
-	mapgroup ROUTE_18_EAST,                               9, 14 ;  6
+	mapgroup ROUTE_18_EAST,                              10, 14 ;  6
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  7
 	mapgroup FUCHSIA_MART,                                4,  6 ;  8
 	mapgroup FUCHSIA_GYM,                                 9,  5 ;  9
@@ -598,6 +598,11 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_9,                                     9, 26 ;  1
 	mapgroup ROUTE_10_NORTH,                             29, 10 ;  2
+	mapgroup DIM_CAVE_1F,                                18, 17 ;  3
+	mapgroup DIM_CAVE_2F,                                18, 17 ;  4
+	mapgroup DIM_CAVE_3F,                                17, 16 ;  5
+	mapgroup DIM_CAVE_4F,                                16, 16 ;  6
+	mapgroup DIM_CAVE_5F,                                17, 17 ;  7
 
 	newgroup                                                    ; 29
 

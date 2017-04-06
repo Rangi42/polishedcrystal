@@ -29,7 +29,7 @@ endr
 	ld h, [hl]
 	ld l, a
 	pop de
-	jp [hl]
+	jp hl
 
 ; SECTION "rst30",ROM0[$30]
 ; rst30 is midst rst28

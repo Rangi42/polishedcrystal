@@ -10,7 +10,7 @@ const_value set 2
 	const AZALEATOWN_FRUIT_TREE
 	const AZALEATOWN_SILVER
 	const AZALEATOWN_AZALEA_ROCKET3
-	const AZALEATOWN_KURT_OUTSIDE
+	const AZALEATOWN_KURT
 
 AzaleaTown_MapScriptHeader:
 .MapTriggers:
@@ -156,13 +156,13 @@ AzaleaTown_CelebiEventScript:
 	opentext
 	writetext IlexForestIsRestlessText
 	buttonsound
-	spriteface AZALEATOWN_KURT_OUTSIDE, RIGHT
+	spriteface AZALEATOWN_KURT, RIGHT
 	writetext HeresTheGSBallBackText
 	buttonsound
 	writetext PleaseInvestigateIlexForestText
 	waitbutton
 	verbosegiveitem GS_BALL
-	spriteface AZALEATOWN_KURT_OUTSIDE, LEFT
+	spriteface AZALEATOWN_KURT, LEFT
 	setflag ENGINE_HAVE_EXAMINED_GS_BALL
 	clearevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
@@ -175,7 +175,7 @@ AzaleaTownKurtScript:
 	opentext
 	writetext PleaseInvestigateIlexForestText
 	waitbutton
-	spriteface AZALEATOWN_KURT_OUTSIDE, LEFT
+	spriteface AZALEATOWN_KURT, LEFT
 	closetext
 	end
 
@@ -483,7 +483,7 @@ AzaleaTown_MapEventHeader:
 	person_event SPRITE_SLOWPOKE, 9, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	person_event SPRITE_SLOWPOKE, 9, 29, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	person_event SPRITE_SLOWPOKE, 15, 15, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
-	person_event SPRITE_FRUIT_TREE, 2, 8, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WhiteApricornTree, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WhiteApricornTree, -1
 	person_event SPRITE_AZALEA_ROCKET, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
 	person_event SPRITE_AZALEA_ROCKET, 16, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownRocket2Script, EVENT_SLOWPOKE_WELL_ROCKETS
-	person_event SPRITE_KURT_OUTSIDE, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
+	person_event SPRITE_KURT, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT

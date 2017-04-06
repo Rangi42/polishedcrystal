@@ -1,7 +1,7 @@
 const_value set 2
 	const OLIVINECITY_OLIVINE_RIVAL
 	const OLIVINECITY_SWIMMER_GIRL
-	const OLIVINECITY_STANDING_YOUNGSTER1
+	const OLIVINECITY_YOUNGSTER1
 	const OLIVINECITY_SAILOR1
 	const OLIVINECITY_SAILOR2
 	const OLIVINECITY_FISHER
@@ -11,7 +11,7 @@ const_value set 2
 	const OLIVINECITY_SAILOR4
 	const OLIVINECITY_SAILOR5
 	const OLIVINECITY_LASS1
-	const OLIVINECITY_STANDING_YOUNGSTER2
+	const OLIVINECITY_YOUNGSTER2
 	const OLIVINECITY_LASS2
 
 OlivineCity_MapScriptHeader:
@@ -91,7 +91,7 @@ OlivineCityRivalLighthouseScript:
 	special RunCallback_04
 	end
 
-OlivineCityStandingYoungster1Script:
+OlivineCityYoungster1Script:
 	faceplayer
 	opentext
 	random $2
@@ -134,8 +134,8 @@ OlivineCitySailor5Script:
 OlivineCityLass1Script:
 	jumptextfaceplayer OlivineCityLass1Text
 
-OlivineCityStandingYoungster2Script:
-	jumptextfaceplayer OlivineCityStandingYoungster2Text
+OlivineCityYoungster2Script:
+	jumptextfaceplayer OlivineCityYoungster2Text
 
 OlivineCityLass2Script:
 	jumptextfaceplayer OlivineCityLass2Text
@@ -425,7 +425,7 @@ OlivineCityLass1Text:
 	line "they're harmless."
 	done
 
-OlivineCityStandingYoungster2Text:
+OlivineCityYoungster2Text:
 	text "Why do sailors"
 	line "like singing so"
 	cont "much?"
@@ -512,7 +512,7 @@ OlivineCity_MapEventHeader:
 	db 14
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
 	person_event SPRITE_SWIMMER_GIRL, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJill, -1
-	person_event SPRITE_STANDING_YOUNGSTER, 8, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster1Script, -1
+	person_event SPRITE_YOUNGSTER, 8, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster1Script, -1
 	person_event SPRITE_SAILOR, 22, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor1Script, -1
 	person_event SPRITE_SAILOR, 21, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor2Script, -1
 	person_event SPRITE_FISHER, 17, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityFisherScript, -1
@@ -522,5 +522,5 @@ OlivineCity_MapEventHeader:
 	person_event SPRITE_SAILOR, 16, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor4Script, -1
 	person_event SPRITE_SAILOR, 17, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor5Script, -1
 	person_event SPRITE_LASS, 11, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityLass1Script, -1
-	person_event SPRITE_STANDING_YOUNGSTER, 11, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityStandingYoungster2Script, -1
+	person_event SPRITE_YOUNGSTER, 11, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster2Script, -1
 	person_event SPRITE_LASS, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, OlivineCityLass2Script, -1

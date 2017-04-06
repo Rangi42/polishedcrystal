@@ -1,6 +1,7 @@
 INCLUDE "includes.asm"
 
-SECTION "Credits", ROMX, BANK[CREDITS]
+SECTION "Credits", ROMX[$4440], BANK[CREDITS]
+
 
 	const_def
 	const SATOSHI_TAJIRI
@@ -270,7 +271,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 ; 109937
 
 

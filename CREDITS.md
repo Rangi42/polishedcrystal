@@ -15,7 +15,7 @@
 
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.
 * FroggestSpirit for ported and demixed music from RBY, HGSS, DPPt, and BW.
-* Pum for the Valerie battle and Lugia theme music.
+* Pum for the Flannery, Maylene, and Valerie battle and Lugia theme music.
 * ShantyTown for the Rock Tunnel (XY Power Plant) and Cycling Road (XY Bicycle) music.
 * Pigu for battle music (used in TPP Anniversary Crystal 251).
 

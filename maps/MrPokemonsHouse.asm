@@ -186,7 +186,9 @@ MrPokemonsHouse_OakWalksToPlayer:
 	step_end
 
 MrPokemonsHouse_OakTakesPokedex:
-	step_down
+	fix_facing
+	slide_step_down
+	remove_fixed_facing
 	step_end
 
 MrPokemonsHouse_OakExits:
@@ -430,4 +432,4 @@ MrPokemonsHouse_MapEventHeader:
 	db 3
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
 	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	person_event SPRITE_POKEDEX, 4, 4, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+	person_event SPRITE_POKEDEX_UNOWN_A, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK

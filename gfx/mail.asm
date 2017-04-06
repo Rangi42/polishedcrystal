@@ -86,7 +86,7 @@ endr
 	ld de, .done
 	pop bc
 	push de
-	jp [hl]
+	jp hl
 .done
 	ret
 ; b92f8

@@ -13,7 +13,12 @@ Route16GateOfficerScript:
 	end
 
 Route16GateOfficerText:
-	text "…"
+	text "Route 16 is a bit"
+	line "untamed."
+
+	para "You'll need HM"
+	line "moves to get"
+	cont "through."
 	done
 
 Route16Gate_MapEventHeader:

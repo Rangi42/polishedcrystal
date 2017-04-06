@@ -1,6 +1,7 @@
 INCLUDE "includes.asm"
 
-SECTION "Events", ROMX, BANK[EVENTS]
+SECTION "Events", ROMX[$53de], BANK[EVENTS]
+
 
 OverworldLoop:: ; 966b0
 	xor a
@@ -540,7 +541,7 @@ TryObjectEvent: ; 969b5
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 .nope_bugged
 	; pop bc

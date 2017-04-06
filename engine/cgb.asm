@@ -19,7 +19,7 @@ Predef_LoadCGBLayout: ; 8d59
 	ld l, a
 	ld de, .ReturnFromJumpTable
 	push de
-	jp [hl]
+	jp hl
 ; 8d79
 
 .ReturnFromJumpTable: ; 8d79
@@ -640,7 +640,7 @@ _CGB07: ; 9122
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 ; 912d
 
 Jumptable_912d: ; 912d

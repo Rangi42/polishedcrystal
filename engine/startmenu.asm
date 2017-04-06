@@ -53,7 +53,7 @@ StartMenu:: ; 125cd
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 .MenuReturns:
 	dw .Reopen
@@ -196,7 +196,7 @@ StartMenu:: ; 125cd
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 ; 127ef
 
 .MenuString: ; 127ef
@@ -639,7 +639,7 @@ PokemonActionSubmenu: ; 12a88
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 .nothing
 	xor a

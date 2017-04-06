@@ -33,7 +33,7 @@ endr
 	ld h, [hl]
 	ld l, a
 
-	jp [hl]
+	jp hl
 ; fc01b
 
 

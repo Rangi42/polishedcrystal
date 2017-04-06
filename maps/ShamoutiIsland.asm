@@ -69,4 +69,4 @@ ShamoutiIsland_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_ITEM_TREE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
+	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME

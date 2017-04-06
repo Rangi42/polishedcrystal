@@ -66,7 +66,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 ; 170249
 
 .dw ; 170249

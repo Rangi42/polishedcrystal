@@ -10,7 +10,7 @@ Function11d0b6: ; 11d0b6 (47:50b6)
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp [hl]
+	jp hl
 
 .Jumptable:
 	dw .zero
