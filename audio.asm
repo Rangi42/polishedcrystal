@@ -218,6 +218,12 @@ INCLUDE "audio/music/custom/lugiassong.asm"
 SECTION "Extra Songs 7", ROMX
 
 INCLUDE "audio/music/rse/gymleaderbattle.asm"
+INCLUDE "audio/music/dppt/gymleaderbattle.asm"
+INCLUDE "audio/music/bw/gymleaderbattle.asm"
+
+
+SECTION "Extra Songs 8", ROMX
+
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
 INCLUDE "audio/music/sm/elitefourbattle.asm"

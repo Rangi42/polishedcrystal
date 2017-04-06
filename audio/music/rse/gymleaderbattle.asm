@@ -4,8 +4,6 @@
 ; https://hax.iimarck.us/topic/6777/
 
 Music_GymLeaderBattleRSE:
-Music_GymLeaderBattleDPPt: ; TODO
-Music_GymLeaderBattleBW: ; TODO
 	dbw $c0, Music_GymLeaderBattleRSE_Ch1
 	dbw $01, Music_GymLeaderBattleRSE_Ch2
 	dbw $02, Music_GymLeaderBattleRSE_Ch3

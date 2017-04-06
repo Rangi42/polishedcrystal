@@ -29,6 +29,8 @@ def convert(filename):
 	return '\n'.join(lines)
 
 def convert_line(line):
+	line = line.replace(',', ', ').replace('|', ' | ').replace('  ', ' ')
+
 	# Example: db oct0 == octave 1
 	# Example: db oct5 == octave 6
 	if line.startswith('db oct'):
