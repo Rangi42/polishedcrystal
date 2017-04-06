@@ -1111,10 +1111,10 @@ BrunoGroup:
 		db DIG
 		db PROTECT
 
-	db 52, PINSIR, SILVERPOWDER
+	db 52, HERACROSS, SILVERPOWDER
 		db SWORDS_DANCE
 		db EARTHQUAKE
-		db X_SCISSOR
+		db MEGAHORN
 if DEF(FAITHFUL)
 		db SUBMISSION
 else
@@ -1161,7 +1161,7 @@ endc
 		db COUNTER
 		db HI_JUMP_KICK
 
-	db 71, PINSIR, SILVERPOWDER
+	db 71, HERACROSS, SILVERPOWDER
 		db SWORDS_DANCE
 		db EARTHQUAKE
 		db MEGAHORN
@@ -12687,6 +12687,22 @@ endc
 CherylGroup:
 ; ================================
 ; ================
+
+	; CHERYL
+	db "Cheryl@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 50, BLISSEY
+	db 50, NIDOQUEEN
+	db 50, CLEFABLE
+	db 50, WIGGLYTUFF
+	db 50, AZUMARILL
+	db 50, WOBBUFFET
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12694,6 +12710,22 @@ CherylGroup:
 RileyGroup:
 ; ================================
 ; ================
+
+	; RILEY
+	db "Riley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 50, MACHAMP
+	db 50, RHYPERIOR
+	db 50, DRAGONITE
+	db 50, NIDOKING
+	db 50, ELECTIVIRE
+	db 50, MAMOSWINE
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12701,6 +12733,23 @@ RileyGroup:
 BuckGroup:
 ; ================================
 ; ================
+
+	; BUCK
+	db "Buck@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	; TODO: UMBREON
+	db 50, GOLEM
+	db 50, POLIWRATH
+	db 50, FORRETRESS
+	db 50, SKARMORY
+	db 50, STEELIX
+	db 50, CLOYSTER
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12708,6 +12757,23 @@ BuckGroup:
 MarleyGroup:
 ; ================================
 ; ================
+
+	; MARLEY
+	db "Marley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	; TODO: WEAVILE
+	db 50, ARCANINE
+	db 50, PIDGEOT
+	db 50, RAICHU
+	db 50, CROBAT
+	db 50, ELECTRODE
+	db 50, AERODACTYL
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12715,6 +12781,23 @@ MarleyGroup:
 MiraGroup:
 ; ================================
 ; ================
+
+	; MIRA
+	db "Mira@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	; TODO: TOGEKISS
+	db 50, ALAKAZAM
+	db 50, GENGAR
+	db 50, VILEPLUME
+	db 50, MAGMORTAR
+	db 50, PORYGON_Z
+	db 50, MAGNEZONE
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12722,6 +12805,24 @@ MiraGroup:
 AnabelGroup:
 ; ================================
 ; ================
+
+	; ANABEL
+	db "Anabel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	; TODO: ALAKZAM
+	; TODO: ESPEON
+	db 50, SNORLAX
+	db 50, SLOWKING
+	db 50, BLASTOISE
+	db 50, BELLOSSOM
+	db 50, POLITOED
+	db 50, MR__MIME
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12801,6 +12902,22 @@ SparkGroup:
 FlanneryGroup:
 ; ================================
 ; ================
+
+	; FLANNERY
+	db "Flannery@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 50, MAGCARGO
+	db 50, ARCANINE
+	db 50, HOUNDOOM
+	db 50, RAPIDASH
+	db 50, NINETALES
+	db 50, MAGMORTAR
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12808,6 +12925,27 @@ FlanneryGroup:
 MayleneGroup:
 ; ================================
 ; ================
+
+	; MAYLENE
+	db "Maylene@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 50, MACHAMP
+	db 50, HITMONTOP
+	db 50, HITMONLEE
+	db 50, HITMONCHAN
+if DEF(FAITHFUL)
+	db 50, HERACROSS
+	db 50, PRIMEAPE
+else
+	db 50, ELECTIVIRE
+	db 50, MAGMORTAR
+endc
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12815,6 +12953,22 @@ MayleneGroup:
 SkylaGroup:
 ; ================================
 ; ================
+
+	; SKYLA
+	db "Skyla@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 50, FARFETCH_D
+	db 50, PIDGEOT
+	db 50, XATU
+	db 50, MANTINE
+	db 50, CROBAT
+	db 50, SKARMORY
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -13206,6 +13360,22 @@ endc
 ImakuniGroup:
 ; ================================
 ; ================
+
+	; IMAKUNI
+	db "Imakuni@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 50, GOLDUCK
+	db 50, SLOWBRO
+	db 50, HYPNO
+	db 50, FARFETCH_D
+	db 50, DODRIO
+	db 50, WOBBUFFET
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
