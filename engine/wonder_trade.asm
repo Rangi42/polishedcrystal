@@ -317,8 +317,8 @@ endr
 	call Random
 	and $80 ; $00 is FEMALE, $80 is MALE; ignored if genderless
 	ld b, a
-	; Random form (ignored unless Unown)
-	call Random
+	; Form 1
+	ld a, 1
 	and FORM_MASK
 	add b
 	ld [Buffer1 + 1], a
