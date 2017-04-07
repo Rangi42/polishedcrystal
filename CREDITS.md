@@ -24,7 +24,7 @@
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
-* bloodless for sprites of Buck, Veteran♂, Pikachu, Diglett, and Dugtrio.
+* bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, Pikachu, Diglett, and Dugtrio.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.

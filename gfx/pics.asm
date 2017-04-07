@@ -835,8 +835,8 @@ CandelaPic:               INCBIN "gfx/trainers/candela.2bpp.lz"
 BlanchePic:               INCBIN "gfx/trainers/blanche.2bpp.lz"
 SparkPic:                 INCBIN "gfx/trainers/spark.2bpp.lz"
 FlanneryPic:              INCBIN "gfx/trainers/flannery.2bpp.lz"
-MaylenePic:               INCBIN "gfx/trainers/flannery.2bpp.lz" ; TODO
-SkylaPic:                 INCBIN "gfx/trainers/flannery.2bpp.lz" ; TODO
+MaylenePic:               INCBIN "gfx/trainers/maylene.2bpp.lz"
+SkylaPic:                 INCBIN "gfx/trainers/skyla.2bpp.lz"
 ValeriePic:               INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:                INCBIN "gfx/trainers/walker.2bpp.lz"
 ImakuniPic:               INCBIN "gfx/trainers/imakuni.2bpp.lz"
