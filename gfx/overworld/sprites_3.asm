@@ -21,7 +21,7 @@ LeafSpriteGFX:                INCBIN "gfx/overworld/leaf.2bpp"
 LoreleiSpriteGFX:             INCBIN "gfx/overworld/lorelei.2bpp"
 LyraSpriteGFX:                INCBIN "gfx/overworld/lyra.2bpp"
 MarleySpriteGFX:              INCBIN "gfx/overworld/marley.2bpp"
-MayleneSpriteGFX:             INCBIN "gfx/overworld/cooltrainer_f.2bpp" ; TODO
+MayleneSpriteGFX:             INCBIN "gfx/overworld/maylene.2bpp"
 MiraSpriteGFX:                INCBIN "gfx/overworld/mira.2bpp"
 PalmerSpriteGFX:              INCBIN "gfx/overworld/palmer.2bpp"
 PetrelSpriteGFX:              INCBIN "gfx/overworld/petrel.2bpp"
