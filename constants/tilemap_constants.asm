@@ -48,6 +48,7 @@ const_value SET 1
 	const TILESET_SHAMOUTI_ISLAND      ; 29
 	const TILESET_MUSEUM               ; 2a
 	const TILESET_HOTEL                ; 2b
+	const TILESET_QUIET_CAVE           ; 2c
 
 	const_def
 	const PAL_BG_GRAY

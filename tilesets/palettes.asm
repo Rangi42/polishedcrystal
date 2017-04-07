@@ -31,6 +31,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, HotelPalette
 	cp TILESET_HOTEL
 	jp z, .load_eight_bg_palettes
+	ld hl, QuietCavePalette
+	cp TILESET_QUIET_CAVE
+	jp z, .load_eight_bg_palettes
 	ld hl, RuinsPalette
 	cp TILESET_RUINS_OF_ALPH
 	jp z, .load_eight_bg_palettes
@@ -307,9 +310,6 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	ld hl, QuietCavePalette
-	cp QUIET_CAVE
-	jp z, .load_eight_bg_palettes
 	ld hl, DimCavePalette
 	cp DIM_CAVE
 	jp z, .load_eight_bg_palettes
@@ -371,6 +371,9 @@ INCLUDE "tilesets/game_corner.pal"
 
 HotelPalette:
 INCLUDE "tilesets/hotel.pal"
+
+QuietCavePalette:
+INCLUDE "tilesets/quiet_cave.pal"
 
 RuinsPalette:
 INCLUDE "tilesets/ruins.pal"
@@ -447,9 +450,6 @@ INCLUDE "tilesets/violet_ecruteak.pal"
 
 BellchimeTrailPalette:
 INCLUDE "tilesets/bellchime_trail.pal"
-
-QuietCavePalette:
-INCLUDE "tilesets/quiet_cave.pal"
 
 DimCavePalette:
 INCLUDE "tilesets/dim_cave.pal"

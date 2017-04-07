@@ -145,6 +145,7 @@ Tileset23Anim:
 
 Tileset24Anim:
 Tileset30Anim:
+Tileset44Anim:
 	dw NULL,  SafariFountainAnim4
 	dw NULL,  WaitTileAnimation
 	dw NULL,  SafariFountainAnim3

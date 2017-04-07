@@ -70,6 +70,7 @@ INCLUDE "tilesets/tower_palette_map.asm"
 
 Tileset24PalMap:
 Tileset30PalMap:
+Tileset44PalMap:
 INCLUDE "tilesets/cave_palette_map.asm"
 
 Tileset25PalMap:
