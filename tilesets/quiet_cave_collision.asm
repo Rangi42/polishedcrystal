@@ -206,3 +206,5 @@
 	tilecoll WALL, FLOOR, WALL, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
 	tilecoll FLOOR, WALL, FLOOR, WALL
+	tilecoll WALL, TOP_WALL, WALL, FLOOR
+	tilecoll TOP_WALL, WALL, FLOOR, WALL
