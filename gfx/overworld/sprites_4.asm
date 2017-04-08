@@ -4,7 +4,7 @@ BoarderSpriteGFX:             INCBIN "gfx/overworld/boarder.2bpp"
 BreederSpriteGFX:             INCBIN "gfx/overworld/breeder.2bpp"
 BugManiacSpriteGFX:           INCBIN "gfx/overworld/bug_maniac.2bpp"
 ChildSpriteGFX:               INCBIN "gfx/overworld/child.2bpp"
-CosplayerSpriteGFX:           INCBIN "gfx/overworld/lady.2bpp" ; TODO
+CosplayerSpriteGFX:           INCBIN "gfx/overworld/cosplayer.2bpp"
 CowgirlSpriteGFX:             INCBIN "gfx/overworld/cowgirl.2bpp"
 DragonTamerSpriteGFX:         INCBIN "gfx/overworld/dragon_tamer.2bpp"
 EngineerSpriteGFX:            INCBIN "gfx/overworld/engineer.2bpp"
