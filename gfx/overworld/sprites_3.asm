@@ -8,7 +8,7 @@ CaitlinSpriteGFX:             INCBIN "gfx/overworld/caitlin.2bpp"
 CandelaSpriteGFX:             INCBIN "gfx/overworld/candela.2bpp"
 CherylSpriteGFX:              INCBIN "gfx/overworld/cheryl.2bpp"
 CynthiaSpriteGFX:             INCBIN "gfx/overworld/cynthia.2bpp"
-DarachSpriteGFX:              INCBIN "gfx/overworld/gentleman.2bpp" ; TODO
+DarachSpriteGFX:              INCBIN "gfx/overworld/darach.2bpp"
 FlannerySpriteGFX:            INCBIN "gfx/overworld/flannery.2bpp"
 GiovanniSpriteGFX:            INCBIN "gfx/overworld/giovanni.2bpp"
 ImakuniSpriteGFX:             INCBIN "gfx/overworld/imakuni.2bpp"
