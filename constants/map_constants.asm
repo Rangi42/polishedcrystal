@@ -238,6 +238,7 @@ MAP_NONE   EQU 0
 	mapgroup VIOLET_ONIX_TRADE_HOUSE,                     4,  4 ;  9
 	mapgroup ROUTE_32_RUINS_OF_ALPH_GATE,                 4,  5 ; 10
 	mapgroup ROUTE_32_POKECENTER_1F,                      4,  6 ; 11
+	mapgroup ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
 
 	newgroup                                                    ; 11
 

@@ -119,6 +119,7 @@ GoldenrodNetBallHouse_BlockData:
 CianwoodCityPhotoStudio_BlockData:
 CherrygroveGymSpeechHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
+Route32CoastHouse_BlockData:
 SinjohRuinsHouse_BlockData:
 ShamoutiHotel_BlockData:
 ShamoutiTouristCenter_BlockData:
