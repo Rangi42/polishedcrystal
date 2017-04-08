@@ -1,4 +1,4 @@
-BakerSpriteGFX:               INCBIN "gfx/overworld/pokefan_f.2bpp" ; TODO
+BakerSpriteGFX:               INCBIN "gfx/overworld/baker.2bpp"
 BeautySpriteGFX:              INCBIN "gfx/overworld/beauty.2bpp"
 BoarderSpriteGFX:             INCBIN "gfx/overworld/boarder.2bpp"
 BreederSpriteGFX:             INCBIN "gfx/overworld/breeder.2bpp"
