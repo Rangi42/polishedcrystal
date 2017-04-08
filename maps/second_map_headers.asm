@@ -681,6 +681,8 @@
 	map_header_2 CeladonHotelPool, CELADON_HOTEL_POOL, $0, 0
 	map_header_2 EusinesHouse, EUSINES_HOUSE, $0, 0
 	map_header_2 PsychicInversHouse, PSYCHIC_INVERS_HOUSE, $0, 0
+	map_header_2 CeladonOldManSpeechHouse, CELADON_OLD_MAN_SPEECH_HOUSE, $0, 0
+	map_header_2 CeladonDevelopmentSpeechHouse, CELADON_DEVELOPMENT_SPEECH_HOUSE, $0, 0
 	map_header_2 Route16FuchsiaSpeechHouse, ROUTE_16_FUCHSIA_SPEECH_HOUSE, $0, 0
 	map_header_2 Route16Gate, ROUTE_16_GATE, $0, 0
 	map_header_2 Route1617Gate, ROUTE_16_17_GATE, $0, 0

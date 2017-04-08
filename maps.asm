@@ -5,10 +5,10 @@ SECTION "Map Headers", ROMX[$4000], BANK[MAP_HEADERS]
 
 INCLUDE "maps/map_headers.asm"
 
+
 SECTION "Second Map Headers", ROMX[$5af3], BANK[$6F]
 
 INCLUDE "maps/second_map_headers.asm"
-
 
 
 SECTION "Map Blockdata 1", ROMX[$4000], BANK[MAPS_1]
@@ -663,6 +663,8 @@ INCLUDE "maps/CeladonHotelRoom2.asm"
 INCLUDE "maps/CeladonHotelRoom3.asm"
 INCLUDE "maps/CeladonHotelPool.asm"
 INCLUDE "maps/EusinesHouse.asm"
+INCLUDE "maps/CeladonOldManSpeechHouse.asm"
+INCLUDE "maps/CeladonDevelopmentSpeechHouse.asm"
 
 
 SECTION "Map Scripts 30", ROMX

@@ -350,7 +350,7 @@ CeladonCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 14
+	db 16
 	warp_def $9, $8, 1, CELADON_DEPT_STORE_1F
 	warp_def $9, $14, 1, CELADON_MANSION_1F
 	warp_def $3, $14, 3, CELADON_MANSION_1F
@@ -365,6 +365,8 @@ CeladonCity_MapEventHeader:
 	warp_def $9, $d, 1, CELADON_HOME_DECOR_STORE_1F
 	warp_def $1d, $4, 1, CELADON_UNIVERSITY_1F
 	warp_def $9, $1d, 1, EUSINES_HOUSE
+	warp_def $13, $21, 1, CELADON_OLD_MAN_SPEECH_HOUSE
+	warp_def $13, $25, 1, CELADON_DEVELOPMENT_SPEECH_HOUSE
 
 .XYTriggers:
 	db 0

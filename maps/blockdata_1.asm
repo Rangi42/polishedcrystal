@@ -176,6 +176,8 @@ FuchsiaBillSpeechHouse_BlockData:
 SaffronRichSpeechHouse_BlockData:
 LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
+CeladonOldManSpeechHouse_BlockData:
+CeladonDevelopmentSpeechHouse_BlockData:
 	INCBIN "maps/KantoHouse2.blk"
 
 Route26DayofWeekSiblingsHouse_BlockData:

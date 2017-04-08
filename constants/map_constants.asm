@@ -486,6 +486,8 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_UNIVERSITY_CLASSROOM_2,              6,  4 ; 56
 	mapgroup CELADON_UNIVERSITY_CLASSROOM_3,              6,  4 ; 57
 	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 58
+	mapgroup CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 59
+	mapgroup CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 60
 
 	newgroup                                                    ; 22
 
