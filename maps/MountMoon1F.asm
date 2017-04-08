@@ -1,5 +1,11 @@
 const_value set 2
 	const MOUNTMOON1F_SILVER
+	const MOUNTMOON1F_BUG_MANIAC1
+	const MOUNTMOON1F_LASS1
+	const MOUNTMOON1F_SUPER_NERD
+	const MOUNTMOON1F_BUG_MANIAC2
+	const MOUNTMOON1F_LASS2
+	const MOUNTMOON1F_HIKER
 
 MountMoon1F_MapScriptHeader:
 .MapTriggers:
@@ -75,6 +81,72 @@ MountMoon1F_MapScriptHeader:
 	dotrigger $1
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
+	end
+
+TrainerBugManiacKenta:
+	trainer EVENT_BEAT_BUG_MANIAC_KENTA, BUG_MANIAC, KENTA, BugManiacKentaSeenText, BugManiacKentaBeatenText, 0, BugManiacKentaScript
+
+BugManiacKentaScript:
+	end_if_just_battled
+	opentext
+	writetext BugManiacKentaAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerLassMiriam:
+	trainer EVENT_BEAT_LASS_MIRIAM, LASS, MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
+
+LassMiriamScript:
+	end_if_just_battled
+	opentext
+	writetext LassMiriamAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerSuperNerdJovan:
+	trainer EVENT_BEAT_SUPER_NERD_JOVAN, SUPER_NERD, JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
+
+SuperNerdJovanScript:
+	end_if_just_battled
+	opentext
+	writetext SuperNerdJovanAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerBugManiacRobby:
+	trainer EVENT_BEAT_BUG_MANIAC_ROBBY, BUG_MANIAC, ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
+
+BugManiacRobbyScript:
+	end_if_just_battled
+	opentext
+	writetext BugManiacRobbyAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerLassIris:
+	trainer EVENT_BEAT_LASS_IRIS, LASS, IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
+
+LassIrisScript:
+	end_if_just_battled
+	opentext
+	writetext LassIrisAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerHikerMarcos:
+	trainer EVENT_BEAT_HIKER_MARCOS, HIKER, MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
+
+HikerMarcosScript:
+	end_if_just_battled
+	opentext
+	writetext HikerMarcosAfterText
+	waitbutton
+	closetext
 	end
 
 MountMoon1FSilverMovementBefore:
@@ -172,6 +244,125 @@ MountMoonSilverTextLoss:
 	cont "greatest trainer."
 	done
 
+BugManiacKentaSeenText:
+	text "I saw a red-haired"
+	line "boy training here."
+
+	para "Have you battled"
+	line "him?"
+	done
+
+BugManiacKentaBeatenText:
+	text "You got me!"
+	done
+
+BugManiacKentaAfterText:
+	text "Team Rocket used"
+	line "to lurk around"
+	cont "here."
+
+	para "I wonder if the"
+	line "red-haired boy has"
+	cont "any connection to"
+	cont "them?"
+	done
+
+LassMiriamSeenText:
+	text "When I was young-"
+	line "er, I always used"
+
+	para "to get lost in"
+	line "this place."
+	done
+
+LassMiriamBeatenText:
+	text "Oh! I lost it!"
+	done
+
+LassMiriamAfterText:
+	text "Mt.Moon is big,"
+	line "but you'll get"
+	cont "used to it soon."
+	done
+
+SuperNerdJovanSeenText:
+	text "What! Don't sneak"
+	line "up on me!"
+	done
+
+SuperNerdJovanBeatenText:
+	text "My #mon"
+	line "won't do!"
+	done
+
+SuperNerdJovanAfterText:
+	text "I have yet to find"
+	line "stronger #mon."
+
+	para "Where might they"
+	line "be?"
+	done
+
+BugManiacRobbySeenText:
+	text "You need to go"
+	line "through this cave"
+
+	para "to get to Cerulean"
+	line "City."
+	done
+
+BugManiacRobbyBeatenText:
+	text "I lost…"
+	done
+
+BugManiacRobbyAfterText:
+	text "I used to only"
+	line "catch bug #mon"
+	cont "as a hobby,"
+
+	para "but now it's my"
+	line "pride and joy."
+	done
+
+LassIrisSeenText:
+	text "Have you seen a"
+	line "Clefairy?"
+
+	para "They're so cute!"
+	done
+
+LassIrisBeatenText:
+	text "That was so fast…"
+	done
+
+LassIrisAfterText:
+	text "I come here every"
+	line "day just to catch"
+	cont "a Clefairy, but"
+
+	para "I haven't seen a"
+	line "single one…"
+	done
+
+HikerMarcosSeenText:
+	text "Kids like you"
+	line "shouldn't be"
+
+	para "wandering around"
+	line "here in the dark."
+	done
+
+HikerMarcosBeatenText:
+	text "Woah!"
+	line "You're strong!"
+	done
+
+HikerMarcosAfterText:
+	text "A long time ago,"
+	line "I was beaten by a"
+	cont "kid just like you."
+	done
+
 MountMoon1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -190,5 +381,11 @@ MountMoon1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
+	db 7
 	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	person_event SPRITE_BUG_MANIAC, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
+	person_event SPRITE_LASS, 14, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1
+	person_event SPRITE_SUPER_NERD, 21, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdJovan, -1
+	person_event SPRITE_BUG_MANIAC, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
+	person_event SPRITE_LASS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
+	person_event SPRITE_POKEFAN_M, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1

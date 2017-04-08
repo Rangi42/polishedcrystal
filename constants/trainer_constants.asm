@@ -109,6 +109,7 @@ KRIS EQU __enum__
 	const JIMMY
 	const OWEN
 	const JASON
+	const YOUNGSTER_JOSH
 
 	trainerclass BUG_CATCHER ; 20
 	const WADE1
@@ -237,6 +238,7 @@ KRIS EQU __enum__
 	const PETER
 	const PERRY
 	const BRET
+	const MICK
 
 	trainerclass HIKER ; 26
 	const ANTHONY1
@@ -265,6 +267,7 @@ KRIS EQU __enum__
 	const DEVIN
 	const SEAMUS
 	const TONY
+	const MARCOS
 
 	trainerclass GRUNTM ; 27
 
@@ -340,6 +343,7 @@ KRIS EQU __enum__
 	const WALDO
 	const MERLE
 	const LUIS
+	const JOVAN
 	const MIGUEL
 
 	trainerclass LASS ; 30
@@ -357,6 +361,8 @@ KRIS EQU __enum__
 	const SHANNON
 	const MICHELLE
 	const ELLEN
+	const IRIS
+	const MIRIAM
 
 	trainerclass BEAUTY ; 31
 	const VICTORIA
@@ -379,6 +385,8 @@ KRIS EQU __enum__
 	const STACEY
 	const ELLIS
 	const ABNER
+	const KENTA
+	const ROBBY
 
 	trainerclass RUIN_MANIAC ; 33
 
@@ -457,6 +465,7 @@ KRIS EQU __enum__
 	const LUNA
 	const NATALIE
 	const VIVIAN
+	const ESTHER
 
 	trainerclass SAGE ; 3a
 	const CHOW
@@ -701,6 +710,7 @@ KRIS EQU __enum__
 	const ALLEN
 	const FRENCH
 	const HENRI
+	const CONNOR
 
 	trainerclass COOLTRAINERF ; 5a
 	const BETH1

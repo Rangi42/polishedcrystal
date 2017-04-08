@@ -1,4 +1,5 @@
 const_value set 2
+	const MOUNTMOONB1F_POKEFAN_M
 
 MountMoonB1F_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,19 @@ MountMoonB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+MountMoonB1FPokefanmScript:
+	jumptextfaceplayer MountMoonB1FPokefanmText
+
+MountMoonB1FPokefanmText:
+	text "I'm excavating for"
+	line "fossils here under"
+	cont "Mt.Moon."
+
+	para "Sometimes Brock of"
+	line "Pewter Gym lends"
+	cont "me a hand."
+	done
 
 MountMoonB1F_MapEventHeader:
 	; filler
@@ -31,4 +45,5 @@ MountMoonB1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_POKEFAN_M, 20, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MountMoonB1FPokefanmScript, -1

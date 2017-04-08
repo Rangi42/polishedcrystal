@@ -3449,6 +3449,19 @@ YoungsterGroup:
 	db $ff ; end
 
 ; ================
+
+	; YOUNGSTER
+	db "Josh@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, RATICATE
+	db 62, GOLBAT
+	db 60, RATICATE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5172,6 +5185,19 @@ BirdKeeperGroup:
 	db $ff ; end
 
 ; ================
+
+	; BIRD_KEEPER
+	db "Mick@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 62, PIDGEOT
+	db 60, MURKROW
+	db 60, NOCTOWL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5486,57 +5512,6 @@ HikerGroup:
 ; ================
 
 	; HIKER
-	db "Parry@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 36, ONIX
-	db 35, PILOSWINE
-
-	db $ff ; end
-
-; ================
-
-	; HIKER
-	db "Parry@"
-	db TRAINERTYPE_MOVES
-
-	; party
-
-	db 36, PILOSWINE
-		db EARTHQUAKE
-		db AVALANCHE
-		db REST
-		db TAKE_DOWN
-
-	db 36, DUGTRIO
-		db MAGNITUDE
-		db DIG
-		db MUD_SLAP
-		db SLASH
-
-	db 39, STEELIX
-		db DIG
-		db IRON_TAIL
-		db SANDSTORM
-		db HEADBUTT
-
-	db $ff ; end
-
-; ================
-
-	; HIKER
-	db "Parry@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 30, ONIX
-
-	db $ff ; end
-
-; ================
-
-	; HIKER
 	db "Edwin@"
 	db TRAINERTYPE_NORMAL
 
@@ -5582,6 +5557,20 @@ HikerGroup:
 	db 17, DUNSPARCE
 	db 18, OMANYTE
 	db 18, KABUTO
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Marcos@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, SANDSLASH
+	db 59, SANDSHREW
+	db 62, MACHOKE
+	db 62, ONIX
 
 	db $ff ; end
 
@@ -6816,6 +6805,19 @@ SuperNerdGroup:
 ; ================
 
 	; SUPER_NERD
+	db "Jovan@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 62, MAGNETON
+	db 60, VOLTORB
+	db 61, ELECTRODE
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD
 	db "Miguel@"
 	db TRAINERTYPE_PERSONALITY
 
@@ -7060,6 +7062,34 @@ LassGroup:
 	db $ff ; end
 
 ; ================
+
+	; LASS
+	db "Iris@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, WEEPINBELL
+	db 59, TANGELA
+	db 60, JIGGLYPUFF
+	db 61, BELLOSSOM
+
+	db $ff ; end
+
+; ================
+
+	; LASS
+	db "Miriam@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, CLEFAIRY
+	db 61, CLEFABLE
+	db 59, JIGGLYPUFF
+	db 61, WIGGLYTUFF
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7297,6 +7327,32 @@ BugManiacGroup:
 	db 59, BUTTERFREE
 	db 59, BEEDRILL
 	db 59, PIKACHU
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Kenta@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, BEEDRILL
+	db 60, BEEDRILL
+	db 60, PARASECT
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Robby@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, BUTTERFREE
+	db 60, BUTTERFREE
+	db 60, PARASECT
 
 	db $ff ; end
 
@@ -8232,6 +8288,18 @@ HexManiacGroup:
 	db 52, HAUNTER
 	db 54, HAUNTER
 	db 56, ALAKAZAM
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC
+	db "Esther@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 62, MISMAGIUS
+	db 62, MISMAGIUS
 
 	db $ff ; end
 
@@ -10910,6 +10978,19 @@ CooltrainerMGroup:
 	db 26, CHARMELEON
 	db 26, WARTORTLE
 	db 26, IVYSAUR
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM
+	db "Connor@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 63, SCYTHER
+	db 62, CROCONAW
+	db 62, WARTORTLE
 
 	db $ff ; end
 

@@ -556,9 +556,6 @@ INCLUDE "maps/Route12South.asm"
 INCLUDE "maps/Route12Gate.asm"
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
-INCLUDE "maps/MountMoon1F.asm"
-INCLUDE "maps/MountMoonB1F.asm"
-INCLUDE "maps/MountMoonB2F.asm"
 INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/SeafoamGym.asm"
 INCLUDE "maps/QuietCave1F.asm"
@@ -670,6 +667,13 @@ INCLUDE "maps/CeladonDevelopmentSpeechHouse.asm"
 SECTION "Map Scripts 30", ROMX
 
 INCLUDE "maps/IlexForest.asm"
+INCLUDE "maps/MountMoon1F.asm"
+INCLUDE "maps/MountMoonB1F.asm"
+INCLUDE "maps/MountMoonB2F.asm"
+
+
+SECTION "Map Scripts 31", ROMX
+
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/Route34Coast.asm"
 INCLUDE "maps/StormyBeach.asm"
