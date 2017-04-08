@@ -23,6 +23,9 @@ PewterCity_MapScriptHeader:
 CooltrainerFScript_0x18c009:
 	jumptextfaceplayer UnknownText_0x18c042
 
+PewterCityCooltrainermScript:
+	jumptextfaceplayer PewterCityCooltrainermText
+
 BugCatcherScript_0x18c00c:
 	jumptextfaceplayer UnknownText_0x18c080
 
@@ -81,11 +84,35 @@ FruitTreeScript_0x18c040:
 	fruittree FRUITTREE_PEWTER_CITY_2
 
 UnknownText_0x18c042:
-	text "Have you visited"
-	line "Pewter Gym?"
+	text "#mon can only"
+	line "be two types at"
+	cont "once, but if it"
+	cont "were possible for"
 
-	para "The Leader uses"
-	line "Rock-type #mon."
+	para "a #mon to be"
+	line "every type, it"
+	cont "would only have"
+	cont "one weakness."
+
+	para "What weakness,"
+	line "you ask?"
+
+	para "Rock-type attacks,"
+	line "of course!"
+	done
+
+PewterCityCooltrainermText:
+	text "This gal thinks"
+	line "Rock-type Pokemon"
+	cont "are all that,"
+
+	para "but it's tied for"
+	line "the most weakness-"
+	cont "es of any type."
+
+	para "I don't have the"
+	line "heart to tell her,"
+	cont "though."
 	done
 
 UnknownText_0x18c080:
@@ -202,9 +229,10 @@ PewterCity_MapEventHeader:
 
 .PersonEvents:
 	db 7
-	person_event SPRITE_COOLTRAINER_F, 11, 19, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18c009, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 22, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18c009, -1
+	person_event SPRITE_COOLTRAINER_M, 10, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PewterCityCooltrainermScript, -1
 	person_event SPRITE_BUG_CATCHER, 29, 14, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x18c00c, -1
 	person_event SPRITE_GRAMPS, 17, 29, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x18c00f, -1
-	person_event SPRITE_YOUNGSTER, 18, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
+	person_event SPRITE_YOUNGSTER, 17, 7, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 32, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x18c03e, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x18c040, -1

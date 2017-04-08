@@ -52,6 +52,8 @@ LakeofRage_MapScriptHeader:
 	return
 
 LanceScript_0x70022:
+	checkevent EVENT_LAKE_OF_RAGE_CIVILIANS
+	iffalse LakeofRageEngineerScript
 	checkevent EVENT_REFUSED_TO_HELP_LANCE_AT_LAKE_OF_RAGE
 	iftrue UnknownScript_0x70057
 	opentext
@@ -87,6 +89,9 @@ UnknownScript_0x70057:
 	yesorno
 	iffalse UnknownScript_0x7004e
 	jump UnknownScript_0x70035
+
+LakeofRageEngineerScript:
+	jumptextfaceplayer LakeofRageEngineerText
 
 GyaradosScript_0x70063:
 	opentext
@@ -326,6 +331,19 @@ UnknownText_0x703a5:
 	line "going to help me?"
 	done
 
+LakeofRageEngineerText:
+	text "I'm an urban"
+	line "planner."
+
+	para "I've got big ideas"
+	line "for this place,"
+	cont "just you wait!"
+
+	para "It's the perfect"
+	line "spot for my next"
+	cont "project."
+	done
+
 UnknownText_0x703cb:
 	text "Gyarados: Gyashaa!"
 	done
@@ -530,7 +548,7 @@ LakeofRage_MapEventHeader:
 
 .PersonEvents:
 	db 15
-	person_event SPRITE_LANCE, 28, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript_0x70022, EVENT_LAKE_OF_RAGE_LANCE
+	person_event SPRITE_LAKE_OF_RAGE_LANCE, 28, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript_0x70022, EVENT_LAKE_OF_RAGE_LANCE
 	person_event SPRITE_GRAMPS, 26, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7008e, -1
 	person_event SPRITE_SUPER_NERD, 13, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x700a2, -1
 	person_event SPRITE_COOLTRAINER_F, 29, 25, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x700a5, -1

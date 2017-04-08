@@ -54,6 +54,7 @@ SpecialsPointers:: ; c029
 	add_special Special_BankOfMom
 	add_special Special_MagnetTrain
 	add_special SpecialNameRival
+	add_special SpecialTrendyPhrase
 	add_special Special_SetDayOfWeek
 	add_special Special_TownMap
 	add_special MapRadio
@@ -268,6 +269,19 @@ SpecialNameRival: ; 0xc29d
 
 DefaultRivalName: ; 0xc2b2
 	db "Silver@"
+
+SpecialTrendyPhrase:
+	ld b, $4 ; trendy phrase
+	ld de, TrendyPhrase
+	farcall _NamingScreen
+	ld hl, TrendyPhrase
+	ld de, DefaultTrendyPhrase
+	call InitName
+	ret
+; 0xc2b2
+
+DefaultTrendyPhrase:
+	db "Sushi@"
 
 SpecialNameRater: ; c2b9
 	farcall NameRater

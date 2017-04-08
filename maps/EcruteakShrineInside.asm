@@ -2,6 +2,7 @@ const_value set 2
 	const ECRUTEAKSHRINEINSIDE_REI
 	const ECRUTEAKSHRINEINSIDE_GRAMPS
 	const ECRUTEAKSHRINEINSIDE_SAGE
+	const ECRUTEAKSHRINEINSIDE_GRANNY
 	const ECRUTEAKSHRINEINSIDE_FURRET
 
 EcruteakShrineInside_MapScriptHeader:
@@ -105,6 +106,9 @@ EcruteakShrineInsideGrampsScript:
 EcruteakShrineInsideSageScript:
 	jumptextfaceplayer EcruteakShrineInsideSageText
 
+EcruteakShrineInsideGrannyScript:
+	jumptextfaceplayer EcruteakShrineInsideGrannyText
+
 EcruteakShrineInsideAltarScript:
 	jumptext EcruteakShrineInsideAltarText
 
@@ -178,6 +182,17 @@ EcruteakShrineInsideSageText:
 	cont "Psychic types."
 	done
 
+EcruteakShrineInsideGrannyText:
+	text "I'm glad they didn't"
+	line "approve a stop in"
+	cont "Ecruteak for the"
+	cont "Magnet Train."
+
+	para "It would ruin our"
+	line "traditional land-"
+	cont "scape."
+	done
+
 EcruteakShrineInsideAltarText:
 	text "Please show honor"
 	line "and respect while"
@@ -202,8 +217,9 @@ EcruteakShrineInside_MapEventHeader:
 	signpost 6, 6, SIGNPOST_READ, EcruteakShrineInsideAltarScript
 
 .PersonEvents:
-	db 4
+	db 6
 	person_event SPRITE_SABRINA, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
 	person_event SPRITE_GRAMPS, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideGrampsScript, -1
 	person_event SPRITE_SAGE, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideSageScript, -1
+	person_event SPRITE_GRANNY, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideGrannyScript, -1
 	person_event SPRITE_FURRET, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

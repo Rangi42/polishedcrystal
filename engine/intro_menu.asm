@@ -919,16 +919,16 @@ NamePlayer: ; 0x6074
 	db "Kris@@@@@@@"
 ; 60e9
 
-StorePlayerName: ; 60fa
-	ld a, "@"
-	ld bc, NAME_LENGTH
-	ld hl, PlayerName
-	call ByteFill
-	ld hl, PlayerName
-	ld de, StringBuffer2
-	call CopyName2
-	ret
-; 610f
+;StorePlayerName: ; 60fa
+;	ld a, "@"
+;	ld bc, NAME_LENGTH
+;	ld hl, PlayerName
+;	call ByteFill
+;	ld hl, PlayerName
+;	ld de, StringBuffer2
+;	call CopyName2
+;	ret
+;; 610f
 
 ShrinkPlayer: ; 610f
 

@@ -51,10 +51,15 @@ UnknownText_0x712c7:
 	done
 
 UnknownText_0x71310:
-	text "Aww! There's no"
-	line "games here!"
+	text "I can play games"
+	line "on the third"
+	cont "floor, then come"
 
-	para "I wanted to play…"
+	para "here when I get"
+	line "thirsty!"
+
+	para "This store is"
+	line "great!"
 	done
 
 UnknownText_0x70d86:

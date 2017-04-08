@@ -1,5 +1,6 @@
 const_value set 2
 	const ROUTE22_COOLTRAINER_M
+	const ROUTE22_COOLTRAINER_F
 
 Route22_MapScriptHeader:
 .MapTriggers:
@@ -10,6 +11,9 @@ Route22_MapScriptHeader:
 
 Route22CooltrainermScript:
 	jumptextfaceplayer Route22CooltrainermText
+
+Route22CooltrainerfScript:
+	jumptextfaceplayer Route22CooltrainerfText
 
 VictoryRoadEntranceSign:
 	jumptext VictoryRoadEntranceSignText
@@ -25,6 +29,16 @@ Route22CooltrainermText:
 	line "ready beat them?"
 
 	para "Well then."
+	done
+
+Route22CooltrainerfText:
+	text "The name “Kanto”"
+	line "means “east of the"
+	cont "barrier.”"
+
+	para "I suppose the"
+	line "barrier must be"
+	cont "Mt.Silver."
 	done
 
 VictoryRoadEntranceSignText:
@@ -50,5 +64,6 @@ Route22_MapEventHeader:
 	signpost 7, 5, SIGNPOST_READ, VictoryRoadEntranceSign
 
 .PersonEvents:
-	db 1
-	person_event SPRITE_COOLTRAINER_M, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route22CooltrainermScript, EVENT_TIME_TRAVELING
+	db 2
+	person_event SPRITE_COOLTRAINER_M, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route22CooltrainermScript, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route22CooltrainerfScript, -1

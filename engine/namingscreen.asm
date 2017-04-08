@@ -80,6 +80,7 @@ endr
 	dw .Player
 	dw .Rival
 	dw .Box
+	dw .TrendyPhrase
 
 .Pokemon: ; 1173e (4:573e)
 	ld a, [CurPartySpecies]
@@ -181,6 +182,19 @@ endr
 
 ; 1182c
 
+.TrendyPhrase:
+	ld de, RockerSpriteGFX
+	ld b, BANK(RockerSpriteGFX)
+	call .LoadSprite
+	hlcoord 5, 2
+	ld de, .TrendyPhraseString
+	call PlaceString
+	call .StoreSpriteIconParams
+	ret
+
+.TrendyPhraseString:
+	db "Trendy phrase?"
+
 .LoadSprite: ; 11847 (4:5847)
 	push de
 	ld hl, VTiles0 tile $00
@@ -226,7 +240,6 @@ endr
 .StoreBoxIconParams: ; 11889 (4:5889)
 	ld a, BOX_NAME_LENGTH - 1
 	hlcoord 5, 4
-	jr .StoreParams
 
 .StoreParams: ; 11890 (4:5890)
 	ld [wNamingScreenMaxNameLength], a
