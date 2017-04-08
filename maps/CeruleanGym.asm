@@ -189,8 +189,8 @@ CeruleanGymGuyScript:
 	end
 
 CeruleanGymHiddenMachinePart:
-	checkevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
-	iftrue .Done
+	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM, .Script
+.Script:
 	checkevent EVENT_LEARNED_ABOUT_MACHINE_PART
 	iffalse .SomethingUnderwater
 	giveitem MACHINE_PART
@@ -202,7 +202,6 @@ CeruleanGymHiddenMachinePart:
 	itemnotify
 	closetext
 	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
-.Done:
 	end
 
 .SomethingUnderwater:
@@ -516,7 +515,7 @@ CeruleanGym_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 8, 3, SIGNPOST_READ, CeruleanGymHiddenMachinePart
+	signpost 8, 3, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
 	signpost 13, 2, SIGNPOST_READ, CeruleanGymStatue1
 	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
 
