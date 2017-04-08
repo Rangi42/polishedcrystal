@@ -185,6 +185,7 @@ VermilionHouseDiglettsCaveSpeechHouse_BlockData:
 LavenderNameRater_BlockData:
 SaffronHitmontopKidHouse_BlockData:
 SaffronOrreSpeechHouse_BlockData:
+EusinesHouse_BlockData:
 	INCBIN "maps/KantoHouse3.blk"
 
 PewterNidoranSpeechHouse_BlockData:

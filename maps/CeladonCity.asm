@@ -8,8 +8,10 @@ const_value set 2
 	const CELADONCITY_YOUNGSTER1
 	const CELADONCITY_YOUNGSTER2
 	const CELADONCITY_TEACHER2
-	const CELADONCITY_LASS
+	const CELADONCITY_LASS1
 	const CELADONCITY_BIG_SNORLAX
+	const CELADONCITY_LASS2
+	const CELADONCITY_CUT_TREE
 
 CeladonCity_MapScriptHeader:
 .MapTriggers:
@@ -96,11 +98,17 @@ TeacherScript_0x1a9f5f:
 LassScript_0x1a9f62:
 	jumptextfaceplayer UnknownText_0x1aa25b
 
+CeladonCityLassScript:
+	jumptextfaceplayer CeladonCityLassText
+
 CeladonCitySign:
 	jumptext CeladonCitySignText
 
 CeladonGymSign:
 	jumptext CeladonGymSignText
+
+CeladonCityCutTree:
+	jumpstd cuttree
 
 CeladonUniversitySign:
 	jumptext CeladonUniversitySignText
@@ -274,6 +282,14 @@ UnknownText_0x1aa25b:
 	line "Kanto…"
 	done
 
+CeladonCityLassText:
+	text "#mon are offer-"
+	line "ed as prizes at"
+	cont "the Game Corner."
+
+	para "The poor things…"
+	done
+
 CeladonCitySignText:
 	text "Celadon City"
 
@@ -334,7 +350,7 @@ CeladonCity_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 13
+	db 14
 	warp_def $9, $8, 1, CELADON_DEPT_STORE_1F
 	warp_def $9, $14, 1, CELADON_MANSION_1F
 	warp_def $3, $14, 3, CELADON_MANSION_1F
@@ -348,6 +364,7 @@ CeladonCity_MapEventHeader:
 	warp_def $1d, $25, 1, CELADON_HOTEL_1F
 	warp_def $9, $d, 1, CELADON_HOME_DECOR_STORE_1F
 	warp_def $1d, $4, 1, CELADON_UNIVERSITY_1F
+	warp_def $9, $1d, 1, EUSINES_HOUSE
 
 .XYTriggers:
 	db 0
@@ -365,7 +382,7 @@ CeladonCity_MapEventHeader:
 	signpost 21, 41, SIGNPOST_ITEM, CeladonCityHiddenPpUp
 
 .PersonEvents:
-	db 11
+	db 13
 	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
 	person_event SPRITE_FISHER, 11, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9f43, -1
 	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
@@ -377,3 +394,5 @@ CeladonCity_MapEventHeader:
 	person_event SPRITE_TEACHER, 13, 12, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a9f5f, -1
 	person_event SPRITE_LASS, 22, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x1a9f62, -1
 	person_event SPRITE_BIG_SNORLAX, 10, 45, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX
+	person_event SPRITE_LASS, 23, 35, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonCityLassScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 34, 32, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonCityCutTree, EVENT_CELADON_CITY_CUT_TREE

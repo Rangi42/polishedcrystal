@@ -27,6 +27,9 @@ GoldenrodGameCornerPokefanM3Script:
 	spriteface GOLDENRODGAMECORNER_POKEFAN_M3, RIGHT
 	end
 
+GoldenrodGameCornerFisherScript:
+	jumptextfaceplayer GoldenrodGameCornerFisherText
+
 GoldenrodGameCornerCoinVendorScript:
 	jumpstd gamecornercoinvendor
 
@@ -427,6 +430,15 @@ GoldenrodGameCornerPokefanM3Text:
 	line "keep rolling in!"
 	done
 
+GoldenrodGameCornerFisherText:
+	text "What do you call a"
+	line "Pikachu that plays"
+	cont "cards?"
+
+	para "A Poker-mon!"
+	line "Haha! Get it?"
+	done
+
 GoldenrodGameCornerLeftTheirDrinkText:
 	text "Someone left their"
 	line "drink."
@@ -481,7 +493,7 @@ GoldenrodGameCorner_MapEventHeader:
 	signpost 1, 12, SIGNPOST_LEFT, GoldenrodGameCornerLeftTheirDrinkScript
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_CLERK, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerCoinVendorScript, -1
 	person_event SPRITE_RECEPTIONIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerTMVendorScript, -1
 	person_event SPRITE_RECEPTIONIST, 2, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPrizeMonVendorScript, -1
@@ -493,3 +505,4 @@ GoldenrodGameCorner_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 10, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerGentlemanScript, -1
 	person_event SPRITE_POKEFAN_M, 9, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPokefanM2Script, EVENT_BEAT_WHITNEY
 	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPokefanM3Script, -1
+	person_event SPRITE_FISHER, 1, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerFisherScript, -1
