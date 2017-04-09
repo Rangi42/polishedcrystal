@@ -5179,7 +5179,6 @@ endr
 
 .Lyra2FinalTexts:
 	dw Lyra2_1FinalPkmnText
-	dw Lyra2_2FinalPkmnText
 
 .TeamRocketFinalTexts:
 	dw Proton1FinalPkmnText

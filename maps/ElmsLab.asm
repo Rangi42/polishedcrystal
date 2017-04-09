@@ -534,7 +534,7 @@ ElmGiveTicketScript:
 	disappear ELMSLAB_LYRA
 	pause 10
 	faceplayer
-	playmusic MUSIC_PROF_ELM ; TODO: make 'playmapmusic' or 'special RestartMapMusic' work
+	playmusic MUSIC_PROF_ELM
 	opentext
 	writetext ElmAfterTicketText
 	waitbutton

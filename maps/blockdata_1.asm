@@ -168,7 +168,7 @@ PsychicInversHouse_BlockData:
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
 CeruleanCoupleHouse_BlockData:
-; TODO: teleporter tiles
+; TODO: teleporter machine tiles
 BillsHouse_BlockData:
 FuchsiaBillSpeechHouse_BlockData:
 SaffronRichSpeechHouse_BlockData:

@@ -427,7 +427,7 @@ endr
 	jr .loop
 .ok
 	ld a, [hli]
-	cp $ff
+	cp -1
 	ld a, NO_ITEM
 	jr z, .done
 	ld a, [hli]
@@ -810,7 +810,7 @@ endr
 
 .ok
 	ld a, [hli]
-	cp $ff
+	cp -1
 	jr z, NoTreeMon
 
 	ld a, [hli]

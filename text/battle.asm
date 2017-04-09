@@ -1580,23 +1580,25 @@ Lyra1_1FinalPkmnText:
 	prompt
 
 Lyra1_2FinalPkmnText:
-	text "TODO"
+	text "You're learning"
+	line "quickly, <PLAYER>!"
 	prompt
 
 Lyra1_3FinalPkmnText:
-	text "TODO"
+	text "OK! Time for my"
+	line "last #mon!"
 	prompt
 
 Lyra1_4FinalPkmnText:
-	text "TODO"
+	text "Whether I win or"
+	line "lose, this has"
+	cont "been fun!"
 	prompt
 
 Lyra2_1FinalPkmnText:
-	text "TODO"
-	prompt
-
-Lyra2_2FinalPkmnText:
-	text "TODO"
+	text "You've brought me"
+	line "down to my last"
+	cont "#mon…"
 	prompt
 
 Proton1FinalPkmnText:

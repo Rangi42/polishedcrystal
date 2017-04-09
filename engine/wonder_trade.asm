@@ -1034,79 +1034,39 @@ GetWonderTradeOTGender:
 
 
 GetWonderTradeHeldItem:
-; Pick a random held item based on the bits of a random number.
-; If bit 1 is set (50% chance), no held item.
-; Otherwise, if bit 2 is set (25% chance), then Berry.
-; And so on, with better items being more rare.
+	ld hl, .HeldItems
 	call Random
-	ld b, a
-; TODO: factor out the repetition here with rept...endr and sla
-	and a, %00000001
-	jr z, .isbit2on
-	xor a
-	jp .done
-.isbit2on
-	ld a, b
-	and a, %00000010
-	jr z, .isbit3on
-	ld a, 1
-	jp .done
-.isbit3on
-	ld a, b
-	and a, %00000100
-	jr z, .isbit4on
-	ld a, 2
-	jp .done
-.isbit4on
-	ld a, b
-	and a, %00001000
-	jr z, .isbit5on
-	ld a, 3
-	jp .done
-.isbit5on
-	ld a, b
-	and a, %00010000
-	jr z, .isbit6on
-	ld a, 4
-	jp .done
-.isbit6on
-	ld a, b
-	and a, %00100000
-	jr z, .isbit7on
-	ld a, 5
-	jp .done
-.isbit7on
-	ld a, b
-	and a, %01000000
-	jr z, .isbit8on
-	ld a, 6
-	jp .done
-.isbit8on
-	ld a, b
-	and a, %10000000
-	jr z, .allbitsoff
-	ld a, 7
-	jp .done
-.allbitsoff
-	ld a, 8
+.loop
+	sub [hl]
+	jr c, .ok
+rept 2
+	inc hl
+endr
+	jr .loop
+.ok
+	ld a, [hli]
+	cp -1
+	ld a, NO_ITEM
+	jr z, .done
+	ld a, [hli]
 .done
-	ld hl, .HeldItemsTable
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
 	ret
 
-.HeldItemsTable:
-	db NO_ITEM      ; 1/2
-	db ORAN_BERRY        ; 1/4
-	db SITRUS_BERRY   ; 1/8
-	db LEPPA_BERRY ; 1/16
-	db QUICK_CLAW   ; 1/32
-	db SCOPE_LENS   ; 1/64
-	db KINGS_ROCK   ; 1/128
-	db LEFTOVERS    ; 1/256
-	db LUCKY_EGG    ; 1/256
+.HeldItems:
+	db 1,   LUCKY_EGG
+	db 1,   LEFTOVERS
+	db 2,   EVIOLITE
+	db 2,   RARE_CANDY
+	db 3,   ABILITY_CAP
+	db 4,   FOCUS_BAND
+	db 7,   KINGS_ROCK
+	db 8,   QUICK_CLAW
+	db 12,  WHITE_HERB
+	db 24,  LEPPA_BERRY
+	db 32,  SITRUS_BERRY
+	db 64,  ORAN_BERRY
+	db 96,  NO_ITEM
+	db -1
 
 CheckValidLevel:
 ; Don't receive Pokémon outside a valid level range.
