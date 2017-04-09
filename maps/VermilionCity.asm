@@ -10,6 +10,10 @@ const_value set 2
 	const VERMILIONCITY_LAWRENCE
 	const VERMILIONCITY_CUT_TREE
 	const VERMILIONCITY_SUPER_NERD2
+	const VERMILIONCITY_ROCK1
+	const VERMILIONCITY_ROCK2
+	const VERMILIONCITY_ROCK3
+	const VERMILIONCITY_ROCK4
 
 VermilionCity_MapScriptHeader:
 .MapTriggers:
@@ -263,6 +267,9 @@ VermilionCityTutorVoltSwitchScript:
 	waitbutton
 	closetext
 	end
+
+VermilionCityRock:
+	jumpstd smashrock
 
 VermilionCitySign:
 	jumptext VermilionCitySignText
@@ -569,7 +576,7 @@ VermilionCity_MapEventHeader:
 	signpost 23, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
 
 .PersonEvents:
-	db 11
+	db 15
 	person_event SPRITE_COOLTRAINER_F, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1aa983, -1
 	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionMachopOwner, -1
 	person_event SPRITE_MACHOP, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
@@ -581,3 +588,7 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityCutTree, EVENT_VERMILION_CITY_CUT_TREE
 	person_event SPRITE_SUPER_NERD, 26, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionCitySuperNerd2Script, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 26, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 12, 23, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 28, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 29, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityRock, -1

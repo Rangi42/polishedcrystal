@@ -87,7 +87,7 @@ GeneratePartyMonStats: ; d906
 	inc de
 	ld a, [wBattleMode]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, NO_ITEM ; not xor a; preserve carry flag
 	jr z, .skipitem
 	ld a, [EnemyMonItem]
 
