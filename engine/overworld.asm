@@ -1441,16 +1441,16 @@ Group20Sprites:
 ; EcruteakShrineOutside
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_SAGE
+	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_WALKER
 	db SPRITE_YELLOW
-	; 6 walking sprites
+	; 7 walking sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_HOOTHOOT
 	db SPRITE_SKARMORY
-	; 9 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 10 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT

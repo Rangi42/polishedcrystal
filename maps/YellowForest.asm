@@ -1,9 +1,10 @@
 const_value set 2
+	const YELLOWFOREST_SUPER_NERD
 	const YELLOWFOREST_TWIN1
 	const YELLOWFOREST_TWIN2
 	const YELLOWFOREST_TEACHER
-	const YELLOWFOREST_COOLTRAINER_M1
-	const YELLOWFOREST_COOLTRAINER_M2
+	const YELLOWFOREST_BREEDER
+	const YELLOWFOREST_COOLTRAINER_M
 	const YELLOWFOREST_WALKER
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW
@@ -19,7 +20,15 @@ YellowForest_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
+
+.RebattleBreeder:
+	clearevent EVENT_BEAT_BREEDER_SOPHIE
+	return
 
 TrainerSchoolgirlSarah:
 	trainer EVENT_BEAT_SCHOOLGIRL_SARAH, SCHOOLGIRL, SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText, 0, SchoolgirlSarahScript
@@ -54,13 +63,13 @@ TeacherKathrynScript:
 	closetext
 	end
 
-TrainerCooltrainermHenri:
-	trainer EVENT_BEAT_COOLTRAINERM_HENRI, COOLTRAINERM, HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText, 0, CooltrainermHenriScript
+TrainerBreederSophie:
+	trainer EVENT_BEAT_BREEDER_SOPHIE, BREEDER, SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
 
-CooltrainermHenriScript:
+BreederSophieScript:
 	end_if_just_battled
 	opentext
-	writetext CooltrainermHenriAfterText
+	writetext BreederSophieAfterText
 	waitbutton
 	closetext
 	end
@@ -188,6 +197,9 @@ YellowForestTutorSeedBombScript:
 	closetext
 	end
 
+YellowForestSuperNerdScript:
+	jumptextfaceplayer YellowForestSuperNerdText
+
 YellowForestCutTree:
 	jumpstd cuttree
 
@@ -285,22 +297,25 @@ TeacherKathrynAfterText:
 	line "hard work."
 	done
 
-CooltrainermHenriSeenText:
-	text "Can you handle my"
-	line "balanced team of"
-	cont "#mon?"
+BreederSophieSeenText:
+	text "Did you know that"
+	line "Pikachu is an"
+	cont "evolved #mon?"
 	done
 
-CooltrainermHenriBeatenText:
-	text "I guess you can!"
+BreederSophieBeatenText:
+	text "I thought so!"
 	done
 
-CooltrainermHenriAfterText:
-	text "Having a diverse"
-	line "team to support"
+BreederSophieAfterText:
+	text "Sometimes Pikachu"
+	line "use their electric"
 
-	para "each others' weak-"
-	line "nesses is key."
+	para "shocks to revive"
+	line "fainted ones."
+
+	para "That's just the"
+	line "cutest!"
 	done
 
 YellowForestWalkerSeenText:
@@ -492,6 +507,18 @@ Text_YellowForestTutorTaught:
 	cont "Seed Bomb!"
 	done
 
+YellowForestSuperNerdText:
+	text "There's a protein"
+	line "in your body"
+	cont "called pikachurin."
+
+	para "What inspired that"
+	line "name?"
+
+	para "Pikachu, of"
+	line "course!"
+	done
+
 YellowForestSurfPikachuDollText:
 	text "<PLAYER> found"
 	line "Surf Pikachu Doll."
@@ -522,11 +549,12 @@ YellowForest_MapEventHeader:
 	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
 
 .PersonEvents:
-	db 14
+	db 15
+	person_event SPRITE_SUPER_NERD, 6, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YellowForestSuperNerdScript, -1
 	person_event SPRITE_TWIN, 39, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
 	person_event SPRITE_TWIN, 32, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
 	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
-	person_event SPRITE_COOLTRAINER_M, 35, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermHenri, -1
+	person_event SPRITE_BREEDER, 40, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
 	person_event SPRITE_COOLTRAINER_M, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
 	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
 	person_event SPRITE_SKARMORY, 22, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY

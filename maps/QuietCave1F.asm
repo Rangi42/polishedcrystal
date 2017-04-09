@@ -1,5 +1,6 @@
 const_value set 2
 	const QUIETCAVE1F_HEX_MANIAC
+	const QUIETCAVE1F_COOLTRAINER_M
 	const QUIETCAVE1F_POKE_BALL1
 	const QUIETCAVE1F_POKE_BALL2
 	const QUIETCAVE1F_POKE_BALL3
@@ -19,6 +20,17 @@ HexManiacAshleyScript:
 	end_if_just_battled
 	opentext
 	writetext HexManiacAshleyAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerCooltrainermHenri:
+	trainer EVENT_BEAT_COOLTRAINERM_HENRI, COOLTRAINERM, HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText, 0, CooltrainermHenriScript
+
+CooltrainermHenriScript:
+	end_if_just_battled
+	opentext
+	writetext CooltrainermHenriAfterText
 	waitbutton
 	closetext
 	end
@@ -51,6 +63,24 @@ HexManiacAshleyAfterText:
 	line "others can't see…"
 	done
 
+CooltrainermHenriSeenText:
+	text "Can you handle my"
+	line "balanced team of"
+	cont "#mon?"
+	done
+
+CooltrainermHenriBeatenText:
+	text "I guess you can!"
+	done
+
+CooltrainermHenriAfterText:
+	text "Having a diverse"
+	line "team to support"
+
+	para "each others' weak-"
+	line "nesses is key."
+	done
+
 QuietCave1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -71,8 +101,9 @@ QuietCave1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_HEX_MANIAC, 8, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacAshley, -1
+	person_event SPRITE_COOLTRAINER_M, 17, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermHenri, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCave1FNugget, EVENT_QUIET_CAVE_1F_NUGGET
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCave1FTwistedSpoon, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
 	person_event SPRITE_BALL_CUT_FRUIT, 2, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCave1FDuskStone, EVENT_QUIET_CAVE_1F_DUSK_STONE

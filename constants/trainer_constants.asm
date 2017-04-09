@@ -529,6 +529,7 @@ KRIS EQU __enum__
 	const THERESA
 	const JODY
 	const CARLENE
+	const SOPHIE
 
 	trainerclass BAKER ; 44
 	const CHELSIE

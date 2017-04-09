@@ -8923,6 +8923,19 @@ BreederGroup:
 	db $ff ; end
 
 ; ================
+
+	; BREEDER
+	db "Sophie@"
+	db TRAINERTYPE_ITEM
+
+	; party
+	db 25, PICHU, EVIOLITE
+	db 26, PIKACHU, LIGHT_BALL
+	db 27, RAICHU, DESTINY_KNOT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10975,9 +10988,9 @@ CooltrainerMGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 26, CHARMELEON
-	db 26, WARTORTLE
-	db 26, IVYSAUR
+	db 35, CHARMELEON
+	db 35, WARTORTLE
+	db 35, IVYSAUR
 
 	db $ff ; end
 
