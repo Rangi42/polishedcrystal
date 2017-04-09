@@ -173,7 +173,7 @@ CherrygroveSilverTriggerNorth:
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	special RunCallback_04
-	playmapmusic
+	special RestartMapMusic
 	end
 
 CherrygroveTeacherScript:
