@@ -205,7 +205,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ;  8
 
 	mapgroup AZALEA_POKECENTER_1F,                        4,  6 ;  1
-	mapgroup CHARCOAL_KILN,                               4,  4 ;  2
+	mapgroup CHARCOAL_KILN,                               4,  5 ;  2
 	mapgroup AZALEA_MART,                                 4,  6 ;  3
 	mapgroup KURTS_HOUSE,                                 4,  8 ;  4
 	mapgroup AZALEA_GYM,                                  8,  5 ;  5

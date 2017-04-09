@@ -112,8 +112,6 @@ Route38_BlockData:
 OlivineTimsHouse_BlockData:
 OlivinePunishmentSpeechHouse_BlockData:
 OlivineGoodRodHouse_BlockData:
-; TODO: traditional with kiln tiles
-CharcoalKiln_BlockData:
 GoldenrodBillsHouse_BlockData:
 GoldenrodNetBallHouse_BlockData:
 CianwoodCityPhotoStudio_BlockData:

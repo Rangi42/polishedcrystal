@@ -15,3 +15,6 @@ DimCave5F_BlockData:
 
 LuckyIslandHidden_BlockData:
 	INCBIN "maps/LuckyIslandHidden.blk"
+
+CharcoalKiln_BlockData:
+	INCBIN "maps/CharcoalKiln.blk"
