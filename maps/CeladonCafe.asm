@@ -4,6 +4,7 @@ const_value set 2
 	const CELADONCAFE_FISHER2
 	const CELADONCAFE_FISHER3
 	const CELADONCAFE_TEACHER
+	const CELADONCAFE_MAYLENE
 
 CeladonCafe_MapScriptHeader:
 .MapTriggers:
@@ -85,6 +86,44 @@ UnknownScript_0x7309a:
 	waitbutton
 	closetext
 	spriteface CELADONCAFE_TEACHER, LEFT
+	end
+
+MayleneScript:
+	opentext
+	writetext MayleneText1
+	waitbutton
+	closetext
+	faceplayer
+	opentext
+	writetext MayleneText2
+	waitbutton
+	checkevent EVENT_BEAT_MAYLENE
+	iftrue .Done
+	writetext MayleneText3
+	yesorno
+	iffalse .Refused
+	writetext MayleneSeenText
+	waitbutton
+	closetext
+	winlosstext MayleneBeatenText, 0
+	setlasttalked CELADONCAFE_MAYLENE
+	loadtrainer MAYLENE, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_MAYLENE
+	opentext
+	writetext MayleneAfterText
+	waitbutton
+.Done
+	closetext
+	spriteface CELADONCAFE_MAYLENE, RIGHT
+	end
+
+.Refused
+	writetext MayleneRefusedText
+	waitbutton
+	closetext
+	spriteface CELADONCAFE_MAYLENE, RIGHT
 	end
 
 EatathonContestPoster:
@@ -184,6 +223,71 @@ UnknownText_0x73278:
 	text "More, Chef!"
 	done
 
+MayleneText1:
+	text "Maylene: Munch"
+	line "munch munch…"
+	done
+
+MayleneText2:
+	text "The eatathon"
+	line "contest!"
+
+	para "I never dreamed of"
+	line "such a wonderful"
+	cont "thing."
+
+	para "After a strict"
+	line "diet during train-"
+	cont "ing, I can eat"
+	cont "like a Snorlax."
+
+	para "The winner eats"
+	line "for free, too."
+
+	para "That's just a"
+	line "dream come true!"
+	done
+
+MayleneText3:
+	text "I'm starting to"
+	line "feel full…"
+
+	para "Um, as a break,"
+	line "do you want to"
+	cont "battle with me?"
+	done
+
+MayleneRefusedText:
+	text "Sigh… okay."
+	done
+
+MayleneSeenText:
+	text "OK! Rei!"
+
+	para "Oh, that's my bow"
+	line "before a match."
+
+	para "I'm throwing every-"
+	line "thing I have at"
+	cont "you!"
+	done
+
+MayleneBeatenText:
+	text "I'm forced to admit"
+	line "defeat…"
+
+	para "You are much too"
+	line "strong."
+	done
+
+MayleneAfterText:
+	text "Thank you,"
+	line "<PLAYER>!"
+
+	para "I'm ready to keep"
+	line "on eating!"
+	done
+
 EatathonContestPosterText:
 	text "Eatathon Contest!"
 	line "No time limit!"
@@ -225,9 +329,10 @@ CeladonCafe_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, CeladonCafeTrashcan
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x73049, -1
 	person_event SPRITE_FISHER, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73051, -1
 	person_event SPRITE_FISHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x73062, -1
 	person_event SPRITE_FISHER, 2, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73073, -1
 	person_event SPRITE_TEACHER, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
+	person_event SPRITE_MAYLENE, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MayleneScript, -1

@@ -56,4 +56,4 @@ CeladonHotelPool_MapEventHeader:
 	db 3
 	person_event SPRITE_POKEFAN_M, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotelPoolPokefanMScript, -1
 	person_event SPRITE_CHILD, 6, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHotelPoolChildScript, -1
-	person_event SPRITE_SWIMMER_GUY, 4, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonHotelPoolSwimmerMScript, -1
+	person_event SPRITE_SWIMMER_GUY, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonHotelPoolSwimmerMScript, -1

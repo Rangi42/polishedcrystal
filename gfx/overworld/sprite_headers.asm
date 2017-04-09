@@ -229,7 +229,7 @@ FlannerySprite:
 	sprite_header FlannerySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 MayleneSprite:
-	sprite_header MayleneSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+	sprite_header MayleneSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 SkylaSprite:
 	sprite_header SkylaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

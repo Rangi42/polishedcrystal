@@ -13013,17 +13013,17 @@ MayleneGroup:
 
 	; party
 
-	db 50, MACHAMP
-	db 50, HITMONTOP
-	db 50, HITMONLEE
-	db 50, HITMONCHAN
+	db 59, HITMONTOP
+	db 59, HITMONLEE
+	db 59, HITMONCHAN
 if DEF(FAITHFUL)
-	db 50, HERACROSS
-	db 50, PRIMEAPE
+	db 62, HERACROSS
+	db 62, PRIMEAPE
 else
-	db 50, ELECTIVIRE
-	db 50, MAGMORTAR
+	db 62, ELECTIVIRE
+	db 62, MAGMORTAR
 endc
+	db 63, MACHAMP
 
 	db $ff ; end
 
