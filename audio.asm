@@ -203,7 +203,6 @@ INCLUDE "audio/music/dppt/route205.asm"
 INCLUDE "audio/music/dppt/starkmountain.asm"
 INCLUDE "audio/music/dppt/championbattle.asm"
 INCLUDE "audio/music/hgss/cianwoodcity.asm"
-INCLUDE "audio/music/bw/finalpokemon.asm"
 
 
 SECTION "Extra Songs 6", ROMX
@@ -220,6 +219,7 @@ SECTION "Extra Songs 7", ROMX
 INCLUDE "audio/music/rse/gymleaderbattle.asm"
 INCLUDE "audio/music/dppt/gymleaderbattle.asm"
 INCLUDE "audio/music/bw/gymleaderbattle.asm"
+INCLUDE "audio/music/bw/finalpokemon.asm"
 
 
 SECTION "Extra Songs 8", ROMX
