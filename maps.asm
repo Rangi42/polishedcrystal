@@ -509,8 +509,6 @@ INCLUDE "maps/Route22.asm"
 INCLUDE "maps/Route2.asm"
 INCLUDE "maps/Route1.asm"
 INCLUDE "maps/PalletTown.asm"
-INCLUDE "maps/Route18East.asm"
-INCLUDE "maps/Route18West.asm"
 INCLUDE "maps/Route14.asm"
 
 
@@ -670,6 +668,8 @@ INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/MountMoon1F.asm"
 INCLUDE "maps/MountMoonB1F.asm"
 INCLUDE "maps/MountMoonB2F.asm"
+INCLUDE "maps/Route18East.asm"
+INCLUDE "maps/Route18West.asm"
 
 
 SECTION "Map Scripts 31", ROMX

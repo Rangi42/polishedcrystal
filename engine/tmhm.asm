@@ -144,7 +144,7 @@ TMHMMoves: ; 1167a
 	db SUCKER_PUNCH ; MT20 (TODO: Scary Cave)
 	db SWAGGER      ; MT21 (Celadon City)
 	db THUNDERPUNCH ; MT22 (Goldenrod City)
-	db VOLT_SWITCH  ; MT23 (TODO: Vermilion City)
+	db VOLT_SWITCH  ; MT23 (Vermilion City)
 	db WATER_PULSE  ; MT24 (Battle Tower)
 	db ZAP_CANNON   ; MT25 (Power Plant)
 	db ZEN_HEADBUTT ; MT26 (Saffron City)

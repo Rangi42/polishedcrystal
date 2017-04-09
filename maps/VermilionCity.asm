@@ -2,13 +2,14 @@ const_value set 2
 	const VERMILIONCITY_COOLTRAINERF
 	const VERMILIONCITY_GRAMPS
 	const VERMILIONCITY_MACHOP
-	const VERMILIONCITY_SUPER_NERD
+	const VERMILIONCITY_SUPER_NERD1
 	const VERMILIONCITY_YOUNGSTER
 	const VERMILIONCITY_SAILOR
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_POKEFAN_M
 	const VERMILIONCITY_LAWRENCE
 	const VERMILIONCITY_CUT_TREE
+	const VERMILIONCITY_SUPER_NERD2
 
 VermilionCity_MapScriptHeader:
 .MapTriggers:
@@ -155,7 +156,7 @@ VermilionMachop:
 	closetext
 	end
 
-SuperNerdScript_0x1aa99b:
+SuperNerd1Script_0x1aa99b:
 	jumptextfaceplayer UnknownText_0x1aab1a
 
 VermilionCityYoungsterScript:
@@ -222,6 +223,44 @@ VermilionGymBadgeGuy:
 	writetext UnknownText_0x1aad4a
 	waitbutton
 .Done:
+	closetext
+	end
+
+VermilionCitySuperNerd2Script:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_VOLT_SWITCH_INTRO
+	iftrue VermilionCityTutorVoltSwitchScript
+	writetext VermilionCityCooltrainerMText
+	waitbutton
+	setevent EVENT_LISTENED_TO_VOLT_SWITCH_INTRO
+VermilionCityTutorVoltSwitchScript:
+	writetext Text_VermilionCityTutorVoltSwitchQuestion
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	yesorno
+	iffalse .TutorRefused
+	writebyte VOLT_SWITCH
+	writetext Text_VermilionCityTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_VermilionCityTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	waitbutton
+	writetext Text_VermilionCityTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_VermilionCityTutorTaught
+	waitbutton
 	closetext
 	end
 
@@ -422,6 +461,46 @@ UnknownText_0x1aad4a:
 	cont "help you."
 	done
 
+VermilionCityCooltrainerMText:
+	text "Lt.Surge's Gym re-"
+	line "quires you to find"
+	cont "hidden switches."
+
+	para "It reminds me of a"
+	line "move I know…"
+	done
+
+Text_VermilionCityTutorVoltSwitchQuestion:
+	text "Do you want me to"
+	line "teach your #mon"
+
+	para "Volt Switch for a"
+	line "Silver Leaf?"
+	done
+
+Text_VermilionCityTutorNoSilverLeaf:
+	text "Oh, but you don't"
+	line "have any…"
+	done
+
+Text_VermilionCityTutorRefused:
+	text "Oh, never mind"
+	line "then."
+	done
+
+Text_VermilionCityTutorClear:
+	text ""
+	done
+
+Text_VermilionCityTutorTaught:
+	text "Volt Switch hits"
+	line "the foe, then"
+	cont "switches out."
+
+	para "It requires stra-"
+	line "tegy to use well."
+	done
+
 VermilionCitySignText:
 	text "Vermilion City"
 
@@ -494,10 +573,11 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1aa983, -1
 	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionMachopOwner, -1
 	person_event SPRITE_MACHOP, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
-	person_event SPRITE_SUPER_NERD, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1aa99b, -1
+	person_event SPRITE_SUPER_NERD, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerd1Script_0x1aa99b, -1
 	person_event SPRITE_YOUNGSTER, 16, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionCityYoungsterScript, -1
 	person_event SPRITE_SAILOR, 9, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionCitySailorScript, -1
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_POKEFAN_M, 16, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	person_event SPRITE_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionCityCutTree, EVENT_VERMILION_CITY_CUT_TREE
+	person_event SPRITE_SUPER_NERD, 26, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionCitySuperNerd2Script, -1
