@@ -1115,7 +1115,7 @@ WeatherAccAbility:
 ; Decrease accuracy by 20% in relevant weather
 	call GetWeatherAfterCloudNine
 	cp b
-	ret z
+	ret nz
 	ld [hl], 4
 	call Multiply
 	ld [hl], 5
