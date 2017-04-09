@@ -1,4 +1,5 @@
 const_value set 2
+	const CELADONHOTELROOM2_LASS
 
 CeladonHotelRoom2_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,19 @@ CeladonHotelRoom2_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+CeladonHotelRoom2LassScript:
+	jumptextfaceplayer CeladonHotelRoom2LassText
+
+CeladonHotelRoom2LassText:
+	text "The staff here"
+	line "fold my towels"
+	cont "into flower shapes"
+	cont "every day."
+
+	para "I should ask them"
+	line "to teach me how."
+	done
 
 CeladonHotelRoom2_MapEventHeader:
 	; filler
@@ -23,4 +37,5 @@ CeladonHotelRoom2_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_LASS, 2, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom2LassScript, -1
