@@ -551,8 +551,8 @@ VermilionCity_MapEventHeader:
 	warp_def $11, $24, 1, DIGLETTS_CAVE
 	warp_def $23, $1d, 1, SEAGALLOP_FERRY_VERMILION_GATE
 	warp_def $23, $1e, 1, SEAGALLOP_FERRY_VERMILION_GATE
-	warp_def $5, $5, 1, VERMILION_POLLUTION_SPEECH_HOUSE
-	warp_def $5, $d, 1, VERMILION_S_S_ANNE_SPEECH_HOUSE
+	warp_def $5, $d, 1, VERMILION_POLLUTION_SPEECH_HOUSE
+	warp_def $5, $13, 1, VERMILION_S_S_ANNE_SPEECH_HOUSE
 
 .XYTriggers:
 	db 2

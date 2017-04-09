@@ -5,6 +5,7 @@ const_value set 2
 	const CELADONCAFE_FISHER3
 	const CELADONCAFE_TEACHER
 	const CELADONCAFE_MAYLENE
+	const CELADONCAFE_BAKER
 
 CeladonCafe_MapScriptHeader:
 .MapTriggers:
@@ -125,6 +126,9 @@ MayleneScript:
 	closetext
 	spriteface CELADONCAFE_MAYLENE, RIGHT
 	end
+
+CeladonCafeBakerScript:
+	jumptextfaceplayer CeladonCafeBakerText
 
 EatathonContestPoster:
 	jumptext EatathonContestPosterText
@@ -288,6 +292,14 @@ MayleneAfterText:
 	line "on eating!"
 	done
 
+CeladonCafeBakerText:
+	text "I'm working here"
+	line "'cause I get to"
+
+	para "eat any time I"
+	line "want. Simple."
+	done
+
 EatathonContestPosterText:
 	text "Eatathon Contest!"
 	line "No time limit!"
@@ -329,10 +341,11 @@ CeladonCafe_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, CeladonCafeTrashcan
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x73049, -1
 	person_event SPRITE_FISHER, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73051, -1
 	person_event SPRITE_FISHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x73062, -1
 	person_event SPRITE_FISHER, 2, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73073, -1
 	person_event SPRITE_TEACHER, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
 	person_event SPRITE_MAYLENE, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MayleneScript, -1
+	person_event SPRITE_BAKER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonCafeBakerScript, -1
