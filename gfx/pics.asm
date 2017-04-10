@@ -192,13 +192,13 @@ endc
 MagnetonFrontpic:      INCBIN "gfx/pics/magneton/front.2bpp.lz"
 DragonairFrontpic:     INCBIN "gfx/pics/dragonair/front.2bpp.lz"
 ForretressFrontpic:    INCBIN "gfx/pics/forretress/front.2bpp.lz"
-TogeticFrontpic:       INCBIN "gfx/pics/togetic/front.2bpp.lz"
-KangaskhanBackpic:     INCBIN "gfx/pics/kangaskhan/back.2bpp.lz"
 ; 13c000
 
 
 SECTION "Pics 8", ROMX[$4000], BANK[PICS_8]
 
+TogeticFrontpic:       INCBIN "gfx/pics/togetic/front.2bpp.lz"
+KangaskhanBackpic:     INCBIN "gfx/pics/kangaskhan/back.2bpp.lz"
 SeelFrontpic:          INCBIN "gfx/pics/seel/front.2bpp.lz"
 CrobatFrontpic:        INCBIN "gfx/pics/crobat/front.2bpp.lz"
 ChanseyFrontpic:       INCBIN "gfx/pics/chansey/front.2bpp.lz"

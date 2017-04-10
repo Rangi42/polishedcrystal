@@ -331,6 +331,9 @@ endc
 .LargeSpriteSizes:
 ; species, max tile - size + 1
 	db GLACEON,    $64 - 7 * 7 + 1
+if !DEF(FAITHFUL)
+	db DUGTRIO,    $6e - 7 * 7 + 1
+endc
 	db MAMOSWINE,  $6f - 7 * 7 + 1
 	db PORYGON_Z,  $6f - 7 * 7 + 1
 	db SYLVEON,    $71 - 7 * 7 + 1
