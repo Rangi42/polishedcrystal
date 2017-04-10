@@ -253,7 +253,16 @@ GetAnimatedFrontpic: ; 51103
 	pop hl
 	and $f
 	ld de, w6_d800 + 5 * 5 tiles
+if !DEF(FAITHFUL)
+	push af
+	ld c, 5 * 5 + 10
+	ld a, [CurSpecies]
+	cp DIGLETT
+	jr z, .alolan_diglett
 	ld c, 5 * 5
+.alolan_diglett
+	pop af
+endc
 	cp 5
 	jr z, .got_dims
 	ld de, w6_d800 + 6 * 6 tiles
