@@ -324,7 +324,7 @@ GetAnimatedFrontpic: ; 51103
 	db GLACEON,    $64 - 7 * 7 + 1
 	db MAMOSWINE,  $6f - 7 * 7 + 1
 	db PORYGON_Z,  $6f - 7 * 7 + 1
-	db SYLVEON,    $71 - 7 * 7 + 1 ; TODO
+	db SYLVEON,    $71 - 7 * 7 + 1
 	db MISMAGIUS,  $71 - 7 * 7 + 1
 	db ELECTIVIRE, $76 - 7 * 7 + 1
 	db WEAVILE,    $80 - 7 * 7 + 1 ; TODO - fix flip
