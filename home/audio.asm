@@ -470,6 +470,14 @@ SpecialMapMusic:: ; 3d62
 
 .not_shipwreck
 	ld a, [MapGroup]
+	cp GROUP_WHIRL_ISLAND_LUGIA_CHAMBER
+	jr nz, .not_lugia_chamber
+	ld a, [MapNumber]
+	cp MAP_WHIRL_ISLAND_LUGIA_CHAMBER
+	jr z, .no
+
+.not_lugia_chamber
+	ld a, [MapGroup]
 	cp GROUP_ROUTE_16_SOUTH ; same as GROUP_ROUTE_18_WEST
 	jr nz, .not_cycling_road_bike
 	ld a, [MapNumber]
