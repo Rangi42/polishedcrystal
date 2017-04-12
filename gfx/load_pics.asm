@@ -330,6 +330,7 @@ endc
 
 .LargeSpriteSizes:
 ; species, max tile - size + 1
+	db PIKACHU,    $63 - 7 * 7 + 1 ; Flying Pikachu
 	db GLACEON,    $64 - 7 * 7 + 1
 if !DEF(FAITHFUL)
 	db DUGTRIO,    $6e - 7 * 7 + 1
