@@ -1439,6 +1439,7 @@ Group19Sprites:
 Group20Sprites:
 ; YellowForest
 ; EcruteakShrineOutside
+	db SPRITE_BREEDER
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_SAGE
 	db SPRITE_SUPER_NERD
@@ -1446,12 +1447,11 @@ Group20Sprites:
 	db SPRITE_TWIN
 	db SPRITE_WALKER
 	db SPRITE_YELLOW
-	; 7 walking sprites
+	; 8 walking sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_HOOTHOOT
 	db SPRITE_SKARMORY
-	; 10 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 11 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
