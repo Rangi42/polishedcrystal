@@ -812,7 +812,7 @@ VeteranfPic:           INCBIN "gfx/trainers/veteran_f.2bpp.lz"
 VeteranmPic:           INCBIN "gfx/trainers/veteran_m.2bpp.lz"
 
 
-SECTION "Pics 22", ROMX
+SECTION "Pics 22", ROMX[$5980], BANK[$71]
 
 StevenPic:                INCBIN "gfx/trainers/steven.2bpp.lz"
 CynthiaPic:               INCBIN "gfx/trainers/cynthia.2bpp.lz"
@@ -840,13 +840,13 @@ SkylaPic:                 INCBIN "gfx/trainers/skyla.2bpp.lz"
 ValeriePic:               INCBIN "gfx/trainers/valerie.2bpp.lz"
 WalkerPic:                INCBIN "gfx/trainers/walker.2bpp.lz"
 ImakuniPic:               INCBIN "gfx/trainers/imakuni.2bpp.lz"
+
+
+SECTION "Pics 23", ROMX[$401E], BANK[$79]
+
 PikachuFlyFrontpic:       INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:        INCBIN "gfx/pics/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:      INCBIN "gfx/pics/pikachu_surf/front.2bpp.lz"
-
-
-SECTION "Pics 23", ROMX
-
 PikachuPikaFrontpic:      INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
 PikachuChuchuFrontpic:    INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
 PichuSpikyFrontpic:       INCBIN "gfx/pics/pichu_spiky/front.2bpp.lz"

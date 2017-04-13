@@ -40,7 +40,8 @@ GetVariant: ; 51040
 
 	ld a, [hl]
 	and FORM_MASK
-	jr nz, .use_form
+	cp 4 ; Pika or ChuChu
+	jr nc, .use_form
 
 	push bc
 	ld bc, TempMonForm
