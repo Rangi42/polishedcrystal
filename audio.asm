@@ -21,8 +21,9 @@ INCLUDE "audio/sfx_pointers.asm"
 
 
 
-SECTION "Songs 1", ROMX[$5556], BANK[SONGS_1]
+SECTION "Songs 1", ROMX, BANK[SONGS_1]
 
+FoobarSongs1::
 INCLUDE "audio/music/route36.asm"
 INCLUDE "audio/music/rivalbattle.asm"
 INCLUDE "audio/music/rocketbattle.asm"
@@ -184,28 +185,35 @@ INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
 SECTION "Extra Songs 4", ROMX[$4000], BANK[EXTRA_SONGS_4]
 
+INCLUDE "audio/music/bw/route4.asm"
 INCLUDE "audio/music/bw/route12.asm"
 INCLUDE "audio/music/bw/trainerbattle.asm"
 INCLUDE "audio/music/bw/wcsbattle.asm"
-INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
-INCLUDE "audio/music/b2w2/whitetreehollow.asm"
-INCLUDE "audio/music/b2w2/championbattle.asm"
-INCLUDE "audio/music/oras/wallybattle.asm"
-INCLUDE "audio/music/oras/zinniaencounter.asm"
-INCLUDE "audio/music/oras/zinniabattle.asm"
 
 
 SECTION "Extra Songs 5", ROMX
 
-INCLUDE "audio/music/dppt/route205.asm"
-INCLUDE "audio/music/dppt/route209.asm"
-INCLUDE "audio/music/dppt/canalavecity.asm"
-INCLUDE "audio/music/dppt/sunyshorecity.asm"
-INCLUDE "audio/music/dppt/starkmountain.asm"
-INCLUDE "audio/music/dppt/championbattle.asm"
+INCLUDE "audio/music/b2w2/roadtoreversalmountain.asm"
+INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
+INCLUDE "audio/music/b2w2/whitetreehollow.asm"
+INCLUDE "audio/music/b2w2/championbattle.asm"
 
 
 SECTION "Extra Songs 6", ROMX
+
+INCLUDE "audio/music/dppt/route205.asm"
+INCLUDE "audio/music/dppt/route209.asm"
+
+
+SECTION "Extra Songs 7", ROMX
+
+INCLUDE "audio/music/dppt/canalavecity.asm"
+INCLUDE "audio/music/dppt/sunyshorecity.asm"
+INCLUDE "audio/music/dppt/oreburghgate.asm"
+INCLUDE "audio/music/dppt/championbattle.asm"
+
+
+SECTION "Extra Songs 8", ROMX
 
 INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/laverrecity.asm"
@@ -214,7 +222,7 @@ INCLUDE "audio/music/xy/gymleaderbattle.asm"
 INCLUDE "audio/music/xy/frostcavern.asm"
 
 
-SECTION "Extra Songs 7", ROMX
+SECTION "Extra Songs 9", ROMX
 
 INCLUDE "audio/music/rse/gymleaderbattle.asm"
 INCLUDE "audio/music/dppt/gymleaderbattle.asm"
@@ -222,18 +230,34 @@ INCLUDE "audio/music/bw/gymleaderbattle.asm"
 INCLUDE "audio/music/bw/finalpokemon.asm"
 
 
-SECTION "Extra Songs 8", ROMX
+SECTION "Extra Songs 10", ROMX
 
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
+
+
+SECTION "Extra Songs 11", ROMX
+
 INCLUDE "audio/music/sm/elitefourbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 
-SECTION "Extra Songs 9", ROMX
+SECTION "Extra Songs 12", ROMX
 
 INCLUDE "audio/music/hgss/cianwoodcity.asm"
 INCLUDE "audio/music/custom/lugiassong.asm"
+
+
+SECTION "Extra Songs 13", ROMX
+
+INCLUDE "audio/music/dppt/starkmountain.asm"
+INCLUDE "audio/music/oras/wallybattle.asm"
+
+
+SECTION "Extra Songs 12", ROMX
+
+INCLUDE "audio/music/oras/zinniaencounter.asm"
+INCLUDE "audio/music/oras/zinniabattle.asm"
 
 
 SECTION "Sound Effects", ROMX[$47fd], BANK[SOUND_EFFECTS]

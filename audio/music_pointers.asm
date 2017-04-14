@@ -123,15 +123,18 @@
 	dba Music_Route210DPPt
 	dba Music_CanalaveCityDPPt
 	dba Music_SunyshoreCityDPPt
+	dba Music_OreburghGateDPPt
 	dba Music_StarkMountainDPPt
 	dba Music_MountCoronetDPPt
 	dba Music_EternaForestDPPt
 	dba Music_GameCornerDPPt
 	dba Music_ChampionBattleDPPt
+	dba Music_Route4BW
 	dba Music_Route12BW
 	dba Music_TrainerBattleBW
 	dba Music_WCSBattleBW
 	dba Music_FinalPokemonBW
+	dba Music_RoadToReversalMountainB2W2
 	dba Music_ReversalMountainWhite2
 	dba Music_WhiteTreehollowWhite2
 	dba Music_ChampionBattleB2W2

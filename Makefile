@@ -10,9 +10,10 @@ TITLE = PKPCRYSTAL
 MCODE = PKPC
 ROMVERSION = 0x30
 FILLER = 0x00
+ALTFILLER = 0xff
 
 .SUFFIXES:
-.PHONY: all clean crystal
+.PHONY: all clean crystal faithful bankfree
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -37,10 +38,11 @@ gfx/pics.o
 
 roms := $(NAME).gbc $(FNAME).gbc
 
-all: crystal
+all: crystal faithful
 crystal: $(NAME).gbc
 faithful: FAITHFUL += -DFAITHFUL
 faithful: $(FNAME).gbc
+bankfree: $(NAME)-$(ALTFILLER).gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
@@ -57,6 +59,10 @@ $(NAME).gbc: $(crystal_obj)
 
 $(FNAME).gbc: $(crystal_obj)
 	rgblink -n $(FNAME).sym -m $(FNAME).map -p $(FILLER) -o $@ $^
+	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
+
+$(NAME)-$(ALTFILLER).gbc: $(crystal_obj)
+	rgblink -n $(NAME)-$(ALTFILLER).sym -m $(NAME)-$(ALTFILLER).map -p $(ALTFILLER) -o $@ $^
 	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
 
 %.png: ;
