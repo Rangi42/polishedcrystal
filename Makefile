@@ -36,7 +36,7 @@ text/common_text.o \
 gfx/pics.o
 
 
-roms := $(NAME).gbc $(FNAME).gbc
+roms := $(NAME).gbc $(FNAME).gbc $(NAME)-$(ALTFILLER).gbc
 
 all: crystal faithful
 crystal: $(NAME).gbc

@@ -21,9 +21,8 @@ INCLUDE "audio/sfx_pointers.asm"
 
 
 
-SECTION "Songs 1", ROMX, BANK[SONGS_1]
+SECTION "Songs 1", ROMX[$555f], BANK[SONGS_1]
 
-FoobarSongs1::
 INCLUDE "audio/music/route36.asm"
 INCLUDE "audio/music/rivalbattle.asm"
 INCLUDE "audio/music/rocketbattle.asm"
@@ -154,7 +153,7 @@ INCLUDE "audio/music/hgss/summoningdance.asm"
 INCLUDE "audio/music/hgss/spikyearedpichu.asm"
 
 
-SECTION "Extra Songs 1", ROMX[$62eb], BANK[EXTRA_SONGS_1]
+SECTION "Extra Songs 1", ROMX[$5f18], BANK[EXTRA_SONGS_1]
 
 INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/music/hgss/hoohbattle.asm"

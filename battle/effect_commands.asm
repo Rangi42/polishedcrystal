@@ -7063,12 +7063,18 @@ BattleCommand_Charge: ; 36b4d
 	ld hl, .UsedText
 	call BattleTextBox
 
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_SKULL_BASH
-	ld b, endturn_command
-	jp z, SkipToBattleCommand
-	jp EndMoveEffect
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonItem
+	jr z, .got_item
+	ld hl, EnemyMonItem
+.got_item
+	ld a, [hl]
+	cp POWER_HERB
+	jp nz, EndMoveEffect
+	farcall ConsumeUsersItem
+	ld hl, .PowerHerb
+	jp BattleTextBox
 
 .UsedText:
 	text_jump UnknownText_0x1c0d0e ; "[USER]"
@@ -7114,6 +7120,10 @@ BattleCommand_Charge: ; 36b4d
 	text_jump UnknownText_0x1c0d6c
 	db "@"
 ; 36c2c
+
+.PowerHerb:
+	text_jump Text_PowerHerbActivated
+	db "@"
 
 BattleCommand_TrapTarget: ; 36c2d
 ; traptarget

@@ -91,7 +91,7 @@ Implement effects:
 * Quick Powder (already on wild Ditto)
 * Choice {Band, Scarf, Specs} (Battle Tower)
 * Binding Band
-* {Mental, Power, White} Herb (Battle Tower)
+* {Mental, ~~Power~~, White} Herb (Battle Tower)
 * Big Root (Yellow Forest)
 * Shell Bell (already in Aerodactyl chamber)
 * Assault Vest
