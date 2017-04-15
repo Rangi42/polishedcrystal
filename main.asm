@@ -6299,29 +6299,35 @@ Function1de2c5: ; 1de2c5
 PokegearGFX: ; 1de2e4
 INCBIN "gfx/misc/pokegear.2bpp.lz"
 
+
 SECTION "Tileset Data 8", ROMX[$4000], BANK[TILESETS_8]
 
 INCLUDE "tilesets/data_8.asm"
 
-SECTION "Tileset Data 9", ROMX
+SECTION "Tileset Data 9", ROMX, BANK[$47]
 
 INCLUDE "tilesets/data_9.asm"
 
-SECTION "Tileset Data 10", ROMX
+SECTION "Tileset Data 10", ROMX, BANK[$2F]
 
 INCLUDE "tilesets/data_10.asm"
 
-SECTION "Tileset Data 11", ROMX
+SECTION "Tileset Data 11", ROMX, BANK[$7A]
 
 INCLUDE "tilesets/data_11.asm"
 
-SECTION "Tileset Data 12", ROMX
+SECTION "Tileset Data 12", ROMX, BANK[$76]
 
 INCLUDE "tilesets/data_12.asm"
 
-SECTION "Tileset Data 13", ROMX
+SECTION "Tileset Data 13", ROMX, BANK[$B]
 
 INCLUDE "tilesets/data_13.asm"
+
+SECTION "Tileset Data 14", ROMX, BANK[$28]
+
+INCLUDE "tilesets/data_14.asm"
+
 
 SECTION "bank7B", ROMX[$4000], BANK[$7B]
 

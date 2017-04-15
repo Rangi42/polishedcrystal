@@ -1,30 +1,23 @@
 INCLUDE "includes.asm"
 
 
-; Variant pic pointers are assumed to start at the same address in a different bank.
-
 SECTION "Pic Pointers", ROMX[$4000], BANK[PIC_POINTERS]
+
 PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
+ 
 
-SECTION "Unown Pic Pointers", ROMX[$4000]
-UnownPicPointers:: INCLUDE "gfx/pics/unown_pic_pointers.asm"
+SECTION "Variant Pic Pointers", ROMX[$7eef], BANK[$4]
 
-SECTION "Pikachu Pic Pointers", ROMX[$4000]
+UnownPicPointers::   INCLUDE "gfx/pics/unown_pic_pointers.asm"
 PikachuPicPointers:: INCLUDE "gfx/pics/pikachu_pic_pointers.asm"
-
-SECTION "Pichu Pic Pointers", ROMX[$4000]
-PichuPicPointers:: INCLUDE "gfx/pics/pichu_pic_pointers.asm"
-
-SECTION "Arbok Pic Pointers", ROMX[$4000]
-ArbokPicPointers:: INCLUDE "gfx/pics/arbok_pic_pointers.asm"
-
-SECTION "Mewtwo Pic Pointers", ROMX[$4000]
-MewtwoPicPointers:: INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
+PichuPicPointers::   INCLUDE "gfx/pics/pichu_pic_pointers.asm"
+ArbokPicPointers::   INCLUDE "gfx/pics/arbok_pic_pointers.asm"
+MewtwoPicPointers::  INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
-SECTION "Trainer Pic Pointers", ROMX
+SECTION "Trainer Pic Pointers", ROMX[$7de9], BANK[$3]
+
 TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
-
 
 
 SECTION "Pics 1", ROMX[$45f4], BANK[PICS_1]
