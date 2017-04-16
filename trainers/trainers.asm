@@ -5691,6 +5691,31 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER
+	db "Gerard@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, RHYHORN
+	db 61, RHYDON
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Dent@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, ONIX
+	db 59, STEELIX
+	db 59, GOLEM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10474,6 +10499,19 @@ BlackbeltGroup:
 	db $ff ; end
 
 ; ================
+
+	; BLACKBELT_T
+	db "Inigo@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, PRIMEAPE
+	db 59, PRIMEAPE
+	db 60, MACHAMP
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10681,6 +10719,17 @@ endc
 EngineerGroup:
 ; ================================
 ; ================
+
+	; ENGINEER
+	db "Smith@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, MAGNETON
+	db 60, MAGNEZONE
+
+	db $ff ; end
+
 ; ================
 ; ================================
 

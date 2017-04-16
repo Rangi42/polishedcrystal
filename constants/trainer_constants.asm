@@ -276,6 +276,8 @@ KRIS EQU __enum__
 	const SEAMUS
 	const TONY
 	const MARCOS
+	const GERARD
+	const DENT
 
 	trainerclass GRUNTM ; 27
 
@@ -665,6 +667,7 @@ KRIS EQU __enum__
 	const NOB
 	const LUNG
 	const WAI
+	const INIGO
 
 	trainerclass BATTLE_GIRL ; 4f
 	const SUBARU
@@ -682,6 +685,7 @@ KRIS EQU __enum__
 	const KAZU
 
 	trainerclass ENGINEER ; 51
+	const SMITH
 
 	trainerclass TEACHER ; 52
 	const COLETTE

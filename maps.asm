@@ -172,7 +172,6 @@ INCLUDE "maps/Route16Gate.asm"
 INCLUDE "maps/Route1617Gate.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route18Gate.asm"
-INCLUDE "maps/DiglettsCave.asm"
 INCLUDE "maps/Underground.asm"
 INCLUDE "maps/RockTunnel1F.asm"
 INCLUDE "maps/RockTunnelB1F.asm"
@@ -677,6 +676,7 @@ SECTION "Map Scripts 31", ROMX
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route34Coast.asm"
 INCLUDE "maps/StormyBeach.asm"
+INCLUDE "maps/DiglettsCave.asm"
 
 
 SECTION "Map Scripts 32", ROMX
