@@ -1084,6 +1084,7 @@ _ElmText1::
 	text "Hello! Sorry to"
 	line "keep you waiting!"
 
+if !DEF(DEBUG)
 	para "Welcome to the"
 	line "world of #mon!"
 
@@ -1091,6 +1092,7 @@ _ElmText1::
 
 	para "People call me the"
 	line "#mon Prof."
+endc
 	prompt
 
 _ElmText2::

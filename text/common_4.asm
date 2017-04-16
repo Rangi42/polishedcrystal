@@ -7,6 +7,7 @@ _ElmText7::
 	text "<PLAYER>, are you"
 	line "ready?"
 
+if !DEF(DEBUG)
 	para "Your very own"
 	line "#mon story is"
 	cont "about to unfold."
@@ -20,6 +21,7 @@ _ElmText7::
 
 	para "with #mon"
 	line "awaits! Let's go!"
+endc
 
 	para "I'll be seeing you"
 	line "later!"

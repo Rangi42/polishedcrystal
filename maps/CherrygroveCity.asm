@@ -18,6 +18,7 @@ CherrygroveCity_MapScriptHeader:
 
 	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
 .Trigger0:
 	end
@@ -27,6 +28,10 @@ CherrygroveCity_MapScriptHeader:
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
+	return
+
+.SwimmerGuySprite:
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	return
 
 CherrygroveCityGuideGent:
@@ -88,6 +93,7 @@ CherrygroveCityGuideGent:
 	playsound SFX_ENTER_DOOR
 	disappear CHERRYGROVECITY_GRAMPS
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
 	waitsfx
 	end
 
@@ -557,7 +563,7 @@ CherrygroveCity_MapEventHeader:
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_GRAMPS, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
+	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	person_event SPRITE_CHERRYGROVE_RIVAL, 6, 39, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
 	person_event SPRITE_TEACHER, 12, 27, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
 	person_event SPRITE_YOUNGSTER, 7, 23, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1

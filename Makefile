@@ -4,7 +4,7 @@ MD5 := md5sum -c --quiet
 VERSION = 2.2.0
 NAME = polishedcrystal-$(VERSION)
 FNAME = polishedcrystal-faithful-$(VERSION)
-FAITHFUL =
+OPTIONS =
 
 TITLE = PKPCRYSTAL
 MCODE = PKPC
@@ -13,7 +13,7 @@ FILLER = 0x00
 ALTFILLER = 0xff
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful bankfree
+.PHONY: all clean crystal faithful bankfree debug
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -40,9 +40,11 @@ roms := $(NAME).gbc $(FNAME).gbc $(NAME)-$(ALTFILLER).gbc
 
 all: crystal faithful
 crystal: $(NAME).gbc
-faithful: FAITHFUL += -DFAITHFUL
+faithful: OPTIONS += -DFAITHFUL
 faithful: $(FNAME).gbc
 bankfree: $(NAME)-$(ALTFILLER).gbc
+debug: OPTIONS += -DDEBUG
+debug: $(NAME).gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
@@ -51,7 +53,7 @@ clean:
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
-	rgbasm $(FAITHFUL) -o $@ $<
+	rgbasm $(OPTIONS) -o $@ $<
 
 $(NAME).gbc: $(crystal_obj)
 	rgblink -n $(NAME).sym -m $(NAME).map -p $(FILLER) -o $@ $^

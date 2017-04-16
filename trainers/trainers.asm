@@ -3956,6 +3956,30 @@ CamperGroup:
 	db $ff ; end
 
 ; ================
+
+	; CAMPER
+	db "Craig@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, PIDGEOTTO
+	db 25, MANKEY
+	db 26, SANDSLASH
+
+	db $ff ; end
+
+; ================
+
+	; CAMPER
+	db "Felix@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 28, CHARMELEON
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -4330,6 +4354,19 @@ endc
 
 	; party
 	db 61, EXEGGUTOR
+
+	db $ff ; end
+
+; ================
+
+	; PICNICKER
+	db "Lily@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, NIDORINA
+	db 22, BELLSPROUT
+	db 26, WEEPINBELL
 
 	db $ff ; end
 
@@ -4947,6 +4984,33 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Kiley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, MAGIKARP
+	db 25, MAGIKARP
+	db 25, MAGIKARP
+	db 25, MANTINE
+
+	db $ff ; end
+
+; ================
+
+	; FISHER
+	db "Francis@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, REMORAID
+	db 25, CHINCHOU
+	db 24, QWILFISH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5194,6 +5258,58 @@ BirdKeeperGroup:
 	db 62, PIDGEOT
 	db 60, MURKROW
 	db 60, NOCTOWL
+
+	db $ff ; end
+
+; ================
+
+	; BIRD_KEEPER
+	db "Powell@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 28, PIDGEOT
+
+	db $ff ; end
+
+; ================
+
+	; BIRD_KEEPER
+	db "Tony@"
+	db TRAINERTYPE_MOVES
+
+	; party
+
+	db 24, PIDGEOTTO
+		db GUST
+		db QUICK_ATTACK
+		db RAGE
+		db SAND_ATTACK
+
+	db 24, PIDGEOTTO
+		db GUST
+		db QUICK_ATTACK
+		db RAGE
+		db TWISTER
+
+	db 27, GOLDUCK
+		db SURF
+		db DISABLE
+		db SCREECH
+		db ZEN_HEADBUTT
+
+	db $ff ; end
+
+; ================
+
+	; BIRD_KEEPER
+	db "Julian@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 20, HOOTHOOT
+	db 24, PIDGEOTTO
+	db 25, MURKROW
 
 	db $ff ; end
 
@@ -6622,13 +6738,26 @@ CosplayerGroup:
 ; ================================
 ; ================
 
-	; POKEMANIAC
+	; COSPLAYER
 	db "Clara@"
 	db TRAINERTYPE_NORMAL
 
 	; party
 	db 11, VULPIX
 	db 11, VULPIX
+
+	db $ff ; end
+
+; ================
+
+	; COSPLAYER
+	db "Chloe@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, VULPIX
+	db 25, PIKACHU
+	db 25, VULPIX
 
 	db $ff ; end
 
@@ -7086,6 +7215,18 @@ LassGroup:
 	db 61, CLEFABLE
 	db 59, JIGGLYPUFF
 	db 61, WIGGLYTUFF
+
+	db $ff ; end
+
+; ================
+
+	; LASS
+	db "Layla@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, CLEFAIRY
+	db 25, TOGETIC
 
 	db $ff ; end
 
@@ -8721,6 +8862,30 @@ CoupleGroup:
 	db $ff ; end
 
 ; ================
+
+	; COUPLE
+	db "Fox & Rae@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, FLAREON
+	db 26, GLACEON
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Fox & Rae@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, GLACEON
+	db 26, FLAREON
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9441,6 +9606,63 @@ SwimmerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; SWIMMERM
+	db "Michel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 22, STARYU
+	db 24, STARMIE
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Lucas@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 28, VAPOREON
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Frank@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, MANTINE
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Nadar@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, SEADRA
+	db 25, QUAGSIRE
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Conrad@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, AZUMARILL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9666,6 +9888,66 @@ SwimmerFGroup:
 	; party
 	db 19, SEEL
 	db 21, DEWGONG
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Alison@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, CORSOLA
+	db 24, SEEL
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Stephanie@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 23, STARYU
+	db 25, SEADRA
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Caroline@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 23, REMORAID
+	db 23, REMORAID
+	db 23, REMORAID
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Natalia@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, STARYU
+	db 24, STARYU
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Barbara@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, STARMIE
 
 	db $ff ; end
 

@@ -6308,7 +6308,7 @@ SECTION "Tileset Data 9", ROMX, BANK[$47]
 
 INCLUDE "tilesets/data_9.asm"
 
-SECTION "Tileset Data 10", ROMX, BANK[$2F]
+SECTION "Tileset Data 10", ROMX, BANK[$34]
 
 INCLUDE "tilesets/data_10.asm"
 

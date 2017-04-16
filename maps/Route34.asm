@@ -170,6 +170,7 @@ Route34LyraTrigger2:
 	dotrigger $0
 	special FadeOutPalettes
 	pause 15
+	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_SWIMMER_GIRL
 	warpfacing RIGHT, DAYCARE, $0, $6
 	end
 
@@ -541,14 +542,14 @@ TrainerCooltrainerfIrene:
 .Script:
 	end_if_just_battled
 	opentext
-	checkevent EVENT_GOT_SOFT_SAND_FROM_KATE
-	iftrue .GotSoftSand
+	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
+	iftrue .GotPowerHerb
 	writetext CooltrainerfIreneAfterText1
 	waitbutton
 	closetext
 	end
 
-.GotSoftSand:
+.GotPowerHerb:
 	writetext CooltrainerfIreneAfterText2
 	waitbutton
 	closetext
@@ -560,14 +561,14 @@ TrainerCooltrainerfJenn:
 .Script:
 	end_if_just_battled
 	opentext
-	checkevent EVENT_GOT_SOFT_SAND_FROM_KATE
-	iftrue .GotSoftSand
+	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
+	iftrue .GotPowerHerb
 	writetext CooltrainerfJennAfterText1
 	waitbutton
 	closetext
 	end
 
-.GotSoftSand:
+.GotPowerHerb:
 	writetext CooltrainerfJennAfterText2
 	waitbutton
 	closetext
@@ -579,14 +580,14 @@ TrainerCooltrainerfKate:
 .Script:
 	end_if_just_battled
 	opentext
-	checkevent EVENT_GOT_SOFT_SAND_FROM_KATE
-	iftrue .GotSoftSand
-	writetext CooltrainerfKateOfferSoftSandText
+	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
+	iftrue .GotPowerHerb
+	writetext CooltrainerfKateOfferPowerHerbText
 	buttonsound
-	verbosegiveitem SOFT_SAND
+	verbosegiveitem POWER_HERB
 	iffalse .BagFull
-	setevent EVENT_GOT_SOFT_SAND_FROM_KATE
-.GotSoftSand:
+	setevent EVENT_GOT_POWER_HERB_FROM_KATE
+.GotPowerHerb:
 	writetext CooltrainerfKateAfterText
 	waitbutton
 .BagFull:
@@ -916,7 +917,7 @@ CooltrainerfKateBeatenText:
 	line "believe I lost."
 	done
 
-CooltrainerfKateOfferSoftSandText:
+CooltrainerfKateOfferPowerHerbText:
 	text "Kate: You're too"
 	line "strong. I didn't"
 	cont "stand a chance."
@@ -1006,5 +1007,5 @@ Route34_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 48, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
 	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET
-	person_event SPRITE_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
+	person_event SPRITE_GOLDENROD_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
 	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GRANDPA_ROUTE_34

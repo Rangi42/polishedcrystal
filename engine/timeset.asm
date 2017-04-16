@@ -30,8 +30,10 @@ InitClock: ; 90672 (24:4672)
 	call .ClearScreen
 	call WaitBGMap
 	call RotateFourPalettesRight
+if !DEF(DEBUG)
 	ld hl, Text_WokeUpOak
 	call PrintText
+endc
 	ld hl, wc608
 	ld bc, 50
 	xor a

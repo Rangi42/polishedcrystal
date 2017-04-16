@@ -21,7 +21,15 @@ Route27_MapScriptHeader:
 	dw UnknownScript_0x1a0872, 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_SPRITES, .DragonTamerSprite
+
+.DragonTamerSprite:
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
+	return
 
 UnknownScript_0x1a0871:
 	end

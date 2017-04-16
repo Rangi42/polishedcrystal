@@ -147,6 +147,8 @@ KRIS EQU __enum__
 	const SPENCER
 	const QUENTIN
 	const GRANT
+	const CRAIG
+	const FELIX
 
 	trainerclass PICNICKER ; 22
 	const LIZ1
@@ -174,6 +176,7 @@ KRIS EQU __enum__
 	const HEIDI
 	const EDNA
 	const TANYA
+	const LILY
 
 	trainerclass TWINS ; 23
 	const AMYANDMAY1
@@ -218,6 +221,8 @@ KRIS EQU __enum__
 	const BARNEY
 	const SCOTT
 	const PATON
+	const KILEY
+	const FRANCIS
 
 	trainerclass BIRD_KEEPER ; 25
 	const VANCE1
@@ -239,6 +244,9 @@ KRIS EQU __enum__
 	const PERRY
 	const BRET
 	const MICK
+	const POWELL
+	const BIRD_KEEPER_TONY
+	const JULIAN
 
 	trainerclass HIKER ; 26
 	const ANTHONY1
@@ -328,6 +336,7 @@ KRIS EQU __enum__
 
 	trainerclass COSPLAYER ; 2e
 	const CLARA
+	const CHLOE
 
 	trainerclass SUPER_NERD ; 2f
 	const STAN
@@ -363,6 +372,7 @@ KRIS EQU __enum__
 	const ELLEN
 	const IRIS
 	const MIRIAM
+	const LAYLA
 
 	trainerclass BEAUTY ; 31
 	const VICTORIA
@@ -509,6 +519,8 @@ KRIS EQU __enum__
 	const GAILANDELI2
 	const DUFFANDEDA1
 	const DUFFANDEDA2
+	const FOXANDRAE1
+	const FOXANDRAE2
 
 	trainerclass GENTLEMAN ; 40
 	const PRESTON
@@ -575,6 +587,11 @@ KRIS EQU __enum__
 	const JAMES
 	const WALTER
 	const LEWIS
+	const MICHEL
+	const LUCAS
+	const FRANK
+	const NADAR
+	const CONRAD
 
 	trainerclass SWIMMERF ; 48
 	const ELAINE
@@ -595,6 +612,11 @@ KRIS EQU __enum__
 	const KATIE
 	const JILL
 	const LISA
+	const ALISON
+	const STEPHANIE
+	const CAROLINE
+	const NATALIA
+	const BARBARA
 
 	trainerclass BURGLAR ; 49
 	const DUNCAN

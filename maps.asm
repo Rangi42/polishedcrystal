@@ -222,7 +222,6 @@ INCLUDE "maps/IcePathB1F.asm"
 INCLUDE "maps/IcePathB2FMahoganySide.asm"
 INCLUDE "maps/IcePathB2FBlackthornSide.asm"
 INCLUDE "maps/IcePathB3F.asm"
-INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/GoldenrodHarborGate.asm"
 
 
@@ -256,6 +255,7 @@ INCLUDE "maps/EcruteakItemfinderHouse.asm"
 INCLUDE "maps/ViridianNicknameSpeechHouse.asm"
 INCLUDE "maps/Route2NuggetSpeechHouse.asm"
 INCLUDE "maps/Route2Gate.asm"
+INCLUDE "maps/MountMoonGiftShop.asm"
 
 
 SECTION "Map Scripts 11", ROMX[$4000], BANK[MAP_SCRIPTS_11]
@@ -674,9 +674,14 @@ INCLUDE "maps/Route18West.asm"
 
 SECTION "Map Scripts 31", ROMX
 
-INCLUDE "maps/Route23.asm"
+INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route34Coast.asm"
 INCLUDE "maps/StormyBeach.asm"
+
+
+SECTION "Map Scripts 32", ROMX
+
+INCLUDE "maps/Route23.asm"
 INCLUDE "maps/MurkySwamp.asm"
 INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiIsland.asm"
@@ -703,7 +708,6 @@ INCLUDE "maps/ShamoutiWestBeachShack.asm"
 INCLUDE "maps/ShamoutiWestBeachHouse.asm"
 INCLUDE "maps/RockyBeachHouse.asm"
 INCLUDE "maps/LuckyIsland.asm"
-INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/UragaChannelEast.asm"
 INCLUDE "maps/UragaChannelWest.asm"
 INCLUDE "maps/ScaryCave1F.asm"

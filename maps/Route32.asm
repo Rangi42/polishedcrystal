@@ -25,12 +25,13 @@ Route32_MapScriptHeader:
 	maptrigger .Trigger2
 
 .MapCallbacks:
-	db 2
+	db 3
 
 	; callbacks
 
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Frieda
+	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
 .Trigger0:
 	end
@@ -53,6 +54,10 @@ Route32_MapScriptHeader:
 
 .FriedaAppears:
 	appear ROUTE32_FRIEDA
+	return
+
+.SwimmerGuySprite:
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	return
 
 Route32CooltrainerMScript:

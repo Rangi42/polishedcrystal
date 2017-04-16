@@ -3,8 +3,7 @@ const_value set 2
 	const VIOLETCITY_LASS
 	const VIOLETCITY_COOLTRAINER_M1
 	const VIOLETCITY_COOLTRAINER_F
-	const VIOLETCITY_GRAMPS1
-	const VIOLETCITY_GRAMPS2
+	const VIOLETCITY_GRAMPS
 	const VIOLETCITY_YOUNGSTER
 	const VIOLETCITY_FISHER
 	const VIOLETCITY_CUT_TREE
@@ -18,13 +17,18 @@ VioletCity_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_VIOLET
+	return
+
+.SwimmerGuySprite:
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	return
 
 VioletCityEarlScript:
@@ -71,11 +75,8 @@ VioletCityCooltrainerM1Script:
 VioletCityCooltrainerFScript:
 	jumptextfaceplayer VioletCityCooltrainerFText
 
-VioletCityGramps1Script:
-	jumptextfaceplayer VioletCityGramps1Text
-
-VioletCityGramps2Script:
-	jumptextfaceplayer VioletCityGramps2Text
+VioletCityGrampsScript:
+	jumptextfaceplayer VioletCityGrampsText
 
 VioletCityYoungsterScript:
 	jumptextfaceplayer VioletCityYoungsterText
@@ -253,7 +254,7 @@ VioletCityCooltrainerFText:
 	cont "Leader, though…"
 	done
 
-VioletCityGramps1Text:
+VioletCityGrampsText:
 	text "Falkner, from the"
 	line "Violet #mon"
 
@@ -265,14 +266,6 @@ VioletCityGramps1Text:
 
 	para "has done a great"
 	line "job with it."
-	done
-
-VioletCityGramps2Text:
-	text "Howdy, youngster."
-	line "Are you here to"
-
-	para "join the #mon"
-	line "school?"
 	done
 
 VioletCityYoungsterText:
@@ -369,8 +362,7 @@ VioletCity_MapEventHeader:
 	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
 	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM1Script, -1
 	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerFScript, -1
-	person_event SPRITE_GRAMPS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGramps1Script, -1
-	person_event SPRITE_GRAMPS, 25, 26, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityGramps2Script, -1
+	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGrampsScript, -1
 	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
 	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 36, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityCutTree, EVENT_VIOLET_CITY_CUT_TREE

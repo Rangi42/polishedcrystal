@@ -683,6 +683,7 @@ ProfElmSpeech: ; 0x5f99
 
 	ld hl, ElmText1
 	call PrintText
+if !DEF(DEBUG)
 	call RotateThreePalettesRight
 	call ClearTileMap
 
@@ -726,6 +727,7 @@ ProfElmSpeech: ; 0x5f99
 
 	ld hl, ElmText5
 	call PrintText
+endc
 
 	call InitGender
 

@@ -8,7 +8,7 @@ PlayTrainerEncounterMusic:: ; e900a
 	ld [MusicFade], a
 	; play nothing for one frame
 	push de
-	ld de, 0 ; id: Music_Nothing
+	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	; play new song

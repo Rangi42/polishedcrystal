@@ -14,10 +14,11 @@ NewBarkTown_MapScriptHeader:
 	maptrigger .Trigger1
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
 .Trigger0:
 	end
@@ -28,6 +29,10 @@ NewBarkTown_MapScriptHeader:
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
+	return
+
+.SwimmerGuySprite:
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	return
 
 NewBarkTown_TeacherStopsYouTrigger1:
