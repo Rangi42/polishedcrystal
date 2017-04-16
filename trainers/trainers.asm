@@ -5011,6 +5011,22 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Virgil@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 51, MAGIKARP
+	db 52, MAGIKARP
+	db 53, MAGIKARP
+	db 54, MAGIKARP
+	db 55, MAGIKARP
+	db 56, MAGIKARP
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7381,6 +7397,31 @@ BeautyGroup:
 	db $ff ; end
 
 ; ================
+
+	; BEAUTY
+	db "Bridget@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, CORSOLA
+	db 55, SUNFLORA
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY
+	db "Veronica@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, WIGGLYTUFF
+	db 54, MILTANK
+	db 56, CLEFABLE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8976,6 +9017,30 @@ GentlemanGroup:
 	db $ff ; end
 
 ; ================
+
+	; GENTLEMAN
+	db "Camus@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, SKARMORY
+	db 56, ARCANINE
+	db 54, PERSIAN
+
+	db $ff ; end
+
+; ================
+
+	; GENTLEMAN
+	db "Geoffrey@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 50, MEOWTH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9025,6 +9090,17 @@ RichBoyGroup:
 LadyGroup:
 ; ================================
 ; ================
+
+	; LADY
+	db "Amanda@"
+	db TRAINERTYPE_ITEM
+
+	; party
+	db 55, BLISSEY, NUGGET
+	db 54, FURRET, NUGGET
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -9092,19 +9168,19 @@ BreederGroup:
 
 	; party
 
-	db 52, SMEARGLE, WISE_GLASSES, ABILITY_1 | QUIRKY, FEMALE
+	db 58, SMEARGLE, WISE_GLASSES, ABILITY_1 | QUIRKY, FEMALE
 		db SPORE
 		db NASTY_PLOT
 		db HYPER_VOICE
 		db PSYCHIC_M
 
-	db 52, SMEARGLE, MUSCLE_BAND, ABILITY_1 | QUIRKY, FEMALE
+	db 58, SMEARGLE, MUSCLE_BAND, ABILITY_1 | QUIRKY, FEMALE
 		db SPORE
 		db SWORDS_DANCE
 		db BODY_SLAM
 		db EARTHQUAKE
 
-	db 55, DITTO, METAL_POWDER, SHINY_MASK | ABILITY_1 | QUIRKY, FEMALE
+	db 62, DITTO, METAL_POWDER, SHINY_MASK | ABILITY_1 | QUIRKY, FEMALE
 		db TRANSFORM
 		db NO_MOVE
 		db NO_MOVE
@@ -9684,6 +9760,47 @@ SwimmerMGroup:
 
 	; party
 	db 26, AZUMARILL
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Romeo@"
+	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+
+	; party
+
+	db 57, AZUMARILL, ABILITY_2 | ADAMANT, MALE
+		db AQUA_TAIL
+		db PLAY_ROUGH
+		db ROLLOUT
+		db SUBMISSION
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Malcolm@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, CLOYSTER
+	db 55, DEWGONG
+	db 54, CLOYSTER
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Armand@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, KINGLER
+	db 55, CLOYSTER
 
 	db $ff ; end
 
@@ -10846,6 +10963,18 @@ GuitaristFGroup:
 		db SURF
 		db THUNDERBOLT
 		db AGILITY
+
+	db $ff ; end
+
+; ================
+
+	; GUITARISTF
+	db "Morgan@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, ELECTRODE
+	db 55, JOLTEON
 
 	db $ff ; end
 

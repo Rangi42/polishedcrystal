@@ -258,7 +258,7 @@ SPRITE_VARS EQU const_value
 	const SPRITE_OLIVINE_RIVAL ; $fc
 	const SPRITE_CERULEAN_CAPE_MISTY ; $fd
 	const SPRITE_LAKE_OF_RAGE_LANCE ; $fe
-	const SPRITE_UNUSED_VARIABLE ; $ff
+	const SPRITE_VERMILION_LAWRENCE ; $ff
 
 
 ; sprite types

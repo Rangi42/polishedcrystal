@@ -1036,6 +1036,7 @@ Group7Sprites:
 ; Route4
 ; Route24
 ; Route25
+; CeruleanCape
 ; CeruleanCity
 Group25Sprites:
 ; Route5
@@ -1045,23 +1046,23 @@ Group28Sprites:
 	db SPRITE_CERULEAN_CAPE_MISTY
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
+	db SPRITE_GENTLEMAN
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	db SPRITE_BREEDER
+	db SPRITE_SWIMMER_GUY
+	db SPRITE_FISHER ; doesn't walk
+	db SPRITE_LADY ; doesn't walk
+	db SPRITE_ROCKET ; doesn't walk
 	db SPRITE_CHRIS ; doesn't walk
 	db SPRITE_KRIS ; doesn't walk
-	db SPRITE_ROCKET ; doesn't walk
-	; 12 walking sprites (9 that walk)
+	; 14 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
 	db SPRITE_SLOWBRO
 	db SPRITE_ZAPDOS
-	; 16 total sprites
-	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_BALL_CUT_FRUIT
+	; 18 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
@@ -1210,7 +1211,7 @@ Group12Sprites:
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_ENGINEER
 	db SPRITE_GRAMPS
-	db SPRITE_LAWRENCE
+	db SPRITE_VERMILION_LAWRENCE
 	db SPRITE_POKEFAN_M
 	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD

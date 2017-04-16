@@ -223,6 +223,7 @@ KRIS EQU __enum__
 	const PATON
 	const KILEY
 	const FRANCIS
+	const VIRGIL
 
 	trainerclass BIRD_KEEPER ; 25
 	const VANCE1
@@ -386,6 +387,8 @@ KRIS EQU __enum__
 	const CALLIE
 	const CASSANDRA
 	const CHARLOTTE
+	const BRIDGET
+	const VERONICA
 
 	trainerclass BUG_MANIAC ; 32
 	const LOU
@@ -530,6 +533,8 @@ KRIS EQU __enum__
 	const GREGORY
 	const ALFRED
 	const MILTON
+	const CAMUS
+	const GEOFFREY
 
 	trainerclass RICH_BOY ; 41
 	const WINSTON
@@ -537,6 +542,7 @@ KRIS EQU __enum__
 	const IRVING
 
 	trainerclass LADY ; 42
+	const AMANDA
 
 	trainerclass BREEDER ; 43
 	const JULIE
@@ -594,6 +600,9 @@ KRIS EQU __enum__
 	const FRANK
 	const NADAR
 	const CONRAD
+	const ROMEO
+	const MALCOLM
+	const ARMAND
 
 	trainerclass SWIMMERF ; 48
 	const ELAINE
@@ -699,6 +708,7 @@ KRIS EQU __enum__
 
 	trainerclass GUITARISTF ; 54
 	const JANET
+	const MORGAN
 
 	trainerclass BIKER ; 55
 	const DWAYNE

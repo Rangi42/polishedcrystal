@@ -7,56 +7,12 @@ Route5_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
-
-	; callbacks
-
-	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
-
-.RebattleBreeder:
-	clearevent EVENT_BEAT_BREEDER_CARLENE
-	return
-
-TrainerBreederCarlene:
-	trainer EVENT_BEAT_BREEDER_CARLENE, BREEDER, CARLENE, BreederCarleneSeenText, BreederCarleneBeatenText, 0, BreederCarleneScript
-
-BreederCarleneScript:
-	end_if_just_battled
-	opentext
-	writetext BreederCarleneAfterText
-	waitbutton
-	closetext
-	end
+	db 0
 
 PokefanMScript_0x1adb19:
-	jumptextfaceplayer UnknownText_0x1adb22
+	jumptextfaceplayer .Text
 
-Route5UndergroundPathSign:
-	jumptext Route5UndergroundPathSignText
-
-BreederCarleneSeenText:
-	text "My team is bred"
-	line "to handle any"
-	cont "situation!"
-	done
-
-BreederCarleneBeatenText:
-	text "We couldn't"
-	line "handle you!"
-	done
-
-BreederCarleneAfterText:
-	text "I make my Smeargle"
-	line "Sketch a move,"
-
-	para "then breed it"
-	line "to pass the move"
-	cont "down!"
-
-	para "Isn't that smart?"
-	done
-
-UnknownText_0x1adb22:
+.Text:
 	text "The road is closed"
 	line "until the problem"
 
@@ -64,7 +20,10 @@ UnknownText_0x1adb22:
 	line "is solved."
 	done
 
-Route5UndergroundPathSignText:
+Route5UndergroundPathSign:
+	jumptext .Text
+
+.Text:
 	text "Underground Path"
 
 	para "Cerulean City -"
@@ -90,6 +49,5 @@ Route5_MapEventHeader:
 	signpost 29, 17, SIGNPOST_READ, Route5UndergroundPathSign
 
 .PersonEvents:
-	db 2
-	person_event SPRITE_BREEDER, 10, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
+	db 1
 	person_event SPRITE_POKEFAN_M, 28, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1adb19, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH

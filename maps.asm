@@ -454,7 +454,6 @@ INCLUDE "maps/Route43.asm"
 INCLUDE "maps/Route44.asm"
 INCLUDE "maps/Route19.asm"
 INCLUDE "maps/Route25.asm"
-INCLUDE "maps/CeruleanCape.asm"
 INCLUDE "maps/PewterGym.asm"
 INCLUDE "maps/PewterNidoranSpeechHouse.asm"
 INCLUDE "maps/PewterMart.asm"
@@ -677,6 +676,7 @@ INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route34Coast.asm"
 INCLUDE "maps/StormyBeach.asm"
 INCLUDE "maps/DiglettsCave.asm"
+INCLUDE "maps/CeruleanCape.asm"
 
 
 SECTION "Map Scripts 32", ROMX
