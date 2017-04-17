@@ -5,7 +5,15 @@ SeafoamIslands1F_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_NEWMAP, .ClearRocks
+
+.ClearRocks:
+	setevent EVENT_CINNABAR_ROCKS_CLEARED
+	return
 
 SeafoamIslands1FHiddenEscapeRope:
 	dwb EVENT_SEAFOAM_ISLANDS_1F_HIDDEN_ESCAPE_ROPE, ESCAPE_ROPE
