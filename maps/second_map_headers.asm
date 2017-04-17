@@ -188,7 +188,7 @@
 
 	map_header_2 FuchsiaCity, FUCHSIA_CITY, $f, SOUTH | WEST | EAST
 	connection south, ROUTE_19, Route19, 0, 0, 10
-	connection west, ROUTE_18_EAST, Route18East, 7, 0, 9
+	connection west, ROUTE_18_EAST, Route18East, 7, 0, 11
 	connection east, ROUTE_15, Route15, 9, 0, 9
 
 	map_header_2 Route18East, ROUTE_18_EAST, $43, WEST | EAST
