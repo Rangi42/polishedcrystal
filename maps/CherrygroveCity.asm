@@ -7,11 +7,12 @@ const_value set 2
 
 CherrygroveCity_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 3
 
 	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
+	maptrigger .Trigger2
 
 .MapCallbacks:
 	db 1
@@ -21,9 +22,8 @@ CherrygroveCity_MapScriptHeader:
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
 .Trigger0:
-	end
-
 .Trigger1:
+.Trigger2:
 	end
 
 .FlyPoint:
@@ -31,18 +31,19 @@ CherrygroveCity_MapScriptHeader:
 	return
 
 .SwimmerGuySprite:
+	checkevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
+	iftrue .done
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
+.done
 	return
 
+CherrygroveGuideGentTrigger:
+	applymovement PLAYER, GuideGentPlayerMovement
+	setlasttalked CHERRYGROVECITY_GRAMPS
 CherrygroveCityGuideGent:
 	faceplayer
 	opentext
 	writetext GuideGentIntroText
-	yesorno
-	iffalse .No
-	jump .Yes
-.Yes:
-	writetext GuideGentTourText1
 	waitbutton
 	closetext
 	playmusic MUSIC_SHOW_ME_AROUND
@@ -93,7 +94,8 @@ CherrygroveCityGuideGent:
 	playsound SFX_ENTER_DOOR
 	disappear CHERRYGROVECITY_GRAMPS
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
+	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
+	dotrigger $2
 	waitsfx
 	end
 
@@ -103,12 +105,6 @@ CherrygroveCityGuideGent:
 
 .mapcardname
 	db "Map Card@"
-
-.No:
-	writetext GuideGentNoText
-	waitbutton
-	closetext
-	end
 
 CherrygroveSilverTriggerSouth:
 	moveperson CHERRYGROVECITY_SILVER, $27, $7
@@ -126,7 +122,7 @@ CherrygroveSilverTriggerNorth:
 	waitbutton
 	closetext
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
-	dotrigger $0
+	dotrigger $2
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -237,6 +233,11 @@ CherrygroveCitySign:
 GuideGentsHouseSign:
 	jumptext GuideGentsHouseSignText
 
+GuideGentPlayerMovement:
+	step_left
+	turn_head_up
+	step_end
+
 GuideGentMovement1:
 	step_left
 	step_left
@@ -342,10 +343,8 @@ GuideGentIntroText:
 	para "If you'd like, I"
 	line "can teach you a"
 	cont "few things."
-	done
 
-GuideGentTourText1:
-	text "OK, then!"
+	para "OK, then!"
 	line "Follow me!"
 	done
 
@@ -417,14 +416,6 @@ GuideGentPokegearText:
 
 	para "I wish you luck on"
 	line "your journey!"
-	done
-
-GuideGentNoText:
-	text "Oh… It's something"
-	line "I enjoy doing…"
-
-	para "Fine. Come see me"
-	line "when you like."
 	done
 
 UnknownText_0x19c4e2:
@@ -552,7 +543,8 @@ CherrygroveCity_MapEventHeader:
 	warp_def $b, $1f, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
 
 .XYTriggers:
-	db 2
+	db 3
+	xy_trigger 0, $7, $21, $0, CherrygroveGuideGentTrigger, $0, $0
 	xy_trigger 1, $6, $21, $0, CherrygroveSilverTriggerNorth, $0, $0
 	xy_trigger 1, $7, $21, $0, CherrygroveSilverTriggerSouth, $0, $0
 

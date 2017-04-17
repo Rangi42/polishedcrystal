@@ -32,7 +32,10 @@ NewBarkTown_MapScriptHeader:
 	return
 
 .SwimmerGuySprite:
+	checkevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
+	iftrue .done
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
+.done
 	return
 
 NewBarkTown_TeacherStopsYouTrigger1:
