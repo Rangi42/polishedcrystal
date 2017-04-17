@@ -18,3 +18,6 @@ LuckyIslandHidden_BlockData:
 
 CharcoalKiln_BlockData:
 	INCBIN "maps/CharcoalKiln.blk"
+
+ShamoutiCoast_BlockData:
+	INCBIN "maps/ShamoutiCoast.blk"

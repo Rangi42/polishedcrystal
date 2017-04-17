@@ -359,7 +359,11 @@
 	map_header_2 ShamoutiEastBeach, SHAMOUTI_EAST_BEACH, $35, WEST
 	connection west, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 15
 
-	map_header_2 ShamoutiWestBeach, SHAMOUTI_WEST_BEACH, $35, 0
+	map_header_2 ShamoutiWestBeach, SHAMOUTI_WEST_BEACH, $35, SOUTH
+	connection south, SHAMOUTI_COAST, ShamoutiCoast, 0, 0, 12
+
+	map_header_2 ShamoutiCoast, SHAMOUTI_COAST, $35, NORTH
+	connection north, SHAMOUTI_WEST_BEACH, ShamoutiWestBeach, 0, 0, 12
 
 	map_header_2 RockyBeach, ROCKY_BEACH, $35, SOUTH
 	connection south, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 18

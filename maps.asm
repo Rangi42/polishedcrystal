@@ -36,7 +36,7 @@ SECTION "Map Blockdata 5", ROMX[$6296], BANK[$A]
 INCLUDE "maps/blockdata_5.asm"
 
 
-SECTION "Map Blockdata 6", ROMX[$77ff], BANK[$2]
+SECTION "Map Blockdata 6", ROMX[$732e], BANK[$1B]
 
 INCLUDE "maps/blockdata_6.asm"
 
@@ -687,6 +687,7 @@ INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiIsland.asm"
 INCLUDE "maps/ShamoutiEastBeach.asm"
 INCLUDE "maps/ShamoutiWestBeach.asm"
+INCLUDE "maps/ShamoutiCoast.asm"
 INCLUDE "maps/RockyBeach.asm"
 INCLUDE "maps/ShamoutiShrineRuins.asm"
 INCLUDE "maps/ShamoutiTunnel.asm"

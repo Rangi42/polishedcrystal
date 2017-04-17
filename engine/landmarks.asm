@@ -182,11 +182,15 @@ ENDM
 	landmark  24,  92, Route28Name
 	landmark  28, 148, ShamoutiIslandName
 	landmark  36, 148, BeautifulBeachName
-	landmark  22, 146, ShamoutiTunnelName
-	landmark  18, 150, WarmBeachName
 	landmark  24, 140, RockyBeachName
 	landmark  32, 140, NoisyForestName
 	landmark  36, 140, ShrineRuinsName
+	landmark  22, 146, ShamoutiTunnelName
+	landmark  18, 150, WarmBeachName
+	landmark  18, 150, ShamoutiCoastName
+	landmark  18, 150, FireIslandName
+	landmark  18, 150, IceIslandName
+	landmark  18, 150, LightningIslandName
 	landmark 110, 140, FastShipName
 	landmark 124, 156, NavelRockName
 	landmark 164,  92, FarawayIslandName
@@ -317,17 +321,21 @@ DimCaveName:           db "Dim Cave@"
 UragaChannelName:      db "Uraga¯Channel@"
 ShamoutiIslandName:    db "Shamouti¯Island@"
 BeautifulBeachName:    db "Beautiful¯Beach@"
-ShamoutiTunnelName:    db "Shamouti¯Tunnel@"
-WarmBeachName:         db "Warm Beach@"
 RockyBeachName:        db "Rocky¯Beach@"
 NoisyForestName:       db "Noisy¯Forest@"
 ShrineRuinsName:       db "Shrine¯Ruins@"
+ShamoutiTunnelName:    db "Shamouti¯Tunnel@"
+WarmBeachName:         db "Warm Beach@"
+ShamoutiCoastName:     db "Shamouti¯Coast@"
+FireIslandName:        db "Fire¯Island@"
+IceIslandName:         db "Ice Island@"
+LightningIslandName:   db "Lightning¯Island@"
 NavelRockName:         db "Navel Rock@"
 FarawayIslandName:     db "Faraway¯Island@"
 SinjohRuinsName:       db "Sinjoh¯Ruins@"
 MystriStageName:       db "Mystri¯Stage@"
 CinnabarLabName:       db "Pokémon¯Lab@"
-SpecialMapName:        db "Special@"
+SpecialMapName:        db "?@"
 
 
 RegionCheck: ; 0x1caea1

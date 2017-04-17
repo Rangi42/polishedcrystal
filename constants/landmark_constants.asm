@@ -133,14 +133,18 @@ SHAMOUTI_LANDMARK EQU const_value
 
 	const SHAMOUTI_ISLAND    ; 7c
 	const BEAUTIFUL_BEACH    ; 7d
-	const SHAMOUTI_TUNNEL    ; 7e
-	const WARM_BEACH         ; 7f
-	const ROCKY_BEACH        ; 80
-	const NOISY_FOREST       ; 81
-	const SHRINE_RUINS       ; 82
-	const FAST_SHIP          ; 83
-	const NAVEL_ROCK         ; 84
-	const FARAWAY_ISLAND     ; 85
-	const CINNABAR_LAB       ; 86
+	const ROCKY_BEACH        ; 7e
+	const NOISY_FOREST       ; 7f
+	const SHRINE_RUINS       ; 80
+	const SHAMOUTI_TUNNEL    ; 81
+	const WARM_BEACH         ; 82
+	const SHAMOUTI_COAST     ; 83
+	const FIRE_ISLAND        ; 84
+	const ICE_ISLAND         ; 85
+	const LIGHTNING_ISLAND   ; 86
+	const FAST_SHIP          ; 87
+	const NAVEL_ROCK         ; 88
+	const FARAWAY_ISLAND     ; 89
+	const CINNABAR_LAB       ; 8a
 
 NUM_LANDMARKS EQU const_value

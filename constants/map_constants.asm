@@ -639,26 +639,27 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_ISLAND,                            15, 18 ;  1
 	mapgroup SHAMOUTI_EAST_BEACH,                        15, 21 ;  2
 	mapgroup SHAMOUTI_WEST_BEACH,                        13, 12 ;  3
-	mapgroup ROCKY_BEACH,                                15, 20 ;  4
-	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 12 ;  5
-	mapgroup SHAMOUTI_TUNNEL,                            10, 18 ;  6
-	mapgroup NOISY_FOREST,                               20, 22 ;  7
-	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  8
-	mapgroup SHAMOUTI_HOTEL_1F,                           4,  9 ;  9
-	mapgroup SHAMOUTI_HOTEL_2F,                           2,  9 ; 10
-	mapgroup SHAMOUTI_HOTEL_3F,                           2,  9 ; 11
-	mapgroup SHAMOUTI_HOTEL_ROOM_2A,                      3,  3 ; 12
-	mapgroup SHAMOUTI_HOTEL_ROOM_2B,                      3,  3 ; 13
-	mapgroup SHAMOUTI_HOTEL_ROOM_3B,                      3,  3 ; 14
-	mapgroup SHAMOUTI_HOTEL_ROOM_3C,                      3,  3 ; 15
-	mapgroup SHAMOUTI_HOTEL_RESTAURANT,                   4,  9 ; 16
-	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 17
-	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 18
-	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 19
-	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 20
-	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 21
-	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 22
-	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 23
+	mapgroup SHAMOUTI_COAST,                             10, 48 ;  4
+	mapgroup ROCKY_BEACH,                                15, 20 ;  5
+	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 12 ;  6
+	mapgroup SHAMOUTI_TUNNEL,                            10, 18 ;  7
+	mapgroup NOISY_FOREST,                               20, 22 ;  8
+	mapgroup SHAMOUTI_POKECENTER_1F,                      4,  6 ;  9
+	mapgroup SHAMOUTI_HOTEL_1F,                           4,  9 ; 10
+	mapgroup SHAMOUTI_HOTEL_2F,                           2,  9 ; 11
+	mapgroup SHAMOUTI_HOTEL_3F,                           2,  9 ; 12
+	mapgroup SHAMOUTI_HOTEL_ROOM_2A,                      3,  3 ; 13
+	mapgroup SHAMOUTI_HOTEL_ROOM_2B,                      3,  3 ; 14
+	mapgroup SHAMOUTI_HOTEL_ROOM_3B,                      3,  3 ; 15
+	mapgroup SHAMOUTI_HOTEL_ROOM_3C,                      3,  3 ; 16
+	mapgroup SHAMOUTI_HOTEL_RESTAURANT,                   4,  9 ; 17
+	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 18
+	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 19
+	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 20
+	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 21
+	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 22
+	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 23
+	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 24
 
 	newgroup                                                    ; 32
 

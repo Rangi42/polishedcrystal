@@ -62,10 +62,10 @@
 	tilecoll FLOOR, FLOOR, WALL, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll FLOOR, FLOOR, WALL, WALL
+	tilecoll FLOOR, FLOOR, WALL, WALL
+	tilecoll WALL, FLOOR, WALL, WALL
+	tilecoll FLOOR, WALL, WALL, WALL
 	tilecoll FLOOR, FLOOR, WALL, WALL
 	tilecoll WALL, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, WALL
@@ -121,12 +121,12 @@
 	tilecoll WATER, WALL, WALL, WALL
 	tilecoll WALL, WATER, WALL, WALL
 	tilecoll WATER, WATER, WATER, WATER
-	tilecoll WALL, CAVE, FLOOR, FLOOR
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, BOTTOM_WALL, WALL, CAVE
+	tilecoll WATER, WALL, WALL, WALL
 	tilecoll WATER, WATER, WATER, WATER
 	tilecoll WATER, WATER, WATER, WATER
 	tilecoll FLOOR, FLOOR, WALL, FLOOR
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WATER, WALL, WALL
 	tilecoll WALL, FLOOR, WALL, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, WALL
 	tilecoll FLOOR, FLOOR, WALL, FLOOR
@@ -193,3 +193,22 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, DOOR, FLOOR, FLOOR
 	tilecoll WALL, WALL, FLOOR, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, WALL
+	tilecoll WATER, WATER, WALL, WALL
+	tilecoll WATER, WATER, TOP_WALL, TOP_WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WATER, WATER, WALL, WALL
+	tilecoll WALL, WALL, WALL, FLOOR
+	tilecoll FLOOR, WALL, FLOOR, WALL
+	tilecoll WALL, FLOOR, WALL, FLOOR
+	tilecoll WALL, WALL, FLOOR, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll FLOOR, FLOOR, WALL, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
