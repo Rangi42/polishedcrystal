@@ -362,23 +362,23 @@ TrainerGuitaristfMorgan:
 	cont "board!"
 	done
 
-TrainerLadyAmanda:
-	trainer EVENT_BEAT_LADY_AMANDA, LADY, AMANDA, .SeenText, .BeatenText, 0, .Script
+TrainerLadyAngelica:
+	trainer EVENT_BEAT_LADY_ANGELICA, LADY, ANGELICA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	checkevent EVENT_SPOKE_TO_LADY_AMANDA
+	checkevent EVENT_SPOKE_TO_LADY_ANGELICA
 	iftrue .SpokeAgain
 	writetext .AfterText1
-	setevent EVENT_SPOKE_TO_LADY_AMANDA
+	setevent EVENT_SPOKE_TO_LADY_ANGELICA
 	waitbutton
 	closetext
 	end
 
 .SpokeAgain:
 	writetext .AfterText2
-	clearevent EVENT_SPOKE_TO_LADY_AMANDA
+	clearevent EVENT_SPOKE_TO_LADY_ANGELICA
 	waitbutton
 	closetext
 	end
@@ -412,8 +412,8 @@ TrainerLadyAmanda:
 	line "Creep!"
 	done
 
-TrainerFisherVirgil:
-	trainer EVENT_BEAT_FISHER_VIRGIL, FISHER, VIRGIL, .SeenText, .BeatenText, 0, .Script
+TrainerFisherLeroy:
+	trainer EVENT_BEAT_FISHER_LEROY, FISHER, LEROY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -608,6 +608,6 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 27, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
 	person_event SPRITE_GENTLEMAN, 26, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
 	person_event SPRITE_COOLTRAINER_F, 32, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerGuitaristfMorgan, -1
-	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyAmanda, -1
-	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherVirgil, -1
+	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyAngelica, -1
+	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 1, CeruleanCapeShellBell, EVENT_CERULEAN_CAPE_SHELL_BELL

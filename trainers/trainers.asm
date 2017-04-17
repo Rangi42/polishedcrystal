@@ -9805,6 +9805,21 @@ SwimmerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; SWIMMERM
+	db "Thomas@"
+	db TRAINERTYPE_MOVES
+
+	; party
+	db 20, WARTORTLE
+		db DEFENSE_CURL
+		db BITE
+		db SURF
+		db RAPID_SPIN
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10090,6 +10105,30 @@ SwimmerFGroup:
 
 	; party
 	db 25, STARMIE
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Sally@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 17, REMORAID
+	db 18, MANTINE
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Tara@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 18, CORSOLA
+	db 18, CORSOLA
 
 	db $ff ; end
 

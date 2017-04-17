@@ -2,6 +2,9 @@ const_value set 2
 	const CHERRYGROVEBAY_HIKER1
 	const CHERRYGROVEBAY_HIKER2
 	const CHERRYGROVEBAY_FISHER
+	const CHERRYGROVEBAY_SWIMMER_GUY
+	const CHERRYGROVEBAY_SWIMMER_GIRL1
+	const CHERRYGROVEBAY_SWIMMER_GIRL2
 	const CHERRYGROVEBAY_POKE_BALL
 
 CherrygroveBay_MapScriptHeader:
@@ -50,19 +53,133 @@ CherrygroveBayTutorEarthPowerScript:
 	closetext
 	end
 
-TrainerHikerTony:
-	trainer EVENT_BEAT_HIKER_TONY, HIKER, TONY, HikerTonySeenText, HikerTonyBeatenText, 0, TrainerHikerTonyScript
+TrainerSwimmermThomas:
+	trainer EVENT_BEAT_SWIMMERM_THOMAS, SWIMMERM, THOMAS, .SeenText, .BeatenText, 0, .Script
 
-TrainerHikerTonyScript:
+.Script:
 	end_if_just_battled
 	opentext
-	writetext HikerTonyAfterText
+	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
+.SeenText:
+	text "Do you know how to"
+	line "swim? I can teach"
+	cont "you, if you want."
+	done
+
+.BeatenText:
+	text "Glub, glub, glub…"
+	done
+
+.AfterText:
+	text "My #mon knows"
+	line "how to Surf, but"
+	cont "I prefer swimming."
+	done
+
+TrainerSwimmerfSally:
+	trainer EVENT_BEAT_SWIMMERF_SALLY, SWIMMERF, SALLY, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "I like this bay."
+	line "Its waters are so"
+
+	para "much calmer than"
+	line "the open ocean."
+	done
+
+.BeatenText:
+	text "I don't like"
+	line "losing, however…"
+	done
+
+.AfterText:
+	text "I like drifting on"
+	line "the waves along-"
+	cont "side my #mon!"
+	done
+
+TrainerSwimmerfTara:
+	trainer EVENT_BEAT_SWIMMERF_TARA, SWIMMERF, TARA, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "Ah, swimming amid"
+	line "cherry blossoms is"
+	cont "so relaxing!"
+	done
+
+.BeatenText:
+	text "I don't even mind"
+	line "losing…"
+	done
+
+.AfterText:
+	text "There's a grove of"
+	line "golden trees north"
+	cont "of Ecruteak City."
+
+	para "I'd love to visit"
+	line "someday."
+	done
+
+TrainerHikerTony:
+	trainer EVENT_BEAT_HIKER_TONY, HIKER, TONY, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "I hiked through"
+	line "miles of woods"
+	cont "to get here!"
+	done
+
+.BeatenText:
+	text "I'm exhausted…"
+	done
+
+.AfterText:
+	text "After a long hike,"
+	line "resting under the"
+
+	para "cherry trees hits"
+	line "the spot."
+	done
+
 CherrygroveBayFisherScript:
-	jumptextfaceplayer CherrygroveBayFisherText
+	jumptextfaceplayer .Text
+
+.Text:
+	text "I can watch"
+	line "Cherrygrove City"
+
+	para "from afar while"
+	line "I fish."
+	done
 
 CherrygroveBayShinyStone:
 	itemball SHINY_STONE
@@ -112,32 +229,6 @@ Text_CherrygroveBayTutorTaught:
 	cont "Earth Power."
 	done
 
-HikerTonySeenText:
-	text "I hiked through"
-	line "miles of woods"
-	cont "to get here!"
-	done
-
-HikerTonyBeatenText:
-	text "I'm exhausted…"
-	done
-
-HikerTonyAfterText:
-	text "After a long hike,"
-	line "resting under the"
-
-	para "cherry trees hits"
-	line "the spot."
-	done
-
-CherrygroveBayFisherText:
-	text "I can watch"
-	line "Cherrygrove City"
-
-	para "from afar while"
-	line "I fish."
-	done
-
 CherrygroveBay_MapEventHeader:
 	; filler
 	db 0, 0
@@ -152,8 +243,11 @@ CherrygroveBay_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
+	db 7
 	person_event SPRITE_POKEFAN_M, 20, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
 	person_event SPRITE_POKEFAN_M, 10, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
 	person_event SPRITE_FISHER, 21, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 2, CherrygroveBayFisherScript, -1
+	person_event SPRITE_GUIDE_GENT, 30, 8, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermThomas, -1
+	person_event SPRITE_SWIMMER_GIRL, 10, 7, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
+	person_event SPRITE_SWIMMER_GIRL, 27, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CherrygroveBayShinyStone, EVENT_CHERRYGROVE_BAY_SHINY_STONE
