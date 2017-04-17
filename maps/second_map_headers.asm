@@ -840,3 +840,9 @@
 	map_header_2 ShamoutiWestBeachShack, SHAMOUTI_WEST_BEACH_SHACK, $0, 0
 	map_header_2 ShamoutiWestBeachHouse, SHAMOUTI_WEST_BEACH_HOUSE, $0, 0
 	map_header_2 RockyBeachHouse, ROCKY_BEACH_HOUSE, $0, 0
+	map_header_2 FireIsland, FIRE_ISLAND, $9, 0
+	map_header_2 FireIslandRoof, FIRE_ISLAND_ROOF, $35, 0
+	map_header_2 IceIsland, ICE_ISLAND, $9, 0
+	map_header_2 IceIslandRoof, ICE_ISLAND_ROOF, $35, 0
+	map_header_2 LightningIsland, LIGHTNING_ISLAND, $9, 0
+	map_header_2 LightningIslandRoof, LIGHTNING_ISLAND_ROOF, $35, 0

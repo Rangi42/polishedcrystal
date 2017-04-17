@@ -660,6 +660,12 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 22
 	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 23
 	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 24
+	mapgroup FIRE_ISLAND,                                16, 13 ; 25
+	mapgroup FIRE_ISLAND_ROOF,                            6,  6 ; 26
+	mapgroup ICE_ISLAND,                                 16, 13 ; 27
+	mapgroup ICE_ISLAND_ROOF,                             6,  6 ; 28
+	mapgroup LIGHTNING_ISLAND,                           16, 13 ; 29
+	mapgroup LIGHTNING_ISLAND_ROOF,                       6,  6 ; 30
 
 	newgroup                                                    ; 32
 

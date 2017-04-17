@@ -677,6 +677,12 @@ INCLUDE "maps/Route34Coast.asm"
 INCLUDE "maps/StormyBeach.asm"
 INCLUDE "maps/DiglettsCave.asm"
 INCLUDE "maps/CeruleanCape.asm"
+INCLUDE "maps/FireIsland.asm"
+INCLUDE "maps/FireIslandRoof.asm"
+INCLUDE "maps/IceIsland.asm"
+INCLUDE "maps/IceIslandRoof.asm"
+INCLUDE "maps/LightningIsland.asm"
+INCLUDE "maps/LightningIslandRoof.asm"
 
 
 SECTION "Map Scripts 32", ROMX

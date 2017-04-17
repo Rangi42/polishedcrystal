@@ -21,3 +21,17 @@ CharcoalKiln_BlockData:
 
 ShamoutiCoast_BlockData:
 	INCBIN "maps/ShamoutiCoast.blk"
+
+FireIsland_BlockData:
+	INCBIN "maps/FireIsland.blk"
+
+IceIsland_BlockData:
+	INCBIN "maps/IceIsland.blk"
+
+LightningIsland_BlockData:
+	INCBIN "maps/LightningIsland.blk"
+
+FireIslandRoof_BlockData:
+IceIslandRoof_BlockData:
+LightningIslandRoof_BlockData:
+	INCBIN "maps/ElementalIsland.blk"

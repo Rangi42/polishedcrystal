@@ -744,7 +744,7 @@ TownMap_GetKantoLandmarkLimits: ; 910e8
 	ld a, [StatusFlags]
 	bit 6, a
 	jr z, .not_hof
-	ld d, SHRINE_RUINS
+	ld d, LIGHTNING_ISLAND
 	ld e, PALLET_TOWN
 	ret
 
