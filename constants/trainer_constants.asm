@@ -110,6 +110,7 @@ KRIS EQU __enum__
 	const OWEN
 	const JASON
 	const YOUNGSTER_JOSH
+	const REGIS
 
 	trainerclass BUG_CATCHER ; 20
 	const WADE1
@@ -279,6 +280,8 @@ KRIS EQU __enum__
 	const MARCOS
 	const GERARD
 	const DENT
+	const BRUCE
+	const DWIGHT
 
 	trainerclass GRUNTM ; 27
 
@@ -680,6 +683,8 @@ KRIS EQU __enum__
 	const LUNG
 	const WAI
 	const INIGO
+	const MANFORD
+	const ANDER
 
 	trainerclass BATTLE_GIRL ; 4f
 	const SUBARU

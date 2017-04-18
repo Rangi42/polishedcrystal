@@ -3462,6 +3462,18 @@ YoungsterGroup:
 	db $ff ; end
 
 ; ================
+
+	; YOUNGSTER
+	db "Regis@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, GOLBAT
+	db 58, ELECTRODE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5728,6 +5740,31 @@ HikerGroup:
 	db 58, ONIX
 	db 59, STEELIX
 	db 59, GOLEM
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Bruce@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, GRAVELER
+	db 62, RHYDON
+	db 63, CLEFAIRY
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Dwight@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 62, MAGNETON
+	db 62, STEELIX
 
 	db $ff ; end
 
@@ -10664,6 +10701,30 @@ BlackbeltGroup:
 	db 59, PRIMEAPE
 	db 59, PRIMEAPE
 	db 60, MACHAMP
+
+	db $ff ; end
+
+; ================
+
+	; BLACKBELT_T
+	db "Manford@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 63, POLIWRATH
+
+	db $ff ; end
+
+; ================
+
+	; BLACKBELT_T
+	db "Ander@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 61, PRIMEAPE
+	db 57, GRAVELER
+	db 62, MACHOKE
 
 	db $ff ; end
 

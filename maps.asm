@@ -540,10 +540,6 @@ INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
 INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/Route48.asm"
-INCLUDE "maps/SafariZoneFuchsiaGate.asm"
-INCLUDE "maps/SafariZoneHub.asm"
-INCLUDE "maps/SafariZoneEast.asm"
-INCLUDE "maps/SafariZoneNorth.asm"
 
 
 SECTION "Map Scripts 24", ROMX[$4000], BANK[MAP_SCRIPTS_24]
@@ -684,6 +680,10 @@ INCLUDE "maps/IceIsland.asm"
 INCLUDE "maps/IceIslandRoof.asm"
 INCLUDE "maps/LightningIsland.asm"
 INCLUDE "maps/LightningIslandRoof.asm"
+INCLUDE "maps/SafariZoneFuchsiaGate.asm"
+INCLUDE "maps/SafariZoneHub.asm"
+INCLUDE "maps/SafariZoneEast.asm"
+INCLUDE "maps/SafariZoneNorth.asm"
 
 
 SECTION "Map Scripts 32", ROMX

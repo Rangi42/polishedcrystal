@@ -407,9 +407,8 @@ TrainerLadyAngelica:
 
 	para "Stop staring at"
 	line "me!"
-
-	para "………………"
-	line "Creep!"
+	cont "………………"
+	cont "Creep!"
 	done
 
 TrainerFisherLeroy:
