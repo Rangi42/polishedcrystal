@@ -305,12 +305,13 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 14
 
-	mapgroup ROUTE_3,                                    11, 36 ;  1
-	mapgroup ROUTE_3_POKECENTER_1F,                       4,  6 ;  2
-	mapgroup PEWTER_CITY,                                18, 20 ;  3
-	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  4
-	mapgroup PEWTER_GYM,                                  7,  5 ;  5
-	mapgroup PEWTER_MART,                                 4,  6 ;  6
+	mapgroup ROUTE_2_NORTH,                              18, 10 ;  1
+	mapgroup ROUTE_3,                                    11, 36 ;  2
+	mapgroup ROUTE_3_POKECENTER_1F,                       4,  6 ;  3
+	mapgroup PEWTER_CITY,                                18, 20 ;  4
+	mapgroup PEWTER_NIDORAN_SPEECH_HOUSE,                 4,  4 ;  5
+	mapgroup PEWTER_GYM,                                  7,  5 ;  6
+	mapgroup PEWTER_MART,                                 4,  6 ;  7
 	mapgroup PEWTER_POKECENTER_1F,                        4,  6 ;  8
 	mapgroup PEWTER_SNOOZE_SPEECH_HOUSE,                  4,  4 ;  9
 	mapgroup PEWTER_MUSEUM_OF_SCIENCE_1F,                 4, 10 ; 10
@@ -511,7 +512,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 23
 
-	mapgroup ROUTE_2,                                    36, 10 ;  1
+	mapgroup ROUTE_2_SOUTH,                              18, 10 ;  1
 	mapgroup ROUTE_22,                                    9, 15 ;  2
 	mapgroup VIRIDIAN_CITY,                              18, 20 ;  3
 	mapgroup VIRIDIAN_GYM,                               23,  7 ;  4

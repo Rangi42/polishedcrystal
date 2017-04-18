@@ -219,7 +219,7 @@ DiglettsCave_MapEventHeader:
 	db 6
 	warp_def $f, $25, 10, VERMILION_CITY
 	warp_def $d, $27, 5, DIGLETTS_CAVE
-	warp_def $5, $25, 5, ROUTE_2
+	warp_def $5, $25, 4, ROUTE_2_NORTH
 	warp_def $3, $27, 6, DIGLETTS_CAVE
 	warp_def $1f, $25, 2, DIGLETTS_CAVE
 	warp_def $5, $5, 4, DIGLETTS_CAVE

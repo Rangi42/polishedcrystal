@@ -27,8 +27,8 @@ ViridianForestViridianGate_MapEventHeader:
 	db 4
 	warp_def $0, $4, 2, VIRIDIAN_FOREST
 	warp_def $0, $5, 3, VIRIDIAN_FOREST
-	warp_def $7, $4, 6, ROUTE_2
-	warp_def $7, $5, 6, ROUTE_2
+	warp_def $7, $4, 2, ROUTE_2_SOUTH
+	warp_def $7, $5, 2, ROUTE_2_SOUTH
 
 .XYTriggers:
 	db 0

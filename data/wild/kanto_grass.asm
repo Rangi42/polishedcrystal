@@ -324,7 +324,34 @@
 	db 60, NOCTOWL
 	db 60, NOCTOWL
 
-	map ROUTE_2
+	map ROUTE_2_NORTH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, BUTTERFREE
+	db 54, LEDIAN
+	db 57, PIDGEOTTO
+	db 57, BUTTERFREE
+	db 56, LEDIAN
+	db 58, PIDGEOTTO
+	db 59, PIKACHU
+	; day
+	db 55, BUTTERFREE
+	db 54, PIDGEOTTO
+	db 57, PIDGEOTTO
+	db 57, BUTTERFREE
+	db 56, PIDGEOTTO
+	db 58, PIDGEOTTO
+	db 59, PIKACHU
+	; nite
+	db 55, NOCTOWL
+	db 54, ARIADOS
+	db 57, NOCTOWL
+	db 57, NOCTOWL
+	db 56, ARIADOS
+	db 58, NOCTOWL
+	db 59, NOCTOWL
+
+	map ROUTE_2_SOUTH
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 55, BUTTERFREE

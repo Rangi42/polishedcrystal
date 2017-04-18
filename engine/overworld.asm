@@ -1235,29 +1235,23 @@ Group12Sprites:
 	db SPRITE_BALL_CUT_FRUIT
 
 
-; PewterCity connects to Route2
 Group14Sprites:
+; Route2North
 ; Route3
 ; PewterCity
-Group23Sprites:
-; Route2
-; Route16West
-; Route22
-; ViridianCity
-; ViridianForest
-	db SPRITE_BUG_CATCHER
+	db SPRITE_CHILD
+	db SPRITE_BLACK_BELT
 	db SPRITE_BUG_MANIAC
-	db SPRITE_COSPLAYER
-	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
-	db SPRITE_LADY
-	db SPRITE_LASS
+	db SPRITE_POKEFAN_M
 	db SPRITE_YOUNGSTER
+	db SPRITE_COOLTRAINER_M ; doesn't walk
 	db SPRITE_COOLTRAINER_F ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 9 walking sprites (7 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
+	; 10 total sprites
+	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
@@ -1489,6 +1483,41 @@ Group21Sprites:
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
 	; 12 total sprites
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+
+
+Group23Sprites:
+; Route2South
+; Route16West
+; Route22
+; ViridianCity
+; ViridianForest
+	db SPRITE_BUG_CATCHER
+	db SPRITE_BUG_MANIAC
+	db SPRITE_COSPLAYER
+	db SPRITE_FISHER
+	db SPRITE_GRAMPS
+	db SPRITE_LADY
+	db SPRITE_LASS
+	db SPRITE_YOUNGSTER
+	db SPRITE_COOLTRAINER_M ; doesn't walk
+	db SPRITE_COOLTRAINER_F ; doesn't walk
+	; 10 walking sprites (8 that walk)
+	db SPRITE_BALL_CUT_FRUIT
+	; 11 total sprites
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
