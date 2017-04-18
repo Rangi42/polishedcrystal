@@ -90,6 +90,9 @@ AceDuoZacandjen2Script:
 MapRoute3Signpost0Script:
 	jumptext UnknownText_0x1ae163
 
+Route3Meteorite:
+	jumptext Route3MeteoriteText
+
 Route3HiddenMoonStone:
 	dwb EVENT_ROUTE_3_HIDDEN_MOON_STONE, MOON_STONE
 
@@ -194,14 +197,26 @@ AceDuoZacandjen2BeatenText:
 AceDuoZacandjen2AfterText:
 	text "Jen: I'm looking"
 	line "forward to seeing"
+
 	para "what kind of"
 	line "trainer you'll"
 	cont "become."
 	done
 
+Route3MeteoriteText:
+	text "Never seen a stone"
+	line "like this before!"
+
+	para "Could it be…"
+	line "a meteorite from"
+	cont "space?"
+	done
+
 UnknownText_0x1ae163:
-	text "Mt.Moon"
-	line "Tunnel Entrance"
+	text "Mt.Moon Ahead"
+
+	para "Mt.Moon Square"
+	line "is en route!"
 	done
 
 Route3_MapEventHeader:
@@ -217,9 +232,15 @@ Route3_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 8
 	signpost 15, 63, SIGNPOST_READ, MapRoute3Signpost0Script
 	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
+	signpost 15, 8, SIGNPOST_READ, Route3Meteorite
+	signpost 17, 8, SIGNPOST_READ, Route3Meteorite
+	signpost 17, 9, SIGNPOST_READ, Route3Meteorite
+	signpost 15, 14, SIGNPOST_READ, Route3Meteorite
+	signpost 16, 15, SIGNPOST_READ, Route3Meteorite
+	signpost 17, 15, SIGNPOST_READ, Route3Meteorite
 
 .PersonEvents:
 	db 6
