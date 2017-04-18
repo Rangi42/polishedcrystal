@@ -1,4 +1,6 @@
 const_value set 2
+	const ROUTE13WEST_YOUNGSTER
+	const ROUTE13WEST_LASS
 	const ROUTE13WEST_POKEFAN_M1
 	const ROUTE13WEST_POKEFAN_M2
 
@@ -8,6 +10,71 @@ Route13West_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+TrainerCamperClark:
+	trainer EVENT_BEAT_CAMPER_CLARK, CAMPER, CLARK, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "Collect water!"
+	line "Don't let the fire"
+	cont "go out!"
+
+	para "Look out for wild"
+	line "#mon!"
+
+	para "Let's go,"
+	line "Campfire!"
+	done
+
+.BeatenText:
+	text "Pfuuuuhh…"
+	done
+
+.AfterText:
+	text "It doesn't matter"
+	line "what kind of prep"
+	cont "work you've done."
+
+	para "If you lose, you"
+	line "lose."
+	done
+
+TrainerPicnickerGinger:
+	trainer EVENT_BEAT_PICNICKER_GINGER, PICNICKER, GINGER, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "Why do I always"
+	line "get the urge to"
+	cont "whistle outdoors?"
+	done
+
+.BeatenText:
+	text "Tweeee!"
+	done
+
+.AfterText:
+	text "You can communi-"
+	line "cate with #mon"
+
+	para "through whistling"
+	line "instead of words!"
+	done
 
 TrainerHikerKenny:
 	trainer EVENT_BEAT_HIKER_KENNY, HIKER, KENNY, HikerKennySeenText, HikerKennyBeatenText, 0, HikerKennyScript
@@ -19,9 +86,6 @@ HikerKennyScript:
 	waitbutton
 	closetext
 	end
-
-Route13DirectionsSign:
-	jumptext Route13DirectionsSignText
 
 HikerKennySeenText:
 	text "I should go to"
@@ -42,6 +106,9 @@ UnknownText_0x1a26c2:
 	line "change, little by"
 	cont "little."
 	done
+
+Route13DirectionsSign:
+	jumptext Route13DirectionsSignText
 
 Route13DirectionsSignText:
 	text "North to Lavender"
@@ -66,6 +133,8 @@ Route13West_MapEventHeader:
 	signpost 13, 17, SIGNPOST_READ, Route13DirectionsSign
 
 .PersonEvents:
-	db 2
+	db 4
+	person_event SPRITE_YOUNGSTER, 5, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperClark, -1
+	person_event SPRITE_LASS, 6, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerGinger, -1
 	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerHikerKenny, -1
 	person_event SPRITE_POKEFAN_M, 6, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

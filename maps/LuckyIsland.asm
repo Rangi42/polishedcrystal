@@ -12,7 +12,7 @@ LuckyIsland_MapScriptHeader:
 	dbw MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
 Script_ChangeLuckyIslandMap:
-	callasm CheckIfTrendyPhraseIsLucky
+	special CheckIfTrendyPhraseIsLucky
 	iftrue .show
 	changemap BANK(LuckyIslandHidden_BlockData), LuckyIslandHidden_BlockData
 	setevent EVENT_LUCKY_ISLAND_CIVILIANS
@@ -38,25 +38,3 @@ LuckyIsland_MapEventHeader:
 
 .PersonEvents:
 	db 0
-
-CheckIfTrendyPhraseIsLucky:
-	xor a
-	ld [ScriptVar], a
-	ld hl, TrendyPhrase
-	ld bc, .KeyPhrase
-	ld d, 6
-.loop
-	ld a, [bc]
-	ld e, a
-	ld a, [hli]
-	cp e
-	ret nz
-	inc bc
-	dec d
-	jr nz, .loop
-	ld a, 1
-	ld [ScriptVar], a
-	ret
-
-.KeyPhrase:
-	db "Lucky@"

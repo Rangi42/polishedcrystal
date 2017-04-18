@@ -150,6 +150,8 @@ KRIS EQU __enum__
 	const GRANT
 	const CRAIG
 	const FELIX
+	const TANNER
+	const CLARK
 
 	trainerclass PICNICKER ; 22
 	const LIZ1
@@ -178,6 +180,8 @@ KRIS EQU __enum__
 	const EDNA
 	const TANYA
 	const LILY
+	const PIPER
+	const GINGER
 
 	trainerclass TWINS ; 23
 	const AMYANDMAY1
@@ -539,6 +543,8 @@ KRIS EQU __enum__
 	const MOEANDLULU2
 	const VICANDTARA1
 	const VICANDTARA2
+	const TIMANDSUE1
+	const TIMANDSUE2
 
 	trainerclass GENTLEMAN ; 40
 	const PRESTON

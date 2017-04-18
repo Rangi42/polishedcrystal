@@ -475,7 +475,6 @@ INCLUDE "maps/Route13West.asm"
 INCLUDE "maps/Route26.asm"
 INCLUDE "maps/Route28.asm"
 INCLUDE "maps/Route31.asm"
-INCLUDE "maps/Route39.asm"
 
 
 SECTION "Map Scripts 21", ROMX[$4000], BANK[MAP_SCRIPTS_21]
@@ -601,6 +600,7 @@ INCLUDE "maps/MystriStage.asm"
 INCLUDE "maps/EmbeddedTower.asm"
 INCLUDE "maps/Route17.asm"
 INCLUDE "maps/Route45.asm"
+INCLUDE "maps/Route39.asm"
 
 
 SECTION "Map Scripts 27", ROMX[$4000], BANK[MAP_SCRIPTS_27]

@@ -3992,6 +3992,28 @@ CamperGroup:
 	db $ff ; end
 
 ; ================
+
+	; CAMPER
+	db "Tanner@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, SUDOWOODO
+
+	db $ff ; end
+
+; ================
+
+	; CAMPER
+	db "Clark@"
+	db TRAINERTYPE_NICKNAME
+
+	; party
+	db 56, QUILAVA, "Campfire@"
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -4379,6 +4401,28 @@ endc
 	db 24, NIDORINA
 	db 22, BELLSPROUT
 	db 26, WEEPINBELL
+
+	db $ff ; end
+
+; ================
+
+	; PICNICKER
+	db "Piper@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, HYPNO
+
+	db $ff ; end
+
+; ================
+
+	; PICNICKER
+	db "Ginger@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, MUNCHLAX
 
 	db $ff ; end
 
@@ -9103,6 +9147,30 @@ CoupleGroup:
 	; party
 	db 53, SUNKERN
 	db 54, MAGMAR
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Tim & Sue@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, KADABRA
+	db 57, GOLDUCK
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Tim & Sue@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, GOLDUCK
+	db 53, KADABRA
 
 	db $ff ; end
 

@@ -178,6 +178,7 @@ SpecialsPointers:: ; c029
 	add_special SaveMusic
 	add_special RestoreMusic
 	add_special DeleteSavedMusic
+	add_special CheckIfTrendyPhraseIsLucky
 
 	add_special SpecialNone
 ; c224
@@ -469,7 +470,6 @@ Special_CheckLuckyNumberShowFlag: ; c434
 	jp ScriptReturnCarry
 ; c43d
 
-
 SpecialSnorlaxAwake: ; 0xc43d
 ; Check if the Poké Flute channel is playing.
 
@@ -510,6 +510,27 @@ Diploma: ; c49f
 	ret
 ; c4ac
 
+CheckIfTrendyPhraseIsLucky:
+	xor a
+	ld [ScriptVar], a
+	ld hl, TrendyPhrase
+	ld bc, .KeyPhrase
+	ld d, 6
+.loop
+	ld a, [bc]
+	ld e, a
+	ld a, [hli]
+	cp e
+	ret nz
+	inc bc
+	dec d
+	jr nz, .loop
+	ld a, 1
+	ld [ScriptVar], a
+	ret
+
+.KeyPhrase:
+	db "Lucky@"
 
 RespawnOneOffs:
 	ld de, EVENT_BEAT_LAWRENCE
@@ -699,7 +720,6 @@ RespawnOneOffs:
 .CaughtHoOh
 	ret
 
-
 BillBoxSwitchCheck:
 	ld a, [wCurBox]
 	cp NUM_BOXES - 1
@@ -736,7 +756,6 @@ BillBoxSwitchCheck:
 	ld [ScriptVar], a
 	ld [EngineBuffer1], a
 	ret
-
 
 BillBoxSwitch:
 	ld hl, wc608

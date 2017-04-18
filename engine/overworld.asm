@@ -1333,7 +1333,8 @@ Group16Sprites:
 
 Group17Sprites:
 ; Route12South
-; Route13
+; Route13East
+; Route13West
 ; Route14
 ; Route15
 ; Route18
@@ -1350,11 +1351,11 @@ Group17Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	db SPRITE_LASS ; doesn't walk
-	; 9 walking sprites (8 that walk)
+	db SPRITE_LASS
+	db SPRITE_GRAMPS ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 10 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 11 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
