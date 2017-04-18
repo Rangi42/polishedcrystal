@@ -4258,10 +4258,15 @@ GetGender: ; 50bdd
 	ld a, BANK(BaseData)
 	call GetFarByte
 
-; A ratio of $ff is genderless
-	cp $ff
+; Fixed values ignore the Personality gender value.
+	cp GENDERLESS
 	jr z, .Genderless
+	cp ALL_MALE
+	jr z, .Male
+	cp ALL_FEMALE
+	jr z, .Female
 
+; Otherwise, use the Personality gender value directly.
 	ld a, b
 	cp MALE
 	jr z, .Male

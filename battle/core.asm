@@ -134,8 +134,8 @@ WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 	ld a, [BattleType]
 	cp BATTLETYPE_ROAMING
 	jr z, .print_text
-	cp BATTLETYPE_CELEBI ; or BATTLETYPE_SUICUNE, BATTLETYPE_HO_OH, BATTLETYPE_LUGIA, BATTLETYPE_KANTO_LEGEND
-	jr nc, .print_text
+	cp BATTLETYPE_LEGENDARY
+	jr z, .print_text
 
 	ld hl, BattleText_WildFled
 	ld a, [wLinkMode]
@@ -3911,7 +3911,7 @@ TryToRunAwayFromBattle: ; 3d8b3
 	jp z, .can_escape
 	cp BATTLETYPE_GHOST
 	jp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_CELEBI, BATTLETYPE_SUICUNE, BATTLETYPE_HO_OH, BATTLETYPE_LUGIA, BATTLETYPE_KANTO_LEGEND
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
 	jp nc, .cant_escape
 
 	ld a, [wLinkMode]
@@ -6463,17 +6463,7 @@ LoadEnemyMon: ; 3e8eb
 	jr z, .UpdateItem
 
 	ld a, [BattleType]
-	cp BATTLETYPE_HO_OH
-	ld a, [BaseItems]
-	jr z, .UpdateItem
-
-	ld a, [BattleType]
-	cp BATTLETYPE_LUGIA
-	ld a, [BaseItems]
-	jr z, .UpdateItem
-
-	ld a, [BattleType]
-	cp BATTLETYPE_KANTO_LEGEND
+	cp BATTLETYPE_LEGENDARY
 	ld a, [BaseItems]
 	jr z, .UpdateItem
 
@@ -6582,13 +6572,11 @@ endr
 	ld de, DVAndPersonalityBuffer
 	ld bc, 5 ; 3 DVs + 2 personality bytes
 	call CopyBytes
-
-	jr .UpdateDVs
+	ld bc, DVAndPersonalityBuffer
+	jp .UpdateDVs
 
 .WildDVs:
-
-; Wild DVs
-; Here's where the fun starts
+	ld bc, DVAndPersonalityBuffer
 
 ; Roaming monsters (Entei, Raikou) work differently
 ; They have their own structs, which are shorter than normal
@@ -6606,69 +6594,137 @@ endr
 ; Check if the HP has been initialized
 	and a
 ; If the RoamMon struct has already been initialized, we're done
-	jr nz, .UpdateDVs
+	jp nz, .UpdateDVs
 
 ; If it hasn't, we need to initialize the DVs
 ; (HP is initialized at the end of the battle)
-	; DVs
-	call BattleRandom
-	ld [hli], a
-	call BattleRandom
-	ld [hli], a
-	call BattleRandom
-	ld [hli], a
-	; TODO: random shininess, ability, and nature
-	xor a
-	ld [hli], a
-	ld [hl], a
-; We're done with DVs
-	jr .UpdateDVs
-
 .GenerateDVs:
-; Generate new random DVs
-	call BattleRandom
-	ld [DVAndPersonalityBuffer], a
-	call BattleRandom
-	ld [DVAndPersonalityBuffer + 1], a
-	call BattleRandom
-	ld [DVAndPersonalityBuffer + 2], a
+	ld h, b
+	ld l, c
 
-.GeneratePersonality:
-	; TODO: random shininess, ability, and nature
-	; shininess: 1/4096 (3/4096 with shiny charm, 0 if NumBalls == 0)
-	; ability: 5% hidden, 47.5% first, 47.5% second
-	; nature: even chance of any
-	xor a
-	ld [DVAndPersonalityBuffer + 3], a
+; Random DVs
+	call BattleRandom
+	ld [hli], a
+	call BattleRandom
+	ld [hli], a
+	call BattleRandom
+	ld [hli], a
 
-; Arbok form
-	ld a, [CurPartySpecies]
-	cp EKANS
-	jr z, .arbok_form
-	cp ARBOK
-	jr z, .arbok_form
-	ld a, 1
-	jr .got_form
-.arbok_form
+; Random nature from 0 to 24
+; 50% chance of same nature with Synchronize ability
+	push bc
+	push bc
+	ld a, [PartyMon1Ability]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	call GetAbility
+	ld a, b
+	pop bc
+	cp SYNCHRONIZE
+	jr nz, .no_synchronize
+	call BattleRandom
+	and $1
+	jr z, .no_synchronize
+	ld a, [PartyMon1Nature]
+	and NATURE_MASK
+	jr .got_nature
+.no_synchronize
+	ld a, NUM_NATURES
+	call BattleRandomRange
+.got_nature
+	ld b, a
+
+; Random ability
+; 5% hidden ability, otherwise 50% either main ability
+	call BattleRandom
+	cp 1 + 5 percent
+	jr c, .hidden_ability
+	and $1
+	jr z, .ability_2
+.ability_1
+	ld a, ABILITY_1
+	jr .got_ability
+.ability_2
+	ld a, ABILITY_2
+	jr .got_ability
+.hidden_ability
+	ld a, HIDDEN_ABILITY
+.got_ability
+	add b
+	ld b, a
+
+; Random shininess
+; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
+	ld a, [BattleType]
+	cp a, BATTLETYPE_SHINY
+	jr z, .shiny
+	call BattleRandom
+	and a
+	jr nz, .not_shiny ; 255/256 not shiny
+	ld a, SHINY_CHARM
+	ld [CurItem], a
+	push hl
 	push bc
 	push de
-	farcall RegionCheck
-	ld a, e
+	ld hl, NumItems
+	call CheckItem
 	pop de
 	pop bc
-	and a
-	jr nz, .kanto_arbok
-.johto_arbok
+	pop hl
+	jr c, .shiny_charm
+.no_shiny_charm
+	call BattleRandom
+	cp $10
+	jr nc, .not_shiny ; 240/256 still not shiny
+.shiny
+	ld a, SHINY_MASK
+	jr .got_shininess
+.shiny_charm
+	call BattleRandom
+	cp $30
+	jr c, .shiny ; 208/256 still not shiny
+.not_shiny
+	xor a
+.got_shininess
+	add b
+	pop bc
+	ld [hli], a
+
+; Random gender
+; Derived from base ratio
+	push bc
+; Random gender selection value
+	call BattleRandom
+	and %111
+	ld b, a
+; We need the gender ratio to do anything with this.
+	push hl
+	push bc
+	ld a, [CurPartySpecies]
+	dec a
+	ld hl, BASEMON_GENDER
+	ld bc, BASEMON_STRUCT_LENGTH
+	call AddNTimes
+	pop bc
+	pop hl
+	ld a, BANK(BaseData)
+	call GetFarByte
+; Ratios below the value are female, and vice-versa.
+	cp b
+	ld a, FEMALE
+	jr c, .Female
+	xor a ; ld a, MALE
+.Female
+	ld b, a
+
+; Form 1
 	ld a, 1
-	jr .got_form
-.kanto_arbok
-	ld a, 2
-.got_form
-	and FORM_MASK
-	ld [DVAndPersonalityBuffer + 4], a
+	add b
+	pop bc
+	ld [hl], a
 
 .UpdateDVs:
-	ld bc, DVAndPersonalityBuffer
 	ld hl, EnemyMonDVs
 rept 4
 	ld a, [bc]
@@ -6678,59 +6734,17 @@ endr
 	ld a, [bc]
 	ld [hl], a
 
-
 ; We've still got more to do if we're dealing with a wild monster
 	ld a, [wBattleMode]
 	dec a
 	jp nz, .Happiness
 
-	ld a, [BattleType]
-	cp a, BATTLETYPE_SHINY
-	jr nz, .not_forced_shiny
-	ld a, [EnemyMonShiny]
-	or SHINY_MASK
-	ld [EnemyMonShiny], a
-.not_forced_shiny
-
-; TODO: Shiny Charm (if not shiny, try again with better odds such that the total chance is 3/4096)
-
-	push bc
-	ld a, [PartyMon1Ability]
-	ld b, a
-	ld a, [PartyMon1Species]
-	ld c, a
-	farcall GetAbility
-	ld a, b
-	pop bc
-	cp SYNCHRONIZE
-	jr nz, .no_synchronize
-	ld a, [PartyMon1Nature]
-	and NATURE_MASK
-	ld b, a
-	ld a, [EnemyMonNature]
-	and NOT_NATURE_MASK
-	add b
-	ld [EnemyMonNature], a
-.no_synchronize
-
-; Species-specfic:
-
-
 ; Unown
 	ld a, [TempEnemyMonSpecies]
 	cp a, UNOWN
-	jr nz, .Magikarp
+	jr nz, .EkansArbok
 
-.RegenerateUnownLetter
-; Get letter based on form
-	ld hl, EnemyMonForm
-	predef GetVariant
-; Can't use any letters that haven't been unlocked
-; If combined with forced shiny battletype, causes an infinite loop
-	push de
-	call CheckUnownLetter
-	pop de
-	jr nc, .Happiness
+.unown_letter
 	ld a, NUM_UNOWN
 	call RandomRange
 	ld b, a
@@ -6738,14 +6752,38 @@ endr
 	and NOT_FORM_MASK
 	add b
 	ld [EnemyMonForm], a
+; Get letter based on form
 	ld hl, EnemyMonForm
 	predef GetVariant
+; Can't use any letters that haven't been unlocked
+	push de
 	call CheckUnownLetter
-	jr c, .RegenerateUnownLetter ; re-roll
+	pop de
+	jr c, .unown_letter ; re-roll
+	jp .Happiness
+
+.EkansArbok:
+	ld a, [TempEnemyMonSpecies]
+	cp EKANS
+	jr z, .yes_ekans
+	cp ARBOK
+	jr nz, .Magikarp
+
+.yes_ekans
+	farcall RegionCheck
+	ld a, e
+	ld d, 1
+	and a
+	jr z, .johto_form
+	ld d, 2
+.johto_form
+	ld a, [EnemyMonForm]
+	and NOT_FORM_MASK
+	add d
+	ld [EnemyMonForm], a
+	jr .Happiness
 
 .Magikarp:
-; Skimming this part recommended
-
 	ld a, [TempEnemyMonSpecies]
 	cp a, MAGIKARP
 	jr nz, .Happiness
@@ -9789,8 +9827,8 @@ BattleStartMessage: ; 3fc8b
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
 	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_CELEBI ; or BATTLETYPE_SUICUNE, BATTLETYPE_HO_OH, BATTLETYPE_LUGIA, BATTLETYPE_KANTO_LEGEND
-	jr nc, .PlaceBattleStartText
+	cp BATTLETYPE_LEGENDARY
+	jr z, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 
 .PlaceBattleStartText:

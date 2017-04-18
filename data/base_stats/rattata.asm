@@ -8,7 +8,7 @@
 	db 57 ; base exp
 	db NO_ITEM ; item 1
 	db ORAN_BERRY ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 15 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db RUN_AWAY ; ability 1

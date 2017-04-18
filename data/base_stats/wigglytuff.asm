@@ -17,7 +17,7 @@ else
 endc
 	db ORAN_BERRY ; item 1
 	db ORAN_BERRY ; item 2
-	db 191 ; gender
+	db FEMALE_75 ; gender
 	db 10 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db CUTE_CHARM ; ability 1

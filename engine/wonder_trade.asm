@@ -315,7 +315,7 @@ endr
 	ld [Buffer1], a
 	; Random gender (50-50)
 	call Random
-	and $80 ; $00 is FEMALE, $80 is MALE; ignored if genderless
+	and GENDER_MASK
 	ld b, a
 	; Form 1
 	ld a, 1

@@ -35,7 +35,7 @@ Lugia:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_LUGIA
-	writecode VAR_BATTLETYPE, BATTLETYPE_LUGIA
+	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	loadwildmon LUGIA, 75
 	startbattle
 	disappear WHIRLISLANDLUGIACHAMBER_LUGIA

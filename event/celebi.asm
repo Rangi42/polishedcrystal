@@ -4,7 +4,19 @@ Special_CelebiShrineEvent: ; 4989a
 	push af
 	xor a
 	ld [VramState], a
-	call LoadCelebiGFX
+
+	farcall ClearSpriteAnims
+	ld de, SpecialCelebiLeafGFX
+	ld hl, VTiles1
+	lb bc, BANK(SpecialCelebiLeafGFX), 4
+	call Request2bpp
+	ld de, SpecialCelebiGFX
+	ld hl, VTiles0 tile $84
+	lb bc, BANK(SpecialCelebiGFX), $10
+	call Request2bpp
+	xor a
+	ld [wJumptableIndex], a
+
 	depixel 0, 10, 7, 0
 	ld a, SPRITE_ANIM_INDEX_CELEBI
 	call _InitSpriteAnimStruct
@@ -39,17 +51,10 @@ Special_CelebiShrineEvent: ; 4989a
 	pop bc
 	jr .loop
 
-
 .done
 	pop af
 	ld [VramState], a
-	call .RefreshPlayerSprite_ClearAllOthers
-	call CelebiEvent_SetBattleType
-	ret
 
-; 498f9
-
-.RefreshPlayerSprite_ClearAllOthers: ; 498f9
 	ld hl, Sprites + 2
 	xor a
 	ld c, $4
@@ -65,25 +70,13 @@ endr
 	ld bc, 36 * 4
 	xor a
 	call ByteFill
+
+	ld a, BATTLETYPE_LEGENDARY
+	ld [BattleType], a
+
 	ret
 
-; 49912
-
-LoadCelebiGFX: ; 49912
-	farcall ClearSpriteAnims
-	ld de, SpecialCelebiLeafGFX
-	ld hl, VTiles1
-	lb bc, BANK(SpecialCelebiLeafGFX), 4
-	call Request2bpp
-	ld de, SpecialCelebiGFX
-	ld hl, VTiles0 tile $84
-	lb bc, BANK(SpecialCelebiGFX), $10
-	call Request2bpp
-	xor a
-	ld [wJumptableIndex], a
-	ret
-
-; 49935
+; 498f9
 
 CelebiEvent_CountDown: ; 49935
 	ld hl, wcf64
@@ -92,7 +85,6 @@ CelebiEvent_CountDown: ; 49935
 	jr z, .done
 	dec [hl]
 	ret
-
 
 .done
 	ld hl, wJumptableIndex
@@ -103,12 +95,12 @@ CelebiEvent_CountDown: ; 49935
 
 SpecialCelebiLeafGFX: ; 49962
 INCBIN "gfx/special/celebi/leaf.2bpp"
+
 SpecialCelebiGFX: ; 499a2
 INCBIN "gfx/special/celebi/1.2bpp"
 INCBIN "gfx/special/celebi/2.2bpp"
 INCBIN "gfx/special/celebi/3.2bpp"
 INCBIN "gfx/special/celebi/4.2bpp"
-
 
 UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
@@ -204,7 +196,6 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 .done
 	ret
 
-
 .FreezeCelebiPosition: ; 49b30 (12:5b30)
 	pop af
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
@@ -212,7 +203,6 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	ld a, $40
 	call ReinitSpriteAnimFrame
 	ret
-
 
 CelebiEvent_Cosine: ; 49b3b (12:5b3b)
 	add $10
@@ -230,7 +220,6 @@ CelebiEvent_Cosine: ; 49b3b (12:5b3b)
 	xor $ff
 	inc a
 	ret
-
 
 .SineFunction: ; 49b52 (12:5b52)
 	ld e, a
@@ -283,21 +272,17 @@ GetCelebiSpriteTile: ; 49bae
 	jr c, .done
 	jr .restart
 
-
 .Frame1:
 	ld a, $84
 	jr .load_tile
-
 
 .Frame2:
 	ld a, $88
 	jr .load_tile
 
-
 .Frame3:
 	ld a, $8c
 	jr .load_tile
-
 
 .Frame4:
 	ld a, $90
@@ -307,7 +292,6 @@ GetCelebiSpriteTile: ; 49bae
 	add hl, bc
 	ld [hl], a
 	jr .done
-
 
 .restart
 	pop de
@@ -332,27 +316,17 @@ GetCelebiSpriteTile: ; 49bae
 
 ; 49bf3
 
-CelebiEvent_SetBattleType: ; 49bf3
-	ld a, BATTLETYPE_CELEBI
-	ld [BattleType], a
-	ret
-
-; 49bf9
-
 CheckCaughtCelebi: ; 49bf9
 	ld a, [wBattleResult]
 	bit 6, a
 	jr z, .false
 	ld a, $1
 	ld [ScriptVar], a
-	jr .done
-
+	ret
 
 .false
 	xor a
 	ld [ScriptVar], a
-
-.done
 	ret
 
 ; 49c0c

@@ -8,7 +8,7 @@
 	db 76 ; base exp
 	db ORAN_BERRY ; item 1
 	db ORAN_BERRY ; item 2
-	db 191 ; gender
+	db FEMALE_75 ; gender
 	db 10 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db CUTE_CHARM ; ability 1

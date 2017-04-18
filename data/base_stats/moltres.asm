@@ -8,7 +8,7 @@
 	db 217 ; base exp
 	db LUM_BERRY ; item 1
 	db LUM_BERRY ; item 2
-	db 255 ; gender
+	db GENDERLESS ; gender
 	db 80 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1

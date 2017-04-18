@@ -8,7 +8,7 @@
 	db 70 ; base exp
 	db TINYMUSHROOM ; item 1
 	db BIG_MUSHROOM ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db EFFECT_SPORE ; ability 1

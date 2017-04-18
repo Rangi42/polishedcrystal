@@ -185,16 +185,16 @@ if DEF(DEBUG)
 	givepoke MEW, 100, LEFTOVERS
 	; intro events
 	addcellnum PHONE_MOM
-	addcellnum PHONE_ELM
-	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
-	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	setevent EVENT_GOT_A_POKEMON_FROM_ELM
-	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	setevent EVENT_LYRA_IN_ELMS_LAB
+;	addcellnum PHONE_ELM
+;	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+;	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+;	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+;	setevent EVENT_GOT_A_POKEMON_FROM_ELM
+;	setevent EVENT_RIVAL_CHERRYGROVE_CITY
+;	setevent EVENT_LYRA_IN_ELMS_LAB
+;	domaptrigger ELMS_LAB, $5
+;	domaptrigger NEW_BARK_TOWN, $2
 	dotrigger $1
-	domaptrigger ELMS_LAB, $5
-	domaptrigger NEW_BARK_TOWN, $2
 else
 	stringtotext GearName, $1
 	callstd receiveitem

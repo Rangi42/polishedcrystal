@@ -5,6 +5,20 @@
 	const FAST
 	const SLOW
 
+; gender ratios
+	const_def
+	const ALL_MALE
+	const FEMALE_12_5
+	const FEMALE_25
+	const FEMALE_37_5
+	const FEMALE_50
+	const FEMALE_62_5
+	const FEMALE_75
+	const FEMALE_87_5
+	const ALL_FEMALE
+
+GENDERLESS EQU %1111
+
 ; egg group constants
 const_value SET 1
 	const MONSTER      ; 1

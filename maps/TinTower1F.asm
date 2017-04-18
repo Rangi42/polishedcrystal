@@ -125,7 +125,7 @@ SuicuneBattle:
 	cry SUICUNE
 	pause 20
 	loadwildmon SUICUNE, 40
-	writecode VAR_BATTLETYPE, BATTLETYPE_SUICUNE
+	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	dontrestartmapmusic
 	disappear TINTOWER1F_SUICUNE

@@ -21,7 +21,7 @@ else
 endc
 	db NO_ITEM ; item 1
 	db STICK ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db KEEN_EYE ; ability 1

@@ -13,7 +13,7 @@ endc
 	db 116 ; base exp
 	db NO_ITEM ; item 1
 	db SITRUS_BERRY ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 15 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db RUN_AWAY ; ability 1

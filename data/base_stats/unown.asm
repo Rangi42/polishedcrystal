@@ -8,7 +8,7 @@
 	db 61 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db 255 ; gender
+	db GENDERLESS ; gender
 	db 40 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db LEVITATE ; ability 1

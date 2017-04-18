@@ -654,8 +654,8 @@ endr
 	ld a, [BattleType]
 	cp BATTLETYPE_CONTEST
 	jp z, .catch_bug_contest_mon
-	cp BATTLETYPE_CELEBI
-	jr nz, .not_celebi
+	cp BATTLETYPE_LEGENDARY
+	jr nz, .not_celebi ; false positive for other legendaries, but that's okay
 	ld hl, wBattleResult
 	set 6, [hl]
 .not_celebi

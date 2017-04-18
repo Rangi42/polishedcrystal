@@ -81,7 +81,7 @@ CinnabarVolcanoMoltres:
 	pause 15
 	closetext
 	loadwildmon MOLTRES, 70
-	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
+	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES

@@ -6,6 +6,7 @@ TRADE_GETMON      EQU 2
 TRADE_NICK        EQU 3
 TRADE_DVS         EQU 14
 TRADE_PERSONALITY EQU 17
+TRADE_GENDER      EQU 18
 TRADE_ITEM        EQU 19
 TRADE_OT_ID       EQU 21
 TRADE_OT_NAME     EQU 22
@@ -159,14 +160,9 @@ DoNPCTrade: ; fcc63
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
-	ld e, TRADE_DIALOG
+	ld e, TRADE_GENDER
 	call GetTradeAttribute
 	ld a, [hl]
-	cp 3
-	ld a, MALE
-	jr c, .male
-	ld a, FEMALE
-.male
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, PartyMon1Level

@@ -17,7 +17,7 @@ else
 endc
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db POISON_POINT ; ability 1

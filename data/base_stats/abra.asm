@@ -8,7 +8,7 @@
 	db 73 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db 63 ; gender
+	db FEMALE_25 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1

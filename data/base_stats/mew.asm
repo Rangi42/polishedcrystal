@@ -8,7 +8,7 @@
 	db 64 ; base exp
 	db LUM_BERRY ; item 1
 	db LUM_BERRY ; item 2
-	db 255 ; gender
+	db GENDERLESS ; gender
 	db 120 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1

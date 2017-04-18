@@ -6382,18 +6382,8 @@ BattleCommand_Teleport: ; 36778
 	ld a, [BattleType]
 	cp BATTLETYPE_SHINY
 	jr z, .failed
-	cp BATTLETYPE_TRAP
-	jr z, .failed
-	cp BATTLETYPE_CELEBI
-	jr z, .failed
-	cp BATTLETYPE_SUICUNE
-	jr z, .failed
-	cp BATTLETYPE_HO_OH
-	jr z, .failed
-	cp BATTLETYPE_LUGIA
-	jr z, .failed
-	cp BATTLETYPE_KANTO_LEGEND
-	jr z, .failed
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	jr nc, .failed
 
 ; Can't teleport from a trainer battle
 	ld a, [wBattleMode]
@@ -6537,18 +6527,8 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld a, [BattleType]
 	cp BATTLETYPE_SHINY
 	jp z, .fail
-	cp BATTLETYPE_TRAP
-	jp z, .fail
-	cp BATTLETYPE_CELEBI
-	jp z, .fail
-	cp BATTLETYPE_SUICUNE
-	jp z, .fail
-	cp BATTLETYPE_HO_OH
-	jp z, .fail
-	cp BATTLETYPE_LUGIA
-	jp z, .fail
-	cp BATTLETYPE_KANTO_LEGEND
-	jp z, .fail
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	jp nc, .fail
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
 	jp z, .fail

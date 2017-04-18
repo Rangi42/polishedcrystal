@@ -201,7 +201,7 @@ Route10Zapdos:
 	pause 15
 	closetext
 	loadwildmon ZAPDOS, 60
-	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
+	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear ROUTE10_ZAPDOS
 	setevent EVENT_ZAPDOS_GONE

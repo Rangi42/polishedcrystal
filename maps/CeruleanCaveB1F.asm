@@ -18,7 +18,7 @@ CeruleanCaveMewtwo:
 	pause 15
 	closetext
 	loadwildmon MEWTWO, 80
-	writecode VAR_BATTLETYPE, BATTLETYPE_KANTO_LEGEND
+	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear CERULEANCAVEB1F_MEWTWO
 	setevent EVENT_CERULEAN_CAVE_MEWTWO

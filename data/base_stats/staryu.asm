@@ -8,7 +8,7 @@
 	db 106 ; base exp
 	db STARDUST ; item 1
 	db STAR_PIECE ; item 2
-	db 255 ; gender
+	db GENDERLESS ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db ILLUMINATE ; ability 1

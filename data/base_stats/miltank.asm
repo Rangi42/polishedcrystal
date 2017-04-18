@@ -8,7 +8,7 @@
 	db 200 ; base exp
 	db MOOMOO_MILK ; item 1
 	db MOOMOO_MILK ; item 2
-	db 254 ; gender
+	db ALL_FEMALE ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db THICK_FAT ; ability 1

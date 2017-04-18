@@ -8,7 +8,7 @@
 	db 86 ; base exp
 	db NO_ITEM ; item 1
 	db EVERSTONE ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 15 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db ROCK_HEAD ; ability 1

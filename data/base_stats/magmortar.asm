@@ -17,7 +17,7 @@ endc
 	db 199 ; base exp
 	db ASPEAR_BERRY ; item 1
 	db ASPEAR_BERRY ; item 2
-	db 63 ; gender
+	db FEMALE_25 ; gender
 	db 25 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db FLAME_BODY ; ability 1

@@ -8,7 +8,7 @@
 	db 131 ; base exp
 	db NO_ITEM ; item 1
 	db KINGS_ROCK ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db WATER_ABSORB ; ability 1

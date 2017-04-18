@@ -12,7 +12,7 @@ endc
 	db 157 ; base exp
 	db NO_ITEM ; item 1
 	db NUGGET ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db STENCH ; ability 1

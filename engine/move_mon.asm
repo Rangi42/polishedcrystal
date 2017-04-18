@@ -175,28 +175,119 @@ endr
 	ld a, [wBattleMode]
 	and a
 	jp nz, .copywildmonstats
-	; Random DVs
+
+; Random DVs
 	call Random
 	ld [DVAndPersonalityBuffer], a
 	call Random
 	ld [DVAndPersonalityBuffer + 1], a
 	call Random
 	ld [DVAndPersonalityBuffer + 2], a
-	; Random nature
-	call GetRandomNature
+
+; Random nature from 0 to 24
+	push bc
+	ld a, [PartyMon1Ability]
 	ld b, a
-	; Random ability
-	call GetRandomAbility
+	ld a, [PartyMon1Species]
+	ld c, a
+	call GetAbility
+	ld a, b
+	pop bc
+	cp SYNCHRONIZE
+	jr nz, .no_synchronize
+	call Random
+	and $1
+	jr z, .no_synchronize
+	ld a, [PartyMon1Nature]
+	and NATURE_MASK
+	jr .got_nature
+.no_synchronize
+	ld a, NUM_NATURES
+	call RandomRange
+.got_nature
+	ld b, a
+
+; Random ability
+; 5% hidden ability, otherwise 50% either main ability
+	call Random
+	cp 1 + 5 percent
+	jr c, .hidden_ability
+	and $1
+	jr z, .ability_2
+.ability_1
+	ld a, ABILITY_1
+	jr .got_ability
+.ability_2
+	ld a, ABILITY_2
+	jr .got_ability
+.hidden_ability
+	ld a, HIDDEN_ABILITY
+.got_ability
 	add b
 	ld b, a
-	; Random shininess
-	call GetRandomShininess
+
+; Random shininess
+; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
+	call Random
+	and a
+	jr nz, .not_shiny ; 255/256 not shiny
+	ld a, SHINY_CHARM
+	ld [CurItem], a
+	push hl
+	push bc
+	push de
+	ld hl, NumItems
+	call CheckItem
+	pop de
+	pop bc
+	pop hl
+	jr c, .shiny_charm
+.no_shiny_charm
+	call Random
+	cp $10
+	jr nc, .not_shiny ; 240/256 still not shiny
+.shiny
+	ld a, SHINY_MASK
+	jr .got_shininess
+.shiny_charm
+	call Random
+	cp $30
+	jr c, .shiny ; 208/256 still not shiny
+.not_shiny
+	xor a
+.got_shininess
 	add b
 	ld [DVAndPersonalityBuffer + 3], a
-	; Random gender
-	call GetRandomGender
+
+; Random gender
+; Derived from base ratio
+	push bc
+; Random gender selection value
+	call Random
+	and %111
 	ld b, a
-	; Form
+; We need the gender ratio to do anything with this.
+	push hl
+	push bc
+	ld a, [CurPartySpecies]
+	dec a
+	ld hl, BASEMON_GENDER
+	ld bc, BASEMON_STRUCT_LENGTH
+	call AddNTimes
+	pop bc
+	pop hl
+	ld a, BANK(BaseData)
+	call GetFarByte
+; Ratios below the value are female, and vice-versa.
+	cp b
+	ld a, FEMALE
+	jr c, .Female
+	xor a ; ld a, MALE
+.Female:
+	pop bc
+	ld b, a
+
+; Form 1
 	ld a, 1
 	add b
 	ld [DVAndPersonalityBuffer + 4], a
@@ -256,21 +347,14 @@ endr
 	jr .next2
 
 .copywildmonstats
-	ld a, [EnemyMonDVs]
+	push hl
+	ld hl, EnemyMonDVs
+rept 5
+	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [EnemyMonDVs + 1]
-	ld [de], a
-	inc de
-	ld a, [EnemyMonDVs + 2]
-	ld [de], a
-	inc de
-	ld a, [EnemyMonDVs + 3] ; EnemyMonPersonality
-	ld [de], a
-	inc de
-	ld a, [EnemyMonDVs + 4] ; EnemyMonPersonality + 1
-	ld [de], a
-	inc de
+endr
+	pop hl
 
 	push hl
 	ld hl, EnemyMonPP
@@ -1888,117 +1972,3 @@ InitNickname: ; e3de
 	rst FarCall
 	ret
 ; e3fd
-
-GetRandomShininess:
-; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
-
-	call Random
-	and a
-	jr nz, .not_shiny ; 255/256 not shiny
-	ld a, SHINY_CHARM
-	ld [CurItem], a
-	push hl
-	push bc
-	push de
-	ld hl, NumItems
-	call CheckItem
-	pop de
-	pop bc
-	pop hl
-	jr c, .shiny_charm
-.no_shiny_charm
-	call Random
-	cp $10
-	jr nc, .not_shiny ; 240/256 still not shiny
-.shiny
-	ld a, SHINY_MASK
-	jr .got_shininess
-.shiny_charm
-	call Random
-	cp $30
-	jr c, .shiny ; 208/256 still not shiny
-.not_shiny
-	xor a
-.got_shininess
-	ret
-
-GetRandomAbility:
-; 5% hidden ability, otherwise 50% either main ability
-; TODO: account for Synchronize
-
-	call Random
-	cp 1 + 5 percent
-	jr c, .hidden_ability
-	and $1
-	jr z, .ability_2
-.ability_1
-	ld a, ABILITY_1
-	jp .got_ability
-.ability_2
-	ld a, ABILITY_2
-	jp .got_ability
-.hidden_ability
-	ld a, HIDDEN_ABILITY
-.got_ability
-	ret
-
-GetRandomNature:
-; Random nature from 0 to 24
-
-	ld a, NUM_NATURES
-	call RandomRange
-	ret
-
-GetRandomGender:
-; Random gender derived from base ratio
-
-	push bc
-
-; Random gender selection value
-	call Random
-	ld b, a
-
-; We need the gender ratio to do anything with this.
-	push hl
-	push bc
-	ld a, [CurPartySpecies]
-	dec a
-	ld hl, BASEMON_GENDER
-	ld bc, BASEMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
-	pop hl
-
-	ld a, BANK(BaseData)
-	call GetFarByte
-
-; The higher the ratio, the more likely the monster is to be female.
-
-	cp $ff
-	jr z, .Genderless
-
-	and a
-	jr z, .Male
-
-	cp $fe
-	jr z, .Female
-
-; Values below the ratio are male, and vice versa.
-	cp b
-	jr c, .Male
-
-.Female:
-	pop bc
-	ld a, FEMALE
-	ret
-
-.Male:
-	pop bc
-	ld a, MALE
-	ret
-
-.Genderless:
-	pop bc
-	xor a
-	scf
-	ret

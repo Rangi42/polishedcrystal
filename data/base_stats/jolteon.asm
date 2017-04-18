@@ -8,7 +8,7 @@
 	db 197 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db 31 ; gender
+	db FEMALE_12_5 ; gender
 	db 35 ; step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db VOLT_ABSORB ; ability 1

@@ -8,7 +8,7 @@
 	db 196 ; base exp
 	db NO_ITEM ; item 1
 	db PINK_BOW ; item 2
-	db 31 ; gender
+	db FEMALE_12_5 ; gender
 	db 35 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db CUTE_CHARM ; ability 1

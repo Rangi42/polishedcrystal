@@ -12,7 +12,7 @@ endc
 	db 220 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db 255 ; gender
+	db GENDERLESS ; gender
 	db 120 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1

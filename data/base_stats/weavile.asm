@@ -8,7 +8,7 @@
 	db 199 ; base exp
 	db GRIP_CLAW ; item 1
 	db QUICK_CLAW ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1

@@ -8,7 +8,7 @@
 	db 154 ; base exp
 	db LEFTOVERS ; item 1
 	db LEFTOVERS ; item 2
-	db 31 ; gender
+	db FEMALE_12_5 ; gender
 	db 40 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db IMMUNITY ; ability 1

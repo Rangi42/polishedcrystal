@@ -8,7 +8,7 @@
 	db 97 ; base exp
 	db PEARL ; item 1
 	db BIG_PEARL ; item 2
-	db 127 ; gender
+	db FEMALE_50 ; gender
 	db 20 ; step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SHELL_ARMOR ; ability 1
