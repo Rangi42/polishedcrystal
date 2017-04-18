@@ -103,6 +103,8 @@ ReadTrainerParty: ; 39771
 .dv3_ok
 	ld [de], a
 
+	; TODO: regenerate stats (after TryAddMonToParty) with new DVs (will fix #133)
+
 .not_dvs
 ; personality?
 	ld a, [OtherTrainerType]
@@ -124,6 +126,8 @@ ReadTrainerParty: ; 39771
 	inc de
 	ld a, [hli]
 	ld [de], a
+
+	; TODO: regenerate stats (after TryAddMonToParty) with new nature (will fix #133)
 
 .not_personality
 ; nickname?
