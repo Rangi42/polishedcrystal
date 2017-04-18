@@ -6777,18 +6777,6 @@ PokemaniacGroup:
 ; ================
 
 	; POKEMANIAC
-	db "Moe@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 53, GLOOM
-	db 53, WEEPINBELL
-
-	db $ff ; end
-
-; ================
-
-	; POKEMANIAC
 	db "Aidan@"
 	db TRAINERTYPE_MOVES
 
@@ -8985,6 +8973,30 @@ CoupleGroup:
 	; party
 	db 26, GLACEON
 	db 26, FLAREON
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Moe & Lulu@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, GLOOM
+	db 53, WEEPINBELL
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Moe & Lulu@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, WEEPINBELL
+	db 53, GLOOM
 
 	db $ff ; end
 

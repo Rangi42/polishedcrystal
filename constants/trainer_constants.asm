@@ -337,7 +337,6 @@ KRIS EQU __enum__
 	const DONALD
 	const ZACH
 	const MILLER
-	const MOE
 	const AIDAN
 
 	trainerclass COSPLAYER ; 2e
@@ -529,6 +528,8 @@ KRIS EQU __enum__
 	const DUFFANDEDA2
 	const FOXANDRAE1
 	const FOXANDRAE2
+	const MOEANDLULU1
+	const MOEANDLULU2
 
 	trainerclass GENTLEMAN ; 40
 	const PRESTON

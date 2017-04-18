@@ -1383,10 +1383,10 @@ Group18Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	db SPRITE_LASS ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 10 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 11 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
