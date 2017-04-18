@@ -735,6 +735,8 @@ KRIS EQU __enum__
 	const DALE
 	const JACOB
 	const AIDEN
+	const DAN
+	const TEDDY
 
 	trainerclass ROUGHNECK ; 56
 	const BRIAN

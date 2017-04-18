@@ -11280,6 +11280,30 @@ BikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; BIKER
+	db "Dan@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, MUK
+	db 55, WEEZING
+	db 55, WEEZING
+
+	db $ff ; end
+
+; ================
+
+	; BIKER
+	db "Teddy@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, ARBOK
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

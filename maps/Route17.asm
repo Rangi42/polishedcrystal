@@ -6,6 +6,8 @@ const_value set 2
 	const ROUTE17_BIKER5
 	const ROUTE17_BIKER6
 	const ROUTE17_BIKER7
+	const ROUTE17_BIKER8
+	const ROUTE17_BIKER9
 	const ROUTE17_ROUGHNECK1
 	const ROUTE17_ROUGHNECK2
 	const ROUTE17_ROUGHNECK3
@@ -37,100 +39,6 @@ BikerReillyScript:
 	closetext
 	end
 
-TrainerBikerJoel:
-	trainer EVENT_BEAT_BIKER_JOEL, BIKER, JOEL, BikerJoelSeenText, BikerJoelBeatenText, 0, BikerJoelScript
-
-BikerJoelScript:
-	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad196
-	waitbutton
-	closetext
-	end
-
-TrainerBikerGlenn:
-	trainer EVENT_BEAT_BIKER_GLENN, BIKER, GLENN, BikerGlennSeenText, BikerGlennBeatenText, 0, BikerGlennScript
-
-BikerGlennScript:
-	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad225
-	waitbutton
-	closetext
-	end
-
-TrainerBikerDale:
-	trainer EVENT_BEAT_BIKER_DALE, BIKER, DALE, BikerDaleSeenText, BikerDaleBeatenText, 0, BikerDaleScript
-
-BikerDaleScript:
-	end_if_just_battled
-	opentext
-	writetext BikerDaleAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerBikerJacob:
-	trainer EVENT_BEAT_BIKER_JACOB, BIKER, JACOB, BikerJacobSeenText, BikerJacobBeatenText, 0, BikerJacobScript
-
-BikerJacobScript:
-	end_if_just_battled
-	opentext
-	writetext BikerJacobAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerBikerAiden:
-	trainer EVENT_BEAT_BIKER_AIDEN, BIKER, AIDEN, BikerAidenSeenText, BikerAidenBeatenText, 0, BikerAidenScript
-
-BikerAidenScript:
-	end_if_just_battled
-	opentext
-	writetext BikerAidenAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerRoughneckBrian:
-	trainer EVENT_BEAT_ROUGHNECK_BRIAN, ROUGHNECK, BRIAN, RoughneckBrianSeenText, RoughneckBrianBeatenText, 0, RoughneckBrianScript
-
-RoughneckBrianScript:
-	end_if_just_battled
-	opentext
-	writetext RoughneckBrianAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerRoughneckTheron:
-	trainer EVENT_BEAT_ROUGHNECK_THERON, ROUGHNECK, THERON, RoughneckTheronSeenText, RoughneckTheronBeatenText, 0, RoughneckTheronScript
-
-RoughneckTheronScript:
-	end_if_just_battled
-	opentext
-	writetext RoughneckTheronAfterText
-	waitbutton
-	closetext
-	end
-
-TrainerRoughneckMarkey:
-	trainer EVENT_BEAT_ROUGHNECK_MARKEY, ROUGHNECK, MARKEY, RoughneckMarkeySeenText, RoughneckMarkeyBeatenText, 0, RoughneckMarkeyScript
-
-RoughneckMarkeyScript:
-	end_if_just_battled
-	opentext
-	writetext RoughneckMarkeyAfterText
-	waitbutton
-	closetext
-	end
-
-Route17HiddenMaxEther:
-	dwb EVENT_ROUTE_17_HIDDEN_MAX_ETHER, MAX_ETHER
-
-Route17HiddenMaxElixer:
-	dwb EVENT_ROUTE_17_HIDDEN_MAX_ELIXER, MAX_ELIXER
-
 BikerReillySeenText:
 	text "Hey, you! You're"
 	line "from Johto, huh?"
@@ -144,6 +52,17 @@ UnknownText_0x1ad13b:
 	text "Don't get cocky,"
 	line "you Johto punk!"
 	done
+
+TrainerBikerJoel:
+	trainer EVENT_BEAT_BIKER_JOEL, BIKER, JOEL, BikerJoelSeenText, BikerJoelBeatenText, 0, BikerJoelScript
+
+BikerJoelScript:
+	end_if_just_battled
+	opentext
+	writetext UnknownText_0x1ad196
+	waitbutton
+	closetext
+	end
 
 BikerJoelSeenText:
 	text "Wow. That's a cool"
@@ -164,6 +83,17 @@ UnknownText_0x1ad196:
 	line "harder…"
 	done
 
+TrainerBikerGlenn:
+	trainer EVENT_BEAT_BIKER_GLENN, BIKER, GLENN, BikerGlennSeenText, BikerGlennBeatenText, 0, BikerGlennScript
+
+BikerGlennScript:
+	end_if_just_battled
+	opentext
+	writetext UnknownText_0x1ad225
+	waitbutton
+	closetext
+	end
+
 BikerGlennSeenText:
 	text "Hey! Want to have"
 	line "a speed battle?"
@@ -180,6 +110,17 @@ UnknownText_0x1ad225:
 	cont "on Cycling Road."
 	done
 
+TrainerBikerDale:
+	trainer EVENT_BEAT_BIKER_DALE, BIKER, DALE, BikerDaleSeenText, BikerDaleBeatenText, 0, BikerDaleScript
+
+BikerDaleScript:
+	end_if_just_battled
+	opentext
+	writetext BikerDaleAfterText
+	waitbutton
+	closetext
+	end
+
 BikerDaleSeenText:
 	text "You're gonna lose!"
 	line "I've got a hunch!"
@@ -195,6 +136,17 @@ BikerDaleAfterText:
 	line "You don't do any-"
 	cont "thing halfway!"
 	done
+
+TrainerBikerJacob:
+	trainer EVENT_BEAT_BIKER_JACOB, BIKER, JACOB, BikerJacobSeenText, BikerJacobBeatenText, 0, BikerJacobScript
+
+BikerJacobScript:
+	end_if_just_battled
+	opentext
+	writetext BikerJacobAfterText
+	waitbutton
+	closetext
+	end
 
 BikerJacobSeenText:
 	text "Modding my"
@@ -213,6 +165,17 @@ BikerJacobAfterText:
 	line "was talking about"
 	cont "my Bicycle!"
 	done
+
+TrainerBikerAiden:
+	trainer EVENT_BEAT_BIKER_AIDEN, BIKER, AIDEN, BikerAidenSeenText, BikerAidenBeatenText, 0, BikerAidenScript
+
+BikerAidenScript:
+	end_if_just_battled
+	opentext
+	writetext BikerAidenAfterText
+	waitbutton
+	closetext
+	end
 
 BikerAidenSeenText:
 	text "Vroom vroom!"
@@ -237,6 +200,76 @@ BikerAidenAfterText:
 	cont "evolved!"
 	done
 
+TrainerBikerDan:
+	trainer EVENT_BEAT_BIKER_DAN, BIKER, DAN, BikerDanSeenText, BikerDanBeatenText, 0, BikerDanScript
+
+BikerDanScript:
+	end_if_just_battled
+	opentext
+	writetext BikerDanAfterText
+	waitbutton
+	closetext
+	end
+
+BikerDanSeenText:
+	text "Parara parapara"
+	line "para-parara!"
+
+	para "My horn's got a"
+	line "great sound to it,"
+	cont "don't you think?"
+	done
+
+BikerDanBeatenText:
+	text "Paaraaraaaaa…"
+	done
+
+BikerDanAfterText:
+	text "I love this melan-"
+	line "choly melody."
+
+	para "It really suits me"
+	line "well…"
+	done
+
+TrainerBikerTeddy:
+	trainer EVENT_BEAT_BIKER_TEDDY, BIKER, TEDDY, BikerTeddySeenText, BikerTeddyBeatenText, 0, BikerTeddyScript
+
+BikerTeddyScript:
+	end_if_just_battled
+	opentext
+	writetext BikerTeddyAfterText
+	waitbutton
+	closetext
+	end
+
+BikerTeddySeenText:
+	text "Hey, that's a cool"
+	line "Bike you're riding!"
+	done
+
+BikerTeddyBeatenText:
+	text "Great job."
+	done
+
+BikerTeddyAfterText:
+	text "I love the way you"
+	line "do battle, too!"
+
+	cont "Consider me a fan!"
+	done
+
+TrainerRoughneckBrian:
+	trainer EVENT_BEAT_ROUGHNECK_BRIAN, ROUGHNECK, BRIAN, RoughneckBrianSeenText, RoughneckBrianBeatenText, 0, RoughneckBrianScript
+
+RoughneckBrianScript:
+	end_if_just_battled
+	opentext
+	writetext RoughneckBrianAfterText
+	waitbutton
+	closetext
+	end
+
 RoughneckBrianSeenText:
 	text "Hey, who told you"
 	line "you could ride"
@@ -251,6 +284,17 @@ RoughneckBrianAfterText:
 	text "See you later!"
 	line "Come back anytime!"
 	done
+
+TrainerRoughneckTheron:
+	trainer EVENT_BEAT_ROUGHNECK_THERON, ROUGHNECK, THERON, RoughneckTheronSeenText, RoughneckTheronBeatenText, 0, RoughneckTheronScript
+
+RoughneckTheronScript:
+	end_if_just_battled
+	opentext
+	writetext RoughneckTheronAfterText
+	waitbutton
+	closetext
+	end
 
 RoughneckTheronSeenText:
 	text "I'll toughen you"
@@ -270,6 +314,17 @@ RoughneckTheronAfterText:
 	line "a try?"
 	done
 
+TrainerRoughneckMarkey:
+	trainer EVENT_BEAT_ROUGHNECK_MARKEY, ROUGHNECK, MARKEY, RoughneckMarkeySeenText, RoughneckMarkeyBeatenText, 0, RoughneckMarkeyScript
+
+RoughneckMarkeyScript:
+	end_if_just_battled
+	opentext
+	writetext RoughneckMarkeyAfterText
+	waitbutton
+	closetext
+	end
+
 RoughneckMarkeySeenText:
 	text "Hey hey hey!"
 	line "You're in my way!"
@@ -288,6 +343,12 @@ RoughneckMarkeyAfterText:
 	line "yell was great!"
 	done
 
+Route17HiddenMaxEther:
+	dwb EVENT_ROUTE_17_HIDDEN_MAX_ETHER, MAX_ETHER
+
+Route17HiddenMaxElixer:
+	dwb EVENT_ROUTE_17_HIDDEN_MAX_ELIXER, MAX_ELIXER
+
 Route17_MapEventHeader:
 	; filler
 	db 0, 0
@@ -304,13 +365,15 @@ Route17_MapEventHeader:
 	signpost 123, 10, SIGNPOST_ITEM, Route17HiddenMaxElixer
 
 .PersonEvents:
-	db 10
-	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
-	person_event SPRITE_BIKER, 65, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
-	person_event SPRITE_BIKER, 56, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
+	db 12
 	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
+	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
 	person_event SPRITE_BIKER, 24, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerJacob, -1
+	person_event SPRITE_BIKER, 37, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerDan, -1
+	person_event SPRITE_BIKER, 56, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
+	person_event SPRITE_BIKER, 65, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
 	person_event SPRITE_BIKER, 72, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerAiden, -1
+	person_event SPRITE_BIKER, 86, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerTeddy, -1
 	person_event SPRITE_BIKER, 128, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_ROUGHNECK, 29, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRoughneckBrian, -1
 	person_event SPRITE_ROUGHNECK, 42, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckTheron, -1
