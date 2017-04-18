@@ -489,6 +489,7 @@ INCLUDE "maps/VioletCity.asm"
 INCLUDE "maps/ViridianCity.asm"
 INCLUDE "maps/CeladonCity.asm"
 INCLUDE "maps/BlackthornCity.asm"
+INCLUDE "maps/Route1.asm"
 
 
 SECTION "Map Scripts 22", ROMX[$4000], BANK[MAP_SCRIPTS_22]
@@ -506,7 +507,6 @@ INCLUDE "maps/Route33.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
-INCLUDE "maps/Route1.asm"
 INCLUDE "maps/PalletTown.asm"
 INCLUDE "maps/Route14.asm"
 

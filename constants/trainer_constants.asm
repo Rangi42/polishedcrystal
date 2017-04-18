@@ -252,6 +252,7 @@ KRIS EQU __enum__
 	const JULIAN
 	const BIRD_KEEPER_JUSTIN
 	const GAIL
+	const BIRD_KEEPER_JOSH
 
 	trainerclass HIKER ; 26
 	const ANTHONY1
@@ -454,6 +455,9 @@ KRIS EQU __enum__
 	const NATE
 	const RICKY
 	const SHERMAN
+	const SCHOOLBOY_CONNOR
+	const TORIN
+	const TRAVIS
 
 	trainerclass SCHOOLGIRL ; 37
 	const AUDREY
@@ -715,6 +719,7 @@ KRIS EQU __enum__
 	const HILLARY
 	const SHIRLEY
 	const KATHRYN
+	const CLARICE
 
 	trainerclass GUITARISTM ; 53
 	const CLYDE

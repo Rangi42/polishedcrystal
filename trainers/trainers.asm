@@ -5379,6 +5379,17 @@ BirdKeeperGroup:
 	db $ff ; end
 
 ; ================
+
+	; BIRD_KEEPER
+	db "Josh@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, DODRIO
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8187,6 +8198,40 @@ SchoolboyGroup:
 	; party
 	db 59, FURRET
 	db 61, PIDGEOT
+
+	db $ff ; end
+
+; ================
+
+	; SCHOOLBOY
+	db "Connor@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, SENTRET
+
+	db $ff ; end
+
+; ================
+
+	; SCHOOLBOY
+	db "Torin@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, SANDSLASH
+	db 55, GOLBAT
+
+	db $ff ; end
+
+; ================
+
+	; SCHOOLBOY
+	db "Travis@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, ODDISH
 
 	db $ff ; end
 
@@ -11071,6 +11116,18 @@ TeacherGroup:
 	db 26, BELLOSSOM
 	db 25, PIDGEOTTO
 	db 24, FURRET
+
+	db $ff ; end
+
+; ================
+
+	; TEACHER
+	db "Clarice@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, FURRET
+	db 56, SUNFLORA
 
 	db $ff ; end
 
