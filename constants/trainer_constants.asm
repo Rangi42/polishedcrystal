@@ -225,6 +225,7 @@ KRIS EQU __enum__
 	const KILEY
 	const FRANCIS
 	const LEROY
+	const KYLER
 
 	trainerclass BIRD_KEEPER ; 25
 	const VANCE1
@@ -249,6 +250,8 @@ KRIS EQU __enum__
 	const POWELL
 	const BIRD_KEEPER_TONY
 	const JULIAN
+	const BIRD_KEEPER_JUSTIN
+	const GAIL
 
 	trainerclass HIKER ; 26
 	const ANTHONY1
@@ -530,6 +533,8 @@ KRIS EQU __enum__
 	const FOXANDRAE2
 	const MOEANDLULU1
 	const MOEANDLULU2
+	const VICANDTARA1
+	const VICANDTARA2
 
 	trainerclass GENTLEMAN ; 40
 	const PRESTON

@@ -5039,6 +5039,19 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Kyler@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 48, MAGIKARP
+	db 48, MAGIKARP
+	db 48, MAGIKARP
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5338,6 +5351,30 @@ BirdKeeperGroup:
 	db 20, HOOTHOOT
 	db 24, PIDGEOTTO
 	db 25, MURKROW
+
+	db $ff ; end
+
+; ================
+
+	; BIRD_KEEPER
+	db "Justin@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, XATU
+	db 50, NOCTOWL
+
+	db $ff ; end
+
+; ================
+
+	; BIRD_KEEPER
+	db "Gail@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, PIDGEOT
+	db 53, PIDGEOTTO
 
 	db $ff ; end
 
@@ -8997,6 +9034,30 @@ CoupleGroup:
 	; party
 	db 53, WEEPINBELL
 	db 53, GLOOM
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Vic & Tara@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, MAGMAR
+	db 53, SUNKERN
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Vic & Tara@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, SUNKERN
+	db 54, MAGMAR
 
 	db $ff ; end
 

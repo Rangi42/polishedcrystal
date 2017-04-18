@@ -1350,10 +1350,10 @@ Group17Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	db SPRITE_LASS ; doesn't walk
+	; 9 walking sprites (8 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 9 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 10 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
