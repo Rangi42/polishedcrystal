@@ -1,4 +1,181 @@
-This is *not* actually a list of concrete plans. Many items are just ideas I thought could be neat, but might never make it into the game. I consider Polished Crystal to be basically finished, apart from bugfixes and a few more modernized battle mechanics. There will probably be more features added in future, but the ones that already exist comprise a complete game.
+## Mechanics
+
+* Generate Battle Tower Pokémon
+* Update breeding with the new data structure (engine/breeding/egg.asm and event/daycare.asm)
+* Wild Ghosts and the SilphScope2
+* Bottle Caps for Hyper Training found by fishing
+* Colored party Pokémon icons
+* Elite Four have different rematch dialog
+
+
+## Events
+
+* Soul House + Radio Tower event to get Expn Card
+* Battle Tower merchants selling items for BP
+* Six Hyper Trainers for each stat in Battle Tower 2F
+* Lost Pikablu (Marill) in Noisy Forest
+* Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue
+* Celadon University Hyper Test with Dragon Rage Magikarp as a reward
+
+
+## Characters
+
+* Cheryl in Murky Swamp
+* Marley in Quiet Cave 5F
+* Buck in Mt. Moon B2F
+* Riley in Dim Cave B3F
+* Mira in Scary Cave 1F
+* Anabel in Noisy Forest
+* Candela in Fire Island peak
+* Blance in Ice Island peak
+* Spark in Lightning Island peak
+* Caitlin and Darach in Beautiful Beach villa
+* Looker in Shamouti Hotel room (not S.S. Aqua)
+* Trendy phrase guy in Shamouti Hotel lobby
+* Flannery somewhere (Safari Zone?)
+* Skyla somewhere (Lighthouse roof?)
+* Lawrence in Shrine Ruins (not Victory Road)
+* Prof. Ivy in Shamouti Island (gives a starter)
+* Imakuni in Celadon University
+* Inver in Route 16 house (just his sister until Inverse Battles are implemented)
+* Gourmet Maniac in Route 32 Coast house
+* Ore Maniac in Shamouti Tunnel
+* Body Slam tutor in Warm Beach house
+* Substitute tutor in Dim Cave
+* Sucker Punch tutor in Scary Cave
+* Pay Day tutor in Goldenrod Game Corner
+
+
+## Maps
+
+Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
+
+* Union Cave 1F (HGSS layout)
+* Route 11 (and other expanded Kanto routes)
+* Route 16
+* Route 19+20+21 (extra HG/SS trainers)
+* Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
+* Uraga Channel
+* Scary Cave
+* Murky Swamp
+* Union Cave B1F South
+* Quiet Cave
+* Celadon Hotel (just items left)
+* Celadon University
+* Mt. Moon (fossils)
+* Dim Cave (Facade TM)
+* Soul House
+* Lavender Radio Tower
+* Shamouti Island (outdoor market instead of Mart)
+* Shamouti Hotel (haunted room)
+* Shamouti Tunnel
+* Warm Beach
+* Rocky Beach
+* Noisy Forest (U-Turn TM, Big Mushroom, BalmMushroom)
+* Shrine Ruins
+* Fire/Ice/Lightning Islands
+
+
+## Abilities
+
+* Cute Charm
+* Flame Body
+* Harvest
+* Hustle
+* Intimidate
+* Keen Eye
+* Lightning Rod
+* Magic Bounce
+* Magma Armor
+* Magnet Pull
+* Pickpocket
+* Pickup
+* Pixilate
+* Pressure
+* Rivalry
+* Static
+* Sticky Hold
+* Sturdy
+* Suction Cups
+* Synchronize (wild Pokémon done, gift Pokémon not yet done)
+* Unaware (acuracy/evasion done)
+* Unburden
+* Vital Spirit
+
+
+## Items
+
+* Heal Ball
+* Ability Capsule
+* Air Balloon
+* Assault Vest
+* Big Root
+* Binding Band
+* Black Sludge
+* Choice Band
+* Choice Scarf
+* Choice Specs
+* Destiny Knot
+* Expert Belt
+* Flame Orb
+* Focus Sash
+* Life Orb
+* Mental Herb
+* Metronome
+* Oval Charm
+* Quick Powder
+* Rocky Helmet
+* Safe Goggles
+* Shed Shell
+* Shell Bell
+* Toxic Orb
+* Weak Policy
+* White Herb
+* Wide Lens
+* Zoom Lens
+
+
+## Move effects
+
+* Avalanche does double damage if the user was hit first
+* Acrobatics does double damage if the user has no held item
+* Facade does double damage if the user is Psn, Brn, or Prz
+* U-turn switches out
+* Volt Switch switches out
+* Sucker Punch fails if foe is not attacking
+* Low Kick's power is based on weight
+* Body Slam does double damage against Minimize
+* Stomp and Body Slam never miss against Minimize
+* Destiny Bond's success chance halves every successive turn it's used (Gen VII)
+* Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
+* Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
+
+
+## Move animations
+
+* Aerial Ace
+* Aqua Tail
+* Avalanche
+* DazzlinGleam
+* Disarm Voice
+* Earth Power
+* Extrasensory
+* Facade
+* Giga Impact
+* Gunk Shot
+* Hex
+* Hone Claws
+* Ice Shard
+* Icicle Crash
+* Icicle Spear
+* Metal Sound
+* Psystrike
+* Scald
+* Stone Edge
+* Sucker Punch
+* U-turn
+* Volt Switch
+* Water Pulse
 
 
 ## Bugs
@@ -12,120 +189,67 @@ This is *not* actually a list of concrete plans. Many items are just ideas I tho
 * Headbutt overworld animation looks weird (wrong tile ID?)
 
 
-## Battle mechanics
+## Post-3.0
 
-* Optional Gen V scaled experience formula
-* Avalanche doubles damage if user is hit first (description claims it does this already)
-* Low Kick's power is based on weight
-* Body Slam does double damage against Minimize
-* Stomp and Body Slam never miss against Minimize
-* Destiny Bond's success chance halves every successive turn it's used (Gen VII)
-* Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
-* Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
+Some of these may never be added; they're just suggestions.
 
-
-## Other mechanics
-
-* Heal Balls heals HP, PP, and status
+* Alolan forms
+   * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
+   * Rattata/Raticate in Kanto
+   * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
+   * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
+   * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
+   * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
+   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
+   * Nidoran♂ and Nidoran♀ as separate forms, freeing up another slot
+* More Pokémon
+   * Rewrite Bill's PC to not use $ff as a terminator
+   * Rewrite Eggs to use bit flags instead of $fe
+   * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
+* Cross whirlpools, don't remove them (like HGSS)
+* Make shiny Gyarados some other color, and red Gyarados unique
+* Add separate throwing animation graphics for more Poké Ball designs
+* Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
+* Make Eggs use their Pokémon's palette
+* Add umbrellas to Olivine City benches
+* Add boats to Goldenrod Harbor
+* Use RBY's Surf and Bike themes in Kanto
+* Faster Bicycle, or slower Running Shoes
+* Show walking animation faster when running
 * Kurt gives Balls right away once per day
 * Catch rate formula from Gen III
+* Itemfinder beeps N times for an item N steps away
+* Either add a 510 EV limit, or replace the 12 unused EV berries and Power items with more useful Berries
+* Replace the Apricorns with an Apricorn Box and add more Berries
+* Phone uses a bitfield to allow storing all numbers
+* Make more trainers rematchable
 * Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
 * Send gift Pokémon to the PC if the party is full
 * Separate radio channels for March and Lullaby, available every day
+* Variety Channel with daily unique music
+* Update breeding to Gen VII, including Destiny Knot, Everstone, and Oval Charm effects
 * Press Start to auto-sort items
 * Select reorders Pokémon in party menu
 * Sometimes wild Pokémon know an egg move
 * Get better Wonder Trade items at higher levels
-
-
-## Aesthetic updates
-
-* Cross whirlpools, don't remove them (like HGSS)
-* Make shiny Gyarados some color, and red Gyarados special
-* Add separate animation graphics for more Poké Ball designs
-* Make Eggs use their Pokémon's palette
-* Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
-* Animate new Pokémon sprites (Sylveon, Pikachu, etc)
-* Design custom animations for new moves
-* Color party and day-care sprites by species ([from Crystal_](https://hax.iimarck.us/topic/6932/), GetSpriteOAMAttr;8d0de for party, \_GetSpritePalette;142c4 for Day-Care)
-* Add umbrellas to Olivine City benches
-* Add boats to Goldenrod Harbor
-
-
-## New content
-
-* Victor and Puka the Surfing Pikachu ("Hey, you can do it, too")
-* Use RBY's Surf and Bike themes in Kanto
-* Add Light Clay in Dim/Scary Cave
-* Add a Smooth Rock in Diglett's Cave
-* Elite Four have different rematch dialog
-* Use the Spiky-Eared Pichu music somewhere
-* Use the B/W Route 4 and Route 12 music somewhere rugged
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-
-
-## New features
-
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * First Pokémon walks behind you
-* More Pokémon
-   * Short-term: rewrite Bill's PC to not use -1 as a terminator, allowing 254 Pokémon
-   * Medium-term: rewrite Eggs to use bit flags instead of -2, allowing 255 Pokémon
-   * Long-term: rewrite everything to use two-byte IDs, allowing 65534 Pokémon
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
-* Dive
-* Rock Climb
-
-
-### New items
-
-Implement effects:
-
-* Honey (for Honey Trees)
-* Ability Capsule
-* Quick Powder (already on wild Ditto)
-* Choice {Band, Scarf, Specs} (Battle Tower)
-* Binding Band
-* {Mental, ~~Power~~, White} Herb (Battle Tower)
-* Big Root (Yellow Forest)
-* Shell Bell (already in Aerodactyl chamber)
-* Assault Vest
-* Expert Belt (Mt. Silver)
-* Life Orb (Ruins of Alph)
-* Weak Policy
-* {Wide, Zoom} Lens (sold by harbor merchant)
-* Focus Sash
-* Air Balloon
-* Destiny Knot (Route 27)
-* Metronome
-* Rocky Helmet
-* Safe Goggles
-* Shed Shell (Bug-Catching Contest)
-* Flame Orb
-* Toxic Orb
-* Black Sludge
-* Shiny Charm (already given by Prof. Oak)
-* Oval Charm (already given by Prof. Oak)
-
-Find locations for:
-
-* BalmMushroom (add in Noisy Forest)
-* Pearl String (replace a Big Pearl or two, add in beaches)
-* Rare Bone (add in caves)
-* Bottle Cap (rock smash, fishing)
-* Cherish Ball
-* Soothe Bell (add in National Park)
-
-
-### New music
-
-* X/Y Santalune Forest (for Seafoam Islands)
-* B/W Dragonspiral Tower (for haunted Lavender Radio Tower and/or Soul House basement)
-* B/W Black City (for Silph Co. and/or Lavender Radio Tower post-haunting)
-* B/W Battle! Elite Four (for Caitlin)
-* S/M Malie City (Day) (for Shamouti Shrine)
+* Dive areas
+* Rock Climb areas
+* Inverse Battles
+* Battle Factory
+* More music
+   * HG/SS Spiky-Eared Pichu theme
+   * B/W Route 4 somewhere rugged
+   * B/W Route 12
+   * B/W Dragonspiral Tower (for haunted Lavender Radio Tower and/or Soul House basement)
+   * B/W Black City (for Silph Co. and/or Lavender Radio Tower post-haunting)
+   * B/W Battle! Elite Four (for Caitlin)
+   * S/M Malie City (Day) (for Shamouti Shrine)

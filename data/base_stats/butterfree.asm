@@ -20,8 +20,8 @@ if DEF(FAITHFUL)
 else
 	db 185 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db SILVERPOWDER ; item 2
+	db SILVERPOWDER ; item 1
+	db SHED_SHELL ; item 2
 	db FEMALE_50 ; gender
 	db 15 ; step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

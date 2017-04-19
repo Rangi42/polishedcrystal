@@ -1817,7 +1817,7 @@
 	db 20, PIKACHU
 	db 22, LEDYBA
 	db 20, MARILL
-	db 10, PICHU
+	db 21, MARILL
 	db 10, PICHU
 	; day
 	db 22, SENTRET
@@ -1825,7 +1825,7 @@
 	db 20, PIKACHU
 	db 22, PARAS
 	db 20, MARILL
-	db 10, PICHU
+	db 21, MARILL
 	db 10, PICHU
 	; nite
 	db 23, HOOTHOOT
