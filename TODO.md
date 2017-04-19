@@ -78,30 +78,34 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 
 ## Abilities
 
-* Cute Charm
-* Flame Body
+In-battle effects:
+
 * Harvest
-* Hustle
-* Intimidate
-* Keen Eye
-* Lightning Rod
 * Magic Bounce
-* Magma Armor
-* Magnet Pull
 * Pickpocket
 * Pickup
 * Pixilate
-* Pressure
 * Rivalry
-* Static
-* Sticky Hold
 * Sturdy
-* Suction Cups
-* Synchronize (wild Pokémon done, gift Pokémon not yet done)
-* Unaware (acuracy/evasion done)
+* Unaware (accuracy/evasion done)
 * Unburden
-* Vital Spirit
 
+Out-of-battle effects:
+
+* Static
+* Suction Cups
+* Intimidate
+* Synchronize (wild Pokémon done, gift Pokémon not yet done)
+* Lightning Rod
+* Magma Armor
+* Magnet Pull
+* Pressure
+* Flame Body
+* Keen Eye
+* Hustle
+* Cute Charm
+* Sticky Hold
+* Vital Spirit
 
 ## Items
 
