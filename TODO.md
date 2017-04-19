@@ -1,3 +1,23 @@
+## Bugs
+
+* Large Pokémon animations have backwards tiles in the stats screen
+* Caught Pokémon sent to the PC become level 255
+* Some caught Pokémon have wrong held items 
+* Dark types are not immune to moves whose priority was increased by Prankster
+* Foe's Substitute makes your moves become something else
+* In-battle item use messages show the wrong Pokémon name
+* Some NPC trainers use wrong items
+* After the low HP music plays, some of the instruments are missing
+* Held Berries don't always disappear when used
+* Weather and some ability animations trigger the last used animation too 
+* TMs refresh PP
+* Nuzlocke mode sometimes turns on by itself (maybe)
+* Dig sometimes prints that both Pokémon dug a hole
+* Per-turn status animations might not always work
+* Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
+* Headbutt overworld animation looks weird (wrong tile ID?)
+
+
 ## Mechanics
 
 * Generate Battle Tower Pokémon
@@ -80,6 +100,8 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 
 In-battle effects:
 
+* Guts, Hustle, and Solar Power shouldn't boost both physical and special moves
+* Speed Boost activates inconsistently
 * Harvest
 * Magic Bounce
 * Pickpocket
@@ -147,6 +169,7 @@ Out-of-battle effects:
 * U-turn switches out
 * Volt Switch switches out
 * Sucker Punch fails if foe is not attacking
+* Thief should either fail when wild Pokémon use it, or only apply during battle
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -182,17 +205,6 @@ Out-of-battle effects:
 * Water Pulse
 
 
-## Bugs
-
-* Nuzlocke mode sometimes turns on by itself
-* TMs refresh PP
-* Dig sometimes prints that both Pokémon dug a hole
-* Per-turn status animations might not always work
-* Some trainers use X Spcl. Atk (seems to involve their second item slot, e.g. Lance's Full Restore)
-* Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
-* Headbutt overworld animation looks weird (wrong tile ID?)
-
-
 ## Post-3.0
 
 Some of these may never be added; they're just suggestions.
@@ -215,6 +227,7 @@ Some of these may never be added; they're just suggestions.
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Make Eggs use their Pokémon's palette
+* Animate item activations like Quick Claw
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
 * Use RBY's Surf and Bike themes in Kanto
@@ -234,6 +247,7 @@ Some of these may never be added; they're just suggestions.
 * Variety Channel with daily unique music
 * Update breeding to Gen VII, including Destiny Knot, Everstone, and Oval Charm effects
 * Press Start to auto-sort items
+* Add the improved PRNG from Prism
 * Select reorders Pokémon in party menu
 * Sometimes wild Pokémon know an egg move
 * Get better Wonder Trade items at higher levels
