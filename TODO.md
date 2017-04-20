@@ -17,6 +17,12 @@
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Headbutt overworld animation looks weird (wrong tile ID?)
 
+## Miscellaneous
+
+* Elite Four have different rematch dialog
+* [Celadon Game Corner lucky slot machine](https://github.com/Armada651/pokecrystal-restored/commit/638568eb37cea3f17ec3392745a92092112b802f)
+* Battle Tower references ([1](https://github.com/Armada651/pokecrystal-restored/commit/b9b06203b1da818086ebddea509fa3af459548b1), [2](https://github.com/Armada651/pokecrystal-restored/commit/c721368bafaf4eb9f6abd08b3e7e6d6879b3a086))
+* Use a side view for Falkner's Pidgeotto in Dark Cave
 
 ## Mechanics
 
@@ -25,7 +31,6 @@
 * Wild Ghosts and the SilphScope2
 * Bottle Caps for Hyper Training found by fishing
 * Colored party Pokémon icons
-* Elite Four have different rematch dialog
 
 
 ## Events
@@ -95,6 +100,7 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Noisy Forest (U-Turn TM, Big Mushroom, BalmMushroom)
 * Shrine Ruins
 * Fire/Ice/Lightning Islands
+* Saffron City Trainer Fan Club
 
 
 ## Abilities
@@ -210,7 +216,7 @@ Out-of-battle effects:
 
 Some of these may never be added; they're just suggestions.
 
-* Alolan forms
+* Alolan forms (update GetBaseData and everything that refers to EvosAttacksPointers)
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
@@ -258,7 +264,7 @@ Some of these may never be added; they're just suggestions.
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
-* First Pokémon walks behind you
+* First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
