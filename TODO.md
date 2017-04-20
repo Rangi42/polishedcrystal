@@ -236,6 +236,7 @@ Some of these may never be added; they're just suggestions.
 * Show walking animation faster when running
 * Kurt gives Balls right away once per day
 * Catch rate formula from Gen III
+* Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
 * Either add a 510 EV limit, or replace the 12 unused EV berries and Power items with more useful Berries
 * Replace the Apricorns with an Apricorn Box and add more Berries
