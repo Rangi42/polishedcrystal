@@ -29,6 +29,11 @@
 ## Aesthetics
 
 * Colored party Pokémon icons
+* Use a side view for Falkner's Pidgeotto in Dark Cave
+* Add separate throwing animation graphics for more Poké Ball designs
+* Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
+* Make Eggs use their Pokémon's palette
+* Animate item activations like Quick Claw
 
 
 ## Events
@@ -276,4 +281,5 @@ Some of these may never be added; they're just suggestions.
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
 * Make shiny Gyarados some other color, and red Gyarados unique
-
+* Add umbrellas to Olivine City benches
+* Add boats to Goldenrod Harbor
