@@ -1,11 +1,3 @@
-PlayWhirlpoolSound: ; 8c7d4
-	call WaitSFX
-	ld de, SFX_SURF
-	call PlaySFX
-	call WaitSFX
-	ret
-; 8c7e1
-
 BlindingFlash:: ; 8c7e1
 	farcall FadeOutPalettes
 	ld hl, StatusFlags

@@ -1336,26 +1336,47 @@ Script_UsedWhirlpool: ; 0xce0f
 	writetext Text_UsedWhirlpool
 	closetext
 	scall FieldMovePokepicScript
-	callasm DisappearWhirlpool
-	closetext
+
+	waitsfx
+	playsound SFX_SURF
+	checkcode VAR_FACING
+	if_equal UP, .Up
+	if_equal DOWN, .Down
+	if_equal RIGHT, .Right
+	applymovement PLAYER, .LeftMovementData
 	end
 
-DisappearWhirlpool: ; ce1d
-	ld hl, Buffer3
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [Buffer5]
-	ld [hl], a
-	xor a
-	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
-	ld a, [Buffer6]
-	ld e, a
-	farcall PlayWhirlpoolSound
-	call BufferScreen
-	call GetMovementPermissions
-	ret
+.Up:
+	applymovement PLAYER, .UpMovementData
+	end
+
+.Right:
+	applymovement PLAYER, .RightMovementData
+	end
+
+.Down:
+	applymovement PLAYER, .DownMovementData
+	end
+
+.UpMovementData:
+	slow_step_up
+	slow_step_up
+	step_end
+
+.RightMovementData:
+	slow_step_right
+	slow_step_right
+	step_end
+
+.DownMovementData:
+	slow_step_down
+	slow_step_down
+	step_end
+
+.LeftMovementData:
+	slow_step_left
+	slow_step_left
+	step_end
 
 TryWhirlpoolOW:: ; ce3e
 	ld d, WHIRLPOOL

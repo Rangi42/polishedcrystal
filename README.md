@@ -328,6 +328,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Dark battle intro at night.
 * Add: Show genders in party menu.
 * Add: Vending machines have a 1/32 chance of giving an extra item.
+* Add: Cross whirlpools, don't remove them (like HGSS).
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Pay Day pays 5 times the user's level, not 2.
