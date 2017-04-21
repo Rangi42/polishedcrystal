@@ -302,9 +302,6 @@ INCLUDE "maps/CeruleanCity.asm"
 INCLUDE "maps/SproutTower1F.asm"
 INCLUDE "maps/SproutTower2F.asm"
 INCLUDE "maps/Route38EcruteakGate.asm"
-INCLUDE "maps/CeruleanBerryPowderHouse.asm"
-INCLUDE "maps/CeruleanCoupleHouse.asm"
-INCLUDE "maps/CeruleanWaterShowSpeechHouse.asm"
 
 
 SECTION "Map Scripts 13", ROMX[$4000], BANK[MAP_SCRIPTS_13]
@@ -326,6 +323,9 @@ INCLUDE "maps/BurnedTowerB1F.asm"
 INCLUDE "maps/CeruleanGymBadgeSpeechHouse.asm"
 INCLUDE "maps/CeruleanPoliceStation.asm"
 INCLUDE "maps/CeruleanTradeSpeechHouse.asm"
+INCLUDE "maps/CeruleanBerryPowderHouse.asm"
+INCLUDE "maps/CeruleanCoupleHouse.asm"
+INCLUDE "maps/CeruleanWaterShowSpeechHouse.asm"
 
 
 SECTION "Map Scripts 14", ROMX[$4000], BANK[MAP_SCRIPTS_14]

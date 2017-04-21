@@ -52,7 +52,7 @@ FisherScript_0x72144:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
-	iftrue .UnknownScript_0x72169
+	iftrue .FisherOffer
 	writetext UnknownText_0x722dc
 	buttonsound
 	checkitem COIN_CASE
@@ -63,8 +63,22 @@ FisherScript_0x72144:
 	scall .UnknownScript_0x72172
 	givecoins 18
 	setevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
+.FisherOffer:
+	writetext FisherOfferText
+	yesorno
+	iffalse .UnknownScript_0x72169
+	checkcoins 50
+	if_equal $2, .FisherNotEnough
+	takecoins 50
+	playsound SFX_TRANSACTION
+	scall MapCeladonGameCornerSignpost16Script
+	opentext
 .UnknownScript_0x72169:
 	writetext UnknownText_0x72345
+	jump .FisherEnd
+.FisherNotEnough:
+	writetext FisherNotEnoughText
+.FisherEnd:
 	waitbutton
 	closetext
 	spriteface LAST_TALKED, LEFT
@@ -217,6 +231,27 @@ UnknownText_0x723d9:
 	para "You must be riding"
 	line "a winning streak"
 	cont "too."
+	done
+
+FisherOfferText:
+	text "Hm? What, kid? You"
+	line "still want to"
+	cont "play?"
+
+	para "I know! I'll let"
+	line "you play for 50"
+	cont "coins."
+
+	para "How about it?"
+	done
+
+FisherNotEnoughText:
+	text "Hey, your Coin"
+	line "Case is almost"
+	cont "empty, kid."
+
+	para "Your luck must"
+	line "be running dry."
 	done
 
 CeladonGymGuyText:

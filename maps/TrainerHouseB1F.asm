@@ -63,8 +63,10 @@ TrainerHouseReceptionistScript:
 .End:
 	opentext
 	checkcode VAR_BATTLEPOINTS
+	if_equal 255, .MaxPoints
 	addvar 1
 	writevarcode VAR_BATTLEPOINTS
+.MaxPoints:
 	writetext TrainerHouseB1FEarnedBattlePointText
 	closetext
 	applymovement PLAYER, Movement_ExitTrainerHouseBattleRoom

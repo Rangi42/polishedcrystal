@@ -99,7 +99,12 @@ EcruteakPokeCenter1FNurseScript:
 	jumpstd pokecenternurse
 
 EcruteakPokeCenter1FPokefanMScript:
-	jumptextfaceplayer EcruteakPokeCenter1FPokefanMText
+	checkevent EVENT_GOT_HM03_SURF
+	iftrue .GotSurf
+	jumptextfaceplayer EcruteakPokeCenter1FPokefanMText1
+
+.GotSurf:
+	jumptextfaceplayer EcruteakPokeCenter1FPokefanMText2
 
 EcruteakPokeCenter1FLassScript:
 	faceplayer
@@ -235,13 +240,28 @@ UnknownText_0x54e2d:
 	line "do?"
 	done
 
-EcruteakPokeCenter1FPokefanMText:
+EcruteakPokeCenter1FPokefanMText1:
 	text "The way the Kimono"
 	line "Girls dance is"
 
 	para "marvelous. Just"
 	line "like the way they"
 	cont "use their #mon."
+	done
+
+EcruteakPokeCenter1FPokefanMText2:
+	text "You must be hoping"
+	line "to battle more"
+	cont "people, right?"
+
+	para "There's apparently"
+	line "some place where"
+	cont "trainers gather."
+
+	para "Where, you ask?"
+
+	para "It's a little past"
+	line "Olivine City."
 	done
 
 EcruteakPokeCenter1FLassQuestionText:

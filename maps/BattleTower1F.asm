@@ -119,13 +119,19 @@ Script_GivePlayerHisPrize: ; 0x9e47a
 	writebyte BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	checkcode VAR_BATTLEPOINTS
+	if_greater_than 252, .MaxPoints
 	addvar 3
 	writevarcode VAR_BATTLEPOINTS
+.Finish:
 	writetext Text_PlayerGotReward
 	writebyte BATTLETOWER_RECEIVED_REWARD
 	special Special_BattleTower_SetChallengeState
 	closetext
 	end
+
+.MaxPoints:
+	loadvar BattlePoints, 255
+	jump .Finish
 
 Script_BattleTowerIntroductionYesNo: ; 0x9e49e
 	writetext Text_WouldYouLikeToHearAboutTheBattleTower

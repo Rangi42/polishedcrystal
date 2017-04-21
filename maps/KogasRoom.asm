@@ -49,41 +49,56 @@ UnknownScript_0x180742:
 
 KogaScript_0x18075a:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, KogaRematchScript
 	checkevent EVENT_BEAT_ELITE_4_KOGA
 	iftrue UnknownScript_0x180788
+	opentext
 	writetext UnknownText_0x180793
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x1808a9, 0
-	checkcode VAR_BADGES
-	if_equal 16, KogaRematchScript
 	loadtrainer KOGA, 1
 	startbattle
-KogaEndBattleScript:
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_KOGA
+	scall UnknownScript_0x180788
+	jump KogaEndBattleScript
+
+UnknownScript_0x180788:
 	opentext
 	writetext UnknownText_0x1808ca
 	waitbutton
 	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
-	reloadmappart
-	closetext
-	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
-	waitsfx
 	end
 
 KogaRematchScript:
-	loadtrainer KOGA, 2
-	startbattle
-	jump KogaEndBattleScript
-
-UnknownScript_0x180788:
-	writetext UnknownText_0x1808ca
+	checkevent EVENT_BEAT_ELITE_4_KOGA
+	iftrue .AfterBattle
+	opentext
+	writetext KogeBeforeRematchText
 	waitbutton
 	closetext
+	winlosstext UnknownText_0x1808a9, 0
+	loadtrainer KOGA, 2
+	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle
+	jump KogaEndBattleScript
+
+.AfterBattle:
+	opentext
+	writetext KogaAfterRematchText
+	waitbutton
+	closetext
+	end
+
+KogaEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_KOGA
+	waitsfx
 	end
 
 MovementData_0x18078e:
@@ -140,6 +155,30 @@ UnknownText_0x1808ca:
 	para "Go on to the next"
 	line "room, and put your"
 	cont "abilities to test!"
+	done
+
+KogeBeforeRematchText:
+	text "Your arrival is"
+	line "indeed impressive,"
+	cont "as is your look of"
+	cont "resolve."
+
+	para "Fwahahahaha!"
+
+	para "My skill will be"
+	line "hard to overcome!"
+
+	para "Let me show you"
+	line "what I mean!"
+	done
+
+KogaAfterRematchText:
+	text "Never have I met"
+	line "the likes of you."
+
+	para "I must devote"
+	line "myself to my"
+	cont "training."
 	done
 
 KogasRoom_MapEventHeader:

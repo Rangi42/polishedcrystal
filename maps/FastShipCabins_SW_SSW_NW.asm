@@ -62,7 +62,15 @@ TrainerGuitaristmClyde:
 GuitaristmClydeScript:
 	end_if_just_battled
 	opentext
+	checkcode VAR_BATTLEPOINTS
+	if_greater_than 0, .BattleTower
 	writetext UnknownText_0x75d65
+	waitbutton
+	closetext
+	end
+
+.BattleTower:
+	writetext UnknownText_0x75cfe
 	waitbutton
 	closetext
 	end
@@ -206,6 +214,16 @@ UnknownText_0x75d65:
 
 	para "what's this week's"
 	line "lucky number?"
+	done
+
+UnknownText_0x75cfe:
+	text "I was going to"
+	line "make my debut at"
+	cont "the Battle Tower…"
+
+	para "I should go back"
+	line "to Vermilion and"
+	cont "redo my training…"
 	done
 
 FastShipBedText1:

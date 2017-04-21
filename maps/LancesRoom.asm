@@ -59,21 +59,21 @@ Script_ApproachLanceFromRight:
 LanceScript_0x180e7b:
 	spriteface LANCESROOM_LANCE, LEFT
 	opentext
+	checkcode VAR_BADGES
+	if_equal 16, LanceRematchScript
 	writetext LanceBattleIntroText
 	waitbutton
 	closetext
 	winlosstext LanceBattleWinText, 0
 	setlasttalked LANCESROOM_LANCE
-	checkcode VAR_BADGES
-	if_equal 16, LanceRematchScript
 	loadtrainer CHAMPION, LANCE
 	startbattle
-LanceEndBattleScript:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	opentext
 	writetext LanceBattleAfterText
+LanceEndBattleScript:
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -139,8 +139,18 @@ LanceEndBattleScript:
 	end
 
 LanceRematchScript:
+	writetext LanceBeforeRematchText
+	waitbutton
+	closetext
+	winlosstext LanceBattleWinText, 0
+	setlasttalked LANCESROOM_LANCE
 	loadtrainer CHAMPION, LANCE2
 	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	setevent EVENT_BEAT_CHAMPION_LANCE
+	opentext
+	writetext LanceAfterRematchText
 	jump LanceEndBattleScript
 
 LancesRoom_PlayerWalksInMovementData:
@@ -280,6 +290,37 @@ LanceBattleAfterText:
 
 	para "strong and up-"
 	line "standing nature."
+
+	para "As a trainer, you"
+	line "will continue to"
+
+	para "grow strong with"
+	line "your #mon."
+	done
+
+LanceBeforeRematchText:
+	text "Lance: There's no"
+	line "need for words"
+	cont "now."
+
+	para "We will battle to"
+	line "determine who is"
+
+	para "the stronger of"
+	line "the two of us."
+
+	para "I, Lance the drag-"
+	line "on master, accept"
+	cont "your challenge!"
+	done
+
+LanceAfterRematchText:
+	text "Just as I"
+	line "expected."
+
+	para "You and your"
+	line "#mon make"
+	cont "quite a team."
 
 	para "As a trainer, you"
 	line "will continue to"

@@ -82,7 +82,12 @@ LassScript_0x1a61c4:
 	jumptextfaceplayer UnknownText_0x1a6429
 
 PokefanMScript_0x1a61c7:
+	checkcode VAR_BATTLEPOINTS
+	if_greater_than 0, .BattleTower
 	jumptextfaceplayer UnknownText_0x1a646a
+
+.BattleTower:
+	jumptextfaceplayer UnknownText_0x1a649b
 
 LassScript_0x1a61d3:
 	jumptextfaceplayer UnknownText_0x1a64e6
@@ -246,6 +251,15 @@ UnknownText_0x1a646a:
 	line "building up ahead!"
 
 	para "What is it?"
+	done
+
+UnknownText_0x1a649b:
+	text "Hm! Look at all"
+	line "those serious-"
+	cont "looking trainers"
+	cont "streaming in."
+
+	para "What? What?"
 	done
 
 UnknownText_0x1a64e6:

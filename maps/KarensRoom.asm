@@ -49,41 +49,56 @@ UnknownScript_0x180bd6:
 
 KarenScript_0x180bee:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, KarenRematchScript
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue UnknownScript_0x180c1c
+	opentext
 	writetext UnknownText_0x180c27
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x180cf8, 0
-	checkcode VAR_BADGES
-	if_equal 16, KarenRematchScript
 	loadtrainer KAREN, 1
 	startbattle
-KarenEndBattleScript:
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_KAREN
+	scall UnknownScript_0x180c1c
+	jump KarenEndBattleScript
+
+UnknownScript_0x180c1c:
 	opentext
 	writetext UnknownText_0x180d29
 	waitbutton
 	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
-	reloadmappart
-	closetext
-	setevent EVENT_KARENS_ROOM_EXIT_OPEN
-	waitsfx
 	end
 
 KarenRematchScript:
-	loadtrainer KAREN, 2
-	startbattle
-	jump KarenEndBattleScript
-
-UnknownScript_0x180c1c:
-	writetext UnknownText_0x180d29
+	checkevent EVENT_BEAT_ELITE_4_KAREN
+	iftrue .AfterBattle
+	opentext
+	writetext KarenBeforeRematchText
 	waitbutton
 	closetext
+	winlosstext UnknownText_0x180cf8, 0
+	loadtrainer KAREN, 2
+	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle
+	jump KarenEndBattleScript
+
+.AfterBattle:
+	opentext
+	writetext KarenAfterRematchText
+	waitbutton
+	closetext
+	end
+
+KarenEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_KARENS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_KAREN
+	waitsfx
 	end
 
 MovementData_0x180c22:
@@ -143,6 +158,30 @@ UnknownText_0x180d29:
 
 	para "Go on--the Cham-"
 	line "pion is waiting."
+	done
+
+KarenBeforeRematchText:
+	text "You fought through"
+	line "the ranks to reach"
+	cont "me. I'm impressed."
+
+	para "You've assembled a"
+	line "charming team."
+
+	para "Our battle should"
+	line "be a good one."
+
+	para "Let's begin!"
+	done
+
+KarenAfterRematchText:
+	text "I will not stray"
+	line "from my chosen"
+	cont "path."
+
+	para "Lance is looking"
+	line "forward to meeting"
+	cont "you again."
 	done
 
 KarensRoom_MapEventHeader:

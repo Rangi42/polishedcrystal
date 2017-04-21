@@ -5,7 +5,8 @@
 
 * FredrIQ for multiple feature code contributions (specifically: Abilities, Natures affecting stats, better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen).
 * The TPP Anniversary Crystal 251 dev team for making their code publically usable (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, and caught data stats page code).
-* VictoriaLacroix for her Running Shoes routine.
+* VictoriaLacroix for the Running Shoes routine.
+* Armada651 for the playable Celadon Game Corner lucky slot machine.
 * MeroMero for the in-battle color inversion code and some move animations.
 * tonyism for the in-battle shiny icon code.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.

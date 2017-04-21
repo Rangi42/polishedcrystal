@@ -49,41 +49,56 @@ UnknownScript_0x1804e0:
 
 WillScript_0x1804f8:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, WillRematchScript
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue UnknownScript_0x180526
+	opentext
 	writetext UnknownText_0x180531
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x18062c, 0
-	checkcode VAR_BADGES
-	if_equal 16, WillRematchScript
 	loadtrainer WILL, 1
 	startbattle
-WillEndBattleScript:
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_WILL
+	scall UnknownScript_0x180526
+	jump WillEndBattleScript
+
+UnknownScript_0x180526:
 	opentext
 	writetext UnknownText_0x180644
 	waitbutton
 	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
-	reloadmappart
-	closetext
-	setevent EVENT_WILLS_ROOM_EXIT_OPEN
-	waitsfx
 	end
 
 WillRematchScript:
-	loadtrainer WILL, 2
-	startbattle
-	jump WillEndBattleScript
-
-UnknownScript_0x180526:
-	writetext UnknownText_0x180644
+	checkevent EVENT_BEAT_ELITE_4_WILL
+	iftrue .AfterBattle
+	opentext
+	writetext WillBeforeRematchText
 	waitbutton
 	closetext
+	winlosstext UnknownText_0x18062c, 0
+	loadtrainer WILL, 2
+	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle
+	jump WillEndBattleScript
+
+.AfterBattle:
+	opentext
+	writetext WillAfterRematchText
+	waitbutton
+	closetext
+	end
+
+WillEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_WILLS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_WILL
+	waitsfx
 	end
 
 MovementData_0x18052c:
@@ -140,6 +155,31 @@ UnknownText_0x180644:
 
 	para "the true ferocity"
 	line "of the Elite Four."
+	done
+
+WillBeforeRematchText:
+	text "So, you have"
+	line "finally appeared."
+
+	para "I have observed"
+	line "your battle"
+	cont "techniques."
+
+	para "I'm ready for you!"
+
+	para "All right."
+
+	para "Prepare for"
+	line "battle!"
+	done
+
+WillAfterRematchText:
+	text "I've expended all"
+	line "my power."
+
+	para "I have no regrets"
+	line "about losing"
+	cont "this way."
 	done
 
 WillsRoom_MapEventHeader:

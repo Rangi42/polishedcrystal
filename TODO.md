@@ -17,12 +17,6 @@
 * Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Headbutt overworld animation looks weird (wrong tile ID?)
 
-## Miscellaneous
-
-* Elite Four have different rematch dialog
-* [Celadon Game Corner lucky slot machine](https://github.com/Armada651/pokecrystal-restored/commit/638568eb37cea3f17ec3392745a92092112b802f)
-* Battle Tower references ([1](https://github.com/Armada651/pokecrystal-restored/commit/b9b06203b1da818086ebddea509fa3af459548b1), [2](https://github.com/Armada651/pokecrystal-restored/commit/c721368bafaf4eb9f6abd08b3e7e6d6879b3a086))
-* Use a side view for Falkner's Pidgeotto in Dark Cave
 
 ## Mechanics
 
@@ -237,6 +231,7 @@ Some of these may never be added; they're just suggestions.
 * Animate item activations like Quick Claw
 * Add umbrellas to Olivine City benches
 * Add boats to Goldenrod Harbor
+* Use a side view for Falkner's Pidgeotto in Dark Cave
 * Use RBY's Surf and Bike themes in Kanto
 * Faster Bicycle, or slower Running Shoes
 * Show walking animation faster when running

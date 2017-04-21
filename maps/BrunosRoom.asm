@@ -49,41 +49,56 @@ UnknownScript_0x1809ad:
 
 BrunoScript_0x1809c5:
 	faceplayer
-	opentext
+	checkcode VAR_BADGES
+	if_equal 16, BrunoRematchScript
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue UnknownScript_0x1809f3
+	opentext
 	writetext UnknownText_0x1809fe
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x180b23, 0
-	checkcode VAR_BADGES
-	if_equal 16, BrunoRematchScript
 	loadtrainer BRUNO, 1
 	startbattle
-BrunoEndBattleScript:
 	reloadmapafterbattle
-	setevent EVENT_BEAT_ELITE_4_BRUNO
+	scall UnknownScript_0x1809f3
+	jump BrunoEndBattleScript
+
+UnknownScript_0x1809f3:
 	opentext
 	writetext UnknownText_0x180b3c
 	waitbutton
 	closetext
-	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
-	reloadmappart
-	closetext
-	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
-	waitsfx
 	end
 
 BrunoRematchScript:
-	loadtrainer BRUNO, 2
-	startbattle
-	jump BrunoEndBattleScript
-
-UnknownScript_0x1809f3:
-	writetext UnknownText_0x180b3c
+	checkevent EVENT_BEAT_ELITE_4_BRUNO
+	iftrue .AfterBattle
+	opentext
+	writetext BrunoBeforeRematchText
 	waitbutton
 	closetext
+	winlosstext UnknownText_0x180b23, 0
+	loadtrainer BRUNO, 2
+	startbattle
+	reloadmapafterbattle
+	scall .AfterBattle
+	jump BrunoEndBattleScript
+
+.AfterBattle:
+	opentext
+	writetext BrunoAfterRematchText
+	waitbutton
+	closetext
+	end
+
+BrunoEndBattleScript:
+	playsound SFX_ENTER_DOOR
+	changeblock $4, $2, $16
+	reloadmappart
+	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
+	setevent EVENT_BEAT_ELITE_4_BRUNO
+	waitsfx
 	end
 
 MovementData_0x1809f9:
@@ -135,6 +150,28 @@ UnknownText_0x180b3c:
 
 	para "Go face your next"
 	line "challenge!"
+	done
+
+BrunoBeforeRematchText:
+	text "Hello again."
+
+	para "As one of the"
+	line "Elite Four, I will"
+	cont "stand up to your"
+	cont "challenge!"
+
+	para "It would disturb"
+	line "me for you to"
+	cont "underestimate my"
+	cont "fighting #mon."
+
+	para "Get ready!"
+	done
+
+BrunoAfterRematchText:
+	text "We tried hard."
+
+	para "Continue on!"
 	done
 
 BrunosRoom_MapEventHeader:
