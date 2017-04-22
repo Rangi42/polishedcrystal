@@ -45,7 +45,9 @@ MomEventScript:
 	opentext
 	writetext MomIntroText
 	buttonsound
+
 if DEF(DEBUG)
+
 	; full pokegear
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
@@ -183,6 +185,7 @@ if DEF(DEBUG)
 	; hm slaves
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS
+	callasm TeachHMSlaveMoves
 	; intro events
 	addcellnum PHONE_MOM
 ;	addcellnum PHONE_ELM
@@ -195,7 +198,9 @@ if DEF(DEBUG)
 ;	domaptrigger ELMS_LAB, $5
 ;	domaptrigger NEW_BARK_TOWN, $2
 	dotrigger $1
+
 else
+
 	stringtotext GearName, $1
 	callstd receiveitem
 	setflag ENGINE_POKEGEAR
@@ -229,21 +234,66 @@ else
 .NoInstructions:
 	writetext MomOutroText
 	waitbutton
+
 endc
+
 	closetext
 	spriteface KRISSHOUSE1F_MOM1, LEFT
 	special RestartMapMusic
 	end
 
 if DEF(DEBUG)
+
 SetHallOfFameFlag:
 	; Enable the Pokégear map to cycle through all of Kanto
 	ld hl, StatusFlags
 	set 6, [hl] ; hall of fame
 	ret
+
+TeachHMSlaveMoves:
+	ld hl, PartyMon4Moves
+	ld a, FLY
+	ld [hli], a
+	ld a, SURF
+	ld [hli], a
+	ld a, STRENGTH
+	ld [hli], a
+	ld a, CUT
+	ld [hl], a
+	ld hl, PartyMon4PP
+	ld a, 15
+	ld [hli], a
+;	ld a, 15
+	ld [hli], a
+;	ld a, 15
+	ld [hli], a
+	ld a, 30
+	ld [hl], a
+	ld hl, PartyMon5Moves
+	ld a, FLASH
+	ld [hli], a
+	ld a, ROCK_SMASH
+	ld [hli], a
+	ld a, WHIRLPOOL
+	ld [hli], a
+	ld a, WATERFALL
+	ld [hl], a
+	ld hl, PartyMon5PP
+	ld a, 20
+	ld [hli], a
+	ld a, 15
+	ld [hli], a
+;	ld a, 15
+	ld [hli], a
+;	ld a, 15
+	ld [hl], a
+	ret
+
 else
+
 GearName:
 	db "#gear@"
+
 endc
 
 MomScript:

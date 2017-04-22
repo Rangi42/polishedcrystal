@@ -221,7 +221,6 @@ INCLUDE "maps/IcePathB1F.asm"
 INCLUDE "maps/IcePathB2FMahoganySide.asm"
 INCLUDE "maps/IcePathB2FBlackthornSide.asm"
 INCLUDE "maps/IcePathB3F.asm"
-INCLUDE "maps/GoldenrodHarborGate.asm"
 
 
 SECTION "Map Scripts 10", ROMX[$4000], BANK[MAP_SCRIPTS_10]
@@ -255,6 +254,7 @@ INCLUDE "maps/ViridianNicknameSpeechHouse.asm"
 INCLUDE "maps/Route2NuggetSpeechHouse.asm"
 INCLUDE "maps/Route2Gate.asm"
 INCLUDE "maps/MountMoonGiftShop.asm"
+INCLUDE "maps/GoldenrodHarborGate.asm"
 
 
 SECTION "Map Scripts 11", ROMX[$4000], BANK[MAP_SCRIPTS_11]
