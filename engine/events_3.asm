@@ -596,10 +596,16 @@ endm
 ; b82c5
 
 RockMonMaps: ; b82c5
-	treemon_map CIANWOOD_CITY, 7
 	treemon_map ROUTE_40, 7
+	treemon_map CIANWOOD_CITY, 7
+	treemon_map VERMILION_CITY, 7
+	treemon_map RUINS_OF_ALPH_OUTSIDE, 7
+	treemon_map STORMY_BEACH, 7
 	treemon_map DARK_CAVE_VIOLET_ENTRANCE, 7
+	treemon_map UNION_CAVE_B1F_SOUTH, 7
 	treemon_map SLOWPOKE_WELL_B1F, 7
+	treemon_map BURNED_TOWER_B1F, 7
+	treemon_map GIOVANNIS_CAVE, 7
 	db -1
 ; b82d2
 
