@@ -6980,7 +6980,7 @@ SuperNerdGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 56, PORYGON
+	db 56, PORYGON2
 
 	db $ff ; end
 
@@ -7112,6 +7112,17 @@ SuperNerdGroup:
 	db 62, OMASTAR, ABILITY_1 | QUIRKY, MALE
 	db 62, KABUTOPS, ABILITY_1 | QUIRKY, MALE
 	db 64, UMBREON, SHINY_MASK | ABILITY_1 | QUIRKY, MALE
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD
+	db "Rory@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, PORYGON
 
 	db $ff ; end
 
@@ -7699,6 +7710,43 @@ RuinManiacGroup:
 	db $ff ; end
 
 ; ================
+
+	; RUIN_MANIAC
+	db "Leland@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 23, DUNSPARCE
+	db 25, AERODACTYL
+
+	db $ff ; end
+
+; ================
+
+	; RUIN_MANIAC
+	db "Petrie@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 23, OMANYTE
+	db 23, KABUTO
+	db 25, AERODACTYL
+
+	db $ff ; end
+
+; ================
+
+	; RUIN_MANIAC
+	db "Glyn@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, OMASTAR
+	db 25, KABUTOPS
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7800,6 +7848,17 @@ FirebreatherGroup:
 	db 44, KOFFING
 	db 46, FLAREON
 	db 45, WEEZING
+
+	db $ff ; end
+
+; ================
+
+	; FIREBREATHER
+	db "Jay@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, MAGMAR
 
 	db $ff ; end
 

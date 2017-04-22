@@ -86,7 +86,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Uraga Channel
 * Scary Cave
 * Murky Swamp
-* Union Cave B1F South
 * Quiet Cave
 * Celadon Hotel (just items left)
 * Celadon University

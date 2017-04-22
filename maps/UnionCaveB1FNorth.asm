@@ -12,27 +12,66 @@ UnionCaveB1FNorth_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-TrainerHikerPhillip:
-	trainer EVENT_BEAT_HIKER_PHILLIP, HIKER, PHILLIP, HikerPhillipSeenText, HikerPhillipBeatenText, 0, HikerPhillipScript
+TrainerRuin_maniacLeland:
+	trainer EVENT_BEAT_RUIN_MANIAC_LELAND, RUIN_MANIAC, LELAND, .SeenText, .BeatenText, 0, .Script
 
-HikerPhillipScript:
+.Script:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x5a073
+	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-TrainerHikerLeonard:
-	trainer EVENT_BEAT_HIKER_LEONARD, HIKER, LEONARD, HikerLeonardSeenText, HikerLeonardBeatenText, 0, HikerLeonardScript
+.SeenText:
+	text "I'm on the trail of"
+	line "an ancient ruin"
+	cont "site!"
+	done
 
-HikerLeonardScript:
+.BeatenText:
+	text "I was distracted"
+	line "by clues the"
+	cont "ancients left."
+	done
+
+.AfterText:
+	text "Someday I'll dis-"
+	line "cover a new ruin"
+	cont "and become famous."
+	done
+
+TrainerRuin_maniacPetrie:
+	trainer EVENT_BEAT_RUIN_MANIAC_PETRIE, RUIN_MANIAC, PETRIE, .SeenText, .BeatenText, 0, .Script
+
+.Script:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x5a0fb
+	writetext .AfterText
 	waitbutton
 	closetext
 	end
+
+.SeenText:
+	text "I'll go anywhere"
+	line "to investigate"
+	cont "old secrets and"
+	cont "legends."
+	done
+
+.BeatenText:
+	text "What is the secret"
+	line "of your power?"
+	done
+
+.AfterText:
+	text "Ancient history"
+	line "is my passion,"
+
+	para "but to investigate"
+	line "it properly we use"
+	cont "modern technology."
+	done
 
 UnionCaveB1FNorthTMSwift:
 	tmhmball TM_SWIFT
@@ -48,48 +87,6 @@ UnionCaveB1FNorthHiddenXSpeed:
 
 UnionCaveB1FNorthHiddenRevive:
 	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE, REVIVE
-
-HikerPhillipSeenText:
-	text "It's been a while"
-	line "since I last saw"
-	cont "another person."
-
-	para "Don't be shy."
-	line "Let's battle!"
-	done
-
-HikerPhillipBeatenText:
-	text "Uurggh…"
-	done
-
-UnknownText_0x5a073:
-	text "I've been lost for"
-	line "a long time…"
-
-	para "I don't mind it"
-	line "here, but I am"
-	cont "soooo hungry!"
-	done
-
-HikerLeonardSeenText:
-	text "What do you know!"
-	line "A visitor!"
-	done
-
-HikerLeonardBeatenText:
-	text "Wahahah! You're a"
-	line "feisty one!"
-	done
-
-UnknownText_0x5a0fb:
-	text "I live down here."
-
-	para "You can, too, if"
-	line "you'd like."
-
-	para "There's plenty of"
-	line "room, you see."
-	done
 
 UnionCaveB1FNorth_MapEventHeader:
 	; filler
@@ -111,8 +108,8 @@ UnionCaveB1FNorth_MapEventHeader:
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerPhillip, -1
-	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerLeonard, -1
+	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
+	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetrie, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 22, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, UnionCaveB1FNorthTMSwift, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
 	person_event SPRITE_BALL_CUT_FRUIT, 21, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB1FNorthXDefend, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FNorthBoulder, -1

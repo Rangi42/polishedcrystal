@@ -94,8 +94,6 @@ INCLUDE "maps/OlivineLighthouse1F.asm"
 INCLUDE "maps/OlivineLighthouse2F.asm"
 INCLUDE "maps/OlivineLighthouse3F.asm"
 INCLUDE "maps/OlivineLighthouse4F.asm"
-INCLUDE "maps/EcruteakCherishBallHouse.asm"
-INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
 
 
 SECTION "Map Scripts 3", ROMX[$4000], BANK[MAP_SCRIPTS_3]
@@ -124,6 +122,8 @@ INCLUDE "maps/EarlsPokemonAcademy.asm"
 INCLUDE "maps/IlexForestAzaleaGate.asm"
 INCLUDE "maps/Route34IlexForestGate.asm"
 INCLUDE "maps/ViridianSchoolHouse.asm"
+INCLUDE "maps/EcruteakCherishBallHouse.asm"
+INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
 
 
 SECTION "Map Scripts 5", ROMX[$4000], BANK[MAP_SCRIPTS_5]

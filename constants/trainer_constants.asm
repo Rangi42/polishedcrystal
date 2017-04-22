@@ -367,6 +367,7 @@ KRIS EQU __enum__
 	const LUIS
 	const JOVAN
 	const MIGUEL
+	const RORY
 
 	trainerclass LASS ; 30
 	const DANA1
@@ -415,6 +416,9 @@ KRIS EQU __enum__
 
 	trainerclass RUIN_MANIAC ; 33
 	const JONES
+	const LELAND
+	const PETRIE
+	const GLYN
 
 	trainerclass FIREBREATHER ; 34
 	const OTIS
@@ -425,6 +429,7 @@ KRIS EQU __enum__
 	const WALT
 	const RAY
 	const LYLE
+	const JAY
 
 	trainerclass JUGGLER ; 35
 	const IRWIN1
