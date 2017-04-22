@@ -57,7 +57,7 @@ MAP_NONE   EQU 0
 	mapgroup RADIO_TOWER_3F,                              4,  9 ; 20
 	mapgroup RADIO_TOWER_4F,                              4,  9 ; 21
 	mapgroup RADIO_TOWER_5F,                              4,  9 ; 22
-	mapgroup UNION_CAVE_1F,                              18, 10 ; 23
+	mapgroup UNION_CAVE_1F,                              24, 10 ; 23
 	mapgroup UNION_CAVE_B1F_NORTH,                       13, 10 ; 24
 	mapgroup UNION_CAVE_B1F_SOUTH,                       18, 10 ; 25
 	mapgroup UNION_CAVE_B2F,                             18, 10 ; 26
@@ -105,7 +105,7 @@ MAP_NONE   EQU 0
 	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 68
 	mapgroup DRAGON_SHRINE,                               5,  5 ; 69
 	mapgroup TOHJO_FALLS,                                 9, 15 ; 70
-	mapgroup GIOVANNIS_CAVE,                              5,  5 ; 71
+	mapgroup GIOVANNIS_CAVE,                             24, 10 ; 71
 	mapgroup DIGLETTS_CAVE,                              19, 21 ; 72
 	mapgroup MOUNT_MOON_1F,                              13, 15 ; 73
 	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 74

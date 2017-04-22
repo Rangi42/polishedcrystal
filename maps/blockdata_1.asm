@@ -322,6 +322,3 @@ Route22_BlockData:
 
 Route22Past_BlockData:
 	INCBIN "maps/Route22Past.blk"
-
-GiovannisCave_BlockData:
-	INCBIN "maps/GiovannisCave.blk"

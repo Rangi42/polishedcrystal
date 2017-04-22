@@ -104,6 +104,7 @@ ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.blk"
 
 UnionCave1F_BlockData:
+GiovannisCave_BlockData:
 	INCBIN "maps/UnionCave1F.blk"
 
 UnionCaveB1FNorth_BlockData:

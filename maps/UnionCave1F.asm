@@ -4,6 +4,7 @@ const_value set 2
 	const UNIONCAVE1F_POKEFAN_M2
 	const UNIONCAVE1F_FISHER1
 	const UNIONCAVE1F_FISHER2
+	const UNIONCAVE1F_POKEFAN_M3
 	const UNIONCAVE1F_POKE_BALL1
 	const UNIONCAVE1F_POKE_BALL2
 	const UNIONCAVE1F_POKE_BALL3
@@ -71,6 +72,17 @@ FirebreatherRayScript:
 	closetext
 	end
 
+TrainerRuin_maniacJones:
+	trainer EVENT_BEAT_RUIN_MANIAC_JONES, RUIN_MANIAC, JONES, Ruin_maniacJonesSeenText, Ruin_maniacJonesBeatenText, 0, Ruin_maniacJonesScript
+
+Ruin_maniacJonesScript:
+	end_if_just_battled
+	opentext
+	writetext Ruin_maniacJonesAfterText
+	waitbutton
+	closetext
+	end
+
 UnionCave1FGreatBall:
 	itemball GREAT_BALL
 
@@ -85,6 +97,15 @@ UnionCave1FAwakening:
 
 UnknownScript_0x59c08:
 	jumptext UnknownText_0x59f29
+
+UnionCave1FHiddenGreatBall:
+	dwb EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL, GREAT_BALL
+
+UnionCave1FHiddenBigPearl:
+	dwb EVENT_UNION_CAVE_1F_HIDDEN_BIG_PEARL, BIG_PEARL
+
+UnionCave1FHiddenParlyzHeal:
+	dwb EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL
 
 HikerRussellSeenText:
 	text "You're headed to"
@@ -195,6 +216,21 @@ UnknownText_0x59efc:
 	cont "up this cave."
 	done
 
+Ruin_maniacJonesSeenText:
+	text "Have you explored"
+	line "the Ruins of Alph?"
+	done
+
+Ruin_maniacJonesBeatenText:
+	text "Gahahah!"
+	done
+
+Ruin_maniacJonesAfterText:
+	text "The Ruins are hid-"
+	line "ing something…"
+	cont "I just know it!"
+	done
+
 UnknownText_0x59f29:
 	text "Union Cave"
 	done
@@ -205,25 +241,29 @@ UnionCave1F_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $13, $5, 3, UNION_CAVE_B1F_NORTH
-	warp_def $21, $3, 1, UNION_CAVE_B1F_SOUTH
-	warp_def $1f, $11, 1, ROUTE_33
-	warp_def $3, $11, 4, ROUTE_32
+	warp_def $3, $3, 3, UNION_CAVE_B1F_NORTH
+	warp_def $2d, $3, 1, UNION_CAVE_B1F_SOUTH
+	warp_def $2b, $11, 1, ROUTE_33
+	warp_def $f, $11, 4, ROUTE_32
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 0
+	db 3
+	signpost 19, 7, SIGNPOST_ITEM, UnionCave1FHiddenGreatBall
+	signpost 33, 2, SIGNPOST_ITEM, UnionCave1FHiddenBigPearl
+	signpost 33, 8, SIGNPOST_ITEM, UnionCave1FHiddenParlyzHeal
 
 .PersonEvents:
-	db 9
-	person_event SPRITE_POKEFAN_M, 6, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerDaniel, -1
-	person_event SPRITE_SUPER_NERD, 21, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacLarry, -1
-	person_event SPRITE_POKEFAN_M, 8, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerRussell, -1
-	person_event SPRITE_FISHER, 27, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherRay, -1
-	person_event SPRITE_FISHER, 19, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherBill, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FGreatBall, EVENT_UNION_CAVE_1F_GREAT_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FXAttack, EVENT_UNION_CAVE_1F_X_ATTACK
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FPotion, EVENT_UNION_CAVE_1F_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FAwakening, EVENT_UNION_CAVE_1F_AWAKENING
+	db 10
+	person_event SPRITE_POKEFAN_M, 18, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerDaniel, -1
+	person_event SPRITE_SUPER_NERD, 37, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacLarry, -1
+	person_event SPRITE_POKEFAN_M, 20, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerRussell, -1
+	person_event SPRITE_FISHER, 39, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherRay, -1
+	person_event SPRITE_FISHER, 32, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherBill, -1
+	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerRuin_maniacJones, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 33, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FGreatBall, EVENT_UNION_CAVE_1F_GREAT_BALL
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FXAttack, EVENT_UNION_CAVE_1F_X_ATTACK
+	person_event SPRITE_BALL_CUT_FRUIT, 28, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FPotion, EVENT_UNION_CAVE_1F_POTION
+	person_event SPRITE_BALL_CUT_FRUIT, 45, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCave1FAwakening, EVENT_UNION_CAVE_1F_AWAKENING

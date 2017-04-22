@@ -67,6 +67,31 @@ PokemonMansionB1FHiddenRareCandy:
 	closetext
 	end
 
+PokemonMansionB1FHiddenBerserkGene:
+	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_BERSERK_GENE
+	iftrue PokemonMansionB1FMewtwoStatue
+	giveitem BERSERK_GENE
+	iffalse .PackFull
+	opentext
+	itemtotext BERSERK_GENE, $0
+	writetext PokemonMansionB1FFoundBerserkGeneText
+	playsound SFX_ITEM
+	waitsfx
+	itemnotify
+	closetext
+	setevent EVENT_POKEMON_MANSION_B1F_HIDDEN_BERSERK_GENE
+	end
+
+.PackFull:
+	opentext
+	itemtotext BERSERK_GENE, $0
+	writetext PokemonMansionB1FFoundBerserkGeneText
+	buttonsound
+	writetext PokemonMansionB1FNoRoomForBerserkGeneText
+	waitbutton
+	closetext
+	end
+
 PokemonMansionB1FMewtwoStatue:
 	jumptext PokemonMansionB1FMewtwoStatueText
 
@@ -121,6 +146,7 @@ PokemonMansionDiaryText:
 	done
 
 PokemonMansionB1FFoundRareCandyText:
+PokemonMansionB1FFoundBerserkGeneText:
 	text "<PLAYER> found"
 	line "@"
 	text_from_ram StringBuffer3
@@ -128,6 +154,7 @@ PokemonMansionB1FFoundRareCandyText:
 	done
 
 PokemonMansionB1FNoRoomForRareCandyText:
+PokemonMansionB1FNoRoomForBerserkGeneText:
 	text "But <PLAYER> can't"
 	line "hold another item…"
 	done
@@ -159,8 +186,8 @@ PokemonMansionB1F_MapEventHeader:
 	db 9
 	signpost 4, 26, SIGNPOST_ITEM, PokemonMansionB1FHiddenMaxElixir
 	signpost 13, 8, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
+	signpost 27, 20, SIGNPOST_READ, PokemonMansionB1FHiddenBerserkGene
 	signpost 5, 22, SIGNPOST_READ, PokemonMansionB1FMewtwoStatue
-	signpost 27, 20, SIGNPOST_READ, PokemonMansionB1FMewtwoStatue
 	signpost 13, 9, SIGNPOST_READ, PokemonMansionB1FFlowerPot
 	signpost 17, 4, SIGNPOST_READ, PokemonMansionB1FFlowerPot
 	signpost 17, 5, SIGNPOST_READ, PokemonMansionB1FFlowerPot

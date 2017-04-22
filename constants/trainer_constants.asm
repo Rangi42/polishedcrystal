@@ -414,6 +414,7 @@ KRIS EQU __enum__
 	const ROBBY
 
 	trainerclass RUIN_MANIAC ; 33
+	const JONES
 
 	trainerclass FIREBREATHER ; 34
 	const OTIS

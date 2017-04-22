@@ -43,6 +43,12 @@ UnionCaveB1FNorthXDefend:
 UnionCaveB1FNorthBoulder:
 	jumpstd strengthboulder
 
+UnionCaveB1FNorthHiddenXSpeed:
+	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED, X_SPEED
+
+UnionCaveB1FNorthHiddenRevive:
+	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE, REVIVE
+
 HikerPhillipSeenText:
 	text "It's been a while"
 	line "since I last saw"
@@ -93,18 +99,20 @@ UnionCaveB1FNorth_MapEventHeader:
 	db 3
 	warp_def $3, $3, 7, RUINS_OF_ALPH_OUTSIDE
 	warp_def $b, $3, 8, RUINS_OF_ALPH_OUTSIDE
-	warp_def $13, $7, 1, UNION_CAVE_1F
+	warp_def $17, $f, 1, UNION_CAVE_1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 23, 11, SIGNPOST_ITEM, UnionCaveB1FNorthHiddenXSpeed
+	signpost 4, 13, SIGNPOST_ITEM, UnionCaveB1FNorthHiddenRevive
 
 .PersonEvents:
 	db 5
 	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerPhillip, -1
-	person_event SPRITE_POKEFAN_M, 7, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerLeonard, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, UnionCaveB1FNorthTMSwift, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB1FNorthXDefend, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
+	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerLeonard, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, UnionCaveB1FNorthTMSwift, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
+	person_event SPRITE_BALL_CUT_FRUIT, 21, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB1FNorthXDefend, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FNorthBoulder, -1

@@ -5764,8 +5764,8 @@ HikerGroup:
 
 	; party
 	db 22, DUNSPARCE
-	db 22, DUNSPARCE
-	db 22, DUNSPARCE
+	db 23, ONIX
+	db 22, LARVITAR
 
 	db $ff ; end
 
@@ -5791,8 +5791,8 @@ HikerGroup:
 
 	; party
 	db 17, DUNSPARCE
-	db 18, OMANYTE
-	db 18, KABUTO
+	db 18, ONIX
+	db 17, DUNSPARCE
 
 	db $ff ; end
 
@@ -7687,6 +7687,17 @@ BugManiacGroup:
 RuinManiacGroup:
 ; ================================
 ; ================
+
+	; RUIN_MANIAC
+	db "Jones@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 6, OMANYTE
+	db 6, KABUTO
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -8358,8 +8369,8 @@ SchoolgirlGroup:
 
 	; party
 	db 10, BULBASAUR, "Garlic@"
-	db 9, SANDSHREW, "Sandshrew@"
-	db 9, POLIWAG, "Poliwag@"
+	db 7, SANDSHREW, "Sandshrew@"
+	db 7, POLIWAG, "Poliwag@"
 
 	db $ff ; end
 

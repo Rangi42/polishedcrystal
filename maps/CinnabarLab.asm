@@ -210,6 +210,9 @@ CinnabarLabRoom4Sign:
 CinnabarLabLockedDoorSign:
 	jumptext CinnabarLabLockedDoorText
 
+CinnabarLabHiddenBerserkGene:
+	dwb EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE, BERSERK_GENE
+
 CinnabarLabStepDownMovementData:
 	step_down
 	step_end
@@ -436,7 +439,7 @@ CinnabarLab_MapEventHeader:
 	xy_trigger 1, $6, $2, $0, CinnabarLabCelebiEventScript, $0, $0
 
 .Signposts:
-	db 7
+	db 8
 	signpost 14, 8, SIGNPOST_READ, CinnabarLabRoom1Sign
 	signpost 14, 9, SIGNPOST_READ, CinnabarLabLockedDoorSign
 	signpost 14, 16, SIGNPOST_READ, CinnabarLabRoom2Sign
@@ -444,6 +447,7 @@ CinnabarLab_MapEventHeader:
 	signpost 14, 24, SIGNPOST_READ, CinnabarLabRoom3Sign
 	signpost 14, 25, SIGNPOST_READ, CinnabarLabLockedDoorSign
 	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
+	signpost 6, 3, SIGNPOST_ITEM, CinnabarLabHiddenBerserkGene
 
 .PersonEvents:
 	db 9
