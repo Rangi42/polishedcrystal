@@ -65,6 +65,7 @@
 * Lawrence in Shrine Ruins (not Victory Road)
 * Prof. Ivy in Shamouti Island (gives a starter)
 * Imakuni in Celadon University
+* Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house (just his sister until Inverse Battles are implemented)
 * Gourmet Maniac in Route 32 Coast house
 * Ore Maniac in Shamouti Tunnel
