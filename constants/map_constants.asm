@@ -177,6 +177,7 @@ MAP_NONE   EQU 0
 	mapgroup SCARY_CAVE_1F,                              17, 20 ; 19
 	mapgroup SCARY_CAVE_B1F,                             12, 12 ; 20
 	mapgroup SCARY_CAVE_SHIPWRECK,                        6,  6 ; 21
+	mapgroup ROUTE_19_BEACH_HOUSE,                        4,  4 ; 22
 
 	newgroup                                                    ;  7
 
@@ -370,7 +371,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 21
 	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 22
 	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 23
-	mapgroup ROUTE_19___FUCHSIA_GATE,                     4,  5 ; 24
+	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 24
 	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 25
 	mapgroup LUCKY_ISLAND,                               16, 23 ; 26
 

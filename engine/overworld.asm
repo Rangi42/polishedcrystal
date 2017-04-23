@@ -1011,10 +1011,10 @@ Group13Sprites:
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
 	db SPRITE_BLUE ; doesn't walk
-	; 8 walking sprites (7 that walk)
+	db SPRITE_ENGINEER ; doesn't walk
+	; 9 walking sprites (7 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 9 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 10 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT

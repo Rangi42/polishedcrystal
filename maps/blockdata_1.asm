@@ -188,7 +188,7 @@ VermilionHouseDiglettsCaveSpeechHouse_BlockData:
 LavenderNameRater_BlockData:
 SaffronHitmontopKidHouse_BlockData:
 SaffronOrreSpeechHouse_BlockData:
-EusinesHouse_BlockData:
+Route19BeachHouse_BlockData:
 	INCBIN "maps/KantoHouse3.blk"
 
 PewterNidoranSpeechHouse_BlockData:
@@ -199,6 +199,7 @@ Route2NuggetSpeechHouse_BlockData:
 Route26HealSpeechHouse_BlockData:
 Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
+EusinesHouse_BlockData:
 	INCBIN "maps/KantoHouse4.blk"
 
 CianwoodPharmacy_BlockData:

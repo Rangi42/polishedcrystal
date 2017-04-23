@@ -11,6 +11,12 @@ MountMoonB1F_MapScriptHeader:
 MountMoonB1FPokefanmScript:
 	jumptextfaceplayer MountMoonB1FPokefanmText
 
+MountMoonB1FHiddenStarPiece:
+	dwb EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE, STAR_PIECE
+
+MountMoonB1FHiddenMoonStone:
+	dwb EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE, MOON_STONE
+
 MountMoonB1FPokefanmText:
 	text "I'm excavating for"
 	line "fossils here under"
@@ -42,7 +48,9 @@ MountMoonB1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 18, 5, SIGNPOST_ITEM, MountMoonB1FHiddenStarPiece
+	signpost 26, 24, SIGNPOST_ITEM, MountMoonB1FHiddenMoonStone
 
 .PersonEvents:
 	db 1

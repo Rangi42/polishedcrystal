@@ -56,6 +56,9 @@ NoLitteringSign:
 SafariZoneExhibitSign:
 	jumptext SafariZoneExhibitSignText
 
+FuchsiaCityCarefulSwimmingSign:
+	jumptext FuchsiaCityCarefulSwimmingSignText
+
 FuchsiaCityCutTree:
 	jumpstd cuttree
 
@@ -162,6 +165,15 @@ SafariZoneExhibitSignText:
 	line "torn away…"
 	done
 
+FuchsiaCityCarefulSwimmingSignText:
+	text "Please be careful"
+	line "if you are swim-"
+	cont "ming to Seafoam"
+	cont "Islands."
+
+	para "Fuchsia Police"
+	done
+
 FuchsiaCity_MapEventHeader:
 	; filler
 	db 0, 0
@@ -176,14 +188,14 @@ FuchsiaCity_MapEventHeader:
 	warp_def $3, $12, 3, SAFARI_ZONE_FUCHSIA_GATE
 	warp_def $16, $25, 1, ROUTE_15_FUCHSIA_GATE
 	warp_def $17, $25, 2, ROUTE_15_FUCHSIA_GATE
-	warp_def $23, $7, 1, ROUTE_19___FUCHSIA_GATE
-	warp_def $23, $8, 2, ROUTE_19___FUCHSIA_GATE
+	warp_def $21, $7, 1, ROUTE_19_FUCHSIA_GATE
+	warp_def $21, $8, 2, ROUTE_19_FUCHSIA_GATE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
-	db 12
+	db 13
 	signpost 15, 21, SIGNPOST_READ, FuchsiaCitySign
 	signpost 29, 5, SIGNPOST_READ, FuchsiaGymSign
 	signpost 15, 25, SIGNPOST_READ, SafariZoneOfficeSign
@@ -196,6 +208,7 @@ FuchsiaCity_MapEventHeader:
 	signpost 7, 27, SIGNPOST_READ, SafariZoneExhibitSign
 	signpost 7, 33, SIGNPOST_READ, SafariZoneExhibitSign
 	signpost 13, 31, SIGNPOST_READ, SafariZoneExhibitSign
+	signpost 35, 11, SIGNPOST_READ, FuchsiaCityCarefulSwimmingSign
 
 .PersonEvents:
 	db 6

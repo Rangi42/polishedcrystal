@@ -262,6 +262,7 @@ Some of these may never be added; they're just suggestions.
 * Catch rate formula from Gen III
 * Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
+* Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
 * Send gift Pokémon to the PC if the party is full

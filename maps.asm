@@ -428,8 +428,6 @@ INCLUDE "maps/MrPokemonsHouse.asm"
 INCLUDE "maps/Route31VioletGate.asm"
 INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 INCLUDE "maps/Route42EcruteakGate.asm"
-INCLUDE "maps/RedsHouse1F.asm"
-INCLUDE "maps/RedsHouse2F.asm"
 
 
 SECTION "Map Scripts 18", ROMX[$4000], BANK[MAP_SCRIPTS_18]
@@ -461,6 +459,8 @@ INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
 INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/Route20.asm"
 INCLUDE "maps/Route21.asm"
+INCLUDE "maps/RedsHouse1F.asm"
+INCLUDE "maps/RedsHouse2F.asm"
 
 
 SECTION "Map Scripts 20", ROMX[$4000], BANK[MAP_SCRIPTS_20]
@@ -605,17 +605,10 @@ INCLUDE "maps/Route39.asm"
 
 SECTION "Map Scripts 27", ROMX[$4000], BANK[MAP_SCRIPTS_27]
 
+INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
-INCLUDE "maps/Route1ViridianGate.asm"
-INCLUDE "maps/Route11Gate2F.asm"
-INCLUDE "maps/Route12Gate2F.asm"
-INCLUDE "maps/Route15FuchsiaGate2F.asm"
-INCLUDE "maps/Route1617Gate2F.asm"
-INCLUDE "maps/Route18Gate2F.asm"
-INCLUDE "maps/SeafoamIslandsB4F.asm"
-INCLUDE "maps/CeruleanBikeShop.asm"
 
 
 SECTION "Map Scripts 28", ROMX[$4000], BANK[MAP_SCRIPTS_28]
@@ -626,7 +619,14 @@ INCLUDE "maps/CinnabarVolcanoB2F.asm"
 INCLUDE "maps/Route22Past.asm"
 INCLUDE "maps/GiovannisCave.asm"
 INCLUDE "maps/CinnabarLab.asm"
-INCLUDE "maps/ElmsLab.asm"
+INCLUDE "maps/Route1ViridianGate.asm"
+INCLUDE "maps/Route11Gate2F.asm"
+INCLUDE "maps/Route12Gate2F.asm"
+INCLUDE "maps/Route15FuchsiaGate2F.asm"
+INCLUDE "maps/Route1617Gate2F.asm"
+INCLUDE "maps/Route18Gate2F.asm"
+INCLUDE "maps/SeafoamIslandsB4F.asm"
+INCLUDE "maps/CeruleanBikeShop.asm"
 
 
 SECTION "Map Scripts 29", ROMX
@@ -684,6 +684,7 @@ INCLUDE "maps/SafariZoneFuchsiaGate.asm"
 INCLUDE "maps/SafariZoneHub.asm"
 INCLUDE "maps/SafariZoneEast.asm"
 INCLUDE "maps/SafariZoneNorth.asm"
+INCLUDE "maps/Route19BeachHouse.asm"
 
 
 SECTION "Map Scripts 32", ROMX

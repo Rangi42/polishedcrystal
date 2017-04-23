@@ -1,6 +1,7 @@
 const_value set 2
 	const ROUTE7_BREEDER
 	const ROUTE7_BIG_SNORLAX
+	const ROUTE7_POKE_BALL
 
 Route7_MapScriptHeader:
 .MapTriggers:
@@ -86,6 +87,9 @@ Route7Snorlax:
 	para "Snorlax woke up!"
 	done
 
+Route7MentalHerb:
+	itemball MENTAL_HERB
+
 Route7UndergroundPathSign:
 	jumptext .Text
 
@@ -133,6 +137,7 @@ Route7_MapEventHeader:
 	signpost 11, 6, SIGNPOST_READ, Route7LockedDoor
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
 	person_event SPRITE_BIG_SNORLAX, 0, 1, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
+	person_event SPRITE_BALL_CUT_FRUIT, 1, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route7MentalHerb, EVENT_ROUTE_7_MENTAL_HERB

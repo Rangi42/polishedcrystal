@@ -510,7 +510,7 @@
 	map_header_2 BlackthornPokeCenter1F, BLACKTHORN_POKECENTER_1F, $0, 0
 	map_header_2 MoveDeletersHouse, MOVE_DELETERS_HOUSE, $0, 0
 	map_header_2 CinnabarPokeCenter1F, CINNABAR_POKECENTER_1F, $0, 0
-	map_header_2 Route19FuchsiaGate, ROUTE_19___FUCHSIA_GATE, $0, 0
+	map_header_2 Route19FuchsiaGate, ROUTE_19_FUCHSIA_GATE, $0, 0
 	map_header_2 SeafoamIslands1F, SEAFOAM_ISLANDS_1F, $9, 0
 	map_header_2 SeafoamGym, SEAFOAM_GYM, $9, 0
 	map_header_2 SeafoamIslandsB1F, SEAFOAM_ISLANDS_B1F, $9, 0
@@ -826,6 +826,7 @@
 	map_header_2 ScaryCave1F, SCARY_CAVE_1F, $9, 0
 	map_header_2 ScaryCaveB1F, SCARY_CAVE_B1F, $9, 0
 	map_header_2 ScaryCaveShipwreck, SCARY_CAVE_SHIPWRECK, $9, 0
+	map_header_2 Route19BeachHouse, ROUTE_19_BEACH_HOUSE, $0, 0
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0

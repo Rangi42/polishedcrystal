@@ -3,8 +3,8 @@ const_value set 2
 	const ROUTE19_SWIMMER_GUY1
 	const ROUTE19_SWIMMER_GUY2
 	const ROUTE19_SWIMMER_GUY3
-	const ROUTE19_FISHER1
-	const ROUTE19_FISHER2
+	const ROUTE19_ENGINEER1
+	const ROUTE19_ENGINEER2
 
 Route19_MapScriptHeader:
 .MapTriggers:
@@ -20,12 +20,12 @@ Route19_MapScriptHeader:
 .ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .Done
+	changeblock $6, $4, $7a
+	changeblock $8, $4, $7a
+	changeblock $a, $4, $7a
 	changeblock $6, $6, $7a
-	changeblock $8, $6, $7a
-	changeblock $a, $6, $7a
-	changeblock $c, $8, $7a
-	changeblock $4, $8, $7a
-	changeblock $a, $a, $7a
+	changeblock $c, $6, $7a
+	changeblock $8, $8, $7a
 .Done:
 	return
 
@@ -73,7 +73,7 @@ SwimmermTuckerScript:
 	closetext
 	end
 
-FisherScript_0x19ea4d:
+EngineerScript_0x19ea4d:
 	faceplayer
 	opentext
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
@@ -89,18 +89,18 @@ UnknownScript_0x19ea5b:
 	closetext
 	end
 
-FisherScript_0x19ea61:
+EngineerScript_0x19ea61:
 	faceplayer
 	opentext
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .RocksCleared
-	writetext Route19FisherText1
+	writetext Route19EngineerText1
 	waitbutton
 	closetext
 	end
 
 .RocksCleared:
-	writetext Route19FisherText2
+	writetext Route19EngineerText2
 	waitbutton
 	closetext
 	end
@@ -207,13 +207,13 @@ UnknownText_0x19ed24:
 	line "Time for a swim!"
 	done
 
-Route19FisherText1:
+Route19EngineerText1:
 	text "Who knows how long"
 	line "it would take to"
 	cont "move this boulder…"
 	done
 
-Route19FisherText2:
+Route19EngineerText2:
 	text "The roadwork is"
 	line "finally finished."
 
@@ -242,22 +242,23 @@ Route19_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 1
-	warp_def $3, $7, 3, ROUTE_19___FUCHSIA_GATE
+	db 2
+	warp_def $1, $7, 3, ROUTE_19_FUCHSIA_GATE
+	warp_def $d, $5, 1, ROUTE_19_BEACH_HOUSE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 2
-	signpost 13, 11, SIGNPOST_READ, Route19Sign
-	signpost 1, 11, SIGNPOST_READ, CarefulSwimmingSign
+	signpost 15, 11, SIGNPOST_READ, Route19Sign
+	signpost -1, 11, SIGNPOST_READ, CarefulSwimmingSign
 
 .PersonEvents:
 	db 6
 	person_event SPRITE_SWIMMER_GIRL, 36, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerSwimmerfDawn, -1
 	person_event SPRITE_SWIMMER_GUY, 44, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
-	person_event SPRITE_SWIMMER_GUY, 17, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
+	person_event SPRITE_SWIMMER_GUY, 19, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
 	person_event SPRITE_SWIMMER_GUY, 36, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerSwimmermTucker, -1
-	person_event SPRITE_FISHER, 5, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 1, FisherScript_0x19ea4d, -1
-	person_event SPRITE_FISHER, 5, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, FisherScript_0x19ea61, -1
+	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 1, EngineerScript_0x19ea4d, -1
+	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, EngineerScript_0x19ea61, -1
