@@ -228,27 +228,6 @@ ReadTrainerParty: ; 39771
 
 ; 397e3
 
-ComputeTrainerReward: ; 3991b (e:591b)
-	ld hl, hProduct
-	xor a
-rept 3
-	ld [hli], a
-endr
-	ld a, [wEnemyTrainerBaseReward]
-	ld [hli], a
-	ld a, [CurPartyLevel]
-	ld [hl], a
-	call Multiply
-	ld hl, wBattleReward
-	xor a
-	ld [hli], a
-	ld a, [hProduct + 2]
-	ld [hli], a
-	ld a, [hProduct + 3]
-	ld [hl], a
-	ret
-
-
 Battle_GetTrainerName:: ; 39939
 	ld a, [InBattleTowerBattle]
 	bit 0, a

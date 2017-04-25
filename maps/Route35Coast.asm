@@ -1,6 +1,7 @@
 const_value set 2
 	const ROUTE35COAST_SWIMMER_GUY
 	const ROUTE35COAST_SWIMMER_GIRL
+	const ROUTE35COAST_YOUNGSTER
 	const ROUTE35COAST_LASS1
 	const ROUTE35COAST_LASS2
 	const ROUTE35COAST_POKE_BALL
@@ -34,6 +35,28 @@ TrainerSwimmerfLisaScript:
 	closetext
 	end
 
+TrainerSwimmerfJill:
+	trainer EVENT_BEAT_SWIMMERF_JILL, SWIMMERF, JILL, SwimmerfJillSeenText, SwimmerfJillBeatenText, 0, SwimmerfJillScript
+
+SwimmerfJillScript:
+	end_if_just_battled
+	opentext
+	writetext SwimmerfJillAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerBird_keeperBryan:
+	trainer EVENT_BEAT_BIRD_KEEPER_BRYAN, BIRD_KEEPER, BRYAN, Bird_keeperBryanSeenText, Bird_keeperBryanBeatenText, 0, Bird_keeperBryanScript
+
+Bird_keeperBryanScript:
+	end_if_just_battled
+	opentext
+	writetext Bird_keeperBryanAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerSrandjrBeaandmay1:
 	trainer EVENT_BEAT_SR_AND_JR_BEA_AND_MAY, SR_AND_JR, BEAANDMAY1, SrandjrBeaandmay1SeenText, SrandjrBeaandmay1BeatenText, 0, TrainerSrandjrBeaandmay1Script
 
@@ -58,6 +81,9 @@ TrainerSrandjrBeaandmay2Script:
 
 Route35CoastBigPearl:
 	itemball BIG_PEARL
+
+Route35CoastHiddenStarPiece:
+	dwb EVENT_ROUTE_35_COAST_HIDDEN_STAR_PIECE, STAR_PIECE
 
 SwimmermWalterSeenText:
 	text "I forgot to wear"
@@ -96,6 +122,46 @@ SwimmerfLisaAfterText:
 
 	para "for fishing and"
 	line "battling."
+	done
+
+SwimmerfJillSeenText:
+	text "Don't I look good"
+	line "in this bikini?"
+	done
+
+SwimmerfJillBeatenText:
+	text "Hmph!"
+	done
+
+SwimmerfJillAfterText:
+	text "I'll forget my"
+	line "loss with a swim."
+	done
+
+Bird_keeperBryanSeenText:
+	text "What kinds of"
+	line "Balls do you use?"
+	done
+
+Bird_keeperBryanBeatenText:
+	text "Yikes! Not fast"
+	line "enough!"
+	done
+
+Bird_keeperBryanAfterText:
+	text "Some #mon flee"
+	line "right away."
+
+	para "Try catching them"
+	line "with Kurt's Fast"
+	cont "Ball."
+
+	para "Whenever I find a"
+	line "Wht Apricorn, I"
+	cont "take it to Kurt."
+
+	para "He turns it into a"
+	line "custom Ball."
 	done
 
 SrandjrBeaandmay1SeenText:
@@ -157,12 +223,15 @@ Route35Coast_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 14, 35, SIGNPOST_ITEM, Route35CoastHiddenStarPiece
 
 .PersonEvents:
-	db 5
-	person_event SPRITE_SWIMMER_GUY, 7, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermWalter, -1
-	person_event SPRITE_SWIMMER_GIRL, 17, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfLisa, -1
-	person_event SPRITE_LASS, 13, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrBeaandmay1, -1
-	person_event SPRITE_LASS, 14, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrBeaandmay2, -1
+	db 6
+	person_event SPRITE_SWIMMER_GUY, 7, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermWalter, -1
+	person_event SPRITE_SWIMMER_GIRL, 20, 25, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfLisa, -1
+	person_event SPRITE_SWIMMER_GIRL, 6, 16, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJill, -1
+	person_event SPRITE_YOUNGSTER, 10, 36, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBryan, -1
+	person_event SPRITE_LASS, 15, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrBeaandmay1, -1
+	person_event SPRITE_LASS, 16, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrBeaandmay2, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route35CoastBigPearl, EVENT_ROUTE_35_COAST_BIG_PEARL

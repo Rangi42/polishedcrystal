@@ -82,7 +82,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * RBY teleporter machine in Bill's house
 * Route 11 (and other expanded Kanto routes)
 * Route 16
-* Route 19+20+21 (extra HG/SS trainers)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Uraga Channel
 * Scary Cave
@@ -90,7 +89,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Quiet Cave
 * Celadon Hotel (just items left)
 * Celadon University
-* Mt. Moon (fossils)
 * Dim Cave (Facade TM)
 * Soul House
 * Lavender Radio Tower
@@ -244,6 +242,7 @@ Some of these may never be added; they're just suggestions.
    * B/W Battle! Elite Four (for Caitlin)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
+* 60 FPS via [doublespeed](https://github.com/FredrIQ/pokecrystal/tree/doublespeed) mode
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas

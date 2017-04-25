@@ -1890,6 +1890,26 @@ GetTrainerAttributes: ; 3957b
 	ld [wEnemyTrainerBaseReward], a
 	ret
 
+ComputeTrainerReward: ; 3991b (e:591b)
+	ld hl, hProduct
+	xor a
+rept 3
+	ld [hli], a
+endr
+	ld a, [wEnemyTrainerBaseReward]
+	ld [hli], a
+	ld a, [CurPartyLevel]
+	ld [hl], a
+	call Multiply
+	ld hl, wBattleReward
+	xor a
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+	ret
+
 INCLUDE "trainers/attributes.asm"
 
 SECTION "Enemy Trainer Parties", ROMX[$4000], BANK[$E]

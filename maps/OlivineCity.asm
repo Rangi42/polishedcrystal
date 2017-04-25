@@ -1,6 +1,5 @@
 const_value set 2
 	const OLIVINECITY_OLIVINE_RIVAL
-	const OLIVINECITY_SWIMMER_GIRL
 	const OLIVINECITY_YOUNGSTER1
 	const OLIVINECITY_SAILOR1
 	const OLIVINECITY_SAILOR2
@@ -13,6 +12,8 @@ const_value set 2
 	const OLIVINECITY_LASS1
 	const OLIVINECITY_YOUNGSTER2
 	const OLIVINECITY_LASS2
+	const OLIVINECITY_SAILOR6
+	const OLIVINECITY_LASS3
 
 OlivineCity_MapScriptHeader:
 .MapTriggers:
@@ -91,6 +92,28 @@ OlivineCityRivalLighthouseScript:
 	special RunCallback_04
 	end
 
+TrainerSailorHarvey:
+	trainer EVENT_BEAT_SAILOR_HARVEY, SAILOR, HARVEY, SailorHarveySeenText, SailorHarveyBeatenText, 0, TrainerSailorHarveyScript
+
+TrainerSailorHarveyScript:
+	end_if_just_battled
+	opentext
+	writetext SailorHarveyAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerLassRose:
+	trainer EVENT_BEAT_LASS_ROSE, LASS, ROSE, LassRoseSeenText, LassRoseBeatenText, 0, TrainerLassRoseScript
+
+TrainerLassRoseScript:
+	end_if_just_battled
+	opentext
+	writetext LassRoseAfterText
+	waitbutton
+	closetext
+	end
+
 OlivineCityYoungster1Script:
 	faceplayer
 	opentext
@@ -140,17 +163,6 @@ OlivineCityYoungster2Script:
 OlivineCityLass2Script:
 	jumptextfaceplayer OlivineCityLass2Text
 
-TrainerSwimmerfJill:
-	trainer EVENT_BEAT_SWIMMERF_JILL, SWIMMERF, JILL, SwimmerfJillSeenText, SwimmerfJillBeatenText, 0, SwimmerfJillScript
-
-SwimmerfJillScript:
-	end_if_just_battled
-	opentext
-	writetext SwimmerfJillAfterText
-	waitbutton
-	closetext
-	end
-
 OlivineCitySign:
 	jumptext OlivineCitySignText
 
@@ -168,6 +180,12 @@ OlivineCityBattleTowerSign:
 
 OlivineCityHiddenRareCandy:
 	dwb EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY, RARE_CANDY
+
+OlivineCityHiddenBigPearl:
+	dwb EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL, BIG_PEARL
+
+OlivineCityHiddenSoftSand:
+	dwb EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND, SOFT_SAND
 
 OlivineCityMovementData_ShovePlayerDown:
 	turn_head_up
@@ -287,18 +305,50 @@ OlivineCityRivalLighthouseText:
 	cont "less weak!"
 	done
 
-SwimmerfJillSeenText:
-	text "Don't I look good"
-	line "in this bikini?"
+SailorHarveySeenText:
+	text "Hah! Your #mon"
+	line "sure look like"
+	cont "lightweights!"
 	done
 
-SwimmerfJillBeatenText:
-	text "Hmph!"
+SailorHarveyBeatenText:
+	text "What power!"
+	line "How would you like"
+
+	para "to sail the seas"
+	line "with me?"
 	done
 
-SwimmerfJillAfterText:
-	text "I'll forget my"
-	line "loss with a swim."
+SailorHarveyAfterText:
+	text "On the sea, the"
+	line "only thing you can"
+
+	para "count on is your"
+	line "own good self!"
+
+	para "I'm so proud of my"
+	line "buff bod!"
+	done
+
+LassRoseSeenText:
+	text "I collected these"
+	line "#mon from all"
+	cont "around the world!"
+	done
+
+LassRoseBeatenText:
+	text "Oh no!"
+	line "I went around the"
+	cont "world for these!"
+	done
+
+LassRoseAfterText:
+	text "You hurt my poor"
+	line "worldly #mon!"
+
+	para "I demand that you"
+	line "heal them at a"
+	cont "#mon Center!"
 	done
 
 UnknownText_0x1a8b04:
@@ -500,18 +550,19 @@ OlivineCity_MapEventHeader:
 	xy_trigger 0, $17, $21, $0, OlivineCityRivalLighthouseScript, $0, $0
 
 .Signposts:
-	db 6
+	db 8
 	signpost 7, 17, SIGNPOST_READ, OlivineCitySign
 	signpost 22, 20, SIGNPOST_READ, OlivineCityPortSign
 	signpost 7, 7, SIGNPOST_READ, OlivineGymSign
 	signpost 20, 34, SIGNPOST_READ, OlivineLighthouseSign
 	signpost 21, 1, SIGNPOST_READ, OlivineCityBattleTowerSign
 	signpost 14, 36, SIGNPOST_ITEM, OlivineCityHiddenRareCandy
+	signpost 14, 47, SIGNPOST_ITEM, OlivineCityHiddenBigPearl
+	signpost 29, 49, SIGNPOST_ITEM, OlivineCityHiddenSoftSand
 
 .PersonEvents:
-	db 14
+	db 13
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
-	person_event SPRITE_SWIMMER_GIRL, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJill, -1
 	person_event SPRITE_YOUNGSTER, 8, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster1Script, -1
 	person_event SPRITE_SAILOR, 22, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor1Script, -1
 	person_event SPRITE_SAILOR, 21, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, OlivineCitySailor2Script, -1
@@ -524,3 +575,5 @@ OlivineCity_MapEventHeader:
 	person_event SPRITE_LASS, 11, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityLass1Script, -1
 	person_event SPRITE_YOUNGSTER, 11, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster2Script, -1
 	person_event SPRITE_LASS, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, OlivineCityLass2Script, -1
+	person_event SPRITE_SAILOR, 19, 49, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerSailorHarvey, -1
+	person_event SPRITE_LASS, 26, 52, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassRose, -1

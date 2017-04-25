@@ -317,13 +317,13 @@ TrainerPsychicMark:
 	closetext
 	end
 
-TrainerSchoolgirlAudrey
-	trainer EVENT_BEAT_SCHOOLGIRL_AUDREY, SCHOOLGIRL, AUDREY, SchoolgirlAudreySeenText, SchoolgirlAudreyBeatenText, 0, .Script
+TrainerSchoolgirlMolly:
+	trainer EVENT_BEAT_SCHOOLGIRL_MOLLY, SCHOOLGIRL, MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	writetext SchoolgirlAudreyAfterText
+	writetext SchoolgirlMollyAfterText
 	waitbutton
 	closetext
 	end
@@ -556,17 +556,17 @@ UnknownText_0x19471e:
 	line "was thinking."
 	done
 
-SchoolgirlAudreySeenText:
+SchoolgirlMollySeenText:
 	text "Mr.Earl taught me"
 	line "how to battle with"
 	cont "#mon!"
 	done
 
-SchoolgirlAudreyBeatenText:
+SchoolgirlMollyBeatenText:
 	text "My studying…"
 	done
 
-SchoolgirlAudreyAfterText:
+SchoolgirlMollyAfterText:
 	text "I still have a"
 	line "lot to learn."
 	done
@@ -704,5 +704,5 @@ Route36_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36FruitTree, -1
 	person_event SPRITE_YOUNGSTER, 6, 46, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
 	person_event SPRITE_LASS, 12, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
-	person_event SPRITE_TWIN, 4, 47, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlAudrey, -1
+	person_event SPRITE_TWIN, 4, 47, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlMolly, -1
 	person_event SPRITE_SUICUNE, 6, 21, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36

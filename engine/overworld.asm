@@ -1010,14 +1010,14 @@ Group13Sprites:
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	db SPRITE_LASS ; doesn't walk
 	db SPRITE_BLUE ; doesn't walk
+	db SPRITE_COSPLAYER ; doesn't walk
 	db SPRITE_ENGINEER ; doesn't walk
-	; 9 walking sprites (7 that walk)
+	; 11 walking sprites (7 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 10 total sprites
-	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_ROCK_BOULDER_FOSSIL
+	; 13 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
@@ -1471,6 +1471,7 @@ Group21Sprites:
 ; Route17
 ; CeladonCity
 	db SPRITE_BIKER
+	db SPRITE_BREEDER
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
@@ -1479,12 +1480,11 @@ Group21Sprites:
 	db SPRITE_ROUGHNECK
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 9 walking sprites (8 that walk)
+	; 10 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
-	; 12 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 13 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT

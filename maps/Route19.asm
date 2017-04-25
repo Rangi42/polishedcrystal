@@ -3,8 +3,15 @@ const_value set 2
 	const ROUTE19_SWIMMER_GUY1
 	const ROUTE19_SWIMMER_GUY2
 	const ROUTE19_SWIMMER_GUY3
+	const ROUTE19_COSPLAYER
 	const ROUTE19_ENGINEER1
 	const ROUTE19_ENGINEER2
+	const ROUTE19_POKE_BALL
+	const ROUTE19_ROCK1
+	const ROUTE19_ROCK2
+	const ROUTE19_ROCK3
+	const ROUTE19_ROCK4
+	const ROUTE19_ROCK5
 
 Route19_MapScriptHeader:
 .MapTriggers:
@@ -26,6 +33,7 @@ Route19_MapScriptHeader:
 	changeblock $6, $6, $7a
 	changeblock $c, $6, $7a
 	changeblock $8, $8, $7a
+	disappear ROUTE19_ROCK2
 .Done:
 	return
 
@@ -40,13 +48,13 @@ SwimmerfDawnScript:
 	closetext
 	end
 
-TrainerSwimmermHarold:
-	trainer EVENT_BEAT_SWIMMERM_HAROLD, SWIMMERM, HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText, 0, SwimmermHaroldScript
+TrainerSwimmermTucker:
+	trainer EVENT_BEAT_SWIMMERM_TUCKER, SWIMMERM, TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText, 0, SwimmermTuckerScript
 
-SwimmermHaroldScript:
+SwimmermTuckerScript:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x19eab4
+	writetext UnknownText_0x19eb3b
 	waitbutton
 	closetext
 	end
@@ -62,13 +70,24 @@ SwimmermJeromeScript:
 	closetext
 	end
 
-TrainerSwimmermTucker:
-	trainer EVENT_BEAT_SWIMMERM_TUCKER, SWIMMERM, TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText, 0, SwimmermTuckerScript
+TrainerSwimmermHarold:
+	trainer EVENT_BEAT_SWIMMERM_HAROLD, SWIMMERM, HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText, 0, SwimmermHaroldScript
 
-SwimmermTuckerScript:
+SwimmermHaroldScript:
 	end_if_just_battled
 	opentext
-	writetext UnknownText_0x19eb3b
+	writetext UnknownText_0x19eab4
+	waitbutton
+	closetext
+	end
+
+TrainerCosplayerBrooke:
+	trainer EVENT_BEAT_COSPLAYER_BROOKE, COSPLAYER, BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText, 0, CosplayerBrookeScript
+
+CosplayerBrookeScript:
+	end_if_just_battled
+	opentext
+	writetext CosplayerBrookeAfterText
 	waitbutton
 	closetext
 	end
@@ -105,47 +124,29 @@ EngineerScript_0x19ea61:
 	closetext
 	end
 
+Route19BigPearl:
+	itemball BIG_PEARL
+
+Route19Rock:
+	jumpstd smashrock
+
 Route19Sign:
 	jumptext Route19SignText
 
 CarefulSwimmingSign:
 	jumptext CarefulSwimmingSignText
 
-SwimmermHaroldSeenText:
-	text "Have you ever gone"
-	line "swimming in the"
-	cont "sea at night?"
-	done
+Route19HiddenRevive:
+	dwb EVENT_ROUTE_19_HIDDEN_REVIVE, REVIVE
 
-SwimmermHaroldBeatenText:
-	text "Glub…"
-	done
+Route19HiddenMaxRevive:
+	dwb EVENT_ROUTE_19_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
-UnknownText_0x19eab4:
-	text "At night, the sea"
-	line "turns black. It"
+Route19HiddenPearl1:
+	dwb EVENT_ROUTE_19_HIDDEN_PEARL_1, PEARL
 
-	para "feels like it will"
-	line "swallow you up."
-	done
-
-SwimmermTuckerSeenText:
-	text "Pant, pant…"
-	line "Just… a little…"
-
-	para "farther… to…"
-	line "Fuchsia…"
-	done
-
-SwimmermTuckerBeatenText:
-	text "I'm drowning!"
-	done
-
-UnknownText_0x19eb3b:
-	text "I… asked my girl-"
-	line "friend to swim to"
-	cont "Fuchsia… Gasp…"
-	done
+Route19HiddenPearl2:
+	dwb EVENT_ROUTE_19_HIDDEN_PEARL_2, PEARL
 
 SwimmerfDawnSeenText:
 	text "I'm disgusted by"
@@ -170,6 +171,24 @@ UnknownText_0x19ebad:
 	para "is! What a wimp!"
 	done
 
+SwimmermTuckerSeenText:
+	text "Pant, pant…"
+	line "Just… a little…"
+
+	para "farther… to…"
+	line "Fuchsia…"
+	done
+
+SwimmermTuckerBeatenText:
+	text "I'm drowning!"
+	done
+
+UnknownText_0x19eb3b:
+	text "I… asked my girl-"
+	line "friend to swim to"
+	cont "Fuchsia… Gasp…"
+	done
+
 SwimmermJeromeSeenText:
 	text "Swimming?"
 	line "I'm lousy at it."
@@ -188,6 +207,45 @@ UnknownText_0x19ec7e:
 	text "I might be bad at"
 	line "swimming, but I"
 	cont "love the sea."
+	done
+
+SwimmermHaroldSeenText:
+	text "Have you ever gone"
+	line "swimming in the"
+	cont "sea at night?"
+	done
+
+SwimmermHaroldBeatenText:
+	text "Glub…"
+	done
+
+UnknownText_0x19eab4:
+	text "At night, the sea"
+	line "turns black. It"
+
+	para "feels like it will"
+	line "swallow you up."
+	done
+
+CosplayerBrookeSeenText:
+	text "Dressing up is"
+	line "such fun!"
+	done
+
+CosplayerBrookeBeatenText:
+	text "You'd better not"
+	line "have damaged my"
+	cont "costume!"
+	done
+
+CosplayerBrookeAfterText:
+	text "I made this outfit"
+	line "for a fancy dress"
+	cont "party, but I love"
+
+	para "it so much that I"
+	line "wear it elsewhere"
+	cont "too."
 	done
 
 UnknownText_0x19ecaf:
@@ -250,15 +308,26 @@ Route19_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 6
 	signpost 15, 11, SIGNPOST_READ, Route19Sign
 	signpost -1, 11, SIGNPOST_READ, CarefulSwimmingSign
+	signpost 3, 5, SIGNPOST_ITEM, Route19HiddenRevive
+	signpost 11, 3, SIGNPOST_ITEM, Route19HiddenMaxRevive
+	signpost 15, 5, SIGNPOST_ITEM, Route19HiddenPearl1
+	signpost 13, 13, SIGNPOST_ITEM, Route19HiddenPearl2
 
 .PersonEvents:
-	db 6
-	person_event SPRITE_SWIMMER_GIRL, 36, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerSwimmerfDawn, -1
-	person_event SPRITE_SWIMMER_GUY, 44, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
-	person_event SPRITE_SWIMMER_GUY, 19, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
-	person_event SPRITE_SWIMMER_GUY, 36, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerSwimmermTucker, -1
-	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 1, EngineerScript_0x19ea4d, -1
-	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, EngineerScript_0x19ea61, -1
+	db 13
+	person_event SPRITE_SWIMMER_GIRL, 34, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerSwimmerfDawn, -1
+	person_event SPRITE_SWIMMER_GUY, 34, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerSwimmermTucker, -1
+	person_event SPRITE_SWIMMER_GUY, 25, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
+	person_event SPRITE_SWIMMER_GUY, 43, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
+	person_event SPRITE_COSPLAYER, 51, 13, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerBrooke, -1
+	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
+	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 52, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route19BigPearl, EVENT_ROUTE_19_BIG_PEARL
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 11, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1

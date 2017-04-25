@@ -596,6 +596,7 @@ endm
 ; b82c5
 
 RockMonMaps: ; b82c5
+	treemon_map ROUTE_19, 7
 	treemon_map ROUTE_40, 7
 	treemon_map CIANWOOD_CITY, 7
 	treemon_map VERMILION_CITY, 7
