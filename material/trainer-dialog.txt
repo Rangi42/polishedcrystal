@@ -1,0 +1,105 @@
+http://bulbapedia.bulbagarden.net/wiki/Inver#Quotes
+Hex Maniac:
+Let me tell you about my brother's mysterious power!
+With it, he can reverse Pokémon type matchups!
+It's really crazy!
+Super-effective moves become not very effective, and vice-versa!
+
+
+
+Cosplayer Sylvie (Marill, Mawile) [Rangi/Sylvie]
+CooltrainerF Nicole (Marill, Kirlia) [Mateo/Luna/Nicole/Nikki]
+Cosplayer Kuroko (Vulpix, Ninetales) [Pia Carrot/Kuroko Aizawa]
+Lass Alice [trap] (http://imgur.com/a/rlVDD) [Sukiyami/Alice/Kazuno Leah]
+CooltrainerF Sera (Ampharos, Feraligatr, Ninetails) [Cat Girl Maid Server Thing]
+Super Nerd Mako (Flareon, Jolteon, Vaporeon, Espeon, Umbreon) [Mako]
+
+
+
+
+Welcome to the Exchange Service Corner! Would you like to trade in your BP for some prizes?
+Please come back any time you want!
+<ITEM> will cost <N> BP. Is that OK?
+You put away the <ITEM> in the <NAME> Pocket.
+I'm sorry, but you don’t have enough BP.
+I'm sorry, but your Bag is full.
+Please choose the item you would like.
+
+Some Trainers rely on a Pokémon's potential alone. But you can use items and medicines to help improve a Pokémon's capabilities.
+
+Mountain climbing and Pokémon are similar in a sense. They both come down to potential! I do not rely on items or medicines but rather potential and training for battle!
+
+
+
+HouseForSaleSignText:
+	text "What's this?"
+
+	para "House for Sale…"
+	line "Nobody lives here."
+	done
+
+UnknownText_0x1a03cc:
+	text "There are several"
+	line "islands between"
+	cont "here and Olivine."
+
+	para "A mythical sea"
+	line "creature supposed-"
+	cont "ly lives there."
+	done
+
+UnknownText_0x55b7c:
+	text "We intend to sell"
+	line "items for #mon"
+	cont "to hold."
+
+	para "This is a free"
+	line "gift. Have a #-"
+	cont "mon hold it."
+	done
+
+UnknownText_0x55bd3:
+	text "By giving #mon"
+	line "items to hold, I"
+
+	para "bet trainers will"
+	line "develop new battle"
+	cont "techniques."
+	done
+
+UnknownText_0x58a03:
+	text "The patterns on"
+	line "the wall appear to"
+	cont "be words!"
+
+	para "And those sliding"
+	line "stone panels seem"
+
+	para "to be signals of"
+	line "some kind."
+
+	para "I think they make"
+	line "#mon appear,"
+
+	para "but it's not clear"
+	line "yet…"
+	done
+
+UnknownText_0x58ac8:
+	text "It's Unown text!"
+	done
+
+; not used
+	text "#mon Radio!"
+
+	para "Call in with your"
+	line "requests now!"
+	done
+
+HomepageText:
+	text "#mon Journal"
+	line "Home Page…"
+
+	para "It hasn't been"
+	line "updated…"
+	done

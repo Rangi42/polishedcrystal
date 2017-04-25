@@ -1,0 +1,115 @@
+SOOTHE_BELL [National Park]
+
+Battle Tower #1:
+CHOICE_BAND
+CHOICE_SCARF [Mom]
+CHOICE_SPECS [Lake of Rage]
+EXPERT_BELT [Mt.Silver]
+MUSCLE_BAND (Steven) [Mom]
+WISE_GLASSES (Cynthia) [Pewter City]
+METRONOME_I [Game Corner]
+GRIP_CLAW [Seafoam Islands]
+.
+.
+
+Battle Tower #2:
+RARE_CANDY
+PP_MAX (Radio Tower)
+ABILITY_CAP
+WEAK_POLICY
+LIFE_ORB [Ruins of Alph]
+FLAME_ORB (TODO: Cinnabar Volcano)
+TOXIC_ORB (TODO: Murky Swamp)
+BLACK_SLUDGE [Cerulean Cave]
+.
+.
+
+Battle Tower #3:
+MACHO_BRACE
+FOCUS_BAND (Fighting Dojo)
+FOCUS_SASH [Mom]
+ASSAULT_VEST
+PROTECT_PADS
+ROCKY_HELMET
+SAFE_GOGGLES
+BINDING_BAND
+.
+.
+
+Adventurer:
+ETHER
+ELIXIR
+DESTINY_KNOT [Route 27]
+SCOPE_LENS (Harbor merchant)
+WIDE_LENS (Harbor merchant) [Game Corner]
+ZOOM_LENS (Harbor merchant) [Game Corner]
+BRIGHTPOWDER (Harbor merchant) [Radio Tower]
+SURF_MAIL
+.
+.
+
+Souvenir Shop:
+RAGECANDYBAR
+GREAT_BALL
+SUPER_POTION
+HYPER_POTION
+SUPER_REPEL
+REVIVE
+AIR_BALLOON
+QUICK_CLAW (National Park, Route 47)
+KINGS_ROCK (Slowpoke Well)
+.
+
+Shamouti Market #1:
+Charmander Doll
+Bulbasaur Doll
+Squirtle Doll
+
+Shamouti Market #1 (herbalist):
+MENTAL_HERB [Route 7]
+POWER_HERB [Route 34]
+WHITE_HERB
+BIG_ROOT [Route 3, Yellow Forest]
+.
+.
+.
+.
+.
+.
+
+Shamouti Market #2 (geologist):
+DAMP_ROCK
+HEAT_ROCK
+SMOOTH_ROCK (TODO: Diglett's Cave)
+ICY_ROCK
+EVIOLITE
+LIGHT_CLAY [Route 9] (TODO: Dim Cave)
+.
+.
+.
+.
+
+Girl on Warm Beach:
+SHELL_BELL [Route 32] (one per day)
+
+Shamouti Hotel Restaurant Baker:
+LEFTOVERS (Celadon Restaurant)
+
+Silph employee:
+MAX_POTION
+MAX_REPEL
+DUSK_BALL
+UP_GRADE
+DUBIOUS_DISC
+
+Mt.Moon:
+revive
+dusk stone
+shiny stone
+moon stone
+star piece
+dome fossil
+helix fossil
+big mushroom (hidden)
+moon stone (hidden)
+max ether (hidden)

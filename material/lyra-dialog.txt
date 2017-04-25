@@ -1,0 +1,22 @@
+Lyra: <PLAYER>! Did you already collect eight Badges? That's so cool! The professor is waiting for you.
+
+Lyra: <PLAYER>, people are talking about you! I heard you helped Kimono Girls? You've been helping all these people! You make me proud to be your friend.
+
+Lyra: Isn't it strange that when we are with Pokémon, going out is just so much more fun! <PLAYER>! Try going to different places and talk to your Pokémon! I bet you'll find out so many things about them!
+Lyra: Hi, <PLAYER>! How are your Pokémon? Don't forget to talk to... What's that? Your Pokémon is holding a leaf... Could that be a Shiny Leaf? Legend has it that only Pokémon that have formed a close bond with people can find such leaves... People used to turn the leaves into a beautiful crown when they managed to collect five of them. Wow! I knew you could obtain one, <PLAYER>! Let me see it when you find another!
+Lyra: Hi, <PLAYER>! How is your Pokémon you're walking with? You can talk to it as you walk from time to time to nurture your friendship! ... Oh! You found a Shiny Leaf! Let me see! Ha! You've collected... <?>! Way to go! Keep it up and collect <?> more!
+Lyra: Hi, <PLAYER>! How is your Pokémon you're walking with? You can talk to it as you walk from time to time to nurture your friendship! ... Ha! You have already collected five Shiny Leaves! Let me turn them into a crown! And what's more... I will give you this, too!
+Lyra: Cherish your friendship with Pokémon for years to come!
+Lyra: Hi, <PLAYER>! How is your Pokémon? You can talk to it as you walk from time to time to nurture your friendship! ... Oh, I get it. Are you here to check on the award with <?>?
+
+What's up, <PLAYER>? Even though you're nearby, the phone makes you seem far away. Maybe if you shout, then you'll seem closer!
+
+
+Professor Elm: That is quite a rare Pichu! Can I take a look at it closely? 
+Hmm… One of the ears is spiky… That's strange. There seems to be something more to it. It really is a rare sight. 
+You met it at the Ilex Forest? A mysterious Pokémon called Celebi has been sighted there, or so I heard. 
+Speaking of that… 
+Professor Oak once wrote about Celebi and Time Travel in a research paper he presented at a conference! 
+Professor Elm: Celebi can use its mystic power called Time Travel… to travel to the past and future. 
+If this Pichu has traveled through time, perhaps you should take extra care of it, <PLAYER>. It seems that this Pichu has been affected by traveling so far through time with Celebi. I'll inform the Pokémon Center of it. The lady at the reception should be able to tell you if anything may affect that Pichu.
+Professor Elm: This Pichu doesn't seem like a regular Pichu. I'll find out more about it.

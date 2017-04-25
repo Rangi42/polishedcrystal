@@ -1,0 +1,235 @@
+===== TMs==== ==================================================================
+
+----- Kanto -----
+
+route 6:
+TM62 (Silver Wind)	In the southwest part of the route
+
+route 8:
+TM41 (Torment)	South of the Bikers
+
+route 9:
+TM91 (Flash Cannon)	Northeast corner of the route, past Hiker Eoin (requires Cut)
+
+route 10:
+TM69 (Rock Polish)	On a ledge in the center of the southern portion of the route (requires Strength)
+
+route 11:
+TM86 (Grass Knot)	Northeast corner of route
+
+route 19:
+TM55 (Brine)	Lower-right-hand corner of the route (requires Surf)
+
+celadon city:
+TM67 (Recycle)	At the end of the narrow pathway to the north of the city
+
+
+
+===== Visible ==================================================================
+
+----- Johto -----
+
+ruins of alph:
+Hyper Potion	North of the western pond (requires Rock Smash or Surf)
+
+route 35:
+Parlyz Heal	East of Juggler Irwin, surrounded by trees
+
+national park:
+Soothe Bell	North of the entrance to Route 36, on the other side of the fence
+
+route 36:
+Hyper Potion	Northwest of Sudowoodo, south of the small grove
+
+route 38:
+Max Potion	In the grass along the southern path
+
+mt. mortar:
+http://bulbapedia.bulbagarden.net/wiki/Mt._Mortar#Items
+
+team rocket hq:
+http://bulbapedia.bulbagarden.net/wiki/Team_Rocket_HQ#Items
+
+lake of rage:
+Max Revive	In the maze of trees to the west; can only be accessed when not flooded (requires Cut)
+Choice Specs	On a small section of land on the north-east side of the lake, accessible when flooded
+Full Heal	Near the old man standing near the lake; can only be accessed when not flooded (requires Surf)
+Full Restore	In the north-east corner of the maze of trees to the west; can only be accessed when not flooded (requires Cut)
+
+dragon's den:
+Max Elixir	Near Twins Clea & Gil
+
+route 45:
+Full Heal	Left path
+
+
+
+===== Hidden ===================================================================
+
+----- Johto -----
+
+cherrygrove city:
+nugget in surf grass next to pokémon center
+
+dark cave:
+Poké Ball	In a rock northeast of the Potion
+Max Ether	Southeast of Hyper Potion (requires Rock Smash)
+Elixir	Southwest of entrance from Route 45
+Max Revive	On a rock, north of the man who gives BlackGlasses (requires Surf)
+Hyper Potion	On a rock north of the exit to the Violet City side (requires Surf)
+
+violet city:
+poke ball on island in front of sprout tower
+
+route 32:
+Super Potion	Next to the trees west of the man who gives TM05 (Roar) (requires Cut)
+Heart Scale	In the small rock in the water to the east of the fishermen, next to the leg of the train bridge (requires Surf)
+Great Ball	Outside the entrance to Union Cave
+
+ruins of alph:
+Potion	In the left wall of the building, southmost of the three in the northeast
+Great Ball	In the central solid rock among a group near the southern entrance
+TinyMushroom	TinyMushroom	In the small mound of dirt east of the western pond
+Rare Candy	In a solid rock west of a smashable rock to the west of the northern entrance (requires Rock Smash)
+Nugget	On a boulder outside the third chamber (accessed via Union Cave)
+Big Mushroom	On a boulder outside the third chamber (accessed via Union Cave)
+
+union cave:
+Ultra Ball	B2F, on stalagmite northwest of Ace Trainer Emma
+Calcium	B2F, northwest of Ace Trainer Gwen
+
+ilex forest:
+TinyMushroom ×3
+    At the top-right flower patch, where most of the sticks are
+    West of the easternmost flower patches on the one-way path to the Move Tutor
+    Southeast of the second northernmost isolated tree
+Repel	On the first flower patch east of the pond
+Full Heal	Northwest of the second northernmost isolated tree
+Ether	West of the northernmost isolated tree
+Big Mushroom	At the empty patch west of the pond (requires Surf)
+
+goldenrod city:
+Super Potion	Northwest of the lamppost south of the Bike Shop
+
+route 35:
+Nugget	Across the small pond, north of the Apricorn tree (requires Surf)
+
+route 36:
+Awakening	In one of the trees north of the large patch of grass
+
+ecruteak city:
+Ether	On the burned logs east of the Burned Tower
+Ultra Ball	West side of town in a lamp post
+Rare Candy	South of the water
+
+burned tower:
+Revive	B1F; south-center in a boulder just west of the smashable rocks
+
+bellchime trail:
+TinyMushroom ×3	Scattered along Bellchime Trail
+Big Mushroom ×2	Scattered along Bellchime Trail
+
+route 38:
+HP Up	In white flowers behind the fence (requires Rock Climb)
+
+route 39:
+PP Up	Near the Miltank 
+X Attack	Near the silo
+
+olivine city:
+Full Heal	On a boulder north-west of the NPC who trades a Voltorb
+Pearl	Behind the Olivine Port building
+Protein	In Olivine Harbor, southwest of the S.S. Aqua
+Rare Candy	Near the north-east corner of the Lighthouse (requires Rock Climb
+
+route 41:
+Stardust ×3	On the beach on the northeast island (requires Whirlpool)
+
+cianwood city:
+Stardust	In front of the second drying rack from the top
+
+mt. mortar:
+http://bulbapedia.bulbagarden.net/wiki/Mt._Mortar#Items
+
+team rocket hq:
+http://bulbapedia.bulbagarden.net/wiki/Team_Rocket_HQ#Items
+
+route 44:
+Elixir	At the end of the short dead-end path east of the ponds
+
+ice path:
+Revive	B1F, exactly two steps to the right of the Iron
+
+route 45:
+PP Max	On a ledge at the southern end of the route (requires Rock Climb)
+
+----- Kanto -----
+
+route 3:
+Hyper Potion	On a boulder west of the Pokémon Center (requires Rock Smash)
+
+route 4:
+Big Mushroom	Southeast of Bird Keeper Hank
+
+route 9:
+Ether	Northwest of the easternmost patch of grass
+
+route 10:
+Carbos	On the west side of the Power Plant
+
+route 11:
+Revive	Between the fence posts on the northern side of the route
+
+route 19:
+Revive	Surrounded by two smashable rocks near the blue sign near the gate
+Max Elixir	Inside the rocky wall near the smashable rocks
+Pearl ×2	On the beach
+Big Pearl	Underneath the item ball containing TM55 (requires Surf)
+
+route 20:
+Stardust	On the north-east corner of the long, narrow sandbar on Cinnabar's side
+DeepSeaTooth	To the right of the entrance to Blaine's Gym
+DeepSeaScale	North of Seafoam Islands near Swimmer Luis
+
+route 21:
+Stardust	On the sandbar closest to Pallet Town
+Stardust	On a sandbar with no Trainers in the center of the route (×2)
+
+route 25:
+Revive	On the ledge in the northwest corner of the route
+
+route 26:
+TinyMushroom	North-east of Ace Trainer Jake
+
+route 27:
+Nugget	On a tiny spit of land at the eastern end of the route only accessible from Route 26 (requires Surf)
+Revive	On a ledge northeast of Psychic Eli
+Big Mushroom	On a rock near the eastern end of the route, above a ledge only accessible from Route 26
+
+viridian city:
+Nugget	Near the trees northeast of the Poké Mart
+
+pewter city:
+Guard Spec.	In the flower garden
+Max Revive	Near the entrance from Route 2
+PP Up	In the rock southwest of the Pewter Gym
+
+cerulean city:
+Nugget	Southeast of the entrance to Cerulean Cave (requires Surf)
+
+vermilion city:
+Big Pearl	On the sandbar south of the walkway leading to the Vermilion Harbor, accessible only from Route 11 (requires Surf)
+Full Heal	In the southeastern corner of the construction site (requires Rock Smash)
+Heart Scale	On the second northernmost boat (requires Surf)
+Iron	In the Vermilion Harbor, southeast of the S.S. Aqua
+Pearl ×2	On the sandbar south of the walkway leading to the Vermilion Harbor (can only be accessed from Route 11) (requires Surf)
+
+fuchsia city:
+Nugget	Near the flower boxes in the northeast area
+
+cinnabar island:
+Iron	On a rock in the south-eastern corner of the island (requires Rock Climb)
+Star Piece	On a rock on the erupted volcano (requires Rock Climb)
+
+indigo plateau:
+Rare Candy	Outside of the building
