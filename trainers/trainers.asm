@@ -14089,6 +14089,9 @@ CaitlinGroup:
 CandelaGroup:
 ; ================================
 ; ================
+
+; Flareon, Charizard, Ninetales, Dragonite, Arcanine, Moltres
+
 ; ================
 ; ================================
 
@@ -14096,6 +14099,9 @@ CandelaGroup:
 BlancheGroup:
 ; ================================
 ; ================
+
+; Vaporeon, Blastoise, Starmie, Lapras, Exeggutor, Articuno
+
 ; ================
 ; ================================
 
@@ -14103,6 +14109,9 @@ BlancheGroup:
 SparkGroup:
 ; ================================
 ; ================
+
+; Jolteon, Venusaur, Raichu, Snorlax, Victreebel, Zapdos
+
 ; ================
 ; ================================
 

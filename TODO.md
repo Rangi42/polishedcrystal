@@ -55,7 +55,7 @@
 * Mira in Scary Cave 1F
 * Anabel in Noisy Forest
 * Candela in Fire Island peak
-* Blance in Ice Island peak
+* Blanche in Ice Island peak
 * Spark in Lightning Island peak
 * Caitlin and Darach in Beautiful Beach villa
 * Looker in Shamouti Hotel room (not S.S. Aqua)
