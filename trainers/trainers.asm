@@ -5529,7 +5529,7 @@ BirdKeeperGroup:
 ; ================
 
 	; BIRD_KEEPER
-	db "Kinsley@"
+	db "Kinsey@"
 	db TRAINERTYPE_NORMAL
 
 	; party
