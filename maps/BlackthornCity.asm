@@ -194,9 +194,9 @@ Text_ClairIsBeaten:
 BlackthornGrampsRefusesEntryText:
 	text "No. Only chosen"
 	line "trainers may train"
+	cont "here."
 
-	para "here."
-	line "Please leave."
+	para "Please leave."
 	done
 
 BlackthornGrampsGrantsEntryText:

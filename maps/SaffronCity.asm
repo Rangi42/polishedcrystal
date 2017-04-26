@@ -361,7 +361,7 @@ SaffronCity_MapEventHeader:
 	warp_def $3, $1a, 1, FIGHTING_DOJO
 	warp_def $3, $22, 1, SAFFRON_GYM
 	warp_def $b, $19, 2, SAFFRON_MART
-	warp_def $1d, $9, 1, SAFFRON_POKECENTER_1F
+	warp_def $1d, $9, 1, GIOVANNIS_CAVE
 	warp_def $1d, $1b, 1, MR_PSYCHICS_HOUSE
 	warp_def $3, $8, 2, SAFFRON_TRAIN_STATION
 	warp_def $15, $12, 1, SILPH_CO_1F

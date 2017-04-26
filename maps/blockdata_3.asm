@@ -220,9 +220,6 @@ MountMoonSquare_BlockData:
 WiseTriosRoom_BlockData:
 	INCBIN "maps/WiseTriosRoom.blk"
 
-DragonsDen1F_BlockData:
-	INCBIN "maps/DragonsDen1F.blk"
-
 DragonsDenB1F_BlockData:
 	INCBIN "maps/DragonsDenB1F.blk"
 

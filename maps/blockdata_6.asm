@@ -1,4 +1,5 @@
 DimCave1F_BlockData:
+SeafoamIslands1F_BlockData:
 	INCBIN "maps/DimCave1F.blk"
 
 DimCave2F_BlockData:

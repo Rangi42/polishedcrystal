@@ -101,11 +101,11 @@ MAP_NONE   EQU 0
 	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9,  9 ; 64
 	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 65
 	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 66
-	mapgroup DRAGONS_DEN_1F,                              9,  5 ; 67
+	mapgroup DRAGONS_DEN_1F,                              9, 20 ; 67
 	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 68
 	mapgroup DRAGON_SHRINE,                               5,  5 ; 69
 	mapgroup TOHJO_FALLS,                                 9, 15 ; 70
-	mapgroup GIOVANNIS_CAVE,                             24, 10 ; 71
+	mapgroup GIOVANNIS_CAVE,                              5, 10 ; 71
 	mapgroup DIGLETTS_CAVE,                              19, 21 ; 72
 	mapgroup MOUNT_MOON_1F,                              13, 15 ; 73
 	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 74
@@ -157,7 +157,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ;  6
 
 	mapgroup CINNABAR_POKECENTER_1F,                      4,  6 ;  1
-	mapgroup SEAFOAM_ISLANDS_1F,                          5, 12 ;  2
+	mapgroup SEAFOAM_ISLANDS_1F,                         18, 17 ;  2
 	mapgroup SEAFOAM_GYM,                                12, 12 ;  3
 	mapgroup SEAFOAM_ISLANDS_B1F,                        10, 20 ;  4
 	mapgroup SEAFOAM_ISLANDS_B2F,                        10, 20 ;  5
