@@ -6000,15 +6000,15 @@ GruntMGroup:
 ; ================================
 ; ================
 
-	; unused
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 10, ZUBAT
-
-	db $ff ; end
+;	; unused
+;	; GRUNTM
+;	db "Grunt@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;	db 10, ZUBAT
+;
+;	db $ff ; end
 
 ; ================
 
@@ -6326,15 +6326,15 @@ GruntMGroup:
 
 ; ================
 
-	; unused
-	; GRUNTM
-	db "Grunt@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 22, ZUBAT
-
-	db $ff ; end
+;	; unused
+;	; GRUNTM
+;	db "Grunt@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;	db 22, ZUBAT
+;
+;	db $ff ; end
 
 ; ================
 
@@ -8040,48 +8040,48 @@ JugglerGroup:
 
 ; ================
 
-	; unused
-	; JUGGLER
-	db "Irwin@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 6, VOLTORB
-	db 10, VOLTORB
-	db 14, VOLTORB
-	db 18, VOLTORB
-
-	db $ff ; end
-
-; ================
-
-	; unused
-	; JUGGLER
-	db "Irwin@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 18, VOLTORB
-	db 22, VOLTORB
-	db 26, VOLTORB
-	db 30, ELECTRODE
-
-	db $ff ; end
+;	; unused
+;	; JUGGLER
+;	db "Irwin@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;	db 6, VOLTORB
+;	db 10, VOLTORB
+;	db 14, VOLTORB
+;	db 18, VOLTORB
+;
+;	db $ff ; end
 
 ; ================
 
-	; unused
-	; JUGGLER
-	db "Irwin@"
-	db TRAINERTYPE_NORMAL
+;	; unused
+;	; JUGGLER
+;	db "Irwin@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;	db 18, VOLTORB
+;	db 22, VOLTORB
+;	db 26, VOLTORB
+;	db 30, ELECTRODE
+;
+;	db $ff ; end
 
-	; party
-	db 18, VOLTORB
-	db 22, VOLTORB
-	db 26, VOLTORB
-	db 30, ELECTRODE
+; ================
 
-	db $ff ; end
+;	; unused
+;	; JUGGLER
+;	db "Irwin@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;	db 18, VOLTORB
+;	db 22, VOLTORB
+;	db 26, VOLTORB
+;	db 30, ELECTRODE
+;
+;	db $ff ; end
 
 ; ================
 
@@ -11081,53 +11081,53 @@ BlackbeltGroup:
 
 ; ================
 
-	; unused
-	; BLACKBELT_T
-	db "Kenji@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 36, ONIX
-	db 38, HITMONLEE
-	db 36, ONIX
-	db 39, MACHOKE
-
-	db $ff ; end
+;	; unused
+;	; BLACKBELT_T
+;	db "Kenji@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;	db 36, ONIX
+;	db 38, HITMONLEE
+;	db 36, ONIX
+;	db 39, MACHOKE
+;
+;	db $ff ; end
 
 ; ================
 
-	; unused
-	; BLACKBELT_T
-	db "Kenji@"
-	db TRAINERTYPE_MOVES
-
-	; party
-
-	db 33, ONIX
-		db WRAP
-		db ROCK_THROW
-		db TOXIC
-		db DIG
-
-	db 38, MACHAMP
-		db HEADBUTT
-		db SWAGGER
-		db THUNDERPUNCH
-		db BULLET_PUNCH
-
-	db 33, STEELIX
-		db EARTHQUAKE
-		db ROCK_THROW
-		db IRON_TAIL
-		db SANDSTORM
-
-	db 36, HITMONLEE
-		db DOUBLE_TEAM
-		db HI_JUMP_KICK
-		db MUD_SLAP
-		db SWIFT
-
-	db $ff ; end
+;	; unused
+;	; BLACKBELT_T
+;	db "Kenji@"
+;	db TRAINERTYPE_MOVES
+;
+;	; party
+;
+;	db 33, ONIX
+;		db WRAP
+;		db ROCK_THROW
+;		db TOXIC
+;		db DIG
+;
+;	db 38, MACHAMP
+;		db HEADBUTT
+;		db SWAGGER
+;		db THUNDERPUNCH
+;		db BULLET_PUNCH
+;
+;	db 33, STEELIX
+;		db EARTHQUAKE
+;		db ROCK_THROW
+;		db IRON_TAIL
+;		db SANDSTORM
+;
+;	db 36, HITMONLEE
+;		db DOUBLE_TEAM
+;		db HI_JUMP_KICK
+;		db MUD_SLAP
+;		db SWIFT
+;
+;	db $ff ; end
 
 ; ================
 
@@ -13330,10 +13330,10 @@ TowerTycoonGroup:
 	db "Palmer@"
 	db TRAINERTYPE_NORMAL
 
-	; party
-	db 50, GYARADOS
-	db 50, RHYPERIOR
-	db 50, DRAGONITE
+;	; party
+;	db 50, GYARADOS
+;	db 50, RHYPERIOR
+;	db 50, DRAGONITE
 
 	db $ff ; end
 
@@ -13896,20 +13896,20 @@ CherylGroup:
 ; ================================
 ; ================
 
-	; CHERYL
-	db "Cheryl@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	db 50, BLISSEY
-	db 50, NIDOQUEEN
-	db 50, CLEFABLE
-	db 50, WIGGLYTUFF
-	db 50, AZUMARILL
-	db 50, WOBBUFFET
-
-	db $ff ; end
+;	; CHERYL
+;	db "Cheryl@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, BLISSEY
+;	db 50, NIDOQUEEN
+;	db 50, CLEFABLE
+;	db 50, WIGGLYTUFF
+;	db 50, AZUMARILL
+;	db 50, WOBBUFFET
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -13919,20 +13919,20 @@ RileyGroup:
 ; ================================
 ; ================
 
-	; RILEY
-	db "Riley@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	db 50, MACHAMP
-	db 50, RHYPERIOR
-	db 50, DRAGONITE
-	db 50, NIDOKING
-	db 50, ELECTIVIRE
-	db 50, MAMOSWINE
-
-	db $ff ; end
+;	; RILEY
+;	db "Riley@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, MACHAMP
+;	db 50, RHYPERIOR
+;	db 50, DRAGONITE
+;	db 50, NIDOKING
+;	db 50, ELECTIVIRE
+;	db 50, MAMOSWINE
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -13942,21 +13942,21 @@ BuckGroup:
 ; ================================
 ; ================
 
-	; BUCK
-	db "Buck@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	; TODO: UMBREON
-	db 50, GOLEM
-	db 50, POLIWRATH
-	db 50, FORRETRESS
-	db 50, SKARMORY
-	db 50, STEELIX
-	db 50, CLOYSTER
-
-	db $ff ; end
+;	; BUCK
+;	db "Buck@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	; TODO: UMBREON
+;	db 50, GOLEM
+;	db 50, POLIWRATH
+;	db 50, FORRETRESS
+;	db 50, SKARMORY
+;	db 50, STEELIX
+;	db 50, CLOYSTER
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -13966,21 +13966,21 @@ MarleyGroup:
 ; ================================
 ; ================
 
-	; MARLEY
-	db "Marley@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	; TODO: WEAVILE
-	db 50, ARCANINE
-	db 50, PIDGEOT
-	db 50, RAICHU
-	db 50, CROBAT
-	db 50, ELECTRODE
-	db 50, AERODACTYL
-
-	db $ff ; end
+;	; MARLEY
+;	db "Marley@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	; TODO: WEAVILE
+;	db 50, ARCANINE
+;	db 50, PIDGEOT
+;	db 50, RAICHU
+;	db 50, CROBAT
+;	db 50, ELECTRODE
+;	db 50, AERODACTYL
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -13990,21 +13990,21 @@ MiraGroup:
 ; ================================
 ; ================
 
-	; MIRA
-	db "Mira@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	; TODO: TOGEKISS
-	db 50, ALAKAZAM
-	db 50, GENGAR
-	db 50, VILEPLUME
-	db 50, MAGMORTAR
-	db 50, PORYGON_Z
-	db 50, MAGNEZONE
-
-	db $ff ; end
+;	; MIRA
+;	db "Mira@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	; TODO: TOGEKISS
+;	db 50, ALAKAZAM
+;	db 50, GENGAR
+;	db 50, VILEPLUME
+;	db 50, MAGMORTAR
+;	db 50, PORYGON_Z
+;	db 50, MAGNEZONE
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14014,22 +14014,22 @@ AnabelGroup:
 ; ================================
 ; ================
 
-	; ANABEL
-	db "Anabel@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	; TODO: ALAKZAM
-	; TODO: ESPEON
-	db 50, SNORLAX
-	db 50, SLOWKING
-	db 50, BLASTOISE
-	db 50, BELLOSSOM
-	db 50, POLITOED
-	db 50, MR__MIME
-
-	db $ff ; end
+;	; ANABEL
+;	db "Anabel@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	; TODO: ALAKZAM
+;	; TODO: ESPEON
+;	db 50, SNORLAX
+;	db 50, SLOWKING
+;	db 50, BLASTOISE
+;	db 50, BELLOSSOM
+;	db 50, POLITOED
+;	db 50, MR__MIME
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14039,25 +14039,25 @@ DarachGroup:
 ; ================================
 ; ================
 
-	; DARACH
-	db "Darach@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	db 58, NIDOQUEEN
-	db 56, HERACROSS
-if DEF(FAITHFUL)
-	db 57, MACHAMP
-	db 56, SKARMORY
-else
-	db 57, BLASTOISE
-	db 56, FARFETCH_D
-endc
-	db 58, MISMAGIUS
-	db 60, HOUNDOOM
-
-	db $ff ; end
+;	; DARACH
+;	db "Darach@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 58, NIDOQUEEN
+;	db 56, HERACROSS
+;if DEF(FAITHFUL)
+;	db 57, MACHAMP
+;	db 56, SKARMORY
+;else
+;	db 57, BLASTOISE
+;	db 56, FARFETCH_D
+;endc
+;	db 58, MISMAGIUS
+;	db 60, HOUNDOOM
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14067,20 +14067,20 @@ CaitlinGroup:
 ; ================================
 ; ================
 
-	; CAITLIN
-	db "Caitlin@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	db 58, ESPEON
-	db 56, XATU
-	db 57, STARMIE
-	db 56, JYNX
-	db 58, ALAKAZAM
-	db 60, HYPNO
-
-	db $ff ; end
+;	; CAITLIN
+;	db "Caitlin@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 58, ESPEON
+;	db 56, XATU
+;	db 57, STARMIE
+;	db 56, JYNX
+;	db 58, ALAKAZAM
+;	db 60, HYPNO
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14090,7 +14090,20 @@ CandelaGroup:
 ; ================================
 ; ================
 
-; Flareon, Charizard, Ninetales, Dragonite, Arcanine, Moltres
+;	; CANDELA
+;	db "Candela@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, FLAREON
+;	db 50, CHARIZARD
+;	db 50, NINETALES
+;	db 50, DRAGONITE
+;	db 50, ARCANINE
+;	db 50, MOLTRES
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14100,7 +14113,20 @@ BlancheGroup:
 ; ================================
 ; ================
 
-; Vaporeon, Blastoise, Starmie, Lapras, Exeggutor, Articuno
+;	; BLANCHE
+;	db "Blanche@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, VAPOREON
+;	db 50, BLASTOISE
+;	db 50, STARMIE
+;	db 50, LAPRAS
+;	db 50, EXEGGUTOR
+;	db 50, ARTICUNO
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14110,7 +14136,20 @@ SparkGroup:
 ; ================================
 ; ================
 
-; Jolteon, Venusaur, Raichu, Snorlax, Victreebel, Zapdos
+;	; SPARK
+;	db "Spark@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, JOLTEON
+;	db 50, VENUSAUR
+;	db 50, RAICHU
+;	db 50, SNORLAX
+;	db 50, VICTREEBEL
+;	db 50, ZAPDOS
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14120,20 +14159,20 @@ FlanneryGroup:
 ; ================================
 ; ================
 
-	; FLANNERY
-	db "Flannery@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	db 50, MAGCARGO
-	db 50, ARCANINE
-	db 50, HOUNDOOM
-	db 50, RAPIDASH
-	db 50, NINETALES
-	db 50, MAGMORTAR
-
-	db $ff ; end
+;	; FLANNERY
+;	db "Flannery@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, MAGCARGO
+;	db 50, ARCANINE
+;	db 50, HOUNDOOM
+;	db 50, RAPIDASH
+;	db 50, NINETALES
+;	db 50, MAGMORTAR
+;
+;	db $ff ; end
 
 ; ================
 ; ================================
@@ -14171,20 +14210,20 @@ SkylaGroup:
 ; ================================
 ; ================
 
-	; SKYLA
-	db "Skyla@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-
-	db 50, FARFETCH_D
-	db 50, PIDGEOT
-	db 50, XATU
-	db 50, MANTINE
-	db 50, CROBAT
-	db 50, SKARMORY
-
-	db $ff ; end
+;	; SKYLA
+;	db "Skyla@"
+;	db TRAINERTYPE_NORMAL
+;
+;	; party
+;
+;	db 50, FARFETCH_D
+;	db 50, PIDGEOT
+;	db 50, XATU
+;	db 50, MANTINE
+;	db 50, CROBAT
+;	db 50, SKARMORY
+;
+;	db $ff ; end
 
 ; ================
 ; ================================

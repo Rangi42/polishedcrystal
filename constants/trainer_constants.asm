@@ -446,9 +446,9 @@ KRIS EQU __enum__
 
 	trainerclass JUGGLER ; 35
 	const IRWIN1
-	const IRWIN2
-	const IRWIN3
-	const IRWIN4
+;	const IRWIN2
+;	const IRWIN3
+;	const IRWIN4
 	const FRITZ
 	const HORTON
 
@@ -719,8 +719,8 @@ KRIS EQU __enum__
 
 	trainerclass BLACKBELT_T ; 4e
 	const KENJI1
-	const KENJI2
-	const KENJI3
+;	const KENJI2
+;	const KENJI3
 	const YOSHI
 	const LAO
 	const NOB
