@@ -25,9 +25,6 @@ INCBIN "tilesets/radio_tower_metatiles.bin"
 Tileset27Coll:
 INCLUDE "tilesets/radio_tower_collision.asm"
 
-Tileset28GFX:
-INCBIN "gfx/tilesets/warehouse.2bpp.lz"
-
 Tileset28Meta:
 INCBIN "tilesets/warehouse_metatiles.bin"
 

@@ -69,8 +69,12 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_cerulean_gym
 	cp TILESET_GAME_CORNER
 	jp z, .maybe_saffron_gym
+	cp TILESET_UNDERGROUND
+	jp z, .maybe_fuchsia_gym
 	cp TILESET_TRADITIONAL
 	jp z, .maybe_charcoal_kiln
+	cp TILESET_LAB
+	jp z, .maybe_oaks_lab
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
 	cp TILESET_MART
@@ -221,6 +225,16 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, SaffronGymPalette
 	jp .load_eight_bg_palettes
 
+.maybe_fuchsia_gym
+	ld a, [MapGroup]
+	cp GROUP_FUCHSIA_GYM
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_FUCHSIA_GYM
+	jp nz, .do_nothing
+	ld hl, FuchsiaGymPalette
+	jp .load_eight_bg_palettes
+
 .maybe_charcoal_kiln
 	ld a, [MapGroup]
 	cp GROUP_CHARCOAL_KILN
@@ -229,6 +243,16 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_CHARCOAL_KILN
 	jp nz, .do_nothing
 	ld hl, CharcoalKilnPalette
+	jp .load_eight_bg_palettes
+
+.maybe_oaks_lab
+	ld a, [MapGroup]
+	cp GROUP_OAKS_LAB
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_OAKS_LAB
+	jp nz, .do_nothing
+	ld hl, OaksLabPalette
 	jp .load_eight_bg_palettes
 
 .maybe_viridian_gym
@@ -449,14 +473,20 @@ INCLUDE "tilesets/cerulean_gym.pal"
 SaffronGymPalette:
 INCLUDE "tilesets/saffron_gym.pal"
 
+ViridianGymPalette:
+INCLUDE "tilesets/viridian_gym.pal"
+
+FuchsiaGymPalette:
+INCLUDE "tilesets/fuchsia_gym.pal"
+
 GameCornerPalette:
 INCLUDE "tilesets/game_corner.pal"
 
 CharcoalKilnPalette:
 INCLUDE "tilesets/charcoal_kiln.pal"
 
-ViridianGymPalette:
-INCLUDE "tilesets/viridian_gym.pal"
+OaksLabPalette:
+INCLUDE "tilesets/oaks_lab.pal"
 
 MystriStagePalette:
 INCLUDE "tilesets/mystri_stage.pal"

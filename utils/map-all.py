@@ -16,7 +16,7 @@ maps_filename          = 'constants/map_constants.asm'
 map_headers_filename   = 'maps/map_headers.asm'
 block_data_filenames   = {'maps/blockdata_1.asm', 'maps/blockdata_2.asm',
                           'maps/blockdata_3.asm', 'maps/blockdata_4.asm',
-                          'maps/blockdata_5.asm'}
+                          'maps/blockdata_5.asm', 'maps/blockdata_6.asm'}
 block_filename_fmt     = 'maps/%s.blk'
 
 tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
