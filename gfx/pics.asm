@@ -15,7 +15,7 @@ ArbokPicPointers::   INCLUDE "gfx/pics/arbok_pic_pointers.asm"
 MewtwoPicPointers::  INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
-SECTION "Trainer Pic Pointers", ROMX[$7e11], BANK[$3]
+SECTION "Trainer Pic Pointers", ROMX[$7e57], BANK[$3]
 
 TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
 

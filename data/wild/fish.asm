@@ -1,17 +1,17 @@
 FishGroups: ; 92488
-	dbwww 75 percent + 1, .Shore_Old,            .Shore_Good,            .Shore_Super
-	dbwww 75 percent + 1, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
-	dbwww 75 percent + 1, .Lake_Old,             .Lake_Good,             .Lake_Super
-	dbwww 75 percent + 1, .Pond_Old,             .Pond_Good,             .Pond_Super
-	dbwww 75 percent + 1, .Dratini_Old,          .Dratini_Good,          .Dratini_Super
-	dbwww 75 percent + 1, .Qwilfish_Swarm_Old,   .Qwilfish_Swarm_Good,   .Qwilfish_Swarm_Super
-	dbwww 75 percent + 1, .Remoraid_Swarm_Old,   .Remoraid_Swarm_Good,   .Remoraid_Swarm_Super
-	dbwww 75 percent + 1, .Gyarados_Old,         .Gyarados_Good,         .Gyarados_Super
-	dbwww 75 percent + 1, .Dratini_2_Old,        .Dratini_2_Good,        .Dratini_2_Super
-	dbwww 75 percent + 1, .WhirlIslands_Old,     .WhirlIslands_Good,     .WhirlIslands_Super
-	dbwww 75 percent + 1, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
-	dbwww 75 percent + 1, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
-	dbwww 75 percent + 1, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
+	dbbwww 65 percent + 1, 85 percent + 1, .Shore_Old,            .Shore_Good,            .Shore_Super
+	dbbwww 75 percent + 1, 85 percent + 1, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
+	dbbwww 70 percent + 1, 85 percent + 1, .Lake_Old,             .Lake_Good,             .Lake_Super
+	dbbwww 55 percent + 1, 65 percent + 1, .Pond_Old,             .Pond_Good,             .Pond_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Dratini_Old,          .Dratini_Good,          .Dratini_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Qwilfish_Swarm_Old,   .Qwilfish_Swarm_Good,   .Qwilfish_Swarm_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Remoraid_Swarm_Old,   .Remoraid_Swarm_Good,   .Remoraid_Swarm_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Gyarados_Old,         .Gyarados_Good,         .Gyarados_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Dratini_2_Old,        .Dratini_2_Good,        .Dratini_2_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .WhirlIslands_Old,     .WhirlIslands_Good,     .WhirlIslands_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
+	dbbwww 60 percent + 1, 70 percent + 1, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
 
 .Shore_Old: ; 924e3
 	db  70 percent + 1, MAGIKARP,   10
@@ -223,3 +223,9 @@ TimeFishGroups: ; 9266f
 	db TENTACOOL,  20,  TENTACOOL,  20
 	db TENTACOOL,  40,  TENTACOOL,  40
 ; 926c7
+
+
+FishItems:
+	db PEARL
+	db BIG_PEARL
+	db BOTTLE_CAP

@@ -23,7 +23,6 @@
 * Generate Battle Tower Pokémon
 * Update breeding with the new data structure (engine/breeding/egg.asm and event/daycare.asm)
 * Wild Ghosts and the SilphScope2
-* Bottle Caps for Hyper Training found by fishing
 
 
 ## Aesthetics

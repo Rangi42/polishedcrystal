@@ -44,9 +44,9 @@ dbww: MACRO
 	dw \2, \3
 	ENDM
 
-dbwww: MACRO
-	db \1
-	dw \2, \3, \4
+dbbwww: MACRO
+	db \1, \2
+	dw \3, \4, \5
 	ENDM
 
 dn: MACRO

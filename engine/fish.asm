@@ -11,7 +11,7 @@ Fish: ; 92402
 	call GetFishGroupIndex
 
 	ld hl, FishGroups
-rept 7
+rept 8 ; size of dbbwww
 	add hl, de
 endr
 	call .Fish
@@ -25,16 +25,33 @@ endr
 
 .Fish: ; 9241a
 ; Fish for monsters with rod b from encounter data in FishGroup at hl.
-; Return monster e at level d.
+; Return monster e at level d; or item e if d = 0; or nothing if de = 0.
 
 	call Random
 	cp [hl]
+	jr c, .bite
+	inc hl
+	cp [hl]
 	jr nc, .no_bite
 
+	; Get item by rod
+	; 0: Old
+	; 1: Good
+	; 2: Super
+	ld hl, FishItems
+	ld e, b
+	ld d, 0
+	add hl, de
+	ld a, [hl]
+	ld e, a
+	ret
+
+.bite
 	; Get encounter data by rod:
 	; 0: Old
 	; 1: Good
 	; 2: Super
+	inc hl
 	inc hl
 	ld e, b
 	ld d, 0
