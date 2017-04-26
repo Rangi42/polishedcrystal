@@ -23,11 +23,6 @@ ReadTrainerParty: ; 39771
 	ld a, [hli]
 	ld [OtherTrainerType], a
 
-	ld d, h
-	ld e, l
-	ld bc, ComputeTrainerReward
-	push bc
-
 .loop2
 ; level
 	ld a, [hli]
