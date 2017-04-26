@@ -30,14 +30,6 @@ Some Trainers rely on a Pokémon's potential alone. But you can use items and me
 Mountain climbing and Pokémon are similar in a sense. They both come down to potential! I do not rely on items or medicines but rather potential and training for battle!
 
 
-
-HouseForSaleSignText:
-	text "What's this?"
-
-	para "House for Sale…"
-	line "Nobody lives here."
-	done
-
 UnknownText_0x1a03cc:
 	text "There are several"
 	line "islands between"

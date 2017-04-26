@@ -254,6 +254,7 @@ Some of these may never be added; they're just suggestions.
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
+* [Pokémon Journals](http://bulbapedia.bulbagarden.net/wiki/Magazines_in_the_Pok%C3%A9mon_world#Pok.C3.A9mon_Journal) on bookshelves with facts about [places and people](http://bulbapedia.bulbagarden.net/wiki/Radio_in_the_Pok%C3%A9mon_world#That_Town.2C_These_People)
 * Separate radio channels for March and Lullaby, available every day
 * Either add a 510 EV limit, or replace the 12 unused EV berries and Power items with more useful Berries
 * Update breeding to Gen VII, including Destiny Knot, Everstone, and Oval Charm effects

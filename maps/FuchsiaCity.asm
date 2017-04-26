@@ -56,6 +56,9 @@ NoLitteringSign:
 SafariZoneExhibitSign:
 	jumptext SafariZoneExhibitSignText
 
+HouseForSaleSign:
+	jumptext HouseForSaleSignText
+
 FuchsiaCityCarefulSwimmingSign:
 	jumptext FuchsiaCityCarefulSwimmingSignText
 
@@ -165,6 +168,13 @@ SafariZoneExhibitSignText:
 	line "torn away…"
 	done
 
+HouseForSaleSignText:
+	text "What's this?"
+
+	para "House for Sale…"
+	line "Nobody lives here."
+	done
+
 FuchsiaCityCarefulSwimmingSignText:
 	text "Please be careful"
 	line "if you are swim-"
@@ -195,7 +205,7 @@ FuchsiaCity_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 13
+	db 14
 	signpost 15, 21, SIGNPOST_READ, FuchsiaCitySign
 	signpost 29, 5, SIGNPOST_READ, FuchsiaGymSign
 	signpost 15, 25, SIGNPOST_READ, SafariZoneOfficeSign
@@ -208,6 +218,7 @@ FuchsiaCity_MapEventHeader:
 	signpost 7, 27, SIGNPOST_READ, SafariZoneExhibitSign
 	signpost 7, 33, SIGNPOST_READ, SafariZoneExhibitSign
 	signpost 13, 31, SIGNPOST_READ, SafariZoneExhibitSign
+	signpost 27, 31, SIGNPOST_READ, HouseForSaleSign
 	signpost 35, 11, SIGNPOST_READ, FuchsiaCityCarefulSwimmingSign
 
 .PersonEvents:
