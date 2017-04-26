@@ -268,6 +268,7 @@ Some of these may never be added; they're just suggestions.
 * Kurt gives Balls right away once per day
 * Replace the Apricorns with an Apricorn Box and add more Berries
 * Add the improved PRNG from Prism
+* Evolution Guru says how your lead Pokémon can evolve
 * Sometimes wild Pokémon know an egg move
 * Get better Wonder Trade items at higher levels
 * Press Start to auto-sort items in Bag
