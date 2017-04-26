@@ -25,11 +25,11 @@ INCBIN "tilesets/pokecom_metatiles.bin"
 Tileset21Coll:
 INCLUDE "tilesets/pokecom_collision.asm"
 
-Tileset25GFX:
-INCBIN "gfx/tilesets/park.2bpp.lz"
+Tileset29GFX:
+INCBIN "gfx/tilesets/ice_path.2bpp.lz"
 
-Tileset25Meta:
-INCBIN "tilesets/park_metatiles.bin"
+Tileset29Meta:
+INCBIN "tilesets/ice_path_metatiles.bin"
 
-Tileset25Coll:
-INCLUDE "tilesets/park_collision.asm"
+Tileset29Coll:
+INCLUDE "tilesets/ice_path_collision.asm"

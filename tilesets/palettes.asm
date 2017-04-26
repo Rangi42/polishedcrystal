@@ -25,9 +25,6 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, GatePalette
 	cp TILESET_GATE
 	jp z, .load_eight_bg_palettes
-	ld hl, GameCornerPalette
-	cp TILESET_GAME_CORNER
-	jp z, .load_eight_bg_palettes
 	ld hl, HotelPalette
 	cp TILESET_HOTEL
 	jp z, .load_eight_bg_palettes
@@ -70,6 +67,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_lances_room
 	cp TILESET_PORT
 	jp z, .maybe_cerulean_gym
+	cp TILESET_GAME_CORNER
+	jp z, .maybe_saffron_gym
 	cp TILESET_TRADITIONAL
 	jp z, .maybe_charcoal_kiln
 	cp TILESET_SPROUT_TOWER
@@ -209,6 +208,17 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_CERULEAN_GYM
 	jp nz, .do_nothing
 	ld hl, CeruleanGymPalette
+	jp .load_eight_bg_palettes
+
+.maybe_saffron_gym
+	ld hl, GameCornerPalette
+	ld a, [MapGroup]
+	cp GROUP_SAFFRON_GYM
+	jp nz, .load_eight_bg_palettes
+	ld a, [MapNumber]
+	cp MAP_SAFFRON_GYM
+	jp nz, .load_eight_bg_palettes
+	ld hl, SaffronGymPalette
 	jp .load_eight_bg_palettes
 
 .maybe_charcoal_kiln
@@ -378,9 +388,6 @@ INCLUDE "tilesets/ice_path.pal"
 GatePalette:
 INCLUDE "tilesets/gate.pal"
 
-GameCornerPalette:
-INCLUDE "tilesets/game_corner.pal"
-
 HotelPalette:
 INCLUDE "tilesets/hotel.pal"
 
@@ -438,6 +445,12 @@ INCLUDE "tilesets/lances_room.pal"
 
 CeruleanGymPalette:
 INCLUDE "tilesets/cerulean_gym.pal"
+
+SaffronGymPalette:
+INCLUDE "tilesets/saffron_gym.pal"
+
+GameCornerPalette:
+INCLUDE "tilesets/game_corner.pal"
 
 CharcoalKilnPalette:
 INCLUDE "tilesets/charcoal_kiln.pal"

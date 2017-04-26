@@ -415,36 +415,36 @@ SaffronGym_MapEventHeader:
 	db 32
 	warp_def $11, $8, 2, SAFFRON_CITY
 	warp_def $11, $9, 2, SAFFRON_CITY
-	warp_def $f, $b, 18, SAFFRON_GYM
-	warp_def $f, $13, 19, SAFFRON_GYM
-	warp_def $b, $13, 20, SAFFRON_GYM
-	warp_def $b, $1, 21, SAFFRON_GYM
-	warp_def $3, $5, 22, SAFFRON_GYM
-	warp_def $5, $b, 23, SAFFRON_GYM
-	warp_def $f, $1, 24, SAFFRON_GYM
-	warp_def $3, $13, 25, SAFFRON_GYM
-	warp_def $11, $f, 26, SAFFRON_GYM
-	warp_def $11, $5, 27, SAFFRON_GYM
-	warp_def $9, $5, 28, SAFFRON_GYM
-	warp_def $3, $9, 29, SAFFRON_GYM
-	warp_def $9, $f, 30, SAFFRON_GYM
-	warp_def $5, $f, 31, SAFFRON_GYM
-	warp_def $5, $1, 32, SAFFRON_GYM
-	warp_def $11, $13, 3, SAFFRON_GYM
-	warp_def $9, $13, 4, SAFFRON_GYM
-	warp_def $9, $1, 5, SAFFRON_GYM
-	warp_def $5, $5, 6, SAFFRON_GYM
-	warp_def $3, $b, 7, SAFFRON_GYM
-	warp_def $11, $1, 8, SAFFRON_GYM
-	warp_def $5, $13, 9, SAFFRON_GYM
-	warp_def $f, $f, 10, SAFFRON_GYM
-	warp_def $f, $5, 11, SAFFRON_GYM
-	warp_def $b, $5, 12, SAFFRON_GYM
-	warp_def $5, $9, 13, SAFFRON_GYM
-	warp_def $b, $f, 14, SAFFRON_GYM
-	warp_def $3, $f, 15, SAFFRON_GYM
-	warp_def $3, $1, 16, SAFFRON_GYM
-	warp_def $9, $b, 17, SAFFRON_GYM
+	warp_def $e, $b, 18, SAFFRON_GYM
+	warp_def $e, $13, 19, SAFFRON_GYM
+	warp_def $a, $13, 20, SAFFRON_GYM
+	warp_def $a, $0, 21, SAFFRON_GYM
+	warp_def $2, $4, 22, SAFFRON_GYM
+	warp_def $4, $b, 23, SAFFRON_GYM
+	warp_def $e, $0, 24, SAFFRON_GYM
+	warp_def $2, $13, 25, SAFFRON_GYM
+	warp_def $10, $f, 26, SAFFRON_GYM
+	warp_def $10, $4, 27, SAFFRON_GYM
+	warp_def $8, $4, 28, SAFFRON_GYM
+	warp_def $2, $8, 29, SAFFRON_GYM
+	warp_def $8, $f, 30, SAFFRON_GYM
+	warp_def $4, $f, 31, SAFFRON_GYM
+	warp_def $4, $0, 32, SAFFRON_GYM
+	warp_def $10, $13, 3, SAFFRON_GYM
+	warp_def $8, $13, 4, SAFFRON_GYM
+	warp_def $8, $0, 5, SAFFRON_GYM
+	warp_def $4, $4, 6, SAFFRON_GYM
+	warp_def $2, $b, 7, SAFFRON_GYM
+	warp_def $10, $0, 8, SAFFRON_GYM
+	warp_def $4, $13, 9, SAFFRON_GYM
+	warp_def $e, $f, 10, SAFFRON_GYM
+	warp_def $e, $4, 11, SAFFRON_GYM
+	warp_def $a, $4, 12, SAFFRON_GYM
+	warp_def $4, $8, 13, SAFFRON_GYM
+	warp_def $a, $f, 14, SAFFRON_GYM
+	warp_def $2, $f, 15, SAFFRON_GYM
+	warp_def $2, $0, 16, SAFFRON_GYM
+	warp_def $a, $b, 17, SAFFRON_GYM
 
 .XYTriggers:
 	db 0
@@ -456,11 +456,11 @@ SaffronGym_MapEventHeader:
 .PersonEvents:
 	db 9
 	person_event SPRITE_SABRINA, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
-	person_event SPRITE_GRANNY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerMediumDoris, -1
-	person_event SPRITE_YOUNGSTER, 4, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicLeon, -1
-	person_event SPRITE_YOUNGSTER, 4, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicJared, -1
-	person_event SPRITE_HEX_MANIAC, 10, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacLuna, -1
-	person_event SPRITE_HEX_MANIAC, 10, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacNatalie, -1
-	person_event SPRITE_YOUNGSTER, 16, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
-	person_event SPRITE_GRANNY, 16, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumRebecca, -1
+	person_event SPRITE_GRANNY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumDoris, -1
+	person_event SPRITE_YOUNGSTER, 3, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicLeon, -1
+	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicJared, -1
+	person_event SPRITE_HEX_MANIAC, 9, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacLuna, -1
+	person_event SPRITE_HEX_MANIAC, 9, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacNatalie, -1
+	person_event SPRITE_YOUNGSTER, 15, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
+	person_event SPRITE_GRANNY, 15, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumRebecca, -1
 	person_event SPRITE_GYM_GUY, 14, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronGymGuyScript, -1

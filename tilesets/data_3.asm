@@ -25,11 +25,11 @@ INCBIN "tilesets/game_corner_metatiles.bin"
 Tileset14Coll:
 INCLUDE "tilesets/game_corner_collision.asm"
 
-Tileset29GFX:
-INCBIN "gfx/tilesets/ice_path.2bpp.lz"
+Tileset15GFX:
+INCBIN "gfx/tilesets/gym1.2bpp.lz"
 
-Tileset29Meta:
-INCBIN "tilesets/ice_path_metatiles.bin"
+Tileset15Meta:
+INCBIN "tilesets/gym1_metatiles.bin"
 
-Tileset29Coll:
-INCLUDE "tilesets/ice_path_collision.asm"
+Tileset15Coll:
+INCLUDE "tilesets/gym1_collision.asm"
