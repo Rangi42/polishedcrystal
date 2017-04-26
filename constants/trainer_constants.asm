@@ -111,6 +111,7 @@ KRIS EQU __enum__
 	const JASON
 	const YOUNGSTER_JOSH
 	const REGIS
+	const ALFIE
 
 	trainerclass BUG_CATCHER ; 20
 	const WADE1
@@ -400,6 +401,7 @@ KRIS EQU __enum__
 	const MIRIAM
 	const LAYLA
 	const ROSE
+	const MEADOW
 
 	trainerclass BEAUTY ; 31
 	const VICTORIA
@@ -504,6 +506,7 @@ KRIS EQU __enum__
 	const JARED
 	const RODNEY
 	const LEON
+	const URI
 
 	trainerclass HEX_MANIAC ; 39
 	const TAMARA
@@ -747,6 +750,8 @@ KRIS EQU __enum__
 
 	trainerclass ENGINEER ; 51
 	const SMITH
+	const BERNIE
+	const CAMDEN
 
 	trainerclass TEACHER ; 52
 	const COLETTE

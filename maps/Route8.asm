@@ -6,7 +6,8 @@ const_value set 2
 	const ROUTE8_SUPER_NERD2
 	const ROUTE8_GENTLEMAN
 	const ROUTE8_YOUNGSTER
-	const ROUTE8_LASS
+	const ROUTE8_LASS1
+	const ROUTE8_LASS2
 	const ROUTE8_CUT_TREE1
 	const ROUTE8_CUT_TREE2
 	const ROUTE8_FRUIT_TREE
@@ -114,6 +115,17 @@ CoupleMoeandlulu2Script:
 	end_if_just_battled
 	opentext
 	writetext CoupleMoeandlulu2AfterText
+	waitbutton
+	closetext
+	end
+
+TrainerLassMeadow:
+	trainer EVENT_BEAT_LASS_MEADOW, LASS, MEADOW, LassMeadowSeenText, LassMeadowBeatenText, 0, LassMeadowScript
+
+LassMeadowScript:
+	end_if_just_battled
+	opentext
+	writetext LassMeadowAfterText
 	waitbutton
 	closetext
 	end
@@ -297,6 +309,24 @@ CoupleMoeandlulu2AfterText:
 	line "strong!"
 	done
 
+LassMeadowSeenText:
+	text "I like skirts!"
+	line "They're cute and"
+	cont "comfy to wear!"
+	done
+
+LassMeadowBeatenText:
+	text "Oh my!"
+	done
+
+LassMeadowAfterText:
+	text "Oh well, I'm more"
+	line "worried about"
+
+	para "having fun than"
+    line "being competitive."
+	done
+
 Route8LockedDoorText:
 	text "It's locked…"
 	done
@@ -326,15 +356,16 @@ Route8_MapEventHeader:
 	signpost 7, 10, SIGNPOST_READ, Route8LockedDoor
 
 .PersonEvents:
-	db 14
+	db 15
 	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	person_event SPRITE_BIKER, 11, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBikerHarris, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	person_event SPRITE_BIKER, 12, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBikerZeke, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	person_event SPRITE_SUPER_NERD, 9, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdSam, -1
 	person_event SPRITE_SUPER_NERD, 9, 32, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdTom, -1
 	person_event SPRITE_GENTLEMAN, 14, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanMilton, -1
-	person_event SPRITE_YOUNGSTER, 4, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu1, -1
-	person_event SPRITE_LASS, 4, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu2, -1
+	person_event SPRITE_YOUNGSTER, 4, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu1, -1
+	person_event SPRITE_LASS, 4, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu2, -1
+	person_event SPRITE_LASS, 4, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMeadow, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 14, 21, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route8CutTree, EVENT_ROUTE_8_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 32, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route8CutTree, EVENT_ROUTE_8_CUT_TREE_2
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x6c06c, -1

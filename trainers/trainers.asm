@@ -3474,6 +3474,18 @@ YoungsterGroup:
 	db $ff ; end
 
 ; ================
+
+	; YOUNGSTER
+	db "Alfie@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, SANDSLASH
+	db 55, QUAGSIRE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7556,6 +7568,19 @@ LassGroup:
 	db $ff ; end
 
 ; ================
+
+	; LASS
+	db "Meadow@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, MEOWTH
+	db 53, MEOWTH
+	db 55, PERSIAN
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8779,6 +8804,18 @@ PsychicGroup:
 	db 54, NOCTOWL
 	db 55, HYPNO
 	db 53, GIRAFARIG
+
+	db $ff ; end
+
+; ================
+
+	; PSYCHIC_T
+	db "Uri@"
+	db TRAINERTYPE_NICKNAME
+
+	; party
+	db 57, KADABRA, "Hocus@"
+	db 57, KADABRA, "Pocus@"
 
 	db $ff ; end
 
@@ -11462,6 +11499,31 @@ EngineerGroup:
 	; party
 	db 58, MAGNETON
 	db 60, MAGNEZONE
+
+	db $ff ; end
+
+; ================
+
+	; ENGINEER
+	db "Bernie@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, MAGNEMITE
+	db 56, MAGNETON
+	db 54, MAGNEMITE
+
+	db $ff ; end
+
+; ================
+
+	; ENGINEER
+	db "Camden@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, MAGNETON
+	db 56, ELECTRODE
 
 	db $ff ; end
 
