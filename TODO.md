@@ -79,8 +79,6 @@
 Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * RBY teleporter machine in Bill's house
-* Route 4 (one or two trainers)
-* Route 6 (Officer♀ with Squirtle Squad)
 * Route 16
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Uraga Channel

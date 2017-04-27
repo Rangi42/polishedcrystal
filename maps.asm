@@ -530,9 +530,6 @@ INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
 INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/Route48.asm"
-INCLUDE "maps/RedsHouse1F.asm"
-INCLUDE "maps/RedsHouse2F.asm"
-INCLUDE "maps/Route11Gate.asm"
 
 
 SECTION "Map Scripts 24", ROMX[$4000], BANK[MAP_SCRIPTS_24]
@@ -584,6 +581,8 @@ INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
 INCLUDE "maps/PewterGym.asm"
 INCLUDE "maps/PewterMart.asm"
+INCLUDE "maps/RedsHouse1F.asm"
+INCLUDE "maps/RedsHouse2F.asm"
 
 
 SECTION "Map Scripts 26", ROMX[$4000], BANK[MAP_SCRIPTS_26]
@@ -598,6 +597,7 @@ INCLUDE "maps/EmbeddedTower.asm"
 INCLUDE "maps/Route17.asm"
 INCLUDE "maps/Route45.asm"
 INCLUDE "maps/Route39.asm"
+INCLUDE "maps/Route11Gate.asm"
 
 
 SECTION "Map Scripts 27", ROMX[$4000], BANK[MAP_SCRIPTS_27]

@@ -14,6 +14,28 @@ Route4_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+TrainerYoungsterOliver:
+	trainer EVENT_BEAT_YOUNGSTER_OLIVER, YOUNGSTER, OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText, 0, YoungsterOliverScript
+
+YoungsterOliverScript:
+	end_if_just_battled
+	opentext
+	writetext YoungsterOliverAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerLassJennifer:
+	trainer EVENT_BEAT_LASS_JENNIFER, LASS, JENNIFER, LassJenniferSeenText, LassJenniferBeatenText, 0, LassJenniferScript
+
+LassJenniferScript:
+	end_if_just_battled
+	opentext
+	writetext LassJenniferAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerBird_keeperHank:
 	trainer EVENT_BEAT_BIRD_KEEPER_HANK, BIRD_KEEPER, HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText, 0, Bird_keeperHankScript
 
@@ -133,6 +155,44 @@ Route4HPUp:
 
 Route4HiddenUltraBall:
 	dwb EVENT_ROUTE_4_HIDDEN_ULTRA_BALL, ULTRA_BALL
+
+YoungsterOliverSeenText:
+	text "Hi! What's your"
+	line "name? Where are"
+	cont "you going?"
+	done
+
+YoungsterOliverBeatenText:
+	text "I was just"
+	line "asking…"
+	done
+
+YoungsterOliverAfterText:
+	text "People say that"
+	line "I ask too many"
+	cont "questions, but"
+
+	para "that's what kids"
+	line "do, right?"
+	done
+
+LassJenniferSeenText:
+	text "I battle every"
+	line "chance I get,"
+
+	para "just to spend time"
+	line "with my #mon."
+	done
+
+LassJenniferBeatenText:
+	text "Wheeee!"
+	done
+
+LassJenniferAfterText:
+	text "#mon are so"
+	line "much fun."
+	cont "Don't you agree?"
+	done
 
 Bird_keeperHankSeenText:
 	text "I'm raising my"
@@ -295,9 +355,11 @@ Route4_MapEventHeader:
 	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
 
 .PersonEvents:
-	db 7
+	db 9
+	person_event SPRITE_YOUNGSTER, 3, 49, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
+	person_event SPRITE_LASS, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
 	person_event SPRITE_YOUNGSTER, 9, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
-	person_event SPRITE_LASS, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerHope, -1
+	person_event SPRITE_LASS, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
 	person_event SPRITE_LASS, 6, 33, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP
 	person_event SPRITE_SUPER_NERD, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1

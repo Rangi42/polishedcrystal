@@ -16,34 +16,34 @@ UnknownScript_0x1ad318:
 	setflag ENGINE_ALWAYS_ON_BIKE
 	return
 
-OfficerfJennyScript:
+OfficerfJamieScript:
 	faceplayer
 	opentext
 	checknite
 	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERF_JENNY
+	checkevent EVENT_BEAT_OFFICERF_JAMIE
 	iftrue .AfterScript
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
-	writetext OfficerfJennySeenText
+	writetext OfficerfJamieSeenText
 	waitbutton
 	closetext
-	winlosstext OfficerfJennyBeatenText, 0
-	loadtrainer OFFICERF, JENNY
+	winlosstext OfficerfJamieBeatenText, 0
+	loadtrainer OFFICERF, JAMIE
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_OFFICERF_JENNY
+	setevent EVENT_BEAT_OFFICERF_JAMIE
 	closetext
 	end
 
 .AfterScript:
-	writetext OfficerfJennyAfterText
+	writetext OfficerfJamieAfterText
 	waitbutton
 	closetext
 	end
 
 .NoFight:
-	writetext OfficerfJennyDaytimeText
+	writetext OfficerfJamieDaytimeText
 	waitbutton
 	closetext
 	end
@@ -51,22 +51,22 @@ OfficerfJennyScript:
 CyclingRoadSign:
 	jumptext CyclingRoadSignText
 
-OfficerfJennySeenText:
+OfficerfJamieSeenText:
 	text "Hey you! Are you"
 	line "causing trouble?"
 	done
 
-OfficerfJennyBeatenText:
+OfficerfJamieBeatenText:
 	text "Hmph!"
 	done
 
-OfficerfJennyAfterText:
+OfficerfJamieAfterText:
 	text "Riding around late"
 	line "at night just"
 	cont "looks suspicious."
 	done
 
-OfficerfJennyDaytimeText:
+OfficerfJamieDaytimeText:
 	text "Bikers and"
 	line "Roughnecks like"
 
@@ -102,4 +102,4 @@ Route16South_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJennyScript, -1
+	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1

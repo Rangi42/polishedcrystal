@@ -3488,6 +3488,30 @@ YoungsterGroup:
 	db $ff ; end
 
 ; ================
+
+	; YOUNGSTER
+	db "Oliver@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 62, GOLBAT
+	db 62, RATICATE
+
+	db $ff ; end
+
+; ================
+
+	; YOUNGSTER
+	db "Chaz@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, SANDSHREW
+	db 55, RATICATE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -6805,7 +6829,7 @@ OfficerFGroup:
 ; ================
 
 	; OFFICERF
-	db "Jenny@"
+	db "Jamie@"
 	db TRAINERTYPE_NORMAL
 
 	; party
@@ -6823,6 +6847,20 @@ OfficerFGroup:
 
 	; party
 	db 17, GROWLITHE
+
+	db $ff ; end
+
+; ================
+
+	; OFFICERF
+	db "Jenny@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, SQUIRTLE
+	db 53, SQUIRTLE
+	db 53, SQUIRTLE
+	db 53, SQUIRTLE
 
 	db $ff ; end
 
@@ -7579,6 +7617,20 @@ LassGroup:
 	db 53, MEOWTH
 	db 53, MEOWTH
 	db 55, PERSIAN
+
+	db $ff ; end
+
+; ================
+
+	; LASS
+	db "Jennifer@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, CLEFAIRY
+	db 60, MARILL
+	db 62, CLEFABLE
+	db 62, AZUMARILL
 
 	db $ff ; end
 
@@ -11627,6 +11679,18 @@ GuitaristMGroup:
 	db $ff ; end
 
 ; ================
+
+	; GUITARISTM
+	db "Roger@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, RAICHU
+	db 58, ELECTABUZZ
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11669,6 +11733,31 @@ GuitaristFGroup:
 	; party
 	db 55, ELECTRODE
 	db 55, JOLTEON
+
+	db $ff ; end
+
+; ================
+
+	; GUITARISTF
+	db "Ritsuko@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, JOLTEON
+	db 58, JOLTEON
+
+	db $ff ; end
+
+; ================
+
+	; GUITARISTF
+	db "Wanda@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, MAGNEMITE
+	db 54, ELECTRODE
+	db 55, MAGNETON
 
 	db $ff ; end
 
@@ -14700,6 +14789,9 @@ ImakuniGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 LawrenceGroup:
 ; ================================
 ; ================
@@ -14804,9 +14896,6 @@ endc
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 ReiGroup:

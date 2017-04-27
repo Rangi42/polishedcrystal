@@ -112,6 +112,8 @@ KRIS EQU __enum__
 	const YOUNGSTER_JOSH
 	const REGIS
 	const ALFIE
+	const OLIVER
+	const CHAZ
 
 	trainerclass BUG_CATCHER ; 20
 	const WADE1
@@ -338,8 +340,9 @@ KRIS EQU __enum__
 	const DIRK
 
 	trainerclass OFFICERF ; 2c
-	const JENNY
+	const JAMIE
 	const MARA
+	const JENNY
 
 	trainerclass POKEMANIAC ; 2d
 	const BRENT1
@@ -402,6 +405,7 @@ KRIS EQU __enum__
 	const LAYLA
 	const ROSE
 	const MEADOW
+	const JENNIFER
 
 	trainerclass BEAUTY ; 31
 	const VICTORIA
@@ -763,10 +767,13 @@ KRIS EQU __enum__
 	trainerclass GUITARISTM ; 53
 	const CLYDE
 	const VINCENT
+	const ROGER
 
 	trainerclass GUITARISTF ; 54
 	const JANET
 	const MORGAN
+	const RITSUKO
+	const WANDA
 
 	trainerclass BIKER ; 55
 	const DWAYNE

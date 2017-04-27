@@ -4,6 +4,9 @@ const_value set 2
 	const ROUTE6_POKEFAN_M3
 	const ROUTE6_TWIN1
 	const ROUTE6_TWIN2
+	const ROUTE6_YOUNGSTER
+	const ROUTE6_COOLTRAINER_F
+	const ROUTE6_OFFICER_F
 
 Route6_MapScriptHeader:
 .MapTriggers:
@@ -22,60 +25,6 @@ PokefanmRexScript:
 	waitbutton
 	closetext
 	end
-
-TrainerPokefanmAllan:
-	trainer EVENT_BEAT_POKEFANM_ALLAN, POKEFANM, ALLAN, PokefanmAllanSeenText, PokefanmAllanBeatenText, 0, PokefanmAllanScript
-
-PokefanmAllanScript:
-	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ada88
-	waitbutton
-	closetext
-	end
-
-TrainerTwinsDayanddani1:
-	trainer EVENT_BEAT_TWINS_DAY_AND_DANI, TWINS, DAYANDDANI1, TwinsDayanddani1SeenText, TwinsDayanddani1BeatenText, 0, TrainerTwinsDayanddani1Script
-
-TrainerTwinsDayanddani1Script:
-	end_if_just_battled
-	opentext
-	writetext TwinsDayanddani1AfterText
-	waitbutton
-	closetext
-	end
-
-TrainerTwinsDayanddani2:
-	trainer EVENT_BEAT_TWINS_DAY_AND_DANI, TWINS, DAYANDDANI2, TwinsDayanddani2SeenText, TwinsDayanddani2BeatenText, 0, TrainerTwinsDayanddani2Script
-
-TrainerTwinsDayanddani2Script:
-	end_if_just_battled
-	opentext
-	writetext TwinsDayanddani2AfterText
-	waitbutton
-	closetext
-	end
-
-PokefanMScript_0x1ad951:
-	jumptextfaceplayer UnknownText_0x1ad957
-
-Route6UndergroundPathSign:
-	jumptext Route6UndergroundPathSignText
-
-UnknownText_0x1ad957:
-	text "The road is closed"
-	line "until the problem"
-
-	para "at the Power Plant"
-	line "is solved."
-	done
-
-Route6UndergroundPathSignText:
-	text "Underground Path"
-
-	para "Cerulean City -"
-	line "Vermilion City"
-	done
 
 PokefanmRexSeenText:
 	text "My Phanpy is the"
@@ -96,6 +45,17 @@ UnknownText_0x1ad9ff:
 	cont "your heart melt?"
 	done
 
+TrainerPokefanmAllan:
+	trainer EVENT_BEAT_POKEFANM_ALLAN, POKEFANM, ALLAN, PokefanmAllanSeenText, PokefanmAllanBeatenText, 0, PokefanmAllanScript
+
+PokefanmAllanScript:
+	end_if_just_battled
+	opentext
+	writetext UnknownText_0x1ada88
+	waitbutton
+	closetext
+	end
+
 PokefanmAllanSeenText:
 	text "My Teddiursa is"
 	line "the cutest in the"
@@ -115,6 +75,17 @@ UnknownText_0x1ada88:
 	cont "your heart melt?"
 	done
 
+TrainerTwinsDayanddani1:
+	trainer EVENT_BEAT_TWINS_DAY_AND_DANI, TWINS, DAYANDDANI1, TwinsDayanddani1SeenText, TwinsDayanddani1BeatenText, 0, TrainerTwinsDayanddani1Script
+
+TrainerTwinsDayanddani1Script:
+	end_if_just_battled
+	opentext
+	writetext TwinsDayanddani1AfterText
+	waitbutton
+	closetext
+	end
+
 TwinsDayanddani1SeenText:
 	text "Day: Are you going"
 	line "to beat us?"
@@ -128,6 +99,17 @@ TwinsDayanddani1AfterText:
 	text "Day: You beat us…"
 	done
 
+TrainerTwinsDayanddani2:
+	trainer EVENT_BEAT_TWINS_DAY_AND_DANI, TWINS, DAYANDDANI2, TwinsDayanddani2SeenText, TwinsDayanddani2BeatenText, 0, TrainerTwinsDayanddani2Script
+
+TrainerTwinsDayanddani2Script:
+	end_if_just_battled
+	opentext
+	writetext TwinsDayanddani2AfterText
+	waitbutton
+	closetext
+	end
+
 TwinsDayanddani2SeenText:
 	text "Dani: We'll knock"
 	line "you flat!"
@@ -140,6 +122,155 @@ TwinsDayanddani2BeatenText:
 TwinsDayanddani2AfterText:
 	text "Dani: Looks like"
 	line "we got bounced."
+	done
+
+TrainerYoungsterChaz:
+	trainer EVENT_BEAT_YOUNGSTER_CHAZ, YOUNGSTER, CHAZ, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "Do I see a strong"
+	line "trainer?"
+
+	para "Nope, there's only"
+	line "trash here!"
+	done
+
+.BeatenText:
+	text "The trash was me…"
+	done
+
+.AfterText:
+	text "Me and my big"
+	line "mouth…"
+	done
+
+TrainerGuitaristfWanda:
+	trainer EVENT_BEAT_GUITARISTF_WANDA, GUITARISTF, WANDA, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "You'd better"
+	line "scatter and run!"
+	done
+
+.BeatenText:
+	text "The battle's lost"
+	line "and not won…"
+	done
+
+.AfterText:
+	text "Just move along…"
+	done
+
+OfficerfJennyScript:
+	faceplayer
+	opentext
+	checknite
+	iffalse .NoFight
+	checkevent EVENT_BEAT_OFFICERF_JENNY
+	iftrue .AfterScript
+	special SaveMusic
+	playmusic MUSIC_OFFICER_ENCOUNTER
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	loadtrainer OFFICERF, JENNY
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_OFFICERF_JENNY
+	closetext
+	end
+
+.AfterScript:
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .Kris
+	writetext .AfterTextMale
+	waitbutton
+	closetext
+	end
+
+.Kris:
+	writetext .AfterTextFemale
+	waitbutton
+	closetext
+	end
+
+.NoFight:
+	writetext .DaytimeText
+	waitbutton
+	closetext
+	end
+
+.DaytimeText:
+	text "Us Officers are"
+	line "here to keep the"
+	cont "peace."
+	done
+
+.SeenText:
+	text "You don't look"
+	line "familiar."
+
+	para "Squirtle Squad,"
+	line "attack!"
+	done
+
+.BeatenText:
+	text "Squirtle Squad,"
+	line "retreat…"
+	done
+
+.AfterTextMale:
+	text "Sorry to bother"
+	line "you, sir."
+
+	para "I get jumpy at"
+	line "night."
+	done
+
+.AfterTextFemale:
+	text "Sorry to bother"
+	line "you, miss."
+
+	para "I get jumpy at"
+	line "night."
+	done
+
+PokefanMScript_0x1ad951:
+	jumptextfaceplayer UnknownText_0x1ad957
+
+UnknownText_0x1ad957:
+	text "The road is closed"
+	line "until the problem"
+
+	para "at the Power Plant"
+	line "is solved."
+	done
+
+Route6UndergroundPathSign:
+	jumptext Route6UndergroundPathSignText
+
+Route6UndergroundPathSignText:
+	text "Underground Path"
+
+	para "Cerulean City -"
+	line "Vermilion City"
 	done
 
 Route6_MapEventHeader:
@@ -159,9 +290,12 @@ Route6_MapEventHeader:
 	signpost 11, 19, SIGNPOST_READ, Route6UndergroundPathSign
 
 .PersonEvents:
-	db 5
+	db 8
 	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 2, PokefanMScript_0x1ad951, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	person_event SPRITE_POKEFAN_M, 24, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
 	person_event SPRITE_POKEFAN_M, 24, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
 	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani1, -1
 	person_event SPRITE_TWIN, 17, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani2, -1
+	person_event SPRITE_YOUNGSTER, 27, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterChaz, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfWanda, -1
+	person_event SPRITE_OFFICER_F, 19, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, OfficerfJennyScript, -1
