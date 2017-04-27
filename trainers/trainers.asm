@@ -3770,6 +3770,43 @@ BugCatcherGroup:
 	db $ff ; end
 
 ; ================
+
+	; BUG_CATCHER
+	db "Oscar@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, LEDIAN
+	db 25, SCYTHER
+
+	db $ff ; end
+
+; ================
+
+	; BUG_CATCHER
+	db "Callum@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 24, ARIADOS
+	db 25, PINSIR
+
+	db $ff ; end
+
+; ================
+
+	; BUG_CATCHER
+	db "David@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, YANMA
+	db 23, METAPOD
+	db 23, KAKUNA
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5604,6 +5641,19 @@ BirdKeeperGroup:
 	db $ff ; end
 
 ; ================
+
+	; BIRD_KEEPER
+	db "Trent@"
+	db 0 ; normal
+
+	; party
+	db 33, PIDGEY
+	db 44, PIDGEOTTO
+	db 55, PIDGEOT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -6031,6 +6081,19 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER
+	db "Lester@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, CLEFABLE
+	db 53, SCYTHER
+	db 54, MACHOKE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -6038,15 +6101,14 @@ GruntMGroup:
 ; ================================
 ; ================
 
-;	; unused
-;	; GRUNTM
-;	db "Grunt@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;	db 10, ZUBAT
-;
-;	db $ff ; end
+	; unused
+	; GRUNTM
+	db "Grunt@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db $ff ; end
 
 ; ================
 
@@ -6364,15 +6426,14 @@ GruntMGroup:
 
 ; ================
 
-;	; unused
-;	; GRUNTM
-;	db "Grunt@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;	db 22, ZUBAT
-;
-;	db $ff ; end
+	; unused
+	; GRUNTM
+	db "Grunt@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db $ff ; end
 
 ; ================
 
@@ -7069,6 +7130,19 @@ PokemaniacGroup:
 		db RECOVER
 		db PSYBEAM
 		db TRI_ATTACK
+
+	db $ff ; end
+
+; ================
+
+	; POKEMANIAC
+	db "Clive@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 23, SLOWPOKE
+	db 23, WOOPER
+	db 25, NIDORINO
 
 	db $ff ; end
 
@@ -7927,6 +8001,31 @@ BugManiacGroup:
 	db $ff ; end
 
 ; ================
+
+	; BUG_MANIAC
+	db "Pierre@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, YANMA
+	db 54, YANMA
+	db 56, YANMEGA
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Dylan@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, LEDIAN
+	db 55, BUTTERFREE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8094,6 +8193,17 @@ FirebreatherGroup:
 
 	; party
 	db 26, MAGMAR
+
+	db $ff ; end
+
+; ================
+
+	; FIREBREATHER
+	db "Oleg@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, WEEZING
 
 	db $ff ; end
 
@@ -8975,6 +9085,19 @@ HexManiacGroup:
 	; party
 	db 62, MISMAGIUS
 	db 62, MISMAGIUS
+
+	db $ff ; end
+
+; ================
+
+	; HEX_MANIAC
+	db "Matilda@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 23, DROWZEE
+	db 24, MISDREAVUS
+	db 25, HYPNO
 
 	db $ff ; end
 
@@ -11691,6 +11814,17 @@ GuitaristMGroup:
 	db $ff ; end
 
 ; ================
+
+	; GUITARISTM
+	db "Ezekiel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, MAGNEZONE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11758,6 +11892,17 @@ GuitaristFGroup:
 	db 53, MAGNEMITE
 	db 54, ELECTRODE
 	db 55, MAGNETON
+
+	db $ff ; end
+
+; ================
+
+	; GUITARISTF
+	db "Jaclyn@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, ELECTIVIRE
 
 	db $ff ; end
 
@@ -14049,6 +14194,23 @@ CherylGroup:
 ; ================================
 ; ================
 
+	; CHERYL
+	db "Cheryl@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 27, CHANSEY
+	db 26, NIDORINA
+	db 23, CLEFABLE
+	db 23, WIGGLYTUFF
+	db 25, AZUMARILL
+	db 24, WOBBUFFET
+
+	db $ff ; end
+
+; ================
+
 ;	; CHERYL
 ;	db "Cheryl@"
 ;	db TRAINERTYPE_NORMAL
@@ -14167,14 +14329,29 @@ AnabelGroup:
 ; ================================
 ; ================
 
+	; ANABEL
+	db "Anabel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 57, ESPEON
+	db 55, SNORLAX
+	db 56, SLOWKING
+	db 54, BELLOSSOM
+	db 55, POLITOED
+	db 56, ALAKAZAM
+
+	db $ff ; end
+
+; ================
+
 ;	; ANABEL
 ;	db "Anabel@"
 ;	db TRAINERTYPE_NORMAL
 ;
 ;	; party
 ;
-;	; TODO: ALAKZAM
-;	; TODO: ESPEON
 ;	db 50, SNORLAX
 ;	db 50, SLOWKING
 ;	db 50, BLASTOISE
@@ -14578,6 +14755,9 @@ BillGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 YellowGroup:
 ; ================================
 ; ================
@@ -14787,9 +14967,6 @@ ImakuniGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 LawrenceGroup:

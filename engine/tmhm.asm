@@ -114,7 +114,7 @@ TMHMMoves: ; 1167a
 	db POISON_JAB   ; TM66 (Janine)
 	db AVALANCHE    ; TM67 (Pryce)
 	db GIGA_IMPACT  ; TM68 (Celadon Game Corner)
-	db U_TURN       ; TM69 (TODO: Noisy Forest)
+	db U_TURN       ; TM69 (Noisy Forest)
 	db FLASH        ; TM70 (Sprout Tower)
 	db CUT          ; HM01 (Ilex Forest)
 	db FLY          ; HM02 (Cianwood City)

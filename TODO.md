@@ -41,18 +41,16 @@
 * Battle Tower merchants selling items for BP
 * Six Hyper Trainers for each stat in Battle Tower 2F
 * Lost Pikablu (Marill) in Noisy Forest
-* Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue
+* Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue (in his house after defeat)
 * Celadon University Hyper Test with Dragon Rage Magikarp as a reward
 
 
 ## Characters
 
-* Cheryl in Murky Swamp
 * Marley in Quiet Cave 5F
 * Buck in Mt. Moon B2F
 * Riley in Dim Cave B3F
 * Mira in Scary Cave 1F
-* Anabel in Noisy Forest
 * Candela in Fire Island peak
 * Blanche in Ice Island peak
 * Spark in Lightning Island peak
@@ -83,7 +81,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Uraga Channel
 * Scary Cave
-* Murky Swamp
 * Quiet Cave
 * Celadon Hotel (just items left)
 * Celadon University (Cubone fossil exhibit)
@@ -95,7 +92,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Shamouti Tunnel
 * Warm Beach
 * Rocky Beach
-* Noisy Forest (U-Turn TM, Big Mushroom, BalmMushroom)
 * Shrine Ruins
 * Fire/Ice/Lightning Islands
 * Saffron City Trainer Fan Club

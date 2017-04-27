@@ -643,6 +643,21 @@ LoadSpecialMapOBPalette:
 	ret
 
 .not_murky_swamp:
+	ld a, [wTileset]
+	cp TILESET_SHAMOUTI_ISLAND
+	jr nz, .not_shamouti_island
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 1 palettes
+	ld hl, ShamoutiIslandOBPalette_Tree
+	call AddNTimes
+	ld a, $5
+	ld de, UnknOBPals + 6 palettes
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+
+.not_shamouti_island:
 	ld a, [MapGroup]
 	cp GROUP_FARAWAY_ISLAND
 	jr nz, .not_faraway_island
@@ -691,6 +706,22 @@ MurkySwampOBPalette_Tree:
 	RGB 12, 19, 18
 	RGB 07, 14, 13
 	RGB 04, 08, 07
+	RGB 00, 00, 00
+
+ShamoutiIslandOBPalette_Tree:
+	RGB 31, 31, 31
+	RGB 16, 26, 12
+	RGB 07, 18, 06
+	RGB 07, 07, 07
+
+	RGB 31, 31, 31
+	RGB 16, 26, 12
+	RGB 07, 18, 06
+	RGB 07, 07, 07
+
+	RGB 15, 14, 24
+	RGB 08, 13, 11
+	RGB 04, 09, 06
 	RGB 00, 00, 00
 
 FarawayIslandOBPalette_Tree:

@@ -132,6 +132,9 @@ KRIS EQU __enum__
 	const JOSH
 	const KEN
 	const WAYNE
+	const OSCAR
+	const CALLUM
+	const DAVID
 
 	trainerclass CAMPER ; 21
 	const TODD1
@@ -271,6 +274,7 @@ KRIS EQU __enum__
 	const KINSLEY
 	const EASTON
 	const BRYAN
+	const TRENT
 
 	trainerclass HIKER ; 26
 	const ANTHONY1
@@ -304,6 +308,7 @@ KRIS EQU __enum__
 	const DENT
 	const BRUCE
 	const DWIGHT
+	const LESTER
 
 	trainerclass GRUNTM ; 27
 
@@ -361,6 +366,7 @@ KRIS EQU __enum__
 	const ZACH
 	const MILLER
 	const AIDAN
+	const CLIVE
 
 	trainerclass COSPLAYER ; 2e
 	const CLARA
@@ -432,6 +438,8 @@ KRIS EQU __enum__
 	const ABNER
 	const KENTA
 	const ROBBY
+	const PIERRE
+	const DYLAN
 
 	trainerclass RUIN_MANIAC ; 33
 	const JONES
@@ -449,6 +457,7 @@ KRIS EQU __enum__
 	const RAY
 	const LYLE
 	const JAY
+	const OLEG
 
 	trainerclass JUGGLER ; 35
 	const IRWIN1
@@ -520,6 +529,7 @@ KRIS EQU __enum__
 	const NATALIE
 	const VIVIAN
 	const ESTHER
+	const MATILDA
 
 	trainerclass SAGE ; 3a
 	const CHOW
@@ -768,12 +778,14 @@ KRIS EQU __enum__
 	const CLYDE
 	const VINCENT
 	const ROGER
+	const EZEKIEL
 
 	trainerclass GUITARISTF ; 54
 	const JANET
 	const MORGAN
 	const RITSUKO
 	const WANDA
+	const JACLYN
 
 	trainerclass BIKER ; 55
 	const DWAYNE
