@@ -78,10 +78,10 @@ BIG_ROOT [Route 3, Yellow Forest]
 .
 
 Shamouti Market #2 (geologist):
-DAMP_ROCK
-HEAT_ROCK
-SMOOTH_ROCK (TODO: Diglett's Cave)
-ICY_ROCK
+DAMP_ROCK (TODO: Lightning Island)
+HEAT_ROCK (TODO: Fire Island)
+SMOOTH_ROCK (TODO: Shamouti Tunnel)
+ICY_ROCK (TODO: Ice Island)
 EVIOLITE
 LIGHT_CLAY [Route 9] (TODO: Dim Cave)
 .
