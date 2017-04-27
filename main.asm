@@ -6047,7 +6047,7 @@ SECTION "Tileset Data 7", ROMX[$41d0], BANK[TILESETS_7]
 
 INCLUDE "tilesets/data_7.asm"
 
-SECTION "bank77_2", ROMX[$6848], BANK[$77]
+SECTION "bank77_2", ROMX[$6899], BANK[$77]
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c
