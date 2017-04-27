@@ -1005,16 +1005,16 @@ Group13Sprites:
 ; PalletTown
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
+	db SPRITE_ENGINEER
 	db SPRITE_FISHER
+	db SPRITE_LASS
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
-	db SPRITE_LASS ; doesn't walk
 	db SPRITE_BLUE ; doesn't walk
 	db SPRITE_COSPLAYER ; doesn't walk
-	db SPRITE_ENGINEER ; doesn't walk
-	; 11 walking sprites (7 that walk)
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_ROCK_BOULDER_FOSSIL
 	; 13 total sprites
@@ -1337,7 +1337,6 @@ Group17Sprites:
 ; Route14
 ; Route15
 ; Route18
-; UragaChannelEast
 ; FuchsiaCity
 ; SafariZoneEast
 ; SafariZoneHub
@@ -1465,9 +1464,9 @@ Group20Sprites:
 
 Group21Sprites:
 ; Route7
-; Route16North
 ; Route16South
 ; Route17
+; UragaChannelEast
 ; CeladonCity
 	db SPRITE_BIKER
 	db SPRITE_BREEDER
@@ -1479,13 +1478,13 @@ Group21Sprites:
 	db SPRITE_ROUGHNECK
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_SWIMMER_GIRL ; doesn't walk
+	db SPRITE_POKEFAN_M ; doesn't walk
+	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_POLIWRATH
-	; 13 total sprites
-	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_BALL_CUT_FRUIT
+	; 15 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
@@ -1502,6 +1501,8 @@ Group23Sprites:
 ; Route22
 ; ViridianCity
 ; ViridianForest
+; Route16North
+; Route16West
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BUG_MANIAC
 	db SPRITE_COSPLAYER

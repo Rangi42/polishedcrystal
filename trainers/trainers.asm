@@ -8081,6 +8081,19 @@ RuinManiacGroup:
 	db $ff ; end
 
 ; ================
+
+	; RUIN_MANIAC
+	db "Smilte@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, SANDSLASH
+	db 54, DUGTRIO
+	db 56, AERODACTYL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10902,6 +10915,18 @@ SwimmerFGroup:
 	db $ff ; end
 
 ; ================
+
+	; SWIMMERF 
+	db "Woda@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, MANTINE
+	db 57, OCTILLERY
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12055,6 +12080,20 @@ BikerGroup:
 
 	; party
 	db 58, ARBOK
+
+	db $ff ; end
+
+; ================
+
+	; BIKER
+	db "Tyrone@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 22, TYROGUE
+	db 32, GRIMER
+	db 42, MUK
+	db 52, WEEZING
 
 	db $ff ; end
 

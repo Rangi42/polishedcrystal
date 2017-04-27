@@ -1,49 +1,49 @@
-SOOTHE_BELL [National Park]
+SOOTHE_BELL (PC: Ruins of Alph) [HGSS: National Park]
 
 Battle Tower #1:
-CHOICE_BAND
-CHOICE_SCARF [Mom]
-CHOICE_SPECS [Lake of Rage]
-EXPERT_BELT [Mt.Silver]
-MUSCLE_BAND (Steven) [Mom]
-WISE_GLASSES (Cynthia) [Pewter City]
-METRONOME_I [Game Corner]
-GRIP_CLAW [Seafoam Islands]
+CHOICE_BAND (PC: exclusive)
+CHOICE_SCARF (PC: exclusive) [HGSS: Mom]
+CHOICE_SPECS (PC: exclusive) [HGSS: Lake of Rage]
+EXPERT_BELT (PC: ?) [HGSS: Mt.Silver]
+MUSCLE_BAND (PC: Steven) [HGSS: Mom]
+WISE_GLASSES (PC: Cynthia) [HGSS: Pewter City]
+METRONOME_I (PC: ?) [HGSS: Game Corner]
+GRIP_CLAW (PC: Seafoam Islands) [HGSS: Seafoam Islands]
 .
 .
 
 Battle Tower #2:
 RARE_CANDY
-PP_MAX (Radio Tower)
-ABILITY_CAP
-WEAK_POLICY
-LIFE_ORB [Ruins of Alph]
+PP_MAX (PC: Radio Tower)
+ABILITY_CAP (PC: exclusive)
+WEAK_POLICY (PC: Viridian school house)
+LIFE_ORB (PC: Ruins of Alph) [HGSS: Ruins of Alph]
 FLAME_ORB (TODO: Cinnabar Volcano)
 TOXIC_ORB (TODO: Murky Swamp)
-BLACK_SLUDGE [Cerulean Cave]
+BLACK_SLUDGE (TODO: Cerulean Cave) [HGSS: Cerulean Cave]
 .
 .
 
 Battle Tower #3:
-MACHO_BRACE
-FOCUS_BAND (Fighting Dojo)
-FOCUS_SASH [Mom]
-ASSAULT_VEST
-PROTECT_PADS
-ROCKY_HELMET
-SAFE_GOGGLES
-BINDING_BAND
+MACHO_BRACE (PC: Oak's aide)
+FOCUS_BAND (PC: Fighting Dojo)
+FOCUS_SASH (TODO: ?) [HGSS: Mom]
+ASSAULT_VEST (PC: Cianwood City)
+PROTECT_PADS (TODO: ?)
+ROCKY_HELMET (TODO: ?)
+SAFE_GOGGLES (TODO: ?)
+BINDING_BAND (TODO: ?)
 .
 .
 
 Adventurer:
 ETHER
 ELIXIR
-DESTINY_KNOT [Route 27]
-SCOPE_LENS (Harbor merchant)
-WIDE_LENS (Harbor merchant) [Game Corner]
-ZOOM_LENS (Harbor merchant) [Game Corner]
-BRIGHTPOWDER (Harbor merchant) [Radio Tower]
+DESTINY_KNOT (PC: Route 27, Ecruteak City) [HGSS: Route 27]
+SCOPE_LENS (PC: Harbor merchant)
+WIDE_LENS (PC: Harbor merchant) [HGSS: Game Corner]
+ZOOM_LENS (PC: Harbor merchant) [HGSS: Game Corner]
+BRIGHTPOWDER (PC: Harbor merchant) [HGSS: Radio Tower]
 SURF_MAIL
 .
 .
@@ -55,21 +55,16 @@ SUPER_POTION
 HYPER_POTION
 SUPER_REPEL
 REVIVE
-AIR_BALLOON
-QUICK_CLAW (National Park, Route 47)
-KINGS_ROCK (Slowpoke Well)
+AIR_BALLOON (PC: Saffron Hitmontop kid house)
+QUICK_CLAW (PC: National Park, Route 47) [HGSS: National Park, Route 47]
+KINGS_ROCK (PC: Slowpoke Well) [HGSS: Slowpoke Well]
 .
 
-Shamouti Market #1:
-Charmander Doll
-Bulbasaur Doll
-Squirtle Doll
-
 Shamouti Market #1 (herbalist):
-MENTAL_HERB [Route 7]
-POWER_HERB [Route 34]
-WHITE_HERB
-BIG_ROOT [Route 3, Yellow Forest]
+MENTAL_HERB (PC: Route 7) [HGSS: Route 7]
+POWER_HERB (PC: Route 34) [HGSS: Route 34]
+WHITE_HERB (PC: Route 32 Coast)
+BIG_ROOT (PC: Route 3, Yellow Forest) [HGSS: Route 3, Yellow Forest]
 .
 .
 .
@@ -78,38 +73,26 @@ BIG_ROOT [Route 3, Yellow Forest]
 .
 
 Shamouti Market #2 (geologist):
-DAMP_ROCK (TODO: Lightning Island)
-HEAT_ROCK (TODO: Fire Island)
+DAMP_ROCK (TODO: Lightning Island) (PC: Slowpoke Well)
+HEAT_ROCK (TODO: Fire Island) (PC: Radio Tower)
 SMOOTH_ROCK (TODO: Shamouti Tunnel)
-ICY_ROCK (TODO: Ice Island)
-EVIOLITE
-LIGHT_CLAY [Route 9] (TODO: Dim Cave)
+ICY_ROCK (TODO: Ice Island) (PC: Ice Path)
+EVIOLITE (PC: Pokécom Center, Uraga Channel)
+LIGHT_CLAY (TODO: Dim Cave) [HGSS: Route 9]
 .
 .
 .
 .
 
-Girl on Warm Beach:
-SHELL_BELL [Route 32] (one per day)
+Girl on Warm Beach or Shamouti Market:
+SHELL_BELL (one per day) (PC: Cerulean Cape) [HGSS: Route 32]
 
 Shamouti Hotel Restaurant Baker:
-LEFTOVERS (Celadon Restaurant)
+LEFTOVERS (one per day) (PC: Celadon Restaurant)
 
 Silph employee:
 MAX_POTION
 MAX_REPEL
 DUSK_BALL
-UP_GRADE
-DUBIOUS_DISC
-
-Mt.Moon:
-revive
-dusk stone
-shiny stone
-moon stone
-star piece
-dome fossil
-helix fossil
-big mushroom (hidden)
-moon stone (hidden)
-max ether (hidden)
+UP_GRADE (PC: Silph Co) [HGSS: Silph Co]
+DUBIOUS_DISC (PC: Celadon City) [HGSS: Route 42]

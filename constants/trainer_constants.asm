@@ -446,6 +446,7 @@ KRIS EQU __enum__
 	const LELAND
 	const PETRIE
 	const GLYN
+	const SMILTE
 
 	trainerclass FIREBREATHER ; 34
 	const OTIS
@@ -695,6 +696,7 @@ KRIS EQU __enum__
 	const LEONA
 	const CHELAN
 	const KENDRA
+	const WODA
 
 	trainerclass BURGLAR ; 49
 	const DUNCAN
@@ -800,6 +802,7 @@ KRIS EQU __enum__
 	const AIDEN
 	const DAN
 	const TEDDY
+	const TYRONE
 
 	trainerclass ROUGHNECK ; 56
 	const BRIAN

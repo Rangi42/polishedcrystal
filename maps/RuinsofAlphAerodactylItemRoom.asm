@@ -20,8 +20,8 @@ RuinsofAlphAerodactylItemRoomEnergyRoot:
 RuinsofAlphAerodactylItemRoomRevivalHerb:
 	itemball REVIVAL_HERB
 
-RuinsofAlphAerodactylItemRoomShellBell:
-	itemball SHELL_BELL
+RuinsofAlphAerodactylItemRoomSootheBell:
+	itemball SOOTHE_BELL
 
 MapRuinsofAlphAerodactylItemRoomSignpost1Script:
 	jumptext UnknownText_0x59ac1
@@ -56,4 +56,4 @@ RuinsofAlphAerodactylItemRoom_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomRareBone, EVENT_PICKED_UP_RARE_BONE_FROM_AERODACTYL_ITEM_ROOM
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomEnergyRoot, EVENT_PICKED_UP_ENERGY_ROOT_FROM_AERODACTYL_ITEM_ROOM
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomRevivalHerb, EVENT_PICKED_UP_REVIVAL_HERB_FROM_AERODACTYL_ITEM_ROOM
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomShellBell, EVENT_PICKED_UP_SHELL_BELL_FROM_AERODACTYL_ITEM_ROOM
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RuinsofAlphAerodactylItemRoomSootheBell, EVENT_PICKED_UP_SOOTHE_BELL_FROM_AERODACTYL_ITEM_ROOM

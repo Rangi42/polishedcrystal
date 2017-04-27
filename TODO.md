@@ -79,7 +79,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * RBY teleporter machine in Bill's house
 * Route 16
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
-* Uraga Channel
 * Scary Cave
 * Quiet Cave
 * Celadon Hotel (just items left)

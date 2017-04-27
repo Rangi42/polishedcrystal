@@ -155,12 +155,12 @@ RooftopSaleData2: ; 15aff
 AdventurerData:
 	db 8
 	dbw ETHER,        1200
-	dbw ELIXER,       2000
-	dbw RARE_CANDY,  12000
-	dbw BRIGHTPOWDER, 1800
-	dbw SCOPE_LENS,   2400
-	dbw WIDE_LENS,    2400
-	dbw ZOOM_LENS,    2400
+	dbw ELIXER,       3000
+	dbw DESTINY_KNOT, 4000
+	dbw SCOPE_LENS,   4000
+	dbw WIDE_LENS,    4000
+	dbw ZOOM_LENS,    4000
+	dbw BRIGHTPOWDER, 4000
 	dbw SURF_MAIL,      50
 	db -1
 
