@@ -2112,7 +2112,10 @@ TimeOfDay:: ; d269
 OtherTrainerType::
 	ds 1
 
-SECTION "Enemy Party", WRAMX [$d278], BANK [1]
+TrainerGroupBank::
+	ds 1
+
+SECTION "Enemy Party", WRAMX [$d279], BANK [1]
 wPokedexShowPointerAddr::
 wd26b:: ds 1
 wd26c:: ds 1

@@ -1912,7 +1912,7 @@ endr
 
 INCLUDE "trainers/attributes.asm"
 
-SECTION "Enemy Trainer Parties", ROMX[$4000], BANK[$E]
+SECTION "Enemy Trainer Pointers", ROMX[$4000], BANK[$E]
 
 INCLUDE "trainers/read_party.asm"
 

@@ -20,19 +20,19 @@ ReadTrainerParty: ; 39771
 
 	call FindTrainerData
 
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [OtherTrainerType], a
 
 .loop2
 ; level
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	cp $ff
 	ret z
 
 	ld [CurPartyLevel], a
 
 ; species
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [CurPartySpecies], a
 
 	ld a, OTPARTYMON
@@ -57,7 +57,7 @@ ReadTrainerParty: ; 39771
 	ld e, l
 	pop hl
 
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [de], a
 
 .not_item
@@ -77,21 +77,21 @@ ReadTrainerParty: ; 39771
 	pop hl
 
 	; when reading DVs, $00 means $ff, since $ff is the end-of-trainer marker
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	and a
 	jr nz, .dv1_ok
 	ld a, $ff
 .dv1_ok
 	ld [de], a
 	inc de
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	and a
 	jr nz, .dv2_ok
 	ld a, $ff
 .dv2_ok
 	ld [de], a
 	inc de
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	and a
 	jr nz, .dv3_ok
 	ld a, $ff
@@ -116,10 +116,10 @@ ReadTrainerParty: ; 39771
 	ld e, l
 	pop hl
 
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [de], a
 	inc de
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [de], a
 
 	; TODO: regenerate stats (after TryAddMonToParty) with new nature (will fix #133)
@@ -133,7 +133,7 @@ ReadTrainerParty: ; 39771
 	push de
 	ld de, StringBuffer2
 .copy
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [de], a
 	inc de
 	cp "@"
@@ -170,7 +170,7 @@ ReadTrainerParty: ; 39771
 
 	ld b, NUM_MOVES
 .copy_moves
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	ld [de], a
 	inc de
 	dec b
@@ -227,6 +227,8 @@ Battle_GetTrainerName:: ; 39939
 	ld a, [InBattleTowerBattle]
 	bit 0, a
 	ld hl, OTPlayerName
+	ld a, BANK(Battle_GetTrainerName) ; make FarCopyBytes act like CopyBytes
+	ld [TrainerGroupBank], a
 	jp nz, CopyTrainerName
 
 	ld a, [OtherTrainerID]
@@ -239,9 +241,11 @@ GetTrainerName:: ; 3994c
 	push bc
 	ld b, 0
 	ld hl, TrainerGroups
-rept 2
+rept 3
 	add hl, bc
 endr
+	ld a, [hli]
+	ld [TrainerGroupBank], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -252,7 +256,7 @@ endr
 	jr z, CopyTrainerName
 
 .skip
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	cp $ff
 	jr nz, .skip
 	jr .loop
@@ -261,7 +265,8 @@ CopyTrainerName: ; 39984
 	ld de, StringBuffer1
 	push de
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	ld a, [TrainerGroupBank]
+	call FarCopyBytes
 	pop de
 	ret
 ; 39990
@@ -281,7 +286,7 @@ SetTrainerBattleLevel:
 	call FindTrainerData
 
 	inc hl
-	ld a, [hl]
+	call GetNextTrainerDataByte
 	ld [CurPartyLevel], a
 	ret
 
@@ -291,9 +296,11 @@ FindTrainerData:
 	ld c, a
 	ld b, 0
 	ld hl, TrainerGroups
-rept 2
+rept 3
 	add hl, bc
 endr
+	ld a, [hli]
+	ld [TrainerGroupBank], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -304,14 +311,20 @@ endr
 	dec b
 	jr z, .got_trainer
 .loop1
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	cp $ff
 	jr nz, .loop1
 	jr .skip_trainer
 .got_trainer
 
 .skip_name
-	ld a, [hli]
+	call GetNextTrainerDataByte
 	cp "@"
 	jr nz, .skip_name
+	ret
+
+GetNextTrainerDataByte:
+	ld a, [TrainerGroupBank]
+	call GetFarByte
+	inc hl
 	ret

@@ -1,5 +1,3 @@
-Trainers:
-
 ; All trainers follow a basic structure:
 	; Name
 		; String in format "TEXT@"
@@ -18,6 +16,10 @@ Trainers:
 ; That means:
 ; * DVs cannot be $ff -- use $00 instead (ReadTrainerParty converts it to $ff)
 ; * "9" cannot be used in nicknames
+
+
+SECTION "Enemy Trainer Parties 1", ROMX, BANK[$E]
+
 
 KayGroup:
 ; ================================
@@ -14802,6 +14804,9 @@ endc
 
 ; ================
 ; ================================
+
+
+SECTION "Enemy Trainer Parties 2", ROMX
 
 
 ReiGroup:
