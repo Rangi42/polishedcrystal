@@ -89,9 +89,8 @@ SafariZoneWardensHome_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 4
+	db 3
 	signpost 1, 0, SIGNPOST_READ, WardensHomeBookshelf
-	signpost 1, 1, SIGNPOST_READ, WardensHomeBookshelf
 	signpost 0, 7, SIGNPOST_READ, WardenPhoto
 	signpost 0, 9, SIGNPOST_READ, SafariZonePhoto
 
