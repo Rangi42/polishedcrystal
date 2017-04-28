@@ -1659,6 +1659,33 @@ Giovanni2FinalPkmnText:
 	line "that strong!"
 	prompt
 
+ProfOakFinalPkmnText:
+ProfElmFinalPkmnText:
+ProfIvyFinalPkmnText:
+	text "Hm! Excellent!"
+	line "But you aren't"
+	cont "done yet!"
+	prompt
+
+MysticalManFinalPkmnText:
+	text "Time for a dra-"
+	line "matic comeback!"
+	prompt
+
+KarateKingFinalPkmnText:
+	text "Yaaarggh!"
+	prompt
+
+PalmerFinalPkmnText:
+	text "Bravo!"
+	prompt
+
+JessieJamesFinalPkmnText:
+	text "We have a proud"
+	line "tradition of fail-"
+	cont "ure to uphold!"
+	prompt
+
 LoreleiFinalPkmnText:
 	text "You only got a"
 	line "taste of my power!"
@@ -1712,4 +1739,80 @@ MiraFinalPkmnText:
 AnabelFinalPkmnText:
 	text "Your talent…"
 	line "It's real."
+	prompt
+
+DarachFinalPkmnText:
+	text "My last stand!"
+	line "Allez!"
+	prompt
+
+CaitlinFinalPkmnText:
+	text "Even at this time,"
+	line "I should stay cool"
+	cont "and collected…"
+	prompt
+
+CandelaFinalPkmnText:
+	text "Down to the wire!"
+	line "How exciting!"
+	prompt
+
+BlancheFinalPkmnText:
+	text "I am certainly"
+	line "impressed so far."
+	prompt
+
+SparkFinalPkmnText:
+	text "You're good!"
+	line "No doubt about it!"
+	prompt
+
+FlanneryFinalPkmnText:
+	text "Um… what should"
+	line "I do now?"
+	prompt
+
+MayleneFinalPkmnText:
+	text "This isn't the"
+	line "end, my friend!"
+	prompt
+
+SkylaFinalPkmnText:
+	text "This is my last"
+	line "#mon…"
+
+	para "But I'll never"
+	line "give up hope!"
+	prompt
+
+ValerieFinalPkmnText:
+	text "Oh my…"
+	prompt
+
+BillFinalPkmnText:
+	text "Yeehah!"
+	line "What a battle!"
+	prompt
+
+YellowFinalPkmnText:
+	text "My last #mon…"
+	line "Lend me your"
+	cont "power!"
+	prompt
+
+WalkerFinalPkmnText:
+	text "We can still fly!"
+	prompt
+
+ImakuniFinalPkmnText:
+	text "I'm running away!"
+	line "…I can't?"
+	prompt
+
+LawrenceFinalPkmnText:
+	text "Inconceivable!"
+	prompt
+
+ReiFinalPkmnText:
+	text "I'm not done yet."
 	prompt

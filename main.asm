@@ -5111,26 +5111,28 @@ BattleText::
 INCLUDE "text/battle.asm"
 
 GetFinalPkmnTextPointer::
-	; Some trainers have one unique phrase
-	ld a, [OtherTrainerClass]
-	ld hl, .single_phrases
-	call .findinarray
-	jr c, .done
 	; Silver and Lyra have a phrase for each set of three IDs
 	ld a, [OtherTrainerClass]
 	ld hl, .triple_phrases
 	call .findinarray
 	jr c, .rival_or_lyra
 	; Proton to Giovanni have a phrase for each ID
+	ld a, [OtherTrainerClass]
 	cp PROTON
 	jr c, .not_rocket
 	cp GIOVANNI + 1
 	jr c, .rocket
 .not_rocket
-	; Leaf and below have one unique phrase
+	; Leaf and below, and Prof. Oak and above, have one unique phrase
 	dec a
 	cp LEAF
-	jr c, .leader
+	jr c, .single_phrase
+	cp PROF_OAK - 1
+	jr c, .nothing
+	sub PROF_OAK - LEAF - 1
+	jr .single_phrase
+
+.nothing:
 	xor a
 	and a
 	ret
@@ -5154,8 +5156,8 @@ GetFinalPkmnTextPointer::
 	ld hl, .TeamRocketFinalTexts
 	jr .get_text
 
-.leader:
-	ld hl, .GymLeaderFinalTexts
+.single_phrase:
+	ld hl, .SinglePhraseFinalTexts
 .get_text:
 	ld b, 0
 	ld c, a
@@ -5178,19 +5180,6 @@ endr
 .done:
 	scf
 	ret
-
-.single_phrases:
-	dbw LORELEI, LoreleiFinalPkmnText
-	dbw AGATHA, AgathaFinalPkmnText
-	dbw STEVEN, StevenFinalPkmnText
-	dbw CYNTHIA, CynthiaFinalPkmnText
-	dbw CHERYL, CherylFinalPkmnText
-	dbw RILEY, RileyFinalPkmnText
-	dbw BUCK, BuckFinalPkmnText
-	dbw MARLEY, MarleyFinalPkmnText
-	dbw MIRA, MiraFinalPkmnText
-	dbw ANABEL, AnabelFinalPkmnText
-	db -1
 
 .triple_phrases:
 	dbw RIVAL0, .Rival0FinalTexts
@@ -5234,7 +5223,7 @@ endr
 	dw Giovanni1FinalPkmnText
 	dw Giovanni2FinalPkmnText
 
-.GymLeaderFinalTexts:
+.SinglePhraseFinalTexts:
 	dw KayFinalPkmnText
 	dw CalFinalPkmnText
 	dw FalknerFinalPkmnText
@@ -5260,6 +5249,38 @@ endr
 	dw BlueFinalPkmnText
 	dw RedFinalPkmnText
 	dw LeafFinalPkmnText
+	dw ProfOakFinalPkmnText
+	dw ProfElmFinalPkmnText
+	dw ProfIvyFinalPkmnText
+	dw MysticalManFinalPkmnText
+	dw KarateKingFinalPkmnText
+	dw PalmerFinalPkmnText
+	dw JessieJamesFinalPkmnText
+	dw LoreleiFinalPkmnText
+	dw AgathaFinalPkmnText
+	dw StevenFinalPkmnText
+	dw CynthiaFinalPkmnText
+	dw CherylFinalPkmnText
+	dw RileyFinalPkmnText
+	dw BuckFinalPkmnText
+	dw MarleyFinalPkmnText
+	dw MiraFinalPkmnText
+	dw AnabelFinalPkmnText
+	dw DarachFinalPkmnText
+	dw CaitlinFinalPkmnText
+	dw CandelaFinalPkmnText
+	dw BlancheFinalPkmnText
+	dw SparkFinalPkmnText
+	dw FlanneryFinalPkmnText
+	dw MayleneFinalPkmnText
+	dw SkylaFinalPkmnText
+	dw ValerieFinalPkmnText
+	dw BillFinalPkmnText
+	dw YellowFinalPkmnText
+	dw WalkerFinalPkmnText
+	dw ImakuniFinalPkmnText
+	dw LawrenceFinalPkmnText
+	dw ReiFinalPkmnText
 
 SECTION "bank21", ROMX[$4000], BANK[$21]
 
