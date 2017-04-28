@@ -5,7 +5,8 @@ const_value set 2
 	const MURKYSWAMP_BUG_CATCHER3
 	const MURKYSWAMP_SUPER_NERD
 	const MURKYSWAMP_HEX_MANIAC
-	const MURKYSWAMP_FISHER
+	const MURKYSWAMP_FISHER1
+	const MURKYSWAMP_FISHER2
 	const MURKYSWAMP_YOUNGSTER
 	const MURKYSWAMP_POKE_BALL1
 	const MURKYSWAMP_POKE_BALL2
@@ -318,6 +319,34 @@ TrainerFirebreatherOleg:
 	line "without a fire…"
 	done
 
+TrainerFisherDundee:
+	trainer EVENT_BEAT_FISHER_DUNDEE, FISHER, DUNDEE, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "All the #mon I"
+	line "fish up here are"
+	cont "poisonous!"
+	done
+
+.BeatenText:
+	text "This is no place"
+	line "for fishing…"
+	done
+
+.AfterText:
+	text "I would go fish in"
+	line "the ocean, but I'm"
+	cont "lost in here…"
+	done
+
 MurkySwampYoungsterScript:
 	jumptextfaceplayer .Text
 
@@ -378,7 +407,7 @@ MurkySwamp_MapEventHeader:
 	signpost 33, 40, SIGNPOST_ITEM, MurkySwampHiddenTinyMushroom
 
 .PersonEvents:
-	db 14
+	db 15
 	person_event SPRITE_CHERYL, 26, 40, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
 	person_event SPRITE_BUG_CATCHER, 20, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherOscar, -1
 	person_event SPRITE_BUG_CATCHER, 31, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherCallum, -1
@@ -386,6 +415,7 @@ MurkySwamp_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 33, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacClive, -1
 	person_event SPRITE_HEX_MANIAC, 17, 37, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacMatilda, -1
 	person_event SPRITE_FISHER, 22, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherOleg, -1
+	person_event SPRITE_FISHER, 8, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDundee, -1
 	person_event SPRITE_YOUNGSTER, 33, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MurkySwampYoungsterScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampEscapeRope, EVENT_MURKY_SWAMP_ESCAPE_ROPE
 	person_event SPRITE_BALL_CUT_FRUIT, 11, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampBigMushroom, EVENT_MURKY_SWAMP_BIG_MUSHROOM

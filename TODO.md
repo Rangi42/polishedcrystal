@@ -63,7 +63,7 @@
 * Prof. Ivy in Shamouti Island (gives a starter)
 * Imakuni in Celadon University
 * Victor and Puka in Route 19 Beach House (needs trainer sprite)
-* Inver in Route 16 house (just his sister until Inverse Battles are implemented)
+* Inver in Route 16 house
 * Gourmet Maniac in Route 32 Coast house
 * Ore Maniac in Shamouti Tunnel
 * Body Slam tutor in Warm Beach house
@@ -77,7 +77,7 @@
 Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * RBY teleporter machine in Bill's house
-* Route 16
+* Route 16 (just Cosplayer Kuroko's dialog)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Scary Cave
 * Quiet Cave

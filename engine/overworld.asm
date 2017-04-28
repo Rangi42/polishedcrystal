@@ -1497,12 +1497,12 @@ Group21Sprites:
 
 Group23Sprites:
 ; Route2South
-; Route16West
 ; Route22
 ; ViridianCity
 ; ViridianForest
 ; Route16North
 ; Route16West
+	db SPRITE_BEAUTY
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BUG_MANIAC
 	db SPRITE_COSPLAYER
@@ -1513,11 +1513,9 @@ Group23Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_COOLTRAINER_M ; doesn't walk
 	db SPRITE_COOLTRAINER_F ; doesn't walk
-	; 10 walking sprites (8 that walk)
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
-	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_BALL_CUT_FRUIT
+	; 12 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT

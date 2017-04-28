@@ -397,10 +397,10 @@ Celadon3FTMMart: ; 161ce
 	dbw TM_BULK_UP,       20000
 	dbw TM_CALM_MIND,     20000
 	dbw TM_SWORDS_DANCE,  20000
-	dbw TM_SUNNY_DAY,     30000
-	dbw TM_RAIN_DANCE,    30000
-	dbw TM_SANDSTORM,     30000
-	dbw TM_HAIL,          30000
+	dbw TM_SUNNY_DAY,     40000
+	dbw TM_RAIN_DANCE,    40000
+	dbw TM_SANDSTORM,     40000
+	dbw TM_HAIL,          40000
 	db $ff
 ; 161d5
 

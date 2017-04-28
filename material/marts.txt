@@ -7,7 +7,7 @@ CHOICE_SPECS (PC: exclusive) [HGSS: Lake of Rage]
 EXPERT_BELT (PC: ?) [HGSS: Mt.Silver]
 MUSCLE_BAND (PC: Steven) [HGSS: Mom]
 WISE_GLASSES (PC: Cynthia) [HGSS: Pewter City]
-METRONOME_I (PC: ?) [HGSS: Game Corner]
+METRONOME_I (PC: Route 16) [HGSS: Game Corner]
 GRIP_CLAW (PC: Seafoam Islands) [HGSS: Seafoam Islands]
 .
 .

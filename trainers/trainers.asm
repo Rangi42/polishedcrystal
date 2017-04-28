@@ -5241,6 +5241,17 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Dundee@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 26, CROCONAW
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7190,6 +7201,18 @@ CosplayerGroup:
 	db $ff ; end
 
 ; ================
+
+	; COSPLAYER
+	db "Kuroko@"
+	db TRAINERTYPE_ITEM
+
+	; party
+	db 60, VULPIX, EVIOLITE
+	db 62, NINETALES, CHARCOAL
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7531,7 +7554,7 @@ LassGroup:
 ; ================
 
 	; LASS
-	db "Alice@"
+	db "Amanda@"
 	db TRAINERTYPE_NORMAL
 
 	; party
@@ -7709,6 +7732,50 @@ LassGroup:
 	db $ff ; end
 
 ; ================
+
+	; LASS
+	db "Gina@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+
+	; party
+
+	db 63, RAICHU, LEFTOVERS
+		db THUNDERBOLT
+		db SURF
+		db THUNDER_WAVE
+		db SUBSTITUTE
+
+	db $ff ; end
+
+; ================
+
+	; LASS
+	db "Alice@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
+
+	; party
+
+	db 60, EEVEE, EVIOLITE, ABILITY_1 | HASTY, FEMALE, "VuiVui@"
+		db RETURN
+		db SHADOW_BALL
+		db PROTECT
+		db ATTRACT
+
+	db 61, UMBREON, LEFTOVERS, ABILITY_1 | CAREFUL, MALE, "Eon@"
+		db CHARM
+		db REST
+		db TOXIC
+		db PURSUIT
+
+	db 61, ESPEON, SHELL_BELL, ABILITY_1 | MODEST, MALE, "Vee@"
+		db PSYCHIC_M
+		db MORNING_SUN
+		db GROWTH
+		db BITE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7855,6 +7922,19 @@ BeautyGroup:
 	db 54, WIGGLYTUFF
 	db 54, MILTANK
 	db 56, CLEFABLE
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY
+	db "Nicole@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY
+
+	; party
+	db 60, MARILL, EVIOLITE, ABILITY_2 | QUIRKY, FEMALE
+	db 63, AZUMARILL, LEFTOVERS, ABILITY_2 | QUIRKY, FEMALE
+	db 60, MARILL, BLACK_BELT, ABILITY_2 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -12815,6 +12895,19 @@ endc
 	; party
 	db 62, GIRAFARIG
 	db 65, SUDOWOODO
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERF
+	db "Sera@"
+	db TRAINERTYPE_ITEM
+
+	; party
+	db 63, CHARMELEON, EVIOLITE
+	db 61, AMPHAROS, MAGNET
+	db 61, XATU, TWISTEDSPOON
 
 	db $ff ; end
 

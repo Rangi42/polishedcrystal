@@ -258,7 +258,7 @@ UnknownText_0x54302:
 
 	para "Isn't it just per-"
 	line "fect for a cutie"
-	cont "like me?"
+	cont "like me? ♥"
 	done
 
 UnknownText_0x54360:
@@ -353,7 +353,7 @@ JoWhitneyCriesText:
 
 BeautyVictoriaSeenText:
 	text "Oh, you are a cute"
-	line "little trainer! "
+	line "little trainer! ♥"
 
 	para "I like you, but I"
 	line "won't hold back!"
@@ -398,6 +398,15 @@ GoldenrodGymGuyText:
 	para "I recommend you"
 	line "use Fighting-type"
 	cont "#mon."
+
+	para "But be careful--"
+	line "Fairy #mon"
+
+	para "resist Fighting-"
+	line "type moves,"
+
+	para "and they're used"
+	line "here too!"
 	done
 
 GoldenrodGymGuyWinText:

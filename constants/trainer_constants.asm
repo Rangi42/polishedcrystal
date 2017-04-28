@@ -242,6 +242,7 @@ KRIS EQU __enum__
 	const MURPHY
 	const LIAM
 	const GIDEON
+	const DUNDEE
 
 	trainerclass BIRD_KEEPER ; 25
 	const VANCE1
@@ -372,6 +373,7 @@ KRIS EQU __enum__
 	const CLARA
 	const CHLOE
 	const BROOKE
+	const KUROKO
 
 	trainerclass SUPER_NERD ; 2f
 	const STAN
@@ -398,7 +400,7 @@ KRIS EQU __enum__
 	const DANA4
 	const DANA5
 	const CARRIE
-	const ALICE
+	const AMANDA
 	const KRISE
 	const CONNIE
 	const LINDA
@@ -412,6 +414,8 @@ KRIS EQU __enum__
 	const ROSE
 	const MEADOW
 	const JENNIFER
+	const GINA
+	const ALICE
 
 	trainerclass BEAUTY ; 31
 	const VICTORIA
@@ -425,6 +429,7 @@ KRIS EQU __enum__
 	const CHARLOTTE
 	const BRIDGET
 	const VERONICA
+	const BEAUTY_NICOLE
 
 	trainerclass BUG_MANIAC ; 32
 	const LOU
@@ -854,6 +859,7 @@ KRIS EQU __enum__
 	const JENN
 	const SALMA
 	const BONITA
+	const SERA
 
 	trainerclass ACE_DUO ; 5b
 	const ELANANDIDA1

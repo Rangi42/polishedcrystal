@@ -1,29 +1,7 @@
-Cosplayer Sylvie (Ninetales, Bellossom, Wartortle) [Rangi/Sylvie]
-	?
-	?
-	?
-Picnicker Nicole (Marill, Azumarill) [Mateo/Luna/Nicole/Nikki]
-	Aren't my Pokemon the cutest?
-	They're even cute when they're fainted…
-	Cute Pokemon can be strong too, you know!
-Cosplayer Kuroko (Vulpix, Ninetales) [Pia Carrot/Kuroko Aizawa]
-	?
-	?
-	?
-Lass Alice [trap] (Eevee, Umbreon, Espeon) {http://imgur.com/a/rlVDD} [Sukiyami/Alice/Kazuno Leah]
-	Hey, bro/girl! Let's battle!
-	How could you be so cruel?
-	Don't tell anyone, but I'm secretly a dude.
-CooltrainerF Sera (Charmeleon, Ampharos, Xatu) [Cat Girl Maid Server Thing]
-	Our eyes meet, now you must date me!
-	Oh, wait… I meant battle, not date.
-	Dates, battles, they're both exciting, right?
-
 Super Nerd Mako (Crobat, Politoed, Charizard) [Mako] (elsewhere)
 	You can't beat me! I've got the perfect plan!
 	My plan failed?! Back to the drawing board…
 	I guess even the best-laid plans can be ruined.
-
 
 
 Welcome to the Exchange Service Corner! Would you like to trade in your BP for some prizes?
@@ -33,6 +11,7 @@ You put away the <ITEM> in the <NAME> Pocket.
 I'm sorry, but you don’t have enough BP.
 I'm sorry, but your Bag is full.
 Please choose the item you would like.
+
 
 Some Trainers rely on a Pokémon's potential alone. But you can use items and medicines to help improve a Pokémon's capabilities.
 
@@ -48,6 +27,7 @@ UnknownText_0x1a03cc:
 	line "creature supposed-"
 	cont "ly lives there."
 	done
+
 
 UnknownText_0x55b7c:
 	text "We intend to sell"
@@ -67,6 +47,7 @@ UnknownText_0x55bd3:
 	line "develop new battle"
 	cont "techniques."
 	done
+
 
 UnknownText_0x58a03:
 	text "The patterns on"
@@ -90,12 +71,14 @@ UnknownText_0x58ac8:
 	text "It's Unown text!"
 	done
 
+
 ; not used
 	text "#mon Radio!"
 
 	para "Call in with your"
 	line "requests now!"
 	done
+
 
 HomepageText:
 	text "#mon Journal"

@@ -27,7 +27,7 @@ JanineScript_0x195db9:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JANINE
-	setevent EVENT_BEAT_LASS_ALICE
+	setevent EVENT_BEAT_LASS_AMANDA
 	setevent EVENT_BEAT_LASS_LINDA
 	setevent EVENT_BEAT_PICNICKER_CINDY
 	setevent EVENT_BEAT_CAMPER_BARRY
@@ -79,7 +79,7 @@ UnknownScript_0x195e15:
 	end
 
 FuschiaGym1Script_0x195e1b:
-	checkevent EVENT_BEAT_LASS_ALICE
+	checkevent EVENT_BEAT_LASS_AMANDA
 	iftrue UnknownScript_0x195e2c
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_1, MovementData_0x195f27
 	faceplayer
@@ -88,17 +88,17 @@ FuschiaGym1Script_0x195e1b:
 UnknownScript_0x195e2c:
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_LASS_ALICE
+	checkevent EVENT_BEAT_LASS_AMANDA
 	iftrue UnknownScript_0x195e4f
 	writetext UnknownText_0x1960e6
 	waitbutton
 	closetext
 	winlosstext UnknownText_0x196126, 0
-	loadtrainer LASS, ALICE
+	loadtrainer LASS, AMANDA
 	startbattle
 	iftrue UnknownScript_0x195e4a
 	reloadmapafterbattle
-	setevent EVENT_BEAT_LASS_ALICE
+	setevent EVENT_BEAT_LASS_AMANDA
 	end
 
 UnknownScript_0x195e4a:
