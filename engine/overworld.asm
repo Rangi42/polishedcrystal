@@ -1543,10 +1543,10 @@ Group27Sprites:
 	db SPRITE_ROCKET_GIRL
 	db SPRITE_YOUNGSTER
 	db SPRITE_ARCHER ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_LASS ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
-	db SPRITE_BALL_CUT_FRUIT
+	; 12 total sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BALL_CUT_FRUIT

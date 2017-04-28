@@ -1,6 +1,6 @@
 const_value set 2
+	const QUIETCAVEB3F_MARLEY
 	const QUIETCAVEB3F_POKE_BALL
-	const QUIETCAVEB3F_SCIENTIST
 
 QuietCaveB3F_MapScriptHeader:
 .MapTriggers:
@@ -9,45 +9,98 @@ QuietCaveB3F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-QuietCaveB3FScientistScript:
-	checkevent EVENT_GOT_SILPHSCOPE2
-	iftrue .GotSilphScope2
-	showemote EMOTE_SHOCK, QUIETCAVEB3F_SCIENTIST, 15
+QuietCaveB3FMarleyScript:
 	faceplayer
+	checkevent EVENT_BEAT_MARLEY
+	iftrue .Beaten
 	opentext
-	writetext QuietCaveB3FScientistIntroText
-	waitbutton
-	verbosegiveitem SILPHSCOPE2
-	setevent EVENT_GOT_SILPHSCOPE2
-	writetext QuietCaveB3FScientistSilphScopeText
+	writetext .ChallengeText
+	yesorno
+	iffalse .No
+	writetext .YesText
 	waitbutton
 	closetext
-	showemote EMOTE_SHOCK, QUIETCAVEB3F_SCIENTIST, 15
-	waitsfx
-	applymovement QUIETCAVEB3F_SCIENTIST, QuietCaveB3FScientistMovementData
-	faceplayer
-	opentext
-	writetext QuietCaveB3FScientistChillText
-	waitbutton
-	writetext QuietCaveB3FScientistAaaahText
-	cry GENGAR
-	waitsfx
-	closetext
-	loadwildmon GENGAR, 35
-	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	winlosstext .BeatenText, 0
+	setlasttalked QUIETCAVEB3F_MARLEY
+	loadtrainer MARLEY, 1
 	startbattle
 	reloadmapafterbattle
-	faceplayer
+	setevent EVENT_BEAT_MARLEY
+.Beaten
 	opentext
-	writetext QuietCaveB3FScientistAfterText
+	writetext .ItemText
+	buttonsound
+	verbosegiveitem CARBOS
+	iffalse .Done
+	writetext .GoodbyeText
 	waitbutton
-	writetext QuietCaveB3FScientistText
+	closetext
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear QUIETCAVEB3F_MARLEY
+	pause 15
+	special Special_FadeInQuickly
+	clearevent EVENT_BATTLE_TOWER_MARLEY
+	end
+
+.Done:
+	closetext
+	end
+
+.No:
+	writetext .NoText
 	waitbutton
 	closetext
 	end
 
-.GotSilphScope2
-	jumptextfaceplayer QuietCaveB3FScientistText
+.ChallengeText:
+	text "…I'm Marley."
+	line "…You are?"
+
+	para "Oh… <PLAYER>,"
+	line "will you battle"
+	cont "me, please?"
+	done
+
+.YesText:
+	text "…OK. I'll do my"
+	line "best."
+	done
+
+.NoText:
+	text "…Too bad…"
+	done
+
+.BeatenText:
+	text "…Awww."
+	done
+
+.ItemText:
+	text "I… I don't like to"
+	line "talk…"
+
+	para "I choose my words"
+	line "carefully, but"
+
+	para "they may still"
+	line "hurt someone acci-"
+	cont "dentally…"
+
+	para "So, I'll have to"
+	line "convey thanks an-"
+	cont "other way…"
+	done
+
+.GoodbyeText:
+	text "…I appreciate your"
+	line "battling with me…"
+	cont "…Just a little…"
+
+	para "I'm going to"
+	line "Battle Tower…"
+
+	para "Bye-bye…"
+	done
 
 QuietCaveB3FTMFocusBlast:
 	tmhmball TM_FOCUS_BLAST
@@ -57,87 +110,6 @@ QuietCaveB3FHiddenPPUp:
 
 QuietCaveB3FHiddenMaxRevive
 	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-QuietCaveB3FScientistMovementData:
-	turn_head_up
-	step_sleep_8
-	turn_head_down
-	step_sleep_8
-	turn_head_left
-	step_sleep_8
-	turn_head_right
-	step_sleep_8
-	step_end
-
-QuietCaveB3FScientistIntroText:
-	text "Aaah! A Ghost?!"
-
-	para "Oh, it's just a"
-	line "#mon trainer…"
-
-	para "You gave me quite"
-	line "a scare!"
-
-	para "I'm looking for"
-	line "Ghost #mon in"
-	cont "the shadows with"
-	cont "this SilphScope2."
-
-	para "It's a new device"
-	line "made by Silph Co."
-	cont "to detect hidden"
-	cont "things."
-
-	para "But I'm not having"
-	line "much luck…"
-
-	para "Maybe a trainer"
-	line "like you can do"
-	cont "better?"
-	done
-
-QuietCaveB3FScientistSilphScopeText:
-	text "Put the Silph-"
-	line "Scope2 on your"
-
-	para "head and take a"
-	line "look around."
-
-	para "Some Ghosts like"
-	line "to hide themselves"
-
-	para "and frighten peo-"
-	line "ple, or worse…"
-	done
-
-QuietCaveB3FScientistChillText:
-	text "Wait! Did you feel"
-	line "that sudden chill?"
-	done
-
-QuietCaveB3FScientistAaaahText:
-	text "Aaaah!"
-	done
-
-QuietCaveB3FScientistAfterText:
-	text "Thank you for"
-	line "fighting that"
-	cont "Gengar!"
-
-	para "They're said to"
-	line "attack people lost"
-
-	para "in mountains and"
-	line "curse them…"
-	done
-
-QuietCaveB3FScientistText:
-	text "You can keep that"
-	line "SilphScope2."
-
-	para "Use it to stay"
-	line "safe from Ghosts!"
-	done
 
 QuietCaveB3F_MapEventHeader:
 	; filler
@@ -160,5 +132,5 @@ QuietCaveB3F_MapEventHeader:
 
 .PersonEvents:
 	db 2
+	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, QuietCaveB3FTMFocusBlast, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
-	person_event SPRITE_SCIENTIST, 5, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, QuietCaveB3FScientistScript, -1

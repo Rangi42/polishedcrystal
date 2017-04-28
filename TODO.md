@@ -47,7 +47,6 @@
 
 ## Characters
 
-* Marley in Quiet Cave 5F
 * Buck in Mt. Moon B2F
 * Riley in Dim Cave B3F
 * Mira in Scary Cave 1F
@@ -80,7 +79,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Route 16 (just Cosplayer Kuroko's dialog)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Scary Cave
-* Quiet Cave
 * Celadon Hotel (just items left)
 * Celadon University (Cubone fossil exhibit)
 * Dim Cave (Facade TM)

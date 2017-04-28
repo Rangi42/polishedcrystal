@@ -1,6 +1,8 @@
 const_value set 2
-	const QUIETCAVEB1F_BATTLE_GIRL
+	const QUIETCAVEB1F_COOLTRAINER_F
 	const QUIETCAVEB1F_SUPER_NERD
+	const QUIETCAVEB1F_POKEFAN_M
+	const QUIETCAVEB1F_YOUNGSTER
 	const QUIETCAVEB1F_POKE_BALL1
 	const QUIETCAVEB1F_POKE_BALL2
 
@@ -29,6 +31,28 @@ PokemaniacAidanScript:
 	end_if_just_battled
 	opentext
 	writetext PokemaniacAidanAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerHikerSteve:
+	trainer EVENT_BEAT_HIKER_STEVE, HIKER, STEVE, HikerSteveSeenText, HikerSteveBeatenText, 0, HikerSteveScript
+
+HikerSteveScript:
+	end_if_just_battled
+	opentext
+	writetext HikerSteveAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerPsychicVirgil:
+	trainer EVENT_BEAT_PSYCHIC_VIRGIL, PSYCHIC_T, VIRGIL, PsychicVirgilSeenText, PsychicVirgilBeatenText, 0, PsychicVirgilScript
+
+PsychicVirgilScript:
+	end_if_just_battled
+	opentext
+	writetext PsychicVirgilAfterText
 	waitbutton
 	closetext
 	end
@@ -76,6 +100,41 @@ PokemaniacAidanAfterText:
 	line "know a rare move."
 	done
 
+HikerSteveSeenText:
+	text "They call me a"
+	line "Hiker, but right"
+
+	para "now I'm a spelunk-"
+	line "er!"
+	done
+
+HikerSteveBeatenText:
+	text "And now I'm a"
+	line "loser…"
+	done
+
+HikerSteveAfterText:
+	text "Spelunking is also"
+	line "called caving."
+
+	para "It means exploring"
+	line "caves!"
+	done
+
+PsychicVirgilSeenText:
+	text "Shh! Be quiet!"
+	done
+
+PsychicVirgilBeatenText:
+	text "Why must battling"
+	line "be so loud?"
+	done
+
+PsychicVirgilAfterText:
+	text "The silence helps"
+	line "focus my ESP."
+	done
+
 QuietCaveB1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -100,8 +159,10 @@ QuietCaveB1F_MapEventHeader:
 	signpost 33, 26, SIGNPOST_ITEM, QuietCaveB1FHiddenHyperPotion
 
 .PersonEvents:
-	db 4
+	db 6
 	person_event SPRITE_COOLTRAINER_F, 4, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
 	person_event SPRITE_SUPER_NERD, 17, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1
+	person_event SPRITE_POKEFAN_M, 30, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSteve, -1
+	person_event SPRITE_YOUNGSTER, 7, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicVirgil, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCaveB1FBigPearl, EVENT_QUIET_CAVE_B1F_BIG_PEARL
 	person_event SPRITE_BALL_CUT_FRUIT, 13, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCaveB1FElixir, EVENT_QUIET_CAVE_B1F_ELIXIR

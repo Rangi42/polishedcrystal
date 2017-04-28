@@ -47,8 +47,13 @@ TrainerLassAlice:
 	end
 
 .SeenText:
-	text "Hello there!"
-	line "Let's battle!"
+	text "Our eyes met!"
+
+	para "Now you must date"
+	line "me! ♥"
+
+	para "No wait, I mean,"
+	line "we must battle!"
 	done
 
 .BeatenText:
@@ -96,21 +101,15 @@ TrainerCooltrainerfSera:
 	end
 
 .SeenText:
-	text "Our eyes met!"
-
-	para "Now you must date"
-	line "me! ♥"
+	text "TODO"
 	done
 
 .BeatenText:
-	text "Oh, wait… I meant"
-	line "battle, not date."
+	text "TODO"
 	done
 
 .AfterText:
-	text "Dates, battles,"
-	line "they're both ex-"
-	cont "citing, right?"
+	text "TODO"
 	done
 
 TrainerBeautyNicole:

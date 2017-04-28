@@ -27,7 +27,7 @@ BLACK_SLUDGE (TODO: Cerulean Cave) [HGSS: Cerulean Cave]
 Battle Tower #3:
 MACHO_BRACE (PC: Oak's aide)
 FOCUS_BAND (PC: Fighting Dojo)
-FOCUS_SASH (TODO: ?) [HGSS: Mom]
+FOCUS_SASH (PC: Quiet Cave) [HGSS: Mom]
 ASSAULT_VEST (PC: Cianwood City)
 PROTECT_PADS (TODO: ?)
 ROCKY_HELMET (TODO: ?)

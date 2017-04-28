@@ -6105,6 +6105,30 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER
+	db "Grady@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 34, GRAVELER
+	db 34, GRAVELER
+	db 35, SANDSLASH
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Steve@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 37, STEELIX
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9077,6 +9101,18 @@ PsychicGroup:
 	db $ff ; end
 
 ; ================
+
+	; PSYCHIC_T
+	db "Virgil@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 34, NATU
+	db 36, XATU
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11222,6 +11258,19 @@ ScientistGroup:
 	db 60, MAGNETON
 	db 62, MAGNEZONE
 	db 63, ELECTRODE
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Carl@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 35, PORYGON
+	db 35, PORYGON
+	db 36, MAGNETON
 
 	db $ff ; end
 
@@ -14413,13 +14462,29 @@ MarleyGroup:
 ; ================================
 ; ================
 
+	; MARLEY
+	db "Marley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 38, ARCANINE
+	db 36, RAICHU
+	db 35, CROBAT
+	db 35, ELECTRODE
+	db 36, AERODACTYL
+	db 37, WEAVILE
+
+	db $ff ; end
+
+; ================
+
 ;	; MARLEY
 ;	db "Marley@"
 ;	db TRAINERTYPE_NORMAL
 ;
 ;	; party
 ;
-;	; TODO: WEAVILE
 ;	db 50, ARCANINE
 ;	db 50, PIDGEOT
 ;	db 50, RAICHU
@@ -14835,6 +14900,9 @@ ValerieGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 BillGroup:
 ; ================================
 ; ================
@@ -14885,9 +14953,6 @@ BillGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 YellowGroup:

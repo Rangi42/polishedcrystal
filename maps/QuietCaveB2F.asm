@@ -1,6 +1,7 @@
 const_value set 2
 	const QUIETCAVEB2F_POKE_BALL1
 	const QUIETCAVEB2F_POKE_BALL2
+	const QUIETCAVEB2F_POKE_BALL3
 
 QuietCaveB2F_MapScriptHeader:
 .MapTriggers:
@@ -14,6 +15,9 @@ QuietCaveB2FDuskBall:
 
 QuietCaveB2FRazorClaw:
 	itemball RAZOR_CLAW
+
+QuietCaveB2FFocusSash:
+	itemball FOCUS_SASH
 
 QuietCaveB2FHiddenCalcium:
 	dwb EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM, CALCIUM
@@ -39,6 +43,7 @@ QuietCaveB2F_MapEventHeader:
 	signpost 11, 16, SIGNPOST_ITEM, QuietCaveB2FHiddenCalcium
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCaveB2FDuskBall, EVENT_QUIET_CAVE_B2F_DUSK_BALL
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCaveB2FRazorClaw, EVENT_QUIET_CAVE_B2F_RAZOR_CLAW
+	person_event SPRITE_BALL_CUT_FRUIT, 11, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QuietCaveB2FFocusSash, EVENT_QUIET_CAVE_B2F_FOCUS_SASH

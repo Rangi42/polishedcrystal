@@ -310,6 +310,8 @@ KRIS EQU __enum__
 	const BRUCE
 	const DWIGHT
 	const LESTER
+	const GRADY
+	const STEVE
 
 	trainerclass GRUNTM ; 27
 
@@ -526,6 +528,7 @@ KRIS EQU __enum__
 	const RODNEY
 	const LEON
 	const URI
+	const VIRGIL
 
 	trainerclass HEX_MANIAC ; 39
 	const TAMARA
@@ -724,6 +727,7 @@ KRIS EQU __enum__
 	const LINDEN
 	const OSKAR
 	const BRAYDON
+	const CARL
 
 	trainerclass BOARDER ; 4c
 	const RONALD

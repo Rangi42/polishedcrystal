@@ -563,8 +563,6 @@ INCLUDE "maps/SafariZoneNorthRestHouse.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
 INCLUDE "maps/LavenderTown.asm"
-INCLUDE "maps/PewterNidoranSpeechHouse.asm"
-INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
 
 
 SECTION "Map Scripts 25", ROMX[$606b], BANK[MAP_SCRIPTS_25]
@@ -598,6 +596,8 @@ INCLUDE "maps/Route17.asm"
 INCLUDE "maps/Route45.asm"
 INCLUDE "maps/Route39.asm"
 INCLUDE "maps/Route11Gate.asm"
+INCLUDE "maps/PewterNidoranSpeechHouse.asm"
+INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
 
 
 SECTION "Map Scripts 27", ROMX[$4000], BANK[MAP_SCRIPTS_27]

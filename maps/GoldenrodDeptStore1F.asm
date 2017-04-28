@@ -1,7 +1,7 @@
 const_value set 2
 	const GOLDENRODDEPTSTORE1F_RECEPTIONIST
 	const GOLDENRODDEPTSTORE1F_POKEFAN_F
-	const GOLDENRODDEPTSTORE1F_BUG_CATCHER
+	const GOLDENRODDEPTSTORE1F_CHILD
 	const GOLDENRODDEPTSTORE1F_GENTLEMAN
 
 GoldenrodDeptStore1F_MapScriptHeader:
@@ -20,7 +20,7 @@ GentlemanScript_0x55984:
 PokefanFScript_0x55987:
 	jumptextfaceplayer UnknownText_0x55a1a
 
-BugCatcherScript_0x5598a:
+ChildScript_0x5598a:
 	jumptextfaceplayer UnknownText_0x55a3a
 
 GoldenrodDeptStore1FDirectory:
@@ -101,5 +101,5 @@ GoldenrodDeptStore1F_MapEventHeader:
 	db 4
 	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x55981, -1
 	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x55987, -1
-	person_event SPRITE_BUG_CATCHER, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x5598a, -1
+	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ChildScript_0x5598a, -1
 	person_event SPRITE_GENTLEMAN, 5, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55984, -1
