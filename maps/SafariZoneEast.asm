@@ -82,24 +82,24 @@ SafariZoneEast_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $16, $0, 3, SAFARI_ZONE_HUB
-	warp_def $17, $0, 4, SAFARI_ZONE_HUB
-	warp_def $4, $0, 1, SAFARI_ZONE_NORTH
-	warp_def $5, $0, 2, SAFARI_ZONE_NORTH
-	warp_def $9, $19, 1, SAFARI_ZONE_EAST_REST_HOUSE
+	warp_def $18, $2, 3, SAFARI_ZONE_HUB
+	warp_def $19, $2, 4, SAFARI_ZONE_HUB
+	warp_def $6, $2, 1, SAFARI_ZONE_NORTH
+	warp_def $7, $2, 2, SAFARI_ZONE_NORTH
+	warp_def $b, $1b, 1, SAFARI_ZONE_EAST_REST_HOUSE
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 3
-	signpost 22, 4, SIGNPOST_READ, SafariZoneEastAreaSign
-	signpost 10, 26, SIGNPOST_READ, SafariZoneEastRestHouseSign
-	signpost 4, 6, SIGNPOST_READ, SafariZoneEastTrainerTipsSign
+	signpost 24, 6, SIGNPOST_READ, SafariZoneEastAreaSign
+	signpost 12, 28, SIGNPOST_READ, SafariZoneEastRestHouseSign
+	signpost 6, 8, SIGNPOST_READ, SafariZoneEastTrainerTipsSign
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_COWGIRL, 9, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerCowgirlApril, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastCarbos, EVENT_SAFARI_ZONE_EAST_CARBOS
-	person_event SPRITE_BALL_CUT_FRUIT, 11, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastSilverPowder, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastFullRestore, EVENT_SAFARI_ZONE_FULL_RESTORE
+	person_event SPRITE_COWGIRL, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerCowgirlApril, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastCarbos, EVENT_SAFARI_ZONE_EAST_CARBOS
+	person_event SPRITE_BALL_CUT_FRUIT, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastSilverPowder, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastFullRestore, EVENT_SAFARI_ZONE_FULL_RESTORE

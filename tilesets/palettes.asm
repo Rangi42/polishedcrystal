@@ -45,6 +45,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, CeladonMansionPalette
 	cp TILESET_CELADON_MANSION
 	jp z, .load_eight_time_of_day_bg_palettes
+	ld hl, SafariZonePalette
+	cp TILESET_SAFARI_ZONE
+	jp z, .load_eight_time_of_day_bg_palettes
 	ld hl, FarawayIslandPalette
 	cp TILESET_FARAWAY_ISLAND
 	jp z, .load_eight_time_of_day_bg_palettes
@@ -424,6 +427,9 @@ INCLUDE "tilesets/ruins.pal"
 CeladonMansionPalette:
 INCLUDE "tilesets/celadon_mansion.pal"
 
+SafariZonePalette:
+INCLUDE "tilesets/safari_zone.pal"
+
 PokeCenterPalette:
 INCLUDE "tilesets/pokecenter.pal"
 
@@ -658,6 +664,21 @@ LoadSpecialMapOBPalette:
 	ret
 
 .not_shamouti_island:
+	ld a, [wTileset]
+	cp TILESET_SAFARI_ZONE
+	jr nz, .not_safari_zone
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 1 palettes
+	ld hl, SafariZoneOBPalette_Tree
+	call AddNTimes
+	ld a, $5
+	ld de, UnknOBPals + 6 palettes
+	ld bc, 1 palettes
+	call FarCopyWRAM
+	ret
+
+.not_safari_zone:
 	ld a, [MapGroup]
 	cp GROUP_FARAWAY_ISLAND
 	jr nz, .not_faraway_island
@@ -723,6 +744,22 @@ ShamoutiIslandOBPalette_Tree:
 	RGB 08, 13, 11
 	RGB 04, 09, 06
 	RGB 00, 00, 00
+
+SafariZoneOBPalette_Tree:
+	RGB 22, 31, 10
+	RGB 13, 26, 10
+	RGB 06, 20, 08
+	RGB 03, 09, 08
+
+	RGB 22, 31, 10
+	RGB 13, 26, 10
+	RGB 06, 20, 08
+	RGB 03, 09, 08
+
+	RGB 11, 16, 08
+	RGB 07, 13, 08
+	RGB 03, 10, 06
+	RGB 01, 03, 05
 
 FarawayIslandOBPalette_Tree:
 	RGB 31, 31, 31

@@ -806,9 +806,9 @@
 	map_header_2 CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $9, 0
 	map_header_2 CinnabarVolcanoB2F, CINNABAR_VOLCANO_B2F, $9, 0
 	map_header_2 SafariZoneFuchsiaGate, SAFARI_ZONE_FUCHSIA_GATE, $0, 0
-	map_header_2 SafariZoneHub, SAFARI_ZONE_HUB, $6, 0
-	map_header_2 SafariZoneEast, SAFARI_ZONE_EAST, $6, 0
-	map_header_2 SafariZoneNorth, SAFARI_ZONE_NORTH, $6, 0
+	map_header_2 SafariZoneHub, SAFARI_ZONE_HUB, $0, 0
+	map_header_2 SafariZoneEast, SAFARI_ZONE_EAST, $0, 0
+	map_header_2 SafariZoneNorth, SAFARI_ZONE_NORTH, $0, 0
 	map_header_2 SafariZoneHubRestHouse, SAFARI_ZONE_HUB_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneEastRestHouse, SAFARI_ZONE_EAST_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneNorthRestHouse, SAFARI_ZONE_NORTH_REST_HOUSE, $0, 0

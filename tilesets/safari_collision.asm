@@ -1,4 +1,4 @@
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll TALL_GRASS, TALL_GRASS, TALL_GRASS, TALL_GRASS
@@ -6,7 +6,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll LONG_GRASS, LONG_GRASS, LONG_GRASS, LONG_GRASS
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
@@ -62,3 +62,14 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
 	tilecoll FLOOR, FLOOR, WALL, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL

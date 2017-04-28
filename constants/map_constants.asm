@@ -361,9 +361,9 @@ MAP_NONE   EQU 0
 	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 11
 	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
 	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 13
-	mapgroup SAFARI_ZONE_HUB,                            15, 15 ; 14
-	mapgroup SAFARI_ZONE_EAST,                           13, 15 ; 15
-	mapgroup SAFARI_ZONE_NORTH,                          16, 15 ; 16
+	mapgroup SAFARI_ZONE_HUB,                            16, 17 ; 14
+	mapgroup SAFARI_ZONE_EAST,                           15, 17 ; 15
+	mapgroup SAFARI_ZONE_NORTH,                          18, 17 ; 16
 	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 17
 	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 18
 	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 19
