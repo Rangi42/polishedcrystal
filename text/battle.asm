@@ -1681,3 +1681,35 @@ CynthiaFinalPkmnText:
 	para "was put in a"
 	line "corner like this!"
 	prompt
+
+CherylFinalPkmnText:
+	text "I can't keep up"
+	line "with healing…"
+	prompt
+
+RileyFinalPkmnText:
+	text "Your team! I sense"
+	line "your strong aura!"
+	prompt
+
+BuckFinalPkmnText:
+	text "Now this! This is"
+	line "a smoking-hot sit-"
+	cont "uation!"
+	prompt
+
+MarleyFinalPkmnText:
+	text "…My time with you"
+	line "is drawing to a"
+	cont "close."
+	prompt
+
+MiraFinalPkmnText:
+	text "Oh, no! You're"
+	line "too much for me!"
+	prompt
+
+AnabelFinalPkmnText:
+	text "Your talent…"
+	line "It's real."
+	prompt

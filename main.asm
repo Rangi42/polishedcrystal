@@ -5113,34 +5113,14 @@ INCLUDE "text/battle.asm"
 GetFinalPkmnTextPointer::
 	; Some trainers have one unique phrase
 	ld a, [OtherTrainerClass]
-	ld hl, LoreleiFinalPkmnText
-	cp LORELEI
-	jr z, .ok
-	ld hl, AgathaFinalPkmnText
-	cp AGATHA
-	jr z, .ok
-	ld hl, StevenFinalPkmnText
-	cp STEVEN
-	jr z, .ok
-	ld hl, CynthiaFinalPkmnText
-	cp CYNTHIA
-	jr z, .ok
+	ld hl, .single_phrases
+	call .findinarray
+	jr c, .done
 	; Silver and Lyra have a phrase for each set of three IDs
-	ld hl, .Rival0FinalTexts
-	cp RIVAL0
-	jr z, .rival_or_lyra
-	ld hl, .Rival1FinalTexts
-	cp RIVAL1
-	jr z, .rival_or_lyra
-	ld hl, .Rival2FinalTexts
-	cp RIVAL2
-	jr z, .rival_or_lyra
-	ld hl, .Lyra1FinalTexts
-	cp LYRA1
-	jr z, .rival_or_lyra
-	ld hl, .Lyra2FinalTexts
-	cp LYRA2
-	jr z, .rival_or_lyra
+	ld a, [OtherTrainerClass]
+	ld hl, .triple_phrases
+	call .findinarray
+	jr c, .rival_or_lyra
 	; Proton to Giovanni have a phrase for each ID
 	cp PROTON
 	jr c, .not_rocket
@@ -5182,12 +5162,43 @@ GetFinalPkmnTextPointer::
 rept 2
 	add hl, bc
 endr
+	jr .finish
+
+.findinarray:
+	push de
+	ld de, 3
+	call IsInArray
+	pop de
+	ret nc
+	inc hl
+.finish:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-.ok:
+.done:
 	scf
 	ret
+
+.single_phrases:
+	dbw LORELEI, LoreleiFinalPkmnText
+	dbw AGATHA, AgathaFinalPkmnText
+	dbw STEVEN, StevenFinalPkmnText
+	dbw CYNTHIA, CynthiaFinalPkmnText
+	dbw CHERYL, CherylFinalPkmnText
+	dbw RILEY, RileyFinalPkmnText
+	dbw BUCK, BuckFinalPkmnText
+	dbw MARLEY, MarleyFinalPkmnText
+	dbw MIRA, MiraFinalPkmnText
+	dbw ANABEL, AnabelFinalPkmnText
+	db -1
+
+.triple_phrases:
+	dbw RIVAL0, .Rival0FinalTexts
+	dbw RIVAL1, .Rival1FinalTexts
+	dbw RIVAL2, .Rival2FinalTexts
+	dbw LYRA1, .Lyra1FinalTexts
+	dbw LYRA2, .Lyra2FinalTexts
+	db -1
 
 .Rival0FinalTexts:
 	dw Rival1_1FinalPkmnText
