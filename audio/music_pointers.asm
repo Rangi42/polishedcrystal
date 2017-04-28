@@ -118,6 +118,7 @@
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS
 	dba Music_SpikyEaredPichuHGSS
+	dba Music_Route203DPPt
 	dba Music_Route205DPPt
 	dba Music_Route209DPPt
 	dba Music_Route210DPPt
@@ -128,6 +129,7 @@
 	dba Music_MountCoronetDPPt
 	dba Music_EternaForestDPPt
 	dba Music_GameCornerDPPt
+	dba Music_TrainerBattleDPPt
 	dba Music_ChampionBattleDPPt
 	dba Music_Route4BW
 	dba Music_Route12BW
@@ -151,6 +153,7 @@
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
 	dba Music_IndigoPlateauRBY
+	dba Music_MeteorFallsRSE
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
 	dba Music_AbandonedShipRSE

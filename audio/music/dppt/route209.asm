@@ -1,6 +1,6 @@
 ; Pokémon D/P/Pt - Route 209
 ; Demixed by FroggestSpirit
-; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/Route209.asm
+; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route209.asm
 
 Music_Route209DPPt:
 	dbw $C0, Music_Route209DPPt_Ch1

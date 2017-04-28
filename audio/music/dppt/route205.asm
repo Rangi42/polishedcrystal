@@ -1,6 +1,6 @@
 ; Pokémon D/P/Pt - Route 205
 ; Demixed by FroggestSpirit
-; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/Route205.asm
+; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/DPPt/route205.asm
 
 Music_Route205DPPt:
 	dbw $C0, Music_Route205DPPt_Ch1

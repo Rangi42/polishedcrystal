@@ -221,15 +221,12 @@ Some of these may never be added; they're just suggestions.
    * Rewrite Eggs to use bit flags instead of $fe
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
 * More music
-   * Something from R/S/E for Embedded Tower
-   * HG/SS Spiky-Eared Pichu theme
+   * HG/SS Spiky-Eared Pichu theme (for some Spiky-Eared Pichu event) (already exists)
+   * R/S/E Meteor Falls (for Whirl Islands) (in progress)
    * R/S/E Route 119
    * R/S/E Route 120
-   * R/S/E Meteor Falls (for Whirl Islands)
-   * B/W Route 4
-   * B/W Route 12
-   * B/W Dragonspiral Tower (for haunted Lavender Radio Tower and/or Soul House basement)
-   * B/W Black City (for Silph Co. and/or Lavender Radio Tower post-haunting)
+   * B/W Dragonspiral Tower (for Embedded Tower)
+   * B/W Black City (for Silph Co.)
    * B/W Battle! Elite Four (for Caitlin)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))

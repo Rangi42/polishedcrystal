@@ -21,7 +21,7 @@ INCLUDE "audio/sfx_pointers.asm"
 
 
 
-SECTION "Songs 1", ROMX[$555f], BANK[SONGS_1]
+SECTION "Songs 1", ROMX[$5568], BANK[SONGS_1]
 
 INCLUDE "audio/music/route36.asm"
 INCLUDE "audio/music/rivalbattle.asm"
@@ -200,6 +200,7 @@ INCLUDE "audio/music/b2w2/championbattle.asm"
 
 SECTION "Extra Songs 6", ROMX
 
+INCLUDE "audio/music/dppt/route203.asm"
 INCLUDE "audio/music/dppt/route205.asm"
 INCLUDE "audio/music/dppt/route209.asm"
 
@@ -209,10 +210,15 @@ SECTION "Extra Songs 7", ROMX
 INCLUDE "audio/music/dppt/canalavecity.asm"
 INCLUDE "audio/music/dppt/sunyshorecity.asm"
 INCLUDE "audio/music/dppt/oreburghgate.asm"
-INCLUDE "audio/music/dppt/championbattle.asm"
 
 
 SECTION "Extra Songs 8", ROMX
+
+INCLUDE "audio/music/dppt/trainerbattle.asm"
+INCLUDE "audio/music/dppt/championbattle.asm"
+
+
+SECTION "Extra Songs 9", ROMX
 
 INCLUDE "audio/music/xy/titlescreen.asm"
 INCLUDE "audio/music/xy/laverrecity.asm"
@@ -221,7 +227,7 @@ INCLUDE "audio/music/xy/gymleaderbattle.asm"
 INCLUDE "audio/music/xy/frostcavern.asm"
 
 
-SECTION "Extra Songs 9", ROMX
+SECTION "Extra Songs 10", ROMX
 
 INCLUDE "audio/music/rse/gymleaderbattle.asm"
 INCLUDE "audio/music/dppt/gymleaderbattle.asm"
@@ -229,31 +235,31 @@ INCLUDE "audio/music/bw/gymleaderbattle.asm"
 INCLUDE "audio/music/bw/finalpokemon.asm"
 
 
-SECTION "Extra Songs 10", ROMX
+SECTION "Extra Songs 11", ROMX
 
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
 
 
-SECTION "Extra Songs 11", ROMX
+SECTION "Extra Songs 12", ROMX
 
 INCLUDE "audio/music/sm/elitefourbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 
-SECTION "Extra Songs 12", ROMX
+SECTION "Extra Songs 13", ROMX
 
 INCLUDE "audio/music/hgss/cianwoodcity.asm"
 INCLUDE "audio/music/custom/lugiassong.asm"
 
 
-SECTION "Extra Songs 13", ROMX
+SECTION "Extra Songs 14", ROMX
 
 INCLUDE "audio/music/dppt/starkmountain.asm"
 INCLUDE "audio/music/oras/wallybattle.asm"
 
 
-SECTION "Extra Songs 12", ROMX
+SECTION "Extra Songs 15", ROMX
 
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
