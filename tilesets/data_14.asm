@@ -7,11 +7,11 @@ INCBIN "tilesets/lab_metatiles.bin"
 Tileset10Coll:
 INCLUDE "tilesets/lab_collision.asm"
 
-Tileset38GFX:
+Tileset35GFX:
 INCBIN "gfx/tilesets/faraway.2bpp.lz"
 
-Tileset38Meta:
+Tileset35Meta:
 INCBIN "tilesets/faraway_metatiles.bin"
 
-Tileset38Coll:
+Tileset35Coll:
 INCLUDE "tilesets/faraway_collision.asm"

@@ -4,17 +4,17 @@ INCBIN "gfx/tilesets/cave.2bpp.lz"
 Tileset30GFX:
 INCBIN "gfx/tilesets/dark_cave.2bpp.lz"
 
-Tileset44GFX:
+Tileset41GFX:
 INCBIN "gfx/tilesets/quiet_cave.2bpp.lz"
 
 Tileset24Meta:
 Tileset30Meta:
-Tileset44Meta:
+Tileset41Meta:
 INCBIN "tilesets/cave_metatiles.bin"
 
 Tileset24Coll:
 Tileset30Coll:
-Tileset44Coll:
+Tileset41Coll:
 INCLUDE "tilesets/cave_collision.asm"
 
 Tileset31GFX:
