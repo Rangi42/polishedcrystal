@@ -288,7 +288,7 @@ MAP_NONE   EQU 0
 	mapgroup VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE,  4,  4 ;  9
 	mapgroup VERMILION_GYM,                               9,  5 ; 10
 	mapgroup ROUTE_6_SAFFRON_GATE,                        4,  5 ; 11
-	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                9,  9 ; 12
+	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 12
 	mapgroup ROUTE_11_GATE,                               5,  5 ; 13
 	mapgroup ROUTE_11_GATE_2F,                            4,  4 ; 14
 	mapgroup VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
@@ -565,7 +565,7 @@ MAP_NONE   EQU 0
 	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 10
 	mapgroup COPYCATS_HOUSE_2F,                           3,  4 ; 11
 	mapgroup ROUTE_5,                                    17, 10 ; 12
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                9,  9 ; 13
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
 	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 14
 	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
 	mapgroup POKEMON_TRAINER_FAN_CLUB,                    5,  4 ; 16
