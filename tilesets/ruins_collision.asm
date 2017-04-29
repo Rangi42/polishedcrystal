@@ -18,10 +18,6 @@
 	tilecoll FLOOR, WALL, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, WALL, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
-	tilecoll WALL, FLOOR, WALL, WALL
-	tilecoll FLOOR, FLOOR, WALL, FLOOR
-	tilecoll FLOOR, FLOOR, FLOOR, WALL
-	tilecoll FLOOR, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, HOLE
 	tilecoll WALL, WALL, HOLE, WALL
 	tilecoll FLOOR, FLOOR, LADDER, FLOOR
@@ -31,12 +27,6 @@
 	tilecoll FLOOR, FLOOR, FLOOR, WALL
 	tilecoll WALL, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, FLOOR
-	tilecoll WALL, FLOOR, WALL, FLOOR
-	tilecoll WALL, FLOOR, FLOOR, FLOOR
-	tilecoll FLOOR, WALL, FLOOR, FLOOR
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
@@ -45,7 +35,6 @@
 	tilecoll FLOOR, FLOOR, WALL, WARP_CARPET_DOWN
 	tilecoll WALL, WALL, FLOOR, FLOOR
 	tilecoll WALL, WALL, FLOOR, FLOOR
-	tilecoll FLOOR, FLOOR, FLOOR, HOLE
 	tilecoll CAVE, WALL, FLOOR, FLOOR
 	tilecoll WALL, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, FLOOR
@@ -59,6 +48,4 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll FLOOR, FLOOR, LADDER, FLOOR
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL

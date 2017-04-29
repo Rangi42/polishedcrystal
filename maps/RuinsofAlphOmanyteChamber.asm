@@ -29,7 +29,7 @@ UnknownScript_0x58bf7:
 UnknownScript_0x58bf8:
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iftrue UnknownScript_0x58c02
-	changeblock $4, $0, $2e
+	changeblock $4, $0, $24
 UnknownScript_0x58c02:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
 	iffalse UnknownScript_0x58c09
@@ -46,7 +46,7 @@ UnknownScript_0x58c12:
 	showemote EMOTE_SHOCK, PLAYER, 20
 	pause 30
 	playsound SFX_STRENGTH
-	changeblock $4, $0, $30
+	changeblock $4, $0, $25
 	reloadmappart
 	earthquake 50
 	dotrigger $1
@@ -68,8 +68,8 @@ UnknownScript_0x58c36:
 	domaptrigger RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
-	changeblock $2, $2, $18
-	changeblock $4, $2, $19
+	changeblock $2, $2, $14
+	changeblock $4, $2, $15
 	reloadmappart
 	playsound SFX_STRENGTH
 	earthquake 80
