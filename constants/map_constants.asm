@@ -327,8 +327,8 @@ MAP_NONE   EQU 0
 	mapgroup FAST_SHIP_CABINS_SW_SSW_NW,                 16,  4 ;  5
 	mapgroup FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN,     17,  5 ;  6
 	mapgroup FAST_SHIP_B1F,                               7, 14 ;  7
-	mapgroup OLIVINE_PORT_PASSAGE,                        9,  9 ;  8
-	mapgroup VERMILION_PORT_PASSAGE,                      9,  9 ;  9
+	mapgroup OLIVINE_PORT_PASSAGE,                       15,  4 ;  8
+	mapgroup VERMILION_PORT_PASSAGE,                     15,  4 ;  9
 	mapgroup MOUNT_MOON_SQUARE,                           9, 15 ; 10
 	mapgroup MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 11
 	mapgroup TIN_TOWER_ROOF,                              9,  7 ; 12
