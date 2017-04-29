@@ -3381,6 +3381,7 @@ BattleAnim_SeedBomb:
 	anim_clearobjs
 	anim_call BattleAnim_Explosion_branch_cbb8f
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 ; Energy Ball animation from Pokémon Prism
