@@ -75,7 +75,7 @@ MAP_NONE   EQU 0
 	mapgroup TEAM_ROCKET_BASE_B3F,                        9, 15 ; 38
 	mapgroup ILEX_FOREST,                                24, 17 ; 39
 	mapgroup WAREHOUSE_ENTRANCE,                         18, 10 ; 40
-	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     15, 13 ; 41
+	mapgroup UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     14, 13 ; 41
 	mapgroup GOLDENROD_DEPT_STORE_B1F,                    9, 10 ; 42
 	mapgroup UNDERGROUND_WAREHOUSE,                       9, 10 ; 43
 	mapgroup MOUNT_MORTAR_1F_OUTSIDE,                    18, 20 ; 44
@@ -87,7 +87,7 @@ MAP_NONE   EQU 0
 	mapgroup ICE_PATH_B2F_MAHOGANY_SIDE,                  9, 10 ; 50
 	mapgroup ICE_PATH_B2F_BLACKTHORN_SIDE,                9,  5 ; 51
 	mapgroup ICE_PATH_B3F,                                5, 10 ; 52
-	mapgroup WHIRL_ISLAND_NW,                             9,  5 ; 53
+	mapgroup WHIRL_ISLAND_NW,                            18, 17 ; 53
 	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 54
 	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 55
 	mapgroup WHIRL_ISLAND_CAVE,                           8,  5 ; 56
@@ -98,7 +98,7 @@ MAP_NONE   EQU 0
 	mapgroup SILVER_CAVE_ROOM_1,                         18, 10 ; 61
 	mapgroup SILVER_CAVE_ROOM_2,                         17, 15 ; 62
 	mapgroup SILVER_CAVE_ROOM_3,                         16, 10 ; 63
-	mapgroup SILVER_CAVE_ITEM_ROOMS,                      9,  9 ; 64
+	mapgroup SILVER_CAVE_ITEM_ROOMS,                     18, 20 ; 64
 	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 65
 	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 66
 	mapgroup DRAGONS_DEN_1F,                              9, 20 ; 67
@@ -110,7 +110,7 @@ MAP_NONE   EQU 0
 	mapgroup MOUNT_MOON_1F,                              13, 15 ; 73
 	mapgroup MOUNT_MOON_B1F,                             17, 15 ; 74
 	mapgroup MOUNT_MOON_B2F,                             17, 16 ; 75
-	mapgroup UNDERGROUND,                                14,  3 ; 76
+	mapgroup UNDERGROUND,                                18,  3 ; 76
 	mapgroup ROCK_TUNNEL_1F,                             14, 15 ; 77
 	mapgroup ROCK_TUNNEL_B1F,                            14, 15 ; 78
 	mapgroup ROCK_TUNNEL_2F,                             14, 15 ; 79
@@ -288,7 +288,7 @@ MAP_NONE   EQU 0
 	mapgroup VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE,  4,  4 ;  9
 	mapgroup VERMILION_GYM,                               9,  5 ; 10
 	mapgroup ROUTE_6_SAFFRON_GATE,                        4,  5 ; 11
-	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                4,  4 ; 12
+	mapgroup ROUTE_6_UNDERGROUND_ENTRANCE,                9,  9 ; 12
 	mapgroup ROUTE_11_GATE,                               5,  5 ; 13
 	mapgroup ROUTE_11_GATE_2F,                            4,  4 ; 14
 	mapgroup VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
@@ -327,8 +327,8 @@ MAP_NONE   EQU 0
 	mapgroup FAST_SHIP_CABINS_SW_SSW_NW,                 16,  4 ;  5
 	mapgroup FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN,     17,  5 ;  6
 	mapgroup FAST_SHIP_B1F,                               7, 14 ;  7
-	mapgroup OLIVINE_PORT_PASSAGE,                        9, 10 ;  8
-	mapgroup VERMILION_PORT_PASSAGE,                      9, 10 ;  9
+	mapgroup OLIVINE_PORT_PASSAGE,                        9,  9 ;  8
+	mapgroup VERMILION_PORT_PASSAGE,                      9,  9 ;  9
 	mapgroup MOUNT_MOON_SQUARE,                           9, 15 ; 10
 	mapgroup MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 11
 	mapgroup TIN_TOWER_ROOF,                              9,  7 ; 12
@@ -565,7 +565,7 @@ MAP_NONE   EQU 0
 	mapgroup COPYCATS_HOUSE_1F,                           4,  4 ; 10
 	mapgroup COPYCATS_HOUSE_2F,                           3,  4 ; 11
 	mapgroup ROUTE_5,                                    17, 10 ; 12
-	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                4,  4 ; 13
+	mapgroup ROUTE_5_UNDERGROUND_ENTRANCE,                9,  9 ; 13
 	mapgroup ROUTE_5_SAFFRON_CITY_GATE,                   4,  5 ; 14
 	mapgroup ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE,            4,  4 ; 15
 	mapgroup POKEMON_TRAINER_FAN_CLUB,                    5,  4 ; 16
@@ -592,7 +592,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 27
 
 	mapgroup CLIFF_EDGE_GATE,                            11, 10 ;  1
-	mapgroup CLIFF_CAVE,                                 20,  7 ;  2
+	mapgroup CLIFF_CAVE,                                 18,  7 ;  2
 	mapgroup ROUTE_47,                                   19, 39 ;  3
 	mapgroup ROUTE_48,                                   11, 18 ;  4
 	mapgroup QUIET_CAVE_1F,                              18, 18 ;  5

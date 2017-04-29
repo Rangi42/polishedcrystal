@@ -25,9 +25,9 @@ OlivinePortPassage_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $0, $f, 9, OLIVINE_CITY
-	warp_def $0, $10, 10, OLIVINE_CITY
-	warp_def $4, $f, 4, OLIVINE_PORT_PASSAGE
+	warp_def $0, $d, 9, OLIVINE_CITY
+	warp_def $0, $e, 10, OLIVINE_CITY
+	warp_def $4, $d, 4, OLIVINE_PORT_PASSAGE
 	warp_def $2, $3, 3, OLIVINE_PORT_PASSAGE
 	warp_def $e, $3, 1, OLIVINE_PORT
 
@@ -39,4 +39,4 @@ OlivinePortPassage_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_POKEFAN_M, 1, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x76fac, EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M
+	person_event SPRITE_POKEFAN_M, 1, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x76fac, EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M

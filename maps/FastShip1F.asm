@@ -302,8 +302,8 @@ FastShip1F_MapEventHeader:
 	warp_def $f, $13, 4, FAST_SHIP_CABINS_SW_SSW_NW
 	warp_def $f, $17, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
 	warp_def $f, $1b, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $d, $3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $c, $6, 1, FAST_SHIP_B1F
+	warp_def $f, $3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def $e, $6, 1, FAST_SHIP_B1F
 	warp_def $e, $1e, 2, FAST_SHIP_B1F
 
 .XYTriggers:

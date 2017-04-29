@@ -40,7 +40,7 @@ DimCave2F_MapEventHeader:
 	warp_def $2, $1e, 1, DIM_CAVE_1F
 	warp_def $11, $5, 2, DIM_CAVE_1F
 	warp_def $12, $1c, 3, DIM_CAVE_1F
-	warp_def $20, $18, 4, DIM_CAVE_1F
+	warp_def $20, $1a, 4, DIM_CAVE_1F
 
 .XYTriggers:
 	db 0

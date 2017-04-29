@@ -24,9 +24,9 @@ VermilionPortPassage_MapEventHeader:
 
 .Warps:
 	db 5
-	warp_def $0, $f, 8, VERMILION_CITY
-	warp_def $0, $10, 9, VERMILION_CITY
-	warp_def $4, $f, 4, VERMILION_PORT_PASSAGE
+	warp_def $0, $d, 8, VERMILION_CITY
+	warp_def $0, $e, 9, VERMILION_CITY
+	warp_def $4, $d, 4, VERMILION_PORT_PASSAGE
 	warp_def $2, $3, 3, VERMILION_PORT_PASSAGE
 	warp_def $e, $3, 1, VERMILION_PORT
 
@@ -38,4 +38,4 @@ VermilionPortPassage_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_TEACHER, 1, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7701a, -1
+	person_event SPRITE_TEACHER, 1, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7701a, -1

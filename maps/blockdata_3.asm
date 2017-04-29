@@ -8,6 +8,7 @@ IlexForest_BlockData:
 	INCBIN "maps/IlexForest.blk"
 
 DarkCaveVioletEntrance_BlockData:
+SilverCaveItemRooms_BlockData:
 	INCBIN "maps/DarkCaveVioletEntrance.blk"
 
 DarkCaveBlackthornEntrance_BlockData:
@@ -116,9 +117,6 @@ MrFujisHouse_BlockData:
 
 LavRadioTower1F_BlockData:
 	INCBIN "maps/LavRadioTower1F.blk"
-
-SilverCaveItemRooms_BlockData:
-	INCBIN "maps/SilverCaveItemRooms.blk"
 
 DayCare_BlockData:
 	INCBIN "maps/DayCare.blk"

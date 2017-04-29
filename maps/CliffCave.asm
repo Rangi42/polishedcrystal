@@ -54,13 +54,13 @@ CliffCave_MapEventHeader:
 
 .Warps:
 	db 7
-	warp_def $15, $7, 2, ROUTE_47
+	warp_def $13, $7, 2, ROUTE_47
 	warp_def $9, $9, 3, ROUTE_47
-	warp_def $25, $7, 4, ROUTE_47
-	warp_def $13, $5, 6, CLIFF_CAVE
-	warp_def $13, $9, 7, CLIFF_CAVE
+	warp_def $21, $7, 4, ROUTE_47
+	warp_def $11, $5, 6, CLIFF_CAVE
+	warp_def $11, $9, 7, CLIFF_CAVE
 	warp_def $3, $5, 4, CLIFF_CAVE
-	warp_def $1f, $9, 5, CLIFF_CAVE
+	warp_def $1b, $9, 5, CLIFF_CAVE
 
 .XYTriggers:
 	db 0
@@ -72,4 +72,4 @@ CliffCave_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_ROCKET, 6, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 37, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CliffCaveRocketScript, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 33, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CliffCaveRocketScript, EVENT_CLEARED_YELLOW_FOREST

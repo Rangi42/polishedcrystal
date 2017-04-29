@@ -120,8 +120,8 @@ NationalPark_BlockData:
 NationalParkBugContest_BlockData:
 	INCBIN "maps/NationalPark.blk"
 
-Route6UndergroundEntrance_BlockData:
 Route5UndergroundEntrance_BlockData:
+Route6UndergroundEntrance_BlockData:
 	INCBIN "maps/UndergroundPathEntrance.blk"
 
 KurtsHouse_BlockData:
@@ -301,9 +301,6 @@ IcePathB2FBlackthornSide_BlockData:
 
 IcePathB3F_BlockData:
 	INCBIN "maps/IcePathB3F.blk"
-
-WhirlIslandNW_BlockData:
-	INCBIN "maps/WhirlIslandNW.blk"
 
 WhirlIslandNE_BlockData:
 	INCBIN "maps/WhirlIslandNE.blk"

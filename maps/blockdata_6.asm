@@ -3,6 +3,7 @@ SeafoamIslands1F_BlockData:
 	INCBIN "maps/DimCave1F.blk"
 
 DimCave2F_BlockData:
+WhirlIslandNW_BlockData:
 	INCBIN "maps/DimCave2F.blk"
 
 DimCave3F_BlockData:
