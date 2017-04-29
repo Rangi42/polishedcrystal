@@ -1,4 +1,5 @@
 const_value set 2
+	const CINNABARVOLCANO1F_BUCK
 	const CINNABARVOLCANO1F_SCIENTIST
 	const CINNABARVOLCANO1F_SUPER_NERD
 	const CINNABARVOLCANO1F_BOULDER1
@@ -68,6 +69,116 @@ CinnabarVolcano1F_MapScriptHeader:
 	playsound SFX_STRENGTH
 	earthquake 80
 	end
+
+CinnabarVolcano1FBuckScript:
+	faceplayer
+	checkevent EVENT_BEAT_BUCK
+	iftrue .Beaten
+	opentext
+	writetext .ChallengeText
+	yesorno
+	iffalse .No
+	writetext .YesText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked CINNABARVOLCANO1F_BUCK
+	loadtrainer BUCK, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_BUCK
+.Beaten
+	opentext
+	writetext .ItemText
+	buttonsound
+	verbosegiveitem IRON
+	iffalse .Done
+	writetext .GoodbyeText
+	waitbutton
+	closetext
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear CINNABARVOLCANO1F_BUCK
+	pause 15
+	special Special_FadeInQuickly
+	clearevent EVENT_BATTLE_TOWER_BUCK
+	end
+
+.Done:
+	closetext
+	end
+
+.No:
+	writetext .NoText
+	waitbutton
+	closetext
+	end
+
+.ChallengeText:
+	text "Howdy! I'm Buck."
+	line "And you're…"
+	cont "<PLAYER>?"
+
+	para "Don't tell me"
+	line "you're hunting for"
+	cont "treasure too?"
+
+	para "Stark Mountain"
+	line "back home has"
+
+	para "treasure deep in-"
+	line "side, so I'm sure"
+	cont "this volcano does"
+	cont "too!"
+
+	para "That's why I'm here."
+
+	para "So, <PLAYER>, what"
+	line "do you say we bat-"
+	cont "tle for it?"
+	done
+
+.YesText:
+	text "OK! I'm telling you"
+	line "right now. I'm ser-"
+	cont "iously tough."
+	done
+
+.NoText:
+	text "I'll keep asking"
+	line "until you say"
+	cont "“Yes!”"
+	done
+
+.BeatenText:
+	text "Heeheehee!"
+	line "So hot, you!"
+	done
+
+.ItemText:
+	text "Fweh! Too much!"
+
+	para "This volcano's"
+	line "treasure isn't for"
+	cont "me…"
+
+	para "But, hey, <PLAYER>!"
+	line "You're an amazing"
+	cont "Trainer!"
+
+	para "You should like"
+	line "this!"
+	done
+
+.GoodbyeText:
+	text "I guess I'll better"
+	line "my team at the"
+	cont "Battle Tower."
+
+	para "Be seeing you,"
+	line "<PLAYER>!"
+	cont "Bye-bye!"
+	done
 
 TrainerScientistOskar:
 	trainer EVENT_BEAT_SCIENTIST_OSKAR, SCIENTIST, OSKAR, ScientistOskarSeenText, ScientistOskarBeatenText, 0, ScientistOskarScript
@@ -155,7 +266,7 @@ CinnabarVolcano1F_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 9
+	db 10
 	warp_def $19, $d, 2, CINNABAR_ISLAND
 	warp_def $d, $5, 1, CINNABAR_VOLCANO_B1F
 	warp_def $14, $e, 2, CINNABAR_VOLCANO_B1F
@@ -165,16 +276,18 @@ CinnabarVolcano1F_MapEventHeader:
 	warp_def $13, $14, 9, CINNABAR_VOLCANO_B1F
 	warp_def $9, $12, 10, CINNABAR_VOLCANO_B1F
 	warp_def $7, $a, 11, CINNABAR_VOLCANO_B1F
+	warp_def $3, $f, 12, CINNABAR_VOLCANO_B1F
 
 .XYTriggers:
 	db 0
 
 .Signposts:
 	db 1
-	signpost 1, 15, SIGNPOST_ITEM, CinnabarVolcano1FHiddenFullRestore
+	signpost 1, 13, SIGNPOST_ITEM, CinnabarVolcano1FHiddenFullRestore
 
 .PersonEvents:
-	db 14
+	db 15
+	person_event SPRITE_BUCK, 9, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
 	person_event SPRITE_SCIENTIST, 19, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistOskar, -1
 	person_event SPRITE_SUPER_NERD, 24, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdLuis, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 16, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBoulder, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
@@ -187,5 +300,5 @@ CinnabarVolcano1F_MapEventHeader:
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 23, 35, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FRock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 19, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FRock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 12, 25, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 15, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FRock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FRock, -1

@@ -47,7 +47,6 @@
 
 ## Characters
 
-* Buck in Mt. Moon B2F
 * Riley in Dim Cave B3F
 * Mira in Scary Cave 1F
 * Candela in Fire Island peak
@@ -178,6 +177,8 @@ Out-of-battle effects:
 
 ## Move animations
 
+Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
+
 * Aerial Ace
 * Aqua Tail
 * Avalanche
@@ -194,7 +195,6 @@ Out-of-battle effects:
 * Icicle Crash
 * Icicle Spear
 * Metal Sound
-* Psystrike
 * Scald
 * Stone Edge
 * Sucker Punch

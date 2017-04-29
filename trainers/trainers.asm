@@ -14438,13 +14438,29 @@ BuckGroup:
 ; ================================
 ; ================
 
+	; BUCK
+	db "Buck@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 65, UMBREON
+	db 64, GOLEM
+	db 62, POLIWRATH
+	db 63, FORRETRESS
+	db 62, SKARMORY
+	db 63, STEELIX
+
+	db $ff ; end
+
+; ================
+
 ;	; BUCK
 ;	db "Buck@"
 ;	db TRAINERTYPE_NORMAL
 ;
 ;	; party
 ;
-;	; TODO: UMBREON
 ;	db 50, GOLEM
 ;	db 50, POLIWRATH
 ;	db 50, FORRETRESS
@@ -14756,6 +14772,9 @@ SkylaGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 ValerieGroup:
 ; ================================
 ; ================
@@ -14898,9 +14917,6 @@ ValerieGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 BillGroup:

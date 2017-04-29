@@ -4124,20 +4124,25 @@ BattleAnim_Return:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Psystrike: ; TODO: design new animation for Psystrike
-BattleAnim_Kinesis: ; removed
+BattleAnim_Psystrike:
 	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_NOISE
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_obj ANIM_OBJ_6B,  10, 0,   9, 4, $0
-	anim_wait 32
+	anim_bgp $1b
+	anim_wait 8
 .loop
-	anim_sound 0, 0, SFX_KINESIS
+	anim_sound 0, 0, SFX_AEROBLAST
 	anim_obj ANIM_OBJ_4B,   8, 0,  11, 0, $0
 	anim_wait 32
 	anim_loop 3, .loop
-	anim_wait 32
-	anim_sound 0, 0, SFX_KINESIS_2
-	anim_wait 32
+	anim_wait 48
+	anim_sound 0, 0, SFX_PLACE_PUZZLE_PIECE_DOWN
+	anim_wait 10
+	anim_sound 0, 0, SFX_PLACE_PUZZLE_PIECE_DOWN
+	anim_wait 10
+	anim_sound 0, 0, SFX_PLACE_PUZZLE_PIECE_DOWN
+	anim_wait 28
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Safeguard:

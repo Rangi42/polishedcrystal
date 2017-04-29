@@ -516,7 +516,6 @@ INCLUDE "maps/IndigoPlateau.asm"
 INCLUDE "maps/Route24.asm"
 INCLUDE "maps/Route28FamousSpeechHouse.asm"
 INCLUDE "maps/Route19FuchsiaGate.asm"
-INCLUDE "maps/ViridianForest.asm"
 INCLUDE "maps/ViridianForestViridianGate.asm"
 INCLUDE "maps/ViridianForestPewterGate.asm"
 INCLUDE "maps/CeruleanCave1F.asm"
@@ -598,6 +597,7 @@ INCLUDE "maps/Route39.asm"
 INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/PewterNidoranSpeechHouse.asm"
 INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
+INCLUDE "maps/ViridianForest.asm"
 
 
 SECTION "Map Scripts 27", ROMX[$4000], BANK[MAP_SCRIPTS_27]

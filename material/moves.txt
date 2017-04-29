@@ -5,6 +5,12 @@ Scizor - Glare and Crabhammer
 Ampharos - DazzlinGleam
 Kindgra - Flamethrower and Fire Blast
 
+FOCUS_ENERGY: Eevee
+LEER: Charmander
+METRONOME: Elekid, Magby
+MIST: Vaporeon
+SLASH: Pinsir
+STOMP: Tauros
 DRAGON RAGE: Growlithe, Lapras, Aerodactyl
 TRI ATTACK: Jigglypuff, Slowpoke, Drowzee, Chansey, Mewtwo
 BATON_PASS [purified: Beedrill, Rapidash, Dodrio, Hypno, Zapdos, Natu]
