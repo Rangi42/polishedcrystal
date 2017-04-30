@@ -1384,8 +1384,6 @@ LoadTileset:: ; 2821
 	jr z, .load_roof
 	cp TILESET_JOHTO_2
 	jr z, .load_roof
-	cp TILESET_JOHTO_3
-	jr z, .load_roof
 	jr .skip_roof
 
 .load_roof

@@ -20,7 +20,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_POKECOM_CENTER
 	jp z, .load_eight_bg_palettes
 	ld hl, BattleTowerPalette
-	cp TILESET_BATTLE_TOWER
+	cp TILESET_BATTLE_TOWER_IN
 	jp z, .load_eight_bg_palettes
 	ld hl, GatePalette
 	cp TILESET_GATE

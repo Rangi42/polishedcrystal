@@ -309,7 +309,7 @@ CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
-	dbw TILESET_JOHTO_3, .johto3
+	dbw TILESET_BATTLE_TOWER_OUT, .battle_tower_out
 	dbw TILESET_KANTO_1, .kanto1
 	dbw TILESET_PARK, .park
 	dbw TILESET_FOREST, .forest
@@ -331,7 +331,7 @@ CutGrassBlockPointers: ; c862
 	db $0b, $0a, $01
 	db -1
 
-.johto3 ; outside Battle Tower
+.battle_tower_out ; outside Battle Tower
 	db $03, $02, $01
 	db -1
 

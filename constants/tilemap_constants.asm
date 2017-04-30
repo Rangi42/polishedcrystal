@@ -8,7 +8,7 @@ const_value SET 1
 	const TILESET_JOHTO_1          ; 01
 	const TILESET_JOHTO_2          ; 02
 	const TILESET_KANTO_1          ; 03
-	const TILESET_JOHTO_3          ; 04
+	const TILESET_BATTLE_TOWER_OUT ; 04
 	const TILESET_JOHTO_HOUSE      ; 05
 	const TILESET_KANTO_HOUSE      ; 06
 	const TILESET_POKECENTER       ; 07
@@ -26,7 +26,7 @@ const_value SET 1
 	const TILESET_LIGHTHOUSE       ; 13
 	const TILESET_KANTO_2          ; 14
 	const TILESET_POKECOM_CENTER   ; 15
-	const TILESET_BATTLE_TOWER     ; 16
+	const TILESET_BATTLE_TOWER_IN  ; 16
 	const TILESET_SPROUT_TOWER     ; 17
 	const TILESET_CAVE             ; 18
 	const TILESET_PARK             ; 19
