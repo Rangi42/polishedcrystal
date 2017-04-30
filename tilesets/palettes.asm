@@ -353,7 +353,6 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
-
 	ld hl, DimCavePalette
 	cp DIM_CAVE
 	jp z, .load_eight_bg_palettes
@@ -366,12 +365,20 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, SilverCavePalette
 	cp SILVER_CAVE
 	jp z, .load_eight_bg_palettes
+	ld hl, DarkCavePalette
+	cp MT_MORTAR
+	jp z, .load_eight_bg_palettes
+	cp DARK_CAVE
+	jr z, .dark_cave
+	cp WHIRL_ISLANDS
+	jr z, .dark_cave
 	ld hl, ScaryCavePalette
 	cp SCARY_CAVE
 	jr nz, .not_scary_cave
 	ld a, [MapNumber]
 	cp MAP_SCARY_CAVE_SHIPWRECK
 	jp nz, .load_eight_bg_palettes
+.dark_cave
 	ld a, [StatusFlags]
 	bit 2, a ; Flash
 	jp nz, .load_eight_bg_palettes
@@ -527,6 +534,9 @@ INCLUDE "tilesets/cerulean_cave.pal"
 
 SilverCavePalette:
 INCLUDE "tilesets/silver_cave.pal"
+
+DarkCavePalette:
+INCLUDE "tilesets/dark_cave.pal"
 
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"

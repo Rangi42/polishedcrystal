@@ -16,15 +16,15 @@ INCBIN "tilesets/johto3_metatiles.bin"
 Tileset04Coll:
 INCLUDE "tilesets/johto3_collision.asm"
 
-Tileset32GFX:
+Tileset31GFX:
 INCBIN "gfx/tilesets/safari.2bpp.lz"
 
-Tileset32Meta:
+Tileset31Meta:
 INCBIN "tilesets/safari_metatiles.bin"
 
-Tileset32Coll:
+Tileset31Coll:
 INCLUDE "tilesets/safari_collision.asm"
 
 Tileset26GFX:
-Tileset33GFX:
+Tileset32GFX:
 INCBIN "gfx/tilesets/ruins.2bpp.lz"

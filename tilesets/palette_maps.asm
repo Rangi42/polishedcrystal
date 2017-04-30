@@ -69,15 +69,14 @@ Tileset23PalMap:
 INCLUDE "tilesets/tower_palette_map.asm"
 
 Tileset24PalMap:
-Tileset30PalMap:
-Tileset41PalMap:
+Tileset40PalMap:
 INCLUDE "tilesets/cave_palette_map.asm"
 
 Tileset25PalMap:
 INCLUDE "tilesets/park_palette_map.asm"
 
 Tileset26PalMap:
-Tileset33PalMap:
+Tileset32PalMap:
 INCLUDE "tilesets/ruins_palette_map.asm"
 
 Tileset27PalMap:
@@ -89,29 +88,29 @@ INCLUDE "tilesets/warehouse_palette_map.asm"
 Tileset29PalMap:
 INCLUDE "tilesets/ice_path_palette_map.asm"
 
-Tileset31PalMap:
+Tileset30PalMap:
 INCLUDE "tilesets/forest_palette_map.asm"
 
-Tileset32PalMap:
+Tileset31PalMap:
 INCLUDE "tilesets/safari_palette_map.asm"
 
-Tileset34PalMap:
+Tileset33PalMap:
 INCLUDE "tilesets/pokemon_mansion_palette_map.asm"
 
-Tileset35PalMap:
+Tileset34PalMap:
 INCLUDE "tilesets/faraway_palette_map.asm"
 
-Tileset36PalMap:
+Tileset35PalMap:
 INCLUDE "tilesets/tunnel_palette_map.asm"
 
-Tileset37PalMap:
+Tileset36PalMap:
 INCLUDE "tilesets/decor_palette_map.asm"
 
-Tileset38PalMap:
+Tileset37PalMap:
 INCLUDE "tilesets/shamouti_palette_map.asm"
 
-Tileset39PalMap:
+Tileset38PalMap:
 INCLUDE "tilesets/museum_palette_map.asm"
 
-Tileset40PalMap:
+Tileset39PalMap:
 INCLUDE "tilesets/hotel_palette_map.asm"

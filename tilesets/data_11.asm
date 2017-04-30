@@ -19,11 +19,11 @@ INCLUDE "tilesets/kanto2_collision.asm"
 Tileset28GFX:
 INCBIN "gfx/tilesets/warehouse.2bpp.lz"
 
-Tileset34GFX:
+Tileset33GFX:
 INCBIN "gfx/tilesets/pokemon_mansion.2bpp.lz"
 
-Tileset34Meta:
+Tileset33Meta:
 INCBIN "tilesets/pokemon_mansion_metatiles.bin"
 
-Tileset34Coll:
+Tileset33Coll:
 INCLUDE "tilesets/pokemon_mansion_collision.asm"

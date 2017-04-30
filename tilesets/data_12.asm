@@ -7,29 +7,29 @@ INCBIN "tilesets/battle_tower_metatiles.bin"
 Tileset22Coll:
 INCLUDE "tilesets/battle_tower_collision.asm"
 
-Tileset36GFX:
+Tileset35GFX:
 INCBIN "gfx/tilesets/tunnel.2bpp.lz"
 
-Tileset36Meta:
+Tileset35Meta:
 INCBIN "tilesets/tunnel_metatiles.bin"
 
-Tileset36Coll:
+Tileset35Coll:
 INCLUDE "tilesets/tunnel_collision.asm"
 
-Tileset37GFX:
+Tileset36GFX:
 INCBIN "gfx/tilesets/decor.2bpp.lz"
 
-Tileset37Meta:
+Tileset36Meta:
 INCBIN "tilesets/decor_metatiles.bin"
 
-Tileset37Coll:
+Tileset36Coll:
 INCLUDE "tilesets/decor_collision.asm"
 
-Tileset38GFX:
+Tileset37GFX:
 INCBIN "gfx/tilesets/shamouti.2bpp.lz"
 
-Tileset38Meta:
+Tileset37Meta:
 INCBIN "tilesets/shamouti_metatiles.bin"
 
-Tileset38Coll:
+Tileset37Coll:
 INCLUDE "tilesets/shamouti_collision.asm"

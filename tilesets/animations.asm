@@ -143,8 +143,7 @@ Tileset23Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset24Anim:
-Tileset30Anim:
-Tileset41Anim:
+Tileset40Anim:
 	dw NULL,  SafariFountainAnim4
 	dw NULL,  WaitTileAnimation
 	dw NULL,  SafariFountainAnim3
@@ -202,7 +201,7 @@ Tileset29Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-Tileset31Anim:
+Tileset30Anim:
 	dw NULL,  ForestTreeLeftAnimation
 	dw NULL,  ForestTreeRightAnimation
 	dw NULL,  WaitTileAnimation
@@ -225,7 +224,7 @@ Tileset31Anim:
 	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
-Tileset32Anim:
+Tileset31Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -238,7 +237,7 @@ Tileset32Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset35Anim:
+Tileset34Anim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -252,7 +251,7 @@ Tileset35Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset36Anim:
+Tileset35Anim:
 	dw VTiles2 tile $26, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileRightLeft
@@ -280,7 +279,7 @@ Tileset36Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-Tileset38Anim:
+Tileset37Anim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -314,11 +313,11 @@ Tileset22Anim:
 Tileset26Anim:
 Tileset27Anim:
 Tileset28Anim:
+Tileset32Anim:
 Tileset33Anim:
-Tileset34Anim:
-Tileset37Anim:
+Tileset36Anim:
+Tileset38Anim:
 Tileset39Anim:
-Tileset40Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

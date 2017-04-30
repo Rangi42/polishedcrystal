@@ -13,8 +13,8 @@ INCBIN "tilesets/ruins_metatiles.bin"
 Tileset26Coll:
 INCLUDE "tilesets/ruins_collision.asm"
 
-Tileset33Meta:
+Tileset32Meta:
 INCBIN "tilesets/alph_metatiles.bin"
 
-Tileset33Coll:
+Tileset32Coll:
 INCLUDE "tilesets/alph_collision.asm"

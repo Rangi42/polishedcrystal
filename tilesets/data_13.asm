@@ -1,11 +1,11 @@
-Tileset39GFX:
+Tileset38GFX:
 INCBIN "gfx/tilesets/museum.2bpp.lz"
 
-Tileset40GFX:
+Tileset39GFX:
 INCBIN "gfx/tilesets/hotel.2bpp.lz"
 
-Tileset40Meta:
+Tileset39Meta:
 INCBIN "tilesets/hotel_metatiles.bin"
 
-Tileset40Coll:
+Tileset39Coll:
 INCLUDE "tilesets/hotel_collision.asm"

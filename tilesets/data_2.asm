@@ -7,8 +7,8 @@ INCBIN "tilesets/house1_metatiles.bin"
 Tileset05Coll:
 INCLUDE "tilesets/house1_collision.asm"
 
-Tileset39Meta:
+Tileset38Meta:
 INCBIN "tilesets/museum_metatiles.bin"
 
-Tileset39Coll:
+Tileset38Coll:
 INCLUDE "tilesets/museum_collision.asm"
