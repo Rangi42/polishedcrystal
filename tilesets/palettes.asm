@@ -353,17 +353,10 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
+
 	ld hl, DimCavePalette
 	cp DIM_CAVE
 	jp z, .load_eight_bg_palettes
-	ld hl, ScaryCavePalette
-	cp SCARY_CAVE
-	jr nz, .not_scary_cave
-	ld a, [MapNumber]
-	cp MAP_SCARY_CAVE_SHIPWRECK
-	jp z, .do_nothing
-	jp .load_eight_bg_palettes
-.not_scary_cave
 	ld hl, CinnabarVolcanoPalette
 	cp CINNABAR_VOLCANO
 	jp z, .load_eight_bg_palettes
@@ -373,6 +366,17 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, SilverCavePalette
 	cp SILVER_CAVE
 	jp z, .load_eight_bg_palettes
+	ld hl, ScaryCavePalette
+	cp SCARY_CAVE
+	jr nz, .not_scary_cave
+	ld a, [MapNumber]
+	cp MAP_SCARY_CAVE_SHIPWRECK
+	jp nz, .load_eight_bg_palettes
+	ld a, [StatusFlags]
+	bit 2, a ; Flash
+	jp nz, .load_eight_bg_palettes
+	jp .do_nothing
+.not_scary_cave
 	cp NAVEL_ROCK
 	jp nz, .do_nothing
 	ld hl, NavelRockPalette
