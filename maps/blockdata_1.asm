@@ -137,7 +137,18 @@ GoldenrodPPSpeechHouse_BlockData:
 GoldenrodHPUpHouse_BlockData:
 GoldenrodSpeechHouse_BlockData:
 GuideGentsHouse_BlockData:
-	INCBIN "maps/JohtoHouse2.blk"
+CeruleanGymBadgeSpeechHouse_BlockData:
+CeruleanTradeSpeechHouse_BlockData:
+CeruleanCoupleHouse_BlockData:
+; TODO: teleporter machine tiles
+BillsHouse_BlockData:
+FuchsiaBillSpeechHouse_BlockData:
+SaffronRichSpeechHouse_BlockData:
+LavenderTownSpeechHouse_BlockData:
+ViridianNicknameSpeechHouse_BlockData:
+CeladonOldManSpeechHouse_BlockData:
+CeladonDevelopmentSpeechHouse_BlockData:
+	INCBIN "maps/House2.blk"
 
 MahoganyRedGyaradosSpeechHouse_BlockData:
 BlackthornDragonSpeechHouse_BlockData:
@@ -167,19 +178,6 @@ VermilionSSAnneSpeechHouse_BlockData:
 MrPsychicsHouse_BlockData:
 PsychicInversHouse_BlockData:
 	INCBIN "maps/KantoHouse1.blk"
-
-CeruleanGymBadgeSpeechHouse_BlockData:
-CeruleanTradeSpeechHouse_BlockData:
-CeruleanCoupleHouse_BlockData:
-; TODO: teleporter machine tiles
-BillsHouse_BlockData:
-FuchsiaBillSpeechHouse_BlockData:
-SaffronRichSpeechHouse_BlockData:
-LavenderTownSpeechHouse_BlockData:
-ViridianNicknameSpeechHouse_BlockData:
-CeladonOldManSpeechHouse_BlockData:
-CeladonDevelopmentSpeechHouse_BlockData:
-	INCBIN "maps/KantoHouse2.blk"
 
 Route26DayofWeekSiblingsHouse_BlockData:
 VermilionHouseFishingSpeechHouse_BlockData:

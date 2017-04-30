@@ -101,7 +101,7 @@ MAP_NONE   EQU 0
 	mapgroup SILVER_CAVE_ITEM_ROOMS,                     18, 20 ; 64
 	mapgroup DARK_CAVE_VIOLET_ENTRANCE,                  18, 20 ; 65
 	mapgroup DARK_CAVE_BLACKTHORN_ENTRANCE,              15, 15 ; 66
-	mapgroup DRAGONS_DEN_1F,                              9, 20 ; 67
+	mapgroup DRAGONS_DEN_1F,                             45, 20 ; 67
 	mapgroup DRAGONS_DEN_B1F,                            18, 20 ; 68
 	mapgroup DRAGON_SHRINE,                               5,  5 ; 69
 	mapgroup TOHJO_FALLS,                                 9, 15 ; 70
