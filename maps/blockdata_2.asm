@@ -308,9 +308,6 @@ WhirlIslandNE_BlockData:
 WhirlIslandSW_BlockData:
 	INCBIN "maps/WhirlIslandSW.blk"
 
-WhirlIslandCave_BlockData:
-	INCBIN "maps/WhirlIslandCave.blk"
-
 WhirlIslandSE_BlockData:
 	INCBIN "maps/WhirlIslandSE.blk"
 

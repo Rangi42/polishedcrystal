@@ -90,7 +90,7 @@ MAP_NONE   EQU 0
 	mapgroup WHIRL_ISLAND_NW,                            18, 17 ; 53
 	mapgroup WHIRL_ISLAND_NE,                             9, 10 ; 54
 	mapgroup WHIRL_ISLAND_SW,                             9, 10 ; 55
-	mapgroup WHIRL_ISLAND_CAVE,                           8,  5 ; 56
+	mapgroup WHIRL_ISLAND_CAVE,                          45, 20 ; 56
 	mapgroup WHIRL_ISLAND_SE,                             9,  5 ; 57
 	mapgroup WHIRL_ISLAND_B1F,                           18, 20 ; 58
 	mapgroup WHIRL_ISLAND_B2F,                           18, 10 ; 59

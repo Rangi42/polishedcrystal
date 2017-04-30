@@ -113,6 +113,7 @@ NavelRockOutside_BlockData:
 
 NavelRockInside_BlockData:
 DragonsDen1F_BlockData:
+WhirlIslandCave_BlockData:
 	INCBIN "maps/NavelRockInside.blk"
 
 NavelRockRoof_BlockData:
