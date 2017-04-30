@@ -1,11 +1,11 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
-	tilecoll TALL_GRASS, TALL_GRASS, TALL_GRASS, TALL_GRASS
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, HEADBUTT_TREE, WALL, HEADBUTT_TREE
+	tilecoll WALL, FLOOR, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
@@ -35,18 +35,6 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, FLOOR, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, FLOOR, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, FLOOR, WALL, FLOOR
-	tilecoll WALL, HEADBUTT_TREE, WALL, HEADBUTT_TREE
 	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, FLOOR, WALL, WALL
