@@ -509,7 +509,7 @@ MAP_NONE   EQU 0
 	mapgroup BATTLE_TOWER_ELEVATOR,                       2,  2 ; 14
 	mapgroup BATTLE_TOWER_HALLWAY,                        2, 11 ; 15
 	mapgroup ROUTE_40_BATTLE_TOWER_GATE,                  4,  5 ; 16
-	mapgroup BATTLE_TOWER_OUTSIDE,                       14, 10 ; 17
+	mapgroup BATTLE_TOWER_OUTSIDE,                       13, 10 ; 17
 
 	newgroup                                                    ; 23
 
