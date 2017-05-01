@@ -112,9 +112,12 @@ class PaletteMap(object):
 	color_constants = {'GRAY': 0, 'RED': 1, 'GREEN': 2, 'WATER': 3,
 		'YELLOW': 4, 'BROWN': 5, 'ROOF': 6, 'TEXT': 7}
 
-	day_palette = staticmethod(lambda: load_palette('tilesets/bg.pal')[8:16])
-	nite_palette = staticmethod(lambda: load_palette('tilesets/bg.pal')[16:24])
-	indoor_palette = staticmethod(lambda: load_palette('tilesets/bg.pal')[32:40])
+	day_palette = staticmethod(lambda:
+		(lambda x=load_palette('tilesets/bg.pal'): x[8:11]+[x[0x29]]+x[12:16])())
+	nite_palette = staticmethod(lambda:
+		(lambda x=load_palette('tilesets/bg.pal'): x[16:19]+[x[0x2a]]+x[20:24])())
+	indoor_palette = staticmethod(lambda:
+		load_palette('tilesets/bg.pal')[32:40])
 
 	tileset_palettes = {
 		'johto1': lambda: PaletteMap.day_palette(),
