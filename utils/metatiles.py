@@ -29,6 +29,34 @@ def rgb_bytes(rgbs):
 num_shades = 4
 default_rgb = (0xAB, 0xCD, 0xEF)
 
+def load_palette(filename):
+	try:
+		palette = []
+		with open(filename, 'r') as f:
+			hue = []
+			for line in f:
+				line = line.strip()
+				if line.startswith('RGB '):
+					rgb = [int(b) * 8 for b in line[4:].split(',')]
+					assert len(rgb) == 3
+					hue.append(rgb)
+					if len(hue) == 4:
+						palette.append(hue)
+						hue = []
+	except:
+		palette = [
+			[(30*8,28*8,26*8), (19*8,19*8,19*8), (13*8,13*8,13*8), (7*8,7*8,7)],
+			[(30*8,28*8,26*8), (31*8,19*8,24*8), (30*8,10*8,6*8), (7*8,7*8,7)],
+			[(18*8,24*8,9*8), (15*8,20*8,1*8), (9*8,13*8,0*8), (7*8,7*8,7)],
+			[(30*8,28*8,26*8), (15*8,16*8,31*8), (9*8,9*8,31*8), (7*8,7*8,7)],
+			[(30*8,28*8,26*8), (31*8,31*8,7*8), (31*8,16*8,1*8), (7*8,7*8,7)],
+			[(26*8,24*8,17*8), (21*8,17*8,7*8), (16*8,13*8,3*8), (7*8,7*8,7)],
+			[(30*8,28*8,26*8), (17*8,19*8,31*8), (14*8,16*8,31*8), (7*8,7*8,7)],
+			[(31*8,31*8,16*8), (31*8,31*8,16*8), (14*8,9*8,0*8), (0*8,0*8,0)]
+		]
+	assert len(palette) >= 8
+	return palette
+
 class Tileset(object):
 	p_per_t = 8
 
@@ -81,48 +109,44 @@ class Tileset(object):
 			writer.write(file, chunk(rgb_bytes(self.data), self.w * 3))
 
 class PaletteMap(object):
-	day_colors = {
-		'GRAY': [(27*8,31*8,27*8), (21*8,21*8,21*8), (13*8,13*8,13*8), (7*8,7*8,7*8)],
-		'RED': [(27*8,31*8,27*8), (31*8,19*8,24*8), (30*8,10*8,6*8), (7*8,7*8,7*8)],
-		'GREEN': [(22*8,31*8,10*8), (12*8,25*8,1*8), (5*8,14*8,0*8), (7*8,7*8,7*8)],
-		'WATER': [(27*8,31*8,27*8), (18*8,19*8,31*8), (13*8,12*8,31*8), (7*8,7*8,7*8)],
-		'YELLOW': [(27*8,31*8,27*8), (31*8,31*8,7*8), (31*8,16*8,1*8), (7*8,7*8,7*8)],
-		'BROWN': [(27*8,31*8,27*8), (24*8,18*8,7*8), (20*8,15*8,3*8), (7*8,7*8,7*8)],
-		'ROOF': [(27*8,31*8,27*8), (15*8,31*8,31*8), (5*8,17*8,31*8), (7*8,7*8,7*8)],
-		'TEXT': [(31*8,31*8,16*8), (31*8,31*8,16*8), (14*8,9*8,0*8), (0*8,0*8,0*8)]
+	color_constants = {'GRAY': 0, 'RED': 1, 'GREEN': 2, 'WATER': 3,
+		'YELLOW': 4, 'BROWN': 5, 'ROOF': 6, 'TEXT': 7}
+
+	day_palette = staticmethod(lambda: load_palette('tilesets/bg.pal')[8:16])
+	nite_palette = staticmethod(lambda: load_palette('tilesets/bg.pal')[16:24])
+	indoor_palette = staticmethod(lambda: load_palette('tilesets/bg.pal')[32:40])
+
+	tileset_palettes = {
+		'johto1': lambda: PaletteMap.day_palette(),
+		'johto2': lambda: PaletteMap.day_palette(),
+		'johto3': lambda: PaletteMap.day_palette(),
+		'kanto1': lambda: PaletteMap.day_palette(),
+		'kanto2': lambda: PaletteMap.day_palette(),
+		'park': lambda: PaletteMap.day_palette(),
+		'cave': lambda: PaletteMap.nite_palette(),
+		'tunnel': lambda: PaletteMap.nite_palette(),
+		'alph': lambda: load_palette('tilesets/ruins.pal'),
+		'battle_tower': lambda: load_palette('tilesets/battle_tower.pal'),
+		'faraway': lambda: load_palette('tilesets/faraway_island.pal')[8:16],
+		'forest': lambda: load_palette('tilesets/yellow_forest.pal')[8:16],
+		'gate': lambda: load_palette('tilesets/gate.pal'),
+		'hotel': lambda: load_palette('tilesets/hotel.pal'),
+		'ice_path': lambda: load_palette('tilesets/ice_path.pal'),
+		'mansion': lambda: load_palette('tilesets/celadon_mansion.pal')[8:16],
+		'pokecenter': lambda: load_palette('tilesets/pokecenter.pal'),
+		'pokecom': lambda: load_palette('tilesets/pokecom.pal'),
+		'quiet_cave': lambda: load_palette('tilesets/quiet_cave.pal'),
+		'radio_tower': lambda: load_palette('tilesets/radio_tower.pal'),
+		'ruins': lambda: load_palette('tilesets/ruins.pal'),
+		'safari': lambda: load_palette('tilesets/safari_zone.pal')[8:16],
+		'shamouti': lambda: load_palette('tilesets/shamouti_island.pal')[8:16],
 	}
-
-	nite_colors = {
-		'GRAY': [(15*8,14*8,24*8),(11*8,11*8,19*8),(7*8,7*8,12*8),(0*8,0*8,0*8)],
-		'RED': [(15*8,14*8,24*8),(14*8,7*8,17*8),(13*8,0*8,8*8),(0*8,0*8,0*8)],
-		'GREEN': [(15*8,14*8,24*8),(8*8,13*8,19*8),(0*8,11*8,13*8),(0*8,0*8,0*8)],
-		'WATER': [(15*8,14*8,24*8),(10*8,9*8,20*8),(4*8,3*8,18*8),(0*8,0*8,0*8)],
-		'YELLOW': [(30*8,30*8,11*8),(16*8,14*8,18*8),(16*8,14*8,10*8),(0*8,0*8,0*8)],
-		'BROWN': [(15*8,14*8,24*8),(12*8,9*8,15*8),(8*8,4*8,5*8),(0*8,0*8,0*8)],
-		'ROOF': [(15*8,14*8,24*8),(13*8,12*8,23*8),(11*8,9*8,20*8),(0*8,0*8,0*8)],
-		'TEXT': [(31*8,31*8,16*8),(31*8,31*8,16*8),(14*8,9*8,0*8),(0*8,0*8,0*8)]
-	}
-
-	indoor_colors = {
-		'GRAY': [(30*8,28*8,26*8), (19*8,19*8,19*8), (13*8,13*8,13*8), (7*8,7*8,7*8)],
-		'RED': [(30*8,28*8,26*8), (31*8,19*8,24*8), (30*8,10*8,6*8), (7*8,7*8,7*8)],
-		'GREEN': [(18*8,24*8,9*8), (15*8,20*8,1*8), (9*8,13*8,0*8), (7*8,7*8,7*8)],
-		'WATER': [(30*8,28*8,26*8), (15*8,16*8,31*8), (9*8,9*8,31*8), (7*8,7*8,7*8)],
-		'YELLOW': [(30*8,28*8,26*8), (31*8,31*8,7*8), (31*8,16*8,1*8), (7*8,7*8,7*8)],
-		'BROWN': [(26*8,24*8,17*8), (21*8,17*8,7*8), (16*8,13*8,3*8), (7*8,7*8,7*8)],
-		'ROOF': [(30*8,28*8,26*8), (17*8,19*8,31*8), (14*8,16*8,31*8), (7*8,7*8,7*8)],
-		'TEXT': [(31*8,31*8,16*8), (31*8,31*8,16*8), (14*8,9*8,0*8), (0*8,0*8,0*8)]
-	}
-
-	day_tilesets = {'faraway', 'johto1', 'johto2', 'johto3', 'kanto1', 'kanto2',
-		'park', 'safari', 'shamouti'}
-
-	nite_tilesets = {'cave', 'dark_cave', 'forest', 'tunnel', 'quiet_cave'}
 
 	def __init__(self, filename, key):
-		colors = (PaletteMap.day_colors if key in PaletteMap.day_tilesets
-			else PaletteMap.nite_colors if key in PaletteMap.nite_tilesets
-			else PaletteMap.indoor_colors)
+		colors_lambda = PaletteMap.tileset_palettes.get(key, PaletteMap.indoor_palette)
+		colors = colors_lambda()
+		assert len(colors) == 8
+		colors = {k: colors[v] for k, v in PaletteMap.color_constants.items()}
 		self.data = []
 		with open(filename, 'r') as file:
 			for line in file:
