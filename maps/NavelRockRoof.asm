@@ -62,33 +62,33 @@ Leaf:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemaleEndingSequence
 	checkcode VAR_FACING
-	if_equal UP, .LeftMaleEndingSequence
+	if_equal UP, .RightMaleEndingSequence
 	spriteface PLAYER, UP
-	moveperson NAVELROCKROOF_CHRIS, 8, 8
+	moveperson NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
 	jump .EndingSequence
 
-.LeftMaleEndingSequence:
+.RightMaleEndingSequence:
 	applymovement PLAYER, NavelRockRoofStepUpMovementData
 	appear NAVELROCKROOF_CHRIS
 	jump .EndingSequence
 
 .FemaleEndingSequence:
 	checkcode VAR_FACING
-	if_equal UP, .LeftFemaleEndingSequence
+	if_equal UP, .RightFemaleEndingSequence
 	spriteface PLAYER, UP
-	moveperson NAVELROCKROOF_KRIS, 8, 8
+	moveperson NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS
 	jump .EndingSequence
 
-.LeftFemaleEndingSequence:
+.RightFemaleEndingSequence:
 	applymovement PLAYER, NavelRockRoofStepUpMovementData
 	appear NAVELROCKROOF_KRIS
 .EndingSequence:
 	applymovement PLAYER, NavelRockRoofHidePlayerMovementData
 	pause 30
 	applymovement PLAYER, NavelRockRoofPanUpMovementData
-	pause 80
+	pause 40
 	disappear NAVELROCKROOF_CHRIS
 	disappear NAVELROCKROOF_KRIS
 	credits
@@ -117,6 +117,7 @@ NavelRockRoofPanUpMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_up
+	slow_step_up
 NavelRockRoofStepUpMovementData:
 	slow_step_up
 	step_end
@@ -137,6 +138,6 @@ NavelRockRoof_MapEventHeader:
 
 .PersonEvents:
 	db 3
-	person_event SPRITE_LEAF, 8, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
-	person_event SPRITE_CHRIS, 8, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_KRIS, 8, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	person_event SPRITE_LEAF, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
+	person_event SPRITE_CHRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	person_event SPRITE_KRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
