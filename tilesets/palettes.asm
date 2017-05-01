@@ -15,6 +15,14 @@ BlindingFlashPalette: ; 49418
 ; 49420
 
 LoadSpecialMapPalette: ; 494ac
+	call GetMapHeaderTimeOfDayNybble
+	cp PALETTE_DARK
+	jr nz, .not_dark
+	ld a, [StatusFlags]
+	bit 2, a ; Flash
+	jp z, .do_nothing
+.not_dark
+
 	ld a, [wTileset]
 	ld hl, PokeComPalette
 	cp TILESET_POKECOM_CENTER
@@ -126,7 +134,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, LancesRoomPalette
 	ld a, [wPermission] ; permission
 	and 7
-	cp 3 ; Hall of Fame
+	cp INDOOR ; Hall of Fame
 	jp z, .load_eight_bg_palettes
 	ld hl, IcePathPalette
 	jp .load_eight_bg_palettes
@@ -369,21 +377,12 @@ LoadSpecialMapPalette: ; 494ac
 	cp MT_MORTAR
 	jp z, .load_eight_bg_palettes
 	cp DARK_CAVE
-	jr z, .dark_cave
+	jp z, .load_eight_bg_palettes
 	cp WHIRL_ISLANDS
-	jr z, .dark_cave
+	jp z, .load_eight_bg_palettes
 	ld hl, ScaryCavePalette
 	cp SCARY_CAVE
-	jr nz, .not_scary_cave
-	ld a, [MapNumber]
-	cp MAP_SCARY_CAVE_SHIPWRECK
-	jp nz, .load_eight_bg_palettes
-.dark_cave
-	ld a, [StatusFlags]
-	bit 2, a ; Flash
-	jp nz, .load_eight_bg_palettes
-	jp .do_nothing
-.not_scary_cave
+	jp z, .load_eight_bg_palettes
 	cp NAVEL_ROCK
 	jp nz, .do_nothing
 	ld hl, NavelRockPalette

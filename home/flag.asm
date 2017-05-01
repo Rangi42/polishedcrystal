@@ -15,9 +15,9 @@ ResetBikeFlags:: ; 2e56
 
 ResetFlashIfOutOfCave:: ; 2e5d
 	ld a, [wPermission]
-	cp $2
+	cp ROUTE
 	jr z, .asm_2e69
-	cp $1
+	cp TOWN
 	jr z, .asm_2e69
 	ret
 
