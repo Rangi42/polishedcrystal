@@ -16,20 +16,20 @@ def chunk(L, n, fillvalue=None):
 
 def build_map(mapfile):
 	mapping = {}
+	revmap = {}
 	with open(mapfile, 'r') as f:
 		for line in f:
 			if '<->' in line:
 				a, b = line.split('<->')
-				a = int(a, 16)
-				b = int(b, 16)
-				mapping[a] = b
-				mapping[b] = a
+				a, b = int(a, 16), int(b, 16)
+				mapping[a], mapping[b] = b, a
+				revmap[b], revmap[a] = a, b
 			elif '->' in line:
 				a, b = line.split('->')
-				a = int(a, 16)
-				b = int(b, 16)
+				a, b = int(a, 16), int(b, 16)
 				mapping[a] = b
-	return mapping
+				revmap[b] = a
+	return (mapping, revmap)
 
 def transpose_metatiles(metatiles, mapping):
 	data = []
@@ -39,7 +39,7 @@ def transpose_metatiles(metatiles, mapping):
 	with open(metatiles, 'wb') as f:
 		f.write(''.join(data))
 
-def transpose_palette(palette, mapping):
+def transpose_palette(palette, revmap):
 	data = []
 	with open(palette, 'r') as f:
 		for line in f:
@@ -52,14 +52,14 @@ def transpose_palette(palette, mapping):
 				data.extend(['ROOF'] * 0x10)
 	data.extend(['ROOF'] * (0x100 - len(data)))
 	with open(palette, 'wb') as f:
-		for i in range(30):
+		for i in range(32):
 			if i == 14:
 				f.write('\nrept 8\n\tdb $ff\nendr\n\n')
 				continue
 			elif i == 15:
 				continue
 			seg = 0 if i < 14 else 1
-			row = [mapping.get(i*8+j, i*8+j) for j in range(8)]
+			row = [revmap.get(i*8+j, i*8+j) for j in range(8)]
 			line = '\ttilepal %d, %s\n' % (seg, ', '.join(data[b] for b in row))
 			f.write(line)
 
@@ -74,9 +74,9 @@ def main():
 	metatiles = 'tilesets/%s_metatiles.bin' % tilesetID
 	palette = 'tilesets/%s_palette_map.asm' % tilesetID
 
-	mapping = build_map(mapfile)
+	mapping, revmap = build_map(mapfile)
 	transpose_metatiles(metatiles, mapping)
-	transpose_palette(palette, mapping)
+	transpose_palette(palette, revmap)
 
 if __name__ == '__main__':
 	main()
