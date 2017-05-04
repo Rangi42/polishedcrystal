@@ -3108,9 +3108,9 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 15, PIDGEY, NO_ITEM, "Pidgey@"
+	db 16, PIDGEY, NO_ITEM, "Pidgey@"
 	db 17, MARILL, NO_ITEM, "Marill@"
-	db 16, SENTRET, NO_ITEM, "Sentret@"
+	db 15, MAREEP, NO_ITEM, "Mareep@"
 	db 18, BAYLEEF, ORAN_BERRY, "Chicory@"
 
 	db $ff ; end
@@ -3122,9 +3122,9 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 15, PIDGEY, NO_ITEM, "Pidgey@"
+	db 16, PIDGEY, NO_ITEM, "Pidgey@"
 	db 17, SUNKERN, NO_ITEM, "Sunkern@"
-	db 16, SENTRET, NO_ITEM, "Sentret@"
+	db 15, MAREEP, NO_ITEM, "Mareep@"
 	db 18, QUILAVA, ORAN_BERRY, "Cinder@"
 
 	db $ff ; end
@@ -3136,9 +3136,9 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 15, PIDGEY, NO_ITEM, "Pidgey@"
+	db 16, PIDGEY, NO_ITEM, "Pidgey@"
 	db 17, GROWLITHE, NO_ITEM, "Growlithe@"
-	db 16, SENTRET, NO_ITEM, "Sentret@"
+	db 15, MAREEP, NO_ITEM, "Mareep@"
 	db 18, CROCONAW, ORAN_BERRY, "Toto@"
 
 	db $ff ; end
@@ -3150,10 +3150,10 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 30, PIDGEOTTO, NO_ITEM, "Pidgeotto@"
+	db 31, PIDGEOTTO, NO_ITEM, "Pidgeotto@"
 	db 32, GROWLITHE, NO_ITEM, "Growlithe@"
 	db 32, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 31, FURRET, NO_ITEM, "Furret@"
+	db 30, FLAAFFY, NO_ITEM, "Flaaffy@"
 	db 35, BAYLEEF, ORAN_BERRY, "Chicory@"
 
 	db $ff ; end
@@ -3165,10 +3165,10 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 30, PIDGEOTTO, NO_ITEM, "Pidgeotto@"
+	db 31, PIDGEOTTO, NO_ITEM, "Pidgeotto@"
 	db 32, SUNFLORA, NO_ITEM, "Sunflora@"
 	db 32, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 31, FURRET, NO_ITEM, "Furret@"
+	db 30, FLAAFFY, NO_ITEM, "Flaaffy@"
 	db 35, QUILAVA, ORAN_BERRY, "Cinder@"
 
 	db $ff ; end
@@ -3180,10 +3180,10 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 30, PIDGEOTTO, NO_ITEM, "Pidgeotto@"
+	db 31, PIDGEOTTO, NO_ITEM, "Pidgeotto@"
 	db 32, SUNFLORA, NO_ITEM, "Sunflora@"
 	db 32, GROWLITHE, NO_ITEM, "Growlithe@"
-	db 31, FURRET, NO_ITEM, "Furret@"
+	db 30, FLAAFFY, NO_ITEM, "Flaaffy@"
 	db 35, CROCONAW, ORAN_BERRY, "Toto@"
 
 	db $ff ; end
@@ -3195,11 +3195,11 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 41, PIDGEOT, NO_ITEM, "Pidgeot@"
+	db 42, PIDGEOT, NO_ITEM, "Pidgeot@"
 	db 43, ARCANINE, NO_ITEM, "Arcanine@"
 	db 43, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 42, FURRET, NO_ITEM, "Furret@"
-	db 44, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 44, AMPHAROS, NO_ITEM, "Ampharos@"
+	db 41, GIRAFARIG, NO_ITEM, "Girafarig@"
 	db 45, MEGANIUM, SITRUS_BERRY, "Chicory@"
 
 	db $ff ; end
@@ -3211,11 +3211,11 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 41, PIDGEOT, NO_ITEM, "Pidgeot@"
+	db 42, PIDGEOT, NO_ITEM, "Pidgeot@"
 	db 43, SUNFLORA, NO_ITEM, "Sunflora@"
 	db 43, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 42, FURRET, NO_ITEM, "Furret@"
-	db 44, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 44, AMPHAROS, NO_ITEM, "Ampharos@"
+	db 41, GIRAFARIG, NO_ITEM, "Girafarig@"
 	db 45, TYPHLOSION, SITRUS_BERRY, "Cinder@"
 
 	db $ff ; end
@@ -3227,11 +3227,11 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 41, PIDGEOT, NO_ITEM, "Pidgeot@"
+	db 42, PIDGEOT, NO_ITEM, "Pidgeot@"
 	db 43, SUNFLORA, NO_ITEM, "Sunflora@"
 	db 43, ARCANINE, NO_ITEM, "Arcanine@"
-	db 42, FURRET, NO_ITEM, "Furret@"
-	db 44, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 44, AMPHAROS, NO_ITEM, "Ampharos@"
+	db 41, GIRAFARIG, NO_ITEM, "Girafarig@"
 	db 45, FERALIGATR, SITRUS_BERRY, "Toto@"
 
 	db $ff ; end
@@ -3249,11 +3249,11 @@ Lyra2Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 68, PIDGEOT, NO_ITEM, "Pidgeot@"
+	db 69, PIDGEOT, NO_ITEM, "Pidgeot@"
 	db 70, ARCANINE, NO_ITEM, "Arcanine@"
 	db 70, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 69, FURRET, NO_ITEM, "Furret@"
-	db 71, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 71, AMPHAROS, NO_ITEM, "Ampharos@"
+	db 68, GIRAFARIG, NO_ITEM, "Girafarig@"
 	db 72, MEGANIUM, SITRUS_BERRY, "Chicory@"
 
 	db $ff ; end
@@ -3265,11 +3265,11 @@ Lyra2Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 68, PIDGEOT, NO_ITEM, "Pidgeot@"
+	db 69, PIDGEOT, NO_ITEM, "Pidgeot@"
 	db 70, SUNFLORA, NO_ITEM, "Sunflora@"
 	db 70, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 69, FURRET, NO_ITEM, "Furret@"
-	db 71, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 71, AMPHAROS, NO_ITEM, "Ampharos@"
+	db 68, GIRAFARIG, NO_ITEM, "Girafarig@"
 	db 72, TYPHLOSION, SITRUS_BERRY, "Cinder@"
 
 	db $ff ; end
@@ -3281,11 +3281,11 @@ Lyra2Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 
 	; party
-	db 68, PIDGEOT, NO_ITEM, "Pidgeot@"
+	db 69, PIDGEOT, NO_ITEM, "Pidgeot@"
 	db 70, SUNFLORA, NO_ITEM, "Sunflora@"
 	db 70, ARCANINE, NO_ITEM, "Arcanine@"
-	db 69, FURRET, NO_ITEM, "Furret@"
-	db 71, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 71, AMPHAROS, NO_ITEM, "Ampharos@"
+	db 68, GIRAFARIG, NO_ITEM, "Girafarig@"
 	db 72, FERALIGATR, SITRUS_BERRY, "Toto@"
 
 	db $ff ; end

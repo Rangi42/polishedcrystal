@@ -60,7 +60,7 @@ Route29Tutorial1:
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
 	stopfollow
-	loadwildmon SENTRET, 5
+	loadwildmon PIDGEY, 5
 	catchtutorial BATTLETYPE_TUTORIAL
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
