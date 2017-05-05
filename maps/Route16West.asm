@@ -78,15 +78,19 @@ TrainerCosplayerKuroko:
 	end
 
 .SeenText:
-	text "TODO"
+	text "See how lifelike"
+	line "my cosplay is?"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "You just don't"
+	line "appreciate art!"
 	done
 
 .AfterText:
-	text "TODO"
+	text "One time a trainer"
+	line "threw a # Ball"
+	cont "at me!"
 	done
 
 TrainerCooltrainerfSera:

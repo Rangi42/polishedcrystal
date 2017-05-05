@@ -17,7 +17,21 @@ CeladonHotelPoolChildScript:
 	jumptextfaceplayer CeladonHotelPoolChildText
 
 CeladonHotelPoolSwimmerMScript:
-	jumptextfaceplayer CeladonHotelPoolSwimmerMText
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_SAFE_GOGGLES_FROM_CELADON
+	iftrue .GotItem
+	writetext CeladonHotelPoolSwimmerMText1
+	buttonsound
+	verbosegiveitem SAFE_GOGGLES
+	iffalse .Done
+	setevent EVENT_GOT_SAFE_GOGGLES_FROM_CELADON
+.GotItem:
+	writetext CeladonHotelPoolSwimmerMText2
+	waitbutton
+.Done:
+	closetext
+	end
 
 CeladonHotelPoolPokefanMText:
 	text "Well, color me"
@@ -32,9 +46,17 @@ CeladonHotelPoolChildText:
 	text "Whee!"
 	done
 
-CeladonHotelPoolSwimmerMText:
-	text "Ahh, this is quite"
-	line "relaxing…"
+CeladonHotelPoolSwimmerMText1:
+	text "For a slow back-"
+	line "stroke, I don't"
+	cont "need my goggles."
+
+	para "You can have them."
+	done
+
+CeladonHotelPoolSwimmerMText2:
+	text "This is quite a"
+	line "relaxing swim…"
 	done
 
 CeladonHotelPool_MapEventHeader:

@@ -47,24 +47,26 @@
 
 ## Characters
 
+* Flannery somewhere (Safari Zone?)
+* Skyla somewhere (Lighthouse roof?)
+* Imakuni in Celadon University
+* Victor and Puka in Route 19 Beach House (needs trainer sprite)
+* Inver in Route 16 house
+* Gourmet Maniac in Route 32 Coast house
+* Pay Day tutor in Goldenrod Game Corner
+
+Shamouti Island:
+
 * Candela in Fire Island peak
 * Blanche in Ice Island peak
 * Spark in Lightning Island peak
 * Caitlin and Darach in Beautiful Beach villa
 * Looker in Shamouti Hotel room (not S.S. Aqua)
 * Trendy phrase guy in Shamouti Hotel lobby
-* Flannery somewhere (Safari Zone?)
-* Skyla somewhere (Lighthouse roof?)
 * Lawrence in Shrine Ruins (not Victory Road)
 * Prof. Ivy in Shamouti Island (gives a starter)
-* Imakuni in Celadon University
-* Victor and Puka in Route 19 Beach House (needs trainer sprite)
-* Inver in Route 16 house
-* Gourmet Maniac in Route 32 Coast house
 * Ore Maniac in Shamouti Tunnel
 * Body Slam tutor in Warm Beach house
-* Pay Day tutor in Goldenrod Game Corner
-* Collector trades Cherish Balls for Bottle Caps
 
 
 ## Maps
@@ -72,12 +74,14 @@
 Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * RBY teleporter machine in Bill's house
-* Route 16 (just Cosplayer Kuroko's dialog)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
-* Celadon Hotel (just items left)
 * Celadon University (Cubone fossil exhibit)
 * Soul House
 * Lavender Radio Tower
+* Saffron City Trainer Fan Club
+
+Shamouti Island:
+
 * Shamouti Island (outdoor market instead of Mart)
 * Shamouti Hotel (haunted room)
 * Shamouti Tunnel
@@ -85,7 +89,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Rocky Beach
 * Shrine Ruins
 * Fire/Ice/Lightning Islands
-* Saffron City Trainer Fan Club
 
 
 ## Abilities

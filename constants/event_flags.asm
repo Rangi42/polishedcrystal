@@ -2131,9 +2131,11 @@
 	const EVENT_NOISY_FOREST_CUT_TREE_1
 	const EVENT_NOISY_FOREST_CUT_TREE_2
 
+; TODO: reorganize events
+	const EVENT_GOT_SAFE_GOGGLES_FROM_CELADON
+	const EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL
+
 ; Unused placeholder events
-	const EVENT_7BB
-	const EVENT_7BC
 	const EVENT_7BD
 	const EVENT_7BE
 	const EVENT_7BF

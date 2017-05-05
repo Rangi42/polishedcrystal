@@ -31,7 +31,7 @@ FOCUS_SASH (PC: Quiet Cave) [HGSS: Mom]
 ASSAULT_VEST (PC: Cianwood City)
 PROTECT_PADS (TODO: ?)
 ROCKY_HELMET (TODO: ?)
-SAFE_GOGGLES (TODO: ?)
+SAFE_GOGGLES (PC: Celadon Hotel)
 BINDING_BAND (TODO: ?)
 .
 .
