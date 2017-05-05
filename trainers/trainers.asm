@@ -7504,6 +7504,19 @@ SuperNerdGroup:
 	db $ff ; end
 
 ; ================
+
+	; SUPER_NERD
+	db "Mako@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, CROBAT
+	db 53, POLITOED
+	db 56, CHARIZARD
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9291,6 +9304,19 @@ HexManiacGroup:
 	db $ff ; end
 
 ; ================
+
+	; HEX_MANIAC
+	db "Bethany@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, HAUNTER
+	db 55, GENGAR
+	db 54, MISDREAVUS
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -9800,6 +9826,30 @@ CoupleGroup:
 	; party
 	db 57, GOLDUCK
 	db 53, KADABRA
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Joe & Jo@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 56, ALAKAZAM
+	db 52, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; COUPLE
+	db "Joe & Jo@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, BUTTERFREE
+	db 56, ALAKAZAM
 
 	db $ff ; end
 
@@ -12747,6 +12797,19 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM
+	db "Kieran@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, HYPNO
+	db 53, RHYHORN
+	db 55, PRIMEAPE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -14697,13 +14760,27 @@ MiraGroup:
 ; ================================
 ; ================
 
+	; MIRA
+	db "Mira@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 58, TOGEKISS
+	db 57, ALAKAZAM
+	db 56, MAGMORTAR
+	db 55, VILEPLUME
+	db 56, MAGNEZONE
+	db 55, PORYGON_Z
+
+	db $ff ; end
+
 ;	; MIRA
 ;	db "Mira@"
 ;	db TRAINERTYPE_NORMAL
 ;
 ;	; party
 ;
-;	; TODO: TOGEKISS
 ;	db 50, ALAKAZAM
 ;	db 50, GENGAR
 ;	db 50, VILEPLUME

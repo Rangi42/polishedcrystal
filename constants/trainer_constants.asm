@@ -399,6 +399,7 @@ KRIS EQU __enum__
 	const GREGG
 	const FOOTE
 	const DAVE
+	const MAKO
 
 	trainerclass LASS ; 30
 	const DANA1
@@ -544,6 +545,7 @@ KRIS EQU __enum__
 	const VIVIAN
 	const ESTHER
 	const MATILDA
+	const BETHANY
 
 	trainerclass SAGE ; 3a
 	const CHOW
@@ -595,6 +597,8 @@ KRIS EQU __enum__
 	const VICANDTARA2
 	const TIMANDSUE1
 	const TIMANDSUE2
+	const JOEANDJO1
+	const JOEANDJO2
 
 	trainerclass GENTLEMAN ; 40
 	const PRESTON
@@ -852,6 +856,7 @@ KRIS EQU __enum__
 	const FRENCH
 	const HENRI
 	const CONNOR
+	const KIERAN
 
 	trainerclass COOLTRAINERF ; 5a
 	const BETH1

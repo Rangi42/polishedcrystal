@@ -1,6 +1,6 @@
 const_value set 2
 	const URAGACHANNELEAST_SWIMMER_GIRL
-	const URAGACHANNELEAST_POKEFAN_M
+	const URAGACHANNELEAST_COOLTRAINER_M
 	const URAGACHANNELEAST_BIKER
 	const URAGACHANNELEAST_POKE_BALL1
 	const URAGACHANNELEAST_POKE_BALL2
@@ -40,8 +40,8 @@ TrainerSwimmerfWoda:
 	cont "train."
 	done
 
-TrainerRuin_maniacSmilte:
-	trainer EVENT_BEAT_RUIN_MANIAC_SMILTE, RUIN_MANIAC, SMILTE, .SeenText, .BeatenText, 0, .Script
+TrainerCooltrainermKieran:
+	trainer EVENT_BEAT_COOLTRAINERM_KIERAN, COOLTRAINERM, KIERAN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -52,25 +52,21 @@ TrainerRuin_maniacSmilte:
 	end
 
 .SeenText:
-	text "I'm on the edge of"
-	line "a big discovery!"
-
-	para "I can just feel"
-	line "it!"
+	text "It's on like"
+	line "#mon!"
 	done
 
 .BeatenText:
-	text "Are you after my"
-	line "discovery?!"
+	text "Game over."
 	done
 
 .AfterText:
-	text "There's a cave"
-	line "nearby!"
+	text "I couldn't get my"
+	line "#m-on."
 
-	para "I wonder if that"
-	line "is where I'll find"
-	cont "my big discovery…"
+	para "I need to get my"
+	line "head back in the"
+	cont "game."
 	done
 
 TrainerBikerTyrone:
@@ -162,7 +158,7 @@ UragaChannelEast_MapEventHeader:
 .PersonEvents:
 	db 5
 	person_event SPRITE_SWIMMER_GIRL, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
-	person_event SPRITE_POKEFAN_M, 7, 22, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacSmilte, -1
+	person_event SPRITE_COOLTRAINER_M, 7, 22, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermKieran, -1
 	person_event SPRITE_BIKER, 15, 34, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBikerTyrone, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UragaChannelEastDiveBall, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
 	person_event SPRITE_BALL_CUT_FRUIT, 8, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UragaChannelEastEviolite, EVENT_URAGA_CHANNEL_EAST_EVIOLITE

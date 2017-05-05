@@ -18,9 +18,9 @@ PP_MAX (PC: Radio Tower)
 ABILITY_CAP (PC: exclusive)
 WEAK_POLICY (PC: Viridian school house)
 LIFE_ORB (PC: Ruins of Alph) [HGSS: Ruins of Alph]
-FLAME_ORB (TODO: Cinnabar Volcano)
-TOXIC_ORB (TODO: Murky Swamp)
-BLACK_SLUDGE (TODO: Cerulean Cave) [HGSS: Cerulean Cave]
+FLAME_ORB (Cinnabar Volcano)
+TOXIC_ORB (Murky Swamp)
+BLACK_SLUDGE (Scary Cave) [HGSS: Cerulean Cave]
 .
 .
 
@@ -78,7 +78,7 @@ HEAT_ROCK (TODO: Fire Island) (PC: Radio Tower)
 SMOOTH_ROCK (TODO: Shamouti Tunnel)
 ICY_ROCK (TODO: Ice Island) (PC: Ice Path)
 EVIOLITE (PC: Pokécom Center, Uraga Channel)
-LIGHT_CLAY (TODO: Dim Cave) [HGSS: Route 9]
+LIGHT_CLAY (Dim Cave) [HGSS: Route 9]
 .
 .
 .

@@ -1479,7 +1479,7 @@ Group21Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_SWIMMER_GIRL ; doesn't walk
-	db SPRITE_POKEFAN_M ; doesn't walk
+	db SPRITE_COOLTRAINER_M ; doesn't walk
 	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BIG_SNORLAX

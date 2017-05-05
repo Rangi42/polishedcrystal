@@ -1,4 +1,6 @@
 const_value set 2
+	const SCARYCAVEB1F_POKE_BALL1
+	const SCARYCAVEB1F_POKE_BALL2
 
 ScaryCaveB1F_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +8,12 @@ ScaryCaveB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+ScaryCaveB1FBigNugget:
+	itemball BIG_NUGGET
+
+ScaryCaveB1FBlackSludge:
+	itemball BLACK_SLUDGE
 
 ScaryCaveB1F_MapEventHeader:
 	; filler
@@ -23,4 +31,6 @@ ScaryCaveB1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 2
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ScaryCaveB1FBigNugget, EVENT_SCARY_CAVE_B1F_BIG_NUGGET
+	person_event SPRITE_BALL_CUT_FRUIT, 19, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ScaryCaveB1FBlackSludge, EVENT_SCARY_CAVE_B1F_BLACK_SLUDGE

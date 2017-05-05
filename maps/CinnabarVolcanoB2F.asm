@@ -1,6 +1,7 @@
 const_value set 2
 	const CINNABARVOLCANOB2F_MOLTRES
 	const CINNABARVOLCANOB2F_ROCK
+	const CINNABARVOLCANOB2F_POKE_BALL
 	const CINNABARVOLCANOB2F_LAWRENCE
 
 CinnabarVolcanoB2F_MapScriptHeader:
@@ -98,6 +99,9 @@ CinnabarVolcanoMoltres:
 
 CinnabarVolcanoB2FRock:
 	jumpstd smashrock
+
+CinnabarVolcanoB2FFlameOrb:
+	itemball FLAME_ORB
 
 MoltresText:
 	text "Gyaoo!"
@@ -197,7 +201,8 @@ CinnabarVolcanoB2F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 3
+	db 4
 	person_event SPRITE_MOLTRES, 22, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 19, 21, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoB2FRock, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CinnabarVolcanoB2FFlameOrb, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
 	person_event SPRITE_LAWRENCE, 24, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD

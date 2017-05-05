@@ -2,6 +2,7 @@ const_value set 2
 	const RUINSOFALPHINNERCHAMBER_FISHER
 	const RUINSOFALPHINNERCHAMBER_TEACHER
 	const RUINSOFALPHINNERCHAMBER_GRAMPS
+	const RUINSOFALPHINNERCHAMBER_SCIENTIST
 
 RuinsofAlphInnerChamber_MapScriptHeader:
 .MapTriggers:
@@ -42,6 +43,9 @@ TeacherScript_0x58f80:
 GrampsScript_0x58f83:
 	jumptextfaceplayer UnknownText_0x59024
 
+RuinsofAlphInnerChamberScientistScript:
+	jumptextfaceplayer UnknownText_0x58a03
+
 MapRuinsofAlphInnerChamberSignpost25Script:
 	jumptext UnknownText_0x59072
 
@@ -66,12 +70,32 @@ UnknownText_0x58fda:
 	done
 
 UnknownText_0x59024:
-	text "Ancient buildings"
-	line "are often tombs of"
-	cont "kings."
+	text "The ruins have not"
+	line "been robbed or"
+	cont "tampered with."
 
-	para "Like the pyramids,"
-	line "for instance."
+	para "Something here"
+	line "must make people"
+	cont "want to preserve"
+	cont "it."
+	done
+
+UnknownText_0x58a03:
+	text "The patterns on"
+	line "the wall appear to"
+	cont "be words!"
+
+	para "And those sliding"
+	line "stone panels seem"
+
+	para "to be signals of"
+	line "some kind."
+
+	para "I think they make"
+	line "#mon appear,"
+
+	para "but it's not clear"
+	line "yet…"
 	done
 
 UnknownText_0x59072:
@@ -129,7 +153,8 @@ RuinsofAlphInnerChamber_MapEventHeader:
 	signpost 24, 17, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
 
 .PersonEvents:
-	db 3
+	db 4
 	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58f7d, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	person_event SPRITE_TEACHER, 13, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x58f80, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	person_event SPRITE_GRAMPS, 19, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x58f83, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_SCIENTIST, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RuinsofAlphInnerChamberScientistScript, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS

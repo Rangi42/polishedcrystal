@@ -47,7 +47,6 @@
 
 ## Characters
 
-* Mira in Scary Cave 1F
 * Candela in Fire Island peak
 * Blanche in Ice Island peak
 * Spark in Lightning Island peak
@@ -64,7 +63,6 @@
 * Gourmet Maniac in Route 32 Coast house
 * Ore Maniac in Shamouti Tunnel
 * Body Slam tutor in Warm Beach house
-* Sucker Punch tutor in Scary Cave
 * Pay Day tutor in Goldenrod Game Corner
 * Collector trades Cherish Balls for Bottle Caps
 
@@ -76,7 +74,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * RBY teleporter machine in Bill's house
 * Route 16 (just Cosplayer Kuroko's dialog)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
-* Scary Cave
 * Celadon Hotel (just items left)
 * Celadon University (Cubone fossil exhibit)
 * Soul House
