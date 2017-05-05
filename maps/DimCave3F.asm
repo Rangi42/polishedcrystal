@@ -1,6 +1,13 @@
 const_value set 2
 	const DIMCAVE3F_BOULDER
 	const DIMCAVE3F_FALLEN_BOULDER
+	const DIMCAVE3F_ENGINEER
+	const DIMCAVE3F_BLACK_BELT
+	const DIMCAVE3F_POKEFAN_M1
+	const DIMCAVE3F_POKEFAN_M2
+	const DIMCAVE3F_POKE_BALL1
+	const DIMCAVE3F_POKE_BALL2
+	const DIMCAVE3F_POKE_BALL3
 
 DimCave3F_MapScriptHeader:
 .MapTriggers:
@@ -41,26 +48,168 @@ DimCave3F_MapScriptHeader:
 	playsound SFX_STRENGTH
 	earthquake 80
 	opentext
-	writetext DimCave3FBoulderFellThroughText
+	writetext .Text
 	waitbutton
 	closetext
 	end
 
+.Text:
+	text "The boulder fell"
+	line "through."
+	done
+
+TrainerEngineerHugo:
+	trainer EVENT_BEAT_ENGINEER_HUGO, ENGINEER, HUGO, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "Cave-in!"
+	done
+
+.BeatenText:
+	text "Oh, you just"
+	line "pushed a boulder!"
+	done
+
+.AfterText:
+	text "The noise of that"
+	line "mine cart gave me"
+	cont "a scare."
+
+	para "You always have to"
+	line "stay alert for a"
+	cont "cave-in here."
+	done
+
+TrainerBlackbeltTakeo:
+	trainer EVENT_BEAT_BLACKBELT_TAKEO, BLACKBELT_T, TAKEO, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "I'm training here"
+	line "alone with my"
+	cont "#mon."
+
+	para "Leave at once!"
+	done
+
+.BeatenText:
+	text "Clearly I need"
+	line "more training…"
+	done
+
+.AfterText:
+	text "All I want is to"
+	line "train in peace."
+	done
+
+TrainerHikerFloyd:
+	trainer EVENT_BEAT_HIKER_FLOYD, HIKER, FLOYD, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "This cave makes me"
+	line "so ANGRY!"
+
+	para "I'll battle to let"
+	line "off some steam!"
+	done
+
+.BeatenText:
+	text "I got beat down by"
+	line "a kid!"
+	done
+
+.AfterText:
+	text "I am SO lost in"
+	line "here!"
+
+	para "I should stick to"
+	line "hiking outdoors."
+	done
+
+DimCave3FPokefanmScript:
+	faceplayer
+	opentext
+	writetext .QuestionText
+	yesorno
+	iftrue .Yes
+	writetext .NoText
+	waitbutton
+	closetext
+	end
+
+.Yes:
+	writetext .YesText
+	waitbutton
+	closetext
+	end
+
+.QuestionText:
+	text "Are you lost?"
+	done
+
+.YesText:
+	text "Me too!"
+
+	para "The Power Plant"
+	line "messes with my"
+
+	para "compass, and I"
+	line "don't have a map."
+	done
+
+.NoText:
+	text "What?! Do you"
+	line "have a map?"
+	done
+
 DimCave3FFallenBoulderScript:
-	jumptext DimCave3FFallenBoulderText
+	jumptext .Text
 
-DimCave3FBoulder:
-	jumpstd strengthboulder
-
-DimCave3FFallenBoulderText:
+.Text:
 	text "It's stuck on the"
 	line "button."
 	done
 
-DimCave3FBoulderFellThroughText:
-	text "The boulder fell"
-	line "through."
-	done
+DimCave3FBoulder:
+	jumpstd strengthboulder
+
+DimCave3FMetalCoat:
+	itemball METAL_COAT
+
+DimCave3FLightClay:
+	itemball LIGHT_CLAY
+
+DimCave3FEscapeRope:
+	itemball ESCAPE_ROPE
+
+DimCave3FHiddenStarPiece:
+	dwb EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE, STAR_PIECE
+
+DimCave3FHiddenZinc:
+	dwb EVENT_DIM_CAVE_3F_HIDDEN_ZINC, ZINC
 
 DimCave3F_MapEventHeader:
 	; filler
@@ -79,9 +228,18 @@ DimCave3F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 5, 2, SIGNPOST_ITEM, DimCave3FHiddenStarPiece
+	signpost 6, 26, SIGNPOST_ITEM, DimCave3FHiddenZinc
 
 .PersonEvents:
-	db 2
+	db 9
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FBoulder, EVENT_BOULDER_IN_DIM_CAVE_3F
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
+	person_event SPRITE_ENGINEER, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
+	person_event SPRITE_BLACK_BELT, 11, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
+	person_event SPRITE_POKEFAN_M, 27, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
+	person_event SPRITE_POKEFAN_M, 22, 25, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave3FMetalCoat, EVENT_DIM_CAVE_3F_METAL_COAT
+	person_event SPRITE_BALL_CUT_FRUIT, 9, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave3FLightClay, EVENT_DIM_CAVE_3F_LIGHT_CLAY
+	person_event SPRITE_BALL_CUT_FRUIT, 29, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave3FEscapeRope, EVENT_DIM_CAVE_3F_ESCAPE_ROPE

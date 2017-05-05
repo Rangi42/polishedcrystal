@@ -312,6 +312,8 @@ KRIS EQU __enum__
 	const LESTER
 	const GRADY
 	const STEVE
+	const DERRICK
+	const FLOYD
 
 	trainerclass GRUNTM ; 27
 
@@ -394,6 +396,9 @@ KRIS EQU __enum__
 	const JOVAN
 	const MIGUEL
 	const RORY
+	const GREGG
+	const FOOTE
+	const DAVE
 
 	trainerclass LASS ; 30
 	const DANA1
@@ -728,6 +733,9 @@ KRIS EQU __enum__
 	const OSKAR
 	const BRAYDON
 	const CARL
+	const DEXTER
+	const JOSEPH
+	const NIGEL
 
 	trainerclass BOARDER ; 4c
 	const RONALD
@@ -757,6 +765,7 @@ KRIS EQU __enum__
 	const INIGO
 	const MANFORD
 	const ANDER
+	const TAKEO
 
 	trainerclass BATTLE_GIRL ; 4f
 	const SUBARU
@@ -777,6 +786,9 @@ KRIS EQU __enum__
 	const SMITH
 	const BERNIE
 	const CAMDEN
+	const LANG
+	const HUGO
+	const HOWARD
 
 	trainerclass TEACHER ; 52
 	const COLETTE
@@ -790,6 +802,7 @@ KRIS EQU __enum__
 	const VINCENT
 	const ROGER
 	const EZEKIEL
+	const BIFF
 
 	trainerclass GUITARISTF ; 54
 	const JANET

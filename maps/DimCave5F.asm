@@ -1,5 +1,12 @@
 const_value set 2
 	const DIMCAVE5F_BOULDER
+	const DIMCAVE5F_RILEY
+	const DIMCAVE5F_SUPER_NERD1
+	const DIMCAVE5F_ENGINEER
+	const DIMCAVE5F_SUPER_NERD2
+	const DIMCAVE5F_POKE_BALL1
+	const DIMCAVE5F_POKE_BALL2
+	const DIMCAVE5F_POKE_BALL3
 
 DimCave5F_MapScriptHeader:
 .MapTriggers:
@@ -31,18 +38,251 @@ DimCave5F_MapScriptHeader:
 	playsound SFX_STRENGTH
 	earthquake 80
 	opentext
-	writetext DimCave5FBoulderFellThroughText
+	writetext .Text
 	waitbutton
 	closetext
 	end
 
-DimCave5FBoulder:
-	jumpstd strengthboulder
-
-DimCave5FBoulderFellThroughText:
+.Text:
 	text "The boulder fell"
 	line "through."
 	done
+
+DimCave5FRileyScript:
+	faceplayer
+	checkevent EVENT_BEAT_RILEY
+	iftrue .Beaten
+	opentext
+	writetext .ChallengeText
+	yesorno
+	iffalse .No
+	writetext .YesText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked DIMCAVE5F_RILEY
+	loadtrainer RILEY, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_RILEY
+.Beaten
+	opentext
+	writetext .ItemText
+	buttonsound
+	verbosegiveitem PROTEIN
+	iffalse .Done
+	writetext .GoodbyeText
+	waitbutton
+	closetext
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear DIMCAVE5F_RILEY
+	pause 15
+	special Special_FadeInQuickly
+	clearevent EVENT_BATTLE_TOWER_RILEY
+	end
+
+.Done:
+	closetext
+	end
+
+.No:
+	writetext .NoText
+	waitbutton
+	closetext
+	end
+
+.ChallengeText:
+	text "…You are?"
+
+	para "OK, you're"
+	line "<PLAYER>."
+
+	para "I'm Riley. I'm a"
+	line "Trainer, yes."
+
+	para "I own a mine like"
+	line "this one, so it's"
+	cont "a good training"
+	cont "spot for me."
+
+	para "If you'd like, we"
+	line "could have a"
+	cont "battle."
+	done
+
+.YesText:
+	text "We're pulling out"
+	line "all the stops to"
+
+	para "put your #mon"
+	line "down."
+	done
+
+.NoText:
+	text "Oh, all right."
+	line "Then we'll continue"
+	cont "training here."
+	done
+
+.BeatenText:
+	text "At times we bat-"
+	line "tle, and sometimes"
+	cont "we team up."
+
+	para "It's great how"
+	line "Trainers can"
+	cont "interact."
+	done
+
+.ItemText:
+	text "Know your enemy."
+
+	para "If you know your"
+	line "opponent's #mon"
+	cont "and moves, your"
+
+	para "chances of winning"
+	line "are much improved."
+
+	para "But strengthening"
+	line "your own team is"
+	cont "also important."
+
+	para "This will help you"
+	line "to do so."
+	done
+
+.GoodbyeText:
+	text "Battling with you"
+	line "was very enjoy-"
+	cont "able."
+
+	para "I intend to test"
+	line "my skills in the"
+	cont "Battle Tower now."
+
+	para "Let's meet again!"
+
+	para "Take care on the"
+	line "way out."
+	done
+
+TrainerSuper_nerdFoote:
+	trainer EVENT_BEAT_SUPER_NERD_FOOTE, SUPER_NERD, FOOTE, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "I have a conundrum"
+	line "for you!"
+
+	para "Would you push one"
+	line "#mon in front"
+
+	para "of a mine cart to"
+	line "save five?"
+	done
+
+.BeatenText:
+	text "You answered"
+	line "without words…"
+	cont "How Zen!"
+	done
+
+.AfterText:
+	text "Save one life or"
+	line "save five?"
+
+	para "As a #mon"
+	line "trainer, you may"
+
+	para "have the power to"
+	line "save all six!"
+	done
+
+TrainerEngineerHoward:
+	trainer EVENT_BEAT_ENGINEER_HOWARD, ENGINEER, HOWARD, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "This waterfall"
+	line "provides energy"
+	cont "throughout Kanto!"
+	done
+
+.BeatenText:
+	text "No! A blackout…"
+	done
+
+.AfterText:
+	text "Water flows south"
+	line "from Cerulean Cape"
+
+	para "and follows a"
+	line "steady course to"
+	cont "the Power Plant."
+	done
+
+TrainerSuper_nerdDave:
+	trainer EVENT_BEAT_SUPER_NERD_DAVE, SUPER_NERD, DAVE, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "I've maxed out my"
+	line "mining, jeweling,"
+
+	para "smelting, and"
+	line "crafting skills!"
+	done
+
+.BeatenText:
+	text "But not"
+	line "battling…"
+	done
+
+.AfterText:
+	text "You need a mining"
+	line "pick to mine."
+
+	para "But you can't get"
+	line "them around here."
+	done
+
+DimCave5FBoulder:
+	jumpstd strengthboulder
+
+DimCave5FRareCandy:
+	itemball RARE_CANDY
+
+DimCave5FDuskStone:
+	itemball DUSK_STONE
+
+DimCave5FHyperPotion:
+	itemball HYPER_POTION
+
+DimCave5FHiddenXSpclAtk:
+	dwb EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK, X_SPCL_ATK
 
 DimCave5F_MapEventHeader:
 	; filler
@@ -59,8 +299,16 @@ DimCave5F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 28, 12, SIGNPOST_ITEM, DimCave5FHiddenXSpclAtk
 
 .PersonEvents:
-	db 1
+	db 8
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 5, 25, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FBoulder, EVENT_BOULDER_IN_DIM_CAVE_5F
+	person_event SPRITE_RILEY, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
+	person_event SPRITE_SUPER_NERD, 17, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
+	person_event SPRITE_ENGINEER, 25, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
+	person_event SPRITE_SUPER_NERD, 28, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 13, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave5FRareCandy, EVENT_DIM_CAVE_5F_RARE_CANDY
+	person_event SPRITE_BALL_CUT_FRUIT, 26, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave5FDuskStone, EVENT_DIM_CAVE_5F_DUSK_STONE
+	person_event SPRITE_BALL_CUT_FRUIT, 30, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave5FHyperPotion, EVENT_DIM_CAVE_5F_HYPER_POTION

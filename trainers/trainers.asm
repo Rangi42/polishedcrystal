@@ -6129,6 +6129,30 @@ HikerGroup:
 	db $ff ; end
 
 ; ================
+
+	; HIKER
+	db "Derrick@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, QUAGSIRE
+	db 53, DUGTRIO
+	db 55, GOLEM
+
+	db $ff ; end
+
+; ================
+
+	; HIKER
+	db "Floyd@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, STEELIX
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -7440,6 +7464,42 @@ SuperNerdGroup:
 
 	; party
 	db 26, PORYGON
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD
+	db "Gregg@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, PORYGON
+	db 55, PORYGON2
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD
+	db "Foote@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, SNORLAX
+
+	db $ff ; end
+
+; ================
+
+	; SUPER_NERD
+	db "Dave@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, LARVITAR
+	db 53, PUPITAR
+	db 56, PORYGON_Z
 
 	db $ff ; end
 
@@ -11275,6 +11335,44 @@ ScientistGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCIENTIST
+	db "Dexter@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, MAGNETON
+	db 55, ALAKAZAM
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Joseph@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, DITTO
+	db 55, GOLDUCK
+	db 53, KADABRA
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Nigel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, ELECTABUZZ
+	db 55, LANTURN
+
+	db $ff ; end
+
+
+; ================
 ; ================================
 
 
@@ -11615,6 +11713,19 @@ BlackbeltGroup:
 	db $ff ; end
 
 ; ================
+
+	; BLACKBELT_T
+	db "Takeo@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, HITMONTOP
+	db 54, HERACROSS
+	db 56, POLIWRATH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11859,6 +11970,41 @@ EngineerGroup:
 	db $ff ; end
 
 ; ================
+
+	; ENGINEER
+	db "Lang@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, ELECTRODE
+	db 55, ELECTRODE
+
+	db $ff ; end
+
+; ================
+
+	; ENGINEER
+	db "Hugo@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, MAGNETON
+	db 56, STEELIX
+
+	db $ff ; end
+
+; ================
+
+	; ENGINEER
+	db "Howard@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 57, MAGNEZONE
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11975,6 +12121,19 @@ GuitaristMGroup:
 
 	; party
 	db 56, MAGNEZONE
+
+	db $ff ; end
+
+; ================
+
+	; GUITARISTM
+	db "Biff@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, ONIX
+	db 54, MAGNETON
+	db 56, SKARMORY
 
 	db $ff ; end
 
@@ -14371,6 +14530,9 @@ endc
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 CherylGroup:
 ; ================================
 ; ================
@@ -14415,6 +14577,23 @@ RileyGroup:
 ; ================================
 ; ================
 
+	; RILEY
+	db "Riley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 58, MACHAMP
+	db 57, DRAGONITE
+	db 56, RHYPERIOR
+	db 55, NIDOKING
+	db 56, ELECTIVIRE
+	db 55, MAMOSWINE
+
+	db $ff ; end
+
+; ================
+
 ;	; RILEY
 ;	db "Riley@"
 ;	db TRAINERTYPE_NORMAL
@@ -14422,8 +14601,8 @@ RileyGroup:
 ;	; party
 ;
 ;	db 50, MACHAMP
-;	db 50, RHYPERIOR
 ;	db 50, DRAGONITE
+;	db 50, RHYPERIOR
 ;	db 50, NIDOKING
 ;	db 50, ELECTIVIRE
 ;	db 50, MAMOSWINE
@@ -14770,9 +14949,6 @@ SkylaGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 ValerieGroup:

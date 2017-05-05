@@ -365,17 +365,17 @@ MurkySwampEscapeRope:
 MurkySwampBigMushroom:
 	itemball BIG_MUSHROOM
 
-MurkySwampHyperPotion:
-	itemball HYPER_POTION
+MurkySwampFullHeal:
+	itemball FULL_HEAL
 
-MurkySwampAntidote:
-	itemball ANTIDOTE
+MurkySwampMulch:
+	itemball MULCH
 
 MurkySwampCutTree:
 	jumpstd cuttree
 
-MurkySwampHiddenFullHeal:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_FULL_HEAL, FULL_HEAL
+MurkySwampHiddenMulch:
+	dwb EVENT_MURKY_SWAMP_HIDDEN_MULCH, MULCH
 
 MurkySwampHiddenXSpclDef:
 	dwb EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF, X_SPCL_DEF
@@ -401,7 +401,7 @@ MurkySwamp_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 10, 20, SIGNPOST_ITEM, MurkySwampHiddenFullHeal
+	signpost 10, 20, SIGNPOST_ITEM, MurkySwampHiddenMulch
 	signpost 13, 22, SIGNPOST_ITEM, MurkySwampHiddenXSpclDef
 	signpost 23, 5, SIGNPOST_ITEM, MurkySwampHiddenBigMushroom
 	signpost 33, 40, SIGNPOST_ITEM, MurkySwampHiddenTinyMushroom
@@ -419,7 +419,7 @@ MurkySwamp_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 33, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MurkySwampYoungsterScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampEscapeRope, EVENT_MURKY_SWAMP_ESCAPE_ROPE
 	person_event SPRITE_BALL_CUT_FRUIT, 11, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampBigMushroom, EVENT_MURKY_SWAMP_BIG_MUSHROOM
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampHyperPotion, EVENT_MURKY_SWAMP_HYPER_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampAntidote, EVENT_MURKY_SWAMP_ANTIDOTE
+	person_event SPRITE_BALL_CUT_FRUIT, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampFullHeal, EVENT_MURKY_SWAMP_FULL_HEAL
+	person_event SPRITE_BALL_CUT_FRUIT, 34, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MurkySwampMulch, EVENT_MURKY_SWAMP_MULCH
 	person_event SPRITE_BALL_CUT_FRUIT, 14, 2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCutTree, EVENT_MURKY_SWAMP_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 19, 6, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCutTree, EVENT_MURKY_SWAMP_CUT_TREE_2

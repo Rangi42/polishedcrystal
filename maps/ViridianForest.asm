@@ -113,8 +113,8 @@ ViridianForestHiddenMaxEther:
 ViridianForestHiddenFullHeal:
 	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
 
-ViridianForestHiddenFullRestore:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_RESTORE, FULL_RESTORE
+ViridianForestHiddenMulch:
+	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH, MULCH
 
 ViridianForestHiddenRevive:
 	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE, REVIVE
@@ -307,7 +307,7 @@ ViridianForest_MapEventHeader:
 	signpost 44, 20, SIGNPOST_READ, MapViridianForestSignpost6Script
 	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
 	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
-	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenFullRestore
+	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenMulch
 	signpost 9, 30, SIGNPOST_ITEM, ViridianForestHiddenRevive
 	signpost 14, 3, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
 

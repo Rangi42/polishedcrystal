@@ -47,7 +47,6 @@
 
 ## Characters
 
-* Riley in Dim Cave B3F
 * Mira in Scary Cave 1F
 * Candela in Fire Island peak
 * Blanche in Ice Island peak
@@ -65,7 +64,6 @@
 * Gourmet Maniac in Route 32 Coast house
 * Ore Maniac in Shamouti Tunnel
 * Body Slam tutor in Warm Beach house
-* Substitute tutor in Dim Cave
 * Sucker Punch tutor in Scary Cave
 * Pay Day tutor in Goldenrod Game Corner
 * Collector trades Cherish Balls for Bottle Caps
@@ -81,7 +79,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Scary Cave
 * Celadon Hotel (just items left)
 * Celadon University (Cubone fossil exhibit)
-* Dim Cave (Facade TM)
 * Soul House
 * Lavender Radio Tower
 * Shamouti Island (outdoor market instead of Mart)
