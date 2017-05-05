@@ -26,5 +26,5 @@ ScaryCaveShipwreck_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
 	person_event SPRITE_BALL_CUT_FRUIT, 8, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ScaryCaveShipwreckRareBone, EVENT_SCARY_CAVE_SHIPWRECK_RARE_BONE
