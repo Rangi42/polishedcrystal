@@ -68,6 +68,7 @@
 * Substitute tutor in Dim Cave
 * Sucker Punch tutor in Scary Cave
 * Pay Day tutor in Goldenrod Game Corner
+* Collector trades Cherish Balls for Bottle Caps
 
 
 ## Maps

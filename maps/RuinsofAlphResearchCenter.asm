@@ -128,6 +128,7 @@ UnknownScript_0x591df:
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
 	special FadeOutPalettes
+	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	clearevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
@@ -211,6 +212,7 @@ ResearchCompleteScript_0x596d3:
 	writetext UnknownText_0x596d3
 	waitbutton
 	closetext
+	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	end
 
 ResearchOngoingScript_0x59669:
