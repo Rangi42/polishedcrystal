@@ -9,7 +9,8 @@
 * Some NPC trainers use wrong items
 * After the low HP music plays, some of the instruments are missing
 * Held Berries don't always disappear when used
-* Weather and some ability animations trigger the last used animation too 
+* Weather and some ability animations trigger the last used animation too
+* Air Balloon message doesn't print for the opponent's first Pokémon
 * TMs refresh PP
 * Nuzlocke mode sometimes turns on by itself (maybe)
 * Dig sometimes prints that both Pokémon dug a hole

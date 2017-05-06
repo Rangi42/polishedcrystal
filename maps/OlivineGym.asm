@@ -81,6 +81,7 @@ OlivineGymLassConnie:
 
 OlivineGymLassConnieScript:
 	end_if_just_battled
+	faceplayer
 	opentext
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .BeatJasmine
@@ -100,6 +101,7 @@ OlivineGymGentlemanPreston:
 
 OlivineGymGentlemanPrestonScript:
 	end_if_just_battled
+	faceplayer
 	opentext
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .BeatJasmine

@@ -12810,6 +12810,28 @@ CooltrainerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERM
+	db "Finch@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+
+	; party
+
+	db 8, GEODUDE, AIR_BALLOON, $DD, $DD, $DD, ABILITY_1 | RELAXED, MALE
+		db TACKLE
+		db DEFENSE_CURL
+		db MUD_SLAP
+		db ROLLOUT
+
+	db 9, MAREEP, AIR_BALLOON, $DD, $DD, $DD, ABILITY_1 | RASH, MALE
+		db TACKLE
+		db SAND_ATTACK
+		db THUNDER_WAVE
+		db THUNDERSHOCK
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -14487,6 +14509,9 @@ endc
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 CynthiaGroup:
 ; ================================
 ; ================
@@ -14591,9 +14616,6 @@ endc
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 CherylGroup:

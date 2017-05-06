@@ -857,6 +857,7 @@ KRIS EQU __enum__
 	const HENRI
 	const CONNOR
 	const KIERAN
+	const FINCH
 
 	trainerclass COOLTRAINERF ; 5a
 	const BETH1

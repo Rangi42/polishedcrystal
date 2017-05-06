@@ -328,7 +328,7 @@ TrainerBird_keeperBert:
 
 .SeenText:
 	text "Found it! A"
-	line "Trainer that I can"
+	line "trainer that I can"
 	cont "enjoy fighting!"
 	done
 

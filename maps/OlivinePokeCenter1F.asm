@@ -80,7 +80,7 @@ UnknownText_0x9c086:
 
 BeautyCharlotteGreetingText:
 	text "Oh, are you a"
-	line "Trainer?"
+	line "trainer?"
 
 	para "You came at just"
 	line "the right time!"

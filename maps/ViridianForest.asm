@@ -168,7 +168,7 @@ BugManiacStaceySeenText:
 
 	para "…"
 	line "…What kind of"
-	cont "Trainer?!"
+	cont "trainer?!"
 	done
 
 BugManiacStaceyBeatenText:

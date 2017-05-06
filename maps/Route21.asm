@@ -91,7 +91,7 @@ TrainerSwimmerfKendra:
 	end
 
 .SeenText:
-	text "Hey, Trainer!"
+	text "Hey, trainer!"
 	line "How about you put"
 	cont "on a swimsuit too?"
 	done
@@ -205,7 +205,7 @@ TrainerFisherMurphy:
 
 .SeenText:
 	text "Huh? I've caught"
-	line "a Trainer instead"
+	line "a trainer instead"
 	cont "of a #mon!"
 	done
 
@@ -311,7 +311,7 @@ TrainerFisherGideon:
 .AfterText:
 	text "What's the reason"
 	line "you became a"
-	cont "#mon Trainer?"
+	cont "#mon trainer?"
 	done
 
 TrainerBird_keeperKinsley:

@@ -99,7 +99,7 @@ DimCave5FRileyScript:
 	line "<PLAYER>."
 
 	para "I'm Riley. I'm a"
-	line "Trainer, yes."
+	line "trainer, yes."
 
 	para "I own a mine like"
 	line "this one, so it's"
@@ -131,7 +131,7 @@ DimCave5FRileyScript:
 	cont "we team up."
 
 	para "It's great how"
-	line "Trainers can"
+	line "trainers can"
 	cont "interact."
 	done
 

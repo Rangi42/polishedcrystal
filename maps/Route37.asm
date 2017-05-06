@@ -280,7 +280,7 @@ BeautyCallieAfterText:
 
 BeautyCassandraSeenText:
 	text "Hey hey there,"
-	line "you young Trainer!"
+	line "you young trainer!"
 
 	para "Won't you battle"
 	line "with me?"

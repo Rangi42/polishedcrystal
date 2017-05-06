@@ -21,7 +21,7 @@ INCLUDE "audio/sfx_pointers.asm"
 
 
 
-SECTION "Songs 1", ROMX[$5568], BANK[SONGS_1]
+SECTION "Songs 1", ROMX[$556d], BANK[SONGS_1]
 
 INCLUDE "audio/music/route36.asm"
 INCLUDE "audio/music/rivalbattle.asm"

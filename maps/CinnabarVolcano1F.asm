@@ -164,7 +164,7 @@ CinnabarVolcano1FBuckScript:
 
 	para "But, hey, <PLAYER>!"
 	line "You're an amazing"
-	cont "Trainer!"
+	cont "trainer!"
 
 	para "You should like"
 	line "this!"

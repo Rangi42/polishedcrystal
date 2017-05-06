@@ -54,7 +54,7 @@ Route3PokeCenter1FPokefanM2Text:
 	done
 
 Route3PokeCenter1FYoungsterText:
-	text "Many Trainers are"
+	text "Many trainers are"
 	line "on the mountain."
 
 	para "Many wild #mon"

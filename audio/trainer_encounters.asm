@@ -3,6 +3,10 @@
 PlayTrainerEncounterMusic:: ; e900a
 ; input: e = trainer type
 	farcall SaveMusic
+	; no encounter music for null trainers
+	ld a, [OtherTrainerClass]
+	and a
+	ret z
 	; turn fade off
 	xor a
 	ld [MusicFade], a

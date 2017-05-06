@@ -1,8 +1,8 @@
 const_value set 2
 	const ROUTE31_FISHER
 	const ROUTE31_YOUNGSTER
-	const ROUTE31_BUG_CATCHER
 	const ROUTE31_COOLTRAINER_M
+	const ROUTE31_BUG_CATCHER
 	const ROUTE31_CUT_TREE1
 	const ROUTE31_CUT_TREE2
 	const ROUTE31_FRUIT_TREE
@@ -28,6 +28,143 @@ Route31_MapScriptHeader:
 .DoMomCall:
 	specialphonecall SPECIALCALL_WORRIED
 	return
+
+TrainerCooltrainermFinch:
+	trainer EVENT_INTRODUCED_ROUTE_LEADERS, 0, 0, .IntroText, 0, 0, .Script
+
+.Script:
+	end_if_just_battled
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
+	iftrue .GotItem
+	checkevent EVENT_BEAT_COOLTRAINERM_FINCH
+	iftrue .Beaten
+	checkevent EVENT_BEAT_YOUNGSTER_JOEY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_YOUNGSTER_MIKEY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BUG_CATCHER_DON
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BUG_CATCHER_WADE
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE31_COOLTRAINER_M
+	loadtrainer COOLTRAINERM, FINCH
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_COOLTRAINERM_FINCH
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem AIR_BALLOON
+	iffalse .Done
+	setevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
+.GotItem:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
+	waitbutton
+	closetext
+	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "I am a trainer who"
+	line "uses Air Balloons"
+	cont "in battle."
+
+	para "I want to be"
+	line "swayed by your"
+	cont "strength…"
+
+	para "If you can defeat"
+	line "every trainer on"
+	cont "Route 30 and 31,"
+	cont "then come face me."
+	done
+
+.QuestionText:
+	text "So you've defeated"
+	line "all of the train-"
+	cont "ers here!"
+
+	para "Then you're fit to"
+	line "challenge me!"
+
+	para "Shall we battle?"
+	done
+
+.RefusedText:
+	text "You don't want to"
+	line "test your strength"
+	cont "with mine?"
+
+	para "I'll give you my"
+	line "signature item if"
+	cont "you win…"
+	done
+
+.SeenText:
+	text "Well met! I will"
+	line "stand before you"
+
+	para "as an Air Balloon"
+	line "user!"
+	done
+
+.BeatenText:
+	text "You've brought me"
+	line "to the ground…"
+	done
+
+.AfterText1:
+	text "A fine battle!"
+	line "You are a rising"
+
+	para "star among train-"
+	line "ers!"
+
+	para "Here is proof of"
+	line "our battle."
+	cont "An Air Balloon!"
+
+	para "Take it, my"
+	line "strong friend!"
+	done
+
+.AfterText2:
+	text "You saw the effect"
+	line "of an Air Balloon"
+	cont "in our battle."
+
+	para "You may find other"
+	line "trainers like me"
+	cont "wandering Johto."
+
+	para "Searching for"
+	line "strength."
+
+	para "You would do well"
+	line "to challenge them!"
+	done
 
 TrainerBug_catcherWade1:
 	trainer EVENT_BEAT_BUG_CATCHER_WADE, BUG_CATCHER, WADE1, Bug_catcherWade1SeenText, Bug_catcherWade1BeatenText, 0, .Script
@@ -280,9 +417,6 @@ Route31Sign:
 DarkCaveSign:
 	jumptext DarkCaveSignText
 
-Route31CooltrainerMScript:
-	jumptextfaceplayer Route31CooltrainerMText
-
 Route31CutTree:
 	jumpstd cuttree
 
@@ -294,14 +428,6 @@ Route31Potion:
 
 Route31PokeBall:
 	itemball POKE_BALL
-
-Route31CooltrainerMText:
-	text "Dark Cave…"
-
-	para "If #mon could"
-	line "light it up, I'd"
-	cont "explore it."
-	done
 
 Bug_catcherWade1SeenText:
 	text "I caught a bunch"
@@ -483,8 +609,8 @@ Route31_MapEventHeader:
 	db 9
 	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
 	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31YoungsterScript, -1
+	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
 	person_event SPRITE_CHERRYGROVE_RIVAL, 13, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
-	person_event SPRITE_COOLTRAINER_M, 8, 33, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 10, 25, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_2
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31FruitTree, -1
