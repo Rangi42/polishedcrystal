@@ -5349,7 +5349,7 @@ BirdKeeperGroup:
 
 	; party
 	db 7, PIDGEY
-	db 7, PIDGEY
+	db 8, HOOTHOOT
 
 	db $ff ; end
 

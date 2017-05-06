@@ -3,6 +3,7 @@ const_value set 2
 	const CHERRYGROVEPOKECENTER1F_FISHER
 	const CHERRYGROVEPOKECENTER1F_GENTLEMAN
 	const CHERRYGROVEPOKECENTER1F_TEACHER
+	const CHERRYGROVEPOKECENTER1F_LADY
 
 CherrygrovePokeCenter1F_MapScriptHeader:
 .MapTriggers:
@@ -36,6 +37,9 @@ UnknownScript_0x196984:
 	closetext
 	end
 
+CherrygrovePokeCenter1FLadyScript:
+	jumptextfaceplayer CherrygrovePokeCenter1FLadyText
+
 UnknownText_0x19698a:
 	text "It's great. I can"
 	line "store any number"
@@ -68,6 +72,21 @@ UnknownText_0x196a46:
 	line "there already!"
 	done
 
+CherrygrovePokeCenter1FLadyText:
+	text "#mon Journal"
+	line "has such fascin-"
+	cont "ating stories!"
+
+	para "I come to #mon"
+	line "Centers for the"
+
+	para "latest issues, but"
+	line "they're not the"
+
+	para "only place with"
+	line "a subscription."
+	done
+
 CherrygrovePokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -85,8 +104,9 @@ CherrygrovePokeCenter1F_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 4
+	db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x19696d, -1
 	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x196970, -1
 	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x196973, -1
 	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x196976, -1
+	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FLadyScript, -1

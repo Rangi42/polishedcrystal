@@ -83,6 +83,12 @@ YoungsterScript_0x69546:
 
 MovementData_AideWalksStraightOutOfPokecenter:
 	step_down
+	step_left
+	step_left
+	step_left
+	step_left
+MovementData_AideFinishesLeavingPokecenter:
+	step_down
 	step_down
 	step_down
 	step_down
@@ -90,24 +96,26 @@ MovementData_AideWalksStraightOutOfPokecenter:
 
 MovementData_AideWalksLeftToExitPokecenter:
 	step_left
+	step_left
 	step_down
-	step_end
-
-MovementData_AideFinishesLeavingPokecenter:
-	step_down
-	step_down
-	step_down
+	step_left
+	step_left
 	step_end
 
 UnknownText_0x69555:
 	text "<PLAYER>, long"
 	line "time, no see."
 
-	para "Prof.Elm asked me"
-	line "to find you."
+	para "I was browsing the"
+	line "#mon Journal"
+	cont "while I waited."
 
-	para "He has another"
-	line "favor to ask."
+	para "Its gossip is a"
+	line "good pastime…"
+
+	para "Anyway, Prof.Elm"
+	line "has another favor"
+	cont "to ask you."
 
 	para "Would you take the"
 	line "#mon Egg?"
@@ -207,5 +215,5 @@ VioletPokeCenter1F_MapEventHeader:
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletPokeCenterNurse, -1
 	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x69540, -1
 	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x69543, -1
-	person_event SPRITE_YOUNGSTER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x69546, -1
-	person_event SPRITE_SCIENTIST, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
+	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x69546, -1
+	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
