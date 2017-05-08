@@ -11801,8 +11801,8 @@ BattleGirlGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 28, PRIMEAPE
 	db 28, HITMONLEE
+	db 28, URSARING
 
 	db $ff ; end
 
@@ -11813,9 +11813,9 @@ BattleGirlGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 37, HITMONCHAN
 	db 35, PRIMEAPE
 	db 35, MACHOKE
+	db 37, URSARING
 
 	db $ff ; end
 
@@ -11839,9 +11839,9 @@ BattleGirlGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 37, MACHOKE
+	db 37, HITMONCHAN
 	db 39, MACHAMP
-	db 38, PRIMEAPE
+	db 38, URSARING
 
 	db $ff ; end
 

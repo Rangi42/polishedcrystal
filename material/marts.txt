@@ -27,11 +27,11 @@ BLACK_SLUDGE (Scary Cave) [HGSS: Cerulean Cave]
 Battle Tower #3:
 MACHO_BRACE (PC: Oak's aide)
 FOCUS_BAND (PC: Fighting Dojo)
-FOCUS_SASH (PC: Quiet Cave) [HGSS: Mom]
+FOCUS_SASH (TODO: ?) [HGSS: Mom]
 ASSAULT_VEST (PC: Cianwood City)
 PROTECT_PADS (TODO: ?)
 ROCKY_HELMET (TODO: ?)
-SAFE_GOGGLES (PC: Celadon Hotel)
+SAFE_GOGGLES (PC: Quiet Cave, Celadon Hotel)
 BINDING_BAND (TODO: ?)
 .
 .
