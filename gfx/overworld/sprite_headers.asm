@@ -266,6 +266,9 @@ CaptainSprite: ; 148d4
 	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 148da
 
+ArtistSprite:
+	sprite_header ArtistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 BakerSprite:
 	sprite_header BakerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 

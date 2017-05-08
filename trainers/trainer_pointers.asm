@@ -87,6 +87,9 @@ TrainerGroups: ; 0x39999
 	dba GuitaristFGroup
 	dba BikerGroup
 	dba RoughneckGroup
+	dba TamerGroup
+	dba ArtistGroup
+	dba AromaLadyGroup
 	dba SightseerMGroup
 	dba SightseerFGroup
 	dba CooltrainerMGroup
@@ -110,6 +113,7 @@ TrainerGroups: ; 0x39999
 	dba AgathaGroup
 	dba StevenGroup
 	dba CynthiaGroup
+	dba InverGroup
 	dba CherylGroup
 	dba RileyGroup
 	dba BuckGroup

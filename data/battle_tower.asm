@@ -237,6 +237,7 @@ LoadRandomBattleTowerPkmn:
 	ret
 
 BattleTowerTrainers: ; 1f814e
+	db "Yayoi@@@@@", ARTIST
 	db "Sawyer@@@@", POKEMANIAC
 	db "Santiago@@", FISHER
 	db "Mordecai@@", PI
@@ -246,9 +247,11 @@ BattleTowerTrainers: ; 1f814e
 	db "Hare@@@@@@", RUIN_MANIAC
 	db "Murray@@@@", SAILOR
 	db "Suh@@@@@@@", ELDER
+	db "Siegfried@", TAMER
 	db "Walter@@@@", ELDER
 	db "Eleni@@@@@", BATTLE_GIRL
 	db "Ichigo@@@@", BAKER
+	db "Estée@@@@@", AROMA_LADY
 	db "Wayne@@@@@", SCHOOLBOY
 	db "McManus@@@", CAMPER
 	db "Daryl@@@@@", SWIMMERM
@@ -274,6 +277,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Sagan@@@@@", SCIENTIST
 	db "Lenie@@@@@", SWIMMERF
 	db "Frost@@@@@", COOLTRAINERM
+	db "Sophia@@@@", AROMA_LADY
 	db "Newton@@@@", SCIENTIST
 	db "Chelsea@@@", MEDIUM
 	db "Kuroki@@@@", HEX_MANIAC
@@ -286,6 +290,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Swartz@@@@", VETERANM
 	db "Cobb@@@@@@", SCHOOLBOY
 	db "Yufune@@@@", BLACKBELT_T
+	db "Daniel@@@@", TAMER
 	db "Toshi@@@@@", BLACKBELT_T
 	db "Charlie@@@", JUGGLER
 	db "Buckley@@@", RICH_BOY
@@ -307,6 +312,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Bisom@@@@@", TEACHER
 	db "Nadia@@@@@", BREEDER
 	db "Hatcher@@@", GENTLEMAN
+	db "Frida@@@@@", ARTIST
 	db "Nimue@@@@@", LADY
 	db "Alice@@@@@", SIGHTSEERF
 	db "Valentine@", BEAUTY

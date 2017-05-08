@@ -85,6 +85,9 @@
 	add_pic GuitaristfPic
 	add_pic BikerPic
 	add_pic RoughneckPic
+	add_pic TamerPic
+	add_pic ArtistPic
+	add_pic AromaLadyPic
 	add_pic SightseermPic
 	add_pic SightseerfPic
 	add_pic CooltrainermPic
@@ -108,6 +111,7 @@
 	add_pic AgathaPic
 	add_pic StevenPic
 	add_pic CynthiaPic
+	add_pic InverPic
 	add_pic CherylPic
 	add_pic RileyPic
 	add_pic BuckPic
@@ -132,4 +136,5 @@
 	add_pic OmastarFossilPic
 	add_pic KabutopsFossilPic
 	add_pic AerodactylFossilPic
+	add_pic CuboneArmorPic
 	add_pic MeteoritePic

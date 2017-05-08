@@ -495,13 +495,13 @@ TrainerClassAttributes: ; 3959c
 ; Guitaristm
 	db 0, 0 ; items
 	db 18 ; base reward
-	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_CAUTIOUS + AI_STATUS
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_AGGRESSIVE + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Guitaristf
 	db 0, 0 ; items
 	db 18 ; base reward
-	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_CAUTIOUS + AI_STATUS
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_AGGRESSIVE + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Biker
@@ -514,6 +514,24 @@ TrainerClassAttributes: ; 3959c
 	db 0, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Tamer
+	db 0, 0 ; items
+	db 16 ; base reward
+	dw AI_BASIC + AI_OFFENSIVE + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
+	dw CONTEXT_USE + SWITCH_OFTEN
+
+; Artist
+	db 0, 0 ; items
+	db 14 ; base reward
+	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Aroma Lady
+	db 0, 0 ; items
+	db 14 ; base reward
+	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Sightseerm
@@ -652,6 +670,12 @@ TrainerClassAttributes: ; 3959c
 	db FULL_HEAL, FULL_RESTORE ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_OFTEN
+
+; Inver
+	db FULL_RESTORE, 0 ; items
+	db 16 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_OFTEN
 
 ; Cheryl

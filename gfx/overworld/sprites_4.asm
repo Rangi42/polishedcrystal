@@ -1,3 +1,4 @@
+ArtistSpriteGFX:              INCBIN "gfx/overworld/artist.2bpp"
 BakerSpriteGFX:               INCBIN "gfx/overworld/baker.2bpp"
 BeautySpriteGFX:              INCBIN "gfx/overworld/beauty.2bpp"
 BoarderSpriteGFX:             INCBIN "gfx/overworld/boarder.2bpp"

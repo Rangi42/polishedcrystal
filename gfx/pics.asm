@@ -15,7 +15,7 @@ ArbokPicPointers::   INCLUDE "gfx/pics/arbok_pic_pointers.asm"
 MewtwoPicPointers::  INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
-SECTION "Trainer Pic Pointers", ROMX[$7e68], BANK[$3]
+SECTION "Trainer Pic Pointers", ROMX[$7de1], BANK[$2]
 
 TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
 
@@ -766,9 +766,9 @@ LeafPic:               INCBIN "gfx/trainers/leaf.2bpp.lz"
 BillPic:               INCBIN "gfx/trainers/bill.2bpp.lz"
 LawrencePic:           INCBIN "gfx/trainers/lawrence.2bpp.lz"
 GiovanniPic:           INCBIN "gfx/trainers/giovanni.2bpp.lz"
-OmastarFossilPic:      INCBIN "gfx/trainers/omastarfossil.2bpp.lz"
-KabutopsFossilPic:     INCBIN "gfx/trainers/kabutopsfossil.2bpp.lz"
-AerodactylFossilPic:   INCBIN "gfx/trainers/aerodactylfossil.2bpp.lz"
+OmastarFossilPic:      INCBIN "gfx/trainers/omastar_fossil.2bpp.lz"
+KabutopsFossilPic:     INCBIN "gfx/trainers/kabutops_fossil.2bpp.lz"
+AerodactylFossilPic:   INCBIN "gfx/trainers/aerodactyl_fossil.2bpp.lz"
 MeteoritePic:          INCBIN "gfx/trainers/meteorite.2bpp.lz"
 
 
@@ -860,3 +860,12 @@ SylveonFrontpic:          INCBIN "gfx/pics/sylveon/front.2bpp.lz"
 SylveonBackpic:           INCBIN "gfx/pics/sylveon/back.2bpp.lz"
 PorygonZFrontpic:         INCBIN "gfx/pics/porygon_z/front.2bpp.lz"
 PorygonZBackpic:          INCBIN "gfx/pics/porygon_z/back.2bpp.lz"
+
+
+SECTION "Pics 24", ROMX
+
+TamerPic:                 INCBIN "gfx/trainers/tamer.2bpp.lz"
+ArtistPic:                INCBIN "gfx/trainers/artist.2bpp.lz"
+AromaLadyPic:             INCBIN "gfx/trainers/aroma_lady.2bpp.lz"
+InverPic:                 INCBIN "gfx/trainers/inver.2bpp.lz"
+CuboneArmorPic:           INCBIN "gfx/trainers/cubone_armor.2bpp.lz"

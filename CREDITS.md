@@ -30,13 +30,14 @@
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
+* Kuroko Aizawa for sprites of Cheryl, Aroma Lady, and Artist.
 * Mateo for some sprites and tiles.
-* Kuroko Aizawa for Cheryl's sprite.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
+* Pyro for Tamer's sprite.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
