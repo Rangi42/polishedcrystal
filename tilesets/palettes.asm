@@ -24,6 +24,7 @@ LoadSpecialMapPalette: ; 494ac
 .not_dark
 
 	ld a, [wTileset]
+
 	ld hl, PokeComPalette
 	cp TILESET_POKECOM_CENTER
 	jp z, .load_eight_bg_palettes
@@ -44,6 +45,7 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .load_eight_bg_palettes
 	cp TILESET_ALPH_WORD_ROOM
 	jp z, .load_eight_bg_palettes
+
 	ld hl, CeladonMansionPalette
 	cp TILESET_CELADON_MANSION
 	jp z, .load_eight_time_of_day_bg_palettes
@@ -56,6 +58,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, ShamoutiIslandPalette
 	cp TILESET_SHAMOUTI_ISLAND
 	jp z, .load_eight_time_of_day_bg_palettes
+
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
 	cp TILESET_ICE_PATH
@@ -84,12 +87,15 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_mystri_or_tower
 	cp TILESET_MART
 	jp z, .maybe_goldenrod_dept_store_roof
+	cp TILESET_LIGHTHOUSE
+	jp z, .maybe_olivine_lighthouse_roof
 	cp TILESET_HOME_DECOR_STORE
 	jp z, .maybe_celadon_home_decor_store_4f
 	cp TILESET_JOHTO_1
 	jp z, .maybe_special_johto_1
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
+
 .do_nothing
 	and a
 	ret
@@ -306,6 +312,16 @@ LoadSpecialMapPalette: ; 494ac
 	jp nz, .do_nothing
 	ld a, [MapNumber]
 	cp MAP_GOLDENROD_DEPT_STORE_ROOF
+	jp nz, .do_nothing
+	ld hl, GoldenrodDeptStoreRoofPalette
+	jp .load_eight_time_of_day_bg_palettes
+
+.maybe_olivine_lighthouse_roof
+	ld a, [MapGroup]
+	cp GROUP_OLIVINE_LIGHTHOUSE_ROOF
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_OLIVINE_LIGHTHOUSE_ROOF
 	jp nz, .do_nothing
 	ld hl, GoldenrodDeptStoreRoofPalette
 	jp .load_eight_time_of_day_bg_palettes

@@ -48,8 +48,8 @@
 
 ## Characters
 
-* Flannery somewhere (Safari Zone?)
-* Skyla somewhere (Lighthouse roof?)
+* Flannery in Safari Zone
+* Skyla in Olivine Lighthouse roof
 * Imakuni in Celadon University
 * Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house

@@ -717,6 +717,7 @@ INCLUDE "maps/DimCave3F.asm"
 INCLUDE "maps/DimCave4F.asm"
 INCLUDE "maps/DimCave5F.asm"
 INCLUDE "maps/Route32CoastHouse.asm"
+INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
 SECTION "Map Scripts 34", ROMX

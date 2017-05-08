@@ -691,20 +691,31 @@ CheckFlyAllowedOnMap:
 	call GetMapPermission
 	call CheckOutdoorMap
 	ret z
+; assumes all special roof maps are in different groups
 	ld a, [MapGroup]
 	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
-	jr nz, .not_goldenrod_dept_store_roof
+	jr z, .goldenrod_dept_store_roof_group
+	cp GROUP_CELADON_MANSION_ROOF
+	jr z, .celadon_mansion_roof_group
+	cp GROUP_TIN_TOWER_ROOF
+	jr z, .tin_tower_roof_group
+	cp GROUP_OLIVINE_LIGHTHOUSE_ROOF
+	ret nz
+	ld a, [MapNumber]
+	cp MAP_OLIVINE_LIGHTHOUSE_ROOF
+	ret
+.goldenrod_dept_store_roof_group
 	ld a, [MapNumber]
 	cp MAP_GOLDENROD_DEPT_STORE_ROOF
 	ret
-.not_goldenrod_dept_store_roof
-	ld a, [MapGroup]
-	cp GROUP_CELADON_MANSION_ROOF
-	ret nz
+.celadon_mansion_roof_group
 	ld a, [MapNumber]
 	cp MAP_CELADON_MANSION_ROOF
 	ret
-
+.tin_tower_roof_group
+	ld a, [MapNumber]
+	cp MAP_TIN_TOWER_ROOF
+	ret
 
 FlyFunction: ; ca3b
 	call FieldMoveJumptableReset

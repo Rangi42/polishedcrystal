@@ -401,3 +401,6 @@ OlivineLighthouse5F_BlockData:
 
 OlivineLighthouse6F_BlockData:
 	INCBIN "maps/OlivineLighthouse6F.blk"
+
+OlivineLighthouseRoof_BlockData:
+	INCBIN "maps/OlivineLighthouseRoof.blk"
