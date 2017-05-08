@@ -81,7 +81,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
 * [Pokémon Journals](http://bulbapedia.bulbagarden.net/wiki/Magazines_in_the_Pok%C3%A9mon_world#Pok.C3.A9mon_Journal) on bookshelves with facts about [places and people](http://bulbapedia.bulbagarden.net/wiki/Radio_in_the_Pok%C3%A9mon_world#That_Town.2C_These_People)
-* Route Leaders
 
 Shamouti Island:
 
@@ -92,6 +91,16 @@ Shamouti Island:
 * Rocky Beach
 * Shrine Ruins
 * Fire/Ice/Lightning Islands
+
+Route leaders:
+
+* Route 34: Rich Boy, gives Big Nugget
+* Route 37: Ace Trainer♀, gives Binding Band
+* Route 39: Cowgirl, gives PP Max
+* Lighthouse: Battle Girl, gives protect Pads
+* Route 43: Ace Trainer♀, gives Flame Orb
+* Route 44: Veteran♂, gives Rocky Helmet
+* Route 46: Dragon Tamer, gives Focus Sash
 
 
 ## Abilities

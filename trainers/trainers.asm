@@ -8235,7 +8235,7 @@ RuinManiacGroup:
 ; ================
 
 	; RUIN_MANIAC
-	db "Petrie@"
+	db "Petry@"
 	db TRAINERTYPE_NORMAL
 
 	; party
@@ -12817,7 +12817,7 @@ CooltrainerMGroup:
 
 	; party
 
-	db 8, GEODUDE, AIR_BALLOON, $DD, $DD, $DD, ABILITY_1 | RELAXED, MALE
+	db 8, GEODUDE, AIR_BALLOON, $DD, $DD, $DD, ABILITY_2 | RELAXED, MALE
 		db TACKLE
 		db DEFENSE_CURL
 		db MUD_SLAP
@@ -12828,6 +12828,34 @@ CooltrainerMGroup:
 		db SAND_ATTACK
 		db THUNDER_WAVE
 		db THUNDERSHOCK
+
+	db $ff ; end
+
+; ================
+
+	; COOLTRAINERM
+	db "Petrie@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+
+	; party
+
+	db 11, BELLSPROUT, MIRACLE_SEED, $EE, $EE, $EE, ABILITY_1 | ADAMANT, MALE
+		db VINE_WHIP
+		db GROWTH
+		db WRAP
+		db SLEEP_POWDER
+
+	db 11, ZUBAT, MIRACLE_SEED, $EE, $EE, $EE, ABILITY_1 | RASH, MALE
+		db GUST
+		db ABSORB
+		db ASTONISH
+		db BITE
+
+	db 14, BULBASAUR, MIRACLE_SEED, $EE, $EE, $EE, ABILITY_2 | HASTY, MALE
+		db LEECH_SEED
+		db VINE_WHIP
+		db SLEEP_POWDER
+		db MUD_SLAP
 
 	db $ff ; end
 

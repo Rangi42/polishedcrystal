@@ -41,8 +41,8 @@ TrainerRuin_maniacLeland:
 	cont "and become famous."
 	done
 
-TrainerRuin_maniacPetrie:
-	trainer EVENT_BEAT_RUIN_MANIAC_PETRIE, RUIN_MANIAC, PETRIE, .SeenText, .BeatenText, 0, .Script
+TrainerRuin_maniacPetry:
+	trainer EVENT_BEAT_RUIN_MANIAC_PETRY, RUIN_MANIAC, PETRY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -109,7 +109,7 @@ UnionCaveB1FNorth_MapEventHeader:
 .PersonEvents:
 	db 5
 	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
-	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetrie, -1
+	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetry, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 22, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, UnionCaveB1FNorthTMSwift, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
 	person_event SPRITE_BALL_CUT_FRUIT, 21, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB1FNorthXDefend, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FNorthBoulder, -1

@@ -37,7 +37,7 @@ TrainerCooltrainermFinch:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
-	iftrue .GotItem
+	iftrue .GotAirBalloon
 	checkevent EVENT_BEAT_COOLTRAINERM_FINCH
 	iftrue .Beaten
 	checkevent EVENT_BEAT_YOUNGSTER_JOEY
@@ -67,7 +67,7 @@ TrainerCooltrainermFinch:
 	verbosegiveitem AIR_BALLOON
 	iffalse .Done
 	setevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
-.GotItem:
+.GotAirBalloon:
 	writetext .AfterText2
 	waitbutton
 .Done:

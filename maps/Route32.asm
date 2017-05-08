@@ -64,24 +64,61 @@ Route32CooltrainerMScript:
 	faceplayer
 Route32CooltrainerMTrigger:
 	opentext
-	checkevent EVENT_GOT_MIRACLE_SEED_IN_ROUTE_32
-	iftrue .GotMiracleSeed
 	checkflag ENGINE_ZEPHYRBADGE
 	iffalse .DontHaveZephyrBadge
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iftrue .GiveMiracleSeed
+	iffalse .AideIsWaiting
+	checkevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
+	iftrue .GotMiracleSeed
+	checkevent EVENT_BEAT_COOLTRAINERM_PETRIE
+	iftrue .Beaten
+	checkevent EVENT_BEAT_CAMPER_ROLAND
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_JUSTIN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_RALPH
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_HENRY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PICNICKER_LIZ
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_YOUNGSTER_ALBERT
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_YOUNGSTER_GORDON
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BIRD_KEEPER_PETER
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE32_COOLTRAINER_M
+	loadtrainer COOLTRAINERM, PETRIE
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_COOLTRAINERM_PETRIE
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem MIRACLE_SEED
+	iffalse .Done
+	setevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
+.GotMiracleSeed:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.AideIsWaiting
 	writetext Route32CooltrainerMText_AideIsWaiting
 	waitbutton
 	closetext
 	end
-
-.GiveMiracleSeed:
-	writetext Route32CooltrainerMText_HaveThisSeed
-	buttonsound
-	verbosegiveitem MIRACLE_SEED
-	iffalse .BagFull
-	setevent EVENT_GOT_MIRACLE_SEED_IN_ROUTE_32
-	jump .GotMiracleSeed
 
 .DontHaveZephyrBadge:
 	writetext Route32CooltrainerMText_VioletGym
@@ -89,12 +126,96 @@ Route32CooltrainerMTrigger:
 	closetext
 	end
 
-.GotMiracleSeed:
-	writetext Route32CooltrainerMText_ExperiencesShouldBeUseful
+.RouteNotCleared:
+	writetext .IntroText
 	waitbutton
-.BagFull:
 	closetext
 	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "You have some good"
+	line "#mon there."
+
+	para "It must be from"
+	line "the training you"
+
+	para "gave them around"
+	line "Violet City."
+
+	para "You should have no"
+	line "trouble beating"
+
+	para "all the trainers"
+	line "on this route."
+
+	para "If you can do"
+	line "that, I'll face you"
+	cont "myself."
+	done
+
+.QuestionText:
+	text "It looks like you"
+	line "beat everyone else"
+	cont "here."
+
+	para "Your training at"
+	line "the Gym must have"
+
+	para "been especially"
+	line "helpful."
+
+	para "I, too, have a"
+	line "Zephyr Badge."
+
+	para "Will you battle"
+	line "with me?"
+	done
+
+.RefusedText:
+	text "So you would ra-"
+	line "ther journey on…"
+	done
+
+.SeenText:
+	text "My training in"
+	line "Sprout Tower over-"
+	cont "came even Falkner."
+
+	para "Let's see how you"
+	line "compare!"
+	done
+
+.BeatenText:
+	text "My team was up-"
+	line "rooted!"
+	done
+
+.AfterText1:
+	text "Your training was"
+	line "superior to mine."
+
+	para "As a souvenir of"
+	line "our battle, take"
+	cont "this."
+
+	para "It increases the"
+	line "power of Grass-"
+	cont "type moves."
+	done
+
+.AfterText2:
+	text "Your experiences"
+	line "in Violet City"
+
+	para "should be useful"
+	line "for your journey."
+	done
 
 Route32CooltrainerMStopsYou:
 	spriteface ROUTE32_COOLTRAINER_M, LEFT
@@ -564,39 +685,6 @@ Route32CooltrainerMText_VioletGym:
 	cont "trainers!"
 	done
 
-Route32CooltrainerMText_HaveThisSeed:
-	text "You have some good"
-	line "#mon there."
-
-	para "It must be from"
-	line "the training you"
-
-	para "gave them around"
-	line "Violet City."
-
-	para "The training at"
-	line "the Gym must have"
-
-	para "been especially"
-	line "helpful."
-
-	para "As a souvenir of"
-	line "Violet City, take"
-	cont "this."
-
-	para "It increases the"
-	line "power of Grass-"
-	cont "type moves."
-	done
-
-Route32CooltrainerMText_ExperiencesShouldBeUseful:
-	text "Your experiences"
-	line "in Violet City"
-
-	para "should be useful"
-	line "for your journey."
-	done
-
 Text_MillionDollarSlowpokeTail:
 	text "How would you like"
 	line "to have this"
@@ -903,7 +991,7 @@ Route32_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 63, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterGordon, -1
 	person_event SPRITE_YOUNGSTER, 45, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperRoland, -1
 	person_event SPRITE_NEW_BARK_LYRA, 30, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
-	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CooltrainerMScript, -1
+	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainerMScript, -1
 	person_event SPRITE_YOUNGSTER, 82, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperPeter, -1
 	person_event SPRITE_FISHER, 70, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_BALL_CUT_FRUIT, 53, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route32GreatBall, EVENT_ROUTE_32_GREAT_BALL

@@ -457,7 +457,7 @@ KRIS EQU __enum__
 	trainerclass RUIN_MANIAC ; 33
 	const JONES
 	const LELAND
-	const PETRIE
+	const PETRY
 	const GLYN
 	const SMILTE
 
@@ -858,6 +858,7 @@ KRIS EQU __enum__
 	const CONNOR
 	const KIERAN
 	const FINCH
+	const PETRIE
 
 	trainerclass COOLTRAINERF ; 5a
 	const BETH1
