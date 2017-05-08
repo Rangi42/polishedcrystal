@@ -436,8 +436,8 @@ INCLUDE "maps/AzaleaTown.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/SaffronCity.asm"
 INCLUDE "maps/MahoganyGym.asm"
+INCLUDE "maps/RedsHouse1F.asm"
 INCLUDE "maps/BluesHouse1F.asm"
-INCLUDE "maps/BluesHouse2F.asm"
 INCLUDE "maps/OaksLab.asm"
 
 
@@ -578,8 +578,8 @@ INCLUDE "maps/BillsHouse.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
 INCLUDE "maps/PewterGym.asm"
 INCLUDE "maps/PewterMart.asm"
-INCLUDE "maps/RedsHouse1F.asm"
 INCLUDE "maps/RedsHouse2F.asm"
+INCLUDE "maps/BluesHouse2F.asm"
 
 
 SECTION "Map Scripts 26", ROMX[$4000], BANK[MAP_SCRIPTS_26]

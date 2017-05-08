@@ -473,9 +473,12 @@ SchoolboyRickyBeatenText:
 	done
 
 UnknownText_0x76eb6:
-	text "I read that there"
-	line "are four of those"
-	cont "stone panels."
+	text "I read in a #-"
+	line "mon Journal that"
+
+	para "there are four of"
+	line "those stone panels"
+	cont "in the ruins."
 	done
 
 FastShipB1F_MapEventHeader:

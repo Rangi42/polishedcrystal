@@ -66,6 +66,7 @@ endr
 	dwb wBuenasPassword,                RETVAR_ADDR_DE
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
 	dwb BattlePoints,                   RETVAR_ADDR_DE
+	dwb .CountPokemonJournals,          RETVAR_EXECUTE
 	dwb NULL,                           RETVAR_STRBUF2
 ; 806c5
 
@@ -90,7 +91,7 @@ endr
 .CountBadges: ; 806e1
 ; Number of owned badges.
 	ld hl, Badges
-	ld b, 2
+	ld b, (NUM_JOHTO_BADGES + NUM_KANTO_BADGES + 7) / 8
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
@@ -149,3 +150,10 @@ endr
 	and $3f
 	jp .loadstringbuffer2
 ; 80730
+
+.CountPokemonJournals:
+	ld hl, PokemonJournals
+	ld b, (NUM_POKEMON_JOURNALS + 7) / 8
+	call CountSetBits
+	ld a, [wd265]
+	jp .loadstringbuffer2

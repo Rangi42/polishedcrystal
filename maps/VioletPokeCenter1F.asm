@@ -81,6 +81,10 @@ GentlemanScript_0x69543:
 YoungsterScript_0x69546:
 	jumptextfaceplayer UnknownText_0x698b8
 
+PokemonJournalFalknerScript:
+	setflag ENGINE_READ_FALKNER_JOURNAL
+	jumptext PokemonJournalFalknerText
+
 MovementData_AideWalksStraightOutOfPokecenter:
 	step_down
 	step_left
@@ -194,6 +198,20 @@ UnknownText_0x698b8:
 	line "they please."
 	done
 
+PokemonJournalFalknerText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Falkner!"
+
+	para "People say that"
+	line "Falkner reveres"
+	cont "his father, who"
+
+	para "led the Violet Gym"
+	line "before him."
+	done
+
 VioletPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -208,7 +226,8 @@ VioletPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalFalknerScript
 
 .PersonEvents:
 	db 5

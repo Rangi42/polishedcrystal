@@ -214,8 +214,41 @@ NUM_JOHTO_BADGES EQU const_value
 	const EARTHBADGE
 NUM_KANTO_BADGES EQU const_value
 NUM_BADGES EQU NUM_JOHTO_BADGES + NUM_KANTO_BADGES
-NUM_KANA EQU $2d
 
+	const_def
+	const FALKNER_JOURNAL ; Violet Pokémon Center
+	const BUGSY_JOURNAL ; Azalea Pokémon Center
+	const WHITNEY_JOURNAL ; Goldenrod Pokémon Center
+	const MORTY_JOURNAL ; Ecruteak Pokémon Center
+	const CHUCK_JOURNAL ; Cianwood Pokémon Center
+	const JASMINE_JOURNAL ; Olivine Pokémon Center
+	const PRYCE_JOURNAL ; Mahogany Pokémon Center
+	const CLAIR_JOURNAL ; Blackthorn Pokémon Center
+	const BROCK_JOURNAL ; Pewter Pokémon Center
+	const MISTY_JOURNAL ; Cerulean Pokémon Center
+	const LT_SURGE_JOURNAL ; Vermilion Pokémon Center
+	const ERIKA_JOURNAL ; Celadon Pokémon Center
+	const JANINE_JOURNAL ; Fuchsia Pokémon Center
+	const SABRINA_JOURNAL ; Saffron Pokémon Center
+	const BLAINE_JOURNAL ; Cinnabar Pokémon Center
+	const BLUE_JOURNAL ; Viridian Pokémon Center
+	const WILL_JOURNAL ; Earl's Pokémon Academy
+	const KOGA_JOURNAL ; Safari Zone rest houses
+	const BRUNO_JOURNAL ; Pokémon Trainer Fan Club
+	const KAREN_JOURNAL ; Mt. Moon Pokémon Center
+	const LANCE_JOURNAL ; Silver Cave Pokémon Center
+	const RED_JOURNAL ; Cherrygrove Pokémon Center
+	const GREEN_JOURNAL ; Pokémon Fan Club
+	const PROF_OAK_JOURNAL ; Red's house, Blue's house
+	const PROF_ELM_JOURNAL ; Kris's house, Lyra's house
+	const PROF_WESTWOOD_JOURNAL ; Kurt's house
+	const GIOVANNI_JOURNAL ; Indigo Plateau Pokémon Center
+	const LORELEI_JOURNAL ; Shamouti Island Pokémon Center
+	const AGATHA_JOURNAL ; Rock Tunnel Pokémon Center
+	const BILL_JOURNAL ; Bill's house
+	const KURT_JOURNAL ; Union Cave Pokémon Center
+	const MR_FUJI_JOURNAL ; Lavender Town Pokémon Center
+NUM_POKEMON_JOURNALS EQU const_value
 
 SWARM_DUNSPARCE EQU 0
 SWARM_YANMA     EQU 1

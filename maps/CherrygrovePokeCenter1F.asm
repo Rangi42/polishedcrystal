@@ -40,6 +40,10 @@ UnknownScript_0x196984:
 CherrygrovePokeCenter1FLadyScript:
 	jumptextfaceplayer CherrygrovePokeCenter1FLadyText
 
+PokemonJournalRedScript:
+	setflag ENGINE_READ_RED_JOURNAL
+	jumptext PokemonJournalRedText
+
 UnknownText_0x19698a:
 	text "It's great. I can"
 	line "store any number"
@@ -87,6 +91,22 @@ CherrygrovePokeCenter1FLadyText:
 	line "a subscription."
 	done
 
+PokemonJournalRedText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "<PK><MN> Trainer Red!"
+
+	para "Red is said to"
+	line "have defeated his"
+
+	para "rival Blue for the"
+	line "title of #mon"
+
+	para "League Champion in"
+	line "record time."
+	done
+
 CherrygrovePokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -101,7 +121,8 @@ CherrygrovePokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalRedScript
 
 .PersonEvents:
 	db 5

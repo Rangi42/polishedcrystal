@@ -2433,10 +2433,12 @@ Coins:: ; d855
 
 Badges::
 JohtoBadges:: ; d857
-	flag_array 8
+	flag_array NUM_JOHTO_BADGES
 KantoBadges:: ; d858
-	flag_array 8
+	flag_array NUM_KANTO_BADGES
 
+PokemonJournals::
+	flag_array NUM_POKEMON_JOURNALS
 
 TMsHMs:: ; d859
 	flag_array NUM_TMS + NUM_HMS
@@ -2493,7 +2495,8 @@ PlayerState:: ; d95d
 	ds 1
 
 wHallOfFameCount:: ds 2
-wTradeFlags:: flag_array 6 ; d960
+wTradeFlags::
+	flag_array PARTY_LENGTH ; d960
 	ds 1
 MooMooBerries:: ; d962
 	ds 1 ; how many berries fed to MooMoo

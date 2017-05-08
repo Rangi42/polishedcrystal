@@ -37,6 +37,10 @@ Chris:
 	closetext
 	end
 
+PokemonJournalBrockScript:
+	setflag ENGINE_READ_BROCK_JOURNAL
+	jumptext PokemonJournalBrockText
+
 UnknownText_0x1a2f01:
 	text "…Yeah, and the"
 	line "Gym in Cinnabar's"
@@ -67,6 +71,20 @@ UnknownText_0x1a2f75:
 	line "#mon is asleep."
 	done
 
+PokemonJournalBrockText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Brock!"
+
+	para "Brock rarely"
+	line "laughs, but is"
+
+	para "said to be unable"
+	line "to stop if he"
+	cont "starts."
+	done
+
 PewterPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -81,7 +99,8 @@ PewterPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalBrockScript
 
 .PersonEvents:
 	db 5

@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Pokedex Entries 001-064", ROMX[$62cf], BANK[POKEDEX_ENTRIES_1]
+SECTION "Pokedex Entries 001-064", ROMX[$634c], BANK[POKEDEX_ENTRIES_1]
 
 PokedexEntries1::
 INCLUDE "data/pokedex/entries_1.asm"

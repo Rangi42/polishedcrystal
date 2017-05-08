@@ -36,6 +36,10 @@ CooltrainerFScript_0x9b6a7:
 BugCatcherScript_0x9b6aa:
 	jumptextfaceplayer UnknownText_0x9b7c8
 
+PokemonJournalBlueScript:
+	setflag ENGINE_READ_BLUE_JOURNAL
+	jumptext PokemonJournalBlueText
+
 UnknownText_0x9b6ad:
 	text "Where in the world"
 	line "is Viridian's Gym"
@@ -68,6 +72,20 @@ UnknownText_0x9b7c8:
 	line "come a Gym Leader."
 	done
 
+PokemonJournalBlueText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Blue!"
+
+	para "Blue supposedly"
+	line "visits his cher-"
+	cont "ished #mon"
+
+	para "every year in the"
+	line "House of Memories."
+	done
+
 ViridianPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -82,7 +100,8 @@ ViridianPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalBlueScript
 
 .PersonEvents:
 	db 4

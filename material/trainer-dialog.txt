@@ -1,11 +1,20 @@
 https://www.youtube.com/watch?v=zm8oIsdmaCw
-I am a Trainer who uses the Red Card item. I want to be shaken by your strength... I want to face you when you've shown that you can defeat every last Trainer on Route 3!
-So you've defeated all of the Trainers along Route 3, have you? You have shaken me from my calm repose! My heart was a still water, but no longer! Shall we start? Let's have a soul-shaking battle!
-That is a good reply. I will stand before you as a Red Card user!
-To think that you've wounded my pride, which is harder than diamonds!
-It was a fine battle. My heart feels as light and clear as the blue sky that appears after a storm passes through. This is proof of the battle between your team and my own. A Red Card! Take it, my strong friend!
-The effects of the Red Card are as I illustrated to you in battle.
-You will likely find other Trainers like me on the routes of Alola. Searching for strength. Challenging them together with your Pokémon would not be a bad reason to take a journey.
+
+
+Professor Oak: Hello, <PLAYER>. Good to see you. I heard a lot about you. Your Pokédex must be close to complete? For all your hard work, I would like to give you something.
+Professor Oak: Haha! What’s behind me... You must have figured it out right away. Yes, it is a Pokémon!
+Professor Oak: You don’t see them very often in Kanto. Choose one and it’ll be yours! ...Go ahead!
+So, you’re claiming the Fire Pokémon Charmander?
+So, you’ve decided on the Water Pokémon Squirtle?
+So, you want to go with the Grass Pokémon Bulbasaur?
+This Pokémon is really quite energetic!
+No need to hurry. Take your time.
+<PLAYER> received the <MON> from Professor Oak!
+Would you like to give a nickname to the <MON> you received?
+Is <NICK> the nickname you want to give?
+Huh? You have no room for it right now. Come back when you’ve made room.
+Professor Oak: If a wild Pokémon appears, your Pokémon can battle it. With it at your side, you should be able to reach the next town... What am I saying? You already know all this! Hahaha!
+Professor Oak: There is nothing more that I can do for you. Enjoy the rest of your journey with that new Pokémon!
 
 
 Imakuni:

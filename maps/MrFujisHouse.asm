@@ -48,7 +48,8 @@ UnknownText_0x7e8f1:
 	cont "home now."
 
 	para "He should be at"
-	line "the Soul House."
+	line "the House of"
+	cont "Memories."
 	done
 
 UnknownText_0x7e940:

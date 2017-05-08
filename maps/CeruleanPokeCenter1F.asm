@@ -23,6 +23,10 @@ GymGuyScript_0x18821e:
 .metric
 	jumptextfaceplayer UnknownText_0x1882ff_Metric
 
+PokemonJournalMistyScript:
+	setflag ENGINE_READ_MISTY_JOURNAL
+	jumptext PokemonJournalMistyText
+
 UnknownText_0x188221:
 	text "For battles, I'd"
 	line "much rather use"
@@ -63,6 +67,19 @@ UnknownText_0x1882ff_Metric:
 	line "Johto accessible."
 	done
 
+PokemonJournalMistyText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Misty!"
+
+	para "Misty is said to"
+	line "worship Lorelei,"
+
+	para "a former member of"
+	line "the Elite Four."
+	done
+
 CeruleanPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -77,7 +94,8 @@ CeruleanPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalMistyScript
 
 .PersonEvents:
 	db 3

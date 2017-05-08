@@ -36,6 +36,10 @@ SailorScript_0x19161a:
 BugCatcherScript_0x19161d:
 	jumptextfaceplayer UnknownText_0x19173b
 
+PokemonJournalLtSurgeScript:
+	setflag ENGINE_READ_LT_SURGE_JOURNAL
+	jumptext PokemonJournalLtSurgeText
+
 UnknownText_0x191620:
 	text "A sleeping #mon"
 	line "is lying in front"
@@ -76,6 +80,25 @@ UnknownText_0x19173b:
 	line "got them in Johto."
 	done
 
+PokemonJournalLtSurgeText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Lt.Surge!"
+
+	para "Lt.Surge is rumor-"
+	line "ed to have been a"
+
+	para "pilot while home"
+	line "in America."
+
+	para "He used the elec-"
+	line "tricity generated"
+
+	para "by #mon to pow-"
+	line "er his plane."
+	done
+
 VermilionPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -90,7 +113,8 @@ VermilionPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalLtSurgeScript
 
 .PersonEvents:
 	db 4

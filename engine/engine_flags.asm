@@ -17,7 +17,7 @@ EngineFlagAction:: ; 80430
 	jr c, .read ; cp 0 can't set carry!
 	jr .invalid
 
-; There are only $b1 engine flags, so
+; There are only $d1 engine flags, so
 ; anything beyond that is invalid too.
 
 .ceiling
@@ -299,3 +299,39 @@ ENDM
 
 	engine_flag SwarmFlags, 2 ; dunsparce swarm
 	engine_flag SwarmFlags, 3 ; yanma swarm ; $b0
+
+	engine_flag PokemonJournals, 0 ; read falkner journal
+	engine_flag PokemonJournals, 1 ; read bugsy journal
+	engine_flag PokemonJournals, 2 ; read whitney journal
+	engine_flag PokemonJournals, 3 ; read morty journal
+	engine_flag PokemonJournals, 4 ; read chuck journal
+	engine_flag PokemonJournals, 5 ; read jasmine journal
+	engine_flag PokemonJournals, 6 ; read pryce journal
+	engine_flag PokemonJournals, 7 ; read clair journal
+
+	engine_flag PokemonJournals + 1, 0 ; read brock journal
+	engine_flag PokemonJournals + 1, 1 ; read misty journal
+	engine_flag PokemonJournals + 1, 2 ; read lt.surge journal
+	engine_flag PokemonJournals + 1, 3 ; read erika journal
+	engine_flag PokemonJournals + 1, 4 ; read janine journal
+	engine_flag PokemonJournals + 1, 5 ; read sabrina journal
+	engine_flag PokemonJournals + 1, 6 ; read blaine journal
+	engine_flag PokemonJournals + 1, 7 ; read blue journal
+
+	engine_flag PokemonJournals + 2, 0 ; read will journal
+	engine_flag PokemonJournals + 2, 1 ; read koga journal
+	engine_flag PokemonJournals + 2, 2 ; read bruno journal
+	engine_flag PokemonJournals + 2, 3 ; read karen journal
+	engine_flag PokemonJournals + 2, 4 ; read lance journal
+	engine_flag PokemonJournals + 2, 5 ; read red journal
+	engine_flag PokemonJournals + 2, 6 ; read green journal
+	engine_flag PokemonJournals + 2, 7 ; read prof.oak journal
+
+	engine_flag PokemonJournals + 3, 0 ; read prof.elm journal
+	engine_flag PokemonJournals + 3, 1 ; read prof.westwood journal
+	engine_flag PokemonJournals + 3, 2 ; read giovanni journal
+	engine_flag PokemonJournals + 3, 3 ; read lorelei journal
+	engine_flag PokemonJournals + 3, 4 ; read agatha journal
+	engine_flag PokemonJournals + 3, 5 ; read bill journal
+	engine_flag PokemonJournals + 3, 6 ; read kurt journal
+	engine_flag PokemonJournals + 3, 7 ; read mr.fuji journal

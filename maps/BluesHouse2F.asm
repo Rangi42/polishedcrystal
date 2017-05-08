@@ -11,9 +11,6 @@ BluesHouse2FPCScript:
 BluesHouse2FSNESScript:
 	jumptext BluesHouse2FSNESText
 
-BluesHouse2FBookshelfScript:
-	jumpstd picturebookshelf
-
 BluesHouse2FPCText:
 	text "There's a program"
 	line "simulating a bat-"
@@ -46,8 +43,8 @@ BluesHouse2F_MapEventHeader:
 	db 4
 	signpost 1, 0, SIGNPOST_READ, BluesHouse2FPCScript
 	signpost 5, 3, SIGNPOST_READ, BluesHouse2FSNESScript
-	signpost 1, 4, SIGNPOST_READ, BluesHouse2FBookshelfScript
-	signpost 1, 5, SIGNPOST_READ, BluesHouse2FBookshelfScript
+	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
 
 .PersonEvents:
 	db 0
