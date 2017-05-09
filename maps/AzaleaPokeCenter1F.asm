@@ -46,6 +46,10 @@ AzaleaPokeCenter1FCooltrainerMScript:
 	closetext
 	end
 
+PokemonJournalBugsyScript:
+	setflag ENGINE_READ_BUGSY_JOURNAL
+	jumptext PokemonJournalBugsyText
+
 UnknownText_0x18db34:
 	text "Do your #mon"
 	line "know HM moves?"
@@ -114,6 +118,22 @@ AzaleaPokeCenter1FCooltrainerMNiteText:
 	line "the Elite Four."
 	done
 
+PokemonJournalBugsyText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Bugsy!"
+
+	para "Bugsy is reported"
+	line "to have won the"
+
+	para "Bug-Catching Con-"
+	line "test so often that"
+
+	para "he no longer par-"
+	line "ticipates."
+	done
+
 AzaleaPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -128,7 +148,8 @@ AzaleaPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalBugsyScript
 
 .PersonEvents:
 	db 5

@@ -19,6 +19,10 @@ CooltrainerFScript_0x1ab32f:
 FisherScript_0x1ab332:
 	jumptextfaceplayer UnknownText_0x1ab37f
 
+PokemonJournalBlaineScript:
+	setflag ENGINE_READ_BLAINE_JOURNAL
+	jumptext PokemonJournalBlaineText
+
 UnknownText_0x1ab335:
 	text "Cinnabar Gym's"
 	line "Blaine apparently"
@@ -32,6 +36,20 @@ UnknownText_0x1ab37f:
 	text "It's been a year"
 	line "since the volcano"
 	cont "erupted."
+	done
+
+PokemonJournalBlaineText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Blaine!"
+
+	para "Blaine is said to"
+	line "only remove his"
+
+	para "shades when he is"
+	line "thinking up new"
+	cont "riddles."
 	done
 
 CinnabarPokeCenter1F_MapEventHeader:
@@ -48,7 +66,8 @@ CinnabarPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalBlaineScript
 
 .PersonEvents:
 	db 3

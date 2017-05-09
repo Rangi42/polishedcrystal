@@ -49,6 +49,10 @@ SuperNerdScript_0x9dbea:
 CianwoodPokeCenterRichBoyScript:
 	jumptextfaceplayer CianwoodPokeCenterRichBoyText
 
+PokemonJournalChuckScript:
+	setflag ENGINE_READ_CHUCK_JOURNAL
+	jumptext PokemonJournalChuckText
+
 UnknownText_0x9dbed:
 	text "Did you meet the"
 	line "#Maniac?"
@@ -153,6 +157,24 @@ CianwoodPokeCenterRichBoyText:
 	cont "across the sea."
 	done
 
+PokemonJournalChuckText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Chuck!"
+
+	para "Chuck is said to"
+	line "really like sweet"
+	cont "desserts."
+
+	para "However, he has"
+	line "also been seen"
+
+	para "training under a"
+	line "heavy waterfall"
+	cont "to work them off."
+	done
+
 CianwoodPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -167,7 +189,8 @@ CianwoodPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalChuckScript
 
 .PersonEvents:
 	db 5

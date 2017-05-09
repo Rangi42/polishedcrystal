@@ -86,4 +86,4 @@ Route3PokeCenter1F_MapEventHeader:
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route3PokeCenter1FNurseScript, -1
 	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route3PokeCenter1FPokefanM1Script, -1
 	person_event SPRITE_POKEFAN_M, 5, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route3PokeCenter1FPokefanM2Script, -1
-	person_event SPRITE_YOUNGSTER, 2, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route3PokeCenter1FYoungsterScript, -1
+	person_event SPRITE_YOUNGSTER, 3, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route3PokeCenter1FYoungsterScript, -1

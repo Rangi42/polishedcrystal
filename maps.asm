@@ -124,6 +124,8 @@ INCLUDE "maps/Route34IlexForestGate.asm"
 INCLUDE "maps/ViridianSchoolHouse.asm"
 INCLUDE "maps/EcruteakCherishBallHouse.asm"
 INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
+INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
+INCLUDE "maps/SafariZoneWardensHome.asm"
 
 
 SECTION "Map Scripts 5", ROMX[$4000], BANK[MAP_SCRIPTS_5]
@@ -272,7 +274,6 @@ INCLUDE "maps/OlivineCafe.asm"
 INCLUDE "maps/OlivineMart.asm"
 INCLUDE "maps/Route39Barn.asm"
 INCLUDE "maps/Route39Farmhouse.asm"
-INCLUDE "maps/ManiasHouse.asm"
 INCLUDE "maps/CianwoodGym.asm"
 INCLUDE "maps/CianwoodPharmacy.asm"
 INCLUDE "maps/CianwoodCityPhotoStudio.asm"
@@ -348,6 +349,7 @@ INCLUDE "maps/SilverCaveRoom1.asm"
 INCLUDE "maps/SilverCaveRoom2.asm"
 INCLUDE "maps/SilverCaveRoom3.asm"
 INCLUDE "maps/CharcoalKiln.asm"
+INCLUDE "maps/ManiasHouse.asm"
 
 
 SECTION "Map Scripts 15", ROMX[$4000], BANK[MAP_SCRIPTS_15]
@@ -415,7 +417,6 @@ INCLUDE "maps/MoveDeletersHouse.asm"
 INCLUDE "maps/FuchsiaMart.asm"
 INCLUDE "maps/FuchsiaGym.asm"
 INCLUDE "maps/FuchsiaBillSpeechHouse.asm"
-INCLUDE "maps/SafariZoneWardensHome.asm"
 INCLUDE "maps/Route15FuchsiaGate.asm"
 INCLUDE "maps/CherrygroveMart.asm"
 INCLUDE "maps/CherrygroveGymSpeechHouse.asm"
@@ -424,7 +425,6 @@ INCLUDE "maps/CherrygroveEvolutionSpeechHouse.asm"
 INCLUDE "maps/Route30BerrySpeechHouse.asm"
 INCLUDE "maps/MrPokemonsHouse.asm"
 INCLUDE "maps/Route31VioletGate.asm"
-INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 INCLUDE "maps/Route42EcruteakGate.asm"
 
 

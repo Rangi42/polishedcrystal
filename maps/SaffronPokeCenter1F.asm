@@ -36,6 +36,10 @@ FisherScript_0x18a48c:
 YoungsterScript_0x18a4a0:
 	jumptextfaceplayer UnknownText_0x18a6c5
 
+PokemonJournalSabrinaScript:
+	setflag ENGINE_READ_SABRINA_JOURNAL
+	jumptext PokemonJournalSabrinaText
+
 UnknownText_0x18a4a3:
 	text "What are Johto's"
 	line "#mon Centers"
@@ -88,6 +92,21 @@ UnknownText_0x18a6c5:
 	line "Saffron."
 	done
 
+PokemonJournalSabrinaText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Sabrina!"
+
+	para "People say that"
+	line "Sabrina can com-"
+	cont "municate with her"
+
+	para "#mon during"
+	line "battle without"
+	cont "speaking."
+	done
+
 SaffronPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -102,7 +121,8 @@ SaffronPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalSabrinaScript
 
 .PersonEvents:
 	db 4

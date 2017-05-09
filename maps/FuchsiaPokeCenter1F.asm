@@ -46,6 +46,10 @@ JanineImpersonatorScript_0x196462:
 	special RunCallback_04
 	end
 
+PokemonJournalJanineScript:
+	setflag ENGINE_READ_JANINE_JOURNAL
+	jumptext PokemonJournalJanineText
+
 MovementData_0x196486:
 	turn_head_down
 	turn_head_left
@@ -90,6 +94,20 @@ UnknownText_0x19654e:
 	line "like her now!"
 	done
 
+PokemonJournalJanineText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Janine!"
+
+	para "Janine was said to"
+	line "be a fan of the"
+
+	para "#mon zoo in"
+	line "Fuchsia City"
+	cont "as a child."
+	done
+
 FuchsiaPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -104,7 +122,8 @@ FuchsiaPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalJanineScript
 
 .PersonEvents:
 	db 4

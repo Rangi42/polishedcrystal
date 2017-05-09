@@ -23,6 +23,10 @@ YoungsterScript_0x19a35c:
 CooltrainerFScript_0x19a35f:
 	jumptextfaceplayer UnknownText_0x19a418
 
+PokemonJournalPryceScript:
+	setflag ENGINE_READ_PRYCE_JOURNAL
+	jumptext PokemonJournalPryceText
+
 UnknownText_0x19a362:
 	text "What's this? Team"
 	line "Rocket has come"
@@ -53,6 +57,27 @@ UnknownText_0x19a418:
 	cont "more slowly."
 	done
 
+PokemonJournalPryceText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Pryce!"
+
+	para "Pryce's middle name"
+	line "is Willow."
+
+	para "His fighting style"
+	line "is said to be as"
+
+	para "flexible as a"
+	line "willow tree in"
+	cont "winter, which has"
+
+	para "earned him the"
+	line "nickname “the"
+	cont "winter trainer”."
+	done
+
 MahoganyPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -67,7 +92,8 @@ MahoganyPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalPryceScript
 
 .PersonEvents:
 	db 4

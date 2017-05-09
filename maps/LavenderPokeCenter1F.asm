@@ -36,6 +36,10 @@ UnknownScript_0x7e6b7:
 	closetext
 	end
 
+PokemonJournalMrFujiScript:
+	setflag ENGINE_READ_MR_FUJI_JOURNAL
+	jumptext PokemonJournalMrFujiText
+
 UnknownText_0x7e6bd:
 	text "To the north of"
 	line "Lavender is Rock"
@@ -80,6 +84,22 @@ UnknownText_0x7e7ed:
 	cont "smoothly again."
 	done
 
+PokemonJournalMrFujiText:
+	text "#mon Journal"
+
+	para "Editor: The shy"
+	line "Mr.Fuji turned"
+
+	para "down our interview"
+	line "requests."
+
+	para "He is a kindly man"
+	line "who is adored and"
+
+	para "respected in Lav-"
+	line "ender Town."
+	done
+
 LavenderPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -94,7 +114,8 @@ LavenderPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalMrFujiScript
 
 .PersonEvents:
 	db 4

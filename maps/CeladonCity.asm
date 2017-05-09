@@ -238,11 +238,17 @@ UnknownText_0x1aa115:
 	done
 
 UnknownText_0x1aa155:
-	text "They're holding an"
-	line "eating contest at"
-	cont "the restaurant."
+	text "The restaurant"
+	line "there is having an"
+	cont "eating contest."
 
-	para "Just watching them"
+	para "There's one con-"
+	line "testant from the"
+
+	para "Sinnoh region this"
+	line "year."
+
+	para "Just watching her"
 	line "go at it makes me"
 	cont "feel bloated…"
 	done

@@ -57,6 +57,10 @@ ProfOaksAide4Script:
 	closetext
 	end
 
+PokemonJournalClairScript:
+	setflag ENGINE_READ_CLAIR_JOURNAL
+	jumptext PokemonJournalClairText
+
 UnknownText_0x195b85:
 	text "Deep inside far-"
 	line "off Indigo Plateau"
@@ -144,6 +148,20 @@ ProfOaksAide4ExplainText:
 	line "plete the #dex!"
 	done
 
+PokemonJournalClairText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Clair!"
+
+	para "Clair's bright blue"
+	line "outfit and cape"
+
+	para "have made her the"
+	line "latest name in"
+	cont "fashion."
+	done
+
 BlackthornPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -158,7 +176,8 @@ BlackthornPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalClairScript
 
 .PersonEvents:
 	db 5

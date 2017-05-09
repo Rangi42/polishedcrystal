@@ -38,13 +38,15 @@ PokemonJournalProfOakText:
 	para "Prof.Oak's grand-"
 	line "children, Blue and"
 
-	para "Daisy, reportedly"
-	line "live near his lab"
-	cont "in Pallet Town."
+	para "Daisy, live near"
+	line "his lab in Pallet"
+	cont "Town."
 
 	para "His cousin Samson"
 	line "is rumored to live"
-	cont "in far-off Alola."
+
+	para "in the far-off"
+	line "Alola region."
 	done
 
 RedsHouse2F_MapEventHeader:

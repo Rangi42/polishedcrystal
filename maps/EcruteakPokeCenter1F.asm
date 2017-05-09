@@ -129,6 +129,10 @@ EcruteakPokeCenter1FCooltrainerFScript:
 EcruteakPokeCenter1FGymGuyScript:
 	jumptextfaceplayer EcruteakPokeCenter1FGymGuyText
 
+PokemonJournalMortyScript:
+	setflag ENGINE_READ_MORTY_JOURNAL
+	jumptext PokemonJournalMortyText
+
 EcruteakPokeCenter1FBillMovement1:
 	step_right
 	step_right
@@ -304,6 +308,30 @@ EcruteakPokeCenter1FGymGuyText:
 	line "acy. I know it!"
 	done
 
+PokemonJournalMortyText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Morty!"
+
+	para "Morty claims to"
+	line "have once seen"
+	cont "Entei. He says:"
+
+	para "“It was amazing."
+	line "Entei looked me"
+	cont "in the eyes."
+
+	para "I'll never forget"
+	line "its eyes. It was"
+
+	para "like it could see"
+	line "right through me,"
+
+	para "down into the dep-"
+	line "ths of my heart…”"
+	done
+
 EcruteakPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -318,7 +346,8 @@ EcruteakPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalMortyScript
 
 .PersonEvents:
 	db 6

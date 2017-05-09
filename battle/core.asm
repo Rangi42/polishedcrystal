@@ -3053,9 +3053,11 @@ LostBattle: ; 3d38e
 	bit 0, a
 	jr nz, .battle_tower
 
-	ld a, [BattleType]
-	cp BATTLETYPE_CANLOSE
-	jr nz, .not_canlose
+	ld hl, wLossTextPointer
+	ld a, [hli]
+	ld h, [hl]
+	and h
+	jr z, .no_loss_text
 
 ; Remove the enemy from the screen.
 	hlcoord 0, 0
@@ -3071,7 +3073,11 @@ LostBattle: ; 3d38e
 	jr nz, .skip_win_loss_text
 	call PrintWinLossText
 .skip_win_loss_text
-	ret
+
+	ld a, [BattleType]
+	cp BATTLETYPE_CANLOSE
+	ret z
+	jr .no_loss_text
 
 .battle_tower
 ; Remove the enemy from the screen.
@@ -3091,7 +3097,7 @@ LostBattle: ; 3d38e
 	call ClearBGPalettes
 	ret
 
-.not_canlose
+.no_loss_text
 	ld a, [wLinkMode]
 	and a
 	jr nz, .LostLinkBattle
@@ -3628,9 +3634,13 @@ FinalPkmnMusicAndAnimation:
 	pop de
 .no_music
 	; ...show their sprite and final dialog...
-	call FinalPkmnSlideInEnemyTrainerFrontpic
+	ld a, [TempEnemyMonSpecies]
+	push af
+	call BattleWinSlideInEnemyTrainerFrontpic
 	farcall GetFinalPkmnTextPointer
 	call StdBattleTextBox
+	pop af
+	ld [TempEnemyMonSpecies], a
 	; ...and return the Pokémon
 	call EmptyBattleTextBox
 	call WaitBGMap
@@ -7209,21 +7219,6 @@ CheckUnownLetter: ; 3eb75
 FinalPkmnSlideInEnemyMonFrontpic:
 	call FinishBattleAnim
 	call GetMonFrontpic
-	jr FinalPkmnSlideInCommonFrontpic
-
-FinalPkmnSlideInEnemyTrainerFrontpic:
-	ld a, [TempEnemyMonSpecies]
-	push af
-	xor a
-	ld [TempEnemyMonSpecies], a
-	call FinishBattleAnim
-	ld a, [OtherTrainerClass]
-	ld [TrainerClass], a
-	ld de, VTiles2
-	farcall GetTrainerPic
-	pop af
-	ld [TempEnemyMonSpecies], a
-FinalPkmnSlideInCommonFrontpic:
 	hlcoord 18, 0
 	ld c, 0
 

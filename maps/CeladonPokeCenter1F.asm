@@ -27,6 +27,10 @@ CeladonPokeCenter1FLassScript:
 PharmacistScript_0x71e2b:
 	jumptextfaceplayer UnknownText_0x71ec1
 
+PokemonJournalErikaScript:
+	setflag ENGINE_READ_ERIKA_JOURNAL
+	jumptext PokemonJournalErikaText
+
 UnknownText_0x71e70:
 	text "Erika is a master"
 	line "of grass #mon."
@@ -55,6 +59,20 @@ UnknownText_0x71ec1:
 	line "three years ago."
 	done
 
+PokemonJournalErikaText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Erika!"
+
+	para "Rumor has it that"
+	line "if you peek into"
+	cont "Celadon Gym, you"
+
+	para "can often see"
+	line "Erika snoozing."
+	done
+
 CeladonPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -69,7 +87,8 @@ CeladonPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalErikaScript
 
 .PersonEvents:
 	db 5

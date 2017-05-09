@@ -54,6 +54,10 @@ BeautyCharlotteNoBattleScript:
 	closetext
 	end
 
+PokemonJournalJasmineScript:
+	setflag ENGINE_READ_JASMINE_JOURNAL
+	jumptext PokemonJournalJasmineText
+
 UnknownText_0x9c00e:
 	text "The sailor in the"
 	line "Olivine Café next"
@@ -119,6 +123,20 @@ BeautyCharlotteAfterText:
 	cont "special #mon?"
 	done
 
+PokemonJournalJasmineText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Jasmine!"
+
+	para "Rumor has it that"
+	line "Jasmine and Erika,"
+
+	para "the Celadon Gym"
+	line "Leader, chat about"
+	cont "fashion together."
+	done
+
 OlivinePokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -133,7 +151,8 @@ OlivinePokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalJasmineScript
 
 .PersonEvents:
 	db 5
