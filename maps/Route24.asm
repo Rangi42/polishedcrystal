@@ -8,18 +8,10 @@ Route24_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+TrainerGruntM31:
+	trainer EVENT_BEAT_ROCKET_GRUNTM_31, GRUNTM, 31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa
+
 RocketScript_0x1adbfa:
-	faceplayer
-	playmusic MUSIC_ROCKET_ENCOUNTER
-	opentext
-	writetext UnknownText_0x1adc2e
-	waitbutton
-	closetext
-	winlosstext UnknownText_0x1add67, -1
-	loadtrainer GRUNTM, 31
-	startbattle
-	dontrestartmapmusic
-	reloadmapafterbattle
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	opentext
 	writetext UnknownText_0x1addc0
@@ -37,7 +29,7 @@ RocketScript_0x1adbfa:
 	domaptrigger CERULEAN_CAPE, $1
 	pause 25
 	special Special_FadeInQuickly
-	playmapmusic
+	playmusic MUSIC_NUGGET_BRIDGE_HGSS
 	end
 
 UnknownText_0x1adc2e:
@@ -137,4 +129,4 @@ Route24_MapEventHeader:
 
 .PersonEvents:
 	db 1
-	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x1adbfa, EVENT_ROUTE_24_ROCKET
+	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
