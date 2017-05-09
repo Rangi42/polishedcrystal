@@ -232,7 +232,6 @@ Some of these may never be added; they're just suggestions.
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
 * More music
    * HG/SS Spiky-Eared Pichu theme (for some Spiky-Eared Pichu event) (already exists)
-   * R/S/E Meteor Falls (for Whirl Islands) (in progress)
    * R/S/E Route 119
    * R/S/E Route 120
    * B/W Dragonspiral Tower (for Embedded Tower)

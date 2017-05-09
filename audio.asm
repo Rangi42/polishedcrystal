@@ -263,6 +263,7 @@ SECTION "Extra Songs 15", ROMX
 
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
+INCLUDE "audio/music/rse/meteorfalls.asm"
 
 
 SECTION "Sound Effects", ROMX[$47fd], BANK[SOUND_EFFECTS]

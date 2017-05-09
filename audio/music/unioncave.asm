@@ -1,4 +1,3 @@
-Music_MeteorFallsRSE: ; TODO: add demixed Meteor Falls track and remove this
 Music_UnionCave: ; f5c60
 	musicheader 4, 1, Music_UnionCave_Ch1
 	musicheader 1, 2, Music_UnionCave_Ch2
