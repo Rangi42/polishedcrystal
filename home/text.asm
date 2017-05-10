@@ -218,25 +218,25 @@ dict2: macro
 ._\@:
 endm
 
+	dict "<START>",  NullChar
+	dict "<FAR>",    TextFar
+	dict "<LNBRK>",  LineBreak
+	dict "<NEXT>",   NextChar
+	dict "<LINK2>",  LinkButtonSound
+	dict "<SCRL2>",  ScrollText
+	dict "<NL>",     NextLineChar
+	dict "<LINE>",   LineChar
+	dict "<PARA>",   Paragraph
 	dict "<PLAYER>", PrintPlayerName
-	dict "<RIVAL>", PrintRivalName
+	dict "<RIVAL>",  PrintRivalName
+	dict "#",        PlacePoke
+	dict "<CONT>",   ContText
 	dict "<TRENDY>", PrintTrendyPhrase
-	dict "<TARGET>", PlaceMoveTargetsName
-	dict "<USER>", PlaceMoveUsersName
-	dict "<ENEMY>", PlaceEnemysName
-	dict "<NEXT>", NextChar
-	dict "<LINE>", LineChar
-	dict "<NL>", NextLineChar
-	dict TX_FAR, TextFar
-	dict $00, NullChar
-	dict $4b, Char4B
-	dict $4c, Char4C
-	dict "<PARA>", Paragraph
-	dict "#", PlacePOKe
-	dict "<LNBRK>", Char22
-	dict "<CONT>", ContText
-	dict "<DONE>", DoneText
+	dict "<DONE>",   DoneText
 	dict "<PROMPT>", PromptText
+	dict "<TARGET>", PlaceMoveTargetsName
+	dict "<USER>",   PlaceMoveUsersName
+	dict "<ENEMY>",  PlaceEnemysName
 	dict2 "¯", " "
 
 	ld [hli], a
@@ -253,9 +253,9 @@ endm
 PrintPlayerName:   print_name PlayerName   ; 118d
 PrintRivalName:    print_name RivalName    ; 1194
 PrintTrendyPhrase: print_name TrendyPhrase ; 119b
-PlacePOKe:         print_name .POKeText    ; 11c5
+PlacePoke:         print_name .PokeText    ; 11c5
 
-.POKeText:
+.PokeText:
 	db "Poké@" ; 1288
 
 PlaceMoveTargetsName:: ; 11fd
@@ -345,7 +345,7 @@ NextLineChar:: ; 12a7
 	jp NextChar
 ; 12b0
 
-Char22:: ; 12b0
+LineBreak:: ; 12b0
 	pop hl
 	ld bc, SCREEN_WIDTH
 	add hl, bc
@@ -424,7 +424,7 @@ Paragraph:: ; 12f2
 	jp NextChar
 ; 131f
 
-Char4B:: ; 131f
+LinkButtonSound:: ; 131f
 	ld a, [wLinkMode]
 	or a
 	jr nz, .communication
@@ -441,7 +441,7 @@ Char4B:: ; 131f
 	or a
 	call z, UnloadBlinkingCursor
 
-Char4C:: ; 1337
+ScrollText:: ; 1337
 	push de
 	call TextScroll
 	call TextScroll
@@ -617,33 +617,32 @@ endr
 ; 1410
 
 TextCommands:: ; 1410
-	dw Text_TX              ; $00 <START>
-	dw Text_TX_RAM          ; $01
-	dw Text_TX_BCD          ; $02
-	dw Text_TX_MOVE         ; $03
-	dw Text_TX_BOX          ; $04
-	dw Text_TX_LOW          ; $05
-	dw Text_WAIT_BUTTON     ; $06
-	dw Text_TX_SCROLL       ; $07
-	dw Text_START_ASM       ; $08
-	dw Text_TX_NUM          ; $09
-	dw Text_TX_EXIT         ; $0a
-	dw Text_PlaySound       ; $0b
-	dw Text_TX_DOTS         ; $0c
-	dw Text_0D              ; $0d
-	dw Text_PlaySound       ; $0e
-	dw Text_PlaySound       ; $0f
-	dw Text_PlaySound       ; $10
-	dw Text_PlaySound       ; $11
-	dw Text_PlaySound       ; $12
-	dw Text_PlaySound       ; $13
-	dw Text_TX_STRINGBUFFER ; $14
-	dw Text_TX_DAY          ; $15
-	dw Text_TX_FAR          ; $16
+	dw Text_Start          ; $00 <START>
+	dw Text_FromRAM        ; $01 <RAM>
+	dw Text_BCD            ; $02 <BCD>
+	dw Text_Move           ; $03 <MOVE>
+	dw Text_Box            ; $04 <BOX>
+	dw Text_Low            ; $05 <LOW>
+	dw Text_WaitButton     ; $06 <WAIT>
+	dw Text_Scroll         ; $07 <SCROLL>
+	dw Text_ASM            ; $08 <ASM>
+	dw Text_PrintNum       ; $09 <NUM>
+	dw Text_Exit           ; $0a <EXIT>
+	dw Text_PlaySound      ; $0b <DEX2>
+	dw Text_Dots           ; $0c <DOTS>
+	dw Text_ButtonSound    ; $0d <LINK>
+	dw Text_PlaySound      ; $0e <DEX1>
+	dw Text_PlaySound      ; $0f <ITEM>
+	dw Text_PlaySound      ; $10 <CAUGHT>
+	dw Text_PlaySound      ; $11 <DEX3>
+	dw Text_PlaySound      ; $12 <BEEP>
+	dw Text_PlaySound      ; $13 <SLOTS>
+	dw Text_StringBuffer   ; $14 <BUFFER>
+	dw Text_WeekDay        ; $15 <DAY>
+	dw Text_Jump           ; $16 <FAR>
 ; 143e
 
-Text_TX:: ; 143e
-; TX
+Text_Start:: ; 143e
 ; write text until "@"
 ; [$00]["...@"]
 
@@ -658,7 +657,7 @@ Text_TX:: ; 143e
 	ret
 ; 1449
 
-Text_TX_RAM:: ; 1449
+Text_FromRAM:: ; 1449
 ; text_from_ram
 ; write text from a ram address
 ; little endian
@@ -676,7 +675,7 @@ Text_TX_RAM:: ; 1449
 	ret
 ; 1455
 
-Text_TX_FAR:: ; 1455
+Text_Jump:: ; 1455
 ; text_jump
 ; write text from a different bank
 ; little endian
@@ -706,8 +705,7 @@ Text_TX_FAR:: ; 1455
 	ret
 ; 1470
 
-Text_TX_BCD:: ; 1470
-; TX_BCD
+Text_BCD:: ; 1470
 ; write bcd from address, typically ram
 ; [$02][addr][flags]
 ; flags: see PrintBCDNumber
@@ -728,8 +726,7 @@ Text_TX_BCD:: ; 1470
 	ret
 ; 1480
 
-Text_TX_MOVE:: ; 1480
-; TX_MOVE
+Text_Move:: ; 1480
 ; move to a new tile
 ; [$03][addr]
 
@@ -742,8 +739,7 @@ Text_TX_MOVE:: ; 1480
 	ret
 ; 148b
 
-Text_TX_BOX:: ; 148b
-; TX_BOX
+Text_Box:: ; 148b
 ; draw a box
 ; little endian
 ; [$04][addr][height][width]
@@ -764,8 +760,7 @@ Text_TX_BOX:: ; 148b
 	ret
 ; 149b
 
-Text_TX_LOW:: ; 149b
-; TX_LOW
+Text_Low:: ; 149b
 ; write text at (1,16)
 ; [$05]
 
@@ -773,15 +768,14 @@ Text_TX_LOW:: ; 149b
 	ret
 ; 149f
 
-Text_WAIT_BUTTON:: ; 149f
-; TX_WAITBUTTON
+Text_WaitButton:: ; 149f
 ; wait for button press
 ; show arrow
 ; [$06]
 
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jp z, Text_0D
+	jp z, Text_ButtonSound
 
 	push hl
 	call LoadBlinkingCursor
@@ -793,7 +787,7 @@ Text_WAIT_BUTTON:: ; 149f
 	ret
 ; 14ba
 
-Text_TX_SCROLL:: ; 14ba
+Text_Scroll:: ; 14ba
 ; pushes text up two lines and sets the BC cursor to the border tile
 ; below the first character column of the text box.
 	push hl
@@ -805,9 +799,7 @@ Text_TX_SCROLL:: ; 14ba
 	ret
 ; 14c9
 
-Text_START_ASM:: ; 14c9
-; TX_ASM
-
+Text_ASM:: ; 14c9
 	bit 7, h
 	jr nz, .not_rom
 	jp hl
@@ -818,8 +810,7 @@ Text_START_ASM:: ; 14c9
 	ret
 ; 14d2
 
-Text_TX_NUM:: ; 14d2
-; TX_NUM
+Text_PrintNum:: ; 14d2
 ; [$09][addr][hi:bytes lo:digits]
 	ld a, [hli]
 	ld e, a
@@ -844,7 +835,7 @@ Text_TX_NUM:: ; 14d2
 	ret
 ; 14ed
 
-Text_TX_EXIT:: ; 14ed
+Text_Exit:: ; 14ed
 	push hl
 	push bc
 	call GetJoypad
@@ -897,17 +888,17 @@ endr
 ; 1522
 
 TextSFX:: ; 152d
-	dbw TX_SOUND_0B, SFX_DEX_FANFARE_50_79
-	dbw TX_SOUND_12, SFX_FANFARE
-	dbw TX_SOUND_0E, SFX_DEX_FANFARE_20_49
-	dbw TX_SOUND_0F, SFX_ITEM
-	dbw TX_SOUND_10, SFX_CAUGHT_MON
-	dbw TX_SOUND_11, SFX_DEX_FANFARE_80_109
-	dbw TX_SOUND_13, SFX_SLOT_MACHINE_START
+	dbw "<DEX2>",   SFX_DEX_FANFARE_50_79
+	dbw "<BEEP>",   SFX_FANFARE
+	dbw "<DEX1>",   SFX_DEX_FANFARE_20_49
+	dbw "<ITEM>",   SFX_ITEM
+	dbw "<CAUGHT>", SFX_CAUGHT_MON
+	dbw "<DEX3>",   SFX_DEX_FANFARE_80_109
+	dbw "<SLOTS>",  SFX_SLOT_MACHINE_START
 	db -1
 ; 1543
 
-Text_TX_DOTS:: ; 1543
+Text_Dots:: ; 1543
 ; [$0C][num]
 	ld a, [hli]
 	ld d, a
@@ -936,7 +927,7 @@ Text_TX_DOTS:: ; 1543
 	ret
 ; 1562
 
-Text_0D:: ; 1562
+Text_ButtonSound:: ; 1562
 ; wait for key down
 ; display arrow
 	push hl
@@ -947,7 +938,7 @@ Text_0D:: ; 1562
 	ret
 ; 156a
 
-Text_TX_STRINGBUFFER:: ; 156a
+Text_StringBuffer:: ; 156a
 ; Print a string from one of the following:
 ; 0: StringBuffer3
 ; 1: StringBuffer4
@@ -977,9 +968,7 @@ endr
 	ret
 ; 1582
 
-Text_TX_DAY:: ; 1582
-; TX_DAY
-
+Text_WeekDay:: ; 1582
 	call GetWeekday
 	push hl
 	push bc

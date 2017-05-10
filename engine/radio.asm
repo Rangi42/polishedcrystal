@@ -1926,7 +1926,7 @@ BuenaOffTheAirText:
 
 CopyRadioTextToRAM:
 	ld a, [hl]
-	cp TX_FAR
+	cp "<FAR>"
 	jp z, FarCopyRadioText
 	ld de, wRadioText
 	ld bc, SCREEN_WIDTH * 2

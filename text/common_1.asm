@@ -590,7 +590,7 @@ _BenIntroText2::
 
 _BenIntroText3::
 	text ""
-	line "It's me, DJ Ben!"
+	line "It's me, DJ Ben! ♪"
 	done
 
 _FernIntroText1::
@@ -600,7 +600,7 @@ _FernIntroText1::
 
 _FernIntroText2::
 	text ""
-	line "With DJ Fern!"
+	line "With DJ Fern! ♪"
 	done
 
 _BenFernText1::
@@ -612,7 +612,7 @@ _BenFernText1::
 
 _BenFernText2A::
 	text ""
-	line "so let us jam to"
+	line "so let's jam to"
 	done
 
 _BenFernText2B::
@@ -1431,10 +1431,10 @@ UnknownText_0x1bdd96::
 	text ""
 	line "has grown a lot."
 
-	para "By level, it's"
-	line "grown by @"
+	para "It's gained @"
 	deciram StringBuffer2 + 1, 1, 3
-	text "."
+	text ""
+	line "levels."
 
 	para "If you want your"
 	line "#mon back, it"

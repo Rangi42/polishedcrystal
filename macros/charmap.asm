@@ -1,8 +1,33 @@
 ; Control characters
 	charmap "<START>",  $00
+	charmap "<RAM>",    $01
+	charmap "<BCD>",    $02
+	charmap "<MOVE>",   $03
+	charmap "<BOX>",    $04
+	charmap "<LOW>",    $05
+	charmap "<WAIT>",   $06
+	charmap "<SCROLL>", $07
+	charmap "<ASM>",    $08
+	charmap "<NUM>",    $09
+	charmap "<EXIT>",   $0a
+	charmap "<DEX2>",   $0b
+	charmap "<DOTS>",   $0c
+	charmap "<LINK>",   $0d
+	charmap "<DEX1>",   $0e
+	charmap "<ITEM>",   $0f
+	charmap "<CAUGHT>", $10
+	charmap "<DEX3>",   $11
+	charmap "<BEEP>",   $12
+	charmap "<SLOTS>",  $13
+	charmap "<BUFFER>", $14
+	charmap "<DAY>",    $15
+	charmap "<FAR>",    $16
+
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
+	charmap "<LINK2>",  $4b
+	charmap "<SCRL2>",  $4c
 	charmap "<NL>",     $4e
 	charmap "<LINE>",   $4f
 
