@@ -7,6 +7,29 @@ SafariZoneHubRestHouse_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+PokemonJournalKogaScript:
+	setflag ENGINE_READ_KOGA_JOURNAL
+	jumptext PokemonJournalKogaText
+
+PokemonJournalKogaText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Elite Four Koga!"
+
+	para "Koga is said to"
+	line "have a thorough"
+
+	para "knowledge of"
+	line "medicine."
+
+	para "He even concocts"
+	line "medicine to nurse"
+
+	para "his #mon to"
+	line "health."
+	done
+
 SafariZoneHubRestHouse_MapEventHeader:
 	; filler
 	db 0, 0
@@ -20,7 +43,11 @@ SafariZoneHubRestHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 4
+	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
 
 .PersonEvents:
 	db 0

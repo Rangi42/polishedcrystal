@@ -125,7 +125,6 @@ INCLUDE "maps/ViridianSchoolHouse.asm"
 INCLUDE "maps/EcruteakCherishBallHouse.asm"
 INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
 INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
-INCLUDE "maps/SafariZoneWardensHome.asm"
 
 
 SECTION "Map Scripts 5", ROMX[$4000], BANK[MAP_SCRIPTS_5]
@@ -141,6 +140,7 @@ INCLUDE "maps/Route36RuinsofAlphgate.asm"
 INCLUDE "maps/Route36NationalParkgate.asm"
 INCLUDE "maps/TeamRocketBaseB1F.asm"
 INCLUDE "maps/MahoganyMart1F.asm"
+INCLUDE "maps/SafariZoneWardensHome.asm"
 
 
 SECTION "Map Scripts 6", ROMX[$4000], BANK[MAP_SCRIPTS_6]
@@ -205,8 +205,8 @@ SECTION "Map Scripts 9", ROMX[$4000], BANK[MAP_SCRIPTS_9]
 
 INCLUDE "maps/KrissHouse1F.asm"
 INCLUDE "maps/KrissHouse2F.asm"
-INCLUDE "maps/Route26DayofWeekSiblingsHouse.asm"
-INCLUDE "maps/Route27RestHouse.asm"
+INCLUDE "maps/LyrasHouse1F.asm"
+INCLUDE "maps/LyrasHouse2F.asm"
 INCLUDE "maps/Route2946Gate.asm"
 INCLUDE "maps/WarehouseEntrance.asm"
 INCLUDE "maps/UndergroundPathSwitchRoomEntrances.asm"
@@ -279,6 +279,7 @@ INCLUDE "maps/CianwoodPharmacy.asm"
 INCLUDE "maps/CianwoodCityPhotoStudio.asm"
 INCLUDE "maps/CianwoodLugiaSpeechHouse.asm"
 INCLUDE "maps/StatsJudgesHouse.asm"
+INCLUDE "maps/Route26DayofWeekSiblingsHouse.asm"
 
 
 SECTION "Map Scripts 12", ROMX[$4000], BANK[MAP_SCRIPTS_12]
@@ -559,8 +560,7 @@ INCLUDE "maps/PokemonMansionB1F.asm"
 INCLUDE "maps/SafariZoneHubRestHouse.asm"
 INCLUDE "maps/SafariZoneEastRestHouse.asm"
 INCLUDE "maps/SafariZoneNorthRestHouse.asm"
-INCLUDE "maps/LyrasHouse1F.asm"
-INCLUDE "maps/LyrasHouse2F.asm"
+INCLUDE "maps/Route27RestHouse.asm"
 INCLUDE "maps/LavenderTown.asm"
 
 
@@ -575,7 +575,6 @@ INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
 INCLUDE "maps/BillsHouse.asm"
-INCLUDE "maps/MrPsychicsHouse.asm"
 INCLUDE "maps/PewterGym.asm"
 INCLUDE "maps/PewterMart.asm"
 INCLUDE "maps/RedsHouse2F.asm"
@@ -624,6 +623,7 @@ INCLUDE "maps/Route1617Gate2F.asm"
 INCLUDE "maps/Route18Gate2F.asm"
 INCLUDE "maps/SeafoamIslandsB4F.asm"
 INCLUDE "maps/CeruleanBikeShop.asm"
+INCLUDE "maps/MrPsychicsHouse.asm"
 
 
 SECTION "Map Scripts 29", ROMX

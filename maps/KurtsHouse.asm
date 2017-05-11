@@ -430,8 +430,9 @@ KurtsHouseOakPhoto:
 KurtsHouseCelebiStatue:
 	jumptext KurtsHouseCelebiStatueText
 
-KurtsHouseBookshelf:
-	jumpstd difficultbookshelf
+PokemonJournalProfWestwoodScript:
+	setflag PROF_WESTWOOD_JOURNAL
+	jumptext PokemonJournalProfWestwoodText
 
 KurtsHouseRadio:
 	jumpstd radio2
@@ -679,6 +680,24 @@ KurtsHouseCelebiStatueText:
 	cont "tector."
 	done
 
+PokemonJournalProfWestwoodText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Prof.Westwood!"
+
+	para "Prof.Westwood V"
+	line "teaches at Celadon"
+	cont "University."
+
+	para "His ancestor's re-"
+	line "search in 1925 led"
+
+	para "to the development"
+	line "of modern #"
+	cont "Balls."
+	done
+
 KurtsHouse_MapEventHeader:
 	; filler
 	db 0, 0
@@ -696,9 +715,9 @@ KurtsHouse_MapEventHeader:
 	signpost 1, 6, SIGNPOST_READ, KurtsHouseRadio
 	signpost 0, 8, SIGNPOST_READ, KurtsHouseOakPhoto
 	signpost 0, 9, SIGNPOST_READ, KurtsHouseOakPhoto
-	signpost 1, 5, SIGNPOST_READ, KurtsHouseBookshelf
-	signpost 1, 2, SIGNPOST_READ, KurtsHouseBookshelf
-	signpost 1, 3, SIGNPOST_READ, KurtsHouseBookshelf
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	signpost 1, 2, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	signpost 1, 3, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	signpost 1, 4, SIGNPOST_READ, KurtsHouseCelebiStatue
 
 .PersonEvents:

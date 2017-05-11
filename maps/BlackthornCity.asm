@@ -188,7 +188,7 @@ Text_ClairIsBeaten:
 	line "of her losing to"
 
 	para "anyone other than"
-	line "Lance."
+	line "her cousin Lance."
 	done
 
 BlackthornGrampsRefusesEntryText:
@@ -309,9 +309,11 @@ BlackthornDragonTamer3Text:
 
 	para "famous dragon"
 	line "tamers, including"
+	cont "Lance."
 
-	para "Lance, the Champ-"
-	line "ion."
+	para "He's our Gym Lead-"
+	line "er's cousin, you"
+	cont "know!"
 	done
 
 BlackthornCitySignText:

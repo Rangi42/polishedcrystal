@@ -11,6 +11,23 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 ShamoutiPokeCenter1FNurseScript:
 	jumpstd pokecenternurse
 
+PokemonJournalLoreleiScript:
+	setflag ENGINE_READ_LORELEI_JOURNAL
+	jumptext PokemonJournalLoreleiText
+
+PokemonJournalLoreleiText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Ex-Elite Lorelei!"
+
+	para "Lorelei is said to"
+	line "have a complete"
+
+	para "collection of"
+	line "#mon dolls."
+	done
+
 ShamoutiPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -25,7 +42,8 @@ ShamoutiPokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalLoreleiScript
 
 .PersonEvents:
 	db 1

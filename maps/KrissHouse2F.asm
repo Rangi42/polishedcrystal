@@ -82,8 +82,9 @@ KrissHouseRadio:
 	closetext
 	end
 
-KrissHouseBookshelf:
-	jumpstd picturebookshelf
+PokemonJournalProfElmScript:
+	setflag ENGINE_READ_PROF_ELM_JOURNAL
+	jumptext PokemonJournalProfElmText
 
 KrissHousePC:
 	opentext
@@ -115,6 +116,21 @@ KrisRadioText4:
 	line "#mon Channel…"
 	done
 
+PokemonJournalProfElmText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "#mon Prof.Elm!"
+
+	para "Prof.Elm was the"
+	line "top student of"
+	cont "Prof.Oak."
+
+	para "They're said to"
+	line "often argue about"
+	cont "research."
+	done
+
 KrissHouse2F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -130,7 +146,7 @@ KrissHouse2F_MapEventHeader:
 	db 4
 	signpost 1, 2, SIGNPOST_READ, KrissHousePC
 	signpost 1, 3, SIGNPOST_READ, KrissHouseRadio
-	signpost 1, 5, SIGNPOST_READ, KrissHouseBookshelf
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfElmScript
 	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
 
 .PersonEvents:

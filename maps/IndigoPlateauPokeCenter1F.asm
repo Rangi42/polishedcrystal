@@ -283,6 +283,10 @@ AbraScript:
 	closetext
 	end
 
+PokemonJournalGiovanniScript:
+	setflag ENGINE_READ_GIOVANNI_JOURNAL
+	jumptext PokemonJournalGiovanniText
+
 PlateauRivalMovement1:
 	step_up
 	step_up
@@ -471,6 +475,24 @@ AbraText:
 	text "Abra: Aabra…"
 	done
 
+PokemonJournalGiovanniText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Boss Giovanni!"
+
+	para "When police sear-"
+	line "ched the abandoned"
+	cont "Viridian Gym, they"
+
+	para "discovered that"
+	line "its Leader,"
+	cont "Giovanni, had"
+
+	para "also been the"
+	line "Team Rocket Boss."
+	done
+
 IndigoPlateauPokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -488,7 +510,8 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	xy_trigger 0, $4, $f, $0, PlateauRivalBattle2, $0, $0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 7, 12, SIGNPOST_READ, PokemonJournalGiovanniScript
 
 .PersonEvents:
 	db 7

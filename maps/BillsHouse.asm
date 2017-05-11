@@ -33,6 +33,13 @@ DontBattleBillScript:
 	closetext
 	end
 
+BillsHousePCScript:
+	jumptext BillsHousePCText
+
+PokemonJournalBillScript:
+	setflag ENGINE_READ_BILL_JOURNAL
+	jumptext PokemonJournalBillText
+
 BillEeveelutionLegendText:
 	text "Bill: Eevee is"
 	line "such a fascinating"
@@ -92,6 +99,32 @@ PokemaniacBillAfterText:
 	line "you've caught."
 	done
 
+BillsHousePCText:
+	text "There's a spinning"
+	line "3D model of a"
+	cont "Porygon."
+	done
+
+PokemonJournalBillText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "#Maniac Bill!"
+
+	para "Bill invented the"
+	line "#mon Storage"
+	cont "System to hold his"
+
+	para "own vast #mon"
+	line "collection."
+
+	para "Apparently, the"
+	line "first one he"
+
+	para "caught was an"
+	line "Abra."
+	done
+
 BillsHouse_MapEventHeader:
 	; filler
 	db 0, 0
@@ -105,7 +138,10 @@ BillsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 3
+	signpost 1, 5, SIGNPOST_READ, BillsHousePCScript
+	signpost 1, 6, SIGNPOST_READ, PokemonJournalBillScript
+	signpost 1, 7, SIGNPOST_READ, PokemonJournalBillScript
 
 .PersonEvents:
 	db 1

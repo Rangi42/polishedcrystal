@@ -7,6 +7,26 @@ PokemonTrainerFanClub_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
+PokemonJournalBrunoScript:
+	setflag ENGINE_READ_BROCK_JOURNAL
+	jumptext PokemonJournalBrunoText
+
+PokemonJournalBrunoText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Elite Four Bruno!"
+
+	para "Bruno apparently"
+	line "joined the Elite"
+
+	para "Four out of his"
+	line "burning ambition"
+
+	para "to battle the"
+	line "best trainers."
+	done
+
 PokemonTrainerFanClub_MapEventHeader:
 	; filler
 	db 0, 0
@@ -20,7 +40,9 @@ PokemonTrainerFanClub_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 2
+	signpost 1, 0, SIGNPOST_READ, PokemonJournalBrunoScript
+	signpost 1, 1, SIGNPOST_READ, PokemonJournalBrunoScript
 
 .PersonEvents:
 	db 0

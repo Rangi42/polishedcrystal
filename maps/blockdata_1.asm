@@ -140,8 +140,6 @@ GuideGentsHouse_BlockData:
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
 CeruleanCoupleHouse_BlockData:
-; TODO: teleporter machine tiles
-BillsHouse_BlockData:
 FuchsiaBillSpeechHouse_BlockData:
 SaffronRichSpeechHouse_BlockData:
 LavenderTownSpeechHouse_BlockData:
@@ -202,6 +200,10 @@ EusinesHouse_BlockData:
 
 CianwoodPharmacy_BlockData:
 	INCBIN "maps/CianwoodPharmacy.blk"
+
+; TODO: teleporter machine tiles
+BillsHouse_BlockData:
+	INCBIN "maps/BillsHouse.blk"
 
 SaffronBookSpeechHouse_BlockData:
 	INCBIN "maps/SaffronBookSpeechHouse.blk"

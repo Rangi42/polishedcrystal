@@ -23,6 +23,10 @@ Route3PokeCenter1FPokefanM2Script:
 Route3PokeCenter1FYoungsterScript:
 	jumptextfaceplayer Route3PokeCenter1FYoungsterText
 
+PokemonJournalKarenScript:
+	setflag ENGINE_READ_KAREN_JOURNAL
+	jumptext PokemonJournalKarenText
+
 Route3PokeCenter1FPokefanM1Text:
 	text "A few years ago"
 	line "I sold a weird-"
@@ -65,6 +69,22 @@ Route3PokeCenter1FYoungsterText:
 	cont "counter."
 	done
 
+PokemonJournalKarenText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Elite Four Karen!"
+
+	para "Karen supposedly"
+	line "began training"
+
+	para "Dark-type #mon"
+	line "to help overcome"
+
+	para "their sinister"
+	line "reputation."
+	done
+
 Route3PokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -80,6 +100,7 @@ Route3PokeCenter1F_MapEventHeader:
 
 .Signposts:
 	db 0
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalKarenScript
 
 .PersonEvents:
 	db 4

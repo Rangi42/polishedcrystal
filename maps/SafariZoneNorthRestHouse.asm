@@ -20,7 +20,11 @@ SafariZoneNorthRestHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 4
+	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
 
 .PersonEvents:
 	db 0

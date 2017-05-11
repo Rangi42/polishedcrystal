@@ -15,6 +15,10 @@ NurseScript_0x1ae59a:
 GrannyScript_0x1ae59d:
 	jumptextfaceplayer UnknownText_0x1ae5a0
 
+PokemonJournalLanceScript:
+	setflag ENGINE_READ_LANCE_JOURNAL
+	jumptext PokemonJournalLanceText
+
 UnknownText_0x1ae5a0:
 	text "Trainers who seek"
 	line "power climb Mt."
@@ -27,6 +31,19 @@ UnknownText_0x1ae5a0:
 
 	para "feel they can go"
 	line "anywhere…"
+	done
+
+PokemonJournalLanceText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Champion Lance!"
+
+	para "Lance has been"
+	line "spotted buying"
+
+	para "his capes at Cel-"
+	line "adon Dept.Store."
 	done
 
 SilverCavePokeCenter1F_MapEventHeader:
@@ -43,7 +60,8 @@ SilverCavePokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalLanceScript
 
 .PersonEvents:
 	db 2

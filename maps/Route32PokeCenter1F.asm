@@ -76,6 +76,10 @@ Route32PokeCenter1FPokefanMScript:
 	closetext
 	end
 
+PokemonJournalKurtScript:
+	setflag ENGINE_READ_KURT_JOURNAL
+	jumptext PokemonJournalKurtText
+
 UnknownText_0x69b83:
 	text "This is a great"
 	line "fishing spot."
@@ -169,6 +173,22 @@ Route32PokeCenter1FPokefanMText5:
 	line "hourrah!"
 	done
 
+PokemonJournalKurtText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Craftsman Kurt!"
+
+	para "Kurt does not let"
+	line "anyone near while"
+
+	para "he is making #"
+	line "Balls except his"
+
+	para "granddaughter"
+	line "Maizie."
+	done
+
 Route32PokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -183,11 +203,12 @@ Route32PokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalKurtScript
 
 .PersonEvents:
 	db 4
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x69b52, -1
 	person_event SPRITE_FISHING_GURU, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x69b55, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x69b80, -1
-	person_event SPRITE_POKEFAN_M, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1
+	person_event SPRITE_POKEFAN_M, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1

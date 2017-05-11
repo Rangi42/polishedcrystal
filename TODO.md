@@ -80,7 +80,8 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
-* [Pokémon Journals](http://bulbapedia.bulbagarden.net/wiki/Magazines_in_the_Pok%C3%A9mon_world#Pok.C3.A9mon_Journal) on bookshelves (Expert Belt for reading them all)
+* Whitney's [Pokémon Journal](http://bulbapedia.bulbagarden.net/wiki/Magazines_in_the_Pok%C3%A9mon_world#Pok.C3.A9mon_Journal) in the PokéCom Center
+* Expert Belt for reading all the Journals in Silver Cave Pokémon Center
 
 Shamouti Island:
 

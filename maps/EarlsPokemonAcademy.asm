@@ -141,8 +141,9 @@ AcademyNotebook:
 	closetext
 	end
 
-AcademyBookshelf:
-	jumpstd difficultbookshelf
+PokemonJournalWillScript:
+	setflag ENGINE_READ_WILL_JOURNAL
+	jumptext PokemonJournalWillText
 
 MovementData_0x68b2d:
 	turn_head_down
@@ -396,6 +397,26 @@ AcademyNotebookText3:
 	line "any more…"
 	done
 
+PokemonJournalWillText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Elite Four Will!"
+
+	para "Will does not talk"
+	line "about his past"
+
+	para "before joining the"
+	line "Elite Four."
+
+	para "Some say he worked"
+	line "for Team Rocket."
+
+	para "#mon Journal"
+	line "refuses to specu-"
+	cont "late."
+	done
+
 EarlsPokemonAcademy_MapEventHeader:
 	; filler
 	db 0, 0
@@ -410,8 +431,8 @@ EarlsPokemonAcademy_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 1, 0, SIGNPOST_READ, AcademyBookshelf
-	signpost 1, 1, SIGNPOST_READ, AcademyBookshelf
+	signpost 1, 0, SIGNPOST_READ, PokemonJournalWillScript
+	signpost 1, 1, SIGNPOST_READ, PokemonJournalWillScript
 	signpost 0, 3, SIGNPOST_READ, AcademyBlackboard
 	signpost 0, 4, SIGNPOST_READ, AcademyBlackboard
 

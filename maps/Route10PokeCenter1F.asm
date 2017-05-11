@@ -36,6 +36,10 @@ UnknownScript_0x188be8:
 CooltrainerFScript_0x188bee:
 	jumptextfaceplayer UnknownText_0x188d0c
 
+PokemonJournalAgathaScript:
+	setflag ENGINE_READ_AGATHA_JOURNAL
+	jumptext PokemonJournalAgathaText
+
 UnknownText_0x188bf1:
 	text "A #mon Center"
 	line "near a cave?"
@@ -80,6 +84,20 @@ UnknownText_0x188d0c:
 	line "Plant."
 	done
 
+PokemonJournalAgathaText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Ex-Elite Agatha!"
+
+	para "In their youth,"
+	line "Agatha and Prof."
+	cont "Oak were rivals"
+
+	para "who vied for supr-"
+	line "emacy as trainers."
+	done
+
 Route10PokeCenter1F_MapEventHeader:
 	; filler
 	db 0, 0
@@ -94,7 +112,8 @@ Route10PokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalAgathaScript
 
 .PersonEvents:
 	db 4

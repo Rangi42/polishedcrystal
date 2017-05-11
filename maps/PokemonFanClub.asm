@@ -120,6 +120,10 @@ MapPokemonFanClubSignpost0Script:
 MapPokemonFanClubSignpost1Script:
 	jumptext UnknownText_0x191e29
 
+PokemonJournalGreenScript:
+	setflag ENGINE_READ_GREEN_JOURNAL
+	jumptext PokemonJournalGreenText
+
 UnknownText_0x191881:
 	text "I'm the Chairman"
 	line "of the #mon Fan"
@@ -296,6 +300,21 @@ UnknownText_0x191e29:
 	line "brag right back!"
 	done
 
+PokemonJournalGreenText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "<PK><MN> Trainer Green!"
+
+	para "In addition to"
+	line "being a powerful"
+	cont "trainer, Green is"
+
+	para "said to be fascin-"
+	line "ated by legendary"
+	cont "#mon."
+	done
+
 PokemonFanClub_MapEventHeader:
 	; filler
 	db 0, 0
@@ -309,9 +328,10 @@ PokemonFanClub_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 3
 	signpost 0, 7, SIGNPOST_READ, MapPokemonFanClubSignpost0Script
 	signpost 0, 9, SIGNPOST_READ, MapPokemonFanClubSignpost1Script
+	signpost 1, 0, SIGNPOST_READ, PokemonJournalGreenScript
 
 .PersonEvents:
 	db 6
