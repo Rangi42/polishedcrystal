@@ -278,7 +278,3 @@ Some of these may never be added; they're just suggestions.
 * Faster Bicycle, or slower Running Shoes
 * Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
-* Add boats to Goldenrod Harbor
-* Make shiny Gyarados some other color, and red Gyarados unique
-* Add umbrellas to Olivine City benches
-* Add boats to Goldenrod Harbor
