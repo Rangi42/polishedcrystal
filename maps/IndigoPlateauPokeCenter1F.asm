@@ -511,7 +511,7 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 
 .Signposts:
 	db 1
-	signpost 7, 12, SIGNPOST_READ, PokemonJournalGiovanniScript
+	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript
 
 .PersonEvents:
 	db 7

@@ -218,7 +218,7 @@ NUM_BADGES EQU NUM_JOHTO_BADGES + NUM_KANTO_BADGES
 	const_def
 	const FALKNER_JOURNAL ; Violet Pokémon Center
 	const BUGSY_JOURNAL ; Azalea Pokémon Center
-	const WHITNEY_JOURNAL ; TODO: Goldenrod PokéCom Center
+	const WHITNEY_JOURNAL ; Goldenrod PokéCom Center
 	const MORTY_JOURNAL ; Ecruteak Pokémon Center
 	const CHUCK_JOURNAL ; Cianwood Pokémon Center
 	const JASMINE_JOURNAL ; Olivine Pokémon Center

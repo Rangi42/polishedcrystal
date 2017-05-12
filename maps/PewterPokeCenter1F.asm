@@ -77,12 +77,9 @@ PokemonJournalBrockText:
 	para "Special Feature:"
 	line "Leader Brock!"
 
-	para "Brock rarely"
-	line "laughs, but is"
-
-	para "said to be unable"
-	line "to stop if he"
-	cont "starts."
+	para "Whitney is said to"
+	line "admire Bruno of"
+	cont "the Elite Four."
 	done
 
 PewterPokeCenter1F_MapEventHeader:

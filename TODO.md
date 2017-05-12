@@ -55,6 +55,7 @@
 * Inver in Route 16 house
 * Gourmet Maniac in Route 32 Coast house
 * Pay Day tutor in Goldenrod Game Corner
+* Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals 
 
 Shamouti Island:
 
@@ -80,8 +81,6 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
-* Whitney's [Pokémon Journal](http://bulbapedia.bulbagarden.net/wiki/Magazines_in_the_Pok%C3%A9mon_world#Pok.C3.A9mon_Journal) in the PokéCom Center
-* Expert Belt for reading all the Journals in Silver Cave Pokémon Center
 
 Shamouti Island:
 

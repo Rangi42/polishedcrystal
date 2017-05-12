@@ -213,6 +213,19 @@ UnknownText_0x62370:
 	line "#mon News"
 	done
 
+PokemonJournalWhitneyScript:
+	setflag ENGINE_READ_WHITNEY_JOURNAL
+	jumptext PokemonJournalWhitneyText
+
+PokemonJournalWhitneyText:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Whitney!"
+
+	para ""
+	done
+
 NewsMachineScript:
 	jumptext UnknownText_0x623c7
 
@@ -422,7 +435,8 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 15
+	db 16
+	signpost 7, 11, SIGNPOST_READ, PokemonJournalWhitneyScript
 	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
 	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
 	signpost 7, 24, SIGNPOST_RIGHT, NewsMachineScript
