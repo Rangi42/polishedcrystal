@@ -132,6 +132,24 @@ LoadSpecialMapPalette: ; 494ac
 	ld de, UnknBGPals
 	ld bc, 8 palettes
 	call FarCopyWRAM
+
+; hack to replace green with Poké Mart blue for maps using Mart.blk
+	ld a, [MapBlockDataBank]
+	cp $2b ; BANK(CherrygroveMart_BlockData)
+	jr nz, .not_mart
+	ld a, [MapBlockDataPointer]
+	cp $d8 ; CherrygroveMart_BlockData % $100
+	jr nz, .not_mart
+	ld a, [MapBlockDataPointer + 1]
+	cp $40 ; CherrygroveMart_BlockData / $100
+	jr nz, .not_mart
+	ld hl, MartBluePalette
+	ld a, $5
+	ld de, UnknBGPals + 2 palettes
+	ld bc, 1 palettes
+	call FarCopyWRAM
+.not_mart
+
 	scf
 	ret
 
@@ -569,6 +587,12 @@ INCLUDE "tilesets/dark_cave.pal"
 NavelRockPalette:
 INCLUDE "tilesets/navel_rock.pal"
 
+MartBluePalette:
+	RGB 20, 27, 28
+	RGB 06, 22, 25
+	RGB 04, 17, 19
+	RGB 07, 07, 07
+
 LinkTrade_Layout_FillBox: ; 49336
 .row
 	push bc
@@ -640,7 +664,7 @@ endr
 
 LoadLinkTradePalette: ; 49811
 	ld a, $5
-	ld de, UnknBGPals + $10
+	ld de, UnknBGPals + 2 palettes
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
 	call FarCopyWRAM
