@@ -223,7 +223,9 @@ PokemonJournalWhitneyText:
 	para "Special Feature:"
 	line "Leader Whitney!"
 
-	para ""
+	para "Whitney is said to"
+	line "admire Bruno of"
+	cont "the Elite Four."
 	done
 
 NewsMachineScript:
