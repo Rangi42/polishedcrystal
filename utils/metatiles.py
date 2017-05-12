@@ -135,7 +135,7 @@ class PaletteMap(object):
 		'gate': lambda: load_palette('tilesets/gate.pal'),
 		'hotel': lambda: load_palette('tilesets/hotel.pal'),
 		'ice_path': lambda: load_palette('tilesets/ice_path.pal'),
-		'mansion': lambda: load_palette('tilesets/celadon_mansion.pal')[8:16],
+		'mart': lambda: load_palette('tilesets/mart.pal'),
 		'pokecenter': lambda: load_palette('tilesets/pokecenter.pal'),
 		'pokecom': lambda: load_palette('tilesets/pokecom.pal'),
 		'quiet_cave': lambda: load_palette('tilesets/quiet_cave.pal'),

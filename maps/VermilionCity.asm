@@ -288,6 +288,9 @@ VermilionCityDiglettsCaveSign:
 VermilionCityPortSign:
 	jumptext VermilionCityPortSignText
 
+VermilionCityTruckScript:
+	jumptext VermilionCityTruckText
+
 VermilionCityCutTree:
 	jumpstd cuttree
 
@@ -542,6 +545,16 @@ VermilionCityPortSignText:
 	line "Entrance"
 	done
 
+VermilionCityTruckText:
+	text "It's a truck full"
+	line "of building supp-"
+	cont "lies."
+
+	para "Underneath it"
+	line "there's…"
+	cont "nothing!"
+	done
+
 VermilionCity_MapEventHeader:
 	; filler
 	db 0, 0
@@ -569,12 +582,14 @@ VermilionCity_MapEventHeader:
 	xy_trigger 0, $20, $13, $0, LawrenceRightIntroScript, $0, $0
 
 .Signposts:
-	db 6
+	db 8
 	signpost 5, 25, SIGNPOST_READ, VermilionCitySign
 	signpost 23, 5, SIGNPOST_READ, VermilionGymSign
 	signpost 17, 5, SIGNPOST_READ, PokemonFanClubSign
 	signpost 17, 33, SIGNPOST_READ, VermilionCityDiglettsCaveSign
 	signpost 19, 27, SIGNPOST_READ, VermilionCityPortSign
+	signpost 13, 28, SIGNPOST_READ, VermilionCityTruckScript
+	signpost 13, 29, SIGNPOST_READ, VermilionCityTruckScript
 	signpost 23, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
 
 .PersonEvents:

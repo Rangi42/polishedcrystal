@@ -264,7 +264,7 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_DEPT_STORE_5F,                     4,  8 ; 18
 	mapgroup GOLDENROD_DEPT_STORE_6F,                     4,  8 ; 19
 	mapgroup GOLDENROD_DEPT_STORE_ELEVATOR,               2,  2 ; 20
-	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   4,  8 ; 21
+	mapgroup GOLDENROD_DEPT_STORE_ROOF,                   6,  8 ; 21
 	mapgroup GOLDENROD_GAME_CORNER,                       7, 10 ; 22
 	mapgroup GOLDENROD_POKECOM_CENTER_1F,                 8, 16 ; 23
 	mapgroup GOLDENROD_POKECOM_CENTER_OFFICE,             4,  4 ; 24
@@ -447,7 +447,7 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_MANSION_1F,                          5,  4 ; 14
 	mapgroup CELADON_MANSION_2F,                          5,  4 ; 15
 	mapgroup CELADON_MANSION_3F,                          5,  4 ; 16
-	mapgroup CELADON_MANSION_ROOF,                        5,  4 ; 17
+	mapgroup CELADON_MANSION_ROOF,                        7,  4 ; 17
 	mapgroup CELADON_MANSION_ROOF_HOUSE,                  4,  4 ; 18
 	mapgroup CELADON_POKECENTER_1F,                       4,  6 ; 19
 	mapgroup CELADON_GAME_CORNER,                         7, 10 ; 20

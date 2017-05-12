@@ -487,7 +487,6 @@ SECTION "Map Scripts 22", ROMX[$4000], BANK[MAP_SCRIPTS_22]
 
 INCLUDE "maps/EcruteakShrineOutside.asm"
 INCLUDE "maps/EcruteakShrineInside.asm"
-INCLUDE "maps/PalletTown.asm"
 INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/VermilionCity.asm"
 INCLUDE "maps/Route2North.asm"
@@ -499,6 +498,7 @@ INCLUDE "maps/Route15.asm"
 INCLUDE "maps/Route33.asm"
 INCLUDE "maps/Route37.asm"
 INCLUDE "maps/Route46.asm"
+INCLUDE "maps/CliffCave.asm"
 
 
 SECTION "Map Scripts 23", ROMX[$4000], BANK[MAP_SCRIPTS_23]
@@ -528,8 +528,8 @@ INCLUDE "maps/SeafoamIslandsB2F.asm"
 INCLUDE "maps/SeafoamIslandsB3F.asm"
 INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
-INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/Route48.asm"
+INCLUDE "maps/PalletTown.asm"
 
 
 SECTION "Map Scripts 24", ROMX[$4000], BANK[MAP_SCRIPTS_24]

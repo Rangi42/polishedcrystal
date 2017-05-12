@@ -46,9 +46,6 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_ALPH_WORD_ROOM
 	jp z, .load_eight_bg_palettes
 
-	ld hl, CeladonMansionPalette
-	cp TILESET_CELADON_MANSION
-	jp z, .load_eight_time_of_day_bg_palettes
 	ld hl, SafariZonePalette
 	cp TILESET_SAFARI_ZONE
 	jp z, .load_eight_time_of_day_bg_palettes
@@ -85,6 +82,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_oaks_lab
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
+	cp TILESET_CELADON_MANSION
+	jp z, .maybe_celadon_mansion_roof
 	cp TILESET_MART
 	jp z, .maybe_goldenrod_dept_store_roof
 	cp TILESET_LIGHTHOUSE
@@ -306,13 +305,24 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, TinTowerRoofPalette
 	jp .load_eight_time_of_day_bg_palettes
 
-.maybe_goldenrod_dept_store_roof
+.maybe_celadon_mansion_roof
 	ld a, [MapGroup]
-	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
+	cp GROUP_CELADON_MANSION_ROOF
 	jp nz, .do_nothing
 	ld a, [MapNumber]
-	cp MAP_GOLDENROD_DEPT_STORE_ROOF
+	cp MAP_CELADON_MANSION_ROOF
 	jp nz, .do_nothing
+	ld hl, CeladonMansionRoofPalette
+	jp .load_eight_time_of_day_bg_palettes
+
+.maybe_goldenrod_dept_store_roof
+	ld hl, MartPalette
+	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
+	jp nz, .load_eight_bg_palettes
+	ld a, [MapNumber]
+	cp MAP_GOLDENROD_DEPT_STORE_ROOF
+	jp nz, .load_eight_bg_palettes
 	ld hl, GoldenrodDeptStoreRoofPalette
 	jp .load_eight_time_of_day_bg_palettes
 
@@ -444,9 +454,6 @@ INCLUDE "tilesets/quiet_cave.pal"
 RuinsPalette:
 INCLUDE "tilesets/ruins.pal"
 
-CeladonMansionPalette:
-INCLUDE "tilesets/celadon_mansion.pal"
-
 SafariZonePalette:
 INCLUDE "tilesets/safari_zone.pal"
 
@@ -522,6 +529,12 @@ INCLUDE "tilesets/embedded_tower.pal"
 
 TinTowerRoofPalette:
 INCLUDE "tilesets/tin_tower_roof.pal"
+
+CeladonMansionRoofPalette:
+INCLUDE "tilesets/celadon_mansion_roof.pal"
+
+MartPalette:
+INCLUDE "tilesets/mart.pal"
 
 GoldenrodDeptStoreRoofPalette:
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
