@@ -1,5 +1,4 @@
 const_value set 2
-	const FIGHTINGDOJO_POKE_BALL
 	const FIGHTINGDOJO_BLACK_BELT
 	const REMATCH_RED_1
 	const REMATCH_GREEN_2
@@ -241,9 +240,6 @@ MapFightingDojoSignpost2Script:
 .done
 	closetext
 	end
-
-FightingDojoFocusBand:
-	itemball FOCUS_BAND
 
 RematchRed0Script:
 	checkcode VAR_WEEKDAY
@@ -906,8 +902,7 @@ FightingDojo_MapEventHeader:
 	signpost 0, 9, SIGNPOST_READ, MapFightingDojoSignpost2Script
 
 .PersonEvents:
-	db 8
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FightingDojoFocusBand, EVENT_PICKED_UP_FOCUS_BAND
+	db 7
 	person_event SPRITE_BLACK_BELT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x189b61, -1
 	person_event SPRITE_REMATCH_GYM_LEADER_1, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RematchRed0Script, EVENT_REMATCH_GYM_LEADER_1
 	person_event SPRITE_REMATCH_GYM_LEADER_2, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RematchGreen1Script, EVENT_REMATCH_GYM_LEADER_2

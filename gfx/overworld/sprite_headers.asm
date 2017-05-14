@@ -152,6 +152,12 @@ ElmSprite: ; 14790
 IvySprite:
 	sprite_header IvySpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
+WestwoodSprite:
+	sprite_header WestwoodSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
+
+WillowSprite:
+	sprite_header WillowSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
+
 BillSprite: ; 14760
 	sprite_header BillSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14766
@@ -265,6 +271,9 @@ BuenaSprite: ; 1482c
 CaptainSprite: ; 148d4
 	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 148da
+
+DeanSprite:
+	sprite_header DeanSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 ArtistSprite:
 	sprite_header ArtistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

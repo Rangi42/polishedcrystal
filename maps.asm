@@ -643,6 +643,10 @@ INCLUDE "maps/CeladonUniversityClassroom1.asm"
 INCLUDE "maps/CeladonUniversityClassroom2.asm"
 INCLUDE "maps/CeladonUniversityClassroom3.asm"
 INCLUDE "maps/CeladonUniversityClassroom4.asm"
+
+
+SECTION "Map Scripts 30", ROMX
+
 INCLUDE "maps/CeladonHotel1F.asm"
 INCLUDE "maps/CeladonHotel2F.asm"
 INCLUDE "maps/CeladonHotelRoom1.asm"
@@ -654,7 +658,7 @@ INCLUDE "maps/CeladonOldManSpeechHouse.asm"
 INCLUDE "maps/CeladonDevelopmentSpeechHouse.asm"
 
 
-SECTION "Map Scripts 30", ROMX
+SECTION "Map Scripts 31", ROMX
 
 INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/MountMoon1F.asm"
@@ -664,7 +668,7 @@ INCLUDE "maps/Route18East.asm"
 INCLUDE "maps/Route18West.asm"
 
 
-SECTION "Map Scripts 31", ROMX
+SECTION "Map Scripts 32", ROMX
 
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route34Coast.asm"
@@ -684,14 +688,14 @@ INCLUDE "maps/SafariZoneNorth.asm"
 INCLUDE "maps/Route19BeachHouse.asm"
 
 
-SECTION "Map Scripts 32", ROMX
+SECTION "Map Scripts 33", ROMX
 
 INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
 
 
-SECTION "Map Scripts 33", ROMX
+SECTION "Map Scripts 34", ROMX
 
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/MurkySwamp.asm"
@@ -702,6 +706,10 @@ INCLUDE "maps/ScaryCave1F.asm"
 INCLUDE "maps/ScaryCaveB1F.asm"
 INCLUDE "maps/ScaryCaveShipwreck.asm"
 INCLUDE "maps/PokemonTrainerFanClub.asm"
+
+
+SECTION "Map Scripts 35", ROMX
+
 INCLUDE "maps/SaffronHitmontopKidHouse.asm"
 INCLUDE "maps/SaffronBookSpeechHouse.asm"
 INCLUDE "maps/SaffronOrreSpeechHouse.asm"
@@ -711,6 +719,10 @@ INCLUDE "maps/SoulHouseB2F.asm"
 INCLUDE "maps/SoulHouseB3F.asm"
 INCLUDE "maps/Route16West.asm"
 INCLUDE "maps/PsychicInversHouse.asm"
+
+
+SECTION "Map Scripts 36", ROMX
+
 INCLUDE "maps/DimCave1F.asm"
 INCLUDE "maps/DimCave2F.asm"
 INCLUDE "maps/DimCave3F.asm"
@@ -720,7 +732,7 @@ INCLUDE "maps/Route32CoastHouse.asm"
 INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
-SECTION "Map Scripts 34", ROMX
+SECTION "Map Scripts 37", ROMX
 
 INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiIsland.asm"

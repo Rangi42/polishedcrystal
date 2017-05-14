@@ -1,8 +1,9 @@
 ## Bugs
 
+* Gender ratios are not working
 * Large Pokémon animations have backwards tiles in the stats screen
 * Caught Pokémon sent to the PC become level 255
-* Some caught Pokémon have wrong held items 
+* Some caught Pokémon have wrong held items
 * Dark types are not immune to moves whose priority was increased by Prankster
 * Foe's Substitute makes your moves become something else
 * In-battle item use messages show the wrong Pokémon name
@@ -48,14 +49,15 @@
 
 ## Characters
 
-* Flannery in Safari Zone
+* Flannery in Safari Zone West
 * Skyla in Olivine Lighthouse roof
 * Imakuni in Celadon University
 * Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house
 * Gourmet Maniac in Route 32 Coast house
 * Pay Day tutor in Goldenrod Game Corner
-* Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals 
+* Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
+* Electrodes in Rock Tunnel
 
 Shamouti Island:
 
@@ -76,6 +78,7 @@ Shamouti Island:
 Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * RBY teleporter machine in Bill's house
+* Safari Zone West
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Celadon University (Cubone fossil exhibit)
 * Soul House

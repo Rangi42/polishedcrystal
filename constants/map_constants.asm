@@ -482,7 +482,7 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 49
 	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 50
 	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 51
-	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  6 ; 52
+	mapgroup CELADON_UNIVERSITY_CAFETERIA,                4,  8 ; 52
 	mapgroup CELADON_UNIVERSITY_HYPER_TEST_ROOM,          6,  4 ; 53
 	mapgroup CELADON_UNIVERSITY_POOL,                     5,  8 ; 54
 	mapgroup CELADON_UNIVERSITY_CLASSROOM_1,              6,  4 ; 55

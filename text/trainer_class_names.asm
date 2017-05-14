@@ -84,6 +84,9 @@
 	db "Guitarist@"        ; GUITARISTF
 	db "Biker@"            ; BIKER
 	db "Roughneck@"        ; ROUGHNECK
+	db "Tamer@"            ; TAMER
+	db "Artist@"           ; ARTIST
+	db "Aroma Lady@"       ; AROMA_LADY
 	db "Sightseer@"        ; SIGHTSEERM
 	db "Sightseer@"        ; SIGHTSEERF
 	db "Ace Trainer@"      ; COOLTRAINERM
@@ -107,6 +110,7 @@
 	db "Ex-Elite@"         ; AGATHA
 	db "Rock Hound@"       ; STEVEN
 	db "Researcher@"       ; CYNTHIA
+	db "Psychic@"          ; INVER
 	db "<PK><MN> Trainer@" ; CHERYL
 	db "<PK><MN> Trainer@" ; RILEY
 	db "<PK><MN> Trainer@" ; BUCK

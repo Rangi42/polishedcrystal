@@ -3,6 +3,7 @@ const_value set 2
 	const CELADONGYM_LASS1
 	const CELADONGYM_LASS2
 	const CELADONGYM_BEAUTY
+	const CELADONGYM_LADY
 	const CELADONGYM_TWIN1
 	const CELADONGYM_TWIN2
 
@@ -29,6 +30,7 @@ ErikaScript_0x72a6a:
 	setevent EVENT_BEAT_LASS_MICHELLE
 	setevent EVENT_BEAT_PICNICKER_TANYA
 	setevent EVENT_BEAT_BEAUTY_JULIA
+	setevent EVENT_BEAT_AROMA_LADY_JESSICA
 	setevent EVENT_BEAT_TWINS_JO_AND_ZOE
 	opentext
 	writetext UnknownText_0x72c96
@@ -97,6 +99,17 @@ BeautyJuliaScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x72f01
+	waitbutton
+	closetext
+	end
+
+TrainerAroma_ladyJessica:
+	trainer EVENT_BEAT_BEAUTY_JULIA, AROMA_LADY, JESSICA, Aroma_ladyJessicaSeenText, Aroma_ladyJessicaBeatenText, 0, Aroma_ladyJessicaScript
+
+Aroma_ladyJessicaScript:
+	end_if_just_battled
+	opentext
+	writetext Aroma_ladyJessicaAfterText
 	waitbutton
 	closetext
 	end
@@ -259,6 +272,28 @@ UnknownText_0x72f01:
 	cont "like Erika?"
 	done
 
+Aroma_ladyJessicaSeenText:
+	text "There is an in-"
+	line "triguing scent"
+	cont "around you…"
+	done
+
+Aroma_ladyJessicaBeatenText:
+	text "The foul scent"
+	line "of defeat…"
+	done
+
+Aroma_ladyJessicaAfterText:
+	text "Gloom releases a"
+	line "foul fragrance,"
+
+	para "but Erika knows"
+	line "how to turn it"
+
+	para "into a sweet"
+	line "perfume."
+	done
+
 TwinsJoandzoe1SeenText:
 	text "We'll show you"
 	line "#mon moves that"
@@ -306,10 +341,11 @@ CeladonGym_MapEventHeader:
 	signpost 15, 6, SIGNPOST_READ, CeladonGymStatue
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_ERIKA, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
 	person_event SPRITE_LASS, 8, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassMichelle, -1
 	person_event SPRITE_LASS, 8, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTanya, -1
 	person_event SPRITE_BEAUTY, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyJulia, -1
+	person_event SPRITE_LADY, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAroma_ladyJessica, -1
 	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe1, -1
 	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe2, -1

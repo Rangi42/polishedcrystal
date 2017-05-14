@@ -203,8 +203,8 @@ ENDM
 	engine_flag DailyFlags2, 6 ; red in mt. silver
 	engine_flag DailyFlags2, 7 ; leaf in navel rock
 
-	engine_flag DailyFlags3, 0 ; unused
-	engine_flag DailyFlags3, 1 ; unused ; $60
+	engine_flag DailyFlags3, 0 ; bought leftovers
+	engine_flag DailyFlags3, 1 ; took hyper test ; $60
 	engine_flag DailyFlags3, 2 ; unused
 	engine_flag DailyFlags3, 3 ; unused
 	engine_flag DailyFlags3, 4 ; unused

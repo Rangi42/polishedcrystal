@@ -840,6 +840,7 @@ KRIS EQU __enum__
 	trainerclass ARTIST ; 58
 
 	trainerclass AROMA_LADY ; 59
+	const JESSICA
 
 	trainerclass SIGHTSEERM ; 5a
 
@@ -865,6 +866,9 @@ KRIS EQU __enum__
 	const KIERAN
 	const FINCH
 	const PETRIE
+	const COOLTRAINERM_COREY
+	const COOLTRAINERM_RAYMOND
+	const FERGUS
 
 	trainerclass COOLTRAINERF ; 5d
 	const BETH1
@@ -890,6 +894,7 @@ KRIS EQU __enum__
 	const SALMA
 	const BONITA
 	const SERA
+	const NEESHA
 
 	trainerclass ACE_DUO ; 5e
 	const ELANANDIDA1

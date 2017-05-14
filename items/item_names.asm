@@ -71,7 +71,7 @@
 	db "Max Repel@"
 	db "Escape Rope@"
 	db "# Doll@"
-	db "Ability Cap.@"
+	db "Ability Cap@"
 	db "Leaf Stone@"
 	db "Fire Stone@"
 	db "Water Stone@"

@@ -133,34 +133,6 @@ CeladonCafeBakerScript:
 EatathonContestPoster:
 	jumptext EatathonContestPosterText
 
-CeladonCafeTrashcan:
-	checkevent EVENT_FOUND_LEFTOVERS_IN_CELADON_CAFE
-	iftrue .TrashEmpty
-	giveitem LEFTOVERS
-	iffalse .PackFull
-	opentext
-	itemtotext LEFTOVERS, $0
-	writetext FoundLeftoversText
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	closetext
-	setevent EVENT_FOUND_LEFTOVERS_IN_CELADON_CAFE
-	end
-
-.PackFull:
-	opentext
-	itemtotext LEFTOVERS, $0
-	writetext FoundLeftoversText
-	buttonsound
-	writetext NoRoomForLeftoversText
-	waitbutton
-	closetext
-	end
-
-.TrashEmpty:
-	jumpstd trashcan
-
 UnknownText_0x730de:
 	text "Hi!"
 
@@ -311,18 +283,6 @@ EatathonContestPosterText:
 	line "all for free!"
 	done
 
-FoundLeftoversText:
-	text "<PLAYER> found"
-	line "@"
-	text_from_ram StringBuffer3
-	text "!"
-	done
-
-NoRoomForLeftoversText:
-	text "But <PLAYER> can't"
-	line "hold another item…"
-	done
-
 CeladonCafe_MapEventHeader:
 	; filler
 	db 0, 0
@@ -336,9 +296,8 @@ CeladonCafe_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 1
 	signpost 0, 5, SIGNPOST_READ, EatathonContestPoster
-	signpost 1, 7, SIGNPOST_READ, CeladonCafeTrashcan
 
 .PersonEvents:
 	db 7

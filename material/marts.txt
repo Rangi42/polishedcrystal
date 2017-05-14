@@ -1,9 +1,9 @@
 SOOTHE_BELL (PC: Ruins of Alph) [HGSS: National Park]
 
 Battle Tower #1:
-CHOICE_BAND (PC: exclusive)
-CHOICE_SCARF (PC: exclusive) [HGSS: Mom]
-CHOICE_SPECS (PC: exclusive) [HGSS: Lake of Rage]
+CHOICE_BAND (PC: Celadon Four)
+CHOICE_SCARF (PC: Mom) [HGSS: Mom]
+CHOICE_SPECS (TODO: ?) [HGSS: Lake of Rage]
 EXPERT_BELT (PC: ?) [HGSS: Mt.Silver]
 MUSCLE_BAND (PC: Steven) [HGSS: Mom]
 WISE_GLASSES (PC: Cynthia) [HGSS: Pewter City]
@@ -87,8 +87,8 @@ LIGHT_CLAY (Dim Cave) [HGSS: Route 9]
 Girl on Warm Beach or Shamouti Market:
 SHELL_BELL (one per day) (PC: Cerulean Cape) [HGSS: Route 32]
 
-Shamouti Hotel Restaurant Baker:
-LEFTOVERS (one per day) (PC: Celadon Restaurant)
+Celadon University Baker:
+LEFTOVERS (one per day) (PC: Celadon University)
 
 Silph employee:
 MAX_POTION

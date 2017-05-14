@@ -1,4 +1,5 @@
 const_value set 2
+	const CELADONUNIVERSITYDEANSOFFICE_DEAN
 
 CeladonUniversityDeansOffice_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,41 @@ CeladonUniversityDeansOffice_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+CeladonUniversityDeansOfficeDeanScript:
+	jumptextfaceplayer .Text
+
+.Text:
+	text "TODO"
+	done
+
+CeladonUniversityDeansOfficeSignpost1:
+	jumptext .Text
+
+.Text:
+	text "TODO"
+	done
+
+CeladonUniversityDeansOfficeSignpost2:
+	jumptext .Text
+
+.Text:
+	text "TODO"
+	done
+
+CeladonUniversityDeansOfficeComputer:
+	jumptext .Text
+
+.Text:
+	text "TODO"
+	done
+
+CeladonUniversityDeansOfficeBookshelf:
+	jumptext .Text
+
+.Text:
+	text "TODO"
+	done
 
 CeladonUniversityDeansOffice_MapEventHeader:
 	; filler
@@ -20,7 +56,12 @@ CeladonUniversityDeansOffice_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 4
+	signpost 0, 2, SIGNPOST_READ, CeladonUniversityDeansOfficeSignpost1
+	signpost 0, 3, SIGNPOST_READ, CeladonUniversityDeansOfficeSignpost2
+	signpost 4, 5, SIGNPOST_READ, CeladonUniversityDeansOfficeComputer
+	signpost 1, 1, SIGNPOST_READ, CeladonUniversityDeansOfficeBookshelf
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_DEAN, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityDeansOfficeDeanScript, -1
