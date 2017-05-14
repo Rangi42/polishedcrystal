@@ -98,8 +98,8 @@ CeladonUniversityHyperTestRoom_MapEventHeader:
 	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
 	signpost 1, 6, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf1
 	signpost 1, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf2
-	signpost 4, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomComputer
-	signpost 6, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomComputer
+	signpost 4, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
+	signpost 6, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 
 .PersonEvents:
 	db 4

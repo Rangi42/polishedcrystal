@@ -1,6 +1,6 @@
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM4_RAYMOND
-	const CELADONUNIVERSITYCLASSROOM4_COOLTRAINER_F
+	const CELADONUNIVERSITYCLASSROOM4_CANDELA
 	const CELADONUNIVERSITYCLASSROOM4_BUG_CATCHER
 	const CELADONUNIVERSITYCLASSROOM4_FISHER
 	const CELADONUNIVERSITYCLASSROOM4_LADY
@@ -150,11 +150,20 @@ CeladonUniversityClassroom4RaymondScript:
 	line "burden."
 	done
 
-CeladonUniversityClassroom4CooltrainerfScript:
+CeladonUniversityClassroom4CandelaScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Hi! I'm Candela."
+	line "I teach #mon"
+	cont "Battling!"
+
+	para "I'm researching"
+	line "ways to enhance"
+
+	para "#mon's natural"
+	line "power in the pur-"
+	cont "suit of strength."
 	done
 
 CeladonUniversityClassroom4Bug_catcherScript:
@@ -240,7 +249,19 @@ CeladonUniversityClassroom4Blackboard:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "Be aware of these"
+	line "factors in battle:"
+	cont "- Type chart"
+	cont "- Move effects"
+	cont "- Move categories"
+	cont "- Conditions"
+	cont "- Held items"
+	cont "- Base stats"
+	cont "- Effort values"
+	cont "- Natures"
+	cont "- Abilities"
+	cont "- Weather"
+	cont "- Others?"
 	done
 
 CeladonUniversityClassroom4Bookshelf1:
@@ -308,7 +329,7 @@ CeladonUniversityClassroom4_MapEventHeader:
 .PersonEvents:
 	db 6
 	person_event SPRITE_COOLTRAINER_M, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4RaymondScript, -1
-	person_event SPRITE_COOLTRAINER_F, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4CooltrainerfScript, -1
+	person_event SPRITE_CANDELA, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4CandelaScript, -1
 	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Bug_catcherScript, -1
 	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4FisherScript, -1
 	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4LadyScript, -1

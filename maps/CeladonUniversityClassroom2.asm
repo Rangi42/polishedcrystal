@@ -1,5 +1,5 @@
 const_value set 2
-	const CELADONUNIVERSITYCLASSROOM2_TEACHER
+	const CELADONUNIVERSITYCLASSROOM2_BLANCHE
 	const CELADONUNIVERSITYCLASSROOM2_YOUNGSTER
 	const CELADONUNIVERSITYCLASSROOM2_CHILD
 	const CELADONUNIVERSITYCLASSROOM2_FISHER
@@ -12,11 +12,19 @@ CeladonUniversityClassroom2_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-CeladonUniversityClassroom2TeacherScript:
+CeladonUniversityClassroom2BlancheScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "I am Blanche."
+	line "I teach History"
+	cont "here."
+
+	para "We must learn from"
+	line "history, or we"
+
+	para "will be doomed to"
+	line "repeat it."
 	done
 
 CeladonUniversityClassroom2YoungsterScript:
@@ -48,13 +56,15 @@ CeladonUniversityClassroom2ChildScript:
 	cont "it up!"
 	done
 
-CeladonUniversityClassroom2FisherScript:
+CeladonUniversityClassroom2TeacherScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "Back in the day,"
-	line "even Prof.Oak used"
-	cont "to teach here."
+	text "You're from Johto?"
+	line "That region has"
+
+	para "such fascinating"
+	line "history!"
 	done
 
 CeladonUniversityClassroom2CooltrainermScript:
@@ -92,7 +102,28 @@ CeladonUniversityClassroom2Blackboard:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "There's a timeline"
+	line "of recent history."
+
+	para "400 years ago:"
+	line "Toxic move invent-"
+	cont "ed."
+
+	para "71 years ago:"
+	line "modern # Ball"
+	cont "developed."
+
+	para "27 years ago:"
+	line "first Moon land-"
+	cont "ing."
+
+	para "Three years ago:"
+	line "first virtual"
+	cont "#mon created."
+
+	para "“Hypothesis: tech-"
+	line "nology grows expo-"
+	cont "nentially.”"
 	done
 
 CeladonUniversityClassroom2Bookshelf1:
@@ -139,8 +170,8 @@ CeladonUniversityClassroom2_MapEventHeader:
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, -1
+	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2BlancheScript, -1
 	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2YoungsterScript, -1
-	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2ChildScript, -1
-	person_event SPRITE_FISHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2FisherScript, -1
+	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2ChildScript, -1
+	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, -1
 	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1

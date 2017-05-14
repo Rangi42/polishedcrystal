@@ -1,5 +1,5 @@
 const_value set 2
-	const CELADONUNIVERSITYCLASSROOM3_TEACHER
+	const CELADONUNIVERSITYCLASSROOM3_SPARK
 	const CELADONUNIVERSITYCLASSROOM3_CHILD
 	const CELADONUNIVERSITYCLASSROOM3_LASS
 	const CELADONUNIVERSITYCLASSROOM3_SUPER_NERD
@@ -11,11 +11,26 @@ CeladonUniversityClassroom3_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-CeladonUniversityClassroom3TeacherScript:
+CeladonUniversityClassroom3SparkScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Hey! I'm Spark."
+	line "I teach Science--"
+
+	para "right now, it's"
+	line "#biology."
+
+	para "We're studying how"
+	line "#mon reproduce."
+
+	para "Prof.Elm has pion-"
+	line "eered the field."
+
+	para "Oh, you know him!"
+	line "Is it true that he"
+	cont "actually lives in"
+	cont "his lab?"
 	done
 
 CeladonUniversityClassroom3ChildScript:
@@ -41,7 +56,7 @@ CeladonUniversityClassroom3LassScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "My professor said"
+	text "My instructor said"
 	line "that Magneton is a"
 
 	para "union of three"
@@ -78,7 +93,20 @@ CeladonUniversityClassroom3Blackboard:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "'Phylogenetics'"
+	line "is on the board."
+
+	para "“…#mon can be"
+	line "divided into 14"
+	cont "“Egg groups”,"
+	cont "plus Ditto."
+
+	para "Baby #mon can-"
+	line "not breed."
+
+	para "Legendary #mon"
+	line "have not been"
+	cont "studied.”"
 	done
 
 CeladonUniversityClassroom3Bookshelf1:
@@ -131,7 +159,7 @@ CeladonUniversityClassroom3_MapEventHeader:
 
 .PersonEvents:
 	db 4
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3TeacherScript, -1
+	person_event SPRITE_SPARK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3SparkScript, -1
 	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3ChildScript, -1
 	person_event SPRITE_LASS, 7, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3LassScript, -1
 	person_event SPRITE_SUPER_NERD, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3Super_nerdScript, -1

@@ -3,9 +3,9 @@ const_value set 2
 	const CELADONUNIVERSITYLIBRARY1F_GENTLEMAN
 	const CELADONUNIVERSITYLIBRARY1F_COOLTRAINER_F
 	const CELADONUNIVERSITYLIBRARY1F_GAMEBOY_KID
-	const CELADONUNIVERSITYLIBRARY1F_TEACHER
+	const CELADONUNIVERSITYLIBRARY1F_POKEFAN_F
 	const CELADONUNIVERSITYLIBRARY1F_COOLTRAINER_M
-	const CELADONUNIVERSITYLIBRARY1F_RECEPTIONIST
+	const CELADONUNIVERSITYLIBRARY1F_TEACHER
 	const CELADONUNIVERSITYLIBRARY1F_BOOK
 
 CeladonUniversityLibrary1F_MapScriptHeader:
@@ -68,7 +68,7 @@ CeladonUniversityLibrary1FGameboyKidScript:
 	para "I'm playing Tetris!"
 	done
 
-CeladonUniversityLibrary1FTeacherScript:
+CeladonUniversityLibrary1FPokefan_fScript:
 	jumptextfaceplayer .Text
 
 .Text:
@@ -117,7 +117,7 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	cont "that Focus Band."
 	done
 
-CeladonUniversityLibrary1FReceptionistScript:
+CeladonUniversityLibrary1FTeacherScript:
 	jumptextfaceplayer .Text
 
 .Text:
@@ -135,7 +135,11 @@ CeladonUniversityLibrary1FBookScript:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "flower arranging."
+
+	para "A Sunflora is on"
+	line "the cover."
 	done
 
 CeladonUniversityLibrary1FSignpost1:
@@ -258,7 +262,7 @@ CeladonUniversityLibrary1FBookshelf7:
 	para "This is a video"
 	line "game!"
 
-	para "A Pokemon pinball"
+	para "A #mon pinball"
 	line "machine is shown"
 
 	para "proudly on the"
@@ -364,7 +368,7 @@ CeladonUniversityLibrary1F_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGentlemanScript, -1
 	person_event SPRITE_COOLTRAINER_F, 5, 0, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainerfScript, -1
 	person_event SPRITE_GAMEBOY_KID, 5, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGameboyKidScript, -1
-	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FTeacherScript, -1
+	person_event SPRITE_POKEFAN_F, 8, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FPokefan_fScript, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainermScript, -1
-	person_event SPRITE_RECEPTIONIST, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FReceptionistScript, -1
+	person_event SPRITE_TEACHER, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FTeacherScript, -1
 	person_event SPRITE_BOOK_UNOWN_R, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FBookScript, -1

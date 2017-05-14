@@ -281,7 +281,7 @@ CeladonUniversityLounge_MapEventHeader:
 	db 3
 	signpost 5, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf1
 	signpost 8, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
-	signpost 7, 0, SIGNPOST_READ, CeladonUniversityLoungeComputer
+	signpost 7, 0, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
 
 .PersonEvents:
 	db 6

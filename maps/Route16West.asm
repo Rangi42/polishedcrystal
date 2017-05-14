@@ -105,15 +105,21 @@ TrainerCooltrainerfSera:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Do you think you"
+	line "can handle me?"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Congrats! ♥"
 	done
 
 .AfterText:
-	text "TODO"
+	text "I've gone out as a"
+	line "a Cosplayer, but"
+
+	para "an Ace Trainer's"
+	line "outfit is more"
+	cont "intimidating."
 	done
 
 TrainerBeautyNicole:

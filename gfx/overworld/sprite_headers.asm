@@ -158,6 +158,9 @@ WestwoodSprite:
 WillowSprite:
 	sprite_header WillowSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
+AndySprite:
+	sprite_header AndySpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+
 BillSprite: ; 14760
 	sprite_header BillSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 ; 14766

@@ -636,7 +636,6 @@ INCLUDE "maps/CeladonUniversityDeansOffice.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"
 INCLUDE "maps/CeladonUniversityWillowsOffice.asm"
 INCLUDE "maps/CeladonUniversityLounge.asm"
-INCLUDE "maps/CeladonUniversityCafeteria.asm"
 INCLUDE "maps/CeladonUniversityClassroom1.asm"
 INCLUDE "maps/CeladonUniversityClassroom2.asm"
 INCLUDE "maps/CeladonUniversityClassroom3.asm"
@@ -647,6 +646,7 @@ SECTION "Map Scripts 30", ROMX
 
 INCLUDE "maps/CeladonUniversityHyperTestRoom.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
+INCLUDE "maps/CeladonUniversityCafeteria.asm"
 
 
 SECTION "Map Scripts 31", ROMX

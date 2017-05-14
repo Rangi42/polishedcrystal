@@ -13,21 +13,58 @@ CeladonUniversityWillowsOfficeWillowScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Hello there!"
+	line "I am Prof.Willow."
+
+	para "I supervise"
+	line "Candela, Blanche,"
+	cont "and Spark in their"
+
+	para "teaching and re-"
+	line "search."
+
+	para "You may run into"
+	line "them in classes."
+
+	para "I also study #-"
+	line "mon habitats and"
+	cont "distribution."
+
+	para "I'm very busy, but"
+	line "my excellent"
+
+	para "assistants help"
+	line "get work done."
 	done
 
 CeladonUniversityWillowsOfficeScientistScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "I get to work as"
+	line "Prof.Willow's"
+	cont "aide!"
+
+	para "I'm cataloguing"
+	line "my observations"
+	cont "of Route 7."
+
+	para "Today I saw 42"
+	line "Raticate and"
+	cont "37 Pidgeotto…"
+	cont "and one Vulpix!"
 	done
 
 CeladonUniversityWillowsOfficeBlackboard:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "Someone wrote “DO"
+	line "NOT ERASE” with"
+
+	para "an arrow toward"
+	line "an illegible"
+	cont "scrawl…"
 	done
 
 CeladonUniversityWillowsOfficeBookshelf1:
@@ -35,13 +72,11 @@ CeladonUniversityWillowsOfficeBookshelf1:
 
 .Text:
 	text "It's a book about"
-	line "a legendary #-"
-	cont "mon that lives"
-	cont "above the clouds."
+	line "ecological niches"
 
-	para "It flies grace-"
-	line "fully like a"
-	cont "meteor."
+	para "and how #mon"
+	line "fit within their"
+	cont "environments."
 	done
 
 CeladonUniversityWillowsOfficeBookshelf2:
@@ -61,7 +96,9 @@ CeladonUniversityWillowsOfficeComputer:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "“Pokemon Transfer"
+	line "System” is on the"
+	cont "screen."
 	done
 
 CeladonUniversityWillowsOffice_MapEventHeader:
@@ -82,7 +119,7 @@ CeladonUniversityWillowsOffice_MapEventHeader:
 	signpost 0, 1, SIGNPOST_READ, CeladonUniversityWillowsOfficeBlackboard
 	signpost 1, 2, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf1
 	signpost 1, 3, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf2
-	signpost 2, 5, SIGNPOST_READ, CeladonUniversityWillowsOfficeComputer
+	signpost 2, 5, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
 
 .PersonEvents:
 	db 2

@@ -1,5 +1,6 @@
 AgathaSpriteGFX:              INCBIN "gfx/overworld/agatha.2bpp"
 AnabelSpriteGFX:              INCBIN "gfx/overworld/anabel.2bpp"
+AndySpriteGFX:                INCBIN "gfx/overworld/andy.2bpp"
 ArcherSpriteGFX:              INCBIN "gfx/overworld/archer.2bpp"
 ArianaSpriteGFX:              INCBIN "gfx/overworld/ariana.2bpp"
 BlancheSpriteGFX:             INCBIN "gfx/overworld/blanche.2bpp"

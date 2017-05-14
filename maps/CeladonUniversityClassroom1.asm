@@ -1,6 +1,6 @@
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI
-	const CELADONUNIVERSITYCLASSROOM1_COOLTRAINER_M
+	const CELADONUNIVERSITYCLASSROOM1_ANDY
 	const CELADONUNIVERSITYCLASSROOM1_DRAGON_TAMER
 	const CELADONUNIVERSITYCLASSROOM1_LADY
 	const CELADONUNIVERSITYCLASSROOM1_ARTIST1
@@ -74,7 +74,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	para "Hey! Move those"
 	line "feet!"
 
-	para "What? Pokemon?"
+	para "What? #mon?"
 
 	para "You want to"
 	line "battle me?"
@@ -122,15 +122,23 @@ CeladonUniversityClassroom1ImakuniScript:
 	line "a poet!"
 	done
 
-CeladonUniversityClassroom1CooltrainermScript:
+CeladonUniversityClassroom1AndyScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "Remember, draw"
+	text "Hello there!"
+	line "I'm Prof.Andy,"
+	cont "and I teach art!"
+
+	para "Remember, draw"
 	line "what you see,"
 
 	para "not what you think"
 	line "you see."
+
+	para "Get past your pre-"
+	line "conceptions about"
+	cont "how things look."
 	done
 
 CeladonUniversityClassroom1Dragon_tamerScript:
@@ -196,7 +204,11 @@ CeladonUniversityClassroom1Blackboard:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "There's a descrip-"
+	line "tion of two-point"
+
+	para "and three-point"
+	line "perspective."
 	done
 
 CeladonUniversityClassroom1Bookshelf1:
@@ -245,10 +257,10 @@ CeladonUniversityClassroom1_MapEventHeader:
 
 .PersonEvents:
 	db 7
-	person_event SPRITE_IMAKUNI, 7, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
-	person_event SPRITE_COOLTRAINER_M, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1CooltrainermScript, -1
-	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Dragon_tamerScript, -1
+	person_event SPRITE_IMAKUNI, 7, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
+	person_event SPRITE_ANDY, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1AndyScript, -1
+	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Dragon_tamerScript, -1
 	person_event SPRITE_LADY, 5, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1LadyScript, -1
 	person_event SPRITE_ARTIST, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist1Script, -1
-	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist2Script, -1
-	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist3Script, -1
+	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist2Script, -1
+	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist3Script, -1

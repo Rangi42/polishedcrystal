@@ -216,7 +216,7 @@ CeladonUniversityLibrary2FBookshelf8:
 
 .Text:
 	text "A boy is shown"
-	line "riding a Pokemon"
+	line "riding a #mon"
 
 	para "on the cover"
 	line "of this book."
@@ -387,42 +387,38 @@ CeladonUniversityLibrary2FComputer1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "There's a login"
+	line "screen with a"
+
+	para "background image"
+	line "of a Magikarp."
 	done
 
 CeladonUniversityLibrary2FComputer2:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "Someone forgot to"
+	line "log out!"
 	done
 
 CeladonUniversityLibrary2FComputer3:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "There's a story"
+	line "full of grammar"
+	cont "and spelling"
+	cont "errors."
 	done
 
 CeladonUniversityLibrary2FComputer4:
 	jumptext .Text
 
 .Text:
-	text "TODO"
-	done
-
-CeladonUniversityLibrary2FComputer5:
-	jumptext .Text
-
-.Text:
-	text "TODO"
-	done
-
-CeladonUniversityLibrary2FComputer6:
-	jumptext .Text
-
-.Text:
-	text "TODO"
+	text "There's a web page"
+	line "about how to be a"
+	cont "“l33t h4x0r”."
 	done
 
 CeladonUniversityLibrary2F_MapEventHeader:
@@ -460,12 +456,12 @@ CeladonUniversityLibrary2F_MapEventHeader:
 	signpost 7, 11, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf18
 	signpost 7, 12, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf19
 	signpost 7, 13, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf20
-	signpost 6, 1, SIGNPOST_READ, CeladonUniversityLibrary2FComputer1
-	signpost 6, 3, SIGNPOST_READ, CeladonUniversityLibrary2FComputer2
-	signpost 8, 1, SIGNPOST_READ, CeladonUniversityLibrary2FComputer3
-	signpost 8, 3, SIGNPOST_READ, CeladonUniversityLibrary2FComputer4
-	signpost 10, 1, SIGNPOST_READ, CeladonUniversityLibrary2FComputer5
-	signpost 10, 3, SIGNPOST_READ, CeladonUniversityLibrary2FComputer6
+	signpost 6, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
+	signpost 6, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer2
+	signpost 8, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer3
+	signpost 8, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
+	signpost 10, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
+	signpost 10, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer4
 
 .PersonEvents:
 	db 7
