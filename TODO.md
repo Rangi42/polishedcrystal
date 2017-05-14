@@ -253,6 +253,8 @@ Some of these may never be added; they're just suggestions.
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
+* Championship title defense like in Gen VII (against rival, Lyra, Lance, Prof.Elm, Clair, Blue, Eusine, Palmer, Steven, Cynthia, Caitlin, Kimono Girl Naoko, Lawrence, etc)
+* Use DVs to vary Pokémon colors like in Stadium
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
