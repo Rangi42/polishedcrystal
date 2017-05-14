@@ -12485,6 +12485,18 @@ RoughneckGroup:
 TamerGroup:
 ; ================================
 ; ================
+
+	; TAMER
+	db "Brett@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, ARBOK
+	db 59, TAUROS
+	db 61, URSARING
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -14234,6 +14246,9 @@ TowerTycoonGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 JessieJamesGroup:
 ; ================================
 ; ================
@@ -14253,9 +14268,6 @@ JessieJamesGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 LoreleiGroup:

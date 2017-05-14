@@ -1198,8 +1198,9 @@ Group17Sprites:
 ; SafariZoneEast
 ; SafariZoneHub
 ; SafariZoneNorth
+; SafariZoneWest
+	db SPRITE_COOLTRAINER_M
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_COWGIRL
 	db SPRITE_FISHER
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
@@ -1207,10 +1208,11 @@ Group17Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_LASS
+	db SPRITE_COWGIRL ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
+	; 12 total sprites
 	db 0
 
 

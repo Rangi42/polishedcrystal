@@ -2166,9 +2166,9 @@
 ; TODO: organize events
 	const EVENT_GOT_PP_MAX_IN_UNIVERSITY
 	const EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
+	const EVENT_BEAT_TAMER_BRETT
 
 ; Unused placeholder events
-	const EVENT_7DB
 	const EVENT_7DC
 	const EVENT_7DD
 	const EVENT_7DE

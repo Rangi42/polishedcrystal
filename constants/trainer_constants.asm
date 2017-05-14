@@ -836,6 +836,7 @@ KRIS EQU __enum__
 	const MARKEY
 
 	trainerclass TAMER ; 57
+	const BRETT
 
 	trainerclass ARTIST ; 58
 

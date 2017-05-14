@@ -810,9 +810,12 @@
 	map_header_2 SafariZoneHub, SAFARI_ZONE_HUB, $0, 0
 	map_header_2 SafariZoneEast, SAFARI_ZONE_EAST, $0, 0
 	map_header_2 SafariZoneNorth, SAFARI_ZONE_NORTH, $0, 0
+	map_header_2 SafariZoneWest, SAFARI_ZONE_WEST, $0, 0
 	map_header_2 SafariZoneHubRestHouse, SAFARI_ZONE_HUB_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneEastRestHouse, SAFARI_ZONE_EAST_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneNorthRestHouse, SAFARI_ZONE_NORTH_REST_HOUSE, $0, 0
+	map_header_2 SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
+	map_header_2 SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
 	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $43, 0
 	map_header_2 NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
 	map_header_2 NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0

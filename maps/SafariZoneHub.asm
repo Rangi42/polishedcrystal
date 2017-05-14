@@ -40,8 +40,8 @@ SafariZoneHub_MapEventHeader:
 	warp_def $1b, $11, 2, SAFARI_ZONE_FUCHSIA_GATE
 	warp_def $c, $1f, 1, SAFARI_ZONE_EAST
 	warp_def $d, $1f, 2, SAFARI_ZONE_EAST
-	warp_def $2, $6, 3, SAFARI_ZONE_NORTH
-	warp_def $2, $7, 4, SAFARI_ZONE_NORTH
+	warp_def $c, $2, 5, SAFARI_ZONE_WEST
+	warp_def $d, $2, 6, SAFARI_ZONE_WEST
 	warp_def $2, $10, 5, SAFARI_ZONE_NORTH
 	warp_def $2, $11, 6, SAFARI_ZONE_NORTH
 	warp_def $15, $13, 1, SAFARI_ZONE_HUB_REST_HOUSE

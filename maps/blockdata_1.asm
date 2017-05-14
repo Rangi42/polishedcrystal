@@ -201,7 +201,6 @@ EusinesHouse_BlockData:
 CianwoodPharmacy_BlockData:
 	INCBIN "maps/CianwoodPharmacy.blk"
 
-; TODO: teleporter machine tiles
 BillsHouse_BlockData:
 	INCBIN "maps/BillsHouse.blk"
 

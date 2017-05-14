@@ -64,9 +64,14 @@ SafariZoneEast_BlockData:
 SafariZoneNorth_BlockData:
 	INCBIN "maps/SafariZoneNorth.blk"
 
+SafariZoneWest_BlockData:
+	INCBIN "maps/SafariZoneWest.blk"
+
 SafariZoneHubRestHouse_BlockData:
 SafariZoneEastRestHouse_BlockData:
 SafariZoneNorthRestHouse_BlockData:
+SafariZoneWestRestHouse1_BlockData:
+SafariZoneWestRestHouse2_BlockData:
 	INCBIN "maps/SafariZoneRestHouse.blk"
 
 QuietCave1F_BlockData:

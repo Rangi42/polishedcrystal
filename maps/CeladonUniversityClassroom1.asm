@@ -128,7 +128,9 @@ CeladonUniversityClassroom1AndyScript:
 .Text:
 	text "Hello there!"
 	line "I'm Prof.Andy,"
-	cont "and I teach art!"
+
+	para "and I teach what"
+	line "I love--art!"
 
 	para "Remember, draw"
 	line "what you see,"

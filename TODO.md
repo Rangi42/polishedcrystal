@@ -76,9 +76,7 @@ Shamouti Island:
 
 Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
 
-* RBY teleporter machine in Bill's house
-* Safari Zone West
-* Celadon University (computers)
+* Safari Zone West (NPCs)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
 * Soul House
 * Lavender Radio Tower

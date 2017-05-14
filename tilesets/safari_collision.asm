@@ -73,3 +73,4 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, TALL_GRASS, TALL_GRASS
