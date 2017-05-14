@@ -206,28 +206,63 @@ CeladonUniversityLoungeSuper_nerd2Script:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "I'm writing scripts"
+	line "for a game."
+
+	para "Do not said use"
+	line "asm!"
 	done
 
 CeladonUniversityLoungeBookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's stuffed full"
+	line "of copies of"
+	cont "#mon manga!"
 	done
 
 CeladonUniversityLoungeBookshelf2:
-	jumptext .Text
+	opentext
+	writetext .Text1
+	waitbutton
+	checkevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
+	iftrue .GotItem
+	verbosegiveitem PP_MAX
+	iffalse .Done
+	setevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
+.Done
+	closetext
+	end
 
-.Text:
-	text "TODO"
+.GotItem
+	writetext .Text2
+	waitbutton
+	closetext
+	end
+
+.Text1:
+	text "This book has a"
+	line "secret compartment"
+
+	para "where the pages"
+	line "should be!"
+	done
+
+.Text2:
+	text "Too bad--it's"
+	line "empty."
 	done
 
 CeladonUniversityLoungeComputer:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "There's a player"
+	line "character running"
+
+	para "around a 2D"
+	line "Celadon City."
 	done
 
 CeladonUniversityLounge_MapEventHeader:

@@ -30,11 +30,31 @@ CeladonUniversityWillowsOfficeBlackboard:
 	text "TODO"
 	done
 
-CeladonUniversityWillowsOfficeBookshelf:
+CeladonUniversityWillowsOfficeBookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "a legendary #-"
+	cont "mon that lives"
+	cont "above the clouds."
+
+	para "It flies grace-"
+	line "fully like a"
+	cont "meteor."
+	done
+
+CeladonUniversityWillowsOfficeBookshelf2:
+	jumptext .Text
+
+.Text:
+	text "It's a promotional"
+	line "flyer for the"
+	cont "Safari Zone."
+
+	para "Lots of exotic-"
+	line "looking #mon"
+	cont "adorn it."
 	done
 
 CeladonUniversityWillowsOfficeComputer:
@@ -60,8 +80,8 @@ CeladonUniversityWillowsOffice_MapEventHeader:
 	db 5
 	signpost 0, 0, SIGNPOST_READ, CeladonUniversityWillowsOfficeBlackboard
 	signpost 0, 1, SIGNPOST_READ, CeladonUniversityWillowsOfficeBlackboard
-	signpost 1, 2, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf
-	signpost 1, 3, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf
+	signpost 1, 2, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf1
+	signpost 1, 3, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf2
 	signpost 2, 5, SIGNPOST_READ, CeladonUniversityWillowsOfficeComputer
 
 .PersonEvents:

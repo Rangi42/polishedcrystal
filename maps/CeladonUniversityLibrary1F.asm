@@ -164,84 +164,168 @@ CeladonUniversityLibrary1FBookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "Huh? Someone left"
+	line "an old photograph"
+	cont "in this book."
+
+	para "Erika and a man"
+	line "with a gentle"
+
+	para "smile are posing"
+	line "happily alongside"
+	cont "an Oddish."
 	done
 
 CeladonUniversityLibrary1FBookshelf2:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a photo album"
+	line "containing many"
+
+	para "pictures of"
+	line "#mon."
+
+	para "“Todd Snap's Scrap-"
+	line "folio” is written"
+	cont "on the cover."
 	done
 
 CeladonUniversityLibrary1FBookshelf3:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "a man who taught"
+
+	para "his #mon to"
+	line "play a musical"
+	cont "instrument."
+
+	para "They seem the best"
+	line "of friends."
 	done
 
 CeladonUniversityLibrary1FBookshelf4:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "#mon palin-"
+	cont "dromes."
+
+	para "There's an Eevee"
+	line "and a Girafarig"
+	cont "on the cover."
 	done
 
 CeladonUniversityLibrary1FBookshelf5:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "This book is about"
+	line "Toy #mon that"
+
+	para "come to life after"
+	line "being wound up by"
+	cont "a Wonder Key."
+
+	para "They look kinda"
+	line "cute."
 	done
 
 CeladonUniversityLibrary1FBookshelf6:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "a #mon puppet"
+	cont "that can't tell"
+	cont "lies."
+
+	para "“Pinpokéo” is"
+	line "written on the"
+	cont "cover."
 	done
 
 CeladonUniversityLibrary1FBookshelf7:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a bo…"
+	line "wait…"
+
+	para "This is a video"
+	line "game!"
+
+	para "A Pokemon pinball"
+	line "machine is shown"
+
+	para "proudly on the"
+	line "box art."
 	done
 
 CeladonUniversityLibrary1FBookshelf8:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book writ-"
+	line "ten by a fishing"
+	cont "guru providing"
+
+	para "advice to new"
+	line "anglers."
+
+	para "“Odds and Rods” is"
+	line "written on the"
+	cont "cover."
 	done
 
 CeladonUniversityLibrary1FBookshelf9:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a manual"
+	line "explaining the"
+
+	para "#mon Trading"
+	line "Card game."
 	done
 
 CeladonUniversityLibrary1FBookshelf10:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a cookbook"
+	line "full of #mon-"
+	cont "themed recipes!"
+
+	para "Jigglypuff Jello,"
+	line "Charmander Chut-"
+	cont "ney, Munchlax"
+	cont "Snacks…"
 	done
 
 CeladonUniversityLibrary1FBookshelf11:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a guide to"
+	line "Poffin blending."
+
+	para "A famous #mon"
+	line "breeder is on the"
+	cont "cover."
 	done
 
 CeladonUniversityLibrary1FBookshelf12:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "“The Secret Life"
+	line "of Laughter” by"
+	cont "Joe King."
+	cont "Puntastic!"
 	done
 
 CeladonUniversityLibrary1F_MapEventHeader:

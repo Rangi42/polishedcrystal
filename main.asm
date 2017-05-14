@@ -5659,6 +5659,10 @@ SECTION "sprites_4", ROMX
 
 INCLUDE "gfx/overworld/sprites_4.asm"
 
+SECTION "sprites_5", ROMX
+
+INCLUDE "gfx/overworld/sprites_5.asm"
+
 SECTION "bg_effects", ROMX[$4000], BANK[$32]
 
 INCLUDE "battle/bg_effects.asm"

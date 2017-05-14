@@ -51,7 +51,6 @@
 
 * Flannery in Safari Zone West
 * Skyla in Olivine Lighthouse roof
-* Imakuni in Celadon University
 * Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house
 * Gourmet Maniac in Route 32 Coast house
@@ -79,8 +78,8 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 
 * RBY teleporter machine in Bill's house
 * Safari Zone West
+* Celadon University (computers)
 * Lucky Island (wild Chansey and Togepi/Togetic, Lucky Egg)
-* Celadon University (Cubone fossil exhibit)
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club

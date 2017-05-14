@@ -199,11 +199,28 @@ CeladonUniversityClassroom1Blackboard:
 	text "TODO"
 	done
 
-CeladonUniversityClassroom1Bookshelf:
+CeladonUniversityClassroom1Bookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "Smeargle, a"
+	cont "#mon artist."
+
+	para "It's full of beau-"
+	line "tiful drawings."
+	done
+
+CeladonUniversityClassroom1Bookshelf2:
+	jumptext .Text
+
+.Text:
+	text "It's a brochure"
+	line "showcasing fine"
+	cont "art from a place"
+
+	para "called Lilycove"
+	line "Museum."
 	done
 
 CeladonUniversityClassroom1_MapEventHeader:
@@ -223,8 +240,8 @@ CeladonUniversityClassroom1_MapEventHeader:
 	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
 	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
 	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf2
 
 .PersonEvents:
 	db 7

@@ -195,18 +195,16 @@ CeladonUniversity1FTrophyCaseSign:
 	cont "medals."
 	done
 
-CeladonUniversity1FBookshelf1:
+CeladonUniversity1FBookshelf:
 	jumptext .Text
 
 .Text:
-	text "TODO"
-	done
+	text "There are tons of"
+	line "yearbooks here."
 
-CeladonUniversity1FBookshelf2:
-	jumptext .Text
-
-.Text:
-	text "TODO"
+	para "Students have"
+	line "scribbled all over"
+	cont "them."
 	done
 
 CeladonUniversity1F_MapEventHeader:
@@ -242,8 +240,8 @@ CeladonUniversity1F_MapEventHeader:
 	signpost 5, 23, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
 	signpost 13, 6, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
 	signpost 13, 7, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 26, SIGNPOST_READ, CeladonUniversity1FBookshelf1
-	signpost 13, 27, SIGNPOST_READ, CeladonUniversity1FBookshelf2
+	signpost 13, 26, SIGNPOST_READ, CeladonUniversity1FBookshelf
+	signpost 13, 27, SIGNPOST_READ, CeladonUniversity1FBookshelf
 
 .PersonEvents:
 	db 8

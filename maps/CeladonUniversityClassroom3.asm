@@ -81,11 +81,32 @@ CeladonUniversityClassroom3Blackboard:
 	text "TODO"
 	done
 
-CeladonUniversityClassroom3Bookshelf:
+CeladonUniversityClassroom3Bookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book of"
+	line "prototype designs"
+
+	para "for technological"
+	line "devices."
+
+	para "Hey! An early"
+	line "#gear diagram"
+	cont "is in here!"
+	done
+
+CeladonUniversityClassroom3Bookshelf2:
+	jumptext .Text
+
+.Text:
+	text "It's a paper writ-"
+	line "ten by Prof."
+	cont "Silktree."
+
+	para "“Ruins of Alph"
+	line "Investigation"
+	cont "Report”…"
 	done
 
 CeladonUniversityClassroom3_MapEventHeader:
@@ -105,8 +126,8 @@ CeladonUniversityClassroom3_MapEventHeader:
 	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom3Blackboard
 	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom3Blackboard
 	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom3Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf2
 
 .PersonEvents:
 	db 4

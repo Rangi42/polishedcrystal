@@ -243,11 +243,46 @@ CeladonUniversityClassroom4Blackboard:
 	text "TODO"
 	done
 
-CeladonUniversityClassroom4Bookshelf:
+CeladonUniversityClassroom4Bookshelf1:
+	checkevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
+	iftrue .GotItem
+	opentext
+	writetext .Text1
+	buttonsound
+	verbosegiveitem X_SPCL_ATK
+	iffalse .Done
+	setevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
+.Done
+	closetext
+	end
+
+.GotItem:
+	jumptext .Text2
+
+.Text1:
+	text "This bookcase is"
+	line "a mess!"
+
+	para "<PLAYER> straight-"
+	line "ened up the books."
+
+	para "…Oh?"
+	done
+
+.Text2:
+	text "This bookcase is"
+	line "all neat and tidy."
+	done
+
+CeladonUniversityClassroom4Bookshelf2:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a #mon"
+	line "coloring book."
+
+	para "What's this doing"
+	line "here?"
 	done
 
 CeladonUniversityClassroom4_MapEventHeader:
@@ -267,8 +302,8 @@ CeladonUniversityClassroom4_MapEventHeader:
 	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
 	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
 	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf2
 
 .PersonEvents:
 	db 6

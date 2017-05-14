@@ -51,11 +51,27 @@ CeladonUniversityHyperTestRoomMagikarpSign:
 	line "swimming around."
 	done
 
-CeladonUniversityHyperTestRoomBookshelf:
+CeladonUniversityHyperTestRoomBookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "This book has a"
+	line "bookmark in it."
+
+	para "Someone's not done"
+	line "with it yet!"
+	done
+
+CeladonUniversityHyperTestRoomBookshelf2:
+	jumptext .Text
+
+.Text:
+	text "It's a copy of"
+	line "Nintendo Power!"
+
+	para "A Pikachu picture"
+	line "fills the front"
+	cont "cover."
 	done
 
 CeladonUniversityHyperTestRoomComputer:
@@ -80,8 +96,8 @@ CeladonUniversityHyperTestRoom_MapEventHeader:
 .Signposts:
 	db 5
 	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf2
 	signpost 4, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomComputer
 	signpost 6, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomComputer
 

@@ -118,140 +118,269 @@ CeladonUniversityLibrary2FBookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book con-"
+	line "taining #mon"
+
+	para "of an ancient"
+	line "alphabet."
+
+	para "With one of each"
+	line "kind, they can"
+	cont "grant wishes."
 	done
 
 CeladonUniversityLibrary2FBookshelf2:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "This book is"
+	line "falling apart."
+
+	para "The title is no"
+	line "longer readable,"
+
+	para "but there's a pic-"
+	line "ture of a #mon"
+
+	para "wearing heavy"
+	line "armor."
 	done
 
 CeladonUniversityLibrary2FBookshelf3:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book with a"
+	line "giant padlock on"
+	cont "the cover."
+
+	para "Better leave it"
+	line "alone."
 	done
 
 CeladonUniversityLibrary2FBookshelf4:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "This book's written"
+	line "in a foreign"
+	cont "language!"
+
+	para "Better put it"
+	line "back…"
 	done
 
 CeladonUniversityLibrary2FBookshelf5:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "Behind these"
+	line "books…"
+
+	para "Nope. There's"
+	line "nothing here."
 	done
 
 CeladonUniversityLibrary2FBookshelf6:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "#mon that have"
+
+	para "regional diff-"
+	line "erences."
+
+	para "There's a picture"
+	line "of a Raichu that"
+	cont "looks a little"
+	cont "strange…"
 	done
 
 CeladonUniversityLibrary2FBookshelf7:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "#mon Contests."
+
+	para "An impressive-"
+	line "looking building"
+
+	para "is pictured on"
+	line "the cover."
 	done
 
 CeladonUniversityLibrary2FBookshelf8:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "A boy is shown"
+	line "riding a Pokemon"
+
+	para "on the cover"
+	line "of this book."
+
+	para "“How to Train Your"
+	line "Dragonite” is"
+	cont "written in bold."
 	done
 
 CeladonUniversityLibrary2FBookshelf9:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book de-"
+	line "picting a world"
+
+	para "inhabited entirely"
+	line "by #mon!"
+
+	para "“Pikachu's Adven-"
+	line "tures in #Park”"
+
+	para "is written on the"
+	line "cover."
 	done
 
 CeladonUniversityLibrary2FBookshelf10:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "an island of giant"
+	cont "#mon robots."
+
+	para "“#mon Robotics”"
+	line "by Anne Droid…"
 	done
 
 CeladonUniversityLibrary2FBookshelf11:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "“Forgive and"
+	line "Forget” by Saul"
+	cont "Goode."
+
+	para "There's a picture"
+	line "of a man with a"
+	cont "big grin."
 	done
 
 CeladonUniversityLibrary2FBookshelf12:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "“Weightlessness”"
+	line "by Andy Gravity."
+	cont "Sounds flighty!"
 	done
 
 CeladonUniversityLibrary2FBookshelf13:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book"
+	line "explaining the"
+
+	para "biology of"
+	line "#mon."
+
+	para "It's enormous!"
 	done
 
 CeladonUniversityLibrary2FBookshelf14:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "This book is"
+	line "covered in"
+	cont "cobwebs."
+
+	para "Guess it hasn't"
+	line "been read in a"
+	cont "while."
 	done
 
 CeladonUniversityLibrary2FBookshelf15:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book de-"
+	line "picting a fearsome"
+	cont "#mon."
+
+	para "“Absofusion and"
+	line "the Tao Trio” is"
+
+	para "written in big"
+	line "letters."
 	done
 
 CeladonUniversityLibrary2FBookshelf16:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "“Ancient #-"
+	line "mopolis: A History"
+
+	para "of Extinct"
+	line "#mon”"
+
+	para "Sounds"
+	line "interesting!"
 	done
 
 CeladonUniversityLibrary2FBookshelf17:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book titled"
+	line "“Typecasting: The"
+
+	para "Mystery of"
+	line "Sudowoodo”."
 	done
 
 CeladonUniversityLibrary2FBookshelf18:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "an ancient tree"
+
+	para "guarded by three"
+	line "titans."
+
+	para "It looks almost"
+	line "magical."
 	done
 
 CeladonUniversityLibrary2FBookshelf19:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a copy of the"
+	line "original route for"
+	cont "the Magnet Train!"
+
+	para "It shows a planned"
+	line "stop-off station"
+	cont "in Ecruteak City."
 	done
 
 CeladonUniversityLibrary2FBookshelf20:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "Red books,"
+	line "blue books,"
+	cont "yellow books,"
+	cont "green books…"
+
+	para "Books of every"
+	line "color!"
 	done
 
 CeladonUniversityLibrary2FComputer1:

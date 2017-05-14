@@ -2163,9 +2163,11 @@
 	const EVENT_NOISY_FOREST_CUT_TREE_1
 	const EVENT_NOISY_FOREST_CUT_TREE_2
 
+; TODO: organize events
+	const EVENT_GOT_PP_MAX_IN_UNIVERSITY
+	const EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
+
 ; Unused placeholder events
-	const EVENT_7D9
-	const EVENT_7DA
 	const EVENT_7DB
 	const EVENT_7DC
 	const EVENT_7DD

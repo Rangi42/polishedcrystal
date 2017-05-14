@@ -95,11 +95,26 @@ CeladonUniversityClassroom2Blackboard:
 	text "TODO"
 	done
 
-CeladonUniversityClassroom2Bookshelf:
+CeladonUniversityClassroom2Bookshelf1:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a book about"
+	line "how the Gong Tower"
+	cont "in Ecruteak City"
+
+	para "burned down 150"
+	line "years ago."
+	done
+
+CeladonUniversityClassroom2Bookshelf2:
+	jumptext .Text
+
+.Text:
+	text "It's a book of"
+	line "slang terms from"
+	cont "the 1980s."
+	cont "Heavy!"
 	done
 
 CeladonUniversityClassroom2_MapEventHeader:
@@ -119,8 +134,8 @@ CeladonUniversityClassroom2_MapEventHeader:
 	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
 	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
 	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf2
 
 .PersonEvents:
 	db 5

@@ -40,7 +40,11 @@ CeladonUniversityDeansOfficeBookshelf:
 	jumptext .Text
 
 .Text:
-	text "TODO"
+	text "It's a complete set"
+	line "of books of the"
+
+	para "Encyclopedia"
+	line "#monica."
 	done
 
 CeladonUniversityDeansOffice_MapEventHeader:

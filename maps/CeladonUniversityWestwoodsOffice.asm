@@ -96,7 +96,7 @@ CeladonUniversityWestwoodsOfficeBookshelf:
 
 .Text:
 	text "The Complete Works"
-	line "of Prof.Westwood"
+	line "of Prof.Westwood."
 
 	para "…Might give that"
 	line "one a miss."
