@@ -121,7 +121,7 @@ SpecialsPointers:: ; c029
 	add_special Special_FadeOutMusic
 	add_special Diploma
 
-	; Crystal
+; Crystal
 	add_special GiveOddEgg
 	add_special SoftReset
 	add_special Special_MoveTutor
@@ -180,6 +180,11 @@ SpecialsPointers:: ; c029
 	add_special DeleteSavedMusic
 	add_special CheckIfTrendyPhraseIsLucky
 	add_special TeachMagikarpDragonRage
+	add_special Special_ChooseItem
+	add_special GetGourmetManiacPrice
+	add_special GetOreManiacPrice
+	add_special GetFossilManiacPrice
+	add_special Give_hMoneyTemp
 
 	add_special SpecialNone
 ; c224

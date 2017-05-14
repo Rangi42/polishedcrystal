@@ -5535,6 +5535,7 @@ INCLUDE "event/buena.asm"
 INCLUDE "event/movesets.asm"
 INCLUDE "event/battle_tower.asm"
 INCLUDE "event/battle_tower_text.asm"
+INCLUDE "event/item_maniacs.asm"
 
 SECTION "bank23", ROMX[$4000], BANK[$23]
 

@@ -188,3 +188,8 @@ MartPremierBallText::
 	line "Premier Ball as"
 	cont "an added bonus."
 	done
+
+ItemCantBeSelectedText::
+	text "That item can't be"
+	line "selected."
+	prompt

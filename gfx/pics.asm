@@ -805,7 +805,7 @@ VeteranfPic:           INCBIN "gfx/trainers/veteran_f.2bpp.lz"
 VeteranmPic:           INCBIN "gfx/trainers/veteran_m.2bpp.lz"
 
 
-SECTION "Pics 22", ROMX[$58ec], BANK[$71]
+SECTION "Pics 22", ROMX[$5909], BANK[$71]
 
 StevenPic:                INCBIN "gfx/trainers/steven.2bpp.lz"
 CynthiaPic:               INCBIN "gfx/trainers/cynthia.2bpp.lz"

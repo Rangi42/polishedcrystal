@@ -51,10 +51,10 @@
 * Skyla in Olivine Lighthouse roof
 * Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house
-* Gourmet Maniac in Route 32 Coast house
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
 * Electrodes in Rock Tunnel
+* Fossil Maniac in Diglett's Cave
 
 Shamouti Island:
 

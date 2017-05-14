@@ -2396,10 +2396,11 @@ Script_takeitem: ; 977f0
 ; parameters:
 ;     item (ItemLabelByte)
 ;     quantity (DecimalParam)
-
-	xor a
-	ld [ScriptVar], a
 	call GetScriptByte
+	cp ITEM_FROM_MEM
+	jr nz, .ok
+	ld a, [ScriptVar]
+.ok
 	ld [CurItem], a
 	call GetScriptByte
 	ld [wItemQuantityChangeBuffer], a

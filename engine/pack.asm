@@ -1805,3 +1805,45 @@ PackTopRowGFX:
 INCBIN "gfx/misc/pack_top_row.2bpp"
 PackLeftColumnGFX:
 INCBIN "gfx/misc/pack_left_column.2bpp"
+
+Special_ChooseItem::
+	call DisableSpriteUpdates
+	call LoadStandardMenuDataHeader
+	call DepositSellInitPackBuffers
+	call .PickItem
+	farcall ReturnToMapWithSpeechTextbox
+	ret
+
+.PickItem:
+	xor a ; ld a, FALSE
+	ld [ScriptVar], a
+.loop
+	call DepositSellPack
+
+	ld a, [wcf66]
+	and a
+	ret z
+
+	ld a, [wCurrPocket]
+	cp KEY_ITEM - 1
+	jr z, .next
+	cp TM_HM - 1
+	jr z, .next
+
+	call CheckTossableItem
+	ld a, [wItemAttributeParamBuffer]
+	and a
+	jr nz, .next
+
+	ld a, TRUE
+	ld [ScriptVar], a
+	ret
+
+.next
+	ld hl, .ItemCantBeSelectedText
+	call PrintText
+	jr .loop
+
+.ItemCantBeSelectedText:
+	text_jump ItemCantBeSelectedText
+	db "@"

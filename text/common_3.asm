@@ -1026,7 +1026,7 @@ UnknownText_0x1c1bdc::
 	done
 
 UnknownText_0x1c1c09::
-	text "This item can't be"
+	text "That item can't be"
 	line "held."
 	prompt
 
