@@ -823,6 +823,7 @@ OutdoorSprites: ; 144b8
 	dw Group30Sprites
 	dw Group31Sprites
 	dw Group32Sprites
+	dw Group33Sprites
 
 
 ; OlivineCity connects to Route40
@@ -1195,11 +1196,6 @@ Group17Sprites:
 ; Route15
 ; Route18
 ; FuchsiaCity
-; SafariZoneEast
-; SafariZoneHub
-; SafariZoneNorth
-; SafariZoneWest
-	db SPRITE_COOLTRAINER_M
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_FISHER
 	db SPRITE_POKEFAN_F
@@ -1208,11 +1204,10 @@ Group17Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_LASS
-	db SPRITE_COWGIRL ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
-	; 11 walking sprites (9 that walk)
+	; 9 walking sprites (8 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 12 total sprites
+	; 10 total sprites
 	db 0
 
 
@@ -1358,24 +1353,37 @@ Group30Sprites:
 
 Group31Sprites:
 ; ShamoutiIsland
-	db SPRITE_CAITLIN
+	db SPRITE_ARTIST
 	db SPRITE_COOLTRAINER_M
-	db SPRITE_DARACH
 	db SPRITE_SIGHTSEER_M
 	db SPRITE_GRAMPS
 	db SPRITE_IVY
 	db SPRITE_LADY
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	; 8 walking sprites
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_MARILL
 	db SPRITE_VILEPLUME
-	; 12 total sprites
+	; 11 total sprites
 	db 0
 
 
 Group32Sprites:
+; SafariZoneEast
+; SafariZoneHub
+; SafariZoneNorth
+; SafariZoneWest
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COWGIRL
+	; 3 walking sprites (3 that walk)
+	db SPRITE_BALL_CUT_FRUIT
+	; 4 total sprites
+	db 0
+
+
+Group33Sprites:
 ; SaffronCity
 	db SPRITE_BLACK_BELT
 	db SPRITE_COOLTRAINER_F

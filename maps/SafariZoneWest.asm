@@ -31,7 +31,14 @@ SafariZoneWestRestHouseSignText:
 SafariZoneWestTrainerTips1SignText:
 	text "Trainer Tips"
 
-	para "TODO"
+	para "Fire-type Pokemon"
+	line "cannot be burnt,"
+
+	para "Electric types"
+	line "can't be paralyzed,"
+
+	para "and Ice types can't"
+	line "be frozen solid."
 	done
 
 SafariZoneWestTrainerTips2SignText:

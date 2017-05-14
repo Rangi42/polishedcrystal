@@ -362,22 +362,13 @@ MAP_NONE   EQU 0
 	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 11
 	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
 	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 13
-	mapgroup SAFARI_ZONE_HUB,                            16, 17 ; 14
-	mapgroup SAFARI_ZONE_EAST,                           15, 17 ; 15
-	mapgroup SAFARI_ZONE_NORTH,                          20, 22 ; 16
-	mapgroup SAFARI_ZONE_WEST,                           15, 17 ; 17
-	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ; 18
-	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ; 19
-	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ; 20
-	mapgroup SAFARI_ZONE_WEST_REST_HOUSE_1,               4,  4 ; 21
-	mapgroup SAFARI_ZONE_WEST_REST_HOUSE_2,               4,  4 ; 22
-	mapgroup ROUTE_12_GATE,                               5,  5 ; 23
-	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 24
-	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 25
-	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 26
-	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 27
-	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 28
-	mapgroup LUCKY_ISLAND,                               16, 23 ; 29
+	mapgroup ROUTE_12_GATE,                               5,  5 ; 14
+	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 15
+	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 16
+	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 17
+	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 18
+	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 19
+	mapgroup LUCKY_ISLAND,                               16, 23 ; 20
 
 	newgroup                                                    ; 18
 
@@ -674,6 +665,18 @@ MAP_NONE   EQU 0
 	mapgroup LIGHTNING_ISLAND_ROOF,                       6,  6 ; 30
 
 	newgroup                                                    ; 32
+
+	mapgroup SAFARI_ZONE_HUB,                            16, 17 ;  1
+	mapgroup SAFARI_ZONE_EAST,                           15, 17 ;  2
+	mapgroup SAFARI_ZONE_NORTH,                          20, 22 ;  3
+	mapgroup SAFARI_ZONE_WEST,                           15, 17 ;  4
+	mapgroup SAFARI_ZONE_HUB_REST_HOUSE,                  4,  4 ;  5
+	mapgroup SAFARI_ZONE_EAST_REST_HOUSE,                 4,  4 ;  6
+	mapgroup SAFARI_ZONE_NORTH_REST_HOUSE,                4,  4 ;  7
+	mapgroup SAFARI_ZONE_WEST_REST_HOUSE_1,               4,  4 ;  8
+	mapgroup SAFARI_ZONE_WEST_REST_HOUSE_2,               4,  4 ;  9
+
+	newgroup                                                    ; 33
 
 	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 

@@ -564,7 +564,7 @@ SECTION "Roofs", ROMX[$4000], BANK[ROOFS]
 
 INCLUDE "tilesets/roofs.asm"
 
-SECTION "Tileset Data 2", ROMX[$4432], BANK[TILESETS_2]
+SECTION "Tileset Data 2", ROMX[$4433], BANK[TILESETS_2]
 
 INCLUDE "tilesets/data_2.asm"
 

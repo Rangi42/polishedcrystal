@@ -51,6 +51,7 @@ MapGroupRoofs: ; 1c021i
 	db  6 ; group 30 (Ruins of Alph)
 	db -1 ; group 31
 	db -1 ; group 32
+	db -1 ; group 33
 ; 1c03c
 
 Roofs: ; 1c03c
