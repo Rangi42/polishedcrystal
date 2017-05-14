@@ -32,6 +32,7 @@ MapGroupPointers::
 	dw MapGroup30
 	dw MapGroup31
 	dw MapGroup32
+	dw MapGroup33
 
 
 MapGroup1:

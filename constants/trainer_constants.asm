@@ -1022,6 +1022,8 @@ KRIS EQU __enum__
 
 	trainerclass METEORITE ; 8b
 
+	trainerclass SILHOUETTE ; 8c
+
 NUM_TRAINER_CLASSES EQU __enum__
 
 	const_def

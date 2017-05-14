@@ -78,8 +78,8 @@ DragonShrineTestScript:
 	verticalmenu
 	closewindow
 	if_equal $1, .WrongAnswer
-	if_equal $2, .RightAnswer
-	if_equal $3, .WrongAnswer
+	if_equal $2, .WrongAnswer
+	if_equal $3, .RightAnswer
 .RightAnswer:
 	checkevent EVENT_DRAGON_SHRINE_QUESTION_5
 	iftrue .PassedTheTest
@@ -217,9 +217,11 @@ ElderScript_0x18d1a5:
 	writetext UnknownText_0x18d697
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	givepoke DRATINI, 15
+	givepoke DRATINI, 15, SITRUS_BERRY
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
-	special SpecialDratini
+	iftrue .NoExtremeSpeed
+	special TeachDratiniExtremeSpeed
+.NoExtremeSpeed
 	setevent EVENT_GOT_DRATINI
 	setevent EVENT_JUST_RECEIVED_DRATINI
 	writetext UnknownText_0x18d6ca
@@ -278,7 +280,7 @@ MenuDataHeader_0x18d215:
 MenuData2_0x18d21d:
 	db $81 ; flags
 	db 3 ; items
-	db "Pal@"
+	db "Ally@"
 	db "Underling@"
 	db "Friend@"
 
@@ -294,7 +296,7 @@ MenuData2_0x18d23c:
 	db $81 ; flags
 	db 3 ; items
 	db "Strategy@"
-	db "Raising@"
+	db "Training@"
 	db "Cheating@"
 
 
@@ -330,7 +332,7 @@ MenuData2_0x18d28b:
 
 MenuDataHeader_0x18d2a5:
 	db $40 ; flags
-	db 04, 12 ; start coords
+	db 04, 11 ; start coords
 	db 11, 19 ; end coords
 	dw MenuData2_0x18d2ad
 	db 1 ; default option
@@ -338,9 +340,9 @@ MenuDataHeader_0x18d2a5:
 MenuData2_0x18d2ad:
 	db $81 ; flags
 	db 3 ; items
-	db "Tough@"
-	db "Both@"
+	db "Strong@"
 	db "Weak@"
+	db "Both@"
 
 
 MovementData_0x18d2bf:

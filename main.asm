@@ -5532,7 +5532,7 @@ INCBIN "gfx/misc/kris_back.6x6.2bpp"
 
 INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
-INCLUDE "event/dratini.asm"
+INCLUDE "event/movesets.asm"
 INCLUDE "event/battle_tower.asm"
 INCLUDE "event/battle_tower_text.asm"
 

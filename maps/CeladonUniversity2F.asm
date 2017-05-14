@@ -210,6 +210,7 @@ CeladonUniversity2FWestwoodsOfficeSign:
 CeladonUniversity2FMagikarpSign:
 	refreshscreen $0
 	pokepic MAGIKARP
+	cry MAGIKARP
 	waitbutton
 	closepokepic
 	jumptext .Text

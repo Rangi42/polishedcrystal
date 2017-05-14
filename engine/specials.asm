@@ -133,7 +133,7 @@ SpecialsPointers:: ; c029
 	add_special SpecialStatsJudge
 	add_special SpecialBuenasPassword
 	add_special SpecialBuenaPrize
-	add_special SpecialDratini
+	add_special TeachDratiniExtremeSpeed
 	add_special Special_SampleKenjiBreakCountdown
 	add_special SpecialBeastsCheck
 	add_special SpecialBirdsCheck
@@ -179,6 +179,7 @@ SpecialsPointers:: ; c029
 	add_special RestoreMusic
 	add_special DeleteSavedMusic
 	add_special CheckIfTrendyPhraseIsLucky
+	add_special TeachMagikarpDragonRage
 
 	add_special SpecialNone
 ; c224

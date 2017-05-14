@@ -44,7 +44,6 @@
 * Six Hyper Trainers for each stat in Battle Tower 2F
 * Lost Pikablu (Marill) in Noisy Forest
 * Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue (in his house after defeat)
-* Celadon University Hyper Test with Dragon Rage Magikarp as a reward
 
 
 ## Characters

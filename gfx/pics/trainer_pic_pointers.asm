@@ -138,3 +138,4 @@
 	add_pic AerodactylFossilPic
 	add_pic CuboneArmorPic
 	add_pic MeteoritePic
+	add_pic SilhouettePic
