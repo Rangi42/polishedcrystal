@@ -3512,6 +3512,19 @@ YoungsterGroup:
 	db $ff ; end
 
 ; ================
+
+	; YOUNGSTER
+	db "Tyler@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, WEEPINBELL
+	db 59, QUAGSIRE
+	db 58, SANDSLASH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -4096,6 +4109,20 @@ CamperGroup:
 
 	; party
 	db 62, FURRET
+
+	db $ff ; end
+
+; ================
+
+	; CAMPER
+	db "Amos@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 59, DODRIO
+	db 58, NIDORINO
+	db 58, NIDORINA
+	db 60, TAUROS
 
 	db $ff ; end
 
@@ -7873,6 +7900,19 @@ LassGroup:
 	db $ff ; end
 
 ; ================
+
+	; LASS
+	db "Duplica@"
+	db TRAINERTYPE_ITEM
+
+	; party
+	db 60, DITTO, METAL_POWDER
+	db 60, DITTO, QUICK_POWDER
+	db 60, DITTO, FOCUS_SASH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8032,6 +8072,18 @@ BeautyGroup:
 	db 60, MARILL, EVIOLITE, ABILITY_2 | QUIRKY, FEMALE
 	db 63, AZUMARILL, LEFTOVERS, ABILITY_2 | QUIRKY, FEMALE
 	db 60, MARILL, BLACK_BELT, ABILITY_2 | QUIRKY, FEMALE
+
+	db $ff ; end
+
+; ================
+
+	; BEAUTY
+	db "Rachael@"
+	db TRAINERTYPE_PERSONALITY
+
+	; party
+	db 60, MACHAMP, ABILITY_1 | QUIRKY, MALE
+	db 58, CLEFABLE, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -8199,6 +8251,18 @@ BugManiacGroup:
 	; party
 	db 55, LEDIAN
 	db 55, BUTTERFREE
+
+	db $ff ; end
+
+; ================
+
+	; BUG_MANIAC
+	db "Kai@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 58, VENONAT
+	db 60, VENOMOTH
 
 	db $ff ; end
 
@@ -14092,6 +14156,9 @@ ProfIvyGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 MysticalmanGroup:
 ; ================================
 ; ================
@@ -14244,9 +14311,6 @@ TowerTycoonGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 JessieJamesGroup:

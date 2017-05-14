@@ -1,4 +1,5 @@
 const_value set 2
+	const SAFARIZONEHUB_BUG_MANIAC
 	const SAFARIZONEHUB_POKE_BALL1
 	const SAFARIZONEHUB_POKE_BALL2
 
@@ -9,17 +10,51 @@ SafariZoneHub_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-SafariZoneHubAreaSign:
-	jumptext SafariZoneHubAreaSignText
+TrainerBug_maniacKai:
+	trainer EVENT_BEAT_BUG_MANIAC_KAI, BUG_MANIAC, KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText, 0, Bug_maniacKaiScript
 
-SafariZoneHubRestHouseSign:
-	jumptext SafariZoneHubRestHouseSignText
+Bug_maniacKaiScript:
+	end_if_just_battled
+	opentext
+	writetext Bug_maniacKaiAfterText
+	waitbutton
+	closetext
+	end
 
 SafariZoneHubNugget:
 	itemball NUGGET
 
 SafariZoneHubUltraBall:
 	itemball ULTRA_BALL
+
+SafariZoneHubAreaSign:
+	jumptext SafariZoneHubAreaSignText
+
+SafariZoneHubRestHouseSign:
+	jumptext SafariZoneHubRestHouseSignText
+
+Bug_maniacKaiSeenText:
+	text "My Venonat evolved"
+	line "into a Venomoth?!"
+	done
+
+Bug_maniacKaiBeatenText:
+	text "I thought it would"
+	line "for sure evolve"
+	cont "into Butterfree!"
+	done
+
+Bug_maniacKaiAfterText:
+	text "Venonat is so"
+	line "similar to"
+	cont "Butterfree!"
+
+	para "The weight, the"
+	line "eyes, the ability…"
+
+	para "Evolution is"
+	line "weird sometimes."
+	done
 
 SafariZoneHubAreaSignText:
 	text "Safari Zone"
@@ -55,6 +90,7 @@ SafariZoneHub_MapEventHeader:
 	signpost 22, 20, SIGNPOST_READ, SafariZoneHubRestHouseSign
 
 .PersonEvents:
-	db 2
+	db 3
+	person_event SPRITE_BUG_MANIAC, 6, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneHubNugget, EVENT_SAFARI_ZONE_HUB_NUGGET
 	person_event SPRITE_BALL_CUT_FRUIT, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneHubUltraBall, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL

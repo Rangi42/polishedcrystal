@@ -1374,12 +1374,16 @@ Group32Sprites:
 ; SafariZoneHub
 ; SafariZoneNorth
 ; SafariZoneWest
-	db SPRITE_COOLTRAINER_M
+	db SPRITE_BEAUTY
 	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
 	db SPRITE_COWGIRL
-	; 3 walking sprites (3 that walk)
+	db SPRITE_LASS
+	db SPRITE_BUG_MANIAC
+	db SPRITE_YOUNGSTER
+	; 7 walking sprites
 	db SPRITE_BALL_CUT_FRUIT
-	; 4 total sprites
+	; 8 total sprites
 	db 0
 
 

@@ -114,6 +114,7 @@ KRIS EQU __enum__
 	const ALFIE
 	const OLIVER
 	const CHAZ
+	const TYLER
 
 	trainerclass BUG_CATCHER ; 20
 	const WADE1
@@ -159,6 +160,7 @@ KRIS EQU __enum__
 	const TANNER
 	const CLARK
 	const PEDRO
+	const AMOS
 
 	trainerclass PICNICKER ; 22
 	const LIZ1
@@ -424,6 +426,7 @@ KRIS EQU __enum__
 	const JENNIFER
 	const GINA
 	const ALICE
+	const DUPLICA
 
 	trainerclass BEAUTY ; 31
 	const VICTORIA
@@ -438,6 +441,7 @@ KRIS EQU __enum__
 	const BRIDGET
 	const VERONICA
 	const BEAUTY_NICOLE
+	const RACHAEL
 
 	trainerclass BUG_MANIAC ; 32
 	const LOU
@@ -453,6 +457,7 @@ KRIS EQU __enum__
 	const ROBBY
 	const PIERRE
 	const DYLAN
+	const KAI
 
 	trainerclass RUIN_MANIAC ; 33
 	const JONES

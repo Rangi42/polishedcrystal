@@ -1,6 +1,7 @@
 const_value set 2
 	const SAFARIZONENORTH_BATTLE_GIRL
-	const SAFARIZONENORTH_TAMER
+	const SAFARIZONENORTH_YOUNGSTER
+	const SAFARIZONENORTH_BEAUTY
 	const SAFARIZONENORTH_COOLTRAINER_F
 	const SAFARIZONENORTH_POKE_BALL1
 	const SAFARIZONENORTH_POKE_BALL2
@@ -23,13 +24,24 @@ BattleGirlPadmaScript:
 	closetext
 	end
 
-TrainerTamerBrett:
-	trainer EVENT_BEAT_TAMER_BRETT, TAMER, BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
+TrainerYoungsterTyler:
+	trainer EVENT_BEAT_YOUNGSTER_TYLER, YOUNGSTER, TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
 
-TamerBrettScript:
+YoungsterTylerScript:
 	end_if_just_battled
 	opentext
-	writetext TamerBrettAfterText
+	writetext YoungsterTylerAfterText
+	waitbutton
+	closetext
+	end
+
+TrainerBeautyRachael:
+	trainer EVENT_BEAT_BEAUTY_RACHAEL, BEAUTY, RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
+
+BeautyRachaelScript:
+	end_if_just_battled
+	opentext
+	writetext BeautyRachaelAfterText
 	waitbutton
 	closetext
 	end
@@ -116,23 +128,46 @@ BattleGirlPadmaAfterText:
 	line "become strong!"
 	done
 
-TamerBrettSeenText:
-	text "Do you know how to"
-	line "handle aggressive"
-	cont "#mon?"
+YoungsterTylerSeenText:
+	text "You can find #-"
+	line "mon anywhere!"
+
+	para "In grass, in"
+	line "water, or up a"
+	cont "girl's skirt!"
 	done
 
-TamerBrettBeatenText:
-	text "Yeah, you do!"
+YoungsterTylerBeatenText:
+	text "I'm sorry!"
 	done
 
-TamerBrettAfterText:
-	text "You have to com-"
-	line "mand #mon with"
-	cont "confidence."
+YoungsterTylerAfterText:
+	text "#mon leap out"
+	line "when you least"
+	cont "expect it."
+	done
 
-	para "Earning Badges can"
-	line "help with that."
+BeautyRachaelSeenText:
+	text "My sundress is"
+	line "perfect for a day"
+	cont "in the Safari"
+	cont "Zone!"
+	done
+
+BeautyRachaelBeatenText:
+	text "It's not great"
+	line "for battling…"
+	done
+
+BeautyRachaelAfterText:
+	text "I was a Black Belt"
+	line "just one year ago."
+
+	para "The power of med-"
+	line "ical science is"
+
+	para "amazing, wouldn't"
+	line "you say?"
 	done
 
 SafariZoneNorthCooltrainerFText:
@@ -250,9 +285,10 @@ SafariZoneNorth_MapEventHeader:
 	signpost 19, 31, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerTamerBrett, -1
+	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
+	person_event SPRITE_BEAUTY, 9, 36, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
 	person_event SPRITE_COOLTRAINER_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 18, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthEviolite, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
 	person_event SPRITE_BALL_CUT_FRUIT, 9, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthProtein, EVENT_SAFARI_ZONE_NORTH_PROTEIN
