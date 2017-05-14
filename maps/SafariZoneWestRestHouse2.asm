@@ -1,4 +1,5 @@
 const_value set 2
+	const SAFARIZONEWESTRESTHOUSE2_FLANNERY
 
 SafariZoneWestRestHouse2_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,94 @@ SafariZoneWestRestHouse2_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+SafariZoneWestRestHouse2FlanneryScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_FLANNERY
+	iftrue .Beaten
+	writetext .ChallengeText
+	yesorno
+	iffalse .Refused
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked SAFARIZONEWESTRESTHOUSE2_FLANNERY
+	loadtrainer FLANNERY, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_FLANNERY
+	opentext
+.Beaten:
+	writetext .AfterText
+	closetext
+	end
+
+.Refused
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.ChallengeText:
+	text "Hey there!"
+
+	para "Good to see some-"
+	line "one else exploring"
+	cont "this place!"
+
+	para "I am Flannery."
+
+	para "I'm from the Hoenn"
+	line "region, so I like"
+
+	para "humidity and hot"
+	line "springs."
+
+	para "The Safari Zone"
+	line "feels like home!"
+
+	para "Let's exchange"
+	line "superhot moves in"
+	cont "a battle!"
+	done
+
+.SeenText:
+	text "I'm going to demo-"
+	line "nstrate the hot"
+
+	para "moves I honed"
+	line "close to a vol-"
+	cont "cano!"
+	done
+
+.BeatenText:
+	text "Whew! On the verge"
+	line "of eruption!"
+	done
+
+.AfterText:
+	text "I lost the match,"
+	line "but I'm completely"
+	cont "satisfied."
+
+	para "It's not often I"
+	line "get to enjoy a"
+
+	para "battle this"
+	line "heated."
+
+	para "Let's have another"
+	line "one like this"
+	cont "sometime!"
+	done
+
+.RefusedText:
+	text "Okay then… Uh…"
+	line "Don't be shy about"
+	cont "it if you return!"
+	done
 
 SafariZoneWestRestHouse2_MapEventHeader:
 	; filler
@@ -27,4 +116,6 @@ SafariZoneWestRestHouse2_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_FLANNERY, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
+

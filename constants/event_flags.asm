@@ -2167,9 +2167,9 @@
 	const EVENT_GOT_PP_MAX_IN_UNIVERSITY
 	const EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
 	const EVENT_BEAT_TAMER_BRETT
+	const EVENT_BEAT_FLANNERY
 
 ; Unused placeholder events
-	const EVENT_7DC
 	const EVENT_7DD
 	const EVENT_7DE
 	const EVENT_7DF

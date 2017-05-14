@@ -1242,6 +1242,33 @@
 	db 60, KANGASKHAN
 	db 60, KANGASKHAN
 
+	map SAFARI_ZONE_WEST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 55, VENONAT
+	db 58, VENOMOTH
+	db 56, DODRIO
+	db 59, NIDORINA
+	db 59, NIDORINO
+	db 60, KANGASKHAN
+	db 60, MAROWAK
+	; day
+	db 55, VENONAT
+	db 58, VENOMOTH
+	db 56, DODRIO
+	db 59, NIDORINA
+	db 59, NIDORINO
+	db 60, KANGASKHAN
+	db 60, MAROWAK
+	; nite
+	db 55, VENONAT
+	db 58, VENOMOTH
+	db 56, DODRIO
+	db 59, NIDORINO
+	db 59, NIDORINA
+	db 60, KANGASKHAN
+	db 60, MAROWAK
+
 	map SEAFOAM_ISLANDS_1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn

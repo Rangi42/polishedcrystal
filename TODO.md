@@ -49,7 +49,6 @@
 
 ## Characters
 
-* Flannery in Safari Zone West
 * Skyla in Olivine Lighthouse roof
 * Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house

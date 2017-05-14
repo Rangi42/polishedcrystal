@@ -15123,20 +15123,20 @@ FlanneryGroup:
 ; ================================
 ; ================
 
-;	; FLANNERY
-;	db "Flannery@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, MAGCARGO
-;	db 50, ARCANINE
-;	db 50, HOUNDOOM
-;	db 50, RAPIDASH
-;	db 50, NINETALES
-;	db 50, MAGMORTAR
-;
-;	db $ff ; end
+	; FLANNERY
+	db "Flannery@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 64, MAGCARGO
+	db 63, ARCANINE
+	db 63, HOUNDOOM
+	db 63, RAPIDASH
+	db 61, NINETALES
+	db 66, MAGMORTAR
+
+	db $ff ; end
 
 ; ================
 ; ================================

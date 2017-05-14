@@ -557,11 +557,6 @@ INCLUDE "maps/SilphCo2F.asm"
 INCLUDE "maps/SilphCo3F.asm"
 INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
-INCLUDE "maps/SafariZoneHubRestHouse.asm"
-INCLUDE "maps/SafariZoneEastRestHouse.asm"
-INCLUDE "maps/SafariZoneNorthRestHouse.asm"
-INCLUDE "maps/SafariZoneWestRestHouse1.asm"
-INCLUDE "maps/SafariZoneWestRestHouse2.asm"
 INCLUDE "maps/Route27RestHouse.asm"
 INCLUDE "maps/LavenderTown.asm"
 
@@ -649,6 +644,11 @@ SECTION "Map Scripts 30", ROMX
 INCLUDE "maps/CeladonUniversityHyperTestRoom.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
 INCLUDE "maps/CeladonUniversityCafeteria.asm"
+INCLUDE "maps/SafariZoneHubRestHouse.asm"
+INCLUDE "maps/SafariZoneEastRestHouse.asm"
+INCLUDE "maps/SafariZoneNorthRestHouse.asm"
+INCLUDE "maps/SafariZoneWestRestHouse1.asm"
+INCLUDE "maps/SafariZoneWestRestHouse2.asm"
 
 
 SECTION "Map Scripts 31", ROMX
