@@ -551,7 +551,7 @@ RespawnOneOffs:
 	ld b, RESET_FLAG
 	call EventFlagAction
 
-	ld de, EVENT_BEAT_SKYLA
+	ld de, EVENT_BEAT_SKYLA_AGAIN
 	ld b, RESET_FLAG
 	call EventFlagAction
 

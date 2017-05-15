@@ -13,9 +13,13 @@ SafariZoneWestRestHouse2FlanneryScript:
 	opentext
 	checkevent EVENT_BEAT_FLANNERY
 	iftrue .Beaten
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Rematch
-	writetext .ChallengeText
+	checkevent EVENT_INTRODUCED_FLANNERY
+	iftrue .Introduced
+	writetext .IntroText
+	jump .Question
+.Introduced
+	writetext .RematchText
+.Question
 	yesorno
 	iffalse .Refused
 	writetext .SeenText
@@ -23,30 +27,23 @@ SafariZoneWestRestHouse2FlanneryScript:
 	closetext
 	winlosstext .BeatenText, 0
 	setlasttalked SAFARIZONEWESTRESTHOUSE2_FLANNERY
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftrue .Rematch
 	loadtrainer FLANNERY, 1
+	jump .StartBattle
+.Rematch
+	loadtrainer FLANNERY, 2
+.StartBattle
 	startbattle
 	reloadmapafterbattle
-.Finish:
+	setevent EVENT_INTRODUCED_FLANNERY
 	setevent EVENT_BEAT_FLANNERY
 	opentext
 .Beaten:
 	writetext .AfterText
-	closetext
-	end
-
-.Rematch:
-	writetext .RematchText
-	yesorno
-	iffalse .Refused
-	writetext .SeenText
 	waitbutton
 	closetext
-	winlosstext .BeatenText, 0
-	setlasttalked SAFARIZONEWESTRESTHOUSE2_FLANNERY
-	loadtrainer FLANNERY, 2
-	startbattle
-	reloadmapafterbattle
-	jump .Finish
+	end
 
 .Refused:
 	writetext .RefusedText
@@ -54,7 +51,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	closetext
 	end
 
-.ChallengeText:
+.IntroText:
 	text "Hey there!"
 
 	para "Good to see some-"

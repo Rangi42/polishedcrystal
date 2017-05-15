@@ -15309,20 +15309,54 @@ SkylaGroup:
 ; ================================
 ; ================
 
-;	; SKYLA
-;	db "Skyla@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, FARFETCH_D
-;	db 50, PIDGEOT
-;	db 50, XATU
-;	db 50, MANTINE
-;	db 50, CROBAT
-;	db 50, SKARMORY
-;
-;	db $ff ; end
+	; SKYLA
+	db "Skyla@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 31, FARFETCH_D
+	db 35, PIDGEOT
+	db 32, XATU
+	db 31, MANTINE
+	db 32, CROBAT
+	db 33, SKARMORY
+
+	db $ff ; end
+
+; ================
+
+	; SKYLA
+	db "Skyla@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 57, FARFETCH_D
+	db 60, PIDGEOT
+	db 58, XATU
+	db 57, MANTINE
+	db 58, CROBAT
+	db 59, SKARMORY
+
+	db $ff ; end
+
+; ================
+
+	; SKYLA
+	db "Skyla@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 72, FARFETCH_D
+	db 75, PIDGEOT
+	db 73, XATU
+	db 72, MANTINE
+	db 73, CROBAT
+	db 74, SKARMORY
+
+	db $ff ; end
 
 ; ================
 ; ================================
