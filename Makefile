@@ -6,6 +6,8 @@ NAME = polishedcrystal-$(VERSION)
 FNAME = polishedcrystal-faithful-$(VERSION)
 OPTIONS =
 
+LINKERSCRIPT = linkerscript.link
+
 TITLE = PKPCRYSTAL
 MCODE = PKPC
 ROMVERSION = 0x30
@@ -56,15 +58,15 @@ clean:
 	rgbasm $(OPTIONS) -o $@ $<
 
 $(NAME).gbc: $(crystal_obj)
-	rgblink -n $(NAME).sym -m $(NAME).map -p $(FILLER) -o $@ $^
+	rgblink -n $(NAME).sym -m $(NAME).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
 	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
 
 $(FNAME).gbc: $(crystal_obj)
-	rgblink -n $(FNAME).sym -m $(FNAME).map -p $(FILLER) -o $@ $^
+	rgblink -n $(FNAME).sym -m $(FNAME).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
 	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
 
 $(NAME)-$(ALTFILLER).gbc: $(crystal_obj)
-	rgblink -n $(NAME)-$(ALTFILLER).sym -m $(NAME)-$(ALTFILLER).map -p $(ALTFILLER) -o $@ $^
+	rgblink -n $(NAME)-$(ALTFILLER).sym -m $(NAME)-$(ALTFILLER).map -l $(LINKERSCRIPT) -p $(ALTFILLER) -o $@ $^
 	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
 
 %.png: ;

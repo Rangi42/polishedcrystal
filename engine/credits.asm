@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 
-SECTION "Credits", ROMX[$4440], BANK[CREDITS]
+SECTION "Credits", ROMX, BANK[CREDITS]
 
 
 	const_def
