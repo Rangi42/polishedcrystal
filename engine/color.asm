@@ -1,3 +1,5 @@
+INCLUDE "engine/vary_colors.asm"
+
 INCLUDE "engine/cgb.asm"
 
 CheckShininess:
