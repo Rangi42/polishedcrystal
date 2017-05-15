@@ -291,7 +291,6 @@ INCLUDE "maps/BattleTowerHallway.asm"
 INCLUDE "maps/BattleTowerElevator.asm"
 INCLUDE "maps/Route40BattleTowerGate.asm"
 INCLUDE "maps/BattleTowerOutside.asm"
-INCLUDE "maps/BattleTower2F.asm"
 INCLUDE "maps/WillsRoom.asm"
 INCLUDE "maps/KogasRoom.asm"
 INCLUDE "maps/BrunosRoom.asm"
@@ -301,7 +300,6 @@ INCLUDE "maps/HallOfFame.asm"
 INCLUDE "maps/CeruleanCity.asm"
 INCLUDE "maps/SproutTower1F.asm"
 INCLUDE "maps/SproutTower2F.asm"
-INCLUDE "maps/Route38EcruteakGate.asm"
 
 
 SECTION "Map Scripts 13", ROMX[$4000], BANK[MAP_SCRIPTS_13]
@@ -399,6 +397,7 @@ INCLUDE "maps/VermilionPollutionSpeechHouse.asm"
 INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
 INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route43Gate.asm"
+INCLUDE "maps/Route38EcruteakGate.asm"
 
 
 SECTION "Map Scripts 17", ROMX[$4000], BANK[MAP_SCRIPTS_17]
@@ -740,6 +739,11 @@ INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
 SECTION "Map Scripts 38", ROMX
+
+INCLUDE "maps/BattleTower2F.asm"
+
+
+SECTION "Map Scripts 39", ROMX
 
 INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiIsland.asm"

@@ -205,15 +205,24 @@ ENDM
 
 	engine_flag DailyFlags3, 0 ; bought leftovers
 	engine_flag DailyFlags3, 1 ; took hyper test ; $60
-	engine_flag DailyFlags3, 2 ; unused
-	engine_flag DailyFlags3, 3 ; unused
-	engine_flag DailyFlags3, 4 ; unused
-	engine_flag DailyFlags3, 5 ; unused
-	engine_flag DailyFlags3, 6 ; unused
-	engine_flag DailyFlags3, 7 ; unused
+	engine_flag DailyFlags3, 2 ; cheryl done today
+	engine_flag DailyFlags3, 3 ; riley done today
+	engine_flag DailyFlags3, 4 ; buck done today
+	engine_flag DailyFlags3, 5 ; marley done today
+	engine_flag DailyFlags3, 6 ; mira done today
+	engine_flag DailyFlags3, 7 ; anabel done today
+
+	engine_flag DailyFlags4, 0 ; seashore shell bell
+	engine_flag DailyFlags4, 1 ; daily unused ; $68
+	engine_flag DailyFlags4, 2 ; daily unused
+	engine_flag DailyFlags4, 3 ; daily unused
+	engine_flag DailyFlags4, 4 ; daily unused
+	engine_flag DailyFlags4, 5 ; daily unused
+	engine_flag DailyFlags4, 6 ; daily unused
+	engine_flag DailyFlags4, 7 ; daily unused
 
 	engine_flag WeeklyFlags, 0 ; mt moon square clefairy
-	engine_flag WeeklyFlags, 1 ; union cave lapras ; $68
+	engine_flag WeeklyFlags, 1 ; union cave lapras ; $70
 	engine_flag WeeklyFlags, 2 ; goldenrod underground haircut used
 	engine_flag WeeklyFlags, 3 ; goldenrod mall happiness event floor05 person07
 	engine_flag WeeklyFlags, 4 ; tea in blues house
@@ -222,7 +231,7 @@ ENDM
 	engine_flag WeeklyFlags, 7 ; buenas password
 
 	engine_flag SwarmFlags, 0 ; buenas password 2
-	engine_flag SwarmFlags, 1 ; goldenrod dept store sale is on ; $70
+	engine_flag SwarmFlags, 1 ; goldenrod dept store sale is on ; $78
 
 	engine_flag GameTimerPause, 7 ; game timer pause
 
@@ -235,7 +244,7 @@ ENDM
 	engine_flag wDailyRematchFlags, 1 ; huey
 	engine_flag wDailyRematchFlags, 2 ; gaven
 	engine_flag wDailyRematchFlags, 3 ; beth
-	engine_flag wDailyRematchFlags, 4 ; jose ; $78
+	engine_flag wDailyRematchFlags, 4 ; jose ; $80
 	engine_flag wDailyRematchFlags, 5 ; reena
 	engine_flag wDailyRematchFlags, 6 ; joey
 	engine_flag wDailyRematchFlags, 7 ; wade
@@ -243,7 +252,7 @@ ENDM
 	engine_flag wDailyRematchFlags + 1, 1 ; liz
 	engine_flag wDailyRematchFlags + 1, 2 ; anthony
 	engine_flag wDailyRematchFlags + 1, 3 ; todd
-	engine_flag wDailyRematchFlags + 1, 4 ; gina ; $80
+	engine_flag wDailyRematchFlags + 1, 4 ; gina ; $88
 	engine_flag wDailyRematchFlags + 1, 5 ; arnie
 	engine_flag wDailyRematchFlags + 1, 6 ; alan
 	engine_flag wDailyRematchFlags + 1, 7 ; dana
@@ -251,7 +260,7 @@ ENDM
 	engine_flag wDailyRematchFlags + 2, 1 ; tully
 	engine_flag wDailyRematchFlags + 2, 2 ; brent
 	engine_flag wDailyRematchFlags + 2, 3 ; tiffany
-	engine_flag wDailyRematchFlags + 2, 4 ; vance ; $88
+	engine_flag wDailyRematchFlags + 2, 4 ; vance ; $90
 	engine_flag wDailyRematchFlags + 2, 5 ; wilton
 	engine_flag wDailyRematchFlags + 2, 6 ; parry
 	engine_flag wDailyRematchFlags + 2, 7 ; erin
@@ -260,7 +269,7 @@ ENDM
 	engine_flag wDailyPhoneItemFlags, 1 ; jose has star piece
 	engine_flag wDailyPhoneItemFlags, 2 ; wade has item (see EVENT_WADE_HAS_*** in constants/event_flags.asm)
 	engine_flag wDailyPhoneItemFlags, 3 ; gina has leaf stone
-	engine_flag wDailyPhoneItemFlags, 4 ; alan has fire stone ; $90
+	engine_flag wDailyPhoneItemFlags, 4 ; alan has fire stone ; $98
 	engine_flag wDailyPhoneItemFlags, 5 ; liz has thunderstone
 	engine_flag wDailyPhoneItemFlags, 6 ; derek has nugget
 	engine_flag wDailyPhoneItemFlags, 7 ; tully has water stone
@@ -270,7 +279,7 @@ ENDM
 
 	engine_flag wDailyPhoneTimeOfDayFlags, 0 ; jack monday morning
 	engine_flag wDailyPhoneTimeOfDayFlags, 1 ; huey wednesday night
-	engine_flag wDailyPhoneTimeOfDayFlags, 2 ; gaven thursday morning ; $98
+	engine_flag wDailyPhoneTimeOfDayFlags, 2 ; gaven thursday morning ; $a0
 	engine_flag wDailyPhoneTimeOfDayFlags, 3 ; beth friday afternoon
 	engine_flag wDailyPhoneTimeOfDayFlags, 4 ; jose saturday night
 	engine_flag wDailyPhoneTimeOfDayFlags, 5 ; reena sunday morning
@@ -279,7 +288,7 @@ ENDM
 
 	engine_flag wDailyPhoneTimeOfDayFlags + 1, 0 ; ralph wednesday morning
 	engine_flag wDailyPhoneTimeOfDayFlags + 1, 1 ; liz thursday afternoon
-	engine_flag wDailyPhoneTimeOfDayFlags + 1, 2 ; anthony fiday night ; $a0
+	engine_flag wDailyPhoneTimeOfDayFlags + 1, 2 ; anthony fiday night ; $a8
 	engine_flag wDailyPhoneTimeOfDayFlags + 1, 3 ; todd saturday morning
 	engine_flag wDailyPhoneTimeOfDayFlags + 1, 4 ; gina sunday afternoon
 	engine_flag wDailyPhoneTimeOfDayFlags + 1, 5 ; arnie tuesday morning
@@ -288,7 +297,7 @@ ENDM
 
 	engine_flag wDailyPhoneTimeOfDayFlags + 2, 0 ; chad friday morning
 	engine_flag wDailyPhoneTimeOfDayFlags + 2, 1 ; tully sunday night
-	engine_flag wDailyPhoneTimeOfDayFlags + 2, 2 ; brent monday morning ; $a8
+	engine_flag wDailyPhoneTimeOfDayFlags + 2, 2 ; brent monday morning ; $b0
 	engine_flag wDailyPhoneTimeOfDayFlags + 2, 3 ; tiffany tuesday afternoon
 	engine_flag wDailyPhoneTimeOfDayFlags + 2, 4 ; vance wednesday night
 	engine_flag wDailyPhoneTimeOfDayFlags + 2, 5 ; wilton thursday morning
@@ -298,7 +307,7 @@ ENDM
 	engine_flag wPlayerSpriteSetupFlags, 2 ; female player has been transformed into male
 
 	engine_flag SwarmFlags, 2 ; dunsparce swarm
-	engine_flag SwarmFlags, 3 ; yanma swarm ; $b0
+	engine_flag SwarmFlags, 3 ; yanma swarm ; $b8
 
 	engine_flag PokemonJournals, 0 ; read falkner journal
 	engine_flag PokemonJournals, 1 ; read bugsy journal
@@ -307,7 +316,7 @@ ENDM
 	engine_flag PokemonJournals, 4 ; read chuck journal
 	engine_flag PokemonJournals, 5 ; read jasmine journal
 	engine_flag PokemonJournals, 6 ; read pryce journal
-	engine_flag PokemonJournals, 7 ; read clair journal
+	engine_flag PokemonJournals, 7 ; read clair journal ; $c0
 
 	engine_flag PokemonJournals + 1, 0 ; read brock journal
 	engine_flag PokemonJournals + 1, 1 ; read misty journal
@@ -316,7 +325,7 @@ ENDM
 	engine_flag PokemonJournals + 1, 4 ; read janine journal
 	engine_flag PokemonJournals + 1, 5 ; read sabrina journal
 	engine_flag PokemonJournals + 1, 6 ; read blaine journal
-	engine_flag PokemonJournals + 1, 7 ; read blue journal
+	engine_flag PokemonJournals + 1, 7 ; read blue journal ; $c8
 
 	engine_flag PokemonJournals + 2, 0 ; read will journal
 	engine_flag PokemonJournals + 2, 1 ; read koga journal
@@ -325,7 +334,7 @@ ENDM
 	engine_flag PokemonJournals + 2, 4 ; read lance journal
 	engine_flag PokemonJournals + 2, 5 ; read red journal
 	engine_flag PokemonJournals + 2, 6 ; read green journal
-	engine_flag PokemonJournals + 2, 7 ; read prof.oak journal
+	engine_flag PokemonJournals + 2, 7 ; read prof.oak journal ; $d0
 
 	engine_flag PokemonJournals + 3, 0 ; read prof.elm journal
 	engine_flag PokemonJournals + 3, 1 ; read prof.westwood journal
@@ -334,4 +343,4 @@ ENDM
 	engine_flag PokemonJournals + 3, 4 ; read agatha journal
 	engine_flag PokemonJournals + 3, 5 ; read bill journal
 	engine_flag PokemonJournals + 3, 6 ; read kurt journal
-	engine_flag PokemonJournals + 3, 7 ; read mr.fuji journal
+	engine_flag PokemonJournals + 3, 7 ; read mr.fuji journal ; $d8

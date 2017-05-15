@@ -103,7 +103,8 @@ MurkySwampCherylScript:
 	line "balance of offense"
 	cont "and defense…"
 
-	para "It's not easy."
+	para "It's not easy"
+	line "to do."
 	done
 
 .ItemText:

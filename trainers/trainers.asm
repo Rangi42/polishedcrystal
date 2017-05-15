@@ -14846,20 +14846,37 @@ CherylGroup:
 
 ; ================
 
-;	; CHERYL
-;	db "Cheryl@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, BLISSEY
-;	db 50, NIDOQUEEN
-;	db 50, CLEFABLE
-;	db 50, WIGGLYTUFF
-;	db 50, AZUMARILL
-;	db 50, WOBBUFFET
-;
-;	db $ff ; end
+	; CHERYL
+	db "Cheryl@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 60, BLISSEY
+	db 59, NIDOQUEEN
+	db 56, CLEFABLE
+	db 56, WIGGLYTUFF
+	db 58, AZUMARILL
+	db 57, WOBBUFFET
+
+	db $ff ; end
+
+; ================
+
+	; CHERYL
+	db "Cheryl@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 75, BLISSEY
+	db 74, NIDOQUEEN
+	db 71, CLEFABLE
+	db 71, WIGGLYTUFF
+	db 73, AZUMARILL
+	db 72, WOBBUFFET
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -14886,20 +14903,20 @@ RileyGroup:
 
 ; ================
 
-;	; RILEY
-;	db "Riley@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, MACHAMP
-;	db 50, DRAGONITE
-;	db 50, RHYPERIOR
-;	db 50, NIDOKING
-;	db 50, ELECTIVIRE
-;	db 50, MAMOSWINE
-;
-;	db $ff ; end
+	; RILEY
+	db "Riley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 75, MACHAMP
+	db 74, DRAGONITE
+	db 73, RHYPERIOR
+	db 72, NIDOKING
+	db 73, ELECTIVIRE
+	db 72, MAMOSWINE
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -14926,20 +14943,20 @@ BuckGroup:
 
 ; ================
 
-;	; BUCK
-;	db "Buck@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, GOLEM
-;	db 50, POLIWRATH
-;	db 50, FORRETRESS
-;	db 50, SKARMORY
-;	db 50, STEELIX
-;	db 50, CLOYSTER
-;
-;	db $ff ; end
+	; BUCK
+	db "Buck@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 75, GOLEM
+	db 72, POLIWRATH
+	db 73, FORRETRESS
+	db 72, SKARMORY
+	db 73, STEELIX
+	db 74, CLOYSTER
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -14966,20 +14983,37 @@ MarleyGroup:
 
 ; ================
 
-;	; MARLEY
-;	db "Marley@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, ARCANINE
-;	db 50, PIDGEOT
-;	db 50, RAICHU
-;	db 50, CROBAT
-;	db 50, ELECTRODE
-;	db 50, AERODACTYL
-;
-;	db $ff ; end
+	; MARLEY
+	db "Marley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 60, ARCANINE
+	db 59, PIDGEOT
+	db 58, RAICHU
+	db 56, CROBAT
+	db 56, ELECTRODE
+	db 58, AERODACTYL
+
+	db $ff ; end
+
+; ================
+
+	; MARLEY
+	db "Marley@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 75, ARCANINE
+	db 74, PIDGEOT
+	db 73, RAICHU
+	db 71, CROBAT
+	db 71, ELECTRODE
+	db 73, AERODACTYL
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -15004,20 +15038,22 @@ MiraGroup:
 
 	db $ff ; end
 
-;	; MIRA
-;	db "Mira@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, ALAKAZAM
-;	db 50, GENGAR
-;	db 50, VILEPLUME
-;	db 50, MAGMORTAR
-;	db 50, PORYGON_Z
-;	db 50, MAGNEZONE
-;
-;	db $ff ; end
+; ================
+
+	; MIRA
+	db "Mira@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 75, ALAKAZAM
+	db 74, GENGAR
+	db 71, VILEPLUME
+	db 73, MAGMORTAR
+	db 71, PORYGON_Z
+	db 73, MAGNEZONE
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -15044,20 +15080,20 @@ AnabelGroup:
 
 ; ================
 
-;	; ANABEL
-;	db "Anabel@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, SNORLAX
-;	db 50, SLOWKING
-;	db 50, BLASTOISE
-;	db 50, BELLOSSOM
-;	db 50, POLITOED
-;	db 50, MR__MIME
-;
-;	db $ff ; end
+	; ANABEL
+	db "Anabel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+
+	db 74, SNORLAX
+	db 75, SLOWKING
+	db 73, BLASTOISE
+	db 71, BELLOSSOM
+	db 72, POLITOED
+	db 73, MR__MIME
+
+	db $ff ; end
 
 ; ================
 ; ================================

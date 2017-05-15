@@ -2704,7 +2704,7 @@ wDailyResetTimer:: ds 2
 DailyFlags:: ds 1
 DailyFlags2:: ds 1
 DailyFlags3:: ds 1
-	ds 1 ; extra space set aside
+DailyFlags4:: ds 1
 WeeklyFlags:: ds 1
 WeeklyFlags2:: ds 1
 SwarmFlags:: ds 1

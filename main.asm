@@ -5249,6 +5249,7 @@ endr
 	dw BlueFinalPkmnText
 	dw RedFinalPkmnText
 	dw LeafFinalPkmnText
+	; ...
 	dw ProfOakFinalPkmnText
 	dw ProfElmFinalPkmnText
 	dw ProfIvyFinalPkmnText
@@ -5260,6 +5261,7 @@ endr
 	dw AgathaFinalPkmnText
 	dw StevenFinalPkmnText
 	dw CynthiaFinalPkmnText
+	dw InverFinalPkmnText
 	dw CherylFinalPkmnText
 	dw RileyFinalPkmnText
 	dw BuckFinalPkmnText

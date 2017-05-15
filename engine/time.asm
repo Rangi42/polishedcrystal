@@ -101,20 +101,13 @@ CheckDailyResetTimer:: ; 11452
 	ret nc
 	xor a
 	ld hl, DailyFlags
-rept 3
-	ld [hli], a
-endr
-	ld [hl], a
-	ld hl, DailyFlags2
-rept 3
-	ld [hli], a
-endr
-	ld [hl], a
-	ld hl, DailyFlags3
-rept 3
-	ld [hli], a
-endr
-	ld [hl], a
+	ld [hli], a ; DailyFlags
+	ld [hli], a ; DailyFlags2
+	ld [hli], a ; DailyFlags3
+	ld [hli], a ; DailyFlags4
+	ld [hli], a ; WeeklyFlags
+	ld [hli], a ; WeeklyFlags2
+	ld [hl], a ; SwarmFlags
 	ld hl, wDailyRematchFlags
 rept 4
 	ld [hli], a

@@ -1709,6 +1709,11 @@ CynthiaFinalPkmnText:
 	line "corner like this!"
 	prompt
 
+InverFinalPkmnText:
+	text "You're getting the"
+	line "hang of this!"
+	prompt
+
 CherylFinalPkmnText:
 	text "I can't keep up"
 	line "with healing…"
