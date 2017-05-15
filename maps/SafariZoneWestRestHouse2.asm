@@ -13,6 +13,8 @@ SafariZoneWestRestHouse2FlanneryScript:
 	opentext
 	checkevent EVENT_BEAT_FLANNERY
 	iftrue .Beaten
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftrue .Rematch
 	writetext .ChallengeText
 	yesorno
 	iffalse .Refused
@@ -24,6 +26,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	loadtrainer FLANNERY, 1
 	startbattle
 	reloadmapafterbattle
+.Finish:
 	setevent EVENT_BEAT_FLANNERY
 	opentext
 .Beaten:
@@ -31,7 +34,21 @@ SafariZoneWestRestHouse2FlanneryScript:
 	closetext
 	end
 
-.Refused
+.Rematch:
+	writetext .RematchText
+	yesorno
+	iffalse .Refused
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked SAFARIZONEWESTRESTHOUSE2_FLANNERY
+	loadtrainer FLANNERY, 2
+	startbattle
+	reloadmapafterbattle
+	jump .Finish
+
+.Refused:
 	writetext .RefusedText
 	waitbutton
 	closetext
@@ -58,6 +75,22 @@ SafariZoneWestRestHouse2FlanneryScript:
 	para "Let's exchange"
 	line "superhot moves in"
 	cont "a battle!"
+	done
+
+.RematchText:
+	text "Hey there,"
+	line "<PLAYER>!"
+
+	para "Good to see you"
+	line "again!"
+
+	para "Losing a match"
+	line "isn't going to"
+	cont "deflate me."
+
+	para "Let's exchange"
+	line "superhot moves in"
+	cont "another battle!"
 	done
 
 .SeenText:

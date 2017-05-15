@@ -15228,13 +15228,28 @@ FlanneryGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-
 	db 64, MAGCARGO
 	db 63, ARCANINE
 	db 63, HOUNDOOM
 	db 63, RAPIDASH
 	db 61, NINETALES
 	db 66, MAGMORTAR
+
+	db $ff ; end
+
+; ================
+
+	; FLANNERY
+	db "Flannery@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 74, MAGCARGO
+	db 73, ARCANINE
+	db 73, HOUNDOOM
+	db 73, RAPIDASH
+	db 72, NINETALES
+	db 75, MAGMORTAR
 
 	db $ff ; end
 
@@ -15251,7 +15266,6 @@ MayleneGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-
 	db 59, HITMONTOP
 	db 59, HITMONLEE
 	db 59, HITMONCHAN
@@ -15263,6 +15277,27 @@ else
 	db 62, MAGMORTAR
 endc
 	db 63, MACHAMP
+
+	db $ff ; end
+
+; ================
+
+	; MAYLENE
+	db "Maylene@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 72, HITMONTOP
+	db 72, HITMONLEE
+	db 72, HITMONCHAN
+if DEF(FAITHFUL)
+	db 73, HERACROSS
+	db 73, PRIMEAPE
+else
+	db 73, ELECTIVIRE
+	db 73, MAGMORTAR
+endc
+	db 75, MACHAMP
 
 	db $ff ; end
 

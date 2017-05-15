@@ -108,7 +108,13 @@ MayleneScript:
 	closetext
 	winlosstext MayleneBeatenText, 0
 	setlasttalked CELADONCAFE_MAYLENE
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftrue .Rematch
 	loadtrainer MAYLENE, 1
+	jump .StartBattle
+.Rematch
+	loadtrainer MAYLENE, 2
+.StartBattle
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MAYLENE
