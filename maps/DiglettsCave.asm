@@ -1,4 +1,5 @@
 const_value set 2
+	const DIGLETTSCAVE_SUPER_NERD
 	const DIGLETTSCAVE_POKEFAN_M1
 	const DIGLETTSCAVE_POKEFAN_M2
 	const DIGLETTSCAVE_POKEFAN_M3
@@ -14,6 +15,95 @@ DiglettsCave_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+DiglettsCaveFossilManiacScript:
+	faceplayer
+	opentext
+	writetext .GreetingText
+	buttonsound
+	special Special_ChooseItem
+	iffalse .NoItem
+	special GetFossilManiacPrice
+	iffalse .WrongItem
+	writetext .OfferText
+	special PlaceMoneyTopRight
+	yesorno
+	iffalse .NoItem
+	copybytetovar CurItem
+	takeitem ITEM_FROM_MEM
+	waitsfx
+	playsound SFX_TRANSACTION
+	special Give_hMoneyTemp
+	special PlaceMoneyTopRight
+	writetext .ThankYouText
+	waitbutton
+	closetext
+	end
+
+.NoItem:
+	writetext .NoItemText
+	waitbutton
+	closetext
+	end
+
+.WrongItem:
+	writetext .WrongItemText
+	waitbutton
+	closetext
+	end
+
+.GreetingText:
+	text "Hey, check it out."
+	line "I've got a sweet"
+	cont "deal for ya!"
+
+	para "You know how #-"
+	line "mon fossils turn"
+	cont "up in rocks?"
+
+	para "If you find one,"
+	line "bring it to me."
+
+	para "I'll make it worth"
+	line "your while."
+	done
+
+.OfferText:
+	text "Hey, nice! Let me"
+	line "check that out."
+
+	para "I'll give you"
+	line "¥@"
+	deciram hMoneyTemp, 3, 7
+	text " for it."
+	cont "Whaddaya say?"
+	done
+
+.ThankYouText:
+	text "Hey, thanks!"
+
+	para "I bet I can sell"
+	line "this for way more"
+	cont "than I just gave"
+	cont "you. Ha!"
+
+	para "That's business"
+	line "for ya!"
+	done
+
+.WrongItemText:
+	text "Nope, this is no"
+	line "good. Not worth"
+	cont "my while."
+	done
+
+.NoItemText:
+	text "…Nope, nothing"
+	line "cool in your Bag."
+
+	para "Oh well. Maybe"
+	line "next time!"
+	done
 
 TrainerHikerGerard:
 	trainer EVENT_BEAT_HIKER_GERARD, HIKER, GERARD, .SeenText, .BeatenText, 0, .Script
@@ -230,10 +320,11 @@ DiglettsCave_MapEventHeader:
 .Signposts:
 	db 2
 	signpost 15, 8, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
-	signpost 8, 7, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRepel
+	signpost 33, 34, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRepel
 
 .PersonEvents:
-	db 8
+	db 9
+	person_event SPRITE_SUPER_NERD, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
 	person_event SPRITE_POKEFAN_M, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
 	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
 	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1

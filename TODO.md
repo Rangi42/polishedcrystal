@@ -54,7 +54,6 @@
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
 * Electrodes in Rock Tunnel
-* Fossil Maniac in Diglett's Cave
 
 Shamouti Island:
 

@@ -70,6 +70,7 @@ GourmetManiacScript:
 
 .ThankYouText:
 	text "Merci! Thank you!"
+
 	para "With this, I can"
 	line "create something"
 	cont "superb."
