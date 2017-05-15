@@ -1,6 +1,18 @@
+CopyHLToVideoDVBuffer:
+	ld a, $5
+	ld de, VideoDVBuffer
+	ld bc, 3
+	call FarCopyWRAM
+	ret
+
 GetColorChannelVariedByDV:
 ; d = color, e = DV
 ; a <- d + (e & %11) - (e & %1100 >> 2), clamped to [0, 15]
+
+; TODO: vary colors (for now, return unvaried color)
+	ld a, d
+	ret
+
 	ld a, e
 	and %11
 	add d
@@ -102,14 +114,23 @@ VaryRedByDV:
 
 
 VaryColorsByDVs::
-;;; hl = colors, bc = DVs
-;;; [hl+0] = 0bbb:bbgg
-;;; [hl+1] = gggr:rrrr
-;;; [hl+2] = 0BBB:BBGG
-;;; [hl+3] = GGGR:RRRR
-;;; [bc+0] = hhhh:aaaa
-;;; [bc+1] = dddd:ssss
-;;; [bc+2] = pppp:qqqq
+; hl = colors
+; [hl+0] = 0bbb:bbgg
+; [hl+1] = gggr:rrrr
+; [hl+2] = 0BBB:BBGG
+; [hl+3] = GGGR:RRRR
+
+; DVs in VideoDVBuffer
+; [bc+0] = hhhh:aaaa
+; [bc+1] = dddd:ssss
+; [bc+2] = pppp:qqqq
+
+	ld a, [rSVBK]
+	push af
+	ld a, $5
+	ld [rSVBK], a
+
+	ld bc, VideoDVBuffer
 
 ;;; HiBlu ~ HPDV, aka, bbbbb ~ hhhh
 ; store HPDV in e
@@ -172,8 +193,7 @@ VaryColorsByDVs::
 ; vary LoRed by e
 	call VaryRedByDV
 
-;;; Move from Lo color back to Hi color
-	dec hl
-	dec hl
+	pop af
+	ld [rSVBK], a
 
 	ret

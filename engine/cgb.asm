@@ -359,6 +359,13 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
+	; vary colors by DVs
+	ld hl, TempMonDVs
+	call CopyHLToVideoDVBuffer
+	ld hl, UnknBGPals + 1 palettes + 2
+	call VaryColorsByDVs
+
 	ld hl, Palettes_a8ca
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -517,6 +524,17 @@ _CGB17: ; 8fca
 	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
+	; vary colors by DVs
+	ld hl, TempMonDVs
+	call CopyHLToVideoDVBuffer
+	ld l, e
+	ld h, d
+rept 3
+	dec hl
+endr
+	call VaryColorsByDVs
+
 .Resume:
 	call WipeAttrMap
 	hlcoord 1, 4, AttrMap
@@ -774,6 +792,17 @@ _CGB0b: ; 91e4
 	ld a, [PlayerHPPal]
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
+	; hl = DVs
+	ld hl, PartyMon1DVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [CurPartyMon]
+	call AddNTimes
+	; vary colors by DVs
+	call CopyHLToVideoDVBuffer
+	ld hl, UnknBGPals + 2
+	call VaryColorsByDVs
+
 	ld hl, Palettes_979c
 	ld de, UnknOBPals + 2 palettes
 	ld bc, 6 palettes
@@ -2382,6 +2411,13 @@ _CGB1a: ; 9529
 	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
+	; vary colors by DVs
+	ld hl, TempMonDVs
+	call CopyHLToVideoDVBuffer
+	ld hl, UnknBGPals + 2
+	call VaryColorsByDVs
+
 	call WipeAttrMap
 	call ApplyAttrMap
 	call ApplyPals
@@ -2410,6 +2446,17 @@ _CGB_FrontpicPals: ; 9578
 	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
+	; vary colors by DVs
+	ld hl, TempMonDVs
+	call CopyHLToVideoDVBuffer
+	ld l, e
+	ld h, d
+rept 3
+	dec hl
+endr
+	call VaryColorsByDVs
+
 	call WipeAttrMap
 	call ApplyAttrMap
 	call ApplyPals
@@ -2422,6 +2469,17 @@ _CGB_IntroPals: ; 9591
 	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
+	; vary colors by DVs
+	ld hl, TempMonDVs
+	call CopyHLToVideoDVBuffer
+	ld l, e
+	ld h, d
+rept 3
+	dec hl
+endr
+	call VaryColorsByDVs
+
 	ld hl, IntroGradientPalette
 	ld de, UnknBGPals + 1 palettes
 	ld bc, 1 palettes
