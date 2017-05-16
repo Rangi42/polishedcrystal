@@ -27,18 +27,18 @@ GetColorChannelVariedByDV:
 ; d = color, e = DV
 ; a <- d + (e & %11) - (e & %1100 >> 2), clamped to [0, 31]
 	ld a, e
-	cp %0010
-	jr z, .plus4
-	cp %1000
-	jr z, .minus4
+;	cp %0010
+;	jr z, .plus4
+;	cp %1000
+;	jr z, .minus4
 	and %11
 	add d
 	srl e
 	srl e
 	sub e
-.floor
+;.floor
 	jr c, .zero
-.ceil
+;.ceil
 	cp 32
 	ret c
 	ld a, 31
@@ -48,15 +48,15 @@ GetColorChannelVariedByDV:
 	xor a
 	ret
 
-.plus4
-	ld a, d
-	add 4
-	jr .ceil
+;.plus4
+;	ld a, d
+;	add 4
+;	jr .ceil
 
-.minus4
-	ld a, d
-	sub 4
-	jr .floor
+;.minus4
+;	ld a, d
+;	sub 4
+;	jr .floor
 
 
 VaryRedByDV:

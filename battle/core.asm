@@ -6721,10 +6721,10 @@ endr
 	ld hl, BASEMON_GENDER
 	ld bc, BASEMON_STRUCT_LENGTH
 	call AddNTimes
-	pop bc
-	pop hl
 	ld a, BANK(BaseData)
 	call GetFarByte
+	pop bc
+	pop hl
 ; Ratios below the value are female, and vice-versa.
 	cp b
 	ld a, FEMALE
