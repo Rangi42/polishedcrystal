@@ -2860,10 +2860,7 @@ AskUseNextPokemon: ; 3d1f8
 	ld a, [wMenuCursorY]
 	cp $1 ; YES
 	jr z, .loop
-	ld hl, PartyMon1Speed
-	ld de, EnemyMonSpeed
-	jp TryToRunAwayFromBattle
-; 3d227
+	jp CheckRunSpeed
 
 ForcePlayerMonChoice: ; 3d227
 	call EmptyBattleTextBox
@@ -5653,9 +5650,7 @@ BattleMenu_Run: ; 3e489
 	call Call_LoadTempTileMapToTileMap
 	ld a, $3
 	ld [wMenuCursorY], a
-	ld hl, BattleMonSpeed
-	ld de, EnemyMonSpeed
-	call TryToRunAwayFromBattle
+	call CheckRunSpeed
 	ld a, 0 ; not xor a; preserve carry flag
 	ld [wFailedToFlee], a
 	ret c
@@ -5665,6 +5660,25 @@ BattleMenu_Run: ; 3e489
 	jp BattleMenu
 ; 3e4a8
 
+CheckRunSpeed:
+; Sets up speed stats properly and attempts to flee.
+	ld a, [hBattleTurn]
+	push af
+	push bc
+	ld d, 0 ; don't count quick claw
+	call SetEnemyTurn
+	call GetSpeed
+	push bc
+	call SetPlayerTurn
+	call GetSpeed
+	pop de
+	ld h, b
+	ld l, c
+	pop bc
+	pop af
+	ld [hBattleTurn], a
+	; hl: player speed, de: enemy speed
+	jp TryToRunAwayFromBattle
 
 CheckAmuletCoin: ; 3e4a8
 	ld a, [BattleMonItem]
