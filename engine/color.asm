@@ -17,14 +17,9 @@ CheckShininess:
 	and a
 	ret
 
-InitPokegearPalettes:
-; This is needed because the regular palette is dark at night.
-	call InitPartyMenuOBPals
-	ret
-
 InitPartyMenuPalettes:
 	ld de, UnknBGPals
-	ld hl, HPBarPals
+	ld hl, PartyMenuPals
 rept 4
 	call LoadHLPaletteIntoDE
 endr
@@ -412,6 +407,7 @@ ApplyPartyMenuHPPals: ; 96f3
 	call FillBoxCGB
 	ret
 
+InitPokegearPalettes: ; This is needed because the regular palette is dark at night.
 InitPartyMenuOBPals:
 	ld hl, .PartyMenuOBPals
 	ld de, UnknOBPals

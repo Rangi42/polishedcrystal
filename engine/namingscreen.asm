@@ -87,8 +87,8 @@ endr
 	ld [wd265], a
 	ld hl, LoadMenuMonIcon
 	ld a, BANK(LoadMenuMonIcon)
-	ld e, $1
-	rst FarCall ;  ; indirect jump to LoadMenuMonIcon (8e83f (23:683f))
+	ld e, $1 ; naming screen
+	rst FarCall
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName

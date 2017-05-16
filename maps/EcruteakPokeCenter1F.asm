@@ -35,7 +35,6 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	pause 60
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement2
 	clearevent EVENT_ECRUTEAK_POKE_CENTER_BILL
-	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM ; TODO: REMOVE DEBUG
 	dotrigger $1
 	end
 

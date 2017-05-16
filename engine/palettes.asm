@@ -31,12 +31,13 @@ BattleObjectPals:
 	RGB 00, 00, 00
 
 
-HPBarPals:
+PartyMenuPals:
 ; gray
 	RGB 31, 31, 31
 	RGB 18, 18, 18
 	RGB 10, 10, 10
 	RGB 00, 00, 00
+HPBarPals:
 ; green
 	RGB 31, 31, 31
 	RGB 31, 25, 02

@@ -423,7 +423,7 @@ _CGB_SlotMachine: ; 906e
 	call FillBoxCGB
 
 	hlcoord 0, 12, AttrMap
-	ld bc, $78 ; TODO: lb bc, 7, 8?
+	lb bc, 7, 8
 	ld a, $7
 	call ByteFill
 
@@ -468,15 +468,17 @@ _CGB_MapPals: ; 91c8
 
 _CGB_PartyMenu: ; 91d1
 	ld de, UnknBGPals
+	ld hl, PartyMenuBGPalette
+	call LoadHLPaletteIntoDE
+
 	ld hl, HPBarPals
-rept 4
+rept 3
 	call LoadHLPaletteIntoDE
 endr
 
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black
 
-	call InitPartyMenuBGPal0
 	call InitPartyMenuBGPal7
 
 	call InitPartyMenuOBPals
@@ -488,16 +490,6 @@ endr
 	call ApplyAttrMap
 	ret
 ; 91e4
-
-; TODO: consolidate these into _CGB_PartyMenu or remove entirely?
-InitPartyMenuBGPal0: ; 8e9f
-	ld hl, PartyMenuBGPalette
-	ld de, UnknBGPals
-	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
-	ret
-; 8eb9
 
 InitPartyMenuBGPal7: ; 8e85
 	ld hl, PartyMenuBGPalette

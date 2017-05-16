@@ -1689,7 +1689,7 @@ SetUpMoveScreenBG: ; 13172
 	add hl, de
 	ld a, [hl]
 	ld [wd265], a
-	ld e, $2
+	ld e, $2 ; move screen
 	farcall LoadMenuMonIcon
 	hlcoord 0, 1
 	ld b, 9

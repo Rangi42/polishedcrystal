@@ -35,90 +35,11 @@ LoadMenuMonIcon: ; 8e83f
 	jp hl
 ; 8e854
 
-
 .Jumptable: ; 8e854 (23:6854)
 	dw Function8e8d5 ; party menu
 	dw Function8e961 ; naming screen
-	dw Function8e97d ; moves (?)
+	dw Function8e97d ; move screen
 	dw Trade_LoadMonIconGFX ; trade
-	dw Function8e898 ; mobile
-	dw Mobile_InitPartyMenuBGPal71 ; mobile
-	dw .GetPartyMenuMonIcon ; unused
-
-
-.GetPartyMenuMonIcon: ; 8e862 (23:6862)
-	call InitPartyMenuIcon
-	call .GetPartyMonItemGFX
-	call SetPartyMonIconAnimSpeed
-	ret
-
-.GetPartyMonItemGFX: ; 8e86c (23:686c)
-	push bc
-	ld a, [hObjectStructIndexBuffer]
-	ld hl, PartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
-	ld a, [hl]
-	and a
-	jr z, .no_item
-	push hl
-	push bc
-	ld d, a
-	farcall ItemIsMail
-	pop bc
-	pop hl
-	jr c, .not_mail
-	ld a, $6
-	jr .got_tile
-.not_mail
-	ld a, $5
-	; jr .got_tile
-
-.no_item
-	ld a, $4
-.got_tile
-	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
-	add hl, bc
-	ld [hl], a
-	ret
-
-Function8e898: ; 8e898 (23:6898)
-	call Function8e8d5
-	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
-	add hl, bc
-	ld a, SPRITE_ANIM_SEQ_NULL
-	ld [hl], a
-	ld hl, SPRITEANIMSTRUCT_XCOORD
-	add hl, bc
-	ld a, 9 * 8
-	ld [hl], a
-	ld hl, SPRITEANIMSTRUCT_YCOORD
-	add hl, bc
-	ld a, 9 * 8
-	ld [hl], a
-	ret
-
-Mobile_InitPartyMenuBGPal71: ; 8e8b1 (23:68b1)
-	call InitPartyMenuIcon
-	call SetPartyMonIconAnimSpeed
-	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
-	add hl, bc
-	ld a, SPRITE_ANIM_SEQ_NULL
-	ld [hl], a
-	ld hl, SPRITEANIMSTRUCT_XCOORD
-	add hl, bc
-	ld a, 3 * 8
-	ld [hl], a
-	ld hl, SPRITEANIMSTRUCT_YCOORD
-	add hl, bc
-	ld a, 12 * 8
-	ld [hl], a
-	ld a, c
-	ld [wc608], a
-	ld a, b
-	ld [wc608 + 1], a
-	ret
 
 Function8e8d5: ; 8e8d5 (23:68d5)
 	call InitPartyMenuIcon
