@@ -2,7 +2,6 @@
 BattleCore:
 DoBattle: ; 3c000
 	xor a
-	ld [wBattleTurnCounter], a
 	ld [wBattleParticipantsNotFainted], a
 	ld [wBattleParticipantsIncludingFainted], a
 	ld [wPlayerAction], a
@@ -178,14 +177,6 @@ BattleTurn: ; 3c12f
 	call HandleBerserkGene
 	call UpdateBattleMonInParty
 	farcall AIChooseMove
-
-	ld a, [wBattleTurnCounter]
-	cp a, $ff
-	jr z, .SkipIncrementingTurnCounter
-	inc a
-	ld [wBattleTurnCounter], a
-.SkipIncrementingTurnCounter
-
 	call CheckPlayerLockedIn
 	jr c, .skip_iteration
 .loop1

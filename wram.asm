@@ -380,7 +380,7 @@ wInitHourBuffer:: ; c61c
 wc626::
 	ds wc608 - @
 
-wBattleTurnCounter:: ds 1
+	ds 1
 
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct ; c608

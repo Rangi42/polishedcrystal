@@ -1226,7 +1226,7 @@ RepeatBallMultiplier:
 
 TimerBallMultiplier:
 ; multiply catch rate by 1 + (turns passed * 3) / 10, capped at 4
-	ld a, [wBattleTurnCounter]
+	ld a, [PlayerTurnsTaken]
 	cp 10
 	jr nc, .nocap
 	ld a, 10
@@ -1366,9 +1366,9 @@ DiveBallMultiplier:
 
 QuickBallMultiplier:
 ; multiply catch rate by 5 on first turn
-	ld a, [wBattleTurnCounter]
-	cp 1
-	ret z
+	ld a, [PlayerTurnsTaken]
+	and a
+	ret nz
 
 	ld a, b
 
