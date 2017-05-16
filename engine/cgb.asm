@@ -57,7 +57,6 @@ Predef_LoadCGBLayout: ; 8d59
 	dw _CGB1b
 	dw _CGB_FrontpicPals
 	dw _CGB_IntroPals
-	dw _CGB_IntroNamingPals
 	dw _CGB_TrainerCard2
 ; 8db8
 
@@ -81,16 +80,12 @@ _CGB_BattleColors: ; 8ddb
 	push bc
 	ld de, UnknBGPals
 	call GetBattlemonBackpicPalettePointer
-	push hl
 	call LoadPalette_White_Col1_Col2_Black
-
 	ld a, [TempBattleMonSpecies]
 	and a
 	jr z, .player_backsprite
 	push de
-	; hl = DVs
 	farcall GetPartyMonDVs
-	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
@@ -98,9 +93,7 @@ _CGB_BattleColors: ; 8ddb
 .player_backsprite
 
 	call GetEnemyFrontpicPalettePointer
-	push hl
 	call LoadPalette_White_Col1_Col2_Black
-
 	push de
 	; hl = DVs
 	farcall GetEnemyMonDVs
@@ -118,6 +111,7 @@ _CGB_BattleColors: ; 8ddb
 	ld bc, Palettes_a8be
 	add hl, bc
 	call LoadPalette_White_Col1_Col2_Black
+
 	ld a, [PlayerHPPal]
 	ld l, a
 	ld h, $0
@@ -126,23 +120,35 @@ _CGB_BattleColors: ; 8ddb
 	ld bc, Palettes_a8be
 	add hl, bc
 	call LoadPalette_White_Col1_Col2_Black
+
 	ld hl, GenderAndExpPalettes
 	call LoadPalette_White_Col1_Col2_Black
+
 	call LoadPlayerStatusIconPalette
 	call LoadEnemyStatusIconPalette
+
 	ld hl, UnknBGPals
 	ld de, UnknBGPals + 6 palettes
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
+
+	ld hl, UnknBGPals + 1 palettes
 	ld de, UnknOBPals
-	pop hl
-	call LoadPalette_White_Col1_Col2_Black
-	pop hl
-	call LoadPalette_White_Col1_Col2_Black
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
+
+	ld hl, UnknBGPals
+	ld de, UnknOBPals + 1 palettes
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
+
 	ld a, SCGB_BATTLE_COLORS
 	ld [SGBPredef], a
 	call ApplyPals
+
 _CGB_FinishBattleScreenLayout: ; 8e23
 ;	call InitPartyMenuBGPal7
 	hlcoord 0, 0, AttrMap
@@ -150,6 +156,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld a, $2
 	call ByteFill
 	pop bc
+
 	hlcoord 0, 4, AttrMap
 	lb bc, 8, 10
 	xor a
@@ -193,11 +200,13 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, $7
 	call ByteFill
+
 	ld hl, Palettes_979c
 	ld de, UnknOBPals + 2 palettes
 	ld bc, 6 palettes
 	ld a, $5
 	call FarCopyWRAM
+
 	call ApplyAttrMap
 	ret
 ; 8e85
@@ -379,24 +388,19 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld bc, Palettes_a8be
 	add hl, bc
 	call LoadPalette_White_Col1_Col2_Black
+
 	ld a, [CurPartySpecies]
 	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-
-	; vary colors by DVs
 	push de
-	ld hl, TempMonDVs
-	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 1 palettes + 2
-	call VaryColorsByDVs
+	call VaryBGPal1ByTempMonDVs
 	pop de
 
 	ld hl, Palettes_a8ca
 	call LoadPalette_White_Col1_Col2_Black
 
 	ld hl, Palette8f52
-	ld de, UnknBGPals + 3 palettes
 	ld bc, 4 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -550,13 +554,7 @@ _CGB17: ; 8fca
 	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-
-	; vary colors by DVs
-	ld hl, TempMonDVs
-	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
-	call VaryColorsByDVs
-
+	call VaryBGPal1ByTempMonDVs
 .Resume:
 	call WipeAttrMap
 	hlcoord 1, 4, AttrMap
@@ -2433,13 +2431,7 @@ _CGB1a: ; 9529
 	ld bc, TempMonPersonality
 	call GetPlayerOrMonPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-
-	; vary colors by DVs
-	ld hl, TempMonDVs
-	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
-	call VaryColorsByDVs
-
+	call VaryBGPal0ByTempMonDVs
 	call WipeAttrMap
 	call ApplyAttrMap
 	call ApplyPals
@@ -2468,13 +2460,7 @@ _CGB_FrontpicPals: ; 9578
 	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-
-	; vary colors by DVs
-	ld hl, TempMonDVs
-	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
-	call VaryColorsByDVs
-
+	call VaryBGPal0ByTempMonDVs
 	call WipeAttrMap
 	call ApplyAttrMap
 	call ApplyPals
@@ -2487,15 +2473,10 @@ _CGB_IntroPals: ; 9591
 	ld bc, TempMonPersonality
 	call GetFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-
-	; vary colors by DVs
-	ld hl, TempMonDVs
-	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
-	call VaryColorsByDVs
-
+	push de
+	call VaryBGPal0ByTempMonDVs
+	pop de
 	ld hl, IntroGradientPalette
-	ld de, UnknBGPals + 1 palettes
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -2509,34 +2490,23 @@ _CGB_IntroPals: ; 9591
 	ret
 ; 95e0
 
-_CGB_IntroNamingPals: ; 9542
-;	ld de, UnknBGPals
-;	ld a, [CurPartySpecies]
-;	ld bc, TempMonPersonality
-;	call GetFrontpicPalettePointer
-;	call LoadPalette_White_Col1_Col2_Black
-;	ld hl, IntroGradientPalette
-;	ld de, UnknBGPals + 1 palettes
-;	ld bc, 1 palettes
-;	ld a, $5
-;	call FarCopyWRAM
-;	call ApplyPals
-;	call WipeAttrMap
-;	hlcoord 11, 0, AttrMap
-;	lb bc, 3, 9
-;	ld a, $1
-;	call FillBoxCGB
-;	hlcoord 0, 0, AttrMap
-;	lb bc, 3, 11
-;	xor a
-;	call FillBoxCGB
-;	call ApplyAttrMap
-	ret
-; 9555
-
 IntroGradientPalette:
 	RGB 31, 31, 31
 	RGB 27, 31, 31
 	RGB 19, 31, 31
 	RGB 09, 30, 31
 
+
+VaryBGPal0ByTempMonDVs:
+	ld hl, TempMonDVs
+	call CopyDVsToColorVaryDVs
+	ld hl, UnknBGPals + 2
+	call VaryColorsByDVs
+	ret
+
+VaryBGPal1ByTempMonDVs:
+	ld hl, TempMonDVs
+	call CopyDVsToColorVaryDVs
+	ld hl, UnknBGPals + 1 palettes + 2
+	call VaryColorsByDVs
+	ret
