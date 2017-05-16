@@ -639,7 +639,7 @@ endr
 	ld de, .OT_ID_str
 	hlcoord 0, 14
 	call PlaceString
-	hlcoord 4, 16
+	hlcoord 3, 16
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, TempMonID
 	call PrintNum
@@ -679,7 +679,7 @@ endr
 
 .OT_ID_str: ; 4e222 / 4e21e
 	db   "OT/"
-	next " <ID>№.@"
+	next "<ID>№.@"
 ; 4e226
 
 .ExpPointStr: ; 4e12b

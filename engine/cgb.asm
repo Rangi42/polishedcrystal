@@ -75,7 +75,7 @@ _CGB_BattleGrayscale: ; 8db8
 	ld de, UnknOBPals
 	ld c, $2
 	call CopyPalettes
-	jr _CGB_FinishBattleScreenLayout
+	jp _CGB_FinishBattleScreenLayout
 
 _CGB_BattleColors: ; 8ddb
 	push bc
@@ -83,9 +83,33 @@ _CGB_BattleColors: ; 8ddb
 	call GetBattlemonBackpicPalettePointer
 	push hl
 	call LoadPalette_White_Col1_Col2_Black
+
+	ld a, [TempBattleMonSpecies]
+	and a
+	jr z, .player_backsprite
+	push de
+	; hl = DVs
+	farcall GetPartyMonDVs
+	; vary colors by DVs
+	call CopyHLToVideoDVBuffer
+	ld hl, UnknBGPals + 2
+	call VaryColorsByDVs
+	pop de
+.player_backsprite
+
 	call GetEnemyFrontpicPalettePointer
 	push hl
 	call LoadPalette_White_Col1_Col2_Black
+
+	push de
+	; hl = DVs
+	farcall GetEnemyMonDVs
+	; vary colors by DVs
+	call CopyHLToVideoDVBuffer
+	ld hl, UnknBGPals + 1 palettes + 2
+	call VaryColorsByDVs
+	pop de
+
 	ld a, [EnemyHPPal]
 	ld l, a
 	ld h, $0
