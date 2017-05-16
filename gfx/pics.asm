@@ -795,7 +795,6 @@ DragonTamerPic:        INCBIN "gfx/trainers/dragon_tamer.2bpp.lz"
 EngineerPic:           INCBIN "gfx/trainers/engineer.2bpp.lz"
 LadyPic:               INCBIN "gfx/trainers/lady.2bpp.lz"
 OfficerfPic:           INCBIN "gfx/trainers/officer_f.2bpp.lz"
-PIPic:                 INCBIN "gfx/trainers/pi.2bpp.lz"
 RoughneckPic:          INCBIN "gfx/trainers/roughneck.2bpp.lz"
 RuinManiacPic:         INCBIN "gfx/trainers/ruin_maniac.2bpp.lz"
 SightseerfPic:         INCBIN "gfx/trainers/sightseer_f.2bpp.lz"
@@ -803,6 +802,8 @@ SightseermPic:         INCBIN "gfx/trainers/sightseer_m.2bpp.lz"
 SrAndJrPic:            INCBIN "gfx/trainers/sr_and_jr.2bpp.lz"
 VeteranfPic:           INCBIN "gfx/trainers/veteran_f.2bpp.lz"
 VeteranmPic:           INCBIN "gfx/trainers/veteran_m.2bpp.lz"
+ProfElmPic:               INCBIN "gfx/trainers/elm.2bpp.lz"
+ProfIvyPic:               INCBIN "gfx/trainers/ivy.2bpp.lz"
 
 
 SECTION "Pics 22", ROMX, BANK[$71]
@@ -814,8 +815,6 @@ KarateKingPic:            INCBIN "gfx/trainers/karate_king.2bpp.lz"
 TowerTycoonPic:           INCBIN "gfx/trainers/towertycoon.2bpp.lz"
 ProtonPic:                INCBIN "gfx/trainers/proton.2bpp.lz"
 PetrelPic:                INCBIN "gfx/trainers/petrel.2bpp.lz"
-ProfElmPic:               INCBIN "gfx/trainers/elm.2bpp.lz"
-ProfIvyPic:               INCBIN "gfx/trainers/ivy.2bpp.lz"
 CherylPic:                INCBIN "gfx/trainers/cheryl.2bpp.lz"
 RileyPic:                 INCBIN "gfx/trainers/riley.2bpp.lz"
 BuckPic:                  INCBIN "gfx/trainers/buck.2bpp.lz"
@@ -864,6 +863,7 @@ PorygonZBackpic:          INCBIN "gfx/pics/porygon_z/back.2bpp.lz"
 
 SECTION "Pics 24", ROMX
 
+PIPic:                    INCBIN "gfx/trainers/pi.2bpp.lz"
 TamerPic:                 INCBIN "gfx/trainers/tamer.2bpp.lz"
 ArtistPic:                INCBIN "gfx/trainers/artist.2bpp.lz"
 AromaLadyPic:             INCBIN "gfx/trainers/aroma_lady.2bpp.lz"
