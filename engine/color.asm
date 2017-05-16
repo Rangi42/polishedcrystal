@@ -545,7 +545,7 @@ LoadPartyMonPalette:
 	ld a, [CurPartyMon]
 	call GetPartyLocation
 	; vary colors by DVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 7 palettes + 2
 	call VaryColorsByDVs
 

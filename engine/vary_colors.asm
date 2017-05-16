@@ -1,4 +1,4 @@
-CopyHLToVideoDVBuffer:
+CopyDVsToColorVaryDVs:
 	ld a, [hli]
 	ld c, a
 	ld a, [hli]
@@ -11,7 +11,7 @@ CopyHLToVideoDVBuffer:
 	ld a, $5
 	ld [rSVBK], a
 
-	ld hl, VideoDVBuffer
+	ld hl, ColorVaryDVs
 	ld a, c
 	ld [hli], a
 	ld a, d
@@ -132,7 +132,7 @@ VaryColorsByDVs::
 ; [hl+2] = GGGR:RRRR
 ; [hl+3] = 0BBB:BBGG
 
-; DVs in VideoDVBuffer
+; DVs in ColorVaryDVs
 ; [bc+0] = hhhh:aaaa
 ; [bc+1] = dddd:ssss
 ; [bc+2] = pppp:qqqq
@@ -142,7 +142,7 @@ VaryColorsByDVs::
 	ld a, $5
 	ld [rSVBK], a
 
-	ld bc, VideoDVBuffer
+	ld bc, ColorVaryDVs
 
 ;;; LiteRed ~ HPDV, aka, rrrrr ~ hhhh
 ; store HPDV in e

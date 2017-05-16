@@ -3006,15 +3006,15 @@ LYOverrides:: ; d100
 	ds SCREEN_HEIGHT_PX
 LYOverridesEnd:: ; d190
 
-	ds 1
 wMagnetTrainDirection:: ds 1
 wMagnetTrainInitPosition:: ds 1
 wMagnetTrainHoldPosition:: ds 1
 wMagnetTrainFinalPosition:: ds 1
 wMagnetTrainPlayerSpriteInitX:: ds 1
 
-VideoDVBuffer:: ds 3
-ds 103
+ColorVaryDVs:: ds 3
+
+	ds 104
 
 LYOverridesBackup:: ; d200
 	ds SCREEN_HEIGHT_PX

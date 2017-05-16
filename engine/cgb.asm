@@ -91,7 +91,7 @@ _CGB_BattleColors: ; 8ddb
 	; hl = DVs
 	farcall GetPartyMonDVs
 	; vary colors by DVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 	pop de
@@ -105,7 +105,7 @@ _CGB_BattleColors: ; 8ddb
 	; hl = DVs
 	farcall GetEnemyMonDVs
 	; vary colors by DVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 1 palettes + 2
 	call VaryColorsByDVs
 	pop de
@@ -387,7 +387,7 @@ _CGB_StatsScreenHPPals: ; 8edb
 	; vary colors by DVs
 	push de
 	ld hl, TempMonDVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 1 palettes + 2
 	call VaryColorsByDVs
 	pop de
@@ -553,7 +553,7 @@ _CGB17: ; 8fca
 
 	; vary colors by DVs
 	ld hl, TempMonDVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
@@ -821,7 +821,7 @@ _CGB0b: ; 91e4
 	ld a, [CurPartyMon]
 	call AddNTimes
 	; vary colors by DVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
@@ -2436,7 +2436,7 @@ _CGB1a: ; 9529
 
 	; vary colors by DVs
 	ld hl, TempMonDVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
@@ -2471,7 +2471,7 @@ _CGB_FrontpicPals: ; 9578
 
 	; vary colors by DVs
 	ld hl, TempMonDVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
@@ -2490,7 +2490,7 @@ _CGB_IntroPals: ; 9591
 
 	; vary colors by DVs
 	ld hl, TempMonDVs
-	call CopyHLToVideoDVBuffer
+	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
