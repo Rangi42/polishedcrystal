@@ -6142,7 +6142,7 @@ MoveInfoBox: ; 3e6c8
 	inc hl
 	ld [hl], $5e
 
-	farcall LoadBattleCategoryAndTypePalettes
+	farcall LoadBattleCategoryAndTypePals
 	call WaitBGMap
 	call SetPalettes
 

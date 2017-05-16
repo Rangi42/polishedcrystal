@@ -221,5 +221,19 @@ VaryColorsByDVs::
 
 	pop af
 	ld [rSVBK], a
+	ret
 
+
+VaryBGPal0ByTempMonDVs:
+	ld hl, TempMonDVs
+	call CopyDVsToColorVaryDVs
+	ld hl, UnknBGPals + 2
+	call VaryColorsByDVs
+	ret
+
+VaryBGPal1ByTempMonDVs:
+	ld hl, TempMonDVs
+	call CopyDVsToColorVaryDVs
+	ld hl, UnknBGPals + 1 palettes + 2
+	call VaryColorsByDVs
 	ret
