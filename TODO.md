@@ -1,6 +1,7 @@
 ## Bugs
 
 * Gender ratios are not working
+* Running away sometimes fails
 * Large Pokémon animations have backwards tiles in the stats screen
 * Caught Pokémon sent to the PC become level 255
 * Some caught Pokémon have wrong held items
