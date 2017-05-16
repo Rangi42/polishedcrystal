@@ -2842,7 +2842,7 @@ LinkTextbox2: ; 4d35b
 
 _ResetClock: ; 4d3b1
 	farcall BlankScreen
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
@@ -2891,7 +2891,7 @@ _ResetClock: ; 4d3b1
 
 _DeleteSaveData: ; 4d54c
 	farcall BlankScreen
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
@@ -2916,7 +2916,7 @@ _DeleteSaveData: ; 4d54c
 
 _ResetInitialOptions:
 	farcall BlankScreen
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
@@ -3059,7 +3059,7 @@ AnimateTrademonFrontpic: ; 4d81e
 	ld [TempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [TempMonPersonality + 1], a
-	ld b, SCGB_1A
+	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -5730,7 +5730,7 @@ DisplayCaughtContestMonStats: ; cc000
 	ld [Options1], a
 
 	call WaitBGMap
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call SetPalettes
 	ret

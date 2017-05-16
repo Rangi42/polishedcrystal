@@ -1772,7 +1772,7 @@ PlaceMoveData: ; 13256
 	xor a
 	ld [hBGMapMode], a
 
-	ld b, SCGB_0E
+	ld b, SCGB_MOVE_LIST
 	call GetSGBLayout
 
 	hlcoord 7, 12

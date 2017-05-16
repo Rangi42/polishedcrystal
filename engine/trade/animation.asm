@@ -361,7 +361,7 @@ Function2914e: ; 2914e
 	pop bc
 	ld [hl], b
 	call WaitBGMap
-	ld b, SCGB_1B
+	ld b, SCGB_TRADE_TUBE
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -639,7 +639,7 @@ TradeAnim_EnterLinkTube: ; 29348
 	lb bc, 3, 12
 	call Function297db
 	call WaitBGMap
-	ld b, SCGB_1B
+	ld b, SCGB_TRADE_TUBE
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -779,7 +779,7 @@ TradeAnim_ShowGivemonData: ; 2942e
 	ld [TempMonPersonality], a
 	ld a, [wPlayerTrademonPersonality + 1]
 	ld [TempMonPersonality + 1], a
-	ld b, SCGB_1A
+	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -805,7 +805,7 @@ TradeAnim_ShowGetmonData: ; 29461
 	ld [TempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [TempMonPersonality + 1], a
-	ld b, SCGB_1A
+	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals

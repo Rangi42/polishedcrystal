@@ -384,7 +384,7 @@ NewPokedexEntry: ; fb877
 	ld [TempMonPersonality], a
 	ld a, [hl]
 	ld [TempMonPersonality + 1], a
-	ld b, SCGB_FRONTPIC_PALS
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call SetPalettes
 	ret

@@ -76,7 +76,7 @@ InitialOptionsMenu:
 	hlcoord 2, 2
 	ld de, StringInitialOptions
 	call PlaceString
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call SetPalettes
 	xor a

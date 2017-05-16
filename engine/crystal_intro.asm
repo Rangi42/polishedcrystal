@@ -13,7 +13,7 @@ Copyright_GFPresents: ; e4579
 	ld a, $90
 	ld [hWY], a
 	call WaitBGMap
-	ld b, SCGB_19
+	ld b, SCGB_GAMEFREAK_LOGO
 	call GetSGBLayout
 	call SetPalettes
 	ld c, 10

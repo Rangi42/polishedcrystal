@@ -43,7 +43,7 @@ NamingScreen: ; 116c1
 
 .SetUpNamingScreen: ; 116f8
 	call ClearBGPalettes
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call DisableLCD
 	call LoadNamingScreenGFX
@@ -997,7 +997,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	ld a, $e3
 	ld [rLCDC], a
 	call .initwNamingScreenMaxNameLength
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call WaitBGMap
 	call WaitTop

@@ -476,7 +476,7 @@ LinkTimeout: ; 283b2
 	call PlaceWholeStringInBoxAtOnce
 	call RotateThreePalettesRight
 	call ClearScreen
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call WaitBGMap2
 	ret
@@ -1569,7 +1569,7 @@ Function28ade: ; 28ade
 Function28b22: ; 28b22
 	call RotateThreePalettesRight
 	call ClearScreen
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call WaitBGMap2
 	xor a
@@ -1859,7 +1859,7 @@ LinkTrade: ; 28b87
 	call DelayFrames
 	call ClearTileMap
 	call LoadFontsBattleExtra
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	ld a, [hLinkPlayerNumber]
 	cp $1

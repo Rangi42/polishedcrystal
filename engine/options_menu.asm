@@ -17,7 +17,7 @@ _OptionsMenu: ; e41d0
 
 	xor a
 	ld [wJumptableIndex], a
-	ld b, SCGB_08
+	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call SetPalettes
 

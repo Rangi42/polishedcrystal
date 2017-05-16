@@ -266,7 +266,7 @@ endr
 	call WaitBGMap
 	xor a
 	ld [hBGMapMode], a
-	ld b, SCGB_1A
+	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic
@@ -402,7 +402,7 @@ _HallOfFamePC: ; 86650
 	ld de, .EmptyString
 	call PlaceString
 	call WaitBGMap
-	ld b, SCGB_1A
+	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call SetPalettes
 	decoord 6, 5
@@ -555,7 +555,7 @@ HOF_AnimatePlayerPic: ; 86810
 	xor a
 	ld [hBGMapMode], a
 	ld [CurPartySpecies], a
-	ld b, SCGB_1A
+	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic
