@@ -52,9 +52,8 @@ VaryGreenByDV:
 ; store green in d
 	ld a, [hli]
 	and %11100000
-	rl a
-	rl a
-	rl a
+	srl a
+	swap a
 	ld d, a ; d = 00000ggg
 	ld a, [hld]
 	and %00000011
