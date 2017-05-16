@@ -552,11 +552,7 @@ _CGB17: ; 8fca
 	; vary colors by DVs
 	ld hl, TempMonDVs
 	call CopyHLToVideoDVBuffer
-	ld l, e
-	ld h, d
-rept 3
-	dec hl
-endr
+	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
 .Resume:
@@ -2474,11 +2470,7 @@ _CGB_FrontpicPals: ; 9578
 	; vary colors by DVs
 	ld hl, TempMonDVs
 	call CopyHLToVideoDVBuffer
-	ld l, e
-	ld h, d
-rept 3
-	dec hl
-endr
+	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
 	call WipeAttrMap
@@ -2497,11 +2489,7 @@ _CGB_IntroPals: ; 9591
 	; vary colors by DVs
 	ld hl, TempMonDVs
 	call CopyHLToVideoDVBuffer
-	ld l, e
-	ld h, d
-rept 3
-	dec hl
-endr
+	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
 
 	ld hl, IntroGradientPalette

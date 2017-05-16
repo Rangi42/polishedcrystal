@@ -539,6 +539,7 @@ LoadPartyMonPalette:
 	ld de, UnknBGPals + 7 palettes + 2
 	ld bc, 4
 	call FarCopyWRAM
+
 	; hl = DVs
 	ld hl, PartyMon1DVs
 	ld a, [CurPartyMon]
@@ -547,6 +548,7 @@ LoadPartyMonPalette:
 	call CopyHLToVideoDVBuffer
 	ld hl, UnknBGPals + 7 palettes + 2
 	call VaryColorsByDVs
+
 	ret
 
 InitCGBPals::
