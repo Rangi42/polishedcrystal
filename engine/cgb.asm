@@ -385,10 +385,12 @@ _CGB_StatsScreenHPPals: ; 8edb
 	call LoadPalette_White_Col1_Col2_Black
 
 	; vary colors by DVs
+	push de
 	ld hl, TempMonDVs
 	call CopyHLToVideoDVBuffer
 	ld hl, UnknBGPals + 1 palettes + 2
 	call VaryColorsByDVs
+	pop de
 
 	ld hl, Palettes_a8ca
 	call LoadPalette_White_Col1_Col2_Black

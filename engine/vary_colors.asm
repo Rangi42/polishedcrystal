@@ -1,8 +1,26 @@
 CopyHLToVideoDVBuffer:
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hl]
+	ld e, a
+
+	ld a, [rSVBK]
+	push af
 	ld a, $5
-	ld de, VideoDVBuffer
-	ld bc, 3
-	call FarCopyWRAM
+	ld [rSVBK], a
+
+	ld hl, VideoDVBuffer
+	ld a, c
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hl], a
+
+	pop af
+	ld [rSVBK], a
 	ret
 
 GetColorChannelVariedByDV:
