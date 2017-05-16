@@ -29,10 +29,8 @@ GetColorChannelVariedByDV:
 	ld a, e
 	and %11
 	add d
-	ld d, a
 	srl e
 	srl e
-	ld a, d
 	sub e
 	jr c, .zero
 	cp 32
@@ -161,7 +159,7 @@ VaryColorsByDVs::
 ; vary LiteGrn by e
 	call VaryGreenByDV
 
-;;; move from HP/Atk DV to Def/Spd DV
+;;; advance from HP/Atk DV to Def/Spd DV
 	inc bc
 
 ;;; LiteBlu ~ DefDV, aka, bbbbb ~ dddd
@@ -173,7 +171,7 @@ VaryColorsByDVs::
 ; vary LiteBlu by e
 	call VaryBlueByDV
 
-;;; Move from Lite color to Dark color
+;;; advance from Lite color to Dark color
 	inc hl
 	inc hl
 
