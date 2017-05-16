@@ -777,7 +777,7 @@ BillBoxSwitchCheck:
 
 BillBoxSwitch:
 	ld hl, wc608
-	ld de, $d000
+	ld de, wDecompressScratch
 	ld bc, $1e0
 	ld a, $6
 	call FarCopyWRAM
@@ -785,7 +785,7 @@ BillBoxSwitch:
 	ld e, a
 	farcall ChangeBoxSaveGameNoConfirm
 	ld de, wc608
-	ld hl, $d000
+	ld hl, wDecompressScratch
 	ld bc, $1e0
 	ld a, $6
 	call FarCopyWRAM
