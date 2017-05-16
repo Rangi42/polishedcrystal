@@ -117,7 +117,6 @@
 	dba Music_HoOhBattleHGSS
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS
-	dba Music_SpikyEaredPichuHGSS
 	dba Music_Route203DPPt
 	dba Music_Route205DPPt
 	dba Music_Route209DPPt
@@ -171,5 +170,6 @@
 	dba Music_EliteFourBattleSM
 	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
+;	dba Music_SpikyEaredPichuHGSS
 
 ; e91a3

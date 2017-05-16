@@ -610,3 +610,11 @@ DummyGame_InterpretJoypad_AnimateCursor: ; e21a1 (38:61a1)
 
 DummyGameGFX: ; e2221
 INCBIN "gfx/misc/dummy_game.w16.2bpp.lz"
+
+MissingDummyGameGFX:
+; Graphics for an unused Game Corner
+; game were meant to be here.
+
+ret_e00ed: ; e00ed (38:40ed)
+; How many coins?
+	ret

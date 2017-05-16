@@ -61,7 +61,7 @@ SpecialsPointers:: ; c029
 	add_special Special_UnownPuzzle
 	add_special Special_SlotMachine
 	add_special Special_CardFlip
-	add_special Special_DummyNonfunctionalGameCornerGame
+;	add_special Special_DummyNonfunctionalGameCornerGame
 	add_special FadeOutPalettes
 	add_special Special_FadeBlackQuickly
 	add_special FadeInPalettes
@@ -359,14 +359,14 @@ Special_CardFlip: ; c380
 	ret
 ; c38d
 
-Special_DummyNonfunctionalGameCornerGame: ; c38d
-	call Special_CheckCoins
-	ret c
-	ld a, BANK(_DummyGame)
-	ld hl, _DummyGame
-	call Special_StartGameCornerGame
-	ret
-; c39a
+;Special_DummyNonfunctionalGameCornerGame: ; c38d
+;	call Special_CheckCoins
+;	ret c
+;	ld a, BANK(_DummyGame)
+;	ld hl, _DummyGame
+;	call Special_StartGameCornerGame
+;	ret
+;; c39a
 
 Special_StartGameCornerGame: ; c39a
 	call FarQueueScript
