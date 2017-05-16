@@ -7,7 +7,7 @@ CopyHLToVideoDVBuffer:
 
 GetColorChannelVariedByDV:
 ; d = color, e = DV
-; a <- d + (e & %11) - (e & %1100 >> 2), clamped to [%00000, %11111]
+; a <- d + (e & %11) - (e & %1100 >> 2), clamped to [0, 31]
 	ld a, e
 	and %11
 	add d
@@ -17,9 +17,9 @@ GetColorChannelVariedByDV:
 	ld a, d
 	sub e
 	jr c, .zero
-	cp %100000
+	cp 32
 	ret c
-	ld a, %11111
+	ld a, 31
 	ret
 
 .zero

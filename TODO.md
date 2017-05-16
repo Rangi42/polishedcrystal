@@ -248,7 +248,6 @@ Some of these may never be added; they're just suggestions.
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
-* Use DVs to vary Pokémon colors like in Stadium
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
