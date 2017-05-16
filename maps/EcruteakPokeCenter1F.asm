@@ -18,13 +18,13 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	db 0
 
 .Trigger0:
-	priorityjump .BillActivatesTimeCapsule
+	priorityjump .BillAbandonsTimeCapsule
 	end
 
 .Trigger1:
 	end
 
-.BillActivatesTimeCapsule:
+.BillAbandonsTimeCapsule:
 	pause 30
 	moveperson ECRUTEAKPOKECENTER1F_BILL, 0, 7
 	playsound SFX_EXIT_BUILDING
@@ -35,6 +35,7 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	pause 60
 	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokeCenter1FBillMovement2
 	clearevent EVENT_ECRUTEAK_POKE_CENTER_BILL
+	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM ; TODO: REMOVE DEBUG
 	dotrigger $1
 	end
 
@@ -170,21 +171,19 @@ EcruteakPokeCenter1FBillIntroText:
 	line "You've come at the"
 	cont "right time."
 
-	para "I just finished"
-	line "adjustments on my"
-	cont "Time Capsule."
+	para "The Time Capsules"
+	line "are totally fried,"
 
-	para "Now Time Capsules"
-	line "are running at all"
-	cont "#mon Centers."
+	para "and I could use"
+	line "your help."
 	done
 
 UnknownText_0x54c74:
 	text "Bill: This Eevee"
-	line "came over when I"
+	line "came over just"
 
-	para "was making the"
-	line "adjustments."
+	para "before the Time"
+	line "Capsule shut down."
 
 	para "Someone has to"
 	line "take care of it,"

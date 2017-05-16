@@ -1206,9 +1206,6 @@ Function296f2: ; 296f2 (a:56f2)
 ; 29701 (a:5701)
 
 TradeAnim_SentToOTText: ; 29701
-	ld a, [wLinkMode]
-	cp LINK_TIMECAPSULE
-	jr z, .time_capsule
 	ld hl, UnknownText_0x29737
 	call PrintText
 	ld c, 189
@@ -1218,13 +1215,6 @@ TradeAnim_SentToOTText: ; 29701
 	call Function297c9
 	ld c, 128
 	call DelayFrames
-	call TradeAnim_Next
-	ret
-
-.time_capsule
-	ld hl, UnknownText_0x29732
-	call PrintText
-	call Function297c9
 	call TradeAnim_Next
 	ret
 ; 29732

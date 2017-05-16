@@ -162,11 +162,11 @@ Function16d6ce: ; 16d6ce
 ; 16d6e1
 
 Function16d6e1: ; 16d6e1
-	hlcoord 4, 10
+	hlcoord 5, 10
 	ld b, 1
-	ld c, 10
+	ld c, 9
 	predef Predef_LinkTextbox
-	hlcoord 5, 11
+	hlcoord 6, 11
 	ld de, .Waiting
 	call PlaceString
 	call WaitBGMap
@@ -176,7 +176,7 @@ Function16d6e1: ; 16d6e1
 ; 16d701
 
 .Waiting: ; 16d701
-	db "Waiting..!@"
+	db "Waiting…!@"
 ; 16d70c
 
 LinkTradeMenu: ; 16d70c

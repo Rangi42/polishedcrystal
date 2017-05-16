@@ -3,9 +3,9 @@ INCLUDE "includes.asm"
 SECTION "bank1", ROMX, BANK[$1]
 
 PlaceWaitingText:: ; 4000
-	hlcoord 3, 10
+	hlcoord 4, 10
 	ld b, 1
-	ld c, 11
+	ld c, 10
 
 	ld a, [wBattleMode]
 	and a
@@ -18,14 +18,14 @@ PlaceWaitingText:: ; 4000
 	predef Predef_LinkTextbox
 
 .proceed
-	hlcoord 4, 11
+	hlcoord 5, 11
 	ld de, .Waiting
 	call PlaceString
 	ld c, 50
 	jp DelayFrames
 
 .Waiting: ; 4025
-	db "Waiting...!@"
+	db "Waiting…!@"
 
 LoadPushOAM:: ; 4031
 	ld c, hPushOAM - $ff00
@@ -554,7 +554,7 @@ INCLUDE "engine/money.asm"
 INCLUDE "items/marts.asm"
 INCLUDE "event/mom.asm"
 INCLUDE "event/daycare.asm"
-INCLUDE "engine/breeding/egg.asm"
+INCLUDE "engine/breeding.asm"
 
 SECTION "Tileset Data 1", ROMX, BANK[TILESETS_1]
 
@@ -5858,7 +5858,94 @@ INCLUDE "engine/unowndex.asm"
 
 INCLUDE "event/magikarp.asm"
 
-INCLUDE "engine/time_capsule/conversion.asm"
+INCLUDE "event/name_rater.asm"
+
+INCLUDE "engine/link_trade2.asm"
+
+PlaySlowCry: ; fb841
+	ld a, [ScriptVar]
+	call LoadCryHeader
+	jr c, .done
+
+	ld hl, CryPitch
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, -$140
+	add hl, bc
+	ld a, l
+	ld [CryPitch], a
+	ld a, h
+	ld [CryPitch + 1], a
+	ld hl, CryLength
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, $60
+	add hl, bc
+	ld a, l
+	ld [CryLength], a
+	ld a, h
+	ld [CryLength + 1], a
+	farcall _PlayCryHeader
+	call WaitSFX
+
+.done
+	ret
+; fb877
+
+NewPokedexEntry: ; fb877
+	ld a, [hMapAnims]
+	push af
+	xor a
+	ld [hMapAnims], a
+	call LowVolume
+	call ClearBGPalettes
+	call ClearTileMap
+	call UpdateSprites
+	call ClearSprites
+	ld a, [wPokedexStatus]
+	push af
+	ld a, [hSCX]
+	add $5
+	ld [hSCX], a
+	xor a
+	ld [wPokedexStatus], a
+	farcall _NewPokedexEntry
+	call WaitPressAorB_BlinkCursor
+	ld a, $1
+	ld [wPokedexStatus], a
+	farcall DisplayDexEntry
+	call WaitPressAorB_BlinkCursor
+	pop af
+	ld [wPokedexStatus], a
+	call MaxVolume
+	call RotateThreePalettesRight
+	ld a, [hSCX]
+	add -5 ; 251 ; NUM_POKEMON
+	ld [hSCX], a
+	call .ReturnFromDexRegistration
+	pop af
+	ld [hMapAnims], a
+	ret
+; fb8c8
+
+.ReturnFromDexRegistration: ; fb8c8
+	call ClearTileMap
+	call LoadFontsExtra
+	call LoadStandardFont
+	farcall Pokedex_PlaceFrontpicTopLeftCorner
+	call WaitBGMap2
+	farcall GetEnemyMonPersonality
+	ld a, [hli]
+	ld [TempMonPersonality], a
+	ld a, [hl]
+	ld [TempMonPersonality + 1], a
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call SetPalettes
+	ret
+; fb8f1
 
 Footprints: ; f9434
 INCBIN "gfx/misc/footprints.w128.1bpp"

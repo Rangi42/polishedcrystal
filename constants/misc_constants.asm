@@ -177,14 +177,10 @@ const_value = 1
 	const HAPPINESS_PHOTOGRAPH        ; 14
 	const HAPPINESS_BLESSING          ; 15
 
-
-	const_def
-	const LINK_NULL
-	const LINK_TIMECAPSULE
+const_value = 2
 	const LINK_TRADECENTER
 	const LINK_COLOSSEUM
 
-SERIAL_TIMECAPSULE EQU $60
 SERIAL_TRADECENTER EQU $70
 SERIAL_BATTLE      EQU $80
 

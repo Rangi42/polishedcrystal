@@ -28,12 +28,8 @@ SpecialsPointers:: ; c029
 	add_special Special_CloseLink
 	add_special WaitForOtherPlayerToExit
 	add_special Special_SetBitsForBattleRequest
-	add_special Special_SetBitsForTimeCapsuleRequest
-	add_special Special_CheckTimeCapsuleCompatibility
-	add_special Special_EnterTimeCapsule
 	add_special Special_TradeCenter
 	add_special Special_Colosseum
-	add_special Special_TimeCapsule
 	add_special Special_CableClubCheckWhichChris
 
 ; Map Events

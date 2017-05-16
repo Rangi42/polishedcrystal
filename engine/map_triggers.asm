@@ -11,7 +11,6 @@ ENDM
 	trigger_def POKECENTER_2F,                          wPokecenter2FTrigger
 	trigger_def TRADE_CENTER,                           wTradeCenterTrigger
 	trigger_def COLOSSEUM,                              wColosseumTrigger
-	trigger_def TIME_CAPSULE,                           wTimeCapsuleTrigger
 	trigger_def POWER_PLANT,                            wPowerPlantTrigger
 	trigger_def CERULEAN_GYM,                           wCeruleanGymTrigger
 	trigger_def CERULEAN_CAPE,                          wCeruleanCapeTrigger

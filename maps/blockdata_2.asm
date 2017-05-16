@@ -91,7 +91,6 @@ Colosseum_BlockData:
 	INCBIN "maps/Colosseum.blk"
 
 TradeCenter_BlockData:
-TimeCapsule_BlockData:
 	INCBIN "maps/TradeCenter.blk"
 
 EcruteakLugiaSpeechHouse_BlockData:
