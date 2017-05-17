@@ -88,10 +88,10 @@ GruntF4Script:
 	closetext
 	end
 
-TrainerScientistRich:
-	trainer EVENT_BEAT_SCIENTIST_RICH, SCIENTIST, RICH, ScientistRichSeenText, ScientistRichBeatenText, 0, ScientistRichScript
+TrainerRocketScientistRich:
+	trainer EVENT_BEAT_ROCKET_SCIENTIST_RICH, ROCKET_SCIENTIST, RICH, RocketScientistRichSeenText, RocketScientistRichBeatenText, 0, RocketScientistRichScript
 
-ScientistRichScript:
+RocketScientistRichScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x5efcb
@@ -216,7 +216,7 @@ UnknownText_0x5ef31:
 	line "#mon?"
 	done
 
-ScientistRichSeenText:
+RocketScientistRichSeenText:
 	text "Most excellent."
 
 	para "This Radio Tower"
@@ -224,7 +224,7 @@ ScientistRichSeenText:
 	cont "grand design."
 	done
 
-ScientistRichBeatenText:
+RocketScientistRichBeatenText:
 	text "Hmmm…"
 
 	para "All grand plans"
@@ -272,4 +272,4 @@ RadioTower4F_MapEventHeader:
 	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_PROTON, 1, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 4, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_SCIENTIST, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

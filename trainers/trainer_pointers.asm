@@ -76,6 +76,7 @@ TrainerGroups: ; 0x39999
 	dba BurglarGroup
 	dba PIGroup
 	dba ScientistGroup
+	dba RocketScientistGroup
 	dba BoarderGroup
 	dba SkierGroup
 	dba BlackbeltGroup
@@ -92,6 +93,7 @@ TrainerGroups: ; 0x39999
 	dba AromaLadyGroup
 	dba SightseerMGroup
 	dba SightseerFGroup
+	dba SightseersGroup
 	dba CooltrainerMGroup
 	dba CooltrainerFGroup
 	dba AceDuoGroup

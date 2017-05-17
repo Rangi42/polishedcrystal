@@ -104,6 +104,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; burglar
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; pi
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; scientist
+	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; rocket scientist
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; boarder
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; skier
 	db $FF, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; blackbelt
@@ -120,6 +121,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; aroma lady
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; sightseerm
 	db $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; sightseerf
+	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; sightseers
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; cooltrainerm
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; cooltrainerf
 	db $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; ace duo

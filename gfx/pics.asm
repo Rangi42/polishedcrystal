@@ -376,6 +376,7 @@ SECTION "Pics 13", ROMX, BANK[PICS_13]
 
 OmanyteBackpic:        INCBIN "gfx/pics/omanyte/back.2bpp.lz"
 PidgeyBackpic:         INCBIN "gfx/pics/pidgey/back.2bpp.lz"
+RocketScientistPic:
 ScientistPic:          INCBIN "gfx/trainers/scientist.2bpp.lz"
 QwilfishBackpic:       INCBIN "gfx/pics/qwilfish/back.2bpp.lz"
 GligarBackpic:         INCBIN "gfx/pics/gligar/back.2bpp.lz"
@@ -867,6 +868,7 @@ PIPic:                    INCBIN "gfx/trainers/pi.2bpp.lz"
 TamerPic:                 INCBIN "gfx/trainers/tamer.2bpp.lz"
 ArtistPic:                INCBIN "gfx/trainers/artist.2bpp.lz"
 AromaLadyPic:             INCBIN "gfx/trainers/aroma_lady.2bpp.lz"
+SightseersPic:            INCBIN "gfx/trainers/sightseers.2bpp.lz"
 InverPic:                 INCBIN "gfx/trainers/inver.2bpp.lz"
 CuboneArmorPic:           INCBIN "gfx/trainers/cubone_armor.2bpp.lz"
 SilhouettePic:            INCBIN "gfx/trainers/silhouette.2bpp.lz"

@@ -2948,7 +2948,6 @@ SetUpBattlePartyMenu_NoLoop: ; 3d2f7
 SetUpBattlePartyMenu: ; switch to fullscreen menu?
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
-	farcall InitPartyMenuBGPal7
 	farcall InitPartyMenuGFX
 	ret
 ; 3d313

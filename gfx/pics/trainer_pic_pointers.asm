@@ -74,6 +74,7 @@
 	add_pic BurglarPic
 	add_pic PIPic
 	add_pic ScientistPic
+	add_pic RocketScientistPic
 	add_pic BoarderPic
 	add_pic SkierPic
 	add_pic BlackbeltTPic
@@ -90,6 +91,7 @@
 	add_pic AromaLadyPic
 	add_pic SightseermPic
 	add_pic SightseerfPic
+	add_pic SightseersPic
 	add_pic CooltrainermPic
 	add_pic CooltrainerfPic
 	add_pic AceDuoPic

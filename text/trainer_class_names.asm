@@ -73,6 +73,7 @@
 	db "Burglar@"          ; BURGLAR
 	db "Agent@"            ; PI
 	db "Scientist@"        ; SCIENTIST
+	db "Scientist@"        ; ROCKET_SCIENTIST
 	db "Boarder@"          ; BOARDER
 	db "Skier@"            ; SKIER
 	db "Black Belt@"       ; BLACKBELT_T
@@ -89,6 +90,7 @@
 	db "Aroma Lady@"       ; AROMA_LADY
 	db "Sightseer@"        ; SIGHTSEERM
 	db "Sightseer@"        ; SIGHTSEERF
+	db "Sightseers@"       ; SIGHTSEERS
 	db "Ace Trainer@"      ; COOLTRAINERM
 	db "Ace Trainer@"      ; COOLTRAINERF
 	db "Ace Duo@"          ; ACE_DUO

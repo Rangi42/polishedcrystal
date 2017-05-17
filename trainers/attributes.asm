@@ -450,6 +450,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_OFTEN
 
+; Rocket Scientist
+	db FULL_RESTORE, 0 ; items
+	db 25 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_OFTEN
+
 ; Boarder
 	db 0, 0 ; items
 	db 18 ; base reward
@@ -543,6 +549,12 @@ TrainerClassAttributes: ; 3959c
 ; Sightseerf
 	db 0, 0 ; items
 	db 18 ; base reward
+	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Sightseers
+	db 0, 0 ; items
+	db 20 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 

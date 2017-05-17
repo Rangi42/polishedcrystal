@@ -156,10 +156,10 @@ GruntM28Script:
 	setevent EVENT_LEARNED_RATICATE_TAIL
 	end
 
-TrainerScientistRoss:
-	trainer EVENT_BEAT_SCIENTIST_ROSS, SCIENTIST, ROSS, ScientistRossSeenText, ScientistRossBeatenText, 0, ScientistRossScript
+TrainerRocketScientistRoss:
+	trainer EVENT_BEAT_ROCKET_SCIENTIST_ROSS, ROCKET_SCIENTIST, ROSS, RocketScientistRossSeenText, RocketScientistRossBeatenText, 0, RocketScientistRossScript
 
-ScientistRossScript:
+RocketScientistRossScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x6e822
@@ -167,10 +167,10 @@ ScientistRossScript:
 	closetext
 	end
 
-TrainerScientistMitch:
-	trainer EVENT_BEAT_SCIENTIST_MITCH, SCIENTIST, MITCH, ScientistMitchSeenText, ScientistMitchBeatenText, 0, ScientistMitchScript
+TrainerRocketScientistMitch:
+	trainer EVENT_BEAT_ROCKET_SCIENTIST_MITCH, ROCKET_SCIENTIST, MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
 
-ScientistMitchScript:
+RocketScientistMitchScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x6e90a
@@ -500,7 +500,7 @@ UnknownText_0x6e737:
 	line "Raticate Tail."
 	done
 
-ScientistRossSeenText:
+RocketScientistRossSeenText:
 	text "I used to work for"
 	line "Silph, but now I"
 
@@ -512,7 +512,7 @@ ScientistRossSeenText:
 	cont "be punished."
 	done
 
-ScientistRossBeatenText:
+RocketScientistRossBeatenText:
 	text "A mere tactical"
 	line "error cost me…"
 	done
@@ -532,13 +532,13 @@ UnknownText_0x6e822:
 	line "nothing."
 	done
 
-ScientistMitchSeenText:
+RocketScientistMitchSeenText:
 	text "I don't care that"
 	line "#mon are hurt"
 	cont "by our experiment."
 	done
 
-ScientistMitchBeatenText:
+RocketScientistMitchBeatenText:
 	text "Thinking is my"
 	line "strong suit, not"
 	cont "battling."
@@ -608,8 +608,8 @@ TeamRocketBaseB3F_MapEventHeader:
 	person_event SPRITE_MURKROW, 2, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RocketBaseMurkrow, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_ROCKET_GIRL, 7, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, SlowpokeTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_ROCKET, 14, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, RaticateTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SCIENTIST, 11, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SCIENTIST, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
+	person_event SPRITE_SCIENTIST, 11, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
+	person_event SPRITE_SCIENTIST, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_ROCKET, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x6e048, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_SILVER, 5, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_TEAM_ROCKET_BASE
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TeamRocketBaseB3FProtein, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN

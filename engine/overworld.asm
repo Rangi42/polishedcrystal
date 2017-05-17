@@ -1194,9 +1194,9 @@ Group17Sprites:
 ; Route13West
 ; Route14
 ; Route15
-; Route18
+; Route18East
 ; FuchsiaCity
-	db SPRITE_COOLTRAINER_F
+; LuckyIsland
 	db SPRITE_FISHER
 	db SPRITE_POKEFAN_F
 	db SPRITE_POKEFAN_M
@@ -1204,10 +1204,14 @@ Group17Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_LASS
+	db SPRITE_BAKER
+	db SPRITE_ARTIST
 	db SPRITE_GRAMPS ; doesn't walk
-	; 9 walking sprites (8 that walk)
+	db SPRITE_SIGHTSEER_M ; doesn't walk
+	db SPRITE_LADY ; doesn't walk
+	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 10 total sprites
+	; 13 total sprites
 	db 0
 
 

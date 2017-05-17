@@ -11313,72 +11313,6 @@ ScientistGroup:
 ; ================
 
 	; SCIENTIST
-	db "Ross@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 30, KOFFING
-	db 30, KOFFING
-
-	db $ff ; end
-
-; ================
-
-	; SCIENTIST
-	db "Mitch@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 25, DITTO
-	db 25, PORYGON
-
-	db $ff ; end
-
-; ================
-
-	; SCIENTIST
-	db "Jed@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 29, MAGNEMITE
-	db 30, MAGNETON
-	db 29, MAGNEMITE
-
-	db $ff ; end
-
-; ================
-
-	; SCIENTIST
-	db "Garrett@"
-	db TRAINERTYPE_NORMAL
-
-	; party
-	db 35, MAGNETON
-	db 36, MAGNEMITE
-	db 35, MAGNETON
-
-	db $ff ; end
-
-; ================
-
-	; SCIENTIST
-	db "Trenton@"
-	db TRAINERTYPE_MOVES
-
-	; party
-
-	db 35, PORYGON_Z
-		db CONVERSION
-		db RECOVER
-		db TRI_ATTACK
-		db PSYBEAM
-
-	db $ff ; end
-
-; ================
-
-	; SCIENTIST
 	db "Lowell@"
 	db TRAINERTYPE_NORMAL
 
@@ -11485,6 +11419,77 @@ ScientistGroup:
 
 	db $ff ; end
 
+; ================
+; ================================
+
+
+RocketScientistGroup:
+; ================================
+; ================
+
+	; SCIENTIST
+	db "Ross@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 30, KOFFING
+	db 30, KOFFING
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Mitch@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 25, DITTO
+	db 25, PORYGON
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Jed@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 29, MAGNEMITE
+	db 30, MAGNETON
+	db 29, MAGNEMITE
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Garrett@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 35, MAGNETON
+	db 36, MAGNEMITE
+	db 35, MAGNETON
+
+	db $ff ; end
+
+; ================
+
+	; SCIENTIST
+	db "Trenton@"
+	db TRAINERTYPE_MOVES
+
+	; party
+
+	db 35, PORYGON_Z
+		db CONVERSION
+		db RECOVER
+		db TRI_ATTACK
+		db PSYBEAM
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -12598,6 +12603,13 @@ SightseerMGroup:
 
 
 SightseerFGroup:
+; ================================
+; ================
+; ================
+; ================================
+
+
+SightseersGroup:
 ; ================================
 ; ================
 ; ================

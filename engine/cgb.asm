@@ -308,11 +308,7 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld a, $7
 	call FillBoxCGB
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 8f52
 
 
@@ -347,11 +343,7 @@ _CGB_Pokedex: ; 8f70
 	ld a, $5
 	call FarCopyWRAM
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 8fba
 
 .GreenPicPalette: ; 8fba
@@ -427,11 +419,7 @@ _CGB_SlotMachine: ; 906e
 	ld a, $7
 	call ByteFill
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 90f8
 
 
@@ -468,7 +456,7 @@ _CGB_MapPals: ; 91c8
 
 _CGB_PartyMenu: ; 91d1
 	ld de, UnknBGPals
-	ld hl, PartyMenuBGPalette
+	ld hl, .PartyMenuBGPalette
 	call LoadHLPaletteIntoDE
 
 	ld hl, HPBarPals
@@ -479,7 +467,9 @@ endr
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black
 
-	call InitPartyMenuBGPal7
+	ld de, UnknBGPals + 7 palettes
+	ld hl, .PartyMenuBGPalette
+	call LoadHLPaletteIntoDE
 
 	call InitPartyMenuOBPals
 
@@ -491,16 +481,7 @@ endr
 	ret
 ; 91e4
 
-InitPartyMenuBGPal7: ; 8e85
-	ld hl, PartyMenuBGPalette
-	ld de, UnknBGPals + 7 palettes
-	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
-	ret
-; 8e9f
-
-PartyMenuBGPalette:
+.PartyMenuBGPalette:
 	RGB 31, 31, 31
 	RGB 17, 19, 31
 	RGB 14, 16, 31
@@ -544,11 +525,7 @@ _CGB_Evolution: ; 91e4
 
 .got_palette
 	call WipeAttrMap
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 9228
 
 
@@ -599,11 +576,7 @@ endr
 	ld a, $5
 	call FarCopyWRAM
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 93a6
 
 
@@ -613,11 +586,7 @@ _CGB_PokedexSearchOption: ; 93ba
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 93d3
 
 
@@ -627,20 +596,20 @@ _CGB_BuyMenu: ; 9499
 	ld bc, 5 palettes
 	ld a, $5
 	call FarCopyWRAM
+
 	call WipeAttrMap
+
 	hlcoord 6, 4, AttrMap
 	lb bc, 7, 1
 	ld a, $2
 	call FillBoxCGB
+
 	hlcoord 1, 8, AttrMap
 	lb bc, 3, 3
 	ld a, $4
 	call FillBoxCGB
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+
+	jp _CGB_FinishLayout
 ; 94d0
 
 
@@ -690,11 +659,7 @@ _CGB_PackPals: ; 93d3
 	ld a, $4
 	call FillBoxCGB
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 9439
 
 
@@ -810,11 +775,7 @@ _CGB_TrainerCard: ; 9289
 	ld a, $7
 	call FillBoxCGB
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 9373
 
 
@@ -929,11 +890,7 @@ _CGB_TrainerCard2:
 	ld a, $7
 	call FillBoxCGB
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 
 
 _CGB_PokedexUnownMode: ; 903e
@@ -954,11 +911,7 @@ _CGB_PokedexUnownMode: ; 903e
 
 	call InitPartyMenuOBPals
 
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+	jp _CGB_FinishLayout
 ; 906e
 
 
@@ -989,11 +942,8 @@ _CGB_BillsPC: ; 8fca
 	call FillBoxCGB
 
 	call InitPartyMenuOBPals
-	call ApplyAttrMap
-	call ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	ret
+
+	jp _CGB_FinishLayout
 ; 9009
 
 .OrangePalette: ; 9036
@@ -1161,3 +1111,11 @@ _CGB_TrainerOrMonFrontpicPals: ; 9578
 	call ApplyPals
 	ret
 ; 9591
+
+
+_CGB_FinishLayout:
+	call ApplyAttrMap
+	call ApplyPals
+	ld a, $1
+	ld [hCGBPalUpdate], a
+	ret

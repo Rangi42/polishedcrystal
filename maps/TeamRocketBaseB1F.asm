@@ -501,10 +501,10 @@ KoffingExplodingTrap:
 NoExplodingTrap:
 	end
 
-TrainerScientistJed:
-	trainer EVENT_BEAT_SCIENTIST_JED, SCIENTIST, JED, ScientistJedSeenText, ScientistJedBeatenText, 0, ScientistJedScript
+TrainerRocketScientistJed:
+	trainer EVENT_BEAT_ROCKET_SCIENTIST_JED, ROCKET_SCIENTIST, JED, RocketScientistJedSeenText, RocketScientistJedBeatenText, 0, RocketScientistJedScript
 
-ScientistJedScript:
+RocketScientistJedScript:
 	end_if_just_battled
 	opentext
 	writetext UnknownText_0x6cc16
@@ -676,7 +676,7 @@ CameraGrunt2BeatenText:
 	cont "a secret switch."
 	done
 
-ScientistJedSeenText:
+RocketScientistJedSeenText:
 	text "This was once a"
 	line "ninja hideout."
 
@@ -685,7 +685,7 @@ ScientistJedSeenText:
 	cont "like you."
 	done
 
-ScientistJedBeatenText:
+RocketScientistJedBeatenText:
 	text "I get it…"
 	done
 
@@ -812,7 +812,7 @@ TeamRocketBaseB1F_MapEventHeader:
 	db 6
 	person_event SPRITE_ROCKET, 0, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
 	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SCIENTIST, 12, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
+	person_event SPRITE_SCIENTIST, 12, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TeamRocketBaseB1FHyperPotion, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
 	person_event SPRITE_BALL_CUT_FRUIT, 15, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TeamRocketBaseB1FNugget, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TeamRocketBaseB1FGuardSpec, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC

@@ -28,7 +28,7 @@ PlayTrainerEncounterMusic:: ; e900a
 
 TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER
-	db MUSIC_HIKER_ENCOUNTER		; kay
+	db MUSIC_BEAUTY_ENCOUNTER		; kay
 	db MUSIC_HIKER_ENCOUNTER		; cal
 	db MUSIC_YOUNGSTER_ENCOUNTER	; falkner
 	db MUSIC_YOUNGSTER_ENCOUNTER	; bugsy
@@ -102,19 +102,25 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_BEAUTY_ENCOUNTER		; swimmerf
 	db MUSIC_POKEMANIAC_ENCOUNTER	; burglar
 	db MUSIC_POKEMANIAC_ENCOUNTER	; pi
-	db MUSIC_ROCKET_ENCOUNTER		; scientist
+	db MUSIC_POKEMANIAC_ENCOUNTER	; scientist
+	db MUSIC_ROCKET_ENCOUNTER		; rocket_scientist
 	db MUSIC_HIKER_ENCOUNTER		; boarder
 	db MUSIC_BEAUTY_ENCOUNTER		; skier
 	db MUSIC_HIKER_ENCOUNTER		; blackbelt_t
-	db MUSIC_BEAUTY_ENCOUNTER		; battle_girl
+	db MUSIC_LASS_ENCOUNTER			; battle_girl
 	db MUSIC_HIKER_ENCOUNTER		; dragon_tamer
+	db MUSIC_HIKER_ENCOUNTER		; engineer
 	db MUSIC_BEAUTY_ENCOUNTER		; teacher
 	db MUSIC_HIKER_ENCOUNTER		; guitaristm
 	db MUSIC_BEAUTY_ENCOUNTER		; guitaristf
 	db MUSIC_HIKER_ENCOUNTER		; biker
 	db MUSIC_HIKER_ENCOUNTER		; roughneck
+	db MUSIC_HIKER_ENCOUNTER		; tamer
+	db MUSIC_BEAUTY_ENCOUNTER		; artist
+	db MUSIC_BEAUTY_ENCOUNTER		; aroma_lady
 	db MUSIC_HIKER_ENCOUNTER		; sightseerm
 	db MUSIC_BEAUTY_ENCOUNTER		; sightseerf
+	db MUSIC_HIKER_ENCOUNTER		; sightseers
 	db MUSIC_HIKER_ENCOUNTER		; cooltrainerm
 	db MUSIC_BEAUTY_ENCOUNTER		; cooltrainerf
 	db MUSIC_HIKER_ENCOUNTER		; ace_duo
@@ -124,30 +130,38 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_ROCKET_ENCOUNTER		; petrel
 	db MUSIC_ROCKET_ENCOUNTER		; archer
 	db MUSIC_ROCKET_ENCOUNTER		; ariana
-	db MUSIC_ROCKET_ENCOUNTER		; giovanni
-	db MUSIC_HIKER_ENCOUNTER		; prof_oak
-	db MUSIC_HIKER_ENCOUNTER		; prof_elm
-	db MUSIC_HIKER_ENCOUNTER		; prof_ivy
-	db MUSIC_HIKER_ENCOUNTER		; mysticalman
-	db MUSIC_HIKER_ENCOUNTER		; karate_king
-	db MUSIC_HIKER_ENCOUNTER		; towertycoon
-	db MUSIC_JESSIE_JAMES_ENCOUNTER	; jessie&james
-	db MUSIC_HIKER_ENCOUNTER		; lorelei
-	db MUSIC_SAGE_ENCOUNTER			; agatha
-	db MUSIC_HIKER_ENCOUNTER		; steven
-	db MUSIC_HIKER_ENCOUNTER		; cynthia
-	db MUSIC_BEAUTY_ENCOUNTER		; cheryl
-	db MUSIC_HIKER_ENCOUNTER		; riley
-	db MUSIC_YOUNGSTER_ENCOUNTER	; buck
-	db MUSIC_LASS_ENCOUNTER			; marley
-	db MUSIC_LASS_ENCOUNTER			; mira
-	db MUSIC_LASS_ENCOUNTER			; anabel
-	db MUSIC_HIKER_ENCOUNTER		; darach
-	db MUSIC_KIMONO_ENCOUNTER		; caitlin
-	db MUSIC_KIMONO_ENCOUNTER		; valerie
-	db MUSIC_POKEMANIAC_ENCOUNTER	; bill_t
-	db MUSIC_LASS_ENCOUNTER			; yellow
-	db MUSIC_HIKER_ENCOUNTER		; walker
-	db MUSIC_HIKER_ENCOUNTER		; lawrence
-	db MUSIC_KIMONO_ENCOUNTER		; rei
+;	db MUSIC_ROCKET_ENCOUNTER		; giovanni
+;	db MUSIC_HIKER_ENCOUNTER		; prof_oak
+;	db MUSIC_HIKER_ENCOUNTER		; prof_elm
+;	db MUSIC_HIKER_ENCOUNTER		; prof_ivy
+;	db MUSIC_MYSTICALMAN_ENCOUNTER	; mysticalman
+;	db MUSIC_HIKER_ENCOUNTER		; karate_king
+;	db MUSIC_HIKER_ENCOUNTER		; towertycoon
+;	db MUSIC_JESSIE_JAMES_ENCOUNTER	; jessie&james
+;	db MUSIC_HIKER_ENCOUNTER		; lorelei
+;	db MUSIC_SAGE_ENCOUNTER			; agatha
+;	db MUSIC_HIKER_ENCOUNTER		; steven
+;	db MUSIC_HIKER_ENCOUNTER		; cynthia
+;	db MUSIC_HIKER_ENCOUNTER		; inver
+;	db MUSIC_BEAUTY_ENCOUNTER		; cheryl
+;	db MUSIC_HIKER_ENCOUNTER		; riley
+;	db MUSIC_YOUNGSTER_ENCOUNTER	; buck
+;	db MUSIC_LASS_ENCOUNTER			; marley
+;	db MUSIC_LASS_ENCOUNTER			; mira
+;	db MUSIC_LASS_ENCOUNTER			; anabel
+;	db MUSIC_HIKER_ENCOUNTER		; darach
+;	db MUSIC_KIMONO_ENCOUNTER		; caitlin
+;	db MUSIC_KIMONO_ENCOUNTER		; candela
+;	db MUSIC_KIMONO_ENCOUNTER		; blanche
+;	db MUSIC_HIKER_ENCOUNTER		; spark
+;	db MUSIC_LASS_ENCOUNTER			; flannery
+;	db MUSIC_LASS_ENCOUNTER			; maylene
+;	db MUSIC_LASS_ENCOUNTER			; skyla
+;	db MUSIC_KIMONO_ENCOUNTER		; valerie
+;	db MUSIC_POKEMANIAC_ENCOUNTER	; bill_t
+;	db MUSIC_LASS_ENCOUNTER			; yellow
+;	db MUSIC_HIKER_ENCOUNTER		; walker
+;	db MUSIC_HIKER_ENCOUNTER		; imakuni
+;	db MUSIC_HIKER_ENCOUNTER		; lawrence
+;	db MUSIC_KIMONO_ENCOUNTER		; rei
 ; e906e
