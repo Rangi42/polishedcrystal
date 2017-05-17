@@ -1,5 +1,5 @@
 
-	add_pic MewtwoPlainFrontpic
-	add_pic MewtwoPlainBackpic
-	add_pic MewtwoArmoredFrontpic
-	add_pic MewtwoArmoredBackpic
+	dba MewtwoPlainFrontpic
+	dba MewtwoPlainBackpic
+	dba MewtwoArmoredFrontpic
+	dba MewtwoArmoredBackpic
