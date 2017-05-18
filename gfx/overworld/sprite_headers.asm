@@ -279,7 +279,7 @@ DeanSprite:
 	sprite_header DeanSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 ArtistSprite:
-	sprite_header ArtistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+	sprite_header ArtistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
 BakerSprite:
 	sprite_header BakerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED

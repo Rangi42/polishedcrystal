@@ -5279,6 +5279,17 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Hall@"
+	db TRAINERTYPE_DVS | TRAINERTYPE_NICKNAME
+
+	; party
+	db 56, QWILFISH, %10000111, %11011000, %00101000, "Dopefish@" ; green
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10202,6 +10213,31 @@ endc
 	db $ff ; end
 
 ; ================
+
+	; BAKER
+	db "Margaret@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, CHANSEY
+	db 55, MILTANK
+
+	db $ff ; end
+
+; ================
+
+	; BAKER
+	db "Olga@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 50, TEDDIURSA
+	db 55, URSARING
+	db 53, CHANSEY
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -10652,9 +10688,9 @@ SwimmerMGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 13, STARYU
-	db 18, STARMIE
-	db 16, HORSEA
+	db 15, STARYU
+	db 20, STARMIE
+	db 18, HORSEA
 
 	db $ff ; end
 
@@ -12573,6 +12609,45 @@ TamerGroup:
 ArtistGroup:
 ; ================================
 ; ================
+
+	; ARTIST
+	db "Reina@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, MR__MIME
+	db 55, SUDOWOODO
+
+	db $ff ; end
+
+; ================
+
+	; ARTIST
+	db "Alina@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
+
+	; party
+
+	db 54, SMEARGLE, CHARCOAL, %00101000, %10000010, %10101111 ; red
+		db FIRE_BLAST
+		db FLAMETHROWER
+		db EARTH_POWER
+		db WILL_O_WISP
+
+	db 54, SMEARGLE, MAGNET, %00100010, %10000010, %00101111 ; yellow
+		db THUNDER
+		db THUNDERBOLT
+		db THUNDER_WAVE
+		db RAIN_DANCE
+
+	db 54, SMEARGLE, MYSTIC_WATER, %10001000, %00101000, %10000010 ; blue
+		db HYDRO_PUMP
+		db SURF
+		db ICE_BEAM
+		db SCALD
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12612,6 +12687,29 @@ SightseerFGroup:
 SightseersGroup:
 ; ================================
 ; ================
+
+	; SIGHTSEERS
+	db "Li & Su@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, MAGMORTAR
+	db 54, ELECTIVIRE
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERS
+	db "Li & Su@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, ELECTIVIRE
+	db 54, MAGMORTAR
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -14063,6 +14161,9 @@ ArianaGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 GiovanniGroup:
 ; ================================
 ; ================
@@ -14166,9 +14267,6 @@ ProfIvyGroup:
 ; ================
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 MysticalmanGroup:

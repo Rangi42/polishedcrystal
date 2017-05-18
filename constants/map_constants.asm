@@ -895,19 +895,19 @@ const_value SET 1
 	const FRUITTREE_ROUTE_42_3     ; 12
 	const FRUITTREE_ROUTE_43       ; 13
 	const FRUITTREE_ROUTE_44       ; 14
-	const FRUITTREE_ROUTE_45_1     ; 15
-	const FRUITTREE_ROUTE_45_2     ; 16
-	const FRUITTREE_ROUTE_46_1     ; 17
-	const FRUITTREE_ROUTE_46_2     ; 18
-	const FRUITTREE_ROUTE_27       ; 19
-	const FRUITTREE_ROUTE_26       ; 1a
-	const FRUITTREE_ROUTE_8        ; 1b
-	const FRUITTREE_ROUTE_11       ; 1c
-	const FRUITTREE_FUCHSIA_CITY   ; 1d
-	const FRUITTREE_PEWTER_CITY_1  ; 1e
-	const FRUITTREE_PEWTER_CITY_2  ; 1f
-	const FRUITTREE_ROUTE_2        ; 20
-	const FRUITTREE_ROUTE_1        ; 21
+	const FRUITTREE_ROUTE_45       ; 15
+	const FRUITTREE_ROUTE_46_1     ; 16
+	const FRUITTREE_ROUTE_46_2     ; 17
+	const FRUITTREE_ROUTE_27       ; 18
+	const FRUITTREE_ROUTE_26       ; 19
+	const FRUITTREE_ROUTE_8        ; 1a
+	const FRUITTREE_ROUTE_11       ; 1b
+	const FRUITTREE_FUCHSIA_CITY   ; 1c
+	const FRUITTREE_PEWTER_CITY_1  ; 1d
+	const FRUITTREE_PEWTER_CITY_2  ; 1e
+	const FRUITTREE_ROUTE_2        ; 1f
+	const FRUITTREE_ROUTE_1        ; 20
+	const FRUITTREE_LUCKY_ISLAND   ; 21
 NUM_FRUIT_TREES EQU const_value +- 1
 
 CMDQUEUE_TYPE  EQU 0

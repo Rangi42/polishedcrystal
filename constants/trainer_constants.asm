@@ -245,6 +245,7 @@ KRIS EQU __enum__
 	const LIAM
 	const GIDEON
 	const DUNDEE
+	const HALL
 
 	trainerclass BIRD_KEEPER ; 25
 	const VANCE1
@@ -632,6 +633,8 @@ KRIS EQU __enum__
 	trainerclass BAKER ; 44
 	const CHELSIE
 	const SHARYN
+	const MARGARET
+	const OLGA
 
 	trainerclass COWGIRL ; 45
 	const ANNIE
@@ -846,6 +849,8 @@ KRIS EQU __enum__
 	const BRETT
 
 	trainerclass ARTIST ; 59
+	const REINA
+	const ALINA
 
 	trainerclass AROMA_LADY ; 5a
 	const JESSICA

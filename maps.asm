@@ -599,7 +599,6 @@ SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
 INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
-INCLUDE "maps/GoldenrodHarbor.asm"
 
 
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
@@ -698,6 +697,7 @@ SECTION "Map Scripts 34", ROMX
 INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
+INCLUDE "maps/GoldenrodHarbor.asm"
 
 
 SECTION "Map Scripts 35", ROMX
