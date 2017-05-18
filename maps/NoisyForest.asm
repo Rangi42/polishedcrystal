@@ -43,7 +43,7 @@ NoisyForestAnabelScript:
 	opentext
 	writetext .ItemText
 	buttonsound
-	verbosegiveitem ZINC
+	verbosegiveitem POWER_BAND
 	iffalse .Done
 	writetext .GoodbyeText
 	waitbutton

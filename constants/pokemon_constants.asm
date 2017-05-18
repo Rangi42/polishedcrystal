@@ -281,7 +281,7 @@ MON_SHINY                EQUS "(PartyMon1Shiny - PartyMon1)"
 MON_ABILITY              EQUS "(PartyMon1Ability - PartyMon1)"
 MON_NATURE               EQUS "(PartyMon1Nature - PartyMon1)"
 MON_GENDER               EQUS "(PartyMon1Gender - PartyMon1)"
-MON_FAINTED              EQUS "(PartyMon1Fainted - PartyMon1)"
+MON_HYPER_TRAINED        EQUS "(PartyMon1HyperTrained - PartyMon1)"
 MON_FORM                 EQUS "(PartyMon1Form - PartyMon1)"
 MON_PP                   EQUS "(PartyMon1PP - PartyMon1)"
 MON_HAPPINESS            EQUS "(PartyMon1Happiness - PartyMon1)"
@@ -306,14 +306,14 @@ PARTYMON_STRUCT_LENGTH   EQUS "(PartyMon1StatsEnd - PartyMon1)"
 REDMON_STRUCT_LENGTH EQU 44
 
 ; apply to MON_FORM
-SHINY_MASK       EQU %10000000
-ABILITY_MASK     EQU %01100000
-NATURE_MASK      EQU %00011111
-NOT_NATURE_MASK  EQU %11100000
-GENDER_MASK      EQU %10000000
-FAINTED_MASK     EQU %01000000
-FORM_MASK        EQU %00111111
-NOT_FORM_MASK    EQU %11000000
+SHINY_MASK         EQU %10000000
+ABILITY_MASK       EQU %01100000
+NATURE_MASK        EQU %00011111
+NOT_NATURE_MASK    EQU %11100000
+GENDER_MASK        EQU %10000000
+HYPER_TRAINED_MASK EQU %01000000
+FORM_MASK          EQU %00111111
+NOT_FORM_MASK      EQU %11000000
 
 ; apply to MON_CAUGHTDATA
 CAUGHTGENDER_MASK EQU %10000000

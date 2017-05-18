@@ -43,7 +43,7 @@ MurkySwampCherylScript:
 	opentext
 	writetext .ItemText
 	buttonsound
-	verbosegiveitem HP_UP
+	verbosegiveitem POWER_WEIGHT
 	iffalse .Done
 	writetext .GoodbyeText
 	waitbutton

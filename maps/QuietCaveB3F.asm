@@ -30,7 +30,7 @@ QuietCaveB3FMarleyScript:
 	opentext
 	writetext .ItemText
 	buttonsound
-	verbosegiveitem CARBOS
+	verbosegiveitem POWER_ANKLET
 	iffalse .Done
 	writetext .GoodbyeText
 	waitbutton

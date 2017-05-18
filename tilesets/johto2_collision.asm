@@ -179,7 +179,7 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, DOOR
 	tilecoll FLOOR, WALL, FLOOR, WALL
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, FLOOR, WALL
 	tilecoll WATER, BUOY, WATER, WATER
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL

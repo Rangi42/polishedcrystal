@@ -69,7 +69,7 @@ DimCave5FRileyScript:
 	opentext
 	writetext .ItemText
 	buttonsound
-	verbosegiveitem PROTEIN
+	verbosegiveitem POWER_BRACER
 	iffalse .Done
 	writetext .GoodbyeText
 	waitbutton

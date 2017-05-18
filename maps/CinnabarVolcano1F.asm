@@ -91,7 +91,7 @@ CinnabarVolcano1FBuckScript:
 	opentext
 	writetext .ItemText
 	buttonsound
-	verbosegiveitem IRON
+	verbosegiveitem POWER_BELT
 	iffalse .Done
 	writetext .GoodbyeText
 	waitbutton

@@ -40,7 +40,7 @@ ScaryCave1FMiraScript:
 	opentext
 	writetext .ItemText
 	buttonsound
-	verbosegiveitem CALCIUM
+	verbosegiveitem POWER_LENS
 	iffalse .Done
 	writetext .GoodbyeText
 	waitbutton

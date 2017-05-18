@@ -27,6 +27,7 @@
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
+* Hyper Trained stats
 
 
 ## Aesthetics
@@ -43,9 +44,9 @@
 
 * Soul House + Radio Tower event to get Expn Card
 * Battle Tower merchants selling items for BP
-* Six Hyper Trainers for each stat in Battle Tower 2F
 * Lost Pikablu (Marill) in Noisy Forest
 * Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue (in his house after defeat)
+* Mr. Hyper somewhere
 
 
 ## Characters

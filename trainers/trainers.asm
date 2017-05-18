@@ -15174,7 +15174,7 @@ CandelaGroup:
 ;
 ;	db 50, FLAREON
 ;	db 50, CHARIZARD
-;	db 50, NINETALES
+;	db 50, MAGMAR
 ;	db 50, DRAGONITE
 ;	db 50, ARCANINE
 ;	db 50, MOLTRES
@@ -15199,7 +15199,7 @@ BlancheGroup:
 ;	db 50, BLASTOISE
 ;	db 50, STARMIE
 ;	db 50, LAPRAS
-;	db 50, EXEGGUTOR
+;	db 50, JYNX
 ;	db 50, ARTICUNO
 ;
 ;	db $ff ; end
@@ -15222,7 +15222,7 @@ SparkGroup:
 ;	db 50, VENUSAUR
 ;	db 50, RAICHU
 ;	db 50, SNORLAX
-;	db 50, VICTREEBEL
+;	db 50, ELECTABUZZ
 ;	db 50, ZAPDOS
 ;
 ;	db $ff ; end

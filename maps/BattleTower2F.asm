@@ -26,30 +26,8 @@ BattleTower2FCherylScript:
 	checkflag ENGINE_CHERYL_DONE_TODAY
 	iftrue .Done
 	writetext .GreetingText
-.Menu
-	loadmenudata StatTrainerMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .Battle
-	if_equal $2, .HyperTrain
-	if_equal $3, .Explain
-	writetext .CancelText
-	waitbutton
-	closetext
-	end
-
-.Done:
-	writetext .DoneText
-	waitbutton
-	closetext
-	end
-
-.Explain:
-	writetext HyperTrainingExplanationText
-	waitbutton
-	jump .Menu
-
-.Battle:
+	yesorno
+	iffalse .Refuse
 	setflag ENGINE_CHERYL_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -71,13 +49,14 @@ BattleTower2FCherylScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
+.Done:
 	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-.HyperTrain:
-	writetext .HyperTrainText
+.Refuse:
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
@@ -89,18 +68,9 @@ BattleTower2FCherylScript:
 	para "It's been a long"
 	line "time… Hasn't it?"
 
-	para "What would you"
-	line "like to do?"
-	done
-
-.DoneText:
-	text "I'm done for"
-	line "today."
-	done
-
-.CancelText:
-	text "Giggle…"
-	line "Another time then."
+	para "Would you care"
+	line "to have a battle"
+	cont "with me?"
 	done
 
 .SeenText:
@@ -132,8 +102,15 @@ BattleTower2FCherylScript:
 	cont "for that, too!"
 	done
 
-.HyperTrainText:
-	text "TODO"
+.RefuseText:
+	text "Giggle…"
+
+	para "#mon would get"
+	line "all worn out if we"
+
+	para "battled all the"
+	line "time, wouldn't"
+	cont "they?"
 	done
 
 BattleTower2FRileyScript:
@@ -142,30 +119,8 @@ BattleTower2FRileyScript:
 	checkflag ENGINE_RILEY_DONE_TODAY
 	iftrue .Done
 	writetext .GreetingText
-.Menu
-	loadmenudata StatTrainerMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .Battle
-	if_equal $2, .HyperTrain
-	if_equal $3, .Explain
-	writetext .CancelText
-	waitbutton
-	closetext
-	end
-
-.Done:
-	writetext .DoneText
-	waitbutton
-	closetext
-	end
-
-.Explain:
-	writetext HyperTrainingExplanationText
-	waitbutton
-	jump .Menu
-
-.Battle:
+	yesorno
+	iffalse .Refuse
 	setflag ENGINE_RILEY_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -182,13 +137,14 @@ BattleTower2FRileyScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
+.Done:
 	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-.HyperTrain:
-	writetext .HyperTrainText
+.Refuse:
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
@@ -197,17 +153,11 @@ BattleTower2FRileyScript:
 	text "Hi. Long time,"
 	line "no see."
 
-	para "What are you"
-	line "looking for?"
-	done
+	para "That look you"
+	line "have… I take it"
 
-.DoneText:
-	text "I'm done for"
-	line "today."
-	done
-
-.CancelText:
-	text "Oh, all right."
+	para "you're ready for"
+	line "battle?"
 	done
 
 .SeenText:
@@ -239,8 +189,10 @@ BattleTower2FRileyScript:
 	line "met elsewhere?"
 	done
 
-.HyperTrainText:
-	text "TODO"
+.RefuseText:
+	text "Oh, all right."
+	line "Then we'll wait"
+	cont "till you're ready."
 	done
 
 BattleTower2FBuckScript:
@@ -249,30 +201,8 @@ BattleTower2FBuckScript:
 	checkflag ENGINE_BUCK_DONE_TODAY
 	iftrue .Done
 	writetext .GreetingText
-.Menu
-	loadmenudata StatTrainerMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .Battle
-	if_equal $2, .HyperTrain
-	if_equal $3, .Explain
-	writetext .CancelText
-	waitbutton
-	closetext
-	end
-
-.Done:
-	writetext .DoneText
-	waitbutton
-	closetext
-	end
-
-.Explain:
-	writetext HyperTrainingExplanationText
-	waitbutton
-	jump .Menu
-
-.Battle:
+	yesorno
+	iffalse .Refuse
 	setflag ENGINE_BUCK_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -289,13 +219,14 @@ BattleTower2FBuckScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
+.Done:
 	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-.HyperTrain:
-	writetext .HyperTrainText
+.Refuse:
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
@@ -304,19 +235,8 @@ BattleTower2FBuckScript:
 	text "Ehehehe! You're"
 	line "here at last!"
 
-	para "So? Why are you"
-	line "here?"
-	done
-
-.DoneText:
-	text "I'm done for"
-	line "today."
-	done
-
-.CancelText:
-	text "Huh, what? That"
-	line "takes the wind out"
-	cont "of my sails."
+	para "So we are going"
+	line "to battle?"
 	done
 
 .SeenText:
@@ -340,8 +260,10 @@ BattleTower2FBuckScript:
 	line "improving my team."
 	done
 
-.HyperTrainText:
-	text "TODO"
+.RefuseText:
+	text "Huh, what? That"
+	line "takes the wind out"
+	cont "of my sails."
 	done
 
 BattleTower2FMarleyScript:
@@ -350,30 +272,8 @@ BattleTower2FMarleyScript:
 	checkflag ENGINE_MARLEY_DONE_TODAY
 	iftrue .Done
 	writetext .GreetingText
-.Menu
-	loadmenudata StatTrainerMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .Battle
-	if_equal $2, .HyperTrain
-	if_equal $3, .Explain
-	writetext .CancelText
-	waitbutton
-	closetext
-	end
-
-.Done:
-	writetext .DoneText
-	waitbutton
-	closetext
-	end
-
-.Explain:
-	writetext HyperTrainingExplanationText
-	waitbutton
-	jump .Menu
-
-.Battle:
+	yesorno
+	iffalse .Refuse
 	setflag ENGINE_MARLEY_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -395,31 +295,21 @@ BattleTower2FMarleyScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
+.Done:
 	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-.HyperTrain:
-	writetext .HyperTrainText
+.Refuse:
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
 
 .GreetingText:
-	text "…So? …What are we"
-	line "going to do?"
-	done
-
-.DoneText:
-	text "I'm done for"
-	line "today."
-	done
-
-.CancelText:
-	text "…Oh, you. I'm get-"
-	line "ting to dislike"
-	cont "you a little."
+	text "…Oh? A battle?"
+	line "With me?"
 	done
 
 .SeenText:
@@ -439,8 +329,10 @@ BattleTower2FMarleyScript:
 	line "Only a tiny bit."
 	done
 
-.HyperTrainText:
-	text "TODO"
+.RefuseText:
+	text "…Oh, you. I'm get-"
+	line "ting to dislike"
+	cont "you a little."
 	done
 
 BattleTower2FMiraScript:
@@ -449,30 +341,8 @@ BattleTower2FMiraScript:
 	checkflag ENGINE_MIRA_DONE_TODAY
 	iftrue .Done
 	writetext .GreetingText
-.Menu
-	loadmenudata StatTrainerMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .Battle
-	if_equal $2, .HyperTrain
-	if_equal $3, .Explain
-	writetext .CancelText
-	waitbutton
-	closetext
-	end
-
-.Done:
-	writetext .DoneText
-	waitbutton
-	closetext
-	end
-
-.Explain:
-	writetext HyperTrainingExplanationText
-	waitbutton
-	jump .Menu
-
-.Battle:
+	yesorno
+	iffalse .Refuse
 	setflag ENGINE_MIRA_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -489,39 +359,32 @@ BattleTower2FMiraScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
+.Done:
 	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-.HyperTrain:
-	writetext .HyperTrainText
+.Refuse:
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
 
 .GreetingText:
-	text "<PLAYER>! What"
-	line "will you and Mira"
-	cont "do now?"
-	done
+	text "<PLAYER>! Mira is"
+	line "stronger now!"
 
-.DoneText:
-	text "I'm done for"
-	line "today."
-	done
-
-.CancelText:
-	text "Mira is a little"
-	line "sad…"
+	para "Please! Battle"
+	line "with Mira!"
 	done
 
 .SeenText:
-	text "<PLAYER>! Mira will"
-	line "show you that Mira"
+	text "Mira will show you"
+	line "that Mira doesn't"
 
-	para "doesn't get lost"
-	line "anymore, <PLAYER>!"
+	para "get lost anymore,"
+	line "<PLAYER>!"
 	done
 
 .BeatenText:
@@ -544,8 +407,9 @@ BattleTower2FMiraScript:
 	line "to understand!"
 	done
 
-.HyperTrainText:
-	text "TODO"
+.RefuseText:
+	text "Mira is a little"
+	line "sad…"
 	done
 
 BattleTower2FAnabelScript:
@@ -554,30 +418,8 @@ BattleTower2FAnabelScript:
 	checkflag ENGINE_ANABEL_DONE_TODAY
 	iftrue .Done
 	writetext .GreetingText
-.Menu
-	loadmenudata StatTrainerMenuDataHeader
-	verticalmenu
-	closewindow
-	if_equal $1, .Battle
-	if_equal $2, .HyperTrain
-	if_equal $3, .Explain
-	writetext .CancelText
-	waitbutton
-	closetext
-	end
-
-.Done:
-	writetext .DoneText
-	waitbutton
-	closetext
-	end
-
-.Explain:
-	writetext HyperTrainingExplanationText
-	waitbutton
-	jump .Menu
-
-.Battle:
+	yesorno
+	iffalse .Refuse
 	setflag ENGINE_ANABEL_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -594,13 +436,14 @@ BattleTower2FAnabelScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
+.Done:
 	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-.HyperTrain:
-	writetext .HyperTrainText
+.Refuse:
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
@@ -608,17 +451,12 @@ BattleTower2FAnabelScript:
 .GreetingText:
 	text "You really did"
 	line "come to see me…"
-	cont "…What for?"
-	done
 
-.DoneText:
-	text "I'm done for"
-	line "today."
-	done
+	para "I won't have to"
+	line "hold back against"
+	cont "you…"
 
-.CancelText:
-	text "It's very dis-"
-	line "appointing…"
+	para "Are you ready?"
 	done
 
 .SeenText:
@@ -640,28 +478,10 @@ BattleTower2FAnabelScript:
 	line "before…"
 	done
 
-.HyperTrainText:
-	text "TODO"
+.RefuseText:
+	text "It's very dis-"
+	line "appointing…"
 	done
-
-HyperTrainingExplanationText:
-	text "TODO"
-	done
-
-StatTrainerMenuDataHeader:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 14 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 4 ; items
-	db "Battle@"
-	db "Hyper Train@"
-	db "Explain@"
-	db "Cancel@"
 
 BattleTower2FCooltrainermScript:
 	jumptextfaceplayer .Text

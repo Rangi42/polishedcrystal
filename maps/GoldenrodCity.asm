@@ -687,7 +687,7 @@ GoldenrodCity_MapEventHeader:
 .Signposts:
 	db 12
 	signpost 14, 14, SIGNPOST_READ, GoldenrodCityStationSign
-	signpost 17, 8, SIGNPOST_READ, GoldenrodCityRadioTowerSign
+	signpost 15, 7, SIGNPOST_READ, GoldenrodCityRadioTowerSign
 	signpost 27, 30, SIGNPOST_READ, GoldenrodDeptStoreSign
 	signpost 9, 30, SIGNPOST_READ, GoldenrodGymSign
 	signpost 18, 26, SIGNPOST_READ, GoldenrodCitySign
