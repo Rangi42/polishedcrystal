@@ -256,6 +256,7 @@ INCLUDE "audio/music/custom/lugiassong.asm"
 SECTION "Extra Songs 14", ROMX
 
 INCLUDE "audio/music/dppt/starkmountain.asm"
+INCLUDE "audio/music/oras/wallyencounter.asm"
 INCLUDE "audio/music/oras/wallybattle.asm"
 
 

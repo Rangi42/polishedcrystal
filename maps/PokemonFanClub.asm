@@ -4,7 +4,7 @@ const_value set 2
 	const POKEMONFANCLUB_FISHER
 	const POKEMONFANCLUB_TEACHER
 	const POKEMONFANCLUB_CLEFAIRY_DOLL
-	const POKEMONFANCLUB_BAYLEEF
+	const POKEMONFANCLUB_ODDISH
 
 PokemonFanClub_MapScriptHeader:
 .MapTriggers:
@@ -106,10 +106,10 @@ TeacherScript_0x19186b:
 ClefairyDoll:
 	jumptext ClefairyDollText
 
-FanClubBayleef:
+FanClubOddish:
 	opentext
-	writetext FanClubBayleefText
-	cry BAYLEEF
+	writetext FanClubOddishText
+	cry ODDISH
 	waitbutton
 	closetext
 	end
@@ -270,10 +270,10 @@ UnknownText_0x191d58:
 
 UnknownText_0x191d73:
 	text "Look at my darling"
-	line "Bayleef!"
+	line "Oddish!"
 
-	para "The leaf on its"
-	line "head is so cute!"
+	para "The leaves on its"
+	line "head are so cute!"
 	done
 
 ClefairyDollText:
@@ -285,8 +285,8 @@ ClefairyDollText:
 	cont "Doll."
 	done
 
-FanClubBayleefText:
-	text "Bayleef: Li liif!"
+FanClubOddishText:
+	text "Oddish: Diish!"
 	done
 
 UnknownText_0x191dfc:
@@ -340,4 +340,4 @@ PokemonFanClub_MapEventHeader:
 	person_event SPRITE_FISHER, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
 	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x19186b, -1
 	person_event SPRITE_CLEFAIRY, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClefairyDoll, EVENT_VERMILION_FAN_CLUB_DOLL
-	person_event SPRITE_BAYLEEF, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FanClubBayleef, -1
+	person_event SPRITE_ODDISH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FanClubOddish, -1

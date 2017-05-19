@@ -157,15 +157,16 @@
 	const MUSIC_CHAMPION_BATTLE_RSE            ; 9a
 	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE      ; 9b
 	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; 9c
-	const MUSIC_WALLY_BATTLE_ORAS              ; 9d
-	const MUSIC_ZINNIA_ENCOUNTER_ORAS          ; 9e
-	const MUSIC_ZINNIA_BATTLE_ORAS             ; 9f
-	const MUSIC_WILD_BATTLE_SM                 ; a0
-	const MUSIC_TRAINER_BATTLE_SM              ; a1
-	const MUSIC_ELITE_FOUR_BATTLE_SM           ; a2
-	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; a3
-	const MUSIC_LUGIAS_SONG_2000               ; a4
-	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; a5 ; unused
+	const MUSIC_WALLY_ENCOUNTER_ORAS           ; 9d
+	const MUSIC_WALLY_BATTLE_ORAS              ; 9e
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS          ; 9f
+	const MUSIC_ZINNIA_BATTLE_ORAS             ; a0
+	const MUSIC_WILD_BATTLE_SM                 ; a1
+	const MUSIC_TRAINER_BATTLE_SM              ; a2
+	const MUSIC_ELITE_FOUR_BATTLE_SM           ; a3
+	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; a4
+	const MUSIC_LUGIAS_SONG_2000               ; a5
+	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; a6 ; unused
 	; special
-	const MUSIC_RADIO_TOWER                    ; a6
-	const MUSIC_MAHOGANY_MART                  ; a7
+	const MUSIC_RADIO_TOWER                    ; a7
+	const MUSIC_MAHOGANY_MART                  ; a8

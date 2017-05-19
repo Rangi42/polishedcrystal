@@ -215,15 +215,15 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_MOLTRES ; $d1
 	const SPRITE_DRATINI ; $d2
 	const SPRITE_MEWTWO ; $d3
-	const SPRITE_BAYLEEF ; $d4
-	const SPRITE_FURRET ; $d5
-	const SPRITE_HOOTHOOT ; $d6
-	const SPRITE_AMPHAROS ; $d7
-	const SPRITE_MARILL ; $d8
-	const SPRITE_POLITOED ; $d9
-	const SPRITE_MURKROW ; $da
-	const SPRITE_UNOWN ; $db
-	const SPRITE_HERACROSS ; $dc
+	const SPRITE_FURRET ; $d4
+	const SPRITE_HOOTHOOT ; $d5
+	const SPRITE_AMPHAROS ; $d6
+	const SPRITE_MARILL ; $d7
+	const SPRITE_MURKROW ; $d8
+	const SPRITE_SLOWKING ; d9
+	const SPRITE_UNOWN ; $da
+	const SPRITE_HERACROSS ; $db
+	const SPRITE_WEAVILE ; $dc
 	const SPRITE_URSARING ; $dd
 	const SPRITE_SKARMORY ; $de
 	const SPRITE_SMEARGLE ; $df
@@ -335,6 +335,7 @@ NUM_SPRITEMOVEDATA EQU const_value +- 1
 SPRITEMOVEDATA_FIELDS EQU 6
 
 ; sprite movement functions
+; see engine/map_objects.asm:GetSpriteMovementFunction.Pointers
 	const_def
 	const SPRITEMOVEFN_00
 	const SPRITEMOVEFN_RANDOM_WALK_Y
@@ -365,6 +366,8 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_BOULDERDUST
 	const SPRITEMOVEFN_GRASS
 
+; sprite step types
+; see engine/map_objects.asm:StepTypesJumptable
 	const_def
 	const STEP_TYPE_00
 	const STEP_TYPE_SLEEP
@@ -393,6 +396,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const STEP_TYPE_18
 	const STEP_TYPE_SKYFALL_TOP
 
+; see engine/map_objects.asm:Pointers445f
 	const_def
 	const PERSON_ACTION_00
 	const PERSON_ACTION_STAND
@@ -464,6 +468,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEANIMSTRUCT_0E             ; e
 	const SPRITEANIMSTRUCT_0F             ; f
 
+; see data/sprite_engine.asm:SpriteAnimFrameData
 	const_def
 	const SPRITE_ANIM_FRAMESET_00
 	const SPRITE_ANIM_FRAMESET_01
@@ -532,6 +537,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	const SPRITE_ANIM_FRAMESET_CELEBI_RIGHT
 
+; see engine/sprite_anims.asm:DoAnimFrame.Jumptable
 	const_def
 	const SPRITE_ANIM_SEQ_NULL
 	const SPRITE_ANIM_SEQ_PARTY_MON
@@ -569,6 +575,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITE_ANIM_SEQ_UNOWN_F
 	const SPRITE_ANIM_SEQ_SUICUNE_AWAY
 
+; see engine/sprites.asm:SpriteAnimSeqData
 	const_def
 	const SPRITE_ANIM_INDEX_00
 	const SPRITE_ANIM_INDEX_01
@@ -616,8 +623,8 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
 	const SPRITE_ANIM_INDEX_CELEBI
 
+; see data/sprite_engine.asm:SpriteAnimOAMData
 	const_def
-
 	const SPRITE_ANIM_FRAME_IDX_00
 	const SPRITE_ANIM_FRAME_IDX_01
 	const SPRITE_ANIM_FRAME_IDX_02

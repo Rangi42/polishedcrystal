@@ -1,7 +1,7 @@
 const_value set 2
 	const CERULEANTRADESPEECHHOUSE_GRANNY
 	const CERULEANTRADESPEECHHOUSE_GRAMPS
-	const CERULEANTRADESPEECHHOUSE_POLITOED
+	const CERULEANTRADESPEECHHOUSE_POLIWRATH
 	const CERULEANTRADESPEECHHOUSE_CHANSEY
 
 CeruleanTradeSpeechHouse_MapScriptHeader:
@@ -17,10 +17,10 @@ GrannyScript_0x188133:
 GrampsScript_0x188136:
 	jumptextfaceplayer UnknownText_0x18818a
 
-PolitoedScript_0x188139:
+PoliwrathScript_0x188139:
 	opentext
 	writetext UnknownText_0x18819c
-	cry POLITOED
+	cry POLIWRATH
 	waitbutton
 	closetext
 	end
@@ -45,7 +45,7 @@ UnknownText_0x18818a:
 	done
 
 UnknownText_0x18819c:
-	text "Politoed: Ribbit!"
+	text "Poliwrath: Ribbit!"
 	done
 
 UnknownText_0x1881b5:
@@ -72,5 +72,5 @@ CeruleanTradeSpeechHouse_MapEventHeader:
 	db 4
 	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrannyScript_0x188133, -1
 	person_event SPRITE_GRAMPS, 2, 3, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x188136, -1
-	person_event SPRITE_POLITOED, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, PolitoedScript_0x188139, -1
+	person_event SPRITE_POLIWRATH, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PoliwrathScript_0x188139, -1
 	person_event SPRITE_CHANSEY, 6, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ChanseyScript_0x188143, -1

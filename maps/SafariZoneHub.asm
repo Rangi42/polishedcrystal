@@ -49,8 +49,9 @@ Bug_maniacKaiAfterText:
 	line "similar to"
 	cont "Butterfree!"
 
-	para "The weight, the"
-	line "eyes, the ability…"
+	para "Their weight,"
+	line "their eyes,"
+	cont "their abilities…"
 
 	para "Evolution is"
 	line "weird sometimes."

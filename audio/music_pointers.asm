@@ -162,6 +162,7 @@
 	dba Music_ChampionBattleRSE
 	dba Music_FrontierBrainBattleRSE
 	dba Music_KantoLegendBattleXY
+	dba Music_WallyEncounterORAS
 	dba Music_WallyBattleORAS
 	dba Music_ZinniaEncounterORAS
 	dba Music_ZinniaBattleORAS
