@@ -190,7 +190,7 @@ Route10NorthLawrenceEncounter2Script:
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_BEAUTY
 .Misty
 	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
-	clearevent EVENT_LAWRENCE_VICTORY_ROAD
+	clearevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
 	special RestartMapMusic
 	end
 
@@ -316,11 +316,9 @@ Route10NorthLawrenceSpeechText:
 	para "This is unaccept-"
 	line "able."
 
-	para "Meet me in Victory"
-	line "Road, the last"
-
-	para "known nest of"
-	line "Moltres."
+	para "Meet me at the"
+	line "ruined shrine on"
+	cont "Shamouti Island."
 
 	para "I'll show you that"
 	line "I deserve to own"

@@ -70,7 +70,7 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	waitsfx
 	special Special_FadeInQuickly
 	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
-	clearevent EVENT_LAWRENCE_VICTORY_ROAD
+	clearevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
 	special RestartMapMusic
 	end
 
@@ -144,8 +144,9 @@ CinnabarVolcanoB2FLawrenceSpeechText:
 	para "This is unaccept-"
 	line "able."
 
-	para "Meet me in Victory"
-	line "Road."
+	para "Meet me at the"
+	line "ruined shrine on"
+	cont "Shamouti Island."
 
 	para "I'll show you that"
 	line "I deserve to own"

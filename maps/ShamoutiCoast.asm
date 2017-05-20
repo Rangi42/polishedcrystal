@@ -25,3 +25,5 @@ ShamoutiCoast_MapEventHeader:
 
 .PersonEvents:
 	db 0
+;	person_event SPRITE_, ?, ?, SPRITEMOVEDATA_, 0, 0, -1, -1, (1 << 3) | PAL_OW_, PERSONTYPE_TRAINER, 0, Trainer, -1
+;	person_event SPRITE_, ?, ?, SPRITEMOVEDATA_, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuins?Script, -1

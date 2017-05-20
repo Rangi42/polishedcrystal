@@ -443,6 +443,7 @@ KRIS EQU __enum__
 	const VERONICA
 	const BEAUTY_NICOLE
 	const RACHAEL
+	const ANGELICA
 
 	trainerclass BUG_MANIAC ; 32
 	const LOU
@@ -478,6 +479,7 @@ KRIS EQU __enum__
 	const LYLE
 	const JAY
 	const OLEG
+	const TALA
 
 	trainerclass JUGGLER ; 35
 	const IRWIN1
@@ -621,7 +623,7 @@ KRIS EQU __enum__
 	const IRVING
 
 	trainerclass LADY ; 42
-	const ANGELICA
+	const JESSICA
 
 	trainerclass BREEDER ; 43
 	const JULIE
@@ -629,6 +631,7 @@ KRIS EQU __enum__
 	const JODY
 	const CARLENE
 	const SOPHIE
+	const BRENDA
 
 	trainerclass BAKER ; 44
 	const CHELSIE
@@ -690,6 +693,7 @@ KRIS EQU __enum__
 	const ELMO
 	const DUANE
 	const ESTEBAN
+	const EZRA
 
 	trainerclass SWIMMERF ; 48
 	const ELAINE
@@ -722,6 +726,7 @@ KRIS EQU __enum__
 	const CHELAN
 	const KENDRA
 	const WODA
+	const RACHEL
 
 	trainerclass BURGLAR ; 49
 	const DUNCAN
@@ -847,17 +852,30 @@ KRIS EQU __enum__
 
 	trainerclass TAMER ; 58
 	const BRETT
+	const VINCE
+	const OSWALD
 
 	trainerclass ARTIST ; 59
 	const REINA
 	const ALINA
+	const MARLENE
 
 	trainerclass AROMA_LADY ; 5a
-	const JESSICA
+	const DAHLIA
+	const BRYONY
+	const HEATHER
+	const HOLLY
 
 	trainerclass SIGHTSEERM ; 5b
+	const JASKA
+	const BLAISE
+	const GARETH
+	const CHESTER
 
 	trainerclass SIGHTSEERF ; 5c
+	const ROSIE
+	const KAMILA
+	const NOELLE
 
 	trainerclass SIGHTSEERS ; 5d
 	const LIANDSU1

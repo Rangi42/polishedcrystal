@@ -161,22 +161,21 @@ TrainerArtistAlina:
 	end
 
 .SeenText:
-	text "My Smeargle trio"
-	line "can paint any"
-	cont "scene!"
-	done
-
-.BeatenText:
-	text "They couldn't win"
-	line "a battle…"
-	done
-
-.AfterText:
 	text "This island hardly"
 	line "ever appears."
 
 	para "I was so lucky to"
 	line "find it!"
+	done
+
+.BeatenText:
+	text "My luck ran out…"
+	done
+
+.AfterText:
+	text "I wonder what"
+	line "caused this island"
+	cont "to appear?"
 	done
 
 TrainerSightseersLiandsu1:

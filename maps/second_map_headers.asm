@@ -358,16 +358,16 @@
 
 	map_header_2 ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
 	connection north, ROCKY_BEACH, RockyBeach, 0, 0, 18
-	connection east, SHAMOUTI_EAST_BEACH, ShamoutiEastBeach, 0, 0, 15
+	connection east, BEAUTIFUL_BEACH, BeautifulBeach, 0, 0, 15
 
-	map_header_2 ShamoutiEastBeach, SHAMOUTI_EAST_BEACH, $35, WEST
+	map_header_2 BeautifulBeach, BEAUTIFUL_BEACH, $35, WEST
 	connection west, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 15
 
-	map_header_2 ShamoutiWestBeach, SHAMOUTI_WEST_BEACH, $35, SOUTH
+	map_header_2 WarmBeach, WARM_BEACH, $35, SOUTH
 	connection south, SHAMOUTI_COAST, ShamoutiCoast, 0, 0, 12
 
 	map_header_2 ShamoutiCoast, SHAMOUTI_COAST, $35, NORTH
-	connection north, SHAMOUTI_WEST_BEACH, ShamoutiWestBeach, 0, 0, 12
+	connection north, WARM_BEACH, WarmBeach, 0, 0, 12
 
 	map_header_2 RockyBeach, ROCKY_BEACH, $35, SOUTH
 	connection south, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 18
@@ -844,9 +844,9 @@
 	map_header_2 ShamoutiTouristCenter, SHAMOUTI_TOURIST_CENTER, $0, 0
 	map_header_2 ShamoutiMerchant, SHAMOUTI_MERCHANT, $0, 0
 	map_header_2 ShamoutiHouse, SHAMOUTI_HOUSE, $0, 0
-	map_header_2 ShamoutiEastBeachVilla, SHAMOUTI_EAST_BEACH_VILLA, $0, 0
-	map_header_2 ShamoutiWestBeachShack, SHAMOUTI_WEST_BEACH_SHACK, $0, 0
-	map_header_2 ShamoutiWestBeachHouse, SHAMOUTI_WEST_BEACH_HOUSE, $0, 0
+	map_header_2 BeautifulBeachVilla, BEAUTIFUL_BEACH_VILLA, $0, 0
+	map_header_2 WarmBeachShack, WARM_BEACH_SHACK, $0, 0
+	map_header_2 WarmBeachHouse, WARM_BEACH_HOUSE, $0, 0
 	map_header_2 RockyBeachHouse, ROCKY_BEACH_HOUSE, $0, 0
 	map_header_2 FireIsland, FIRE_ISLAND, $9, 0
 	map_header_2 FireIslandRoof, FIRE_ISLAND_ROOF, $35, 0

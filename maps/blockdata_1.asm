@@ -126,9 +126,9 @@ ShamoutiHotel_BlockData:
 ShamoutiTouristCenter_BlockData:
 ShamoutiMerchant_BlockData:
 ShamoutiHouse_BlockData:
-ShamoutiEastBeachVilla_BlockData:
-ShamoutiWestBeachShack_BlockData:
-ShamoutiWestBeachHouse_BlockData:
+BeautifulBeachVilla_BlockData:
+WarmBeachShack_BlockData:
+WarmBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
 	INCBIN "maps/JohtoHouse1.blk"
 

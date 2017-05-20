@@ -141,7 +141,7 @@ TMHMMoves: ; 1167a
 	db SEISMIC_TOSS ; MT17 (Pewter City)
 	db SLEEP_TALK   ; MT18 (Route 31)
 	db SUBSTITUTE   ; MT19 (Dim Cave)
-	db SUCKER_PUNCH ; MT20 (TODO: Scary Cave)
+	db SUCKER_PUNCH ; MT20 (Scary Cave)
 	db SWAGGER      ; MT21 (Celadon City)
 	db THUNDERPUNCH ; MT22 (Goldenrod City)
 	db VOLT_SWITCH  ; MT23 (Vermilion City)

@@ -1,4 +1,7 @@
 const_value set 2
+	const VICTORYROAD1F_VETERAN_M
+	const VICTORYROAD1F_POKE_BALL1
+	const VICTORYROAD1F_POKE_BALL2
 
 VictoryRoad1F_MapScriptHeader:
 .MapTriggers:

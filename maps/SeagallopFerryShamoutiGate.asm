@@ -1,5 +1,6 @@
 const_value set 2
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
+	const SEAGALLOPFERRYSHAMOUTIGATE_TWIN
 
 SeagallopFerryShamoutiGate_MapScriptHeader:
 .MapTriggers:
@@ -60,6 +61,9 @@ SeagallopFerryShamoutiGateSailorScript:
 	closetext
 	end
 
+SeagallopFerryShamoutiGateTwinScript:
+	jumptextfaceplayer SeagallopFerryShamoutiGateTwinText
+
 SeagallopFerryShamoutiGateSailorDepartMovementData:
 	step_down
 	step_end
@@ -105,13 +109,20 @@ SeagallopFerryShamoutiIslandRefusedText:
 	line "right here."
 	done
 
+SeagallopFerryShamoutiGateTwinText:
+	text "I'm here to greet"
+	line "the tourists."
+
+	para "Have a nice stay!"
+	done
+
 SeagallopFerryShamoutiGate_MapEventHeader:
 	; filler
 	db 0, 0
 
 .Warps:
 	db 1
-	warp_def $0, $6, 1, SHAMOUTI_EAST_BEACH
+	warp_def $0, $6, 1, BEAUTIFUL_BEACH
 
 .XYTriggers:
 	db 0
@@ -120,5 +131,6 @@ SeagallopFerryShamoutiGate_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
+	db 2
 	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	person_event SPRITE_TWIN, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateTwinScript, -1

@@ -1400,8 +1400,8 @@ ContinueGivingPokerus:
 	ld a, b
 	and $7
 	inc a
+	ld b, a
 .load_pkrs
-	ld b, a ; this should come before the label
 	swap b
 	and $3
 	inc a

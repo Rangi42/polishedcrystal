@@ -155,7 +155,7 @@ RunCallback_04: ; 14209
 	farcall LoadEmote
 	call GetMapPermission
 	call CheckOutdoorMap
-	ld c, EMOTE_0B
+	ld c, EMOTE_SHAKING_GRASS
 	jr z, .outdoor
 	ld c, EMOTE_BOULDER_DUST
 .outdoor
@@ -1357,19 +1357,29 @@ Group30Sprites:
 
 Group31Sprites:
 ; ShamoutiIsland
+; BeautifulBeach
+; RockyBeach
+; WarmBeach
+; ShamoutiShrineRuins
+; ShamoutiCoast
 	db SPRITE_ARTIST
 	db SPRITE_COOLTRAINER_M
+	db SPRITE_COOLTRAINER_F
 	db SPRITE_SIGHTSEER_M
-	db SPRITE_GRAMPS
-	db SPRITE_IVY
+	db SPRITE_SWIMMER_GIRL
+	db SPRITE_SWIMMER_GUY
 	db SPRITE_LADY
 	db SPRITE_LASS
-	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	db SPRITE_BREEDER
+	db SPRITE_YOUNGSTER ; doesnt walk
+	db SPRITE_BEAUTY ; doesn't walk
+	db SPRITE_FISHER ; doesn't walk
+	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_MARILL
 	db SPRITE_VILEPLUME
-	; 11 total sprites
+	db SPRITE_SLOWKING
+	; 16 total sprites
 	db 0
 
 

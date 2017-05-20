@@ -30,7 +30,7 @@ ErikaScript_0x72a6a:
 	setevent EVENT_BEAT_LASS_MICHELLE
 	setevent EVENT_BEAT_PICNICKER_TANYA
 	setevent EVENT_BEAT_BEAUTY_JULIA
-	setevent EVENT_BEAT_AROMA_LADY_JESSICA
+	setevent EVENT_BEAT_AROMA_LADY_DAHLIA
 	setevent EVENT_BEAT_TWINS_JO_AND_ZOE
 	opentext
 	writetext UnknownText_0x72c96
@@ -103,13 +103,13 @@ BeautyJuliaScript:
 	closetext
 	end
 
-TrainerAroma_ladyJessica:
-	trainer EVENT_BEAT_BEAUTY_JULIA, AROMA_LADY, JESSICA, Aroma_ladyJessicaSeenText, Aroma_ladyJessicaBeatenText, 0, Aroma_ladyJessicaScript
+TrainerAroma_ladyDahlia:
+	trainer EVENT_BEAT_AROMA_LADY_DAHLIA, AROMA_LADY, DAHLIA, Aroma_ladyDahliaSeenText, Aroma_ladyDahliaBeatenText, 0, Aroma_ladyDahliaScript
 
-Aroma_ladyJessicaScript:
+Aroma_ladyDahliaScript:
 	end_if_just_battled
 	opentext
-	writetext Aroma_ladyJessicaAfterText
+	writetext Aroma_ladyDahliaAfterText
 	waitbutton
 	closetext
 	end
@@ -272,18 +272,18 @@ UnknownText_0x72f01:
 	cont "like Erika?"
 	done
 
-Aroma_ladyJessicaSeenText:
+Aroma_ladyDahliaSeenText:
 	text "There is an in-"
 	line "triguing scent"
 	cont "around you…"
 	done
 
-Aroma_ladyJessicaBeatenText:
+Aroma_ladyDahliaBeatenText:
 	text "The foul scent"
 	line "of defeat…"
 	done
 
-Aroma_ladyJessicaAfterText:
+Aroma_ladyDahliaAfterText:
 	text "Gloom releases a"
 	line "foul fragrance,"
 
@@ -346,6 +346,6 @@ CeladonGym_MapEventHeader:
 	person_event SPRITE_LASS, 8, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassMichelle, -1
 	person_event SPRITE_LASS, 8, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTanya, -1
 	person_event SPRITE_BEAUTY, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyJulia, -1
-	person_event SPRITE_LADY, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAroma_ladyJessica, -1
+	person_event SPRITE_LADY, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAroma_ladyDahlia, -1
 	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe1, -1
 	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe2, -1

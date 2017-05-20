@@ -21,7 +21,15 @@ SoftReset:: ; 150
 
 
 _Start:: ; 16e
+	cp $11
+	jr z, .cgb
+	xor a
+	jr .load
+
+.cgb
 	ld a, $1
+
+.load
 	ld [hCGB], a
 	ld [hFFEA], a
 ; 17d
@@ -73,6 +81,8 @@ Init:: ; 17d
 	ld sp, Stack
 
 ; Clear HRAM
+	ld a, [hCGB]
+	push af
 	ld a, [hFFEA]
 	push af
 	xor a
@@ -81,7 +91,7 @@ Init:: ; 17d
 	call ByteFill
 	pop af
 	ld [hFFEA], a
-	ld a, $1
+	pop af
 	ld [hCGB], a
 
 	call ClearWRAM

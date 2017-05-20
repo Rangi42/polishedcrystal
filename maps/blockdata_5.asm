@@ -64,11 +64,11 @@ MurkySwamp_BlockData:
 ShamoutiIsland_BlockData:
 	INCBIN "maps/ShamoutiIsland.blk"
 
-ShamoutiEastBeach_BlockData:
-	INCBIN "maps/ShamoutiEastBeach.blk"
+BeautifulBeach_BlockData:
+	INCBIN "maps/BeautifulBeach.blk"
 
-ShamoutiWestBeach_BlockData:
-	INCBIN "maps/ShamoutiWestBeach.blk"
+WarmBeach_BlockData:
+	INCBIN "maps/WarmBeach.blk"
 
 RockyBeach_BlockData:
 	INCBIN "maps/RockyBeach.blk"

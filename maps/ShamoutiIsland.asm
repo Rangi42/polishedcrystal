@@ -59,7 +59,7 @@ ShamoutiIsland_MapEventHeader:
 	warp_def $7, $10, 1, SHAMOUTI_TUNNEL
 	warp_def $5, $1b, 1, SHAMOUTI_TOURIST_CENTER
 	warp_def $c, $1f, 1, SHAMOUTI_HOUSE
-	warp_def $d, $7, 1, SHAMOUTI_MERCHANT
+	warp_def $d, $9, 1, SHAMOUTI_MERCHANT
 
 .XYTriggers:
 	db 0
@@ -70,3 +70,5 @@ ShamoutiIsland_MapEventHeader:
 .PersonEvents:
 	db 1
 	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
+;	person_event SPRITE_, ?, ?, SPRITEMOVEDATA_, 0, 0, -1, -1, (1 << 3) | PAL_OW_, PERSONTYPE_TRAINER, 0, Trainer, -1
+;	person_event SPRITE_, ?, ?, SPRITEMOVEDATA_, 0, 0, -1, -1, (1 << 3) | PAL_OW_, PERSONTYPE_, 0, ShamoutiTunnel, -1

@@ -1,4 +1,4 @@
-const_value set 0
+const_value set 2
 
 ShamoutiTouristCenter_MapScriptHeader:
 .MapTriggers:

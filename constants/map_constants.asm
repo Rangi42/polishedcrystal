@@ -633,8 +633,8 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 31
 
 	mapgroup SHAMOUTI_ISLAND,                            15, 18 ;  1
-	mapgroup SHAMOUTI_EAST_BEACH,                        15, 21 ;  2
-	mapgroup SHAMOUTI_WEST_BEACH,                        13, 12 ;  3
+	mapgroup BEAUTIFUL_BEACH,                            15, 21 ;  2
+	mapgroup WARM_BEACH,                                 13, 12 ;  3
 	mapgroup SHAMOUTI_COAST,                             10, 48 ;  4
 	mapgroup ROCKY_BEACH,                                15, 20 ;  5
 	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 12 ;  6
@@ -652,9 +652,9 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 18
 	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 19
 	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 20
-	mapgroup SHAMOUTI_EAST_BEACH_VILLA,                   4,  4 ; 21
-	mapgroup SHAMOUTI_WEST_BEACH_SHACK,                   4,  4 ; 22
-	mapgroup SHAMOUTI_WEST_BEACH_HOUSE,                   4,  4 ; 23
+	mapgroup BEAUTIFUL_BEACH_VILLA,                       4,  4 ; 21
+	mapgroup WARM_BEACH_SHACK,                            4,  4 ; 22
+	mapgroup WARM_BEACH_HOUSE,                            4,  4 ; 23
 	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 24
 	mapgroup FIRE_ISLAND,                                16, 13 ; 25
 	mapgroup FIRE_ISLAND_ROOF,                            6,  6 ; 26
@@ -800,7 +800,7 @@ OW_RIGHT EQU RIGHT << 2
 	const EMOTE_SHADOW ; 8
 	const EMOTE_ROD ; 9
 	const EMOTE_BOULDER_DUST ; 10
-	const EMOTE_0B ; 11
+	const EMOTE_SHAKING_GRASS ; 11
 EMOTE_MEM EQU -1
 
 	const_def

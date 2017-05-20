@@ -12657,7 +12657,7 @@ AromaLadyGroup:
 ; ================
 
 	; AROMA_LADY
-	db "Jessica@"
+	db "Dahlia@"
 	db TRAINERTYPE_NORMAL
 
 	; party
