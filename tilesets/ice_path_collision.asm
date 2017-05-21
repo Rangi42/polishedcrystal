@@ -80,3 +80,4 @@
 	tilecoll WALL, FLOOR, WALL, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, FLOOR
 	tilecoll WALL, FLOOR, FLOOR, FLOOR
+	tilecoll ICE, FLOOR, ICE, ICE

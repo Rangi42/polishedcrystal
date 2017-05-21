@@ -13,7 +13,7 @@ LightningIsland_MapEventHeader:
 
 .Warps:
 	db 4
-	warp_def $1d, $5, 1, SHAMOUTI_COAST
+	warp_def $1d, $5, 3, SHAMOUTI_COAST
 	warp_def $1d, $13, 1, LIGHTNING_ISLAND_ROOF
 	warp_def $3, $6, 4, LIGHTNING_ISLAND
 	warp_def $3, $13, 3, LIGHTNING_ISLAND
