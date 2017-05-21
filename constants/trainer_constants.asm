@@ -246,6 +246,7 @@ KRIS EQU __enum__
 	const GIDEON
 	const DUNDEE
 	const HALL
+	const DALLAS
 
 	trainerclass BIRD_KEEPER ; 25
 	const VANCE1
@@ -694,6 +695,7 @@ KRIS EQU __enum__
 	const DUANE
 	const ESTEBAN
 	const EZRA
+	const ASHE
 
 	trainerclass SWIMMERF ; 48
 	const ELAINE
@@ -727,6 +729,7 @@ KRIS EQU __enum__
 	const KENDRA
 	const WODA
 	const RACHEL
+	const MARINA
 
 	trainerclass BURGLAR ; 49
 	const DUNCAN
@@ -859,6 +862,7 @@ KRIS EQU __enum__
 	const REINA
 	const ALINA
 	const MARLENE
+	const RIN
 
 	trainerclass AROMA_LADY ; 5a
 	const DAHLIA
@@ -876,10 +880,13 @@ KRIS EQU __enum__
 	const ROSIE
 	const KAMILA
 	const NOELLE
+	const PILAR
 
 	trainerclass SIGHTSEERS ; 5d
 	const LIANDSU1
 	const LIANDSU2
+	const CYANDVI1
+	const CYANDVI2
 
 	trainerclass COOLTRAINERM ; 5e
 	const GAVEN1

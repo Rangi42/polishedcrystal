@@ -1374,12 +1374,15 @@ Group31Sprites:
 	db SPRITE_YOUNGSTER ; doesnt walk
 	db SPRITE_BEAUTY ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
-	; 12 walking sprites (9 that walk)
+	db SPRITE_CANDELA ; doesn't walk
+	db SPRITE_BLANCHE ; doesn't walk
+	db SPRITE_SPARK ; doesn't walk
+	; 15 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_MARILL
 	db SPRITE_VILEPLUME
 	db SPRITE_SLOWKING
-	; 16 total sprites
+	; 19 total sprites
 	db 0
 
 
