@@ -570,33 +570,7 @@ IntroScene3: ; e49fd (39:49fd)
 	call Intro_DecompressRequest2bpp_64Tiles
 	xor a
 	ld [rVBK], a
-	ld hl, IntroBackgroundGFX
-	ld de, VTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap004
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, [rSVBK]
-	push af
-	ld a, $5
-	ld [rSVBK], a
-	ld hl, Palette_e5edd
-	ld de, UnknBGPals
-	ld bc, $80
-	call CopyBytes
-	ld hl, Palette_e5edd
-	ld de, BGPals
-	ld bc, $80
-	call CopyBytes
-	pop af
-	ld [rSVBK], a
-	xor a
-	ld [hSCX], a
-	ld [hSCY], a
-	ld a, $7
-	ld [hWX], a
-	ld a, $90
-	ld [hWY], a
+	call Intro_SetupCommonScenery
 	call Intro_ResetLYOverrides
 	call Intro_SetCGBPalUpdate
 	xor a
@@ -648,11 +622,11 @@ IntroScene5: ; e4a7a (39:4a7a)
 	ld [rSVBK], a
 	ld hl, Palette_365ad
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_365ad
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -740,39 +714,8 @@ IntroScene7: ; e4b3f (39:4b3f)
 	ld de, VTiles0 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
 
-	ld hl, IntroBackgroundGFX
-	ld de, VTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
+	call Intro_SetupCommonScenery
 
-	ld hl, IntroTilemap004
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-
-	ld a, [rSVBK]
-	push af
-	ld a, $5
-	ld [rSVBK], a
-
-	ld hl, Palette_e5edd
-	ld de, UnknBGPals
-	ld bc, $80
-	call CopyBytes
-
-	ld hl, Palette_e5edd
-	ld de, BGPals
-	ld bc, $80
-	call CopyBytes
-
-	pop af
-	ld [rSVBK], a
-
-	xor a
-	ld [hSCX], a
-	ld [hSCY], a
-	ld a, $7
-	ld [hWX], a
-	ld a, $90
-	ld [hWY], a
 	call Intro_ResetLYOverrides
 	farcall ClearSpriteAnims
 	depixel 13, 27, 4, 0
@@ -1029,33 +972,7 @@ IntroScene13: ; e4d6d (39:4d6d)
 	ld hl, IntroSuicuneRunGFX
 	ld de, VTiles0 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
-	ld hl, IntroBackgroundGFX
-	ld de, VTiles2 tile $00
-	call Intro_DecompressRequest2bpp_128Tiles
-	ld hl, IntroTilemap004
-	debgcoord 0, 0
-	call Intro_DecompressRequest2bpp_64Tiles
-	ld a, [rSVBK]
-	push af
-	ld a, $5
-	ld [rSVBK], a
-	ld hl, Palette_e5edd
-	ld de, UnknBGPals
-	ld bc, $80
-	call CopyBytes
-	ld hl, Palette_e5edd
-	ld de, BGPals
-	ld bc, $80
-	call CopyBytes
-	pop af
-	ld [rSVBK], a
-	xor a
-	ld [hSCX], a
-	ld [hSCY], a
-	ld a, $7
-	ld [hWX], a
-	ld a, $90
-	ld [hWY], a
+	call Intro_SetupCommonScenery
 	farcall ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
@@ -2137,6 +2054,48 @@ IntroPichuWooperGFX: ; e592d
 INCBIN "gfx/intro/pichu_wooper.2bpp.lz"
 ; e5c7d
 
+IntroTilemap003: ; e5ecd
+INCBIN "gfx/intro/003.tilemap.lz"
+; e5edd
+
+Intro_SetupCommonScenery:
+	ld hl, IntroBackgroundGFX
+	ld de, VTiles2 tile $00
+	call Intro_DecompressRequest2bpp_128Tiles
+
+	ld hl, IntroTilemap004
+	debgcoord 0, 0
+	call Intro_DecompressRequest2bpp_64Tiles
+
+	ld a, [rSVBK]
+	push af
+	ld a, $5
+	ld [rSVBK], a
+
+	ld hl, Palette_e5edd
+	ld de, UnknBGPals
+	ld bc, 16 palettes
+	call CopyBytes
+
+	ld hl, Palette_e5edd
+	ld de, BGPals
+	ld bc, 16 palettes
+	call CopyBytes
+
+	pop af
+	ld [rSVBK], a
+
+	xor a
+	ld [hSCX], a
+	ld [hSCY], a
+
+	ld a, $7
+	ld [hWX], a
+
+	ld a, $90
+	ld [hWY], a
+	ret
+
 IntroBackgroundGFX: ; e5c7d
 INCBIN "gfx/intro/background.2bpp.lz"
 ; e5e6d
@@ -2144,10 +2103,6 @@ INCBIN "gfx/intro/background.2bpp.lz"
 IntroTilemap004: ; e5e6d
 INCBIN "gfx/intro/004.tilemap.lz"
 ; e5ecd
-
-IntroTilemap003: ; e5ecd
-INCBIN "gfx/intro/003.tilemap.lz"
-; e5edd
 
 Palette_e5edd: ; e5edd
 	RGB 31, 31, 31
