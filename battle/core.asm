@@ -6616,6 +6616,8 @@ endr
 	ld h, b
 	ld l, c
 
+	push bc
+
 ; Random DVs
 	call BattleRandom
 	ld [hli], a
@@ -6626,15 +6628,12 @@ endr
 
 ; Random nature from 0 to 24
 ; 50% chance of same nature with Synchronize ability
-	push bc
-	push bc
 	ld a, [PartyMon1Ability]
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
 	call GetAbility
 	ld a, b
-	pop bc
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
 	call BattleRandom
@@ -6702,12 +6701,10 @@ endr
 	xor a
 .got_shininess
 	add b
-	pop bc
 	ld [hli], a
 
 ; Random gender
 ; Derived from base ratio
-	push bc
 ; Random gender selection value
 	call BattleRandom
 	and %111
@@ -6735,8 +6732,9 @@ endr
 ; Form 1
 	ld a, 1
 	add b
-	pop bc
 	ld [hl], a
+
+	pop bc
 
 .UpdateDVs:
 	ld hl, EnemyMonDVs

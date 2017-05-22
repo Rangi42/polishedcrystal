@@ -185,14 +185,12 @@ endr
 	ld [DVAndPersonalityBuffer + 2], a
 
 ; Random nature from 0 to 24
-	push bc
 	ld a, [PartyMon1Ability]
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
 	call GetAbility
 	ld a, b
-	pop bc
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
 	call Random
@@ -261,7 +259,6 @@ endr
 
 ; Random gender
 ; Derived from base ratio
-	push bc
 ; Random gender selection value
 	call Random
 	and %111
@@ -284,7 +281,6 @@ endr
 	jr c, .Female
 	xor a ; ld a, MALE
 .Female:
-	pop bc
 	ld b, a
 
 ; Form 1
