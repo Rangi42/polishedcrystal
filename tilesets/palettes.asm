@@ -80,6 +80,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_charcoal_kiln
 	cp TILESET_LAB
 	jp z, .maybe_oaks_lab
+	cp TILESET_TUNNEL
+	jp z, .maybe_lightning_island
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
 	cp TILESET_CELADON_MANSION
@@ -281,6 +283,16 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_OAKS_LAB
 	jp nz, .do_nothing
 	ld hl, OaksLabPalette
+	jp .load_eight_bg_palettes
+
+.maybe_lightning_island
+	ld a, [MapGroup]
+	cp GROUP_LIGHTNING_ISLAND
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_LIGHTNING_ISLAND
+	jp nz, .do_nothing
+	ld hl, LightningIslandPalette
 	jp .load_eight_bg_palettes
 
 .maybe_viridian_gym
@@ -539,6 +551,9 @@ INCLUDE "tilesets/charcoal_kiln.pal"
 OaksLabPalette:
 INCLUDE "tilesets/oaks_lab.pal"
 
+LightningIslandPalette:
+INCLUDE "tilesets/lightning_island.pal"
+
 MystriStagePalette:
 INCLUDE "tilesets/mystri_stage.pal"
 
@@ -687,35 +702,43 @@ LoadSpecialMapOBPalette:
 	ld a, [MapNumber]
 	cp MAP_VERMILION_GYM
 	jr nz, .not_vermilion_gym
+	ld hl, VermilionGymOBPalette_Tree
+.load_tree_palette:
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
-	ld hl, VermilionGymOBPalette_Tree
 	ld bc, 1 palettes
 	call FarCopyWRAM
 	ret
 
 .not_vermilion_gym:
 	ld a, [MapGroup]
+	cp GROUP_LIGHTNING_ISLAND
+	jr nz, .not_lightning_island
+	ld a, [MapNumber]
+	cp MAP_LIGHTNING_ISLAND
+	jr nz, .not_lightning_island
+	ld hl, LightningIslandOBPalette_Tree
+	jr .load_tree_palette
+
+.not_lightning_island:
+	ld a, [MapGroup]
 	cp GROUP_MURKY_SWAMP
 	jr nz, .not_murky_swamp
 	ld a, [MapNumber]
 	cp MAP_MURKY_SWAMP
 	jr nz, .not_murky_swamp
-	ld a, $5
-	ld de, UnknOBPals + 6 palettes
 	ld hl, MurkySwampOBPalette_Tree
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
+	jr .load_tree_palette
 
 .not_murky_swamp:
 	ld a, [wTileset]
 	cp TILESET_SHAMOUTI_ISLAND
 	jr nz, .not_shamouti_island
+	ld hl, ShamoutiIslandOBPalette_Tree
+.load_time_of_day_tree_palette:
 	ld a, [TimeOfDayPal]
 	and 3
 	ld bc, 1 palettes
-	ld hl, ShamoutiIslandOBPalette_Tree
 	call AddNTimes
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
@@ -727,16 +750,8 @@ LoadSpecialMapOBPalette:
 	ld a, [wTileset]
 	cp TILESET_SAFARI_ZONE
 	jr nz, .not_safari_zone
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 1 palettes
 	ld hl, SafariZoneOBPalette_Tree
-	call AddNTimes
-	ld a, $5
-	ld de, UnknOBPals + 6 palettes
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
+	jr .load_time_of_day_tree_palette
 
 .not_safari_zone:
 	ld a, [MapGroup]
@@ -745,43 +760,30 @@ LoadSpecialMapOBPalette:
 	ld a, [MapNumber]
 	cp MAP_FARAWAY_ISLAND
 	jr nz, .not_faraway_island
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 1 palettes
 	ld hl, FarawayIslandOBPalette_Tree
-	call AddNTimes
-	ld a, $5
-	ld de, UnknOBPals + 6 palettes
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
+	jr .load_time_of_day_tree_palette
 
 .not_faraway_island:
 	ld a, [MapGroup]
 	cp GROUP_FARAWAY_JUNGLE
-	jr nz, .not_faraway_jungle
+	ret nz
 	ld a, [MapNumber]
 	cp MAP_FARAWAY_JUNGLE
-	jr nz, .not_faraway_jungle
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 1 palettes
+	ret nz
 	ld hl, FarawayJungleOBPalette_Tree
-	call AddNTimes
-	ld a, $5
-	ld de, UnknOBPals + 6 palettes
-	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
-
-.not_faraway_jungle:
-	ret
+	jr .load_time_of_day_tree_palette
 
 VermilionGymOBPalette_Tree:
 	RGB 31, 31, 31
 	RGB 31, 31, 30
 	RGB 19, 24, 31
 	RGB 05, 10, 27
+
+LightningIslandOBPalette_Tree:
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 27, 01
+	RGB 31, 16, 01
 
 MurkySwampOBPalette_Tree:
 	RGB 12, 19, 18

@@ -575,7 +575,7 @@ ElectricFenceRightSprite:
 	sprite_header ElectricFenceRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
 
 SnesSprite: ; 14952
-	sprite_header SnesSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED
+	sprite_header SnesSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 ; 14958
 
 N64Sprite: ; 14916

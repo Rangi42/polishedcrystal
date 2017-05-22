@@ -73,10 +73,10 @@ BIG_ROOT (PC: Route 3, Yellow Forest) [HGSS: Route 3, Yellow Forest]
 .
 
 Shamouti Market #2 (geologist):
-DAMP_ROCK (TODO: Lightning Island) (PC: Slowpoke Well)
-HEAT_ROCK (TODO: Fire Island) (PC: Radio Tower)
-SMOOTH_ROCK (TODO: Shamouti Tunnel)
-ICY_ROCK (TODO: Ice Island) (PC: Ice Path)
+DAMP_ROCK (PC: Lightning Island) (PC: Slowpoke Well)
+HEAT_ROCK (PC: Fire Island) (PC: Radio Tower)
+SMOOTH_ROCK (PC: Shamouti Tunnel)
+ICY_ROCK (PC: Ice Island) (PC: Ice Path)
 EVIOLITE (PC: Pokécom Center, Uraga Channel)
 LIGHT_CLAY (Dim Cave) [HGSS: Route 9]
 .

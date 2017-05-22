@@ -1,4 +1,5 @@
 const_value set 2
+	const FIREISLAND_POKE_BALL
 
 FireIsland_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,9 @@ FireIsland_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+FireIslandHeatRock:
+	itemball HEAT_ROCK
 
 FireIsland_MapEventHeader:
 	; filler
@@ -33,4 +37,5 @@ FireIsland_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_BALL_CUT_FRUIT, 19, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FireIslandHeatRock, EVENT_FIRE_ISLAND_HEAT_ROCK

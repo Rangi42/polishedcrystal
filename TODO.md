@@ -65,9 +65,7 @@ Shamouti Island:
 * Caitlin and Darach in Beautiful Beach villa
 * Looker in Shamouti Hotel room (not S.S. Aqua)
 * Trendy phrase guy in Shamouti Hotel lobby
-* Lawrence in Shrine Ruins (not Victory Road)
 * Prof. Ivy in Shamouti Island (gives a starter)
-* Ore Maniac in Shamouti Tunnel
 * Body Slam tutor in Warm Beach house
 
 
@@ -83,11 +81,6 @@ Shamouti Island:
 
 * Shamouti Island (outdoor market instead of Mart)
 * Shamouti Hotel (haunted room)
-* Shamouti Tunnel
-* Warm Beach
-* Rocky Beach
-* Shrine Ruins
-* Fire/Ice/Lightning Islands
 
 Route leaders:
 

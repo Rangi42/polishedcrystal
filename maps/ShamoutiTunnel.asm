@@ -241,8 +241,8 @@ TrainerSightseermChester:
 ShamoutiTunnelXSpeed:
 	itemball X_SPEED
 
-ShamoutiTunnelMaxPotion:
-	itemball MAX_POTION
+ShamoutiTunnelSmoothRock:
+	itemball SMOOTH_ROCK
 
 ShamoutiTunnelHiddenNugget:
 	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET, NUGGET
@@ -275,4 +275,4 @@ ShamoutiTunnel_MapEventHeader:
 	person_event SPRITE_LADY, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSightseerfNoelle, -1
 	person_event SPRITE_SIGHTSEER_M, 16, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermChester, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ShamoutiTunnelXSpeed, EVENT_SHAMOUTI_TUNNEL_X_SPEED
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ShamoutiTunnelMaxPotion, EVENT_SHAMOUTI_TUNNEL_MAX_POTION
+	person_event SPRITE_BALL_CUT_FRUIT, 17, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ShamoutiTunnelSmoothRock, EVENT_SHAMOUTI_TUNNEL_SMOOTH_ROCK

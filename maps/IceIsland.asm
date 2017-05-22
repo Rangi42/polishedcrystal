@@ -1,4 +1,5 @@
 const_value set 2
+	const ICEISLAND_POKE_BALL
 
 IceIsland_MapScriptHeader:
 .MapTriggers:
@@ -6,6 +7,9 @@ IceIsland_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+IceIslandIcyRock:
+	itemball ICY_ROCK
 
 IceIsland_MapEventHeader:
 	; filler
@@ -25,4 +29,5 @@ IceIsland_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 0
+	db 1
+	person_event SPRITE_BALL_CUT_FRUIT, 6, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IceIslandIcyRock, EVENT_ICE_ISLAND_ICY_ROCK
