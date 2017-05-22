@@ -630,8 +630,8 @@ AdjustHourForAMorPM:
 ; Convert the hour stored in c (0-23) to a 1-12 value
 	ld a, [Options2]
 	bit CLOCK_FORMAT, a
-	ret nz
 	ld a, c
+	ret nz
 	or a
 	jr z, .midnight
 	cp 12
