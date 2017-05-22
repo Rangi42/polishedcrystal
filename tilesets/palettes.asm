@@ -722,6 +722,16 @@ LoadSpecialMapOBPalette:
 
 .not_lightning_island:
 	ld a, [MapGroup]
+	cp GROUP_ROCK_TUNNEL_2F
+	jr nz, .not_rock_tunnel_2f
+	ld a, [MapNumber]
+	cp MAP_ROCK_TUNNEL_2F
+	jr nz, .not_rock_tunnel_2f
+	ld hl, RockTunnelOBPalette_Tree
+	jr .load_tree_palette
+
+.not_rock_tunnel_2f:
+	ld a, [MapGroup]
 	cp GROUP_MURKY_SWAMP
 	jr nz, .not_murky_swamp
 	ld a, [MapNumber]
@@ -774,30 +784,36 @@ LoadSpecialMapOBPalette:
 	jr .load_time_of_day_tree_palette
 
 VermilionGymOBPalette_Tree:
-	RGB 31, 31, 31
+	RGB 30, 28, 26
 	RGB 31, 31, 30
 	RGB 19, 24, 31
 	RGB 05, 10, 27
 
 LightningIslandOBPalette_Tree:
-	RGB 31, 31, 31
+	RGB 19, 15, 10
 	RGB 31, 31, 31
 	RGB 31, 27, 01
 	RGB 31, 16, 01
 
+RockTunnelOBPalette_Tree:
+	RGB 15, 14, 24
+	RGB 31, 30, 31
+	RGB 24, 18, 31
+	RGB 12, 08, 18
+
 MurkySwampOBPalette_Tree:
-	RGB 12, 19, 18
+	RGB 15, 14, 24
 	RGB 07, 14, 13
 	RGB 04, 08, 07
 	RGB 00, 00, 00
 
 ShamoutiIslandOBPalette_Tree:
-	RGB 31, 31, 31
+	RGB 28, 31, 16
 	RGB 16, 26, 12
 	RGB 07, 18, 06
 	RGB 07, 07, 07
 
-	RGB 31, 31, 31
+	RGB 27, 31, 27
 	RGB 16, 26, 12
 	RGB 07, 18, 06
 	RGB 07, 07, 07
