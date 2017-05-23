@@ -217,7 +217,7 @@ Some of these may never be added; they're just suggestions.
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
    * Nidoran♂ and Nidoran♀ as separate forms, freeing up another slot
 * More Pokémon
-   * Rewrite Eggs to use bit flags instead of $fe
+   * Rewrite Eggs to use the IsEgg bitflag instead of $fe
    * Rewrite Bill's PC to not use $ff as a terminator
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
    * Restore Shuckle as the Cianwood guy's Pokémon

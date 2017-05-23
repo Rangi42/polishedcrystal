@@ -1215,6 +1215,18 @@ GiveEgg:: ; df8c
 
 	call TryAddMonToParty
 
+	push bc
+	ld bc, PartyCount
+	ld a, [bc]
+	dec a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld hl, PartyMon1IsEgg
+	call AddNTimes
+	pop bc
+	ld a, [hl]
+	or IS_EGG_MASK
+	ld [hl], a
+
 ; If we haven't caught this Pokemon before receiving
 ; the Egg, reset the flag that was just set by
 ; TryAddMonToParty.

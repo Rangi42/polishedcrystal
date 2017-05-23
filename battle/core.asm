@@ -6761,7 +6761,7 @@ endr
 	call RandomRange
 	ld b, a
 	ld a, [EnemyMonForm]
-	and NOT_FORM_MASK
+	and $ff - FORM_MASK
 	add b
 	ld [EnemyMonForm], a
 ; Get letter based on form
@@ -6790,7 +6790,7 @@ endr
 	ld d, 2
 .johto_form
 	ld a, [EnemyMonForm]
-	and NOT_FORM_MASK
+	and $ff - FORM_MASK
 	add d
 	ld [EnemyMonForm], a
 	jr .Happiness

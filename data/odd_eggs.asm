@@ -165,7 +165,7 @@ OddEgg1:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE | 1 ; Personality
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE | IS_EGG_MASK | 1 ; Personality
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -189,7 +189,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | 1 ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | IS_EGG_MASK | 1 ; Personality
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -212,7 +212,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE | IS_EGG_MASK ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -235,7 +235,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | IS_EGG_MASK ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -258,7 +258,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE | IS_EGG_MASK ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -281,7 +281,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | IS_EGG_MASK ; Personality
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -304,7 +304,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE | IS_EGG_MASK ; Personality
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -327,7 +327,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | IS_EGG_MASK ; Personality
 	db 35, 20, 40, 10 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -350,7 +350,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE ; Personality
+	db SHINY_MASK | ABILITY_1 | QUIRKY, MALE | IS_EGG_MASK ; Personality
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -373,7 +373,7 @@ OddEgg2:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $BB, $BB, $BB ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | IS_EGG_MASK ; Personality
 	db 10, 10, 35, 10 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -398,7 +398,7 @@ ShinyDittoEgg:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $FF, $FF, $FF ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, 0 ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, IS_EGG_MASK ; Personality
 	db 10, 0, 0, 0 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus
@@ -423,7 +423,7 @@ MystriEgg:
 	dt 0 ; Exp
 	db 0, 0, 0, 0, 0, 0 ; EVs
 	db $FF, $FF, $FF ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE ; Personality
+	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, FEMALE | IS_EGG_MASK ; Personality
 	db 40, 20, 15, 5 ; PP
 	db 20 ; Happiness
 	db 0 ; Pokerus

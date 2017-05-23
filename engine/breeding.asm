@@ -207,13 +207,21 @@ HatchEggs: ; 16f70 (5:6f70)
 
 	farcall SetEggMonCaughtData
 	ld a, [CurPartyMon]
-	ld hl, PartyMons ; wdcdf (aliases: PartyMon1, PartyMon1Species)
+	ld hl, PartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld a, [hl]
 	ld [CurPartySpecies], a
 	dec a
 	call SetSeenAndCaughtMon
+
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld a, [hl]
+	and $ff - IS_EGG_MASK
+	ld [hl], a
 
 	ld a, [CurPartySpecies]
 	cp TOGEPI
