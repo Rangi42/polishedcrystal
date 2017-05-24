@@ -64,6 +64,16 @@ UpdateGameTimer:: ; 20ad
 	xor a
 	ld [hl], a
 
+;; kroc - noRTC Patch
+;; the game timer has increased by 1 second
+;; increase the "fake" RTC by 6 seconds (24 in-game hours will pass in 4 real-world hours)
+;; this does not affect the rate of the "hours played" time which remains real-time.
+if DEF(NO_RTC)
+rept 6
+	call UpdateNoRTC
+endr
+endc
+
 ; +1 second
 	ld hl, GameTimeSeconds
 	ld a, [hl]
@@ -129,3 +139,51 @@ UpdateGameTimer:: ; 20ad
 	ld [GameTimeHours + 1], a
 	ret
 ; 210f
+
+;; kroc - noRTC Patch
+if DEF(NO_RTC)
+UpdateNoRTC::
+;; set our modulus
+	ld a, 60
+	ld b, a
+
+	ld hl, wNoRTCSeconds
+
+; +1 second
+	ld a, b
+	inc [hl]
+	sub [hl]
+	ret nz
+	ld [hld], a
+
+; +1 minute
+	ld a, b
+	inc [hl]
+	sub [hl]
+	ret nz
+	ld [hld], a
+
+; +1 hour
+;; 24 hours to a day
+	ld a, 24
+	inc [hl]
+	sub [hl]
+	ret nz
+	ld [hld], a
+
+;; the RTC stores days as a 16-bit number, it does not handle months
+;; and so on as that's calculated by the game from the start date.
+;; note that this is different than GameTime which just counts hours and not days
+
+; +1 day
+;; increase the number of days (low)
+	inc [hl]
+;; if that didn't overflow, leave
+	ret nc
+;; TODO: only five bits are available on the hi-byte (the others are flags)
+;; increase the days (hi)
+	inc hl
+	inc [hl]
+
+	ret
+endc

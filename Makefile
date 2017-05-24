@@ -2,9 +2,14 @@ PYTHON := python
 MD5 := md5sum -c --quiet
 
 VERSION = 2.2.0
-NAME = polishedcrystal-$(VERSION)
-FNAME = polishedcrystal-faithful-$(VERSION)
-OPTIONS =
+NAME = polishedcrystal
+ROM_NORMAL = $(NAME)-$(VERSION)
+ROM_FAITHFUL = $(NAME)-faithful-$(VERSION)
+ROM_NORTC = $(NAME)-nortc-$(VERSION)
+ROM_FAITHFUL_NORTC = $(NAME)-faithful-nortc-$(VERSION)
+ROM_BANKFREE = $(NAME)-$(ALTFILLER)
+RGBASM_OPTIONS =
+RGBFIX_OPTIONS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -k 01 -l 0x33 -m 0x10 -r 3
 
 LINKERSCRIPT = linkerscript.link
 
@@ -15,7 +20,7 @@ FILLER = 0x00
 ALTFILLER = 0xff
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful bankfree debug
+.PHONY: all clean crystal faithful nortc faithful-nortc bankfree debug
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -38,14 +43,18 @@ text/common_text.o \
 gfx/pics.o
 
 
-roms := $(NAME).gbc $(FNAME).gbc $(NAME)-$(ALTFILLER).gbc
+roms := $(ROM_NORMAL).gbc $(ROM_FAITHFUL).gbc $(ROM_NORTC).gbc $(ROM_FAITHFUL_NORTC).gbc $(ROM_BANKFREE).gbc
 
 all: crystal faithful
-crystal: $(NAME).gbc
-faithful: OPTIONS += -DFAITHFUL
-faithful: $(FNAME).gbc
-bankfree: $(NAME)-$(ALTFILLER).gbc
-debug: OPTIONS += -DDEBUG
+crystal: $(ROM_NORMAL).gbc
+faithful: RGBASM_OPTIONS += -DFAITHFUL
+faithful: $(ROM_FAITHFUL).gbc
+nortc: RGBASM_OPTIONS += -DNO_RTC
+nortc: $(ROM_NORTC).gbc
+faithful-nortc: RGBASM_OPTIONS += -DFAITHFUL -DNO_RTC
+faithful-nortc: $(ROM_FAITHFUL_NORTC).gbc
+bankfree: $(ROM_BANKFREE).gbc
+debug: RGBASM_OPTIONS += -DDEBUG
 debug: $(NAME).gbc
 
 clean:
@@ -55,19 +64,27 @@ clean:
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
-	rgbasm $(OPTIONS) -o $@ $<
+	rgbasm $(RGBASM_OPTIONS) -o $@ $<
 
-$(NAME).gbc: $(crystal_obj)
-	rgblink -n $(NAME).sym -m $(NAME).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
-	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
+$(ROM_NORMAL).gbc: $(crystal_obj)
+	rgblink -n $(ROM_NORMAL).sym -m $(ROM_NORMAL).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
+	rgbfix $(RGBFIX_OPTIONS) -p $(FILLER) $@
 
-$(FNAME).gbc: $(crystal_obj)
-	rgblink -n $(FNAME).sym -m $(FNAME).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
-	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
+$(ROM_FAITHFUL).gbc: $(crystal_obj)
+	rgblink -n $(ROM_FAITHFUL).sym -m $(ROM_FAITHFUL).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
+	rgbfix $(RGBFIX_OPTIONS) -p $(FILLER) $@
 
-$(NAME)-$(ALTFILLER).gbc: $(crystal_obj)
-	rgblink -n $(NAME)-$(ALTFILLER).sym -m $(NAME)-$(ALTFILLER).map -l $(LINKERSCRIPT) -p $(ALTFILLER) -o $@ $^
-	rgbfix -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3 $@
+$(ROM_NORTC).gbc: $(crystal_obj)
+	rgblink -n $(ROM_NORTC).sym -m $(ROM_NORTC).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
+	rgbfix $(RGBFIX_OPTIONS) -p $(FILLER) $@
+
+$(ROM_FAITHFUL_NORTC).gbc: $(crystal_obj)
+	rgblink -n $(ROM_FAITHFUL_NORTC).sym -m $(ROM_FAITHFUL_NORTC).map -l $(LINKERSCRIPT) -p $(FILLER) -o $@ $^
+	rgbfix $(RGBFIX_OPTIONS) -p $(FILLER) $@
+
+$(ROM_BANKFREE).gbc: $(crystal_obj)
+	rgblink -n $(ROM_BANKFREE).sym -m $(ROM_BANKFREE).map -l $(LINKERSCRIPT) -p $(ALTFILLER) -o $@ $^
+	rgbfix $(RGBFIX_OPTIONS) -p $(ALTFILLER) $@
 
 %.png: ;
 %.2bpp: %.png ; $(gfx) 2bpp $<
