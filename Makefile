@@ -55,7 +55,7 @@ faithful-nortc: RGBASM_OPTIONS += -DFAITHFUL -DNO_RTC
 faithful-nortc: $(ROM_FAITHFUL_NORTC).gbc
 bankfree: $(ROM_BANKFREE).gbc
 debug: RGBASM_OPTIONS += -DDEBUG
-debug: $(NAME).gbc
+debug: $(ROM_NORMAL).gbc
 
 clean:
 	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
