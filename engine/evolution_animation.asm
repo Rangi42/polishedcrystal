@@ -318,9 +318,9 @@ endr
 .GenerateBallOfLight: ; 4e7e8
 	push de
 	depixel 9, 11
-	ld a, SPRITE_ANIM_INDEX_13
+	ld a, SPRITE_ANIM_INDEX_EVOLUTION_BALL_OF_LIGHT
 	call _InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [wJumptableIndex]
 	and %1110

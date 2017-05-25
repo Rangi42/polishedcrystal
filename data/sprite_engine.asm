@@ -1,13 +1,13 @@
 SpriteAnimFrameData: ; 8d6e6
 	dw .Frameset_00 ; SPRITE_ANIM_FRAMESET_00
-	dw .Frameset_01 ; SPRITE_ANIM_FRAMESET_01
+	dw .Frameset_01 ; SPRITE_ANIM_FRAMESET_PARTY_MON
 	dw .Frameset_02 ; SPRITE_ANIM_FRAMESET_02
 	dw .Frameset_03 ; SPRITE_ANIM_FRAMESET_03
 	dw .Frameset_04 ; SPRITE_ANIM_FRAMESET_04
 	dw .Frameset_05 ; SPRITE_ANIM_FRAMESET_05
 	dw .Frameset_06 ; SPRITE_ANIM_FRAMESET_06
 	dw .Frameset_07 ; SPRITE_ANIM_FRAMESET_07
-	dw .Frameset_08 ; SPRITE_ANIM_FRAMESET_08
+	dw .Frameset_08 ; SPRITE_ANIM_FRAMESET_TEXT_ENTRY_CURSOR
 	dw .Frameset_09 ; SPRITE_ANIM_FRAMESET_09
 	dw .Frameset_0a ; SPRITE_ANIM_FRAMESET_GAMEFREAK_LOGO
 	dw .Frameset_0b ; SPRITE_ANIM_FRAMESET_0B
@@ -17,21 +17,21 @@ SpriteAnimFrameData: ; 8d6e6
 	dw .Frameset_0f ; SPRITE_ANIM_FRAMESET_0F
 	dw .Frameset_10 ; SPRITE_ANIM_FRAMESET_SLOTS_EGG
 	dw .Frameset_11 ; SPRITE_ANIM_FRAMESET_WALK_CYCLE
-	dw .Frameset_12 ; SPRITE_ANIM_FRAMESET_12
-	dw .Frameset_13 ; SPRITE_ANIM_FRAMESET_13
+	dw .Frameset_12 ; SPRITE_ANIM_FRAMESET_STILL_CURSOR
+	dw .Frameset_13 ; SPRITE_ANIM_FRAMESET_TRADE_POKE_BALL
 	dw .Frameset_14 ; SPRITE_ANIM_FRAMESET_14
-	dw .Frameset_15 ; SPRITE_ANIM_FRAMESET_15
-	dw .Frameset_16 ; SPRITE_ANIM_FRAMESET_16
-	dw .Frameset_17 ; SPRITE_ANIM_FRAMESET_17
-	dw .Frameset_18 ; SPRITE_ANIM_FRAMESET_18
-	dw .Frameset_19 ; SPRITE_ANIM_FRAMESET_19
-	dw .Frameset_1a ; SPRITE_ANIM_FRAMESET_1A
-	dw .Frameset_1b ; SPRITE_ANIM_FRAMESET_1B
+	dw .Frameset_15 ; SPRITE_ANIM_FRAMESET_TRADE_POOF
+	dw .Frameset_16 ; SPRITE_ANIM_FRAMESET_TRADE_TUBE_BULGE
+	dw .Frameset_17 ; SPRITE_ANIM_FRAMESET_TRADE_MON
+	dw .Frameset_18 ; SPRITE_ANIM_FRAMESET_TRADE_BUBBLE
+	dw .Frameset_19 ; SPRITE_ANIM_FRAMESET_EVOLUTION_BALL_OF_LIGHT
+	dw .Frameset_1a ; SPRITE_ANIM_FRAMESET_RADIO_TUNING_KNOB
+	dw .Frameset_1b ; SPRITE_ANIM_FRAMESET_MAGNET_TRAIN_RED
 	dw .Frameset_1c ; SPRITE_ANIM_FRAMESET_1C
 	dw .Frameset_1d ; SPRITE_ANIM_FRAMESET_LEAF
-	dw .Frameset_1e ; SPRITE_ANIM_FRAMESET_1E
-	dw .Frameset_1f ; SPRITE_ANIM_FRAMESET_1F
-	dw .Frameset_20 ; SPRITE_ANIM_FRAMESET_20
+	dw .Frameset_1e ; SPRITE_ANIM_FRAMESET_CUT_TREE
+	dw .Frameset_1f ; SPRITE_ANIM_FRAMESET_EGG_CRACK
+	dw .Frameset_20 ; SPRITE_ANIM_FRAMESET_EGG_HATCH
 	dw .Frameset_21 ; SPRITE_ANIM_FRAMESET_21
 	dw .Frameset_22 ; SPRITE_ANIM_FRAMESET_22
 	dw .Frameset_23 ; SPRITE_ANIM_FRAMESET_23
@@ -45,27 +45,28 @@ SpriteAnimFrameData: ; 8d6e6
 	dw .Frameset_2b ; SPRITE_ANIM_FRAMESET_2B
 	dw .Frameset_2c ; SPRITE_ANIM_FRAMESET_2C
 	dw .Frameset_2d ; SPRITE_ANIM_FRAMESET_2D
-	dw .Frameset_2e ; SPRITE_ANIM_FRAMESET_2E
+	dw .Frameset_2e ; SPRITE_ANIM_FRAMESET_MAGNET_TRAIN_BLUE
 	dw .Frameset_2f ; SPRITE_ANIM_FRAMESET_2F
 	dw .Frameset_30 ; SPRITE_ANIM_FRAMESET_30
 	dw .Frameset_31 ; SPRITE_ANIM_FRAMESET_31
 	dw .Frameset_32 ; SPRITE_ANIM_FRAMESET_32
 	dw .Frameset_33 ; SPRITE_ANIM_FRAMESET_33
 	dw .Frameset_34 ; SPRITE_ANIM_FRAMESET_34
-	dw .Frameset_35 ; SPRITE_ANIM_FRAMESET_35
+	dw .Frameset_35 ; SPRITE_ANIM_FRAMESET_INTRO_SUICUNE
 	dw .Frameset_36 ; SPRITE_ANIM_FRAMESET_36
-	dw .Frameset_37 ; SPRITE_ANIM_FRAMESET_37
-	dw .Frameset_38 ; SPRITE_ANIM_FRAMESET_38
+	dw .Frameset_37 ; SPRITE_ANIM_FRAMESET_INTRO_PICHU
+	dw .Frameset_38 ; SPRITE_ANIM_FRAMESET_INTRO_WOOPER
 	dw .Frameset_39 ; SPRITE_ANIM_FRAMESET_INTRO_UNOWN_1
 	dw .Frameset_3a ; SPRITE_ANIM_FRAMESET_INTRO_UNOWN_2
 	dw .Frameset_3b ; SPRITE_ANIM_FRAMESET_INTRO_UNOWN_3
 	dw .Frameset_3c ; SPRITE_ANIM_FRAMESET_INTRO_UNOWN_4
 	dw .Frameset_3d ; SPRITE_ANIM_FRAMESET_3D
-	dw .Frameset_3e ; SPRITE_ANIM_FRAMESET_3E
-	dw .Frameset_3f ; SPRITE_ANIM_FRAMESET_3F
+	dw .Frameset_3e ; SPRITE_ANIM_FRAMESET_INTRO_SUICUNE_AWAY
+	dw .Frameset_3f ; SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F
 	dw .Frameset_40 ; SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	dw .Frameset_41 ; SPRITE_ANIM_FRAMESET_CELEBI_RIGHT
 ; 8d76a
+
 ; OAM idx (see SpriteAnimOAMData), flip flags/duration
 .Frameset_00:
 	frame SPRITE_ANIM_FRAME_IDX_00, 32
@@ -456,146 +457,146 @@ SpriteAnimFrameData: ; 8d6e6
 
 SpriteAnimOAMData: ; 8d94d
 	; vtile offset, pointer
-	dbw $00, .OAMData_00 ; 00
-	dbw $04, .OAMData_00 ; 01
-	dbw $4c, .OAMData_02 ; 02
-	dbw $5c, .OAMData_02 ; 03
-	dbw $6c, .OAMData_04 ; 04
-	dbw $6e, .OAMData_04 ; 05
-	dbw $2d, .OAMData_06 ; 06
-	dbw $4d, .OAMData_06 ; 07
-	dbw $60, .OAMData_08 ; 08
-	dbw $00, .OAMData_08 ; 09
-	dbw $00, .OAMData_08 ; 0a
-	dbw $06, .OAMData_08 ; 0b
-	dbw $0c, .OAMData_0c ; 0c
-	dbw $0d, .OAMData_02 ; 0d
-	dbw $00, .OAMData_0e ; 0e
-	dbw $04, .OAMData_0e ; 0f
-	dbw $08, .OAMData_0e ; 10
-	dbw $40, .OAMData_0e ; 11
-	dbw $44, .OAMData_0e ; 12
-	dbw $48, .OAMData_0e ; 13
-	dbw $4c, .OAMData_0e ; 14
-	dbw $80, .OAMData_15 ; 15
-	dbw $85, .OAMData_15 ; 16
-	dbw $8a, .OAMData_15 ; 17
-	dbw $00, .OAMData_18 ; 18
-	dbw $01, .OAMData_19 ; 19
-	dbw $09, .OAMData_1a ; 1a
-	dbw $10, .OAMData_1b ; 1b
-	dbw $29, .OAMData_1b ; 1c
-	dbw $42, .OAMData_1b ; 1d
-	dbw $f8, .OAMData_1e ; 1e
-	dbw $fa, .OAMData_1e ; 1f
-	dbw $00, .OAMData_20 ; 20
-	dbw $00, .OAMData_21 ; 21
-	dbw $00, .OAMData_22 ; 22
-	dbw $0f, .OAMData_23 ; 23
-	dbw $11, .OAMData_02 ; 24
-	dbw $12, .OAMData_02 ; 25
-	dbw $13, .OAMData_02 ; 26
-	dbw $00, .OAMData_27 ; 27
-	dbw $08, .OAMData_27 ; 28
-	dbw $10, .OAMData_29 ; 29
-	dbw $10, .OAMData_2a ; 2a
-	dbw $10, .OAMData_2b ; 2b
-	dbw $10, .OAMData_2c ; 2c
-	dbw $10, .OAMData_2d ; 2d
-	dbw $3a, .OAMData_02 ; 2e
-	dbw $00, .OAMData_00 ; 2f
-	dbw $00, .OAMData_30 ; 30
-	dbw $02, .OAMData_31 ; 31
-	dbw $06, .OAMData_19 ; 32
-	dbw $0a, .OAMData_19 ; 33
-	dbw $0e, .OAMData_19 ; 34
-	dbw $12, .OAMData_35 ; 35
-	dbw $13, .OAMData_35 ; 36
-	dbw $00, .OAMData_00 ; 37
-	dbw $04, .OAMData_00 ; 38
-	dbw $10, .OAMData_19 ; 39
-	dbw $00, .OAMData_31 ; 3a
-	dbw $04, .OAMData_02 ; 3b
-	dbw $00, .OAMData_3c ; 3c
-	dbw $00, .OAMData_3d ; 3d
-	dbw $00, .OAMData_3e ; 3e
-	dbw $00, .OAMData_3f ; 3f
-	dbw $00, .OAMData_40 ; 40
-	dbw $00, .OAMData_31 ; 41
-	dbw $04, .OAMData_31 ; 42
-	dbw $00, .OAMData_43 ; 43
-	dbw $30, .OAMData_43 ; 44
-	dbw $03, .OAMData_43 ; 45
-	dbw $33, .OAMData_43 ; 46
-	dbw $06, .OAMData_43 ; 47
-	dbw $36, .OAMData_43 ; 48
-	dbw $09, .OAMData_43 ; 49
-	dbw $39, .OAMData_43 ; 4a
-	dbw $0c, .OAMData_4b ; 4b
-	dbw $0c, .OAMData_4c ; 4c
-	dbw $3c, .OAMData_02 ; 4d
-	dbw $3e, .OAMData_02 ; 4e
-	dbw $00, .OAMData_4f ; 4f
-	dbw $00, .OAMData_50 ; 50
-	dbw $00, .OAMData_51 ; 51
-	dbw $00, .OAMData_52 ; 52
-	dbw $00, .OAMData_53 ; 53
-	dbw $00, .OAMData_02 ; 54
-	dbw $01, .OAMData_02 ; 55
-	dbw $00, .OAMData_56 ; 56
-	dbw $00, .OAMData_57 ; 57
-	dbw $00, .OAMData_58 ; 58
-	dbw $00, .OAMData_59 ; 59
-	dbw $00, .OAMData_5a ; 5a
-	dbw $04, .OAMData_50 ; 5b
-	dbw $00, .OAMData_5c ; 5c
-	dbw $00, .OAMData_5d ; 5d
-	dbw $00, .OAMData_5e ; 5e
-	dbw $00, .OAMData_5f ; 5f
-	dbw $00, .OAMData_60 ; 60
-	dbw $00, .OAMData_61 ; 61
-	dbw $00, .OAMData_62 ; 62
-	dbw $00, .OAMData_63 ; 63
-	dbw $04, .OAMData_63 ; 64
-	dbw $00, .OAMData_65 ; 65
-	dbw $04, .OAMData_65 ; 66
-	dbw $20, .OAMData_67 ; 67
-	dbw $21, .OAMData_67 ; 68
-	dbw $22, .OAMData_69 ; 69
-	dbw $23, .OAMData_6a ; 6a
-	dbw $27, .OAMData_6b ; 6b
-	dbw $2a, .OAMData_6c ; 6c
-	dbw $2a, .OAMData_6d ; 6d
-	dbw $00, .OAMData_6e ; 6e
-	dbw $08, .OAMData_6f ; 6f
-	dbw $60, .OAMData_70 ; 70
-	dbw $68, .OAMData_71 ; 71
-	dbw $00, .OAMData_72 ; 72
-	dbw $05, .OAMData_72 ; 73
-	dbw $0a, .OAMData_72 ; 74
-	dbw $50, .OAMData_75 ; 75
-	dbw $00, .OAMData_76 ; 76
-	dbw $01, .OAMData_77 ; 77
-	dbw $04, .OAMData_78 ; 78
-	dbw $00, .OAMData_18 ; 79
-	dbw $01, .OAMData_7a ; 7a
-	dbw $03, .OAMData_7b ; 7b
-	dbw $08, .OAMData_7c ; 7c
-	dbw $1c, .OAMData_7c ; 7d
-	dbw $80, .OAMData_7e ; 7e
-	dbw $00, .OAMData_7f ; 7f
-	dbw $04, .OAMData_7f ; 80
-	dbw $d0, .OAMData_81 ; 81
-	dbw $d3, .OAMData_81 ; 82
-	dbw $d6, .OAMData_81 ; 83
-	dbw $6c, .OAMData_84 ; 84
-	dbw $68, .OAMData_84 ; 85
-	dbw $64, .OAMData_84 ; 86
-	dbw $60, .OAMData_84 ; 87
-	dbw $0c, .OAMData_84 ; 88
-	dbw $08, .OAMData_84 ; 89
-	dbw $04, .OAMData_84 ; 8a
-	dbw $00, .OAMData_84 ; 8b
+	dbw $00, .OAMData_00 ; SPRITE_ANIM_FRAME_IDX_00
+	dbw $04, .OAMData_00 ; SPRITE_ANIM_FRAME_IDX_01
+	dbw $4c, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_02
+	dbw $5c, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_03
+	dbw $6c, .OAMData_04 ; SPRITE_ANIM_FRAME_IDX_04
+	dbw $6e, .OAMData_04 ; SPRITE_ANIM_FRAME_IDX_05
+	dbw $2d, .OAMData_06 ; SPRITE_ANIM_FRAME_IDX_06
+	dbw $4d, .OAMData_06 ; SPRITE_ANIM_FRAME_IDX_07
+	dbw $60, .OAMData_08 ; SPRITE_ANIM_FRAME_IDX_08
+	dbw $00, .OAMData_08 ; SPRITE_ANIM_FRAME_IDX_09
+	dbw $00, .OAMData_08 ; SPRITE_ANIM_FRAME_IDX_0A
+	dbw $06, .OAMData_08 ; SPRITE_ANIM_FRAME_IDX_0B
+	dbw $0c, .OAMData_0c ; SPRITE_ANIM_FRAME_IDX_0C
+	dbw $0d, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_0D
+	dbw $00, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_0E
+	dbw $04, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_0F
+	dbw $08, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_10
+	dbw $40, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_11
+	dbw $44, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_12
+	dbw $48, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_13
+	dbw $4c, .OAMData_0e ; SPRITE_ANIM_FRAME_IDX_14
+	dbw $80, .OAMData_15 ; SPRITE_ANIM_FRAME_IDX_15
+	dbw $85, .OAMData_15 ; SPRITE_ANIM_FRAME_IDX_16
+	dbw $8a, .OAMData_15 ; SPRITE_ANIM_FRAME_IDX_17
+	dbw $00, .OAMData_18 ; SPRITE_ANIM_FRAME_IDX_18
+	dbw $01, .OAMData_19 ; SPRITE_ANIM_FRAME_IDX_19
+	dbw $09, .OAMData_1a ; SPRITE_ANIM_FRAME_IDX_1A
+	dbw $10, .OAMData_1b ; SPRITE_ANIM_FRAME_IDX_1B
+	dbw $29, .OAMData_1b ; SPRITE_ANIM_FRAME_IDX_1C
+	dbw $42, .OAMData_1b ; SPRITE_ANIM_FRAME_IDX_1D
+	dbw $f8, .OAMData_1e ; SPRITE_ANIM_FRAME_IDX_1E
+	dbw $fa, .OAMData_1e ; SPRITE_ANIM_FRAME_IDX_1F
+	dbw $00, .OAMData_20 ; SPRITE_ANIM_FRAME_IDX_20
+	dbw $00, .OAMData_21 ; SPRITE_ANIM_FRAME_IDX_21
+	dbw $00, .OAMData_22 ; SPRITE_ANIM_FRAME_IDX_22
+	dbw $0f, .OAMData_23 ; SPRITE_ANIM_FRAME_IDX_23
+	dbw $11, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_24
+	dbw $12, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_25
+	dbw $13, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_26
+	dbw $00, .OAMData_27 ; SPRITE_ANIM_FRAME_IDX_27
+	dbw $08, .OAMData_27 ; SPRITE_ANIM_FRAME_IDX_28
+	dbw $10, .OAMData_29 ; SPRITE_ANIM_FRAME_IDX_29
+	dbw $10, .OAMData_2a ; SPRITE_ANIM_FRAME_IDX_2A
+	dbw $10, .OAMData_2b ; SPRITE_ANIM_FRAME_IDX_2B
+	dbw $10, .OAMData_2c ; SPRITE_ANIM_FRAME_IDX_2C
+	dbw $10, .OAMData_2d ; SPRITE_ANIM_FRAME_IDX_2D
+	dbw $3a, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_2E
+	dbw $00, .OAMData_00 ; SPRITE_ANIM_FRAME_IDX_2F
+	dbw $00, .OAMData_30 ; SPRITE_ANIM_FRAME_IDX_30
+	dbw $02, .OAMData_31 ; SPRITE_ANIM_FRAME_IDX_31
+	dbw $06, .OAMData_19 ; SPRITE_ANIM_FRAME_IDX_32
+	dbw $0a, .OAMData_19 ; SPRITE_ANIM_FRAME_IDX_33
+	dbw $0e, .OAMData_19 ; SPRITE_ANIM_FRAME_IDX_34
+	dbw $12, .OAMData_35 ; SPRITE_ANIM_FRAME_IDX_35
+	dbw $13, .OAMData_35 ; SPRITE_ANIM_FRAME_IDX_36
+	dbw $00, .OAMData_00 ; SPRITE_ANIM_FRAME_IDX_37
+	dbw $04, .OAMData_00 ; SPRITE_ANIM_FRAME_IDX_38
+	dbw $10, .OAMData_19 ; SPRITE_ANIM_FRAME_IDX_39
+	dbw $00, .OAMData_31 ; SPRITE_ANIM_FRAME_IDX_3A
+	dbw $04, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_3B
+	dbw $00, .OAMData_3c ; SPRITE_ANIM_FRAME_IDX_3C
+	dbw $00, .OAMData_3d ; SPRITE_ANIM_FRAME_IDX_3D
+	dbw $00, .OAMData_3e ; SPRITE_ANIM_FRAME_IDX_3E
+	dbw $00, .OAMData_3f ; SPRITE_ANIM_FRAME_IDX_3F
+	dbw $00, .OAMData_40 ; SPRITE_ANIM_FRAME_IDX_40
+	dbw $00, .OAMData_31 ; SPRITE_ANIM_FRAME_IDX_41
+	dbw $04, .OAMData_31 ; SPRITE_ANIM_FRAME_IDX_42
+	dbw $00, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_43
+	dbw $30, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_44
+	dbw $03, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_45
+	dbw $33, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_46
+	dbw $06, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_47
+	dbw $36, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_48
+	dbw $09, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_49
+	dbw $39, .OAMData_43 ; SPRITE_ANIM_FRAME_IDX_4A
+	dbw $0c, .OAMData_4b ; SPRITE_ANIM_FRAME_IDX_4B
+	dbw $0c, .OAMData_4c ; SPRITE_ANIM_FRAME_IDX_4C
+	dbw $3c, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_4D
+	dbw $3e, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_4E
+	dbw $00, .OAMData_4f ; SPRITE_ANIM_FRAME_IDX_4F
+	dbw $00, .OAMData_50 ; SPRITE_ANIM_FRAME_IDX_50
+	dbw $00, .OAMData_51 ; SPRITE_ANIM_FRAME_IDX_51
+	dbw $00, .OAMData_52 ; SPRITE_ANIM_FRAME_IDX_52
+	dbw $00, .OAMData_53 ; SPRITE_ANIM_FRAME_IDX_53
+	dbw $00, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_54
+	dbw $01, .OAMData_02 ; SPRITE_ANIM_FRAME_IDX_55
+	dbw $00, .OAMData_56 ; SPRITE_ANIM_FRAME_IDX_56
+	dbw $00, .OAMData_57 ; SPRITE_ANIM_FRAME_IDX_57
+	dbw $00, .OAMData_58 ; SPRITE_ANIM_FRAME_IDX_58
+	dbw $00, .OAMData_59 ; SPRITE_ANIM_FRAME_IDX_59
+	dbw $00, .OAMData_5a ; SPRITE_ANIM_FRAME_IDX_5A
+	dbw $04, .OAMData_50 ; SPRITE_ANIM_FRAME_IDX_5B
+	dbw $00, .OAMData_5c ; SPRITE_ANIM_FRAME_IDX_5C
+	dbw $00, .OAMData_5d ; SPRITE_ANIM_FRAME_IDX_5D
+	dbw $00, .OAMData_5e ; SPRITE_ANIM_FRAME_IDX_5E
+	dbw $00, .OAMData_5f ; SPRITE_ANIM_FRAME_IDX_5F
+	dbw $00, .OAMData_60 ; SPRITE_ANIM_FRAME_IDX_60
+	dbw $00, .OAMData_61 ; SPRITE_ANIM_FRAME_IDX_61
+	dbw $00, .OAMData_62 ; SPRITE_ANIM_FRAME_IDX_62
+	dbw $00, .OAMData_63 ; SPRITE_ANIM_FRAME_IDX_63
+	dbw $04, .OAMData_63 ; SPRITE_ANIM_FRAME_IDX_64
+	dbw $00, .OAMData_65 ; SPRITE_ANIM_FRAME_IDX_65
+	dbw $04, .OAMData_65 ; SPRITE_ANIM_FRAME_IDX_66
+	dbw $20, .OAMData_67 ; SPRITE_ANIM_FRAME_IDX_67
+	dbw $21, .OAMData_67 ; SPRITE_ANIM_FRAME_IDX_68
+	dbw $22, .OAMData_69 ; SPRITE_ANIM_FRAME_IDX_69
+	dbw $23, .OAMData_6a ; SPRITE_ANIM_FRAME_IDX_6A
+	dbw $27, .OAMData_6b ; SPRITE_ANIM_FRAME_IDX_6B
+	dbw $2a, .OAMData_6c ; SPRITE_ANIM_FRAME_IDX_6C
+	dbw $2a, .OAMData_6d ; SPRITE_ANIM_FRAME_IDX_6D
+	dbw $00, .OAMData_6e ; SPRITE_ANIM_FRAME_IDX_6E
+	dbw $08, .OAMData_6f ; SPRITE_ANIM_FRAME_IDX_6F
+	dbw $60, .OAMData_70 ; SPRITE_ANIM_FRAME_IDX_70
+	dbw $68, .OAMData_71 ; SPRITE_ANIM_FRAME_IDX_71
+	dbw $00, .OAMData_72 ; SPRITE_ANIM_FRAME_IDX_72
+	dbw $05, .OAMData_72 ; SPRITE_ANIM_FRAME_IDX_73
+	dbw $0a, .OAMData_72 ; SPRITE_ANIM_FRAME_IDX_74
+	dbw $50, .OAMData_75 ; SPRITE_ANIM_FRAME_IDX_75
+	dbw $00, .OAMData_76 ; SPRITE_ANIM_FRAME_IDX_76
+	dbw $01, .OAMData_77 ; SPRITE_ANIM_FRAME_IDX_77
+	dbw $04, .OAMData_78 ; SPRITE_ANIM_FRAME_IDX_78
+	dbw $00, .OAMData_18 ; SPRITE_ANIM_FRAME_IDX_79
+	dbw $01, .OAMData_7a ; SPRITE_ANIM_FRAME_IDX_7A
+	dbw $03, .OAMData_7b ; SPRITE_ANIM_FRAME_IDX_7B
+	dbw $08, .OAMData_7c ; SPRITE_ANIM_FRAME_IDX_7C
+	dbw $1c, .OAMData_7c ; SPRITE_ANIM_FRAME_IDX_7D
+	dbw $80, .OAMData_7e ; SPRITE_ANIM_FRAME_IDX_7E
+	dbw $00, .OAMData_7f ; SPRITE_ANIM_FRAME_IDX_7F
+	dbw $04, .OAMData_7f ; SPRITE_ANIM_FRAME_IDX_80
+	dbw $d0, .OAMData_81 ; SPRITE_ANIM_FRAME_IDX_81
+	dbw $d3, .OAMData_81 ; SPRITE_ANIM_FRAME_IDX_82
+	dbw $d6, .OAMData_81 ; SPRITE_ANIM_FRAME_IDX_83
+	dbw $6c, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_84
+	dbw $68, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_85
+	dbw $64, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_86
+	dbw $60, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_87
+	dbw $0c, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_88
+	dbw $08, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_89
+	dbw $04, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_8A
+	dbw $00, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_8B
 
 .OAMData_02:
 	db 1

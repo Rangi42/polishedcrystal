@@ -142,7 +142,7 @@ INCBIN "gfx/misc/fast_ship.2bpp"
 
 InitPokegearModeIndicatorArrow: ; 90d32 (24:4d32)
 	depixel 4, 2, 4, 0
-	ld a, SPRITE_ANIM_INDEX_0D
+	ld a, SPRITE_ANIM_INDEX_POKEGEAR_MODE_ARROW
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -692,7 +692,7 @@ PokegearMap_InitPlayerIcon: ; 9106a
 PokegearMap_InitCursor: ; 91098
 	push af
 	depixel 0, 0
-	ld a, SPRITE_ANIM_INDEX_0D
+	ld a, SPRITE_ANIM_INDEX_POKEGEAR_MODE_ARROW
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -758,7 +758,7 @@ TownMap_GetKantoLandmarkLimits: ; 910e8
 PokegearRadio_Init: ; 910f9 (24:50f9)
 	call InitPokegearTilemap
 	depixel 4, 10, 4, 4
-	ld a, SPRITE_ANIM_INDEX_14
+	ld a, SPRITE_ANIM_INDEX_RADIO_TUNING_KNOB
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -2934,7 +2934,7 @@ TownMapMon: ; 91f7b
 	farcall GetSpeciesIcon
 ; Animation/palette
 	depixel 0, 0
-	ld a, SPRITE_ANIM_INDEX_00
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc

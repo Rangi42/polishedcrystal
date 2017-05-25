@@ -326,7 +326,7 @@ endr
 	ld d, 10 * 8 + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
-	ld b, SPRITE_ANIM_INDEX_15
+	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_RED
 	ld a, [rSVBK]
 	push af
 	ld a, $1
@@ -334,7 +334,7 @@ endr
 	ld a, [PlayerGender]
 	bit 0, a
 	jr z, .got_gender
-	ld b, SPRITE_ANIM_INDEX_1F
+	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_BLUE
 
 .got_gender
 	pop af

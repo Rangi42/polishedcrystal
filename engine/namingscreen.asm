@@ -399,7 +399,7 @@ endr
 	jr nz, .got_cursor_position
 	ld d, 8 * 8
 .got_cursor_position
-	ld a, SPRITE_ANIM_INDEX_02
+	ld a, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
 	call _InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
@@ -543,10 +543,10 @@ NamingScreen_AnimateCursor: ; 11a3b (4:5a3b)
 	cp d
 	ld de, .LetterEntries
 	ld a, 0 ; not xor a; preserve carry flag
-	jr nz, .ok2
+	jr nz, .got_pointer
 	ld de, .CaseDelEnd
 	inc a
-.ok2
+.got_pointer
 	ld hl, SPRITEANIMSTRUCT_0E
 	add hl, bc
 	add [hl]
@@ -987,7 +987,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 
 	; init mail icon
 	depixel 3, 2
-	ld a, SPRITE_ANIM_INDEX_00
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call _InitSpriteAnimStruct
 
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
@@ -1118,7 +1118,7 @@ endr
 
 .init_blinking_cursor ; 1201b (4:601b)
 	depixel 9, 2
-	ld a, SPRITE_ANIM_INDEX_09
+	ld a, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
 	call _InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
@@ -1236,7 +1236,7 @@ ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
 	ld a, 0 ; not xor a; preserve carry flag
 	jr nz, .got_pointer
 	ld de, .CaseDelEnd
-	ld a, 1
+	inc a
 .got_pointer
 	ld hl, SPRITEANIMSTRUCT_0E
 	add hl, bc
@@ -1247,7 +1247,7 @@ ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld l, [hl]
-	ld h, 0
+	ld h, $0
 	add hl, de
 	ld a, [hl]
 	ld hl, SPRITEANIMSTRUCT_XOFFSET

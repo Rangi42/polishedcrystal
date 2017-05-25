@@ -28,12 +28,12 @@ DoAnimFrame: ; 8d24b
 	dw .SlotsChanseyEgg          ; SPRITE_ANIM_SEQ_SLOTS_EGG
 	dw .ComposeMailCursor        ; SPRITE_ANIM_SEQ_COMPOSE_MAIL_CURSOR
 	dw .thirteen                 ; SPRITE_ANIM_SEQ_0D
-	dw .fourteen                 ; SPRITE_ANIM_SEQ_0E
-	dw .fifteen                  ; SPRITE_ANIM_SEQ_0F
-	dw .sixteen                  ; SPRITE_ANIM_SEQ_10
-	dw .seventeen                ; SPRITE_ANIM_SEQ_11
-	dw .eighteen                 ; SPRITE_ANIM_SEQ_12
-	dw .EggShell                 ; SPRITE_ANIM_SEQ_EGG_SHELL
+	dw .DummyGameCursor          ; SPRITE_ANIM_SEQ_DUMMY_GAME_CURSOR
+	dw .PokegearModeArrow        ; SPRITE_ANIM_SEQ_POKEGEAR_MODE_ARROW
+	dw .TradePokeBall            ; SPRITE_ANIM_SEQ_TRADE_POKE_BALL
+	dw .TradeTubeBulge           ; SPRITE_ANIM_SEQ_TRADE_TUBE_BULGE
+	dw .TradeMonBubble           ; SPRITE_ANIM_SEQ_TRADEMON_IN_TUBE
+	dw .RevealNewMon             ; SPRITE_ANIM_SEQ_REVEAL_NEW_MON
 	dw .RadioTuningKnob          ; SPRITE_ANIM_SEQ_RADIO_TUNING_KNOB
 	dw .CutGrassLeaves           ; SPRITE_ANIM_SEQ_CUT_GRASS_LEAVES
 	dw .FlyFrom                  ; SPRITE_ANIM_SEQ_FLY_FROM
@@ -245,7 +245,7 @@ DoAnimFrame: ; 8d24b
 	add hl, bc
 	dec [hl]
 .asm_8d395
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	push af
@@ -267,7 +267,7 @@ DoAnimFrame: ; 8d24b
 	add hl, bc
 	ld a, [hl]
 
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	add [hl]
 	ld [hl], a
@@ -290,7 +290,7 @@ DoAnimFrame: ; 8d24b
 	add hl, bc
 	ld d, [hl]
 
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	push af
@@ -345,7 +345,7 @@ DoAnimFrame: ; 8d24b
 	inc hl
 	ld [hl], d
 
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	xor $20
@@ -372,7 +372,7 @@ DoAnimFrame: ; 8d24b
 	ret
 
 .SlotsChanseyEgg: ; 8d43e (23:543e)
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	dec [hl]
@@ -408,15 +408,15 @@ DoAnimFrame: ; 8d24b
 ;	farcall ret_e00ed
 	ret
 
-.fifteen ; 8d475 (23:5475)
+.PokegearModeArrow ; 8d475 (23:5475)
 	farcall AnimatePokegearModeIndicatorArrow
 	ret
 
-.fourteen ; 8d47c (23:547c)
+.DummyGameCursor ; 8d47c (23:547c)
 ;	farcall DummyGame_InterpretJoypad_AnimateCursor
 	ret
 
-.sixteen ; 8d483 (23:5483)
+.TradePokeBall ; 8d483 (23:5483)
 	call .anonymous_dw
 	jp hl
 ; 8d487 (23:5487)
@@ -434,7 +434,7 @@ DoAnimFrame: ; 8d24b
 	ld a, $14
 	call _ReinitSpriteAnimFrame
 
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld [hl], $2
 
@@ -482,7 +482,7 @@ DoAnimFrame: ; 8d24b
 ; 8d4d5
 
 .sixteen_one ; 8d4d5
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld [hl], $4
 
@@ -547,7 +547,7 @@ DoAnimFrame: ; 8d24b
 	ret
 ; 8d52a
 
-.seventeen ; 8d52a (23:552a)
+.TradeTubeBulge ; 8d52a (23:552a)
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
@@ -565,21 +565,21 @@ DoAnimFrame: ; 8d24b
 	call DeinitializeSprite
 	ret
 
-.eighteen ; 8d543 (23:5543)
-	farcall Function29676
+.TradeMonBubble ; 8d543 (23:5543)
+	farcall TradeAnim_AnimateTrademonInTube
 	ret
 
-.EggShell: ; 8d54a (23:554a)
+.RevealNewMon: ; 8d54a (23:554a)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
 	cp $80
-	jr nc, .finish_EggShell
+	jr nc, .finish_RevealNewMon
 	ld d, a
 	add $8
 	ld [hl], a
 
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	xor $20
@@ -602,7 +602,7 @@ DoAnimFrame: ; 8d24b
 	ld [hl], a
 	ret
 
-.finish_EggShell
+.finish_RevealNewMon
 	call DeinitializeSprite
 	ret
 
@@ -822,7 +822,7 @@ endr
 	ret
 
 .IntroUnown ; 8d680 (23:5680)
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld d, [hl]
 rept 3
@@ -879,7 +879,7 @@ endr
 	ld d, [hl]
 	inc de
 
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
@@ -892,7 +892,7 @@ endr
 ; 8d6d8 (23:56d8)
 
 .IncrementSpriteAnimStruct0B: ; 8d6d8
-	ld hl, SPRITEANIMSTRUCT_0B
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
 	ret

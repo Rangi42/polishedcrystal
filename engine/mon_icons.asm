@@ -96,7 +96,7 @@ endr
 ; x coord
 	ld e, $10
 ; type is partymon icon
-	ld a, SPRITE_ANIM_INDEX_00
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call InitSpriteAnimStruct
 	pop af
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
@@ -142,7 +142,7 @@ Function8e961: ; 8e961 (23:6961)
 	xor a
 	call GetIconGFX
 	depixel 4, 4, 4, 0
-	ld a, SPRITE_ANIM_INDEX_00
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
@@ -156,7 +156,7 @@ Function8e97d: ; 8e97d (23:697d)
 	call GetIconGFX
 	ld d, 3 * 8 + 2
 	ld e, 4 * 8 + 4
-	ld a, SPRITE_ANIM_INDEX_00
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
