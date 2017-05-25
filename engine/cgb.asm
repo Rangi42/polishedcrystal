@@ -423,7 +423,7 @@ _CGB_SlotMachine: ; 906e
 	call FillBoxCGB
 
 	hlcoord 0, 12, AttrMap
-	lb bc, 7, 8
+	ld bc, $78
 	ld a, $7
 	call ByteFill
 

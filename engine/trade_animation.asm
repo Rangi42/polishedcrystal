@@ -962,7 +962,8 @@ TrademonStats_MonTemplate: ; 29573
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
 	hlcoord 3, 0
-	lb bc, 6, 13
+	ld b, $6
+	ld c, $d
 	call TextBox
 	hlcoord 4, 0
 	ld de, .OTMonData
