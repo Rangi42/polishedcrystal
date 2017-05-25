@@ -6052,10 +6052,6 @@ SECTION "bank43", ROMX, BANK[$43]
 
 INCLUDE "engine/title.asm"
 
-SECTION "bank47", ROMX, BANK[$47]
-
-INCLUDE "engine/mobile_47.asm"
-
 SECTION "bank5B", ROMX, BANK[$1] ; $5B is now PICS_20
 
 INCLUDE "engine/link_trade.asm"
@@ -6401,7 +6397,7 @@ SECTION "Tileset Data 8", ROMX, BANK[TILESETS_8]
 
 INCLUDE "tilesets/data_8.asm"
 
-SECTION "Tileset Data 9", ROMX, BANK[$47]
+SECTION "Tileset Data 9", ROMX, BANK[TILESETS_9]
 
 INCLUDE "tilesets/data_9.asm"
 

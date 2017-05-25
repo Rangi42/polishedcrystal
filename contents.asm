@@ -11,6 +11,7 @@ TILESETS_5                EQU $2D
 TILESETS_6                EQU $37
 TILESETS_7                EQU $77
 TILESETS_8                EQU $78
+TILESETS_9                EQU $47
 
 
 ; data/egg_moves.o

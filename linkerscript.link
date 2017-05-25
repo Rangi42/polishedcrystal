@@ -227,9 +227,8 @@ ROMX $45 ; MAP_SCRIPTS_26
 ROMX $46
 	"Extra Songs 4" ; $4000
 
-ROMX $47
-	"bank47" ; $4000
-	"Tileset Data 9"
+ROMX $47 ; TILESETS_9
+	"Tileset Data 9" ; $4000
 
 ROMX $48 ; PICS_1
 	"Pic Pointers" ; $4000
