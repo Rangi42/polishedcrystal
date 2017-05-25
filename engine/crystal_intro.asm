@@ -82,13 +82,13 @@ Copyright_GFPresents: ; e4579
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_GAMEFREAK_LOGO
 	call _InitSpriteAnimStruct
-	ld hl, $7
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], $a0
-	ld hl, $c
+	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $60
-	ld hl, $d
+	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld [hl], $30
 	xor a
@@ -101,7 +101,7 @@ Copyright_GFPresents: ; e4579
 	ld [hBGMapMode], a
 	ld a, $90
 	ld [hWY], a
-	ld de, $e4e4
+	lb de, %11100100, %11100100
 	call DmgToCgbObjPals
 	ret
 ; e465e
@@ -1534,7 +1534,7 @@ CrystalIntro_InitUnownAnim: ; e51dc (39:51dc)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $8
-	ld a, $3c
+	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_4
 	call ReinitSpriteAnimFrame
 	pop de
 
@@ -1544,7 +1544,7 @@ CrystalIntro_InitUnownAnim: ; e51dc (39:51dc)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $18
-	ld a, $3b
+	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_3
 	call ReinitSpriteAnimFrame
 	pop de
 
@@ -1554,7 +1554,7 @@ CrystalIntro_InitUnownAnim: ; e51dc (39:51dc)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $28
-	ld a, $39
+	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_1
 	call ReinitSpriteAnimFrame
 	pop de
 
@@ -1563,7 +1563,7 @@ CrystalIntro_InitUnownAnim: ; e51dc (39:51dc)
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $38
-	ld a, $3a
+	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_2
 	call ReinitSpriteAnimFrame
 	ret
 
@@ -2010,7 +2010,7 @@ Intro_ResetLYOverrides: ; e5516 (39:5516)
 
 	pop af
 	ld [rSVBK], a
-	ld a, $43
+	ld a, rSCX - $ff00
 	ld [hLCDCPointer], a
 	ret
 

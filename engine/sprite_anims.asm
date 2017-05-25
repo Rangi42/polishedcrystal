@@ -147,7 +147,7 @@ DoAnimFrame: ; 8d24b
 	cp $2
 	ret nz
 	ld [hl], $3
-	ld a, $f
+	ld a, SPRITE_ANIM_FRAMESET_SLOTS_CHANSEY_2
 	call _ReinitSpriteAnimFrame
 	ret
 
@@ -207,7 +207,7 @@ DoAnimFrame: ; 8d24b
 ; 8d493
 
 .sixteen_zero ; 8d493
-	ld a, $14
+	ld a, SPRITE_ANIM_FRAMESET_TRADE_POKE_BALL_0
 	call _ReinitSpriteAnimFrame
 
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -546,7 +546,7 @@ endr
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
-	ld a, $36
+	ld a, SPRITE_ANIM_FRAMESET_INTRO_SUICUNE_2
 	call _ReinitSpriteAnimFrame
 	ret
 
@@ -599,7 +599,7 @@ endr
 	ld a, [wcf64]
 	cp $40
 	ret nz
-	ld a, $3d
+	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F_2
 	call _ReinitSpriteAnimFrame
 	ret
 
