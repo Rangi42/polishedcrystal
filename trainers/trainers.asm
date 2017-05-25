@@ -11456,6 +11456,18 @@ ScientistGroup:
 	db $ff ; end
 
 ; ================
+
+	; SCIENTIST
+	db "Piotr@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, GOLDUCK
+	db 55, ALAKAZAM
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

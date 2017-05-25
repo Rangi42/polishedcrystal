@@ -6,6 +6,7 @@ const_value set 2
 	const SCARYCAVE1F_YOUNGSTER
 	const SCARYCAVE1F_LASS
 	const SCARYCAVE1F_HEX_MANIAC
+	const SCARYCAVE1F_SCIENTIST
 	const SCARYCAVE1F_POKE_BALL1
 	const SCARYCAVE1F_POKE_BALL2
 	const SCARYCAVE1F_POKE_BALL3
@@ -66,14 +67,13 @@ ScaryCave1FMiraScript:
 .ChallengeText:
 	text "I'm Mira…"
 	line "I was catching"
-	cont "#mon, but the"
 
-	para "ghosts here are"
-	line "scary…"
+	para "#mon, but this"
+	line "cave is too scary…"
 
 	para "I want to get"
 	line "tougher so I won't"
-	line "be such a scaredy-"
+	cont "be such a scaredy-"
 	cont "cat."
 
 	para "Please! Please"
@@ -361,6 +361,39 @@ TrainerHex_maniacBethany:
 	cont "Fufufufu…"
 	done
 
+TrainerScientistPiotr:
+	trainer EVENT_BEAT_SCIENTIST_PIOTR, SCIENTIST, PIOTR, .SeenText, .BeatenText, 0, .Script
+
+.Script:
+	end_if_just_battled
+	opentext
+	writetext .AfterText
+	waitbutton
+	closetext
+	end
+
+.SeenText:
+	text "Do you know why"
+	line "the water here is"
+	cont "blood-red?"
+	done
+
+.BeatenText:
+	text "Fine, I'll tell"
+	line "you!"
+	done
+
+.AfterText:
+	text "Algae grow here"
+	line "and release a red"
+
+	para "pigment in the"
+	line "water."
+
+	para "It's not blood!"
+	line "…Right?"
+	done
+
 ScaryCave1FXSpclDef:
 	itemball X_SPCL_DEF
 
@@ -407,14 +440,15 @@ ScaryCave1F_MapEventHeader:
 	signpost 29, 30, SIGNPOST_ITEM, ScaryCave1FHiddenPearl
 
 .PersonEvents:
-	db 12
+	db 13
 	person_event SPRITE_MIRA, 5, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
-	person_event SPRITE_PHARMACIST, 23, 8, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
+	person_event SPRITE_PHARMACIST, 25, 8, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
 	person_event SPRITE_POKEFAN_M, 2, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacSmilte, -1
 	person_event SPRITE_SUPER_NERD, 18, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuper_nerdMako, -1
 	person_event SPRITE_YOUNGSTER, 20, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo1, -1
 	person_event SPRITE_LASS, 20, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo2, -1
-	person_event SPRITE_HEX_MANIAC, 29, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 0, TrainerHex_maniacBethany, -1
+	person_event SPRITE_HEX_MANIAC, 16, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacBethany, -1
+	person_event SPRITE_SCIENTIST, 29, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistPiotr, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ScaryCave1FXSpclDef, EVENT_SCARY_CAVE_1F_X_SPCL_DEF
 	person_event SPRITE_BALL_CUT_FRUIT, 9, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ScaryCave1FDuskStone, EVENT_SCARY_CAVE_1F_DUSK_STONE
 	person_event SPRITE_BALL_CUT_FRUIT, 19, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ScaryCave1FHyperPotion, EVENT_SCARY_CAVE_1F_HYPER_POTION

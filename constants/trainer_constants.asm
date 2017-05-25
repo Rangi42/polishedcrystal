@@ -751,6 +751,7 @@ KRIS EQU __enum__
 	const DEXTER
 	const JOSEPH
 	const NIGEL
+	const PIOTR
 
 	trainerclass ROCKET_SCIENTIST ; 4c
 	const ROSS
