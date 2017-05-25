@@ -1,17 +1,5 @@
-PYTHON := python
-MD5 := md5sum -c --quiet
-
-VERSION = 2.2.0
 NAME = polishedcrystal
-ROM_NORMAL = $(NAME)-$(VERSION)
-ROM_FAITHFUL = $(NAME)-faithful-$(VERSION)
-ROM_NORTC = $(NAME)-nortc-$(VERSION)
-ROM_FAITHFUL_NORTC = $(NAME)-faithful-nortc-$(VERSION)
-ROM_BANKFREE = $(NAME)-$(ALTFILLER)
-RGBASM_OPTIONS =
-RGBFIX_OPTIONS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -k 01 -l 0x33 -m 0x10 -r 3
-
-LINKERSCRIPT = linkerscript.link
+VERSION = 2.2.0
 
 TITLE = PKPCRYSTAL
 MCODE = PKPC
@@ -19,13 +7,24 @@ ROMVERSION = 0x30
 FILLER = 0x00
 ALTFILLER = 0xff
 
+ROM_NORMAL = $(NAME)-$(VERSION)
+ROM_FAITHFUL = $(NAME)-faithful-$(VERSION)
+ROM_NORTC = $(NAME)-nortc-$(VERSION)
+ROM_FAITHFUL_NORTC = $(NAME)-faithful-nortc-$(VERSION)
+ROM_BANKFREE = $(ROM_NORMAL)-$(ALTFILLER)
+
+RGBASM_OPTIONS =
+RGBFIX_OPTIONS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -k 01 -l 0x33 -m 0x10 -r 3
+
+LINKERSCRIPT = linkerscript.link
+
 .SUFFIXES:
 .PHONY: all clean crystal faithful nortc faithful-nortc bankfree debug
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-gfx       := $(PYTHON) gfx.py
-includes  := $(PYTHON) utils/scan_includes.py
+gfx      := python gfx.py
+includes := python utils/scan_includes.py
 
 
 crystal_obj := \
