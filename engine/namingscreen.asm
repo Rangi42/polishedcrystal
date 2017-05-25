@@ -168,7 +168,7 @@ endr
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
-	ld [hl], $0
+	ld [hl], SPRITE_ANIM_FRAMESET_NULL
 	hlcoord 5, 2
 	ld de, .BoxNameString
 	call PlaceString

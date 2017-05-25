@@ -64,11 +64,11 @@ Function8e8d5: ; 8e8d5 (23:68d5)
 	pop bc
 	pop hl
 	jr c, .mail
-	ld a, $3
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
 	jr .okay
 
 .mail
-	ld a, $2
+	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
 .okay
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
