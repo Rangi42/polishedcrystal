@@ -3011,8 +3011,10 @@ wMagnetTrainFinalPosition:: ds 1
 wMagnetTrainPlayerSpriteInitX:: ds 1
 
 ColorVaryDVs:: ds 3
+ColorVarySpecies:: ds 1
+ColorVaryShiny:: ds 1
 
-	ds 104
+	ds 102
 
 LYOverridesBackup:: ; d200
 	ds SCREEN_HEIGHT_PX

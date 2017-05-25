@@ -551,6 +551,9 @@ LoadPartyMonPalette:
 	ld hl, PartyMon1DVs
 	ld a, [CurPartyMon]
 	call GetPartyLocation
+	; b = species
+	ld a, [CurPartySpecies]
+	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 7 palettes + 2

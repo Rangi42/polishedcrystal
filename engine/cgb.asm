@@ -78,7 +78,12 @@ _CGB_BattleColors: ; 8ddb
 	and a
 	jr z, .player_backsprite
 	push de
+	; hl = DVs
 	farcall GetPartyMonDVs
+	; b = species
+	ld a, [TempBattleMonSpecies]
+	ld b, a
+	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
 	call VaryColorsByDVs
@@ -90,6 +95,9 @@ _CGB_BattleColors: ; 8ddb
 	push de
 	; hl = DVs
 	farcall GetEnemyMonDVs
+	; b = species
+	ld a, [TempEnemyMonSpecies]
+	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 1 palettes + 2
@@ -512,6 +520,9 @@ _CGB_Evolution: ; 91e4
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [CurPartyMon]
 	call AddNTimes
+	; b = species
+	ld a, [CurPartySpecies]
+	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 2
