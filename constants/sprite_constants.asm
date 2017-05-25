@@ -282,14 +282,14 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 
 ; sprite palettes
 	const_def
-	const PAL_OW_RED
-	const PAL_OW_BLUE
-	const PAL_OW_GREEN
-	const PAL_OW_BROWN
-	const PAL_OW_PURPLE
-	const PAL_OW_SILVER
-	const PAL_OW_TREE
-	const PAL_OW_ROCK
+	const PAL_OW_RED    ; 00
+	const PAL_OW_BLUE   ; 01
+	const PAL_OW_GREEN  ; 02
+	const PAL_OW_BROWN  ; 03
+	const PAL_OW_PURPLE ; 04
+	const PAL_OW_SILVER ; 05
+	const PAL_OW_TREE   ; 06
+	const PAL_OW_ROCK   ; 07
 
 ; sprite movement data table indices
 ; see data/map_objects.asm
@@ -306,116 +306,100 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 	const SPRITEMOVEDATA_STANDING_RIGHT       ; 09
 	const SPRITEMOVEDATA_SPINRANDOM_FAST      ; 0a
 	const SPRITEMOVEDATA_PLAYER               ; 0b
-	const SPRITEMOVEDATA_0C                   ; 0c
-	const SPRITEMOVEDATA_0D                   ; 0d
-	const SPRITEMOVEDATA_0E                   ; 0e
-	const SPRITEMOVEDATA_0F                   ; 0f
-	const SPRITEMOVEDATA_10                   ; 10
-	const SPRITEMOVEDATA_11                   ; 11
-	const SPRITEMOVEDATA_CUTTABLE_TREE        ; 12
-	const SPRITEMOVEDATA_FOLLOWING            ; 13
-	const SPRITEMOVEDATA_SCRIPTED             ; 14
-	const SPRITEMOVEDATA_SNORLAX              ; 15
-	const SPRITEMOVEDATA_POKEMON              ; 16
-	const SPRITEMOVEDATA_SUDOWOODO            ; 17
-	const SPRITEMOVEDATA_SMASHABLE_ROCK       ; 18
-	const SPRITEMOVEDATA_STRENGTH_BOULDER     ; 19
-	const SPRITEMOVEDATA_FOLLOWNOTEXACT       ; 1a
-	const SPRITEMOVEDATA_SHADOW               ; 1b
-	const SPRITEMOVEDATA_EMOTE                ; 1c
-	const SPRITEMOVEDATA_SCREENSHAKE          ; 1d
-	const SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE ; 1e
-	const SPRITEMOVEDATA_SPINCLOCKWISE        ; 1f
-	const SPRITEMOVEDATA_20                   ; 20
-	const SPRITEMOVEDATA_BIGDOLL              ; 21
-	const SPRITEMOVEDATA_BOULDERDUST          ; 22
-	const SPRITEMOVEDATA_GRASS                ; 23
-	const SPRITEMOVEDATA_LAPRAS               ; 24
-	const SPRITEMOVEDATA_25                   ; 25
-NUM_SPRITEMOVEDATA EQU const_value +- 1
+	const SPRITEMOVEDATA_CUTTABLE_TREE        ; 0c
+	const SPRITEMOVEDATA_FOLLOWING            ; 0d
+	const SPRITEMOVEDATA_SCRIPTED             ; 0e
+	const SPRITEMOVEDATA_SNORLAX              ; 0f
+	const SPRITEMOVEDATA_POKEMON              ; 10
+	const SPRITEMOVEDATA_SUDOWOODO            ; 11
+	const SPRITEMOVEDATA_SMASHABLE_ROCK       ; 12
+	const SPRITEMOVEDATA_STRENGTH_BOULDER     ; 13
+	const SPRITEMOVEDATA_FOLLOWNOTEXACT       ; 14
+	const SPRITEMOVEDATA_SHADOW               ; 15
+	const SPRITEMOVEDATA_EMOTE                ; 16
+	const SPRITEMOVEDATA_SCREENSHAKE          ; 17
+	const SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE ; 18
+	const SPRITEMOVEDATA_SPINCLOCKWISE        ; 19
+	const SPRITEMOVEDATA_BIGDOLL              ; 1a
+	const SPRITEMOVEDATA_BOULDERDUST          ; 1b
+	const SPRITEMOVEDATA_GRASS                ; 1c
+	const SPRITEMOVEDATA_LAPRAS               ; 1d
+NUM_SPRITEMOVEDATA EQU const_value
 SPRITEMOVEDATA_FIELDS EQU 6
 
 ; sprite movement functions
 ; see engine/map_objects.asm:MapObjectMovementPattern.Pointers
 	const_def
-	const SPRITEMOVEFN_00
-	const SPRITEMOVEFN_RANDOM_WALK_Y
-	const SPRITEMOVEFN_RANDOM_WALK_X
-	const SPRITEMOVEFN_RANDOM_WALK_XY
-	const SPRITEMOVEFN_SLOW_RANDOM_SPIN
-	const SPRITEMOVEFN_FAST_RANDOM_SPIN
-	const SPRITEMOVEFN_STANDING
-	const SPRITEMOVEFN_OBEY_DPAD
-	const SPRITEMOVEFN_08
-	const SPRITEMOVEFN_09
-	const SPRITEMOVEFN_0A
-	const SPRITEMOVEFN_0B
-	const SPRITEMOVEFN_0C
-	const SPRITEMOVEFN_0D
-	const SPRITEMOVEFN_0E
-	const SPRITEMOVEFN_FOLLOW
-	const SPRITEMOVEFN_SCRIPTED
-	const SPRITEMOVEFN_STRENGTH
-	const SPRITEMOVEFN_FOLLOWNOTEXACT
-	const SPRITEMOVEFN_SHADOW
-	const SPRITEMOVEFN_EMOTE
-	const SPRITEMOVEFN_BIG_SNORLAX
-	const SPRITEMOVEFN_BOUNCE
-	const SPRITEMOVEFN_SCREENSHAKE
-	const SPRITEMOVEFN_SPIN_CLOCKWISE
-	const SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE
-	const SPRITEMOVEFN_BOULDERDUST
-	const SPRITEMOVEFN_GRASS
+	const SPRITEMOVEFN_00                    ; 00
+	const SPRITEMOVEFN_RANDOM_WALK_Y         ; 01
+	const SPRITEMOVEFN_RANDOM_WALK_X         ; 02
+	const SPRITEMOVEFN_RANDOM_WALK_XY        ; 03
+	const SPRITEMOVEFN_SLOW_RANDOM_SPIN      ; 04
+	const SPRITEMOVEFN_FAST_RANDOM_SPIN      ; 05
+	const SPRITEMOVEFN_STANDING              ; 06
+	const SPRITEMOVEFN_OBEY_DPAD             ; 07
+	const SPRITEMOVEFN_FOLLOW                ; 08
+	const SPRITEMOVEFN_SCRIPTED              ; 09
+	const SPRITEMOVEFN_STRENGTH              ; 0a
+	const SPRITEMOVEFN_FOLLOWNOTEXACT        ; 0b
+	const SPRITEMOVEFN_SHADOW                ; 0c
+	const SPRITEMOVEFN_EMOTE                 ; 0d
+	const SPRITEMOVEFN_BIG_SNORLAX           ; 0e
+	const SPRITEMOVEFN_BOUNCE                ; 0f
+	const SPRITEMOVEFN_SCREENSHAKE           ; 10
+	const SPRITEMOVEFN_SPIN_CLOCKWISE        ; 11
+	const SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE ; 12
+	const SPRITEMOVEFN_BOULDERDUST           ; 13
+	const SPRITEMOVEFN_GRASS                 ; 14
 
 ; sprite step types
 ; see engine/map_objects.asm:StepTypesJumptable
 	const_def
-	const STEP_TYPE_00
-	const STEP_TYPE_SLEEP
-	const STEP_TYPE_NPC_WALK
-	const STEP_TYPE_03
-	const STEP_TYPE_04
-	const STEP_TYPE_05
-	const STEP_TYPE_PLAYER_WALK
-	const STEP_TYPE_07
-	const STEP_TYPE_NPC_JUMP
-	const STEP_TYPE_PLAYER_JUMP
-	const STEP_TYPE_HALF_STEP
-	const STEP_TYPE_BUMP
-	const STEP_TYPE_TELEPORT_FROM
-	const STEP_TYPE_TELEPORT_TO
-	const STEP_TYPE_SKYFALL
-	const STEP_TYPE_0F
-	const STEP_TYPE_GOT_BITE
-	const STEP_TYPE_ROCK_SMASH
-	const STEP_TYPE_RETURN_DIG
-	const STEP_TYPE_TRACKING_OBJECT
-	const STEP_TYPE_14
-	const STEP_TYPE_15
-	const STEP_TYPE_16
-	const STEP_TYPE_17
-	const STEP_TYPE_18
-	const STEP_TYPE_SKYFALL_TOP
+	const STEP_TYPE_00              ; 00
+	const STEP_TYPE_SLEEP           ; 01
+	const STEP_TYPE_NPC_WALK        ; 02
+	const STEP_TYPE_03              ; 03
+	const STEP_TYPE_04              ; 04
+	const STEP_TYPE_05              ; 05
+	const STEP_TYPE_PLAYER_WALK     ; 06
+	const STEP_TYPE_07              ; 07
+	const STEP_TYPE_NPC_JUMP        ; 08
+	const STEP_TYPE_PLAYER_JUMP     ; 09
+	const STEP_TYPE_HALF_STEP       ; 0a
+	const STEP_TYPE_BUMP            ; 0b
+	const STEP_TYPE_TELEPORT_FROM   ; 0c
+	const STEP_TYPE_TELEPORT_TO     ; 0d
+	const STEP_TYPE_SKYFALL         ; 0e
+	const STEP_TYPE_0F              ; 0f
+	const STEP_TYPE_GOT_BITE        ; 10
+	const STEP_TYPE_ROCK_SMASH      ; 11
+	const STEP_TYPE_RETURN_DIG      ; 12
+	const STEP_TYPE_TRACKING_OBJECT ; 13
+	const STEP_TYPE_14              ; 14
+	const STEP_TYPE_15              ; 15
+	const STEP_TYPE_16              ; 16
+	const STEP_TYPE_17              ; 17
+	const STEP_TYPE_18              ; 18
+	const STEP_TYPE_SKYFALL_TOP     ; 19
 
-; see engine/map_objects.asm:Pointers445f
+; see engine/map_object_action.asm:Pointers445f
 	const_def
-	const PERSON_ACTION_00
-	const PERSON_ACTION_STAND
-	const PERSON_ACTION_STEP
-	const PERSON_ACTION_BUMP
-	const PERSON_ACTION_SPIN
-	const PERSON_ACTION_SPIN_FLICKER
-	const PERSON_ACTION_FISHING
-	const PERSON_ACTION_07
-	const PERSON_ACTION_EMOTE
-	const PERSON_ACTION_09
-	const PERSON_ACTION_0A
-	const PERSON_ACTION_0B
-	const PERSON_ACTION_0C
-	const PERSON_ACTION_0D
-	const PERSON_ACTION_0E
-	const PERSON_ACTION_0F
-	const PERSON_ACTION_10
+	const PERSON_ACTION_00           ; 00
+	const PERSON_ACTION_STAND        ; 01
+	const PERSON_ACTION_STEP         ; 02
+	const PERSON_ACTION_BUMP         ; 03
+	const PERSON_ACTION_SPIN         ; 04
+	const PERSON_ACTION_SPIN_FLICKER ; 05
+	const PERSON_ACTION_FISHING      ; 06
+	const PERSON_ACTION_SHADOW       ; 07
+	const PERSON_ACTION_EMOTE        ; 08
+	const PERSON_ACTION_BIG_SNORLAX  ; 09
+	const PERSON_ACTION_BOUNCE       ; 0a
+	const PERSON_ACTION_WEIRD_TREE   ; 0b
+	const PERSON_ACTION_BIG_DOLL     ; 0c
+	const PERSON_ACTION_BOULDER_DUST ; 0d
+	const PERSON_ACTION_GRASS_SHAKE  ; 0e
+	const PERSON_ACTION_SKYFALL      ; 0f
 
 	const_def
 	const FACING_00

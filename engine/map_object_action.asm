@@ -14,23 +14,22 @@
 ; 445f
 
 Pointers445f: ; 445f
-	dw SetFacingStanding, SetFacingStanding ; 00
-	dw Function44b5,      SetFacingCurrent ; 01 standing?
-	dw Function44c1,      SetFacingCurrent ; 02 walking?
-	dw Function4508,      SetFacingCurrent ; 03 bumping?
-	dw Function4529,      SetFacingCurrent ; 04
-	dw Function4539,      SetFacingStanding ; 05
-	dw Function456e,      Function456e ; 06
-	dw Function457b,      SetFacingStanding ; 07
-	dw Function4582,      Function4582 ; 08
-	dw Function4589,      Function4589 ; 09
-	dw Function4590,      Function45a4 ; 0a
-	dw Function45ab,      SetFacingCurrent ; 0c
-	dw Function45be,      Function45be ; 0b
-	dw Function45c5,      Function45c5 ; 0d
-	dw Function45da,      SetFacingStanding ; 0e
-	dw Function45ed,      SetFacingStanding ; 0f
-	dw Function44e4,      SetFacingCurrent ; 10
+	dw SetFacingStanding, SetFacingStanding ; PERSON_ACTION_00
+	dw Function44b5,      SetFacingCurrent  ; PERSON_ACTION_STAND
+	dw Function44c1,      SetFacingCurrent  ; PERSON_ACTION_STEP
+	dw Function4508,      SetFacingCurrent  ; PERSON_ACTION_BUMP
+	dw Function4529,      SetFacingCurrent  ; PERSON_ACTION_SPIN
+	dw Function4539,      SetFacingStanding ; PERSON_ACTION_SPIN_FLICKER
+	dw Function456e,      Function456e      ; PERSON_ACTION_FISHING
+	dw Function457b,      SetFacingStanding ; PERSON_ACTION_SHADOW
+	dw Function4582,      Function4582      ; PERSON_ACTION_EMOTE
+	dw Function4589,      Function4589      ; PERSON_ACTION_BIG_SNORLAX
+	dw Function4590,      Function45a4      ; PERSON_ACTION_BOUNCE
+	dw Function45ab,      SetFacingCurrent  ; PERSON_ACTION_WEIRD_TREE
+	dw Function45c5,      Function45c5      ; PERSON_ACTION_BIG_DOLL
+	dw Function45da,      SetFacingStanding ; PERSON_ACTION_BOULDER_DUST
+	dw Function45ed,      SetFacingStanding ; PERSON_ACTION_GRASS_SHAKE
+	dw Function44e4,      SetFacingCurrent  ; PERSON_ACTION_SKYFALL
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -259,13 +258,6 @@ Function45ab: ; 45ab
 	ld [hl], a
 	ret
 ; 45be
-
-Function45be: ; 45be
-	ld hl, OBJECT_FACING_STEP
-	add hl, bc
-	ld [hl], FACING_16
-	ret
-; 45c5
 
 Function45c5: ; 45c5
 	ld a, [VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]

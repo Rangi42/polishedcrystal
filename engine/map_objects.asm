@@ -487,34 +487,27 @@ MapObjectMovementPattern: ; 47dd
 	ret
 
 .Pointers: ; 47e9
-	dw .Null_00 ; 00
-	dw .RandomWalkY ; 01
-	dw .RandomWalkX ; 02
-	dw .RandomWalkXY ; 03
-	dw .RandomSpin1 ; 04
-	dw .RandomSpin2 ; 05
-	dw .Standing ; 06
-	dw .ObeyDPad ; 07
-	dw .Movement08 ; 08
-	dw .Movement09 ; 09
-	dw .Movement0a ; 0a
-	dw .Movement0b ; 0b
-	dw .Movement0c ; 0c
-	dw .Movement0d ; 0d
-	dw .Movement0e ; 0e
-	dw .Follow ; 0f
-	dw .Script ; 10
-	dw .Strength ; 11
-	dw .FollowNotExact ; 12
-	dw .MovementShadow ; 13
-	dw .MovementEmote ; 14
-	dw .MovementBigStanding ; 15
-	dw .MovementBouncing ; 16
-	dw .MovementScreenShake ; 17
-	dw .MovementSpinClockwise ; 18
-	dw .MovementSpinCounterclockwise ; 19
-	dw .MovementBoulderDust ; 1a
-	dw .MovementShakingGrass ; 1b
+	dw .Null_00                      ; SPRITEMOVEFN_00
+	dw .RandomWalkY                  ; SPRITEMOVEFN_RANDOM_WALK_Y
+	dw .RandomWalkX                  ; SPRITEMOVEFN_RANDOM_WALK_X
+	dw .RandomWalkXY                 ; SPRITEMOVEFN_RANDOM_WALK_XY
+	dw .RandomSpin1                  ; SPRITEMOVEFN_SLOW_RANDOM_SPIN
+	dw .RandomSpin2                  ; SPRITEMOVEFN_FAST_RANDOM_SPIN
+	dw .Standing                     ; SPRITEMOVEFN_STANDING
+	dw .ObeyDPad                     ; SPRITEMOVEFN_OBEY_DPAD
+	dw .Follow                       ; SPRITEMOVEFN_FOLLOW
+	dw .Script                       ; SPRITEMOVEFN_SCRIPTED
+	dw .Strength                     ; SPRITEMOVEFN_STRENGTH
+	dw .FollowNotExact               ; SPRITEMOVEFN_FOLLOWNOTEXACT
+	dw .MovementShadow               ; SPRITEMOVEFN_SHADOW
+	dw .MovementEmote                ; SPRITEMOVEFN_EMOTE
+	dw .MovementBigStanding          ; SPRITEMOVEFN_BIG_SNORLAX
+	dw .MovementBouncing             ; SPRITEMOVEFN_BOUNCE
+	dw .MovementScreenShake          ; SPRITEMOVEFN_SCREENSHAKE
+	dw .MovementSpinClockwise        ; SPRITEMOVEFN_SPIN_CLOCKWISE
+	dw .MovementSpinCounterclockwise ; SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE
+	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
+	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 
 .Null_00:
 	ret
@@ -577,30 +570,6 @@ MapObjectMovementPattern: ; 47dd
 .ObeyDPad:
 	ld hl, Function5000
 	jp HandleMovementData
-
-.Movement08:
-	ld hl, Function5015
-	jp HandleMovementData
-
-.Movement09:
-	ld hl, Function5026
-	jp HandleMovementData
-
-.Movement0a:
-	jp _GetMovementPerson
-
-.Movement0b:
-	jp _GetMovementPerson
-
-.Movement0c:
-	jp _GetMovementPerson
-
-.Movement0d:
-	ld hl, Function5000
-	jp HandleMovementData
-
-.Movement0e:
-	jp _GetMovementPerson
 
 .Follow:
 	ld hl, GetFollowerNextMovementByte
@@ -727,7 +696,7 @@ MapObjectMovementPattern: ; 47dd
 	ld [hl], STANDING
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_09
+	ld [hl], PERSON_ACTION_BIG_SNORLAX
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_04
@@ -740,7 +709,7 @@ MapObjectMovementPattern: ; 47dd
 	ld [hl], STANDING
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_0A
+	ld [hl], PERSON_ACTION_BOUNCE
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_04
@@ -815,7 +784,7 @@ MapObjectMovementPattern: ; 47dd
 	call ._MovementShadow_Grass_Emote_BoulderDust
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_07
+	ld [hl], PERSON_ACTION_SHADOW
 	ld hl, OBJECT_STEP_DURATION
 	add hl, de
 	ld a, [hl]
@@ -872,7 +841,7 @@ MapObjectMovementPattern: ; 47dd
 	call ._MovementShadow_Grass_Emote_BoulderDust
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_0E
+	ld [hl], PERSON_ACTION_BOULDER_DUST
 	ld hl, OBJECT_STEP_DURATION
 	add hl, de
 	ld a, [hl]
@@ -916,7 +885,7 @@ MapObjectMovementPattern: ; 47dd
 	call ._MovementShadow_Grass_Emote_BoulderDust
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_0F
+	ld [hl], PERSON_ACTION_GRASS_SHAKE
 	ld hl, OBJECT_STEP_DURATION
 	add hl, de
 	ld a, [hl]
@@ -1036,33 +1005,33 @@ SetRandomStepDuration: ; 4b2d
 ; 4b45
 
 StepTypesJumptable: ; 4b45
-; These pointers use OBJECT_STEP_TYPE.  See constants/sprite_constants.asm
-	dw ObjectMovementReset ; 00
-	dw MapObjectMovementPattern ; unused
-	dw NPCStep ; 02 npc walk
-	dw StepType03 ; 03
-	dw StepType04 ; 04
-	dw StepType05 ; 05
-	dw PlayerStep ; 06 player walk
-	dw StepType07 ; 07
-	dw NPCJump ; 08 npc jump step
-	dw PlayerJump ; 09 player jump step
-	dw PlayerOrNPCTurnStep ; 0a half step
-	dw StepTypeBump ; 0b
-	dw TeleportFrom ; 0c teleport from
-	dw TeleportTo ; 0d teleport to
-	dw Skyfall ; 0e skyfall
-	dw StepType0f ; 0f
-	dw GotBiteStep ; 10
-	dw RockSmashStep ; 11
-	dw ReturnDigStep ; 12
-	dw StepTypeTrackingObject ; 13
-	dw StepType14 ; 14
-	dw StepType15 ; 15
-	dw StepType16 ; 16
-	dw StepType17 ; 17
-	dw StepType18 ; 18
-	dw SkyfallTop ; 19
+; These pointers use OBJECT_STEP_TYPE. See constants/sprite_constants.asm
+	dw ObjectMovementReset      ; STEP_TYPE_00
+	dw MapObjectMovementPattern ; STEP_TYPE_SLEEP
+	dw NPCStep                  ; STEP_TYPE_NPC_WALK
+	dw StepType03               ; STEP_TYPE_03
+	dw StepType04               ; STEP_TYPE_04
+	dw StepType05               ; STEP_TYPE_05
+	dw PlayerStep               ; STEP_TYPE_PLAYER_WALK
+	dw StepType07               ; STEP_TYPE_07
+	dw NPCJump                  ; STEP_TYPE_NPC_JUMP
+	dw PlayerJump               ; STEP_TYPE_PLAYER_JUMP
+	dw PlayerOrNPCTurnStep      ; STEP_TYPE_HALF_STEP
+	dw StepTypeBump             ; STEP_TYPE_BUMP
+	dw TeleportFrom             ; STEP_TYPE_TELEPORT_FROM
+	dw TeleportTo               ; STEP_TYPE_TELEPORT_TO
+	dw Skyfall                  ; STEP_TYPE_SKYFALL
+	dw StepType0f               ; STEP_TYPE_0F
+	dw GotBiteStep              ; STEP_TYPE_GOT_BITE
+	dw RockSmashStep            ; STEP_TYPE_ROCK_SMASH
+	dw ReturnDigStep            ; STEP_TYPE_RETURN_DIG
+	dw StepTypeTrackingObject   ; STEP_TYPE_TRACKING_OBJECT
+	dw StepType14               ; STEP_TYPE_14
+	dw StepType15               ; STEP_TYPE_15
+	dw StepType16               ; STEP_TYPE_16
+	dw StepType17               ; STEP_TYPE_17
+	dw StepType18               ; STEP_TYPE_18
+	dw SkyfallTop               ; STEP_TYPE_SKYFALL_TOP
 ; 4b79
 
 WaitStep_InPlace: ; 4b79
@@ -1753,7 +1722,7 @@ SkyfallTop: ; 4f83
 .Init:
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_10
+	ld [hl], PERSON_ACTION_SKYFALL
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
@@ -1817,36 +1786,6 @@ GetMovementByte:
 	call _GetMovementByte
 	ret
 ; 5015
-
-Function5015: ; 5015
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld e, [hl]
-	inc [hl]
-	ld d, 0
-	ld hl, wc2e2
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, de
-	ld a, [hl]
-	ret
-; 5026
-
-Function5026: ; 5026
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld e, [hl]
-	inc [hl]
-	ld d, 0
-	ld hl, wc2e6
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	add hl, de
-	ld a, [hl]
-	ret
-; 5037
 
 _GetMovementPerson: ; 5037
 	ld hl, GetMovementPerson
