@@ -2119,7 +2119,7 @@ DisplayDexEntry: ; 4424d
 .imperial_height
 	push hl
 	push de
-	ld hl, [sp+$0]
+	ld hl, sp+$0
 	ld d, h
 	ld e, l
 	hlcoord 12, 7
@@ -2158,7 +2158,7 @@ DisplayDexEntry: ; 4424d
 
 .imperial_weight
 	push de
-	ld hl, [sp+$0]
+	ld hl, sp+$0
 	ld d, h
 	ld e, l
 	hlcoord 11, 9
@@ -6142,7 +6142,7 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 .h24:
 ; Crazy stuff happening with the stack
 	push bc
-	ld hl, [sp+$1]
+	ld hl, sp+$1
 	push de
 	push hl
 	pop de
@@ -6154,7 +6154,7 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	inc hl
 	ld d, h
 	ld e, l
-	ld hl, [sp+$0]
+	ld hl, sp+$0
 	push de
 	push hl
 	pop de
