@@ -7169,7 +7169,7 @@ PokemaniacGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 12, SLOWPOKE
+	db 12, FLAAFFY
 
 	db $ff ; end
 
@@ -7323,7 +7323,7 @@ SuperNerdGroup:
 
 	; party
 	db 11, GRIMER
-	db 11, GRIMER
+	db 12, PORYGON
 
 	db $ff ; end
 
