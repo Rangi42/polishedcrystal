@@ -931,7 +931,7 @@ MapObjectMovementPattern: ; 47dd
 	ld [hl], a
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
-	ld [hl], STEP_TYPE_15
+	ld [hl], STEP_TYPE_14
 	ret
 
 ._MovementScreenShake:
@@ -1027,10 +1027,6 @@ StepTypesJumptable: ; 4b45
 	dw ReturnDigStep            ; STEP_TYPE_RETURN_DIG
 	dw StepTypeTrackingObject   ; STEP_TYPE_TRACKING_OBJECT
 	dw StepType14               ; STEP_TYPE_14
-	dw StepType15               ; STEP_TYPE_15
-	dw StepType16               ; STEP_TYPE_16
-	dw StepType17               ; STEP_TYPE_17
-	dw StepType18               ; STEP_TYPE_18
 	dw SkyfallTop               ; STEP_TYPE_SKYFALL_TOP
 ; 4b79
 
@@ -1440,17 +1436,6 @@ StepType03: ; 4ddd
 	ret
 ; 4df0
 
-StepType18: ; 4df0
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	dec [hl]
-	ret nz
-	jp DeleteMapObject
-; 4dff
-
 StepTypeBump: ; 4dff
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -1652,7 +1637,6 @@ StepTypeTrackingObject: ; 4f04
 ; 4f33
 
 StepType14: ; 4f33
-StepType15: ; 4f33
 	call Object28AnonymousJumptable
 ; anonymous dw
 	dw .Init
@@ -1700,18 +1684,6 @@ StepType15: ; 4f33
 	inc a
 	ret
 ; 4f77
-
-StepType16: ; 4f77
-	call Object28AnonymousJumptable ; ????
-; 4f7a
-StepType17: ; 4f7a
-	call Object28AnonymousJumptable
-; anonymous dw
-	dw .null
-	dw .null
-	dw .null
-.null
-; 4f83
 
 SkyfallTop: ; 4f83
 	call Object28AnonymousJumptable

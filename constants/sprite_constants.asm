@@ -375,12 +375,8 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const STEP_TYPE_ROCK_SMASH      ; 11
 	const STEP_TYPE_RETURN_DIG      ; 12
 	const STEP_TYPE_TRACKING_OBJECT ; 13
-	const STEP_TYPE_14              ; 14 unused?
-	const STEP_TYPE_15              ; 15
-	const STEP_TYPE_16              ; 16 unused?
-	const STEP_TYPE_17              ; 17 unused?
-	const STEP_TYPE_18              ; 18 unused?
-	const STEP_TYPE_SKYFALL_TOP     ; 19
+	const STEP_TYPE_14              ; 14
+	const STEP_TYPE_SKYFALL_TOP     ; 15
 
 ; see engine/map_object_action.asm:Pointers445f
 	const_def
