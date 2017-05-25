@@ -112,7 +112,7 @@ def main():
 	blockfile = sys.argv[1]
 	height = int(sys.argv[2])
 	tileset = sys.argv[3]
-	os.system('python utils/metatiles.py %s' % tileset)
+	os.system('python utils/metatiles.py %s %s' % (tileset, blockfile))
 	metatiles = 'tilesets/%s_metatiles_colored.png' % tileset
 
 	process(blockfile, height, metatiles)

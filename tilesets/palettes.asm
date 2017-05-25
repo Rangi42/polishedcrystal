@@ -322,7 +322,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [MapNumber]
 	cp MAP_EMBEDDED_TOWER
 	jp nz, .maybe_tin_tower_roof
-	ld hl, MystriStagePalette
+	ld hl, EmbeddedTowerPalette
 	jp .load_eight_bg_palettes
 
 .maybe_tin_tower_roof
