@@ -142,7 +142,7 @@ class PaletteMap(object):
 		'maps/EcruteakCity.blk': lambda: load_palette('tilesets/VioletEcruteakPalette.pal')[8:16],
 		'maps/EmbeddedTower.blk': lambda: load_palette('tilesets/embedded_tower.pal'),
 		'maps/FuchsiaGym.blk': lambda: load_palette('tilesets/fuchsia_gym.pal'),
-		'maps/GoldenrodDeptStoreRoof.blk': lambda: load_palette('tilesets/goldenrod_dept_store_roof.pal'),
+		'maps/GoldenrodDeptStoreRoof.blk': lambda: load_palette('tilesets/goldenrod_dept_store_roof.pal')[8:16],
 		'maps/HallOfFame.blk': lambda: load_palette('tilesets/lances_room.pal'),
 		'maps/HauntedRadioTower2F.blk': lambda: load_palette('tilesets/haunted_radio_tower.pal'),
 		'maps/HauntedRadioTower3F.blk': lambda: load_palette('tilesets/haunted_radio_tower.pal'),
@@ -161,8 +161,9 @@ class PaletteMap(object):
 		'maps/MystriStage.blk': lambda: load_palette('tilesets/mystri_stage.pal'),
 		'maps/NavelRockInside.blk': lambda: load_palette('tilesets/navel_rock.pal')[8:16],
 		'maps/NavelRockRoof.blk': lambda: load_palette('tilesets/navel_rock.pal')[8:16],
+		'maps/NoisyForest.blk': lambda: load_palette('tilesets/shamouti_island.pal')[16:24],
 		'maps/OaksLab.blk': lambda: load_palette('tilesets/oaks_lab.pal'),
-		'maps/OlivineLighthouseRoof.blk': lambda: load_palette('tilesets/goldenrod_dept_store_roof.pal'),
+		'maps/OlivineLighthouseRoof.blk': lambda: load_palette('tilesets/goldenrod_dept_store_roof.pal')[8:16],
 		'maps/SaffronGym.blk': lambda: load_palette('tilesets/saffron_gym.pal'),
 		'maps/ScaryCave1F.blk': lambda: load_palette('tilesets/scary_cave.pal'),
 		'maps/ScaryCaveB1F.blk': lambda: load_palette('tilesets/scary_cave.pal'),
@@ -181,7 +182,7 @@ class PaletteMap(object):
 		'maps/WhirlIslandSE.blk': lambda: load_palette('tilesets/dark_cave.pal'),
 		'maps/WhirlIslandSW.blk': lambda: load_palette('tilesets/dark_cave.pal'),
 		'maps/WillsRoom.blk': lambda: load_palette('tilesets/wills_room.pal'),
-		'maps/YellowForest.blk': lambda: load_palette('tilesets/yellow_forest.pal'),
+		'maps/YellowForest.blk': lambda: load_palette('tilesets/yellow_forest.pal')[8:16],
 	}
 
 	tileset_palettes = {
