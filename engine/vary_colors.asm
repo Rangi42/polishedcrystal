@@ -219,6 +219,7 @@ VaryColorsByDVs::
 	inc hl
 	inc hl
 
+.Finish:
 ;;; DarkRed ~ SpdDV, aka, RRRRR ~ ssss
 ; store SpdDV in e
 	ld a, [bc]
@@ -246,81 +247,95 @@ VaryColorsByDVs::
 	ld e, a
 ; vary DarkBlu by e
 	call VaryBlueByDV
-	jr .Done
 
-; TODO:
-; * vary skin color with Spd, SAt, SDf, like normal
-; * pick base paint color like Hidden Power type, with (Atk&%11<<2)|(Def&%11)
-; * vary paint color with 8 unused bits from HP, Atk&%1100, and Def&%1100, somehow
+	pop af
+	ld [rSVBK], a
+	ret
+
+; TODO: vary paint color with unused DV bits
+; * DarkRed' = DarkRed + (HPDV & %0100 >> 2) - (HPDV & %1000 >> 3)
+; * DarkGrn' = DarkGrn + (AtkDV & %0100 >> 2) - (AtkDV & %1000 >> 3)
+; * DarkBlu' = DarkBlu + (DefDV & %0100 >> 2) - (DefDV & %1000 >> 3)
 .Smeargle:
-; pick variation by SAt DV
+; a = (AtkDV & %11) << 2 | (DefDV & %11)
+	ld a, [bc]
+	and %11
+	add a
+	add a
+	ld d, a
 	inc bc
-	inc bc
-	inc hl
-	inc hl
-	push hl
 	ld a, [bc]
 	swap a
-	and %1111
+	and %11
+	or d
+; d, e = base paint color
 	ld e, a
+	ld d, 0
+	push hl
 	ld hl, .SmearglePals
 	ld a, [ColorVaryShiny]
 	and SHINY_MASK
 	jr z, .not_shiny
 	ld hl, .SmeargleShinyPals
 .not_shiny
-	sla e
-	ld d, 0
+	add hl, de
 	add hl, de
 	ld a, [hli]
+	ld d, a
+	ld a, [hl]
 	ld e, a
-	ld d, [hl]
 	pop hl
+;;; DarkRGB = base paint color
+rept 3
+	inc hl
+endr
 	ld a, e
-	ld [hli], a
+	ld [hld], a
 	ld a, d
-	ld [hl], a
+	ld [hld], a
+	dec hl
+;;; LiteRGB ~ Spd,SAt,SDfDVs
+	jr .Finish
 
-.Done:
-	pop af
-	ld [rSVBK], a
-	ret
+; red and blue channels: no 0 or 31
+; green channel: no 0, 7, 8, 15, 16, 23, 24, or 31
+; need to be able to add or subtract 1 without overflow/underflow
 
 .SmearglePals:
-	RGB 02, 02, 02 ; black
-	RGB 16, 16, 16 ; grey
-	RGB 29, 29, 29 ; white
-	RGB 31, 05, 06 ; red
-	RGB 13, 27, 08 ; green
-	RGB 00, 10, 27 ; blue
-	RGB 29, 31, 02 ; yellow
-	RGB 30, 16, 00 ; orange
-	RGB 15, 09, 00 ; brown
-	RGB 23, 22, 13 ; khaki
-	RGB 21, 02, 09 ; amaranth
-	RGB 31, 19, 24 ; pink
-	RGB 18, 01, 24 ; violet
-	RGB 31, 26, 00 ; gold
-	RGB 24, 24, 24 ; silver
-	RGB 08, 28, 26 ; crystal
+	RGB 14, 05, 06 ; maroon (fighting)
+	RGB 27, 09, 26 ; lavender (flying)
+	RGB 29, 05, 06 ; red (poison)
+	RGB 26, 26, 26 ; white (ground)
+	RGB 18, 11, 05 ; brown (rock)
+	RGB 16, 28, 01 ; lime (bug)
+	RGB 14, 06, 27 ; purple (ghost)
+	RGB 14, 14, 18 ; gray (steel)
+	RGB 29, 13, 02 ; orange (fire)
+	RGB 01, 09, 28 ; blue (water)
+	RGB 04, 19, 01 ; green (grass)
+	RGB 30, 25, 01 ; yellow (electric)
+	RGB 30, 10, 13 ; pink (psychic)
+	RGB 02, 22, 26 ; teal (ice)
+	RGB 07, 11, 30 ; indigo (dragon)
+	RGB 08, 06, 06 ; black (dark)
 
-.SmeargleShinyPals: ;TODO
-	RGB 02, 02, 02
-	RGB 16, 16, 16
-	RGB 29, 29, 29
-	RGB 31, 05, 06
-	RGB 13, 27, 08
-	RGB 00, 10, 27
-	RGB 29, 31, 02
-	RGB 30, 16, 00
-	RGB 15, 09, 00
-	RGB 23, 22, 13
-	RGB 21, 02, 09
-	RGB 31, 19, 24
-	RGB 18, 01, 24
-	RGB 31, 26, 00
-	RGB 24, 24, 24
-	RGB 08, 28, 26
+.SmeargleShinyPals: ; TODO
+	RGB 14, 05, 06 ; maroon (fighting)
+	RGB 27, 09, 26 ; lavender (flying)
+	RGB 29, 05, 06 ; red (poison)
+	RGB 26, 26, 26 ; white (ground)
+	RGB 18, 11, 05 ; brown (rock)
+	RGB 16, 28, 01 ; lime (bug)
+	RGB 14, 06, 27 ; purple (ghost)
+	RGB 14, 14, 18 ; gray (steel)
+	RGB 29, 13, 02 ; orange (fire)
+	RGB 01, 09, 28 ; blue (water)
+	RGB 04, 19, 01 ; green (grass)
+	RGB 30, 25, 01 ; yellow (electric)
+	RGB 30, 10, 13 ; pink (psychic)
+	RGB 02, 22, 26 ; teal (ice)
+	RGB 07, 11, 30 ; indigo (dragon)
+	RGB 08, 06, 06 ; black (dark)
 
 
 VaryBGPal0ByTempMonDVs:
