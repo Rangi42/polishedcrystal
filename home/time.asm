@@ -231,10 +231,10 @@ SetClock:: ; 691
 if DEF(NO_RTC)
 ;; take the data from the copy in RAM that gets saved/loaded in SRAM,
 ;; this gets incremented along with the game timer
-	ld hl, hRTCDayHi
-	ld de, wNoRTC
-	ld bc, 5
-	jp CopyBytes
+	;;ld hl, hRTCDayHi
+	;;ld de, wNoRTC
+	;;ld bc, 5
+	;;jp CopyBytes
 else
 
 ; enable clock r/w
