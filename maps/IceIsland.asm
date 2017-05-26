@@ -16,11 +16,13 @@ IceIsland_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 6
 	warp_def $1d, $6, 2, SHAMOUTI_COAST
 	warp_def $1d, $14, 1, ICE_ISLAND_ROOF
 	warp_def $5, $7, 4, ICE_ISLAND
 	warp_def $5, $15, 3, ICE_ISLAND
+	warp_def $1a, $15, 6, ICE_ISLAND
+	warp_def $1a, $7, 5, ICE_ISLAND ; hole
 
 .XYTriggers:
 	db 0

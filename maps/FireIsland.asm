@@ -16,7 +16,7 @@ FireIsland_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 12
+	db 14
 	warp_def $1d, $5, 1, SHAMOUTI_COAST
 	warp_def $1d, $13, 1, FIRE_ISLAND_ROOF
 	warp_def $5, $7, 4, FIRE_ISLAND
@@ -29,6 +29,8 @@ FireIsland_MapEventHeader:
 	warp_def $13, $17, 9, FIRE_ISLAND
 	warp_def $17, $3, 12, FIRE_ISLAND
 	warp_def $17, $11, 11, FIRE_ISLAND
+	warp_def $1b, $14, 14, FIRE_ISLAND
+	warp_def $1b, $6, 13, FIRE_ISLAND ; hole
 
 .XYTriggers:
 	db 0

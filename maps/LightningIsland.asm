@@ -32,11 +32,13 @@ LightningIsland_MapEventHeader:
 	db 0, 0
 
 .Warps:
-	db 4
+	db 6
 	warp_def $1d, $5, 3, SHAMOUTI_COAST
 	warp_def $1d, $13, 1, LIGHTNING_ISLAND_ROOF
 	warp_def $3, $6, 4, LIGHTNING_ISLAND
 	warp_def $3, $13, 3, LIGHTNING_ISLAND
+	warp_def $1a, $13, 6, LIGHTNING_ISLAND
+	warp_def $1b, $5, 5, LIGHTNING_ISLAND ; hole
 
 .XYTriggers:
 	db 0
