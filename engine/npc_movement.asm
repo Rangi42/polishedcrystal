@@ -5,9 +5,10 @@ Function6ec1: ; 6ec1
 	bit 5, [hl]
 	jr z, .not_bit_5
 
-;	ld hl, OBJECT_FLAGS1
-;	add hl, bc
-;	bit 4, [hl] ; lost
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	bit 4, [hl] ; lost
+	jr nz, .resume
 	push hl
 	push bc
 	call Function6f2c

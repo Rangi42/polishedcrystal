@@ -57,15 +57,20 @@ TrainerAromaLadyHolly:
 	end
 
 .SeenText:
-	text "TODO"
+	text "I am at one with"
+	line "the aromas of"
+	cont "nature."
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Defeat has its"
+	line "own scent…"
 	done
 
 .AfterText:
-	text "TODO"
+	text "The sense of smell"
+	line "is vital to living"
+	cont "in nature."
 	done
 
 WarmBeachCooltrainermScript:

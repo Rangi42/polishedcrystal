@@ -125,15 +125,29 @@ TrainerAromaLadyHeather:
 	end
 
 .SeenText:
-	text "TODO"
+	text "A deep red flower"
+	line "grows all over"
+	cont "this island."
+
+	para "Have you noticed?"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "A lovely battle,"
+	line "but what about"
+	cont "the flowers?"
 	done
 
 .AfterText:
-	text "TODO"
+	text "I studied flower"
+	line "arranging with"
+
+	para "Erika at Celadon"
+	line "University."
+
+	para "She praised this"
+	line "island for its"
+	cont "local fauna."
 	done
 
 TrainerBreederBrenda: ; Clefable, Wigglytuff, Snorlax
@@ -184,15 +198,24 @@ TrainerSwimmermEzra:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Have you ever won-"
+	line "dered what it's"
+
+	para "like to breathe"
+	line "underwater?"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Ran out of air!"
 	done
 
 .AfterText:
-	text "TODO"
+	text "I like to go scuba"
+	line "diving here."
+
+	para "It's so amazing to"
+	line "breathe while"
+	cont "underwater!"
 	done
 
 RockyBeachYoungsterScript:

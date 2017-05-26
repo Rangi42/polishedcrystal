@@ -193,15 +193,24 @@ TrainerSwimmermAshe:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Swimming? Me?"
+	line "Yeah, I dig it."
 	done
 
 .BeatenText:
-	text "TODO"
+	text "I have that sink-"
+	line "ing feeling…"
 	done
 
 .AfterText:
-	text "TODO"
+	text "I couldn't swim at"
+	line "all a while ago."
+
+	para "Now I do it so"
+	line "much it's hard to"
+
+	para "remember what I"
+	line "did before. Haha!"
 	done
 
 ShamoutiCoastStarPiece:
