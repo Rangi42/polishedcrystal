@@ -1,35 +1,27 @@
 Function6ec1: ; 6ec1
 
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	bit 4, [hl]
+	jr nz, .continue
+
+	push hl
+	push bc
+
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	bit 5, [hl]
 	jr z, .not_bit_5
-
-	ld hl, OBJECT_FLAGS1
-	add hl, bc
-	bit 4, [hl] ; lost
-	jr nz, .resume
-	push hl
-	push bc
 	call Function6f2c
-	pop bc
-	pop hl
-	ret c
 	jr .resume
-
 .not_bit_5
-	ld hl, OBJECT_FLAGS1
-	add hl, bc
-	bit 4, [hl]
-	jr nz, .resume
-	push hl
-	push bc
 	call Function6f07
+.resume
 	pop bc
 	pop hl
 	ret c
 
-.resume
+.continue
 	bit 6, [hl]
 	jr nz, .bit_6
 
