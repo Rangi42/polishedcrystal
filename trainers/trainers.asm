@@ -5290,6 +5290,19 @@ FisherGroup:
 	db $ff ; end
 
 ; ================
+
+	; FISHER
+	db "Dallas@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 61, QWILFISH
+	db 63, LANTURN
+	db 65, GYARADOS
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -5410,9 +5423,9 @@ BirdKeeperGroup:
 
 	; party
 	db 17, PIDGEY
-	db 16, PIDGEY
-	db 19, PIDGEY
-	db 16, PIDGEY
+	db 16, HOOTHOOT
+	db 19, PIDGEOTTO
+	db 17, HOOTHOOT
 	db 16, PIDGEY
 
 	db $ff ; end
@@ -7718,7 +7731,7 @@ LassGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 21, MARILL
+	db 20, AZUMARILL
 	db 21, MAGNETON
 
 	db $ff ; end
@@ -8099,6 +8112,20 @@ BeautyGroup:
 	db $ff ; end
 
 ; ================
+
+	; BEAUTY
+	db "Ioana@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, SNUBBULL
+	db 55, GRANBULL
+	db 52, JIGGLYPUFF
+	db 54, SUNFLORA
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -8469,6 +8496,18 @@ FirebreatherGroup:
 
 	; party
 	db 26, WEEZING
+
+	db $ff ; end
+
+; ================
+
+	; FIREBREATHER
+	db "Tala@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 61, WEEZING
+	db 62, MAGMORTAR
 
 	db $ff ; end
 
@@ -10069,7 +10108,7 @@ LadyGroup:
 ; ================
 
 	; LADY
-	db "Amanda@"
+	db "Jessica@"
 	db TRAINERTYPE_ITEM
 
 	; party
@@ -10175,6 +10214,19 @@ BreederGroup:
 	db 25, PICHU, EVIOLITE
 	db 26, PIKACHU, LIGHT_BALL
 	db 27, RAICHU, DESTINY_KNOT
+
+	db $ff ; end
+
+; ================
+
+	; BREEDER
+	db "Brenda@"
+	db TRAINERTYPE_ITEM
+
+	; party
+	db 55, CLEFABLE
+	db 54, WIGGLYTUFF
+	db 56, SNORLAX
 
 	db $ff ; end
 
@@ -10882,6 +10934,30 @@ SwimmerMGroup:
 	db $ff ; end
 
 ; ================
+
+	; SWIMMERM
+	db "Ezra@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 52, SEADRA
+	db 56, KINGDRA
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERM
+	db "Ashe@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 63, POLITOED
+	db 63, POLIWRATH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -11249,6 +11325,33 @@ SwimmerFGroup:
 	; party
 	db 57, MANTINE
 	db 57, OCTILLERY
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Rachel@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 53, REMORAID
+	db 53, REMORAID
+	db 53, REMORAID
+	db 55, MANTINE
+
+	db $ff ; end
+
+; ================
+
+	; SWIMMERF 
+	db "Marina@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 63, GOLDUCK
+	db 63, LANTURN
+	db 63, GYARADOS
 
 	db $ff ; end
 
@@ -12615,6 +12718,31 @@ TamerGroup:
 	db $ff ; end
 
 ; ================
+
+	; TAMER
+	db "Vince@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 54, KANGASKHAN
+	db 56, DONPHAN
+
+	db $ff ; end
+
+; ================
+
+	; TAMER
+	db "Oswald@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, DONPHAN
+	db 62, URSARING
+	db 61, KANGASKHAN
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12640,23 +12768,55 @@ ArtistGroup:
 
 	; party
 
-	db 54, SMEARGLE, CHARCOAL, DVS_HP_FIRE ; red
+	db 57, SMEARGLE, MIRACLE_SEED, DVS_HP_GRASS ; green
+		db SPORE
+		db FLAMETHROWER
+		db SOLAR_BEAM
+		db GIGA_DRAIN
+
+	db $ff ; end
+
+; ================
+
+	; ARTIST
+	db "Marlene@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
+
+	; party
+
+	db 55, SMEARGLE, CHARCOAL, DVS_HP_FIRE ; red
 		db FIRE_BLAST
 		db FLAMETHROWER
 		db EARTH_POWER
 		db WILL_O_WISP
 
-	db 54, SMEARGLE, MAGNET, DVS_HP_ELECTRIC ; yellow
+	db 55, SMEARGLE, MAGNET, DVS_HP_ELECTRIC ; yellow
 		db THUNDER
 		db THUNDERBOLT
 		db THUNDER_WAVE
 		db RAIN_DANCE
 
-	db 54, SMEARGLE, MYSTIC_WATER, DVS_HP_WATER ; blue
+	db 55, SMEARGLE, MYSTIC_WATER, DVS_HP_WATER ; blue
 		db HYDRO_PUMP
 		db SURF
 		db ICE_BEAM
 		db SCALD
+
+	db $ff ; end
+
+; ================
+
+	; ARTIST
+	db "Rin@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
+
+	; party
+
+	db 64, SMEARGLE, TWISTEDSPOON, DVS_HP_PSYCHIC ; pink
+		db PSYCHIC_M
+		db SPORE
+		db CALM_MIND
+		db RECOVER
 
 	db $ff ; end
 
@@ -12679,12 +12839,92 @@ AromaLadyGroup:
 	db $ff ; end
 
 ; ================
+
+	; AROMA_LADY
+	db "Bryony@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 55, BELLOSSOM
+	db 55, BELLOSSOM
+
+	db $ff ; end
+
+; ================
+
+	; AROMA_LADY
+	db "Heather@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 35, CHIKORITA
+	db 45, BAYLEEF
+	db 55, MEGANIUM
+
+	db $ff ; end
+
+; ================
+
+	; AROMA_LADY
+	db "Holly@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 62, SUNFLORA
+	db 62, SUNFLORA
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
 SightseerMGroup:
 ; ================================
 ; ================
+
+	; SIGHTSEERM
+	db "Jaska@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERM
+	db "Blaise@"
+	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME
+
+	; TODO: party
+	db 50, BULBASAUR, ABILITY_1 | QUIRKY, MALE, "Bulbasaur@"
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERM
+	db "Gareth@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERM
+	db "Chester@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12692,6 +12932,52 @@ SightseerMGroup:
 SightseerFGroup:
 ; ================================
 ; ================
+
+	; SIGHTSEERF
+	db "Rosie@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERF
+	db "Kamila@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERF
+	db "Noelle@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERF
+	db "Pilar@"
+	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME
+
+	; party
+	db 60, MAGBY, ABILITY_1 | QUIRKY, FEMALE, "Antorcha@"
+	db 61, CUBONE, ABILITY_1 | QUIRKY, MALE, "Huesitos@"
+	db 64, ESPEON, ABILITY_1 | QUIRKY, FEMALE, "Luna@"
+	db 65, LANTURN, ABILITY_1 | QUIRKY, FEMALE, "Linterna@"
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -12719,6 +13005,30 @@ SightseersGroup:
 	; party
 	db 54, ELECTIVIRE
 	db 54, MAGMORTAR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERS
+	db "Cy & Vi@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 64, MR__MIME
+	db 64, JYNX
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERS
+	db "Cy & Vi@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 64, JYNX
+	db 64, MR__MIME
 
 	db $ff ; end
 
@@ -13704,6 +14014,9 @@ AceDuoGroup:
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 VeteranMGroup:
 ; ================================
 ; ================
@@ -14171,9 +14484,6 @@ ArianaGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 GiovanniGroup:
@@ -15276,20 +15586,20 @@ CandelaGroup:
 ; ================================
 ; ================
 
-;	; CANDELA
-;	db "Candela@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, FLAREON
-;	db 50, CHARIZARD
-;	db 50, MAGMAR
-;	db 50, DRAGONITE
-;	db 50, ARCANINE
-;	db 50, MOLTRES
-;
-;	db $ff ; end
+	; CANDELA
+	db "Candela@"
+	db TRAINERTYPE_ITEM
+
+	; party
+
+	db 63, FLAREON, NO_ITEM
+	db 62, MAGMAR, NO_ITEM
+	db 63, CHARIZARD, NO_ITEM
+	db 61, DRAGONITE, NO_ITEM
+	db 62, ARCANINE, NO_ITEM
+	db 65, MOLTRES, CHARCOAL
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -15299,20 +15609,20 @@ BlancheGroup:
 ; ================================
 ; ================
 
-;	; BLANCHE
-;	db "Blanche@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, VAPOREON
-;	db 50, BLASTOISE
-;	db 50, STARMIE
-;	db 50, LAPRAS
-;	db 50, JYNX
-;	db 50, ARTICUNO
-;
-;	db $ff ; end
+	; BLANCHE
+	db "Blanche@"
+	db TRAINERTYPE_ITEM
+
+	; party
+
+	db 63, VAPOREON, NO_ITEM
+	db 62, LAPRAS, NO_ITEM
+	db 63, BLASTOISE, NO_ITEM
+	db 61, JYNX, NO_ITEM
+	db 62, STARMIE, NO_ITEM
+	db 65, ARTICUNO, NEVERMELTICE
+
+	db $ff ; end
 
 ; ================
 ; ================================
@@ -15322,20 +15632,20 @@ SparkGroup:
 ; ================================
 ; ================
 
-;	; SPARK
-;	db "Spark@"
-;	db TRAINERTYPE_NORMAL
-;
-;	; party
-;
-;	db 50, JOLTEON
-;	db 50, VENUSAUR
-;	db 50, RAICHU
-;	db 50, SNORLAX
-;	db 50, ELECTABUZZ
-;	db 50, ZAPDOS
-;
-;	db $ff ; end
+	; SPARK
+	db "Spark@"
+	db TRAINERTYPE_ITEM
+
+	; party
+
+	db 63, JOLTEON, NO_ITEM
+	db 62, ELECTABUZZ, NO_ITEM
+	db 63, VENUSAUR, NO_ITEM
+	db 61, SNORLAX, NO_ITEM
+	db 62, RAICHU, NO_ITEM
+	db 65, ZAPDOS, MAGNET
+
+	db $ff ; end
 
 ; ================
 ; ================================

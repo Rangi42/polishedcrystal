@@ -121,9 +121,9 @@
 	db "<PK><MN> Trainer@" ; ANABEL
 	db "Valet@"            ; DARACH
 	db "Lady@"             ; CAITLIN
-	db "Leader@"           ; CANDELA
-	db "Leader@"           ; BLANCHE
-	db "Leader@"           ; SPARK
+	db "<PK><MN> Trainer@" ; CANDELA
+	db "<PK><MN> Trainer@" ; BLANCHE
+	db "<PK><MN> Trainer@" ; SPARK
 	db "Trainer@"          ; FLANNERY
 	db "Fighter@"          ; MAYLENE
 	db "Pilot@"            ; SKYLA

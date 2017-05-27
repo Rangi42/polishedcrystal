@@ -208,6 +208,12 @@ Route10Zapdos:
 	setevent EVENT_ZAPDOS_GONE
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
+	writebyte ZAPDOS
+	special SpecialMonCheck
+	iffalse .NoSpark
+	setevent EVENT_CELADON_UNIVERSITY_SPARK
+	clearevent EVENT_SHAMOUTI_COAST_SPARK
+.NoSpark
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	iffalse .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES

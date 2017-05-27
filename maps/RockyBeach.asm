@@ -49,8 +49,8 @@ TrainerSightseermBlaise:
 	cont "#mon."
 	done
 
-TrainerBeautyAngelica: ; Snubbull, Jigglypuff, Granbull, Sunflora
-	trainer EVENT_BEAT_BEAUTY_ANGELICA, BEAUTY, ANGELICA, .SeenText, .BeatenText, 0, .Script
+TrainerBeautyIoana:
+	trainer EVENT_BEAT_BEAUTY_IOANA, BEAUTY, IOANA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -150,7 +150,7 @@ TrainerAromaLadyHeather:
 	cont "local fauna."
 	done
 
-TrainerBreederBrenda: ; Clefable, Wigglytuff, Snorlax
+TrainerBreederBrenda:
 	trainer EVENT_BEAT_BREEDER_BRENDA, BREEDER, BRENDA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
@@ -291,11 +291,11 @@ RockyBeach_MapEventHeader:
 .PersonEvents:
 	db 9
 	person_event SPRITE_SIGHTSEER_M, 21, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermBlaise, -1
-	person_event SPRITE_BEAUTY, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyAngelica, -1
+	person_event SPRITE_BEAUTY, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyIoana, -1
 	person_event SPRITE_LADY, 21, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSightseerfKamila, -1
 	person_event SPRITE_LADY, 18, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyHeather, -1
 	person_event SPRITE_BREEDER, 13, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerBreederBrenda, -1
 	person_event SPRITE_SWIMMER_GUY, 7, 14, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermEzra, -1
 	person_event SPRITE_YOUNGSTER, 10, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, RockyBeachYoungsterScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RockyBeachFullHeal, EVENT_ROCKY_BEACH_FULL_HEAL
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RockyBeachFullHeal, EVENT_ROCKY_BEACH_FULL_HEAL
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RockyBeachPearlString, EVENT_ROCKY_BEACH_PEARL_STRING

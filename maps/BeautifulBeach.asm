@@ -89,15 +89,21 @@ TrainerTamerVince:
 	end
 
 .SeenText:
-	text "TODO"
+	text "My roaring spirit"
+	line "shall never be"
+	cont "tamed!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Nyuh?! ROAR!"
 	done
 
 .AfterText:
-	text "TODO"
+	text "My #mon are"
+	line "expertly tamed,"
+
+	para "but I remain as"
+	line "wild as ever!"
 	done
 
 TrainerSightseerfRosie:

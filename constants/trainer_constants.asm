@@ -444,7 +444,7 @@ KRIS EQU __enum__
 	const VERONICA
 	const BEAUTY_NICOLE
 	const RACHAEL
-	const ANGELICA
+	const IOANA
 
 	trainerclass BUG_MANIAC ; 32
 	const LOU

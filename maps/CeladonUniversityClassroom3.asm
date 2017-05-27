@@ -1,5 +1,6 @@
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM3_SPARK
+	const CELADONUNIVERSITYCLASSROOM3_TEACHER
 	const CELADONUNIVERSITYCLASSROOM3_CHILD
 	const CELADONUNIVERSITYCLASSROOM3_LASS
 	const CELADONUNIVERSITYCLASSROOM3_SUPER_NERD
@@ -31,6 +32,21 @@ CeladonUniversityClassroom3SparkScript:
 	line "Is it true that he"
 	cont "actually lives in"
 	cont "his lab?"
+	done
+
+CeladonUniversityClassroom3TeacherScript:
+	jumptextfaceplayer .Text
+
+.Text:
+	text "Are you looking"
+	line "for Spark?"
+
+	para "He's out doing"
+	line "something on"
+	cont "Shamouti Island."
+
+	para "I'm subbing in for"
+	line "his classes."
 	done
 
 CeladonUniversityClassroom3ChildScript:
@@ -158,8 +174,9 @@ CeladonUniversityClassroom3_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf2
 
 .PersonEvents:
-	db 4
-	person_event SPRITE_SPARK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3SparkScript, -1
+	db 5
+	person_event SPRITE_SPARK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3SparkScript, EVENT_CELADON_UNIVERSITY_SPARK
+	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3TeacherScript, EVENT_SHAMOUTI_COAST_SPARK
 	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3ChildScript, -1
 	person_event SPRITE_LASS, 7, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3LassScript, -1
 	person_event SPRITE_SUPER_NERD, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3Super_nerdScript, -1

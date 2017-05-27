@@ -27,7 +27,6 @@
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Hyper Trained stats
 
 
 ## Aesthetics
@@ -46,7 +45,6 @@
 * Battle Tower merchants selling items for BP
 * Lost Pikablu (Marill) in Noisy Forest
 * Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue (in his house after defeat)
-* Mr. Hyper somewhere
 
 
 ## Characters
@@ -55,18 +53,15 @@
 * Inver in Route 16 house
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
-* Electrodes in Rock Tunnel
 
 Shamouti Island:
 
-* Candela in Fire Island peak
-* Blanche in Ice Island peak
-* Spark in Lightning Island peak
+* Prof. Ivy in Pokémon Center (gives a starter)
 * Caitlin and Darach in Beautiful Beach villa
-* Looker in Shamouti Hotel room (not S.S. Aqua)
-* Trendy phrase guy in Shamouti Hotel lobby
-* Prof. Ivy in Shamouti Island (gives a starter)
 * Body Slam tutor in Warm Beach house
+* Trendy phrase guy in hotel lobby
+* Looker in hotel room (not S.S. Aqua)
+* Sightseer in hotel mentions that Bottle Caps can be used for Hyper Training in Alola
 
 
 ## Maps

@@ -95,7 +95,7 @@ OreManiacScript:
 	line "one to me someday."
 	done
 
-TrainerTamerOswald: ; Donphan, Ursaring, Kangaskhan
+TrainerTamerOswald:
 	trainer EVENT_BEAT_TAMER_OSWALD, TAMER, OSWALD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
@@ -130,7 +130,7 @@ TrainerTamerOswald: ; Donphan, Ursaring, Kangaskhan
 	line "trapeze act."
 	done
 
-TrainerFirebreatherTala: ; Magmortar, Weezing
+TrainerFirebreatherTala:
 	trainer EVENT_BEAT_FIREBREATHER_TALA, FIREBREATHER, TALA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
