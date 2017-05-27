@@ -1785,7 +1785,7 @@ GetPartyLocation:: ; 3927
 
 INCLUDE "home/battle.asm"
 
-Function3b0c:: ; 3b0c
+PushLYOverrides:: ; 3b0c
 
 	ld a, [hLCDCPointer]
 	and a

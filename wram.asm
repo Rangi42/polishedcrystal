@@ -1938,6 +1938,19 @@ EvolvableFlags:: ; d1e8
 	flag_array PARTY_LENGTH
 
 wForceEvolution:: ds 1
+
+; HP bar animations
+wCurHPAnimMaxHP::   dw ; d1ea
+wCurHPAnimOldHP::   dw ; d1ec
+wCurHPAnimNewHP::   dw ; d1ee
+wCurHPAnimPal::     db ; d1f0
+wCurHPBarPixels::   db ; d1f1
+wNewHPBarPixels::   db ; d1f2
+wCurHPAnimDeltaHP:: dw ; d1f3
+wCurHPAnimLowHP::   db ; d1f5
+wCurHPAnimHighHP::  db ; d1f6
+	ds wCurHPAnimMaxHP - @
+
 MagikarpLength::
 Buffer1:: ; d1ea
 	ds 1
@@ -1954,9 +1967,8 @@ wd1ee:: ds 1
 Buffer6::
 wd1ef:: ds 1
 wd1f0:: ds 1
-wCurHPBarPixels::
+CurEnemyItem::
 wd1f1:: ds 1
-wNewHPBarPixels::
 wd1f2:: ds 1
 wd1f3:: ds 1
 wd1f4:: ds 1
