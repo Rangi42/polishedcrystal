@@ -400,38 +400,38 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const PERSON_ACTION_SKYFALL      ; 0f
 
 	const_def
-	const FACING_00
-	const FACING_01
-	const FACING_02
-	const FACING_03
-	const FACING_04
-	const FACING_05
-	const FACING_06
-	const FACING_07
-	const FACING_08
-	const FACING_09
-	const FACING_0A
-	const FACING_0B
-	const FACING_0C
-	const FACING_0D
-	const FACING_0E
-	const FACING_0F
-	const FACING_10
-	const FACING_11
-	const FACING_12
-	const FACING_13
-	const FACING_EMOTE
-	const FACING_15
-	const FACING_16
-	const FACING_17
-	const FACING_18
-	const FACING_19
-	const FACING_1A
-	const FACING_1B
-	const FACING_1C
-	const FACING_1D
-	const FACING_1E
-	const FACING_1F
+	const FACING_STEP_DOWN_0    ; 00
+	const FACING_STEP_DOWN_1    ; 01
+	const FACING_STEP_DOWN_2    ; 02
+	const FACING_STEP_DOWN_3    ; 03
+	const FACING_STEP_UP_0      ; 04
+	const FACING_STEP_UP_1      ; 05
+	const FACING_STEP_UP_2      ; 06
+	const FACING_STEP_UP_3      ; 07
+	const FACING_STEP_LEFT_0    ; 08
+	const FACING_STEP_LEFT_1    ; 09
+	const FACING_STEP_LEFT_2    ; 0a
+	const FACING_STEP_LEFT_3    ; 0b
+	const FACING_STEP_RIGHT_0   ; 0c
+	const FACING_STEP_RIGHT_1   ; 0d
+	const FACING_STEP_RIGHT_2   ; 0e
+	const FACING_STEP_RIGHT_3   ; 0f
+	const FACING_FISH_DOWN      ; 10
+	const FACING_FISH_UP        ; 11
+	const FACING_FISH_LEFT      ; 12
+	const FACING_FISH_RIGHT     ; 13
+	const FACING_EMOTE          ; 14
+	const FACING_SHADOW         ; 15
+	const FACING_BIG_DOLL_ASYM  ; 16
+	const FACING_BIG_DOLL_SYM   ; 17
+	const FACING_WEIRD_TREE_0   ; 18
+	const FACING_WEIRD_TREE_1   ; 19
+	const FACING_WEIRD_TREE_2   ; 1a
+	const FACING_WEIRD_TREE_3   ; 1b
+	const FACING_BOULDER_DUST_1 ; 1c
+	const FACING_BOULDER_DUST_2 ; 1d
+	const FACING_GRASS_1        ; 1e
+	const FACING_GRASS_2        ; 1f
 
 	const_def
 	const SPRITEANIMSTRUCT_INDEX           ; 0
