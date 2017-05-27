@@ -207,6 +207,7 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 
 Some of these may never be added; they're just suggestions.
 
+* Port pokecrystal changes since commit 7aef59841489ea449b9a34d424c681a4b48b88ab
 * Alolan forms (update GetBaseData and everything that refers to EvosAttacksPointers)
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
