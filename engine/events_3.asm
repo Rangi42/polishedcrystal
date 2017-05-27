@@ -69,7 +69,7 @@ ReturnFromMapSetupScript:: ; b8000
 	ld a, [wPreviousLandmark]
 	cp c
 	ret z
-	cp $0
+	cp SPECIAL_MAP
 	ret
 ; b8070
 

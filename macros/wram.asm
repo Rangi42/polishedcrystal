@@ -126,22 +126,21 @@ channel_struct: MACRO
 \1FrequencyHi::       db
 \1Pitch::             db ; 0:rest 1-c:note
 \1Octave::            db ; 7-0 (0 is highest)
-\1StartingOctave::    db ; raises existing octaves (to repeat phrases)
+\1PitchOffset::       db ; raises existing octaves (to repeat phrases)
 \1NoteDuration::      db ; frames remaining for the current note
 \1Field0x16::         ds 1 ; c117
                       ds 1 ; c118
 \1LoopCount::         db
 \1Tempo::             dw
 \1Tracks::            db ; hi:left lo:right
-\1Field0x1c::         ds 1 ; c11d
+\1SFXDutyLoop::       ds 1 ; c11d
 \1VibratoDelayCount:: db ; initialized by \1VibratoDelay
 \1VibratoDelay::      db ; number of frames a note plays until vibrato starts
 \1VibratoExtent::     db
 \1VibratoRate::       db ; hi:frames for each alt lo:frames to the next alt
-\1Field0x21::         ds 1 ; c122
-\1Field0x22::         ds 1 ; c123
-\1Field0x23::         ds 1 ; c124
-\1Field0x24::         ds 1 ; c125
+\1PitchWheelTarget::  dw ; frequency endpoint for pitch wheel
+\1PitchWheelAmount::  db ; c124
+\1PitchWheelAmountFraction:: db ; c125
 \1Field0x25::         ds 1 ; c126
                       ds 1 ; c127
 \1CryPitch::          dw

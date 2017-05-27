@@ -88,7 +88,7 @@ MovementPointers: ; 5075
 	dw Movement_tree_shake            ; 56
 	dw Movement_rock_smash            ; 57
 	dw Movement_return_dig            ; 58
-	dw Movement_skyfall_top       ; 59
+	dw Movement_skyfall_top           ; 59
 ; 5129
 
 
