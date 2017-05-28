@@ -94,7 +94,6 @@ DoBattle: ; 3c000
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
-	call SpikesDamage
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked_2
@@ -108,11 +107,12 @@ DoBattle: ; 3c000
 	call BreakAttraction
 	call EnemySwitch
 	call SetEnemyTurn
-	call SpikesDamage
+	call HandleFirstAirBalloon
 	call RunBothActivationAbilities
 	jp BattleTurn
 
 .not_linked_2
+	call HandleFirstAirBalloon
 	call RunBothActivationAbilities
 	jp BattleTurn
 
@@ -4391,11 +4391,28 @@ BreakAttraction: ; 3dc18
 	ret
 ; 3dc23
 
+HandleFirstAirBalloon:
+; for the first mon, Spikes logic doesn't run by itself, and we also want to perform
+; speed checks to see whose air balloon to announce first.
+	ld a, [hBattleTurn]
+	push af
+	call SetPlayerTurn
+	call CheckSpeed
+	jr z, .got_order
+	call SetEnemyTurn
+.got_order
+	; No Spikes are actually on the field, but this prints the Air Balloon message
+	call SpikesDamage
+	call SwitchTurn
+	call SpikesDamage
+	pop af
+	ld [hBattleTurn], a
+	ret
+
 RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
-	; TODO: factor in speed
 	ld a, [hBattleTurn]
 	push af
 	call SetPlayerTurn
