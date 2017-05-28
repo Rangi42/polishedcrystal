@@ -1546,12 +1546,12 @@ FarfetchDEvosAttacks:
 	db 9, AERIAL_ACE
 	db 13, THIEF ; Knock Off → TM move
 	db 19, SLASH
-	db 21, TWISTER ; Air Cutter → HGSS tutor move
+	db 21, KARATE_CHOP ; Air Cutter → new move
 	db 25, SWORDS_DANCE
 	db 31, AGILITY
 	db 33, NIGHT_SLASH
 	db 37, ACROBATICS
-	db 43, STEEL_WING ; Feint → egg move
+	db 43, HI_JUMP_KICK ; Feint → new move
 	db 45, FALSE_SWIPE
 	db 49, AIR_SLASH
 	db 55, SKY_ATTACK ; Brave Bird → HGSS tutor move
