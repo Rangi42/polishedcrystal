@@ -2613,6 +2613,7 @@ wCinnabarLabTrigger::                        ds 1
 wIlexForestTrigger::                         ds 1
 wRoute23Trigger::                            ds 1
 wRoute18WestTrigger::                        ds 1
+wShamoutiHotelRestaurantTrigger::            ds 1
 
 	ds 20 ; extra space set aside
 
@@ -2648,11 +2649,12 @@ wKenjiFightCount::   ds 1 ; unused
 wParryFightCount::   ds 1
 wErinFightCount::    ds 1
 ; da0e
-	ds 100 ; extra space set aside?
+	ds 10 ; extra space set aside
 
 EventFlags:: ; da72
 	flag_array NUM_EVENTS
 ; db6c
+	ds 90 ; extra space set aside
 
 wCurBox:: ; db72
 	ds 1

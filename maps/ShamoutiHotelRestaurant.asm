@@ -2,10 +2,20 @@ const_value set 2
 
 ShamoutiHotelRestaurant_MapScriptHeader:
 .MapTriggers:
-	db 0
+	db 2
+
+	; triggers
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 0
+
+.Trigger0:
+	end
+
+.Trigger1:
+	end
 
 ShamoutiHotelRestaurant_MapEventHeader:
 	; filler
@@ -13,8 +23,8 @@ ShamoutiHotelRestaurant_MapEventHeader:
 
 .Warps:
 	db 2
-	warp_def $7, $f, 4, SHAMOUTI_HOTEL_1F
 	warp_def $7, $10, 4, SHAMOUTI_HOTEL_1F
+	warp_def $7, $11, 4, SHAMOUTI_HOTEL_1F
 
 .XYTriggers:
 	db 0
