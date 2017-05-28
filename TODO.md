@@ -76,6 +76,7 @@ Shamouti Island:
 
 * Shamouti Island (outdoor market instead of Mart)
 * Shamouti Hotel (haunted room)
+* Shamouti Restaurant (works like Seven Stars Restaurant)
 
 Route leaders:
 
