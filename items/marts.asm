@@ -9,6 +9,7 @@ Marts: ; 160a9
 	dw Goldenrod3FMart
 	dw Goldenrod4FMart
 	dw Goldenrod5FTMMart
+	dw GoldenrodHarborMart
 	dw UndergroundMart
 	dw EcruteakMart
 	dw OlivineMart
@@ -31,7 +32,10 @@ Marts: ; 160a9
 	dw Celadon5FMart1
 	dw Celadon5FMart2
 	dw SaffronMart
+	dw SilphCoMart
 	dw FuchsiaMart
+	dw ShamoutiMart1
+	dw ShamoutiMart2
 MartsEnd
 ; 160ed
 
@@ -42,7 +46,7 @@ CherrygroveMart: ; 160ed
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
-	db $ff
+	db -1
 ; 160f3
 
 CherrygroveMartAfterDex: ; 160f3
@@ -53,7 +57,7 @@ CherrygroveMartAfterDex: ; 160f3
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
-	db $ff
+	db -1
 ; 160fa
 
 VioletMart: ; 160fa
@@ -69,7 +73,7 @@ VioletMart: ; 160fa
 	db X_DEFEND
 	db X_SPEED
 	db FLOWER_MAIL
-	db $ff
+	db -1
 ; 16106
 
 AzaleaMart: ; 16106
@@ -84,7 +88,7 @@ AzaleaMart: ; 16106
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db FLOWER_MAIL
-	db $ff
+	db -1
 ; 16111
 
 Goldenrod2FMart1: ; 16118
@@ -99,7 +103,7 @@ Goldenrod2FMart1: ; 16118
 	db FULL_HEAL
 	db REVIVE
 	db REPEL
-	db $ff
+	db -1
 ; 16121
 
 Goldenrod2FMart2: ; 16121
@@ -113,7 +117,7 @@ Goldenrod2FMart2: ; 16121
 	db POKE_DOLL
 	db BLUESKY_MAIL
 	db MORPH_MAIL
-	db $ff
+	db -1
 ; 1612b
 
 Goldenrod2FMart2Eevee: ; 16140
@@ -129,7 +133,7 @@ Goldenrod2FMart2Eevee: ; 16140
 	db BLUESKY_MAIL
 	db MORPH_MAIL
 	db EON_MAIL
-	db $ff
+	db -1
 ; 16146
 
 Goldenrod3FMart: ; 1612b
@@ -142,7 +146,7 @@ Goldenrod3FMart: ; 1612b
 	db DIRE_HIT
 	db GUARD_SPEC
 	db X_ACCURACY
-	db $ff
+	db -1
 ; 16134
 
 Goldenrod4FMart: ; 16134
@@ -153,7 +157,7 @@ Goldenrod4FMart: ; 16134
 	db CALCIUM
 	db ZINC
 	db HP_UP
-	db $ff
+	db -1
 ; 1613b
 
 Goldenrod5FTMMart: ; 1613b
@@ -166,8 +170,20 @@ Goldenrod5FTMMart: ; 1613b
 	dbw TM_FIRE_BLAST,    30000
 	dbw TM_BLIZZARD,      30000
 	dbw TM_HYPER_BEAM,    50000
-	db $ff
+	db -1
 ; 16140
+
+GoldenrodHarborMart:
+	db 8 ; # items
+	db ETHER
+	db ELIXER
+	db DESTINY_KNOT
+	db SCOPE_LENS
+	db WIDE_LENS
+	db ZOOM_LENS
+	db BRIGHTPOWDER
+	db SURF_MAIL
+	db -1
 
 UndergroundMart: ; 1620e
 	db 4 ; # items
@@ -175,7 +191,7 @@ UndergroundMart: ; 1620e
 	db ENERGY_ROOT
 	db HEAL_POWDER
 	db REVIVAL_HERB
-	db $ff
+	db -1
 ; 16214
 
 EcruteakMart: ; 1615e
@@ -190,7 +206,7 @@ EcruteakMart: ; 1615e
 	db BURN_HEAL
 	db ICE_HEAL
 	db REVIVE
-	db $ff
+	db -1
 ; 1616a
 
 OlivineMart: ; 16153
@@ -205,7 +221,7 @@ OlivineMart: ; 16153
 	db ICE_HEAL
 	db SUPER_REPEL
 	db SURF_MAIL
-	db $ff
+	db -1
 ; 1615e
 
 CianwoodMart: ; 16111
@@ -215,7 +231,7 @@ CianwoodMart: ; 16111
 	db HYPER_POTION
 	db FULL_HEAL
 	db REVIVE
-	db $ff
+	db -1
 ; 16118
 
 YellowForestMart: ; 1614c
@@ -224,30 +240,30 @@ YellowForestMart: ; 1614c
 	db REPEL
 	db FRESH_WATER
 	db FULL_HEAL
-	db $ff
+	db -1
 ; 16153
 
 MahoganyMart1: ; 1616a
 	db 4 ; # items
 	db TINYMUSHROOM
 	db SLOWPOKETAIL
-	db POKE_BALL
-	db POTION
-	db $ff
+	db GREAT_BALL
+	db SUPER_POTION
+	db -1
 ; 16170
 
 MahoganyMart2: ; 16170
 	db 9 ; # items
 	db RAGECANDYBAR
+	db AIR_BALLOON
+	db QUICK_CLAW
+	db KINGS_ROCK
 	db GREAT_BALL
-	db SUPER_POTION
 	db HYPER_POTION
-	db ANTIDOTE
-	db PARLYZ_HEAL
 	db SUPER_REPEL
 	db REVIVE
 	db FLOWER_MAIL
-	db $ff
+	db -1
 ; 1617b
 
 BlackthornMart: ; 1617b
@@ -262,7 +278,7 @@ BlackthornMart: ; 1617b
 	db X_DEFEND
 	db X_ATTACK
 	db MUSIC_MAIL
-	db $ff
+	db -1
 ; 16186
 
 IndigoPlateauMart: ; 16205
@@ -274,7 +290,7 @@ IndigoPlateauMart: ; 16205
 	db FULL_RESTORE
 	db REVIVE
 	db FULL_HEAL
-	db $ff
+	db -1
 ; 1620e
 
 ViridianMart: ; 16186
@@ -289,7 +305,7 @@ ViridianMart: ; 16186
 	db AWAKENING
 	db BURN_HEAL
 	db FLOWER_MAIL
-	db $ff
+	db -1
 ; 16191
 
 PewterMart: ; 16191
@@ -302,7 +318,7 @@ PewterMart: ; 16191
 	db PARLYZ_HEAL
 	db AWAKENING
 	db BURN_HEAL
-	db $ff
+	db -1
 ; 1619a
 
 MtMoonMart: ; 161fd
@@ -315,7 +331,7 @@ MtMoonMart: ; 161fd
 	db SUPER_REPEL
 	db MIRAGE_MAIL
 	db PORTRAITMAIL
-	db $ff
+	db -1
 ; 16205
 
 CeruleanMart: ; 1619a
@@ -330,7 +346,7 @@ CeruleanMart: ; 1619a
 	db X_ATTACK
 	db DIRE_HIT
 	db SURF_MAIL
-	db $ff
+	db -1
 ; 161a5
 
 LavenderMart: ; 161a5
@@ -344,7 +360,7 @@ LavenderMart: ; 161a5
 	db PARLYZ_HEAL
 	db AWAKENING
 	db BURN_HEAL
-	db $ff
+	db -1
 ; 161af
 
 VermilionMart: ; 161af
@@ -358,7 +374,7 @@ VermilionMart: ; 161af
 	db AWAKENING
 	db BURN_HEAL
 	db LITEBLUEMAIL
-	db $ff
+	db -1
 ; 161b9
 
 Celadon2FMart1: ; 161b9
@@ -373,7 +389,7 @@ Celadon2FMart1: ; 161b9
 	db REPEL
 	db SUPER_REPEL
 	db MAX_REPEL
-	db $ff
+	db -1
 ; 161c2
 
 Celadon2FMart2: ; 161c2
@@ -388,7 +404,7 @@ Celadon2FMart2: ; 161c2
 	db AWAKENING
 	db PARLYZ_HEAL
 	db FULL_HEAL
-	db $ff
+	db -1
 ; 161ce
 
 Celadon3FTMMart: ; 161ce
@@ -401,7 +417,7 @@ Celadon3FTMMart: ; 161ce
 	dbw TM_RAIN_DANCE,    40000
 	dbw TM_SANDSTORM,     40000
 	dbw TM_HAIL,          40000
-	db $ff
+	db -1
 ; 161d5
 
 Celadon4FMart: ; 161d5
@@ -414,7 +430,7 @@ Celadon4FMart: ; 161d5
 	db EXP_SHARE
 	db LOVELY_MAIL
 	db SURF_MAIL
-	db $ff
+	db -1
 ; 161da
 
 Celadon5FMart1: ; 161da
@@ -425,7 +441,7 @@ Celadon5FMart1: ; 161da
 	db CALCIUM
 	db ZINC
 	db HP_UP
-	db $ff
+	db -1
 ; 161e1
 
 Celadon5FMart2: ; 161e1
@@ -438,7 +454,7 @@ Celadon5FMart2: ; 161e1
 	db X_SPEED
 	db X_SPCL_ATK
 	db X_SPCL_DEF
-	db $ff
+	db -1
 ; 161ea
 
 SaffronMart: ; 161f3
@@ -452,8 +468,17 @@ SaffronMart: ; 161f3
 	db X_ATTACK
 	db X_DEFEND
 	db FLOWER_MAIL
-	db $ff
+	db -1
 ; 161fd
+
+SilphCoMart:
+	db 5 ; # items
+	db UP_GRADE
+	db DUBIOUS_DISC
+	db MAX_POTION
+	db MAX_REPEL
+	db DUSK_BALL
+	db -1
 
 FuchsiaMart: ; 161ea
 	db 8 ; # items
@@ -465,5 +490,23 @@ FuchsiaMart: ; 161ea
 	db FULL_HEAL
 	db MAX_REPEL
 	db FLOWER_MAIL
-	db $ff
+	db -1
 ; 161f3
+
+ShamoutiMart1:
+	db 4 ; # items
+	db MENTAL_HERB
+	db POWER_HERB
+	db WHITE_HERB
+	db BIG_ROOT
+	db -1
+
+ShamoutiMart2:
+	db 6 ; # items
+	db DAMP_ROCK
+	db HEAT_ROCK
+	db SMOOTH_ROCK
+	db ICY_ROCK
+	db EVIOLITE
+	db LIGHT_CLAY
+	db -1

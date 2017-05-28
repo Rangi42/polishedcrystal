@@ -2,9 +2,10 @@ const_value set 2
 	const WARMBEACH_SIGHTSEER_M
 	const WARMBEACH_LADY1
 	const WARMBEACH_COOLTRAINER_M
-	const WARMBEACH_LADY2
 	const WARMBEACH_COOLTRAINER_F
 	const WARMBEACH_SLOWKING
+	const WARMBEACH_LASS
+	const WARMBEACH_LADY2
 
 WarmBeach_MapScriptHeader:
 .MapTriggers:
@@ -87,26 +88,6 @@ WarmBeachCooltrainermScript:
 	line "myself!"
 	done
 
-WarmBeachLadyScript:
-	jumptextfaceplayer .Text
-
-.Text:
-	text "Those islands"
-	line "across the water"
-
-	para "are known as the"
-	line "temples of Fire,"
-
-	para "Ice, and Light-"
-	line "ning."
-
-	para "That's what this"
-	line "brochure says,"
-
-	para "but what are they"
-	line "for?"
-	done
-
 WarmBeachCooltrainerfScript:
 	jumptextfaceplayer .Text
 
@@ -130,6 +111,111 @@ WarmBeachSlowkingScript:
 .Text:
 	text "I could use"
 	line "pants…"
+	done
+
+WarmBeachLassScript:
+	faceplayer
+	opentext
+	checkflag ENGINE_SEASHORE_SHELL_BELL
+	iftrue .BoughtShellBell
+	writetext .Text1
+	special PlaceMoneyTopRight
+	yesorno
+	iffalse .NoBuy
+	checkmoney $0, 4000
+	if_equal $2, .NotEnoughMoney
+	giveitem LEFTOVERS
+	iffalse .NoRoom
+	setflag ENGINE_BOUGHT_LEFTOVERS
+	waitsfx
+	playsound SFX_TRANSACTION
+	takemoney $0, 4000
+	special PlaceMoneyTopRight
+	writetext .Text2
+	waitbutton
+	closetext
+	end
+
+.BoughtShellBell:
+	writetext .Text3
+	waitbutton
+	closetext
+	end
+
+.NoBuy:
+	writetext .Text4
+	waitbutton
+	closetext
+	end
+
+.NotEnoughMoney:
+	writetext .Text5
+	waitbutton
+	closetext
+	end
+
+.NoRoom:
+	writetext .Text6
+	waitbutton
+	closetext
+	end
+
+.Text1:
+	text "I collect shells"
+	line "off the beach and"
+
+	para "turn them into"
+	line "Shell Bells."
+
+	para "People say their"
+	line "chime is healing."
+
+	para "They're ¥4000"
+	line "each. Want one?"
+	done
+
+.Text2:
+	text "One Shell Bell,"
+	line "just for you!"
+	done
+
+.Text3:
+	text "I only made one"
+	line "Shell Bell today…"
+	done
+
+.Text4:
+	text "That's okay!"
+	done
+
+.Text5:
+	text "You don't have"
+	line "enough money…"
+	done
+
+.Text6:
+	text "You don't have"
+	line "enough room…"
+	done
+
+WarmBeachLadyScript:
+	jumptextfaceplayer .Text
+
+.Text:
+	text "Those islands"
+	line "across the water"
+
+	para "are known as the"
+	line "temples of Fire,"
+
+	para "Ice, and Light-"
+	line "ning."
+
+	para "That's what this"
+	line "brochure says,"
+
+	para "but what are they"
+	line "for?"
 	done
 
 WarmBeachShackSign:
@@ -170,10 +256,11 @@ WarmBeach_MapEventHeader:
 	signpost 20, 19, SIGNPOST_READ, WarmBeachShrine
 
 .PersonEvents:
-	db 6
+	db 7
 	person_event SPRITE_SIGHTSEER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
 	person_event SPRITE_LADY, 12, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
 	person_event SPRITE_COOLTRAINER_M, 14, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachCooltrainermScript, -1
-	person_event SPRITE_LADY, 16, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachLadyScript, -1
 	person_event SPRITE_COOLTRAINER_F, 20, 22, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachCooltrainerfScript, -1
 	person_event SPRITE_SLOWKING, 21, 17, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
+	person_event SPRITE_LASS, 21, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
+	person_event SPRITE_LADY, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachLadyScript, -1

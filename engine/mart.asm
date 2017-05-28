@@ -102,10 +102,7 @@ RooftopSale: ; 15ac4
 ; 15aee
 
 AdventurerMart:
-	ld b, BANK(AdventurerData)
-	ld de, AdventurerData
-	call LoadMartPointer
-	call ReadMart
+	call FarReadMart
 	call LoadStandardMenuDataHeader
 	ld hl, Text_AdventurerMart_Intro
 	call MartTextBox
@@ -151,18 +148,6 @@ RooftopSaleData2: ; 15aff
 	dbw PROTEIN,      7800
 	db -1
 ; 15b10
-
-AdventurerData:
-	db 8
-	dbw ETHER,        1200
-	dbw ELIXER,       3000
-	dbw DESTINY_KNOT, 4000
-	dbw SCOPE_LENS,   4000
-	dbw WIDE_LENS,    4000
-	dbw ZOOM_LENS,    4000
-	dbw BRIGHTPOWDER, 4000
-	dbw SURF_MAIL,      50
-	db -1
 
 LoadMartPointer: ; 15b10
 	ld a, b
