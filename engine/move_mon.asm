@@ -185,11 +185,19 @@ endr
 	ld [DVAndPersonalityBuffer + 2], a
 
 ; Random nature from 0 to 24
+; This overwrites the base data struct, so reload it afterwards
+	ld a, [CurSpecies]
+	push af
 	ld a, [PartyMon1Ability]
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
 	call GetAbility
+	pop af
+	push bc
+	ld [CurSpecies], a
+	call GetBaseData
+	pop bc
 	ld a, b
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
