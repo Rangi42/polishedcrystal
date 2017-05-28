@@ -6778,7 +6778,8 @@ endr
 
 .unown_letter
 	ld a, NUM_UNOWN
-	call RandomRange
+	call BattleRandomRange
+	inc a
 	ld b, a
 	ld a, [EnemyMonForm]
 	and $ff - FORM_MASK
@@ -6819,6 +6820,16 @@ endr
 	ld a, [TempEnemyMonSpecies]
 	cp a, MAGIKARP
 	jr nz, .Happiness
+
+; Random Magikarp pattern
+	ld a, NUM_MAGIKARP
+	call BattleRandomRange
+	inc a
+	ld b, a
+	ld a, [EnemyMonForm]
+	and $ff - FORM_MASK
+	add b
+	ld [EnemyMonForm], a
 
 ; Get Magikarp's length
 	ld de, EnemyMonDVs

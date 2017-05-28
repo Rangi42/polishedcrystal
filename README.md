@@ -302,6 +302,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Cerulean Bike Shop from HGSS.
 * Add: Elite 4 rooms have floor arenas.
 * Add: Confirm gender selection.
+* Add: Colored party Pokémon icons.
+* Add: Magikarp Jump patterns.
 * Add: Headbutt trees to get Silver and Gold Leaves.
 * Add: Smash rocks to get various items.
 * Add: Item maniacs from B/W.

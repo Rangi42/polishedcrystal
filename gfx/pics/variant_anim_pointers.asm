@@ -46,6 +46,17 @@ ArbokAnimationPointers:
 	dw ArbokAgathaAnimation
 	dw ArbokArianaAnimation
 
+MagikarpAnimationPointers:
+	dw MagikarpPlainAnimation
+	dw MagikarpSkellyAnimation
+	dw MagikarpCalico1Animation
+	dw MagikarpCalico2Animation
+	dw MagikarpCalico3Animation
+	dw MagikarpTwoToneAnimation
+	dw MagikarpOrcaAnimation
+	dw MagikarpDapplesAnimation
+	dw MagikarpTigerAnimation
+
 MewtwoAnimationPointers:
 	dw MewtwoPlainAnimation
 	dw MewtwoArmoredAnimation

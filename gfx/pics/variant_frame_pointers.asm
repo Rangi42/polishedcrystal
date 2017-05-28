@@ -46,6 +46,17 @@ ArbokFramesPointers:
 	dw ArbokAgathaFrames
 	dw ArbokArianaFrames
 
+MagikarpFramesPointers:
+	dw MagikarpPlainFrames
+	dw MagikarpSkellyFrames
+	dw MagikarpCalico1Frames
+	dw MagikarpCalico2Frames
+	dw MagikarpCalico3Frames
+	dw MagikarpTwoToneFrames
+	dw MagikarpOrcaFrames
+	dw MagikarpDapplesFrames
+	dw MagikarpTigerFrames
+
 MewtwoFramesPointers:
 	dw MewtwoPlainFrames
 	dw MewtwoArmoredFrames
