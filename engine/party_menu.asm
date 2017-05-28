@@ -545,10 +545,18 @@ endr
 	dw .Default
 ; 503c6
 
+placepartymon: macro
+	rept _NARG
+	db PLACE_PARTYMON_\1
+	shift
+	endr
+	db $ff
+endm
+
 .Default:
-.Gender: db 0, 1, 2, 3, 7, 4, $ff
-.TMHM: db 0, 5, 3, 7, 4, $ff
-.EvoStone: db 0, 6, 3, 7, 4, $ff
+.Gender: placepartymon NICKNAMES, HP_BAR, HP_DIGITS, LEVEL, GENDER, STATUS
+.TMHM: placepartymon NICKNAMES, TMHM, LEVEL, GENDER, STATUS
+.EvoStone: placepartymon NICKNAMES, EVO, LEVEL, GENDER, STATUS
 ; 503e0
 
 
