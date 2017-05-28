@@ -6437,9 +6437,19 @@ LoadEnemyMon: ; 3e8eb
 	jp nz, InitEnemyMon
 
 ; and also not in a BattleTower-Battle
-	ld a, [InBattleTowerBattle] ; ????
+	ld a, [InBattleTowerBattle]
 	bit 0, a
 	jp nz, InitEnemyMon
+
+; Check ability of top party mon and store into b (for Compoundeyes, etc). This needs to
+; be done before the wildmon species metadata is loaded since this also needs to load
+; species metadata on its own
+	ld a, [PartyMon1Ability]
+	ld b, a
+	ld a, [PartyMon1Species]
+	ld c, a
+	farcall GetAbility
+	; ability is in b
 
 ; Make sure everything knows what species we're working with
 	ld a, [TempEnemyMonSpecies]
@@ -6447,9 +6457,10 @@ LoadEnemyMon: ; 3e8eb
 	ld [CurSpecies], a
 	ld [CurPartySpecies], a
 
-; Grab the BaseData for this species
+; Grab the BaseData for this species. Preserve bc (partymon1 ability)
+	push bc
 	call GetBaseData
-
+	pop bc
 
 ; Let's get the item:
 
@@ -6466,7 +6477,7 @@ LoadEnemyMon: ; 3e8eb
 	jr .UpdateItem
 
 
-.WildItem:
+.WildItem
 ; In a wild battle, we pull from the item slots in BaseData
 
 ; Force Item1
@@ -6483,14 +6494,7 @@ LoadEnemyMon: ; 3e8eb
 
 ; Failing that, it's all up to chance
 
-	push bc
-	ld a, [PartyMon1Ability]
-	ld b, a
-	ld a, [PartyMon1Species]
-	ld c, a
-	farcall GetAbility
 	ld a, b
-	pop bc
 
 if DEF(FAITHFUL)
 	cp COMPOUND_EYES
@@ -6590,8 +6594,6 @@ endr
 	jp .UpdateDVs
 
 .WildDVs:
-	ld bc, DVAndPersonalityBuffer
-
 ; Roaming monsters (Entei, Raikou) work differently
 ; They have their own structs, which are shorter than normal
 	ld a, [BattleType]
@@ -6599,25 +6601,31 @@ endr
 	jr nz, .GenerateDVs
 
 ; Grab DVs and personality
+	push bc
 	call GetRoamMonDVsAndPersonality
 	ld b, h
 	ld c, l
 ; Grab HP
+	push hl
 	call GetRoamMonHP
 	ld a, [hl]
+	pop hl
+	pop bc
 ; Check if the HP has been initialized
 	and a
 ; If the RoamMon struct has already been initialized, we're done
-	jp nz, .UpdateDVs
+	jr z, .GenerateRoamDVs
+	ld b, h
+	ld c, l
+	jp .UpdateDVs
 
 ; If it hasn't, we need to initialize the DVs
 ; (HP is initialized at the end of the battle)
+; Skip the setting of the DV/Personality buffer since we already have it
 .GenerateDVs:
-	ld h, b
-	ld l, c
-
-	push bc
-
+	ld hl, DVAndPersonalityBuffer
+.GenerateRoamDVs:
+	push hl
 ; Random DVs
 	call BattleRandom
 	ld [hli], a
@@ -6628,11 +6636,6 @@ endr
 
 ; Random nature from 0 to 24
 ; 50% chance of same nature with Synchronize ability
-	ld a, [PartyMon1Ability]
-	ld b, a
-	ld a, [PartyMon1Species]
-	ld c, a
-	call GetAbility
 	ld a, b
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
