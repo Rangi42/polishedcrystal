@@ -19,7 +19,7 @@ CheckShininess:
 
 InitPartyMenuPalettes:
 	ld de, UnknBGPals
-	ld hl, PartyMenuPals
+	ld hl, PartyMenuBGPals
 rept 4
 	call LoadHLPaletteIntoDE
 endr
@@ -407,25 +407,22 @@ ApplyPartyMenuHPPals: ; 96f3
 	call FillBoxCGB
 	ret
 
-InitPokegearPalettes: ; This is needed because the regular palette is dark at night.
 InitPartyMenuOBPals:
-	ld hl, .PartyMenuOBPals
+	ld hl, PartyMenuOBPals
+	ld de, UnknOBPals
+	ld bc, 8 palettes
+	ld a, $5
+	call FarCopyWRAM
+	ret
+
+InitPokegearPalettes:
+; This is needed because the regular palette is dark at night.
+	ld hl, PokegearOBPals
 	ld de, UnknOBPals
 	ld bc, 2 palettes
 	ld a, $5
 	call FarCopyWRAM
 	ret
-
-.PartyMenuOBPals:
-	RGB 27, 31, 27
-	RGB 31, 19, 10
-	RGB 31, 07, 04
-	RGB 00, 00, 00
-
-	RGB 27, 31, 27
-	RGB 31, 19, 10
-	RGB 10, 14, 20
-	RGB 00, 00, 00
 
 GetBattlemonBackpicPalettePointer:
 	push de

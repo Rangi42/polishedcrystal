@@ -85,10 +85,8 @@ endr
 .Pokemon: ; 1173e (4:573e)
 	ld a, [CurPartySpecies]
 	ld [wd265], a
-	ld hl, LoadMenuMonIcon
-	ld a, BANK(LoadMenuMonIcon)
 	ld e, $1 ; naming screen
-	rst FarCall
+	farcall LoadMenuMonIcon
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName

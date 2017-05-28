@@ -31,7 +31,7 @@ BattleObjectPals:
 	RGB 00, 00, 00
 
 
-PartyMenuPals:
+PartyMenuBGPals:
 ; gray
 	RGB 31, 31, 31
 	RGB 18, 18, 18
@@ -53,6 +53,50 @@ HPBarPals:
 	RGB 31, 25, 02
 	RGB 31, 00, 00
 	RGB 00, 00, 00
+
+
+PartyMenuOBPals:
+PokegearOBPals:
+; red
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 31, 07, 01
+	RGB 00, 00, 00
+; blue
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 10, 09, 31
+	RGB 00, 00, 00
+; green
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 07, 23, 03
+	RGB 00, 00, 00
+; brown
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 15, 10, 03
+	RGB 00, 00, 00
+; purple
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 18, 04, 18
+	RGB 00, 00, 00
+; gray
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 13, 13, 13
+	RGB 00, 00, 00
+; yellow
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 31, 29, 00
+	RGB 07, 07, 07
+; turquoise
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 03, 23, 21
+	RGB 07, 07, 07
 
 
 HPBarInteriorPals:

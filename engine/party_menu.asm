@@ -563,10 +563,8 @@ InitPartyMenuGFX: ; 503e0
 .loop
 	push bc
 	push hl
-	ld hl, LoadMenuMonIcon
-	ld a, BANK(LoadMenuMonIcon)
 	ld e, $0 ; party menu
-	rst FarCall
+	farcall LoadMenuMonIcon
 	ld a, [hObjectStructIndexBuffer]
 	inc a
 	ld [hObjectStructIndexBuffer], a
