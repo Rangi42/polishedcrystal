@@ -1426,8 +1426,7 @@ LoadTradeBallAndCableGFX: ; 2982b
 
 LoadTradeBubbleGFX: ; 2985a
 	call DelayFrame
-	ld e, $3 ; trade
-	farcall LoadMenuMonIcon
+	farcall LoadTradeAnimationMonIcon
 	ld de, TradeBubbleGFX
 	ld hl, VTiles0 tile $72
 	lb bc, BANK(TradeBubbleGFX), $4

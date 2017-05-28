@@ -291,6 +291,11 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 	const PAL_OW_TREE   ; 06
 	const PAL_OW_ROCK   ; 07
 
+const_value SET PAL_OW_SILVER
+	const PAL_OW_GRAY   ; $05
+	const PAL_OW_YELLOW ; $06
+	const PAL_OW_TEAL   ; $07
+
 ; sprite movement data table indices
 ; see data/map_objects.asm
 	const_def
@@ -728,3 +733,5 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITE_ANIM_FRAME_IDX_89
 	const SPRITE_ANIM_FRAME_IDX_8A
 	const SPRITE_ANIM_FRAME_IDX_8B
+	const SPRITE_ANIM_FRAME_IDX_8C
+	const SPRITE_ANIM_FRAME_IDX_8D

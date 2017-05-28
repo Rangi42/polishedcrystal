@@ -296,11 +296,11 @@ UpdateAnimFrame: ; 8d04c
 	; fourth byte: attributes
 	; [de] = GetSpriteOAMAttr([hl])
 	ld a, [hl]
-	cp $ff
-	jr z, .skipOAM
+	cp -1 ; this lets the party menu icons keep their dynamic color attribute
+	jr z, .skipOAMAttributes
 	call GetSpriteOAMAttr
 	ld [de], a
-.skipOAM
+.skipOAMAttributes
 	inc hl
 	inc de
 	ld a, e

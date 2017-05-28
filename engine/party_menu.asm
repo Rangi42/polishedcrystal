@@ -563,8 +563,7 @@ InitPartyMenuGFX: ; 503e0
 .loop
 	push bc
 	push hl
-	ld e, $0 ; party menu
-	farcall LoadMenuMonIcon
+	farcall LoadPartyMenuMonIcon
 	ld a, [hObjectStructIndexBuffer]
 	inc a
 	ld [hObjectStructIndexBuffer], a

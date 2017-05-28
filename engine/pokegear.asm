@@ -2931,7 +2931,7 @@ TownMapMon: ; 91f7b
 	ld [wd265], a
 ; Get FlyMon icon
 	ld e, 8 ; starting tile in VRAM
-	farcall GetSpeciesIcon
+	farcall PokegearFlyMap_GetMonIcon
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON

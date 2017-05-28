@@ -31,7 +31,6 @@
 
 ## Aesthetics
 
-* Colored party Pokémon icons
 * Use a side view for Falkner's Pidgeotto in Dark Cave
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
