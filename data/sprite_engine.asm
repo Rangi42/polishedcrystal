@@ -103,10 +103,10 @@ SpriteAnimFrameData: ; 8d6e6
 	dorestart
 
 .Frameset_11:
-	frame SPRITE_ANIM_FRAME_IDX_00,  8
-	frame SPRITE_ANIM_FRAME_IDX_01,  8
-	frame SPRITE_ANIM_FRAME_IDX_00,  8
-	frame SPRITE_ANIM_FRAME_IDX_01,  8, OAM_X_FLIP
+	frame SPRITE_ANIM_FRAME_IDX_37,  8
+	frame SPRITE_ANIM_FRAME_IDX_38,  8
+	frame SPRITE_ANIM_FRAME_IDX_37,  8
+	frame SPRITE_ANIM_FRAME_IDX_38,  8, OAM_X_FLIP
 	dorestart
 
 .Frameset_2d:
