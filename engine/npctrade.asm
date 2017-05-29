@@ -393,19 +393,19 @@ ENDM
 
 	; OT names have 2 characters less padding so the total struct is 31 bytes
 	; Goldenrod City
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY,   MALE,   SITRUS_BERRY, 37460, "Mike@@@@@"
+	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   SITRUS_BERRY, 37460, "Mike@@@@@"
 	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY,   MALE,   PERSIM_BERRY, 48926, "Kyle@@@@@"
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | HASTY,   MALE,   PERSIM_BERRY, 48926, "Kyle@@@@@"
 	; Olivine City
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@"
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@"
 	; Blackthorn City
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@"
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@"
 	; Pewter City
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@"
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@"
 	; Route 14
-	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@"
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@"
 	; Goldenrod Harbor
-	npctrade 0, QWILFISH,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@"
+	npctrade 0, QWILFISH,   GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@"
 ; fcf38
 
 
