@@ -113,7 +113,7 @@ EnterMap: ; 9673e
 HandleMap: ; 96773
 	call ResetOverworldDelay
 	call HandleMapTimeAndJoypad
-	farcall HandleCmdQueue ; no need to farcall
+	call HandleCmdQueue
 	call MapEvents
 
 ; Not immediately entering a connected map will cause problems.
@@ -121,10 +121,10 @@ HandleMap: ; 96773
 	cp 2 ; HandleMap
 	ret nz
 
-	call Function967d1
+	call HandleMapObjects
 	call NextOverworldFrame
-	call Function967e1
-	call Function967f4
+	call HandleMapBackground
+	call CheckPlayerState
 	ret
 ; 96795
 
@@ -180,21 +180,21 @@ HandleMapTimeAndJoypad: ; 967c1
 	ret
 ; 967d1
 
-Function967d1: ; 967d1
+HandleMapObjects: ; 967d1
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
 	call _CheckObjectEnteringVisibleRange
 	ret
 ; 967e1
 
-Function967e1: ; 967e1
+HandleMapBackground: ; 967e1
 	farcall _UpdateSprites
 	farcall ScrollScreen
 	farcall PlaceMapNameSign
 	ret
 ; 967f4
 
-Function967f4: ; 967f4
+CheckPlayerState: ; 967f4
 	ld a, [wPlayerStepFlags]
 	bit 5, a ; in the middle of step
 	jr z, .events
@@ -479,7 +479,7 @@ OWPlayerInput: ; 96974
 
 .Action:
 	push af
-	farcall Function80422
+	farcall StopPlayerForEvent
 	pop af
 	scf
 	ret

@@ -940,8 +940,8 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	ld h, b
 	ld l, c
 	inc hl
-	ld c, $3
-	call Function3842
+	ld c, 3
+	call Print8BitNumRightAlign
 
 .skip_level
 	pop af
@@ -2764,7 +2764,7 @@ LinkMonStatsScreen: ; 4d319
 	farcall LoadTradeScreenBorder
 	farcall Link_WaitBGMap
 	farcall InitTradeSpeciesList
-	farcall Function28eff
+	farcall SetTradeRoomBGPals
 	call WaitBGMap2
 	ret
 
@@ -3432,7 +3432,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
 	call CopyBytes
-	farcall Function51322
+	farcall InsertPokemonIntoBox
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
@@ -3837,7 +3837,7 @@ CatchTutorial:: ; 4e554
 
 INCLUDE "engine/evolution_animation.asm"
 
-Function4e881: ; 4e881
+InitDisplayForHallOfFame: ; 4e881
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -3867,7 +3867,7 @@ Function4e881: ; 4e881
 	text_jump UnknownText_0x1bd39e
 	db "@"
 
-Function4e8c2: ; 4e8c2
+InitDisplayForLeafCredits: ; 4e8c2
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -3883,7 +3883,7 @@ Function4e8c2: ; 4e8c2
 	xor a
 	call ByteFill
 	ld hl, wd000 ; UnknBGPals
-	ld c, 4 * $10
+	ld c, 4 tiles
 .load_white_palettes
 	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [hli], a
@@ -3899,7 +3899,7 @@ Function4e8c2: ; 4e8c2
 	call SetPalettes
 	ret
 
-Function4e906: ; 4e906
+ResetDisplayBetweenHallOfFameMons: ; 4e906
 	ld a, [rSVBK]
 	push af
 	ld a, $6
@@ -4559,10 +4559,10 @@ ListMoves: ; 50d6f
 .done
 	ret
 
-Function50db9: ; 50db9
+InitList: ; 50db9
 	ld a, [wd263]
 
-	cp $1
+	cp INIT_ENEMYOT_LIST
 	jr nz, .check_party_ot_name
 	ld hl, OTPartyCount
 	ld de, OTPartyMonOT
@@ -4570,7 +4570,7 @@ Function50db9: ; 50db9
 	jr .done
 .check_party_ot_name
 
-	cp $4
+	cp INIT_PLAYEROT_LIST
 	jr nz, .check_mon_name
 	ld hl, PartyCount
 	ld de, PartyMonOT
@@ -4578,7 +4578,7 @@ Function50db9: ; 50db9
 	jr .done
 .check_mon_name
 
-	cp $5
+	cp INIT_MON_LIST
 	jr nz, .check_item_name
 	ld hl, CurMart
 	ld de, PokemonNames
@@ -4586,7 +4586,7 @@ Function50db9: ; 50db9
 	jr .done
 .check_item_name
 
-	cp $2
+	cp INIT_BAG_ITEM_LIST
 	jr nz, .check_ob_item_name
 	ld hl, NumItems
 	ld de, ItemNames
@@ -4953,32 +4953,32 @@ _SwitchPartyMons:
 
 INCLUDE "gfx/load_pics.asm"
 
-Function51322: ; 51322
+InsertPokemonIntoBox: ; 51322
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
 	ld hl, sBoxCount
-	call Function513cb
+	call InsertSpeciesIntoBoxOrParty
 	ld a, [sBoxCount]
 	dec a
 	ld [wd265], a
 	ld hl, sBoxMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld de, wBufferMonNick
-	call Function513e0
+	call InsertDataIntoBoxOrParty
 	ld a, [sBoxCount]
 	dec a
 	ld [wd265], a
 	ld hl, sBoxMonOT
 	ld bc, NAME_LENGTH
 	ld de, wBufferMonOT
-	call Function513e0
+	call InsertDataIntoBoxOrParty
 	ld a, [sBoxCount]
 	dec a
 	ld [wd265], a
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld de, wBufferMon
-	call Function513e0
+	call InsertDataIntoBoxOrParty
 	ld hl, wBufferMonMoves
 	ld de, TempMonMoves
 	ld bc, NUM_MOVES
@@ -4989,36 +4989,36 @@ Function51322: ; 51322
 	call CopyBytes
 	ld a, [CurPartyMon]
 	ld b, a
-	farcall Functiondcb6
+	farcall RestorePPofDepositedPokemon
 	jp CloseSRAM
 
-Function5138b: ; 5138b
+InsertPokemonIntoParty: ; 5138b
 	ld hl, PartyCount
-	call Function513cb
+	call InsertSpeciesIntoBoxOrParty
 	ld a, [PartyCount]
 	dec a
 	ld [wd265], a
 	ld hl, PartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld de, wBufferMonNick
-	call Function513e0
+	call InsertDataIntoBoxOrParty
 	ld a, [PartyCount]
 	dec a
 	ld [wd265], a
 	ld hl, PartyMonOT
 	ld bc, NAME_LENGTH
 	ld de, wBufferMonOT
-	call Function513e0
+	call InsertDataIntoBoxOrParty
 	ld a, [PartyCount]
 	dec a
 	ld [wd265], a
 	ld hl, PartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld de, wBufferMon
-	call Function513e0
+	call InsertDataIntoBoxOrParty
 	ret
 
-Function513cb: ; 513cb
+InsertSpeciesIntoBoxOrParty: ; 513cb
 	inc [hl]
 	inc hl
 	ld a, [CurPartyMon]
@@ -5036,7 +5036,7 @@ Function513cb: ; 513cb
 	jr nz, .asm_513d8
 	ret
 
-Function513e0: ; 513e0
+InsertDataIntoBoxOrParty: ; 513e0
 	push de
 	push hl
 	push bc
@@ -6367,7 +6367,7 @@ DudeAutoInput_DownA: ; 1de2af
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
 
-Function1de2c5: ; 1de2c5
+TownMap_ConvertLineBreakCharacters: ; 1de2c5
 	ld hl, StringBuffer1
 .loop
 	ld a, [hl]

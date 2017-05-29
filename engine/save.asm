@@ -22,7 +22,7 @@ SaveMenu: ; 14a1a
 	scf
 	ret
 
-Function14a58: ; 14a58
+SaveAfterLinkTrade: ; 14a58
 	call SetWRAMStateForSave
 	farcall StageRTCTimeForSave
 	call SavePokemonData
@@ -88,7 +88,7 @@ MovePkmnWOMail_SaveGame: ; 14ac2
 	ret
 ; 14ad5
 
-Function14ad5: ; 14ad5
+MovePkmnWOMail_InsertMon_SaveGame: ; 14ad5
 	call SetWRAMStateForSave
 	push de
 	call SaveBox

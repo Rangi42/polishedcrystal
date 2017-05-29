@@ -899,7 +899,7 @@ CheckSpinning::
 	ld [wSpinning], a
 	ret
 
-Function80422:: ; 80422
+StopPlayerForEvent:: ; 80422
 	ld hl, wPlayerNextMovement
 	ld a, movement_step_sleep_1
 	cp [hl]

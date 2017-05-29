@@ -1010,7 +1010,7 @@ InitScrollingMenu:: ; 352f
 	jp TextBox
 ; 354b
 
-Function354b:: ; 354b joypad
+JoyTextDelay_ForcehJoyDown:: ; 354b joypad
 	call DelayFrame
 
 	ld a, [hInMenu]
@@ -1525,15 +1525,15 @@ PrintLevel:: ; 382d
 ; How many digits?
 	ld c, 2
 	cp 100
-	jr c, Function3842
+	jr c, Print8BitNumRightAlign
 
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
-	jr Function3842
+	jr Print8BitNumRightAlign
 ; 383d
 
-Function3842:: ; 3842
+Print8BitNumRightAlign:: ; 3842
 	ld [wd265], a
 	ld de, wd265
 	ld b, PRINTNUM_RIGHTALIGN | 1

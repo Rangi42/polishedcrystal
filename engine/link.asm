@@ -25,7 +25,7 @@ LinkCommunications: ; 28000
 	hlcoord 4, 10
 	ld de, String_PleaseWait
 	call PlaceString
-	call Function28eff
+	call SetTradeRoomBGPals
 	call WaitBGMap2
 	ld hl, wcf5d
 	xor a
@@ -705,7 +705,7 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 	jr z, .not_a_button
 	ld a, $1
 	ld [wd263], a
-	farcall Function50db9
+	farcall InitList
 	ld hl, OTPartyMon1Species
 	farcall LinkMonStatsScreen
 	jp LinkTradePartiesMenuMasterLoop
@@ -898,7 +898,7 @@ Function28926: ; 28926
 	ld [wMenuCursorY], a
 	ld a, $4
 	ld [wd263], a
-	farcall Function50db9
+	farcall InitList
 	farcall LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
 	hlcoord 6, 1
@@ -1371,26 +1371,26 @@ LinkTrade: ; 28b87
 	farcall EvolvePokemon
 	call ClearScreen
 	call LoadTradeScreenBorder
-	call Function28eff
+	call SetTradeRoomBGPals
 	farcall Link_WaitBGMap
 	ld b, $1
 	pop af
 	ld c, a
 	cp MEW
-	jr z, .asm_28e49
+	jr z, .loop
 	ld a, [CurPartySpecies]
 	cp MEW
-	jr z, .asm_28e49
+	jr z, .loop
 	ld b, $2
 	ld a, c
 	cp CELEBI
-	jr z, .asm_28e49
+	jr z, .loop
 	ld a, [CurPartySpecies]
 	cp CELEBI
-	jr z, .asm_28e49
+	jr z, .loop
 	ld b, $0
 
-.asm_28e49
+.loop
 	ld a, b
 	ld [wPlayerLinkAction], a
 	push bc
@@ -1398,13 +1398,13 @@ LinkTrade: ; 28b87
 	pop bc
 	ld a, b
 	and a
-	jr z, .asm_28e63
+	jr z, .save
 	ld a, [wOtherPlayerLinkAction]
 	cp b
-	jr nz, .asm_28e49
+	jr nz, .loop
 
-.asm_28e63
-	farcall Function14a58
+.save
+	farcall SaveAfterLinkTrade
 	ld c, 40
 	call DelayFrames
 	hlcoord 0, 12
@@ -1456,8 +1456,8 @@ LoadTradeScreenBorder: ; 28ef8
 	ret
 ; 28eff
 
-Function28eff: ; 28eff
-	farcall Function16d6a7
+SetTradeRoomBGPals: ; 28eff
+	farcall LoadLinkTradePalette
 	call SetPalettes
 	ret
 ; 28f09
@@ -1611,13 +1611,13 @@ Special_CheckLinkTimeout: ; 29d92
 	ld [hVBlank], a
 	call DelayFrame
 	call DelayFrame
-	call Function29e0c
+	call Link_CheckCommunicationError
 	xor a
 	ld [hVBlank], a
 	ld a, [ScriptVar]
 	and a
 	ret nz
-	jp Function29f04
+	jp Link_ResetSerialRegistersAfterLinkClosure
 ; 29dba
 
 Function29dba: ; 29dba
@@ -1633,7 +1633,7 @@ Function29dba: ; 29dba
 	ld [hVBlank], a
 	call DelayFrame
 	call DelayFrame
-	call Function29e0c
+	call Link_CheckCommunicationError
 	ld a, [ScriptVar]
 	and a
 	jr z, .vblank
@@ -1652,7 +1652,7 @@ Function29dba: ; 29dba
 	ld a, $1
 	ld [hli], a
 	ld [hl], $32
-	call Function29e0c
+	call Link_CheckCommunicationError
 	ld a, [wOtherPlayerLinkMode]
 	cp $6
 	jr z, .vblank
@@ -1668,7 +1668,7 @@ Function29dba: ; 29dba
 	ret
 ; 29e0c
 
-Function29e0c: ; 29e0c
+Link_CheckCommunicationError: ; 29e0c
 	xor a
 	ld [hFFCA], a
 	ld a, [wcf5b]
@@ -1676,21 +1676,21 @@ Function29e0c: ; 29e0c
 	ld a, [wcf5c]
 	ld l, a
 	push hl
-	call Function29e3b
+	call .CheckConnected
 	pop hl
-	jr nz, .asm_29e2f
-	call Function29e47
-	call Function29e53
-	call Function29e3b
-	jr nz, .asm_29e2f
-	call Function29e47
+	jr nz, .load_true
+	call .AcknowledgeSerial
+	call .ConvertDW
+	call .CheckConnected
+	jr nz, .load_true
+	call .AcknowledgeSerial
 	xor a
-	jr .asm_29e31
+	jr .load_scriptvar
 
-.asm_29e2f
+.load_true
 	ld a, $1
 
-.asm_29e31
+.load_scriptvar
 	ld [ScriptVar], a
 	ld hl, wcf5b
 	xor a
@@ -1699,8 +1699,8 @@ Function29e0c: ; 29e0c
 	ret
 ; 29e3b
 
-Function29e3b: ; 29e3b
-	call Function87d
+.CheckConnected: ; 29e3b
+	call WaitLinkTransfer
 	ld hl, wcf5b
 	ld a, [hli]
 	inc a
@@ -1710,7 +1710,7 @@ Function29e3b: ; 29e3b
 	ret
 ; 29e47
 
-Function29e47: ; 29e47
+.AcknowledgeSerial: ; 29e47
 	ld b, $a
 .asm_29e49
 	call DelayFrame
@@ -1720,7 +1720,7 @@ Function29e47: ; 29e47
 	ret
 ; 29e53
 
-Function29e53: ; 29e53
+.ConvertDW: ; 29e53
 	dec h
 	srl h
 	rr l
@@ -1753,7 +1753,7 @@ Special_TryQuickSave: ; 29e66
 
 Special_CheckBothSelectedSameRoom: ; 29e82
 	ld a, [wd265]
-	call Function29f17
+	call Link_EnsureSync
 	push af
 	call LinkDataReceived
 	call DelayFrame
@@ -1805,17 +1805,17 @@ Special_CloseLink: ; 29eee
 	ld [wLinkMode], a
 	ld c, $3
 	call DelayFrames
-	jp Function29f04
+	jp Link_ResetSerialRegistersAfterLinkClosure
 ; 29efa
 
 Special_FailedLinkToPast: ; 29efa
 	ld c, 40
 	call DelayFrames
 	ld a, $e
-	jp Function29f17
+	jp Link_EnsureSync
 ; 29f04
 
-Function29f04: ; 29f04
+Link_ResetSerialRegistersAfterLinkClosure: ; 29f04
 	ld c, 3
 	call DelayFrames
 	ld a, -1
@@ -1828,7 +1828,7 @@ Function29f04: ; 29f04
 	ret
 ; 29f17
 
-Function29f17: ; 29f17
+Link_EnsureSync: ; 29f17
 	add $d0
 	ld [wPlayerLinkAction], a
 	ld [wcf57], a

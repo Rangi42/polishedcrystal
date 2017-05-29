@@ -1,11 +1,11 @@
 
 _Diploma: ; 1dd702
-	call Function1dd709
+	call PlaceDiplomaOnScreen
 	call WaitPressAorB_BlinkCursor
 	ret
 ; 1dd709
 
-Function1dd709: ; 1dd709
+PlaceDiplomaOnScreen: ; 1dd709
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites

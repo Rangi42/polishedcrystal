@@ -771,7 +771,7 @@ SentGetPkmnIntoFromBox: ; db3f
 	ld a, [sBoxCount]
 	dec a
 	ld b, a
-	call Functiondcb6
+	call RestorePPofDepositedPokemon
 .CloseSRAM_And_ClearCarryFlag:
 	call CloseSRAM
 	and a
@@ -784,7 +784,7 @@ CloseSRAM_And_SetCarryFlag: ; dcb1
 	ret
 ; dcb6
 
-Functiondcb6: ; dcb6
+RestorePPofDepositedPokemon: ; dcb6
 	ld a, b
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
@@ -1142,7 +1142,7 @@ SentPkmnIntoBox: ; de6e
 	call CopyBytes
 
 	ld b, 0
-	call Functiondcb6
+	call RestorePPofDepositedPokemon
 
 	call CloseSRAM
 	scf

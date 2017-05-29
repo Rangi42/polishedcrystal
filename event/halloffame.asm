@@ -46,7 +46,7 @@ LeafCredits:: ; 86455
 	xor a
 	ld [VramState], a
 	ld [hMapAnims], a
-	farcall Function4e8c2
+	farcall InitDisplayForLeafCredits
 	ld c, 8
 	call DelayFrames
 	call DisableSpriteUpdates
@@ -71,7 +71,7 @@ HallOfFame_FadeOutMusic: ; 8648e
 	xor a
 	ld [VramState], a
 	ld [hMapAnims], a
-	farcall Function4e881
+	farcall InitDisplayForHallOfFame
 	ld c, 100
 	jp DelayFrames
 ; 864b4
@@ -234,7 +234,7 @@ GetHallOfFameParty: ; 8653f
 AnimateHOFMonEntrance: ; 865b5
 	push hl
 	call ClearBGPalettes
-	farcall Function4e906
+	farcall ResetDisplayBetweenHallOfFameMons
 	pop hl
 	ld a, [hli]
 	ld [TempMonSpecies], a

@@ -99,7 +99,7 @@ Init:: ; 17d
 	ld [rSVBK], a
 	call ClearVRAM
 	call ClearSprites
-	call Function270
+	call ClearsScratch
 
 
 	ld a, BANK(LoadPushOAM)
@@ -203,7 +203,7 @@ ClearWRAM:: ; 25a
 	ret
 ; 270
 
-Function270:: ; 270
+ClearsScratch:: ; 270
 	xor a
 	call GetSRAMBank
 	ld hl, $a000

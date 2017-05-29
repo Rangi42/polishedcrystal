@@ -6576,7 +6576,7 @@ endc
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .InitDVs
 
-; Unknown
+; Transformed
 	ld hl, wEnemyBackupDVs
 	ld de, EnemyMonDVs
 rept 4

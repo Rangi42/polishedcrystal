@@ -145,7 +145,7 @@ _ResetWRAM: ; 5bae
 	ld [wSecretID + 1], a
 
 	ld hl, PartyCount
-	call InitList
+	call .InitList
 
 	xor a
 	ld [wCurBox], a
@@ -157,26 +157,26 @@ _ResetWRAM: ; 5bae
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
 	ld hl, sBoxCount
-	call InitList
+	call .InitList
 	call CloseSRAM
 
 	ld hl, NumItems
-	call InitList
+	call .InitList
 
 	ld hl, NumMedicine
-	call InitList
+	call .InitList
 
 	ld hl, NumBalls
-	call InitList
+	call .InitList
 
 	ld hl, NumBerries
-	call InitList
+	call .InitList
 
 	ld hl, NumKeyItems
-	call InitList
+	call .InitList
 
 	ld hl, PCItems
-	call InitList
+	call .InitList
 
 	ld hl, TMsHMs
 	xor a
@@ -243,7 +243,7 @@ ENDC
 	ret
 ; 5ca1
 
-InitList: ; 5ca1
+.InitList: ; 5ca1
 ; Loads 0 in the count and -1 in the first item or mon slot.
 	xor a
 	ld [hli], a

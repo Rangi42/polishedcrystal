@@ -1159,9 +1159,9 @@ ParseMusic: ; e85e1
 	ld hl, Channel1Flags - Channel1
 	add hl, bc
 	bit SOUND_SFX, [hl]
-	jp nz, Functione8698
+	jp nz, ParseSFXOrRest
 	bit SOUND_REST, [hl] ; rest
-	jp nz, Functione8698
+	jp nz, ParseSFXOrRest
 	bit SOUND_NOISE, [hl] ; noise sample
 	jp nz, GetNoiseSample
 ; normal note
@@ -1275,7 +1275,7 @@ RestoreVolume: ; e8679
 
 ; e8698
 
-Functione8698: ; e8698
+ParseSFXOrRest: ; e8698
 	; turn noise sampling on
 	ld hl, Channel1NoteFlags - Channel1
 	add hl, bc

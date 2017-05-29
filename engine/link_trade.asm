@@ -129,11 +129,6 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX: ; 16d69a
 	ret
 ; 16d6a7
 
-Function16d6a7: ; 16d6a7
-	farcall LoadLinkTradePalette
-	ret
-; 16d6ae
-
 Function16d6ae: ; 16d6ae
 	call Function16d42e
 	ld hl, Tilemap_16d5cd
@@ -155,7 +150,7 @@ LinkTextbox: ; 16d6ca
 Function16d6ce: ; 16d6ce
 	call LoadStandardMenuDataHeader
 	call Function16d6e1
-	farcall Function87d
+	farcall WaitLinkTransfer
 	call Call_ExitMenu
 	call WaitBGMap2
 	ret

@@ -1989,7 +1989,7 @@ endr
 .dw_return ; e322a
 	pop af
 	ld e, a
-	farcall Function14ad5
+	farcall MovePkmnWOMail_InsertMon_SaveGame
 	ret
 ; e3233
 
@@ -2108,7 +2108,7 @@ endr
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
 	ld [CurPartyMon], a
-	farcall Function51322
+	farcall InsertPokemonIntoBox
 	ret
 ; e3316
 
@@ -2137,7 +2137,7 @@ endr
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
 	ld [CurPartyMon], a
-	farcall Function5138b
+	farcall InsertPokemonIntoParty
 	ret
 ; e3357
 

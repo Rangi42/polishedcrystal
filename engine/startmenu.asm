@@ -18,7 +18,7 @@ StartMenu:: ; 125cd
 	call .SetUpMenuItems
 	ld a, [wd0d2]
 	ld [wMenuCursorBuffer], a
-	call MenuFunc_1e7f
+	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatusBox
 	call SafeUpdateSprites
 	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
@@ -137,7 +137,7 @@ StartMenu:: ; 125cd
 	call ClearBGPalettes
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
-	call MenuFunc_1e7f
+	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatus
 	call UpdateSprites
 	call FinishExitMenu
