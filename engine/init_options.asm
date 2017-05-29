@@ -1,3 +1,5 @@
+NUM_INITIAL_OPTIONS EQU 5
+
 SetInitialOptions:
 	call InitInitialOptionsScreen
 	call LoadInitialOptionsScreenPal
@@ -70,8 +72,8 @@ InitialOptionsMenu:
 	ld [hl], $1
 	call ClearBGPalettes
 	hlcoord 0, 0
-	ld b, 16
-	ld c, 18
+	ld b, SCREEN_HEIGHT - 2
+	ld c, SCREEN_WIDTH - 2
 	call TextBox
 	hlcoord 2, 2
 	ld de, StringInitialOptions
@@ -82,7 +84,7 @@ InitialOptionsMenu:
 	xor a
 	ld [wJumptableIndex], a
 	ld [hJoyPressed], a
-	ld c, $4 ; number of items on the menu minus 1 (for done)
+	ld c, NUM_INITIAL_OPTIONS
 .print_text_loop ; this next will display the settings of each option when the menu is opened
 	push bc
 	xor a
@@ -127,17 +129,17 @@ InitialOptionsMenu:
 StringInitialOptions:
 	db "Natures<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
 	db "Abilities<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
+	db "Color variation<LNBRK>"
+	db "            :<LNBRK>"
 	db "Traded #mon<LNBRK>"
 	db "grow faster and<LNBRK>"
 	db "can disobey<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
 	db "            :<LNBRK>"
+	db "<LNBRK>"
 	db "<LNBRK>"
 	db "Done@"
 
@@ -157,6 +159,7 @@ GetInitialOptionPointer: ; e42d6
 .Pointers:
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
+	dw InitialOptions_ColorVariation
 	dw InitialOptions_TradedMon
 	dw InitialOptions_NuzlockeMode
 	dw InitialOptions_Done
@@ -204,7 +207,31 @@ InitialOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 6
+	hlcoord 15, 5
+	call PlaceString
+	and a
+	ret
+
+InitialOptions_ColorVariation:
+	ld hl, InitialOptions
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
+	bit COLOR_VARY_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit COLOR_VARY_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res COLOR_VARY_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set COLOR_VARY_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 7
 	call PlaceString
 	and a
 	ret
@@ -252,14 +279,14 @@ InitialOptions_NuzlockeMode:
 	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 14
+	hlcoord 15, 13
 	call PlaceString
 	and a
 	ret
 
 InitialOptions_Done:
 	ld hl, InitialOptions
-	res RESET_EGO, [hl]
+	res RESET_INIT_OPTS, [hl]
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Exit
@@ -287,7 +314,7 @@ InitialOptionsControl: ; e452a
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-	cp $4 ; maximum number of items in option menu
+	cp NUM_INITIAL_OPTIONS
 	jr nz, .Increase
 	ld [hl], -1
 .Increase:
@@ -299,7 +326,7 @@ InitialOptionsControl: ; e452a
 	ld a, [hl]
 	and a
 	jr nz, .Decrease
-	ld [hl], $5 ; number of option items + 1
+	ld [hl], NUM_INITIAL_OPTIONS + 1
 .Decrease:
 	dec [hl]
 	scf
@@ -309,7 +336,7 @@ InitialOptionsControl: ; e452a
 InitialOptions_UpdateCursorPosition: ; e455c
 	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
-	ld c, $10
+	ld c, SCREEN_HEIGHT - 2
 .loop
 	ld [hl], " "
 	add hl, de
@@ -331,4 +358,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 2, 5, 8, 13, 16
+	db 2, 4, 6, 8, 12, 16

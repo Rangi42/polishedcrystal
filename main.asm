@@ -2933,7 +2933,7 @@ _ResetInitialOptions:
 	cp $1
 	ret z
 	ld a, [InitialOptions]
-	set RESET_EGO, a
+	set RESET_INIT_OPTS, a
 	ld [InitialOptions], a
 	ld a, BANK(sOptions)
 	call GetSRAMBank

@@ -460,7 +460,7 @@ Continue_CheckRTC_RestartClock: ; 5e48
 
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [InitialOptions]
-	bit RESET_EGO, a
+	bit RESET_INIT_OPTS, a
 	jr z, .pass
 	farcall SetInitialOptions
 .pass
