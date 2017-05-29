@@ -134,11 +134,11 @@ StringInitialOptions:
 	db "Color variation<LNBRK>"
 	db "            :<LNBRK>"
 	db "Traded #mon<LNBRK>"
-	db "grow faster and<LNBRK>"
-	db "can disobey<LNBRK>"
+	db "treat you as OT<LNBRK>"
 	db "            :<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
 	db "            :<LNBRK>"
+	db "<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
 	db "Done@"
@@ -255,7 +255,7 @@ InitialOptions_TradedMon:
 	set TRADED_BEHAVIOR, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 11
+	hlcoord 15, 10
 	call PlaceString
 	and a
 	ret
@@ -279,7 +279,7 @@ InitialOptions_NuzlockeMode:
 	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 13
+	hlcoord 15, 12
 	call PlaceString
 	and a
 	ret
@@ -358,4 +358,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 2, 4, 6, 8, 12, 16
+	db 2, 4, 6, 8, 11, 16

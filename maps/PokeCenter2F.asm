@@ -49,8 +49,15 @@ Script_BattleRoomClosed:
 Script_ChangePokeCenter2FMap:
 	callasm CheckPokeCenter2FRegion
 	if_equal $0, .done
+	if_equal $2, .shamouti
 	changemap BANK(KantoPokeCenter2F_BlockData), KantoPokeCenter2F_BlockData
 .done
+	return
+
+.shamouti
+	changemap BANK(KantoPokeCenter2F_BlockData), KantoPokeCenter2F_BlockData
+	changeblock $0, $6, $3c
+	changeblock $2, $0, $4a
 	return
 
 LinkReceptionistScript_Trade:
@@ -471,6 +478,8 @@ CheckPokeCenter2FRegion:
 	ld c, a
 	call GetWorldMapLocation
 	ld hl, ScriptVar
+	cp SHAMOUTI_LANDMARK
+	jr nc, .shamouti
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 .johto
@@ -479,4 +488,8 @@ CheckPokeCenter2FRegion:
 
 .kanto
 	ld [hl], 1
+	ret
+
+.shamouti
+	ld [hl], 2
 	ret

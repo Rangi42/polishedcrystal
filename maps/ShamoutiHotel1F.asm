@@ -5,7 +5,14 @@ ShamoutiHotel1F_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+	dbw MAPCALLBACK_NEWMAP, .RestaurantTrigger
+
+.RestaurantTrigger:
+	domaptrigger SHAMOUTI_HOTEL_RESTAURANT, $0
+	return
 
 ;No matter where
 ;you go, <TRENDY> is

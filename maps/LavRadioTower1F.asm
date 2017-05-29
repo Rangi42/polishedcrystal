@@ -18,11 +18,11 @@ LavRadioTower1F_MapScriptHeader:
 LavRadioTower1FUpstairsScript:
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iftrue .Exorcised
-	callasm LavRadioTowerHauntedUpstairs
+	warpmod 1, HAUNTED_RADIO_TOWER_2F
 	return
 
 .Exorcised:
-	callasm LavRadioTowerNormalUpstairs
+	warpmod 1, LAV_RADIO_TOWER_2F
 	return
 
 ReceptionistScript_0x7ee63:
@@ -259,21 +259,3 @@ LavRadioTower1F_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ee69, -1
 	person_event SPRITE_GENTLEMAN, 1, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7ee6c, -1
 	person_event SPRITE_SUPER_NERD, 6, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7eea2, -1
-
-LavRadioTowerHauntedUpstairs:
-	ld hl, HauntedRadioTower2FWarpNumber
-	jr SetLavRadioTowerUpstairs
-LavRadioTowerNormalUpstairs:
-	ld hl, NormalRadioTower2FWarpNumber
-SetLavRadioTowerUpstairs:
-	ld de, BackupWarpNumber
-	ld a, BANK(HauntedRadioTower2FWarpNumber) ; BANK(NormalRadioTower2FWarpNumber)
-	ld bc, 3
-	call FarCopyBytes
-	ret
-
-HauntedRadioTower2FWarpNumber:
-	db 1, GROUP_HAUNTED_RADIO_TOWER_2F, MAP_HAUNTED_RADIO_TOWER_2F
-
-NormalRadioTower2FWarpNumber:
-	db 1, GROUP_LAV_RADIO_TOWER_2F, MAP_LAV_RADIO_TOWER_2F

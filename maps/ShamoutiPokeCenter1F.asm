@@ -6,7 +6,15 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+
+	dbw MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
+
+ShamoutiPokeCenter1FFixStairScript:
+	changeblock $0, $6, $39
+	return
 
 ShamoutiPokeCenter1FNurseScript:
 	jumpstd pokecenternurse
