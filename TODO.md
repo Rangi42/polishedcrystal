@@ -27,6 +27,7 @@
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
+* Pokédex Area supports Shamouti Island
 
 
 ## Aesthetics
@@ -240,6 +241,7 @@ Some of these may never be added; they're just suggestions.
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
+* Add Valencia Island from Pokémon Orange (for Prof. Ivy's lab, where you can battle her) and maybe other Orange Islands
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
@@ -266,3 +268,11 @@ Some of these may never be added; they're just suggestions.
 * Faster Bicycle, or slower Running Shoes
 * Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
+
+There are some features that I do *not* ever plan to add to Polished Crystal:
+
+* All 802 Pokémon
+* A third region
+* Mega Evolution
+* Z-moves
+* Gen V Exp. Share

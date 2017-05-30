@@ -111,10 +111,6 @@ IsInJohto:: ; 2f17
 	ret
 ; 2f3e
 
-ret_2f3e:: ; 2f3e
-	ret
-; 2f3f
-
 INCLUDE "home/item.asm"
 INCLUDE "home/random.asm"
 INCLUDE "home/sram.asm"

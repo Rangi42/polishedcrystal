@@ -370,8 +370,6 @@ SetUpFiveStepWildEncounterCooldown: ; 968d1
 
 Dummy_CheckScriptFlags3Bit5: ; 968e4
 	call CheckBit5_ScriptFlags3
-	ret z
-	call ret_2f3e
 	ret
 ; 968ec
 

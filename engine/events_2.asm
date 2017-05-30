@@ -458,7 +458,7 @@ endr
 
 .Jumptable_ba: ; 97e94
 	dba CmdQueue_Null
-	dba CmdQueue_Null2
+	dba CmdQueue_Null
 	dba CmdQueue_StoneTable
 	dba CmdQueue_Type3
 	dba CmdQueue_Type4
@@ -484,17 +484,9 @@ CmdQueueAnonJT_Decrement: ; 97eb1
 	ld hl, CMDQUEUE_05
 	add hl, bc
 	dec [hl]
-	ret
-; 97eb7
-
 CmdQueue_Null: ; 97eb7
 	ret
-; 97eb8
-
-CmdQueue_Null2: ; 97eb8
-	call ret_2f3e
-	ret
-; 97ebc
+; 97eb7
 
 CmdQueue_Type4: ; 97ebc
 	call CmdQueueAnonymousJumptable

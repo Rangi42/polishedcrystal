@@ -1491,11 +1491,6 @@ ReturnToBattle_UseBall: ; edfa (3:6dfa)
 	farcall _ReturnToBattle_UseBall
 	ret
 
-;TownMap: ; ee01
-;	farcall PokegearMap
-;	ret
-; ee08
-
 
 Bicycle: ; ee08
 	farcall BikeFunction

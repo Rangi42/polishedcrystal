@@ -117,6 +117,7 @@ ENDM
 	landmark 120,  84, DarkCaveName
 	landmark 132, 104, Route46Name
 	landmark 152,  76, SilverCaveName
+	landmark 110, 140, FastShipName
 	landmark 132,  38, SinjohRuinsName
 	landmark 132,  34, MystriStageName
 	landmark  60, 116, PalletTownName
@@ -180,21 +181,20 @@ ENDM
 	landmark  36,  68, VictoryRoadName
 	landmark  36,  52, IndigoPlateauName
 	landmark  24,  92, Route28Name
-	landmark  28, 148, ShamoutiIslandName
-	landmark  36, 148, BeautifulBeachName
-	landmark  24, 140, RockyBeachName
-	landmark  32, 140, NoisyForestName
-	landmark  36, 140, ShrineRuinsName
-	landmark  22, 146, ShamoutiTunnelName
-	landmark  18, 150, WarmBeachName
-	landmark  18, 150, ShamoutiCoastName
-	landmark  18, 150, FireIslandName
-	landmark  18, 150, IceIslandName
-	landmark  18, 150, LightningIslandName
-	landmark 110, 140, FastShipName
-	landmark 124, 156, NavelRockName
-	landmark 164,  92, FarawayIslandName
 	landmark  62, 150, CinnabarLabName
+	landmark  84,  76, ShamoutiIslandName
+	landmark 100,  84, BeautifulBeachName
+	landmark  84,  64, RockyBeachName
+	landmark  92,  64, NoisyForestName
+	landmark 100,  68, ShrineRuinsName
+	landmark  68,  76, ShamoutiTunnelName
+	landmark  68,  84, WarmBeachName
+	landmark  68,  96, ShamoutiCoastName
+	landmark  76, 100, FireIslandName
+	landmark  92, 100, IceIslandName
+	landmark 108, 100, LightningIslandName
+	landmark  32, 136, NavelRockName
+	landmark 144, 136, FarawayIslandName
 
 
 NewBarkTownName:       db "New Bark¯Town@"
@@ -348,10 +348,6 @@ RegionCheck: ; 0x1caea1
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp FAST_SHIP
-	jr z, .johto
-	cp CINNABAR_LAB
-	jr z, .kanto
 	cp SPECIAL_MAP
 	jr nz, .ok
 
@@ -363,19 +359,21 @@ RegionCheck: ; 0x1caea1
 	call GetWorldMapLocation
 
 .ok
-	cp KANTO_LANDMARK
-	jr c, .johto
 	cp SHAMOUTI_LANDMARK
-	jr c, .kanto
-.shamouti
-	ld e, 2
+	jr nc, .shamouti
+	cp KANTO_LANDMARK
+	jr nc, .kanto
+	ld e, 0
 	ret
 
-.johto
-	ld e, 0
+.shamouti
+	ld e, 2
 	ret
 
 .kanto
 	ld e, 1
 	ret
 
+.johto
+	ld e, 0
+	ret

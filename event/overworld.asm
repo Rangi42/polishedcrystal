@@ -739,6 +739,12 @@ FlyFunction: ; ca3b
 	jr c, .nostormbadge
 	call CheckFlyAllowedOnMap
 	jr nz, .indoors
+
+; assumes all the Shamouti Island maps are in their own group
+	ld a, [MapGroup]
+	cp GROUP_SHAMOUTI_ISLAND
+	jr z, .indoors
+
 	xor a
 	ld [hMapAnims], a
 	call LoadStandardMenuDataHeader
