@@ -36,7 +36,7 @@ SECTION "Map Blockdata 5", ROMX, BANK[$A]
 INCLUDE "maps/blockdata_5.asm"
 
 
-SECTION "Map Blockdata 6", ROMX, BANK[$1B]
+SECTION "Map Blockdata 6", ROMX, BANK[$38]
 
 INCLUDE "maps/blockdata_6.asm"
 
@@ -155,6 +155,8 @@ INCLUDE "maps/Route1617Gate.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route18Gate.asm"
 INCLUDE "maps/Underground.asm"
+INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
+INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 
 
 SECTION "Map Scripts 7", ROMX, BANK[MAP_SCRIPTS_7]
@@ -429,8 +431,6 @@ INCLUDE "maps/Route42EcruteakGate.asm"
 
 SECTION "Map Scripts 18", ROMX, BANK[MAP_SCRIPTS_18]
 
-INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
-INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 INCLUDE "maps/AzaleaTown.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/SaffronCity.asm"

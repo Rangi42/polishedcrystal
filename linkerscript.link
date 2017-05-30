@@ -88,7 +88,6 @@ ROMX $1a ; MAP_SCRIPTS_5
 
 ROMX $1b ; MAP_SCRIPTS_6
 	"Map Scripts 6" ; $4000
-	"Map Blockdata 6" ; $732e
 
 ROMX $1c ; MAP_SCRIPTS_7
 	"Map Scripts 7" ; $4000
@@ -181,6 +180,7 @@ ROMX $37 ; TILESETS_6
 
 ROMX $38
 	"bank38" ; $4000
+	"Map Blockdata 6" ; $7227
 
 ROMX $39
 	"bank39" ; $4000

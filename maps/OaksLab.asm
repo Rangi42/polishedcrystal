@@ -22,7 +22,7 @@ Oak:
 	faceplayer
 	opentext
 	checkevent EVENT_OPENED_MT_SILVER
-	iftrue .CheckPokedex
+	iftrue .GiveStarter
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
 	iftrue .CheckBadges
 	writetext OakWelcomeKantoText
@@ -36,6 +36,50 @@ Oak:
 	if_equal  8, .Complain2
 	jump .AhGood
 
+.GiveStarter:
+	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
+	iftrue .CheckPokedex
+	writetext OakLabGiveStarterText
+	buttonsound
+	waitsfx
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, .PartyFull
+	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
+	iftrue .Squirtle
+	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
+	iftrue .Bulbasaur
+	pokenamemem CHARMANDER, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke CHARMANDER, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckPokedex
+
+.Bulbasaur:
+	pokenamemem BULBASAUR, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke BULBASAUR, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckPokedex
+
+.Squirtle:
+	pokenamemem SQUIRTLE, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke SQUIRTLE, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckPokedex
+
+.PartyFull:
+	writetext OakLabPartyFullText
+	waitbutton
 .CheckPokedex:
 	writetext OakLabDexCheckText
 	waitbutton
@@ -92,27 +136,27 @@ Oak:
 	writetext OakOpenMtSilverText
 	buttonsound
 	setevent EVENT_OPENED_MT_SILVER
-	jump .CheckPokedex
+	jump .GiveStarter
 
 .NotReady:
 	writetext OakRefusedText
 	buttonsound
-	jump .CheckPokedex
+	jump .GiveStarter
 
 .Complain1:
 	writetext OakNoEliteFourRematchText
 	buttonsound
-	jump .CheckPokedex
+	jump .GiveStarter
 
 .Complain2:
 	writetext OakNoKantoBadgesText
 	buttonsound
-	jump .CheckPokedex
+	jump .GiveStarter
 
 .AhGood:
 	writetext OakYesKantoBadgesText
 	buttonsound
-	jump .CheckPokedex
+	jump .GiveStarter
 
 BulbasaurDollScript:
 	opentext
@@ -234,6 +278,34 @@ OakWelcomeKantoText:
 
 	para "out here?"
 	line "Pretty tough, huh?"
+	done
+
+OakLabGiveStarterText:
+	text "Oak: Oh, so Prof."
+	line "Ivy says hello?"
+
+	para "Thanks for convey-"
+	line "ing her message,"
+	cont "<PLAYER>."
+
+	para "She's a good friend"
+	line "of mine."
+
+	para "If she gave you a"
+	line "#mon, let me do"
+	cont "the same!"
+	done
+
+OakLabPartyFullText:
+	text "Hm, you don't have"
+	line "room for it."
+	done
+
+OakLabReceivedKantoStarterText:
+	text "<PLAYER> received"
+	line "@"
+	text_from_ram StringBuffer3
+	text "!"
 	done
 
 OakLabDexCheckText:
