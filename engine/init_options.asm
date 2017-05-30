@@ -1,86 +1,80 @@
 NUM_INITIAL_OPTIONS EQU 5
 
 SetInitialOptions:
-	call InitInitialOptionsScreen
-	call LoadInitialOptionsScreenPal
-	call LoadInitialOptionsScreenGFX
-	call WaitBGMap2
-	call SetPalettes
-	ld hl, InitialOptionsText
-	call PrintText
-	call FadeToMenu
-	farcall BlankScreen
-	call InitialOptionsMenu
-	ret
-
-InitialOptionsText:
-	text_jump _InitialOptionsText
-	db "@"
-
-InitInitialOptionsScreen: ; 48e14 (12:4e14)
 	ld a, $10
 	ld [MusicFade], a
+
 	xor a ; MUSIC_NONE
 	ld [MusicFadeIDLo], a
 	ld [MusicFadeIDHi], a
 	ld c, 8
 	call DelayFrames
+
 	call ClearBGPalettes
 	call LoadFontsExtra
+
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
+
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
-	ret
 
-LoadInitialOptionsScreenPal: ; 48e47 (12:4e47)
-	ld hl, .Palette
+	ld hl, .BGPalette
 	ld de, UnknBGPals
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
-	farcall ApplyPals
-	ret
-; 48e5c (12:4e5c)
 
-.Palette: ; 48e5c
-	RGB 31, 31, 31
-	RGB 09, 30, 31
-	RGB 01, 11, 31
-	RGB 00, 00, 00
-; 48e64
-
-LoadInitialOptionsScreenGFX: ; 48e64 (12:4e64)
-	ld de, .LightBlueTile
+	ld de, .BGTile
 	ld hl, VTiles2 tile $00
-	lb bc, BANK(.LightBlueTile), 1
+	lb bc, BANK(.BGTile), 1
 	call Get2bpp
-	ret
-; 48e71 (12:4e71)
 
-.LightBlueTile: ; 48e71
-INCBIN "gfx/misc/init_bg.2bpp"
+	farcall ApplyPals
 
-InitialOptionsMenu:
+	call WaitBGMap2
+	call SetPalettes
+
+	ld hl, .InitialOptionsText
+	call PrintText
+
+	hlcoord 0, TEXTBOX_Y
+	ld bc, SCREEN_WIDTH * TEXTBOX_HEIGHT
+	xor a
+	call ByteFill
+
+	hlcoord 0, TEXTBOX_Y, AttrMap
+	ld bc, SCREEN_WIDTH * TEXTBOX_HEIGHT
+	xor a
+	call ByteFill
+
+	call WaitBGMap2
+	call SetPalettes
+
 	ld hl, hInMenu
 	ld a, [hl]
 	push af
 	ld [hl], $1
-	call ClearBGPalettes
-	hlcoord 0, 0
-	ld b, SCREEN_HEIGHT - 2
+
+;	call ClearBGPalettes
+
+	hlcoord 0, 1
+	ld b, SCREEN_HEIGHT - 4
 	ld c, SCREEN_WIDTH - 2
 	call TextBox
-	hlcoord 2, 2
-	ld de, StringInitialOptions
+
+	hlcoord 2, 3
+	ld de, .InitialOptionsString
 	call PlaceString
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
-	call SetPalettes
+
+;	ld b, SCGB_DIPLOMA
+;	call GetSGBLayout
+;	call SetPalettes
+
 	xor a
 	ld [wJumptableIndex], a
 	ld [hJoyPressed], a
@@ -95,6 +89,7 @@ InitialOptionsMenu:
 	inc [hl]
 	dec c
 	jr nz, .print_text_loop
+
 	xor a
 	ld [wJumptableIndex], a
 	inc a
@@ -126,7 +121,20 @@ InitialOptionsMenu:
 	ret
 ; e4241
 
-StringInitialOptions:
+.InitialOptionsText:
+	text_jump _InitialOptionsText
+	db "@"
+
+.BGPalette:
+	RGB 31, 31, 31
+	RGB 09, 30, 31
+	RGB 01, 11, 31
+	RGB 00, 00, 00
+
+.BGTile:
+INCBIN "gfx/misc/init_bg.2bpp"
+
+.InitialOptionsString:
 	db "Natures<LNBRK>"
 	db "            :<LNBRK>"
 	db "Abilities<LNBRK>"
@@ -138,8 +146,6 @@ StringInitialOptions:
 	db "            :<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
-	db "<LNBRK>"
 	db "<LNBRK>"
 	db "Done@"
 
@@ -183,7 +189,7 @@ InitialOptions_Natures:
 	set NATURES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 3
+	hlcoord 15, 4
 	call PlaceString
 	and a
 	ret
@@ -207,7 +213,7 @@ InitialOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 5
+	hlcoord 15, 6
 	call PlaceString
 	and a
 	ret
@@ -231,7 +237,7 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 7
+	hlcoord 15, 8
 	call PlaceString
 	and a
 	ret
@@ -255,7 +261,7 @@ InitialOptions_TradedMon:
 	set TRADED_BEHAVIOR, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 10
+	hlcoord 15, 11
 	call PlaceString
 	and a
 	ret
@@ -279,7 +285,7 @@ InitialOptions_NuzlockeMode:
 	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 12
+	hlcoord 15, 13
 	call PlaceString
 	and a
 	ret
@@ -334,9 +340,9 @@ InitialOptionsControl: ; e452a
 ; e455c
 
 InitialOptions_UpdateCursorPosition: ; e455c
-	hlcoord 1, 1
+	hlcoord 1, 2
 	ld de, SCREEN_WIDTH
-	ld c, SCREEN_HEIGHT - 2
+	ld c, SCREEN_HEIGHT - 4
 .loop
 	ld [hl], " "
 	add hl, de
@@ -358,4 +364,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 2, 4, 6, 8, 11, 16
+	db 3, 5, 7, 9, 12, 15
