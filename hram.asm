@@ -1,9 +1,9 @@
 HRAM_START         EQU $ff80
-hPushOAM           EQU $ff80
+hPushOAM           EQU $ff80 ; 10 bytes
 
 hROMBankBackup     EQU $ff8a
 hBuffer            EQU $ff8b
-hFF8C              EQU $ff8c
+
 hRTCDayHi          EQU $ff8d
 hRTCDayLo          EQU $ff8e
 hRTCHours          EQU $ff8f
@@ -33,8 +33,7 @@ hJoyDown           EQU $ffa8
 hJoyLast           EQU $ffa9
 hInMenu            EQU $ffaa
 
-hFFAC              EQU $ffac
-hGraphicStartTile           EQU $ffad
+hGraphicStartTile  EQU $ffad
 hMoveMon           EQU $ffae
 hMapObjectIndexBuffer EQU $ffaf
 hObjectStructIndexBuffer EQU $ffb0
@@ -123,7 +122,7 @@ hCGBPalUpdate      EQU $ffe5
 hCGB               EQU $ffe6
 hSGB               EQU $ffe7
 hDMATransfer       EQU $ffe8
-hFFE9              EQU $ffe9
+
 hFFEA              EQU $ffea
 hClockResetTrigger EQU $ffeb
 
