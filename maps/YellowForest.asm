@@ -138,6 +138,10 @@ YellowForestYellowBattleScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_YELLOW
+	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
+	iffalse .skip
+	clearevent EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
+.skip
 	opentext
 	writetext YellowForestYellowAfterText
 	scall YellowTryGiveLightBallScript

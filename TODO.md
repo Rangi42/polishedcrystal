@@ -44,7 +44,6 @@
 * Soul House + Radio Tower event to get Expn Card
 * Battle Tower merchants selling items for BP
 * Lost Pikablu (Marill) in Noisy Forest
-* Get Kanto starters from Prof. Oak (after Ivy) and Blue (in his house after defeat)
 
 
 ## Characters

@@ -97,6 +97,10 @@ ShamoutiPokeCenter1FIvyScript:
 	playsound SFX_EXIT_BUILDING
 	disappear SHAMOUTIPOKECENTER1F_IVY
 	setevent EVENT_GOT_A_POKEMON_FROM_IVY
+	checkevent EVENT_BEAT_YELLOW
+	iffalse .skip
+	clearevent EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
+.skip
 	waitsfx
 	end
 

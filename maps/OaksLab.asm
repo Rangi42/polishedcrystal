@@ -36,25 +36,25 @@ Oak:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftrue .Squirtle
+	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
-	iftrue .Bulbasaur
-	pokenamemem CHARMANDER, $0
-	writetext OakLabReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	buttonsound
-	givepoke CHARMANDER, 10, SITRUS_BERRY
-	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
-
-.Bulbasaur:
+	iftrue .Squirtle
 	pokenamemem BULBASAUR, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
 	givepoke BULBASAUR, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckBadges
+
+.Charmander:
+	pokenamemem CHARMANDER, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke CHARMANDER, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 

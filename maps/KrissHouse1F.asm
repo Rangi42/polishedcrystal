@@ -161,6 +161,8 @@ if DEF(DEBUG)
 	; useful items
 	giveitem ITEMFINDER
 	giveitem SQUIRTBOTTLE
+	giveitem MYSTICTICKET
+	giveitem OLD_SEA_MAP
 	giveitem MAX_REPEL, 99
 	giveitem MAX_REVIVE, 99
 	giveitem FULL_RESTORE, 99
