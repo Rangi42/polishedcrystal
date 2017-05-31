@@ -15,30 +15,21 @@ OaksLab_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-.DummyTrigger:
-	end
-
 Oak:
 	faceplayer
 	opentext
 	checkevent EVENT_OPENED_MT_SILVER
 	iftrue .GiveStarter
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
-	iftrue .CheckBadges
+	iftrue .GiveStarter
 	writetext OakWelcomeKantoText
 	buttonsound
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
-.CheckBadges:
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .BattleOak
-	checkcode VAR_BADGES
-	if_equal 16, .Complain1
-	if_equal  8, .Complain2
-	jump .AhGood
-
 .GiveStarter:
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
-	iftrue .CheckPokedex
+	iftrue .CheckBadges
+	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
+	iffalse .CheckBadges
 	writetext OakLabGiveStarterText
 	buttonsound
 	waitsfx
@@ -55,7 +46,7 @@ Oak:
 	buttonsound
 	givepoke CHARMANDER, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckPokedex
+	jump .CheckBadges
 
 .Bulbasaur:
 	pokenamemem BULBASAUR, $0
@@ -65,7 +56,7 @@ Oak:
 	buttonsound
 	givepoke BULBASAUR, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckPokedex
+	jump .CheckBadges
 
 .Squirtle:
 	pokenamemem SQUIRTLE, $0
@@ -75,16 +66,23 @@ Oak:
 	buttonsound
 	givepoke SQUIRTLE, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckPokedex
+	jump .CheckBadges
 
 .PartyFull:
 	writetext OakLabPartyFullText
 	waitbutton
+.CheckBadges:
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iftrue .BattleOak
+	checkcode VAR_BADGES
+	if_equal 16, .Complain1
+	if_equal  8, .Complain2
+	writetext OakYesKantoBadgesText
+	buttonsound
 .CheckPokedex:
 	writetext OakLabDexCheckText
 	waitbutton
 	special ProfOaksPCBoot
-
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
 	checkcode VAR_DEXSEEN
@@ -96,7 +94,6 @@ Oak:
 	writetext OakLabOvalCharmText
 	waitbutton
 .NoOvalCharm
-
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
 	checkcode VAR_DEXCAUGHT
@@ -108,7 +105,6 @@ Oak:
 	writetext OakLabShinyCharmText
 	waitbutton
 .NoShinyCharm
-
 	writetext OakLabGoodbyeText
 	waitbutton
 	closetext
@@ -136,27 +132,22 @@ Oak:
 	writetext OakOpenMtSilverText
 	buttonsound
 	setevent EVENT_OPENED_MT_SILVER
-	jump .GiveStarter
+	jump .CheckPokedex
 
 .NotReady:
 	writetext OakRefusedText
 	buttonsound
-	jump .GiveStarter
+	jump .CheckPokedex
 
 .Complain1:
 	writetext OakNoEliteFourRematchText
 	buttonsound
-	jump .GiveStarter
+	jump .CheckPokedex
 
 .Complain2:
 	writetext OakNoKantoBadgesText
 	buttonsound
-	jump .GiveStarter
-
-.AhGood:
-	writetext OakYesKantoBadgesText
-	buttonsound
-	jump .GiveStarter
+	jump .CheckPokedex
 
 BulbasaurDollScript:
 	opentext

@@ -173,7 +173,7 @@ GetInitialOptionPointer: ; e42d6
 InitialOptions_Natures:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit NATURES_OPT, [hl]
 	jr z, .SetNo
@@ -197,7 +197,7 @@ InitialOptions_Natures:
 InitialOptions_Abilities:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit ABILITIES_OPT, [hl]
 	jr z, .SetNo
@@ -221,7 +221,7 @@ InitialOptions_Abilities:
 InitialOptions_ColorVariation:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit COLOR_VARY_OPT, [hl]
 	jr z, .SetNo
@@ -245,7 +245,7 @@ InitialOptions_ColorVariation:
 InitialOptions_TradedMon:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit TRADED_BEHAVIOR, [hl]
 	jr z, .SetNo
@@ -269,7 +269,7 @@ InitialOptions_TradedMon:
 InitialOptions_NuzlockeMode:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit NUZLOCKE_MODE, [hl]
 	jr z, .SetNo
