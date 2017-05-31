@@ -11,10 +11,10 @@ FarawayIsland_MapScriptHeader:
 	dw .Trigger1, 0
 
 .MapCallbacks:
-	db 1
+	db 2
 
 	; callbacks
-
+	dbw MAPCALLBACK_NEWMAP, .Visited
 	dbw MAPCALLBACK_SPRITES, .SetupLawrence
 
 .Trigger0:
@@ -23,6 +23,10 @@ FarawayIsland_MapScriptHeader:
 .Trigger1:
 	priorityjump FarawayIsland_PlayerArrives
 	end
+
+.Visited:
+	setevent EVENT_VISITED_FARAWAY_ISLAND
+	return
 
 .SetupLawrence:
 	disappear FARAWAYISLAND_LAWRENCE

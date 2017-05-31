@@ -285,6 +285,10 @@ OakLabGiveStarterText:
 	para "If she gave you a"
 	line "#mon, let me do"
 	cont "the same!"
+
+	para "You don't see this"
+	line "#mon very often"
+	cont "in Kanto or Johto."
 	done
 
 OakLabPartyFullText:

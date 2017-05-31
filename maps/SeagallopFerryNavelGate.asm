@@ -10,7 +10,10 @@ SeagallopFerryNavelGate_MapScriptHeader:
 	dw .Trigger1, 0
 
 .MapCallbacks:
-	db 0
+	db 1
+
+	; callbacks
+	dbw MAPCALLBACK_NEWMAP, .Visited
 
 .Trigger0:
 	end
@@ -18,6 +21,10 @@ SeagallopFerryNavelGate_MapScriptHeader:
 .Trigger1:
 	priorityjump SeagallopFerryNavelGate_PlayerArrives
 	end
+
+.Visited:
+	setevent EVENT_VISITED_NAVEL_ROCK
+	return
 
 SeagallopFerryNavelGate_PlayerArrives:
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive1MovementData

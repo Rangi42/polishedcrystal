@@ -614,6 +614,21 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld [hl], a
 .wrap_around_up
 	inc [hl]
+
+	call .visited_navel_rock
+	jr nz, .not_after_navel_rock
+	inc [hl]
+.not_after_navel_rock
+	call .visited_faraway_island
+	jr nz, .not_after_faraway_island
+	inc [hl]
+.not_after_faraway_island
+	ld a, [hl]
+	cp FARAWAY_ISLAND + 1
+	jr nz, .not_overflow
+	ld a, SHAMOUTI_ISLAND
+	ld [hl], a
+.not_overflow
 	jr .done_dpad
 
 .down
@@ -626,6 +641,16 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld [hl], a
 .wrap_around_down
 	dec [hl]
+
+	call .visited_faraway_island
+	jr nz, .not_before_faraway_island
+	dec [hl]
+.not_before_faraway_island
+	call .visited_navel_rock
+	jr nz, .not_before_navel_rock
+	dec [hl]
+.not_before_navel_rock
+
 .done_dpad
 	ld a, [wPokegearMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
@@ -635,6 +660,27 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld b, a
 	ld a, [wPokegearMapCursorLandmark]
 	call PokegearMap_UpdateCursorPosition
+	ret
+
+.visited_navel_rock:
+	ld a, [hl]
+	cp NAVEL_ROCK
+	ret nz
+	ld de, EVENT_VISITED_NAVEL_ROCK
+	jr .check_visited
+
+.visited_faraway_island:
+	ld a, [hl]
+	cp FARAWAY_ISLAND
+	ret nz
+	ld de, EVENT_VISITED_FARAWAY_ISLAND
+.check_visited:
+	ld b, CHECK_FLAG
+	push hl
+	call EventFlagAction
+	pop hl
+	ld a, c
+	and a
 	ret
 
 PokegearMap_InitPlayerIcon: ; 9106a
@@ -732,7 +778,7 @@ TownMap_GetKantoLandmarkLimits: ; 910e8
 	ret
 
 TownMap_GetOrangeLandmarkLimits:
-	ld d, LIGHTNING_ISLAND
+	ld d, FARAWAY_ISLAND
 	ld e, SHAMOUTI_ISLAND
 	ret
 
