@@ -290,6 +290,8 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	ret
 
 InnerCheckTMHM:
+	and a
+	ret z
 	push bc
 	push de
 	dec a
