@@ -596,8 +596,8 @@ DefaultOptions: ; 14f7c
 	db $0        ; ???
 	db %00000000 ; Options2: default typeface, running shoes off, 12-hour clock,
 	             ;           imperial units, battle style set
-	db %00001111 ; InitialOptions: natures on, abilities on, color variation on,
-	             ;                 traded behavior on, nuzlocke mode off
+	db %00000111 ; InitialOptions: natures on, abilities on, color variation on,
+	             ;                 traded as OT off, nuzlocke mode off
 	db $0        ; ???
 ; 14f84
 

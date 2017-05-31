@@ -570,8 +570,8 @@ BattleCommand_CheckObedience: ; 343db
 	cp [hl]
 	ret z
 	ld a, [InitialOptions]
-	bit TRADED_BEHAVIOR, a
-	ret z
+	bit TRADED_AS_OT_OPT, a
+	ret nz
 
 
 .obeylevel

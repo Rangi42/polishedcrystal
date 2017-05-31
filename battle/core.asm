@@ -7702,8 +7702,8 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .no_boost
 	ld a, [InitialOptions]
-	bit TRADED_BEHAVIOR, a
-	jr z, .no_boost
+	bit TRADED_AS_OT_OPT, a
+	jr nz, .no_boost
 
 .boosted
 	call BoostExp

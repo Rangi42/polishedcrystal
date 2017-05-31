@@ -247,18 +247,18 @@ InitialOptions_TradedMon:
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
-	bit TRADED_BEHAVIOR, [hl]
+	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
 .Toggle
-	bit TRADED_BEHAVIOR, [hl]
+	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
-	res TRADED_BEHAVIOR, [hl]
+	res TRADED_AS_OT_OPT, [hl]
 	ld de, NoString
 	jr .Display
 .SetYes:
-	set TRADED_BEHAVIOR, [hl]
+	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
 .Display:
 	hlcoord 15, 11
