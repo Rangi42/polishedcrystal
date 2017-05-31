@@ -193,8 +193,8 @@ ENDM
 	landmark  76, 100, FireIslandName
 	landmark  92, 100, IceIslandName
 	landmark 108, 100, LightningIslandName
-	landmark  32, 136, NavelRockName
-	landmark 144, 136, FarawayIslandName
+	landmark 144, 136, NavelRockName
+	landmark  32, 136, FarawayIslandName
 
 
 NewBarkTownName:       db "New Bark¯Town@"
