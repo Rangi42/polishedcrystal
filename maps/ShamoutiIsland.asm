@@ -23,6 +23,11 @@ ShamoutiIslandVileplumeScript:
 .Awake:
 	opentext
 	writetext .PokeFluteText
+	waitbutton
+	closetext
+	applymovement SHAMOUTIISLAND_VILEPLUME, .ShakeMovement
+	opentext
+	writetext .WokeUpText
 	pause 15
 	cry VILEPLUME
 	closetext
@@ -44,11 +49,15 @@ ShamoutiIslandVileplumeScript:
 
 	para "sleeping Vile-"
 	line "plume…"
-
-	para "…"
-
-	para "Vileplume woke up!"
 	done
+
+.WokeUpText:
+	text "Vileplume woke up!"
+	done
+
+.ShakeMovement:
+	tree_shake
+	step_end
 
 ShamoutiIslandYoungsterScript:
 	faceplayer

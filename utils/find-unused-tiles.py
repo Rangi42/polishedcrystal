@@ -55,6 +55,37 @@ def pretty(n):
 def pretty_join(s, g, x='none!'):
 	return g.join(sorted(s)) if s else x
 
+def build_unused_ids(used_ids, domain=None, limit=0xff):
+	domain = set(range(limit + 1)) if domain is None else domain
+	unused_ids = set()
+	first, last = None, None
+	for id in sorted(domain - used_ids):
+		if first is None:
+			first = last = id
+			continue
+		if last == id - 1:
+			last = id
+			continue
+		if last - first < 2:
+			unused_ids.add(pretty(first))
+			unused_ids.add(pretty(last))
+		else:
+			if last == limit:
+				unused_ids.add(pretty(first) + '+')
+			else:
+				unused_ids.add(pretty(first) + '-' + pretty(last))
+		first = last = id
+	if first is not None:
+		if last - first < 2:
+			unused_ids.add(pretty(first))
+			unused_ids.add(pretty(last))
+		else:
+			if last == limit:
+				unused_ids.add(pretty(first) + '+')
+			else:
+				unused_ids.add(pretty(first) + '-' + pretty(last))
+	return unused_ids
+
 def read_tileset_ids():
 	tileset_id = 1
 	with open(code_directory + tileset_filename, 'r') as f:
@@ -102,7 +133,7 @@ def read_used_block_ids():
 	for map_name, tileset_id in map_tilesets.items():
 		block_data_name = map_block_data_exceptions.get(map_name, map_name)
 		with open(code_directory + block_filename_fmt % block_data_name, 'rb') as f:
-			used_block_ids = {pretty(ord(b)) for b in f.read()}
+			used_block_ids = {ord(b) for b in f.read()}
 			tileset_used_block_ids[tileset_id].update(used_block_ids)
 
 def read_used_block_ids_2():
@@ -114,9 +145,9 @@ def read_used_block_ids_2():
 				map_name = parts[1].rstrip(',')
 				used_block_id = parts[3].rstrip(',')
 				if used_block_id.startswith('$'):
-					used_block_id = pretty(int(used_block_id[1:], 16))
+					used_block_id = int(used_block_id[1:], 16)
 				else:
-					used_block_id = pretty(int(used_block_id))
+					used_block_id = int(used_block_id)
 				tileset_id = map_tilesets[map_name]
 				tileset_used_block_ids[tileset_id].add(used_block_id)
 
@@ -125,36 +156,25 @@ def read_used_tile_ids():
 		with open(code_directory + metatile_filename_fmt % tileset_id, 'rb') as f:
 			block_id = 0
 			while True:
-				used_tile_ids = [pretty(ord(b)) for b in f.read(16)]
+				used_tile_ids = [ord(b) for b in f.read(16)]
 				if not used_tile_ids:
 					break
-				if pretty(block_id) in tileset_used_block_ids[tileset_id]:
+				if block_id in tileset_used_block_ids[tileset_id]:
 					tileset_used_tile_ids[tileset_id].update(used_tile_ids)
 				block_id += 1
 
 def find_unused_block_ids():
 	for tileset_id, used_block_ids in tileset_used_block_ids.items():
 		try:
-			limit = int(max(used_block_ids), 16) + 1
-			domain = set(pretty(b) for b in range(limit))
-			unused_block_ids = domain - used_block_ids
-			unused_block_ids.add(pretty(limit) + '+')
+			unused_block_ids = build_unused_ids(used_block_ids)
 		except ValueError:
 			unused_block_ids = set()
 		tileset_unused_block_ids[tileset_id].update(unused_block_ids)
 
 def find_unused_tile_ids():
 	for tileset_id, used_tile_ids in tileset_used_tile_ids.items():
-		domain = {pretty(b) for b in set(range(0x00, 0x70)) | set(range(0x80, 0x100))}
-		unused_tile_ids = domain - used_tile_ids
-		offsets = set(range(0x00, 0x70, 0x10)) | set(range(0x80, 0x100, 0x10))
-		stripes = sum([[{pretty(b) for b in range(d, d + span)} for d in offsets]
-			for span in range(0x80, 0x00, -0x10)], [])
-		for stripe in stripes:
-			if stripe.issubset(unused_tile_ids):
-				unused_tile_ids -= stripe
-				marker = min(stripe) + '-' + max(stripe)
-				unused_tile_ids.add(marker)
+		domain = set(range(0x00, 0x70)) | set(range(0x80, 0x100))
+		unused_tile_ids = build_unused_ids(used_tile_ids, domain)
 		tileset_unused_tile_ids[tileset_id].update(unused_tile_ids)
 
 def main():

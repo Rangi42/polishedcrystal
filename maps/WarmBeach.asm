@@ -236,6 +236,9 @@ WarmBeachShrine:
 	line "Seas."
 	done
 
+WarmBeachHiddenPearl:
+	dwb EVENT_WARM_BEACH_HIDDEN_PEARL, PEARL
+
 WarmBeach_MapEventHeader:
 	; filler
 	db 0, 0
@@ -250,10 +253,11 @@ WarmBeach_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 3
+	db 4
 	signpost 14, 17, SIGNPOST_READ, WarmBeachShackSign
 	signpost 20, 18, SIGNPOST_READ, WarmBeachShrine
 	signpost 20, 19, SIGNPOST_READ, WarmBeachShrine
+	signpost 20, 6, SIGNPOST_ITEM, WarmBeachHiddenPearl
 
 .PersonEvents:
 	db 7
@@ -262,5 +266,5 @@ WarmBeach_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 14, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachCooltrainermScript, -1
 	person_event SPRITE_COOLTRAINER_F, 20, 22, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachCooltrainerfScript, -1
 	person_event SPRITE_SLOWKING, 21, 17, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
-	person_event SPRITE_LASS, 21, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
+	person_event SPRITE_LASS, 20, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
 	person_event SPRITE_LADY, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachLadyScript, -1

@@ -2254,8 +2254,10 @@
 	const EVENT_NOISY_FOREST_CUT_TREE_1
 	const EVENT_NOISY_FOREST_CUT_TREE_2
 
+; TODO: organize events
+	const EVENT_WARM_BEACH_HIDDEN_PEARL
+
 ; Unused placeholder events
-	const EVENT_832
 	const EVENT_833
 	const EVENT_834
 	const EVENT_835
