@@ -336,7 +336,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 16
 
-	mapgroup ROUTE_23,                                   72, 10 ;  1
+	mapgroup ROUTE_23,                                   70, 10 ;  1
 	mapgroup INDIGO_PLATEAU,                             13, 10 ;  2
 	mapgroup INDIGO_PLATEAU_POKECENTER_1F,                7,  8 ;  3
 	mapgroup WILLS_ROOM,                                  9,  5 ;  4
