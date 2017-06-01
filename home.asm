@@ -1561,24 +1561,9 @@ GetBaseData:: ; 3856
 	jr .end
 
 .egg
-; ????
-	ld de, UnknownEggPic
-
-; Sprite dimensions
-	ld b, $55 ; 5x5
-	ld hl, BasePicSize
-	ld [hl], b
-
-; ????
-	ld hl, BaseAbility1 ; changed just in case
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	jr .end
+;; Sprite dimensions
+	ld a, $55 ; 5x5
+	ld [BasePicSize], a
 
 .end
 ; Replace Pokedex # with species
@@ -1592,10 +1577,6 @@ GetBaseData:: ; 3856
 	pop bc
 	ret
 ; 389c
-
-UnknownEggPic:: ; 53d9c
-; Another egg pic. This is shifted up a few pixels.
-INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 
 
 GetNature::
