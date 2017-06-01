@@ -80,6 +80,8 @@ UnknownScript_0x7e217:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke TYROGUE, 10
+	writebyte PREMIER_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 UnknownScript_0x7e231:
 	writetext UnknownText_0x7e36a

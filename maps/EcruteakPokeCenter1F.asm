@@ -60,6 +60,8 @@ EcruteakPokeCenter1FBillScript:
 	waitsfx
 	givepoke EEVEE, 5
 	givepokeitem GiftEeveeMail
+	writebyte GREAT_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_EEVEE
 	writetext UnknownText_0x54dc1
 	waitbutton

@@ -52,6 +52,11 @@ SpecialGiveWobbuffet: ; 7305
 	ld de, SpecialWobbuffetOT
 	call CopyName2
 
+; Dusk Ball
+	ld a, DUSK_BALL
+	ld [ScriptVar], a
+	farcall SetLastPartyMonBall
+
 ; Engine flag for this event.
 	ld hl, DailyFlags
 	set 5, [hl] ; ENGINE_WOBBUFFET_GIVEN

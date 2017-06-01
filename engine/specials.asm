@@ -181,6 +181,7 @@ SpecialsPointers:: ; c029
 	add_special GetOreManiacPrice
 	add_special GetFossilManiacPrice
 	add_special Give_hMoneyTemp
+	add_special SetLastPartyMonBall
 
 	add_special SpecialNone
 ; c224

@@ -85,6 +85,8 @@ ShamoutiPokeCenter1FIvyScript:
 	buttonsound
 	givepoke SQUIRTLE, 10, SITRUS_BERRY
 .Finish:
+	writebyte GREAT_BALL
+	special SetLastPartyMonBall
 	writetext .GoodbyeText
 	waitbutton
 	closetext

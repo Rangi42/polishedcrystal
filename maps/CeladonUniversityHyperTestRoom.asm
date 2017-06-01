@@ -129,6 +129,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	givepoke MAGIKARP, 10, EVIOLITE
 	special TeachMagikarpDragonRage
+	writebyte ULTRA_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 
 .TestComplete:

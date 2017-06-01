@@ -45,6 +45,8 @@ Oak:
 	waitsfx
 	buttonsound
 	givepoke BULBASAUR, 10, SITRUS_BERRY
+	writebyte GREAT_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
@@ -55,6 +57,8 @@ Oak:
 	waitsfx
 	buttonsound
 	givepoke CHARMANDER, 10, SITRUS_BERRY
+	writebyte GREAT_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
@@ -65,6 +69,8 @@ Oak:
 	waitsfx
 	buttonsound
 	givepoke SQUIRTLE, 10, SITRUS_BERRY
+	writebyte GREAT_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 

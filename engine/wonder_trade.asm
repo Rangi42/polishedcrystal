@@ -467,11 +467,9 @@ GetGSBallPichu:
 	ld hl, wOTTrademonOTName
 	call CopyTradeName
 
-	ld a, $FF
+	ld a, $ff
 	ld [wOTTrademonDVs], a
-	ld a, $FF
 	ld [wOTTrademonDVs + 1], a
-	ld a, $FF
 	ld [wOTTrademonDVs + 2], a
 
 	ld hl, PartyMon1DVs

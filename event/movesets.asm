@@ -22,7 +22,7 @@ TeachMagikarpDragonRage:
 	db DRAGON_RAGE
 	db 0
 
-GetLastPartyMonMoveset: ; 0x8b1ce
+GetLastPartyMon: ; 0x8b1ce
 	ld bc, PartyCount
 	ld a, [bc]
 	ld hl, MON_SPECIES
@@ -38,23 +38,20 @@ GetLastPartyMonMoveset: ; 0x8b1ce
 	add hl, de
 	dec a
 	jr nz, .loop
-
-	ld a, [bc]
-	ld c, a
-	ld de, PARTYMON_STRUCT_LENGTH
-
-	; get address of mon's first move
-	push hl
-	pop de
-rept 2
-	inc de
-endr
 	ret
 
 .EmptyParty:
 	scf
 	ret
 ; 8b1e1
+
+GetLastPartyMonMoveset:
+	call GetLastPartyMon
+	ld de, MON_MOVES
+	add hl, de
+	push hl
+	pop de
+	ret
 
 GiveSpecialMoveset:
 .GiveMoves:
@@ -84,3 +81,15 @@ GiveSpecialMoveset:
 	inc de
 	inc hl
 	jr .GiveMoves
+
+SetLastPartyMonBall:
+	call GetLastPartyMon
+	ld de, MON_CAUGHTBALL
+	add hl, de
+	ld a, [ScriptVar]
+	ld c, a
+	ld a, [hl]
+	and $ff - CAUGHTBALL_MASK
+	or c
+	ld [hl], a
+	ret

@@ -32,6 +32,8 @@ OfficerScript_0x69d37:
 	waitsfx
 	givepoke FARFETCH_D, 10, NO_ITEM, 1, GiftFarfetch_dName, GiftFarfetch_dOTName
 	givepokeitem GiftFarfetch_dMail
+	writebyte NEST_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
 	writetext UnknownText_0x69ed6
