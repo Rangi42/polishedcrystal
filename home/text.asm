@@ -182,7 +182,6 @@ PlaceNextChar:: ; 1079
 	ld c, l
 	pop hl
 	ret
-	pop de
 
 NextChar:: ; 1083
 	inc de

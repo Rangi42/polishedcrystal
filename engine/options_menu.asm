@@ -526,7 +526,7 @@ Options_Typeface:
 
 .Save:
 	ld a, [hl]
-	and NOT_FONT_MASK
+	and $ff - FONT_MASK
 	or c
 	ld [hl], a
 	push bc

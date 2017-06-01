@@ -527,7 +527,7 @@ DisplayHOFMon: ; 86748
 	ld [hli], a
 	ld a, "№"
 	ld [hli], a
-	ld [hl], "/"
+	ld [hl], "."
 	hlcoord 10, 16
 	ld de, TempMonID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
@@ -568,8 +568,8 @@ HOF_AnimatePlayerPic: ; 86810
 	farcall HOF_LoadTrainerFrontpic
 	xor a
 	ld [hGraphicStartTile], a
-	hlcoord 12, 5
-	lb bc, 7, 7
+	hlcoord 13, 5
+	lb bc, 5, 7
 	predef PlaceGraphic
 	ld a, $c0
 	ld [hSCX], a
@@ -594,7 +594,7 @@ HOF_AnimatePlayerPic: ; 86810
 	ld [hli], a
 	ld a, "№"
 	ld [hli], a
-	ld [hl], "/"
+	ld [hl], "."
 	hlcoord 4, 6
 	ld de, PlayerID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5

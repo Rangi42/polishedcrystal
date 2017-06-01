@@ -376,9 +376,7 @@ ROMX $76
 	"Tileset Data 12"
 
 ROMX $77 ; TILESETS_7
-	"bank77" ; $4000
-	"Tileset Data 7" ; $41d0
-	"bank77_2" ; $6899
+	"Tileset Data 7" ; $4000
 
 ROMX $78 ; TILESETS_8
 	"Tileset Data 8" ; $4000

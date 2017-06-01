@@ -926,7 +926,7 @@ ShrinkPlayer: ; 610f
 	ld c, 8
 	call DelayFrames
 
-	hlcoord 6, 5
+	hlcoord 6, 4
 	lb bc, 7, 7
 	call ClearBox
 
@@ -970,18 +970,14 @@ IntroFadePalettesEnd
 Intro_PrepTrainerPic: ; 619c
 	ld de, VTiles2
 	farcall GetTrainerPic
-	xor a
-	ld [hGraphicStartTile], a
-	hlcoord 6, 4
-	lb bc, 7, 7
-	predef PlaceGraphic
-	ret
+	jr FinishPrepIntroPic
 ; 61b4
 
 ShrinkFrame: ; 61b4
 	ld de, VTiles2
 	ld c, $31
 	predef DecompressPredef
+FinishPrepIntroPic:
 	xor a
 	ld [hGraphicStartTile], a
 	hlcoord 6, 4
@@ -991,7 +987,6 @@ ShrinkFrame: ; 61b4
 ; 61cd
 
 Intro_PlacePlayerSprite: ; 61cd
-
 	farcall GetPlayerIcon
 	ld c, $c
 	ld hl, VTiles0

@@ -573,7 +573,6 @@ SECTION "bank8", ROMX, BANK[$8]
 INCLUDE "engine/clock_reset.asm"
 
 SECTION "Tileset Data 3", ROMX, BANK[TILESETS_3]
-tilesetdata3::
 
 INCLUDE "tilesets/data_3.asm"
 
@@ -1325,12 +1324,6 @@ DetermineLinkBattleResult: ; 2b930
 	dec d
 	jr nz, .loop3
 	ret
-
-ChrisBackpic: ; 2ba1a
-INCBIN "gfx/misc/player.6x6.2bpp.lz"
-
-DudeBackpic: ; 2bbaa
-INCBIN "gfx/misc/dude.6x6.2bpp.lz"
 
 SECTION "bankB", ROMX, BANK[$B]
 
@@ -5388,18 +5381,25 @@ CardGFX: ; 887c5
 INCBIN "gfx/misc/trainer_card.2bpp"
 
 GetPlayerBackpic: ; 88825
+	ld hl, ChrisBackpic
 	ld a, [PlayerGender]
 	bit 0, a
-	jr z, GetChrisBackpic
-	call GetKrisBackpic
-	ret
-
-GetChrisBackpic: ; 88830
-	ld hl, ChrisBackpic
+	jr z, .ok
+	ld hl, KrisBackpic
+.ok
 	ld de, VTiles2 tile $31
 	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
 	predef DecompressPredef
 	ret
+
+ChrisBackpic: ; 2ba1a
+INCBIN "gfx/misc/chris_back.6x6.2bpp.lz"
+
+KrisBackpic: ; 88ed6
+INCBIN "gfx/misc/kris_back.6x6.2bpp.lz"
+
+DudeBackpic: ; 2bbaa
+INCBIN "gfx/misc/dude.6x6.2bpp.lz"
 
 HOF_LoadTrainerFrontpic: ; 88840
 	call WaitBGMap
@@ -5414,16 +5414,16 @@ HOF_LoadTrainerFrontpic: ; 88840
 .GotClass:
 	ld a, e
 	ld [TrainerClass], a
-	ld de, ChrisPic
+	ld de, ChrisCardPic
 	ld a, [PlayerGender]
 	bit 0, a
 	jr z, .GotPic
-	ld de, KrisPic
+	ld de, KrisCardPic
 
 .GotPic:
 	ld hl, VTiles2
-	ld b, BANK(ChrisPic) ; BANK(KrisPic)
-	ld c, 7 * 7
+	ld b, BANK(ChrisCardPic) ; BANK(KrisCardPic)
+	ld c, 5 * 7
 	call Get2bpp
 	call WaitBGMap
 	ld a, $1
@@ -5431,7 +5431,7 @@ HOF_LoadTrainerFrontpic: ; 88840
 	ret
 
 DrawIntroPlayerPic: ; 88874
-; Draw the player pic at (6,4).
+; Draw the player pic at (7,4).
 
 ; Get class
 	ld e, CHRIS
@@ -5444,41 +5444,24 @@ DrawIntroPlayerPic: ; 88874
 	ld [TrainerClass], a
 
 ; Load pic
-	ld de, ChrisPic
+	ld de, ChrisCardPic
 	ld a, [PlayerGender]
 	bit 0, a
 	jr z, .GotPic
-	ld de, KrisPic
+	ld de, KrisCardPic
 .GotPic:
 	ld hl, VTiles2
-	ld b, BANK(ChrisPic) ; BANK(KrisPic)
-	ld c, 7 * 7 ; dimensions
+	ld b, BANK(ChrisCardPic) ; BANK(KrisCardPic)
+	ld c, 5 * 7 ; dimensions
 	call Get2bpp
 
 ; Draw
 	xor a
 	ld [hGraphicStartTile], a
-	hlcoord 6, 4
-	lb bc, 7, 7
+	hlcoord 7, 4
+	lb bc, 5, 7
 	predef PlaceGraphic
 	ret
-
-ChrisPic: ; 888a9
-INCBIN "gfx/misc/chris.7x7.2bpp"
-
-KrisPic: ; 88bb9
-INCBIN "gfx/misc/kris.7x7.2bpp"
-
-GetKrisBackpic: ; 88ec9
-; Kris's backpic is uncompressed.
-	ld de, KrisBackpic
-	ld hl, VTiles2 tile $31
-	lb bc, BANK(KrisBackpic), 6 * 6 ; dimensions
-	call Get2bpp
-	ret
-
-KrisBackpic: ; 88ed6
-INCBIN "gfx/misc/kris_back.6x6.2bpp"
 
 INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
@@ -6106,16 +6089,9 @@ INCLUDE "battle/move_names.asm"
 
 INCLUDE "engine/landmarks.asm"
 
-SECTION "bank77", ROMX, BANK[$77]
-
-UnownFont: ; 1dc000
-INCBIN "gfx/misc/unown_font.2bpp"
-
 SECTION "Tileset Data 7", ROMX, BANK[TILESETS_7]
 
 INCLUDE "tilesets/data_7.asm"
-
-SECTION "bank77_2", ROMX, BANK[$77]
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c

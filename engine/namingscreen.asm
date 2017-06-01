@@ -833,14 +833,10 @@ LoadNamingScreenGFX: ; 11c51
 	call LoadStandardFont
 	call LoadFontsExtra
 
-	ld de, NamingScreenGFX_MiddleLine
+; replace "—" and subsequent "_"
+	ld de, NamingScreenGFX_Lines
 	ld hl, VTiles1 tile ("—" - $80)
-	lb bc, BANK(NamingScreenGFX_MiddleLine), 1
-	call Get1bpp
-
-	ld de, NamingScreenGFX_UnderLine
-	ld hl, VTiles1 tile ("_" - $80)
-	lb bc, BANK(NamingScreenGFX_UnderLine), 1
+	lb bc, BANK(NamingScreenGFX_Lines), 2
 	call Get1bpp
 
 	ld de, VTiles2 tile $60
@@ -874,13 +870,9 @@ LoadNamingScreenGFX: ; 11c51
 
 ; 11cb7
 
-NamingScreenGFX_MiddleLine:
-INCBIN "gfx/misc/naming_middleline.1bpp"
+NamingScreenGFX_Lines:
+INCBIN "gfx/misc/naming_lines.1bpp"
 ; 11e6d
-
-NamingScreenGFX_UnderLine: ; 11e6d
-INCBIN "gfx/misc/naming_underline.1bpp"
-; 11e75
 
 NamingScreenGFX_Border: ; 11cb7
 INCBIN "gfx/misc/naming_border.2bpp"

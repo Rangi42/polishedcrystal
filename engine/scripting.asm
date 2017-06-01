@@ -3423,7 +3423,7 @@ Script_unowntypeface:
 
 	ld a, [Options2]
 	ld [OptionsBuffer], a
-	and NOT_FONT_MASK
+	and $ff - FONT_MASK
 	or UNOWN_FONT
 	ld [Options2], a
 	call LoadStandardFont

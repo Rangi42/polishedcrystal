@@ -785,6 +785,11 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 
 .a_b
 	call Pokedex_BlackOutBG
+	ld a, [OptionsBuffer]
+	ld [Options2], a
+	xor a
+	ld [OptionsBuffer], a
+	call Pokedex_LoadInvertedFont
 	ld a, DEXSTATE_OPTION_SCR
 	ld [wJumptableIndex], a
 	call DelayFrame
@@ -847,7 +852,7 @@ Pokedex_UnownModeEraseCursor: ; 40654 (10:4654)
 
 Pokedex_UnownModePlaceCursor: ; 40658 (10:4658)
 	ld a, [wDexCurrentUnownIndex]
-	ld c, $5c ; diamond cursor
+	ld c, "." ; diamond cursor
 
 Pokedex_UnownModeUpdateCursorGfx: ; 4065d (10:465d)
 	ld e, a
@@ -1309,7 +1314,7 @@ endr
 	ld h, [hl]
 	ld l, a
 	pop af
-	add $40 - 1 ; Unown A
+	add "A" - 1
 	ld [hl], a
 	inc de
 	inc b
@@ -2485,21 +2490,12 @@ PokedexSlowpokeLZ: ; 416b0
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
 Pokedex_LoadUnownFont: ; 41a2c
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	ld hl, UnownFont
-	ld de, sScratch + $188
-	ld bc, 39 tiles
-	ld a, BANK(UnownFont)
-	call FarCopyBytes
-	ld hl, sScratch + $188
-	ld bc, (NUM_UNOWN + 1) tiles
-	call Pokedex_InvertTiles
-	ld de, sScratch + $188
-	ld hl, VTiles2 tile $40
-	lb bc, BANK(Pokedex_LoadUnownFont), (NUM_UNOWN + 1)
-	call Request2bpp
-	call CloseSRAM
+	ld a, [Options2]
+	ld [OptionsBuffer], a
+	and $ff - FONT_MASK
+	or UNOWN_FONT
+	ld [Options2], a
+	call Pokedex_LoadInvertedFont
 	ret
 
 Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
