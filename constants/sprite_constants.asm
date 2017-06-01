@@ -269,6 +269,7 @@ const_value SET 1
 	const WALKING_SPRITE
 	const STANDING_SPRITE
 	const STILL_SPRITE
+	const MON_SPRITE
 
 ; sprite header fields
 	const_def

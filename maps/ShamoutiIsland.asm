@@ -1,5 +1,7 @@
 const_value set 2
 	const SHAMOUTIISLAND_VILEPLUME
+	const SHAMOUTIISLAND_YOUNGSTER
+	const SHAMOUTIISLAND_MARILL
 
 ShamoutiIsland_MapScriptHeader:
 .MapTriggers:
@@ -13,14 +15,14 @@ ShamoutiIslandVileplumeScript:
 	iftrue .Awake
 	showemote EMOTE_SLEEP, SHAMOUTIISLAND_VILEPLUME, 15
 	opentext
-	writetext ShamoutiIslandVileplumeText
+	writetext .VileplumeText
 	waitbutton
 	closetext
 	end
 
 .Awake:
 	opentext
-	writetext ShamoutiIslandPokeFluteText
+	writetext .PokeFluteText
 	pause 15
 	cry VILEPLUME
 	closetext
@@ -31,12 +33,12 @@ ShamoutiIslandVileplumeScript:
 	reloadmapafterbattle
 	end
 
-ShamoutiIslandVileplumeText:
+.VileplumeText:
 	text "Vileplume is fast"
 	line "asleep…"
 	done
 
-ShamoutiIslandPokeFluteText:
+.PokeFluteText:
 	text "The #gear was"
 	line "placed near the"
 
@@ -46,6 +48,51 @@ ShamoutiIslandPokeFluteText:
 	para "…"
 
 	para "Vileplume woke up!"
+	done
+
+ShamoutiIslandYoungsterScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	iftrue .GotItem
+	writetext .Text1
+	buttonsound
+	verbosegiveitem ODD_SOUVENIR
+	iffalse .Done
+	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+.GotItem:
+	writetext .Text2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.Text1:
+	text "Hello again! Let"
+	line "me give you that"
+	cont "souvenir."
+	done
+
+.Text2:
+	text "A shiny Pikachu"
+	line "would be a real"
+	cont "Pikablu."
+
+	para "I've never found"
+	line "one, but I'm happy"
+	cont "with my Marill."
+	done
+
+ShamoutiIslandPikabluScript:
+	opentext
+	writetext .PikabluText
+	cry MARILL
+	waitbutton
+	closetext
+	end
+
+.PikabluText:
+	text "Marill: Rill!"
 	done
 
 ShamoutiIsland_MapEventHeader:
@@ -68,7 +115,9 @@ ShamoutiIsland_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 1
+	db 3
 	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
+	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
+	person_event SPRITE_MARILL, 14, 25, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandPikabluScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 ;	person_event SPRITE_, ?, ?, SPRITEMOVEDATA_, 0, 0, -1, -1, (1 << 3) | PAL_OW_, PERSONTYPE_TRAINER, 0, Trainer, -1
 ;	person_event SPRITE_, ?, ?, SPRITEMOVEDATA_, 0, 0, -1, -1, (1 << 3) | PAL_OW_, PERSONTYPE_, 0, ShamoutiTunnel, -1

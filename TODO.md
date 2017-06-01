@@ -43,7 +43,6 @@
 
 * Soul House + Radio Tower event to get Expn Card
 * Battle Tower merchants selling items for BP
-* Lost Pikablu (Marill) in Noisy Forest
 
 
 ## Characters

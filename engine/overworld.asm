@@ -241,7 +241,7 @@ GetMonSprite: ; 14259
 
 	farcall LoadOverworldMonIcon
 
-	ld l, 1
+	ld l, MON_SPRITE
 	ld h, 0
 	scf
 	ret
@@ -258,7 +258,7 @@ GetMonSprite: ; 14259
 
 .NoBreedmon:
 	ld a, 1
-	ld l, 1
+	ld l, MON_SPRITE
 	ld h, 0
 	and a
 	ret
@@ -533,8 +533,8 @@ GetSpriteLength: ; 14386
 	jr z, .AnyDirection
 	cp STILL_SPRITE
 	jr z, .OneDirection
-
-	ld a, 12
+; MON_SPRITE
+	ld a, 8
 	ret
 
 .AnyDirection:
@@ -1374,15 +1374,16 @@ Group31Sprites:
 	db SPRITE_YOUNGSTER ; doesnt walk
 	db SPRITE_BEAUTY ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
+	db SPRITE_GRAMPS ; doesnt walk
 	db SPRITE_CANDELA ; doesn't walk
 	db SPRITE_BLANCHE ; doesn't walk
 	db SPRITE_SPARK ; doesn't walk
-	; 15 walking sprites (9 that walk)
+	; 16 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_MARILL
 	db SPRITE_VILEPLUME
 	db SPRITE_SLOWKING
-	; 19 total sprites
+	; 20 total sprites
 	db 0
 
 
