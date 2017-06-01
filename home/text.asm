@@ -36,7 +36,7 @@ ClearTileMap:: ; fc8
 ; fdb
 
 ClearScreen:: ; fdb
-	ld a, TEXTBOX_PAL
+	ld a, PAL_BG_TEXT
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
@@ -116,7 +116,7 @@ endr
 rept 2
 	inc c
 endr
-	ld a, TEXTBOX_PAL
+	ld a, PAL_BG_TEXT
 .col
 	push bc
 	push hl
