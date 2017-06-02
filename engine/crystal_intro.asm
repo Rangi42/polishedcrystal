@@ -1436,7 +1436,7 @@ IntroScene28: ; e5152 (39:5152)
 	cp $8
 	ret nz
 
-	ld de, SFX_UNKNOWN_CB
+	ld de, SFX_TITLE_SCREEN_INTRO
 	call PlaySFX
 	ret
 

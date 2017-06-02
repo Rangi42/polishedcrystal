@@ -41,7 +41,7 @@
 	dba Sfx_ElevatorEnd
 	dba Sfx_ThrowBall
 	dba Sfx_BallPoof
-	dba Sfx_Unknown3A
+	dba Sfx_Faint
 	dba Sfx_Run
 	dba Sfx_SlotMachineStart
 	dba Sfx_Fanfare
@@ -126,7 +126,7 @@
 	dba Sfx_SweetKiss
 	dba Sfx_SweetKiss2
 	dba Sfx_BellyDrum
-	dba Sfx_Unknown7F
+	dba Sfx_Toxic
 	dba Sfx_SludgeBomb
 	dba Sfx_Foresight
 	dba Sfx_Spite
@@ -205,7 +205,7 @@
 	dba Sfx_IntroSuicune4
 	dba Sfx_GameFreakPresents
 	dba Sfx_Tingle
-	dba Sfx_UnknownCB
+	dba Sfx_TitleScreenIntro
 	dba Sfx_TwoPcBeeps
 	dba Sfx_4NoteDitty
 	dba Sfx_Twinkle

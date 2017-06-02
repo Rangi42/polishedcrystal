@@ -180,9 +180,9 @@ Sfx_BallPoof: ; f0a04
 	musicheader 1, 8, Sfx_BallPoof_Ch8
 ; f0a0a
 
-Sfx_Unknown3A: ; f0a0a
-	musicheader 2, 5, Sfx_Unknown3A_Ch5
-	musicheader 1, 8, Sfx_Unknown3A_Ch8
+Sfx_Faint: ; f0a0a
+	musicheader 2, 5, Sfx_Faint_Ch5
+	musicheader 1, 8, Sfx_Faint_Ch8
 ; f0a10
 
 Sfx_Run: ; f0a10
@@ -2568,11 +2568,11 @@ Sfx_BellyDrum_Ch8: ; f14b6
 	endchannel
 ; f14ba
 
-Sfx_Unknown7F: ; f14ba
-	musicheader 1, 5, Sfx_Unknown7F_Ch5
+Sfx_Toxic: ; f14ba
+	musicheader 1, 5, Sfx_Toxic_Ch5
 ; f14bd
 
-Sfx_Unknown7F_Ch5: ; f14bd
+Sfx_Toxic_Ch5: ; f14bd
 	dutycycle $2
 	soundinput $95
 	sound __,  3, $c9, $03b3
@@ -4001,8 +4001,8 @@ Sfx_2Boops_branch_f1cb9: ; f1cb9
 	endchannel
 ; f1cd0
 
-Sfx_UnknownCB: ; f1cd0
-	musicheader 1, 8, Sfx_UnknownCB_Ch8
+Sfx_TitleScreenIntro: ; f1cd0
+	musicheader 1, 8, Sfx_TitleScreenIntro_Ch8
 ; f1cd3
 
 Sfx_Menu_Ch8: ; f1cd3
@@ -4440,13 +4440,13 @@ Sfx_BallPoof_Ch8: ; f1fff
 	endchannel
 ; f2003
 
-Sfx_Unknown3A_Ch5: ; f2003
+Sfx_Faint_Ch5: ; f2003
 	sound __, 16, $d1, $0200
 	soundinput $8
 	endchannel
 ; f200a
 
-Sfx_Unknown3A_Ch8: ; f200a
+Sfx_Faint_Ch8: ; f200a
 	noise __,  5, $f5, $33
 	noise __,  9, $f4, $22
 	noise __, 16, $f2, $21
@@ -5208,7 +5208,7 @@ Sfx_Unknown60_Ch8: ; f2553
 	endchannel
 ; f256c
 
-Sfx_UnknownCB_Ch8: ; f256c
+Sfx_TitleScreenIntro_Ch8: ; f256c
 	noise __,  2, $10, $10
 	noise __,  3, $20, $10
 	noise __,  3, $30, $20

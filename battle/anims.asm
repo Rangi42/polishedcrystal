@@ -4897,13 +4897,13 @@ BattleAnim_Sludge_branch_cbc15:
 BattleAnim_Toxic_branch_cbc15:
 BattleAnim_PoisonJab_branch_cbc15:
 .loop
-	anim_sound 0, 1, SFX_UNKNOWN_7F
+	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_1A, -16, 4,   9, 0, $0
 	anim_wait 8
-	anim_sound 0, 1, SFX_UNKNOWN_7F
+	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_1A,  14, 4,   9, 0, $0
 	anim_wait 8
-	anim_sound 0, 1, SFX_UNKNOWN_7F
+	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_1A, -14, 4,   9, 0, $0
 	anim_wait 8
 	anim_loop 5, .loop

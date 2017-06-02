@@ -459,14 +459,14 @@ Mom_ContinueMenuSetup: ; 1651a
 	lb bc, 6, 18
 	call TextBox
 	hlcoord 1, 2
-	ld de, String_16699
+	ld de, Mom_SavedString
 	call PlaceString
 	hlcoord 12, 2
 	ld de, wMomsMoney
 	lb bc, PRINTNUM_MONEY | 3, 6
 	call PrintNum
 	hlcoord 1, 4
-	ld de, String_166b0
+	ld de, Mom_HeldString
 	call PlaceString
 	hlcoord 12, 4
 	ld de, Money
@@ -717,7 +717,7 @@ UnknownText_0x16694: ; 0x16694
 	db "@"
 ; 0x16699
 
-String_16699: ; 16699
+Mom_SavedString: ; 16699
 	db "Saved@"
 ; 1669f
 
@@ -729,7 +729,7 @@ Mom_DepositString: ; 166a8
 	db "Deposit@"
 ; 166b0
 
-String_166b0: ; 166b0
+Mom_HeldString: ; 166b0
 	db "Held@"
 ; 166b5
 

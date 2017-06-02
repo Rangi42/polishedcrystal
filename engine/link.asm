@@ -1125,7 +1125,7 @@ LinkTrade: ; 28b87
 	ld b, 3
 	ld c, 7
 	call Predef_LinkTextbox
-	ld de, String28eab
+	ld de, String_TradeCancel
 	hlcoord 12, 8
 	call PlaceString
 	ld a, 8
@@ -1412,7 +1412,7 @@ LinkTrade: ; 28b87
 	ld c, 18
 	call Predef_LinkTextbox
 	hlcoord 1, 14
-	ld de, String28ebd
+	ld de, String_TradeCompleted
 	call PlaceString
 	farcall Link_WaitBGMap
 	ld c, 50
@@ -1426,7 +1426,7 @@ Function28ea3: ; 28ea3
 	jp InitTradeMenuDisplay
 ; 28eab
 
-String28eab: ; 28eab
+String_TradeCancel: ; 28eab
 	db   "Trade"
 	next "Cancel@"
 
@@ -1436,7 +1436,7 @@ UnknownText_0x28eb8: ; 0x28eb8
 	db "@"
 ; 0x28ebd
 
-String28ebd: ; 28ebd
+String_TradeCompleted: ; 28ebd
 	db   "Trade completed!@"
 
 String_TooBadTheTradeWasCanceled: ; 28ece
