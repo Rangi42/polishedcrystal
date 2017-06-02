@@ -27,7 +27,6 @@
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Pokédex Area supports Shamouti Island
 
 
 ## Aesthetics
@@ -37,6 +36,7 @@
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Make Eggs use their Pokémon's palette
 * Animate item activations like Quick Claw
+* When switching areas in the Pokédex, fix the palette corruption due to the screen updating in thirds
 
 
 ## Events

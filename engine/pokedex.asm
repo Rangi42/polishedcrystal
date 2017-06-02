@@ -446,6 +446,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	ret
 
 Pokedex_RedisplayDexEntry: ; 4038d
+	call Pokedex_LoadGFX
+	call Pokedex_LoadAnyFootprint
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_GetSelectedMon
 	farcall DisplayDexEntry

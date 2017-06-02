@@ -21,6 +21,7 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 	end
 
 SeagallopFerryShamoutiGate_PlayerArrives:
+	setflag ENGINE_SEEN_SHAMOUTI_ISLAND
 	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorArrive1MovementData
 	applymovement PLAYER, SeagallopFerryShamoutiGatePlayerArriveMovementData
 	opentext

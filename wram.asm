@@ -2086,7 +2086,7 @@ StatusFlags2:: ; d84d
 	; 0 - rockets
 	; 1 - safari zone?
 	; 2 - bug contest timer
-	; 3 - unused
+	; 3 - seen shamouti island
 	; 4 - bike shop call
 	; 5 - pokerus
 	; 6 - unused

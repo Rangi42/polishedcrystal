@@ -180,7 +180,7 @@ TownMap_InitCursorAndPlayerIconPositions: ; 90d70 (24:4d70)
 	ret
 
 Pokegear_InitJumptableIndices: ; 90d9e (24:4d9e)
-	xor a
+	xor a ; CLOCK_CARD
 	ld [wJumptableIndex], a
 	ld [wcf64], a
 	ret
@@ -210,7 +210,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	call Pokegear_FinishTilemap
 	call TownMapPals
 	ld a, [wcf64]
-	cp 1 ; Town Map
+	cp MAP_CARD
 	jr nz, .not_town_map
 	ld a, [wJumptableIndex]
 	cp 3 ; Johto
@@ -224,7 +224,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 .not_town_map
 	ld a, [wcf65]
 	and a
-	jr nz, .kanto_0
+	jr nz, .transition
 	xor a
 	ld [hBGMapAddress], a
 	ld a, VBGMap0 / $100
@@ -233,7 +233,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	ld a, $90
 	jr .finish
 
-.kanto_0
+.transition
 	xor a
 	ld [hBGMapAddress], a
 	ld a, VBGMap1 / $100
@@ -2484,26 +2484,28 @@ _Area: ; 91d11
 	call Request2bpp
 	call LoadTownMapGFX
 
-	call FillKantoMap
-	call .PlaceString_MonsNest
-	call TownMapPals
-	call TownMapKantoFlips
-	hlbgcoord 0, 0, VBGMap1
-	call TownMapBGUpdate
-
-	call FillJohtoMap
-	call .PlaceString_MonsNest
-	call TownMapPals
-	call TownMapJohtoFlips
-	hlbgcoord 0, 0
-	call TownMapBGUpdate
+	ld a, [wd002]
+	cp SHAMOUTI_LANDMARK
+	jr nc, .shamouti
+	cp KANTO_LANDMARK
+	jr nc, .kanto
+.johto
+	ld a, JOHTO_REGION
+	jr .set_region
+.shamouti
+	ld a, ORANGE_REGION
+	jr .set_region
+.kanto
+	ld a, KANTO_REGION
+.set_region
+	ld [wd003], a
+	call .UpdateGFX
 
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes
 	xor a
 	ld [hBGMapMode], a
-	xor a ; Johto
 	call .GetAndPlaceNest
 .loop
 	call JoyTextDelay
@@ -2544,29 +2546,68 @@ _Area: ; 91d11
 	ret
 
 .left
-	ld a, [hWY]
-	cp $90
+	ld a, [wd003]
+	cp JOHTO_REGION ; min
 	ret z
-	call ClearSprites
-	ld a, $90
-	ld [hWY], a
-	xor a ; Johto
+
+	dec a
+	ld [wd003], a
+	jr .update
+
+.right
+	ld a, [wd003]
+	cp ORANGE_REGION ; max
+	ret z
+	cp KANTO_REGION
+	jr z, .check_seen_orange_island
+	ld a, [StatusFlags]
+	bit 6, a ; ENGINE_CREDITS_SKIP
+	ret z
+	jr .go_right
+.check_seen_orange_island
+	ld a, [StatusFlags2]
+	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	ret z
+.go_right
+
+	ld a, [wd003]
+	inc a
+	ld [wd003], a
+
+.update
+	call .UpdateGFX
 	call .GetAndPlaceNest
 	ret
 
-.right
-	ld a, [StatusFlags]
-	bit 6, a ; hall of fame
-	ret z
-	ld a, [hWY]
-	and a
-	ret z
+.UpdateGFX:
 	call ClearSprites
-	xor a
-	ld [hWY], a
-	ld a, 1 ; Kanto
-	call .GetAndPlaceNest
+	ld a, [wd003]
+	cp KANTO_REGION
+	jr z, .KantoGFX
+	cp ORANGE_REGION
+	jr z, .OrangeGFX
+	call FillJohtoMap
+	call .PlaceString_MonsNest
+	call TownMapPals
+	call TownMapJohtoFlips
+.FinishGFX
+	hlbgcoord 0, 0
+	call TownMapBGUpdate
 	ret
+
+.KantoGFX:
+	call FillKantoMap
+	call .PlaceString_MonsNest
+	call TownMapPals
+	call TownMapKantoFlips
+	jr .FinishGFX
+
+.OrangeGFX:
+	call FillOrangeMap
+	call .PlaceString_MonsNest
+	call TownMapPals
+	call TownMapOrangeFlips
+	jr .FinishGFX
 
 ; 91dcd
 
@@ -2618,7 +2659,7 @@ _Area: ; 91d11
 ; 91e1e
 
 .GetAndPlaceNest: ; 91e1e
-	ld [wd003], a
+	ld a, [wd003]
 	ld e, a
 	farcall FindNest ; load nest landmarks into TileMap[0,0]
 	decoord 0, 0
@@ -2713,25 +2754,31 @@ _Area: ; 91d11
 
 .CheckPlayerLocation: ; 91ea9
 ; Don't show the player's sprite if you're
-
 ; not in the same region as what's currently
 ; on the screen.
 	ld a, [wd002]
+	cp SHAMOUTI_LANDMARK
+	jr nc, .player_in_orange
 	cp KANTO_LANDMARK
-	jr c, .johto
-.kanto
+	jr nc, .player_in_kanto
 	ld a, [wd003]
-	and a
-	jr z, .clear
-	jr .ok
-
-.johto
-	ld a, [wd003]
-	and a
+	cp JOHTO_REGION
 	jr nz, .clear
 .ok
 	and a
 	ret
+
+.player_in_kanto
+	ld a, [wd003]
+	cp KANTO_REGION
+	jr nz, .clear
+	jr .ok
+
+.player_in_orange
+	ld a, [wd003]
+	cp ORANGE_REGION
+	jr nz, .clear
+	jr .ok
 
 .clear
 	ld hl, Sprites

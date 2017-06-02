@@ -102,7 +102,7 @@ ENDM
 	engine_flag StatusFlags2, 0 ; rockets in radio tower ; $10
 	engine_flag StatusFlags2, 1 ; safari zone?
 	engine_flag StatusFlags2, 2 ; bug contest timer
-	engine_flag StatusFlags2, 3 ; unused
+	engine_flag StatusFlags2, 3 ; seen shamouti island
 	engine_flag StatusFlags2, 4 ; bike shop call enabled (1024 bike steps reqd)
 	engine_flag StatusFlags2, 5 ; give pokerus
 	engine_flag StatusFlags2, 6 ; unused
