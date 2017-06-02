@@ -346,55 +346,14 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 ; 2536c
 
 TrainerCard_Page2_InitObjectsAndStrings: ; 2536c (9:536c)
-	hlcoord 1, 8
 	ld de, BadgesTilemap
 	ld a, [KantoBadges]
 	and a
-	jr z, .ok
-	ld de, BadgesTilemap2
-.ok
-	call TrainerCardSetup_PlaceTilemapString
-
-	hlcoord 2, 10
-	ld a, $2f
-	ld c, 4
-.loop
-	call TrainerCard_Page2_3_PlaceLeadersFaces
-rept 4
-	inc hl
-endr
-	dec c
-	jr nz, .loop
-
-	hlcoord 2, 13
-	ld a, $57
-	ld c, 4
-.loop2
-	call TrainerCard_Page2_3_PlaceLeadersFaces
-rept 4
-	inc hl
-endr
-	dec c
-	jr nz, .loop2
-
-	xor a
-	ld [wcf64], a
-	ld hl, TrainerCard_JohtoBadgesOAM
-	call TrainerCard_Page2_3_AnimateBadges
-	ret
-
-; 253a2 (9:53a2)
-
-BadgesTilemap: ; 253a2
-	db $29, $2a, $2b, $2c, $2d, $2e, $27, $ff ; "◀BADGES "
-; 253a8
-
-BadgesTilemap2:
-	db $29, $2a, $2b, $2c, $2d, $2e, $28, $ff ; "◀BADGES▶"
-
+	jr nz, TrainerCard_Page2_3_InitObjectsAndStrings
 TrainerCard_Page3_InitObjectsAndStrings:
+	ld de, BadgesTilemap2
+TrainerCard_Page2_3_InitObjectsAndStrings:
 	hlcoord 1, 8
-	ld de, BadgesTilemap
 	call TrainerCardSetup_PlaceTilemapString
 
 	hlcoord 2, 10
@@ -424,6 +383,12 @@ endr
 	ld hl, TrainerCard_KantoBadgesOAM
 	call TrainerCard_Page2_3_OAMUpdate
 	ret
+
+BadgesTilemap:
+	db $29, $2a, $2b, $2c, $2d, $2e, $28, $ff ; "◀BADGES▶"
+
+BadgesTilemap2:
+	db $29, $2a, $2b, $2c, $2d, $2e, $27, $ff ; "◀BADGES "
 
 TrainerCardSetup_PlaceTilemapString: ; 253a8 (9:53a8)
 .loop
@@ -495,30 +460,21 @@ TrainerCard_InitBorder: ; 253b0 (9:53b0)
 TrainerCard_Page2_3_PlaceLeadersFaces: ; 253f4 (9:53f4)
 	push de
 	push hl
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
 	ld de, SCREEN_WIDTH - 3
+rept 4
+	ld [hli], a
+	inc a
+endr
 	add hl, de
+rept 3
 	ld [hli], a
 	inc a
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld de, SCREEN_WIDTH - 3
+endr
 	add hl, de
+rept 3
 	ld [hli], a
 	inc a
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
+endr
 	pop hl
 	pop de
 	ret
@@ -555,8 +511,6 @@ TrainerCard_Page2_3_AnimateBadges: ; 25438 (9:5438)
 	inc a
 	and $7
 	ld [wcf64], a
-	jr TrainerCard_Page2_3_OAMUpdate
-
 TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 ; copy flag array pointer
 	ld a, [hli]
