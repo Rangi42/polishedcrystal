@@ -14,9 +14,7 @@ InitIntroGradient::
 	ld bc, SCREEN_WIDTH
 	ld a, $72
 	call ByteFill
-	ret
 
-LoadIntroGradientGFX::
 	ld de, .IntroGradientGFX
 	ld hl, VTiles2 tile $70
 	lb bc, BANK(.IntroGradientGFX), 3
@@ -678,7 +676,6 @@ ProfElmSpeech: ; 0x5f99
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText1
@@ -703,7 +700,6 @@ if !DEF(DEBUG)
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText2
@@ -722,7 +718,6 @@ if !DEF(DEBUG)
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText5
@@ -736,12 +731,18 @@ endc
 
 	ld hl, ElmText6
 	call PrintText
+
 	call NamePlayer
+
+	call ClearTileMap
+	call LoadFontsExtra
+	call WaitBGMap
+	call DrawIntroPlayerPic
 
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
+	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText7
 	call PrintText
@@ -786,8 +787,9 @@ InitGender: ; 48dcb (12:4dcb)
 	call WaitBGMap2
 	call SetPalettes
 
+	ld b, SCGB_INTRO_PALS
+	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
@@ -802,14 +804,11 @@ InitGender: ; 48dcb (12:4dcb)
 	ld [PlayerGender], a
 
 	call ClearTileMap
-	xor a
-	ld [CurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call DrawIntroPlayerPic
 
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, SoYoureABoyText
@@ -860,21 +859,6 @@ NamePlayer: ; 0x6074
 	ld b, $1 ; player
 	ld de, PlayerName
 	farcall NamingScreen
-
-	call RotateThreePalettesRight
-	call ClearTileMap
-
-	call LoadFontsExtra
-	call WaitBGMap
-
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
-	call RotateThreePalettesLeft
-
-	xor a
-	ld [CurPartySpecies], a
-	farcall DrawIntroPlayerPic
-
 	ld hl, PlayerName
 	ld de, .Chris
 	ld a, [PlayerGender]
@@ -967,6 +951,18 @@ IntroFadePalettes: ; 0x617c
 IntroFadePalettesEnd
 ; 6182
 
+DrawIntroPlayerPic:
+	xor a
+	ld [CurPartySpecies], a
+	ld a, [PlayerGender]
+	bit 0, a
+	jr z, .male
+	ld a, KAY
+	jr .ok
+.male
+	ld a, CAL
+.ok
+	ld [TrainerClass], a
 Intro_PrepTrainerPic: ; 619c
 	ld de, VTiles2
 	farcall GetTrainerPic

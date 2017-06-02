@@ -5430,39 +5430,6 @@ HOF_LoadTrainerFrontpic: ; 88840
 	ld [hBGMapMode], a
 	ret
 
-DrawIntroPlayerPic: ; 88874
-; Draw the player pic at (7,4).
-
-; Get class
-	ld e, CHRIS
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .GotClass
-	ld e, KRIS
-.GotClass:
-	ld a, e
-	ld [TrainerClass], a
-
-; Load pic
-	ld de, ChrisCardPic
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .GotPic
-	ld de, KrisCardPic
-.GotPic:
-	ld hl, VTiles2
-	ld b, BANK(ChrisCardPic) ; BANK(KrisCardPic)
-	ld c, 5 * 7 ; dimensions
-	call Get2bpp
-
-; Draw
-	xor a
-	ld [hGraphicStartTile], a
-	hlcoord 7, 4
-	lb bc, 5, 7
-	predef PlaceGraphic
-	ret
-
 INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
 INCLUDE "event/movesets.asm"
