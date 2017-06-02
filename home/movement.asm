@@ -3,10 +3,6 @@ InitMovementBuffer:: ; 1b1e
 	xor a
 	ld [wMovementBufferCount], a
 	ld [wd004], a
-	ld a, MovementBuffer % $100
-	ld [wd005], a
-	ld a, MovementBuffer / $100
-	ld [wd006], a
 	ret
 ; 1b35
 

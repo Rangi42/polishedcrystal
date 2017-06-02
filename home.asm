@@ -726,11 +726,6 @@ endr
 	call CopyBytes
 
 .done
-	ld a, e
-	ld [wd102], a
-	ld a, d
-	ld [wd103], a
-
 	pop de
 	pop bc
 	pop hl

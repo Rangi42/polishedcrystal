@@ -507,9 +507,9 @@ CmdQueue_Type4: ; 97ebc
 	ld a, [hl]
 	dec a
 	ld [hl], a
-	jr z, .asm_97eee
+	jr z, .finish
 	and $1
-	jr z, .asm_97ee4
+	jr z, .add
 	ld hl, 2
 	add hl, bc
 	ld a, [hSCY]
@@ -517,7 +517,7 @@ CmdQueue_Type4: ; 97ebc
 	ld [hSCY], a
 	ret
 
-.asm_97ee4
+.add
 	ld hl, 2
 	add hl, bc
 	ld a, [hSCY]
@@ -525,7 +525,7 @@ CmdQueue_Type4: ; 97ebc
 	ld [hSCY], a
 	ret
 
-.asm_97eee
+.finish
 	ld hl, 4
 	add hl, bc
 	ld a, [hl]

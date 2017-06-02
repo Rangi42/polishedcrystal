@@ -377,7 +377,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	ld d, a
 	ld e, [hl]
 	farcall ComputeHPBarPixels
-	ld hl, wcda1
+	ld hl, wCurHPPal
 	call SetHPPal
 	ld b, SCGB_STATS_SCREEN_HP_PALS
 	call GetSGBLayout
@@ -1275,7 +1275,7 @@ StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
 EggStatsScreen: ; 4e33a
 	xor a
 	ld [hBGMapMode], a
-	ld hl, wcda1
+	ld hl, wCurHPPal
 	call SetHPPal
 	ld b, SCGB_STATS_SCREEN_HP_PALS
 	call GetSGBLayout

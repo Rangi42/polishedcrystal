@@ -4134,9 +4134,9 @@ endc
 	ld de, BattleMonNick
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
-	ld hl, BattleMonAttack
+	ld hl, BattleMonStats
 	ld de, PlayerStats
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
+	ld bc, BattleMonStatsEnd - BattleMonStats
 	call CopyBytes
 	jp ResetPlayerAbility
 ; 3da74
@@ -4238,9 +4238,9 @@ InitEnemyMon: ; 3dabd
 	ld de, EnemyMonNick
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
-	ld hl, EnemyMonAttack
+	ld hl, EnemyMonStats
 	ld de, EnemyStats
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
+	ld bc, PARTYMON_STRUCT_LENGTH - MON_STATS
 	call CopyBytes
 	ld hl, BaseType1
 	ld de, EnemyMonType1
@@ -7387,11 +7387,11 @@ ApplyStatLevelMultiplier: ; 3ecb7
 	and a
 	ld a, c
 	ld hl, BattleMonAttack
-	ld de, PlayerStats
+	ld de, PlayerAttack
 	ld bc, PlayerAtkLevel
 	jr z, .got_pointers
 	ld hl, EnemyMonAttack
-	ld de, EnemyStats
+	ld de, EnemyAttack
 	ld bc, EnemyAtkLevel
 
 .got_pointers
@@ -7876,10 +7876,10 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr nz, .transformed
-	ld hl, MON_ATK
+	ld hl, MON_STATS
 	add hl, bc
 	ld de, PlayerStats
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_ATK
+	ld bc, BattleMonStatsEnd - BattleMonStats
 	call CopyBytes
 
 .transformed

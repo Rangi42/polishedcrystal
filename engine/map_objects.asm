@@ -2348,7 +2348,7 @@ RefreshPlayerSprite: ; 579d
 	ld [wPlayerNextMovement], a
 	ld [wPlayerMovement], a
 	xor a
-	ld [wd04e], a
+	ld [wPlayerTurningDirection], a
 	ld [PlayerObjectStepFrame], a
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown

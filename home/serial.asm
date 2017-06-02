@@ -137,7 +137,7 @@ Function78a:: ; 78a
 	jr z, .not_player_1_or_wLinkTimeoutFrames_zero
 	call .delay_15_cycles
 	push hl
-	ld hl, wcf5c
+	ld hl, wLinkTimeoutFrames + 1
 	inc [hl]
 	jr nz, .no_rollover_up
 	dec hl
@@ -190,7 +190,7 @@ Function78a:: ; 78a
 	call CheckwLinkTimeoutFramesNonzero
 	jr z, .wLinkTimeoutFrames_zero
 	push hl
-	ld hl, wcf5c
+	ld hl, wLinkTimeoutFrames + 1
 	ld a, [hl]
 	dec a
 	ld [hld], a
@@ -224,7 +224,7 @@ Function78a:: ; 78a
 
 CheckwLinkTimeoutFramesNonzero:: ; 82b
 	push hl
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
 	or [hl]
 	pop hl
@@ -233,8 +233,8 @@ CheckwLinkTimeoutFramesNonzero:: ; 82b
 
 SerialDisconnected:: ; 833
 	dec a
-	ld [wcf5b], a
-	ld [wcf5c], a
+	ld [wLinkTimeoutFrames], a
+	ld [wLinkTimeoutFrames + 1], a
 	ret
 ; 83b
 
@@ -283,7 +283,7 @@ WaitLinkTransfer:: ; 87d
 	call CheckwLinkTimeoutFramesNonzero
 	jr z, .check
 	push hl
-	ld hl, wcf5c
+	ld hl, wLinkTimeoutFrames + 1
 	dec [hl]
 	jr nz, .skip
 	dec hl

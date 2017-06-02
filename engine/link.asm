@@ -241,10 +241,6 @@ Gen2ToGen2LinkComms: ; 28177
 	ld de, OTPartyMons
 	ld bc, OTPartyDataEnd - OTPartyMons
 	call CopyBytes
-	ld a, OTPartyMonOT % $100
-	ld [wd102], a
-	ld a, OTPartyMonOT / $100
-	ld [wd103], a
 	ld de, MUSIC_NONE
 	call PlayMusic
 	ld a, [hLinkPlayerNumber]
@@ -704,7 +700,7 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
 	ld a, $1
-	ld [wd263], a
+	ld [wInitListType], a
 	farcall InitList
 	ld hl, OTPartyMon1Species
 	farcall LinkMonStatsScreen
@@ -897,7 +893,7 @@ Function28926: ; 28926
 	pop af
 	ld [wMenuCursorY], a
 	ld a, $4
-	ld [wd263], a
+	ld [wInitListType], a
 	farcall InitList
 	farcall LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
@@ -1052,7 +1048,6 @@ Function28b22: ; 28b22
 	call WaitBGMap2
 	xor a
 	ld [wcfbb], a
-	xor a
 	ld [rSB], a
 	ld [hSerialSend], a
 	ld a, $1
@@ -1503,7 +1498,7 @@ WaitForOtherPlayerToExit: ; 29c92
 	ld [rIE], a
 	pop af
 	ld [rIF], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1529,7 +1524,7 @@ Special_SetBitsForBattleRequest: ; 29cf1
 Special_WaitForLinkedFriend: ; 29d11
 	ld a, [wPlayerLinkAction]
 	and a
-	jr z, .asm_29d2f
+	jr z, .no_link_action
 	ld a, $2
 	ld [rSB], a
 	xor a
@@ -1542,17 +1537,17 @@ Special_WaitForLinkedFriend: ; 29d11
 	call DelayFrame
 	call DelayFrame
 
-.asm_29d2f
+.no_link_action
 	ld a, $2
-	ld [wcf5c], a
+	ld [wLinkTimeoutFrames + 1], a
 	ld a, $ff
-	ld [wcf5b], a
-.asm_29d39
+	ld [wLinkTimeoutFrames], a
+.loop
 	ld a, [hLinkPlayerNumber]
 	cp $2
-	jr z, .asm_29d79
+	jr z, .connected
 	cp $1
-	jr z, .asm_29d79
+	jr z, .connected
 	ld a, -1
 	ld [hLinkPlayerNumber], a
 	ld a, $2
@@ -1563,16 +1558,16 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [rSC], a
 	ld a, $80
 	ld [rSC], a
-	ld a, [wcf5b]
+	ld a, [wLinkTimeoutFrames]
 	dec a
-	ld [wcf5b], a
-	jr nz, .asm_29d68
-	ld a, [wcf5c]
+	ld [wLinkTimeoutFrames], a
+	jr nz, .not_done
+	ld a, [wLinkTimeoutFrames + 1]
 	dec a
-	ld [wcf5c], a
-	jr z, .asm_29d8d
+	ld [wLinkTimeoutFrames + 1], a
+	jr z, .done
 
-.asm_29d68
+.not_done
 	ld a, $1
 	ld [rSB], a
 	ld a, $1
@@ -1580,9 +1575,9 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld a, $81
 	ld [rSC], a
 	call DelayFrame
-	jr .asm_29d39
+	jr .loop
 
-.asm_29d79
+.connected
 	call LinkDataReceived
 	call DelayFrame
 	call LinkDataReceived
@@ -1592,7 +1587,7 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [ScriptVar], a
 	ret
 
-.asm_29d8d
+.done
 	xor a
 	ld [ScriptVar], a
 	ret
@@ -1601,7 +1596,7 @@ Special_WaitForLinkedFriend: ; 29d11
 Special_CheckLinkTimeout: ; 29d92
 	ld a, $1
 	ld [wPlayerLinkAction], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, $3
 	ld [hli], a
 	xor a
@@ -1623,7 +1618,7 @@ Special_CheckLinkTimeout: ; 29d92
 Function29dba: ; 29dba
 	ld a, $5
 	ld [wPlayerLinkAction], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, $3
 	ld [hli], a
 	xor a
@@ -1648,7 +1643,7 @@ Function29dba: ; 29dba
 	jr nz, .script_var
 	ld a, $6
 	ld [wPlayerLinkAction], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, $1
 	ld [hli], a
 	ld [hl], $32
@@ -1671,9 +1666,9 @@ Function29dba: ; 29dba
 Link_CheckCommunicationError: ; 29e0c
 	xor a
 	ld [hFFCA], a
-	ld a, [wcf5b]
+	ld a, [wLinkTimeoutFrames]
 	ld h, a
-	ld a, [wcf5c]
+	ld a, [wLinkTimeoutFrames + 1]
 	ld l, a
 	push hl
 	call .CheckConnected
@@ -1692,7 +1687,7 @@ Link_CheckCommunicationError: ; 29e0c
 
 .load_scriptvar
 	ld [ScriptVar], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1701,7 +1696,7 @@ Link_CheckCommunicationError: ; 29e0c
 
 .CheckConnected: ; 29e3b
 	call WaitLinkTransfer
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
 	inc a
 	ret nz
@@ -1712,11 +1707,11 @@ Link_CheckCommunicationError: ; 29e0c
 
 .AcknowledgeSerial: ; 29e47
 	ld b, $a
-.asm_29e49
+.loop
 	call DelayFrame
 	call LinkDataReceived
 	dec b
-	jr nz, .asm_29e49
+	jr nz, .loop
 	ret
 ; 29e53
 
@@ -1728,9 +1723,9 @@ Link_CheckCommunicationError: ; 29e0c
 	rr l
 	inc h
 	ld a, h
-	ld [wcf5b], a
+	ld [wLinkTimeoutFrames], a
 	ld a, l
-	ld [wcf5c], a
+	ld [wLinkTimeoutFrames + 1], a
 	ret
 ; 29e66
 
@@ -1739,10 +1734,9 @@ Special_TryQuickSave: ; 29e66
 	push af
 	farcall Link_SaveGame
 	ld a, $1
-	jr nc, .asm_29e75
+	jr nc, .return_result
 	xor a
-
-.asm_29e75
+.return_result
 	ld [ScriptVar], a
 	ld c, $1e
 	call DelayFrames

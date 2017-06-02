@@ -33,7 +33,7 @@ Channel8:: channel_struct Channel8 ; c25f
 wCurTrackDuty:: ds 1
 wCurTrackIntensity:: ds 1
 wCurTrackFrequency:: dw
-wc296:: ds 1 ; BCD value, dummied out
+	ds 1 ; BCD value, dummied out
 wCurNoteDuration:: ds 1 ; used in MusicE0 and LoadNote
 
 CurMusicByte:: ; c298
@@ -96,10 +96,8 @@ MusicFade:: ; c2a7
 MusicFadeCount:: ; c2a8
 	ds 1
 MusicFadeID::
-wc2a9::
 MusicFadeIDLo:: ; c2a9
 	ds 1
-wc2aa::
 MusicFadeIDHi:: ; c2aa
 	ds 1
 	ds 5
@@ -109,7 +107,7 @@ CryLength:: ; c2b2
 	ds 2
 LastVolume:: ; c2b4
 	ds 1
-wc2b5:: ds 1
+	ds 1
 SFXPriority:: ; c2b6
 ; if nonzero, turn off music when playing sfx
 	ds 1
@@ -154,7 +152,7 @@ AutoInputLength:: ; c2cb
 wMonStatusFlags:: ds 1
 wGameLogicPaused:: ds 1 ; c2cd
 wSpriteUpdatesEnabled:: ds 1
-wc2cf:: ds 1
+	ds 1
 wMapTimeOfDay:: ds 1
 	ds 3
 wPrinterConnectionOpen:: ds 1
@@ -176,10 +174,9 @@ ScriptVar:: ; c2dd
 wPlayerNextMovement:: ds 1
 wPlayerMovement:: ds 1
 	ds 2
-wc2e2::
 wMovementPerson:: ds 1
 wMovementDataPointer:: ds 3 ; dba
-wc2e6:: ds 4
+	ds 4
 wMovementByteWasControlSwitch:: ds 1
 wMovementPointer:: ds 2 ; c2eb
 	ds 3
@@ -217,57 +214,26 @@ TilePermissions:: ; c2fe
 	ds 1
 
 SECTION "wSpriteAnims", WRAM0 [$c300]
-; wc300 - wc313 is a 10x2 dictionary.
+; wSpriteAnimDict is a 10x2 dictionary.
 ; keys: taken from third column of SpriteAnimSeqData
 ; values: VTiles
+wBTChoiceOfLvlGroupBackup::
 wSpriteAnimDict:: ds 10 * 2
-	ds wSpriteAnimDict - @
-wc300:: ds 1
-wc301:: ds 1
-wc302:: ds 1
-wc303:: ds 2
-wc305:: ds 1
-wc306:: ds 1
-wc307:: ds 1
-wc308:: ds 1
-wc309:: ds 1
-wc30a:: ds 1
-wc30b:: ds 1
-wc30c:: ds 1
-wc30d:: ds 1
-wc30e:: ds 1
-wc30f:: ds 1
-wc310:: ds 1
-wc311:: ds 1
-wc312:: ds 1
-wc313:: ds 1
 
 wSpriteAnimationStructs::
 ; Field  0: Index
 ; Fields 1-3: Loaded from SpriteAnimSeqData
-wc314::
-SpriteAnim1:: sprite_anim_struct SpriteAnim1
-wc324::
-SpriteAnim2:: sprite_anim_struct SpriteAnim2
-wc334::
-SpriteAnim3:: sprite_anim_struct SpriteAnim3
-wc344::
-SpriteAnim4:: sprite_anim_struct SpriteAnim4
-wc354::
-SpriteAnim5:: sprite_anim_struct SpriteAnim5
-wc364::
-SpriteAnim6:: sprite_anim_struct SpriteAnim6
-wc374::
-SpriteAnim7:: sprite_anim_struct SpriteAnim7
-wc384::
-SpriteAnim8:: sprite_anim_struct SpriteAnim8
-wc394::
-SpriteAnim9:: sprite_anim_struct SpriteAnim9
-wc3a4::
+SpriteAnim1::  sprite_anim_struct SpriteAnim1
+SpriteAnim2::  sprite_anim_struct SpriteAnim2
+SpriteAnim3::  sprite_anim_struct SpriteAnim3
+SpriteAnim4::  sprite_anim_struct SpriteAnim4
+SpriteAnim5::  sprite_anim_struct SpriteAnim5
+SpriteAnim6::  sprite_anim_struct SpriteAnim6
+SpriteAnim7::  sprite_anim_struct SpriteAnim7
+SpriteAnim8::  sprite_anim_struct SpriteAnim8
+SpriteAnim9::  sprite_anim_struct SpriteAnim9
 SpriteAnim10:: sprite_anim_struct SpriteAnim10
-wSpriteAnimationStructsEnd::
-	ds -8
-wc3ac:: ds 8 ; c3ac
+wSpriteAnimationStructsEnd:: ; c3ac
 
 wSpriteAnimCount:: ds 1
 wCurrSpriteOAMAddr:: ds 1
@@ -290,26 +256,7 @@ wGlobalAnimYOffset:: ds 1
 wGlobalAnimXOffset:: ds 1
 wSpriteAnimsEnd::
 
-	ds 11
-wc3cc:: ds 1
-wc3cd:: ds 31
-wc3ec:: ds 1
-wc3ed:: ds 1
-wc3ee:: ds 1
-wc3ef:: ds 1
-wc3f0:: ds 1
-wc3f1:: ds 1
-wc3f2:: ds 1
-wc3f3:: ds 1
-wc3f4:: ds 1
-wc3f5:: ds 1
-wc3f6:: ds 1
-wc3f7:: ds 1
-wc3f8:: ds 1
-wc3f9:: ds 1
-wc3fa:: ds 1
-wc3fb:: ds 1
-wc3fc:: ds 4
+	ds 63
 
 
 SECTION "Sprites", WRAM0 [$c400]
@@ -359,7 +306,6 @@ wc612::
 	ds 10
 wInitHourBuffer:: ; c61c
 	ds 10
-wc626::
 	ds wc608 - @
 
 	ds 1
@@ -527,10 +473,18 @@ wTurnEnded:: ds 1 ; c6b4
 	ds 1
 
 PlayerStats:: ; c6b6
-	ds 10
+PlayerAttack:: ds 2
+PlayerDefense:: ds 2
+PlayerSpeed:: ds 2
+PlayerSpAtk:: ds 2
+PlayerSpDef:: ds 2
 	ds 1
 EnemyStats:: ; c6c1
-	ds 10
+EnemyAttack:: ds 2
+EnemyDefense:: ds 2
+EnemySpeed:: ds 2
+EnemySpAtk:: ds 2
+EnemySpDef:: ds 2
 	ds 1
 
 PlayerStatLevels:: ; c6cc
@@ -751,11 +705,7 @@ wLinkPlayer1Name:: ds NAME_LENGTH
 wLinkPlayer2Name:: ds NAME_LENGTH
 wLinkTradeSendmonSpecies:: ds 1
 wLinkTradeGetmonSpecies:: ds 1
-wc74e:: ds 107
-wc7b9:: ds 1
-wc7ba:: ds 1
-wc7bb:: ds 2
-wc7bd::
+	ds 111
 	ds wc6d0 - @
 
 ; naming screen
@@ -850,15 +800,10 @@ wPokedexOrder:: ds NUM_POKEMON +- 1
 wPokedexOrderEnd:: ds 6
 wPokedexMetadata::
 wDexListingScrollOffset:: ; offset of the first displayed entry from the start
-wc7d0:: ds 1
-wDexListingCursor::
-wc7d1:: ds 1 ; Dex cursor
-wDexListingEnd::
-wc7d2:: ds 1 ; Last mon to display
-wDexListingHeight:: ; number of entries displayed at once in the dex listing
-wc7d3:: ds 1
-wCurrentDexMode::   ; Pokedex Mode
-wc7d4:: ds 1 ; Index of the topmost visible item in a scrolling menu
+wDexListingCursor:: ds 1 ; Dex cursor
+wDexListingEnd:: ds 1 ; Last mon to display
+wDexListingHeight:: ds 1 ; number of entries displayed at once in the dex listing
+wCurrentDexMode:: ds 1 ; Pokedex Mode
 wDexSearchMonType1:: ds 1 ; first type to search
 wDexSearchMonType2:: ds 1 ; second type to search
 wDexSearchResultCount:: ds 1
@@ -870,14 +815,11 @@ wUnlockedUnownMode:: ds 1
 wDexCurrentUnownIndex:: ds 1
 wDexUnownCount:: ds 1
 wDexConvertedMonType:: ds 1 ; mon type converted from dex search mon type
-wc7e0:: ds 1
-wc7e1:: ds 1
-wBackupDexListingCursor::
-wc7e2:: ds 1
-wBackupDexListingPage::
-wc7e3:: ds 1
-wDexCurrentLocation::
-wc7e4:: ds 1
+wDexListingScrollOffsetBackup:: ds 1
+wDexListingCursorBackup:: ds 1
+wBackupDexListingCursor:: ds 1
+wBackupDexListingPage:: ds 1
+wDexCurrentLocation:: ds 1
 wPokedexStatus::
 	ds 1
 wPokedexDataEnd::
@@ -918,80 +860,27 @@ wLinkPlayerDataEnd::
 wLinkDataEnd::
 	ds wLinkData - @
 
-wc800::	ds 1
-wc801:: ds 1
-wc802:: ds 1
-wc803:: ds 4
-wc807:: ds 7
-wc80e:: ds 1
-wc80f:: ds 1
-wc810:: ds 1
-wc811:: ds 1
-wc812:: ds 1
-wc813:: ds 1
-wc814:: ds 4
-wc818:: ds 8
-wc820:: ds 1
-wc821:: ds 15
-wc830:: ds 16
-wc840:: ds 16
-wc850:: ds 16
-wc860:: ds 16
-wc870:: ds 16
-wc880:: ds 16
-wc890:: ds 16
-wc8a0:: ds 16
-wc8b0:: ds 16
-wc8c0:: ds 16
-wc8d0:: ds 16
-wc8e0:: ds 16
-wc8f0:: ds 16
-wc900:: ds 15
-wc90f:: ds 17
-wc920:: ds 16
-wc930:: ds 16
-wc940:: ds 16
-wc950:: ds 20
-wc964:: ds 12
-wc970:: ds 16
-wc980:: ds 16
-wc990:: ds 16
-wc9a0:: ds 16
-wc9b0:: ds 16
-wc9c0:: ds 16
-wc9d0:: ds 16
-wc9e0:: ds 16
-wc9f0:: ds 4
+	ds $100
+
+	ds $f
+wc90f:: ds $11
+	ds $d4
 wc9f4:: ds 5
 wc9f9:: ds 7
 
 wCreditsFaux2bpp::
-wca00:: ds 1
-wca01:: ds 1
-wca02:: ds 14
-	ds 122
+	ds 138
 
 wca8a:: ds 1
 	ds 6
 
 ; tilemap backup?
-wca90:: ds 16
-wcaa0:: ds 3
-wcaa3:: ds 2
-wcaa5:: ds 11
-wcab0:: ds 5
-wcab5:: ds 10
+	ds 47
 wcabf:: ds 1
-wcac0:: ds 9
-wcac9:: ds 7
-wcad0:: ds 16
-wcae0:: ds 16
-wcaf0:: ds 16
-wcb00:: ds 8
-wcb08:: ds 6
+	ds 78
 wcb0e:: ds 5
 wcb13:: ds 9
-wcb1c:: ds 14
+	ds 14
 wBillsPC_ScrollPosition:: ds 1
 wBillsPC_CursorPosition:: ds 1
 wBillsPC_NumMonsInBox:: ds 1
@@ -1001,148 +890,40 @@ wBillsPC_BackupScrollPosition:: ds 1
 wBillsPC_BackupCursorPosition:: ds 1
 wBillsPC_BackupLoadedBox:: ds 1
 wBillsPC_MonHasMail:: ds 1
-	ds 18
-wcb45:: ds 20
-wcb59:: ds 20
-wcb6d:: ds 1
-wcb6e:: ds 22
-wcb84:: ds 100
-wcbe8:: dw
+	ds 81
+wcb84:: ds 102
 wLinkOTPartyMonTypes::
 	ds 2 * PARTY_LENGTH
 	ds 84
 
 wcc4a:: ds 22
-wcc60:: ds 1
-wcc61:: ds 1
-wcc62:: ds 2
-wcc64:: ds 1
-wcc65:: ds 57
+	ds 62
 wcc9e:: ds 22
-wccb4:: ds 1
-wccb5:: ds 3
-wccb8:: ds 1
-wccb9:: ds 1
-wccba:: ds 102
+	ds 108
 
 SECTION "Video", WRAM0
 CreditsPos::
 BGMapBuffer::
 	ds 10
 	ds CreditsPos - @
+	ds 1
 
-wcd20:: ds 1
 wcd21:: ds 1
-wcd22::
 CreditsTimer:: ; cd22
 	ds 1
 
-wcd23:: ds 1
-wcd24:: ds 1
-wcd25:: ds 1
-wcd26:: ds 1
-wcd27:: ds 1
-wcd28:: ds 1
-wcd29:: ds 1
-wcd2a:: ds 1
-wcd2b:: ds 1
-wcd2c:: ds 1
-wcd2d:: ds 1
-wcd2e:: ds 1
-wcd2f:: ds 1
-wcd30:: ds 1
-wcd31:: ds 1
-wcd32:: ds 1
-wcd33:: ds 1
-wcd34:: ds 1
-wcd35:: ds 1
-wcd36:: ds 2
-wcd38:: ds 1
-wcd39:: ds 1
-wcd3a:: ds 1
-wcd3b:: ds 1
-wcd3c:: ds 1
-wcd3d:: ds 1
-wcd3e:: ds 1
-wcd3f:: ds 1
-wcd40:: ds 1
-wcd41:: ds 1
-wcd42:: ds 1
-wcd43:: ds 1
-wcd44:: ds 1
-wcd45:: ds 1
-wcd46:: ds 1
-wcd47:: ds 1
+	ds 37
 
 BGMapPalBuffer:: ; cd48
 	ds 1 ; 40
 
 wBTTempOTSprite::
-wcd49:: ds 1
-wcd4a:: ds 1
-wcd4b:: ds 1
-wcd4c:: ds 1
-wcd4d:: ds 1
-wcd4e:: ds 1
-wcd4f:: ds 1
-wcd50:: ds 1
-wcd51:: ds 1
-wcd52:: ds 1
-wcd53:: ds 1
-wcd54:: ds 1
-wcd55:: ds 1
-wcd56:: ds 1
-wcd57:: ds 1
-wcd58:: ds 1
-wcd59:: ds 1
-wcd5a:: ds 1
-wcd5b:: ds 1
-wcd5c:: ds 1
-wcd5d:: ds 1
-wcd5e:: ds 1
-wcd5f:: ds 1
-wcd60:: ds 2
-wcd62:: ds 1
-wcd63:: ds 1
-wcd64:: ds 1
-wcd65:: ds 1
-wcd66:: ds 1
-wcd67:: ds 1
-wcd68:: ds 1
-wcd69:: ds 1
-wcd6a:: ds 1
-wcd6b:: ds 1
-wcd6c:: ds 1
-wcd6d:: ds 1
-wcd6e:: ds 1
-wcd6f:: ds 1
+	ds 1
+	ds 38
 
 BGMapBufferPtrs:: ; cd70
 ; 20 bg map addresses (16x8 tiles)
-	ds 1 ; 40
-
-wcd71:: ds 1
-wcd72:: ds 1
-wcd73:: ds 1
-wcd74:: ds 1
-wcd75:: ds 2
-wcd77:: ds 1
-wcd78:: ds 1
-wcd79:: ds 1
-wcd7a:: ds 2
-wcd7c:: ds 3
-wcd7f:: ds 1
-wcd80:: ds 1
-wcd81:: ds 1
-wcd82:: ds 1
-wcd83:: ds 1
-wcd84:: ds 1
-wcd85:: ds 4
-wcd89:: ds 1
-wcd8a:: ds 1
-wcd8b:: ds 1
-wcd8c:: ds 1
-wcd8d:: ds 11
+	ds 40
 
 SGBPredef:: ; cd98
 	ds 1
@@ -1152,7 +933,8 @@ EnemyHPPal:: ; cd9a
 	ds 1
 
 wHPPals:: ds PARTY_LENGTH
-wcda1:: ds 8
+wCurHPPal:: ds 1
+	ds 7
 wSGBPals:: ds 48 ; cda9
 
 AttrMap:: ; cdd9
@@ -1166,11 +948,6 @@ AttrMap:: ; cdd9
 ; bit 2-0: pal # (cgb only)
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
 AttrMapEnd::
-	ds 1
-wcf42:: ds 2
-wcf44:: ds 1
-wcf45::
-	ds AttrMapEnd - @
 wTileAnimBuffer::
 	ds $10
 ; addresses dealing with serial comms
@@ -1179,8 +956,7 @@ wOtherPlayerLinkAction:: ds 4
 wPlayerLinkAction:: ds 1
 wTrainerCardBadgePaletteAddr::
 wcf57:: ds 4
-wcf5b:: ds 1
-wcf5c:: ds 1
+wLinkTimeoutFrames:: dw
 wcf5d:: ds 2
 
 MonType:: ; cf5f
@@ -1194,8 +970,7 @@ wCreditsSpawn::
 wNamedObjectTypeBuffer:: ds 1
 wCurrentOptionsPage:: ds 1
 wJumptableIndex::
-wBattleTowerBattleEnded::
-wcf63:: ds 1
+wBattleTowerBattleEnded:: ds 1
 wNrOfBeatenBattleTowerTrainers::
 wMomBankDigitCursorPosition::
 wIntroSceneFrameCounter::
@@ -1473,61 +1248,42 @@ StartFlypoint:: ; d005
 wNumRadioLinesPrinted::
 wMartItem2BCD::
 	ds 1
-wd006::
 LuckyNumberDigit5Buffer::
 EndFlypoint:: ; d006
 wOaksPkmnTalkSegmentCounter::
 	ds 1
 
-wd007::
 MovementBuffer:: ; d007
 	ds 1
 
 wMartItem3BCD::
-wd008:: ds 2
-wd00a:: ds 1
+	ds 3
 wMartItem4BCD::
-wd00b:: ds 1
+	ds 1
 
 wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
 	ds wRadioText - @
 
-wd00c:: ds 1
+	ds 1
 wd00d:: ds 1
 wMartItem5BCD::
-wd00e:: ds 1
+	ds 1
 wd00f:: ds 1
-wd010:: ds 1
+	ds 1
 wMartItem6BCD::
 wd011:: ds 1
-wd012:: ds 1
-wd013:: ds 1
+	ds 2
 wMartItem7BCD::
-wd014:: ds 2
-wd016:: ds 1
+	ds 3
 wMartItem8BCD::
-wd017:: ds 1
-
-wd018:: ds 1
-wd019:: ds 1
+	ds 3
 wMartItem9BCD::
-wd01a:: ds 3
-wMartItem10BCD:: ds 2
-wd01f:: ds 1
+	ds 3
+wMartItem10BCD::
+	ds 3
 wMartItemBCDEnd::
-	ds 13
-wd02d:: ds 1
-wd02e:: ds 1
-wd02f:: ds 1
-wd030:: ds 1
-wd031:: ds 1
-wd032:: ds 1
-wd033:: ds 1
-wd034:: ds 2
-wd036:: ds 2
-wd038:: ds 3
-wd03b:: ds 3
+	ds 30
 
 MenuItemsList::
 CurFruitTree::
@@ -1597,7 +1353,8 @@ wScriptAfterPointer:: ds 2
 wRunningTrainerBattleScript:: ds 1
 MenuItemsListEnd::
 wTempTrainerHeaderEnd::
-wd04e:: ds 24
+wPlayerTurningDirection:: ds 1
+	ds 23
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1:: ; d073
@@ -1644,13 +1401,11 @@ wKeyItemsPocketScrollPosition:: ds 1
 
 wMoveSwapBuffer::
 wSwitchMon::
-wSwitchItem::
-wd0e3:: ds 1
+wSwitchItem:: ds 1
 wMenuScrollPosition:: ds 4
 wQueuedScriptBank:: ds 1
 wQueuedScriptAddr:: ds 2
-wNumMoves::
-wd0eb:: ds 1
+wNumMoves:: ds 1
 wFieldMoveSucceeded::
 wItemEffectSucceeded::
 wPlayerAction::
@@ -1673,19 +1428,15 @@ CurMart:: ds 16 ; d0f0
 CurMartEnd::
 	ds CurMart - @
 CurElevator:: ds 1
-wd0f1::
 CurElevatorFloors::
 wCurMessageIndex:: ds 1
-wd0f2::
 wMailboxCount:: ds 1
 wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: ds 1 ; d0fe
 	ds 2
 
-wd100:: ds 1
-wd101:: ds 1
-wd102:: ds 1
-wd103:: ds 1
+wListPointer:: dw
+	ds 2
 wd104:: ds 1
 wd105:: ds 1
 
@@ -1714,7 +1465,7 @@ wPokemonWithdrawDepositParameter::
 ; 1: Put into PC
 ; 2: Take from Daycare
 ; 3: Put into Daycare
-wd10b:: ds 1
+	ds 1
 IsCurMonInParty::
 wItemQuantityChangeBuffer:: ds 1
 wItemQuantityBuffer:: ds 1
@@ -1767,18 +1518,10 @@ UsedSprites:: ds 64 ; d154
 UsedSpritesEnd::
 	ds UsedSprites - @
 
-wd154:: ; d154
-	ds 31 ; 64
+	ds 31
 
 wd173:: ds 1 ; related to command queue type 3
-	ds 13
-wd181:: ds 1
-wd182:: ds 1
-	ds 14
-
-wd191:: ds 1
-wd192:: ds 1
-wd193:: ds 1
+	ds 32
 wOverworldMapAnchor:: dw ; d194
 wMetatileStandingY:: ds 1 ; d196
 wMetatileStandingX:: ds 1 ; d197
@@ -1914,7 +1657,7 @@ TilesetPalettes:: ; d1e6
 EvolvableFlags:: ; d1e8
 	flag_array PARTY_LENGTH
 
-wForceEvolution:: ds 1
+wForceEvolution:: db
 
 ; HP bar animations
 wCurHPAnimMaxHP::   dw ; d1ea
@@ -1929,24 +1672,26 @@ wCurHPAnimHighHP::  db ; d1f6
 	ds wCurHPAnimMaxHP - @
 
 MagikarpLength::
+wEvolutionOldSpecies::
 Buffer1:: ; d1ea
 	ds 1
 MovementType::
+wEvolutionNewSpecies::
 Buffer2:: ; d1eb
 	ds 1
-
+wEvolutionPicOffset::
 Buffer3::
 wd1ec:: ds 1
+wEvolutionCanceled::
 Buffer4::
 wd1ed:: ds 1
 Buffer5::
 wd1ee:: ds 1
-Buffer6::
-wd1ef:: ds 1
+Buffer6:: ds 1
 wd1f0:: ds 1
 CurEnemyItem::
 wd1f1:: ds 1
-wd1f2:: ds 1
+	ds 1
 wd1f3:: ds 1
 wd1f4:: ds 1
 wd1f5:: ds 1
@@ -1980,21 +1725,17 @@ OtherTrainerClass:: ; d22f
 BattleType:: ; d230
 ; $00 normal
 ; $01 can lose
-; $02 debug
-; $03 dude/tutorial
-; $04 fishing
+; $02 tutorial
+; $03 fishing
+; $04 headbutt/rock smash
 ; $05 roaming
 ; $06 contest
-; $07 shiny
-; $08 headbutt/rock smash
-; $09 trap
+; $07 ghost
+; $08 inverse
+; $09 shiny
 ; $0a force Item1
-; $0b celebi
-; $0c suicune
-; $0d ho-oh
-; $0e lugia
-; $0f kanto legend
-; $10 ghost
+; $0b trap
+; $0c legendary
 	ds 1
 
 OtherTrainerID:: ; d231
@@ -2072,7 +1813,7 @@ wNiteEncounterRate::  ds 1 ; d25c
 wWaterEncounterRate:: ds 1 ; d25d
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: ds 1
-wd263:: ds 1
+wInitListType:: ds 1
 wBattleHasJustStarted:: ds 1
 wFoundMatchingIDInParty::
 wNamedObjectIndexBuffer::
@@ -2095,9 +1836,9 @@ TrainerGroupBank::
 SECTION "Enemy Party", WRAMX, BANK [1]
 wPokedexShowPointerAddr::
 wd26b:: ds 1
-wd26c:: ds 1
+	ds 1
 wPokedexShowPointerBank::
-wd26d:: ds 1
+	ds 1
 	ds 3
 wd271:: ds 5
 	ds wd26b - @
@@ -2140,10 +1881,9 @@ OTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH ; d3ea
 OTPartyDataEnd::
 	ds 4
 
-wd430::
 wBattleAction:: ds 1 ; d430
+wLinkBattleSentAction:: ds 1 ; d431
 
-wd431:: ds 1
 MapStatus:: ; d432
 	ds 1
 MapEventStatus:: ; d433
@@ -2654,8 +2394,7 @@ wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
 wUnusedTwoDayTimerOn:: ds 3 ; unused
-wdc41:: ds 1
-wdc42:: ds 8
+	ds 9
 wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
 wDailyRematchFlags:: ds 4
@@ -2664,8 +2403,7 @@ wDailyPhoneTimeOfDayFlags:: ds 4
 wKenjiBreakTimer:: ds 2 ; Kenji
 wYanmaMapGroup:: ds 1 ; dc5a
 wYanmaMapNumber:: ds 1
-wdc5c:: ds 3
-wdc5f:: ds 1
+	ds 4
 
 BattlePoints:: ds 1
 
@@ -2862,7 +2600,7 @@ wPokeAnimCurBitmask:: ds 1
 wPokeAnimWaitCounter:: ds 1
 wPokeAnimCommand:: ds 1
 wPokeAnimParameter:: ds 1
-w2_d184:: ds 1
+	ds 1
 wPokeAnimBitmaskCurCol:: ds 1
 wPokeAnimBitmaskCurRow:: ds 1
 wPokeAnimBitmaskCurBit:: ds 1
@@ -2873,28 +2611,21 @@ wPokeAnimStructEnd::
 
 SECTION "Battle Tower", WRAMX, BANK [3]
 
-w3_d000:: ds 1 ; d000
-w3_d001:: ds 1
-w3_d002::
-	ds $7e
-w3_d080::
-	ds $10
-w3_d090::
-	ds $70
+	ds $100
 
-w3_d100:: ; BattleTower OpponentTrainer-Data (length = 0xe0 = $a + $1 + 3*$3b + $24)
+; BattleTower OpponentTrainer-Data (length = 0xe0 = $a + $1 + 3*$3b + $24)
 BT_OTTrainer:: battle_tower_struct BT_OT
 ; d1e0
 	ds $20
 ; d200
 BT_TrainerTextIndex:: ds 2
-w3_d202:: battle_tower_struct w3_d202
-w3_d2e2:: battle_tower_struct w3_d2e2
-w3_d3c2:: battle_tower_struct w3_d3c2
-w3_d4a2:: battle_tower_struct w3_d4a2
-w3_d582:: battle_tower_struct w3_d582
-w3_d662:: battle_tower_struct w3_d662
-w3_d742:: battle_tower_struct w3_d742
+BT_OTTrainer1:: battle_tower_struct BT_OTTrainer1
+BT_OTTrainer2:: battle_tower_struct BT_OTTrainer2
+BT_OTTrainer3:: battle_tower_struct BT_OTTrainer3
+BT_OTTrainer4:: battle_tower_struct BT_OTTrainer4
+BT_OTTrainer5:: battle_tower_struct BT_OTTrainer5
+BT_OTTrainer6:: battle_tower_struct BT_OTTrainer6
+BT_OTTrainer7:: battle_tower_struct BT_OTTrainer7
 ; d822
 	ds -$22
 
@@ -2904,13 +2635,7 @@ wVermilionGymTrashCan1:: ; ds BG_MAP_WIDTH * SCREEN_HEIGHT ($240)
 wVermilionGymTrashCan2::
 	ds 1
 
-	ds $3fe
-
-w3_dc00:: ds SCREEN_WIDTH * SCREEN_HEIGHT
-w3_dd68:: ds SCREEN_WIDTH * SCREEN_HEIGHT
-	ds $11c
-w3_dfec:: ds $10
-w3_dffc:: ds 4
+	ds $7fe
 
 
 SECTION "WRAM 4 RM", WRAMX [$d200], BANK [4]

@@ -485,12 +485,6 @@ closetext: macro
 	db closetext_command
 	endm
 
-	enum loadbytec2cf_command
-loadbytec2cf: macro
-	db loadbytec2cf_command
-	db \1 ; byte
-	endm
-
 	enum farwritetext_command
 farwritetext: macro
 	db farwritetext_command
@@ -578,11 +572,6 @@ _2dmenu: macro
 	enum verticalmenu_command
 verticalmenu: macro
 	db verticalmenu_command
-	endm
-
-	enum loadpikachudata_command
-loadpikachudata: macro
-	db loadpikachudata_command
 	endm
 
 	enum randomwildmon_command

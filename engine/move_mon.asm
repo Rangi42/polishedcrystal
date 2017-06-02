@@ -813,10 +813,10 @@ RestorePPofDepositedPokemon: ; dcb6
 	ld a, [MonType]
 	push af
 	ld b, 0
-.asm_dcec
+.loop
 	ld a, [hli]
 	and a
-	jr z, .asm_dd18
+	jr z, .done
 	ld [TempMonMoves], a
 	ld a, BOXMON
 	ld [MonType], a
@@ -839,9 +839,9 @@ RestorePPofDepositedPokemon: ; dcb6
 	inc b
 	ld a, b
 	cp NUM_MOVES
-	jr c, .asm_dcec
+	jr c, .loop
 
-.asm_dd18
+.done
 	pop af
 	ld [MonType], a
 	pop af

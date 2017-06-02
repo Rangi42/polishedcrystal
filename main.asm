@@ -4076,7 +4076,7 @@ DrawPlayerHP: ; 50b0a
 	push bc
 	ld a, [MonType]
 	cp BOXMON
-	jr z, .asm_50b30
+	jr z, .at_least_1_hp
 
 	ld a, [TempMonHP]
 	ld b, a
@@ -4085,34 +4085,34 @@ DrawPlayerHP: ; 50b0a
 
 ; Any HP?
 	or b
-	jr nz, .asm_50b30
+	jr nz, .at_least_1_hp
 
 	xor a
 	ld c, a
 	ld e, a
 	ld a, 6
 	ld d, a
-	jp .asm_50b4a
+	jp .fainted
 
-.asm_50b30
+.at_least_1_hp
 	ld a, [TempMonMaxHP]
 	ld d, a
 	ld a, [TempMonMaxHP + 1]
 	ld e, a
 	ld a, [MonType]
 	cp BOXMON
-	jr nz, .asm_50b41
+	jr nz, .not_boxmon
 
 	ld b, d
 	ld c, e
 
-.asm_50b41
+.not_boxmon
 	predef ComputeHPBarPixels
 	ld a, 6
 	ld d, a
 	ld c, a
 
-.asm_50b4a
+.fainted
 	ld a, c
 	pop bc
 	ld c, a
@@ -4129,9 +4129,9 @@ DrawPlayerHP: ; 50b0a
 	ld de, TempMonHP
 	ld a, [MonType]
 	cp BOXMON
-	jr nz, .asm_50b66
+	jr nz, .not_boxmon_2
 	ld de, TempMonMaxHP
-.asm_50b66
+.not_boxmon_2
 	lb bc, 2, 3
 	call PrintNum
 
@@ -4553,7 +4553,7 @@ ListMoves: ; 50d6f
 	ret
 
 InitList: ; 50db9
-	ld a, [wd263]
+	ld a, [wInitListType]
 
 	cp INIT_ENEMYOT_LIST
 	jr nz, .check_party_ot_name
@@ -4594,13 +4594,9 @@ InitList: ; 50db9
 .done
 	ld [wNamedObjectTypeBuffer], a
 	ld a, l
-	ld [wd100], a
+	ld [wListPointer], a
 	ld a, h
-	ld [wd101], a
-	ld a, e
-	ld [wd102], a
-	ld a, d
-	ld [wd103], a
+	ld [wListPointer + 1], a
 	ld bc, ItemAttributes
 	ld a, c
 	ld [wd104], a
@@ -4799,7 +4795,7 @@ ENDM
 	growth_rate 5, 4,   0,   0,   0 ; Slow
 
 _SwitchPartyMons:
-	ld a, [wd0e3]
+	ld a, [wSwitchMon]
 	dec a
 	ld [Buffer3], a
 	ld b, a
@@ -5020,13 +5016,13 @@ InsertSpeciesIntoBoxOrParty: ; 513cb
 	add hl, bc
 	ld a, [CurPartySpecies]
 	ld c, a
-.asm_513d8
+.loop
 	ld a, [hl]
 	ld [hl], c
 	inc hl
 	inc c
 	ld c, a
-	jr nz, .asm_513d8
+	jr nz, .loop
 	ret
 
 InsertDataIntoBoxOrParty: ; 513e0
@@ -5041,14 +5037,14 @@ InsertDataIntoBoxOrParty: ; 513e0
 	ld d, h
 	ld e, l
 	pop hl
-.asm_513ef
+.loop
 	push bc
 	ld a, [wd265]
 	ld b, a
 	ld a, [CurPartyMon]
 	cp b
 	pop bc
-	jr z, .asm_51415
+	jr z, .insert
 	push hl
 	push de
 	push bc
@@ -5067,9 +5063,9 @@ InsertDataIntoBoxOrParty: ; 513e0
 	ld a, [wd265]
 	dec a
 	ld [wd265], a
-	jr .asm_513ef
+	jr .loop
 
-.asm_51415
+.insert
 	pop bc
 	pop hl
 	ld a, [CurPartyMon]
@@ -5914,7 +5910,7 @@ _LinkBattleSendReceiveAction: ; 100a09
 ; Note that only the lower 4 bits is usable. The higher 4 determines what kind of
 ; linking we are performing.
 	call .StageForSend
-	ld [wd431], a
+	ld [wLinkBattleSentAction], a
 	farcall PlaceWaitingText
 	call .LinkBattle_SendReceiveAction
 	ret
@@ -5945,7 +5941,7 @@ _LinkBattleSendReceiveAction: ; 100a09
 ; 100a53
 
 .LinkBattle_SendReceiveAction: ; 100a53
-	ld a, [wd431]
+	ld a, [wLinkBattleSentAction]
 	ld [wPlayerLinkAction], a
 	ld a, $ff
 	ld [wOtherPlayerLinkAction], a

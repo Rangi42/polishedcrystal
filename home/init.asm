@@ -189,7 +189,7 @@ ClearWRAM:: ; 25a
 ; Wipe swappable WRAM banks (1-7)
 
 	ld a, 1
-.asm_25c
+.bank_loop
 	push af
 	ld [rSVBK], a
 	xor a
@@ -199,7 +199,7 @@ ClearWRAM:: ; 25a
 	pop af
 	inc a
 	cp 8
-	jr nc, .asm_25c
+	jr c, .bank_loop
 	ret
 ; 270
 

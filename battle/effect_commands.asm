@@ -2661,11 +2661,11 @@ endc
 	call GetDamageStatsCritical
 	jr c, .thickcluborlightball
 
-	ld hl, EnemyStats + 2
+	ld hl, EnemyDefense
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, PlayerStats
+	ld hl, PlayerAttack
 	jr .thickcluborlightball
 
 .special
@@ -2704,11 +2704,11 @@ endc
 	call GetDamageStatsCritical
 	jr c, .lightball
 
-	ld hl, EnemyStats + SP_DEFENSE * 2
+	ld hl, EnemySpDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, PlayerStats + SP_ATTACK * 2
+	ld hl, PlayerSpAtk
 
 .lightball
 ; Note: Returns player special attack at hl in hl.
@@ -2775,7 +2775,7 @@ endc
 	call GetDamageStatsCritical
 	jr c, .thickcluborlightball
 
-	ld hl, PlayerStats + 2
+	ld hl, PlayerDefense
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
@@ -2818,11 +2818,11 @@ endc
 	call GetDamageStatsCritical
 	jr c, .lightball
 
-	ld hl, PlayerStats + SP_DEFENSE * 2
+	ld hl, PlayerSpDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, EnemyStats + SP_ATTACK * 2
+	ld hl, EnemySpAtk
 
 .lightball
 ; Note: Returns enemy special attack at hl in hl.
@@ -5675,12 +5675,12 @@ BattleCommand_StatDown: ; 362e3
 	jr z, .Hit
 
 	push hl
-	ld hl, EnemyMonAttack + 1
+	ld hl, EnemyMonStats + 1
 	ld de, EnemyStats
 	ld a, [hBattleTurn]
 	and a
 	jr z, .do_enemy
-	ld hl, BattleMonAttack + 1
+	ld hl, BattleMonStats + 1
 	ld de, PlayerStats
 .do_enemy
 	call TryLowerStat

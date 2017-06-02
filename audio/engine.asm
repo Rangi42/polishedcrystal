@@ -260,17 +260,17 @@ UpdateChannels: ; e8125
 	bit NOTE_NOISE_SAMPLING, [hl]
 	jr nz, .asm_e81a2
 	bit NOTE_FREQ_OVERRIDE, [hl]
-	jr nz, .asm_e816b
+	jr nz, .frequency_override
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
 	jr nz, .asm_e8184
-	jr .asm_e8175
+	jr .check_duty_override
 
-.asm_e816b
+.frequency_override
 	ld a, [wCurTrackFrequency]
 	ld [rNR13], a
 	ld a, [wCurTrackFrequency + 1]
 	ld [rNR14], a
-.asm_e8175
+.check_duty_override
 	bit NOTE_DUTY_OVERRIDE, [hl]
 	ret z
 	ld a, [wCurTrackDuty]
@@ -2355,7 +2355,6 @@ _PlayMusic:: ; e8b30
 	dec a
 	jr nz, .loop
 	xor a
-	ld [wc2b5], a
 	ld [Channel1JumpCondition], a
 	ld [Channel2JumpCondition], a
 	ld [Channel3JumpCondition], a
