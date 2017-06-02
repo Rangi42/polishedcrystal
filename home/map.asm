@@ -2340,7 +2340,7 @@ LoadTilesetHeader:: ; 2d27
 	ld a, [wTileset]
 	call AddNTimes
 
-	ld de, TilesetBank
+	ld de, TilesetHeader
 	ld bc, Tileset01 - Tileset00
 
 	ld a, BANK(Tilesets)

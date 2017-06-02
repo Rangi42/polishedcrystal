@@ -3010,7 +3010,6 @@ TownMapPlayerIcon: ; 91fa6
 	ld e, l
 	ld hl, VTiles0 tile $14
 	ld c, 4 ; # tiles
-	ld a, BANK(ChrisSpriteGFX) ; does nothing
 	call Request2bpp
 ; Animation/palette
 	depixel 0, 0
