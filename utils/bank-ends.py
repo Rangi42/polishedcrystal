@@ -40,5 +40,5 @@ print()
 
 total_size = bank_diff * num_banks
 free_space = sum(bank_space)
-pct_free = free_space * 100 / total_size
-print('Free space: {:d}/{:d} ({:d}%)'.format(free_space, total_size, pct_free))
+pct_free = free_space * 100.0 / total_size
+print('Free space: {:d}/{:d} ({:.2f}%)'.format(free_space, total_size, pct_free))

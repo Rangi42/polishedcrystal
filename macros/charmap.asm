@@ -159,9 +159,8 @@
 	charmap "★",        $dd
 	charmap "<NONO>",   $de
 	charmap "<PHONE>",  $df
-
-; unused: e0-e1
-
+	charmap "<—>",      $e0
+	charmap "<_>",      $e1
 	charmap "<HPEND>",  $e2
 	charmap "<XPEND>",  $e3
 	charmap "◢",        $e4

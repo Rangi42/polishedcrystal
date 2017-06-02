@@ -10,6 +10,8 @@ FontSerif:
 INCBIN "gfx/font/serif.1bpp"
 FontUnown:
 INCBIN "gfx/font/unown.1bpp"
+FontCommon:
+INCBIN "gfx/font/common.1bpp"
 
 Frames: ; f8800
 INCBIN "gfx/frames/1.1bpp"
@@ -70,43 +72,23 @@ _LoadStandardFont:: ; fb449
 	lb bc, BANK(FontNormal), $80
 	ld a, [rLCDC]
 	bit 7, a
+	jr z, .one
+	call Get1bpp_2
+	jr .ok
+.one 
+	call Copy1bpp
+.ok
+	ld de, FontCommon
+	ld hl, VTiles1 tile ("★" - $80) ; first common font character
+	lb bc, BANK(FontCommon), $d
+	ld a, [rLCDC]
+	bit 7, a
 	jp z, Copy1bpp
-
-	call LoadStandardFontPointer
-	ld d, h
-	ld e, l
-	ld hl, VTiles1
-	lb bc, BANK(FontNormal), $20
-	call Get1bpp_2
-	call LoadStandardFontPointer
-	ld de, $20 * LEN_1BPP_TILE
-	add hl, de
-	ld d, h
-	ld e, l
-	ld hl, VTiles1 tile $20
-	lb bc, BANK(FontNormal), $20
-	call Get1bpp_2
-	call LoadStandardFontPointer
-	ld de, $40 * LEN_1BPP_TILE
-	add hl, de
-	ld d, h
-	ld e, l
-	ld hl, VTiles1 tile $40
-	lb bc, BANK(FontNormal), $20
-	call Get1bpp_2
-	call LoadStandardFontPointer
-	ld de, $60 * LEN_1BPP_TILE
-	add hl, de
-	ld d, h
-	ld e, l
-	ld hl, VTiles1 tile $60
-	lb bc, BANK(FontNormal), $20
-	call Get1bpp_2
-	ret
+	jp Get1bpp_2
 ; fb48a
 
 LoadStandardFontPointer::
-	ld hl, .PopupFontPointers
+	ld hl, .FontPointers
 	ld a, [Options2]
 	and FONT_MASK
 	ld d, 0
@@ -121,7 +103,7 @@ endr
 	ld l, e
 	ret
 
-.PopupFontPointers:
+.FontPointers:
 	dw FontNormal
 	dw FontNarrow
 	dw FontBold
