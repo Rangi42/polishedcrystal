@@ -27,15 +27,17 @@ LoadWildMonData: ; 29ff8
 
 FindNest: ; 2a01f
 ; Parameters:
-; e: 0 = Johto, 1 = Kanto
+; e: 0 = Johto, 1 = Kanto, 2 = Orange
 ; wNamedObjectIndexBuffer: species
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	call ByteFill
 	ld a, e
-	and a
-	jr nz, .kanto
+	cp KANTO_REGION
+	jr z, .kanto
+	cp ORANGE_REGION
+	jr z, .orange
 	decoord 0, 0
 	ld hl, JohtoGrassWildMons
 	call .FindGrass
@@ -50,6 +52,13 @@ FindNest: ; 2a01f
 	ld hl, KantoGrassWildMons
 	call .FindGrass
 	ld hl, KantoWaterWildMons
+	jp .FindWater
+
+.orange
+	decoord 0, 0
+	ld hl, OrangeGrassWildMons
+	call .FindGrass
+	ld hl, OrangeWaterWildMons
 	jp .FindWater
 ; 2a052
 
@@ -467,9 +476,7 @@ _GrassWildmonLookup: ; 2a205
 	ld bc, GRASS_WILDDATA_LENGTH
 	call _SwarmWildmonCheck
 	ret c
-	ld hl, JohtoGrassWildMons
-	ld de, KantoGrassWildMons
-	call _JohtoWildmonCheck
+	call _GetGrassWildmonPointer
 	ld bc, GRASS_WILDDATA_LENGTH
 	jr _NormalWildmonOK
 
@@ -478,17 +485,32 @@ _WaterWildmonLookup: ; 2a21d
 	ld bc, WATER_WILDDATA_LENGTH
 	call _SwarmWildmonCheck
 	ret c
-	ld hl, JohtoWaterWildMons
-	ld de, KantoWaterWildMons
-	call _JohtoWildmonCheck
+	call _GetWaterWildmonPointer
 	ld bc, WATER_WILDDATA_LENGTH
 	jr _NormalWildmonOK
 
-_JohtoWildmonCheck
-	call IsInJohto
+_GetGrassWildmonPointer:
+	farcall RegionCheck
+	ld a, e
+	ld hl, JohtoGrassWildMons
+	cp JOHTO_REGION
 	ret z
-	ld h, d
-	ld l, e
+	ld hl, KantoGrassWildMons
+	cp KANTO_REGION
+	ret z
+	ld hl, OrangeGrassWildMons
+	ret
+
+_GetWaterWildmonPointer:
+	farcall RegionCheck
+	ld a, e
+	ld hl, JohtoWaterWildMons
+	cp JOHTO_REGION
+	ret z
+	ld hl, KantoWaterWildMons
+	cp KANTO_REGION
+	ret z
+	ld hl, OrangeWaterWildMons
 	ret
 
 _SwarmWildmonCheck
@@ -1128,6 +1150,12 @@ INCLUDE "data/wild/kanto_grass.asm"
 
 KantoWaterWildMons: ; 0x2b7f7
 INCLUDE "data/wild/kanto_water.asm"
+
+OrangeGrassWildMons:
+INCLUDE "data/wild/orange_grass.asm"
+
+OrangeWaterWildMons:
+INCLUDE "data/wild/orange_water.asm"
 
 SwarmGrassWildMons: ; 0x2b8d0
 INCLUDE "data/wild/swarm_grass.asm"
