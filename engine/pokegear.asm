@@ -614,21 +614,7 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld [hl], a
 .wrap_around_up
 	inc [hl]
-
-	call .visited_navel_rock
-	jr nz, .not_after_navel_rock
-	inc [hl]
-.not_after_navel_rock
-	call .visited_faraway_island
-	jr nz, .not_after_faraway_island
-	inc [hl]
-.not_after_faraway_island
-	ld a, [hl]
-	cp FARAWAY_ISLAND + 1
-	jr nz, .not_overflow
-	ld a, SHAMOUTI_ISLAND
-	ld [hl], a
-.not_overflow
+	call SkipHiddenOrangeIslandsUp
 	jr .done_dpad
 
 .down
@@ -641,15 +627,7 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld [hl], a
 .wrap_around_down
 	dec [hl]
-
-	call .visited_faraway_island
-	jr nz, .not_before_faraway_island
-	dec [hl]
-.not_before_faraway_island
-	call .visited_navel_rock
-	jr nz, .not_before_navel_rock
-	dec [hl]
-.not_before_navel_rock
+	call SkipHiddenOrangeIslandsDown
 
 .done_dpad
 	ld a, [wPokegearMapCursorLandmark]
@@ -662,19 +640,45 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	call PokegearMap_UpdateCursorPosition
 	ret
 
-.visited_navel_rock:
+SkipHiddenOrangeIslandsUp:
+	call CheckSkipNavelRock
+	jr nz, .not_after_navel_rock
+	inc [hl]
+.not_after_navel_rock
+	call CheckSkipFarawayIsland
+	jr nz, .not_after_faraway_island
+	inc [hl]
+.not_after_faraway_island
+	ld a, [hl]
+	cp FARAWAY_ISLAND + 1
+	ret nz
+	ld a, SHAMOUTI_ISLAND
+	ld [hl], a
+	ret
+
+SkipHiddenOrangeIslandsDown:
+	call CheckSkipFarawayIsland
+	jr nz, .not_before_faraway_island
+	dec [hl]
+.not_before_faraway_island
+	call CheckSkipNavelRock
+	ret nz
+	dec [hl]
+	ret
+
+CheckSkipNavelRock:
 	ld a, [hl]
 	cp NAVEL_ROCK
 	ret nz
 	ld de, EVENT_VISITED_NAVEL_ROCK
-	jr .check_visited
+	jr CheckSkipLocation
 
-.visited_faraway_island:
+CheckSkipFarawayIsland:
 	ld a, [hl]
 	cp FARAWAY_ISLAND
 	ret nz
 	ld de, EVENT_VISITED_FARAWAY_ISLAND
-.check_visited:
+CheckSkipLocation:
 	ld b, CHECK_FLAG
 	push hl
 	call EventFlagAction
@@ -1938,6 +1942,8 @@ _TownMap: ; 9191c
 
 .okay
 	inc [hl]
+	push de
+	call SkipHiddenOrangeIslandsUp
 	jr .next
 
 .pressed_down
@@ -1951,9 +1957,10 @@ _TownMap: ; 9191c
 
 .okay2
 	dec [hl]
+	push de
+	call SkipHiddenOrangeIslandsDown
 
 .next
-	push de
 	ld a, [wd003]
 	call PokegearMap_UpdateLandmarkName
 	ld a, [wd004]
