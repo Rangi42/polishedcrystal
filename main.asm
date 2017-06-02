@@ -3524,23 +3524,7 @@ SetBoxmonOrEggmonCaughtData: ; 4db53
 	ld a, [CurPartyLevel]
 	ld [hli], a
 	; CaughtLocation
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	cp MAP_POKECENTER_2F
-	jr nz, .NotPokeCenter2F
-	ld a, b
-	cp GROUP_POKECENTER_2F
-	jr nz, .NotPokeCenter2F
-
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-
-.NotPokeCenter2F:
-	call GetWorldMapLocation
+	call GetCurrentLandmark
 	ld [hl], a
 	ret
 

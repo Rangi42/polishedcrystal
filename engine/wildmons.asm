@@ -486,7 +486,6 @@ _WaterWildmonLookup: ; 2a21d
 
 _JohtoWildmonCheck
 	call IsInJohto
-	and a
 	ret z
 	ld h, d
 	ld l, e

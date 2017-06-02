@@ -97,7 +97,8 @@ InitPokedex: ; 40063
 
 	call Pokedex_OrderMonsByMode
 	call Pokedex_InitCursorPosition
-	call Pokedex_GetLandmark
+	call GetCurrentLandmark
+	ld [wDexCurrentLocation], a
 	farcall DrawDexEntryScreenRightEdge
 	call Pokedex_ResetBGMapMode
 	ret
@@ -120,9 +121,9 @@ Pokedex_InitCursorPosition: ; 400b4
 	ld hl, wPokedexDataStart
 	ld a, [wLastDexEntry]
 	and a
-	jr z, .done
+	ret z
 	cp NUM_POKEMON + 1
-	jr nc, .done
+	ret nc
 
 	ld b, a
 	ld a, [wDexListingEnd]
@@ -134,7 +135,7 @@ Pokedex_InitCursorPosition: ; 400b4
 .loop1
 	ld a, b
 	cp [hl]
-	jr z, .done
+	ret z
 	inc hl
 	ld a, [wDexListingScrollOffset]
 	inc a
@@ -147,35 +148,13 @@ Pokedex_InitCursorPosition: ; 400b4
 .loop2
 	ld a, b
 	cp [hl]
-	jr z, .done
+	ret z
 	inc hl
 	ld a, [wDexListingCursor]
 	inc a
 	ld [wDexListingCursor], a
 	dec c
 	jr nz, .loop2
-
-.done
-	ret
-
-Pokedex_GetLandmark: ; 400ed
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-	cp SPECIAL_MAP
-	jr nz, .load
-
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-.load
-	ld [wDexCurrentLocation], a
 	ret
 
 Pokedex_RunJumptable: ; 4010b

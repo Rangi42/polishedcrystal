@@ -2224,6 +2224,24 @@ GetWorldMapLocation:: ; 0x2caf
 	ret
 ; 0x2cbd
 
+GetCurrentLandmark::
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	cp SPECIAL_MAP
+	ret nz
+
+; In a special map, get the backup map group / map id
+GetBackupLandmark::
+	ld a, [BackupMapGroup]
+	ld b, a
+	ld a, [BackupMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	ret
+
 GetMapHeaderMusic:: ; 2cbd
 	push hl
 	push bc

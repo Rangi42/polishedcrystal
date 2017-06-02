@@ -343,37 +343,19 @@ RegionCheck: ; 0x1caea1
 ; If in Johto, returns 0 in e.
 ; If in Kanto, returns 1 in e.
 ; If on Shamouti Island, returns 2 in e.
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp SPECIAL_MAP
-	jr nz, .ok
-
-; In a special map, get the backup map group / map id
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-.ok
+	call GetCurrentLandmark
 	cp SHAMOUTI_LANDMARK
 	jr nc, .shamouti
 	cp KANTO_LANDMARK
 	jr nc, .kanto
-	ld e, 0
+.johto
+	ld e, JOHTO_REGION
 	ret
 
 .shamouti
-	ld e, 2
+	ld e, ORANGE_REGION
 	ret
 
 .kanto
-	ld e, 1
-	ret
-
-.johto
-	ld e, 0
+	ld e, KANTO_REGION
 	ret

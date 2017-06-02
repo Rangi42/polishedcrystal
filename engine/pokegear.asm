@@ -174,19 +174,7 @@ AnimatePokegearModeIndicatorArrow: ; 90d41 (24:4d41)
 ; 90d56
 
 TownMap_InitCursorAndPlayerIconPositions: ; 90d70 (24:4d70)
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp SPECIAL_MAP
-	jr nz, .LoadLandmark
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-.LoadLandmark:
+	call GetCurrentLandmark
 	ld [wPokegearMapPlayerIconLandmark], a
 	ld [wPokegearMapCursorLandmark], a
 	ret
@@ -2085,7 +2073,6 @@ PlayRadio: ; 91a53
 
 .OakOrPnP: ; 91acb
 	call IsInJohto
-	and a
 	jr nz, .kanto_or_orange
 	call UpdateTime
 	ld a, [TimeOfDay]
@@ -2381,22 +2368,7 @@ KANTO_FLYPOINT EQU const_value
 ; 91c90
 
 FlyMap: ; 91c90
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-; If we're not in a valid location, i.e. Pokecenter floor 2F,
-
-; the backup map information is used
-	cp SPECIAL_MAP
-	jr nz, .CheckRegion
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-.CheckRegion:
+	call GetCurrentLandmark
 ; The first 46 locations are part of Johto. The rest are in Kanto
 	cp KANTO_LANDMARK
 	jr nc, .KantoFlyMap
@@ -2511,18 +2483,21 @@ _Area: ; 91d11
 	ld c, 4
 	call Request2bpp
 	call LoadTownMapGFX
+
 	call FillKantoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	call TownMapKantoFlips
 	hlbgcoord 0, 0, VBGMap1
 	call TownMapBGUpdate
+
 	call FillJohtoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	call TownMapJohtoFlips
 	hlbgcoord 0, 0
 	call TownMapBGUpdate
+
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes

@@ -78,36 +78,18 @@ EnableSpriteUpdates:: ; 2ee4
 INCLUDE "home/string.asm"
 
 IsInJohto:: ; 2f17
-; Return 0 if the player is in Johto, and 1 in Kanto.
-
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-	cp FAST_SHIP
-	jr z, .Johto
-
-	cp SPECIAL_MAP
-	jr nz, .CheckRegion
-
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-.CheckRegion:
+; Return z if the player is in Johto, and nz in Kanto or Shamouti Island.
+	call GetCurrentLandmark
 	cp KANTO_LANDMARK
-	jr nc, .Kanto
-
-.Johto:
-	xor a
+	jr nc, .kanto_or_orange
+.johto
+	xor a ; JOHTO_REGION
+	and a
 	ret
 
-.Kanto:
-	ld a, 1
+.kanto_or_orange
+	ld a, KANTO_REGION
+	and a
 	ret
 ; 2f3e
 

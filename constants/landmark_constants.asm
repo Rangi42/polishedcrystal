@@ -1,3 +1,8 @@
+	const_def
+	const JOHTO_REGION
+	const KANTO_REGION
+	const ORANGE_REGION
+
 
 	const_def
 

@@ -472,24 +472,20 @@ PokeCenter2F_MapEventHeader:
 	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
 
 CheckPokeCenter2FRegion:
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
+	call GetBackupLandmark
 	ld hl, ScriptVar
 	cp SHAMOUTI_LANDMARK
 	jr nc, .shamouti
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 .johto
-	ld [hl], 0
+	ld [hl], JOHTO_REGION
 	ret
 
 .kanto
-	ld [hl], 1
+	ld [hl], KANTO_REGION
 	ret
 
 .shamouti
-	ld [hl], 2
+	ld [hl], ORANGE_REGION
 	ret
