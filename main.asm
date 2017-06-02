@@ -5364,11 +5364,6 @@ GetCardPic: ; 8833e
 	ld bc, $23 tiles
 	ld a, BANK(ChrisCardPic) ; BANK(KrisCardPic)
 	call FarCopyBytes
-	ld hl, CardGFX
-	ld de, VTiles2 tile $23
-	ld bc, 6 tiles
-	ld a, BANK(CardGFX)
-	call FarCopyBytes
 	ret
 
 ChrisCardPic: ; 88365
@@ -5376,9 +5371,6 @@ INCBIN "gfx/misc/chris_card.5x7.2bpp"
 
 KrisCardPic: ; 88595
 INCBIN "gfx/misc/kris_card.5x7.2bpp"
-
-CardGFX: ; 887c5
-INCBIN "gfx/misc/trainer_card.2bpp"
 
 GetPlayerBackpic: ; 88825
 	ld hl, ChrisBackpic

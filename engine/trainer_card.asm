@@ -36,10 +36,10 @@ TrainerCard: ; 25105
 
 	farcall GetCardPic
 
-	ld hl, CardStatusGFX
-	ld de, VTiles2 tile $29
+	ld hl, CardGFX
+	ld de, VTiles2 tile $23
 	ld bc, 6 tiles
-	ld a, BANK(CardStatusGFX)
+	ld a, BANK(CardGFX)
 	call FarCopyBytes
 
 	call TrainerCard_PrintTopHalfOfCard
@@ -125,13 +125,13 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call SetPalettes
 	call WaitBGMap
 
-	ld de, LeaderGFX
-	ld hl, VTiles2 tile $29
-	lb bc, BANK(LeaderGFX), $50
-	call Request2bpp
 	ld de, CardBadgesGFX
-	ld hl, VTiles2 tile $79
-	lb bc, BANK(CardBadgesGFX), $6
+	ld hl, VTiles2 tile $29
+	lb bc, BANK(CardBadgesGFX), 6
+	call Request2bpp
+	ld de, LeaderGFX
+	ld hl, VTiles2 tile $2f
+	lb bc, BANK(LeaderGFX), $50
 	call Request2bpp
 	ld de, BadgeGFX
 	ld hl, VTiles0 tile $00
@@ -194,13 +194,13 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call SetPalettes
 	call WaitBGMap
 
-	ld de, LeaderGFX2
-	ld hl, VTiles2 tile $29
-	lb bc, BANK(LeaderGFX2), $50
-	call Request2bpp
 	ld de, CardBadgesGFX
-	ld hl, VTiles2 tile $79
-	lb bc, BANK(CardBadgesGFX), $6
+	ld hl, VTiles2 tile $29
+	lb bc, BANK(CardBadgesGFX), 6
+	call Request2bpp
+	ld de, LeaderGFX2
+	ld hl, VTiles2 tile $2f
+	lb bc, BANK(LeaderGFX2), $50
 	call Request2bpp
 	ld de, BadgeGFX2
 	ld hl, VTiles0 tile $00
@@ -281,7 +281,6 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 	ld de, Money
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
-
 	ret
 
 ; 252ec (9:52ec)
@@ -295,7 +294,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 	db "<ID>№.@"
 
 .HorizontalDivider: ; 252fc
-	db $25, $25, $25, $25, $25, $25, $25, $25, $25, $25, $25, $25, $26, $ff ; ____________>
+	db $23, $23, $23, $23, $23, $23, $23, $23, $23, $23, $23, $23, $24, $ff ; ____________>
 ; 2530a
 
 TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
@@ -355,8 +354,9 @@ TrainerCard_Page2_InitObjectsAndStrings: ; 2536c (9:536c)
 	ld de, BadgesTilemap2
 .ok
 	call TrainerCardSetup_PlaceTilemapString
+
 	hlcoord 2, 10
-	ld a, $29
+	ld a, $2f
 	ld c, 4
 .loop
 	call TrainerCard_Page2_3_PlaceLeadersFaces
@@ -365,8 +365,9 @@ rept 4
 endr
 	dec c
 	jr nz, .loop
+
 	hlcoord 2, 13
-	ld a, $51
+	ld a, $57
 	ld c, 4
 .loop2
 	call TrainerCard_Page2_3_PlaceLeadersFaces
@@ -375,6 +376,7 @@ rept 4
 endr
 	dec c
 	jr nz, .loop2
+
 	xor a
 	ld [wcf64], a
 	ld hl, TrainerCard_JohtoBadgesOAM
@@ -384,18 +386,19 @@ endr
 ; 253a2 (9:53a2)
 
 BadgesTilemap: ; 253a2
-	db $79, $7a, $7b, $7c, $7d, $7e, $27, $ff ; "◀BADGES "
+	db $29, $2a, $2b, $2c, $2d, $2e, $27, $ff ; "◀BADGES "
 ; 253a8
 
 BadgesTilemap2:
-	db $79, $7a, $7b, $7c, $7d, $7e, $28, $ff ; "◀BADGES▶"
+	db $29, $2a, $2b, $2c, $2d, $2e, $28, $ff ; "◀BADGES▶"
 
 TrainerCard_Page3_InitObjectsAndStrings:
 	hlcoord 1, 8
 	ld de, BadgesTilemap
 	call TrainerCardSetup_PlaceTilemapString
+
 	hlcoord 2, 10
-	ld a, $29
+	ld a, $2f
 	ld c, 4
 .loop
 	call TrainerCard_Page2_3_PlaceLeadersFaces
@@ -404,8 +407,9 @@ rept 4
 endr
 	dec c
 	jr nz, .loop
+
 	hlcoord 2, 13
-	ld a, $51
+	ld a, $57
 	ld c, 4
 .loop2
 	call TrainerCard_Page2_3_PlaceLeadersFaces
@@ -414,6 +418,7 @@ rept 4
 endr
 	dec c
 	jr nz, .loop2
+
 	xor a
 	ld [wcf64], a
 	ld hl, TrainerCard_KantoBadgesOAM
@@ -432,12 +437,12 @@ TrainerCardSetup_PlaceTilemapString: ; 253a8 (9:53a8)
 TrainerCard_InitBorder: ; 253b0 (9:53b0)
 	ld e, 20
 .loop1
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 	dec e
 	jr nz, .loop1
 
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 	ld e, 17
 	ld a, " "
@@ -448,10 +453,10 @@ TrainerCard_InitBorder: ; 253b0 (9:53b0)
 
 	ld a, $27
 	ld [hli], a
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 .loop3
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 
 	ld e, 18
@@ -461,14 +466,14 @@ TrainerCard_InitBorder: ; 253b0 (9:53b0)
 	dec e
 	jr nz, .loop4
 
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 	dec d
 	jr nz, .loop3
 
-	ld a, $23
+	ld a, $25
 	ld [hli], a
-	ld a, $24
+	ld a, $26
 	ld [hli], a
 
 	ld e, 17
@@ -477,11 +482,11 @@ TrainerCard_InitBorder: ; 253b0 (9:53b0)
 	ld [hli], a
 	dec e
 	jr nz, .loop5
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 	ld e, 20
 .loop6
-	ld a, $23
+	ld a, $25
 	ld [hli], a
 	dec e
 	jr nz, .loop6
@@ -761,6 +766,9 @@ TrainerCard_KantoBadgesOAM:
 	db $80, $78, 7, 7, 7, 7
 	db $1c, $20, $24, $20 | $80
 	db $1c | $80, $20, $24, $20 | $80
+
+CardGFX: ; 887c5
+INCBIN "gfx/misc/trainer_card.2bpp"
 
 CardStatusGFX: INCBIN "gfx/misc/card_status.2bpp"
 CardBadgesGFX: INCBIN "gfx/misc/card_badges.2bpp"
