@@ -799,7 +799,7 @@ wPokedexDataStart::
 wPokedexOrder:: ds NUM_POKEMON +- 1
 wPokedexOrderEnd:: ds 6
 wPokedexMetadata::
-wDexListingScrollOffset:: ; offset of the first displayed entry from the start
+wDexListingScrollOffset:: ds 1 ; offset of the first displayed entry from the start
 wDexListingCursor:: ds 1 ; Dex cursor
 wDexListingEnd:: ds 1 ; Last mon to display
 wDexListingHeight:: ds 1 ; number of entries displayed at once in the dex listing
