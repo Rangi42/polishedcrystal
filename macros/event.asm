@@ -761,8 +761,7 @@ earthquake: macro
 	enum changemap_command
 changemap: macro
 	db changemap_command
-	db \1 ; map_bank
-	dw \2 ; map_data_pointer
+	dba \1 ; map_data
 	endm
 
 	enum changeblock_command

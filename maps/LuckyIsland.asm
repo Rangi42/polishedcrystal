@@ -23,14 +23,14 @@ LuckyIsland_MapScriptHeader:
 Script_ChangeLuckyIslandMap:
 	special CheckIfTrendyPhraseIsLucky
 	iftrue .show
-	changemap BANK(LuckyIslandHidden_BlockData), LuckyIslandHidden_BlockData
+	changemap LuckyIslandHidden_BlockData
 	setevent EVENT_LUCKY_ISLAND_CIVILIANS
 .hide_poke_ball
 	setevent EVENT_LUCKY_ISLAND_LUCKY_EGG
 	return
 
 .show
-	changemap BANK(LuckyIsland_BlockData), LuckyIsland_BlockData
+	changemap LuckyIsland_BlockData
 	clearevent EVENT_LUCKY_ISLAND_CIVILIANS
 	checkevent EVENT_GOT_LUCKY_EGG_FROM_LUCKY_ISLAND
 	iftrue .hide_poke_ball
