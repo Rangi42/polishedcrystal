@@ -413,7 +413,7 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	call Pokedex_BlackOutBG
 	xor a
 	ld [hSCX], a
-	call DelayFrame
+	;call DelayFrame
 	ld a, $7
 	ld [hWX], a
 	ld a, $90
@@ -2301,6 +2301,11 @@ Pokedex_FillBox: ; 413fe (10:53fe)
 
 Pokedex_BlackOutBG: ; 41401 (10:5401)
 ; Make BG palettes black so that the BG becomes all black.
+	call _Pokedex_JustBlackOutBG
+	call DelayFrame
+	ret
+
+_Pokedex_JustBlackOutBG:
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -2315,7 +2320,6 @@ Pokedex_BlackOutBG: ; 41401 (10:5401)
 	call DmgToCgbBGPals
 	ld a, $ff
 	call DmgToCgbObjPal0
-	call DelayFrame
 	ret
 
 Pokedex_GetSGBLayout: ; 41423

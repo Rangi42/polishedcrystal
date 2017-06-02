@@ -2500,12 +2500,6 @@ _Area: ; 91d11
 .set_region
 	ld [wd003], a
 	call .UpdateGFX
-
-	ld b, SCGB_POKEGEAR_PALS
-	call GetSGBLayout
-	call SetPalettes
-	xor a
-	ld [hBGMapMode], a
 	call .GetAndPlaceNest
 .loop
 	call JoyTextDelay
@@ -2581,6 +2575,7 @@ _Area: ; 91d11
 
 .UpdateGFX:
 	call ClearSprites
+	farcall _Pokedex_JustBlackOutBG
 	ld a, [wd003]
 	cp KANTO_REGION
 	jr z, .KantoGFX
@@ -2593,6 +2588,11 @@ _Area: ; 91d11
 .FinishGFX
 	hlbgcoord 0, 0
 	call TownMapBGUpdate
+	ld b, SCGB_POKEGEAR_PALS
+	call GetSGBLayout
+	call SetPalettes
+	xor a
+	ld [hBGMapMode], a
 	ret
 
 .KantoGFX:
