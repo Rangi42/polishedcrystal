@@ -318,7 +318,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	call TrainerCard_Page1_PrintGameTime
 
 	hlcoord 1, 8
-	ld de, .StatusTilemap
+	ld de, StatusTilemap
 	call TrainerCardSetup_PlaceTilemapString
 
 	ld a, [StatusFlags] ; pokedex
@@ -339,11 +339,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 .Dex_PlayTime_BP:
 	db   "#dex"
 	next "Play Time"
-	next "Battle Pts@@"
-
-.StatusTilemap: ; 25366
-	db $29, $2a, $2b, $2c, $2d, $2e, $28, $ff ; " STATUS▶"
-; 2536c
+	next "Battle Pts@"
 
 TrainerCard_Page2_InitObjectsAndStrings: ; 2536c (9:536c)
 	ld de, BadgesTilemap
@@ -384,8 +380,9 @@ endr
 	call TrainerCard_Page2_3_OAMUpdate
 	ret
 
+StatusTilemap:
 BadgesTilemap:
-	db $29, $2a, $2b, $2c, $2d, $2e, $28, $ff ; "◀BADGES▶"
+	db $29, $2a, $2b, $2c, $2d, $2e, $28, $ff ; " STATUS▶", "◀BADGES▶"
 
 BadgesTilemap2:
 	db $29, $2a, $2b, $2c, $2d, $2e, $27, $ff ; "◀BADGES "
