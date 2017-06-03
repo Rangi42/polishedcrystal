@@ -438,7 +438,14 @@ endr
 	jr z, .end
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter
-	ret nc
+	jr c, .start
+	ld a, [wcf64]
+	and a ; 0?
+	ret nz
+	ld a, [wNamingScreenCurrNameLength]
+	dec a ; 1?
+	jr z, .select
+	ret
 
 .start
 	ld hl, wNamingScreenCursorObjectPointer
