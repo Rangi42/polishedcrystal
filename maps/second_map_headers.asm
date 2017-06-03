@@ -815,7 +815,7 @@
 	map_header_2 SafariZoneNorthRestHouse, SAFARI_ZONE_NORTH_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
 	map_header_2 SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
-	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $43, 0
+	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35, 0
 	map_header_2 NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
 	map_header_2 NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0
 	map_header_2 FarawayIsland, FARAWAY_ISLAND, $6, 0
