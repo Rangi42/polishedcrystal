@@ -31,12 +31,11 @@
 
 ## Aesthetics
 
-* Use a side view for Falkner's Pidgeotto in Dark Cave
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Make Eggs use their Pokémon's palette
 * Animate item activations like Quick Claw
-* When switching areas in the Pokédex, fix the palette corruption due to the screen updating in thirds
+* Use a side view for Falkner's Pidgeotto in Dark Cave
 
 
 ## Events
@@ -52,6 +51,9 @@
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
 * Silph Co. mart
+* Battle Elm somehow
+* Rematch Eusine and Bill somehow
+* Battle Ivy somehow
 
 Shamouti Island:
 
@@ -69,6 +71,8 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
+* Valencia Island
+* Route 49
 
 Shamouti Island:
 

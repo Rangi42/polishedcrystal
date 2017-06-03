@@ -2852,9 +2852,6 @@ FillKantoMap: ; 91f04
 
 FillOrangeMap:
 	ld de, OrangeMap
-	call FillTownMap
-	ret
-
 FillTownMap: ; 91f07
 	hlcoord 0, 0
 .loop
