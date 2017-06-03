@@ -2852,6 +2852,36 @@ FillKantoMap: ; 91f04
 
 FillOrangeMap:
 	ld de, OrangeMap
+	call FillTownMap
+	ld de, EVENT_VISITED_FARAWAY_ISLAND
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret nz
+	ld a, $a
+	hlcoord 1, 12
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	hlcoord 5, 13
+	ld [hl], a
+	hlcoord 2, 14
+	ld [hli], a
+	ld [hli], a
+	inc hl
+	ld [hl], a
+	hlcoord 2, 15
+	ld [hli], a
+	ld [hli], a
+	inc hl
+	ld [hl], a
+	hlcoord 5, 16
+	ld [hl], a
+	ret
+
 FillTownMap: ; 91f07
 	hlcoord 0, 0
 .loop
