@@ -1,6 +1,6 @@
 const_value set 2
-	const ROUTE19BEACHHOUSE_FISHER
-	const ROUTE19BEACHHOUSE_SURFING_PIKACHU
+	const ROUTE19BEACHHOUSE_VICTOR
+	const ROUTE19BEACHHOUSE_PUKA
 
 Route19BeachHouse_MapScriptHeader:
 .MapTriggers:
@@ -9,37 +9,127 @@ Route19BeachHouse_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-Route19BeachHouseFisherScript:
-	jumptextfaceplayer Route19BeachHouseFisherText
-
-Route19BeachHouseSurfingPikachuScript:
+Route19BeachHouseVictorScript:
 	faceplayer
 	opentext
-	writetext Route19BeachHouseSurfingPikachuText
-	cry PIKACHU
+	checkevent EVENT_BEAT_VICTOR
+	iftrue .AfterScript
+	writetext .GreetingText
+	waitbutton
+	special CheckForSurfingPikachu
+	iffalse .NoPikachu
+	writetext .ChallengeText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE19BEACHHOUSE_VICTOR
+	loadtrainer VICTOR, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_VICTOR
+	opentext
+.AfterScript:
+	writetext .AfterText
 	waitbutton
 	closetext
 	end
 
-Route19BeachHouseFisherText:
+.NoPikachu:
+	writetext .NoPikachuText
+	waitbutton
+	closetext
+	end
+
+.NoBattle:
+	writetext .NoBattleText
+	waitbutton
+	closetext
+	end
+
+.GreetingText:
 	text "Hey there, friend!"
 	line "The name's Victor."
 
 	para "I love to Surf,"
 	line "and so does Puka."
 	cont "That's my Pikachu!"
+	done
 
-	para "You can do it,"
-	line "too!"
+.ChallengeText:
+	text "Whoa!"
 
-	para "I hear some Pika-"
+	para "Your Pikachu knows"
+	line "how to Surf! So,"
+	cont "I'm not alone…"
+
+	para "Great! You earned"
+	line "the right to a"
+
+	para "Surfing battle"
+	line "with me and Puka!"
+
+	para "Give it a go?"
+	done
+
+.SeenText:
+	text "The sea unites"
+	line "all in surfdom!"
+	cont "Let's go!"
+	done
+
+.BeatenText:
+	text "I knew you could"
+	line "do it!"
+	done
+
+.AfterText:
+	text "I hear some Pika-"
 	line "chu in Johto"
 
 	para "taught themselves"
-	line "to Surf!"
+	line "to Surf."
+
+	para "Maybe that's where"
+	line "mine came from."
+
+	para "I found Puka wash-"
+	line "ed ashore years"
+	cont "ago, and we've been"
+
+	para "partners ever"
+	line "since then."
 	done
 
-Route19BeachHouseSurfingPikachuText:
+.NoPikachuText:
+	text "You can do it,"
+	line "too!"
+
+	para "Go out there and"
+	line "find a Surfing"
+	cont "Pikachu!"
+
+	para "Show me that you"
+	line "love Surfing too!"
+	done
+
+.NoBattleText:
+	text "Shucks. Come Surf"
+	line "anytime, friend!"
+	done
+
+Route19BeachHouseSurfingPikachuScript:
+	faceplayer
+	opentext
+	writetext .Text
+	cry PIKACHU
+	waitbutton
+	closetext
+	end
+
+.Text:
 	text "Puka: Pi-kaa!"
 	done
 
@@ -60,5 +150,5 @@ Route19BeachHouse_MapEventHeader:
 
 .PersonEvents:
 	db 2
-	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseFisherScript, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
 	person_event SPRITE_SURFING_PIKACHU, 4, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1

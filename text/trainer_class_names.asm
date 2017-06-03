@@ -128,6 +128,7 @@
 	db "Fighter@"          ; MAYLENE
 	db "Pilot@"            ; SKYLA
 	db "Designer@"         ; VALERIE
+	db "Surfer@"           ; VICTOR
 	db "#Maniac@"          ; BILL_T
 	db "<PK><MN> Trainer@" ; YELLOW
 	db "Ex-Leader@"        ; WALKER

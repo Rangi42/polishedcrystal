@@ -107,6 +107,27 @@ CheckPartyMove: ; c742
 	scf
 	ret
 
+CheckForSurfingPikachu:
+	ld d, SURF
+	call CheckPartyMove
+	jr c, .no
+	ld a, [CurPartyMon]
+	ld e, a
+	ld d, 0
+	ld hl, PartySpecies
+	add hl, de
+	ld a, [hl]
+	cp PIKACHU
+	jr nz, .no
+	ld a, TRUE
+	ld [ScriptVar], a
+	ret
+
+.no:
+	xor a ; FALSE
+	ld [ScriptVar], a
+	ret
+
 FieldMovePokepicScript:
 	copybytetovar Buffer6
 	refreshscreen $0

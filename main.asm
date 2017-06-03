@@ -5151,6 +5151,8 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	or h
+	jr z, .nothing
 .done:
 	scf
 	ret
@@ -5251,6 +5253,7 @@ endr
 	dw MayleneFinalPkmnText
 	dw SkylaFinalPkmnText
 	dw ValerieFinalPkmnText
+	dw NULL ; Victor
 	dw BillFinalPkmnText
 	dw YellowFinalPkmnText
 	dw WalkerFinalPkmnText

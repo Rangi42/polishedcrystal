@@ -107,7 +107,7 @@ ShamoutiIslandPikabluScript:
 	end
 
 .PikabluText:
-	text "Marill: Rill!"
+	text "Pikablu: Rill!"
 	done
 
 ShamoutiIslandFisherScript:

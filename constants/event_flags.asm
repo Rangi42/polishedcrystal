@@ -1507,6 +1507,8 @@
 	const EVENT_BEAT_SKYLA_AGAIN
 ; Valerie
 	const EVENT_BEAT_VALERIE
+; Victor
+	const EVENT_BEAT_VICTOR
 ; Bill
 	const EVENT_BEAT_POKEMANIAC_BILL
 ; Yellow
@@ -2258,7 +2260,6 @@
 	const EVENT_WARM_BEACH_HIDDEN_PEARL
 
 ; Unused placeholder events
-	const EVENT_833
 	const EVENT_834
 	const EVENT_835
 	const EVENT_836

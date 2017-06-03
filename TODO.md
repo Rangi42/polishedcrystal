@@ -46,7 +46,6 @@
 
 ## Characters
 
-* Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals

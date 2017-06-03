@@ -15938,6 +15938,28 @@ ValerieGroup:
 ; ================================
 
 
+VictorGroup:
+; ================================
+; ================
+
+	; VICTOR
+	db "Victor@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
+
+	; party
+
+	db 69, PIKACHU, LIGHT_BALL, ABILITY_2 | MODEST, MALE, "Puka@"
+		db SURF
+		db THUNDERBOLT
+		db THUNDER_WAVE
+		db EXTREMESPEED
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
 BillGroup:
 ; ================================
 ; ================

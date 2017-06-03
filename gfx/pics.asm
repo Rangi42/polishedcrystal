@@ -871,6 +871,7 @@ ArtistPic:                INCBIN "gfx/trainers/artist.2bpp.lz"
 AromaLadyPic:             INCBIN "gfx/trainers/aroma_lady.2bpp.lz"
 SightseersPic:            INCBIN "gfx/trainers/sightseers.2bpp.lz"
 InverPic:                 INCBIN "gfx/trainers/inver.2bpp.lz"
+VictorPic:                INCBIN "gfx/trainers/victor.2bpp.lz"
 CuboneArmorPic:           INCBIN "gfx/trainers/cubone_armor.2bpp.lz"
 SilhouettePic:            INCBIN "gfx/trainers/silhouette.2bpp.lz"
 
