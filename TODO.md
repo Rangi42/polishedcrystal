@@ -50,9 +50,9 @@
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
 * Silph Co. mart
-* Battle Elm somehow
+* Battle Elm to get S.S. Ticket
 * Rematch Eusine and Bill somehow
-* Battle Ivy somehow
+* Battle Ivy on Valencia Island
 
 Shamouti Island:
 
@@ -239,6 +239,7 @@ Some of these may never be added; they're just suggestions.
 * Medals for achievements
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
+* Restore the Pikachu's beach minigame
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)

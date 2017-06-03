@@ -14493,7 +14493,7 @@ ProfOakGroup:
 ; ================================
 ; ================
 
-	; POKEMON_PROF
+	; PROF_OAK
 	db "Oak@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
@@ -14544,6 +14544,51 @@ ProfOakGroup:
 ProfElmGroup:
 ; ================================
 ; ================
+
+	; PROF_ELM
+	db "Elm@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+
+	; party
+
+	db 58, SKARMORY, METAL_COAT
+		db STEEL_WING
+		db SPIKES
+		db AIR_SLASH
+		db NIGHT_SLASH
+
+	db 59, TYPHLOSION, CHARCOAL
+		db SUNNY_DAY
+		db THUNDERPUNCH
+		db FLAMETHROWER
+		db SUBSTITUTE
+
+	db 59, MEGANIUM, MIRACLE_SEED
+		db GIGA_DRAIN
+		db PROTECT
+		db LEECH_SEED
+		db TOXIC
+
+	db 59, FERALIGATR, MYSTIC_WATER
+		db SURF
+		db CRUNCH
+		db ICE_PUNCH
+		db ROCK_SLIDE
+
+	db 57, DONPHAN, SOFT_SAND
+		db EARTHQUAKE
+		db DEFENSE_CURL
+		db ROLLOUT
+		db GIGA_IMPACT
+
+	db 57, URSARING, SILK_SCARF
+		db PLAY_ROUGH
+		db SLASH
+		db CRUNCH
+		db GUNK_SHOT
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
@@ -14551,6 +14596,21 @@ ProfElmGroup:
 ProfIvyGroup:
 ; ================================
 ; ================
+
+	; PROF_IVY
+	db "Ivy@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 60, BUTTERFREE
+	db 59, POLITOED
+	db 59, VICTREEBEL
+	db 58, RHYPERIOR
+	db 58, NIDOQUEEN
+	db 61, GYARADOS
+
+	db $ff ; end
+
 ; ================
 ; ================================
 
