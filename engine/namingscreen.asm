@@ -702,7 +702,7 @@ MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
 	ld a, [hl]
 	cp "@"
 	jr z, .end_of_string
-	ld [hl], "_"
+	ld [hl], "<_>"
 	and a
 	ret
 
