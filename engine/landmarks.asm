@@ -193,6 +193,8 @@ ENDM
 	landmark  76, 100, FireIslandName
 	landmark  92, 100, IceIslandName
 	landmark 108, 100, LightningIslandName
+	landmark 108, 100, Route49Name
+	landmark 108, 100, ValenciaIslandName
 	landmark 144, 136, NavelRockName
 	landmark  32, 136, FarawayIslandName
 
@@ -330,6 +332,8 @@ ShamoutiCoastName:     db "Shamouti¯Coast@"
 FireIslandName:        db "Fire¯Island@"
 IceIslandName:         db "Ice Island@"
 LightningIslandName:   db "Lightning¯Island@"
+Route49Name:           db "Route 49@"
+ValenciaIslandName:    db "Valencia¯Island@"
 NavelRockName:         db "Navel Rock@"
 FarawayIslandName:     db "Faraway¯Island@"
 SinjohRuinsName:       db "Sinjoh¯Ruins@"

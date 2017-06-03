@@ -150,7 +150,9 @@ SHAMOUTI_LANDMARK EQU const_value
 	const FIRE_ISLAND        ; 86
 	const ICE_ISLAND         ; 87
 	const LIGHTNING_ISLAND   ; 88
-	const NAVEL_ROCK         ; 89
-	const FARAWAY_ISLAND     ; 8a
+	const ROUTE_49           ; 89
+	const VALENCIA_ISLAND    ; 8a
+	const NAVEL_ROCK         ; 8b
+	const FARAWAY_ISLAND     ; 8c
 
 NUM_LANDMARKS EQU const_value

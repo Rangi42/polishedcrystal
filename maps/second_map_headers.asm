@@ -372,7 +372,11 @@
 	map_header_2 RockyBeach, ROCKY_BEACH, $35, SOUTH
 	connection south, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 18
 
-	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $37, 0
+	map_header_2 ValenciaIsland, VALENCIA_ISLAND, $6, WEST
+	connection west, ROUTE_49, Route49, 0, 2, 9
+
+	map_header_2 Route49, ROUTE_49, $6, EAST
+	connection east, VALENCIA_ISLAND, ValenciaIsland, 2, 0, 9
 
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_header_2 SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -832,6 +836,7 @@
 	map_header_2 Route19BeachHouse, ROUTE_19_BEACH_HOUSE, $0, 0
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
+	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $37, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
 	map_header_2 ShamoutiHotel1F, SHAMOUTI_HOTEL_1F, $0, 0
 	map_header_2 ShamoutiHotel2F, SHAMOUTI_HOTEL_2F, $0, 0

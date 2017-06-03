@@ -52,6 +52,7 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 31
 	db -1 ; group 32
 	db -1 ; group 33
+	db -1 ; group 34
 ; 1c03c
 
 Roofs: ; 1c03c

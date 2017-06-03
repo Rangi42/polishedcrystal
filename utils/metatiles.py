@@ -210,6 +210,7 @@ class PaletteMap(object):
 		'ruins': lambda: load_palette('tilesets/ruins.pal'),
 		'safari': lambda: load_palette('tilesets/safari_zone.pal')[8:16],
 		'shamouti': lambda: load_palette('tilesets/shamouti_island.pal')[8:16],
+		'valencia': lambda: load_palette('tilesets/valencia_island.pal')[8:16],
 	}
 
 	def __init__(self, filename, key, map_blk):

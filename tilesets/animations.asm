@@ -280,6 +280,7 @@ Tileset35Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset37Anim:
+Tileset41Anim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -1230,7 +1231,7 @@ WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
 
 
 FarawayWaterFrames1: dw VTiles2 tile $14, FarawayWaterTiles1
-FarawayWaterFrames2: dw VTiles2 tile $59, FarawayWaterTiles2
+FarawayWaterFrames2: dw VTiles2 tile $15, FarawayWaterTiles2
 
 FarawayWaterTiles1: INCBIN "gfx/tilesets/water/faraway_water_1.2bpp"
 FarawayWaterTiles2: INCBIN "gfx/tilesets/water/faraway_water_2.2bpp"

@@ -677,6 +677,11 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 33
 
+	mapgroup VALENCIA_ISLAND,                            12, 14 ;  1
+	mapgroup ROUTE_49,                                   11, 20 ;  2
+
+	newgroup                                                    ; 34
+
 	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 
 

@@ -824,6 +824,7 @@ OutdoorSprites: ; 144b8
 	dw Group31Sprites
 	dw Group32Sprites
 	dw Group33Sprites
+	dw Group34Sprites
 
 
 ; OlivineCity connects to Route40
@@ -1406,6 +1407,22 @@ Group32Sprites:
 
 
 Group33Sprites:
+; ValenciaIsland
+; Route49
+	db SPRITE_ARTIST
+	db SPRITE_COOLTRAINER_F
+	db SPRITE_COOLTRAINER_M
+	db SPRITE_LADY
+	db SPRITE_LASS
+	db SPRITE_SIGHTSEER_M
+	db SPRITE_YOUNGSTER
+	; 6 walking sprites
+	db SPRITE_BALL_CUT_FRUIT
+	; 7 total sprites
+	db 0
+
+
+Group34Sprites:
 ; SaffronCity
 	db SPRITE_BLACK_BELT
 	db SPRITE_COOLTRAINER_F

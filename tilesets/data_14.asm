@@ -15,3 +15,9 @@ INCBIN "tilesets/faraway_metatiles.bin"
 
 Tileset34Coll:
 INCLUDE "tilesets/faraway_collision.asm"
+
+Tileset41Meta:
+INCBIN "tilesets/valencia_metatiles.bin"
+
+Tileset41Coll:
+INCLUDE "tilesets/valencia_collision.asm"
