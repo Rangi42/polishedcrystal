@@ -304,9 +304,11 @@ BattleCommand_CheckTurn: ; 34084
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy4
+	xor a
 	ld [DisabledMove], a
 	jr .ok4
 .enemy4
+	xor a
 	ld [EnemyDisabledMove], a
 .ok4
 	ld hl, DisabledNoMoreText
