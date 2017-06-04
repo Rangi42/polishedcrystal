@@ -491,6 +491,18 @@ ElmGiveMasterBallScript:
 	end
 
 ElmGiveTicketScript:
+	writetext ElmChallengeText
+	yesorno
+	iffalse .Refused
+	writetext ElmSeenText
+	waitbutton
+	closetext
+	winlosstext ElmWinText, 0
+	setlasttalked ELMSLAB_ELM
+	loadtrainer PROF_ELM, 1
+	startbattle
+	reloadmapafterbattle
+	opentext
 	writetext ElmGiveTicketText1
 	buttonsound
 	verbosegiveitem S_S_TICKET
@@ -541,6 +553,12 @@ ElmGiveTicketScript:
 	closetext
 	setevent EVENT_LYRA_IN_HER_ROOM
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
+	end
+
+.Refused:
+	writetext ElmRefusedBattleText
+	waitbutton
+	closetext
 	end
 
 ElmJumpBackScript1:
@@ -1482,13 +1500,50 @@ ElmGiveMasterBallText2:
 	line "can, <PLAYER>!"
 	done
 
-ElmGiveTicketText1:
+ElmChallengeText:
 	text "Elm: <PLAYER>!"
 	line "There you are!"
 
 	para "I called because I"
 	line "have something for"
 	cont "you."
+
+	para "But first…"
+
+	para "I'd like to try"
+	line "battling the new"
+	cont "Champion!"
+
+	para "How about it,"
+	line "<PLAYER>?"
+	done
+
+ElmSeenText:
+	text "Show me how much"
+	line "you've grown since"
+
+	para "you left New Bark"
+	line "Town!"
+	done
+
+ElmWinText:
+	text "Astounding!"
+	done
+
+ElmRefusedBattleText:
+	text "If your #mon"
+	line "need healing,"
+
+	para "just use the"
+	line "machine here."
+	done
+
+ElmGiveTicketText1:
+	text "Elm: I'm proud"
+	line "of you, <PLAYER>."
+
+	para "You're clearly"
+	line "ready for this."
 
 	para "See? It's an"
 	line "S.S.Ticket."

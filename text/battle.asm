@@ -1660,11 +1660,19 @@ Giovanni2FinalPkmnText:
 	prompt
 
 ProfOakFinalPkmnText:
-ProfElmFinalPkmnText:
-ProfIvyFinalPkmnText:
 	text "Hm! Excellent!"
-	line "But you aren't"
+	line "But we aren't"
 	cont "done yet!"
+	prompt
+
+ProfElmFinalPkmnText:
+	text "It's almost"
+	line "over…"
+	prompt
+
+ProfIvyFinalPkmnText:
+	text "I'm down, but"
+	line "not out!"
 	prompt
 
 MysticalManFinalPkmnText:
