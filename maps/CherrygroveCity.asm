@@ -340,12 +340,9 @@ GuideGentIntroText:
 	line "one is a rookie"
 	cont "at some point!"
 
-	para "If you'd like, I"
-	line "can teach you a"
-	cont "few things."
-
-	para "OK, then!"
-	line "Follow me!"
+	para "I can teach you"
+	line "a few things."
+	cont "Follow me!"
 	done
 
 GuideGentPokeCenterText:
