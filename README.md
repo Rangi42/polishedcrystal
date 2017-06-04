@@ -329,6 +329,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Larger Kanto routes, like in RBY.
 * Add: Proper inverted colors in battle (by MeroMero).
 * Add: Evolution moves from Gen VII.
+* Add: Move Reminder supports pre-evolution and evolution moves.
 * Add: Dark battle intro at night.
 * Add: Show genders in party menu.
 * Add: Vending machines have a 1/32 chance of giving an extra item.
