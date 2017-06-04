@@ -679,6 +679,10 @@ MAP_NONE   EQU 0
 
 	mapgroup VALENCIA_ISLAND,                            12, 14 ;  1
 	mapgroup ROUTE_49,                                   11, 20 ;  2
+	mapgroup IVYS_LAB,                                    6,  5 ;  3
+	mapgroup IVYS_HOUSE,                                  4,  4 ;  4
+	mapgroup VALENCIA_HOUSE,                              4,  4 ;  5
+	mapgroup VALENCIA_PORT,                               9,  7 ;  6
 
 	newgroup                                                    ; 34
 
@@ -914,6 +918,7 @@ const_value SET 1
 	const FRUITTREE_ROUTE_1         ; 20
 	const FRUITTREE_LUCKY_ISLAND    ; 21
 	const FRUITTREE_SHAMOUTI_ISLAND ; 22
+	const FRUITTREE_ROUTE_49        ; 23
 NUM_FRUIT_TREES EQU const_value +- 1
 
 CMDQUEUE_TYPE  EQU 0

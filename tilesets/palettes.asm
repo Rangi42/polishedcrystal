@@ -55,6 +55,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, ShamoutiIslandPalette
 	cp TILESET_SHAMOUTI_ISLAND
 	jp z, .load_eight_time_of_day_bg_palettes
+	ld hl, ValenciaIslandPalette
+	cp TILESET_VALENCIA_ISLAND
+	jp z, .load_eight_time_of_day_bg_palettes
 
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
@@ -498,6 +501,9 @@ INCLUDE "tilesets/faraway_island.pal"
 
 ShamoutiIslandPalette:
 INCLUDE "tilesets/shamouti_island.pal"
+
+ValenciaIslandPalette:
+INCLUDE "tilesets/valencia_island.pal"
 
 RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"

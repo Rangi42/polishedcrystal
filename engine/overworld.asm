@@ -1412,13 +1412,15 @@ Group33Sprites:
 	db SPRITE_ARTIST
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
+	db SPRITE_FISHER
 	db SPRITE_LADY
 	db SPRITE_LASS
+	db SPRITE_SAILOR
 	db SPRITE_SIGHTSEER_M
 	db SPRITE_YOUNGSTER
-	; 6 walking sprites
+	; 8 walking sprites
 	db SPRITE_BALL_CUT_FRUIT
-	; 7 total sprites
+	; 9 total sprites
 	db 0
 
 

@@ -130,6 +130,7 @@ BeautifulBeachVilla_BlockData:
 WarmBeachShack_BlockData:
 WarmBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
+IvysHouse_BlockData:
 	INCBIN "maps/JohtoHouse1.blk"
 
 GoldenrodHappinessRater_BlockData:
@@ -165,6 +166,7 @@ LakeofRageHiddenPowerHouse_BlockData:
 Route28FamousSpeechHouse_BlockData:
 KrissNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
+ValenciaHouse_BlockData:
 	INCBIN "maps/JohtoHouse4.blk"
 
 CeruleanPoliceStation_BlockData:
@@ -303,6 +305,7 @@ VermilionCity_BlockData:
 	INCBIN "maps/VermilionCity.blk"
 
 ElmsLab_BlockData:
+IvysLab_BlockData:
 	INCBIN "maps/ElmsLab.blk"
 
 CeruleanCity_BlockData:

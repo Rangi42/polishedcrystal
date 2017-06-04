@@ -2258,10 +2258,10 @@
 
 ; TODO: organize events
 	const EVENT_WARM_BEACH_HIDDEN_PEARL
+	const EVENT_ROUTE_49_CUT_TREE_1
+	const EVENT_ROUTE_49_CUT_TREE_2
 
 ; Unused placeholder events
-	const EVENT_834
-	const EVENT_835
 	const EVENT_836
 	const EVENT_837
 	const EVENT_838

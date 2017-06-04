@@ -43,3 +43,6 @@ ValenciaIsland_BlockData:
 
 Route49_BlockData:
 	INCBIN "maps/Route49.blk"
+
+ValenciaPort_BlockData:
+	INCBIN "maps/ValenciaPort.blk"

@@ -859,3 +859,7 @@
 	map_header_2 IceIslandRoof, ICE_ISLAND_ROOF, $35, 0
 	map_header_2 LightningIsland, LIGHTNING_ISLAND, $9, 0
 	map_header_2 LightningIslandRoof, LIGHTNING_ISLAND_ROOF, $35, 0
+	map_header_2 IvysLab, IVYS_LAB, $0, 0
+	map_header_2 IvysHouse, IVYS_HOUSE, $0, 0
+	map_header_2 ValenciaHouse, VALENCIA_HOUSE, $0, 0
+	map_header_2 ValenciaPort, VALENCIA_PORT, $0, 0

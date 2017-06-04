@@ -777,5 +777,13 @@ INCLUDE "maps/BeautifulBeachVilla.asm"
 INCLUDE "maps/WarmBeachShack.asm"
 INCLUDE "maps/WarmBeachHouse.asm"
 INCLUDE "maps/RockyBeachHouse.asm"
+
+
+SECTION "Map Scripts 41", ROMX
+
 INCLUDE "maps/ValenciaIsland.asm"
 INCLUDE "maps/Route49.asm"
+INCLUDE "maps/IvysLab.asm"
+INCLUDE "maps/IvysHouse.asm"
+INCLUDE "maps/ValenciaHouse.asm"
+INCLUDE "maps/ValenciaPort.asm"
