@@ -35,7 +35,7 @@ PokemonJournalProfOakText:
 	para "Special Feature:"
 	line "#mon Prof.Oak!"
 
-	para "Prof.Oak's grand-"
+	para "Samuel Oak's grand-"
 	line "children, Blue and"
 
 	para "Daisy, live near"

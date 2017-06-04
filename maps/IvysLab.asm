@@ -62,6 +62,24 @@ IvysLabWindow:
 	line "is blowing in."
 	done
 
+PokemonJournalProfIvyScript:
+	setflag ENGINE_READ_PROF_IVY_JOURNAL
+	jumptext .Text
+
+.Text:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "#mon Prof.Ivy!"
+
+	para "Philena Ivy worked"
+	line "with Brock of Pew-"
+	cont "ter City to study"
+
+	para "a shiny Onix's"
+	line "crystalline body."
+	done
+
 IvysLabBookshelf:
 	jumpstd difficultbookshelf
 
@@ -85,10 +103,10 @@ IvysLab_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, IvysLabBookshelf
 	signpost 1, 8, SIGNPOST_READ, IvysLabBookshelf
 	signpost 1, 9, SIGNPOST_READ, IvysLabBookshelf
-	signpost 7, 0, SIGNPOST_READ, IvysLabBookshelf
-	signpost 7, 1, SIGNPOST_READ, IvysLabBookshelf
-	signpost 7, 2, SIGNPOST_READ, IvysLabBookshelf
-	signpost 7, 3, SIGNPOST_READ, IvysLabBookshelf
+	signpost 7, 0, SIGNPOST_READ, PokemonJournalProfIvyScript
+	signpost 7, 1, SIGNPOST_READ, PokemonJournalProfIvyScript
+	signpost 7, 2, SIGNPOST_READ, PokemonJournalProfIvyScript
+	signpost 7, 3, SIGNPOST_READ, PokemonJournalProfIvyScript
 	signpost 7, 6, SIGNPOST_READ, IvysLabBookshelf
 	signpost 7, 7, SIGNPOST_READ, IvysLabBookshelf
 	signpost 7, 8, SIGNPOST_READ, IvysLabBookshelf

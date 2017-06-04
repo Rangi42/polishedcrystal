@@ -305,7 +305,6 @@ VermilionCity_BlockData:
 	INCBIN "maps/VermilionCity.blk"
 
 ElmsLab_BlockData:
-IvysLab_BlockData:
 	INCBIN "maps/ElmsLab.blk"
 
 CeruleanCity_BlockData:

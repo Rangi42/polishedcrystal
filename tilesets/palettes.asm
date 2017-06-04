@@ -82,7 +82,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_TRADITIONAL
 	jp z, .maybe_charcoal_kiln
 	cp TILESET_LAB
-	jp z, .maybe_oaks_lab
+	jp z, .maybe_oaks_or_ivys_lab
 	cp TILESET_TUNNEL
 	jp z, .maybe_lightning_island
 	cp TILESET_SPROUT_TOWER
@@ -278,14 +278,24 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, CharcoalKilnPalette
 	jp .load_eight_bg_palettes
 
-.maybe_oaks_lab
+.maybe_oaks_or_ivys_lab
 	ld a, [MapGroup]
 	cp GROUP_OAKS_LAB
-	jp nz, .do_nothing
+	jp nz, .not_oaks_lab
 	ld a, [MapNumber]
 	cp MAP_OAKS_LAB
-	jp nz, .do_nothing
+	jp nz, .not_oaks_lab
 	ld hl, OaksLabPalette
+	jp .load_eight_bg_palettes
+
+.not_oaks_lab
+	ld a, [MapGroup]
+	cp GROUP_IVYS_LAB
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_IVYS_LAB
+	jp nz, .do_nothing
+	ld hl, IvysLabPalette
 	jp .load_eight_bg_palettes
 
 .maybe_lightning_island
@@ -556,6 +566,9 @@ INCLUDE "tilesets/charcoal_kiln.pal"
 
 OaksLabPalette:
 INCLUDE "tilesets/oaks_lab.pal"
+
+IvysLabPalette:
+INCLUDE "tilesets/ivys_lab.pal"
 
 LightningIslandPalette:
 INCLUDE "tilesets/lightning_island.pal"

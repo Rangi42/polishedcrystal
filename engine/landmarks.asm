@@ -182,19 +182,19 @@ ENDM
 	landmark  36,  52, IndigoPlateauName
 	landmark  24,  92, Route28Name
 	landmark  62, 150, CinnabarLabName
-	landmark  92,  68, ShamoutiIslandName
-	landmark 108,  76, BeautifulBeachName
-	landmark  92,  56, RockyBeachName
-	landmark 100,  56, NoisyForestName
-	landmark 108,  60, ShrineRuinsName
-	landmark  76,  68, ShamoutiTunnelName
-	landmark  76,  76, WarmBeachName
-	landmark  76,  88, ShamoutiCoastName
-	landmark  84,  92, FireIslandName
-	landmark 100,  92, IceIslandName
-	landmark 116,  92, LightningIslandName
-	landmark  68, 124, Route49Name
-	landmark  76, 124, ValenciaIslandName
+	landmark  76,  68, ShamoutiIslandName
+	landmark  92,  76, BeautifulBeachName
+	landmark  76,  56, RockyBeachName
+	landmark  84,  56, NoisyForestName
+	landmark  92,  60, ShrineRuinsName
+	landmark  60,  68, ShamoutiTunnelName
+	landmark  60,  76, WarmBeachName
+	landmark  60,  88, ShamoutiCoastName
+	landmark  68,  92, FireIslandName
+	landmark  84,  92, IceIslandName
+	landmark 100,  92, LightningIslandName
+	landmark  76, 124, Route49Name
+	landmark  84, 124, ValenciaIslandName
 	landmark 144, 136, NavelRockName
 	landmark  32, 136, FarawayIslandName
 

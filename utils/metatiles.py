@@ -149,6 +149,7 @@ class PaletteMap(object):
 		'maps/HauntedRadioTower4F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
 		'maps/HauntedRadioTower5F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
 		'maps/HauntedRadioTower6F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
+		'maps/IvysLab.blk': lambda: load_palette('tilesets/ivys_lab.pal'),
 		'maps/KarensRoom.blk': lambda: load_palette('tilesets/karens_room.pal'),
 		'maps/KogasRoom.blk': lambda: load_palette('tilesets/kogas_room.pal'),
 		'maps/LancesRoom.blk': lambda: load_palette('tilesets/lances_room.pal'),

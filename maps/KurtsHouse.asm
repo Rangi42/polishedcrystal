@@ -431,7 +431,7 @@ KurtsHouseCelebiStatue:
 	jumptext KurtsHouseCelebiStatueText
 
 PokemonJournalProfWestwoodScript:
-	setflag PROF_WESTWOOD_JOURNAL
+	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumptext PokemonJournalProfWestwoodText
 
 KurtsHouseRadio:

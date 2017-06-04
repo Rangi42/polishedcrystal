@@ -323,7 +323,7 @@ ENDM
 	engine_flag PokemonJournals + 2, 7 ; read prof.oak journal ; $d0
 
 	engine_flag PokemonJournals + 3, 0 ; read prof.elm journal
-	engine_flag PokemonJournals + 3, 1 ; read prof.westwood journal
+	engine_flag PokemonJournals + 3, 1 ; read prof.ivy journal
 	engine_flag PokemonJournals + 3, 2 ; read giovanni journal
 	engine_flag PokemonJournals + 3, 3 ; read lorelei journal
 	engine_flag PokemonJournals + 3, 4 ; read agatha journal
