@@ -10,7 +10,7 @@ BattleTowerText:: ; 11c000
 	ld hl, BT_OTTrainerClass
 	ld a, [hl]
 
-	cp a, TOWERTYCOON
+	cp TOWERTYCOON
 	jr z, .tycoon
 
 	dec a

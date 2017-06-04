@@ -63,7 +63,7 @@ BattleCommand_Thief: ; 37492
 
 
 .playeritem
-	ld a, 1
+	ld a, MON_ITEM
 	call BattlePartyAttr
 	ld d, h
 	ld e, l
@@ -71,7 +71,7 @@ BattleCommand_Thief: ; 37492
 	ret
 
 .enemyitem
-	ld a, 1
+	ld a, MON_ITEM
 	call OTPartyAttr
 	ld d, h
 	ld e, l

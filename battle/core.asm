@@ -6528,13 +6528,13 @@ endc
 .compound_eyes:
 ; 60% chance of getting Item1 with an Amulet Coin
 	call BattleRandom
-	cp a, 60 percent
+	cp 60 percent
 	ld a, [BaseItems]
 	jr c, .UpdateItem
 
 ; 20% chance of getting Item2 (50% of (100% - 60%) = 20%) with an Amulet Coin
 	call BattleRandom
-	cp a, 50 percent
+	cp 50 percent
 	ld a, [BaseItems+1]
 	jr c, .UpdateItem
 
@@ -6547,13 +6547,13 @@ endc
 
 ; 50% chance of getting Item1
 	call BattleRandom
-	cp a, 50 percent
+	cp 50 percent
 	ld a, [BaseItems]
 	jr c, .UpdateItem
 
 ; 5% chance of getting Item2 (10% of (100% - 50%) = 5%)
 	call BattleRandom
-	cp a, 10 percent
+	cp 10 percent
 	ld a, [BaseItems+1]
 	jr c, .UpdateItem
 
@@ -6614,7 +6614,7 @@ endr
 ; Roaming monsters (Entei, Raikou) work differently
 ; They have their own structs, which are shorter than normal
 	ld a, [BattleType]
-	cp a, BATTLETYPE_ROAMING
+	cp BATTLETYPE_ROAMING
 	jr nz, .GenerateDVs
 
 ; Grab DVs and personality
@@ -6690,7 +6690,7 @@ endr
 ; Random shininess
 ; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [BattleType]
-	cp a, BATTLETYPE_SHINY
+	cp BATTLETYPE_SHINY
 	jr z, .shiny
 	call BattleRandom
 	and a
@@ -6773,7 +6773,7 @@ endr
 
 ; Unown
 	ld a, [TempEnemyMonSpecies]
-	cp a, UNOWN
+	cp UNOWN
 	jr nz, .EkansArbok
 
 .unown_letter
@@ -6818,7 +6818,7 @@ endr
 
 .Magikarp:
 	ld a, [TempEnemyMonSpecies]
-	cp a, MAGIKARP
+	cp MAGIKARP
 	jr nz, .Happiness
 
 ; Random Magikarp pattern
@@ -6838,41 +6838,41 @@ endr
 
 ; We're clear if the length is < 1536
 	ld a, [MagikarpLength]
-	cp a, $06 ; $600 = 1536
+	cp $06 ; $600 = 1536
 	jr nz, .CheckMagikarpArea
 
 ; 5% chance of skipping size checks
 	call Random
-	cp a, $0c ; / $100
+	cp $0c ; / $100
 	jr c, .CheckMagikarpArea
 ; Try again if > 1614
 	ld a, [MagikarpLength + 1]
-	cp a, $50
+	cp $50
 	jp nc, .GenerateDVs
 
 ; 20% chance of skipping this check
 	call Random
-	cp a, $32 ; / $100
+	cp $32 ; / $100
 	jr c, .CheckMagikarpArea
 ; Try again if > 1598
 	ld a, [MagikarpLength + 1]
-	cp a, $40
+	cp $40
 	jp nc, .GenerateDVs
 
 .CheckMagikarpArea:
 	ld a, [MapGroup]
-	cp a, GROUP_LAKE_OF_RAGE
+	cp GROUP_LAKE_OF_RAGE
 	jr nz, .Happiness
 	ld a, [MapNumber]
-	cp a, MAP_LAKE_OF_RAGE
+	cp MAP_LAKE_OF_RAGE
 	jr nz, .Happiness
 ; 40% chance of not flooring
 	call Random
-	cp a, $64 ; / $100
+	cp $64 ; / $100
 	jr c, .Happiness
 ; Floor at length 1024
 	ld a, [MagikarpLength]
-	cp a, 1024 >> 8
+	cp 1024 >> 8
 	jp c, .GenerateDVs ; try again
 
 
@@ -6894,7 +6894,7 @@ endr
 ; If we're in a trainer battle,
 ; get the rest of the parameters from the party struct
 	ld a, [wBattleMode]
-	cp a, TRAINER_BATTLE
+	cp TRAINER_BATTLE
 	jr z, .OpponentParty
 
 ; If we're in a wild battle, check wild-specific stuff
@@ -6929,7 +6929,7 @@ endr
 
 ; ..unless it's a RoamMon
 	ld a, [BattleType]
-	cp a, BATTLETYPE_ROAMING
+	cp BATTLETYPE_ROAMING
 	jr nz, .Moves
 
 ; Grab HP
@@ -6997,7 +6997,7 @@ endc
 	ld de, EnemyMonMoves
 ; Are we in a trainer battle?
 	ld a, [wBattleMode]
-	cp a, TRAINER_BATTLE
+	cp TRAINER_BATTLE
 	jr nz, .WildMoves
 ; Then copy moves from the party struct
 	ld hl, OTPartyMon1Moves
@@ -7026,7 +7026,7 @@ endr
 .PP:
 ; Trainer battle?
 	ld a, [wBattleMode]
-	cp a, TRAINER_BATTLE
+	cp TRAINER_BATTLE
 	jr z, .TrainerPP
 
 ; Fill wild PP
@@ -7114,7 +7114,7 @@ CheckSleepingTreeMon: ; 3eb38
 
 ; Don't do anything if this isn't a tree encounter
 	ld a, [BattleType]
-	cp a, BATTLETYPE_TREE
+	cp BATTLETYPE_TREE
 	jr nz, .NotSleeping
 
 ; Nor if the Pokémon has Insomnia/Vital Spirit
@@ -7132,7 +7132,7 @@ CheckSleepingTreeMon: ; 3eb38
 ; Get list for the time of day
 	ld hl, .Morn
 	ld a, [TimeOfDay]
-	cp a, DAY
+	cp DAY
 	jr c, .Check
 	ld hl, .Day
 	jr z, .Check
@@ -7215,7 +7215,7 @@ CheckUnownLetter: ; 3eb75
 	inc e
 	inc e
 	ld a, e
-	cp a, .Set1 - .LetterSets
+	cp .Set1 - .LetterSets
 	jr c, .loop
 
 ; Hasn't been unlocked, or the letter is invalid

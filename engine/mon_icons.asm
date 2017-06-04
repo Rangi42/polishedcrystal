@@ -365,7 +365,7 @@ endr
 ; http://www.pokecommunity.com/showthread.php?t=338470
 GetMonIconBank:
 	ld a, [CurIcon]
-	cp a, TAUROS ; first mon in Icons2
+	cp TAUROS ; first mon in Icons2
 	lb bc, BANK(Icons1), 8
 	ret c
 	lb bc, BANK(Icons2), 8
