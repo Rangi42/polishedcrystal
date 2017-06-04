@@ -372,10 +372,10 @@
 	map_header_2 RockyBeach, ROCKY_BEACH, $35, SOUTH
 	connection south, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 18
 
-	map_header_2 ValenciaIsland, VALENCIA_ISLAND, $6, WEST
+	map_header_2 ValenciaIsland, VALENCIA_ISLAND, $0, WEST
 	connection west, ROUTE_49, Route49, 0, 2, 9
 
-	map_header_2 Route49, ROUTE_49, $6, EAST
+	map_header_2 Route49, ROUTE_49, $0, EAST
 	connection east, VALENCIA_ISLAND, ValenciaIsland, 2, 0, 9
 
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
