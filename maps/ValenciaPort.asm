@@ -12,14 +12,51 @@ ValenciaPort_MapScriptHeader:
 ValenciaPortSailorScript:
 	faceplayer
 	opentext
-	writetext .Text
+	writetext .QuestionText
+	yesorno
+	iffalse .RefuseFerry
+	writetext .DepartText
+	waitbutton
+	closetext
+	spriteface VALENCIAPORT_SAILOR, UP
+	pause 10
+	playsound SFX_EXIT_BUILDING
+	disappear VALENCIAPORT_SAILOR
+	waitsfx
+	applymovement PLAYER, .StepUp
+	playsound SFX_EXIT_BUILDING
+	special FadeOutPalettes
+	waitsfx
+	domaptrigger SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
+	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, $6, $5
+	end
+
+.RefuseFerry
+	writetext .RefuseText
 	waitbutton
 	closetext
 	end
 
-.Text:
-	text "TODO"
+.QuestionText:
+	text "Going back to"
+	line "Shamouti Island?"
 	done
+
+.DepartText:
+	text "All right!"
+
+	para "All aboard the"
+	line "Seagallop Ferry!"
+	done
+
+.RefuseText:
+	text "I'll be waiting"
+	line "right here."
+	done
+
+.StepUp:
+	step_up
+	step_end
 
 ValenciaPortFisherScript:
 	jumptextfaceplayer .Text

@@ -83,7 +83,6 @@ SeagallopFerryVermilionGateSailorScript:
 	checkitem OLD_SEA_MAP
 	iftrue .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata OrangeMysticMenuDataHeader
 	verticalmenu
 	closewindow
@@ -103,7 +102,6 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_orangeticket_and_old_sea_map
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata MysticOldSeaMapMenuDataHeader
 	verticalmenu
 	closewindow
@@ -113,7 +111,6 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_mysticticket_and_old_sea_map
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata OrangeOldSeaMapMenuDataHeader
 	verticalmenu
 	closewindow
@@ -123,7 +120,6 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata ThreeTicketsMenuDataHeader
 	verticalmenu
 	closewindow

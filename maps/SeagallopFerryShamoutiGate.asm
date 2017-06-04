@@ -35,10 +35,39 @@ SeagallopFerryShamoutiGate_PlayerArrives:
 SeagallopFerryShamoutiGateSailorScript:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
+	iffalse .OnlyVermilion
+	writetext SeagallopFerryShamoutiWhichIslandText
+	loadmenudata VermilionValenciaMenuDataHeader
+	verticalmenu
+	closewindow
+	if_equal $1, .ToVermilion
+	if_equal $2, .ToValencia
+	jump .RefuseFerry
+
+.OnlyVermilion
 	writetext SeagallopFerryShamoutiToVermilionQuestionText
 	yesorno
 	iffalse .RefuseFerry
-	writetext SeagallopFerryShamoutiToVermilionText
+.ToVermilion
+	scall SeagallopFerryShamoutiDepartureScript
+	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
+	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
+	end
+
+.ToValencia:
+	scall SeagallopFerryShamoutiDepartureScript
+	warp VALENCIA_PORT, $7, $5
+	end
+
+.RefuseFerry
+	writetext SeagallopFerryShamoutiIslandRefusedText
+	waitbutton
+	closetext
+	end
+
+SeagallopFerryShamoutiDepartureScript:
+	writetext SeagallopFerryShamoutiDepartureText
 	waitbutton
 	closetext
 	spriteface SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
@@ -52,15 +81,21 @@ SeagallopFerryShamoutiGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
-	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
-	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
 	end
 
-.RefuseFerry
-	writetext SeagallopFerryShamoutiIslandRefusedText
-	waitbutton
-	closetext
-	end
+VermilionValenciaMenuDataHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 18 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "Vermilion City@"
+	db "Valencia Island@"
+	db "Cancel@"
 
 SeagallopFerryShamoutiGateTwinScript:
 	jumptextfaceplayer SeagallopFerryShamoutiGateTwinText
@@ -93,12 +128,17 @@ SeagallopFerryShamoutiGateSailorArrive2MovementData:
 	turn_head_up
 	step_end
 
+SeagallopFerryShamoutiWhichIslandText:
+	text "Welcome back!"
+	line "Where to now?"
+	done
+
 SeagallopFerryShamoutiToVermilionQuestionText:
 	text "Ready to head back"
 	line "to Vermilion City?"
 	done
 
-SeagallopFerryShamoutiToVermilionText:
+SeagallopFerryShamoutiDepartureText:
 	text "All right!"
 
 	para "All aboard the"

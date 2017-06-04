@@ -203,7 +203,9 @@ ShamoutiPokeCenter1FIvyScript:
 
 	para "Well, I need to"
 	line "take a ferry back"
-	cont "to my lab."
+
+	para "to my lab on"
+	line "Valencia Island."
 
 	para "Say hi to Prof.Oak"
 	line "for me!"
