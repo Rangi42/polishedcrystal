@@ -1,16 +1,11 @@
 RuinsofAlphAerodactylChamber_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x58dad, 0
-	dw UnknownScript_0x58db8, 0
+	maptrigger UnknownScript_0x58dad
+	maptrigger UnknownScript_0x58db8
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58db9
 
 UnknownScript_0x58dad:

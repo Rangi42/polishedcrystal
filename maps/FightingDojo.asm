@@ -13,9 +13,6 @@ FightingDojo_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .SetupRematchesCallback
 
 .SetupRematchesCallback:

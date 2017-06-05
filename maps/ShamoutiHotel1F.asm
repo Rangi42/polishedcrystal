@@ -6,8 +6,6 @@ ShamoutiHotel1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .RestaurantTrigger
 
 .RestaurantTrigger:

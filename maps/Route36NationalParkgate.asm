@@ -15,17 +15,12 @@ const_value set 2
 Route36NationalParkgate_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .CheckIfContestRunning
 
 	dbw MAPCALLBACK_OBJECTS, .CheckIfContestAvailable

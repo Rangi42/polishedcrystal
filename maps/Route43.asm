@@ -18,9 +18,6 @@ Route43_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 

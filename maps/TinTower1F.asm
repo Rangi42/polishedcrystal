@@ -13,16 +13,11 @@ const_value set 2
 TinTower1F_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x18502a, 0
-	dw UnknownScript_0x18502e, 0
+	maptrigger UnknownScript_0x18502a
+	maptrigger UnknownScript_0x18502e
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18502f
 
 	dbw MAPCALLBACK_TILES, TinTowerStairsCallback

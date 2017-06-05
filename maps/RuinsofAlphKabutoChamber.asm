@@ -5,16 +5,11 @@ const_value set 2
 RuinsofAlphKabutoChamber_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x5872b, 0
-	dw UnknownScript_0x58736, 0
+	maptrigger UnknownScript_0x5872b
+	maptrigger UnknownScript_0x58736
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58737
 
 UnknownScript_0x5872b:

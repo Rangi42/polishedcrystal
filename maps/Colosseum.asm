@@ -5,17 +5,12 @@ const_value set 2
 Colosseum_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
 
 	dbw MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB

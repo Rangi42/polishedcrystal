@@ -11,8 +11,6 @@ const_value set 2
 Route23_MapScriptHeader:
 .MapTriggers:
 	db 9
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2

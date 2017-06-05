@@ -12,9 +12,6 @@ CopycatsHouse2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
 
 CopycatsHouse2FCallback:

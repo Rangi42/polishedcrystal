@@ -10,10 +10,8 @@ const_value set 2
 OlivinePort_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x748ac, 0
-	dw UnknownScript_0x748ad, 0
+	maptrigger UnknownScript_0x748ac
+	maptrigger UnknownScript_0x748ad
 
 .MapCallbacks:
 	db 0

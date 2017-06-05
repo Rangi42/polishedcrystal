@@ -16,9 +16,6 @@ Route26_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .DragonTamerSprite
 
 .DragonTamerSprite:

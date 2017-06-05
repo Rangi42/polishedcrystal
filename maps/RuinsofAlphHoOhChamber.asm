@@ -1,16 +1,11 @@
 RuinsofAlphHoOhChamber_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x5856d, 0
-	dw UnknownScript_0x5857b, 0
+	maptrigger UnknownScript_0x5856d
+	maptrigger UnknownScript_0x5857b
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x5857c
 
 UnknownScript_0x5856d:

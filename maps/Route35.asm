@@ -18,9 +18,6 @@ Route35_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
 
 .RebattleBreeder:

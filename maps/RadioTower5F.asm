@@ -9,8 +9,6 @@ const_value set 2
 RadioTower5F_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2

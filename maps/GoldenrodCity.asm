@@ -18,15 +18,11 @@ const_value set 2
 GoldenrodCity_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 3
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPointAndFloria
 	dbw MAPCALLBACK_OBJECTS, .MoveTutor
 	dbw MAPCALLBACK_SPRITES, .RocketScout

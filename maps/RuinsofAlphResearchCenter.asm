@@ -6,16 +6,11 @@ const_value set 2
 RuinsofAlphResearchCenter_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x59180, 0
-	dw UnknownScript_0x59181, 0
+	maptrigger UnknownScript_0x59180
+	maptrigger UnknownScript_0x59181
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
 UnknownScript_0x59180:

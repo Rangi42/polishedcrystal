@@ -10,9 +10,6 @@ Route34IlexForestGate_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
 
 UnknownScript_0x62d2d:

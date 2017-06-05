@@ -9,8 +9,6 @@ const_value set 2
 VictoryRoad2F_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 

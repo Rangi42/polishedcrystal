@@ -13,16 +13,11 @@ const_value set 2
 Route10North_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Zapdos
 

@@ -4,15 +4,11 @@ const_value set 2
 SeagallopFerryNavelGate_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	maptrigger .Trigger0
+	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .Visited
 
 .Trigger0:

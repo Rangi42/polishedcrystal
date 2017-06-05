@@ -6,9 +6,7 @@ const_value set 2
 TrainerHouseB1F_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
-	dw Trigger0, 0
+	maptrigger Trigger0
 
 .MapCallbacks:
 	db 0

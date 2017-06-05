@@ -18,17 +18,12 @@ const_value set 2
 Route32_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
 
 .MapCallbacks:
 	db 3
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Frieda
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite

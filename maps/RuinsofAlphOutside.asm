@@ -15,16 +15,11 @@ const_value set 2
 RuinsofAlphOutside_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x5800d, 0
-	dw UnknownScript_0x5800e, 0
+	maptrigger UnknownScript_0x5800d
+	maptrigger UnknownScript_0x5800e
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 

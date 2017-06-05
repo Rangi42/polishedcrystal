@@ -21,9 +21,6 @@ Route47_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, Route47TileScript
 
 Route47TileScript:

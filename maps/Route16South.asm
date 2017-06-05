@@ -7,9 +7,6 @@ Route16South_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
 UnknownScript_0x1ad318:

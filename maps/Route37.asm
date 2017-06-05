@@ -15,9 +15,6 @@ Route37_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, SunnyCallback
 
 SunnyCallback:

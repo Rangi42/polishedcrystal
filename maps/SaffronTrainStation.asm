@@ -7,8 +7,6 @@ const_value set 2
 SaffronTrainStation_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
 	maptrigger .Trigger0
 
 .MapCallbacks:

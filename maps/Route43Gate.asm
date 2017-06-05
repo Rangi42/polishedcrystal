@@ -6,16 +6,11 @@ const_value set 2
 Route43Gate_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x19abc5, 0
-	dw UnknownScript_0x19abc9, 0
+	maptrigger UnknownScript_0x19abc5
+	maptrigger UnknownScript_0x19abc9
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
 
 UnknownScript_0x19abc5:

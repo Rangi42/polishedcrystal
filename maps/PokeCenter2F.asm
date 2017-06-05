@@ -6,17 +6,12 @@ const_value set 2
 PokeCenter2F_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, Script_ChangePokeCenter2FMap
 
 .Trigger0:

@@ -4,15 +4,10 @@ const_value set 2
 Route18West_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
 	maptrigger .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .AlwaysOnBike
 
 .Trigger0:

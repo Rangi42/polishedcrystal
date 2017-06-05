@@ -10,10 +10,8 @@ const_value set 2
 GoldenrodGym_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x5400a, 0
-	dw UnknownScript_0x5400b, 0
+	maptrigger UnknownScript_0x5400a
+	maptrigger UnknownScript_0x5400b
 
 .MapCallbacks:
 	db 0

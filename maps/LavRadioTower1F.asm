@@ -11,8 +11,6 @@ LavRadioTower1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_OBJECTS, LavRadioTower1FUpstairsScript
 
 LavRadioTower1FUpstairsScript:

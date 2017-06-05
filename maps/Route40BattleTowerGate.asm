@@ -8,9 +8,6 @@ Route40BattleTowerGate_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x9f665
 
 UnknownScript_0x9f665:

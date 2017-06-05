@@ -11,9 +11,6 @@ KurtsHouse_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
 UnknownScript_0x18e154:

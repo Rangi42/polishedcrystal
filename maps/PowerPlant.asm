@@ -10,10 +10,8 @@ const_value set 2
 PowerPlant_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x188dc3, 0
-	dw UnknownScript_0x188dc4, 0
+	maptrigger UnknownScript_0x188dc3
+	maptrigger UnknownScript_0x188dc4
 
 .MapCallbacks:
 	db 0

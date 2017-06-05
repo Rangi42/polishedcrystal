@@ -6,8 +6,6 @@ const_value set 2
 GoldenrodMagnetTrainStation_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
 	maptrigger .Trigger0
 
 .MapCallbacks:

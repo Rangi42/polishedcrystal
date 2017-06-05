@@ -6,9 +6,6 @@ SeafoamIslands1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .ClearRocks
 
 .ClearRocks:

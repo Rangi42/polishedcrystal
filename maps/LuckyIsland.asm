@@ -15,9 +15,6 @@ LuckyIsland_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
 Script_ChangeLuckyIslandMap:

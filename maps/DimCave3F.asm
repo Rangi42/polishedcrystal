@@ -15,9 +15,6 @@ DimCave3F_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .BouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 

@@ -5,9 +5,7 @@ const_value set 2
 Route28FamousSpeechHouse_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
-	dw .Trigger, 0
+	maptrigger .Trigger
 
 .MapCallbacks:
 	db 0

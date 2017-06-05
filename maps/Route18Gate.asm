@@ -4,9 +4,7 @@ const_value set 2
 Route18Gate_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
-	dw UnknownScript_0x7360d, 0
+	maptrigger UnknownScript_0x7360d
 
 .MapCallbacks:
 	db 0

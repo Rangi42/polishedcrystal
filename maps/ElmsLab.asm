@@ -10,8 +10,6 @@ const_value set 2
 ElmsLab_MapScriptHeader:
 .MapTriggers:
 	db 8
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
@@ -23,9 +21,6 @@ ElmsLab_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .Callback_MoveElm
 
 .Trigger0:

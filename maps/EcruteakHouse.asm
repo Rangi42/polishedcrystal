@@ -7,16 +7,11 @@ const_value set 2
 EcruteakHouse_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .InitializeSages
 
 .Trigger0:

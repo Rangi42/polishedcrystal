@@ -17,8 +17,6 @@ const_value set 2
 TeamRocketBaseB3F_MapScriptHeader:
 .MapTriggers:
 	db 4
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 	maptrigger .Trigger2
@@ -26,9 +24,6 @@ TeamRocketBaseB3F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .CheckGiovanniDoor
 
 .Trigger0:

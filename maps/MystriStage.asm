@@ -6,8 +6,6 @@ const_value set 2
 MystriStage_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
 	maptrigger .Trigger0
 	maptrigger .Trigger1
 

@@ -16,16 +16,11 @@ const_value set 2
 Route27_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x1a0871, 0
-	dw UnknownScript_0x1a0872, 0
+	maptrigger UnknownScript_0x1a0871
+	maptrigger UnknownScript_0x1a0872
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .DragonTamerSprite
 
 .DragonTamerSprite:

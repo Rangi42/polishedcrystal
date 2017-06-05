@@ -6,15 +6,10 @@ const_value set 2
 MountMoonSquare_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
-	dw UnknownScript_0x77092, 0
+	maptrigger UnknownScript_0x77092
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x77093
 
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x77097

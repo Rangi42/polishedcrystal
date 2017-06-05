@@ -6,10 +6,8 @@ const_value set 2
 PokemonLeagueGate_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x9b9fb, 0
-	dw UnknownScript_0x9b9fc, 0
+	maptrigger UnknownScript_0x9b9fb
+	maptrigger UnknownScript_0x9b9fc
 
 .MapCallbacks:
 	db 0

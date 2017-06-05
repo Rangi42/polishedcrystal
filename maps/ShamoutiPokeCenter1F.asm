@@ -8,9 +8,6 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
 ShamoutiPokeCenter1FFixStairScript:

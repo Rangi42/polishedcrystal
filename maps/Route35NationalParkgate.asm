@@ -6,17 +6,12 @@ const_value set 2
 Route35NationalParkgate_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
-	dw Route35NationalParkgate_Trigger1, 0
-	dw Route35NationalParkgate_Trigger2, 0
-	dw Route35NationalParkgate_Trigger3, 0
+	maptrigger Route35NationalParkgate_Trigger1
+	maptrigger Route35NationalParkgate_Trigger2
+	maptrigger Route35NationalParkgate_Trigger3
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, Route35NationalParkgate_CheckIfStillInContest
 
 	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay

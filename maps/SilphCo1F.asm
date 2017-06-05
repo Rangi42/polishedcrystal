@@ -10,9 +10,6 @@ SilphCo1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .MoveOfficerCallback
 
 .MoveOfficerCallback:

@@ -1,16 +1,11 @@
 RuinsofAlphOmanyteChamber_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x58be9, 0
-	dw UnknownScript_0x58bf7, 0
+	maptrigger UnknownScript_0x58be9
+	maptrigger UnknownScript_0x58bf7
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58bf8
 
 UnknownScript_0x58be9:

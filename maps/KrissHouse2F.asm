@@ -10,9 +10,6 @@ KrissHouse2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .InitializeRoom
 
 	dbw MAPCALLBACK_TILES, .SetSpawn

@@ -14,9 +14,6 @@ DimCave5F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 
 .SetUpStoneTable:
