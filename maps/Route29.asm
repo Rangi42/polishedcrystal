@@ -12,19 +12,11 @@ const_value set 2
 
 Route29_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_OBJECTS, .Tuscany
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .Tuscany:
 	checkflag ENGINE_ZEPHYRBADGE

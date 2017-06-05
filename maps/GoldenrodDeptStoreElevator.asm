@@ -38,11 +38,8 @@ MapGoldenrodDeptStoreElevatorSignpost0Script:
 	clearevent EVENT_WAREHOUSE_LAYOUT_1
 	clearevent EVENT_WAREHOUSE_LAYOUT_2
 	setevent EVENT_WAREHOUSE_LAYOUT_3
-	end
-
 .Done:
 	end
-
 
 Elevator_0x566e0:
 	db 7 ; floors
@@ -54,7 +51,6 @@ Elevator_0x566e0:
 	elevfloor _5F,  3, GOLDENROD_DEPT_STORE_5F
 	elevfloor _6F,  2, GOLDENROD_DEPT_STORE_6F
 	db -1 ; end
-
 
 GoldenrodDeptStoreElevator_MapEventHeader:
 .Warps:

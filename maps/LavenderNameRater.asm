@@ -3,14 +3,10 @@ const_value set 2
 
 LavenderNameRater_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw UnknownScript_0x7eaf1
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x7eaf1:
-	end
 
 LavenderNameRater:
 	faceplayer

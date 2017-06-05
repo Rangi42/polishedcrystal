@@ -3,15 +3,11 @@ const_value set 2
 
 Route18West_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, .AlwaysOnBike
-
-.Trigger0:
-	end
 
 .AlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE

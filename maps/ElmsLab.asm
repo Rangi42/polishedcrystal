@@ -25,23 +25,11 @@ ElmsLab_MapScriptHeader:
 
 .Trigger0:
 	priorityjump ElmsLab_AutowalkUpToElm
-	end
-
 .Trigger1:
-	end
-
 .Trigger2:
-	end
-
 .Trigger3:
-	end
-
 .Trigger4:
-	end
-
 .Trigger5:
-	end
-
 .Trigger6:
 	end
 

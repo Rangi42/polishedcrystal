@@ -3,19 +3,15 @@ const_value set 2
 
 KarensRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x180bbc
-	dw UnknownScript_0x180bc0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x180bc1
 
-UnknownScript_0x180bbc:
+.Trigger0:
 	priorityjump UnknownScript_0x180bd6
-	end
-
-UnknownScript_0x180bc0:
 	end
 
 UnknownScript_0x180bc1:

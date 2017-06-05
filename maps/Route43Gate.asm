@@ -5,19 +5,15 @@ const_value set 2
 
 Route43Gate_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x19abc5
-	dw UnknownScript_0x19abc9
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
 
-UnknownScript_0x19abc5:
+.Trigger0:
 	priorityjump UnknownScript_0x19abda
-	end
-
-UnknownScript_0x19abc9:
 	end
 
 UnknownScript_0x19abca:

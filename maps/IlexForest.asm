@@ -24,11 +24,9 @@ IlexForest_MapScriptHeader:
 	db 1
 	dbw MAPCALLBACK_OBJECTS, .FarfetchdCallback
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump IlexForestFinishCelebiEventScript
+.Trigger0:
 	end
 
 .FarfetchdCallback:

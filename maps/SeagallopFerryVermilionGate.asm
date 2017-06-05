@@ -10,11 +10,9 @@ SeagallopFerryVermilionGate_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump SeagallopFerryVermilionGate_PlayerArrives
+.Trigger0:
 	end
 
 SeagallopFerryVermilionGate_PlayerArrives:

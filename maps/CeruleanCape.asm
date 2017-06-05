@@ -17,18 +17,10 @@ const_value set 2
 
 CeruleanCape_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x19ee9e
-	dw UnknownScript_0x19ee9f
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x19ee9e:
-	end
-
-UnknownScript_0x19ee9f:
-	end
 
 UnknownScript_0x19eea0:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15

@@ -3,9 +3,8 @@ const_value set 2
 
 BrunosRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 1
@@ -13,9 +12,6 @@ BrunosRoom_MapScriptHeader:
 
 .Trigger0:
 	priorityjump UnknownScript_0x1809ad
-	end
-
-.Trigger1:
 	end
 
 .BrunosRoomDoors:

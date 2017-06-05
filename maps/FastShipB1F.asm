@@ -15,18 +15,10 @@ const_value set 2
 
 FastShipB1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x7673a
-	dw UnknownScript_0x7673b
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x7673a:
-	end
-
-UnknownScript_0x7673b:
-	end
 
 UnknownScript_0x7673c:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT

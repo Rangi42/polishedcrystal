@@ -4,9 +4,8 @@ const_value set 2
 
 BattleTowerBattleRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .EnterBattleRoom
-	dw .DummyTrigger
 
 .MapCallbacks:
 	db 0
@@ -15,7 +14,6 @@ BattleTowerBattleRoom_MapScriptHeader:
 	disappear BATTLETOWERBATTLEROOM_YOUNGSTER
 	priorityjump Script_BattleRoom
 	dotrigger $1
-.DummyTrigger:
 	end
 
 Script_BattleRoom: ; 0x9f421

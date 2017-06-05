@@ -5,9 +5,8 @@ const_value set 2
 
 LancesRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 1
@@ -15,9 +14,6 @@ LancesRoom_MapScriptHeader:
 
 .Trigger0:
 	priorityjump LancesRoom_PlayerWalksIn_DoorsCloseBehind
-	end
-
-.Trigger1:
 	end
 
 .CheckDoor:

@@ -6,18 +6,14 @@ const_value set 2
 
 DragonShrine_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump DragonShrineTestScript
-	end
-
-.Trigger1:
 	end
 
 DragonShrineTestScript:

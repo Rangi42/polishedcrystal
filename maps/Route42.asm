@@ -16,22 +16,10 @@ const_value set 2
 
 Route42_MapScriptHeader:
 .MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 Route42LyraScript1:
 	spriteface PLAYER, LEFT

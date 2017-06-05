@@ -14,11 +14,9 @@ PokeCenter2F_MapScriptHeader:
 	db 1
 	dbw MAPCALLBACK_TILES, Script_ChangePokeCenter2FMap
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump Script_LeftCableTradeCenter
+.Trigger0:
 	end
 
 .Trigger2:

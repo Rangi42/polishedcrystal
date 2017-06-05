@@ -9,10 +9,8 @@ const_value set 2
 
 BurnedTower1F_MapScriptHeader:
 .MapTriggers:
-	db 3
+	db 1
 	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
 
 .MapCallbacks:
 	db 1
@@ -20,12 +18,6 @@ BurnedTower1F_MapScriptHeader:
 
 .Trigger0:
 	priorityjump .EusineTrigger
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
 	end
 
 .HoleAndLadder:

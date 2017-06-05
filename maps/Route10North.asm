@@ -21,11 +21,9 @@ Route10North_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Zapdos
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump Route10NorthLawrenceEncounter1Script
+.Trigger0:
 	end
 
 .FlyPoint:

@@ -3,9 +3,8 @@ const_value set 2
 
 BellchimeTrail_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 1
@@ -13,9 +12,6 @@ BellchimeTrail_MapScriptHeader:
 
 .Trigger0:
 	priorityjump BellchimeTrailStepDownScript
-	end
-
-.Trigger1:
 	end
 
 SetupValerieMorningWalkScript:

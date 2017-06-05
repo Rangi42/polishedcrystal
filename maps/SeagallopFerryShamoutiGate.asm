@@ -11,11 +11,9 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump SeagallopFerryShamoutiGate_PlayerArrives
+.Trigger0:
 	end
 
 SeagallopFerryShamoutiGate_PlayerArrives:

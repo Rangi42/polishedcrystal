@@ -5,17 +5,12 @@ const_value set 2
 
 MountMoonSquare_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw UnknownScript_0x77092
+	db 0
 
 .MapCallbacks:
 	db 2
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x77093
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x77097
-
-UnknownScript_0x77092:
-	end
 
 UnknownScript_0x77093:
 	setevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE

@@ -8,18 +8,10 @@ const_value set 2
 
 VictoryRoad2F_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 UnknownScript_0x74492:
 	spriteface PLAYER, LEFT

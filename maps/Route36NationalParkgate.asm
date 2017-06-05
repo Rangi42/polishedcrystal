@@ -22,17 +22,12 @@ Route36NationalParkgate_MapScriptHeader:
 .MapCallbacks:
 	db 2
 	dbw MAPCALLBACK_NEWMAP, .CheckIfContestRunning
-
 	dbw MAPCALLBACK_OBJECTS, .CheckIfContestAvailable
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .Trigger2:
 	priorityjump .LeftTheContestEarly
+.Trigger0:
+.Trigger1:
 	end
 
 .CheckIfContestRunning:

@@ -6,14 +6,10 @@ const_value set 2
 
 SaffronTrainStation_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
 
 OfficerScript_0x18a81e:
 	faceplayer

@@ -3,9 +3,8 @@ const_value set 2
 
 BattleTowerHallway_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 0
@@ -13,7 +12,6 @@ BattleTowerHallway_MapScriptHeader:
 .Trigger0:
 	priorityjump .ChooseBattleRoom
 	dotrigger $1
-.Trigger1:
 	end
 
 .ChooseBattleRoom:

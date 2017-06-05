@@ -3,14 +3,10 @@ const_value set 2
 
 Route6SaffronGate_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw UnknownScript_0x1926e9
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x1926e9:
-	end
 
 OfficerScript_0x1926ea:
 	faceplayer

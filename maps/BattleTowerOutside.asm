@@ -6,27 +6,14 @@ const_value set 2
 
 BattleTowerOutside_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_TILES, .Callback1
-	dbw MAPCALLBACK_OBJECTS, .Callback2
-
-.Callback1:
-	return
-
-.Callback2:
-	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
-	return
+	db 0
 
 .Trigger0:
 	priorityjump BattleTowerOutsideStepDownScript
-	end
-
-.Trigger1:
 	end
 
 BattleTowerOutsideStepDownScript:
@@ -170,5 +157,5 @@ BattleTowerOutside_MapEventHeader:
 	db 4
 	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
 	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
-	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
+	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, -1
 	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

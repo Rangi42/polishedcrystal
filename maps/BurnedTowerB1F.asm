@@ -11,19 +11,11 @@ const_value set 2
 
 BurnedTowerB1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x18615e
-	dw UnknownScript_0x18615f
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_TILES, BurnedTowerB1FLadderCallback
-
-UnknownScript_0x18615e:
-	end
-
-UnknownScript_0x18615f:
-	end
 
 BurnedTowerB1FLadderCallback:
 	checkevent EVENT_RELEASED_THE_BEASTS

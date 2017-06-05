@@ -3,14 +3,10 @@ const_value set 2
 
 CianwoodPharmacy_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw CianwoodPharmacyTrigger
+	db 0
 
 .MapCallbacks:
 	db 0
-
-CianwoodPharmacyTrigger:
-	end
 
 CianwoodPharmacist:
 	faceplayer

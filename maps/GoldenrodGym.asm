@@ -9,18 +9,10 @@ const_value set 2
 
 GoldenrodGym_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x5400a
-	dw UnknownScript_0x5400b
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x5400a:
-	end
-
-UnknownScript_0x5400b:
-	end
 
 WhitneyScript_0x5400c:
 	faceplayer

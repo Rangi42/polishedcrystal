@@ -17,19 +17,11 @@ const_value set 2
 
 Route34_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_OBJECTS, .EggCheckCallback
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .EggCheckCallback:
 	clearevent EVENT_BEAT_BREEDER_JULIE

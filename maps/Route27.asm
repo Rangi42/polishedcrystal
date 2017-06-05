@@ -15,9 +15,7 @@ const_value set 2
 
 Route27_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x1a0871
-	dw UnknownScript_0x1a0872
+	db 0
 
 .MapCallbacks:
 	db 1
@@ -26,12 +24,6 @@ Route27_MapScriptHeader:
 .DragonTamerSprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
 	return
-
-UnknownScript_0x1a0871:
-	end
-
-UnknownScript_0x1a0872:
-	end
 
 UnknownScript_0x1a0873:
 	spriteface ROUTE27_FISHER, LEFT

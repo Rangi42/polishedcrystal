@@ -8,18 +8,14 @@ const_value set 2
 
 EcruteakPokeCenter1F_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump .BillAbandonsTimeCapsule
-	end
-
-.Trigger1:
 	end
 
 .BillAbandonsTimeCapsule:

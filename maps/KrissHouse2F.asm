@@ -11,11 +11,7 @@ KrissHouse2F_MapScriptHeader:
 .MapCallbacks:
 	db 2
 	dbw MAPCALLBACK_NEWMAP, .InitializeRoom
-
 	dbw MAPCALLBACK_TILES, .SetSpawn
-
-.Null:
-	end
 
 .InitializeRoom:
 	special ToggleDecorationsVisibility

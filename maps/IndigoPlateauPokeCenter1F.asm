@@ -10,15 +10,11 @@ const_value set 2
 
 IndigoPlateauPokeCenter1F_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw UnknownScript_0x180009
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x18000a
-
-UnknownScript_0x180009:
-	end
 
 UnknownScript_0x18000a:
 	domaptrigger WILLS_ROOM, $0

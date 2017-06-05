@@ -15,20 +15,34 @@ const_value set 2
 RuinsofAlphOutside_MapScriptHeader:
 .MapTriggers:
 	db 2
-	dw UnknownScript_0x5800d
-	dw UnknownScript_0x5800e
+	dw .Trigger0
 
 .MapCallbacks:
 	db 2
 	dbw MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
-UnknownScript_0x5800d:
+.Trigger0:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
-	iftrue RuinsofAlphOutsideClimaxScript
-	end
-
-UnknownScript_0x5800e:
+	iffalse .End
+	opentext
+	writetext RuinsofAlphScientistClimax1Text
+	waitbutton
+	closetext
+	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
+	stopfollow
+	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
+	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
+	opentext
+	writetext RuinsofAlphScientistClimax2Text
+	waitbutton
+	closetext
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
+	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
+	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
+	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
+.End
 	end
 
 RuinsofAlphOutsideTileScript:
@@ -85,26 +99,6 @@ UnknownScript_0x58044:
 	applymovement PLAYER, MovementData_0x580c5
 	domaptrigger RUINS_OF_ALPH_RESEARCH_CENTER, $1
 	warpcheck
-	end
-
-RuinsofAlphOutsideClimaxScript:
-	opentext
-	writetext RuinsofAlphScientistClimax1Text
-	waitbutton
-	closetext
-	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
-	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
-	stopfollow
-	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
-	opentext
-	writetext RuinsofAlphScientistClimax2Text
-	waitbutton
-	closetext
-	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
-	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
-	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
-	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	end
 
 FisherScript_0x58061:

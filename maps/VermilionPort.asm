@@ -13,11 +13,9 @@ VermilionPort_MapScriptHeader:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump UnknownScript_0x74da6
+.Trigger0:
 	end
 
 .FlyPoint:

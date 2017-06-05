@@ -12,21 +12,16 @@ const_value set 2
 
 TinTower1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x18502a
-	dw UnknownScript_0x18502e
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 2
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18502f
-
 	dbw MAPCALLBACK_TILES, TinTowerStairsCallback
 
-UnknownScript_0x18502a:
+.Trigger0:
 	priorityjump SuicuneBattle
-	end
-
-UnknownScript_0x18502e:
 	end
 
 UnknownScript_0x18502f:

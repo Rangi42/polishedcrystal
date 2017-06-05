@@ -11,9 +11,8 @@ const_value set 2
 
 BattleTower1F_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 0
@@ -40,9 +39,6 @@ BattleTower1F_MapScriptHeader:
 	special Special_BattleTower_SetChallengeState
 .Done
 	dotrigger $1
-	end
-
-.Trigger1:
 	end
 
 MapBattleTower1FSignpost0Script:

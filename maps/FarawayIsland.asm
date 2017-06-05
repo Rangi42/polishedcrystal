@@ -13,11 +13,9 @@ FarawayIsland_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, .Visited
 	dbw MAPCALLBACK_SPRITES, .SetupLawrence
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump FarawayIsland_PlayerArrives
+.Trigger0:
 	end
 
 .Visited:

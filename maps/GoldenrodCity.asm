@@ -17,9 +17,8 @@ const_value set 2
 
 GoldenrodCity_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 3
@@ -61,9 +60,6 @@ GoldenrodCity_MapScriptHeader:
 
 .Trigger0:
 	priorityjump GoldenrodCityStepDownScript
-	end
-
-.Trigger1:
 	end
 
 GoldenrodCityStepDownScript:

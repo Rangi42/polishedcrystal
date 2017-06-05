@@ -6,9 +6,9 @@ const_value set 2
 Route35NationalParkgate_MapScriptHeader:
 .MapTriggers:
 	db 3
-	dw Route35NationalParkgate_Trigger1
-	dw Route35NationalParkgate_Trigger2
-	dw Route35NationalParkgate_Trigger3
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
 
 .MapCallbacks:
 	db 2
@@ -16,14 +16,10 @@ Route35NationalParkgate_MapScriptHeader:
 
 	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay
 
-Route35NationalParkgate_Trigger1:
-	end
-
-Route35NationalParkgate_Trigger2:
-	end
-
-Route35NationalParkgate_Trigger3:
+.Trigger2:
 	priorityjump Route35NationalParkGate_LeavingContestEarly
+.Trigger0:
+.Trigger1:
 	end
 
 Route35NationalParkgate_CheckIfStillInContest:

@@ -3,14 +3,10 @@ const_value set 2
 
 Route18Gate_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw UnknownScript_0x7360d
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x7360d:
-	end
 
 OfficerScript_0x7360e:
 	jumptextfaceplayer UnknownText_0x7362c

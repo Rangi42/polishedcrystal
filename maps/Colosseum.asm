@@ -4,25 +4,16 @@ const_value set 2
 
 Colosseum_MapScriptHeader:
 .MapTriggers:
-	db 3
+	db 1
 	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
 
 .MapCallbacks:
 	db 2
 	dbw MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
-
 	dbw MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
 
 .Trigger0:
 	priorityjump ColosseumScript_Initialize
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
 	end
 
 ColosseumScript_SetWhichChris:

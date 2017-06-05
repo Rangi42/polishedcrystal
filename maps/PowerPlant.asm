@@ -9,18 +9,10 @@ const_value set 2
 
 PowerPlant_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x188dc3
-	dw UnknownScript_0x188dc4
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x188dc3:
-	end
-
-UnknownScript_0x188dc4:
-	end
 
 PowerPlantGuardPhoneScript:
 	playsound SFX_CALL

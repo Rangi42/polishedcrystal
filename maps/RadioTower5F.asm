@@ -8,22 +8,10 @@ const_value set 2
 
 RadioTower5F_MapScriptHeader:
 .MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 FakeDirectorScript:
 	spriteface RADIOTOWER5F_DIRECTOR, UP

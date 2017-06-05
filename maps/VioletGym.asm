@@ -7,18 +7,14 @@ const_value set 2
 
 VioletGym_MapScriptHeader:
 .MapTriggers:
-	db 2
+	db 1
 	dw .Trigger0
-	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump VioletGymFalknerAwayScript
-	end
-
-.Trigger1:
 	end
 
 VioletGymFalknerAwayScript:

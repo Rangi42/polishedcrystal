@@ -10,14 +10,10 @@ const_value set 2
 
 SeafoamGym_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw UnknownScript_0x1ab4fa
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x1ab4fa:
-	end
 
 TrainerScientistLowell:
 	trainer EVENT_BEAT_SCIENTIST_LOWELL, SCIENTIST, LOWELL, ScientistLowellSeenText, ScientistLowellBeatenText, 0, ScientistLowellScript

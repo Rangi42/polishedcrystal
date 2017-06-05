@@ -8,19 +8,11 @@ const_value set 2
 
 WiseTriosRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x98572
-	dw UnknownScript_0x98573
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x98574
-
-UnknownScript_0x98572:
-	end
-
-UnknownScript_0x98573:
-	end
 
 UnknownScript_0x98574:
 	checkevent EVENT_FOUGHT_SUICUNE

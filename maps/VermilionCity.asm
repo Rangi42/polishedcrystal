@@ -17,19 +17,11 @@ const_value set 2
 
 VermilionCity_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_VERMILION

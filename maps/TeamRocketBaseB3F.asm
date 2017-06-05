@@ -16,11 +16,8 @@ const_value set 2
 
 TeamRocketBaseB3F_MapScriptHeader:
 .MapTriggers:
-	db 4
+	db 1
 	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
-	dw .Trigger3
 
 .MapCallbacks:
 	db 1
@@ -28,15 +25,6 @@ TeamRocketBaseB3F_MapScriptHeader:
 
 .Trigger0:
 	priorityjump LanceGetPasswordScript
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
-
-.Trigger3:
 	end
 
 .CheckGiovanniDoor:

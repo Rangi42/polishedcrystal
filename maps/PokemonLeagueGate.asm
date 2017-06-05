@@ -5,18 +5,10 @@ const_value set 2
 
 PokemonLeagueGate_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x9b9fb
-	dw UnknownScript_0x9b9fc
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x9b9fb:
-	end
-
-UnknownScript_0x9b9fc:
-	end
 
 PokemonLeagueGateXYTriggerScript2:
 	applymovement PLAYER, PokemonLeagueGateXYTriggerScript2Movement

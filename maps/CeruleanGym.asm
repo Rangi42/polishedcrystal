@@ -11,17 +11,15 @@ const_value set 2
 CeruleanGym_MapScriptHeader:
 .MapTriggers:
 	db 2
-	dw UnknownScript_0x1883d9
-	dw UnknownScript_0x1883da
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x1883d9:
-	end
-
-UnknownScript_0x1883da:
+.Trigger1:
 	priorityjump UnknownScript_0x1883de
+.Trigger0:
 	end
 
 UnknownScript_0x1883de:

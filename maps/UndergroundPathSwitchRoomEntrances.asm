@@ -46,19 +46,11 @@ const_value set 2
 
 UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_TILES, .UpdateDoorPositions
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .UpdateDoorPositions:
 	checkevent EVENT_SWITCH_4

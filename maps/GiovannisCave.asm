@@ -14,11 +14,9 @@ GiovannisCave_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump GiovannisCaveCelebiEventScript
+.Trigger0:
 	end
 
 GiovannisCaveCelebiEventScript:

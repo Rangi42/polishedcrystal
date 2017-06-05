@@ -11,11 +11,9 @@ SeagallopFerryNavelGate_MapScriptHeader:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, .Visited
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump SeagallopFerryNavelGate_PlayerArrives
+.Trigger0:
 	end
 
 .Visited:

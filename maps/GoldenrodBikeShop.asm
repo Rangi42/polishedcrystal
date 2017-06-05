@@ -8,9 +8,6 @@ GoldenrodBikeShop_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x5474f:
-	end
-
 ClerkScript_0x54750:
 	faceplayer
 	opentext

@@ -3,19 +3,15 @@ const_value set 2
 
 KogasRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x180728
-	dw UnknownScript_0x18072c
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x18072d
 
-UnknownScript_0x180728:
+.Trigger0:
 	priorityjump UnknownScript_0x180742
-	end
-
-UnknownScript_0x18072c:
 	end
 
 UnknownScript_0x18072d:

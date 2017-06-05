@@ -17,25 +17,13 @@ const_value set 2
 
 Route32_MapScriptHeader:
 .MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 3
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Frieda
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_UNION_CAVE

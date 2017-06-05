@@ -7,20 +7,12 @@ const_value set 2
 
 CherrygroveCity_MapScriptHeader:
 .MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.Trigger0:
-.Trigger1:
-.Trigger2:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_CHERRYGROVE

@@ -10,30 +10,10 @@ const_value set 2
 
 Route23_MapScriptHeader:
 .MapTriggers:
-	db 9
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
-	dw .Trigger3
-	dw .Trigger4
-	dw .Trigger5
-	dw .Trigger6
-	dw .Trigger7
-	dw .Trigger8
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-.Trigger1:
-.Trigger2:
-.Trigger3:
-.Trigger4:
-.Trigger5:
-.Trigger6:
-.Trigger7:
-.Trigger8:
-	end
 
 Route23ZephyrBadgeOfficerScript:
 	faceplayer

@@ -3,19 +3,15 @@ const_value set 2
 
 WillsRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x1804c6
-	dw UnknownScript_0x1804ca
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x1804cb
 
-UnknownScript_0x1804c6:
+.Trigger0:
 	priorityjump UnknownScript_0x1804e0
-	end
-
-UnknownScript_0x1804ca:
 	end
 
 UnknownScript_0x1804cb:

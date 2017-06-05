@@ -8,15 +8,11 @@ const_value set 2
 
 TeamRocketBaseB1F_MapScriptHeader:
 .MapTriggers:
-	db 1
-	dw .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_OBJECTS, .Callback1
-
-.Trigger0:
-	end
 
 .Callback1:
 	disappear TEAMROCKETBASEB1F_ROCKET1

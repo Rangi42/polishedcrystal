@@ -16,27 +16,11 @@ const_value set 2
 
 TeamRocketBaseB2F_MapScriptHeader:
 .MapTriggers:
-	db 4
-	dw UnknownScript_0x6cf85
-	dw UnknownScript_0x6cf86
-	dw UnknownScript_0x6cf87
-	dw UnknownScript_0x6cf88
+	db 0
 
 .MapCallbacks:
 	db 1
 	dbw MAPCALLBACK_TILES, TransmitterDoorCallback
-
-UnknownScript_0x6cf85:
-	end
-
-UnknownScript_0x6cf86:
-	end
-
-UnknownScript_0x6cf87:
-	end
-
-UnknownScript_0x6cf88:
-	end
 
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER

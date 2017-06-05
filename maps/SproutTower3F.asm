@@ -9,18 +9,10 @@ const_value set 2
 
 SproutTower3F_MapScriptHeader:
 .MapTriggers:
-	db 2
-	dw UnknownScript_0x184945
-	dw UnknownScript_0x184946
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x184945:
-	end
-
-UnknownScript_0x184946:
-	end
 
 UnknownScript_0x184947:
 	spriteface PLAYER, UP
