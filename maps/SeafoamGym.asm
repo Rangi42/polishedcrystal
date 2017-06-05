@@ -11,7 +11,7 @@ const_value set 2
 SeafoamGym_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x1ab4fa
+	dw UnknownScript_0x1ab4fa
 
 .MapCallbacks:
 	db 0

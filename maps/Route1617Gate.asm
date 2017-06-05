@@ -4,7 +4,7 @@ const_value set 2
 Route1617Gate_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x733e9
+	dw UnknownScript_0x733e9
 
 .MapCallbacks:
 	db 0

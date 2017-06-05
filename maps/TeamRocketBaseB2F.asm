@@ -17,10 +17,10 @@ const_value set 2
 TeamRocketBaseB2F_MapScriptHeader:
 .MapTriggers:
 	db 4
-	maptrigger UnknownScript_0x6cf85
-	maptrigger UnknownScript_0x6cf86
-	maptrigger UnknownScript_0x6cf87
-	maptrigger UnknownScript_0x6cf88
+	dw UnknownScript_0x6cf85
+	dw UnknownScript_0x6cf86
+	dw UnknownScript_0x6cf87
+	dw UnknownScript_0x6cf88
 
 .MapCallbacks:
 	db 1

@@ -8,7 +8,7 @@ const_value set 2
 AzaleaPokeCenter1F_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x18db27
+	dw UnknownScript_0x18db27
 
 .MapCallbacks:
 	db 0

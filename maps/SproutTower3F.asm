@@ -10,8 +10,8 @@ const_value set 2
 SproutTower3F_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x184945
-	maptrigger UnknownScript_0x184946
+	dw UnknownScript_0x184945
+	dw UnknownScript_0x184946
 
 .MapCallbacks:
 	db 0

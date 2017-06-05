@@ -11,15 +11,15 @@ const_value set 2
 Route23_MapScriptHeader:
 .MapTriggers:
 	db 9
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
-	maptrigger .Trigger3
-	maptrigger .Trigger4
-	maptrigger .Trigger5
-	maptrigger .Trigger6
-	maptrigger .Trigger7
-	maptrigger .Trigger8
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
+	dw .Trigger3
+	dw .Trigger4
+	dw .Trigger5
+	dw .Trigger6
+	dw .Trigger7
+	dw .Trigger8
 
 .MapCallbacks:
 	db 0

@@ -4,7 +4,7 @@ const_value set 2
 RedsHouse1F_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger .Trigger
+	dw .Trigger
 
 .MapCallbacks:
 	db 0

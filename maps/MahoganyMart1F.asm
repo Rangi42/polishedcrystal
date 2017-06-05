@@ -8,8 +8,8 @@ const_value set 2
 MahoganyMart1F_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x6c356
-	maptrigger UnknownScript_0x6c357
+	dw UnknownScript_0x6c356
+	dw UnknownScript_0x6c357
 
 .MapCallbacks:
 	db 1

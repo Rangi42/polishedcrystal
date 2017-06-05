@@ -4,8 +4,8 @@ const_value set 2
 KogasRoom_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x180728
-	maptrigger UnknownScript_0x18072c
+	dw UnknownScript_0x180728
+	dw UnknownScript_0x18072c
 
 .MapCallbacks:
 	db 1

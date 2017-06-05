@@ -11,7 +11,7 @@ const_value set 2
 IndigoPlateauPokeCenter1F_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x180009
+	dw UnknownScript_0x180009
 
 .MapCallbacks:
 	db 1

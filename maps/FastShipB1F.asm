@@ -16,8 +16,8 @@ const_value set 2
 FastShipB1F_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x7673a
-	maptrigger UnknownScript_0x7673b
+	dw UnknownScript_0x7673a
+	dw UnknownScript_0x7673b
 
 .MapCallbacks:
 	db 0

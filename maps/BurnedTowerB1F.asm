@@ -12,8 +12,8 @@ const_value set 2
 BurnedTowerB1F_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x18615e
-	maptrigger UnknownScript_0x18615f
+	dw UnknownScript_0x18615e
+	dw UnknownScript_0x18615f
 
 .MapCallbacks:
 	db 1

@@ -4,8 +4,8 @@ const_value set 2
 KarensRoom_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x180bbc
-	maptrigger UnknownScript_0x180bc0
+	dw UnknownScript_0x180bbc
+	dw UnknownScript_0x180bc0
 
 .MapCallbacks:
 	db 1

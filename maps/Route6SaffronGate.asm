@@ -4,7 +4,7 @@ const_value set 2
 Route6SaffronGate_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x1926e9
+	dw UnknownScript_0x1926e9
 
 .MapCallbacks:
 	db 0

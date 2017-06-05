@@ -9,8 +9,8 @@ const_value set 2
 WiseTriosRoom_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x98572
-	maptrigger UnknownScript_0x98573
+	dw UnknownScript_0x98572
+	dw UnknownScript_0x98573
 
 .MapCallbacks:
 	db 1

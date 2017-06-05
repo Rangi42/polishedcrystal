@@ -18,8 +18,8 @@ const_value set 2
 CeruleanCape_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x19ee9e
-	maptrigger UnknownScript_0x19ee9f
+	dw UnknownScript_0x19ee9e
+	dw UnknownScript_0x19ee9f
 
 .MapCallbacks:
 	db 0

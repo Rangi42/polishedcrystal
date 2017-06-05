@@ -4,7 +4,7 @@ const_value set 2
 LavenderNameRater_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x7eaf1
+	dw UnknownScript_0x7eaf1
 
 .MapCallbacks:
 	db 0

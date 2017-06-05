@@ -7,9 +7,9 @@ const_value set 2
 FastShip1F_MapScriptHeader:
 .MapTriggers:
 	db 3
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
 
 .MapCallbacks:
 	db 0

@@ -17,10 +17,10 @@ const_value set 2
 TeamRocketBaseB3F_MapScriptHeader:
 .MapTriggers:
 	db 4
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
-	maptrigger .Trigger3
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
+	dw .Trigger3
 
 .MapCallbacks:
 	db 1

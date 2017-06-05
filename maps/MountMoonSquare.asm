@@ -6,7 +6,7 @@ const_value set 2
 MountMoonSquare_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x77092
+	dw UnknownScript_0x77092
 
 .MapCallbacks:
 	db 2

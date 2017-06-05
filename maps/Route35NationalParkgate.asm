@@ -6,9 +6,9 @@ const_value set 2
 Route35NationalParkgate_MapScriptHeader:
 .MapTriggers:
 	db 3
-	maptrigger Route35NationalParkgate_Trigger1
-	maptrigger Route35NationalParkgate_Trigger2
-	maptrigger Route35NationalParkgate_Trigger3
+	dw Route35NationalParkgate_Trigger1
+	dw Route35NationalParkgate_Trigger2
+	dw Route35NationalParkgate_Trigger3
 
 .MapCallbacks:
 	db 2

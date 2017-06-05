@@ -4,7 +4,7 @@ const_value set 2
 Route18West_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger .Trigger0
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1

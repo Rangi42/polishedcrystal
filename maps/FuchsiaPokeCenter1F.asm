@@ -7,7 +7,7 @@ const_value set 2
 FuchsiaPokeCenter1F_MapScriptHeader:
 .MapTriggers:
 	db 1
-	maptrigger UnknownScript_0x196458
+	dw UnknownScript_0x196458
 
 .MapCallbacks:
 	db 0

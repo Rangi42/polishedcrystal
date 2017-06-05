@@ -10,8 +10,8 @@ const_value set 2
 EcruteakGym_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x99d53
-	maptrigger UnknownScript_0x99d57
+	dw UnknownScript_0x99d53
+	dw UnknownScript_0x99d57
 
 .MapCallbacks:
 	db 0

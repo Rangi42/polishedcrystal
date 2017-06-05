@@ -389,7 +389,7 @@ DoMapTrigger: ; 968ec
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 4
+rept 2
 	add hl, de
 endr
 

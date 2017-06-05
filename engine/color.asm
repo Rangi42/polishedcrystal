@@ -247,10 +247,10 @@ LoadPalette_White_Col1_Col2_Black:
 	ld a, $5
 	ld [rSVBK], a
 
-	ld a, $7fff % $100 ; (RGB 31, 31, 31) % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [de], a
 	inc de
-	ld a, $7fff / $100 ; (RGB 31, 31, 31) / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [de], a
 	inc de
 

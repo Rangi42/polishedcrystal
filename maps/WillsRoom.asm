@@ -4,8 +4,8 @@ const_value set 2
 WillsRoom_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x1804c6
-	maptrigger UnknownScript_0x1804ca
+	dw UnknownScript_0x1804c6
+	dw UnknownScript_0x1804ca
 
 .MapCallbacks:
 	db 1

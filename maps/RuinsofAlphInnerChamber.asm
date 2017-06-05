@@ -7,8 +7,8 @@ const_value set 2
 RuinsofAlphInnerChamber_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger UnknownScript_0x58f69
-	maptrigger UnknownScript_0x58f6a
+	dw UnknownScript_0x58f69
+	dw UnknownScript_0x58f6a
 
 .MapCallbacks:
 	db 0

@@ -9,8 +9,8 @@ const_value set 2
 EcruteakPokeCenter1F_MapScriptHeader:
 .MapTriggers:
 	db 2
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
