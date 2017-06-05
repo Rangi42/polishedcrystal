@@ -2942,7 +2942,7 @@ Script_writecmdqueue: ; 97a8b
 	ld d, a
 	ld a, [ScriptBank]
 	ld b, a
-	farcall WriteCmdQueue ; no need to farcall
+	call WriteCmdQueue
 	ret
 ; 97a9e
 
@@ -2955,7 +2955,7 @@ Script_delcmdqueue: ; 97a9e
 	ld [ScriptVar], a
 	call GetScriptByte
 	ld b, a
-	farcall DelCmdQueue ; no need to farcall
+	call DelCmdQueue
 	ret c
 	ld a, 1
 	ld [ScriptVar], a
