@@ -59,9 +59,6 @@ ChrisScript_0x19340b:
 	done
 
 TradeCenter_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $4, 2, POKECENTER_2F

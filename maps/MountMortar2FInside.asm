@@ -68,9 +68,6 @@ UnknownText_0x7e10e:
 	done
 
 MountMortar2FInside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $21, $11, 4, MOUNT_MORTAR_1F_OUTSIDE

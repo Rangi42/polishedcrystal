@@ -244,9 +244,6 @@ FarawayIslandSignText:
 	done
 
 FarawayIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $8, $16, 1, FARAWAY_JUNGLE

@@ -16,9 +16,6 @@ Route28SignText:
 	done
 
 Route28_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $7, 1, ROUTE_28_FAMOUS_SPEECH_HOUSE

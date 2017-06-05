@@ -249,9 +249,6 @@ UnknownText_0x19ae2d:
 	done
 
 Route43Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 4, ROUTE_43

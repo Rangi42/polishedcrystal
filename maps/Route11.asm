@@ -321,9 +321,6 @@ Route11SignText:
 	done
 
 Route11_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $8, $2f, 1, ROUTE_11_GATE

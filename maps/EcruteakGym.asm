@@ -378,9 +378,6 @@ UnknownText_0x9a49c:
 	done
 
 EcruteakGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 33
 	warp_def $11, $4, 10, ECRUTEAK_CITY

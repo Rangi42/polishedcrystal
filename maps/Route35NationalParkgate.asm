@@ -444,9 +444,6 @@ UnknownText_0x6a90e:
 	done
 
 Route35NationalParkgate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $3, 3, NATIONAL_PARK

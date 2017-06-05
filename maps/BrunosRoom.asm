@@ -175,9 +175,6 @@ BrunoAfterRematchText:
 	done
 
 BrunosRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $4, 3, KOGAS_ROOM

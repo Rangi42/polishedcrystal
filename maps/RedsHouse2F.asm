@@ -50,9 +50,6 @@ PokemonJournalProfOakText:
 	done
 
 RedsHouse2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $7, 3, REDS_HOUSE_1F

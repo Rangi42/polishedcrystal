@@ -347,9 +347,6 @@ FirebreatherNedAfterText:
 	done
 
 BurnedTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 14
 	warp_def $f, $7, 13, ECRUTEAK_CITY

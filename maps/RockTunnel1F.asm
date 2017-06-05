@@ -50,9 +50,6 @@ HikerSeamusAfterText:
 	done
 
 RockTunnel1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $3, $f, 4, ROUTE_10_NORTH

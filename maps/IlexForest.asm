@@ -1296,9 +1296,6 @@ Bug_catcherWayneAfterText:
 	done
 
 IlexForest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $3, 3, ROUTE_34_ILEX_FOREST_GATE

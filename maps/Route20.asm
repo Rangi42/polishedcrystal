@@ -398,9 +398,6 @@ Route20HiddenStardust:
 	dwb EVENT_ROUTE_20_HIDDEN_STARDUST, STARDUST
 
 Route20_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $3e, 1, SEAFOAM_ISLANDS_1F

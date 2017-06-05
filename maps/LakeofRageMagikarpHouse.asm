@@ -206,9 +206,6 @@ UnknownText_0x19aabc:
 	db "@@"
 
 LakeofRageMagikarpHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, LAKE_OF_RAGE

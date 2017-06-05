@@ -331,9 +331,6 @@ TinTowerSignText:
 	done
 
 BellchimeTrail_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $4, $4, 1, WISE_TRIOS_ROOM

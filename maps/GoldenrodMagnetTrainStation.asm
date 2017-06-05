@@ -193,9 +193,6 @@ GoldenrodMagnetTrainStationCooltrainerfText2:
 	done
 
 GoldenrodMagnetTrainStation_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $8, 5, GOLDENROD_CITY

@@ -20,9 +20,6 @@ WhirlIslandB2FMaxElixer:
 	itemball MAX_ELIXER
 
 WhirlIslandB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $5, $b, 7, WHIRL_ISLAND_B1F

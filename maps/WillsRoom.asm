@@ -183,9 +183,6 @@ WillAfterRematchText:
 	done
 
 WillsRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $11, $5, 4, INDIGO_PLATEAU_POKECENTER_1F

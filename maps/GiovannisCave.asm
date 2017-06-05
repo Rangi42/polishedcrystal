@@ -350,9 +350,6 @@ GiovannisCaveLyraWantsToLeaveText:
 	done
 
 GiovannisCave_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $f, 3, TOHJO_FALLS

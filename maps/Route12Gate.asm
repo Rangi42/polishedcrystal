@@ -20,9 +20,6 @@ Route12GateOfficerText:
 	done
 
 Route12Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $0, $4, 1, ROUTE_12_NORTH

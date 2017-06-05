@@ -403,9 +403,6 @@ FuchsiaGymGuyWinText:
 	done
 
 FuchsiaGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $4, 2, FUCHSIA_CITY

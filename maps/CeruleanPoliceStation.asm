@@ -44,9 +44,6 @@ CeruleanDiglettText:
 	done
 
 CeruleanPoliceStation_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, CERULEAN_CITY

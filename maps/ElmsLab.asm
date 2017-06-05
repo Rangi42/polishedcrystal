@@ -1872,9 +1872,6 @@ ElmsLabPCText:
 	done
 
 ElmsLab_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $4, 1, NEW_BARK_TOWN

@@ -573,9 +573,6 @@ BillsHouseSignText:
 	done
 
 CeruleanCape_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $b, 1, BILLS_HOUSE

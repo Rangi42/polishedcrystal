@@ -145,9 +145,6 @@ UnknownText_0x58ee7:
 	done
 
 RuinsofAlphAerodactylChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 4, RUINS_OF_ALPH_OUTSIDE

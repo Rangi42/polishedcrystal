@@ -226,9 +226,6 @@ UnknownText_0x6c5ba:
 	done
 
 MahoganyMart1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $3, 1, MAHOGANY_TOWN

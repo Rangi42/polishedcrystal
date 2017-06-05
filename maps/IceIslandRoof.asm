@@ -63,9 +63,6 @@ IceIslandRoofBlancheTeleport:
 	step_end
 
 IceIslandRoof_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $3, 2, ICE_ISLAND

@@ -304,9 +304,6 @@ UnknownText_0x750a6:
 	done
 
 VermilionPort_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $9, 5, VERMILION_PORT_PASSAGE

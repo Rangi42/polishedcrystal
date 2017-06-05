@@ -506,9 +506,6 @@ UnknownText_0x59886:
 	done
 
 RuinsofAlphResearchCenter_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 6, RUINS_OF_ALPH_OUTSIDE

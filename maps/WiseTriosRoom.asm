@@ -350,9 +350,6 @@ UnknownText_0x98db5:
 	done
 
 WiseTriosRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $4, $7, 1, BELLCHIME_TRAIL

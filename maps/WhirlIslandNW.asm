@@ -6,9 +6,6 @@ WhirlIslandNW_MapScriptHeader:
 	db 0
 
 WhirlIslandNW_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $21, $5, 1, ROUTE_41

@@ -35,9 +35,6 @@ UnknownText_0x6aa5b:
 	done
 
 Route36RuinsofAlphgate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 3, ROUTE_36

@@ -26,9 +26,6 @@ UnknownText_0x7ea4d:
 	done
 
 LavenderTownSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, LAVENDER_TOWN

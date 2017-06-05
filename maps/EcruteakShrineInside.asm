@@ -200,9 +200,6 @@ EcruteakShrineInsideAltarText:
 	done
 
 EcruteakShrineInside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $5, 1, ECRUTEAK_SHRINE_OUTSIDE

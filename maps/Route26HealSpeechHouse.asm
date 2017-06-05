@@ -48,9 +48,6 @@ UnknownText_0x7b18b:
 	done
 
 Route26HealSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, ROUTE_26

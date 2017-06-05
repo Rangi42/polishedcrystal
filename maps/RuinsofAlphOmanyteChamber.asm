@@ -146,9 +146,6 @@ UnknownText_0x58d26:
 	done
 
 RuinsofAlphOmanyteChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 3, RUINS_OF_ALPH_OUTSIDE

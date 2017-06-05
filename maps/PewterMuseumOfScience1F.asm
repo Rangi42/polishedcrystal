@@ -415,9 +415,6 @@ TakeGoodCareOfItText:
 	done
 
 PewterMuseumOfScience1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $7, $a, 6, PEWTER_CITY

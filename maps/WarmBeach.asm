@@ -240,9 +240,6 @@ WarmBeachHiddenPearl:
 	dwb EVENT_WARM_BEACH_HIDDEN_PEARL, PEARL
 
 WarmBeach_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $d, $f, 1, WARM_BEACH_SHACK

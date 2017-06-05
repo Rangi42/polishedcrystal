@@ -34,9 +34,6 @@ Route11Gate2FBinoculars2Text:
 	done
 
 Route11Gate2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $7, 5, ROUTE_11_GATE

@@ -243,9 +243,6 @@ VictoryRoadSignText:
 	done
 
 Route23_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $87, $7, 5, POKEMON_LEAGUE_GATE

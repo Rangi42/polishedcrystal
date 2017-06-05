@@ -70,9 +70,6 @@ BattleGirlDianeAfterText:
 	done
 
 MountMortar1FOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $21, $3, 3, ROUTE_42

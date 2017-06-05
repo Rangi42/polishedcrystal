@@ -69,9 +69,6 @@ ChrisScript_0x193499:
 	done
 
 Colosseum_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $4, 3, POKECENTER_2F

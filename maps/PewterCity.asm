@@ -203,9 +203,6 @@ PewterCityWelcomeSignText:
 	done
 
 PewterCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $d, $1d, 1, PEWTER_NIDORAN_SPEECH_HOUSE

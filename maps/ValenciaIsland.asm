@@ -64,9 +64,6 @@ IvysHouseSign:
 	done
 
 ValenciaIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $13, $12, 1, IVYS_LAB

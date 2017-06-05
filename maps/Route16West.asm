@@ -172,9 +172,6 @@ Route16WestHiddenRareCandy:
 	dwb EVENT_ROUTE_16_WEST_HIDDEN_RARE_CANDY, RARE_CANDY
 
 Route16West_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1, $23, 1, PSYCHIC_INVERS_HOUSE

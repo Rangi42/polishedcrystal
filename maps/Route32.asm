@@ -959,9 +959,6 @@ Route32UnionCaveSignText:
 	done
 
 Route32_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $49, $b, 1, ROUTE_32_POKECENTER_1F

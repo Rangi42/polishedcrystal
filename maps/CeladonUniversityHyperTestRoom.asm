@@ -497,9 +497,6 @@ CeladonUniversityHyperTestRoomComputer:
 	done
 
 CeladonUniversityHyperTestRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $2, 4, CELADON_UNIVERSITY_2F

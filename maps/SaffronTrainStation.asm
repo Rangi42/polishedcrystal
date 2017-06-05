@@ -218,9 +218,6 @@ UnknownText_0x18ab20:
 	done
 
 SaffronTrainStation_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $8, 6, SAFFRON_CITY

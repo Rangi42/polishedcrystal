@@ -71,9 +71,6 @@ Route18WestBikeWarningText:
 	done
 
 Route18West_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $6, $13, 1, ROUTE_18_GATE

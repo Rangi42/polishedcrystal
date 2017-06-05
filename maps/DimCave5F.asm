@@ -285,9 +285,6 @@ DimCave5FHiddenXSpclAtk:
 	dwb EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK, X_SPCL_ATK
 
 DimCave5F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $1f, $d, 5, ROUTE_10_NORTH

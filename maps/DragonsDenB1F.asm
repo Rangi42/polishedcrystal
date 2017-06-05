@@ -497,9 +497,6 @@ TwinsLeaandpia2AfterText:
 	done
 
 DragonsDenB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $14, 3, DRAGONS_DEN_1F

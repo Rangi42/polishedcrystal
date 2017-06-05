@@ -24,9 +24,6 @@ IvysHouseCharityScript:
 	done
 
 IvysHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, VALENCIA_ISLAND

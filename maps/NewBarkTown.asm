@@ -527,9 +527,6 @@ LyrasHouseSignText:
 	done
 
 NewBarkTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $3, $6, 1, ELMS_LAB

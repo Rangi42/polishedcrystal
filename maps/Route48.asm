@@ -182,9 +182,6 @@ Route48YellowForestSignText:
 	done
 
 Route48_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $b, 3, YELLOW_FOREST_GATE

@@ -327,9 +327,6 @@ EarlsPokemonAcademySignText:
 	done
 
 VioletCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 11
 	warp_def $15, $9, 2, VIOLET_MART

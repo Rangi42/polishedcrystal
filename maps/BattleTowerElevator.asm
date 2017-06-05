@@ -50,9 +50,6 @@ MovementData_BattleTowerElevatorExitElevator:
 	step_end
 
 BattleTowerElevator_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $1, 1, BATTLE_TOWER_HALLWAY

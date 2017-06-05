@@ -670,9 +670,6 @@ Route36TrainerTips2Text:
 	done
 
 Route36_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $8, $12, 3, ROUTE_36_NATIONAL_PARK_GATE

@@ -392,9 +392,6 @@ UnknownText_0x1813c5:
 	done
 
 LancesRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $17, $4, 3, KARENS_ROOM

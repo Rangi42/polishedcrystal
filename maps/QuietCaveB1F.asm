@@ -136,9 +136,6 @@ PsychicVirgilAfterText:
 	done
 
 QuietCaveB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $19, $5, 2, QUIET_CAVE_1F

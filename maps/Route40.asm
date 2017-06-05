@@ -341,9 +341,6 @@ Route40SignText:
 	done
 
 Route40_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $9, 1, ROUTE_40_BATTLE_TOWER_GATE

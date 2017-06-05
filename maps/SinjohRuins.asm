@@ -15,9 +15,6 @@ SinjohRuinsSignpostText:
 	done
 
 SinjohRuins_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $5, 1, MYSTRI_STAGE

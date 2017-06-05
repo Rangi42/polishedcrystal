@@ -24,9 +24,6 @@ CeladonChiefHouseCooltrainerMText:
 	done
 
 CeladonChiefHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 10, CELADON_CITY

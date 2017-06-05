@@ -37,9 +37,6 @@ UnknownText_0x7b60d:
 	done
 
 Route2946Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, ROUTE_46

@@ -63,9 +63,6 @@ UnknownText_0x73496:
 	done
 
 Route1617Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $5, $0, 1, ROUTE_16_SOUTH

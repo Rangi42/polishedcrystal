@@ -47,9 +47,6 @@ CeruleanBerryPowderHouseGrampsText2:
 	done
 
 CeruleanBerryPowderHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 9, CERULEAN_CITY

@@ -955,9 +955,6 @@ SwitchRoomText_Emergency:
 	done
 
 UndergroundPathSwitchRoomEntrances_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $3, $17, 6, WAREHOUSE_ENTRANCE

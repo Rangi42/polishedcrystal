@@ -163,9 +163,6 @@ UnknownText_0x9a902:
 	done
 
 EcruteakItemfinderHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 11, ECRUTEAK_CITY

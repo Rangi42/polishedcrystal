@@ -528,9 +528,6 @@ UnknownText_0x1a8cba:
 	done
 
 OlivineCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $11, $d, 1, OLIVINE_POKECENTER_1F

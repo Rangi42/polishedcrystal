@@ -339,9 +339,6 @@ Route8UndergroundPathSignText:
 	done
 
 Route8_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $a, $4, 3, ROUTE_8_SAFFRON_GATE

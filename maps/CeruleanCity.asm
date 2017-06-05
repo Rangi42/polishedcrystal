@@ -303,9 +303,6 @@ CeruleanBubblerText:
 	done
 
 CeruleanCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 11
 	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE

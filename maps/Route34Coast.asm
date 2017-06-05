@@ -234,9 +234,6 @@ Route34CoastPearlString:
 	itemball PEARL_STRING
 
 Route34Coast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

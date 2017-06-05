@@ -189,9 +189,6 @@ TrainerHouseB1FEarnedBattlePointText:
 	db "@"
 
 TrainerHouseB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $4, $9, 3, TRAINER_HOUSE_1F

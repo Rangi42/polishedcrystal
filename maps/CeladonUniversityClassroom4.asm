@@ -323,9 +323,6 @@ CeladonUniversityClassroom4Bookshelf2:
 	done
 
 CeladonUniversityClassroom4_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $2, 9, CELADON_UNIVERSITY_1F

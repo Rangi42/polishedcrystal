@@ -33,9 +33,6 @@ UnknownText_0x59a37:
 	done
 
 RuinsofAlphOmanyteItemRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $9, $3, 5, RUINS_OF_ALPH_OMANYTE_CHAMBER

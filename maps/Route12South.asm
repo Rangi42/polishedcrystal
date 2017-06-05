@@ -277,9 +277,6 @@ Route12SignText:
 	done
 
 Route12South_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $39, $b, 1, ROUTE_12_SUPER_ROD_HOUSE

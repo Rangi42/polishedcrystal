@@ -113,9 +113,6 @@ Text_PleaseStepThisWay: ; 0x9ec26
 	done
 
 BattleTowerHallway_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $1, $b, 1, BATTLE_TOWER_ELEVATOR

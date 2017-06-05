@@ -155,9 +155,6 @@ ShamoutiHotelRestaurantStepDownMovement:
 	step_end
 
 ShamoutiHotelRestaurant_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $10, 4, SHAMOUTI_HOTEL_1F

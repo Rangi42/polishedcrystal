@@ -534,9 +534,6 @@ YellowForestSurfPikachuDollSentText:
 	done
 
 YellowForest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $2d, $1c, 1, YELLOW_FOREST_GATE

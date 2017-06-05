@@ -141,9 +141,6 @@ Route1SignText:
 	done
 
 Route1_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1, $8, 3, ROUTE_1_VIRIDIAN_GATE

@@ -489,9 +489,6 @@ Text_BattleTowerBugCatcher: ; 0x9f35b
 	done
 
 BattleTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $d, $a, 3, BATTLE_TOWER_OUTSIDE

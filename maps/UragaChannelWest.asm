@@ -39,9 +39,6 @@ UragaChannelWestHiddenBigPearl:
 	dwb EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL, BIG_PEARL
 
 UragaChannelWest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $9, $8, 2, SCARY_CAVE_1F

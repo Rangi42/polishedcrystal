@@ -285,9 +285,6 @@ TrainerHouseSignText:
 	done
 
 ViridianCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $7, $20, 1, VIRIDIAN_GYM

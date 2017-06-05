@@ -28,9 +28,6 @@ UnknownText_0x197661:
 	done
 
 Route31VioletGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 8, VIOLET_CITY

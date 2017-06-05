@@ -55,9 +55,6 @@ UnknownText_0x7364d:
 	done
 
 Route18Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $5, $0, 1, ROUTE_18_WEST

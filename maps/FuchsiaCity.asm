@@ -185,9 +185,6 @@ FuchsiaCityCarefulSwimmingSignText:
 	done
 
 FuchsiaCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $d, $5, 2, FUCHSIA_MART

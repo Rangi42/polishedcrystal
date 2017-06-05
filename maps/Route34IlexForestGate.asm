@@ -135,9 +135,6 @@ UnknownText_0x62e97:
 	done
 
 Route34IlexForestGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, ROUTE_34

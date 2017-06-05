@@ -57,9 +57,6 @@ Route36VioletGateYoungsterText:
 	done
 
 Route36VioletGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 5, ROUTE_36

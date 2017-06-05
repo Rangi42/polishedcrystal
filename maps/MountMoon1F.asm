@@ -382,9 +382,6 @@ HikerMarcosAfterText:
 	done
 
 MountMoon1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $17, $b, 1, ROUTE_3

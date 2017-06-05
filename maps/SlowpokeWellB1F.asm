@@ -326,9 +326,6 @@ UnknownText_0x5ac61:
 	done
 
 SlowpokeWellB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $11, 6, AZALEA_TOWN

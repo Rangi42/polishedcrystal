@@ -8,9 +8,6 @@ ShamoutiMerchant_MapScriptHeader:
 	db 0
 
 ShamoutiMerchant_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 6, SHAMOUTI_ISLAND

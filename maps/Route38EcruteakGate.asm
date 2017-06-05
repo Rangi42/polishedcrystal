@@ -122,9 +122,6 @@ ProfOaksAide2ExplainText:
 	done
 
 Route38EcruteakGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 1, ROUTE_38

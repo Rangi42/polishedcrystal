@@ -524,9 +524,6 @@ UnknownText_0x1858d0:
 	done
 
 TinTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $7, 3, BELLCHIME_TRAIL

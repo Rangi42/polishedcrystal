@@ -83,9 +83,6 @@ UnknownText_0x9bb37:
 	done
 
 PokemonLeagueGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $7, $13, 1, ROUTE_22

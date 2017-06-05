@@ -23,9 +23,6 @@ Route15FuchsiaGate2FBinoculars2Text:
 	done
 
 Route15FuchsiaGate2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $7, 5, ROUTE_15_FUCHSIA_GATE

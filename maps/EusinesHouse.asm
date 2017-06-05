@@ -183,9 +183,6 @@ EusinesHouseGrampsText2:
 	done
 
 EusinesHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 14, CELADON_CITY

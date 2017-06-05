@@ -374,9 +374,6 @@ SeafoamGymGuyWinText2:
 	done
 
 SeafoamGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $14, $c, 2, SEAFOAM_ISLANDS_1F

@@ -240,9 +240,6 @@ VeteranfSylvieAfterText:
 	done
 
 VictoryRoad2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $19, 4, ROUTE_23

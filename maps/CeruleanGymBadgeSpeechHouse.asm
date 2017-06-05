@@ -26,9 +26,6 @@ UnknownText_0x188005:
 	done
 
 CeruleanGymBadgeSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 1, CERULEAN_CITY

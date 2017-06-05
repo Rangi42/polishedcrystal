@@ -397,9 +397,6 @@ Route10NorthMovementData_ShowPlayer:
 	step_end
 
 Route10North_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $23, $b, 1, ROUTE_10_POKECENTER_1F

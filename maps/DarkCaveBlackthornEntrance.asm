@@ -62,9 +62,6 @@ UnknownText_0x18c80c:
 	done
 
 DarkCaveBlackthornEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $17, 1, ROUTE_45

@@ -572,9 +572,6 @@ UnknownText_0x6e9a3:
 	done
 
 TeamRocketBaseB3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $2, $3, 2, TEAM_ROCKET_BASE_B2F

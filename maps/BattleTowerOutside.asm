@@ -154,9 +154,6 @@ BattleTowerOutsideText_DoorsOpen:
 	done
 
 BattleTowerOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE

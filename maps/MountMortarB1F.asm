@@ -224,9 +224,6 @@ UnknownText_0x7e3df:
 	done
 
 MountMortarB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $3, 5, MOUNT_MORTAR_1F_INSIDE

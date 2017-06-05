@@ -413,8 +413,6 @@ ReadMapEventHeader:: ; 2336
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	inc hl
-	inc hl
 	call ReadWarps
 	call ReadCoordEvents
 	call ReadSignposts
@@ -673,9 +671,7 @@ RestoreFacingAfterWarp:: ; 248a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 3
 	inc hl ; get to the warp coords
-endr
 	ld a, [WarpNumber]
 	dec a
 	ld c, a

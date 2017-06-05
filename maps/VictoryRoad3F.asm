@@ -45,9 +45,6 @@ VeteranmRemyAfterText:
 	done
 
 VictoryRoad3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $2, 3, VICTORY_ROAD_2F

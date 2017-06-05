@@ -303,9 +303,6 @@ Route37SignText:
 	done
 
 Route37_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

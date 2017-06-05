@@ -16,9 +16,6 @@ SilverCaveItemRoomsFullRestore:
 	itemball FULL_RESTORE
 
 SilverCaveItemRooms_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $21, $15, 3, SILVER_CAVE_ROOM_2

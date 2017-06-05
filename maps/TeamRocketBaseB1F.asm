@@ -749,9 +749,6 @@ UnknownText_0x6cdd0:
 	done
 
 TeamRocketBaseB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $2, $1b, 3, MAHOGANY_MART_1F

@@ -361,9 +361,6 @@ OddishDollSentText:
 	done
 
 GoldenrodDeptStoreRoof_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1, $d, 3, GOLDENROD_DEPT_STORE_6F

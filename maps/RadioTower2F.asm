@@ -727,9 +727,6 @@ UnknownText_0x5e463:
 	done
 
 RadioTower2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $0, $0, 1, RADIO_TOWER_3F

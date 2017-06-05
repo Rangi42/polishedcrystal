@@ -57,9 +57,6 @@ Elevator_0x566e0:
 
 
 GoldenrodDeptStoreElevator_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $1, 255, GOLDENROD_DEPT_STORE_1F

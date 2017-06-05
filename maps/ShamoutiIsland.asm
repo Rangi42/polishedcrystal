@@ -129,9 +129,6 @@ ShamoutiIslandFisherScript:
 	done
 
 ShamoutiIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $d, $15, 1, SHAMOUTI_POKECENTER_1F

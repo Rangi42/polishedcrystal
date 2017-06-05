@@ -302,9 +302,6 @@ DiglettsCaveHiddenMaxRepel:
 	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL, MAX_REPEL
 
 DiglettsCave_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $f, $25, 10, VERMILION_CITY

@@ -235,9 +235,6 @@ BurnedTowerB1FEusineText:
 	done
 
 BurnedTowerB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $9, $a, 3, BURNED_TOWER_1F

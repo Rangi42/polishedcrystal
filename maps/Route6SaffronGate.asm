@@ -60,9 +60,6 @@ UnknownText_0x1927cb:
 	done
 
 Route6SaffronGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 12, SAFFRON_CITY

@@ -119,9 +119,6 @@ Route13DirectionsSignText:
 	done
 
 Route13West_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

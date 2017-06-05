@@ -223,9 +223,6 @@ LoreleiRematchAfterText:
 	done
 
 IcePathB3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $3, 2, ICE_PATH_B2F_MAHOGANY_SIDE

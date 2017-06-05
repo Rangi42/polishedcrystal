@@ -449,9 +449,6 @@ Text_LikeTheLook:
 	done
 
 PokeCenter2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $0, -1, POKECENTER_2F

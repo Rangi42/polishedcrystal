@@ -443,9 +443,6 @@ AzaleaTownIlexForestSignText:
 	done
 
 AzaleaTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $9, $f, 1, AZALEA_POKECENTER_1F

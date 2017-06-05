@@ -163,9 +163,6 @@ Text_ThanksForVisiting: ; 0x9ea49
 	done
 
 BattleTowerBattleRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 4, BATTLE_TOWER_HALLWAY

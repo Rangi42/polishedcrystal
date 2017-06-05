@@ -238,9 +238,6 @@ ShamoutiCoastStarPiece:
 	itemball STAR_PIECE
 
 ShamoutiCoast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $16, 1, FIRE_ISLAND

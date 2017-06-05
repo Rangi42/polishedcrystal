@@ -181,9 +181,6 @@ HallOfFame_SilverTrophySentText:
 	done
 
 HallOfFame_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $d, $4, 3, LANCES_ROOM

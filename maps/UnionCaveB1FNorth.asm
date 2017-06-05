@@ -89,9 +89,6 @@ UnionCaveB1FNorthHiddenRevive:
 	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE, REVIVE
 
 UnionCaveB1FNorth_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $3, $3, 7, RUINS_OF_ALPH_OUTSIDE

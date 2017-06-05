@@ -72,9 +72,6 @@ UnknownText_0x1968a0:
 	done
 
 CherrygroveMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 1, CHERRYGROVE_CITY

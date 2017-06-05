@@ -31,9 +31,6 @@ Route5UndergroundPathSign:
 	done
 
 Route5_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $1b, $11, 1, ROUTE_5_UNDERGROUND_ENTRANCE

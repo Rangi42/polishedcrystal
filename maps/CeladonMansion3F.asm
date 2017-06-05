@@ -139,9 +139,6 @@ UnknownText_0x71996:
 	done
 
 CeladonMansion3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $0, 1, CELADON_MANSION_ROOF

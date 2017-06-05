@@ -74,9 +74,6 @@ CeladonDeptStore1FDirectoryText:
 	done
 
 CeladonDeptStore1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $7, $7, 1, CELADON_CITY

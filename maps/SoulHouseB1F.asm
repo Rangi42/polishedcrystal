@@ -8,9 +8,6 @@ SoulHouseB1F_MapScriptHeader:
 	db 0
 
 SoulHouseB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $11, 3, SOUL_HOUSE

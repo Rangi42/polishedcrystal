@@ -368,9 +368,6 @@ Route47QuietCaveSignText:
 	done
 
 Route47_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $15, $43, 2, CLIFF_EDGE_GATE

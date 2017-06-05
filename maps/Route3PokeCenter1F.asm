@@ -86,9 +86,6 @@ PokemonJournalKarenText:
 	done
 
 Route3PokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 2, ROUTE_3

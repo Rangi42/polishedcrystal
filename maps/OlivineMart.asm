@@ -46,9 +46,6 @@ UnknownText_0x9cb16:
 	done
 
 OlivineMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 7, OLIVINE_CITY

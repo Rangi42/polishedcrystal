@@ -588,9 +588,6 @@ DarkCaveSignText:
 	done
 
 Route31_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $6, $4, 3, ROUTE_31_VIOLET_GATE

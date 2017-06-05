@@ -102,9 +102,6 @@ SoulHouseSignText:
 	done
 
 LavenderTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $7, $5, 1, LAVENDER_POKECENTER_1F

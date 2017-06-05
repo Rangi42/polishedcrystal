@@ -378,9 +378,6 @@ MystriStageMovementData_CynthiaStepsUp:
 	step_end
 
 MystriStage_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $6, 1, SINJOH_RUINS

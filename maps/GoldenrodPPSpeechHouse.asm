@@ -46,9 +46,6 @@ UnknownText_0x556ca:
 	done
 
 GoldenrodPPSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 7, GOLDENROD_CITY

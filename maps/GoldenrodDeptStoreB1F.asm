@@ -114,9 +114,6 @@ UnknownText_0x7d8bb:
 	done
 
 GoldenrodDeptStoreB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $2, $11, 3, UNDERGROUND_WAREHOUSE

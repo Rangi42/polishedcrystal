@@ -55,9 +55,6 @@ UnknownText_0x199a3d:
 	done
 
 MahoganyRedGyaradosSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, MAHOGANY_TOWN

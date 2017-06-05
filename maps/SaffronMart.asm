@@ -38,9 +38,6 @@ UnknownText_0x18a3f3:
 	done
 
 SaffronMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, SAFFRON_CITY

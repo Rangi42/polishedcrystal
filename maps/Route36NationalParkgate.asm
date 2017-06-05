@@ -843,9 +843,6 @@ UnknownText_0x6b97f:
 	done
 
 Route36NationalParkgate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 1, NATIONAL_PARK

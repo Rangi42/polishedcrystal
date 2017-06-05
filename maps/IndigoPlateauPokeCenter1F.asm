@@ -656,9 +656,6 @@ IndigoPlateauYellowDownMovement:
 	step_end
 
 IndigoPlateauPokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $d, $9, 1, INDIGO_PLATEAU

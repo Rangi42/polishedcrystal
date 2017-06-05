@@ -225,9 +225,6 @@ IcePathBoulderFellThroughText:
 
 
 IcePathB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $f, $3, 3, ICE_PATH_1F

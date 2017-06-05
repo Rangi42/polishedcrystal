@@ -200,9 +200,6 @@ UnknownText_0x6a0cb:
 	done
 
 Route35Goldenrodgate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, ROUTE_35

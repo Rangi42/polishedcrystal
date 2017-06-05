@@ -80,9 +80,6 @@ PharmacistDescribeSecretpotionText:
 	done
 
 CianwoodPharmacy_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 4, CIANWOOD_CITY

@@ -288,9 +288,6 @@ UnknownText_0x754be:
 	done
 
 FastShip1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 12
 	warp_def $1, $19, -1, FAST_SHIP_1F

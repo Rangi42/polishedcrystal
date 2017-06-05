@@ -389,9 +389,6 @@ UnknownText_0x74cd7:
 	done
 
 OlivinePort_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $b, 5, OLIVINE_PORT_PASSAGE

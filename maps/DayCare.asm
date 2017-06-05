@@ -407,9 +407,6 @@ DayCareText_PartyFull:
 	done
 
 DayCare_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 3, ROUTE_34

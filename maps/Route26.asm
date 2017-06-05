@@ -456,9 +456,6 @@ Route26SignText:
 	done
 
 Route26_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $7, 3, POKEMON_LEAGUE_GATE

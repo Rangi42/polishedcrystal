@@ -8,9 +8,6 @@ HauntedRadioTower3F_MapScriptHeader:
 	db 0
 
 HauntedRadioTower3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $0, $2, 2, HAUNTED_RADIO_TOWER_2F

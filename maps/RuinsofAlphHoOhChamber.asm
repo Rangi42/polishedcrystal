@@ -146,9 +146,6 @@ UnknownText_0x586aa:
 	done
 
 RuinsofAlphHoOhChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 1, RUINS_OF_ALPH_OUTSIDE

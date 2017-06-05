@@ -326,9 +326,6 @@ UnknownText_0x184f61:
 	done
 
 SproutTower3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $e, $8, 4, SPROUT_TOWER_2F

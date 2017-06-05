@@ -136,9 +136,6 @@ UragaChannelEastHiddenStarPiece:
 	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE, STAR_PIECE
 
 UragaChannelEast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $b, $2, 1, SCARY_CAVE_1F

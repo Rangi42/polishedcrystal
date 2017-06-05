@@ -6,9 +6,6 @@ RuinsofAlphHoOhWordRoom_MapScriptHeader:
 	db 0
 
 RuinsofAlphHoOhWordRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $9, $9, 3, RUINS_OF_ALPH_HO_OH_ITEM_ROOM

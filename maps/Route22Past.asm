@@ -413,9 +413,6 @@ Route22PastLyraOhNoText:
 	done
 
 Route22Past_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

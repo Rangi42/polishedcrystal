@@ -18,9 +18,6 @@ UndergroundHiddenXSpclAtk:
 	dwb EVENT_UNDERGROUND_HIDDEN_X_SPCL_ATK, X_SPCL_ATK
 
 Underground_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $2, $3, 3, ROUTE_5_UNDERGROUND_ENTRANCE

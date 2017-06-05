@@ -28,9 +28,6 @@ MountMoonB1FPokefanmText:
 	done
 
 MountMoonB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $14, $1a, 2, MOUNT_MOON_1F

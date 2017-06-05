@@ -23,9 +23,6 @@ QuietCaveB2FHiddenCalcium:
 	dwb EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM, CALCIUM
 
 QuietCaveB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $3, $15, 6, QUIET_CAVE_B1F

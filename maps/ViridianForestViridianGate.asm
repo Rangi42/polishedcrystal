@@ -20,9 +20,6 @@ ViridianForestViridianGateOfficerText:
 	done
 
 ViridianForestViridianGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 2, VIRIDIAN_FOREST

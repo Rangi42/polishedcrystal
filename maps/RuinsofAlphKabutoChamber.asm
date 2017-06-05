@@ -240,9 +240,6 @@ UnknownText_0x58b3f:
 	done
 
 RuinsofAlphKabutoChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 2, RUINS_OF_ALPH_OUTSIDE

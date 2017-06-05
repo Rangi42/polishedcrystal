@@ -12,9 +12,6 @@ TinTower6FMaxPotion:
 	itemball MAX_POTION
 
 TinTower6F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $1, 1, TIN_TOWER_7F

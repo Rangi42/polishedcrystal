@@ -416,9 +416,6 @@ GoldenrodGymGuyWinText:
 	done
 
 GoldenrodGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $2, 1, GOLDENROD_CITY

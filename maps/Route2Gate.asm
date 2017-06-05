@@ -26,9 +26,6 @@ UnknownText_0x9b955:
 	done
 
 Route2Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 2, ROUTE_2_NORTH

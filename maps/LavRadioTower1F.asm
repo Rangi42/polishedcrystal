@@ -235,9 +235,6 @@ UnknownText_0x7f36b:
 	done
 
 LavRadioTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $2, 7, LAVENDER_TOWN

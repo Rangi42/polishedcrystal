@@ -526,9 +526,6 @@ UnknownText_0x70903:
 	done
 
 LakeofRage_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $7, 1, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE

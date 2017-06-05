@@ -333,9 +333,6 @@ PokemonJournalMortyText:
 	done
 
 EcruteakPokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 6, ECRUTEAK_CITY

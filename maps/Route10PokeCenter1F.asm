@@ -99,9 +99,6 @@ PokemonJournalAgathaText:
 	done
 
 Route10PokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 1, ROUTE_10_NORTH

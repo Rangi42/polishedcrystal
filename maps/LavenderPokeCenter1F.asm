@@ -101,9 +101,6 @@ PokemonJournalMrFujiText:
 	done
 
 LavenderPokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 1, LAVENDER_TOWN

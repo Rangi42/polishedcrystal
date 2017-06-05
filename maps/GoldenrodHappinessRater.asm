@@ -137,9 +137,6 @@ UnknownText_0x54b67:
 	done
 
 GoldenrodHappinessRater_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, GOLDENROD_CITY

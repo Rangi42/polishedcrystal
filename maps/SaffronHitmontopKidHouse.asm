@@ -125,9 +125,6 @@ SaffronHitmontopKidHouseSpin2Movement:
 	step_end
 
 SaffronHitmontopKidHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 19, SAFFRON_CITY

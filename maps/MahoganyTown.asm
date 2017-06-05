@@ -246,9 +246,6 @@ MahoganyGymSignText:
 	done
 
 MahoganyTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $7, $b, 1, MAHOGANY_MART_1F

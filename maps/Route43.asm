@@ -606,9 +606,6 @@ Route43TrainerTipsText:
 	done
 
 Route43_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $33, $9, 1, ROUTE_43_MAHOGANY_GATE

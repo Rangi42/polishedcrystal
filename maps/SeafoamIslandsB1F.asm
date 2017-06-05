@@ -28,9 +28,6 @@ SeafoamIslandsB1FBoulder:
 	jumpstd strengthboulder
 
 SeafoamIslandsB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $f, $23, 3, SEAFOAM_ISLANDS_1F

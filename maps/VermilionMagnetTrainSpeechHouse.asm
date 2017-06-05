@@ -31,9 +31,6 @@ UnknownText_0x191f16:
 	done
 
 VermilionMagnetTrainSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 4, VERMILION_CITY

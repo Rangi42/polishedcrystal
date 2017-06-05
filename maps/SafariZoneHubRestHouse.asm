@@ -31,9 +31,6 @@ PokemonJournalKogaText:
 	done
 
 SafariZoneHubRestHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 9, SAFARI_ZONE_HUB

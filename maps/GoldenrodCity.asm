@@ -653,9 +653,6 @@ UnknownText_0x1991cf:
 	done
 
 GoldenrodCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 21
 	warp_def $7, $1c, 1, GOLDENROD_GYM

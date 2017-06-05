@@ -38,9 +38,6 @@ Route16FuchsiaSpeechHouseLadyText:
 	done
 
 Route16FuchsiaSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 1, ROUTE_16_NORTH

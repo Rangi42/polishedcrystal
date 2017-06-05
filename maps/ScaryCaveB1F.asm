@@ -16,9 +16,6 @@ ScaryCaveB1FBlackSludge:
 	itemball BLACK_SLUDGE
 
 ScaryCaveB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $13, $5, 3, SCARY_CAVE_1F

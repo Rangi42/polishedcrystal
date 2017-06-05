@@ -161,9 +161,6 @@ GruntM12AfterText:
 	done
 
 CliffEdgeGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $13, $11, 8, CIANWOOD_CITY

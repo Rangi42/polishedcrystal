@@ -556,9 +556,6 @@ VermilionCityTruckText:
 	done
 
 VermilionCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 14
 	warp_def $5, $5, 1, VERMILION_HOUSE_FISHING_SPEECH_HOUSE

@@ -159,9 +159,6 @@ CeladonHomeDecorStore2FDirectoryText:
 	done
 
 CeladonHomeDecorStore2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $0, $9, 3, CELADON_HOME_DECOR_STORE_1F

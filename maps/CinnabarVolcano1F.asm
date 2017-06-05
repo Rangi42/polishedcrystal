@@ -262,9 +262,6 @@ CinnabarVolcano1FBoulderFellText:
 	done
 
 CinnabarVolcano1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $19, $d, 2, CINNABAR_ISLAND

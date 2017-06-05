@@ -12,9 +12,6 @@ Route16NorthCutTree:
 	jumpstd cuttree
 
 Route16North_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $1, $1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE

@@ -48,9 +48,6 @@ UnknownText_0x99cd5:
 	done
 
 EcruteakMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 9, ECRUTEAK_CITY

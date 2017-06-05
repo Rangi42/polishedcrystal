@@ -552,9 +552,6 @@ TohjoFallsSignText:
 	done
 
 Route27_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE

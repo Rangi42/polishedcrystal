@@ -234,9 +234,6 @@ CeladonUniversity2FCuboneSign:
 	done
 
 CeladonUniversity2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $8, $17, 3, CELADON_UNIVERSITY_1F

@@ -22,9 +22,6 @@ Route49Sign:
 	done
 
 Route49_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $7, 1, VALENCIA_PORT

@@ -398,9 +398,6 @@ RuinsofAlphScientistClimax2Text:
 	done
 
 RuinsofAlphOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 12
 	warp_def $17, $5, 1, RUINS_OF_ALPH_HO_OH_CHAMBER

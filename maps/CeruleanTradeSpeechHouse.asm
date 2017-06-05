@@ -54,9 +54,6 @@ UnknownText_0x1881b5:
 	done
 
 CeruleanTradeSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, CERULEAN_CITY

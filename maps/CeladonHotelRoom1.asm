@@ -40,9 +40,6 @@ CeladonHotelRoom1LassText:
 	done
 
 CeladonHotelRoom1_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $3, 2, CELADON_HOTEL_2F

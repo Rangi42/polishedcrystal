@@ -967,9 +967,6 @@ DayCareSignText:
 	done
 
 Route34_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $25, $d, 1, ROUTE_34_ILEX_FOREST_GATE

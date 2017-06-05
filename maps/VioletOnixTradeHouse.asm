@@ -33,9 +33,6 @@ UnknownText_0x69997:
 	done
 
 VioletOnixTradeHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 6, VIOLET_CITY

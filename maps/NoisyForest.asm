@@ -433,9 +433,6 @@ NoisyForestHiddenFullRestore:
 	dwb EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 NoisyForest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $6, 2, ROCKY_BEACH

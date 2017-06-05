@@ -6,9 +6,6 @@ RuinsofAlphOmanyteWordRoom_MapScriptHeader:
 	db 0
 
 RuinsofAlphOmanyteWordRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $9, 3, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM

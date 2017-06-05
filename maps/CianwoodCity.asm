@@ -383,9 +383,6 @@ CianwoodStatsJudgeSignText:
 	done
 
 CianwoodCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $29, $11, 1, MANIAS_HOUSE

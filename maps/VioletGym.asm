@@ -313,9 +313,6 @@ VioletGymGuyFalknerAwayText:
 	done
 
 VioletGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $4, 2, VIOLET_CITY

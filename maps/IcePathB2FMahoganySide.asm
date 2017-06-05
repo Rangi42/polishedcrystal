@@ -32,9 +32,6 @@ UnknownText_0x7e5ad:
 	done
 
 IcePathB2FMahoganySide_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $1, $11, 2, ICE_PATH_B1F

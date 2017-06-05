@@ -596,9 +596,6 @@ BattleTower2FTV:
 	done
 
 BattleTower2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1, $0, 4, BATTLE_TOWER_1F

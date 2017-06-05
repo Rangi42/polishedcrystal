@@ -174,9 +174,6 @@ DarkCaveVioletEntranceFalknerDarknessText:
 	done
 
 DarkCaveVioletEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $3, 3, ROUTE_31

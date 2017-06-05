@@ -66,9 +66,6 @@ ValenciaPortFisherScript:
 	done
 
 ValenciaPort_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $6, 1, ROUTE_49

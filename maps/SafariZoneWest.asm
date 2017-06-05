@@ -157,9 +157,6 @@ SafariZoneWestTrainerTips2SignText:
 	done
 
 SafariZoneWest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $2, $16, 7, SAFARI_ZONE_NORTH

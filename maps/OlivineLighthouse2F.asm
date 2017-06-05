@@ -196,9 +196,6 @@ UnknownText_0x5b1b6:
 	done
 
 OlivineLighthouse2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $b, $3, 3, OLIVINE_LIGHTHOUSE_1F

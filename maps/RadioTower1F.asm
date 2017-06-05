@@ -578,9 +578,6 @@ UnknownText_0x5d631:
 	done
 
 RadioTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $2, 11, GOLDENROD_CITY

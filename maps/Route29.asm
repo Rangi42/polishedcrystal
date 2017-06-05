@@ -384,9 +384,6 @@ Route29Sign2Text:
 	done
 
 Route29_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1, $1b, 3, ROUTE_29_46_GATE

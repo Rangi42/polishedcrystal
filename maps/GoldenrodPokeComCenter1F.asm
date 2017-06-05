@@ -423,9 +423,6 @@ UnknownText_0x62222:
 	done
 
 GoldenrodPokeComCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $f, $6, 15, GOLDENROD_CITY

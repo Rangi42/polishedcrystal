@@ -236,9 +236,6 @@ UnknownText_0x59f29:
 	done
 
 UnionCave1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $3, $3, 3, UNION_CAVE_B1F_NORTH

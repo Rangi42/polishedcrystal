@@ -606,9 +606,6 @@ Route42Sign2Text:
 	done
 
 Route42_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $8, $0, 3, ROUTE_42_ECRUTEAK_GATE

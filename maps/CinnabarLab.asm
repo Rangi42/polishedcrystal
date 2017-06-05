@@ -425,9 +425,6 @@ CinnabarLabCelebiText:
 	done
 
 CinnabarLab_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 ;	warp_def $9, $e, 3, CINNABAR_LAB

@@ -273,9 +273,6 @@ RockyBeachSignpost2:
 	done
 
 RockyBeach_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $14, $19, 1, ROCKY_BEACH_HOUSE

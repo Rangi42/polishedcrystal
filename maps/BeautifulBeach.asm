@@ -228,9 +228,6 @@ BeautifulBeachVillaSign:
 	done
 
 BeautifulBeach_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $17, $b, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE

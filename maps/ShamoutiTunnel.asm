@@ -251,9 +251,6 @@ ShamoutiTunnelHiddenLeafStone:
 	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE, LEAF_STONE
 
 ShamoutiTunnel_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $21, 3, SHAMOUTI_ISLAND

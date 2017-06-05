@@ -524,9 +524,6 @@ Route44Sign2Text:
 	done
 
 Route44_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $38, 1, ICE_PATH_1F

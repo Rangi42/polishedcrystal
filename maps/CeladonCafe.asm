@@ -299,9 +299,6 @@ EatathonContestTrashCanText:
 	done
 
 CeladonCafe_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $6, 9, CELADON_CITY

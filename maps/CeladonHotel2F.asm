@@ -42,9 +42,6 @@ CeladonHotel2FRoom3Text:
 	done
 
 CeladonHotel2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $10, 3, CELADON_HOTEL_1F

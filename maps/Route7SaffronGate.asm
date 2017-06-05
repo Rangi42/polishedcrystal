@@ -64,9 +64,6 @@ Route7SaffronGateSilphEmployeeText:
 	done
 
 Route7SaffronGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 1, ROUTE_7

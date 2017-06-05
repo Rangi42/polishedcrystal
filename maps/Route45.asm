@@ -536,9 +536,6 @@ Route45SignText:
 	done
 
 Route45_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $4, 1, DARK_CAVE_BLACKTHORN_ENTRANCE

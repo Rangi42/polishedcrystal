@@ -115,9 +115,6 @@ UnknownText_0x1adee1:
 	done
 
 Route24_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

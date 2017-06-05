@@ -48,9 +48,6 @@ FishingSpotSignText:
 	done
 
 Route12North_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $a, 1, ROUTE_12_GATE

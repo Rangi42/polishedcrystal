@@ -12,9 +12,6 @@ IceIslandIcyRock:
 	itemball ICY_ROCK
 
 IceIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $1d, $6, 2, SHAMOUTI_COAST

@@ -30,9 +30,6 @@ Elevator_0x713be:
 
 
 CeladonDeptStoreElevator_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $1, 255, CELADON_DEPT_STORE_1F

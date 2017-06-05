@@ -213,9 +213,6 @@ SrandjrBeaandmay2AfterText:
 	done
 
 Route35Coast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

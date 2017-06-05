@@ -197,9 +197,6 @@ SeafoamIslandsB4FMovementData_LawrenceContinueLeft:
 	step_end
 
 SeafoamIslandsB4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $3, $3, 5, SEAFOAM_ISLANDS_B3F

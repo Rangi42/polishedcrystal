@@ -12,9 +12,6 @@ TinTower9FHPUp:
 	itemball HP_UP
 
 TinTower9F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $3, $a, 2, TIN_TOWER_8F

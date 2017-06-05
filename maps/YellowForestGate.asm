@@ -80,9 +80,6 @@ YellowForestGateChanseyText:
 	done
 
 YellowForestGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, YELLOW_FOREST

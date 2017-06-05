@@ -355,9 +355,6 @@ BlackthornCityTrainerTipsText:
 	done
 
 BlackthornCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $b, $12, 1, BLACKTHORN_GYM_1F

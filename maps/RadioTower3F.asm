@@ -330,9 +330,6 @@ UnknownText_0x5eae4:
 	done
 
 RadioTower3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $0, $0, 1, RADIO_TOWER_2F

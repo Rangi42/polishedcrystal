@@ -283,9 +283,6 @@ OlivineGymLassConnieAfterText:
 	done
 
 OlivineGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $4, 2, OLIVINE_CITY

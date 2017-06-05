@@ -434,9 +434,6 @@ PowerPlantForestText:
 	done
 
 PowerPlant_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $2, 2, ROUTE_10_NORTH

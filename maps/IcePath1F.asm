@@ -79,9 +79,6 @@ BoarderStefanAfterText:
 	done
 
 IcePath1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $13, $4, 1, ROUTE_44

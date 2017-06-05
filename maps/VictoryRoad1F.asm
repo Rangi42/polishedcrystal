@@ -46,9 +46,6 @@ VeteranmMattAfterText:
 	done
 
 VictoryRoad1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $15, $b, 3, ROUTE_23

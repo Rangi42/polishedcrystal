@@ -408,9 +408,6 @@ SaffronGymGuyWinText:
 	done
 
 SaffronGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 32
 	warp_def $11, $8, 2, SAFFRON_CITY

@@ -46,9 +46,6 @@ UnknownText_0x188b46:
 	done
 
 CeruleanMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 6, CERULEAN_CITY

@@ -241,9 +241,6 @@ Text_RefusedToGiveBerry:
 	done
 
 Route39Barn_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 1, ROUTE_39

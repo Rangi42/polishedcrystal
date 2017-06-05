@@ -502,9 +502,6 @@ CeruleanGymSomethingUnderwaterText:
 	done
 
 CeruleanGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $4, 5, CERULEAN_CITY

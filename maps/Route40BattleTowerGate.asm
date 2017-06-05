@@ -74,9 +74,6 @@ UnknownText_0x9f7c8:
 	done
 
 Route40BattleTowerGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $7, $4, 1, ROUTE_40

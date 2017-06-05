@@ -684,9 +684,6 @@ UnknownText_0x7c91a:
 	done
 
 WarehouseEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $2, $1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES

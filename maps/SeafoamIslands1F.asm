@@ -19,9 +19,6 @@ SeafoamIslands1FHiddenEscapeRope:
 	dwb EVENT_SEAFOAM_ISLANDS_1F_HIDDEN_ESCAPE_ROPE, ESCAPE_ROPE
 
 SeafoamIslands1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $21, $f, 1, ROUTE_20

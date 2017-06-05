@@ -127,9 +127,6 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 SafariZoneWestRestHouse2_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 8, SAFARI_ZONE_WEST

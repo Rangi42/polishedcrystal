@@ -75,9 +75,6 @@ CeladonMansionManagersSuiteSignText:
 	done
 
 CeladonMansion1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $6, 2, CELADON_CITY

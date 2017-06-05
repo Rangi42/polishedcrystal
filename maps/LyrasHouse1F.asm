@@ -102,9 +102,6 @@ LyrasTVText:
 	done
 
 LyrasHouse1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $2, 4, NEW_BARK_TOWN

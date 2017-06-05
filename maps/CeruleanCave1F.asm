@@ -29,9 +29,6 @@ CeruleanCave1FHiddenRareCandy:
 	dwb EVENT_CERULEAN_CAVE_1F_HIDDEN_RARE_CANDY, RARE_CANDY
 
 CeruleanCave1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $13, $1b, 7, CERULEAN_CITY

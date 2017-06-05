@@ -374,9 +374,6 @@ BlackthornGymGuyWinText:
 	done
 
 BlackthornGym1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $11, $4, 1, BLACKTHORN_CITY

@@ -400,9 +400,6 @@ AceDuoElanandida2AfterText:
 	done
 
 ViridianGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $2d, $6, 1, VIRIDIAN_CITY

@@ -207,9 +207,6 @@ SuperNerdMiguelAfterText:
 	done
 
 MountMoonB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $18, $a, 4, MOUNT_MOON_B1F

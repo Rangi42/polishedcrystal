@@ -12,9 +12,6 @@ TohjoFallsMoonStone:
 	itemball MOON_STONE
 
 TohjoFalls_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $d, 2, ROUTE_27

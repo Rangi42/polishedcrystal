@@ -418,9 +418,6 @@ PokemonJournalWillText:
 	done
 
 EarlsPokemonAcademy_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $3, 3, VIOLET_CITY

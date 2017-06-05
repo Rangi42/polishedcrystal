@@ -192,9 +192,6 @@ CinnabarVolcanoB2FMovementData_LawrenceApproachDown:
 	step_end
 
 CinnabarVolcanoB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $3, $d, 5, CINNABAR_VOLCANO_B1F

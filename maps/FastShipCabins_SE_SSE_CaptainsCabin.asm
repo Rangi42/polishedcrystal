@@ -458,9 +458,6 @@ UnknownText_0x76645:
 	done
 
 FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $7, $2, 8, FAST_SHIP_1F

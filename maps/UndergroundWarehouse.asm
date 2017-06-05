@@ -214,9 +214,6 @@ UnknownText_0x7dc8d:
 	done
 
 UndergroundWarehouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $c, $2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES

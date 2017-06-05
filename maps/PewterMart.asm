@@ -46,9 +46,6 @@ UnknownText_0x1a2e3a:
 	done
 
 PewterMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, PEWTER_CITY

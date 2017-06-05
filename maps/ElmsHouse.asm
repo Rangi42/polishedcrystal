@@ -70,9 +70,6 @@ ElmsHousePCText:
 	done
 
 ElmsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $4, $7, 5, NEW_BARK_TOWN

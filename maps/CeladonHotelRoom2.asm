@@ -94,9 +94,6 @@ CeladonHotelRoom2SuperNerdScript:
 	done
 
 CeladonHotelRoom2_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $3, 3, CELADON_HOTEL_2F

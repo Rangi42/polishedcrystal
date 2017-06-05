@@ -20,9 +20,6 @@ UnknownText_0x7f419:
 	done
 
 Route8SaffronGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 14, SAFFRON_CITY

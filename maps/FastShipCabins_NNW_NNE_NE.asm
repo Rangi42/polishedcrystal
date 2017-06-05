@@ -310,9 +310,6 @@ UnknownText_0x75996:
 	done
 
 FastShipCabins_NNW_NNE_NE_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $0, $2, 2, FAST_SHIP_1F

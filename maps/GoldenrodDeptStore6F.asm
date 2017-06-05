@@ -52,9 +52,6 @@ GoldenrodDeptStore6FDirectoryText:
 	done
 
 GoldenrodDeptStore6F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $0, $f, 2, GOLDENROD_DEPT_STORE_5F

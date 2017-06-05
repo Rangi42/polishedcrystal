@@ -298,9 +298,6 @@ Route13HiddenCalcium:
 	dwb EVENT_ROUTE_13_HIDDEN_CALCIUM, CALCIUM
 
 Route13East_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

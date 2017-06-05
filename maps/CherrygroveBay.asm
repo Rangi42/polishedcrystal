@@ -230,9 +230,6 @@ Text_CherrygroveBayTutorTaught:
 	done
 
 CherrygroveBay_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

@@ -38,9 +38,6 @@ ShamoutiHotel1F_MapScriptHeader:
 ;ever!
 
 ShamoutiHotel1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $7, $8, 2, SHAMOUTI_ISLAND

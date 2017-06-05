@@ -8,9 +8,6 @@ SafariZoneNorthRestHouse_MapScriptHeader:
 	db 0
 
 SafariZoneNorthRestHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 7, SAFARI_ZONE_NORTH

@@ -301,9 +301,6 @@ SeagallopFerryVermilionCityRefusedText:
 	done
 
 SeagallopFerryVermilionGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $6, 11, VERMILION_CITY
