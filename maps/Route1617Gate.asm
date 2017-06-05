@@ -73,11 +73,11 @@ Route1617Gate_MapEventHeader:
 
 .XYTriggers:
 	db 5
-	xy_trigger 0, $3, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $4, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $5, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $6, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $7, $5, $0, UnknownScript_0x733ed, $0, $0
+	xy_trigger 0, $3, $5, UnknownScript_0x733ed
+	xy_trigger 0, $4, $5, UnknownScript_0x733ed
+	xy_trigger 0, $5, $5, UnknownScript_0x733ed
+	xy_trigger 0, $6, $5, UnknownScript_0x733ed
+	xy_trigger 0, $7, $5, UnknownScript_0x733ed
 
 .Signposts:
 	db 0

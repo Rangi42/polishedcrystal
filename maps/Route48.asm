@@ -188,7 +188,7 @@ Route48_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $c, $14, $0, Route48JessieJamesScript, $0, $0
+	xy_trigger 0, $c, $14, Route48JessieJamesScript
 
 .Signposts:
 	db 1

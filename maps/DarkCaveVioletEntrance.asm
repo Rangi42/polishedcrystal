@@ -182,7 +182,7 @@ DarkCaveVioletEntrance_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $2, $5, $0, DarkCaveVioletEntranceFalknerTrigger, $0, $0
+	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger
 
 .Signposts:
 	db 1

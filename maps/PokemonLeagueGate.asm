@@ -96,8 +96,8 @@ PokemonLeagueGate_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $a, $a, $0, PokemonLeagueGateXYTriggerScript1, $0, $0
-	xy_trigger 0, $a, $b, $0, PokemonLeagueGateXYTriggerScript2, $0, $0
+	xy_trigger 0, $a, $a, PokemonLeagueGateXYTriggerScript1
+	xy_trigger 0, $a, $b, PokemonLeagueGateXYTriggerScript2
 
 .Signposts:
 	db 0

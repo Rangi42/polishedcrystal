@@ -456,9 +456,9 @@ AzaleaTown_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 1, $a, $5, $0, AzaleaTownRivalBattleTrigger1, $0, $0
-	xy_trigger 1, $b, $5, $0, AzaleaTownRivalBattleTrigger2, $0, $0
-	xy_trigger 2, $6, $9, $0, AzaleaTown_CelebiEventScript, $0, $0
+	xy_trigger 1, $a, $5, AzaleaTownRivalBattleTrigger1
+	xy_trigger 1, $b, $5, AzaleaTownRivalBattleTrigger2
+	xy_trigger 2, $6, $9, AzaleaTown_CelebiEventScript
 
 .Signposts:
 	db 7

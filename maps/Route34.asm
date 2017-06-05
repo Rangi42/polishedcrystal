@@ -977,9 +977,9 @@ Route34_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 1, $11, $8, $0, Route34LyraTrigger1, $0, $0
-	xy_trigger 1, $11, $9, $0, Route34LyraTrigger2, $0, $0
-	xy_trigger 1, $11, $a, $0, Route34LyraTrigger3, $0, $0
+	xy_trigger 1, $11, $8, Route34LyraTrigger1
+	xy_trigger 1, $11, $9, Route34LyraTrigger2
+	xy_trigger 1, $11, $a, Route34LyraTrigger3
 
 .Signposts:
 	db 5

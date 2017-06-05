@@ -396,7 +396,7 @@ CianwoodCity_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $10, $b, $0, UnknownScript_0x1a001e, $0, $0
+	xy_trigger 1, $10, $b, UnknownScript_0x1a001e
 
 .Signposts:
 	db 8

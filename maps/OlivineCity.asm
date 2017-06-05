@@ -543,8 +543,8 @@ OlivineCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $8, $a, $0, OlivineCityRivalGymScript, $0, $0
-	xy_trigger 0, $17, $21, $0, OlivineCityRivalLighthouseScript, $0, $0
+	xy_trigger 0, $8, $a, OlivineCityRivalGymScript
+	xy_trigger 0, $17, $21, OlivineCityRivalLighthouseScript
 
 .Signposts:
 	db 8

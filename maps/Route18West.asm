@@ -78,7 +78,7 @@ Route18West_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $0, $c, $0, Route18WestBikeCheckScript, $0, $0
+	xy_trigger 0, $0, $c, Route18WestBikeCheckScript
 
 .Signposts:
 	db 0

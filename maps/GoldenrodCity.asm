@@ -679,7 +679,7 @@ GoldenrodCity_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $f, $9, $0, GoldenrodCityPanUpScript, $0, $0
+	xy_trigger 1, $f, $9, GoldenrodCityPanUpScript
 
 .Signposts:
 	db 12

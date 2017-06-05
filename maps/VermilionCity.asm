@@ -575,8 +575,8 @@ VermilionCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $20, $12, $0, LawrenceLeftIntroScript, $0, $0
-	xy_trigger 0, $20, $13, $0, LawrenceRightIntroScript, $0, $0
+	xy_trigger 0, $20, $12, LawrenceLeftIntroScript
+	xy_trigger 0, $20, $13, LawrenceRightIntroScript
 
 .Signposts:
 	db 8

@@ -339,7 +339,7 @@ BellchimeTrail_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $9, $15, $0, BellchimeTrailPanUpScript, $0, $0
+	xy_trigger 1, $9, $15, BellchimeTrailPanUpScript
 
 .Signposts:
 	db 1

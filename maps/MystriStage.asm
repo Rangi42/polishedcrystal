@@ -385,8 +385,8 @@ MystriStage_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $9, $6, $0, MystriStageTrigger1Script, $0, $0
-	xy_trigger 1, $9, $7, $0, MystriStageTrigger2Script, $0, $0
+	xy_trigger 1, $9, $6, MystriStageTrigger1Script
+	xy_trigger 1, $9, $7, MystriStageTrigger2Script
 
 .Signposts:
 	db 0

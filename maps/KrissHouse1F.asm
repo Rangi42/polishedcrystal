@@ -588,9 +588,9 @@ KrissHouse1F_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 0, $4, $8, $0, MomTrigger1, $0, $0
-	xy_trigger 0, $4, $9, $0, MomTrigger2, $0, $0
-	xy_trigger 0, $2, $7, $0, MomTrigger3, $0, $0
+	xy_trigger 0, $4, $8, MomTrigger1
+	xy_trigger 0, $4, $9, MomTrigger2
+	xy_trigger 0, $2, $7, MomTrigger3
 
 .Signposts:
 	db 4

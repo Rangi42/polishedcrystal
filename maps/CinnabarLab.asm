@@ -433,7 +433,7 @@ CinnabarLab_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $6, $2, $0, CinnabarLabCelebiEventScript, $0, $0
+	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
 
 .Signposts:
 	db 8

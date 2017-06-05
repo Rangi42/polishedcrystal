@@ -162,8 +162,8 @@ ShamoutiHotelRestaurant_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $6, $10, $0, ShamoutiHotelRestaurantLeavingTrigger1, $0, $0
-	xy_trigger 1, $7, $10, $0, ShamoutiHotelRestaurantLeavingTrigger2, $0, $0
+	xy_trigger 1, $6, $10, ShamoutiHotelRestaurantLeavingTrigger1
+	xy_trigger 1, $7, $10, ShamoutiHotelRestaurantLeavingTrigger2
 
 .Signposts:
 	db 0

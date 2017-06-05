@@ -415,8 +415,8 @@ RuinsofAlphOutside_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $14, $d, $0, UnknownScript_0x58031, $0, $0
-	xy_trigger 1, $15, $c, $0, UnknownScript_0x5803a, $0, $0
+	xy_trigger 1, $14, $d, UnknownScript_0x58031
+	xy_trigger 1, $15, $c, UnknownScript_0x5803a
 
 .Signposts:
 	db 5

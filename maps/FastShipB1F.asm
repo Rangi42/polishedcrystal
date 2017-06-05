@@ -489,8 +489,8 @@ FastShipB1F_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $5, $1a, $0, UnknownScript_0x7673c, $0, $0
-	xy_trigger 0, $5, $1b, $0, UnknownScript_0x76751, $0, $0
+	xy_trigger 0, $5, $1a, UnknownScript_0x7673c
+	xy_trigger 0, $5, $1b, UnknownScript_0x76751
 
 .Signposts:
 	db 0

@@ -616,12 +616,12 @@ Route42_MapEventHeader:
 
 .XYTriggers:
 	db 6
-	xy_trigger 1, $6, $c, $0, Route42LyraScript1, $0, $0
-	xy_trigger 1, $7, $c, $0, Route42LyraScript2, $0, $0
-	xy_trigger 1, $8, $c, $0, Route42LyraScript3, $0, $0
-	xy_trigger 1, $9, $c, $0, Route42LyraScript4, $0, $0
-	xy_trigger 1, $6, $a, $0, Route42LyraScript5, $0, $0
-	xy_trigger 2, $e, $18, $0, Route42SuicuneScript, $0, $0
+	xy_trigger 1, $6, $c, Route42LyraScript1
+	xy_trigger 1, $7, $c, Route42LyraScript2
+	xy_trigger 1, $8, $c, Route42LyraScript3
+	xy_trigger 1, $9, $c, Route42LyraScript4
+	xy_trigger 1, $6, $a, Route42LyraScript5
+	xy_trigger 2, $e, $18, Route42SuicuneScript
 
 .Signposts:
 	db 5

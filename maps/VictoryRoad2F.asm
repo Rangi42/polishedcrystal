@@ -250,7 +250,7 @@ VictoryRoad2F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $9, $19, $0, UnknownScript_0x74492, $0, $0
+	xy_trigger 0, $9, $19, UnknownScript_0x74492
 
 .Signposts:
 	db 1

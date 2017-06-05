@@ -366,7 +366,7 @@ BurnedTower1F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $9, $9, $0, BurnedTowerRivalBattleScript, $0, $0
+	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
 
 .Signposts:
 	db 2

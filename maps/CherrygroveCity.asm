@@ -538,9 +538,9 @@ CherrygroveCity_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 0, $7, $21, $0, CherrygroveGuideGentTrigger, $0, $0
-	xy_trigger 1, $6, $21, $0, CherrygroveSilverTriggerNorth, $0, $0
-	xy_trigger 1, $7, $21, $0, CherrygroveSilverTriggerSouth, $0, $0
+	xy_trigger 0, $7, $21, CherrygroveGuideGentTrigger
+	xy_trigger 1, $6, $21, CherrygroveSilverTriggerNorth
+	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
 
 .Signposts:
 	db 2

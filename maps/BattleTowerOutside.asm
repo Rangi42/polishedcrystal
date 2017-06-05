@@ -163,8 +163,8 @@ BattleTowerOutside_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $9, $8, $0, BattleTowerOutsidePanUpScript1, $0, $0
-	xy_trigger 1, $9, $9, $0, BattleTowerOutsidePanUpScript2, $0, $0
+	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpScript1
+	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpScript2
 
 .Signposts:
 	db 1
