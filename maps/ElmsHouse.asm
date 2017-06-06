@@ -15,6 +15,9 @@ ElmsWife:
 ElmsSon:
 	jumptextfaceplayer ElmsSonText
 
+ElmsHouseFridge:
+	jumptext ElmsHouseFridgeText
+
 ElmsHousePC:
 	jumptext ElmsHousePCText
 
@@ -43,6 +46,12 @@ ElmsSonText:
 	para "I'm going to be a"
 	line "great #mon"
 	cont "professor!"
+	done
+
+ElmsHouseFridgeText:
+	text "There's some food"
+	line "here. This must be"
+	cont "for #mon."
 	done
 
 ElmsHousePCText:
@@ -79,7 +88,8 @@ ElmsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 3
+	signpost 1, 0, SIGNPOST_READ, ElmsHouseFridge
 	signpost 1, 6, SIGNPOST_READ, ElmsHousePC
 	signpost 1, 7, SIGNPOST_READ, ElmsHouseBookshelf
 

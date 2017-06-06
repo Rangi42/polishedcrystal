@@ -4,6 +4,7 @@ AskSerial:: ; 2063
 	bit 0, a
 	ret z
 
+; if we're still interpreting data, don't try to receive
 	ld a, [wPrinterOpcode]
 	and a
 	ret nz
