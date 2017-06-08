@@ -2737,10 +2737,10 @@ _LoadMapPart:: ; 4d15b
 	ret
 
 Shrink1Pic: ; 4d249
-INCBIN "gfx/shrink1.2bpp.lz"
+INCBIN "gfx/shrink/shrink1.2bpp.lz"
 
 Shrink2Pic: ; 4d2d9
-INCBIN "gfx/shrink2.2bpp.lz"
+INCBIN "gfx/shrink/shrink2.2bpp.lz"
 
 LinkMonStatsScreen: ; 4d319
 	ld a, [wMenuCursorY]

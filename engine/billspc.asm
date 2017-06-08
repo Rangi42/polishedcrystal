@@ -2250,8 +2250,8 @@ BillsPC_InitGFX: ; e33e8 (38:73e8)
 	ret
 ; e3419 (38:7419)
 
-PCSelectLZ: INCBIN "gfx/pc.2bpp.lz"
-PCMailGFX:  INCBIN "gfx/pc_mail.2bpp"
+PCSelectLZ: INCBIN "gfx/pc/pc.2bpp.lz"
+PCMailGFX:  INCBIN "gfx/pc/mail.2bpp"
 ; e34dd
 
 PCString_ChooseaPKMN: db "Choose a <PK><MN>.@"
