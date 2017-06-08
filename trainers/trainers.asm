@@ -11140,7 +11140,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Katie@"
 	db TRAINERTYPE_NORMAL
 
@@ -11152,7 +11152,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Alison@"
 	db TRAINERTYPE_NORMAL
 
@@ -11164,7 +11164,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Stephanie@"
 	db TRAINERTYPE_NORMAL
 
@@ -11176,7 +11176,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Caroline@"
 	db TRAINERTYPE_NORMAL
 
@@ -11189,7 +11189,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Natalia@"
 	db TRAINERTYPE_NORMAL
 
@@ -11201,7 +11201,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Barbara@"
 	db TRAINERTYPE_NORMAL
 
@@ -11212,7 +11212,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Sally@"
 	db TRAINERTYPE_NORMAL
 
@@ -11224,7 +11224,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Tara@"
 	db TRAINERTYPE_NORMAL
 
@@ -11236,7 +11236,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Mina@"
 	db TRAINERTYPE_NORMAL
 
@@ -11249,7 +11249,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Leona@"
 	db TRAINERTYPE_NORMAL
 
@@ -11260,7 +11260,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Chelan@"
 	db TRAINERTYPE_NORMAL
 
@@ -11271,7 +11271,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Kendra@"
 	db TRAINERTYPE_NORMAL
 
@@ -11282,7 +11282,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Woda@"
 	db TRAINERTYPE_NORMAL
 
@@ -11294,7 +11294,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Rachel@"
 	db TRAINERTYPE_NORMAL
 
@@ -11308,7 +11308,7 @@ SwimmerFGroup:
 
 ; ================
 
-	; SWIMMERF 
+	; SWIMMERF
 	db "Marina@"
 	db TRAINERTYPE_NORMAL
 

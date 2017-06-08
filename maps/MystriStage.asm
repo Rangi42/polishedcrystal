@@ -282,7 +282,7 @@ MystriStageCynthiaYesText:
 	cont "#mon,"
 
 	para "my heart always"
-	line "begins to race…" 
+	line "begins to race…"
 	done
 
 MystriStageCynthiaWinText:

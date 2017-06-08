@@ -14,7 +14,7 @@ ViridianForestPewterGateOfficerScript:
 ViridianForestPewterGateOfficerText:
 	text "Are you headed"
 	line "to Pewter City?"
-	
+
 	para "Be sure to check"
 	line "out the Museum!"
 	done

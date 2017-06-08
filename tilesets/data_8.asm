@@ -1,4 +1,4 @@
-Tileset24GFX: 
+Tileset24GFX:
 INCBIN "gfx/tilesets/cave.2bpp.lz"
 
 Tileset40GFX:

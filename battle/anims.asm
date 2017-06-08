@@ -2528,7 +2528,7 @@ BattleAnim_NightSlash:
 	anim_ret
 
 BattleAnim_Flash:
-BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam 
+BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 1, SFX_FLASH
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
@@ -3970,7 +3970,7 @@ BattleAnim_Spark:
 	anim_obj ANIM_OBJ_33, -15, 0,   7, 0, $0
 	anim_wait 32
 	anim_ret
-	
+
 BattleAnim_WildCharge:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_sound 0, 0, SFX_ZAP_CANNON
@@ -4178,7 +4178,7 @@ BattleAnim_SacredFire:
 	anim_incobj  9
 	anim_wait 8
 	anim_ret
-	
+
 BattleAnim_FlareBlitz:
 	anim_1gfx ANIM_GFX_FIRE
 .loop
@@ -4205,7 +4205,7 @@ BattleAnim_FlareBlitz:
 	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $3
 	anim_wait 4
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
-	anim_wait 4	
+	anim_wait 4
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_wait 4
 	anim_incobj  9

@@ -14,7 +14,7 @@ ViridianForestViridianGateOfficerScript:
 ViridianForestViridianGateOfficerText:
 	text "Be careful,"
 	line "Viridian Forest"
-	
+
 	para "is a natural"
 	line "maze!"
 	done

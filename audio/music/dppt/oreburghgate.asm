@@ -112,8 +112,8 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 	intensity $2E
 	note G_, 8
 	loopchannel 0, Music_OreburghGateDPPt_Ch1_branch_1
-	
-	
+
+
 Music_OreburghGateDPPt_Ch2:
 	tone $0001
 	dutycycle 1
@@ -353,7 +353,7 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 	note C#, 1
 	octave 2
 	note G_, 1
-	note A#, 1	
+	note A#, 1
 	intensity $A7
 	octave 3
 	note C#, 2

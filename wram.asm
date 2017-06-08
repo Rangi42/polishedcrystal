@@ -368,7 +368,7 @@ PlayerSubStatus1:: ; c668
 ; 3 identified
 ; 2 protect
 ; 1 curse
-; 0 
+; 0
 	ds 1
 PlayerSubStatus2:: ; c66c
 ; bit

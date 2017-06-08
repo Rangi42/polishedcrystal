@@ -35,7 +35,7 @@ _OptionsMenu: ; e41d0
 	call Options_UpdateCursorPosition
 	ld c, 3
 	call DelayFrames
-	jr .joypad_loop	
+	jr .joypad_loop
 
 .ExitOptions:
 	ld de, SFX_TRANSACTION

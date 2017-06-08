@@ -1442,7 +1442,7 @@ AideText_ThiefReturnedMon:
 
 	para "…Isn't it moving?"
 	line "It made me cry!"
-	
+
 	para "I saw the boy's"
 	line "face as he left."
 

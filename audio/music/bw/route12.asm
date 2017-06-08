@@ -67,7 +67,7 @@ Music_Route12BW_Ch1_loop_1:
 	note D#, 12
 	note __, 12
 	loopchannel 0, Music_Route12BW_Ch1
-	
+
 Music_Route12BW_Ch1_branch_1:
 	notetype $6, $a3
 	octave 4
@@ -89,7 +89,7 @@ Music_Route12BW_Ch1_branch_1:
 	intensity $23
 	note F#, 1
 	endchannel
-	
+
 Music_Route12BW_Ch1_branch_2:
 	octave 3
 	notetype $8, $90
@@ -112,7 +112,7 @@ Music_Route12BW_Ch1_branch_2:
 	note G#, 6
 	note F#, 6
 	endchannel
-	
+
 Music_Route12BW_Ch1_branch_3:
 	intensity $b4
 	octave 4
@@ -277,7 +277,7 @@ Music_Route12BW_Ch2_loop:
 	intensity $87
 	note D#, 12
 	loopchannel 0, Music_Route12BW_Ch2_loop
-	
+
 Music_Route12BW_Ch2_branch_1:
 	intensity $b0
 	note B_, 4
@@ -359,7 +359,7 @@ Music_Route12BW_Ch3:
 	octave 2
 	note F#, 12
 	loopchannel 0, Music_Route12BW_Ch3
-	
+
 Music_Route12BW_Ch3_branch_1:
 	note D#, 12
 	note A#, 6
@@ -384,7 +384,7 @@ Music_Route12BW_Ch4_loop:
 	callchannel Music_Route12BW_Ch4_branch_1
 	callchannel Music_Route12BW_Ch4_branch_7
 	loopchannel 0, Music_Route12BW_Ch4_loop
-	
+
 Music_Route12BW_Ch4_branch_1:
 	note D_, 4
 	note D_, 1
@@ -393,13 +393,13 @@ Music_Route12BW_Ch4_branch_1:
 	note D#, 1
 	note D_, 4
 	endchannel
-	
+
 Music_Route12BW_Ch4_branch_2:
 	note D_, 4
 	note D_, 4
 	note D_, 4
 	endchannel
-	
+
 Music_Route12BW_Ch4_branch_3:
 	note D_, 1
 	note D#, 1
@@ -409,7 +409,7 @@ Music_Route12BW_Ch4_branch_3:
 	note D#, 2
 	note D_, 4
 	endchannel
-	
+
 Music_Route12BW_Ch4_branch_4:
 	note D_, 2
 	note D#, 2
@@ -420,14 +420,14 @@ Music_Route12BW_Ch4_branch_4:
 	note D#, 1
 	note D#, 1
 	endchannel
-	
+
 Music_Route12BW_Ch4_branch_5:
 	note D_, 4
 	note D_, 2
 	note D#, 2
 	note D_, 4
 	endchannel
-	
+
 Music_Route12BW_Ch4_branch_6:
 	note D_, 4
 	note D_, 2
@@ -435,7 +435,7 @@ Music_Route12BW_Ch4_branch_6:
 	note D_, 2
 	note D#, 2
 	endchannel
-	
+
 Music_Route12BW_Ch4_branch_7:
 	note D_, 1
 	note D#, 1

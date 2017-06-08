@@ -1915,7 +1915,7 @@ VoltorbEvosAttacks:
 	db 34, REFLECT ; Magnet Rise → TM move
 	db 37, THUNDER ; Discharge → TM move
 	db 41, EXPLOSION
-	db 46, FLASH_CANNON ; Gyro Ball → new move 
+	db 46, FLASH_CANNON ; Gyro Ball → new move
 	db 48, MIRROR_COAT
 	db 0 ; no more level-up moves
 
@@ -1935,7 +1935,7 @@ ElectrodeEvosAttacks:
 	db 36, REFLECT ; Magnet Rise → TM move
 	db 41, THUNDER ; Discharge → TM move
 	db 47, EXPLOSION
-	db 54, FLASH_CANNON ; Gyro Ball → new move 
+	db 54, FLASH_CANNON ; Gyro Ball → new move
 	db 58, MIRROR_COAT
 	db 0 ; no more level-up moves
 

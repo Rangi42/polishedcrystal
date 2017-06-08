@@ -37,7 +37,7 @@ Route3PokeCenter1FPokefanM1Text:
 	para "I thought there"
 	line "was something"
 	cont "wrong with it."
-	
+
 	para "Turns out it was"
 	line "a rare shiny"
 	cont "#mon!"

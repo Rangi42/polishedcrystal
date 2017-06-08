@@ -158,7 +158,7 @@ UpdateNoRTC::
 						;also move HL to minutes byte at the same time
 
 ; +1 minute
-	ld a, b				;set modulus to 60 again	
+	ld a, b				;set modulus to 60 again
 	inc [hl]			;add one to minutes (in RAM)
 	sub [hl]
 	ret nz
@@ -167,7 +167,7 @@ UpdateNoRTC::
 ; +1 hour
 ;; 24 hours to a day
 	ld a, 24			;change our modulus to 24 (hours)
-	inc [hl]			
+	inc [hl]
 	sub [hl]
 	ret nz
 	ld [hld], a
@@ -184,7 +184,7 @@ UpdateNoRTC::
 
 ;; only five bits are available on the hi-byte (the others are flags).
 ;; we need to check if adding a day would overflow:
-	
+
 ;; fetch the days hi-byte
 	ld a, [hl]
 ;; strip the top bits
@@ -208,5 +208,5 @@ UpdateNoRTC::
 	ld [hl], a
 
 	ret
-	
+
 endc

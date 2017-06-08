@@ -2350,7 +2350,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	jr z, .QuestionMark
 	ld a, [wFirstUnownSeen]
 	ld [MonVariant], a
-	
+
 	call Pokedex_GetSelectedMon
 	cp PIKACHU
 	jr z, .use_variant_1

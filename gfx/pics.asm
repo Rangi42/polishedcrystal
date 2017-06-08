@@ -4,7 +4,7 @@ INCLUDE "includes.asm"
 SECTION "Pic Pointers", ROMX, BANK[PIC_POINTERS]
 
 PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
- 
+
 
 SECTION "Variant Pic Pointers", ROMX, BANK[$4]
 

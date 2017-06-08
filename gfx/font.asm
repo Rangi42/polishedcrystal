@@ -75,7 +75,7 @@ _LoadStandardFont:: ; fb449
 	jr z, .one
 	call Get1bpp_2
 	jr .ok
-.one 
+.one
 	call Copy1bpp
 .ok
 	ld de, FontCommon

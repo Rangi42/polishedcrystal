@@ -52,7 +52,7 @@ YellowForestGateOfficerText:
 	text "There are rare"
 	line "#mon in"
 	cont "Yellow Forest!"
-	
+
 	para "Don't forget to"
 	line "bring # Balls!"
 

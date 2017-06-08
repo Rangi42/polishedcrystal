@@ -2,7 +2,7 @@
 ; Demixed by Pum
 ; https://hax.iimarck.us/topic/6443/
 
-Music_LugiasSong2000: 
+Music_LugiasSong2000:
 	musicheader 3, 1, Music_LugiasSong2000_Ch1
 	musicheader 1, 2, Music_LugiasSong2000_Ch2
 	musicheader 1, 3, Music_LugiasSong2000_Ch3

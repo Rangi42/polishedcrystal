@@ -161,7 +161,7 @@ SinjohRuinsHouseCynthiaYesText:
 
 	para "my heart always"
 	line "begins to race…"
-	done 
+	done
 
 SinjohRuinsHouseCynthiaWinText:
 	text "I can't remember"

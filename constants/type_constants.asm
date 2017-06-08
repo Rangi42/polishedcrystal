@@ -2,7 +2,7 @@
 
 MOVE_TYPES EQU const_value
 	; Type order matters for Hidden Power
-	const NORMAL    ; 0 
+	const NORMAL    ; 0
 	const FIGHTING  ; 1
 	const FLYING    ; 2
 	const POISON    ; 3

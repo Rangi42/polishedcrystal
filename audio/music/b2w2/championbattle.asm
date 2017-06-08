@@ -544,7 +544,7 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	intensity $30
 	note G_, 2
 	loopchannel 0, Music_ChampionBattleB2W2_Ch1_loop_main
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_1:
 	intensity $42
 	dutycycle 1
@@ -592,30 +592,30 @@ Music_ChampionBattleB2W2_Ch1_branch_1:
 	note C_, 1
 	note E_, 1
 	endchannel
-	
-	
+
+
 Music_ChampionBattleB2W2_Ch1_branch_2:
 	note G_, 2
 	intensity $50
 	note G_, 2
 	intensity $80
-	note D_, 2 
+	note D_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_3:
 	intensity $80
 	note D_, 1
 	intensity $20
 	note D_, 1
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_4:
 	intensity $80
 	note D_, 2
 	intensity $20
 	note D_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_5:
 	dutycycle 1
 	octave 5
@@ -630,7 +630,7 @@ Music_ChampionBattleB2W2_Ch1_branch_5:
 	note G_, 1
 	note E_, 1
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_6:
 	note G_, 1
 	intensity $30
@@ -648,7 +648,7 @@ Music_ChampionBattleB2W2_Ch1_branch_6:
 	note C#, 2
 	note C_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_7:
 	octave 2
 	note D_, 1
@@ -666,7 +666,7 @@ Music_ChampionBattleB2W2_Ch1_branch_7:
 	intensity $30
 	note D_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_8:
 	octave 1
 	intensity $90
@@ -680,7 +680,7 @@ Music_ChampionBattleB2W2_Ch1_branch_8:
 	intensity $30
 	note F_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch1_branch_9:
 	octave 3
 	note G_, 2
@@ -1076,7 +1076,7 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	intensity $4F
 	note B_, 8
 	loopchannel 0, Music_ChampionBattleB2W2_Ch2_loop_main
-	
+
 Music_ChampionBattleB2W2_Ch2_branch_1:
 	octave 5
 	note D_, 16
@@ -1090,7 +1090,7 @@ Music_ChampionBattleB2W2_Ch2_branch_1:
 	note A_, 2
 	intensity $b7
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch2_branch_2:
 	note G_, 4
 	note __, 2
@@ -1103,7 +1103,7 @@ Music_ChampionBattleB2W2_Ch2_branch_2:
 	note F_, 4
 	note G#, 4
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch2_branch_3:
 	intensity $B3
 	note G_, 2
@@ -1114,7 +1114,7 @@ Music_ChampionBattleB2W2_Ch2_branch_3:
 	note G#, 2
 	note G_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch2_branch_4:
 	octave 4
 	intensity $B4
@@ -1128,7 +1128,7 @@ Music_ChampionBattleB2W2_Ch2_branch_4:
 	octave 5
 	note D_, 8
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch2_branch_5:
 	octave 4
 	intensity $B0
@@ -1139,7 +1139,7 @@ Music_ChampionBattleB2W2_Ch2_branch_5:
 	note D_, 14
 	intensity $B0
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch2_branch_6:
 	note G_, 4
 	note A_, 2
@@ -1582,7 +1582,7 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	intensity $39
 	note B_, 2
 	loopchannel 0, Music_ChampionBattleB2W2_Ch3_loop_main
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_1:
 	note G_, 16
 	note F_, 16
@@ -1590,7 +1590,7 @@ Music_ChampionBattleB2W2_Ch3_branch_1:
 	note D#, 8
 	note F_, 8
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_2:
 	octave 2
 	note D_, 2
@@ -1598,9 +1598,9 @@ Music_ChampionBattleB2W2_Ch3_branch_2:
 	note D_, 2
 	intensity $19
 	octave 1
-	note G_, 2 
+	note G_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_3:
 	octave 2
 	note G_, 2
@@ -1608,23 +1608,23 @@ Music_ChampionBattleB2W2_Ch3_branch_3:
 	note G_, 2
 	intensity $19
 	octave 1
-	note G_, 2 
+	note G_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_4:
 	intensity $19
 	note G_, 1
 	intensity $39
 	note G_, 1
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_5:
 	intensity $19
 	note G_, 2
 	intensity $39
 	note G_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_6:
 	octave 2
 	note G_, 2
@@ -1634,7 +1634,7 @@ Music_ChampionBattleB2W2_Ch3_branch_6:
 	note A_, 2
 	note G_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_7:
 	note G_, 2
 	octave 3
@@ -1652,7 +1652,7 @@ Music_ChampionBattleB2W2_Ch3_branch_7:
 	octave 3
 	note A#, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_8:
 	note G_, 1
 	intensity $39
@@ -1670,7 +1670,7 @@ Music_ChampionBattleB2W2_Ch3_branch_8:
 	note C#, 2
 	note C_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_9:
 	octave 1
 	note G_, 2
@@ -1689,7 +1689,7 @@ Music_ChampionBattleB2W2_Ch3_branch_9:
 	octave 2
 	note A#, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_10:
 	octave 2
 	note B_, 1
@@ -1709,7 +1709,7 @@ Music_ChampionBattleB2W2_Ch3_branch_10:
 	intensity $39
 	note B_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_11:
 	octave 1
 	intensity $19
@@ -1724,7 +1724,7 @@ Music_ChampionBattleB2W2_Ch3_branch_11:
 	intensity $39
 	note C_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch3_branch_12:
 	octave 2
 	intensity $19
@@ -1742,7 +1742,7 @@ Music_ChampionBattleB2W2_Ch3_branch_12:
 	octave 1
 	note B_, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch4:
 	togglenoise $3
 	notetype $c
@@ -1875,7 +1875,7 @@ Music_ChampionBattleB2W2_Ch4_loop_9:
 	loopchannel 7, Music_ChampionBattleB2W2_Ch4_loop_9
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_4
 	loopchannel 0, Music_ChampionBattleB2W2_Ch4_loop_main
-	
+
 Music_ChampionBattleB2W2_Ch4_branch_1:
 	note D#, 4
 	note D#, 4
@@ -1893,7 +1893,7 @@ Music_ChampionBattleB2W2_Ch4_branch_1:
 	note C_, 2
 	note D#, 4
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch4_branch_2:
 	note D#, 4
 	note C_, 2
@@ -1902,14 +1902,14 @@ Music_ChampionBattleB2W2_Ch4_branch_2:
 	note C_, 2
 	note D#, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch4_branch_3:
 	note D#, 2
 	note G#, 2
 	note C_, 2
 	note G#, 2
 	endchannel
-	
+
 Music_ChampionBattleB2W2_Ch4_branch_4:
 	notetype $6
 	note C_, 1
