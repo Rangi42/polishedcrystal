@@ -47,7 +47,7 @@ SetInitialOptions:
 	push af
 	ld [hl], $1
 
-	call ClearBGPalettes
+;	call ClearBGPalettes
 
 	hlcoord 0, 0
 	ld b, SCREEN_HEIGHT - 2
@@ -58,9 +58,9 @@ SetInitialOptions:
 	ld de, .InitialOptionsString
 	call PlaceString
 
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
-	call SetPalettes
+;	ld b, SCGB_DIPLOMA
+;	call GetSGBLayout
+;	call SetPalettes
 
 	xor a
 	ld [wJumptableIndex], a
