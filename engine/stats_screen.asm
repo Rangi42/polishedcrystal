@@ -932,18 +932,8 @@ TN_PrintCharacteristics:
 	ld c, 2
 	ld b, a
 .last_beats_def
-	; SAt
-	ld a, [hl]
-	and $f
-	cp b
-	jr z, .last_beats_sat ; tie
-	jr c, .last_beats_sat
-	ld c, 3
-	ld b, a
-.last_beats_sat
 	; SDf
 	ld a, [hl]
-	swap a
 	and $f
 	cp b
 	jr z, .last_beats_sdf ; tie
@@ -951,6 +941,25 @@ TN_PrintCharacteristics:
 	ld c, 4
 	ld b, a
 .last_beats_sdf
+	; SAt
+	ld a, [hl]
+	swap a
+	and $f
+	cp b
+	jr z, .last_beats_sat ; tie
+	jr c, .last_beats_sat
+	ld c, 3
+	ld b, a
+.last_beats_sat
+
+; DVs are 0-15, but Gen 3+ IVs are 0-31.
+; Stats are calculated so that a DV of N acts like an IV of 2*N+1.
+; To keep characteristics consistent with the apparent IV values,
+; this conversion is actually done.
+	ld a, b
+	add b
+	inc a
+	ld b, a
 
 	; a = 5 * c + b % 5
 	ld a, b
