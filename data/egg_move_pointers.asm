@@ -122,7 +122,7 @@ EggMovePointers:: ; 0x23b11
 	dw NoEggMoves
 	dw MrMimeEggMoves
 	dw ScytherEggMoves
-	dw NoEggMoves
+	dw JynxEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw PinsirEggMoves

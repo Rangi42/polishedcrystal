@@ -2014,11 +2014,6 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 	db $f8, $90
 	db $fc, $40
 	db $f8, $90
-.DMG_PlayerData:
-	db $e4, $e4
-	db $90, $f8
-	db $40, $fc
-	db $90, $f8
 ; c8be8
 
 BattleBGEffect_RapidFlash: ; c8be8 (32:4be8)

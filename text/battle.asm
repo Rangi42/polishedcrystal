@@ -609,13 +609,6 @@ InfatuationText: ; 0x80eda
 	prompt
 ; 0x80f02
 
-GotOverItsInfatuationText: ; 0x80eda
-	text "<USER>"
-	line "got over its"
-	cont "infatuation!"
-	prompt
-; 0x80f02
-
 DisabledMoveText: ; 0x80f02
 	text "<USER>'s"
 	line "@"
@@ -721,12 +714,6 @@ AttackMissedText: ; 0x81020
 	line "attack missed!"
 	prompt
 ; 0x81033
-
-AttackMissed2Text: ; 0x81033
-	text "<USER>'s"
-	line "attack missed!"
-	prompt
-; 0x81046
 
 CrashedText: ; 0x81046
 	text "<USER>"
@@ -1112,12 +1099,6 @@ ProtectedByText: ; 0x815a9
 	text "!"
 	prompt
 ; 0x815c1
-
-MirrorMoveFailedText: ; 0x815c1
-	text "The Mirror Move"
-	next "failed!"
-	prompt
-; 0x815da
 
 StoleText: ; 0x815da
 	text "<USER>"

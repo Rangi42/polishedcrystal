@@ -357,7 +357,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Holmes@@@@", PI
 	db "Mako@@@@@@", BREEDER
 	db "Argo@@@@@@", BIRD_KEEPER
-BattleTowerTycoon:
+;BattleTowerTycoon:
 	db "Palmer@@@@", TOWERTYCOON
 ; 1f8450
 

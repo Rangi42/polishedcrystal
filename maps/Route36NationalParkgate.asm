@@ -461,9 +461,6 @@ UnknownScript_0x6adc8:
 	closetext
 	end
 
-UnknownScript_0x6adce:
-	jumptext UnknownText_0x6b84c
-
 MovementData_0x6add1:
 	big_step_down
 	big_step_right
@@ -790,26 +787,6 @@ UnknownText_0x6b7af:
 
 	para "not good enough to"
 	line "win."
-	done
-
-UnknownText_0x6b84c:
-	text "The Bug-Catching"
-	line "Contest is held on"
-
-	para "Tuesday, Thursday"
-	line "and Saturday."
-
-	para "Not only do you"
-	line "earn a prize just"
-
-	para "for participating,"
-	line "you also get to"
-
-	para "keep the bug"
-	line "#mon you may"
-
-	para "have at the end of"
-	line "the contest."
 	done
 
 UnknownText_0x6b910:

@@ -143,6 +143,7 @@ PsychicNathanScript:
 	closetext
 	end
 
+; TODO: use this trainer
 TrainerSuperNerdStan:
 	trainer EVENT_BEAT_SUPER_NERD_STAN, SUPER_NERD, STAN, UnknownText_0x581e5, UnknownText_0x58217, 0, UnknownScript_0x580a9
 

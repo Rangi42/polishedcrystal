@@ -466,24 +466,6 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Magi
 	ld [rSVBK], a
 	ret
 
-Function511ec: ; 511ec
-	ld a, c
-	push de
-	ld hl, PicPointers
-	dec a
-	ld bc, 6
-	call AddNTimes
-	ld a, BANK(PicPointers)
-	call GetFarByte
-	push af
-	inc hl
-	ld a, BANK(PicPointers)
-	call GetFarHalfword
-	pop af
-	pop de
-	call FarDecompress
-	ret
-
 GetTrainerPic: ; 5120d
 	ld a, [TrainerClass]
 	and a

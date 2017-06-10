@@ -116,24 +116,11 @@ BattleTowerOutsideSailorText:
 	line "all. That I must!"
 	done
 
-BattleTowerOutsideText_BattleTower:
-	text "Battle Tower"
-	done
-
 BattleTowerOutsideText_UltimateChallenge:
 	text "Battle Tower"
 
 	para "Take the Ultimate"
 	line "Trainer Challenge!"
-	done
-
-BattleTowerOutsideText_DoorsClosed:
-	text "The Battle Tower's"
-	line "doors are closed…"
-	done
-
-BattleTowerOutsideText_DoorsOpen:
-	text "It's open!"
 	done
 
 BattleTowerOutside_MapEventHeader:

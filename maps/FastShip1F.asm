@@ -183,14 +183,6 @@ MovementData_0x7522e:
 	turn_head_left
 	step_end
 
-MovementData_0x75231:
-	step_up
-	step_end
-
-MovementData_0x75233:
-	step_down
-	step_end
-
 MovementData_0x75235:
 	step_up
 	step_up

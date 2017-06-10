@@ -8187,9 +8187,7 @@ PrintButItFailed: ; 3734e
 ; 37354
 
 
-FailSnore:
 FailDisable:
-FailConversion2:
 FailAttract:
 FailForesight:
 FailSpikes:
@@ -9317,21 +9315,21 @@ GetItemHeldEffect: ; 37dd0
 ; 37de9
 
 
-AnimateCurrentMoveEitherSide: ; 37de9
-	push hl
-	push de
-	push bc
-	ld a, [wKickCounter]
-	push af
-	call BattleCommand_LowerSub
-	pop af
-	ld [wKickCounter], a
-	call PlayDamageAnim
-	call BattleCommand_RaiseSub
-	pop bc
-	pop de
-	pop hl
-	ret
+;AnimateCurrentMoveEitherSide: ; 37de9
+;	push hl
+;	push de
+;	push bc
+;	ld a, [wKickCounter]
+;	push af
+;	call BattleCommand_LowerSub
+;	pop af
+;	ld [wKickCounter], a
+;	call PlayDamageAnim
+;	call BattleCommand_RaiseSub
+;	pop bc
+;	pop de
+;	pop hl
+;	ret
 
 ; 37e01
 

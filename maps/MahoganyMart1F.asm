@@ -154,16 +154,6 @@ MovementData_0x6c412:
 	slow_step_right
 	step_end
 
-UnknownText_0x6c414:
-	text "Hello, kiddo!"
-
-	para "How would you like"
-	line "some RageCandyBar?"
-
-	para "It's the thing to"
-	line "eat in Mahogany!"
-	done
-
 UnknownText_0x6c46b:
 	text "Arrgh… You found"
 	line "the secret stair-"

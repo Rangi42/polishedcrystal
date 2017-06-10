@@ -581,7 +581,7 @@ Options_NextPrevious:
 	jr z, .NonePressed
 	bit 0, [hl]
 	jr z, .Page2
-.Page1:
+;.Page1:
 	res 0, [hl]
 	ld de, StringOptions1
 	jr .Display

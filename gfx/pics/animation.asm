@@ -1,34 +1,5 @@
 ; Pic animation arrangement.
 
-AnimateMon_Menu: ; d001a
-	ld e, ANIM_MON_MENU
-	ld d, $0
-	call AnimateFrontpic
-	ret
-; d0022
-
-AnimateMon_Trade: ; d0022
-	ld e, ANIM_MON_TRADE
-	ld d, $0
-	call AnimateFrontpic
-	ret
-; d002a
-
-AnimateMon_Evolve: ; d002a
-	ld e, ANIM_MON_EVOLVE
-	ld d, $0
-	call AnimateFrontpic
-	ret
-; d0032
-
-AnimateMon_Hatch: ; d0032
-	ld e, ANIM_MON_HATCH
-	ld d, $0
-	call AnimateFrontpic
-	ret
-; d003a
-
-
 POKEANIM: MACRO
 	rept _NARG
 
@@ -484,6 +455,11 @@ PokeAnim_IsPichu:
 PokeAnim_IsArbok:
 	ld a, [wPokeAnimSpecies]
 	cp ARBOK
+	ret
+
+PokeAnim_IsMagikarp:
+	ld a, [wPokeAnimSpecies]
+	cp MAGIKARP
 	ret
 
 PokeAnim_IsUnown: ; d02ec
@@ -963,6 +939,11 @@ GetMonAnimPointer: ; d055c
 	ld de, ArbokAnimationExtraPointers
 	call PokeAnim_IsArbok
 	jr z, .variant
+	ld c, BANK(MagikarpAnimations)
+	ld hl, MagikarpAnimationPointers
+	ld de, MagikarpAnimationExtraPointers
+	call PokeAnim_IsMagikarp
+	jr z, .variant
 	ld c, BANK(UnownAnimations)
 	ld hl, UnownAnimationPointers
 	ld de, UnownAnimationExtraPointers
@@ -1055,6 +1036,11 @@ GetMonFramesPointer: ; d05ce
 	ld c, BANK(ArboksFrames)
 	ld hl, ArbokFramesPointers
 	jr z, .got_frames
+	call PokeAnim_IsMagikarp
+	ld b, BANK(MagikarpFramesPointers)
+	ld c, BANK(MagikarpsFrames)
+	ld hl, MagikarpFramesPointers
+	jr z, .got_frames
 	call PokeAnim_IsUnown
 	ld b, BANK(UnownFramesPointers)
 	ld c, BANK(UnownsFrames)
@@ -1119,6 +1105,10 @@ GetMonBitmaskPointer: ; d061b
 	ld a, BANK(ArbokBitmasksPointers)
 	ld hl, ArbokBitmasksPointers
 	jr z, .variant
+	call PokeAnim_IsMagikarp
+	ld a, BANK(MagikarpBitmasksPointers)
+	ld hl, MagikarpBitmasksPointers
+	jr z, .variant
 	call PokeAnim_IsUnown
 	ld a, BANK(UnownBitmasksPointers)
 	ld hl, UnownBitmasksPointers
@@ -1165,6 +1155,8 @@ PokeAnim_GetSpeciesOrVariant: ; d065c
 	call PokeAnim_IsPichu
 	jr z, .variant
 	call PokeAnim_IsArbok
+	jr z, .variant
+	call PokeAnim_IsMagikarp
 	jr z, .variant
 	call PokeAnim_IsUnown
 	jr z, .variant

@@ -267,39 +267,6 @@ WillPersonBumpIntoSomeoneElse: ; 7009
 	ld hl, OBJECT_NEXT_MAP_Y
 	add hl, bc
 	ld e, [hl]
-	jr IsNPCAtCoord
-; 7015
-
-.CheckWillBeFacingNPC: ; 7021
-	ld hl, OBJECT_NEXT_MAP_X
-	add hl, bc
-	ld d, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
-	add hl, bc
-	ld e, [hl]
-	call GetSpriteDirection
-	and a
-	jr z, .down
-	cp OW_UP
-	jr z, .up
-	cp OW_LEFT
-	jr z, .left
-	inc d
-	ret
-
-.down
-	inc e
-	ret
-
-.up
-	dec e
-	ret
-
-.left
-	dec d
-	ret
-; 7041
-
 IsNPCAtCoord: ; 7041
 	ld bc, ObjectStructs
 	xor a

@@ -71,9 +71,6 @@ CharcoalKilnFarfetchd:
 	closetext
 	end
 
-CharcoalKilnRadio:
-	jumpstd radio2
-
 CharcoalKilnBossText1:
 	text "All the Slowpoke"
 	line "have disappeared"

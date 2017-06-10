@@ -863,39 +863,6 @@ CoinString: ; 24b89
 ShowMoney_TerminatorString: ; 24b8e
 	db "@"
 
-Function24b8f: ; 24b8f
-; unreferenced, related to safari
-	ld hl, Options1
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	hlcoord 0, 0
-	ld b, 3
-	ld c, 7
-	call TextBox
-	hlcoord 1, 1
-	ld de, wSafariTimeRemaining
-	lb bc, 2, 3
-	call PrintNum
-	hlcoord 4, 1
-	ld de, .slash_500
-	call PlaceString
-	hlcoord 1, 3
-	ld de, .ball_x
-	call PlaceString
-	hlcoord 6, 3
-	ld de, wSafariBallsRemaining
-	lb bc, 1, 2
-	call PrintNum
-	pop af
-	ld [Options1], a
-	ret
-
-.slash_500 ; 24bcf
-	db "/500@"
-.ball_x ; 24bd4
-	db "Ball×@"
-
 StartMenu_DrawBugContestStatusBox: ; 24bdc
 	hlcoord 0, 0
 	ld b, 5
@@ -3220,7 +3187,7 @@ endr
 	ld hl, Buffer1
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	ld hl, LuckyNumberDigit1Buffer
+	ld hl, LuckyNumberDigitsBuffer
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
@@ -5272,51 +5239,6 @@ INCLUDE "text/abilities.asm"
 SECTION "bank22", ROMX, BANK[$22]
 
 INCLUDE "event/kurt.asm"
-
-MovePlayerPicRight: ; 88258
-	hlcoord 6, 4
-	ld de, 1
-	jr MovePlayerPic
-
-MovePlayerPicLeft: ; 88260
-	hlcoord 13, 4
-	ld de, -1
-	; fallthrough
-
-MovePlayerPic: ; 88266
-; Move player pic at hl by de * 7 tiles.
-	ld c, $8
-.loop
-	push bc
-	push hl
-	push de
-	xor a
-	ld [hBGMapMode], a
-	lb bc, 7, 7
-	predef PlaceGraphic
-	xor a
-	ld [hBGMapThird], a
-	call WaitBGMap
-	call DelayFrame
-	pop de
-	pop hl
-	add hl, de
-	pop bc
-	dec c
-	ret z
-	push hl
-	push bc
-	ld a, l
-	sub e
-	ld l, a
-	ld a, h
-	sbc d
-	ld h, a
-	lb bc, 7, 7
-	call ClearBox
-	pop bc
-	pop hl
-	jr .loop
 
 GetPlayerIcon: ; 8832c
 ; Get the player icon corresponding to gender

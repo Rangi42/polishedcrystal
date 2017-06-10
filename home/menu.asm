@@ -100,26 +100,6 @@ GetMenu2:: ; 1dab
 	ret
 ; 1db8
 
-CopyNameFromMenu::
-	push hl
-	push bc
-	push af
-	ld hl, wMenuData2Pointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc hl
-	inc hl
-	pop af
-	call GetNthString
-	ld d, h
-	ld e, l
-	call CopyName1
-	pop bc
-	pop hl
-	ret
-; 0x1dcf
-
 
 YesNoBox:: ; 1dcf
 	lb bc, SCREEN_WIDTH - 6, 7

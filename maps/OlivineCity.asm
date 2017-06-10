@@ -511,10 +511,6 @@ OlivineCityBattleTowerSignText:
 	line "Opening Now!"
 	done
 
-UnknownText_0x1a8cba:
-	text "Battle Tower Ahead"
-	done
-
 OlivineCity_MapEventHeader:
 .Warps:
 	db 10

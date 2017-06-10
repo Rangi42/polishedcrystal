@@ -3145,26 +3145,6 @@ ChannelPointers: ; e8fd9
 	dw Channel8
 ; e8fe9
 
-ClearChannels:: ; e8fe9
-; runs ClearChannel for all 4 channels
-; doesn't seem to be used, but functionally identical to MapSetup_Sound_Off
-	ld hl, rNR50
-	xor a
-rept 2
-	ld [hli], a
-endr
-	ld a, $80
-	ld [hli], a
-	ld hl, rNR10
-	ld e, $4
-.loop
-	call ClearChannel
-	dec e
-	jr nz, .loop
-	ret
-
-; e8ffe
-
 ClearChannel: ; e8ffe
 ; input: hl = beginning hw sound register (rNR10, rNR20, rNR30, rNR40)
 ; output: 00 00 80 00 80

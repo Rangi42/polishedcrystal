@@ -497,12 +497,6 @@ Cry_Sentret_branch_f312b: ; f312b
 	endchannel
 ; f3134
 
-Cry_Sentret_Ch8: ; f3134
-	noise __,  9, $3b, $0
-	noise __,  9, $92, $0
-	endchannel
-; f313b
-
 Cry_Mareep_Ch5: ; f313b
 	tone $0020
 	dutycycle $0
@@ -684,25 +678,20 @@ Cry_Typhlosion_Ch5: ; f3284
 Cry_Teddiursa_Ch5: ; f3284
 	sound_duty 2, 0, 1, 0
 Cry_Typhlosion_branch_f3286: ; f3286
-Cry_Teddiursa_branch_f3286: ; f3286
 	sound __,  4, $c1, $0791
 	loopchannel 3, Cry_Typhlosion_branch_f3286
 Cry_Typhlosion_branch_f328e: ; f328e
-Cry_Teddiursa_branch_f328e: ; f328e
 	sound __,  4, $d1, $04b1
 	loopchannel 6, Cry_Typhlosion_branch_f328e
 Cry_Typhlosion_branch_f3296: ; f3296
-Cry_Teddiursa_branch_f3296: ; f3296
 	sound __,  2, $d1, $0491
 	sound __,  2, $b1, $0451
 	loopchannel 6, Cry_Typhlosion_branch_f3296
 Cry_Typhlosion_branch_f32a2: ; f32a2
-Cry_Teddiursa_branch_f32a2: ; f32a2
 	sound __,  2, $a3, $0471
 	sound __,  2, $81, $0441
 	loopchannel 6, Cry_Typhlosion_branch_f32a2
 Cry_Typhlosion_branch_f32ae: ; f32ae
-Cry_Teddiursa_branch_f32ae: ; f32ae
 	sound __,  2, $41, $0421
 	sound __,  2, $21, $0401
 	loopchannel 4, Cry_Typhlosion_branch_f32ae

@@ -65,9 +65,6 @@ PokefanMScript_0x54997:
 TwinScript_0x5499a:
 	jumptextfaceplayer UnknownText_0x54b67
 
-HappinessRatersHouseBookshelf:
-	jumpstd difficultbookshelf
-
 HappinessRatersHouseRadio:
 	jumpstd radio2
 

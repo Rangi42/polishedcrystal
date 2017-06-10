@@ -170,12 +170,6 @@ DayCareAskDepositPokemon: ; 16798
 	ret
 ; 167f1
 
-.DummyText: ; 0x167f1
-	;
-	text_jump UnknownText_0x1bdaa7
-	db "@"
-; 0x167f6
-
 DayCare_DepositPokemonText: ; 167f6
 	ld a, DAYCARETEXT_DEPOSIT
 	call PrintDayCareText

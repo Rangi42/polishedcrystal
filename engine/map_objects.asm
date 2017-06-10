@@ -1759,11 +1759,6 @@ GetMovementByte:
 	ret
 ; 5015
 
-_GetMovementPerson: ; 5037
-	ld hl, GetMovementPerson
-	jp HandleMovementData
-; 503d
-
 GetMovementPerson: ; 503d
 	ld a, [wMovementPerson]
 	ret

@@ -110,10 +110,6 @@ MahoganyTownRagecandybarSign:
 MahoganyGymSign:
 	jumptext MahoganyGymSignText
 
-MovementData_0x1900a4:
-	step_down
-	big_step_up
-	turn_head_down
 MovementData_0x1900a7:
 	step_left
 	step_end

@@ -1490,17 +1490,6 @@ EarthquakeMovement: ; 973eb
 EarthquakeMovementEnd
 ; 973f0
 
-
-Script_loadpikachudata: ; 973f0
-; script command 0x5a
-
-	ld a, PIKACHU
-	ld [TempWildMonSpecies], a
-	ld a, 5
-	ld [CurPartyLevel], a
-	ret
-; 973fb
-
 Script_randomwildmon: ; 973fb
 ; script command 0x5b
 

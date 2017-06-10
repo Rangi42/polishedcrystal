@@ -206,7 +206,7 @@ PinecoCryHeader:      cry_header CRY_SLOWKING,    $080,  $100
 ForretressCryHeader:  cry_header CRY_SLOWKING,    $000,  $180
 DunsparceCryHeader:   cry_header CRY_DUNSPARCE,   $1c4,  $100
 GligarCryHeader:      cry_header CRY_GLIGAR,     -$102,  $100
-GliscorHeader:        cry_header CRY_GLIGAR,     -$102,  $100
+GliscorCryHeader:     cry_header CRY_GLIGAR,     -$102,  $100
 SteelixCryHeader:     cry_header CRY_TYPHLOSION,  $0ef,  $0f7
 SnubbullCryHeader:    cry_header CRY_DUNSPARCE,   $112,  $0e8
 GranbullCryHeader:    cry_header CRY_DUNSPARCE,   $000,  $180

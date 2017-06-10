@@ -228,11 +228,6 @@ UnknownText_0x19ad9b:
 	cont "you take it away?"
 	done
 
-UnknownText_0x19ae1b:
-	text "<PLAYER> received"
-	line "TM30."
-	done
-
 UnknownText_0x19ae2d:
 	text "Use this gate to"
 	line "avoid walking in"

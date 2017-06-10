@@ -145,11 +145,6 @@ BurnedTowerSuicuneMovement2:
 	fast_jump_step_right
 	step_end
 
-MovementData_0x18624f:
-	fix_facing
-	big_step_down
-	step_end
-
 BurnedTowerSuicuneMovement3:
 	fix_facing
 	big_step_up

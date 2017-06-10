@@ -704,18 +704,6 @@ MailGFX_PlaceMessage: ; b9803
 	jp PlaceString
 ; b984e
 
-Functionb984e: ; b984e
-.loop
-	ld a, [hl]
-	xor $ff
-	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
-	ret
-; b9858
-
 DrawMailBorder: ; b9858
 	hlcoord 0, 0
 	ld a, $31
@@ -764,11 +752,6 @@ Mail_Place14TileAlternatingRow: ; b989e
 	ld b, 14 / 2
 	jr Mail_PlaceAlternatingRow
 
-Mail_Place16TileAlternatingRow: ; b98a3
-	push af
-	ld b, 16 / 2
-	jr Mail_PlaceAlternatingRow
-
 Mail_Place18TileAlternatingRow: ; b98a8
 	push af
 	ld b, 18 / 2
@@ -810,10 +793,6 @@ Mail_PlaceAlternatingColumn: ; b98bd
 	pop af
 	ret
 ; b98cc
-
-Mail_Draw7TileRow: ; b98cc
-	ld b, $7
-	jr Mail_DrawRowLoop
 
 Mail_Draw13TileRow: ; b98d0
 	ld b, $d
@@ -977,6 +956,7 @@ INCBIN "gfx/mail/0b9ab6.1bpp"
 MailDragoniteGFX: ; b9b46
 INCBIN "gfx/mail/0b9b46.1bpp"
 
+; unused?
 MailSentretGFX: ; b9bce
 INCBIN "gfx/mail/0b9bce.1bpp"
 
@@ -1003,8 +983,7 @@ INCBIN "gfx/mail/0b9c9e.1bpp"
 
 FlowerMailLargeFlowerGFX: ; b9cbe
 INCBIN "gfx/mail/0b9cbe.1bpp"
-
-FlowerMailSmallFlowerGFX: ; b9cde
+;FlowerMailSmallFlowerGFX: ; b9cde
 ; indirectly referenced
 INCBIN "gfx/mail/0b9cde.1bpp"
 

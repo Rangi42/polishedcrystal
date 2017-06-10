@@ -254,7 +254,7 @@ Script_CutFromMenu: ; c7fe
 	special UpdateTimePals
 	callasm GetBuffer6
 	if_equal $0, Script_CutTree
-Script_CutGrass:
+;Script_CutGrass:
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
 	closetext

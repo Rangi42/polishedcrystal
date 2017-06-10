@@ -309,29 +309,6 @@ Text_GrampsLookingForYou:
 	line "for you."
 	done
 
-Text_DayCareManTalksAboutEggTicket:
-	text "I'm the Day-Care"
-	line "Man."
-
-	para "There's something"
-	line "new in Goldenrod"
-
-	para "called the Trade"
-	line "Corner."
-
-	para "I was given an Egg"
-	line "Ticket that can be"
-
-	para "traded in for an"
-	line "Odd Egg."
-
-	para "But since we run a"
-	line "Day-Care, we don't"
-
-	para "need it. You may"
-	line "as well have it."
-	done
-
 DayCareManText_GiveOddEgg:
 	text "I'm the Day-Care"
 	line "Man."
@@ -354,10 +331,6 @@ DayCareManText_GiveOddEgg:
 
 	para "Then fine, this is"
 	line "yours to keep!"
-	done
-
-DayCareText_ComeAgain:
-	text "Come again."
 	done
 
 DayCareText_GotOddEgg:

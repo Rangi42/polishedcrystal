@@ -254,17 +254,6 @@ ClairText_DescribeDragonbreathDragonDen:
 	cont "to take it."
 	done
 
-ClairText_NoRoom:
-	text "Oh? You don't have"
-	line "any room for this."
-
-	para "I'm going back to"
-	line "the Gym, so make"
-
-	para "room, then come"
-	line "see me there."
-	done
-
 ClairText_WhatsTheMatterDragonDen:
 	text "Clair: What's the"
 	line "matter? Aren't you"

@@ -375,18 +375,6 @@ StoveScript:
 TVScript:
 	jumptext TVText
 
-MovementData_0x7a5fc:
-	turn_head_right
-	step_end
-
-MovementData_0x7a5fe:
-	slow_step_right
-	step_end
-
-MovementData_0x7a600:
-	turn_head_left
-	step_end
-
 KrissHouse1FSlowStepLeftMovementData:
 	slow_step_left
 	step_end

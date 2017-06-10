@@ -1861,10 +1861,10 @@ HandleWeatherEffects:
 	call GetSixteenthMaxHP
 	jp SubtractHPFromUser
 
-SubtractHPFromTarget: ; 3cc39
-	call SubtractHP
-	jp UpdateHPBar
-; 3cc3f
+;SubtractHPFromTarget: ; 3cc39
+;	call SubtractHP
+;	jp UpdateHPBar
+;; 3cc3f
 
 SubtractHPFromUser: ; 3cc3f
 ; Subtract HP from Pkmn
@@ -4663,32 +4663,6 @@ UseBattleItem:
 	jp StdBattleTextBox
 ; 3ddc8
 
-SitrusBerryQuarterHP:
-	ld a, [Buffer2]
-	ld b, a
-	ld a, [Buffer1]
-	ld c, a
-	srl b
-	rr c
-	srl b
-	rr c
-	ld a, b
-	or c
-	jr nz, .continue
-	ld c, 1
-.continue
-	ld a, [de]
-	add c
-	ld [Buffer5], a
-	ld c, a
-	dec de
-	ld a, [de]
-	adc b
-	ld [Buffer6], a
-	ld b, a
-	ret
-
-
 ItemRecoveryAnim: ; 3ddc8
 	push hl
 	push de
@@ -7484,37 +7458,37 @@ ApplyStatLevelMultiplier: ; 3ecb7
 ; 3ed45
 
 
-BoostStat: ; 3ed7c
-; Raise stat at hl by 1/8.
-
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-
-; Cap at 999.
-	ld a, [hld]
-	sub 999 % $100
-	ld a, [hl]
-	sbc 999 / $100
-	ret c
-	ld a, 999 / $100
-	ld [hli], a
-	ld a, 999 % $100
-	ld [hld], a
-	ret
-; 3ed9f
+;BoostStat: ; 3ed7c
+;; Raise stat at hl by 1/8.
+;
+;	ld a, [hli]
+;	ld d, a
+;	ld e, [hl]
+;	srl d
+;	rr e
+;	srl d
+;	rr e
+;	srl d
+;	rr e
+;	ld a, [hl]
+;	add e
+;	ld [hld], a
+;	ld a, [hl]
+;	adc d
+;	ld [hli], a
+;
+;; Cap at 999.
+;	ld a, [hld]
+;	sub 999 % $100
+;	ld a, [hl]
+;	sbc 999 / $100
+;	ret c
+;	ld a, 999 / $100
+;	ld [hli], a
+;	ld a, 999 % $100
+;	ld [hld], a
+;	ret
+;; 3ed9f
 
 
 _LoadBattleFontsHPBar: ; 3ed9f

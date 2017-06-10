@@ -631,26 +631,6 @@ ClearBytes: ; 0x9a5b
 	ret
 ; 0x9a64
 
-DrawDefaultTiles: ; 0x9a64
-; Draw 240 tiles (2/3 of the screen) from tiles in VRAM
-	hlbgcoord 0, 0 ; BG Map 0
-	ld de, BG_MAP_WIDTH - SCREEN_WIDTH
-	ld a, $80 ; starting tile
-	ld c, 12 + 1
-.line
-	ld b, 20
-.tile
-	ld [hli], a
-	inc a
-	dec b
-	jr nz, .tile
-; next line
-	add hl, de
-	dec c
-	jr nz, .line
-	ret
-; 0x9a7a
-
 LoadMapPals:
 	farcall LoadSpecialMapPalette
 	jr c, .got_pals

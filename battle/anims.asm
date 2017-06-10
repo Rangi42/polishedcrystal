@@ -684,15 +684,6 @@ BattleAnim_Acrobatics:
 	anim_wait 4
 	anim_ret
 
-BattleAnim_Pound: ; removed
-	anim_1gfx ANIM_GFX_HIT
-	anim_sound 0, 1, SFX_POUND
-	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
-	anim_wait 16
-	anim_ret
-
 BattleAnim_KarateChop:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_KARATE_CHOP
@@ -4834,8 +4825,8 @@ BattleAnim_Selfdestruct_branch_cbb62:
 
 BattleAnim_Dynamicpunch_branch_cbb8f:
 BattleAnim_Explosion_branch_cbb8f:
-BattleAnim_Present_branch_cbb8f:
 BattleAnim_Selfdestruct_branch_cbb8f:
+BattleAnim_Present_branch_cbb8f: ; removed
 	anim_sound 0, 1, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_17, -14, 4,   4, 0, $0
 	anim_wait 5
@@ -4946,7 +4937,7 @@ BattleAnim_SandAttack_branch_cbc5b:
 
 BattleAnim_Moonlight_branch_cbc6a:
 BattleAnim_MorningSun_branch_cbc6a:
-BattleAnim_Synthesis_branch_cbc6a:
+BattleAnim_Synthesis_branch_cbc6a: ; removed
 	anim_sound 0, 0, SFX_METRONOME
 	anim_obj ANIM_OBJ_9D,   5, 4,   8, 0, $0
 	anim_wait 5
@@ -4958,7 +4949,7 @@ BattleAnim_Synthesis_branch_cbc6a:
 
 BattleAnim_Moonlight_branch_cbc80:
 BattleAnim_MorningSun_branch_cbc80:
-BattleAnim_Synthesis_branch_cbc80:
+BattleAnim_Synthesis_branch_cbc80: ; removed
 	anim_sound 0, 0, SFX_METRONOME
 .loop
 	anim_obj ANIM_OBJ_9D,   3, 0,   8, 0, $0
@@ -5499,4 +5490,13 @@ BattleAnim_ShowMon_1:
 ;	anim_sound 0, 1, SFX_NIGHTMARE
 ;	anim_wait 96
 ;	anim_bgp $e4
+;	anim_ret
+
+;BattleAnim_Pound: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_sound 0, 1, SFX_POUND
+;	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
+;	anim_wait 6
+;	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
+;	anim_wait 16
 ;	anim_ret

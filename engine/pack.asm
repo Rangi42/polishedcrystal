@@ -1801,7 +1801,6 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-PackTopRowGFX:
 INCBIN "gfx/misc/pack_top_row.2bpp"
 PackLeftColumnGFX:
 INCBIN "gfx/misc/pack_left_column.2bpp"

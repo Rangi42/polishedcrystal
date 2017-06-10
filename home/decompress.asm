@@ -143,9 +143,7 @@ LZ_LONG_HI   EQU %00000011
 	jr z, .Alt
 	cp LZ_ZERO
 	jr z, .Zero
-
-
-.Literal:
+;.Literal:
 ; Read literal data for bc bytes.
 .lloop
 	dec c

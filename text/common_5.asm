@@ -279,19 +279,6 @@ Text_UberRestriction::
 	para ""
 	done
 
-UnknownText_0x1c5a5a::
-	text "It dodged the"
-	line "thrown Ball!"
-
-	para "This #mon"
-	line "can't be caught!"
-	prompt
-
-UnknownText_0x1c5a90::
-	text "You missed the"
-	line "#mon!"
-	prompt
-
 UnknownText_0x1c5aa6::
 	text "Oh no! The #mon"
 	line "broke free!"
@@ -365,25 +352,6 @@ Text_RepelUsedEarlierIsStillInEffect::
 	cont "in effect."
 	prompt
 
-UnknownText_0x1c5bf9::
-	text "Played the #"
-	line "Flute."
-
-	para "Now, that's a"
-	line "catchy tune!"
-	prompt
-
-UnknownText_0x1c5c28::
-	text "All sleeping"
-	line "#mon woke up."
-	prompt
-
-UnknownText_0x1c5c44::
-	text "<PLAYER> played the"
-	line "# Flute.@"
-	text_waitbutton
-	db "@@"
-
 UnknownText_0x1c5c5e::
 	text "You now have"
 	line "@"
@@ -444,11 +412,6 @@ UnknownText_0x1c5d6e::
 	cont "time to use that!"
 	prompt
 
-UnknownText_0x1c5d97::
-	text "That belongs to"
-	line "someone else!"
-	prompt
-
 UnknownText_0x1c5db6::
 	text "It won't have any"
 	line "effect."
@@ -461,18 +424,6 @@ UnknownText_0x1c5dd0::
 
 UnknownText_0x1c5def::
 	text "Don't be a thief!"
-	prompt
-
-UnknownText_0x1c5e01::
-	text "Cycling isn't"
-	line "allowed here."
-	prompt
-
-UnknownText_0x1c5e1d::
-	text "Can't get on your"
-	line "@"
-	text_from_ram StringBuffer1
-	text " now."
 	prompt
 
 UnknownText_0x1c5e3a::
@@ -504,21 +455,6 @@ UnknownText_0x1c5e68::
 	text_from_ram StringBuffer2
 	text "."
 	done
-
-UnknownText_0x1c5e7b::
-	text "<PLAYER> got on the@"
-	text_low
-	text_from_ram StringBuffer2
-	text "."
-	prompt
-
-UnknownText_0x1c5e90::
-	text "<PLAYER> got off@"
-	text_low
-	text "the @"
-	text_from_ram StringBuffer2
-	text "."
-	prompt
 
 UnknownText_0x1c5ea8::
 	text_from_ram StringBuffer1

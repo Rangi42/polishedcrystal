@@ -1323,10 +1323,6 @@ UnknownText_0x1bda90::
 	line "you can."
 	done
 
-UnknownText_0x1bdaa7::
-	text ""
-	done
-
 UnknownText_0x1bdaa9::
 	text "I'm the Day-Care"
 	line "Man. Want me to"

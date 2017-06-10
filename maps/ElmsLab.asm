@@ -1610,12 +1610,6 @@ ElmAfterTicketText:
 	line "Prof.Oak in Kanto!"
 	done
 
-ElmsLabSignpostText_Egg:
-	text "It's the #mon"
-	line "Egg being studied"
-	cont "by Prof.Elm."
-	done
-
 AideText_GiveYouPotions:
 	text "<PLAYER>, I want"
 	line "you to have this"

@@ -213,27 +213,6 @@ StartMenu:: ; 125cd
 	ret
 ; 12800
 
-.MenuDesc: ; 12800
-	push de
-	ld a, [MenuSelection]
-	cp $ff
-	jr z, .none
-	call .GetMenuAccountTextPointer
-rept 4
-	inc hl
-endr
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	call PlaceString
-	ret
-.none
-	pop de
-	ret
-; 12819
-
-
 .GetMenuAccountTextPointer: ; 12819
 	ld e, a
 	ld d, 0

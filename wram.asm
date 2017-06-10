@@ -787,6 +787,7 @@ wDummyGameCounter:: ds 1 ; c708
 wDummyGameNumCardsMatched:: ds 1 ; c709
 wDummyGameEnd::
 	ds wDummyGame - @
+
 ; Unown Puzzle
 wUnownPuzzle::
 wPuzzlePieces::
@@ -1226,26 +1227,23 @@ wd002::
 wTempDayOfWeek::
 wApricorns::
 PhoneScriptBank::
-LuckyNumberDigit1Buffer::
+LuckyNumberDigitsBuffer::
 wCurrentRadioLine::
 wMovementBufferCount::
 wMartItem1BCD::
 	ds 1
 wd003::
-LuckyNumberDigit2Buffer::
 PhoneCallerLo::
 wNextRadioLine::
 wMovementBufferPerson::
 wPlaceBallsDirection::
 	ds 1
 wd004::
-LuckyNumberDigit3Buffer::
 PhoneCallerHi::
 wRadioTextDelay::
 wTrainerHUDTiles::
 	ds 1
 wd005::
-LuckyNumberDigit4Buffer::
 StartFlypoint:: ; d005
 wNumRadioLinesPrinted::
 wMartItem2BCD::
@@ -1892,6 +1890,7 @@ MapEventStatus:: ; d433
 	ds 1
 
 ScriptFlags:: ; d434
+ScriptFlags1::
 ; bit 3: priority jump
 	ds 1
 ScriptFlags2:: ; d435
@@ -2714,7 +2713,6 @@ BattleAnimVar:: ; d416
 BattleAnimByte:: ; d417
 	ds 1
 wBattleAnimOAMPointerLo:: ds 1 ; d418
-BattleAnimTemps:: ; d419
 wBattleAnimTempOAMFlags::
 wBattleAnimTemp0:: ds 1
 wBattleAnimTemp1:: ds 1

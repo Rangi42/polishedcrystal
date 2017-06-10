@@ -234,11 +234,6 @@ BlackthornGymClairText_DescribeTM21:
 	cont "to take it."
 	done
 
-BlackthornGymClairText_BagFull:
-	text "What is this? You"
-	line "don't have room?"
-	done
-
 BlackthornGymClairText_League:
 	text "What's the matter?"
 

@@ -494,7 +494,6 @@ Sfx_LevelUp: ; f0b3f
 ; f0b4b
 
 Sfx_DexFanfare5079_Ch5: ; f0b4b
-Sfx_LevelUp_Ch5: ; f0b4b
 	togglesfx
 	tempo 120
 	volume $77
@@ -511,7 +510,6 @@ Sfx_LevelUp_Ch5: ; f0b4b
 ; f0b5f
 
 Sfx_DexFanfare5079_Ch6: ; f0b5f
-Sfx_LevelUp_Ch6: ; f0b5f
 	togglesfx
 	dutycycle $2
 	notetype $8, $c1
@@ -525,7 +523,6 @@ Sfx_LevelUp_Ch6: ; f0b5f
 ; f0b6d
 
 Sfx_DexFanfare5079_Ch7: ; f0b6d
-Sfx_LevelUp_Ch7: ; f0b6d
 	togglesfx
 	notetype $8, $25
 	octave 4
@@ -544,7 +541,6 @@ Sfx_LevelUp_Ch7: ; f0b6d
 ; f0b7f
 
 Sfx_DexFanfare5079_Ch8: ; f0b7f
-Sfx_LevelUp_Ch8: ; f0b7f
 	togglesfx
 	sfxtogglenoise $4
 	notetype $c
@@ -1220,7 +1216,6 @@ Sfx_GetEggFromDaycareMan: ; f0e66
 ; f0e72
 
 Sfx_GetEggFromDaycareLady_Ch5: ; f0e72
-Sfx_GetEggFromDaycareMan_Ch5: ; f0e72
 	togglesfx
 	tempo 120
 	volume $77
@@ -1254,7 +1249,6 @@ Sfx_GetEggFromDaycareMan_Ch5: ; f0e72
 	togglesfx
 
 Sfx_GetEggFromDaycareLady_Ch6: ; f0e9b
-Sfx_GetEggFromDaycareMan_Ch6: ; f0e9b
 	togglesfx
 	vibrato $12, $34
 	dutycycle $3
@@ -1285,7 +1279,6 @@ Sfx_GetEggFromDaycareMan_Ch6: ; f0e9b
 	togglesfx
 
 Sfx_GetEggFromDaycareLady_Ch7: ; f0ebe
-Sfx_GetEggFromDaycareMan_Ch7: ; f0ebe
 	togglesfx
 	notetype $8, $25
 	note __, 2
@@ -1306,7 +1299,6 @@ Sfx_GetEggFromDaycareMan_Ch7: ; f0ebe
 	togglesfx
 
 Sfx_GetEggFromDaycareLady_Ch8: ; f0ed0
-Sfx_GetEggFromDaycareMan_Ch8: ; f0ed0
 	togglesfx
 	sfxtogglenoise $4
 	notetype $8
@@ -4131,7 +4123,6 @@ Sfx_ExitBuilding_Ch8: ; f1d7a
 ; f1d8a
 
 Sfx_ReadText2_Ch5: ; f1d8a
-Sfx_ReadText_Ch5: ; f1d8a
 	dutycycle $2
 	sound __,  1, $91, $07c0
 	sound __,  1, $81, $07d0
@@ -5486,7 +5477,6 @@ Sfx_HangUp_Ch5: ; f26f1
 	sound C_,  1, $0, 0
 Sfx_HangUp_branch_f26ff: ; f26ff
 Sfx_NoSignal_Ch5: ; f26ff
-Sfx_NoSignal_branch_f26ff: ; f26ff
 	dutycycle $2
 	sound C_,  5, $e8, $070b
 	sound C_, 13, $0, 0
@@ -5496,8 +5486,6 @@ Sfx_NoSignal_branch_f26ff: ; f26ff
 
 Sfx_Sandstorm_Ch8: ; f270e
 Sfx_Sandstorm_branch_f270e: ; f270e
-Sfx_Unknown5F_Ch8: ; f270e
-Sfx_Unknown5F_branch_f270e: ; f270e
 	noise __,  2, $f8, $41
 	noise __,  3, $9c, $24
 	noise __,  1, $0, $0

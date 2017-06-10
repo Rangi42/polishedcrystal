@@ -223,6 +223,7 @@ UnknownText_0x7f32d:
 	line "on Channel 20"
 	done
 
+; TODO: use this text
 UnknownText_0x7f36b:
 	text "Wow! A full rack"
 	line "of #mon CDs and"

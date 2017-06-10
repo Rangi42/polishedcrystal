@@ -11,17 +11,17 @@ UserPartyAttr:: ; 3945
 ; 3951
 
 
-OpponentPartyAttr:: ; 3951
-	push af
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ot
-	pop af
-	jr BattlePartyAttr
-.ot
-	pop af
-	jr OTPartyAttr
-; 395d
+;OpponentPartyAttr:: ; 3951
+;	push af
+;	ld a, [hBattleTurn]
+;	and a
+;	jr z, .ot
+;	pop af
+;	jr BattlePartyAttr
+;.ot
+;	pop af
+;	jr OTPartyAttr
+;; 395d
 
 
 BattlePartyAttr:: ; 395d
@@ -369,9 +369,9 @@ CheckIfTargetIsIceType::
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType::
 	ld a, ROCK
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsGroundType::
-	ld a, GROUND
+;	jr CheckIfTargetIsSomeType
+;CheckIfTargetIsGroundType::
+;	ld a, GROUND
 CheckIfTargetIsSomeType::
 	ld b, a
 	ld a, [hBattleTurn]

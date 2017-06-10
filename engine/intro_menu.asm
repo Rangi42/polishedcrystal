@@ -380,7 +380,7 @@ Continue: ; 5d65
 ;	call CloseWindow
 ;	jr .FailToLoad
 
-.Check3Pass:
+;.Check3Pass:
 	ld a, $8
 	ld [MusicFade], a
 	ld a, MUSIC_NONE % $100
