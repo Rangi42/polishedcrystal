@@ -56,6 +56,8 @@ MagikarpAnimationExtraPointers:
 	dw MagikarpOrcaAnimationExtra
 	dw MagikarpDapplesAnimationExtra
 	dw MagikarpTigerAnimationExtra
+	dw MagikarpZebraAnimationExtra
+	dw MagikarpStripeAnimationExtra
 
 MewtwoAnimationExtraPointers:
 	dw MewtwoPlainAnimationExtra

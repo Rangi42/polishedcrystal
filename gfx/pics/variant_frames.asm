@@ -56,6 +56,8 @@ MagikarpTwoToneFrames: INCLUDE "gfx/pics/magikarp_twotone/frames.asm"
 MagikarpOrcaFrames:    INCLUDE "gfx/pics/magikarp_orca/frames.asm"
 MagikarpDapplesFrames: INCLUDE "gfx/pics/magikarp_dapples/frames.asm"
 MagikarpTigerFrames:   INCLUDE "gfx/pics/magikarp_tiger/frames.asm"
+MagikarpZebraFrames:   INCLUDE "gfx/pics/magikarp_zebra/frames.asm"
+MagikarpStripeFrames:  INCLUDE "gfx/pics/magikarp_stripe/frames.asm"
 
 MewtwosFrames:
 MewtwoPlainFrames:   INCLUDE "gfx/pics/mewtwo_plain/frames.asm"

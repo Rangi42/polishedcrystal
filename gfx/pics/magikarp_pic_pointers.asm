@@ -17,3 +17,7 @@
 	dba MagikarpDapplesBackpic
 	dba MagikarpTigerFrontpic
 	dba MagikarpTigerBackpic
+	dba MagikarpZebraFrontpic
+	dba MagikarpZebraBackpic
+	dba MagikarpStripeFrontpic
+	dba MagikarpStripeBackpic

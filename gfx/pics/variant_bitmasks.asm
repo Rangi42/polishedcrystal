@@ -51,6 +51,8 @@ MagikarpTwoToneBitmasks: INCLUDE "gfx/pics/magikarp_twotone/bitmask.asm"
 MagikarpOrcaBitmasks:    INCLUDE "gfx/pics/magikarp_orca/bitmask.asm"
 MagikarpDapplesBitmasks: INCLUDE "gfx/pics/magikarp_dapples/bitmask.asm"
 MagikarpTigerBitmasks:   INCLUDE "gfx/pics/magikarp_tiger/bitmask.asm"
+MagikarpZebraBitmasks:   INCLUDE "gfx/pics/magikarp_zebra/bitmask.asm"
+MagikarpStripeBitmasks:  INCLUDE "gfx/pics/magikarp_stripe/bitmask.asm"
 
 MewtwoPlainBitmasks:   INCLUDE "gfx/pics/mewtwo_plain/bitmask.asm"
 MewtwoArmoredBitmasks: INCLUDE "gfx/pics/mewtwo_armored/bitmask.asm"

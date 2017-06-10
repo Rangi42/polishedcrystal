@@ -56,6 +56,8 @@ MagikarpBitmasksPointers:
 	dw MagikarpOrcaBitmasks
 	dw MagikarpDapplesBitmasks
 	dw MagikarpTigerBitmasks
+	dw MagikarpZebraBitmasks
+	dw MagikarpStripeBitmasks
 
 MewtwoBitmasksPointers:
 	dw MewtwoPlainBitmasks

@@ -51,6 +51,8 @@ MagikarpTwoToneAnimationExtra: INCLUDE "gfx/pics/magikarp_twotone/anim1.asm"
 MagikarpOrcaAnimationExtra:    INCLUDE "gfx/pics/magikarp_orca/anim1.asm"
 MagikarpDapplesAnimationExtra: INCLUDE "gfx/pics/magikarp_dapples/anim1.asm"
 MagikarpTigerAnimationExtra:   INCLUDE "gfx/pics/magikarp_tiger/anim1.asm"
+MagikarpZebraAnimationExtra:   INCLUDE "gfx/pics/magikarp_zebra/anim1.asm"
+MagikarpStripeAnimationExtra:  INCLUDE "gfx/pics/magikarp_stripe/anim1.asm"
 
 MewtwoPlainAnimationExtra:   INCLUDE "gfx/pics/mewtwo_plain/anim1.asm"
 MewtwoArmoredAnimationExtra: INCLUDE "gfx/pics/mewtwo_armored/anim1.asm"
