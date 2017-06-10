@@ -1171,9 +1171,11 @@ Options2:: ; cfd1
 InitialOptions::
 ; bit 0: natures off/on
 ; bit 1: abilities off/on
-; bit 2: traded behavior off/on
-; bit 3: nuzlocke mode off/on
-; bit 4-6: unused
+; bit 2: color variation off/on
+; bit 3: perfect IVs off/on
+; bit 4: traded behavior off/on
+; bit 5: nuzlocke mode off/on
+; bit 6: unused
 ; bit 7: ask to reset at start
 	ds 1
 

@@ -257,10 +257,6 @@
 	const DISARM_VOICE ; $fe
 	const STRUGGLE     ; $ff
 
-const_value SET const_value + -1
-
-	const NUM_ATTACKS  ; $ff
-
 ; Battle animations use the same constants
 ; as the moves up to this point.
 	const ANIM_THROW_POKE_BALL   ; $100

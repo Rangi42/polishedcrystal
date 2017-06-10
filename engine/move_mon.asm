@@ -1558,6 +1558,10 @@ CalcPkmnStatC: ; e17b
 	ld bc, MON_DVS - (MON_EVS - 1)
 	add hl, bc ; hl points to DVs
 	pop bc
+	ld a, [InitialOptions]
+	bit PERFECT_IVS_OPT, a
+	ld a, $f
+	jr nz, .GotDV
 	ld a, c
 	cp STAT_ATK
 	jr z, .Attack

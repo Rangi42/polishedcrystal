@@ -216,7 +216,21 @@ NoRoomForFossilPokemon:
 	end
 
 Museum1FReceptionistScript:
-	jumptextfaceplayer Museum1FReceptionistText
+	faceplayer
+	opentext
+	checkcode VAR_FACING
+	if_equal DOWN, .Sneak
+	if_equal LEFT, .Sneak
+	writetext Museum1FReceptionistText1
+	waitbutton
+	closetext
+	end
+
+.Sneak:
+	writetext Museum1FReceptionistText2
+	waitbutton
+	closetext
+	end
 
 Museum1FScientistScript:
 	jumptextfaceplayer Museum1FScientistText
@@ -226,9 +240,6 @@ Museum1FGrampsScript:
 
 Museum1FYoungsterScript:
 	jumptextfaceplayer Museum1FYoungsterText
-
-Museum1FReceptionistDeskSignpostScript:
-	jumptext Museum1FReceptionistDeskSignpostText
 
 KabutopsFossilSignpostScript:
 	refreshscreen $0
@@ -254,7 +265,20 @@ AerodactylFossilSignpostScript:
 Museum1FBookshelfSignpostScript:
 	jumptext Museum1FBookshelfSignpostText
 
-Museum1FReceptionistText:
+Museum1FReceptionistText1:
+	text "Welcome!"
+
+	para "Thanks to a gene-"
+	line "rous donation"
+	cont "by Silph Co.,"
+
+	para "admission is free"
+	line "of charge!"
+
+	para "Please go ahead."
+	done
+
+Museum1FReceptionistText2:
 	text "You can't sneak"
 	line "in the back way!"
 	done
@@ -302,19 +326,6 @@ Museum1FYoungsterText:
 	para "I get a sense of"
 	line "history from both"
 	cont "of them."
-	done
-
-Museum1FReceptionistDeskSignpostText:
-	text "Welcome!"
-
-	para "Thanks to a gene-"
-	line "rous donation"
-	cont "by Silph Co.,"
-
-	para "admission is free"
-	line "of charge!"
-
-	para "Please go ahead."
 	done
 
 KabutopsFossilSignpostText:
@@ -427,8 +438,7 @@ PewterMuseumOfScience1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 10
-	signpost 4, 11, SIGNPOST_READ, Museum1FReceptionistDeskSignpostScript
+	db 9
 	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
 	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
 	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
