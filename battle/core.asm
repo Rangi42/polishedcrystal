@@ -3953,20 +3953,24 @@ TryToRunAwayFromBattle: ; 3d8b3
 	and a
 	jp nz, .cant_escape
 
+	push hl
+	push de
 	call SetPlayerTurn
 	call CheckIfTrappedByAbility_Core
+	pop de
+	pop hl
 	jp z, .ability_prevents_escape
+
 	ld a, [wNumFleeAttempts]
 	inc a
 	ld [wNumFleeAttempts], a
-	ld a, [hli]
+	ld a, h
 	ld [hStringCmpString2 + 0], a
-	ld a, [hl]
+	ld a, l
 	ld [hStringCmpString2 + 1], a
-	ld a, [de]
-	inc de
+	ld a, d
 	ld [hStringCmpString1 + 0], a
-	ld a, [de]
+	ld a, e
 	ld [hStringCmpString1 + 1], a
 	call Call_LoadTempTileMapToTileMap
 	ld de, hStringCmpString2
