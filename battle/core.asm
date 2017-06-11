@@ -6719,8 +6719,10 @@ endr
 	call GetFarByte
 	pop bc
 	pop hl
+	ld c, a
+	ld a, b
 ; Ratios below the value are female, and vice-versa.
-	cp b
+	cp c
 	ld a, FEMALE
 	jr c, .Female
 	xor a ; ld a, MALE
