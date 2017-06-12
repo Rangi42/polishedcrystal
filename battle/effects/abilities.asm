@@ -1054,8 +1054,14 @@ CompoundEyesAbility:
 	jp Divide
 
 HustleAccuracyAbility:
-; Decrease accuracy by 50%
-	ld [hl], 2
+; Decrease accuracy for physical attacks by 20%
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp PHYSICAL
+	ret nz
+	ld [hl], 5
+	call Multiply
+	ld [hl], 6
 	ld b, 4
 	jp Divide
 
@@ -1317,7 +1323,6 @@ MoodyAbility:
 	jp EnableAnimations
 
 ApplyDamageAbilities:
-	push hl
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld hl, OffensiveDamageAbilities
@@ -1325,7 +1330,6 @@ ApplyDamageAbilities:
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, DefensiveDamageAbilities
 	call AbilityJumptable
-	pop hl
 	ret
 
 OffensiveDamageAbilities:

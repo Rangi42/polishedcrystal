@@ -1767,14 +1767,18 @@ HandleWeather: ; 3cb9e
 	jp StdBattleTextBox
 
 .ShowWeatherAnimation:
+	call CheckBattleEffects
+	ret c
 	ld hl, .WeatherAnimations
 	ld a, [Weather]
 	dec a
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld d, 0
-	ld e, [hl]
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	jp Call_PlayBattleAnim
 
 .WeatherMessages:
@@ -1788,12 +1792,10 @@ HandleWeather: ; 3cb9e
 	dw BattleText_TheSandstormSubsided
 	dw BattleText_TheHailStopped
 .WeatherAnimations:
-	db RAIN_DANCE
-	db SUNNY_DAY
-	; TODO: use ANIM_IN_SANDSTORM and ANIM_IN_HAIL (16-bit values)
-	db SANDSTORM
-	db HAIL
-; 3cc39
+	dw RAIN_DANCE
+	dw SUNNY_DAY
+	dw ANIM_IN_SANDSTORM
+	dw ANIM_IN_HAIL
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
