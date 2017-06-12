@@ -1157,7 +1157,7 @@ RunWeatherAbilities:
 	cp DRY_SKIN
 	jp z, DrySkinSunAbility
 	cp SOLAR_POWER
-	jp z, SolarPowerAbility
+	jp z, SolarPowerSunAbility
 	ret
 
 IceBodyAbility:
@@ -1182,7 +1182,7 @@ RainDishAbility:
 	jr .got_hp
 
 DrySkinSunAbility:
-SolarPowerAbility:
+SolarPowerSunAbility:
 	call ShowAbilityActivation
 	farcall GetEighthMaxHP
 	farcall SubtractHPFromUser
@@ -1333,6 +1333,223 @@ MoodyAbility:
 	call SwitchTurn
 	jp EnableAnimations
 
+ApplyDamageAbilities:
+	push hl
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld hl, OffensiveDamageAbilities
+	call AbilityJumptable
+	call GetOpponentAbilityAfterMoldBreaker
+	ld hl, DefensiveDamageAbilities
+	call AbilityJumptable
+	pop hl
+	ret
+
+OffensiveDamageAbilities:
+	dbw HUGE_POWER, HugePowerAbility
+	dbw HUSTLE, HustleAbility
+	dbw OVERGROW, OvergrowAbility
+	dbw BLAZE, BlazeAbility
+	dbw TORRENT, TorrentAbility
+	dbw SWARM, SwarmAbility
+	dbw SHEER_FORCE, SheerForceAbility
+	dbw ANALYTIC, AnalyticAbility
+	dbw TINTED_LENS, TintedLensAbility
+	dbw SOLAR_POWER, SolarPowerAbility
+	dbw IRON_FIST, IronFistAbility
+	dbw SAND_FORCE, SandForceAbility
+	dbw RECKLESS, RecklessAbility
+	dbw GUTS, GutsAbility
+	dbw -1, -1
+
+DefensiveDamageAbilities:
+	dbw MULTISCALE, EnemyMultiscaleAbility
+	dbw MARVEL_SCALE, EnemyMarvelScaleAbility
+	dbw SOLID_ROCK, EnemySolidRockAbility
+	dbw FILTER, EnemyFilterAbility
+	dbw THICK_FAT, EnemyThickFatAbility
+	dbw DRY_SKIN, EnemyDrySkinAbility
+	dbw FUR_COAT, EnemyFurCoatAbility
+	dbw -1, -1
+
+HugePowerAbility:
+; Doubles physical attack
+	ld a, $21
+	jp ApplyPhysicalAttackDamageMod
+
+HustleAbility:
+; 150% physical attack, 80% accuracy (done elsewhere)
+	ld a, $32
+	jp ApplyPhysicalAttackDamageMod
+
+OvergrowAbility:
+	ld b, GRASS
+	jr PinchAbility
+BlazeAbility:
+	ld b, FIRE
+	jr PinchAbility
+TorrentAbility:
+	ld b, WATER
+	jr PinchAbility
+SwarmAbility:
+	ld b, BUG
+PinchAbility:
+; 150% damage if the user is in a pinch (1/3HP or less) for given type
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	ret nz
+	call CheckPinch
+	ret nz
+	ld a, $32
+	jp ApplyDamageMod
+
+SheerForceAbility:
+; 130% damage if a secondary effect is suppressed
+	ld a, [EffectFailed]
+	and a
+	ret z
+	ld a, $da
+	jp ApplyDamageMod
+
+AnalyticAbility:
+; 130% damage if opponent went first
+	ld a, [wEnemyGoesFirst] ; 0 = player goes first
+	ld b, a
+	ld a, [hBattleTurn] ; 0 = player's turn
+	xor b ; nz if opponent went first
+	ret z
+	ld a, $da
+	jp ApplyDamageMod
+
+TintedLensAbility:
+; Doubles damage for not very effective moves (x0.5/x0.25)
+	ld a, [TypeModifier]
+	cp $10
+	ret nc
+	ld a, $21
+	jp ApplyDamageMod
+
+SolarPowerAbility:
+; 150% special attack in sun, take 1/8 damage at turn end in sun (done elsewhere)
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SUN
+	ret nz
+	ld a, $32
+	jp ApplySpecialAttackDamageMod
+
+IronFistAbility:
+; 120% damage for punching moves
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PunchingMoves
+	call IsInArray
+	ret c
+	ld a, $65
+	jp ApplyDamageMod
+
+SandForceAbility:
+; 130% damage for Ground/Rock/Steel-type moves in a sandstorm, not hurt by Sandstorm
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SANDSTORM
+	ret nz
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp GROUND
+	jr z, .ok
+	cp ROCK
+	jr z, .ok
+	cp STEEL
+	ret nz
+.ok
+	ld a, $da
+	jp ApplyDamageMod
+
+RecklessAbility:
+; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	ret z
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_RECOIL_HIT
+	jr z, .ok
+	cp EFFECT_JUMP_KICK
+	ret nz
+.ok
+	ld a, $65
+	jp ApplyDamageMod
+
+GutsAbility:
+; 150% physical attack if user is statused
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and a
+	ret z
+	ld a, $32
+	jp ApplyPhysicalAttackDamageMod
+
+
+EnemyMultiscaleAbility:
+; 50% damage if user is at full HP
+	call SwitchTurn
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	ret nz
+	ld a, $12
+	jp ApplyDamageMod
+
+EnemyMarvelScaleAbility:
+; 150% physical Defense if statused
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret z
+	ld a, $23
+	jp ApplyPhysicalDefenseDamageMod
+
+EnemySolidRockAbility:
+EnemyFilterAbility:
+; 75% damage for super effective moves
+	ld a, [TypeModifier]
+	cp $11
+	ret c
+	ld a, $34
+	jp ApplyDamageMod
+
+EnemyThickFatAbility:
+; 50% damage for Fire and Ice-type moves
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr z, .ok
+	cp ICE
+	ret nz
+.ok
+	ld a, $12
+	jp ApplyDamageMod
+
+EnemyDrySkinAbility:
+; 125% damage for Fire-type moves, heals 1/4 from Water, regenerates 1/8 at end of turn in
+; rain, takes 1/8 damage at end of turn in sun. This only handles Fire damage bonus, other
+; stuff is elsewhere
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	ret nz
+	ld a, $54
+	jp ApplyDamageMod
+
+EnemyFurCoatAbility:
+; Doubles physical Defense
+	ld a, $12
+	jp ApplyPhysicalDefenseDamageMod
+
+
+
+
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
 	call BattleRandom
@@ -1383,6 +1600,24 @@ RegeneratorAbility:
 	and a
 	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
+
+AbilityJumptable:
+	; hl = jumptable, a = ability
+	ld b, a
+.loop
+	ld a, [hli]
+	cp -1
+	ret z
+	cp b
+	jr z, .got_ability
+	inc hl
+	inc hl
+	jr .loop
+.got_ability
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
 
 DisableAnimations:
 	ld a, 1
