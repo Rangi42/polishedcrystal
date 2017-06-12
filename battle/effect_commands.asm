@@ -1171,8 +1171,14 @@ BattleCommand_TripleKick: ; 346b2
 	ld [hl], a
 	ret
 
-; 346cd
-
+CheckNullificationItems:
+; Returns z if the user is immune due to an item
+	call GetOpponentItem
+	ld a, b
+	xor HELD_AIR_BALLOON
+	ret nz
+	ld [wTypeMatchup], a
+	ret
 
 BattleCommand_KickCounter: ; 346cd
 ; kickcounter
@@ -1313,6 +1319,11 @@ CheckTypeMatchup:
 	ld a, [wTypeMatchup]
 	and a
 	jr z, .end
+
+	; check Air Balloon
+	call CheckNullificationItems
+	jr z, .end
+
 	farcall CheckNullificationAbilities
 .end
 	pop bc
