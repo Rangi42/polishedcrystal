@@ -1794,7 +1794,6 @@ HandleWeather: ; 3cb9e
 .WeatherAnimations:
 	dw RAIN_DANCE
 	dw SUNNY_DAY
-	; TODO: use ANIM_IN_SANDSTORM and ANIM_IN_HAIL (16-bit values)
 	dw ANIM_IN_SANDSTORM
 	dw ANIM_IN_HAIL
 
