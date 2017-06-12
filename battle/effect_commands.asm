@@ -2507,7 +2507,7 @@ BattleCommand_PostHitEffects: ; 35250
 	ld a, [CurBattleMon]
 	ld de, BattleMonItem
 	ld hl, PartyMon1Item
-	jr z, .got_item_pointers
+	jr nz, .got_item_pointers
 	ld a, [CurOTMon]
 	ld de, EnemyMonItem
 	ld hl, OTPartyMon1Item
