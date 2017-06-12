@@ -5827,17 +5827,13 @@ MoveSelectionScreen: ; 3e4bc
 	dec a
 	cp c
 	jr z, .move_disabled
-	ld a, [wUnusedPlayerLockedMove]
-	and a
-	jr nz, .skip2
+
 	ld a, [wMenuCursorY]
 	ld hl, BattleMonMoves
 	ld c, a
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-
-.skip2
 	ld [CurPlayerMove], a
 	xor a
 	ret

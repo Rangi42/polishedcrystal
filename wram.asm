@@ -537,8 +537,8 @@ PlayerSubstituteHP:: ; c6df
 EnemySubstituteHP:: ; c6e0
 	ds 2
 
-wUnusedPlayerLockedMove:: ; c6e1
 	ds 1
+
 CurPlayerMove:: ; c6e3
 	ds 1
 CurEnemyMove:: ; c6e4
