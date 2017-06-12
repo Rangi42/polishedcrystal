@@ -414,6 +414,21 @@ endr
 	ld a, b
 	ld [TempWildMonSpecies], a
 
+	ld a, [MapGroup]
+	cp GROUP_SOUL_HOUSE_B1F ; Soul House or Lavender Radio Tower
+	jr nz, .not_ghost
+	ld a, [MapNumber]
+	cp MAP_SOUL_HOUSE_B1F ; first Ghost map in its group
+	jr c, .not_ghost
+	ld a, SILPHSCOPE2
+	ld [CurItem], a
+	ld hl, NumKeyItems
+	call CheckItem
+	jr c, .not_ghost
+	ld a, BATTLETYPE_GHOST
+	ld [BattleType], a
+.not_ghost
+
 .startwildbattle
 	xor a
 	ret

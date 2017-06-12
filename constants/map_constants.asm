@@ -373,29 +373,29 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 18
 
 	mapgroup ROUTE_8,                                    11, 26 ;  1
-	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
-	mapgroup LAVENDER_TOWN,                              10, 10 ;  3
-	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
-	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  5
-	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  6
-	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  7
-	mapgroup LAVENDER_MART,                               4,  6 ;  8
-	mapgroup SOUL_HOUSE,                                  5,  5 ;  9
-	mapgroup SOUL_HOUSE_B1F,                              9, 10 ; 10
-	mapgroup SOUL_HOUSE_B2F,                              9, 10 ; 11
-	mapgroup SOUL_HOUSE_B3F,                              9,  4 ; 12
-	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 13
-	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 14
-	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 15
-	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 16
-	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 17
-	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 18
-	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 19
-	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 20
-	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 21
-	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 22
-	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 23
-	mapgroup ROUTE_12_NORTH,                              9, 10 ; 24
+	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ;  2
+	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  3
+	mapgroup ROUTE_12_NORTH,                              9, 10 ;  4
+	mapgroup LAVENDER_TOWN,                              10, 10 ;  5
+	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  6
+	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  7
+	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  8
+	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  9
+	mapgroup LAVENDER_MART,                               4,  6 ; 10
+	mapgroup SOUL_HOUSE,                                  5,  5 ; 11
+	mapgroup SOUL_HOUSE_B1F,                              9, 10 ; 12
+	mapgroup SOUL_HOUSE_B2F,                              9, 10 ; 13
+	mapgroup SOUL_HOUSE_B3F,                              9,  4 ; 14
+	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 15
+	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 16
+	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 17
+	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 18
+	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 19
+	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 20
+	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 21
+	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 22
+	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 23
+	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 24
 
 	newgroup                                                    ; 19
 

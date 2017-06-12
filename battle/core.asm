@@ -6641,7 +6641,7 @@ endr
 	push hl
 	push bc
 	push de
-	ld hl, NumItems
+	ld hl, NumKeyItems
 	call CheckItem
 	pop de
 	pop bc
