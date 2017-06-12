@@ -691,7 +691,7 @@ endr
 	ld a, [PartyCount]
 	dec a
 	ld [CurPartyMon], a
-	farcall HealPartyMon
+	farcall HealPartyMonEvenForNuzlocke
 .SkipPartyMonHealBall:
 
 	ld a, [InitialOptions]
