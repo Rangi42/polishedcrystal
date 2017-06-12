@@ -5838,7 +5838,6 @@ MoveSelectionScreen: ; 3e4bc
 	ld a, [hl]
 
 .skip2
-	; DEBUG NOTE: at this point, a is already corrupted
 	ld [CurPlayerMove], a
 	xor a
 	ret
@@ -5863,10 +5862,6 @@ MoveSelectionScreen: ; 3e4bc
 	call Call_LoadTempTileMapToTileMap
 	jp MoveSelectionScreen
 ; 3e61c
-
-.string_3e61c ; 3e61c
-	db "@"
-; 3e61d
 
 .pressed_up
 	ld a, [wMenuCursorY]
