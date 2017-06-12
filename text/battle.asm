@@ -361,6 +361,12 @@ RecoveredUsingText: ; 0x80bc2
 	prompt
 ; 0x80bde
 
+AirBalloonPoppedText:
+	text "<TARGET>'s"
+	line "Air Balloon"
+	cont "popped!"
+	prompt
+
 BattleText_UsersStringBuffer1Activated: ; 0x80bde
 	text "<USER>'s"
 	line "@"

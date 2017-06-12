@@ -571,8 +571,8 @@ SentGetPkmnIntoFromBox: ; db3f
 	ld hl, wBreedMon1Species
 	jr z, .breedmon
 
-    ; we want to sent a Pkmn into the Box
-    ; so check if there's enough space
+	; we want to sent a Pkmn into the Box
+	; so check if there's enough space
 	ld hl, sBoxCount
 	ld a, [hl]
 	cp MONS_PER_BOX

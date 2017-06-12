@@ -1171,8 +1171,18 @@ BattleCommand_TripleKick: ; 346b2
 	ld [hl], a
 	ret
 
-; 346cd
-
+CheckAirBalloon:
+; Returns z if the user is immune due to an item
+	push bc
+	push hl
+	call GetOpponentItem
+	pop hl
+	ld a, b
+	pop bc
+	xor HELD_AIR_BALLOON
+	ret nz
+	ld [wTypeMatchup], a
+	ret
 
 BattleCommand_KickCounter: ; 346cd
 ; kickcounter
@@ -1313,6 +1323,11 @@ CheckTypeMatchup:
 	ld a, [wTypeMatchup]
 	and a
 	jr z, .end
+
+	; check Air Balloon
+	call CheckAirBalloon
+	jr z, .end
+
 	farcall CheckNullificationAbilities
 .end
 	pop bc
@@ -2478,7 +2493,35 @@ BattleCommand_PostHitEffects: ; 35250
 
 	farcall RunHitAbilities
 
-.start_rage
+	; Burst air balloons
+	call CheckAirBalloon
+	jr nz, .air_balloon_done
+
+	ld hl, AirBalloonPoppedText
+	call StdBattleTextBox
+
+	; Don't use a common "useup" function -- when Pickup/etc is implemented, it still wont
+	; be able to recover Air Balloons
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurBattleMon]
+	ld de, BattleMonItem
+	ld hl, PartyMon1Item
+	jr z, .got_item_pointers
+	ld a, [CurOTMon]
+	ld de, EnemyMonItem
+	ld hl, OTPartyMon1Item
+.got_item_pointers
+	call GetPartyLocation
+	xor a
+	ld [de], a
+	ld a, [wBattleMode]
+	dec a
+	jr z, .air_balloon_done
+	xor a
+	ld [hl], a
+
+.air_balloon_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_RAGE, a
@@ -6464,8 +6507,7 @@ CheckIfTrappedByAbility:
 	ret
 
 _CheckIfTrappedByAbility:
-	; Wrapper around ability checks to ensure that no double-traps
-	; happen.
+	; Wrapper around ability checks to ensure that no double-traps happen.
 	call CheckIfTrappedByAbilityInner
 	ld a, b
 	and a
@@ -6508,6 +6550,8 @@ CheckIfTrappedByAbilityInner:
 	ret z
 	ld a, BATTLE_VARS_ABILITY
 	cp LEVITATE
+	ret z
+	call CheckAirBalloon
 	ret z
 .is_trapped
 	ld b, 0
