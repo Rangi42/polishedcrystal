@@ -793,24 +793,10 @@ RunEnemyNullificationAbilities:
 	call SwitchTurn
 	ret
 .do_enemy_abilities
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DRY_SKIN
-	jp z, DrySkinAbility
-	cp FLASH_FIRE
-	jp z, FlashFireAbility
-	cp LIGHTNING_ROD
-	jp z, LightningRodAbility
-	cp MOTOR_DRIVE
-	jp z, MotorDriveAbility
-	cp SAP_SIPPER
-	jp z, SapSipperAbility
-	cp VOLT_ABSORB
-	jp z, VoltAbsorbAbility
-	cp WATER_ABSORB
-	jp z, WaterAbsorbAbility
-	cp DAMP
-	jp z, DampAbility
+	ld hl, NullificationAbilities
+	call UserAbilityJumptable
+	ret nz
+
 	; For other abilities, don't do anything except print a message (for example Levitate)
 	call ShowAbilityActivation
 	call SwitchTurn
@@ -818,6 +804,17 @@ RunEnemyNullificationAbilities:
 	call StdBattleTextBox
 	call SwitchTurn
 	ret
+
+NullificationAbilities:
+	dbw DRY_SKIN, DrySkinAbility
+	dbw FLASH_FIRE, FlashFireAbility
+	dbw LIGHTNING_ROD, LightningRodAbility
+	dbw MOTOR_DRIVE, MotorDriveAbility
+	dbw SAP_SIPPER, SapSipperAbility
+	dbw VOLT_ABSORB, VoltAbsorbAbility
+	dbw WATER_ABSORB, WaterAbsorbAbility
+	dbw DAMP, DampAbility
+	dbw -1, -1
 
 DampAbility:
 	; doesn't use the normal activation message or "doesn't affect", because it
@@ -1579,7 +1576,7 @@ RegeneratorAbility:
 	jp UpdateEnemyMonInParty
 
 AbilityJumptable:
-	; hl = jumptable, a = ability
+; hl = jumptable, a = ability. Returns z if no jump was made, nz otherwise
 	ld b, a
 .loop
 	ld a, [hli]
@@ -1594,6 +1591,10 @@ AbilityJumptable:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	call .jp_hl
+	or 1
+	ret
+.jp_hl
 	jp hl
 
 DisableAnimations:
