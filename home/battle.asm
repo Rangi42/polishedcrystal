@@ -140,6 +140,67 @@ UpdateBattleHuds:: ; 39d4
 	ret
 ; 39e1
 
+; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
+ApplyPhysicalAttackDamageMod::
+	push bc
+	ld b, PHYSICAL
+	jr ApplyAttackDamageMod
+ApplySpecialAttackDamageMod::
+	push bc
+	ld b, SPECIAL
+ApplyAttackDamageMod::
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp b
+	ld a, c
+	pop bc
+	ret nz
+	jr ApplyDamageMod
+
+ApplyPhysicalDefenseDamageMod::
+	push bc
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	ld a, c
+	pop bc
+	jr z, ApplySpecialAttackDamageMod
+	jr ApplyPhysicalAttackDamageMod
+
+ApplySpecialDefenseDamageMod::
+	push bc
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	ld a, c
+	pop bc
+	ret z
+	jr ApplySpecialAttackDamageMod
+
+ApplyDamageMod::
+	push bc
+	push hl
+	ld b, a
+	swap a
+	and $f
+	ld hl, hMultiplier
+	ld [hl], a
+	push bc
+	call Multiply
+	pop bc
+	ld a, b
+	and $f
+	ld [hl], a
+	ld b, 4
+	call Divide
+	pop hl
+	pop bc
+	ret
+
+
 GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it.
