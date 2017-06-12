@@ -1,49 +1,12 @@
 RunActivationAbilitiesInner:
+	ld hl, BattleEntryAbilities
+	jr UserAbilityJumptable
+RunStatusHealAbilities:
+	ld hl, StatusHealAbilities
+UserAbilityJumptable:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	cp TRACE
-	jp z, TraceAbility
-	cp IMPOSTER
-	jp z, ImposterAbility
-	cp DRIZZLE
-	jp z, DrizzleAbility
-	cp DROUGHT
-	jp z, DroughtAbility
-	cp SAND_STREAM
-	jp z, SandStreamAbility
-	cp SNOW_WARNING
-	jp z, SnowWarningAbility
-	cp CLOUD_NINE ; just prints a message
-	jr nz, .skip_cloud_nine
-	ld hl, NotifyCloudNine
-	jp StdBattleTextBox
-.skip_cloud_nine
-	cp INTIMIDATE
-	jp z, IntimidateAbility
-	cp PRESSURE ; just prints a message
-	jr nz, .skip_pressure
-	ld hl, NotifyPressure
-	jp StdBattleTextBox
-.skip_pressure
-	cp DOWNLOAD
-	jp z, DownloadAbility
-	cp MOLD_BREAKER ; just prints a message
-	jr nz, .skip_mold_breaker
-	ld hl, NotifyMoldBreaker
-	jp StdBattleTextBox
-.skip_mold_breaker
-	cp ANTICIPATION
-	jp z, AnticipationAbility
-	cp FOREWARN
-	jp z, ForewarnAbility
-	cp FRISK
-	jp z, FriskAbility
-	cp UNNERVE ; just prints a message
-	jr nz, .skip_unnerve
-	ld hl, NotifyUnnerve
-	jp StdBattleTextBox
-.skip_unnerve
-	jp RunStatusHealAbilities
+	jp AbilityJumptable
 
 RunEnemyStatusHealAbilities:
 	call SwitchTurn
@@ -51,28 +14,48 @@ RunEnemyStatusHealAbilities:
 	call SwitchTurn
 	ret
 
-RunStatusHealAbilities:
-; Procs abilities that protect against statuses.
-	; Needed because this is called elsewhere.
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp LIMBER
-	jp z, LimberAbility
-	cp IMMUNITY
-	jp z, ImmunityAbility
-	cp MAGMA_ARMOR
-	jp z, MagmaArmorAbility
-	cp WATER_VEIL
-	jp z, WaterVeilAbility
-	cp INSOMNIA
-	jp z, InsomniaAbility
-	cp VITAL_SPIRIT
-	jp z, VitalSpiritAbility
-	cp OWN_TEMPO
-	jp z, OwnTempoAbility
-	cp OBLIVIOUS
-	jp z, ObliviousAbility
-	ret
+BattleEntryAbilities:
+	dbw TRACE, TraceAbility
+	dbw IMPOSTER, ImposterAbility
+	dbw DRIZZLE, DrizzleAbility
+	dbw DROUGHT, DroughtAbility
+	dbw SAND_STREAM, SandStreamAbility
+	dbw SNOW_WARNING, SnowWarningAbility
+	dbw CLOUD_NINE, CloudNineAbility
+	dbw INTIMIDATE, IntimidateAbility
+	dbw PRESSURE, PressureAbility
+	dbw DOWNLOAD, DownloadAbility
+	dbw MOLD_BREAKER, MoldBreakerAbility
+	dbw ANTICIPATION, AnticipationAbility
+	dbw FOREWARN, ForewarnAbility
+	dbw FRISK, FriskAbility
+	dbw UNNERVE, UnnerveAbility
+	; fallthrough
+StatusHealAbilities:
+; Status immunity abilities that autoproc if the user gets the status or the ability
+	dbw LIMBER, LimberAbility
+	dbw IMMUNITY, ImmunityAbility
+	dbw MAGMA_ARMOR, MagmaArmorAbility
+	dbw WATER_VEIL, WaterVeilAbility
+	dbw INSOMNIA, InsomniaAbility
+	dbw VITAL_SPIRIT, VitalSpiritAbility
+	dbw OWN_TEMPO, OwnTempoAbility
+	dbw OBLIVIOUS, ObliviousAbility
+	dbw -1, -1
+
+CloudNineAbility:
+	ld hl, NotifyCloudNine
+	jr NotificationAbilities
+PressureAbility:
+	ld hl, NotifyPressure
+	jr NotificationAbilities
+MoldBreakerAbility:
+	ld hl, NotifyMoldBreaker
+	jr NotificationAbilities
+UnnerveAbility:
+	ld hl, NotifyUnnerve
+NotificationAbilities:
+	jp StdBattleTextBox
 
 ImmunityAbility:
 	ld a, 1 << PSN
@@ -844,14 +827,14 @@ DampAbility:
 
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DEFIANT
-	call z, DefiantAbility
-	cp COMPETITIVE
-	call z, CompetitiveAbility
-	call SwitchTurn
-	ret
+	ld hl, StatIncreaseAbilities
+	call UserAbilityJumptable
+	jp SwitchTurn
+
+StatIncreaseAbilities:
+	dbw COMPETITIVE, CompetitiveAbility
+	dbw DEFIANT, DefiantAbility
+	dbw -1, -1
 
 CompetitiveAbility:
 	ld b, $10 | SP_ATTACK
