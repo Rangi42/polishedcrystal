@@ -457,23 +457,23 @@ CheckFacingTileForStd:: ; 1365b
 	ret
 
 .table1
-	dbw $91, magazinebookshelf
-	dbw $92, trashcan
-	dbw $93, pcscript
-	dbw $94, radio1
-	dbw $95, townmap
-	dbw $96, merchandiseshelf
-	dbw $97, tv
-	dbw $98, pokecentersign
-	dbw $99, martsign
-	dbw $9a, vendingmachine
-	dbw $9b, refrigerator
-	dbw $9c, sink
-	dbw $9d, window
-	dbw $9e, stove
-	dbw $9f, incenseburner
-	dbw $d1, elevatorbutton
-	db   -1 ; end
+	dbw COLL_BOOKSHELF, magazinebookshelf
+	dbw COLL_TRASH_CAN, trashcan
+	dbw COLL_PC, pcscript
+	dbw COLL_RADIO, radio1
+	dbw COLL_TOWN_MAP, townmap
+	dbw COLL_MART_SHELF, merchandiseshelf
+	dbw COLL_TV, tv
+	dbw COLL_POKECENTER_SIGN, pokecentersign
+	dbw COLL_MART_SIGN, martsign
+	dbw COLL_VENDING_MACHINE, vendingmachine
+	dbw COLL_FRIDGE, refrigerator
+	dbw COLL_SINK, sink
+	dbw COLL_WINDOW, window
+	dbw COLL_STOVE, stove
+	dbw COLL_INCENSE, incenseburner
+	dbw COLL_ELEVATOR_BUTTON, elevatorbutton
+	db -1 ; end
 
 Script_JumpStdFromRAM: ; 0x1369a
 	jump wJumpStdScriptBuffer
