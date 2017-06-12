@@ -1317,7 +1317,6 @@ MoodyAbility:
 	jp EnableAnimations
 
 ApplyDamageAbilities:
-	push hl
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld hl, OffensiveDamageAbilities
@@ -1325,7 +1324,6 @@ ApplyDamageAbilities:
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, DefensiveDamageAbilities
 	call AbilityJumptable
-	pop hl
 	ret
 
 OffensiveDamageAbilities:
