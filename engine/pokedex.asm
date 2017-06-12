@@ -1466,7 +1466,7 @@ Pokedex_PrintListing: ; 40b0f (10:4b0f)
 ; Prints one entry in the list of Pokémon on the main Pokédex screen.
 	and a
 	ret z
-	call Pokedex_PrintNumber
+	call Pokedex_PrintNumberIfOldMode
 	call Pokedex_PlaceDefaultStringIfNotSeen
 	ret c
 	call Pokedex_PlaceCaughtSymbolIfCaught
@@ -1476,7 +1476,10 @@ Pokedex_PrintListing: ; 40b0f (10:4b0f)
 	call PlaceString
 	ret
 
-Pokedex_PrintNumber: ; 40b6a (10:4b6a)
+Pokedex_PrintNumberIfOldMode: ; 40b6a (10:4b6a)
+	ld a, [wCurrentDexMode]
+	cp DEXMODE_OLD
+	ret nz
 	push hl
 	ld de, -SCREEN_WIDTH
 	add hl, de
