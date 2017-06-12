@@ -1112,46 +1112,39 @@ WeatherAccAbility:
 	jp Divide
 
 RunWeatherAbilities:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	ld b, a
+	ld hl, WeatherAbilities
+	jp UserAbilityJumptable
+
+WeatherAbilities:
+	dbw DRY_SKIN, DrySkinWeatherAbility
+	dbw SOLAR_POWER, SolarPowerWeatherAbility
+	dbw ICE_BODY, IceBodyAbility
+	dbw RAIN_DISH, RainDishAbility
+	dbw HYDRATION, HydrationAbility
+	dbw -1, -1
+
+DrySkinWeatherAbility:
+	call RainRecoveryAbility
+	; fallthrough (these need different weather so calling both is OK)
+SolarPowerWeatherAbility:
 	call GetWeatherAfterCloudNine
-	cp WEATHER_HAIL
-	jr z, .hail
-	cp WEATHER_SANDSTORM
-	jr z, .sandstorm
-	cp WEATHER_RAIN
-	jr z, .rain
 	cp WEATHER_SUN
-	jr z, .sun
-	ret
-.hail
-	ld a, b
-	cp ICE_BODY
-	jp z, IceBodyAbility
-	ret
-.sandstorm
-	ret ; No active abilities for sandstorm
-.rain
-	ld a, b
-	cp DRY_SKIN
-	jp z, DrySkinRainAbility
-	cp HYDRATION
-	jp z, HydrationAbility
-	cp RAIN_DISH
-	jp z, RainDishAbility
-	ret
-.sun
-	ld a, b
-	cp DRY_SKIN
-	jp z, DrySkinSunAbility
-	cp SOLAR_POWER
-	jp z, SolarPowerSunAbility
+	ret nz
+	call ShowAbilityActivation
+	farcall GetEighthMaxHP
+	farcall SubtractHPFromUser
 	ret
 
 IceBodyAbility:
-DrySkinRainAbility: ; restores 1/8 max HP rather than 1/16
+	ld b, WEATHER_HAIL
+	jr WeatherRecoveryAbility
 RainDishAbility:
+RainRecoveryAbility:
+	ld b, WEATHER_RAIN
+WeatherRecoveryAbility:
+	call GetWeatherAfterCloudNine
+	cp b
+	ret nz
 	farcall CheckFullHP_b
 	ld a, b
 	and a
@@ -1162,19 +1155,11 @@ RainDishAbility:
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
 	farcall GetSixteenthMaxHP
-.got_hp
-	farcall RestoreHP
-	ret
-
+	jr .restore
 .eighth_max_hp
 	farcall GetEighthMaxHP
-	jr .got_hp
-
-DrySkinSunAbility:
-SolarPowerSunAbility:
-	call ShowAbilityActivation
-	farcall GetEighthMaxHP
-	farcall SubtractHPFromUser
+.restore
+	farcall RestoreHP
 	ret
 
 HandleAbilities:
@@ -1537,6 +1522,11 @@ EnemyFurCoatAbility:
 
 
 
+HydrationAbility:
+	call GetWeatherAfterCloudNine
+	cp WEATHER_RAIN
+	ret nz
+	jr HealAllStatusAbility
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
 	call BattleRandom
@@ -1544,7 +1534,7 @@ ShedSkinAbility:
 	ret nc
 	; fallthrough
 NaturalCureAbility:
-HydrationAbility:
+HealAllStatusAbility:
 	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
 	jp HealStatusAbility
 
