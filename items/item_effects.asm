@@ -531,10 +531,8 @@ endr
 	push af
 	set SUBSTATUS_TRANSFORMED, [hl]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .ditto
-	jr .not_ditto
+	jr z, .not_ditto
 
-.ditto
 	; not only useless but introduces the Ditto transform glitch
 	; ld a, DITTO
 	; ld [TempEnemyMonSpecies], a
@@ -692,23 +690,8 @@ endr
 
 	ld a, [PartyCount]
 	dec a
-	ld hl, PartyMon1MaxHP
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	ld d, h
-	ld e, l
-
-	ld a, [PartyCount]
-	dec a
-	ld hl, PartyMon1HP
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hl], a
+	ld [CurPartyMon], a
+	farcall HealPartyMon
 .SkipPartyMonHealBall:
 
 	ld a, [InitialOptions]
