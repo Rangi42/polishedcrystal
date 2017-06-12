@@ -125,7 +125,6 @@ Out-of-battle effects:
 
 ## Items
 
-* Heal Ball
 * Ability Capsule
 * Air Balloon
 * Assault Vest

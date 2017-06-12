@@ -662,7 +662,7 @@ endr
 
 	ld a, [PartyCount]
 	cp PARTY_LENGTH
-	jr z, .SendToPC
+	jp z, .SendToPC
 
 	xor a ; PARTYMON
 	ld [MonType], a
@@ -685,6 +685,31 @@ endr
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [hl], a
 .SkipPartyMonFriendBall:
+
+	ld a, [CurItem]
+	cp HEAL_BALL
+	jr nz, .SkipPartyMonHealBall
+
+	ld a, [PartyCount]
+	dec a
+	ld hl, PartyMon1MaxHP
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+
+	ld a, [PartyCount]
+	dec a
+	ld hl, PartyMon1HP
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hl], a
+.SkipPartyMonHealBall:
 
 	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
