@@ -2760,7 +2760,7 @@ LeppaBerry: ; f5bf
 	push af
 	xor a
 	ld [CurMoveNum], a
-	ld a, $2
+	inc a
 	ld [wMoveSelectionMenuType], a
 	farcall MoveSelectionScreen
 	pop bc
