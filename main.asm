@@ -3532,8 +3532,8 @@ SetGiftMonCaughtData: ; 4dbaf
 	or b
 	ld b, a
 	; CaughtBall
-	; Poké Ball
-	ld a, POKE_BALL
+	; c contains it
+	ld a, c
 	and CAUGHTBALL_MASK
 	or b
 	ld [hli], a

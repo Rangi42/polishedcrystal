@@ -14,7 +14,8 @@ SpecialGiveWobbuffet: ; 7305
 	jr nc, .NotGiven
 
 ; Caught data.
-	ld b, 0
+	ld b, MALE
+	ld c, DUSK_BALL
 	farcall SetGiftPartyMonCaughtData
 
 ; Holding a Berry.
@@ -51,11 +52,6 @@ SpecialGiveWobbuffet: ; 7305
 	call SkipNames
 	ld de, SpecialWobbuffetOT
 	call CopyName2
-
-; Dusk Ball
-	ld a, DUSK_BALL
-	ld [ScriptVar], a
-	farcall SetLastPartyMonBall
 
 ; Engine flag for this event.
 	ld hl, DailyFlags

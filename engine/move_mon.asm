@@ -1898,6 +1898,8 @@ GivePoke:: ; e277
 	ld [hli], a
 	ld [hl], 01001 % $100 ; ld a, $e9
 	pop bc
+	ld a, POKE_BALL
+	ld c, a
 	farcall SetGiftPartyMonCaughtData
 	jr .skip_nickname
 
@@ -1916,6 +1918,8 @@ GivePoke:: ; e277
 	ld a, [ScriptBank]
 	call GetFarByte
 	ld b, a
+	ld a, POKE_BALL
+	ld c, a
 	ld hl, sBoxMon1ID
 	call Random
 	ld [hli], a
