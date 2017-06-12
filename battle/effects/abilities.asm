@@ -1459,7 +1459,6 @@ GutsAbility:
 	ld a, $32
 	jp ApplyPhysicalAttackDamageMod
 
-
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
 	call SwitchTurn
@@ -1515,8 +1514,6 @@ EnemyFurCoatAbility:
 ; Doubles physical Defense
 	ld a, $12
 	jp ApplyPhysicalDefenseDamageMod
-
-
 
 
 HydrationAbility:
