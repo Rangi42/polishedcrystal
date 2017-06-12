@@ -91,8 +91,7 @@ NoisyForestAnabelScript:
 	done
 
 .BeatenText:
-	text "Okay, I under-"
-	line "stand…"
+	text "OK, I understand…"
 	done
 
 .ItemText:

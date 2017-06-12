@@ -110,8 +110,8 @@ TrainerScientistNigel:
 	done
 
 .BeatenText:
-	text "Yikes! Okay,"
-	line "I'll tell."
+	text "Yikes! OK, I'll"
+	line "tell you."
 	done
 
 .AfterText:

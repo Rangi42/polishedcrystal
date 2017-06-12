@@ -175,7 +175,7 @@ CeladonUniversityPoolTeacherScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "Okay, five more"
+	text "OK, five more"
 	line "laps!"
 	done
 

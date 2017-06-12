@@ -182,7 +182,7 @@ Text_IcePathB1FTutorClear:
 	done
 
 Text_IcePathB1FTutorTaught:
-	text "Okay! Now your"
+	text "OK! Now your"
 	line "#mon knows"
 	cont "Icy Wind!"
 	done

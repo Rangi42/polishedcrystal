@@ -257,7 +257,7 @@ TrainerPokemaniacClive:
 
 	para "Leave some rare"
 	line "#mon for me,"
-	cont "okay?"
+	cont "OK?"
 	done
 
 TrainerHex_maniacMatilda:

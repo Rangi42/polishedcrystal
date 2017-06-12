@@ -521,7 +521,7 @@ Text_Route31TutorQuestion:
 	done
 
 Text_Route31TutorRefused:
-	text "Okay then…"
+	text "OK then…"
 	done
 
 Text_Route31TutorClear:

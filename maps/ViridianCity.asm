@@ -214,7 +214,7 @@ Text_ViridianCityTutorQuestion:
 	done
 
 Text_ViridianCityTutorRefused:
-	text "Okay…"
+	text "OK…"
 	done
 
 Text_ViridianCityTutorClear:

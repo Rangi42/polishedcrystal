@@ -595,7 +595,7 @@ UnknownText_0x199042:
 
 UnknownText_0x199090:
 	text "It will cost you"
-	line "200 coins. Okay?"
+	line "200 coins. OK?"
 	done
 
 UnknownText_0x1990b4:

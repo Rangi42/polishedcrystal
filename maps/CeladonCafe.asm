@@ -243,7 +243,7 @@ MayleneText3:
 	done
 
 MayleneRefusedText:
-	text "Sigh… okay."
+	text "Sigh… OK."
 	done
 
 MayleneSeenText:

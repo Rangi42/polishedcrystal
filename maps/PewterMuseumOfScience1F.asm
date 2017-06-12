@@ -394,9 +394,8 @@ MaybeLaterText:
 	done
 
 ResurrectingPokemonText:
-	text "Okay! I'll"
-	line "resurrect the"
-	cont "#mon for you!"
+	text "OK! I'll resurrect"
+	line "the #mon!"
 	done
 
 NoRoomForFossilPokemonText:

@@ -126,7 +126,7 @@ EcruteakShrineInsideReiGreetingText:
 	done
 
 EcruteakShrineInsideReiBlessText:
-	text "Rei: Okay, which"
+	text "Rei: OK, which"
 	line "#mon should I"
 	cont "bless?"
 	done

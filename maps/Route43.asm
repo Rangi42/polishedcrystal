@@ -427,11 +427,9 @@ PokemaniacRonBeatenText:
 	done
 
 UnknownText_0x19d3f8:
-	text "It's okay for"
-	line "people to like"
-
-	para "different types"
-	line "of #mon."
+	text "It's OK for people"
+	line "to like different"
+	cont "types of #mon."
 
 	para "#mon isn't just"
 	line "about having the"
