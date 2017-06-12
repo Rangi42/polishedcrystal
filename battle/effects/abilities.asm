@@ -793,24 +793,10 @@ RunEnemyNullificationAbilities:
 	call SwitchTurn
 	ret
 .do_enemy_abilities
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DRY_SKIN
-	jp z, DrySkinAbility
-	cp FLASH_FIRE
-	jp z, FlashFireAbility
-	cp LIGHTNING_ROD
-	jp z, LightningRodAbility
-	cp MOTOR_DRIVE
-	jp z, MotorDriveAbility
-	cp SAP_SIPPER
-	jp z, SapSipperAbility
-	cp VOLT_ABSORB
-	jp z, VoltAbsorbAbility
-	cp WATER_ABSORB
-	jp z, WaterAbsorbAbility
-	cp DAMP
-	jp z, DampAbility
+	ld hl, NullificationAbilities
+	call UserAbilityJumptable
+	ret nz
+
 	; For other abilities, don't do anything except print a message (for example Levitate)
 	call ShowAbilityActivation
 	call SwitchTurn
@@ -818,6 +804,17 @@ RunEnemyNullificationAbilities:
 	call StdBattleTextBox
 	call SwitchTurn
 	ret
+
+NullificationAbilities:
+	dbw DRY_SKIN, DrySkinAbility
+	dbw FLASH_FIRE, FlashFireAbility
+	dbw LIGHTNING_ROD, LightningRodAbility
+	dbw MOTOR_DRIVE, MotorDriveAbility
+	dbw SAP_SIPPER, SapSipperAbility
+	dbw VOLT_ABSORB, VoltAbsorbAbility
+	dbw WATER_ABSORB, WaterAbsorbAbility
+	dbw DAMP, DampAbility
+	dbw -1, -1
 
 DampAbility:
 	; doesn't use the normal activation message or "doesn't affect", because it
@@ -1112,46 +1109,39 @@ WeatherAccAbility:
 	jp Divide
 
 RunWeatherAbilities:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	ld b, a
+	ld hl, WeatherAbilities
+	jp UserAbilityJumptable
+
+WeatherAbilities:
+	dbw DRY_SKIN, DrySkinWeatherAbility
+	dbw SOLAR_POWER, SolarPowerWeatherAbility
+	dbw ICE_BODY, IceBodyAbility
+	dbw RAIN_DISH, RainDishAbility
+	dbw HYDRATION, HydrationAbility
+	dbw -1, -1
+
+DrySkinWeatherAbility:
+	call RainRecoveryAbility
+	; fallthrough (these need different weather so calling both is OK)
+SolarPowerWeatherAbility:
 	call GetWeatherAfterCloudNine
-	cp WEATHER_HAIL
-	jr z, .hail
-	cp WEATHER_SANDSTORM
-	jr z, .sandstorm
-	cp WEATHER_RAIN
-	jr z, .rain
 	cp WEATHER_SUN
-	jr z, .sun
-	ret
-.hail
-	ld a, b
-	cp ICE_BODY
-	jp z, IceBodyAbility
-	ret
-.sandstorm
-	ret ; No active abilities for sandstorm
-.rain
-	ld a, b
-	cp DRY_SKIN
-	jp z, DrySkinRainAbility
-	cp HYDRATION
-	jp z, HydrationAbility
-	cp RAIN_DISH
-	jp z, RainDishAbility
-	ret
-.sun
-	ld a, b
-	cp DRY_SKIN
-	jp z, DrySkinSunAbility
-	cp SOLAR_POWER
-	jp z, SolarPowerSunAbility
+	ret nz
+	call ShowAbilityActivation
+	farcall GetEighthMaxHP
+	farcall SubtractHPFromUser
 	ret
 
 IceBodyAbility:
-DrySkinRainAbility: ; restores 1/8 max HP rather than 1/16
+	ld b, WEATHER_HAIL
+	jr WeatherRecoveryAbility
 RainDishAbility:
+RainRecoveryAbility:
+	ld b, WEATHER_RAIN
+WeatherRecoveryAbility:
+	call GetWeatherAfterCloudNine
+	cp b
+	ret nz
 	farcall CheckFullHP_b
 	ld a, b
 	and a
@@ -1162,19 +1152,11 @@ RainDishAbility:
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
 	farcall GetSixteenthMaxHP
-.got_hp
-	farcall RestoreHP
-	ret
-
+	jr .restore
 .eighth_max_hp
 	farcall GetEighthMaxHP
-	jr .got_hp
-
-DrySkinSunAbility:
-SolarPowerSunAbility:
-	call ShowAbilityActivation
-	farcall GetEighthMaxHP
-	farcall SubtractHPFromUser
+.restore
+	farcall RestoreHP
 	ret
 
 HandleAbilities:
@@ -1477,7 +1459,6 @@ GutsAbility:
 	ld a, $32
 	jp ApplyPhysicalAttackDamageMod
 
-
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
 	call SwitchTurn
@@ -1535,8 +1516,11 @@ EnemyFurCoatAbility:
 	jp ApplyPhysicalDefenseDamageMod
 
 
-
-
+HydrationAbility:
+	call GetWeatherAfterCloudNine
+	cp WEATHER_RAIN
+	ret nz
+	jr HealAllStatusAbility
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
 	call BattleRandom
@@ -1544,7 +1528,7 @@ ShedSkinAbility:
 	ret nc
 	; fallthrough
 NaturalCureAbility:
-HydrationAbility:
+HealAllStatusAbility:
 	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
 	jp HealStatusAbility
 
@@ -1589,7 +1573,7 @@ RegeneratorAbility:
 	jp UpdateEnemyMonInParty
 
 AbilityJumptable:
-	; hl = jumptable, a = ability
+; hl = jumptable, a = ability. Returns z if no jump was made, nz otherwise
 	ld b, a
 .loop
 	ld a, [hli]
@@ -1604,6 +1588,10 @@ AbilityJumptable:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	call .jp_hl
+	or 1
+	ret
+.jp_hl
 	jp hl
 
 DisableAnimations:

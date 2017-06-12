@@ -3204,29 +3204,25 @@ endr
 
 
 BattleCommand_DamageCalc: ; 35612
-; damagecalc
-
-; Return a damage value for move power d, player level e, enemy defense c and player attack b.
-
-; Return 1 if successful, else 0.
-
+; Return a damage value for move power d, player level e, enemy defense c and
+; player attack b. Return 1 if successful, else 0.
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 
-; Variable-hit moves and Conversion can have a power of 0.
+	; Variable-hit moves and Conversion can have a power of 0.
 	cp EFFECT_MULTI_HIT
 	jr z, .skip_zero_damage_check
 
 	cp EFFECT_CONVERSION
 	jr z, .skip_zero_damage_check
 
-; No damage if move power is 0.
+	; No damage if move power is 0.
 	ld a, d
 	and a
 	ret z
 
 .skip_zero_damage_check
-; Minimum defense value is 1.
+	; Minimum defense value is 1.
 	ld a, c
 	and a
 	jr nz, .not_dividing_by_zero
@@ -3239,7 +3235,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld [hli], a
 	ld [hl], a
 
-; Level * 2
+	; Level * 2
 	ld a, e
 	add a
 	jr nc, .level_not_overflowing
@@ -3248,7 +3244,7 @@ BattleCommand_DamageCalc: ; 35612
 	inc hl
 	ld [hli], a
 
-; / 5
+	; / 5
 	ld a, 5
 	ld [hld], a
 	push bc
@@ -3256,12 +3252,11 @@ BattleCommand_DamageCalc: ; 35612
 	call Divide
 	pop bc
 
-; + 2
+	; + 2
 	inc [hl]
 	inc [hl]
 
-; Technician needs to be checked before other abilities because of
-; being move power-dependant.
+	; Check Technician seperately since it's move power-dependant
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp TECHNICIAN
@@ -3274,30 +3269,43 @@ BattleCommand_DamageCalc: ; 35612
 	ld d, a
 
 .skip_technician
-; * bp
+	; * bp
 	inc hl
 	ld [hl], d
 	call Multiply
 
-; * Attack
+	; * Attack
 	ld [hl], b
 	call Multiply
 
-; / Defense
+	; / Defense
 	ld [hl], c
 	ld b, $4
 	call Divide
 
-; / 50
+	; / 50
 	ld [hl], 50
 	ld b, $4
 	call Divide
 
-; Ability boosts. Some are done elsewhere depending on needs.
+	; Ability boosts. Some are done elsewhere depending on needs.
 	farcall ApplyDamageAbilities
 	ld hl, hMultiplier ; The Ability logic changes hl
 
-; Flash Fire
+	; If we're burned (and don't have Guts), halve damage
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	bit BRN, a
+	jr z, .burn_done
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp GUTS
+	jr nz, .burn_done
+	ld a, $12
+	call ApplyPhysicalAttackDamageMod
+
+.burn_done
+	; Flash Fire
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
@@ -3305,32 +3313,25 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
-	jr nz, .no_flash_fire
-	ld [hl], 3
-	call Multiply
-	ld [hl], 2
-	ld b, $4
-	call Divide
+	ld a, $32
+	call z, ApplyDamageMod
 
 .no_flash_fire
-; Critical hits
+	; Critical hits
 	ld a, [CriticalHit]
 	and a
 	jr z, .no_crit
 
-	ld [hl], 6
-	call Multiply
-	ld [hl], 4
 	ld a, BATTLE_VARS_ABILITY
 	cp SNIPER
-	jr nz, .no_sniper
-	ld [hl], 3
-.no_sniper
-	ld b, $4
-	call Divide
+	ld a, $21
+	jr z, .got_crit_mod
+	ld a, $32
+.got_crit_mod
+	call ApplyDamageMod
 
 .no_crit
-; Item boosts
+	; Item boosts
 	call GetUserItem
 
 	ld a, b
@@ -3344,7 +3345,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp $ff
 	jr z, .DoneItem
 
-; Item effect
+	; Item effect
 	cp b
 	ld a, [hli]
 	jr nz, .NextItem
@@ -3354,7 +3355,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp SPECIAL
 	jr z, .CategoryBoost
 
-; Type
+	; Type
 	ld b, a
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
@@ -3370,25 +3371,24 @@ BattleCommand_DamageCalc: ; 35612
 	jr nz, .DoneItem
 
 .ApplyBoost
-; * 100 + item effect amount
+	; * 100 + item effect amount
 	ld a, c
 	add 100
 	ld [hMultiplier], a
 	call Multiply
 
-; / 100
+	; / 100
 	ld a, 100
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
 .DoneItem:
-; If we exceed $ffff at this point, skip to capping to 997 as the
-; final damage.
+	; If we exceed $ffff at this point, skip to capping to 997 as the final damage.
 	ld a, [hQuotient]
 	and a
 	jr nz, .Cap
 
-; Update CurDamage (capped at 997).
+	; Update CurDamage (capped at 997).
 	ld hl, CurDamage
 	ld b, [hl]
 	ld a, [hQuotient + 2]
@@ -3448,7 +3448,7 @@ BattleCommand_DamageCalc: ; 35612
 
 
 .dont_cap_3
-; Minimum neutral damage is 2 (bringing the cap to 999).
+	; Minimum neutral damage is 2 (bringing the cap to 999).
 	inc hl
 	ld a, [hl]
 	add 2
