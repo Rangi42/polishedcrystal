@@ -519,21 +519,16 @@ PlayDanger: ; e8307
 	ld a, [Danger]
 	bit 7, a
 	ret z
-	; only loop 4 times
 	cp 255
 	ret z
-	and $7f
 	ld d, a
-	and $1f
 	call _CheckSFX
 	jr c, .asm_e8335
-	and a
+	ld a, d
+	and $1f
 	jr z, .asm_e8323
 	cp 16 ; halfway
-	jr z, .asm_e831e
-	jr .asm_e8335
-
-.asm_e831e
+	jr nz, .asm_e8335
 	ld hl, Tablee8354
 	jr .updatehw
 
@@ -551,17 +546,20 @@ PlayDanger: ; e8307
 	ld a, [hli]
 	ld [rNR14], a ; ch1 frequency hi
 .asm_e8335
-	; Iterate 15 times per note (15*4=60, 2 loops/sec)
 	ld a, d
+	and $e0
+	ld e, a
+	ld a, d
+	and $1f
 	inc a
-	and $f
-	cp 14
-	ld a, d
+	cp 30
 	jr c, .asm_e833c
-	inc a
+	add 2
 .asm_e833c
-	inc a
-	or $80
+	add e
+	jr nz, .load
+	dec a
+.load
 	ld [Danger], a
 	; is hw ch1 on?
 	ld a, [SoundOutput]
