@@ -158,7 +158,7 @@ Route34LyraTrigger2:
 	special FadeOutPalettes
 	pause 15
 	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_SWIMMER_GIRL
-	warpfacing RIGHT, DAYCARE, $0, $6
+	warpfacing RIGHT, DAYCARE, $0, $4
 	end
 
 DayCareManScript_Outside:
