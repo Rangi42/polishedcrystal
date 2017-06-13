@@ -6,16 +6,10 @@ const_value set 2
 
 SaffronTrainStation_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	maptrigger .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
 
 OfficerScript_0x18a81e:
 	faceplayer
@@ -218,9 +212,6 @@ UnknownText_0x18ab20:
 	done
 
 SaffronTrainStation_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $8, 6, SAFFRON_CITY
@@ -230,7 +221,7 @@ SaffronTrainStation_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $6, $b, $0, Script_ArriveFromGoldenrod, $0, $0
+	xy_trigger 0, $6, $b, Script_ArriveFromGoldenrod
 
 .Signposts:
 	db 0

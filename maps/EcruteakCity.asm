@@ -16,8 +16,6 @@ EcruteakCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -268,9 +266,6 @@ EcruteakShrineSignText:
 	done
 
 EcruteakCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 17
 	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE

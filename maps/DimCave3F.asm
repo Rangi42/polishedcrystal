@@ -15,9 +15,6 @@ DimCave3F_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .BouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 
@@ -212,9 +209,6 @@ DimCave3FHiddenZinc:
 	dwb EVENT_DIM_CAVE_3F_HIDDEN_ZINC, ZINC
 
 DimCave3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $5, $5, 4, DIM_CAVE_4F

@@ -21,9 +21,6 @@ Route47_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, Route47TileScript
 
 Route47TileScript:
@@ -368,9 +365,6 @@ Route47QuietCaveSignText:
 	done
 
 Route47_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $15, $43, 2, CLIFF_EDGE_GATE

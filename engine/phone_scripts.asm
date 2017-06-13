@@ -1722,27 +1722,27 @@ UnknownScript_0xbdc21:
 	if_equal $5, UnknownScript_0xbdc5e
 
 UnknownScript_0xbdc3b:
-	stringtotext String_be643, $1
+	stringtotext Phone_GrandmaString, $1
 	jump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc42:
-	stringtotext String_be64b, $1
+	stringtotext Phone_GrandpaString, $1
 	jump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc49:
-	stringtotext String_be653, $1
+	stringtotext Phone_MomString, $1
 	jump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc50:
-	stringtotext String_be657, $1
+	stringtotext Phone_DadString, $1
 	jump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc57:
-	stringtotext String_be65b, $1
+	stringtotext Phone_SisterString, $1
 	jump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc5e:
-	stringtotext String_be662, $1
+	stringtotext Phone_BrotherString, $1
 	jump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc65:
@@ -3226,10 +3226,10 @@ PhoneScript_MonFlavorText:
 ; be643
 
 
-String_be643: db "Grandma@"
-String_be64b: db "Grandpa@"
-String_be653: db "Mom@"
-String_be657: db "Dad@"
-String_be65b: db "Sister@"
-String_be662: db "Brother@"
+Phone_GrandmaString: db "Grandma@"
+Phone_GrandpaString: db "Grandpa@"
+Phone_MomString:     db "Mom@"
+Phone_DadString:     db "Dad@"
+Phone_SisterString:  db "Sister@"
+Phone_BrotherString: db "Brother@"
 

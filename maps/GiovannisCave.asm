@@ -8,19 +8,15 @@ const_value set 2
 GiovannisCave_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump GiovannisCaveCelebiEventScript
+.Trigger0:
 	end
 
 GiovannisCaveCelebiEventScript:
@@ -350,9 +346,6 @@ GiovannisCaveLyraWantsToLeaveText:
 	done
 
 GiovannisCave_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $f, 3, TOHJO_FALLS

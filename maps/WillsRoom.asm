@@ -3,24 +3,15 @@ const_value set 2
 
 WillsRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x1804c6, 0
-	dw UnknownScript_0x1804ca, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x1804cb
 
-UnknownScript_0x1804c6:
+.Trigger0:
 	priorityjump UnknownScript_0x1804e0
-	end
-
-UnknownScript_0x1804ca:
 	end
 
 UnknownScript_0x1804cb:
@@ -183,9 +174,6 @@ WillAfterRematchText:
 	done
 
 WillsRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $11, $5, 4, INDIGO_PLATEAU_POKECENTER_1F

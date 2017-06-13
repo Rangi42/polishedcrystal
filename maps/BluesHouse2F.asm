@@ -29,9 +29,6 @@ BluesHouse2FSNESText:
 	done
 
 BluesHouse2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $7, 3, BLUES_HOUSE_1F

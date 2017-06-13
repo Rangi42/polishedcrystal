@@ -131,6 +131,7 @@ TrainerGroups: ; 0x39999
 	dba MayleneGroup
 	dba SkylaGroup
 	dba ValerieGroup
+	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup
 	dba WalkerGroup

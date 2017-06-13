@@ -115,9 +115,6 @@ UnknownText_0x71db3:
 	done
 
 CeladonMansionRoofHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, CELADON_MANSION_ROOF

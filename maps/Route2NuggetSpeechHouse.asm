@@ -49,9 +49,6 @@ UnknownText_0x9b8e5:
 	done
 
 Route2NuggetSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 1, ROUTE_2_NORTH

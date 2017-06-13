@@ -95,9 +95,6 @@ UnionCave1FPotion:
 UnionCave1FAwakening:
 	itemball AWAKENING
 
-UnknownScript_0x59c08:
-	jumptext UnknownText_0x59f29
-
 UnionCave1FHiddenGreatBall:
 	dwb EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL, GREAT_BALL
 
@@ -231,14 +228,7 @@ Ruin_maniacJonesAfterText:
 	cont "I just know it!"
 	done
 
-UnknownText_0x59f29:
-	text "Union Cave"
-	done
-
 UnionCave1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $3, $3, 3, UNION_CAVE_B1F_NORTH

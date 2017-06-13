@@ -48,7 +48,7 @@ Special_MagnetTrain: ; 8cc04
 	farcall PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
-	call Function3b0c
+	call PushLYOverrides
 	call DelayFrame
 	jr .loop
 
@@ -431,7 +431,7 @@ MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
 	farcall PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
-	call Function3b0c
+	call PushLYOverrides
 	call DelayFrame
 	ld a, [rSVBK]
 	push af

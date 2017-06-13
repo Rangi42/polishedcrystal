@@ -10,9 +10,6 @@ SilphCo1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .MoveOfficerCallback
 
 .MoveOfficerCallback:
@@ -106,9 +103,6 @@ SilphCo1FCooltrainerfText:
 	done
 
 SilphCo1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $2, 7, SAFFRON_CITY

@@ -10,8 +10,6 @@ CinnabarVolcanoB2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_TILES, .BouldersLand
 
 .BouldersLand:
@@ -87,6 +85,12 @@ CinnabarVolcanoMoltres:
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES
 	reloadmapafterbattle
+	writebyte MOLTRES
+	special SpecialMonCheck
+	iffalse .NoCandela
+	setevent EVENT_CELADON_UNIVERSITY_CANDELA
+	clearevent EVENT_SHAMOUTI_COAST_CANDELA
+.NoCandela
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	iffalse .end
 	checkevent EVENT_ROUTE_10_ZAPDOS
@@ -186,9 +190,6 @@ CinnabarVolcanoB2FMovementData_LawrenceApproachDown:
 	step_end
 
 CinnabarVolcanoB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $3, $d, 5, CINNABAR_VOLCANO_B1F

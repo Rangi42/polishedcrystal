@@ -233,12 +233,12 @@ DoPlayerMovement:: ; 80000
 ; If the player is turning, change direction first. This also lets
 ; the player change facing without moving by tapping a direction.
 
-	ld a, [wd04e]
+	ld a, [wPlayerTurningDirection]
 	cp 0
-	jr nz, .asm_80169
+	jr nz, .not_turning
 	ld a, [WalkingDirection]
 	cp STANDING
-	jr z, .asm_80169
+	jr z, .not_turning
 
 	ld e, a
 	ld a, [PlayerDirection]
@@ -246,7 +246,7 @@ DoPlayerMovement:: ; 80000
 	rrca
 	and 3
 	cp e
-	jr z, .asm_80169
+	jr z, .not_turning
 
 	ld a, STEP_TURN
 	call .DoStep
@@ -254,7 +254,7 @@ DoPlayerMovement:: ; 80000
 	scf
 	ret
 
-.asm_80169
+.not_turning
 	xor a
 	ret
 ; 8016b
@@ -425,12 +425,9 @@ DoPlayerMovement:: ; 80000
 
 .CheckWarp: ; 80226
 
-; Bug: Since no case is made for STANDING here, it will check
-; [.edgewarps + $ff]. This resolves to $3e at $8035a.
-; This causes wd041 to be nonzero when standing on tile $3e,
-; making bumps silent.
-
 	ld a, [WalkingDirection]
+	cp STANDING
+	jr z, .not_warp
 	ld e, a
 	ld d, 0
 	ld hl, .EdgeWarps
@@ -490,7 +487,7 @@ DoPlayerMovement:: ; 80000
 	ld hl, .InPlace
 	add hl, de
 	ld a, [hl]
-	ld [wd04e], a
+	ld [wPlayerTurningDirection], a
 
 	ld a, 4
 	ret
@@ -557,7 +554,7 @@ DoPlayerMovement:: ; 80000
 	ld a, movement_step_sleep_1
 	ld [MovementAnimation], a
 	xor a
-	ld [wd04e], a
+	ld [wPlayerTurningDirection], a
 	ret
 ; 802bf
 
@@ -565,7 +562,7 @@ DoPlayerMovement:: ; 80000
 	ld a, movement_step_bump
 	ld [MovementAnimation], a
 	xor a
-	ld [wd04e], a
+	ld [wPlayerTurningDirection], a
 	ret
 ; 802cb
 
@@ -581,7 +578,7 @@ DoPlayerMovement:: ; 80000
 	call CheckStandingOnIce
 	ret nc
 
-	ld a, [wd04e]
+	ld a, [wPlayerTurningDirection]
 	cp 0
 	ret z
 
@@ -856,7 +853,7 @@ DoPlayerMovement:: ; 80000
 ; 80404
 
 CheckStandingOnIce:: ; 80404
-	ld a, [wd04e]
+	ld a, [wPlayerTurningDirection]
 	cp 0
 	jr z, .not_ice
 	cp $f0
@@ -899,7 +896,7 @@ CheckSpinning::
 	ld [wSpinning], a
 	ret
 
-Function80422:: ; 80422
+StopPlayerForEvent:: ; 80422
 	ld hl, wPlayerNextMovement
 	ld a, movement_step_sleep_1
 	cp [hl]
@@ -907,6 +904,6 @@ Function80422:: ; 80422
 
 	ld [hl], a
 	xor a
-	ld [wd04e], a
+	ld [wPlayerTurningDirection], a
 	ret
 ; 80430

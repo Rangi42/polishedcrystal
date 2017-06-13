@@ -28,9 +28,6 @@ SafariZoneFuchsiaGateOfficerText:
 	done
 
 SafariZoneFuchsiaGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, SAFARI_ZONE_HUB

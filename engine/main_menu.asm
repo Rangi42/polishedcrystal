@@ -59,14 +59,12 @@ NEW_GAME       EQU 1
 OPTION         EQU 2
 
 MainMenuItems:
-
-.NewGameMenu: ; 0x49d6c
+; .NewGameMenu: ; 0x49d6c
 	db 2
 	db NEW_GAME
 	db OPTION
 	db -1
-
-.ContinueMenu: ; 0x49d70
+; .ContinueMenu: ; 0x49d70
 	db 3
 	db CONTINUE
 	db NEW_GAME

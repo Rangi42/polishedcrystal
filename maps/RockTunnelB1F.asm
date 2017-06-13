@@ -87,9 +87,6 @@ HexManiacVivianAfterText:
 	done
 
 RockTunnelB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $3, $3, 3, ROCK_TUNNEL_1F

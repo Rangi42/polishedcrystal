@@ -78,9 +78,6 @@ Route18SignText:
 	done
 
 Route18East_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $6, $4, 3, ROUTE_18_GATE

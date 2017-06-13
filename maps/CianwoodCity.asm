@@ -17,23 +17,11 @@ const_value set 2
 
 CianwoodCity_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPointAndSuicune
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPointAndSuicune:
 	setflag ENGINE_FLYPOINT_CIANWOOD
@@ -383,9 +371,6 @@ CianwoodStatsJudgeSignText:
 	done
 
 CianwoodCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $29, $11, 1, MANIAS_HOUSE
@@ -399,7 +384,7 @@ CianwoodCity_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $10, $b, $0, UnknownScript_0x1a001e, $0, $0
+	xy_trigger 1, $10, $b, UnknownScript_0x1a001e
 
 .Signposts:
 	db 8

@@ -46,24 +46,11 @@ const_value set 2
 
 UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .UpdateDoorPositions
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .UpdateDoorPositions:
 	checkevent EVENT_SWITCH_4
@@ -955,9 +942,6 @@ SwitchRoomText_Emergency:
 	done
 
 UndergroundPathSwitchRoomEntrances_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $3, $17, 6, WAREHOUSE_ENTRANCE
@@ -972,8 +956,8 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $4, $13, $0, UndergroundSilverTrigger1, $0, 0
-	xy_trigger 0, $5, $13, $0, UndergroundSilverTrigger2, $0, 0
+	xy_trigger 0, $4, $13, UndergroundSilverTrigger1
+	xy_trigger 0, $5, $13, UndergroundSilverTrigger2
 
 .Signposts:
 	db 6

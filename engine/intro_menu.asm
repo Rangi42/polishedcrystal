@@ -14,9 +14,7 @@ InitIntroGradient::
 	ld bc, SCREEN_WIDTH
 	ld a, $72
 	call ByteFill
-	ret
 
-LoadIntroGradientGFX::
 	ld de, .IntroGradientGFX
 	ld hl, VTiles2 tile $70
 	lb bc, BANK(.IntroGradientGFX), 3
@@ -145,7 +143,7 @@ _ResetWRAM: ; 5bae
 	ld [wSecretID + 1], a
 
 	ld hl, PartyCount
-	call InitList
+	call .InitList
 
 	xor a
 	ld [wCurBox], a
@@ -157,26 +155,26 @@ _ResetWRAM: ; 5bae
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
 	ld hl, sBoxCount
-	call InitList
+	call .InitList
 	call CloseSRAM
 
 	ld hl, NumItems
-	call InitList
+	call .InitList
 
 	ld hl, NumMedicine
-	call InitList
+	call .InitList
 
 	ld hl, NumBalls
-	call InitList
+	call .InitList
 
 	ld hl, NumBerries
-	call InitList
+	call .InitList
 
 	ld hl, NumKeyItems
-	call InitList
+	call .InitList
 
 	ld hl, PCItems
-	call InitList
+	call .InitList
 
 	ld hl, TMsHMs
 	xor a
@@ -243,7 +241,7 @@ ENDC
 	ret
 ; 5ca1
 
-InitList: ; 5ca1
+.InitList: ; 5ca1
 ; Loads 0 in the count and -1 in the first item or mon slot.
 	xor a
 	ld [hli], a
@@ -382,7 +380,7 @@ Continue: ; 5d65
 ;	call CloseWindow
 ;	jr .FailToLoad
 
-.Check3Pass:
+;.Check3Pass:
 	ld a, $8
 	ld [MusicFade], a
 	ld a, MUSIC_NONE % $100
@@ -460,7 +458,7 @@ Continue_CheckRTC_RestartClock: ; 5e48
 
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [InitialOptions]
-	bit RESET_EGO, a
+	bit RESET_INIT_OPTS, a
 	jr z, .pass
 	farcall SetInitialOptions
 .pass
@@ -678,7 +676,6 @@ ProfElmSpeech: ; 0x5f99
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText1
@@ -703,7 +700,6 @@ if !DEF(DEBUG)
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText2
@@ -722,7 +718,6 @@ if !DEF(DEBUG)
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText5
@@ -736,12 +731,18 @@ endc
 
 	ld hl, ElmText6
 	call PrintText
+
 	call NamePlayer
+
+	call ClearTileMap
+	call LoadFontsExtra
+	call WaitBGMap
+	call DrawIntroPlayerPic
 
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
+	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText7
 	call PrintText
@@ -786,8 +787,9 @@ InitGender: ; 48dcb (12:4dcb)
 	call WaitBGMap2
 	call SetPalettes
 
+	ld b, SCGB_INTRO_PALS
+	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
@@ -802,14 +804,11 @@ InitGender: ; 48dcb (12:4dcb)
 	ld [PlayerGender], a
 
 	call ClearTileMap
-	xor a
-	ld [CurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call DrawIntroPlayerPic
 
 	ld b, SCGB_INTRO_PALS
 	call GetSGBLayout
 	call InitIntroGradient
-	call LoadIntroGradientGFX
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, SoYoureABoyText
@@ -860,21 +859,6 @@ NamePlayer: ; 0x6074
 	ld b, $1 ; player
 	ld de, PlayerName
 	farcall NamingScreen
-
-	call RotateThreePalettesRight
-	call ClearTileMap
-
-	call LoadFontsExtra
-	call WaitBGMap
-
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
-	call RotateThreePalettesLeft
-
-	xor a
-	ld [CurPartySpecies], a
-	farcall DrawIntroPlayerPic
-
 	ld hl, PlayerName
 	ld de, .Chris
 	ld a, [PlayerGender]
@@ -926,7 +910,7 @@ ShrinkPlayer: ; 610f
 	ld c, 8
 	call DelayFrames
 
-	hlcoord 6, 5
+	hlcoord 6, 4
 	lb bc, 7, 7
 	call ClearBox
 
@@ -967,21 +951,29 @@ IntroFadePalettes: ; 0x617c
 IntroFadePalettesEnd
 ; 6182
 
+DrawIntroPlayerPic:
+	xor a
+	ld [CurPartySpecies], a
+	ld a, [PlayerGender]
+	bit 0, a
+	jr z, .male
+	ld a, KAY
+	jr .ok
+.male
+	ld a, CAL
+.ok
+	ld [TrainerClass], a
 Intro_PrepTrainerPic: ; 619c
 	ld de, VTiles2
 	farcall GetTrainerPic
-	xor a
-	ld [hGraphicStartTile], a
-	hlcoord 6, 4
-	lb bc, 7, 7
-	predef PlaceGraphic
-	ret
+	jr FinishPrepIntroPic
 ; 61b4
 
 ShrinkFrame: ; 61b4
 	ld de, VTiles2
 	ld c, $31
 	predef DecompressPredef
+FinishPrepIntroPic:
 	xor a
 	ld [hGraphicStartTile], a
 	hlcoord 6, 4
@@ -991,7 +983,6 @@ ShrinkFrame: ; 61b4
 ; 61cd
 
 Intro_PlacePlayerSprite: ; 61cd
-
 	farcall GetPlayerIcon
 	ld c, $c
 	ld hl, VTiles0

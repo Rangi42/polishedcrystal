@@ -208,9 +208,6 @@ CeladonUniversity1FBookshelf:
 	done
 
 CeladonUniversity1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $13, $e, 13, CELADON_CITY

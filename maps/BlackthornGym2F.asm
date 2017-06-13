@@ -14,8 +14,6 @@ BlackthornGym2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_CMDQUEUE, .Boulders
 
 .Boulders:
@@ -130,9 +128,6 @@ BlackthornGym2FBoulderFellText:
 	done
 
 BlackthornGym2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $7, $1, 3, BLACKTHORN_GYM_1F

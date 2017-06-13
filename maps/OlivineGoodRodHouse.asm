@@ -79,9 +79,6 @@ HaveGoodRodText:
 	done
 
 OlivineGoodRodHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 5, OLIVINE_CITY

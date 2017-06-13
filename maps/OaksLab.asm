@@ -15,32 +15,74 @@ OaksLab_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-.DummyTrigger:
-	end
-
 Oak:
 	faceplayer
 	opentext
 	checkevent EVENT_OPENED_MT_SILVER
-	iftrue .CheckPokedex
+	iftrue .GiveStarter
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
-	iftrue .CheckBadges
+	iftrue .GiveStarter
 	writetext OakWelcomeKantoText
 	buttonsound
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
+.GiveStarter:
+	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
+	iftrue .CheckBadges
+	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
+	iffalse .CheckBadges
+	writetext OakLabGiveStarterText
+	buttonsound
+	waitsfx
+	checkcode VAR_PARTYCOUNT
+	if_equal $6, .PartyFull
+	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
+	iftrue .Charmander
+	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
+	iftrue .Squirtle
+	pokenamemem BULBASAUR, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke BULBASAUR, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckBadges
+
+.Charmander:
+	pokenamemem CHARMANDER, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke CHARMANDER, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckBadges
+
+.Squirtle:
+	pokenamemem SQUIRTLE, $0
+	writetext OakLabReceivedKantoStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	givepoke SQUIRTLE, 10, SITRUS_BERRY
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+	jump .CheckBadges
+
+.PartyFull:
+	writetext OakLabPartyFullText
+	waitbutton
 .CheckBadges:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .BattleOak
 	checkcode VAR_BADGES
 	if_equal 16, .Complain1
 	if_equal  8, .Complain2
-	jump .AhGood
-
+	writetext OakYesKantoBadgesText
+	buttonsound
 .CheckPokedex:
 	writetext OakLabDexCheckText
 	waitbutton
 	special ProfOaksPCBoot
-
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
 	checkcode VAR_DEXSEEN
@@ -52,7 +94,6 @@ Oak:
 	writetext OakLabOvalCharmText
 	waitbutton
 .NoOvalCharm
-
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
 	checkcode VAR_DEXCAUGHT
@@ -64,7 +105,6 @@ Oak:
 	writetext OakLabShinyCharmText
 	waitbutton
 .NoShinyCharm
-
 	writetext OakLabGoodbyeText
 	waitbutton
 	closetext
@@ -106,11 +146,6 @@ Oak:
 
 .Complain2:
 	writetext OakNoKantoBadgesText
-	buttonsound
-	jump .CheckPokedex
-
-.AhGood:
-	writetext OakYesKantoBadgesText
 	buttonsound
 	jump .CheckPokedex
 
@@ -234,6 +269,38 @@ OakWelcomeKantoText:
 
 	para "out here?"
 	line "Pretty tough, huh?"
+	done
+
+OakLabGiveStarterText:
+	text "Oak: Oh, so Prof."
+	line "Ivy says hello?"
+
+	para "Thanks for convey-"
+	line "ing her message,"
+	cont "<PLAYER>."
+
+	para "She's a good friend"
+	line "of mine."
+
+	para "If she gave you a"
+	line "#mon, let me do"
+	cont "the same!"
+
+	para "You don't see this"
+	line "#mon very often"
+	cont "in Kanto or Johto."
+	done
+
+OakLabPartyFullText:
+	text "Hm, you don't have"
+	line "room for it."
+	done
+
+OakLabReceivedKantoStarterText:
+	text "<PLAYER> received"
+	line "@"
+	text_from_ram StringBuffer3
+	text "!"
 	done
 
 OakLabDexCheckText:
@@ -602,9 +669,6 @@ OaksLabPokedexText:
 	done
 
 OaksLab_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $4, 3, PALLET_TOWN

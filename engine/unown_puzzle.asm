@@ -464,7 +464,7 @@ GetUnownPuzzleCoordData: ; e1463
 	add hl, de
 	ld a, [wUnownPuzzleCursorPosition]
 	ld e, a
-rept 6
+rept 5
 	add hl, de
 endr
 	ret
@@ -602,50 +602,50 @@ UnownPuzzleCoordData: ; e1559
 puzzle_coords: macro
 	dbpixel \1, \2, \3, \4
 	dwcoord \5, \6
-	db \7, \8
+	db \7
 endm
-; OAM coords, tilemap coords, vacant tile, filler
-	puzzle_coords  3,  3, 4, 4,  1,  0, PUZZLE_BORDER, 0
-	puzzle_coords  6,  3, 4, 4,  4,  0, PUZZLE_BORDER, 0
-	puzzle_coords  9,  3, 4, 4,  7,  0, PUZZLE_BORDER, 0
-	puzzle_coords 12,  3, 4, 4, 10,  0, PUZZLE_BORDER, 0
-	puzzle_coords 15,  3, 4, 4, 13,  0, PUZZLE_BORDER, 0
-	puzzle_coords 18,  3, 4, 4, 16,  0, PUZZLE_BORDER, 0
+; OAM coords, tilemap coords, vacant tile
+	puzzle_coords  3,  3, 4, 4,  1,  0, PUZZLE_BORDER
+	puzzle_coords  6,  3, 4, 4,  4,  0, PUZZLE_BORDER
+	puzzle_coords  9,  3, 4, 4,  7,  0, PUZZLE_BORDER
+	puzzle_coords 12,  3, 4, 4, 10,  0, PUZZLE_BORDER
+	puzzle_coords 15,  3, 4, 4, 13,  0, PUZZLE_BORDER
+	puzzle_coords 18,  3, 4, 4, 16,  0, PUZZLE_BORDER
 
-	puzzle_coords  3,  6, 4, 4,  1,  3, PUZZLE_BORDER, 0
-	puzzle_coords  6,  6, 4, 4,  4,  3, PUZZLE_VOID,   0
-	puzzle_coords  9,  6, 4, 4,  7,  3, PUZZLE_VOID,   0
-	puzzle_coords 12,  6, 4, 4, 10,  3, PUZZLE_VOID,   0
-	puzzle_coords 15,  6, 4, 4, 13,  3, PUZZLE_VOID,   0
-	puzzle_coords 18,  6, 4, 4, 16,  3, PUZZLE_BORDER, 0
+	puzzle_coords  3,  6, 4, 4,  1,  3, PUZZLE_BORDER
+	puzzle_coords  6,  6, 4, 4,  4,  3, PUZZLE_VOID
+	puzzle_coords  9,  6, 4, 4,  7,  3, PUZZLE_VOID
+	puzzle_coords 12,  6, 4, 4, 10,  3, PUZZLE_VOID
+	puzzle_coords 15,  6, 4, 4, 13,  3, PUZZLE_VOID
+	puzzle_coords 18,  6, 4, 4, 16,  3, PUZZLE_BORDER
 
-	puzzle_coords  3,  9, 4, 4,  1,  6, PUZZLE_BORDER, 0
-	puzzle_coords  6,  9, 4, 4,  4,  6, PUZZLE_VOID,   0
-	puzzle_coords  9,  9, 4, 4,  7,  6, PUZZLE_VOID,   0
-	puzzle_coords 12,  9, 4, 4, 10,  6, PUZZLE_VOID,   0
-	puzzle_coords 15,  9, 4, 4, 13,  6, PUZZLE_VOID,   0
-	puzzle_coords 18,  9, 4, 4, 16,  6, PUZZLE_BORDER, 0
+	puzzle_coords  3,  9, 4, 4,  1,  6, PUZZLE_BORDER
+	puzzle_coords  6,  9, 4, 4,  4,  6, PUZZLE_VOID
+	puzzle_coords  9,  9, 4, 4,  7,  6, PUZZLE_VOID
+	puzzle_coords 12,  9, 4, 4, 10,  6, PUZZLE_VOID
+	puzzle_coords 15,  9, 4, 4, 13,  6, PUZZLE_VOID
+	puzzle_coords 18,  9, 4, 4, 16,  6, PUZZLE_BORDER
 
-	puzzle_coords  3, 12, 4, 4,  1,  9, PUZZLE_BORDER, 0
-	puzzle_coords  6, 12, 4, 4,  4,  9, PUZZLE_VOID,   0
-	puzzle_coords  9, 12, 4, 4,  7,  9, PUZZLE_VOID,   0
-	puzzle_coords 12, 12, 4, 4, 10,  9, PUZZLE_VOID,   0
-	puzzle_coords 15, 12, 4, 4, 13,  9, PUZZLE_VOID,   0
-	puzzle_coords 18, 12, 4, 4, 16,  9, PUZZLE_BORDER, 0
+	puzzle_coords  3, 12, 4, 4,  1,  9, PUZZLE_BORDER
+	puzzle_coords  6, 12, 4, 4,  4,  9, PUZZLE_VOID
+	puzzle_coords  9, 12, 4, 4,  7,  9, PUZZLE_VOID
+	puzzle_coords 12, 12, 4, 4, 10,  9, PUZZLE_VOID
+	puzzle_coords 15, 12, 4, 4, 13,  9, PUZZLE_VOID
+	puzzle_coords 18, 12, 4, 4, 16,  9, PUZZLE_BORDER
 
-	puzzle_coords  3, 15, 4, 4,  1, 12, PUZZLE_BORDER, 0
-	puzzle_coords  6, 15, 4, 4,  4, 12, PUZZLE_VOID,   0
-	puzzle_coords  9, 15, 4, 4,  7, 12, PUZZLE_VOID,   0
-	puzzle_coords 12, 15, 4, 4, 10, 12, PUZZLE_VOID,   0
-	puzzle_coords 15, 15, 4, 4, 13, 12, PUZZLE_VOID,   0
-	puzzle_coords 18, 15, 4, 4, 16, 12, PUZZLE_BORDER, 0
+	puzzle_coords  3, 15, 4, 4,  1, 12, PUZZLE_BORDER
+	puzzle_coords  6, 15, 4, 4,  4, 12, PUZZLE_VOID
+	puzzle_coords  9, 15, 4, 4,  7, 12, PUZZLE_VOID
+	puzzle_coords 12, 15, 4, 4, 10, 12, PUZZLE_VOID
+	puzzle_coords 15, 15, 4, 4, 13, 12, PUZZLE_VOID
+	puzzle_coords 18, 15, 4, 4, 16, 12, PUZZLE_BORDER
 
-	puzzle_coords  3, 18, 4, 4,  1, 15, PUZZLE_BORDER, 0
-	puzzle_coords  6, 18, 4, 4,  4, 15, PUZZLE_BORDER, 0
-	puzzle_coords  9, 18, 4, 4,  7, 15, PUZZLE_BORDER, 0
-	puzzle_coords 12, 18, 4, 4, 10, 15, PUZZLE_BORDER, 0
-	puzzle_coords 15, 18, 4, 4, 13, 15, PUZZLE_BORDER, 0
-	puzzle_coords 18, 18, 4, 4, 16, 15, PUZZLE_BORDER, 0
+	puzzle_coords  3, 18, 4, 4,  1, 15, PUZZLE_BORDER
+	puzzle_coords  6, 18, 4, 4,  4, 15, PUZZLE_BORDER
+	puzzle_coords  9, 18, 4, 4,  7, 15, PUZZLE_BORDER
+	puzzle_coords 12, 18, 4, 4, 10, 15, PUZZLE_BORDER
+	puzzle_coords 15, 18, 4, 4, 13, 15, PUZZLE_BORDER
+	puzzle_coords 18, 18, 4, 4, 16, 15, PUZZLE_BORDER
 
 ConvertLoadedPuzzlePieces: ; e1631
 	ld hl, VTiles2

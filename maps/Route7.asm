@@ -9,9 +9,6 @@ Route7_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
 
 .RebattleBreeder:
@@ -120,9 +117,6 @@ Route7LockedDoor:
 	done
 
 Route7_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $6, $f, 1, ROUTE_7_SAFFRON_GATE

@@ -20,9 +20,6 @@ UnknownText_0x76faf:
 	done
 
 OlivinePortPassage_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $16, $3, 9, OLIVINE_CITY

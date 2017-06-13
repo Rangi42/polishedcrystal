@@ -108,9 +108,6 @@ KrisNeighborRadioText4:
 	done
 
 KrissNeighborsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, NEW_BARK_TOWN

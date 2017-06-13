@@ -55,6 +55,9 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, ShamoutiIslandPalette
 	cp TILESET_SHAMOUTI_ISLAND
 	jp z, .load_eight_time_of_day_bg_palettes
+	ld hl, ValenciaIslandPalette
+	cp TILESET_VALENCIA_ISLAND
+	jp z, .load_eight_time_of_day_bg_palettes
 
 	cp TILESET_POKECENTER
 	jp z, .pokecenter
@@ -79,7 +82,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_TRADITIONAL
 	jp z, .maybe_charcoal_kiln
 	cp TILESET_LAB
-	jp z, .maybe_oaks_lab
+	jp z, .maybe_lab_or_dragon_shrine
 	cp TILESET_TUNNEL
 	jp z, .maybe_lightning_island
 	cp TILESET_SPROUT_TOWER
@@ -275,14 +278,34 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, CharcoalKilnPalette
 	jp .load_eight_bg_palettes
 
-.maybe_oaks_lab
+.maybe_lab_or_dragon_shrine
 	ld a, [MapGroup]
 	cp GROUP_OAKS_LAB
-	jp nz, .do_nothing
+	jp nz, .not_oaks_lab
 	ld a, [MapNumber]
 	cp MAP_OAKS_LAB
-	jp nz, .do_nothing
+	jp nz, .not_oaks_lab
 	ld hl, OaksLabPalette
+	jp .load_eight_bg_palettes
+
+.not_oaks_lab
+	ld a, [MapGroup]
+	cp GROUP_IVYS_LAB
+	jp nz, .not_ivys_lab
+	ld a, [MapNumber]
+	cp MAP_IVYS_LAB
+	jp nz, .not_ivys_lab
+	ld hl, IvysLabPalette
+	jp .load_eight_bg_palettes
+
+.not_ivys_lab
+	ld a, [MapGroup]
+	cp GROUP_DRAGON_SHRINE
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_DRAGON_SHRINE
+	jp nz, .do_nothing
+	ld hl, DragonShrinePalette
 	jp .load_eight_bg_palettes
 
 .maybe_lightning_island
@@ -499,6 +522,9 @@ INCLUDE "tilesets/faraway_island.pal"
 ShamoutiIslandPalette:
 INCLUDE "tilesets/shamouti_island.pal"
 
+ValenciaIslandPalette:
+INCLUDE "tilesets/valencia_island.pal"
+
 RadioTowerPalette: ; 4963d
 INCLUDE "tilesets/radio_tower.pal"
 ; 4967d
@@ -550,6 +576,12 @@ INCLUDE "tilesets/charcoal_kiln.pal"
 
 OaksLabPalette:
 INCLUDE "tilesets/oaks_lab.pal"
+
+IvysLabPalette:
+INCLUDE "tilesets/ivys_lab.pal"
+
+DragonShrinePalette:
+INCLUDE "tilesets/dragon_shrine.pal"
 
 LightningIslandPalette:
 INCLUDE "tilesets/lightning_island.pal"

@@ -133,9 +133,6 @@ CeladonHotel1FSignpost3Text:
 	done
 
 CeladonHotel1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $7, $3, 11, CELADON_CITY

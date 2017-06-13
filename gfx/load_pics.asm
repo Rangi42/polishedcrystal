@@ -6,7 +6,7 @@ GetVariant: ; 51040
 	jp z, .GetMewtwoVariant
 
 ; Return MonVariant based on Form at hl
-; Unown: 1-26, Pichu: 1-2, Arbok: 1-2
+; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Magikarp: 1-11
 	ld a, [hl]
 	and FORM_MASK
 	jr nz, .ok
@@ -175,7 +175,7 @@ _GetFrontpic: ; 510a5
 	ret
 
 GetFrontpicPointer: ; 510d7
-GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, UnownPicPointers, MewtwoPicPointers
+GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, MagikarpPicPointers, UnownPicPointers, MewtwoPicPointers
 
 	ld a, [CurPartySpecies]
 	cp PIKACHU
@@ -184,6 +184,8 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	jr z, .pichu
 	cp ARBOK
 	jr z, .arbok
+	cp MAGIKARP
+	jr z, .magikarp
 	cp UNOWN
 	jr z, .unown
 	cp MEWTWO
@@ -209,6 +211,12 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	ld a, [MonVariant]
 	ld d, BANK(ArbokPicPointers)
 	ld hl, ArbokPicPointers
+	jr .ok
+
+.magikarp
+	ld a, [MonVariant]
+	ld d, BANK(MagikarpPicPointers)
+	ld hl, MagikarpPicPointers
 	jr .ok
 
 .unown
@@ -388,7 +396,7 @@ GetBackpic: ; 5116c
 	ld [rSVBK], a
 	push de
 
-GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, UnownPicPointers, MewtwoPicPointers
+GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, MagikarpPicPointers, UnownPicPointers, MewtwoPicPointers
 	ld hl, PicPointers
 	ld a, b
 	ld d, BANK(PicPointers)
@@ -413,6 +421,13 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	ld d, BANK(ArbokPicPointers)
 	jr .ok
 .not_arbok
+	cp MAGIKARP
+	jr nz, .not_magikarp
+	ld hl, MagikarpPicPointers
+	ld a, c
+	ld d, BANK(MagikarpPicPointers)
+	jr .ok
+.not_magikarp
 	cp UNOWN
 	jr nz, .not_unown
 	ld hl, UnownPicPointers
@@ -449,24 +464,6 @@ GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, Unow
 	call Get2bpp
 	pop af
 	ld [rSVBK], a
-	ret
-
-Function511ec: ; 511ec
-	ld a, c
-	push de
-	ld hl, PicPointers
-	dec a
-	ld bc, 6
-	call AddNTimes
-	ld a, BANK(PicPointers)
-	call GetFarByte
-	push af
-	inc hl
-	ld a, BANK(PicPointers)
-	call GetFarHalfword
-	pop af
-	pop de
-	call FarDecompress
 	ret
 
 GetTrainerPic: ; 5120d

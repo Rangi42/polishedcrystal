@@ -12,9 +12,6 @@ FireIslandHeatRock:
 	itemball HEAT_ROCK
 
 FireIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 14
 	warp_def $1d, $5, 1, SHAMOUTI_COAST

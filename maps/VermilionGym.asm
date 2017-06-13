@@ -16,8 +16,6 @@ VermilionGym_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_TILES, VermilionGymDoorsScript
 
 VermilionGymDoorsScript:
@@ -421,9 +419,6 @@ VermilionGymElectricFenceText:
 	done
 
 VermilionGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $4, 7, VERMILION_CITY

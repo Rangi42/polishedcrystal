@@ -304,9 +304,11 @@ BattleCommand_CheckTurn: ; 34084
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy4
+	xor a
 	ld [DisabledMove], a
 	jr .ok4
 .enemy4
+	xor a
 	ld [EnemyDisabledMove], a
 .ok4
 	ld hl, DisabledNoMoreText
@@ -497,7 +499,7 @@ HitConfusion: ; 343a5
 	ld [CriticalHit], a
 
 	call HitSelfInConfusion
-	call BattleCommand_DamageCalc
+	call BattleCommand_ConfusedDamageCalc
 	call BattleCommand_LowerSub
 
 	xor a
@@ -570,8 +572,8 @@ BattleCommand_CheckObedience: ; 343db
 	cp [hl]
 	ret z
 	ld a, [InitialOptions]
-	bit TRADED_BEHAVIOR, a
-	ret z
+	bit TRADED_AS_OT_OPT, a
+	ret nz
 
 
 .obeylevel
@@ -1169,8 +1171,18 @@ BattleCommand_TripleKick: ; 346b2
 	ld [hl], a
 	ret
 
-; 346cd
-
+CheckAirBalloon:
+; Returns z if the user is immune due to an item
+	push bc
+	push hl
+	call GetOpponentItem
+	pop hl
+	ld a, b
+	pop bc
+	xor HELD_AIR_BALLOON
+	ret nz
+	ld [wTypeMatchup], a
+	ret
 
 BattleCommand_KickCounter: ; 346cd
 ; kickcounter
@@ -1311,6 +1323,11 @@ CheckTypeMatchup:
 	ld a, [wTypeMatchup]
 	and a
 	jr z, .end
+
+	; check Air Balloon
+	call CheckAirBalloon
+	jr z, .end
+
 	farcall CheckNullificationAbilities
 .end
 	pop bc
@@ -1338,6 +1355,15 @@ _CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp PIXILATE
+	jr nz, .no_pixilate
+	ld a, NORMAL
+	cp d
+	jr nz, .no_pixilate
+	ld d, FAIRY
+.no_pixilate
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
@@ -2155,32 +2181,55 @@ BattleCommand_FailureText: ; 35023
 ; 3505e
 
 
-BattleCommand_CheckFaint: ; 3505e
-; checkfaint
-
+BattleCommand_CheckFaint:
+; b is set to an endure flag as follows:
+; 0 - Nothing
+; 1 - Endure (the move)
+; 2 - Ability (i.e. Sturdy)
+; 3 - Nonconsumable item (i.e. Focus Band)
+; 4 - Item consumed after use (i.e. Focus Sash)
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_ENDURE, a
 	jr z, .not_enduring
-	call BattleCommand_FalseSwipe
-	ld b, $0
-	jr nc, .okay
 	ld b, $1
-	jr .okay
+	jr .enduring
 
 .not_enduring
 	call GetOpponentItem
 	ld a, b
+	ld b, $3
 	cp HELD_FOCUS_BAND
-	ld b, $0
-	jr nz, .okay
+	jr z, .focus_band
+	ld b, $4
+	cp HELD_FOCUS_SASH
+	jr z, .sturdy
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, $2
+	cp STURDY
+	jr nz, .no_endure
+.sturdy
+	push bc
+	call SwitchTurn
+	farcall CheckFullHP_b
+	call SwitchTurn
+	ld a, b
+	pop bc
+	and a
+	jr nz, .no_endure
+	jr .enduring
+.focus_band
 	call BattleRandom
 	cp c
-	jr nc, .okay
+	jr nc, .no_endure
+.enduring
+	push bc
 	call BattleCommand_FalseSwipe
+	pop bc
+	jr nc, .no_endure
+	jr .okay
+.no_endure
 	ld b, $0
-	jr nc, .okay
-	ld b, $2
 .okay
 	push bc
 	call .check_sub
@@ -2205,13 +2254,24 @@ BattleCommand_CheckFaint: ; 3505e
 	jp StdBattleTextBox
 
 .not_enduring2
+	dec a
+	jr nz, .enduring_with_item
+	farcall ShowEnemyAbilityActivation
+	ret
+
+.enduring_with_item
+	push af
 	call GetOpponentItem
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 
 	ld hl, HungOnText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	pop af
+	dec a
+	jp nz, ConsumeEnemyItem
+	ret
 
 .check_sub
 	ld a, BATTLE_VARS_ABILITY
@@ -2476,7 +2536,35 @@ BattleCommand_PostHitEffects: ; 35250
 
 	farcall RunHitAbilities
 
-.start_rage
+	; Burst air balloons
+	call CheckAirBalloon
+	jr nz, .air_balloon_done
+
+	ld hl, AirBalloonPoppedText
+	call StdBattleTextBox
+
+	; Don't use a common "useup" function -- when Pickup/etc is implemented, it still wont
+	; be able to recover Air Balloons
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurBattleMon]
+	ld de, BattleMonItem
+	ld hl, PartyMon1Item
+	jr nz, .got_item_pointers
+	ld a, [CurOTMon]
+	ld de, EnemyMonItem
+	ld hl, OTPartyMon1Item
+.got_item_pointers
+	call GetPartyLocation
+	xor a
+	ld [de], a
+	ld a, [wBattleMode]
+	dec a
+	jr z, .air_balloon_done
+	xor a
+	ld [hl], a
+
+.air_balloon_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_RAGE, a
@@ -2661,11 +2749,11 @@ endc
 	call GetDamageStatsCritical
 	jr c, .thickcluborlightball
 
-	ld hl, EnemyStats + 2
+	ld hl, EnemyDefense
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, PlayerStats
+	ld hl, PlayerAttack
 	jr .thickcluborlightball
 
 .special
@@ -2704,11 +2792,11 @@ endc
 	call GetDamageStatsCritical
 	jr c, .lightball
 
-	ld hl, EnemyStats + SP_DEFENSE * 2
+	ld hl, EnemySpDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, PlayerStats + SP_ATTACK * 2
+	ld hl, PlayerSpAtk
 
 .lightball
 ; Note: Returns player special attack at hl in hl.
@@ -2775,7 +2863,7 @@ endc
 	call GetDamageStatsCritical
 	jr c, .thickcluborlightball
 
-	ld hl, PlayerStats + 2
+	ld hl, PlayerDefense
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
@@ -2818,11 +2906,11 @@ endc
 	call GetDamageStatsCritical
 	jr c, .lightball
 
-	ld hl, PlayerStats + SP_DEFENSE * 2
+	ld hl, PlayerSpDef
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, EnemyStats + SP_ATTACK * 2
+	ld hl, EnemySpAtk
 
 .lightball
 ; Note: Returns enemy special attack at hl in hl.
@@ -3155,68 +3243,104 @@ endr
 	ld e, a
 	ret
 
-; 35612
+ApplyAttackBoosts:
+	ld hl, PlayerAtkLevel
+	ld de, EnemyAtkLevel
+	jr ApplyStatBoostDamageAfterUnaware
+ApplySpecialAttackBoosts:
+	ld hl, PlayerSAtkLevel
+	ld de, EnemySAtkLevel
+	jr ApplyStatBoostDamageAfterUnaware
 
+ApplyDefenseBoosts:
+	ld hl, EnemyDefLevel
+	ld de, PlayerDefLevel
+	jr ApplyDefStatBoostDamageAfterUnaware
+
+ApplySpecialDefenseBoosts:
+	ld hl, EnemySDefLevel
+	ld de, PlayerSDefLevel
+	jr ApplyDefStatBoostDamageAfterUnaware
+
+GetStatBoost:
+	ld a, [hBattleTurn]
+	and a
+	ld a, [hl]
+	ret z
+	ld a, [de]
+	ret
+
+ApplyStatBoostDamageAfterUnaware:
+	call GetOpponentAbilityAfterMoldBreaker
+	cp UNAWARE
+	ret z
+ApplyStatBoostDamage:
+	call GetStatBoost
+	jr GotStatLevel
+ApplyDefStatBoostDamageAfterUnaware:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNAWARE
+	ret z
+ApplyDefStatBoostDamage:
+	call GetStatBoost
+	ld b, a
+	ld a, [CriticalHit]
+	and a
+	ret nz
+	ld a, 14
+	sub b
+	; fallthrough
+GotStatLevel:
+	ld b, a
+	cp 7
+	jr nc, .higher
+	ld a, $29
+	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
+	jp ApplyDamageMod
+.higher
+	ld a, $1b
+	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
+	swap a ; we want to add, not reduce damage
+	jp ApplyDamageMod
+
+BattleCommand_ConfusedDamageCalc:
+; Needed because several things are skipped
+	call DamagePass1
+	call DamagePass2
+
+	; This way we ignore Unnerve
+	ld hl, PlayerAtkLevel
+	ld de, EnemyAtkLevel
+	call ApplyStatBoostDamage
+	ld hl, PlayerDefLevel
+	ld de, EnemyDefLevel
+	call ApplyDefStatBoostDamage
+
+	jp DamagePass3
 
 BattleCommand_DamageCalc: ; 35612
-; damagecalc
-
-; Return a damage value for move power d, player level e, enemy defense c and player attack b.
-
-; Return 1 if successful, else 0.
-
+; Return a damage value for move power d, player level e, enemy defense c and
+; player attack b. Return 1 if successful, else 0.
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 
-; Variable-hit moves and Conversion can have a power of 0.
+	; Variable-hit moves and Conversion can have a power of 0.
 	cp EFFECT_MULTI_HIT
 	jr z, .skip_zero_damage_check
 
 	cp EFFECT_CONVERSION
 	jr z, .skip_zero_damage_check
 
-; No damage if move power is 0.
+	; No damage if move power is 0.
 	ld a, d
 	and a
 	ret z
 
 .skip_zero_damage_check
-; Minimum defense value is 1.
-	ld a, c
-	and a
-	jr nz, .not_dividing_by_zero
-	ld c, 1
-.not_dividing_by_zero
+	call DamagePass1
 
-	xor a
-	ld hl, hDividend
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-
-; Level * 2
-	ld a, e
-	add a
-	jr nc, .level_not_overflowing
-	ld [hl], $1
-.level_not_overflowing
-	inc hl
-	ld [hli], a
-
-; / 5
-	ld a, 5
-	ld [hld], a
-	push bc
-	ld b, $4
-	call Divide
-	pop bc
-
-; + 2
-	inc [hl]
-	inc [hl]
-
-; Technician needs to be checked before other abilities because of
-; being move power-dependant.
+	; Check Technician seperately since it's move power-dependant
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp TECHNICIAN
@@ -3229,255 +3353,50 @@ BattleCommand_DamageCalc: ; 35612
 	ld d, a
 
 .skip_technician
-; * bp
-	inc hl
-	ld [hl], d
-	call Multiply
+	call DamagePass2
 
-; * Attack
-	ld [hl], b
-	call Multiply
-
-; / Defense
-	ld [hl], c
-	ld b, $4
-	call Divide
-
-; / 50
-	ld [hl], 50
-	ld b, $4
-	call Divide
-
-; Ability boosts. Some are done elsewhere depending on needs.
-; TODO: Make this easier to follow (move to a seperate routine perhaps)
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp HUGE_POWER
-	jp z, .ability_double
-	cp HUSTLE
-	jp z, .ability_semidouble
-	cp OVERGROW
-	jr z, .overgrow
-	cp BLAZE
-	jr z, .blaze
-	cp TORRENT
-	jr z, .torrent
-	cp SWARM
-	jr z, .swarm
-	cp SHEER_FORCE
-	jr z, .sheer_force
-	cp ANALYTIC
-	jr z, .analytic
-	cp TINTED_LENS
-	jr z, .tinted_lens
-	cp SOLAR_POWER
-	jr z, .solar_power
-	cp IRON_FIST
-	jr z, .iron_fist
-	cp SAND_FORCE
-	jr z, .sand_force
-	cp RECKLESS
-	jp z, .reckless
-	cp GUTS
-	jp nz, .ability_penalties
-	ld a, BATTLE_VARS_STATUS
-	call GetBattleVar
-	and a
-	jp z, .ability_penalties
-	jp .ability_semidouble
-.overgrow
-	ld b, GRASS
-	jr .pinch_ability
-.blaze
-	ld b, FIRE
-	jr .pinch_ability
-.torrent
-	ld b, WATER
-	jr .pinch_ability
-.swarm
-	ld b, BUG
-.pinch_ability
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp b
-	jp nz, .ability_penalties
-	call CheckPinch
-	jp z, .ability_semidouble
-	jp .ability_penalties
-.sheer_force
-	; Only nonzero for sheer force users when using a move with an additional effect
-	ld a, [EffectFailed]
-	and a
-	jp z, .ability_penalties
-	jr .ability_x1_3
-.analytic
-	call CheckOpponentWentFirst
-	jp z, .ability_penalties
-	jr .ability_x1_3
-.tinted_lens
-	ld a, [TypeModifier]
-	cp $10 ; x1
-	jr nc, .ability_penalties
-	jr .ability_double
-.solar_power
-	call GetWeatherAfterCloudNine
-	cp WEATHER_SUN
-	jr nz, .ability_penalties
-	jr .ability_semidouble
-.iron_fist
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	push hl
-	ld hl, PunchingMoves
-	call IsInArray
-	pop hl
-	jr c, .ability_penalties
-	jr .ability_x1_2
-.sand_force
-	call GetWeatherAfterCloudNine
-	cp WEATHER_SANDSTORM
-	jr nz, .ability_penalties
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp GROUND
-	jr z, .ability_x1_3
-	cp ROCK
-	jr z, .ability_x1_3
-	cp STEEL
-	jr z, .ability_x1_3
-	jr .ability_penalties
-.reckless
-	; skip Struggle
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
-	jr z, .ability_penalties
+	; Stat changes
+	push de
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_RECOIL_HIT
-	jr z, .ability_x1_2
-	cp EFFECT_JUMP_KICK
-	jr nz, .ability_penalties
-.ability_x1_2
-	; x1.2
-	ld [hl], 6
-	call Multiply
-	ld [hl], 5
-	ld b, $4
-	call Divide
-	jr .ability_penalties
-.ability_x1_3
-	ld [hl], 13
-	call Multiply
-	ld [hl], 10
-	ld b, $4
-	call Divide
-	jr .ability_penalties
-.ability_semidouble
-	; x1.5
-	ld [hl], 3
-	call Multiply
-	ld [hl], 2
-	ld b, $4
-	call Divide
-	jr .ability_penalties
-.ability_double
-	; x2
-	ld [hl], 2
-	call Multiply
-
-.ability_penalties
-	call GetOpponentAbilityAfterMoldBreaker
-	cp MULTISCALE
-	jr nz, .skip_multiscale
-	push hl
-	call SwitchTurn
-	ld hl, CheckFullHP_b
-	call CallBattleCore
-	call SwitchTurn
-	pop hl
-	ld a, b
-	and a
-	jp nz, .abilities_done
-	ld [hl], 2
-	ld b, $4
-	call Divide
-	jp .abilities_done
-.skip_multiscale
-	cp MARVEL_SCALE
-	jr nz, .skip_marvelscale
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
-	jp z, .abilities_done
-	ld [hl], 2
-	call Multiply
-	ld [hl], 3
-	ld b, $4
-	call Divide
-	jr .abilities_done
-.skip_marvelscale
-; These do the same thing
-	cp SOLID_ROCK
-	jr z, .solid_rock
-	cp FILTER
-	jr nz, .skip_solid_rock
-.solid_rock
-; Check super effective status
-	ld a, [TypeModifier]
-	cp $10 ; x1
-	jr z, .abilities_done
-	jr c, .abilities_done
-	ld [hl], 3
-	call Multiply
-	ld [hl], 4
-	ld b, $4
-	call Divide
-	jr .abilities_done
-.skip_solid_rock
-	cp THICK_FAT
-	jr nz, .skip_thick_fat
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp FIRE
-	jr z, .thick_fat_ok
-	cp ICE
-	jr nz, .abilities_done
-.thick_fat_ok
-	ld [hl], 2
-	ld b, $4
-	call Divide
-	jr .abilities_done
-.skip_thick_fat
-	cp DRY_SKIN
-	jr nz, .skip_dry_skin
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	cp FIRE
-	jr nz, .abilities_done
-	ld [hl], 5
-	call Multiply
-	ld [hl], 4
-	ld b, $4
-	call Divide
-.skip_dry_skin
-	cp FUR_COAT
-	jr nz, .abilities_done
+	cp EFFECT_PSYSTRIKE
+	jr z, .psystrike_mod
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
-	cp PHYSICAL
-	jr z, .fur_coat_ok
-	ld a, BATTLE_VARS_MOVE
+	cp SPECIAL
+	jr z, .special_mod
+	call ApplyAttackBoosts
+	call ApplyDefenseBoosts
+	jr .stat_boosts_done
+.special_mod
+	call ApplySpecialAttackBoosts
+	call ApplySpecialDefenseBoosts
+	jr .stat_boosts_done
+.psystrike_mod
+	call ApplySpecialAttackBoosts
+	call ApplyDefenseBoosts
+
+.stat_boosts_done
+	pop de
+
+	; Ability boosts. Some are done elsewhere depending on needs.
+	farcall ApplyDamageAbilities
+	ld hl, hMultiplier ; The Ability logic changes hl
+
+	; If we're burned (and don't have Guts), halve damage
+	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	cp PSYSTRIKE
-	jr nz, .abilities_done
-.fur_coat_ok
-	ld [hl], 2
-	ld b, $4
-	call Divide
-	jr .abilities_done
-.abilities_done
-; Flash Fire
+	bit BRN, a
+	jr z, .burn_done
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp GUTS
+	jr nz, .burn_done
+	ld a, $12
+	call ApplyPhysicalAttackDamageMod
+
+.burn_done
+	; Flash Fire
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
@@ -3485,32 +3404,25 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
-	jr nz, .no_flash_fire
-	ld [hl], 3
-	call Multiply
-	ld [hl], 2
-	ld b, $4
-	call Divide
+	ld a, $32
+	call z, ApplyDamageMod
 
 .no_flash_fire
-; Critical hits
+	; Critical hits
 	ld a, [CriticalHit]
 	and a
 	jr z, .no_crit
 
-	ld [hl], 6
-	call Multiply
-	ld [hl], 4
 	ld a, BATTLE_VARS_ABILITY
 	cp SNIPER
-	jr nz, .no_sniper
-	ld [hl], 3
-.no_sniper
-	ld b, $4
-	call Divide
+	ld a, $21
+	jr z, .got_crit_mod
+	ld a, $32
+.got_crit_mod
+	call ApplyDamageMod
 
 .no_crit
-; Item boosts
+	; Item boosts
 	call GetUserItem
 
 	ld a, b
@@ -3524,7 +3436,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp $ff
 	jr z, .DoneItem
 
-; Item effect
+	; Item effect
 	cp b
 	ld a, [hli]
 	jr nz, .NextItem
@@ -3534,7 +3446,7 @@ BattleCommand_DamageCalc: ; 35612
 	cp SPECIAL
 	jr z, .CategoryBoost
 
-; Type
+	; Type
 	ld b, a
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
@@ -3550,25 +3462,108 @@ BattleCommand_DamageCalc: ; 35612
 	jr nz, .DoneItem
 
 .ApplyBoost
-; * 100 + item effect amount
+	; * 100 + item effect amount
 	ld a, c
 	add 100
 	ld [hMultiplier], a
 	call Multiply
 
-; / 100
+	; / 100
 	ld a, 100
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
 .DoneItem:
-; If we exceed $ffff at this point, skip to capping to 997 as the
-; final damage.
+	jp DamagePass3
+
+TypeBoostItems: ; 35703
+	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
+	db HELD_FIGHTING_BOOST, FIGHTING ; Black Belt
+	db HELD_FLYING_BOOST,   FLYING   ; Sharp Beak
+	db HELD_POISON_BOOST,   POISON   ; Poison Barb
+	db HELD_GROUND_BOOST,   GROUND   ; Soft Sand
+	db HELD_ROCK_BOOST,     ROCK     ; Hard Stone
+	db HELD_BUG_BOOST,      BUG      ; SilverPowder
+	db HELD_GHOST_BOOST,    GHOST    ; Spell Tag
+	db HELD_FIRE_BOOST,     FIRE     ; Charcoal
+	db HELD_WATER_BOOST,    WATER    ; Mystic Water
+	db HELD_GRASS_BOOST,    GRASS    ; Miracle Seed
+	db HELD_ELECTRIC_BOOST, ELECTRIC ; Magnet
+	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; TwistedSpoon
+	db HELD_ICE_BOOST,      ICE      ; NeverMeltIce
+	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
+	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
+	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
+	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
+	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
+	db HELD_SPECIAL_BOOST,  SPECIAL  ; Wise Glasses
+	db $ff
+
+
+DamagePass1:
+	; Minimum defense value is 1.
+	ld a, c
+	and a
+	jr nz, .not_dividing_by_zero
+	ld c, 1
+.not_dividing_by_zero
+
+	xor a
+	ld hl, hDividend
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	; Level * 2
+	ld a, e
+	add a
+	jr nc, .level_not_overflowing
+	ld [hl], $1
+.level_not_overflowing
+	inc hl
+	ld [hli], a
+
+	; / 5
+	ld a, 5
+	ld [hld], a
+	push bc
+	ld b, $4
+	call Divide
+	pop bc
+
+	; + 2
+	inc [hl]
+	inc [hl]
+	ret
+
+DamagePass2:
+	; * bp
+	inc hl
+	ld [hl], d
+	call Multiply
+
+	; * Attack
+	ld [hl], b
+	call Multiply
+
+	; / Defense
+	ld [hl], c
+	ld b, $4
+	call Divide
+
+	; / 50
+	ld [hl], 50
+	ld b, $4
+	call Divide
+	ret
+
+DamagePass3:
+	; If we exceed $ffff at this point, skip to capping to 997 as the final damage.
 	ld a, [hQuotient]
 	and a
 	jr nz, .Cap
 
-; Update CurDamage (capped at 997).
+	; Update CurDamage (capped at 997).
 	ld hl, CurDamage
 	ld b, [hl]
 	ld a, [hQuotient + 2]
@@ -3628,7 +3623,7 @@ BattleCommand_DamageCalc: ; 35612
 
 
 .dont_cap_3
-; Minimum neutral damage is 2 (bringing the cap to 999).
+	; Minimum neutral damage is 2 (bringing the cap to 999).
 	inc hl
 	ld a, [hl]
 	add 2
@@ -3640,30 +3635,6 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, 1
 	and a
 	ret
-
-TypeBoostItems: ; 35703
-	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
-	db HELD_FIGHTING_BOOST, FIGHTING ; Black Belt
-	db HELD_FLYING_BOOST,   FLYING   ; Sharp Beak
-	db HELD_POISON_BOOST,   POISON   ; Poison Barb
-	db HELD_GROUND_BOOST,   GROUND   ; Soft Sand
-	db HELD_ROCK_BOOST,     ROCK     ; Hard Stone
-	db HELD_BUG_BOOST,      BUG      ; SilverPowder
-	db HELD_GHOST_BOOST,    GHOST    ; Spell Tag
-	db HELD_FIRE_BOOST,     FIRE     ; Charcoal
-	db HELD_WATER_BOOST,    WATER    ; Mystic Water
-	db HELD_GRASS_BOOST,    GRASS    ; Miracle Seed
-	db HELD_ELECTRIC_BOOST, ELECTRIC ; Magnet
-	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; TwistedSpoon
-	db HELD_ICE_BOOST,      ICE      ; NeverMeltIce
-	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
-	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
-	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
-	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
-	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
-	db HELD_SPECIAL_BOOST,  SPECIAL  ; Wise Glasses
-	db $ff
-; 35726
 
 
 BattleCommand_ConstantDamage: ; 35726
@@ -5383,7 +5354,7 @@ BattleCommand_StatUp: ; 361e4
 ; 361ef
 
 
-CheckIfStatCanBeRaised: ; 361ef
+CheckIfStatCanBeRaised:
 	ld a, b
 	ld [LoweredStat], a
 	ld hl, PlayerStatLevels
@@ -5418,82 +5389,23 @@ CheckIfStatCanBeRaised: ; 361ef
 	ld b, a
 .got_num_stages
 	ld [hl], b
-	push hl
-	; Speed/Accuracy/Evasion doesn't mess with stats
-	ld a, c
-	cp ACCURACY
-	jr nc, .done_calcing_stats
-	cp SPEED
-	jr z, .done_calcing_stats
-	ld hl, BattleMonStats + 1
-	ld de, PlayerStats
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_stats_pointer
-	ld hl, EnemyMonStats + 1
-	ld de, EnemyStats
-.got_stats_pointer
-	push bc
-	sla c
-	ld b, 0
-	add hl, bc
-	ld a, c
-	add e
-	ld e, a
-	jr nc, .no_carry
-	inc d
-.no_carry
-	pop bc
-	ld a, [hld]
-	sub 999 % $100
-	jr nz, .not_already_max
-	ld a, [hl]
-	sbc 999 / $100
-	jp z, .stats_already_max
-.not_already_max
-	ld a, [hBattleTurn]
-	and a
-	jr z, .calc_player_stats
-	call CalcEnemyStats
-	jr .done_calcing_stats
-
-.calc_player_stats
-	call CalcPlayerStats
-.done_calcing_stats
-	pop hl
 	xor a
 	ld [FailedMessage], a
 	ret
 
-; 3626e
-
-
-.stats_already_max ; 3626e
-	pop hl
-	dec [hl]
-	; fallthrough
-; 36270
-
-
-.cant_raise_stat ; 36270
+.cant_raise_stat
 	ld a, $2
 	ld [FailedMessage], a
 	ld a, $1
 	ld [AttackMissed], a
 	ret
 
-; 3627b
-
-
-.stat_raise_failed ; 3627b
+.stat_raise_failed
 	ld a, $1
 	ld [FailedMessage], a
 	ret
 
-; 36281
-
-
-StatUpAnimation: ; 36281
+StatUpAnimation:
 	ld bc, wPlayerMinimized
 	ld hl, DropPlayerSub
 	ld a, [hBattleTurn]
@@ -5675,12 +5587,12 @@ BattleCommand_StatDown: ; 362e3
 	jr z, .Hit
 
 	push hl
-	ld hl, EnemyMonAttack + 1
+	ld hl, EnemyMonStats + 1
 	ld de, EnemyStats
 	ld a, [hBattleTurn]
 	and a
 	jr z, .do_enemy
-	ld hl, BattleMonAttack + 1
+	ld hl, BattleMonStats + 1
 	ld de, PlayerStats
 .do_enemy
 	call TryLowerStat
@@ -6221,89 +6133,17 @@ BattleCommand_LowerSubNoAnim: ; 365c3
 	call CallBattleCore
 	jp WaitBGMap
 
-; 365d7
-
-
-CalcPlayerStats: ; 365d7
-	ld hl, PlayerAtkLevel
-	ld de, PlayerStats
-	ld bc, BattleMonAttack
+CalcPlayerStats:
+	ld hl, PlayerStats
+	ld de, BattleMonAttack
 	jr CalcStats
-CalcEnemyStats: ; 365fd
-	ld hl, EnemyAtkLevel
-	ld de, EnemyStats
-	ld bc, EnemyMonAttack
-CalcStats: ; 3661d
-	ld a, 5
-.loop
-	push af
-	ld a, [hli]
-	push hl
-	push bc
-
-	ld c, a
-	dec c
-	ld b, 0
-	ld hl, StatLevelMultipliers
-	add hl, bc
-	add hl, bc
-
-	xor a
-	ld [hMultiplicand + 0], a
-	ld a, [de]
-	ld [hMultiplicand + 1], a
-	inc de
-	ld a, [de]
-	ld [hMultiplicand + 2], a
-	inc de
-
-	ld a, [hli]
-	ld [hMultiplier], a
-	call Multiply
-
-	ld a, [hl]
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	or b
-	jr nz, .check_maxed_out
-
-	ld a, 1
-	ld [hQuotient + 2], a
-	jr .not_maxed_out
-
-.check_maxed_out
-	ld a, [hQuotient + 2]
-	cp 999 % $100
-	ld a, b
-	sbc 999 / $100
-	jr c, .not_maxed_out
-
-	ld a, 999 % $100
-	ld [hQuotient + 2], a
-	ld a, 999 / $100
-	ld [hQuotient + 1], a
-
-.not_maxed_out
-	pop bc
-	ld a, [hQuotient + 1]
-	ld [bc], a
-	inc bc
-	ld a, [hQuotient + 2]
-	ld [bc], a
-	inc bc
-	pop hl
-	pop af
-	dec a
-	jr nz, .loop
-
-	ret
-
-; 36671
+CalcEnemyStats:
+	ld hl, EnemyStats
+	ld de, EnemyMonAttack
+CalcStats:
+; Used to handle stat changes, but now only ensures that *MonAttack has the right content
+	ld bc, 10
+	jp CopyBytes
 
 
 BattleCommand_CheckRampage: ; 3671a
@@ -6462,8 +6302,7 @@ CheckIfTrappedByAbility:
 	ret
 
 _CheckIfTrappedByAbility:
-	; Wrapper around ability checks to ensure that no double-traps
-	; happen.
+	; Wrapper around ability checks to ensure that no double-traps happen.
 	call CheckIfTrappedByAbilityInner
 	ld a, b
 	and a
@@ -6506,6 +6345,8 @@ CheckIfTrappedByAbilityInner:
 	ret z
 	ld a, BATTLE_VARS_ABILITY
 	cp LEVITATE
+	ret z
+	call CheckAirBalloon
 	ret z
 .is_trapped
 	ld b, 0
@@ -8185,9 +8026,7 @@ PrintButItFailed: ; 3734e
 ; 37354
 
 
-FailSnore:
 FailDisable:
-FailConversion2:
 FailAttract:
 FailForesight:
 FailSpikes:
@@ -9315,21 +9154,21 @@ GetItemHeldEffect: ; 37dd0
 ; 37de9
 
 
-AnimateCurrentMoveEitherSide: ; 37de9
-	push hl
-	push de
-	push bc
-	ld a, [wKickCounter]
-	push af
-	call BattleCommand_LowerSub
-	pop af
-	ld [wKickCounter], a
-	call PlayDamageAnim
-	call BattleCommand_RaiseSub
-	pop bc
-	pop de
-	pop hl
-	ret
+;AnimateCurrentMoveEitherSide: ; 37de9
+;	push hl
+;	push de
+;	push bc
+;	ld a, [wKickCounter]
+;	push af
+;	call BattleCommand_LowerSub
+;	pop af
+;	ld [wKickCounter], a
+;	call PlayDamageAnim
+;	call BattleCommand_RaiseSub
+;	pop bc
+;	pop de
+;	pop hl
+;	ret
 
 ; 37e01
 

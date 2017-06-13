@@ -14,15 +14,12 @@ ViridianForestPewterGateOfficerScript:
 ViridianForestPewterGateOfficerText:
 	text "Are you headed"
 	line "to Pewter City?"
-	
+
 	para "Be sure to check"
 	line "out the Museum!"
 	done
 
 ViridianForestPewterGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $7, $4, 1, VIRIDIAN_FOREST

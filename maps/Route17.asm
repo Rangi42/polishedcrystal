@@ -18,9 +18,6 @@ Route17_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
 
 UnknownScript_0x1ad0ab:
@@ -350,9 +347,6 @@ Route17HiddenMaxElixer:
 	dwb EVENT_ROUTE_17_HIDDEN_MAX_ELIXER, MAX_ELIXER
 
 Route17_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

@@ -7,21 +7,15 @@ const_value set 2
 RuinsofAlphInnerChamber_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x58f69, 0
-	dw UnknownScript_0x58f6a, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x58f69:
-	end
-
-UnknownScript_0x58f6a:
+.Trigger1:
 	priorityjump UnknownScript_0x58f6e
-
-UnknownScript_0x58f6d:
+.Trigger0:
 	end
 
 UnknownScript_0x58f6e:
@@ -105,9 +99,6 @@ UnknownText_0x59072:
 	done
 
 RuinsofAlphInnerChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $d, $a, 3, RUINS_OF_ALPH_ENTRANCE_CHAMBER

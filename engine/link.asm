@@ -25,7 +25,7 @@ LinkCommunications: ; 28000
 	hlcoord 4, 10
 	ld de, String_PleaseWait
 	call PlaceString
-	call Function28eff
+	call SetTradeRoomBGPals
 	call WaitBGMap2
 	ld hl, wcf5d
 	xor a
@@ -241,10 +241,6 @@ Gen2ToGen2LinkComms: ; 28177
 	ld de, OTPartyMons
 	ld bc, OTPartyDataEnd - OTPartyMons
 	call CopyBytes
-	ld a, OTPartyMonOT % $100
-	ld [wd102], a
-	ld a, OTPartyMonOT / $100
-	ld [wd103], a
 	ld de, MUSIC_NONE
 	call PlayMusic
 	ld a, [hLinkPlayerNumber]
@@ -704,8 +700,8 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
 	ld a, $1
-	ld [wd263], a
-	farcall Function50db9
+	ld [wInitListType], a
+	farcall InitList
 	ld hl, OTPartyMon1Species
 	farcall LinkMonStatsScreen
 	jp LinkTradePartiesMenuMasterLoop
@@ -897,8 +893,8 @@ Function28926: ; 28926
 	pop af
 	ld [wMenuCursorY], a
 	ld a, $4
-	ld [wd263], a
-	farcall Function50db9
+	ld [wInitListType], a
+	farcall InitList
 	farcall LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
 	hlcoord 6, 1
@@ -1052,7 +1048,6 @@ Function28b22: ; 28b22
 	call WaitBGMap2
 	xor a
 	ld [wcfbb], a
-	xor a
 	ld [rSB], a
 	ld [hSerialSend], a
 	ld a, $1
@@ -1125,7 +1120,7 @@ LinkTrade: ; 28b87
 	ld b, 3
 	ld c, 7
 	call Predef_LinkTextbox
-	ld de, String28eab
+	ld de, String_TradeCancel
 	hlcoord 12, 8
 	call PlaceString
 	ld a, 8
@@ -1371,26 +1366,26 @@ LinkTrade: ; 28b87
 	farcall EvolvePokemon
 	call ClearScreen
 	call LoadTradeScreenBorder
-	call Function28eff
+	call SetTradeRoomBGPals
 	farcall Link_WaitBGMap
 	ld b, $1
 	pop af
 	ld c, a
 	cp MEW
-	jr z, .asm_28e49
+	jr z, .loop
 	ld a, [CurPartySpecies]
 	cp MEW
-	jr z, .asm_28e49
+	jr z, .loop
 	ld b, $2
 	ld a, c
 	cp CELEBI
-	jr z, .asm_28e49
+	jr z, .loop
 	ld a, [CurPartySpecies]
 	cp CELEBI
-	jr z, .asm_28e49
+	jr z, .loop
 	ld b, $0
 
-.asm_28e49
+.loop
 	ld a, b
 	ld [wPlayerLinkAction], a
 	push bc
@@ -1398,13 +1393,13 @@ LinkTrade: ; 28b87
 	pop bc
 	ld a, b
 	and a
-	jr z, .asm_28e63
+	jr z, .save
 	ld a, [wOtherPlayerLinkAction]
 	cp b
-	jr nz, .asm_28e49
+	jr nz, .loop
 
-.asm_28e63
-	farcall Function14a58
+.save
+	farcall SaveAfterLinkTrade
 	ld c, 40
 	call DelayFrames
 	hlcoord 0, 12
@@ -1412,7 +1407,7 @@ LinkTrade: ; 28b87
 	ld c, 18
 	call Predef_LinkTextbox
 	hlcoord 1, 14
-	ld de, String28ebd
+	ld de, String_TradeCompleted
 	call PlaceString
 	farcall Link_WaitBGMap
 	ld c, 50
@@ -1426,7 +1421,7 @@ Function28ea3: ; 28ea3
 	jp InitTradeMenuDisplay
 ; 28eab
 
-String28eab: ; 28eab
+String_TradeCancel: ; 28eab
 	db   "Trade"
 	next "Cancel@"
 
@@ -1436,7 +1431,7 @@ UnknownText_0x28eb8: ; 0x28eb8
 	db "@"
 ; 0x28ebd
 
-String28ebd: ; 28ebd
+String_TradeCompleted: ; 28ebd
 	db   "Trade completed!@"
 
 String_TooBadTheTradeWasCanceled: ; 28ece
@@ -1456,8 +1451,8 @@ LoadTradeScreenBorder: ; 28ef8
 	ret
 ; 28eff
 
-Function28eff: ; 28eff
-	farcall Function16d6a7
+SetTradeRoomBGPals: ; 28eff
+	farcall LoadLinkTradePalette
 	call SetPalettes
 	ret
 ; 28f09
@@ -1503,7 +1498,7 @@ WaitForOtherPlayerToExit: ; 29c92
 	ld [rIE], a
 	pop af
 	ld [rIF], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1529,7 +1524,7 @@ Special_SetBitsForBattleRequest: ; 29cf1
 Special_WaitForLinkedFriend: ; 29d11
 	ld a, [wPlayerLinkAction]
 	and a
-	jr z, .asm_29d2f
+	jr z, .no_link_action
 	ld a, $2
 	ld [rSB], a
 	xor a
@@ -1542,17 +1537,17 @@ Special_WaitForLinkedFriend: ; 29d11
 	call DelayFrame
 	call DelayFrame
 
-.asm_29d2f
+.no_link_action
 	ld a, $2
-	ld [wcf5c], a
+	ld [wLinkTimeoutFrames + 1], a
 	ld a, $ff
-	ld [wcf5b], a
-.asm_29d39
+	ld [wLinkTimeoutFrames], a
+.loop
 	ld a, [hLinkPlayerNumber]
 	cp $2
-	jr z, .asm_29d79
+	jr z, .connected
 	cp $1
-	jr z, .asm_29d79
+	jr z, .connected
 	ld a, -1
 	ld [hLinkPlayerNumber], a
 	ld a, $2
@@ -1563,16 +1558,16 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [rSC], a
 	ld a, $80
 	ld [rSC], a
-	ld a, [wcf5b]
+	ld a, [wLinkTimeoutFrames]
 	dec a
-	ld [wcf5b], a
-	jr nz, .asm_29d68
-	ld a, [wcf5c]
+	ld [wLinkTimeoutFrames], a
+	jr nz, .not_done
+	ld a, [wLinkTimeoutFrames + 1]
 	dec a
-	ld [wcf5c], a
-	jr z, .asm_29d8d
+	ld [wLinkTimeoutFrames + 1], a
+	jr z, .done
 
-.asm_29d68
+.not_done
 	ld a, $1
 	ld [rSB], a
 	ld a, $1
@@ -1580,9 +1575,9 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld a, $81
 	ld [rSC], a
 	call DelayFrame
-	jr .asm_29d39
+	jr .loop
 
-.asm_29d79
+.connected
 	call LinkDataReceived
 	call DelayFrame
 	call LinkDataReceived
@@ -1592,7 +1587,7 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld [ScriptVar], a
 	ret
 
-.asm_29d8d
+.done
 	xor a
 	ld [ScriptVar], a
 	ret
@@ -1601,7 +1596,7 @@ Special_WaitForLinkedFriend: ; 29d11
 Special_CheckLinkTimeout: ; 29d92
 	ld a, $1
 	ld [wPlayerLinkAction], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, $3
 	ld [hli], a
 	xor a
@@ -1611,19 +1606,19 @@ Special_CheckLinkTimeout: ; 29d92
 	ld [hVBlank], a
 	call DelayFrame
 	call DelayFrame
-	call Function29e0c
+	call Link_CheckCommunicationError
 	xor a
 	ld [hVBlank], a
 	ld a, [ScriptVar]
 	and a
 	ret nz
-	jp Function29f04
+	jp Link_ResetSerialRegistersAfterLinkClosure
 ; 29dba
 
 Function29dba: ; 29dba
 	ld a, $5
 	ld [wPlayerLinkAction], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, $3
 	ld [hli], a
 	xor a
@@ -1633,7 +1628,7 @@ Function29dba: ; 29dba
 	ld [hVBlank], a
 	call DelayFrame
 	call DelayFrame
-	call Function29e0c
+	call Link_CheckCommunicationError
 	ld a, [ScriptVar]
 	and a
 	jr z, .vblank
@@ -1648,11 +1643,11 @@ Function29dba: ; 29dba
 	jr nz, .script_var
 	ld a, $6
 	ld [wPlayerLinkAction], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	ld a, $1
 	ld [hli], a
 	ld [hl], $32
-	call Function29e0c
+	call Link_CheckCommunicationError
 	ld a, [wOtherPlayerLinkMode]
 	cp $6
 	jr z, .vblank
@@ -1668,40 +1663,40 @@ Function29dba: ; 29dba
 	ret
 ; 29e0c
 
-Function29e0c: ; 29e0c
+Link_CheckCommunicationError: ; 29e0c
 	xor a
 	ld [hFFCA], a
-	ld a, [wcf5b]
+	ld a, [wLinkTimeoutFrames]
 	ld h, a
-	ld a, [wcf5c]
+	ld a, [wLinkTimeoutFrames + 1]
 	ld l, a
 	push hl
-	call Function29e3b
+	call .CheckConnected
 	pop hl
-	jr nz, .asm_29e2f
-	call Function29e47
-	call Function29e53
-	call Function29e3b
-	jr nz, .asm_29e2f
-	call Function29e47
+	jr nz, .load_true
+	call .AcknowledgeSerial
+	call .ConvertDW
+	call .CheckConnected
+	jr nz, .load_true
+	call .AcknowledgeSerial
 	xor a
-	jr .asm_29e31
+	jr .load_scriptvar
 
-.asm_29e2f
+.load_true
 	ld a, $1
 
-.asm_29e31
+.load_scriptvar
 	ld [ScriptVar], a
-	ld hl, wcf5b
+	ld hl, wLinkTimeoutFrames
 	xor a
 	ld [hli], a
 	ld [hl], a
 	ret
 ; 29e3b
 
-Function29e3b: ; 29e3b
-	call Function87d
-	ld hl, wcf5b
+.CheckConnected: ; 29e3b
+	call WaitLinkTransfer
+	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
 	inc a
 	ret nz
@@ -1710,17 +1705,17 @@ Function29e3b: ; 29e3b
 	ret
 ; 29e47
 
-Function29e47: ; 29e47
+.AcknowledgeSerial: ; 29e47
 	ld b, $a
-.asm_29e49
+.loop
 	call DelayFrame
 	call LinkDataReceived
 	dec b
-	jr nz, .asm_29e49
+	jr nz, .loop
 	ret
 ; 29e53
 
-Function29e53: ; 29e53
+.ConvertDW: ; 29e53
 	dec h
 	srl h
 	rr l
@@ -1728,9 +1723,9 @@ Function29e53: ; 29e53
 	rr l
 	inc h
 	ld a, h
-	ld [wcf5b], a
+	ld [wLinkTimeoutFrames], a
 	ld a, l
-	ld [wcf5c], a
+	ld [wLinkTimeoutFrames + 1], a
 	ret
 ; 29e66
 
@@ -1739,10 +1734,9 @@ Special_TryQuickSave: ; 29e66
 	push af
 	farcall Link_SaveGame
 	ld a, $1
-	jr nc, .asm_29e75
+	jr nc, .return_result
 	xor a
-
-.asm_29e75
+.return_result
 	ld [ScriptVar], a
 	ld c, $1e
 	call DelayFrames
@@ -1753,7 +1747,7 @@ Special_TryQuickSave: ; 29e66
 
 Special_CheckBothSelectedSameRoom: ; 29e82
 	ld a, [wd265]
-	call Function29f17
+	call Link_EnsureSync
 	push af
 	call LinkDataReceived
 	call DelayFrame
@@ -1805,17 +1799,17 @@ Special_CloseLink: ; 29eee
 	ld [wLinkMode], a
 	ld c, $3
 	call DelayFrames
-	jp Function29f04
+	jp Link_ResetSerialRegistersAfterLinkClosure
 ; 29efa
 
 Special_FailedLinkToPast: ; 29efa
 	ld c, 40
 	call DelayFrames
 	ld a, $e
-	jp Function29f17
+	jp Link_EnsureSync
 ; 29f04
 
-Function29f04: ; 29f04
+Link_ResetSerialRegistersAfterLinkClosure: ; 29f04
 	ld c, 3
 	call DelayFrames
 	ld a, -1
@@ -1828,7 +1822,7 @@ Function29f04: ; 29f04
 	ret
 ; 29f17
 
-Function29f17: ; 29f17
+Link_EnsureSync: ; 29f17
 	add $d0
 	ld [wPlayerLinkAction], a
 	ld [wcf57], a

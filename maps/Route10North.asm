@@ -13,24 +13,17 @@ const_value set 2
 Route10North_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Zapdos
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump Route10NorthLawrenceEncounter1Script
+.Trigger0:
 	end
 
 .FlyPoint:
@@ -208,6 +201,12 @@ Route10Zapdos:
 	setevent EVENT_ZAPDOS_GONE
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
+	writebyte ZAPDOS
+	special SpecialMonCheck
+	iffalse .NoSpark
+	setevent EVENT_CELADON_UNIVERSITY_SPARK
+	clearevent EVENT_SHAMOUTI_COAST_SPARK
+.NoSpark
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	iffalse .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES
@@ -391,9 +390,6 @@ Route10NorthMovementData_ShowPlayer:
 	step_end
 
 Route10North_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $23, $b, 1, ROUTE_10_POKECENTER_1F

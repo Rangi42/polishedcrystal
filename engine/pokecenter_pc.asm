@@ -278,8 +278,7 @@ LOG_OFF       EQU 6
 	db MAIL_BOX
 	db TURN_OFF
 	db -1
-
-.KrissPCMenuList2:
+;.KrissPCMenuList2:
 	db 6
 	db WITHDRAW_ITEM
 	db DEPOSIT_ITEM

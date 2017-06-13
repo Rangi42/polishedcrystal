@@ -8,8 +8,6 @@ CinnabarIsland_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -179,9 +177,6 @@ CinnabarIslandVolcanoWarningSignText:
 	done
 
 CinnabarIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $b, 1, CINNABAR_POKECENTER_1F

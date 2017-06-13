@@ -425,7 +425,6 @@ BattleAnim_ThrowPokeBall
 BattleAnim_SendOutMon:
 	anim_jumpif $0, .Normal
 	anim_jumpif $1, .Shiny
-	anim_jumpif $2, .Unknown
 	anim_1gfx ANIM_GFX_SMOKE
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_2B, $0, $1, $0
@@ -434,21 +433,6 @@ BattleAnim_SendOutMon:
 	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_wait 128
 	anim_wait 4
-	anim_call BattleAnim_ShowMon_0
-	anim_ret
-
-.Unknown:
-	anim_1gfx ANIM_GFX_SMOKE
-	anim_call BattleAnim_FollowEnemyFeet_0
-	anim_bgeffect ANIM_BG_2A, $0, $1, $0
-	anim_wait 1
-	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
-	anim_wait 4
-	anim_sound 0, 0, SFX_BALL_POOF
-	anim_obj ANIM_OBJ_1B,   6, 0,  12, 0, $0
-	anim_incbgeffect ANIM_BG_2A
-	anim_wait 96
-	anim_incbgeffect ANIM_BG_2A
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
@@ -698,15 +682,6 @@ BattleAnim_Acrobatics:
 	anim_incbgeffect ANIM_BG_1D
 	anim_call BattleAnim_ShowMon_0
 	anim_wait 4
-	anim_ret
-
-BattleAnim_Pound: ; removed
-	anim_1gfx ANIM_GFX_HIT
-	anim_sound 0, 1, SFX_POUND
-	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
-	anim_wait 16
 	anim_ret
 
 BattleAnim_KarateChop:
@@ -2544,7 +2519,7 @@ BattleAnim_NightSlash:
 	anim_ret
 
 BattleAnim_Flash:
-BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam 
+BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 1, SFX_FLASH
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
@@ -3986,7 +3961,7 @@ BattleAnim_Spark:
 	anim_obj ANIM_OBJ_33, -15, 0,   7, 0, $0
 	anim_wait 32
 	anim_ret
-	
+
 BattleAnim_WildCharge:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_sound 0, 0, SFX_ZAP_CANNON
@@ -4194,7 +4169,7 @@ BattleAnim_SacredFire:
 	anim_incobj  9
 	anim_wait 8
 	anim_ret
-	
+
 BattleAnim_FlareBlitz:
 	anim_1gfx ANIM_GFX_FIRE
 .loop
@@ -4221,7 +4196,7 @@ BattleAnim_FlareBlitz:
 	anim_obj ANIM_OBJ_0F, -15, 0,   6, 0, $3
 	anim_wait 4
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
-	anim_wait 4	
+	anim_wait 4
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
 	anim_wait 4
 	anim_incobj  9
@@ -4850,8 +4825,8 @@ BattleAnim_Selfdestruct_branch_cbb62:
 
 BattleAnim_Dynamicpunch_branch_cbb8f:
 BattleAnim_Explosion_branch_cbb8f:
-BattleAnim_Present_branch_cbb8f:
 BattleAnim_Selfdestruct_branch_cbb8f:
+BattleAnim_Present_branch_cbb8f: ; removed
 	anim_sound 0, 1, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_17, -14, 4,   4, 0, $0
 	anim_wait 5
@@ -4913,13 +4888,13 @@ BattleAnim_Sludge_branch_cbc15:
 BattleAnim_Toxic_branch_cbc15:
 BattleAnim_PoisonJab_branch_cbc15:
 .loop
-	anim_sound 0, 1, SFX_UNKNOWN_7F
+	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_1A, -16, 4,   9, 0, $0
 	anim_wait 8
-	anim_sound 0, 1, SFX_UNKNOWN_7F
+	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_1A,  14, 4,   9, 0, $0
 	anim_wait 8
-	anim_sound 0, 1, SFX_UNKNOWN_7F
+	anim_sound 0, 1, SFX_TOXIC
 	anim_obj ANIM_OBJ_1A, -14, 4,   9, 0, $0
 	anim_wait 8
 	anim_loop 5, .loop
@@ -4962,7 +4937,7 @@ BattleAnim_SandAttack_branch_cbc5b:
 
 BattleAnim_Moonlight_branch_cbc6a:
 BattleAnim_MorningSun_branch_cbc6a:
-BattleAnim_Synthesis_branch_cbc6a:
+BattleAnim_Synthesis_branch_cbc6a: ; removed
 	anim_sound 0, 0, SFX_METRONOME
 	anim_obj ANIM_OBJ_9D,   5, 4,   8, 0, $0
 	anim_wait 5
@@ -4974,7 +4949,7 @@ BattleAnim_Synthesis_branch_cbc6a:
 
 BattleAnim_Moonlight_branch_cbc80:
 BattleAnim_MorningSun_branch_cbc80:
-BattleAnim_Synthesis_branch_cbc80:
+BattleAnim_Synthesis_branch_cbc80: ; removed
 	anim_sound 0, 0, SFX_METRONOME
 .loop
 	anim_obj ANIM_OBJ_9D,   3, 0,   8, 0, $0
@@ -5515,4 +5490,13 @@ BattleAnim_ShowMon_1:
 ;	anim_sound 0, 1, SFX_NIGHTMARE
 ;	anim_wait 96
 ;	anim_bgp $e4
+;	anim_ret
+
+;BattleAnim_Pound: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_sound 0, 1, SFX_POUND
+;	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
+;	anim_wait 6
+;	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
+;	anim_wait 16
 ;	anim_ret

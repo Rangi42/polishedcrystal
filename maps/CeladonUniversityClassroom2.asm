@@ -1,8 +1,9 @@
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM2_BLANCHE
+	const CELADONUNIVERSITYCLASSROOM2_TEACHER
 	const CELADONUNIVERSITYCLASSROOM2_YOUNGSTER
 	const CELADONUNIVERSITYCLASSROOM2_CHILD
-	const CELADONUNIVERSITYCLASSROOM2_FISHER
+	const CELADONUNIVERSITYCLASSROOM2_LADY
 	const CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M
 
 CeladonUniversityClassroom2_MapScriptHeader:
@@ -25,6 +26,20 @@ CeladonUniversityClassroom2BlancheScript:
 
 	para "will be doomed to"
 	line "repeat it."
+	done
+
+CeladonUniversityClassroom2TeacherScript:
+	jumptextfaceplayer .Text
+
+.Text:
+	text "I'm afraid Blanche"
+	line "isn't available."
+
+	para "I'm the substitute"
+	line "until they return"
+
+	para "from an errand on"
+	line "Shamouti Island."
 	done
 
 CeladonUniversityClassroom2YoungsterScript:
@@ -56,7 +71,7 @@ CeladonUniversityClassroom2ChildScript:
 	cont "it up!"
 	done
 
-CeladonUniversityClassroom2TeacherScript:
+CeladonUniversityClassroom2LadyScript:
 	jumptextfaceplayer .Text
 
 .Text:
@@ -149,9 +164,6 @@ CeladonUniversityClassroom2Bookshelf2:
 	done
 
 CeladonUniversityClassroom2_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $2, 7, CELADON_UNIVERSITY_1F
@@ -170,8 +182,9 @@ CeladonUniversityClassroom2_MapEventHeader:
 
 .PersonEvents:
 	db 5
-	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2BlancheScript, -1
+	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2BlancheScript, EVENT_CELADON_UNIVERSITY_BLANCHE
+	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, EVENT_SHAMOUTI_COAST_BLANCHE
 	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2YoungsterScript, -1
 	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2ChildScript, -1
-	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, -1
+	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2LadyScript, -1
 	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1

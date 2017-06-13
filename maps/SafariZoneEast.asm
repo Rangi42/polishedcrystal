@@ -77,9 +77,6 @@ SafariZoneEastTrainerTipsSignText:
 	done
 
 SafariZoneEast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $18, $2, 3, SAFARI_ZONE_HUB

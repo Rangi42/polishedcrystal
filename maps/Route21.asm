@@ -383,9 +383,6 @@ Route21HiddenStardust2:
 	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_2, STARDUST
 
 Route21_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

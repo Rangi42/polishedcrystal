@@ -13,20 +13,10 @@ const_value set 2
 
 DarkCaveVioletEntrance_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 DarkCaveVioletEntranceFalknerTrigger:
 	waitsfx
@@ -174,9 +164,6 @@ DarkCaveVioletEntranceFalknerDarknessText:
 	done
 
 DarkCaveVioletEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $3, 3, ROUTE_31
@@ -185,7 +172,7 @@ DarkCaveVioletEntrance_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $2, $5, $0, DarkCaveVioletEntranceFalknerTrigger, $0, $0
+	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger
 
 .Signposts:
 	db 1

@@ -12,26 +12,16 @@ const_value set 2
 
 TinTower1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x18502a, 0
-	dw UnknownScript_0x18502e, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18502f
-
 	dbw MAPCALLBACK_TILES, TinTowerStairsCallback
 
-UnknownScript_0x18502a:
+.Trigger0:
 	priorityjump SuicuneBattle
-	end
-
-UnknownScript_0x18502e:
 	end
 
 UnknownScript_0x18502f:
@@ -524,9 +514,6 @@ UnknownText_0x1858d0:
 	done
 
 TinTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $7, 3, BELLCHIME_TRAIL

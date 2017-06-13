@@ -17,23 +17,16 @@ const_value set 2
 IlexForest_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .FarfetchdCallback
-
-.Trigger0:
-	end
 
 .Trigger1:
 	priorityjump IlexForestFinishCelebiEventScript
+.Trigger0:
 	end
 
 .FarfetchdCallback:
@@ -1296,9 +1289,6 @@ Bug_catcherWayneAfterText:
 	done
 
 IlexForest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $3, 3, ROUTE_34_ILEX_FOREST_GATE

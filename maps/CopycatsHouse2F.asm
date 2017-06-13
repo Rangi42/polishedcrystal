@@ -12,9 +12,6 @@ CopycatsHouse2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
 
 CopycatsHouse2FCallback:
@@ -361,9 +358,6 @@ CopycatsHouse2FDollText:
 	done
 
 CopycatsHouse2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $3, 3, COPYCATS_HOUSE_1F

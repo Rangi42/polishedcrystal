@@ -20,9 +20,6 @@ GoldenrodHarborGateOfficerText:
 	done
 
 GoldenrodHarborGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 1, GOLDENROD_HARBOR

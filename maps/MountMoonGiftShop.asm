@@ -28,9 +28,6 @@ UnknownText_0x771b3:
 	done
 
 MountMoonGiftShop_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 2, MOUNT_MOON_SQUARE

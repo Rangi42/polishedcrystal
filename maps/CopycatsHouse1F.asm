@@ -73,9 +73,6 @@ UnknownText_0x18ae4b:
 	done
 
 CopycatsHouse1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $2, 8, SAFFRON_CITY

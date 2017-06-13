@@ -117,6 +117,7 @@ ENDM
 	landmark 120,  84, DarkCaveName
 	landmark 132, 104, Route46Name
 	landmark 152,  76, SilverCaveName
+	landmark 110, 140, FastShipName
 	landmark 132,  38, SinjohRuinsName
 	landmark 132,  34, MystriStageName
 	landmark  60, 116, PalletTownName
@@ -180,21 +181,22 @@ ENDM
 	landmark  36,  68, VictoryRoadName
 	landmark  36,  52, IndigoPlateauName
 	landmark  24,  92, Route28Name
-	landmark  28, 148, ShamoutiIslandName
-	landmark  36, 148, BeautifulBeachName
-	landmark  24, 140, RockyBeachName
-	landmark  32, 140, NoisyForestName
-	landmark  36, 140, ShrineRuinsName
-	landmark  22, 146, ShamoutiTunnelName
-	landmark  18, 150, WarmBeachName
-	landmark  18, 150, ShamoutiCoastName
-	landmark  18, 150, FireIslandName
-	landmark  18, 150, IceIslandName
-	landmark  18, 150, LightningIslandName
-	landmark 110, 140, FastShipName
-	landmark 124, 156, NavelRockName
-	landmark 164,  92, FarawayIslandName
 	landmark  62, 150, CinnabarLabName
+	landmark  76,  68, ShamoutiIslandName
+	landmark  92,  76, BeautifulBeachName
+	landmark  76,  56, RockyBeachName
+	landmark  84,  56, NoisyForestName
+	landmark  92,  60, ShrineRuinsName
+	landmark  60,  68, ShamoutiTunnelName
+	landmark  60,  76, WarmBeachName
+	landmark  60,  88, ShamoutiCoastName
+	landmark  68,  92, FireIslandName
+	landmark  84,  92, IceIslandName
+	landmark 100,  92, LightningIslandName
+	landmark  76, 124, Route49Name
+	landmark  84, 124, ValenciaIslandName
+	landmark 144, 136, NavelRockName
+	landmark  32, 136, FarawayIslandName
 
 
 NewBarkTownName:       db "New Bark¯Town@"
@@ -330,6 +332,8 @@ ShamoutiCoastName:     db "Shamouti¯Coast@"
 FireIslandName:        db "Fire¯Island@"
 IceIslandName:         db "Ice Island@"
 LightningIslandName:   db "Lightning¯Island@"
+Route49Name:           db "Route 49@"
+ValenciaIslandName:    db "Valencia¯Island@"
 NavelRockName:         db "Navel Rock@"
 FarawayIslandName:     db "Faraway¯Island@"
 SinjohRuinsName:       db "Sinjoh¯Ruins@"
@@ -343,39 +347,19 @@ RegionCheck: ; 0x1caea1
 ; If in Johto, returns 0 in e.
 ; If in Kanto, returns 1 in e.
 ; If on Shamouti Island, returns 2 in e.
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp FAST_SHIP
-	jr z, .johto
-	cp CINNABAR_LAB
-	jr z, .kanto
-	cp SPECIAL_MAP
-	jr nz, .ok
-
-; In a special map, get the backup map group / map id
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-.ok
-	cp KANTO_LANDMARK
-	jr c, .johto
+	call GetCurrentLandmark
 	cp SHAMOUTI_LANDMARK
-	jr c, .kanto
-.shamouti
-	ld e, 2
+	jr nc, .shamouti
+	cp KANTO_LANDMARK
+	jr nc, .kanto
+.johto
+	ld e, JOHTO_REGION
 	ret
 
-.johto
-	ld e, 0
+.shamouti
+	ld e, ORANGE_REGION
 	ret
 
 .kanto
-	ld e, 1
+	ld e, KANTO_REGION
 	ret
-

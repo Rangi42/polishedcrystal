@@ -10,32 +10,10 @@ const_value set 2
 
 Route23_MapScriptHeader:
 .MapTriggers:
-	db 9
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
-	maptrigger .Trigger3
-	maptrigger .Trigger4
-	maptrigger .Trigger5
-	maptrigger .Trigger6
-	maptrigger .Trigger7
-	maptrigger .Trigger8
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-.Trigger1:
-.Trigger2:
-.Trigger3:
-.Trigger4:
-.Trigger5:
-.Trigger6:
-.Trigger7:
-.Trigger8:
-	end
 
 Route23ZephyrBadgeOfficerScript:
 	faceplayer
@@ -243,9 +221,6 @@ VictoryRoadSignText:
 	done
 
 Route23_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $87, $7, 5, POKEMON_LEAGUE_GATE
@@ -255,29 +230,29 @@ Route23_MapEventHeader:
 
 .XYTriggers:
 	db 23
-	xy_trigger 0, $83, $e, $0, Route23ZephyrBadgeTriggerScript, $0, $0
-	xy_trigger 1, $7b, $9, $0, Route23HiveBadgeTriggerScript, $0, $0
-	xy_trigger 2, $6b, $a, $0, Route23PlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $6b, $c, $0, Route23PlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $6b, $d, $0, Route23PlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $6b, $e, $0, Route23PlainBadgeTriggerScript, $0, $0
-	xy_trigger 2, $6b, $f, $0, Route23PlainBadgeTriggerScript, $0, $0
-	xy_trigger 3, $62, $8, $0, Route23FogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $62, $9, $0, Route23FogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $62, $b, $0, Route23FogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $62, $c, $0, Route23FogBadgeTriggerScript, $0, $0
-	xy_trigger 3, $62, $d, $0, Route23FogBadgeTriggerScript, $0, $0
-	xy_trigger 4, $53, $4, $0, Route23StormBadgeTriggerScript, $0, $0
-	xy_trigger 4, $53, $6, $0, Route23StormBadgeTriggerScript, $0, $0
-	xy_trigger 4, $53, $7, $0, Route23StormBadgeTriggerScript, $0, $0
-	xy_trigger 5, $46, $8, $0, Route23MineralBadgeTriggerScript, $0, $0
-	xy_trigger 5, $46, $9, $0, Route23MineralBadgeTriggerScript, $0, $0
-	xy_trigger 5, $46, $a, $0, Route23MineralBadgeTriggerScript, $0, $0
-	xy_trigger 5, $46, $c, $0, Route23MineralBadgeTriggerScript, $0, $0
-	xy_trigger 5, $46, $d, $0, Route23MineralBadgeTriggerScript, $0, $0
-	xy_trigger 6, $37, $c, $0, Route23GlacierBadgeTriggerScript, $0, $0
-	xy_trigger 7, $2f, $6, $0, Route23RisingBadgeTriggerScript, $0, $0
-	xy_trigger 7, $2f, $7, $0, Route23RisingBadgeTriggerScript, $0, $0
+	xy_trigger 0, $83, $e, Route23ZephyrBadgeTriggerScript
+	xy_trigger 1, $7b, $9, Route23HiveBadgeTriggerScript
+	xy_trigger 2, $6b, $a, Route23PlainBadgeTriggerScript
+	xy_trigger 2, $6b, $c, Route23PlainBadgeTriggerScript
+	xy_trigger 2, $6b, $d, Route23PlainBadgeTriggerScript
+	xy_trigger 2, $6b, $e, Route23PlainBadgeTriggerScript
+	xy_trigger 2, $6b, $f, Route23PlainBadgeTriggerScript
+	xy_trigger 3, $62, $8, Route23FogBadgeTriggerScript
+	xy_trigger 3, $62, $9, Route23FogBadgeTriggerScript
+	xy_trigger 3, $62, $b, Route23FogBadgeTriggerScript
+	xy_trigger 3, $62, $c, Route23FogBadgeTriggerScript
+	xy_trigger 3, $62, $d, Route23FogBadgeTriggerScript
+	xy_trigger 4, $53, $4, Route23StormBadgeTriggerScript
+	xy_trigger 4, $53, $6, Route23StormBadgeTriggerScript
+	xy_trigger 4, $53, $7, Route23StormBadgeTriggerScript
+	xy_trigger 5, $46, $8, Route23MineralBadgeTriggerScript
+	xy_trigger 5, $46, $9, Route23MineralBadgeTriggerScript
+	xy_trigger 5, $46, $a, Route23MineralBadgeTriggerScript
+	xy_trigger 5, $46, $c, Route23MineralBadgeTriggerScript
+	xy_trigger 5, $46, $d, Route23MineralBadgeTriggerScript
+	xy_trigger 6, $37, $c, Route23GlacierBadgeTriggerScript
+	xy_trigger 7, $2f, $6, Route23RisingBadgeTriggerScript
+	xy_trigger 7, $2f, $7, Route23RisingBadgeTriggerScript
 
 .Signposts:
 	db 1

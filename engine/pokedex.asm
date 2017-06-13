@@ -97,7 +97,8 @@ InitPokedex: ; 40063
 
 	call Pokedex_OrderMonsByMode
 	call Pokedex_InitCursorPosition
-	call Pokedex_GetLandmark
+	call GetCurrentLandmark
+	ld [wDexCurrentLocation], a
 	farcall DrawDexEntryScreenRightEdge
 	call Pokedex_ResetBGMapMode
 	ret
@@ -120,9 +121,9 @@ Pokedex_InitCursorPosition: ; 400b4
 	ld hl, wPokedexDataStart
 	ld a, [wLastDexEntry]
 	and a
-	jr z, .done
+	ret z
 	cp NUM_POKEMON + 1
-	jr nc, .done
+	ret nc
 
 	ld b, a
 	ld a, [wDexListingEnd]
@@ -134,7 +135,7 @@ Pokedex_InitCursorPosition: ; 400b4
 .loop1
 	ld a, b
 	cp [hl]
-	jr z, .done
+	ret z
 	inc hl
 	ld a, [wDexListingScrollOffset]
 	inc a
@@ -147,35 +148,13 @@ Pokedex_InitCursorPosition: ; 400b4
 .loop2
 	ld a, b
 	cp [hl]
-	jr z, .done
+	ret z
 	inc hl
 	ld a, [wDexListingCursor]
 	inc a
 	ld [wDexListingCursor], a
 	dec c
 	jr nz, .loop2
-
-.done
-	ret
-
-Pokedex_GetLandmark: ; 400ed
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-	cp SPECIAL_MAP
-	jr nz, .load
-
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-.load
-	ld [wDexCurrentLocation], a
 	ret
 
 Pokedex_RunJumptable: ; 4010b
@@ -434,7 +413,7 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	call Pokedex_BlackOutBG
 	xor a
 	ld [hSCX], a
-	call DelayFrame
+	;call DelayFrame
 	ld a, $7
 	ld [hWX], a
 	ld a, $90
@@ -467,6 +446,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	ret
 
 Pokedex_RedisplayDexEntry: ; 4038d
+	call Pokedex_LoadGFX
+	call Pokedex_LoadAnyFootprint
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_GetSelectedMon
 	farcall DisplayDexEntry
@@ -661,9 +642,9 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 .show_search_results
 	ld [wDexListingEnd], a
 	ld a, [wDexListingScrollOffset]
-	ld [wc7e0], a
+	ld [wDexListingScrollOffsetBackup], a
 	ld a, [wDexListingCursor]
-	ld [wc7e1], a
+	ld [wDexListingCursorBackup], a
 	ld a, [wLastDexEntry]
 	ld [wcf65], a
 	xor a
@@ -744,9 +725,9 @@ Pokedex_UpdateSearchResultsScreen: ; 40562 (10:4562)
 	ret
 
 .return_to_search_screen
-	ld a, [wc7e0]
+	ld a, [wDexListingScrollOffsetBackup]
 	ld [wDexListingScrollOffset], a
-	ld a, [wc7e1]
+	ld a, [wDexListingCursorBackup]
 	ld [wDexListingCursor], a
 	ld a, [wcf65]
 	ld [wLastDexEntry], a
@@ -785,6 +766,11 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 
 .a_b
 	call Pokedex_BlackOutBG
+	ld a, [OptionsBuffer]
+	ld [Options2], a
+	xor a
+	ld [OptionsBuffer], a
+	call Pokedex_LoadInvertedFont
 	ld a, DEXSTATE_OPTION_SCR
 	ld [wJumptableIndex], a
 	call DelayFrame
@@ -847,7 +833,7 @@ Pokedex_UnownModeEraseCursor: ; 40654 (10:4654)
 
 Pokedex_UnownModePlaceCursor: ; 40658 (10:4658)
 	ld a, [wDexCurrentUnownIndex]
-	ld c, $5c ; diamond cursor
+	ld c, "." ; diamond cursor
 
 Pokedex_UnownModeUpdateCursorGfx: ; 4065d (10:465d)
 	ld e, a
@@ -1309,7 +1295,7 @@ endr
 	ld h, [hl]
 	ld l, a
 	pop af
-	add $40 - 1 ; Unown A
+	add "A" - 1
 	ld [hl], a
 	inc de
 	inc b
@@ -1480,7 +1466,7 @@ Pokedex_PrintListing: ; 40b0f (10:4b0f)
 ; Prints one entry in the list of Pokémon on the main Pokédex screen.
 	and a
 	ret z
-	call Pokedex_PrintNumber
+	call Pokedex_PrintNumberIfOldMode
 	call Pokedex_PlaceDefaultStringIfNotSeen
 	ret c
 	call Pokedex_PlaceCaughtSymbolIfCaught
@@ -1490,7 +1476,10 @@ Pokedex_PrintListing: ; 40b0f (10:4b0f)
 	call PlaceString
 	ret
 
-Pokedex_PrintNumber: ; 40b6a (10:4b6a)
+Pokedex_PrintNumberIfOldMode: ; 40b6a (10:4b6a)
+	ld a, [wCurrentDexMode]
+	cp DEXMODE_OLD
+	ret nz
 	push hl
 	ld de, -SCREEN_WIDTH
 	add hl, de
@@ -2315,6 +2304,11 @@ Pokedex_FillBox: ; 413fe (10:53fe)
 
 Pokedex_BlackOutBG: ; 41401 (10:5401)
 ; Make BG palettes black so that the BG becomes all black.
+	call _Pokedex_JustBlackOutBG
+	call DelayFrame
+	ret
+
+_Pokedex_JustBlackOutBG:
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -2329,7 +2323,6 @@ Pokedex_BlackOutBG: ; 41401 (10:5401)
 	call DmgToCgbBGPals
 	ld a, $ff
 	call DmgToCgbObjPal0
-	call DelayFrame
 	ret
 
 Pokedex_GetSGBLayout: ; 41423
@@ -2360,7 +2353,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	jr z, .QuestionMark
 	ld a, [wFirstUnownSeen]
 	ld [MonVariant], a
-	
+
 	call Pokedex_GetSelectedMon
 	cp PIKACHU
 	jr z, .use_variant_1
@@ -2485,21 +2478,12 @@ PokedexSlowpokeLZ: ; 416b0
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
 Pokedex_LoadUnownFont: ; 41a2c
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	ld hl, UnownFont
-	ld de, sScratch + $188
-	ld bc, 39 tiles
-	ld a, BANK(UnownFont)
-	call FarCopyBytes
-	ld hl, sScratch + $188
-	ld bc, (NUM_UNOWN + 1) tiles
-	call Pokedex_InvertTiles
-	ld de, sScratch + $188
-	ld hl, VTiles2 tile $40
-	lb bc, BANK(Pokedex_LoadUnownFont), (NUM_UNOWN + 1)
-	call Request2bpp
-	call CloseSRAM
+	ld a, [Options2]
+	ld [OptionsBuffer], a
+	and $ff - FONT_MASK
+	or UNOWN_FONT
+	ld [Options2], a
+	call Pokedex_LoadInvertedFont
 	ret
 
 Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)

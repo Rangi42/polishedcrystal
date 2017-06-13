@@ -203,9 +203,6 @@ Route33SignText:
 	done
 
 Route33_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $9, $b, 3, UNION_CAVE_1F

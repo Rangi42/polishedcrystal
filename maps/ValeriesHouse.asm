@@ -14,9 +14,6 @@ ValeriesHouse_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
 SetupValerieAfterMorningWalkScript:
@@ -197,9 +194,6 @@ ValeriesHouseYellowFairyBookText:
 	done
 
 ValeriesHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 12, ECRUTEAK_CITY

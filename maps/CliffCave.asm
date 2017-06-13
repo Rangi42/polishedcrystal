@@ -49,9 +49,6 @@ CliffCaveRocketText:
 	done
 
 CliffCave_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $13, $7, 2, ROUTE_47

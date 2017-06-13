@@ -71,9 +71,6 @@ CharcoalKilnFarfetchd:
 	closetext
 	end
 
-CharcoalKilnRadio:
-	jumpstd radio2
-
 CharcoalKilnBossText1:
 	text "All the Slowpoke"
 	line "have disappeared"
@@ -146,9 +143,6 @@ FarfetchdText:
 	done
 
 CharcoalKiln_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 2, AZALEA_TOWN

@@ -19,8 +19,6 @@ SaffronCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -353,9 +351,6 @@ PokemonTrainerFanClubSignText:
 	done
 
 SaffronCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 20
 	warp_def $3, $1a, 1, FIGHTING_DOJO

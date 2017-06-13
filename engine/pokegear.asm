@@ -1,3 +1,9 @@
+	const_def
+	const CLOCK_CARD
+	const MAP_CARD
+	const PHONE_CARD
+	const RADIO_CARD
+
 PokeGear: ; 90b8d (24:4b8d)
 	ld hl, Options1
 	ld a, [hl]
@@ -167,51 +173,14 @@ AnimatePokegearModeIndicatorArrow: ; 90d41 (24:4d41)
 	db $00, $10, $20, $30
 ; 90d56
 
-TownMap_GetCurrentLandmark: ; 90d56
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp SPECIAL_MAP
-	ret nz
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	ret
-
-; 90d70
-
 TownMap_InitCursorAndPlayerIconPositions: ; 90d70 (24:4d70)
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	cp FAST_SHIP
-	jr z, .FastShip
-	cp SPECIAL_MAP
-	jr nz, .LoadLandmark
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-.LoadLandmark:
+	call GetCurrentLandmark
 	ld [wPokegearMapPlayerIconLandmark], a
-	ld [wPokegearMapCursorLandmark], a
-	ret
-
-.FastShip:
-	ld [wPokegearMapPlayerIconLandmark], a
-	ld a, NEW_BARK_TOWN
 	ld [wPokegearMapCursorLandmark], a
 	ret
 
 Pokegear_InitJumptableIndices: ; 90d9e (24:4d9e)
-	xor a
+	xor a ; CLOCK_CARD
 	ld [wJumptableIndex], a
 	ld [wcf64], a
 	ret
@@ -241,7 +210,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	call Pokegear_FinishTilemap
 	call TownMapPals
 	ld a, [wcf64]
-	cp 1 ; Town Map
+	cp MAP_CARD
 	jr nz, .not_town_map
 	ld a, [wJumptableIndex]
 	cp 3 ; Johto
@@ -249,10 +218,13 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	ld a, [wJumptableIndex]
 	cp 5 ; Kanto
 	call z, TownMapKantoFlips
+	ld a, [wJumptableIndex]
+	cp 7 ; Orange
+	call z, TownMapOrangeFlips
 .not_town_map
 	ld a, [wcf65]
 	and a
-	jr nz, .kanto_0
+	jr nz, .transition
 	xor a
 	ld [hBGMapAddress], a
 	ld a, VBGMap0 / $100
@@ -261,7 +233,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	ld a, $90
 	jr .finish
 
-.kanto_0
+.transition
 	xor a
 	ld [hBGMapAddress], a
 	ld a, VBGMap1 / $100
@@ -313,18 +285,6 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 ; 90e3f
 
 .Map: ; 90e3f
-	ld a, [wPokegearMapPlayerIconLandmark]
-	cp FAST_SHIP
-	jr z, .johto
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld e, 0
-	jr .ok
-
-.kanto
-	ld e, 1
-.ok
 	farcall PokegearMap
 	ld a, $7
 	ld bc, $12
@@ -447,6 +407,8 @@ PokegearJumptable: ; 90f04 (24:4f04)
 	dw PokegearMap_JohtoMap
 	dw PokegearMap_Init
 	dw PokegearMap_KantoMap
+	dw PokegearMap_Init
+	dw PokegearMap_OrangeMap
 	dw PokegearPhone_Init
 	dw PokegearPhone_Joypad
 	dw PokegearPhone_MakePhoneCall
@@ -476,23 +438,23 @@ PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	bit 0, a
 	jr z, .no_map_card
 	ld c, $2
-	ld b, $1
+	ld b, MAP_CARD
 	jr .done
 
 .no_map_card
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone_card
-	ld c, $7
-	ld b, $2
+	ld c, $9
+	ld b, PHONE_CARD
 	jr .done
 
 .no_phone_card
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $b
-	ld b, $3
+	ld c, $d
+	ld b, RADIO_CARD
 .done
 	call Pokegear_SwitchPage
 	ret
@@ -538,17 +500,17 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 
 PokegearMap_CheckRegion: ; 90fb4 (24:4fb4)
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp FAST_SHIP
-	jr z, .johto
+	cp SHAMOUTI_LANDMARK
+	jr nc, .orange
 	cp KANTO_LANDMARK
 	jr nc, .kanto
-.johto
 	ld a, 3
 	jr .done
-	ret
-
 .kanto
 	ld a, 5
+	jr .done
+.orange
+	ld a, 7
 .done
 	ld [wJumptableIndex], a
 	call ExitPokegearRadio_HandleMusic
@@ -568,13 +530,16 @@ PokegearMap_Init: ; 90fcd (24:4fcd)
 	inc [hl]
 	ret
 
+PokegearMap_JohtoMap: ; 90fee (24:4fee)
+	call TownMap_GetJohtoLandmarkLimits
+	jr PokegearMap_ContinueMap
+
 PokegearMap_KantoMap: ; 90fe9 (24:4fe9)
 	call TownMap_GetKantoLandmarkLimits
 	jr PokegearMap_ContinueMap
 
-PokegearMap_JohtoMap: ; 90fee (24:4fee)
-	ld d, SILVER_CAVE
-	ld e, NEW_BARK_TOWN
+PokegearMap_OrangeMap:
+	call TownMap_GetOrangeLandmarkLimits
 PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld hl, hJoyLast
 	ld a, [hl]
@@ -593,21 +558,21 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone
-	ld c, $7
-	ld b, $2
+	ld c, $9
+	ld b, PHONE_CARD
 	jr .done
 
 .no_phone
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $b
-	ld b, $3
+	ld c, $d
+	ld b, RADIO_CARD
 	jr .done
 
 .left
 	ld c, $0
-	ld b, $0
+	ld b, CLOCK_CARD
 .done
 	call Pokegear_SwitchPage
 	ret
@@ -637,6 +602,7 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld [hl], a
 .wrap_around_up
 	inc [hl]
+	call SkipHiddenOrangeIslandsUp
 	jr .done_dpad
 
 .down
@@ -649,6 +615,8 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld [hl], a
 .wrap_around_down
 	dec [hl]
+	call SkipHiddenOrangeIslandsDown
+
 .done_dpad
 	ld a, [wPokegearMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
@@ -658,6 +626,53 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld b, a
 	ld a, [wPokegearMapCursorLandmark]
 	call PokegearMap_UpdateCursorPosition
+	ret
+
+SkipHiddenOrangeIslandsUp:
+	call CheckSkipNavelRock
+	jr nz, .not_after_navel_rock
+	inc [hl]
+.not_after_navel_rock
+	call CheckSkipFarawayIsland
+	jr nz, .not_after_faraway_island
+	inc [hl]
+.not_after_faraway_island
+	ld a, [hl]
+	cp FARAWAY_ISLAND + 1
+	ret nz
+	ld a, SHAMOUTI_ISLAND
+	ld [hl], a
+	ret
+
+SkipHiddenOrangeIslandsDown:
+	call CheckSkipFarawayIsland
+	jr nz, .not_before_faraway_island
+	dec [hl]
+.not_before_faraway_island
+	call CheckSkipNavelRock
+	ret nz
+	dec [hl]
+	ret
+
+CheckSkipNavelRock:
+	ld a, [hl]
+	cp NAVEL_ROCK
+	ret nz
+	ld de, EVENT_VISITED_NAVEL_ROCK
+	jr CheckSkipLocation
+
+CheckSkipFarawayIsland:
+	ld a, [hl]
+	cp FARAWAY_ISLAND
+	ret nz
+	ld de, EVENT_VISITED_FARAWAY_ISLAND
+CheckSkipLocation:
+	ld b, CHECK_FLAG
+	push hl
+	call EventFlagAction
+	pop hl
+	ld a, c
+	and a
 	ret
 
 PokegearMap_InitPlayerIcon: ; 9106a
@@ -718,7 +733,7 @@ PokegearMap_UpdateLandmarkName: ; 910b4
 	push de
 	farcall GetLandmarkName
 	pop de
-	farcall Function1de2c5
+	farcall TownMap_ConvertLineBreakCharacters
 	hlcoord 8, 0
 	ld [hl], $34
 	ret
@@ -740,17 +755,23 @@ PokegearMap_UpdateCursorPosition: ; 910d4
 
 ; 910e8
 
+TownMap_GetJohtoLandmarkLimits:
+	ld d, SILVER_CAVE
+	ld e, NEW_BARK_TOWN
+	ret
+
 TownMap_GetKantoLandmarkLimits: ; 910e8
+	ld d, ROUTE_28
+	ld e, ROUTE_27
 	ld a, [StatusFlags]
 	bit 6, a
-	jr z, .not_hof
-	ld d, LIGHTNING_ISLAND
+	ret z
 	ld e, PALLET_TOWN
 	ret
 
-.not_hof
-	ld d, ROUTE_28
-	ld e, ROUTE_27
+TownMap_GetOrangeLandmarkLimits:
+	ld d, FARAWAY_ISLAND
+	ld e, SHAMOUTI_ISLAND
 	ret
 
 ; 910f9
@@ -790,8 +811,8 @@ PokegearRadio_Joypad: ; 91112 (24:5112)
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone
-	ld c, $7
-	ld b, $2
+	ld c, $9
+	ld b, PHONE_CARD
 	jr .switch_page
 
 .no_phone
@@ -799,12 +820,12 @@ PokegearRadio_Joypad: ; 91112 (24:5112)
 	bit 0, a
 	jr z, .no_map
 	ld c, $2
-	ld b, $1
+	ld b, MAP_CARD
 	jr .switch_page
 
 .no_map
 	ld c, $0
-	ld b, $0
+	ld b, CLOCK_CARD
 .switch_page
 	call Pokegear_SwitchPage
 	ret
@@ -850,20 +871,20 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 	bit 0, a
 	jr z, .no_map
 	ld c, $2
-	ld b, $1
+	ld b, MAP_CARD
 	jr .switch_page
 
 .no_map
 	ld c, $0
-	ld b, $0
+	ld b, CLOCK_CARD
 	jr .switch_page
 
 .right
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $b
-	ld b, $3
+	ld c, $d
+	ld b, RADIO_CARD
 .switch_page
 	call Pokegear_SwitchPage
 	ret
@@ -966,7 +987,7 @@ PokegearPhone_FinishPhoneCall: ; 91256 (24:5256)
 	and A_BUTTON | B_BUTTON
 	ret z
 	farcall HangUp
-	ld a, $8
+	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
 	call PrintText
@@ -1583,19 +1604,15 @@ RadioChannels:
 
 .InJohto:
 ; if in Johto or on the S.S. Aqua, set carry
-
 ; otherwise clear carry
 	ld a, [wPokegearMapPlayerIconLandmark]
-	cp FAST_SHIP
-	jr z, .johto
 	cp KANTO_LANDMARK
-	jr c, .johto
-.kanto
-	and a
+	jr nc, .kanto_or_orange
+	scf
 	ret
 
-.johto
-	scf
+.kanto_or_orange
+	and a
 	ret
 
 LoadStation_OaksPokemonTalk: ; 91753 (24:5753)
@@ -1832,7 +1849,7 @@ _TownMap: ; 9191c
 	call SkipMusic
 	ld a, $e3
 	ld [rLCDC], a
-	call TownMap_GetCurrentLandmark
+	call TownMap_InitCursorAndPlayerIconPositions
 	ld [wd002], a
 	ld [wd003], a
 	xor a
@@ -1855,15 +1872,19 @@ _TownMap: ; 9191c
 	call DelayFrame
 
 	ld a, [wd002]
+	cp SHAMOUTI_LANDMARK
+	jr nc, .orange
 	cp KANTO_LANDMARK
 	jr nc, .kanto
-	ld d, SILVER_CAVE
-	ld e, NEW_BARK_TOWN
+	call TownMap_GetJohtoLandmarkLimits
 	call .loop
 	jr .resume
-
 .kanto
 	call TownMap_GetKantoLandmarkLimits
+	call .loop
+	jr .resume
+.orange
+	call TownMap_GetOrangeLandmarkLimits
 	call .loop
 
 .resume
@@ -1909,6 +1930,8 @@ _TownMap: ; 9191c
 
 .okay
 	inc [hl]
+	push de
+	call SkipHiddenOrangeIslandsUp
 	jr .next
 
 .pressed_down
@@ -1922,9 +1945,10 @@ _TownMap: ; 9191c
 
 .okay2
 	dec [hl]
+	push de
+	call SkipHiddenOrangeIslandsDown
 
 .next
-	push de
 	ld a, [wd003]
 	call PokegearMap_UpdateLandmarkName
 	ld a, [wd004]
@@ -1938,15 +1962,6 @@ _TownMap: ; 9191c
 ; 91a04
 
 .InitTilemap: ; 91a04
-	ld a, [wd002]
-	cp KANTO_LANDMARK
-	jr nc, .kanto2
-	ld e, $0
-	jr .okay_tilemap
-
-.kanto2
-	ld e, $1
-.okay_tilemap
 	farcall PokegearMap
 	ld a, $7
 	ld bc, 6
@@ -1969,15 +1984,13 @@ _TownMap: ; 9191c
 	ld a, [wd003]
 	call PokegearMap_UpdateLandmarkName
 	call TownMapPals
+
 	ld a, [wd002]
+	cp SHAMOUTI_LANDMARK
+	jp nc, TownMapOrangeFlips
 	cp KANTO_LANDMARK
-	jr nc, .kanto3
-	call TownMapJohtoFlips
-	jr .okay_flips
-.kanto3
-	call TownMapKantoFlips
-.okay_flips
-	ret
+	jp nc, TownMapKantoFlips
+	jp TownMapJohtoFlips
 ; 91a53
 
 PlayRadio: ; 91a53
@@ -2060,32 +2073,26 @@ PlayRadio: ; 91a53
 
 .OakOrPnP: ; 91acb
 	call IsInJohto
-	and a
-	jr nz, .kanto
+	jr nz, .kanto_or_orange
 	call UpdateTime
 	ld a, [TimeOfDay]
 	and a
 	jp z, LoadStation_PokedexShow
 	jp LoadStation_OaksPokemonTalk
 
-.kanto
+.kanto_or_orange
 	jp LoadStation_PlacesAndPeople
 
 ; 91ae1
 
 PokegearMap: ; 91ae1
-	ld a, e
-	and a
-	jr nz, .kanto
 	call LoadTownMapGFX
-	call FillJohtoMap
-	ret
-
-.kanto
-	call LoadTownMapGFX
-	call FillKantoMap
-	ret
-
+	ld a, [wPokegearMapPlayerIconLandmark]
+	cp SHAMOUTI_LANDMARK
+	jp nc, FillOrangeMap
+	cp KANTO_LANDMARK
+	jp nc, FillKantoMap
+	jp FillJohtoMap
 ; 91af3
 
 _FlyMap: ; 91af3
@@ -2361,26 +2368,11 @@ KANTO_FLYPOINT EQU const_value
 ; 91c90
 
 FlyMap: ; 91c90
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-; If we're not in a valid location, i.e. Pokecenter floor 2F,
-
-; the backup map information is used
-	cp SPECIAL_MAP
-	jr nz, .CheckRegion
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-.CheckRegion:
+	call GetCurrentLandmark
 ; The first 46 locations are part of Johto. The rest are in Kanto
 	cp KANTO_LANDMARK
 	jr nc, .KantoFlyMap
-.JohtoFlyMap:
+;.JohtoFlyMap:
 ; Note that .NoKanto should be modified in tandem with this branch
 	push af
 ; Start from New Bark Town
@@ -2491,24 +2483,23 @@ _Area: ; 91d11
 	ld c, 4
 	call Request2bpp
 	call LoadTownMapGFX
-	call FillKantoMap
-	call .PlaceString_MonsNest
-	call TownMapPals
-	call TownMapKantoFlips
-	hlbgcoord 0, 0, VBGMap1
-	call TownMapBGUpdate
-	call FillJohtoMap
-	call .PlaceString_MonsNest
-	call TownMapPals
-	call TownMapJohtoFlips
-	hlbgcoord 0, 0
-	call TownMapBGUpdate
-	ld b, SCGB_POKEGEAR_PALS
-	call GetSGBLayout
-	call SetPalettes
-	xor a
-	ld [hBGMapMode], a
-	xor a ; Johto
+
+	ld a, [wd002]
+	cp SHAMOUTI_LANDMARK
+	jr nc, .shamouti
+	cp KANTO_LANDMARK
+	jr nc, .kanto
+.johto
+	ld a, JOHTO_REGION
+	jr .set_region
+.shamouti
+	ld a, ORANGE_REGION
+	jr .set_region
+.kanto
+	ld a, KANTO_REGION
+.set_region
+	ld [wd003], a
+	call .UpdateGFX
 	call .GetAndPlaceNest
 .loop
 	call JoyTextDelay
@@ -2549,29 +2540,74 @@ _Area: ; 91d11
 	ret
 
 .left
-	ld a, [hWY]
-	cp $90
+	ld a, [wd003]
+	cp JOHTO_REGION ; min
 	ret z
-	call ClearSprites
-	ld a, $90
-	ld [hWY], a
-	xor a ; Johto
+
+	dec a
+	ld [wd003], a
+	jr .update
+
+.right
+	ld a, [wd003]
+	cp ORANGE_REGION ; max
+	ret z
+	cp KANTO_REGION
+	jr z, .check_seen_orange_island
+	ld a, [StatusFlags]
+	bit 6, a ; ENGINE_CREDITS_SKIP
+	ret z
+	jr .go_right
+.check_seen_orange_island
+	ld a, [StatusFlags2]
+	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	ret z
+.go_right
+
+	ld a, [wd003]
+	inc a
+	ld [wd003], a
+
+.update
+	call .UpdateGFX
 	call .GetAndPlaceNest
 	ret
 
-.right
-	ld a, [StatusFlags]
-	bit 6, a ; hall of fame
-	ret z
-	ld a, [hWY]
-	and a
-	ret z
+.UpdateGFX:
 	call ClearSprites
+	farcall _Pokedex_JustBlackOutBG
+	ld a, [wd003]
+	cp KANTO_REGION
+	jr z, .KantoGFX
+	cp ORANGE_REGION
+	jr z, .OrangeGFX
+	call FillJohtoMap
+	call .PlaceString_MonsNest
+	call TownMapPals
+	call TownMapJohtoFlips
+.FinishGFX
+	hlbgcoord 0, 0
+	call TownMapBGUpdate
+	ld b, SCGB_POKEGEAR_PALS
+	call GetSGBLayout
+	call SetPalettes
 	xor a
-	ld [hWY], a
-	ld a, 1 ; Kanto
-	call .GetAndPlaceNest
+	ld [hBGMapMode], a
 	ret
+
+.KantoGFX:
+	call FillKantoMap
+	call .PlaceString_MonsNest
+	call TownMapPals
+	call TownMapKantoFlips
+	jr .FinishGFX
+
+.OrangeGFX:
+	call FillOrangeMap
+	call .PlaceString_MonsNest
+	call TownMapPals
+	call TownMapOrangeFlips
+	jr .FinishGFX
 
 ; 91dcd
 
@@ -2623,7 +2659,7 @@ _Area: ; 91d11
 ; 91e1e
 
 .GetAndPlaceNest: ; 91e1e
-	ld [wd003], a
+	ld a, [wd003]
 	ld e, a
 	farcall FindNest ; load nest landmarks into TileMap[0,0]
 	decoord 0, 0
@@ -2718,27 +2754,31 @@ _Area: ; 91d11
 
 .CheckPlayerLocation: ; 91ea9
 ; Don't show the player's sprite if you're
-
 ; not in the same region as what's currently
 ; on the screen.
 	ld a, [wd002]
-	cp FAST_SHIP
-	jr z, .johto
+	cp SHAMOUTI_LANDMARK
+	jr nc, .player_in_orange
 	cp KANTO_LANDMARK
-	jr c, .johto
-.kanto
+	jr nc, .player_in_kanto
 	ld a, [wd003]
-	and a
-	jr z, .clear
-	jr .ok
-
-.johto
-	ld a, [wd003]
-	and a
+	cp JOHTO_REGION
 	jr nz, .clear
 .ok
 	and a
 	ret
+
+.player_in_kanto
+	ld a, [wd003]
+	cp KANTO_REGION
+	jr nz, .clear
+	jr .ok
+
+.player_in_orange
+	ld a, [wd003]
+	cp ORANGE_REGION
+	jr nz, .clear
+	jr .ok
 
 .clear
 	ld hl, Sprites
@@ -2808,6 +2848,38 @@ FillKantoMap: ; 91f04
 	ld [hl], $60 ; ...nt...
 	inc hl
 	ld [hl], $5e ; ...to
+	ret
+
+FillOrangeMap:
+	ld de, OrangeMap
+	call FillTownMap
+	ld de, EVENT_VISITED_FARAWAY_ISLAND
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret nz
+	ld a, $a
+	hlcoord 1, 12
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	hlcoord 5, 13
+	ld [hl], a
+	hlcoord 2, 14
+	ld [hli], a
+	ld [hli], a
+	inc hl
+	ld [hl], a
+	hlcoord 2, 15
+	ld [hli], a
+	ld [hli], a
+	inc hl
+	ld [hl], a
+	hlcoord 5, 16
+	ld [hl], a
 	ret
 
 FillTownMap: ; 91f07
@@ -2900,6 +2972,10 @@ TownMapJohtoFlips:
 
 TownMapKantoFlips:
 	decoord 0, 0, KantoMap
+	jr TownMapFlips
+
+TownMapOrangeFlips:
+	decoord 0, 0, OrangeMap
 TownMapFlips:
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -2931,7 +3007,7 @@ TownMapMon: ; 91f7b
 	ld [wd265], a
 ; Get FlyMon icon
 	ld e, 8 ; starting tile in VRAM
-	farcall GetSpeciesIcon
+	farcall PokegearFlyMap_GetMonIcon
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
@@ -2961,7 +3037,6 @@ TownMapPlayerIcon: ; 91fa6
 	ld e, l
 	ld hl, VTiles0 tile $14
 	ld c, 4 ; # tiles
-	ld a, BANK(ChrisSpriteGFX) ; does nothing
 	call Request2bpp
 ; Animation/palette
 	depixel 0, 0
@@ -3011,6 +3086,9 @@ INCBIN "gfx/misc/johto.bin"
 KantoMap: ; 92168
 INCBIN "gfx/misc/kanto.bin"
 ; 922d1
+
+OrangeMap:
+INCBIN "gfx/misc/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
 INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"

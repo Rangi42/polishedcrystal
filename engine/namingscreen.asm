@@ -85,10 +85,7 @@ endr
 .Pokemon: ; 1173e (4:573e)
 	ld a, [CurPartySpecies]
 	ld [wd265], a
-	ld hl, LoadMenuMonIcon
-	ld a, BANK(LoadMenuMonIcon)
-	ld e, $1 ; naming screen
-	rst FarCall
+	farcall LoadNamingScreenMonIcon
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
@@ -441,7 +438,14 @@ endr
 	jr z, .end
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter
-	ret nc
+	jr c, .start
+	ld a, [wcf64]
+	and a ; 0?
+	ret nz
+	ld a, [wNamingScreenCurrNameLength]
+	dec a ; 1?
+	jr z, .select
+	ret
 
 .start
 	ld hl, wNamingScreenCursorObjectPointer
@@ -705,7 +709,7 @@ MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
 	ld a, [hl]
 	cp "@"
 	jr z, .end_of_string
-	ld [hl], "_"
+	ld [hl], "<_>"
 	and a
 	ret
 
@@ -722,12 +726,12 @@ NamingScreen_DeleteCharacter: ; 11bbc (4:5bbc)
 	ret z
 	dec [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], "_"
+	ld [hl], "<_>"
 	inc hl
 	ld a, [hl]
-	cp "_"
+	cp "<_>"
 	ret nz
-	ld [hl], "—"
+	ld [hl], "<—>"
 	ret
 
 NamingScreen_GetTextCursorPosition: ; 11bd0 (4:5bd0)
@@ -746,17 +750,17 @@ NamingScreen_GetTextCursorPosition: ; 11bd0 (4:5bd0)
 ; 11be0
 
 NamingScreen_InitNameEntry: ; 11be0
-; load "_", ("—" * [wNamingScreenMaxNameLength]), $50 into the dw address at wNamingScreenDestinationPointer
+; load "<_>", ("<—>" * [wNamingScreenMaxNameLength]), "@" into the dw address at wNamingScreenDestinationPointer
 	ld hl, wNamingScreenDestinationPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld [hl], "_"
+	ld [hl], "<_>"
 	inc hl
 	ld a, [wNamingScreenMaxNameLength]
 	dec a
 	ld c, a
-	ld a, "—"
+	ld a, "<—>"
 .loop
 	ld [hli], a
 	dec c
@@ -775,9 +779,9 @@ NamingScreen_StoreEntry: ; 11bf7 (4:5bf7)
 	ld c, a
 .loop
 	ld a, [hl]
-	cp "—"
+	cp "<—>"
 	jr z, .terminator
-	cp "_"
+	cp "<_>"
 	jr nz, .not_terminator
 .terminator
 	ld [hl], "@"
@@ -836,16 +840,6 @@ LoadNamingScreenGFX: ; 11c51
 	call LoadStandardFont
 	call LoadFontsExtra
 
-	ld de, NamingScreenGFX_MiddleLine
-	ld hl, VTiles1 tile ("—" - $80)
-	lb bc, BANK(NamingScreenGFX_MiddleLine), 1
-	call Get1bpp
-
-	ld de, NamingScreenGFX_UnderLine
-	ld hl, VTiles1 tile ("_" - $80)
-	lb bc, BANK(NamingScreenGFX_UnderLine), 1
-	call Get1bpp
-
 	ld de, VTiles2 tile $60
 	ld hl, NamingScreenGFX_Border
 	ld bc, 1 tiles
@@ -876,14 +870,6 @@ LoadNamingScreenGFX: ; 11c51
 	ret
 
 ; 11cb7
-
-NamingScreenGFX_MiddleLine:
-INCBIN "gfx/misc/naming_middleline.1bpp"
-; 11e6d
-
-NamingScreenGFX_UnderLine: ; 11e6d
-INCBIN "gfx/misc/naming_underline.1bpp"
-; 11e75
 
 NamingScreenGFX_Border: ; 11cb7
 INCBIN "gfx/misc/naming_border.2bpp"
@@ -1167,7 +1153,7 @@ endr
 	ret nz
 	inc [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], "_"
+	ld [hl], "<_>"
 	dec hl
 	ld [hl], "<NL>"
 	ret
@@ -1193,7 +1179,7 @@ endr
 	ret nz
 	dec [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], "_"
+	ld [hl], "<_>"
 	inc hl
 	ld [hl], "<NL>"
 	ret

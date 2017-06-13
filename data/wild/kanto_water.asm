@@ -228,10 +228,4 @@
 	db 55, HORSEA
 	db 60, SLOWBRO
 
-	map NAVEL_ROCK_OUTSIDE
-	db 6 percent ; encounter rate
-	db 80, TENTACRUEL
-	db 80, STARMIE
-	db 80, LANTURN
-
 	db -1 ; end

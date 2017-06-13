@@ -20,9 +20,6 @@ TinTower5FHiddenCarbos:
 
 
 TinTower5F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $f, $9, 2, TIN_TOWER_6F

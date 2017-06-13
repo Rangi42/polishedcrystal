@@ -303,9 +303,6 @@ CianwoodGymBlackBeltText:
 	done
 
 CianwoodGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $4, 2, CIANWOOD_CITY

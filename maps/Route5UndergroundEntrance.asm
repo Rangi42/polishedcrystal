@@ -20,9 +20,6 @@ UnknownText_0x18b558:
 	done
 
 Route5UndergroundEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $3, 1, ROUTE_5

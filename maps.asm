@@ -36,7 +36,7 @@ SECTION "Map Blockdata 5", ROMX, BANK[$A]
 INCLUDE "maps/blockdata_5.asm"
 
 
-SECTION "Map Blockdata 6", ROMX, BANK[$1B]
+SECTION "Map Blockdata 6", ROMX, BANK[$38]
 
 INCLUDE "maps/blockdata_6.asm"
 
@@ -155,6 +155,8 @@ INCLUDE "maps/Route1617Gate.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route18Gate.asm"
 INCLUDE "maps/Underground.asm"
+INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
+INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 
 
 SECTION "Map Scripts 7", ROMX, BANK[MAP_SCRIPTS_7]
@@ -429,8 +431,6 @@ INCLUDE "maps/Route42EcruteakGate.asm"
 
 SECTION "Map Scripts 18", ROMX, BANK[MAP_SCRIPTS_18]
 
-INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
-INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 INCLUDE "maps/AzaleaTown.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/SaffronCity.asm"
@@ -630,13 +630,17 @@ INCLUDE "maps/CeladonUniversityDeansOffice.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"
 INCLUDE "maps/CeladonUniversityWillowsOffice.asm"
 INCLUDE "maps/CeladonUniversityLounge.asm"
+
+
+SECTION "Map Scripts 30", ROMX
+
 INCLUDE "maps/CeladonUniversityClassroom1.asm"
 INCLUDE "maps/CeladonUniversityClassroom2.asm"
 INCLUDE "maps/CeladonUniversityClassroom3.asm"
 INCLUDE "maps/CeladonUniversityClassroom4.asm"
 
 
-SECTION "Map Scripts 30", ROMX
+SECTION "Map Scripts 31", ROMX
 
 INCLUDE "maps/CeladonUniversityHyperTestRoom.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
@@ -648,7 +652,7 @@ INCLUDE "maps/SafariZoneWestRestHouse1.asm"
 INCLUDE "maps/SafariZoneWestRestHouse2.asm"
 
 
-SECTION "Map Scripts 31", ROMX
+SECTION "Map Scripts 32", ROMX
 
 INCLUDE "maps/CeladonHotel1F.asm"
 INCLUDE "maps/CeladonHotel2F.asm"
@@ -661,7 +665,7 @@ INCLUDE "maps/CeladonOldManSpeechHouse.asm"
 INCLUDE "maps/CeladonDevelopmentSpeechHouse.asm"
 
 
-SECTION "Map Scripts 32", ROMX
+SECTION "Map Scripts 33", ROMX
 
 INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/MountMoon1F.asm"
@@ -671,7 +675,7 @@ INCLUDE "maps/Route18East.asm"
 INCLUDE "maps/Route18West.asm"
 
 
-SECTION "Map Scripts 33", ROMX
+SECTION "Map Scripts 34", ROMX
 
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route34Coast.asm"
@@ -692,7 +696,7 @@ INCLUDE "maps/SafariZoneWest.asm"
 INCLUDE "maps/Route19BeachHouse.asm"
 
 
-SECTION "Map Scripts 34", ROMX
+SECTION "Map Scripts 35", ROMX
 
 INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/OlivinePort.asm"
@@ -700,7 +704,7 @@ INCLUDE "maps/VermilionPort.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
 
 
-SECTION "Map Scripts 35", ROMX
+SECTION "Map Scripts 36", ROMX
 
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/MurkySwamp.asm"
@@ -713,7 +717,7 @@ INCLUDE "maps/ScaryCaveShipwreck.asm"
 INCLUDE "maps/PokemonTrainerFanClub.asm"
 
 
-SECTION "Map Scripts 36", ROMX
+SECTION "Map Scripts 37", ROMX
 
 INCLUDE "maps/SaffronHitmontopKidHouse.asm"
 INCLUDE "maps/SaffronBookSpeechHouse.asm"
@@ -726,7 +730,7 @@ INCLUDE "maps/Route16West.asm"
 INCLUDE "maps/PsychicInversHouse.asm"
 
 
-SECTION "Map Scripts 37", ROMX
+SECTION "Map Scripts 38", ROMX
 
 INCLUDE "maps/DimCave1F.asm"
 INCLUDE "maps/DimCave2F.asm"
@@ -737,22 +741,26 @@ INCLUDE "maps/Route32CoastHouse.asm"
 INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
-SECTION "Map Scripts 38", ROMX
+SECTION "Map Scripts 39", ROMX
 
 INCLUDE "maps/BattleTower2F.asm"
 
 
-SECTION "Map Scripts 39", ROMX
+SECTION "Map Scripts 40", ROMX
 
-INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiIsland.asm"
 INCLUDE "maps/BeautifulBeach.asm"
 INCLUDE "maps/WarmBeach.asm"
-INCLUDE "maps/ShamoutiCoast.asm"
 INCLUDE "maps/RockyBeach.asm"
+INCLUDE "maps/ShamoutiCoast.asm"
 INCLUDE "maps/ShamoutiShrineRuins.asm"
 INCLUDE "maps/ShamoutiTunnel.asm"
 INCLUDE "maps/NoisyForest.asm"
+
+
+SECTION "Map Scripts 41", ROMX
+
+INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiPokeCenter1F.asm"
 INCLUDE "maps/ShamoutiHotel1F.asm"
 INCLUDE "maps/ShamoutiHotel2F.asm"
@@ -769,3 +777,13 @@ INCLUDE "maps/BeautifulBeachVilla.asm"
 INCLUDE "maps/WarmBeachShack.asm"
 INCLUDE "maps/WarmBeachHouse.asm"
 INCLUDE "maps/RockyBeachHouse.asm"
+
+
+SECTION "Map Scripts 41", ROMX
+
+INCLUDE "maps/ValenciaIsland.asm"
+INCLUDE "maps/Route49.asm"
+INCLUDE "maps/IvysLab.asm"
+INCLUDE "maps/IvysHouse.asm"
+INCLUDE "maps/ValenciaHouse.asm"
+INCLUDE "maps/ValenciaPort.asm"

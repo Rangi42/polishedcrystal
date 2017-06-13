@@ -1,49 +1,12 @@
 RunActivationAbilitiesInner:
+	ld hl, BattleEntryAbilities
+	jr UserAbilityJumptable
+RunStatusHealAbilities:
+	ld hl, StatusHealAbilities
+UserAbilityJumptable:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	cp TRACE
-	jp z, TraceAbility
-	cp IMPOSTER
-	jp z, ImposterAbility
-	cp DRIZZLE
-	jp z, DrizzleAbility
-	cp DROUGHT
-	jp z, DroughtAbility
-	cp SAND_STREAM
-	jp z, SandStreamAbility
-	cp SNOW_WARNING
-	jp z, SnowWarningAbility
-	cp CLOUD_NINE ; just prints a message
-	jr nz, .skip_cloud_nine
-	ld hl, NotifyCloudNine
-	jp StdBattleTextBox
-.skip_cloud_nine
-	cp INTIMIDATE
-	jp z, IntimidateAbility
-	cp PRESSURE ; just prints a message
-	jr nz, .skip_pressure
-	ld hl, NotifyPressure
-	jp StdBattleTextBox
-.skip_pressure
-	cp DOWNLOAD
-	jp z, DownloadAbility
-	cp MOLD_BREAKER ; just prints a message
-	jr nz, .skip_mold_breaker
-	ld hl, NotifyMoldBreaker
-	jp StdBattleTextBox
-.skip_mold_breaker
-	cp ANTICIPATION
-	jp z, AnticipationAbility
-	cp FOREWARN
-	jp z, ForewarnAbility
-	cp FRISK
-	jp z, FriskAbility
-	cp UNNERVE ; just prints a message
-	jr nz, .skip_unnerve
-	ld hl, NotifyUnnerve
-	jp StdBattleTextBox
-.skip_unnerve
-	jp RunStatusHealAbilities
+	jp AbilityJumptable
 
 RunEnemyStatusHealAbilities:
 	call SwitchTurn
@@ -51,28 +14,48 @@ RunEnemyStatusHealAbilities:
 	call SwitchTurn
 	ret
 
-RunStatusHealAbilities:
-; Procs abilities that protect against statuses.
-	; Needed because this is called elsewhere.
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp LIMBER
-	jp z, LimberAbility
-	cp IMMUNITY
-	jp z, ImmunityAbility
-	cp MAGMA_ARMOR
-	jp z, MagmaArmorAbility
-	cp WATER_VEIL
-	jp z, WaterVeilAbility
-	cp INSOMNIA
-	jp z, InsomniaAbility
-	cp VITAL_SPIRIT
-	jp z, VitalSpiritAbility
-	cp OWN_TEMPO
-	jp z, OwnTempoAbility
-	cp OBLIVIOUS
-	jp z, ObliviousAbility
-	ret
+BattleEntryAbilities:
+	dbw TRACE, TraceAbility
+	dbw IMPOSTER, ImposterAbility
+	dbw DRIZZLE, DrizzleAbility
+	dbw DROUGHT, DroughtAbility
+	dbw SAND_STREAM, SandStreamAbility
+	dbw SNOW_WARNING, SnowWarningAbility
+	dbw CLOUD_NINE, CloudNineAbility
+	dbw INTIMIDATE, IntimidateAbility
+	dbw PRESSURE, PressureAbility
+	dbw DOWNLOAD, DownloadAbility
+	dbw MOLD_BREAKER, MoldBreakerAbility
+	dbw ANTICIPATION, AnticipationAbility
+	dbw FOREWARN, ForewarnAbility
+	dbw FRISK, FriskAbility
+	dbw UNNERVE, UnnerveAbility
+	; fallthrough
+StatusHealAbilities:
+; Status immunity abilities that autoproc if the user gets the status or the ability
+	dbw LIMBER, LimberAbility
+	dbw IMMUNITY, ImmunityAbility
+	dbw MAGMA_ARMOR, MagmaArmorAbility
+	dbw WATER_VEIL, WaterVeilAbility
+	dbw INSOMNIA, InsomniaAbility
+	dbw VITAL_SPIRIT, VitalSpiritAbility
+	dbw OWN_TEMPO, OwnTempoAbility
+	dbw OBLIVIOUS, ObliviousAbility
+	dbw -1, -1
+
+CloudNineAbility:
+	ld hl, NotifyCloudNine
+	jr NotificationAbilities
+PressureAbility:
+	ld hl, NotifyPressure
+	jr NotificationAbilities
+MoldBreakerAbility:
+	ld hl, NotifyMoldBreaker
+	jr NotificationAbilities
+UnnerveAbility:
+	ld hl, NotifyUnnerve
+NotificationAbilities:
+	jp StdBattleTextBox
 
 ImmunityAbility:
 	ld a, 1 << PSN
@@ -810,24 +793,10 @@ RunEnemyNullificationAbilities:
 	call SwitchTurn
 	ret
 .do_enemy_abilities
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DRY_SKIN
-	jp z, DrySkinAbility
-	cp FLASH_FIRE
-	jp z, FlashFireAbility
-	cp LIGHTNING_ROD
-	jp z, LightningRodAbility
-	cp MOTOR_DRIVE
-	jp z, MotorDriveAbility
-	cp SAP_SIPPER
-	jp z, SapSipperAbility
-	cp VOLT_ABSORB
-	jp z, VoltAbsorbAbility
-	cp WATER_ABSORB
-	jp z, WaterAbsorbAbility
-	cp DAMP
-	jp z, DampAbility
+	ld hl, NullificationAbilities
+	call UserAbilityJumptable
+	ret nz
+
 	; For other abilities, don't do anything except print a message (for example Levitate)
 	call ShowAbilityActivation
 	call SwitchTurn
@@ -835,6 +804,17 @@ RunEnemyNullificationAbilities:
 	call StdBattleTextBox
 	call SwitchTurn
 	ret
+
+NullificationAbilities:
+	dbw DRY_SKIN, DrySkinAbility
+	dbw FLASH_FIRE, FlashFireAbility
+	dbw LIGHTNING_ROD, LightningRodAbility
+	dbw MOTOR_DRIVE, MotorDriveAbility
+	dbw SAP_SIPPER, SapSipperAbility
+	dbw VOLT_ABSORB, VoltAbsorbAbility
+	dbw WATER_ABSORB, WaterAbsorbAbility
+	dbw DAMP, DampAbility
+	dbw -1, -1
 
 DampAbility:
 	; doesn't use the normal activation message or "doesn't affect", because it
@@ -844,14 +824,14 @@ DampAbility:
 
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp DEFIANT
-	call z, DefiantAbility
-	cp COMPETITIVE
-	call z, CompetitiveAbility
-	call SwitchTurn
-	ret
+	ld hl, StatIncreaseAbilities
+	call UserAbilityJumptable
+	jp SwitchTurn
+
+StatIncreaseAbilities:
+	dbw COMPETITIVE, CompetitiveAbility
+	dbw DEFIANT, DefiantAbility
+	dbw -1, -1
 
 CompetitiveAbility:
 	ld b, $10 | SP_ATTACK
@@ -1071,8 +1051,14 @@ CompoundEyesAbility:
 	jp Divide
 
 HustleAccuracyAbility:
-; Decrease accuracy by 50%
-	ld [hl], 2
+; Decrease accuracy for physical attacks by 20%
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp PHYSICAL
+	ret nz
+	ld [hl], 5
+	call Multiply
+	ld [hl], 6
 	ld b, 4
 	jp Divide
 
@@ -1123,46 +1109,39 @@ WeatherAccAbility:
 	jp Divide
 
 RunWeatherAbilities:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	ld b, a
+	ld hl, WeatherAbilities
+	jp UserAbilityJumptable
+
+WeatherAbilities:
+	dbw DRY_SKIN, DrySkinWeatherAbility
+	dbw SOLAR_POWER, SolarPowerWeatherAbility
+	dbw ICE_BODY, IceBodyAbility
+	dbw RAIN_DISH, RainDishAbility
+	dbw HYDRATION, HydrationAbility
+	dbw -1, -1
+
+DrySkinWeatherAbility:
+	call RainRecoveryAbility
+	; fallthrough (these need different weather so calling both is OK)
+SolarPowerWeatherAbility:
 	call GetWeatherAfterCloudNine
-	cp WEATHER_HAIL
-	jr z, .hail
-	cp WEATHER_SANDSTORM
-	jr z, .sandstorm
-	cp WEATHER_RAIN
-	jr z, .rain
 	cp WEATHER_SUN
-	jr z, .sun
-	ret
-.hail
-	ld a, b
-	cp ICE_BODY
-	jp z, IceBodyAbility
-	ret
-.sandstorm
-	ret ; No active abilities for sandstorm
-.rain
-	ld a, b
-	cp DRY_SKIN
-	jp z, DrySkinRainAbility
-	cp HYDRATION
-	jp z, HydrationAbility
-	cp RAIN_DISH
-	jp z, RainDishAbility
-	ret
-.sun
-	ld a, b
-	cp DRY_SKIN
-	jp z, DrySkinSunAbility
-	cp SOLAR_POWER
-	jp z, SolarPowerAbility
+	ret nz
+	call ShowAbilityActivation
+	farcall GetEighthMaxHP
+	farcall SubtractHPFromUser
 	ret
 
 IceBodyAbility:
-DrySkinRainAbility: ; restores 1/8 max HP rather than 1/16
+	ld b, WEATHER_HAIL
+	jr WeatherRecoveryAbility
 RainDishAbility:
+RainRecoveryAbility:
+	ld b, WEATHER_RAIN
+WeatherRecoveryAbility:
+	call GetWeatherAfterCloudNine
+	cp b
+	ret nz
 	farcall CheckFullHP_b
 	ld a, b
 	and a
@@ -1173,19 +1152,11 @@ RainDishAbility:
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
 	farcall GetSixteenthMaxHP
-.got_hp
-	farcall RestoreHP
-	ret
-
+	jr .restore
 .eighth_max_hp
 	farcall GetEighthMaxHP
-	jr .got_hp
-
-DrySkinSunAbility:
-SolarPowerAbility:
-	call ShowAbilityActivation
-	farcall GetEighthMaxHP
-	farcall SubtractHPFromUser
+.restore
+	farcall RestoreHP
 	ret
 
 HandleAbilities:
@@ -1333,6 +1304,232 @@ MoodyAbility:
 	call SwitchTurn
 	jp EnableAnimations
 
+ApplyDamageAbilities:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld hl, OffensiveDamageAbilities
+	call AbilityJumptable
+	call GetOpponentAbilityAfterMoldBreaker
+	ld hl, DefensiveDamageAbilities
+	call AbilityJumptable
+	ret
+
+OffensiveDamageAbilities:
+	dbw HUGE_POWER, HugePowerAbility
+	dbw HUSTLE, HustleAbility
+	dbw OVERGROW, OvergrowAbility
+	dbw BLAZE, BlazeAbility
+	dbw TORRENT, TorrentAbility
+	dbw SWARM, SwarmAbility
+	dbw SHEER_FORCE, SheerForceAbility
+	dbw ANALYTIC, AnalyticAbility
+	dbw TINTED_LENS, TintedLensAbility
+	dbw SOLAR_POWER, SolarPowerAbility
+	dbw IRON_FIST, IronFistAbility
+	dbw SAND_FORCE, SandForceAbility
+	dbw RECKLESS, RecklessAbility
+	dbw GUTS, GutsAbility
+	dbw PIXILATE, PixilateAbility
+	dbw -1, -1
+
+DefensiveDamageAbilities:
+	dbw MULTISCALE, EnemyMultiscaleAbility
+	dbw MARVEL_SCALE, EnemyMarvelScaleAbility
+	dbw SOLID_ROCK, EnemySolidRockAbility
+	dbw FILTER, EnemyFilterAbility
+	dbw THICK_FAT, EnemyThickFatAbility
+	dbw DRY_SKIN, EnemyDrySkinAbility
+	dbw FUR_COAT, EnemyFurCoatAbility
+	dbw -1, -1
+
+HugePowerAbility:
+; Doubles physical attack
+	ld a, $21
+	jp ApplyPhysicalAttackDamageMod
+
+HustleAbility:
+; 150% physical attack, 80% accuracy (done elsewhere)
+	ld a, $32
+	jp ApplyPhysicalAttackDamageMod
+
+OvergrowAbility:
+	ld b, GRASS
+	jr PinchAbility
+BlazeAbility:
+	ld b, FIRE
+	jr PinchAbility
+TorrentAbility:
+	ld b, WATER
+	jr PinchAbility
+SwarmAbility:
+	ld b, BUG
+PinchAbility:
+; 150% damage if the user is in a pinch (1/3HP or less) for given type
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp b
+	ret nz
+	call CheckPinch
+	ret nz
+	ld a, $32
+	jp ApplyDamageMod
+
+SheerForceAbility:
+; 130% damage if a secondary effect is suppressed
+	ld a, [EffectFailed]
+	and a
+	ret z
+	ld a, $da
+	jp ApplyDamageMod
+
+AnalyticAbility:
+; 130% damage if opponent went first
+	ld a, [wEnemyGoesFirst] ; 0 = player goes first
+	ld b, a
+	ld a, [hBattleTurn] ; 0 = player's turn
+	xor b ; nz if opponent went first
+	ret z
+	ld a, $da
+	jp ApplyDamageMod
+
+TintedLensAbility:
+; Doubles damage for not very effective moves (x0.5/x0.25)
+	ld a, [TypeModifier]
+	cp $10
+	ret nc
+	ld a, $21
+	jp ApplyDamageMod
+
+SolarPowerAbility:
+; 150% special attack in sun, take 1/8 damage at turn end in sun (done elsewhere)
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SUN
+	ret nz
+	ld a, $32
+	jp ApplySpecialAttackDamageMod
+
+IronFistAbility:
+; 120% damage for punching moves
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PunchingMoves
+	call IsInArray
+	ret c
+	ld a, $65
+	jp ApplyDamageMod
+
+SandForceAbility:
+; 130% damage for Ground/Rock/Steel-type moves in a sandstorm, not hurt by Sandstorm
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SANDSTORM
+	ret nz
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp GROUND
+	jr z, .ok
+	cp ROCK
+	jr z, .ok
+	cp STEEL
+	ret nz
+.ok
+	ld a, $da
+	jp ApplyDamageMod
+
+RecklessAbility:
+; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	ret z
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_RECOIL_HIT
+	jr z, .ok
+	cp EFFECT_JUMP_KICK
+	ret nz
+.ok
+	ld a, $65
+	jp ApplyDamageMod
+
+GutsAbility:
+; 150% physical attack if user is statused
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and a
+	ret z
+	ld a, $32
+	jp ApplyPhysicalAttackDamageMod
+
+PixilateAbility:
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp NORMAL
+	ret nz
+	ld a, $65
+	jp ApplyDamageMod
+
+EnemyMultiscaleAbility:
+; 50% damage if user is at full HP
+	call SwitchTurn
+	farcall CheckFullHP_b
+	ld a, b
+	and a
+	ret nz
+	ld a, $12
+	jp ApplyDamageMod
+
+EnemyMarvelScaleAbility:
+; 150% physical Defense if statused
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret z
+	ld a, $23
+	jp ApplyPhysicalDefenseDamageMod
+
+EnemySolidRockAbility:
+EnemyFilterAbility:
+; 75% damage for super effective moves
+	ld a, [TypeModifier]
+	cp $11
+	ret c
+	ld a, $34
+	jp ApplyDamageMod
+
+EnemyThickFatAbility:
+; 50% damage for Fire and Ice-type moves
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	jr z, .ok
+	cp ICE
+	ret nz
+.ok
+	ld a, $12
+	jp ApplyDamageMod
+
+EnemyDrySkinAbility:
+; 125% damage for Fire-type moves, heals 1/4 from Water, regenerates 1/8 at end of turn in
+; rain, takes 1/8 damage at end of turn in sun. This only handles Fire damage bonus, other
+; stuff is elsewhere
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp FIRE
+	ret nz
+	ld a, $54
+	jp ApplyDamageMod
+
+EnemyFurCoatAbility:
+; Doubles physical Defense
+	ld a, $12
+	jp ApplyPhysicalDefenseDamageMod
+
+
+HydrationAbility:
+	call GetWeatherAfterCloudNine
+	cp WEATHER_RAIN
+	ret nz
+	jr HealAllStatusAbility
 ShedSkinAbility:
 ; Cure a non-volatile status 30% of the time
 	call BattleRandom
@@ -1340,7 +1537,7 @@ ShedSkinAbility:
 	ret nc
 	; fallthrough
 NaturalCureAbility:
-HydrationAbility:
+HealAllStatusAbility:
 	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
 	jp HealStatusAbility
 
@@ -1383,6 +1580,28 @@ RegeneratorAbility:
 	and a
 	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
+
+AbilityJumptable:
+; hl = jumptable, a = ability. Returns z if no jump was made, nz otherwise
+	ld b, a
+.loop
+	ld a, [hli]
+	cp -1
+	ret z
+	cp b
+	jr z, .got_ability
+	inc hl
+	inc hl
+	jr .loop
+.got_ability
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call .jp_hl
+	or 1
+	ret
+.jp_hl
+	jp hl
 
 DisableAnimations:
 	ld a, 1

@@ -418,9 +418,6 @@ YoungsterJoeyText_GiveHPUpAfterBattle:
 	done
 
 Route30_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $27, $7, 1, ROUTE_30_BERRY_SPEECH_HOUSE

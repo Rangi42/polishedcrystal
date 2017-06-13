@@ -12,24 +12,11 @@ const_value set 2
 
 Route29_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .Tuscany
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .Tuscany:
 	checkflag ENGINE_ZEPHYRBADGE
@@ -384,17 +371,14 @@ Route29Sign2Text:
 	done
 
 Route29_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1, $1b, 3, ROUTE_29_46_GATE
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $8, $35, $0, Route29Tutorial1, $0, $0
-	xy_trigger 1, $9, $35, $0, Route29Tutorial2, $0, $0
+	xy_trigger 1, $8, $35, Route29Tutorial1
+	xy_trigger 1, $9, $35, Route29Tutorial2
 
 .Signposts:
 	db 2

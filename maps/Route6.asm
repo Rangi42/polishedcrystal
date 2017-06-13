@@ -274,9 +274,6 @@ Route6UndergroundPathSignText:
 	done
 
 Route6_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $11, 1, ROUTE_6_UNDERGROUND_ENTRANCE

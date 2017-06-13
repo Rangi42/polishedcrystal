@@ -7,20 +7,10 @@ const_value set 2
 
 KrissHouse1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 MomTrigger1:
 	playmusic MUSIC_MOM
@@ -161,6 +151,8 @@ if DEF(DEBUG)
 	; useful items
 	giveitem ITEMFINDER
 	giveitem SQUIRTBOTTLE
+	giveitem MYSTICTICKET
+	giveitem OLD_SEA_MAP
 	giveitem MAX_REPEL, 99
 	giveitem MAX_REVIVE, 99
 	giveitem FULL_RESTORE, 99
@@ -383,18 +375,6 @@ StoveScript:
 TVScript:
 	jumptext TVText
 
-MovementData_0x7a5fc:
-	turn_head_right
-	step_end
-
-MovementData_0x7a5fe:
-	slow_step_right
-	step_end
-
-MovementData_0x7a600:
-	turn_head_left
-	step_end
-
 KrissHouse1FSlowStepLeftMovementData:
 	slow_step_left
 	step_end
@@ -578,9 +558,6 @@ TVText:
 	done
 
 KrissHouse1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $6, 2, NEW_BARK_TOWN
@@ -589,9 +566,9 @@ KrissHouse1F_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 0, $4, $8, $0, MomTrigger1, $0, $0
-	xy_trigger 0, $4, $9, $0, MomTrigger2, $0, $0
-	xy_trigger 0, $2, $7, $0, MomTrigger3, $0, $0
+	xy_trigger 0, $4, $8, MomTrigger1
+	xy_trigger 0, $4, $9, MomTrigger2
+	xy_trigger 0, $2, $7, MomTrigger3
 
 .Signposts:
 	db 4

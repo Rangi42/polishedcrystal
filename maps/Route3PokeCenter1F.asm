@@ -37,7 +37,7 @@ Route3PokeCenter1FPokefanM1Text:
 	para "I thought there"
 	line "was something"
 	cont "wrong with it."
-	
+
 	para "Turns out it was"
 	line "a rare shiny"
 	cont "#mon!"
@@ -86,9 +86,6 @@ PokemonJournalKarenText:
 	done
 
 Route3PokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 2, ROUTE_3

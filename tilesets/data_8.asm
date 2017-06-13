@@ -1,4 +1,4 @@
-Tileset24GFX: 
+Tileset24GFX:
 INCBIN "gfx/tilesets/cave.2bpp.lz"
 
 Tileset40GFX:
@@ -20,3 +20,6 @@ INCBIN "tilesets/forest_metatiles.bin"
 
 Tileset30Coll:
 INCLUDE "tilesets/forest_collision.asm"
+
+Tileset41GFX:
+INCBIN "gfx/tilesets/valencia.2bpp.lz"

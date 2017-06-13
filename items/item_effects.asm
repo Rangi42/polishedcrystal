@@ -531,10 +531,8 @@ endr
 	push af
 	set SUBSTATUS_TRANSFORMED, [hl]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .ditto
-	jr .not_ditto
+	jr z, .not_ditto
 
-.ditto
 	; not only useless but introduces the Ditto transform glitch
 	; ld a, DITTO
 	; ld [TempEnemyMonSpecies], a
@@ -662,7 +660,7 @@ endr
 
 	ld a, [PartyCount]
 	cp PARTY_LENGTH
-	jr z, .SendToPC
+	jp z, .SendToPC
 
 	xor a ; PARTYMON
 	ld [MonType], a
@@ -685,6 +683,16 @@ endr
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [hl], a
 .SkipPartyMonFriendBall:
+
+	ld a, [CurItem]
+	cp HEAL_BALL
+	jr nz, .SkipPartyMonHealBall
+
+	ld a, [PartyCount]
+	dec a
+	ld [CurPartyMon], a
+	farcall HealPartyMonEvenForNuzlocke
+.SkipPartyMonHealBall:
 
 	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
@@ -1408,21 +1416,6 @@ DuskBallMultiplier:
 	ld b, $ff
 	ret
 
-; These two texts were carried over from gen 1.
-; They are not used in gen 2, and are dummied out.
-
-Text_RBY_CatchMarowak: ; 0xedab
-	; It dodged the thrown BALL! This #MON can't be caught!
-	text_jump UnknownText_0x1c5a5a
-	db "@"
-; 0xedb0
-
-Text_RBY_NoShake: ; 0xedb0
-	; You missed the #MON!
-	text_jump UnknownText_0x1c5a90
-	db "@"
-; 0xedb5
-
 Text_NoShake: ; 0xedb5
 	; Oh no! The #MON broke free!
 	text_jump UnknownText_0x1c5aa6
@@ -1490,11 +1483,6 @@ Text_AskNicknameNewlyCaughtMon: ; 0xedf5
 ReturnToBattle_UseBall: ; edfa (3:6dfa)
 	farcall _ReturnToBattle_UseBall
 	ret
-
-;TownMap: ; ee01
-;	farcall PokegearMap
-;	ret
-; ee08
 
 
 Bicycle: ; ee08
@@ -2374,22 +2362,6 @@ LoadCurHPIntoBuffer5: ; f328 (3:7328)
 	ret
 ; f336 (3:7336)
 
-LoadHPIntoBuffer5: ; f336
-	ld a, d
-	ld [Buffer6], a
-	ld a, e
-	ld [Buffer5], a
-	ret
-; f33f
-
-LoadHPFromBuffer5: ; f33f
-	ld a, [Buffer6]
-	ld d, a
-	ld a, [Buffer5]
-	ld e, a
-	ret
-; f348
-
 LoadCurHPToBuffer3: ; f348 (3:7348)
 	ld a, MON_HP
 	call GetPartyParamLocation
@@ -2711,104 +2683,6 @@ endr
 ; f50c
 
 
-;PokeFlute: ; f50c
-;	ld a, [wBattleMode]
-;	and a
-;	jr nz, .dummy
-;.dummy
-;
-;	xor a
-;	ld [wd002], a
-;
-;	ld b, $ff ^ SLP
-;
-;	ld hl, PartyMon1Status
-;	call .CureSleep
-;
-;	ld a, [wBattleMode]
-;	cp WILD_BATTLE
-;	jr z, .skip_otrainer
-;	ld hl, OTPartyMon1Status
-;	call .CureSleep
-;.skip_otrainer
-;
-;	ld hl, BattleMonStatus
-;	ld a, [hl]
-;	and b
-;	ld [hl], a
-;	ld hl, EnemyMonStatus
-;	ld a, [hl]
-;	and b
-;	ld [hl], a
-;
-;	ld a, [wd002]
-;	and a
-;	ld hl, .CatchyTune
-;	jp z, PrintText
-;	ld hl, .PlayedTheFlute
-;	call PrintText
-;
-;	ld a, [Danger]
-;	and $80
-;	jr nz, .dummy2
-;.dummy2
-;	ld hl, .AllSleepingMonWokeUp
-;	jp PrintText
-;
-;
-;.CureSleep:
-;	ld de, PARTYMON_STRUCT_LENGTH
-;	ld c, PARTY_LENGTH
-;
-;.loop
-;	ld a, [hl]
-;	push af
-;	and SLP
-;	jr z, .not_asleep
-;	ld a, 1
-;	ld [wd002], a
-;.not_asleep
-;	pop af
-;	and b
-;	ld [hl], a
-;	add hl, de
-;	dec c
-;	jr nz, .loop
-;	ret
-;; f56c
-;
-;
-;.CatchyTune: ; 0xf56c
-;	; Played the # FLUTE. Now, that's a catchy tune!
-;	text_jump UnknownText_0x1c5bf9
-;	db "@"
-;; 0xf571
-;
-;.AllSleepingMonWokeUp: ; 0xf571
-;	; All sleeping #MON woke up.
-;	text_jump UnknownText_0x1c5c28
-;	db "@"
-;; 0xf576
-;
-;.PlayedTheFlute: ; 0xf576
-;	; played the # FLUTE.@ @
-;	text_jump UnknownText_0x1c5c44
-;	start_asm
-;	ld a, [wBattleMode]
-;	and a
-;	jr nz, .battle
-;
-;	push de
-;	ld de, SFX_POKEFLUTE
-;	call WaitPlaySFX
-;	call WaitSFX
-;	pop de
-;
-;.battle
-;	jp PokeFluteTerminatorCharacter
-;; f58f
-
-
 BlueCard: ; f58f
 	ld hl, .bluecardtext
 	jp MenuTextBoxWaitButton
@@ -2831,20 +2705,20 @@ CoinCase: ; f59a
 
 OldRod: ; f5a5
 	ld e, $0
-	jr Function_0xf5b1
+	jr UseRod
 ; f5a9
 
 GoodRod: ; f5a9
 	ld e, $1
-	jr Function_0xf5b1
+	jr UseRod
 ; f5ad
 
 SuperRod: ; f5ad
 	ld e, $2
-	jr Function_0xf5b1
+	jr UseRod
 ; f5b1
 
-Function_0xf5b1: ; f5b1
+UseRod: ; f5b1
 	farcall FishFunction
 	ret
 ; f5b8
@@ -2894,7 +2768,7 @@ LeppaBerry: ; f5bf
 	push af
 	xor a
 	ld [CurMoveNum], a
-	ld a, $2
+	inc a
 	ld [wMoveSelectionMenuType], a
 	farcall MoveSelectionScreen
 	pop bc
@@ -3428,18 +3302,6 @@ IsntTheTimeMessage: ; f7ed
 
 WontHaveAnyEffectMessage: ; f7f2
 	ld hl, WontHaveAnyEffectText
-	jr CantUseItemMessage
-
-BelongsToSomeoneElseMessage: ; f7f7
-	ld hl, BelongsToSomeoneElseText
-	jr CantUseItemMessage
-
-CyclingIsntAllowedMessage: ; f7fc
-	ld hl, CyclingIsntAllowedText
-	jr CantUseItemMessage
-
-CantGetOnYourBikeMessage: ; f801
-	ld hl, CantGetOnYourBikeText
 
 CantUseItemMessage: ; f804
 ; Item couldn't be used.
@@ -3466,12 +3328,6 @@ IsntTheTimeText: ; 0xf815
 	db "@"
 ; 0xf81a
 
-BelongsToSomeoneElseText: ; 0xf81a
-	; That belongs to someone else!
-	text_jump UnknownText_0x1c5d97
-	db "@"
-; 0xf81f
-
 WontHaveAnyEffectText: ; 0xf81f
 	; It won't have any effect.
 	text_jump UnknownText_0x1c5db6
@@ -3489,18 +3345,6 @@ DontBeAThiefText: ; 0xf829
 	text_jump UnknownText_0x1c5def
 	db "@"
 ; 0xf82e
-
-CyclingIsntAllowedText: ; 0xf82e
-	; Cycling isn't allowed here.
-	text_jump UnknownText_0x1c5e01
-	db "@"
-; 0xf833
-
-CantGetOnYourBikeText: ; 0xf833
-	; Can't get on your @  now.
-	text_jump UnknownText_0x1c5e1d
-	db "@"
-; 0xf838
 
 Ball_BoxIsFullText: ; 0xf838
 	; The #MON BOX is full. That can't be used now.
@@ -3528,18 +3372,6 @@ UsedItemText: ; 0xf83d
 	text_jump UnknownText_0x1c5e68
 	db "@"
 ; 0xf842
-
-GotOnTheItemText: ; 0xf842
-	; got on the@ .
-	text_jump UnknownText_0x1c5e7b
-	db "@"
-; 0xf847
-
-GotOffTheItemText: ; 0xf847
-	; got off@ the @ .
-	text_jump UnknownText_0x1c5e90
-	db "@"
-; 0xf84c
 
 
 ApplyPPUp: ; f84c

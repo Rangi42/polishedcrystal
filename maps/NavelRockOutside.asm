@@ -8,9 +8,6 @@ NavelRockOutside_MapScriptHeader:
 	db 0
 
 NavelRockOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $19, $c, 1, SEAGALLOP_FERRY_NAVEL_GATE

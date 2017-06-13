@@ -14,9 +14,6 @@ IcePathB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 
 .SetUpStoneTable:
@@ -185,7 +182,7 @@ Text_IcePathB1FTutorClear:
 	done
 
 Text_IcePathB1FTutorTaught:
-	text "Okay! Now your"
+	text "OK! Now your"
 	line "#mon knows"
 	cont "Icy Wind!"
 	done
@@ -225,9 +222,6 @@ IcePathBoulderFellThroughText:
 
 
 IcePathB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $f, $3, 3, ICE_PATH_1F

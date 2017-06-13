@@ -63,9 +63,6 @@ EcruteakCherishBallHouseGrannyText:
 	done
 
 EcruteakCherishBallHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 16, ECRUTEAK_CITY

@@ -1,22 +1,17 @@
 ## Bugs
 
-* Running away sometimes fails
 * Large Pokémon animations have backwards tiles in the stats screen
-* Caught Pokémon sent to the PC become level 255
+* Caught Pokémon sent to the PC appear at level 255
 * Some caught Pokémon have wrong held items
 * Dark types are not immune to moves whose priority was increased by Prankster
-* Foe's Substitute makes your moves become something else
 * In-battle item use messages show the wrong Pokémon name
 * Some NPC trainers use wrong items
-* After the low HP music plays, some of the instruments are missing
 * Held Berries don't always disappear when used
 * Weather and some ability animations trigger the last used animation too
-* Air Balloon message doesn't print for the opponent's first Pokémon
 * TMs refresh PP
 * Nuzlocke mode sometimes turns on by itself (maybe)
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
-* Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Headbutt overworld animation looks weird (wrong tile ID?)
 
 
@@ -27,46 +22,40 @@
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Hyper Trained stats
 
 
 ## Aesthetics
 
-* Colored party Pokémon icons
-* Use a side view for Falkner's Pidgeotto in Dark Cave
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Make Eggs use their Pokémon's palette
 * Animate item activations like Quick Claw
+* Use a side view for Falkner's Pidgeotto in Dark Cave
 
 
 ## Events
 
 * Soul House + Radio Tower event to get Expn Card
 * Battle Tower merchants selling items for BP
-* Lost Pikablu (Marill) in Noisy Forest
-* Get Kanto starters from Prof. Ivy, Prof. Oak, and Blue (in his house after defeat)
-* Mr. Hyper somewhere
 
 
 ## Characters
 
-* Victor and Puka in Route 19 Beach House (needs trainer sprite)
 * Inver in Route 16 house
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
-* Electrodes in Rock Tunnel
+* Silph Co. mart
+* Battle Elm to get S.S. Ticket
+* Rematch Eusine and Bill somehow
+* Battle Ivy on Valencia Island
 
 Shamouti Island:
 
-* Candela in Fire Island peak
-* Blanche in Ice Island peak
-* Spark in Lightning Island peak
 * Caitlin and Darach in Beautiful Beach villa
-* Looker in Shamouti Hotel room (not S.S. Aqua)
-* Trendy phrase guy in Shamouti Hotel lobby
-* Prof. Ivy in Shamouti Island (gives a starter)
 * Body Slam tutor in Warm Beach house
+* Trendy phrase guy in hotel lobby
+* Looker in hotel room (not S.S. Aqua)
+* Sightseer in hotel mentions that Bottle Caps can be used for Hyper Training in Alola
 
 
 ## Maps
@@ -76,11 +65,14 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
+* Valencia Island
+* Route 49
 
 Shamouti Island:
 
 * Shamouti Island (outdoor market instead of Mart)
 * Shamouti Hotel (haunted room)
+* Shamouti Restaurant (works like Seven Stars Restaurant)
 
 Route leaders:
 
@@ -97,17 +89,12 @@ Route leaders:
 
 In-battle effects:
 
-* Guts, Hustle, and Solar Power shouldn't boost both physical and special moves
 * Speed Boost activates inconsistently
 * Harvest
 * Magic Bounce
 * Pickpocket
 * Pickup
-* Pixilate
 * Rivalry
-* Sturdy
-* Unaware (accuracy/evasion done)
-* Unburden
 
 Out-of-battle effects:
 
@@ -128,9 +115,7 @@ Out-of-battle effects:
 
 ## Items
 
-* Heal Ball
 * Ability Capsule
-* Air Balloon
 * Assault Vest
 * Big Root
 * Binding Band
@@ -141,7 +126,6 @@ Out-of-battle effects:
 * Destiny Knot
 * Expert Belt
 * Flame Orb
-* Focus Sash
 * Life Orb
 * Mental Herb
 * Metronome
@@ -207,6 +191,7 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 
 Some of these may never be added; they're just suggestions.
 
+* Port pokecrystal changes since commit 7aef59841489ea449b9a34d424c681a4b48b88ab
 * Alolan forms (update GetBaseData and everything that refers to EvosAttacksPointers)
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
@@ -241,9 +226,11 @@ Some of these may never be added; they're just suggestions.
 * Medals for achievements
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
+* Restore the Pikachu's beach minigame
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
+* Add Valencia Island from Pokémon Orange (for Prof. Ivy's lab, where you can battle her) and maybe other Orange Islands
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
@@ -270,3 +257,11 @@ Some of these may never be added; they're just suggestions.
 * Faster Bicycle, or slower Running Shoes
 * Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
+
+There are some features that I do *not* ever plan to add to Polished Crystal:
+
+* All 802 Pokémon
+* A third region
+* Mega Evolution
+* Z-moves
+* Gen V Exp. Share

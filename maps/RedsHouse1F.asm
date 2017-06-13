@@ -3,16 +3,10 @@ const_value set 2
 
 RedsHouse1F_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw .Trigger, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger:
-	end
 
 RedsMom:
 	faceplayer
@@ -74,9 +68,6 @@ RedsHouse1FTVText:
 	done
 
 RedsHouse1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $2, 1, PALLET_TOWN

@@ -14,9 +14,6 @@ DimCave4F_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .BouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 
@@ -113,8 +110,8 @@ TrainerScientistNigel:
 	done
 
 .BeatenText:
-	text "Yikes! Okay,"
-	line "I'll tell."
+	text "Yikes! OK, I'll"
+	line "tell you."
 	done
 
 .AfterText:
@@ -177,9 +174,6 @@ DimCave4FHiddenXAttack:
 	dwb EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK, X_ATTACK
 
 DimCave4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $10, $2, 2, DIM_CAVE_5F

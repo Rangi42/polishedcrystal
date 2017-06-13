@@ -8,9 +8,6 @@ ShamoutiHouse_MapScriptHeader:
 	db 0
 
 ShamoutiHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 5, SHAMOUTI_ISLAND

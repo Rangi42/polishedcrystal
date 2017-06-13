@@ -297,9 +297,6 @@ CeladonPrizeRoom_NoCoinCaseText:
 	done
 
 CeladonGameCornerPrizeRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 7, CELADON_CITY

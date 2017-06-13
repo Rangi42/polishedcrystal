@@ -3,20 +3,11 @@ const_value set 2
 
 Route18West_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	maptrigger .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .AlwaysOnBike
-
-.Trigger0:
-	end
 
 .AlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -71,9 +62,6 @@ Route18WestBikeWarningText:
 	done
 
 Route18West_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $6, $13, 1, ROUTE_18_GATE
@@ -81,7 +69,7 @@ Route18West_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $0, $c, $0, Route18WestBikeCheckScript, $0, $0
+	xy_trigger 0, $0, $c, Route18WestBikeCheckScript
 
 .Signposts:
 	db 0

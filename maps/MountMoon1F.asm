@@ -12,20 +12,14 @@ const_value set 2
 
 MountMoon1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump .RivalBattle
-	end
-
-.Trigger1:
 	end
 
 .RivalBattle:
@@ -382,9 +376,6 @@ HikerMarcosAfterText:
 	done
 
 MountMoon1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $17, $b, 1, ROUTE_3

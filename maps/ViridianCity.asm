@@ -14,8 +14,6 @@ ViridianCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -216,7 +214,7 @@ Text_ViridianCityTutorQuestion:
 	done
 
 Text_ViridianCityTutorRefused:
-	text "Okay…"
+	text "OK…"
 	done
 
 Text_ViridianCityTutorClear:
@@ -285,9 +283,6 @@ TrainerHouseSignText:
 	done
 
 ViridianCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $7, $20, 1, VIRIDIAN_GYM

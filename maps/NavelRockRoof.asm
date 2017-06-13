@@ -9,9 +9,6 @@ NavelRockRoof_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .DailyLeafRematchCallback
 
 .DailyLeafRematchCallback:
@@ -123,9 +120,6 @@ NavelRockRoofStepUpMovementData:
 	step_end
 
 NavelRockRoof_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $f, $9, 14, NAVEL_ROCK_INSIDE

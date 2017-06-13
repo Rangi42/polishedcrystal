@@ -20,9 +20,6 @@ UnknownText_0x19a4b8:
 	done
 
 Route42EcruteakGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 1, ECRUTEAK_CITY

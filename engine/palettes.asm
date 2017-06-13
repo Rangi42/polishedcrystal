@@ -31,7 +31,7 @@ BattleObjectPals:
 	RGB 00, 00, 00
 
 
-PartyMenuPals:
+PartyMenuBGPals:
 ; gray
 	RGB 31, 31, 31
 	RGB 18, 18, 18
@@ -222,8 +222,8 @@ CaughtBallPals:
 	RGB 31, 16, 19
 	RGB 31, 25, 26
 ; PARK BALL
-	RGB 31, 15, 05
-	RGB 31, 27, 04
+	RGB 00, 10, 10
+	RGB 14, 20, 05
 ; REPEAT BALL
 	RGB 30, 10, 06
 	RGB 31, 30, 08
@@ -1329,84 +1329,87 @@ SlotMachinePals:
 
 
 DiplomaPals:
+; gray
 	RGB 27, 31, 27
 	RGB 21, 21, 21
 	RGB 13, 13, 13
 	RGB 00, 00, 00
-
+; red
 	RGB 27, 31, 27
 	RGB 31, 07, 06
 	RGB 20, 02, 03
 	RGB 00, 00, 00
-
+; green
 	RGB 27, 31, 27
 	RGB 10, 31, 09
 	RGB 04, 14, 01
 	RGB 00, 00, 00
-
+; blue
 	RGB 27, 31, 27
 	RGB 08, 12, 31
 	RGB 01, 04, 31
 	RGB 00, 00, 00
-
+; yellow
 	RGB 27, 31, 27
 	RGB 31, 31, 07
 	RGB 31, 16, 01
 	RGB 00, 00, 00
-
+; brown
 	RGB 27, 31, 27
 	RGB 22, 16, 08
 	RGB 13, 07, 01
 	RGB 00, 00, 00
-
+; light blue
 	RGB 27, 31, 27
 	RGB 15, 31, 31
 	RGB 05, 17, 31
 	RGB 00, 00, 00
-
+; dark blue
 	RGB 31, 31, 31
 	RGB 11, 11, 19
 	RGB 07, 07, 12
 	RGB 00, 00, 00
-
+PartyMenuOBPals:
+PokegearOBPals:
+; red
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 31, 07, 01
 	RGB 00, 00, 00
-
+; blue
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 10, 14, 20
+	RGB 10, 09, 31
 	RGB 00, 00, 00
-
+; green
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 07, 23, 03
 	RGB 00, 00, 00
-
+; brown
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 15, 10, 03
 	RGB 00, 00, 00
-
+; purple
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 18, 04, 18
 	RGB 00, 00, 00
-
+; gray
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 13, 13, 13
 	RGB 00, 00, 00
-
+; yellow
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 31, 29, 00
 	RGB 00, 00, 00
-
+; teal
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 07, 04
+	RGB 03, 23, 21
 	RGB 00, 00, 00
 
 

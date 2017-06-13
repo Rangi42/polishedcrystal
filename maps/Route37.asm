@@ -15,9 +15,6 @@ Route37_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, SunnyCallback
 
 SunnyCallback:
@@ -303,9 +300,6 @@ Route37SignText:
 	done
 
 Route37_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

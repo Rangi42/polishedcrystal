@@ -6,16 +6,10 @@ const_value set 2
 
 Route48_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	maptrigger .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
 
 Route48JessieJamesScript:
 	checkevent EVENT_BEAT_JESSIE_AND_JAMES
@@ -182,16 +176,13 @@ Route48YellowForestSignText:
 	done
 
 Route48_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $b, 3, YELLOW_FOREST_GATE
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $c, $14, $0, Route48JessieJamesScript, $0, $0
+	xy_trigger 0, $c, $14, Route48JessieJamesScript
 
 .Signposts:
 	db 1

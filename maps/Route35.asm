@@ -18,9 +18,6 @@ Route35_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
 
 .RebattleBreeder:
@@ -471,9 +468,6 @@ Route35SignText:
 	done
 
 Route35_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $21, $9, 1, ROUTE_35_GOLDENROD_GATE

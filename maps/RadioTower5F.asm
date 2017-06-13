@@ -8,24 +8,10 @@ const_value set 2
 
 RadioTower5F_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 FakeDirectorScript:
 	spriteface RADIOTOWER5F_DIRECTOR, UP
@@ -439,9 +425,6 @@ SignpostRadioTower5FStudio:
 	done
 
 RadioTower5F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $0, $0, 1, RADIO_TOWER_4F
@@ -449,8 +432,8 @@ RadioTower5F_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $3, $0, $0, FakeDirectorScript, $0, $0
-	xy_trigger 1, $5, $10, $0, RadioTower5FRocketBossTrigger, $0, $0
+	xy_trigger 0, $3, $0, FakeDirectorScript
+	xy_trigger 1, $5, $10, RadioTower5FRocketBossTrigger
 
 .Signposts:
 	db 3

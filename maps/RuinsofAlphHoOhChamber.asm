@@ -1,29 +1,18 @@
 RuinsofAlphHoOhChamber_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x5856d, 0
-	dw UnknownScript_0x5857b, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x5857c
 
-UnknownScript_0x5856d:
+.Trigger0:
 	special SpecialHoOhChamber
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	iftrue UnknownScript_0x58577
-	end
-
-UnknownScript_0x58577:
+	iffalse .End
 	priorityjump UnknownScript_0x58596
-	end
-
-UnknownScript_0x5857b:
+.End
 	end
 
 UnknownScript_0x5857c:
@@ -146,9 +135,6 @@ UnknownText_0x586aa:
 	done
 
 RuinsofAlphHoOhChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 1, RUINS_OF_ALPH_OUTSIDE

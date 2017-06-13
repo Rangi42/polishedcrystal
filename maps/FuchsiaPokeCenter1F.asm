@@ -6,16 +6,10 @@ const_value set 2
 
 FuchsiaPokeCenter1F_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw UnknownScript_0x196458, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x196458:
-	end
 
 NurseScript_0x196459:
 	jumpstd pokecenternurse
@@ -109,9 +103,6 @@ PokemonJournalJanineText:
 	done
 
 FuchsiaPokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 4, FUCHSIA_CITY

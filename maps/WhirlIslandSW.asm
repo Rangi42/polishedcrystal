@@ -12,9 +12,6 @@ WhirlIslandSWUltraBall:
 	itemball ULTRA_BALL
 
 WhirlIslandSW_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $7, $5, 3, ROUTE_41

@@ -16,9 +16,6 @@ WarehouseEntrance_MapScriptHeader:
 
 .MapCallbacks:
 	db 3
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .ResetSwitches
 
 	dbw MAPCALLBACK_TILES, .CheckBasementKey
@@ -684,9 +681,6 @@ UnknownText_0x7c91a:
 	done
 
 WarehouseEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $2, $1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES

@@ -10,15 +10,8 @@ KrissHouse2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .InitializeRoom
-
 	dbw MAPCALLBACK_TILES, .SetSpawn
-
-.Null:
-	end
 
 .InitializeRoom:
 	special ToggleDecorationsVisibility
@@ -132,9 +125,6 @@ PokemonJournalProfElmText:
 	done
 
 KrissHouse2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $7, 3, KRISS_HOUSE_1F

@@ -3,11 +3,8 @@ const_value set 2
 
 BattleTowerHallway_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
@@ -15,7 +12,6 @@ BattleTowerHallway_MapScriptHeader:
 .Trigger0:
 	priorityjump .ChooseBattleRoom
 	dotrigger $1
-.Trigger1:
 	end
 
 .ChooseBattleRoom:
@@ -113,9 +109,6 @@ Text_PleaseStepThisWay: ; 0x9ec26
 	done
 
 BattleTowerHallway_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $1, $b, 1, BATTLE_TOWER_ELEVATOR

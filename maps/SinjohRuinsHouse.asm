@@ -161,7 +161,7 @@ SinjohRuinsHouseCynthiaYesText:
 
 	para "my heart always"
 	line "begins to race…"
-	done 
+	done
 
 SinjohRuinsHouseCynthiaWinText:
 	text "I can't remember"
@@ -184,9 +184,6 @@ SinjohRuinsHouseCynthiaAfterText:
 	done
 
 SinjohRuinsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, SINJOH_RUINS

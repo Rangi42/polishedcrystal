@@ -324,9 +324,6 @@ UnknownText_0x72fc0:
 	done
 
 CeladonGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $4, 8, CELADON_CITY

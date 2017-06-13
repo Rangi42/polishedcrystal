@@ -17,30 +17,13 @@ const_value set 2
 
 Route32_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 3
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Frieda
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_UNION_CAVE
@@ -959,9 +942,6 @@ Route32UnionCaveSignText:
 	done
 
 Route32_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $49, $b, 1, ROUTE_32_POKECENTER_1F
@@ -971,8 +951,8 @@ Route32_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $8, $12, $0, Route32CooltrainerMStopsYou, $0, $0
-	xy_trigger 1, $47, $7, $0, Route32WannaBuyASlowpokeTailScript, $0, $0
+	xy_trigger 0, $8, $12, Route32CooltrainerMStopsYou
+	xy_trigger 1, $47, $7, Route32WannaBuyASlowpokeTailScript
 
 .Signposts:
 	db 5

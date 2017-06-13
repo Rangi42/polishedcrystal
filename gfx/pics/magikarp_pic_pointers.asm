@@ -1,0 +1,23 @@
+
+	dba MagikarpPlainFrontpic
+	dba MagikarpPlainBackpic
+	dba MagikarpSkellyFrontpic
+	dba MagikarpSkellyBackpic
+	dba MagikarpCalico1Frontpic
+	dba MagikarpCalico1Backpic
+	dba MagikarpCalico2Frontpic
+	dba MagikarpCalico2Backpic
+	dba MagikarpCalico3Frontpic
+	dba MagikarpCalico3Backpic
+	dba MagikarpTwoToneFrontpic
+	dba MagikarpTwoToneBackpic
+	dba MagikarpOrcaFrontpic
+	dba MagikarpOrcaBackpic
+	dba MagikarpDapplesFrontpic
+	dba MagikarpDapplesBackpic
+	dba MagikarpTigerFrontpic
+	dba MagikarpTigerBackpic
+	dba MagikarpZebraFrontpic
+	dba MagikarpZebraBackpic
+	dba MagikarpStripeFrontpic
+	dba MagikarpStripeBackpic

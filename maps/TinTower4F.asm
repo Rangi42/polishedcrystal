@@ -24,9 +24,6 @@ TinTower4FHiddenMaxPotion:
 
 
 TinTower4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 2, TIN_TOWER_5F

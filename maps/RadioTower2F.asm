@@ -19,9 +19,6 @@ RadioTower2F_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x5d6fd:
-	end
-
 SuperNerdScript_0x5d6fe:
 	jumptextfaceplayer UnknownText_0x5d924
 
@@ -727,9 +724,6 @@ UnknownText_0x5e463:
 	done
 
 RadioTower2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $0, $0, 1, RADIO_TOWER_3F

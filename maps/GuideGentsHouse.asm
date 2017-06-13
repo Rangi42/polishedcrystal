@@ -25,9 +25,6 @@ GuideGentsHouseGuideGentText:
 	done
 
 GuideGentsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 4, CHERRYGROVE_CITY

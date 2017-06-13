@@ -24,9 +24,6 @@ SilverCaveRoom2HiddenMaxPotion:
 
 
 SilverCaveRoom2_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $1f, $11, 2, SILVER_CAVE_ROOM_1

@@ -354,9 +354,6 @@ UnknownText_0x99b79:
 	done
 
 DanceTheatre_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $d, $5, 8, ECRUTEAK_CITY

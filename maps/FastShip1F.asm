@@ -6,24 +6,16 @@ const_value set 2
 
 FastShip1F_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 2
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump .PriorityJump2
-	end
-
-.Trigger2:
+.Trigger0:
 	end
 
 .PriorityJump2:
@@ -191,14 +183,6 @@ MovementData_0x7522e:
 	turn_head_left
 	step_end
 
-MovementData_0x75231:
-	step_up
-	step_end
-
-MovementData_0x75233:
-	step_down
-	step_end
-
 MovementData_0x75235:
 	step_up
 	step_up
@@ -288,9 +272,6 @@ UnknownText_0x754be:
 	done
 
 FastShip1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 12
 	warp_def $1, $19, -1, FAST_SHIP_1F
@@ -308,8 +289,8 @@ FastShip1F_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 2, $6, $18, $0, WorriedGrandpaTriggerLeft, $0, $0
-	xy_trigger 2, $6, $19, $0, WorriedGrandpaTriggerRight, $0, $0
+	xy_trigger 2, $6, $18, WorriedGrandpaTriggerLeft
+	xy_trigger 2, $6, $19, WorriedGrandpaTriggerRight
 
 .Signposts:
 	db 0

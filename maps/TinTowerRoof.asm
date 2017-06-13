@@ -7,9 +7,6 @@ TinTowerRoof_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .HoOh
 
 .HoOh:
@@ -48,9 +45,6 @@ HoOhText:
 	done
 
 TinTowerRoof_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $d, $7, 2, TIN_TOWER_10F

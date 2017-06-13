@@ -116,9 +116,6 @@ UnknownText_0x1846d6:
 	done
 
 SproutTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $f, $7, 7, VIOLET_CITY

@@ -17,20 +17,10 @@ const_value set 2
 
 CeruleanCape_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x19ee9e, 0
-	dw UnknownScript_0x19ee9f, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x19ee9e:
-	end
-
-UnknownScript_0x19ee9f:
-	end
 
 UnknownScript_0x19eea0:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
@@ -362,23 +352,23 @@ TrainerGuitaristfMorgan:
 	cont "board!"
 	done
 
-TrainerLadyAmanda:
-	trainer EVENT_BEAT_LADY_AMANDA, LADY, AMANDA, .SeenText, .BeatenText, 0, .Script
+TrainerLadyJessica:
+	trainer EVENT_BEAT_LADY_JESSICA, LADY, JESSICA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	opentext
-	checkevent EVENT_SPOKE_TO_LADY_AMANDA
+	checkevent EVENT_SPOKE_TO_LADY_JESSICA
 	iftrue .SpokeAgain
 	writetext .AfterText1
-	setevent EVENT_SPOKE_TO_LADY_AMANDA
+	setevent EVENT_SPOKE_TO_LADY_JESSICA
 	waitbutton
 	closetext
 	end
 
 .SpokeAgain:
 	writetext .AfterText2
-	clearevent EVENT_SPOKE_TO_LADY_AMANDA
+	clearevent EVENT_SPOKE_TO_LADY_JESSICA
 	waitbutton
 	closetext
 	end
@@ -573,9 +563,6 @@ BillsHouseSignText:
 	done
 
 CeruleanCape_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $b, 1, BILLS_HOUSE
@@ -584,8 +571,8 @@ CeruleanCape_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $6, $6, $0, UnknownScript_0x19eea0, $0, $0
-	xy_trigger 1, $7, $6, $0, UnknownScript_0x19eee0, $0, $0
+	xy_trigger 1, $6, $6, UnknownScript_0x19eea0
+	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
 
 .Signposts:
 	db 3
@@ -607,6 +594,6 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 27, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
 	person_event SPRITE_GENTLEMAN, 26, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
 	person_event SPRITE_COOLTRAINER_F, 32, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerGuitaristfMorgan, -1
-	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyAmanda, -1
+	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 1, CeruleanCapeShellBell, EVENT_CERULEAN_CAPE_SHELL_BELL

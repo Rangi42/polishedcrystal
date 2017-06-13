@@ -6,24 +6,11 @@ const_value set 2
 
 EcruteakHouse_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .InitializeSages
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .InitializeSages:
 	checkevent EVENT_FOUGHT_SUICUNE
@@ -283,9 +270,6 @@ UnknownText_0x984ab:
 	done
 
 EcruteakHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $11, $4, 3, ECRUTEAK_CITY
@@ -296,8 +280,8 @@ EcruteakHouse_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $7, $4, $0, EcruteakHouse_XYTrigger1, $0, $0
-	xy_trigger 0, $7, $5, $0, EcruteakHouse_XYTrigger2, $0, $0
+	xy_trigger 0, $7, $4, EcruteakHouse_XYTrigger1
+	xy_trigger 0, $7, $5, EcruteakHouse_XYTrigger2
 
 .Signposts:
 	db 0

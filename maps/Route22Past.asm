@@ -7,9 +7,7 @@ const_value set 2
 Route22Past_MapScriptHeader:
 .MapTriggers:
 	db 1
-
-	; triggers
-	maptrigger .Trigger0
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
@@ -413,9 +411,6 @@ Route22PastLyraOhNoText:
 	done
 
 Route22Past_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

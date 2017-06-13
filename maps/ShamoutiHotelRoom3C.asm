@@ -8,9 +8,6 @@ ShamoutiHotelRoom3C_MapScriptHeader:
 	db 0
 
 ShamoutiHotelRoom3C_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $3, 3, SHAMOUTI_HOTEL_3F

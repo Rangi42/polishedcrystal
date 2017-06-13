@@ -11,20 +11,14 @@ const_value set 2
 
 CinnabarLab_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump CinnabarLabStepDownScript
-	end
-
-.Trigger1:
 	end
 
 CinnabarLabStepDownScript:
@@ -425,9 +419,6 @@ CinnabarLabCelebiText:
 	done
 
 CinnabarLab_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 ;	warp_def $9, $e, 3, CINNABAR_LAB
@@ -436,7 +427,7 @@ CinnabarLab_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $6, $2, $0, CinnabarLabCelebiEventScript, $0, $0
+	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
 
 .Signposts:
 	db 8

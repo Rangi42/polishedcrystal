@@ -103,9 +103,6 @@ CeladonUniversityWestwoodsOfficeBookshelf:
 	done
 
 CeladonUniversityWestwoodsOffice_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $3, 5, CELADON_UNIVERSITY_2F

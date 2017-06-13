@@ -6,23 +6,16 @@ const_value set 2
 RuinsofAlphResearchCenter_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x59180, 0
-	dw UnknownScript_0x59181, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
-UnknownScript_0x59180:
-	end
-
-UnknownScript_0x59181:
+.Trigger1:
 	priorityjump UnknownScript_0x59192
+.Trigger0:
 	end
 
 UnknownScript_0x59185:
@@ -506,9 +499,6 @@ UnknownText_0x59886:
 	done
 
 RuinsofAlphResearchCenter_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 6, RUINS_OF_ALPH_OUTSIDE

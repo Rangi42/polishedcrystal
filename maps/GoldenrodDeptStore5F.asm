@@ -12,9 +12,6 @@ GoldenrodDeptStore5F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .CheckIfSunday
 
 .CheckIfSunday:
@@ -205,9 +202,6 @@ GoldenrodDeptStore5FDirectoryText:
 	done
 
 GoldenrodDeptStore5F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $0, $c, 1, GOLDENROD_DEPT_STORE_4F

@@ -11,19 +11,15 @@ const_value set 2
 CeruleanGym_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x1883d9, 0
-	dw UnknownScript_0x1883da, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x1883d9:
-	end
-
-UnknownScript_0x1883da:
+.Trigger1:
 	priorityjump UnknownScript_0x1883de
+.Trigger0:
 	end
 
 UnknownScript_0x1883de:
@@ -502,9 +498,6 @@ CeruleanGymSomethingUnderwaterText:
 	done
 
 CeruleanGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $4, 5, CERULEAN_CITY

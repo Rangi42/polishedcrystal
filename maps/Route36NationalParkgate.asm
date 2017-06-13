@@ -15,29 +15,19 @@ const_value set 2
 Route36NationalParkgate_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .CheckIfContestRunning
-
 	dbw MAPCALLBACK_OBJECTS, .CheckIfContestAvailable
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .Trigger2:
 	priorityjump .LeftTheContestEarly
+.Trigger0:
+.Trigger1:
 	end
 
 .CheckIfContestRunning:
@@ -471,9 +461,6 @@ UnknownScript_0x6adc8:
 	closetext
 	end
 
-UnknownScript_0x6adce:
-	jumptext UnknownText_0x6b84c
-
 MovementData_0x6add1:
 	big_step_down
 	big_step_right
@@ -802,26 +789,6 @@ UnknownText_0x6b7af:
 	line "win."
 	done
 
-UnknownText_0x6b84c:
-	text "The Bug-Catching"
-	line "Contest is held on"
-
-	para "Tuesday, Thursday"
-	line "and Saturday."
-
-	para "Not only do you"
-	line "earn a prize just"
-
-	para "for participating,"
-	line "you also get to"
-
-	para "keep the bug"
-	line "#mon you may"
-
-	para "have at the end of"
-	line "the contest."
-	done
-
 UnknownText_0x6b910:
 	text "Uh-oh… Your Bag"
 	line "is full."
@@ -843,9 +810,6 @@ UnknownText_0x6b97f:
 	done
 
 Route36NationalParkgate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 1, NATIONAL_PARK

@@ -15,28 +15,15 @@ const_value set 2
 
 Route27_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x1a0871, 0
-	dw UnknownScript_0x1a0872, 0
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .DragonTamerSprite
 
 .DragonTamerSprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
 	return
-
-UnknownScript_0x1a0871:
-	end
-
-UnknownScript_0x1a0872:
-	end
 
 UnknownScript_0x1a0873:
 	spriteface ROUTE27_FISHER, LEFT
@@ -552,9 +539,6 @@ TohjoFallsSignText:
 	done
 
 Route27_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE
@@ -563,8 +547,8 @@ Route27_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $a, $12, $0, UnknownScript_0x1a0873, $0, $0
-	xy_trigger 0, $a, $13, $0, UnknownScript_0x1a0881, $0, $0
+	xy_trigger 0, $a, $12, UnknownScript_0x1a0873
+	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
 
 .Signposts:
 	db 1

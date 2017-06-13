@@ -14,9 +14,6 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x7d781
 
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
@@ -114,9 +111,6 @@ UnknownText_0x7d8bb:
 	done
 
 GoldenrodDeptStoreB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $2, $11, 3, UNDERGROUND_WAREHOUSE

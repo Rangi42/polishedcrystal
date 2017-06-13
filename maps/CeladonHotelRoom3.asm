@@ -23,9 +23,6 @@ CeladonHotelRoom3GrampsText:
 	done
 
 CeladonHotelRoom3_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $3, 4, CELADON_HOTEL_2F

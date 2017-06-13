@@ -4,11 +4,8 @@ const_value set 2
 
 BattleTowerBattleRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw .EnterBattleRoom, 0
-	dw .DummyTrigger, 0
+	db 1
+	dw .EnterBattleRoom
 
 .MapCallbacks:
 	db 0
@@ -17,7 +14,6 @@ BattleTowerBattleRoom_MapScriptHeader:
 	disappear BATTLETOWERBATTLEROOM_YOUNGSTER
 	priorityjump Script_BattleRoom
 	dotrigger $1
-.DummyTrigger:
 	end
 
 Script_BattleRoom: ; 0x9f421
@@ -163,9 +159,6 @@ Text_ThanksForVisiting: ; 0x9ea49
 	done
 
 BattleTowerBattleRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 4, BATTLE_TOWER_HALLWAY

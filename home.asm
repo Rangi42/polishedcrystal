@@ -78,42 +78,20 @@ EnableSpriteUpdates:: ; 2ee4
 INCLUDE "home/string.asm"
 
 IsInJohto:: ; 2f17
-; Return 0 if the player is in Johto, and 1 in Kanto.
-
-	ld a, [MapGroup]
-	ld b, a
-	ld a, [MapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-	cp FAST_SHIP
-	jr z, .Johto
-
-	cp SPECIAL_MAP
-	jr nz, .CheckRegion
-
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-
-.CheckRegion:
+; Return z if the player is in Johto, and nz in Kanto or Shamouti Island.
+	call GetCurrentLandmark
 	cp KANTO_LANDMARK
-	jr nc, .Kanto
-
-.Johto:
-	xor a
+	jr nc, .kanto_or_orange
+.johto
+	xor a ; JOHTO_REGION
+	and a
 	ret
 
-.Kanto:
-	ld a, 1
+.kanto_or_orange
+	ld a, KANTO_REGION
+	and a
 	ret
 ; 2f3e
-
-ret_2f3e:: ; 2f3e
-	ret
-; 2f3f
 
 INCLUDE "home/item.asm"
 INCLUDE "home/random.asm"
@@ -730,11 +708,6 @@ endr
 	call CopyBytes
 
 .done
-	ld a, e
-	ld [wd102], a
-	ld a, d
-	ld [wd103], a
-
 	pop de
 	pop bc
 	pop hl
@@ -1010,7 +983,7 @@ InitScrollingMenu:: ; 352f
 	jp TextBox
 ; 354b
 
-Function354b:: ; 354b joypad
+JoyTextDelay_ForcehJoyDown:: ; 354b joypad
 	call DelayFrame
 
 	ld a, [hInMenu]
@@ -1525,15 +1498,15 @@ PrintLevel:: ; 382d
 ; How many digits?
 	ld c, 2
 	cp 100
-	jr c, Function3842
+	jr c, Print8BitNumRightAlign
 
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
-	jr Function3842
+	jr Print8BitNumRightAlign
 ; 383d
 
-Function3842:: ; 3842
+Print8BitNumRightAlign:: ; 3842
 	ld [wd265], a
 	ld de, wd265
 	ld b, PRINTNUM_RIGHTALIGN | 1
@@ -1565,24 +1538,9 @@ GetBaseData:: ; 3856
 	jr .end
 
 .egg
-; ????
-	ld de, UnknownEggPic
-
-; Sprite dimensions
-	ld b, $55 ; 5x5
-	ld hl, BasePicSize
-	ld [hl], b
-
-; ????
-	ld hl, BaseAbility1 ; changed just in case
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	jr .end
+;; Sprite dimensions
+	ld a, $55 ; 5x5
+	ld [BasePicSize], a
 
 .end
 ; Replace Pokedex # with species
@@ -1596,10 +1554,6 @@ GetBaseData:: ; 3856
 	pop bc
 	ret
 ; 389c
-
-UnknownEggPic:: ; 53d9c
-; Another egg pic. This is shifted up a few pixels.
-INCBIN "gfx/misc/unknown_egg.5x5.2bpp.lz"
 
 
 GetNature::
@@ -1785,7 +1739,7 @@ GetPartyLocation:: ; 3927
 
 INCLUDE "home/battle.asm"
 
-Function3b0c:: ; 3b0c
+PushLYOverrides:: ; 3b0c
 
 	ld a, [hLCDCPointer]
 	and a

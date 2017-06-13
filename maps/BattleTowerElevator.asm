@@ -3,11 +3,8 @@ const_value set 2
 
 BattleTowerElevator_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
@@ -15,8 +12,6 @@ BattleTowerElevator_MapScriptHeader:
 .Trigger0:
 	priorityjump .RideElevator
 	dotrigger $1
-
-.Trigger1:
 	end
 
 .RideElevator:
@@ -50,9 +45,6 @@ MovementData_BattleTowerElevatorExitElevator:
 	step_end
 
 BattleTowerElevator_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $1, 1, BATTLE_TOWER_HALLWAY

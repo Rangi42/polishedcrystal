@@ -8,9 +8,6 @@ TinTower10F_MapScriptHeader:
 	db 0
 
 TinTower10F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $5, 4, TIN_TOWER_9F

@@ -7,9 +7,6 @@ Route16South_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
 UnknownScript_0x1ad318:
@@ -85,9 +82,6 @@ CyclingRoadSignText:
 	done
 
 Route16South_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $a, $9, 1, ROUTE_16_17_GATE

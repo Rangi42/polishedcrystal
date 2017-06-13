@@ -16,8 +16,8 @@ NameRater: ; fb6ed
 ; ... or a Pokemon you got from a trade.
 	call GetCurNick
 	ld a, [InitialOptions]
-	bit TRADED_BEHAVIOR, a
-	jr z, .no_name_lock
+	bit TRADED_AS_OT_OPT, a
+	jr nz, .no_name_lock
 	call CheckIfMonIsYourOT
 	jr c, .traded
 .no_name_lock

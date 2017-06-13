@@ -5,24 +5,22 @@ const_value set 2
 FarawayIsland_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
-	db 1
-
-	; callbacks
-
+	db 2
+	dbw MAPCALLBACK_NEWMAP, .Visited
 	dbw MAPCALLBACK_SPRITES, .SetupLawrence
-
-.Trigger0:
-	end
 
 .Trigger1:
 	priorityjump FarawayIsland_PlayerArrives
+.Trigger0:
 	end
+
+.Visited:
+	setevent EVENT_VISITED_FARAWAY_ISLAND
+	return
 
 .SetupLawrence:
 	disappear FARAWAYISLAND_LAWRENCE
@@ -240,9 +238,6 @@ FarawayIslandSignText:
 	done
 
 FarawayIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $8, $16, 1, FARAWAY_JUNGLE

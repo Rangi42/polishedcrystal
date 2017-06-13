@@ -10,43 +10,26 @@ const_value set 2
 ElmsLab_MapScriptHeader:
 .MapTriggers:
 	db 8
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
-	maptrigger .Trigger3
-	maptrigger .Trigger4
-	maptrigger .Trigger5
-	maptrigger .Trigger6
-	maptrigger .Trigger7
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
+	dw .Trigger3
+	dw .Trigger4
+	dw .Trigger5
+	dw .Trigger6
+	dw .Trigger7
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .Callback_MoveElm
 
 .Trigger0:
 	priorityjump ElmsLab_AutowalkUpToElm
-	end
-
 .Trigger1:
-	end
-
 .Trigger2:
-	end
-
 .Trigger3:
-	end
-
 .Trigger4:
-	end
-
 .Trigger5:
-	end
-
 .Trigger6:
 	end
 
@@ -491,6 +474,18 @@ ElmGiveMasterBallScript:
 	end
 
 ElmGiveTicketScript:
+	writetext ElmChallengeText
+	yesorno
+	iffalse .Refused
+	writetext ElmSeenText
+	waitbutton
+	closetext
+	winlosstext ElmWinText, 0
+	setlasttalked ELMSLAB_ELM
+	loadtrainer PROF_ELM, 1
+	startbattle
+	reloadmapafterbattle
+	opentext
 	writetext ElmGiveTicketText1
 	buttonsound
 	verbosegiveitem S_S_TICKET
@@ -541,6 +536,12 @@ ElmGiveTicketScript:
 	closetext
 	setevent EVENT_LYRA_IN_HER_ROOM
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
+	end
+
+.Refused:
+	writetext ElmRefusedBattleText
+	waitbutton
+	closetext
 	end
 
 ElmJumpBackScript1:
@@ -1063,7 +1064,7 @@ ElmText_GotAnEmail:
 	para "………………"
 	line "Hm… Uh-huh…"
 
-	para "Okay…"
+	para "OK…"
 	done
 
 ElmText_MissionFromMrPokemon:
@@ -1441,7 +1442,7 @@ AideText_ThiefReturnedMon:
 
 	para "…Isn't it moving?"
 	line "It made me cry!"
-	
+
 	para "I saw the boy's"
 	line "face as he left."
 
@@ -1482,13 +1483,50 @@ ElmGiveMasterBallText2:
 	line "can, <PLAYER>!"
 	done
 
-ElmGiveTicketText1:
+ElmChallengeText:
 	text "Elm: <PLAYER>!"
 	line "There you are!"
 
 	para "I called because I"
 	line "have something for"
 	cont "you."
+
+	para "But first…"
+
+	para "I'd like to try"
+	line "battling the new"
+	cont "Champion!"
+
+	para "How about it,"
+	line "<PLAYER>?"
+	done
+
+ElmSeenText:
+	text "Show me how much"
+	line "you've grown since"
+
+	para "you left New Bark"
+	line "Town!"
+	done
+
+ElmWinText:
+	text "Astounding!"
+	done
+
+ElmRefusedBattleText:
+	text "If your #mon"
+	line "need healing,"
+
+	para "just use the"
+	line "machine here."
+	done
+
+ElmGiveTicketText1:
+	text "Elm: I'm proud"
+	line "of you, <PLAYER>."
+
+	para "You're clearly"
+	line "ready for this."
 
 	para "See? It's an"
 	line "S.S.Ticket."
@@ -1570,12 +1608,6 @@ ElmAfterTicketText:
 
 	para "Give my regards to"
 	line "Prof.Oak in Kanto!"
-	done
-
-ElmsLabSignpostText_Egg:
-	text "It's the #mon"
-	line "Egg being studied"
-	cont "by Prof.Elm."
 	done
 
 AideText_GiveYouPotions:
@@ -1817,9 +1849,6 @@ ElmsLabPCText:
 	done
 
 ElmsLab_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $4, 1, NEW_BARK_TOWN
@@ -1827,13 +1856,13 @@ ElmsLab_MapEventHeader:
 
 .XYTriggers:
 	db 7
-	xy_trigger 1, $6, $4, $0, LabTryToLeaveScript, $0, $0
-	xy_trigger 1, $6, $5, $0, LabTryToLeaveScript, $0, $0
-	xy_trigger 3, $5, $4, $0, MeetCopScript, $0, $0
-	xy_trigger 3, $5, $5, $0, MeetCopScript2, $0, $0
-	xy_trigger 5, $8, $4, $0, AideScript_WalkPotions1, $0, $0
-	xy_trigger 5, $8, $5, $0, AideScript_WalkPotions2, $0, $0
-	xy_trigger 6, $6, $4, $0, LyraBattleScript, $0, $0
+	xy_trigger 1, $6, $4, LabTryToLeaveScript
+	xy_trigger 1, $6, $5, LabTryToLeaveScript
+	xy_trigger 3, $5, $4, MeetCopScript
+	xy_trigger 3, $5, $5, MeetCopScript2
+	xy_trigger 5, $8, $4, AideScript_WalkPotions1
+	xy_trigger 5, $8, $5, AideScript_WalkPotions2
+	xy_trigger 6, $6, $4, LyraBattleScript
 
 .Signposts:
 	db 16

@@ -199,9 +199,6 @@ ShamoutiShrineRuinsHiddenMaxRevive:
 	dwb EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 ShamoutiShrineRuins_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $12, $2, 3, NOISY_FOREST

@@ -310,9 +310,6 @@ UnknownText_0x72567:
 	done
 
 CeladonGameCorner_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $d, $e, 6, CELADON_CITY

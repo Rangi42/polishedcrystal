@@ -16,9 +16,6 @@ IcePathB2FBlackthornSideHiddenIceHeal:
 
 
 IcePathB2FBlackthornSide_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $3, 8, ICE_PATH_B1F

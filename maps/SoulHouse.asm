@@ -174,9 +174,6 @@ AgathaAfterText:
 	done
 
 SoulHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $9, $4, 6, LAVENDER_TOWN

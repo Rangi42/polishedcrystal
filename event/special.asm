@@ -14,7 +14,8 @@ SpecialGiveWobbuffet: ; 7305
 	jr nc, .NotGiven
 
 ; Caught data.
-	ld b, 0
+	ld b, MALE
+	ld c, DUSK_BALL
 	farcall SetGiftPartyMonCaughtData
 
 ; Holding a Berry.

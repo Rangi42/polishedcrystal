@@ -17,23 +17,11 @@ const_value set 2
 
 VermilionCity_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_VERMILION
@@ -556,9 +544,6 @@ VermilionCityTruckText:
 	done
 
 VermilionCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 14
 	warp_def $5, $5, 1, VERMILION_HOUSE_FISHING_SPEECH_HOUSE
@@ -578,8 +563,8 @@ VermilionCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $20, $12, $0, LawrenceLeftIntroScript, $0, $0
-	xy_trigger 0, $20, $13, $0, LawrenceRightIntroScript, $0, $0
+	xy_trigger 0, $20, $12, LawrenceLeftIntroScript
+	xy_trigger 0, $20, $13, LawrenceRightIntroScript
 
 .Signposts:
 	db 8

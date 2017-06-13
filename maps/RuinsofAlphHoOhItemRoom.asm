@@ -33,9 +33,6 @@ UnknownText_0x59923:
 	done
 
 RuinsofAlphHoOhItemRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $9, $3, 5, RUINS_OF_ALPH_HO_OH_CHAMBER

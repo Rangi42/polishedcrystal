@@ -11,11 +11,8 @@ const_value set 2
 
 BattleTower1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
@@ -42,9 +39,6 @@ BattleTower1F_MapScriptHeader:
 	special Special_BattleTower_SetChallengeState
 .Done
 	dotrigger $1
-	end
-
-.Trigger1:
 	end
 
 MapBattleTower1FSignpost0Script:
@@ -489,9 +483,6 @@ Text_BattleTowerBugCatcher: ; 0x9f35b
 	done
 
 BattleTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $d, $a, 3, BATTLE_TOWER_OUTSIDE

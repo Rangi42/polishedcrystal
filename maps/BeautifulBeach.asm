@@ -89,15 +89,21 @@ TrainerTamerVince:
 	end
 
 .SeenText:
-	text "TODO"
+	text "My roaring spirit"
+	line "shall never be"
+	cont "tamed!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Nyuh?! ROAR!"
 	done
 
 .AfterText:
-	text "TODO"
+	text "My #mon are"
+	line "expertly tamed,"
+
+	para "but I remain as"
+	line "wild as ever!"
 	done
 
 TrainerSightseerfRosie:
@@ -222,9 +228,6 @@ BeautifulBeachVillaSign:
 	done
 
 BeautifulBeach_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $17, $b, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE

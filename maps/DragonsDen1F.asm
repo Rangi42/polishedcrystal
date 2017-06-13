@@ -6,9 +6,6 @@ DragonsDen1F_MapScriptHeader:
 	db 0
 
 DragonsDen1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $39, $f, 8, BLACKTHORN_CITY

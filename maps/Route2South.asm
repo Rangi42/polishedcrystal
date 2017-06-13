@@ -89,9 +89,6 @@ Route2SignText:
 	done
 
 Route2South_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $f, 3, ROUTE_2_GATE

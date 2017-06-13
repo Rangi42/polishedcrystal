@@ -5,24 +5,15 @@ const_value set 2
 
 Route43Gate_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x19abc5, 0
-	dw UnknownScript_0x19abc9, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
 
-UnknownScript_0x19abc5:
+.Trigger0:
 	priorityjump UnknownScript_0x19abda
-	end
-
-UnknownScript_0x19abc9:
 	end
 
 UnknownScript_0x19abca:
@@ -237,11 +228,6 @@ UnknownText_0x19ad9b:
 	cont "you take it away?"
 	done
 
-UnknownText_0x19ae1b:
-	text "<PLAYER> received"
-	line "TM30."
-	done
-
 UnknownText_0x19ae2d:
 	text "Use this gate to"
 	line "avoid walking in"
@@ -249,9 +235,6 @@ UnknownText_0x19ae2d:
 	done
 
 Route43Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 4, ROUTE_43

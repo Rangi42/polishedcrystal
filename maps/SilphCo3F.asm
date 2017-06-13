@@ -132,9 +132,6 @@ SilphCo3FElevatorText:
 	done
 
 SilphCo3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $b, 2, SILPH_CO_2F

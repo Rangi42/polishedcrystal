@@ -101,9 +101,6 @@ RuinsofAlphSinjohChamberStatueText:
 	done
 
 RuinsofAlphSinjohChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $5, 12, RUINS_OF_ALPH_OUTSIDE

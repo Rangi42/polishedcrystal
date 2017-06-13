@@ -45,10 +45,7 @@ xy_trigger: macro
 	db \1 ; number
 	db \2 ; y
 	db \3 ; x
-	db \4 ; unknown1
-	dw \5 ; script
-	db \6 ; unknown2
-	db \7 ; unknown3
+	dw \4 ; script
 	endm
 
 warp_def: macro
@@ -184,8 +181,4 @@ endm
 stonetable: MACRO
 	db \1, \2
 	dw \3
-endm
-
-maptrigger: MACRO
-	dw \1, 0
 endm

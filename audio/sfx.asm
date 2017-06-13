@@ -180,9 +180,9 @@ Sfx_BallPoof: ; f0a04
 	musicheader 1, 8, Sfx_BallPoof_Ch8
 ; f0a0a
 
-Sfx_Unknown3A: ; f0a0a
-	musicheader 2, 5, Sfx_Unknown3A_Ch5
-	musicheader 1, 8, Sfx_Unknown3A_Ch8
+Sfx_Faint: ; f0a0a
+	musicheader 2, 5, Sfx_Faint_Ch5
+	musicheader 1, 8, Sfx_Faint_Ch8
 ; f0a10
 
 Sfx_Run: ; f0a10
@@ -494,7 +494,6 @@ Sfx_LevelUp: ; f0b3f
 ; f0b4b
 
 Sfx_DexFanfare5079_Ch5: ; f0b4b
-Sfx_LevelUp_Ch5: ; f0b4b
 	togglesfx
 	tempo 120
 	volume $77
@@ -511,7 +510,6 @@ Sfx_LevelUp_Ch5: ; f0b4b
 ; f0b5f
 
 Sfx_DexFanfare5079_Ch6: ; f0b5f
-Sfx_LevelUp_Ch6: ; f0b5f
 	togglesfx
 	dutycycle $2
 	notetype $8, $c1
@@ -525,7 +523,6 @@ Sfx_LevelUp_Ch6: ; f0b5f
 ; f0b6d
 
 Sfx_DexFanfare5079_Ch7: ; f0b6d
-Sfx_LevelUp_Ch7: ; f0b6d
 	togglesfx
 	notetype $8, $25
 	octave 4
@@ -544,7 +541,6 @@ Sfx_LevelUp_Ch7: ; f0b6d
 ; f0b7f
 
 Sfx_DexFanfare5079_Ch8: ; f0b7f
-Sfx_LevelUp_Ch8: ; f0b7f
 	togglesfx
 	sfxtogglenoise $4
 	notetype $c
@@ -1220,7 +1216,6 @@ Sfx_GetEggFromDaycareMan: ; f0e66
 ; f0e72
 
 Sfx_GetEggFromDaycareLady_Ch5: ; f0e72
-Sfx_GetEggFromDaycareMan_Ch5: ; f0e72
 	togglesfx
 	tempo 120
 	volume $77
@@ -1254,7 +1249,6 @@ Sfx_GetEggFromDaycareMan_Ch5: ; f0e72
 	togglesfx
 
 Sfx_GetEggFromDaycareLady_Ch6: ; f0e9b
-Sfx_GetEggFromDaycareMan_Ch6: ; f0e9b
 	togglesfx
 	vibrato $12, $34
 	dutycycle $3
@@ -1285,7 +1279,6 @@ Sfx_GetEggFromDaycareMan_Ch6: ; f0e9b
 	togglesfx
 
 Sfx_GetEggFromDaycareLady_Ch7: ; f0ebe
-Sfx_GetEggFromDaycareMan_Ch7: ; f0ebe
 	togglesfx
 	notetype $8, $25
 	note __, 2
@@ -1306,7 +1299,6 @@ Sfx_GetEggFromDaycareMan_Ch7: ; f0ebe
 	togglesfx
 
 Sfx_GetEggFromDaycareLady_Ch8: ; f0ed0
-Sfx_GetEggFromDaycareMan_Ch8: ; f0ed0
 	togglesfx
 	sfxtogglenoise $4
 	notetype $8
@@ -1957,9 +1949,9 @@ Sfx_GetBadge_Ch5: ; f1189
 	note F_, 3
 	callchannel Sfx_GetBadge_branch_f11aa
 	note A#, 3
-	forceoctave $2
+	pitchoffset 0, D_
 	callchannel Sfx_GetBadge_branch_f11aa
-	forceoctave $0
+	pitchoffset 0, C_
 	intensity $a7
 	note A_, 16
 	note __, 6
@@ -2322,7 +2314,7 @@ Sfx_Aeroblast: ; f1334
 ; f133a
 
 Sfx_Aeroblast_Ch5: ; f133a
-	unknownmusic0xde $f2
+	sound_duty 2, 0, 3, 3
 	soundinput $f5
 	sound C_, 13, $f8, $0580
 	soundinput $8
@@ -2568,11 +2560,11 @@ Sfx_BellyDrum_Ch8: ; f14b6
 	endchannel
 ; f14ba
 
-Sfx_Unknown7F: ; f14ba
-	musicheader 1, 5, Sfx_Unknown7F_Ch5
+Sfx_Toxic: ; f14ba
+	musicheader 1, 5, Sfx_Toxic_Ch5
 ; f14bd
 
-Sfx_Unknown7F_Ch5: ; f14bd
+Sfx_Toxic_Ch5: ; f14bd
 	dutycycle $2
 	soundinput $95
 	sound __,  3, $c9, $03b3
@@ -4001,8 +3993,8 @@ Sfx_2Boops_branch_f1cb9: ; f1cb9
 	endchannel
 ; f1cd0
 
-Sfx_UnknownCB: ; f1cd0
-	musicheader 1, 8, Sfx_UnknownCB_Ch8
+Sfx_TitleScreenIntro: ; f1cd0
+	musicheader 1, 8, Sfx_TitleScreenIntro_Ch8
 ; f1cd3
 
 Sfx_Menu_Ch8: ; f1cd3
@@ -4131,7 +4123,6 @@ Sfx_ExitBuilding_Ch8: ; f1d7a
 ; f1d8a
 
 Sfx_ReadText2_Ch5: ; f1d8a
-Sfx_ReadText_Ch5: ; f1d8a
 	dutycycle $2
 	sound __,  1, $91, $07c0
 	sound __,  1, $81, $07d0
@@ -4440,13 +4431,13 @@ Sfx_BallPoof_Ch8: ; f1fff
 	endchannel
 ; f2003
 
-Sfx_Unknown3A_Ch5: ; f2003
+Sfx_Faint_Ch5: ; f2003
 	sound __, 16, $d1, $0200
 	soundinput $8
 	endchannel
 ; f200a
 
-Sfx_Unknown3A_Ch8: ; f200a
+Sfx_Faint_Ch8: ; f200a
 	noise __,  5, $f5, $33
 	noise __,  9, $f4, $22
 	noise __, 16, $f2, $21
@@ -4762,7 +4753,7 @@ Sfx_Supersonic_branch_f21ef: ; f21ef
 ; f21fc
 
 Sfx_Supersonic_Ch6: ; f21fc
-	unknownmusic0xde $b3
+	sound_duty 3, 0, 3, 2
 	sound __, 16, $2f, $07c8
 Sfx_Supersonic_branch_f2202: ; f2202
 	sound __, 16, $cf, $07c7
@@ -4790,7 +4781,7 @@ Sfx_Leer_branch_f221a: ; f221a
 
 Sfx_Leer_Ch6: ; f2229
 Sfx_Leer_branch_f2229: ; f2229
-	unknownmusic0xde $b3
+	sound_duty 3, 0, 3, 2
 	sound __,  1, $e1, $07c1
 	sound __,  1, $e1, $0701
 	loopchannel 12, Sfx_Leer_branch_f2229
@@ -4807,7 +4798,7 @@ Sfx_Leer_branch_f2238: ; f2238
 
 Sfx_Ember_Ch5: ; f2243
 Sfx_Ember_branch_f2243: ; f2243
-	unknownmusic0xde $c9
+	sound_duty 1, 2, 0, 3
 	sound __, 12, $f3, $0120
 	sound __, 10, $d3, $0150
 	loopchannel 5, Sfx_Ember_branch_f2243
@@ -4829,7 +4820,7 @@ Sfx_Ember_branch_f225a: ; f225a
 
 Sfx_BubbleBeam_Ch5: ; f226e
 Sfx_BubbleBeam_branch_f226e: ; f226e
-	unknownmusic0xde $39
+	sound_duty 1, 2, 3, 0
 	sound __,  5, $f4, $0600
 	sound __,  4, $c4, $0500
 	sound __,  6, $b5, $0600
@@ -4841,7 +4832,7 @@ Sfx_BubbleBeam_branch_f226e: ; f226e
 
 Sfx_BubbleBeam_Ch6: ; f2289
 Sfx_BubbleBeam_branch_f2289: ; f2289
-	unknownmusic0xde $8d
+	sound_duty 1, 3, 0, 2
 	sound __,  6, $e4, $05e0
 	sound __,  5, $b4, $04e0
 	sound __,  7, $a5, $05e8
@@ -4862,7 +4853,7 @@ Sfx_BubbleBeam_branch_f22a0: ; f22a0
 
 Sfx_HydroPump_Ch5: ; f22b1
 Sfx_HydroPump_branch_f22b1: ; f22b1
-	unknownmusic0xde $d2
+	sound_duty 2, 0, 1, 3
 	sound __,  4, $81, $0300
 	sound __,  4, $c1, $0400
 	sound __,  4, $f1, $0500
@@ -4887,7 +4878,7 @@ Sfx_HydroPump_branch_f22d0: ; f22d0
 
 Sfx_Surf_Ch5: ; f22e7
 Sfx_Surf_branch_f22e7: ; f22e7
-	unknownmusic0xde $39
+	sound_duty 1, 2, 3, 0
 	sound __, 16, $f4, $0500
 	sound __, 16, $c4, $0400
 	sound __, 16, $e2, $05c0
@@ -4897,7 +4888,7 @@ Sfx_Surf_branch_f22e7: ; f22e7
 
 Sfx_Surf_Ch6: ; f22fa
 Sfx_Surf_branch_f22fa: ; f22fa
-	unknownmusic0xde $8d
+	sound_duty 1, 3, 0, 2
 	sound __,  8, $e4, $0430
 	sound __, 16, $b4, $0330
 	sound __, 16, $a2, $0438
@@ -4917,7 +4908,7 @@ Sfx_Surf_branch_f230d: ; f230d
 
 Sfx_Psybeam_Ch5: ; f231e
 Sfx_Psybeam_branch_f231e: ; f231e
-	unknownmusic0xde $a1
+	sound_duty 1, 0, 2, 2
 	sound __, 11, $f1, $0640
 	sound __, 11, $f3, $0680
 	sound __, 11, $f2, $0620
@@ -4928,7 +4919,7 @@ Sfx_Psybeam_branch_f231e: ; f231e
 
 Sfx_Psybeam_Ch6: ; f2335
 Sfx_Psybeam_branch_f2335: ; f2335
-	unknownmusic0xde $b3
+	sound_duty 3, 0, 3, 2
 	sound __, 11, $f3, $0571
 	sound __,  8, $e3, $0531
 	sound __, 11, $f1, $0551
@@ -4958,7 +4949,7 @@ Sfx_Charge_branch_f2357: ; f2357
 
 Sfx_Charge_Ch6: ; f236e
 Sfx_Charge_branch_f236e: ; f236e
-	unknownmusic0xde $b3
+	sound_duty 3, 0, 3, 2
 	sound __,  3, $e1, $0302
 	sound __,  4, $e1, $07f2
 	sound __,  5, $e1, $0602
@@ -4979,7 +4970,7 @@ Sfx_Charge_branch_f2385: ; f2385
 
 Sfx_Thundershock_Ch5: ; f2396
 Sfx_Thundershock_branch_f2396: ; f2396
-	unknownmusic0xde $2b
+	sound_duty 3, 2, 2, 0
 	sound __,  4, $f1, $07f0
 	sound __,  5, $f2, $0200
 	loopchannel 8, Sfx_Thundershock_branch_f2396
@@ -4988,7 +4979,7 @@ Sfx_Thundershock_branch_f2396: ; f2396
 
 Sfx_Thundershock_Ch6: ; f23a5
 Sfx_Thundershock_branch_f23a5: ; f23a5
-	unknownmusic0xde $b3
+	sound_duty 3, 0, 3, 2
 	sound __,  5, $e2, $0202
 	sound __,  5, $e1, $07e2
 	loopchannel 9, Sfx_Thundershock_branch_f23a5
@@ -5092,7 +5083,7 @@ Sfx_Sharpen_Ch6: ; f2463
 ; f247a
 
 Sfx_EggBomb_Ch5: ; f247a
-	unknownmusic0xde $ed
+	sound_duty 1, 3, 2, 3
 	sound __,  9, $ff, $03f8
 	sound __, 16, $ff, $0400
 	sound __, 16, $f3, $0400
@@ -5100,7 +5091,7 @@ Sfx_EggBomb_Ch5: ; f247a
 ; f2489
 
 Sfx_EggBomb_Ch6: ; f2489
-	unknownmusic0xde $b4
+	sound_duty 0, 1, 3, 2
 	sound __,  9, $ef, $03c0
 	sound __, 16, $ef, $03c0
 	sound __, 16, $e3, $03c0
@@ -5168,7 +5159,7 @@ Sfx_HyperBeam_branch_f24f8: ; f24f8
 ; f2509
 
 Sfx_HyperBeam_Ch6: ; f2509
-	unknownmusic0xde $b3
+	sound_duty 3, 0, 3, 2
 	sound __,  3, $f1, $0781
 	sound __,  3, $f1, $0701
 	sound __,  3, $f1, $0791
@@ -5208,7 +5199,7 @@ Sfx_Unknown60_Ch8: ; f2553
 	endchannel
 ; f256c
 
-Sfx_UnknownCB_Ch8: ; f256c
+Sfx_TitleScreenIntro_Ch8: ; f256c
 	noise __,  2, $10, $10
 	noise __,  3, $20, $10
 	noise __,  3, $30, $20
@@ -5486,7 +5477,6 @@ Sfx_HangUp_Ch5: ; f26f1
 	sound C_,  1, $0, 0
 Sfx_HangUp_branch_f26ff: ; f26ff
 Sfx_NoSignal_Ch5: ; f26ff
-Sfx_NoSignal_branch_f26ff: ; f26ff
 	dutycycle $2
 	sound C_,  5, $e8, $070b
 	sound C_, 13, $0, 0
@@ -5496,8 +5486,6 @@ Sfx_NoSignal_branch_f26ff: ; f26ff
 
 Sfx_Sandstorm_Ch8: ; f270e
 Sfx_Sandstorm_branch_f270e: ; f270e
-Sfx_Unknown5F_Ch8: ; f270e
-Sfx_Unknown5F_branch_f270e: ; f270e
 	noise __,  2, $f8, $41
 	noise __,  3, $9c, $24
 	noise __,  1, $0, $0

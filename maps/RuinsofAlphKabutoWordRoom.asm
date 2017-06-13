@@ -6,9 +6,6 @@ RuinsofAlphKabutoWordRoom_MapScriptHeader:
 	db 0
 
 RuinsofAlphKabutoWordRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $9, 3, RUINS_OF_ALPH_KABUTO_ITEM_ROOM

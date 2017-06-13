@@ -69,7 +69,7 @@ ReturnFromMapSetupScript:: ; b8000
 	ld a, [wPreviousLandmark]
 	cp c
 	ret z
-	cp $0
+	cp SPECIAL_MAP
 	ret
 ; b8070
 
@@ -226,7 +226,7 @@ endr
 rept 2
 	inc c
 endr
-	ld a, $87
+	ld a, (1 << 7) | PAL_BG_TEXT
 .loop
 	push bc
 	push hl

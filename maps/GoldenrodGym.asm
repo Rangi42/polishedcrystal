@@ -9,20 +9,10 @@ const_value set 2
 
 GoldenrodGym_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x5400a, 0
-	dw UnknownScript_0x5400b, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x5400a:
-	end
-
-UnknownScript_0x5400b:
-	end
 
 WhitneyScript_0x5400c:
 	faceplayer
@@ -333,11 +323,9 @@ SrandjrJoandcath2OWText:
 	line "losing to Whitney."
 	cont "It's depressing."
 
-	para "I'm okay! If I"
-	line "lose, I'll just"
-
-	para "try harder next"
-	line "time!"
+	para "I'm OK! If I lose,"
+	line "I'll just try"
+	cont "harder next time!"
 	done
 
 JoWhitneyCriesText:
@@ -416,9 +404,6 @@ GoldenrodGymGuyWinText:
 	done
 
 GoldenrodGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $2, 1, GOLDENROD_CITY
@@ -426,7 +411,7 @@ GoldenrodGym_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $5, $8, $0, WhitneyCriesScript, $0, $0
+	xy_trigger 1, $5, $8, WhitneyCriesScript
 
 .Signposts:
 	db 2

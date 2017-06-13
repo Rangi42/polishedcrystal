@@ -279,7 +279,7 @@ CutAndPasteMap: ; 104265 (41:4265)
 	ret
 
 _Get2bpp:: ; 104284
-	; 2bpp when [rLCDC] & $80
+	; 2bpp when bit 7 of [rLCDC]
 	; switch to WRAM bank 6
 	ld a, [rSVBK]
 	push af
@@ -322,7 +322,7 @@ endr
 ; 1042b2
 
 _Get1bpp:: ; 1042b2
-	; 1bpp when [rLCDC] & $80
+	; 1bpp when bit 7 of [rLCDC]
 .loop
 	ld a, c
 	cp $10

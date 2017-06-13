@@ -10,9 +10,6 @@ Route34IlexForestGate_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
 
 UnknownScript_0x62d2d:
@@ -135,9 +132,6 @@ UnknownText_0x62e97:
 	done
 
 Route34IlexForestGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, ROUTE_34
@@ -147,7 +141,7 @@ Route34IlexForestGate_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $7, $4, $0, UnknownScript_0x62d3d, $0, $0
+	xy_trigger 0, $7, $4, UnknownScript_0x62d3d
 
 .Signposts:
 	db 0

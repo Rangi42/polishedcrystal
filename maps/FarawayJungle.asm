@@ -28,9 +28,6 @@ MewText:
 	done
 
 FarawayJungle_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $12, $c, 1, FARAWAY_ISLAND

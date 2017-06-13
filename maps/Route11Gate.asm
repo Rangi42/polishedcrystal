@@ -27,9 +27,6 @@ Route11GateOfficerText:
 	done
 
 Route11Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $5, $0, 1, ROUTE_11

@@ -5,11 +5,9 @@ INCLUDE "engine/cgb.asm"
 CheckShininess:
 ; Check if a mon is shiny by personality at bc.
 ; Return carry if shiny.
-
 	ld a, [bc]
 	and SHINY_MASK
 	jr z, .NotShiny
-
 	scf
 	ret
 
@@ -19,7 +17,7 @@ CheckShininess:
 
 InitPartyMenuPalettes:
 	ld de, UnknBGPals
-	ld hl, PartyMenuPals
+	ld hl, PartyMenuBGPals
 rept 4
 	call LoadHLPaletteIntoDE
 endr
@@ -249,10 +247,10 @@ LoadPalette_White_Col1_Col2_Black:
 	ld a, $5
 	ld [rSVBK], a
 
-	ld a, $7fff % $100 ; (RGB 31, 31, 31) % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [de], a
 	inc de
-	ld a, $7fff / $100 ; (RGB 31, 31, 31) / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [de], a
 	inc de
 
@@ -407,25 +405,22 @@ ApplyPartyMenuHPPals: ; 96f3
 	call FillBoxCGB
 	ret
 
-InitPokegearPalettes: ; This is needed because the regular palette is dark at night.
 InitPartyMenuOBPals:
-	ld hl, .PartyMenuOBPals
+	ld hl, PartyMenuOBPals
+	ld de, UnknOBPals
+	ld bc, 8 palettes
+	ld a, $5
+	call FarCopyWRAM
+	ret
+
+InitPokegearPalettes:
+; This is needed because the regular palette is dark at night.
+	ld hl, PokegearOBPals
 	ld de, UnknOBPals
 	ld bc, 2 palettes
 	ld a, $5
 	call FarCopyWRAM
 	ret
-
-.PartyMenuOBPals:
-	RGB 27, 31, 27
-	RGB 31, 19, 10
-	RGB 31, 07, 04
-	RGB 00, 00, 00
-
-	RGB 27, 31, 27
-	RGB 31, 19, 10
-	RGB 10, 14, 20
-	RGB 00, 00, 00
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -635,26 +630,6 @@ ClearBytes: ; 0x9a5b
 	jr nz, ClearBytes
 	ret
 ; 0x9a64
-
-DrawDefaultTiles: ; 0x9a64
-; Draw 240 tiles (2/3 of the screen) from tiles in VRAM
-	hlbgcoord 0, 0 ; BG Map 0
-	ld de, BG_MAP_WIDTH - SCREEN_WIDTH
-	ld a, $80 ; starting tile
-	ld c, 12 + 1
-.line
-	ld b, 20
-.tile
-	ld [hli], a
-	inc a
-	dec b
-	jr nz, .tile
-; next line
-	add hl, de
-	dec c
-	jr nz, .line
-	ret
-; 0x9a7a
 
 LoadMapPals:
 	farcall LoadSpecialMapPalette

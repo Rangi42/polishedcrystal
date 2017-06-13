@@ -1989,7 +1989,7 @@ endr
 .dw_return ; e322a
 	pop af
 	ld e, a
-	farcall Function14ad5
+	farcall MovePkmnWOMail_InsertMon_SaveGame
 	ret
 ; e3233
 
@@ -2108,7 +2108,7 @@ endr
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
 	ld [CurPartyMon], a
-	farcall Function51322
+	farcall InsertPokemonIntoBox
 	ret
 ; e3316
 
@@ -2137,7 +2137,7 @@ endr
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
 	ld [CurPartyMon], a
-	farcall Function5138b
+	farcall InsertPokemonIntoParty
 	ret
 ; e3357
 
@@ -2250,8 +2250,8 @@ BillsPC_InitGFX: ; e33e8 (38:73e8)
 	ret
 ; e3419 (38:7419)
 
-PCSelectLZ: INCBIN "gfx/pc.2bpp.lz"
-PCMailGFX:  INCBIN "gfx/pc_mail.2bpp"
+PCSelectLZ: INCBIN "gfx/pc/pc.2bpp.lz"
+PCMailGFX:  INCBIN "gfx/pc/mail.2bpp"
 ; e34dd
 
 PCString_ChooseaPKMN: db "Choose a <PK><MN>.@"
@@ -2531,11 +2531,6 @@ BillsPC_ChangeBoxSubmenu: ; e36f9 (38:76f9)
 	and a
 	ret
 
-.EmptyBox:
-	call BillsPC_PlaceEmptyBoxString_SFX
-	and a
-	ret
-
 .Switch:
 	ld a, [MenuSelection]
 	dec a
@@ -2602,21 +2597,6 @@ BillsPC_PlaceWhatsUpString: ; e37af (38:77af)
 .WhatsUp: ; e37b4
 	db "What's up?@"
 ; e37be
-
-BillsPC_PlaceEmptyBoxString_SFX: ; e37be (38:77be)
-	ld de, .NoMonString
-	call BillsPC_PlaceChangeBoxString
-	ld de, SFX_WRONG
-	call WaitPlaySFX
-	call WaitSFX
-	ld c, 50
-	call DelayFrames
-	ret
-; e37d3 (38:77d3)
-
-.NoMonString: ; e37d3
-	db "There's no #mon.@"
-; e37e3
 
 BillsPC_PlaceChangeBoxString: ; e37e3 (38:77e3)
 	push de

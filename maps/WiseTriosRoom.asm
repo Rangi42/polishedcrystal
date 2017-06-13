@@ -8,24 +8,11 @@ const_value set 2
 
 WiseTriosRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x98572, 0
-	dw UnknownScript_0x98573, 0
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x98574
-
-UnknownScript_0x98572:
-	end
-
-UnknownScript_0x98573:
-	end
 
 UnknownScript_0x98574:
 	checkevent EVENT_FOUGHT_SUICUNE
@@ -350,9 +337,6 @@ UnknownText_0x98db5:
 	done
 
 WiseTriosRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $4, $7, 1, BELLCHIME_TRAIL
@@ -361,7 +345,7 @@ WiseTriosRoom_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $4, $7, $0, UnknownScript_0x985a3, $0, $0
+	xy_trigger 0, $4, $7, UnknownScript_0x985a3
 
 .Signposts:
 	db 0

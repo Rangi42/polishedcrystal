@@ -6,9 +6,10 @@ TRADE_GETMON      EQU 2
 TRADE_NICK        EQU 3
 TRADE_DVS         EQU 14
 TRADE_PERSONALITY EQU 17
-TRADE_ITEM        EQU 19
-TRADE_OT_ID       EQU 21
-TRADE_OT_NAME     EQU 22
+TRADE_BALL        EQU 19
+TRADE_ITEM        EQU 20
+TRADE_OT_ID       EQU 22
+TRADE_OT_NAME     EQU 23
 
 ; Trade dialogs
 TRADE_INTRO    EQU 0
@@ -183,6 +184,10 @@ DoNPCTrade: ; fcc63
 	jr c, .male2
 	ld b, FEMALE
 .male2
+	ld e, TRADE_BALL
+	call GetTradeAttribute
+	ld a, [hl]
+	ld c, a
 	farcall SetGiftPartyMonCaughtData
 
 	ld e, TRADE_NICK
@@ -386,26 +391,28 @@ npctrade: MACRO
 	shift
 	db \9 ; item
 	shift
+	db \9 ; ball
+	shift
 	dw \9 ; OT ID
 	shift
 	db \9, 0 ; OT name
 ENDM
 
-	; OT names have 2 characters less padding so the total struct is 31 bytes
+	; OT names have 3 characters less padding so the total struct is 31 bytes
 	; Goldenrod City
-	npctrade 0, CUBONE,     DIGLETT,    "Boota@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | JOLLY,   MALE,   SITRUS_BERRY, 37460, "Mike@@@@@"
+	npctrade 0, PHANPY,     DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   DUSK_BALL,    SITRUS_BERRY, 37460, "Mike@@@@"
 	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | HASTY,   MALE,   PERSIM_BERRY, 48926, "Kyle@@@@@"
+	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | HASTY,   MALE,   PREMIER_BALL, PERSIM_BERRY, 48926, "Kyle@@@@"
 	; Olivine City
-	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILK_SCARF,   29189, "Tim@@@@@@"
+	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   HEAVY_BALL,   SILK_SCARF,   29189, "Tim@@@@@"
 	; Blackthorn City
-	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | TIMID,   FEMALE, PINK_BOW,     00283, "Emy@@@@@@"
+	npctrade 3, JYNX,       MR__MIME,   "Doris@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | TIMID,   FEMALE, LOVE_BALL,    PINK_BOW,     00283, "Emy@@@@@"
 	; Pewter City
-	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | ADAMANT, MALE,   SILVERPOWDER, 15616, "Chris@@@@"
+	npctrade 2, PINSIR,     HERACROSS,  "Paul@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   PARK_BALL,    SILVERPOWDER, 15616, "Chris@@@"
 	; Route 14
-	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, LUCKY_EGG,    26491, "Kim@@@@@@"
+	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, HEAL_BALL,    LUCKY_EGG,    26491, "Kim@@@@@"
 	; Goldenrod Harbor
-	npctrade 0, QWILFISH,   CHINCHOU,   "Lenie@@@@@@", $DD, $DD, $DD, HIDDEN_ABILITY | CALM,    FEMALE, EVIOLITE,     50082, "Jacques@@"
+	npctrade 0, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
 ; fcf38
 
 

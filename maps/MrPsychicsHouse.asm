@@ -97,9 +97,6 @@ Text_MrPsychicsHouseTutorTaught:
 	done
 
 MrPsychicsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 5, SAFFRON_CITY

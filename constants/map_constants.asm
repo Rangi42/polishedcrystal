@@ -336,7 +336,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 16
 
-	mapgroup ROUTE_23,                                   72, 10 ;  1
+	mapgroup ROUTE_23,                                   70, 10 ;  1
 	mapgroup INDIGO_PLATEAU,                             13, 10 ;  2
 	mapgroup INDIGO_PLATEAU_POKECENTER_1F,                7,  8 ;  3
 	mapgroup WILLS_ROOM,                                  9,  5 ;  4
@@ -373,29 +373,29 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 18
 
 	mapgroup ROUTE_8,                                    11, 26 ;  1
-	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  2
-	mapgroup LAVENDER_TOWN,                              10, 10 ;  3
-	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  4
-	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  5
-	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  6
-	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  7
-	mapgroup LAVENDER_MART,                               4,  6 ;  8
-	mapgroup SOUL_HOUSE,                                  5,  5 ;  9
-	mapgroup SOUL_HOUSE_B1F,                              9, 10 ; 10
-	mapgroup SOUL_HOUSE_B2F,                              9, 10 ; 11
-	mapgroup SOUL_HOUSE_B3F,                              9,  4 ; 12
-	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 13
-	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 14
-	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 15
-	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 16
-	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 17
-	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 18
-	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 19
-	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 20
-	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 21
-	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 22
-	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ; 23
-	mapgroup ROUTE_12_NORTH,                              9, 10 ; 24
+	mapgroup ROUTE_8_SAFFRON_GATE,                        4,  5 ;  2
+	mapgroup ROUTE_10_SOUTH,                              9, 10 ;  3
+	mapgroup ROUTE_12_NORTH,                              9, 10 ;  4
+	mapgroup LAVENDER_TOWN,                              10, 10 ;  5
+	mapgroup LAVENDER_POKECENTER_1F,                      4,  6 ;  6
+	mapgroup MR_FUJIS_HOUSE,                              4,  5 ;  7
+	mapgroup LAVENDER_TOWN_SPEECH_HOUSE,                  4,  4 ;  8
+	mapgroup LAVENDER_NAME_RATER,                         4,  4 ;  9
+	mapgroup LAVENDER_MART,                               4,  6 ; 10
+	mapgroup SOUL_HOUSE,                                  5,  5 ; 11
+	mapgroup SOUL_HOUSE_B1F,                              9, 10 ; 12
+	mapgroup SOUL_HOUSE_B2F,                              9, 10 ; 13
+	mapgroup SOUL_HOUSE_B3F,                              9,  4 ; 14
+	mapgroup LAV_RADIO_TOWER_1F,                          4, 10 ; 15
+	mapgroup LAV_RADIO_TOWER_2F,                          4,  9 ; 16
+	mapgroup LAV_RADIO_TOWER_3F,                          4,  9 ; 17
+	mapgroup LAV_RADIO_TOWER_4F,                          4,  9 ; 18
+	mapgroup LAV_RADIO_TOWER_5F,                          4,  7 ; 19
+	mapgroup HAUNTED_RADIO_TOWER_2F,                      4,  9 ; 20
+	mapgroup HAUNTED_RADIO_TOWER_3F,                      4,  9 ; 21
+	mapgroup HAUNTED_RADIO_TOWER_4F,                      4,  9 ; 22
+	mapgroup HAUNTED_RADIO_TOWER_5F,                      9,  8 ; 23
+	mapgroup HAUNTED_RADIO_TOWER_6F,                      9,  8 ; 24
 
 	newgroup                                                    ; 19
 
@@ -677,6 +677,15 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 33
 
+	mapgroup VALENCIA_ISLAND,                            12, 14 ;  1
+	mapgroup ROUTE_49,                                   11, 20 ;  2
+	mapgroup IVYS_LAB,                                    6,  5 ;  3
+	mapgroup IVYS_HOUSE,                                  4,  4 ;  4
+	mapgroup VALENCIA_HOUSE,                              4,  4 ;  5
+	mapgroup VALENCIA_PORT,                               9,  7 ;  6
+
+	newgroup                                                    ; 34
+
 	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 
 
@@ -875,39 +884,41 @@ EMOTE_OBJECT EQU 7
 
 ; fruit trees
 const_value SET 1
-	const FRUITTREE_ROUTE_29       ; 01
-	const FRUITTREE_ROUTE_30_1     ; 02
-	const FRUITTREE_ROUTE_30_2     ; 03
-	const FRUITTREE_ROUTE_31       ; 04
-	const FRUITTREE_VIOLET_CITY    ; 05
-	const FRUITTREE_ROUTE_32_COAST ; 06
-	const FRUITTREE_ROUTE_33       ; 07
-	const FRUITTREE_AZALEA_TOWN    ; 08
-	const FRUITTREE_ROUTE_35       ; 09
-	const FRUITTREE_ROUTE_36       ; 0a
-	const FRUITTREE_ROUTE_37_1     ; 0b
-	const FRUITTREE_ROUTE_37_2     ; 0c
-	const FRUITTREE_ROUTE_37_3     ; 0d
-	const FRUITTREE_ROUTE_38       ; 0e
-	const FRUITTREE_ROUTE_39       ; 0f
-	const FRUITTREE_ROUTE_42_1     ; 10
-	const FRUITTREE_ROUTE_42_2     ; 11
-	const FRUITTREE_ROUTE_42_3     ; 12
-	const FRUITTREE_ROUTE_43       ; 13
-	const FRUITTREE_ROUTE_44       ; 14
-	const FRUITTREE_ROUTE_45       ; 15
-	const FRUITTREE_ROUTE_46_1     ; 16
-	const FRUITTREE_ROUTE_46_2     ; 17
-	const FRUITTREE_ROUTE_27       ; 18
-	const FRUITTREE_ROUTE_26       ; 19
-	const FRUITTREE_ROUTE_8        ; 1a
-	const FRUITTREE_ROUTE_11       ; 1b
-	const FRUITTREE_FUCHSIA_CITY   ; 1c
-	const FRUITTREE_PEWTER_CITY_1  ; 1d
-	const FRUITTREE_PEWTER_CITY_2  ; 1e
-	const FRUITTREE_ROUTE_2        ; 1f
-	const FRUITTREE_ROUTE_1        ; 20
-	const FRUITTREE_LUCKY_ISLAND   ; 21
+	const FRUITTREE_ROUTE_29        ; 01
+	const FRUITTREE_ROUTE_30_1      ; 02
+	const FRUITTREE_ROUTE_30_2      ; 03
+	const FRUITTREE_ROUTE_31        ; 04
+	const FRUITTREE_VIOLET_CITY     ; 05
+	const FRUITTREE_ROUTE_32_COAST  ; 06
+	const FRUITTREE_ROUTE_33        ; 07
+	const FRUITTREE_AZALEA_TOWN     ; 08
+	const FRUITTREE_ROUTE_35        ; 09
+	const FRUITTREE_ROUTE_36        ; 0a
+	const FRUITTREE_ROUTE_37_1      ; 0b
+	const FRUITTREE_ROUTE_37_2      ; 0c
+	const FRUITTREE_ROUTE_37_3      ; 0d
+	const FRUITTREE_ROUTE_38        ; 0e
+	const FRUITTREE_ROUTE_39        ; 0f
+	const FRUITTREE_ROUTE_42_1      ; 10
+	const FRUITTREE_ROUTE_42_2      ; 11
+	const FRUITTREE_ROUTE_42_3      ; 12
+	const FRUITTREE_ROUTE_43        ; 13
+	const FRUITTREE_ROUTE_44        ; 14
+	const FRUITTREE_ROUTE_45        ; 15
+	const FRUITTREE_ROUTE_46_1      ; 16
+	const FRUITTREE_ROUTE_46_2      ; 17
+	const FRUITTREE_ROUTE_27        ; 18
+	const FRUITTREE_ROUTE_26        ; 19
+	const FRUITTREE_ROUTE_8         ; 1a
+	const FRUITTREE_ROUTE_11        ; 1b
+	const FRUITTREE_FUCHSIA_CITY    ; 1c
+	const FRUITTREE_PEWTER_CITY_1   ; 1d
+	const FRUITTREE_PEWTER_CITY_2   ; 1e
+	const FRUITTREE_ROUTE_2         ; 1f
+	const FRUITTREE_ROUTE_1         ; 20
+	const FRUITTREE_LUCKY_ISLAND    ; 21
+	const FRUITTREE_SHAMOUTI_ISLAND ; 22
+	const FRUITTREE_ROUTE_49        ; 23
 NUM_FRUIT_TREES EQU const_value +- 1
 
 CMDQUEUE_TYPE  EQU 0

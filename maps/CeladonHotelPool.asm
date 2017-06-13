@@ -60,9 +60,6 @@ CeladonHotelPoolSwimmerMText2:
 	done
 
 CeladonHotelPool_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $a, 4, CELADON_HOTEL_1F

@@ -3,24 +3,15 @@ const_value set 2
 
 BellchimeTrail_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkScript
 
 .Trigger0:
 	priorityjump BellchimeTrailStepDownScript
-	end
-
-.Trigger1:
 	end
 
 SetupValerieMorningWalkScript:
@@ -331,9 +322,6 @@ TinTowerSignText:
 	done
 
 BellchimeTrail_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $4, $4, 1, WISE_TRIOS_ROOM
@@ -342,7 +330,7 @@ BellchimeTrail_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $9, $15, $0, BellchimeTrailPanUpScript, $0, $0
+	xy_trigger 1, $9, $15, BellchimeTrailPanUpScript
 
 .Signposts:
 	db 1

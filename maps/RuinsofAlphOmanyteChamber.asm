@@ -1,29 +1,18 @@
 RuinsofAlphOmanyteChamber_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x58be9, 0
-	dw UnknownScript_0x58bf7, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58bf8
 
-UnknownScript_0x58be9:
+.Trigger0:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iftrue UnknownScript_0x58bf3
-	end
-
-UnknownScript_0x58bf3:
+	iffalse .End
 	priorityjump UnknownScript_0x58c12
-	end
-
-UnknownScript_0x58bf7:
+.End
 	end
 
 UnknownScript_0x58bf8:
@@ -146,9 +135,6 @@ UnknownText_0x58d26:
 	done
 
 RuinsofAlphOmanyteChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 3, RUINS_OF_ALPH_OUTSIDE

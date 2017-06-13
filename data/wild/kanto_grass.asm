@@ -1161,6 +1161,87 @@
 	db 71, RAICHU
 	db 74, DITTO
 
+	map SOUL_HOUSE_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 47, GASTLY
+	db 48, GASTLY
+	db 48, HAUNTER
+	db 49, HAUNTER
+	db 49, MISDREAVUS
+	db 49, MAROWAK
+	db 50, MISMAGIUS
+	; day
+	db 47, GASTLY
+	db 48, GASTLY
+	db 48, HAUNTER
+	db 49, HAUNTER
+	db 49, MISDREAVUS
+	db 49, MAROWAK
+	db 50, MISMAGIUS
+	; nite
+	db 47, GASTLY
+	db 48, GASTLY
+	db 48, HAUNTER
+	db 49, HAUNTER
+	db 49, MISDREAVUS
+	db 49, MAROWAK
+	db 50, MISMAGIUS
+
+	map SOUL_HOUSE_B2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 48, GASTLY
+	db 49, GASTLY
+	db 49, HAUNTER
+	db 50, HAUNTER
+	db 50, MISDREAVUS
+	db 50, MAROWAK
+	db 51, MISMAGIUS
+	; day
+	db 48, GASTLY
+	db 49, GASTLY
+	db 49, HAUNTER
+	db 50, HAUNTER
+	db 50, MISDREAVUS
+	db 50, MAROWAK
+	db 51, MISMAGIUS
+	; nite
+	db 48, GASTLY
+	db 49, GASTLY
+	db 49, HAUNTER
+	db 50, HAUNTER
+	db 50, MISDREAVUS
+	db 50, MAROWAK
+	db 51, MISMAGIUS
+
+	map SOUL_HOUSE_B3F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 49, GASTLY
+	db 50, HAUNTER
+	db 50, MISDREAVUS
+	db 49, VULPIX
+	db 51, MAROWAK
+	db 52, NINETALES
+	db 52, MISMAGIUS
+	; day
+	db 49, GASTLY
+	db 50, HAUNTER
+	db 50, MISDREAVUS
+	db 49, VULPIX
+	db 51, MAROWAK
+	db 52, NINETALES
+	db 52, MISMAGIUS
+	; nite
+	db 49, GASTLY
+	db 50, HAUNTER
+	db 50, MISDREAVUS
+	db 49, VULPIX
+	db 51, MAROWAK
+	db 52, NINETALES
+	db 52, MISMAGIUS
+
 	map SAFARI_ZONE_HUB
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
@@ -1538,32 +1619,5 @@
 	db 64, STEELIX
 	db 65, GENGAR
 	db 66, GENGAR
-
-	map NAVEL_ROCK_INSIDE
-	db 1 percent, 1 percent, 1 percent ; encounter rates: morn/day/nite
-	; morn
-	db 1, 0
-	db 1, 0
-	db 1, 0
-	db 1, 0
-	db 80, ESPEON
-	db 82, DRAGONITE
-	db 85, DRAGONITE
-	; day
-	db 1, 0
-	db 1, 0
-	db 1, 0
-	db 1, 0
-	db 80, ESPEON
-	db 82, DRAGONITE
-	db 85, DRAGONITE
-	; nite
-	db 1, 0
-	db 1, 0
-	db 1, 0
-	db 1, 0
-	db 80, UMBREON
-	db 82, DRAGONITE
-	db 85, DRAGONITE
 
 	db -1 ; end

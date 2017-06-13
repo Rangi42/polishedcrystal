@@ -33,9 +33,6 @@ Route1ViridianGateRockerText:
 	done
 
 Route1ViridianGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 6, VIRIDIAN_CITY

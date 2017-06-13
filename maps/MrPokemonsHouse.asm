@@ -5,20 +5,14 @@ const_value set 2
 
 MrPokemonsHouse_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump .MrPokemonEvent
-	end
-
-.Trigger1:
 	end
 
 .MrPokemonEvent:
@@ -409,9 +403,6 @@ MrPokemonsHouse_StrangeCoinsText:
 	done
 
 MrPokemonsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, ROUTE_30

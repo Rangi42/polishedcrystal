@@ -102,5 +102,6 @@ ENDM
 	trigger_def ILEX_FOREST,                            wIlexForestTrigger
 	trigger_def ROUTE_23,                               wRoute23Trigger
 	trigger_def ROUTE_18_WEST,                          wRoute18WestTrigger
+	trigger_def SHAMOUTI_HOTEL_RESTAURANT,              wShamoutiHotelRestaurantTrigger
 	db -1
 ; 4d15b

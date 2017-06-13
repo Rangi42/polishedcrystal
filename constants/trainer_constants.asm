@@ -444,7 +444,7 @@ KRIS EQU __enum__
 	const VERONICA
 	const BEAUTY_NICOLE
 	const RACHAEL
-	const ANGELICA
+	const IOANA
 
 	trainerclass BUG_MANIAC ; 32
 	const LOU
@@ -1037,29 +1037,31 @@ KRIS EQU __enum__
 
 	trainerclass VALERIE ; 82
 
-	trainerclass BILL_T ; 83
+	trainerclass VICTOR  ; 83
 
-	trainerclass YELLOW ; 84
+	trainerclass BILL_T ; 84
 
-	trainerclass WALKER ; 85
+	trainerclass YELLOW ; 85
 
-	trainerclass IMAKUNI ; 86
+	trainerclass WALKER ; 86
 
-	trainerclass LAWRENCE ; 87
+	trainerclass IMAKUNI ; 87
 
-	trainerclass REI ; 88
+	trainerclass LAWRENCE ; 88
 
-	trainerclass OMASTAR_FOSSIL ; 89
+	trainerclass REI ; 89
 
-	trainerclass KABUTOPS_FOSSIL ; 8a
+	trainerclass OMASTAR_FOSSIL ; 8a
 
-	trainerclass AERODACTYL_FOSSIL ; 8b
+	trainerclass KABUTOPS_FOSSIL ; 8b
 
-	trainerclass CUBONE_ARMOR ; 8c
+	trainerclass AERODACTYL_FOSSIL ; 8c
 
-	trainerclass METEORITE ; 8d
+	trainerclass CUBONE_ARMOR ; 8d
 
-	trainerclass SILHOUETTE ; 8e
+	trainerclass METEORITE ; 8e
+
+	trainerclass SILHOUETTE ; 8f
 
 NUM_TRAINER_CLASSES EQU __enum__
 

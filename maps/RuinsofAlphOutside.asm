@@ -14,26 +14,35 @@ const_value set 2
 
 RuinsofAlphOutside_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x5800d, 0
-	dw UnknownScript_0x5800e, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
-UnknownScript_0x5800d:
+.Trigger0:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
-	iftrue RuinsofAlphOutsideClimaxScript
-	end
-
-UnknownScript_0x5800e:
+	iffalse .End
+	opentext
+	writetext RuinsofAlphScientistClimax1Text
+	waitbutton
+	closetext
+	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
+	stopfollow
+	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
+	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
+	opentext
+	writetext RuinsofAlphScientistClimax2Text
+	waitbutton
+	closetext
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
+	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
+	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
+	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
+.End
 	end
 
 RuinsofAlphOutsideTileScript:
@@ -92,26 +101,6 @@ UnknownScript_0x58044:
 	warpcheck
 	end
 
-RuinsofAlphOutsideClimaxScript:
-	opentext
-	writetext RuinsofAlphScientistClimax1Text
-	waitbutton
-	closetext
-	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
-	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
-	stopfollow
-	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
-	opentext
-	writetext RuinsofAlphScientistClimax2Text
-	waitbutton
-	closetext
-	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
-	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
-	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
-	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
-	end
-
 FisherScript_0x58061:
 	faceplayer
 	opentext
@@ -154,6 +143,7 @@ PsychicNathanScript:
 	closetext
 	end
 
+; TODO: use this trainer
 TrainerSuperNerdStan:
 	trainer EVENT_BEAT_SUPER_NERD_STAN, SUPER_NERD, STAN, UnknownText_0x581e5, UnknownText_0x58217, 0, UnknownScript_0x580a9
 
@@ -398,9 +388,6 @@ RuinsofAlphScientistClimax2Text:
 	done
 
 RuinsofAlphOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 12
 	warp_def $17, $5, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
@@ -418,8 +405,8 @@ RuinsofAlphOutside_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $14, $d, $0, UnknownScript_0x58031, $0, $0
-	xy_trigger 1, $15, $c, $0, UnknownScript_0x5803a, $0, $0
+	xy_trigger 1, $14, $d, UnknownScript_0x58031
+	xy_trigger 1, $15, $c, UnknownScript_0x5803a
 
 .Signposts:
 	db 5

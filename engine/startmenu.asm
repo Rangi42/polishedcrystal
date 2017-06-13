@@ -18,7 +18,7 @@ StartMenu:: ; 125cd
 	call .SetUpMenuItems
 	ld a, [wd0d2]
 	ld [wMenuCursorBuffer], a
-	call MenuFunc_1e7f
+	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatusBox
 	call SafeUpdateSprites
 	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
@@ -137,7 +137,7 @@ StartMenu:: ; 125cd
 	call ClearBGPalettes
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
-	call MenuFunc_1e7f
+	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatus
 	call UpdateSprites
 	call FinishExitMenu
@@ -212,27 +212,6 @@ StartMenu:: ; 125cd
 	call PlaceString
 	ret
 ; 12800
-
-.MenuDesc: ; 12800
-	push de
-	ld a, [MenuSelection]
-	cp $ff
-	jr z, .none
-	call .GetMenuAccountTextPointer
-rept 4
-	inc hl
-endr
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	pop hl
-	call PlaceString
-	ret
-.none
-	pop de
-	ret
-; 12819
-
 
 .GetMenuAccountTextPointer: ; 12819
 	ld e, a
@@ -1379,7 +1358,7 @@ ChooseMoveToDelete: ; 12f5b
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call LoadFontsBattleExtra
-	call .asm_12f73
+	call .ChooseMoveToDelete
 	pop bc
 	ld a, b
 	ld [Options1], a
@@ -1389,36 +1368,36 @@ ChooseMoveToDelete: ; 12f5b
 	ret
 ; 12f73
 
-.asm_12f73
+.ChooseMoveToDelete
 	call SetUpMoveScreenBG
 	ld de, DeleteMoveScreenAttrs
 	call SetMenuAttributes
 	call SetUpMoveList
 	ld hl, w2DMenuFlags1
 	set 6, [hl]
-	jr .asm_12f93
+	jr .enter_loop
 
-.asm_12f86
+.loop
 	call ScrollingMenuJoypad
 	bit 1, a
-	jp nz, .asm_12f9f
+	jp nz, .b_button
 	bit 0, a
-	jp nz, .asm_12f9c
+	jp nz, .a_button
 
-.asm_12f93
+.enter_loop
 	call PrepareToPlaceMoveData
 	call PlaceMoveData
-	jp .asm_12f86
+	jp .loop
 ; 12f9c
 
-.asm_12f9c
+.a_button
 	and a
-	jr .asm_12fa0
+	jr .finish
 
-.asm_12f9f
+.b_button
 	scf
 
-.asm_12fa0
+.finish
 	push af
 	xor a
 	ld [wSwitchMon], a
@@ -1689,8 +1668,7 @@ SetUpMoveScreenBG: ; 13172
 	add hl, de
 	ld a, [hl]
 	ld [wd265], a
-	ld e, $2 ; move screen
-	farcall LoadMenuMonIcon
+	farcall LoadMoveMenuMonIcon
 	hlcoord 0, 1
 	ld b, 9
 	ld c, 18

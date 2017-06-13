@@ -9,20 +9,10 @@ const_value set 2
 
 PowerPlant_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x188dc3, 0
-	dw UnknownScript_0x188dc4, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x188dc3:
-	end
-
-UnknownScript_0x188dc4:
-	end
 
 PowerPlantGuardPhoneScript:
 	playsound SFX_CALL
@@ -434,9 +424,6 @@ PowerPlantForestText:
 	done
 
 PowerPlant_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $2, 2, ROUTE_10_NORTH
@@ -444,7 +431,7 @@ PowerPlant_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $c, $5, $0, PowerPlantGuardPhoneScript, $0, $0
+	xy_trigger 1, $c, $5, PowerPlantGuardPhoneScript
 
 .Signposts:
 	db 2

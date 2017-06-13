@@ -107,9 +107,6 @@ DimCave1FHiddenFullHeal:
 	dwb EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL, FULL_HEAL
 
 DimCave1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $2, $1e, 5, DIM_CAVE_2F

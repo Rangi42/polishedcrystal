@@ -101,9 +101,6 @@ UnknownText_0x9e2a9:
 	done
 
 CianwoodLugiaSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 6, CIANWOOD_CITY

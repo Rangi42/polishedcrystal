@@ -44,9 +44,6 @@ WhirlIslandB1FHiddenFullRestore:
 
 
 WhirlIslandB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $5, $5, 2, WHIRL_ISLAND_NW

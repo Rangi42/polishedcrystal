@@ -5,6 +5,7 @@ Dragon Tamer: beat Lance in a rematch
 Rich Boy: have at least $1,000,000
 Gambler (not a trainer class but whatever): have 9999 coins
 Super Nerd: collect all TMs
+Fisher: have six different Magikarp patterns
 
 
 

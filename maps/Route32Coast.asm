@@ -21,8 +21,6 @@ Route32Coast_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
 .SwimmerGuySprite:
@@ -411,9 +409,6 @@ Route32CoastHiddenHyperPotion:
 	dwb EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION, HYPER_POTION
 
 Route32Coast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $39, $4, 4, UNION_CAVE_B1F_SOUTH

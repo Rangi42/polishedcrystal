@@ -61,9 +61,6 @@ UnknownText_0x18b6de:
 	done
 
 Route5CleanseTagSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 4, ROUTE_5

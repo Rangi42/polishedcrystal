@@ -56,11 +56,7 @@ sMailbox9Backup::      mailmsg sMailbox9Backup
 sMailbox10Backup::     mailmsg sMailbox10Backup
 
 ; abe2
-	ds 14
-	flag_array NUM_NON_TROPHY_DECOS
-	ds 20
-	ds (1 + 1 + NUM_MOVES) * PARTY_LENGTH + 2 ; ac0a
-	ds $30
+	ds 164
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: ds 1

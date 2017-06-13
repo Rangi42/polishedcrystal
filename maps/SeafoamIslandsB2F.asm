@@ -102,9 +102,6 @@ BoarderBryceAfterText:
 	done
 
 SeafoamIslandsB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $f, $19, 3, SEAFOAM_ISLANDS_B1F

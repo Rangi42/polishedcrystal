@@ -1032,7 +1032,7 @@ TrademonStats_PrintOTName: ; 295f6
 	call PlaceString
 	inc bc
 	pop af
-	ld hl, Unknown_2960e
+	ld hl, .Gender
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -1041,7 +1041,7 @@ TrademonStats_PrintOTName: ; 295f6
 	ret
 ; 2960e
 
-Unknown_2960e: ; 2960e
+.Gender: ; 2960e
 	db " ", "♂", "♀"
 ; 29611
 
@@ -1426,8 +1426,7 @@ LoadTradeBallAndCableGFX: ; 2982b
 
 LoadTradeBubbleGFX: ; 2985a
 	call DelayFrame
-	ld e, $3 ; trade
-	farcall LoadMenuMonIcon
+	farcall LoadTradeAnimationMonIcon
 	ld de, TradeBubbleGFX
 	ld hl, VTiles0 tile $72
 	lb bc, BANK(TradeBubbleGFX), $4

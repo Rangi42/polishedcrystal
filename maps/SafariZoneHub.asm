@@ -67,9 +67,6 @@ SafariZoneHubRestHouseSignText:
 	done
 
 SafariZoneHub_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 9
 	warp_def $1b, $10, 1, SAFARI_ZONE_FUCHSIA_GATE

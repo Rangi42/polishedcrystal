@@ -36,9 +36,11 @@
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
+* JaceDeane for Victor's sprite.
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
+* coraldev for rowboat and sakura petal tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.

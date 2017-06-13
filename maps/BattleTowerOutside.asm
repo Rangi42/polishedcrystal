@@ -6,31 +6,14 @@ const_value set 2
 
 BattleTowerOutside_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
-	db 2
-
-	; callbacks
-	dbw MAPCALLBACK_TILES, .Callback1
-	dbw MAPCALLBACK_OBJECTS, .Callback2
-
-.Callback1:
-	return
-
-.Callback2:
-	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
-	return
+	db 0
 
 .Trigger0:
 	priorityjump BattleTowerOutsideStepDownScript
-	end
-
-.Trigger1:
 	end
 
 BattleTowerOutsideStepDownScript:
@@ -133,10 +116,6 @@ BattleTowerOutsideSailorText:
 	line "all. That I must!"
 	done
 
-BattleTowerOutsideText_BattleTower:
-	text "Battle Tower"
-	done
-
 BattleTowerOutsideText_UltimateChallenge:
 	text "Battle Tower"
 
@@ -144,19 +123,7 @@ BattleTowerOutsideText_UltimateChallenge:
 	line "Trainer Challenge!"
 	done
 
-BattleTowerOutsideText_DoorsClosed:
-	text "The Battle Tower's"
-	line "doors are closed…"
-	done
-
-BattleTowerOutsideText_DoorsOpen:
-	text "It's open!"
-	done
-
 BattleTowerOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE
@@ -166,8 +133,8 @@ BattleTowerOutside_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $9, $8, $0, BattleTowerOutsidePanUpScript1, $0, $0
-	xy_trigger 1, $9, $9, $0, BattleTowerOutsidePanUpScript2, $0, $0
+	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpScript1
+	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpScript2
 
 .Signposts:
 	db 1
@@ -177,5 +144,5 @@ BattleTowerOutside_MapEventHeader:
 	db 4
 	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
 	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
-	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
+	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, -1
 	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

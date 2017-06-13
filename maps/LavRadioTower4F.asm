@@ -8,9 +8,6 @@ LavRadioTower4F_MapScriptHeader:
 	db 0
 
 LavRadioTower4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $0, $f, 2, LAV_RADIO_TOWER_3F

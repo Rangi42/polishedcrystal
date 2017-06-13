@@ -138,9 +138,6 @@ UnknownText_0x9b2c1:
 	done
 
 TrainerHouse1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $b, $4, 3, VIRIDIAN_CITY

@@ -4,31 +4,18 @@ const_value set 2
 
 RuinsofAlphKabutoChamber_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x5872b, 0
-	dw UnknownScript_0x58736, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58737
 
-UnknownScript_0x5872b:
+.Trigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue UnknownScript_0x58732
-	end
-
-UnknownScript_0x58732:
+	iffalse .End
 	priorityjump UnknownScript_0x58751
-
-UnknownScript_0x58735:
-	end
-
-UnknownScript_0x58736:
+.End
 	end
 
 UnknownScript_0x58737:
@@ -240,9 +227,6 @@ UnknownText_0x58b3f:
 	done
 
 RuinsofAlphKabutoChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 2, RUINS_OF_ALPH_OUTSIDE

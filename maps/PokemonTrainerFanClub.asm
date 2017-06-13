@@ -28,9 +28,6 @@ PokemonJournalBrunoText:
 	done
 
 PokemonTrainerFanClub_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $4, 16, SAFFRON_CITY

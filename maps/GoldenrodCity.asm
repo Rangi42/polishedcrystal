@@ -17,16 +17,11 @@ const_value set 2
 
 GoldenrodCity_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 3
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPointAndFloria
 	dbw MAPCALLBACK_OBJECTS, .MoveTutor
 	dbw MAPCALLBACK_SPRITES, .RocketScout
@@ -65,9 +60,6 @@ GoldenrodCity_MapScriptHeader:
 
 .Trigger0:
 	priorityjump GoldenrodCityStepDownScript
-	end
-
-.Trigger1:
 	end
 
 GoldenrodCityStepDownScript:
@@ -603,7 +595,7 @@ UnknownText_0x199042:
 
 UnknownText_0x199090:
 	text "It will cost you"
-	line "200 coins. Okay?"
+	line "200 coins. OK?"
 	done
 
 UnknownText_0x1990b4:
@@ -653,9 +645,6 @@ UnknownText_0x1991cf:
 	done
 
 GoldenrodCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 21
 	warp_def $7, $1c, 1, GOLDENROD_GYM
@@ -682,7 +671,7 @@ GoldenrodCity_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $f, $9, $0, GoldenrodCityPanUpScript, $0, $0
+	xy_trigger 1, $f, $9, GoldenrodCityPanUpScript
 
 .Signposts:
 	db 12

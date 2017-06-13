@@ -32,6 +32,8 @@ OfficerScript_0x69d37:
 	waitsfx
 	givepoke FARFETCH_D, 10, NO_ITEM, 1, GiftFarfetch_dName, GiftFarfetch_dOTName
 	givepokeitem GiftFarfetch_dMail
+	writebyte NEST_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
 	writetext UnknownText_0x69ed6
@@ -198,9 +200,6 @@ UnknownText_0x6a0cb:
 	done
 
 Route35Goldenrodgate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, ROUTE_35

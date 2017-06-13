@@ -5,16 +5,10 @@ const_value set 2
 
 GoldenrodMagnetTrainStation_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	maptrigger .Trigger0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
 
 OfficerScript_0x550ec:
 	faceplayer
@@ -193,9 +187,6 @@ GoldenrodMagnetTrainStationCooltrainerfText2:
 	done
 
 GoldenrodMagnetTrainStation_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $8, 5, GOLDENROD_CITY
@@ -205,7 +196,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $6, $b, $0, Script_ArriveFromSaffron, $0, $0
+	xy_trigger 0, $6, $b, Script_ArriveFromSaffron
 
 .Signposts:
 	db 0

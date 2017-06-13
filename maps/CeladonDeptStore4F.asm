@@ -179,9 +179,6 @@ CeladonDeptStore4FDirectoryText:
 	done
 
 CeladonDeptStore4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $0, $c, 1, CELADON_DEPT_STORE_5F

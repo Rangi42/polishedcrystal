@@ -96,6 +96,12 @@ SeafoamIslandsArticuno:
 	disappear SEAFOAMISLANDSB4F_ARTICUNO
 	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	reloadmapafterbattle
+	writebyte ARTICUNO
+	special SpecialMonCheck
+	iffalse .NoBlanche
+	setevent EVENT_CELADON_UNIVERSITY_BLANCHE
+	clearevent EVENT_SHAMOUTI_COAST_BLANCHE
+.NoBlanche
 	checkevent EVENT_ROUTE_10_ZAPDOS
 	iffalse .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES
@@ -191,9 +197,6 @@ SeafoamIslandsB4FMovementData_LawrenceContinueLeft:
 	step_end
 
 SeafoamIslandsB4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $3, $3, 5, SEAFOAM_ISLANDS_B3F

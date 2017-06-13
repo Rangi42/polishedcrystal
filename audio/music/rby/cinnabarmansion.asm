@@ -50,7 +50,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 
 Music_CinnabarMansionRBY_Ch2:
 	dutycycle 2
-	
+
 	vibrato 10, 36
 	notetype 12, 194
 

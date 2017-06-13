@@ -324,9 +324,6 @@ Route15SignText:
 	done
 
 Route15_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $4, $2, 3, ROUTE_15_FUCHSIA_GATE

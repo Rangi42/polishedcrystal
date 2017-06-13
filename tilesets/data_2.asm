@@ -12,3 +12,6 @@ INCBIN "tilesets/museum_metatiles.bin"
 
 Tileset38Coll:
 INCLUDE "tilesets/museum_collision.asm"
+
+Tileset41Coll:
+INCLUDE "tilesets/valencia_collision.asm"

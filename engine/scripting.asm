@@ -143,114 +143,112 @@ ScriptCommandTable: ; 96cb1
 	dw Script_textbox                    ; 46
 	dw Script_refreshscreen              ; 47
 	dw Script_closetext                  ; 48
-	dw Script_loadbytec2cf               ; 49
-	dw Script_farwritetext               ; 4a
-	dw Script_writetext                  ; 4b
-	dw Script_repeattext                 ; 4c
-	dw Script_yesorno                    ; 4d
-	dw Script_loadmenudata               ; 4e
-	dw Script_closewindow                ; 4f
-	dw Script_jumptextfaceplayer         ; 50
-	dw Script_farjumptext                ; 51
-	dw Script_jumptext                   ; 52
-	dw Script_waitbutton                 ; 53
-	dw Script_buttonsound                ; 54
-	dw Script_pokepic                    ; 55
-	dw Script_closepokepic               ; 56
-	dw Script__2dmenu                    ; 57
-	dw Script_verticalmenu               ; 58
-	dw Script_loadpikachudata            ; 59
-	dw Script_randomwildmon              ; 5a
-	dw Script_loadmemtrainer             ; 5b
-	dw Script_loadwildmon                ; 5c
-	dw Script_loadtrainer                ; 5d
-	dw Script_startbattle                ; 5e
-	dw Script_reloadmapafterbattle       ; 5f
-	dw Script_catchtutorial              ; 60
-	dw Script_trainertext                ; 61
-	dw Script_trainerflagaction          ; 62
-	dw Script_winlosstext                ; 63
-	dw Script_scripttalkafter            ; 64
-	dw Script_end_if_just_battled        ; 65
-	dw Script_check_just_battled         ; 66
-	dw Script_setlasttalked              ; 67
-	dw Script_applymovement              ; 68
-	dw Script_applymovement2             ; 69
-	dw Script_faceplayer                 ; 6a
-	dw Script_faceperson                 ; 6b
-	dw Script_variablesprite             ; 6c
-	dw Script_disappear                  ; 6d
-	dw Script_appear                     ; 6e
-	dw Script_follow                     ; 6f
-	dw Script_stopfollow                 ; 70
-	dw Script_moveperson                 ; 71
-	dw Script_writepersonxy              ; 72
-	dw Script_loademote                  ; 73
-	dw Script_showemote                  ; 74
-	dw Script_spriteface                 ; 75
-	dw Script_follownotexact             ; 76
-	dw Script_earthquake                 ; 77
-	dw Script_changemap                  ; 78
-	dw Script_changeblock                ; 79
-	dw Script_reloadmap                  ; 7a
-	dw Script_reloadmappart              ; 7b
-	dw Script_writecmdqueue              ; 7c
-	dw Script_delcmdqueue                ; 7d
-	dw Script_playmusic                  ; 7e
-	dw Script_encountermusic             ; 7f
-	dw Script_musicfadeout               ; 80
-	dw Script_playmapmusic               ; 81
-	dw Script_dontrestartmapmusic        ; 82
-	dw Script_cry                        ; 83
-	dw Script_playsound                  ; 84
-	dw Script_waitsfx                    ; 85
-	dw Script_warpsound                  ; 86
-	dw Script_specialsound               ; 87
-	dw Script_passtoengine               ; 88
-	dw Script_newloadmap                 ; 89
-	dw Script_pause                      ; 8a
-	dw Script_deactivatefacing           ; 8b
-	dw Script_priorityjump               ; 8c
-	dw Script_warpcheck                  ; 8d
-	dw Script_ptpriorityjump             ; 8e
-	dw Script_return                     ; 8f
-	dw Script_end                        ; 90
-	dw Script_reloadandreturn            ; 91
-	dw Script_end_all                    ; 92
-	dw Script_pokemart                   ; 93
-	dw Script_elevator                   ; 94
-	dw Script_trade                      ; 95
-	dw Script_askforphonenumber          ; 96
-	dw Script_phonecall                  ; 97
-	dw Script_hangup                     ; 98
-	dw Script_describedecoration         ; 99
-	dw Script_fruittree                  ; 9a
-	dw Script_specialphonecall           ; 9b
-	dw Script_checkphonecall             ; 9c
-	dw Script_verbosegiveitem            ; 9d
-	dw Script_verbosegiveitem2           ; 9e
-	dw Script_swarm                      ; 9f
-	dw Script_halloffame                 ; a0
-	dw Script_credits                    ; a1
-	dw Script_warpfacing                 ; a2
-	dw Script_battletowertext            ; a3
-	dw Script_landmarktotext             ; a4
-	dw Script_trainerclassname           ; a5
-	dw Script_name                       ; a6
-	dw Script_wait                       ; a7
-	dw Script_check_save                 ; a8
-	dw Script_count_seen_caught          ; a9
-	dw Script_count_unown_caught         ; aa
-	dw Script_trainerpic                 ; ab
-	dw Script_givetmhm                   ; ac
-	dw Script_checktmhm                  ; ad
-	dw Script_verbosegivetmhm            ; ae
-	dw Script_tmhmnotify                 ; af
-	dw Script_tmhmtotext                 ; b0
-	dw Script_checkdarkness              ; b1
-	dw Script_checkunits                 ; b2
-	dw Script_unowntypeface              ; b3
-	dw Script_restoretypeface            ; b4
+	dw Script_farwritetext               ; 49
+	dw Script_writetext                  ; 4a
+	dw Script_repeattext                 ; 4b
+	dw Script_yesorno                    ; 4c
+	dw Script_loadmenudata               ; 4d
+	dw Script_closewindow                ; 4e
+	dw Script_jumptextfaceplayer         ; 4f
+	dw Script_farjumptext                ; 50
+	dw Script_jumptext                   ; 51
+	dw Script_waitbutton                 ; 52
+	dw Script_buttonsound                ; 53
+	dw Script_pokepic                    ; 54
+	dw Script_closepokepic               ; 55
+	dw Script__2dmenu                    ; 56
+	dw Script_verticalmenu               ; 57
+	dw Script_randomwildmon              ; 58
+	dw Script_loadmemtrainer             ; 59
+	dw Script_loadwildmon                ; 5a
+	dw Script_loadtrainer                ; 5b
+	dw Script_startbattle                ; 5c
+	dw Script_reloadmapafterbattle       ; 5d
+	dw Script_catchtutorial              ; 5e
+	dw Script_trainertext                ; 5f
+	dw Script_trainerflagaction          ; 60
+	dw Script_winlosstext                ; 61
+	dw Script_scripttalkafter            ; 62
+	dw Script_end_if_just_battled        ; 63
+	dw Script_check_just_battled         ; 64
+	dw Script_setlasttalked              ; 65
+	dw Script_applymovement              ; 66
+	dw Script_applymovement2             ; 67
+	dw Script_faceplayer                 ; 68
+	dw Script_faceperson                 ; 69
+	dw Script_variablesprite             ; 6a
+	dw Script_disappear                  ; 6b
+	dw Script_appear                     ; 6c
+	dw Script_follow                     ; 6d
+	dw Script_stopfollow                 ; 6e
+	dw Script_moveperson                 ; 6f
+	dw Script_writepersonxy              ; 70
+	dw Script_loademote                  ; 71
+	dw Script_showemote                  ; 72
+	dw Script_spriteface                 ; 73
+	dw Script_follownotexact             ; 74
+	dw Script_earthquake                 ; 75
+	dw Script_changemap                  ; 76
+	dw Script_changeblock                ; 77
+	dw Script_reloadmap                  ; 78
+	dw Script_reloadmappart              ; 79
+	dw Script_writecmdqueue              ; 7a
+	dw Script_delcmdqueue                ; 7b
+	dw Script_playmusic                  ; 7c
+	dw Script_encountermusic             ; 7d
+	dw Script_musicfadeout               ; 7e
+	dw Script_playmapmusic               ; 7f
+	dw Script_dontrestartmapmusic        ; 80
+	dw Script_cry                        ; 81
+	dw Script_playsound                  ; 82
+	dw Script_waitsfx                    ; 83
+	dw Script_warpsound                  ; 84
+	dw Script_specialsound               ; 85
+	dw Script_passtoengine               ; 86
+	dw Script_newloadmap                 ; 87
+	dw Script_pause                      ; 88
+	dw Script_deactivatefacing           ; 89
+	dw Script_priorityjump               ; 8a
+	dw Script_warpcheck                  ; 8b
+	dw Script_ptpriorityjump             ; 8c
+	dw Script_return                     ; 8d
+	dw Script_end                        ; 8e
+	dw Script_reloadandreturn            ; 8f
+	dw Script_end_all                    ; 90
+	dw Script_pokemart                   ; 91
+	dw Script_elevator                   ; 92
+	dw Script_trade                      ; 93
+	dw Script_askforphonenumber          ; 94
+	dw Script_phonecall                  ; 95
+	dw Script_hangup                     ; 96
+	dw Script_describedecoration         ; 97
+	dw Script_fruittree                  ; 98
+	dw Script_specialphonecall           ; 99
+	dw Script_checkphonecall             ; 9a
+	dw Script_verbosegiveitem            ; 9b
+	dw Script_verbosegiveitem2           ; 9c
+	dw Script_swarm                      ; 9d
+	dw Script_halloffame                 ; 9e
+	dw Script_credits                    ; 9f
+	dw Script_warpfacing                 ; a0
+	dw Script_battletowertext            ; a1
+	dw Script_landmarktotext             ; a2
+	dw Script_trainerclassname           ; a3
+	dw Script_name                       ; a4
+	dw Script_wait                       ; a5
+	dw Script_check_save                 ; a6
+	dw Script_count_seen_caught          ; a7
+	dw Script_count_unown_caught         ; a8
+	dw Script_trainerpic                 ; a9
+	dw Script_givetmhm                   ; aa
+	dw Script_checktmhm                  ; ab
+	dw Script_verbosegivetmhm            ; ac
+	dw Script_tmhmnotify                 ; ad
+	dw Script_tmhmtotext                 ; ae
+	dw Script_checkdarkness              ; af
+	dw Script_checkunits                 ; b0
+	dw Script_unowntypeface              ; b1
+	dw Script_restoretypeface            ; b2
 ; 96e05
 
 StartScript: ; 96e05
@@ -1491,17 +1489,6 @@ EarthquakeMovement: ; 973eb
 	step_end
 EarthquakeMovementEnd
 ; 973f0
-
-
-Script_loadpikachudata: ; 973f0
-; script command 0x5a
-
-	ld a, PIKACHU
-	ld [TempWildMonSpecies], a
-	ld a, 5
-	ld [CurPartyLevel], a
-	ret
-; 973fb
 
 Script_randomwildmon: ; 973fb
 ; script command 0x5b
@@ -2944,7 +2931,7 @@ Script_writecmdqueue: ; 97a8b
 	ld d, a
 	ld a, [ScriptBank]
 	ld b, a
-	farcall WriteCmdQueue ; no need to farcall
+	call WriteCmdQueue
 	ret
 ; 97a9e
 
@@ -2957,7 +2944,7 @@ Script_delcmdqueue: ; 97a9e
 	ld [ScriptVar], a
 	call GetScriptByte
 	ld b, a
-	farcall DelCmdQueue ; no need to farcall
+	call DelCmdQueue
 	ret c
 	ld a, 1
 	ld [ScriptVar], a
@@ -3057,16 +3044,6 @@ Script_refreshscreen: ; 97b20
 	call GetScriptByte
 	ret
 ; 97b27
-
-Script_loadbytec2cf: ; 97b27
-; script command 0x4a
-; parameters:
-;     byte (SingleByteParam)
-
-	call GetScriptByte
-	ld [wc2cf], a
-	ret
-; 97b2e
 
 Script_closetext: ; 97b2f
 ; script command 0x49
@@ -3423,7 +3400,7 @@ Script_unowntypeface:
 
 	ld a, [Options2]
 	ld [OptionsBuffer], a
-	and NOT_FONT_MASK
+	and $ff - FONT_MASK
 	or UNOWN_FONT
 	ld [Options2], a
 	call LoadStandardFont

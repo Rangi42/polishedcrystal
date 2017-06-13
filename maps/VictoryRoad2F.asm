@@ -8,20 +8,10 @@ const_value set 2
 
 VictoryRoad2F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 UnknownScript_0x74492:
 	spriteface PLAYER, LEFT
@@ -240,9 +230,6 @@ VeteranfSylvieAfterText:
 	done
 
 VictoryRoad2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $19, 4, ROUTE_23
@@ -253,7 +240,7 @@ VictoryRoad2F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $9, $19, $0, UnknownScript_0x74492, $0, $0
+	xy_trigger 0, $9, $19, UnknownScript_0x74492
 
 .Signposts:
 	db 1

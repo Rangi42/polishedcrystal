@@ -141,9 +141,6 @@ ScientistCarlAfterText:
 	done
 
 QuietCave1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $21, $13, 5, ROUTE_47

@@ -47,9 +47,6 @@ UnknownText_0x69abd:
 	done
 
 Route32RuinsofAlphGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $0, 10, RUINS_OF_ALPH_OUTSIDE

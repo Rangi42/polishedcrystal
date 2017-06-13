@@ -280,6 +280,7 @@ Tileset35Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset37Anim:
+Tileset41Anim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -325,80 +326,6 @@ Tileset39Anim:
 	dw NULL,  DoneTileAnimation
 
 
-TilesetAnimfc0d7: ; 0xfc0d7
-	dw VTiles2 tile $03, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw VTiles2 tile $03, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  AnimateFlowerTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-; 0xfc103
-
-TilesetAnimfc103: ; 0xfc103
-	dw VTiles2 tile $14, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw VTiles2 tile $14, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-; 0xfc12f
-
-TilesetAnimfc17f: ; 0xfc17f
-	dw VTiles2 tile $53, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw VTiles2 tile $53, WriteTileFromBuffer
-	dw VTiles2 tile $03, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw VTiles2 tile $03, WriteTileFromBuffer
-	dw VTiles2 tile $53, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw VTiles2 tile $53, WriteTileFromBuffer
-	dw NULL,  DoneTileAnimation
-; 0xfc1af
-
-TilesetAnimfc1af: ; 0xfc1af
-	dw VTiles2 tile $54, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw VTiles2 tile $54, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $03, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw VTiles2 tile $03, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw VTiles2 tile $54, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileDown
-	dw wTileAnimBuffer, ScrollTileDown
-	dw VTiles2 tile $54, WriteTileFromBuffer
-	dw NULL,  DoneTileAnimation
-; 0xfc1e7
-
-TilesetAnimfc2bf: ; 0xfc2bf
-	dw VTiles2 tile $4f, WriteTileToBuffer
-	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw VTiles2 tile $4f, WriteTileFromBuffer
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  DoneTileAnimation
-; 0xfc2e7
-
-
 DoneTileAnimation: ; fc2fb
 ; Reset the animation command loop.
 	xor a
@@ -429,16 +356,16 @@ ScrollTileRightLeft: ; fc309
 	jr ScrollTileRight
 ; fc318
 
-ScrollTileUpDown: ; fc318
-; Scroll up for 4 ticks, then down for 4 ticks.
-	ld a, [TileAnimationTimer]
-	inc a
-	and 7
-	ld [TileAnimationTimer], a
-	and 4
-	jr nz, ScrollTileDown
-	jr ScrollTileUp
-; fc327
+;ScrollTileUpDown: ; fc318
+;; Scroll up for 4 ticks, then down for 4 ticks.
+;	ld a, [TileAnimationTimer]
+;	inc a
+;	and 7
+;	ld [TileAnimationTimer], a
+;	and 4
+;	jr nz, ScrollTileDown
+;	jr ScrollTileUp
+;; fc327
 
 ScrollTileLeft: ; fc327
 	ld h, d
@@ -1230,7 +1157,7 @@ WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
 
 
 FarawayWaterFrames1: dw VTiles2 tile $14, FarawayWaterTiles1
-FarawayWaterFrames2: dw VTiles2 tile $59, FarawayWaterTiles2
+FarawayWaterFrames2: dw VTiles2 tile $15, FarawayWaterTiles2
 
 FarawayWaterTiles1: INCBIN "gfx/tilesets/water/faraway_water_1.2bpp"
 FarawayWaterTiles2: INCBIN "gfx/tilesets/water/faraway_water_2.2bpp"

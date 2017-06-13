@@ -126,7 +126,7 @@ EcruteakShrineInsideReiGreetingText:
 	done
 
 EcruteakShrineInsideReiBlessText:
-	text "Rei: Okay, which"
+	text "Rei: OK, which"
 	line "#mon should I"
 	cont "bless?"
 	done
@@ -200,9 +200,6 @@ EcruteakShrineInsideAltarText:
 	done
 
 EcruteakShrineInside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $5, 1, ECRUTEAK_SHRINE_OUTSIDE

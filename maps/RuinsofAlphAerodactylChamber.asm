@@ -1,28 +1,17 @@
 RuinsofAlphAerodactylChamber_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x58dad, 0
-	dw UnknownScript_0x58db8, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58db9
 
-UnknownScript_0x58dad:
+.Trigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue UnknownScript_0x58db4
-	end
-
-UnknownScript_0x58db4:
+	iffalse .End
 	priorityjump UnknownScript_0x58dd3
-	end
-
-UnknownScript_0x58db8:
+.End
 	end
 
 UnknownScript_0x58db9:
@@ -145,9 +134,6 @@ UnknownText_0x58ee7:
 	done
 
 RuinsofAlphAerodactylChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $9, $3, 4, RUINS_OF_ALPH_OUTSIDE

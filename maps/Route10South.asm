@@ -110,9 +110,6 @@ Route10SignText:
 	done
 
 Route10South_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $3, $6, 2, ROCK_TUNNEL_1F

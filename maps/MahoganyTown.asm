@@ -6,23 +6,11 @@ const_value set 2
 
 MahoganyTown_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_MAHOGANY
@@ -122,10 +110,6 @@ MahoganyTownRagecandybarSign:
 MahoganyGymSign:
 	jumptext MahoganyGymSignText
 
-MovementData_0x1900a4:
-	step_down
-	big_step_up
-	turn_head_down
 MovementData_0x1900a7:
 	step_left
 	step_end
@@ -246,9 +230,6 @@ MahoganyGymSignText:
 	done
 
 MahoganyTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $7, $b, 1, MAHOGANY_MART_1F
@@ -259,8 +240,8 @@ MahoganyTown_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $8, $13, $0, UnknownScript_0x190013, $0, $0
-	xy_trigger 0, $9, $13, $0, UnknownScript_0x190013, $0, $0
+	xy_trigger 0, $8, $13, UnknownScript_0x190013
+	xy_trigger 0, $9, $13, UnknownScript_0x190013
 
 .Signposts:
 	db 3

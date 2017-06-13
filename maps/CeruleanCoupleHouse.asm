@@ -34,9 +34,6 @@ CeruleanCoupleHousePokefanFText:
 	done
 
 CeruleanCoupleHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 10, CERULEAN_CITY

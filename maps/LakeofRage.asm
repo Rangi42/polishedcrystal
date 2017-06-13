@@ -17,25 +17,12 @@ const_value set 2
 
 LakeofRage_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Wesley
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
@@ -526,9 +513,6 @@ UnknownText_0x70903:
 	done
 
 LakeofRage_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $7, 1, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE

@@ -216,9 +216,6 @@ UnknownText_0x9d1c7:
 	done
 
 Route39Farmhouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, ROUTE_39

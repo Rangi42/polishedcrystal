@@ -5,20 +5,10 @@ const_value set 2
 
 PokemonLeagueGate_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x9b9fb, 0
-	dw UnknownScript_0x9b9fc, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x9b9fb:
-	end
-
-UnknownScript_0x9b9fc:
-	end
 
 PokemonLeagueGateXYTriggerScript2:
 	applymovement PLAYER, PokemonLeagueGateXYTriggerScript2Movement
@@ -83,9 +73,6 @@ UnknownText_0x9bb37:
 	done
 
 PokemonLeagueGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $7, $13, 1, ROUTE_22
@@ -99,8 +86,8 @@ PokemonLeagueGate_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $a, $a, $0, PokemonLeagueGateXYTriggerScript1, $0, $0
-	xy_trigger 0, $a, $b, $0, PokemonLeagueGateXYTriggerScript2, $0, $0
+	xy_trigger 0, $a, $a, PokemonLeagueGateXYTriggerScript1
+	xy_trigger 0, $a, $b, PokemonLeagueGateXYTriggerScript2
 
 .Signposts:
 	db 0

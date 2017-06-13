@@ -187,9 +187,6 @@ OlivineLighthouseRoofSilverLeaf:
 	itemball SILVER_LEAF
 
 OlivineLighthouseRoof_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $3, $9, 4, OLIVINE_LIGHTHOUSE_6F

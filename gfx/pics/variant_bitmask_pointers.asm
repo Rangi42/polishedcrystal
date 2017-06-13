@@ -46,6 +46,19 @@ ArbokBitmasksPointers:
 	dw ArbokAgathaBitmasks
 	dw ArbokArianaBitmasks
 
+MagikarpBitmasksPointers:
+	dw MagikarpPlainBitmasks
+	dw MagikarpSkellyBitmasks
+	dw MagikarpCalico1Bitmasks
+	dw MagikarpCalico2Bitmasks
+	dw MagikarpCalico3Bitmasks
+	dw MagikarpTwoToneBitmasks
+	dw MagikarpOrcaBitmasks
+	dw MagikarpDapplesBitmasks
+	dw MagikarpTigerBitmasks
+	dw MagikarpZebraBitmasks
+	dw MagikarpStripeBitmasks
+
 MewtwoBitmasksPointers:
 	dw MewtwoPlainBitmasks
 	dw MewtwoArmoredBitmasks

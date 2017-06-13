@@ -15,9 +15,6 @@ Route31_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .CheckMomCall
 
 .CheckMomCall:
@@ -524,7 +521,7 @@ Text_Route31TutorQuestion:
 	done
 
 Text_Route31TutorRefused:
-	text "Okay then…"
+	text "OK then…"
 	done
 
 Text_Route31TutorClear:
@@ -588,9 +585,6 @@ DarkCaveSignText:
 	done
 
 Route31_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $6, $4, 3, ROUTE_31_VIOLET_GATE

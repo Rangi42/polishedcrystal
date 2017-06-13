@@ -129,6 +129,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	givepoke MAGIKARP, 10, EVIOLITE
 	special TeachMagikarpDragonRage
+	writebyte ULTRA_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 
 .TestComplete:
@@ -495,9 +497,6 @@ CeladonUniversityHyperTestRoomComputer:
 	done
 
 CeladonUniversityHyperTestRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $b, $2, 4, CELADON_UNIVERSITY_2F

@@ -6,20 +6,14 @@ const_value set 2
 
 DragonShrine_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump DragonShrineTestScript
-	end
-
-.Trigger1:
 	end
 
 DragonShrineTestScript:
@@ -218,6 +212,8 @@ ElderScript_0x18d1a5:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke DRATINI, 15, SITRUS_BERRY
+	writebyte ULTRA_BALL
+	special SetLastPartyMonBall
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	iftrue .NoExtremeSpeed
 	special TeachDratiniExtremeSpeed
@@ -673,9 +669,6 @@ UnknownText_0x18dab4:
 	done
 
 DragonShrine_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $4, 2, DRAGONS_DEN_B1F

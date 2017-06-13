@@ -35,7 +35,7 @@ PokemonJournalProfOakText:
 	para "Special Feature:"
 	line "#mon Prof.Oak!"
 
-	para "Prof.Oak's grand-"
+	para "Samuel Oak's grand-"
 	line "children, Blue and"
 
 	para "Daisy, live near"
@@ -50,9 +50,6 @@ PokemonJournalProfOakText:
 	done
 
 RedsHouse2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $7, 3, REDS_HOUSE_1F

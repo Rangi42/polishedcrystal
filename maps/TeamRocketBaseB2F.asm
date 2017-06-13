@@ -16,32 +16,11 @@ const_value set 2
 
 TeamRocketBaseB2F_MapScriptHeader:
 .MapTriggers:
-	db 4
-
-	; triggers
-	dw UnknownScript_0x6cf85, 0
-	dw UnknownScript_0x6cf86, 0
-	dw UnknownScript_0x6cf87, 0
-	dw UnknownScript_0x6cf88, 0
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, TransmitterDoorCallback
-
-UnknownScript_0x6cf85:
-	end
-
-UnknownScript_0x6cf86:
-	end
-
-UnknownScript_0x6cf87:
-	end
-
-UnknownScript_0x6cf88:
-	end
 
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
@@ -903,9 +882,6 @@ UnknownText_0x6de03:
 	done
 
 TeamRocketBaseB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $e, $3, 2, TEAM_ROCKET_BASE_B1F
@@ -916,15 +892,15 @@ TeamRocketBaseB2F_MapEventHeader:
 
 .XYTriggers:
 	db 9
-	xy_trigger 0, $e, $5, $0, LanceHealsScript1, $0, $0
-	xy_trigger 0, $d, $4, $0, LanceHealsScript2, $0, $0
-	xy_trigger 1, $b, $e, $0, UnknownScript_0x6cf95, $0, $0
-	xy_trigger 1, $b, $f, $0, UnknownScript_0x6cf9c, $0, $0
-	xy_trigger 2, $c, $e, $0, UnknownScript_0x6d075, $0, $0
-	xy_trigger 2, $c, $f, $0, UnknownScript_0x6d075, $0, $0
-	xy_trigger 2, $3, $c, $0, UnknownScript_0x6d07a, $0, $0
-	xy_trigger 2, $a, $c, $0, UnknownScript_0x6d07a, $0, $0
-	xy_trigger 2, $b, $c, $0, UnknownScript_0x6d07a, $0, $0
+	xy_trigger 0, $e, $5, LanceHealsScript1
+	xy_trigger 0, $d, $4, LanceHealsScript2
+	xy_trigger 1, $b, $e, UnknownScript_0x6cf95
+	xy_trigger 1, $b, $f, UnknownScript_0x6cf9c
+	xy_trigger 2, $c, $e, UnknownScript_0x6d075
+	xy_trigger 2, $c, $f, UnknownScript_0x6d075
+	xy_trigger 2, $3, $c, UnknownScript_0x6d07a
+	xy_trigger 2, $a, $c, UnknownScript_0x6d07a
+	xy_trigger 2, $b, $c, UnknownScript_0x6d07a
 
 .Signposts:
 	db 23

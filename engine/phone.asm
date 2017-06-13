@@ -698,11 +698,11 @@ NonTrainerCallerNames: ; 903d6
 
 .none db "----------@"
 .mom db "Mom:@"
-.bill db "Bill:", $22, "   #maniac@"
-.elm db "Prof.Elm:", $22, "   #mon Prof.@"
+.bill db "Bill:<LNBRK>   #maniac@"
+.elm db "Prof.Elm:<LNBRK>   #mon Prof.@"
 .bikeshop db "Miracle Cycle:@"
-.lyra db "Lyra:", $22, "   <PK><MN> Trainer@"
-.buena db "Buena:", $22, "   Disc Jockey@"
+.lyra db "Lyra:<LNBRK>   <PK><MN> Trainer@"
+.buena db "Buena:<LNBRK>   Disc Jockey@"
 ; 90423
 
 Phone_GetTrainerName: ; 90423 (24:4423)

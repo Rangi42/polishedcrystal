@@ -11,8 +11,6 @@ BlackthornGym1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_TILES, .Boulders
 
 .Boulders:
@@ -236,11 +234,6 @@ BlackthornGymClairText_DescribeTM21:
 	cont "to take it."
 	done
 
-BlackthornGymClairText_BagFull:
-	text "What is this? You"
-	line "don't have room?"
-	done
-
 BlackthornGymClairText_League:
 	text "What's the matter?"
 
@@ -374,9 +367,6 @@ BlackthornGymGuyWinText:
 	done
 
 BlackthornGym1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 7
 	warp_def $11, $4, 1, BLACKTHORN_CITY

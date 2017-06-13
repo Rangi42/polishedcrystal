@@ -60,9 +60,6 @@ UnknownText_0x6947c:
 	done
 
 VioletNicknameSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 4, VIOLET_CITY

@@ -20,9 +20,6 @@ UnknownText_0x1967a1:
 	done
 
 Route15FuchsiaGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $5, $0, 7, FUCHSIA_CITY

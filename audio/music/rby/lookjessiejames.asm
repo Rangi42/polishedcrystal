@@ -7,7 +7,7 @@ Music_LookJessieJames:
 	dbw $01, Music_LookJessieJames_Ch2
 	dbw $02, Music_LookJessieJames_Ch3
 
-Music_LookJessieJames_Ch1: 
+Music_LookJessieJames_Ch1:
 	tempo 144
 	volume 119
 	dutycycle 3
@@ -83,7 +83,7 @@ Music_LookJessieJames_branch_83187:
 	notetype $c, $b4
 	note A#, 4
 	loopchannel 0, Music_LookJessieJames_branch_83187
-Music_LookJessieJames_Ch2: 
+Music_LookJessieJames_Ch2:
 	dutycycle 3
 	vibrato $6, $15
 	notetype $c, $c2
@@ -167,7 +167,7 @@ Music_LookJessieJames_branch_831df:
 	notetype $c, $c5
 	note D#, 8
 	loopchannel 0, Music_LookJessieJames_branch_831df
-Music_LookJessieJames_Ch3: 
+Music_LookJessieJames_Ch3:
 	notetype $c, $10
 	note __, 16
 	note __, 8

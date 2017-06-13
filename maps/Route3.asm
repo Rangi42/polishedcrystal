@@ -18,9 +18,6 @@ Route3_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -379,9 +376,6 @@ UnknownText_0x1ae163:
 	done
 
 Route3_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $1, $44, 1, MOUNT_MOON_1F

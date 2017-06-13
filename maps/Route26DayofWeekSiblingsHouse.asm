@@ -71,9 +71,6 @@ UnknownText_0x7b2b9:
 	done
 
 Route26DayofWeekSiblingsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, ROUTE_26

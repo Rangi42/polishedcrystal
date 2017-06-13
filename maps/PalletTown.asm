@@ -9,8 +9,6 @@ PalletTown_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -90,9 +88,6 @@ BluesHouseSignText:
 	done
 
 PalletTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $5, $5, 1, REDS_HOUSE_1F

@@ -13,8 +13,6 @@ CeruleanCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -303,9 +301,6 @@ CeruleanBubblerText:
 	done
 
 CeruleanCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 11
 	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE

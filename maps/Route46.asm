@@ -339,9 +339,6 @@ Route46SignText:
 	done
 
 Route46_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $21, $7, 1, ROUTE_29_46_GATE

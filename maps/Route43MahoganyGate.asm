@@ -39,9 +39,6 @@ UnknownText_0x19ab65:
 	done
 
 Route43MahoganyGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 1, ROUTE_43

@@ -132,6 +132,7 @@ class PaletteMap(object):
 		'maps/CinnabarVolcano1F.blk': lambda: load_palette('tilesets/cinnabar_volcano.pal'),
 		'maps/CinnabarVolcanoB1F.blk': lambda: load_palette('tilesets/cinnabar_volcano.pal'),
 		'maps/CinnabarVolcanoB2F.blk': lambda: load_palette('tilesets/cinnabar_volcano.pal'),
+		'maps/CliffEdgeGate.blk': lambda: PaletteMap.day_palette(),
 		'maps/DarkCaveBlackthornEntrance.blk': lambda: load_palette('tilesets/dark_cave.pal'),
 		'maps/DarkCaveVioletEntrance.blk': lambda: load_palette('tilesets/dark_cave.pal'),
 		'maps/DimCave1F.blk': lambda: load_palette('tilesets/dim_cave.pal'),
@@ -139,6 +140,8 @@ class PaletteMap(object):
 		'maps/DimCave3F.blk': lambda: load_palette('tilesets/dim_cave.pal'),
 		'maps/DimCave4F.blk': lambda: load_palette('tilesets/dim_cave.pal'),
 		'maps/DimCave5F.blk': lambda: load_palette('tilesets/dim_cave.pal'),
+		'maps/DragonsDenB1F.blk': lambda: PaletteMap.nite_palette(),
+		'maps/DragonShrine.blk': lambda: load_palette('tilesets/dragon_shrine.pal'),
 		'maps/EcruteakCity.blk': lambda: load_palette('tilesets/VioletEcruteakPalette.pal')[8:16],
 		'maps/EmbeddedTower.blk': lambda: load_palette('tilesets/embedded_tower.pal'),
 		'maps/FuchsiaGym.blk': lambda: load_palette('tilesets/fuchsia_gym.pal'),
@@ -149,6 +152,7 @@ class PaletteMap(object):
 		'maps/HauntedRadioTower4F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
 		'maps/HauntedRadioTower5F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
 		'maps/HauntedRadioTower6F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
+		'maps/IvysLab.blk': lambda: load_palette('tilesets/ivys_lab.pal'),
 		'maps/KarensRoom.blk': lambda: load_palette('tilesets/karens_room.pal'),
 		'maps/KogasRoom.blk': lambda: load_palette('tilesets/kogas_room.pal'),
 		'maps/LancesRoom.blk': lambda: load_palette('tilesets/lances_room.pal'),
@@ -210,6 +214,7 @@ class PaletteMap(object):
 		'ruins': lambda: load_palette('tilesets/ruins.pal'),
 		'safari': lambda: load_palette('tilesets/safari_zone.pal')[8:16],
 		'shamouti': lambda: load_palette('tilesets/shamouti_island.pal')[8:16],
+		'valencia': lambda: load_palette('tilesets/valencia_island.pal')[8:16],
 	}
 
 	def __init__(self, filename, key, map_blk):

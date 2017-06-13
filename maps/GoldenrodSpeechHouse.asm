@@ -33,9 +33,6 @@ GoldenrodSpeechHouseTeacherText:
 	done
 
 GoldenrodSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 21, GOLDENROD_CITY

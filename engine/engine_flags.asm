@@ -7,33 +7,20 @@ EngineFlagAction:: ; 80430
 ;
 ; Setting/resetting does not return a result.
 
-
-; 16-bit flag ids are considered invalid, but it's nice
-; to know that the infrastructure is there.
-
 	ld a, d
-	cp 0
-	jr z, .ceiling
-	jr c, .read ; cp 0 can't set carry!
-	jr .invalid
-
-; There are only $d1 engine flags, so
-; anything beyond that is invalid too.
-
-.ceiling
+	cp (NUM_ENGINE_FLAGS / $100) + 1
+	jr nc, .invalid
 	ld a, e
-	cp NUM_ENGINE_FLAGS
+	cp NUM_ENGINE_FLAGS % $100
 	jr c, .read
 
 ; Invalid flags are treated as flag 00.
-
 .invalid
 	xor a
 	ld e, a
 	ld d, a
 
 ; Get this flag's location.
-
 .read
 	ld hl, EngineFlags
 ; location
@@ -51,7 +38,6 @@ EngineFlagAction:: ; 80430
 	ld c, [hl]
 
 ; What are we doing with this flag?
-
 	ld a, b
 	cp 1
 	jr c, .reset ; b = 0
@@ -116,7 +102,7 @@ ENDM
 	engine_flag StatusFlags2, 0 ; rockets in radio tower ; $10
 	engine_flag StatusFlags2, 1 ; safari zone?
 	engine_flag StatusFlags2, 2 ; bug contest timer
-	engine_flag StatusFlags2, 3 ; unused
+	engine_flag StatusFlags2, 3 ; seen shamouti island
 	engine_flag StatusFlags2, 4 ; bike shop call enabled (1024 bike steps reqd)
 	engine_flag StatusFlags2, 5 ; give pokerus
 	engine_flag StatusFlags2, 6 ; unused
@@ -213,7 +199,7 @@ ENDM
 	engine_flag DailyFlags3, 7 ; anabel done today
 
 	engine_flag DailyFlags4, 0 ; seashore shell bell
-	engine_flag DailyFlags4, 1 ; daily unused ; $68
+	engine_flag DailyFlags4, 1 ; shamouti restaurant challenge ; $68
 	engine_flag DailyFlags4, 2 ; daily unused
 	engine_flag DailyFlags4, 3 ; daily unused
 	engine_flag DailyFlags4, 4 ; daily unused
@@ -337,7 +323,7 @@ ENDM
 	engine_flag PokemonJournals + 2, 7 ; read prof.oak journal ; $d0
 
 	engine_flag PokemonJournals + 3, 0 ; read prof.elm journal
-	engine_flag PokemonJournals + 3, 1 ; read prof.westwood journal
+	engine_flag PokemonJournals + 3, 1 ; read prof.ivy journal
 	engine_flag PokemonJournals + 3, 2 ; read giovanni journal
 	engine_flag PokemonJournals + 3, 3 ; read lorelei journal
 	engine_flag PokemonJournals + 3, 4 ; read agatha journal

@@ -16,9 +16,6 @@ NavelRockInsideMasterBall:
 	itemball MASTER_BALL
 
 NavelRockInside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 14
 	warp_def $57, $9, 3, NAVEL_ROCK_OUTSIDE

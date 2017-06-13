@@ -3,24 +3,15 @@ const_value set 2
 
 KarensRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x180bbc, 0
-	dw UnknownScript_0x180bc0, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x180bc1
 
-UnknownScript_0x180bbc:
+.Trigger0:
 	priorityjump UnknownScript_0x180bd6
-	end
-
-UnknownScript_0x180bc0:
 	end
 
 UnknownScript_0x180bc1:
@@ -185,9 +176,6 @@ KarenAfterRematchText:
 	done
 
 KarensRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $4, 3, BRUNOS_ROOM

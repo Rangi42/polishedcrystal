@@ -17,23 +17,11 @@ const_value set 2
 
 OlivineCity_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_OLIVINE
@@ -523,14 +511,7 @@ OlivineCityBattleTowerSignText:
 	line "Opening Now!"
 	done
 
-UnknownText_0x1a8cba:
-	text "Battle Tower Ahead"
-	done
-
 OlivineCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $11, $d, 1, OLIVINE_POKECENTER_1F
@@ -546,8 +527,8 @@ OlivineCity_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $8, $a, $0, OlivineCityRivalGymScript, $0, $0
-	xy_trigger 0, $17, $21, $0, OlivineCityRivalLighthouseScript, $0, $0
+	xy_trigger 0, $8, $a, OlivineCityRivalGymScript
+	xy_trigger 0, $17, $21, OlivineCityRivalLighthouseScript
 
 .Signposts:
 	db 8

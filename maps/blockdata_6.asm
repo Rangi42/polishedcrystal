@@ -37,3 +37,15 @@ FireIslandRoof_BlockData:
 IceIslandRoof_BlockData:
 LightningIslandRoof_BlockData:
 	INCBIN "maps/ElementalIsland.blk"
+
+ValenciaIsland_BlockData:
+	INCBIN "maps/ValenciaIsland.blk"
+
+Route49_BlockData:
+	INCBIN "maps/Route49.blk"
+
+IvysLab_BlockData:
+	INCBIN "maps/IvysLab.blk"
+
+ValenciaPort_BlockData:
+	INCBIN "maps/ValenciaPort.blk"

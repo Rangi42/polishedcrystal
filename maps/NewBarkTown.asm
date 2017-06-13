@@ -7,24 +7,12 @@ const_value set 2
 
 NewBarkTown_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
@@ -527,9 +515,6 @@ LyrasHouseSignText:
 	done
 
 NewBarkTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $3, $6, 1, ELMS_LAB
@@ -540,13 +525,13 @@ NewBarkTown_MapEventHeader:
 
 .XYTriggers:
 	db 7
-	xy_trigger 0, $8, $1, $0, NewBarkTown_TeacherStopsYouTrigger1, $0, $0
-	xy_trigger 0, $9, $1, $0, NewBarkTown_TeacherStopsYouTrigger2, $0, $0
-	xy_trigger 0, $4, $6, $0, NewBarkTown_LyraIntroTrigger, $0, $0
-	xy_trigger 1, $6, $11, $0, NewBarkTown_LyraFinalTrigger1, $0, $0
-	xy_trigger 1, $7, $11, $0, NewBarkTown_LyraFinalTrigger2, $0, $0
-	xy_trigger 1, $8, $11, $0, NewBarkTown_LyraFinalTrigger3, $0, $0
-	xy_trigger 1, $9, $11, $0, NewBarkTown_LyraFinalTrigger4, $0, $0
+	xy_trigger 0, $8, $1, NewBarkTown_TeacherStopsYouTrigger1
+	xy_trigger 0, $9, $1, NewBarkTown_TeacherStopsYouTrigger2
+	xy_trigger 0, $4, $6, NewBarkTown_LyraIntroTrigger
+	xy_trigger 1, $6, $11, NewBarkTown_LyraFinalTrigger1
+	xy_trigger 1, $7, $11, NewBarkTown_LyraFinalTrigger2
+	xy_trigger 1, $8, $11, NewBarkTown_LyraFinalTrigger3
+	xy_trigger 1, $9, $11, NewBarkTown_LyraFinalTrigger4
 
 .Signposts:
 	db 5

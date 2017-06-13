@@ -9,7 +9,6 @@ PlayRadioShow:
 	jr z, .ok
 ; If we're in Kanto, we don't need to be here.
 	call IsInJohto
-	and a
 	jr nz, .ok
 ; Team Rocket broadcasts on all stations.
 	ld a, ROCKET_RADIO

@@ -268,9 +268,6 @@ UnionCaveB1FSouthHiddenFullRestore:
 	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 UnionCaveB1FSouth_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $5, $3, 2, UNION_CAVE_1F

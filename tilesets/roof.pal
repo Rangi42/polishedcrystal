@@ -196,6 +196,12 @@
 	RGB 14, 06, 12
 	RGB 11, 03, 10
 
+; Valencia Island
+	RGB 18, 04, 12
+	RGB 12, 00, 09
+	RGB 09, 02, 09
+	RGB 06, 00, 06
+
 ; Saffron City
 	RGB 31, 26, 00
 	RGB 31, 15, 00

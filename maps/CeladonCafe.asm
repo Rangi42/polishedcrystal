@@ -139,6 +139,9 @@ CeladonCafeBakerScript:
 EatathonContestPoster:
 	jumptext EatathonContestPosterText
 
+EatathonContestTrashCan:
+	jumptext EatathonContestTrashCanText
+
 UnknownText_0x730de:
 	text "Hi!"
 
@@ -240,7 +243,7 @@ MayleneText3:
 	done
 
 MayleneRefusedText:
-	text "Sigh… okay."
+	text "Sigh… OK."
 	done
 
 MayleneSeenText:
@@ -289,10 +292,13 @@ EatathonContestPosterText:
 	line "all for free!"
 	done
 
-CeladonCafe_MapEventHeader:
-	; filler
-	db 0, 0
+EatathonContestTrashCanText:
+	text "The trash is full"
+	line "of eatathon left-"
+	cont "overs…"
+	done
 
+CeladonCafe_MapEventHeader:
 .Warps:
 	db 2
 	warp_def $7, $6, 9, CELADON_CITY
@@ -302,8 +308,9 @@ CeladonCafe_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 1
+	db 2
 	signpost 0, 5, SIGNPOST_READ, EatathonContestPoster
+	signpost 1, 7, SIGNPOST_READ, EatathonContestTrashCan
 
 .PersonEvents:
 	db 7

@@ -139,9 +139,6 @@ PokemonMansion1FFlowerPotText:
 	done
 
 PokemonMansion1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $1b, $5, 3, CINNABAR_ISLAND

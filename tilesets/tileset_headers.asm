@@ -1,7 +1,6 @@
 tileset: macro
 	dba \1GFX, \1Meta, \1Coll
 	dw \1Anim
-	dw NULL
 	dw \1PalMap
 endm
 
@@ -48,3 +47,4 @@ Tileset01::
 	tileset Tileset38
 	tileset Tileset39
 	tileset Tileset40
+	tileset Tileset41

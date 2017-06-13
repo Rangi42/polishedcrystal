@@ -4,20 +4,21 @@ const_value set 2
 SeagallopFerryNavelGate_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
-	db 0
-
-.Trigger0:
-	end
+	db 1
+	dbw MAPCALLBACK_NEWMAP, .Visited
 
 .Trigger1:
 	priorityjump SeagallopFerryNavelGate_PlayerArrives
+.Trigger0:
 	end
+
+.Visited:
+	setevent EVENT_VISITED_NAVEL_ROCK
+	return
 
 SeagallopFerryNavelGate_PlayerArrives:
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive1MovementData
@@ -106,9 +107,6 @@ SeagallopFerryNavelRockRefusedText:
 	done
 
 SeagallopFerryNavelGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $6, 1, NAVEL_ROCK_OUTSIDE

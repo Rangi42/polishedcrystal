@@ -18,8 +18,6 @@ BlackthornCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_OBJECTS, .Santos
 
@@ -355,9 +353,6 @@ BlackthornCityTrainerTipsText:
 	done
 
 BlackthornCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $b, $12, 1, BLACKTHORN_GYM_1F

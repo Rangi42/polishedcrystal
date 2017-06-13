@@ -372,7 +372,11 @@
 	map_header_2 RockyBeach, ROCKY_BEACH, $35, SOUTH
 	connection south, SHAMOUTI_ISLAND, ShamoutiIsland, 0, 0, 18
 
-	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $37, 0
+	map_header_2 ValenciaIsland, VALENCIA_ISLAND, $0, WEST
+	connection west, ROUTE_49, Route49, 0, 2, 9
+
+	map_header_2 Route49, ROUTE_49, $0, EAST
+	connection east, VALENCIA_ISLAND, ValenciaIsland, 2, 0, 9
 
 	map_header_2 SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_header_2 SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -815,7 +819,7 @@
 	map_header_2 SafariZoneNorthRestHouse, SAFARI_ZONE_NORTH_REST_HOUSE, $0, 0
 	map_header_2 SafariZoneWestRestHouse1, SAFARI_ZONE_WEST_REST_HOUSE_1, $0, 0
 	map_header_2 SafariZoneWestRestHouse2, SAFARI_ZONE_WEST_REST_HOUSE_2, $0, 0
-	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $43, 0
+	map_header_2 NavelRockOutside, NAVEL_ROCK_OUTSIDE, $35, 0
 	map_header_2 NavelRockInside, NAVEL_ROCK_INSIDE, $9, 0
 	map_header_2 NavelRockRoof, NAVEL_ROCK_ROOF, $1, 0
 	map_header_2 FarawayIsland, FARAWAY_ISLAND, $6, 0
@@ -832,6 +836,7 @@
 	map_header_2 Route19BeachHouse, ROUTE_19_BEACH_HOUSE, $0, 0
 	map_header_2 ShamoutiTunnel, SHAMOUTI_TUNNEL, $9, 0
 	map_header_2 NoisyForest, NOISY_FOREST, $0, 0
+	map_header_2 ShamoutiShrineRuins, SHAMOUTI_SHRINE_RUINS, $37, 0
 	map_header_2 ShamoutiPokeCenter1F, SHAMOUTI_POKECENTER_1F, $0, 0
 	map_header_2 ShamoutiHotel1F, SHAMOUTI_HOTEL_1F, $0, 0
 	map_header_2 ShamoutiHotel2F, SHAMOUTI_HOTEL_2F, $0, 0
@@ -854,3 +859,7 @@
 	map_header_2 IceIslandRoof, ICE_ISLAND_ROOF, $35, 0
 	map_header_2 LightningIsland, LIGHTNING_ISLAND, $9, 0
 	map_header_2 LightningIslandRoof, LIGHTNING_ISLAND_ROOF, $35, 0
+	map_header_2 IvysLab, IVYS_LAB, $0, 0
+	map_header_2 IvysHouse, IVYS_HOUSE, $0, 0
+	map_header_2 ValenciaHouse, VALENCIA_HOUSE, $0, 0
+	map_header_2 ValenciaPort, VALENCIA_PORT, $0, 0

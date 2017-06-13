@@ -175,7 +175,7 @@ CeladonUniversityPoolTeacherScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "Okay, five more"
+	text "OK, five more"
 	line "laps!"
 	done
 
@@ -183,9 +183,6 @@ CeladonUniversityPoolWaterStone:
 	itemball WATER_STONE
 
 CeladonUniversityPool_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $6, 6, CELADON_UNIVERSITY_2F

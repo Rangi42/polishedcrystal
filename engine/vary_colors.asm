@@ -175,6 +175,10 @@ VaryColorsByDVs::
 ; [ColorVarySpecies] = species
 ; [ColorVaryShiny] = shiny
 
+	ld a, [InitialOptions]
+	bit COLOR_VARY_OPT, a
+	ret z
+
 	ld a, [rSVBK]
 	push af
 	ld a, $5

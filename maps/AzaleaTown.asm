@@ -14,27 +14,11 @@ const_value set 2
 
 AzaleaTown_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .Flypoint
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 .Flypoint:
 	setflag ENGINE_FLYPOINT_AZALEA
@@ -443,9 +427,6 @@ AzaleaTownIlexForestSignText:
 	done
 
 AzaleaTown_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $9, $f, 1, AZALEA_POKECENTER_1F
@@ -459,9 +440,9 @@ AzaleaTown_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 1, $a, $5, $0, AzaleaTownRivalBattleTrigger1, $0, $0
-	xy_trigger 1, $b, $5, $0, AzaleaTownRivalBattleTrigger2, $0, $0
-	xy_trigger 2, $6, $9, $0, AzaleaTown_CelebiEventScript, $0, $0
+	xy_trigger 1, $a, $5, AzaleaTownRivalBattleTrigger1
+	xy_trigger 1, $b, $5, AzaleaTownRivalBattleTrigger2
+	xy_trigger 2, $6, $9, AzaleaTown_CelebiEventScript
 
 .Signposts:
 	db 7

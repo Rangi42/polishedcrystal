@@ -4,8 +4,6 @@ IndigoPlateau_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -25,9 +23,6 @@ IndigoPlateauSignText:
 	done
 
 IndigoPlateau_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $9, 1, INDIGO_PLATEAU_POKECENTER_1F

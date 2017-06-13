@@ -7,9 +7,6 @@ SilverCaveRoom3_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_SPRITES, .DailyRedRematchCallback
 
 .DailyRedRematchCallback:
@@ -64,9 +61,6 @@ Red:
 	done
 
 SilverCaveRoom3_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $1d, $9, 2, SILVER_CAVE_ROOM_2

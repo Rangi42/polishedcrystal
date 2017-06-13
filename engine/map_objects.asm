@@ -1759,11 +1759,6 @@ GetMovementByte:
 	ret
 ; 5015
 
-_GetMovementPerson: ; 5037
-	ld hl, GetMovementPerson
-	jp HandleMovementData
-; 503d
-
 GetMovementPerson: ; 503d
 	ld a, [wMovementPerson]
 	ret
@@ -2138,7 +2133,7 @@ Function565c: ; 565c
 Function5673: ; 5673
 	call Function56a3
 	jr c, SetFacing_Standing
-	farcall Function4440 ; no need to farcall
+	call Function4440
 	xor a
 	ret
 ; 5680
@@ -2164,7 +2159,7 @@ Function5688: ; 5688
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld [hl], a
-	farcall UpdateTallGrassFlags ; no need to farcall
+	call UpdateTallGrassFlags
 	ret
 ; 56a3
 
@@ -2348,7 +2343,7 @@ RefreshPlayerSprite: ; 579d
 	ld [wPlayerNextMovement], a
 	ld [wPlayerMovement], a
 	xor a
-	ld [wd04e], a
+	ld [wPlayerTurningDirection], a
 	ld [PlayerObjectStepFrame], a
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown

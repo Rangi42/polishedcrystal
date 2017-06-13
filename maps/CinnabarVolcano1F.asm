@@ -21,8 +21,6 @@ CinnabarVolcano1F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_CMDQUEUE, .BouldersFall
 
 .BouldersFall:
@@ -262,9 +260,6 @@ CinnabarVolcano1FBoulderFellText:
 	done
 
 CinnabarVolcano1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $19, $d, 2, CINNABAR_ISLAND

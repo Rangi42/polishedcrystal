@@ -14,15 +14,12 @@ ViridianForestViridianGateOfficerScript:
 ViridianForestViridianGateOfficerText:
 	text "Be careful,"
 	line "Viridian Forest"
-	
+
 	para "is a natural"
 	line "maze!"
 	done
 
 ViridianForestViridianGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 2, VIRIDIAN_FOREST

@@ -16,24 +16,10 @@ const_value set 2
 
 Route42_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
 
 Route42LyraScript1:
 	spriteface PLAYER, LEFT
@@ -606,9 +592,6 @@ Route42Sign2Text:
 	done
 
 Route42_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $8, $0, 3, ROUTE_42_ECRUTEAK_GATE
@@ -619,12 +602,12 @@ Route42_MapEventHeader:
 
 .XYTriggers:
 	db 6
-	xy_trigger 1, $6, $c, $0, Route42LyraScript1, $0, $0
-	xy_trigger 1, $7, $c, $0, Route42LyraScript2, $0, $0
-	xy_trigger 1, $8, $c, $0, Route42LyraScript3, $0, $0
-	xy_trigger 1, $9, $c, $0, Route42LyraScript4, $0, $0
-	xy_trigger 1, $6, $a, $0, Route42LyraScript5, $0, $0
-	xy_trigger 2, $e, $18, $0, Route42SuicuneScript, $0, $0
+	xy_trigger 1, $6, $c, Route42LyraScript1
+	xy_trigger 1, $7, $c, Route42LyraScript2
+	xy_trigger 1, $8, $c, Route42LyraScript3
+	xy_trigger 1, $9, $c, Route42LyraScript4
+	xy_trigger 1, $6, $a, Route42LyraScript5
+	xy_trigger 2, $e, $18, Route42SuicuneScript
 
 .Signposts:
 	db 5

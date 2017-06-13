@@ -62,9 +62,6 @@ AzaleaMartLadyText:
 	done
 
 AzaleaMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, AZALEA_TOWN

@@ -258,7 +258,6 @@
 ; 2cd52
 
 Move00Description:
-UnknownMoveDescription:
 	db "?@"
 
 KarateChopDescription:

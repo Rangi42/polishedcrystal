@@ -3,16 +3,10 @@ const_value set 2
 
 Route1617Gate_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw UnknownScript_0x733e9, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x733e9:
-	end
 
 OfficerScript_0x733ea:
 	jumptextfaceplayer UnknownText_0x73408
@@ -63,9 +57,6 @@ UnknownText_0x73496:
 	done
 
 Route1617Gate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $5, $0, 1, ROUTE_16_SOUTH
@@ -76,11 +67,11 @@ Route1617Gate_MapEventHeader:
 
 .XYTriggers:
 	db 5
-	xy_trigger 0, $3, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $4, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $5, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $6, $5, $0, UnknownScript_0x733ed, $0, $0
-	xy_trigger 0, $7, $5, $0, UnknownScript_0x733ed, $0, $0
+	xy_trigger 0, $3, $5, UnknownScript_0x733ed
+	xy_trigger 0, $4, $5, UnknownScript_0x733ed
+	xy_trigger 0, $5, $5, UnknownScript_0x733ed
+	xy_trigger 0, $6, $5, UnknownScript_0x733ed
+	xy_trigger 0, $7, $5, UnknownScript_0x733ed
 
 .Signposts:
 	db 0

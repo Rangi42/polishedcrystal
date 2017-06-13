@@ -21,9 +21,6 @@ YellowForest_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .RebattleBreeder
 
 .RebattleBreeder:
@@ -138,6 +135,10 @@ YellowForestYellowBattleScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_YELLOW
+	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
+	iffalse .skip
+	clearevent EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
+.skip
 	opentext
 	writetext YellowForestYellowAfterText
 	scall YellowTryGiveLightBallScript
@@ -530,9 +531,6 @@ YellowForestSurfPikachuDollSentText:
 	done
 
 YellowForest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $2d, $1c, 1, YELLOW_FOREST_GATE

@@ -6,9 +6,6 @@ TinTower2F_MapScriptHeader:
 	db 0
 
 TinTower2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $e, $8, 1, TIN_TOWER_3F

@@ -22,7 +22,7 @@ SaveMenu: ; 14a1a
 	scf
 	ret
 
-Function14a58: ; 14a58
+SaveAfterLinkTrade: ; 14a58
 	call SetWRAMStateForSave
 	farcall StageRTCTimeForSave
 	call SavePokemonData
@@ -88,7 +88,7 @@ MovePkmnWOMail_SaveGame: ; 14ac2
 	ret
 ; 14ad5
 
-Function14ad5: ; 14ad5
+MovePkmnWOMail_InsertMon_SaveGame: ; 14ad5
 	call SetWRAMStateForSave
 	push de
 	call SaveBox
@@ -239,27 +239,27 @@ _SavingDontTurnOffThePower: ; 14be3
 	call SavingDontTurnOffThePower
 SavedTheGame: ; 14be6
 	call SaveGameData_
-	; wait 32 frames
-	ld c, $20
-	call DelayFrames
-	; copy the original text speed setting to the stack
-	ld a, [Options1]
-	push af
-	; set text speed super slow
-	ld a, $3
-	ld [Options1], a
+;	; wait 32 frames
+;	ld c, $20
+;	call DelayFrames
+;	; copy the original text speed setting to the stack
+;	ld a, [Options1]
+;	push af
+;	; set text speed super slow
+;	ld a, $3
+;	ld [Options1], a
 	; <PLAYER> saved the game!
 	ld hl, UnknownText_0x1528d
 	call PrintText
-	; restore the original text speed setting
-	pop af
-	ld [Options1], a
+;	; restore the original text speed setting
+;	pop af
+;	ld [Options1], a
 	ld de, SFX_SAVE
 	call WaitPlaySFX
 	call WaitSFX
-	; wait 30 frames
-	ld c, $1e
-	call DelayFrames
+;	; wait 30 frames
+;	ld c, $1e
+;	call DelayFrames
 	ret
 ; 14c10
 
@@ -300,21 +300,21 @@ SavingDontTurnOffThePower: ; 14c99
 	ld [hJoypadPressed], a
 	ld [hJoypadSum], a
 	ld [hJoypadDown], a
-	; Save the text speed setting to the stack
-	ld a, [Options1]
-	push af
-	; Set the text speed to super slow
-	ld a, $3
-	ld [Options1], a
+;	; Save the text speed setting to the stack
+;	ld a, [Options1]
+;	push af
+;	; Set the text speed to super slow
+;	ld a, $3
+;	ld [Options1], a
 	; SAVING... DON'T TURN OFF THE POWER.
 	ld hl, UnknownText_0x15288
 	call PrintText
-	; Restore the text speed setting
-	pop af
-	ld [Options1], a
-	; Wait for 16 frames
-	ld c, $10
-	call DelayFrames
+;	; Restore the text speed setting
+;	pop af
+;	ld [Options1], a
+;	; Wait for 16 frames
+;	ld c, $10
+;	call DelayFrames
 	ret
 ; 14cbb
 
@@ -596,8 +596,9 @@ DefaultOptions: ; 14f7c
 	db $0        ; ???
 	db %00000000 ; Options2: default typeface, running shoes off, 12-hour clock,
 	             ;           imperial units, battle style set
-	db %00000111 ; InitialOptions: natures on, abilities on, traded behavior on,
-	             ;                   nuzlocke mode off
+	db %00000111 ; InitialOptions: natures on, abilities on, color variation on,
+	             ;                 perfect IVs off, traded as OT off,
+	             ;                 nuzlocke mode off
 	db $0        ; ???
 ; 14f84
 

@@ -83,9 +83,6 @@ UnknownText_0x5b63c:
 	done
 
 OlivineLighthouse4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $3, $d, 1, OLIVINE_LIGHTHOUSE_3F

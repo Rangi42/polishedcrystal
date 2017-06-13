@@ -7,9 +7,6 @@ WhirlIslandLugiaChamber_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .Lugia
 
 .Lugia:
@@ -47,9 +44,6 @@ LugiaText:
 	done
 
 WhirlIslandLugiaChamber_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $d, $9, 3, WHIRL_ISLAND_B2F

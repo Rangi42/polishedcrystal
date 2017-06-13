@@ -3,24 +3,15 @@ const_value set 2
 
 BrunosRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .BrunosRoomDoors
 
 .Trigger0:
 	priorityjump UnknownScript_0x1809ad
-	end
-
-.Trigger1:
 	end
 
 .BrunosRoomDoors:
@@ -175,9 +166,6 @@ BrunoAfterRematchText:
 	done
 
 BrunosRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $4, 3, KOGAS_ROOM

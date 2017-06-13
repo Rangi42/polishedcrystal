@@ -170,7 +170,33 @@ endr
 	jr .loop_moves
 
 .done
+	dec a
+	push bc
+	ld b, 0
+	ld c, a
+	ld hl, EvolutionMoves
+	add hl, bc
 	pop bc
+	ld a, BANK(EvolutionMoves)
+	call GetFarByte
+	and a
+	jr z, .no_evolution_move
+	ld c, a
+	call CheckAlreadyInList
+	jr c, .no_evolution_move
+	call CheckPokemonAlreadyKnowsMove
+	jr c, .no_evolution_move
+	ld a, c
+	ld [de], a
+	inc de
+	ld a, $ff
+	ld [de], a
+	inc b
+.no_evolution_move
+
+	farcall GetPreEvolution
+	pop bc
+	jr c, .loop
 	pop af
 	ld [CurPartySpecies], a
 	ld a, b

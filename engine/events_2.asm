@@ -458,7 +458,7 @@ endr
 
 .Jumptable_ba: ; 97e94
 	dba CmdQueue_Null
-	dba CmdQueue_Null2
+	dba CmdQueue_Null
 	dba CmdQueue_StoneTable
 	dba CmdQueue_Type3
 	dba CmdQueue_Type4
@@ -484,17 +484,9 @@ CmdQueueAnonJT_Decrement: ; 97eb1
 	ld hl, CMDQUEUE_05
 	add hl, bc
 	dec [hl]
-	ret
-; 97eb7
-
 CmdQueue_Null: ; 97eb7
 	ret
-; 97eb8
-
-CmdQueue_Null2: ; 97eb8
-	call ret_2f3e
-	ret
-; 97ebc
+; 97eb7
 
 CmdQueue_Type4: ; 97ebc
 	call CmdQueueAnonymousJumptable
@@ -515,9 +507,9 @@ CmdQueue_Type4: ; 97ebc
 	ld a, [hl]
 	dec a
 	ld [hl], a
-	jr z, .asm_97eee
+	jr z, .finish
 	and $1
-	jr z, .asm_97ee4
+	jr z, .add
 	ld hl, 2
 	add hl, bc
 	ld a, [hSCY]
@@ -525,7 +517,7 @@ CmdQueue_Type4: ; 97ebc
 	ld [hSCY], a
 	ret
 
-.asm_97ee4
+.add
 	ld hl, 2
 	add hl, bc
 	ld a, [hSCY]
@@ -533,7 +525,7 @@ CmdQueue_Type4: ; 97ebc
 	ld [hSCY], a
 	ret
 
-.asm_97eee
+.finish
 	ld hl, 4
 	add hl, bc
 	ld a, [hl]

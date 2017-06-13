@@ -43,7 +43,7 @@ endr
 	hlcoord 4, 15
 .loop
 	ld a, [de]
-	cp -1
+	cp "@"
 	ret z
 	inc de
 	ld [hli], a
@@ -82,42 +82,32 @@ UnownWords: ; fba5a
 	dw UnownWord28
 ; fba90
 
-unownword: macro
-x = 1
-	rept STRLEN(\1)
-	db STRSUB(\1, x, 1) - $40
-x = x + 1
-	endr
-	db -1
-endm
-
-
-UnownWord1:	 unownword "ANGER"
-UnownWord2:	 unownword "BEAR"
-UnownWord3:	 unownword "CHASE"
-UnownWord4:	 unownword "DIRECT"
-UnownWord5:	 unownword "ENGAGE"
-UnownWord6:	 unownword "FIND"
-UnownWord7:	 unownword "GIVE"
-UnownWord8:	 unownword "HELP"
-UnownWord9:	 unownword "INCREASE"
-UnownWord10: unownword "JOIN"
-UnownWord11: unownword "KEEP"
-UnownWord12: unownword "LAUGH"
-UnownWord13: unownword "MAKE"
-UnownWord14: unownword "NUZZLE"
-UnownWord15: unownword "OBSERVE"
-UnownWord16: unownword "PERFORM"
-UnownWord17: unownword "QUICKEN"
-UnownWord18: unownword "REASSURE"
-UnownWord19: unownword "SEARCH"
-UnownWord20: unownword "TELL"
-UnownWord21: unownword "UNDO"
-UnownWord22: unownword "VANISH"
-UnownWord23: unownword "WANT"
-UnownWord24: unownword "XXXXX"
-UnownWord25: unownword "YIELD"
-UnownWord26: unownword "ZOOM"
-UnownWord27: unownword "((((("
-UnownWord28: unownword ")))))"
+UnownWord1:  db "ANGER@"
+UnownWord2:  db "BEAR@"
+UnownWord3:  db "CHASE@"
+UnownWord4:  db "DIRECT@"
+UnownWord5:  db "ENGAGE@"
+UnownWord6:  db "FIND@"
+UnownWord7:	 db "GIVE@"
+UnownWord8:  db "HELP@"
+UnownWord9:  db "INCREASE@"
+UnownWord10: db "JOIN@"
+UnownWord11: db "KEEP@"
+UnownWord12: db "LAUGH@"
+UnownWord13: db "MAKE@"
+UnownWord14: db "NUZZLE@"
+UnownWord15: db "OBSERVE@"
+UnownWord16: db "PERFORM@"
+UnownWord17: db "QUICKEN@"
+UnownWord18: db "REASSURE@"
+UnownWord19: db "SEARCH@"
+UnownWord20: db "TELL@"
+UnownWord21: db "UNDO@"
+UnownWord22: db "VANISH@"
+UnownWord23: db "WANT@"
+UnownWord24: db "XXXXX@"
+UnownWord25: db "YIELD@"
+UnownWord26: db "ZOOM@"
+UnownWord27: db "!!!!!@"
+UnownWord28: db "?????@"
 ; fbb32

@@ -6,9 +6,6 @@ Route6UndergroundEntrance_MapScriptHeader:
 	db 0
 
 Route6UndergroundEntrance_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $3, 1, ROUTE_6

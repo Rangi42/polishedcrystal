@@ -221,9 +221,6 @@ Route9SignText:
 	done
 
 Route9_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

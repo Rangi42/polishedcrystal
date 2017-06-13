@@ -13,8 +13,6 @@ DimCave2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_TILES, .BouldersLand
 
 .BouldersLand:
@@ -191,9 +189,6 @@ DimCave2FHiddenMoonStone:
 	dwb EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE, MOON_STONE
 
 DimCave2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 8
 	warp_def $1, $f, 2, CERULEAN_CAPE

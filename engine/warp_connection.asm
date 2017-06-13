@@ -239,11 +239,11 @@ LoadMapTimeOfDay: ; 104750
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
 	call OverworldTextModeSwitch
-	call Function104770
-	call Function1047a3
+	call .ClearBGMap
+	call .PushAttrMap
 	ret
 
-Function104770: ; 104770 (41:4770)
+.ClearBGMap: ; 104770 (41:4770)
 	ld a, VBGMap0 / $100
 	ld [wBGMapAnchor + 1], a
 	xor a
@@ -267,7 +267,7 @@ Function104770: ; 104770 (41:4770)
 	call ByteFill
 	ret
 
-Function1047a3: ; 1047a3 (41:47a3)
+.PushAttrMap: ; 1047a3 (41:47a3)
 	decoord 0, 0
 	call .copy
 	decoord 0, 0, AttrMap

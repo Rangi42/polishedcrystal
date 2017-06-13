@@ -45,9 +45,6 @@ UnknownText_0x993ec:
 	done
 
 EcruteakLugiaSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 7, ECRUTEAK_CITY

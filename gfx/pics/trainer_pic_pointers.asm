@@ -129,6 +129,7 @@
 	dba MaylenePic
 	dba SkylaPic
 	dba ValeriePic
+	dba VictorPic
 	dba BillPic
 	dba YellowPic
 	dba WalkerPic

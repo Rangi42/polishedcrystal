@@ -1,5 +1,3 @@
-SOOTHE_BELL (PC: Ruins of Alph) [HGSS: National Park]
-
 Battle Tower #1:
 CHOICE_BAND (PC: Celadon Four)
 CHOICE_SCARF (PC: Mom) [HGSS: Mom]
@@ -9,8 +7,6 @@ MUSCLE_BAND (PC: Steven) [HGSS: Mom]
 WISE_GLASSES (PC: Cynthia) [HGSS: Pewter City]
 METRONOME_I (PC: Route 16) [HGSS: Game Corner]
 GRIP_CLAW (PC: Seafoam Islands) [HGSS: Seafoam Islands]
-.
-.
 
 Battle Tower #2:
 RARE_CANDY
@@ -21,78 +17,13 @@ LIFE_ORB (PC: Ruins of Alph) [HGSS: Ruins of Alph]
 FLAME_ORB (Cinnabar Volcano)
 TOXIC_ORB (Murky Swamp)
 BLACK_SLUDGE (Scary Cave) [HGSS: Cerulean Cave]
-.
-.
 
 Battle Tower #3:
 MACHO_BRACE (PC: Oak's aide)
 FOCUS_BAND (PC: Fighting Dojo)
-FOCUS_SASH (TODO: ?) [HGSS: Mom]
+FOCUS_SASH (TODO: Route 46 Leader) [HGSS: Mom]
 ASSAULT_VEST (PC: Cianwood City)
-PROTECT_PADS (TODO: ?)
-ROCKY_HELMET (TODO: ?)
+PROTECT_PADS (TODO: Lighthouse Leader)
+ROCKY_HELMET (TODO: Route 44 Leader)
 SAFE_GOGGLES (PC: Quiet Cave, Celadon Hotel)
-BINDING_BAND (TODO: ?)
-.
-.
-
-Adventurer:
-ETHER
-ELIXIR
-DESTINY_KNOT (PC: Route 27, Ecruteak City) [HGSS: Route 27]
-SCOPE_LENS (PC: Harbor merchant)
-WIDE_LENS (PC: Harbor merchant) [HGSS: Game Corner]
-ZOOM_LENS (PC: Harbor merchant) [HGSS: Game Corner]
-BRIGHTPOWDER (PC: Harbor merchant) [HGSS: Radio Tower]
-SURF_MAIL
-.
-.
-
-Souvenir Shop:
-RAGECANDYBAR
-GREAT_BALL
-SUPER_POTION
-HYPER_POTION
-SUPER_REPEL
-REVIVE
-AIR_BALLOON (PC: Saffron Hitmontop kid house)
-QUICK_CLAW (PC: National Park, Route 47) [HGSS: National Park, Route 47]
-KINGS_ROCK (PC: Slowpoke Well) [HGSS: Slowpoke Well]
-.
-
-Shamouti Market #1 (herbalist):
-MENTAL_HERB (PC: Route 7) [HGSS: Route 7]
-POWER_HERB (PC: Route 34) [HGSS: Route 34]
-WHITE_HERB (PC: Route 32 Coast)
-BIG_ROOT (PC: Route 3, Yellow Forest) [HGSS: Route 3, Yellow Forest]
-.
-.
-.
-.
-.
-.
-
-Shamouti Market #2 (geologist):
-DAMP_ROCK (PC: Lightning Island) (PC: Slowpoke Well)
-HEAT_ROCK (PC: Fire Island) (PC: Radio Tower)
-SMOOTH_ROCK (PC: Shamouti Tunnel)
-ICY_ROCK (PC: Ice Island) (PC: Ice Path)
-EVIOLITE (PC: Pokécom Center, Uraga Channel)
-LIGHT_CLAY (Dim Cave) [HGSS: Route 9]
-.
-.
-.
-.
-
-Girl on Warm Beach or Shamouti Market:
-SHELL_BELL (one per day) (PC: Cerulean Cape) [HGSS: Route 32]
-
-Celadon University Baker:
-LEFTOVERS (one per day) (PC: Celadon University)
-
-Silph employee:
-MAX_POTION
-MAX_REPEL
-DUSK_BALL
-UP_GRADE (PC: Silph Co) [HGSS: Silph Co]
-DUBIOUS_DISC (PC: Celadon City) [HGSS: Route 42]
+BINDING_BAND (TODO: Route 37 Leader)

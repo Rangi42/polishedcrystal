@@ -4,19 +4,15 @@ const_value set 2
 SeagallopFerryVermilionGate_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-.Trigger0:
-	end
-
 .Trigger1:
 	priorityjump SeagallopFerryVermilionGate_PlayerArrives
+.Trigger0:
 	end
 
 SeagallopFerryVermilionGate_PlayerArrives:
@@ -83,7 +79,6 @@ SeagallopFerryVermilionGateSailorScript:
 	checkitem OLD_SEA_MAP
 	iftrue .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata OrangeMysticMenuDataHeader
 	verticalmenu
 	closewindow
@@ -103,7 +98,6 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_orangeticket_and_old_sea_map
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata MysticOldSeaMapMenuDataHeader
 	verticalmenu
 	closewindow
@@ -113,7 +107,6 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_mysticticket_and_old_sea_map
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata OrangeOldSeaMapMenuDataHeader
 	verticalmenu
 	closewindow
@@ -123,7 +116,6 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
-	waitbutton
 	loadmenudata ThreeTicketsMenuDataHeader
 	verticalmenu
 	closewindow
@@ -305,9 +297,6 @@ SeagallopFerryVermilionCityRefusedText:
 	done
 
 SeagallopFerryVermilionGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $0, $6, 11, VERMILION_CITY

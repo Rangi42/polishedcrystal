@@ -3,16 +3,10 @@ const_value set 2
 
 CianwoodPharmacy_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw CianwoodPharmacyTrigger, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-CianwoodPharmacyTrigger:
-	end
 
 CianwoodPharmacist:
 	faceplayer
@@ -80,9 +74,6 @@ PharmacistDescribeSecretpotionText:
 	done
 
 CianwoodPharmacy_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 4, CIANWOOD_CITY

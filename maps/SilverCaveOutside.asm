@@ -8,8 +8,6 @@ SilverCaveOutside_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -30,9 +28,6 @@ MtSilverSignText:
 	done
 
 SilverCaveOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $d, $17, 1, SILVER_CAVE_POKECENTER_1F

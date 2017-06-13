@@ -3,16 +3,10 @@ const_value set 2
 
 Route6SaffronGate_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw UnknownScript_0x1926e9, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x1926e9:
-	end
 
 OfficerScript_0x1926ea:
 	faceplayer
@@ -60,9 +54,6 @@ UnknownText_0x1927cb:
 	done
 
 Route6SaffronGate_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $4, 12, SAFFRON_CITY

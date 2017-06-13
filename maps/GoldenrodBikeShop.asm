@@ -8,9 +8,6 @@ GoldenrodBikeShop_MapScriptHeader:
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x5474f:
-	end
-
 ClerkScript_0x54750:
 	faceplayer
 	opentext
@@ -92,9 +89,6 @@ UnknownText_0x548ed:
 	done
 
 GoldenrodBikeShop_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, GOLDENROD_CITY

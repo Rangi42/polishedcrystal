@@ -88,9 +88,6 @@ GourmetManiacScript:
 	done
 
 Route32CoastHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 2, ROUTE_32_COAST

@@ -7,24 +7,12 @@ const_value set 2
 
 CherrygroveCity_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.Trigger0:
-.Trigger1:
-.Trigger2:
-	end
 
 .FlyPoint:
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
@@ -175,7 +163,7 @@ CherrygroveSilverTriggerNorth:
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	special RunCallback_04
-	special RestartMapMusic
+	playmusic MUSIC_CHERRYGROVE_CITY
 	end
 
 CherrygroveTeacherScript:
@@ -340,12 +328,9 @@ GuideGentIntroText:
 	line "one is a rookie"
 	cont "at some point!"
 
-	para "If you'd like, I"
-	line "can teach you a"
-	cont "few things."
-
-	para "OK, then!"
-	line "Follow me!"
+	para "I can teach you"
+	line "a few things."
+	cont "Follow me!"
 	done
 
 GuideGentPokeCenterText:
@@ -531,9 +516,6 @@ GuideGentsHouseSignText:
 	done
 
 CherrygroveCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $3, $17, 2, CHERRYGROVE_MART
@@ -544,9 +526,9 @@ CherrygroveCity_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 0, $7, $21, $0, CherrygroveGuideGentTrigger, $0, $0
-	xy_trigger 1, $6, $21, $0, CherrygroveSilverTriggerNorth, $0, $0
-	xy_trigger 1, $7, $21, $0, CherrygroveSilverTriggerSouth, $0, $0
+	xy_trigger 0, $7, $21, CherrygroveGuideGentTrigger
+	xy_trigger 1, $6, $21, CherrygroveSilverTriggerNorth
+	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
 
 .Signposts:
 	db 2

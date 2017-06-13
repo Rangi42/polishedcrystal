@@ -11,17 +11,17 @@ UserPartyAttr:: ; 3945
 ; 3951
 
 
-OpponentPartyAttr:: ; 3951
-	push af
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ot
-	pop af
-	jr BattlePartyAttr
-.ot
-	pop af
-	jr OTPartyAttr
-; 395d
+;OpponentPartyAttr:: ; 3951
+;	push af
+;	ld a, [hBattleTurn]
+;	and a
+;	jr z, .ot
+;	pop af
+;	jr BattlePartyAttr
+;.ot
+;	pop af
+;	jr OTPartyAttr
+;; 395d
 
 
 BattlePartyAttr:: ; 395d
@@ -138,7 +138,111 @@ UpdateBattleHuds:: ; 39d4
 	farcall UpdatePlayerHUD
 	farcall UpdateEnemyHUD
 	ret
-; 39e1
+
+ConsumeEnemyItem::
+	call SwitchTurn
+	call ConsumeUserItem
+	jp SwitchTurn
+
+ConsumeUserItem::
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurBattleMon]
+	ld de, BattleMonItem
+	ld hl, PartyMon1Item
+	jr z, .got_item_pointers
+	ld a, [CurOTMon]
+	ld de, EnemyMonItem
+	ld hl, OTPartyMon1Item
+.got_item_pointers
+	call GetPartyLocation
+	xor a
+	ld [de], a
+
+	; Wildmons has no OTPartyMon1Item, but we want to consume our own items still
+	ld a, [hBattleTurn]
+	and a
+	jr z, .has_party_struct
+
+	ld a, [wBattleMode]
+	dec a
+	jr z, .apply_unburden
+
+.has_party_struct
+	xor a
+	ld [hl], a
+.apply_unburden
+	; Unburden doubles Speed when an item is consumed
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNBURDEN
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	set SUBSTATUS_UNBURDEN, [hl]
+	ret
+
+; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
+ApplyPhysicalAttackDamageMod::
+	push bc
+	ld b, PHYSICAL
+	jr ApplyAttackDamageMod
+ApplySpecialAttackDamageMod::
+	push bc
+	ld b, SPECIAL
+ApplyAttackDamageMod::
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp b
+	ld a, c
+	pop bc
+	ret nz
+	jr ApplyDamageMod
+
+ApplyPhysicalDefenseDamageMod::
+	push bc
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	ld a, c
+	pop bc
+	jr z, ApplySpecialAttackDamageMod
+	jr ApplyPhysicalAttackDamageMod
+
+ApplySpecialDefenseDamageMod::
+	push bc
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	ld a, c
+	pop bc
+	ret z
+	jr ApplySpecialAttackDamageMod
+
+ApplyDamageMod::
+	push bc
+	push hl
+	ld b, a
+	swap a
+	and $f
+	ld hl, hMultiplier
+	ld [hl], a
+	push bc
+	call Multiply
+	pop bc
+	ld a, b
+	and $f
+	ld [hl], a
+	ld b, 4
+	call Divide
+	pop hl
+	pop bc
+	ret
+
 
 GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an opponent's ability unless Mold Breaker
@@ -369,9 +473,9 @@ CheckIfTargetIsIceType::
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType::
 	ld a, ROCK
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsGroundType::
-	ld a, GROUND
+;	jr CheckIfTargetIsSomeType
+;CheckIfTargetIsGroundType::
+;	ld a, GROUND
 CheckIfTargetIsSomeType::
 	ld b, a
 	ld a, [hBattleTurn]

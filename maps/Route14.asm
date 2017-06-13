@@ -278,9 +278,6 @@ Route14CutTree:
 	jumpstd cuttree
 
 Route14_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

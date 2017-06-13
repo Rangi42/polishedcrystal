@@ -352,9 +352,6 @@ AzaleaGymGuyWinText:
 	done
 
 AzaleaGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $4, 5, AZALEA_TOWN

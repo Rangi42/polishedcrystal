@@ -35,7 +35,7 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	note __, 16
 	note __, 6
 	loopchannel 0, Music_RoadToReversalMountainB2W2_Ch1
-	
+
 Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 	octave 2
 	note A_, 12
@@ -201,7 +201,7 @@ Music_RoadToReversalMountainB2W2_Ch3:
 	note G_, 1
 	note __, 1
 	loopchannel 0, Music_RoadToReversalMountainB2W2_Ch3
-	
+
 Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	note D_, 2
 	note __, 2
@@ -210,7 +210,7 @@ Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	note A_, 2
 	note __, 2
 	endchannel
-	
+
 Music_RoadToReversalMountainB2W2_Ch4:
 	stereopanning $f
 	togglenoise $3

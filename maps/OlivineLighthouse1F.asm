@@ -59,9 +59,6 @@ UnknownText_0x5aec2:
 	done
 
 OlivineLighthouse1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $11, $a, 8, OLIVINE_CITY

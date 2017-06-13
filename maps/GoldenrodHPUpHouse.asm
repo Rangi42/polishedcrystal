@@ -74,9 +74,6 @@ GoldenrodHPUpHousePikachuText:
 	done
 
 GoldenrodHPUpHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 18, GOLDENROD_CITY

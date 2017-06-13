@@ -45,6 +45,7 @@ const_value SET 1
 	const TILESET_MUSEUM           ; 26
 	const TILESET_HOTEL            ; 27
 	const TILESET_QUIET_CAVE       ; 28
+	const TILESET_VALENCIA_ISLAND  ; 29
 
 	const_def
 	const PAL_BG_GRAY

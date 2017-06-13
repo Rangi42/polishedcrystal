@@ -28,9 +28,6 @@ UnknownText_0x1963f9:
 	done
 
 FuchsiaBillSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 3, FUCHSIA_CITY

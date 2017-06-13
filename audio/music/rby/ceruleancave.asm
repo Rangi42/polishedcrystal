@@ -15,10 +15,8 @@ Music_CeruleanCaveRBY_Ch1:
 	vibrato 10, 20
 	notetype 12, 77
 	note __, 8
-	unknownmusic0xee 237
 	octave 4
 	note F#, 8
-	unknownmusic0xee 255
 
 Music_CeruleanCaveRBY_branch_7dee5:
 	notetype 12, 178

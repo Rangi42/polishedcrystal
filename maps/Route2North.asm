@@ -58,9 +58,6 @@ UnknownText_0x1ac49f:
 	done
 
 Route2North_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $13, $f, 1, ROUTE_2_NUGGET_SPEECH_HOUSE

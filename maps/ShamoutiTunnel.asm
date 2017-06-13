@@ -95,7 +95,7 @@ OreManiacScript:
 	line "one to me someday."
 	done
 
-TrainerTamerOswald: ; Donphan, Ursaring, Kangaskhan
+TrainerTamerOswald:
 	trainer EVENT_BEAT_TAMER_OSWALD, TAMER, OSWALD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
@@ -130,7 +130,7 @@ TrainerTamerOswald: ; Donphan, Ursaring, Kangaskhan
 	line "trapeze act."
 	done
 
-TrainerFirebreatherTala: ; Magmortar, Weezing
+TrainerFirebreatherTala:
 	trainer EVENT_BEAT_FIREBREATHER_TALA, FIREBREATHER, TALA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
@@ -251,9 +251,6 @@ ShamoutiTunnelHiddenLeafStone:
 	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE, LEAF_STONE
 
 ShamoutiTunnel_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $21, 3, SHAMOUTI_ISLAND

@@ -1,3 +1,6 @@
+MenuMonIconColors::
+INCLUDE "data/mon_icon_pals.asm"
+
 LoadOverworldMonIcon: ; 8e82b
 	ld a, e
 	ld [CurIcon], a
@@ -13,38 +16,116 @@ LoadOverworldMonIcon: ; 8e82b
 	ret
 ; 8e83f
 
-LoadMenuMonIcon: ; 8e83f
+SetMenuMonIconColor:
 	push hl
 	push de
 	push bc
-	call .LoadIcon
+	push af
+
+	ld a, [wd265]
+	ld [CurPartySpecies], a
+	call GetMenuMonIconPalette
+	ld hl, Sprites + 3
+	jr ProcessMenuMonIconColor
+
+SetMenuMonIconColor_NoShiny:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wd265]
+	ld [CurPartySpecies], a
+	and a
+	call GetMenuMonIconPalette_PredeterminedShininess
+	ld hl, Sprites + 3
+	jr ProcessMenuMonIconColor
+
+LoadPartyMenuMonIconColors:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [PartyCount]
+	sub c
+	ld [CurPartyMon], a
+	ld d, 0
+	ld e, a
+	ld hl, PartySpecies
+	add hl, de
+	ld a, [hl]
+	ld [CurPartySpecies], a
+	ld a, MON_SHINY
+	call GetPartyParamLocation
+	call GetMenuMonIconPalette
+	push af
+
+	ld hl, Sprites + 3
+	ld a, [CurPartyMon]
+	swap a
+
+	ld d, 0
+	ld e, a
+
+	add hl, de
+	pop af
+ProcessMenuMonIconColor:
+	ld c, 4
+	ld de, 4
+
+.colorIcon
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .colorIcon
+
+	pop af
 	pop bc
 	pop de
 	pop hl
 	ret
-; 8e849
 
-.LoadIcon: ; 8e849
-	ld d, 0
-	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
+GetMenuMonIconPalette::
+; check shininess at hl
+	ld a, [hl]
+	and SHINY_MASK
+	jr z, .not_shiny
+	scf
+	jr GetMenuMonIconPalette_PredeterminedShininess
+.not_shiny
+	and a
+GetMenuMonIconPalette_PredeterminedShininess:
+	push af
+	ld a, [CurPartySpecies]
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, MenuMonIconColors
+	add hl, bc
+	ld e, [hl]
+	pop af
+	ld a, e
+	jr c, .shiny
+	swap a
+.shiny
+	and $f
 	ld l, a
-	jp hl
-; 8e854
+	ret
 
-.Jumptable: ; 8e854 (23:6854)
-	dw Function8e8d5 ; party menu
-	dw Function8e961 ; naming screen
-	dw Function8e97d ; move screen
-	dw Trade_LoadMonIconGFX ; trade
+LoadPartyMenuMonIcon:
+	call LoadPartyMenuMonIconColors
+	push hl
+	push de
+	push bc
 
-Function8e8d5: ; 8e8d5 (23:68d5)
 	call InitPartyMenuIcon
 	call .SpawnItemIcon
 	call SetPartyMonIconAnimSpeed
+
+	pop bc
+	pop de
+	pop hl
 	ret
 
 .SpawnItemIcon: ; 8e8df (23:68df)
@@ -73,6 +154,74 @@ Function8e8d5: ; 8e8d5 (23:68d5)
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
+	ret
+
+LoadNamingScreenMonIcon:
+	push hl
+	push de
+	push bc
+
+	ld hl, TempMonShiny
+	call SetMenuMonIconColor
+
+	ld a, [wd265]
+	ld [CurIcon], a
+	xor a
+	call GetIconGFX
+	depixel 4, 4, 4, 0
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
+	call InitSpriteAnimStruct
+	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
+	add hl, bc
+	ld [hl], SPRITE_ANIM_SEQ_NULL
+
+	pop bc
+	pop de
+	pop hl
+	ret
+
+LoadMoveMenuMonIcon:
+	push hl
+	push de
+	push bc
+
+	ld a, MON_SHINY
+	call GetPartyParamLocation
+	call SetMenuMonIconColor
+
+	ld a, [wd265]
+	ld [CurIcon], a
+	xor a
+	call GetIconGFX
+	ld d, 3 * 8 + 2
+	ld e, 4 * 8 + 4
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
+	call InitSpriteAnimStruct
+	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
+	add hl, bc
+	ld [hl], SPRITE_ANIM_SEQ_NULL
+
+	pop bc
+	pop de
+	pop hl
+	ret
+
+LoadTradeAnimationMonIcon:
+	push hl
+	push de
+	push bc
+
+	call SetMenuMonIconColor_NoShiny
+
+	ld a, [wd265]
+	ld [CurIcon], a
+	ld a, $62
+	ld [wCurIconTile], a
+	call GetMemIconGFX
+
+	pop bc
+	pop de
+	pop hl
 	ret
 
 InitPartyMenuIcon: ; 8e908 (23:6908)
@@ -136,42 +285,7 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	db $00, $40, $80
 ; 8e961
 
-Function8e961: ; 8e961 (23:6961)
-	ld a, [wd265]
-	ld [CurIcon], a
-	xor a
-	call GetIconGFX
-	depixel 4, 4, 4, 0
-	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
-	add hl, bc
-	ld [hl], SPRITE_ANIM_SEQ_NULL
-	ret
-
-Function8e97d: ; 8e97d (23:697d)
-	ld a, [wd265]
-	ld [CurIcon], a
-	xor a
-	call GetIconGFX
-	ld d, 3 * 8 + 2
-	ld e, 4 * 8 + 4
-	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
-	add hl, bc
-	ld [hl], SPRITE_ANIM_SEQ_NULL
-	ret
-
-Trade_LoadMonIconGFX: ; 8e99a (23:699a)
-	ld a, [wd265]
-	ld [CurIcon], a
-	ld a, $62
-	ld [wCurIconTile], a
-	call GetMemIconGFX
-	ret
-
-GetSpeciesIcon: ; 8e9ac
+PokegearFlyMap_GetMonIcon: ; 8e9ac
 ; Load species icon into VRAM at tile a
 	push de
 	ld a, [wd265]
@@ -181,7 +295,6 @@ GetSpeciesIcon: ; 8e9ac
 	call GetIconGFX
 	ret
 ; 8e9bc
-
 
 FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
 	push de
@@ -252,7 +365,7 @@ endr
 ; http://www.pokecommunity.com/showthread.php?t=338470
 GetMonIconBank:
 	ld a, [CurIcon]
-	cp a, $80
+	cp TAUROS ; first mon in Icons2
 	lb bc, BANK(Icons1), 8
 	ret c
 	lb bc, BANK(Icons2), 8

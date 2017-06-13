@@ -8,9 +8,6 @@ RockyBeachHouse_MapScriptHeader:
 	db 0
 
 RockyBeachHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 1, ROCKY_BEACH

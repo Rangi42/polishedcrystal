@@ -60,9 +60,6 @@ MapRockTunnel2FLodestoneText:
 	done
 
 RockTunnel2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $13, $19, 3, ROUTE_10_NORTH

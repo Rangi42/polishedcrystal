@@ -339,9 +339,6 @@ MtMoonSignText:
 	done
 
 Route4_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $2, 8, MOUNT_MOON_B1F

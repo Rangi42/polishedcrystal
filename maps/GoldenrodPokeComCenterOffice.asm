@@ -112,9 +112,6 @@ UnknownText_0x62b26:
 	done
 
 GoldenrodPokeComCenterOffice_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $0, 3, GOLDENROD_POKECOM_CENTER_1F

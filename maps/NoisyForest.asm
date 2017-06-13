@@ -91,8 +91,7 @@ NoisyForestAnabelScript:
 	done
 
 .BeatenText:
-	text "Okay, I under-"
-	line "stand…"
+	text "OK, I understand…"
 	done
 
 .ItemText:
@@ -311,15 +310,98 @@ NoisyForestChildScript:
 
 NoisyForestPikabluScript:
 	opentext
-	writetext .Text
+	writetext .PikabluText
 	cry MARILL
 	waitbutton
 	closetext
+	disappear NOISYFOREST_YOUNGSTER
+	moveperson NOISYFOREST_YOUNGSTER, 19, 36
+	appear NOISYFOREST_YOUNGSTER
+	applymovement NOISYFOREST_YOUNGSTER, .WalkToYou
+	spriteface PLAYER, DOWN
+	opentext
+	writetext .OwnerText1
+	waitbutton
+	closetext
+	disappear NOISYFOREST_MARILL
+	opentext
+	writetext .OwnerText2
+	buttonsound
+	verbosegiveitem ODD_SOUVENIR
+	iffalse .NoItem
+	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	writetext .OwnerText3
+.Leave:
+	waitbutton
+	closetext
+	applymovement NOISYFOREST_YOUNGSTER, .WalkAway
+	disappear NOISYFOREST_YOUNGSTER
+	moveperson NOISYFOREST_YOUNGSTER, 10, 15
+	appear NOISYFOREST_YOUNGSTER
+	clearevent EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	end
 
-.Text:
+.NoItem:
+	writetext .OwnerText4
+	jump .Leave
+
+.PikabluText:
 	text "Marill: Rill!"
 	done
+
+.OwnerText1:
+	text "You found my"
+	line "Pikablu!"
+	cont "Thank you!"
+	done
+
+.OwnerText2:
+	text "Let me give you a"
+	line "little something."
+	done
+
+.OwnerText3:
+	text "A souvenir of your"
+	line "time on Shamouti"
+	cont "Island!"
+
+	para "Doesn't it look"
+	line "strange?"
+
+	para "Bye, and thanks"
+	line "again!"
+	done
+
+.OwnerText4:
+	text "Oh, you can't carry"
+	line "it right now."
+
+	para "Come find me by"
+	line "the #mon Center"
+	cont "if you want it."
+	done
+
+.WalkToYou:
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_up
+	step_up
+	step_up
+	step_end
+
+.WalkAway:
+	step_down
+	step_down
+	step_down
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
 
 NoisyForestBalmMushroom:
 	itemball BALMMUSHROOM
@@ -350,9 +432,6 @@ NoisyForestHiddenFullRestore:
 	dwb EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 NoisyForest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $6, 2, ROCKY_BEACH

@@ -13,24 +13,11 @@ const_value set 2
 
 DragonsDenB1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, .CheckSilver
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .CheckSilver:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
@@ -267,17 +254,6 @@ ClairText_DescribeDragonbreathDragonDen:
 	cont "to take it."
 	done
 
-ClairText_NoRoom:
-	text "Oh? You don't have"
-	line "any room for this."
-
-	para "I'm going back to"
-	line "the Gym, so make"
-
-	para "room, then come"
-	line "see me there."
-	done
-
 ClairText_WhatsTheMatterDragonDen:
 	text "Clair: What's the"
 	line "matter? Aren't you"
@@ -497,9 +473,6 @@ TwinsLeaandpia2AfterText:
 	done
 
 DragonsDenB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $3, $14, 3, DRAGONS_DEN_1F
@@ -507,7 +480,7 @@ DragonsDenB1F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $1e, $13, $0, DragonsDenB1F_ClairTrigger, $0, $0
+	xy_trigger 1, $1e, $13, DragonsDenB1F_ClairTrigger
 
 .Signposts:
 	db 4

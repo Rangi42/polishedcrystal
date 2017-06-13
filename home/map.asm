@@ -413,8 +413,6 @@ ReadMapEventHeader:: ; 2336
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	inc hl
-	inc hl
 	call ReadWarps
 	call ReadCoordEvents
 	call ReadSignposts
@@ -510,7 +508,7 @@ ReadMapTriggers:: ; 23ac
 	and a
 	ret z
 
-	ld bc, 4 ; size of a map trigger header entry
+	ld bc, 2 ; size of a map trigger header entry
 	call AddNTimes
 	ret
 ; 23c3
@@ -561,7 +559,7 @@ ReadCoordEvents:: ; 23f1
 	and a
 	ret z
 
-	ld bc, 8
+	ld bc, 5
 	call AddNTimes
 	ret
 ; 2408
@@ -673,9 +671,7 @@ RestoreFacingAfterWarp:: ; 248a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 3
 	inc hl ; get to the warp coords
-endr
 	ld a, [WarpNumber]
 	dec a
 	ld c, a
@@ -1906,7 +1902,7 @@ CheckCurrentMapXYTriggers:: ; 2ad4
 
 .next
 	pop hl
-	ld a, $8 ; xy-trigger size
+	ld a, $5 ; xy-trigger size
 	add l
 	ld l, a
 	jr nc, .nocarry
@@ -1921,7 +1917,7 @@ CheckCurrentMapXYTriggers:: ; 2ad4
 .copytrigger
 	pop hl
 	ld de, wCurCoordEventTriggerID
-	ld bc, 8 ; xy-trigger size
+	ld bc, 5 ; xy-trigger size
 	call CopyBytes
 	scf
 	ret
@@ -2224,6 +2220,24 @@ GetWorldMapLocation:: ; 0x2caf
 	ret
 ; 0x2cbd
 
+GetCurrentLandmark::
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	cp SPECIAL_MAP
+	ret nz
+
+; In a special map, get the backup map group / map id
+GetBackupLandmark::
+	ld a, [BackupMapGroup]
+	ld b, a
+	ld a, [BackupMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	ret
+
 GetMapHeaderMusic:: ; 2cbd
 	push hl
 	push bc
@@ -2322,7 +2336,7 @@ LoadTilesetHeader:: ; 2d27
 	ld a, [wTileset]
 	call AddNTimes
 
-	ld de, TilesetBank
+	ld de, TilesetHeader
 	ld bc, Tileset01 - Tileset00
 
 	ld a, BANK(Tilesets)

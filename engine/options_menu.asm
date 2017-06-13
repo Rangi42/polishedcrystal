@@ -35,7 +35,7 @@ _OptionsMenu: ; e41d0
 	call Options_UpdateCursorPosition
 	ld c, 3
 	call DelayFrames
-	jr .joypad_loop	
+	jr .joypad_loop
 
 .ExitOptions:
 	ld de, SFX_TRANSACTION
@@ -526,7 +526,7 @@ Options_Typeface:
 
 .Save:
 	ld a, [hl]
-	and NOT_FONT_MASK
+	and $ff - FONT_MASK
 	or c
 	ld [hl], a
 	push bc
@@ -581,7 +581,7 @@ Options_NextPrevious:
 	jr z, .NonePressed
 	bit 0, [hl]
 	jr z, .Page2
-.Page1:
+;.Page1:
 	res 0, [hl]
 	ld de, StringOptions1
 	jr .Display

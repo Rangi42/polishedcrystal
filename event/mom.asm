@@ -150,9 +150,9 @@ endr
 	ld a, $5
 	ld [wcf64], a
 	call LoadStandardMenuDataHeader
-	call Function16517
-	call Function1656b
-	call Function16571
+	call Mom_SetUpDepositMenu
+	call Mom_Wait10Frames
+	call Mom_WithdrawDepositMenuJoypad
 	call CloseWindow
 	jr c, .CancelDeposit
 	ld hl, StringBuffer2
@@ -218,9 +218,9 @@ endr
 	ld a, $5
 	ld [wcf64], a
 	call LoadStandardMenuDataHeader
-	call Function16512
-	call Function1656b
-	call Function16571
+	call Mom_SetUpWithdrawMenu
+	call Mom_Wait10Frames
+	call Mom_WithdrawDepositMenuJoypad
 	call CloseWindow
 	jr c, .CancelWithdraw
 	ld hl, StringBuffer2
@@ -444,14 +444,14 @@ DSTChecks: ; 16439
 	db "@"
 ; 0x16512
 
-Function16512: ; 16512
-	ld de, String_1669f
-	jr Function1651a
+Mom_SetUpWithdrawMenu: ; 16512
+	ld de, Mom_WithdrawString
+	jr Mom_ContinueMenuSetup
 
-Function16517: ; 16517
-	ld de, String_166a8
+Mom_SetUpDepositMenu: ; 16517
+	ld de, Mom_DepositString
 
-Function1651a: ; 1651a
+Mom_ContinueMenuSetup: ; 1651a
 	push de
 	xor a
 	ld [hBGMapMode], a
@@ -459,14 +459,14 @@ Function1651a: ; 1651a
 	lb bc, 6, 18
 	call TextBox
 	hlcoord 1, 2
-	ld de, String_16699
+	ld de, Mom_SavedString
 	call PlaceString
 	hlcoord 12, 2
 	ld de, wMomsMoney
 	lb bc, PRINTNUM_MONEY | 3, 6
 	call PrintNum
 	hlcoord 1, 4
-	ld de, String_166b0
+	ld de, Mom_HeldString
 	call PlaceString
 	hlcoord 12, 4
 	ld de, Money
@@ -484,13 +484,13 @@ Function1651a: ; 1651a
 	ret
 ; 1656b
 
-Function1656b: ; 1656b
+Mom_Wait10Frames: ; 1656b
 	ld c, 10
 	call DelayFrames
 	ret
 ; 16571
 
-Function16571: ; 16571
+Mom_WithdrawDepositMenuJoypad: ; 16571
 .loop
 	call JoyTextDelay
 	ld hl, hJoyPressed
@@ -717,19 +717,19 @@ UnknownText_0x16694: ; 0x16694
 	db "@"
 ; 0x16699
 
-String_16699: ; 16699
+Mom_SavedString: ; 16699
 	db "Saved@"
 ; 1669f
 
-String_1669f: ; 1669f
+Mom_WithdrawString: ; 1669f
 	db "Withdraw@"
 ; 166a8
 
-String_166a8: ; 166a8
+Mom_DepositString: ; 166a8
 	db "Deposit@"
 ; 166b0
 
-String_166b0: ; 166b0
+Mom_HeldString: ; 166b0
 	db "Held@"
 ; 166b5
 

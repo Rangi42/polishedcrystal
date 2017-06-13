@@ -18,13 +18,9 @@ Route40_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, MonicaCallback
 
 MonicaCallback:
-	clearevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
 	checkcode VAR_WEEKDAY
 	if_equal MONDAY, .MonicaAppears
 	disappear ROUTE40_MONICA
@@ -139,31 +135,6 @@ Route40Rock:
 
 Route40HiddenHyperPotion:
 	dwb EVENT_ROUTE_40_HIDDEN_HYPER_POTION, HYPER_POTION
-
-MovementData_0x1a621c:
-	step_right
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-MovementData_0x1a6224:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-MovementData_0x1a622a:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
 
 SwimmermSimonSeenText:
 	text "You have to warm"
@@ -341,9 +312,6 @@ Route40SignText:
 	done
 
 Route40_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $5, $9, 1, ROUTE_40_BATTLE_TOWER_GATE
@@ -369,4 +337,4 @@ Route40_MapEventHeader:
 	person_event SPRITE_BEAUTY, 10, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a61c7, -1
 	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x1a61d3, -1
-	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a61d6, EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
+	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a61d6, -1

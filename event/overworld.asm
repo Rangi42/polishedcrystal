@@ -77,9 +77,9 @@ CheckPartyMove: ; c742
 	ld a, [hl]
 	and a
 	jr z, .no
-	cp a, -1
+	cp -1
 	jr z, .no
-	cp a, EGG
+	cp EGG
 	jr z, .next
 
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -105,6 +105,27 @@ CheckPartyMove: ; c742
 	ret
 .no
 	scf
+	ret
+
+CheckForSurfingPikachu:
+	ld d, SURF
+	call CheckPartyMove
+	jr c, .no
+	ld a, [CurPartyMon]
+	ld e, a
+	ld d, 0
+	ld hl, PartySpecies
+	add hl, de
+	ld a, [hl]
+	cp PIKACHU
+	jr nz, .no
+	ld a, TRUE
+	ld [ScriptVar], a
+	ret
+
+.no:
+	xor a ; FALSE
+	ld [ScriptVar], a
 	ret
 
 FieldMovePokepicScript:
@@ -233,7 +254,7 @@ Script_CutFromMenu: ; c7fe
 	special UpdateTimePals
 	callasm GetBuffer6
 	if_equal $0, Script_CutTree
-Script_CutGrass:
+;Script_CutGrass:
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
 	closetext
@@ -739,6 +760,14 @@ FlyFunction: ; ca3b
 	jr c, .nostormbadge
 	call CheckFlyAllowedOnMap
 	jr nz, .indoors
+
+; assumes all the Shamouti Island and Valencia Island maps are in their own group
+	ld a, [MapGroup]
+	cp GROUP_SHAMOUTI_ISLAND
+	jr z, .indoors
+	cp GROUP_VALENCIA_ISLAND
+	jr z, .indoors
+
 	xor a
 	ld [hMapAnims], a
 	call LoadStandardMenuDataHeader

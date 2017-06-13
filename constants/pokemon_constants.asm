@@ -297,6 +297,7 @@ MON_LEVEL                EQUS "(PartyMon1Level - PartyMon1)"
 MON_STATUS               EQUS "(PartyMon1Status - PartyMon1)"
 MON_HP                   EQUS "(PartyMon1HP - PartyMon1)"
 MON_MAXHP                EQUS "(PartyMon1MaxHP - PartyMon1)"
+MON_STATS                EQUS "(PartyMon1Stats - PartyMon1)"
 MON_ATK                  EQUS "(PartyMon1Attack - PartyMon1)"
 MON_DEF                  EQUS "(PartyMon1Defense - PartyMon1)"
 MON_SPD                  EQUS "(PartyMon1Speed - PartyMon1)"
@@ -304,7 +305,6 @@ MON_SAT                  EQUS "(PartyMon1SpclAtk - PartyMon1)"
 MON_SDF                  EQUS "(PartyMon1SpclDef - PartyMon1)"
 BOXMON_STRUCT_LENGTH     EQUS "(PartyMon1End - PartyMon1)"
 PARTYMON_STRUCT_LENGTH   EQUS "(PartyMon1StatsEnd - PartyMon1)"
-REDMON_STRUCT_LENGTH EQU 44
 
 ; apply to MON_FORM
 SHINY_MASK         EQU %10000000
@@ -322,6 +322,17 @@ CAUGHTBALL_MASK   EQU %00011111
 
 MALE   EQU %00000000
 FEMALE EQU %10000000
+
+; indexes into WritePartyMenuTilemap.Jumptable
+	const_def
+	const PLACE_PARTYMON_NICKNAMES
+	const PLACE_PARTYMON_HP_BAR
+	const PLACE_PARTYMON_HP_DIGITS
+	const PLACE_PARTYMON_LEVEL
+	const PLACE_PARTYMON_STATUS
+	const PLACE_PARTYMON_TMHM
+	const PLACE_PARTYMON_EVO
+	const PLACE_PARTYMON_GENDER
 
 const_value SET 1
 	const MONMENU_CUT        ; 1

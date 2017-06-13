@@ -54,9 +54,6 @@ EcruteakShrineOutsideStatueText:
 	done
 
 EcruteakShrineOutside_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $3, $5, 1, ECRUTEAK_SHRINE_INSIDE

@@ -1,16 +1,3 @@
-BORDER_WIDTH   EQU 2
-TEXTBOX_WIDTH  EQU SCREEN_WIDTH
-TEXTBOX_INNERW EQU TEXTBOX_WIDTH - BORDER_WIDTH
-TEXTBOX_HEIGHT EQU 6
-TEXTBOX_INNERH EQU TEXTBOX_HEIGHT - BORDER_WIDTH
-TEXTBOX_X      EQU 0
-TEXTBOX_INNERX EQU TEXTBOX_X + 1
-TEXTBOX_Y      EQU SCREEN_HEIGHT - TEXTBOX_HEIGHT
-TEXTBOX_INNERY EQU TEXTBOX_Y + 2
-
-TEXTBOX_PAL EQU 7
-
-
 ClearBox:: ; fb6
 ; Fill a c*b box at hl with blank tiles.
 
@@ -49,7 +36,7 @@ ClearTileMap:: ; fc8
 ; fdb
 
 ClearScreen:: ; fdb
-	ld a, TEXTBOX_PAL
+	ld a, PAL_BG_TEXT
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
@@ -129,7 +116,7 @@ endr
 rept 2
 	inc c
 endr
-	ld a, TEXTBOX_PAL
+	ld a, PAL_BG_TEXT
 .col
 	push bc
 	push hl
@@ -195,7 +182,6 @@ PlaceNextChar:: ; 1079
 	ld c, l
 	pop hl
 	ret
-	pop de
 
 NextChar:: ; 1083
 	inc de
@@ -411,7 +397,7 @@ Paragraph:: ; 12f2
 	call LoadBlinkingCursor
 
 .linkbattle
-	call Function13b6
+	call Text_WaitBGMap
 	call ButtonSound
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
@@ -431,7 +417,7 @@ LinkButtonSound:: ; 131f
 	call LoadBlinkingCursor
 
 .communication
-	call Function13b6
+	call Text_WaitBGMap
 
 	push de
 	call ButtonSound
@@ -471,7 +457,7 @@ PromptText:: ; 135a
 	call LoadBlinkingCursor
 
 .ok
-	call Function13b6
+	call Text_WaitBGMap
 	call ButtonSound
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -528,7 +514,7 @@ endr
 	ret
 ; 13b6
 
-Function13b6:: ; 13b6
+Text_WaitBGMap:: ; 13b6
 	push bc
 	ld a, [hOAMUpdate]
 	push af
@@ -568,13 +554,6 @@ FarString:: ; 13d4
 	rst Bankswitch
 	ret
 ; 13e0
-
-PokeFluteTerminatorCharacter:: ; 13e0
-	ld hl, .stop
-	ret
-
-.stop	db "@"
-; 13e5
 
 PlaceWholeStringInBoxAtOnce:: ; 13e5
 	ld a, [TextBoxFlags]

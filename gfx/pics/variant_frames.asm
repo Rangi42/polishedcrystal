@@ -46,6 +46,19 @@ ArbokKogaFrames:   INCLUDE "gfx/pics/arbok_koga/frames.asm"
 ArbokAgathaFrames: INCLUDE "gfx/pics/arbok_agatha/frames.asm"
 ArbokArianaFrames: INCLUDE "gfx/pics/arbok_ariana/frames.asm"
 
+MagikarpsFrames:
+MagikarpPlainFrames:   INCLUDE "gfx/pics/magikarp_plain/frames.asm"
+MagikarpSkellyFrames:  INCLUDE "gfx/pics/magikarp_skelly/frames.asm"
+MagikarpCalico1Frames: INCLUDE "gfx/pics/magikarp_calico1/frames.asm"
+MagikarpCalico2Frames: INCLUDE "gfx/pics/magikarp_calico2/frames.asm"
+MagikarpCalico3Frames: INCLUDE "gfx/pics/magikarp_calico3/frames.asm"
+MagikarpTwoToneFrames: INCLUDE "gfx/pics/magikarp_twotone/frames.asm"
+MagikarpOrcaFrames:    INCLUDE "gfx/pics/magikarp_orca/frames.asm"
+MagikarpDapplesFrames: INCLUDE "gfx/pics/magikarp_dapples/frames.asm"
+MagikarpTigerFrames:   INCLUDE "gfx/pics/magikarp_tiger/frames.asm"
+MagikarpZebraFrames:   INCLUDE "gfx/pics/magikarp_zebra/frames.asm"
+MagikarpStripeFrames:  INCLUDE "gfx/pics/magikarp_stripe/frames.asm"
+
 MewtwosFrames:
 MewtwoPlainFrames:   INCLUDE "gfx/pics/mewtwo_plain/frames.asm"
 MewtwoArmoredFrames: INCLUDE "gfx/pics/mewtwo_armored/frames.asm"

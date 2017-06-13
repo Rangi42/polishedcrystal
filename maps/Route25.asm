@@ -251,9 +251,6 @@ Route25SlowpokeText2:
 	done
 
 Route25_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 0
 

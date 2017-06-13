@@ -4,16 +4,10 @@ const_value set 2
 
 Route28FamousSpeechHouse_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw .Trigger, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger:
-	end
 
 Celebrity:
 	faceplayer
@@ -68,9 +62,6 @@ CelebritysPidgeotText:
 	done
 
 Route28FamousSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 1, ROUTE_28

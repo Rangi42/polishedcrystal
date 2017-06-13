@@ -10,6 +10,7 @@ const_value set 2
 	const SHAMOUTICOAST_BLANCHE
 	const SHAMOUTICOAST_SPARK
 	const SHAMOUTICOAST_POKE_BALL
+	const SHAMOUTICOAST_LADY3
 
 ShamoutiCoast_MapScriptHeader:
 .MapTriggers:
@@ -65,15 +66,26 @@ TrainerSwimmerfMarina:
 	end
 
 .SeenText:
-	text "TODO"
+	text "If you were stran-"
+	line "ded on a desert"
+	cont "island, what three"
+
+	para "things would you"
+	line "bring?"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Washed away with-"
+	line "out a paddle!"
 	done
 
 .AfterText:
-	text "TODO"
+	text "If I were stran-"
+	line "ded on a desert"
+	cont "island, I'd take…"
+
+	para "my #mon, of"
+	line "course!"
 	done
 
 TrainerFisherDallas:
@@ -88,18 +100,27 @@ TrainerFisherDallas:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Gah! Not another"
+	line "one!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Huh? Oh, not you--"
+	line "you're fine."
 	done
 
 .AfterText:
-	text "TODO"
+	text "No matter where I"
+	line "fish, I just keep"
+
+	para "reeling in Bottle"
+	line "Caps."
+
+	para "It's driving me"
+	line "nuts!"
 	done
 
-TrainerSightseerfPilar: ; Magby(F) (Antorcha), Cubone(M) (Huesitos), Espeon(F) (Luna), Lanturn(F) (Linterna)
+TrainerSightseerfPilar:
 	trainer EVENT_BEAT_SIGHTSEERF_PILAR, SIGHTSEERF, PILAR, .SeenText, .BeatenText, 0, .Script
 
 .Script:
@@ -217,9 +238,6 @@ ShamoutiCoastStarPiece:
 	itemball STAR_PIECE
 
 ShamoutiCoast_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $f, $16, 1, FIRE_ISLAND
@@ -233,7 +251,7 @@ ShamoutiCoast_MapEventHeader:
 	db 0
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_ARTIST, 9, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerArtistRin, -1
 	person_event SPRITE_SWIMMER_GIRL, 5, 12, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfMarina, -1
 	person_event SPRITE_FISHER, 9, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDallas, -1
@@ -241,7 +259,8 @@ ShamoutiCoast_MapEventHeader:
 	person_event SPRITE_SIGHTSEER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersCyandvi1, -1
 	person_event SPRITE_LADY, 4, 67, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersCyandvi2, -1
 	person_event SPRITE_SWIMMER_GUY, 16, 71, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermAshe, -1
-	person_event SPRITE_CANDELA, 11, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_CANDELA
-	person_event SPRITE_BLANCHE, 7, 54, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_BLANCHE
-	person_event SPRITE_SPARK, 9, 84, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_SPARK
+	person_event SPRITE_CANDELA, 11, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_CANDELA
+	person_event SPRITE_BLANCHE, 7, 53, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_BLANCHE
+	person_event SPRITE_SPARK, 9, 83, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_SPARK
 	person_event SPRITE_BALL_CUT_FRUIT, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ShamoutiCoastStarPiece, EVENT_SHAMOUTI_COAST_STAR_PIECE
+	person_event SPRITE_LADY, -3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

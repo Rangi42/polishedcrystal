@@ -1317,7 +1317,7 @@ BattleBGEffect_21: ; c8761 (32:4761)
 	ld a, [hl]
 	cp d
 	ret nc
-	call Functionc901b
+	call BGEffect_DisplaceLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
@@ -1390,7 +1390,7 @@ BattleBGEffect_Dig: ; c87a7 (32:47a7)
 	dec [hl]
 .skip
 	pop af
-	call Functionc901b
+	call BGEffect_DisplaceLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	inc [hl]
@@ -1522,7 +1522,7 @@ Functionc88a5: ; c88a5 (32:48a5)
 	jr z, .rollout
 .not_rollout
 	pop af
-	jp Functionc900b
+	jp BGEffect_FillLYOverridesBackup
 
 .rollout
 	ld a, [hLYOverrideStart]
@@ -1640,7 +1640,7 @@ BattleBGEffect_26: ; c892a (32:492a)
 	ld a, [hl]
 	ld d, $8
 	call BattleBGEffects_Sine
-	call Functionc900b
+	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
@@ -1690,7 +1690,7 @@ BattleBGEffect_2c: ; c8964 (32:4964)
 	ld e, a
 	pop af
 	add e
-	call Functionc900b
+	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
@@ -1790,7 +1790,7 @@ BattleBGEffect_BounceDown: ; c89ee (32:49ee)
 	ld d, a
 	pop af
 	add d
-	call Functionc901b
+	call BGEffect_DisplaceLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	inc [hl]
@@ -2014,11 +2014,6 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 	db $f8, $90
 	db $fc, $40
 	db $f8, $90
-.DMG_PlayerData:
-	db $e4, $e4
-	db $90, $f8
-	db $40, $fc
-	db $90, $f8
 ; c8be8
 
 BattleBGEffect_RapidFlash: ; c8be8 (32:4be8)
@@ -2140,7 +2135,7 @@ BattleBGEffect_VibrateMon: ; c8c61 (32:4c61)
 	xor $ff
 	inc a
 	ld [hl], a
-	call Functionc900b
+	call BGEffect_FillLYOverridesBackup
 	ret
 
 .finish
@@ -2177,7 +2172,7 @@ BattleBGEffect_WobbleMon: ; c8ca2 (32:4ca2)
 	jr nc, .two
 	ld d, $6
 	call BattleBGEffects_Sine
-	call Functionc900b
+	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
@@ -2487,7 +2482,7 @@ BattleBGEffect_GetNextDMGPal: ; c8eb2 (32:4eb2)
 BattleBGEffects_ClearLYOverrides: ; c8eca (32:4eca)
 	xor a
 BattleBGEffects_SetLYOverrides: ; c8ecb (32:4ecb)
-	ld hl, LYOverrides ; wd100
+	ld hl, LYOverrides ; wListPointer
 	ld e, $99
 .loop1
 	ld [hli], a
@@ -2704,22 +2699,23 @@ BattleBGEffect_WavyScreenFX: ; c8fef (32:4fef)
 	pop bc
 	ret
 
-Functionc900b: ; c900b (32:500b)
+BGEffect_FillLYOverridesBackup: ; c900b (32:500b)
 	push af
-	ld h, $d2
+	ld h, LYOverridesBackup / $100
 	ld a, [hLYOverrideStart]
 	ld l, a
 	ld a, [hLYOverrideEnd]
 	sub l
 	ld d, a
 	pop af
-.asm_c9016
+.loop
 	ld [hli], a
 	dec d
-	jr nz, .asm_c9016
+	jr nz, .loop
 	ret
 
-Functionc901b: ; c901b (32:501b)
+BGEffect_DisplaceLYOverridesBackup: ; c901b (32:501b)
+	; e = a; d = [hLYOverrideEnd] - [hLYOverrideStart] - a
 	push af
 	ld e, a
 	ld a, [hLYOverrideStart]
@@ -2728,20 +2724,20 @@ Functionc901b: ; c901b (32:501b)
 	sub l
 	sub e
 	ld d, a
-	ld h, $d2
+	ld h, LYOverridesBackup / $100
 	ld a, [hLYOverrideStart]
 	ld l, a
 	ld a, $90
-.asm_c902c
+.loop
 	ld [hli], a
 	dec e
-	jr nz, .asm_c902c
+	jr nz, .loop
 	pop af
 	xor $ff
-.asm_c9033
+.loop2
 	ld [hli], a
 	dec d
-	jr nz, .asm_c9033
+	jr nz, .loop2
 	ret
 
 BGEffect_CheckBattleTurn: ; c9038 (32:5038)

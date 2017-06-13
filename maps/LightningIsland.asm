@@ -28,9 +28,6 @@ LightningIslandCrystalScript:
 	end
 
 LightningIsland_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $1d, $5, 3, SHAMOUTI_COAST

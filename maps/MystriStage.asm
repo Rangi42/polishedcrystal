@@ -5,20 +5,10 @@ const_value set 2
 
 MystriStage_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 0
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 MystriStageTrigger1Script:
 	spriteface PLAYER, UP
@@ -292,7 +282,7 @@ MystriStageCynthiaYesText:
 	cont "#mon,"
 
 	para "my heart always"
-	line "begins to race…" 
+	line "begins to race…"
 	done
 
 MystriStageCynthiaWinText:
@@ -378,9 +368,6 @@ MystriStageMovementData_CynthiaStepsUp:
 	step_end
 
 MystriStage_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $11, $6, 1, SINJOH_RUINS
@@ -388,8 +375,8 @@ MystriStage_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $9, $6, $0, MystriStageTrigger1Script, $0, $0
-	xy_trigger 1, $9, $7, $0, MystriStageTrigger2Script, $0, $0
+	xy_trigger 1, $9, $6, MystriStageTrigger1Script
+	xy_trigger 1, $9, $7, MystriStageTrigger2Script
 
 .Signposts:
 	db 0

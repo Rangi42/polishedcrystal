@@ -85,9 +85,6 @@ UnknownText_0x1848c8:
 	done
 
 SproutTower2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $4, $4, 3, SPROUT_TOWER_1F

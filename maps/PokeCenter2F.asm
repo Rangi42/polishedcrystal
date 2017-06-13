@@ -6,24 +6,17 @@ const_value set 2
 PokeCenter2F_MapScriptHeader:
 .MapTriggers:
 	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	dw .Trigger0
+	dw .Trigger1
+	dw .Trigger2
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, Script_ChangePokeCenter2FMap
-
-.Trigger0:
-	end
 
 .Trigger1:
 	priorityjump Script_LeftCableTradeCenter
+.Trigger0:
 	end
 
 .Trigger2:
@@ -49,8 +42,15 @@ Script_BattleRoomClosed:
 Script_ChangePokeCenter2FMap:
 	callasm CheckPokeCenter2FRegion
 	if_equal $0, .done
-	changemap BANK(KantoPokeCenter2F_BlockData), KantoPokeCenter2F_BlockData
+	if_equal $2, .shamouti
+	changemap KantoPokeCenter2F_BlockData
 .done
+	return
+
+.shamouti
+	changemap KantoPokeCenter2F_BlockData
+	changeblock $0, $6, $3c
+	changeblock $2, $0, $4a
 	return
 
 LinkReceptionistScript_Trade:
@@ -230,13 +230,13 @@ PokeCenter2F_CheckGender:
 Script_WalkOutOfLinkTradeRoom:
 	checkflag ENGINE_KRIS_IN_CABLE_CLUB
 	iftrue .Female
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightLooksDown
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
 .Female:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightLooksDown
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepDown
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
@@ -252,13 +252,13 @@ Script_WalkOutOfLinkTradeRoom:
 Script_WalkOutOfLinkBattleRoom:
 	checkflag ENGINE_KRIS_IN_CABLE_CLUB
 	iftrue .Female
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightLooksDown
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
 .Female:
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightLooksDown
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepDown
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
@@ -280,9 +280,6 @@ MapPokeCenter2FSignpost0Script:
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
 	slow_step_up
 	slow_step_left
-	turn_head_right
-	step_end
-
 PokeCenter2FMovementData_ReceptionistLooksRight:
 	turn_head_right
 	step_end
@@ -306,12 +303,6 @@ PokeCenter2FMovementData_PlayerTakesOneStepDown:
 PokeCenter2FMovementData_ReceptionistStepsRightAndDown:
 	slow_step_right
 	slow_step_down
-	step_end
-
-PokeCenter2FMovementData_ReceptionistStepsRightLooksDown:
-	slow_step_up
-	slow_step_left
-	turn_head_right
 	step_end
 
 PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight:
@@ -385,12 +376,6 @@ Text_PleaseComeIn:
 	text "Please come in."
 	prompt
 
-Text_TemporaryStagingInLinkRoom:
-	text "We'll put you in"
-	line "the link room for"
-	cont "the time being."
-	done
-
 Text_CantLinkToThePast:
 	text "You can't link to"
 	line "the past here."
@@ -404,10 +389,6 @@ Text_IncompatibleRooms:
 Text_PleaseComeIn2:
 	text "Please come in."
 	done
-
-Text_PleaseEnter:
-	text "Please enter."
-	prompt
 
 Text_TimeCapsuleClosed:
 	text "I'm sorry--the"
@@ -442,9 +423,6 @@ Text_LikeTheLook:
 	done
 
 PokeCenter2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $0, -1, POKECENTER_2F
@@ -465,18 +443,20 @@ PokeCenter2F_MapEventHeader:
 	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
 
 CheckPokeCenter2FRegion:
-	ld a, [BackupMapGroup]
-	ld b, a
-	ld a, [BackupMapNumber]
-	ld c, a
-	call GetWorldMapLocation
+	call GetBackupLandmark
 	ld hl, ScriptVar
+	cp SHAMOUTI_LANDMARK
+	jr nc, .shamouti
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 .johto
-	ld [hl], 0
+	ld [hl], JOHTO_REGION
 	ret
 
 .kanto
-	ld [hl], 1
+	ld [hl], KANTO_REGION
+	ret
+
+.shamouti
+	ld [hl], ORANGE_REGION
 	ret

@@ -1,88 +1,71 @@
+NUM_INITIAL_OPTIONS EQU 6
+
 SetInitialOptions:
-	call InitInitialOptionsScreen
-	call LoadInitialOptionsScreenPal
-	call LoadInitialOptionsScreenGFX
-	call WaitBGMap2
-	call SetPalettes
-	ld hl, InitialOptionsText
-	call PrintText
-	call FadeToMenu
-	farcall BlankScreen
-	call InitialOptionsMenu
-	ret
-
-InitialOptionsText:
-	text_jump _InitialOptionsText
-	db "@"
-
-InitInitialOptionsScreen: ; 48e14 (12:4e14)
 	ld a, $10
 	ld [MusicFade], a
+
 	xor a ; MUSIC_NONE
 	ld [MusicFadeIDLo], a
 	ld [MusicFadeIDHi], a
 	ld c, 8
 	call DelayFrames
+
 	call ClearBGPalettes
 	call LoadFontsExtra
+
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
+
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
-	ret
 
-LoadInitialOptionsScreenPal: ; 48e47 (12:4e47)
-	ld hl, .Palette
+	ld hl, .BGPalette
 	ld de, UnknBGPals
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
-	farcall ApplyPals
-	ret
-; 48e5c (12:4e5c)
 
-.Palette: ; 48e5c
-	RGB 31, 31, 31
-	RGB 09, 30, 31
-	RGB 01, 11, 31
-	RGB 00, 00, 00
-; 48e64
-
-LoadInitialOptionsScreenGFX: ; 48e64 (12:4e64)
-	ld de, .LightBlueTile
+	ld de, .BGTile
 	ld hl, VTiles2 tile $00
-	lb bc, BANK(.LightBlueTile), 1
+	lb bc, BANK(.BGTile), 1
 	call Get2bpp
-	ret
-; 48e71 (12:4e71)
 
-.LightBlueTile: ; 48e71
-INCBIN "gfx/misc/init_bg.2bpp"
+	farcall ApplyPals
 
-InitialOptionsMenu:
+	call WaitBGMap2
+	call SetPalettes
+
+	ld hl, .InitialOptionsText
+	call PrintText
+
 	ld hl, hInMenu
 	ld a, [hl]
 	push af
 	ld [hl], $1
-	call ClearBGPalettes
+
+;	call ClearBGPalettes
+
 	hlcoord 0, 0
-	ld b, 16
-	ld c, 18
+	ld b, SCREEN_HEIGHT - 2
+	ld c, SCREEN_WIDTH - 2
 	call TextBox
+
 	hlcoord 2, 2
-	ld de, StringInitialOptions
+	ld de, .InitialOptionsString
 	call PlaceString
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
-	call SetPalettes
+
+;	ld b, SCGB_DIPLOMA
+;	call GetSGBLayout
+;	call SetPalettes
+
 	xor a
 	ld [wJumptableIndex], a
 	ld [hJoyPressed], a
-	ld c, $4 ; number of items on the menu minus 1 (for done)
+	ld c, NUM_INITIAL_OPTIONS
 .print_text_loop ; this next will display the settings of each option when the menu is opened
 	push bc
 	xor a
@@ -93,6 +76,7 @@ InitialOptionsMenu:
 	inc [hl]
 	dec c
 	jr nz, .print_text_loop
+
 	xor a
 	ld [wJumptableIndex], a
 	inc a
@@ -124,18 +108,31 @@ InitialOptionsMenu:
 	ret
 ; e4241
 
-StringInitialOptions:
+.InitialOptionsText:
+	text_jump _InitialOptionsText
+	db "@"
+
+.BGPalette:
+	RGB 31, 31, 31
+	RGB 09, 30, 31
+	RGB 01, 11, 31
+	RGB 00, 00, 00
+
+.BGTile:
+INCBIN "gfx/misc/init_bg.2bpp"
+
+.InitialOptionsString:
 	db "Natures<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
 	db "Abilities<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
-	db "Traded #mon<LNBRK>"
-	db "grow faster and<LNBRK>"
-	db "can disobey<LNBRK>"
+	db "Color variation<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
+	db "Perfect IVs<LNBRK>"
+	db "            :<LNBRK>"
+	db "Traded #mon<LNBRK>"
+	db "treat you as OT<LNBRK>"
+	db "            :<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
 	db "            :<LNBRK>"
 	db "<LNBRK>"
@@ -157,6 +154,8 @@ GetInitialOptionPointer: ; e42d6
 .Pointers:
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
+	dw InitialOptions_ColorVariation
+	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
 	dw InitialOptions_NuzlockeMode
 	dw InitialOptions_Done
@@ -164,7 +163,7 @@ GetInitialOptionPointer: ; e42d6
 InitialOptions_Natures:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit NATURES_OPT, [hl]
 	jr z, .SetNo
@@ -188,7 +187,7 @@ InitialOptions_Natures:
 InitialOptions_Abilities:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit ABILITIES_OPT, [hl]
 	jr z, .SetNo
@@ -204,7 +203,55 @@ InitialOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 6
+	hlcoord 15, 5
+	call PlaceString
+	and a
+	ret
+
+InitialOptions_ColorVariation:
+	ld hl, InitialOptions
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit COLOR_VARY_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit COLOR_VARY_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res COLOR_VARY_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set COLOR_VARY_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 7
+	call PlaceString
+	and a
+	ret
+
+InitialOptions_PerfectIVs:
+	ld hl, InitialOptions
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit PERFECT_IVS_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit PERFECT_IVS_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res PERFECT_IVS_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set PERFECT_IVS_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 9
 	call PlaceString
 	and a
 	ret
@@ -212,23 +259,23 @@ InitialOptions_Abilities:
 InitialOptions_TradedMon:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
-	bit TRADED_BEHAVIOR, [hl]
+	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetNo
 	jr .SetYes
 .Toggle
-	bit TRADED_BEHAVIOR, [hl]
+	bit TRADED_AS_OT_OPT, [hl]
 	jr z, .SetYes
 .SetNo:
-	res TRADED_BEHAVIOR, [hl]
+	res TRADED_AS_OT_OPT, [hl]
 	ld de, NoString
 	jr .Display
 .SetYes:
-	set TRADED_BEHAVIOR, [hl]
+	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 11
+	hlcoord 15, 12
 	call PlaceString
 	and a
 	ret
@@ -236,7 +283,7 @@ InitialOptions_TradedMon:
 InitialOptions_NuzlockeMode:
 	ld hl, InitialOptions
 	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT
+	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
 	bit NUZLOCKE_MODE, [hl]
 	jr z, .SetNo
@@ -259,7 +306,7 @@ InitialOptions_NuzlockeMode:
 
 InitialOptions_Done:
 	ld hl, InitialOptions
-	res RESET_EGO, [hl]
+	res RESET_INIT_OPTS, [hl]
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Exit
@@ -287,7 +334,7 @@ InitialOptionsControl: ; e452a
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-	cp $4 ; maximum number of items in option menu
+	cp NUM_INITIAL_OPTIONS
 	jr nz, .Increase
 	ld [hl], -1
 .Increase:
@@ -299,7 +346,7 @@ InitialOptionsControl: ; e452a
 	ld a, [hl]
 	and a
 	jr nz, .Decrease
-	ld [hl], $5 ; number of option items + 1
+	ld [hl], NUM_INITIAL_OPTIONS + 1
 .Decrease:
 	dec [hl]
 	scf
@@ -309,7 +356,7 @@ InitialOptionsControl: ; e452a
 InitialOptions_UpdateCursorPosition: ; e455c
 	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
-	ld c, $10
+	ld c, SCREEN_HEIGHT - 2
 .loop
 	ld [hl], " "
 	add hl, de
@@ -331,4 +378,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 2, 5, 8, 13, 16
+	db 2, 4, 6, 8, 10, 13, 16

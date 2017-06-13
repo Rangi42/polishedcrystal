@@ -257,7 +257,7 @@ TrainerPokemaniacClive:
 
 	para "Leave some rare"
 	line "#mon for me,"
-	cont "okay?"
+	cont "OK?"
 	done
 
 TrainerHex_maniacMatilda:
@@ -388,9 +388,6 @@ MurkySwampHiddenTinyMushroom:
 	dwb EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM, TINYMUSHROOM
 
 MurkySwamp_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $23, $7, 1, STORMY_BEACH

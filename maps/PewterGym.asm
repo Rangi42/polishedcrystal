@@ -261,9 +261,6 @@ PewterGymGuyWinText:
 	done
 
 PewterGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $d, $4, 2, PEWTER_CITY

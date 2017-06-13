@@ -42,9 +42,6 @@ MewtwoText:
 	done
 
 CeruleanCaveB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $7, $5, 5, CERULEAN_CAVE_1F

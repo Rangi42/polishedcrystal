@@ -319,7 +319,7 @@ Text_GoldenrodHarborTutorQuestion:
 	done
 
 Text_GoldenrodHarborTutorRefused:
-	text "Okay then."
+	text "OK then."
 	done
 
 Text_GoldenrodHarborTutorClear:
@@ -498,9 +498,6 @@ GoldenrodHarborCrateSignText:
 	done
 
 GoldenrodHarbor_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $10, $1f, 1, GOLDENROD_HARBOR_GATE

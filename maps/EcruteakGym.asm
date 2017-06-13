@@ -9,20 +9,14 @@ const_value set 2
 
 EcruteakGym_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x99d53, 0
-	dw UnknownScript_0x99d57, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x99d53:
+.Trigger0:
 	priorityjump UnknownScript_0x99dc6
-	end
-
-UnknownScript_0x99d57:
 	end
 
 MortyScript_0x99d58:
@@ -378,9 +372,6 @@ UnknownText_0x9a49c:
 	done
 
 EcruteakGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 33
 	warp_def $11, $4, 10, ECRUTEAK_CITY

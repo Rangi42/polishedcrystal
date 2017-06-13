@@ -10,19 +10,15 @@ const_value set 2
 OlivinePort_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x748ac, 0
-	dw UnknownScript_0x748ad, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 0
 
-UnknownScript_0x748ac:
-	end
-
-UnknownScript_0x748ad:
+.Trigger1:
 	priorityjump UnknownScript_0x748b1
+.Trigger0:
 	end
 
 UnknownScript_0x748b1:
@@ -389,9 +385,6 @@ UnknownText_0x74cd7:
 	done
 
 OlivinePort_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $b, 5, OLIVINE_PORT_PASSAGE
@@ -399,7 +392,7 @@ OlivinePort_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $f, $7, $0, UnknownScript_0x7491f, $0, $0
+	xy_trigger 0, $f, $7, UnknownScript_0x7491f
 
 .Signposts:
 	db 1

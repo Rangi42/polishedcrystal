@@ -5,16 +5,10 @@ const_value set 2
 
 TrainerHouseB1F_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw Trigger0, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-Trigger0:
-	end
 
 TrainerHouseReceptionistScript:
 	spriteface PLAYER, UP
@@ -189,16 +183,13 @@ TrainerHouseB1FEarnedBattlePointText:
 	db "@"
 
 TrainerHouseB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $4, $9, 3, TRAINER_HOUSE_1F
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $3, $7, $0, TrainerHouseReceptionistScript, $0, $0
+	xy_trigger 0, $3, $7, TrainerHouseReceptionistScript
 
 .Signposts:
 	db 0

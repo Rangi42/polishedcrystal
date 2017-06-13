@@ -6,22 +6,16 @@ const_value set 2
 VermilionPort_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.Trigger0:
-	end
 
 .Trigger1:
 	priorityjump UnknownScript_0x74da6
+.Trigger0:
 	end
 
 .FlyPoint:
@@ -304,9 +298,6 @@ UnknownText_0x750a6:
 	done
 
 VermilionPort_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $5, $9, 5, VERMILION_PORT_PASSAGE
@@ -314,7 +305,7 @@ VermilionPort_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $b, $7, $0, UnknownScript_0x74e20, $0, $0
+	xy_trigger 0, $b, $7, UnknownScript_0x74e20
 
 .Signposts:
 	db 1

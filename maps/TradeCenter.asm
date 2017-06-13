@@ -4,24 +4,15 @@ const_value set 2
 
 TradeCenter_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, TradeCenter_SetWhichChris
 
 .Trigger0:
 	priorityjump TradeCenter_Initialize
-	end
-
-.Trigger1:
 	end
 
 TradeCenter_SetWhichChris:
@@ -46,22 +37,7 @@ MapTradeCenterSignpost1Script:
 	newloadmap MAPSETUP_LINKRETURN
 	end
 
-ChrisScript_0x19340b:
-	opentext
-	writetext .FriendReadyText
-	waitbutton
-	closetext
-	end
-
-.FriendReadyText:
-	text "Your friend is"
-	line "ready."
-	done
-
 TradeCenter_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $4, 2, POKECENTER_2F

@@ -16,32 +16,15 @@ const_value set 2
 
 TeamRocketBaseB3F_MapScriptHeader:
 .MapTriggers:
-	db 4
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
-	maptrigger .Trigger3
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .CheckGiovanniDoor
 
 .Trigger0:
 	priorityjump LanceGetPasswordScript
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
-	end
-
-.Trigger3:
 	end
 
 .CheckGiovanniDoor:
@@ -572,9 +555,6 @@ UnknownText_0x6e9a3:
 	done
 
 TeamRocketBaseB3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $2, $3, 2, TEAM_ROCKET_BASE_B2F
@@ -584,9 +564,9 @@ TeamRocketBaseB3F_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 2, $8, $a, $0, UnknownScript_0x6e04b, $0, $0
-	xy_trigger 2, $8, $b, $0, UnknownScript_0x6e052, $0, $0
-	xy_trigger 1, $a, $8, $0, RocketBaseRival, $0, $0
+	xy_trigger 2, $8, $a, UnknownScript_0x6e04b
+	xy_trigger 2, $8, $b, UnknownScript_0x6e052
+	xy_trigger 1, $a, $8, RocketBaseRival
 
 .Signposts:
 	db 10

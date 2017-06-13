@@ -21,9 +21,6 @@ UnknownText_0x192034:
 	done
 
 VermilionHouseDiglettsCaveSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 6, VERMILION_CITY

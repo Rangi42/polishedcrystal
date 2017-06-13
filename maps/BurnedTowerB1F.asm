@@ -11,24 +11,11 @@ const_value set 2
 
 BurnedTowerB1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x18615e, 0
-	dw UnknownScript_0x18615f, 0
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, BurnedTowerB1FLadderCallback
-
-UnknownScript_0x18615e:
-	end
-
-UnknownScript_0x18615f:
-	end
 
 BurnedTowerB1FLadderCallback:
 	checkevent EVENT_RELEASED_THE_BEASTS
@@ -158,11 +145,6 @@ BurnedTowerSuicuneMovement2:
 	fast_jump_step_right
 	step_end
 
-MovementData_0x18624f:
-	fix_facing
-	big_step_down
-	step_end
-
 BurnedTowerSuicuneMovement3:
 	fix_facing
 	big_step_up
@@ -235,9 +217,6 @@ BurnedTowerB1FEusineText:
 	done
 
 BurnedTowerB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $9, $a, 3, BURNED_TOWER_1F
@@ -249,7 +228,7 @@ BurnedTowerB1F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $6, $a, $0, ReleaseTheBeasts, $0, $0
+	xy_trigger 0, $6, $a, ReleaseTheBeasts
 
 .Signposts:
 	db 0

@@ -120,20 +120,6 @@ CianwoodGymGuyWinText:
 	cont "looking at you!"
 	done
 
-UnknownText_0x9ddf2:
-	text "Don't you get the"
-	line "urge to show off"
-
-	para "your #mon to"
-	line "friends?"
-
-	para "I wish I could"
-	line "show the #mon I"
-
-	para "raised to my pal"
-	line "in Violet."
-	done
-
 UnknownText_0x9ded7:
 	text "I love showing off"
 	line "the #mon that"
@@ -176,9 +162,6 @@ PokemonJournalChuckText:
 	done
 
 CianwoodPokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 3, CIANWOOD_CITY

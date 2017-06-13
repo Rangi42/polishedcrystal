@@ -33,9 +33,6 @@ UnknownText_0x599ad:
 	done
 
 RuinsofAlphKabutoItemRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $9, $3, 5, RUINS_OF_ALPH_KABUTO_CHAMBER

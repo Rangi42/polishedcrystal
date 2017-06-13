@@ -12,24 +12,11 @@ const_value set 2
 
 Route36_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .ArthurCallback
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .ArthurCallback:
 	checkcode VAR_WEEKDAY
@@ -670,9 +657,6 @@ Route36TrainerTips2Text:
 	done
 
 Route36_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 6
 	warp_def $8, $12, 3, ROUTE_36_NATIONAL_PARK_GATE
@@ -684,8 +668,8 @@ Route36_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 1, $7, $14, $0, Route36SuicuneScript, $0, $0
-	xy_trigger 1, $7, $16, $0, Route36SuicuneScript, $0, $0
+	xy_trigger 1, $7, $14, Route36SuicuneScript
+	xy_trigger 1, $7, $16, Route36SuicuneScript
 
 .Signposts:
 	db 4
@@ -704,5 +688,5 @@ Route36_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36FruitTree, -1
 	person_event SPRITE_YOUNGSTER, 6, 46, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
 	person_event SPRITE_LASS, 12, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
-	person_event SPRITE_TWIN, 4, 47, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
+	person_event SPRITE_TWIN, 5, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 	person_event SPRITE_SUICUNE, 6, 21, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36

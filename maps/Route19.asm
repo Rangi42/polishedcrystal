@@ -19,9 +19,6 @@ Route19_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .ClearRocks
 
 .ClearRocks:
@@ -295,9 +292,6 @@ CarefulSwimmingSignText:
 	done
 
 Route19_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $1, $7, 3, ROUTE_19_FUCHSIA_GATE

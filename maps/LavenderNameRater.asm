@@ -3,16 +3,10 @@ const_value set 2
 
 LavenderNameRater_MapScriptHeader:
 .MapTriggers:
-	db 1
-
-	; triggers
-	dw UnknownScript_0x7eaf1, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x7eaf1:
-	end
 
 LavenderNameRater:
 	faceplayer
@@ -23,9 +17,6 @@ LavenderNameRater:
 	end
 
 LavenderNameRater_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 4, LAVENDER_TOWN

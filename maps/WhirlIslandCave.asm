@@ -6,9 +6,6 @@ WhirlIslandCave_MapScriptHeader:
 	db 0
 
 WhirlIslandCave_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $2b, $25, 9, WHIRL_ISLAND_B1F

@@ -50,9 +50,6 @@ CeladonMansion2FSignText:
 	done
 
 CeladonMansion2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $0, 4, CELADON_MANSION_1F

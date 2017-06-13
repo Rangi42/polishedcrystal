@@ -12,9 +12,6 @@ UnionCaveB2F_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .Lapras
 
 .Lapras:
@@ -145,9 +142,6 @@ UnknownText_0x5a52b:
 	done
 
 UnionCaveB2F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $3, $5, 2, UNION_CAVE_B1F_SOUTH

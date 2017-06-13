@@ -11,9 +11,6 @@ KurtsHouse_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
 UnknownScript_0x18e154:
@@ -431,7 +428,7 @@ KurtsHouseCelebiStatue:
 	jumptext KurtsHouseCelebiStatueText
 
 PokemonJournalProfWestwoodScript:
-	setflag PROF_WESTWOOD_JOURNAL
+	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumptext PokemonJournalProfWestwoodText
 
 KurtsHouseRadio:
@@ -699,9 +696,6 @@ PokemonJournalProfWestwoodText:
 	done
 
 KurtsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $3, 4, AZALEA_TOWN

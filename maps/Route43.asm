@@ -18,9 +18,6 @@ Route43_MapScriptHeader:
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 
@@ -430,11 +427,9 @@ PokemaniacRonBeatenText:
 	done
 
 UnknownText_0x19d3f8:
-	text "It's okay for"
-	line "people to like"
-
-	para "different types"
-	line "of #mon."
+	text "It's OK for people"
+	line "to like different"
+	cont "types of #mon."
 
 	para "#mon isn't just"
 	line "about having the"
@@ -606,9 +601,6 @@ Route43TrainerTipsText:
 	done
 
 Route43_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $33, $9, 1, ROUTE_43_MAHOGANY_GATE

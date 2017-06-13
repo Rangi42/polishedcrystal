@@ -368,9 +368,6 @@ UnknownText_0x1a6ec2:
 	done
 
 Route41_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $d, 1, WHIRL_ISLAND_NW

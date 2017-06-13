@@ -246,9 +246,6 @@ UnknownText_0x5f00d:
 	done
 
 RadioTower4F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $0, $0, 1, RADIO_TOWER_5F

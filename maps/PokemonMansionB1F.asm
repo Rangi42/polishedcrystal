@@ -172,9 +172,6 @@ PokemonMansionB1FFlowerPotText:
 	done
 
 PokemonMansionB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $18, $19, 3, POKEMON_MANSION_1F

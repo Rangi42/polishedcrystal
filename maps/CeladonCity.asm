@@ -19,8 +19,6 @@ CeladonCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -352,9 +350,6 @@ CeladonCityTrainerTipsText:
 	done
 
 CeladonCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 16
 	warp_def $9, $8, 1, CELADON_DEPT_STORE_1F

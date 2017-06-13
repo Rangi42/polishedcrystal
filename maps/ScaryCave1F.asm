@@ -419,9 +419,6 @@ ScaryCave1FHiddenPearl:
 	dwb EVENT_SCARY_CAVE_1F_HIDDEN_PEARL, PEARL
 
 ScaryCave1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $1f, $21, 1, URAGA_CHANNEL_EAST

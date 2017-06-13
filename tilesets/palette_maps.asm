@@ -114,3 +114,6 @@ INCLUDE "tilesets/museum_palette_map.asm"
 
 Tileset39PalMap:
 INCLUDE "tilesets/hotel_palette_map.asm"
+
+Tileset41PalMap:
+INCLUDE "tilesets/valencia_palette_map.asm"

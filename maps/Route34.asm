@@ -17,24 +17,11 @@ const_value set 2
 
 Route34_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, .EggCheckCallback
-
-.Trigger0:
-	end
-
-.Trigger1:
-	end
 
 .EggCheckCallback:
 	clearevent EVENT_BEAT_BREEDER_JULIE
@@ -171,7 +158,7 @@ Route34LyraTrigger2:
 	special FadeOutPalettes
 	pause 15
 	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_SWIMMER_GIRL
-	warpfacing RIGHT, DAYCARE, $0, $6
+	warpfacing RIGHT, DAYCARE, $0, $4
 	end
 
 DayCareManScript_Outside:
@@ -967,9 +954,6 @@ DayCareSignText:
 	done
 
 Route34_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 5
 	warp_def $25, $d, 1, ROUTE_34_ILEX_FOREST_GATE
@@ -980,9 +964,9 @@ Route34_MapEventHeader:
 
 .XYTriggers:
 	db 3
-	xy_trigger 1, $11, $8, $0, Route34LyraTrigger1, $0, $0
-	xy_trigger 1, $11, $9, $0, Route34LyraTrigger2, $0, $0
-	xy_trigger 1, $11, $a, $0, Route34LyraTrigger3, $0, $0
+	xy_trigger 1, $11, $8, Route34LyraTrigger1
+	xy_trigger 1, $11, $9, Route34LyraTrigger2
+	xy_trigger 1, $11, $a, Route34LyraTrigger3
 
 .Signposts:
 	db 5

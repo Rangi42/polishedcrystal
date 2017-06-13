@@ -15,20 +15,10 @@ const_value set 2
 
 FastShipB1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x7673a, 0
-	dw UnknownScript_0x7673b, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x7673a:
-	end
-
-UnknownScript_0x7673b:
-	end
 
 UnknownScript_0x7673c:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
@@ -482,9 +472,6 @@ UnknownText_0x76eb6:
 	done
 
 FastShipB1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $9, $1, 11, FAST_SHIP_1F
@@ -492,8 +479,8 @@ FastShipB1F_MapEventHeader:
 
 .XYTriggers:
 	db 2
-	xy_trigger 0, $5, $1a, $0, UnknownScript_0x7673c, $0, $0
-	xy_trigger 0, $5, $1b, $0, UnknownScript_0x76751, $0, $0
+	xy_trigger 0, $5, $1a, UnknownScript_0x7673c
+	xy_trigger 0, $5, $1b, UnknownScript_0x76751
 
 .Signposts:
 	db 0

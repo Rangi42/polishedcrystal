@@ -9,28 +9,15 @@ const_value set 2
 
 BurnedTower1F_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, .HoleAndLadder
 
 .Trigger0:
 	priorityjump .EusineTrigger
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
 	end
 
 .HoleAndLadder:
@@ -347,9 +334,6 @@ FirebreatherNedAfterText:
 	done
 
 BurnedTower1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 14
 	warp_def $f, $7, 13, ECRUTEAK_CITY
@@ -369,7 +353,7 @@ BurnedTower1F_MapEventHeader:
 
 .XYTriggers:
 	db 1
-	xy_trigger 1, $9, $9, $0, BurnedTowerRivalBattleScript, $0, $0
+	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
 
 .Signposts:
 	db 2

@@ -45,9 +45,6 @@ SaffronOrreSpeechHouseCooltrainerMText:
 	done
 
 SaffronOrreSpeechHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 17, SAFFRON_CITY

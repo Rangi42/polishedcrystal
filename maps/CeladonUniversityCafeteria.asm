@@ -328,9 +328,6 @@ CeladonUniversityCafeteriaSign:
 	done
 
 CeladonUniversityCafeteria_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $d, 2, CELADON_UNIVERSITY_2F

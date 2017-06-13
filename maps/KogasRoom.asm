@@ -3,24 +3,15 @@ const_value set 2
 
 KogasRoom_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x180728, 0
-	dw UnknownScript_0x18072c, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x18072d
 
-UnknownScript_0x180728:
+.Trigger0:
 	priorityjump UnknownScript_0x180742
-	end
-
-UnknownScript_0x18072c:
 	end
 
 UnknownScript_0x18072d:
@@ -182,9 +173,6 @@ KogaAfterRematchText:
 	done
 
 KogasRoom_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $11, $4, 2, WILLS_ROOM

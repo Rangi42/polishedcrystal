@@ -15,6 +15,9 @@ ElmsWife:
 ElmsSon:
 	jumptextfaceplayer ElmsSonText
 
+ElmsHouseFridge:
+	jumptext ElmsHouseFridgeText
+
 ElmsHousePC:
 	jumptext ElmsHousePCText
 
@@ -45,6 +48,12 @@ ElmsSonText:
 	cont "professor!"
 	done
 
+ElmsHouseFridgeText:
+	text "There's some food"
+	line "here. This must be"
+	cont "for #mon."
+	done
+
 ElmsHousePCText:
 	text "#mon. Where do"
 	line "they come from? "
@@ -70,9 +79,6 @@ ElmsHousePCText:
 	done
 
 ElmsHouse_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $4, $7, 5, NEW_BARK_TOWN
@@ -82,7 +88,8 @@ ElmsHouse_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 3
+	signpost 1, 0, SIGNPOST_READ, ElmsHouseFridge
 	signpost 1, 6, SIGNPOST_READ, ElmsHousePC
 	signpost 1, 7, SIGNPOST_READ, ElmsHouseBookshelf
 

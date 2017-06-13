@@ -12,8 +12,6 @@ FuchsiaCity_MapScriptHeader:
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 
 .FlyPoint:
@@ -185,9 +183,6 @@ FuchsiaCityCarefulSwimmingSignText:
 	done
 
 FuchsiaCity_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 10
 	warp_def $d, $5, 2, FUCHSIA_MART

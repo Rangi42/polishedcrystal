@@ -225,9 +225,6 @@ UnknownText_0x5cc1d:
 	done
 
 NationalParkBugContest_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $12, $23, 1, ROUTE_36_NATIONAL_PARK_GATE

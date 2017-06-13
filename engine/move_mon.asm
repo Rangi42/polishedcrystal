@@ -185,11 +185,19 @@ endr
 	ld [DVAndPersonalityBuffer + 2], a
 
 ; Random nature from 0 to 24
+; This overwrites the base data struct, so reload it afterwards
+	ld a, [CurSpecies]
+	push af
 	ld a, [PartyMon1Ability]
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
 	call GetAbility
+	pop af
+	push bc
+	ld [CurSpecies], a
+	call GetBaseData
+	pop bc
 	ld a, b
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
@@ -275,8 +283,10 @@ endr
 	call GetFarByte
 	pop bc
 	pop hl
+	ld c, a
+	ld a, b
 ; Ratios below the value are female, and vice-versa.
-	cp b
+	cp c
 	ld a, FEMALE
 	jr c, .Female
 	xor a ; ld a, MALE
@@ -561,8 +571,8 @@ SentGetPkmnIntoFromBox: ; db3f
 	ld hl, wBreedMon1Species
 	jr z, .breedmon
 
-    ; we want to sent a Pkmn into the Box
-    ; so check if there's enough space
+	; we want to sent a Pkmn into the Box
+	; so check if there's enough space
 	ld hl, sBoxCount
 	ld a, [hl]
 	cp MONS_PER_BOX
@@ -763,7 +773,7 @@ SentGetPkmnIntoFromBox: ; db3f
 	ld a, [sBoxCount]
 	dec a
 	ld b, a
-	call Functiondcb6
+	call RestorePPofDepositedPokemon
 .CloseSRAM_And_ClearCarryFlag:
 	call CloseSRAM
 	and a
@@ -776,7 +786,7 @@ CloseSRAM_And_SetCarryFlag: ; dcb1
 	ret
 ; dcb6
 
-Functiondcb6: ; dcb6
+RestorePPofDepositedPokemon: ; dcb6
 	ld a, b
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
@@ -805,10 +815,10 @@ Functiondcb6: ; dcb6
 	ld a, [MonType]
 	push af
 	ld b, 0
-.asm_dcec
+.loop
 	ld a, [hli]
 	and a
-	jr z, .asm_dd18
+	jr z, .done
 	ld [TempMonMoves], a
 	ld a, BOXMON
 	ld [MonType], a
@@ -831,9 +841,9 @@ Functiondcb6: ; dcb6
 	inc b
 	ld a, b
 	cp NUM_MOVES
-	jr c, .asm_dcec
+	jr c, .loop
 
-.asm_dd18
+.done
 	pop af
 	ld [MonType], a
 	pop af
@@ -1110,6 +1120,8 @@ SentPkmnIntoBox: ; de6e
 	inc de
 	ld [de], a
 	inc de
+	ld [de], a
+	inc de
 	ld a, [CurPartyLevel]
 	ld [de], a
 	ld a, [CurPartySpecies]
@@ -1134,7 +1146,7 @@ SentPkmnIntoBox: ; de6e
 	call CopyBytes
 
 	ld b, 0
-	call Functiondcb6
+	call RestorePPofDepositedPokemon
 
 	call CloseSRAM
 	scf
@@ -1550,6 +1562,10 @@ CalcPkmnStatC: ; e17b
 	ld bc, MON_DVS - (MON_EVS - 1)
 	add hl, bc ; hl points to DVs
 	pop bc
+	ld a, [InitialOptions]
+	bit PERFECT_IVS_OPT, a
+	ld a, $f
+	jr nz, .GotDV
 	ld a, c
 	cp STAT_ATK
 	jr z, .Attack
@@ -1884,6 +1900,8 @@ GivePoke:: ; e277
 	ld [hli], a
 	ld [hl], 01001 % $100 ; ld a, $e9
 	pop bc
+	ld a, POKE_BALL
+	ld c, a
 	farcall SetGiftPartyMonCaughtData
 	jr .skip_nickname
 
@@ -1902,6 +1920,8 @@ GivePoke:: ; e277
 	ld a, [ScriptBank]
 	call GetFarByte
 	ld b, a
+	ld a, POKE_BALL
+	ld c, a
 	ld hl, sBoxMon1ID
 	call Random
 	ld [hli], a

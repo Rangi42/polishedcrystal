@@ -8,20 +8,14 @@ const_value set 2
 
 EcruteakPokeCenter1F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump .BillAbandonsTimeCapsule
-	end
-
-.Trigger1:
 	end
 
 .BillAbandonsTimeCapsule:
@@ -60,6 +54,8 @@ EcruteakPokeCenter1FBillScript:
 	waitsfx
 	givepoke EEVEE, 5
 	givepokeitem GiftEeveeMail
+	writebyte GREAT_BALL
+	special SetLastPartyMonBall
 	setevent EVENT_GOT_EEVEE
 	writetext UnknownText_0x54dc1
 	waitbutton
@@ -331,9 +327,6 @@ PokemonJournalMortyText:
 	done
 
 EcruteakPokeCenter1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $5, 6, ECRUTEAK_CITY

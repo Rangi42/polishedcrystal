@@ -4,30 +4,16 @@ const_value set 2
 
 Colosseum_MapScriptHeader:
 .MapTriggers:
-	db 3
-
-	; triggers
-	maptrigger .Trigger0
-	maptrigger .Trigger1
-	maptrigger .Trigger2
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 2
-
-	; callbacks
-
 	dbw MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
-
 	dbw MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
 
 .Trigger0:
 	priorityjump ColosseumScript_Initialize
-	end
-
-.Trigger1:
-	end
-
-.Trigger2:
 	end
 
 ColosseumScript_SetWhichChris:
@@ -69,9 +55,6 @@ ChrisScript_0x193499:
 	done
 
 Colosseum_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $4, 3, POKECENTER_2F

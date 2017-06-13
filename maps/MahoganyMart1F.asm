@@ -8,23 +8,16 @@ const_value set 2
 MahoganyMart1F_MapScriptHeader:
 .MapTriggers:
 	db 2
-
-	; triggers
-	dw UnknownScript_0x6c356, 0
-	dw UnknownScript_0x6c357, 0
+	dw .Trigger0
+	dw .Trigger1
 
 .MapCallbacks:
 	db 1
-
-	; callbacks
-
 	dbw MAPCALLBACK_TILES, UnknownScript_0x6c35b
 
-UnknownScript_0x6c356:
-	end
-
-UnknownScript_0x6c357:
+.Trigger1:
 	priorityjump UnknownScript_0x6c38f
+.Trigger0:
 	end
 
 UnknownScript_0x6c35b:
@@ -161,16 +154,6 @@ MovementData_0x6c412:
 	slow_step_right
 	step_end
 
-UnknownText_0x6c414:
-	text "Hello, kiddo!"
-
-	para "How would you like"
-	line "some RageCandyBar?"
-
-	para "It's the thing to"
-	line "eat in Mahogany!"
-	done
-
 UnknownText_0x6c46b:
 	text "Arrgh… You found"
 	line "the secret stair-"
@@ -226,9 +209,6 @@ UnknownText_0x6c5ba:
 	done
 
 MahoganyMart1F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 3
 	warp_def $7, $3, 1, MAHOGANY_TOWN

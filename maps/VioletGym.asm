@@ -7,20 +7,14 @@ const_value set 2
 
 VioletGym_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw .Trigger0, 0
-	dw .Trigger1, 0
+	db 1
+	dw .Trigger0
 
 .MapCallbacks:
 	db 0
 
 .Trigger0:
 	priorityjump VioletGymFalknerAwayScript
-	end
-
-.Trigger1:
 	end
 
 VioletGymFalknerAwayScript:
@@ -313,9 +307,6 @@ VioletGymGuyFalknerAwayText:
 	done
 
 VioletGym_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $f, $4, 2, VIOLET_CITY

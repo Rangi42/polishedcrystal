@@ -112,9 +112,6 @@ QuietCaveB3FHiddenMaxRevive
 	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 QuietCaveB3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 4
 	warp_def $1f, $8, 5, QUIET_CAVE_B2F ; hole

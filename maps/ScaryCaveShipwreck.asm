@@ -12,9 +12,6 @@ ScaryCaveShipwreckRareBone:
 	itemball RARE_BONE
 
 ScaryCaveShipwreck_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $9, $5, 5, SCARY_CAVE_1F

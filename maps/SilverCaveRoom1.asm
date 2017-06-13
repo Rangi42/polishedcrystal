@@ -32,9 +32,6 @@ SilverCaveRoom1HiddenUltraBall:
 
 
 SilverCaveRoom1_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $21, $9, 2, SILVER_CAVE_OUTSIDE

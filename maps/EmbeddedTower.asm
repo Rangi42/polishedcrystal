@@ -247,9 +247,6 @@ EmbeddedTowerSteven2AfterText:
 	done
 
 EmbeddedTower_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $17, $a, 6, ROUTE_47

@@ -40,7 +40,7 @@ Pack: ; 10000
 	dw .TMHMPocketMenu     ;  8
 	dw .InitBerriesPocket  ;  9
 	dw .BerriesPocketMenu  ; 10
-	dw .InitKeyItemsPocket ; 11 
+	dw .InitKeyItemsPocket ; 11
 	dw .KeyItemsPocketMenu ; 12
 	dw Pack_QuitNoScript   ; 13
 	dw Pack_QuitRunScript  ; 14
@@ -1801,7 +1801,6 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-PackTopRowGFX:
 INCBIN "gfx/misc/pack_top_row.2bpp"
 PackLeftColumnGFX:
 INCBIN "gfx/misc/pack_left_column.2bpp"

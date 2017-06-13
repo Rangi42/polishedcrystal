@@ -44,9 +44,6 @@ UnknownText_0x9b61a:
 	done
 
 ViridianMart_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $7, $2, 4, VIRIDIAN_CITY

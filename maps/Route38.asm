@@ -473,9 +473,6 @@ Route38TrainerTipsText:
 	done
 
 Route38_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $8, $23, 1, ROUTE_38_ECRUTEAK_GATE

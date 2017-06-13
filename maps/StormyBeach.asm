@@ -171,9 +171,6 @@ StormyBeachHiddenStardust:
 	dwb EVENT_STORMY_BEACH_HIDDEN_STARDUST, STARDUST
 
 StormyBeach_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 2
 	warp_def $4, $1e, 1, MURKY_SWAMP

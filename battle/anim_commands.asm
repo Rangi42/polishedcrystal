@@ -108,7 +108,7 @@ RunBattleAnimScript: ; cc163
 	call RunBattleAnimCommand
 	call _ExecuteBGEffects
 	call BattleAnim_UpdateOAM_All
-	call Function3b0c
+	call PushLYOverrides
 	call BattleAnimRequestPals
 
 ; Speed up Rollout's animation.
@@ -359,7 +359,7 @@ BattleAnimCommands:: ; cc2a4 (33:42a4)
 	dw BattleAnimCmd_EB ; dummy
 	dw BattleAnimCmd_EC ; dummy
 	dw BattleAnimCmd_ED ; dummy
-	dw BattleAnimCmd_JumpAnd
+	dw BattleAnimCmd_IfParamAnd
 	dw BattleAnimCmd_JumpUntil
 	dw BattleAnimCmd_BGEffect
 	dw BattleAnimCmd_BGP
@@ -369,10 +369,10 @@ BattleAnimCommands:: ; cc2a4 (33:42a4)
 	dw BattleAnimCmd_F5
 	dw BattleAnimCmd_F6
 	dw BattleAnimCmd_F7
-	dw BattleAnimCmd_JumpIf
+	dw BattleAnimCmd_IfParamEqual
 	dw BattleAnimCmd_SetVar
 	dw BattleAnimCmd_IncVar
-	dw BattleAnimCmd_JumpVar
+	dw BattleAnimCmd_IfVarEqual
 	dw BattleAnimCmd_Jump
 	dw BattleAnimCmd_Loop
 	dw BattleAnimCmd_Call
@@ -512,7 +512,7 @@ BattleAnimCmd_IncVar: ; cc3ad (33:43ad)
 	inc [hl]
 	ret
 
-BattleAnimCmd_JumpVar: ; cc3b2 (33:43b2)
+BattleAnimCmd_IfVarEqual: ; cc3b2 (33:43b2)
 	call GetBattleAnimByte
 	ld hl, BattleAnimVar
 	cp [hl]
@@ -540,7 +540,7 @@ BattleAnimCmd_JumpVar: ; cc3b2 (33:43b2)
 	ld [hl], d
 	ret
 
-BattleAnimCmd_JumpIf: ; cc3d6 (33:43d6)
+BattleAnimCmd_IfParamEqual: ; cc3d6 (33:43d6)
 	call GetBattleAnimByte
 	ld hl, wBattleAnimParam
 	cp [hl]
@@ -568,7 +568,7 @@ BattleAnimCmd_JumpIf: ; cc3d6 (33:43d6)
 	ld [hl], d
 	ret
 
-BattleAnimCmd_JumpAnd: ; cc3fa (33:43fa)
+BattleAnimCmd_IfParamAnd: ; cc3fa (33:43fa)
 	call GetBattleAnimByte
 	ld e, a
 	ld a, [wBattleAnimParam]

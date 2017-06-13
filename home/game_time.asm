@@ -150,22 +150,23 @@ UpdateNoRTC::
 	ld hl, wNoRTCSeconds
 
 ; +1 second
-	ld a, b
-	inc [hl]
-	sub [hl]
-	ret nz
-	ld [hld], a
+	;;ld a, b			;micro-optimisation
+	inc [hl]			;add one to seconds (in RAM)
+	sub [hl]			;subtract that from 60 (update A)
+	ret nz				;not 60 -- we're done
+	ld [hld], a			;is 60 -- go back to 0 (A should be zero from the `sub` earlier)
+						;also move HL to minutes byte at the same time
 
 ; +1 minute
-	ld a, b
-	inc [hl]
+	ld a, b				;set modulus to 60 again
+	inc [hl]			;add one to minutes (in RAM)
 	sub [hl]
 	ret nz
 	ld [hld], a
 
 ; +1 hour
 ;; 24 hours to a day
-	ld a, 24
+	ld a, 24			;change our modulus to 24 (hours)
 	inc [hl]
 	sub [hl]
 	ret nz
@@ -176,14 +177,36 @@ UpdateNoRTC::
 ;; note that this is different than GameTime which just counts hours and not days
 
 ; +1 day
-;; increase the number of days (low)
+	ld a, [hl]
+	inc a				;`inc` does *not* set the carry, but it does set zero
+	ret nz				;if that didn't overflow, leave
+	ld [hld], a
+
+;; only five bits are available on the hi-byte (the others are flags).
+;; we need to check if adding a day would overflow:
+
+;; fetch the days hi-byte
+	ld a, [hl]
+;; strip the top bits
+	and %00011111
+;; check if the value is at its maximum
+	sub %00011111
+;; if so, handle the overflow condition
+	jr z, .nortc_overflow
+;; otherwise, increase as normal
 	inc [hl]
-;; if that didn't overflow, leave
-	ret nc
-;; TODO: only five bits are available on the hi-byte (the others are flags)
-;; increase the days (hi)
+	ret
+
+.nortc_overflow
+;; we'll repeat the last year. this ensures that any day-specific
+;; events cannot be missed once the clock overflows
+
+;; go back 365 days, i.e. set `wNoRTCDayHi/Lo` to $1E94 (Sunday -> Monday)
+	dec [hl]		;days hi-byte is already $1F
 	inc hl
-	inc [hl]
+	ld a, $92
+	ld [hl], a
 
 	ret
+
 endc

@@ -9,20 +9,10 @@ const_value set 2
 
 SproutTower3F_MapScriptHeader:
 .MapTriggers:
-	db 2
-
-	; triggers
-	dw UnknownScript_0x184945, 0
-	dw UnknownScript_0x184946, 0
+	db 0
 
 .MapCallbacks:
 	db 0
-
-UnknownScript_0x184945:
-	end
-
-UnknownScript_0x184946:
-	end
 
 UnknownScript_0x184947:
 	spriteface PLAYER, UP
@@ -326,16 +316,13 @@ UnknownText_0x184f61:
 	done
 
 SproutTower3F_MapEventHeader:
-	; filler
-	db 0, 0
-
 .Warps:
 	db 1
 	warp_def $e, $8, 4, SPROUT_TOWER_2F
 
 .XYTriggers:
 	db 1
-	xy_trigger 0, $9, $9, $0, UnknownScript_0x184947, $0, $0
+	xy_trigger 0, $9, $9, UnknownScript_0x184947
 
 .Signposts:
 	db 6
