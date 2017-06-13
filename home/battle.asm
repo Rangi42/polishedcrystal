@@ -158,9 +158,30 @@ ConsumeUserItem::
 	call GetPartyLocation
 	xor a
 	ld [de], a
+
+	; Wildmons has no OTPartyMon1Item, but we want to consume our own items still
+	ld a, [hBattleTurn]
+	and a
+	jr z, .has_party_struct
+
 	ld a, [wBattleMode]
 	dec a
-	ret z
+	jr z, .apply_unburden
+
+.has_party_struct
+	xor a
+	ld [hl], a
+.apply_unburden
+	; Unburden doubles Speed when an item is consumed
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNBURDEN
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	set SUBSTATUS_UNBURDEN, [hl]
+	ret
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::
