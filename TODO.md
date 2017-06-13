@@ -94,7 +94,6 @@ Route leaders:
 
 In-battle effects:
 
-* Guts, Hustle, and Solar Power shouldn't boost both physical and special moves
 * Speed Boost activates inconsistently
 * Harvest
 * Magic Bounce
