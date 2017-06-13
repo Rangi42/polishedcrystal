@@ -29,9 +29,8 @@ TrainerSwimmermFrank:
 .SeenText:
 	text "I'm vacationing"
 	line "with my wife, but"
-
-	para "okay--I'll battle"
-	line "you."
+	cont "OK--I'll battle"
+	cont "you."
 	done
 
 .BeatenText:

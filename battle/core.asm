@@ -608,7 +608,7 @@ ParsePlayerAction: ; 3c434
 	jr nz, .reset_bide
 	xor a
 	ld [wMoveSelectionMenuType], a
-	inc a ; ACROBATICS
+	inc a ; ld a, ACROBATICS
 	ld [FXAnimIDLo], a
 	call MoveSelectionScreen
 	push af
@@ -5698,10 +5698,7 @@ CheckAmuletCoin: ; 3e4a8
 ; 3e4bc
 
 MoveSelectionScreen: ; 3e4bc
-	ld hl, EnemyMonMoves
 	ld a, [wMoveSelectionMenuType]
-	dec a
-	jr z, .got_menu_type
 	dec a
 	jr z, .ether_elixer_menu
 	call CheckPlayerHasUsableMoves
@@ -5721,46 +5718,37 @@ MoveSelectionScreen: ; 3e4bc
 	ld [hBGMapMode], a
 
 	hlcoord 4, 17 - NUM_MOVES - 1
-	ld b, 4
-	ld c, 14
 	ld a, [wMoveSelectionMenuType]
-	cp $2
-	jr nz, .got_dims
+	and a
+	jr z, .got_dims
 	hlcoord 4, 17 - NUM_MOVES - 1 - 4
+.got_dims
 	ld b, 4
 	ld c, 14
-.got_dims
 	call TextBox
 
 	hlcoord 6, 17 - NUM_MOVES
 	ld a, [wMoveSelectionMenuType]
-	cp $2
-	jr nz, .got_start_coord
+	and a
+	jr z, .got_start_coord
 	hlcoord 6, 17 - NUM_MOVES - 4
 .got_start_coord
 	ld a, SCREEN_WIDTH
 	ld [Buffer1], a
 	predef ListMoves
 
-	ld b, 5
 	ld a, [wMoveSelectionMenuType]
-	cp $2
+	and a
 	ld a, 17 - NUM_MOVES
-	jr nz, .got_default_coord
-	ld b, 5
+	jr z, .got_default_coord
 	ld a, 17 - NUM_MOVES - 4
 
 .got_default_coord
 	ld [w2DMenuCursorInitY], a
-	ld a, b
+	ld a, 5
 	ld [w2DMenuCursorInitX], a
-	ld a, [wMoveSelectionMenuType]
-	cp $1
-	jr z, .skip_inc
 	ld a, [CurMoveNum]
 	inc a
-
-.skip_inc
 	ld [wMenuCursorY], a
 	ld a, $1
 	ld [wMenuCursorX], a
@@ -5770,10 +5758,8 @@ MoveSelectionScreen: ; 3e4bc
 	ld a, $1
 	ld [w2DMenuNumCols], a
 	ld c, $2c
+
 	ld a, [wMoveSelectionMenuType]
-	dec a
-	ld b, D_DOWN | D_UP | A_BUTTON
-	jr z, .okay
 	dec a
 	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON
 	jr z, .okay
@@ -5794,15 +5780,8 @@ MoveSelectionScreen: ; 3e4bc
 .menu_loop
 	ld a, [wMoveSelectionMenuType]
 	and a
-	jr z, .battle_player_moves
-	dec a
 	jr nz, .interpret_joypad
-	hlcoord 11, 14
-	ld de, .string_3e61c
-	call PlaceString
-	jr .interpret_joypad
 
-.battle_player_moves
 	call MoveInfoBox
 	ld a, [wMoveSwapBuffer]
 	and a
@@ -5833,19 +5812,11 @@ MoveSelectionScreen: ; 3e4bc
 	dec a
 	ld [wMenuCursorY], a
 	ld b, a
-	ld a, [wMoveSelectionMenuType]
-	dec a
-	jr nz, .not_enemy_moves_process_b
-
-	pop af
-	ret
-
-.not_enemy_moves_process_b
-	dec a
-	ld a, b
 	ld [CurMoveNum], a
-	jr nz, .use_move
 
+	ld a, [wMoveSelectionMenuType]
+	and a
+	jr z, .use_move
 	pop af
 	ret
 
@@ -5867,17 +5838,13 @@ MoveSelectionScreen: ; 3e4bc
 	dec a
 	cp c
 	jr z, .move_disabled
-	ld a, [wUnusedPlayerLockedMove]
-	and a
-	jr nz, .skip2
+
 	ld a, [wMenuCursorY]
 	ld hl, BattleMonMoves
 	ld c, a
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-
-.skip2
 	ld [CurPlayerMove], a
 	xor a
 	ret
@@ -5902,10 +5869,6 @@ MoveSelectionScreen: ; 3e4bc
 	call Call_LoadTempTileMapToTileMap
 	jp MoveSelectionScreen
 ; 3e61c
-
-.string_3e61c ; 3e61c
-	db "@"
-; 3e61d
 
 .pressed_up
 	ld a, [wMenuCursorY]
@@ -6689,7 +6652,7 @@ endr
 	push hl
 	push bc
 	push de
-	ld hl, NumItems
+	ld hl, NumKeyItems
 	call CheckItem
 	pop de
 	pop bc

@@ -323,11 +323,9 @@ SrandjrJoandcath2OWText:
 	line "losing to Whitney."
 	cont "It's depressing."
 
-	para "I'm okay! If I"
-	line "lose, I'll just"
-
-	para "try harder next"
-	line "time!"
+	para "I'm OK! If I lose,"
+	line "I'll just try"
+	cont "harder next time!"
 	done
 
 JoWhitneyCriesText:

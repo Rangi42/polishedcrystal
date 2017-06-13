@@ -1064,7 +1064,7 @@ ElmText_GotAnEmail:
 	para "………………"
 	line "Hm… Uh-huh…"
 
-	para "Okay…"
+	para "OK…"
 	done
 
 ElmText_MissionFromMrPokemon:

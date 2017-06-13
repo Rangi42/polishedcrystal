@@ -121,7 +121,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 .RefusedText:
-	text "Okay then… Uh…"
+	text "OK then… Uh…"
 	line "Don't be shy about"
 	cont "it if you return!"
 	done

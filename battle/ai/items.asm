@@ -180,7 +180,7 @@ AI_TryItem: ; 38105
 	ld a, [TrainerClass]
 	dec a
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
-	ld bc, 7
+	ld bc, NUM_TRAINER_ATTRIBUTES
 	call AddNTimes
 	ld b, h
 	ld c, l

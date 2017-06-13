@@ -269,6 +269,26 @@ DoWonderTrade:
 	ld a, [wOTTrademonID]
 	call GetWonderTradeOTGender
 	ld b, a
+
+	; Random Ball
+	; 2/3 chance of Poké Ball, 1/3 chance of other
+.random_ball
+	ld a, PREMIER_BALL * 2 - 2
+	call RandomRange
+	cp PREMIER_BALL - 2
+	jr nc, .poke_ball
+	cp MASTER_BALL - 2
+	jr z, .random_ball
+	cp SAFARI_BALL - 2
+	jr z, .random_ball
+	inc a
+	inc a
+	jr .got_ball
+.poke_ball
+	ld a, POKE_BALL
+.got_ball
+	ld c, a
+
 	farcall SetGiftPartyMonCaughtData
 
 	; Random DVs
@@ -430,6 +450,7 @@ GetGSBallPichu:
 	jr z, .male_ot_pikachu
 	ld b, FEMALE
 .male_ot_pikachu
+	ld c, ULTRA_BALL
 	farcall SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]

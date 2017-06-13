@@ -319,7 +319,7 @@ Text_GoldenrodHarborTutorQuestion:
 	done
 
 Text_GoldenrodHarborTutorRefused:
-	text "Okay then."
+	text "OK then."
 	done
 
 Text_GoldenrodHarborTutorClear:

@@ -137,7 +137,7 @@ NoBeastsText1:
 
 	para "………………"
 
-	para "Okay…"
+	para "OK…"
 
 	para "Let me give you"
 	line "my research notes."

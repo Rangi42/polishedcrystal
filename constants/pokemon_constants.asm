@@ -305,7 +305,6 @@ MON_SAT                  EQUS "(PartyMon1SpclAtk - PartyMon1)"
 MON_SDF                  EQUS "(PartyMon1SpclDef - PartyMon1)"
 BOXMON_STRUCT_LENGTH     EQUS "(PartyMon1End - PartyMon1)"
 PARTYMON_STRUCT_LENGTH   EQUS "(PartyMon1StatsEnd - PartyMon1)"
-REDMON_STRUCT_LENGTH EQU 44
 
 ; apply to MON_FORM
 SHINY_MASK         EQU %10000000

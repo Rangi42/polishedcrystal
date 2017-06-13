@@ -64,11 +64,12 @@ PokefanFScript_0x61024:
 	iftrue .GotEviolite
 	writetext UnknownText_0x623fb
 	waitbutton
+	checkitem EON_MAIL
+	iffalse .NoEviolite
 	writetext UnknownText_0x6248c
 	yesorno
 	iffalse .NoEviolite
 	takeitem EON_MAIL
-	iffalse .NoEviolite
 	writetext UnknownText_0x62549
 	waitbutton
 	writetext UnknownText_0x624a4

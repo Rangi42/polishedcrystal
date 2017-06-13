@@ -531,10 +531,8 @@ endr
 	push af
 	set SUBSTATUS_TRANSFORMED, [hl]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .ditto
-	jr .not_ditto
+	jr z, .not_ditto
 
-.ditto
 	; not only useless but introduces the Ditto transform glitch
 	; ld a, DITTO
 	; ld [TempEnemyMonSpecies], a
@@ -662,7 +660,7 @@ endr
 
 	ld a, [PartyCount]
 	cp PARTY_LENGTH
-	jr z, .SendToPC
+	jp z, .SendToPC
 
 	xor a ; PARTYMON
 	ld [MonType], a
@@ -685,6 +683,16 @@ endr
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [hl], a
 .SkipPartyMonFriendBall:
+
+	ld a, [CurItem]
+	cp HEAL_BALL
+	jr nz, .SkipPartyMonHealBall
+
+	ld a, [PartyCount]
+	dec a
+	ld [CurPartyMon], a
+	farcall HealPartyMonEvenForNuzlocke
+.SkipPartyMonHealBall:
 
 	ld a, [InitialOptions]
 	bit NUZLOCKE_MODE, a
@@ -2760,7 +2768,7 @@ LeppaBerry: ; f5bf
 	push af
 	xor a
 	ld [CurMoveNum], a
-	ld a, $2
+	inc a
 	ld [wMoveSelectionMenuType], a
 	farcall MoveSelectionScreen
 	pop bc

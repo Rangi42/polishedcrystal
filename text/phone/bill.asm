@@ -122,8 +122,8 @@ BillThankYouText:
 	done
 
 BillCallMeToSwitch:
-	text "Okay, I'll leave"
-	line "it alone."
+	text "OK, I'll leave it"
+	line "alone."
 
 	para "Call me back if"
 	line "you change your"

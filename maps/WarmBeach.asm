@@ -185,7 +185,7 @@ WarmBeachLassScript:
 	done
 
 .Text4:
-	text "That's okay!"
+	text "That's OK!"
 	done
 
 .Text5:

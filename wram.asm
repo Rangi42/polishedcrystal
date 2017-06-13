@@ -532,15 +532,13 @@ EnemyTurnsTaken:: ; c6dc
 PlayerTurnsTaken:: ; c6dd
 	ds 1
 
-	ds 1
-
 PlayerSubstituteHP:: ; c6df
-	ds 1
+	ds 2
 EnemySubstituteHP:: ; c6e0
+	ds 2
+
 	ds 1
 
-wUnusedPlayerLockedMove:: ds 1 ; c6e1
-	ds 1
 CurPlayerMove:: ; c6e3
 	ds 1
 CurEnemyMove:: ; c6e4

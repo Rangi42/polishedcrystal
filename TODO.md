@@ -1,17 +1,13 @@
 ## Bugs
 
-* Running away sometimes fails
 * Large Pokémon animations have backwards tiles in the stats screen
-* Caught Pokémon sent to the PC become level 255
+* Caught Pokémon sent to the PC appear at level 255
 * Some caught Pokémon have wrong held items
 * Dark types are not immune to moves whose priority was increased by Prankster
-* Foe's Substitute makes your moves become something else
 * In-battle item use messages show the wrong Pokémon name
 * Some NPC trainers use wrong items
-* After the low HP music plays, some of the instruments are missing
 * Held Berries don't always disappear when used
 * Weather and some ability animations trigger the last used animation too
-* Air Balloon message doesn't print for the opponent's first Pokémon
 * TMs refresh PP
 * Nuzlocke mode sometimes turns on by itself (maybe)
 * Dig sometimes prints that both Pokémon dug a hole
@@ -119,9 +115,7 @@ Out-of-battle effects:
 
 ## Items
 
-* Heal Ball
 * Ability Capsule
-* Air Balloon
 * Assault Vest
 * Big Root
 * Binding Band

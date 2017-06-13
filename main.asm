@@ -457,23 +457,23 @@ CheckFacingTileForStd:: ; 1365b
 	ret
 
 .table1
-	dbw $91, magazinebookshelf
-	dbw $92, trashcan
-	dbw $93, pcscript
-	dbw $94, radio1
-	dbw $95, townmap
-	dbw $96, merchandiseshelf
-	dbw $97, tv
-	dbw $98, pokecentersign
-	dbw $99, martsign
-	dbw $9a, vendingmachine
-	dbw $9b, refrigerator
-	dbw $9c, sink
-	dbw $9d, window
-	dbw $9e, stove
-	dbw $9f, incenseburner
-	dbw $d1, elevatorbutton
-	db   -1 ; end
+	dbw COLL_BOOKSHELF, magazinebookshelf
+	dbw COLL_TRASH_CAN, trashcan
+	dbw COLL_PC, pcscript
+	dbw COLL_RADIO, radio1
+	dbw COLL_TOWN_MAP, townmap
+	dbw COLL_MART_SHELF, merchandiseshelf
+	dbw COLL_TV, tv
+	dbw COLL_POKECENTER_SIGN, pokecentersign
+	dbw COLL_MART_SIGN, martsign
+	dbw COLL_VENDING_MACHINE, vendingmachine
+	dbw COLL_FRIDGE, refrigerator
+	dbw COLL_SINK, sink
+	dbw COLL_WINDOW, window
+	dbw COLL_STOVE, stove
+	dbw COLL_INCENSE, incenseburner
+	dbw COLL_ELEVATOR_BUTTON, elevatorbutton
+	db -1 ; end
 
 Script_JumpStdFromRAM: ; 0x1369a
 	jump wJumpStdScriptBuffer
@@ -3464,8 +3464,8 @@ SetGiftMonCaughtData: ; 4dbaf
 	or b
 	ld b, a
 	; CaughtBall
-	; Poké Ball
-	ld a, POKE_BALL
+	; c contains it
+	ld a, c
 	and CAUGHTBALL_MASK
 	or b
 	ld [hli], a
@@ -5426,10 +5426,12 @@ LoadPoisonBGPals: ; cbcdd
 TheEndGFX:: ; cbd2e
 INCBIN "gfx/credits/theend.2bpp"
 
-SECTION "Substitute Pics", ROMX
+SECTION "Substitute and Ghost", ROMX
 
 SubstituteFrontpic: INCBIN "gfx/battle/substitute-front.2bpp.lz"
 SubstituteBackpic:  INCBIN "gfx/battle/substitute-back.2bpp.lz"
+
+GhostFrontpic:      INCBIN "gfx/battle/ghost.2bpp.lz"
 
 SECTION "bank33", ROMX, BANK[$33]
 

@@ -987,7 +987,7 @@ PokegearPhone_FinishPhoneCall: ; 91256 (24:5256)
 	and A_BUTTON | B_BUTTON
 	ret z
 	farcall HangUp
-	ld a, $8
+	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
 	call PrintText
