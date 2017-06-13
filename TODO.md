@@ -99,7 +99,6 @@ In-battle effects:
 * Pickpocket
 * Pickup
 * Rivalry
-* Unburden
 
 Out-of-battle effects:
 
