@@ -1652,9 +1652,19 @@ endr
 	ld [hli], a
 	ld [hl], a
 
-; Clear the entire BattleMons area
+	; Clear the entire BattleMons area
 	ld hl, wBattle
 	ld bc, wBattleEnd - wBattle
+	xor a
+	call ByteFill
+
+	; Clear UsedItems
+	ld hl, PartyUsedItems
+	ld bc, 6
+	xor a
+	call ByteFill
+	ld hl, OTPartyUsedItems
+	ld bc, 6
 	xor a
 	call ByteFill
 

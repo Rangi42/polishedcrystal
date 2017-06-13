@@ -464,16 +464,16 @@ wBattleReward:: ds 3 ; c686
 wBattleAnimParam::
 wKickCounter:: ds 1 ; c689
 
-PartyBackupItems:
+PartyBackupItems::
 ; Back up of party items before a battle. Modified in-battle for consumed/harvested
 ; Berries and items stolen from wild Pokémon since those changes are retained
 	ds 6
 
-PartyUsedItems:
+PartyUsedItems::
 ; For the benefit of Pickup/Harvest
 	ds 6
 
-OTPartyUsedItems:
+OTPartyUsedItems::
 ; Opponent equavilent
 	ds 6
 

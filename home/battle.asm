@@ -139,6 +139,74 @@ UpdateBattleHuds:: ; 39d4
 	farcall UpdateEnemyHUD
 	ret
 
+GetBackupItemAddr:
+; Returns address of backup item for current mon in hl
+	ld a, [CurBattleMon]
+	ld hl, PartyBackupItems
+	add l
+	ld l, a
+	ret nc
+	inc h
+	ret
+
+BackupBattleItems::
+; Copies items from party to a backup of items. Doesn't care if player has less than 6 mons
+; since messing with these item bytes in-battle is safe
+	ld c, 0
+	jr ToggleBattleItems
+RestoreBattleItems::
+; Restores items from PartyBackupItems
+	ld c, 1
+	; fallthrough
+ToggleBattleItems:
+	ld b, 7
+	ld hl, PartyMon1Item
+	ld de, PartyBackupItems
+.loop
+	dec b
+	ret z
+	ld a, c
+	and a
+	jr nz, .restore
+
+	; Backup
+	ld a, [hl]
+	ld [de], a
+	jr .next
+
+.restore
+	ld a, [de]
+	ld [hl], a
+
+.next
+	inc de
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+	jr .loop
+
+GetUsedItemAddr:
+; Returns addr for user's POV's UsedItem
+	ld a, [hBattleTurn]
+	and a
+	ld hl, PartyUsedItems
+	ld a, [CurBattleMon]
+	jr z, .got_target
+	ld hl, OTPartyUsedItems
+
+	; Wildmons use the 1st index
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld a, [CurOTMon]
+.got_target
+	add l
+	ld l, a
+	ret nc
+	inc h
+	ret
+
 ConsumeEnemyItem::
 	call SwitchTurn
 	call ConsumeUserItem
@@ -156,6 +224,19 @@ ConsumeUserItem::
 	ld hl, OTPartyMon1Item
 .got_item_pointers
 	call GetPartyLocation
+
+	; Air Balloons are consumed permanently, so don't write it to UsedItems
+	ld a, [de]
+	cp AIR_BALLOON
+	jr z, .consume_item
+	push hl
+	push af
+	call GetUsedItemAddr
+	pop af
+	ld [hl], a
+	pop hl
+
+.consume_item
 	xor a
 	ld [de], a
 
@@ -169,8 +250,35 @@ ConsumeUserItem::
 	jr z, .apply_unburden
 
 .has_party_struct
+	ld a, [hl]
+	ld d, a
 	xor a
 	ld [hl], a
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .apply_unburden
+
+	; For players, maybe remove the backup item too if we're dealing with a berry
+	ld a, d
+	ld [CurItem], a
+	push de
+	push bc
+	farcall CheckItemPocket
+	pop bc
+	pop de
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	jr z, .apply_unburden
+	call GetBackupItemAddr
+
+	; If the backup is different, don't touch it. This prevents consuming i.e. Focus Sash
+	; under the following scenario: Sash procs, steal an Oran Berry, use the Oran Berry
+	ld a, [hl]
+	cp d
+	jr nz, .apply_unburden
+	xor a
+	ld [hl], a
+	
 .apply_unburden
 	; Unburden doubles Speed when an item is consumed
 	ld a, BATTLE_VARS_ABILITY

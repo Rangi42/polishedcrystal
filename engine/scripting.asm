@@ -1568,6 +1568,11 @@ Script_catchtutorial: ; 97447
 Script_reloadmapafterbattle: ; 97459
 ; script command 0x60
 
+	push bc
+	push de
+	call RestoreBattleItems
+	pop de
+	pop bc
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	ld [hl], $0
