@@ -138,7 +138,29 @@ UpdateBattleHuds:: ; 39d4
 	farcall UpdatePlayerHUD
 	farcall UpdateEnemyHUD
 	ret
-; 39e1
+
+ConsumeEnemyItem::
+	call SwitchTurn
+	call ConsumeUserItem
+	jp SwitchTurn
+
+ConsumeUserItem::
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurBattleMon]
+	ld de, BattleMonItem
+	ld hl, PartyMon1Item
+	jr z, .got_item_pointers
+	ld a, [CurOTMon]
+	ld de, EnemyMonItem
+	ld hl, OTPartyMon1Item
+.got_item_pointers
+	call GetPartyLocation
+	xor a
+	ld [de], a
+	ld a, [wBattleMode]
+	dec a
+	ret z
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::
