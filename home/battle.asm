@@ -158,10 +158,17 @@ ConsumeUserItem::
 	call GetPartyLocation
 	xor a
 	ld [de], a
+
+	; Wildmons has no OTPartyMon1Item, but we want to consume our own items still
+	ld a, [hBattleTurn]
+	and a
+	jr z, .has_party_struct
+
 	ld a, [wBattleMode]
 	dec a
 	jr z, .apply_unburden
-	ret z
+
+.has_party_struct
 	xor a
 	ld [hl], a
 .apply_unburden

@@ -4649,7 +4649,7 @@ HandleHealingItems: ; 3dcf9
 	call UseHeldStatusHealingItem
 	jp UseConfusionHealingItem
 
-HandleHPHealingItem: ; 3dd2f
+HandleHPHealingItem:
 	; only restore HP if HP<=1/2
 	call GetHalfMaxHP
 	call CompareHP
@@ -4674,12 +4674,11 @@ UseBattleItem:
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
-	farcall ConsumeHeldItem
 	ld hl, RecoveredUsingText
-	jp StdBattleTextBox
-; 3ddc8
+	call StdBattleTextBox
+	jp ConsumeUserItem
 
-ItemRecoveryAnim: ; 3ddc8
+ItemRecoveryAnim:
 	push hl
 	push de
 	push bc
