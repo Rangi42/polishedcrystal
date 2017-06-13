@@ -39,7 +39,12 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	end
 
 EcruteakDestinyKnotHouseRichBoyScript:
-	jumptextfaceplayer EcruteakDestinyKnotHouseRichBoyText
+	faceplayer
+	opentext
+	trade $7
+	waitbutton
+	closetext
+	end
 
 DestinyKnotHouseRadio:
 	jumpstd radio2
@@ -89,15 +94,6 @@ EcruteakDestinyKnotHouseCooltrainerFText4:
 
 	para "Are you some kind"
 	line "of Chosen One?"
-	done
-
-EcruteakDestinyKnotHouseRichBoyText:
-	text "Gah! I want to"
-	line "battle Morty, but"
-
-	para "I just can't figure"
-	line "out the pattern"
-	cont "on the Gym floor."
 	done
 
 EcruteakDestinyKnotHouse_MapEventHeader:
