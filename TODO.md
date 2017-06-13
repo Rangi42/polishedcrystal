@@ -103,7 +103,6 @@ In-battle effects:
 * Pixilate
 * Rivalry
 * Sturdy
-* Unaware (accuracy/evasion done)
 * Unburden
 
 Out-of-battle effects:
