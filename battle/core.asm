@@ -475,6 +475,16 @@ GetSpeed::
 	rr c
 .paralyze_check_done
 	farcall ApplySpeedAbilities
+
+	; Apply Unburden
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
+	bit SUBSTATUS_UNBURDEN, a
+	jr z, .unburden_done
+	sla c
+	rl b
+
+.unburden_done
 	; Apply item effects
 	push bc
 	farcall GetUserItem

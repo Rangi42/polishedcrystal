@@ -160,9 +160,20 @@ ConsumeUserItem::
 	ld [de], a
 	ld a, [wBattleMode]
 	dec a
+	jr z, .apply_unburden
 	ret z
 	xor a
 	ld [hl], a
+.apply_unburden
+	; Unburden doubles Speed when an item is consumed
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNBURDEN
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	set SUBSTATUS_UNBURDEN, [hl]
 	ret
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
