@@ -1120,6 +1120,8 @@ SentPkmnIntoBox: ; de6e
 	inc de
 	ld [de], a
 	inc de
+	ld [de], a
+	inc de
 	ld a, [CurPartyLevel]
 	ld [de], a
 	ld a, [CurPartySpecies]
