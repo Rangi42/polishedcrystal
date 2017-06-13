@@ -400,9 +400,9 @@ ENDM
 
 	; OT names have 3 characters less padding so the total struct is 31 bytes
 	; Goldenrod City
-	npctrade 0, PHANPY,     DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   DUSK_BALL,    SITRUS_BERRY, 37460, "Mike@@@@"
+	npctrade 0, PHANPY,     DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   DUSK_BALL,    SITRUS_BERRY, 48926, "Kyle@@@@"
 	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | HASTY,   MALE,   PREMIER_BALL, PERSIM_BERRY, 48926, "Kyle@@@@"
+	npctrade 0, TEDDIURSA,  MACHOP,     "Muscle@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   PREMIER_BALL, PERSIM_BERRY, 37460, "Mike@@@@"
 	; Olivine City
 	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   HEAVY_BALL,   SILK_SCARF,   29189, "Tim@@@@@"
 	; Blackthorn City
@@ -412,7 +412,7 @@ ENDM
 	; Route 14
 	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, HEAL_BALL,    LUCKY_EGG,    26491, "Kim@@@@@"
 	; Goldenrod Harbor
-	npctrade 0, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
+	npctrade 1, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
 ; fcf38
 
 
