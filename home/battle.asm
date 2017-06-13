@@ -161,6 +161,9 @@ ConsumeUserItem::
 	ld a, [wBattleMode]
 	dec a
 	ret z
+	xor a
+	ld [hl], a
+	ret
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::
