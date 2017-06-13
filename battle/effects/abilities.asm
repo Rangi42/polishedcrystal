@@ -1329,6 +1329,7 @@ OffensiveDamageAbilities:
 	dbw SAND_FORCE, SandForceAbility
 	dbw RECKLESS, RecklessAbility
 	dbw GUTS, GutsAbility
+	dbw PIXILATE, PixilateAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1458,6 +1459,14 @@ GutsAbility:
 	ret z
 	ld a, $32
 	jp ApplyPhysicalAttackDamageMod
+
+PixilateAbility:
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp NORMAL
+	ret nz
+	ld a, $65
+	jp ApplyDamageMod
 
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP

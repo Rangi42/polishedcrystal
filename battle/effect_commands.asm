@@ -499,7 +499,7 @@ HitConfusion: ; 343a5
 	ld [CriticalHit], a
 
 	call HitSelfInConfusion
-	call BattleCommand_DamageCalc
+	call BattleCommand_ConfusedDamageCalc
 	call BattleCommand_LowerSub
 
 	xor a
@@ -1355,6 +1355,15 @@ _CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp PIXILATE
+	jr nz, .no_pixilate
+	ld a, NORMAL
+	cp d
+	jr nz, .no_pixilate
+	ld d, FAIRY
+.no_pixilate
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
@@ -3200,8 +3209,81 @@ endr
 	ld e, a
 	ret
 
-; 35612
+ApplyAttackBoosts:
+	ld hl, PlayerAtkLevel
+	ld de, EnemyAtkLevel
+	jr ApplyStatBoostDamageAfterUnaware
+ApplySpecialAttackBoosts:
+	ld hl, PlayerSAtkLevel
+	ld de, EnemySAtkLevel
+	jr ApplyStatBoostDamageAfterUnaware
 
+ApplyDefenseBoosts:
+	ld hl, EnemyDefLevel
+	ld de, PlayerDefLevel
+	jr ApplyDefStatBoostDamageAfterUnaware
+
+ApplySpecialDefenseBoosts:
+	ld hl, EnemySDefLevel
+	ld de, PlayerSDefLevel
+	jr ApplyDefStatBoostDamageAfterUnaware
+
+GetStatBoost:
+	ld a, [hBattleTurn]
+	and a
+	ld a, [hl]
+	ret z
+	ld a, [de]
+	ret
+
+ApplyStatBoostDamageAfterUnaware:
+	call GetOpponentAbilityAfterMoldBreaker
+	cp UNAWARE
+	ret z
+ApplyStatBoostDamage:
+	call GetStatBoost
+	jr GotStatLevel
+ApplyDefStatBoostDamageAfterUnaware:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNAWARE
+	ret z
+ApplyDefStatBoostDamage:
+	call GetStatBoost
+	ld b, a
+	ld a, [CriticalHit]
+	and a
+	ret nz
+	ld a, 14
+	sub b
+	; fallthrough
+GotStatLevel:
+	ld b, a
+	cp 7
+	jr nc, .higher
+	ld a, $29
+	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
+	jp ApplyDamageMod
+.higher
+	ld a, $1b
+	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
+	swap a ; we want to add, not reduce damage
+	jp ApplyDamageMod
+
+BattleCommand_ConfusedDamageCalc:
+; Needed because several things are skipped
+	call DamagePass1
+	call DamagePass2
+
+	; This way we ignore Unnerve
+	ld hl, PlayerAtkLevel
+	ld de, EnemyAtkLevel
+	call ApplyStatBoostDamage
+	ld hl, PlayerDefLevel
+	ld de, EnemyDefLevel
+	call ApplyDefStatBoostDamage
+
+	jp DamagePass3
 
 BattleCommand_DamageCalc: ; 35612
 ; Return a damage value for move power d, player level e, enemy defense c and
@@ -3222,39 +3304,7 @@ BattleCommand_DamageCalc: ; 35612
 	ret z
 
 .skip_zero_damage_check
-	; Minimum defense value is 1.
-	ld a, c
-	and a
-	jr nz, .not_dividing_by_zero
-	ld c, 1
-.not_dividing_by_zero
-
-	xor a
-	ld hl, hDividend
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-
-	; Level * 2
-	ld a, e
-	add a
-	jr nc, .level_not_overflowing
-	ld [hl], $1
-.level_not_overflowing
-	inc hl
-	ld [hli], a
-
-	; / 5
-	ld a, 5
-	ld [hld], a
-	push bc
-	ld b, $4
-	call Divide
-	pop bc
-
-	; + 2
-	inc [hl]
-	inc [hl]
+	call DamagePass1
 
 	; Check Technician seperately since it's move power-dependant
 	ld a, BATTLE_VARS_ABILITY
@@ -3269,24 +3319,31 @@ BattleCommand_DamageCalc: ; 35612
 	ld d, a
 
 .skip_technician
-	; * bp
-	inc hl
-	ld [hl], d
-	call Multiply
+	call DamagePass2
 
-	; * Attack
-	ld [hl], b
-	call Multiply
+	; Stat changes
+	push de
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	jr z, .psystrike_mod
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp SPECIAL
+	jr z, .special_mod
+	call ApplyAttackBoosts
+	call ApplyDefenseBoosts
+	jr .stat_boosts_done
+.special_mod
+	call ApplySpecialAttackBoosts
+	call ApplySpecialDefenseBoosts
+	jr .stat_boosts_done
+.psystrike_mod
+	call ApplySpecialAttackBoosts
+	call ApplyDefenseBoosts
 
-	; / Defense
-	ld [hl], c
-	ld b, $4
-	call Divide
-
-	; / 50
-	ld [hl], 50
-	ld b, $4
-	call Divide
+.stat_boosts_done
+	pop de
 
 	; Ability boosts. Some are done elsewhere depending on needs.
 	farcall ApplyDamageAbilities
@@ -3383,6 +3440,90 @@ BattleCommand_DamageCalc: ; 35612
 	ld b, 4
 	call Divide
 .DoneItem:
+	jp DamagePass3
+
+TypeBoostItems: ; 35703
+	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
+	db HELD_FIGHTING_BOOST, FIGHTING ; Black Belt
+	db HELD_FLYING_BOOST,   FLYING   ; Sharp Beak
+	db HELD_POISON_BOOST,   POISON   ; Poison Barb
+	db HELD_GROUND_BOOST,   GROUND   ; Soft Sand
+	db HELD_ROCK_BOOST,     ROCK     ; Hard Stone
+	db HELD_BUG_BOOST,      BUG      ; SilverPowder
+	db HELD_GHOST_BOOST,    GHOST    ; Spell Tag
+	db HELD_FIRE_BOOST,     FIRE     ; Charcoal
+	db HELD_WATER_BOOST,    WATER    ; Mystic Water
+	db HELD_GRASS_BOOST,    GRASS    ; Miracle Seed
+	db HELD_ELECTRIC_BOOST, ELECTRIC ; Magnet
+	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; TwistedSpoon
+	db HELD_ICE_BOOST,      ICE      ; NeverMeltIce
+	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
+	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
+	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
+	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
+	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
+	db HELD_SPECIAL_BOOST,  SPECIAL  ; Wise Glasses
+	db $ff
+
+
+DamagePass1:
+	; Minimum defense value is 1.
+	ld a, c
+	and a
+	jr nz, .not_dividing_by_zero
+	ld c, 1
+.not_dividing_by_zero
+
+	xor a
+	ld hl, hDividend
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	; Level * 2
+	ld a, e
+	add a
+	jr nc, .level_not_overflowing
+	ld [hl], $1
+.level_not_overflowing
+	inc hl
+	ld [hli], a
+
+	; / 5
+	ld a, 5
+	ld [hld], a
+	push bc
+	ld b, $4
+	call Divide
+	pop bc
+
+	; + 2
+	inc [hl]
+	inc [hl]
+	ret
+
+DamagePass2:
+	; * bp
+	inc hl
+	ld [hl], d
+	call Multiply
+
+	; * Attack
+	ld [hl], b
+	call Multiply
+
+	; / Defense
+	ld [hl], c
+	ld b, $4
+	call Divide
+
+	; / 50
+	ld [hl], 50
+	ld b, $4
+	call Divide
+	ret
+
+DamagePass3:
 	; If we exceed $ffff at this point, skip to capping to 997 as the final damage.
 	ld a, [hQuotient]
 	and a
@@ -3460,30 +3601,6 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, 1
 	and a
 	ret
-
-TypeBoostItems: ; 35703
-	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
-	db HELD_FIGHTING_BOOST, FIGHTING ; Black Belt
-	db HELD_FLYING_BOOST,   FLYING   ; Sharp Beak
-	db HELD_POISON_BOOST,   POISON   ; Poison Barb
-	db HELD_GROUND_BOOST,   GROUND   ; Soft Sand
-	db HELD_ROCK_BOOST,     ROCK     ; Hard Stone
-	db HELD_BUG_BOOST,      BUG      ; SilverPowder
-	db HELD_GHOST_BOOST,    GHOST    ; Spell Tag
-	db HELD_FIRE_BOOST,     FIRE     ; Charcoal
-	db HELD_WATER_BOOST,    WATER    ; Mystic Water
-	db HELD_GRASS_BOOST,    GRASS    ; Miracle Seed
-	db HELD_ELECTRIC_BOOST, ELECTRIC ; Magnet
-	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; TwistedSpoon
-	db HELD_ICE_BOOST,      ICE      ; NeverMeltIce
-	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
-	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
-	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
-	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
-	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
-	db HELD_SPECIAL_BOOST,  SPECIAL  ; Wise Glasses
-	db $ff
-; 35726
 
 
 BattleCommand_ConstantDamage: ; 35726
@@ -5203,7 +5320,7 @@ BattleCommand_StatUp: ; 361e4
 ; 361ef
 
 
-CheckIfStatCanBeRaised: ; 361ef
+CheckIfStatCanBeRaised:
 	ld a, b
 	ld [LoweredStat], a
 	ld hl, PlayerStatLevels
@@ -5238,82 +5355,23 @@ CheckIfStatCanBeRaised: ; 361ef
 	ld b, a
 .got_num_stages
 	ld [hl], b
-	push hl
-	; Speed/Accuracy/Evasion doesn't mess with stats
-	ld a, c
-	cp ACCURACY
-	jr nc, .done_calcing_stats
-	cp SPEED
-	jr z, .done_calcing_stats
-	ld hl, BattleMonStats + 1
-	ld de, PlayerStats
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_stats_pointer
-	ld hl, EnemyMonStats + 1
-	ld de, EnemyStats
-.got_stats_pointer
-	push bc
-	sla c
-	ld b, 0
-	add hl, bc
-	ld a, c
-	add e
-	ld e, a
-	jr nc, .no_carry
-	inc d
-.no_carry
-	pop bc
-	ld a, [hld]
-	sub 999 % $100
-	jr nz, .not_already_max
-	ld a, [hl]
-	sbc 999 / $100
-	jp z, .stats_already_max
-.not_already_max
-	ld a, [hBattleTurn]
-	and a
-	jr z, .calc_player_stats
-	call CalcEnemyStats
-	jr .done_calcing_stats
-
-.calc_player_stats
-	call CalcPlayerStats
-.done_calcing_stats
-	pop hl
 	xor a
 	ld [FailedMessage], a
 	ret
 
-; 3626e
-
-
-.stats_already_max ; 3626e
-	pop hl
-	dec [hl]
-	; fallthrough
-; 36270
-
-
-.cant_raise_stat ; 36270
+.cant_raise_stat
 	ld a, $2
 	ld [FailedMessage], a
 	ld a, $1
 	ld [AttackMissed], a
 	ret
 
-; 3627b
-
-
-.stat_raise_failed ; 3627b
+.stat_raise_failed
 	ld a, $1
 	ld [FailedMessage], a
 	ret
 
-; 36281
-
-
-StatUpAnimation: ; 36281
+StatUpAnimation:
 	ld bc, wPlayerMinimized
 	ld hl, DropPlayerSub
 	ld a, [hBattleTurn]
@@ -6041,89 +6099,17 @@ BattleCommand_LowerSubNoAnim: ; 365c3
 	call CallBattleCore
 	jp WaitBGMap
 
-; 365d7
-
-
-CalcPlayerStats: ; 365d7
-	ld hl, PlayerAtkLevel
-	ld de, PlayerStats
-	ld bc, BattleMonAttack
+CalcPlayerStats:
+	ld hl, PlayerStats
+	ld de, BattleMonAttack
 	jr CalcStats
-CalcEnemyStats: ; 365fd
-	ld hl, EnemyAtkLevel
-	ld de, EnemyStats
-	ld bc, EnemyMonAttack
-CalcStats: ; 3661d
-	ld a, 5
-.loop
-	push af
-	ld a, [hli]
-	push hl
-	push bc
-
-	ld c, a
-	dec c
-	ld b, 0
-	ld hl, StatLevelMultipliers
-	add hl, bc
-	add hl, bc
-
-	xor a
-	ld [hMultiplicand + 0], a
-	ld a, [de]
-	ld [hMultiplicand + 1], a
-	inc de
-	ld a, [de]
-	ld [hMultiplicand + 2], a
-	inc de
-
-	ld a, [hli]
-	ld [hMultiplier], a
-	call Multiply
-
-	ld a, [hl]
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	or b
-	jr nz, .check_maxed_out
-
-	ld a, 1
-	ld [hQuotient + 2], a
-	jr .not_maxed_out
-
-.check_maxed_out
-	ld a, [hQuotient + 2]
-	cp 999 % $100
-	ld a, b
-	sbc 999 / $100
-	jr c, .not_maxed_out
-
-	ld a, 999 % $100
-	ld [hQuotient + 2], a
-	ld a, 999 / $100
-	ld [hQuotient + 1], a
-
-.not_maxed_out
-	pop bc
-	ld a, [hQuotient + 1]
-	ld [bc], a
-	inc bc
-	ld a, [hQuotient + 2]
-	ld [bc], a
-	inc bc
-	pop hl
-	pop af
-	dec a
-	jr nz, .loop
-
-	ret
-
-; 36671
+CalcEnemyStats:
+	ld hl, EnemyStats
+	ld de, EnemyMonAttack
+CalcStats:
+; Used to handle stat changes, but now only ensures that *MonAttack has the right content
+	ld bc, 10
+	jp CopyBytes
 
 
 BattleCommand_CheckRampage: ; 3671a
