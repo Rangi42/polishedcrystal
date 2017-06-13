@@ -436,6 +436,16 @@ SoundMoves::
 	db SUPERSONIC
 	db -1
 
+SubstituteBypassMoves::
+; used by Magic Bounce so it can check Substitute unconditionally as long as it isn't here
+; (Sound moves aren't included)
+	db ATTRACT
+	db DISABLE
+	db ENCORE
+	db FORESIGHT
+	db SPIKES
+	db -1
+
 DynamicPowerMoves::
 ; used by Forewarn and for move power listing
 	db COUNTER
@@ -470,6 +480,9 @@ CheckIfTargetIsFireType::
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsIceType::
 	ld a, ICE
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsDarkType::
+	ld a, DARK
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType::
 	ld a, ROCK

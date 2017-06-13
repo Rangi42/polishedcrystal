@@ -607,6 +607,7 @@ Toxic:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	stab
 	checksafeguard
 	poison
@@ -618,6 +619,7 @@ WillOWisp:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	stab
 	checksafeguard
 	burn
@@ -632,6 +634,7 @@ Glare:
 	doturn
 	stab
 	checkhit
+	bounceback
 	checksafeguard
 	paralyze
 	endmove
@@ -645,6 +648,7 @@ Spore:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	checksafeguard
 	sleeptarget
 	endmove
@@ -654,6 +658,7 @@ DoFreeze:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	checksafeguard
 	freezetarget
 	endmove
@@ -666,6 +671,7 @@ SweetKiss:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	checksafeguard
 	confuse
 	endmove
@@ -895,6 +901,7 @@ Growl:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	attackdown
 	lowersub
 	statdownanim
@@ -909,6 +916,7 @@ Leer:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	defensedown
 	lowersub
 	statdownanim
@@ -923,6 +931,7 @@ StringShot:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	speeddown
 	lowersub
 	statdownanim
@@ -936,6 +945,7 @@ SpecialAttackDown:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	specialattackdown
 	lowersub
 	statdownanim
@@ -949,6 +959,7 @@ SpecialDefenseDown:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	specialdefensedown
 	lowersub
 	statdownanim
@@ -965,6 +976,7 @@ Flash:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	accuracydown
 	lowersub
 	statdownanim
@@ -978,6 +990,7 @@ EvasionDown:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	evasiondown
 	lowersub
 	statdownanim
@@ -992,6 +1005,7 @@ Charm:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	attackdown2
 	lowersub
 	statdownanim
@@ -1006,6 +1020,7 @@ Screech:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	defensedown2
 	lowersub
 	statdownanim
@@ -1020,6 +1035,7 @@ ScaryFace:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	speeddown2
 	lowersub
 	statdownanim
@@ -1033,6 +1049,7 @@ SpecialAttackDown2:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	specialattackdown2
 	lowersub
 	statdownanim
@@ -1047,6 +1064,7 @@ MetalSound:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	specialdefensedown2
 	lowersub
 	statdownanim
@@ -1060,6 +1078,7 @@ AccuracyDown2:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	accuracydown2
 	lowersub
 	statdownanim
@@ -1073,6 +1092,7 @@ EvasionDown2:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	evasiondown2
 	lowersub
 	statdownanim
@@ -1221,6 +1241,7 @@ Roar:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	forceswitch
 	endmove
 
@@ -1364,6 +1385,7 @@ LeechSeed:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	leechseed
 	endmove
 
@@ -1379,6 +1401,7 @@ Disable:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	disable
 	endmove
 
@@ -1400,6 +1423,7 @@ Encore:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	encore
 	endmove
 
@@ -1539,6 +1563,7 @@ MeanLook:
 	checkobedience
 	usedmovetext
 	doturn
+	bounceback
 	arenatrap
 	endmove
 
@@ -1582,6 +1607,7 @@ Spikes:
 	checkobedience
 	usedmovetext
 	doturn
+	bounceback
 	spikes
 	endmove
 
@@ -1590,6 +1616,7 @@ Foresight:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	foresight
 	endmove
 
@@ -1648,6 +1675,7 @@ Swagger:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	switchturn
 	attackup2
 	switchturn
@@ -1687,6 +1715,7 @@ Attract:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	attract
 	endmove
 
@@ -2203,6 +2232,7 @@ Spite:
 	usedmovetext
 	doturn
 	checkhit
+	bounceback
 	spite
 	endmove
 

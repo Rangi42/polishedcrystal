@@ -182,6 +182,7 @@ endm
 	command curl                    ; af
 	command burn                    ; b0
 	command hex                     ; b1
+	command bounceback              ; b2
 
 	enum_start -1, -1
 	command endmove
