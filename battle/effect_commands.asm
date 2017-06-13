@@ -1526,12 +1526,99 @@ BattleCommand_DamageVariation: ; 34cfd
 	ld [hl], a
 	ret
 
-; 34d32
+BattleCommand_BounceBack:
+; Possibly bounce back an attack with Magic Bounce, or don't do anything if opponent is
+; immune due to Prankster.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp PRANKSTER
+	jr nz, .prankster_done
+	call CheckIfTargetIsDarkType
+	jr nz, .prankster_done
+	xor a
+	ld [wTypeMatchup], a
+	ld [TypeModifier], a
+	ld hl, AttackMissed
+	or [hl]
+	ret nz
+	inc [hl]
+	ret
+
+.prankster_done
+	call GetOpponentAbilityAfterMoldBreaker
+	cp MAGIC_BOUNCE
+	ret nz
+
+	; Someone behind Protect will not bounceback
+	ld a, [AttackMissed]
+	cp 2
+	ret z
+
+	; Some moves bypass Substitute
+	ld de, 1
+	ld hl, SubstituteBypassMoves
+	call IsInArray
+	jr c, .sub_ok
+
+	; Otherwise, Substitute blocks it
+	call CheckSubstituteOpp
+	ret nz
+
+.sub_ok
+	; No infinite bouncing
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_MAGIC_BOUNCE, a
+	ret nz
+
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld b, a
+	push bc
+	call SwitchTurn
+
+	; Store old move and replace with the bounced move
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVarAddr
+	ld a, [hl]
+	pop bc
+	ld [hl], b
+	push af
+
+	farcall ShowAbilityActivation
+
+	; Flag the bouncing
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	set SUBSTATUS_MAGIC_BOUNCE, [hl]
+
+	; Invert who went first
+	ld a, [wEnemyGoesFirst]
+	xor 1
+	ld [wEnemyGoesFirst], a
+
+	; Do the move
+	call UpdateMoveData
+	call ResetTurn
+
+	; Restore old data
+	ld a, [wEnemyGoesFirst]
+	xor 1
+	ld [wEnemyGoesFirst], a
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_MAGIC_BOUNCE, [hl]
+
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVarAddr
+	pop af
+	ld [hl], a
+	call UpdateMoveData
+	jp SwitchTurn
 
 
-BattleCommand_CheckHit: ; 34d32
-; checkhit
-
+BattleCommand_CheckHit:
 	call .DreamEater
 	jp z, .Miss
 
@@ -1566,6 +1653,11 @@ BattleCommand_CheckHit: ; 34d32
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp STRUGGLE
+	ret z
+
+	; Immunity might be set already from Prankster
+	ld a, [TypeModifier]
+	and a
 	ret z
 
 	; Now doing usual accuracy check
@@ -6784,7 +6876,7 @@ BattleCommand_KingsRock: ; 36ac9
 	call GetBattleVar
 	cp STENCH
 	ret nc
-	call ShowAbilityActivation
+	farcall ShowAbilityActivation
 .ok
 	call EndRechargeOpp
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP

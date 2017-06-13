@@ -176,4 +176,5 @@ BattleCommandPointers: ; 3fd28
 	dw BattleCommand_Curl ; 365a7
 	dw BattleCommand_Burn
 	dw BattleCommand_Hex
+	dw BattleCommand_BounceBack
 ; 3fe86
