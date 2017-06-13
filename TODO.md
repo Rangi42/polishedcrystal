@@ -16,7 +16,6 @@
 * Nuzlocke mode sometimes turns on by itself (maybe)
 * Dig sometimes prints that both Pokémon dug a hole
 * Per-turn status animations might not always work
-* Thick Club + Swords Dance Marowak Attack overflow (only in link battles?)
 * Headbutt overworld animation looks weird (wrong tile ID?)
 
 
