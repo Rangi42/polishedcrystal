@@ -98,7 +98,6 @@ In-battle effects:
 * Magic Bounce
 * Pickpocket
 * Pickup
-* Pixilate
 * Rivalry
 * Sturdy
 * Unburden

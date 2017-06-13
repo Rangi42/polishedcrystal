@@ -1355,6 +1355,15 @@ _CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp PIXILATE
+	jr nz, .no_pixilate
+	ld a, NORMAL
+	cp d
+	jr nz, .no_pixilate
+	ld d, FAIRY
+.no_pixilate
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
