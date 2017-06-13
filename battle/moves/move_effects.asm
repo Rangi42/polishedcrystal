@@ -1547,7 +1547,6 @@ Thief:
 	stab
 	damagevariation
 	checkhit
-;	effectchance
 	hittarget
 	failuretext
 	checkfaint

@@ -463,7 +463,8 @@ EnemyDamageTaken:: ; c684
 wBattleReward:: ds 3 ; c686
 wBattleAnimParam::
 wKickCounter:: ds 1 ; c689
-BattleScriptBuffer:: ; c68a
+
+; This is unused
 	ds 40
 
 BattleScriptBufferLoc:: ; c6b2
