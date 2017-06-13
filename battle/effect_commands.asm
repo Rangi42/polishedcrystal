@@ -3200,8 +3200,57 @@ endr
 	ld e, a
 	ret
 
-; 35612
+ApplyAttackBoosts:
+	ld hl, PlayerAtkLevel
+	ld de, EnemyAtkLevel
+	jr ApplyStatBoostDamage
+ApplySpecialAttackBoosts:
+	ld hl, PlayerSAtkLevel
+	ld de, EnemySAtkLevel
+	jr ApplyStatBoostDamage
 
+ApplyDefenseBoosts:
+	ld hl, EnemyDefLevel
+	ld de, PlayerDefLevel
+	jr ApplyDefStatBoostDamage
+
+ApplySpecialDefenseBoosts:
+	ld hl, EnemySDefLevel
+	ld de, PlayerSDefLevel
+	jr ApplyDefStatBoostDamage
+
+GetStatBoost:
+	ld a, [hBattleTurn]
+	and a
+	ld a, [hl]
+	ret z
+	ld a, [de]
+	ret
+
+ApplyStatBoostDamage:
+	call GetStatBoost
+	jr GotStatLevel
+ApplyDefStatBoostDamage:
+	call GetStatBoost
+	ld b, a
+	ld a, [CriticalHit]
+	and a
+	ret nz
+	ld a, 14
+	sub b
+	; fallthrough
+GotStatLevel:
+	ld b, a
+	cp 7
+	jr nc, .higher
+	ld a, $29
+	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
+	jp ApplyDamageMod
+.higher
+	ld a, $1b
+	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
+	swap a ; we want to add, not reduce damage
+	jp ApplyDamageMod
 
 BattleCommand_DamageCalc: ; 35612
 ; Return a damage value for move power d, player level e, enemy defense c and
@@ -3331,6 +3380,30 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplyDamageMod
 
 .no_crit
+	; Stat changes
+	push de
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	jr z, .psystrike_mod
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp SPECIAL
+	jr z, .special_mod
+	call ApplyAttackBoosts
+	call ApplyDefenseBoosts
+	jr .stat_boosts_done
+.special_mod
+	call ApplySpecialAttackBoosts
+	call ApplySpecialDefenseBoosts
+	jr .stat_boosts_done
+.psystrike_mod
+	call ApplySpecialAttackBoosts
+	call ApplyDefenseBoosts
+
+.stat_boosts_done
+	pop de
+
 	; Item boosts
 	call GetUserItem
 
@@ -5203,7 +5276,7 @@ BattleCommand_StatUp: ; 361e4
 ; 361ef
 
 
-CheckIfStatCanBeRaised: ; 361ef
+CheckIfStatCanBeRaised:
 	ld a, b
 	ld [LoweredStat], a
 	ld hl, PlayerStatLevels
@@ -5238,82 +5311,23 @@ CheckIfStatCanBeRaised: ; 361ef
 	ld b, a
 .got_num_stages
 	ld [hl], b
-	push hl
-	; Speed/Accuracy/Evasion doesn't mess with stats
-	ld a, c
-	cp ACCURACY
-	jr nc, .done_calcing_stats
-	cp SPEED
-	jr z, .done_calcing_stats
-	ld hl, BattleMonStats + 1
-	ld de, PlayerStats
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_stats_pointer
-	ld hl, EnemyMonStats + 1
-	ld de, EnemyStats
-.got_stats_pointer
-	push bc
-	sla c
-	ld b, 0
-	add hl, bc
-	ld a, c
-	add e
-	ld e, a
-	jr nc, .no_carry
-	inc d
-.no_carry
-	pop bc
-	ld a, [hld]
-	sub 999 % $100
-	jr nz, .not_already_max
-	ld a, [hl]
-	sbc 999 / $100
-	jp z, .stats_already_max
-.not_already_max
-	ld a, [hBattleTurn]
-	and a
-	jr z, .calc_player_stats
-	call CalcEnemyStats
-	jr .done_calcing_stats
-
-.calc_player_stats
-	call CalcPlayerStats
-.done_calcing_stats
-	pop hl
 	xor a
 	ld [FailedMessage], a
 	ret
 
-; 3626e
-
-
-.stats_already_max ; 3626e
-	pop hl
-	dec [hl]
-	; fallthrough
-; 36270
-
-
-.cant_raise_stat ; 36270
+.cant_raise_stat
 	ld a, $2
 	ld [FailedMessage], a
 	ld a, $1
 	ld [AttackMissed], a
 	ret
 
-; 3627b
-
-
-.stat_raise_failed ; 3627b
+.stat_raise_failed
 	ld a, $1
 	ld [FailedMessage], a
 	ret
 
-; 36281
-
-
-StatUpAnimation: ; 36281
+StatUpAnimation:
 	ld bc, wPlayerMinimized
 	ld hl, DropPlayerSub
 	ld a, [hBattleTurn]
@@ -6041,89 +6055,17 @@ BattleCommand_LowerSubNoAnim: ; 365c3
 	call CallBattleCore
 	jp WaitBGMap
 
-; 365d7
-
-
-CalcPlayerStats: ; 365d7
-	ld hl, PlayerAtkLevel
-	ld de, PlayerStats
-	ld bc, BattleMonAttack
+CalcPlayerStats:
+	ld hl, PlayerStats
+	ld de, BattleMonAttack
 	jr CalcStats
-CalcEnemyStats: ; 365fd
-	ld hl, EnemyAtkLevel
-	ld de, EnemyStats
-	ld bc, EnemyMonAttack
-CalcStats: ; 3661d
-	ld a, 5
-.loop
-	push af
-	ld a, [hli]
-	push hl
-	push bc
-
-	ld c, a
-	dec c
-	ld b, 0
-	ld hl, StatLevelMultipliers
-	add hl, bc
-	add hl, bc
-
-	xor a
-	ld [hMultiplicand + 0], a
-	ld a, [de]
-	ld [hMultiplicand + 1], a
-	inc de
-	ld a, [de]
-	ld [hMultiplicand + 2], a
-	inc de
-
-	ld a, [hli]
-	ld [hMultiplier], a
-	call Multiply
-
-	ld a, [hl]
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	or b
-	jr nz, .check_maxed_out
-
-	ld a, 1
-	ld [hQuotient + 2], a
-	jr .not_maxed_out
-
-.check_maxed_out
-	ld a, [hQuotient + 2]
-	cp 999 % $100
-	ld a, b
-	sbc 999 / $100
-	jr c, .not_maxed_out
-
-	ld a, 999 % $100
-	ld [hQuotient + 2], a
-	ld a, 999 / $100
-	ld [hQuotient + 1], a
-
-.not_maxed_out
-	pop bc
-	ld a, [hQuotient + 1]
-	ld [bc], a
-	inc bc
-	ld a, [hQuotient + 2]
-	ld [bc], a
-	inc bc
-	pop hl
-	pop af
-	dec a
-	jr nz, .loop
-
-	ret
-
-; 36671
+CalcEnemyStats:
+	ld hl, EnemyStats
+	ld de, EnemyMonAttack
+CalcStats:
+; Used to handle stat changes, but now only ensures that *MonAttack has the right content
+	ld bc, 10
+	jp CopyBytes
 
 
 BattleCommand_CheckRampage: ; 3671a
