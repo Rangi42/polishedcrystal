@@ -2181,32 +2181,55 @@ BattleCommand_FailureText: ; 35023
 ; 3505e
 
 
-BattleCommand_CheckFaint: ; 3505e
-; checkfaint
-
+BattleCommand_CheckFaint:
+; b is set to an endure flag as follows:
+; 0 - Nothing
+; 1 - Endure (the move)
+; 2 - Ability (i.e. Sturdy)
+; 3 - Nonconsumable item (i.e. Focus Band)
+; 4 - Item consumed after use (i.e. Focus Sash)
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_ENDURE, a
 	jr z, .not_enduring
-	call BattleCommand_FalseSwipe
-	ld b, $0
-	jr nc, .okay
 	ld b, $1
-	jr .okay
+	jr .enduring
 
 .not_enduring
 	call GetOpponentItem
 	ld a, b
+	ld b, $3
 	cp HELD_FOCUS_BAND
-	ld b, $0
-	jr nz, .okay
+	jr z, .focus_band
+	ld b, $4
+	cp HELD_FOCUS_SASH
+	jr z, .sturdy
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, $2
+	cp STURDY
+	jr nz, .no_endure
+.sturdy
+	push bc
+	call SwitchTurn
+	farcall CheckFullHP_b
+	call SwitchTurn
+	ld a, b
+	pop bc
+	and a
+	jr nz, .no_endure
+	jr .enduring
+.focus_band
 	call BattleRandom
 	cp c
-	jr nc, .okay
+	jr nc, .no_endure
+.enduring
+	push bc
 	call BattleCommand_FalseSwipe
+	pop bc
+	jr nc, .no_endure
+	jr .okay
+.no_endure
 	ld b, $0
-	jr nc, .okay
-	ld b, $2
 .okay
 	push bc
 	call .check_sub
@@ -2231,13 +2254,24 @@ BattleCommand_CheckFaint: ; 3505e
 	jp StdBattleTextBox
 
 .not_enduring2
+	dec a
+	jr nz, .enduring_with_item
+	farcall ShowEnemyAbilityActivation
+	ret
+
+.enduring_with_item
+	push af
 	call GetOpponentItem
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 
 	ld hl, HungOnText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	pop af
+	dec a
+	jp nz, ConsumeEnemyItem
+	ret
 
 .check_sub
 	ld a, BATTLE_VARS_ABILITY

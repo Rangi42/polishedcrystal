@@ -95,7 +95,6 @@ In-battle effects:
 * Pickpocket
 * Pickup
 * Rivalry
-* Sturdy
 * Unburden
 
 Out-of-battle effects:
@@ -128,7 +127,6 @@ Out-of-battle effects:
 * Destiny Knot
 * Expert Belt
 * Flame Orb
-* Focus Sash
 * Life Orb
 * Mental Herb
 * Metronome
