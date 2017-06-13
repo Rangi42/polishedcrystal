@@ -2634,27 +2634,7 @@ BattleCommand_PostHitEffects: ; 35250
 
 	ld hl, AirBalloonPoppedText
 	call StdBattleTextBox
-
-	; Don't use a common "useup" function -- when Pickup/etc is implemented, it still wont
-	; be able to recover Air Balloons
-	ld a, [hBattleTurn]
-	and a
-	ld a, [CurBattleMon]
-	ld de, BattleMonItem
-	ld hl, PartyMon1Item
-	jr nz, .got_item_pointers
-	ld a, [CurOTMon]
-	ld de, EnemyMonItem
-	ld hl, OTPartyMon1Item
-.got_item_pointers
-	call GetPartyLocation
-	xor a
-	ld [de], a
-	ld a, [wBattleMode]
-	dec a
-	jr z, .air_balloon_done
-	xor a
-	ld [hl], a
+	call ConsumeEnemyItem
 
 .air_balloon_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
