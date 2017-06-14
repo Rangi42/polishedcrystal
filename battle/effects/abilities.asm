@@ -1739,7 +1739,6 @@ RunOverworldPickupAbility::
 	ret z ; no Pokémon in party?
 .loop
 	dec a
-	ret c
 	cp $ff
 	ret z
 
@@ -1769,7 +1768,7 @@ RunOverworldPickupAbility::
 	call Random
 	cp 1 + (10 percent)
 	ld a, [CurPartyMon]
-	jr c, .loop
+	jr nc, .loop
 
 	call .Pickup
 	ld a, [CurPartyMon]
