@@ -1152,16 +1152,14 @@ BattleCommand_TripleKick: ; 346b2
 	ret
 
 CheckAirBalloon:
-; Returns z if the user is immune due to an item
+; Returns z if the user is holding an Air Balloon
 	push bc
 	push hl
 	call GetOpponentItem
 	pop hl
 	ld a, b
 	pop bc
-	xor HELD_AIR_BALLOON
-	ret nz
-	ld [wTypeMatchup], a
+	cp HELD_AIR_BALLOON
 	ret
 
 BattleCommand_KickCounter: ; 346cd
@@ -1308,12 +1306,14 @@ CheckTypeMatchup:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp GROUND
-	jr nz, .not_ground
+	jr nz, .done_air_balloon
 
 	call CheckAirBalloon
-	jr z, .end
+	jr nz, .done_air_balloon
+	xor a
+	ld [wTypeMatchup], a
 
-.not_ground
+.done_air_balloon
 	farcall CheckNullificationAbilities
 .end
 	pop bc
