@@ -1411,6 +1411,7 @@ OffensiveDamageAbilities:
 	dbw BLAZE, BlazeAbility
 	dbw TORRENT, TorrentAbility
 	dbw SWARM, SwarmAbility
+	dbw RIVALRY, RivalryAbility
 	dbw SHEER_FORCE, SheerForceAbility
 	dbw ANALYTIC, AnalyticAbility
 	dbw TINTED_LENS, TintedLensAbility
@@ -1462,6 +1463,16 @@ PinchAbility:
 	call CheckPinch
 	ret nz
 	ld a, $32
+	jp ApplyDamageMod
+
+RivalryAbility:
+; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite gender
+	farcall CheckOppositeGender
+	ret c
+	ld a, $54
+	jr z, .apply_damage_mod
+	ld a, $34
+.apply_damage_mod
 	jp ApplyDamageMod
 
 SheerForceAbility:

@@ -89,7 +89,6 @@ In-battle effects:
 
 * Speed Boost activates inconsistently
 * Pickpocket
-* Rivalry
 
 Out-of-battle effects:
 
