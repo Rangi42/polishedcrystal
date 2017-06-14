@@ -1408,8 +1408,7 @@ AI_Smart_Mimic: ; 38ba8
 AI_Smart_Counter: ; 38bf1
 	push hl
 	ld hl, PlayerUsedMoves
-	ld c, 4
-	ld b, 0
+	lb bc, 0, 4
 
 .asm_38bf9
 	ld a, [hli]
@@ -2603,8 +2602,7 @@ AI_Smart_BellyDrum: ; 3913d
 AI_Smart_PsychUp: ; 39152
 	push hl
 	ld hl, EnemyAtkLevel
-	ld b, $8
-	ld c, 100
+	lb bc, $8, 100
 
 ; Calculate the sum of all enemy's stat level modifiers. Add 100 first to prevent underflow.
 ; Put the result in c. c will range between 58 and 142.
@@ -2663,8 +2661,7 @@ endr
 AI_Smart_MirrorCoat: ; 3918b
 	push hl
 	ld hl, PlayerUsedMoves
-	ld c, $4
-	ld b, $0
+	lb bc, $0, $4
 
 .asm_39193
 	ld a, [hli]

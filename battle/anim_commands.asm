@@ -919,14 +919,12 @@ BattleAnimCmd_UpdateActorPic: ; cc622 (33:4622)
 	jr z, .player
 
 	ld hl, VTiles2 tile $00
-	ld b, 0
-	ld c, $31
+	lb bc, 0, $31
 	jp Request2bpp
 
 .player
 	ld hl, VTiles2 tile $31
-	ld b, 0
-	ld c, $24
+	lb bc, 0, $24
 	jp Request2bpp
 
 BattleAnimCmd_RaiseSub: ; cc640 (33:4640)

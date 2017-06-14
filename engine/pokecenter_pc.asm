@@ -565,8 +565,7 @@ PCItemsJoypad: ; 0x15985
 	ld hl, .PCItemsMenuData
 	call CopyMenuDataHeader
 	hlcoord 0, 0
-	ld b, 10
-	ld c, 18
+	lb bc, 10, 18
 	call TextBox
 	ld a, [wPCItemsCursor]
 	ld [wMenuCursorBuffer], a

@@ -72,8 +72,7 @@ Pack: ; 10000
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
-	ld b, $b ; Key Items
-	ld c, $3 ; Medicine
+	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -97,8 +96,7 @@ Pack: ; 10000
 	ld [wMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wMedicinePocketCursor], a
-	ld b, $1 ; Items
-	ld c, $5 ; Balls
+	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -122,8 +120,7 @@ Pack: ; 10000
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
-	ld b, $3 ; Medicine
-	ld c, $7 ; TM/HM
+	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -140,8 +137,7 @@ Pack: ; 10000
 
 .TMHMPocketMenu: ; 100e8 (4:40e8)
 	farcall TMHMPocket
-	ld b, $5 ; Balls
-	ld c, $9 ; Berries
+	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
 	ld hl, .MenuDataHeader1
@@ -218,8 +214,7 @@ Pack: ; 10000
 	ld [wBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBerriesPocketCursor], a
-	ld b, $7 ; TM/HM
-	ld c, $b ; Key Items
+	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -243,8 +238,7 @@ Pack: ; 10000
 	ld [wKeyItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wKeyItemsPocketCursor], a
-	ld b, $9 ; Berries
-	ld c, $1 ; Items
+	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -700,8 +694,7 @@ BattlePack: ; 10493
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
-	ld b, $b ; Key Items
-	ld c, $3 ; Medicine
+	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu
@@ -725,8 +718,7 @@ BattlePack: ; 10493
 	ld [wMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wMedicinePocketCursor], a
-	ld b, $1 ; Items
-	ld c, $5 ; Balls
+	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu
@@ -750,8 +742,7 @@ BattlePack: ; 10493
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
-	ld b, $3 ; Medicine
-	ld c, $7 ; TM/HM
+	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu
@@ -770,8 +761,7 @@ BattlePack: ; 10493
 
 .TMHMPocketMenu: ; 10581 (4:4581)
 	farcall TMHMPocket
-	ld b, $5 ; Balls
-	ld c, $9 ; Berries
+	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
 	xor a
@@ -796,8 +786,7 @@ BattlePack: ; 10493
 	ld [wBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBerriesPocketCursor], a
-	ld b, $7 ; TM/HM
-	ld c, $b ; Key Items
+	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu
@@ -821,8 +810,7 @@ BattlePack: ; 10493
 	ld [wKeyItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wKeyItemsPocketCursor], a
-	ld b, $9 ; Berries
-	ld c, $1 ; Items
+	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu

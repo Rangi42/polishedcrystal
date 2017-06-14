@@ -13,7 +13,7 @@ RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc faithful-nortc bankfree debug freespace
+.PHONY: all clean crystal faithful nortc faithful-nortc debug bankfree freespace
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -59,13 +59,13 @@ faithful-nortc: RGBASM_FLAGS += -DFAITHFUL -DNO_RTC
 faithful-nortc: ROM_NAME = $(NAME)-faithful-nortc-$(VERSION)
 faithful-nortc: $(NAME)-faithful-nortc-$(VERSION).gbc
 
-bankfree: FILLER = 0xff
-bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
-bankfree: $(NAME)-$(VERSION)-0xff.gbc
-
 debug: RGBASM_FLAGS += -DDEBUG
 debug: ROM_NAME = $(NAME)-$(VERSION)
 debug: $(NAME)-$(VERSION).gbc
+
+bankfree: FILLER = 0xff
+bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
+bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
 freespace: utils/bank_ends.txt
 
@@ -88,6 +88,7 @@ clean:
 %.2bpp: %.png ; $(gfx) 2bpp $<
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
+
 utils/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
 %.pal: %.2bpp ;

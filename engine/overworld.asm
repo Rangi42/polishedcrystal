@@ -237,8 +237,7 @@ GetMonSprite: ; 14259
 
 	farcall LoadOverworldMonIcon
 
-	ld l, MON_SPRITE
-	ld h, 0
+	lb hl, 0, MON_SPRITE
 	scf
 	ret
 
@@ -254,8 +253,7 @@ GetMonSprite: ; 14259
 
 .NoBreedmon:
 	ld a, 1
-	ld l, MON_SPRITE
-	ld h, 0
+	lb hl, 0, MON_SPRITE
 	and a
 	ret
 ; 142a7
@@ -464,8 +462,7 @@ ArrangeUsedSprites: ; 14355
 ; Crystal introduces a second table in VRAM bank 0.
 
 	ld hl, UsedSprites
-	ld c, SPRITE_GFX_LIST_CAPACITY
-	ld b, 0
+	lb bc, 0, SPRITE_GFX_LIST_CAPACITY
 .FirstTableLength:
 ; Keep going until the end of the list.
 	ld a, [hli]

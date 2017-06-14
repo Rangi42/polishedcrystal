@@ -192,8 +192,7 @@ LoadMoveMenuMonIcon:
 	ld [CurIcon], a
 	xor a
 	call GetIconGFX
-	ld d, 3 * 8 + 2
-	ld e, 4 * 8 + 4
+	lb de, 3 * 8 + 2, 4 * 8 + 4
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
