@@ -1231,17 +1231,6 @@ HandleResidualDamage:
 	jp StdBattleTextBox
 ; 3c801
 
-CheckFullHP_b:
-; Checks full HP and sets b to 0 if full, 1 otherwise.
-; Used by effect_commands since farcalls kill flags.
-	call CheckFullHP
-	jr z, .is_full
-	ld b, 1
-	ret
-.is_full
-	ld b, 0
-	ret
-
 CheckFullHP:
 ; check if the user has full HP
 ; z: yes, nz: no

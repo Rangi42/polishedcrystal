@@ -2289,11 +2289,10 @@ BattleCommand_CheckFaint:
 .sturdy
 	push bc
 	call SwitchTurn
-	farcall CheckFullHP_b
+	farcall CheckFullHP
+	push af
 	call SwitchTurn
-	ld a, b
-	pop bc
-	and a
+	pop af
 	jr nz, .no_endure
 	jr .enduring
 .focus_band
@@ -5028,9 +5027,7 @@ BattleCommand_EatDream: ; 36008
 
 SapHealth: ; 36011
 	; Don't do anything if HP is full
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	ret z
 
 	; get damage
@@ -7838,9 +7835,7 @@ BattleCommand_ResetStats: ; 3710e
 BattleCommand_Heal: ; 3713e
 ; heal
 
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	jr z, .hp_full
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
@@ -8815,9 +8810,7 @@ BattleCommand_HealTime:
 	ld d, a
 	; d=1: heal 100%, d=2: heal 50%, d=3: heal 25%, d=4: heal 12.5%
 
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	jr z, .full
 
 	call GetWeatherAfterCloudNine

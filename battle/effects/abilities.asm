@@ -946,9 +946,7 @@ DrySkinAbility:
 VoltAbsorbAbility:
 WaterAbsorbAbility:
 	call ShowAbilityActivation
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	jr z, .full_hp
 	farcall GetQuarterMaxHP
 	farcall RestoreHP
@@ -1134,9 +1132,7 @@ WeatherRecoveryAbility:
 	call GetWeatherAfterCloudNine
 	cp b
 	ret nz
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	ret z
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_ABILITY
@@ -1572,9 +1568,10 @@ PixilateAbility:
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
 	call SwitchTurn
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
+	push af
+	call SwitchTurn
+	pop af
 	ret nz
 	ld a, $12
 	jp ApplyDamageMod
@@ -1670,9 +1667,7 @@ RunSwitchAbilities:
 	ret
 
 RegeneratorAbility:
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	ret z
 	call ShowAbilityActivation
 	farcall GetThirdMaxHP
