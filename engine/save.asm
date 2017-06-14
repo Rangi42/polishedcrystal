@@ -53,7 +53,7 @@ ChangeBoxSaveGameNoConfirm:
 	push de
 SaveAndChangeBox:
 	call SetWRAMStateForSave
-	call SavingDontTurnOffThePower
+;	call SavingDontTurnOffThePower
 	call SaveBox
 	pop de
 	ld a, e
@@ -172,11 +172,6 @@ AddHallOfFameEntry: ; 14b5f
 	ret
 ; 14b85
 
-SaveGameData: ; 14b85
-	call SaveGameData_
-	ret
-; 14b89
-
 AskOverwriteSaveFile: ; 14b89
 	ld a, [wSaveFileExists]
 	and a
@@ -236,9 +231,9 @@ CompareLoadedAndSavedPlayerID: ; 14bcb
 ; 14be3
 
 _SavingDontTurnOffThePower: ; 14be3
-	call SavingDontTurnOffThePower
+;	call SavingDontTurnOffThePower
 SavedTheGame: ; 14be6
-	call SaveGameData_
+	call SaveGameData
 ;	; wait 32 frames
 ;	ld c, $20
 ;	call DelayFrames
@@ -264,8 +259,12 @@ SavedTheGame: ; 14be6
 ; 14c10
 
 
-SaveGameData_: ; 14c10
-	ld a, 1
+SaveGameData:: ; 14c10
+	ld a, [hVBlank]
+	push af
+	ld a, 2
+	ld [hVBlank], a
+	dec a ; ld a, 1
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
 	call ValidateSave
@@ -290,33 +289,35 @@ SaveGameData_: ; 14c10
 	ld [sBattleTowerChallengeState], a
 .ok
 	call CloseSRAM
+	pop af
+	ld [hVBlank], a
 	ret
 ; 14c6b
 
-SavingDontTurnOffThePower: ; 14c99
-	; Prevent joypad interrupts
-	xor a
-	ld [hJoypadReleased], a
-	ld [hJoypadPressed], a
-	ld [hJoypadSum], a
-	ld [hJoypadDown], a
-;	; Save the text speed setting to the stack
-;	ld a, [Options1]
-;	push af
-;	; Set the text speed to super slow
-;	ld a, $3
-;	ld [Options1], a
-	; SAVING... DON'T TURN OFF THE POWER.
-	ld hl, UnknownText_0x15288
-	call PrintText
-;	; Restore the text speed setting
-;	pop af
-;	ld [Options1], a
-;	; Wait for 16 frames
-;	ld c, $10
-;	call DelayFrames
-	ret
-; 14cbb
+;SavingDontTurnOffThePower: ; 14c99
+;	; Prevent joypad interrupts
+;	xor a
+;	ld [hJoypadReleased], a
+;	ld [hJoypadPressed], a
+;	ld [hJoypadSum], a
+;	ld [hJoypadDown], a
+;;	; Save the text speed setting to the stack
+;;	ld a, [Options1]
+;;	push af
+;;	; Set the text speed to super slow
+;;	ld a, $3
+;;	ld [Options1], a
+;	; SAVING... DON'T TURN OFF THE POWER.
+;	ld hl, UnknownText_0x15288
+;	call PrintText
+;;	; Restore the text speed setting
+;;	pop af
+;;	ld [Options1], a
+;;	; Wait for 16 frames
+;;	ld c, $10
+;;	call DelayFrames
+;	ret
+;; 14cbb
 
 
 ErasePreviousSave: ; 14cbb
