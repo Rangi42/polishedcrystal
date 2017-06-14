@@ -1547,6 +1547,8 @@ Thief:
 	stab
 	damagevariation
 	checkhit
+	; Yes, thief is 100% but this makes Sheer Force and Substitute be handled correctly
+	effectchance
 	hittarget
 	failuretext
 	checkfaint
