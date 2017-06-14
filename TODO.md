@@ -147,7 +147,6 @@ Out-of-battle effects:
 * U-turn switches out
 * Volt Switch switches out
 * Sucker Punch fails if foe is not attacking
-* Thief should either fail when wild Pokémon use it, or only apply during battle
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
