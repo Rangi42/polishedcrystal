@@ -1304,10 +1304,16 @@ CheckTypeMatchup:
 	and a
 	jr z, .end
 
-	; check Air Balloon
+	; check Air Balloon for Ground-type attacks
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp GROUND
+	jr nz, .not_ground
+
 	call CheckAirBalloon
 	jr z, .end
 
+.not_ground
 	farcall CheckNullificationAbilities
 .end
 	pop bc
@@ -3172,8 +3178,7 @@ SpeciesItemBoost: ; 353d1
 	ret nz
 
 ; Double the stat
-	sla l
-	rl h
+	add hl, hl
 	ret
 
 ; 353f6
@@ -3188,8 +3193,7 @@ SandstormSpDefBoost:
 	push hl
 	ld h, b
 	ld l, c
-	sla l
-	rl h
+	add hl, hl
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -3206,8 +3210,7 @@ HailDefenseBoost:
 	push hl
 	ld h, b
 	ld l, c
-	sla l
-	rl h
+	add hl, hl
 	add hl, bc
 	ld b, h
 	ld c, l
