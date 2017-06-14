@@ -1,8 +1,7 @@
 _NamingScreen: ; 0x116b7
 	call DisableSpriteUpdates
 	call NamingScreen
-	call ReturnToMapWithSpeechTextbox
-	ret
+	jp ReturnToMapWithSpeechTextbox
 
 ; 0x116c1
 
@@ -36,8 +35,7 @@ NamingScreen: ; 116c1
 	ld [hMapAnims], a
 	pop af
 	ld [Options1], a
-	call ClearJoypad
-	ret
+	jp ClearJoypad
 
 ; 116f8
 
@@ -54,8 +52,7 @@ NamingScreen: ; 116c1
 	call WaitBGMap
 	call WaitTop
 	call SetPalettes
-	call NamingScreen_InitNameEntry
-	ret
+	jp NamingScreen_InitNameEntry
 
 ; 1171d
 
@@ -107,8 +104,7 @@ endr
 	hlcoord 1, 2
 	ld [hl], a
 .genderless
-	call .StoreMonIconParams
-	ret
+	jp .StoreMonIconParams
 
 ; 11780 (4:5780)
 
@@ -221,8 +217,7 @@ endr
 .not_kris
 	ld a, b
 	depixel 4, 4, 4, 0
-	call _InitSpriteAnimStruct
-	ret
+	jp _InitSpriteAnimStruct
 
 .StoreMonIconParams: ; 1187b (4:587b)
 	ld a, PKMN_NAME_LENGTH - 1
@@ -464,8 +459,7 @@ endr
 	ret
 
 .b
-	call NamingScreen_DeleteCharacter
-	ret
+	jp NamingScreen_DeleteCharacter
 
 .end
 	call NamingScreen_StoreEntry
@@ -480,13 +474,11 @@ endr
 	ld [hl], a
 	jr z, .upper
 	ld de, NameInputLower
-	call NamingScreen_ApplyTextInputMode
-	ret
+	jp NamingScreen_ApplyTextInputMode
 
 .upper
 	ld de, NameInputUpper
-	call NamingScreen_ApplyTextInputMode
-	ret
+	jp NamingScreen_ApplyTextInputMode
 
 .GetCursorPosition: ; 11a0b (4:5a0b)
 	ld hl, wNamingScreenCursorObjectPointer
@@ -1197,13 +1189,11 @@ endr
 	ld [hl], a
 	jr nz, .switch_to_lowercase
 	ld de, MailEntry_Uppercase
-	call .PlaceMailCharset
-	ret
+	jp .PlaceMailCharset
 
 .switch_to_lowercase
 	ld de, MailEntry_Lowercase
-	call .PlaceMailCharset
-	ret
+	jp .PlaceMailCharset
 
 ; called from engine/sprite_anims.asm
 

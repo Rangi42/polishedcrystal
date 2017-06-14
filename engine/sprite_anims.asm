@@ -148,8 +148,7 @@ DoAnimFrame: ; 8d24b
 	ret nz
 	ld [hl], $3
 	ld a, SPRITE_ANIM_FRAMESET_SLOTS_CHANSEY_2
-	call _ReinitSpriteAnimFrame
-	ret
+	jp _ReinitSpriteAnimFrame
 
 .SlotsChanseyEgg: ; 8d43e (23:543e)
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -169,8 +168,7 @@ DoAnimFrame: ; 8d24b
 	ld a, $4
 	ld [wcf64], a
 	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .move_right
 	inc [hl]
@@ -306,8 +304,7 @@ DoAnimFrame: ; 8d24b
 	sub $c
 	ld [hl], a
 	ld de, SFX_SWITCH_POKEMON
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .asm_8d51c
 	xor a
@@ -315,12 +312,10 @@ DoAnimFrame: ; 8d24b
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
-	call .IncrementSpriteAnimStruct0B
-	ret
+	jp .IncrementSpriteAnimStruct0B
 
 .sixteen_five ; 8d526
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 ; 8d52a
 
 .TradeTubeBulge ; 8d52a (23:552a)
@@ -334,12 +329,10 @@ DoAnimFrame: ; 8d24b
 	and $3
 	ret nz
 	ld de, SFX_POKEBALLS_PLACED_ON_TABLE
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .delete
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .TradeMonBubble ; 8d543 (23:5543)
 	farcall TradeAnim_AnimateTrademonInTube
@@ -379,8 +372,7 @@ DoAnimFrame: ; 8d24b
 	ret
 
 .finish_RevealNewMon
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .RadioTuningKnob: ; 8d578 (23:5578)
 	farcall AnimateTuningKnob
@@ -490,8 +482,7 @@ endr
 	ret
 
 .delete_leaf
-	call DeinitializeSprite
-	ret
+	jp DeinitializeSprite
 
 .FlyTo: ; 8d607 (23:5607)
 	ld hl, SPRITEANIMSTRUCT_YCOORD
@@ -547,8 +538,7 @@ endr
 	add hl, bc
 	ld [hl], a
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_SUICUNE_2
-	call _ReinitSpriteAnimFrame
-	ret
+	jp _ReinitSpriteAnimFrame
 
 .IntroPichuWooper ; 8d666 (23:5666)
 	ld hl, SPRITEANIMSTRUCT_0C
@@ -600,8 +590,7 @@ endr
 	cp $40
 	ret nz
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F_2
-	call _ReinitSpriteAnimFrame
-	ret
+	jp _ReinitSpriteAnimFrame
 
 .IntroSuicuneAway ; 8d6ae (23:56ae)
 	ld hl, SPRITEANIMSTRUCT_YCOORD
@@ -642,10 +631,8 @@ endr
 ; 8d6de
 
 .Sprites_Sine: ; 8d6de (23:56de)
-	call Sprites_Sine
-	ret
+	jp Sprites_Sine
 
 .Sprites_Cosine: ; 8d6e2 (23:56e2)
-	call Sprites_Cosine
-	ret
+	jp Sprites_Cosine
 ; 8d6e6 (23:56e6)

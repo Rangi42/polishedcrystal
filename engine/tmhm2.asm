@@ -286,8 +286,7 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 CountTMsHMs: ; 2cb2a (b:4b2a)
 	ld hl, TMsHMs
 	ld b, ((NUM_TMS + NUM_HMS) + 7) / 8
-	call CountSetBits
-	ret
+	jp CountSetBits
 
 InnerCheckTMHM:
 	and a

@@ -190,13 +190,11 @@ endr
 
 .DontHaveThatMuchToDeposit:
 	ld hl, UnknownText_0x1667b
-	call PrintText
-	ret
+	jp PrintText
 
 .CantDepositThatMuch:
 	ld hl, UnknownText_0x16680
-	call PrintText
-	ret
+	jp PrintText
 
 .CancelDeposit:
 	ld a, $7
@@ -258,13 +256,11 @@ endr
 
 .InsufficientFundsInBank:
 	ld hl, UnknownText_0x16671
-	call PrintText
-	ret
+	jp PrintText
 
 .NotEnoughRoomInWallet:
 	ld hl, UnknownText_0x16676
-	call PrintText
-	ret
+	jp PrintText
 
 .CancelWithdraw:
 	ld a, $7
@@ -330,8 +326,7 @@ DSTChecks: ; 16439
 	call .ClearBox
 	bccoord 1, 14
 	ld hl, .Text_LostInstructionBooklet
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 
 .loop
 	call .ClearBox
@@ -350,8 +345,7 @@ DSTChecks: ; 16439
 	call .ClearBox
 	bccoord 1, 14
 	ld hl, .Text_SetClockBack
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 
 .SetDST:
 	ld hl, .Text_SwitchToDST
@@ -365,8 +359,7 @@ DSTChecks: ; 16439
 	call .ClearBox
 	bccoord 1, 14
 	ld hl, .Text_SetClockForward
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 ; 164b9
 
 .SetClockForward: ; 164b9
@@ -403,8 +396,7 @@ DSTChecks: ; 16439
 .ClearBox: ; 164ea
 	hlcoord 1, 14
 	lb bc, 3, 18
-	call ClearBox
-	ret
+	jp ClearBox
 ; 164f4
 
 .Text_AdjustClock: ; 0x164f4
@@ -480,14 +472,12 @@ Mom_ContinueMenuSetup: ; 1651a
 	lb bc, PRINTNUM_MONEY | PRINTNUM_LEADINGZEROS | 3, 6
 	call PrintNum
 	call UpdateSprites
-	call LoadEDTile
-	ret
+	jp LoadEDTile
 ; 1656b
 
 Mom_Wait10Frames: ; 1656b
 	ld c, 10
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 16571
 
 Mom_WithdrawDepositMenuJoypad: ; 16571

@@ -41,23 +41,19 @@ MoveDeletion:
 	call PlaySFX
 	call WaitSFX
 	ld hl, .MoveDeletedText
-	call PrintText
-	ret
+	jp PrintText
 
 .egg
 	ld hl, .EggText
-	call PrintText
-	ret
+	jp PrintText
 
 .declined
 	ld hl, .DeclinedDeletionText
-	call PrintText
-	ret
+	jp PrintText
 
 .onlyonemove
 	ld hl, .OnlyOneMoveText
-	call PrintText
-	ret
+	jp PrintText
 
 .OnlyOneMoveText: ; 0x2c5d1
 	; That #MON knows only one move.

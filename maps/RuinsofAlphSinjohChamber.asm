@@ -126,19 +126,16 @@ PlayUnownSound1:
 	call SFXChannelsOff
 	ld d, 0
 	ld e, SFX_INTRO_UNOWN_1
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 PlayUnownSound2:
 	call SFXChannelsOff
 	ld d, 0
 	ld e, SFX_INTRO_UNOWN_2
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 PlayUnownSound3:
 	call SFXChannelsOff
 	ld d, 0
 	ld e, SFX_INTRO_UNOWN_3
-	call PlaySFX
-	ret
+	jp PlaySFX

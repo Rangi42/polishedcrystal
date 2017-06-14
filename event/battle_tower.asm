@@ -198,8 +198,7 @@ CopyBTTrainerToTemp: ; 1704a2
 	ld [sBattleTowerChallengeState], a
 	ld hl, sNrOfBeatenBattleTowerTrainers
 	inc [hl]
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 1704ca
 
 Special_BattleTower_ResetTrainersSRAM: ; 1706d6 (5c:46d6)
@@ -211,8 +210,7 @@ Special_BattleTower_ResetTrainersSRAM: ; 1706d6 (5c:46d6)
 	call ByteFill
 	xor a
 	ld [sNrOfBeatenBattleTowerTrainers], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	call Special_BattleTower_CheckSaveFileExistsAndIsYours
@@ -225,8 +223,7 @@ Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	ld a, [sBattleTowerNewSaveFile]
 	and $2
 	ld [ScriptVar], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_GetChallengeState: ; 170778 (5c:4778)
 	ld hl, sBattleTowerChallengeState
@@ -234,8 +231,7 @@ Special_BattleTower_GetChallengeState: ; 170778 (5c:4778)
 	call GetSRAMBank
 	ld a, [hl]
 	ld [ScriptVar], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_SetChallengeState:
 	ld a, [ScriptVar]
@@ -244,8 +240,7 @@ Special_BattleTower_SetChallengeState:
 	call GetSRAMBank
 	ld a, c
 	ld [sBattleTowerChallengeState], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_MarkNewSaveFile: ; 170788 (5c:4788)
 	ld a, BANK(sBattleTowerNewSaveFile)
@@ -253,8 +248,7 @@ Special_BattleTower_MarkNewSaveFile: ; 170788 (5c:4788)
 	ld a, [sBattleTowerNewSaveFile]
 	or $2
 	ld [sBattleTowerNewSaveFile], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_SaveLevelGroup: ; 170868 (5c:4868)
 	ld a, BANK(sBTChoiceOfLevelGroup)
@@ -267,8 +261,7 @@ Special_BattleTower_SaveLevelGroup: ; 170868 (5c:4868)
 	ld [sBTChoiceOfLevelGroup], a
 	pop af
 	ld [rSVBK], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_LoadLevelGroup: ; 170881 (5c:4881)
 	ld a, BANK(sBTChoiceOfLevelGroup)
@@ -281,8 +274,7 @@ Special_BattleTower_LoadLevelGroup: ; 170881 (5c:4881)
 	ld [wBTChoiceOfLvlGroup], a
 	pop af
 	ld [rSVBK], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Special_BattleTower_CheckSaveFileExistsAndIsYours: ; 17089a
 	ld a, [wSaveFileExists]
@@ -302,8 +294,7 @@ Special_BattleTower_CheckSaveFileExistsAndIsYours: ; 17089a
 Special_BattleTower_MaxVolume: ; 1708b1 (5c:48b1)
 	xor a
 	ld [MusicFade], a
-	call MaxVolume
-	ret
+	jp MaxVolume
 
 Special_BattleTower_BeginChallenge: ; 170a9c (5c:4a9c)
 	xor a
@@ -487,8 +478,7 @@ Special_BattleTower_MainMenu: ; 17d224
 	ld hl, MenuDataHeader_ChallengeExplanationCancel
 	call LoadMenuDataHeader
 	call ChallengeExplanationCancelMenu
-	call CloseWindow
-	ret
+	jp CloseWindow
 ; 17d246
 
 ChallengeExplanationCancelMenu: ; 17d246
@@ -571,8 +561,7 @@ JumpText_ExcuseMeYoureNotReady: ; 0x8b22c
 
 BattleTower_PleaseReturnWhenReady: ; 8b231
 	ld hl, .PleaseReturnWhenReady
-	call PrintText
-	ret
+	jp PrintText
 ; 8b238
 
 .PleaseReturnWhenReady: ; 0x8b238
@@ -717,8 +706,7 @@ Function_PartyCountEq3: ; 8b2da
 
 Function_PartySpeciesAreUnique: ; 8b2e2
 	ld hl, PartyMon1Species
-	call VerifyUniqueness
-	ret
+	jp VerifyUniqueness
 ; 8b2e9
 
 VerifyUniqueness: ; 8b2e9
@@ -787,8 +775,7 @@ VerifyUniqueness: ; 8b2e9
 
 Function_PartyItemsAreUnique: ; 8b32a
 	ld hl, PartyMon1Item
-	call VerifyUniqueness
-	ret
+	jp VerifyUniqueness
 ; 8b331
 
 Function_HasPartyAnEgg: ; 8b331

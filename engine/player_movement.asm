@@ -839,8 +839,7 @@ DoPlayerMovement:: ; 80000
 	call CheckSFX
 	ret c
 	ld de, SFX_BUMP
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 803f9
 
 .GetOutOfWater: ; 803f9

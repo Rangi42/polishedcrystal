@@ -82,8 +82,7 @@ _KrisDecorationMenu: ; 0x2675c
 	ld hl, StringBuffer2
 	ld de, wd002
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 .ClearStringBuffer2: ; 26822 (9:6822)
 	ld hl, StringBuffer2
@@ -91,8 +90,7 @@ _KrisDecorationMenu: ; 0x2675c
 	ld [hli], a
 	ld bc, ITEM_NAME_LENGTH - 1
 	ld a, -1
-	call ByteFill
-	ret
+	jp ByteFill
 
 .AppendToStringBuffer2: ; 26830 (9:6830)
 	ld hl, StringBuffer2
@@ -144,8 +142,7 @@ Deco_FillTempWithMinusOne: ; 2686c
 	ld [hli], a
 	ld a, -1
 	ld bc, $10
-	call ByteFill
-	ret
+	jp ByteFill
 ; 2687a
 
 CheckAllDecorationFlags: ; 2687a
@@ -383,8 +380,7 @@ PopulateDecoCategoryMenu: ; 2695b
 	call DoDecorationAction2
 
 .no_action_1
-	call ExitMenu
-	ret
+	jp ExitMenu
 
 .beyond_eight
 	ld hl, wd002
@@ -408,13 +404,11 @@ PopulateDecoCategoryMenu: ; 2695b
 	call DoDecorationAction2
 
 .no_action_2
-	call ExitMenu
-	ret
+	jp ExitMenu
 
 .empty
 	ld hl, .Text_nothing_to_choose
-	call MenuTextBoxBackup
-	ret
+	jp MenuTextBoxBackup
 ; 269b0
 
 .Text_nothing_to_choose: ; 0x269b0
@@ -461,8 +455,7 @@ PopulateDecoCategoryMenu: ; 2695b
 GetDecorationData: ; 269dd
 	ld hl, DecorationAttributes
 	ld bc, 6
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 269e7
 
 GetDecorationName: ; 269e7
@@ -470,8 +463,7 @@ GetDecorationName: ; 269e7
 	call GetDecorationData
 	call GetDecoName
 	pop hl
-	call CopyName2
-	ret
+	jp CopyName2
 ; 269f3
 
 DecorationMenuFunction: ; 269f3
@@ -480,8 +472,7 @@ DecorationMenuFunction: ; 269f3
 	call GetDecorationData
 	call GetDecoName
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 26a02
 
 DoDecorationAction2: ; 26a02
@@ -528,8 +519,7 @@ DecorationFlagAction: ; 26a3b
 	push bc
 	call GetDecorationFlag
 	pop bc
-	call EventFlagAction
-	ret
+	jp EventFlagAction
 ; 26a44
 
 GetDecorationSprite: ; 26a44
@@ -1084,8 +1074,7 @@ GetDecorationName_c_de: ; 26eea
 	ld a, c
 	ld h, d
 	ld l, e
-	call GetDecorationName
-	ret
+	jp GetDecorationName
 ; 26ef1
 
 DecorationFlagAction_c: ; 26ef1
@@ -1379,8 +1368,7 @@ ToggleDecorationsVisibility: ; 27043
 	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 	ld hl, VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
 	ld a, [BigDoll]
-	call ToggleDecorationVisibility
-	ret
+	jp ToggleDecorationVisibility
 ; 27074
 
 ToggleDecorationVisibility: ; 27074

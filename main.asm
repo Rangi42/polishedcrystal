@@ -104,8 +104,7 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	xor a
 	ld [hSCX], a
 	ld [hSCY], a
-	call ApplyBGMapAnchorToObjects
-	ret
+	jp ApplyBGMapAnchorToObjects
 
 .LoadBGMapAddrIntoHRAM: ; 64b9
 	ld [hBGMapAddress + 1], a
@@ -253,8 +252,7 @@ BugContest_SetCaughtContestMon: ; e6ce
 	ld [wd265], a
 	call GetPokemonName
 	ld hl, .caughttext
-	call PrintText
-	ret
+	jp PrintText
 
 .generatestats ; e6fd
 	ld a, [TempEnemyMonSpecies]
@@ -428,8 +426,7 @@ SetMemEvent: ; 1364f
 	ld d, [hl]
 	ld e, a
 	ld b, SET_FLAG
-	call EventFlagAction
-	ret
+	jp EventFlagAction
 
 CheckFacingTileForStd:: ; 1365b
 ; Checks to see if the tile you're facing has a std script associated with it.  If so, executes the script and returns carry.
@@ -746,8 +743,7 @@ PlaceMenuItemName: ; 0x24ab4
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 
 PlaceMenuTMHMName:
 	push de
@@ -755,8 +751,7 @@ PlaceMenuTMHMName:
 	ld [wNamedObjectIndexBuffer], a
 	call GetTMHMName
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 
 PlaceMenuItemQuantity: ; 0x24ac3
 	push de
@@ -800,8 +795,7 @@ PlaceMoneyDataHeader: ; 24b01
 	add hl, de
 	ld de, Money
 	lb bc, PRINTNUM_MONEY | 3, 7
-	call PrintNum
-	ret
+	jp PrintNum
 
 MenuDataHeader_0x24b15: ; 0x24b15
 	db $40 ; flags
@@ -832,8 +826,7 @@ Special_DisplayCoinCaseBalance: ; 24b25
 	ld de, Coins
 	lb bc, 2, 5
 	hlcoord 13, 1
-	call PrintNum
-	ret
+	jp PrintNum
 
 Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	hlcoord 5, 0
@@ -853,8 +846,7 @@ Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	hlcoord 14, 3
 	ld de, Coins
 	lb bc, 2, 5
-	call PrintNum
-	ret
+	jp PrintNum
 
 MoneyString: ; 24b83
 	db "Money@"
@@ -867,8 +859,7 @@ StartMenu_DrawBugContestStatusBox: ; 24bdc
 	hlcoord 0, 0
 	ld b, 5
 	ld c, 17
-	call TextBox
-	ret
+	jp TextBox
 
 StartMenu_PrintBugContestStatus: ; 24be7
 	ld hl, Options1
@@ -992,8 +983,7 @@ PadCoords_de: ; 27092
 	ld a, e
 	add 4
 	ld e, a
-	call GetBlockLocation
-	ret
+	jp GetBlockLocation
 
 LevelUpHappinessMod: ; 2709e
 	ld a, [CurPartyMon]
@@ -1386,8 +1376,7 @@ ShowLinkBattleParticipants: ; 2ee18
 	ld c, 150
 	call DelayFrames
 	call ClearTileMap
-	call ClearSprites
-	ret
+	jp ClearSprites
 
 FindFirstAliveMonAndStartBattle: ; 2ee2f
 	xor a
@@ -1883,8 +1872,7 @@ AnimateDexSearchSlowpoke: ; 441cf
 	ld [wDexSearchSlowpokeFrame], a
 	call DoDexSearchSlowpokeFrame
 	ld c, 32
-	call DelayFrames
-	ret
+	jp DelayFrames
 
 .FrameIDs: ; 441fc
 	; frame ID, duration
@@ -2120,8 +2108,7 @@ DisplayDexEntry: ; 4424d
 	inc de
 	pop af
 	hlcoord 2, 11
-	call FarString
-	ret
+	jp FarString
 
 ; Metric conversion code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
@@ -2273,8 +2260,7 @@ Special_MoveTutor: ; 4925b
 	ld a, -1
 	ld [ScriptVar], a
 .quit
-	call CloseSubmenu
-	ret
+	jp CloseSubmenu
 
 .GetMoveTutorMove: ; 492a5
 	ld a, [ScriptVar]
@@ -2499,8 +2485,7 @@ EmptyAllSRAMBanks: ; 4cf1f
 	ld a, $2
 	call .EmptyBank
 	ld a, $3
-	call .EmptyBank
-	ret
+	jp .EmptyBank
 
 .EmptyBank: ; 4cf34
 	call GetSRAMBank
@@ -2667,8 +2652,7 @@ LinkMonStatsScreen: ; 4d319
 	farcall Link_WaitBGMap
 	farcall InitTradeSpeciesList
 	farcall SetTradeRoomBGPals
-	call WaitBGMap2
-	ret
+	jp WaitBGMap2
 
 Link_WaitBGMap: ; 4d354
 	call WaitBGMap
@@ -2766,8 +2750,7 @@ _ResetClock: ; 4d3b1
 	ld [sRTCStatusFlags], a
 	call CloseSRAM
 	ld hl, .text_okay
-	call PrintText
-	ret
+	jp PrintText
 
 .text_okay ; 0x4d3fe
 	; Select CONTINUE & reset settings.
@@ -2841,8 +2824,7 @@ _ResetInitialOptions:
 	call GetSRAMBank
 	ld a, [InitialOptions]
 	ld [sOptions + 6], a ; sInitialOptions
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .Text_ResetInitialOptions: ; 0x4d580
 	; Reset the initial game options?
@@ -3505,13 +3487,11 @@ SetEggMonCaughtData: ; 4dbb8 (13:5bb8)
 
 _FindGreaterThanThatLevel: ; 4dbd2
 	ld hl, PartyMon1Level
-	call FindGreaterThanThatLevel
-	ret
+	jp FindGreaterThanThatLevel
 
 _FindAtLeastThatHappy: ; 4dbd9
 	ld hl, PartyMon1Happiness
-	call FindAtLeastThatHappy
-	ret
+	jp FindAtLeastThatHappy
 
 _FindThatSpecies: ; 4dbe0
 	ld hl, PartyMon1Species
@@ -3685,8 +3665,7 @@ CatchTutorial:: ; 4e554
 	ld hl, ExtraName
 	ld de, PlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 .LoadDudeData: ; 4e5b7 (13:65b7)
 	ld hl, wDudeNumItems
@@ -3745,8 +3724,7 @@ InitDisplayForHallOfFame: ; 4e881
 	ld hl, .SavingRecordDontTurnOff
 	call PrintText
 	call WaitBGMap2
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 .SavingRecordDontTurnOff: ; 0x4e8bd
 	; SAVING RECORD… DON'T TURN OFF!
@@ -3782,8 +3760,7 @@ InitDisplayForLeafCredits: ; 4e8c2
 	ld [hSCX], a
 	call EnableLCD
 	call WaitBGMap2
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 ResetDisplayBetweenHallOfFameMons: ; 4e906
 	ld a, [rSVBK]
@@ -4725,8 +4702,7 @@ _SwitchPartyMons:
 	dec c
 	jr nz, .gfx_loop
 	ld de, SFX_SWITCH_POKEMON
-	call WaitPlaySFX
-	ret
+	jp WaitPlaySFX
 
 .SwapMonAndMail: ; 50f62 (14:4f62)
 	push hl
@@ -4830,8 +4806,7 @@ _SwitchPartyMons:
 
 .CopyName: ; 51039 (14:5039)
 	ld bc, NAME_LENGTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 INCLUDE "gfx/load_pics.asm"
 
@@ -4897,8 +4872,7 @@ InsertPokemonIntoParty: ; 5138b
 	ld hl, PartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld de, wBufferMon
-	call InsertDataIntoBoxOrParty
-	ret
+	jp InsertDataIntoBoxOrParty
 
 InsertSpeciesIntoBoxOrParty: ; 513cb
 	inc [hl]
@@ -4966,8 +4940,7 @@ InsertDataIntoBoxOrParty: ; 513e0
 	ld d, h
 	ld e, l
 	pop hl
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 BaseData::
 INCLUDE "data/base_stats.asm"
@@ -5210,8 +5183,7 @@ GetCardPic: ; 8833e
 	ld de, VTiles2 tile $00
 	ld bc, $23 tiles
 	ld a, BANK(ChrisCardPic) ; BANK(KrisCardPic)
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 
 ChrisCardPic: ; 88365
 INCBIN "gfx/misc/chris_card.5x7.2bpp"
@@ -5765,8 +5737,7 @@ _LinkBattleSendReceiveAction: ; 100a09
 	call .StageForSend
 	ld [wLinkBattleSentAction], a
 	farcall PlaceWaitingText
-	call .LinkBattle_SendReceiveAction
-	ret
+	jp .LinkBattle_SendReceiveAction
 ; 100a2e
 
 .StageForSend: ; 100a2e
@@ -5951,8 +5922,7 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	ld de, String_PM
 .place_am_pm
 	inc hl
-	call PlaceString
-	ret
+	jp PlaceString
 
 String_AM: db "AM@" ; 1dd6fc
 String_PM: db "PM@" ; 1dd6ff
@@ -5962,8 +5932,7 @@ INCLUDE "engine/diploma.asm"
 LoadQuestionMarkPic: ; 1de0d7
 	ld hl, .QuestionMarkLZ
 	ld de, sScratch
-	call Decompress
-	ret
+	jp Decompress
 
 .QuestionMarkLZ: ; 1de0e1
 INCBIN "gfx/pics/questionmark/front.2bpp.lz"
@@ -6053,8 +6022,7 @@ DrawPokedexSearchResultsWindow: ; 1de1d1 (77:61d1)
 	call ClearBox
 	ld de, .esults_D
 	hlcoord 0, 12
-	call PlaceString
-	ret
+	jp PlaceString
 
 .esults_D ; 1de23c
 ; (SEARCH R)
@@ -6119,8 +6087,7 @@ _DudeAutoInput_DownA: ; 1de294
 
 _DudeAutoInput: ; 1de299
 	ld a, BANK(DudeAutoInputs)
-	call StartAutoInput
-	ret
+	jp StartAutoInput
 
 DudeAutoInputs:
 
@@ -6170,8 +6137,7 @@ TownMap_ConvertLineBreakCharacters: ; 1de2c5
 .end
 	ld de, StringBuffer1
 	hlcoord 9, 0
-	call PlaceString
-	ret
+	jp PlaceString
 
 PokegearGFX: ; 1de2e4
 INCBIN "gfx/misc/pokegear.2bpp.lz"
@@ -6249,8 +6215,7 @@ PlayFaintingCry:
 	ld a, 1
 	ld [wStereoPanningMask], a
 	farcall _PlayCryHeader
-	call WaitSFX
-	ret
+	jp WaitSFX
 
 SECTION "Move Reminder", ROMX
 

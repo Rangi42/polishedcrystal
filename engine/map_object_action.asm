@@ -9,8 +9,7 @@
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call _hl_
-	ret
+	jp _hl_
 ; 445f
 
 Pointers445f: ; 445f

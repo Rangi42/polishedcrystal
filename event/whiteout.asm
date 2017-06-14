@@ -55,8 +55,7 @@ OverworldBGMap: ; 124fa
 	call ClearScreen
 	call WaitBGMap2
 	call HideSprites
-	call RotateThreePalettesLeft
-	ret
+	jp RotateThreePalettesLeft
 ; 1250a
 
 BattleBGMap: ; 1250a

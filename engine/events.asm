@@ -165,8 +165,7 @@ NextOverworldFrame: ; 967b7
 	and a
 	ret z
 	ld c, a
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 967c1
 
 HandleMapTimeAndJoypad: ; 967c1
@@ -176,15 +175,13 @@ HandleMapTimeAndJoypad: ; 967c1
 
 	call UpdateTime
 	call GetJoypad
-	call TimeOfDayPals
-	ret
+	jp TimeOfDayPals
 ; 967d1
 
 HandleMapObjects: ; 967d1
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
-	call _CheckObjectEnteringVisibleRange
-	ret
+	jp _CheckObjectEnteringVisibleRange
 ; 967e1
 
 HandleMapBackground: ; 967e1
@@ -369,8 +366,7 @@ SetUpFiveStepWildEncounterCooldown: ; 968d1
 ; 968d7
 
 Dummy_CheckScriptFlags3Bit5: ; 968e4
-	call CheckBit5_ScriptFlags3
-	ret
+	jp CheckBit5_ScriptFlags3
 ; 968ec
 
 DoMapTrigger: ; 968ec

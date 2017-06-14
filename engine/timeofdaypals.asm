@@ -120,8 +120,7 @@ FadeInPalettes:: ; 8c079
 	ld c, $12
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsDecHL
-	ret
+	jp ConvertTimePalsDecHL
 ; 8c084
 
 FadeOutPalettes:: ; 8c084
@@ -129,8 +128,7 @@ FadeOutPalettes:: ; 8c084
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsIncHL
-	ret
+	jp ConvertTimePalsIncHL
 ; 8c092
 
 Special_BattleTower_Fade: ; 8c092
@@ -154,16 +152,14 @@ Special_FadeInQuickly: ; 8c0ab
 	ld c, $0
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsIncHL
-	ret
+	jp ConvertTimePalsIncHL
 ; 8c0b6
 
 Special_FadeBlackQuickly: ; 8c0b6
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsDecHL
-	ret
+	jp ConvertTimePalsDecHL
 ; 8c0c1
 
 

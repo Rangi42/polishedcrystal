@@ -31,8 +31,7 @@ SaveAfterLinkTrade: ; 14a58
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
 	farcall SaveRTC
-	call ClearWRAMStateAfterSave
-	ret
+	jp ClearWRAMStateAfterSave
 ; 14a83
 
 ChangeBoxSaveGame: ; 14a83 (5:4a83)
@@ -115,8 +114,7 @@ MovePkmnWOMail_InsertMon_SaveGame: ; 14ad5
 	ld de, SFX_SAVE
 	call PlaySFX
 	ld c, 24
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 14b34
 
 StartMovePkmnWOMail_SaveGame: ; 14b34
@@ -362,8 +360,7 @@ HallOfFame_InitSaveIfNeeded: ; 14da0
 	ld a, [wSavedAtLeastOnce]
 	and a
 	ret nz
-	call ErasePreviousSave
-	ret
+	jp ErasePreviousSave
 ; 14da9
 
 ValidateSave: ; 14da9
@@ -430,8 +427,7 @@ SaveChecksum: ; 14e13
 	ld [sChecksum + 0], a
 	ld a, d
 	ld [sChecksum + 1], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14e2d
 
 ValidateBackupSave: ; 14e2d
@@ -441,8 +437,7 @@ ValidateBackupSave: ; 14e2d
 	ld [s0_b208], a
 	ld a, " "
 	ld [s0_bf0f], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14e40
 
 SaveBackupOptions: ; 14e40
@@ -492,8 +487,7 @@ SaveBackupChecksum: ; 14e8b
 	ld [sBackupChecksum + 0], a
 	ld a, d
 	ld [sBackupChecksum + 1], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14ea5
 
 
@@ -558,8 +552,7 @@ TryLoadSaveData: ; 14f1c
 	ld de, StatusFlags
 	ld a, [hl]
 	ld [de], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .backup
 	call CheckBackupSaveFile
@@ -577,8 +570,7 @@ TryLoadSaveData: ; 14f1c
 	ld de, StatusFlags
 	ld a, [hl]
 	ld [de], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .corrupt
 	ld hl, DefaultOptions
@@ -621,8 +613,7 @@ CheckPrimarySaveFile: ; 14f84
 	ld [wSaveFileExists], a
 
 .nope
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14faf
 
 CheckBackupSaveFile: ; 14faf
@@ -642,8 +633,7 @@ CheckBackupSaveFile: ; 14faf
 	ld [wSaveFileExists], a
 
 .nope
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14fd7
 
 
@@ -667,8 +657,7 @@ LoadPlayerData: ; 14fd7 (5:4fd7)
 	ld a, BATTLETOWER_WON_CHALLENGE
 	ld [sBattleTowerChallengeState], a
 .not_4
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 LoadPokemonData: ; 1500c
 	ld a, BANK(sPokemonData)

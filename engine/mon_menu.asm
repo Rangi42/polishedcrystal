@@ -52,8 +52,7 @@ MonSubmenu: ; 24d19
 	call MonMenuLoop
 	ld [MenuSelection], a
 
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 24d3f
 
 .MenuDataHeader: ; 24d3f
@@ -74,8 +73,7 @@ MonSubmenu: ; 24d19
 	sub b
 	inc a
 	ld [wMenuBorderTopCoord], a
-	call MenuBox
-	ret
+	jp MenuBox
 ; 24d59
 
 MonMenuLoop: ; 24d59
@@ -144,8 +142,7 @@ GetMonMenuString: ; 24db0
 	inc hl
 	ld a, [hl]
 	ld [wd265], a
-	call GetMoveName
-	ret
+	jp GetMoveName
 
 .NotMove:
 	inc hl
@@ -221,8 +218,7 @@ GetMonSubmenuItems: ; 24dd4
 	call AddMonMenuItem
 
 .ok2
-	call TerminateMonSubmenu
-	ret
+	jp TerminateMonSubmenu
 
 .egg
 	ld a, MONMENU_STATS
@@ -261,8 +257,7 @@ ResetMonSubmenu: ; 24e68
 	ld [Buffer1], a
 	ld hl, Buffer2
 	ld bc, NUM_MON_SUBMENU_ITEMS + 1
-	call ByteFill
-	ret
+	jp ByteFill
 ; 24e76
 
 TerminateMonSubmenu: ; 24e76

@@ -66,8 +66,7 @@ else
 	ld [hRTCDayHi], a
 
 ; unlatch clock / disable clock r/w
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 endc
 ; 5e8
@@ -287,8 +286,7 @@ RecordRTCStatus:: ; 6d3
 	pop af
 	or [hl]
 	ld [hl], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 6e3
 
 CheckRTCStatus:: ; 6e3
@@ -296,6 +294,5 @@ CheckRTCStatus:: ; 6e3
 	ld a, BANK(sRTCStatusFlags)
 	call GetSRAMBank
 	ld a, [sRTCStatusFlags]
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 6ef

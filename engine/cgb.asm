@@ -215,8 +215,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld a, $5
 	call FarCopyWRAM
 
-	call ApplyAttrMap
-	ret
+	jp ApplyAttrMap
 ; 8e85
 
 
@@ -1012,8 +1011,7 @@ endr
 
 	call WipeAttrMap
 	call ApplyAttrMap
-	call ApplyPals
-	ret
+	jp ApplyPals
 ; 9521
 
 .GameFreakLogoPalette:
@@ -1045,8 +1043,7 @@ _CGB_TradeTube: ; 9555
 	ld hl, .TradeTubeBluePalette
 	call LoadHLPaletteIntoDE
 
-	call WipeAttrMap
-	ret
+	jp WipeAttrMap
 ; 9578
 
 .TradeTubeBluePalette:

@@ -744,8 +744,7 @@ MapObjectMovementPattern: ; 47dd
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_03
-	call IncrementObjectMovementByteIndex
-	ret
+	jp IncrementObjectMovementByteIndex
 
 .MovementSpinTurnLeft:
 	ld de, .DirectionData_Counterclockwise
@@ -777,8 +776,7 @@ MapObjectMovementPattern: ; 47dd
 	ld a, [hl]
 	pop hl
 	ld [hl], a
-	call DecrementObjectMovementByteIndex
-	ret
+	jp DecrementObjectMovementByteIndex
 
 .MovementShadow:
 	call ._MovementShadow_Grass_Emote_BoulderDust
@@ -1059,8 +1057,7 @@ NPCJump: ; 4b86
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res 3, [hl]
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 
 .Land:
 	call AddStepVector
@@ -1102,8 +1099,7 @@ PlayerJump: ; 4bbf
 	ld hl, wPlayerStepFlags
 	set 6, [hl]
 	set 4, [hl]
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 
 .initland
 	call GetNextTile
@@ -1151,8 +1147,7 @@ TeleportFrom: ; 4c18
 	add hl, bc
 	dec [hl]
 	ret nz
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 
 .InitSpinRise:
 	ld hl, OBJECT_STEP_FRAME
@@ -1215,8 +1210,7 @@ TeleportTo: ; 4c89
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 ; 4caa
 
 .DoWait:
@@ -1235,8 +1229,7 @@ TeleportTo: ; 4c89
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 ; 4cc9
 
 .DoDescent:
@@ -1263,8 +1256,7 @@ TeleportTo: ; 4c89
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 ; 4cf5
 
 .DoFinalSpin:
@@ -1671,8 +1663,7 @@ StepType14: ; 4f33
 	ret
 
 .ok
-	call DeleteMapObject
-	ret
+	jp DeleteMapObject
 
 .GetSign:
 	ld hl, OBJECT_30
@@ -1755,8 +1746,7 @@ Function5000: ; unscripted?
 
 GetMovementByte:
 	ld hl, wMovementDataPointer
-	call _GetMovementByte
-	ret
+	jp _GetMovementByte
 ; 5015
 
 GetMovementPerson: ; 503d
@@ -2070,8 +2060,7 @@ Function5602: ; 5602, called at battle start
 	jr z, .ok
 	call Function5629 ; respawn opponent
 .ok
-	call _UpdateSprites
-	ret
+	jp _UpdateSprites
 ; 561d
 
 Function561d: ; 561d
@@ -2096,8 +2085,7 @@ Function5629: ; 5629
 	call GetObjectStruct
 	call DoesObjectHaveASprite
 	ret z
-	call Function5673
-	ret
+	jp Function5673
 ; 5645
 
 Function5645: ; 5645
@@ -2159,8 +2147,7 @@ Function5688: ; 5688
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld [hl], a
-	call UpdateTallGrassFlags
-	ret
+	jp UpdateTallGrassFlags
 ; 56a3
 
 Function56a3: ; 56a3
@@ -2348,8 +2335,7 @@ RefreshPlayerSprite: ; 579d
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown
-	call .SpawnInCustomFacing
-	ret
+	jp .SpawnInCustomFacing
 ; 57bc
 
 .TryResetPlayerAction: ; 57bc
@@ -2379,8 +2365,7 @@ SpawnInFacingDown: ; 57d9
 	xor a
 ContinueSpawnFacing: ; 57db
 	ld bc, PlayerStruct
-	call SetSpriteDirection
-	ret
+	jp SetSpriteDirection
 ; 57e2
 
 SetPlayerPalette: ; 57e2
@@ -2683,8 +2668,7 @@ PRIORITY_HIGH EQU $30
 	ld c, PRIORITY_NORM
 	call .InitSpritesByPriority
 	ld c, PRIORITY_LOW
-	call .InitSpritesByPriority
-	ret
+	jp .InitSpritesByPriority
 
 .DeterminePriorities:
 	xor a

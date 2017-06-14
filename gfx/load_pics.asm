@@ -609,8 +609,7 @@ PadFrontpic: ; 512ab
 	jr nz, .five_loop
 	ld c, 7 tiles
 	xor a
-	call .Fill
-	ret
+	jp .Fill
 
 .Fill:
 	ld [hli], a

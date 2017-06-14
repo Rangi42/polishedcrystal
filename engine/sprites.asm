@@ -670,8 +670,7 @@ AnimateEndOfExpBar: ; 8e79d
 	inc d
 	dec c
 	jr nz, .loop
-	call ClearSprites
-	ret
+	jp ClearSprites
 ; 8e7c6
 
 .AnimateFrame: ; 8e7c6

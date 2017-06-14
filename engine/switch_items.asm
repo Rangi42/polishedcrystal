@@ -205,8 +205,7 @@ ItemSwitch_GetNthItem: ; 24a5c (9:4a5c)
 	ld l, a
 	inc hl
 	pop af
-	call AddNTimes
-	ret
+	jp AddNTimes
 
 Function24a6c: ; 24a6c (9:4a6c)
 	push hl

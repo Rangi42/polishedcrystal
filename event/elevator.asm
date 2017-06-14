@@ -24,8 +24,7 @@ Elevator:: ; 1342d
 	ld [wElevatorPointerLo], a
 	ld a, d
 	ld [wElevatorPointerHi], a
-	call .LoadFloors
-	ret
+	jp .LoadFloors
 ; 1345a
 
 .LoadFloors: ; 1345a
@@ -115,8 +114,7 @@ Elevator_GoToFloor: ; 134c0
 	ld de, BackupWarpNumber
 	ld a, [wElevatorPointerBank]
 	ld bc, 3
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 ; 134dd
 
 Elevator_AskWhichFloor: ; 134dd
@@ -184,8 +182,7 @@ Elevator_GetCurrentFloorString: ; 1353f
 	add hl, de
 	ld a, [hl]
 	pop de
-	call GetFloorString
-	ret
+	jp GetFloorString
 ; 13550
 
 Elevator_MenuDataHeader: ; 0x13550

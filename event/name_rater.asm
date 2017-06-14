@@ -79,8 +79,7 @@ NameRater: ; fb6ed
 	ld hl, NameRaterEggText
 
 .done
-	call PrintText
-	ret
+	jp PrintText
 ; fb78a
 
 CheckIfMonIsYourOT: ; fb78a

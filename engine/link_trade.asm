@@ -6,16 +6,14 @@ __LoadTradeScreenBorder: ; 16d421
 	ld de, LinkCommsBorderGFX
 	ld hl, VTiles2
 	lb bc, BANK(LinkCommsBorderGFX), 70
-	call Get2bpp
-	ret
+	jp Get2bpp
 ; 16d42e
 
 Function16d42e: ; 16d42e
 	ld hl, Tilemap_16d465
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyBytes
-	ret
+	jp CopyBytes
 ; 16d43b
 
 Tilemap_16d465:
@@ -107,8 +105,7 @@ InitTradeSpeciesList: ; 16d673
 	farcall PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .CANCEL
-	call PlaceString
-	ret
+	jp PlaceString
 ; 16d68f
 
 .CANCEL: ; 16d68f
@@ -116,8 +113,7 @@ InitTradeSpeciesList: ; 16d673
 ; 16d696
 
 _LoadTradeScreenBorder: ; 16d696
-	call __LoadTradeScreenBorder
-	ret
+	jp __LoadTradeScreenBorder
 ; 16d69a
 
 
@@ -125,8 +121,7 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX: ; 16d69a
 	ld de, LinkCommsBorderGFX + $30 tiles
 	ld hl, VTiles2 tile $76
 	lb bc, BANK(LinkCommsBorderGFX), 8
-	call Get2bpp
-	ret
+	jp Get2bpp
 ; 16d6a7
 
 Function16d6ae: ; 16d6ae
@@ -138,13 +133,11 @@ Function16d6ae: ; 16d6ae
 	ld hl, Tilemap_16d5f5
 	decoord 0, 16
 	ld bc, 2 * SCREEN_WIDTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 ; 16d6ca
 
 LinkTextbox: ; 16d6ca
-	call _LinkTextbox
-	ret
+	jp _LinkTextbox
 ; 16d6ce
 
 Function16d6ce: ; 16d6ce

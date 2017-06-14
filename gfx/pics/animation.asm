@@ -62,8 +62,7 @@ endr
 	ld b, [hl]
 	ld c, a
 	pop hl
-	call PokeAnim_InitPicAttributes
-	ret
+	jp PokeAnim_InitPicAttributes
 ; d00b4
 
 SetUpPokeAnim: ; d00b4
@@ -368,8 +367,7 @@ PokeAnim_DoAnimScript: ; d0250
 	dec a
 	ld [wPokeAnimWaitCounter], a
 	ret nz
-	call PokeAnim_StopWaitAnim
-	ret
+	jp PokeAnim_StopWaitAnim
 ; d028e
 
 .SetRepeat: ; d028e
@@ -424,8 +422,7 @@ PokeAnim_GetFrame: ; d02c8
 	push hl
 	call PokeAnim_CopyBitmaskToBuffer
 	pop hl
-	call PokeAnim_ConvertAndApplyBitmask
-	ret
+	jp PokeAnim_ConvertAndApplyBitmask
 ; d02dc
 
 PokeAnim_StartWaitAnim: ; d02dc
@@ -536,8 +533,7 @@ PokeAnim_CopyBitmaskToBuffer: ; d033b
 	pop bc
 	ld de, wPokeAnimBitmaskBuffer
 	ld a, [wPokeAnimBitmaskBank]
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 ; d0356
 
 .GetSize: ; d0356
@@ -846,8 +842,7 @@ PokeAnim_PlaceGraphic: ; d04bd
 	ld l, a
 	ld b, 7
 	ld c, 7
-	call ClearBox
-	ret
+	jp ClearBox
 ; d0504
 
 PokeAnim_SetVBank1: ; d0504

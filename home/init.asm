@@ -181,8 +181,7 @@ ClearVRAM:: ; 245
 	ld hl, VTiles0
 	ld bc, $2000
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 ; 25a
 
 ClearWRAM:: ; 25a

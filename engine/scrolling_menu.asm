@@ -415,8 +415,7 @@ ScrollingMenu_UpdateDisplay: ; 247f0
 	bit 0, a ; call function on cancel
 	jr nz, .call_function
 	ld de, .string_2485f
-	call PlaceString
-	ret
+	jp PlaceString
 
 .string_2485f
 	db "Cancel@"
@@ -497,8 +496,7 @@ ScrollingMenu_CheckCallFunction3: ; 248b8
 	dec a
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
 	ld hl, wMenuData2_ScrollingMenuFunction3
-	call CallPointerAt
-	ret
+	jp CallPointerAt
 ; 248d5
 
 ScrollingMenu_GetListItemCoordAndFunctionArgs: ; 248d5

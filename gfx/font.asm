@@ -133,8 +133,7 @@ LoadFrame:: ; fb4cc
 	ld hl, VTiles2 tile $7f
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
-	call Get1bpp_2
-	ret
+	jp Get1bpp_2
 ; fb4f2
 
 LoadBattleFontsHPBar: ; fb4f2
@@ -143,8 +142,7 @@ LoadBattleFontsHPBar: ; fb4f2
 LoadStatusIcons: ; fb50d
 	call LoadPlayerStatusIcon
 	call LoadEnemyStatusIcon
-	call InstantReloadPaletteHack
-	ret
+	jp InstantReloadPaletteHack
 ; fb53e
 
 LoadPlayerStatusIcon:
@@ -226,6 +224,5 @@ LoadStatsGFX: ; fb571
 	ld de, GFX_Stats
 	ld hl, VTiles2 tile $31
 	lb bc, BANK(GFX_Stats), 14
-	call Get2bpp_2
-	ret
+	jp Get2bpp_2
 ; fb57e

@@ -1453,8 +1453,7 @@ LoadTradeScreenBorder: ; 28ef8
 
 SetTradeRoomBGPals: ; 28eff
 	farcall LoadLinkTradePalette
-	call SetPalettes
-	ret
+	jp SetPalettes
 ; 28f09
 
 INCLUDE "engine/trade_animation.asm"

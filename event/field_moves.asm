@@ -141,8 +141,7 @@ OWCutAnimation: ; 8c940
 	ld de, CutTreeGFX
 	ld hl, VTiles1 tile $4
 	lb bc, BANK(CutTreeGFX), 4
-	call Request2bpp
-	ret
+	jp Request2bpp
 ; 8c98c
 
 CutTreeGFX: ; c898c
@@ -386,8 +385,7 @@ FlyToAnim: ; 8cb33
 .exit
 	pop af
 	ld [VramState], a
-	call .RestorePlayerSprite_DespawnLeaves
-	ret
+	jp .RestorePlayerSprite_DespawnLeaves
 
 .RestorePlayerSprite_DespawnLeaves: ; 8cb82 (23:4b82)
 	ld hl, Sprites + 2 ; Tile ID
@@ -404,8 +402,7 @@ endr
 	ld hl, Sprites + 4 * 4
 	ld bc, SpritesEnd - (Sprites + 4 * 4)
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 
 FlyFunction_InitGFX: ; 8cb9b (23:4b9b)
 	farcall ClearSpriteAnims
@@ -438,8 +435,7 @@ FlyFunction_FrameTimer: ; 8cbc8 (23:4bc8)
 	and $7
 	ret nz
 	ld de, SFX_FLY
-	call PlaySFX
-	ret
+	jp PlaySFX
 
 .exit
 	ld hl, wJumptableIndex

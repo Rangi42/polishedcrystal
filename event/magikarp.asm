@@ -395,8 +395,7 @@ Special_MagikarpHouseSign: ; fbcd2
 	ld [Buffer2], a
 	call PrintMagikarpLength
 	ld hl, .CurrentRecordtext
-	call PrintText
-	ret
+	jp PrintText
 ; fbce8
 
 .CurrentRecordtext: ; 0xfbce8

@@ -242,8 +242,7 @@ DisplayMinutesWithMinString: ; 90859 (24:4859)
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
-	call PlaceString
-	ret
+	jp PlaceString
 
 PrintTwoDigitNumberRightAlign: ; 90867 (24:4867)
 	push hl
@@ -252,8 +251,7 @@ PrintTwoDigitNumberRightAlign: ; 90867 (24:4867)
 	ld [hl], a
 	pop hl
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 ; 90874 (24:4874)
 
 Text_WokeUpOak: ; 0x90874
@@ -481,8 +479,7 @@ endr
 	ld d, [hl]
 	ld e, a
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 909f2
 
 .WeekdayStrings: ; 909f2
@@ -532,8 +529,7 @@ Special_InitialSetDSTFlag: ; 90a54
 	lb bc, 3, 18
 	call ClearBox
 	ld hl, .Text
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 ; 90a6c
 
 .Text: ; 90a6c
@@ -563,8 +559,7 @@ Special_InitialClearDSTFlag: ; 90a88
 	lb bc, 3, 18
 	call ClearBox
 	ld hl, .Text
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 ; 90aa0
 
 .Text: ; 90aa0
@@ -599,8 +594,7 @@ PrintHour: ; 90b3e (24:4b3e)
 	call AdjustHourForAMorPM
 	ld [wd265], a
 	ld de, wd265
-	call PrintTwoDigitNumberRightAlign
-	ret
+	jp PrintTwoDigitNumberRightAlign
 
 GetTimeOfDayString: ; 90b58 (24:4b58)
 	ld a, c

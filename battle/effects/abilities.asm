@@ -11,8 +11,7 @@ UserAbilityJumptable:
 RunEnemyStatusHealAbilities:
 	call SwitchTurn
 	call RunStatusHealAbilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 BattleEntryAbilities:
 	dbw TRACE, TraceAbility
@@ -142,8 +141,7 @@ TraceAbility:
 	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
@@ -443,8 +441,7 @@ RunEnemyOwnTempoAbility:
 	call GetBattleVar
 	cp OWN_TEMPO
 	call z, OwnTempoAbility
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 RunEnemySynchronizeAbility:
 	call SwitchTurn
@@ -452,8 +449,7 @@ RunEnemySynchronizeAbility:
 	call GetBattleVar
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 SynchronizeAbility:
 	ld a, BATTLE_VARS_STATUS
@@ -523,8 +519,7 @@ AftermathAbility:
 	call SwitchTurn
 	farcall GetQuarterMaxHP
 	farcall SubtractHPFromUser
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
@@ -584,8 +579,7 @@ RunContactAbilities:
 	jr nz, .not_pickpocket
 	call SwitchTurn
 	call PickPocketAbility
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 .not_pickpocket
 ; other abilities only trigger 30% of the time
 ;
@@ -599,8 +593,7 @@ RunContactAbilities:
 	ld b, a
 	call SwitchTurn
 	call .do_enemy_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 .do_enemy_abilities
 	ld a, b
 	cp CUTE_CHARM
@@ -790,8 +783,7 @@ RunEnemyNullificationAbilities:
 ; checks are required.
 	call SwitchTurn
 	call .do_enemy_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
 	call UserAbilityJumptable
@@ -1410,8 +1402,7 @@ ApplyDamageAbilities:
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, DefensiveDamageAbilities
-	call AbilityJumptable
-	ret
+	jp AbilityJumptable
 
 OffensiveDamageAbilities:
 	dbw HUGE_POWER, HugePowerAbility
@@ -1715,8 +1706,7 @@ EnableAnimations:
 ShowEnemyAbilityActivation::
 	call SwitchTurn
 	call ShowAbilityActivation
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 ShowAbilityActivation::
 	push bc
 	push de

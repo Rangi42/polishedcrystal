@@ -23,8 +23,7 @@ PokemonCenterPC: ; 1559a
 .shutdown
 	call PC_PlayShutdownSound
 	call ExitMenu
-	call CloseWindow
-	ret
+	jp CloseWindow
 
 .TopMenu:
 	db $48 ; flags
@@ -168,8 +167,7 @@ PC_WaitPlaySFX: ; 156d0
 	push de
 	call WaitSFX
 	pop de
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 156d9
 
 _KrissHousePC: ; 156d9
@@ -205,8 +203,7 @@ _PlayersPC: ; 15704
 	ld hl, UnknownText_0x157cc
 	call PC_DisplayTextWaitMenu
 	call Function15715
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 15715
 
 Function15715: ; 15715
@@ -227,8 +224,7 @@ Function15715: ; 15715
 	xor a
 
 .asm_15732
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 15736
 
 KrissPCMenuData: ; 0x15736
@@ -358,13 +354,11 @@ KrisWithdrawItemMenu: ; 0x157d1
 	call MenuTextBox
 	xor a
 	ld [hBGMapMode], a
-	call ExitMenu
-	ret
+	jp ExitMenu
 
 .PackFull:
 	ld hl, .NoRoomText
-	call MenuTextBoxBackup
-	ret
+	jp MenuTextBoxBackup
 
 .done
 	ret
@@ -528,13 +522,11 @@ KrisDepositItemMenu: ; 0x1588b
 	call TossItem
 	predef PartyMonItemName
 	ld hl, .DepositText
-	call PrintText
-	ret
+	jp PrintText
 
 .NoRoomInPC:
 	ld hl, .NoRoomText
-	call PrintText
-	ret
+	jp PrintText
 
 .DeclinedToDeposit:
 	and a

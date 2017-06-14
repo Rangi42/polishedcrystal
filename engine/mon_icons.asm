@@ -12,8 +12,7 @@ LoadOverworldMonIcon: ; 8e82b
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	call GetMonIconBank
-	ret
+	jp GetMonIconBank
 ; 8e83f
 
 SetMenuMonIconColor:
@@ -292,8 +291,7 @@ PokegearFlyMap_GetMonIcon: ; 8e9ac
 	ld [CurIcon], a
 	pop de
 	ld a, e
-	call GetIconGFX
-	ret
+	jp GetIconGFX
 ; 8e9bc
 
 FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
@@ -302,8 +300,7 @@ FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
 	ld [CurIcon], a
 	pop de
 	ld a, e
-	call GetIcon_a
-	ret
+	jp GetIcon_a
 ; 8e9cc (23:69cc)
 
 GetMemIconGFX: ; 8e9db (23:69db)

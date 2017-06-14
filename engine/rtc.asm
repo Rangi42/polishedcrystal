@@ -7,8 +7,7 @@ StartRTC: ; 14019
 	ld a, [MBC3RTC]
 	res 6, a ; halt
 	ld [MBC3RTC], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14032
 
 GetTimeOfDay:: ; 14032
@@ -72,8 +71,7 @@ SaveRTC: ; 1406a
 	ld [MBC3SRamBank], a
 	xor a
 	ld [sRTCStatusFlags], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14089
 
 StartClock:: ; 14089
@@ -86,8 +84,7 @@ StartClock:: ; 14089
 	call RecordRTCStatus ; set flag on sRTCStatusFlags
 
 .skip_set
-	call StartRTC
-	ret
+	jp StartRTC
 ; 1409b
 
 Function1409b: ; 1409b
@@ -102,8 +99,7 @@ Function1409b: ; 1409b
 .set_bit_7
 	; Day count exceeds 16383
 	ld a, %10000000
-	call RecordRTCStatus ; set bit 7 on sRTCStatusFlags
-	ret
+	jp RecordRTCStatus ; set bit 7 on sRTCStatusFlags
 ; 140ae
 
 Function140ae: ; 140ae
@@ -134,8 +130,7 @@ Function140ae: ; 140ae
 	ld a, [$b2fa]
 	inc a
 	ld [$b2fa], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .dont_update
 	xor a

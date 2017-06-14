@@ -10,8 +10,7 @@ DoPlayerTurn: ; 34000
 	jr nz, DoTurn
 
 	ld hl, ScaredText
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 
 ; 3400a
 
@@ -24,8 +23,7 @@ DoEnemyTurn: ; 3400a
 	jr nz, .not_ghost
 
 	ld hl, GetOutText
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 
 .not_ghost
 	ld a, [wLinkMode]
@@ -966,8 +964,7 @@ BattleCommand_DoTurn: ; 34555
 
 .wild
 	ld hl, wWildMonPP
-	call .consume_pp
-	ret
+	jp .consume_pp
 
 .out_of_pp
 	call BattleCommand_MoveDelay
@@ -3595,8 +3592,7 @@ DamagePass2:
 	; / 50
 	ld [hl], 50
 	ld b, $4
-	call Divide
-	ret
+	jp Divide
 
 DamagePass3:
 	; If we exceed $ffff at this point, skip to capping to 997 as the final damage.
@@ -8539,8 +8535,7 @@ BattleCommand_BatonPass: ; 379c9
 	ld hl, PassedBattleMonEntrance
 	call CallBattleCore
 
-	call ResetBatonPassStatus
-	ret
+	jp ResetBatonPassStatus
 
 
 .Enemy:

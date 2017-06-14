@@ -298,8 +298,7 @@ endr
 	ld de, SFX_MOVE_PUZZLE_PIECE
 
 .play_sfx
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; e1376
 
 UnownPuzzle_A: ; e1376
@@ -666,8 +665,7 @@ ConvertLoadedPuzzlePieces: ; e1631
 	pop bc
 	dec b
 	jr nz, .loop
-	call UnownPuzzle_AddPuzzlePieceBorders
-	ret
+	jp UnownPuzzle_AddPuzzlePieceBorders
 ; e1654
 
 .EnlargePuzzlePieceTiles: ; e1654

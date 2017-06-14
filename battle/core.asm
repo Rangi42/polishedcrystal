@@ -2970,8 +2970,7 @@ JumpToPartyMenuAndPrintText: ; 3d313
 	farcall PrintPartyMenuText
 	call WaitBGMap
 	call SetPalettes
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 3d329
 
 SelectBattleMon: ; 3d329
@@ -3094,8 +3093,7 @@ LostBattle: ; 3d38e
 	farcall BattleTowerText
 	call WaitPressAorB_BlinkCursor
 	call ClearTileMap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 
 .no_loss_text
 	ld a, [wLinkMode]
@@ -3257,8 +3255,7 @@ ForceEnemySwitch: ; 3d4c3
 	call ResetEnemyStatLevels
 	call Function_SetEnemyPkmnAndSendOutAnimation
 	call BreakAttraction
-	call ResetBattleParticipants
-	ret
+	jp ResetBattleParticipants
 ; 3d4e1
 
 
@@ -4464,8 +4461,7 @@ RunActivationAbilities:
 	; invert whose turn it is to properly handle abilities.
 	call SwitchTurn
 	farcall RunActivationAbilitiesInner
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 SpikesDamage_CheckMoldBreaker:
 ; Called when a Pokémon with Mold Breaker uses Roar/Whirlwind.
@@ -5225,8 +5221,7 @@ endr
 
 UpdateEnemyHPPal: ; 3e127
 	ld hl, EnemyHPPal
-	call UpdateHPPal
-	ret
+	jp UpdateHPPal
 ; 3e12e
 
 UpdateHPPal: ; 3e12e
@@ -5335,8 +5330,7 @@ BattleMenu_Pack: ; 3e1c7
 	call DoItemEffect
 
 .got_item
-	call .UseItem
-	ret
+	jp .UseItem
 
 .didnt_use_item
 	call ClearPalettes
@@ -5564,8 +5558,7 @@ PlayerSwitch: ; 3e3ad
 	jp c, .switch
 	cp BATTLEACTION_FORFEIT
 	jr nz, .dont_run
-	call WildFled_EnemyFled_LinkBattleCanceled
-	ret
+	jp WildFled_EnemyFled_LinkBattleCanceled
 
 .dont_run
 	ld a, [hLinkPlayerNumber]
@@ -6160,8 +6153,7 @@ endr
 	inc hl
 	ld de, wNamedObjectIndexBuffer
 	lb bc, 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 ; 3e786
 
 CheckPlayerHasUsableMoves: ; 3e786
@@ -8776,8 +8768,7 @@ InitEnemyWildmon: ; 3f607
 ExitBattle: ; 3f69e
 	call .HandleEndOfBattle
 	call HandleNuzlockeFlags
-	call CleanUpBattleRAM
-	ret
+	jp CleanUpBattleRAM
 ; 3f6a5
 
 .HandleEndOfBattle: ; 3f6a5
@@ -8863,8 +8854,7 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	call WaitSFX
-	ret
+	jp WaitSFX
 ; 3f71d
 
 CheckPayDay: ; 3f71d
@@ -9403,8 +9393,7 @@ AddLastBattleToLinkRecord: ; 3fa42
 	ld hl, wd002
 	ld bc, 18
 	pop de
-	call CopyBytes
-	ret
+	jp CopyBytes
 ; 3fb54
 
 .LoadPointer: ; 3fb54
@@ -9669,8 +9658,7 @@ BattleStartMessage: ; 3fc8b
 	push hl
 	farcall BattleStart_TrainerHuds
 	pop hl
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 ; 3fd26
 
 ConsumeUsersItem:

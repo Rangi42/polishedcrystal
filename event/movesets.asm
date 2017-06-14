@@ -1,8 +1,7 @@
 TeachDratiniExtremeSpeed: ; 0x8b170
 	call GetLastPartyMonMoveset
 	ld hl, .Moveset
-	call GiveSpecialMoveset
-	ret
+	jp GiveSpecialMoveset
 
 .Moveset:
 	db EXTREMESPEED
@@ -14,8 +13,7 @@ TeachDratiniExtremeSpeed: ; 0x8b170
 TeachMagikarpDragonRage:
 	call GetLastPartyMonMoveset
 	ld hl, .Moveset
-	call GiveSpecialMoveset
-	ret
+	jp GiveSpecialMoveset
 
 .Moveset:
 	db SPLASH

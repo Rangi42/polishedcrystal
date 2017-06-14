@@ -55,8 +55,7 @@ Special_DayCareMan: ; 166d6
 
 .cancel
 	ld a, DAYCARETEXT_13
-	call PrintDayCareText
-	ret
+	jp PrintDayCareText
 ; 1672a
 
 Special_DayCareLady: ; 1672a
@@ -95,8 +94,7 @@ Special_DayCareLady: ; 1672a
 
 .cancel
 	ld a, DAYCARETEXT_13
-	call PrintDayCareText
-	ret
+	jp PrintDayCareText
 ; 16781
 
 DayCareLadyIntroText: ; 16781
@@ -176,8 +174,7 @@ DayCare_DepositPokemonText: ; 167f6
 	ld a, [CurPartySpecies]
 	call PlayCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
-	call PrintDayCareText
-	ret
+	jp PrintDayCareText
 ; 16807
 
 DayCare_AskWithdrawBreedMon: ; 16807
@@ -236,8 +233,7 @@ DayCare_TakeMoney_PlayCry: ; 16850
 	ld a, [CurPartySpecies]
 	call PlayCry
 	ld a, DAYCARETEXT_TOO_SOON
-	call PrintDayCareText
-	ret
+	jp PrintDayCareText
 ; 1686d
 
 GetPriceToRetrieveBreedmon: ; 1686d
@@ -272,8 +268,7 @@ PrintDayCareText: ; 1689b
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call PrintText
-	ret
+	jp PrintText
 ; 168aa
 
 .TextTable: ; 168aa
@@ -424,8 +419,7 @@ Special_DayCareManOutside: ; 16936
 	bit 6, [hl]
 	jr nz, .AskGiveEgg
 	ld hl, .NotYet
-	call PrintText
-	ret
+	jp PrintText
 
 .NotYet: ; 0x16944
 	; Not yet…

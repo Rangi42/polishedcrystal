@@ -95,8 +95,7 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	lb bc, BANK(CardStatusGFX), 6
 	call Request2bpp
 	call TrainerCard_Page1_PrintDexCaught_GameTime
-	call TrainerCard_IncrementJumptable
-	ret
+	jp TrainerCard_IncrementJumptable
 
 TrainerCard_Page1_Joypad: ; 251d7 (9:51d7)
 	call TrainerCard_Page1_PrintGameTime
@@ -138,8 +137,7 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	lb bc, BANK(BadgeGFX), $2c
 	call Request2bpp
 	call TrainerCard_Page2_InitObjectsAndStrings
-	call TrainerCard_IncrementJumptable
-	ret
+	jp TrainerCard_IncrementJumptable
 
 TrainerCard_Page2_Joypad: ; 25221 (9:5221)
 	ld hl, TrainerCard_JohtoBadgesOAM
@@ -207,8 +205,7 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	lb bc, BANK(BadgeGFX2), $2c
 	call Request2bpp
 	call TrainerCard_Page3_InitObjectsAndStrings
-	call TrainerCard_IncrementJumptable
-	ret
+	jp TrainerCard_IncrementJumptable
 
 TrainerCard_Page3_Joypad: ; 25279 (9:5279)
 	ld hl, TrainerCard_KantoBadgesOAM
@@ -280,8 +277,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 .print_money
 	ld de, Money
 	lb bc, PRINTNUM_MONEY | 3, 7
-	call PrintNum
-	ret
+	jp PrintNum
 
 ; 252ec (9:52ec)
 
@@ -333,8 +329,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	ret nz
 	hlcoord 1, 13
 	lb bc, 2, 17
-	call ClearBox
-	ret
+	jp ClearBox
 
 .Dex_PlayTime_BP:
 	db   "#dex"
@@ -377,8 +372,7 @@ endr
 	xor a
 	ld [wcf64], a
 	ld hl, TrainerCard_KantoBadgesOAM
-	call TrainerCard_Page2_3_OAMUpdate
-	ret
+	jp TrainerCard_Page2_3_OAMUpdate
 
 StatusTilemap:
 BadgesTilemap:

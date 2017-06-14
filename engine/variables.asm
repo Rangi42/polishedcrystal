@@ -25,8 +25,7 @@ endr
 	jr .loadstringbuffer2
 
 .call
-	call _de_
-	ret
+	jp _de_
 
 .loadstringbuffer2 ; 8066c (20:466c)
 	ld de, StringBuffer2

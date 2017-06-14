@@ -170,8 +170,7 @@ LoadMapNameSignGFX: ; b80c6
 	ld de, MapEntryFrameGFX
 	ld hl, VTiles2 tile $70
 	lb bc, BANK(MapEntryFrameGFX), 13
-	call Get2bpp
-	ret
+	jp Get2bpp
 ; b80d3
 
 InitMapNameFrame: ; b80d3
@@ -197,8 +196,7 @@ PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	hlcoord 0, 2
 	add hl, bc
 	ld de, StringBuffer1
-	call PlaceString
-	ret
+	jp PlaceString
 
 .GetNameLength: ; b8101 (2e:4101)
 	ld c, 0
@@ -798,8 +796,7 @@ GetTreeMon: ; b83e5
 	ld a, [hli]
 	cp -1
 	jr nz, .skip
-	call SelectTreeMon
-	ret
+	jp SelectTreeMon
 ; b841f
 
 SelectTreeMon: ; b841f
