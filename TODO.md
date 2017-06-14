@@ -92,7 +92,6 @@ In-battle effects:
 * Speed Boost activates inconsistently
 * Harvest
 * Pickpocket
-* Pickup
 * Rivalry
 
 Out-of-battle effects:

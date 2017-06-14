@@ -1189,8 +1189,61 @@ HandleAbilities:
 	ret
 
 HarvestAbility:
+	ret
+
 PickupAbility:
-; TODO: save used up items
+; At end of turn, pickup consumed opponent items if we don't have any
+	call SwitchTurn
+	call GetUsedItemAddr
+	call SwitchTurn
+	ld a, [hl]
+	and a
+	ret z
+
+	; Kill the used item
+	push af
+	xor a
+	ld [hl], a
+
+	; Pick it up if we don't already have one
+	farcall GetUserItem
+	ld a, [hl]
+	and a
+	pop bc
+	ret nz
+	ld [hl], b
+
+	push bc
+	call ShowAbilityActivation
+	pop bc
+
+	; Update party struct if applicable
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1Item
+	jr z, .got_item_addr
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld a, [CurOTMon]
+	ld hl, OTPartyMon1Item
+.got_item_addr
+	push bc
+	call GetPartyLocation
+	pop bc
+	ld [hl], b
+
+	; If backup is empty, replace with this (even in trainer battles)
+	ld a, [hBattleTurn]
+	and a
+	ret nz
+
+	call GetBackupItemAddr
+	ld a, [hl]
+	and a
+	ret nz
+	ld [hl], b
 	ret
 
 MoodyAbility:

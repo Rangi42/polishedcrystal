@@ -139,7 +139,7 @@ UpdateBattleHuds:: ; 39d4
 	farcall UpdateEnemyHUD
 	ret
 
-GetBackupItemAddr:
+GetBackupItemAddr::
 ; Returns address of backup item for current mon in hl
 	ld a, [CurBattleMon]
 	ld hl, PartyBackupItems
@@ -186,7 +186,7 @@ ToggleBattleItems:
 	pop bc
 	jr .loop
 
-GetUsedItemAddr:
+GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
 	ld a, [hBattleTurn]
 	and a
@@ -223,7 +223,9 @@ ConsumeUserItem::
 	ld de, EnemyMonItem
 	ld hl, OTPartyMon1Item
 .got_item_pointers
+	push bc
 	call GetPartyLocation
+	pop bc
 
 	; Air Balloons are consumed permanently, so don't write it to UsedItems
 	ld a, [de]
