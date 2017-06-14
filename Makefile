@@ -23,7 +23,7 @@ RM = rm -f
 
 gfx       := $(PYTHON) gfx.py
 includes  := $(PYTHON) utils/scan_includes.py
-bank_ends := $(PYTHON) contents/bank_ends.py
+bank_ends := $(PYTHON) utils/bank_ends.py
 
 
 crystal_obj := \
@@ -67,7 +67,7 @@ debug: RGBASM_FLAGS += -DDEBUG
 debug: ROM_NAME = $(NAME)-$(VERSION)
 debug: $(NAME)-$(VERSION).gbc
 
-freespace: contents/bank_ends.txt
+freespace: utils/bank_ends.txt
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
@@ -88,7 +88,7 @@ clean:
 %.2bpp: %.png ; $(gfx) 2bpp $<
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
-contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
+utils/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
