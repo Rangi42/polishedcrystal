@@ -1362,7 +1362,6 @@ HandleWrap: ; 3c874
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .skip_anim
-
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -1371,7 +1370,15 @@ HandleWrap: ; 3c874
 	call SwitchTurn
 
 .skip_anim
+	farcall GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_BINDING_BAND
+	jr nz, .no_binding_band
+	call GetSixthMaxHP
+	jr .subtract_hp
+.no_binding_band
 	call GetEighthMaxHP
+.subtract_hp
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 	jr .print_text
@@ -1383,7 +1390,7 @@ HandleWrap: ; 3c874
 	jp StdBattleTextBox
 ; 3c8e4
 
-HandleLeftovers: ; 3c8eb
+HandleLeftovers:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call SetPlayerTurn
@@ -1411,9 +1418,8 @@ HandleLeftovers: ; 3c8eb
 	call RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
 	jp StdBattleTextBox
-; 3c93c
 
-HandleLeppaBerry: ; 3c93c
+HandleLeppaBerry:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call SetPlayerTurn
@@ -1547,9 +1553,8 @@ HandleLeppaBerry: ; 3c93c
 	call ItemRecoveryAnim
 	ld hl, BattleText_UserRecoveredPPUsing
 	jp StdBattleTextBox
-; 3ca26
 
-HandleFutureSight: ; 3ca26
+HandleFutureSight:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call SetPlayerTurn
@@ -1605,9 +1610,8 @@ HandleFutureSight: ; 3ca26
 
 	call UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
-; 3ca8f
 
-HandleSafeguard: ; 3cafb
+HandleSafeguard:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call .CheckPlayer
@@ -1644,7 +1648,7 @@ HandleSafeguard: ; 3cafb
 	jp StdBattleTextBox
 
 
-HandleScreens: ; 3cb36
+HandleScreens:
 	call CheckSpeed
 	jr nz, .enemy_first
 
@@ -1678,16 +1682,14 @@ HandleScreens: ; 3cb36
 .Copy:
 	ld hl, StringBuffer1
 	jp CopyName2
-; 3cb75
 
 .Your:
 	db "Your@"
 .Enemy:
 	db "Foe@"
-; 3cb80
 
 
-.LightScreenTick: ; 3cb80
+.LightScreenTick:
 	ld a, [de]
 	dec a
 	ld [de], a
@@ -1700,9 +1702,8 @@ HandleScreens: ; 3cb36
 	pop de
 	pop hl
 	ret
-; 3cb91
 
-.ReflectTick: ; 3cb91
+.ReflectTick:
 	inc de
 	ld a, [de]
 	dec a
@@ -1711,9 +1712,8 @@ HandleScreens: ; 3cb36
 	res SCREENS_REFLECT, [hl]
 	ld hl, BattleText_PkmnReflectFaded
 	jp StdBattleTextBox
-; 3cb9e
 
-HandleWeather: ; 3cb9e
+HandleWeather:
 	ld a, [Weather]
 	cp WEATHER_NONE
 	ret z

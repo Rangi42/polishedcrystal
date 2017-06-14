@@ -9106,7 +9106,13 @@ GetUserItem: ; 37db2
 ; 37dc1
 
 
-GetOpponentItem: ; 37dc1
+GetOpponentItemAfterUnnerve:
+; Return the effect of the opponent's item in bc, and its id at hl unless Unnerve applies
+	call SwitchTurn
+	call GetUserItemAfterUnnerve
+	jp SwitchTurn
+
+GetOpponentItem:
 ; Return the effect of the opponent's item in bc, and its id at hl.
 	call SwitchTurn
 	call GetUserItem
