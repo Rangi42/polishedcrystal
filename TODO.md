@@ -258,4 +258,4 @@ There are some features that I do *not* ever plan to add to Polished Crystal:
 * A third region
 * Mega Evolution
 * Z-moves
-* Gen V Exp. Share
+* Gen VI Exp. Share
