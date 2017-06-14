@@ -3,10 +3,8 @@
 * Large Pokémon animations have backwards tiles in the stats screen
 * Caught Pokémon sent to the PC appear at level 255
 * Some caught Pokémon have wrong held items
-* Dark types are not immune to moves whose priority was increased by Prankster
 * In-battle item use messages show the wrong Pokémon name
 * Some NPC trainers use wrong items
-* Held Berries don't always disappear when used
 * Weather and some ability animations trigger the last used animation too
 * TMs refresh PP
 * Nuzlocke mode sometimes turns on by itself (maybe)
