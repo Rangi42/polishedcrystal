@@ -71,46 +71,32 @@ DoMove: ; 3402c
 	ld a, BANK(MoveEffectsPointers)
 	call GetFarHalfword
 
-	ld de, BattleScriptBuffer
-
-.GetMoveEffect:
-	ld a, BANK(MoveEffects)
-	call GetFarByte
-	inc hl
-	ld [de], a
-	inc de
-	cp $ff
-	jr nz, .GetMoveEffect
-
-; Start at the first command.
-	ld hl, BattleScriptBuffer
 	ld a, l
 	ld [BattleScriptBufferLoc], a
 	ld a, h
 	ld [BattleScriptBufferLoc + 1], a
 
 .ReadMoveEffectCommand:
-
-; ld a, [BattleScriptBufferLoc++]
 	ld a, [BattleScriptBufferLoc]
 	ld l, a
 	ld a, [BattleScriptBufferLoc + 1]
 	ld h, a
 
-	ld a, [hli]
-
-	push af
+	inc hl
 	ld a, l
 	ld [BattleScriptBufferLoc], a
 	ld a, h
 	ld [BattleScriptBufferLoc + 1], a
-	pop af
+	dec hl
 
-; endturn_command (-2) is used to terminate branches without ending the read cycle.
+	ld a, BANK(MoveEffectsPointers)
+	call GetFarByte
+
+	; endturn_command (-2) is used to terminate branches without ending the read cycle
 	cp endturn_command
 	ret nc
 
-; The rest of the commands (01-af) are read from BattleCommandPointers.
+	; The rest of the commands (fd and below) are read from BattleCommandPointers
 	push bc
 	dec a
 	ld c, a
@@ -129,9 +115,6 @@ DoMove: ; 3402c
 
 .DoMoveEffectCommand:
 	jp hl
-
-; 34084
-
 
 CheckTurn:
 BattleCommand_CheckTurn: ; 34084
@@ -2634,27 +2617,7 @@ BattleCommand_PostHitEffects: ; 35250
 
 	ld hl, AirBalloonPoppedText
 	call StdBattleTextBox
-
-	; Don't use a common "useup" function -- when Pickup/etc is implemented, it still wont
-	; be able to recover Air Balloons
-	ld a, [hBattleTurn]
-	and a
-	ld a, [CurBattleMon]
-	ld de, BattleMonItem
-	ld hl, PartyMon1Item
-	jr nz, .got_item_pointers
-	ld a, [CurOTMon]
-	ld de, EnemyMonItem
-	ld hl, OTPartyMon1Item
-.got_item_pointers
-	call GetPartyLocation
-	xor a
-	ld [de], a
-	ld a, [wBattleMode]
-	dec a
-	jr z, .air_balloon_done
-	xor a
-	ld [hl], a
+	call ConsumeEnemyItem
 
 .air_balloon_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
@@ -2679,23 +2642,9 @@ BattleCommand_PostHitEffects: ; 35250
 ; 3527b
 
 
-BattleCommand_RageDamage: ; 3527b
+BattleCommand_RageDamage:
 ; unused (Rage is now Attack boosts again)
 	ret
-
-
-EndMoveEffect: ; 352a3
-	ld a, [BattleScriptBufferLoc]
-	ld l, a
-	ld a, [BattleScriptBufferLoc + 1]
-	ld h, a
-	ld a, $ff
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	ret
-
-; 352b1
 
 
 DittoMetalPowder: ; 352b1
@@ -6790,22 +6739,8 @@ BattleCommand_EndLoop: ; 369b6
 
 ; Loop back to the command before 'critical'.
 .loop_back_to_critical
-	ld a, [BattleScriptBufferLoc + 1]
-	ld h, a
-	ld a, [BattleScriptBufferLoc]
-	ld l, a
-.not_critical
-	ld a, [hld]
-	cp critical_command
-	jr nz, .not_critical
-	inc hl
-	ld a, h
-	ld [BattleScriptBufferLoc + 1], a
-	ld a, l
-	ld [BattleScriptBufferLoc], a
-	ret
-
-; 36a82
+	ld b, critical_command
+	jp SkipToBattleCommandBackwards
 
 
 BattleCommand_FlinchTarget: ; 36aa0
@@ -9421,25 +9356,39 @@ BattleCommand_ClearText: ; 37e85
 	db "@"
 ; 37e8c
 
-
-SkipToBattleCommand: ; 37e8c
+EndMoveEffect:
+	ld b, endmove_command
+	; fallthrough
+SkipToBattleCommand:
+	ld c, 0
+	jr BattleCommandJump
+SkipToBattleCommandBackwards:
+	ld c, 1
+BattleCommandJump:
 ; Skip over commands until reaching command b.
-	ld a, [BattleScriptBufferLoc + 1]
-	ld h, a
 	ld a, [BattleScriptBufferLoc]
 	ld l, a
+	ld a, [BattleScriptBufferLoc + 1]
+	ld h, a
 .loop
-	ld a, [hli]
+	ld a, BANK(MoveEffects)
+	call GetFarByte
 	cp b
-	jr nz, .loop
+	jr z, .got_target
+	ld a, c
+	and a
+	inc hl
+	jr z, .loop
+	dec hl
+	dec hl
+	jr .loop
 
-	ld a, h
-	ld [BattleScriptBufferLoc + 1], a
+.got_target
 	ld a, l
 	ld [BattleScriptBufferLoc], a
+	ld a, h
+	ld [BattleScriptBufferLoc + 1], a
 	ret
-
-; 37ea1
 
 
 GetMoveAttr: ; 37ea1

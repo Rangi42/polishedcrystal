@@ -1189,9 +1189,108 @@ HandleAbilities:
 	ret
 
 HarvestAbility:
+; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SUN
+	jr z, .ok
+	call BattleRandom
+	and 1
+	ret z
+
+.ok
+	; Don't do anything if we have an item already
+	farcall GetUserItem
+	ld a, [hl]
+	and a
+	ret nz
+
+	; Only Berries are picked
+	push hl
+	call GetUsedItemAddr
+	pop de
+	ld a, [hl]
+	and a
+	ret z
+	ld [CurItem], a
+	ld b, a
+	push bc
+	push de
+	push hl
+	farcall CheckItemPocket
+	pop hl
+	pop de
+	pop bc
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	ret nz
+
+	; Kill the used item
+	xor a
+	ld [hl], a
+
+	; Pick up the item
+	ld a, b
+	ld [de], a
+
+	ld hl, HarvestedItemText
+	jr RegainItemByAbility
+
 PickupAbility:
-; TODO: save used up items
-	ret
+; At end of turn, pickup consumed opponent items if we don't have any
+	; Don't do anything if we have an item already
+	farcall GetUserItem
+	ld a, [hl]
+	and a
+	ret nz
+
+	; Does the opponent have a consumed item?
+	push hl
+	call SwitchTurn
+	call GetUsedItemAddr
+	call SwitchTurn
+	pop de
+	ld a, [hl]
+	and a
+	ret z
+
+	; Pick up the item
+	ld [de], a
+
+	; Kill the used item
+	ld b, a
+	xor a
+	ld [hl], a
+	ld a, b
+
+	ld hl, PickedItemText
+	; fallthrough
+RegainItemByAbility:
+	; Update party struct if applicable
+	ld [wNamedObjectIndexBuffer], a
+	push af
+	push hl
+	call GetItemName
+	pop hl
+	call StdBattleTextBox
+	pop bc
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1Item
+	jr z, .got_item_addr
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld a, [CurOTMon]
+	ld hl, OTPartyMon1Item
+.got_item_addr
+	push bc
+	call GetPartyLocation
+	pop bc
+	ld [hl], b
+
+	; Yes, also in trainer battles (unlike Pickup)
+	jp SetBackupItem
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.

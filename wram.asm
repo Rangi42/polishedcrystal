@@ -463,8 +463,21 @@ EnemyDamageTaken:: ; c684
 wBattleReward:: ds 3 ; c686
 wBattleAnimParam::
 wKickCounter:: ds 1 ; c689
-BattleScriptBuffer:: ; c68a
-	ds 40
+
+PartyBackupItems::
+; Back up of party items before a battle. Modified in-battle for consumed/harvested
+; Berries and items stolen from wild Pokémon since those changes are retained
+	ds 6
+
+PartyUsedItems::
+; For the benefit of Pickup/Harvest
+	ds 6
+
+OTPartyUsedItems::
+; Opponent equavilent
+	ds 6
+
+	ds 22 ; unused
 
 BattleScriptBufferLoc:: ; c6b2
 	ds 2

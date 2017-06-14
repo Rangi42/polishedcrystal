@@ -1,6 +1,7 @@
 ; Core components of the battle engine.
 BattleCore:
 DoBattle: ; 3c000
+	call BackupBattleItems
 	xor a
 	ld [wBattleParticipantsNotFainted], a
 	ld [wBattleParticipantsIncludingFainted], a
