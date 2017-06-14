@@ -1874,17 +1874,9 @@ HandleWeatherEffects:
 	call GetSixteenthMaxHP
 	jp SubtractHPFromUser
 
-;SubtractHPFromTarget: ; 3cc39
-;	call SubtractHP
-;	jp UpdateHPBar
-;; 3cc3f
-
-SubtractHPFromUser: ; 3cc3f
-; Subtract HP from Pkmn
+SubtractHPFromUser:
 	call SubtractHP
 	jp UpdateHPBarBattleHuds
-; 3cc45
-
 
 SubtractHP: ; 3cc45
 	ld hl, BattleMonHP
