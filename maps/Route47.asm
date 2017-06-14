@@ -147,7 +147,7 @@ Route47SealedCaveSign:
 	jumptext Route47SealedCaveSignText
 
 Route47QuietCaveSign:
-	jumptext Route47QuietCaveSignText
+	habitatlist QuietCaveSignText, QUIET_CAVE
 
 Route47Revive:
 	itemball REVIVE
@@ -357,10 +357,8 @@ Route47SealedCaveSignText:
 	cont "the rock."
 	done
 
-Route47QuietCaveSignText:
-	text "Route 47"
-
-	para "West to"
+QuietCaveSignText:
+	text "West to"
 	line "Quiet Cave"
 	done
 

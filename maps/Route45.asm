@@ -289,7 +289,7 @@ CamperQuentinScript:
 	end
 
 Route45Sign:
-	jumptext Route45SignText
+	habitatlist Route45SignText, ROUTE_45
 
 FruitTreeScript_0x19e294:
 	fruittree FRUITTREE_ROUTE_45

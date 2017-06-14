@@ -351,7 +351,7 @@ Route3BigRoot:
 	itemball BIG_ROOT
 
 MapRoute3Signpost0Script:
-	jumptext UnknownText_0x1ae163
+	habitatlist UnknownText_0x1ae163, MT_MOON
 
 Route3Meteorite:
 	jumptext Route3MeteoriteText

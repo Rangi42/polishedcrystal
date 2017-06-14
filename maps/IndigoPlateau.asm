@@ -11,7 +11,7 @@ IndigoPlateau_MapScriptHeader:
 	return
 
 IndigoPlateauSign:
-	jumptext IndigoPlateauSignText
+	habitatlist IndigoPlateauSignText, INDIGO_PLATEAU
 
 IndigoPlateauSignText:
 	text "Indigo Plateau"

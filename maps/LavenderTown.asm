@@ -29,7 +29,7 @@ YoungsterScript_0x1ad6ed:
 	jumptextfaceplayer UnknownText_0x1ad7ac
 
 LavenderTownSign:
-	jumptext LavenderTownSignText
+	habitatlist LavenderTownSignText, LAVENDER_TOWN
 
 KantoRadioStationSign:
 	jumptext KantoRadioStationSignText
@@ -38,7 +38,7 @@ VolunteerPokemonHouseSign:
 	jumptext VolunteerPokemonHouseSignText
 
 SoulHouseSign:
-	jumptext SoulHouseSignText
+	habitatlist SoulHouseSignText, SOUL_HOUSE
 
 UnknownText_0x1ad702:
 	text "That's quite some"

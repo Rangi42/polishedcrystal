@@ -147,7 +147,7 @@ SchoolgirlImogenScript:
 	end
 
 Route33Sign:
-	jumptext Route33SignText
+	habitatlist Route33SignText, ROUTE_33
 
 Route33FruitTreeScript:
 	fruittree FRUITTREE_ROUTE_33

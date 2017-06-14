@@ -131,7 +131,7 @@ CooltrainerFScript_0x700a5:
 	jumptextfaceplayer UnknownText_0x704bb
 
 MapLakeofRageSignpost0Script:
-	jumptext UnknownText_0x708d7
+	habitatlist UnknownText_0x708d7, LAKE_OF_RAGE
 
 MapLakeofRageSignpost1Script:
 	opentext

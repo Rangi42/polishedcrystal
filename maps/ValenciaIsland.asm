@@ -22,7 +22,7 @@ ValenciaIslandYoungsterScript:
 	done
 
 ValenciaIslandSign:
-	jumptext .Text
+	habitatlist .Text, VALENCIA_ISLAND
 
 .Text:
 	text "Valencia Island"

@@ -85,7 +85,7 @@ YoungsterScript_0x1a403d:
 	jumptextfaceplayer UnknownText_0x1a4386
 
 EcruteakCitySign:
-	jumptext EcruteakCitySignText
+	habitatlist EcruteakCitySignText, ECRUTEAK_CITY
 
 EcruteakGymSign:
 	jumptext EcruteakGymSignText
@@ -94,7 +94,7 @@ EcruteakDanceTheaterSign:
 	jumptext EcruteakDanceTheaterSignText
 
 BurnedTowerSign:
-	jumptext BurnedTowerSignText
+	habitatlist BurnedTowerSignText, BURNED_TOWER
 
 EcruteakShrineSign:
 	jumptext EcruteakShrineSignText

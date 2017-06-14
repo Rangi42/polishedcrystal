@@ -31,7 +31,7 @@ FuchsiaCityPokefanFScript:
 	jumptextfaceplayer FuchsiaCityPokefanFText
 
 FuchsiaCitySign:
-	jumptext FuchsiaCitySignText
+	habitatlist FuchsiaCitySignText, FUCHSIA_CITY
 
 FuchsiaGymSign:
 	jumptext FuchsiaGymSignText

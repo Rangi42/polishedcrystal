@@ -6,7 +6,7 @@ Route28_MapScriptHeader:
 	db 0
 
 Route28Sign:
-	jumptext Route28SignText
+	habitatlist Route28SignText, ROUTE_28
 
 Route28HiddenRareCandy:
 	dwb EVENT_ROUTE_28_HIDDEN_RARE_CANDY, RARE_CANDY

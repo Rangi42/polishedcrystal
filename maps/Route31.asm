@@ -409,10 +409,10 @@ Route31YoungsterScript:
 	jumptextfaceplayer Route31YoungsterText
 
 Route31Sign:
-	jumptext Route31SignText
+	habitatlist Route31SignText, ROUTE_31
 
 DarkCaveSign:
-	jumptext DarkCaveSignText
+	habitatlist DarkCaveSignText, DARK_CAVE
 
 Route31CutTree:
 	jumpstd cuttree

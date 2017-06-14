@@ -262,7 +262,7 @@ VermilionCityRock:
 	jumpstd smashrock
 
 VermilionCitySign:
-	jumptext VermilionCitySignText
+	habitatlist VermilionCitySignText, VERMILION_CITY
 
 VermilionGymSign:
 	jumptext VermilionGymSignText
@@ -271,7 +271,7 @@ PokemonFanClubSign:
 	jumptext PokemonFanClubSignText
 
 VermilionCityDiglettsCaveSign:
-	jumptext VermilionCityDiglettsCaveSignText
+	habitatlist VermilionCityDiglettsCaveSignText, DIGLETTS_CAVE
 
 VermilionCityPortSign:
 	jumptext VermilionCityPortSignText

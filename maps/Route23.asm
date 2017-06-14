@@ -182,7 +182,7 @@ Route23OfficerNoBadgeScript:
 	end
 
 VictoryRoadSign:
-	jumptext VictoryRoadSignText
+	habitatlist VictoryRoadSignText, VICTORY_ROAD
 
 Route23OfficerNeedBadgeText:
 	text "You can pass here"

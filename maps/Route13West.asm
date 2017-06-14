@@ -108,7 +108,7 @@ UnknownText_0x1a26c2:
 	done
 
 Route13DirectionsSign:
-	jumptext Route13DirectionsSignText
+	habitatlist Route13DirectionsSignText, ROUTE_13
 
 Route13DirectionsSignText:
 	text "North to Lavender"

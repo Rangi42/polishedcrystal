@@ -264,7 +264,7 @@ UnknownText_0x1ad957:
 	done
 
 Route6UndergroundPathSign:
-	jumptext Route6UndergroundPathSignText
+	habitatlist Route6UndergroundPathSignText, UNDERGROUND
 
 Route6UndergroundPathSignText:
 	text "Underground Path"

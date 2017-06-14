@@ -126,7 +126,7 @@ BeautyCassandraScript:
 	end
 
 Route37Sign:
-	jumptext Route37SignText
+	habitatlist Route37SignText, ROUTE_37
 
 FruitTreeScript_0x1a8e09:
 	fruittree FRUITTREE_ROUTE_37_1

@@ -98,7 +98,7 @@ Archer2Script:
 	end
 
 Route48YellowForestSign:
-	jumptext Route48YellowForestSignText
+	habitatlist Route48SignText, ROUTE_48
 
 Route48Nugget:
 	itemball NUGGET
@@ -168,7 +168,7 @@ Archer2AfterText:
 	cont "anyway…"
 	done
 
-Route48YellowForestSignText:
+Route48SignText:
 	text "Route 48"
 
 	para "North to"

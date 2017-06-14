@@ -40,7 +40,7 @@ Route2SouthCutTree:
 	jumpstd cuttree
 
 Route2Sign:
-	jumptext Route2SignText
+	habitatlist Route2SignText, ROUTE_2
 
 Route2SouthElixer:
 	itemball ELIXER

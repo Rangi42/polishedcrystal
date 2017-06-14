@@ -128,7 +128,7 @@ MonicaNotMondayScript:
 	end
 
 Route40Sign:
-	jumptext Route40SignText
+	habitatlist Route40SignText, ROUTE_40
 
 Route40Rock:
 	jumpstd smashrock

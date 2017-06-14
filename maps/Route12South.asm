@@ -258,7 +258,7 @@ Route12CutTree:
 	jumpstd cuttree
 
 Route12Sign:
-	jumptext Route12SignText
+	habitatlist Route12SignText, ROUTE_12
 
 Route12Calcium:
 	itemball CALCIUM

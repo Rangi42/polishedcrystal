@@ -282,7 +282,7 @@ GoldenrodCityStationSign:
 	jumptext GoldenrodCityStationSignText
 
 GoldenrodCityRadioTowerSign:
-	jumptext GoldenrodCityRadioTowerSignText
+	habitatlist GoldenrodCityRadioTowerSignText, RADIO_TOWER
 
 GoldenrodDeptStoreSign:
 	jumptext GoldenrodDeptStoreSignText
@@ -291,7 +291,7 @@ GoldenrodGymSign:
 	jumptext GoldenrodGymSignText
 
 GoldenrodCitySign:
-	jumptext GoldenrodCitySignText
+	habitatlist GoldenrodCitySignText, GOLDENROD_CITY
 
 GoldenrodCityBikeShopSign:
 	jumptext GoldenrodCityBikeShopSignText

@@ -162,7 +162,7 @@ Route16WestCutTree:
 	jumpstd cuttree
 
 Route16WestSignpost:
-	jumptext .Text
+	habitatlist .Text, ROUTE_16
 
 .Text:
 	text "Route 16"
