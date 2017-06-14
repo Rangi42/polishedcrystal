@@ -1320,6 +1320,22 @@ FriskedItemText:
 	text "!"
 	prompt
 
+PickedItemText:
+	text "<USER>"
+	line "harvested"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
+HarvestedItemText:
+	text "<USER>"
+	line "harvested"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
 PoisonHealText:
 	text "<USER>'s"
 	line "Poison Heal"
