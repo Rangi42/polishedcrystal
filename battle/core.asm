@@ -1916,59 +1916,6 @@ SubtractHP: ; 3cc45
 	ld [Buffer5], a
 	ld [Buffer6], a
 	ret
-; 3cc76
-
-GetSixteenthMaxHP: ; 3cc76
-	call GetQuarterMaxHP
-	; quarter result
-	srl c
-	srl c
-	; round up
-	ld a, c
-	and a
-	jr nz, .ok
-	inc c
-.ok
-	ret
-; 3cc83
-
-
-GetEighthMaxHP: ; 3cc83
-; output: bc
-	call GetQuarterMaxHP
-; assumes nothing can have 1024 or more hp
-; halve result
-	srl c
-; round up
-	ld a, c
-	and a
-	jr nz, .end
-	inc c
-.end
-	ret
-; 3cc8e
-
-
-GetQuarterMaxHP: ; 3cc8e
-; output: bc
-	call GetMaxHP
-
-; quarter result
-	srl b
-	rr c
-	srl b
-	rr c
-
-; assumes nothing can have 1024 or more hp
-; round up
-	ld a, c
-	and a
-	jr nz, .end
-	inc c
-.end
-	ret
-; 3cc9f
-
 
 GetThirdMaxHP::
 ; divides by 3 without using arithmetic helpers (screws up dam calc)
@@ -2019,14 +1966,35 @@ GetThirdMaxHP::
 	inc c
 .end
 	ret
-; 3ccac
 
-
-GetHalfMaxHP: ; 3cc9f
-; output: bc
+GetEighthMaxHP:
 	call GetMaxHP
+	jr EighthHP
 
-; halve result
+GetQuarterMaxHP:
+	call GetMaxHP
+	jr QuarterHP
+
+GetSixthMaxHP:
+	call GetThirdMaxHP
+	jr HalfHP
+
+GetHalfMaxHP:
+	call GetMaxHP
+	jr HalfHP
+
+GetSixteenthMaxHP:
+	call GetMaxHP
+	srl b
+	rr c
+	; fallthrough
+EighthHP:
+	srl b
+	rr c
+QuarterHP:
+	srl b
+	rr c
+HalfHP:
 	srl b
 	rr c
 
