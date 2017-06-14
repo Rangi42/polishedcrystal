@@ -218,6 +218,7 @@ Some of these may never be added; they're just suggestions.
 * Inverse Battles
 * Battle Factory
 * Medals for achievements
+* Town and route signs have lists of what's wild there (like Habitat Lists in Gen 5 or DexNav in Gen 6)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
