@@ -283,7 +283,7 @@ ConsumeUserItem::
 	pop de
 	ld a, [wItemAttributeParamBuffer]
 	cp BERRIES
-	jr z, .apply_unburden
+	jr nz, .apply_unburden
 	call GetBackupItemAddr
 
 	; If the backup is different, don't touch it. This prevents consuming i.e. Focus Sash
