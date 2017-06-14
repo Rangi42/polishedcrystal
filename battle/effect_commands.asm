@@ -1152,16 +1152,14 @@ BattleCommand_TripleKick: ; 346b2
 	ret
 
 CheckAirBalloon:
-; Returns z if the user is immune due to an item
+; Returns z if the user is holding an Air Balloon
 	push bc
 	push hl
 	call GetOpponentItem
 	pop hl
 	ld a, b
 	pop bc
-	xor HELD_AIR_BALLOON
-	ret nz
-	ld [wTypeMatchup], a
+	cp HELD_AIR_BALLOON
 	ret
 
 BattleCommand_KickCounter: ; 346cd
@@ -1308,12 +1306,14 @@ CheckTypeMatchup:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp GROUND
-	jr nz, .not_ground
+	jr nz, .done_air_balloon
 
 	call CheckAirBalloon
-	jr z, .end
+	jr nz, .done_air_balloon
+	xor a
+	ld [wTypeMatchup], a
 
-.not_ground
+.done_air_balloon
 	farcall CheckNullificationAbilities
 .end
 	pop bc
@@ -5222,7 +5222,7 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
+	call GetBattleVar
 	and a
 	ret nz
 	ld a, [TypeModifier]
@@ -5259,11 +5259,11 @@ BattleCommand_ParalyzeTarget: ; 36165
 BattleCommand_BulkUp:
 	ld b, ATTACK
 	ld c, DEFENSE
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_CalmMind:
 	ld b, SP_ATTACK
 	ld c, SP_DEFENSE
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_Growth:
 	ld b, ATTACK
 	ld c, SP_ATTACK
@@ -5272,11 +5272,11 @@ BattleCommand_Growth:
 	jp nz, BattleCommand_DoubleUp
 	ld b, $10 | ATTACK
 	ld c, $10 | SP_ATTACK
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_DragonDance:
 	ld b, ATTACK
 	ld c, SPEED
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_HoneClaws:
 	ld b, ATTACK
 	ld c, ACCURACY
