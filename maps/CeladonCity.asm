@@ -100,7 +100,7 @@ CeladonCityLassScript:
 	jumptextfaceplayer CeladonCityLassText
 
 CeladonCitySign:
-	jumptext CeladonCitySignText
+	habitatlist CeladonCitySignText, CELADON_CITY
 
 CeladonGymSign:
 	jumptext CeladonGymSignText
@@ -109,7 +109,7 @@ CeladonCityCutTree:
 	jumpstd cuttree
 
 CeladonUniversitySign:
-	jumptext CeladonUniversitySignText
+	habitatlist CeladonUniversitySignText, CELADON_UNIVERSITY
 
 CeladonCityDeptStoreSign:
 	jumptext CeladonCityDeptStoreSignText

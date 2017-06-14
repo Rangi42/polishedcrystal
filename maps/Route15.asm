@@ -129,7 +129,7 @@ TwinsKayandtia2Script:
 	end
 
 Route15Sign:
-	jumptext Route15SignText
+	habitatlist Route15SignText, ROUTE_15
 
 Route15PPUp:
 	itemball PP_UP

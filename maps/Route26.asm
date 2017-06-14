@@ -264,7 +264,7 @@ DragonTamerErickScript:
 	end
 
 Route26Sign:
-	jumptext Route26SignText
+	habitatlist Route26SignText, ROUTE_26
 
 FruitTreeScript_0x1a4ec2:
 	fruittree FRUITTREE_ROUTE_26

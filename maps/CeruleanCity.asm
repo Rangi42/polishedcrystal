@@ -130,7 +130,7 @@ CeruleanCaveGuardScript:
 	jumptextfaceplayer CeruleanCaveGuardText
 
 CeruleanCitySign:
-	jumptext CeruleanCitySignText
+	habitatlist CeruleanCitySignText, CERULEAN_CITY
 
 CeruleanGymSign:
 	jumptext CeruleanGymSignText

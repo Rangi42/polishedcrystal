@@ -285,7 +285,7 @@ Route13TrainerTipsText:
 	done
 
 Route13Sign:
-	jumptext Route13SignText
+	habitatlist Route13SignText, ROUTE_13
 
 Route13SignText:
 	text "Route 13"

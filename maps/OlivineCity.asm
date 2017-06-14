@@ -152,16 +152,16 @@ OlivineCityLass2Script:
 	jumptextfaceplayer OlivineCityLass2Text
 
 OlivineCitySign:
-	jumptext OlivineCitySignText
+	habitatlist OlivineCitySignText, OLIVINE_CITY
 
 OlivineCityPortSign:
-	jumptext OlivineCityPortSignText
+	habitatlist OlivineCityPortSignText, FAST_SHIP
 
 OlivineGymSign:
 	jumptext OlivineGymSignText
 
 OlivineLighthouseSign:
-	jumptext OlivineLighthouseSignText
+	habitatlist OlivineLighthouseSignText, LIGHTHOUSE
 
 OlivineCityBattleTowerSign:
 	jumptext OlivineCityBattleTowerSignText

@@ -216,7 +216,7 @@ MysticWaterGuy:
 	end
 
 CherrygroveCitySign:
-	jumptext CherrygroveCitySignText
+	habitatlist CherrygroveCitySignText, NEW_BARK_TOWN
 
 GuideGentsHouseSign:
 	jumptext GuideGentsHouseSignText

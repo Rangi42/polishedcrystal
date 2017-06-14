@@ -27,7 +27,7 @@ Route2NorthCutTree:
 	jumpstd cuttree
 
 MapRoute2Signpost1Script:
-	jumptext UnknownText_0x1ac49f
+	habitatlist UnknownText_0x1ac49f, DIGLETTS_CAVE
 
 Route2NorthCarbos:
 	itemball CARBOS

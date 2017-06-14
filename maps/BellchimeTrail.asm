@@ -136,7 +136,7 @@ BellchimeTrailValerieScript:
 	jump .Depart
 
 TinTowerSign:
-	jumptext TinTowerSignText
+	habitatlist TinTowerSignText, TIN_TOWER
 
 BellchimeTrailStepDownMovementData:
 	step_down

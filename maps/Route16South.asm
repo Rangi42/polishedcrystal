@@ -46,7 +46,7 @@ OfficerfJamieScript:
 	end
 
 CyclingRoadSign:
-	jumptext CyclingRoadSignText
+	habitatlist CyclingRoadSignText, ROUTE_17
 
 OfficerfJamieSeenText:
 	text "Hey you! Are you"

@@ -166,11 +166,23 @@ Function4440: ; 4440
 	jr nz, SetFacingStanding
 asm_4448 ; use second column
 	ld de, Pointers445f + 2
-	jr asm_444d
 ; 444d
-
 asm_444d
 ; call [4 * ObjectStructs[ObjInd, OBJECT_ACTION] + de]
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld a, [hl]
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
+; 445f
+
 INCLUDE "engine/map_object_action.asm"
 
 CopyNextCoordsTileToStandingCoordsTile: ; 4600

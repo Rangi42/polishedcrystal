@@ -118,7 +118,7 @@ CianwoodCityFisherScript:
 	jumptextfaceplayer CianwoodCityFisherText
 
 CianwoodCitySign:
-	jumptext CianwoodCitySignText
+	habitatlist CianwoodCitySignText, CIANWOOD_CITY
 
 CianwoodGymSign:
 	jumptext CianwoodGymSignText
@@ -130,7 +130,7 @@ CianwoodPhotoStudioSign:
 	jumptext CianwoodPhotoStudioSignText
 
 CianwoodCliffEdgeGateSign:
-	jumptext CianwoodCliffEdgeGateSignText
+	habitatlist CianwoodCliffEdgeGateSignText, CLIFF_EDGE_GATE
 
 CianwoodStatsJudgeSign:
 	jumptext CianwoodStatsJudgeSignText

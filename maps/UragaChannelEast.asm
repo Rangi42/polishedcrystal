@@ -106,14 +106,14 @@ UragaChannelEastEviolite:
 	itemball EVIOLITE
 
 UragaChannelSign:
-	jumptext UragaChannelSignText
+	habitatlist UragaChannelSignText, URAGA_CHANNEL
 
 UragaChannelSignText:
 	text "Uraga Channel"
 	done
 
 ScaryCaveEastSign:
-	jumptext ScaryCaveEastSignText
+	habitatlist ScaryCaveEastSignText, SCARY_CAVE
 
 ScaryCaveEastSignText:
 	text "There's graffiti"

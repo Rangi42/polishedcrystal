@@ -314,7 +314,7 @@ TrainerBeautyOlivia:
 	end
 
 Route38Sign:
-	jumptext Route38SignText
+	habitatlist Route38SignText, ROUTE_38
 
 Route38TrainerTips:
 	jumptext Route38TrainerTipsText

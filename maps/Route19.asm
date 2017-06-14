@@ -128,7 +128,7 @@ Route19Rock:
 	jumpstd smashrock
 
 Route19Sign:
-	jumptext Route19SignText
+	habitatlist Route19SignText, ROUTE_19
 
 CarefulSwimmingSign:
 	jumptext CarefulSwimmingSignText

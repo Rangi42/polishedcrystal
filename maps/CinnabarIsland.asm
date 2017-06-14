@@ -49,10 +49,10 @@ CinnabarIslandGymSign:
 	jumptext CinnabarIslandGymSignText
 
 CinnabarIslandSign:
-	jumptext CinnabarIslandSignText
+	habitatlist CinnabarIslandSignText, CINNABAR_ISLAND
 
 CinnabarIslandVolcanoWarningSign:
-	jumptext CinnabarIslandVolcanoWarningSignText
+	habitatlist CinnabarIslandVolcanoWarningSignText, CINNABAR_VOLCANO
 
 CinnabarIslandHiddenRareCandy:
 	dwb EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY, RARE_CANDY

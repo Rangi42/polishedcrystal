@@ -100,7 +100,7 @@ YoungsterScript_0x5c934:
 	end
 
 MapNationalParkBugContestSignpost0Script:
-	jumptext UnknownText_0x5cba7
+	habitatlist UnknownText_0x5cba7, NATIONAL_PARK
 
 MapNationalParkBugContestSignpost1Script:
 	jumptext UnknownText_0x5cbc8

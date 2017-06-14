@@ -1118,3 +1118,10 @@ unowntypeface: macro
 restoretypeface: macro
 	db restoretypeface_command
 	endm
+
+	enum habitatlist_command
+habitatlist: macro
+	db habitatlist_command
+	dw \1 ; text_pointer
+	db \2 ; id
+	endm

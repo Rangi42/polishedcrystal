@@ -229,7 +229,7 @@ Route30CooltrainerFScript:
 	jumptextfaceplayer Route30CooltrainerFText
 
 Route30Sign:
-	jumptext Route30SignText
+	habitatlist Route30SignText, ROUTE_30
 
 MrPokemonsHouseDirectionsSign:
 	jumptext MrPokemonsHouseDirectionsSignText

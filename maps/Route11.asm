@@ -308,7 +308,7 @@ TrainerGuitaristfRitsuko:
 	done
 
 Route11Sign:
-	jumptext Route11SignText
+	habitatlist Route11SignText, ROUTE_11
 
 FruitTreeScript_0x68055:
 	fruittree FRUITTREE_ROUTE_11

@@ -252,14 +252,14 @@ RockyBeachPearlString:
 	itemball PEARL_STRING
 
 RockyBeachSignpost1:
-	jumptext .Text
+	habitatlist .Text, ROCKY_BEACH
 
 .Text:
 	text "Rocky Beach"
 	done
 
 RockyBeachSignpost2:
-	jumptext .Text
+	habitatlist .Text, NOISY_FOREST
 
 .Text:
 	text "Noisy Forest"

@@ -318,7 +318,7 @@ LassKriseScript:
 	end
 
 MapNationalParkSignpost0Script:
-	jumptext UnknownText_0x5c750
+	habitatlist UnknownText_0x5c750, NATIONAL_PARK
 
 MapNationalParkSignpost1Script:
 	jumptext UnknownText_0x5c771

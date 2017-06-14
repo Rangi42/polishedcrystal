@@ -18,7 +18,7 @@ SilverCaveOutsideCutTree:
 	jumpstd cuttree
 
 MtSilverSign:
-	jumptext MtSilverSignText
+	habitatlist MtSilverSignText, SILVER_CAVE
 
 SilverCaveOutsideHiddenFullRestore:
 	dwb EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE, FULL_RESTORE
