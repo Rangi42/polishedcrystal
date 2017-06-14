@@ -21,8 +21,9 @@ RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 
 PYTHON = python
 RM = rm -f
 
-gfx      := $(PYTHON) gfx.py
-includes := $(PYTHON) utils/scan_includes.py
+gfx       := $(PYTHON) gfx.py
+includes  := $(PYTHON) utils/scan_includes.py
+bank_ends := $(PYTHON) contents/bank_ends.py
 
 
 crystal_obj := \
@@ -40,8 +41,9 @@ text/common_text.o \
 gfx/pics.o
 
 
-all: crystal
+all: crystal bankfree
 
+crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
 
@@ -84,6 +86,7 @@ clean:
 %.2bpp: %.png ; $(gfx) 2bpp $<
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
+contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@ ; rm $(NAME)-$(VERSION)-0xff.gbc
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
