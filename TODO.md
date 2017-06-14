@@ -90,7 +90,6 @@ Route leaders:
 In-battle effects:
 
 * Speed Boost activates inconsistently
-* Harvest
 * Pickpocket
 * Rivalry
 
