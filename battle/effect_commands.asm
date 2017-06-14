@@ -5222,7 +5222,7 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
+	call GetBattleVar
 	and a
 	ret nz
 	ld a, [TypeModifier]
