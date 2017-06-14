@@ -4469,8 +4469,8 @@ PhanpyEvosAttacks:
 	db 10, ROLLOUT
 	db 15, ENCORE ; Natural Gift → event move
 	db 19, ENDURE
-	db 24, BODY_SLAM ; Slam → similar move
-	db 28, TAKE_DOWN
+	db 24, TAKE_DOWN ; Slam → Take Down
+	db 28, BODY_SLAM ; Take Down → TM move
 	db 33, CHARM
 	db 37, PLAY_ROUGH ; Last Resort → egg move
 	db 42, DOUBLE_EDGE
