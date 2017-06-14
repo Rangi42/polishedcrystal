@@ -1234,17 +1234,8 @@ PickupAbility:
 	pop bc
 	ld [hl], b
 
-	; If backup is empty, replace with this (even in trainer battles)
-	ld a, [hBattleTurn]
-	and a
-	ret nz
-
-	call GetBackupItemAddr
-	ld a, [hl]
-	and a
-	ret nz
-	ld [hl], b
-	ret
+	; Yes, also in trainer battles (unlike Pickup)
+	jp SetBackupItem
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.

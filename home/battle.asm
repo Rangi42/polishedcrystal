@@ -149,6 +149,19 @@ GetBackupItemAddr::
 	inc h
 	ret
 
+SetBackupItem::
+	; If backup is empty, replace with b if our turn (even in trainer battles)
+	ld a, [hBattleTurn]
+	and a
+	ret nz
+
+	call GetBackupItemAddr
+	ld a, [hl]
+	and a
+	ret nz
+	ld [hl], b
+	ret
+
 BackupBattleItems::
 ; Copies items from party to a backup of items. Doesn't care if player has less than 6 mons
 ; since messing with these item bytes in-battle is safe
