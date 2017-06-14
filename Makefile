@@ -13,7 +13,7 @@ RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc faithful-nortc bankfree debug
+.PHONY: all clean crystal faithful nortc faithful-nortc bankfree debug freespace
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -41,7 +41,7 @@ text/common_text.o \
 gfx/pics.o
 
 
-all: crystal bankfree
+all: crystal freespace
 
 crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
@@ -67,6 +67,8 @@ debug: RGBASM_FLAGS += -DDEBUG
 debug: ROM_NAME = $(NAME)-$(VERSION)
 debug: $(NAME)-$(VERSION).gbc
 
+freespace: contents/bank_ends.txt
+
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
 
@@ -86,7 +88,7 @@ clean:
 %.2bpp: %.png ; $(gfx) 2bpp $<
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
-contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@ ; rm $(NAME)-$(VERSION)-0xff.gbc
+contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;

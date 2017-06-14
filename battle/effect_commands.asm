@@ -5259,11 +5259,11 @@ BattleCommand_ParalyzeTarget: ; 36165
 BattleCommand_BulkUp:
 	ld b, ATTACK
 	ld c, DEFENSE
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_CalmMind:
 	ld b, SP_ATTACK
 	ld c, SP_DEFENSE
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_Growth:
 	ld b, ATTACK
 	ld c, SP_ATTACK
@@ -5272,11 +5272,11 @@ BattleCommand_Growth:
 	jp nz, BattleCommand_DoubleUp
 	ld b, $10 | ATTACK
 	ld c, $10 | SP_ATTACK
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_DragonDance:
 	ld b, ATTACK
 	ld c, SPEED
-	jp BattleCommand_DoubleUp
+	jr BattleCommand_DoubleUp
 BattleCommand_HoneClaws:
 	ld b, ATTACK
 	ld c, ACCURACY
