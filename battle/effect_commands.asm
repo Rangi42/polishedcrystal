@@ -459,13 +459,21 @@ CheckWhiteHerb:
 	cp HELD_WHITE_HERB
 	ret nz
 
-	; Check if we have any reduced stat changes
+	; Check if we have any reduced stat changes, and don't proc if fainted
 	ld a, [hBattleTurn]
 	and a
+	ld de, BattleMonHP
 	ld hl, PlayerStatLevels
 	jr z, .got_stat_levels
+	ld de, EnemyMonHP
 	ld hl, EnemyStatLevels
 .got_stat_levels
+	ld a, [de]
+	ld b, a
+	inc de
+	ld a, [de]
+	or b
+	ret z
 	ld b, NUM_LEVEL_STATS
 	ld c, 0
 .stat_loop
