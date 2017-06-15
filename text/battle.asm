@@ -104,14 +104,21 @@ PerishCountText: ; 0x80864
 	prompt
 ; 0x80880
 
-BattleText_UserRecoveredWithItem: ; 0x80880
+BattleText_UserRecoveredWithItem:
 	text "<USER>"
 	line "recovered with"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "."
 	prompt
-; 0x80899
+
+BattleText_UserHurtByItem:
+	text "<USER>"
+	line "was hurt by"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "."
+	prompt
 
 BattleText_UserRecoveredPPUsing: ; 0x80899
 	text "<USER>"

@@ -2624,7 +2624,7 @@ BattleCommand_PostHitEffects: ; 35250
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_RAGE, a
-	ret z
+	jr z, .rage_done
 
 	call SwitchTurn
 	call ResetMiss
@@ -2633,12 +2633,65 @@ BattleCommand_PostHitEffects: ; 35250
 	; don't print a failure message if we're maxed out in atk
 	ld a, [FailedMessage]
 	and a
-	jp z, SwitchTurn
+	jr nz, .rage_done_switchturn
 
 	ld hl, RageBuildingText
 	call StdBattleTextBox
 	call BattleCommand_StatUpMessage
-	jp SwitchTurn
+
+.rage_done_switchturn
+	call SwitchTurn
+.rage_done
+	; Do Life Orb recoil
+	call GetUserItem
+	ld a, b
+	cp HELD_LIFE_ORB
+	ret nz
+
+	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect was suppressed)
+	ld a, [EffectFailed]
+	and a
+	jr z, .no_suppressed_effect
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SHEER_FORCE
+	ret z
+
+.no_suppressed_effect
+	push hl
+	xor a
+	farcall GetMaxHP
+	ld a, b
+	ld [hDividend], a
+	ld a, c
+	ld [hDividend + 1], a
+	ld a, 10
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hQuotient + 1]
+	ld b, a
+	ld a, [hQuotient + 2]
+	ld c, a
+	farcall SubtractHPFromUser
+	pop hl
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_UserHurtByItem
+	call StdBattleTextBox
+
+	; if we fainted, abort the rest of the move sequence
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonHP
+	jr z, .got_hp
+	ld hl, EnemyMonHP
+.got_hp
+	ld a, [hli]
+	or [hl]
+	ret nz
+	jp EndMoveEffect ; oops
 
 BattleCommand_Pickpocket:
 ; If the opponent has Pickpocket, proc the item steal now
@@ -3482,82 +3535,72 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplyDamageMod
 
 .no_crit
-	; Item boosts
+	; Item boosts. TODO: move species items here
 	call GetUserItem
 
 	ld a, b
-	and a
-	jr z, .DoneItem
+	cp HELD_TYPE_BOOST
+	jr z, .type_boost
+	cp HELD_CATEGORY_BOOST
+	jr z, .category_boost
+	cp HELD_CHOICE_ATK
+	jr z, .choice_atk
+	cp HELD_CHOICE_SAT
+	jr z, .choice_sat
+	cp HELD_EXPERT_BELT
+	jr z, .expert_belt
+	cp HELD_METRONOME
+	jr z, .metronome_item
 
-	ld hl, TypeBoostItems
-
-.NextItem:
-	ld a, [hli]
-	cp $ff
-	jr z, .DoneItem
-
-	; Item effect
-	cp b
-	ld a, [hli]
-	jr nz, .NextItem
-
-	cp PHYSICAL
-	jr z, .CategoryBoost
-	cp SPECIAL
-	jr z, .CategoryBoost
-
-	; Type
-	ld b, a
+	cp HELD_LIFE_ORB
+	ld a, $da
+	jr z, .life_orb
+	jr .done_attacker_item
+.type_boost
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
-	cp b
-	jr nz, .DoneItem
-	jr .ApplyBoost
-
-.CategoryBoost
-	ld b, a
+	cp c
+	ld a, $65
+.life_orb
+	call z, ApplyDamageMod
+	jr .done_attacker_item
+.category_boost
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
-	cp b
-	jr nz, .DoneItem
+	cp c
+	ld a, $ba
+	call z, ApplyDamageMod
+	jr .done_attacker_item
+.choice_atk
+	ld a, $32
+	call ApplyPhysicalAttackDamageMod
+	jr .done_attacker_item
+.choice_sat
+	ld a, $32
+	call ApplySpecialAttackDamageMod
+	jr .done_attacker_item
+.metronome_item
+	; TODO
+	jr .done_attacker_item
+.expert_belt
+	ld a, [TypeModifier]
+	cp $11
+	ld a, $ba
+	call nc, ApplyDamageMod
+	; fallthrough
+.done_attacker_item
+	call GetOpponentItem
 
-.ApplyBoost
-	; * 100 + item effect amount
-	ld a, c
-	add 100
-	ld [hMultiplier], a
-	call Multiply
-
-	; / 100
-	ld a, 100
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-.DoneItem:
+	ld a, b
+	cp HELD_ASSAULT_VEST
+	jr z, .assault_vest
+	jr .done_defender_item
+.assault_vest
+	ld a, $23
+	call ApplySpecialDefenseDamageMod
+	; fallthrough
+.done_defender_item
 	jp DamagePass3
-
-TypeBoostItems: ; 35703
-	db HELD_NORMAL_BOOST,   NORMAL   ; Silk Scarf
-	db HELD_FIGHTING_BOOST, FIGHTING ; Black Belt
-	db HELD_FLYING_BOOST,   FLYING   ; Sharp Beak
-	db HELD_POISON_BOOST,   POISON   ; Poison Barb
-	db HELD_GROUND_BOOST,   GROUND   ; Soft Sand
-	db HELD_ROCK_BOOST,     ROCK     ; Hard Stone
-	db HELD_BUG_BOOST,      BUG      ; SilverPowder
-	db HELD_GHOST_BOOST,    GHOST    ; Spell Tag
-	db HELD_FIRE_BOOST,     FIRE     ; Charcoal
-	db HELD_WATER_BOOST,    WATER    ; Mystic Water
-	db HELD_GRASS_BOOST,    GRASS    ; Miracle Seed
-	db HELD_ELECTRIC_BOOST, ELECTRIC ; Magnet
-	db HELD_PSYCHIC_BOOST,  PSYCHIC  ; TwistedSpoon
-	db HELD_ICE_BOOST,      ICE      ; NeverMeltIce
-	db HELD_DRAGON_BOOST,   DRAGON   ; Dragon Scale
-	db HELD_DARK_BOOST,     DARK     ; BlackGlasses
-	db HELD_STEEL_BOOST,    STEEL    ; Metal Coat
-	db HELD_FAIRY_BOOST,    FAIRY    ; Pink Bow
-	db HELD_PHYSICAL_BOOST, PHYSICAL ; Muscle Band
-	db HELD_SPECIAL_BOOST,  SPECIAL  ; Wise Glasses
-	db $ff
 
 
 DamagePass1:
