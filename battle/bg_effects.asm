@@ -990,7 +990,7 @@ BattleBGEffect_31: ; c85ce (32:45ce)
 	ld a, [hl]
 	and $f0
 	swap a
-	xor $ff
+	cpl
 	add $4
 	ld d, a
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -1163,7 +1163,7 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 
 .UpdateLYOverrides:
 	ld e, a
-	xor $ff
+	cpl
 	inc a
 	ld d, a
 	ld h, LYOverridesBackup / $100
@@ -1465,7 +1465,7 @@ Tackle_BGEffect25_2d_two:
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
-	xor $ff
+	cpl
 	inc a
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
@@ -2068,7 +2068,7 @@ BattleBGEffect_VibrateMon: ; c8c61 (32:4c61)
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
-	xor $ff
+	cpl
 	inc a
 	ld [hl], a
 	jp BGEffect_FillLYOverridesBackup
@@ -2129,7 +2129,7 @@ BattleBGEffect_2e: ; c8ce1 (32:4ce1)
 	call DelayFrame
 	pop af
 	ld [hSCY], a
-	xor $ff
+	cpl
 	inc a
 	ld [AnimObject01_YOffset], a
 	ret
@@ -2182,7 +2182,7 @@ Functionc8d0b: ; c8d0b (32:4d0b)
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
-	xor $ff
+	cpl
 	inc a
 	ld [hl], a
 	and a
@@ -2660,7 +2660,7 @@ BGEffect_DisplaceLYOverridesBackup: ; c901b (32:501b)
 	dec e
 	jr nz, .loop
 	pop af
-	xor $ff
+	cpl
 .loop2
 	ld [hli], a
 	dec d
