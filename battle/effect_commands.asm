@@ -3630,7 +3630,7 @@ BattleCommand_DamageCalc: ; 35612
 .expert_belt
 	ld a, [TypeModifier]
 	cp $11
-	ld a, $ba
+	ld a, $65
 	call nc, ApplyDamageMod
 	; fallthrough
 .done_attacker_item
