@@ -2659,13 +2659,10 @@ BattleCommand_Pickpocket:
 .is_contact
 	call SwitchTurn
 	call CanStealItem
-	push af
-	call SwitchTurn
-	pop af
-	ret nz
-	farcall ShowEnemyAbilityActivation
-	call SwitchTurn
+	jr nz, .no_pickpocket
+	farcall ShowAbilityActivation
 	call BattleCommand_Thief
+.no_pickpocket
 	call SwitchTurn
 	ret
 
